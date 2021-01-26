@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/05/2020
 ms.author: allensu
-ms.openlocfilehash: fcfd3da30ef9ace723b4204f5924591b1e2717f8
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 59359cdd3e3c035d4cb6789295d41bb3908019bb
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97503174"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98785829"
 ---
 # <a name="azure-monitor-logs-for-azure-standard-load-balancer"></a>Azure Standart Load Balancer Azure Izleyici günlükleri
 
@@ -39,7 +39,7 @@ Günlüklerin türleri şunlardır:
 
 Etkinlik günlüğü tüm Kaynak Yöneticisi kaynakları için otomatik olarak etkinleştirilir. Bu Günlükler aracılığıyla kullanılabilir verileri toplamaya başlamak için olay ve durum araştırma günlüğünü etkinleştirin. Aşağıdaki adımları kullanın:
 
-1. [Azure portalda](https://portal.azure.com) oturum açın. Zaten bir yük dengeleyiciniz yoksa devam etmeden önce [yük dengeleyici oluşturun](./quickstart-load-balancer-standard-public-portal.md) .
+1. [Azure portalında](https://portal.azure.com) oturum açın. Zaten bir yük dengeleyiciniz yoksa devam etmeden önce [yük dengeleyici oluşturun](./quickstart-load-balancer-standard-public-portal.md) .
 1. Portalda **kaynak grupları**' nı seçin.
 2. **\<resource-group-name>** Yük dengeleyicinizin nerede olduğunu seçin.
 3. Yük dengeleyicinizi seçin.
@@ -74,7 +74,7 @@ Etkinlik günlüğü tüm Kaynak Yöneticisi kaynakları için otomatik olarak e
 
 ## <a name="view-and-analyze-the-activity-log"></a>Etkinlik günlüğünü görüntüleme ve analiz etme
 
-Etkinlik günlüğü varsayılan olarak oluşturulur. [Bu makaledeki yönergeleri izleyerek](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log), aboneliği bir abonelik düzeyinde aktarılacak şekilde yapılandırabilirsiniz. [Kaynaklardaki eylemleri izlemek için etkinlik günlüklerini görüntüle](../azure-resource-manager/management/view-activity-logs.md) makalesindeki bu Günlükler hakkında daha fazla bilgi edinin makalesini okuyun.
+Etkinlik günlüğü varsayılan olarak oluşturulur. [Bu makaledeki yönergeleri izleyerek](../azure-monitor/platform/activity-log.md), aboneliği bir abonelik düzeyinde aktarılacak şekilde yapılandırabilirsiniz. [Kaynaklardaki eylemleri izlemek için etkinlik günlüklerini görüntüle](../azure-resource-manager/management/view-activity-logs.md) makalesindeki bu Günlükler hakkında daha fazla bilgi edinin makalesini okuyun.
 
 Aşağıdaki yöntemlerden birini kullanarak, etkinlik günlüğü verilerini görüntüleyebilir ve çözümleyebilirsiniz:
 
@@ -112,5 +112,5 @@ Azure Load Balancer için ölçülerle günlüklere dışarı aktarma özelliği
 * Kullanılan SNAT bağlantı noktaları ve ayrılmış SNAT bağlantı noktaları için ölçümler Şu anda Günlükler olarak dışa aktarma için kullanılamaz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Yük dengeleyiciniz için kullanılabilir ölçümleri gözden geçirin](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-diagnostics)
-* [Azure Izleyici yönergelerini izleyerek sorgular oluşturma ve test etme](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview)
+* [Yük dengeleyiciniz için kullanılabilir ölçümleri gözden geçirin](./load-balancer-standard-diagnostics.md)
+* [Azure Izleyici yönergelerini izleyerek sorgular oluşturma ve test etme](../azure-monitor/log-query/log-query-overview.md)

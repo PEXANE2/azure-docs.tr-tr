@@ -7,20 +7,20 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 10/05/2020
+ms.date: 01/22/2021
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 202a7f6b01423045fe7c72db5b42c29ae58f648d
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 06c0b25bcf64cfce01b4144550ef69da8c96ee0e
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96013845"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98785862"
 ---
 # <a name="tutorial-add-autocomplete-and-suggestions-using-the-net-sdk"></a>Öğretici: .NET SDK kullanarak otomatik tamamlama ve öneriler ekleme
 
 Kullanıcı bir arama kutusuna yazmaya başladığında otomatik tamamlamayı (typeahead sorguları ve önerilen sonuçlar) uygulamayı öğrenin. Bu öğreticide, oto tamamlanmış sorguları ve önerilen sonuçları ayrı olarak ve ardından birlikte göstereceğiz. Bir kullanıcının kullanılabilir tüm sonuçları bulmak için yalnızca iki veya üç karakter yazmanız gerekebilir.
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!div class="checklist"]
 > * Öneri ekleme
 > * Önerilere vurgulama ekleyin
@@ -35,7 +35,7 @@ Bu öğreticideki kodun tamamlanmış bir sürümü aşağıdaki projede bulunab
 
 * [3-Add-typeahead (GitHub)](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v11/3-add-typeahead)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * [2A-Add-sayfalama (GitHub)](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v11/2a-add-paging) çözümü. Bu proje, önceki öğreticiden ya da GitHub 'dan bir kopyadan oluşturulmuş kendi sürümünüz olabilir.
 
@@ -317,7 +317,7 @@ Bu işlevi sunan kitaplıklar vardır-genellikle "satır içi otomatik tamamlama
 
     **Sonuçlar** listesinin en üstünde bir otomatik tamamlama seçeneği döndürülür ve tüm öneriler gelir.
 
-1. Görünümde ilk olarak, açık gri otomatik tamamlama sözcüğünün Kullanıcı tarafından girilen beski metin altında oluşturulması için bir el uyguladık. HTML, bu amaçla Göreli konumlandırmayı içerir. **TextBoxFor** deyimini (ve çevreleyen &lt; div &gt; deyimlerini) aşağıdaki şekilde değiştirin. bu arama kutusu 39 piksel olan bu arama kutusunu varsayılan konumlarından **underneath** çekerek, aşağıda gösterildiği gibi bir ikinci arama kutusunun normal arama kutusumuza doğru olduğunu unutmayın!
+1. Görünümde ilk olarak, açık gri otomatik tamamlama sözcüğünün Kullanıcı tarafından girilen beski metin altında oluşturulması için bir el uyguladık. HTML, bu amaçla Göreli konumlandırmayı içerir. **TextBoxFor** deyimini (ve çevreleyen &lt; div &gt; deyimlerini) aşağıdaki şekilde değiştirin. bu arama kutusu 39 piksel olan bu arama kutusunu varsayılan konumlarından  çekerek, aşağıda gösterildiği gibi bir ikinci arama kutusunun normal arama kutusumuza doğru olduğunu unutmayın!
 
     ```cs
     <div id="underneath" class="searchBox" style="position: relative; left: 0; top: 0">

@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 6/29/2017
 ms.author: mcoskun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4a336daf9bd7400d049233a22a04d64d561b42c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f5b48cc6cca2e143c48ed7bdfc99de936be2a227
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89021961"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784588"
 ---
 # <a name="reliable-services-notifications"></a>Reliable Services bildirimleri
 Bildirimler, istemcilerin ilgilendikleri bir nesne üzerinde yapılan değişiklikleri izlemesine olanak sağlar. İki tür nesne bildirimleri destekler: *güvenilir durum Yöneticisi* ve *güvenilir sözlük*.
@@ -40,9 +40,9 @@ Güvenilir durum Yöneticisi koleksiyonu üç durumda yeniden oluşturulur:
 
 * Kurtarma: bir çoğaltma başladığında, önceki durumunu diskten kurtarır. Kurtarma sonunda, kurtarılan güvenilir durumlar kümesini içeren bir olay harekete geçmek için **Notifystatemanagerchangedeventargs** ' ı kullanır.
 * Tam kopya: bir çoğaltmanın yapılandırma kümesine katılabilmesi için, oluşturulması gerekir. Bazen, bu durum, güvenilir durum yöneticisinin birincil çoğaltmadan boşta kalan ikincil çoğaltmaya uygulanacak durumunun tam bir kopyasını gerektirir. İkincil çoğaltma üzerinde güvenilir durum Yöneticisi, birincil çoğaltmadan elde edilen güvenilir durumlar kümesini içeren bir olay tetiklemesi için **Notifystatemanagerchangedeventargs** kullanır.
-* Geri yükleme: olağanüstü durum kurtarma senaryolarında çoğaltmanın durumu **Restoreasync**aracılığıyla bir yedekten geri yüklenebilir. Bu gibi durumlarda, birincil çoğaltmadaki güvenilir durum Yöneticisi, yedekten geri yüklendiği güvenilir durumlar kümesini içeren bir olay harekete geçmek için **Notifystatemanagerchangedeventargs** kullanır.
+* Geri yükleme: olağanüstü durum kurtarma senaryolarında çoğaltmanın durumu **Restoreasync** aracılığıyla bir yedekten geri yüklenebilir. Bu gibi durumlarda, birincil çoğaltmadaki güvenilir durum Yöneticisi, yedekten geri yüklendiği güvenilir durumlar kümesini içeren bir olay harekete geçmek için **Notifystatemanagerchangedeventargs** kullanır.
 
-İşlem bildirimleri ve/veya durum Yöneticisi bildirimlerine kaydolmak için, güvenilir durum Yöneticisi 'nde **Işlem değiştirilmiş** veya **statemanagerchanged** olaylarıyla kayıt yapmanız gerekir. Bu olay işleyicileriyle kaydolmak için ortak bir yer, durum bilgisi olan hizmetinizin oluşturucusudur. Oluşturucuya kaydettiğinizde, **ıreliablestatemanager**ömrü boyunca bir değişikliğin neden olduğu bir bildirimi kaçırmaz.
+İşlem bildirimleri ve/veya durum Yöneticisi bildirimlerine kaydolmak için, güvenilir durum Yöneticisi 'nde **Işlem değiştirilmiş** veya **statemanagerchanged** olaylarıyla kayıt yapmanız gerekir. Bu olay işleyicileriyle kaydolmak için ortak bir yer, durum bilgisi olan hizmetinizin oluşturucusudur. Oluşturucuya kaydettiğinizde, **ıreliablestatemanager** ömrü boyunca bir değişikliğin neden olduğu bir bildirimi kaçırmaz.
 
 ```csharp
 public MyService(StatefulServiceContext context)
@@ -77,7 +77,7 @@ private void OnTransactionChangedHandler(object sender, NotifyTransactionChanged
 
 **Statemanagerchanged** olay işleyicisi olay hakkında ayrıntı sağlamak Için **Notifystatemanagerchangedeventargs** kullanır.
 **Notifystatemanagerchangedeventargs** iki alt sınıflara sahiptir: **Notifystatemanagerrebuildeventargs** ve **notifystatemanagersingleentitychangedeventargs**.
-Notifystatemanagerchangedeventargs içindeki **NotifyStateManagerChangedEventArgs** Action özelliğini doğru alt **sınıfa atamak için** kullanın:
+Notifystatemanagerchangedeventargs içindeki  Action özelliğini doğru alt **sınıfa atamak için** kullanın:
 
 * **Notifystatemanagerchangedadction. Rebuild**: **notifystatemanagerrebuildeventargs**
 * **Notifystatemanagerchangedadction. Add** ve **Notifystatemanagerchangedadction. Remove**: **notifystatemanagersingleentitychangedeventargs**
@@ -103,11 +103,11 @@ Güvenilir sözlük aşağıdaki olaylar için bildirimler sağlar:
 
 * Yeniden oluştur: **Reliabledictionary** durumu kurtarılan veya kopyalanmış bir yerel durumdan veya yedekten kurtarıldığı zaman çağrılır.
 * Clear: **Reliabledictionary** 'ın durumu **clearasync** yöntemi aracılığıyla Temizlenmişken, çağırılır.
-* Add: bir öğe **Reliabledictionary**öğesine eklendiğinde çağırılır.
+* Add: bir öğe **Reliabledictionary** öğesine eklendiğinde çağırılır.
 * Update: **ıreliabledictionary** içindeki bir öğe güncellendiyse çağırılır.
 * Remove: **ıreliabledictionary** içindeki bir öğe silindiğinde çağırılır.
 
-Güvenilir sözlük bildirimleri almak için **ıreliabledictionary**üzerinde **dictionarychanged** olay işleyicisine kaydolmanız gerekir. Bu olay işleyicileriyle kaydolmak için ortak bir yer, **Reliablestatemanager. StateManagerChanged** bildirim Ekle ' dir.
+Güvenilir sözlük bildirimleri almak için **ıreliabledictionary** üzerinde **dictionarychanged** olay işleyicisine kaydolmanız gerekir. Bu olay işleyicileriyle kaydolmak için ortak bir yer, **Reliablestatemanager. StateManagerChanged** bildirim Ekle ' dir.
 **Ireliabledictionary** , **ıreliablestatemanager** 'a eklendiğinde, tüm bildirimleri kaçırmamasını sağlar.
 
 ```csharp
@@ -132,7 +132,7 @@ private void ProcessStateManagerSingleEntityNotification(NotifyStateManagerChang
 > 
 > 
 
-Yukarıdaki kod, **ıreliablenotificationasynccallback** arabirimini ve **dictionarychanged**ile birlikte ayarlar. **Notifydictionaryrebuildeventargs** , zaman uyumsuz olarak numaralandırılması gereken bir **ıasyncenumerable** arabirimi içerdiğinden--yeniden derleme bildirimleri **Ondictionarychangedhandler**yerine **rebuildnotificationasynccallback** aracılığıyla tetiklenir.
+Yukarıdaki kod, **ıreliablenotificationasynccallback** arabirimini ve **dictionarychanged** ile birlikte ayarlar. **Notifydictionaryrebuildeventargs** , zaman uyumsuz olarak numaralandırılması gereken bir **ıasyncenumerable** arabirimi içerdiğinden--yeniden derleme bildirimleri **Ondictionarychangedhandler** yerine **rebuildnotificationasynccallback** aracılığıyla tetiklenir.
 
 ```csharp
 public async Task OnDictionaryRebuildNotificationHandlerAsync(
@@ -155,7 +155,7 @@ public async Task OnDictionaryRebuildNotificationHandlerAsync(
 > 
 
 **Dictionarychanged** olay işleyicisi olay hakkında ayrıntı sağlamak Için **Notifydictionarychangedeventargs** kullanır.
-**Notifydictionarychangedeventargs** beş alt sınıflara sahiptir. **Notifydictionarychangedeventargs içindeki Action** özelliğini doğru alt sınıfa dönüştürmek **NotifyDictionaryChangedEventArgs** için kullanın:
+**Notifydictionarychangedeventargs** beş alt sınıflara sahiptir. **Notifydictionarychangedeventargs içindeki Action** özelliğini doğru alt sınıfa dönüştürmek  için kullanın:
 
 * **Notifydictionarychangedadction. Rebuild**: **notifydictionaryrebuildeventargs**
 * **Notifydictionarychangedadction. Clear**: **notifydictionarycleareventargs**
@@ -211,4 +211,4 @@ Göz önünde bulundurmanız gereken bazı şeyler aşağıda verilmiştir:
 * [Güvenilir Koleksiyonlar](service-fabric-work-with-reliable-collections.md)
 * [Reliable Services hızlı başlangıç](service-fabric-reliable-services-quick-start.md)
 * [Reliable Services yedekleme ve geri yükleme (olağanüstü durum kurtarma)](service-fabric-reliable-services-backup-restore.md)
-* [Güvenilir koleksiyonlar için geliştirici başvurusu](/dotnet/api/microsoft.servicefabric.data.collections?view=azure-dotnet#microsoft_servicefabric_data_collections)
+* [Güvenilir koleksiyonlar için geliştirici başvurusu](/dotnet/api/microsoft.servicefabric.data.collections#microsoft_servicefabric_data_collections)

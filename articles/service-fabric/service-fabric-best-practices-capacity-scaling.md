@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 41cfff11e44a3d052614aa3c81a4623f59bbbbf5
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: d7d9ed8fa695c636e7aaf36fd034babb4de012d9
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97095296"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784689"
 ---
 # <a name="capacity-planning-and-scaling-for-azure-service-fabric"></a>Azure Service Fabric için kapasite planlama ve ölçeklendirme
 
@@ -160,8 +160,8 @@ scaleSet.Update().WithCapacity(newCapacity).Apply();
 ```
 
 > [!NOTE]
-> Bir kümede ölçeklendirirseniz, kaldırılan düğümü/VM örneğini Service Fabric Explorer uygun olmayan bir durumda görürsünüz. Bu davranışın açıklaması için, [Service Fabric Explorer gözlemleyebileceğiniz davranışlar](./service-fabric-cluster-scale-in-out.md#behaviors-you-may-observe-in-service-fabric-explorer)bölümüne bakın. Şunları yapabilirsiniz:
-> * [Remove-ServiceFabricNodeState komutunu](/powershell/module/servicefabric/remove-servicefabricnodestate?view=azureservicefabricps&preserve-view=true) uygun düğüm adıyla çağırın.
+> Bir kümede ölçeklendirirseniz, kaldırılan düğümü/VM örneğini Service Fabric Explorer uygun olmayan bir durumda görürsünüz. Bu davranışın açıklaması için, [Service Fabric Explorer gözlemleyebileceğiniz davranışlar](./service-fabric-cluster-scale-in-out.md#behaviors-you-may-observe-in-service-fabric-explorer)bölümüne bakın. Seçenekleriniz şunlardır:
+> * [Remove-ServiceFabricNodeState komutunu](/powershell/module/servicefabric/remove-servicefabricnodestate) uygun düğüm adıyla çağırın.
 > * [Service Fabric otomatik ölçeklendirme yardımcısı uygulamasını](https://github.com/Azure/service-fabric-autoscale-helper/) kümenize dağıtın. Bu uygulama, ölçeklenmiş düğümlerin Service Fabric Explorer temizlenmesini sağlar.
 
 ## <a name="reliability-levels"></a>Güvenilirlik düzeyleri

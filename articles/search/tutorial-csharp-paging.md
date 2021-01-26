@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 09/30/2020
+ms.date: 01/26/2021
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: a08756a1e3153aa69bd0e79dc23e88d4bf211e5d
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: bad4bc4d0016b2898b315bfb9799dc8972be7b12
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91950695"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98785878"
 ---
 # <a name="tutorial-add-paging-to-search-results-using-the-net-sdk"></a>Öğretici: .NET SDK kullanarak arama sonuçlarına sayfalama ekleme
 
@@ -90,7 +90,7 @@ Temel arama sayfası çözümünün açık olmasını sağlayabilirsiniz.
     >[!Tip]
     >Bu projeyi dizüstü bilgisayar gibi daha küçük bir ekran üzerinde çalıştırıyorsanız, daha sonra **Resultsperpage** 'i 2 olarak değiştirmeyi düşünün.
 
-1. Searchtext özelliğinden sonra **Searchdata** sınıfına sayfalama özellikleri ekleyin. **searchText**
+1. Searchtext özelliğinden sonra **Searchdata** sınıfına sayfalama özellikleri ekleyin. 
 
     ```csharp
     // The current page being displayed.
@@ -272,7 +272,7 @@ Temel arama sayfası çözümünün açık olmasını sağlayabilirsiniz.
     **Runqueryasync** yöntemi artık, bir bit içinde olacak üçüncü parametre nedeniyle bir sözdizimi hatası gösterir.
 
     > [!Note]
-    > **TempData** çağrısı, geçici depolamada bir değer ( **nesne**), ancak bu depolama _yalnızca_ tek bir çağrı için devam ediyor. Geçici verilerde bir şeyi depoluyoruz, bu, bir denetleyici eyleminin bir sonraki çağrısıyla kullanılabilir, ancak bundan sonra çağrı tarafından bir daha alınır. Bu kısa süre içinde, arama metni ve sayfalama özelliklerini geçici depolamaya geri depolarız ve her **Pageasync**çağrısı.
+    > **TempData** çağrısı, geçici depolamada bir değer ( **nesne**), ancak bu depolama _yalnızca_ tek bir çağrı için devam ediyor. Geçici verilerde bir şeyi depoluyoruz, bu, bir denetleyici eyleminin bir sonraki çağrısıyla kullanılabilir, ancak bundan sonra çağrı tarafından bir daha alınır. Bu kısa süre içinde, arama metni ve sayfalama özelliklerini geçici depolamaya geri depolarız ve her **Pageasync** çağrısı.
 
 1. Geçici değişkenleri depolamak için **Dizin (model)** eylemini güncelleştirin ve **Runqueryasync** çağrısına en soldaki sayfa parametresini ekleyin.
 
@@ -304,7 +304,7 @@ Temel arama sayfası çözümünün açık olmasını sağlayabilirsiniz.
     }
     ```
 
-1. Önceki derste tanıtılan **Runqueryasync** yönteminin, söz dizimi hatasını çözmek için değiştirilmesi gerekir. **Skip** ayarından başlayarak yalnızca bir sayfa değeri Istemek Için [**SearchOptions**](/dotnet/api/azure.search.documents.searchoptions) sınıfının **Skip**, **size**ve **includetotalcount** alanlarını kullanırız. Görünümümüzü için sayfalama değişkenlerini de hesapladık. Tüm yöntemi aşağıdaki kodla değiştirin.
+1. Önceki derste tanıtılan **Runqueryasync** yönteminin, söz dizimi hatasını çözmek için değiştirilmesi gerekir. **Skip** ayarından başlayarak yalnızca bir sayfa değeri Istemek Için [**SearchOptions**](/dotnet/api/azure.search.documents.searchoptions) sınıfının **Skip**, **size** ve **includetotalcount** alanlarını kullanırız. Görünümümüzü için sayfalama değişkenlerini de hesapladık. Tüm yöntemi aşağıdaki kodla değiştirin.
 
     ```csharp
     private async Task<ActionResult> RunQueryAsync(SearchData model, int page, int leftMostPage)
@@ -379,7 +379,7 @@ Temel arama sayfası çözümünün açık olmasını sağlayabilirsiniz.
     ```
 
     > [!Note]
-    > Bu toplamın Azure Bilişsel Arama tarafından hesaplanması gerektiğinden, **IncludeTotalCount** değeri true olarak ayarlanırken küçük bir performans okuması vardır. Karmaşık veri kümeleri ile döndürülen değerin bir _yaklaşık_olduğunu belirten bir uyarı vardır. Otel arama yapı küçük olduğundan doğru olacaktır.
+    > Bu toplamın Azure Bilişsel Arama tarafından hesaplanması gerektiğinden, **IncludeTotalCount** değeri true olarak ayarlanırken küçük bir performans okuması vardır. Karmaşık veri kümeleri ile döndürülen değerin bir _yaklaşık_ olduğunu belirten bir uyarı vardır. Otel arama yapı küçük olduğundan doğru olacaktır.
 
 ### <a name="compile-and-run-the-app"></a>Uygulamayı derleyin ve çalıştırın
 
@@ -439,9 +439,9 @@ Sonsuz kaydırma uygulamak için, sayfa numarası kaydırma öğelerinden herhan
 
 ### <a name="add-a-vertical-scroll-bar-to-the-view"></a>Görünüme dikey kaydırma çubuğu ekleme
 
-1. Sonuçları görüntüleyen index. cshtml dosyasının bölümünü bulun ( ** @if (model! = null)** ile başlar).
+1. Sonuçları görüntüleyen index. cshtml dosyasının bölümünü bulun ( **@if (model! = null)** ile başlar).
 
-1. Bölümünü aşağıdaki kodla değiştirin. Yeni ** &lt; div &gt; ** bölümü, kaydırılabilir olması gereken alanı etrafında bulunur ve hem bir **overflow-y** özniteliği hem de "kaydırılabilir ()" adlı bir **OnScroll** işlevine çağrı ekler.
+1. Bölümünü aşağıdaki kodla değiştirin. Yeni **&lt; div &gt;** bölümü, kaydırılabilir olması gereken alanı etrafında bulunur ve hem bir **overflow-y** özniteliği hem de "kaydırılabilir ()" adlı bir **OnScroll** işlevine çağrı ekler.
 
     ```csharp
     @if (Model != null)
@@ -484,7 +484,7 @@ Sonsuz kaydırma uygulamak için, sayfa numarası kaydırma öğelerinden herhan
     </script>
     ```
 
-    Yukarıdaki betikteki **if** ifadesinde, kullanıcının dikey kaydırma çubuğunun alt kısmına kaydırılıp kaydırılmayacağını test eder. Varsa, bir **giriş** denetleyicisine bir çağrı **NextAsync**adlı bir eyleme yapılır. Denetleyici tarafından başka bir bilgi gerekmez, bu, sonraki veri sayfasını döndürür. Bu veriler daha sonra Özgün sayfa olarak aynı HTML stilleri kullanılarak biçimlendirilir. Hiçbir sonuç döndürülmezse hiçbir şey eklenmez ve işlemler oldukları gibi kalır.
+    Yukarıdaki betikteki **if** ifadesinde, kullanıcının dikey kaydırma çubuğunun alt kısmına kaydırılıp kaydırılmayacağını test eder. Varsa, bir **giriş** denetleyicisine bir çağrı **NextAsync** adlı bir eyleme yapılır. Denetleyici tarafından başka bir bilgi gerekmez, bu, sonraki veri sayfasını döndürür. Bu veriler daha sonra Özgün sayfa olarak aynı HTML stilleri kullanılarak biçimlendirilir. Hiçbir sonuç döndürülmezse hiçbir şey eklenmez ve işlemler oldukları gibi kalır.
 
 ### <a name="handle-the-next-action"></a>Sonraki eylemi işle
 
@@ -582,7 +582,7 @@ Denetleyiciye gönderilmesi gereken üç eylem vardır: uygulamanın ilk çalı�
     }
     ```
 
-1. **Liste &lt; &gt; dizesinde**sözdizimi hatası alırsanız, aşağıdaki **using** yönergesini denetleyici dosyasının baş üzerine ekleyin.
+1. **Liste &lt; &gt; dizesinde** sözdizimi hatası alırsanız, aşağıdaki **using** yönergesini denetleyici dosyasının baş üzerine ekleyin.
 
     ```csharp
     using System.Collections.Generic;
@@ -597,7 +597,7 @@ Denetleyiciye gönderilmesi gereken üç eylem vardır: uygulamanın ilk çalı�
     !["Havuz" sonuçları aracılığıyla sonsuz kaydırma](./media/tutorial-csharp-create-first-app/azure-search-infinite-scroll.png)
 
     > [!Tip]
-    > İlk sayfada bir kaydırma çubuğunun göründüğünden emin olmak için sonuçların ilk sayfası, görüntülendikleri alanın yüksekliğini biraz daha aşmalıdır. Bizim örneğimizde **. Box1** , en fazla 30 piksel boyutunda, **. box2** , 100 piksel yüksekliğinde _ve_ 24 piksellik alt kenar boşluğuyla bulunur. Böylece her giriş 154 piksel kullanır. Üç giriş 3 x 154 = 462 piksel sürer. Dikey kaydırma çubuğunun göründüğünden emin olmak için, görüntüleme alanına yönelik bir yükseklik, 462 pikselden küçük, hatta 461 çalışıyor olmalıdır. Bu sorun yalnızca ilk sayfada, bir kaydırma çubuğu gösterildiğinizden emin olduktan sonra gerçekleşir. Güncelleştirilecek satır: ** &lt; div ID = "myDiv" Style = "width: 800px; height: 450px; overflow-y: kaydır;" OnScroll = "kaydırılan ()" &gt; **.
+    > İlk sayfada bir kaydırma çubuğunun göründüğünden emin olmak için sonuçların ilk sayfası, görüntülendikleri alanın yüksekliğini biraz daha aşmalıdır. Bizim örneğimizde **. Box1** , en fazla 30 piksel boyutunda, **. box2** , 100 piksel yüksekliğinde _ve_ 24 piksellik alt kenar boşluğuyla bulunur. Böylece her giriş 154 piksel kullanır. Üç giriş 3 x 154 = 462 piksel sürer. Dikey kaydırma çubuğunun göründüğünden emin olmak için, görüntüleme alanına yönelik bir yükseklik, 462 pikselden küçük, hatta 461 çalışıyor olmalıdır. Bu sorun yalnızca ilk sayfada, bir kaydırma çubuğu gösterildiğinizden emin olduktan sonra gerçekleşir. Güncelleştirilecek satır: **&lt; div ID = "myDiv" Style = "width: 800px; height: 450px; overflow-y: kaydır;" OnScroll = "kaydırılan ()" &gt;**.
 
 1. Sonuçların sonuna kadar aşağı doğru kaydırın. Tüm bilgilerin artık tek bir görünüm sayfasında nasıl olduğunu fark edin. Herhangi bir sunucu çağrısı tetiklemeden, her şey için en üste doğru kaydırma yapabilirsiniz.
 

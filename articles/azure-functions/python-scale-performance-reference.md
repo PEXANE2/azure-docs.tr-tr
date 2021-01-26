@@ -4,12 +4,12 @@ description: Çok iyi performans ve yük altında ölçeklendirme olan Python ku
 ms.topic: article
 ms.date: 10/13/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: baa362f029678f266f154df912a9178a6626667d
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: e3bbdb8819062d45d071633e0208fb58a003da54
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97935878"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98786115"
 ---
 # <a name="improve-throughput-performance-of-python-apps-in-azure-functions"></a>Azure Işlevlerinde Python uygulamalarının üretilen iş performansını geliştirme
 
@@ -22,10 +22,10 @@ Varsayılan olarak, Azure Işlevleri uygulamanızdaki yükü otomatik olarak izl
 
 Varsayılan yapılandırma, Azure Işlevleri uygulamalarının çoğu için uygundur. Ancak, iş yükü profilinize göre yapılandırma uygulayarak uygulamalarınızın aktarım hızı performansını artırabilirsiniz. İlk adım, çalıştırdığınız iş yükünün türünü anlamaktır.
 
-|| G/ç bağlantılı iş yükü | CPU ile bağlantılı iş yükü |
-|--| -- | -- |
-|İşlev uygulaması özellikleri| <ul><li>Uygulamanın birçok eşzamanlı çağırma işlemesi gerekiyor.</li> <li> Uygulama, ağ çağrıları ve disk okuma/yazma gibi çok sayıda g/ç olayını işler.</li> </ul>| <ul><li>Uygulama, görüntü yeniden boyutlandırma gibi uzun süre çalışan hesaplamalar yapar.</li> <li>Uygulama veri dönüşümünü yapar.</li> </ul> |
-|Örnekler| <ul><li>Web API'leri</li><ul> | <ul><li>Veri işleme</li><li> Makine öğrenimi çıkarımı</li><ul>|
+| İş yükü türü | İşlev uygulaması özellikleri       | Örnekler                                          |
+| ------------- | ---------------------------------- | ------------------------------------------------- |
+| **G/ç 'ye bağlanma**     | • Uygulamanın birçok eşzamanlı çağırma işlemesi gerekir.<br>• Uygulama, ağ çağrıları ve disk okuma/yazma gibi çok sayıda g/ç olayını işler. | • Web API 'Leri                                          |
+| **CPU 'ya dayalı**     | • Uygulama, görüntü yeniden boyutlandırma gibi uzun süre çalışan hesaplamalar yapar.<br>• Uygulama veri dönüştürmesi yapar.                                                | • Veri işleme<br>• Makine öğrenimi çıkarımı<br> |
 
  
 Gerçek dünya işlevi iş yükleri genellikle g/ç ve CPU sınırının bir karışımı olduğu için, uygulamayı gerçekçi üretim yükleri altında profillendirilmelisiniz.

@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: overview
 ms.date: 08/21/2019
 ms.author: alkohli
-ms.openlocfilehash: aa68b746ef5c22c97fcfdcca889bf71577c19479
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: adb0e12b81701acbdb33018f055bfe8fda2efc52
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96583854"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98786648"
 ---
 # <a name="what-is-azure-data-box-gateway"></a>Azure Data Box Gateway nedir?
 
@@ -33,7 +33,7 @@ Bulutta arşivleme, olağanüstü durum kurtarma gibi durumlarda veya verilerini
 
 Daha fazla bilgi için [Azure Data Box Gateway kullanım örneklerine](data-box-gateway-use-cases.md)gidin.
 
-## <a name="benefits"></a>Yararları
+## <a name="benefits"></a>Avantajlar
 
 Data Box Gateway'in şöyle avantajları vardır:
 
@@ -89,7 +89,7 @@ Data Box Gateway çözümü Data Box Gateway kaynağından, Data Box Gateway san
 
 Verilerin aktarılacağı fiziksel cihaz, Azure kaynağı ve hedef depolama hesabının tümünün aynı bölgede olması gerekmez. Data Box Gateway
 
-- **Kaynak kullanılabilirliği** -Azure Data Box Gateway kaynağın kullanılabildiği tüm bölgelerin listesi için, [bölgeye göre kullanılabilir Azure ürünlerine](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=databox)gidin. Data Box Gateway, Azure Kamu Bulutu 'nda da dağıtılabilir. Daha fazla bilgi için bkz. [Azure Kamu nedir?](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome).
+- **Kaynak kullanılabilirliği** -Azure Data Box Gateway kaynağın kullanılabildiği tüm bölgelerin listesi için, [bölgeye göre kullanılabilir Azure ürünlerine](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=databox)gidin. Data Box Gateway, Azure Kamu Bulutu 'nda da dağıtılabilir. Daha fazla bilgi için bkz. [Azure Kamu nedir?](../azure-government/documentation-government-welcome.md).
 
 - **Hedef Depolama hesapları**: Verilerin depolandığı depolama hesapları, tüm Azure bölgelerinde sağlanır.
 
@@ -101,4 +101,3 @@ Verilerin aktarılacağı fiziksel cihaz, Azure kaynağı ve hedef depolama hesa
 - [Data Box Gateway sistem gereksinimlerini](data-box-gateway-system-requirements.md) gözden geçirin.
 - [Data Box Gateway sınırlarını](data-box-gateway-limits.md) anlayın.
 - Azure portalında [Azure Data Box Gateway](data-box-gateway-deploy-prep.md)’i dağıtın.
-

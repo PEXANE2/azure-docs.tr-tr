@@ -4,7 +4,6 @@ description: PowerShell kullanarak özel IP adresine sahip bir sanal makine olu�
 services: virtual-network
 documentationcenter: na
 author: KumudD
-manager: twooley
 editor: ''
 tags: azure-resource-manager
 ms.assetid: d5f18929-15e3-40a2-9ee3-8188bc248ed8
@@ -17,18 +16,18 @@ ms.workload: infrastructure-services
 ms.date: 02/07/2019
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: 2825d8d9f8be7c56d7beea767a1afb7a290eafa2
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 43c2e2c8905ca60e59caed3fdf1b4920f509fd88
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222607"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98783793"
 ---
 # <a name="create-a-virtual-machine-with-a-static-private-ip-address-using-powershell"></a>PowerShell kullanarak statik bir özel IP adresi ile sanal makine oluşturma
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
 Statik bir özel IP adresi ile bir sanal makine (VM) oluşturabilirsiniz. Bir VM 'ye bir alt ağdan hangi adresin atandığını seçmek istiyorsanız, dinamik bir adres yerine statik bir özel IP adresi atayın. [Statik özel IP adresleri](./public-ip-addresses.md#allocation-method)hakkında daha fazla bilgi edinin. Var olan bir VM 'ye atanan özel IP adresini dinamik veya genel IP adresleriyle çalışacak şekilde değiştirmek için bkz. [IP adreslerini ekleme, değiştirme veya kaldırma](virtual-network-network-interface-addresses.md).
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="create-a-virtual-machine"></a>Sanal makine oluşturma
 

@@ -7,12 +7,12 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 7423f8d8f2a566801048457ad5f5c44f3c1097ec
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: ea4a4a47e91e88c00ca8a4e886d0372a24482907
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920053"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784317"
 ---
 # <a name="schema-reference-guide-for-trigger-and-action-types-in-azure-logic-apps"></a>Azure Logic Apps tetikleyici ve eylem türleri için şema başvurusu Kılavuzu
 
@@ -62,7 +62,7 @@ Tetikleyiciler, bazı isteğe bağlı olsa da, bu en üst düzey öğelere sahip
 |-------|------|-------------| 
 | <*dizi-koşul*> | Dizi | İş akışının çalıştırılıp çalıştırılmayacağını tespit eden bir veya daha fazla [koşul](#trigger-conditions) içeren bir dizi. Yalnızca Tetikleyiciler için kullanılabilir. | 
 | <*çalışma zamanı-yapılandırma-seçenekler*> | JSON Nesnesi | Özellikleri ayarlayarak tetikleyici çalışma zamanı davranışını değiştirebilirsiniz `runtimeConfiguration` . Daha fazla bilgi için bkz. [çalışma zamanı yapılandırma ayarları](#runtime-config-options). | 
-| <*Spton-ifadesi*> | Dize | Dizi döndüren Tetikleyiciler için, dizi öğelerini işlemek üzere birden çok iş akışı örneğine [ayıran *debatches* veya](#split-on-debatch) içermeyen bir ifade belirtebilirsiniz. | 
+| <*Spton-ifadesi*> | Dize | Dizi döndüren Tetikleyiciler için, dizi öğelerini işlemek üzere birden çok iş akışı örneğine [ayıran  veya](#split-on-debatch) içermeyen bir ifade belirtebilirsiniz. | 
 | <*işlem-seçenek*> | Dize | Özelliği ayarlayarak varsayılan davranışı değiştirebilirsiniz `operationOptions` . Daha fazla bilgi için bkz. [işlem seçenekleri](#operation-options). | 
 |||| 
 
@@ -339,7 +339,7 @@ Mantıksal uygulamanızla iyi bir şekilde çalışmak için uç noktanın belir
 
 | Özellik | Gerekli | Açıklama |
 |----------|----------|-------------|
-| Durum kodu | Evet | "200 OK" durum kodu bir çalıştırma başlatır. Başka herhangi bir durum kodu çalıştırma başlamaz. |
+| Durum kodu | Yes | "200 OK" durum kodu bir çalıştırma başlatır. Başka herhangi bir durum kodu çalıştırma başlamaz. |
 | Retry-After üst bilgisi | Hayır | Mantıksal uygulamanız bitiş noktasını yeniden yokladığı saniye sayısı |
 | Konum üst bilgisi | Hayır | Sonraki yoklama aralığında çağrılacak URL. Belirtilmemişse, özgün URL kullanılır. |
 |||| 
@@ -819,18 +819,18 @@ Yaygın olarak kullanılan bazı eylem türleri şunlardır:
 
 | Eylem türü | Açıklama | 
 |-------------|-------------| 
-| [**Oluştur**](#compose-action) | Girdilerden farklı türlere sahip olabilen tek bir çıktı oluşturur. | 
+| [**Compose**](#compose-action) | Girdilerden farklı türlere sahip olabilen tek bir çıktı oluşturur. | 
 | [**JavaScript kodunu Yürüt**](#run-javascript-code) | Belirli ölçütlere uyan JavaScript kod parçacıklarını çalıştırın. Kod gereksinimleri ve daha fazla bilgi için bkz. [satır içi kod ile kod parçacıkları ekleme ve çalıştırma](../logic-apps/logic-apps-add-run-inline-code.md). |
-| [**Çalışmayacaktır**](#function-action) | Bir Azure Işlevi çağırır. | 
+| [**İşlev**](#function-action) | Bir Azure Işlevi çağırır. | 
 | [**HTTP**](#http-action) | Bir HTTP uç noktası çağırır. | 
-| [**Birleştir**](#join-action) | Dizideki tüm öğelerden bir dize oluşturur ve bu öğeleri belirli bir sınırlayıcı karakterle ayırır. | 
+| [**Ayrılma**](#join-action) | Dizideki tüm öğelerden bir dize oluşturur ve bu öğeleri belirli bir sınırlayıcı karakterle ayırır. | 
 | [**JSON Ayrıştır**](#parse-json-action) | JSON içeriğindeki özelliklerden Kullanıcı dostu belirteçler oluşturur. Daha sonra, mantıksal uygulamanıza belirteçleri ekleyerek bu özelliklere başvurabilirsiniz. | 
 | [**Sorgu**](#query-action) | Bir koşula veya filtreye bağlı olarak başka bir dizideki öğelerden bir dizi oluşturur. | 
 | [**Yanıt**](#response-action) | Gelen çağrıya veya isteğe yanıt oluşturur. | 
 | [**Şunu seçin:**](#select-action) | Belirtilen haritaya göre başka bir diziden öğeleri dönüştürerek JSON nesneleriyle bir dizi oluşturur. | 
-| [**Tablosundan**](#table-action) | Bir diziden CSV veya HTML tablosu oluşturur. | 
+| [**Tablo**](#table-action) | Bir diziden CSV veya HTML tablosu oluşturur. | 
 | [**Terminate**](#terminate-action) | Etkin şekilde çalışan bir iş akışını sonlandırır. | 
-| [**Bekleneceğini**](#wait-action) | İş akışınızı belirtilen süre veya belirtilen tarih ve saate kadar duraklatır. | 
+| [**Wait**](#wait-action) | İş akışınızı belirtilen süre veya belirtilen tarih ve saate kadar duraklatır. | 
 | [**İş akışı**](#workflow-action) | Bir iş akışını başka bir iş akışı içinde bir şekilde alır. | 
 ||| 
 
@@ -1126,7 +1126,7 @@ Kod, tetikleyici özelliğinden e-posta adreslerini ayıklar `Body` ve `Selected
 
 ### <a name="function-action"></a>İşlev eylemi
 
-Bu eylem, önceden oluşturulmuş bir [Azure işlevini](../azure-functions/functions-create-first-azure-function.md)çağırır.
+Bu eylem, önceden oluşturulmuş bir [Azure işlevini](../azure-functions/functions-get-started.md)çağırır.
 
 ```json
 "<Azure-function-name>": {
@@ -1504,7 +1504,7 @@ Diğer eylemlerin aksine, **Yanıt** eyleminde özel kısıtlamalar vardır:
 
 * İş akışınız, **Yanıt** eylemini yalnızca iş akışı bir http isteği tetikleyicisi ile başladığında kullanabilir, yani iş AKıŞıNıZıN bir http isteği tarafından tetiklenmesi gerekir.
 
-* İş akışınız, **sıralı döngüler ve** paralel dallar dahil olmak üzere döngülerin **Until** Içinde *olan her yerde* **Yanıt** eylemini kullanabilir. 
+* İş akışınız, **sıralı döngüler ve** paralel dallar dahil olmak üzere döngülerin  Içinde *olan her yerde* **Yanıt** eylemini kullanabilir. 
 
 * Özgün istek, yalnızca **Yanıt** eylemi için gereken tüm eylemler [http zaman aşımı sınırı](../logic-apps/logic-apps-limits-and-config.md#http-limits)içinde bittiğinde iş akışınızın yanıtını alır.
 

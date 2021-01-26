@@ -7,12 +7,12 @@ ms.date: 1/20/2021
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: b7947eab93ebc8e523e163af601893522132e06a
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.openlocfilehash: 4612e1236af5fbe47db9a3569e2f4da2378017e2
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2021
-ms.locfileid: "98745676"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784906"
 ---
 # <a name="build-and-deploy-the-iot-plug-and-play-bridge"></a>IoT Tak ve Kullan köprüsü oluşturma ve dağıtma
 
@@ -212,7 +212,7 @@ Bu bölümü gerçekleştirmek için ücretsiz veya Standart katmanlı bir Azure
 
 Bu bölümdeki adımlarda, bir Windows 10 makinesinde aşağıdaki geliştirme ortamının olduğunu varsaymaktadır. Bu araçlar IoT Edge cihazınıza bir IoT Edge modülü oluşturmanıza ve dağıtmanıza olanak tanır:
 
-- Linux için Windows alt sistemi (WSL) 2 Ubuntu 18,04 LTS çalıştırıyor. Daha fazla bilgi edinmek için bkz. [Windows 10 Linux Için Windows alt sistemi yükleme kılavuzu](https://docs.microsoft.com/windows/wsl/install-win10).
+- Linux için Windows alt sistemi (WSL) 2 Ubuntu 18,04 LTS çalıştırıyor. Daha fazla bilgi edinmek için bkz. [Windows 10 Linux Için Windows alt sistemi yükleme kılavuzu](/windows/wsl/install-win10).
 - WSL 2 kullanacak şekilde yapılandırılmış Windows için Docker Desktop. Daha fazla bilgi için bkz. [Docker Desktop WSL 2 arka ucu](https://docs.docker.com/docker-for-windows/wsl/).
 - Aşağıdaki üç uzantı yüklü olan [Windows ortamınızda yüklü Visual Studio Code](https://code.visualstudio.com/docs/setup/windows) :
 

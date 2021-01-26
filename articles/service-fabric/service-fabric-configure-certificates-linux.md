@@ -4,12 +4,12 @@ description: Linux kümesinde Service Fabric çalışma zamanına sahip uygulama
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: pepogors
-ms.openlocfilehash: a97c8b8315fe3be405aed9c6570004afb8fafd1d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 70f9cc38d84681f68c10882889214648a4dd2624
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86258661"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98785575"
 ---
 # <a name="certificates-and-security-on-linux-clusters"></a>Linux kümelerinde sertifikalar ve güvenlik
 
@@ -21,7 +21,7 @@ Service Fabric, genellikle Linux küme düğümlerinde */var/lib/sfcerts* dizini
 
 Linux kümeleri için Service Fabric, sertifikaların hem sertifikayı hem de özel anahtarı içeren bir. ped dosyası olarak veya sertifikayı içeren bir. CRT dosyası olarak veya özel anahtarı içeren bir. Key dosyası olarak mevcut olmasını bekler. Tüm dosyalar pek biçiminde olmalıdır. 
 
-Sertifikanızı, bir [Kaynak Yöneticisi şablonu](./service-fabric-cluster-creation-create-template.md) veya [PowerShell](/powershell/module/az.servicefabric/?view=azps-2.6.0) komutları kullanarak Azure Key Vault yüklerseniz, sertifika her bir düğümdeki */var/lib/sfcerts* dizininde doğru biçimde yüklenir. Bir sertifikayı başka bir yöntemle yüklerseniz, sertifikanın küme düğümlerine doğru yüklendiğinden emin olmalısınız.
+Sertifikanızı, bir [Kaynak Yöneticisi şablonu](./service-fabric-cluster-creation-create-template.md) veya [PowerShell](/powershell/module/az.servicefabric/) komutları kullanarak Azure Key Vault yüklerseniz, sertifika her bir düğümdeki */var/lib/sfcerts* dizininde doğru biçimde yüklenir. Bir sertifikayı başka bir yöntemle yüklerseniz, sertifikanın küme düğümlerine doğru yüklendiğinden emin olmalısınız.
 
 ## <a name="certificates-referenced-in-the-application-manifest"></a>Uygulama bildiriminde başvurulan sertifikalar
 
@@ -33,7 +33,7 @@ Bazı hizmetlerde, [Configpackage](./service-fabric-application-and-service-mani
 
 ### <a name="using-x509-securitycredentialstype"></a>X509 SecurityCredentialsType kullanma
 
-.NET veya Java SDK 'Ları Ile **Securitycredentialstype**için **x509** belirtebilirsiniz. Bu (.net Java) `X509Credentials` türünde ([.net Java](/previous-versions/azure/reference/mt124925(v=azure.100)) / [Java](/java/api/system.fabric.x509credentials) `SecurityCredentials` [.NET](/previous-versions/azure/reference/mt124894(v=azure.100)) / [Java](/java/api/system.fabric.securitycredentials)) buna karşılık gelir.
+.NET veya Java SDK 'Ları Ile **Securitycredentialstype** için **x509** belirtebilirsiniz. Bu (.net Java) `X509Credentials` türünde ([.net Java](/previous-versions/azure/reference/mt124925(v=azure.100)) / [](/java/api/system.fabric.x509credentials) `SecurityCredentials` [](/previous-versions/azure/reference/mt124894(v=azure.100)) / [](/java/api/system.fabric.securitycredentials)) buna karşılık gelir.
 
 **X509** başvurusu, sertifikayı bir sertifika deposunda konumlandırır. Aşağıdaki XML, sertifikanın konumunu belirtmek için kullanılan parametreleri gösterir:
 
@@ -64,9 +64,9 @@ Aşağıdaki XML, bu stile dayalı bir **TransportSettings** bölümünü göste
 
 ### <a name="using-x509_2-securitycredentialstype"></a>X509_2 SecurityCredentialsType kullanma
 
-Java SDK 'Sı ile **Securitycredentialstype**için **X509_2** belirtebilirsiniz. Bu, (Java `X509Credentials2` )[Java](/java/api/system.fabric.x509credentials2)türüne karşılık gelir `SecurityCredentials` .[Java](/java/api/system.fabric.securitycredentials) 
+Java SDK 'Sı ile **Securitycredentialstype** için **X509_2** belirtebilirsiniz. Bu, (Java `X509Credentials2` )[](/java/api/system.fabric.x509credentials2)türüne karşılık gelir `SecurityCredentials` .[](/java/api/system.fabric.securitycredentials) 
 
-Bir **X509_2** başvurusuyla, sertifikayı */var/lib/sfcerts*dışında bir dizinde bulabilmeniz için bir yol parametresi belirtirsiniz.  Aşağıdaki XML, sertifikanın konumunu belirtmek için kullanılan parametreleri gösterir: 
+Bir **X509_2** başvurusuyla, sertifikayı */var/lib/sfcerts* dışında bir dizinde bulabilmeniz için bir yol parametresi belirtirsiniz.  Aşağıdaki XML, sertifikanın konumunu belirtmek için kullanılan parametreleri gösterir: 
 
 ```xml
      <Parameter Name="SecurityCredentialsType" Value="X509_2" />

@@ -10,12 +10,12 @@ ms.subservice: secrets
 ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 4ded48fe8f04d2cdba40650974fd5002d659e381
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: 78e9c50cb0601f6be69ae61f3a8e02621c7dd808
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97705277"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98786048"
 ---
 # <a name="about-azure-key-vault-secrets"></a>Azure Key Vault gizli dizileri hakkında
 
@@ -84,15 +84,15 @@ Etiketler biçiminde uygulamaya özgü ek meta verileri belirtebilirsiniz. Key V
 
 ## <a name="azure-storage-account-key-management"></a>Azure depolama hesabı anahtar yönetimi
 
-Key Vault, [Azure depolama hesabı](https://docs.microsoft.com/azure/storage/common/storage-account-overview) anahtarlarını yönetebilir:
+Key Vault, [Azure depolama hesabı](../../storage/common/storage-account-overview.md) anahtarlarını yönetebilir:
 
 - Dahili olarak, Key Vault anahtarları Azure Storage hesabıyla listeleyebilir (eşitleyebilir). 
 - Anahtarları düzenli aralıklarla yeniden üretir Key Vault (döndürür).
 - Anahtar değerleri, çağırana yanıt olarak hiçbir şekilde döndürülmez.
 - Key Vault hem depolama hesaplarının hem de klasik depolama hesaplarının anahtarlarını yönetir.
 
-Daha fazla bilgi için bkz:
-- [Depolama hesabı erişim anahtarları](https://docs.microsoft.com/azure/storage/common/storage-account-keys-manage)
+Daha fazla bilgi için bkz.
+- [Depolama hesabı erişim anahtarları](../../storage/common/storage-account-keys-manage.md)
 - [Azure Key Vault) depolama hesabı anahtarları yönetimi](../secrets/overview-storage-keys.md)
 
 
@@ -133,5 +133,5 @@ Key Vault erişimi denetlemek için nasıl yapılır kılavuzlarından:
 - [Anahtarlar, gizli diziler ve sertifikalar hakkında](../general/about-keys-secrets-certificates.md)
 - [Anahtarlar hakkında](../keys/about-keys.md)
 - [Sertifikalar hakkında](../certificates/about-certificates.md)
-- [Anahtar kasasına güvenli erişim](../general/secure-your-key-vault.md)
+- [Anahtar kasasına erişimin güvenliğini sağlama](../general/secure-your-key-vault.md)
 - [Key Vault Geliştirici Kılavuzu](../general/developers-guide.md)

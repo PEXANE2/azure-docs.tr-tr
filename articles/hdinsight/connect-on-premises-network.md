@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 03/04/2020
-ms.openlocfilehash: 71ef902e909e552ade5174196f291630bc242ca0
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 2a7b686bb0aae0b35b25cdd724925bab3c0a2e10
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96005376"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98786529"
 ---
 # <a name="connect-hdinsight-to-your-on-premises-network"></a>HDInsight’ı şirket içi ağınıza bağlama
 
@@ -42,7 +42,7 @@ Aşağıdaki diyagramda yeşil çizgiler, sanal ağın DNS son ekine biten kayna
 
 ![Yapılandırmada DNS isteklerinin nasıl çözümlendiğini gösteren diyagram](./media/connect-on-premises-network/on-premises-to-cloud-dns.png)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Bir SSH istemcisi. Daha fazla bilgi için bkz. [SSH kullanarak HDInsight'a (Apache Hadoop) bağlanma](./hdinsight-hadoop-linux-use-ssh-unix.md).
 * PowerShell kullanıyorsanız [az Module](/powershell/azure/)gerekecektir.
@@ -52,7 +52,7 @@ Aşağıdaki diyagramda yeşil çizgiler, sanal ağın DNS son ekine biten kayna
 
 Şirket içi ağınıza bağlı bir Azure sanal ağı oluşturmayı öğrenmek için aşağıdaki belgeleri kullanın:
 
-* [Azure portalını kullanma](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+* [Azure portalını kullanma](../vpn-gateway/tutorial-site-to-site-portal.md)
 * [Azure PowerShell’i kullanma](../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)
 * [Azure CLI’yı kullanma](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli.md)
 
@@ -69,7 +69,7 @@ Bu adımlar, Azure sanal makinesi oluşturmak için [Azure Portal](https://porta
 
     ![Ubuntu sanal makinesi oluşturma](./media/connect-on-premises-network/azure-portal-create-resource.png)
 
-1. **Compute**  >  **Sanal makine oluşturma** sayfasına gitmek için işlem **sanal makinesini** seçin.
+1.   >  **Sanal makine oluşturma** sayfasına gitmek için işlem **sanal makinesini** seçin.
 
 1. __Temel bilgiler__ sekmesinde, aşağıdaki bilgileri girin:  
   
@@ -78,7 +78,7 @@ Bu adımlar, Azure sanal makinesi oluşturmak için [Azure Portal](https://porta
     |Abonelik |Uygun aboneliğinizi seçin.|
     |Kaynak grubu |Daha önce oluşturulan sanal ağı içeren kaynak grubunu seçin.|
     |Sanal makine adı | Bu sanal makineyi tanımlayan kolay bir ad girin. Bu örnek **dnsproxy** kullanır.|
-    |Region | Daha önce oluşturulan sanal ağla aynı bölgeyi seçin.  Tüm bölgelerde tüm VM boyutları kullanılamaz.  |
+    |Bölge | Daha önce oluşturulan sanal ağla aynı bölgeyi seçin.  Tüm bölgelerde tüm VM boyutları kullanılamaz.  |
     |Kullanılabilirlik seçenekleri |  İstediğiniz kullanılabilirlik düzeyini seçin.  Azure, uygulamalarınız için kullanılabilirliği ve dayanıklılığı yönetmeye yönelik çeşitli seçenekler sunar.  Uygulamalarınızı ve verilerinizi veri merkezi kesintilerine ve bakım olaylarına karşı korumak için Kullanılabilirlik Alanları veya kullanılabilirlik kümelerinde çoğaltılan VM 'Leri kullanmak için çözümünüzü mimarın. Bu örnek, **gerekli altyapı yedekliliği** kullanmaz. |
     |Görüntü | **Ubuntu Server 18,04 LTS** adresinden ayrılın. |
     |Kimlik doğrulaması türü | __Parola__ veya __SSH ortak anahtarı__: SSH hesabı için kimlik doğrulama yöntemi. Daha güvenli olduklarından ortak anahtarların kullanılmasını öneririz. Bu örnek, **parolayı** kullanır.  Daha fazla bilgi için bkz. [Linux VM 'leri IÇIN SSH anahtarları oluşturma ve kullanma](../virtual-machines/linux/mac-create-ssh-keys.md) belgesi.|
@@ -246,7 +246,7 @@ Sanal ağı Azure özyinelemeli çözümleyici yerine özel DNS sunucusu kullana
 
 4. __Özel__' i seçin ve özel DNS sunucusunun **özel IP adresini** girin.
 
-5. __Kaydet__'i seçin.  <br />  
+5. __Kaydet__’i seçin.  <br />  
 
     ![Ağ için özel DNS sunucusunu ayarlama](./media/connect-on-premises-network/configure-custom-dns.png)
 

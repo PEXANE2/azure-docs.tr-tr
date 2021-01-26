@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 01/06/2021
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: a2048a509bdbe11c948ac8eb2daa6e78013c2fa5
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: c58f4a553073eb3ed062ef9ec2a66c8e4f40e57b
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98753779"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98785134"
 ---
 # <a name="desktop-app-that-calls-web-apis-acquire-a-token"></a>Web API 'Lerini çağıran masaüstü uygulaması: belirteç alma
 
@@ -451,7 +451,7 @@ MSAL.NET ' de şunu kullanmanız gerekir:
 AcquireTokenByIntegratedWindowsAuth(IEnumerable<string> scopes)
 ```
 
-Normalde yalnızca bir parametreye () ihtiyacınız vardır `scopes` . Windows yöneticinizin ilkeleri ayarlama şekline bağlı olarak, Windows makinenizde bulunan uygulamaların oturum açan kullanıcıyı arama izni olmayabilir. Bu durumda, ikinci bir yöntemi kullanın `.WithUsername()` ve oturum açmış kullanıcının Kullanıcı adını UPN biçimi olarak (örneğin,) geçirin `joe@contoso.com` . .NET Core 'da, .NET Core platformu kullanıcı adını işletim sistemine soramadığı için yalnızca Kullanıcı adını almaya yönelik aşırı yükleme kullanılabilir.
+Normalde yalnızca bir parametreye () ihtiyacınız vardır `scopes` . Windows yöneticinizin ilkeleri ayarlama şekline bağlı olarak, Windows makinenizde bulunan uygulamaların oturum açan kullanıcıyı arama izni olmayabilir. Bu durumda, ikinci bir yöntemi kullanın `.WithUsername()` ve oturum açmış kullanıcının Kullanıcı adını UPN biçimi olarak (örneğin,) geçirin `joe@contoso.com` .
 
 Aşağıdaki örnek, alabileceğiniz özel durumların ve bunların azaltmaları hakkındaki açıklamaları içeren en güncel durumu gösterir.
 

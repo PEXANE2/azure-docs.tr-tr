@@ -4,12 +4,12 @@ description: Varsayılan strateji ve özel serileştirme tanımlama dahil olmak 
 ms.topic: conceptual
 ms.date: 5/8/2017
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 1d29f5d3391bdea0b21997a392d4d2e053b7ec65
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 29bb9a2dfb028d223d63559b35735e78d7e6bcf8
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89018629"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784368"
 ---
 # <a name="reliable-collection-object-serialization-in-azure-service-fabric"></a>Azure Service Fabric güvenilir koleksiyon nesnesi serileştirmesi
 Güvenilir koleksiyonlar, makine hatalarından ve güç kesintilerine dayanıklı olduklarından emin olmak için öğelerini çoğaltın ve kalıcı hale getirir.
@@ -20,7 +20,7 @@ Güvenilir durum Yöneticisi yerleşik serileştiriciler içerir ve belirli bir 
 
 ## <a name="built-in-serializers"></a>Yerleşik serileştiriciler
 
-Güvenilir durum Yöneticisi bazı yaygın türler için yerleşik serileştirici içerir, böylece varsayılan olarak etkin hale getirilebilir. Diğer türler için güvenilir durum Yöneticisi [DataContractSerializer](/dotnet/api/system.runtime.serialization.datacontractserializer?view=netcore-3.1)'ı kullanmaya geri döner.
+Güvenilir durum Yöneticisi bazı yaygın türler için yerleşik serileştirici içerir, böylece varsayılan olarak etkin hale getirilebilir. Diğer türler için güvenilir durum Yöneticisi [DataContractSerializer](/dotnet/api/system.runtime.serialization.datacontractserializer)'ı kullanmaya geri döner.
 Yerleşik serileştiriciler, türlerinin değişmediğini biledikleri ve tür adı gibi tür hakkındaki bilgileri içermesi gerekmediğinden daha etkilidir.
 
 Güvenilir durum Yöneticisi aşağıdaki türler için yerleşik serileştiriciye sahiptir: 
@@ -140,7 +140,7 @@ Bu şekilde, her sürüm, akışın kalan kısmına göre okuyabileceği kadar o
 
 ## <a name="next-steps"></a>Sonraki adımlar
   * [Serileştirme ve yükseltme](service-fabric-application-upgrade-data-serialization.md)
-  * [Güvenilir koleksiyonlar için geliştirici başvurusu](/dotnet/api/microsoft.servicefabric.data.collections?view=azure-dotnet#microsoft_servicefabric_data_collections)
+  * [Güvenilir koleksiyonlar için geliştirici başvurusu](/dotnet/api/microsoft.servicefabric.data.collections#microsoft_servicefabric_data_collections)
   * [Visual Studio 'Yu kullanarak uygulamanızı yükseltmek](service-fabric-application-upgrade-tutorial.md) , Visual Studio kullanarak bir uygulama yükseltme işleminde size yol gösterir.
   * [PowerShell kullanarak uygulamanızı yükseltmek](service-fabric-application-upgrade-tutorial-powershell.md) , PowerShell kullanarak bir uygulama yükseltme işleminde size yol gösterir.
   * Uygulamanızın [yükseltme parametrelerini](service-fabric-application-upgrade-parameters.md)kullanarak nasıl yükseltileceğini denetleyin.

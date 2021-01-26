@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/12/2020
-ms.openlocfilehash: d749c901b21651eec7b3e25ce111fb107e09b754
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 5c414a11085a6a37dee6be522dcf513e8990e5e2
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97883359"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98786360"
 ---
 # <a name="azure-hdinsight-release-notes"></a>Azure HDInsight sürüm notları
 
@@ -48,7 +48,7 @@ HDInsight, 16 2020 Kasım 'dan başlayarak standand_A8, standand_A9, standand_A1
 
 ## <a name="behavior-changes"></a>Davranış değişiklikleri
 ### <a name="add-nsg-rule-checking-before-scaling-operation"></a>Ölçeklendirmeden önce NSG kuralı denetimi ekleme işlemi
-HDInsight, ölçeklendirme işlemiyle ağ güvenlik grupları (NSG 'ler) ve Kullanıcı tanımlı yollar (UDRs) denetimi ekledi. Küme oluşturmanın yanı sıra küme ölçekleme için de aynı doğrulama yapılır. Bu doğrulama öngörülemeyen hataları önlemeye yardımcı olur. Doğrulama geçmezse ölçeklendirme başarısız olur. NSG 'ler ve UDRs 'nin doğru şekilde nasıl yapılandırılacağı hakkında daha fazla bilgi edinin. [HDInsight YÖNETIM IP adresleri](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses)bölümüne bakın.
+HDInsight, ölçeklendirme işlemiyle ağ güvenlik grupları (NSG 'ler) ve Kullanıcı tanımlı yollar (UDRs) denetimi ekledi. Küme oluşturmanın yanı sıra küme ölçekleme için de aynı doğrulama yapılır. Bu doğrulama öngörülemeyen hataları önlemeye yardımcı olur. Doğrulama geçmezse ölçeklendirme başarısız olur. NSG 'ler ve UDRs 'nin doğru şekilde nasıl yapılandırılacağı hakkında daha fazla bilgi edinin. [HDInsight YÖNETIM IP adresleri](./hdinsight-management-ip-addresses.md)bölümüne bakın.
 
 ## <a name="upcoming-changes"></a>Yaklaşan değişiklikler
 Gelecek sürümlerde aşağıdaki değişiklikler olur.
@@ -72,7 +72,7 @@ HDInsight, küme güvenilirliği ve performans iyileştirmeleri yapmaya devam ed
 Bu yayın için bileşen sürümü değişikliği yok. HDInsight 4,0 ve HDInsight 3,6 için geçerli bileşen sürümlerini [Bu belgede](./hdinsight-component-versioning.md)bulabilirsiniz.
 
 ## <a name="known-issues"></a>Bilinen sorunlar
-### <a name="prevent-hdinsight-cluster-vms-from-rebooting-periodically"></a>HDInsight küme VM 'lerinin düzenli aralıklarla yeniden başlatılmasını engelle
+### <a name="prevent-hdinsight-cluster-vms-from-rebooting-periodically"></a>HDInsight kümesi sanal makinelerinin düzenli aralıklarla yeniden başlatılmasını engelleme
 
 2020 Kasım 'dan başlayarak, HDInsight kümesi VM 'lerinin düzenli olarak yeniden başlatılmasını fark etmiş olabilirsiniz. Bunun nedeni şunlar olabilir:
 
@@ -84,4 +84,3 @@ HDInsight, düzeltmeleri dağıtmakta ve her iki sorun için çalışan tüm kü
 https://hdiconfigactions.blob.core.windows.net/linuxospatchingrebootconfigv02/replace_cacert_script.sh
 https://healingscriptssa.blob.core.windows.net/healingscripts/ChangeOOMPolicyAndApplyLatestConfigForClamav.sh
 ```
-

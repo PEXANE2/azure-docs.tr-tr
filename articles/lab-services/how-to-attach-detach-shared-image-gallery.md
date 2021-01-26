@@ -3,18 +3,18 @@ title: Azure Lab Services paylaşılan görüntü galerisini Ekle veya ayır | M
 description: Bu makalede, Azure Lab Services ' de bir sınıf laboratuvarına paylaşılan görüntü galerisinin nasıl ekleneceği açıklanmaktadır.
 ms.topic: article
 ms.date: 09/11/2020
-ms.openlocfilehash: ae0870139d2320fa079f6705956e124f61479882
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 99b944ad85e311cd66b0a1cec4e585de37f83500
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94660109"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98786410"
 ---
 # <a name="attach-or-detach-a-shared-image-gallery-in-azure-lab-services"></a>Azure Lab Services paylaşılan görüntü galerisini bağlama veya ayırma
 Bu makalede, paylaşılan bir görüntü galerisinin bir laboratuvar hesabına nasıl ekleneceği veya ayrılabilmesi gösterilmektedir. 
 
 > [!NOTE]
-> Bir [laboratuvarın şablon görüntüsünü](how-to-use-shared-image-gallery.md#save-an-image-to-the-shared-image-gallery) paylaşılan bir görüntü galerisine Azure Lab Services kaydettiğinizde, görüntü galeriye özelleştirilmiş bir görüntü olarak yüklenir. [Özel görüntüler](../virtual-machines/windows/shared-image-galleries.md#generalized-and-specialized-images) makineye özgü bilgileri ve Kullanıcı profillerini saklar. Genelleştirilmiş bir görüntüyü yine de Azure Lab Services dışında galeriye doğrudan yükleyebilirsiniz. 
+> Bir [laboratuvarın şablon görüntüsünü](how-to-use-shared-image-gallery.md#save-an-image-to-the-shared-image-gallery) paylaşılan bir görüntü galerisine Azure Lab Services kaydettiğinizde, görüntü galeriye özelleştirilmiş bir görüntü olarak yüklenir. [Özel görüntüler](../virtual-machines/shared-image-galleries.md#generalized-and-specialized-images) makineye özgü bilgileri ve Kullanıcı profillerini saklar. Genelleştirilmiş bir görüntüyü yine de Azure Lab Services dışında galeriye doğrudan yükleyebilirsiniz. 
 >
 > Laboratuvar Oluşturucu, Azure Lab Services hem Genelleştirilmiş hem de özelleştirilmiş görüntüleri temel alan bir şablon VM oluşturabilir. 
 
@@ -24,7 +24,7 @@ Bu özellik tarafından desteklenen birkaç senaryo şunlardır:
 - Laboratuvar hesabı Yöneticisi, laboratuvar hesabına paylaşılan bir görüntü Galerisi ekler ve bir görüntüyü bir laboratuvar bağlamı dışında paylaşılan görüntü galerisine yükler. Daha sonra laboratuvar oluşturucuları, Labs oluşturmak için paylaşılan görüntü galerisinden bu görüntüyü kullanabilir. 
 - Laboratuvar hesabı Yöneticisi, laboratuvar hesabına paylaşılan bir görüntü Galerisi ekler. Laboratuvar Oluşturucu (eğitmen), kendi laboratuvarının özelleştirilmiş görüntüsünü paylaşılan görüntü galerisine kaydeder. Daha sonra, diğer laboratuvar oluşturucuları, Labs için bir şablon oluşturmak üzere paylaşılan görüntü galerisinden bu görüntüyü seçebilir. 
 
-    Bir görüntü paylaşılan bir görüntü galerisine kaydedildiğinde, Azure Lab Services kaydedilen görüntüyü aynı [Coğrafya](https://azure.microsoft.com/global-infrastructure/geographies/)'da bulunan diğer bölgelere çoğaltır. Görüntünün aynı coğrafya içindeki diğer bölgelerde oluşturulan laboratuvarlarda kullanılabilir olmasını sağlar. Resimleri paylaşılan bir görüntü galerisine kaydetmek, çoğaltılan tüm görüntülerin maliyetini içeren ek bir maliyet doğurur. Bu maliyet Azure Lab Services kullanım maliyetinden ayrıdır. Paylaşılan görüntü Galerisi fiyatlandırması hakkında daha fazla bilgi için bkz. [paylaşılan görüntü Galerisi – faturalandırma](../virtual-machines/windows/shared-image-galleries.md#billing).
+    Bir görüntü paylaşılan bir görüntü galerisine kaydedildiğinde, Azure Lab Services kaydedilen görüntüyü aynı [Coğrafya](https://azure.microsoft.com/global-infrastructure/geographies/)'da bulunan diğer bölgelere çoğaltır. Görüntünün aynı coğrafya içindeki diğer bölgelerde oluşturulan laboratuvarlarda kullanılabilir olmasını sağlar. Resimleri paylaşılan bir görüntü galerisine kaydetmek, çoğaltılan tüm görüntülerin maliyetini içeren ek bir maliyet doğurur. Bu maliyet Azure Lab Services kullanım maliyetinden ayrıdır. Paylaşılan görüntü Galerisi fiyatlandırması hakkında daha fazla bilgi için bkz. [paylaşılan görüntü Galerisi – faturalandırma](../virtual-machines/shared-image-galleries.md#billing).
 
 > [!IMPORTANT]
 > Paylaşılan bir görüntü Galerisi kullanılırken, Azure Lab Services yalnızca 128 GB 'den az işletim sistemi disk alanı olan görüntüleri destekler. 128 GB 'den fazla disk alanı veya birden fazla disk içeren görüntüler, Laboratuvar oluşturma sırasında sanal makine görüntüleri listesinde gösterilmez.
@@ -42,7 +42,7 @@ Laboratuvar hesabı oluşturulduktan sonra, aşağıdaki görevleri gerçekleşt
 - Laboratuvar hesabından paylaşılan görüntü galerisini ayır
 
 ## <a name="create-and-attach-a-shared-image-gallery"></a>Paylaşılan görüntü galerisi oluşturma ve iliştirme
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. Sol taraftaki menüden **tüm hizmetler** ' i seçin. **DevOps** bölümünde **Laboratuvar Hizmetleri** ' ni seçin. `*` **Laboratuvar Hizmetleri**' nin yanında Star () seçeneğini belirlerseniz Sol menüdeki **Sık Kullanılanlar** bölümüne eklenir. Sonraki zamanda, **Sık Kullanılanlar** altında **Laboratuvar Hizmetleri** ' ni seçersiniz.
 
     ![Tüm hizmetler-> Laboratuvar Hizmetleri](./media/tutorial-setup-lab-account/select-lab-accounts-service.png)
@@ -89,4 +89,4 @@ Laboratuvara yalnızca bir paylaşılan görüntü Galerisi eklenebilir. Başka 
 ## <a name="next-steps"></a>Sonraki adımlar
 Bir laboratuvar görüntüsünü paylaşılan görüntü galerisine kaydetme veya bir VM oluşturmak için paylaşılan görüntü galerisinden bir görüntü kullanma hakkında bilgi edinmek için bkz. [paylaşılan görüntü Galerisi 'ni kullanma](how-to-use-shared-image-gallery.md).
 
-Paylaşılan görüntü galerileri hakkında genel bilgi için bkz. [paylaşılan görüntü Galerisi](../virtual-machines/windows/shared-image-galleries.md).
+Paylaşılan görüntü galerileri hakkında genel bilgi için bkz. [paylaşılan görüntü Galerisi](../virtual-machines/shared-image-galleries.md).

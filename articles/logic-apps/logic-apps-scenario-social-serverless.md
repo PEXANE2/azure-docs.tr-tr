@@ -8,12 +8,12 @@ ms.author: jehollan
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 03/15/2018
-ms.openlocfilehash: 2fae7d2526e6c95efe83ca8fa742a6d92457b897
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 22e0c7304f7a53a86bc5c6739a2061352d738d29
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86520758"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784821"
 ---
 # <a name="create-a-streaming-customer-insights-dashboard-with-azure-logic-apps-and-azure-functions"></a>Azure Logic Apps ve Azure Işlevleri ile akış müşteri öngörüleri panosu oluşturma
 
@@ -54,7 +54,7 @@ Bazı metinlerin arkasındaki yaklaşımı algılamak için Azure bilişsel [Hiz
 
 4. İstenirse Metin Analizi hizmeti için geçerli bir bilişsel hizmetler anahtarı sağlayın.
 
-5. **Istek gövdesi**altında, analiz için giriş olarak Tweet metnini sağlayan **Tweet metin** alanını seçin.
+5. **Istek gövdesi** altında, analiz için giriş olarak Tweet metnini sağlayan **Tweet metin** alanını seçin.
 
 Tweet hakkında tweet verilerini ve öngörülerini aldıktan sonra, artık diğer ilgili bağlayıcıları ve bunların eylemlerini kullanabilirsiniz:
 
@@ -67,7 +67,7 @@ Ayrıca, verileriniz üzerinde özel işlem gerçekleştirebilmeniz için bir Az
 
 ## <a name="process-data-with-azure-functions"></a>Azure Işlevleri ile verileri işleme
 
-Bir işlev oluşturmadan önce, Azure aboneliğinizde bir işlev uygulaması oluşturun. Ayrıca, mantıksal uygulamanızın bir işlevi doğrudan çağırması için, işlevin bir HTTP tetikleyici bağlaması olması gerekir, örneğin, **Httptrigger** şablonunu kullanın. [Azure Portal ilk işlev uygulamanızı ve işlevinizi oluşturmayı](../azure-functions/functions-create-first-azure-function.md)öğrenin.
+Bir işlev oluşturmadan önce, Azure aboneliğinizde bir işlev uygulaması oluşturun. Ayrıca, mantıksal uygulamanızın bir işlevi doğrudan çağırması için, işlevin bir HTTP tetikleyici bağlaması olması gerekir, örneğin, **Httptrigger** şablonunu kullanın. [Azure Portal ilk işlev uygulamanızı ve işlevinizi oluşturmayı](../azure-functions/functions-get-started.md)öğrenin.
 
 Bu senaryo için, Azure işlevinizin istek gövdesi olarak Tweet metnini kullanın. İşlev kodunuzda, Tweet metninin bir anahtar sözcük mi yoksa tümcecik mi içerdiğini belirleyen mantığı tanımlayın. İşlevi senaryo için gereken şekilde basit veya karmaşık tutun.
 İşlevin sonunda, mantıksal uygulamaya bazı verilerle bir yanıt döndürün, örneğin veya karmaşık bir nesne gibi basit bir Boole değeri `containsKeyword` .
@@ -83,7 +83,7 @@ Bu senaryo için, Azure işlevinizin istek gövdesi olarak Tweet metnini kullan�
 
 2. **Azure işlevleri** bağlayıcısını bulun ve ardından oluşturduğunuz işlevi seçin.
 
-3. **Istek gövdesi**altında **Tweet metin**' i seçin.
+3. **Istek gövdesi** altında **Tweet metin**' i seçin.
 
 ![Azure Işlev adımı yapılandırıldı][2]
 

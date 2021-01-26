@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 07/27/2020
 ms.author: alkohli
-ms.openlocfilehash: 730774f33d43754d4ca198ed170159fa4f872e09
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0c35bde40cac9629f084d69d52f119651b5655f7
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90903669"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784486"
 ---
 # <a name="return-your-azure-stack-edge-pro-device"></a>Azure Stack Edge Pro cihazınızı döndürün
 
@@ -59,11 +59,11 @@ Alternatif olarak, cihazın PowerShell arabirimine bağlanın ve `Reset-HcsAppli
 
 Geri dönüş işlemini başlatmak için aşağıdaki adımları uygulayın.
 
-1. Azure portal Azure Stack Edge Pro/Data Box Gateway kaynağına gidin. **Genel**görünümde, sağ bölmedeki komut çubuğuna gidin ve **cihazı geri döndür**' ü seçin. 
+1. Azure portal Azure Stack Edge Pro/Data Box Gateway kaynağına gidin. **Genel** görünümde, sağ bölmedeki komut çubuğuna gidin ve **cihazı geri döndür**' ü seçin. 
 
     ![Cihazı geri dön 1](media/azure-stack-edge-return-device/return-device-1.png)  
 
-2. **Geri dönüş aygıtı** dikey penceresinde, **temel Ayrıntılar**altında:
+2. **Geri dönüş aygıtı** dikey penceresinde, **temel Ayrıntılar** altında:
 
     1. Cihazın seri numarasını belirtin. Cihaz seri numarasını almak için, cihazın yerel Web Kullanıcı arabirimine gidin ve **genel bakış**' a gidin.  
     
@@ -101,7 +101,7 @@ Geri dönüş işlemini başlatmak için aşağıdaki adımları uygulayın.
 Bir toplama zamanlamak için aşağıdaki adımları uygulayın.
 
 1. Cihazı kapatın. Yerel Web Kullanıcı arabiriminde **bakım > güç ayarları**' na gidin.
-2. **Kapat ' ı**seçin. Onay istendiğinde, devam etmek için **Evet** ' e tıklayın. Daha fazla bilgi için bkz. [güç yönetimi](data-box-gateway-manage-access-power-connectivity-mode.md#manage-power).
+2. **Kapat ' ı** seçin. Onay istendiğinde, devam etmek için **Evet** ' e tıklayın. Daha fazla bilgi için bkz. [güç yönetimi](../databox-gateway/data-box-gateway-manage-access-power-connectivity-mode.md#manage-power).
 3. Güç kablolarını çıkarın ve cihazdaki tüm ağ kablolarını kaldırın.
 4. Kendi kutusunu veya Azure 'dan aldığınız boş kutuyu kullanarak sevkiyat paketini hazırlayın. Cihazı ve cihazla birlikte gelen güç gücünü kutuya yerleştirin.
 5. Paket üzerinde Azure 'dan aldığınız sevkiyat etiketini AFBir şekilde düzeltir.

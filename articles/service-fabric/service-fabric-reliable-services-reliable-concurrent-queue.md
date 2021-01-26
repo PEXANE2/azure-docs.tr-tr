@@ -3,15 +3,15 @@ title: Azure Service Fabric ReliableConcurrentQueue
 description: ReliableConcurrentQueue, paralel sıraya ve sıralara izin veren yüksek performanslı bir sıralardır.
 ms.topic: conceptual
 ms.date: 5/1/2017
-ms.openlocfilehash: 423ef3d1898176d7c25c596ad186a9c000108aa4
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: d6852982621d3efd3f4a8597a2959fceb13abd12
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95997129"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784300"
 ---
 # <a name="introduction-to-reliableconcurrentqueue-in-azure-service-fabric"></a>Azure Service Fabric ReliableConcurrentQueue 'a giriş
-Güvenilir eşzamanlı sıra, sıraya alma ve sıradan çıkarma işlemleri için yüksek eşzamanlılık özelliklerine sahip zaman uyumsuz, işlemsel ve çoğaltılan bir sıradır. [Güvenilir sıra](/dotnet/api/microsoft.servicefabric.data.collections.ireliablequeue-1?view=azure-dotnet#microsoft_servicefabric_data_collections_ireliablequeue_1) tarafından sağlanan katı FIFO sıralamasını inceleyerek yüksek aktarım hızı ve düşük gecikme süresi sunmak üzere tasarlanmıştır ve bunun yerine en iyi çaba sıralaması sağlar.
+Güvenilir eşzamanlı sıra, sıraya alma ve sıradan çıkarma işlemleri için yüksek eşzamanlılık özelliklerine sahip zaman uyumsuz, işlemsel ve çoğaltılan bir sıradır. [Güvenilir sıra](/dotnet/api/microsoft.servicefabric.data.collections.ireliablequeue-1#microsoft_servicefabric_data_collections_ireliablequeue_1) tarafından sağlanan katı FIFO sıralamasını inceleyerek yüksek aktarım hızı ve düşük gecikme süresi sunmak üzere tasarlanmıştır ve bunun yerine en iyi çaba sıralaması sağlar.
 
 ## <a name="apis"></a>API'ler
 
@@ -21,11 +21,11 @@ Güvenilir eşzamanlı sıra, sıraya alma ve sıradan çıkarma işlemleri içi
 | bool Trysıradan çıkarma (çıkan T sonucu)  | Görev< ConditionalValue < T > > TryDequeueAsync (ITransaction TX)  |
 | int sayısı ()                    | uzun sayı ()                                                     |
 
-## <a name="comparison-with-reliable-queue"></a>[Güvenilir sıra](/dotnet/api/microsoft.servicefabric.data.collections.ireliablequeue-1?view=azure-dotnet#microsoft_servicefabric_data_collections_ireliablequeue_1) ile karşılaştırma
+## <a name="comparison-with-reliable-queue"></a>[Güvenilir sıra](/dotnet/api/microsoft.servicefabric.data.collections.ireliablequeue-1#microsoft_servicefabric_data_collections_ireliablequeue_1) ile karşılaştırma
 
-Güvenilir bir eşzamanlı sıra, [güvenilir bir kuyruğa](/dotnet/api/microsoft.servicefabric.data.collections.ireliablequeue-1?view=azure-dotnet#microsoft_servicefabric_data_collections_ireliablequeue_1)alternatif olarak sunulur. FıFO, eşzamanlılık içeren bir zorunluluğunu getirir gerektirdiğinden, kesin FıFO sıralaması gerekmediği durumlarda kullanılmalıdır.  [Güvenilir sıra](/dotnet/api/microsoft.servicefabric.data.collections.ireliablequeue-1?view=azure-dotnet#microsoft_servicefabric_data_collections_ireliablequeue_1) , en fazla bir işlem sıraya alma izni verilen en fazla bir işlem ve aynı anda sıraya alma IZNI verilen FIFO sıralamasını zorlamak için kilitleri kullanır. Karşılaştırma ' da, güvenilir eşzamanlı sıra sıralama kısıtlamasını sağlar ve her türlü sayıda eşzamanlı işlem sıraya alma ve sıradan çıkarma işlemlerine izin verir. En iyi çaba sıralaması sağlanır, ancak güvenilir bir eşzamanlı kuyruktaki iki değerin göreli sıralaması hiçbir şekilde garanti edilemez.
+Güvenilir bir eşzamanlı sıra, [güvenilir bir kuyruğa](/dotnet/api/microsoft.servicefabric.data.collections.ireliablequeue-1#microsoft_servicefabric_data_collections_ireliablequeue_1)alternatif olarak sunulur. FıFO, eşzamanlılık içeren bir zorunluluğunu getirir gerektirdiğinden, kesin FıFO sıralaması gerekmediği durumlarda kullanılmalıdır.  [Güvenilir sıra](/dotnet/api/microsoft.servicefabric.data.collections.ireliablequeue-1#microsoft_servicefabric_data_collections_ireliablequeue_1) , en fazla bir işlem sıraya alma izni verilen en fazla bir işlem ve aynı anda sıraya alma IZNI verilen FIFO sıralamasını zorlamak için kilitleri kullanır. Karşılaştırma ' da, güvenilir eşzamanlı sıra sıralama kısıtlamasını sağlar ve her türlü sayıda eşzamanlı işlem sıraya alma ve sıradan çıkarma işlemlerine izin verir. En iyi çaba sıralaması sağlanır, ancak güvenilir bir eşzamanlı kuyruktaki iki değerin göreli sıralaması hiçbir şekilde garanti edilemez.
 
-Güvenilir eşzamanlı sıra, en çok eşzamanlı işlem sırası ve/veya sıra sıraları gerçekleştirirken [güvenilir kuyruktan](/dotnet/api/microsoft.servicefabric.data.collections.ireliablequeue-1?view=azure-dotnet#microsoft_servicefabric_data_collections_ireliablequeue_1) daha yüksek aktarım hızı ve daha düşük gecikme süresi sağlar.
+Güvenilir eşzamanlı sıra, en çok eşzamanlı işlem sırası ve/veya sıra sıraları gerçekleştirirken [güvenilir kuyruktan](/dotnet/api/microsoft.servicefabric.data.collections.ireliablequeue-1#microsoft_servicefabric_data_collections_ireliablequeue_1) daha yüksek aktarım hızı ve daha düşük gecikme süresi sağlar.
 
 ReliableConcurrentQueue için bir örnek kullanım örneği, [Ileti sırası](https://en.wikipedia.org/wiki/Message_queue) senaryosudur. Bu senaryoda, bir veya daha fazla ileti üreticileri kuyruğa öğe oluşturup ekler ve bir veya daha fazla ileti tüketicileri kuyruktan ileti çeker ve bunları işler. Birden çok üreticileri ve tüketici, sırayı işlemek için eşzamanlı işlemler kullanarak bağımsız olarak çalışabilir.
 
@@ -340,4 +340,4 @@ using (var txn = this.StateManager.CreateTransaction())
 * [Güvenilir durum Yöneticisi yapılandırması](service-fabric-reliable-services-configuration.md)
 * [Service Fabric Web API hizmetlerini kullanmaya başlama](./service-fabric-reliable-services-communication-aspnetcore.md)
 * [Reliable Services programlama modelinin gelişmiş kullanımı](./service-fabric-reliable-services-lifecycle.md)
-* [Güvenilir koleksiyonlar için geliştirici başvurusu](/dotnet/api/microsoft.servicefabric.data.collections?view=azure-dotnet#microsoft_servicefabric_data_collections)
+* [Güvenilir koleksiyonlar için geliştirici başvurusu](/dotnet/api/microsoft.servicefabric.data.collections#microsoft_servicefabric_data_collections)

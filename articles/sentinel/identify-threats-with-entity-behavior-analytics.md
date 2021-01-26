@@ -12,25 +12,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/19/2020
+ms.date: 01/25/2021
 ms.author: yelevin
-ms.openlocfilehash: 2326746d274c68225cd4c8569df6a20d6050ec1a
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: 7944ea48feaca1eb8312e01d876bf9627af429d1
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97900901"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784804"
 ---
 # <a name="identify-advanced-threats-with-user-and-entity-behavior-analytics-ueba-in-azure-sentinel"></a>Azure Sentinel 'de Kullanıcı ve varlık davranış analizi (UEBA) ile gelişmiş tehditleri tanımla
 
 > [!IMPORTANT]
 >
-> - Artık UEBA ve varlık sayfaları özellikleri şu Azure Sentinel coğrafi bölgeler ve bölgelerde **genel kullanıma** sunulmuştur:
->    - Birleşik Devletler Coğrafya
->    - Avrupa Batı Bölgesi
->    - Avustralya Coğrafya
->
-> - Diğer tüm coğrafi bölgeler ve bölgelerde bu özellikler **Önizleme** aşamasında olmaya devam eder. Beta, önizleme veya henüz genel kullanıma sunulmayan Azure özelliklerine uygulanan ek koşullar için [**Microsoft Azure önizlemeleri için ek kullanım koşulları**](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) 'na bakın.
+> - UEBA ve varlık sayfaları özellikleri artık **_Tüm_* _ Azure Sentinel coğrafi bölgeler ve bölgelerde **genel kullanıma** sunulmuştur.
 
 ## <a name="what-is-user-and-entity-behavior-analytics-ueba"></a>Kullanıcı ve varlık davranış analizi (UEBA) nedir?
 
@@ -50,7 +45,7 @@ Azure Sentinel, tüm bağlı veri kaynaklarından Günlükler ve uyarılar topla
 
 Vartner 'ın UEBA çözümleri için paradigması sayesinde Azure Sentinel, üç başvuru çerçevesine göre "dışarıdan" bir yaklaşım sağlar:
 
-- **Kullanım örnekleri:** İlgili saldırı vektörlerine ve senaryolarına dayalı güvenlik araştırmalarını temel alarak, çeşitli varlıkları her bir kurbana, bir, bir veya sonlandırma zincirindeki Özet noktaları olarak yerleştiren, tekniklerin ve alt tekniklerin, MITTIK ATT&CK çerçevesiyle hizalı güvenlik araştırması Azure Sentinel, her bir veri kaynağının sağlayabildiği en değerli günlüklere odaklanır.
+- _ *Kullanım örnekleri:** ilgili saldırı vektörlerine ve senaryolarına dayalı güvenlik&araştırmalarını temel alarak, çeşitli varlıkları kurbanlara, sürelere veya sonlandırma zincirindeki Özet noktalarına yerleştiren alt tekniklere göre Azure Sentinel, her bir veri kaynağının sağlayabildiği en değerli günlüklere odaklanır.
 
 - **Veri kaynakları:** İlk ve Azure veri kaynaklarını desteklerken, Azure Sentinel, tehdit senaryolarımızla eşleşen verileri sağlamak için üçüncü taraf veri kaynaklarını seçer.
 
@@ -88,7 +83,7 @@ Bu meydana gelme riskini en aza indirmek için, tüm uyarı sağlayıcılarını
 Aşağıdaki varlık türleri şu anda Azure Sentinel 'de tanımlanmıştır:
 
 - Kullanıcı hesabı (hesap)
-- Yönetici
+- Ana bilgisayar
 - IP adresi (IP)
 - Kötü Amaçlı Yazılımlar
 - Dosya

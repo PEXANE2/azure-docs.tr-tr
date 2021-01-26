@@ -4,12 +4,12 @@ description: Service Fabric uygulamaları dağıtmak ve kaldırmak için FabricC
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 565e6b8f23f159a5c231295694830917217a3d19
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 343a37c983b1d64a4b1986913d9d6fd648a113fe
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89009310"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98785558"
 ---
 # <a name="deploy-and-remove-applications-using-fabricclient"></a>FabricClient kullanarak uygulama dağıtma ve kaldırma
 > [!div class="op_single_selector"]
@@ -45,9 +45,9 @@ FabricClient fabricClient = new FabricClient();
 ```
 
 ## <a name="upload-the-application-package"></a>Uygulama paketini karşıya yükle
-Visual Studio 'da *MyApplication* adlı bir uygulama oluşturup paketlediğinizi varsayalım. Varsayılan olarak, ApplicationManifest.xml listelenen uygulama türü adı "MyApplicationType" dir.  Gerekli uygulama bildirimi, hizmet bildirimleri ve kod/yapılandırma/veri paketleri içeren uygulama paketi, *C:\Users \& lt; username &gt; \ist Studio 2019 \ Projects\MyApplication\MyApplication\pkg\Debug*konumunda bulunur.
+Visual Studio 'da *MyApplication* adlı bir uygulama oluşturup paketlediğinizi varsayalım. Varsayılan olarak, ApplicationManifest.xml listelenen uygulama türü adı "MyApplicationType" dir.  Gerekli uygulama bildirimi, hizmet bildirimleri ve kod/yapılandırma/veri paketleri içeren uygulama paketi, *C:\Users \& lt; username &gt; \ist Studio 2019 \ Projects\MyApplication\MyApplication\pkg\Debug* konumunda bulunur.
 
-Uygulama paketini karşıya yüklemek, iç Service Fabric bileşenleri tarafından erişilebilen bir konuma koyar. Service Fabric uygulama paketinin kaydı sırasında uygulama paketini doğrular. Ancak, uygulama paketini yerel olarak doğrulamak istiyorsanız (diğer bir deyişle, karşıya yüklemeden önce), [Test-ServiceFabricApplicationPackage](/powershell/module/servicefabric/test-servicefabricapplicationpackage?view=azureservicefabricps) cmdlet 'ini kullanın.
+Uygulama paketini karşıya yüklemek, iç Service Fabric bileşenleri tarafından erişilebilen bir konuma koyar. Service Fabric uygulama paketinin kaydı sırasında uygulama paketini doğrular. Ancak, uygulama paketini yerel olarak doğrulamak istiyorsanız (diğer bir deyişle, karşıya yüklemeden önce), [Test-ServiceFabricApplicationPackage](/powershell/module/servicefabric/test-servicefabricapplicationpackage) cmdlet 'ini kullanın.
 
 [CopyApplicationPackage](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.copyapplicationpackage) API 'si, uygulama paketini küme görüntü deposuna yükler. 
 
@@ -92,7 +92,7 @@ Uygulama türünün belirli bir sürümüne artık ihtiyaç duyulmadığında, [
 
 ## <a name="troubleshooting"></a>Sorun giderme
 ### <a name="copy-servicefabricapplicationpackage-asks-for-an-imagestoreconnectionstring"></a>Copy-ServiceFabricApplicationPackage ımatoreconnectionstring için sorar
-Service Fabric SDK ortamında doğru varsayılanlar ayarlanmış olmalıdır. Ancak gerekirse, tüm komutlar için ımatoreconnectionstring, Service Fabric kümesinin kullandığı değerle eşleşmelidir. Imabtoreconnectionstring ' i küme bildiriminde bulabilirsiniz, [Get-ServiceFabricClusterManifest](/powershell/module/servicefabric/get-servicefabricclustermanifest?view=azureservicefabricps) ve Get-ImageStoreConnectionStringFromClusterManifest komutlarını kullanarak elde edebilirsiniz:
+Service Fabric SDK ortamında doğru varsayılanlar ayarlanmış olmalıdır. Ancak gerekirse, tüm komutlar için ımatoreconnectionstring, Service Fabric kümesinin kullandığı değerle eşleşmelidir. Imabtoreconnectionstring ' i küme bildiriminde bulabilirsiniz, [Get-ServiceFabricClusterManifest](/powershell/module/servicefabric/get-servicefabricclustermanifest) ve Get-ImageStoreConnectionStringFromClusterManifest komutlarını kullanarak elde edebilirsiniz:
 
 ```powershell
 PS C:\> Get-ImageStoreConnectionStringFromClusterManifest(Get-ServiceFabricClusterManifest)

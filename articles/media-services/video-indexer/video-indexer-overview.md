@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 09/11/2020
 ms.author: juliako
-ms.openlocfilehash: 6b5a228c12cfc874673dda854de6d4dcc25f28c1
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 06f5e19718445f44dd2302faf280f083cce0774f
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98014544"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98783810"
 ---
 # <a name="what-is-azure-media-services-video-indexer"></a>Azure Media Services Video Indexer nedir?
 
@@ -115,6 +115,21 @@ Video Indexer özelliklerine üç yolla erişebilirsiniz:
     Daha fazla bilgi için bkz. [uygulamanıza görsel pencere öğeleri ekleme](video-indexer-embed-widgets.md).
 
 Web sitesini kullanıyorsanız, Öngörüler meta veriler olarak eklenir ve portalda görünür. API 'Leri kullanıyorsanız, Öngörüler bir JSON dosyası olarak kullanılabilir.
+
+## <a name="supported-browsers"></a>Desteklenen tarayıcılar
+
+Aşağıdaki listede, Video Indexer Web sitesi ve pencere öğelerini katıştırabilmeniz için kullanabileceğiniz desteklenen tarayıcılar gösterilmektedir. Listede ayrıca desteklenen en düşük tarayıcı sürümü gösterilmektedir:
+
+- Kenar, sürüm: 16
+- Firefox, sürüm: 54
+- Chrome, sürüm: 58
+- Safari, sürüm: 11
+- Opera, sürüm: 44
+- Opera Mobile, sürüm: 59
+- Android tarayıcısı, sürüm: 81
+- Samsung Browser, sürüm: 7
+- Android için Chrome, sürüm: 87
+- Android için Firefox, sürüm: 83
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

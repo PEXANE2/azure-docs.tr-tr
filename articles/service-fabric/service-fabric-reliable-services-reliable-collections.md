@@ -3,12 +3,12 @@ title: Güvenilir koleksiyonlara giriş
 description: Durum bilgisi olan Service Fabric hizmetler, yüksek oranda kullanılabilir, ölçeklenebilir ve düşük gecikmeli bulut uygulamaları yazmanıza olanak tanıyan güvenilir koleksiyonlar sağlar.
 ms.topic: conceptual
 ms.date: 3/10/2020
-ms.openlocfilehash: 6e0f39b994087fe44038e62e85326945589c719a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7d705f81b4ad31559886e43226febcd4cf1d345d
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86245135"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784385"
 ---
 # <a name="introduction-to-reliable-collections-in-azure-service-fabric-stateful-services"></a>Azure Service Fabric durum bilgisi olan hizmetlerde güvenilir koleksiyonlara giriş
 
@@ -40,9 +40,9 @@ Güvenilir koleksiyonlar API 'Leri, eşzamanlı koleksiyonlar API 'lerinin bir g
 
 Günümüzde **Microsoft. ServiceFabric. Data. Collections** üç koleksiyon vardır:
 
-* [Güvenilir sözlük](/dotnet/api/microsoft.servicefabric.data.collections.ireliabledictionary-2?view=azure-dotnet#microsoft_servicefabric_data_collections_ireliabledictionary_2): anahtar/değer çiftlerinin çoğaltılan, işlemsel ve zaman uyumsuz koleksiyonunu temsil eder. **ConcurrentDictionary**ile benzer şekilde, hem anahtar hem de değer herhangi bir türde olabilir.
-* [Güvenilir sıra](/dotnet/api/microsoft.servicefabric.data.collections.ireliablequeue-1?view=azure-dotnet#microsoft_servicefabric_data_collections_ireliablequeue_1): çoğaltılan, işlemsel ve zaman uyumsuz katı, ilk çıkar (FIFO) kuyruğunu temsil eder. **ConcurrentQueue**ile benzer şekilde, değer herhangi bir türde olabilir.
-* [Güvenilir eşzamanlı kuyruk](service-fabric-reliable-services-reliable-concurrent-queue.md): yüksek aktarım hızı için çoğaltılan, işlemsel ve zaman uyumsuz en iyi çaba sırası kuyruğunu temsil eder. **ConcurrentQueue**ile benzer şekilde, değer herhangi bir türde olabilir.
+* [Güvenilir sözlük](/dotnet/api/microsoft.servicefabric.data.collections.ireliabledictionary-2#microsoft_servicefabric_data_collections_ireliabledictionary_2): anahtar/değer çiftlerinin çoğaltılan, işlemsel ve zaman uyumsuz koleksiyonunu temsil eder. **ConcurrentDictionary** ile benzer şekilde, hem anahtar hem de değer herhangi bir türde olabilir.
+* [Güvenilir sıra](/dotnet/api/microsoft.servicefabric.data.collections.ireliablequeue-1#microsoft_servicefabric_data_collections_ireliablequeue_1): çoğaltılan, işlemsel ve zaman uyumsuz katı, ilk çıkar (FIFO) kuyruğunu temsil eder. **ConcurrentQueue** ile benzer şekilde, değer herhangi bir türde olabilir.
+* [Güvenilir eşzamanlı kuyruk](service-fabric-reliable-services-reliable-concurrent-queue.md): yüksek aktarım hızı için çoğaltılan, işlemsel ve zaman uyumsuz en iyi çaba sırası kuyruğunu temsil eder. **ConcurrentQueue** ile benzer şekilde, değer herhangi bir türde olabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -50,11 +50,11 @@ Günümüzde **Microsoft. ServiceFabric. Data. Collections** üç koleksiyon var
 * [Güvenilir Koleksiyonlar ile çalışma](service-fabric-work-with-reliable-collections.md)
 * [İşlemler ve kilitler](service-fabric-reliable-services-reliable-collections-transactions-locks.md)
 * Verileri yönetme
-  * [Yedekleme ve geri yükleme](service-fabric-reliable-services-backup-restore.md)
+  * [Yedekleme ve Geri Yükleme](service-fabric-reliable-services-backup-restore.md)
   * [Bildirimler](service-fabric-reliable-services-notifications.md)
   * [Güvenilir Koleksiyonu serileştirme](service-fabric-reliable-services-reliable-collections-serialization.md)
   * [Serileştirme ve yükseltme](service-fabric-application-upgrade-data-serialization.md)
   * [Güvenilir durum Yöneticisi yapılandırması](service-fabric-reliable-services-configuration.md)
 * Diğer
   * [Hızlı başlangıç Reliable Services](service-fabric-reliable-services-quick-start.md)
-  * [Güvenilir koleksiyonlar için geliştirici başvurusu](/dotnet/api/microsoft.servicefabric.data.collections?view=azure-dotnet#microsoft_servicefabric_data_collections)
+  * [Güvenilir koleksiyonlar için geliştirici başvurusu](/dotnet/api/microsoft.servicefabric.data.collections#microsoft_servicefabric_data_collections)

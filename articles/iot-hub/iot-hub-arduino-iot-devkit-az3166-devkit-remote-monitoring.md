@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 02/02/2018
 ms.author: liydu
-ms.openlocfilehash: a5a69c35e5c7e33443c3810cad9ab4e21b048328
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 6912124ce8d1741731d625dccfea445417b2488d
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148817"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98785025"
 ---
 # <a name="connect-mxchip-iot-devkit-to-azure-iot-remote-monitoring-solution-accelerator"></a>Mxyongaıot DevKit 'i Azure IoT uzaktan Izleme çözüm hızlandırıcısına bağlama
 
@@ -37,7 +37,7 @@ Etkin bir Azure aboneliği. Bir tane yoksa, bu iki yöntemden birini kullanarak 
 
 ## <a name="create-an-azure-iot-remote-monitoring-solution-accelerator"></a>Azure IoT uzaktan Izleme çözümü Hızlandırıcısı oluşturma
 
-1. [Azure IoT Çözüm Hızlandırıcıları sitesine](https://www.azureiotsolutions.com/) gidin ve **yeni çözüm oluştur ' a**tıklayın.
+1. [Azure IoT Çözüm Hızlandırıcıları sitesine](https://www.azureiotsolutions.com/) gidin ve **yeni çözüm oluştur ' a** tıklayın.
 
    ![Azure IoT Çözüm Hızlandırıcısı türünü seçin](media/iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring/azure-iot-suite-solution-types.png)
 
@@ -58,7 +58,7 @@ Etkin bir Azure aboneliği. Bir tane yoksa, bu iki yöntemden birini kullanarak 
 
 5. **Cihaz Ekle**' ye tıklayın.
 
-6. **Özel cihaz**Için **Yeni Ekle** ' ye tıklayın.
+6. **Özel cihaz** Için **Yeni Ekle** ' ye tıklayın.
   
    ![Yeni cihaz ekleme](media/iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring/azure-iot-suite-add-new-device.png)
 
@@ -79,10 +79,10 @@ Etkin bir Azure aboneliği. Bir tane yoksa, bu iki yöntemden birini kullanarak 
    * DevKit tanıtım sayfası.
    * Arduino örnekleri: DevKit ile çalışmaya başlamak için uygulamalı örnekler.
 
-4. Sol taraf **Arduino örnekleri** bölümünü GENIŞLETIN, **mxyongaAZ3166 > AzureIoT için örneklere**gidin ve **RemoteMonitoring**' yi seçin. İçinde proje klasörü olan yeni bir VS Code penceresi açar.
+4. Sol taraf **Arduino örnekleri** bölümünü GENIŞLETIN, **mxyongaAZ3166 > AzureIoT için örneklere** gidin ve **RemoteMonitoring**' yi seçin. İçinde proje klasörü olan yeni bir VS Code penceresi açar.
 
    > [!NOTE]
-   > Bölmeyi kapatmanız durumunda yeniden açabilirsiniz. `Ctrl+Shift+P` `Cmd+Shift+P` Komut paletini açmak için (MacOS:) kullanın, **Arduino**yazın ve **Arduino: örnekleri**bulun ve seçin.
+   > Bölmeyi kapatmanız durumunda yeniden açabilirsiniz. `Ctrl+Shift+P` `Cmd+Shift+P` Komut paletini açmak için (MacOS:) kullanın, **Arduino** yazın ve **Arduino: örnekleri** bulun ve seçin.
 
 ## <a name="provision-required-azure-services"></a>Gerekli Azure hizmetlerini sağlayın
 
@@ -94,7 +94,7 @@ VS Code terminalinde, etkileşimli bir komut satırı gerekli Azure hizmetlerini
 
 ## <a name="build-and-upload-the-device-code"></a>Cihaz kodunu derleyin ve karşıya yükleyin
 
-1. `Ctrl+P`(MacOS: `Cmd + P` ) ve tür **görevi yapılandırması-cihaz-bağlantısı**kullanın.
+1. `Ctrl+P`(MacOS: `Cmd + P` ) ve tür **görevi yapılandırması-cihaz-bağlantısı** kullanın.
 
 2. Terminal, adımla aldığı bağlantı dizesini kullanmak isteyip istemediğinizi sorar `task cloud-provision` . Ayrıca, ' Yeni oluştur... ' seçeneğine tıklayarak kendi cihaz Bağlantı dizenizi de girebilirsiniz.
 
@@ -120,7 +120,7 @@ DevKit yeniden başlatılır ve kodu çalıştırmaya başlar.
 
 ## <a name="change-device-id"></a>Cihaz KIMLIĞINI Değiştir
 
-Sabit kodlanmış **AZ3166** öğesini koddaki özelleştirilmiş BIR cihaz kimliğiyle değiştirmek istiyorsanız, [Uzaktan izleme örneğinde](../iot-accelerators/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoring-v2.md)görüntülenecek kod satırını değiştirin.
+Sabit kodlanmış **AZ3166** öğesini koddaki özelleştirilmiş BIR cihaz kimliğiyle değiştirmek istiyorsanız, [Uzaktan izleme örneğinde](/previous-versions/azure/iot-accelerators/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoring-v2)görüntülenecek kod satırını değiştirin.
 
 ## <a name="problems-and-feedback"></a>Sorunlar ve geri bildirim
 

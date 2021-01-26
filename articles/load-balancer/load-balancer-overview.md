@@ -12,14 +12,14 @@ ms.topic: overview
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 1/14/2020
+ms.date: 1/25/2021
 ms.author: allensu
-ms.openlocfilehash: e8d0afab14d02ffe16db535f173456b55ab53d69
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: d5d2f83ddb4f37e1379bb7d60a76ddc70d61f99a
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97860932"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98785846"
 ---
 # <a name="what-is-azure-load-balancer"></a>Azure Load Balancer nedir?
 
@@ -56,7 +56,7 @@ Standart Load Balancer kullanarak gerçekleştirebileceğiniz önemli senaryolar
 
 - **[IPv6](../virtual-network/ipv6-overview.md)** **[Yük Dengelemesi](../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md)** için desteği etkinleştirin.
 
-- Standart Load Balancer, [Azure izleyici](../azure-monitor/overview.md)aracılığıyla çok boyutlu ölçümler sağlar.  Bu ölçümler, belirli bir boyut için filtrelenebilir, gruplandırılabilir ve parçalanılabilir.  Bu kişiler, hizmetinizin performansı ve durumuyla ilgili güncel ve geçmiş öngörüler sağlar.  Kaynak Durumu de desteklenir. Daha fazla ayrıntı için **[Standart Load Balancer tanılamayı](load-balancer-standard-diagnostics.md)** inceleyin.
+- Standart Load Balancer, [Azure izleyici](../azure-monitor/overview.md)aracılığıyla çok boyutlu ölçümler sağlar.  Bu ölçümler, belirli bir boyut için filtrelenebilir, gruplandırılabilir ve parçalanılabilir.  Bu kişiler, hizmetinizin performansı ve durumuyla ilgili güncel ve geçmiş öngörüler sağlar. [Azure Load Balancer için Öngörüler] ( https://docs.microsoft.com/azure/load-balancer/load-balancer-insights) Bu ölçümler için kullanışlı görselleştirmeler içeren önceden yapılandırılmış bir pano sunar.  Kaynak Durumu de desteklenir. Daha fazla ayrıntı için **[Standart Load Balancer tanılamayı](load-balancer-standard-diagnostics.md)** inceleyin.
 
 - **[Birden çok bağlantı noktası, birden çok IP adresi veya her ikisinde](./load-balancer-multivip-overview.md)** Yük Dengeleme Hizmetleri.
 

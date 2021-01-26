@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 08/26/2019
 ms.author: masnider
 ms.custom: devx-track-csharp
-ms.openlocfilehash: cb5820849fb34e232a07d610e1cedeb40c0fcfba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 87ac89edc1c9996afc03e7c2bd6743202fdfcb52
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89005335"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98786200"
 ---
 # <a name="scaling-in-service-fabric"></a>Service Fabric ölçeklendirme
 Azure Service Fabric, bir kümenin düğümlerinde Hizmetleri, bölümleri ve çoğaltmaları yöneterek ölçeklenebilir uygulamalar oluşturmayı kolaylaştırır. Aynı donanımda birçok iş yükünün çalıştırılması maksimum kaynak kullanımını sağlar, ancak aynı zamanda iş yüklerinizi ölçeklendirmeye nasıl seçeceğiniz konusunda esneklik sağlar. Bu Channel 9 videosu, ölçeklenebilir mikro hizmet uygulamaları oluşturmayı açıklar:
@@ -64,7 +64,7 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 ## <a name="scaling-by-creating-or-removing-new-named-services"></a>Yeni adlandırılmış hizmetler oluşturarak veya kaldırarak ölçekleme
 Adlandırılmış bir hizmet örneği, kümedeki bazı adlandırılmış uygulama örnekleri içinde hizmet türünün belirli bir örneğidir (bkz. [uygulama yaşam döngüsü Service Fabric](service-fabric-application-lifecycle.md)). 
 
-Hizmetler daha fazla veya daha az hale geldiği için yeni adlandırılmış hizmet örnekleri oluşturulabilir (veya kaldırılabilir). Bu, isteklerin daha fazla hizmet örneğine yayılmasını sağlar, genellikle mevcut hizmetlerde yükün azaltılmasına izin verir. Hizmet oluştururken, Service Fabric kümesi Kaynak Yöneticisi Hizmetleri dağıtılmış bir biçimde kümeye koyar. Tam kararlar, kümedeki [ölçümlere](service-fabric-cluster-resource-manager-metrics.md) ve diğer yerleştirme kurallarına tabidir. Hizmetler birkaç farklı şekilde oluşturulabilir, ancak en yaygın olarak, biri çağıran ya da kod çağırarak yönetim eylemleridir [`New-ServiceFabricService`](/powershell/module/servicefabric/new-servicefabricservice?view=azureservicefabricps) [`CreateServiceAsync`](/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync?view=azure-dotnet) . `CreateServiceAsync` , kümede çalışan diğer hizmetlerden da çağrılabilir.
+Hizmetler daha fazla veya daha az hale geldiği için yeni adlandırılmış hizmet örnekleri oluşturulabilir (veya kaldırılabilir). Bu, isteklerin daha fazla hizmet örneğine yayılmasını sağlar, genellikle mevcut hizmetlerde yükün azaltılmasına izin verir. Hizmet oluştururken, Service Fabric kümesi Kaynak Yöneticisi Hizmetleri dağıtılmış bir biçimde kümeye koyar. Tam kararlar, kümedeki [ölçümlere](service-fabric-cluster-resource-manager-metrics.md) ve diğer yerleştirme kurallarına tabidir. Hizmetler birkaç farklı şekilde oluşturulabilir, ancak en yaygın olarak, biri çağıran ya da kod çağırarak yönetim eylemleridir [`New-ServiceFabricService`](/powershell/module/servicefabric/new-servicefabricservice) [`CreateServiceAsync`](/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync) . `CreateServiceAsync` , kümede çalışan diğer hizmetlerden da çağrılabilir.
 
 Hizmetlerin dinamik olarak oluşturulması, her tür senaryoda kullanılabilir ve ortak bir modeldir. Örneğin, belirli bir iş akışını temsil eden bir durum bilgisi olan hizmeti düşünün. İşi temsil eden çağrılar bu hizmete kadar görünür ve bu hizmet bu iş akışına yönelik adımları yürütecek ve ilerlemeyi kaydetmeye devam etmektedir. 
 
@@ -128,7 +128,7 @@ Ancak neden tüm kullanıcılar için tek bir bölüm düzeni seçmeyi denemeniz
 Ölçek için derleme yaparken, aşağıdaki dinamik kalıbı göz önünde bulundurun. Durumunuza uyarlamanız gerekebilir:
 
 1. Herkes için bir bölümleme şeması seçmeyi denemek yerine "Yönetici hizmeti" oluşturun.
-2. Yönetici hizmeti 'nin işi, hizmetinize kaydolduklarında müşteri bilgilerine bakabilmenizdir. Daha sonra, bu bilgilere bağlı olarak, yönetici hizmeti _gerçek_ iletişim depolama hizmetinizin bir örneğini _yalnızca o müşteri için_oluşturur. Belirli yapılandırma, yalıtım veya yükseltmeler gerektiriyorsa, bu müşteri için bir uygulama örneği çalıştırmaya da karar verebilirsiniz. 
+2. Yönetici hizmeti 'nin işi, hizmetinize kaydolduklarında müşteri bilgilerine bakabilmenizdir. Daha sonra, bu bilgilere bağlı olarak, yönetici hizmeti _gerçek_ iletişim depolama hizmetinizin bir örneğini _yalnızca o müşteri için_ oluşturur. Belirli yapılandırma, yalıtım veya yükseltmeler gerektiriyorsa, bu müşteri için bir uygulama örneği çalıştırmaya da karar verebilirsiniz. 
 
 Bu dinamik oluşturma deseninin birçok avantajı:
 

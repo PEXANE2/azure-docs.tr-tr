@@ -3,17 +3,17 @@ title: Güvenilir koleksiyonlar için yönergeler
 description: Azure Service Fabric uygulamasında güvenilir Service Fabric koleksiyonları kullanmaya yönelik yönergeler ve öneriler.
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: 63e6de436bdaceed7f1d2a78e8385dd14bfc0ed6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f12db76f324d07c178b49150d4e574476e7d9929
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86260918"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784334"
 ---
 # <a name="guidelines-and-recommendations-for-reliable-collections-in-azure-service-fabric"></a>Azure Service Fabric güvenilir koleksiyonlar için yönergeler ve öneriler
 Bu bölüm, güvenilir durum Yöneticisi ve güvenilir koleksiyonlar kullanımına ilişkin yönergeler sağlar. Amaç, kullanıcıların ortak bir şekilde kaçınmasına yardımcı olmaktır.
 
-Yönergeler *, koşullara göre*ön koşul sunan basit öneriler olarak düzenlenir, *göz önünde bulundurun*, *önleyin* ve *Not*edin.
+Yönergeler *, koşullara göre* ön koşul sunan basit öneriler olarak düzenlenir, *göz önünde bulundurun*, *önleyin* ve *Not* edin.
 
 * Okuma işlemleri tarafından döndürülen özel türdeki bir nesneyi değiştirmeyin (örneğin, `TryPeekAsync` veya `TryGetValueAsync` ). Eşzamanlı Koleksiyonlar gibi güvenilir koleksiyonlar, bir kopya değil, nesnelere bir başvuru döndürür.
 * Değişiklik yapmadan önce özel bir türün döndürülen nesnesini derin olarak kopyalayın. Yapılar ve yerleşik türler değere göre geçiş yaptığından, bunları değiştirmek istediğiniz başvuru türü alanları veya özellikleri içermedikleri takdirde, bunlarda derin bir kopya yapmanız gerekmez.
@@ -58,10 +58,10 @@ Geçici güvenilir koleksiyonları kullanmaya karar verirken aşağıdakileri g�
 * [Güvenilir Koleksiyonlar ile çalışma](service-fabric-work-with-reliable-collections.md)
 * [İşlemler ve kilitler](service-fabric-reliable-services-reliable-collections-transactions-locks.md)
 * Verileri yönetme
-  * [Yedekleme ve geri yükleme](service-fabric-reliable-services-backup-restore.md)
+  * [Yedekleme ve Geri Yükleme](service-fabric-reliable-services-backup-restore.md)
   * [Bildirimler](service-fabric-reliable-services-notifications.md)
   * [Serileştirme ve yükseltme](service-fabric-application-upgrade-data-serialization.md)
   * [Güvenilir durum Yöneticisi yapılandırması](service-fabric-reliable-services-configuration.md)
 * Diğer
   * [Hızlı başlangıç Reliable Services](service-fabric-reliable-services-quick-start.md)
-  * [Güvenilir koleksiyonlar için geliştirici başvurusu](/dotnet/api/microsoft.servicefabric.data.collections?view=azure-dotnet#microsoft_servicefabric_data_collections)
+  * [Güvenilir koleksiyonlar için geliştirici başvurusu](/dotnet/api/microsoft.servicefabric.data.collections#microsoft_servicefabric_data_collections)

@@ -1,5 +1,5 @@
 ---
-title: Azure AD B2C 'da kimlik koruması ve koşullu erişim ayarlama
+title: Azure AD B2C'de Kimlik Koruması ve Koşullu Erişimi Ayarlama
 description: Azure AD B2C kiracının riskli oturum açma ve diğer risk olaylarını görüntülemesi ve risk algılamaları temelinde ilkeler oluşturması için kimlik koruması ve koşullu erişimi nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 ms.service: active-directory
@@ -10,14 +10,14 @@ ms.author: mimart
 author: msmimart
 manager: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2472183673e5f06f5664a306a69d14c2eaf5f82d
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 654206bccd25bf09fcdc5c3e7ee72ba97c75af2a
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94949777"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98785490"
 ---
-# <a name="set-up-identity-protection-and-conditional-access-in-azure-ad-b2c"></a>Azure AD B2C 'da kimlik koruması ve koşullu erişim ayarlama
+# <a name="set-up-identity-protection-and-conditional-access-in-azure-ad-b2c"></a>Azure AD B2C'de Kimlik Koruması ve Koşullu Erişimi Ayarlama
 
 [!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
 
@@ -38,7 +38,7 @@ Kimlik koruması varsayılan olarak açık. Azure AD B2C kiracınızda kimlik ko
 
 Aşağıdaki risk algılamaları Şu anda Azure AD B2C için desteklenmektedir:  
 
-|Risk algılama türü  |Description  |
+|Risk algılama türü  |Açıklama  |
 |---------|---------|
 | Olağandışı yolculuk     | Kullanıcının en son oturum açma işlemlerini temel alarak sıradan bir konumdan oturum açın.        |
 |Anonim IP adresi     | Anonim bir IP adresinden oturum açın (örneğin: Tor tarayıcısı, anonimleştirici VPN 'Ler).        |
@@ -94,9 +94,7 @@ Kimlik koruması risk algılamalarını temel alan koşullu erişim ilkesi eklem
 
 1. **Güvenlik** altında **koşullu erişim (Önizleme)** öğesini seçin. **Koşullu erişim ilkeleri** sayfası açılır. 
 
-1. Yeni **ilke** ' yi seçin ve yeni bir ilke oluşturmak IÇIN Azure AD koşullu erişim belgelerini izleyin. Aşağıda bir örnek verilmiştir:
-
-   - [Oturum açma riski tabanlı koşullu erişim: koşullu erişim ilkesiyle etkinleştirin](../active-directory/conditional-access/howto-conditional-access-policy-risk.md#enable-with-conditional-access-policy)
+1. Yeni **ilke** ' yi seçin ve yeni bir ilke oluşturmak IÇIN Azure AD koşullu erişim belgelerini izleyin. Risk tabanlı ilkeler için, koşul olarak kullanmak istediğiniz risk türüne bağlı olarak [Kullanıcı riskine](../active-directory/conditional-access/howto-conditional-access-policy-risk-user.md#enable-with-conditional-access-policy) veya [oturum açma riskini](../active-directory/conditional-access/howto-conditional-access-policy-risk.md#enable-with-conditional-access-policy) temel alarak ayrı ilkeler yapılandırmanız gerekecektir. Her iki risk türünü de tek bir ilkede kullanmanızı önermiyoruz.
 
    > [!IMPORTANT]
    > İlkeyi uygulamak istediğiniz kullanıcıları seçerken, yalnızca **tüm kullanıcıları** seçmeyin veya kendi oturum açmasını engelleyebilirsiniz.

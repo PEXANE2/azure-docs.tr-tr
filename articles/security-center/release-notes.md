@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/25/2021
 ms.author: memildin
-ms.openlocfilehash: 349f0b72ad7f3cb98e8f4ae9105efa9718f0b11b
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: ee9a20d3e5bb6974676d6d7a8285a56247756f64
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98752271"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784957"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure Güvenlik Merkezi 'ndeki yenilikler nelerdir?
 
@@ -39,6 +39,7 @@ Ocak ayında güncelleştirmeler şunları içerir:
 - [Şirket içi ve çoklu bulut makinelerinde güvenlik açığı değerlendirmesi, genel kullanıma sunuldu (GA)](#vulnerability-assessment-for-on-premise-and-multi-cloud-machines-is-released-for-general-availability-ga)
 - [Yönetim grupları için güvenli puan şimdi önizlemede kullanılabilir](#secure-score-for-management-groups-is-now-available-in-preview)
 - [Güvenli puan API 'SI genel kullanıma sunuldu (GA)](#secure-score-api-is-released-for-general-availability-ga)
+- [App Service için Azure Defender 'a Dangling DNS korumaları eklendi](#dangling-dns-protections-added-to-azure-defender-for-app-service)
 - [Çoklu bulut bağlayıcıları genel kullanıma sunuldu (GA)](#multi-cloud-connectors-are-released-for-general-availability-ga)
 - [Abonelikler ve yönetim grupları için tüm önerileri güvenli puanınızdan muaf tutma](#exempt-entire-recommendations-from-your-secure-score-for-subscriptions-and-management-groups)
 - [Kullanıcılar artık genel yöneticlerinden kiracı genelinde görünürlük isteğinde bulunabilir](#users-can-now-request-tenant-wide-visibility-from-their-global-administrator)
@@ -107,6 +108,21 @@ Güvenli Puanlama API 'SI ile mümkün olan dış araçların örnekleri için [
 [Azure Güvenlik Merkezi 'nde güvenli puan ve güvenlik denetimleri](secure-score-security-controls.md)hakkında daha fazla bilgi edinin.
 
 
+### <a name="dangling-dns-protections-added-to-azure-defender-for-app-service"></a>App Service için Azure Defender 'a Dangling DNS korumaları eklendi
+
+Alt etki alanı kuruluşları, kuruluşlar için ortak ve yüksek öneme sahip bir tehdittir. Önceden sağlanmış bir Web sitesine işaret eden bir DNS kaydınız varsa, alt etki alanı ele alma işlemi gerçekleşebilir. Bu tür DNS kayıtları, "dangze DNS" girişleri olarak da bilinir. CNAME kayıtları özellikle bu tehdide karşı savunmasız. 
+
+Alt etki alanı cılar, tehdit aktörlerini bir kuruluşun etki alanı için tasarlanan trafiği kötü amaçlı etkinlik gerçekleştiren bir siteye yeniden yönlendirmek üzere etkinleştirir.
+
+App Service için Azure Defender, artık bir App Service Web sitesi kullanımdan kalkdığı zaman DNS girdilerini algılar. Bu, DNS girişinin var olmayan bir kaynağa işaret ettiği ve Web sitenizin ele alındığı bir alt etki alanıyla güvenlik açığının olduğu bir çalışmadır. Bu korumalar, etki alanlarınızın Azure DNS veya dış etki alanı kaydedicisi ile yönetilip yönetilmediği ve hem Windows hem de Linux üzerinde App Service App Service için geçerlidir.
+
+Daha fazla bilgi edinin:
+
+- [Uyarı başvuru tablosu App Service](alerts-reference.md#alerts-azureappserv) -BIR tehlike DNS girişi algılandığında tetiklenecek Iki yeni Azure Defender uyarısı içerir
+- [DNS girişlerinin tehlikelere geçmeyi önleyin ve alt etki alanı devrini kullanmaktan kaçının](../security/fundamentals/subdomain-takeover.md)
+- [App Service için Azure Defender 'a giriş](defender-for-app-service-introduction.md)
+
+
 ### <a name="multi-cloud-connectors-are-released-for-general-availability-ga"></a>Çoklu bulut bağlayıcıları genel kullanıma sunuldu (GA)
 
 Bulut güvenlik hizmetleri genellikle birden çok bulut platformunu kapsayan bulut iş yükleri ile aynı olmalıdır.
@@ -153,7 +169,7 @@ Bu önizleme özelliğiyle artık öneri için bir istisna oluşturabilirsiniz:
 
 ### <a name="users-can-now-request-tenant-wide-visibility-from-their-global-administrator"></a>Kullanıcılar artık genel yöneticlerinden kiracı genelinde görünürlük isteğinde bulunabilir
 
-Bir kullanıcının güvenlik merkezi verilerini görme izni yoksa, kuruluşunuzun genel yöneticisinden bir bağlantı isteği izinleri görür. İstek, beğendikleri rolü ve neden gerekli olduğu konusunda gerekçe içerir.
+Bir kullanıcının güvenlik merkezi verilerini görme izni yoksa, kuruluşunuzun genel Yöneticisi 'nden izin istemek için bir bağlantı görür. İstek, beğendikleri rolü ve neden gerekli olduğu konusunda gerekçe içerir.
 
 :::image type="content" source="media/security-center-management-groups/request-tenant-permissions.png" alt-text="Kullanıcıya kiracı genelinde izinler isteyebilecekleri bir başlık bildiren başlık.":::
 
@@ -369,7 +385,7 @@ Bu araçlar geliştirilmiştir ve aşağıdaki yollarla genişletilmiştir:
 
 - **Sürekli dışa aktarma 'nın deployıfnotexist ilkeleri geliştirildi**. İlkeler şimdi:
 
-    - **Yapılandırmanın etkinleştirilip etkinleştirilmediğini denetleyin.** Değilse, ilke uyumlu değil olarak görünür ve uyumlu bir kaynak oluşturur. [Bir sürekli dışarı aktarma ayarlama](continuous-export.md#set-up-a-continuous-export)bölümünde "Azure ilke sekmesi ile, ölçeklendirmeye dağıtım" bölümünde sağlanan Azure ilke şablonları hakkında daha fazla bilgi edinin.
+    - **Yapılandırmanın etkinleştirilip etkinleştirilmediğini denetleyin.** Değilse, ilke uyumlu değil olarak görünür ve uyumlu bir kaynak oluşturur. Azure Ilke şablonları hakkında daha fazla bilgi edinmek için [sürekli dışarı aktarma ayarlama](continuous-export.md#set-up-a-continuous-export)bölümünde "Azure ilke sekmesi ile ölçeklendirin ölçeğinde dağıtım".
 
     - **Güvenlik bulgularını dışarı aktarma desteği.** Azure Ilke şablonlarını kullanırken, sürekli dışarı aktarmayı bulguları içerecek şekilde yapılandırabilirsiniz. Bu, güvenlik açığı değerlendirme tarayıcılarından bulguları veya ' Ana ' öneri "sistem güncelleştirmeleri" makinelerinizde yüklü olmalıdır "gibi ' Sub ' önerilerine sahip olan önerileri dışarı aktarırken geçerlidir.
     
@@ -389,7 +405,7 @@ Kasım 'daki güncelleştirmeler şunlardır:
 - [Öneriler listesi şimdi filtreler içeriyor](#recommendations-list-now-includes-filters)
 - [Otomatik sağlama deneyimi geliştirildi ve genişletildi](#auto-provisioning-experience-improved-and-expanded)
 - [Güvenli puan, sürekli dışarı aktarma (Önizleme) ile kullanılabilir](#secure-score-is-now-available-in-continuous-export-preview)
-- ["Makinelerinizde sistem güncelleştirmeleri yüklenmelidir" önerisi artık alt öneriler içeriyor](#system-updates-should-be-installed-on-your-machines-recommendation-now-includes-sub-recommendations)
+- ["Makinelerinizde sistem güncelleştirmeleri yüklenmelidir" önerisi artık alt öneriler içeriyor](#system-updates-should-be-installed-on-your-machines-recommendation-now-includes-subrecommendations)
 - [Azure portal ilke yönetimi sayfasında artık varsayılan ilke atamalarının durumu gösterilmektedir](#policy-management-page-in-the-azure-portal-now-shows-status-of-default-policy-assignments)
 
 ### <a name="29-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark"></a>Azure Güvenlik kıyaslamasının kapsamını artırmak için 29 önizleme önerileri eklenmiştir
@@ -468,7 +484,7 @@ Güvenli puanı sürekli dışa aktarma ile Azure Event Hubs veya bir Log Analyt
 [Güvenlik Merkezi verilerinin sürekli olarak nasıl dışarı aktarılacağı](continuous-export.md)hakkında daha fazla bilgi edinin.
 
 
-### <a name="system-updates-should-be-installed-on-your-machines-recommendation-now-includes-sub-recommendations"></a>"Makinelerinizde sistem güncelleştirmeleri yüklenmelidir" önerisi artık alt öneriler içeriyor
+### <a name="system-updates-should-be-installed-on-your-machines-recommendation-now-includes-subrecommendations"></a>"Makinelerinizde sistem güncelleştirmeleri yüklenmelidir" önerisi artık alt öneriler içeriyor
 
 **Sistem güncelleştirmelerinin, makinelerinizde yüklü olması** önerilir. Yeni sürüm, eksik olan her güncelleştirme için alt öneriler içerir ve aşağıdaki geliştirmeleri getirir:
 
@@ -560,7 +576,7 @@ Azure Güvenlik Merkezi için bağımsız değişken ve [kusto sorgu dili (KQL)]
 - Varlık envanteri kullanır (bağımsız değişken)
 - [Multi-Factor Authentication (MFA) etkin olmayan hesapların nasıl tanımlanacağına](security-center-identity-access.md#identify-accounts-without-multi-factor-authentication-mfa-enabled) yönelik örnek bir bağımsız değişken sorgusu belgeliyoruz
 
-Bağımsız değişken dahilinde sorgularda kullanabileceğiniz veri tabloları vardır.
+Bağımsız değişken içinde, sorgularda kullanabileceğiniz veri tabloları vardır.
 
 :::image type="content" source="./media/release-notes/azure-resource-graph-tables.png" alt-text="Azure Kaynak Grafiği Gezgini ve kullanılabilir tablolar":::
 
@@ -826,7 +842,7 @@ Ağ güvenlik gruplarıyla ilgili aşağıdaki güvenlik önerileri, bazı hatal
 
 Önizleme önerisi "Pod güvenlik Ilkeleri, Kubernetes hizmetlerinde tanımlanmalıdır", [Azure Kubernetes hizmeti](../aks/use-pod-security-policies.md) belgelerinde açıklandığı şekilde kullanımdan kaldırılmıştır.
 
-Pod güvenlik ilkesi (Önizleme) özelliği kullanımdan kaldırma için ayarlanmış ve 15 Ekim 2020 ' den sonra AKS için Azure Ilkesi 'nin kullanım dışı bırakılmayacak.
+Pod güvenlik ilkesi (Önizleme) özelliği kullanımdan kalkmaya yönelik olarak ayarlanmıştır ve, AKS için Azure Ilkesi için, 15 Ekim 2020 ' den sonra kullanılabilir olmayacaktır.
 
 Pod güvenlik ilkesi (Önizleme) kullanım dışı olduktan sonra, gelecekteki küme yükseltmelerini gerçekleştirmek ve Azure desteği içinde kalmak için kullanımdan kaldırılan özelliği kullanarak mevcut kümelerin özelliğini devre dışı bırakmanız gerekir.
 

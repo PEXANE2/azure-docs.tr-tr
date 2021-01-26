@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/19/2020
+ms.date: 01/25/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ef7b6d9495b1431e03808b830671e839b90d436
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: 0da54bd28c1d9ea933e88b6c86cf6092c10d036a
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98614288"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98785247"
 ---
 # <a name="accidental-delete-prevention"></a>Yanlışlıkla silme engellemesi
 
@@ -26,7 +26,7 @@ Aşağıdaki belge Azure AD Connect bulut eşitlemesine yönelik yanlışlıkla 
 - Yapılandırmanın yürürlüğe alınacağı nesne (eşik) sayısını ayarlayın 
 - söz konusu senaryo için söz konusu eşitleme işi karantinaya alındıktan sonra bir e-posta bildirimi almak için bir bildirim e-posta adresi ayarlayın 
 
-Bu özelliği kullanmak için, eşitleme durmak gerekirse, bu özellik için eşiği ayarlarsınız.  Bu sayıya ulaşıldığında, eşitleme durdurulur ve belirtilen e-postaya bir bildirim gönderilir.  Bu, neler olduğunu araştırmanıza olanak sağlar.
+Bu özelliği kullanmak için, eşitleme durmak gerekirse, bu özellik için eşiği ayarlarsınız.  Bu sayıya ulaşıldığında, eşitleme durdurulur ve belirtilen e-postaya bir bildirim gönderilir.  Bu bildirim, neler olduğunu araştırmanıza olanak sağlar.
 
 
 ## <a name="configure-accidental-delete-prevention"></a>Yanlışlıkla silme engellemesini yapılandırma
@@ -40,13 +40,53 @@ Yeni özelliği kullanmak için aşağıdaki adımları izleyin.
 5. **Ayarlar** altında şunları girin:
     - **Bildirim e-postası** -e-posta bildirimleri için kullanılır
     - **Yanlışlıkla Silmeleri engelle** -özelliği etkinleştirmek için bu kutuyu işaretleyin
-    - **Yanlışlıkla silme eşiği** -eşitleme durdurma ve bildirim tetiklenecek nesne sayısını girin
+    - **Yanlışlıkla silme eşiği** -eşitlemeye durdurulacak nesne sayısını girin ve bildirim gönderin
 
 ![Yanlışlıkla silme](media/how-to-accidental-deletes/accident-1.png)
 
+## <a name="recovering-from-an-accidental-delete-instance"></a>Yanlışlıkla silme örneğinden kurtarma
+Yanlışlıkla silme işlemi yaşarsanız, bunu sağlama Aracısı yapılandırmanızın durumunda görürsünüz.  Bu, **silme eşiğinin aşıldığını** söylüyor.
+ 
+![Yanlışlıkla silme durumu](media/how-to-accidental-deletes/delete-1.png)
+
+**Delete eşiğini** tıklatarak, eşitleme durum bilgilerini görürsünüz.  Bu, ek ayrıntılar sağlar. 
+ 
+ ![Eşitleme durumu](media/how-to-accidental-deletes/delete-2.png)
+
+Üç nokta işaretine sağ tıklayıp aşağıdaki seçenekleri görürsünüz:
+ - Sağlama günlüğünü görüntüle
+ - Aracıyı görüntüle
+ - Silmeleri izin ver
+
+ ![Sağ tıklama](media/how-to-accidental-deletes/delete-3.png)
+
+**Görünüm sağlama günlüğünü** kullanarak, **stageddelete** girdilerini görebilir ve silinen kullanıcılara girilen bilgileri inceleyebilirsiniz.
+ 
+ ![Sağlama günlükleri](media/how-to-accidental-deletes/delete-7.png)
+
+### <a name="allowing-deletes"></a>Silmeleri izin verme
+
+**Silmeleri Izin ver** eylemi, yanlışlıkla silme eşiğini tetikleyen nesneleri siler.  Silmeleri kabul etmek için aşağıdaki yordamı kullanın.  
+
+1. Üç noktaya sağ tıklayıp **silmeleri Izin ver**' i seçin.
+2. Silinmelere izin vermek için onay üzerinde **Evet** ' e tıklayın.
+ 
+ ![Onaylama sırasında Evet](media/how-to-accidental-deletes/delete-4.png)
+
+3. Silme işlemlerinin kabul edildiğini ve durumun sonraki döngüde sağlıklı olarak geri dönediğine ilişkin onay görürsünüz. 
+ 
+ ![Silmeleri kabul et](media/how-to-accidental-deletes/delete-8.png)
+
+### <a name="rejecting-deletions"></a>Silme işlemleri reddediliyor
+
+Silme işlemleri için izin vermek istemiyorsanız, aşağıdakileri yapmanız gerekir:
+- silme işlemlerinin kaynağını araştırın
+- sorunu düzeltemedi (örneğin, OU yanlışlıkla kapsam dışına taşındı ve artık kapsama yeniden eklediniz)
+- Aracı yapılandırmasında **yeniden başlatma eşitlemesini** Çalıştır
+
 ## <a name="next-steps"></a>Sonraki adımlar 
 
-- [Azure AD Connect bulut eşitlemesi nedir?](what-is-cloud-sync.md)
-- [Azure AD Connect bulut eşitlemesi nasıl yüklenir](how-to-install.md)
+- [Azure AD Connect bulut eşitleme sorunlarını giderme](how-to-troubleshoot.md)
+- [Azure AD Connect bulut eşitleme hata kodları](reference-error-codes.md)
  
 

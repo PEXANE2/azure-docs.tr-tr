@@ -3,12 +3,12 @@ title: Tek başına Azure Service Fabric kümesi oluşturma
 description: Şirket içinde veya herhangi bir bulutta olsun, Windows Server çalıştıran herhangi bir makinede (fiziksel veya sanal) bir Azure Service Fabric kümesi oluşturun.
 ms.topic: conceptual
 ms.date: 2/21/2019
-ms.openlocfilehash: 36883f2c8b09fa3f8f013e0267dafa2a8220e5d2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 41af655be07ccae2b66e75f5bfe87629cdb54924
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91843201"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98785693"
 ---
 # <a name="create-a-standalone-cluster-running-on-windows-server"></a>Windows Server üzerinde çalıştırılan bir tek başına küme oluşturma
 Azure Service Fabric 'yi, Windows Server çalıştıran tüm sanal makinelerde veya bilgisayarlarda Service Fabric kümeler oluşturmak için kullanabilirsiniz. Bu, birbirine bağlı bir Windows Server bilgisayarları kümesi içeren herhangi bir ortamda Service Fabric uygulamaları dağıtabileceğiniz ve çalıştırabileceğiniz anlamına gelir. Bu durumda, şirket içinde veya herhangi bir bulut sağlayıcısıyla olabilirsiniz. Service Fabric, tek başına Windows Server paketi olarak adlandırılan Service Fabric kümeleri oluşturmak için bir kurulum paketi sağlar. Azure 'daki geleneksel Service Fabric kümeleri yönetilen bir hizmet olarak kullanılabilir, tek başına Service Fabric kümeler self servis. Farklar hakkında daha fazla bilgi için bkz. [Azure ve tek başına Service Fabric kümelerini karşılaştırma](./service-fabric-deploy-anywhere.md).
@@ -116,7 +116,7 @@ Service Fabric çalışma zamanı paketi, küme oluşturma sırasında otomatik 
 *.\ClusterConfig.js* ve *.\MicrosoftAzureServiceFabric.cab* , sırasıyla küme yapılandırmasına ve çalışma zamanı. cab dosyasına yönelik yollardır.
 
 ### <a name="step-2-connect-to-the-cluster"></a>2. Adım: kümeye bağlanma
-Kümenin çalıştığını ve kullanılabilir olduğunu doğrulamak için kümeye bağlanın. ServiceFabric PowerShell modülü çalışma zamanıyla birlikte yüklenir.  Kümeye küme düğümlerinden birinden veya Service Fabric çalışma zamanına sahip uzak bir bilgisayardan bağlanabilirsiniz.  [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) cmdlet’i, kümeyle bir bağlantı kurar.
+Kümenin çalıştığını ve kullanılabilir olduğunu doğrulamak için kümeye bağlanın. ServiceFabric PowerShell modülü çalışma zamanıyla birlikte yüklenir.  Kümeye küme düğümlerinden birinden veya Service Fabric çalışma zamanına sahip uzak bir bilgisayardan bağlanabilirsiniz.  [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster) cmdlet’i, kümeyle bir bağlantı kurar.
 
 Güvenli olmayan bir kümeye bağlanmak için aşağıdaki PowerShell komutunu çalıştırın:
 
@@ -129,7 +129,7 @@ Connect-ServiceFabricCluster -ConnectionEndpoint <*IPAddressofaMachine*>:<Client
 Connect-ServiceFabricCluster -ConnectionEndpoint 192.13.123.234:19000
 ```
 
-Bir kümeye bağlanmayla ilgili diğer örnekler için bkz. [Güvenli bir kümeye bağlanma](service-fabric-connect-to-secure-cluster.md). Kümeye bağlandıktan sonra, kümedeki düğümlerin listesini ve her bir düğümün durum bilgilerini görüntülemek için [Get-ServiceFabricNode](/powershell/module/servicefabric/get-servicefabricnode?view=azureservicefabricps) cmdlet’ini kullanın. Her düğüm için **HealthState** değerinin *OK* olması gerekir.
+Bir kümeye bağlanmayla ilgili diğer örnekler için bkz. [Güvenli bir kümeye bağlanma](service-fabric-connect-to-secure-cluster.md). Kümeye bağlandıktan sonra, kümedeki düğümlerin listesini ve her bir düğümün durum bilgilerini görüntülemek için [Get-ServiceFabricNode](/powershell/module/servicefabric/get-servicefabricnode) cmdlet’ini kullanın. Her düğüm için **HealthState** değerinin *OK* olması gerekir.
 
 ```powershell
 PS C:\temp\Microsoft.Azure.ServiceFabric.WindowsServer> Get-ServiceFabricNode |Format-Table

@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 10/20/2020
 ms.author: alkohli
-ms.openlocfilehash: 11122b57a1971f328a8a83c3dea136813426c060
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 13d3809611714992f24a66a96c22074e69fba9bd
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96583081"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98786665"
 ---
 # <a name="azure-data-box-gateway-security-and-data-protection"></a>Azure Data Box Gateway Güvenlik ve veri koruması
 
@@ -55,7 +55,7 @@ Daha fazla bilgi için bkz. [etkinleştirme anahtarı edinme](data-box-gateway-d
 
 Parolalar yalnızca yetkili kullanıcıların verilerinize erişebilmesini güvence altına alabilir. Data Box Gateway cihazların kilitli durumda olması.
 
-Şunları yapabilirsiniz:
+Seçenekleriniz şunlardır:
 
 - Cihazın yerel Web Kullanıcı arabirimine bir tarayıcı aracılığıyla bağlanın ve ardından cihazda oturum açmak için bir parola sağlayın.
 - HTTP üzerinden cihazın PowerShell arabirimine uzaktan bağlanın. Uzaktan yönetim varsayılan olarak açıktır. Daha sonra cihazda oturum açmak için cihaz parolasını sağlayabilirsiniz. Daha fazla bilgi için bkz. [Data Box Gateway cihazınıza uzaktan bağlanma](data-box-gateway-connect-powershell-interface.md#connect-to-the-powershell-interface).
@@ -83,9 +83,9 @@ Bu bölümde, geçişi ve depolanan verileri koruyan Data Box Gateway Güvenlik 
 
 ### <a name="protect-the-device-data-using-bitlocker"></a>BitLocker kullanarak cihaz verilerini koruma
 
-Data Box Gateway sanal makinenizde sanal disklerin güvenliğini sağlamak için BitLocker 'ı etkinleştirmenizi öneririz. Varsayılan olarak, BitLocker etkin değildir. Daha fazla bilgi için bkz:
+Data Box Gateway sanal makinenizde sanal disklerin güvenliğini sağlamak için BitLocker 'ı etkinleştirmenizi öneririz. Varsayılan olarak, BitLocker etkin değildir. Daha fazla bilgi için bkz.
 
-- [Hyper-V Yöneticisi 'nde şifreleme desteği ayarları](hhttps://docs.microsoft.com/windows-server/virtualization/hyper-v/learn-more/generation-2-virtual-machine-security-settings-for-hyper-v#encryption-support-settings-in-hyper-v-manager)
+- [Hyper-V Yöneticisi 'nde şifreleme desteği ayarları](/windows-server/virtualization/hyper-v/learn-more/generation-2-virtual-machine-security-settings-for-hyper-v#encryption-support-settings-in-hyper-v-manager)
 - [Sanal makinede BitLocker desteği](https://kb.vmware.com/s/article/2036142)
 
 ## <a name="manage-personal-information"></a>Kişisel bilgileri yönetme

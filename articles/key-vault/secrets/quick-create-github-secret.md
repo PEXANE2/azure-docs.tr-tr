@@ -8,12 +8,12 @@ ms.date: 11/24/2020
 ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
-ms.openlocfilehash: 9509f84b14a42180189a529282b5db348deab279
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: c1e8062210de1d7d99f57a4e0b155492f7dfdd9a
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95920289"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98785985"
 ---
 # <a name="use-key-vault-secrets-in-github-actions-workflows"></a>GitHub eylemleri iş akışlarında Key Vault gizli dizileri kullanma
 
@@ -22,10 +22,10 @@ ms.locfileid: "95920289"
 Key Vault ve GitHub eylemleri sayesinde, merkezi bir gizli dizi yönetim aracının avantajlarına ve GitHub eylemlerinin tüm avantajlarına sahip olursunuz. GitHub eylemleri, yazılım geliştirme iş akışlarınızı otomatikleştirmek için GitHub 'daki bir özellik paketidir. İş akışlarını, kodu depoladığınız ve çekme isteklerinde ve sorunlarda işbirliği yaptığınız aynı yere dağıtabilirsiniz. 
 
 
-## <a name="prerequisites"></a>Önkoşullar 
+## <a name="prerequisites"></a>Ön koşullar 
 - GitHub hesabı. Bir hesabınız yoksa [ücretsiz](https://github.com/join)kaydolun.  
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-- GitHub deposuna bağlanmış bir Azure uygulaması. Bu örnek [Azure App Service için kapsayıcı dağıtma](https://docs.microsoft.com/azure/developer/javascript/tutorial-vscode-docker-node-01)kullanır. 
+- GitHub deposuna bağlanmış bir Azure uygulaması. Bu örnek [Azure App Service için kapsayıcı dağıtma](/azure/developer/javascript/tutorial-vscode-docker-node-01)kullanır. 
 - Azure Anahtar Kasası.  Azure portal, Azure CLı veya Azure PowerShell kullanarak Azure Key Vault oluşturabilirsiniz.
 
 ## <a name="workflow-file-overview"></a>İş akışı dosyasına genel bakış

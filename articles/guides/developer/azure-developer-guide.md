@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
-ms.openlocfilehash: 9999b2fa116a2336f8e50fb166e5d870ae4b5a5f
-ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
+ms.openlocfilehash: a193ccd060c75cf4031449ddf3318af6e4691436
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98165068"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98786478"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Azure geliştiricileri için başlangıç kılavuzu
 
@@ -84,7 +84,7 @@ Kodunuzu çalıştırmak için tüm uygulamayı veya altyapıyı oluşturma ve y
 
 > **Ne zaman kullanılır**: diğer Azure hizmetleri tarafından tetiklenen kodunuz varsa, Web tabanlı olaylara veya bir zamanlamaya göre Azure işlevleri 'ni kullanın. Ayrıca, tüm barındırılan bir projenin ek yüküne gerek duymadığınızda veya yalnızca kodunuzun çalıştığı zaman için ödeme yapmak istediğinizde Işlevleri de kullanabilirsiniz. Daha fazla bilgi için bkz. [Azure Işlevlerine genel bakış](../../azure-functions/functions-overview.md).
 >
-> **Kullanmaya başlayın**: portaldan [ilk işlevinizi oluşturmak](../../azure-functions/functions-create-first-azure-function.md) için işlevler hızlı başlangıç öğreticisini izleyin.
+> **Kullanmaya başlayın**: portaldan [ilk işlevinizi oluşturmak](../../azure-functions/functions-get-started.md) için işlevler hızlı başlangıç öğreticisini izleyin.
 >
 > **Şimdi deneyin**: Azure Işlevleri, Azure hesabına kaydolmak zorunda kalmadan kodunuzu çalıştırmanızı sağlar. Şimdi deneyin ve [Ilk Azure işlevinizi oluşturun](https://tryappservice.azure.com/).
 
@@ -248,7 +248,7 @@ Azure, uygulamalarınızı ve hizmetlerinizi komut satırından yönetmenin iki 
 
 -   [Azure PowerShell](/powershell/azure/): Windows PowerShell kullanarak Azure kaynaklarını yönetmenizi sağlayan cmdlet 'ler içeren bir modül kümesi sağlar.
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure portalı
 
 [Azure Portal](https://portal.azure.com) Web tabanlı bir uygulamadır. Azure kaynakları ve hizmetleri oluşturmak, yönetmek ve kaldırmak için Azure portal kullanabilirsiniz. Şunları içerir:
 

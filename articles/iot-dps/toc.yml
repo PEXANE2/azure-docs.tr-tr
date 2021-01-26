@@ -124,8 +124,6 @@
       items:
         - name: Kayıtları yönetme - Portal
           href: how-to-manage-enrollments.md
-        - name: Kayıtları yönetme - Hizmet SDK’ları
-          href: how-to-manage-enrollments-sdks.md
         - name: Doğrulanmış CA sertifikalarını yapılandırma
           href: how-to-verify-certificates.md
         - name: Cihaz sertifikalarını kullanıma sunma
@@ -150,10 +148,6 @@
         - name: Windows
           href: ../iot-edge/how-to-auto-provision-simulated-device-windows.md
           maintainContext: true
-    - name: Kanıtlama mekanizmasını SDK ile kullanma
-      href: use-hsm-with-sdk.md
-    - name: Geliştirme için SDK araçlarını kullanma
-      href: how-to-use-sdk-tools.md
     - name: Cihazlardan ek veriler gönderme
       href: how-to-send-additional-data.md
     - name: Sorun giderme

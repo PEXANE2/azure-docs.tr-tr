@@ -7,12 +7,12 @@ ms.reviewer: jehollan, klam, logicappspm
 ms.topic: article
 ms.date: 11/08/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 25f761d85ebfd0ac16f182941c5b5c29636066bf
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: a7df9ba1318f40de8af392cfaedbe51d7a5df755
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96000343"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784946"
 ---
 # <a name="call-or-trigger-logic-apps-by-using-azure-functions-and-azure-service-bus"></a>Azure Işlevleri 'ni ve Azure Service Bus kullanarak mantıksal uygulamaları çağırın veya tetikleyin
 
@@ -24,7 +24,7 @@ Uzun süre çalışan bir dinleyici veya görev dağıtmanız gerektiğinde, bir
 
 * Bir Azure Service Bus ad alanı. Bir ad alanınız yoksa, [önce ad alanınızı oluşturun](../service-bus-messaging/service-bus-create-namespace-portal.md).
 
-* İşlevleriniz için bir kapsayıcı olan bir işlev uygulaması. Bir işlev uygulamanız yoksa, [önce işlev uygulamanızı oluşturun](../azure-functions/functions-create-first-azure-function.md)ve çalışma zamanı yığını olarak .net ' i seçtiğinizden emin olun.
+* İşlevleriniz için bir kapsayıcı olan bir işlev uygulaması. Bir işlev uygulamanız yoksa, [önce işlev uygulamanızı oluşturun](../azure-functions/functions-get-started.md)ve çalışma zamanı yığını olarak .net ' i seçtiğinizden emin olun.
 
 * [Mantıksal uygulamalar oluşturma](../logic-apps/quickstart-create-first-logic-app-workflow.md) hakkında temel bilgi
 
