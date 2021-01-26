@@ -11,14 +11,14 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: b190bf0c474640c07d84971069072d3af2faa66d
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: c5827a0e07e537b66684f852d8f3e1500cd9febb
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321897"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788850"
 ---
-# <a name="sample-data-in-azure-blob-storage"></a><a name="heading"></a>Azure blob depolamadaki verileri örneklendirme
+# <a name="sample-data-in-azure-blob-storage"></a><a name="heading"></a>Azure Blob depolamada örnek veriler
 
 Bu makalede, Azure Blob depolamada depolanan örnekleme verileri, programlı bir şekilde indirilip Python 'da yazılan yordamlar kullanılarak örneklenerek ele alınmaktadır.
 

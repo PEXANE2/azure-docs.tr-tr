@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: how-to
 ms.date: 12/18/2020
 ms.author: alkohli
-ms.openlocfilehash: aac1fb8e2da7a3c84b3abff47c8f476b9fb9049c
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 42476e2689cc503edc19e8e299a01ce922f1bf42
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98704347"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789204"
 ---
 # <a name="tutorial-create-export-order-for-azure-data-box"></a>Öğretici: Azure Data Box için dışarı aktarma siparişi oluşturma
 
@@ -179,7 +179,7 @@ Cihaz sipariş etmek için Azure portalında aşağıdaki adımları izleyin.
 
 15. Bu kaynağa erişimi yönetmek için kullanacağınız bir kullanıcı kimliği seçin. **Kullanıcı kimliği Seç ' i** seçin. Sağdaki bölmede, kullanılacak aboneliği ve yönetilen kimliği seçin. Ardından **Seç** seçeneğini belirleyin.
 
-    Kullanıcı tarafından atanan yönetilen kimlik, birden fazla kaynağı yönetmek için kullanılabilecek tek başına bir Azure kaynağıdır. Daha fazla bilgi için bkz. [yönetilen kimlik türleri](/azure/active-directory/managed-identities-azure-resources/overview).  
+    Kullanıcı tarafından atanan yönetilen kimlik, birden fazla kaynağı yönetmek için kullanılabilecek tek başına bir Azure kaynağıdır. Daha fazla bilgi için bkz. [yönetilen kimlik türleri](../active-directory/managed-identities-azure-resources/overview.md).  
 
     Yeni bir yönetilen kimlik oluşturmanız gerekiyorsa, [Azure Portal kullanarak Kullanıcı tarafından atanan yönetilen kimlik oluşturma, listeleme, silme veya rol atama](../../articles/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)bölümündeki yönergeleri izleyin.
     

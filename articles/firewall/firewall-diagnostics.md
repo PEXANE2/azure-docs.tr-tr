@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: how-to
 ms.date: 11/04/2020
 ms.author: victorh
-ms.openlocfilehash: 2dd1b51c6bcdbc531661d9ecf45d3d0282eb5b45
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 52c6ef9edfc42bf1ad3b3279e0fa4e19b4cf502c
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358856"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788273"
 ---
 # <a name="monitor-azure-firewall-logs-and-metrics"></a>Azure Güvenlik Duvarı günlüklerini ve ölçümlerini izleme
 
@@ -24,7 +24,7 @@ Bu günlüklerden bazılarına portaldan erişebilirsiniz. Günlükler [Azure iz
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamadan önce Azure Güvenlik Duvarı için kullanılabilen tanılama günlüklerine ve ölçümlere genel bir bakış için [Azure Güvenlik Duvarı günlüklerini ve ölçümlerini](logs-and-metrics.md) okumalısınız.
 
@@ -33,7 +33,7 @@ Başlamadan önce Azure Güvenlik Duvarı için kullanılabilen tanılama günl�
 Tanılama günlüğüne kaydetme işlemi etkinleştirildikten sonra verilerin günlükte görünmesi birkaç dakika sürebilir. İlk seferde görünen veri olmazsa birkaç dakika sonra tekrar deneyin.
 
 1. Azure portal, güvenlik duvarı kaynak grubunuzu açın ve güvenlik duvarını seçin.
-2. **İzleme** bölümünde **Tanılama ayarları** 'nı seçin.
+2. **İzleme** bölümünde **Tanılama ayarları**'nı seçin.
 
    Azure Güvenlik Duvarı için hizmete özgü dört günlük kullanılabilir:
 
@@ -43,12 +43,12 @@ Tanılama günlüğüne kaydetme işlemi etkinleştirildikten sonra verilerin g�
    * AzureFirewallDnsProxy
 
 
-3. **Tanılama ayarı Ekle** ' yi seçin. **Tanılama ayarları** sayfasında tanılama günlükleriyle ilgili ayarlar bulunur.
+3. **Tanılama ayarı ekle**’yi seçin. **Tanılama ayarları** sayfasında tanılama günlükleriyle ilgili ayarlar bulunur.
 5. Bu örnekte, Azure Izleyici günlükleri günlükleri depolar, bu nedenle ad için **güvenlik duvarı Log Analytics** yazın.
-6. **Günlük** altında, günlükleri toplamak için **AzureFirewallApplicationRule** , **AzureFirewallNetworkRule** , **AzureFirewallThreatIntelLog** ve **AzureFirewallDnsProxy** öğesini seçin.
+6. **Günlük** altında, günlükleri toplamak için **AzureFirewallApplicationRule**, **AzureFirewallNetworkRule**, **AzureFirewallThreatIntelLog** ve **AzureFirewallDnsProxy** öğesini seçin.
 7. Çalışma alanınızı yapılandırmak için **Log Analytics gönder** ' i seçin.
 8. Aboneliğinizi seçin.
-9. **Kaydet** ’i seçin.
+9. **Kaydet**’i seçin.
 
 ## <a name="enable-diagnostic-logging-by-using-powershell"></a>PowerShell kullanarak tanılama günlüğünü etkinleştirme
 
@@ -104,15 +104,15 @@ Azure CLı ile tanılama günlüğünü etkinleştirmek için aşağıdaki adım
 
 Aşağıdaki yöntemlerden birini kullanarak etkinlik günlüğü verilerini görüntüleyebilir ve analiz edebilirsiniz:
 
-* **Azure araçları** : Etkinlik günlüğü verilerini Azure PowerShell, Azure CLI, Azure REST API veya Azure portal üzerinden alabilirsiniz. Her yöntemle ilgili ayrıntılı adımlar [Kaynak Yöneticisi etkinlik işlemleri](../azure-resource-manager/management/view-activity-logs.md) makalesinde ayrıntılı bir şekilde anlatılmıştır.
-* **Power BI** : [Power BI](https://powerbi.microsoft.com/pricing) hesabınız yoksa ücretsiz oluşturabilirsiniz. [Power BI için Azure Activity Logs içerik paketi](https://powerbi.microsoft.com/en-us/documentation/powerbi-content-pack-azure-audit-logs/) ile verilerinizi önceden yapılandırılmış panoları olduğu gibi veya değiştirerek kullanarak analiz edebilirsiniz.
-* **Azure Sentinel** : Azure Güvenlik Duvarı günlüklerini Azure Sentinel 'e bağlanarak, çalışma kitaplarında günlük verilerini görüntülemenize, özel uyarılar oluşturmak için bu uygulamayı kullanmanıza ve araştırmanızı iyileştirebilecek şekilde katabilirsiniz. Azure Sentinel 'deki Azure Güvenlik Duvarı veri Bağlayıcısı Şu anda genel önizlemededir. Daha fazla bilgi için bkz. [Azure güvenlik duvarından verileri bağlama](../sentinel/connect-azure-firewall.md).
+* **Azure araçları**: Etkinlik günlüğü verilerini Azure PowerShell, Azure CLI, Azure REST API veya Azure portal üzerinden alabilirsiniz. Her yöntemle ilgili ayrıntılı adımlar [Kaynak Yöneticisi etkinlik işlemleri](../azure-resource-manager/management/view-activity-logs.md) makalesinde ayrıntılı bir şekilde anlatılmıştır.
+* **Power BI**: [Power BI](https://powerbi.microsoft.com/pricing) hesabınız yoksa ücretsiz oluşturabilirsiniz. [Power BI için Azure Activity Logs içerik paketi](https://powerbi.microsoft.com/en-us/documentation/powerbi-content-pack-azure-audit-logs/) ile verilerinizi önceden yapılandırılmış panoları olduğu gibi veya değiştirerek kullanarak analiz edebilirsiniz.
+* **Azure Sentinel**: Azure Güvenlik Duvarı günlüklerini Azure Sentinel 'e bağlanarak, çalışma kitaplarında günlük verilerini görüntülemenize, özel uyarılar oluşturmak için bu uygulamayı kullanmanıza ve araştırmanızı iyileştirebilecek şekilde katabilirsiniz. Azure Sentinel 'deki Azure Güvenlik Duvarı veri Bağlayıcısı Şu anda genel önizlemededir. Daha fazla bilgi için bkz. [Azure güvenlik duvarından verileri bağlama](../sentinel/connect-azure-firewall.md).
 
 ## <a name="view-and-analyze-the-network-and-application-rule-logs"></a>Ağ ve uygulama kuralı günlüklerini görüntüleme ve analiz etme
 
 [Azure izleyici günlükleri](../azure-monitor/insights/azure-networking-analytics.md) sayaç ve olay günlüğü dosyalarını toplar. Günlüklerinizi analiz etmek için görselleştirmelere ve güçlü arama özelliklerine sahiptir.
 
-Azure Güvenlik Duvarı günlük Analizi örnek sorguları için bkz. [Azure Güvenlik Duvarı günlük Analizi örnekleri](log-analytics-samples.md).
+Azure Güvenlik Duvarı günlük Analizi örnek sorguları için bkz. [Azure Güvenlik Duvarı günlük Analizi örnekleri](./firewall-workbook.md).
 
 [Azure Güvenlik Duvarı çalışma kitabı](firewall-workbook.md) , Azure Güvenlik Duvarı veri analizi için esnek bir tuval sağlar. Azure portal içinde zengin görsel raporlar oluşturmak için kullanabilirsiniz. Azure üzerinde dağıtılan birden çok Güvenlik duvarınıza dokunabilir ve bunları Birleşik etkileşimli deneyimler halinde birleştirebilirsiniz.
 
@@ -122,7 +122,7 @@ Dilerseniz depolama hesabınıza bağlanabilir ve JSON erişim günlüklerini ve
 > Visual Studio ve C# ile sabit ve değişken değerlerini değiştirme konusunda temel kavramlara hakimseniz GitHub'daki [günlük dönüştürücü araçlarını](https://github.com/Azure-Samples/networking-dotnet-log-converter) kullanabilirsiniz.
 
 ## <a name="view-metrics"></a>Ölçümleri görüntüle
-Azure Güvenlik Duvarı ' na giderek **Izleme** **ölçüm** ' i seçin. Kullanılabilir değerleri görüntülemek için **ÖLÇÜM** açılan listesini seçin.
+Azure Güvenlik Duvarı ' na giderek **Izleme** **ölçüm**' i seçin. Kullanılabilir değerleri görüntülemek için **ÖLÇÜM** açılan listesini seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

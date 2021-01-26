@@ -3,12 +3,12 @@ title: Birden çok ortam için uygulamaları yönetme
 description: Azure Service Fabric uygulamaları, bir makineden binlerce makineye kadar olan kümeler üzerinde çalıştırılabilir. Bazı durumlarda, bu değişen ortamlar için uygulamanızı farklı şekilde yapılandırmak isteyeceksiniz. Bu makalede, ortam başına farklı uygulama parametrelerinin nasıl tanımlanacağı ele alınmaktadır.
 ms.topic: conceptual
 ms.date: 02/23/2018
-ms.openlocfilehash: 51bc77abca8ce2b3878df1c1859203618d3e2e27
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: c907540c03788ab5f4087a96e301f18ab7ced4ca
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96574454"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98787986"
 ---
 # <a name="manage-applications-for-multiple-environments"></a>Birden çok ortam için uygulamaları yönetme
 
@@ -38,7 +38,7 @@ Sağladığınız yapılandırma iki kategoride ayrılabilir:
 
 Service Fabric içinde adlandırılmış bir uygulama örnekleri oluştururken, parametreleri geçirme seçeneğiniz vardır. Bunu yapmanın yolu, uygulama örneğini oluşturma şeklinize bağlıdır.
 
-  - PowerShell 'de cmdlet, [`New-ServiceFabricApplication`](/powershell/module/servicefabric/new-servicefabricapplication?view=azureservicefabricps) Uygulama parametrelerini bir Hashtable olarak alır.
+  - PowerShell 'de cmdlet, [`New-ServiceFabricApplication`](/powershell/module/servicefabric/new-servicefabricapplication) Uygulama parametrelerini bir Hashtable olarak alır.
   - Sfctl kullanarak, [`sfctl application create`](./service-fabric-sfctl-application.md#sfctl-application-create) komut PARAMETRELERI JSON dizesi olarak alır. İnstall.sh betiği sfctl kullanır.
   - Visual Studio, uygulama projesindeki Parameters klasöründe parametre dosyaları kümesi sağlar. Bu parametre dosyaları, Visual Studio 'dan yayımlarken Azure DevOps Services veya Azure DevOps Server kullanılarak kullanılır. Visual Studio 'da parametre dosyaları Deploy-FabricApplication.ps1 betiğe geçirilir.
 

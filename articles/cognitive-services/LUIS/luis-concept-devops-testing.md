@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 06/3/2020
-ms.openlocfilehash: f002bfdd5aeb784b5b10b549389e663216fa0361
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: cd2fd8dc8c10864089b198db1ca1089f994a3ffb
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97561231"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788460"
 ---
 # <a name="testing-for-luis-devops"></a>LUSıS DevOps için test etme
 
@@ -28,7 +28,7 @@ Sürekli Tümleştirme iş akışlarında gerçekleştirmeniz gereken bir LUO uy
 Bu tür bir test, [luın portalında](https://www.luis.ai/)yapabileceğiniz [etkileşimli teste](./luis-concept-test.md) benzerdir.
 
 - **Toplu iş testleri** -Batch testi, performansını ölçmek için geçerli eğitilen modelinize yönelik kapsamlı bir sınamadır. Birim testlerinin aksine toplu işlem testi başarılı olmaz | başarısız test. Toplu iş testi ile beklendiğinde, her testin beklenen amacı ve beklenen varlıkları döndürmesi gerekir. Bunun yerine, bir Batch testi uygulamanızdaki her bir amaç ve varlığın doğruluğunu görüntülemenize ve iyileştirmeler yaparken zaman içinde karşılaştırmanıza yardımcı olur.  
-Bu tür bir test, LUO portalında etkileşimli olarak gerçekleştirebileceğiniz [Batch testi](./luis-concept-batch-test.md) ile aynıdır.
+Bu tür bir test, LUO portalında etkileşimli olarak gerçekleştirebileceğiniz [Batch testi](./luis-how-to-batch-test.md) ile aynıdır.
 
 Projenizin başından birim testi kullanabilirsiniz. Toplu iş testi, LUSıS uygulamanızın şemasını geliştirdikten ve doğruluğunu iyileştirmek için çalışmanız durumunda yalnızca bir değerden oluşur.
 
@@ -42,7 +42,7 @@ Bir test kümesi yazdığınızda, tanımlamanız gereken her bir test için:
 * Beklenen amaç
 * Beklenen varlıklar.
 
-Bir test grubunu JSON biçimli bir dosyada tanımlamak için LUO [Batch dosyası sözdizimini](./luis-concept-batch-test.md#batch-syntax-template-for-intents-with-entities) kullanın. Örnek:
+Bir test grubunu JSON biçimli bir dosyada tanımlamak için LUO [Batch dosyası sözdizimini](./luis-how-to-batch-test.md#batch-syntax-template-for-intents-with-entities) kullanın. Örneğin:
 
 ```JSON
 [
@@ -85,7 +85,7 @@ Birim testlerinde, anahtar varlıklarınızın tahmin yanıtında döndürüldü
 
 #### <a name="designing-batch-tests"></a>Batch testlerini tasarlama
 
-Batch test kümeleri, tüm amaçlar genelinde ve LUSıS uygulamanızdaki tüm varlıklarda test etmek için tasarlanan çok sayıda test çalışması içermelidir. Batch test kümesi tanımlama hakkında bilgi için bkz. [LUA portalında Batch test etme](./luis-concept-batch-test.md) .
+Batch test kümeleri, tüm amaçlar genelinde ve LUSıS uygulamanızdaki tüm varlıklarda test etmek için tasarlanan çok sayıda test çalışması içermelidir. Batch test kümesi tanımlama hakkında bilgi için bkz. [LUA portalında Batch test etme](./luis-how-to-batch-test.md) .
 
 ### <a name="running-tests"></a>Testleri çalıştırma
 
@@ -93,7 +93,7 @@ Lua portalı etkileşimli test konusunda yardımcı olacak özellikler sunar:
 
 * [**Etkileşimli test**](./luis-concept-test.md) , örnek bir değer göndermenize ve lu, tanınan amaçlardan ve varlıklardan yanıt almanıza olanak sağlar. Testin başarısını görsel inceleme ile doğrularsınız.
 
-* [**Toplu işlem**](./luis-concept-batch-test.md) testi, etkin eğitilen sürümünüzü, tahmin doğruluğunu ölçecek şekilde doğrulamak için giriş olarak bir toplu işlem test dosyası kullanır. Batch testi, etkin sürümünüzde her bir amaç ve varlığın doğruluğunu görüntülemenize yardımcı olur ve sonuçları grafik ile görüntüler.
+* [**Toplu işlem**](./luis-how-to-batch-test.md) testi, etkin eğitilen sürümünüzü, tahmin doğruluğunu ölçecek şekilde doğrulamak için giriş olarak bir toplu işlem test dosyası kullanır. Batch testi, etkin sürümünüzde her bir amaç ve varlığın doğruluğunu görüntülemenize yardımcı olur ve sonuçları grafik ile görüntüler.
 
 #### <a name="running-tests-in-an-automated-build-workflow"></a>Otomatikleştirilmiş derleme iş akışında testleri çalıştırma
 

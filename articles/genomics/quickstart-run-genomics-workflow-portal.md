@@ -9,18 +9,18 @@ ms.service: genomics
 ms.topic: quickstart
 ms.date: 01/11/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: 85665dbda2ed11ffa04b71e4317f2b34b83d317f
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: cefb0105a0a95d26aadea2a98fc4d3cec68ccc03
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96349376"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98787360"
 ---
 # <a name="quickstart-run-a-workflow-through-the-microsoft-genomics-service"></a>Hızlı Başlangıç: Microsoft Genomiks hizmeti üzerinden iş akışı çalıştırma
 
 Bu hızlı başlangıçta, giriş verilerini bir Azure Blob depolama hesabına yükler ve Python Genomiks istemcisini kullanarak Microsoft Genomiks hizmeti aracılığıyla bir iş akışı çalıştırırsınız. Microsoft Genomiks, ham okumalardan başlayarak hizalanmış okumalar ve varyant ilanları üreten, bir genomu hızlı bir şekilde işleyebilen ikincil analize yönelik ölçeklenebilir ve güvenli bir hizmettir. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). 
 - [Python 2.7.12 +](https://www.python.org/downloads/release/python-2714/), `pip` yüklü ve `python` sistem yolunuzda. Microsoft Genomiks istemcisi Python 3 ile uyumlu değildir. 
@@ -144,4 +144,4 @@ msgen list -f c:\temp\config.txt
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, Azure depolama 'ya örnek giriş verileri yüklediniz ve Python istemcisi üzerinden Microsoft Genomiks hizmetine bir iş akışı gönderdiniz `msgen` . Microsoft Genomiks hizmeti ile kullanılabilecek diğer giriş dosya türleri hakkında daha fazla bilgi edinmek için şu sayfalara bakın: [eşleştirilmiş fastq](quickstart-input-pair-FASTQ.md)  |  [BAE](quickstart-input-BAM.md)  |  [birden çok fastq veya BAE](quickstart-input-multiple.md). Bu öğreticiyi, "Genomikler öğreticisi. ipynb" dosyasını indirerek ve [Jupyter](../notebooks/tutorial-create-run-jupyter-notebook.md) gibi bir not defteri okuyucusunu kullanarak dosyayı açıp çalıştırmak için [Azure Notebooks örneğimizi](https://aka.ms/genomicsnotebook) kullanarak da inceleyebilirsiniz.
+Bu makalede, Azure depolama 'ya örnek giriş verileri yüklediniz ve Python istemcisi üzerinden Microsoft Genomiks hizmetine bir iş akışı gönderdiniz `msgen` . Microsoft Genomiks hizmeti ile kullanılabilecek diğer giriş dosya türleri hakkında daha fazla bilgi edinmek için şu sayfalara bakın: [eşleştirilmiş fastq](quickstart-input-pair-FASTQ.md)  |  [BAE](quickstart-input-BAM.md)  |  [birden çok fastq veya BAE](quickstart-input-multiple.md). Bu öğreticiyi, "Genomikler öğreticisi. ipynb" dosyasını indirerek ve [Jupyter](https://notebooks.azure.com) gibi bir not defteri okuyucusunu kullanarak dosyayı açıp çalıştırmak için [Azure Notebooks örneğimizi](https://aka.ms/genomicsnotebook) kullanarak da inceleyebilirsiniz.

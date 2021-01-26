@@ -4,12 +4,12 @@ description: Bu öğreticide, Java Service Fabric uygulamasının bir Azure Serv
 ms.topic: tutorial
 ms.date: 02/26/2018
 ms.custom: mvc, devx-track-java, devx-track-azurecli
-ms.openlocfilehash: c2e2b2883bfa01d3a36de5d58425449f6f973010
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: 48cb7df49fb918ebd30883edc573cc63b6e35e4a
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97702166"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789405"
 ---
 # <a name="tutorial-deploy-a-java-application-to-a-service-fabric-cluster-in-azure"></a>Öğretici: Azure’da bir Service Fabric kümesine Java uygulamasını dağıtma
 
@@ -30,12 +30,12 @@ Bu öğretici dizisinde şunların nasıl yapıldığını öğrenirsiniz:
 > * [Uygulama için izleme ve tanılamayı ayarlama](service-fabric-tutorial-java-elk.md)
 > * [CI/CD ayarlama](service-fabric-tutorial-java-jenkins.md)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiye başlamadan önce:
 
 * Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun
-* [Azure CLI'yi yükleme](/cli/azure/install-azure-cli?view=azure-cli-latest)
+* [Azure CLI'yi yükleme](/cli/azure/install-azure-cli)
 * [Mac](service-fabric-get-started-mac.md) veya [Linux](service-fabric-get-started-linux.md) için Service Fabric SDK’yı yükleyin
 * [Python 3’ü yükleme](https://wiki.python.org/moin/BeginnersGuide/Download)
 

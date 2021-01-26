@@ -4,18 +4,18 @@ description: Bu öğreticide, Azure 'da ve ' de bir Service Fabric kümesinin ö
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 063c83818ec2e98491f9062e936b9a1e7b2c4356
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: cdc7ba8d6c83ae72ffb8f1afae3954b3a46dc6ec
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97702183"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788036"
 ---
 # <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>Öğretici: Azure'daki bir Service Fabric kümesini ölçeklendirme
 
 Bu öğretici, bir serinin üçüncü bölümüdür ve mevcut kümenizi nasıl ölçeklendirebilirsiniz ve içinde nasıl ölçeklenebilmeniz gerektiğini gösterir. Tamamladığınızda, kümenizin nasıl ölçekleneceğini ve kalan kaynakların nasıl temizleneceğini öğrenmiş olacaksınız.  Azure 'da çalışan bir kümeyi ölçeklendirme hakkında daha fazla bilgi için [ölçek Service Fabric kümelerini](service-fabric-cluster-scaling.md)okuyun.
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Düğüm ekleme ve kaldırma (ölçeği genişletme ve ölçekleme)
@@ -33,7 +33,7 @@ Bu öğretici dizisinde şunların nasıl yapıldığını öğrenirsiniz:
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiye başlamadan önce:
 
@@ -809,7 +809,7 @@ Bir Service Fabric kümesi oluşturduktan sonra, düğüm türünü (sanal makin
 > [!WARNING]
 > Bir üretim kümesinden düğüm türünü kaldırmak için Remove-AzServiceFabricNodeType kullanmak, sıklıkla kullanılması önerilmez. Düğüm türünün arkasındaki sanal makine ölçek kümesi kaynağını sildiği için bu, tehlikeli bir komuttur. 
 
-Düğüm türünü kaldırmak için [Remove-AzServiceFabricNodeType](/powershell/module/az.servicefabric/remove-azservicefabricnodetype) cmdlet 'ini çalıştırın.  Düğüm türü gümüş veya altın [dayanıklılık düzeyinde][durability]  olmalıdır cmdlet, düğüm türüyle ilişkili ölçek kümesini siler ve işlemin tamamlanmasını biraz zaman alır.  Ardından, kaldırılacak düğümlerin her birinde [Remove-ServiceFabricNodeState](/powershell/module/servicefabric/remove-servicefabricnodestate?view=azureservicefabricps) cmdlet 'ini çalıştırın, bu, düğüm durumunu siler ve düğümleri kümeden kaldırır. Düğümlerde hizmetler varsa, hizmetler önce başka bir düğüme taşınır. Küme Yöneticisi çoğaltma/hizmet için bir düğüm bulamazsa, işlem gecikmeli/engellenir.
+Düğüm türünü kaldırmak için [Remove-AzServiceFabricNodeType](/powershell/module/az.servicefabric/remove-azservicefabricnodetype) cmdlet 'ini çalıştırın.  Düğüm türü gümüş veya altın [dayanıklılık düzeyinde][durability]  olmalıdır cmdlet, düğüm türüyle ilişkili ölçek kümesini siler ve işlemin tamamlanmasını biraz zaman alır.  Ardından, kaldırılacak düğümlerin her birinde [Remove-ServiceFabricNodeState](/powershell/module/servicefabric/remove-servicefabricnodestate) cmdlet 'ini çalıştırın, bu, düğüm durumunu siler ve düğümleri kümeden kaldırır. Düğümlerde hizmetler varsa, hizmetler önce başka bir düğüme taşınır. Küme Yöneticisi çoğaltma/hizmet için bir düğüm bulamazsa, işlem gecikmeli/engellenir.
 
 ```powershell
 $groupname = "sfclustertutorialgroup"

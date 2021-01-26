@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 10/1/2019
 ms.author: motanv
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 17f0af8c041042ddceccc1f8701e44ab8522840f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 13e22633008a4a5df25d84920386a22696648c9a
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89022131"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789322"
 ---
 # <a name="testability-scenarios"></a>Test edilebilirlik senaryoları
 Bulut altyapıları gibi büyük dağıtılmış sistemler, doğal olarak güvenilir değildir. Azure Service Fabric, geliştiricilere güvenilir olmayan altyapıların üstünde çalışacak hizmetler yazma olanağı sağlar. Yüksek kaliteli hizmetleri yazmak için geliştiricilerin, hizmetlerinin kararlılığını test etmek üzere bu güvenilir olmayan altyapıya gelebilmesi gerekir.
@@ -125,7 +125,7 @@ class Test
 
 PowerShell
 
-Service Fabric PowerShell modülü, bir Chaos senaryosunu başlatmak için iki yol içerir. `Invoke-ServiceFabricChaosTestScenario` istemci tabanlıdır ve istemci makinenin testi üzerinden kapatması durumunda başka bir hata ortaya alınmaz. Alternatif olarak, makineyi makinenin kapatılmasını durumunda çalıştırmaya devam eden bir komut kümesi vardır. `Start-ServiceFabricChaos` , FaultAnalysisService adlı bir durum bilgisi olan ve güvenilir bir sistem hizmeti kullanır ve bu işlem, TimeToRun tamamlanana kadar hataların ortaya çıkmasını sağlar. `Stop-ServiceFabricChaos` senaryoyu el ile durdurmak için kullanılabilir ve `Get-ServiceFabricChaosReport` bir rapor elde eder. Daha fazla bilgi için bkz. [Azure Service Fabric PowerShell Başvurusu](/powershell/module/servicefabric/?view=azureservicefabricps) ve [Service Fabric kümelerinde denetlenen Chaos](service-fabric-controlled-chaos.md)'ı alma.
+Service Fabric PowerShell modülü, bir Chaos senaryosunu başlatmak için iki yol içerir. `Invoke-ServiceFabricChaosTestScenario` istemci tabanlıdır ve istemci makinenin testi üzerinden kapatması durumunda başka bir hata ortaya alınmaz. Alternatif olarak, makineyi makinenin kapatılmasını durumunda çalıştırmaya devam eden bir komut kümesi vardır. `Start-ServiceFabricChaos` , FaultAnalysisService adlı bir durum bilgisi olan ve güvenilir bir sistem hizmeti kullanır ve bu işlem, TimeToRun tamamlanana kadar hataların ortaya çıkmasını sağlar. `Stop-ServiceFabricChaos` senaryoyu el ile durdurmak için kullanılabilir ve `Get-ServiceFabricChaosReport` bir rapor elde eder. Daha fazla bilgi için bkz. [Azure Service Fabric PowerShell Başvurusu](/powershell/module/servicefabric/) ve [Service Fabric kümelerinde denetlenen Chaos](service-fabric-controlled-chaos.md)'ı alma.
 
 ```powershell
 $connection = "localhost:19000"

@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: cd0b73dd22e5e2cab720bb1a33e58e25e517b1f6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f2a514af99baa2d828df1aee35a0e6339d39e617
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90605048"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788562"
 ---
 # <a name="azure-service-bus-trigger-for-azure-functions"></a>Azure Işlevleri için Azure Service Bus tetikleyicisi
 
@@ -83,91 +83,6 @@ public static void Run(string myQueueItem,
 }
 ```
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
-
-Aşağıdaki örnek, bir *function.js* bir Service Bus tetikleyici bağlamasını ve bağlamayı kullanan bir [JavaScript işlevini](functions-reference-node.md) gösterir. İşlevi [ileti meta verilerini](#message-metadata) okur ve bir Service Bus kuyruğu iletisi kaydeder. 
-
-Dosyadaki *function.js* bağlama verileri aşağıda verilmiştir:
-
-```json
-{
-"bindings": [
-    {
-    "queueName": "testqueue",
-    "connection": "MyServiceBusConnection",
-    "name": "myQueueItem",
-    "type": "serviceBusTrigger",
-    "direction": "in"
-    }
-],
-"disabled": false
-}
-```
-
-JavaScript betik kodu aşağıda verilmiştir:
-
-```javascript
-module.exports = function(context, myQueueItem) {
-    context.log('Node.js ServiceBus queue trigger function processed message', myQueueItem);
-    context.log('EnqueuedTimeUtc =', context.bindingData.enqueuedTimeUtc);
-    context.log('DeliveryCount =', context.bindingData.deliveryCount);
-    context.log('MessageId =', context.bindingData.messageId);
-    context.done();
-};
-```
-
-# <a name="python"></a>[Python](#tab/python)
-
-Aşağıdaki örnek, bir tetikleyici aracılığıyla Service Bus kuyruğu iletisinin nasıl okunacağını gösterir.
-
-Service Bus bağlama, *türünün türü* olarak ayarlandığı *function.js* tanımlanmıştır `serviceBusTrigger` .
-
-```json
-{
-  "scriptFile": "__init__.py",
-  "bindings": [
-    {
-      "name": "msg",
-      "type": "serviceBusTrigger",
-      "direction": "in",
-      "queueName": "inputqueue",
-      "connection": "AzureServiceBusConnectionString"
-    }
-  ]
-}
-```
-
-* _ \_ İnit_ \_ . Kopyala* içindeki kod, `func.ServiceBusMessage` işlevinizdeki sıra iletisini okumanızı sağlayan olarak bir parametre bildirir.
-
-```python
-import azure.functions as func
-
-import logging
-import json
-
-def main(msg: func.ServiceBusMessage):
-    logging.info('Python ServiceBus queue trigger processed message.')
-
-    result = json.dumps({
-        'message_id': msg.message_id,
-        'body': msg.get_body().decode('utf-8'),
-        'content_type': msg.content_type,
-        'expiration_time': msg.expiration_time,
-        'label': msg.label,
-        'partition_key': msg.partition_key,
-        'reply_to': msg.reply_to,
-        'reply_to_session_id': msg.reply_to_session_id,
-        'scheduled_enqueue_time': msg.scheduled_enqueue_time,
-        'session_id': msg.session_id,
-        'time_to_live': msg.time_to_live,
-        'to': msg.to,
-        'user_properties': msg.user_properties,
-        'metadata' : msg.metadata
-    })
-
-    logging.info(result)
-```
-
 # <a name="java"></a>[Java](#tab/java)
 
 Aşağıdaki Java işlevi, `@ServiceBusQueueTrigger` bir Service Bus kuyruğu tetikleyicisinin yapılandırmasını anlatmak Için [Java işlevleri çalışma zamanı kitaplığından](/java/api/overview/azure/functions/runtime) ek açıklamayı kullanır. İşlev, iletiyi kuyruğa yerleştirir ve günlüklere ekler.
@@ -199,6 +114,120 @@ Service Bus konuya bir ileti eklendiğinde Java işlevleri de tetiklenebilir. A�
     ) {
         context.getLogger().info(message);
     }
+```
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+Aşağıdaki örnek, bir *function.js* bir Service Bus tetikleyici bağlamasını ve bağlamayı kullanan bir [JavaScript işlevini](functions-reference-node.md) gösterir. İşlevi [ileti meta verilerini](#message-metadata) okur ve bir Service Bus kuyruğu iletisi kaydeder.
+
+Dosyadaki *function.js* bağlama verileri aşağıda verilmiştir:
+
+```json
+{
+"bindings": [
+    {
+    "queueName": "testqueue",
+    "connection": "MyServiceBusConnection",
+    "name": "myQueueItem",
+    "type": "serviceBusTrigger",
+    "direction": "in"
+    }
+],
+"disabled": false
+}
+```
+
+JavaScript betik kodu aşağıda verilmiştir:
+
+```javascript
+module.exports = function(context, myQueueItem) {
+    context.log('Node.js ServiceBus queue trigger function processed message', myQueueItem);
+    context.log('EnqueuedTimeUtc =', context.bindingData.enqueuedTimeUtc);
+    context.log('DeliveryCount =', context.bindingData.deliveryCount);
+    context.log('MessageId =', context.bindingData.messageId);
+    context.done();
+};
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Aşağıdaki örnek, bir *function.js* bir Service Bus tetikleyici bağlamasını ve bağlamayı kullanan bir [PowerShell işlevini](functions-reference-powershell.md) gösterir. 
+
+Dosyadaki *function.js* bağlama verileri aşağıda verilmiştir:
+
+```json
+{
+  "bindings": [
+    {
+      "name": "mySbMsg",
+      "type": "serviceBusTrigger",
+      "direction": "in",
+      "topicName": "mytopic",
+      "subscriptionName": "mysubscription",
+      "connection": "AzureServiceBusConnectionString"
+    }
+  ]
+}
+```
+
+Service Bus bir ileti gönderildiğinde çalıştırılan işlev aşağıda verilmiştir.
+
+```powershell
+param([string] $mySbMsg, $TriggerMetadata)
+
+Write-Host "PowerShell ServiceBus queue trigger function processed message: $mySbMsg"
+```
+
+# <a name="python"></a>[Python](#tab/python)
+
+Aşağıdaki örnek, bir tetikleyici aracılığıyla Service Bus kuyruğu iletisinin nasıl okunacağını gösterir.
+
+Service Bus bağlama, *türünün türü* olarak ayarlandığı *function.js* tanımlanmıştır `serviceBusTrigger` .
+
+```json
+{
+  "scriptFile": "__init__.py",
+  "bindings": [
+    {
+      "name": "msg",
+      "type": "serviceBusTrigger",
+      "direction": "in",
+      "queueName": "inputqueue",
+      "connection": "AzureServiceBusConnectionString"
+    }
+  ]
+}
+```
+
+*_\_ İnit_ \_ . Kopyala* içindeki kod, `func.ServiceBusMessage` işlevinizdeki sıra iletisini okumanızı sağlayan olarak bir parametre bildirir.
+
+```python
+import azure.functions as func
+
+import logging
+import json
+
+def main(msg: func.ServiceBusMessage):
+    logging.info('Python ServiceBus queue trigger processed message.')
+
+    result = json.dumps({
+        'message_id': msg.message_id,
+        'body': msg.get_body().decode('utf-8'),
+        'content_type': msg.content_type,
+        'expiration_time': msg.expiration_time,
+        'label': msg.label,
+        'partition_key': msg.partition_key,
+        'reply_to': msg.reply_to,
+        'reply_to_session_id': msg.reply_to_session_id,
+        'scheduled_enqueue_time': msg.scheduled_enqueue_time,
+        'session_id': msg.session_id,
+        'time_to_live': msg.time_to_live,
+        'to': msg.to,
+        'user_properties': msg.user_properties,
+        'metadata' : msg.metadata
+    })
+
+    logging.info(result)
 ```
 
 ---
@@ -268,14 +297,6 @@ Kullanılacak Service Bus hesabı aşağıdaki sırayla belirlenir:
 
 Öznitelikler C# betiği tarafından desteklenmez.
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
-
-Öznitelikler JavaScript tarafından desteklenmez.
-
-# <a name="python"></a>[Python](#tab/python)
-
-Öznitelikler Python tarafından desteklenmez.
-
 # <a name="java"></a>[Java](#tab/java)
 
 `ServiceBusQueueTrigger`Ek açıklama, Service Bus kuyruğu iletisi oluşturulduğunda çalışan bir işlev oluşturmanıza olanak sağlar. Kullanılabilir yapılandırma seçenekleri kuyruk adı ve bağlantı dizesi adını içerir.
@@ -283,6 +304,18 @@ Kullanılacak Service Bus hesabı aşağıdaki sırayla belirlenir:
 `ServiceBusTopicTrigger`Ek açıklama, işlevi hangi verilerin tetikleyeceğini hedeflemek için bir konu ve abonelik atamanıza olanak tanır.
 
 Daha fazla ayrıntı için bkz. tetikleyici [örneği](#example) .
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+Öznitelikler JavaScript tarafından desteklenmez.
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Öznitelikler PowerShell tarafından desteklenmez.
+
+# <a name="python"></a>[Python](#tab/python)
+
+Öznitelikler Python tarafından desteklenmez.
 
 ---
 
@@ -313,8 +346,8 @@ Sıra veya konu iletisi için aşağıdaki parametre türleri kullanılabilir:
 * `string` -İleti metin ise.
 * `byte[]` -İkili veriler için kullanışlıdır.
 * Özel bir tür-ileti JSON içeriyorsa, Azure Işlevleri JSON verilerinin serisini kaldırma girişiminde bulunur.
-* `BrokeredMessage` -, Aracı tarafından [aracılı edmessage. GetBody \<T> ()](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody?view=azure-dotnet#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1) yöntemiyle birlikte seri durumdan çıkarılmış ileti verir.
-* [`MessageReceiver`](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver?view=azure-dotnet) -İleti kapsayıcısından iletileri almak ve doğrulamak için kullanılır ( [`autoComplete`](functions-bindings-service-bus-output.md#hostjson-settings) olarak ayarlandığında gereklidir `false` )
+* `BrokeredMessage` -, Aracı tarafından [aracılı edmessage. GetBody \<T> ()](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody?view=azure-dotnet#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1&preserve-view=true) yöntemiyle birlikte seri durumdan çıkarılmış ileti verir.
+* [`MessageReceiver`](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver?view=azure-dotnet&preserve-view=true) -İleti kapsayıcısından iletileri almak ve doğrulamak için kullanılır ( [`autoComplete`](functions-bindings-service-bus-output.md#hostjson-settings) olarak ayarlandığında gereklidir `false` )
 
 Bu parametre türleri Azure Işlevleri sürüm 1. x; içindir. 2. x ve üzeri için yerine kullanın [`Message`](/dotnet/api/microsoft.azure.servicebus.message) `BrokeredMessage` .
 
@@ -325,23 +358,27 @@ Sıra veya konu iletisi için aşağıdaki parametre türleri kullanılabilir:
 * `string` -İleti metin ise.
 * `byte[]` -İkili veriler için kullanışlıdır.
 * Özel bir tür-ileti JSON içeriyorsa, Azure Işlevleri JSON verilerinin serisini kaldırma girişiminde bulunur.
-* `BrokeredMessage` -, Aracı tarafından [aracılı edmessage. GetBody \<T> ()](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody?view=azure-dotnet#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1) yöntemiyle birlikte seri durumdan çıkarılmış ileti verir.
+* `BrokeredMessage` -, Aracı tarafından [aracılı edmessage. GetBody \<T> ()](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody?view=azure-dotnet#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1&preserve-view=true) yöntemiyle birlikte seri durumdan çıkarılmış ileti verir.
 
 Bu parametreler Azure Işlevleri sürüm 1. x; içindir. 2. x ve üzeri için yerine kullanın [`Message`](/dotnet/api/microsoft.azure.servicebus.message) `BrokeredMessage` .
-
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
-
-Kullanarak kuyruk veya konu iletisine erişin `context.bindings.<name from function.json>` . Service Bus ileti, işleve dize veya JSON nesnesi olarak geçirilir.
-
-# <a name="python"></a>[Python](#tab/python)
-
-Kuyruk iletisi, işlevi olarak yazılmış bir parametre yoluyla kullanılabilir `func.ServiceBusMessage` . Service Bus ileti, işleve dize veya JSON nesnesi olarak geçirilir.
 
 # <a name="java"></a>[Java](#tab/java)
 
 Gelen Service Bus iletisi bir veya parametresi aracılığıyla kullanılabilir `ServiceBusQueueMessage` `ServiceBusTopicMessage` .
 
 [Ayrıntılar için örneğe bakın](#example).
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+Kullanarak kuyruk veya konu iletisine erişin `context.bindings.<name from function.json>` . Service Bus ileti, işleve dize veya JSON nesnesi olarak geçirilir.
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Service Bus örneği, *function.js* dosya adı özelliğinde yapılandırılan parametre aracılığıyla kullanılabilir.
+
+# <a name="python"></a>[Python](#tab/python)
+
+Kuyruk iletisi, işlevi olarak yazılmış bir parametre yoluyla kullanılabilir `func.ServiceBusMessage` . Service Bus ileti, işleve dize veya JSON nesnesi olarak geçirilir.
 
 ---
 
@@ -351,13 +388,13 @@ Azure Işlevleri 'nde zehirli ileti işleme denetlenemez veya yapılandırılama
 
 ## <a name="peeklock-behavior"></a>PeekLock davranışı
 
-Işlevler çalışma zamanı [PeekLock modunda](../service-bus-messaging/service-bus-performance-improvements.md#receive-mode)bir ileti alır. `Complete`İşlev başarıyla tamamlandığında iletiye çağrı yapılır veya `Abandon` işlev başarısız olursa çağırır. İşlev zaman aşımından daha uzun çalışırsa `PeekLock` , işlev çalıştığı sürece kilit otomatik olarak yenilenir. 
+Işlevler çalışma zamanı [PeekLock modunda](../service-bus-messaging/service-bus-performance-improvements.md#receive-mode)bir ileti alır. `Complete`İşlev başarıyla tamamlandığında iletiye çağrı yapılır veya `Abandon` işlev başarısız olursa çağırır. İşlev zaman aşımından daha uzun çalışırsa `PeekLock` , işlev çalıştığı sürece kilit otomatik olarak yenilenir.
 
-, `maxAutoRenewDuration` [Onmessageoptions. MaxAutoRenewDuration](/dotnet/api/microsoft.azure.servicebus.messagehandleroptions.maxautorenewduration?view=azure-dotnet)ile eşleşen *host.jsüzerinde*yapılandırılabilir. Bu ayar için izin verilen en yüksek değer, Service Bus belgelerine göre 5 dakikadır, ancak Işlevlerin zaman sınırını varsayılan 5 dakikadan 10 dakikaya artırabilirsiniz. Service Bus yenileme sınırını aştığınız için bunu yapmak istemediğiniz Service Bus işlevleri için.
+, `maxAutoRenewDuration` [Onmessageoptions. MaxAutoRenewDuration](/dotnet/api/microsoft.azure.servicebus.messagehandleroptions.maxautorenewduration?view=azure-dotnet&preserve-view=true)ile eşleşen *host.jsüzerinde* yapılandırılabilir. Bu ayar için izin verilen en yüksek değer, Service Bus belgelerine göre 5 dakikadır, ancak Işlevlerin zaman sınırını varsayılan 5 dakikadan 10 dakikaya artırabilirsiniz. Service Bus yenileme sınırını aştığınız için bunu yapmak istemediğiniz Service Bus işlevleri için.
 
 ## <a name="message-metadata"></a>İleti meta verileri
 
-Service Bus tetikleyicisi çeşitli [meta veri özellikleri](./functions-bindings-expressions-patterns.md#trigger-metadata)sağlar. Bu özellikler, diğer bağlamalardaki veya kodunuzda parametre olarak bağlama ifadelerinin bir parçası olarak kullanılabilir. Bu özellikler [ileti](/dotnet/api/microsoft.azure.servicebus.message?view=azure-dotnet) sınıfının üyeleridir.
+Service Bus tetikleyicisi çeşitli [meta veri özellikleri](./functions-bindings-expressions-patterns.md#trigger-metadata)sağlar. Bu özellikler, diğer bağlamalardaki veya kodunuzda parametre olarak bağlama ifadelerinin bir parçası olarak kullanılabilir. Bu özellikler [ileti](/dotnet/api/microsoft.azure.servicebus.message?view=azure-dotnet&preserve-view=true) sınıfının üyeleridir.
 
 |Özellik|Tür|Açıklama|
 |--------|----|-----------|

@@ -3,18 +3,18 @@ title: Azure geçişi ile geçiş projelerini ölçekli olarak yönetme
 description: Atanan müşteri kaynakları için Azure geçişi 'ni etkin bir şekilde kullanmayı öğrenin.
 ms.date: 12/4/2020
 ms.topic: how-to
-ms.openlocfilehash: 16b92f3aa4dc3bfcb71eb232170c4df30348f8db
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 53f7c390d9f16dcbccbb1d09f46e63fec13eee2d
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97095398"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788952"
 ---
 # <a name="manage-migration-projects-at-scale-with-azure-migrate"></a>Azure geçişi ile geçiş projelerini ölçekli olarak yönetme
 
 Hizmet sağlayıcı olarak, [Azure açık Thouse](../overview.md)için birden fazla müşteri kiracısından eklendi olabilirsiniz. Azure Mathouse, hizmet sağlayıcılarının birden çok Azure Active Directory (Azure AD) kiracılarının aynı anda, yönetim görevlerini daha verimli hale getiren işlemleri gerçekleştirmesine olanak tanır.
 
-[Azure geçişi](../../migrate/migrate-services-overview.md) , Azure şirket içi sunucuları, altyapısı, uygulamaları ve verileri değerlendirmek ve bu uygulamalara geçiş yapmak için merkezi bir merkez sağlar. Genellikle, birden çok müşteriye yönelik ölçekte değerlendirme ve geçiş gerçekleştiren iş ortakları, [CSP (bulut çözümü sağlayıcısı) abonelik modelini](/partner-center/customers-revoke-admin-privileges) kullanarak veya [Müşteri kiracısında bir Konuk Kullanıcı oluşturarak](/azure/active-directory/external-identities/what-is-b2b)her bir müşteri aboneliğine tek tek erişmelidir.
+[Azure geçişi](../../migrate/migrate-services-overview.md) , Azure şirket içi sunucuları, altyapısı, uygulamaları ve verileri değerlendirmek ve bu uygulamalara geçiş yapmak için merkezi bir merkez sağlar. Genellikle, birden çok müşteriye yönelik ölçekte değerlendirme ve geçiş gerçekleştiren iş ortakları, [CSP (bulut çözümü sağlayıcısı) abonelik modelini](/partner-center/customers-revoke-admin-privileges) kullanarak veya [Müşteri kiracısında bir Konuk Kullanıcı oluşturarak](../../active-directory/external-identities/what-is-b2b.md)her bir müşteri aboneliğine tek tek erişmelidir.
 
 Azure Sthouse Azure geçişi ile tümleştirme, hizmet sağlayıcılarının iş yüklerini farklı müşterilere uygun ölçekte bulmasına, değerlendirmesine ve geçirmeye izin verirken, müşterilerin ortamlarının tam görünürlük ve denetim sahibi olmasını sağlar. Azure Temsilcili kaynak yönetimi sayesinde, hizmet sağlayıcılarının birden çok müşteri kiracısından yönettikleri tüm Azure geçiş projelerini tek bir görünümü vardır.
 
@@ -39,7 +39,7 @@ Bu yaklaşım, birden fazla müşteri genelinde çalışan hizmet sağlayıcıla
 Bu modelin iş akışı aşağıdakine benzer olacaktır:
 
 1. Müşteri, [Azure açık eklendi](onboard-customer.md). Azure geçişi ile kullanılacak kimlik için katkıda bulunan yerleşik rolü gereklidir. Bu rolü kullanan bir örnek için, [temsilci-Resource-Management-azmigrate](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/delegated-resource-management-azmigrate) örnek şablonuna bakın.
-1. Belirlenen Kullanıcı Azure portal yönetim kiracısında oturum açar ve Azure geçişi ' ne gider. Bu Kullanıcı, uygun Temsilcili müşteri aboneliğini seçerek [bir Azure geçişi projesi oluşturur](/azure/migrate/create-manage-projects).
+1. Belirlenen Kullanıcı Azure portal yönetim kiracısında oturum açar ve Azure geçişi ' ne gider. Bu Kullanıcı, uygun Temsilcili müşteri aboneliğini seçerek [bir Azure geçişi projesi oluşturur](../../migrate/create-manage-projects.md).
 1. Kullanıcı daha sonra [bulma ve değerlendirme için adımları gerçekleştirir](../../migrate/tutorial-discover-vmware.md).
 
    VMware VM 'Leri için, gereci yapılandırmadan önce, bulmayı vCenter Server veri merkezleri, kümeler, bir küme klasörü, konaklar, konaklar klasörü veya ayrı VM 'Ler için sınırlayabilirsiniz. Kapsamı ayarlamak için, gerecin vCenter Server erişmek için kullandığı hesaba izinler atayın. Hiper yöneticide birden fazla müşterinin VM 'Leri barındırıldığı durumlarda bu faydalıdır. Hyper-V ' d i bulma kapsamını sınırlandıramıyoruz.
@@ -61,7 +61,7 @@ Bu yaklaşım, hizmet sağlayıcılarının geçiş bulma ve değerlendirme proj
 Bu modelin iş akışı aşağıdakine benzer olacaktır:
 
 1. Müşteri, [Azure açık eklendi](onboard-customer.md). Azure geçişi ile kullanılacak kimlik için katkıda bulunan yerleşik rolü gereklidir. Bu rolü kullanan bir örnek için, [temsilci-Resource-Management-azmigrate](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/delegated-resource-management-azmigrate) örnek şablonuna bakın.
-1. Belirlenen Kullanıcı Azure portal yönetim kiracısında oturum açar ve Azure geçişi ' ne gider. Bu Kullanıcı, yönetim kiracısına ait olan abonelikte bir [Azure geçişi projesi oluşturur](/azure/migrate/create-manage-projects) .
+1. Belirlenen Kullanıcı Azure portal yönetim kiracısında oturum açar ve Azure geçişi ' ne gider. Bu Kullanıcı, yönetim kiracısına ait olan abonelikte bir [Azure geçişi projesi oluşturur](../../migrate/create-manage-projects.md) .
 1. Kullanıcı daha sonra [bulma ve değerlendirme için adımları gerçekleştirir](../../migrate/tutorial-discover-vmware.md). Şirket içi VM 'Ler, yönetim kiracısında oluşturulan geçiş projesi içinde keşfedilir ve değerlendirilir ve ardından buradan geçirilir.
 
    Aynı Hyper-V konağında birden çok müşteriyi yönetiyorsanız, tüm iş yüklerini tek seferde bulabilirsiniz. Müşteriye özgü VM 'Ler aynı grupta seçilebilir, daha sonra bir değerlendirme oluşturulabilir ve hedef hedef olarak uygun müşterinin aboneliği seçilerek geçiş gerçekleştirilebilir. Bulma kapsamını sınırlandırmaya gerek yoktur ve tek bir geçiş projesindeki tüm müşteri iş yüklerine tam bir genel bakış sağlayabilirsiniz.
@@ -80,4 +80,3 @@ Daha fazla bilgi için bkz. [İş ortağı kimliğinizi, temsilci atanan kaynakl
 
 - [Azure geçişi](../../migrate/migrate-services-overview.md)hakkında bilgi edinin.
 - [Çapraz kiracı yönetim deneyimleri](../concepts/cross-tenant-management-experience.md)hakkında bilgi edinin.
-

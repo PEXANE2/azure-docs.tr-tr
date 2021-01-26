@@ -6,12 +6,12 @@ ms.author: nidutta
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 01/05/2021
-ms.openlocfilehash: 4b95e4f164eb2c1d0a881cf9ab14696c3cbed4a7
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: a1602f29a6d0066ec3c99e990532411621652c47
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98122672"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788138"
 ---
 # <a name="updating-net-for-apache-spark-to-version-v10--in-hdinsight"></a>HDInsight 'ta Apache Spark için .NET sürümü v 1.0 sürümüne güncelleştirme
 
@@ -42,9 +42,9 @@ Uygulamanızdaki Apache Spark için geçerli .NET sürümünü değiştirmek ist
 
 2. Adım 1 ' de indirilen çalışan ikililerini HDI kümenizin tüm çalışan düğümlerine yüklemek için [install-Worker.sh](https://github.com/dotnet/spark/blob/master/deployment/install-worker.sh) betiğini indirin.  
 
-3. Yukarıdaki belirtilen dosyaları kümenizin erişimi olan Azure depolama hesabına yükleyin. Daha fazla ayrıntı için [Apache Spark HDI dağıtım makalesine .net](https://docs.microsoft.com/dotnet/spark/tutorials/hdinsight-deployment#upload-files-to-azure) bölümüne başvurabilirsiniz.
+3. Yukarıdaki belirtilen dosyaları kümenizin erişimi olan Azure depolama hesabına yükleyin. Daha fazla ayrıntı için [Apache Spark HDI dağıtım makalesine .net](/dotnet/spark/tutorials/hdinsight-deployment#upload-files-to-azure) bölümüne başvurabilirsiniz.
 
-4. Betik `install-worker.sh` eylemlerini kullanarak, komut dosyasını kümenizin tüm çalışan düğümlerinde çalıştırın. Daha fazla bilgi için [Apache Spark HDI dağıtım makalesine .net](https://docs.microsoft.com/dotnet/spark/tutorials/hdinsight-deployment#run-the-hdinsight-script-action) bölümüne bakın.
+4. Betik `install-worker.sh` eylemlerini kullanarak, komut dosyasını kümenizin tüm çalışan düğümlerinde çalıştırın. Daha fazla bilgi için [Apache Spark HDI dağıtım makalesine .net](/dotnet/spark/tutorials/hdinsight-deployment#run-the-hdinsight-script-action) bölümüne bakın.
 
 ### <a name="update-your-application-to-use-specific-version"></a>Uygulamanızı belirli sürümü kullanacak şekilde güncelleştirme
 
@@ -58,4 +58,4 @@ Mevcut HDI kümeleri, Apache Spark için .NET için aynı önceki sürüme sahip
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[HDInsight 'ta .NET Apache Spark uygulamanızı dağıtma](https://docs.microsoft.com/dotnet/spark/tutorials/hdinsight-deployment)
+[HDInsight 'ta .NET Apache Spark uygulamanızı dağıtma](/dotnet/spark/tutorials/hdinsight-deployment)

@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: af9087f0dd45212ec88b620dcd965c895b86bbce
-ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
+ms.openlocfilehash: baa071c8967c97cb5df2b8f522b3737436bdb359
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98108201"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98787714"
 ---
 # <a name="manage-qna-maker-resources"></a>Soru-Cevap Oluşturma kaynaklarını yönetme
 
@@ -130,12 +130,12 @@ App Service [genel ayarlarını](../../../app-service/configure-common.md#config
 ### <a name="configure-app-service-environment-to-host-qna-maker-app-service"></a>App Service Ortamı Soru-Cevap Oluşturma barındırmak için yapılandırın App Service
 App Service Ortamı (Ao), Soru-Cevap Oluşturma App Service 'i barındırmak için kullanılabilir. Lütfen aşağıdaki adımları izleyin:
 
-1. Bir App Service Ortamı oluşturun ve "dış" olarak işaretleyin. Yönergeler için lütfen [öğreticiyi](https://docs.microsoft.com/azure/app-service/environment/create-external-ase) izleyin.
+1. Bir App Service Ortamı oluşturun ve "dış" olarak işaretleyin. Yönergeler için lütfen [öğreticiyi](../../../app-service/environment/create-external-ase.md) izleyin.
 2.  App Service Ortamı içinde bir App Service oluşturun.
     * App Service 'in yapılandırmasını denetleyin ve bir uygulama ayarı olarak ' BID Yendpointkey ' ekleyin. ' BID Yendpointkey ' değeri "-BID \<app-name\> yendpointkey" olarak ayarlanmalıdır. Uygulama adı App Service URL 'sinde tanımlanmıştır. Örneğin, uygulama hizmeti URL 'SI "mywebsite.myase.p.azurewebsite.net" ise, uygulama adı "mywebsite" olur. Bu durumda, ' bıı Yendpointkey ' değeri "mywebsite-bıı Yendpointkey" olarak ayarlanmalıdır.
     * Azure Search hizmeti oluşturun.
     * Azure Search ve uygulama ayarlarının uygun şekilde yapılandırıldığından emin olun. 
-      Lütfen bu [öğreticiyi](https://docs.microsoft.com/azure/cognitive-services/qnamaker/reference-app-service?tabs=v1#app-service)izleyin.
+      Lütfen bu [öğreticiyi](../reference-app-service.md?tabs=v1#app-service)izleyin.
 3.  App Service Ortamı ilişkili ağ güvenlik grubunu güncelleştirin
     * Gereksinimlerinize göre önceden oluşturulmuş gelen güvenlik kurallarını güncelleştirin.
     * ' Hizmet etiketi ' ve kaynak hizmet etiketi ' Biliveservicesmanagement ' olarak kaynağa sahip yeni bir gelen güvenlik kuralı ekleyin.

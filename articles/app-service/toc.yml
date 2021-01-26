@@ -259,6 +259,8 @@
           href: troubleshoot-diagnostic-logs.md
         - name: Kaynak olaylarını alma
           href: get-resource-events.md
+        - name: Sistem durumu denetimi
+          href: monitor-instances-health-check.md
         - name: Linux kapsayıcısına SSH oturumu açma
           href: configure-linux-open-ssh-session.md
     - name: Uygulama yönetme

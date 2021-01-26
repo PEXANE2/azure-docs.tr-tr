@@ -11,12 +11,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 12/14/2020
-ms.openlocfilehash: 086bc17938064571e8759ecda633fb5f87d1060f
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 3ff48ff5a3f46d8ec0fbf81b4cd20d20c217344b
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97616822"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98787646"
 ---
 # <a name="migrate-to-an-azure-resource-authoring-key"></a>Azure Kaynak yazma anahtarına geçiş
 
@@ -81,7 +81,7 @@ Bir `*` uygulamaya atanan bir tahmin kaynağınız varsa, uygulama adının yan�
    > ![Uygulamalarınızı dışarı aktarın.](./media/migrate-authoring-key/migration-export-apps.png)
 
 
-4. Bölgeleri geçirmeye yönelik pencerede, uygulamalarınızın yazıldığı bölgedeki bir Azure kaynağına geçirilmesi istenir... Lua 'nın üç yazma bölgesi [ve portalı](https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-authoring-regions)vardır. Pencere, sahip olduğu uygulamalarınızın yazıldığı bölgeleri gösterir. Görüntülenmekte olan geçiş bölgeleri, kullandığınız bölgesel portala ve yazdığınız uygulamalara bağlı olarak farklı olabilir. 
+4. Bölgeleri geçirmeye yönelik pencerede, uygulamalarınızın yazıldığı bölgedeki bir Azure kaynağına geçirilmesi istenir... Lua 'nın üç yazma bölgesi [ve portalı](./luis-reference-regions.md#luis-authoring-regions)vardır. Pencere, sahip olduğu uygulamalarınızın yazıldığı bölgeleri gösterir. Görüntülenmekte olan geçiş bölgeleri, kullandığınız bölgesel portala ve yazdığınız uygulamalara bağlı olarak farklı olabilir. 
 
    > [!div class="mx-imgBorder"]
    > ![Çok bölgeli geçiş.](./media/migrate-authoring-key/migration-regional-flow.png)

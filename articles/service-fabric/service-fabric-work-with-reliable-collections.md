@@ -3,12 +3,12 @@ title: Güvenilir Koleksiyonlar ile çalışma
 description: Azure Service Fabric uygulamasında güvenilir Koleksiyonlar ile çalışmaya yönelik en iyi uygulamaları öğrenin.
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: 2d027dc432d1a0a20888bfca4f59bc41866e358d
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 908f24cc22c969a34a513ff3fd3ceaa788420620
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94651915"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98787884"
 ---
 # <a name="working-with-reliable-collections"></a>Güvenilir Koleksiyonlar ile çalışma
 Service Fabric, güvenilir koleksiyonlar aracılığıyla .NET geliştiricileri için kullanılabilen bir durum bilgisi olan programlama modeli sunar. Özellikle, Service Fabric güvenilir sözlük ve güvenilir sıra sınıfları sağlar. Bu sınıfları kullandığınızda, durumunuzun bölümlenmesi (ölçeklenebilirlik için), çoğaltılan (kullanılabilirlik için) ve bir bölüm içinde (ACID semantiği için) işlem gerçekleştirilmiş olur. Güvenilir bir sözlük nesnesinin tipik bir kullanımına bakalım ve gerçekten ne yaptığını görelim.
@@ -226,4 +226,4 @@ Sürüm oluşturma veri sözleşmeleri hakkında en iyi yöntemleri öğrenmek i
 
 Sürüm dayanıklı veri sözleşmeleri uygulama hakkında bilgi edinmek için bkz. [Sürüm dayanıklı serileştirme geri çağırmaları](/dotnet/framework/wcf/feature-details/version-tolerant-serialization-callbacks)
 
-Birden çok sürümde birlikte çalışabilecek bir veri yapısını nasıl sağlayabileceğinizi öğrenmek için bkz. [IExtensibleDataObject](/dotnet/api/system.runtime.serialization.iextensibledataobject?view=netcore-3.1)
+Birden çok sürümde birlikte çalışabilecek bir veri yapısını nasıl sağlayabileceğinizi öğrenmek için bkz. [IExtensibleDataObject](/dotnet/api/system.runtime.serialization.iextensibledataobject)

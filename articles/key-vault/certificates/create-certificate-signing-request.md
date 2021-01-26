@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: tutorial
 ms.date: 06/17/2020
 ms.author: sebansal
-ms.openlocfilehash: bbc232ed0bc9e9715f481fef8b7b3a1f8eeebe78
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: aa631f4c505200c2c8abc67d4e22ffbab23e015c
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98059662"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789035"
 ---
 # <a name="create-and-merge-a-csr-in-key-vault"></a>Key Vault 'de CSR oluşturma ve birleştirme
 
@@ -123,7 +123,7 @@ CSR 'yi oluştururken daha fazla bilgi eklemek istiyorsanız, bunu **SubjectName
 
 - Nasıl yaparım?, CSR 'mi izlemek veya yönetmek mı istiyorsunuz?
 
-     Bkz. [sertifika oluşturmayı izleme ve yönetme](https://docs.microsoft.com/azure/key-vault/certificates/create-certificate-scenarios).
+     Bkz. [sertifika oluşturmayı izleme ve yönetme](./create-certificate-scenarios.md).
 
 - **Hata türü ' ne görüyorsanız, belirtilen X içindeki son varlık sertifikasının ortak anahtarı. 509.440 sertifika içeriği belirtilen özel anahtarın ortak bölümüyle eşleşmez. Lütfen sertifikanın geçerli** olup olmadığını denetleyin.
 

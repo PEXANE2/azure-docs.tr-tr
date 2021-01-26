@@ -7,12 +7,12 @@ ms.date: 02/26/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 50e8dfd2998b50bfff7341e49ac4d0770c115166
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2020205357c68e007a1a375c4853e8c04afd2019
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90530871"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789069"
 ---
 # <a name="how-to-do-proof-of-possession-for-x509-ca-certificates-with-your-device-provisioning-service"></a>Cihaz sağlama hizmeti ile X. 509.440 CA sertifikaları için birlikte kullanma
 
@@ -36,7 +36,7 @@ Sağlama hizmetinize bir CA sertifikası kaydetmek ve sahip olma sürecinde kull
 
     ![Sertifikayı karşıya yükleme](./media/how-to-verify-certificates/add-new-cert.png)  
 
-   Sertifikanız, **sertifika Gezgini** listesinde gösterilir. Bu sertifikanın **durumunun** *doğrulanmamış*olduğunu unutmayın.
+   Sertifikanız, **sertifika Gezgini** listesinde gösterilir. Bu sertifikanın **durumunun** *doğrulanmamış* olduğunu unutmayın.
 
 5. Önceki adımda eklediğiniz sertifikaya tıklayın.
 
@@ -58,7 +58,7 @@ Microsoft, imzalı doğrulama sertifikası oluşturmanıza yardımcı olabilecek
 > [!IMPORTANT]
 > Aynı zamanda, sahip olma sağlamasını gerçekleştirmeye ek olarak, daha önce alıntı yapılan PowerShell ve Bash betikleri, cihazların kimliğini doğrulamak ve sağlamak için kullanılabilecek kök sertifikalar, ara sertifikalar ve yaprak sertifikalar oluşturmanıza de olanak tanır. Bu sertifikalar yalnızca geliştirme için kullanılmalıdır. Bunlar bir üretim ortamında asla kullanılmamalıdır. 
 
-Belgelerde ve SDK 'larda verilen PowerShell ve Bash betikleri [OpenSSL](https://www.openssl.org/)'e dayanır. Ayrıca, aynı zamanda OpenSSL veya diğer üçüncü taraf araçları da kullanabilirsiniz. SDK 'lar ile birlikte sunulan araç hakkında daha fazla bilgi için bkz. [SDK 'larda sunulan araçları kullanma](how-to-use-sdk-tools.md). 
+Belgelerde ve SDK 'larda verilen PowerShell ve Bash betikleri [OpenSSL](https://www.openssl.org/)'e dayanır. Ayrıca, aynı zamanda OpenSSL veya diğer üçüncü taraf araçları da kullanabilirsiniz. SDK 'lar ile birlikte sunulan araçları kullanarak bir örnek için bkz. [X. 509.440 sertifika zinciri oluşturma](tutorial-custom-hsm-enrollment-group-x509.md#create-an-x509-certificate-chain). 
 
 
 ## <a name="upload-the-signed-verification-certificate"></a>İmzalı doğrulama sertifikasını karşıya yükle

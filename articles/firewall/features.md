@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: conceptual
 ms.date: 10/08/2020
 ms.author: victorh
-ms.openlocfilehash: 6c71d9325ff7c1c5d2e7eff03a587a28335efd72
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 69eaf3ca60378afd810d712d85ea7ef732e41e3e
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94652153"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788239"
 ---
 # <a name="azure-firewall-features"></a>Azure Güvenlik Duvarı özellikleri
 
@@ -101,7 +101,7 @@ Bu, aşağıdaki senaryolara izin vermez:
 
 ## <a name="azure-monitor-logging"></a>Azure İzleyici günlükleri
 
-Tüm olaylar Azure Izleyici ile tümleşiktir ve günlükleri bir depolama hesabında arşivlemenize, Olay Hub 'ınıza olayları akışlarınıza veya Azure Izleyici günlüklerine gönderebilmenizi sağlar. Azure Izleyici günlüğü örnekleri için bkz. Azure [güvenlik duvarı Için Azure izleyici günlükleri](log-analytics-samples.md).
+Tüm olaylar Azure Izleyici ile tümleşiktir ve günlükleri bir depolama hesabında arşivlemenize, Olay Hub 'ınıza olayları akışlarınıza veya Azure Izleyici günlüklerine gönderebilmenizi sağlar. Azure Izleyici günlüğü örnekleri için bkz. Azure [güvenlik duvarı Için Azure izleyici günlükleri](./firewall-workbook.md).
 
 Daha fazla bilgi için bkz. [öğretici: Azure Güvenlik Duvarı günlüklerini ve ölçümlerini izleme](./firewall-diagnostics.md). 
 

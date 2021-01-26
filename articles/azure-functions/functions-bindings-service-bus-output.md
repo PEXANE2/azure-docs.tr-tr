@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 2d0b66d2b4d89b512b34cb33a5607b471b7d1e84
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 12e57361b9e275fc441df27a3a1381989d48751c
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93040930"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788579"
 ---
 # <a name="azure-service-bus-output-binding-for-azure-functions"></a>Azure Işlevleri için çıkış bağlamasını Azure Service Bus
 
@@ -87,6 +87,41 @@ public static async Task Run(TimerInfo myTimer, ILogger log, IAsyncCollector<str
 }
 ```
 
+# <a name="java"></a>[Java](#tab/java)
+
+Aşağıdaki örnek, `myqueue` BIR http isteği tarafından tetiklendiğinde Service Bus kuyruğuna ileti gönderen Java işlevini gösterir.
+
+```java
+@FunctionName("httpToServiceBusQueue")
+@ServiceBusQueueOutput(name = "message", queueName = "myqueue", connection = "AzureServiceBusConnection")
+public String pushToQueue(
+  @HttpTrigger(name = "request", methods = {HttpMethod.POST}, authLevel = AuthorizationLevel.ANONYMOUS)
+  final String message,
+  @HttpOutput(name = "response") final OutputBinding<T> result ) {
+      result.setValue(message + " has been sent.");
+      return message;
+ }
+```
+
+ [Java işlevleri çalışma zamanı kitaplığı](/java/api/overview/azure/functions/runtime)'nda, `@QueueOutput` değeri Service Bus kuyruğuna yazılacak olan işlev parametrelerinde ek açıklamayı kullanın.  Parametre türü olmalıdır `OutputBinding<T>` ; burada T BIR POJO 'nın herhangi bir yerel Java türüdür.
+
+Java işlevleri, bir Service Bus konusuna da yazabilir. Aşağıdaki örnek, `@ServiceBusTopicOutput` Çıkış bağlamasının yapılandırmasını anlatmak için ek açıklamasını kullanır. 
+
+```java
+@FunctionName("sbtopicsend")
+    public HttpResponseMessage run(
+            @HttpTrigger(name = "req", methods = {HttpMethod.GET, HttpMethod.POST}, authLevel = AuthorizationLevel.ANONYMOUS) HttpRequestMessage<Optional<String>> request,
+            @ServiceBusTopicOutput(name = "message", topicName = "mytopicname", subscriptionName = "mysubscription", connection = "ServiceBusConnection") OutputBinding<String> message,
+            final ExecutionContext context) {
+        
+        String name = request.getBody().orElse("Azure Functions");
+
+        message.setValue(name);
+        return request.createResponseBuilder(HttpStatus.OK).body("Hello, " + name).build();
+        
+    }
+```
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Aşağıdaki örnek, bir *function.js* dosyasında bir Service Bus çıkış bağlamayı ve bağlamayı kullanan bir [JavaScript işlevini](functions-reference-node.md) gösterir. İşlevi, 15 saniyede bir sıra iletisi göndermek için bir Zamanlayıcı tetikleyicisi kullanır.
@@ -139,6 +174,39 @@ module.exports = function (context, myTimer) {
 };
 ```
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Aşağıdaki örnek, bir *function.js* dosyasında bir Service Bus çıkış bağlamayı ve bağlamayı kullanan bir [PowerShell işlevini](functions-reference-powershell.md) gösterir. 
+
+Dosyadaki *function.js* bağlama verileri aşağıda verilmiştir:
+
+```json
+{
+  "bindings": [
+    {
+      "type": "serviceBus",
+      "direction": "out",
+      "connection": "AzureServiceBusConnectionString",
+      "name": "outputSbMsg",
+      "queueName": "outqueue",
+      "topicName": "outtopic"
+    }
+  ]
+}
+```
+
+İşlevin çıkışı olarak bir ileti oluşturan PowerShell aşağıda verilmiştir.
+
+```powershell
+param($QueueItem, $TriggerMetadata) 
+
+Push-OutputBinding -Name outputSbMsg -Value @{ 
+    name = $QueueItem.name 
+    employeeId = $QueueItem.employeeId 
+    address = $QueueItem.address 
+} 
+```
+
 # <a name="python"></a>[Python](#tab/python)
 
 Aşağıdaki örnek, Python 'da Service Bus kuyruğuna nasıl yazılacağını gösterir.
@@ -189,41 +257,6 @@ def main(req: func.HttpRequest, msg: func.Out[str]) -> func.HttpResponse:
     return 'OK'
 ```
 
-# <a name="java"></a>[Java](#tab/java)
-
-Aşağıdaki örnek, `myqueue` BIR http isteği tarafından tetiklendiğinde Service Bus kuyruğuna ileti gönderen Java işlevini gösterir.
-
-```java
-@FunctionName("httpToServiceBusQueue")
-@ServiceBusQueueOutput(name = "message", queueName = "myqueue", connection = "AzureServiceBusConnection")
-public String pushToQueue(
-  @HttpTrigger(name = "request", methods = {HttpMethod.POST}, authLevel = AuthorizationLevel.ANONYMOUS)
-  final String message,
-  @HttpOutput(name = "response") final OutputBinding<T> result ) {
-      result.setValue(message + " has been sent.");
-      return message;
- }
-```
-
- [Java işlevleri çalışma zamanı kitaplığı](/java/api/overview/azure/functions/runtime)'nda, `@QueueOutput` değeri Service Bus kuyruğuna yazılacak olan işlev parametrelerinde ek açıklamayı kullanın.  Parametre türü olmalıdır `OutputBinding<T>` ; burada T BIR POJO 'nın herhangi bir yerel Java türüdür.
-
-Java işlevleri, bir Service Bus konusuna da yazabilir. Aşağıdaki örnek, `@ServiceBusTopicOutput` Çıkış bağlamasının yapılandırmasını anlatmak için ek açıklamasını kullanır. 
-
-```java
-@FunctionName("sbtopicsend")
-    public HttpResponseMessage run(
-            @HttpTrigger(name = "req", methods = {HttpMethod.GET, HttpMethod.POST}, authLevel = AuthorizationLevel.ANONYMOUS) HttpRequestMessage<Optional<String>> request,
-            @ServiceBusTopicOutput(name = "message", topicName = "mytopicname", subscriptionName = "mysubscription", connection = "ServiceBusConnection") OutputBinding<String> message,
-            final ExecutionContext context) {
-        
-        String name = request.getBody().orElse("Azure Functions");
-
-        message.setValue(name);
-        return request.createResponseBuilder(HttpStatus.OK).body("Hello, " + name).build();
-        
-    }
-```
-
 ---
 
 ## <a name="attributes-and-annotations"></a>Öznitelikler ve ek açıklamalar
@@ -262,17 +295,21 @@ Tam bir örnek için bkz. [Çıkış-örnek](#example).
 
 Öznitelikler C# betiği tarafından desteklenmez.
 
+# <a name="java"></a>[Java](#tab/java)
+
+`ServiceBusQueueOutput`Ve `ServiceBusTopicOutput` ek açıklamaları bir ileti çıkışı olarak bir ileti yazmak için kullanılabilir. Bu ek açıklamalarla birlikte düzenlenmiş parametre, `OutputBinding<T>` `T` iletinin türüne karşılık gelen türde olduğu gibi bildirilmelidir.
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Öznitelikler JavaScript tarafından desteklenmez.
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Öznitelikler PowerShell tarafından desteklenmez.
+
 # <a name="python"></a>[Python](#tab/python)
 
 Öznitelikler Python tarafından desteklenmez.
-
-# <a name="java"></a>[Java](#tab/java)
-
-`ServiceBusQueueOutput`Ve `ServiceBusTopicOutput` ek açıklamaları bir ileti çıkışı olarak bir ileti yazmak için kullanılabilir. Bu ek açıklamalarla birlikte düzenlenmiş parametre, `OutputBinding<T>` `T` iletinin türüne karşılık gelen türde olduğu gibi bildirilmelidir.
 
 ---
 
@@ -280,7 +317,7 @@ Tam bir örnek için bkz. [Çıkış-örnek](#example).
 
 Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `ServiceBus` .
 
-|function.jsözelliği | Öznitelik özelliği |Description|
+|function.jsözelliği | Öznitelik özelliği |Açıklama|
 |---------|---------|----------------------|
 |**türüyle** | yok | "ServiceBus" olarak ayarlanmalıdır. Bu özellik, Azure portal tetikleyiciyi oluşturduğunuzda otomatik olarak ayarlanır.|
 |**Görünüm** | yok | "Out" olarak ayarlanmalıdır. Bu özellik, Azure portal tetikleyiciyi oluşturduğunuzda otomatik olarak ayarlanır. |
@@ -330,15 +367,19 @@ C# işlevleriyle çalışırken:
 
 * Oturum KIMLIĞINE erişmek için bir [`Message`](/dotnet/api/microsoft.azure.servicebus.message) türe bağlayın ve `sessionId` özelliğini kullanın.
 
+# <a name="java"></a>[Java](#tab/java)
+
+Yerleşik çıkış bağlaması yerine [Azure Service Bus SDK 'sını](../service-bus-messaging/index.yml) kullanın.
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Kullanarak kuyruğa veya konuya erişin `context.bindings.<name from function.json>` . ' A bir dize, bir bayt dizisi veya bir JavaScript nesnesi (JSON içine serisi) atayabilirsiniz `context.binding.<name>` .
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Service Bus çıkışı, `Push-OutputBinding` *function.jsüzerinde* , bağlamanın Name parametresiyle belirtilen adla eşleşen bağımsız değişkenleri geçirdiğiniz cmdlet üzerinden kullanılabilir.
+
 # <a name="python"></a>[Python](#tab/python)
-
-Yerleşik çıkış bağlaması yerine [Azure Service Bus SDK 'sını](../service-bus-messaging/index.yml) kullanın.
-
-# <a name="java"></a>[Java](#tab/java)
 
 Yerleşik çıkış bağlaması yerine [Azure Service Bus SDK 'sını](../service-bus-messaging/index.yml) kullanın.
 
@@ -384,11 +425,11 @@ Bu bölümde, 2. x ve üzeri sürümlerde bu bağlama için kullanılabilen gene
 
 `isSessionsEnabled`' A ayarlarsanız `true` , kabul edilir `sessionHandlerOptions` .  `isSessionsEnabled`' A ayarlarsanız `false` , kabul edilir `messageHandlerOptions` .
 
-|Özellik  |Varsayılan | Description |
+|Özellik  |Varsayılan | Açıklama |
 |---------|---------|---------|
 |prefetchCount|0|İleti alıcısının eşzamanlı olarak isteyebildiği ileti sayısını alır veya ayarlar.|
 |maxAutoRenewDuration|00:05:00|İleti kilidinin otomatik olarak yenilenebileceği en uzun süre.|
-|'Nın|true|Tetikleyicinin işlemden sonra otomatik olarak tamamlanmalı veya işlev kodu el ile tamamlanacaktır.<br><br>Ayarı `false` yalnızca C# dilinde desteklenir.<br><br>Olarak ayarlanırsa `true` , işlev yürütmesi başarıyla tamamlanırsa, tetikleyici iletiyi otomatik olarak tamamlar ve aksi takdirde iletiyi terk edin.<br><br>Olarak ayarlandığında `false` , iletiyi tamamlamaya, bırakmaya veya atılacak şekilde [MessageReceiver](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver?view=azure-dotnet) Yöntemler çağrılmadan siz sorumlusunuz. Bir özel durum oluşturulursa (ve `MessageReceiver` yöntemlerin hiçbiri çağrılmadığında), kilit kalır. Kilidin süresi dolduktan sonra ileti, artdıktan sonra yeniden kuyruğa alınır `DeliveryCount` ve kilit otomatik olarak yenilenir.<br><br>C olmayan işlevlerde işlevlerdeki özel durumlar, arka planda çalışma zamanı çağrılarına neden olur `abandonAsync` . Özel durum oluşursa, `completeAsync` arka planda çağırılır. |
+|'Nın|true|Tetikleyicinin işlemden sonra otomatik olarak tamamlanmalı veya işlev kodu el ile tamamlanacaktır.<br><br>Ayarı `false` yalnızca C# dilinde desteklenir.<br><br>Olarak ayarlanırsa `true` , işlev yürütmesi başarıyla tamamlanırsa, tetikleyici iletiyi otomatik olarak tamamlar ve aksi takdirde iletiyi terk edin.<br><br>Olarak ayarlandığında `false` , iletiyi tamamlamaya, bırakmaya veya atılacak şekilde [MessageReceiver](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver?view=azure-dotnet&preserve-view=true) Yöntemler çağrılmadan siz sorumlusunuz. Bir özel durum oluşturulursa (ve `MessageReceiver` yöntemlerin hiçbiri çağrılmadığında), kilit kalır. Kilidin süresi dolduktan sonra ileti, artdıktan sonra yeniden kuyruğa alınır `DeliveryCount` ve kilit otomatik olarak yenilenir.<br><br>C olmayan işlevlerde işlevlerdeki özel durumlar, arka planda çalışma zamanı çağrılarına neden olur `abandonAsync` . Özel durum oluşursa, `completeAsync` arka planda çağırılır. |
 |Maxconcurrentçağrıları|16|İleti göndericisinin ölçeklendirilmiş örnek başına başlatılması gereken geri çağrıya yönelik eşzamanlı çağrı sayısı üst sınırı. Varsayılan olarak, Işlevler çalışma zamanı birden çok iletiyi eşzamanlı olarak işler.|
 |maxConcurrentSessions|2000|Ölçeklendirilen örnek başına eşzamanlı olarak işlenebilecek en fazla oturum sayısı.|
 

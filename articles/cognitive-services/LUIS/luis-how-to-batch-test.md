@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 12/29/2020
-ms.openlocfilehash: 0834b8f00e4c414b3a36314b80f6c99fb8f2aea2
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: b297330f3562babf9e83d36934827f7b92d5ea35
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97955221"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98787021"
 ---
 # <a name="batch-testing-with-a-set-of-example-utterances"></a>Bir dizi örnek ile toplu test
 
@@ -99,7 +99,7 @@ JSON örneği, bir test dosyasının nasıl göründüğünü göstermek için e
 
 Batch test sonuçlarını gözden geçirmek için **sonuçları göster**' i seçin. Test sonuçları, test dıksları 'nın etkin sürüme göre nasıl tahmin edildiği hakkında grafiksel olarak gösterilir.
 
-Batch grafiğinde dört çeyrek daire görüntülenir. Grafiğin sağında bir filtre vardır. Filtre, amaçları ve varlıkları içerir. Grafiğin bir [bölümünü](luis-concept-batch-test.md#batch-test-results) veya grafik içindeki bir noktayı seçtiğinizde, ilişkili söyleyler grafiğin altında görüntülenir.
+Batch grafiğinde dört çeyrek daire görüntülenir. Grafiğin sağında bir filtre vardır. Filtre, amaçları ve varlıkları içerir. Grafiğin bir [bölümünü](#review-batch-results-for-intents) veya grafik içindeki bir noktayı seçtiğinizde, ilişkili söyleyler grafiğin altında görüntülenir.
 
 Grafiğin üzerine gelindiğinde fare tekerleği grafikteki görüntüyü büyütebilir veya azaltabilir. Bu, grafikte sıkı bir şekilde kümelenmiş çok sayıda noktaya sahip olduğunda faydalıdır.
 
@@ -166,7 +166,7 @@ Yeşil renkte grafiğin iki bölümü beklenen tahminiyle eşleşiyor.
 
 ## <a name="batch-testing-using-the-rest-api"></a>REST API kullanarak toplu işlem testi 
 
-LUSıS, Lu, portalını ve REST API kullanarak toplu test yapmanızı sağlar. REST API uç noktaları aşağıda listelenmiştir. LUU portalını kullanarak Batch test hakkında bilgi için bkz. [öğretici: Batch test veri kümeleri](luis-tutorial-batch-testing.md). Yer tutucu değerlerini kendi LUSıS tahmin anahtarınızla ve uç noktanızla değiştirerek aşağıdaki URL 'Leri kullanın. 
+LUSıS, Lu, portalını ve REST API kullanarak toplu test yapmanızı sağlar. REST API uç noktaları aşağıda listelenmiştir. LUU portalını kullanarak Batch test hakkında bilgi için bkz. [öğretici: Batch test veri kümeleri](). Yer tutucu değerlerini kendi LUSıS tahmin anahtarınızla ve uç noktanızla değiştirerek aşağıdaki URL 'Leri kullanın. 
 
 Üst bilgide HALSıS anahtarınızı eklemeyi `Ocp-Apim-Subscription-Key` ve öğesini olarak ayarlamayı unutmayın `Content-Type` `application/json` .
 
@@ -265,5 +265,3 @@ Test, LUP uygulamanızın doğru amaçları ve varlıkları algıladığını g�
 
 * [LUSıS ile önerilen bir şekilde etiketleme](luis-how-to-review-endpoint-utterances.md)
 * [LUSıS uygulamanızın performansını artırmak için özellikleri kullanın](luis-how-to-add-features.md)
-* [Toplu iş testini bu öğreticiyle anlayın](luis-tutorial-batch-testing.md)
-* [Batch test kavramlarını öğrenin](luis-concept-batch-test.md).

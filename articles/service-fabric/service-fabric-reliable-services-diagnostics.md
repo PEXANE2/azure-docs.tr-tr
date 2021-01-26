@@ -3,23 +3,23 @@ title: Azure Service Fabric durum bilgisi Reliable Services tanılaması
 description: Azure Service Fabric durum bilgisi olan Reliable Services için tanılama işlevi
 ms.topic: conceptual
 ms.date: 8/24/2018
-ms.openlocfilehash: 5a3831dd4f8d5402980fac3daf8c35d9884c852d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 774a771d0c9701076a5d6c070963bf6224a571dd
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91840770"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789340"
 ---
 # <a name="diagnostic-functionality-for-stateful-reliable-services"></a>Durum Bilgisi Olan Reliable Services için tanılama işlevi
-Azure Service Fabric durum bilgisi olan Reliable Services StatefulServiceBase sınıfı, hizmette hata ayıklamak, çalışma zamanının nasıl çalıştığı hakkında Öngörüler sağlamak ve sorun gidermeye yardımcı olmak için kullanılan [EventSource](/dotnet/api/system.diagnostics.tracing.eventsource?view=netcore-3.1) olaylarını yayar.
+Azure Service Fabric durum bilgisi olan Reliable Services StatefulServiceBase sınıfı, hizmette hata ayıklamak, çalışma zamanının nasıl çalıştığı hakkında Öngörüler sağlamak ve sorun gidermeye yardımcı olmak için kullanılan [EventSource](/dotnet/api/system.diagnostics.tracing.eventsource) olaylarını yayar.
 
 ## <a name="eventsource-events"></a>EventSource olayları
 Durum bilgisi olan Reliable Services StatefulServiceBase sınıfının EventSource adı "Microsoft-ServiceFabric-Services" dır. Bu olay kaynağının olayları, hizmetin [Visual Studio 'da hata ayıklaması](service-fabric-debugging-your-application.md)yapıldığında [Tanılama olayları](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md#view-service-fabric-system-events-in-visual-studio) penceresinde görüntülenir.
 
 EventSource olaylarını toplama ve/veya görüntüleme konusunda yardımcı olan araç ve teknolojilerin örnekleri, [PerfView](https://www.microsoft.com/download/details.aspx?id=28567), [Azure tanılama](../cloud-services/cloud-services-dotnet-diagnostics.md)ve [Microsoft TraceEvent Library](https://www.nuget.org/packages/Microsoft.Diagnostics.Tracing.TraceEvent)' dir.
 
-## <a name="events"></a>Olaylar
-| Olay adı | Olay Kimliği | Düzey | Olay açıklaması |
+## <a name="events"></a>Ekinlikler
+| Olay adı | Olay Kimliği | Level | Olay açıklaması |
 | --- | --- | --- | --- |
 | Statefulrunasyncınvocation |1 |Bilgilendirici |Service RunAsync görevi başlatıldığında yayılır |
 | Statefulrunasynciptali |2 |Bilgilendirici |Service RunAsync görevi iptal edildiğinde yayılır |
@@ -58,7 +58,7 @@ Kategori için `Service Fabric Transactional Replicator` , sayaç örneği adlar
 
 `ServiceFabricPartitionId:ServiceFabricReplicaId`
 
-*Servicefabricpartitionıd* , performans sayacı örneğinin ilişkilendirildiği SERVICE fabrıc bölüm kimliğinin dize gösterimidir. Bölüm KIMLIĞI bir GUID 'dir ve dize temsili [`Guid.ToString`](/dotnet/api/system.guid.tostring?view=netcore-3.1#System_Guid_ToString_System_String_) "D" biçim belirticisi ile birlikte oluşturulur.
+*Servicefabricpartitionıd* , performans sayacı örneğinin ilişkilendirildiği SERVICE fabrıc bölüm kimliğinin dize gösterimidir. Bölüm KIMLIĞI bir GUID 'dir ve dize temsili [`Guid.ToString`](/dotnet/api/system.guid.tostring#System_Guid_ToString_System_String_) "D" biçim belirticisi ile birlikte oluşturulur.
 
 *Servicefabricreplicaıd* , güvenilir bir hizmetin belirli bir çoğaltmasından ILIŞKILI olan kimliğidir. Benzersizlik sağlamak ve aynı bölüm tarafından oluşturulan diğer performans sayacı örnekleriyle çakışmadan kaçınmak için, çoğaltma KIMLIĞI performans sayacı örneği adına dahil edilir. Çoğaltmalarla ilgili daha fazla ayrıntı ve güvenilir hizmetlerde rolü [burada](service-fabric-concepts-replica-lifecycle.md)bulabilirsiniz.
 
@@ -73,7 +73,7 @@ Kategori için `Service Fabric TStore` , sayaç örneği adları aşağıdaki bi
 
 `ServiceFabricPartitionId:ServiceFabricReplicaId:StateProviderId_PerformanceCounterInstanceDifferentiator_StateProviderName`
 
-*Servicefabricpartitionıd* , performans sayacı örneğinin ilişkilendirildiği SERVICE fabrıc bölüm kimliğinin dize gösterimidir. Bölüm KIMLIĞI bir GUID 'dir ve dize temsili [`Guid.ToString`](/dotnet/api/system.guid.tostring?view=netcore-3.1#System_Guid_ToString_System_String_) "D" biçim belirticisi ile birlikte oluşturulur.
+*Servicefabricpartitionıd* , performans sayacı örneğinin ilişkilendirildiği SERVICE fabrıc bölüm kimliğinin dize gösterimidir. Bölüm KIMLIĞI bir GUID 'dir ve dize temsili [`Guid.ToString`](/dotnet/api/system.guid.tostring#System_Guid_ToString_System_String_) "D" biçim belirticisi ile birlikte oluşturulur.
 
 *Servicefabricreplicaıd* , güvenilir bir hizmetin belirli bir çoğaltmasından ILIŞKILI olan kimliğidir. Benzersizlik sağlamak ve aynı bölüm tarafından oluşturulan diğer performans sayacı örnekleriyle çakışmadan kaçınmak için, çoğaltma KIMLIĞI performans sayacı örneği adına dahil edilir. Çoğaltmalarla ilgili daha fazla ayrıntı ve güvenilir hizmetlerde rolü [burada](service-fabric-concepts-replica-lifecycle.md)bulabilirsiniz.
 

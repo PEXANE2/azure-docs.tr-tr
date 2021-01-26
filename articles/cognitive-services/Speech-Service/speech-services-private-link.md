@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/15/2020
 ms.author: alexeyo
-ms.openlocfilehash: 61be4b45df94c902c0473b94a6dd83237c72da3c
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 51989a9219cdbfebf833c99849dba67c939cf77a
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98196137"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98786851"
 ---
 # <a name="use-speech-services-through-a-private-endpoint"></a>Özel bir uç nokta aracılığıyla konuşma hizmetlerini kullanma
 
@@ -293,7 +293,7 @@ Konuşma Hizmetleri, [konuşmadan metne](rest-speech-to-text.md) ve [METINDEN ko
 Konuşmadan metne iki REST API 'si vardır. Her API farklı bir amaca hizmet eder, farklı uç noktalar kullanır ve bunu özel uç nokta etkin senaryosunda kullandığınızda farklı bir yaklaşım gerektirir.
 
 Konuşmadan metne REST API 'Leri şunlardır:
-- [Toplu iş dökümü](batch-transcription.md) ve [özel konuşma tanıma](custom-speech-overview.md)için kullanılan [konuşmayı metne REST API v 3.0](rest-speech-to-text.md#speech-to-text-rest-api-v30). v 3.0, [v 2.0 'ın bir ardıldır](/azure/cognitive-services/speech-service/migrate-v2-to-v3)
+- [Toplu iş dökümü](batch-transcription.md) ve [özel konuşma tanıma](custom-speech-overview.md)için kullanılan [konuşmayı metne REST API v 3.0](rest-speech-to-text.md#speech-to-text-rest-api-v30). v 3.0, [v 2.0 'ın bir ardıldır](./migrate-v2-to-v3.md)
 - Çevrimiçi döküm için kullanılan [kısa ses Için konuşmaya metne REST API](rest-speech-to-text.md#speech-to-text-rest-api-for-short-audio) 
 
 Kısa ses için konuşmadan metne REST API kullanımı ve özel uç nokta senaryosunda metinden konuşmaya REST API aynı. Bu makalenin ilerleyen kısımlarında açıklanan [konuşma SDK 'nın büyük](#speech-resource-with-a-custom-domain-name-and-a-private-endpoint-usage-with-the-speech-sdk) bölümüne eşdeğerdir. 
@@ -395,7 +395,7 @@ Bölgenin tüm olası değerleri (DNS adının ilk öğesi) [konuşma hizmeti ta
 | `convai`       | [Konuşma dökümü](conversation-transcription.md) |
 | `s2s`          | [Konuşma Çevirisi](speech-translation.md)                 |
 | `stt`          | [Konuşmayı metne dönüştürme](speech-to-text.md)                         |
-| `tts`          | [Metin Okuma](text-to-speech.md)                         |
+| `tts`          | [Metin okuma](text-to-speech.md)                         |
 | `voice`        | [Özel ses](how-to-custom-voice.md)                      |
 
 Bu nedenle, önceki örnek ( `westeurope.stt.speech.microsoft.com` ) Batı Avrupa içindeki bir konuşmaya metin uç noktası için temsil eder.
@@ -606,7 +606,7 @@ Bu değişiklikten sonra uygulamanız özel uç noktaları olmadan özel bir etk
 
 Fiyatlandırma ayrıntıları için bkz. [Azure özel bağlantı fiyatlandırması](https://azure.microsoft.com/pricing/details/private-link).
 
-## <a name="learn-more"></a>Daha fazla bilgi edinin
+## <a name="learn-more"></a>Daha fazlasını öğrenin
 
 * [Azure Özel Bağlantı](../../private-link/private-link-overview.md)
 * [Konuşma SDK'sı](speech-sdk.md)

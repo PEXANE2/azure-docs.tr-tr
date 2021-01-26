@@ -7,237 +7,261 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: estfan, daviburg, logicappspm
 ms.topic: article
-ms.date: 07/21/2020
+ms.date: 01/25/2021
 tags: connectors
-ms.openlocfilehash: 4afd6f0cc3b4b5e135d80b420d8260c50d9ca46c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 93e705eea39443ffc15fbdd079e1376ec46cb51c
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89488856"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98786699"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Azure Logic Apps’ten SAP sistemlerine bağlanma
 
-> [!IMPORTANT]
-> Önceki SAP uygulama sunucusu ve SAP Ileti sunucusu bağlayıcıları, 29 Şubat 2020 ' de kullanımdan kaldırılmıştır. Geçerli SAP Bağlayıcısı, bu önceki SAP bağlayıcılarını, bağlantı türünü değiştirmek zorunda kalmazsınız, önceki bağlayıcılarla tamamen uyumlu, birçok ek özellik sağlar ve SAP .net bağlayıcı kitaplığı 'nı (SAP NCo) kullanmaya devam eder.
->
-> Eski bağlayıcıları kullanan Logic Apps için, kullanımdan kaldırma tarihinden önce lütfen [en son bağlayıcıya geçiş](#migrate) yapın. Aksi takdirde, bu Logic Apps yürütme hatalarıyla karşılaşacaktır ve SAP sisteminize ileti gönderemeyecektir.
+Bu makalede [SAP bağlayıcısını](https://docs.microsoft.com/connectors/sap/)kullanarak Logic Apps SAP kaynaklarınıza nasıl erişebileceğiniz açıklanır.
 
-Bu makalede SAP bağlayıcısını kullanarak bir mantık uygulamasının içinden şirket içi SAP kaynaklarınıza nasıl erişebileceğiniz gösterilmektedir. Bağlayıcı, şirket içi R/3 ve ECC sistemleri gibi SAP 'nin klasik sürümleriyle birlikte kullanılabilir. Bağlayıcı, SAP’nin hem şirket içinde hem de bulutta barındırılan S/4 HANA gibi yeni HANA tabanlı SAP sistemleriyle tümleştirilmesini de sağlar. SAP bağlayıcısı, Ara Belge (IDoc) veya İş Uygulamaları Programlama Arabirimi (BAPI) veya Uzaktan İşlev Çağrısı (RFC) aracılığıyla SAP NetWeaver tabanlı sistemlerle ileti veya veri tümleştirmesi yapılmasını destekler.
-
-SAP Bağlayıcısı [sap .net bağlayıcı (NCo) kitaplığını](https://support.sap.com/en/product/connectors/msnet.html) kullanır ve şu eylemleri sağlar:
-
-* **SAP 'ye Ileti gönderin**: tRFC üzerinden IDoc GÖNDERIN, RFC üzerinde BAPI işlevlerini ÇAĞıRıN veya SAP sistemlerinde RFC/tRFC çağrısı yapın.
-
-* **SAP 'den bir ileti alındığında**: tRFC üzerinde IDoc alma, TRFC üzerinde BAPI işlevleri ÇAĞıRMA veya SAP sistemlerinde RFC/tRFC çağırma.
-
-* **Şemalar oluşturma**: ıDOC, BAPı veya RFC için SAP yapıtları için şemalar oluşturun.
-
-Bu işlemler için SAP Bağlayıcısı, Kullanıcı adları ve parolalar aracılığıyla temel kimlik doğrulamasını destekler. Bağlayıcı Ayrıca [güvenli ağ iletişimini (SNC)](https://help.sap.com/doc/saphelp_nw70/7.0.31/e6/56f466e99a11d1a5b00000e835363f/content.htm?no_cache=true)destekler. SNC, SAP NetWeaver çoklu oturum açma (SSO) veya harici bir güvenlik ürünü tarafından sunulan ek güvenlik özellikleri için kullanılabilir.
-
-Bu makalede, daha önce açıklanan tümleştirme senaryolarını kapsayan, SAP ile tümleştirilen örnek mantık uygulamalarının nasıl oluşturulacağı gösterilmektedir. Eski SAP bağlayıcılarını kullanan Logic Apps için, bu makalede mantıksal uygulamalarınızın en son SAP bağlayıcısına nasıl geçirileceği gösterilmektedir.
-
-<a name="pre-reqs"></a>
-
-## <a name="prerequisites"></a>Ön koşullar
-
-Bu makaleyle birlikte takip etmek için şu öğelere ihtiyacınız vardır:
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği. Henüz bir Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 
-* SAP sisteminize erişmek istediğiniz mantıksal uygulama ve mantıksal uygulamanızın iş akışını başlatan bir tetikleyici. Logic Apps 'e yeni başladıysanız bkz. [Azure Logic Apps nedir? nedir?](../logic-apps/logic-apps-overview.md) ve [hızlı başlangıç: Ilk mantıksal uygulamanızı oluşturma](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+* SAP kaynaklarınıza erişmek istediğiniz mantıksal uygulama. Logic Apps yeni başladıysanız [Azure Portal ilk mantıksal uygulamanızı oluşturmaya yönelik](../logic-apps/quickstart-create-first-logic-app-workflow.md) [Logic Apps hizmete genel bakış](../logic-apps/logic-apps-overview.md) ve hızlı başlangıç başlığına bakın.
 
-* [SAP uygulama sunucunuz](https://wiki.scn.sap.com/wiki/display/ABAP/ABAP+Application+Server) veya [SAP ileti sunucunuz](https://help.sap.com/saphelp_nw70/helpdata/en/40/c235c15ab7468bb31599cc759179ef/frameset.htm).
+    * SAP bağlayıcısının kullanım dışı bırakılmış önceki bir sürümünü kullandıysanız, SAP sunucunuza bağlanabilmek için önce [geçerli bağlayıcıya geçiş](#migrate-to-current-connector) yapmanız gerekir.
 
-* SAP sunucunuza göndereceğiniz örnek bir IDoc dosyası gibi ileti içeriği, XML biçiminde olmalıdır ve kullanmak istediğiniz SAP eyleminin ad alanını içermelidir.
+    * Mantıksal uygulamanızı çok kiracılı Azure 'da çalıştırıyorsanız, [çok kiracılı önkoşullara](#multi-tenant-azure-prerequisites)bakın.
 
-* **SAP tetikleyicisinden bir ileti alındığında** kullanmak için, bu kurulum adımlarını da gerçekleştirmeniz gerekir:
-  
-  > [!NOTE]
-  > Bu tetikleyici, Web kancası aboneliğine hem yenileme hem de aboneliği kaldırma için aynı URI konumunu kullanır. Yenileme işlemi HTTP `PATCH` yöntemini kullanır, ancak abonelik kaldırma IŞLEMI http `DELETE` yöntemini kullanır. Bu davranış, tetikleyicisinin geçmişinde bir abonelik kaldırma işlemi olarak bir yenileme işlemi görünmesini sağlayabilir, ancak tetikleyici HTTP yöntemi olarak kullanıldığından, işlem hala bir yenilemektedir `PATCH` `DELETE` .
+    * Mantıksal uygulamanızı Premium düzeyinde bir[ tümleştirme hizmeti ortamında (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)çalıştırıyorsanız, [Ise önkoşulları](#ise-prerequisites)bölümüne bakın.
 
-  * Bu ayarla SAP Gateway Güvenlik izinlerinizi ayarlayın:
+* Logic Apps erişmek istediğiniz [SAP uygulama sunucusu](https://wiki.scn.sap.com/wiki/display/ABAP/ABAP+Application+Server) veya [SAP ileti sunucusu](https://help.sap.com/saphelp_nw70/helpdata/en/40/c235c15ab7468bb31599cc759179ef/frameset.htm) . Bağlayıcıyla kullanabileceğiniz SAP sunucuları ve SAP eylemleri hakkında daha fazla bilgi için bkz. [SAP uyumluluğu](#sap-compatibility).
 
-    `"TP=Microsoft.PowerBI.EnterpriseGateway HOST=<gateway-server-IP-address> ACCESS=*"`
+* SAP sunucunuza göndermek için örnek bir IDoc dosyası gibi ileti içeriği. Bu içerik XML biçiminde olmalıdır ve kullanmak istediğiniz SAP eyleminin ad alanını içermelidir. [BIR XML zarfına sarmalayarak, düz bir dosya şeması olan IDoc 'ları gönderebilirsiniz](#send-flat-file-idocs).
 
-  * Access Control listesi (ACL) hatalarını bulmaya yardımcı olan ve varsayılan olarak etkin olmayan SAP Gateway Güvenlik günlüğü 'nü ayarlayın. Aksi takdirde, şu hatayı alırsınız:
+* **SAP tetikleyicisinden bir ileti alındığında** kullanmak istiyorsanız, aşağıdakileri de yapmanız gerekir:
 
-    `"Registration of tp Microsoft.PowerBI.EnterpriseGateway from host <host-name> not allowed"`
+    * Bu ayarla SAP Gateway Güvenlik izinlerinizi ayarlayın: `"TP=Microsoft.PowerBI.EnterpriseGateway HOST=<gateway-server-IP-address> ACCESS=*"`
 
-    Daha fazla bilgi için, [ağ geçidi günlüğünü ayarlama](https://help.sap.com/erp_hcm_ias2_2015_02/helpdata/en/48/b2a710ca1c3079e10000000a42189b/frameset.htm), SAP yardım konusuna bakın.
+    * Access Control listesi (ACL) bulmaya yardımcı olması için SAP Gateway Güvenlik günlüğü 'nü ayarlayın. Daha fazla bilgi için, [ağ geçidi günlüğünü ayarlamaya yönelik SAP yardım konusuna](https://help.sap.com/erp_hcm_ias2_2015_02/helpdata/en/48/b2a710ca1c3079e10000000a42189b/frameset.htm)bakın. Aksi takdirde şu hatayı alırsınız: `"Registration of tp Microsoft.PowerBI.EnterpriseGateway from host <host-name> not allowed"`
 
-<a name="multi-tenant"></a>
+    > [!NOTE]
+    > Bu tetikleyici, Web kancası aboneliğine hem yenileme hem de aboneliği kaldırma için aynı URI konumunu kullanır. Yenileme işlemi HTTP `PATCH` yöntemini kullanır, ancak abonelik kaldırma IŞLEMI http `DELETE` yöntemini kullanır. Bu davranış, tetikleyicisinin geçmişinde bir abonelik kaldırma işlemi olarak bir yenileme işlemi görünmesini sağlayabilir, ancak tetikleyici HTTP yöntemi olarak kullanıldığından, işlem hala bir yenilemektedir `PATCH` `DELETE` .
+
+### <a name="sap-compatibility"></a>SAP uyumluluğu
+
+SAP Bağlayıcısı, aşağıdaki SAP sistemleri türleriyle uyumludur:
+
+* S/4 HANA gibi şirket içi ve bulut tabanlı HANA tabanlı SAP sistemleri.
+
+* R/3 ve ECC gibi klasik şirket içi SAP sistemleri.
+
+SAP Bağlayıcısı, SAP NetWeaver tabanlı sistemlerden aşağıdaki ileti ve veri tümleştirme türlerini destekler:
+
+* Ara belge (IDoc)
+
+* İş uygulaması programlama arabirimi (BAPı)
+
+* Uzak Işlev çağrısı (RFC) ve Işlem RFC (tRFC)
+
+SAP Bağlayıcısı, [sap .net Bağlayıcısı (NCo) kitaplığını](https://support.sap.com/en/product/connectors/msnet.html)kullanır. Aşağıdaki SAP eylemlerini ve bağlayıcı ile tetikleyiciyi kullanabilirsiniz:
+
+* Şunları yapmak için kullanabileceğiniz [tRFC üzerinde IDoc 'ları göndermek](#send-idoc-action) üzere **SAP 'ye ileti gönderin** :
+
+    * [RFC üzerinde BAPı işlevlerini çağırma](#call-bapi-action)
+
+    * SAP sistemlerinde RFC/tRFC çağırma
+
+    * Durum bilgisi olan oturumlar oluşturma veya kapatma
+
+    * BAPı işlemlerini işleme veya geri alma
+
+    * İşlem tanımlayıcısı onaylama
+
+    * IDoc 'Ları gönderin, kendi numarasından bir IDoc 'ın durumunu alın ve bir işlem için IDoc 'Lar listesini alın
+
+    * SAP tablosu okuma
+
+* **SAP tetikleyicisinden bir ileti alındığında** şunları yapabilirsiniz:
+
+    * TRFC üzerinde IDoc alma
+
+    * TRFC üzerinde BAPı işlevlerini çağırma
+
+    * SAP sistemlerinde RFC/tRFC çağırma
+
+* IDoc, BAPı veya RFC için SAP yapıtları için şemalar oluşturmak üzere kullanabileceğiniz **şemalar oluşturma** eylemi.
+
+Bu SAP eylemlerini kullanmak için önce bir Kullanıcı adı ve parolayla bağlantınızın kimlik doğrulamasını yapmanız gerekir. SAP Bağlayıcısı Ayrıca [güvenli ağ iletişimini (SNC)](https://help.sap.com/doc/saphelp_nw70/7.0.31/e6/56f466e99a11d1a5b00000e835363f/content.htm?no_cache=true)destekler. SAP NetWeaver çoklu oturum açma (SSO) için SNC veya dış ürünlerden ek güvenlik özellikleri için kullanabilirsiniz. SNC kullanıyorsanız, bkz. [SNC önkoşulları](#snc-prerequisites).
+
+### <a name="migrate-to-current-connector"></a>Geçerli bağlayıcıya geçiş
+
+Önceki SAP uygulama sunucusu ve SAP Ileti sunucusu bağlayıcıları, 29 Şubat 2020 ' de kullanımdan kaldırılmıştır. Geçerli SAP bağlayıcısına geçiş yapmak için şu adımları izleyin:
+
+1. Şirket [içi veri ağ geçidinizi](https://www.microsoft.com/download/details.aspx?id=53127) güncel sürüme güncelleştirin. Daha fazla bilgi için bkz. [Azure Logic Apps için şirket içi veri ağ geçidi yüklemesi](../logic-apps/logic-apps-gateway-install.md).
+
+1. Kullanım dışı olan SAP bağlayıcısını kullanan mantıksal uygulamanızda **SAP gönder** eylemini silin.
+
+1. Geçerli SAP bağlayıcısından **SAP 'a Ileti gönder** eylemini ekleyin.
+
+1. Yeni eylemde SAP sisteminize yeniden bağlanın.
+
+1. Mantıksal uygulamanızı kaydedin.
 
 ### <a name="multi-tenant-azure-prerequisites"></a>Çok kiracılı Azure önkoşulları
 
-Bu Önkoşullar, Logic Apps çok kiracılı Azure 'da çalıştığında ve bir [tümleştirme hizmeti ortamında (ıSE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)yerel olarak ÇALıŞTıRMAYAN yönetilen SAP bağlayıcısını kullanmak istediğinizde geçerlidir. Aksi halde, Premium düzeyinde bir ıSE kullanıyorsanız ve ıSE 'de yerel olarak çalışan SAP bağlayıcısını kullanmak istiyorsanız, bkz. [Integration Service Environment (ISE) önkoşulları](#sap-ise).
+Mantıksal uygulamanız çok kiracılı Azure 'da çalışıyorsa bu önkoşullar geçerlidir. Yönetilen SAP Bağlayıcısı bir [Ise](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)'de yerel olarak çalışmaz.
 
-Yönetilen (ıSE) SAP Bağlayıcısı şirket içi [veri ağ geçidi](../logic-apps/logic-apps-gateway-connection.md)aracılığıyla ŞIRKET içi SAP sistemleriyle tümleştirilir. Örneğin, ileti gönder senaryolarında bir mantıksal uygulamadan SAP sistemine bir ileti gönderildiğinde, veri ağ geçidi bir RFC istemcisi işlevi görür ve mantıksal uygulamadan alınan istekleri SAP 'ye iletir. Benzer şekilde, ileti alma senaryolarında, veri ağ geçidi SAP 'den gelen istekleri alan ve mantıksal uygulamaya ileten bir RFC sunucusu işlevi görür.
+> [!TIP]
+> Premium düzeyinde bir ıSE kullanıyorsanız, yönetilen SAP Bağlayıcısı yerine SAP ıSE bağlayıcısını kullanabilirsiniz. Daha fazla bilgi için bkz. [Ise önkoşulları](#ise-prerequisites).
 
-* Şirket [içi veri ağ geçidini yerel bilgisayarınıza indirip yükleyin](../logic-apps/logic-apps-gateway-install.md) . Daha sonra, bu ağ geçidi için Azure portal [bir Azure ağ geçidi kaynağı oluşturun](../logic-apps/logic-apps-gateway-connection.md#create-azure-gateway-resource) . Ağ Geçidi, şirket içi verilere ve kaynaklara güvenli bir şekilde erişmenize yardımcı olur.
+Yönetilen SAP Bağlayıcısı, Şirket [içi veri ağ geçidiniz](../logic-apps/logic-apps-gateway-connection.md)aracılığıyla SAP sistemleriyle tümleşir. Örneğin, ileti gönder senaryolarında bir mantıksal uygulamadan SAP sistemine bir ileti gönderildiğinde, veri ağ geçidi bir RFC istemcisi işlevi görür ve mantıksal uygulamadan alınan istekleri SAP 'ye iletir. Benzer şekilde, ileti alma senaryolarında, veri ağ geçidi SAP 'den gelen istekleri alan ve mantıksal uygulamaya ileten bir RFC sunucusu işlevi görür.
 
-  En iyi uygulama olarak, şirket içi veri ağ geçidinin desteklenen bir sürümünü kullandığınızdan emin olun. Microsoft, her ay yeni bir sürüm yayınlar. Şu anda Microsoft son altı sürümü destekliyor. Ağ geçidinizle ilgili bir sorun yaşıyorsanız, sorunu çözmek için güncelleştirmeleri içerebilen [en son sürüme yükseltmeyi](https://aka.ms/on-premises-data-gateway-installer)deneyin.
+* Şirket [içi veri ağ geçidini](../logic-apps/logic-apps-gateway-install.md) , BAĞLANMAKTA olduğunuz SAP sistemiyle aynı sanal ağda bulunan bir konak bilgisayara veya sanal makineye indirin ve yükleyin.
 
-* [En son SAP istemci kitaplığını](#sap-client-library-prerequisites) şirket içi veri ağ geçidiyle aynı bilgisayara indirip yükleyin.
+* Azure portal şirket içi veri ağ geçidiniz için [bir Azure ağ geçidi kaynağı oluşturun](../logic-apps/logic-apps-gateway-connection.md#create-azure-gateway-resource) . Bu ağ geçidi, şirket içi verilere ve kaynaklara güvenli bir şekilde erişmenize yardımcı olur. Ağ geçidinin desteklenen bir sürümünü kullandığınızdan emin olun.
 
-<a name="sap-ise"></a>
+    * Ağ geçidinizle ilgili bir sorun yaşıyorsanız, sorunu çözmek için güncelleştirmeleri içerebilen [en son sürüme yükseltmeyi](https://aka.ms/on-premises-data-gateway-installer)deneyin.
 
-### <a name="integration-service-environment-ise-prerequisites"></a>Tümleştirme hizmeti ortamı (ıSE) önkoşulları
+* [En son SAP istemci kitaplığını](#sap-client-library-prerequisites) şirket içi veri ağ geçidiniz ile aynı yerel bilgisayara indirip yükleyin.
 
-Bu Önkoşullar, mantıksal uygulamalarınız Premium düzeyinde (Geliştirici düzeyinde değil) bir [tümleştirme hizmeti ortamında (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)çalıştırıldığında ve bır Ise 'de yerel olarak çalışan SAP bağlayıcısını kullanmak istediğinizde geçerlidir. ISE, bir Azure sanal ağı tarafından korunan kaynaklara erişim sağlar ve Logic Apps 'in şirket içi veri ağ geçidini kullanmadan şirket içi kaynaklara doğrudan erişmesini sağlayan diğer ıSE-yerel bağlayıcılar sunar.
+### <a name="ise-prerequisites"></a>ISE önkoşulları
+
+Mantıksal uygulamanızı Premium düzeyinde bir ıSE çalıştırıyorsanız bu önkoşullar geçerlidir. Ancak, geliştirici düzeyinde çalışan Logic Apps için uygulanmazlar. ISE, bir Azure sanal ağı tarafından korunan kaynaklara erişim sağlar ve Logic Apps 'in şirket içi veri ağ geçidini kullanmadan şirket içi kaynaklara doğrudan erişmesini sağlayan diğer ıSE-yerel bağlayıcılar sunar.
 
 > [!NOTE]
-> SAP ıSE Bağlayıcısı geliştirici düzeyinde bir ıSE içinde görünür olsa da, bağlayıcıyı yüklemeye yönelik girişimler başarılı olmayacaktır.
+> SAP ıSE Bağlayıcısı geliştirici düzeyinde bir ıSE 'nin içinde görünür olsa da, bağlayıcıyı yüklemeye yönelik girişimler başarılı olmayacaktır.
 
-1. Henüz bir Azure depolama hesabınız ve bir blob Kapsayıcınız yoksa, [Azure Portal](../storage/blobs/storage-quickstart-blobs-portal.md) ya da [Azure Depolama Gezgini](../storage/blobs/storage-quickstart-blobs-storage-explorer.md)kullanarak bu kapsayıcıyı oluşturun.
+1. Blob kapsayıcısı olan bir Azure depolama hesabınız yoksa [Azure Portal](../storage/blobs/storage-quickstart-blobs-portal.md) veya [Azure Depolama Gezgini](../storage/blobs/storage-quickstart-blobs-storage-explorer.md)kullanarak bir kapsayıcı oluşturun.
 
 1. [En son SAP istemci kitaplığını yerel bilgisayarınıza indirip yükleyin](#sap-client-library-prerequisites) . Aşağıdaki derleme dosyalarına sahip olmanız gerekir:
 
    * libicudecnumber.dll
+
    * rscp4n.dll
+
    * sapnco.dll
+
    * sapnco_utils.dll
 
-1. Bu derlemeleri içeren bir. zip dosyası oluşturun ve bu paketi Azure Storage 'daki blob kapsayıcınıza yükleyin.
+1. Bu derleme dosyalarını içeren bir. zip dosyası oluşturun. Paketi Azure Storage 'daki blob kapsayıcınıza yükleyin.
 
 1. Azure portal ya da Azure Depolama Gezgini,. zip dosyasını karşıya yüklediğiniz kapsayıcı konumuna gidin.
 
-1. Paylaşılan erişim Imzası (SAS) belirtecini eklediğinizden emin olmak için bu konumun URL 'sini kopyalayın.
+1. Kapsayıcı konumunun URL 'sini kopyalayın. SAS belirtecinin yetkilendirildiği, paylaşılan erişim Imzası (SAS) belirtecini eklediğinizden emin olun. Aksi takdirde, SAP ıSE Bağlayıcısı için dağıtım başarısız olur.
 
-   Aksi takdirde SAS belirteci yetkilendirilmez ve SAP ıSE Bağlayıcısı için dağıtım başarısız olur.
-
-1. SAP ıSE bağlayıcısını kullanabilmeniz için, bağlayıcıyı yüklemeniz ve ıSE 'ye dağıtmanız gerekir.
+1. SAP bağlayıcısını, ıSE 'ye yükleyip dağıtın. Daha fazla bilgi için bkz. [Ise bağlayıcıları ekleme](../logic-apps/add-artifacts-integration-service-environment-ise.md#add-ise-connectors-environment).
 
    1. [Azure Portal](https://portal.azure.com), Ise 'nizi bulun ve açın.
-   
-   1. Ise menüsünde, **yönetilen bağlayıcılar**  >  **Ekle**' yi seçin. Bağlayıcılar listesinden **SAP**bulun ve seçin.
-   
-   1. **Yeni bir yönetilen bağlayıcı Ekle** bölmesinde, **SAP paketi** kutusuna SAP derlemeleri olan. zip dosyasının URL 'sini yapıştırın. *SAS belirtecini eklediğinizden emin olun.*
 
-   1. İşiniz bittiğinde **Oluştur**'u seçin.
+   1. Ise menüsünde, **yönetilen bağlayıcılar** &gt; **Ekle**' yi seçin. Bağlayıcılar listesinden **SAP** bulun ve seçin.
 
-   Daha fazla bilgi için bkz. [Ise bağlayıcıları ekleme](../logic-apps/add-artifacts-integration-service-environment-ise.md#add-ise-connectors-environment).
+   1. **Yeni bir yönetilen bağlayıcı Ekle** bölmesinde, **SAP paketi** kutusuna SAP derlemeleri olan. zip dosyasının URL 'sini yapıştırın. Daha sonra, SAS belirtecini eklediğinizden emin olun.
+ 
+  1. ISE bağlayıcınızı oluşturmayı bitirmeden **Oluştur** ' u seçin.
 
-1. SAP örneğiniz ve ıSE farklı sanal ağlardayken, ıSE 'nin sanal ağının SAP örneğinizin sanal ağına bağlanması için [bu ağları da eşdüzey](../virtual-network/tutorial-connect-virtual-networks-portal.md) yapmanız gerekir.
-
-<a name="sap-client-library-prerequisites"></a>
+1. SAP örneğiniz ve ıSE farklı sanal ağlardayken, [bu ağları](../virtual-network/tutorial-connect-virtual-networks-portal.md) bağlı olmaları için de eşdüzey yapmanız gerekir.
 
 ### <a name="sap-client-library-prerequisites"></a>SAP istemci kitaplığı önkoşulları
 
-* [.NET Framework 4,0-Windows 64-bit (x64) ile derlenen Microsoft .NET 3.0.22.0 Için SAP Bağlayıcısı (NCo 3,0)](https://support.sap.com/en/product/connectors/msnet.html)en son sürümünü yüklediğinizden emin olun. Önceki sürümler uyumluluk sorunlarına yol açabilir. Daha fazla bilgi için bkz. [SAP istemci Kitaplığı sürümleri](#sap-library-versions).
+Bunlar, bağlayıcıyla kullanmakta olduğunuz SAP istemci kitaplığı için önkoşullardır.
 
-* Varsayılan olarak, SAP yükleyicisi derleme dosyalarını varsayılan yükleme klasörüne koyar. Senaryonuza bağlı olarak, bu derleme dosyalarını aşağıdaki gibi başka bir konuma kopyalamanız gerekir:
+* [.NET Framework 4,0-Windows 64-bit (x64) ile derlenen Microsoft .NET 3.0.22.0 Için SAP Bağlayıcısı (NCo 3,0)](https://support.sap.com/en/product/connectors/msnet.html)en son sürümünü yüklediğinizden emin olun. SAP NCo 'ın önceki sürümlerinde aynı anda birden fazla IDoc iletisi gönderildiğinde sorunlarla karşılaşabilirsiniz. Bu koşul, SAP hedefine gönderilen ve iletilerin zaman aşımına neden olan tüm sonraki iletileri engeller.
 
-  * Bir ıSE içinde çalışan Logic Apps için [Integration Service ortamı önkoşulları](#sap-ise)bölümünde açıklanan adımları izleyin. Çok kiracılı Azure 'da çalışan ve şirket içi veri ağ geçidini kullanan Logic Apps için, derleme dosyalarını varsayılan yükleme klasöründen veri ağ geçidi yükleme klasörüne kopyalayın. Data Gateway ile ilgili sorunlar yaşıyorsanız, aşağıdaki sorunları gözden geçirin:
+* Veri ağ geçidi yalnızca 64 bit sistemlerde çalıştığı için, SAP istemci kitaplığının 64 bitlik sürümünün yüklü olması gerekir. Desteklenmeyen 32 bit sürümü yüklemesi, "kötü görüntü" hatası ile sonuçlanır.
 
-  * Data Gateway yalnızca 64 bit sistemlerde çalıştığından SAP istemci kitaplığı için 64-bit sürümünü yüklemelisiniz. Aksi takdirde, veri ağ geçidi ana bilgisayar hizmeti 32 bitlik derlemeleri desteklemediğinden "kötü görüntü" hatası alırsınız.
+* Varsayılan yükleme klasöründeki derleme dosyalarını, senaryonuza göre aşağıdaki gibi başka bir konuma kopyalayın.
 
-  * SAP bağlantınız "Lütfen hesap bilgilerinizi ve/veya izinlerinizi denetleyin ve yeniden deneyin" hata iletisiyle başarısız olursa, derleme dosyaları yanlış konumda olabilir. Derleme dosyalarını veri ağ geçidi yükleme klasörüne kopyaladığınızdan emin olun.
+    * ISE 'de çalışan Logic Apps için, bunun yerine [Ise önkoşullarını](#ise-prerequisites) izleyin.
 
-    Sorun gidermenize yardımcı olması için, derleme dosyalarının doğru konumda olup olmadığını kontrol etmenizi sağlayan [.NET derleme bağlama günlüğü görüntüleyicisini kullanın](/dotnet/framework/tools/fuslogvw-exe-assembly-binding-log-viewer). İsteğe bağlı olarak, SAP istemci kitaplığını yüklerken **genel derleme önbelleği kaydı** seçeneğini belirleyebilirsiniz.
+    * Çok kiracılı Azure 'da çalışan ve şirket içi veri ağ geçidinizi kullanan Logic Apps için, derleme dosyalarını veri ağ geçidi yükleme klasörüne kopyalayın. 
 
-<a name="sap-library-versions"></a>
+        
+        * SAP bağlantınız hata iletisiyle başarısız olursa, **lütfen hesap bilgilerinizi ve/veya izinlerinizi denetleyin ve yeniden deneyin**, derleme dosyalarını veri ağ geçidi yükleme klasörüne kopyaladığınızdan emin olun.
+        
+        * [.NET bütünleştirilmiş kod bağlama günlük görüntüleyicisini](/dotnet/framework/tools/fuslogvw-exe-assembly-binding-log-viewer)kullanarak daha fazla sorun giderme. Bu araç, derleme dosyalarınızın doğru konumda olup olmadığını kontrol etmenizi sağlar. 
+        
+        * İsteğe bağlı olarak, SAP istemci kitaplığını yüklerken **genel derleme önbelleği kaydı** seçeneğini belirleyin.
 
-#### <a name="sap-client-library-versions"></a>SAP istemci Kitaplığı sürümleri
+SAP istemci kitaplığı, .NET Framework, .NET çalışma zamanı ve ağ geçidi arasındaki aşağıdaki ilişkileri aklınızda edin:
 
-Aynı anda birden fazla IDoc iletisi gönderildiğinde eski SAP NCo sürümleri kilitlenebilir. Bu koşul, SAP hedefine gönderilen daha sonraki tüm iletileri engeller ve bu da iletilerin zaman aşımına neden olur.
+* Hem Microsoft SAP bağdaştırıcısı hem de ağ geçidi ana bilgisayar hizmeti .NET Framework 4.7.2 kullanır.
 
-SAP istemci kitaplığı, .NET Framework, .NET çalışma zamanı ve ağ geçidi arasındaki ilişkiler aşağıda verilmiştir:
-
-* Hem Microsoft SAP bağdaştırıcısı hem de ağ geçidi ana bilgisayar hizmeti 4,5 .NET Framework kullanır.
-
-* .NET Framework 4,0 için SAP NCo, 4.7.1 için .NET Runtime 4,0 kullanan işlemlerle çalışmaktadır.
+* .NET Framework 4,0 için SAP NCo, .NET Runtime 4,8 4,0 ' i kullanan işlemlerle çalışmaktadır.
 
 * .NET Framework 2,0 için SAP NCo, .NET Runtime 3,5 2,0 ' i kullanan işlemlerle ve en son ağ geçidiyle artık çalışmakla birlikte çalışmaktadır.
 
-### <a name="secure-network-communications-prerequisites"></a>Güvenli ağ Iletişimi önkoşulları
+### <a name="snc-prerequisites"></a>SNC önkoşulları
 
-Şirket içi veri ağ geçidini, yalnızca çok kiracılı Azure 'da desteklenen isteğe bağlı güvenli ağ Iletişimleri (SNC) ile birlikte kullanıyorsanız, bu ayarları da yapılandırmanız gerekir:
+İsteğe bağlı SNC ile şirket içi veri ağ geçidi kullanırsanız, yalnızca çok kiracılı Azure 'da desteklenir, bu ek ayarları yapılandırmanız gerekir.
 
-* SNC 'yi çoklu oturum açma (SSO) ile birlikte kullanıyorsanız, Data Gateway 'in SAP kullanıcısına karşı eşlenmiş bir kullanıcı olarak çalıştığından emin olun. Varsayılan hesabı değiştirmek için **hesabı Değiştir**' i seçin ve Kullanıcı kimlik bilgilerini girin.
+SNC 'yi SSO ile kullanıyorsanız, veri ağ geçidi hizmetinin SAP kullanıcısına karşı eşlenmiş bir kullanıcı olarak çalıştığından emin olun. Varsayılan hesabı değiştirmek için **hesabı Değiştir**' i seçin ve Kullanıcı kimlik bilgilerini girin.
 
-  ![Veri ağ geçidi hesabını değiştir](./media/logic-apps-using-sap-connector/gateway-account.png)
+![Azure portalındaki şirket içi veri ağ geçidi ayarlarının ekran görüntüsü, seçilen ağ geçidi hizmet hesabını değiştirmek için düğme ile hizmet ayarları sayfası gösteriliyor.](./media/logic-apps-using-sap-connector/gateway-account.png)
 
-* SNC 'yi bir dış güvenlik ürünüyle etkinleştirirseniz, SNC kitaplığını veya dosyalarını, veri ağ geçidinin yüklü olduğu aynı bilgisayara kopyalayın. Bazı SNC ürünlerine örnek olarak [sapseculib](https://help.sap.com/saphelp_nw74/helpdata/en/7a/0755dc6ef84f76890a77ad6eb13b13/frameset.htm), Kerberos ve NTLM verilebilir.
+Bir dış güvenlik ürünü aracılığıyla SNC 'yi etkinleştirirseniz, SNC kitaplığını veya dosyalarını, veri ağ geçidinizin yüklü olduğu aynı bilgisayara kopyalayın. Bazı SNC ürünlerine örnek olarak [sapseculib](https://help.sap.com/saphelp_nw74/helpdata/en/7a/0755dc6ef84f76890a77ad6eb13b13/frameset.htm), Kerberos ve NTLM verilebilir. Veri ağ geçidi için SNC 'yi etkinleştirme hakkında daha fazla bilgi için bkz. [güvenli ağ Iletişimini etkinleştirme](#enable-secure-network-communications).
 
-Veri ağ geçidi için SNC 'yi etkinleştirme hakkında daha fazla bilgi için bkz. [güvenli ağ Iletişimini etkinleştirme](#secure-network-communications).
+## <a name="send-idoc-messages-to-sap-server"></a>SAP sunucusuna IDOC iletileri gönderme
 
-<a name="migrate"></a>
+SAP sunucusuna bir IDoc iletisi gönderen ve yanıt döndüren bir mantıksal uygulama oluşturmak için bu örnekleri izleyin:
 
-## <a name="migrate-to-current-connector"></a>Geçerli bağlayıcıya geçiş
+1. [Bir HTTP isteği tarafından tetiklenen bir mantıksal uygulama oluşturun.](#create-http-request-trigger)
 
-Önceki bir yönetilen (ıSE) SAP bağlayıcısından geçerli yönetilen SAP bağlayıcısına geçiş yapmak için şu adımları izleyin:
+1. [SAP 'ye bir ileti göndermek için iş akışınızda bir eylem oluşturun.](#create-sap-action-to-send-message)
 
-1. Şimdiye kadar yapmadıysanız, Şirket [içi veri ağ geçidinizi](https://www.microsoft.com/download/details.aspx?id=53127) en son sürüme sahip olacak şekilde güncelleştirin. Daha fazla bilgi için bkz. [Azure Logic Apps için şirket içi veri ağ geçidi yüklemesi](../logic-apps/logic-apps-gateway-install.md).
+1. [İş akışınızda bir HTTP yanıt eylemi oluşturun.](#create-http-response-action)
 
-1. Eski SAP bağlayıcısını kullanan mantıksal uygulamada, **SAP gönder** eylemini silin.
+1. [SAP ABAP 'ten yanıt almak için bir RFC kullanıyorsanız, bir uzak işlev çağrısı (RFC) istek-yanıt stili oluşturun.](#create-rfc-request-response)
 
-1. En son SAP bağlayıcısından **SAP 'a Ileti gönder** eylemini ekleyin. Bu eylemi kullanabilmeniz için, SAP sisteminize olan bağlantıyı yeniden oluşturun.
+1. [Mantıksal uygulamanızı test edin.](#test-logic-app)
 
-1. İşiniz bittiğinde mantıksal uygulamanızı kaydedin.
-
-<a name="add-trigger"></a>
-
-## <a name="send-message-to-sap"></a>SAP 'ye ileti gönder
-
-Bu örnek, bir HTTP isteğiyle tetikleyebileceğiniz bir mantıksal uygulama kullanır. Mantıksal uygulama bir SAP sunucusuna bir IDoc gönderir ve mantıksal uygulamayı çağıran istek sahibine bir yanıt döndürür.
-
-### <a name="add-an-http-request-trigger"></a>HTTP Istek tetikleyicisi ekleme
-
-Azure Logic Apps, her mantıksal uygulama, belirli bir olay gerçekleştiğinde veya belirli bir koşul karşılandığında tetiklenen bir [tetikleyiciyle](../logic-apps/logic-apps-overview.md#logic-app-concepts)başlamalıdır. Tetikleyici her tetiklendiğinde Logic Apps altyapısı bir mantıksal uygulama örneği oluşturur ve uygulamanızın iş akışını çalıştırmaya başlar.
+### <a name="create-http-request-trigger"></a>HTTP istek tetikleyicisi oluştur
 
 > [!NOTE]
-> Bir mantıksal uygulama SAP 'den IDoc paketleri aldığında, [istek TETIKLEYICISI](../connectors/connectors-native-reqres.md) SAP 'Nin WE60 IDoc belgeleri tarafından oluşturulan "düz" XML şemasını desteklemez. Ancak, mantıksal uygulamalardan SAP *'ye* ileti gönderen senaryolar için "düz" XML şeması desteklenir. İstek tetikleyicisini SAP 'nin IDoc XML 'i ile birlikte kullanabilirsiniz, ancak bu, RFC üzerinde IDoc ile kullanamazsınız. Veya XML 'yi gerekli biçime dönüştürebilirsiniz. 
+> Bir mantıksal uygulama SAP 'den IDoc aldığında, [istek tetikleyicisi](../connectors/connectors-native-reqres.md) artık SAP düz XML biçimini desteklemektedir. IDoc 'Ları düz XML olarak almak için **SAP 'den bir ileti alındığında** tetikleyiciyi kullanın. **IDoc biçimindeki** parametreyi **sapplainxml** olarak ayarlayın.
 
-Bu örnekte, mantıksal uygulamanıza *http post istekleri* gönderebilmeniz için Azure 'da bir uç nokta ile bir mantıksal uygulama oluşturursunuz. Mantıksal uygulamanız bu HTTP isteklerini aldığında, tetikleyici ateşlenir ve iş akışınızda bir sonraki adımı çalıştırır.
+İlk olarak, mantıksal uygulamanıza *http post* istekleri göndermek için Azure 'da bir uç nokta ile bir mantıksal uygulama oluşturun. Mantıksal uygulamanız bu HTTP isteklerini aldığında, [tetikleyici](../logic-apps/logic-apps-overview.md#logic-app-concepts) ateşlenir ve iş akışınızda bir sonraki adımı çalıştırır.
 
-1. [Azure Portal](https://portal.azure.com), mantıksal uygulama Tasarımcısı ' nı açan boş bir mantıksal uygulama oluşturun.
+1. [Azure Portal](https://portal.azure.com), **Logic Apps tasarımcısını** açan boş bir mantıksal uygulama oluşturun.
 
-1. Arama kutusuna `http request` filtreniz olarak yazın. **Tetikleyiciler** LISTESINDEN **bir http isteği alındığında**öğesini seçin.
+1. Arama kutusuna `http request` filtreniz olarak yazın. **Tetikleyiciler** LISTESINDEN **bir http isteği alındığında** öğesini seçin.
 
-   ![HTTP Istek tetikleyicisi Ekle](./media/logic-apps-using-sap-connector/add-http-trigger-logic-app.png)
+   ![Mantıksal uygulamaya eklenen yeni bir HTTP isteği tetikleyicisi gösteren Logic Apps Designer 'ın ekran görüntüsü.](./media/logic-apps-using-sap-connector/add-http-trigger-logic-app.png)
 
-1. Mantıksal uygulamanız için bir uç nokta URL 'SI oluşturabilmeniz için artık mantıksal uygulamanızı kaydedin. Tasarımcı araç çubuğunda **Kaydet**' i seçin.
+1. Mantıksal uygulamanız için bir uç nokta URL 'SI oluşturabilmeniz için mantıksal uygulamanızı kaydedin. Tasarımcı araç çubuğunda **Kaydet**' i seçin. Uç nokta URL 'SI şimdi Tetikleyiciniz içinde görünür. 
 
-   Uç nokta URL 'SI Şu anda tetikleyicide görüntülenir, örneğin:
+   ![Oluşturulmuş GÖNDERI URL 'SI ile HTTP istek tetikleyicisini gösteren Logic Apps Designer 'ın ekran görüntüsü.](./media/logic-apps-using-sap-connector/generate-http-endpoint-url.png)
 
-   ![Uç nokta için URL Oluştur](./media/logic-apps-using-sap-connector/generate-http-endpoint-url.png)
+### <a name="create-sap-action-to-send-message"></a>İleti göndermek için SAP eylemi oluştur
 
-<a name="add-action"></a>
+Ardından, [http isteğiniz tetiklemeniz](#create-http-request-trigger) tetiklendiğinde ıDOC iletinizi SAP 'ye göndermek için bir eylem oluşturun.
 
-### <a name="add-an-sap-action"></a>SAP eylemi ekleme
+1. Logic Apps tasarımcısında tetikleyici altında **yeni adım**' ı seçin.
 
-Azure Logic Apps bir [eylem](../logic-apps/logic-apps-overview.md#logic-app-concepts) , iş akışınızda bir tetikleyiciyi veya başka bir eylemi izleyen bir adımdır. Mantıksal uygulamanıza henüz bir tetikleyici eklemediyseniz ve bu örneği izlemek istiyorsanız, [Bu bölümde açıklanan tetikleyiciyi ekleyin](#add-trigger).
-
-1. Mantıksal uygulama Tasarımcısı ' nda, tetikleyici altında **yeni adım**' ı seçin.
-
-   ![Mantıksal uygulamaya yeni adım Ekle](./media/logic-apps-using-sap-connector/add-sap-action-logic-app.png)
+   ![Yeni bir adım eklemek için düzenlenmekte olan mantıksal uygulamayı gösteren Logic Apps Designer 'ın ekran görüntüsü.](./media/logic-apps-using-sap-connector/add-sap-action-logic-app.png)
 
 1. Arama kutusuna `sap` filtreniz olarak yazın. **Eylemler** LISTESINDEN, **SAP 'ye ileti gönder**' i seçin.
   
-   !["İletiyi SAP 'a gönder" eylemini seçin](media/logic-apps-using-sap-connector/select-sap-send-action.png)
+   !["SAP 'ye ileti gönder" eylemini gösteren Logic Apps Designer 'ın ekran görüntüsü.](media/logic-apps-using-sap-connector/select-sap-send-action.png)
 
    Ya da **Kurumsal** SEKMESINI seçip SAP eylemini seçebilirsiniz.
 
-   ![Kurumsal sekmesinden "SAP 'a ileti gönder" eylemini seçin](media/logic-apps-using-sap-connector/select-sap-send-action-ent-tab.png)
+   ![Kurumsal sekme altında "SAP 'a ileti gönder" seçeneğinin gösterildiği Logic Apps Designer 'ın ekran görüntüsü.](media/logic-apps-using-sap-connector/select-sap-send-action-ent-tab.png)
 
-1. Bağlantınız zaten varsa, SAP eyleminizi ayarlamak için bir sonraki adımla devam edin. Bununla birlikte, bağlantı ayrıntıları istenirse, şirket içi SAP sunucunuza bir bağlantı oluşturabilmek için bilgileri sağlayın.
+1. Bağlantınız zaten varsa, bir sonraki adımla devam edin. Yeni bir bağlantı oluşturmanız istenirse, şirket içi SAP sunucunuza bağlanmak için aşağıdaki bilgileri sağlayın.
 
    1. Bağlantı için bir ad girin.
 
    1. Veri ağ geçidini kullanıyorsanız, şu adımları izleyin:
    
-      1. **Veri ağ geçidi** bölümünde, **abonelik**altında, önce veri ağ geçidi yüklemeniz için Azure Portal oluşturduğunuz veri ağ geçidi kaynağı için Azure aboneliğini seçin.
+      1. **Veri ağ geçidi** bölümünde, **abonelik** altında, önce veri ağ geçidi yüklemeniz için Azure Portal oluşturduğunuz veri ağ geçidi kaynağı için Azure aboneliğini seçin.
    
-      1. **Bağlantı ağ geçidi**altında Azure 'da veri ağ geçidi kaynağınızı seçin.
+      1. **Bağlantı ağ geçidi** altında Azure 'da veri ağ geçidi kaynağınızı seçin.
 
-   1. Bağlantıyla ilgili bilgi sağlamaya devam edin. **Oturum açma türü** özelliği için, özelliğin **uygulama sunucusu** veya **Grup**olarak ayarlanmış olup olmadığına bağlı olarak adımı izleyin:
+   1. Bağlantı bilgilerini sağlamaya devam edin. **Oturum açma türü** özelliği için, özelliğin **uygulama sunucusu** veya **Grup** olarak ayarlanmış olup olmadığına bağlı olarak adımı izleyin:
    
-      * **Uygulama sunucusu**için genellikle isteğe bağlı olarak görüntülenen bu özellikler gereklidir:
+      * **Uygulama sunucusu** için genellikle isteğe bağlı olarak görüntülenen bu özellikler gereklidir:
 
         ![SAP uygulama sunucusu bağlantısı oluşturma](media/logic-apps-using-sap-connector/create-SAP-application-server-connection.png)
 
-      * **Grup**için, genellikle isteğe bağlı olarak görüntülenen bu özellikler gereklidir:
+      * **Grup** için, genellikle isteğe bağlı olarak görüntülenen bu özellikler gereklidir:
 
         ![SAP ileti sunucusu bağlantısı oluştur](media/logic-apps-using-sap-connector/create-SAP-message-server-connection.png)  
 
@@ -246,6 +270,14 @@ Azure Logic Apps bir [eylem](../logic-apps/logic-apps-overview.md#logic-app-conc
    1. İşiniz bittiğinde **Oluştur**' u seçin.
 
       Logic Apps, bağlantının düzgün çalıştığından emin olmak için bağlantınızı kurar ve test eder.
+
+    > [!NOTE]
+
+    > Aşağıdaki hatayı alırsanız SAP NCo istemci kitaplığı yüklemenizin bir sorunu vardır: 
+    >
+    > **Sınama bağlantısı başarısız oldu. Hata ' istek işlenemedi. Hata ayrıntıları: ' dosya veya derleme ' sapnco, Version = 3.0.0.42, Culture = neutral, PublicKeyToken 50436dca5c7f7d23 ' veya bağımlılıklarından biri yüklenemedi. Sistem belirtilen dosyayı bulamıyor. '. '**
+    >
+    > [SAP NCo istemci kitaplığının gerekli sürümünü yüklediğinizden ve diğer tüm önkoşulları karşıladığınızdan](#sap-client-library-prerequisites)emin olun.
 
 1. Şimdi SAP sunucunuzdaki bir eylemi bulun ve seçin.
 
@@ -264,7 +296,7 @@ Azure Logic Apps bir [eylem](../logic-apps/logic-apps-overview.md#logic-app-conc
 
       IDOC işlemleri hakkında daha fazla bilgi için bkz. [IDOC işlemleri Için ileti şemaları](/biztalk/adapters-and-accelerators/adapter-sap/message-schemas-for-idoc-operations).
 
-   1. Dinamik içerik listesinin görünmesi için **giriş iletisi** kutusunun içine tıklayın. Bu listeden, **BIR http isteği alındığında**altında **gövde** alanını seçin.
+   1. Dinamik içerik listesinin görünmesi için **giriş iletisi** kutusunun içine tıklayın. Bu listeden, **BIR http isteği alındığında** altında **gövde** alanını seçin.
 
       Bu adım, HTTP Istek tetikleyicinizden gelen gövde içeriğini içerir ve bu çıktıyı SAP sunucunuza gönderir.
 
@@ -276,23 +308,54 @@ Azure Logic Apps bir [eylem](../logic-apps/logic-apps-overview.md#logic-app-conc
 
 1. Mantıksal uygulamanızı kaydedin. Tasarımcı araç çubuğunda **Kaydet**' i seçin.
 
-<a name="add-response"></a>
+#### <a name="send-flat-file-idocs"></a>Düz dosya IDoc 'Ları gönder
 
-### <a name="add-an-http-response-action"></a>HTTP yanıt eylemi ekleme
+Dosyaları bir XML zarfına sarmanız durumunda, bir düz dosya şeması ile IDoc 'Lar kullanabilirsiniz. Düz bir dosya IDoc 'u göndermek için, aşağıdaki değişikliklerle [IDoc iletinizi göndermek üzere BIR SAP eylemi oluşturmak](#create-sap-action-to-send-message) üzere genel yönergeleri kullanın.
+
+1. **SAP 'a Ileti gönder** EYLEMI için SAP eylem URI 'sini kullanın `http://microsoft.lobservices.sap/2007/03/Idoc/SendIdoc` .
+
+1. Giriş iletinizi bir XML zarfı ile biçimlendirin. Örnek için aşağıdaki örnek iletiye bakın:
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<SendIdoc xmlns="http://Microsoft.LobServices.Sap/2007/03/Idoc/">
+  <idocData>EDI_DC    300                      ORDERS052SAPMSS    LIMSFTABCSWI                                                                                           ED  93AORDERSOLP     VLTRFC    KUMSFTABCSWI                                                                                           13561                       231054476                                                                           20190523085430ORDERSORDERS05          US
+E2EDK01005300                1     E2EDK010050     1       USD                                                                        Z4O14506907554
+E2EDK03   300                2     E2EDK03   0     2   02220190523
+E2EDKA1   300                3     E2EDKA1   0     2   RE                  MSFTASWI
+E2EDKA1   300                4     E2EDKA1   0     2   US                  MSFTASWI
+E2EDKA1   300                5     E2EDKA1   0     2   WE                  MSFTASWILIC
+E2EDKA1   300                6     E2EDKA1   0     2   Z1 KKKKKKK                           ABC YYYYYYYYYYY ZZ                                                                                                                          BBBBBBBBBBBBBBBB 11                                                                                      ttttttttttt                                 6666              US                                                                                                999 999 99 99                                                                                                                SSSSSSS SSS SSSSSS                                                                                                                                SSSSSSS SSS SSSSSS
+E2EDKA1   300                7     E2EDKA1   0     2   Z2 KKKKKKK                           BBBBBBBBBBBBBBBB DDDDDDDD ZZ                                                                                                                EEEEEEEEEEE 86                                                                                           rrrrrrrr                                    8888              US                                                                                                999 999 99 99                                                                                                                NNNNNN NNNNNN                                                                                                                                     NNNNNN NNNNNN
+E2EDK02   300                8     E2EDK02   0     2   901Z
+E2EDK02   300                9     E2EDK02   0     2   90399680096ZZS2002
+E2EDK02   300                10    E2EDK02   0     2   902S
+E2EDKT1   300                11    E2EDKT1   0     2   Z1EME
+E2EDKT2   300                12    E2EDKT2   0     3   xxx@xxx-xx.xx
+E2EDKT1   300                13    E2EDKT1   0     2   Z2EME
+E2EDKT2   300                14    E2EDKT2   0     3   x.xxxxxx@xxxxxxxx-xxxxxxxxxx.xx
+E2EDP01001300                15    E2EDP010010     2   10         1              EA                          999.9
+E2EDP19   300                16    E2EDP19   0     3   00AAAA-11111</idocData>
+</SendIdoc>
+```
+
+
+
+### <a name="create-http-response-action"></a>HTTP yanıtı oluşturma eylemi
 
 Şimdi mantıksal uygulamanızın iş akışına bir yanıt eylemi ekleyin ve SAP eyleminden çıktıyı dahil edin. Bu şekilde, mantıksal uygulamanız SAP sunucunuzdaki sonuçları özgün istek sahibine döndürür.
 
-1. Mantıksal uygulama Tasarımcısı ' nda, SAP eylemi altında **yeni adım**' ı seçin.
+1. Logic Apps tasarımcısında, SAP eylemi altında **yeni adım**' ı seçin.
 
 1. Arama kutusuna `response` filtreniz olarak yazın. **Eylemler** listesinden **Yanıt**' ı seçin.
 
-1. Dinamik içerik listesinin görünmesi için **gövde** kutusunun içine tıklayın. Bu listeden, **SAP 'ye Ileti gönder**altında **gövde** alanını seçin.
+1. Dinamik içerik listesinin görünmesi için **gövde** kutusunun içine tıklayın. Bu listeden, **SAP 'ye Ileti gönder** altında **gövde** alanını seçin.
 
    ![Tamamlanmış SAP eylemi](./media/logic-apps-using-sap-connector/select-sap-body-for-response-action.png)
 
 1. Mantıksal uygulamanızı kaydedin.
 
-#### <a name="add-rfc-request-response"></a>RFC isteği ekleme-yanıt
+#### <a name="create-rfc-request-response"></a>RFC isteği oluşturma-yanıt
 
 > [!NOTE]
 > SAP tetikleyicisi, bir Response parametresi tasarlayarak, tRFC üzerinde IDoc 'Ları alır. 
@@ -302,6 +365,7 @@ SAP ABAP 'ten Logic Apps için uzak işlev çağrısı (RFC) kullanarak yanıt a
 Bir istek ve yanıt düzeni uygulamak için, önce [ `generate schema` komutunu](#generate-schemas-for-artifacts-in-sap)kullanarak RFC şemasını bulmanız gerekir. Oluşturulan şemanın iki olası kök düğümü vardır: 
 
 1. SAP 'den aldığınız çağrı olan istek düğümü.
+
 1. SAP 'ye geri yanıt veren yanıt düğümü.
 
 Aşağıdaki örnekte, RFC modülünden bir istek ve yanıt deseninin oluşturulması gerekir `STFC_CONNECTION` . İstek XML dosyası, SAP isteklerinin bulunduğu bir düğüm değerini ayıklamak için ayrıştırılır `<ECHOTEXT>` . Yanıt, geçerli zaman damgasını dinamik bir değer olarak ekler. `STFC_CONNECTION`Bir mantıksal uygulamadan SAP 'ye RFC gönderdiğinizde benzer bir yanıt alırsınız.
@@ -315,7 +379,7 @@ Aşağıdaki örnekte, RFC modülünden bir istek ve yanıt deseninin oluşturul
 
 ```
 
-### <a name="test-your-logic-app"></a>Mantıksal uygulamanızı test etme
+### <a name="test-logic-app"></a>Mantıksal uygulamayı test etme
 
 1. Mantıksal uygulamanız zaten etkin değilse, mantıksal uygulama menüsünde **genel bakış**' ı seçin. Araç çubuğunda **Etkinleştir**' i seçin.
 
@@ -342,17 +406,15 @@ Aşağıdaki örnekte, RFC modülünden bir istek ve yanıt deseninin oluşturul
 
 Artık, SAP sunucunuz ile iletişim kurabilen bir mantıksal uygulama oluşturdunuz. Mantıksal uygulamanız için bir SAP bağlantısı ayarladığınıza göre, BAPı ve RFC gibi diğer kullanılabilir SAP eylemlerini inceleyebilirsiniz.
 
-<a name="receive-from-sap"></a>
-
 ## <a name="receive-message-from-sap"></a>SAP 'den ileti al
 
 Bu örnek, uygulama SAP sisteminden bir ileti aldığında tetiklenen bir mantıksal uygulama kullanır.
 
 ### <a name="add-an-sap-trigger"></a>SAP tetikleyicisi ekleme
 
-1. Azure portal, mantıksal uygulama Tasarımcısı ' nı açan boş bir mantıksal uygulama oluşturun.
+1. Azure portal, Logic Apps tasarımcısını açan boş bir mantıksal uygulama oluşturun.
 
-1. Arama kutusuna `sap` filtreniz olarak yazın. **Tetikleyiciler** listesinden **SAP 'den bir ileti alındığında**öğesini seçin.
+1. Arama kutusuna `sap` filtreniz olarak yazın. **Tetikleyiciler** listesinden **SAP 'den bir ileti alındığında** öğesini seçin.
 
    ![SAP tetikleyicisi Ekle](./media/logic-apps-using-sap-connector/add-sap-trigger-logic-app.png)
 
@@ -366,17 +428,17 @@ Bu örnek, uygulama SAP sisteminden bir ileti aldığında tetiklenen bir mantı
 
    1. Veri ağ geçidini kullanıyorsanız, şu adımları izleyin:
 
-      1. **Veri ağ geçidi** bölümünde, **abonelik**altında, önce veri ağ geçidi yüklemeniz için Azure Portal oluşturduğunuz veri ağ geçidi kaynağı için Azure aboneliğini seçin.
+      1. **Veri ağ geçidi** bölümünde, **abonelik** altında, önce veri ağ geçidi yüklemeniz için Azure Portal oluşturduğunuz veri ağ geçidi kaynağı için Azure aboneliğini seçin.
 
-      1. **Bağlantı ağ geçidi**altında Azure 'da veri ağ geçidi kaynağınızı seçin.
+      1. **Bağlantı ağ geçidi** altında Azure 'da veri ağ geçidi kaynağınızı seçin.
 
-   1. Bağlantıyla ilgili bilgi sağlamaya devam edin. **Oturum açma türü** özelliği için, özelliğin **uygulama sunucusu** veya **Grup**olarak ayarlanmış olup olmadığına bağlı olarak adımı izleyin:
+   1. Bağlantıyla ilgili bilgi sağlamaya devam edin. **Oturum açma türü** özelliği için, özelliğin **uygulama sunucusu** veya **Grup** olarak ayarlanmış olup olmadığına bağlı olarak adımı izleyin:
 
-      * **Uygulama sunucusu**için genellikle isteğe bağlı olarak görüntülenen bu özellikler gereklidir:
+      * **Uygulama sunucusu** için genellikle isteğe bağlı olarak görüntülenen bu özellikler gereklidir:
 
         ![SAP uygulama sunucusu bağlantısı oluşturma](media/logic-apps-using-sap-connector/create-SAP-application-server-connection.png)
 
-      * **Grup**için, genellikle isteğe bağlı olarak görüntülenen bu özellikler gereklidir:
+      * **Grup** için, genellikle isteğe bağlı olarak görüntülenen bu özellikler gereklidir:
 
         ![SAP ileti sunucusu bağlantısı oluştur](media/logic-apps-using-sap-connector/create-SAP-message-server-connection.png)
 
@@ -411,17 +473,15 @@ Mantıksal uygulamanız artık SAP sisteminizden ileti almaya hazırdır.
 > [!NOTE]
 > SAP tetikleyicisi bir yoklama tetikleyicisi değildir, ancak bunun yerine Web kancası tabanlı bir tetikleyiciden yapılır. Veri ağ geçidini kullanıyorsanız, tetikleyici veri ağ geçidinden yalnızca bir ileti varken çağrılır, dolayısıyla hiçbir yoklama gerekmez.
 
-<a name="parameters"></a>
-
 #### <a name="parameters"></a>Parametreler
 
 Basit dize ve sayı girişlerinin yanı sıra, SAP Bağlayıcısı aşağıdaki tablo parametrelerini ( `Type=ITAB` girişler) kabul eder:
 
 * Eski SAP sürümleri için hem giriş hem de çıkış tablo yönü parametreleri.
-* Daha yeni SAP sürümleri için tablo yönü parametrelerini değiştiren parametreleri değiştirme.
-* Hiyerarşik tablo parametreleri
 
-<a name="filter-with-sap-actions"></a>
+* Daha yeni SAP sürümleri için tablo yönü parametrelerini değiştiren parametreleri değiştirme.
+
+* Hiyerarşik tablo parametreleri
 
 #### <a name="filter-with-sap-actions"></a>SAP eylemleri ile filtrele
 
@@ -429,7 +489,7 @@ Basit dize ve sayı girişlerinin yanı sıra, SAP Bağlayıcısı aşağıdaki 
 
 Dizi filtresini ayarlarken, tetikleyici yalnızca belirtilen SAP Eylem türlerindeki iletileri alır ve SAP sunucunuzdaki diğer tüm iletileri reddeder. Ancak, bu filtre alınan yükün yazılıp zayıf veya güçlü olduğunu etkilemez.
 
-Şirket içi veri ağ geçidiniz için SAP bağdaştırıcısı düzeyinde herhangi bir SAP eylemi filtrelemesi olur. Daha fazla bilgi için bkz. [SAP 'dan Logic Apps test IDoc 'ları gönderme](#send-idocs-from-sap).
+Şirket içi veri ağ geçidiniz için SAP bağdaştırıcısı düzeyinde herhangi bir SAP eylemi filtrelemesi olur. Daha fazla bilgi için bkz. [SAP 'dan Logic Apps test IDoc 'ları gönderme](#test-sending-idocs-from-sap).
 
 SAP 'den mantıksal uygulamanızın tetikleyicisine IDoc paketleri gönderememek için SAP tRFC iletişim kutusunda (T-Code SM58) Işlem RFC (tRFC) çağrı reddetme iletisine bakın. SAP arabiriminde, **durum metni** alanındaki alt dize sınırları nedeniyle kırpıldığı aşağıdaki hata iletilerini alabilirsiniz.
 
@@ -442,34 +502,67 @@ SAP 'den mantıksal uygulamanızın tetikleyicisine IDoc paketleri gönderememek
 * `The segment or group definition E2EDK36001 was not found in the IDoc meta`: Kesimleri SAP tarafından yayımlanmadığı için, bir IDoc XML yükü oluşturma hatası gibi diğer hatalarda beklenen hatalar meydana gelir. bu nedenle, dönüştürme için gereken kesim türü meta verileri eksiktir. 
 
   * Bu segmentlerin SAP tarafından serbest bırakılması için SAP sisteminizin ABAP mühendisine başvurun.
+### <a name="asynchronous-request-reply-for-triggers"></a>Zaman uyumsuz istek-Tetikleyiciler için yanıtlama
 
-<a name="find-extended-error-logs"></a>
+SAP Bağlayıcısı Logic Apps Tetikleyicileri için Azure 'un [zaman uyumsuz istek yanıtı modelini](/azure/architecture/patterns/async-request-reply.md) destekler. Bu kalıbı, varsayılan zaman uyumlu istek-yanıt düzeniyle başarısız olacak başarılı istekler oluşturmak için kullanabilirsiniz. 
 
-## <a name="find-extended-error-logs"></a>Genişletilmiş hata günlüklerini bul
+> [!TIP]
+> Birden çok yanıt eylemi olan Logic Apps 'te, tüm yanıt eylemleri aynı istek-yanıt modelini kullanmalıdır. Örneğin, mantıksal uygulamanız birden çok olası yanıt eylemi ile bir anahtar denetimi kullanıyorsa, tüm yanıt eylemlerini, zaman uyumlu veya zaman uyumsuz olarak aynı istek yanıt modelini kullanacak şekilde yapılandırmanız gerekir. 
 
-Tam hata iletileri için SAP bağdaştırıcınızın genişletilmiş günlüklerine bakın. 
+Yanıt eyleminiz için zaman uyumsuz yanıtı etkinleştirmek `202 Accepted` , bir istek işlenmek üzere kabul edildiğinde mantıksal uygulamanızın Yanıtla yanıt vermesini sağlar. Yanıt, isteğinizin son durumunu almak için kullanabileceğiniz bir konum üst bilgisi içerir.
 
-Haziran 2020 ve üzeri şirket içi veri ağ geçidi sürümleri için, [uygulama ayarlarında ağ geçidi günlüklerini etkinleştirebilirsiniz](/data-integration/gateway/service-gateway-tshoot#collect-logs-from-the-on-premises-data-gateway-app).
+SAP bağlayıcısını kullanarak mantıksal uygulamanız için zaman uyumsuz bir istek-yanıt modelini yapılandırmak için:
 
-2020 Nisan 'dan ve önceki sürümlerde bulunan şirket içi veri ağ geçidi sürümleri için Günlükler varsayılan olarak devre dışıdır. Genişletilmiş günlükleri almak için aşağıdaki adımları izleyin:
+1. **Logic Apps tasarımcısında** mantıksal uygulamanızı açın.
 
-1. Şirket içi veri ağ geçidi yükleme klasörünüzde `Microsoft.PowerBI.DataMovement.Pipeline.GatewayCore.dll.config` dosyasını açın. 
+1. SAP bağlayıcısının mantıksal uygulamanızın tetikleyicisi olduğunu doğrulayın.
 
-1. **Sapextendedtracing** ayarı Için değeri **false** iken **true**olarak değiştirin.
+1. Mantıksal uygulamanızın **Yanıt** eylemini açın. Eylemin başlık çubuğunda, menüyü (**...**) &gt; seçin **Ayarlar**.
 
-1. İsteğe bağlı olarak, daha az olay için, **Saptracinglevel** değerini **bilgilendirici** (varsayılan) olarak **hata** veya **Uyarı**olarak değiştirin. Ya da daha fazla olay için, **bilgilendirici** seçeneğini **ayrıntılı**olarak değiştirin.
+1. Yanıt eyleminiz için **Ayarlar** ' da, **zaman uyumsuz yanıt**' ın altındaki geçişi açın. Bitti ' yi seçin.
 
-1. Yapılandırma dosyasını kaydedin.
+1. Mantıksal uygulamanıza değişiklikleri kaydedin.
 
-1. Veri ağ geçidinizi yeniden başlatın. Şirket içi veri ağ geçidi yükleyicisi uygulamanızı açın ve **hizmet ayarları** menüsüne gidin. **Ağ geçidini yeniden Başlat**altında **Şimdi yeniden Başlat**' ı seçin.
+## <a name="find-extended-error-logs"></a>Genişletilmiş hata günlüklerini bulma
 
-1. Sorununuzu yeniden oluşturun.
+Tam hata iletileri için SAP bağdaştırıcınızın genişletilmiş günlüklerine bakın. Ayrıca [, SAP Bağlayıcısı için bir Genişletilmiş günlük dosyasını etkinleştirebilirsiniz](#extended-sap-logging-in-on-premises-data-gateway).
 
-1. Ağ Geçidi günlüklerinizi dışarı aktarın. Veri ağ geçidi yükleyicisi uygulamanızda **Tanılama** menüsüne gidin. **Ağ geçidi günlükleri**altında, **günlükleri dışarı aktar**' ı seçin. Bu dosyalar tarihe göre düzenlenen SAP günlüklerini içerir. Günlük boyutuna bağlı olarak, tek bir tarih için birden çok günlük dosyası bulunabilir.
+Haziran 2020 ve üzeri şirket içi veri ağ geçidi sürümleri için, [uygulama ayarlarında ağ geçidi günlüklerini etkinleştirebilirsiniz](/data-integration/gateway/service-gateway-tshoot#collect-logs-from-the-on-premises-data-gateway-app). 
 
-1. Yapılandırma dosyasında, **Sapextendedtracing** ayarını **false**olarak döndürün.
+2020 Nisan 'dan ve önceki sürümlerde bulunan şirket içi veri ağ geçidi sürümleri için Günlükler varsayılan olarak devre dışıdır.
 
-1. Ağ geçidi hizmetini yeniden başlatın.
+### <a name="extended-sap-logging-in-on-premises-data-gateway"></a>Şirket içi veri ağ geçidinde genişletilmiş SAP günlüğü
+
+Logic Apps için bir şirket [içi veri ağ geçidi](../logic-apps/logic-apps-gateway-install.md)KULLANıYORSANıZ, SAP Bağlayıcısı için bir Genişletilmiş günlük dosyası yapılandırabilirsiniz. Windows için olay Izleme (ETW) olaylarını, ağ geçidinizin günlüğü. zip dosyalarına dahil edilen günlük dosyalarına yönlendirmek için şirket içi veri ağ geçidinizi kullanabilirsiniz. 
+
+Ağ [geçidinizin yapılandırma ve hizmet günlüklerinizi](https://docs.microsoft.com/data-integration/gateway/service-gateway-tshoot#collect-logs-from-the-on-premises-data-gateway-app) ağ geçidi uygulamasının ayarlarından bir. zip dosyasına dışarı aktarabilirsiniz.
+
+> [!NOTE]
+> Genişletilmiş günlük kaydı, her zaman etkinleştirildiğinde mantıksal uygulamalarınızın performansını etkileyebilir. Bir sorunu çözümleme ve sorun giderme ile işiniz bittiğinde Genişletilmiş günlük dosyalarını kapatmak en iyi uygulamadır.
+
+#### <a name="capture-etw-events"></a>ETW olaylarını yakala
+
+İsteğe bağlı olarak, gelişmiş kullanıcılar ETW olaylarını doğrudan yakalayabilir. Daha sonra [Event Hubs Azure tanılama verilerinizi kullanabilir](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostics-extension-stream-event-hubs) veya [verilerinizi Azure izleyici günlüklerine toplayabilirsiniz](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostics-extension-logs). Daha fazla bilgi için bkz. [veri toplama ve depolama için en iyi uygulamalar](https://docs.microsoft.com/azure/architecture/best-practices/monitoring#collecting-and-storing-data). Elde edilen ETL dosyalarıyla çalışmak için [PerfView](https://github.com/Microsoft/perfview/blob/master/README.md) kullanabilirsiniz veya kendi programınızı yazabilirsiniz. Bu izlenecek yol PerfView kullanır:
+
+1. PerfView menüsünde, olayları yakalamak için **Collect topla ' yı seçin** &gt;  .
+
+1. **Ek sağlayıcı** ALANıNA, `*Microsoft-LobAdapter` SAP BAĞDAŞTıRıCıSı olaylarını yakalayan SAP sağlayıcısını belirtmek için yazın. Bu bilgileri belirtmezseniz, izleme yalnızca genel ETW olaylarını içerir.
+
+1. Diğer varsayılan ayarları koruyun. İsterseniz, **veri dosyası** alanındaki dosya adını veya konumunu değiştirebilirsiniz.
+
+1. İzlemeye başlamak için **koleksiyonu Başlat** ' ı seçin.
+
+1. Sorununuzu yeniden oluşturduktan veya yeterli analiz verisi topladıktan sonra, **toplamayı durdur**' u seçin.
+
+Verilerinizi Azure destek mühendisleri gibi başka bir tarafla paylaşmak için ETL dosyasını sıkıştırın.
+
+İzlemenin içeriğini görüntülemek için:
+
+1. PerfView 'da **Dosya** &gt; **Aç** ' ı seçin ve az önce oluşturduğunuz etl dosyasını seçin.
+
+1. PerfView kenar çubuğu ' nda, ETL dosyanızın altındaki **Olaylar** bölümü.
+
+1. **Filtre** altında `Microsoft-LobAdapter` yalnızca ilgili olayları ve ağ geçidi süreçlerini görmek için filtre uygulayın.
 
 ### <a name="test-your-logic-app"></a>Mantıksal uygulamanızı test etme
 
@@ -478,8 +571,6 @@ Haziran 2020 ve üzeri şirket içi veri ağ geçidi sürümleri için, [uygulam
 1. Mantıksal uygulama menüsünde **genel bakış**' ı seçin. Mantıksal uygulamanız için tüm yeni çalıştırmalar için **çalıştırma geçmişini** gözden geçirin.
 
 1. Tetikleyici çıkışları bölümünde SAP sisteminizden gönderilen iletiyi gösteren en son çalıştırmayı açın.
-
-<a name="send-idocs-from-sap"></a>
 
 ### <a name="test-sending-idocs-from-sap"></a>SAP 'den IDoc 'Ları göndermeyi sınama
 
@@ -510,25 +601,25 @@ SAP 'den Logic App 'e IDoc 'Ları göndermek için, aşağıdaki en düşük yap
 
 1. Aşağıdaki ayarlarla yeni bir RFC hedefi oluşturun:
     
-    * **RFC hedefi**için bir ad girin.
+    * **RFC hedefi** için bir ad girin.
     
-    * **Teknik ayarlar** sekmesinde, **etkinleştirme türü**Için, **kayıtlı sunucu programı**' nı seçin. **Program kimliğiniz**için bir değer girin. SAP 'de mantıksal uygulamanızın tetikleyicisi bu tanımlayıcı kullanılarak kaydedilir.
+    * **Teknik ayarlar** sekmesinde, **etkinleştirme türü** Için, **kayıtlı sunucu programı**' nı seçin. **Program kimliğiniz** için bir değer girin. SAP 'de mantıksal uygulamanızın tetikleyicisi bu tanımlayıcı kullanılarak kaydedilir.
     
-    * **Unicode** sekmesinde, **hedef sistemle Iletişim türü**için **Unicode**' u seçin.
+    * **Unicode** sekmesinde, **hedef sistemle Iletişim türü** için **Unicode**' u seçin.
 
 1. Yaptığınız değişiklikleri kaydedin.
 
 1. Yeni **Program kimliğinizi** Azure Logic Apps kaydedin.
 
-1. Bağlantınızı test etmek için, SAP arabiriminde, yeni **RFC hedefi**altında **bağlantı testi**' ni seçin.
+1. Bağlantınızı test etmek için, SAP arabiriminde, yeni **RFC hedefi** altında **bağlantı testi**' ni seçin.
 
 #### <a name="create-abap-connection"></a>ABAP bağlantısı oluştur
 
-1. **RFC bağlantı ayarlarının yapılandırmasını** açmak IÇIN, SAP arabiriminizdeki **sm59*** işlem kodu (T-Code) ile **/n** önekini kullanın.
+1. **RFC bağlantı ayarlarının yapılandırmasını** açmak IÇIN, SAP arabiriminizdeki **sm59** _ işlem kodunu (T-Code) _ */n** önekiyle birlikte kullanın.
 
 1. **ABAP bağlantıları**  >  **Oluştur**' u seçin.
 
-1. **RFC hedefi**için, [Test SAP sisteminizin](#create-rfc-destination)tanımlayıcısını girin.
+1. **RFC hedefi** için, [Test SAP sisteminizin](#create-rfc-destination)tanımlayıcısını girin.
 
 1. Yaptığınız değişiklikleri kaydedin.
 
@@ -540,9 +631,9 @@ SAP 'den Logic App 'e IDoc 'Ları göndermek için, aşağıdaki en düşük yap
 
 1. **Bağlantı noktaları**  >  **işlem RFC**  >  **Oluştur**' u seçin.
 
-1. Açılan ayarlar kutusunda, **kendi bağlantı noktası adı**' nı seçin. Test bağlantı noktası için bir **ad**girin. Yaptığınız değişiklikleri kaydedin.
+1. Açılan ayarlar kutusunda, **kendi bağlantı noktası adı**' nı seçin. Test bağlantı noktası için bir **ad** girin. Yaptığınız değişiklikleri kaydedin.
 
-1. Yeni alıcı bağlantı noktanızın ayarlarında, **RFC hedefi**için, [Test RFC hedefi](#create-rfc-destination)için tanımlayıcıyı girin.
+1. Yeni alıcı bağlantı noktanızın ayarlarında, **RFC hedefi** için, [Test RFC hedefi](#create-rfc-destination)için tanımlayıcıyı girin.
 
 1. Yaptığınız değişiklikleri kaydedin.
 
@@ -552,9 +643,9 @@ SAP 'den Logic App 'e IDoc 'Ları göndermek için, aşağıdaki en düşük yap
 
 1. **Bağlantı noktaları**  >  **işlem RFC**  >  **Oluştur**' u seçin.
 
-1. Açılan ayarlar kutusunda, **kendi bağlantı noktası adı**' nı seçin. Test bağlantı noktası için **SAP**ile başlayan bir **ad** girin. Tüm gönderici bağlantı noktası adları **SAP**ile başlamalıdır, örneğin, **saptest**. Yaptığınız değişiklikleri kaydedin.
+1. Açılan ayarlar kutusunda, **kendi bağlantı noktası adı**' nı seçin. Test bağlantı noktası için **SAP** ile başlayan bir **ad** girin. Tüm gönderici bağlantı noktası adları **SAP** ile başlamalıdır, örneğin, **saptest**. Yaptığınız değişiklikleri kaydedin.
 
-1. Yeni gönderici bağlantı noktanızın ayarlarında, **RFC hedefi**IÇIN, [ABAP bağlantınızın](#create-abap-connection)tanımlayıcısını girin.
+1. Yeni gönderici bağlantı noktanızın ayarlarında, **RFC hedefi** IÇIN, [ABAP bağlantınızın](#create-abap-connection)tanımlayıcısını girin.
 
 1. Yaptığınız değişiklikleri kaydedin.
 
@@ -578,15 +669,15 @@ SAP 'den Logic App 'e IDoc 'Ları göndermek için, aşağıdaki en düşük yap
 
 1. **Iş ortağı profilleri** ayarlarını açmak IÇIN, SAP arabiriminizdeki **we20** Transaction Code (T-Code) ile **/n** önekini kullanın.
 
-1. **İş ortağı profilleri**altında, **iş ortağı türü**  >  **Oluştur**' u seçin.
+1. **İş ortağı profilleri** altında, **iş ortağı türü**  >  **Oluştur**' u seçin.
 
 1. Aşağıdaki ayarlarla yeni bir iş ortağı profili oluşturun:
 
-    * **Iş ortağı No**için, [mantıksal sistem ortağınızın tanımlayıcısını](#create-logical-system-partner)girin.
+    * **Iş ortağı No** için, [mantıksal sistem ortağınızın tanımlayıcısını](#create-logical-system-partner)girin.
 
-    * **Partn için. Yazın**, **ls**girin.
+    * **Partn için. Yazın**, **ls** girin.
 
-    * **Aracı**için, Azure LOGIC Apps veya SAP olmayan diğer sistemler için program tanımlayıcıları KAYDETTIĞINIZDE kullanılacak SAP Kullanıcı hesabının tanımlayıcısını girin.
+    * **Aracı** için, Azure LOGIC Apps veya SAP olmayan diğer sistemler için program tanımlayıcıları KAYDETTIĞINIZDE kullanılacak SAP Kullanıcı hesabının tanımlayıcısını girin.
 
 1. Yaptığınız değişiklikleri kaydedin. [Mantıksal sistem ortağını oluşturmadıysanız](#create-logical-system-partner), hatayı alırsınız, **geçerli bir Iş ortağı numarası girin**.
 
@@ -594,7 +685,7 @@ SAP 'den Logic App 'e IDoc 'Ları göndermek için, aşağıdaki en düşük yap
 
 1. Aşağıdaki ayarlarla yeni bir giden parametre oluşturun:
 
-    * **Ileti türünü**girin, örneğin, **Cremas**.
+    * **Ileti türünü** girin, örneğin, **Cremas**.
 
     * [Alıcı bağlantı noktanızın tanımlayıcısını](#create-receiver-port)girin.
 
@@ -624,7 +715,7 @@ SAP 'yi, toplu işler veya IDoc grupları olan [paketlerdeki IDoc 'ları gönder
 
 İşte, [ `xpath()` işlevi](./workflow-definition-language-functions-reference.md#xpath)kullanarak bir paketten tek tek IDoc 'ları nasıl ayıklayabileceğiniz gösterilmektedir:
 
-1. Başlamadan önce SAP tetikleyicisine sahip bir mantıksal uygulama gerekir. Bu mantıksal uygulama henüz yoksa, [SAP tetikleyicisiyle bir mantıksal uygulama ayarlamak](#receive-from-sap)için bu konudaki önceki adımları izleyin.
+1. Başlamadan önce SAP tetikleyicisine sahip bir mantıksal uygulama gerekir. Bu mantıksal uygulama henüz yoksa, [SAP tetikleyicisiyle bir mantıksal uygulama ayarlamak](#receive-message-from-sap)için bu konudaki önceki adımları izleyin.
 
    Örneğin:
 
@@ -648,7 +739,7 @@ SAP 'yi, toplu işler veya IDoc grupları olan [paketlerdeki IDoc 'ları gönder
 
    Her IDoc 'un, `<Receive></Receive` Bu durumda IDoc 'un aşağı akış uygulamasına veya SFTP sunucusuna göndermeden önce kök ad alanı ile birlikte, dosya içeriğinin bir öğe içinde sarmalanması neden olan kök ad alanını içermesi gerekir.
 
-Yeni bir mantıksal uygulama oluştururken mantıksal uygulama Tasarımcısı ' nda bu şablonu seçerek bu model için hızlı başlangıç şablonunu kullanabilirsiniz.
+Yeni bir mantıksal uygulama oluştururken Logic Apps tasarımcısında bu şablonu seçerek bu model için hızlı başlangıç şablonunu kullanabilirsiniz.
 
 ![Batch mantıksal uygulama şablonu seçin](./media/logic-apps-using-sap-connector/select-batch-logic-app-template.png)
 
@@ -659,19 +750,25 @@ Bu örnek, bir HTTP isteğiyle tetikleyebileceğiniz bir mantıksal uygulama kul
 Bu SAP eylemi, XML belgesinin içeriğini veya verilerini değil, bir [XML şeması](#sample-xml-schemas)döndürür. Yanıtta döndürülen şemalar, Azure Resource Manager Bağlayıcısı kullanılarak bir tümleştirme hesabına yüklenir. Şemalar aşağıdaki bölümleri içerir:
 
 * İstek iletisinin yapısı. BAPı listenizi oluşturmak için bu bilgileri kullanın `get` .
+
 * Yanıt iletisinin yapısı. Yanıtı ayrıştırmak için bu bilgileri kullanın. 
 
-İstek iletisini göndermek için **SAP 'a Ileti gönder**Genel SAP eylemini veya hedeflenen **çağrı BAPI** eylemlerini kullanın.
+İstek iletisini göndermek için **SAP 'a Ileti gönder** Genel SAP eylemini veya hedeflenen **çağrı BAPI** eylemlerini kullanın.
 
 ### <a name="sample-xml-schemas"></a>Örnek XML şemaları
 
 Örnek belge oluştururken kullanılmak üzere bir XML şeması oluşturmayı öğreniyor olmanız durumunda aşağıdaki örneklere bakın. Bu örneklerde aşağıdakiler de dahil olmak üzere birçok yük türüyle nasıl çalışabilmeniz gösterilmektedir:
 
 * [RFC istekleri](#xml-samples-for-rfc-requests)
+
 * [BAPı istekleri](#xml-samples-for-bapi-requests)
+
 * [IDoc istekleri](#xml-samples-for-idoc-requests)
+
 * Basit veya karmaşık XML şeması veri türleri
+
 * Tablo parametreleri
+
 * İsteğe bağlı XML davranışları
 
 XML şemanıza, isteğe bağlı bir XML girişi ile başlayabilirsiniz. SAP Bağlayıcısı, XML girişi olmadan veya ile birlikte kullanılabilir.
@@ -748,16 +845,13 @@ Aşağıdaki örnek ad alanları için önekleri içerir. Tüm ön ekleri aynı 
 
 ```
 
-#### <a name="xml-samples-for-bapi-requests"></a>BAPı istekleri için XML örnekleri
+#### <a name="xml-samples-for-bapi-requests"></a>BAPI istekleri için XML örnekleri
 
-> [!TIP]
-> BAPı isteğinizi düzenlemek için Logic Apps tasarımcısını kullanıyorsanız, aşağıdaki arama işlevlerini kullanabilirsiniz: 
-> 
-> * Kullanılabilir yöntemlerin açılan menüsünü görmek için Tasarımcıda bir nesne seçin.
-> * BAPı API çağrısı tarafından sunulan aranabilir listeyi kullanarak iş nesnesi türlerini anahtar sözcüğe göre filtreleyin.
+Aşağıdaki XML örnekleri, [BAPI yöntemini çağırmak](#call-bapi-action)için örnek isteklerdir.
 
 > [!NOTE]
 > SAP `RPY_BOR_TREE_INIT` , hiçbir giriş filtresiyle ilgili sorunları LOGIC Apps RFC 'e yanıt olarak tanımlayarak, iş nesnelerini dış sistemler için kullanılabilir hale getirir. Logic Apps çıktı tablosunu inceler `BOR_TREE` . `SHORT_TEXT`Alan, iş nesnelerinin adları için kullanılır. Çıkış tablosunda SAP tarafından döndürülmeyen iş nesnelerine Logic Apps erişilemez.
+> 
 > Özel iş nesneleri kullanıyorsanız, bu iş nesnelerini SAP 'de yayımlamayı ve serbest bırakmanız gerekir. Aksi takdirde SAP, özel iş nesnelerinizi çıkış tablosunda listeetmez `BOR_TREE` . İş nesneleri SAP 'den kullanıma sunana kadar Logic Apps özel iş nesneleriniz erişemez. 
 
 Aşağıdaki örnek, BAPı metodunu kullanarak bankalar listesini alır `GETLIST` . Bu örnek, bir banka için iş nesnesini içerir `BUS1011` . 
@@ -918,9 +1012,9 @@ Aşağıdaki örnek, veya işlem tanımlayıcısı ayarlamak için alternatif bi
 
 ### <a name="add-an-http-request-trigger"></a>HTTP Istek tetikleyicisi ekleme
 
-1. Azure portal, mantıksal uygulama Tasarımcısı ' nı açan boş bir mantıksal uygulama oluşturun.
+1. Azure portal, Logic Apps tasarımcısını açan boş bir mantıksal uygulama oluşturun.
 
-1. Arama kutusuna `http request` filtreniz olarak yazın. **Tetikleyiciler** LISTESINDEN **bir http isteği alındığında**öğesini seçin.
+1. Arama kutusuna `http request` filtreniz olarak yazın. **Tetikleyiciler** LISTESINDEN **bir http isteği alındığında** öğesini seçin.
 
    ![HTTP Istek tetikleyicisi Ekle](./media/logic-apps-using-sap-connector/add-http-trigger-logic-app.png)
 
@@ -933,7 +1027,7 @@ Tasarımcı araç çubuğunda **Kaydet**' i seçin.
 
 ### <a name="add-an-sap-action-to-generate-schemas"></a>Şemaları oluşturmak için bir SAP eylemi ekleyin
 
-1. Mantıksal uygulama Tasarımcısı ' nda, tetikleyici altında **yeni adım**' ı seçin.
+1. Logic Apps tasarımcısında tetikleyici altında **yeni adım**' ı seçin.
 
    ![Mantıksal uygulamaya yeni adım Ekle](./media/logic-apps-using-sap-connector/add-sap-action-logic-app.png)
 
@@ -949,17 +1043,17 @@ Tasarımcı araç çubuğunda **Kaydet**' i seçin.
 
    1. Bağlantı için bir ad girin.
 
-   1. **Veri ağ geçidi** bölümünde, **abonelik**altında, önce veri ağ geçidi yüklemeniz için Azure Portal oluşturduğunuz veri ağ geçidi kaynağı için Azure aboneliğini seçin. 
+   1. **Veri ağ geçidi** bölümünde, **abonelik** altında, önce veri ağ geçidi yüklemeniz için Azure Portal oluşturduğunuz veri ağ geçidi kaynağı için Azure aboneliğini seçin. 
    
-   1. **Bağlantı ağ geçidi**altında Azure 'da veri ağ geçidi kaynağınızı seçin.
+   1. **Bağlantı ağ geçidi** altında Azure 'da veri ağ geçidi kaynağınızı seçin.
 
-   1. Bağlantıyla ilgili bilgi sağlamaya devam edin. **Oturum açma türü** özelliği için, özelliğin **uygulama sunucusu** veya **Grup**olarak ayarlanmış olup olmadığına bağlı olarak adımı izleyin:
+   1. Bağlantıyla ilgili bilgi sağlamaya devam edin. **Oturum açma türü** özelliği için, özelliğin **uygulama sunucusu** veya **Grup** olarak ayarlanmış olup olmadığına bağlı olarak adımı izleyin:
    
-      * **Uygulama sunucusu**için genellikle isteğe bağlı olarak görüntülenen bu özellikler gereklidir:
+      * **Uygulama sunucusu** için genellikle isteğe bağlı olarak görüntülenen bu özellikler gereklidir:
 
         ![SAP uygulama sunucusu bağlantısı oluşturma](media/logic-apps-using-sap-connector/create-SAP-application-server-connection.png)
 
-      * **Grup**için, genellikle isteğe bağlı olarak görüntülenen bu özellikler gereklidir:
+      * **Grup** için, genellikle isteğe bağlı olarak görüntülenen bu özellikler gereklidir:
 
         ![SAP ileti sunucusu bağlantısı oluştur](media/logic-apps-using-sap-connector/create-SAP-message-server-connection.png)  
 
@@ -1001,7 +1095,7 @@ Tasarımcı araç çubuğunda **Kaydet**' i seçin.
 
 İsteğe bağlı olarak, oluşturulan şemaları blob, depolama veya tümleştirme hesabı gibi depolarda indirebilir veya saklayabilirsiniz. Tümleştirme hesapları, diğer XML eylemleriyle birinci sınıf bir deneyim sağlar, bu nedenle bu örnek, Azure Resource Manager Bağlayıcısı kullanılarak aynı mantıksal uygulama için nasıl bir tümleştirme hesabına şema yükleneceğini gösterir.
 
-1. Mantıksal uygulama Tasarımcısı ' nda, tetikleyici altında **yeni adım**' ı seçin.
+1. Logic Apps tasarımcısında tetikleyici altında **yeni adım**' ı seçin.
 
 1. Arama kutusuna `Resource Manager` filtreniz olarak yazın. **Kaynak oluştur veya Güncelleştir**' i seçin.
 
@@ -1038,15 +1132,13 @@ Tasarımcı araç çubuğunda **Kaydet**' i seçin.
 
 1. Başarılı bir çalıştıktan sonra, tümleştirme hesabına gidin ve oluşturulan şemaların mevcut olup olmadığını denetleyin.
 
-<a name="secure-network-communications"></a>
-
 ## <a name="enable-secure-network-communications"></a>Güvenli ağ Iletişimini etkinleştir
 
-Başlamadan önce, yalnızca veri ağ geçidini kullandığınızda ve mantıksal uygulamalarınızın çok kiracılı Azure 'da çalıştığı durumlarda uygulanan önceden listelenmiş [önkoşulları](#pre-reqs)karşıladığınızdan emin olun:
+Başlamadan önce, yalnızca veri ağ geçidini kullandığınızda ve mantıksal uygulamalarınızın çok kiracılı Azure 'da çalıştığı durumlarda uygulanan önceden listelenmiş [önkoşulları](#prerequisites)karşıladığınızdan emin olun:
 
 * Şirket içi veri ağ geçidinin, SAP sisteminizle aynı ağda olan bir bilgisayarda yüklü olduğundan emin olun.
 
-* Çoklu oturum açma (SSO) için, veri ağ geçidi, SAP kullanıcısına eşlenmiş bir kullanıcı olarak çalışır.
+* SSO için, veri ağ geçidi, SAP kullanıcısına eşlenmiş bir kullanıcı olarak çalışır.
 
 * Ek güvenlik işlevlerini sağlayan SNC kitaplığı, veri ağ geçidiyle aynı makineye yüklenir. Bazı örneklerde [sapseculib](https://help.sap.com/saphelp_nw74/helpdata/en/7a/0755dc6ef84f76890a77ad6eb13b13/frameset.htm), Kerberos ve NTLM vardır.
 
@@ -1065,8 +1157,6 @@ Başlamadan önce, yalnızca veri ağ geçidini kullandığınızda ve mantıksa
 
    > [!NOTE]
    > Ortam değişkenlerini, veri ağ geçidi ve SNC kitaplığı olan makinede SNC_LIB ve SNC_LIB_64 ayarlama. Ayarlanırsa, bağlayıcı aracılığıyla geçirilen SNC kitaplık değerine göre önceliklidir.
-
-<a name="safe-typing"></a>
 
 ## <a name="safe-typing"></a>Güvenli yazma
 
@@ -1159,21 +1249,38 @@ Mantıksal uygulamanızdan SAP 'ye yinelenen IDoc 'Lar gönderilirken bir sorunl
 > Bir işlem tanımlayıcısı için onay başarısız olursa, bu hata SAP sistemiyle ilgili bir işlem olup olmadığını, SAP 'nin onayı doğrulayabilmesi için başarısız olduğunu gösterir.
 
 1. Logic Apps tasarımcısında, mantıksal uygulamanıza eylem **başlatma değişkenini** ekleyin. 
-1. Eylem **başlatma değişkeni**düzenleyicisinde, aşağıdaki ayarları yapılandırın. Sonra değişikliklerinizi kaydedin.
-    1. **Ad**için, değişkeniniz için bir ad girin. Örneğin, `IDOCtransferID`.
-    2. **Tür**için, değişken türü olarak **dize** ' yi seçin.
-    3. **Değer**için, dinamik içerik menüsünü açmak için **ilk değeri girin** metin kutusunu seçin. **İfadeler** sekmesini seçin. İşlevler listesinde, işlevi girin `guid()` . Sonra, değişikliklerinizi kaydetmek için **Tamam** ' ı seçin. **Değer** alanı artık `guid()` bir GUID üreten işleve ayarlanır.
-1. **Değişken başlatma** eyleminden sonra, **IDoc gönder**eylemini ekleyin.
-1. **IDoc 'un gönderileceği**eylem için düzenleyicide aşağıdaki ayarları yapılandırın. Sonra değişikliklerinizi kaydedin.
-    1. **IDoc türü** için ileti türünü seçin ve **giriş IDoc iletisi**için iletinizi belirtin.
-    1. **SAP sürümü sürümü**için SAP yapılandırmanızın değerlerini seçin.
-    1. **Kayıt türleri sürümü**için SAP yapılandırmanızın değerlerini seçin.
-    1. **Kimliği Onayla**için **Hayır**' ı seçin.
-    1. **Yeni parametre listesi**  >  **işlem kimliği GUID 'yi**seçin. Dinamik içerik menüsünü açmak için metin kutusunu seçin. **Değişkenler** sekmesinde, oluşturduğunuz değişkenin adını seçin. Örneğin, `IDOCtransferID`.
-1. **IDoc gönder**eyleminin başlık çubuğunda **..**  >  . seçeneğini belirleyin. **Ayarlar**. **Yeniden deneme ilkesi**için **hiçbiri**  >  **bitti**' yi seçin.
-1. Bu işlem **IDoc 'U gönderdikten**sonra **işlem kimliğini onayla**eylemini ekleyin.
-1. **Işlem kimliğini onayla**eylemi için düzenleyicide aşağıdaki ayarları yapılandırın. Sonra değişikliklerinizi kaydedin.
-    1. **Işlem kimliği**için, değişkeninizin adını tekrar girin. Örneğin, `IDOCtransferID`.
+
+1. Eylem **başlatma değişkeni** düzenleyicisinde, aşağıdaki ayarları yapılandırın. Sonra değişikliklerinizi kaydedin.
+
+    1. **Ad** için, değişkeniniz için bir ad girin. Örneğin, `IDOCtransferID`.
+
+    1. **Tür** için, değişken türü olarak **dize** ' yi seçin.
+
+    1. **Değer** için, dinamik içerik menüsünü açmak için **ilk değeri girin** metin kutusunu seçin. **İfadeler** sekmesini seçin. İşlevler listesinde, işlevi girin `guid()` . Sonra, değişikliklerinizi kaydetmek için **Tamam** ' ı seçin. **Değer** alanı artık `guid()` bir GUID üreten işleve ayarlanır.
+
+1. **Değişken başlatma** eyleminden sonra, **IDoc gönder** eylemini ekleyin.
+
+1. **IDoc 'un gönderileceği** eylem için düzenleyicide aşağıdaki ayarları yapılandırın. Sonra değişikliklerinizi kaydedin.
+
+    1. **IDoc türü** için ileti türünü seçin ve **giriş IDoc iletisi** için iletinizi belirtin.
+
+    1. **SAP sürümü sürümü** için SAP yapılandırmanızın değerlerini seçin.
+
+    1. **Kayıt türleri sürümü** için SAP yapılandırmanızın değerlerini seçin.
+
+    1. **Kimliği Onayla** için **Hayır**' ı seçin.
+
+    1. **Yeni parametre listesi**  >  **işlem kimliği GUID 'yi** seçin. Dinamik içerik menüsünü açmak için metin kutusunu seçin. **Değişkenler** sekmesinde, oluşturduğunuz değişkenin adını seçin. Örneğin, `IDOCtransferID`.
+
+1. **IDoc gönder** eyleminin başlık çubuğunda **..**  >  . seçeneğini belirleyin. **Ayarlar**. **Yeniden deneme ilkesi** için **varsayılan** &gt; **tamamlandı**' ı seçmeniz önerilir. Bununla birlikte, belirli gereksinimleriniz için özel bir ilke yapılandırabilirsiniz. Özel ilkeler için, geçici ağ kesintilerini aşmak üzere en az bir yeniden deneme yapılandırmanız önerilir.
+
+1. Bu işlem **IDoc 'U gönderdikten** sonra **işlem kimliğini onayla** eylemini ekleyin.
+
+1. **Işlem kimliğini onayla** eylemi için düzenleyicide aşağıdaki ayarları yapılandırın. Sonra değişikliklerinizi kaydedin.
+
+    1. **Işlem kimliği** için, değişkeninizin adını tekrar girin. Örneğin, `IDOCtransferID`.
+
+1. İsteğe bağlı olarak, test ortamınızda yinelenenleri kaldırma işlemini doğrulayın. Bir önceki adımda kullandığınız **Işlem kimliği** GUID 'ı Ile **IDoc gönder** eylemini tekrarlayın. Aynı IDoc 'u iki kez gönderdiğinizde, SAP 'nin tRFC çağrısının çoğaltılmasını belirleyebildiğini ve iki çağrıyı tek bir gelen IDoc iletisine çözdiğini doğrulayabilirsiniz.
 
 ## <a name="known-issues-and-limitations"></a>Bilinen sorunlar ve sınırlamalar
 
@@ -1185,13 +1292,56 @@ Yönetilen (ıSE) SAP bağlayıcısının Şu anda bilinen sorunları ve sınır
 
 ## <a name="connector-reference"></a>Bağlayıcı başvurusu
 
-Bu bağlayıcı hakkında, bağlayıcının Swagger dosyasında açıklanan Tetikleyiciler, Eylemler ve sınırlar gibi daha teknik ayrıntılar için [bağlayıcının başvuru sayfasına](/connectors/sap/)bakın.
+Bu bağlayıcı hakkında, bağlayıcının Swagger dosyasında açıklanan Tetikleyiciler, Eylemler ve sınırlar gibi daha teknik ayrıntılar için [bağlayıcının başvuru sayfasına](/connectors/sap/)bakın. Logic Apps için ek belgeler aşağıdaki eylemler için verilmiştir:
+
+* [BAPı çağrısı](#call-bapi-action)
+
+* [IDOC gönder](#send-idoc-action)
 
 > [!NOTE]
 > Bir [tümleştirme hizmeti ortamındaki (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)Logic Apps için, bu bağlayıcının Ise etiketli sürümü bunun yerine [Ise ileti sınırlarını](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) kullanır.
 
+### <a name="call-bapi-action"></a>BAPı eylemini çağır
+
+[Call BAPI ( `CallBapi` )](
+https://docs.microsoft.com/connectors/sap/#call-bapi-(preview)) eylemi, SAP sunucunuzdaki BAPI yöntemini çağırır. 
+
+Çağrlarınız ile aşağıdaki parametreleri kullanmanız gerekir: 
+
+* Aranabilir bir açılan menü olan **Iş nesnesi** ( `businessObject` ).
+
+*  `method` Bir **iş nesnesini** seçtikten sonra kullanılabilir yöntemleri dolduran yöntemi (). Kullanılabilir yöntemler, seçilen **Iş nesnesine** bağlı olarak değişir.
+
+*  `body` Çağrı için BAPI yöntemi giriş parametre değerlerini içeren XML belgesini veya BAPI parametrelerinizi içeren depolama blobunun URI 'sini çağıran bir XML belgesi () giriş BAPI parametreleri ().
+
+BAPı 'un çağrı eylemini kullanma hakkında ayrıntılı örnekler için bkz. [BAPI Isteklerinin XML örnekleri](#xml-samples-for-bapi-requests).
+
+> [!TIP]
+> BAPı isteğinizi düzenlemek için Logic Apps tasarımcısını kullanıyorsanız, aşağıdaki arama işlevlerini kullanabilirsiniz: 
+> 
+> * Kullanılabilir yöntemlerin açılan menüsünü görmek için Tasarımcıda bir nesne seçin.
+> * BAPı API çağrısı tarafından sunulan aranabilir listeyi kullanarak iş nesnesi türlerini anahtar sözcüğe göre filtreleyin.
+
+### <a name="send-idoc-action"></a>IDoc eylemi gönder
+
+[Send IDoc ( `SendIDoc` )](https://docs.microsoft.com/connectors/sap/#send-idoc-(preview)) işlemi, IDoc iletisini SAP sunucunuza gönderir.
+
+Çağrlarınız ile aşağıdaki parametreleri kullanmanız gerekir: 
+
+* Yerleşik bir açılan menü olan **isteğe bağlı uzantıya () sahip IDoc türü** `idocType` .
+
+    * **SAP yayın sürümü** () isteğe bağlı parametresi, `releaseVersion` IDoc türünü seçtikten sonra değerleri doldurur ve seçilen IDoc türüne bağlıdır.
+
+*  IDoc `body` yükünü içeren XML BELGESINI veya IDoc XML belgenizi içeren depolama blobunun URI 'Sini ÇAĞıRAN bir giriş IDoc iletisi (). Bu belge, WE60 IDoc belgelerine göre SAP ıDOC XML şemasına veya eşleşen SAP IDoc eylem URI 'sine yönelik oluşturulan şemaya uymalıdır.
+
+IDoc 'u gönder eyleminin nasıl kullanılacağına ilişkin ayrıntılı örnekler için bkz. [SAP sunucunuza IDOC iletileri gönderme](#send-idoc-messages-to-sap-server)Kılavuzu.
+
+İsteğe bağlı ' ı ()  parametresini kullanma için `confirmTid` , [işlemi açıkça onaylama için İzlenecek yol](#confirm-transaction-explicitly)bölümüne bakın.
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Azure Logic Apps 'den [Şirket içi sistemlere bağlanın](../logic-apps/logic-apps-gateway-connection.md) .
+
 * [Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md)ile diğer ileti işlemlerini doğrulamayı, dönüştürmeyi ve kullanmayı öğrenin.
+
 * Diğer [Logic Apps bağlayıcıları](../connectors/apis-list.md)hakkında bilgi edinin.

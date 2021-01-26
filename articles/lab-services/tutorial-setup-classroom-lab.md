@@ -3,12 +3,12 @@ title: Azure Lab Services kullanarak sınıf laboratuvarı ayarlama | Microsoft 
 description: Bu öğreticide, sınıfınızda öğrenciler tarafından kullanılan sanal makinelerle bir derslik Laboratuvarı kurmak için Azure Lab Services kullanırsınız.
 ms.topic: tutorial
 ms.date: 12/03/2020
-ms.openlocfilehash: 3abbf5221382b46dbf4e73f9f4dc3b639bc5ecbd
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 8093a1fd270cdba8bdccaf48737bf6737bdd394d
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602523"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98787426"
 ---
 # <a name="tutorial-set-up-a-classroom-lab"></a>Öğretici: Bir sınıf laboratuvarı ayarlama 
 Bu öğreticide, sınıftaki öğrenciler tarafından kullanılan sanal makinelerle bir sınıf laboratuvarı ayarlayacaksınız.  
@@ -21,7 +21,7 @@ Bu öğreticide, aşağıdaki eylemleri gerçekleştireceksiniz:
 > * Laboratuvar için zamanlamayı ayarla
 > * Öğrenciye davetiye e-postası gönder
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Bu öğreticide, sınıfınız için sanal makinelerle bir laboratuvar ayarlarsınız. Laboratuvar hesabında bir derslik Laboratuvarı ayarlamak için laboratuvar hesabındaki şu rollerden birine üye olmanız gerekir: sahip, laboratuvar Oluşturucusu veya katkıda bulunan. Laboratuvar hesabı oluşturmak için kullandığınız hesap, sahip rolüne otomatik olarak eklenir. Bu nedenle, bir sınıf laboratuvarı oluşturmak için laboratuvar hesabı oluşturmak için kullandığınız kullanıcı hesabını kullanabilirsiniz. 
 
 Azure Lab Services kullanırken tipik iş akışı aşağıda verilmiştir:
@@ -127,7 +127,7 @@ Kullanıcıları eklediğinizde, varsayılan olarak **erişimi kısıtla** seçe
 
 Bir laboratuvar Kullanıcı listesini mevcut bir Azure Active Directory (Azure AD) grubuyla eşitleyebilirsiniz, böylece kullanıcı el ile eklemeniz veya silmeniz gerekmez. 
 
-Kurumsal kaynaklara ve bulut tabanlı uygulamalara erişimi yönetmek için kuruluşunuzun Azure Active Directory içinde bir Azure AD grubu oluşturulabilir. Daha fazla bilgi için bkz. [Azure AD grupları](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-manage-groups). Kuruluşunuz Microsoft Office 365 veya Azure hizmetlerini kullanıyorsa, kuruluşunuzda Azure Active Directory yönettiğiniz Yöneticiler zaten olur. 
+Kurumsal kaynaklara ve bulut tabanlı uygulamalara erişimi yönetmek için kuruluşunuzun Azure Active Directory içinde bir Azure AD grubu oluşturulabilir. Daha fazla bilgi için bkz. [Azure AD grupları](../active-directory/fundamentals/active-directory-manage-groups.md). Kuruluşunuz Microsoft Office 365 veya Azure hizmetlerini kullanıyorsa, kuruluşunuzda Azure Active Directory yönettiğiniz Yöneticiler zaten olur. 
 
 > [!IMPORTANT]
 > Kullanıcı listesinin boş olduğundan emin olun. Laboratuvar içinde el ile eklediğiniz veya bir CSV dosyası içeri aktardığınız mevcut kullanıcılar varsa, Laboratuvarı mevcut bir gruba eşitleme seçeneği görünmez. 
@@ -204,4 +204,3 @@ Bu öğreticide, Azure 'da sınıfınız için bir laboratuvar oluşturdunuz. Bi
 
 > [!div class="nextstepaction"]
 > [Sınıf laboratuvarındaki bir sanal makineye bağlanma](tutorial-connect-virtual-machine-classroom-lab.md)
-

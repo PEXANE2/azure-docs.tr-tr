@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: how-to
 ms.date: 10/14/2020
 ms.author: alkohli
-ms.openlocfilehash: 994e5a11cd3b42de339ed11a9d2517c81856e672
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: c4e2894d193309c169adbea96491e0754d479a8a
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96582477"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98786817"
 ---
 # <a name="manage-access-power-and-connectivity-mode-for-your-azure-data-box-gateway"></a>Azure Data Box Gateway için erişimi, güç ve bağlantı modunu yönetme
 
@@ -68,7 +68,7 @@ Cihaz için etkinleştirme anahtarını oluştururken veya kimlik bilgileri gere
 
 Yapabilmeniz için `User` Active Directory kiracısında erişiminizin olması gerekir `Read all directory objects` . Konuk kullanıcının izinleri yoktur `Read all directory objects` . Bir konuğsanız, etkinleştirme anahtarı oluşturma, cihazınızda bir paylaşma oluşturma ve Kullanıcı oluşturma işlemleri başarısız olur.
 
-API Microsoft Graph için kullanıcılara erişim sağlama hakkında daha fazla bilgi için, bkz. [Microsoft Graph izinleri başvurusu](https://docs.microsoft.com/graph/permissions-reference).
+API Microsoft Graph için kullanıcılara erişim sağlama hakkında daha fazla bilgi için, bkz. [Microsoft Graph izinleri başvurusu](/graph/permissions-reference).
 
 ### <a name="register-resource-providers"></a>Kaynak sağlayıcılarını kaydetme
 
@@ -95,7 +95,7 @@ Data Box Gateway bir cihaz için `Microsoft.DataBoxEdge` kaydedilmelidir. Kaydol
 Register-AzResourceProvider -ProviderNamespace Microsoft.DataBoxEdge
 ```
 
-Kaynak sağlayıcısını kaydetme hakkında daha fazla bilgi için bkz. [kaynak sağlayıcısı kaydı hatalarını giderme](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-register-provider-errors).
+Kaynak sağlayıcısını kaydetme hakkında daha fazla bilgi için bkz. [kaynak sağlayıcısı kaydı hatalarını giderme](../azure-resource-manager/templates/error-register-resource-provider.md).
 
 ## <a name="manage-connectivity-mode"></a>Bağlantı modunu Yönet
 

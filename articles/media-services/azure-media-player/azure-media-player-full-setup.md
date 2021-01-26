@@ -7,21 +7,26 @@ ms.service: media-services
 ms.topic: how-to
 ms.date: 04/20/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 15f5918748df80cec01ccf89835a0ef51da64529
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 13abe333bcf3f67ea1a1ba823c693deaa60bc723
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91296255"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788816"
 ---
 # <a name="azure-media-player-full-setup"></a>Eksiksiz Azure Media Player kurulumu #
 
 Azure Media Player kolayca ayarlanabilir. Yalnızca Azure Media Services hesabınızdan medya içeriğinin temel oynatımını almak birkaç dakika sürer. [Örnek](https://github.com/Azure-Samples/azure-media-player-samples) , sürümün örnekler dizininde de sağlanır.
 
+<!--//aka.ms/ampembed?url=https%3A%2F%2Fxpouyatdemo-euwe.streaming.media.azure.net%2Fc9b6ac82-c187-4882-a3d3-1a67204ac58e%2Fconnect2017-v3.ism%2Fmanifest-->
+
+Bir AMS videosu örneği aşağıda verilmiştir.
+
+> [!VIDEO https://aka.ms/ampembed?url=https%3A%2F%2Fxpouyatdemo-euwe.streaming.media.azure.net%2Fc9b6ac82-c187-4882-a3d3-1a67204ac58e%2Fconnect2017-v3.ism%2Fmanifest]
 
 ## <a name="step-1-include-the-javascript-and-css-files-in-the-head-of-your-page"></a>1. Adım: JavaScript ve CSS dosyalarını sayfanızın baş bir kısmında ekleme ##
 
-Azure Media Player, betiklerine CDN barındırılan sürümünden erişebilirsiniz. Genellikle JavaScript 'in yerine son gövde etiketinden önce JavaScript `<body>` `<head>` yerleştirilmesi önerilir, ancak Azure Media Player, video etiketini geçerli bir öğe olarak bilmesi IÇIN eski IE sürümlerinin başlarında olması gereken bır ' HTML5 Shiv ' içeriyor.
+Azure Media Player, betiklerine CDN barındırılan sürümünden erişebilirsiniz. Genellikle JavaScript 'in yerine son gövde etiketinden önce JavaScript `<body>` `<head>` yerleştirilmesi önerilir, ancak Azure Meıa Player, video etiketini geçerli bir öğe olarak bilmesi IÇIN eski IE sürümlerinin başlarında olması gereken bır ' HTML5 Shiv ' içeriyor.
 
 > [!NOTE]
 > Zaten [Modernizr](https://modernizr.com/) gibi HTML5 Shiv kullanıyorsanız, Azure Media Player JavaScript 'i dilediğiniz yere ekleyebilirsiniz. Ancak Modernizr sürümünüzün video için Shiv içerdiğinden emin olun.
@@ -34,7 +39,7 @@ Azure Media Player, betiklerine CDN barındırılan sürümünden erişebilirsin
 ```
 
 > [!IMPORTANT]
-> Bu, **NOT** `latest` isteğe bağlı olarak değişikliğe tabi olduğu için üretimde sürümü kullanmamalısınız. `latest`Azure Media Player bir sürümü ile değiştirin. Örneğin, ile değiştirin `latest` `2.1.1` . Azure Media Player sürümler [buradan](azure-media-player-changelog.md)sorgulanabilir.
+> Bu,  `latest` isteğe bağlı olarak değişikliğe tabi olduğu için üretimde sürümü kullanmamalısınız. `latest`Azure Media Player bir sürümü ile değiştirin. Örneğin, ile değiştirin `latest` `2.1.1` . Azure Media Player sürümler [buradan](azure-media-player-changelog.md)sorgulanabilir.
 
 > [!NOTE]
 > Yayın sonrasında `1.2.0` , artık bu dosyanın konumu geri dönüş Techs 'ye eklemesi gerekmez (azuremediaplayer.min.js dosyasının göreli yolundan konumu otomatik olarak alır). Yukarıdaki komut dosyalarından sonra aşağıdaki betiği ekleyerek geri dönüş Techs 'nin konumunu değiştirebilirsiniz `<head>` .

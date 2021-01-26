@@ -4,12 +4,12 @@ description: Azure Backup ile Azure VM 'lerinde SQL Server veritabanlarının ye
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: 56dcf29a5c703a72fd137a5f1bf129f568a03b4b
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: ca785e217da4355a44ffbb26b813d55d942c5c14
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98735818"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98787629"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>Azure VM yedeklemesi üzerinde çalışan SQL Server veritabanları hakkında SSS
 
@@ -101,7 +101,10 @@ Yeniden adlandırılmış bir veritabanı yeni bir veritabanı olarak değerlend
 [Bir oto korumalı örneğe eklediğiniz](backup-sql-server-database-azure-vms.md#enable-auto-protection) bir veritabanı, korunan öğeler altında hemen görünmeyebilir. Bunun nedeni, bulmanın genellikle her 8 saatte bir çalışır. Ancak, aşağıdaki görüntüde gösterildiği gibi, veritabanlarını **yeniden keşfet**' i seçerek bir bulmayı el ile çalıştırırsanız yeni veritabanlarını hemen bulabilir ve koruyabilirsiniz:
 
   ![Yeni eklenen bir veritabanını el ile bulma](./media/backup-azure-sql-database/view-newly-added-database.png)
-  
+
+## <a name="can-i-protect-databases-on-virtual-machines-that-have-azure-disk-encryption-ade-enabled"></a>Azure disk şifrelemesi (ADE) etkin olan sanal makinelerde veritabanlarını koruyabilir miyim?
+Evet, Azure disk şifrelemesi (ADE) etkin olan sanal makinelerde veritabanlarını koruyabilirsiniz.
+
 ## <a name="can-i-protect-databases-that-have-tde-transparent-data-encryption-turned-on-and-will-the-database-stay-encrypted-through-the-entire-backup-process"></a>TDE (Saydam Veri Şifrelemesi) açık olan veritabanlarını koruyabilir ve veritabanı tüm yedekleme işlemi boyunca şifreli olarak kalır mi?
 
 Evet, Azure Backup SQL Server veritabanlarının veya TDE 'ın etkinleştirildiği sunucunun yedeklenmesini destekler. Yedekleme, Azure tarafından yönetilen anahtarlarla veya müşteri tarafından yönetilen anahtarlarla (BYOK) birlikte [TDE](/sql/relational-databases/security/encryption/transparent-data-encryption) 'yı destekler.  Yedekleme, yedekleme işleminin bir parçası olarak herhangi bir SQL şifrelemesi gerçekleştirmez, bu sayede veritabanı yedeklendiğinde şifreli olarak kalır.

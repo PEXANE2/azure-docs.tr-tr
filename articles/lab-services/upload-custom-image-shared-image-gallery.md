@@ -3,12 +3,12 @@ title: Azure Lab Services-paylaşılan görüntü galerisine özel bir görünt�
 description: Paylaşılan görüntü galerisine özel bir görüntü yüklemeyi açıklar. University BT departmanları, özellikle yararlı olan görüntüleri içeri aktarmayı bulur.
 ms.date: 09/30/2020
 ms.topic: how-to
-ms.openlocfilehash: 93b4141636b629168e9bb7a73e71a9fe4bfc39f5
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 3e2f38b0cab87eab27181ddef79d0c02bd8c9bdb
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94654652"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98787172"
 ---
 # <a name="upload-a-custom-image-to-shared-image-gallery"></a>Paylaşılan Görüntü Galerisi’ne özel görüntü yükleme
 
@@ -66,5 +66,5 @@ Fiziksel laboratuvar ortamından bir VHD oluşturmak için birçok seçenek mevc
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Paylaşılan görüntü galerisine genel bakış](../virtual-machines/windows/shared-image-galleries.md)
+* [Paylaşılan görüntü galerisine genel bakış](../virtual-machines/shared-image-galleries.md)
 * [Paylaşılan görüntü Galerisi 'ni kullanma](how-to-use-shared-image-gallery.md)

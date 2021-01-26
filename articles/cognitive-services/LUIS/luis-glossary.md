@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 05/08/2020
-ms.openlocfilehash: cc7dac3767ca5c9e2429f4691a458f88ad1af707
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 7c65c8272172cab9f5361d16141bf7b229037480
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151982"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98786953"
 ---
 # <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>Dil ortak Sözlük ve kavramların sözlüğünü anlama
 Language Understanding (LUSıS) sözlüğü, LUO hizmeti ile çalışırken karşılaşabileceğiniz terimleri açıklar.
@@ -50,12 +50,13 @@ Yazma kaynağının bir Azure "türü" vardır `LUIS-Authoring` .
 
 ## <a name="batch-test"></a>Batch testi
 
-Toplu iş testi, geçerli bir LUO uygulamasının modellerini tutarlı ve bilinen bir kullanıcı tarafından yapılan test kümesiyle doğrulama yeteneğidir. Batch testi, [JSON biçimli bir dosyada](luis-concept-batch-test.md#batch-file-format)tanımlanır.
+Toplu iş testi, geçerli bir LUO uygulamasının modellerini tutarlı ve bilinen bir kullanıcı tarafından yapılan test kümesiyle doğrulama yeteneğidir. Batch testi, [JSON biçimli bir dosyada](./luis-how-to-batch-test.md#batch-test-file)tanımlanır.
+
 
 Ayrıca bkz:
-* [Kavramlar](luis-concept-batch-test.md)
+* [Kavramlar](./luis-how-to-batch-test.md)
 * Batch [testini çalıştırma](luis-how-to-batch-test.md)
-* [Öğretici](luis-tutorial-batch-testing.md) -Batch testi oluşturma ve çalıştırma
+* [Öğretici](./luis-how-to-batch-test.md) -Batch testi oluşturma ve çalıştırma
 
 ### <a name="f-measure"></a>F ölçümü
 
@@ -113,7 +114,7 @@ Tanımlayıcı, daha önce bir makine öğrenimi [özelliği](#features)için ku
 
 LUSıS bağlamında, etki alanı bir bilgi alanıdır. Etki alanınız senaryonuz için özeldir. Farklı etki alanları, etki alanı bağlamında anlamı olan belirli dili ve terimleri kullanır. Örneğin, müzik çalmak için bir uygulama oluşturuyorsanız, uygulamanız müziğe özgü hüküm ve dile özgü olacaktır: "şarkı, izleme, albüm, şarkı sözleri, b-tarafı, sanatçı" gibi kelimeler. Etki alanı örnekleri için bkz. [önceden oluşturulmuş etki alanları](#prebuilt-domain).
 
-## <a name="endpoint"></a>Uç Noktası
+## <a name="endpoint"></a>Uç Nokta
 
 ### <a name="authoring-endpoint"></a>Yazma uç noktası
 
@@ -194,7 +195,7 @@ LUSıS 'de, bir amaca veya tümceciği, bir varlıkla birlikte _pozitif_ bir ör
 
 [Uygulama tanımına (uygulama)](#application-app)bakın.
 
-## <a name="model"></a>Model
+## <a name="model"></a>Modelleme
 
 (Makine tarafından öğrenilen) modeli, giriş verilerini tahmin eden bir işlevdir. LUO 'da, amaç sınıflandırıcıları ve varlık ayıklayıcıları genel olarak "modeller" olarak ifade edilir ve "uygulama" olarak bir araya göre eğitilen, yayınlanan ve sorgulanan bir model koleksiyonuna başvurduk.
 
@@ -256,7 +257,7 @@ Tahmin kaynağında bir Azure "Kind" bulunur `LUIS` .
 
 [Yazma anahtarı](#authoring-key)olarak yeniden adlandırıldı.
 
-## <a name="publish"></a>Yayımla
+## <a name="publish"></a>Yayımlama
 
 [Yayımlama](luis-how-to-publish-app.md) , bir lusıs etkin sürümünü hazırlama veya üretim [uç noktasında](#endpoint)kullanılabilir hale getirmek anlamına gelir.
 
@@ -305,7 +306,7 @@ Bkz. [önceden oluşturulmuş datetimeV2 varlığının saat dilimini değiştir
 ## <a name="token"></a>Belirteç
 [Belirteç](luis-language-support.md#tokenization) , luın tanıyabileceği en küçük metin birimidir. Bu, dillerin genelinde biraz farklılık gösterir.
 
-**İngilizce**için, belirteç ve sayıların sürekli bir yayılımı (boşluk veya noktalama işareti yoktur). Boşluk bir belirteç DEĞIL.
+**İngilizce** için, belirteç ve sayıların sürekli bir yayılımı (boşluk veya noktalama işareti yoktur). Boşluk bir belirteç DEĞIL.
 
 |İfade|Belirteç sayısı|Açıklama|
 |--|--|--|

@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: troubleshooting
 ms.date: 05/06/2020
-ms.openlocfilehash: e803fa393d85f7f0b4849aed96356b7a4e77d83f
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: e4de77a8a56ce21511ad099af59a77e10ab1815d
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "96000139"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98787545"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding ile ilgili Sık Sorulan Sorular (SSS)
 
@@ -177,7 +177,7 @@ Hatalar, etiketlerinizin ve modellerinizin tahminlerinin arasında bir tutarsız
 * LUTO 'ıN amaçlar arasında ayırt edici şekilde iyileştirilmesine yardımcı olmak için daha fazla etiket ekleyin.
 * LUTO 'NıN daha hızlı öğrenmesi için, etki alanına özgü sözlük sağlayan tümcecik listesi özellikleri ekleyin.
 
-Bkz. [Batch test](luis-tutorial-batch-testing.md) öğreticisi.
+Bkz. [Batch test](./luis-how-to-batch-test.md) öğreticisi.
 
 ### <a name="when-an-app-is-exported-then-reimported-into-a-new-app-with-a-new-app-id-the-luis-prediction-scores-are-different-why-does-this-happen"></a>Bir uygulama verildiğinde yeni bir uygulamaya yeniden aktarıldığında (yeni bir uygulama KIMLIĞI ile), LUO tahmin puanları farklıdır. Bunun nedeni nedir?
 
@@ -190,7 +190,7 @@ Bkz. [tüm verilerle eğitme](luis-how-to-train.md#train-with-all-data).
 ## <a name="app-publishing"></a>Uygulama yayımlama
 
 ### <a name="what-is-the-tenant-id-in-the-add-a-key-to-your-app-window"></a>"Uygulamanıza anahtar ekleme" penceresinde kiracı KIMLIĞI nedir?
-Azure 'da kiracı, bir hizmetle ilişkili istemciyi veya kuruluşu temsil eder. Azure Portal, **dizin kimliği** kutusundaki **Azure Active Directory**  >  **Manage**  >  **özellikleri** Yönet ' i seçerek kiracı kimliğinizi bulun.
+Azure 'da kiracı, bir hizmetle ilişkili istemciyi veya kuruluşu temsil eder. Azure Portal, **dizin kimliği** kutusundaki **Azure Active Directory**  >    >  **özellikleri** Yönet ' i seçerek kiracı kimliğinizi bulun.
 
 ![Azure portal Kiracı KIMLIĞI](./media/luis-manage-keys/luis-assign-key-tenant-id.png)
 

@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 10/10/2019
-ms.openlocfilehash: ef63bf68fec592b768986a1329663508443c514b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b33f765e936d7c0db301a5b2fcf38ccaf137f771
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91535857"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98787562"
 ---
 # <a name="testing-example-utterances-in-luis"></a>LUSıS 'de test örneği
 
@@ -33,7 +33,7 @@ Tahmin puanları hakkında daha fazla bilgi için bkz. [tahmin puanı](luis-conc
 Etkileşimli test, LUO portalının **Test** panelinden yapılır. Amaçlarınızın ve varlıkların nasıl tanımlandığını ve puanlanmadığını görmek için bir söylenişi girebilirsiniz. LUSıS, test panelinde bir utterde beklediği sürece amaçları ve varlıkları tahmin etmemişse, yeni bir utterlik olarak **amacı** sayfasına kopyalayın. Daha sonra varlıklar için bu utterlik parçalarını etiketleyip LUO 'nun eğit. 
 
 ## <a name="batch-testing"></a>Toplu işe testi
-Tek seferde birden fazla farklı şekilde test ediyorsanız bkz. [Batch test](luis-concept-batch-test.md) .
+Tek seferde birden fazla farklı şekilde test ediyorsanız bkz. [Batch test](./luis-how-to-batch-test.md) .
 
 ## <a name="endpoint-testing"></a>Uç nokta testi
 [Uç noktasını](luis-glossary.md#endpoint) uygulamanızın en fazla iki sürümü ile kullanarak test edebilirsiniz. **Üretim** uç noktası olarak uygulamanızın ana veya canlı sürümü ile, **hazırlama** uç noktasına ikinci bir sürüm ekleyin. Bu yaklaşım, bir utterance 'in üç sürümünü sağlar: [Luo](luis-reference-regions.md) Web sitesinin test bölmesindeki geçerli model ve iki farklı uç noktada iki sürüm. 
@@ -51,7 +51,7 @@ Herhangi bir söyleyki, [lusıs](luis-reference-regions.md) Web sitesinin **[End
 ## <a name="remember-to-train"></a>Eğitme etmeyi unutmayın
 Modelde değişiklik yaptıktan sonra lu, [eğitme](luis-how-to-train.md) yapmayı unutmayın. LUO uygulamasındaki değişiklikler, uygulama eğitilene kadar sınama bölümünde görülmez. 
 
-## <a name="best-practices"></a>Önerilen uygulamalar
+## <a name="best-practices"></a>En iyi uygulamalar
 [En iyi yöntemleri](luis-concept-best-practices.md)öğrenin.
 
 ## <a name="next-steps"></a>Sonraki adımlar

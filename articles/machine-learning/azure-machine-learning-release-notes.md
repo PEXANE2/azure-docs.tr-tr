@@ -9,16 +9,45 @@ ms.topic: reference
 ms.author: larryfr
 author: BlackMist
 ms.date: 09/10/2020
-ms.openlocfilehash: 11aa739beeb07c3de056d8a2430b556fcc40b178
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.openlocfilehash: 6e92fb39845944898bebf6446c35f0932e13b5b8
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2021
-ms.locfileid: "98746739"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788884"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning sürüm notları
 
 Bu makalede Azure Machine Learning sürümleri hakkında bilgi edinin.  Tam SDK başvuru içeriği için Azure Machine Learning [**Python başvurusu için ana SDK**](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) sayfasına gidin.
+
+ ## <a name="2021-01-25"></a>2021-01-25
+
+### <a name="azure-machine-learning-sdk-for-python-v1210"></a>Python v 1.21.0 için SDK Azure Machine Learning
++ **Hata düzeltmeleri ve geliştirmeleri**
+  + **Azure-CLI-ml**
+    + UserAssigned kimliğiyle AmlCompute kullanılırken sabit CLı yardım metni
+  + **azureml-contrib-oto ml-DNN-Vision**
+    + Dağıtım ve indirme düğmeleri, oto ml Vision çalıştırmaları için görünür hale gelir ve modeller, diğer oto ml çalıştırmaları gibi dağıtılabilir veya indirilebilir. Indrda ortamını yeniden oluşturmak için bir komut dosyası ve bir IML dosyası içeren iki yeni dosya (scoring_file_v_1_0_0. Kopyala ve conda_env_v_1_0_0. yıml) vardır. ' Model. PTH ' dosyası aynı zamanda '. pt ' uzantısını kullanacak şekilde yeniden adlandırıldı.
+  + **azureml-core**
+    + Azure-CLI-ml için MSI desteği
+    + Kullanıcı tarafından atanan yönetilen kimlik desteği.
+    + Bu değişiklik ile müşteriler, bekleyen şifreleme için müşteri anahtar kasasından anahtarı getirmek üzere kullanılabilecek Kullanıcı tarafından atanan bir kimlik sağlayabilmelidir.
+    +  çok büyük dosyaların profili için row_count = 0 ' ı düzeltir-boşluk dolgusu ile ayrılmış değerler için çift dönüştürmede hata giderme
+    + Çıkış veri kümesi için deneysel bayrağını kaldır GA
+    + Bir modelin belirli bir sürümünü getirme hakkındaki belgeleri güncelleştirme
+    + Özel bağlantı durumunda karma mod erişimi için çalışma alanının güncelleştirilmesine izin ver
+    + Yeniden başlatma çalışma özelliği için veri deposundaki ek kaydı kaldırmak için onarma
+    + Çalışma alanının birincil kullanıcı tarafından atanan kimliğini güncelleştirmek için CLı/SDK desteği eklendi
+  + **azureml-interpret**
+    + toplu olarak güncelleştirildi-0.16.0-to yorumla
+    + azureml 'de açıklama istemcisi için bellek iyileştirmeleri-yorumlama
+  + **azureml-train-automl-runtime**
+    + ADB çalıştırmaları için etkin akış
+  + **azureml-train-core**
+    + Yeniden başlatma çalışma özelliği için veri deposundaki ek kaydı kaldırmak için onarma
+  + **azureml-widgets**
+    + Müşteriler, mevcut çalışma verileri görselleştirmesindeki değişiklikleri pencere öğesini kullanarak görmemelidir ve isteğe bağlı olarak koşullu hiper parametreleri kullanıyorsa destek sahibi olur.
+    + Kullanıcı çalışma öğesini Çalıştır, şimdi bir çalıştırmanın sıraya alınmış durumda olma nedeni hakkında ayrıntılı bir açıklama içerir.
 
 
  ## <a name="2021-01-11"></a>2021-01-11
@@ -118,7 +147,7 @@ Bu makalede Azure Machine Learning sürümleri hakkında bilgi edinin.  Tam SDK 
 ## <a name="2020-11-30"></a>2020-11-30
 ### <a name="azure-machine-learning-studio-notebooks-experience-november-update"></a>Azure Machine Learning Studio Not defteri deneyimi (Kasım güncelleştirmesi)
 + **Yeni özellikler**
-   + Yerel Terminal. Kullanıcılar artık tümleşik Terminal aracılığıyla bir tümleşik terminale ve git işlemine erişime sahip olur [.](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#terminal)
+   + Yerel Terminal. Kullanıcılar artık tümleşik Terminal aracılığıyla bir tümleşik terminale ve git işlemine erişime sahip olur [.](./how-to-run-jupyter-notebooks.md#terminal)
   + Yinelenen klasör 
   + Işlem açılan için maliyetlendirme 
   + Çevrimdışı Işlem Pyi 
@@ -1935,7 +1964,7 @@ Bu sürümün sırasında, aşağıdaki tarayıcılar desteklenir: Chrome, Firef
   + , `read_parquet` Spark 'ta çalışırken performansı geliştirilmiştir.
   + `column_type_builder`Belirsiz tarih biçimleri içeren tek bir sütun olması durumunda başarısız olan bir sorun düzeltildi.
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure portalı
 + **Önizleme özelliği**
   + Günlük ve çıkış dosyası akışı artık çalışma ayrıntıları sayfaları için kullanılabilir. Dosyalar, önizleme geçişi açık olduğunda güncelleştirmeleri gerçek zamanlı olarak akışa alır.
   + Çalışma alanı düzeyinde kota ayarlama özelliği önizleme aşamasında serbest bırakılır. AmlCompute kotaları abonelik düzeyinde ayrılır, ancak artık bu kotayı çalışma alanları arasında dağıtmanıza ve bunları dengeli paylaşım ve idare için ayırmaya izin veririz. Çalışma alanınızın sol gezinti çubuğunda **kullanımlar + kotalar** dikey penceresine ve **kotaları Yapılandır** sekmesini seçmeniz yeterlidir. Bu bir çoklu çalışma alanı işlemi olduğundan, çalışma alanı düzeyinde kotalar ayarlayabilmek için bir abonelik yöneticisi olmanız gerekir.
@@ -2214,7 +2243,7 @@ Python v 1.0.30 için SDK Azure Machine Learning.
 
 ## <a name="2019-04-15"></a>2019-04-15
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure portalı
   + Artık var olan bir uzak işlem kümesinde çalışan bir betiği yeniden gönderebilirsiniz.
   + Artık, işlem hatları sekmesinde yeni parametrelerle yayınlanmış bir işlem hattı çalıştırabilirsiniz.
   + Çalışma ayrıntıları artık yeni bir Snapshot dosya görüntüleyicisini destekliyor. Belirli bir çalıştırma gönderdiğinizde dizinin anlık görüntüsünü görüntüleyebilirsiniz. Çalıştırmaya başlamak için gönderilen Not defterini de indirebilirsiniz.
@@ -2272,7 +2301,7 @@ Python v 1.0.30 için SDK Azure Machine Learning.
 + **Hata düzeltmeleri ve geliştirmeleri**
   + Source_directory_data_store özelliğini, [PythonScriptStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep?preserve-view=true&view=azure-ml-py)Için sağlanan [runconfigurations](/python/api/azureml-core/azureml.core.runconfig.runconfiguration?preserve-view=true&view=azure-ml-py) 'lar üzerinde istenen veri deposuna (BLOB depolama gibi) ayarlamaya yönelik Azure Machine Learning işlem hatlarında destek ekledik. Varsayılan olarak, çok sayıda adım eşzamanlı olarak yürütüldüğünde sorunları azaltma sorunlarını ortadan kaldırarak Azure dosya deposunu, yedekleme veri deposu olarak kullanır.
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure portalı
 
 + **Yeni özellikler**
   + Raporlar için yeni Sürükle ve bırak tablosu Düzenleyicisi deneyimi. Kullanıcılar bir sütunu, tablonun önizlemesinin görüntüleneceği tablo alanına kadar iyi sürükleyebilirsiniz. Sütunlar yeniden düzenlenebilir.

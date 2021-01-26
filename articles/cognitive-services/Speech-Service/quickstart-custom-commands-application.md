@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
 ms.custom: references_regions
-ms.openlocfilehash: 2cc37cc66c06dc9e6997c6a031a9c60ad050c01a
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: ea32358aa86a6093cd72adf959d5fe731cf1e125
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98601765"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98786885"
 ---
 # <a name="create-a-voice-assistant-using-custom-commands"></a>Özel Komutlar kullanarak ses yardımcısı oluşturma
 
@@ -136,4 +136,4 @@ Bu makalenin kapsamında, önkoşulların bir parçası olarak indirdiğiniz Win
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, var olan bir uygulamayı kullandınız. Daha sonra, [nasıl yapılır bölümlerinde](how-to-custom-commands-create-application-with-simple-commands.md)özel bir komutlar uygulamasını sıfırdan tasarlamayı, geliştirmeyi, hatalarını ayıklamanızı, test yapmayı ve tümleştirmeyi öğreneceksiniz.
+Bu makalede, var olan bir uygulamayı kullandınız. Daha sonra, [nasıl yapılır bölümlerinde](./how-to-develop-custom-commands-application.md)özel bir komutlar uygulamasını sıfırdan tasarlamayı, geliştirmeyi, hatalarını ayıklamanızı, test yapmayı ve tümleştirmeyi öğreneceksiniz.

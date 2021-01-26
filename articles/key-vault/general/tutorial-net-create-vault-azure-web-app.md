@@ -10,25 +10,25 @@ ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: mbaldwin
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 2504efcbd79ab0e43f958b86564709b6ac6295a6
-ms.sourcegitcommit: a89a517622a3886b3a44ed42839d41a301c786e0
+ms.openlocfilehash: 2960726cf687908e8e4aed9333fce490dd7ff006
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97733065"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788748"
 ---
 # <a name="tutorial-use-a-managed-identity-to-connect-key-vault-to-an-azure-web-app-in-net"></a>Öğretici: .NET 'teki bir Azure Web uygulamasına Key Vault bağlamak için yönetilen bir kimlik kullanın
 
 [Azure Key Vault](./overview.md) , artırılmış güvenlik ile kimlik bilgilerini ve diğer gizli dizileri depolamanın bir yolunu sağlar. Ancak kodunuzun bunları alabilmesi için Key Vault kimlik doğrulaması gerekir. [Azure kaynakları Için Yönetilen kimlikler](../../active-directory/managed-identities-azure-resources/overview.md) , azure hizmetlerine Azure Active Directory (Azure AD) içinde otomatik olarak yönetilen bir kimlik vererek bu sorunu çözmeye yardımcı olur. Kodunuzda kimlik bilgilerini görüntülemesi gerekmeden Key Vault dahil olmak üzere Azure AD kimlik doğrulamasını destekleyen herhangi bir hizmette kimlik doğrulaması yapmak için bu kimliği kullanabilirsiniz.
 
-Bu öğreticide, [Azure App Service](https://docs.microsoft.com/azure/app-service/overview)için Azure Web uygulaması oluşturup dağıtacaksınız. [.NET için Azure Key Vault gizli istemci kitaplığı](/dotnet/api/overview/azure/key-vault) ve [Azure CLI](/cli/azure/get-started-with-azure-cli)kullanarak Azure Anahtar Kasası ile Azure Web uygulamanızın kimliğini doğrulamak için yönetilen bir kimlik kullanacaksınız. Tercih ettiğiniz geliştirme dilini, Azure PowerShell ve/veya Azure portal kullandığınızda aynı temel ilkeler geçerlidir.
+Bu öğreticide, [Azure App Service](../../app-service/overview.md)için Azure Web uygulaması oluşturup dağıtacaksınız. [.NET için Azure Key Vault gizli istemci kitaplığı](/dotnet/api/overview/azure/key-vault) ve [Azure CLI](/cli/azure/get-started-with-azure-cli)kullanarak Azure Anahtar Kasası ile Azure Web uygulamanızın kimliğini doğrulamak için yönetilen bir kimlik kullanacaksınız. Tercih ettiğiniz geliştirme dilini, Azure PowerShell ve/veya Azure portal kullandığınızda aynı temel ilkeler geçerlidir.
 
 Bu öğreticide sunulan Azure App Service Web uygulamaları ve dağıtımı hakkında daha fazla bilgi için bkz.:
-- [App Service’e genel bakış](https://docs.microsoft.com/azure/app-service/overview)
-- [Azure App Service bir ASP.NET Core Web uygulaması oluşturma](https://docs.microsoft.com/azure/app-service/quickstart-dotnetcore)
-- [Azure App Service için yerel git dağıtımı](https://docs.microsoft.com/azure/app-service/deploy-local-git)
+- [App Service’e genel bakış](../../app-service/overview.md)
+- [Azure App Service bir ASP.NET Core Web uygulaması oluşturma](../../app-service/quickstart-dotnetcore.md)
+- [Azure App Service için yerel git dağıtımı](../../app-service/deploy-local-git.md)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 
@@ -67,7 +67,7 @@ Bir Web tarayıcısında, konumundaki uygulamaya gidin `http://localhost:5000` .
 
 Uygulamanızdan "Merhaba Dünya!" sayfada görünen örnek uygulamadaki ileti.
 
-Azure için Web uygulamaları oluşturma hakkında daha fazla bilgi için bkz. [Azure App Service ASP.NET Core Web uygulaması oluşturma](https://docs.microsoft.com/azure/app-service/quickstart-dotnetcore)
+Azure için Web uygulamaları oluşturma hakkında daha fazla bilgi için bkz. [Azure App Service ASP.NET Core Web uygulaması oluşturma](../../app-service/quickstart-dotnetcore.md)
 
 ## <a name="deploy-the-app-to-azure"></a>Uygulamayı Azure’da dağıtma
 
@@ -228,7 +228,7 @@ http://<your-webapp-name>.azurewebsites.net
 
 Uygulamanızdan "Merhaba Dünya!" daha önce ziyaret ettiğinizde gördüğünüz ileti `http://localhost:5000` .
 
-Git kullanarak Web uygulaması dağıtma hakkında daha fazla bilgi için bkz. [Yerel git dağıtımı Azure App Service](https://docs.microsoft.com/azure/app-service/deploy-local-git)
+Git kullanarak Web uygulaması dağıtma hakkında daha fazla bilgi için bkz. [Yerel git dağıtımı Azure App Service](../../app-service/deploy-local-git.md)
  
 ## <a name="configure-the-web-app-to-connect-to-key-vault"></a>Web uygulamasını Key Vault bağlanacak şekilde yapılandırma
 
@@ -264,7 +264,7 @@ Ayrıca, [Azure Portal](./assign-access-policy-portal.md) veya [PowerShell](./as
 
 ### <a name="modify-the-app-to-access-your-key-vault"></a>Anahtar kasanıza erişmek için uygulamayı değiştirin
 
-Bu öğreticide, tanıtım amacıyla [Azure Key Vault gizli istemci kitaplığı](https://docs.microsoft.com/dotnet/api/overview/azure/security.keyvault.secrets-readme) kullanacaksınız. [Azure Key Vault sertifikası istemci kitaplığı](https://docs.microsoft.com/dotnet/api/overview/azure/security.keyvault.certificates-readme)'nı veya [Azure Key Vault anahtar istemci kitaplığı](https://docs.microsoft.com/dotnet/api/overview/azure/security.keyvault.keys-readme)' nı da kullanabilirsiniz.
+Bu öğreticide, tanıtım amacıyla [Azure Key Vault gizli istemci kitaplığı](/dotnet/api/overview/azure/security.keyvault.secrets-readme) kullanacaksınız. [Azure Key Vault sertifikası istemci kitaplığı](/dotnet/api/overview/azure/security.keyvault.certificates-readme)'nı veya [Azure Key Vault anahtar istemci kitaplığı](/dotnet/api/overview/azure/security.keyvault.keys-readme)' nı da kullanabilirsiniz.
 
 #### <a name="install-the-packages"></a>Paketleri yükler
 
@@ -338,4 +338,4 @@ http://<your-webapp-name>.azurewebsites.net
 - [.NET 'teki bir sanal makineye dağıtılan uygulamalarla Azure Key Vault kullanma](./tutorial-net-virtual-machine.md)
 - [Azure kaynakları için Yönetilen kimlikler](../../active-directory/managed-identities-azure-resources/overview.md) hakkında daha fazla bilgi edinin
 - [Geliştirici kılavuzunu](./developers-guide.md) görüntüleme
-- [Anahtar kasasına güvenli erişim](./secure-your-key-vault.md)
+- [Anahtar kasasına erişimin güvenliğini sağlama](./secure-your-key-vault.md)

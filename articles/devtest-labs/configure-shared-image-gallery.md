@@ -3,27 +3,27 @@ title: Azure DevTest Labs paylaşılan görüntü galerisini yapılandırma | Mi
 description: Azure DevTest Labs, kullanıcıların laboratuvar kaynaklarını oluştururken paylaşılan bir konumdan görüntülere erişmelerini sağlayan bir paylaşılan görüntü galerisini nasıl yapılandıracağınızı öğrenin.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 96563b1dcfac171af38b229bb81d12b3afda2e2f
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: febcff640efc29eb4916250366641635f9d8721e
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92328003"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788430"
 ---
 # <a name="configure-a-shared-image-gallery-in-azure-devtest-labs"></a>Azure DevTest Labs’de paylaşılan resim galerisi yapılandırma
-DevTest Labs artık [paylaşılan görüntü Galerisi](../virtual-machines/windows/shared-image-galleries.md) özelliğini desteklemektedir. Laboratuvar kullanıcılarının laboratuvar kaynaklarını oluştururken paylaşılan bir konumdan görüntülere erişmelerini sağlar. Ayrıca, özel yönetilen VM görüntüleriniz etrafında yapı ve kuruluş oluşturmanıza de yardımcı olur. Paylaşılan görüntü Galerisi özelliği şunları destekler:
+DevTest Labs artık [paylaşılan görüntü Galerisi](../virtual-machines/shared-image-galleries.md) özelliğini desteklemektedir. Laboratuvar kullanıcılarının laboratuvar kaynaklarını oluştururken paylaşılan bir konumdan görüntülere erişmelerini sağlar. Ayrıca, özel yönetilen VM görüntüleriniz etrafında yapı ve kuruluş oluşturmanıza de yardımcı olur. Paylaşılan görüntü Galerisi özelliği şunları destekler:
 
 - Görüntülerin yönetilen genel çoğaltması
 - Daha kolay yönetim için görüntülerin sürümü oluşturma ve gruplama
 - Kullanılabilirlik alanlarını destekleyen bölgelerde, görüntülerinizi bölge yedekli depolama (ZRS) hesaplarıyla yüksek oranda kullanılabilir hale getirin. ZRS, ZGen hatalarıyla karşı daha iyi esnekliği sunar.
 - Azure rol tabanlı erişim denetimi (Azure RBAC) kullanarak, abonelikler arasında ve hatta kiracılar arasında paylaşım.
 
-Daha fazla bilgi için bkz. [paylaşılan görüntü Galerisi belgeleri](../virtual-machines/windows/shared-image-galleries.md). 
+Daha fazla bilgi için bkz. [paylaşılan görüntü Galerisi belgeleri](../virtual-machines/shared-image-galleries.md). 
  
 Korumanız gereken çok sayıda yönetilen görüntünüz varsa ve bunları şirketiniz genelinde kullanılabilir hale getirmek istiyorsanız, paylaşılan bir görüntü galerisini bir depo olarak kullanarak görüntülerinizi güncelleştirmeyi ve paylaşmayı kolaylaştırır. Laboratuvar sahibi olarak, laboratuvarınızda var olan bir paylaşılan görüntü Galerisi ekleyebilirsiniz. Bu galeri eklendikten sonra, laboratuar kullanıcıları bu en son görüntülerden makineler oluşturabilir. Bu özelliğin önemli bir avantajı, DevTest Labs 'nin artık laboratularda, aboneliklerde ve bölgeler arasında görüntü paylaşımı avantajlarından yararlanabilleridir. 
 
 > [!NOTE]
-> Paylaşılan görüntü Galerisi hizmeti ile ilişkili maliyetler hakkında bilgi edinmek için bkz. [paylaşılan görüntü Galerisi Için faturalama](../virtual-machines/windows/shared-image-galleries.md#billing).
+> Paylaşılan görüntü Galerisi hizmeti ile ilişkili maliyetler hakkında bilgi edinmek için bkz. [paylaşılan görüntü Galerisi Için faturalama](../virtual-machines/shared-image-galleries.md#billing).
 
 ## <a name="considerations"></a>Dikkat edilmesi gerekenler
 - Tek seferde laboratuvara yalnızca bir paylaşılan görüntü Galerisi ekleyebilirsiniz. Başka bir galeri eklemek istiyorsanız, var olan birini ayırmanız ve bir tane eklemeniz gerekir. 
@@ -35,7 +35,7 @@ Korumanız gereken çok sayıda yönetilen görüntünüz varsa ve bunları şir
 1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Sol gezinti menüsünde **tüm hizmetler** ' i seçin.
 1. Listeden **DevTest Labs**'i seçin.
-1. Laboratuvarlar listesinden **laboratuvarınızı**seçin.
+1. Laboratuvarlar listesinden **laboratuvarınızı** seçin.
 1. Sol menüdeki **Ayarlar** bölümünde **yapılandırma ve ilkeler** ' i seçin.
 1. Sol menüdeki **sanal makine tabanları** altında **paylaşılan görüntü galerileri** ' ni seçin.
 
@@ -45,7 +45,7 @@ Korumanız gereken çok sayıda yönetilen görüntünüz varsa ve bunları şir
     ![İliştir](./media/configure-shared-image-gallery/attach-options.png)
 1. Görüntü Galerisi eklendikten sonra, ekli galeriye gitmek için seçin. Sanal makine oluşturma için paylaşılan görüntüleri **etkinleştirmek veya devre dışı bırakmak** üzere galerinizi yapılandırın. Yapılandırmak için listeden bir görüntü Galerisi seçin. 
 
-    Varsayılan olarak, **sanal makine tabanları için tüm görüntülerin kullanılmasına Izin ver** seçeneği **Evet**olarak ayarlanmıştır. Bu, ekli paylaşılan görüntü galerisinde mevcut olan tüm görüntülerin, yeni bir laboratuvar VM 'si oluştururken laboratuvar kullanıcısı tarafından kullanılabileceği anlamına gelir. Belirli görüntülere erişimin kısıtlanması gerekiyorsa, değişiklik, **tüm görüntülerin Hayır 'a sanal makine tabanı olarak kullanılmasına Izin verin** ve VM **No**oluştururken izin vermek istediğiniz görüntüleri seçip **Kaydet** düğmesini seçin.
+    Varsayılan olarak, **sanal makine tabanları için tüm görüntülerin kullanılmasına Izin ver** seçeneği **Evet** olarak ayarlanmıştır. Bu, ekli paylaşılan görüntü galerisinde mevcut olan tüm görüntülerin, yeni bir laboratuvar VM 'si oluştururken laboratuvar kullanıcısı tarafından kullanılabileceği anlamına gelir. Belirli görüntülere erişimin kısıtlanması gerekiyorsa, değişiklik, **tüm görüntülerin Hayır 'a sanal makine tabanı olarak kullanılmasına Izin verin** ve VM oluştururken izin vermek istediğiniz görüntüleri seçip **Kaydet** düğmesini seçin.
 
     :::image type="content" source="./media/configure-shared-image-gallery/enable-disable.png" alt-text="Görüntüleri etkinleştirme veya devre dışı bırakma":::
 

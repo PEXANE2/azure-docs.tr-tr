@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: how-to
 ms.date: 06/02/2020
 ms.author: sebansal
-ms.openlocfilehash: 4635bcc51d2ab626b16ddcf02e772bf3df3cad4d
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+ms.openlocfilehash: c36353448c140450044f352062c3349939e3f7b5
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96763749"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789019"
 ---
 # <a name="integrating-key-vault-with-digicert-certificate-authority"></a>Key Vault'u DigiCert Sertifika Yetkilisiyle Tümleştirme
 
@@ -42,13 +42,13 @@ Bu kılavuzu gerçekleştirmek için aşağıdaki kaynaklara sahip olmanız gere
 
 DigiCert CertCentral hesabınızdan aşağıdaki bilgilere sahip olduğunuzdan emin olun:
 -   CertCentral hesap KIMLIĞI
--   Kuruluş KIMLIĞI
+-   Kuruluş Kimliği
 -   API anahtarı
 
 ## <a name="adding-certificate-authority-in-key-vault"></a>Key Vault sertifika yetkilisi ekleniyor 
 DigiCert CertCentral hesabından bilgi topladıktan sonra artık anahtar kasasındaki sertifika yetkilisi listesine DigiCert ekleyebilirsiniz.
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure portalı
 
 1.  DigiCert sertifika yetkilisi eklemek için, DigiCert eklemek istediğiniz anahtar kasasına gidin. 
 2.  Key Vault Özellikler sayfalarında, **Sertifikalar**' ı seçin.
@@ -129,7 +129,7 @@ Verilen sertifika, Azure portal ' devre dışı ' durumunda ise, bu sertifika i�
  ![Sertifika işlemi](../media/certificates/how-to-integrate-certificate-authority/certificate-operation-select.png)
 
 Hata iletisi ' Bu sertifika isteğini tamamlamak için lütfen bir birleştirme işlemi gerçekleştirin. '
-Bu isteği gerçekleştirmek için CA tarafından imzalanan CSR 'yi birleştirmeniz gerekir. [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/key-vault/certificates/create-certificate-signing-request)
+Bu isteği gerçekleştirmek için CA tarafından imzalanan CSR 'yi birleştirmeniz gerekir. [Daha fazla bilgi edinin](./create-certificate-signing-request.md)
 
 Daha fazla bilgi için [Key Vault REST API başvurusu Içindeki sertifika işlemlerine](/rest/api/keyvault)bakın. İzinleri oluşturma hakkında bilgi için bkz. [kasa-oluşturma veya güncelleştirme](/rest/api/keyvault/vaults/createorupdate) ve [kasa-güncelleştirme erişim ilkesi](/rest/api/keyvault/vaults/updateaccesspolicy).
 
