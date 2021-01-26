@@ -7,12 +7,12 @@ ms.date: 9/23/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 711963a60d5c75031ff676a9c7f1db47f20fe895
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: b7457e258cf8a9936e9a63ab9eec9edc0b54d3eb
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92275254"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98797733"
 ---
 # <a name="introduction-to-azure-defender-for-servers"></a>Sunucular için Azure Defender 'a giriş
 
@@ -97,4 +97,4 @@ Bu makalede, sunucular için Azure Defender hakkında bilgi edindiniz.
 - Bir uyarının Güvenlik Merkezi tarafından oluşturulup oluşturulmadığı veya Güvenlik Merkezi tarafından farklı bir güvenlik ürününden alınıp alınmayacağı, dışarı aktarabilirsiniz. Uyarılarınızı Azure Sentinel 'e, herhangi bir üçüncü taraf SıEM 'e veya herhangi bir harici araca aktarmak için [uyarıları BIR SıEM 'ye aktarma](continuous-export.md)konusundaki yönergeleri izleyin.
 
 - > [!div class="nextstepaction"]
-    > [Azure Defender 'ı etkinleştir](security-center-pricing.md)
+    > [Azure Defender’ı etkinleştirme](security-center-pricing.md#enable-azure-defender)

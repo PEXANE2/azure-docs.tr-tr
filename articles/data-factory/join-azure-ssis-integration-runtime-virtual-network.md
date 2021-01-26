@@ -11,12 +11,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
-ms.openlocfilehash: e73126cfc54294a7b9d54ff62c406d5e686ac470
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: a8928f9d52fd8e721ac770dda8f0cbf0162a0f61
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95982727"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98797923"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Azure-SSIS Integration Runtime'ı sanal ağa bağlama
 
@@ -73,7 +73,10 @@ SSIS paketleriniz [sanal ağ hizmet uç noktalarını](../virtual-network/virtua
 
 ## <a name="access-to-data-sources-protected-by-ip-firewall-rule"></a>IP güvenlik duvarı kuralıyla korunan veri kaynaklarına erişim
 
-SSIS paketleriniz yalnızca belirli statik ortak IP adreslerine izin veren veri depolarına/kaynaklara erişir ve bu kaynaklara Azure-SSIS IR erişimi güvenli hale getirmek istiyorsanız, bir sanal ağa katılırken Azure-SSIS IR için kendi [genel IP adreslerinizi](../virtual-network/virtual-network-public-ip-address.md) alabilir ve ardından bu IP adreslerinden erişime izin vermek için ilgili kaynaklara bir IP güvenlik kuralı ekleyebilirsiniz.
+SSIS 'niz, yalnızca belirli statik genel IP adreslerine izin veren veri depolarına/kaynaklara erişir ve bu kaynaklara Azure-SSIS IR erişimi güvenli hale getirmek istiyorsanız, [genel IP adreslerini](../virtual-network/virtual-network-public-ip-address.md) bir sanal ağa katılırken Azure-SSIS IR ile ilişkilendirebilir ve ardından bu IP adreslerinden erişime izin vermek için ilgili kaynaklara bir IP güvenlik kuralı ekleyebilirsiniz. Bunu gerçekleştirmenin iki farklı yolu vardır: 
+
+- Azure-SSIS IR oluşturduğunuzda, kendi genel IP adreslerinizi getirebilir ve bunları [Data Factory Kullanıcı arabirimi veya SDK](#join-the-azure-ssis-ir-to-a-virtual-network)aracılığıyla belirtebilirsiniz. Yalnızca Azure-SSIS IR giden internet bağlantısı, sağlanmış genel IP adreslerinizi kullanır ve alt ağdaki diğer cihazlar bunları kullanmaz.
+- Ayrıca, Azure-SSIS IR katılacak alt ağ için [sanal ağ NAT](../virtual-network/nat-overview.md) kurulumunu ve bu alt ağdaki tüm giden bağlantıların BELIRTILEN genel IP adreslerini kullanmasını sağlayabilirsiniz.
 
 Her durumda, sanal ağ yalnızca Azure Resource Manager dağıtım modeliyle dağıtılabilir.
 

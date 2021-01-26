@@ -3,19 +3,19 @@ title: Azure VM 'de SQL Server SQL Server (geçişe genel bakış)
 description: SQL Server Azure VM 'lerine SQL Server geçirmek istediğinizde farklı geçiş stratejileri hakkında bilgi edinin.
 ms.custom: ''
 ms.service: virtual-machines-sql
-ms.subservice: ''
+ms.subservice: migration-guide
 ms.devlang: ''
 ms.topic: how-to
 author: markjones-msft
 ms.author: markjon
 ms.reviewer: mathoma
 ms.date: 11/06/2020
-ms.openlocfilehash: d08cb2761a8d8010c455ff959d6c247e8b64ef20
-ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
+ms.openlocfilehash: 0eabb48aabcb50557b342385068807eb67a9b165
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97746584"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98797841"
 ---
 # <a name="migration-overview-sql-server-to-sql-server-on-azure-vms"></a>Geçişe genel bakış: Azure VM 'lerinde SQL Server SQL Server
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlvm.md)]
@@ -38,7 +38,7 @@ Diğer senaryolar için [veritabanı geçiş kılavuzuna](https://datamigration.
 [Azure hibrit avantajı lisanslama modeliyle](../../virtual-machines/windows/licensing-model-azure-hybrid-benefit-ahb-change.md) kendi lisansınızı taşıyarak veya [ücretsiz güvenlik güncelleştirmeleri](../../virtual-machines/windows/sql-server-2008-extend-end-of-support.md)alarak SQL Server 2008 ve SQL Server 2008 R2 desteğini genişleterek maliyetlerde tasarruf edin. 
 
 
-## <a name="choosing-appropriate-target"></a>Uygun hedef seçiliyor
+## <a name="choose-appropriate-target"></a>Uygun hedefi seçin
 
 Azure sanal makineleri birçok farklı Azure bölgesinde çalışır ve ayrıca çeşitli [makine boyutları](../../../virtual-machines/sizes.md) ve [depolama seçenekleri](../../../virtual-machines/disks-types.md)sunar. SQL Server iş yükünüz için doğru sanal makine ve depolama boyutunu belirlerken [Azure sanal makinelerinde SQL Server Için performans yönergelerine bakın.](../../virtual-machines/windows/performance-guidelines-best-practices.md#vm-size-guidance) İş yükünüz için VM boyutunu ve depolama gereksinimlerini belirleme. Bunların Performance-Based [Azure geçişi değerlendirmesi](../../../migrate/concepts-assessment-calculation.md#types-of-assessments)aracılığıyla boyutlandırılması önerilir. Bu kullanılabilir bir seçenek değilse, [performans için kendi taban çizgisini](https://azure.microsoft.com/services/virtual-machines/sql-server/)oluşturma konusunda aşağıdaki makaleye bakın.
 
@@ -131,7 +131,7 @@ SQL Server veritabanlarını Azure VM 'lerinde SQL Server geçirmeye hazırlanı
 
 Ek Yardım için, gerçek dünya geçiş projeleri için geliştirilen aşağıdaki kaynaklara bakın.
 
-|Varlık  |Açıklama  |
+|Varlık  |Description  |
 |---------|---------|
 |[Veri iş yükü değerlendirmesi modeli ve aracı](https://github.com/microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/Data%20Workload%20Assessment%20Model%20and%20Tool)| Bu araç, belirli bir iş yükü için önerilen "en uygun" hedef platformları, bulut hazırlığı ve uygulama/veritabanı düzeltme düzeyini sağlar. Basit ve tek tıklamayla bir hesaplama ve rapor oluşturma olanağı sunarak, ve otomatikleştirilmiş ve Tekdüzen hedef platformu karar süreci sağlayarak büyük Emlak değerlendirmelerini hızlandırmaya yardımcı olur.|
 |[Logman kullanarak PerfMon veri toplama Otomasyonu](https://github.com/microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/Perfmon%20Data%20Collection%20Automation%20Using%20Logman)|Geçiş hedefi önerisine yardımcı olan temel performansı anlamak için veri gerçekleştirme önerilerini toplayan bir araç. Bu araç, uzak bir SQL Server ayarlanan performans sayaçlarını oluşturacak, başlatacak, durdurmayacak ve silecek komutu oluşturmak için logman.exe kullanır.|

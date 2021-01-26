@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: quickstart
-ms.date: 10/30/2020
+ms.date: 01/25/2021
 ms.author: juliako
-ms.openlocfilehash: 7099b0d303965b987fb316170738cc82568dc6d6
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 5b38c731db141052e6700472020cd60b6a4d13a5
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94505606"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98797795"
 ---
 # <a name="quickstart-how-to-sign-up-and-upload-your-first-video"></a>Hızlı başlangıç: nasıl kaydolun ve ilk videonuzu karşıya yükleyebilirsiniz
 
@@ -57,7 +57,11 @@ Video Indexer ile kullanabileceğiniz dosya biçimlerinin bir listesi için bkz.
 
     > [!div class="mx-imgBorder"]
     > :::image type="content" source="./media/video-indexer-get-started/uploaded.png" alt-text="Karşıya yükleme karşıya yüklendi":::
- 
+
+## <a name="supported-browsers"></a>Desteklenen tarayıcılar
+
+Daha fazla bilgi için bkz. [Desteklenen tarayıcılar](video-indexer-overview.md#supported-browsers).
+
 ## <a name="see-also"></a>Ayrıca bkz.
 
 Daha fazla ayrıntı için bkz. [videoları karşıya yükleme ve Dizin](upload-index-videos.md) .

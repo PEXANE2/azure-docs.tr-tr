@@ -8,15 +8,15 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 08/10/2020
+ms.date: 01/25/2021
 ms.author: juliako
 ms.custom: devx-track-js
-ms.openlocfilehash: 1bc751ae293abbb7aa330a99a4b66a917d150906
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b13086e11e1181bba91a3255e68e9f8a32e78450
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95994987"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98797782"
 ---
 # <a name="embed-video-indexer-widgets-in-your-apps"></a>Video Indexer pencere öğelerini uygulamalarınıza ekleyin
 
@@ -208,7 +208,7 @@ Azure Media Player dışında bir video oynatıcı kullanıyorsanız, iletişim 
     ```
 
 2. Bilişsel İçgörüler pencere öğesini ekleyin.
-3. "İleti" olayını dinleyerek yürütücünüz için iletişimi uygulayın. Örnek:
+3. "İleti" olayını dinleyerek yürütücünüz için iletişimi uygulayın. Örneğin:
 
     ```javascript
     <script>
@@ -271,7 +271,7 @@ Bu seçeneğin yalnızca içgörülerin yeni bir pencerede açılacağı durumla
 
 Video Indexer yürütücüsünü eklerseniz iframe boyutunu belirterek yürütücü boyutunu seçebilirsiniz.
 
-Örnek:
+Örneğin:
 
 `<iframe width="640" height="360" src="https://www.videoindexer.ai/embed/player/<accountId>/<videoId>/" frameborder="0" allowfullscreen />`
 
@@ -303,6 +303,10 @@ Video Indexer API 'SI ve pencere öğeleri için örnekler içeren [kod örnekle
 | `embed-both-widgets`              | VI oynatıcı ve Öngörüler ekleyin ve bunlar arasında iletişim kurun.                      |
 | `url-generator`                   | Kullanıcı tarafından belirtilen seçeneklere göre pencere öğesi özel ekleme URL 'SI oluşturur.             |
 | `html5-player`                    | Varsayılan HTML5 video oynatıcı ile VI Öngörüler ekleyin.                           |
+
+## <a name="supported-browsers"></a>Desteklenen tarayıcılar
+
+Daha fazla bilgi için bkz. [Desteklenen tarayıcılar](video-indexer-overview.md#supported-browsers).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

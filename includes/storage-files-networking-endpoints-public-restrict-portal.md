@@ -1,24 +1,24 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: storage
 author: roygara
 ms.service: storage
 ms.topic: include
-ms.date: 6/2/2020
+ms.date: 01/25/2021
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 6c594dbab51c46c382c21b4d87595cd7322f6036
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3c76988557bfa338bcfb606f568036422a536c1d
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84465132"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98798656"
 ---
-Genel uç noktasını belirli sanal ağlara kısıtlamak istediğiniz depolama hesabına gidin. Depolama hesabının içindekiler tablosunda **güvenlik duvarları ve sanal ağlar**' ı seçin. 
+Genel uç noktasını belirli sanal ağlara kısıtlamak istediğiniz depolama hesabına gidin. Depolama hesabının içindekiler tablosunda **ağ**' ı seçin. 
 
 Sayfanın üst kısmında **Seçili ağlar** radyo düğmesini seçin. Bu, genel uç noktanın kısıtlamasını denetlemeye yönelik bir dizi ayarı kaldırır. Ortak uç nokta aracılığıyla depolama hesabına erişmesine izin verilecek belirli sanal ağı seçmek için **+ var olan sanal ağı ekle** ' ye tıklayın. Bu, bu sanal ağ için bir sanal ağ ve alt ağ seçmeyi gerektirir. 
 
 Güvenilen Microsoft hizmetlerinin, depolama hesabına erişmek için Azure Dosya Eşitleme gibi güvenilen ilk taraf Microsoft hizmetlerine izin vermek üzere **Bu hizmet hesabına erişmesine Izin verin** .
 
-[![Ortak uç nokta aracılığıyla depolama hesabına erişim izni verilen belirli bir sanal ağla güvenlik duvarları ve sanal ağlar dikey penceresinin ekran görüntüsü](media/storage-files-networking-endpoints-public-restrict-portal/restrict-public-endpoint-0.png)](media/storage-files-networking-endpoints-public-restrict-portal/restrict-public-endpoint-0.png#lightbox)
+[![Ortak uç nokta aracılığıyla depolama hesabına erişim izni verilen belirli bir sanal ağ ile ağ dikey penceresinin ekran görüntüsü](media/storage-files-networking-endpoints-public-restrict-portal/restrict-public-endpoint-0.png)](media/storage-files-networking-endpoints-public-restrict-portal/restrict-public-endpoint-0.png#lightbox)

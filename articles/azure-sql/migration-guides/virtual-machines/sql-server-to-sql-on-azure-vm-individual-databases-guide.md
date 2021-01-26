@@ -3,19 +3,19 @@ title: Azure VM 'lerinde SQL Server SQL Server (Geçiş Kılavuzu)
 description: Bireysel SQL Server veritabanlarınızı Azure sanal makinelerinde (VM) SQL Server geçirmek için bu kılavuzu izleyin.
 ms.custom: ''
 ms.service: virtual-machines-sql
-ms.subservice: ''
+ms.subservice: migration-guide
 ms.devlang: ''
 ms.topic: how-to
 author: markjones-msft
 ms.author: markjon
 ms.reviewer: mathoma
 ms.date: 11/06/2020
-ms.openlocfilehash: 3b0fdccd3eaf6e6bd94b595107022f738bdd8382
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: cc2a641cb017edace24db5df69bc4adf3a607524
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96325935"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98797884"
 ---
 # <a name="migration-guide-sql-server-to-sql-server-on-azure-vms"></a>Geçiş Kılavuzu: Azure VM 'lerinde SQL Server SQL Server 
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlvm.md)]
@@ -152,7 +152,7 @@ Aşağıdaki tabloda, Kullanıcı veritabanlarınızı geçişten önce veya son
 
 | **Özellik** | **Bileşen** | **Geçiş yöntemleri** |
 | --- | --- | --- |
-| **Veritabanları** | Model  | SQL Server Management Studio betiği |
+| **Veritabanları** | Modelleme  | SQL Server Management Studio betiği |
 || 'Nin | TempDB 'yi en iyi performans için [Azure VM geçici diskine (SSD](../../virtual-machines/windows/performance-guidelines-best-practices.md#temporary-disk)) taşımayı planlayın. TempDB 'nize uyum sağlamak için yeterli yerel SSD 'ye sahip bir VM boyutu seçtiğinizden emin olun. |
 || FILESTREAM ile kullanıcı veritabanları |  Geçiş için [yedekleme ve geri yükleme](../../virtual-machines/windows/migrate-to-vm-from-sql-server.md#back-up-and-restore) yöntemlerini kullanın. DMA, FILESTREAM ile veritabanlarını desteklemez. |
 | **Güvenlik** | SQL Server ve Windows oturumu açma | [Kullanıcı oturumlarını geçirmek](/sql/dma/dma-migrateserverlogins)için DMA 'yı kullanın. |

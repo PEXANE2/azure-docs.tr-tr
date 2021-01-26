@@ -120,6 +120,10 @@
       href: azure-monitor.md
     - name: Olağanüstü durum kurtarma planını ayarlama
       href: disaster-recovery.md
+    - name: KDC ara sunucusunu ayarlama
+      href: key-distribution-center-proxy.md
+    - name: RD Ağ Geçidi rolünü ayarlama
+      href: rd-gateway-role.md
 - name: Kavramlar
   items:
     - name: Yerleşik roller
@@ -170,6 +174,10 @@
       href: azure-monitor-glossary.md
     - name: Veri konumları
       href: data-locations.md
+    - name: Güvenlik
+      items:
+        - name: Güvenlik temeli
+          href: security-baseline.md
 - name: Sorun giderme
   items:
     - name: 'Sorun çözümüne genel bakış, geri bildirim ve destek'

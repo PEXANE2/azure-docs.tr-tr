@@ -1,18 +1,18 @@
 ---
 title: PostgreSQL için Azure veritabanı için Azure Ilke mevzuat uyumluluk denetimleri
 description: PostgreSQL için Azure veritabanı 'nda kullanılabilen Azure Ilke mevzuat uyumluluk denetimlerini listeler. Bu yerleşik ilke tanımları, Azure kaynaklarınızın uyumluluğunu yönetmek için yaygın yaklaşımlar sağlar.
-ms.date: 01/21/2021
+ms.date: 01/25/2021
 ms.topic: sample
 author: sunilagarwal
 ms.author: sunila
 ms.service: postgresql
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: d1893b14a896af1f2f565e17b00937c6cb457105
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: bdaf0036383c1e7b502126caf140b56f6e380b21
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98682228"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98797929"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-database-for-postgresql"></a>PostgreSQL için Azure veritabanı için Azure Ilke mevzuat uyumluluk denetimleri
 
