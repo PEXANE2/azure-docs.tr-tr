@@ -3,12 +3,12 @@ title: PowerShell ile Azure VM 'lerini yedekleme ve kurtarma
 description: PowerShell ile Azure Backup kullanarak Azure VM 'lerinin nasıl yedekleneceği ve kurtarılacağı açıklanmaktadır
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: 610049ec14243abb296aef431eb37533c6169817
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.openlocfilehash: 90bb6f60712fc59aec05ff2e85364fccf00ff1df
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/28/2020
-ms.locfileid: "97797069"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98804801"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>PowerShell ile Azure VM 'lerini yedekleme ve geri yükleme
 
@@ -228,7 +228,7 @@ NewPolicy           AzureVM            AzureVM              4/24/2016 1:30:00 AM
 Koruma ilkesini tanımladıktan sonra yine de bir öğe için ilkeyi etkinleştirmeniz gerekir. Korumayı etkinleştirmek için [Enable-AzRecoveryServicesBackupProtection](/powershell/module/az.recoveryservices/enable-azrecoveryservicesbackupprotection) komutunu kullanın. Korumayı etkinleştirmek için iki nesne gerekir-öğe ve ilke. İlke kasayla ilişkilendirildikten sonra, yedekleme iş akışı, ilke zamanlamasında tanımlanan zamanda tetiklenir.
 
 > [!IMPORTANT]
-> Aynı anda birden çok VM için yedeklemeyi etkinleştirmek üzere PowerShell 'i kullanırken, tek bir ilkenin kendisiyle ilişkilendirilmiş 100 ' den fazla VM 'ye sahip olmadığından emin olun. Bu [Önerilen en iyi uygulamadır](./backup-azure-vm-backup-faq.md#is-there-a-limit-on-number-of-vms-that-can-beassociated-with-the-same-backup-policy). Şu anda, PowerShell istemcisi 100 ' den fazla VM varsa açıkça engellenmez, ancak bu denetim ileride eklenmek üzere planlanmaktadır.
+> Aynı anda birden çok VM için yedeklemeyi etkinleştirmek üzere PowerShell 'i kullanırken, tek bir ilkenin kendisiyle ilişkilendirilmiş 100 ' den fazla VM 'ye sahip olmadığından emin olun. Bu [Önerilen en iyi uygulamadır](./backup-azure-vm-backup-faq.yml#is-there-a-limit-on-number-of-vms-that-can-be-associated-with-the-same-backup-policy). Şu anda, PowerShell istemcisi 100 ' den fazla VM varsa açıkça engellenmez, ancak bu denetim ileride eklenmek üzere planlanmaktadır.
 
 Aşağıdaki örnekler, NewPolicy ilkesini kullanarak V2VM öğesi için korumayı etkinleştirir. Örnekler, VM 'nin şifrelenme ve ne tür şifreleme türü temel alınarak farklılık gösterir.
 

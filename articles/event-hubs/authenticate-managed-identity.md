@@ -2,14 +2,14 @@
 title: Azure Active Directory ile yönetilen bir kimlik doğrulama
 description: Bu makalede, Azure Event Hubs kaynaklarına erişmek için Azure Active Directory bir yönetilen kimliğin kimlik doğrulaması hakkında bilgi sağlanır
 ms.topic: conceptual
-ms.date: 06/23/2020
+ms.date: 01/25/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c6b43cc48663be28d12fa788d92286be6f47ef08
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 2070cfd94b39a08afb86ffd3579f1116faac72d5
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95993542"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98805283"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-event-hubs-resources"></a>Event Hubs kaynaklara erişmek için Azure Active Directory ile yönetilen bir kimliğin kimliğini doğrulama
 Azure Event Hubs, [Azure kaynakları için yönetilen kimliklerle](../active-directory/managed-identities-azure-resources/overview.md)Azure Active Directory (Azure AD) kimlik doğrulamasını destekler. Azure kaynakları için Yönetilen kimlikler, Azure sanal makinelerinde (VM), Işlev uygulamalarında, sanal makine ölçek kümelerinde ve diğer hizmetlerde çalışan uygulamalardan Azure AD kimlik bilgilerini kullanarak Event Hubs kaynaklarına erişim yetkisi verebilir. Azure AD kimlik doğrulamasıyla birlikte Azure kaynakları için Yönetilen kimlikler kullanarak, kimlik bilgilerini bulutta çalışan uygulamalarınızla depolamaktan kaçınabilirsiniz.
@@ -41,11 +41,12 @@ Uygulama oluşturulduktan sonra aşağıdaki adımları izleyin:
 1. Görüntülenecek **durumu** **seçin.** 
 1. Ayarları kaydetmek için **Kaydet**’i seçin. 
 
-    ![Bir Web uygulaması için yönetilen kimlik](./media/authenticate-managed-identity/identity-web-app.png)
+    :::image type="content" source="./media/authenticate-managed-identity/identity-web-app.png" alt-text="Bir Web uygulaması için yönetilen kimlik":::
+4. Bilgi iletisinde **Evet** ' i seçin. 
 
-Bu ayarı etkinleştirdikten sonra, Azure Active Directory (Azure AD) ve App Service ana bilgisayarında yapılandırılmış yeni bir hizmet kimliği oluşturulur.
+    Bu ayarı etkinleştirdikten sonra, Azure Active Directory (Azure AD) ve App Service ana bilgisayarında yapılandırılmış yeni bir hizmet kimliği oluşturulur.
 
-Şimdi, bu hizmet kimliğini Event Hubs kaynaklarınızın gerekli kapsamındaki bir role atayın.
+    Şimdi, bu hizmet kimliğini Event Hubs kaynaklarınızın gerekli kapsamındaki bir role atayın.
 
 ### <a name="to-assign-azure-roles-using-the-azure-portal"></a>Azure portal kullanarak Azure rolleri atamak için
 Event Hubs kaynaklara bir rol atamak için Azure portal bu kaynağa gidin. Kaynak için Access Control (ıAM) ayarlarını görüntüleyin ve rol atamalarını yönetmek için aşağıdaki yönergeleri izleyin:
@@ -56,15 +57,20 @@ Event Hubs kaynaklara bir rol atamak için Azure portal bu kaynağa gidin. Kayna
 1. Azure portal, Event Hubs ad alanına gidin ve ad alanı için **genel bakış** ' ı görüntüleyin. 
 1. Olay Hub 'ının erişim denetimi ayarlarını göstermek için sol taraftaki menüden **Access Control (IAM)** seçeneğini belirleyin.
 1.  Rol atamalarının listesini görmek için **rol atamaları** sekmesini seçin.
-3.  Yeni bir rol eklemek için **Ekle** ' yi seçin.
-4.  **Rol ataması Ekle** sayfasında, atamak istediğiniz Event Hubs rolleri seçin. Ardından, rolü atamak için kaydettiğiniz hizmet kimliğini bulmak için arama yapın.
+3.  **Ekle**' yi ve ardından **rol ataması Ekle** _ ' yi seçin.
+4.  _ *Rol ataması Ekle** sayfasında, aşağıdaki adımları izleyin:
+    1. **Rol** için, atamak istediğiniz Event Hubs rolünü seçin. Bu örnekte **Azure Event Hubs veri sahibidir**.
+    1. **Erişim ata** alanına, **sistem tarafından atanan yönetilen kimlik** altında **App Service** seçin. 
+    1. Web uygulaması için yönetilen kimliğin oluşturulduğu **aboneliği** seçin.
+    1. Oluşturduğunuz Web uygulaması için **yönetilen kimliği** seçin. Kimliğin varsayılan adı, Web uygulamasının adı ile aynı. 
+    1. Sonra **Kaydet**' i seçin. 
     
-    ![Rol atama sayfası ekle](./media/authenticate-managed-identity/add-role-assignment-page.png)
-5.  **Kaydet**'i seçin. Rolü atadığınız kimlik söz konusu rol altında listelenir. Örneğin, aşağıdaki görüntüde, hizmet kimliğinin Event Hubs veri sahibi olduğunu gösterilmektedir.
-    
-    ![Bir role atanan kimlik](./media/authenticate-managed-identity/role-assigned.png)
+        ![Rol atama sayfası ekle](./media/authenticate-managed-identity/add-role-assignment-page.png)
 
-Rolü atadıktan sonra, Web uygulamasının tanımlı kapsamda Event Hubs kaynaklara erişimi olur. 
+    Rolü atadıktan sonra, Web uygulamasının tanımlı kapsamda Event Hubs kaynaklara erişimi olur. 
+
+    > [!NOTE]
+    > Yönetilen kimlikleri destekleyen hizmetlerin listesi için bkz. [Azure kaynakları için yönetilen kimlikleri destekleyen hizmetler](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md).
 
 ### <a name="test-the-web-application"></a>Web uygulamasını test etme
 1. Event Hubs bir ad alanı ve bir olay hub 'ı oluşturun. 

@@ -13,12 +13,12 @@ ms.date: 01/04/2021
 ms.author: ryanwi
 ms.custom: aaddev, content-perf, FY21Q1
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: 883a06bdffcd0afcbc1be6f2c761d6a1c2c2ea2a
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 2529c6c3b0f9d188e1ce8062c05f62f3e980ef50
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98681884"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98805215"
 ---
 # <a name="configure-token-lifetime-policies-preview"></a>Belirteç ömür ilkelerini yapılandırma (Önizleme)
 Microsoft Identity platform tarafından verilen erişim, SAML veya KIMLIK belirtecinin ömrünü belirtebilirsiniz. Kuruluşunuzdaki tüm uygulamalar, çok kiracılı (çok kuruluşlu) bir uygulama veya belirli bir hizmet sorumlusu için belirteç ömrünü ayarlayabilirsiniz. Daha fazla bilgi için, [yapılandırılabilir belirteç yaşam sürelerini](active-directory-configurable-token-lifetimes.md)okuyun.
@@ -85,7 +85,7 @@ Bu örnekte, kullanıcıların Web uygulamanızda daha sık kimlik doğrulaması
 
 ## <a name="create-token-lifetime-policies-for-refresh-and-session-tokens"></a>Yenileme ve oturum belirteçleri için belirteç ömür ilkeleri oluşturma
 > [!IMPORTANT]
-> Mayıs 2020 itibariyle yeni kiracılar yenileme ve oturum belirteci yaşam sürelerini yapılandıramaz.  Mevcut yapılandırmaya sahip kiracılar, 30 Ocak 2021 ' ye kadar yenileme ve oturum belirteci ilkelerini değiştirebilir.  Azure Active Directory, 30 Ocak 2021 ' den sonra ilkelerde bulunan mevcut yenileme ve oturum belirteci yapılandırmasını durdurur. Kullanımdan sonra erişimi, SAML ve KIMLIK belirteci yaşam sürelerini yapılandırabilirsiniz.
+> Mayıs 2020 itibariyle yeni kiracılar yenileme ve oturum belirteci yaşam sürelerini yapılandıramıyor.  Mevcut yapılandırmaya sahip kiracılar, 30 Ocak 2021 ' ye kadar yenileme ve oturum belirteci ilkelerini değiştirebilir.  Azure Active Directory, 30 Ocak 2021 ' den sonra ilkelerde bulunan mevcut yenileme ve oturum belirteci yapılandırmasını durdurur. Kullanımdan sonra erişimi, SAML ve KIMLIK belirteci yaşam sürelerini yapılandırabilirsiniz.
 >
 > Bir kullanıcının yeniden oturum açması istenmeden önce geçen süreyi tanımlamaya devam etmeniz gerekiyorsa, koşullu erişimde oturum açma sıklığını yapılandırın. Koşullu erişim hakkında daha fazla bilgi edinmek için [koşullu erişimle kimlik doğrulama oturumu yönetimini yapılandırma](../conditional-access/howto-conditional-access-session-lifetime.md)makalesini okuyun.
 >

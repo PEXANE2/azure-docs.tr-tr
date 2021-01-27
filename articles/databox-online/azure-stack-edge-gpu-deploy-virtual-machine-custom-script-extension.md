@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 01/05/2021
+ms.date: 01/25/2021
 ms.author: alkohli
-ms.openlocfilehash: d601c6191da9d555e54c1d58c122420510d288fc
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: 8b233211f47250d4742d35cd0782cdd241839496
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97955561"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98804869"
 ---
 # <a name="deploy-custom-script-extension-on-vms-running-on-your-azure-stack-edge-pro-device"></a>Azure Stack Edge Pro cihazınızda çalışan VM 'lerde özel Betik uzantısı dağıtma
 
@@ -31,7 +31,7 @@ Bu makale Azure Stack Edge Pro GPU, Azure Stack Edge Pro R ve Azure Stack Edge M
 
 #### <a name="supported-os-for-custom-script-extension-on-windows"></a>Windows 'da özel Betik uzantısı için desteklenen işletim sistemi
 
-Windows için özel Betik uzantısı aşağıdaki OSs 'de çalışacaktır. Diğer sürümler çalışabilir, ancak Azure Stack Edge Pro cihazlarında çalışan VM 'lerde şirket içinde test edilmemiştir.
+Windows için özel Betik uzantısı aşağıdaki OSs 'de çalışacaktır. Diğer sürümler çalışabilir, ancak Azure Stack Edge Pro cihazlarında çalışan VM 'lerde şirket içinde sınanmamıştır.
 
 | Dağıtım | Sürüm |
 |---|---|
@@ -40,7 +40,7 @@ Windows için özel Betik uzantısı aşağıdaki OSs 'de çalışacaktır. Diğ
 
 #### <a name="supported-os-for-custom-script-extension-on-linux"></a>Linux üzerinde özel Betik uzantısı için desteklenen işletim sistemi
 
-Linux için özel Betik uzantısı aşağıdaki OSs 'de çalışacaktır. Diğer sürümler çalışabilir, ancak Azure Stack Edge Pro cihazlarında çalışan VM 'lerde şirket içinde test edilmemiştir.
+Linux için özel Betik uzantısı aşağıdaki OSs 'de çalışacaktır. Diğer sürümler çalışabilir, ancak Azure Stack Edge Pro cihazlarında çalışan VM 'lerde şirket içinde sınanmamıştır.
 
 | Dağıtım | Sürüm |
 |---|---|
@@ -60,15 +60,15 @@ If your script is on a local server, then you may still need additional firewall
 > [!NOTE]
 > Before you install the Custom Script extension, make sure that the port enabled for compute network on your device is connected to Internet and has access. -->
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-1. [VM şablonlarını ve parametreleri dosyalarını](https://aka.ms/ase-vm-templates) Istemci makinenize indirin. Bu dosyayı, çalışma dizini olarak kullanacağınız bir dizine ayıklayın.
+1. [VM şablonlarını ve parametreleri dosyalarını](https://aka.ms/ase-vm-templates) Istemci makinenize indirin. İndirmeyi, çalışma dizini olarak kullanacağınız bir dizine ayıklayın.
 
-1. Cihazınızda oluşturulmuş ve dağıtılmış bir VM 'niz olmalıdır. VM 'Ler oluşturmak için, [şablonları kullanarak Azure Stack Edge Pro 'daki sanal makine dağıtma](azure-stack-edge-gpu-deploy-virtual-machine-templates.md)içindeki tüm adımları izleyin.
+1. Cihazınızda oluşturulmuş ve dağıtılmış bir VM 'niz olmalıdır. VM 'Ler oluşturmak için [şablonları kullanarak Azure Stack Edge Pro 'unuzda VM dağıtma](azure-stack-edge-gpu-deploy-virtual-machine-templates.md)' daki tüm adımları izleyin.
 
-    GitHub veya Azure Storage gibi dışarıdan bir betiği indirmeniz gerekiyorsa, işlem ağını yapılandırırken, işlem için Internet 'e bağlı bağlantı noktasını etkinleştirin. Bu sayede betiği indirebilirsiniz.
+    GitHub veya Azure Storage 'dan dışarıdan, işlem ağını yapılandırırken olduğu gibi bir betiği indirmeniz gerekiyorsa, işlem için Internet 'e bağlı bağlantı noktasını etkinleştirin. Bu sayede betiği indirebilirsiniz.
 
-    Bağlantı noktası 2 ' nin internet 'e bağlandığı ve işlem ağını etkinleştirmek için kullanıldığı bir örnek aşağıda verilmiştir. Önceki adımda Kubernetes 'in gerekli olmadığını belirlediyseniz, Kubernetes düğüm IP 'sini ve dış hizmet IP atamasını atlayabilirsiniz.    
+    Aşağıdaki örnekte, bağlantı noktası 2 Internet 'e bağlandı ve işlem ağını etkinleştirmek için kullanıldı. Önceki adımda Kubernetes 'in gerekli olmadığını belirlediyseniz, Kubernetes düğüm IP 'sini ve dış hizmet IP atamasını atlayabilirsiniz.
 
     ![İnternet 'e bağlı bağlantı noktasında işlem ayarlarını etkinleştir](media/azure-stack-edge-gpu-deploy-gpu-virtual-machine/enable-compute-network-1.png)
 
@@ -115,7 +115,7 @@ Dosya `addCSExtWindowsVM.parameters.json` aşağıdaki parametreleri alır:
 ```
 SANAL makinenizin adını, uzantısı için adınızı ve yürütmek istediğiniz komutu belirtin.
 
-Bu makalede kullanılan örnek bir parametre dosyası aşağıda verilmiştir. 
+Bu makalede kullanılan örnek parametre dosyası aşağıda verilmiştir.
 
 ```powershell
 {
@@ -158,7 +158,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName $RGName -TemplateFile $tem
 > [!NOTE]
 > Uzantı dağıtımı uzun süredir çalışan bir iş ve tamamlana yaklaşık 10 dakika sürer.
 
-Örnek çıktı aşağıdaki gibidir:
+Örnek bir çıktı aşağıda verilmiştir:
 
 ```powershell
 PS C:\WINDOWS\system32> $templateFile = "C:\12-09-2020\ExtensionTemplates\addCSExtensiontoVM.json"
@@ -196,7 +196,7 @@ Belirli bir VM için uzantıların dağıtım durumunu denetlemek için şu komu
 ```powershell
 Get-AzureRmVMExtension -ResourceGroupName <Name of resource group> -VMName <Name of VM> -Name <Name of the extension>
 ```
-Örnek çıktı aşağıdaki gibidir:
+Örnek bir çıktı aşağıda verilmiştir:
 
 ```powershell
 PS C:\WINDOWS\system32> Get-AzureRmVMExtension -ResourceGroupName myasegpuvm1 -VMName VM5 -Name CustomScriptExtension
@@ -293,7 +293,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName $RGName -TemplateFile $tem
 > [!NOTE]
 > Uzantı dağıtımı uzun süredir çalışan bir iş ve tamamlana yaklaşık 10 dakika sürer.
 
-Örnek çıktı aşağıdaki gibidir:
+Örnek bir çıktı aşağıda verilmiştir:
 
 ```powershell
 PS C:\WINDOWS\system32> $templateFile = "C:\12-09-2020\ExtensionTemplates\addCSExtensionToVM.json"
@@ -342,7 +342,7 @@ Administrator@VM6:
 ```powershell
 Get-AzureRmVMExtension -ResourceGroupName myResourceGroup -VMName <VM Name> -Name <Extension Name>
 ```
-Örnek çıktı aşağıdaki gibidir: 
+Örnek bir çıktı aşağıda verilmiştir: 
 
 ```powershell
 PS C:\WINDOWS\system32> Get-AzureRmVMExtension -ResourceGroupName myasegpuvm1 -VMName VM5 -Name CustomScriptExtension
@@ -381,7 +381,7 @@ Uzantı yürütme çıkışı şu dosyaya kaydedilir: `/var/lib/waagent/custom-s
 
 `Remove-AzureRmVMExtension -ResourceGroupName <Resource group name> -VMName <VM name> -Name <Extension name>`
 
-Örnek çıktı aşağıdaki gibidir:
+Örnek bir çıktı aşağıda verilmiştir:
 
 ```powershell
 PS C:\WINDOWS\system32> Remove-AzureRmVMExtension -ResourceGroupName myasegpuvm1 -VMName VM6 -Name LinuxCustomScriptExtension
@@ -396,4 +396,4 @@ RequestId IsSuccessStatusCode StatusCode ReasonPhrase
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure Resource Manager cmdlet 'leri](/powershell/module/azurerm.resources/?view=azurermps-6.13.0)
+[Azure Resource Manager cmdlet 'leri](/powershell/module/azurerm.resources/?view=azurermps-6.13.0&preserve-view=true)

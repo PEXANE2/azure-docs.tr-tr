@@ -7,12 +7,12 @@ ms.custom: references_regions, devx-track-azurecli
 author: bwren
 ms.author: bwren
 ms.date: 10/14/2020
-ms.openlocfilehash: 4ae69ddeb46d484a64edc4ccabfa6740b36c4264
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: bb4987550e4962ba044e0a6aafbfd00145319e94
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98663273"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98804956"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Azure Izleyici 'de çalışma alanı verilerini dışarı aktarma Log Analytics (Önizleme)
 Azure Izleyici 'de Log Analytics çalışma alanı verileri dışarı aktarma işlemi, Log Analytics çalışma alanınızdaki seçili tablolardan verileri sürekli olarak bir Azure depolama hesabına veya Azure Event Hubs toplanarak dışarı aktaralmanıza olanak sağlar. Bu makalede, bu özellik hakkında ayrıntılar ve çalışma alanlarınızdaki veri dışarı aktarmayı yapılandırma adımları sağlanmaktadır.
@@ -67,7 +67,7 @@ Verilerin dışarı aktarılması, hedefin kullanılamaz durumda olması durumun
 ## <a name="export-destinations"></a>Hedefleri dışarı aktar
 
 ### <a name="storage-account"></a>Depolama hesabı
-Veriler her saat için depolama hesaplarına gönderilir. Veri dışa aktarma yapılandırması, depolama hesabındaki her tablo için, adı *ve ardından tablonun adını taşıyan* bir kapsayıcı oluşturur. Örneğin, *securityevent* tablosu, *har-securityevent* adlı bir kapsayıcıya gönderilir.
+Veriler, Azure Izleyici 'ye ulaştığında neredeyse gerçek zamanlı olarak depolama hesaplarına gönderilir. Veri dışa aktarma yapılandırması, depolama hesabındaki her tablo için, adı *ve ardından tablonun adını taşıyan* bir kapsayıcı oluşturur. Örneğin, *securityevent* tablosu, *har-securityevent* adlı bir kapsayıcıya gönderilir.
 
 Depolama hesabı blob yolu *WorkspaceResourceId =/Subscriptions/Subscription-id/ResourceGroups/ \<resource-group\> /providers/Microsoft.operationalinsights/Workspaces/ \<workspace\> /y = \<four-digit numeric year\> /m = \<two-digit numeric month\> /d = \<two-digit numeric day\> /h = \<two-digit 24-hour clock hour\> /m = 00/PT1H.js'* dir. Ekleme Blobları depolama alanındaki 50K yazmaları ile sınırlı olduğundan, eklenen BLOB sayısı yüksek ise, eklenen Blobların sayısı uzatabilirler. Bu tür bir örnekte Blobların adlandırma deseninin PT1H_ #. JSON olması, burada #, artımlı blob sayısıdır.
 

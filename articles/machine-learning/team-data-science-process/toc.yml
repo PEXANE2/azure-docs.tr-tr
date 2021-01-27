@@ -134,7 +134,7 @@
               items:
                 - name: Genel Bakış
                   href: explore-data.md
-                - name: Azure Blob depolamayı keşfedin
+                - name: Azure Blob depolamayı keşfet
                   href: explore-data-blob.md
                 - name: Sanal makine üzerinde SQL’u keşfedin
                   href: explore-data-sql-server.md
@@ -144,7 +144,7 @@
               items:
                 - name: Genel Bakış
                   href: sample-data.md
-                - name: Blob depolama kullanma
+                - name: Blob depolamayı kullanma
                   href: sample-data-blob.md
                 - name: SQL Server kullanma
                   href: sample-data-sql-server.md

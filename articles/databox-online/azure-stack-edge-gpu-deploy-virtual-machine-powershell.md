@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 12/23/2020
+ms.date: 01/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 32685207f8d6e81d03c90d01b186337ce79f843a
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: 1d286e7661fa14dd63bd55b133c39414e04decc6
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97763920"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98802982"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-via-azure-powershell"></a>Azure PowerShell aracılığıyla Azure Stack Edge Pro GPU cihazınızda VM 'Leri dağıtma
 
@@ -30,14 +30,14 @@ Dağıtım iş akışı aşağıdaki diyagramda gösterilmiştir.
 [!INCLUDE [azure-stack-edge-gateway-deploy-vm-prerequisites](../../includes/azure-stack-edge-gateway-deploy-virtual-machine-prerequisites.md)]
 
 
-## <a name="query-for-built-in-subscription-on-the-device"></a>Cihazda yerleşik abonelik için sorgu
+## <a name="query-for-built-in-subscription-on-the-device"></a>Cihazda yerleşik Abonelik sorgusu
 
-Azure Resource Manager için yalnızca tek bir kullanıcı tarafından görülebilen sabit abonelik desteklenir. Bu abonelik cihaz başına benzersizdir ve bu abonelik adı veya abonelik KIMLIĞI değiştirilemez.
+Azure Resource Manager için yalnızca tek bir kullanıcı tarafından görülebilen sabit abonelik desteklenir. Bu abonelik cihaz başına benzersizdir ve abonelik adı veya abonelik KIMLIĞI değiştirilemez.
 
 Bu abonelik, VM oluşturma için gerekli olan tüm kaynakları içerir. 
 
 > [!IMPORTANT]
-> Bu abonelik, Azure portal VM 'Leri etkinleştirdiğinizde ve yerel olarak cihazınızda bulunduğu zaman oluşturulur.
+> Bu abonelik, Azure portal VM 'Leri etkinleştirdiğinizde oluşturulur ve yerel olarak cihazınızda bulunur.
 
 Bu abonelik, VM 'Leri dağıtmak için kullanılır.
 
@@ -118,7 +118,7 @@ Successfully created Resource Group:rg191113014333
 
 ## <a name="create-a-storage-account"></a>Depolama hesabı oluşturma
 
-Önceki adımda oluşturulan kaynak grubunu kullanarak yeni bir depolama hesabı oluşturun. Bu, sanal makıne için sanal disk görüntüsünü karşıya yüklemek üzere kullanılacak **yerel bir depolama hesabıdır** .
+Önceki adımda oluşturulan kaynak grubunu kullanarak yeni bir depolama hesabı oluşturun. Bu hesap, sanal makıne için sanal disk görüntüsünü karşıya yüklemek üzere kullanılacak **yerel bir depolama hesabıdır** .
 
 ```powershell
 New-AzureRmStorageAccount -Name <Storage account name> -ResourceGroupName <Resource group name> -Location DBELocal -SkuName Standard_LRS
@@ -177,7 +177,7 @@ key2 gd34TcaDzDgsY9JtDNMUgLDOItUU0Qur3CBo6Q...
 
 ## <a name="add-blob-uri-to-hosts-file"></a>Ana bilgisayar dosyasına blob URI Ekle
 
-Blob URI 'sini, [uç nokta adı çözümlemesi için konak dosyası değiştirme](azure-stack-edge-j-series-connect-resource-manager.md#step-5-modify-host-file-for-endpoint-name-resolution)bölümünde bulunan BLOB depolamaya bağlanmak için kullandığınız istemcinin Hosts dosyasına eklemiş olursunuz. Bu, blob URI 'SI için girdidir:
+Blob URI 'sini, BLOB depolama alanına bağlanmak için kullandığınız istemcinin Hosts dosyasına, [uç nokta adı çözümlemesi için konak dosyası değiştirme](azure-stack-edge-j-series-connect-resource-manager.md#step-5-modify-host-file-for-endpoint-name-resolution)bölümünde zaten eklediniz. Bu giriş, blob URI 'sini eklemek için kullanıldı:
 
 \<Azure consistent network services VIP \>\<storage name\>. blob. \<appliance name\>\<dnsdomain\>
 
@@ -256,7 +256,7 @@ $DiskConfig = New-AzureRmDiskConfig -Location DBELocal -CreateOption Import –S
 New-AzureRMDisk -ResourceGroupName <Resource group name> -DiskName <Disk name> -Disk $DiskConfig
 ```
 
-Örnek çıktı aşağıda gösterilmiştir. Bu cmdlet hakkında daha fazla bilgi için [New-AzureRmDisk](/powershell/module/azurerm.compute/new-azurermdisk?view=azurermps-6.13.0)sayfasına gidin.
+Örnek çıktı aşağıda gösterilmiştir. Bu cmdlet hakkında daha fazla bilgi için [New-AzureRmDisk](/powershell/module/azurerm.compute/new-azurermdisk?view=azurermps-6.13.0&preserve-view=true)sayfasına gidin.
 
 ```powershell
 Tags               :
@@ -296,7 +296,7 @@ Set-AzureRmImageOsDisk -Image $imageConfig -OsType 'Linux' -OsState 'Generalized
 New-AzureRmImage -Image $imageConfig -ImageName <Image name>  -ResourceGroupName <Resource group name>
 ```
 
-Örnek çıktı aşağıda gösterilmiştir. Bu cmdlet hakkında daha fazla bilgi için [New-Azurermımage](/powershell/module/azurerm.compute/new-azurermimage?view=azurermps-6.13.0)sayfasına gidin.
+Örnek çıktı aşağıda gösterilmiştir. Bu cmdlet hakkında daha fazla bilgi için [New-Azurermımage](/powershell/module/azurerm.compute/new-azurermimage?view=azurermps-6.13.0&preserve-view=true)sayfasına gidin.
 
 ```powershell
 New-AzureRmImage -Image Microsoft.Azure.Commands.Compute.Automation.Models.PSImage -ImageName ig191113014333  -ResourceGroupName rg191113014333
@@ -319,8 +319,8 @@ VM 'yi oluşturup dağıtmadan önce bir sanal ağ oluşturmanız ve bir sanal a
 > [!IMPORTANT]
 > Sanal ağ ve sanal ağ arabirimi oluştururken aşağıdaki kurallar geçerlidir:
 > - Yalnızca bir sanal ağ oluşturulabilir (kaynak grupları arasında bile) ve adres alanı açısından tam olarak mantıksal ağla eşleşmesi gerekir.
-> -   VNET 'te yalnızca bir alt ağa izin verilir. Alt ağ, VNET ile tam olarak aynı adres alanı olmalıdır.
-> -   VNIC oluşturma sırasında yalnızca statik ayırma yöntemine izin verilir ve kullanıcının özel bir IP adresi sağlaması gerekir.
+> - VNET 'te yalnızca bir alt ağa izin verilir. Alt ağ, VNET ile tam olarak aynı adres alanı olmalıdır.
+> - VNIC oluşturma sırasında yalnızca statik ayırma yöntemine izin verilir ve kullanıcının özel bir IP adresi sağlaması gerekir.
 
  
 **Otomatik olarak oluşturulan VNET 'i sorgula**
@@ -498,7 +498,7 @@ Cihazınızda çalışan bir sanal makineyi açmak için aşağıdaki cmdlet 'i 
 `Start-AzureRmVM [-Name] <String> [-ResourceGroupName] <String>`
 
 
-Bu cmdlet hakkında daha fazla bilgi için [Start-AzureRmVM](/powershell/module/azurerm.compute/start-azurermvm?view=azurermps-6.13.0)' ye gidin.
+Bu cmdlet hakkında daha fazla bilgi için [Start-AzureRmVM](/powershell/module/azurerm.compute/start-azurermvm?view=azurermps-6.13.0&preserve-view=true)' ye gidin.
 
 ### <a name="suspend-or-shut-down-the-vm"></a>VM 'yi askıya alma veya kapatma
 
@@ -510,7 +510,7 @@ Stop-AzureRmVM [-Name] <String> [-StayProvisioned] [-ResourceGroupName] <String>
 ```
 
 
-Bu cmdlet hakkında daha fazla bilgi için [stop-AzureRmVM cmdlet 'ine](/powershell/module/azurerm.compute/stop-azurermvm?view=azurermps-6.13.0)gidin.
+Bu cmdlet hakkında daha fazla bilgi için [stop-AzureRmVM cmdlet 'ine](/powershell/module/azurerm.compute/stop-azurermvm?view=azurermps-6.13.0&preserve-view=true)gidin.
 
 ### <a name="add-a-data-disk"></a>Veri diski ekleme
 
@@ -530,10 +530,10 @@ Cihazınızdan bir sanal makineyi kaldırmak için aşağıdaki cmdlet'i kullan�
 Remove-AzureRmVM [-Name] <String> [-ResourceGroupName] <String>
 ```
 
-Bu cmdlet hakkında daha fazla bilgi için [Remove-AzureRmVm cmdlet 'ine](/powershell/module/azurerm.compute/remove-azurermvm?view=azurermps-6.13.0)gidin.
+Bu cmdlet hakkında daha fazla bilgi için [Remove-AzureRmVm cmdlet 'ine](/powershell/module/azurerm.compute/remove-azurermvm?view=azurermps-6.13.0&preserve-view=true)gidin.
 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure Resource Manager cmdlet 'leri](/powershell/module/azurerm.resources/?view=azurermps-6.13.0)
+[Azure Resource Manager cmdlet 'leri](/powershell/module/azurerm.resources/?view=azurermps-6.13.0&preserve-view=true)

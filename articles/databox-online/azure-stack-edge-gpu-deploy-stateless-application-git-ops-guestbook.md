@@ -1,31 +1,31 @@
 ---
-title: Azure Stack Edge Pro GPU cihazında, Arc etkin Kubernetes üzerinde PHP Konuk defteri uygulaması dağıtma | Microsoft Docs
-description: Azure Stack Edge Pro cihazınızın bir yay özellikli bir Kubernetes kümesinde Gilar kullanarak, Redis ile PHP Konuk olmayan bir uygulamanın nasıl dağıtılacağını açıklar.
+title: "`PHP Guestbook`Azure Stack Edge Pro GPU cihazında uygulamayı yay etkinleştirilmiş Kubernetes 'e dağıtma | Microsoft Docs"
+description: '`Guestbook`Azure Stack Edge Pro cihazınızın bir yay özellikli bir Kubernetes kümesinde Gilar kullanarak BIR php durum bilgisiz uygulamasının nasıl dağıtılacağını açıklar.'
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/25/2020
+ms.date: 01/25/2021
 ms.author: alkohli
-ms.openlocfilehash: 4e974d93b5b7550081abcd7e251c7eda265a2397
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: ba72617444a2c7ec30e4d1d25afe1edcda16ff35
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97882968"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98804875"
 ---
-# <a name="deploy-a-php-guestbook-stateless-application-with-redis-on-arc-enabled-kubernetes-cluster-on-azure-stack-edge-pro-gpu"></a>Azure Stack Edge Pro GPU 'SU üzerinde Redis, Arc etkin Kubernetes kümesine sahip bir PHP Konuk defteri olmayan uygulaması dağıtma
+# <a name="deploy-a-php-guestbook-stateless-application-with-redis-on-arc-enabled-kubernetes-cluster-on-azure-stack-edge-pro-gpu"></a>`Guestbook`Azure Stack Edge Pro GPU 'su üzerinde Redis 'ı yay özellikli bir Kubernetes kümesi ile BIR php durum bilgisiz uygulaması dağıtma
 
 Bu makalede, Kubernetes ve Azure yay kullanılarak basit, çok katmanlı bir Web uygulaması oluşturma ve dağıtma işlemlerinin nasıl yapılacağı gösterilir. Bu örnek aşağıdaki bileşenlerden oluşur:
 
-- Konuk defteri girişlerini depolamak için tek örnekli Reddir ana
+- Girdileri depolamak için tek örnekli Reddir Yöneticisi `guestbook`
 - Okuma hizmeti için birden çok çoğaltılan Redsıs örneği
 - Birden çok Web ön uç örneği
 
 Dağıtım, Azure Stack Edge Pro cihazınızdan yay etkinleştirilmiş Kubernetes kümesinde Gilar kullanılarak yapılır. 
 
-Bu yordam, [Azure Stack Edge Pro cihazındaki Kubernetes iş yüklerini](azure-stack-edge-gpu-kubernetes-workload-management.md) gözden geçirdiklere yöneliktir ve [Azure Arc etkinleştirilmiş Kubernetes (Önizleme)](../azure-arc/kubernetes/overview.md)kavramlarını öğrenir.
+Bu yordam, [Azure Stack Edge Pro cihazındaki Kubernetes iş yüklerini](azure-stack-edge-gpu-kubernetes-workload-management.md) gözden geçiren ve [Azure Arc etkinleştirilmiş Kubernetes (Önizleme)](../azure-arc/kubernetes/overview.md)kavramlarını öğrentiren kişilere yöneliktir.
 
 > [!NOTE]
 > Bu makale, Microsoft 'un artık kullandığı bir terim olan bağımlı dönem başvuruları içerir. Terim yazılımlardan kaldırıldığında, bu makaleden kaldıracağız.
@@ -49,18 +49,18 @@ Durum bilgisiz uygulamayı dağıtabilmeniz için cihazınızda aşağıdaki ön
 
 1. Azure Stack Edge Pro cihazına erişmek için kullanılacak bir Windows istemci sisteminiz vardır.
   
-    - İstemci Windows PowerShell 5,0 veya üstünü çalıştırıyor. Windows PowerShell 'in en son sürümünü indirmek için [Windows PowerShell 'ı yükleme](/powershell/scripting/install/installing-windows-powershell?view=powershell-7)bölümüne gidin.
+    - İstemci Windows PowerShell 5,0 veya üstünü çalıştırıyor. Windows PowerShell 'in en son sürümünü indirmek için [Windows PowerShell 'ı yükleme](/powershell/scripting/install/installing-windows-powershell?view=powershell-7&preserve-view = true)bölümüne gidin.
     
     - [Desteklenen bir işletim sistemine](azure-stack-edge-gpu-system-requirements.md#supported-os-for-clients-connected-to-device) sahip başka bir istemciniz de olabilir. Bu makalede, bir Windows istemcisi kullanılırken yordam açıklanmaktadır. 
     
 1. [Azure Stack Edge Pro cihazında Kubernetes kümesine erişme](azure-stack-edge-gpu-create-kubernetes-cluster.md)bölümünde açıklanan yordamı tamamladınız. Şunları yapabilirsiniz:
     
-    - `kubectl`İstemciye yüklendi  <!--and saved the `kubeconfig` file with the user configuration to C:\\Users\\&lt;username&gt;\\.kube. -->
+    - `kubectl`İstemciye yüklendi. <!--and saved the `kubeconfig` file with the user configuration to C:\\Users\\&lt;username&gt;\\.kube. -->
     
     - `kubectl`İstemci sürümünün, Azure Stack Edge Pro cihazınızda çalışan Kubernetes ana sürümünden birden fazla sürüm olmadığından emin olun. 
       - `kubectl version`İstemci üzerinde çalışan kubectl sürümünü denetlemek için kullanın. Tam sürümü bir yere unutmayın.
       - Azure Stack Edge Pro cihazınızın yerel kullanıcı arabiriminde **Genel Bakış ' a** gidin ve Kubernetes yazılım numarasına göz atın. 
-      - Desteklenen Kubernetes sürümünde belirtilen eşlemenin uyumluluk için bu iki sürümü doğrulayın <!--insert link-->.
+      - Desteklenen Kubernetes sürümünde belirtilen eşlemenin uyumluluğuyla uyumluluk için bu iki sürümü doğrulayın. <!--insert link-->
 
 1. [Azure Arc dağıtımını çalıştırmak için kullanabileceğiniz bir gide yapılandırması](https://github.com/kagoyal/dbehaikudemo)vardır. Bu örnekte, `yaml` Azure Stack Edge Pro cihazınıza dağıtmak için aşağıdaki dosyaları kullanacaksınız.
 
@@ -86,18 +86,18 @@ Azure yay kaynağını, Azure portal bir Gilar yapılandırması dağıtmak üze
 
     ![Ekran görüntüsü, yapılandırma Ekle seçiliyken Azure Arc etkin Kubernetes kümesini gösterir.](media/azure-stack-edge-gpu-connect-powershell-interface/select-configurations-1.png)
 
-1. **Yapılandırma Ekle**' de alanlar için uygun değerleri girin ve **Uygula**' yı seçin.
+1. **Yapılandırma Ekle**' de, alanlar için uygun değerleri girin ve ardından **Uygula**' yı seçin.
 
     |Parametre  |Açıklama |
     |---------|---------|
     |Yapılandırma adı     | Yapılandırma kaynağının adı.        |
     |İşleç örneği adı     |Belirli bir yapılandırmayı tanımlamak için işlecin örnek adı. Ad, yalnızca küçük harf, alfasayısal, kısa çizgi ve nokta olması gereken en fazla 253 karakter dizesidir.         |
-    |İşleç ad alanı     | Bu, dağıtımda belirtilen ad alanıyla eşleştiğinden **demotestkonuk defteri** olarak ayarlanır `yaml` . <br> Alan, işlecin yüklendiği ad alanını tanımlar. Ad, yalnızca küçük harf, alfasayısal, kısa çizgi ve nokta olması gereken en fazla 253 karakter dizesidir.         |
+    |İşleç ad alanı     | Dağıtımda belirtilen ad alanıyla eşleşecek şekilde **demotestkonuk defteri** olarak ayarlayın `yaml` . <br> Alan, işlecin yüklendiği ad alanını tanımlar. Ad, yalnızca küçük harf, alfasayısal, kısa çizgi ve nokta olması gereken en fazla 253 karakter dizesidir.         |
     |Depo URL 'SI     |<br>`http://github.com/username/repo`Gila yapılandırmanızın bulunduğu konum veya biçimdeki git deposunun yolu `git://github.com/username/repo` .         |
-    |İşleç kapsamı     | **Ad alanı** seçin. <br>Bu, işlecinin yüklendiği kapsamı tanımlar. Bunu ad alanı olarak seçin. Operatörünüz, dağıtım YAML dosyalarında belirtilen ad alanına yüklenecek.       |
-    |İşleç türü     | Varsayılan olarak bırakın. <br>Bu, varsayılan olarak, Flox olarak ayarlanan işlecin türünü belirtir.        |
-    |İşleç parametreleri     | Bunu boş bırakın. <br>Bu alan Flox işlecine geçirilecek parametreleri içerir.        |
-    |Helm     | Bunu **devre dışı** olarak ayarlayın. <br>Grafik tabanlı dağıtımlar yapacaksınız bu seçeneği etkinleştirin.        |
+    |İşleç kapsamı     | **Ad alanı** seçin. <br>Bu parametre, işlecinin yüklendiği kapsamı tanımlar. Operatörüzü dağıtım YAML dosyalarında belirtilen ad alanına yüklemek için ad alanını seçin.       |
+    |İşleç türü     | Varsayılan olarak bırakın. <br>Bu parametre, varsayılan olarak işlecin türünü belirtir, Flox olarak ayarlanır.        |
+    |İşleç parametreleri     | Bunu boş bırakın. <br>Bu parametre, Flox işlecine geçirilecek parametreleri içerir.        |
+    |Helm     | Bu parametreyi **devre dışı** olarak ayarlayın. <br>Grafik tabanlı dağıtımlar yapacaksınız bu seçeneği etkinleştirin.        |
 
 
     ![Yapılandırma ekleme](media/azure-stack-edge-gpu-connect-powershell-interface/add-configuration-1.png)
@@ -136,7 +136,7 @@ Gilar yapılandırması aracılığıyla dağıtım, `demotestguestbook` Git dep
     [10.128.44.240]: PS>
     ```  
 
-1. Bu örnekte, ön uç hizmeti tür: LoadBalancer olarak dağıtıldı. Konuk defteri 'ni görüntülemek için bu hizmetin IP adresini bulmanız gerekecektir. Aşağıdaki komutu çalıştırın.
+1. Bu örnekte, ön uç hizmeti tür: LoadBalancer olarak dağıtıldı. ' İ görüntülemek için bu hizmetin IP adresini bulmanız gerekecektir `guestbook` . Aşağıdaki komutu çalıştırın.
 
     `kubectl get service -n <your-namespace>`
     
@@ -149,13 +149,13 @@ Gilar yapılandırması aracılığıyla dağıtım, `demotestguestbook` Git dep
     redis-slave    ClusterIP      10.104.215.146   <none>          6379/TCP       85m
     [10.128.44.240]: PS>
     ```
-1. Ön uç hizmetinin `type:LoadBalancer` bir dış IP adresi vardır. Bu IP, cihazdaki Bilgi Işlem ağ ayarlarını yapılandırırken dış hizmetler için belirttiğiniz IP adresi aralığıdır. Bu IP adresini, URL 'de Konuk defteri 'ni görüntülemek için kullanın: `https://<external-IP-address>` .
+1. Ön uç hizmetinin `type:LoadBalancer` bir dış IP adresi vardır. Bu IP, cihazdaki Bilgi Işlem ağ ayarlarını yapılandırırken dış hizmetler için belirttiğiniz IP adresi aralığıdır. Bu IP adresini, `guestbook` Şu URL 'yi görüntülemek için kullanın: `https://<external-IP-address>` .
 
     ![Konuk defteri görüntüle](media/azure-stack-edge-gpu-connect-powershell-interface/view-guestbook-1.png)
 
 ## <a name="delete-deployment"></a>Dağıtımı Sil
 
-Dağıtımı silmek için Azure portal yapılandırmayı silebilirsiniz. Bu, dağıtımlar ve hizmetler dahil oluşturulan nesneleri silecektir.
+Dağıtımı silmek için Azure portal yapılandırmayı silebilirsiniz. Yapılandırma silindiğinde, dağıtımlar ve hizmetler de dahil olmak üzere oluşturulan nesneler silinir.
 
 1. Azure portal, Azure Arc kaynak > yapılandırma ' ya gidin. 
 1. Silmek istediğiniz yapılandırmayı bulun. Şunu seçin... bağlam menüsünü çağırmak ve **Sil**' i seçin.

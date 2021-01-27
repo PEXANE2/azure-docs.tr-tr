@@ -410,7 +410,7 @@
               href: ./workloads/sap/azure-monitor-faq.md
         - name: Başvuru
           items:
-            - name: Azure CLI
+            - name: Azure CLI’si
               href: /cli/azure/ext/sap-hana/hanainstance
             - name: Azure PowerShell
               href: /powershell/module/az.hanaonazure/#sap-hana-on-azure
@@ -601,24 +601,24 @@
           href: dedicated-hosts-portal.md
         - name: PowerShell
           href: ./windows/dedicated-hosts-powershell.md
+    - name: Sanal makineleri spot
+      displayName: 'pre-empt, preempt, spot'
+      items:
+        - name: Genel Bakış
+          href: spot-vms.md
+        - name: CLI
+          href: ./linux/spot-cli.md
+        - name: Portal
+          href: spot-portal.md
+        - name: PowerShell
+          href: ./windows/spot-powershell.md
+        - name: ARM şablonu
+          displayName: template ARM
+          href: ./linux/spot-template.md
+        - name: Hata kodları
+          href: error-codes-spot.md
     - name: Satın alma seçenekleri
       items:
-        - name: Spot VM'ler
-          displayName: 'pre-empt, preempt, spot'
-          items:
-            - name: Genel Bakış
-              href: spot-vms.md
-            - name: CLI
-              href: ./linux/spot-cli.md
-            - name: Portal
-              href: spot-portal.md
-            - name: PowerShell
-              href: ./windows/spot-powershell.md
-            - name: ARM şablonu
-              displayName: template ARM
-              href: ./linux/spot-template.md
-            - name: Hata kodları
-              href: error-codes-spot.md
         - name: Azure Hibrit Avantajı
           items:
             - name: Linux
@@ -1340,7 +1340,7 @@
           items:
             - name: Azure CLI
               href: ./linux/add-disk.md
-            - name: Azure portal
+            - name: Azure portalı
               href: ./linux/attach-disk-portal.md
         - name: Windows
           items:
@@ -1747,7 +1747,7 @@
         - name: Fiyatlandırma
           href: ../backup/azure-backup-pricing.md
         - name: SSS
-          href: ../backup/backup-azure-vm-backup-faq.md
+          href: ../backup/backup-azure-vm-backup-faq.yml
     - name: Olağanüstü durum kurtarma
       items:
         - name: Genel Bakış

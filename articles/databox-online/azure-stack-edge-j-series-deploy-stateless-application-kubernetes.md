@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/28/2020
+ms.date: 01/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 6356089daed02270a14903639afee8001153b195
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: b199fdbac4aca7637e07a18383cc7e254f702019
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96447372"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98804848"
 ---
 # <a name="deploy-a-kubernetes-stateless-application-via-kubectl-on-your-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU cihazınızdan kubectl aracılığıyla bir Kubernetes durum bilgisiz uygulaması dağıtma
 
@@ -25,7 +25,7 @@ Bir Kubernetes kümesi oluşturabilmeniz ve `kubectl` komut satırı aracını k
 
 - 1 düğümlü Azure Stack Edge Pro cihazı için oturum açma kimlik bilgileriniz vardır.
 
-- Windows PowerShell 5,0 veya üzeri bir Windows istemci sisteminde Azure Stack Edge Pro cihazına erişmek için yüklenir. Desteklenen bir işletim sistemine sahip başka bir istemciniz de olabilir. Bu makalede, bir Windows istemcisi kullanılırken yordam açıklanmaktadır. Windows PowerShell 'in en son sürümünü indirmek için [Windows PowerShell 'ı yükleme](/powershell/scripting/install/installing-windows-powershell?view=powershell-7)bölümüne gidin.
+- Windows PowerShell 5,0 veya üzeri bir Windows istemci sisteminde Azure Stack Edge Pro cihazına erişmek için yüklenir. Desteklenen bir işletim sistemine sahip başka bir istemciniz de olabilir. Bu makalede, bir Windows istemcisi kullanılırken yordam açıklanmaktadır. Windows PowerShell 'in en son sürümünü indirmek için [Windows PowerShell 'ı yükleme](/powershell/scripting/install/installing-windows-powershell?view=powershell-7&preserve-view=true)bölümüne gidin.
 
 - Azure Stack Edge Pro cihazında işlem etkindir. İşlem ' ı etkinleştirmek için, cihazın yerel kullanıcı arabirimindeki **işlem** sayfasına gidin. Sonra, işlem için etkinleştirmek istediğiniz bir ağ arabirimi seçin. **Etkinleştir**’i seçin. İşlem, bu ağ arabirimindeki cihazınızda sanal anahtar oluşturulmasına neden olur. Daha fazla bilgi için bkz. [Azure Stack Edge Pro 'da işlem ağını etkinleştirme](azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy.md).
 
@@ -55,7 +55,7 @@ Sürümünü denetlemek için `kubectl` :
    kubectl version
    ```
     
-   Çıktının bir örneği aşağıda verilmiştir:
+   Çıktının bir örneği aşağıda gösterilmiştir:
     
    ```powershell
    PS C:\WINDOWS\system32> C:\windows\system32\kubectl.exe version
@@ -71,7 +71,7 @@ Sürümünü denetlemek için `kubectl` :
    kubectl get pods -n <namespace-string>
    ```
     
-   Komut kullanımı örneği aşağıda verilmiştir:
+   Komut kullanımı örneği aşağıda gösterilmiştir:
     
    ```powershell
    PS C:\WINDOWS\system32> kubectl get pods -n "test1"
@@ -123,7 +123,7 @@ NGINX dağıtımı oluşturmak için aşağıdaki adımları izleyin:
 
    Bu örnekte, Application YAML dosyasının yolu bir dış kaynaktır.
 
-   Komutun ve çıktının örnek kullanımı aşağıda verilmiştir:
+   Komutun ve çıktısının örnek bir kullanımı aşağıda verilmiştir:
 
    ```powershell
    PS C:\WINDOWS\system32> kubectl apply -f https://k8s.io/examples/application/deployment.yaml -n "test1"
@@ -131,7 +131,7 @@ NGINX dağıtımı oluşturmak için aşağıdaki adımları izleyin:
    deployment.apps/nginx-deployment created
    ```
 
-   Alternatif olarak, aşağıdaki markı 'yi yerel makinenize kaydedebilir ve *-f* parametresindeki yolu ve dosya adını değiştirebilirsiniz. Örneğin, "C:\kubernetes\deploymentnyaml". Uygulama dağıtımının yapılandırması aşağıda verilmiştir:
+   Alternatif olarak, aşağıdaki markı 'yi yerel makinenize kaydedebilir ve *-f* parametresindeki yolu ve dosya adını değiştirebilirsiniz. Örneğin, "C:\kubernetes\deploymentnyaml". Uygulama dağıtımı için yapılandırma şöyle olacaktır:
 
    ```markdown
    apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
@@ -163,7 +163,7 @@ NGINX dağıtımı oluşturmak için aşağıdaki adımları izleyin:
    kubectl describe deployment nginx-deployment -n <namespace-string>
    ```
 
-   Komutun ve çıktının örnek kullanımı aşağıda verilmiştir:
+   Komutun, Output ile örnek bir kullanımı aşağıda gösterilmiştir:
     
    ```powershell
    PS C:\Users\user> kubectl describe deployment nginx-deployment -n "test1"
@@ -203,13 +203,13 @@ NGINX dağıtımı oluşturmak için aşağıdaki adımları izleyin:
      Normal  ScalingReplicaSet  2m22s  deployment-controller  Scaled up replica set nginx-deployment-5754944d6c to 2
    ```
 
-   *Çoğaltmalar* ayarına yakından bakarsanız şunları görürsünüz:
+   *Çoğaltmalar* ayarı için şunu görürsünüz:
     
    ```powershell
    Replicas:               2 desired | 2 updated | 2 total | 2 available | 0 unavailable
    ```
 
-   *Çoğaltmalar* ayarı, dağıtım belirtimin iki pod gerektiğini, bu yığınların oluşturulup güncelleştirildiğini ve sizin kullanımınıza hazırlandığını gösterir.
+   *Çoğaltmalar* ayarı, dağıtım belirtimin iki pod gerektirdiğini ve bu yığınların oluşturulup güncelleştirildiğini ve kullanıma hazırlandığını gösterir.
 
    > [!NOTE]
    > Bir çoğaltma kümesi, cihaz düğümü arızası veya kesintiye uğratan bir cihaz yükseltmesi gibi her nedenden dolayı silinen veya sonlandırılan Pod 'nin yerini alır. Bu nedenle, uygulamanız yalnızca tek bir pod gerektirdiğinden bile bir çoğaltma kümesi kullanmanızı öneririz.
@@ -220,7 +220,7 @@ NGINX dağıtımı oluşturmak için aşağıdaki adımları izleyin:
    kubectl get pods -l app=nginx -n <namespace-string>
    ```
     
-   Komutun ve çıktının örnek kullanımı aşağıda verilmiştir:
+   Komutun, Output ile örnek bir kullanımı aşağıda gösterilmiştir:
     
    ```powershell
    PS C:\Users\user> kubectl get pods -l app=nginx -n "test1"
@@ -238,7 +238,7 @@ NGINX dağıtımı oluşturmak için aşağıdaki adımları izleyin:
    kubectl describe pod <podname-string> -n <namespace-string>
    ```
 
-   Komutun ve çıktının örnek kullanımı aşağıda verilmiştir:
+  Komutun, Output ile örnek bir kullanımı aşağıda gösterilmiştir:
 
    ```powershell
    PS C:\Users\user> kubectl describe pod "nginx-deployment-5754944d6c-7wqjd" -n "test1"
@@ -295,14 +295,14 @@ NGINX dağıtımı oluşturmak için aşağıdaki adımları izleyin:
 
 ### <a name="rescale-the-application-deployment-by-increasing-the-replica-count"></a>Çoğaltma sayısını artırarak uygulama dağıtımını yeniden ölçekler
 
-Her pod, belirli bir uygulamanın tek bir örneğini çalıştırmak için tasarlanmıştır. Uygulamanızı birden çok örnek çalıştırmak için yatay olarak ölçeklendirmek istiyorsanız, her örnek için bir tane olmak üzere, her bir örnek için bir tane olmak üzere, bir Kubernetes 'te bu, çoğaltma olarak adlandırılır.
+Her pod, belirli bir uygulamanın tek bir örneğini çalıştırmak için tasarlanmıştır. Uygulamanızı birden çok örnek çalıştırmak için yatay olarak ölçeklendirmek istiyorsanız, her bir örnek için, her bir örnek için bir tane olarak Kubernetes 'te bu, çoğaltma olarak adlandırılır.
 Yeni bir YAML dosyası uygulayarak uygulama dağıtımınızdaki dizin sayısını artırabilirsiniz. YAML dosyası çoğaltmalar ayarını 4 olarak değiştirir, bu da dağıtımınızdaki yığınların sayısını dört adet sayıda artırır. 2 ile 4 arasında Pod sayısını artırmak için:
 
 ```powershell
 PS C:\WINDOWS\system32> kubectl apply -f https://k8s.io/examples/application/deployment-scale.yaml -n "test1"
 ```
 
-Alternatif olarak, aşağıdaki markı 'yi yerel makinenize kaydedebilir ve için *-f* parametresinin yolunu ve dosya adını değiştirebilirsiniz `kubectl apply` . Örneğin, "C:\kubernetes\deployment-scalenyaml". Uygulama dağıtımı ölçeğinin yapılandırması aşağıda verilmiştir:
+Alternatif olarak, aşağıdaki markı 'yi yerel makinenize kaydedebilir ve için *-f* parametresinin yolunu ve dosya adını değiştirebilirsiniz `kubectl apply` . Örneğin, "C:\kubernetes\deployment-scalenyaml". Uygulama dağıtımı ölçeğinin yapılandırması şöyle olacaktır:
 
 ```markdown
 apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
@@ -332,7 +332,7 @@ Dağıtımın dört pods olduğunu doğrulamak için:
 kubectl get pods -l app=nginx
 ```
 
-Aşağıda, iki ile dört arasında bir dağıtım dağıtımı için örnek çıktı verilmiştir:
+İki ile dört Pod arasında bir dağıtım dağıtımı için örnek çıktı aşağıda gösterilmiştir:
 
 ```powershell
 PS C:\WINDOWS\system32> kubectl get pods -l app=nginx
@@ -354,7 +354,7 @@ Tüm yığınların dahil olduğu dağıtımı silmek için, `kubectl delete dep
    kubectl delete deployment nginx-deployment -n <namespace-string>
    ```
 
-Komut kullanımı ve çıkışının bir örneği aşağıda verilmiştir:
+Komut kullanımının bir örneği, çıkış ile aşağıda gösterilmiştir:
 
 ```powershell
 PS C:\Users\user> kubectl delete deployment nginx-deployment -n "test1"

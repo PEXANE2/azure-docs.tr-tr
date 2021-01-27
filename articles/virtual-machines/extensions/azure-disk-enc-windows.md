@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/19/2020
 ms.author: ejarvi
-ms.openlocfilehash: 361751107212d556aaee6886902d2798c014ff39
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: e7c7385f6a9b0afb5791299a1244011e6164a0a7
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98180192"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98805259"
 ---
 # <a name="azure-disk-encryption-for-windows-microsoftazuresecurityazurediskencryption"></a>Windows için Azure disk şifrelemesi (Microsoft. Azure. Security. AzureDiskEncryption)
 
@@ -27,7 +27,7 @@ ms.locfileid: "98180192"
 
 Azure disk şifrelemesi, Windows çalıştıran Azure sanal makinelerinde tam disk şifrelemesi sağlamak için BitLocker 'ı kullanır.  Bu çözüm, Anahtar Kasası aboneliğinizdeki disk şifreleme anahtarlarını ve gizli dizileri yönetmek için Azure Key Vault ile tümleşiktir. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Önkoşulların tam listesi için bkz. [Windows VM 'leri Için Azure disk şifrelemesi](../windows/disk-encryption-overview.md), özellikle aşağıdaki bölümler:
 
@@ -62,9 +62,9 @@ V 2.2 şeması tüm yeni VM 'Lerde önerilir ve Azure Active Directory özellik 
           "EncryptionOperation": "[encryptionOperation]",
           "KeyEncryptionAlgorithm": "[keyEncryptionAlgorithm]",
           "KeyVaultURL": "[keyVaultURL]",
-          "KekVaultResourceId": "[keyVaultResourceID]",
-          "KeyEncryptionKeyURL": "[keyEncryptionKeyURL]",
           "KeyVaultResourceId": "[keyVaultResourceID]",
+          "KeyEncryptionKeyURL": "[keyEncryptionKeyURL]",
+          "KekVaultResourceId": "[kekVaultResourceID]",
           "SequenceVersion": "sequenceVersion]",
           "VolumeType": "[volumeType]"
         }
@@ -98,8 +98,8 @@ V 2.2 şeması tüm yeni VM 'Lerde önerilir ve Azure Active Directory özellik 
       "KeyEncryptionAlgorithm": "[keyEncryptionAlgorithm]",
       "KeyVaultURL": "[keyVaultURL]",
       "KeyVaultResourceId": "[keyVaultResourceID]",
-      "KekVaultResourceId": "[keyVaultResourceID]",
       "KeyEncryptionKeyURL": "[keyEncryptionKeyURL]",
+      "KekVaultResourceId": "[kekVaultResourceID]",
       "SequenceVersion": "sequenceVersion]",
       "VolumeType": "[volumeType]"
     }
@@ -128,8 +128,8 @@ V 2.2 şeması tüm yeni VM 'Lerde önerilir ve Azure Active Directory özellik 
       "KeyEncryptionAlgorithm": "[keyEncryptionAlgorithm]",
       "KeyVaultURL": "[keyVaultURL]",
       "KeyVaultResourceId": "[keyVaultResourceID]",
-      "KekVaultResourceId": "[keyVaultResourceID]",
       "KeyEncryptionKeyURL": "[keyEncryptionKeyURL]",
+      "KekVaultResourceId": "[kekVaultResourceID]",
       "SequenceVersion": "sequenceVersion]",
       "VolumeType": "[volumeType]"
     }
@@ -140,7 +140,7 @@ V 2.2 şeması tüm yeni VM 'Lerde önerilir ve Azure Active Directory özellik 
 
 ### <a name="property-values"></a>Özellik değerleri
 
-| Ad | Değer/örnek | Veri Türü |
+| Name | Değer/örnek | Veri Türü |
 | ---- | ---- | ---- |
 | apiVersion | 2019-07-01 | date |
 | yayımcı | Microsoft. Azure. Security | string |

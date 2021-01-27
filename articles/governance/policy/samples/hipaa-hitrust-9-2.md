@@ -1,15 +1,15 @@
 ---
 title: HIPAA ZRUST 9,2 için mevzuat uyumluluk ayrıntıları
 description: HIPAA ZRUST 9,2 mevzuatı uyumluluğu yerleşik girişiminin ayrıntıları. Her denetim, değerlendirmede yardımcı olan bir veya daha fazla Azure Ilke tanımına eşlenir.
-ms.date: 01/21/2021
+ms.date: 01/25/2021
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: a3b43ee64be49d9e71c709f8472d9c56435f8e0e
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: bbec4e1ea72f458557281f76b5ca5178bce2c316
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98683642"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98805596"
 ---
 # <a name="details-of-the-hipaa-hitrust-92-regulatory-compliance-built-in-initiative"></a>HIPAA ZRUST 9,2 mevzuatı uyumluluğu yerleşik girişiminin ayrıntıları
 
@@ -1443,7 +1443,6 @@ Bu yerleşik girişim [HIPAA zrust 9,2 şema örneğinin](../../blueprints/sampl
 |[Makinelerinizdeki güvenlik yapılandırmasındaki güvenlik açıkları düzeltilmelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe1e5fd5d-3e4c-4ce1-8661-7d1873ae6b15) |Yapılandırılmış temeli karşılamayan sunucular, Azure Güvenlik Merkezi tarafından öneriler olarak izlenir |Auditınotexists, devre dışı |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_OSVulnerabilities_Audit.json) |
 |[Sanal makine ölçek kümelerinizin güvenlik yapılandırmasındaki güvenlik açıkları düzeltilmelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3c735d8a-a4ba-4a3a-b7cf-db7754cf57f4) |Saldırılara karşı korumak için sanal makine ölçek kümelerinizin üzerindeki işletim sistemi güvenlik açıklarını denetleyin. |Auditınotexists, devre dışı |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_VmssOSVulnerabilities_Audit.json) |
 |[SQL veritabanlarınızdaki güvenlik açıkları düzeltilmelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffeedbf84-6b99-488c-acc2-71c829aa5ffc) |İzleme güvenlik açığı değerlendirmesi tarama sonuçları ve veritabanı güvenlik açıklarının nasıl düzeltileceğine ilişkin öneriler. |Auditınotexists, devre dışı |[4.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_SQLDbVulnerabilities_Audit.json) |
-|[Güvenlik açıkları bir güvenlik açığı değerlendirme çözümü tarafından düzeltilmelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F760a85ff-6162-42b3-8d70-698e268f648c) |Azure Güvenlik Merkezi 'nde güvenlik açığı değerlendirmesi çözümü olmadan güvenlik açığı değerlendirme çözümü ve VM 'Ler tarafından algılanan güvenlik açıklarını izler. |Auditınotexists, devre dışı |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_VMVulnerabilities_Audit.json) |
 |[Güvenlik açığı değerlendirmesi SQL yönetilen örneği üzerinde etkinleştirilmelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1b7aa243-30e4-4c9e-bca8-d0d3022b634a) |Yinelenen güvenlik açığı değerlendirmesi taramaları etkinleştirilmemiş olan her bir SQL yönetilen örneği denetleyin. Güvenlik açığı değerlendirmesi, olası veritabanı güvenlik açıklarını düzeltmenizi, izleyebilir ve yardımcı olabilir. |Auditınotexists, devre dışı |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/VulnerabilityAssessmentOnManagedInstance_Audit.json) |
 |[Güvenlik açığı değerlendirmesi SQL sunucularınızda etkinleştirilmelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fef2a8f2a-b3d9-49cd-a8a8-9a3aaaf647d9) |Yinelenen güvenlik açığı değerlendirmesi taramaları etkinleştirilmemiş olan Azure SQL Server 'ı denetleyin. Güvenlik açığı değerlendirmesi, olası veritabanı güvenlik açıklarını düzeltmenizi, izleyebilir ve yardımcı olabilir. |Auditınotexists, devre dışı |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/VulnerabilityAssessmentOnServer_Audit.json) |
 |[Windows makineleri, ' güvenlik seçenekleri-Microsoft ağ sunucusu ' gereksinimlerini karşılamalıdır](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fcaf2d518-f029-4f6b-833b-d7081702f253) |Windows makineleri SMB v1 sunucusunu devre dışı bırakmak için ' güvenlik seçenekleri-Microsoft ağ sunucusu ' kategorisinde belirtilen grup ilkesi ayarlara sahip olmalıdır. Bu ilke, Konuk yapılandırma ön koşullarının ilke atama kapsamına dağıtılmasını gerektirir. Ayrıntılar için, adresini ziyaret edin [https://aka.ms/gcpol](https://aka.ms/gcpol) . |Auditınotexists, devre dışı |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_SecurityOptionsMicrosoftNetworkServer_AINE.json) |
@@ -1463,14 +1462,6 @@ Bu yerleşik girişim [HIPAA zrust 9,2 şema örneğinin](../../blueprints/sampl
 |Name<br /><sub>(Azure portal)</sub> |Description |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[Sanal makinelerinizde bir güvenlik açığı değerlendirme çözümünün etkinleştirilmesi gerekir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F501541f7-f7e7-4cd6-868c-4190fdad3ac9) |Sanal makineleri, desteklenen bir güvenlik açığı değerlendirme çözümü çalıştırıp çalıştırmadığını tespit etmek üzere denetler. Her bir siber risk ve güvenlik programının çekirdek bileşeni, güvenlik açıklarının tanımlama ve analizidir. Azure Güvenlik Merkezi 'nin standart fiyatlandırma katmanı, sanal makineleriniz için ek ücret olmadan güvenlik açığı taraması içerir. Ayrıca, güvenlik merkezi bu aracı sizin için otomatik olarak dağıtabilir. |Auditınotexists, devre dışı |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_ServerVulnerabilityAssessment_Audit.json) |
-
-### <a name="internal-and-external-vulnerability-assessments-of-covered-information-systems-virtualized-environments-and-networked-environments-including-both-network--and-application-layer-tests-are-performed-by-a-qualified-individual-on-a-quarterly-basis-or-after-significant-changes"></a>Hem ağ hem de uygulama katmanı testleri de dahil olmak üzere kapsanan bilgi sistemleri, sanallaştırılmış ortamlar ve ağa bağlı ortamların iç ve dış güvenlik açığı değerlendirmeleri, her iki ayda bir veya önemli değişikliklerden sonra nitelikli bir şekilde gerçekleştirilir.
-
-**Kimlik**: 0712.10 m2organizational. 4-10. d **sahiplik**: müşteri
-
-|Name<br /><sub>(Azure portal)</sub> |Description |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
-|---|---|---|---|
-|[Güvenlik açıkları bir güvenlik açığı değerlendirme çözümü tarafından düzeltilmelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F760a85ff-6162-42b3-8d70-698e268f648c) |Azure Güvenlik Merkezi 'nde güvenlik açığı değerlendirmesi çözümü olmadan güvenlik açığı değerlendirme çözümü ve VM 'Ler tarafından algılanan güvenlik açıklarını izler. |Auditınotexists, devre dışı |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_VMVulnerabilities_Audit.json) |
 
 ### <a name="patches-are-tested-and-evaluated-before-they-are-installed"></a>Düzeltme ekleri, yüklenmeden önce test edilir ve değerlendirilir.
 

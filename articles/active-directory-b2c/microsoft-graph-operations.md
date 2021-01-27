@@ -12,18 +12,18 @@ ms.date: 01/21/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 1dc5b8dc8930d75456f307324ef97bd60e78eca9
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 96772020e70aeb32fa1a8ae18bf3818396887877
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98660166"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98805229"
 ---
 # <a name="manage-azure-ad-b2c-with-microsoft-graph"></a>Microsoft Graph ile Azure AD B2C yönetme
 
 Microsoft Graph, Azure AD B2C dizininizdeki kaynakları yönetmenizi sağlar. Aşağıdaki Microsoft Graph API işlemleri, kullanıcılar, kimlik sağlayıcıları, Kullanıcı akışları, özel ilkeler ve ilke anahtarları dahil Azure AD B2C kaynaklarının yönetimi için desteklenir. Aşağıdaki bölümlerde yer alan her bağlantı, bu işlem için Microsoft Graph API başvurusu içinde karşılık gelen sayfayı hedefler. 
 
-## <a name="perquisites"></a>Önkoşulları denetle
+## <a name="prerequisites"></a>Önkoşullar
 
 MS Graph API kullanmak ve Azure AD B2C kiracınızdaki kaynaklarla etkileşim kurmak için izinleri veren bir uygulama kaydına ihtiyacınız vardır. Yönetim uygulamanızın kullanabileceği bir uygulama kaydı oluşturmak için, [Azure AD B2C yönetme Microsoft Graph](microsoft-graph-get-started.md) makalesindeki adımları izleyin. 
 

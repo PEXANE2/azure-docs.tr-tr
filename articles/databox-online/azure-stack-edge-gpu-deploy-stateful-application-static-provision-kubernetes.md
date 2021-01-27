@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 09/22/2020
+ms.date: 01/25/2021
 ms.author: alkohli
-ms.openlocfilehash: c2a14c12baac29d73754bb17e3ca386cc48e1ba0
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 5704f88d8099966eedcb7143085130ad1376d742
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96449228"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98804892"
 ---
 # <a name="use-kubectl-to-run-a-kubernetes-stateful-application-with-a-persistentvolume-on-your-azure-stack-edge-pro-device"></a>Kubectl 'yi, Azure Stack Edge Pro cihazınızda bir PersistentVolume ile bir Kubernetes durum bilgisi olan uygulama çalıştırmak için kullanın
 
@@ -26,7 +26,7 @@ Azure Stack Edge Pro, Azure SQL Edge kapsayıcılarını çalıştırmayı da de
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Durum bilgisi olan uygulamayı dağıtabilmeniz için cihazınızda aşağıdaki önkoşulları ve cihaza erişmek için kullanacağınız istemciyi tamamladığınızdan emin olun:
+Durum bilgisi olan uygulamayı dağıtabilmeniz için cihazınızda aşağıdaki önkoşulları ve cihaza erişmek için kullanacağınız istemciyi doldurun:
 
 ### <a name="for-device"></a>Cihaz için
 
@@ -37,7 +37,7 @@ Durum bilgisi olan uygulamayı dağıtabilmeniz için cihazınızda aşağıdaki
 ### <a name="for-client-accessing-the-device"></a>Cihaza erişen istemci için
 
 - Azure Stack Edge Pro cihazına erişmek için kullanılacak bir Windows istemci sisteminiz vardır.
-    - İstemci Windows PowerShell 5,0 veya üstünü çalıştırıyor. Windows PowerShell 'in en son sürümünü indirmek için [Windows PowerShell 'ı yükleme](/powershell/scripting/install/installing-windows-powershell?view=powershell-7)bölümüne gidin.
+    - İstemci Windows PowerShell 5,0 veya üstünü çalıştırıyor. Windows PowerShell 'in en son sürümünü indirmek için [Windows PowerShell 'ı yükleme](/powershell/scripting/install/installing-windows-powershell?view=powershell-7&preserve-view=true)bölümüne gidin.
     
     - [Desteklenen bir işletim sistemine](azure-stack-edge-gpu-system-requirements.md#supported-os-for-clients-connected-to-device) sahip başka bir istemciniz de olabilir. Bu makalede, bir Windows istemcisi kullanılırken yordam açıklanmaktadır. 
     
@@ -50,7 +50,7 @@ Durum bilgisi olan uygulamayı dağıtabilmeniz için cihazınızda aşağıdaki
     - `kubectl`İstemci sürümünün, Azure Stack Edge Pro cihazınızda çalışan Kubernetes ana sürümünden birden fazla sürüm olmadığından emin olun. 
         - `kubectl version`İstemci üzerinde çalışan kubectl sürümünü denetlemek için kullanın. Tam sürümü bir yere unutmayın.
         - Azure Stack Edge Pro cihazınızın yerel kullanıcı arabiriminde **Genel Bakış ' a** gidin ve Kubernetes yazılım numarasına göz atın. 
-        - Desteklenen Kubernetes sürümünde belirtilen eşlemenin uyumluluk için bu iki sürümü doğrulayın <!-- insert link-->. 
+        - Desteklenen Kubernetes sürümünde belirtilen eşlemenin uyumluluğuyla uyumluluk için bu iki sürümü doğrulayın.<!-- insert link--> 
 
 
 Azure Stack Edge Pro cihazınızda durum bilgisi olan bir uygulamayı dağıtmaya hazırlanıyor. 
@@ -327,7 +327,7 @@ kubectl delete deployment <deployment-name>,svc <service-name> -n <your-namespac
 kubectl delete pvc <your-pvc-name> -n <your-namespace>
 ```
 
-Dağıtımı ve hizmeti sildiğinizde oluşan örnek çıktı aşağıda verilmiştir.
+Dağıtım ve hizmeti sildiğinizde bunun örnek çıktısı aşağıda verilmiştir.
 
 ```powershell
 C:\Users\user>kubectl delete deployment,svc mysql -n userns1
@@ -341,9 +341,9 @@ Burada, PVC 'yi sildiğinizde oluşan örnek çıktı verilmiştir.
 C:\Users\user>kubectl delete pvc mysql-pv-claim -n userns1
 persistentvolumeclaim "mysql-pv-claim" deleted
 C:\Users\user>
-```                                                                                         
+```
 
-PVC silindiği için BD artık PVC 'ye bağlanmadı. Bu, paylaşımın oluşturulduğu sırada sağlandığı için, bu paylaşımın silinmesi gerekir. Şu adımları izleyin:
+PVC silindiği için BD artık PVC 'ye bağlanmadı. Bu, paylaşımın oluşturulduğu sırada sağlandığı için, bu paylaşımın silinmesi gerekir. Şu adımları uygulayın:
 
 1. Paylaşımdan çıkarın. Azure portal, **Azure Stack Edge kaynak > paylaşımlarına** gidin ve çıkarmak istediğiniz paylaşımı seçin ve tıklayın. Çıkar **' ı** seçin ve işlemi onaylayın. Paylaşımın çıkarılana kadar bekleyin. Takma kaldırma, Kubernetes kümesinden paylaşımın (ve dolayısıyla ilişkili PersistentVolume) payını yayınlar. 
 

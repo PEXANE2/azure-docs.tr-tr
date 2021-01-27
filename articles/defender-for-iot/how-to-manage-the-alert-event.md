@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/07/2020
 ms.service: azure
 ms.topic: how-to
-ms.openlocfilehash: 023b33732b80198c4ed187328e8d18314f385f94
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: ad09bcb1ea4aa32bdd04af47d3503f74c850a10b
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97841862"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98803513"
 ---
 # <a name="manage-alert-events"></a>Uyarı olaylarını yönetme
 
@@ -38,7 +38,7 @@ Uyarı olaylarını yönetmek için aşağıdaki seçenekler kullanılabilir:
 
 ## <a name="about-acknowledging-and-unacknowledging-events"></a>Bildirimleri ele al ve geri bildirimleri kaldırma hakkında
 
-Belirli durumlarda, bir sensör algılanan bir olayı öğrenmek istemiyor ya da seçenek kullanılamayabilir. Bunun yerine, olay azaltma gerektirebilir. Örnek:
+Belirli durumlarda, bir sensör algılanan bir olayı öğrenmek istemiyor ya da seçenek kullanılamayabilir. Bunun yerine, olay azaltma gerektirebilir. Örneğin:
 
 - **Ağ yapılandırmasını veya cihazı azaltma**: ağda yeni bir cihazın algılandığını belirten bir uyarı alırsınız. Araştırırken, cihazın yetkisiz bir ağ aygıtı olduğunu fark edersiniz. Cihazın ağla bağlantısını keserek olayı işleyebilirsiniz.
 - **Bir algılayıcı yapılandırmasını güncelleştirme**: bir sunucunun aşırı sayıda uzak bağlantı başlattığını belirten bir uyarı alırsınız. Bu uyarı, algılayıcı anomali eşikleri belirli bir sayıdaki oturumun üzerindeki uyarıları bir dakika içinde tetiklemek üzere tanımlandığından tetiklendi. Eşikleri güncelleştirerek olayı işleyebilirsiniz.
@@ -57,7 +57,7 @@ Daha fazla araştırma gerekliyse uyarıların kabul edilmemiş olduğunu.
 
 ## <a name="about-muting-and-unmuting-events"></a>Etkinlikleri kapatma ve geri açma hakkında
 
-Belirli koşullar altında, sensörizin ağınızda belirli bir senaryoyu yoksayacak şekilde söylemek isteyebilirsiniz. Örnek:
+Belirli koşullar altında, sensörizin ağınızda belirli bir senaryoyu yoksayacak şekilde söylemek isteyebilirsiniz. Örneğin:
 
   - **Anomali** altyapısı iki cihaz arasındaki bant genişliğindeki bir uyarıyı tetikler, ancak bu cihazlar için ani artış geçerlidir.
 
@@ -107,7 +107,5 @@ Bir olay kapalı olduğunda, kaynağın hedefe bakılmaksızın geçersiz içeri
 2. Sesinin kapalı olup olmadığını görmek için bir uyarının üzerine gelin.  
 
 ## <a name="see-also"></a>Ayrıca bkz.
-
-[Rapor oluştur](how-to-generate-reports.md)
 
 [Hangi trafiğin izleneceğini denetleme](how-to-control-what-traffic-is-monitored.md)

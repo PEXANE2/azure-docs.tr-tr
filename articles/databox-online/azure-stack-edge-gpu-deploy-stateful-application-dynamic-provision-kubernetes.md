@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/26/2020
+ms.date: 01/25/2021
 ms.author: alkohli
-ms.openlocfilehash: 81a52b26c5291f788ac81caeb2ca5416a2f58d36
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: e009369f6223e171984d1142419101fdd82879b0
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96448870"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98804906"
 ---
 # <a name="use-kubectl-to-run-a-kubernetes-stateful-application-with-storageclass-on-your-azure-stack-edge-pro-gpu-device"></a>Kubectl 'yi kullanarak Azure Stack Edge Pro GPU cihazınızda StorageClass ile Kubernetes durum bilgisi olan bir uygulama çalıştırın
 
@@ -24,7 +24,7 @@ Bu yordam, [Azure Stack Edge Pro cihazındaki Kubernetes depolamayı](azure-stac
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Durum bilgisi olan uygulamayı dağıtabilmeniz için cihazınızda aşağıdaki önkoşulları ve cihaza erişmek için kullanacağınız istemciyi tamamladığınızdan emin olun:
+Durum bilgisi olan uygulamayı dağıtabilmeniz için cihazınızda aşağıdaki önkoşulları ve cihaza erişmek için kullanacağınız istemciyi doldurun:
 
 ### <a name="for-device"></a>Cihaz için
 
@@ -35,7 +35,7 @@ Durum bilgisi olan uygulamayı dağıtabilmeniz için cihazınızda aşağıdaki
 ### <a name="for-client-accessing-the-device"></a>Cihaza erişen istemci için
 
 - Azure Stack Edge Pro cihazına erişmek için kullanılacak bir Windows istemci sisteminiz vardır.
-    - İstemci Windows PowerShell 5,0 veya üstünü çalıştırıyor. Windows PowerShell 'in en son sürümünü indirmek için [Windows PowerShell 'ı yükleme](/powershell/scripting/install/installing-windows-powershell?view=powershell-7)bölümüne gidin.
+    - İstemci Windows PowerShell 5,0 veya üstünü çalıştırıyor. Windows PowerShell 'in en son sürümünü indirmek için [Windows PowerShell 'ı yükleme](/powershell/scripting/install/installing-windows-powershell?view=powershell-7&preserve-view=true)bölümüne gidin.
     
     - [Desteklenen bir işletim sistemine](azure-stack-edge-gpu-system-requirements.md#supported-os-for-clients-connected-to-device) sahip başka bir istemciniz de olabilir. Bu makalede, bir Windows istemcisi kullanılırken yordam açıklanmaktadır. 
     
@@ -157,7 +157,7 @@ Artık bir Kubernetes dağıtımı oluşturup bunu bir PersistentVolumeClaim (PV
     persistentvolumeclaim/mysql-pv-claim-sc created
     C:\Users\user>
     ```
-   Oluşturulan PVC 'nin adının burada olduğunu aklınızda yazın `mysql-pv-claim-sc` . Daha sonraki bir adımda kullanacaksınız. 
+   Oluşturulan PVC 'nin adını, bu örnekte, `mysql-pv-claim-sc` . Daha sonraki bir adımda kullanacaksınız.
 
 4. Dosyanın içeriğini dağıtın `mysql-deployment.yml` .
 
@@ -307,7 +307,7 @@ kubectl delete deployment <deployment-name>,svc <service-name> -n <your-namespac
 kubectl delete pvc <your-pvc-name> -n <your-namespace>
 ```
 
-Dağıtımı ve hizmeti sildiğinizde oluşan örnek çıktı aşağıda verilmiştir.
+Dağıtım ve hizmeti sildiğinizde bunun örnek çıktısı aşağıda verilmiştir.
 
 ```powershell
 C:\Users\user>kubectl delete deployment,svc mysql -n userns1

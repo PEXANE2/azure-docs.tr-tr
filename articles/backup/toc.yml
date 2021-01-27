@@ -79,7 +79,7 @@
         - name: SSS-Yedekleme Merkezi
           href: backup-center-faq.yml
         - name: SSS-Azure VM yedeklemesi
-          href: backup-azure-vm-backup-faq.md
+          href: backup-azure-vm-backup-faq.yml
         - name: SSS-MARS aracısı
           href: backup-azure-file-folder-backup-faq.md
         - name: SSS-Azure Dosyalar’ı yedekleme

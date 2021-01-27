@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 01/21/2021
+ms.date: 01/25/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 143edc57b155d12fca266b4d3843af3a823eabed
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: a8499b2695f32917619c94defc06738de925db04
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98699505"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98805506"
 ---
-|Name<br /><sub>(Azure portal)</sub> |Açıklama |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure portal)</sub> |Description |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[Yetkili IP aralıkları, Kubernetes hizmetlerinde tanımlanmalıdır](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0e246bcf-5f6f-4f87-bc6f-775d4712c7ea) |Yalnızca belirli aralıklardaki IP adreslerine API erişimi vererek Kubernetes Hizmet Yönetim API'si erişimi kısıtlayın. Yalnızca izin verilen ağların içindeki uygulamaların kümeye erişebildiğinden emin olmak için yetkilendirilmiş IP aralıklarına erişimi sınırlandırmamak önerilir. |Denetim, devre dışı |[2.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_EnableIpRanges_KubernetesService_Audit.json) |
 |[Kubernetes hizmeti (AKS) için Azure Ilke eklentisi, kümelerinizde yüklü ve etkin olmalıdır](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0a15ec92-a229-4763-bb14-0ea34a568f8d) |Kubernetes hizmeti (AKS) için Azure Ilke eklentisi, açık Ilke Aracısı (OPA) için bir giriş denetleyicisi Web kancası olan v3 'i genişleterek, kümelerinizde merkezi ve tutarlı bir şekilde ölçeklenebilir ve koruma uygulamalarını uygular. |Denetim, devre dışı |[1.0.1-Önizleme](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/AKS_AzurePolicyAddOn_Audit.json) |

@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/13/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 1747af77468ebe41f59892dea4bb49ce24757f37
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 9c976671bccb420ae24d8def7a6574098d86ce6d
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97842431"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98803585"
 ---
 # <a name="enhance-port-and-vlan-name-resolution"></a>Bağlantı noktası ve VLAN ad çözümlemesini geliştirme
 
@@ -84,7 +84,8 @@ VLAN 'Ları yapılandırmak için:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Cihaz envanteri ve veri madenciliği için raporlarda zenginleştirilmiş cihaz bilgilerini görüntüleyin:
+Zenginleştirilmiş cihaz bilgilerini çeşitli raporlarda görüntüleyin:
 
-- [Bir cihaz envanterinde algılayıcı algılamalarını araştırın](how-to-investigate-sensor-detections-in-a-device-inventory.md)
-- [Rapor oluştur](how-to-generate-reports.md)
+- [Bir cihaz envanterinde algılayıcı algılamalarını araştırma](how-to-investigate-sensor-detections-in-a-device-inventory.md)
+- [Algılayıcı eğilimleri ve istatistik raporları](how-to-create-trends-and-statistics-reports.md)
+- [Algılayıcı veri araştırma sorguları](how-to-create-data-mining-queries.md)

@@ -5,12 +5,12 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 01/31/2019
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 27294f91fd6c79b10a85678a7acd60de56cf1ca4
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 1a1b11d517fdfea0aa3a0f553b63276bc20f90be
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94562347"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98805457"
 ---
 # <a name="back-up-a-virtual-machine-in-azure-with-the-azure-cli"></a>Azure CLı ile Azure 'da bir sanal makineyi yedekleme
 
@@ -71,7 +71,7 @@ az backup protection enable-for-vm \
 ```
 
 > [!IMPORTANT]
-> Aynı anda birden çok VM için yedeklemeyi etkinleştirmek üzere CLı kullanırken, tek bir ilkenin onunla ilişkilendirilmiş 100 ' den fazla VM 'ye sahip olmadığından emin olun. Bu [Önerilen en iyi uygulamadır](./backup-azure-vm-backup-faq.md#is-there-a-limit-on-number-of-vms-that-can-beassociated-with-the-same-backup-policy). Şu anda, PowerShell istemcisi 100 ' den fazla VM varsa açıkça engellenmez, ancak bu denetim ileride eklenmek üzere planlanmaktadır.
+> Aynı anda birden çok VM için yedeklemeyi etkinleştirmek üzere CLı kullanırken, tek bir ilkenin onunla ilişkilendirilmiş 100 ' den fazla VM 'ye sahip olmadığından emin olun. Bu [Önerilen en iyi uygulamadır](./backup-azure-vm-backup-faq.yml#is-there-a-limit-on-number-of-vms-that-can-be-associated-with-the-same-backup-policy). Şu anda, PowerShell istemcisi 100 ' den fazla VM varsa açıkça engellenmez, ancak bu denetim ileride eklenmek üzere planlanmaktadır.
 
 ## <a name="start-a-backup-job"></a>Bir yedekleme işi başlatma
 
@@ -81,7 +81,7 @@ Sanal makineyi yedeklemek için aşağıdaki parametreler kullanılır:
 
 - `--container-name`, sanal makinenizin adıdır
 - `--item-name`, sanal makinenizin adıdır
-- `--retain-until` değeri kurtarma noktasının kullanılabilir durumda olmasını istediğiniz son tarihe ve UTC saat biçiminde ( **gg-aa-yyyy** ) ayarlanmalıdır
+- `--retain-until` değeri kurtarma noktasının kullanılabilir durumda olmasını istediğiniz son tarihe ve UTC saat biçiminde (**gg-aa-yyyy**) ayarlanmalıdır
 
 Aşağıdaki örnekte *myVM* adlı sanal makine yedeklenmekte ve kurtarma noktasının geçerlilik sonu 18 Ekim 2017 olarak ayarlanmaktadır:
 

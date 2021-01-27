@@ -1,15 +1,15 @@
 ---
 title: Azure Arc etkin sunucular için yerleşik ilke tanımları
 description: Azure Arc etkin sunucular (Önizleme) için Azure Ilkesi yerleşik ilke tanımlarını listeler. Bu yerleşik ilke tanımları, Azure kaynaklarınızı yönetmek için yaygın yaklaşımlar sağlar.
-ms.date: 01/21/2021
+ms.date: 01/25/2021
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 3639c76e8d4a56b580252c6397e149a0016c9e6f
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 10a7d57b8c750c885d81ed1f3b791500db1f661c
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98701209"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98805115"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-arc-enabled-servers"></a>Azure Arc etkin sunucular için Azure Ilkesi yerleşik tanımları
 

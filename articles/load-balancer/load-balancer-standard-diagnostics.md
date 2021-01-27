@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/14/2019
+ms.date: 01/25/2021
 ms.author: allensu
-ms.openlocfilehash: 90443a898ffdebf33a0c967719ba25a2ccc6f9a7
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 43d83d994c9a4ee3cf89b584f6c3835a62fa2cfe
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 01/26/2021
-ms.locfileid: "98792108"
+ms.locfileid: "98806008"
 ---
 # <a name="standard-load-balancer-diagnostics-with-metrics-alerts-and-resource-health"></a>Ölçümler, uyarılar ve kaynak durumu ile Standart Load Balancer
 
@@ -26,7 +26,6 @@ Azure Standart Load Balancer aşağıdaki tanılama yeteneklerini kullanıma sun
 * **Çok boyutlu ölçümler ve uyarılar**: Standart yük dengeleyici yapılandırmalarına yönelik [Azure izleyici](../azure-monitor/overview.md) aracılığıyla çok boyutlu tanılama özellikleri sağlar. Standart yük dengeleyici kaynaklarınızı izleyebilir, yönetebilir ve sorun giderebilirsiniz.
 
 * **Kaynak sistem durumu**: Load Balancer kaynak durumu durumu Monitor altındaki kaynak durumu sayfasında bulunur. Bu otomatik denetim, Load Balancer kaynağınızın geçerli kullanılabilirliğini bildirir.
-
 Bu makalede, bu yetenekler için hızlı bir tura yer verilmiştir ve bunları Standart Load Balancer için kullanmanın yolları sunulmaktadır. 
 
 ## <a name="multi-dimensional-metrics"></a><a name = "MultiDimensionalMetrics"></a>Çok boyutlu ölçümler
@@ -35,7 +34,7 @@ Azure Load Balancer, Azure portal Azure ölçümleri aracılığıyla çok boyut
 
 Çeşitli Standart Load Balancer yapılandırmalarında aşağıdaki ölçümler sağlanır:
 
-| Metric | Kaynak türü | Açıklama | Önerilen toplama |
+| Metric | Kaynak türü | Description | Önerilen toplama |
 | --- | --- | --- | --- |
 | Veri yolu kullanılabilirliği | Genel ve iç yük dengeleyici | Standart Load Balancer bir bölgedeki veri yolunu sürekli olarak yük dengeleyicinin ön ucuna (VM’nizi destekleyen SDN yığınına kadar) aktarır. Sağlıklı örnekler kaldığı sürece ölçüm, uygulamanızın yük dengeli trafiğiyle aynı yolu izler. Müşterilerinizin kullandığı veri yolu da doğrulanır. Ölçümler uygulamanızda görünmez ve diğer işlemleri engellemez.| Ortalama |
 | Sistem durumu yoklama durumu | Genel ve iç yük dengeleyici | Standart Load Balancer, yapılandırma ayarlarınıza göre uygulama uç noktanızın sistem durumunu izleyen dağıtılmış bir sistem durumu algılama hizmeti kullanır. Bu ölçüm, yük dengeleyici havuzundaki her örnek uç noktası için toplu veya uç noktası başına filtrelenmiş bir görünüm sunar. Durum yoklaması yapılandırmanızın belirttiği gibi Load Balancer’ın uygulamanızın durumunu nasıl görüntülediğini görebilirsiniz. |  Ortalama |
@@ -73,7 +72,7 @@ Standart Load Balancer kaynaklarınızın ölçümlerini görüntülemek için:
 
 ### <a name="retrieve-multi-dimensional-metrics-programmatically-via-apis"></a>API 'Ler aracılığıyla çok boyutlu ölçümleri program aracılığıyla alma
 
-Çok boyutlu ölçüm tanımlarını ve değerlerini almaya yönelik API Kılavuzu için bkz. [Azure izleme REST API izlenecek yol](../azure-monitor/platform/rest-api-walkthrough.md#retrieve-metric-definitions-multi-dimensional-api). Bu ölçümler yalnızca ' tüm ölçümler ' seçeneği aracılığıyla bir depolama hesabına yazılabilir. 
+Çok boyutlu ölçüm tanımlarını ve değerlerini almaya yönelik API Kılavuzu için bkz. [Azure izleme REST API izlenecek yol](../azure-monitor/platform/rest-api-walkthrough.md#retrieve-metric-definitions-multi-dimensional-api). Bu ölçümler, ' tüm ölçümler ' kategorisi için bir [Tanılama ayarı](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings) eklenerek bir depolama hesabına yazılabilir. 
 
 ### <a name="configure-alerts-for-multi-dimensional-metrics"></a>Çok boyutlu ölçümler için uyarıları yapılandırma ###
 
@@ -85,9 +84,6 @@ Uyarıları yapılandırmak için:
     1.  Uyarı koşulunu yapılandırma
     1.  Seçim Otomatik onarım için eylem grubu Ekle
     1.  Sezgisel yeniden eyleme izin veren uyarı önem derecesi, ad ve açıklama atayın
-
-  >[!NOTE]
-  >Uyarı koşulu yapılandırma penceresinde, sinyal geçmişi için zaman serisi gösterilir. Bu zaman serisini, arka uç IP gibi boyutlara göre filtrelemeye yönelik bir seçenek vardır. Bu **, zaman** serisi grafiğini filtreleyip uyarının kendisini filtreleyecek. Belirli arka uç IP adresleri için uyarıları yapılandıramazsınız.
 
 ### <a name="common-diagnostic-scenarios-and-recommended-views"></a><a name = "DiagnosticScenarios"></a>Yaygın tanılama senaryoları ve önerilen görünümler
 
@@ -147,7 +143,7 @@ Sıfırdan büyük bir hatalı bağlantı birimi, SNAT bağlantı noktası tüke
 
 SNAT bağlantı istatistiklerini almak için:
 1. **SNAT bağlantıları** ölçüm türünü ve toplama olarak **Sum** ' ı seçin. 
-2. Farklı satırlarla temsil edilen başarılı ve başarısız SNAT bağlantı sayıları için **bağlantı durumuna** göre gruplandırın. 
+2. Başarılı ve başarısız SNAT bağlantı sayımlarının farklı satırlarla temsil edilebilmesi için **bağlantı durumuna** göre gruplandırın. 
 
 ![SNAT bağlantısı](./media/load-balancer-standard-diagnostics/LBMetrics-SNATConnection.png)
 
@@ -186,7 +182,7 @@ SNAT bağlantı noktası kullanımını ve ayırmayı görüntülemek için:
   <summary>Genişlet</summary>
 Bir SYN paketleri ölçümü, belirli bir ön uçla ilişkili olan veya gönderilen ( [giden akışlar](./load-balancer-outbound-connections.md)IÇIN) TCP SYN paketlerinin hacmini açıklar. Bu ölçümü, hizmetinize yönelik TCP bağlantısı girişimlerini anlamak için kullanabilirsiniz.
 
-Çoğu senaryo için toplama olarak **Toplam** ' i kullanın.
+Çoğu senaryo için toplama olarak **Sum** kullanın.
 
 ![SYN bağlantısı](./media/load-balancer-standard-diagnostics/LBMetrics-SYNCount.png)
 
@@ -199,10 +195,10 @@ Bir SYN paketleri ölçümü, belirli bir ön uçla ilişkili olan veya gönderi
   <summary>Genişlet</summary>
 Bayt ve paket sayaçları ölçümü, hizmetiniz tarafından ön uç başına gönderilen veya alınan bayt ve paketlerin hacmini açıklar.
 
-Çoğu senaryo için toplama olarak **Toplam** ' i kullanın.
+Çoğu senaryo için toplama olarak **Sum** kullanın.
 
 Byte veya Packet Count istatistiklerini almak için:
-1. Toplam **bayt sayısını** ve/veya **paket sayısı** ölçüm türünü seçin.  
+1. **Toplam** **bayt sayısını** ve/veya **paket sayısı** ölçüm türünü toplama olarak belirleyin. 
 2. Aşağıdakilerden birini yapın:
    * Belirli bir ön uç IP, ön uç bağlantı noktası, arka uç IP veya arka uç bağlantı noktası üzerine filtre uygulayın.
    * Herhangi bir filtreleme yapmadan yük dengeleyici kaynağınızın genel istatistiklerini alın.
@@ -236,11 +232,11 @@ Grafik, müşterilerin, diğer sorunların oluşup oluşmadığını tahmin etme
 
 Standart Load Balancer kaynaklarının sistem durumu, **izleme > hizmeti sistem durumu** altında mevcut **kaynak sistem durumu** aracılığıyla gösterilir. Ön uç Yük Dengeleme uç noktalarınızın kullanılabilir olup olmadığını belirleyen veri yolu kullanılabilirliğini ölçerek her **iki dakikada** bir değerlendirilir.
 
-| Kaynak sistem durumu | Açıklama |
+| Kaynak sistem durumu | Description |
 | --- | --- |
 | Kullanılabilir | Standart yük dengeleyici kaynağınız sağlıklı ve kullanılabilir durumda. |
-| Düzeyi düşürüldü | Standart yük dengeleyiciye, performansı etkileyen platform veya Kullanıcı tarafından başlatılan olaylar vardır. Veri Yolu Kullanılabilirliği ölçümü en az iki dakika süreyle %90’dan az ama %25’ten fazla durum bildirdi. Orta derecede önemli performans etkisi yaşayacaktır. Kullanılabilirliğinin etkilenmesine neden olan kullanıcı tarafından başlatılan olaylar olup olmadığını öğrenmek için [sorun giderme RHC kılavuzunu izleyin](./troubleshoot-rhc.md) .
-| Kullanılamaz | Standart yük dengeleyici kaynağınız sağlıklı değil. Veri yolu kullanılabilirlik ölçümü, en az iki dakika boyunca %25 sistem durumunu daha az raporladı. Gelen bağlantı için önemli bir performans etkisi veya kullanılabilirlik eksikliği yaşanacaktır. Kullanılamaz duruma neden olan kullanıcı veya platform olayları olabilir. Kullanılabilirliği etkileyen Kullanıcı tarafından başlatılan olaylar olup olmadığını öğrenmek için [sorun giderme RHC kılavuzunu izleyin](./troubleshoot-rhc.md) . |
+| Düzeyi düşürüldü | Standart yük dengeleyiciye, performansı etkileyen platform veya Kullanıcı tarafından başlatılan olaylar vardır. Veri Yolu Kullanılabilirliği ölçümü en az iki dakika süreyle %90’dan az ama %25’ten fazla durum bildirdi. Orta derecede önemli performans etkisi yaşayacaktır. Kullanılabilirliğinin etkilenmesine neden olan kullanıcı tarafından başlatılan olaylar olup olmadığını öğrenmek için [sorun giderme RHC kılavuzunu izleyin](https://docs.microsoft.com/azure/load-balancer/troubleshoot-rhc) .
+| Kullanılamaz | Standart yük dengeleyici kaynağınız sağlıklı değil. Veri yolu kullanılabilirlik ölçümü, en az iki dakika boyunca %25 sistem durumunu daha az raporladı. Gelen bağlantı için önemli bir performans etkisi veya kullanılabilirlik eksikliği yaşanacaktır. Kullanılamaz duruma neden olan kullanıcı veya platform olayları olabilir. Kullanılabilirliği etkileyen Kullanıcı tarafından başlatılan olaylar olup olmadığını öğrenmek için [sorun giderme RHC kılavuzunu izleyin](https://docs.microsoft.com/azure/load-balancer/troubleshoot-rhc) . |
 | Bilinmiyor | Standart yük dengeleyici kaynağınızın kaynak sistem durumu henüz güncelleştirilmemiş veya son 10 dakika boyunca veri yolu kullanılabilirliği bilgilerini almamış. Bu durum geçici olacak ve veriler alınınca hemen doğru durum yansıtılacaktır. |
 
 Genel Standart Load Balancer kaynaklarınızın durumunu görüntülemek için:
@@ -267,6 +263,7 @@ Genel kaynak sistem durumu açıklaması [RHC belgelerinde](../service-health/re
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
+- Load Balancer için önceden yapılandırılmış olan bu ölçümleri görüntülemek için [öngörüleri](https://docs.microsoft.com/azure/load-balancer/load-balancer-insights) kullanma hakkında bilgi edinin
 - [Standart Yük Dengeleyici](./load-balancer-overview.md) hakkında daha fazla bilgi edinin.
 - [Yük dengeleyici giden bağlantınız](./load-balancer-outbound-connections.md)hakkında daha fazla bilgi edinin.
 - [Azure izleyici](../azure-monitor/overview.md)hakkında bilgi edinin.

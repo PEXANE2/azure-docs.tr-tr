@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 01/19/2021
 ms.author: alkohli
-ms.openlocfilehash: d0b7f871b2ea62c810a6d20f6e20a5e8d3f6306e
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 8158868a39bf8a1fe03a620f37e4dcb1c9adc14e
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 01/26/2021
-ms.locfileid: "98791922"
+ms.locfileid: "98805192"
 ---
 # <a name="azure-stack-edge-2101-release-notes"></a>Azure Stack Edge 2101 sürüm notları
 
@@ -46,10 +46,10 @@ Aşağıdaki tabloda, 2101 sürümündeki bilinen sorunların bir özeti verilmi
 |**2.**|Kubernetes panosu | SSL sertifikası ile Kubernetes panosu için *https* uç noktası desteklenmiyor. | |
 |**3.**|Kubernetes |Web proxy etkinleştirildiğinde kenar kapsayıcısı kayıt defteri çalışmıyor.|İşlevsellik gelecekteki bir sürümde kullanılabilir olacaktır. |
 |**4.**|Kubernetes |Kenar kapsayıcısı kayıt defteri IoT Edge modüllerle çalışmaz.| |
-|**e.**|Kubernetes |Kubernetes, .NET uygulamaları tarafından kullanılan ortam değişkeni adlarında ":" öğesini desteklemez. Ayrıca bu, Event Grid IoT Edge modülünün Azure Stack Edge cihazında ve diğer uygulamalarda çalışması için de gereklidir. Daha fazla bilgi için bkz. [ASP.NET Core documentation](/aspnet/core/fundamentals/configuration/?tabs=basicconfiguration&view=aspnetcore-3.1&preserve-view=true#environment-variables).|":" Öğesini çift alt çizgi ile değiştirin. Daha fazla bilgi için bkz. [Kubernetes sorunu](https://github.com/kubernetes/kubernetes/issues/53201)|
-|**inç.** |Azure Arc + Kubernetes kümesi |Varsayılan olarak, `yamls` Git deposundan kaynak silindiğinde, ilgili kaynaklar Kubernetes kümesinden silinmez.  |`--sync-garbage-collection`Git deposundan silindiklerinde kaynakların silinmesine izin vermek Için Arc OperatorParams ' de ayarlamanız gerekir. Daha fazla bilgi için bkz. [yapılandırmayı silme](../azure-arc/kubernetes/use-gitops-connected-cluster.md#additional-parameters). |
-|**7.**|NFS |NFS kullanan uygulamalar, verileri yazmak için cihazınızda paylaşılan takar ve özel yazma kullanmalıdır. Dışlamalı yazma kullanmak, yazma işlemlerinin diske yazılmasını sağlar.| |
-|**240.**|İşlem yapılandırması |İşlem yapılandırması, ağ geçitlerinde ağ geçitleri veya anahtarların veya yönlendiricilerin ağda mevcut olmayan sistemler için Adres Çözümleme Protokolü (ARP) isteklerine yanıt verdiği ağ yapılandırmalarında başarısız olur.| |
+|**e.**|Kubernetes |Kubernetes, .NET uygulamaları tarafından kullanılan ortam değişkeni adlarında ":" öğesini desteklemez. Bu ayrıca Event Grid IoT Edge modülünün Azure Stack Edge cihazında ve diğer uygulamalarda çalışması için de gereklidir. Daha fazla bilgi için bkz. [ASP.NET Core documentation](/aspnet/core/fundamentals/configuration/?tabs=basicconfiguration&view=aspnetcore-3.1&preserve-view=true#environment-variables).|":" Öğesini çift alt çizgi ile değiştirin. Daha fazla bilgi için bkz. [Kubernetes sorunu](https://github.com/kubernetes/kubernetes/issues/53201)|
+|**inç.** |Azure Arc + Kubernetes kümesi |Varsayılan olarak, `yamls` Git deposundan kaynak silindiğinde, ilgili kaynaklar Kubernetes kümesinden silinmez.  |`--sync-garbage-collection`Git deposundan silindiği zaman kaynakların silinmesine izin vermek Için Arc OperatorParams ' de ayarlamanız gerekir. Daha fazla bilgi için bkz. [yapılandırmayı silme](../azure-arc/kubernetes/use-gitops-connected-cluster.md#additional-parameters). |
+|**7.**|NFS |NFS kullanan uygulamalar, verileri yazmak için cihazınızda paylaşılan takar ve özel yazma kullanmalıdır. Bu, yazmaların diske yazılmasını sağlar.| |
+|**240.**|İşlem yapılandırması |İşlem yapılandırması, ağ geçitlerinde ağ geçitleri veya anahtarların veya yönlendiricilerin ağda bulunmayan sistemler için Adres Çözümleme Protokolü (ARP) isteklerine yanıt verdiği ağ yapılandırmalarında başarısız olur.| |
 |**tuşlarına.**|İşlem ve Kubernetes |İlk olarak cihazınızda Kubernetes ayarlandıysa, tüm kullanılabilir GPU 'ları ister. Bu nedenle, Kubernetes 'i ayarladıktan sonra GPU 'ları kullanarak Azure Resource Manager VM 'Ler oluşturmak mümkün değildir. |Cihazınızda 2 GPU varsa, GPU 'YU kullanan 1 VM oluşturabilir ve sonra Kubernetes 'i yapılandırabilirsiniz. Bu durumda, Kubernetes, kalan kullanılabilir 1 GPU 'YU kullanacaktır. |
 
 

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 11/16/2020
+ms.date: 01/25/2021
 ms.author: alkohli
-ms.openlocfilehash: 69d5a0a69bcd820fd59da0a18b3838b65a6a0460
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: 66d537b79819aecab4ce88a56ed465679363f421
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97763447"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98805195"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-via-templates"></a>Şablonlar aracılığıyla Azure Stack Edge Pro GPU cihazınızda sanal makineler dağıtma
 
@@ -29,7 +29,7 @@ Birçok cihaza Azure Stack Edge Pro VM 'Leri dağıtmak için, tam Fleet için t
 
 Şablonları kullanarak dağıtım iş akışının üst düzey özeti aşağıdaki gibidir:
 
-1. **Önkoşulları yapılandırma** -3 tür önkoşul vardır; VM için cihaz, istemci ve.
+1. **Önkoşulları yapılandırma** -üç tür önkoşul vardır: cihaz, istemci ve sanal makine için.
 
     1. **Cihaz önkoşulları**
 
@@ -47,7 +47,7 @@ Birçok cihaza Azure Stack Edge Pro VM 'Leri dağıtmak için, tam Fleet için t
         1. Cihaz konumunda tüm VM kaynaklarını içerecek bir kaynak grubu oluşturun.
         1. VM görüntüsü oluşturmak için kullanılan VHD 'YI karşıya yüklemek için bir depolama hesabı oluşturun.
         1. Cihazınıza erişen istemcideki DNS veya hosts dosyasına yerel depolama hesabı URI 'SI ekleyin.
-        1. BLOB depolama sertifikasını cihaza erişen yerel istemcinin yanı sıra cihaza de yükler. İsteğe bağlı olarak Depolama Gezgini blob Storage sertifikasını yükler.
+        1. Cihaza ve cihazınıza erişen yerel istemciye BLOB depolama sertifikasını yükler. İsteğe bağlı olarak Depolama Gezgini blob Storage sertifikasını yükler.
         1. Daha önce oluşturulan depolama hesabına bir VHD oluşturun ve yükleyin.
 
 2. **Şablonlardan VM oluşturma**
@@ -71,7 +71,7 @@ Azure Stack Edge Pro cihazınızda bu önkoşulları yapılandırın.
 
 ## <a name="vm-prerequisites"></a>VM önkoşulları
 
-VM oluşturma için gerekli olacak kaynakları oluşturmak için bu önkoşulları yapılandırın. 
+VM oluşturma için gereken kaynakları oluşturmak üzere bu önkoşulları yapılandırın. 
 
     
 ### <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
@@ -101,7 +101,7 @@ PS C:\windows\system32>
 
 ### <a name="create-a-storage-account"></a>Depolama hesabı oluşturma
 
-Önceki adımda oluşturulan kaynak grubunu kullanarak yeni bir depolama hesabı oluşturun. Bu, sanal makıne için sanal disk görüntüsünü karşıya yüklemek üzere kullanılacak **yerel bir depolama hesabıdır** .
+Önceki adımda oluşturulan kaynak grubunu kullanarak yeni bir depolama hesabı oluşturun. Bu hesap, sanal makıne için sanal disk görüntüsünü karşıya yüklemek üzere kullanılacak **yerel bir depolama hesabıdır** .
 
 ```powershell
 New-AzureRmStorageAccount -Name <Storage account name> -ResourceGroupName <Resource group name> -Location DBELocal -SkuName Standard_LRS
@@ -209,7 +209,7 @@ Sonraki adımda karşıya yüklemek için kullanabileceğiniz bir sanal disk yan
 
     ![VHD dosyasını karşıya yükle 3](media/azure-stack-edge-gpu-deploy-virtual-machine-templates/upload-vhd-file-3.png)
 
-12. Sonraki adımlarda bunu kullanacağınız için **URI** 'yi kopyalayın ve kaydedin.
+12. Sonraki adımlarda kullanacağınız **URI**'yi kopyalayın ve kaydedin.
 
     ![URI 'yi Kopyala](media/azure-stack-edge-gpu-deploy-virtual-machine-templates/copy-uri-1.png)
 
@@ -237,7 +237,7 @@ Dosya `CreateImage.parameters.json` aşağıdaki parametreleri alır:
     }
 ```
 
-`CreateImage.parameters.json`Azure Stack Edge Pro cihazınız için aşağıdakileri dahil etmek üzere dosyayı düzenleyin:
+`CreateImage.parameters.json`Azure Stack Edge Pro cihazınız için aşağıdaki değerleri içerecek şekilde dosyayı düzenleyin:
 
 1. Karşıya yükleyeceğiniz VHD 'ye karşılık gelen işletim sistemi türünü sağlayın. İşletim sistemi türü Windows veya Linux olabilir.
 
@@ -250,16 +250,17 @@ Dosya `CreateImage.parameters.json` aşağıdaki parametreleri alır:
 
 2. Görüntü URI 'sini önceki adımda karşıya yüklediğiniz görüntünün URI 'siyle değiştirin:
 
-    ```json
-    "imageUri": {
-        "value": "https://myasegpusavm.blob.myasegpu1.wdshcsso.com/windows/WindowsServer2016Datacenter.vhd"
-        },
-    ```
-    Depolama Gezgini ile *http* kullanıyorsanız, bunu bir *http* URI 'sine değiştirin.
+   ```json
+   "imageUri": {
+       "value": "https://myasegpusavm.blob.myasegpu1.wdshcsso.com/windows/WindowsServer2016Datacenter.vhd"
+       },
+   ```
+
+   Depolama Gezgini ile *http* KULLANıYORSANıZ, URI 'yi bir *http* URI 'si olarak değiştirin.
 
 3. Benzersiz bir görüntü adı belirtin. Bu görüntü, sonraki adımlarda VM oluşturmak için kullanılır. 
 
-    Bu makalede kullanılan örnek bir JSON aşağıda verilmiştir.
+   Bu makalede kullanılan örnek bir JSON aşağıda verilmiştir.
 
     ```json
     {
@@ -278,6 +279,7 @@ Dosya `CreateImage.parameters.json` aşağıdaki parametreleri alır:
       }
     }
     ```
+
 5. Parametreler dosyasını kaydedin.
 
 
@@ -588,4 +590,4 @@ Bir Linux sanal makinesine bağlanmak için bu adımları izleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure Resource Manager cmdlet 'leri](/powershell/module/azurerm.resources/?view=azurermps-6.13.0)
+[Azure Resource Manager cmdlet 'leri](/powershell/module/azurerm.resources/?view=azurermps-6.13.0&preserve-view=true)

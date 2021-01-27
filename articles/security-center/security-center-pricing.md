@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/13/2020
+ms.date: 01/26/2021
 ms.author: memildin
-ms.openlocfilehash: ce95106c56e919fa0fcc7d7553a3f0cc0dc77f98
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 9e537bfa782569fb8fa2a7957c6874bda69d8c06
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98121303"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98805361"
 ---
 # <a name="pricing-of-azure-security-center"></a>Azure Güvenlik Merkezi fiyatlandırması
 Azure Güvenlik Merkezi, Azure’da, şirket içinde ve diğer bulutlarda çalışan iş yükleri için birleşik güvenlik yönetimi ve gelişmiş tehdit koruması sağlar. Karma bulut iş yükleri, tehditlere maruz kalma olasılığını azaltan etkin savunmaları ve hızlı gelişen siber risklerle hızlanmanıza yardımcı olacak akıllı algılama üzerinde görünürlük ve denetim sağlar.
@@ -101,8 +101,8 @@ Aboneliğiniz için Azure Defender 'ı etkinleştirmek üzere aşağıdaki yolla
 |Yöntem  |Yönergeler  |
 |---------|---------|
 |Azure portal Azure Güvenlik Merkezi sayfaları|[Azure Defender’ı etkinleştirme](#enable-azure-defender)|
-|REST API'si|[Prmerler API 'SI](/rest/api/securitycenter/pricings)|
-|Azure CLI|[az Security fiyatlandırması](/cli/azure/security/pricing)|
+|REST API|[Prmerler API 'SI](/rest/api/securitycenter/pricings)|
+|Azure CLI’si|[az Security fiyatlandırması](/cli/azure/security/pricing)|
 |PowerShell|[Set-Azsecurityprsosu](/powershell/module/az.security/set-azsecuritypricing)|
 |Azure İlkesi|[Paket ları](https://github.com/Azure/Azure-Security-Center/blob/master/Pricing%20%26%20Settings/ARM%20Templates/Set-ASC-Bundle-Pricing.json)|
 |||

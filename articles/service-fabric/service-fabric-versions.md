@@ -3,12 +3,12 @@ title: Azure Service Fabric küme sürümünüzü yükseltme
 description: Service Fabric ekibi blogundan en yeni sürümlere bağlantı dahil olmak üzere Azure Service Fabric 'deki küme sürümleri hakkında bilgi edinin.
 ms.topic: troubleshooting
 ms.date: 06/15/2020
-ms.openlocfilehash: b7234a60c98c42716e5b294c356062ec7001aef7
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: c9a29a97238164b9f6daf9dda66a1f314a7673ce
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98762642"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98804235"
 ---
 # <a name="upgrade-your-azure-service-fabric-cluster-version"></a>Azure Service Fabric küme sürümünüzü yükseltme
 
@@ -60,13 +60,14 @@ Güvenliği ve kullanılabilirliği artırmak için, Azure altyapısı Service F
 #### <a name="if-you-dont-upgrade-to-a-supported-version"></a>Desteklenen bir sürüme yükseltmezseniz
 
 6,3 ' den sonraki değiştirilmemiş sürümlerde çalışan Azure Service Fabric kümeleri, 19 Ocak 2021 ' e kadar desteklenen bir sürüme yükseltilmeyen işlevsellik veya hizmet kesintileri kaybına neden olur.
-
-Hizmet kesintileri şunları içerebilir:
-
-- **Açık** modu *kullanmayan sürümler* : küme çalışır durumda kalır, ancak **Açık** mod çalışmayı durdurur, bu da iş yükleriniz için hizmet kesintilerine neden olabilir.
-
-- **Açık** modu *kullanan sürümler* : küme kullanılamaz hale gelebilir ve çalışmayı durdurur ve bu da iş yükleriniz için hizmet kesintilerine neden olabilir.
   
+  - **6,3 ' den büyük bir Service Fabric çalıştıran kümeler Için açık ağ ÖZELLIĞI kullanmayın**, küme çalışır durumda kalır.
+
+ - **6,3 ' den büyük Service Fabric bir sürümünü çalıştıran kümeler ve [kapsayıcılar Için açık ağ özelliğini](https://docs.microsoft.com/azure/service-fabric/service-fabric-networking-modes#set-up-open-networking-mode) kullanmak için** , küme kullanılamaz hale gelebilir ve iş yükleriniz için hizmet kesintilerine neden olabilecek çalışmayı durduracaktır.
+ 
+ -   **Windows sürümlerini çalıştıran kümeler için [7.0.457 ve 7.0.466 (her iki sürüm dahil)](https://docs.microsoft.com/azure/service-fabric/service-fabric-versions#supported-version-names) ve Windows Işletim sisteminin Windows kapsayıcıları özelliği etkinleştirilmiştir. Not: Linux sürümleri 7.0.457, 7.0.464 ve 7.0.465 etkilenmez**.
+    - **Etki**: küme, iş yükleriniz için hizmet kesintilerine neden olabilecek çalışmayı durduracaktır.
+    
 #### <a name="required-action"></a>Gerekli eylem
 
 Kapalı kalma süresini veya işlevsellik kaybını engellemek için, kümelerinizin aşağıdaki sürümlerden birini çalıştırdığından emin olun.

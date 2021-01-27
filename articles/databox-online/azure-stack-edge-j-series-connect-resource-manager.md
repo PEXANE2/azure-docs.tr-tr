@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/28/2020
+ms.date: 01/25/2021
 ms.author: alkohli
-ms.openlocfilehash: 6bf0da8716233178889d47ec3d57e9b29bc2658f
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: 54aad90cf86f1a20d76f04f3a829f29c47023558
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97763226"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98805793"
 ---
 # <a name="connect-to-azure-resource-manager-on-your-azure-stack-edge-pro-device"></a>Azure Stack Edge Pro cihazınızda Azure Resource Manager bağlanma
 
@@ -138,9 +138,9 @@ Windows istemcinizin aşağıdaki önkoşulları karşılaması gerekir:
 
     **Ana** sürümü karşılaştırın ve 5,0 veya sonraki bir sürüm olduğundan emin olun.
 
-    Sürümünüz eskiyse bkz. [Windows PowerShell'in mevcut sürümünü yükseltme](/powershell/scripting/install/installing-windows-powershell?view=powershell-6#upgrading-existing-windows-powershell).
+    Sürümünüz eskiyse bkz. [Windows PowerShell'in mevcut sürümünü yükseltme](/powershell/scripting/install/installing-windows-powershell?view=powershell-6&preserve-view=true#upgrading-existing-windows-powershell).
 
-    \'PowerShell 5,0 ' i yoksa, [Windows PowerShell 'i yükleme](/powershell/scripting/install/installing-windows-powershell?view=powershell-6)' yi izleyin.
+    \'PowerShell 5,0 ' i yoksa, [Windows PowerShell 'i yükleme](/powershell/scripting/install/installing-windows-powershell?view=powershell-6&preserve-view=true)' yi izleyin.
 
     Örnek çıktı aşağıda gösterilmiştir.
 
@@ -156,7 +156,7 @@ Windows istemcinizin aşağıdaki önkoşulları karşılaması gerekir:
     
 2. PowerShell Galerisi erişebilirsiniz.
 
-    PowerShell 'i yönetici olarak çalıştırın. PSGallery 'nin bir depo olarak kayıtlı olup olmadığını doğrulayın.
+    PowerShell 'i yönetici olarak çalıştırın. ' `PSGallery` Nin bir depo olarak kaydedilip kaydedilmediği doğrulayın.
 
     ```powershell
     Import-Module -Name PowerShellGet -ErrorAction Stop
@@ -175,7 +175,7 @@ Windows istemcinizin aşağıdaki önkoşulları karşılaması gerekir:
     PSGallery                 Trusted              https://www.powershellgallery.com/api/v2
     ```
     
-Deponuzun güvenilir olmaması veya daha fazla bilgiye ihtiyacınız varsa bkz. [PowerShell Galerisi erişilebilirliği doğrulama](/azure-stack/operator/azure-stack-powershell-install?view=azs-1908#2-validate-the-powershell-gallery-accessibility).
+Deponuzun güvenilir olmaması veya daha fazla bilgiye ihtiyacınız varsa bkz. [PowerShell Galerisi erişilebilirliği doğrulama](/azure-stack/operator/azure-stack-powershell-install?view=azs-1908&preserve-view=true&preserve-view=true#2-validate-the-powershell-gallery-accessibility).
 
 ## <a name="step-4-set-up-azure-powershell-on-the-client"></a>4. Adım: istemcide Azure PowerShell ayarlama 
 
@@ -327,7 +327,7 @@ Azure Resource Manager ortamını ayarlayın ve cihazınızın Azure Resource Ma
     Set-AzureRMEnvironment -Name <Environment Name>
     ```
     
-    Daha fazla bilgi için [set-AzureRMEnvironment](/powershell/module/azurerm.profile/set-azurermenvironment?view=azurermps-6.13.0)adresine gidin.
+    Daha fazla bilgi için [set-AzureRMEnvironment](/powershell/module/azurerm.profile/set-azurermenvironment?view=azurermps-6.13.0&preserve-view=true)adresine gidin.
 
     - Yürütmeniz gereken her cmdlet için ortamı satır içi olarak tanımlayın. Bu, tüm API çağrılarının doğru ortamda gezinmesini sağlar. Varsayılan olarak, çağrılar Azure genel kullanıma açıktır, ancak bunların Azure Stack Edge Pro cihazı için ayarladığınız ortamda gitmesini istersiniz.
 

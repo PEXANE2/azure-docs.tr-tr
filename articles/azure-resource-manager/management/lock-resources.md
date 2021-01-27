@@ -4,12 +4,12 @@ description: Kullanıcıların tüm kullanıcılar ve roller için bir kilit uyg
 ms.topic: conceptual
 ms.date: 11/11/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 53054f89c992139fbbd4f087d2a0344e26d97efc
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: 0e8fc74b2da0c253ec9c5bf34ec7543398aea48f
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98610208"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98802441"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>Beklenmeyen değişiklikleri önlemek için kaynakları kilitleme
 
@@ -38,7 +38,7 @@ Kilitleri uygulamak, kaynağı değiştirmeyen bazı işlemler gerçekten kilit 
 
 * Bir **kaynak grubundaki** bir Delete kilidi, Azure Resource Manager [otomatik olarak geçmiş dağıtımlar silmesini](../templates/deployment-history-deletions.md) engeller. Geçmişte 800 dağıtıma ulaşırsanız, dağıtımlarınız başarısız olur.
 
-* **Azure Backup hizmeti** tarafından oluşturulan **kaynak grubundaki** bir Delete kilidi, yedeklemelerin başarısız olmasına neden olur. Hizmet en fazla 18 geri yükleme noktasını destekler. Kilitlendiğinde, yedekleme hizmeti geri yükleme noktalarını temizleyemiyor. Daha fazla bilgi için bkz. [sık sorulan sorular-Azure sanal makinelerini yedekleme](../../backup/backup-azure-vm-backup-faq.md).
+* **Azure Backup hizmeti** tarafından oluşturulan **kaynak grubundaki** bir Delete kilidi, yedeklemelerin başarısız olmasına neden olur. Hizmet en fazla 18 geri yükleme noktasını destekler. Kilitlendiğinde, yedekleme hizmeti geri yükleme noktalarını temizleyemiyor. Daha fazla bilgi için bkz. [sık sorulan sorular-Azure sanal makinelerini yedekleme](../../backup/backup-azure-vm-backup-faq.yml).
 
 * Bir **abonelikte** salt okunurdur bir kilit **Azure Advisor** 'ın düzgün çalışmasını engeller. Danışman, sorgularının sonuçlarını depolayamadı.
 
@@ -268,7 +268,7 @@ $lockId = (Get-AzResourceLock -ResourceGroupName exampleresourcegroup).LockId
 Remove-AzResourceLock -LockId $lockId
 ```
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure CLI’si
 
 Dağıtılan kaynakları, [az Lock Create](/cli/azure/lock#az-lock-create) komutunu kullanarak Azure CLI ile kilitlersiniz.
 
