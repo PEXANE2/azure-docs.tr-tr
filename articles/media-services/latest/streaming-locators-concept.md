@@ -1,5 +1,5 @@
 ---
-title: Azure Media Services akış Konumlandırıcı | Microsoft Docs
+title: Azure Media Services akış Konumlandırıcı
 description: Bu makalede, akış bulucuların ne olduğu ve Azure Media Services tarafından nasıl kullanıldığı hakkında bir açıklama sunulmaktadır.
 services: media-services
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 03/04/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 68df5256949db44b2b347002570c64d1aa0d55ea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9b711b9a6923a1923562a282dcaffe7cecb0c58b
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89297969"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98898147"
 ---
 # <a name="streaming-locators"></a>Akış Bulucuları
 
@@ -25,7 +25,7 @@ ms.locfileid: "89297969"
 
 **Akış Bulucu** oluşturma işlemine yayımlama denir. Varsayılan olarak, **akış Bulucu** , API çağrılarını yaptıktan hemen sonra geçerli olur ve isteğe bağlı başlangıç ve bitiş zamanlarını yapılandırmadıkça silinene kadar sürer. 
 
-Bir **akış Bulucu**oluştururken bir **varlık** adı ve **akış ilkesi** adı belirtmeniz gerekir. Daha fazla bilgi edinmek için aşağıdaki kaynaklara bakın:
+Bir **akış Bulucu** oluştururken bir **varlık** adı ve **akış ilkesi** adı belirtmeniz gerekir. Daha fazla bilgi edinmek için aşağıdaki kaynaklara bakın:
 
 * [Varlıklar](assets-concept.md)
 * [Akış Ilkeleri](streaming-policy-concept.md)

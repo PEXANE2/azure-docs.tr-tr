@@ -1,5 +1,5 @@
 ---
-title: Senaryo tabanlı geçiş kılavuzunu kodlama | Microsoft Docs
+title: Senaryo tabanlı geçiş kılavuzunu kodlama
 description: Bu makale, Azure Media Services V2 'den v3 'e geçiş yaparken size yardımcı olacak senaryo tabanlı kılavuzların kodlamasını sağlar.
 services: media-services
 author: IngridAtMicrosoft
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: media
 ms.date: 1/14/2020
 ms.author: inhenkel
-ms.openlocfilehash: 2d122bdeb98de624d9053852b9bee4595b0ef8c8
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: f8d25a14593c3c4a26ecafa33f7cc9fe6c4d580a
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98690594"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98898367"
 ---
 # <a name="encoding-scenario-based-migration-guidance"></a>Senaryo tabanlı geçiş kılavuzunu kodlama
 

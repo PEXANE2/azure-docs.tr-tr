@@ -1,24 +1,16 @@
 ---
 title: Microsoft Azure Otomasyonu için bir servis talebi açarken toplanacak veriler | Microsoft Docs
 description: Bu makalede, Azure Otomasyonu için Microsoft Azure desteğiyle bir servis talebi açmadan önce toplanacak bilgiler açıklanmaktadır.
-services: virtual-machines-windows, azure-resource-manager
-documentationcenter: ''
-author: v-miegge
-manager: dcscontentpm
-editor: ''
-tags: top-support-issue, azure-resource-manager
-ms.service: virtual-machines-windows
-ms.workload: na
-ms.tgt_pltfrm: vm-windows
+services: automation
+ms.subservice: ''
 ms.topic: troubleshooting
 ms.date: 09/23/2019
-ms.author: v-miegge
-ms.openlocfilehash: d2f97d0b889186324aef9613847e3eddbfe1eb02
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3d2c0cf780b992d7bb464969c50d60ffa5093e8f
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83684852"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896571"
 ---
 # <a name="data-to-collect-when-opening-a-case-for-microsoft-azure-automation"></a>Microsoft Azure Otomasyonu için bir servis talebi açarken toplanacak veriler
 
@@ -60,7 +52,7 @@ Bilgi Bankası makalesi [4034605-Azure Otomasyonu ile komut dosyalı tanılamay�
 
    1. Azure portal **Otomasyon hesapları**' na gidin.
    2. Sorun gidermekte olduğunuz Otomasyon hesabını seçin ve adı unutmayın.
-   3. **İşleri**seçin.
+   3. **İşleri** seçin.
    4. Sorun gidermekte olduğunuz işi seçin.
    5. Iş Özeti bölmesinde **Iş kimliği**' nde GUID değeri ' ni arayın.
 
@@ -72,7 +64,7 @@ Bilgi Bankası makalesi [4034605-Azure Otomasyonu ile komut dosyalı tanılamay�
 
    1. Azure portal **Otomasyon hesapları**' na gidin.
    2. Sorun gidermekte olduğunuz Otomasyon hesabını seçin.
-   3. **İşleri**seçin.
+   3. **İşleri** seçin.
    4. Sorun gidermekte olduğunuz işi seçin.
    5. **Tüm Günlükler**' i seçin.
    6. Sonuç bölmesinde, verileri toplayın.

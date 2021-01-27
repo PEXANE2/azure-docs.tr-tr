@@ -2,19 +2,15 @@
 title: Azure Otomasyonu durum yapılandırması sorunlarını giderme
 description: Bu makalede, Azure Otomasyonu durum yapılandırması sorunlarını nasıl giderebileceğiniz ve giderebileceğiniz açıklanır.
 services: automation
-ms.service: automation
 ms.subservice: ''
-author: mgoedtel
-ms.author: magoedte
 ms.date: 04/16/2019
-ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 8043369ebfef23ed84ccff8e7428fbd2048e10b0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.topic: troubleshooting
+ms.openlocfilehash: e6caf3fed708e89b55a88719ca5358f6174c2ac8
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86187226"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896537"
 ---
 # <a name="troubleshoot-azure-automation-state-configuration-issues"></a>Azure Otomasyonu durum yapılandırması sorunlarını giderme
 
@@ -42,9 +38,9 @@ Yapılandırmanız başarıyla derlenir, ancak bir düğüme uygulandığında b
 
 `xDscDiagnostics` [Kalıcı sürüm modülünü Install](https://github.com/PowerShell/xDscDiagnostics#install-the-stable-version-module)' daki yönergeleri izleyerek modülü yerel makinenize yükleyebilirsiniz.
 
-`xDscDiagnostics`Modülü Azure makinenize yüklemek Için [Invoke-AzVMRunCommand](/powershell/module/az.compute/invoke-azvmruncommand?view=azps-3.7.0)komutunu kullanın. [WINDOWS sanal makinenizde Çalıştır komutuyla PowerShell betikleri çalıştırma](../../virtual-machines/windows/run-command.md)bölümündeki adımları Izleyerek Azure Portal **Çalıştır komutunu** da kullanabilirsiniz.
+`xDscDiagnostics`Modülü Azure makinenize yüklemek Için [Invoke-AzVMRunCommand](/powershell/module/az.compute/invoke-azvmruncommand)komutunu kullanın. [WINDOWS sanal makinenizde Çalıştır komutuyla PowerShell betikleri çalıştırma](../../virtual-machines/windows/run-command.md)bölümündeki adımları Izleyerek Azure Portal **Çalıştır komutunu** da kullanabilirsiniz.
 
-**Xdscdiagnostics**kullanımı hakkında bilgi için bkz. [DSC günlüklerini çözümlemek Için xdscdiagnostics kullanma](/powershell/scripting/dsc/troubleshooting/troubleshooting#using-xdscdiagnostics-to-analyze-dsc-logs). Ayrıca bkz. [Xdscdiagnostics cmdlet 'leri](https://github.com/PowerShell/xDscDiagnostics#cmdlets).
+**Xdscdiagnostics** kullanımı hakkında bilgi için bkz. [DSC günlüklerini çözümlemek Için xdscdiagnostics kullanma](/powershell/scripting/dsc/troubleshooting/troubleshooting#using-xdscdiagnostics-to-analyze-dsc-logs). Ayrıca bkz. [Xdscdiagnostics cmdlet 'leri](https://github.com/PowerShell/xDscDiagnostics#cmdlets).
 
 ### <a name="3-ensure-that-nodes-and-the-automation-workspace-have-required-modules"></a>3. düğümlerin ve Otomasyon çalışma alanının gerekli modüller içerdiğinden emin olun
 
@@ -66,13 +62,13 @@ Bu hata, çözülmesi planlanan geçici bir sorundur.
 
 ### <a name="resolution"></a>Çözüm
 
-Yapılandırmayı silmek için [Remove-AzAutomationDscConfiguration](/powershell/module/Az.Automation/Remove-AzAutomationDscConfiguration?view=azps-3.7.0) cmdlet 'ini kullanın.
+Yapılandırmayı silmek için [Remove-AzAutomationDscConfiguration](/powershell/module/Az.Automation/Remove-AzAutomationDscConfiguration) cmdlet 'ini kullanın.
 
 ## <a name="scenario-failed-to-register-the-dsc-agent"></a><a name="failed-to-register-agent"></a>Senaryo: DSC Aracısı kaydedilemedi
 
 ### <a name="issue"></a>Sorun
 
-[Set-DscLocalConfigurationManager](/powershell/module/psdesiredstateconfiguration/set-dsclocalconfigurationmanager?view=powershell-5.1) veya başka bir DSC cmdlet 'i olduğunda şu hatayı alırsınız:
+[Set-DscLocalConfigurationManager](/powershell/module/psdesiredstateconfiguration/set-dsclocalconfigurationmanager) veya başka bir DSC cmdlet 'i olduğunda şu hatayı alırsınız:
 
 ```error
 Registration of the Dsc Agent with the server
@@ -111,7 +107,7 @@ VM has reported a failure when processing extension 'Microsoft.Powershell.DSC / 
 
 Bu sorun, hatalı veya geçerliliği olumsuz bir sertifika nedeniyle oluşur. Bkz. [bir düğümü yeniden kaydetme](../automation-dsc-onboarding.md#re-register-a-node).
 
-Bu sorun, ***. Azure-Automation.net**erişimine izin verilmeyen bir ara sunucu yapılandırması nedeniyle de oluşabilir. Daha fazla bilgi için bkz. [özel ağların yapılandırması](../automation-dsc-overview.md#network-planning). 
+Bu sorun, **_. Azure-Automation.net_* erişimine izin verilmeyen bir ara sunucu yapılandırması nedeniyle de oluşabilir. Daha fazla bilgi için bkz. [özel ağların yapılandırması](../automation-dsc-overview.md#network-planning). 
 
 ### <a name="resolution"></a>Çözüm
 
@@ -125,7 +121,7 @@ Hatalı DSC düğümünü yeniden kaydetmek için aşağıdaki adımları kullan
 
 #### <a name="step-2-uninstall-the-dsc-extension-from-the-node"></a>2. Adım: DSC uzantısını düğümden kaldırma
 
-1. Azure Portal, **ana**  >  **sanal makine** > (başarısız düğüm) > **uzantılarına**gidin.
+1. Azure Portal, **ana**  >  **sanal makine** > (başarısız düğüm) > **uzantılarına** gidin.
 1. PowerShell DSC Uzantısı olan **Microsoft. PowerShell. DSC**' yi seçin.
 1. Uzantıyı kaldırmak için **Kaldır** ' ı seçin.
 
@@ -152,7 +148,7 @@ If (($certs.Count) -gt 0)
 #### <a name="step-4-reregister-the-failing-node"></a>4. Adım: başarısız düğümü yeniden kaydetme
 
 1. Azure Portal, **ana**  >  **Otomasyon hesapları** > (Otomasyon hesabınız) > **Durum Yapılandırması (DSC)** bölümüne gidin.
-1. **Düğüm**seçin.
+1. **Düğüm** seçin.
 1. **Ekle**’yi seçin.
 1. Hatalı düğümü seçin.
 1. **Bağlan**' ı seçin ve istediğiniz seçenekleri belirleyin.
@@ -177,7 +173,7 @@ Bu hata genellikle düğüm bir yapılandırma adına atandığında oluşur. Ö
 * Azure portal veya PowerShell cmdlet 'i kullanarak bir düğüme düğüm yapılandırması atayabilirsiniz.
 
   * Azure Portal, **ana**  >  **Otomasyon hesapları** > (Otomasyon hesabınız) > **Durum Yapılandırması (DSC)** bölümüne gidin. Ardından bir düğüm seçin ve **düğüm yapılandırması ata**' yı seçin.
-  * [Set-AzAutomationDscNode](/powershell/module/Az.Automation/Set-AzAutomationDscNode?view=azps-3.7.0) cmdlet 'ini kullanın.
+  * [Set-AzAutomationDscNode](/powershell/module/Az.Automation/Set-AzAutomationDscNode) cmdlet 'ini kullanın.
 
 ## <a name="scenario-no-node-configurations-mof-files-were-produced-when-a-configuration-was-compiled"></a><a name="no-mof-files"></a>Senaryo: bir yapılandırma derlendiğinde hiçbir düğüm yapılandırması (MOF dosyası) üretilmedi
 
@@ -259,7 +255,7 @@ Bu hata genellikle, düğüme hizmette mevcut olmayan bir düğüm yapılandırm
 
 ### <a name="issue"></a>Sorun
 
-[Register-AzAutomationDSCNode](/powershell/module/az.automation/register-azautomationdscnode?view=azps-3.7.0) veya [register-AzureRMAutomationDSCNode](/powershell/module/azurerm.automation/register-azurermautomationdscnode?view=azurermps-6.13.0)kullanarak bir düğümü kaydettiğinizde, şu hatayı alırsınız:
+[Register-AzAutomationDSCNode](/powershell/module/az.automation/register-azautomationdscnode) veya [register-AzureRMAutomationDSCNode](/powershell/module/azurerm.automation/register-azurermautomationdscnode)kullanarak bir düğümü kaydettiğinizde, şu hatayı alırsınız:
 
 ```error
 One or more errors occurred.
@@ -316,7 +312,7 @@ This event indicates that failure happens when LCM is processing the configurati
 
 ### <a name="issue"></a>Sorun
 
-Birden çok düğüm yapılandırması oluşturmak için tek bir yapılandırma betiği kullandığınızda ve bazı düğüm yapılandırma adları diğer adlara ait alt kümeler olduğunda, derleme hizmeti yanlış yapılandırma atanmasına son verebilir. Bu sorun yalnızca, düğüm başına yapılandırma verileri olan yapılandırmalar oluşturmak için tek bir komut dosyası kullandığınızda ve yalnızca ad çakışması dizenin başlangıcında oluştuğunda oluşur. Cmdlet 'ler kullanılarak bir karma tablosu olarak geçirilen düğüm verilerine göre yapılandırmalar oluşturmak için kullanılan tek bir yapılandırma betiğiyle, düğüm verilerinde **Server** ve **1server**adlı sunucular de bulunur.
+Birden çok düğüm yapılandırması oluşturmak için tek bir yapılandırma betiği kullandığınızda ve bazı düğüm yapılandırma adları diğer adlara ait alt kümeler olduğunda, derleme hizmeti yanlış yapılandırma atanmasına son verebilir. Bu sorun yalnızca, düğüm başına yapılandırma verileri olan yapılandırmalar oluşturmak için tek bir komut dosyası kullandığınızda ve yalnızca ad çakışması dizenin başlangıcında oluştuğunda oluşur. Cmdlet 'ler kullanılarak bir karma tablosu olarak geçirilen düğüm verilerine göre yapılandırmalar oluşturmak için kullanılan tek bir yapılandırma betiğiyle, düğüm verilerinde **Server** ve **1server** adlı sunucular de bulunur.
 
 ### <a name="cause"></a>Nedeni
 
@@ -338,7 +334,7 @@ Derlenmesi uzun süren DSC yapılandırmalarının bu hataya neden olması olabi
 
 ### <a name="resolution"></a>Çözüm
 
-`ModuleName`Tüm [Import-dscresource](/powershell/scripting/dsc/configurations/import-dscresource?view=powershell-5.1) çağrılarının PARAMETRESINI açıkça ekleyerek DSC yapılandırlarınızın daha hızlı ayrıştırmasını sağlayabilirsiniz.
+`ModuleName`Tüm [Import-dscresource](/powershell/scripting/dsc/configurations/import-dscresource) çağrılarının PARAMETRESINI açıkça ekleyerek DSC yapılandırlarınızın daha hızlı ayrıştırmasını sağlayabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

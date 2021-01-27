@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 12/31/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e5adb8edbeafa4d77e24bf865338e111c455cb80
-ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
+ms.openlocfilehash: b03f3f93e8f829c6ab7dec965850117895a8b52d
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97827521"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98882493"
 ---
 # <a name="azure-hana-large-instances-control-through-azure-portal"></a>Azure portalı üzerinden Azure HANA Büyük Örnekler denetimi
 
@@ -94,7 +94,7 @@ Sağ alt taraftaki ek veriler, HANA büyük örnek damgasının düzeltmesidir. 
 - Düzeltme 4
 
 Düzeltme 4 ' te, Azure VM 'Leri ve düzeltme 4 damgaları veya satırları 'nda dağıtılan HANA büyük örnek birimleri arasındaki ağ gecikme süresi ile birlikte sunulan en son mimari büyük örnek geliştirmedir.
-Dağıtılan her bir HANA büyük örnek birimi için otomatik olarak oluşturulan Azure yakınlık yerleşimi grubunun adına genel bakış alanının sağ alt köşesinde bulunan başka bir çok önemli bilgi bulunur. SAP uygulama katmanını barındıran Azure VM 'Leri dağıtıldığında bu yakınlık yerleşimi grubuna başvurulması gerekir. HANA büyük örnek birimiyle ilişkili [Azure yakınlık yerleşimi grubunu](../../linux/co-location.md) kullanarak, Azure VM 'Lerinin Hana büyük örnek birimine yakın bir yerde dağıtıldığından emin olun. Aynı Azure veri merkezinde barındırılan HANA büyük örnek birimleri ile SAP uygulama katmanını bulmak için yakınlık yerleşimi gruplarının nasıl kullanılabileceği, [SAP uygulamalarıyla en iyi ağ gecikmesi Için Azure yakınlık yerleştirme gruplarında](sap-proximity-placement-scenarios.md)açıklanacaktır.
+Dağıtılan her bir HANA büyük örnek birimi için otomatik olarak oluşturulan Azure yakınlık yerleşimi grubunun adına genel bakış alanının sağ alt köşesinde bulunan başka bir çok önemli bilgi bulunur. SAP uygulama katmanını barındıran Azure VM 'Leri dağıtıldığında bu yakınlık yerleşimi grubuna başvurulması gerekir. HANA büyük örnek birimiyle ilişkili [Azure yakınlık yerleşimi grubunu](../../co-location.md) kullanarak, Azure VM 'Lerinin Hana büyük örnek birimine yakın bir yerde dağıtıldığından emin olun. Aynı Azure veri merkezinde barındırılan HANA büyük örnek birimleri ile SAP uygulama katmanını bulmak için yakınlık yerleşimi gruplarının nasıl kullanılabileceği, [SAP uygulamalarıyla en iyi ağ gecikmesi Için Azure yakınlık yerleştirme gruplarında](sap-proximity-placement-scenarios.md)açıklanacaktır.
 
 Üstbilginin sağ sütunundaki ek bir alan, HANA büyük örnek biriminin güç durumu hakkında bilgi verir.
 

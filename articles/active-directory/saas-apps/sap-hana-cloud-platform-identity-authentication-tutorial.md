@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/18/2020
+ms.date: 01/18/2021
 ms.author: jeedes
-ms.openlocfilehash: 5b4a1e578ffc22fbda8b2e879f1bb85f31994997
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: dc0cd57eb32baaeac0850337bbead3a73dec9292
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98735666"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897354"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sap-cloud-platform-identity-authentication"></a>Öğretici: SAP bulut platformu kimlik doğrulaması ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -26,7 +26,7 @@ Bu öğreticide SAP bulut platformu kimlik doğrulamasını Azure Active Directo
 * Kullanıcılarınızın Azure AD hesaplarıyla SAP bulut platformu kimlik doğrulaması için otomatik olarak oturum açmalarına olanak sağlayın.
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -174,7 +174,7 @@ Bu bölümde, SAP bulut platformu kimlik doğrulama kimlik doğrulamasına eriş
 
 4. Azure portal, **SAP Cloud Platform kimlik doğrulama** uygulaması tümleştirmesi sayfasında, **bağlantılı oturum açma**' yı seçin.
 
-    ![Bağlı Sign-On yapılandırma](./media/sap-hana-cloud-platform-identity-authentication-tutorial/linked_sign_on.png)
+    ![Bağlı Sign-On yapılandırma](./media/sap-hana-cloud-platform-identity-authentication-tutorial/linked-sign-on.png)
 
 5. Yapılandırmayı kaydedin.
 

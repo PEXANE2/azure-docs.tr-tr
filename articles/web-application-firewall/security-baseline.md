@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/13/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: b44ea6f55717712cfba4045205e02bd9f2b851df
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 4bda3622c1bb1cb66e83b82df0d13cbfee9e20a3
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202666"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878130"
 ---
 # <a name="azure-security-baseline-for-azure-web-application-firewall"></a>Azure Web uygulaması güvenlik duvarı için Azure Güvenlik temeli
 
@@ -406,7 +406,7 @@ Uygun olduğunda, bekleyen ve şifreli şifreleme için Güvenlik Merkezi öneri
 
 Önleme modundaki Azure WAF, kurallar tarafından algılanan yetkisiz saldırıları ve saldırıları engeller. Saldırgan bir "403 yetkisiz erişim" özel durumu alır ve bağlantı kapatılır. Önleme modu WAF günlüklerinde bu tür saldırıları kaydeder.
 
-- [Application Gateway ile Azure Güvenlik Merkezi arasındaki tümleştirmeye genel bakış](../application-gateway/application-gateway-integration-security-center.md#overview)
+- [Application Gateway ile Azure Güvenlik Merkezi arasındaki tümleştirmeye genel bakış](../security-center/security-center-partner-integration.md)
 
 - [Application Gateway WAF modları](ag/ag-overview.md#waf-modes)
 

@@ -3,19 +3,19 @@ title: Translator sözlüğü örnekleri yöntemi
 titleSuffix: Azure Cognitive Services
 description: Translator sözlüğü örnekleri yöntemi, Sözlükteki terimlerin bağlamda nasıl kullanıldığını gösteren örnekler sağlar.
 services: cognitive-services
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 01/21/2020
-ms.author: swmachan
-ms.openlocfilehash: 1fe5a5669173733e3d0cf1b56b9997d15a3ff138
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.author: lajanuar
+ms.openlocfilehash: e7f0e106c1ca154dcd54990395430b3e0f6c536f
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95021312"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895518"
 ---
 # <a name="translator-30-dictionary-examples"></a>Translator 3,0: Sözlük örnekleri
 
@@ -79,11 +79,11 @@ Başarılı bir yanıt, Giriş dizisindeki her bir dize için bir sonuç içeren
   
   * `examples`: (Kaynak terim, hedef terim) çifti için örneklerin listesi. Listenin her öğesi, aşağıdaki özelliklere sahip bir nesnedir:
 
-    * `sourcePrefix`: _before_ `sourceTerm` Tamamen bir örnek oluşturmak için değerinden önce birleştirilecek dize. Bir boşluk karakteri eklemeyin, çünkü zaten olması gerekir. Bu değer boş bir dize olabilir.
+    * `sourcePrefix`:  `sourceTerm` Tamamen bir örnek oluşturmak için değerinden önce birleştirilecek dize. Bir boşluk karakteri eklemeyin, çünkü zaten olması gerekir. Bu değer boş bir dize olabilir.
 
     * `sourceTerm`: Aranan gerçek terime eşit bir dize. Dize, `sourcePrefix` ve ' nin `sourceSuffix` tamamını oluşturmak için ve birlikte eklenir. Değeri, bir kullanıcı arabiriminde işaretlenebilir, örneğin, bu değer kalın hale gelir.
 
-    * `sourceSuffix`: _after_ `sourceTerm` Tamamen bir örnek oluşturmak için değerinden sonra birleştirilecek dize. Bir boşluk karakteri eklemeyin, çünkü zaten olması gerekir. Bu değer boş bir dize olabilir.
+    * `sourceSuffix`:  `sourceTerm` Tamamen bir örnek oluşturmak için değerinden sonra birleştirilecek dize. Bir boşluk karakteri eklemeyin, çünkü zaten olması gerekir. Bu değer boş bir dize olabilir.
 
     * `targetPrefix`: Şuna benzer `sourcePrefix` ancak hedef için bir dize.
 

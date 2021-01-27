@@ -7,12 +7,12 @@ author: cynthn
 ms.service: virtual-machines
 ms.date: 11/11/2020
 ms.author: cynthn
-ms.openlocfilehash: 7c3e779c152a967452f86b55f06d38076102085c
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: 9c220814ae1f714e9eac0c0c11a50d9cf68a621d
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94595036"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897417"
 ---
 # <a name="tagging-a-vm-using-the-portal"></a>Portalı kullanarak VM etiketleme
 
@@ -24,13 +24,11 @@ Bu makalede Portal kullanılarak bir VM 'ye nasıl etiket ekleneceği açıklanm
 
     :::image type="content" source="media/tag/azure-portal-tag.png" alt-text="VM sayfasının Essentials bölümünün ekran görüntüsü.":::
 
-1. **Ad** ve **değer** için bir değer ekleyin ve ardından **Kaydet** ' i seçin.
+1. **Ad** ve **değer** için bir değer ekleyin ve ardından **Kaydet**' i seçin.
 
     :::image type="content" source="media/tag/key-value.png" alt-text="Etiket olarak anahtar değer çifti ekleme sayfasının ekran görüntüsü.":::
 
-
-
-**Sonraki adımlar**
+### <a name="next-steps"></a>Sonraki adımlar
 
 - Azure kaynaklarınızın etiketlenmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Resource Manager genel bakış](../azure-resource-manager/management/overview.md) ve [etiketleri kullanarak Azure kaynaklarınızı düzenleme](../azure-resource-manager/management/tag-resources.md).
-- Etiketlerin Azure kaynaklarını kullanımınızı yönetmenize nasıl yardımcı olduğunu görmek için bkz. [Azure Faturanızı Anlama](../cost-management-billing/understand/review-individual-bill.md) ve [Microsoft Azure Kaynak tüketiminiz hakkında öngörüler elde](../cost-management-billing/manage/usage-rate-card-overview.md)etme.
+- Etiketlerin Azure kaynakları kullanımını yönetmenize nasıl yardımcı olduğunu görmek için bkz. [Azure Faturanızı Anlama](../cost-management-billing/understand/review-individual-bill.md).

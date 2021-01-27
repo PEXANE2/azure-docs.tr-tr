@@ -1,5 +1,5 @@
 ---
-title: Azure Media Services v3 ile açıklayıcı sesli parçalar sinyali | Microsoft Docs
+title: Azure Media Services v3 ile açıklayıcı sesli parçalar sinyali
 description: Bu öğreticinin adımlarını izleyerek bir dosyayı karşıya yükleyin, videoyu kodlayın, açıklayıcı ses parçaları ekleyin ve içeriğinizi Media Services v3 ile akışın.
 services: media-services
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.topic: how-to
 ms.custom: devx-track-csharp
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 0bd2002e8f6f233361dd85cc08cfbd97ca23ed60
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 155e79f8d42988d8498c52c0f930bc03bc599cf0
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89291271"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98898231"
 ---
 # <a name="signal-descriptive-audio-tracks"></a>Sinyal açıklayıcı ses parçaları
 
@@ -27,7 +27,7 @@ Görsel açıdan görme istemcilerinin, konuşmayı dinleyerek video kaydını i
 
 Bu makalede, bir videoyu kodlama, çıktı varlığına açıklayıcı ses içeren bir salt ses MP4 dosyasını (AAC codec) karşıya yükleme ve açıklama sesini dahil etmek için. ISM dosyasını düzenleme işlemlerinin nasıl yapılacağı gösterilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - [Media Services hesabı oluşturun](./create-account-howto.md).
 - [Azure CLI Ile Access Azure Media Services API 'sindeki](./access-api-howto.md) adımları izleyin ve kimlik bilgilerini kaydedin. API 'ye erişmek için bunları kullanmanız gerekir.
@@ -36,7 +36,7 @@ Bu makalede, bir videoyu kodlama, çıktı varlığına açıklayıcı ses içer
 
 ## <a name="create-an-input-asset-and-upload-a-local-file-into-it"></a>Bir giriş varlığı oluşturma ve içine yerel dosya yükleme 
 
-**CreateInputAsset** işlevi yeni bir giriş [Varlığı](/rest/api/media/assets) oluşturur ve içine belirtilen yerel video dosyasını yükler. Bu **varlık** , kodlama işinize giriş olarak kullanılır. Media Services v3 'de, bir **işin** girişi bir **varlık**olabilir ya da HTTPS URL 'leri aracılığıyla Media Services hesabınız için kullanılabilir hale getirebilmeniz gereken içerik olabilir. 
+**CreateInputAsset** işlevi yeni bir giriş [Varlığı](/rest/api/media/assets) oluşturur ve içine belirtilen yerel video dosyasını yükler. Bu **varlık** , kodlama işinize giriş olarak kullanılır. Media Services v3 'de, bir **işin** girişi bir **varlık** olabilir ya da HTTPS URL 'leri aracılığıyla Media Services hesabınız için kullanılabilir hale getirebilmeniz gereken içerik olabilir. 
 
 HTTPS URL 'sinden kodlama hakkında bilgi edinmek istiyorsanız [Bu makaleye](job-input-from-http-how-to.md) bakın.  
 
@@ -221,7 +221,7 @@ Bu konudaki örnek akışı ele alırken, aşamalı indirme yoluyla video teslim
 
 ### <a name="get-streaming-urls"></a>Akış URL'leri alma
 
-Artık [akış bulucunun](/rest/api/media/streaminglocators) oluşturulduğuna göre, **Getstreamingurls**Içinde gösterildiği gibi akış URL 'lerini alabilirsiniz. URL oluşturmak için, [akış uç noktası](/rest/api/media/streamingendpoints) ana bilgisayar adını ve **akış Bulucu** yolunu birleştirmeniz gerekir. Bu örnekte, *varsayılan* **akış uç noktası** kullanılır. İlk olarak bir medya hizmeti hesabı oluşturduğunuzda, bu *varsayılan* **akış uç noktası** durdurulmuş durumda olacaktır, bu yüzden **Start**'ı çağırmanız gerekir.
+Artık [akış bulucunun](/rest/api/media/streaminglocators) oluşturulduğuna göre, **Getstreamingurls** Içinde gösterildiği gibi akış URL 'lerini alabilirsiniz. URL oluşturmak için, [akış uç noktası](/rest/api/media/streamingendpoints) ana bilgisayar adını ve **akış Bulucu** yolunu birleştirmeniz gerekir. Bu örnekte, *varsayılan* **akış uç noktası** kullanılır. İlk olarak bir medya hizmeti hesabı oluşturduğunuzda, bu *varsayılan* **akış uç noktası** durdurulmuş durumda olacaktır, bu yüzden **Start**'ı çağırmanız gerekir.
 
 > [!NOTE]
 > Bu yöntemde, çıkış varlığı için **akış bulucuyu** oluştururken kullanılan locatorname öğesine ihtiyacınız vardır.

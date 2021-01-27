@@ -4,48 +4,36 @@ description: Bölümler kullanılarak Azure Event Hubs maksimum kullanılabilirl
 ms.topic: article
 ms.date: 01/25/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 884fe878b9524dcf8d97d1123dce35e02af34a24
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 2fdb62e953230a38a26d22e136789fea52c8ee8c
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98790758"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98882204"
 ---
 # <a name="availability-and-consistency-in-event-hubs"></a>Event Hubs’da kullanılabilirlik ve tutarlılık
-
-## <a name="overview"></a>Genel Bakış
-Azure Event Hubs, tek bir olay hub 'ında kullanılabilirliği ve paralelleştirme geliştirmek için bir [bölümlendirme modeli](event-hubs-scalability.md#partitions) kullanır. Örneğin, bir olay hub 'ının dört bölümü varsa ve bir yük dengeleme işleminde bu bölümlerden biri bir sunucudan diğerine taşınırsa, yine de üç bölümden birini gönderebilir ve alabilirsiniz. Ayrıca, daha fazla bölüm olması, verilerinizi işletirecek daha fazla eşzamanlı okuyucu sağlamanıza olanak sağlar ve böylece toplam aktarım hızını geliştirir. Dağıtılmış bir sistemde bölümlemenin ve sıralamanın etkilerini anlamak çözüm tasarımının önemli bir yönüdür.
-
-Sipariş ve kullanılabilirlik arasındaki ticaretin açıklanmasına yardımcı olmak için, Brewer 'in Theokal olarak da bilinen [Cap](https://en.wikipedia.org/wiki/CAP_theorem)'ler için bkz.. Bu, tutarlılık, kullanılabilirlik ve bölüm toleransı arasındaki seçimi anlatmaktadır. Ağ tarafından bölümlenmiş sistemler için tutarlılık ve kullanılabilirlik arasında her zaman zorunluluğunu getirir olduğunu belirtir.
-
-Brewer 'in bu, tutarlılığı ve kullanılabilirliği aşağıdaki şekilde tanımlar:
-* Bölüm toleransı: bir bölüm hatası oluşması durumunda bile veri işleme sisteminin veri işlemeye devam etmesi özelliği.
-* Kullanılabilirlik: başarısız olmayan bir düğüm makul bir süre içinde makul bir yanıt döndürür (hata veya zaman aşımları olmadan).
-* Tutarlılık: belirli bir istemci için en son yazmayı döndürecek bir okuma garantisi vardır.
-
-> [!NOTE]
-> Terim **bölümü** Event Hubs ve üst sınır içindeki farklı bağlamlarda kullanılır. 
-> - Olayları bir veya daha fazla bölüme göre düzenler **Event Hubs** . Bölümler birbirinden bağımsızdır ve kendi veri dizisini içerir, genellikle farklı oranlarda artar. Daha fazla bilgi için bkz. [bölümler](event-hubs-features.md#partitions).
-> - Büyük harfli bir bölüm, dağıtılmış bir sistemdeki düğümler arasında bir iletişim **kesgisidır**.
-
-## <a name="partition-tolerance"></a>Bölüm toleransı
-Event Hubs, bölümlenmiş bir veri modelinin üzerine kurulmuştur. Kurulum sırasında olay hub 'ınızdaki bölüm sayısını yapılandırabilirsiniz, ancak daha sonra bu değeri değiştiremezsiniz. Event Hubs olan bölümleri kullanmanız gerektiğinden, uygulamanız için kullanılabilirlik ve tutarlılık hakkında bir karar vermeniz gerekir.
+Bu makalede, Azure Event Hubs tarafından desteklenen kullanılabilirlik ve tutarlılık hakkında bilgi sağlanır. 
 
 ## <a name="availability"></a>Kullanılabilirlik
-Event Hubs kullanmaya başlamanın en kolay yolu, varsayılan davranışı kullanmaktır. 
+Azure Event Hubs, bir veri merkezinde birden çok hata etki alanına yayılan kümeler genelinde tek tek makinelerin veya hatta tamamen oluşan tüm hatalardan oluşan ciddi arızaların riskini yayar. Hizmetin, garanti edilen hizmet düzeylerinde çalışmaya devam edebilmesi ve genellikle bu tür bir hata oluştuğunda dikkat çekici kesintiler olmadan, saydam hata algılama ve yük devretme mekanizmaları uygular. [Kullanılabilirlik alanları](../availability-zones/az-overview.md)için etkin seçeneğiyle bir Event Hubs ad alanı oluşturulduysa, kesinti riski üç fiziksel olarak ayrılmış tesislere göre daha fazla yayılır ve hizmette tüm tesis için eksiksiz ve çok zararlı kayıplarla anında kapasiteye yetecek kapasite ayırmalar vardır. Daha fazla bilgi için bkz. [Azure Event Hubs-coğrafi olağanüstü durum kurtarma](event-hubs-geo-dr.md).
 
-#### <a name="azuremessagingeventhubs-500-or-later"></a>[Azure. Messaging. EventHubs (5.0.0 veya üzeri)](#tab/latest)
-Yeni bir **[EventHubProducerClient](/dotnet/api/azure.messaging.eventhubs.producer.eventhubproducerclient)** nesnesi oluşturur ve **[sendadsync](/dotnet/api/azure.messaging.eventhubs.producer.eventhubproducerclient.sendasync)** yöntemini kullanırsanız, olaylarınız Olay Hub 'ınızdaki bölümler arasında otomatik olarak dağıtılır. Bu davranış, en fazla çalışma süresi sağlar.
-
-#### <a name="microsoftazureeventhubs-410-or-earlier"></a>[Microsoft. Azure. EventHubs (4.1.0 veya önceki sürümler)](#tab/old)
-Yeni bir **[Eventhubclient](/dotnet/api/microsoft.azure.eventhubs.eventhubclient)** nesnesi oluşturur ve **[Send](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync#Microsoft_Azure_EventHubs_EventHubClient_SendAsync_Microsoft_Azure_EventHubs_EventData_)** yöntemini kullanırsanız, olaylarınız Olay Hub 'ınızdaki bölümler arasında otomatik olarak dağıtılır. Bu davranış, en fazla çalışma süresi sağlar.
-
----
-
-En uzun süre gerektiren kullanım örnekleri için bu model tercih edilir.
+Bir istemci uygulaması olayları bir olay hub 'ına gönderdiğinde, olaylar Olay Hub 'ınızdaki bölümler arasında otomatik olarak dağıtılır. Bir bölüm bir nedenle kullanılamıyorsa, olaylar kalan bölümler arasında dağıtılır. Bu davranış, en fazla çalışma süresi sağlar. En uzun süre gerektiren kullanım örnekleri için, bu model belirli bir bölüme olay göndermek yerine tercih edilir. Daha fazla bilgi için bkz. [bölümler](event-hubs-scalability.md#partitions).
 
 ## <a name="consistency"></a>Tutarlılık
-Bazı senaryolarda, olayların sıralaması önemli olabilir. Örneğin, arka uç sisteminizin silme komutundan önce bir update komutunu işlemesini isteyebilirsiniz. Bu örnekte, bir olayda bölüm anahtarını ayarlayabilir veya `PartitionSender` yalnızca belirli bir bölüme olayları göndermek için bir nesne (eski Microsoft. Azure. Messaging kitaplığını kullanıyorsanız) kullanabilirsiniz. Bunun yapılması, bu olaylar bölümden okunduklarında, bunların sırayla okunmasını sağlar. 
+Bazı senaryolarda, olayların sıralaması önemli olabilir. Örneğin, arka uç sisteminizin silme komutundan önce bir update komutunu işlemesini isteyebilirsiniz. Bu senaryoda, bir istemci uygulaması sıralama korunabilmesi için olayları belirli bir bölüme gönderir. Bir tüketici uygulaması bölümden bu olayları tükettiği zaman sırayla okunabilir. 
+
+Bu yapılandırmayla, gönderdiğiniz belirli bir bölüm kullanılamaz durumdaysa, bir hata yanıtı alacağını aklınızda bulundurun. Karşılaştırma noktası olarak, tek bir bölüme yönelik benzeşim yoksa Event Hubs hizmeti, olaylarınızı bir sonraki kullanılabilir bölüme gönderir.
+
+Sıralamayı güvence altına almak için olası bir çözüm, aynı zamanda süreyi de en üst düzeye çıkararak olay işleme uygulamanızın bir parçası olarak olayları toplar. Bunu yapmanın en kolay yolu, olaylarınızı özel bir sıra numarası özelliğiyle damgakullanmaktır.
+
+Bu senaryoda, üretici istemcisi Olay Hub 'ınızdaki kullanılabilir bölümlerden birine olaylar gönderir ve karşılık gelen sıra numarasını uygulamanızdan ayarlar. Bu çözüm, durumun işlem uygulamanız tarafından tutulmasını gerektirir, ancak göndermenize daha büyük olabilecek bir uç nokta verir.
+
+## <a name="appendix"></a>Ek
+
+### <a name="net-examples"></a>.NET örnekleri
+
+#### <a name="send-events-to-a-specific-partition"></a>Olayları belirli bir bölüme gönder
+Olayları yalnızca belirli bir bölüme göndermek için bir olayda bölüm anahtarını ayarlayın veya bir `PartitionSender` nesne (eski Microsoft. Azure. Messaging kitaplığını kullanıyorsanız) kullanın. Bunun yapılması, bu olaylar bölümden okunduklarında, bunların sırayla okunmasını sağlar. 
 
 Daha yeni **Azure. Messaging. EventHubs** kitaplığını kullanıyorsanız, [bir bölüme olay yayımlamak Için bkz. partitionsender 'dan kodu EventHubProducerClient 'a geçirme](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md#migrating-code-from-partitionsender-to-eventhubproducerclient-for-publishing-events-to-a-partition).
 
@@ -92,9 +80,8 @@ finally
 
 ---
 
-Bu yapılandırmayla, gönderdiğiniz belirli bir bölüm kullanılamaz durumdaysa, bir hata yanıtı alacağını aklınızda bulundurun. Bir karşılaştırma noktası olarak, tek bir bölüme yönelik benzeşim yoksa Event Hubs hizmeti, olaylarınızı bir sonraki kullanılabilir bölüme gönderir.
-
-Sıralamayı güvence altına almak için olası bir çözüm, aynı zamanda süreyi de en üst düzeye çıkararak olay işleme uygulamanızın bir parçası olarak olayları toplar. Bunu yapmanın en kolay yolu, olaylarınızı özel bir sıra numarası özelliğiyle damgakullanmaktır. Aşağıdaki kodda bir örnek gösterilir:
+### <a name="set-a-sequence-number"></a>Sıra numarası ayarla
+Aşağıdaki örnek, olaylarınızı özel bir sıra numarası özelliği ile damgalar. 
 
 #### <a name="azuremessagingeventhubs-500-or-later"></a>[Azure. Messaging. EventHubs (5.0.0 veya üzeri)](#tab/latest)
 

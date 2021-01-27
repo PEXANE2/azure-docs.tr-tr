@@ -1,29 +1,11 @@
 ---
-title: Azure Media Services v3'e genel bakış
-titleSuffix: Azure Media Services
-description: Hızlı başlangıçlar, öğreticiler ve kod örnekleri bağlantılarıyla Azure Media Services v3 'e yönelik üst düzey bir genel bakış.
-services: media-services
-documentationcenter: na
-author: IngridAtMicrosoft
-manager: femila
-editor: ''
-tags: ''
-keywords: azure media services, akış, yayın, canlı, çevrimdışı
-ms.service: media-services
-ms.devlang: multiple
-ms.topic: overview
-ms.tgt_pltfrm: multiple
-ms.workload: media
-ms.date: 08/31/2020
-ms.author: inhenkel
-ms.custom: mvc
-ms.openlocfilehash: 01ec0c7c0d2d060bbd930a099fe3db54de6cb150
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
-ms.translationtype: MT
-ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93308962"
+Başlık: Azure Media Services v3 genel bakış: Azure Media Services Açıklama: hızlı başlangıçlar, öğreticiler ve kod örnekleri bağlantılarıyla Azure Media Services v3 'e yönelik üst düzey bir genel bakış.
+Hizmetler: Media-Services belge\merkez: na Yazar: ınridatmicrosoft Manager: femıla Düzenleyicisi: ' ' Etiketleri: ' ' anahtar sözcükleri: Azure Media Services, Stream, Broadcast, Live, OFFLINE
+
+MS. Service: Media-Services MS. devlang: birden çok MS. Topic: genel bakış ms.tgt_pltfrm: birden çok MS. Workload: Media MS. Date: 08/31/2020 MS. Author: inhenkel MS. Custom: Mvc
+#<a name="customer-intent-as-a-developer-or-a-content-provider-i-want-to-encode-stream-on-demand-or-live-analyze-my-media-content-so-that-my-customers-can-view-the-content-on-a-wide-variety-of-browsers-and-devices-gain-valuable-insights-from-recorded-content"></a>Müşteri amacı: bir geliştirici veya bir içerik sağlayıcı olarak, bir veri akışı (isteğe bağlı veya canlı) kodlamak istiyorum, Cihazlarım çok çeşitli tarayıcılarda ve cihazlarda görüntülemek için, kayıtlı içerikten değerli içgörüler elde edin.
 ---
+
 # <a name="azure-media-services-v3-overview"></a>Azure Media Services v3'e genel bakış
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]

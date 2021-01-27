@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 1/24/2018
 ms.author: mimckitt
-ms.openlocfilehash: 444c6a9c131916a2a07f41fd5c1ff38fc1e7bfb2
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: 8268e305946a19f4f74ff790e680d6bd3faa2b29
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98210333"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881444"
 ---
 # <a name="how-to-deploy-windows-10-on-azure-with-multitenant-hosting-rights"></a>Azure 'da çok kiracılı barındırma haklarıyla Windows 10 ' un dağıtımı 
 Windows 10 Enterprise E3/E5 veya Kullanıcı başına Windows sanal masaüstü erişimi (Kullanıcı aboneliği lisansları veya eklenti Kullanıcı aboneliği lisansları) olan müşteriler için, Windows 10 için çok kiracılı barındırma hakları, Windows 10 lisanslarınızı buluta getirmenize ve Azure 'da Windows 10 sanal makinelerini başka bir lisans ödemeksizin çalıştırmanıza olanak sağlar. Daha fazla bilgi için lütfen bkz. [Windows 10 Için çok kiracılı barındırma](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx).
@@ -39,7 +39,7 @@ rs5-pro                     Windows-10 MicrosoftWindowsDesktop eastus
 rs5-pron                    Windows-10 MicrosoftWindowsDesktop eastus  
 ```
 
-Kullanılabilir görüntüler hakkında daha fazla bilgi için bkz. [Azure PowerShell Ile Azure MARKETI VM görüntülerini bulma ve kullanma](https://docs.microsoft.com/azure/virtual-machines/windows/cli-ps-findimage)
+Kullanılabilir görüntüler hakkında daha fazla bilgi için bkz. [Azure PowerShell Ile Azure MARKETI VM görüntülerini bulma ve kullanma](./cli-ps-findimage.md)
 
 ## <a name="qualify-for-multi-tenant-hosting-rights"></a>Çok kiracılı barındırma haklarına uygun hale getir 
 Çok kiracılı barındırma haklarını nitelemek ve Azure kullanıcıları üzerinde Windows 10 görüntülerini çalıştırmak için aşağıdaki aboneliklerden birine sahip olması gerekir: 

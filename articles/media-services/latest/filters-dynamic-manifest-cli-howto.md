@@ -1,5 +1,5 @@
 ---
-title: Azure Media Services ile filtre oluşturmak için CLı kullanma | Microsoft Docs
+title: Azure Media Services ile filtre oluşturmak için CLı kullanma
 description: Bu makalede, Azure Media Services v3 ile filtre oluşturmak için CLı 'nin nasıl kullanılacağı gösterilmektedir.
 services: media-services
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: f86b3fbebfaa2eb6fc35d5373eab2bb296ff5043
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 75df01ff65a0910dab140942b520978cd7728775
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92740612"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897586"
 ---
 # <a name="creating-filters-with-cli"></a>CLı ile filtre oluşturma
 
@@ -34,7 +34,7 @@ Bu konuda, bir video Isteğe bağlı varlığı için bir filtrenin nasıl yapı
 > [!NOTE]
 > [Presentationtimerange](filters-concept.md#presentationtimerange)öğesini gözden geçirdiğinizden emin olun.
 
-## <a name="prerequisites"></a>Ön koşullar 
+## <a name="prerequisites"></a>Önkoşullar 
 
 - [Media Services hesabı oluşturun](./create-account-howto.md). Kaynak grubu adını ve Media Services hesap adını hatırlayacağınızdan emin olun. 
 

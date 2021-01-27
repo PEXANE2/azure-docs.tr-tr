@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2020
-ms.openlocfilehash: bc229974cf14ba364e5e7111dc1d2704e03c3635
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.openlocfilehash: 2ca8a814fbaf2d8c257d094f81d17a5c871793b0
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2021
-ms.locfileid: "98746807"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878944"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Izleyici sık sorulan sorular
 
@@ -380,6 +380,12 @@ Tek bir iş sistemindeki tüm bileşenler veya roller için tek bir kaynak kulla
 * İstemci tarafı komut dosyası yoksa, [sunucuda tanımlama bilgilerini ayarlayabilirsiniz](https://apmtips.com/posts/2016-07-09-tracking-users-in-api-apps/).
 * Bir gerçek Kullanıcı, sitenizi farklı tarayıcılarda kullanıyorsa ya da özel/veya farklı makinelere göz atmak veya farklı makineler kullanmak için birden çok kez sayılır.
 * Makineler ve tarayıcılar arasında oturum açmış bir kullanıcıyı tanımlamak için, [Setadoğrulayıcısının Catedusercontext ()](app/api-custom-events-metrics.md#authenticated-users)çağrısı ekleyin.
+
+### <a name="how-does-application-insights-generate-device-information-browser-os-language-model"></a>Application Insights cihaz bilgilerini (tarayıcı, işletim sistemi, dil, model) nasıl oluşturur?
+
+Tarayıcı, isteğin HTTP üstbilgisindeki Kullanıcı aracısı dizesini geçirir ve Application Insights alma hizmeti, veri tablolarında ve deneyimlerinde gördüğünüz alanları oluşturmak için [UA ayrıştırıcısı](https://github.com/ua-parser/uap-core) kullanır. Sonuç olarak, Application Insights kullanıcılar bu alanları değiştiremez.
+
+Kullanıcı veya kuruluş, tarayıcı ayarlarında Kullanıcı aracısının gönderilmesini devre dışı bırakırsa, bu veriler eksik veya yanlış olabilir. Ayrıca, [UA ayrıştırıcısı normal ifadeler](https://github.com/ua-parser/uap-core/blob/master/regexes.yaml) tüm cihaz bilgilerini içermeyebilir veya Application Insights en son güncelleştirmeleri benimsemiş olabilir.
 
 ### <a name="have-i-enabled-everything-in-application-insights"></a><a name="q17"></a> Application Insights her şeyi etkinleştirmem gerekir mi?
 | Görmeniz gereken | Nasıl alınır? | Neden istediğiniz |

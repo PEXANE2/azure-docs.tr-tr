@@ -6,14 +6,14 @@ ms.service: virtual-machines-windows
 ms.subservice: disks
 ms.workload: infrastructure-services
 ms.topic: how-to
-ms.date: 01/08/2020
+ms.date: 01/26/2021
 ms.author: cynthn
-ms.openlocfilehash: cae75c88b4803912565e010f744a7757a3b98f04
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 95f6ce2fefacd20102abe9bbe818f228139ca33d
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201561"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98898520"
 ---
 # <a name="how-to-detach-a-data-disk-from-a-windows-virtual-machine"></a>Bir Windows sanal makinesindeki veri diskini ayırma
 
@@ -60,4 +60,6 @@ Disk depolamada kalır, ancak artık bir sanal makineye bağlı değildir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Veri diskini yeniden kullanmak istiyorsanız, [bunu başka BIR VM 'ye](attach-managed-disk-portal.md) ekleyebilirsiniz
+Veri diskini yeniden kullanmak istiyorsanız, yalnızca [başka BIR sanal](attach-managed-disk-portal.md)makineye ekleyebilirsiniz.
+
+Artık depolama maliyetlerine neden olmayacak şekilde diski silmek istiyorsanız, bkz. [eklenmemiş Azure yönetilen ve yönetilmeyen diskleri bulma ve silme-Azure Portal](../disks-find-unattached-portal.md).

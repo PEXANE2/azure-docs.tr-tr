@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: a47f720344a16d0f77559d6aabfb2b0245e62976
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6ee4a09df0f95cb809db0e5c0e63d195ee5cfdff
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89426342"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896944"
 ---
 # <a name="migrate-from-orchestrator-to-azure-automation-beta"></a>Orchestrator’dan Azure Otomasyonu’na (Beta) geçiş
 
@@ -24,7 +24,7 @@ Geçişin ilk adımı, [System Center Orchestrator geçiş araç setini](https:/
 
 ## <a name="import-the-standard-activities-module"></a>Standart etkinlikler modülünü içeri aktarma
 
-[Standart etkinlikler modülünü](/system-center/orchestrator/standard-activities?view=sc-orch-2019) Azure Otomasyonu 'na aktarın. Bu, dönüştürülen grafik runbook 'larını kullanan standart Orchestrator etkinliklerinin dönüştürülmüş sürümlerini içerir.
+[Standart etkinlikler modülünü](/system-center/orchestrator/standard-activities) Azure Otomasyonu 'na aktarın. Bu, dönüştürülen grafik runbook 'larını kullanan standart Orchestrator etkinliklerinin dönüştürülmüş sürümlerini içerir.
 
 ## <a name="import-orchestrator-integration-modules"></a>Orchestrator tümleştirme modüllerini içeri aktarma
 
@@ -32,7 +32,7 @@ Microsoft, System Center bileşenlerini ve diğer ürünleri otomatikleştirmek 
 
 ## <a name="convert-integration-packs"></a>Tümleştirme paketlerini Dönüştür
 
-[Orchestrator Integration Toolkit (OıT)](/previous-versions/system-center/developer/hh855853(v=msdn.10)) kullanılarak oluşturulan herhangi bir tümleştirme paketini Azure otomasyonu veya Service Management Automation içeri aktarılabilecek PowerShell tabanlı tümleştirme modüllerine dönüştürmek Için [tümleştirme paketi dönüştürücüsünü](/system-center/orchestrator/orch-integration-toolkit/integration-pack-wizard?view=sc-orch-2019) kullanın. Tümleştirme paketi dönüştürücüsünü çalıştırdığınızda, size bir tümleştirme paketi (. OIP) dosyası seçmenize olanak tanıyan bir sihirbaz sunulur. Sihirbaz daha sonra bu tümleştirme paketine dahil edilen etkinlikleri listeler ve hangi etkinliklerin geçirilecek olduğunu seçmenizi sağlar. Sihirbazı tamamladığınızda, özgün Tümleştirme paketindeki etkinliklerin her biri için karşılık gelen bir cmdlet 'i içeren bir tümleştirme modülü oluşturur.
+[Orchestrator Integration Toolkit (OıT)](/previous-versions/system-center/developer/hh855853(v=msdn.10)) kullanılarak oluşturulan herhangi bir tümleştirme paketini Azure otomasyonu veya Service Management Automation içeri aktarılabilecek PowerShell tabanlı tümleştirme modüllerine dönüştürmek Için [tümleştirme paketi dönüştürücüsünü](/system-center/orchestrator/orch-integration-toolkit/integration-pack-wizard) kullanın. Tümleştirme paketi dönüştürücüsünü çalıştırdığınızda, size bir tümleştirme paketi (. OIP) dosyası seçmenize olanak tanıyan bir sihirbaz sunulur. Sihirbaz daha sonra bu tümleştirme paketine dahil edilen etkinlikleri listeler ve hangi etkinliklerin geçirilecek olduğunu seçmenizi sağlar. Sihirbazı tamamladığınızda, özgün Tümleştirme paketindeki etkinliklerin her biri için karşılık gelen bir cmdlet 'i içeren bir tümleştirme modülü oluşturur.
 
 > [!NOTE]
 > OıT ile oluşturulmamış Tümleştirme paketlerini dönüştürmek için tümleştirme paketi dönüştürücüsünü kullanamazsınız. Microsoft tarafından sunulan ve şu anda bu araçla dönüştürülemediği bazı tümleştirme paketleri de mevcuttur. Bu tümleştirme paketlerinin dönüştürülmüş sürümleri, Azure Otomasyonu veya Service Management Automation yüklenebilmeleri için indirme için sağlanır.
@@ -73,7 +73,7 @@ ConvertFrom-SCORunbook -RunbookPath <string> -Module <string[]> -OutputFolder <s
 * Modül-runbook 'larda etkinlikleri içeren tümleştirme modüllerinin virgülle ayrılmış listesi.
 * OutputFolder-dönüştürülen grafik runbook 'ları oluşturmak için klasörün yolu.
 
-Aşağıdaki örnek komut, **MyRunbooks.ois_export**adlı bir dışarı aktarma dosyasındaki runbook 'ları dönüştürür.  Bu runbook 'lar Active Directory ve Data Protection Manager Tümleştirme paketlerini kullanır.
+Aşağıdaki örnek komut, **MyRunbooks.ois_export** adlı bir dışarı aktarma dosyasındaki runbook 'ları dönüştürür.  Bu runbook 'lar Active Directory ve Data Protection Manager Tümleştirme paketlerini kullanır.
 
 ```powershell
 ConvertFrom-SCORunbook -RunbookPath "c:\runbooks\MyRunbooks.ois_export" -Module c:\ip\SystemCenter_IntegrationModule_ActiveDirectory.zip,c:\ip\SystemCenter_IntegrationModule_DPM.zip -OutputFolder "c:\runbooks"
@@ -118,7 +118,7 @@ Bu stratejinin kullanıldığı neden Orchestrator Runbook 'unda işlevselliği 
 
 ### <a name="invoke-runbook-activity"></a>Runbook 'U çağır etkinliği
 
-Orchestrator 'daki runbook 'lar etkinlikteki diğer runbook 'ları başlatır `Invoke Runbook` . Dönüştürülen runbook bu etkinliği içeriyorsa ve `Wait for completion` seçenek ayarlandıysa, dönüştürülmüş runbook 'ta kendisi için bir runbook etkinliği oluşturulur.  `Wait for completion`Seçenek ayarlanmamışsa, runbook 'u başlatmak Için [Start-azautomationrunbook](/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.7.0) kullanan bir iş akışı betiği etkinliği oluşturulur. Dönüştürülmüş runbook 'u Azure Otomasyonu 'na aktardıktan sonra, bu etkinliği etkinlikte belirtilen bilgilerle değiştirmeniz gerekir.
+Orchestrator 'daki runbook 'lar etkinlikteki diğer runbook 'ları başlatır `Invoke Runbook` . Dönüştürülen runbook bu etkinliği içeriyorsa ve `Wait for completion` seçenek ayarlandıysa, dönüştürülmüş runbook 'ta kendisi için bir runbook etkinliği oluşturulur.  `Wait for completion`Seçenek ayarlanmamışsa, runbook 'u başlatmak Için [Start-azautomationrunbook](/powershell/module/az.automation/start-azautomationrunbook) kullanan bir iş akışı betiği etkinliği oluşturulur. Dönüştürülmüş runbook 'u Azure Otomasyonu 'na aktardıktan sonra, bu etkinliği etkinlikte belirtilen bilgilerle değiştirmeniz gerekir.
 
 ## <a name="create-orchestrator-assets"></a>Orchestrator varlıkları oluşturma
 

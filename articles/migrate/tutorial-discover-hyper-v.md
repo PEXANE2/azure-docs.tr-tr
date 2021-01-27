@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: mvc
-ms.openlocfilehash: eb10001436d3184b89aa064ec82fcd1f56bea931
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.openlocfilehash: 7c3bca9e5ad87c681fc38a5c618331a3f7a97ae1
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98566922"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897518"
 ---
 # <a name="tutorial-discover-hyper-v-vms-with-server-assessment"></a>Öğretici: Sunucu değerlendirmesi ile Hyper-V VM 'lerini bulma
 
@@ -20,7 +20,7 @@ Azure 'a geçiş sürecinizin bir parçası olarak şirket içi envanterinizi ve
 
 Bu öğreticide, basit bir Azure geçişi gereci kullanarak Azure geçişi: Sunucu değerlendirmesi aracı ile şirket içi Hyper-V sanal makinelerini (VM) nasıl keşfedebileceğiniz gösterilmektedir. Gereci, makine ve performans meta verilerini sürekli olarak bulacak şekilde Hyper-V VM 'si olarak dağıtırsınız.
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Azure hesabı ayarlama
@@ -83,7 +83,7 @@ Hyper-V konaklarının el ile veya bir komut dosyası kullanarak hazırlanabilir
 
 **Adım** | **Komut Dosyası** | **El ile**
 --- | --- | ---
-Konak gereksinimlerini doğrulama | Konağın desteklenen bir Hyper-V sürümü ve Hyper-V rolü çalıştığını denetler.<br/><br/>WinRM hizmetini etkinleştirilir ve konakta 5985 (HTTP) ve 5986 (HTTPS) bağlantı noktalarını (meta veri koleksiyonu için gereklidir) açar. | Konağın Windows Server 2019, Windows Server 2016 veya Windows Server 2012 R2 çalıştırması gerekir.<br/><br/> BT 'nin Genel Bilgi Modeli (CıM) oturumu kullanarak çekme VM meta verileri ve performans verilerine bağlanabilmesi için WinRM bağlantı noktası 5985 ' de (HTTP) gelen bağlantılara izin verildiğini doğrulayın.
+Konak gereksinimlerini doğrulama | Konağın desteklenen bir Hyper-V sürümü ve Hyper-V rolü çalıştığını denetler.<br/><br/>WinRM hizmetini etkinleştirilir ve konakta 5985 (HTTP) ve 5986 (HTTPS) bağlantı noktalarını (meta veri koleksiyonu için gereklidir) açar. | Konağın Windows Server 2019, Windows Server 2016 veya Windows Server 2012 R2 çalıştırması gerekir.<br/><br/> BT 'nin Genel Bilgi Modeli (CıM) oturumu kullanarak çekme VM meta verileri ve performans verilerine bağlanabilmesi için WinRM bağlantı noktası 5985 ' de (HTTP) gelen bağlantılara izin verildiğini doğrulayın.<br/><br/> Betik, şu anda Ingilizce olmayan yerel ayarlara sahip konaklarda desteklenmiyor.  
 PowerShell sürümünü doğrula | Betiği desteklenen bir PowerShell sürümünde çalıştırıp çalıştırdığınızı denetler. | Hyper-V konağında PowerShell sürüm 4,0 veya üstünü kullandığınızı denetleyin.
 Hesap oluşturma | Hyper-V konağı üzerinde doğru izinlere sahip olduğunuzu doğrular.<br/><br/> Doğru izinlerle yerel bir kullanıcı hesabı oluşturmanıza olanak sağlar. | Seçenek 1: Hyper-V konak makinesine yönetici erişimi olan bir hesap hazırlayın.<br/><br/> 2. seçenek: bir yerel yönetici hesabı veya etki alanı yönetici hesabı hazırlayın ve hesabı şu gruplara ekleyin: uzak yönetim kullanıcıları, Hyper-V yöneticileri ve performans Izleyicisi kullanıcıları.
 PowerShell uzaktan iletişimini etkinleştir | Azure geçişi gerecinin bir WinRM bağlantısı üzerinden konakta PowerShell komutları çalıştırabilmeleri için konakta PowerShell uzaktan iletişimini mümkün bir şekilde sunar. | Ayarlamak için, her bir konakta, yönetici olarak bir PowerShell konsolu açın ve şu komutu çalıştırın: ``` powershell Enable-PSRemoting -force ```

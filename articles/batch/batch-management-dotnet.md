@@ -2,39 +2,32 @@
 title: Hesap kaynaklarını yönetmek için Batch yönetimi .NET kitaplığını kullanma
 description: Batch yönetimi .NET kitaplığı ile Azure Batch hesabı kaynakları oluşturun, silin ve değiştirin.
 ms.topic: how-to
-ms.date: 04/24/2017
+ms.date: 01/26/2021
 ms.custom: seodec18, has-adal-ref, devx-track-csharp
-ms.openlocfilehash: 0672a7dc1a5c26eff88806ca37b28d70b49f2288
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f6acf23742b8d4c5c31a5ea952aba5c76b64cae0
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88926533"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896740"
 ---
 # <a name="manage-batch-accounts-and-quotas-with-the-batch-management-client-library-for-net"></a>.NET için Batch yönetimi istemci kitaplığı ile Batch hesaplarını ve kotaları yönetme
 
-> [!div class="op_single_selector"]
-> * [Azure portalındaki](batch-account-create-portal.md)
-> * [Batch Yönetimi .NET](batch-management-dotnet.md)
-> 
-> 
+Batch hesabı oluşturma, silme, anahtar yönetimi ve kota bulmayı otomatikleştirmek için [Batch yönetimi .net](/dotnet/api/overview/azure/batch) kitaplığını kullanarak, Azure Batch uygulamalarınızda bakım yükünü düşürebilirsiniz.
 
-Batch hesabı oluşturma, silme, anahtar yönetimi ve kota bulmayı otomatikleştirmek için [Batch yönetimi .net][api_mgmt_net] kitaplığını kullanarak, Azure Batch uygulamalarınızda bakım yükünü düşürebilirsiniz.
-
-* Herhangi bir bölge içinde **Batch hesapları oluşturun ve silin** . Örneğin, bağımsız bir yazılım satıcısı (ISV) olarak, her birine Faturalandırma amacıyla ayrı bir Batch hesabı atandığı istemcileriniz için bir hizmet sağlarsanız, müşteri portalınıza hesap oluşturma ve silme yetenekleri ekleyebilirsiniz.
-* Batch hesaplarınızdan herhangi birini kullanarak **Hesap anahtarlarını alın ve yeniden oluşturun** . Bu, hesap anahtarlarının düzenli olarak geçişine veya süresinin dolmasını zorlayan güvenlik ilkeleriyle uyum sağlamanıza yardımcı olabilir. Çeşitli Azure bölgelerinde birkaç Batch hesabınız olduğunda, bu geçiş işleminin Otomasyonu çözümünüzün verimliliğini artırır.
-* **Hesap kotalarını kontrol edin** ve hangi Batch hesaplarının hangi sınırlara sahip olduğunu belirlemek için deneme yanılma ve hata tahminlerini göz önüne alın. İşleri başlatmadan, havuzlar oluşturmadan veya işlem düğümleri eklemeden önce hesap kotalarınızı denetleyerek, bu işlem kaynaklarının nerede veya ne zaman oluşturulduğunu önceden ayarlayabilirsiniz. Bu hesaplara ek kaynaklar ayırmadan önce hangi hesapların kota artışı gerektirdiğini belirleyebilirsiniz.
-* **Diğer Azure hizmetlerinin özelliklerini** , Batch yönetimi .net, [Azure Active Directory][aad_about]ve [Azure Resource Manager][resman_overview] birlikte aynı uygulamada birlikte kullanarak tam özellikli bir yönetim deneyimi için birleştirin. Bu özellikleri ve API 'Lerini kullanarak, bir frictiondaha az kimlik doğrulama deneyimi, kaynak grupları oluşturma ve silme özelliği ve bir uçtan uca yönetim çözümü için yukarıda açıklanan özellikleri sağlayabilirsiniz.
+- Herhangi bir bölge içinde **Batch hesapları oluşturun ve silin** . Örneğin, bağımsız bir yazılım satıcısı (ISV) olarak, her birine Faturalandırma amacıyla ayrı bir Batch hesabı atandığı istemcileriniz için bir hizmet sağlarsanız, müşteri portalınıza hesap oluşturma ve silme yetenekleri ekleyebilirsiniz.
+- Batch hesaplarınızdan herhangi birini kullanarak **Hesap anahtarlarını alın ve yeniden oluşturun** . Bu, hesap anahtarlarının düzenli olarak geçişine veya süresinin dolmasını zorlayan güvenlik ilkeleriyle uyum sağlamanıza yardımcı olabilir. Çeşitli Azure bölgelerinde birkaç Batch hesabınız olduğunda, bu geçiş işleminin Otomasyonu çözümünüzün verimliliğini artırır.
+- **Hesap kotalarını kontrol edin** ve hangi Batch hesaplarının hangi sınırlara sahip olduğunu belirlemek için deneme yanılma ve hata tahminlerini göz önüne alın. İşleri başlatmadan, havuzlar oluşturmadan veya işlem düğümleri eklemeden önce hesap kotalarınızı denetleyerek, bu işlem kaynaklarının nerede veya ne zaman oluşturulduğunu önceden ayarlayabilirsiniz. Bu hesaplara ek kaynaklar ayırmadan önce hangi hesapların kota artışı gerektirdiğini belirleyebilirsiniz.
+- Toplu Işlem yönetimi .NET, [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md)ve [Azure Resource Manager](../azure-resource-manager/management/overview.md) aynı uygulamada birlikte kullanarak, **diğer Azure hizmetlerinin özelliklerini** tam özellikli bir yönetim deneyimi için birleştirin. Bu özellikleri ve API 'Lerini kullanarak, bir frictiondaha az kimlik doğrulama deneyimi, kaynak grupları oluşturma ve silme özelliği ve bir uçtan uca yönetim çözümü için yukarıda açıklanan özellikleri sağlayabilirsiniz.
 
 > [!NOTE]
-> Bu makale, Batch hesaplarınızın, anahtarlarınızın ve kotaların programlı yönetimine odaklanırken, [Azure Portal][azure_portal]kullanarak bu etkinliklerin birçoğunu gerçekleştirebilirsiniz. Daha fazla bilgi için, [Azure Batch hizmeti için Azure Portal ve kotaları ve sınırları](batch-quota-limit.md) [kullanarak Azure Batch hesabı oluşturma](batch-account-create-portal.md) konusuna bakın.
-> 
-> 
+> Bu makale, Batch hesaplarınız, anahtarlarınızın ve kotaların programlı yönetimine odaklanırken, [Azure Portal kullanarak](batch-account-create-portal.md)bu etkinliklerin birçoğunu da gerçekleştirebilirsiniz.
 
 ## <a name="create-and-delete-batch-accounts"></a>Batch hesapları oluşturma ve silme
-Belirtildiği gibi, Batch yönetim API 'sinin birincil özelliklerinden biri de bir Azure bölgesinde Batch hesapları oluşturmak ve silmek. Bunu yapmak için [Batchmanagementclient. account. CreateAsync][net_create] ve [DeleteAsync][net_delete]ya da zaman uyumlu karşılıkları kullanın.
 
-Aşağıdaki kod parçacığı bir hesap oluşturur, yeni oluşturulan hesabı Batch hizmetinden alır ve siler. Bu kod parçacığında ve bu makaledeki diğerleri, `batchManagementClient` [Batchmanagementclient][net_mgmt_client]'ın tamamen başlatılmış bir örneğidir.
+Batch yönetim API 'sinin birincil özelliklerinden biri, bir Azure bölgesinde [Batch hesapları](accounts.md) oluşturmak ve silmek. Bunu yapmak için [Batchmanagementclient. account. CreateAsync](/dotnet/api/microsoft.azure.management.batch.batchaccountoperationsextensions.createasync) ve [DeleteAsync](/dotnet/api/microsoft.azure.management.batch.batchaccountoperationsextensions.deleteasync)ya da zaman uyumlu karşılıkları kullanın.
+
+Aşağıdaki kod parçacığı bir hesap oluşturur, yeni oluşturulan hesabı Batch hizmetinden alır ve siler. Bu kod parçacığında ve bu makaledeki diğerleri, `batchManagementClient` [Batchmanagementclient](/dotnet/api/microsoft.azure.management.batch.batchmanagementclient)'ın tamamen başlatılmış bir örneğidir.
 
 ```csharp
 // Create a new Batch account
@@ -52,17 +45,16 @@ await batchManagementClient.Account.DeleteAsync("MyResourceGroup", account.Name)
 ```
 
 > [!NOTE]
-> Toplu Işlem yönetimi .NET kitaplığı ve BatchManagementClient sınıfı kullanan uygulamalar, **Hizmet Yöneticisi** veya yönetim için Batch hesabının sahibi olan abonelik için **ortak yönetici** erişimi gerektirir. Daha fazla bilgi için Azure Active Directory bölümüne ve [AccountManagement][acct_mgmt_sample] Code örneğine bakın.
-> 
-> 
+> Toplu Işlem yönetimi .NET kitaplığı ve BatchManagementClient sınıfı kullanan uygulamalar, hizmet yöneticisi veya yönetim için Batch hesabının sahibi olan abonelik için ortak yönetici erişimi gerektirir. Daha fazla bilgi için Azure Active Directory bölümüne ve [AccountManagement](https://github.com/Azure-Samples/azure-batch-samples/tree/master/CSharp/AccountManagement) Code örneğine bakın.
 
 ## <a name="retrieve-and-regenerate-account-keys"></a>Hesap anahtarlarını alın ve yeniden oluşturun
-[Listkeysasync][net_list_keys]kullanarak aboneliğinizdeki herhangi bir Batch hesabından birincil ve ikincil hesap anahtarlarını alın. [Regeneratekeyasync][net_regenerate_keys]kullanarak bu anahtarları yeniden oluşturabilirsiniz.
+
+[Getkeysasync](/dotnet/api/microsoft.azure.management.batch.batchaccountoperationsextensions.getkeysasync)kullanarak aboneliğinizdeki herhangi bir Batch hesabından birincil ve ikincil hesap anahtarlarını alın. [Regeneratekeyasync](/dotnet/api/microsoft.azure.management.batch.batchaccountoperationsextensions.regeneratekeyasync)kullanarak bu anahtarları yeniden oluşturabilirsiniz.
 
 ```csharp
 // Get and print the primary and secondary keys
-BatchAccountListKeyResult accountKeys =
-    await batchManagementClient.Account.ListKeysAsync(
+BatchAccountGetKeyResult accountKeys =
+    await batchManagementClient.Account.GetKeysAsync(
         "MyResourceGroup",
         "mybatchaccount");
 Console.WriteLine("Primary key:   {0}", accountKeys.Primary);
@@ -79,22 +71,22 @@ BatchAccountRegenerateKeyResponse newKeys =
 ```
 
 > [!TIP]
-> Yönetim uygulamalarınız için kolaylaştırılmış bir bağlantı iş akışı oluşturabilirsiniz. İlk olarak, [Listkeysasync][net_list_keys]ile yönetmek istediğiniz Batch hesabı için bir hesap anahtarı alın. Ardından, toplu Iş .NET kitaplığının [Batchsharedkeycredentials][net_sharedkeycred] sınıfını başlatırken, [batchclient][net_batch_client]başlatılırken kullanılan bu anahtarı kullanın.
-> 
-> 
+> Yönetim uygulamalarınız için kolaylaştırılmış bir bağlantı iş akışı oluşturabilirsiniz. İlk olarak, [Getkeysasync](/dotnet/api/microsoft.azure.management.batch.batchaccountoperationsextensions.getkeysasync)ile yönetmek istediğiniz Batch hesabı için bir hesap anahtarı alın. Ardından, toplu Iş .NET kitaplığının [Batchsharedkeycredentials](/dotnet/api/microsoft.azure.batch.auth.batchsharedkeycredentials) sınıfını başlatırken, [batchclient](/dotnet/api/microsoft.azure.batch.batchclient)başlatılırken kullanılan bu anahtarı kullanın.
 
 ## <a name="check-azure-subscription-and-batch-account-quotas"></a>Azure aboneliğini ve Batch hesabı kotalarını denetleme
+
 Azure abonelikleri ve Batch gibi bireysel Azure Hizmetleri, içerdikleri belirli varlıkların sayısını sınırlayan varsayılan kotalardır. Azure aboneliklerine yönelik varsayılan kotalar için bkz. [Azure aboneliği ve hizmet limitleri, Kotalar ve kısıtlamalar](../azure-resource-manager/management/azure-subscription-service-limits.md). Batch hizmetinin varsayılan kotaları için, [Azure Batch hizmeti Için kotalar ve sınırlar](batch-quota-limit.md)bölümüne bakın. Batch yönetimi .NET kitaplığını kullanarak, uygulamalarınızda bu kotaları kontrol edebilirsiniz. Bu, havuzlar ve işlem düğümleri gibi hesap veya işlem kaynakları eklemeden önce ayırma kararları almanızı sağlar.
 
 ### <a name="check-an-azure-subscription-for-batch-account-quotas"></a>Batch hesabı kotaları için bir Azure aboneliğini denetleme
+
 Bir bölgede Batch hesabı oluşturmadan önce, söz konusu bölgeye bir hesap ekleyip ekleyemeyeceğinizi görmek için Azure aboneliğinizi kontrol edebilirsiniz.
 
-Aşağıdaki kod parçacığında, bir abonelikte yer alan tüm Batch hesaplarının bir koleksiyonunu almak için önce [Batchmanagementclient. account. ListAsync][net_mgmt_listaccounts] kullanacağız. Bu koleksiyonu elde ettiğimiz bir kez, hedef bölgede kaç tane hesap olduğunu belirledik. Ardından, Batch hesabı kotasını almak ve bu bölgede kaç tane hesap (varsa) oluşturulacağına yönelik [Batchmanagementclient. abonelikleri][net_mgmt_subscriptions] kullanırız.
+Aşağıdaki kod parçacığında, bir abonelikte yer alan tüm Batch hesaplarının bir koleksiyonunu almak için önce **Listasync** kullanırız. Bu koleksiyonu elde ettiğimiz bir kez, hedef bölgede kaç tane hesap olduğunu belirledik. Ardından, Batch hesap kotasını almak ve bu bölgede kaç tane hesap (varsa) oluşturulacağına yönelik olarak **Getquotasasync** kullanırız.
 
 ```csharp
 // Get a collection of all Batch accounts within the subscription
 BatchAccountListResponse listResponse =
-        await batchManagementClient.Account.ListAsync(new AccountListParameters());
+        await batchManagementClient.BatchAccount.ListAsync(new AccountListParameters());
 IList<AccountResource> accounts = listResponse.Accounts;
 Console.WriteLine("Total number of Batch accounts under subscription id {0}:  {1}",
     creds.SubscriptionId,
@@ -105,7 +97,7 @@ string region = "westus";
 int accountsInRegion = accounts.Count(o => o.Location == region);
 
 // Get the account quota for the specified region
-SubscriptionQuotasGetResponse quotaResponse = await batchManagementClient.Subscriptions.GetSubscriptionQuotasAsync(region);
+SubscriptionQuotasGetResponse quotaResponse = await batchManagementClient.Location.GetQuotasAsync(region);
 Console.WriteLine("Account quota for {0} region: {1}", region, quotaResponse.AccountQuota);
 
 // Determine how many accounts can be created in the target region
@@ -113,9 +105,10 @@ Console.WriteLine("Accounts in {0}: {1}", region, accountsInRegion);
 Console.WriteLine("You can create {0} accounts in the {1} region.", quotaResponse.AccountQuota - accountsInRegion, region);
 ```
 
-Yukarıdaki kod parçacığında, `creds` bir [TokenCloudCredentials][azure_tokencreds]örneğidir. Bu nesnenin oluşturulmasıyla ilgili bir örnek görmek için GitHub 'daki [AccountManagement][acct_mgmt_sample] kod örneğine bakın.
+Yukarıdaki kod parçacığında, `creds` bir **TokenCredentials** örneğidir. Bu nesnenin oluşturulmasıyla ilgili bir örnek görmek için GitHub 'daki [AccountManagement](https://github.com/Azure-Samples/azure-batch-samples/tree/master/CSharp/AccountManagement) kod örneğine bakın.
 
 ### <a name="check-a-batch-account-for-compute-resource-quotas"></a>İşlem kaynağı kotaları için Batch hesabını denetleme
+
 Batch çözümünüzdeki işlem kaynaklarını arttırmadan önce, ayırmak istediğiniz kaynakların hesabın kotalarını aşmayacağından emin olmak için kontrol edebilirsiniz. Aşağıdaki kod parçacığında, adlı Batch hesabı için kota bilgilerini yazdırdık `mybatchaccount` . Kendi uygulamanızda, bu tür bilgileri kullanarak hesabın oluşturulacak ek kaynakları işleyemeyeceğini belirleyebilirsiniz.
 
 ```csharp
@@ -131,64 +124,35 @@ Console.WriteLine("Active job and job schedule quota: {0}", account.Properties.A
 ```
 
 > [!IMPORTANT]
-> Azure abonelikleri ve hizmetleri için varsayılan kotalar olmakla kalmaz, [Azure Portal][azure_portal]bir istek yayımlayarak bu limitlerin birçoğu ortaya çıkar. Örneğin, Batch hesabı kotalarınızı artırma yönergeleri için [Azure Batch hizmetine yönelik kotalar ve sınırlar](batch-quota-limit.md) bölümüne bakın.
-> 
-> 
+> Azure abonelikleri ve hizmetleri için varsayılan kotalar olsa da, bu limitlerin birçoğu [Azure Portal bir kota artışı isteyerek](batch-quota-limit.md#increase-a-quota)oluşturulabilir.
 
 ## <a name="use-azure-ad-with-batch-management-net"></a>Azure AD 'yi Batch yönetimi .NET ile kullanma
 
-Batch yönetimi .NET kitaplığı bir Azure Kaynak sağlayıcısı istemcsahiptir ve hesap kaynaklarını programlı bir şekilde yönetmek için [Azure Resource Manager][resman_overview] birlikte kullanılır. Batch yönetimi .NET kitaplığı ve [Azure Resource Manager][resman_overview]aracılığıyla herhangi bir Azure Kaynak sağlayıcısı istemcisiyle yapılan isteklerin kimliğini doğrulamak IÇIN Azure AD gerekir. Batch yönetimi .NET kitaplığı ile Azure AD kullanma hakkında daha fazla bilgi için bkz. [Azure Active Directory kullanarak Batch çözümlerinin kimliğini doğrulayın](batch-aad-auth.md). 
+Batch yönetimi .NET kitaplığı bir Azure Kaynak sağlayıcısı istemcsahiptir ve hesap kaynaklarını programlı bir şekilde yönetmek için [Azure Resource Manager](../azure-resource-manager/management/overview.md) birlikte kullanılır. Batch yönetimi .NET kitaplığı ve Azure Resource Manager aracılığıyla herhangi bir Azure Kaynak sağlayıcısı istemcisiyle yapılan isteklerin kimliğini doğrulamak için Azure AD gerekir. Batch yönetimi .NET kitaplığı ile Azure AD kullanma hakkında daha fazla bilgi için bkz. [Azure Active Directory kullanarak Batch çözümlerinin kimliğini doğrulayın](batch-aad-auth.md).
 
 ## <a name="sample-project-on-github"></a>GitHub 'da örnek proje
 
-Batch yönetimi .NET 'i eylemde görüntülemek için GitHub 'da [AccountManagement][acct_mgmt_sample] örnek projesine göz atın. AccountManagement örnek uygulaması aşağıdaki işlemleri gösterir:
+Batch yönetimi .NET 'i eylemde görüntülemek için GitHub 'da [AccountManagement](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/AccountManagement) örnek projesine göz atın. AccountManagement örnek uygulaması aşağıdaki işlemleri gösterir:
 
-1. [Adal][aad_adal]kullanarak Azure AD 'den bir güvenlik belirteci alın. Kullanıcı önceden oturum açmamışsa Azure kimlik bilgileri istenir.
-2. Azure AD 'den alınan güvenlik belirteci ile, hesap ile ilişkili aboneliklerin listesi için Azure 'u sorgulamak üzere bir [Subscriptionclient][resman_subclient] oluşturun. Kullanıcı, birden fazla abonelik içeriyorsa listeden bir abonelik seçebilir.
+1. [Adal](../active-directory/azuread-dev/active-directory-authentication-libraries.md)kullanarak Azure AD 'den bir güvenlik belirteci alın. Kullanıcı önceden oturum açmamışsa Azure kimlik bilgileri istenir.
+2. Azure AD 'den alınan güvenlik belirteci ile, hesap ile ilişkili aboneliklerin listesi için Azure 'u sorgulamak üzere bir [Subscriptionclient](/dotnet/api/microsoft.azure.management.resourcemanager.subscriptionclient) oluşturun. Kullanıcı, birden fazla abonelik içeriyorsa listeden bir abonelik seçebilir.
 3. Seçili abonelikle ilişkili kimlik bilgilerini al.
-4. Kimlik bilgilerini kullanarak bir [ResourceManagementClient][resman_client] nesnesi oluşturun.
-5. Bir kaynak grubu oluşturmak için [ResourceManagementClient][resman_client] nesnesini kullanın.
-6. Birkaç Batch hesabı işlemini gerçekleştirmek için bir [Batchmanagementclient][net_mgmt_client] nesnesi kullanın:
-   * Yeni kaynak grubunda bir Batch hesabı oluşturun.
-   * Batch hizmetinden yeni oluşturulan hesabı alın.
-   * Yeni hesap için hesap anahtarlarını yazdır.
-   * Hesap için yeni bir birincil anahtar oluşturun.
-   * Hesap için kota bilgilerini yazdırın.
-   * Aboneliğin kota bilgilerini yazdırın.
-   * Abonelik içindeki tüm hesapları yazdır.
-   * Yeni oluşturulan hesabı silin.
+4. Kimlik bilgilerini kullanarak bir [ResourceManagementClient](/dotnet/api/microsoft.azure.management.resourcemanager.resourcemanagementclient) nesnesi oluşturun.
+5. Bir kaynak grubu oluşturmak için [ResourceManagementClient](/dotnet/api/microsoft.azure.management.resourcemanager.resourcemanagementclient) nesnesini kullanın.
+6. Birkaç Batch hesabı işlemini gerçekleştirmek için bir [Batchmanagementclient](/dotnet/api/microsoft.azure.management.batch.batchmanagementclient) nesnesi kullanın:
+   - Yeni kaynak grubunda bir Batch hesabı oluşturun.
+   - Batch hizmetinden yeni oluşturulan hesabı alın.
+   - Yeni hesap için hesap anahtarlarını yazdır.
+   - Hesap için yeni bir birincil anahtar oluşturun.
+   - Hesap için kota bilgilerini yazdırın.
+   - Aboneliğin kota bilgilerini yazdırın.
+   - Abonelik içindeki tüm hesapları yazdır.
+   - Yeni oluşturulan hesabı silin.
 7. Kaynak grubunu silin.
-
-Yeni oluşturulan Batch hesabını ve kaynak grubunu silmeden önce bunları [Azure Portal][azure_portal]görüntüleyebilirsiniz:
 
 Örnek uygulamayı başarılı bir şekilde çalıştırmak için, önce Azure portal Azure AD kiracınızla kaydetmeniz ve Azure Resource Manager API 'sine izinler vermeniz gerekir. [Batch yönetim çözümlerini Active Directory kimlik doğrulaması konusunda](batch-aad-auth-management.md)belirtilen adımları izleyin.
 
+## <a name="next-steps"></a>Sonraki adımlar
 
-[aad_about]:../active-directory/fundamentals/active-directory-whatis.md "Azure Active Directory nedir?"
-[aad_adal]: ../active-directory/azuread-dev/active-directory-authentication-libraries.md
-[aad_auth_scenarios]:../active-directory/develop/authentication-scenarios.md "Azure AD için kimlik doğrulama senaryoları"
-[aad_integrate]:../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md "Uygulamaları Azure Active Directory tümleştirme"
-[acct_mgmt_sample]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/AccountManagement
-[api_net]: /dotnet/api/microsoft.azure.batch
-[api_mgmt_net]: /dotnet/api/overview/azure/batch
-[azure_portal]: https://portal.azure.com
-[azure_storage]: https://azure.microsoft.com/services/storage/
-[azure_tokencreds]: /previous-versions/azure/reference/mt167728(v=azure.100)
-[batch_explorer_project]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/BatchExplorer
-[net_batch_client]: /dotnet/api/microsoft.azure.batch.batchclient
-[net_list_keys]: /previous-versions/azure/mt463199(v=azure.100)
-[net_create]: /previous-versions/azure/mt463210(v=azure.100)
-[net_delete]: /previous-versions/azure/mt463128(v=azure.100)
-[net_regenerate_keys]: /previous-versions/azure/mt463213(v=azure.100)
-[net_sharedkeycred]: /dotnet/api/microsoft.azure.batch.auth.batchsharedkeycredentials
-[net_mgmt_client]: /dotnet/api/microsoft.azure.management.batch.batchmanagementclient
-[net_mgmt_subscriptions]: /previous-versions/azure/mt592937(v=azure.100)
-[net_mgmt_listaccounts]: /previous-versions/azure/mt463134(v=azure.100)
-[resman_api]: /previous-versions/azure/mt463134(v=azure.100)
-[resman_client]: /dotnet/api/microsoft.azure.management.resourcemanager
-[resman_subclient]: /dotnet/api/microsoft.azure.management.resourcemanager
-[resman_overview]: ../azure-resource-manager/management/overview.md
-
-[1]: ./media/batch-management-dotnet/portal-01.png
-[2]: ./media/batch-management-dotnet/portal-02.png
-[3]: ./media/batch-management-dotnet/portal-03.png
+- [Batch hizmeti iş akışı ve](batch-service-workflow-features.md) havuzlar, düğümler, işler ve görevler gibi birincil kaynaklar hakkında bilgi edinin.
+- [Batch .NET istemci kitaplığı](quick-run-dotnet.md) veya [Python](quick-run-python.md) kullanarak Batch özellikli bir uygulama geliştirmenin temellerini öğrenin. Bu hızlı başlangıç, çoklu işlem düğümlerinde bir iş yükünü yürütmek için Batch hizmetini kullanan bir örnek uygulama boyunca size kılavuzluk eden iş yükü dosyası hazırlama ve alma için Azure depolama 'yı kullanma. git pus

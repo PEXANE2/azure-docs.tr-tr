@@ -1,21 +1,25 @@
 ---
 title: Sunucu Yönetme-Azure portal-MySQL için Azure veritabanı
 description: Azure portal bir MySQL için Azure veritabanı sunucusunu yönetmeyi öğrenin.
-author: savjani
-ms.author: pariks
+author: Bashar-MSFT
+ms.author: bahusse
 ms.service: mysql
 ms.topic: how-to
-ms.date: 3/18/2020
-ms.openlocfilehash: e29e823834ec813a8389cea220cffc7633aa7103
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.date: 1/26/2021
+ms.openlocfilehash: 83876f77e0d7ffc0ae20bc5a545c1f18f53f4a8f
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94541462"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897994"
 ---
 # <a name="manage-an-azure-database-for-mysql-server-using-the-azure-portal"></a>Azure portal kullanarak MySQL için Azure veritabanı sunucusunu yönetme
 
 Bu makalede MySQL sunucuları için Azure veritabanı 'nı nasıl yöneteceğiniz gösterilmektedir. Yönetim görevleri işlem ve depolama ölçeklendirmesi, yönetici parola sıfırlama ve sunucu ayrıntılarını görüntüleme içerir.
+
+> [!NOTE]
+> Bu makale, Microsoft 'un artık kullandığı bir terim olan _bağımlı_ dönem başvuruları içerir. Terim yazılımlardan kaldırıldığında, bu makaleden kaldıracağız.
+>
 
 ## <a name="sign-in"></a>Oturum açın
 
@@ -35,7 +39,7 @@ Genel Amaçlı En Iyi duruma getirilmiş ve tam tersi yönde ölçeklendirebilir
 
 1. Azure portal sunucunuzu seçin. **Ayarlar** bölümünde bulunan **fiyatlandırma katmanını** seçin.
 
-2. Ölçeklendirdiğinize göre **genel amaçlı** veya **bellek için iyileştirilmiş** ' u seçin.
+2. Ölçeklendirdiğinize göre **genel amaçlı** veya **bellek için iyileştirilmiş**' u seçin.
 
    :::image type="content" source="./media/howto-create-manage-server-portal/change-pricing-tier.png" alt-text="MySQL için Azure veritabanı 'nda temel, Genel Amaçlı veya bellek için Iyileştirilmiş katmanı seçme Azure portal ekran görüntüsü":::
 
@@ -74,7 +78,7 @@ Genel Amaçlı En Iyi duruma getirilmiş ve tam tersi yönde ölçeklendirebilir
 
 Azure portal kullanarak yönetici rolü parolasını değiştirebilirsiniz.
 
-1. Azure portal sunucunuzu seçin. **Genel bakış** penceresinde **Parolayı Sıfırla** ' yı seçin.
+1. Azure portal sunucunuzu seçin. **Genel bakış** penceresinde **Parolayı Sıfırla**' yı seçin.
 
    :::image type="content" source="./media/howto-create-manage-server-portal/overview-reset-password.png" alt-text="MySQL için Azure veritabanı 'nda parolayı sıfırlamaya Azure portal ekran görüntüsü":::
 
@@ -83,12 +87,19 @@ Azure portal kullanarak yönetici rolü parolasını değiştirebilirsiniz.
    :::image type="content" source="./media/howto-create-manage-server-portal/reset-password.png" alt-text="Parola sıfırlama ve MySQL için Azure veritabanı 'na kaydetme Azure portal ekran görüntüsü":::
 
 3. Yeni parolayı kaydetmek için **Tamam ' ı** seçin.
+ 
+
+> [!IMPORTANT]
+> Sunucu Yöneticisi parolasını sıfırlamak, Sunucu Yöneticisi ayrıcalıklarını varsayılan olarak otomatik olarak sıfırlar. Sunucu Yöneticisi ayrıcalıklarından birini veya birkaçını yanlışlıkla iptal ederseniz Sunucu Yöneticisi parolanızı sıfırlamayı düşünün.
+   
+> [!NOTE]
+> Sunucu Yöneticisi kullanıcısı varsayılan olarak aşağıdaki ayrıcalıklara sahiptir: seçme, ekleme, GÜNCELLEŞTIRME, SILME, oluşturma, BıRAKMA, yeniden yükleme, Işleme, BAŞVURULARı, DIZIN, DEĞIŞTIRME, VERITABANLARıNı gösterme, GEÇICI tablolar oluşturma, tablo KILITLEME, yürütme, çoğaltma BAĞıMLı, çoğaltma ISTEMCISI, görünüm oluşturma, görünümü gösterme, rutın oluşturma, yordamı DEĞIŞTIRME, Kullanıcı oluşturma, olay, TETIKLEYICI
 
 ## <a name="delete-a-server"></a>Sunucu silme
 
 Artık gerekmiyorsa, sunucunuzu silebilirsiniz.
 
-1. Azure portal sunucunuzu seçin. **Genel bakış** penceresinde **Sil** ' i seçin.
+1. Azure portal sunucunuzu seçin. **Genel bakış** penceresinde **Sil**' i seçin.
 
    :::image type="content" source="./media/howto-create-manage-server-portal/overview-delete.png" alt-text="MySQL için Azure veritabanı 'nda sunucuyu silmek için Azure portal ekran görüntüsü":::
 
@@ -99,7 +110,7 @@ Artık gerekmiyorsa, sunucunuzu silebilirsiniz.
    > [!NOTE]
    > Sunucu silindiğinde geri alınamaz.
 
-3. **Sil** ’i seçin.
+3. **Sil**’i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: alzam
-ms.openlocfilehash: 8fcc79991918aecfc26933f2ef5b6e80ea7fa88c
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: e25ef7f55492be4ee491b9ebbbef4aa1eb03c80b
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93043441"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98898096"
 ---
 # <a name="create-an-azure-active-directory-ad-tenant-for-p2s-openvpn-protocol-connections"></a>P2S OpenVPN Protokolü bağlantıları için Azure Active Directory (AD) kiracısı oluşturma
 
@@ -55,7 +55,7 @@ P2S yapılandırması, uzak istemcilerin bağlanmasına yönelik parametreleri t
 
     ![Ekran görüntüsü, menüden sanal hub 'ı Düzenle ' nin seçili olduğunu gösterir.](media/openvpn-azure-ad-tenant-multi-app/p2s4.jpg)
 
-3. **Sanal hub 'ı Düzenle** ' ye tıklayın.
+3. **Sanal hub 'ı Düzenle**' ye tıklayın.
 
 4. **Noktadan siteye ağ geçidini dahil** et onay kutusunu işaretleyin ve Istediğiniz **ağ geçidi ölçek birimini** seçin.
 
@@ -63,7 +63,7 @@ P2S yapılandırması, uzak istemcilerin bağlanmasına yönelik parametreleri t
 
 5. VPN istemcilerine atanan IP adreslerine ait **adres havuzunu** girin.
 
-6. **Onayla** 'ya tıklayın.
+6. **Onayla**'ya tıklayın.
 
 7. İşlemin tamamlanması 30 dakika kadar sürebilir.
 
@@ -71,9 +71,9 @@ P2S yapılandırması, uzak istemcilerin bağlanmasına yönelik parametreleri t
 
 İstemcilerinizi yapılandırmak için VPN profilini kullanın.
 
-1. Sanal WAN 'nizin sayfasında, **Kullanıcı VPN yapılandırması** ' na tıklayın.
+1. Sanal WAN 'nizin sayfasında, **Kullanıcı VPN yapılandırması**' na tıklayın.
 
-2. Sayfanın üst kısmında, **Kullanıcı VPN yapılandırması 'Nı indir** ' e tıklayın.
+2. Sayfanın üst kısmında, **Kullanıcı VPN yapılandırması 'Nı indir**' e tıklayın.
 
 3. Dosya oluşturulduktan sonra bağlantıya tıklayarak indirebilirsiniz.
 
@@ -99,15 +99,15 @@ Azure VPN Istemcisini indirmek için bu [bağlantıyı](https://go.microsoft.com
 
 #### <a name="to-import-a-client-profile"></a><a name="import"></a>İstemci profilini içeri aktarmak için
 
-1. Sayfasında **Içeri aktar** ' ı seçin.
+1. Sayfasında **Içeri aktar**' ı seçin.
 
     ![Ekran görüntüsü artı menüsünden Seçili Içeri aktarmayı gösterir.](./media/openvpn-azure-ad-tenant-multi-app/import/import1.jpg)
 
-2. Profil XML dosyasına gidin ve seçin. Dosya seçili olduğunda **Aç** ' ı seçin.
+2. Profil XML dosyasına gidin ve seçin. Dosya seçili olduğunda **Aç**' ı seçin.
 
     ![Ekran görüntüsü, bir dosyayı seçebileceğiniz açık bir iletişim kutusu gösterir.](./media/openvpn-azure-ad-tenant-multi-app/import/import2.jpg)
 
-3. Profilin adını belirtin ve **Kaydet** ' i seçin.
+3. Profilin adını belirtin ve **Kaydet**' i seçin.
 
     ![Ekran görüntüsünde, eklenen bağlantı adı ve Kaydet düğmesi seçili görüntülenir.](./media/openvpn-azure-ad-tenant-multi-app/import/import3.jpg)
 
@@ -121,7 +121,7 @@ Azure VPN Istemcisini indirmek için bu [bağlantıyı](https://go.microsoft.com
 
 #### <a name="to-delete-a-client-profile"></a><a name="delete"></a>İstemci profilini silmek için
 
-1. Silmek istediğiniz istemci profilinin yanındaki üç nokta (...) simgesini seçin. Ardından **Kaldır** ' ı seçin.
+1. Silmek istediğiniz istemci profilinin yanındaki üç nokta (...) simgesini seçin. Ardından **Kaldır**' ı seçin.
 
     ![Ekran görüntüsü menüden Seçileni kaldır 'ı gösterir.](./media/openvpn-azure-ad-tenant-multi-app/delete/delete1.jpg)
 
@@ -131,11 +131,19 @@ Azure VPN Istemcisini indirmek için bu [bağlantıyı](https://go.microsoft.com
 
 #### <a name="to-diagnose-connection-issues"></a><a name="diagnose"></a>Bağlantı sorunlarını tanılamak için
 
-1. Bağlantı sorunlarını tanılamak için **Tanılama** aracını kullanabilirsiniz. Menüyü açığa çıkarmak için tanılamak istediğiniz VPN bağlantısının yanındaki üç nokta (...) simgesini seçin. Ardından **Tanıla** ' yı seçin.
+1. Bağlantı sorunlarını tanılamak için **Tanılama** aracını kullanabilirsiniz. Menüyü açığa çıkarmak için tanılamak istediğiniz VPN bağlantısının yanındaki üç nokta (...) simgesini seçin. Ardından **Tanıla**' yı seçin.
 
     ![Ekran görüntüsü, menüden seçili tanılamayı gösterir.](./media/openvpn-azure-ad-tenant-multi-app/diagnose/diagnose1.jpg)
 
-2. **Bağlantı özellikleri** sayfasında, **tanı Çalıştır** ' ı seçin.
+2. **Bağlantı özellikleri** sayfasında, **tanı Çalıştır**' ı seçin.
+
+    ![Ekran görüntüsü, bir bağlantı için tanılama Çalıştır düğmesini gösterir.](./media/openvpn-azure-ad-tenant-multi-app/diagnose/diagnose2.jpg)
+
+3. Kimlik bilgilerinizle oturum açın.
+
+    ![Tanıla 3](./media/openvpn-azure-ad-tenant-multi-app/diagnose/diagnose3.jpg)
+
+4. Tanılama sonuçlarını görüntüleyin.
 
     ![Ekran görüntüsü, bir bağlantı için tanılama Çalıştır düğmesini gösterir.](./media/openvpn-azure-ad-tenant-multi-app/diagnose/diagnose2.jpg)
 

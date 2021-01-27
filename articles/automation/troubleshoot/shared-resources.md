@@ -2,18 +2,15 @@
 title: Azure Otomasyonu paylaşılan kaynak sorunlarını giderme
 description: Bu makalede, Azure Otomasyonu paylaşılan kaynaklarıyla ilgili sorunların nasıl giderileceği ve çözüleceği açıklanır.
 services: automation
-author: mgoedtel
-ms.author: magoedte
+ms.subservice: ''
 ms.date: 03/12/2019
-ms.topic: conceptual
-ms.service: automation
-manager: carmonm
-ms.openlocfilehash: c6bdc09d37cf29458346eaea360b4cd9e0d1226f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.topic: troubleshooting
+ms.openlocfilehash: c4ede0bffedc256f4af621d4945ebbbea0f8a4b6
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86187175"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896300"
 ---
 # <a name="troubleshoot-shared-resource-issues"></a>Paylaşılan kaynak sorunlarını giderme
 
@@ -33,7 +30,7 @@ PowerShell modüllerini içeri aktarma karmaşık, çok adımlı bir işlem oldu
 
 #### <a name="resolution"></a>Çözüm
 
-Bu sorunu çözmek için [Remove-AzAutomationModule](/powershell/module/Az.Automation/Remove-AzAutomationModule?view=azps-3.7.0) cmdlet 'ini kullanarak takılı olan modülü kaldırmanız gerekir. Daha sonra modülün içeri aktarılmasını yeniden deneyebilirsiniz.
+Bu sorunu çözmek için [Remove-AzAutomationModule](/powershell/module/Az.Automation/Remove-AzAutomationModule) cmdlet 'ini kullanarak takılı olan modülü kaldırmanız gerekir. Daha sonra modülün içeri aktarılmasını yeniden deneyebilirsiniz.
 
 ```azurepowershell-interactive
 Remove-AzAutomationModule -Name ModuleName -ResourceGroupName ExampleResourceGroup -AutomationAccountName ExampleAutomationAccount -Force
@@ -70,7 +67,7 @@ Modülün Azure Otomasyonu 'na başarıyla aktarılamayan bazı yaygın nedenler
 * Yapı, Otomasyon gereksinimlerinin yapısıyla eşleşmez.
 * Modül, Otomasyon hesabınıza dağıtılmamış başka bir modüle bağımlıdır.
 * Modülün içindeki bağımlılıkları eksik.
-* [New-AzAutomationModule](/powershell/module/Az.Automation/New-AzAutomationModule?view=azps-3.7.0) cmdlet 'i modülü yüklemek için kullanılıyor ve tam depolama yolu sağlamadınız veya genel olarak ERIŞILEBILEN bir URL kullanarak modülü yüklemediniz.
+* [New-AzAutomationModule](/powershell/module/Az.Automation/New-AzAutomationModule) cmdlet 'i modülü yüklemek için kullanılıyor ve tam depolama yolu sağlamadınız veya genel olarak ERIŞILEBILEN bir URL kullanarak modülü yüklemediniz.
 
 #### <a name="resolution"></a>Çözüm
 

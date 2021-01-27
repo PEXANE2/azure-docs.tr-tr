@@ -7,19 +7,19 @@ ms.service: automation
 ms.subservice: dsc
 author: mgoedtel
 ms.author: magoedte
-ms.date: 06/22/2020
+ms.date: 01/26/2021
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 437a917e0f9b6e7a7370e828c8e3ee95218cea3f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 752d7f86941967c218b3a57fa163698b9f502057
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87079749"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897029"
 ---
 # <a name="azure-automation-state-configuration-overview"></a>Azure Otomasyonu durum yapılandırmasına genel bakış
 
-Azure Otomasyonu durum yapılandırması, herhangi bir bulutta veya şirket içi veri merkezinde bulunan düğümler için PowerShell Istenen durum yapılandırması (DSC) [yapılandırmalarını](/powershell/scripting/dsc/configurations/configurations) yazmanızı, yönetmenizi ve derlemenize olanak tanıyan bir Azure yapılandırma yönetim hizmetidir. Hizmet ayrıca [DSC kaynaklarını](/powershell/scripting/dsc/resources/resources)içeri aktarır ve tüm bulutta, hedef düğümlere yapılandırma atar. **Yapılandırma yönetimi**altında **Durum Yapılandırması (DSC)** seçeneğini belirleyerek Azure Portal Azure Automation durum yapılandırmasına erişebilirsiniz.
+Azure Otomasyonu durum yapılandırması, herhangi bir bulutta veya şirket içi veri merkezinde bulunan düğümler için PowerShell Istenen durum yapılandırması (DSC) [yapılandırmalarını](/powershell/scripting/dsc/configurations/configurations) yazmanızı, yönetmenizi ve derlemenize olanak tanıyan bir Azure yapılandırma yönetim hizmetidir. Hizmet ayrıca [DSC kaynaklarını](/powershell/scripting/dsc/resources/resources)içeri aktarır ve tüm bulutta, hedef düğümlere yapılandırma atar. **Yapılandırma yönetimi** altında **Durum Yapılandırması (DSC)** seçeneğini belirleyerek Azure Portal Azure Automation durum yapılandırmasına erişebilirsiniz.
 
 Çeşitli makineleri yönetmek için Azure Otomasyonu durum yapılandırmasını kullanabilirsiniz:
 
@@ -37,7 +37,7 @@ Makine yapılandırmasını buluttan yönetmeye hazırsanız, Azure Otomasyonu d
 
 Azure Otomasyonu durum yapılandırması, Azure dışında DSC 'nin kullanımıyla çeşitli avantajlar sağlar. Bu hizmet, merkezi bir güvenli konumdan binlerce makine genelinde hızla ve kolayca ölçeklenebilirlik sunar. Makineleri kolayca etkinleştirebilir, bildirime dayalı yapılandırmalara atayabilir ve her makinenin, belirttiğiniz istenen durumla uyumluluğunu gösteren raporları görüntüleyebilirsiniz.
 
-Azure Otomasyonu durum yapılandırma hizmeti, Azure Otomasyonu runbook 'larının PowerShell komut dosyasına ne kadar olduğunu DSC 'ye göre yapılır. Diğer bir deyişle, Azure Otomasyonu 'nun PowerShell betiklerini yönetmenize yardımcı olduğu şekilde, DSC yapılandırmalarının yönetilmesine de yardımcı olur. 
+Azure Otomasyonu durum yapılandırma hizmeti, Azure Otomasyonu runbook 'larının PowerShell komut dosyasına ne kadar olduğunu DSC 'ye göre yapılır. Diğer bir deyişle, Azure Otomasyonu 'nun PowerShell betiklerini yönetmenize yardımcı olduğu şekilde, DSC yapılandırmalarının yönetilmesine de yardımcı olur.
 
 ### <a name="built-in-pull-server"></a>Yerleşik çekme sunucusu
 
@@ -83,20 +83,11 @@ Azure 'da çalışan tüm Linux düğümleri için, makineler etkinleştirildiğ
 
 ### <a name="configuration-of-private-networks"></a><a name="network-planning"></a>Özel ağların yapılandırması
 
-Düğümleriniz özel bir ağda bulunuyorsa, aşağıdaki bağlantı noktası ve URL 'Ler gereklidir. Bu kaynaklar yönetilen düğüm için ağ bağlantısı sağlar ve DSC 'nin Azure Otomasyonu ile iletişim kurmasına izin verir.
-
-* Bağlantı noktası: giden internet erişimi için yalnızca TCP 443 gerekir
-* Genel URL: ***. Azure-Automation.net**
-* US Gov Virginia genel URL 'SI: ***. Azure-Automation.us**
-* Aracı hizmeti: **https:// \<workspaceId\> . Agentsvc.Azure-Automation.net**
-
-[Waitfor * kaynakları](/powershell/scripting/dsc/reference/resources/windows/waitForAllResource)gibi düğümler arasında ILETIŞIM kuran DSC kaynakları kullanıyorsanız, düğümler arasında trafiğe de izin vermeniz gerekir. Bu ağ gereksinimlerini anlamak için her DSC kaynağına yönelik belgelere bakın.
-
-TLS 1,2 için istemci gereksinimlerini anlamak üzere bkz. [Azure Otomasyonu Için tls 1,2 zorlaması](automation-managing-data.md#tls-12-enforcement-for-azure-automation).
+Özel bir ağdaki düğümler için gereken bağlantı noktaları, URL 'Ler ve diğer ağ ayrıntılarıyla ilgili ayrıntılı bilgi için [Azure Otomasyonu ağ yapılandırması](automation-network-configuration.md#hybrid-runbook-worker-and-state-configuration) ' nı kontrol edin.
 
 #### <a name="proxy-support"></a>Proxy desteği
 
-DSC aracısına yönelik ara sunucu desteği Windows sürüm 1809 ve sonrasında kullanılabilir. Bu seçenek, `ProxyURL` `ProxyCredential` düğümleri kaydetmek için kullanılan [metaconfiguration betiğinin](automation-dsc-onboarding.md#generate-dsc-metaconfigurations) ve için değerleri ayarlanarak etkinleştirilir. 
+DSC aracısına yönelik ara sunucu desteği Windows sürüm 1809 ve sonrasında kullanılabilir. Bu seçenek, `ProxyURL` `ProxyCredential` düğümleri kaydetmek için kullanılan [metaconfiguration betiğinin](automation-dsc-onboarding.md#generate-dsc-metaconfigurations) ve için değerleri ayarlanarak etkinleştirilir.
 
 >[!NOTE]
 >Azure Otomasyonu durum yapılandırması, önceki Windows sürümleri için DSC proxy desteği sağlamaz.
@@ -114,4 +105,4 @@ Linux düğümleri için DSC Aracısı ara sunucuyu destekler ve `http_proxy` UR
 - Hedef düğümlere atayabilmeniz için DSC yapılandırmalarını derleme hakkında bilgi edinmek için bkz. [Azure Otomasyonu durum YAPıLANDıRMASıNDA DSC yapılandırmalarını derleme](automation-dsc-compile.md).
 - Azure Otomasyonu durum yapılandırması 'nı sürekli bir dağıtım ardışık düzeninde kullanmaya ilişkin bir örnek görmek için bkz. [Chocolatey ile sürekli dağıtımı ayarlama](automation-dsc-cd-chocolatey.md).
 - Fiyatlandırma bilgileri için bkz. [Azure Otomasyonu durum yapılandırması fiyatlandırması](https://azure.microsoft.com/pricing/details/automation/).
-- PowerShell cmdlet başvurusu için bkz. [az. Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation).
+- PowerShell cmdlet başvurusu için bkz. [az. Automation](/powershell/module/az.automation).

@@ -1,24 +1,9 @@
 ---
-title: Azure depolama hesapları
-titleSuffix: Azure Media Services
-description: Azure Media Services ile kullanmak için bir Azure depolama hesabı oluşturmayı öğrenin.
-services: media-services
-documentationcenter: ''
-author: IngridAtMicrosoft
-manager: femila
-editor: ''
-ms.service: media-services
-ms.workload: ''
-ms.topic: conceptual
-ms.date: 01/05/2021
-ms.author: inhenkel
-ms.openlocfilehash: 55a49d48af95c103d2a28d5106af5f3166605514
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
-ms.translationtype: MT
-ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98882255"
+# <a name="mandatory-fields-see-more-on-akamsskyeyemeta"></a>Zorunlu alanlar. Aka.ms/skyeye/meta hakkında daha fazla bilgi için bkz..
+Başlık: Azure depolama hesapları: Azure Media Services açıklaması: Azure Media Services ile kullanmak için Azure depolama hesabı oluşturmayı öğrenin.
+Hizmetler: Media-Services belgetationcenter: ' ' Yazar: ınridatmicrosoft Manager: femıla Düzenleyicisi: ' ' MS. Service: Media-Services MS. Workload: MS. Topic: kavramsal MS. Date: 01/05/2021 MS. Author: inhenkel
 ---
+
 # <a name="azure-storage-accounts"></a>Azure Depolama hesapları
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]

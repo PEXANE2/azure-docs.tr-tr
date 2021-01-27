@@ -10,12 +10,12 @@ ms.date: 10/19/2020
 ms.author: ruxu
 ms.reviewer: ''
 ms.custom: devx-track-python
-ms.openlocfilehash: 7bb0b9b4645be7e548fe116d9e9a2c92fae7dc96
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 57999ce53e536d422e6502a77aaccdc66b4c5077
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98120963"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98898503"
 ---
 # <a name="create-develop-and-maintain-synapse-studio-notebooks-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te SYNAPSE Studio Not defterleri oluşturma, geliştirme ve bakımını yapma
 
@@ -303,6 +303,8 @@ Desteklenmez.
 # <a name="preview-notebook"></a>[İnceleme Not defteri](#tab/preview)
 
 ```%run <notebook path>```Geçerli not defteri 'nin bağlamı içindeki başka bir not defterine başvurmak için Magic komutunu kullanabilirsiniz. Başvuru not defterinde tanımlanan tüm değişkenler geçerli not defterinde kullanılabilir. ```%run``` Magic komutu, iç içe çağrıları destekler ancak özyinelemeli çağrıları desteklemez. Deyimin derinliği beşten fazlaysa bir özel durum alırsınız. ```%run``` komut şu anda yalnızca bir not defteri yolunu parametre olarak geçirmek desteklemektedir. 
+
+Örnek: ``` %run /path/notebookA ```.
 
 ---
 

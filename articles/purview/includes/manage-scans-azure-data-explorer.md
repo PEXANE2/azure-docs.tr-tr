@@ -1,16 +1,16 @@
 ---
-author: hophanms
-ms.author: hophan
+author: amberz
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: include
 ms.date: 1/20/2021
-ms.openlocfilehash: ac83f455d2af82c3f6970077fccb17f07e53cccc
+ms.author: amberz
+ms.openlocfilehash: bf872feae9c3a7ca94e5252872adee2b653f5524
 ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 01/27/2021
-ms.locfileid: "98901269"
+ms.locfileid: "98896172"
 ---
 ## <a name="creating-and-running-a-scan"></a>Tarama oluşturma ve çalıştırma
 
@@ -27,19 +27,19 @@ Yeni bir tarama oluşturup çalıştırmak için aşağıdakileri yapın:
 
 1. Veri kaynağınıza bağlanacak kimlik bilgisini seçin. 
 
-   :::image type="content" source="media/manage-scans/set-up-scan.png" alt-text="Taramayı ayarla":::
+   :::image type="content" source="media/manage-scans/set-up-scan-data-explorer.png" alt-text="Taramayı ayarla":::
 
 1. Listeden uygun öğeleri denetleyerek, taramanızı klasörler, koleksiyonlar veya şemalar gibi veri kaynağının belirli bölümlerine atayabilirsiniz.
 
-   :::image type="content" source="media/manage-scans/scope-your-scan.png" alt-text="Taramanızı kapsama":::
+   :::image type="content" source="media/manage-scans/scope-your-scan-data-explorer.png" alt-text="Taramanızı kapsama":::
 
 1. Tarama için ayarlanmış bir tarama kuralı seçin. Sistem varsayılanı, mevcut özel olanlar arasından seçim yapabilir veya yeni bir satır içi oluşturabilirsiniz.
 
-   :::image type="content" source="media/manage-scans/scan-rule-set.png" alt-text="Tarama kuralı kümesi":::
+   :::image type="content" source="media/manage-scans/scan-rule-set-data-explorer.png" alt-text="Tarama kuralı kümesi":::
 
 1. Tarama tetikleyiciyi seçin. Bir zamanlama ayarlayabilir veya taramayı bir kez çalıştırabilirsiniz.
 
-   :::image type="content" source="media/manage-scans/trigger-scan.png" alt-text="Tetikleyicinin":::
+   :::image type="content" source="media/manage-scans/trigger-scan-data-explorer.png" alt-text="Tetikleyicinin":::
 
 1. Taramanızı gözden geçirin ve **Kaydet ve Çalıştır '** ı seçin.
 

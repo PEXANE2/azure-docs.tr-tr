@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.topic: conceptual
 ms.date: 12/10/2019
 manager: carmonm
-ms.openlocfilehash: ae268534a18a921cca012881fa172261c7ba1063
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c0dc68bd7dacf0cd7f4be9732d45831e2dbb712c
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86186410"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897012"
 ---
 # <a name="enable-azure-automation-state-configuration"></a>Azure Otomasyonu durum yapılandırmasını etkinleştirme
 
@@ -73,7 +73,7 @@ Diğer Azure aboneliklerinden VM 'Lerin kaydedileceği en iyi yol, Azure Resourc
    Set-DscLocalConfigurationManager -Path C:\Users\joe\Desktop\DscMetaConfigs -ComputerName MyServer1, MyServer2
    ```
 
-1. PowerShell DSC metayapılandırmalarının uzaktan uygulanmamadıysanız, **metaconfigurations** klasörünü, etkinleştirçalıştığınız makinelere kopyalayın. Ardından, makinelerde yerel olarak [set-DscLocalConfigurationManager](/powershell/module/psdesiredstateconfiguration/set-dsclocalconfigurationmanager?view=powershell-5.1) çağırmak için kod ekleyin.
+1. PowerShell DSC metayapılandırmalarının uzaktan uygulanmamadıysanız, **metaconfigurations** klasörünü, etkinleştirçalıştığınız makinelere kopyalayın. Ardından, makinelerde yerel olarak [set-DscLocalConfigurationManager](/powershell/module/psdesiredstateconfiguration/set-dsclocalconfigurationmanager) çağırmak için kod ekleyin.
 1. Azure portal veya cmdlet 'lerini kullanarak, makinelerin Azure Otomasyonu hesabınızda kayıtlı durum yapılandırma düğümleri olarak göründüğünü doğrulayın.
 
 ## <a name="enable-physicalvirtual-linux-machines"></a>Fiziksel/sanal Linux makinelerini etkinleştir
@@ -123,7 +123,7 @@ Herhangi bir makineyi durum yapılandırması için etkinleştirmek üzere [DSC 
 > [!NOTE]
 > DSC metaconfigurations, bir Otomasyon hesabındaki bir makineyi yönetim için etkinleştirmek üzere gereken gizli dizileri içerir. Oluşturduğunuz DSC metayapılandırmalarının doğru şekilde korunmasını sağlayın veya kullandıktan sonra silin.
 
-Metaconfigurations için proxy desteği, Windows PowerShell DSC altyapısı olan [yerel Configuration Manager](/powershell/scripting/dsc/managing-nodes/metaconfig?view=powershell-7)tarafından denetlenir. LCM, tüm hedef düğümlerde çalışır ve bir DSC metaconfiguration betiğine dahil olan yapılandırma kaynaklarını çağırmadan sorumludur. `ProxyURL` `ProxyCredential` `ConfigurationRepositoryWeb` , `ResourceRepositoryWeb` , Ve blokları için gereken tanımları ve özellikleri ekleyerek bir metaconfiguration 'da proxy desteği ekleyebilirsiniz `ReportServerWeb` . URL ayarına bir örnek `ProxyURL = "http://172.16.3.6:3128";` . `ProxyCredential`Özelliği, `PSCredential` [Azure Automation 'Da kimlik bilgilerini yönetme](shared-resources/credentials.md)bölümünde açıklandığı gibi bir nesne olarak ayarlanır. 
+Metaconfigurations için proxy desteği, Windows PowerShell DSC altyapısı olan [yerel Configuration Manager](/powershell/scripting/dsc/managing-nodes/metaconfig)tarafından denetlenir. LCM, tüm hedef düğümlerde çalışır ve bir DSC metaconfiguration betiğine dahil olan yapılandırma kaynaklarını çağırmadan sorumludur. `ProxyURL` `ProxyCredential` `ConfigurationRepositoryWeb` , `ResourceRepositoryWeb` , Ve blokları için gereken tanımları ve özellikleri ekleyerek bir metaconfiguration 'da proxy desteği ekleyebilirsiniz `ReportServerWeb` . URL ayarına bir örnek `ProxyURL = "http://172.16.3.6:3128";` . `ProxyCredential`Özelliği, `PSCredential` [Azure Automation 'Da kimlik bilgilerini yönetme](shared-resources/credentials.md)bölümünde açıklandığı gibi bir nesne olarak ayarlanır. 
 
 ### <a name="generate-dsc-metaconfigurations-using-a-dsc-configuration"></a>DSC yapılandırması kullanarak DSC metayapılandırmaları oluşturma
 
@@ -249,7 +249,7 @@ Metaconfigurations için proxy desteği, Windows PowerShell DSC altyapısı olan
 
 1. `ReportOnly`Ayarlanmamışsa, MAKINELER DSC durum bilgilerini Azure Otomasyonu durum yapılandırması ve çekme yapılandırması ya da PowerShell modüllerine bildirir. Parametreleri,, `ConfigurationRepositoryWeb` `ResourceRepositoryWeb` ve bloklarına göre ayarlayın `ReportServerWeb` .
 
-1. Betiği çalıştırın. Artık, etkinleştirilecek makineler için PowerShell DSC metayapılandırmalarını içeren **Dscmetaconfigs**adlı bir çalışma dizini klasörünüz olmalıdır (yönetici olarak).
+1. Betiği çalıştırın. Artık, etkinleştirilecek makineler için PowerShell DSC metayapılandırmalarını içeren **Dscmetaconfigs** adlı bir çalışma dizini klasörünüz olmalıdır (yönetici olarak).
 
     ```powershell
     Set-DscLocalConfigurationManager -Path ./DscMetaConfigs
@@ -260,7 +260,7 @@ Metaconfigurations için proxy desteği, Windows PowerShell DSC altyapısı olan
 PowerShell DSC LCM varsayılan değerleri kullanım durumumuzun eşleşiyorsa ve makinelerin Azure Otomasyonu durum yapılandırmasına hem çekme hem de rapor oluşturmasına olanak tanımak istiyorsanız, Azure Otomasyonu cmdlet 'lerini kullanarak gereken DSC metayapılandırmalarını daha da oluşturabilirsiniz.
 
 1. PowerShell konsolunu veya VSCode 'u yerel ortamınızdaki bir makinede yönetici olarak açın.
-2. [Connect-AzAccount](/powershell/module/Az.Accounts/Connect-AzAccount?view=azps-3.7.0)kullanarak Azure Resource Manager bağlanın.
+2. [Connect-AzAccount](/powershell/module/Az.Accounts/Connect-AzAccount)kullanarak Azure Resource Manager bağlanın.
 3. Etkinleştirmek istediğiniz makineler için, düğümleri ayarladığınız Otomasyon hesabından PowerShell DSC metaconfigurations ' i indirin.
 
    ```powershell
@@ -317,7 +317,7 @@ Durum Yapılandırması, Azure Windows VM 'lerini yapılandırma yönetimi için
 Azure VM Istenen durum yapılandırma uzantısının durumunu görüntülemek için:
 
 1. Azure portal, etkinleştirilen VM 'ye gidin.
-2. **Ayarlar**altında **Uzantılar** ' a tıklayın. 
+2. **Ayarlar** altında **Uzantılar** ' a tıklayın. 
 3. Şimdi işletim sisteminize bağlı olarak **DSC** veya **dscforlinux**' u seçin. 
 4. Daha fazla ayrıntı için **ayrıntılı durumu görüntüle**' ye tıklayabilirsiniz.
 
@@ -325,7 +325,7 @@ Azure VM Istenen durum yapılandırma uzantısının durumunu görüntülemek i�
 
 - Başlamak için bkz. [Azure Otomasyonu durum yapılandırmasını kullanmaya başlama](automation-dsc-getting-started.md).
 - Hedef düğümlere atayabilmeniz için DSC yapılandırmalarını derleme hakkında bilgi edinmek için bkz. [Azure Otomasyonu durum YAPıLANDıRMASıNDA DSC yapılandırmalarını derleme](automation-dsc-compile.md).
-- PowerShell cmdlet başvurusu için bkz. [az. Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation).
+- PowerShell cmdlet başvurusu için bkz. [az. Automation](/powershell/module/az.automation).
 - Fiyatlandırma bilgileri için bkz. [Azure Otomasyonu durum yapılandırması fiyatlandırması](https://azure.microsoft.com/pricing/details/automation/).
 - Azure Otomasyonu durum yapılandırması 'nı sürekli bir dağıtım ardışık düzeninde kullanmanın bir örneği için bkz. [Chocolatey ile sürekli dağıtımı ayarlama](automation-dsc-cd-chocolatey.md).
 - Sorun giderme bilgileri için bkz. [Azure Otomasyonu durum yapılandırması sorunlarını giderme](./troubleshoot/desired-state-configuration.md).

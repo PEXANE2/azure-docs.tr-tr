@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: banders
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: c640478170049bd06e11f7f89b1e213b7b305642
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
-ms.translationtype: HT
+ms.openlocfilehash: 210f7daa9305f2fb343dfae050354264e2fd823e
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97032822"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98898571"
 ---
 # <a name="plan-to-manage-azure-costs"></a>Azure maliyetlerin yönetmeyi planlama
 
@@ -125,7 +125,7 @@ Maliyet tasarrufu sağlayan Danışmanı önerileri hakkında kılavuzlu bir ö�
 
 ## <a name="integrate-with-billing-and-consumption-apis"></a>Fatura ve tüketim API'leriyle tümleştirme
 
-Fatura ve maliyet verilerini program aracılığıyla almak için Azure [fatura](/rest/api/billing/) ve [tüketim](/rest/api/consumption/) API’lerini kullanın. RateCard API'si ve Kullanım API'sini birlikte kullanarak faturalandırılan kullanımınızı alabilirsiniz. Daha fazla bilgi için bkz. [Microsoft Azure kaynak kullanımınızla ilgili içgörüler edinin](../manage/usage-rate-card-overview.md).
+Fatura ve maliyet verilerini program aracılığıyla almak için Azure [fatura](/rest/api/billing/) ve [tüketim](/rest/api/consumption/) API’lerini kullanın. RateCard API'si ve Kullanım API'sini birlikte kullanarak faturalandırılan kullanımınızı alabilirsiniz. Daha fazla bilgi için bkz. [Microsoft Azure kaynak kullanımınızla ilgili içgörüler edinin](../manage/consumption-api-overview.md#usage-details-api).
 
 ## <a name="additional-resources-and-special-cases"></a><a name="other-offers"></a> Ek kaynaklar ve özel durumlar
 

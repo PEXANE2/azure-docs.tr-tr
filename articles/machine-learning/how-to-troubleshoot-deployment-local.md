@@ -11,12 +11,12 @@ ms.reviewer: luquinta
 ms.date: 11/25/2020
 ms.topic: troubleshooting
 ms.custom: devx-track-python, deploy, contperf-fy21q2
-ms.openlocfilehash: a879a81ae2bcb4e659c69a801f7c299c10ab3d77
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 473b2e4ac3443d204b39331d9cefaa6c71122439
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97740649"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881678"
 ---
 # <a name="troubleshooting-with-a-local-model-deployment"></a>Yerel model dağıtımıyla ilgili sorunları giderme
 
@@ -28,7 +28,7 @@ Azure Container Instances (ACI) veya Azure Kubernetes hizmeti (AKS) dağıtımı
 * [Azure MACHINE LEARNING SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py).
 * [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest).
 * [Azure Machine Learning Için CLI uzantısı](reference-azure-machine-learning-cli.md).
-* Yerel olarak hata ayıklamak için, modeli [Azure Machine Learning Işlem örneğine](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-local-container-notebook-vm) dağıtabilir veya yerel sisteminizde çalışan bir Docker yüklemesine sahip olabilirsiniz.
+* Yerel olarak hata ayıklamak için, modeli [Azure Machine Learning Işlem örneğine](./how-to-deploy-local-container-notebook-vm.md) dağıtabilir veya yerel sisteminizde çalışan bir Docker yüklemesine sahip olabilirsiniz.
 
     Docker yüklemenizi doğrulamak için, `docker run hello-world` bir Terminal veya komut isteminden komutunu kullanın. Docker 'ı yükleme veya Docker hataları sorunlarını giderme hakkında bilgi için bkz. [Docker belgeleri](https://docs.docker.com/).
 

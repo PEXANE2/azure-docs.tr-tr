@@ -3,50 +3,67 @@ title: Azure İlkesi’ni Kullanarak VM Oluştururken Yedeklemeyi Otomatik Olara
 description: Belirli bir kapsamda oluşturulan tüm VM 'Lerde yedeklemeyi otomatik olarak etkinleştirmek için Azure Ilkesi 'ni nasıl kullanacağınızı açıklayan bir makale
 ms.topic: conceptual
 ms.date: 11/08/2019
-ms.openlocfilehash: 78fe0ccdbf6f1cc3498d14530d7492a86e8bf730
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 7e8195d22f54f29b36549b966322623ed0987d72
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92174069"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896876"
 ---
 # <a name="auto-enable-backup-on-vm-creation-using-azure-policy"></a>Azure İlkesi’ni Kullanarak VM Oluştururken Yedeklemeyi Otomatik Olarak Etkinleştirme
 
 Bir kuruluştaki bir yedeklemenin veya uyumluluk yöneticisinin temel sorumluluklarıyla biri, iş açısından kritik tüm makinelerin uygun saklama ile yedeklenmesini sağlamaktır.
 
-Bugün Azure Backup, **bir abonelik veya kaynak grubu içindeki belirli bir konumdaki tüm Azure VM**'lerine atanabilecek yerleşik bir Ilke (Azure ilkesi kullanarak) sağlar. Bu ilke belirli bir kapsama atandığında, bu kapsamda oluşturulan tüm yeni VM 'Ler, **aynı konum ve abonelik içindeki mevcut bir kasaya**yedekleme için otomatik olarak yapılandırılır. Kullanıcı, yedeklenen sanal makinelerin ilişkilendirilmesi gereken kasayı ve bekletme ilkesini belirtebilir.
+Günümüzde Azure Backup, Azure sanal makinelerinizin yedekleme için yapılandırılmasını otomatik olarak sağlamanıza yardımcı olmak üzere çeşitli yerleşik ilkeler ( [Azure ilkesi](https://docs.microsoft.com/azure/governance/policy/overview)kullanarak) sağlar. Yedekleme takımlarınızın ve kaynaklarınızın nasıl düzenlendiğini bağlı olarak, aşağıdaki ilkelerden birini kullanabilirsiniz:
+
+## <a name="policy-1---configure-backup-on-vms-without-a-given-tag-to-an-existing-recovery-services-vault-in-the-same-location"></a>İlke 1-aynı konumdaki mevcut bir kurtarma hizmetleri kasasında verilen bir etiketi olmayan VM 'lerde yedeklemeyi yapılandırma
+
+Kuruluşunuzda, uygulama ekiplerinde yedeklemeleri yöneten merkezi bir yedekleme takımı varsa, bu ilkeyi, yönetilen VM 'Lerle aynı abonelikte ve konumda bulunan mevcut bir merkezi kurtarma hizmetleri kasasında yedeklemeyi yapılandırmak için kullanabilirsiniz. Belirli bir etiketi içeren VM 'leri bu ilkenin kapsamından **hariç bırakmayı** seçebilirsiniz.
+
+## <a name="policy-2---preview-configure-backup-on-vms-with-a-given-tag-to-an-existing-recovery-services-vault-in-the-same-location"></a>İlke 2-[Önizleme] belirli bir etikete sahip VM 'lerde yedeklemeyi aynı konumdaki mevcut bir kurtarma hizmetleri kasasına yapılandırma
+Bu ilke, bu ilkenin kapsamında belirli bir etiketi içeren VM 'leri **dahil** etmek için bu ilkeyi kullanmanın tek farkı Ile yukarıdaki ilke 1 ile aynı şekilde çalışmaktadır. 
+
+## <a name="policy-3---preview-configure-backup-on-vms-without-a-given-tag-to-a-new-recovery-services-vault-with-a-default-policy"></a>İlke 3-[Önizleme] belirtilen bir etiketi olmayan VM 'lerde yedeklemeyi varsayılan ilkeyle yeni bir kurtarma hizmetleri kasasına yapılandırın
+Uygulamaları adanmış kaynak gruplarında organize ederseniz ve aynı kasa tarafından yedeklenmek istiyorsanız bu ilke, bu eylemi otomatik olarak yönetmenizi sağlar. Belirli bir etiketi içeren VM 'leri bu ilkenin kapsamından **hariç bırakmayı** seçebilirsiniz.
+
+## <a name="policy-4---preview-configure-backup-on-vms-with-a-given-tag-to-a-new-recovery-services-vault-with-a-default-policy"></a>İlke 4-[Önizleme] belirli bir etikete sahip VM 'lerde yedeklemeyi varsayılan ilkeyle yeni bir kurtarma hizmetleri kasasına yapılandırma
+Bu ilke, bu ilkenin kapsamında belirli bir etiketi içeren VM 'leri **dahil** etmek için bu ilkeyi kullanmanın tek farkı Ile yukarıdaki ilke 3 ile aynı şekilde çalışmaktadır. 
+
+Yukarıdaki Azure Backup Ayrıca, [yalnızca bir denetim](https://docs.microsoft.com/azure/governance/policy/concepts/effects#audit) ilkesi sağlar- **Azure Backup sanal makineler için etkinleştirilmelidir**. Bu ilke, hangi sanal makinelerin yedeklenmediğini belirtir, ancak bu VM 'Ler için otomatik olarak yedeklemeleri yapılandırmaz. Bu, yalnızca VM 'lerin genel uyumluluğunu değerlendirmek ve hemen işlem yapmak için arama yapmak istediğinizde yararlıdır.
 
 ## <a name="supported-scenarios"></a>Desteklenen Senaryolar
 
 * Yerleşik ilke şu anda yalnızca Azure VM 'Leri için desteklenmektedir. Kullanıcılar, atama sırasında belirtilen bekletme ilkesinin bir VM bekletme ilkesi olduğundan emin olunması gerekir. Bu ilke tarafından desteklenen tüm VM SKU 'Larını görmek için [Bu](./backup-azure-policy-supported-skus.md) belgeye başvurun.
 
-* İlke her seferinde tek bir konuma ve aboneliğe atanabilir. Konumlar ve abonelikler arasında VM 'Lere yönelik yedeklemeyi etkinleştirmek için, her bir konum ve abonelik birleşimi için bir tane olmak üzere, ilke atamasının birden çok örneğinin oluşturulması gerekir.
+* İlkeler 1 ve 2 tek seferde tek bir konuma ve aboneliğe atanabilir. Konumlar ve abonelikler arasında VM 'Lere yönelik yedeklemeyi etkinleştirmek için, her bir konum ve abonelik birleşimi için bir tane olmak üzere, ilke atamasının birden çok örneğinin oluşturulması gerekir.
 
-* Belirtilen kasa ve yedekleme için yapılandırılmış VM 'Ler farklı kaynak grupları altında olabilir.
+* Ilkeler 1 ve 2 için yönetim grubu kapsamı şu anda desteklenmiyor.
 
-* Yönetim grubu kapsamı şu anda desteklenmiyor.
+* Ilkeler 1 ve 2 için, belirtilen kasa ve yedekleme için yapılandırılmış VM 'Ler farklı kaynak grupları altında olabilir.
 
-* Yerleşik ilke şu anda ulusal bulutlarda kullanılamaz.
+* 1, 2, 3 ve 4 ilkeleri Şu anda ulusal bulutlarda kullanılamaz.
+
+* İlkeler 3 ve 4 tek seferde tek bir aboneliğe atanabilir (veya bir abonelik içindeki bir kaynak grubu).
 
 [!INCLUDE [backup-center.md](../../includes/backup-center.md)]
 
-## <a name="using-the-built-in-policy"></a>Yerleşik ilkeyi kullanma
+## <a name="using-the-built-in-policies"></a>Yerleşik ilkeleri kullanma
 
-İlkeyi gerekli kapsama atamak için aşağıdaki adımları izleyin:
+Aşağıdaki adımlarda, Ilke 1 ' i atamaya yönelik uçtan uca işlem açıklanır: verilen bir **etiketi olmayan VM 'lerde yedeklemeyi, belirli bir kapsama aynı konumdaki mevcut bir kurtarma hizmetleri kasasına yapılandırma** . Diğer ilkeler için de benzer yönergeler geçerlidir. Atandıktan sonra kapsamda oluşturulan tüm yeni VM 'ler yedekleme için otomatik olarak yapılandırılır.
 
 1. Azure portal oturum açın ve **ilke** panosuna gidin.
-1. Azure kaynakları genelinde tüm yerleşik ilkelerin listesini almak için sol menüdeki **tanımlar** ' ı seçin.
-1. **Kategori = Yedekleme**listesini filtreleyin. Listenin, bir konumun VM 'lerde yedeklemeyi aynı konumda bulunan mevcut bir merkezi kasaya yapılandırın ' adlı tek bir ilkeye göre filtrelenmiş olduğunu görürsünüz.
+2. Azure kaynakları genelinde tüm yerleşik ilkelerin listesini almak için sol menüdeki **tanımlar** ' ı seçin.
+3. **Category = Backup** listesini filtreleyin ve ' bir konumun VM 'lerde yedeklemeyi aynı konumda bulunan mevcut bir merkezi kasada yapılandırın ' adlı ilkeyi seçin.
 ![İlke panosu](./media/backup-azure-auto-enable-backup/policy-dashboard.png)
-1. İlkenin adını seçin. Bu ilkenin ayrıntılı tanımına yönlendirilirsiniz.
+4. İlkenin adını seçin. Bu ilkenin ayrıntılı tanımına yönlendirilirsiniz.
 ![İlke tanımı bölmesi](./media/backup-azure-auto-enable-backup/policy-definition-blade.png)
-1. Bölmenin üst kısmındaki **ata** düğmesini seçin. Bu, sizi **Ilke ata** bölmesine yönlendirir.
-1. **Temel bilgiler**altında, **kapsam** alanının yanındaki üç noktayı seçin. Bu, ilke için uygulanacak aboneliği seçebileceğiniz bir sağ bağlam bölmesi açar. Ayrıca, ilkenin yalnızca belirli bir kaynak grubundaki VM 'Ler için uygulanması için, isteğe bağlı olarak bir kaynak grubu seçebilirsiniz.
+5. Bölmenin üst kısmındaki **ata** düğmesini seçin. Bu, sizi **Ilke ata** bölmesine yönlendirir.
+6. **Temel bilgiler** altında, **kapsam** alanının yanındaki üç noktayı seçin. Bu, ilke için uygulanacak aboneliği seçebileceğiniz bir sağ bağlam bölmesi açar. Ayrıca, ilkenin yalnızca belirli bir kaynak grubundaki VM 'Ler için uygulanması için, isteğe bağlı olarak bir kaynak grubu seçebilirsiniz.
 ![İlke atama temelleri](./media/backup-azure-auto-enable-backup/policy-assignment-basics.png)
-1. **Parametreler** sekmesinde, açılan listeden bir konum seçin ve kapsamdaki VM 'lerin ilişkilendirilmesi gereken kasa ve yedekleme ilkesini seçin.
+7. **Parametreler** sekmesinde, açılan listeden bir konum seçin ve kapsamdaki VM 'lerin ilişkilendirilmesi gereken kasa ve yedekleme ilkesini seçin. Bir etiket adı ve bir etiket değerleri dizisi belirtmeyi de tercih edebilirsiniz. Verilen etiket için belirtilen değerlerden herhangi birini içeren bir VM, ilke atamasının kapsamından dışlanır.
 ![İlke atama parametreleri](./media/backup-azure-auto-enable-backup/policy-assignment-parameters.png)
-1. **Efektin** deployIfNotExists olarak ayarlandığından emin olun.
-1. **Gözden geçir + oluştur** ' a gidin ve **Oluştur**' u seçin.
+8. **Efektin** deployIfNotExists olarak ayarlandığından emin olun.
+9. **Gözden geçir + oluştur** ' a gidin ve **Oluştur**' u seçin.
 
 > [!NOTE]
 >

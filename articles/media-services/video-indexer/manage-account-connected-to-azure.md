@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 12/16/2019
+ms.date: 01/14/2021
 ms.author: juliako
-ms.openlocfilehash: 5b9ec1c04dd90af9d9380a1f4d30386c8f9cc3ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 25025efe5254442c4862563ce329cfae69e7d033
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79499660"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98898452"
 ---
 # <a name="manage-a-video-indexer-account-connected-to-azure"></a>Azure'a bağlı bir Video Indexer hesabını yönetme
 
@@ -28,7 +28,7 @@ Bu makalede, Azure aboneliğinize ve bir Azure Media Services hesabına bağlı 
 
 [Azure 'A bağlı](connect-to-azure.md)olarak açıklandığı gibi video Indexer hesabınızı Azure 'a bağlayın.
 
-Makalesindeki [önkoşulları](connect-to-azure.md#prerequisites) ve gözden geçirme [konularını](connect-to-azure.md#considerations) izlediğinizden emin olun.
+Makalesindeki [önkoşulları](connect-to-azure.md#prerequisites-for-connecting-to-azure) ve gözden geçirme [konularını](connect-to-azure.md#azure-media-services-considerations) izlediğinizden emin olun.
 
 ## <a name="examine-account-settings"></a>Hesap ayarlarını inceleyin
 
@@ -58,12 +58,12 @@ Hesabınızın bazı ayarlamaları olması gerekiyorsa, **Ayarlar** sayfasında 
 |---|---|
 |Azure abonelik KIMLIĞI|Abonelik KIMLIĞI Azure portal elde edilebilir. Sol panelde **tüm hizmetler** ' e tıklayın ve "abonelikler" i arayın. **Abonelikler** ' i seçin ve aboneliklerinizin LISTESINDEN istediğiniz kimliği seçin.|
 |Azure Media Services kaynak grubu adı|Media Services hesabı oluşturduğunuz kaynak grubunun adı.|
-|Uygulama Kimliği|Bu Video Indexer hesabı için oluşturduğunuz Azure AD uygulama KIMLIĞI (belirtilen Media Services hesabının izinleriyle). <br/><br/>Uygulama KIMLIĞINI almak için Azure portal gidin. Media Services hesap altında, hesabınızı seçin ve **API erişimi**' ne gidin. **Hizmet sorumlusu Azure AD uygulaması Media Services API 'sine Bağlan**' ı seçin  ->  **Azure AD App**. İlgili parametreleri kopyalayın.|
-|Uygulama anahtarı|Yukarıda belirttiğiniz Media Services hesabınızla ilişkili Azure AD uygulama anahtarı. <br/><br/>Uygulama anahtarını almak için Azure portal gidin. Media Services hesap altında, hesabınızı seçin ve **API erişimi**' ne gidin. **Hizmet sorumlusu ile Media Services API 'sine Bağlan**' ı seçerek  ->  gizli dizileri &**uygulama**  ->  **sertifikalarını**yönetin. İlgili parametreleri kopyalayın.|
+|Uygulama Kimliği|Bu Video Indexer hesabı için oluşturduğunuz Azure AD uygulama KIMLIĞI (belirtilen Media Services hesabının izinleriyle). <br/><br/>Uygulama KIMLIĞINI almak için Azure portal gidin. Media Services hesap altında, hesabınızı seçin ve **API erişimi**' ne gidin. **Hizmet sorumlusu Azure AD uygulaması Media Services API 'sine Bağlan**' ı seçin  ->  . İlgili parametreleri kopyalayın.|
+|Uygulama anahtarı|Yukarıda belirttiğiniz Media Services hesabınızla ilişkili Azure AD uygulama anahtarı. <br/><br/>Uygulama anahtarını almak için Azure portal gidin. Media Services hesap altında, hesabınızı seçin ve **API erişimi**' ne gidin. **Hizmet sorumlusu ile Media Services API 'sine Bağlan**' ı seçerek  ->  gizli dizileri &**uygulama**  ->  **sertifikalarını** yönetin. İlgili parametreleri kopyalayın.|
 
 ## <a name="autoscale-reserved-units"></a>Ayrılmış birimleri otomatik ölçeklendirme
 
-**Ayarlar** sayfası, medya ayrılmış BIRIMLERININ (ru) otomatik ölçeklendirilmesini ayarlamanıza olanak sağlar. Seçenek açık ise, en fazla ru sayısını ayırabilir ve Video Indexer ru **'yi**otomatik olarak durdurduğundan emin olabilirsiniz. Bu seçenekle, boş zamanlı olarak fazladan para ödemezsiniz, ancak dizin oluşturma yükü yüksek olduğunda dizin oluşturma işlerinin uzun bir süre tamamlanmasını bekleyemez.
+**Ayarlar** sayfası, medya ayrılmış BIRIMLERININ (ru) otomatik ölçeklendirilmesini ayarlamanıza olanak sağlar. Seçenek açık ise, en fazla ru sayısını ayırabilir ve Video Indexer ru **'yi** otomatik olarak durdurduğundan emin olabilirsiniz. Bu seçenekle, boş zamanlı olarak fazladan para ödemezsiniz, ancak dizin oluşturma yükü yüksek olduğunda dizin oluşturma işlerinin uzun bir süre tamamlanmasını bekleyemez.
 
 Otomatik ölçeklendirme, 1 RU veya üzerinde Media Services hesabının varsayılan sınırının üzerinde ölçeklendirmez. Limiti artırmak için bir hizmet isteği oluşturun. Kotalar ve sınırlamalar ve bir destek biletini açma hakkında bilgi için bkz. [Kotalar ve sınırlamalar](../../media-services/previous/media-services-quotas-and-limitations.md).
 

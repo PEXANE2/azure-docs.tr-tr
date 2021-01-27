@@ -4,26 +4,26 @@ description: Azure portal kullanarak, eklenmemiş Azure yönetilen ve yönetilme
 author: roygara
 ms.service: virtual-machines
 ms.topic: how-to
-ms.date: 06/01/2020
+ms.date: 01/26/2021
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 6632d65fa07788e35b24c2f957e713f824f6b091
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4d31ce4b6086c44de913afd1083bae25fa3d44cd
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87542747"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98898164"
 ---
 # <a name="find-and-delete-unattached-azure-managed-and-unmanaged-disks---azure-portal"></a>Eklenmemiş Azure yönetilen ve yönetilmeyen diskleri bulma ve silme-Azure portal
 
-Azure 'da bir sanal makineyi (VM) sildiğinizde, varsayılan olarak, VM 'ye bağlı olan tüm diskler silinmez. Bu, VM 'lerin istenmeden silinmesinden dolayı veri kaybını önlemeye yardımcı olur. Bir VM silindikten sonra, eklenmemiş diskler için ödeme yapmaya devam edersiniz. Bu makalede, Azure portal kullanarak eklenmemiş disklerin nasıl bulunacağı ve silineceği ve gereksiz maliyetler azaltılacağı gösterilmektedir.
+Azure 'da bir sanal makineyi (VM) sildiğinizde, varsayılan olarak, VM 'ye bağlı olan tüm diskler silinmez. Bu, VM 'lerin istenmeden silinmesinden dolayı veri kaybını önlemeye yardımcı olur. Bir VM silindikten sonra, eklenmemiş diskler için ödeme yapmaya devam edersiniz. Bu makalede, Azure portal kullanarak eklenmemiş disklerin nasıl bulunacağı ve silineceği ve gereksiz maliyetler azaltılacağı gösterilmektedir. Silme işlemleri kalıcıdır, bir diski sildikten sonra verileri kurtarameyeceksiniz.
 
 ## <a name="managed-disks-find-and-delete-unattached-disks"></a>Yönetilen diskler: eklenmemiş diskleri bulma ve silme
 
 Ekli yönetilen disklere sahipseniz ve bu verilere artık ihtiyacınız yoksa, aşağıdaki süreç Azure portal nasıl bulacağınızı açıklar:
 
 1. [Azure portalında](https://portal.azure.com/) oturum açın.
-1. **Diskleri**arayın ve seçin.
+1. **Diskleri** arayın ve seçin.
 
     **Diskler** dikey penceresinde, tüm disklerinizin bir listesini görürsünüz. **-** **Sahip** sütununda "" olan herhangi bir disk, eklenmemiş bir disktir.
 
@@ -43,19 +43,19 @@ Bir VM 'ye bağlı olmayan ve bu disklere artık gerek duyulmayan yönetilmeyen 
 1. [Azure portalında](https://portal.azure.com/) oturum açın.
 1. Diskleri arayın ve seçin **(klasik)**.
 
-    Tüm yönetilmeyen disklerinizin bir listesini görürsünüz. Ekli sütununda "" olan tüm diskler **-** , **Attached to** açılmamış bir disktir.
+    Tüm yönetilmeyen disklerinizin bir listesini görürsünüz. Ekli sütununda "" olan tüm diskler **-** ,  açılmamış bir disktir.
 
-    :::image type="content" source="media/disks-find-unattached-portal/unmanaged-disk-unattached-attached-to.png" alt-text="Tek bir yönetilen diskler dikey penceresinin ekran görüntüsü. Bu dikey pencere, bağlanılıyorsa disk durumunda bağlı değil olarak gösterilir. Bu diski, verileri daha uzun süre korumanız gerekmiyorsa silebilirsiniz":::
+    :::image type="content" source="media/disks-find-unattached-portal/unmanaged-disk-unattached-attached-to.png" alt-text="Yönetilmeyen diskler dikey penceresinin ekran görüntüsü. Bu dikey penceredeki, ekli sütununda bulunan diskler eklenmemiş.":::
 
 1. Silmek istediğiniz eklenmemiş diski seçin. Bu, diskin dikey penceresini getirir.
 
 1. Belgenin dikey penceresinde, ekli olduğundan emin olun, ancak **bağlı** olmaya devam eder **-** .
 
-    :::image type="content" source="media/disks-find-unattached-portal/unmanaged-disk-unattached-select-blade.png" alt-text="Tek bir yönetilen diskler dikey penceresinin ekran görüntüsü. Bu dikey pencere, bağlanılıyorsa disk durumunda bağlı değil olarak gösterilir. Bu diski, verileri daha uzun süre korumanız gerekmiyorsa silebilirsiniz":::
+    :::image type="content" source="media/disks-find-unattached-portal/unmanaged-disk-unattached-select-blade.png" alt-text="Tek bir yönetilmeyen disk dikey penceresinin ekran görüntüsü. Bağlanılıyorsa değere iliştirilmiş olacaktır. Artık bu disk verilerine ihtiyacınız yoksa silebilirsiniz.":::
 
 1. **Sil**’i seçin.
 
-    :::image type="content" source="media/disks-find-unattached-portal/delete-unmanaged-disk-unattached.png" alt-text="Tek bir yönetilen diskler dikey penceresinin ekran görüntüsü. Bu dikey pencere, bağlanılıyorsa disk durumunda bağlı değil olarak gösterilir. Bu diski, verileri daha uzun süre korumanız gerekmiyorsa silebilirsiniz":::
+    :::image type="content" source="media/disks-find-unattached-portal/delete-unmanaged-disk-unattached.png" alt-text="Tek bir yönetilmeyen disk dikey penceresinin ekran görüntüsü, silme vurgulaması.":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

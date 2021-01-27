@@ -1,6 +1,5 @@
 ---
 title: Media Services terminoloji ve kavramlar
-titleSuffix: Azure Media Services
 description: Azure Media Services yönelik terminoloji ve kavramlar hakkında bilgi edinin.
 services: media-servicesgit
 documentationcenter: ''
@@ -13,12 +12,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: 5564051ae11a1237cc924ee6bf557e3c85d8866a
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: b425cd9268b336a8926e4fad9cb1f288f4fe3e87
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98696422"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897926"
 ---
 # <a name="media-services-terminology-and-concepts"></a>Media Services terminoloji ve kavramlar
 
@@ -36,7 +35,7 @@ Bu konularda açıklanan temel kavramlar, geliştirmeye başlamadan önce incele
 
 ## <a name="media-services-v3-terminology"></a>Media Services v3 terminolojisi
 
-|Terim|Açıklama|
+|Süre|Açıklama|
 |---|---|
 |Canlı etkinlik|**Canlı bir olay** , video, ses ve gerçek zamanlı meta verilerin canlı akışını geri almak, kodlamak (isteğe bağlı olarak) ve paketlenmesi için bir işlem hattı temsil eder.<br/><br/>Media Services V2 API 'Lerinden geçiş yapmak için **canlı olay** , v2 'deki **Kanal** varlığının yerini alır. Daha fazla bilgi için bkz. [v2 'den v3 'e geçiş](migrate-v-2-v-3-migration-introduction.md).|
 |Akış uç noktası/paketleme/kaynak|**Akış uç noktası** , canlı ve isteğe bağlı içeriğinizi doğrudan bir istemci oynatıcı uygulamasına teslim edebilen dinamik (tam zamanında) paketleme ve Origin hizmetini temsil eder. Ortak akış medya protokollerinden birini (HLS veya DASH) kullanır. Ayrıca, **akış uç noktası** , sektör lideri dijital hak yönetimi sistemleri (drms) için dinamik (tam zamanında) şifreleme sağlar.<br/><br/>Medya akışı sektöründe bu hizmet genellikle bir **Paketleyici** veya **kaynak** olarak adlandırılır.  Sektörün bu özellik için diğer yaygın terimleri, JıOP (tam zamanında Paketleyici) veya JıITE (tam zamanında şifreleme) içerir.

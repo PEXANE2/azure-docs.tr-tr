@@ -8,12 +8,12 @@ ms.date: 10/23/2020
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: a1732f42ea95c16cdec7a1d7569c954667e52cb4
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 416f997475e35f8e784679ca0826f7af38d756c7
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96750909"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880313"
 ---
 # <a name="quickstart-deploy-your-first-azure-spring-cloud-application"></a>Hızlı başlangıç: ilk Azure Spring Cloud uygulamanızı dağıtın
 
@@ -29,7 +29,7 @@ Bu hızlı başlangıcı izleyerek şunları nasıl yapacağınızı öğrenecek
 > * Temel bir Steeltoe .NET Core projesi oluşturma
 > * Azure yay bulut hizmeti örneği sağlama
 > * Uygulamayı ortak bir uç nokta ile derleyin ve dağıtın
-> * Gerçek zamanlı akış günlükleri
+> * Gerçek zamanlı olarak günlük akışı yapma
 
 Bu hızlı başlangıçta kullanılan uygulama kodu, .NET Core Web API 'SI proje şablonuyla oluşturulmuş basit bir uygulamadır. Bu örneği tamamladığınızda, uygulama çevrimiçi olarak erişilebilir olur ve Azure portal ve Azure CLı aracılığıyla yönetilebilir.
 
@@ -269,7 +269,7 @@ Uygulama, aşağıdaki örneğe benzer JSON verileri döndürür:
 [{"date":"2020-09-08T21:01:50.0198835+00:00","temperatureC":14,"temperatureF":57,"summary":"Bracing"},{"date":"2020-09-09T21:01:50.0200697+00:00","temperatureC":-14,"temperatureF":7,"summary":"Bracing"},{"date":"2020-09-10T21:01:50.0200715+00:00","temperatureC":27,"temperatureF":80,"summary":"Freezing"},{"date":"2020-09-11T21:01:50.0200717+00:00","temperatureC":18,"temperatureF":64,"summary":"Chilly"},{"date":"2020-09-12T21:01:50.0200719+00:00","temperatureC":16,"temperatureF":60,"summary":"Chilly"}]
 ```
 
-## <a name="stream-logs-in-real-time"></a>Gerçek zamanlı akış günlükleri
+## <a name="stream-logs-in-real-time"></a>Gerçek zamanlı olarak günlük akışı yapma
 
 Uygulamadan gerçek zamanlı günlükleri almak için aşağıdaki komutu kullanın.
 
@@ -332,7 +332,7 @@ Bu hızlı başlangıçta nasıl yapılacağı açıklanmaktadır:
 > * Temel yay bulutu projesi oluşturma
 > * Hizmet örneği sağlama
 > * Uygulamayı ortak bir uç nokta ile derleyin ve dağıtın
-> * Gerçek zamanlı akış günlükleri
+> * Gerçek zamanlı olarak günlük akışı yapma
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -351,9 +351,6 @@ https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.3.4
 ```
 
   ![Initialkr sayfası](media/spring-cloud-quickstart-java/initializr-page.png)
-
-> [!NOTE]
-> Spring Boot 2,4 ile uygulamalarınız ve Eureka arasındaki TLS kimlik doğrulamasında bir sorun tespit ettik ve bu sorunu çözmek için şu anda Spring Community ile çalışıyor. Geçici çözüm için lütfen [SSS bölümüne](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-faq?pivots=programming-language-java#development) bakın.
 
 1. Tüm bağımlılıklar ayarlandığında **Oluştur** ' a tıklayın. Paketi indirip paketini açın ve aşağıdaki şekilde ekleyerek basit bir Web uygulaması için bir Web denetleyicisi oluşturun `src/main/java/com/example/hellospring/HelloController.java` :
 
@@ -517,7 +514,7 @@ Bu hızlı başlangıçta şunları öğrendiniz:
 > * Temel bir Azure yay bulutu projesi oluşturma
 > * Hizmet örneği sağlama
 > * Uygulamayı ortak bir uç nokta ile derleyin ve dağıtın
-> * Gerçek zamanlı akış günlükleri
+> * Gerçek zamanlı olarak günlük akışı yapma
 
 Daha fazla Azure yay özelliği kullanmayı öğrenmek için Azure Spring Cloud 'a örnek bir uygulama dağıtan hızlı başlangıç serisine ilerleyin:
 

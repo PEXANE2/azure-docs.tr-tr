@@ -10,12 +10,12 @@ ms.author: jukullam
 ms.date: 10/19/2020
 ms.topic: conceptual
 ms.custom: github-actions-azure
-ms.openlocfilehash: 8bce95b65d9b944505d7f9153159b342e49427cd
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: f5abeee3b1e1e44f5ce0423fc7f8170644d74508
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98762914"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880483"
 ---
 # <a name="use-github-actions-with-azure-machine-learning"></a>Azure Machine Learning GitHub eylemlerini kullanma
 
@@ -24,7 +24,7 @@ Azure Machine Learning bir modeli eğitmek için [GitHub eylemleri](https://docs
 > [!NOTE]
 > Azure Machine Learning için GitHub eylemleri, olduğu gibi sağlanır ve Microsoft tarafından tam olarak desteklenmez. Belirli bir eylemle ilgili sorunlarla karşılaşırsanız, eylem için depoda bir sorun açın. Örneğin, AML-Deploy eylemiyle ilgili bir sorunla karşılaşırsanız, sorunu [https://github.com/Azure/aml-deploy]( https://github.com/Azure/aml-deploy) depoya bildirin.
 
-## <a name="prerequisites"></a>Ön koşullar 
+## <a name="prerequisites"></a>Önkoşullar 
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - GitHub hesabı. Bir hesabınız yoksa [ücretsiz](https://github.com/join)kaydolun.  
@@ -228,4 +228,4 @@ Kaynak grubunuz ve deponuz artık gerekmiyorsa, kaynak grubunu ve GitHub deponuz
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Azure Machine Learning SDK ile makine öğrenimi işlem hatları oluşturma ve çalıştırma](how-to-create-your-first-pipeline.md)
+> [Azure Machine Learning SDK ile makine öğrenimi işlem hatları oluşturma ve çalıştırma](./how-to-create-machine-learning-pipelines.md)

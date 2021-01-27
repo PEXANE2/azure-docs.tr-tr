@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 07/15/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c1403c514f5a278fd406769f1d5271cc95a5c1df
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 5ed932488551918bb0bfeb7dc9ffcb2f59b6d152
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98195747"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878910"
 ---
 # <a name="sap-hana-large-instances-network-architecture"></a>SAP HANA (büyük örnekler) ağ mimarisi
 
@@ -76,7 +76,7 @@ Azure 'da SAP dağıtımları arasındaki farklar şunlardır:
 
 HANA büyük örnek damgalarının 3. düzeltmesi sayesinde, VM 'Ler ve HANA büyük örnek birimleri arasında karşılaşılan ağ gecikmesi, tipik bir sanal makineden VM ağına gidiş dönüş gecikmesinden daha yüksek olabilir. Azure bölgesine bağlı olarak, ölçülen değerler, [SAP Note #1100926-SSS: ağ performansı](https://launchpad.support.sap.com/#/notes/1100926/E)için aşağıda belirtildiği gibi sınıflandırılan 0,7-MS gidiş dönüş gecikmesini aşabilir. Bir Azure VM ve HANA büyük örnek birimi arasında ağ gidiş dönüş gecikmesini ölçmek için Azure bölgesine ve aracına bağımlıdır, ölçülen gecikme süresi 2 milisaniyeye kadar olabilir. Bununla birlikte, müşteriler SAP HANA tabanlı üretim SAP uygulamalarını SAP HANA büyük örnek üzerinde başarıyla dağıtır. Azure HANA büyük örneğinde iş işlemlerinizi iyice test ettiğinizden emin olun. ExpressRoute hızlı yolu adlı yeni bir işlev, Azure 'daki yalnızca HANA büyük örnekler ve uygulama katmanı VM 'Leri arasındaki ağ gecikmesini azaltabilir (aşağıya bakın). 
 
-HANA büyük örnek damgalarının 4. düzeltmesi sayesinde, HANA büyük örnek damgasına yakınlık halinde dağıtılan Azure VM 'Ler arasındaki ağ gecikmesi, [SAP Note #1100926-SSS:](https://launchpad.support.sap.com/#/notes/1100926/E) Azure ExpressRoute hızlı yolu yapılandırılmışsa (aşağıya bakın), ağ performansı ile ilgili ortalama veya daha iyi bir sınıflandırmayla karşılaşmıştır. Azure VM 'Leri, düzeltme 4 ' ün büyük örnek birimlerine yakın bir yerde dağıtmak için [Azure yakınlık yerleşimi gruplarından](../../linux/co-location.md)yararlanabilirsiniz. Aynı Azure veri merkezinde barındırılan HANA büyük örnek birimleri ile SAP uygulama katmanını bulmak için yakınlık yerleşimi gruplarının nasıl kullanılabileceği, [SAP uygulamalarıyla en iyi ağ gecikmesi Için Azure yakınlık yerleştirme gruplarında](sap-proximity-placement-scenarios.md)açıklanacaktır.
+HANA büyük örnek damgalarının 4. düzeltmesi sayesinde, HANA büyük örnek damgasına yakınlık halinde dağıtılan Azure VM 'Ler arasındaki ağ gecikmesi, [SAP Note #1100926-SSS:](https://launchpad.support.sap.com/#/notes/1100926/E) Azure ExpressRoute hızlı yolu yapılandırılmışsa (aşağıya bakın), ağ performansı ile ilgili ortalama veya daha iyi bir sınıflandırmayla karşılaşmıştır. Azure VM 'Leri, düzeltme 4 ' ün büyük örnek birimlerine yakın bir yerde dağıtmak için [Azure yakınlık yerleşimi gruplarından](../../co-location.md)yararlanabilirsiniz. Aynı Azure veri merkezinde barındırılan HANA büyük örnek birimleri ile SAP uygulama katmanını bulmak için yakınlık yerleşimi gruplarının nasıl kullanılabileceği, [SAP uygulamalarıyla en iyi ağ gecikmesi Için Azure yakınlık yerleştirme gruplarında](sap-proximity-placement-scenarios.md)açıklanacaktır.
 
 VM 'Ler ve HANA büyük örnek arasında kararlı ağ gecikmesi sağlamak için, ExpressRoute ağ geçidi SKU 'SU seçeneği gereklidir. Şirket içi ve VM 'Ler arasındaki trafik desenlerinden farklı olarak, VM 'Ler ve HANA büyük örnek arasındaki trafik deseni, iletilmek üzere küçük ancak yüksek miktarda istek ve veri birimi geliştirebilir. Bu tür artışlarıyla 'yi işlemek için UltraPerformance Gateway SKU 'sunun kullanımını önemle öneririz. HANA büyük örnek SKU 'Larının tür II sınıfı için, UltraPerformance ağ geçidi SKU 'sunun ExpressRoute ağ geçidi olarak kullanılması zorunludur.
 

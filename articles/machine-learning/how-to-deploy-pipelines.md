@@ -11,12 +11,12 @@ author: lobrien
 ms.date: 8/25/2020
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy21q1
-ms.openlocfilehash: 9eb07721f9d507d69de10b6de6c8c2a358dab020
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 5dc14873f8863332d37a6ced6ce4013e76640dea
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97034097"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879402"
 ---
 # <a name="publish-and-track-machine-learning-pipelines"></a>Makine öğrenimi işlem hatlarını yayımlama ve izleme
 
@@ -32,7 +32,7 @@ Machine Learning işlem hatları, Machine Learning görevleri için yeniden kull
 
 * Azure Machine Learning SDK 'yı yüklemek için [geliştirme ortamınızı yapılandırın](how-to-configure-environment.md) veya SDK 'nın zaten yüklü olduğu bir [Azure Machine Learning işlem örneği](concept-compute-instance.md) kullanın
 
-* Aşağıdaki öğreticiden yararlanarak bir makine öğrenimi işlem hattı oluşturun ve çalıştırın [: Batch Puanlama için Azure Machine Learning işlem hattı](tutorial-pipeline-batch-scoring-classification.md)oluşturun. Diğer seçenekler için bkz. [Azure MACHINE LEARNING SDK ile makine öğrenimi işlem hatları oluşturma ve çalıştırma](how-to-create-your-first-pipeline.md)
+* Aşağıdaki öğreticiden yararlanarak bir makine öğrenimi işlem hattı oluşturun ve çalıştırın [: Batch Puanlama için Azure Machine Learning işlem hattı](tutorial-pipeline-batch-scoring-classification.md)oluşturun. Diğer seçenekler için bkz. [Azure MACHINE LEARNING SDK ile makine öğrenimi işlem hatları oluşturma ve çalıştırma](./how-to-create-machine-learning-pipelines.md)
 
 ## <a name="publish-a-pipeline"></a>İşlem hattı yayımlama
 

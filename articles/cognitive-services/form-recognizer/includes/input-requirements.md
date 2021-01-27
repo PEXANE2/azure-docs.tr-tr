@@ -5,12 +5,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 06/27/2019
 ms.author: pafarley
-ms.openlocfilehash: b3d24ce4dd42ea8122610943379160ca93406c21
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 7cf3d86eeea9d1b0f5fcbb757d3597e21cbcc369
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92548104"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98901267"
 ---
 Form tanıyıcı, bu gereksinimleri karşılayan giriş belgelerinde çalışmaktadır:
 
@@ -25,8 +25,3 @@ Form tanıyıcı, bu gereksinimleri karşılayan giriş belgelerinde çalışmak
 * Metin Latin alfabesini (Ingilizce karakterler) kullanmalıdır.
 * Denetimsiz öğrenme için (etiketlenmemiş veriler olmadan), verilerin anahtar ve değer içermesi gerekir.
 * Denetimsiz öğrenme (etiketli veriler olmadan) için, anahtarların üzerinde veya solunda bir değer görünmelidir; Bunlar sağ tarafta veya doğru görünemez.
-
-Form tanıyıcı Şu anda bu tür giriş verilerini desteklemez:
-
-* Karmaşık tablolar (iç içe tablolar, birleştirilmiş üstbilgiler veya hücreler vb.).
-* Onay kutuları veya radyo düğmeleri.

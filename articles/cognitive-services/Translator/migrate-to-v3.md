@@ -3,19 +3,19 @@ title: V3-Translator ' a geçiş
 titleSuffix: Azure Cognitive Services
 description: Bu makalede, v2 'den Azure bilişsel hizmetler çeviricisinin v3 'e geçiş yapmanıza yardımcı olacak adımlar sağlanmaktadır.
 services: cognitive-services
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 05/26/2020
-ms.author: swmachan
-ms.openlocfilehash: baaf907d2fafe23805e6b49582ecc7592ee05e0b
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.author: lajanuar
+ms.openlocfilehash: 13c4d39284fad293c945f8b7e31076dccee84fda
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98028242"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896842"
 ---
 # <a name="translator-v2-to-v3-migration"></a>Translator v2-v3 geçişine
 
@@ -116,8 +116,8 @@ V3 metin API 'SI ile sinir çevirisi, standart kategorilerin (SMT, konuşma, tek
 
 | Sürüm | Uç Nokta | GDPR Işlemci uyumluluğu | Çevirmen hub 'ı kullan | Özel çevirici kullan (Önizleme) |
 | :------ | :------- | :------------------------ | :----------------- | :------------------------------ |
-|Translator sürüm 2|    api.microsofttranslator.com|    Hayır    |Evet    |Hayır|
-|Translator sürümü 3|    api.cognitive.microsofttranslator.com|    Evet|    Hayır|    Evet|
+|Translator sürüm 2|    api.microsofttranslator.com|    Hayır    |Yes    |Hayır|
+|Translator sürümü 3|    api.cognitive.microsofttranslator.com|    Yes|    Hayır|    Yes|
 
 **Translator sürümü 3**
 * Genel olarak kullanılabilir ve tamamen desteklenir.

@@ -7,15 +7,15 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 08/20/2020
+ms.date: 01/26/2021
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: e174a0539a75945cc0a2595e28a60d928e10acf4
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
-ms.translationtype: HT
+ms.openlocfilehash: 23e3adad12a726b03f6efe309dde0ec4a93bcd5b
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92166225"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897434"
 ---
 # <a name="manage-access-to-billing-information-for-azure"></a>Azure için faturalama bilgilerine erişimi yönetme
 
@@ -38,7 +38,7 @@ Hesap yöneticisi, hesabındaki bir abonelikte aşağıdaki rollerden birini ata
 - Okuyucu
 - Faturalama okuyucusu
 
-Bu rollerin [Azure portalındaki](https://portal.azure.com/) faturalama bilgilerine erişimi vardır. Bu rollere atanan kişiler, program aracılığıyla faturaları ve kullanım ayrıntıları almak için [Faturalama API'lerini](usage-rate-card-overview.md) de kullanabilir.
+Bu rollerin [Azure portalındaki](https://portal.azure.com/) faturalama bilgilerine erişimi vardır. Bu rollere atanan kişiler, program aracılığıyla faturaları ve kullanım ayrıntıları almak için [Faturalama API'lerini](consumption-api-overview.md#usage-details-api) de kullanabilir.
 
 Rol atamak için bkz. [Azure portalı kullanarak Azure rol atamalarını ekleme veya kaldırma](../../role-based-access-control/role-assignments-portal.md).
 
@@ -55,11 +55,11 @@ Bir Hesap Yöneticisi, diğer kullanıcılara uygun rolleri atadıktan sonra Azu
 
     ![Hizmetler bölümündeki Maliyet Yönetimi + Faturalama seçeneğinin vurgulandığı ekran görüntüsü.](./media/manage-billing-access/billing-search-cost-management-billing.png)
 
-1. Sol bölmeden **Abonelikler** ’i seçin. Erişiminize bağlı olarak, bir faturalama kapsamı ve ardından **Abonelikler** ’i seçmeniz gerekebilir.
+1. Sol bölmeden **Abonelikler**’i seçin. Erişiminize bağlı olarak, bir faturalama kapsamı ve ardından **Abonelikler**’i seçmeniz gerekebilir.
 
     ![Aboneliklerin seçilmesini gösteren ekran görüntüsü](./media/manage-billing-access/billing-select-subscriptions.png)
 
-1. **Faturalar** ’ı ve ardından **Faturalara erişim** ’i seçin.
+1. **Faturalar**’ı ve ardından **Faturalara erişim**’i seçin.
 
     ![Ekran görüntüsü, faturalara erişim yetkisinin nasıl devredileceğini gösterir](./media/manage-billing-access/aa-optin01.png)
 
@@ -81,19 +81,19 @@ Faturalama Okuyucusu özelliği önizleme aşamasındadır ve henüz genel olmay
 
     ![Azure portalı aramasını gösteren ekran görüntüsü](./media/manage-billing-access/billing-search-cost-management-billing.png)
 
-1. Sol bölmeden **Abonelikler** ’i seçin. Erişiminize bağlı olarak, bir faturalama kapsamı ve ardından **Abonelikler** ’i seçmeniz gerekebilir.
+1. Sol bölmeden **Abonelikler**’i seçin. Erişiminize bağlı olarak, bir faturalama kapsamı ve ardından **Abonelikler**’i seçmeniz gerekebilir.
 
     ![Aboneliklerin seçilmesini gösteren ekran görüntüsü](./media/manage-billing-access/billing-select-subscriptions.png)
 
 1. **Erişim denetimi (IAM)** öğesini seçin.
-1. Sayfanın üst kısmında **Ekle** ’yi seçin.
+1. Sayfanın üst kısmında **Ekle**’yi seçin.
 
     ![Rol ataması ekle seçeneğinin tıklanmasını gösteren ekran görüntüsü](./media/manage-billing-access/billing-click-add-role-assignment.png)
 
-1. **Rol** açılan listesinde **Faturalama Okuyucusu** ’nu seçin.
+1. **Rol** açılan listesinde **Faturalama Okuyucusu**’nu seçin.
 1. **Seç** metin kutusuna eklemek istediğiniz kullanıcının adını veya e-postasını yazın.
 1. Kullanıcıyı seçin.
-1. **Kaydet** ’i seçin.
+1. **Kaydet**’i seçin.
     ![Kaydet düğmesinin vurgulandığı ekran görüntüsü.](./media/manage-billing-access/billing-save-role-assignment.png)
 
 1. Birkaç dakika sonra kullanıcıya abonelik için Faturalama Okuyucusu rolü atanmış olur.

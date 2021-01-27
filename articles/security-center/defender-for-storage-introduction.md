@@ -7,19 +7,19 @@ ms.date: 9/22/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: b338b8ee93fb24cff54968630d4ff00deca0b64b
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 675751433657a7d630d0c42482716702f520ff82
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97606734"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881393"
 ---
 # <a name="introduction-to-azure-defender-for-storage"></a>Depolama için Azure Defender'a giriş
 
 
 **Depolama Için Azure Defender** , depolama hesaplarınıza yönelik olağan dışı ve potansiyel olarak zararlı girişimleri algılayan bir Azure Native Security Intelligence katmanıdır. Bağlamsal güvenlik uyarıları ve önerileri sağlamak için güvenlik AI ve [Microsoft Threat Intelligence](https://go.microsoft.com/fwlink/?linkid=2128684) 'ın gelişmiş özelliklerinden yararlanır.
 
-Güvenlik uyarıları, etkinlik durumunda olan bozukluklar gerçekleştiğinde tetiklenir. Bu uyarılar Azure Güvenlik Merkezi ile tümleşiktir ve ayrıca, şüpheli etkinliklerin ayrıntıları ve tehditleri İnceleme ve düzeltme önerileri ile abonelik yöneticilerine e-posta yoluyla da gönderilir.
+Etkinlikte anomali oluştuğunda güvenlik uyarıları tetiklenir. Bu uyarılar Azure Güvenlik Merkezi ile tümleşiktir ve ayrıca, şüpheli etkinliklerin ayrıntıları ve tehditleri İnceleme ve düzeltme önerileri ile abonelik yöneticilerine e-posta yoluyla da gönderilir.
 
 ## <a name="availability"></a>Kullanılabilirlik
 
@@ -28,7 +28,7 @@ Güvenlik uyarıları, etkinlik durumunda olan bozukluklar gerçekleştiğinde t
 |Yayın durumu:|Genel olarak kullanılabilir (GA)|
 |Fiyat|**Depolama Için Azure Defender** , [fiyatlandırma sayfasında](security-center-pricing.md) gösterildiği gibi faturalandırılır|
 |Korumalı Depolama türleri:|[Blob Depolama](https://azure.microsoft.com/services/storage/blobs/)<br>[Azure Dosyaları](../storage/files/storage-files-introduction.md)<br>[Azure Data Lake Storage 2. Nesil](../storage/blobs/data-lake-storage-introduction.md)|
-|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![No](./media/icons/no-icon.png) Çin gov, diğer gov|
+|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![Hayır](./media/icons/no-icon.png) Çin gov, diğer gov|
 |||
 
 
@@ -54,7 +54,7 @@ Güvenlik uyarıları şunları yaparken tetiklenir:
 Uyarılar, bunları tetikleyen olayın ayrıntılarını ve tehditleri İnceleme ve düzeltme önerilerini içerir. Uyarılar, Azure Sentinel 'e veya diğer üçüncü taraf SıEM 'ye veya başka bir dış araca aktarılabilir.
 
 > [!TIP]
-> Azure Defender 'ı abonelik düzeyinde [depolama için yapılandırmak](https://docs.microsoft.com/azure/storage/common/azure-defender-storage-configure?tabs=azure-security-center) en iyi uygulamadır, ancak aynı zamanda [tek bir depolama hesabında da yapılandırabilirsiniz](https://docs.microsoft.com/azure/storage/common/azure-defender-storage-configure?tabs=azure-portal).
+> Azure Defender 'ı abonelik düzeyinde [depolama için yapılandırmak](../storage/common/azure-defender-storage-configure.md?tabs=azure-security-center) en iyi uygulamadır, ancak aynı zamanda [tek bir depolama hesabında da yapılandırabilirsiniz](../storage/common/azure-defender-storage-configure.md?tabs=azure-portal).
 
 
 ## <a name="what-is-hash-reputation-analysis-for-malware"></a>Kötü amaçlı yazılım için karma saygınlığı analizi nedir?

@@ -1,6 +1,5 @@
 ---
 title: Media Services v3 ile videoları analiz etme
-titleSuffix: Azure Media Services
 description: Azure Media Services kullanarak videoları çözümlemeyi öğrenin.
 services: media-services
 documentationcenter: ''
@@ -13,12 +12,12 @@ ms.topic: tutorial
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: 7bdc658ab5db9a3ffb27f3c155272f8928bbfb04
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c3ca3197e786bbfac20bec2370d2aa920ad2c4df
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89265873"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98891530"
 ---
 # <a name="tutorial-analyze-videos-with-media-services-v3"></a>Öğretici: Media Services v3 ile videoları analiz etme
 
@@ -108,13 +107,13 @@ Aşağıdaki işlev bu eylemleri tamamlar:
 
 ### <a name="create-a-transform-and-a-job-that-analyzes-videos"></a>Bir dönüşüm ve videoları analiz eden bir iş oluşturma
 
-Media Services içeriği kodlarken veya işlerken, kodlama ayarlarını tarif olarak ayarlamak için ortak bir modeldir. Daha sonra bu tarifi bir videoya uygulamak üzere bir **İş** gönderirsiniz. Her yeni video için yeni Işler göndererek, bu tarifi kitaplığınızdaki tüm videolara uygulayacağız. Media Services bir tarif, **dönüşüm**olarak adlandırılır. Daha fazla bilgi için bkz. [dönüşümler ve işler](./transforms-jobs-concept.md). Bu öğreticide açıklanan örnek, belirtilen videoyu analiz eden bir tarifi tanımlar.
+Media Services içeriği kodlarken veya işlerken, kodlama ayarlarını tarif olarak ayarlamak için ortak bir modeldir. Daha sonra bu tarifi bir videoya uygulamak üzere bir **İş** gönderirsiniz. Her yeni video için yeni Işler göndererek, bu tarifi kitaplığınızdaki tüm videolara uygulayacağız. Media Services bir tarif, **dönüşüm** olarak adlandırılır. Daha fazla bilgi için bkz. [dönüşümler ve işler](./transforms-jobs-concept.md). Bu öğreticide açıklanan örnek, belirtilen videoyu analiz eden bir tarifi tanımlar.
 
 #### <a name="transform"></a>Dönüşüm
 
 Yeni bir [Dönüşüm](/rest/api/media/transforms) örneği oluştururken çıktı olarak neyi üretmesi istediğinizi belirtmeniz gerekir. **Transformoutput**  gerekli bir parametredir. Her **TransformOutput** bir **Ön ayar** içerir. **Ön ayar**, video ve/veya ses işleme işlemlerinin istenen **TransformOutput** nesnesini oluşturmak üzere kullanılacak adım adım yönergelerini açıklar. Bu örnekte, **videoanalizin önceden belirlenmiş** ayarı kullanılır ve dil ("en-US") oluşturucuya ( `new VideoAnalyzerPreset("en-US")` ) geçirilir. Bu ön ayar, bir videodan birden fazla ses ve video içgörüsü elde etmenizi sağlar. Bir videodan birden fazla ses içgörüsü elde etmeniz gerekiyorsa **AudioAnalyzerPreset** ön ayarını kullanın.
 
-Bir **dönüşüm**oluştururken, aşağıdaki kodda gösterildiği gibi **Get** metodunu kullanarak zaten bir tane varsa işaretleyin. Media Services v3’te varlıklar üzerindeki **Get** yöntemleri, varlığın mevcut olmaması durumunda **null** değerini döndürür (büyük/küçük harfe duyarlı ad denetimi).
+Bir **dönüşüm** oluştururken, aşağıdaki kodda gösterildiği gibi **Get** metodunu kullanarak zaten bir tane varsa işaretleyin. Media Services v3’te varlıklar üzerindeki **Get** yöntemleri, varlığın mevcut olmaması durumunda **null** değerini döndürür (büyük/küçük harfe duyarlı ad denetimi).
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/AnalyzeVideos/Program.cs#EnsureTransformExists)]
 

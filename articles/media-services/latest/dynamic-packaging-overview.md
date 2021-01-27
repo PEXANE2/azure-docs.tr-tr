@@ -1,6 +1,5 @@
 ---
 title: Azure Media Services v3 'de dinamik paketleme
-titleSuffix: Azure Media Services
 description: Bu makale, Azure Media Services içindeki dinamik paketlemeye genel bakış sunar.
 author: myoungerman
 manager: femila
@@ -14,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: inhenkel
-ms.openlocfilehash: 7941d542ca2cab1637b9edaef057f740a9a1b7ef
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: ed2c5b4175745fa14864b2d360bcbf5e5237a495
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92016834"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897654"
 ---
 # <a name="dynamic-packaging-in-media-services-v3"></a>Media Services v3 'de dinamik paketleme
 
@@ -112,7 +111,7 @@ Standart kodlayıcı [biçimleri ve codec bileşenleri](media-encoder-standard-f
 
 Canlı bir olay, *doğrudan geçiş* (Şirket içi bir Live Encoder çoklu bit hızı akışı gönderir) veya *canlı kodlama* (Şirket içi bir Live Encoder tek bit hızı akışı gönderir) olarak ayarlanabilir. 
 
-*Dinamik paketleme*ile canlı akış için ortak bir iş akışı aşağıda verilmiştir:
+*Dinamik paketleme* ile canlı akış için ortak bir iş akışı aşağıda verilmiştir:
 
 1. Canlı bir [olay](live-events-outputs-concept.md)oluşturun.
 1. Alma URL 'sini alın ve şirket içi kodlayıcınızı, katkı akışını göndermek için URL 'YI kullanacak şekilde yapılandırın.
@@ -124,7 +123,7 @@ Canlı bir olay, *doğrudan geçiş* (Şirket içi bir Live Encoder çoklu bit h
 1. Akışa almak istediğiniz akış uç noktası için ana bilgisayar adını alın.
 1. Farklı biçimleri (HLS, MPEG-DASH ve Kesintisiz Akış) hedefleyen derleme URL 'Leri. *Akış uç noktası* , farklı biçimlere yönelik doğru bildirime ve isteklere hizmet vermeye önem kazanır.
 
-Bu diyagramda, *dinamik paketleme*ile canlı akış için iş akışı gösterilmektedir:
+Bu diyagramda, *dinamik paketleme* ile canlı akış için iş akışı gösterilmektedir:
 
 ![Dinamik paketleme ile geçiş kodlaması için iş akışının diyagramı](./media/live-streaming/pass-through.svg)
 
@@ -135,7 +134,7 @@ Media Services v3 sürümünde canlı akış hakkında daha fazla bilgi için bk
 Dinamik paketleme, MP4 kapsayıcı dosya biçimindeki video dosyalarını destekler ve [h.](https://en.m.wikipedia.org/wiki/H.264/MPEG-4_AVC) (MPEG-4 AVC veya avc1) veya [h. 265](https://en.m.wikipedia.org/wiki/High_Efficiency_Video_Coding) (HEVC, hev1 veya hvc1) ile kodlanmış bir video içerir.
 
 > [!NOTE]
-> En fazla 4K/60 kare hızına kadar olan çözünürlükler, *dinamik paketleme*ile test edilmiştir.
+> En fazla 4K/60 kare hızına kadar olan çözünürlükler, *dinamik paketleme* ile test edilmiştir.
 
 ## <a name="audio-codecs-supported-by-dynamic-packaging"></a>Dinamik paketleme tarafından desteklenen ses codec bileşenleri
 
@@ -177,7 +176,7 @@ Dinamik paketleme Media Services, şu anda [Dolby Digital](https://en.wikipedia.
 
 ## <a name="manifests"></a>Listeleri
 
-*Dinamik paketleme*Media Services, HLS, MPEG-DASH ve kesintisiz akış için akış istemci BILDIRIMLERI, URL 'deki biçim seçicisine göre dinamik olarak oluşturulur.  
+*Dinamik paketleme* Media Services, HLS, MPEG-DASH ve kesintisiz akış için akış istemci BILDIRIMLERI, URL 'deki biçim seçicisine göre dinamik olarak oluşturulur.  
 
 Bildirim dosyası, izleme türü (ses, video veya metin), parça adı, başlangıç ve bitiş zamanı, bit hızı (kaliteleri), izleme dilleri, sunum penceresi (Sabit sürenin kayan penceresi) ve video codec (FourCC) gibi akış meta verilerini içerir. Ayrıca, Player 'ın bir sonraki parçayı almasına, kullanılabilir sonraki yürütülebilir video parçaları ve bunların konumlarını hakkında bilgi sağlayıp sağlamamasını söyler. Parçalar (veya segmentler), video içeriğinin gerçek "öbekleridir".
 

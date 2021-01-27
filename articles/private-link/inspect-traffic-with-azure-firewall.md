@@ -8,12 +8,12 @@ ms.service: private-link
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: allensu
-ms.openlocfilehash: 5cbfd90ca65a1fb75c9cbe5602ac2a69741e378f
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 7812d0f2e42dfed6cdd661244b77969297093a5d
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96017245"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879182"
 ---
 # <a name="use-azure-firewall-to-inspect-traffic-destined-to-a-private-endpoint"></a>Özel bir uç noktaya giden trafiği incelemek için Azure Güvenlik Duvarı 'nı kullanma
 
@@ -92,7 +92,7 @@ Uygulamayla ilgili bazı sınırlamalar vardır: hub ve bağlı bileşen mimaris
 Bu mimari, şirket içi ağınızla bağlantı yapılandırdıysanız aşağıdakilerden birini kullanarak yapılandırabilirsiniz: 
 
 * [ExpressRoute](..\expressroute\expressroute-introduction.md)
-* [Siteden siteye VPN](..\vpn-gateway\vpn-gateway-howto-site-to-site-resource-manager-portal.md) 
+* [Siteden siteye VPN](../vpn-gateway/tutorial-site-to-site-portal.md) 
 
 Güvenlik gereksinimleriniz, bir güvenlik gereci aracılığıyla yönlendirilmek üzere özel uç noktalar aracılığıyla sunulan hizmetlere istemci trafiği gerektiriyorsa, bu senaryoyu dağıtın.
 
@@ -174,7 +174,7 @@ Adımlarda aşağıdaki parametreleri aşağıdaki bilgilerle değiştirin:
     | Kaynak grubu | **myResourceGroup** öğesini seçin. Bu kaynak grubunu önceki bölümde oluşturdunuz.  |
     | **Örnek ayrıntıları** |  |
     | Sanal makine adı | **Myvm**' i girin. |
-    | Region | **Orta Güney ABD (ABD)** seçin. |
+    | Bölge | **Orta Güney ABD (ABD)** seçin. |
     | Kullanılabilirlik seçenekleri | Varsayılan **altyapı yedekliliği gerekli değildir**. |
     | Görüntü | **Ubuntu Server 18,04 LTS-Gen1** öğesini seçin. |
     | Boyut | **Standard_B2s** seçin. |
@@ -223,7 +223,7 @@ Adımlarda aşağıdaki parametreleri aşağıdaki bilgilerle değiştirin:
     | Kaynak grubu | **myResourceGroup** öğesini seçin.  |
     | **Örnek ayrıntıları** |  |
     | Name | **Myazurefirewall** yazın. |
-    | Region | **Orta Güney ABD** seçin. |
+    | Bölge | **Orta Güney ABD** seçin. |
     | Kullanılabilirlik alanı | Varsayılanı **yok** olarak bırakın. |
     | Bir sanal ağ seçin    |    **Mevcut olanı kullan**' ı seçin.    |
     | Sanal ağ    |    **Myazfwvnet**' i seçin.    |
@@ -257,7 +257,7 @@ Bu bölümde, güvenlik duvarında günlükleri etkinleştirirsiniz.
     | Abonelik | Aboneliğinizi seçin. |
     | Log Analytics çalışma alanı | Log Analytics çalışma alanınızı seçin. |
 
-6. **Kaydet**'i seçin.
+6. **Kaydet**’i seçin.
 
 ## <a name="create-azure-sql-database"></a>Azure SQL veritabanı oluşturma
 
@@ -309,7 +309,7 @@ Bu bölümde, önceki bölümde Azure SQL veritabanı için özel bir uç nokta 
     | Kaynak grubu | **myResourceGroup** öğesini seçin. |
     | **Örnek ayrıntıları** | |
     | Name | **Sqlprivateendpoint** girin. |
-    | Region | **Orta Güney ABD (ABD) seçin.** |
+    | Bölge | **Orta Güney ABD (ABD) seçin.** |
 
 6. **Kaynak** sekmesini seçin veya sayfanın altındaki **kaynak** ' ı seçin.
 
@@ -345,7 +345,7 @@ Bu bölümde, önceki bölümde Azure SQL veritabanı için özel bir uç nokta 
 
 13. **Güvenlik duvarları ve sanal ağlarda**, **Azure hizmetlerinin ve kaynaklarının bu sunucuya erişmesine izin** vermek **için ileri ' yi seçin** .
 
-14. **Kaydet**'i seçin.
+14. **Kaydet**’i seçin.
 
 ## <a name="connect-the-virtual-networks-using-virtual-network-peering"></a>Sanal ağ eşlemesi kullanarak sanal ağları bağlama
 
@@ -379,7 +379,7 @@ Bu bölümde, eşleme kullanarak **Myvmvnet** ve **Mypevnet** 'e ait sanal ağla
 
 4. **Tamam**’ı seçin.
 
-5. **+ Ekle** öğesini seçin.
+5. **+ Ekle**'yi seçin.
 
 6. **Eşleme Ekle** ' de aşağıdaki bilgileri girin veya seçin:
 
@@ -497,7 +497,7 @@ Yol, Azure Güvenlik Duvarı aracılığıyla **Myvm** alt ağından gelen trafi
     | Abonelik | Aboneliğinizi seçin. |
     | Kaynak grubu | **myResourceGroup** öğesini seçin.  |
     | **Örnek ayrıntıları** |  |
-    | Region | **Orta Güney ABD** seçin. |
+    | Bölge | **Orta Güney ABD** seçin. |
     | Name | **VMsubnet-to-AzureFirewall** girin. |
     | Ağ Geçidi yollarını yayma | **Hayır**'ı seçin. |
 
@@ -509,7 +509,7 @@ Yol, Azure Güvenlik Duvarı aracılığıyla **Myvm** alt ağından gelen trafi
 
 8. **Ayarlar** altında **rotalar** ' ı seçin.
 
-9. **+ Ekle** öğesini seçin.
+9. **+ Ekle**'yi seçin.
 
 10. **Yol Ekle** sayfasında, girin veya bu bilgileri seçin:
 

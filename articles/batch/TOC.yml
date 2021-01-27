@@ -101,13 +101,11 @@
   items:
     - name: Batch hesaplarını yönetme
       items:
-        - name: Hesabınızı yönetme
-          href: batch-manage-account-basics.md
-        - name: Portal ile Batch hesaplarını yönetme
+        - name: Azure portal Batch hesaplarını yönetme
           href: batch-account-create-portal.md
         - name: Toplu İşlem Yönetimi .NET ile Batch hesaplarını yönetme
           href: batch-management-dotnet.md
-        - name: Maliyet analizi ve bütçeler
+        - name: Maliyet Analizi edinme ve bütçeleri ayarlama
           href: budget.md
         - name: Batch hesapları ile özel uç noktaları kullanma
           href: private-connectivity.md
@@ -239,7 +237,7 @@
           href: ../data-factory/transform-data-using-dotnet-custom-activity.md?toc=%2fazure%2fbatch%2ftoc.json
 - name: Başvuru
   items:
-    - name: Azure CLI
+    - name: Azure CLI’si
       href: /cli/azure/batch
     - name: Azure PowerShell
       href: /powershell/module/az.batch

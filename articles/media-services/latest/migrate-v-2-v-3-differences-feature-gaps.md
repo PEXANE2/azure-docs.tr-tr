@@ -1,5 +1,5 @@
 ---
-title: Azure Media Services V2 ve v3 arasındaki özellik boşlukları | Microsoft Docs
+title: Azure Media Services V2 ve v3 arasındaki özellik boşlukları
 description: Bu makalede, Azure Media Services V2 ile v3 arasındaki özellik boşlukları açıklanmaktadır.
 services: media-services
 author: IngridAtMicrosoft
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 1/14/2020
 ms.author: inhenkel
-ms.openlocfilehash: 0f15c2bcd921c431dba1d1cce0454a6b2e752141
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 2fa827bc2841a0bae4c9646c8a70e42dc2b500e3
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98690653"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98898418"
 ---
 # <a name="feature-gaps-between-azure-media-services-v2-and-v3"></a>Azure Media Services V2 ve v3 arasındaki özellik boşlukları
 

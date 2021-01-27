@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/12/2020
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 279a00a6146d756e6a518dbf86b88f471d170b3a
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: 1ce983ee739a4a124a93c7913f092b23dfec3cbd
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97805601"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98901259"
 ---
 ## <a name="what-is-a-replication-task"></a>Çoğaltma görevi nedir?
 
@@ -22,30 +22,30 @@ ms.locfileid: "97805601"
 
 Çoğaltma görevleri genellikle durumsuz, yani bir görevin sıralı veya paralel yürütmeleri arasında durum veya diğer yan etkileri paylaşmazlar. Bu, her ikisi de bir akışın mevcut durumunun üstüne uygulanabilecek toplu işlem ve zincirleme için de geçerlidir. 
 
-Bu, çoğaltma görevlerinin genellikle durum bilgisi olan toplama görevlerinden farklı olmasını sağlar ve [Azure Stream Analytics](/azure/stream-analytics/stream-analytics-introduction)gibi analiz çerçeveleri ve Hizmetleri etki alanıdır.
+Bu, çoğaltma görevlerinin genellikle durum bilgisi olan toplama görevlerinden farklı olmasını sağlar ve [Azure Stream Analytics](../articles/stream-analytics/stream-analytics-introduction.md)gibi analiz çerçeveleri ve Hizmetleri etki alanıdır.
 
 ## <a name="replication-applications-and-tasks-in-azure-functions"></a>Azure Işlevleri 'nde çoğaltma uygulamaları ve görevler
 
-Azure Işlevleri 'nde, bir çoğaltma görevi, yapılandırılmış bir kaynaktan bir veya daha fazla giriş iletisini alan bir [tetikleyici](/azure/azure-functions/functions-triggers-bindings) kullanılarak uygulanır ve kaynaktan yapılandırılan bir hedefe kopyalanmış iletileri ileten bir [Çıkış bağlamadır](/azure/azure-functions/functions-triggers-bindings#binding-direction) . 
+Azure Işlevleri 'nde, bir çoğaltma görevi, yapılandırılmış bir kaynaktan bir veya daha fazla giriş iletisini alan bir [tetikleyici](../articles/azure-functions/functions-triggers-bindings.md) kullanılarak uygulanır ve kaynaktan yapılandırılan bir hedefe kopyalanmış iletileri ileten bir [Çıkış bağlamadır](../articles/azure-functions/functions-triggers-bindings.md#binding-direction) . 
 
 | Tetikleyici  | Çıktı |
 |----------|--------|
-| [Azure Event Hubs tetikleyicisi](https://docs.microsoft.com/azure/azure-functions/functions-bindings-event-hubs-trigger?tabs=csharp) | [Azure Olay Hub 'ları çıkış bağlama](https://docs.microsoft.com/azure/azure-functions/functions-bindings-event-hubs-output?tabs=csharp) |
-| [Azure Service Bus tetikleyicisi](https://docs.microsoft.com/azure/azure-functions/functions-bindings-service-bus-trigger?tabs=csharp) | [Çıkış bağlamayı Azure Service Bus](https://docs.microsoft.com/azure/azure-functions/functions-bindings-service-bus-output?tabs=csharp)
-| [Azure IoT Hub tetikleyicisi](https://docs.microsoft.com/azure/azure-functions/functions-bindings-event-iot-trigger?tabs=csharp) | [Azure IoT Hub çıkış bağlama](https://docs.microsoft.com/azure/azure-functions/functions-bindings-event-iot-output?tabs=csharp)
-| [Azure Event Grid tetikleyicisi](https://docs.microsoft.com/azure/azure-functions/functions-bindings-event-grid-trigger?tabs=csharp) | [Çıkış bağlamayı Azure Event Grid](https://docs.microsoft.com/azure/azure-functions/functions-bindings-event-grid-output?tabs=csharp)
-| [Azure Kuyruk Depolama tetikleyicisi](https://docs.microsoft.com/azure/azure-functions/functions-bindings-storage-queue-trigger?tabs=csharp) | [Azure kuyruk depolama çıkışı bağlama](https://docs.microsoft.com/azure/azure-functions/functions-bindings-storage-queue-output?tabs=csharp)
+| [Azure Event Hubs tetikleyicisi](../articles/azure-functions/functions-bindings-event-hubs-trigger.md?tabs=csharp) | [Azure Olay Hub 'ları çıkış bağlama](../articles/azure-functions/functions-bindings-event-hubs-output.md?tabs=csharp) |
+| [Azure Service Bus tetikleyicisi](../articles/azure-functions/functions-bindings-service-bus-trigger.md?tabs=csharp) | [Çıkış bağlamayı Azure Service Bus](../articles/azure-functions/functions-bindings-service-bus-output.md?tabs=csharp)
+| [Azure IoT Hub tetikleyicisi](../articles/azure-functions/functions-bindings-event-iot-trigger.md?tabs=csharp) | [Azure IoT Hub çıkış bağlama](../articles/azure-functions/functions-bindings-event-iot-output.md?tabs=csharp)
+| [Azure Event Grid tetikleyicisi](../articles/azure-functions/functions-bindings-event-grid-trigger.md?tabs=csharp) | [Çıkış bağlamayı Azure Event Grid](../articles/azure-functions/functions-bindings-event-grid-output.md?tabs=csharp)
+| [Azure Kuyruk Depolama tetikleyicisi](../articles/azure-functions/functions-bindings-storage-queue-trigger.md?tabs=csharp) | [Azure kuyruk depolama çıkışı bağlama](../articles/azure-functions/functions-bindings-storage-queue-output.md?tabs=csharp)
 | [Apache Kafka tetikleyicisi](https://github.com/azure/azure-functions-kafka-extension) | [Çıkış bağlamayı Apache Kafka](https://github.com/azure/azure-functions-kafka-extension)
 | [Oybbitmq tetikleyicisi](https://github.com/azure/azure-functions-rabbitmq-extension) | [Kbbitmq çıkış bağlama](https://github.com/azure/azure-functions-rabbitmq-extension) 
-| | [Azure Notification Hubs çıkış bağlama](https://docs.microsoft.com/azure/azure-functions/functions-bindings-notification-hubs)
-||[Azure SignalR hizmeti çıkış bağlama](https://docs.microsoft.com/azure/azure-functions/functions-bindings-signalr-service-output?tabs=csharp)
-||[Twilio SendGrid çıkış bağlaması](https://docs.microsoft.com/azure/azure-functions/functions-bindings-sendgrid?tabs=csharp)
+| | [Azure Notification Hubs çıkış bağlama](../articles/azure-functions/functions-bindings-notification-hubs.md)
+||[Azure SignalR hizmeti çıkış bağlama](../articles/azure-functions/functions-bindings-signalr-service-output.md?tabs=csharp)
+||[Twilio SendGrid çıkış bağlaması](../articles/azure-functions/functions-bindings-sendgrid.md?tabs=csharp)
 
 Çoğaltma görevleri, diğer Azure Işlevleri uygulamasıyla aynı dağıtım yöntemleriyle çoğaltma uygulamasına olarak dağıtılır. Aynı uygulama için birden çok görev yapılandırabilirsiniz. 
 
 Azure Işlevleri Premium ile birden çok çoğaltma uygulaması, App Service plan olarak adlandırılan aynı temel kaynak havuzunu paylaşabilir. Diğer bir deyişle, .NET içinde yazılmış çoğaltma görevlerini Java 'da, örneğin, Java 'da yazılmış çoğaltma görevleriyle kolayca bulabilirsiniz. Bu, yalnızca Java için kullanılabilir olan ve belirli bir tümleştirme yolu için en iyi seçenek olan Apache Camel gibi belirli kitaplıkların avantajlarından yararlanmak istediğinizde, diğer yineleme görevleri için genellikle farklı bir dil ve çalışma zamanı tercih edebilse bile, bu önemlidir. 
 
-Her seferinde, tek tek olaylar veya iletiler sunan Tetikleyiciler üzerinde toplu işlem odaklı Tetikleyicileri tercih etmelisiniz ve Azure Işlevinin [parametre bağlama ifadelerine](https://docs.microsoft.com/azure/azure-functions/functions-bindings-expressions-patterns)güventense, her zaman tam olay veya ileti yapısını edinmeniz gerekir.
+Her seferinde, tek tek olaylar veya iletiler sunan Tetikleyiciler üzerinde toplu işlem odaklı Tetikleyicileri tercih etmelisiniz ve Azure Işlevinin [parametre bağlama ifadelerine](../articles/azure-functions/functions-bindings-expressions-patterns.md)güventense, her zaman tam olay veya ileti yapısını edinmeniz gerekir.
 
 İşlevin adı, bağlanmakta olduğunuz kaynak ve hedefin çiftini yansıtmalıdır ve bu ada sahip uygulama yapılandırma dosyalarındaki bağlantı dizelerine veya diğer yapılandırma öğelerine başvuru öneki uygulamanız gerekir. 
 
@@ -57,17 +57,17 @@ Event Hubs ile Service Bus arasında ileti oluşturan basit çoğaltma görevler
 
 ### <a name="retry-policy"></a>Yeniden Deneme ilkesi
 
-Bir çoğaltma işlevinin her iki tarafında da kullanılabilirlik olayı sırasında veri kaybını önlemek için yeniden deneme ilkesini sağlam olacak şekilde yapılandırmanız gerekir. Yeniden deneme ilkesini yapılandırmak için [yeniden denemeler hakkında Azure işlevleri belgelerine](/azure/azure-functions/functions-bindings-error-pages) bakın. 
+Bir çoğaltma işlevinin her iki tarafında da kullanılabilirlik olayı sırasında veri kaybını önlemek için yeniden deneme ilkesini sağlam olacak şekilde yapılandırmanız gerekir. Yeniden deneme ilkesini yapılandırmak için [yeniden denemeler hakkında Azure işlevleri belgelerine](../articles/azure-functions/functions-bindings-error-pages.md) bakın. 
 
 [Örnek depodaki](https://github.com/Azure-Samples/azure-messaging-replication-dotnet) örnek projeler için seçilen ilke ayarları, yeniden deneme aralıklarıyla 5 saniyeden 15 dakikaya kadar olan ve veri kaybını önlemek için sonsuz yeniden denemeler içeren bir üstel geri alma stratejisi yapılandırır. 
 
-Service Bus için, tetikleyicilerin etkileşimini ve sıra için tanımlanan maksimum teslim sayısını anlamak için ["tetikleyici esnekliği üzerinde yeniden deneme desteği kullanma"](/azure/azure-functions/functions-bindings-error-pages#using-retry-support-on-top-of-trigger-resilience) bölümünü gözden geçirin.
+Service Bus için, tetikleyicilerin etkileşimini ve sıra için tanımlanan maksimum teslim sayısını anlamak için ["tetikleyici esnekliği üzerinde yeniden deneme desteği kullanma"](../articles/azure-functions/functions-bindings-error-pages.md#using-retry-support-on-top-of-trigger-resilience) bölümünü gözden geçirin.
 
 ### <a name="setting-up-a-replication-application-host"></a>Çoğaltma uygulama konağını ayarlama
 
 Bir çoğaltma uygulaması, bir veya daha fazla çoğaltma görevi için bir yürütme konağından biridir. 
 
-Bu, bir Azure Işlevleri Premium planında tüketim planında veya (önerilen) çalışacak şekilde yapılandırılmış bir Azure Işlevleri uygulamasıdır. Tüm çoğaltma uygulamalarının, [sistem veya Kullanıcı tarafından atanan yönetilen kimlik](/azure/app-service/overview-managed-identity)altında çalışması gerekir. 
+Bu, bir Azure Işlevleri Premium planında tüketim planında veya (önerilen) çalışacak şekilde yapılandırılmış bir Azure Işlevleri uygulamasıdır. Tüm çoğaltma uygulamalarının, [sistem veya Kullanıcı tarafından atanan yönetilen kimlik](../articles/app-service/overview-managed-identity.md)altında çalışması gerekir. 
 
 Bağlı Azure Resource Manager (ARM) şablonları, ile bir çoğaltma uygulaması oluşturur ve yapılandırır:
 
@@ -129,15 +129,15 @@ Yardımcı yöntemler Event Hubs ve Service Bus arasında çoğaltmayı kolay ha
 
 ### <a name="monitoring"></a>İzleme
 
-Çoğaltma uygulamanızı nasıl izleyebileceğinizi öğrenmek için lütfen Azure Işlevleri belgelerinin [izleme bölümüne](https://docs.microsoft.com/azure/azure-functions/configure-monitoring) bakın.
+Çoğaltma uygulamanızı nasıl izleyebileceğinizi öğrenmek için lütfen Azure Işlevleri belgelerinin [izleme bölümüne](../articles/azure-functions/configure-monitoring.md) bakın.
 
-Çoğaltma görevlerinin izlenmesi için özellikle faydalı bir görsel araç, yakalanan izleme bilgileri tarafından otomatik olarak oluşturulan ve çoğaltma görevi kaynağı ve hedef aktarımlarının güvenilirliğini ve performansını keşfetmeye izin veren Application Insights [uygulama haritadır](https://docs.microsoft.com/azure/azure-monitor/app/app-map).
+Çoğaltma görevlerinin izlenmesi için özellikle faydalı bir görsel araç, yakalanan izleme bilgileri tarafından otomatik olarak oluşturulan ve çoğaltma görevi kaynağı ve hedef aktarımlarının güvenilirliğini ve performansını keşfetmeye izin veren Application Insights [uygulama haritadır](../articles/azure-monitor/app/app-map.md).
 
-Anında tanılama öngörüleri için, günlük ayrıntılarının düşük gecikme süreli görselleştirmesini sağlayan [canlı ölçümler](https://docs.microsoft.com/azure/azure-monitor/app/live-stream) Portal aracıyla çalışabilirsiniz.
+Anında tanılama öngörüleri için, günlük ayrıntılarının düşük gecikme süreli görselleştirmesini sağlayan [canlı ölçümler](../articles/azure-monitor/app/live-stream.md) Portal aracıyla çalışabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Işlevleri dağıtımları](/azure/azure-functions/functions-deployment-technologies)
-* [Azure Işlevleri tanılaması](/azure/azure-functions/functions-diagnostics)
-* [Azure Işlevleri ağ seçenekleri](/azure/azure-functions/functions-networking-options)
-* [Azure Application Insights](/azure/azure-monitor/app/app-insights-overview)
+* [Azure Işlevleri dağıtımları](../articles/azure-functions/functions-deployment-technologies.md)
+* [Azure Işlevleri tanılaması](../articles/azure-functions/functions-diagnostics.md)
+* [Azure Işlevleri ağ seçenekleri](../articles/azure-functions/functions-networking-options.md)
+* [Azure Application Insights](../articles/azure-monitor/app/app-insights-overview.md)
