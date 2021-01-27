@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: delhan
-ms.openlocfilehash: 507cd6cfe9f251dbc304b579d634ff986b001264
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c293945a52dd810975b36144f224278163166ba8
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87088606"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878452"
 ---
 # <a name="troubleshoot-azure-vm-rdp-connection-issues-by-event-id"></a>Azure VM RDP bağlantı sorunlarını olay kimliğine göre giderme 
 
@@ -156,7 +156,7 @@ Start-Service -Name "SessionEnv"
 
 Sertifikayı yenileyemezseniz, sertifikayı silmeyi denemek için aşağıdaki adımları izleyin:
 
-1. Aynı VNET 'teki başka bir sanal makinede, **Çalıştır** kutusunu açın, **MMC**yazın ve ardından **Tamam**' a basın. 
+1. Aynı VNET 'teki başka bir sanal makinede, **Çalıştır** kutusunu açın, **MMC** yazın ve ardından **Tamam**' a basın. 
 
 2. **Dosya** menüsünde **ek bileşen Ekle/Kaldır**' ı seçin.
 
@@ -164,7 +164,7 @@ Sertifikayı yenileyemezseniz, sertifikayı silmeyi denemek için aşağıdaki a
 
 4. **Bilgisayar hesabı**' nı seçin ve ardından **İleri**' yi seçin.
 
-5. **Başka bir bilgisayar**seçin ve ardından sorunlu VM 'nin IP adresini ekleyin.
+5. **Başka bir bilgisayar** seçin ve ardından sorunlu VM 'nin IP adresini ekleyin.
    >[!Note]
    >Sanal bir IP adresi kullanmaktan kaçınmak için iç ağı kullanmayı deneyin.
 
@@ -235,7 +235,7 @@ Bu sorun, güvenlik ilkeleri nedeniyle oluşur. TLS (1,0 gibi) eski sürümleri 
 
 RDP, varsayılan protokol olarak TLS 1,0 kullanır. Ancak protokol, yeni standart olan TLS 1,1 olarak değiştirilebilir.
 
-Bu sorunu gidermek için bkz. [Azure VM 'ye bağlanmak IÇIN RDP kullanırken kimlik doğrulama hatalarında sorun giderme](troubleshoot-authentication-error-rdp-vm.md#tls-version).
+Bu sorunu gidermek için bkz. [Azure VM 'ye bağlanmak IÇIN RDP kullanırken kimlik doğrulama hatalarında sorun giderme](/troubleshoot/azure/virtual-machines/cannot-connect-rdp-azure-vm#tls-version).
 
 ## <a name="scenario-3"></a>3\. Senaryo
 

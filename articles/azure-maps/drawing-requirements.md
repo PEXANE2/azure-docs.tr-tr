@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philMea
-ms.openlocfilehash: bed5373cbb9967bd1d86bb80bb3a449430c3b6ae
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 2a37e716b7804b11ab396909f746af84294bb4e3
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98044790"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895280"
 ---
 # <a name="drawing-package-requirements"></a>Çizim paketi gereksinimleri
 
@@ -41,7 +41,7 @@ Kolay başvuru için, bu makaleyi okurken önemli olan bazı hüküm ve tanımla
 | Katman | Bir AutoCAD DWG katmanı.|
 | Level | Bir küme yükseltmesinde bina alanı. Örneğin, bir bina tabanı. |
 | XREF  |AutoCAD DWG dosya biçimindeki (. dwg), dış başvuru olarak birincil Çizime eklenen bir dosya.  |
-| Özellik | Bir geometriyi daha fazla meta veri bilgileriyle birleştiren bir nesne. |
+| Öne çıkan özelliği | Bir geometriyi daha fazla meta veri bilgileriyle birleştiren bir nesne. |
 | Özellik sınıfları | Özellikler için ortak bir şema. Örneğin, bir *birim* bir özellik sınıfıdır ve *Office* bir özelliktir. |
 
 ## <a name="drawing-package-structure"></a>Çizim paketi yapısı
@@ -106,7 +106,7 @@ Dış katmanda kaç varlık çizimleri olduğuna bakılmaksızın, [sonuçta eld
 * Dış örler, Çokgen, çoklu çizgi (kapalı), daire veya elips (kapalı) olarak çizmelidir.
 * Dış değerler çakışabilir, ancak tek bir geometriyle çözülür.
 * Sonuç düzeyi özelliği en az 4 kare metre olmalıdır.
-* Sonuç düzeyi özelliği 400 kare ölçü olmamalıdır.
+* Sonuç düzeyi özelliği 400.000 kare ölçü olmamalıdır.
 
 Katman birden çok çakışan PolyLines içeriyorsa, PolyLines tek düzeyli bir özellik olarak çözülür. Alternatif olarak, katman birden çok çakışmayan PolyLines içeriyorsa, sonuçta elde edilen düzey özelliğin çok Çokgen bir temsili vardır.
 
@@ -198,7 +198,7 @@ Sonraki bölümlerde her bir nesne için gereksinimler ayrıntılandırır.
 
 ### `directoryInfo`
 
-| Özellik  | Tür | Gerekli | Açıklama |
+| Özellik  | Tür | Gerekli | Description |
 |-----------|------|----------|-------------|
 | `name`      | dize | true   |  Oluşturma adı. |
 | `streetAddress`|    string |    yanlış    | Bina adresi. |
@@ -219,7 +219,7 @@ Sonraki bölümlerde her bir nesne için gereksinimler ayrıntılandırır.
 
 `buildingLevels`Nesne, bir bina seviyelerinin JSON dizisini içeriyor.
 
-| Özellik  | Tür | Gerekli | Açıklama |
+| Özellik  | Tür | Gerekli | Description |
 |-----------|------|----------|-------------|
 |`levelName`    |dize    |true |    Açıklayıcı düzey adı. Örneğin: kat 1, giriş, mavi park veya taban.|
 |`ordinal` | tamsayı |    true | Düzeylerin dikey sırasını belirler. Her tesis 0 sıralı bir düzeye sahip olmalıdır. |
@@ -251,7 +251,7 @@ Sonraki bölümlerde her bir nesne için gereksinimler ayrıntılandırır.
 
 `unitProperties`Nesne, birim ÖZELLIKLERININ JSON dizisini içerir.
 
-| Özellik  | Tür | Gerekli | Açıklama |
+| Özellik  | Tür | Gerekli | Description |
 |-----------|------|----------|-------------|
 |`unitName`    |dize    |true    |Bu kayıtla ilişkilendirilecek birimin adı `unitProperty` . Bu kayıt yalnızca katmanlarda eşleşen bir etiket bulunduğunda geçerlidir `unitName` `unitLabel` . |
 |`categoryName`|    string|    yanlış    |Kategori adı. Kategorilerin tüm listesi için [Kategoriler](https://aka.ms/pa-indoor-spacecategories)' e bakın. |

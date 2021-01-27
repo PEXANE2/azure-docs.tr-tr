@@ -2,15 +2,15 @@
 title: Şablon dağıtma-Azure portal
 description: Azure portal kullanarak ilk Azure Resource Manager şablonunuzu (ARM şablonu) oluşturmayı ve nasıl dağıtılacağını öğrenin.
 author: mumian
-ms.date: 06/29/2020
+ms.date: 01/26/2021
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: bdbcecc247a4b5318ba44b92befa7e90ac47aa8c
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 946156caa7252a89cab006d604eb6b441e09c643
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96349631"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98892515"
 ---
 # <a name="quickstart-create-and-deploy-arm-templates-by-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak ARM şablonları oluşturma ve dağıtma
 
@@ -33,9 +33,11 @@ Birçok deneyimli şablon geliştiricisi, bu yöntemi, alışık oldukları Azur
 
     ![Azure portal menüsünden kaynak oluştur ' u seçin](./media/quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-create-a-resource.png)
 
-1. **Depolama** > **Depolama hesabı**'nı seçin.
+1. Arama kutusuna **depolama hesabı** yazın ve **[ENTER]** tuşuna basın.
+1. **Oluştur**’u seçin.
 
     ![Azure depolama hesabı oluşturma](./media/quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-create-storage-account-portal.png)
+
 1. Aşağıdaki bilgileri girin:
 
     |Name|Değer|
@@ -166,7 +168,7 @@ Azure'daki her Azure hizmetinin adının benzersiz olması gerekir. Zaten var ol
     |**Bölge**|Kaynak grubu için bir konum seçin. Örneğin **Orta ABD**. |
     |**Konum**|Depolama hesabı için bir konum seçin. Örneğin **Orta ABD**. |
     |**Hesap Türü**|Bu hızlı başlangıç için **Standard_LRS** girin. |
-    |**Tür**|Bu hızlı başlangıç için **StorageV2** girin. |
+    |**Tip**|Bu hızlı başlangıç için **StorageV2** girin. |
     |**Erişim katmanı**|Bu hızlı başlangıç için **sık** erişimli girin. |
     |**En düşük TLS sürümü**|**TLS1_0** girin. |
     |**Yalnızca HTTPS trafiğini destekler**| Bu hızlı başlangıç için **true** değerini seçin. |

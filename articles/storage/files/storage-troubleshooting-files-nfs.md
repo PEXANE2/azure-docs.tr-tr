@@ -8,12 +8,12 @@ ms.date: 09/15/2020
 ms.author: jeffpatt
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 2a37c86268d2424971058021044c60185a25348f
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: ed86cc76984388618c177590b3f6358421f09f65
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97916465"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878502"
 ---
 # <a name="troubleshoot-azure-nfs-file-shares"></a>Azure NFS dosya paylaşımlarında sorun giderme
 
@@ -25,7 +25,7 @@ Bu makalede, Azure NFS dosya paylaşımları ile ilgili bazı yaygın sorunlar l
 Azure dosyaları alfasayısal UID/GID 'ye izin vermez. Bu nedenle ıdmapping devre dışı bırakılmalıdır. 
 
 ### <a name="cause-2-idmapping-was-disabled-but-got-re-enabled-after-encountering-bad-filedir-name"></a>Neden 2: ıdmapping devre dışı bırakıldı, ancak hatalı dosya/dizin adıyla karşılaşduktan sonra yeniden etkinleştirildi
-Idmapping doğru şekilde devre dışı bırakılsa bile, bazı durumlarda ıdmapping 'i devre dışı bırakma ayarları geçersiz kılınır. Örneğin, Azure dosyaları hatalı bir dosya adıyla karşılaştığında bir hata geri gönderir. Bu özel hata kodunu gördükten sonra, NFS v 4,1 Linux istemcisi ıdmapping 'i yeniden etkinleştirmeye karar verir ve gelecekteki istekler alfasayısal UID/GID ile yeniden gönderilir. Azure dosyalarında desteklenmeyen karakterlerin bir listesi için, bu [makaleye](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#:~:text=The%20Azure%20File%20service%20naming%20rules%20for%20directory,be%20no%20more%20than%20255%20characters%20in%20length)bakın. İki nokta üst üste, desteklenmeyen karakterlerden biridir. 
+Idmapping doğru şekilde devre dışı bırakılsa bile, bazı durumlarda ıdmapping 'i devre dışı bırakma ayarları geçersiz kılınır. Örneğin, Azure dosyaları hatalı bir dosya adıyla karşılaştığında bir hata geri gönderir. Bu özel hata kodunu gördükten sonra, NFS v 4,1 Linux istemcisi ıdmapping 'i yeniden etkinleştirmeye karar verir ve gelecekteki istekler alfasayısal UID/GID ile yeniden gönderilir. Azure dosyalarında desteklenmeyen karakterlerin bir listesi için, bu [makaleye](/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata)bakın. İki nokta üst üste, desteklenmeyen karakterlerden biridir. 
 
 ### <a name="workaround"></a>Geçici çözüm
 Idmapping 'in devre dışı bırakılıp bırakılmadığını denetleyin ve hiçbir şey yeniden etkinleştirin ve ardından aşağıdakileri yapın:
@@ -68,7 +68,7 @@ NFS yalnızca aşağıdaki yapılandırmaya sahip depolama hesaplarında kullan�
 - Katman-Premium
 - Hesap türü-dosya depolaması
 - Artıklık-LRS
-- Bölgeler- [desteklenen bölgelerin listesi](https://docs.microsoft.com/azure/storage/files/storage-files-how-to-create-nfs-shares?tabs=azure-portal#regional-availability)
+- Bölgeler- [desteklenen bölgelerin listesi](./storage-files-how-to-create-nfs-shares.md?tabs=azure-portal#regional-availability)
 
 #### <a name="solution"></a>Çözüm
 

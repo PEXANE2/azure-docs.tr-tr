@@ -1,5 +1,5 @@
 ---
-title: CLı kullanarak medya ayrılmış birimlerini (MRUs) ölçeklendirme-Azure | Microsoft Docs
+title: CLı kullanarak medya ayrılmış birimlerini (MRUs) ölçeklendirme-Azure
 description: Bu konuda, Azure Media Services ile medya işlemeyi ölçeklendirmek için CLı 'nin nasıl kullanılacağı gösterilmektedir.
 services: media-services
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: inhenkel
-ms.openlocfilehash: bcbe5fe71e5a4d4d39a29d4a6828c104f6891c0d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 41026a64d6f7549c5a268493cfb5975838002df2
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91617154"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895314"
 ---
 # <a name="how-to-scale-media-reserved-units"></a>Medya ayrılmış birimlerini ölçeklendirme
 
@@ -26,7 +26,7 @@ ms.locfileid: "91617154"
 
 Bu makalede, daha hızlı kodlama için medya ayrılmış birimlerinin (MRSs) nasıl ölçeklenmesi gösterilmektedir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [Media Services hesabı oluşturun](./create-account-howto.md).
 

@@ -45,6 +45,14 @@
           href: security-baseline.md
 - name: Nasıl yapılır kılavuzları
   items:
+    - name: Müşteri eylemleri
+      items:
+        - name: Hizmet sağlayıcılarını görüntüleme ve yönetme
+          displayName: 'customer, update, visibility, control'
+          href: ./how-to/view-manage-service-providers.md
+        - name: Hizmet sağlayıcısı etkinliğini görüntüleme
+          displayName: 'monitor, log, customer, visibility, transparency, control'
+          href: ./how-to/view-service-provider-activity.md
     - name: Bir müşteriyi Azure Lighthouse’a ekleme
       displayName: resource management
       href: ./how-to/onboard-customer.md
@@ -87,17 +95,9 @@
           href: ./how-to/deploy-policy-remediation.md
     - name: Azure Sentinel tümleştirmesi
       href: ./how-to/manage-sentinel-workspaces.md
-    - name: Müşteri eylemleri
-      items:
-        - name: Hizmet sağlayıcılarını görüntüleme ve yönetme
-          displayName: 'customer, update'
-          href: ./how-to/view-manage-service-providers.md
-        - name: Hizmet sağlayıcısı etkinliğini görüntüleme
-          displayName: 'monitor, log'
-          href: ./how-to/view-service-provider-activity.md
 - name: Başvuru
   items:
-    - name: Azure CLI
+    - name: Azure CLI’si
       href: /cli/azure/managedservices
     - name: Azure PowerShell
       href: /powershell/module/az.managedservices#managed_services

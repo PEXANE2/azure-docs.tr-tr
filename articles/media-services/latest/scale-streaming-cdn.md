@@ -1,24 +1,9 @@
 ---
-title: CDN tümleştirmesi ile içerik akışı
-titleSuffix: Azure Media Services
-description: CDN tümleştirmesinin yanı sıra önceden getirme ve Origin-Assist CDN-önceden getirme ile akış içeriği hakkında bilgi edinin.
-services: media-services
-documentationcenter: ''
-author: IngridAtMicrosoft
-manager: femila
-editor: ''
-ms.service: media-services
-ms.workload: ''
-ms.topic: conceptual
-ms.date: 08/31/2020
-ms.author: inhenkel
-ms.openlocfilehash: 6bdf6015ca5633c77280111a55055a7394cee5bd
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
-ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96001380"
+# <a name="mandatory-fields-see-more-on-akamsskyeyemeta"></a>Zorunlu alanlar. Aka.ms/skyeye/meta hakkında daha fazla bilgi için bkz..
+Başlık: CDN tümleştirmesi ile içerik akışı: Azure Media Services açıklaması: CDN tümleştirmesiyle akış içeriği ve önceden getirme ve Origin-Assist CDN-önceden getirme hakkında bilgi edinin.
+Hizmetler: Media-Services belgetationcenter: ' ' Yazar: ınridatmicrosoft Manager: femıla Düzenleyicisi: ' ' MS. Service: Media-Services MS. Workload: MS. Topic: kavramsal MS. Date: 08/31/2020 MS. Author: inhenkel
 ---
+
 # <a name="stream-content-with-cdn-integration"></a>CDN tümleştirmesi ile içerik akışı
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
@@ -32,7 +17,7 @@ Video parçası önbelleğe alındığı sürece popüler içerik doğrudan CDN 
 Ayrıca, uyarlamalı akışın nasıl çalıştığını göz önünde bulundurmanız gerekir. Her bir video parçası kendi varlığı olarak önbelleğe alınır. Örneğin, belirli bir videonun ilk kez nasıl izlenen hakkında düşünün. Görüntüleyici burada yalnızca birkaç saniye izlemeyi atlar ve burada yalnızca, izlenen kişilerin CDN 'de önbelleğe alınması ile ilişkili video parçaları vardır. Uyarlamalı akış sayesinde genellikle 5 ile 7 arasında farklı bit fiyatları vardır. Bir kişi bir bit hızı izlerken ve başka bir kişi farklı bir bit hızı izlerse, her biri CDN 'de ayrı olarak önbelleğe alınır. İki kişi aynı bit hızını izliyor olsa da, farklı protokollerde akış olabilir. Her protokol (HLS, MPEG-DASH, Kesintisiz Akış) ayrı olarak önbelleğe alınır. Böylece her bit hızı ve protokol ayrı olarak önbelleğe alınır ve yalnızca istenen video parçaları önbelleğe alınır.
 
 Test ortamı hariç, hem standart hem de Premium akış uç noktaları için CDN 'nin etkinleştirilmesini öneririz. Her akış uç noktası türü, desteklenen farklı bir üretilen iş sınırına sahiptir.
-Bir akış uç noktası tarafından desteklenen en fazla eşzamanlı akış sayısı için kesin bir hesaplama yapmak zordur, çünkü dikkate almanız gereken çeşitli faktörler vardır. Bunlar:
+Bir akış uç noktası tarafından desteklenen en fazla eşzamanlı akış sayısı için kesin bir hesaplama yapmak zordur, çünkü dikkate almanız gereken çeşitli faktörler vardır. Bu modüller şunlardır:
 
 - Akış için kullanılan maksimum bit hızı
 - Oynatıcı ön arabelleği ve anahtarlama davranışı. Oyuncular, bir kaynaktan kesimleri patlama ve Uyarlamalı bit hızı geçişini hesaplamak için yük hızını kullanmanıza çalışır. Akış uç noktası doygunluğu yakınsa, yanıt süreleri farklılık gösterebilir ve oyuncular daha düşük kalitede geçişe başlayabilir. Bu, akış uç noktası yürütücülerinin yükünü azaltmakta olduğundan, istenmeyen geçiş Tetikleyicileri oluşturarak daha yüksek kalitede ölçeklendirin.
@@ -78,7 +63,7 @@ Bu hedefe ulaşmak için, bir akış uç noktası (Origin) ve CDN 'nin el ile bi
 - Media Services kaynağı, bir sonraki nesneyi önceden getirme için CDN 'e bildirmek üzere "zeka" (Origin-yardım) içermelidir.
 - CDN, önceden getirme ve önbelleğe alma (CDN-önceden getirme bölümü) yapar. CDN 'nin bir önceden getirme veya düzenli getirme, 404 yanıtlarını işleme ve sonsuz önceden getirme döngüsünden kaçınmak için bir yol olduğunu bildirmek üzere "zeka" sahip olması gerekir.
 
-### <a name="benefits"></a>Yararları
+### <a name="benefits"></a>Avantajlar
 
 *Kaynak-yardım CDN-önceden getirme* özelliğinin avantajları şunları içerir:
 

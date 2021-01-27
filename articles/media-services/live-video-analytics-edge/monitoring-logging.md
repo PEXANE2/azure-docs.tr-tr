@@ -3,12 +3,12 @@ title: İzleme ve günlüğe kaydetme-Azure
 description: Bu makalede, IoT Edge üzerindeki canlı video analizlerinde izleme ve günlüğe kaydetme konusunda genel bir bakış sunulmaktadır.
 ms.topic: reference
 ms.date: 04/27/2020
-ms.openlocfilehash: 6a7251b62421642ad9f5dba4f4c2a15ce74cd5cf
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: 6dc0a6d499d06c95bdccbc9e386d7f9288971ee8
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97900884"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878113"
 ---
 # <a name="monitoring-and-logging"></a>İzleme ve günlüğe kaydetme
 
@@ -208,7 +208,7 @@ Olay türleri, bu şemaya göre bir ad alanına atanır:
 
 #### <a name="event-classes"></a>Olay sınıfları
 
-|Sınıf adı|Açıklama|
+|Sınıf adı|Description|
 |---|---|
 |Analiz  |İçerik analizinin bir parçası olarak oluşturulan olaylar.|
 |Tanılama    |Sorunların ve performansın tanılanmasına yardımcı olan olaylar.|
@@ -222,7 +222,7 @@ Olay türleri her bir olay sınıfına özeldir.
 * `Microsoft.Media.Graph.Diagnostics.AuthorizationError`
 * `Microsoft.Media.Graph.Operational.GraphInstanceStarted`
 
-### <a name="event-time"></a>Olay saati
+### <a name="event-time"></a>Etkinlik saati
 
 Olay saati bir ISO 8601 dizesinde biçimlendirilir. Olayın gerçekleştiği süreyi temsil eder.
 
@@ -230,7 +230,7 @@ Olay saati bir ISO 8601 dizesinde biçimlendirilir. Olayın gerçekleştiği sü
 
 Bu ölçümler IoT Edge modülündeki canlı video analizinden raporlanır:  
 
-|Ölçüm adı|Tür|Etiketle|Açıklama|
+|Ölçüm adı|Tür|Etiketle|Description|
 |-----------|----|-----|-----------|
 |lva_active_graph_instances|Ölçer|ıothub, edge_device, module_name graph_topology|Topoloji başına toplam etkin grafik sayısı.|
 |lva_received_bytes_total|Sayaç|ıothub, edge_device, module_name, graph_topology, graph_instance, graph_node|Bir düğüm tarafından alınan toplam bayt sayısı. Yalnızca RTSP kaynakları için desteklenir.|
@@ -269,7 +269,7 @@ IoT Edge modülündeki canlı video analizinden ölçüm toplamayı etkinleştir
 
 1. Docker CLı komutlarını kullanarak Docker dosyasını oluşturun ve görüntüyü Azure Container Registry 'nize yayımlayın.
     
-   Docker CLı kullanarak bir kapsayıcı kayıt defterine gönderim hakkında daha fazla bilgi için bkz. [Push ve pull Docker görüntüleri](https://docs.microsoft.com/azure/container-registry/container-registry-get-started-docker-cli). Azure Container Registry hakkında diğer bilgiler için [belgelerine](https://docs.microsoft.com/azure/container-registry/)bakın.
+   Docker CLı kullanarak bir kapsayıcı kayıt defterine gönderim hakkında daha fazla bilgi için bkz. [Push ve pull Docker görüntüleri](../../container-registry/container-registry-get-started-docker-cli.md). Azure Container Registry hakkında diğer bilgiler için [belgelerine](../../container-registry/index.yml)bakın.
 
 
 1. Azure Container Registry gönderme işlemi tamamlandıktan sonra, aşağıdaki düğümü dağıtım bildirimi dosyanıza ekleyin:
@@ -311,7 +311,7 @@ IoT Edge modülündeki canlı video analizinden ölçüm toplamayı etkinleştir
 
    Bu durumda, Azure portal IoT Hub 'ına gidin ve sol bölmedeki **ölçümler** ' i seçin. Ölçümleri burada görmeniz gerekir.
 
-## <a name="logging"></a>Günlüğe kaydetme
+## <a name="logging"></a>Günlüğe Kaydetme
 
 Diğer IoT Edge modüllerinde olduğu gibi, uç cihazdaki [kapsayıcı günlüklerini de inceleyebilirsiniz](../../iot-edge/troubleshoot.md#check-container-logs-for-issues) . Günlüklere yazılan bilgileri [aşağıdaki Module ikizi](module-twin-configuration-schema.md) özelliklerini kullanarak yapılandırabilirsiniz:
 

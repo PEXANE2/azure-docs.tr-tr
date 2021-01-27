@@ -9,16 +9,16 @@ ms.topic: how-to
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 22bd1ed88f61689eec9312392f7f58d137f703e0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9edade1aa54d6f4f8160a107f84e6da2e6cf316e
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91331531"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878028"
 ---
 # <a name="create-a-scale-set-from-a-generalized-image-using-powershell"></a>PowerShell kullanarak Genelleştirilmiş görüntüden ölçek kümesi oluşturma 
 
-[Paylaşılan görüntü galerisinde](shared-image-galleries.md)depolanan Genelleştirilmiş görüntü sürümünden bir VM oluşturun. Özelleştirilmiş bir görüntü kullanarak ölçek kümesi oluşturmak istiyorsanız, bkz. [özelleştirilmiş görüntüden ölçek kümesi örnekleri oluşturma](instance-specialized-image-version-powershell.md).
+[Paylaşılan görüntü galerisinde](../virtual-machines/shared-image-galleries.md)depolanan Genelleştirilmiş görüntü sürümünden bir VM oluşturun. Özelleştirilmiş bir görüntü kullanarak ölçek kümesi oluşturmak istiyorsanız, bkz. [özelleştirilmiş görüntüden ölçek kümesi örnekleri oluşturma](instance-specialized-image-version-powershell.md).
 
 Genelleştirilmiş bir görüntünüz olduğunda, [New-AzVmss](/powershell/module/az.compute/new-azvmss) cmdlet 'ini kullanarak bir sanal makine ölçek kümesi oluşturabilirsiniz. 
 
@@ -27,7 +27,7 @@ Bu örnekte, yeni VM 'nizin bir görüntünün en son sürümünü kullanmasın�
 Belirli bir görüntü sürümü kullanmanın, belirli görüntü sürümü bölgede silindiği ya da kaldırıldığı için kullanılabilir durumda olmaması durumunda Otomasyon başarısız olduğunu unutmayın. Belirli bir görüntü sürümü gerekli değilse, yeni VM 'nizi oluşturmak için görüntü tanımı KIMLIĞI kullanmanızı öneririz.
 
 
-Aşağıdaki örneklerde, *myScaleSet*adlı bir ölçek kümesi, *Myvmssrg* kaynak grubunda, *Güneydoğu ABD* konumunda oluşturulur. Ölçek kümesi *Myımagedefinition* görüntüsünden, *mygallerrg* kaynak grubundaki *MyGallery* görüntü galerisinde oluşturulur. İstendiğinde, ölçek kümesindeki sanal makine örnekleri için kendi yönetici kimlik bilgilerinizi ayarlayın.
+Aşağıdaki örneklerde, *myScaleSet* adlı bir ölçek kümesi, *Myvmssrg* kaynak grubunda, *Güneydoğu ABD* konumunda oluşturulur. Ölçek kümesi *Myımagedefinition* görüntüsünden, *mygallerrg* kaynak grubundaki *MyGallery* görüntü galerisinde oluşturulur. İstendiğinde, ölçek kümesindeki sanal makine örnekleri için kendi yönetici kimlik bilgilerinizi ayarlayın.
 
 
 ## <a name="simplified-parameter-set"></a>Basitleştirilmiş parametre kümesi
@@ -173,7 +173,7 @@ New-AzVmss `
 Tüm ölçek kümesi kaynaklarının ve VM'lerin oluşturulup yapılandırılması birkaç dakika sürer.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[Azure görüntü Oluşturucu (Önizleme)](../virtual-machines/linux/image-builder-overview.md) , görüntü sürümü oluşturmayı otomatikleştirmenize yardımcı olabilir, hatta [mevcut bir görüntü sürümünden yeni bir görüntü sürümünü](../virtual-machines/linux/image-builder-gallery-update-image-version.md)güncelleştirmek ve oluşturmak için de kullanabilirsiniz. 
+[Azure görüntü Oluşturucu (Önizleme)](../virtual-machines/image-builder-overview.md) , görüntü sürümü oluşturmayı otomatikleştirmenize yardımcı olabilir, hatta [mevcut bir görüntü sürümünden yeni bir görüntü sürümünü](../virtual-machines/linux/image-builder-gallery-update-image-version.md)güncelleştirmek ve oluşturmak için de kullanabilirsiniz. 
 
 Ayrıca, şablonlar kullanarak paylaşılan görüntü Galerisi kaynağı da oluşturabilirsiniz. Çeşitli Azure hızlı başlangıç şablonları mevcuttur: 
 
@@ -181,4 +181,4 @@ Ayrıca, şablonlar kullanarak paylaşılan görüntü Galerisi kaynağı da olu
 - [Paylaşılan Görüntü Galerisinde Görüntü Tanımı Oluşturma](https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/)
 - [Paylaşılan Görüntü Galerisinde Görüntü Sürümü Oluşturma](https://azure.microsoft.com/resources/templates/101-sig-image-version-create/)
 
-Paylaşılan görüntü galerileri hakkında daha fazla bilgi için bkz. [genel bakış](shared-image-galleries.md). Sorunlarla karşılaşırsanız bkz. [paylaşılan görüntü galerilerine sorun giderme](../virtual-machines/troubleshooting-shared-images.md).
+Paylaşılan görüntü galerileri hakkında daha fazla bilgi için bkz. [genel bakış](../virtual-machines/shared-image-galleries.md). Sorunlarla karşılaşırsanız bkz. [paylaşılan görüntü galerilerine sorun giderme](../virtual-machines/troubleshooting-shared-images.md).

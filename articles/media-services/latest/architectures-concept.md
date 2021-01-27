@@ -1,6 +1,5 @@
 ---
 title: Media Services mimarileri
-titleSuffix: Azure Media Services
 description: Bu makalede Media Services mimarileri açıklanmaktadır.
 services: media-services
 documentationcenter: ''
@@ -12,12 +11,12 @@ ms.workload: ''
 ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: inhenkel
-ms.openlocfilehash: c14dbe4253696e01e99111a24319e455c1d551e9
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: ad464eb1c0b6dec694c7c40868a0f95fcfeaf6e8
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96534004"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98891497"
 ---
 # <a name="media-services-architectures"></a>Media Services mimarileri
 
@@ -29,7 +28,7 @@ Canlı akış çözümü, videoyu gerçek zamanlı olarak yakalamanızı ve mü�
 
 Bu çözüm, Azure yönetilen hizmetlerinde oluşturulmuştur: Media Services ve Content Delivery Network. Bu hizmetler, düzeltme eki uygulanan ve desteklenen yüksek kullanılabilirliğe sahip bir ortamda çalışır ve üzerinde çalıştıkları ortam yerine çözümünüze odaklanmanızı sağlar.
 
-Bkz. Azure mimari merkezindeki [canlı akış dijital medyası](https://docs.microsoft.com/azure/architecture/solution-ideas/articles/digital-media-live-stream) .
+Bkz. Azure mimari merkezindeki [canlı akış dijital medyası](/azure/architecture/solution-ideas/articles/digital-media-live-stream) .
 
 ## <a name="video-on-demand-digital-media"></a>Dijital medya ile isteğe bağlı video
 
@@ -37,13 +36,13 @@ Video özellikli herhangi bir uç nokta cihazına, mobil uygulamaya veya masaüs
 
 Bu çözüm, Azure yönetilen hizmetlerinde oluşturulmuştur: BLOB depolama, Content Delivery Network ve Azure Media Player. Bu hizmetler, düzeltme eki uygulanan ve desteklenen yüksek kullanılabilirliğe sahip bir ortamda çalışır ve üzerinde çalıştıkları ortam yerine çözümünüze odaklanmanızı sağlar.
 
-Bkz. Azure mimari merkezi 'nde [isteğe bağlı video dijital medyası](https://docs.microsoft.com/azure/architecture/solution-ideas/articles/digital-media-video) .
+Bkz. Azure mimari merkezi 'nde [isteğe bağlı video dijital medyası](/azure/architecture/solution-ideas/articles/digital-media-video) .
 
 ## <a name="gridwich-media-processing-system"></a>Gridwich medya işleme sistemi
 
 Gridwich sistemi, Azure 'da medya varlıklarını işlemeye ve sunmaya yönelik en iyi yöntemleri içerir. Gridwich sistemi medyaya özgü olsa da, ileti işleme ve olay çerçevesi herhangi bir durum bilgisiz olay işleme iş akışı için uygulanabilir.
 
-Bkz. Azure mimari merkezindeki [Gridwich medya işleme sistemi](https://docs.microsoft.com/azure/architecture/reference-architectures/media-services/gridwich-architecture) .
+Bkz. Azure mimari merkezindeki [Gridwich medya işleme sistemi](/azure/architecture/reference-architectures/media-services/gridwich-architecture) .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -1,5 +1,5 @@
 ---
-title: Azure Media Services çıktı meta verileri şeması | Microsoft Docs
+title: Azure Media Services çıktı meta verileri şeması
 description: Bu makale, Azure Media Services v3 çıkış meta veri şemasına genel bir bakış sunar.
 author: IngridAtMicrosoft
 manager: femila
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: aa6d4edc4348fa850eeb7e8d91ce0791ee4c7170
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1a27db81866760bff56c900a908162f356c01a66
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91336420"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895212"
 ---
 # <a name="output-metadata"></a>Çıkış meta verileri
 
@@ -38,7 +38,7 @@ Kodlama işi için Assetdosya girişlerinin toplanması.
 
 | Ad | Açıklama |
 | --- | --- |
-| **Ğına** |Bu Assetdosyasını üretmek için işlenen giriş/kaynak medya dosyalarının koleksiyonu.<br />Örnek: `"Sources": [{"Name": "Ignite-short_1280x720_AACAudio_3551.mp4"}]`|
+| **Kaynaklar** |Bu Assetdosyasını üretmek için işlenen giriş/kaynak medya dosyalarının koleksiyonu.<br />Örnek: `"Sources": [{"Name": "Ignite-short_1280x720_AACAudio_3551.mp4"}]`|
 | **Videoizler**|Her fiziksel Assetdosyası bu dosyada sıfır veya daha fazla video ile ilgili bir kapsayıcı biçiminde araya eklenebilir. <br />Bkz. [Videoiz](#videotracks). |
 | **Ses Izleri**|Her fiziksel Assetdosyası bu dosyada sıfır veya daha fazla ses parçası ile uygun bir kapsayıcı biçimiyle bulunabilir. Bu, tüm ses izlemelerinin koleksiyonudur.<br /> Daha fazla bilgi için bkz. [Audioiz](#audiotracks). |
 | **Ad**<br />Gerekli |Medya varlık dosya adı. <br /><br />Örnek: `"Name": "Ignite-short_1280x720_AACAudio_3551.mp4"`|
@@ -51,7 +51,7 @@ Her fiziksel Assetdosyası bu dosyada sıfır veya daha fazla video ile ilgili b
 
 | Ad | Açıklama |
 | --- | --- |
-| **Id**<br /> Gerekli |Bu video izlemenin sıfır tabanlı dizini. **Note:**  Bu **kimliğin** bir MP4 dosyasında kullanılan TrackID olması gerekmez. <br /><br />Örnek: `"Id": 1`|
+| **Numarasını**<br /> Gerekli |Bu video izlemenin sıfır tabanlı dizini. **Note:**  Bu **kimliğin** bir MP4 dosyasında kullanılan TrackID olması gerekmez. <br /><br />Örnek: `"Id": 1`|
 | **FourCC**<br />Gerekli | FFmpeg tarafından raporlanan video codec FourCC kodu.  <br /><br />Örnek: `"FourCC": "avc1"`|
 | **Profil** |H264 profili (yalnızca H264 codec için geçerlidir).  <br /><br />Örnek: `"Profile": "High"` |
 | **Düzeyde** |H264 düzeyi (yalnızca H264 codec için geçerlidir).  <br /><br />Örnek: `"Level": "3.2"`|
@@ -69,7 +69,7 @@ Her fiziksel Assetdosyası bu dosyada sıfır veya daha fazla ses parçası ile 
 
 | Ad  | Açıklama |
 | --- | --- |
-| **Id**<br />Gerekli  |Bu ses parçasının sıfır tabanlı dizini. **Note:**  Bu, bir MP4 dosyasında kullanılan TrackID olması gerekmez.  <br /><br />Örnek: `"Id": 2`|
+| **Numarasını**<br />Gerekli  |Bu ses parçasının sıfır tabanlı dizini. **Note:**  Bu, bir MP4 dosyasında kullanılan TrackID olması gerekmez.  <br /><br />Örnek: `"Id": 2`|
 | **Bileşeni**  |Ses izi codec bileşeni dizesi.  <br /><br />Örnek: `"Codec": "aac"`|
 | **Dil**|Örnek: `"Language": "eng"`|
 | **Kanallar**<br />Gerekli|Ses kanalı sayısı.  <br /><br />Örnek: `"Channels": 2`|

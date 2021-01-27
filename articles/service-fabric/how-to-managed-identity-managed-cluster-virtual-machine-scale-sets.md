@@ -4,19 +4,19 @@ description: Bu makalede, yönetilen bir kimliği Service Fabric yönetilen bir 
 ms.topic: how-to
 ms.date: 11/24/2020
 ms.custom: references_regions
-ms.openlocfilehash: 00e679b07a44b799b6ac6677201bb59eeddcd6cf
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 9edcf75451f43f2a00cd01d5ca7f385704b1ea7f
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96841568"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878435"
 ---
 # <a name="add-a-managed-identity-to-a-service-fabric-managed-cluster-node-type-preview"></a>Service Fabric yönetilen bir küme düğümü türüne yönetilen kimlik ekleme (Önizleme)
 
-Service Fabric yönetilen bir kümedeki her düğüm türü bir sanal makine ölçek kümesi tarafından desteklenir. Yönetilen kimliklerin yönetilen küme düğüm türüyle kullanılmasına izin vermek için, `vmManagedIdentity` kullanılabilecek bir kimlik listesi içeren düğüm türü tanımlarına bir özellik eklenmiştir `userAssignedIdentities` . İşlevselliği, yönetilen kimliklerin [Azure Key Vault sanal makine ölçek kümesi uzantısıyla](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-windows)yönetilen kimlik kullanma gibi yönetilmeyen kümelerde nasıl kullanılabileceğini yansıtır.
+Service Fabric yönetilen bir kümedeki her düğüm türü bir sanal makine ölçek kümesi tarafından desteklenir. Yönetilen kimliklerin yönetilen küme düğüm türüyle kullanılmasına izin vermek için, `vmManagedIdentity` kullanılabilecek bir kimlik listesi içeren düğüm türü tanımlarına bir özellik eklenmiştir `userAssignedIdentities` . İşlevselliği, yönetilen kimliklerin [Azure Key Vault sanal makine ölçek kümesi uzantısıyla](../virtual-machines/extensions/key-vault-windows.md)yönetilen kimlik kullanma gibi yönetilmeyen kümelerde nasıl kullanılabileceğini yansıtır.
 
 
-Bir düğüm türünde yönetilen kimlik kullanan Service Fabric yönetilen bir küme dağıtımına bir örnek için, [Bu şablona](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/SF-Managed-Standard-SKU-1-NT-MI)bakın. Desteklenen bölgelerin listesi için bkz. [yönetilen küme SSS](https://docs.microsoft.com/azure/service-fabric/faq-managed-cluster#what-regions-are-supported-in-the-preview).
+Bir düğüm türünde yönetilen kimlik kullanan Service Fabric yönetilen bir küme dağıtımına bir örnek için, [Bu şablona](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/SF-Managed-Standard-SKU-1-NT-MI)bakın. Desteklenen bölgelerin listesi için bkz. [yönetilen küme SSS](./faq-managed-cluster.md#what-regions-are-supported-in-the-preview).
 
 > [!NOTE]
 > Bu özellik için şu anda yalnızca Kullanıcı tarafından atanan kimlikler desteklenmektedir.
@@ -26,7 +26,7 @@ Bir düğüm türünde yönetilen kimlik kullanan Service Fabric yönetilen bir 
 Başlamadan önce:
 
 * Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
-* PowerShell kullanmayı planlıyorsanız, CLı başvuru komutlarını çalıştırmak için Azure CLı ' yi [yükleyebilirsiniz](https://docs.microsoft.com/cli/azure/install-azure-cli) .
+* PowerShell kullanmayı planlıyorsanız, CLı başvuru komutlarını çalıştırmak için Azure CLı ' yi [yükleyebilirsiniz](/cli/azure/install-azure-cli) .
 
 ## <a name="create-a-user-assigned-managed-identity"></a>Kullanıcı tarafından atanan yönetilen kimlik oluşturma 
 
@@ -57,7 +57,7 @@ Aşağıdaki değerler uygun olduğunda kullanılmalıdır:
 |Name|Karşılık gelen Service Fabric kaynak sağlayıcısı değeri|
 |----|-------------------------------------|
 |Uygulama Kimliği|74cb6831-0dbb-4be1-8206-fd4df301cdc2|
-|Nesne Kimliği|fbc587f2-66f5-4459-a027-bcd908b9d278|
+|Nesne kimliği|fbc587f2-66f5-4459-a027-bcd908b9d278|
 
 
 |Rol tanımı adı|Rol tanımı KIMLIĞI|
@@ -131,4 +131,4 @@ Bir rol ataması düzgün bir şekilde eklenemedi, dağıtımda aşağıdaki hat
 ## <a name="next-steps"></a>Sonraki Adımlar
 
 > [!div class="nextstepaction"]
-> [Service Fabric yönetilen bir kümeye uygulama dağıtma](https://docs.microsoft.com/azure/service-fabric/tutorial-managed-cluster-deploy-app) 
+> [Service Fabric yönetilen bir kümeye uygulama dağıtma](./tutorial-managed-cluster-deploy-app.md)

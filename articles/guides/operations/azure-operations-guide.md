@@ -8,12 +8,12 @@ ms.service: azure
 ms.topic: overview
 ms.workload: infrastructure
 ms.date: 08/24/2018
-ms.openlocfilehash: 7b9e95c06dd48e78e42244d27d27d063bf5f0be7
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: c0269464352fa333c6447834a56c25348ecb71a3
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92327782"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895263"
 ---
 # <a name="get-started-for-azure-it-operators"></a>Azure It işleçleri için kullanmaya başlayın
 
@@ -140,7 +140,7 @@ Azure, dünyanın dört bir yanındaki birçok bölgede genel olarak kullanılab
 
 Azure kullanmanın avantajlarından biri, uygulamalarınızı dünyanın dört bir yanındaki çeşitli veri merkezlerine dağıtabileceğiniz bir avantajdır. Seçtiğiniz bölge, uygulamanızın performansını etkileyebilir. Ağ isteklerindeki gecikmeyi azaltmak için müşterilerinizin en yakınına daha yakın bir bölge seçmek en iyisidir. Ayrıca, belirli ülkelerde/bölgelerde uygulamanızı dağıtmaya yönelik yasal gereksinimleri karşılamak için bir bölge seçebilirsiniz.
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure portalı
 
 Azure portal, Azure kaynakları ve hizmetleri oluşturmak, yönetmek ve kaldırmak için kullanılabilen Web tabanlı bir uygulamadır. Azure portal [Portal.Azure.com](https://portal.azure.com)adresinde bulunur. Bu, Azure kaynaklarını yönetmeye yönelik özelleştirilebilir bir Pano ve araç içerir. Ayrıca faturalandırma ve abonelik bilgileri de sağlar. Daha fazla bilgi için bkz. [Microsoft Azure Portal genel bakış](https://azure.microsoft.com/documentation/articles/azure-portal-overview/) ve [Azure kaynaklarını Portal üzerinden yönetme](../../azure-resource-manager/management/manage-resources-portal.md).
 
@@ -214,9 +214,7 @@ Portalda faturalandırmayı görüntülemenin yanı sıra, Azure Faturalandırma
 
 - Kullanım verilerinizi almak için Azure kullanım API 'sini kullanabilirsiniz. İlgili Azure kaynaklarını etiketleyerek faturalandırma kullanım bilgilerine ince ayar yapabilirsiniz. Örneğin, bir kaynak grubundaki kaynakların her birini bir departman adı veya proje adı ile etiketleyebilir ve ardından bu bir etiket için maliyetleri özel olarak izleyebilirsiniz.
 
-- Tüm kullanılabilir kaynakları, bu kaynakların her biri hakkındaki meta verileri ve fiyatlandırma bilgilerini listelemek için Azure fiyat kartı API 'sini kullanabilirsiniz.
-
-Daha fazla bilgi için bkz. [Microsoft Azure kaynak kullanımınızla ilgili içgörüler edinin](../../cost-management-billing/manage/usage-rate-card-overview.md).
+- Tüm kullanılabilir kaynakları ve meta verileri birlikte listelemek için [Azure tüketim API 'sine genel bakış](../../cost-management-billing/manage/consumption-api-overview.md) ' ı kullanabilirsiniz. Fiyatlar hakkında daha fazla bilgi için bkz. [Azure perakende fiyatlara genel bakış](/rest/api/cost-management/retail-prices/azure-retail-prices).
 
 ### <a name="forecast-cost-with-the-pricing-calculator"></a>Fiyatlandırma hesaplayıcısı ile tahmin maliyeti
 
@@ -292,7 +290,7 @@ Belirli bir kapsamdaki Kullanıcı hesaplarına işletimsel erişim izni verebil
 
 Erişim vermek için kullanıcıya veya kullanıcı grubuna bir rol atarsınız. Önceden tanımlanmış birçok rol vardır. Kendi özel rollerinizi de tanımlayabilirsiniz.
 
-[Azure 'da birkaç örnek yerleşik rol](../../role-based-access-control/built-in-roles.md)aşağıda verilmiştir:
+[Azure 'da yerleşik roller](../../role-based-access-control/built-in-roles.md)için birkaç örnek aşağıda verilmiştir:
 
 - **Sahip**: Bu role sahip bir Kullanıcı, erişim dahil her şeyi yönetebilir.
 
@@ -350,7 +348,7 @@ Ağ güvenlik grubu (NSG) kaynağını kullanarak, genel IP adresi üzerinden sa
 
 Son olarak, herhangi bir bilgisayar sisteminin yönetiminde olduğu gibi, güvenlik kimlik bilgilerini ve yazılım güvenlik duvarlarını kullanarak işletim sisteminde bir Azure sanal makinesi için güvenlik sağlamanız gerekir.
 
-## <a name="azure-storage"></a>Azure Depolama
+## <a name="azure-storage"></a>Azure Storage
 
 Azure depolama, dayanıklı, ölçeklenebilir ve yedekli depolama sağlayan, Microsoft tarafından yönetilen bir hizmettir. Herhangi bir kaynak dağıtım yöntemi kullanarak bir Azure Depolama hesabını kaynak olarak herhangi bir kaynak grubuna ekleyebilirsiniz. Azure dört depolama türü içerir: BLOB depolama, dosya depolama, tablo depolama ve kuyruk depolama. Bir depolama hesabı dağıtıldığında, genel amaçlı ve BLOB depolama olmak üzere iki hesap türü vardır. Genel amaçlı bir depolama hesabı, dört depolama türüne erişmenizi sağlar. BLOB depolama hesapları, genel amaçlı hesaplara benzer, ancak sık ve soğuk erişim katmanları içeren özel blob 'lar içerir. BLOB depolama hakkında daha fazla bilgi için bkz. [Azure Blob depolama](../../storage/blobs/storage-blob-storage-tiers.md).
 
@@ -368,11 +366,11 @@ Her depolama türünün farklı bir kullanım durumu vardır.
 
 #### <a name="blob-storage"></a>Blob depolama
 
-Sözcük *blobu* , *ikili büyük nesnenin*kısaltması olur. Blob 'lar, bilgisayarınızda depoladığınız gibi yapılandırılmamış dosyalardır. Blob Storage belge, medya dosyası veya uygulama yükleyici gibi her tür metin veya ikili veri depolayabilir. Blob Storage aynı zamanda nesne depolama olarak adlandırılır. Azure Blob depolama, Azure sanal makineler veri disklerini de barındırır.
+Sözcük *blobu* , *ikili büyük nesnenin* kısaltması olur. Blob 'lar, bilgisayarınızda depoladığınız gibi yapılandırılmamış dosyalardır. Blob Storage belge, medya dosyası veya uygulama yükleyici gibi her tür metin veya ikili veri depolayabilir. Blob Storage aynı zamanda nesne depolama olarak adlandırılır. Azure Blob depolama, Azure sanal makineler veri disklerini de barındırır.
 
 Azure Depolama üç blob türünü destekler:
 
-- **Blok Blobları** , normal dosyaları 195 GB 'a kadar (4 MB × 50.000 blok) tutmak için kullanılır. Blok bloblarının birincil kullanım örneği, medya dosyaları veya web siteleri için görüntü dosyaları gibi baştan sona okunan dosyaların depolanmasıdır. Bunlar blok Blobları olarak adlandırılır çünkü 64 MB 'tan büyük dosyalar küçük bloklar olarak karşıya yüklenmelidir. Bu bloklar daha sonra son bloba birleştirilir (veya kaydedilir).
+- **Blok Blobları** , normal dosyaları 195 GB 'a kadar (4 MB × 50.000 blok) tutmak için kullanılır. Blok bloblarının birincil kullanım örneği, medya dosyaları veya web siteleri için görüntü dosyaları gibi baştan sona okunan dosyaların depolanmasıdır. Bunlar blok Blobları olarak adlandırılır çünkü 64 MB 'tan büyük dosyalar küçük bloklar olarak karşıya yüklenmelidir. Daha sonra bu bloklar son blobda birleştirilir (veya işlenir).
 
 - **Sayfa Blobları** , boyutu 1 TB 'ye kadar olan rastgele erişim dosyalarını tutmak için kullanılır. Sayfa Blobları, Azure 'da IaaS işlem hizmeti olan Azure sanal makineleri için dayanıklı diskler sağlayan VHD 'ler için genellikle yedekleme depolama alanı olarak kullanılır. 512 baytlık sayfalara rastgele okuma/yazma erişimi sağladıklarından sayfa blobu olarak adlandırılır.
 
@@ -388,7 +386,7 @@ Bir dosya depolama payı standart bir SMB dosya paylaşımında olduğundan, Azu
 
 Daha fazla bilgi için bkz. [Windows 'Da Azure dosya depolama ile çalışmaya başlama](../../storage/files/storage-how-to-use-files-windows.md) veya [Linux ile Azure dosya depolama 'yı kullanma](../../storage/files/storage-how-to-use-files-linux.md).
 
-#### <a name="table-storage"></a>Table Storage
+#### <a name="table-storage"></a>Tablo depolama
 
 Azure Table Storage, bulutta yapılandırılmış NoSQL verileri depolayan bir hizmettir. Tablo depolama, şema daha az bir tasarıma sahip bir anahtar/öznitelik deposudur. Tablo Depolaması şemadan daha az olduğundan, uygulamanızın ihtiyaçları geliştikçe verilerinizi kolayca uyarlayabilirsiniz. Her türlü uygulama için verilere erişim hızlı ve uygun maliyetlidir. Table Storage, benzer hacimdeki veriler için geleneksel SQL’e oranla çok daha düşük maliyetlidir.
 
@@ -438,7 +436,7 @@ Azure depolama hesaplarına, Visual Studio Cloud Explorer gibi birçok farklı d
 
 #### <a name="storage-api"></a>Depolama API 'SI
 
-Depolama kaynaklarına, HTTP/HTTPS istekleri yapan herhangi bir dil tarafından erişilebilir. Ayrıca, Azure Storage birkaç popüler dilde programlama kitaplıkları sunar. Bu kitaplıklar zaman uyumlu ve zaman uyumsuz çağrı, işlemlerin toplu işi, özel durum yönetimi ve otomatik yeniden denemeler gibi ayrıntıları işleyerek Azure depolama ile çalışmayı basitleştirir. Daha fazla bilgi için bkz. [Azure Storage service REST API başvurusu](/rest/api/storageservices/Azure-Storage-Services-REST-API-Reference).
+Depolama kaynaklarına, HTTP/HTTPS istekleri yapan herhangi bir dil tarafından erişilebilir. Ayrıca, Azure Storage birkaç popüler dilde programlama kitaplıkları sunar. Bu kitaplıklar, zaman uyumlu ve zaman uyumsuz çağrı, işlemlerin toplu işi, özel durum yönetimi ve otomatik yeniden denemeler gibi ayrıntıları işleyerek Azure depolama ile çalışmayı basitleştirir. Daha fazla bilgi için bkz. [Azure Storage service REST API başvurusu](/rest/api/storageservices/Azure-Storage-Services-REST-API-Reference).
 
 #### <a name="storage-access-keys"></a>Depolama erişim tuşları
 

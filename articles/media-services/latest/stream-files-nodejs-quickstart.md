@@ -1,5 +1,5 @@
 ---
-title: Azure Media Services ile video dosyaları akışı Node.js | Microsoft Docs
+title: Azure Media Services ile video dosyaları akışı Node.js
 description: Bu öğreticinin adımlarını izleyerek yeni bir Azure Media Services hesabı oluşturun, bir dosya kodlayın ve Azure Media Player için akışını yapın.
 services: media-services
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.custom: mvc, devx-track-js
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 38207ac47d2e58c689f1933a6ade6d5c86cd44ad
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 711db5135345fd9b69da9aaea5bc4dbb929d27c9
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91268681"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895144"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---nodejs"></a>Öğretici: URL 'yi temel alarak uzak bir dosyayı kodlayın ve videoyu akışa Node.js
 
@@ -55,11 +55,11 @@ Projeyi indirdiğiniz [index.js](https://github.com/Azure-Samples/media-services
 Örnek aşağıdaki eylemleri gerçekleştirir:
 
 1. Bir **dönüşüm** oluşturur (ilk olarak, belirtilen dönüştürmenin var olup olmadığını denetler). 
-2. Kodlama **işinin**çıkışı olarak kullanılan bir çıktı **varlığı** oluşturur.
-3. Bir HTTPS URL 'sini temel alan, **işin**girişini oluşturur.
+2. Kodlama **işinin** çıkışı olarak kullanılan bir çıktı **varlığı** oluşturur.
+3. Bir HTTPS URL 'sini temel alan, **işin** girişini oluşturur.
 4. Daha önce oluşturulmuş giriş ve çıktıyı kullanarak kodlama **işini** gönderir.
 5. İşin durumunu denetler.
-6. Bir **akış Bulucu**oluşturur.
+6. Bir **akış Bulucu** oluşturur.
 7. Akış URL'leri oluşturur.
 
 ## <a name="run-the-sample-app"></a>Örnek uygulamayı çalıştırma

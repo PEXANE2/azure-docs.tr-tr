@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2499a89907eb63f01adbc80a6d206911c09c1259
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 982c33c5c55e32ce48131a4b2f0911e4f23dd408
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91265961"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98877297"
 ---
 # <a name="conditional-access-block-legacy-authentication"></a>Koşullu erişim: eski kimlik doğrulamasını engelle
 
@@ -30,18 +30,18 @@ Aşağıdaki adımlar, eski kimlik doğrulama isteklerini engellemek için bir k
 1. **Azure Active Directory**  >  **güvenlik**  >  **koşullu erişimi**'ne gidin.
 1. **Yeni ilke**' yi seçin.
 1. İlkenize bir ad verin. Kuruluşların ilkelerinin adları için anlamlı bir standart oluşturmasını öneririz.
-1. **Atamalar**altında **Kullanıcılar ve gruplar** ' ı seçin.
+1. **Atamalar** altında **Kullanıcılar ve gruplar** ' ı seçin.
    1. **Ekle**' nin altında **tüm kullanıcılar**' ı seçin.
    1. **Hariç tut**' un altında, **Kullanıcılar ve gruplar** ' ı seçin ve eski kimlik doğrulamasını kullanma yeteneğinin korunması gereken tüm hesapları seçin. Kendinizi kilitlenmesini engellemek için en az bir hesabı dışlayın. Herhangi bir hesabı dışlayamazsınız, bu ilkeyi oluşturabileceksiniz.
    1. **Bitti** seçeneğini belirleyin.
-1. **Bulut uygulamaları veya eylemler**altında **tüm bulut uygulamaları**' nı seçin.
+1. **Bulut uygulamaları veya eylemler** altında **tüm bulut uygulamaları**' nı seçin.
    1. **Bitti** seçeneğini belirleyin.
-1. **Conditions**  >  **İstemci uygulamaları**Koşulları ' nın altında **Yapılandır** ' ı **Evet**olarak ayarlayın.
-   1. Yalnızca **Exchange ActiveSync istemcileri** ve **diğer istemciler**için kutuyu işaretleyin.
+1.   >  **İstemci uygulamaları** Koşulları ' nın altında **Yapılandır** ' ı **Evet** olarak ayarlayın.
+   1. Yalnızca **Exchange ActiveSync istemcileri** ve **diğer istemciler** için kutuyu işaretleyin.
    1. **Bitti** seçeneğini belirleyin.
 1. **Erişim denetimleri**  >  **izni**' nın altında, **erişimi engelle**' yi seçin.
    1. **Seç**’i seçin.
-1. Ayarlarınızı onaylayın ve **ilkeyi** **yalnızca rapor**olarak ayarlayın.
+1. Ayarlarınızı onaylayın ve **ilkeyi** **yalnızca rapor** olarak ayarlayın.
 1. İlkenizi etkinleştirmek için oluşturmak **için Oluştur ' u seçin.**
 
 ## <a name="next-steps"></a>Sonraki adımlar
@@ -52,4 +52,4 @@ Aşağıdaki adımlar, eski kimlik doğrulama isteklerini engellemek için bir k
 
 [Koşullu erişim What If aracını kullanarak oturum açma davranışının benzetimini yapma](troubleshoot-conditional-access-what-if.md)
 
-[Microsoft 365 kullanarak e-posta göndermek için çok işlevli bir cihaz veya uygulamayı ayarlama](/exchange/mail-flow-best-practices/how-to-set-up-a-multifunction-device-or-application-to-send-email-using-office-3)
+[Microsoft 365 kullanarak e-posta göndermek için çok işlevli bir cihaz veya uygulamayı ayarlama](/exchange/mail-flow-best-practices/how-to-set-up-a-multifunction-device-or-application-to-send-email-using-microsoft-365-or-office-365)

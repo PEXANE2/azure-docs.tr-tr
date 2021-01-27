@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 05/23/2019
-ms.openlocfilehash: d5476bf1bfe2e222e115146c13f46e776d4bb497
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 23847c164ba59a8c46c2fdd5fb954b76ea251148
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97657201"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98877688"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-postgresql"></a>PostgreSQL için Azure veritabanı 'nda bağlantı mimarisi
 Bu makalede PostgreSQL için Azure veritabanı bağlantı mimarisi ve trafiğin Azure 'daki ve dışındaki istemcilerden PostgreSQL için Azure veritabanı örneğine nasıl yönlendirildiği açıklanmaktadır.
@@ -28,7 +28,7 @@ PostgreSQL için Azure veritabanı 'na bağlantı, gelen bağlantıları kümele
 
 Ağ Geçidi Hizmeti, bir IP adresinin arkasında yer alan durum bilgisiz işlem düğümleri grubunda barındırılır. Bu, istemcinizin ilk kez PostgreSQL sunucusu için Azure veritabanına bağlanmaya çalışırken ulaşacak. 
 
-Devam eden hizmet bakımının bir parçası olarak, en güvenli ve yüksek performanslı deneyim sağlamamız için ağ geçitlerini barındıran işlem donanımını düzenli olarak yenileyeceğiz. Ağ Geçidi donanımı yenilendiğinde, önce işlem düğümlerinin yeni bir halkası oluşturulur. Bu yeni halka, tüm yeni oluşturulan PostgreSQL için Azure veritabanı sunucuları için trafiğe hizmet verir ve trafiği ayırt etmek için aynı bölgedeki eski ağ geçidi halkalarından farklı bir IP adresine sahip olur. Yeni halka tam çalışır olduktan sonra, mevcut sunuculara hizmet veren eski ağ geçidi donanımı kullanımdan kaldırma için planlanmaktadır. Bir ağ geçidi donanımını kullanımdan kaldırmadan önce, sunucularını çalıştıran ve eski ağ geçidi halkalarına bağlanan müşteriler, kullanımdan kaldırmadan önce üç ay içinde ve Azure portal üzerinden gönderilir. Ağ geçitlerinin yetkisini alma, şu durumlarda sunucularınız için bağlantıyı etkileyebilir 
+Devam eden hizmet bakımının bir parçası olarak, en güvenli ve performanslı bağlantı deneyimini sağlamamız için ağ geçitlerini barındıran işlem donanımını düzenli olarak yenileyeceğiz. Ağ Geçidi donanımı yenilendiğinde, önce işlem düğümlerinin yeni bir halkası oluşturulur. Bu yeni halka, tüm yeni oluşturulan PostgreSQL için Azure veritabanı sunucuları için trafiğe hizmet verir ve trafiği ayırt etmek için aynı bölgedeki eski ağ geçidi halkalarından farklı bir IP adresine sahip olur. Eski ağ geçidi donanımı mevcut sunuculara hizmet vermeye devam eder, ancak gelecekte kullanımdan kaldırılması planlanmaktadır. Bir ağ geçidi donanımını kullanımdan kaldırmadan önce, sunucularını çalıştıran ve eski ağ geçidi halkalarına bağlanan müşteriler, kullanımdan kaldırmadan önce üç ay içinde ve Azure portal üzerinden gönderilir. Ağ geçitlerinin yetkisini alma, şu durumlarda sunucularınız için bağlantıyı etkileyebilir 
 
 * Ağ geçidi IP adreslerini uygulamanızın bağlantı dizesinde sabit olarak kodlayın. **Önerilmez**. Uygulamanızın bağlantı dizesinde. postgres.database.azure.com biçiminde sunucunuzun tam etki alanı adını (FQDN) kullanmanız gerekir <servername> . 
 * Giden trafiğin yeni ağ geçidi halkalarımıza erişebilmesini sağlamak için istemci tarafı güvenlik duvarında daha yeni ağ geçidi IP adreslerini güncelleştirmeyin.
@@ -46,7 +46,7 @@ Aşağıdaki tabloda, tüm veri bölgeleri için PostgreSQL için Azure veritaba
 | Avustralya Central2     | 20.36.113.0  | | |
 | Doğu Avustralya | 13.75.149.87, 40.79.161.1     |  | |
 | Avustralya Güneydoğu |191.239.192.109, 13.73.109.251   |  | |
-| Brezilya Güney |191.233.201.8, 191.233.200.16    |  | 104.41.11.5|
+| Güney Brezilya |191.233.201.8, 191.233.200.16    |  | 104.41.11.5|
 | Orta Kanada |40.85.224.249  | | |
 | Doğu Kanada | 40.86.226.166    | | |
 | Central US | 23.99.160.139, 13.67.215.62, 52.182.136.37, 52.182.136.38 | | |
