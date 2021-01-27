@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: cd272e0c6ce76ff69e3e58417845836fe2f55b39
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 522ba95a5d6d97a8fde242274b1b0af969af20a5
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98745205"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881509"
 ---
 # <a name="retrieve-information-about-your-azure-cloud-service-extended-support-deployments"></a>Azure Cloud Service (genişletilmiş destek) dağıtımlarınızla ilgili bilgileri alma
 
@@ -99,4 +99,5 @@ Statuses                    : {{
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Cloud Services (genişletilmiş destek) hakkında daha fazla bilgi için bkz. [azure Cloud Services (genişletilmiş destek) genel bakış](overview.md).
+- Azure Cloud Services (genişletilmiş destek) hakkında daha fazla bilgi için bkz. [azure Cloud Services (genişletilmiş destek) genel bakış](overview.md).
+- [Cloud Services (genişletilmiş destek) örnekleri deposunu](https://github.com/Azure-Samples/cloud-services-extended-support) ziyaret edin

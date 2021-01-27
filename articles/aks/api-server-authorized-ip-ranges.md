@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) ' de API sunucusuna erişim için bi
 services: container-service
 ms.topic: article
 ms.date: 09/21/2020
-ms.openlocfilehash: 9828682fa71d023356b174d528c2137ed29f368d
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: ca6e1c06b3ad90ef12c9bf375bae50d46c5f7c37
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94682511"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98890653"
 ---
 # <a name="secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içindeki yetkili IP adresi aralıklarını kullanarak API sunucusuna güvenli erişim
 
@@ -69,7 +69,7 @@ az aks create \
 
 ### <a name="specify-the-outbound-ips-for-the-standard-sku-load-balancer"></a>Standart SKU yük dengeleyici için giden IP 'Leri belirtin
 
-Bir AKS kümesi oluştururken, küme için giden IP adreslerini veya öneklerini belirtirseniz, bu adreslere veya öneklere de izin verilir. Örnek:
+Bir AKS kümesi oluştururken, küme için giden IP adreslerini veya öneklerini belirtirseniz, bu adreslere veya öneklere de izin verilir. Örneğin:
 
 ```azurecli-interactive
 az aks create \
@@ -121,7 +121,7 @@ Yalnızca standart SKU yük dengeleyicisinin genel IP 'sini belirtmek için para
 
 ## <a name="disable-authorized-ip-ranges"></a>Yetkili IP aralıklarını devre dışı bırak
 
-Yetkili IP aralıklarını devre dışı bırakmak için [az aks Update][az-aks-update] kullanın ve API sunucusu yetkilendirilmiş IP aralıklarını devre dışı bırakmak için boş bir Aralık belirtin. Örnek:
+Yetkili IP aralıklarını devre dışı bırakmak için [az aks Update][az-aks-update] kullanın ve API sunucusu yetkilendirilmiş IP aralıklarını devre dışı bırakmak için boş bir Aralık belirtin. Örneğin:
 
 ```azurecli-interactive
 az aks update \
@@ -130,11 +130,28 @@ az aks update \
     --api-server-authorized-ip-ranges ""
 ```
 
+## <a name="find-existing-authorized-ip-ranges"></a>Var olan yetkili IP aralıklarını bul
+
+Yetkilendirilmiş IP aralıklarını bulmak için [az aks Show][az-aks-show] kullanın ve kümenin adını ve kaynak grubunu belirtin. Örneğin:
+
+```azurecli-interactive
+az aks show \
+    --resource-group myResourceGroup \
+    --name myAKSCluster \
+    --query apiServerAccessProfile.authorizedIpRanges'
+```
+
+## <a name="update-disable-and-find-authorized-ip-ranges-using-azure-portal"></a>Azure portal kullanarak yetkilendirilmiş IP aralıklarını güncelleştirme, devre dışı bırakma ve bulma
+
+Yetkili IP aralıklarını eklemek, güncelleştirmek, bulmak ve devre dışı bırakmak için yukarıdaki işlemler Azure portal de gerçekleştirilebilir. Erişmek için, küme kaynağınızın menü dikey penceresinde **Ayarlar** ' ın altında bulunan **ağ** ' a gidin.
+
+:::image type="content" source="media/api-server-authorized-ip-ranges/ip-ranges-specified.PNG" alt-text="Bir tarayıcıda, küme kaynağının ağ ayarları Azure portal sayfasını gösterir. ' Belirtilen IP aralığını ayarla ' ve ' belirtilen IP aralıkları ' seçenekleri vurgulanır.":::
+
 ## <a name="how-to-find-my-ip-to-include-in---api-server-authorized-ip-ranges"></a>IP 'umu dahil etmek için nasıl bulunur `--api-server-authorized-ip-ranges` ?
 
 API sunucusuna erişmek için, dağıtım makinelerinizi, araçları veya Otomasyon IP adreslerini onaylanan IP aralıklarının AKS kümesi listesine eklemeniz gerekir. 
 
-Diğer bir seçenek de, güvenlik duvarının sanal ağındaki ayrı bir alt ağ içinde gerekli araçları içeren bir sıçrama kutusu yapılandırmaktır. Bu, ortamınızın ilgili ağla bir güvenlik duvarı olduğunu varsayar ve güvenlik duvarını yetkilendirme aralıklarına eklemiş olursunuz. Benzer şekilde, AKS alt ağından bir güvenlik duvarı alt ağına zorla atamak istiyorsanız, küme alt ağındaki sıçrama kutusunun çok iyi olmasını sağlayabilirsiniz.
+Diğer bir seçenek de, güvenlik duvarının sanal ağındaki ayrı bir alt ağ içinde gerekli araçları içeren bir sıçrama kutusu yapılandırmaktır. Bu, ortamınızın ilgili ağla bir güvenlik duvarı olduğunu varsayar ve güvenlik duvarını yetkilendirme aralıklarına eklemiş olursunuz. Benzer şekilde, AKS alt ağından bir güvenlik duvarı alt ağına Zorlamalı tünel varsa, küme alt ağındaki sıçrama kutusunun çok iyi olmasını sağlayabilirsiniz.
 
 Aşağıdaki komutla onaylanan aralıklara başka bir IP adresi ekleyin.
 
@@ -170,6 +187,7 @@ Daha fazla bilgi için bkz. [aks 'teki uygulamalar ve kümeler Için güvenlik k
 <!-- LINKS - internal -->
 [az-aks-update]: /cli/azure/ext/aks-preview/aks#ext-aks-preview-az-aks-update
 [az-aks-create]: /cli/azure/aks#az-aks-create
+[az-aks-show]: /cli/azure/aks#az_aks_show
 [az-network-public-ip-list]: /cli/azure/network/public-ip#az-network-public-ip-list
 [concepts-clusters-workloads]: concepts-clusters-workloads.md
 [concepts-security]: concepts-security.md

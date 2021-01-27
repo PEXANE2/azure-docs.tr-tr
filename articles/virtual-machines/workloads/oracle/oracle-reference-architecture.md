@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 12/13/2019
 ms.author: kegorman
 ms.reviewer: cynthn
-ms.openlocfilehash: bbaf34c977546891c6ac05fbd4b5feb15f333e04
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 27a1c57c234d3450cee606c4ffb7484f7b63e732
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737821"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98882306"
 ---
 # <a name="reference-architectures-for-oracle-database-enterprise-edition-on-azure"></a>Azure 'da Oracle Database Enterprise Edition için başvuru mimarileri
 
@@ -216,7 +216,7 @@ Sanal makine işletim sisteminizin düzeltme eki uygulama, [Azure otomasyonu gü
 - Bölge içi yüksek kullanılabilirlik elde etmek için kullanılabilirlik alanlarını kullanın.
 - Oracle veritabanınız için Ultra diskler (kullanılabilir olduğunda) veya Premium diskler kullanmayı düşünün.
 - Oracle Data Guard kullanarak başka bir Azure bölgesinde bir bekleme Oracle veritabanı ayarlamayı düşünün.
-- Uygulamanız ve veritabanı katmanınız arasındaki gecikmeyi azaltmak için [yakınlık yerleştirme gruplarını](../../../virtual-machines/linux/co-location.md#proximity-placement-groups) kullanmayı düşünün.
+- Uygulamanız ve veritabanı katmanınız arasındaki gecikmeyi azaltmak için [yakınlık yerleştirme gruplarını](../../co-location.md#proximity-placement-groups) kullanmayı düşünün.
 - Yönetim, izleme ve günlüğe kaydetme için [Oracle Enterprise Manager](https://docs.oracle.com/en/enterprise-manager/) 'ı ayarlayın.
 - Veritabanınız için kolaylaştırılmış depolama yönetimi için Oracle otomatik depolama yönetimi (ASM) kullanmayı düşünün.
 - Herhangi bir kesinti olmadan veritabanınıza düzeltme eki uygulamayı ve güncelleştirme yönetimini yönetmek için [Azure Pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines) kullanın.

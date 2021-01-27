@@ -3,12 +3,12 @@ title: Azure Service Bus mesajlaşmasına genel bakış | Microsoft Belgeleri
 description: Bu makalede, tam olarak yönetilen bir kurumsal tümleştirme ileti Aracısı olan Azure Service Bus üst düzey bir genel bakış sunulmaktadır.
 ms.topic: overview
 ms.date: 11/20/2020
-ms.openlocfilehash: d9103557eb7b32f376ba6590bbca5f557bf32764
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 7453e8dd300ad754fb58489f059670af209314ab
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98632876"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881610"
 ---
 # <a name="what-is-azure-service-bus"></a>Azure Service Bus nedir?
 Microsoft Azure Service Bus, ileti kuyrukları ve yayımlama-abone ol konuları ile tam olarak yönetilen bir kurumsal ileti aracısıdır. Service Bus, uygulamaları ve hizmetleri birbirinden ayırmak için kullanılır ve aşağıdaki avantajları sağlar:
@@ -32,7 +32,7 @@ Yaygın olarak kullanılan bazı mesajlaşma senaryoları:
     2. İşleme sonuçlarını bir veya daha fazla farklı kuyruğa gönderin.
     3. Giriş iletisini özgün kuyruktan taşıyın. 
     
-    Sonuçlar, yalnızca bir kez işleme semantiklerine izin veren, başarıyla giriş iletisinin başarıyla kapatılması dahil olmak üzere, yalnızca başarılı olduğunda aşağı akış tüketicilerine görünür hale gelir. Bu işlem modeli, daha fazla çözüm bağlamındaki [telafi işlemleri](https://docs.microsoft.com/azure/architecture/patterns/compensating-transaction) deseninin sağlam bir temelidir. 
+    Sonuçlar, yalnızca bir kez işleme semantiklerine izin veren, başarıyla giriş iletisinin başarıyla kapatılması dahil olmak üzere, yalnızca başarılı olduğunda aşağı akış tüketicilerine görünür hale gelir. Bu işlem modeli, daha fazla çözüm bağlamındaki [telafi işlemleri](/azure/architecture/patterns/compensating-transaction) deseninin sağlam bir temelidir. 
 * *İleti oturumları*. Katı ileti sıralaması veya ileti erteleme gerektiren iş akışlarının ve çoklu aktarımların yüksek ölçekli bir şekilde koordine edilmesini uygulayın.
 
 Apache ActiveMQ gibi diğer ileti aracıları hakkında bilginiz varsa Service Bus kavramlar, bildiğiniz işe benzer. Service Bus bir hizmet olarak platform (PaaS) teklifi olduğundan, önemli bir farklılık aşağıdaki eylemler hakkında endişelenmenize gerek kalmaz. Azure, sizin için bu ilgili bu nesnelerin kullanımını üstlenir. 

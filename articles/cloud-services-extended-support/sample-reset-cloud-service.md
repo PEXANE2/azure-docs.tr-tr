@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: a2c10e7915b0d293d3193c710885ded26a791f2c
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 40b44fd277eac14a5bf2c15f58fccfd9d5b156c4
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98745204"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881493"
 ---
 # <a name="reset-an-azure-cloud-service-extended-support"></a>Azure bulut hizmetini sıfırlama (genişletilmiş destek) 
 Bu örnekler, var olan bir Azure bulut hizmeti (genişletilmiş destek) dağıtımını sıfırlamanın çeşitli yollarını kapsar.
@@ -42,4 +42,5 @@ Reset-AzCloudService -ResourceGroupName "ContosOrg" -CloudServiceName "ContosoCS
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Cloud Services (genişletilmiş destek) hakkında daha fazla bilgi için bkz. [azure Cloud Services (genişletilmiş destek) genel bakış](overview.md).
+- Azure Cloud Services (genişletilmiş destek) hakkında daha fazla bilgi için bkz. [azure Cloud Services (genişletilmiş destek) genel bakış](overview.md).
+- [Cloud Services (genişletilmiş destek) örnekleri deposunu](https://github.com/Azure-Samples/cloud-services-extended-support) ziyaret edin

@@ -4,12 +4,12 @@ description: Azure Izleyici için Java aracısında sorun gidermeyi öğrenin Ap
 ms.topic: conceptual
 ms.date: 11/30/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 788eea17cabbea46578d0f59919ae95a59f2223f
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 90e0ceb6ba9d696eb446d607ed2f2f134733618e
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98625356"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881193"
 ---
 # <a name="troubleshooting-guide-azure-monitor-application-insights-for-java"></a>Sorun giderme kılavuzu: Java için Azure Izleyici Application Insights
 
@@ -49,36 +49,66 @@ Daha fazla ayrıntı için [Otomatik toplanan günlük yapılandırmasına](./ja
 
 ## <a name="import-ssl-certificates"></a>SSL sertifikalarını içeri aktarma
 
-Varsayılan Java keystore kullanıyorsanız, tüm CA kök sertifikalarına zaten sahip olur. Daha fazla SSL sertifikası içeri aktarmanız gerekmez.
+Bu bölüm, Java Aracısı kullanılırken SSL sertifikalarıyla ilgili özel durumları gidermenize ve muhtemelen düzeltmenize yardımcı olur.
 
-Özel bir Java keystore kullanıyorsanız, Application Insights uç nokta SSL sertifikalarını buna aktarmanız gerekebilir.
+Bu sorunu gidermek için iki farklı yol vardır.
 
-### <a name="key-terminology"></a>Anahtar terminolojisi
-*Anahtar deposu* , sertifikalar, ortak anahtarlar ve özel anahtarların bir deposudur. Genellikle, Java Development Kit dağıtımları bunları yönetmek için çalıştırılabilir dosya sahiptir: `keytool` .
+### <a name="if-using-a-default-java-keystore"></a>Varsayılan bir Java keystore kullanılıyorsa:
 
-Aşağıdaki örnek, bir SSL sertifikasını keystore 'a aktarmaya yönelik basit bir komuttur:
+Genellikle varsayılan Java anahtar deposu, tüm CA kök sertifikalarına zaten sahip olur. Ancak, alma uç noktası sertifikası farklı bir kök sertifika tarafından imzalanabilir gibi bazı özel durumlar da olabilir. Bu nedenle, bu sorunu çözmek için aşağıdaki üç adımı öneririz:
 
-`keytool -importcert -alias your_ssl_certificate -file "your downloaded SSL certificate name".cer -keystore "Your KeyStore name" -storepass "Your keystore password" -noprompt`
+1.  Application Insights uç noktasını imzalamak için kullanılan kök sertifikanın varsayılan keystore 'da zaten mevcut olup olmadığını denetleyin. Güvenilen CA sertifikaları, varsayılan olarak içinde depolanır `$JAVA_HOME/jre/lib/security/cacerts` . Bir Java anahtar deposu 'da sertifikaları listelemek için aşağıdaki komutu kullanın:
+    > `keytool -list -v -keystore $PATH_TO_KEYSTORE_FILE`
+ 
+    Çıktıyı bunun gibi geçici bir dosyaya yeniden yönlendirebilirsiniz (daha sonra aramak daha kolay olacaktır)
+    > `keytool -list -v -keystore $JAVA_HOME/jre/lib/security/cacerts > temp.txt`
 
-### <a name="steps-to-download-and-add-an-ssl-certificate"></a>SSL sertifikası indirme ve ekleme adımları
+2. Sertifika listesini aldıktan sonra, Application Insights uç noktasını imzalamak için kullanılan kök sertifikayı indirmek için aşağıdaki [adımları](#steps-to-download-ssl-certificate) izleyin.
+
+    Sertifikayı indirdikten sonra, aşağıdaki komutu kullanarak sertifikada bir SHA-1 karması oluşturun:
+    > `keytool -printcert -v -file "your_downloaded_root_certificate.cer"`
+ 
+    SHA-1 değerini kopyalayın ve daha önce kaydettiğiniz "temp.txt" dosyasında bu değerin mevcut olup olmadığını denetleyin.  Temp dosyasında SHA-1 değerini bulamıyorsanız, varsayılan Java keystore 'da indirilen kök sertifikanın eksik olduğunu gösterir.
+
+
+3. Aşağıdaki komutu kullanarak kök sertifikayı varsayılan Java anahtar deposu 'a aktarın:
+    >   `keytool -import -file "the cert file" -alias "some meaningful name" -keystore "path to cacerts file"`
+ 
+    Bu durumda,
+ 
+    > `keytool -import -file "your downloaded root cert file" -alias "some meaningful name" $JAVA_HOME/jre/lib/security/cacerts`
+
+
+### <a name="if-using-a-custom-java-keystore"></a>Özel bir Java keystore kullanılıyorsa:
+
+Özel bir Java keystore kullanıyorsanız, Application Insights uç nokta (lar) ı kök SSL sertifikasını buna aktarmanız gerekebilir.
+Bu sorunu çözmek için aşağıdaki iki adımı öneririz:
+1. Application Insights uç noktasından kök sertifikayı indirmek için bu [adımları](#steps-to-download-ssl-certificate) izleyin.
+2. Kök SSL sertifikasını özel Java keystore 'a aktarmak için aşağıdaki komutu kullanın:
+    > `keytool -importcert -alias your_ssl_certificate -file "your downloaded SSL certificate name.cer" -keystore "Your KeyStore name" -storepass "Your keystore password" -noprompt`
+
+### <a name="steps-to-download-ssl-certificate"></a>SSL sertifikası indirme adımları
 
 1.  En sevdiğiniz tarayıcıyı açın ve `IngestionEndpoint` uygulamanızı işaretlemek için kullanılan bağlantı dizesinde bulunan URL 'ye gidin.
 
-    :::image type="content" source="media/java-ipa/troubleshooting/ingestion-endpoint-url.png" alt-text="Bir Application Insights bağlantı dizesi gösteren ekran görüntüsü.":::
+    :::image type="content" source="media/java-ipa/troubleshooting/ingestion-endpoint-snippet.png" alt-text="Bir Application Insights bağlantı dizesi gösteren ekran görüntüsü." lightbox="media/java-ipa/troubleshooting/ingestion-endpoint-snippet.png":::
 
 2.  Tarayıcıda **site bilgilerini görüntüle** (kilit) simgesini seçin ve ardından **sertifika** seçeneğini belirleyin.
 
-    :::image type="content" source="media/java-ipa/troubleshooting/certificate-icon-capture.png" alt-text="Site bilgilerinde sertifika seçeneğinin ekran görüntüsü.":::
+    :::image type="content" source="media/java-ipa/troubleshooting/certificate-icon-capture.png" alt-text="Site bilgilerinde sertifika seçeneğinin ekran görüntüsü." lightbox="media/java-ipa/troubleshooting/certificate-icon-capture.png":::
 
-3.  **Ayrıntılar** sekmesine gidin ve **Dosyaya Kopyala**' yı seçin.
-4.  **İleri** düğmesini seçin, **Base-64 Encoded X. 509.440 (. CER)** biçimini seçin ve ardından **İleri** ' yi seçin.
+3.  ' Yaprak ' sertifikasını indirmek yerine ' kök ' sertifikayı aşağıda gösterildiği gibi indirmeniz gerekir. Daha sonra, "sertifika yolu" na tıkla, > kök sertifikayı seçmeniz gerekir-> ' sertifikayı görüntüle ' seçeneğine tıklayın. Bu, yeni bir sertifika menüsü açılır ve yeni menüden sertifikayı indirebilirsiniz.
 
-    :::image type="content" source="media/java-ipa/troubleshooting/certificate-export-wizard.png" alt-text="Sertifika Dışarı Aktarma Sihirbazı 'nın seçili bir biçim ile ekran görüntüsü.":::
+    :::image type="content" source="media/java-ipa/troubleshooting/root-certificate-selection.png" alt-text="Kök sertifikayı seçme ekranının ekran görüntüsü." lightbox="media/java-ipa/troubleshooting/root-certificate-selection.png":::
 
-5.  SSL sertifikasını kaydetmek istediğiniz dosyayı belirtin. Ardından **İleri**  >  **son**' u seçin. "Dışarı aktarma başarılı oldu" iletisini görmeniz gerekir.
-6.  Sertifikayı aldıktan sonra, sertifikayı bir Java keystore 'a aktarmaya zaman atalım. Sertifikaları içeri aktarmak için [önceki komutu](#key-terminology) kullanın.
+4.  **Ayrıntılar** sekmesine gidin ve **Dosyaya Kopyala**' yı seçin.
+5.  **İleri** düğmesini seçin, **Base-64 Encoded X. 509.440 (. CER)** biçimini seçin ve ardından **İleri** ' yi seçin.
+
+    :::image type="content" source="media/java-ipa/troubleshooting/certificate-export-wizard.png" alt-text="Sertifika Dışarı Aktarma Sihirbazı 'nın seçili bir biçim ile ekran görüntüsü." lightbox="media/java-ipa/troubleshooting/certificate-export-wizard.png":::
+
+6.  SSL sertifikasını kaydetmek istediğiniz dosyayı belirtin. Ardından **İleri**  >  **son**' u seçin. "Dışarı aktarma başarılı oldu" iletisini görmeniz gerekir.
 
 > [!WARNING]
 > Geçerli sertifikanın süresi dolmadan önce yeni sertifikayı almak için bu adımları yinelemeniz gerekir. Süre sonu bilgilerini **sertifika** Iletişim kutusunun **Ayrıntılar** sekmesinde bulabilirsiniz.
 >
-> :::image type="content" source="media/java-ipa/troubleshooting/certificate-details.png" alt-text="SSL sertifikası ayrıntılarını gösteren ekran görüntüsü.":::
+> :::image type="content" source="media/java-ipa/troubleshooting/certificate-details.png" alt-text="SSL sertifikası ayrıntılarını gösteren ekran görüntüsü." lightbox="media/java-ipa/troubleshooting/certificate-details.png":::

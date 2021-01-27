@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/20/2020
 ms.author: memildin
-ms.openlocfilehash: 4b8141d99d654705450a14767b04ae6265766af9
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: 519285f2bad352aa16bdc8d9a1db7a63c2eb04e5
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98807092"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98876402"
 ---
 # <a name="protect-your-endpoints-with-security-centers-integrated-edr-solution-microsoft-defender-for-endpoint"></a>Güvenlik Merkezi 'nin tümleşik EDR çözümü ile uç noktalarınızı koruyun: uç nokta için Microsoft Defender
 
@@ -62,7 +62,7 @@ Uç nokta için Microsoft Defender şunları sağlar:
 
 Defender for Endpoint for Security Center ile tümleştirerek aşağıdaki ek yetenekler de avantajdan yararlanabilirsiniz:
 
-- **Otomatik ekleme**. Güvenlik Merkezi, Güvenlik Merkezi tarafından izlenen tüm Windows Server 'lar için Endpoint algılayıcı için Microsoft Defender 'ı otomatik olarak sunar. Yerel betik, grup ilkesi nesnesi (GPO) veya [Microsoft uç nokta Configuration Manager](https://docs.microsoft.com/mem/configmgr/) (eskı adıyla SCCM) aracılığıyla eklendi olması gereken Windows Server 2019 ' i çalıştıranlar hariç.
+- **Otomatik ekleme**. Güvenlik Merkezi, Güvenlik Merkezi tarafından izlenen tüm Windows Server 'lar için Endpoint algılayıcı için Microsoft Defender 'ı otomatik olarak sunar. Yerel betik, grup ilkesi nesnesi (GPO) veya [Microsoft uç nokta Configuration Manager](/mem/configmgr/) (eskı adıyla SCCM) aracılığıyla eklendi olması gereken Windows Server 2019 ' i çalıştıranlar hariç.
 
 - **Tek bir cam bölmesi**. Güvenlik Merkezi Konsolu, uç nokta uyarıları için Microsoft Defender 'ı görüntüler. Daha fazla araştırmak için, uyarı işlem ağacı ve olay grafiği gibi ek bilgileri görebileceğiniz uç noktanın kendi portal sayfaları için Microsoft Defender 'ı kullanın. Ayrıca, altı aya kadar geçmiş bir dönem için her davranışı gösteren ayrıntılı bir makine zaman çizelgesi görebilirsiniz.
 

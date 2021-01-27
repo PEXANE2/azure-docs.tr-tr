@@ -5,20 +5,20 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 03/17/2020
-ms.openlocfilehash: f9f95a5e85ec4eebf82cca707476750595331d73
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.date: 01/25/2021
+ms.openlocfilehash: bc59c639856de6a5ce5adda1f78266eb7e4d5dd3
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95522677"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881240"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>Azure İzleyici’den verileri görselleştirme
 Bu makalede, Azure Izleyici 'de depolanan günlük ve ölçüm verilerini görselleştirmek için kullanılabilen yöntemlerin bir özeti sağlanmaktadır.
 
 Grafikler ve grafikler gibi görselleştirmeler, sorunların ayrıntılarına inmek ve desenleri belirlemek için izleme verilerinizi çözümlemenize yardımcı olabilir. Kullandığınız araca bağlı olarak, görselleştirmeleri kuruluşunuzun içindeki ve dışındaki diğer kullanıcılarla paylaşma seçeneğiniz de olabilir.
 
-## <a name="workbooks"></a>Çalışma kitapları
+## <a name="workbooks"></a>Çalışma Kitapları
 [Çalışma kitapları](./platform/workbooks-overview.md) , ekip içinde verileriniz, araştırılması ve işbirliği hakkında ayrıntılı Öngörüler sağlayan etkileşimli belgelerdir. Çalışma kitaplarının yararlı olduğu belirli örnekler, sorun giderme kılavuzlarından ve olay postmordıtem.
 
 ![Diyagram, sayfa görünümlerinin çözümlenmesi, kullanımı ve sayfada harcanan süre dahil olmak üzere bir çalışma kitabından birkaç sayfanın ekran görüntülerini gösterir.](media/visualizations/workbook.png)
@@ -46,9 +46,9 @@ Panolar oluşturmaya yönelik bir video kılavuzu aşağıda verilmiştir.
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4AslH]
 
 ### <a name="advantages"></a>Avantajlar
-- Azure ile derin tümleştirme. Görselleştirmeler, Ölçüm Gezgini, Log Analytics ve Application Insights dahil olmak üzere birden çok Azure sayfasında bulunan panolara sabitlenebilir.
+- Azure ile derin tümleştirme. Görselleştirmeler, [Ölçüm Gezgini](platform/metrics-charts.md), [Log Analytics](log-query/log-analytics-overview.md)ve [Application Insights](app/app-insights-overview.md)dahil olmak üzere birden çok Azure sayfasında bulunan panolara sabitlenebilir.
 - Hem ölçümleri hem de günlükleri destekler.
-- [Ölçüm Gezgini](platform/metrics-charts.md), [günlük sorguları](log-query/log-query-overview.md)ve Application Insights ' deki [haritalar](app/app-map.md) ve kullanılabilirliğin çıktısı dahil olmak üzere birden fazla kaynaktaki verileri birleştirin.
+- Birden çok kaynaktaki verileri, [Application Insights](app/app-insights-overview.md) [Ölçüm Gezgini](platform/metrics-charts.md), [günlük sorgularının](log-query/log-query-overview.md)ve [haritaların](app/app-map.md) ve kullanılabilirliğinden oluşan çıktılar dahil birleştirin.
 - Kişisel veya paylaşılan panolar için seçeneği. [Azure rol tabanlı erişim denetimi (Azure RBAC)](../role-based-access-control/overview.md)ile tümleşiktir.
 - Otomatik yenileme. Ölçüm yenileme, en az beş dakikalık zaman aralığına bağlıdır. Belirli bir görselleştirmede "Yenile" simgesine tıklayarak veya tam panoyu yenileyerek isteğe bağlı el ile yenileme seçeneği ile her saat yenileme günlüğü.
 - Zaman damgası ve özel parametrelerle Parametrized ölçüm panoları.
@@ -57,7 +57,7 @@ Panolar oluşturmaya yönelik bir video kılavuzu aşağıda verilmiştir.
 
 
 ### <a name="limitations"></a>Sınırlamalar
-- Veri tabloları desteği olmayan günlük görselleştirmeler üzerinde sınırlı denetim. Toplam veri serisi sayısı, _diğer_ bir demet altında gruplanmış daha fazla veri serisi ile 10 ile sınırlıdır.
+- Veri tabloları desteği olmayan günlük görselleştirmeler üzerinde sınırlı denetim. Toplam veri serisi sayısı, _diğer_ bir demet altında gruplanmış daha fazla veri serisi ile 50 ile sınırlıdır.
 - Günlük grafikleri için özel parametre desteği yok.
 - Günlük grafikleri son 30 güne sınırlıdır.
 - Günlük grafikleri yalnızca paylaşılan panolara sabitlenebilir.
@@ -140,8 +140,9 @@ Azure Izleyici 'deki günlük ve ölçüm verilerinde bulunan verilere, kendi ö
 ## <a name="next-steps"></a>Sonraki adımlar
 - [Azure izleyici tarafından toplanan veriler](platform/data-platform.md)hakkında bilgi edinin.
 - [Azure panoları](../azure-portal/azure-portal-dashboards.md)hakkında bilgi edinin.
-- [Azure izleyici 'de görünümler](platform/view-designer.md)hakkında bilgi edinin.
+- [Ölçüm Gezgini](platform/metrics-getting-started.md) hakkında bilgi edinin
 - [Çalışma kitapları](./platform/workbooks-overview.md)hakkında bilgi edinin.
 - [Günlük verilerini Power BI içeri aktarma](./platform/powerbi.md)hakkında bilgi edinin.
 - [Grafana Azure izleyici veri kaynağı eklentisi](./platform/grafana-plugin.md)hakkında bilgi edinin.
+- [Azure izleyici 'de görünümler](platform/view-designer.md)hakkında bilgi edinin.
 

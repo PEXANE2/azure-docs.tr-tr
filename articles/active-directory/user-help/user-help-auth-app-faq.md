@@ -12,12 +12,12 @@ ms.topic: end-user-help
 ms.date: 01/15/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: f799ed5c18537b862a4971075ae9107b7a722fdd
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 2be1c7f76055cad1cf8b51938a65c7bbe6b2917e
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251514"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881087"
 ---
 # <a name="frequently-asked-questions-faq-about-the-microsoft-authenticator-app"></a>Microsoft Authenticator uygulaması hakkında sık sorulan sorular (SSS)
 
@@ -32,12 +32,6 @@ Microsoft Authenticator uygulama Azure Authenticator uygulamasını değiştirdi
 **S**: şirket veya hizmet cihazımın erişimine izin vermek için bir cihaz kabul etmiş kaydediyor mu?
 
 Y **: bir** cihazı kaydetmek, cihazınızın kuruluşunuzun hizmetlerine erişmesini sağlar ve kuruluşunuzun cihazınıza erişmesine izin vermez.
-
-### <a name="too-many-app-permissions"></a>Çok fazla uygulama izni
-
-**S**: uygulama neden çok sayıda izin istiyor?
-
-**A**: burada, İstenen izinlerin tam listesi ve uygulama tarafından nasıl kullanıldıkları açıklanmaktadır. Gördüğünüz belirli izinler, sahip olduğunuz telefonun türüne bağlıdır. Bazen kuruluşunuz, belirli kaynaklara erişmenize izin vermeden önce **konumunuzu** bilmek istiyor. Uygulama bu izni yalnızca, kuruluşunuzun konum gerektiren bir ilke varsa ister.
 
 ### <a name="error-adding-account"></a>Hesap eklenirken hata oluştu
 
@@ -144,7 +138,7 @@ Y **: yeni** cihazınıza kimlik doğrulayıcı eklemek, uygulamayı eski cihaz�
 
 **S**: uygulama neden çok sayıda izin istiyor?
 
-**A**: burada, İstenen izinlerin tam listesi ve uygulama tarafından nasıl kullanıldıkları açıklanmaktadır. Gördüğünüz belirli izinler, sahip olduğunuz telefonun türüne bağlıdır.<ul><li>**Biyometrik donanım kullanın.** Bazı iş ve okul hesapları, kimliğinizi her doğrulayışınızda ek bir PIN gerektirir. Uygulama, PIN girmek yerine Biyometri veya yüz tanıma 'yı kullanmak için izin vermenizi gerektirir.</li><li>**Fotoğraf.** Bir iş, okul veya Microsoft hesabı olmayan bir işlem eklediğinizde QR kodlarını taramak için kullanılır.</li><li>**Kişiler ve telefon.** Uygulama, telefonunuzda iş veya okul Microsoft hesaplarını aramak ve bunları sizin için uygulamaya eklemek için bu izni gerektirir.</li><li>**Kısa.** Kişisel Microsoft hesabı ilk kez oturum açtığınızda telefon numaranız kayıt numarası ile eşleştiğinden emin olmak için kullanılır. Bir 6-8 basamaklı doğrulama kodu içeren uygulamayı yüklediğiniz telefona bir kısa mesaj göndereceğiz. Bu kodu bulmanız ve kimlik doğrulayıcı tarafından metin iletisinde otomatik olarak bulduğu için girmeniz gerekmez.</li><li>**Diğer uygulamaların üzerine çizin.** Kimliğinizi doğrulayan aldığınız bildirim diğer çalışan uygulamalar üzerinde de görüntülenir.</li><li>**İnternet 'ten veri alın.** Bu izin, bildirim göndermek için gereklidir.</li><li>**Telefonun uyumasını önleyin.** Cihazınızı kuruluşunuza kaydettiğinizde, kuruluşunuz telefonunuzda bu ilkeyi değiştirebilir.</li><li>**Denetim titreşimi.** Kimliğinizi doğrulamak için bir bildirim aldığınızda bir titreşim isteyip istemediğinizi seçebilirsiniz.</li><li>**Parmak izi donanımını kullanın.** Bazı iş ve okul hesapları, kimliğinizi her doğrulayışınızda ek bir PIN gerektirir. İşlemi daha kolay hale getirmek için PIN 'inizi girmek yerine parmak izinizi kullanmanıza imkan sağlıyoruz.</li><li> **Ağ bağlantılarını görüntüleyin.** Microsoft hesabı eklediğinizde, uygulama ağ/Internet bağlantısı gerektirir.</li><li>**Depolamanın Içeriğini okuyun**. Bu izin yalnızca uygulama ayarları aracılığıyla teknik bir sorun raporaktardığınızda kullanılır. Depolamadaki bazı bilgiler, sorunu tanılamak için toplanır.</li><li>**Tam ağ erişimi.** Kimliğinizi doğrulamak için bildirim göndermek üzere bu izin gereklidir.</li><li>**Başlangıçta çalıştırın.** Telefonunuzu yeniden başlatırsanız, bu izin kimliğinizi doğrulamaya yönelik bildirimler almanızı sağlar.</li></ul>
+**A**: burada, İstenen izinlerin tam listesi ve uygulama tarafından nasıl kullanıldıkları açıklanmaktadır. Gördüğünüz belirli izinler, sahip olduğunuz telefonun türüne bağlıdır.<ul><li>**Konum**. Bazen kuruluşunuz, belirli kaynaklara erişmenize izin vermeden önce konumunuzu bilmek istiyor. Uygulama bu izni yalnızca, kuruluşunuzun konum gerektiren bir ilke varsa ister.</li><li>**Biyometrik donanım kullanın.** Bazı iş ve okul hesapları, kimliğinizi her doğrulayışınızda ek bir PIN gerektirir. Uygulama, PIN girmek yerine Biyometri veya yüz tanıma 'yı kullanmak için izin vermenizi gerektirir.</li><li>**Fotoğraf.** Bir iş, okul veya Microsoft hesabı olmayan bir işlem eklediğinizde QR kodlarını taramak için kullanılır.</li><li>**Kişiler ve telefon.** Uygulama, telefonunuzda iş veya okul Microsoft hesaplarını aramak ve bunları sizin için uygulamaya eklemek için bu izni gerektirir.</li><li>**Kısa.** Kişisel Microsoft hesabı ilk kez oturum açtığınızda telefon numaranız kayıt numarası ile eşleştiğinden emin olmak için kullanılır. Bir 6-8 basamaklı doğrulama kodu içeren uygulamayı yüklediğiniz telefona bir kısa mesaj göndereceğiz. Bu kodu bulmanız ve kimlik doğrulayıcı tarafından metin iletisinde otomatik olarak bulduğu için girmeniz gerekmez.</li><li>**Diğer uygulamaların üzerine çizin.** Kimliğinizi doğrulayan aldığınız bildirim diğer çalışan uygulamalar üzerinde de görüntülenir.</li><li>**İnternet 'ten veri alın.** Bu izin, bildirim göndermek için gereklidir.</li><li>**Telefonun uyumasını önleyin.** Cihazınızı kuruluşunuza kaydettiğinizde, kuruluşunuz telefonunuzda bu ilkeyi değiştirebilir.</li><li>**Denetim titreşimi.** Kimliğinizi doğrulamak için bir bildirim aldığınızda bir titreşim isteyip istemediğinizi seçebilirsiniz.</li><li>**Parmak izi donanımını kullanın.** Bazı iş ve okul hesapları, kimliğinizi her doğrulayışınızda ek bir PIN gerektirir. İşlemi daha kolay hale getirmek için PIN 'inizi girmek yerine parmak izinizi kullanmanıza imkan sağlıyoruz.</li><li> **Ağ bağlantılarını görüntüleyin.** Microsoft hesabı eklediğinizde, uygulama ağ/Internet bağlantısı gerektirir.</li><li>**Depolamanın Içeriğini okuyun**. Bu izin yalnızca uygulama ayarları aracılığıyla teknik bir sorun raporaktardığınızda kullanılır. Depolamadaki bazı bilgiler, sorunu tanılamak için toplanır.</li><li>**Tam ağ erişimi.** Kimliğinizi doğrulamak için bildirim göndermek üzere bu izin gereklidir.</li><li>**Başlangıçta çalıştırın.** Telefonunuzu yeniden başlatırsanız, bu izin kimliğinizi doğrulamaya yönelik bildirimler almanızı sağlar.</li></ul>
 
 ### <a name="approve-requests-without-unlocking"></a>Kilit açma olmadan istekleri Onayla
 

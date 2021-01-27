@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 09/03/2020
 ms.author: allensu
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: b3ca4f11b02f32e65cf80adc65ec12d25e6e7905
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.openlocfilehash: 974631f9cba66404a3881caed1382be7ff3c00d1
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98573182"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881342"
 ---
 # <a name="what-is-azure-private-link"></a>Azure Özel Bağlantı nedir? 
 Azure özel bağlantısı, Azure PaaS hizmetlerine (örneğin, Azure depolama ve SQL veritabanı) ve Azure 'da barındırılan, müşteriye ait/iş ortağı hizmetlerine sanal ağınızdaki özel bir [uç nokta](private-endpoint-overview.md) üzerinden erişmenizi sağlar.
@@ -72,7 +72,7 @@ Azure özel bağlantısı aşağıdaki avantajları sağlar:
 | Azure İzleyici <br/>(Log Analytics & Application Insights) | Tüm ortak bölgeler      |  | GA   <br/> [Azure Izleyici için özel bir uç nokta oluşturmayı öğrenin.](../azure-monitor/platform/private-link-security.md)   | 
 | Azure Batch | Dışındaki tüm ortak bölgeler: Almanya Orta, Almanya kuzeydoğu <br/> Tüm kamu bölgeleri  | | GA <br/> [Azure Batch için özel uç nokta oluşturmayı öğrenin.](../batch/private-connectivity.md) |
 |Azure Data Factory | Tüm ortak bölgeler<br/> Tüm kamu bölgeleri<br/>Tüm Çin bölgeleri    | Kimlik bilgilerinin bir Azure Anahtar Kasası 'nda depolanması gerekir| GA   <br/> [Azure Data Factory için özel uç nokta oluşturmayı öğrenin.](../data-factory/data-factory-private-link.md)   |
-|Azure Yönetilen Diskleri | Tüm ortak bölgeler<br/> Tüm kamu bölgeleri<br/>Tüm Çin bölgeleri    | [Bilinen sınırlamalar için buraya tıklayın](https://docs.microsoft.com/azure/virtual-machines/disks-enable-private-links-for-import-export-portal#limitations) | GA   <br/> [Azure yönetilen diskler için özel bir uç nokta oluşturmayı öğrenin.](https://docs.microsoft.com/azure/virtual-machines/disks-enable-private-links-for-import-export-portal)   |
+|Azure Yönetilen Diskleri | Tüm ortak bölgeler<br/> Tüm kamu bölgeleri<br/>Tüm Çin bölgeleri    | [Bilinen sınırlamalar için buraya tıklayın](../virtual-machines/disks-enable-private-links-for-import-export-portal.md#limitations) | GA   <br/> [Azure yönetilen diskler için özel bir uç nokta oluşturmayı öğrenin.](../virtual-machines/disks-enable-private-links-for-import-export-portal.md)   |
 
 
 
@@ -110,5 +110,3 @@ SLA için bkz. [Azure özel bağlantısı Için SLA](https://azure.microsoft.com
 
 - [Hızlı başlangıç: Azure portal kullanarak özel uç nokta oluşturma](create-private-endpoint-portal.md)
 - [Hızlı başlangıç: Azure portal kullanarak özel bir bağlantı hizmeti oluşturma](create-private-link-service-portal.md)
-
-

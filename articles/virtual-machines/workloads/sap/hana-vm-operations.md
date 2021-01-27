@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 10/01/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9a907f2a6fc54c96dbef9f2091a91cac50bbd4ca
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 6e28b23f20a0336498abbc357f4c96bdfa5b089f
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96486530"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881847"
 ---
 # <a name="sap-hana-infrastructure-configurations-and-operations-on-azure"></a>Azure'da SAP HANA altyapı yapılandırmaları ve işlemleri
 Bu belgede, Azure yerel sanal makinelerinde (VM 'Ler) dağıtılan Azure altyapısını ve işletim SAP HANA sistemlerini yapılandırmaya yönelik yönergeler sağlanmaktadır. Belge ayrıca, M128s VM SKU 'SU için SAP HANA genişleme için yapılandırma bilgilerini içerir. Bu belge, aşağıdaki içeriği içeren standart SAP belgelerinin yerine geçecek şekilde tasarlanmamıştır:
@@ -46,7 +46,7 @@ Aşağıdaki bölümlerde, Azure VM 'lerinde SAP HANA sistemleri dağıtmaya yö
 [Azure sanal makineler planlama kılavuzunda](./planning-guide.md)belgelendiği gibi, Azure VM 'lerine bağlanmak için iki temel yöntem vardır:
 
 - Bir geçiş VM 'sinde veya SAP HANA çalıştıran VM 'de internet ve genel uç noktalar üzerinden bağlanın.
-- [VPN](../../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md) veya Azure [ExpressRoute](https://azure.microsoft.com/services/expressroute/)üzerinden bağlanın.
+- [VPN](../../../vpn-gateway/tutorial-site-to-site-portal.md) veya Azure [ExpressRoute](https://azure.microsoft.com/services/expressroute/)üzerinden bağlanın.
 
 Üretim senaryolarında VPN veya ExpressRoute aracılığıyla siteden siteye bağlantı gereklidir. Bu bağlantı türü, SAP yazılımının kullanıldığı üretim senaryolarında akışı yapılan üretim dışı senaryolar için de gereklidir. Aşağıdaki görüntüde çapraz site bağlantısı örneği gösterilmektedir:
 
@@ -65,7 +65,7 @@ Kullanarak VM 'Leri Azure 'da dağıtın:
 - Azure PowerShell cmdlet 'leri.
 - Azure CLı.
 
-Ayrıca, Azure VM Hizmetleri üzerinde, tamamlanmış bir SAP HANA platformunu [SAP bulut platformu](https://cal.sap.com/)aracılığıyla dağıtabilirsiniz. Yükleme işlemi, [Azure 'DA SAP S/4HANA veya siyah beyaz](./cal-s4h.md) [here](https://github.com/AzureCAT-GSI/SAP-HANA-ARM)
+Ayrıca, Azure VM Hizmetleri üzerinde, tamamlanmış bir SAP HANA platformunu [SAP bulut platformu](https://cal.sap.com/)aracılığıyla dağıtabilirsiniz. Yükleme işlemi, [Azure 'DA SAP S/4HANA veya siyah beyaz](./cal-s4h.md) [](https://github.com/AzureCAT-GSI/SAP-HANA-ARM)
 
 >[!IMPORTANT]
 > M208xx_v2 VM 'Leri kullanabilmeniz için, Azure VM görüntüsü galerisinden Linux görüntünüzü seçerken dikkatli olmanız gerekir. Ayrıntıları okumak için [bellek için iyileştirilmiş sanal makine boyutları](../../mv2-series.md)makalesini okuyun.
@@ -271,7 +271,7 @@ Günlük birimini boyutlandırma hakkında birkaç örnek aşağıda verilmişti
 | 6 x P15-> 1,5 TB | 4 x P6-> 256 GB | 1 x P15-> 256 GB |
 
 
-SAP HANA ölçeği genişletme gibi,/Hana/paylaşılan dizin, SAP HANA VM ile DT 2,0 VM arasında paylaşılmalıdır. Yüksek oranda kullanılabilir bir NFS sunucusu işlevi gören adanmış VM 'Ler kullanılarak SAP HANA ölçek genişletme için aynı mimari önerilir. Paylaşılan yedekleme birimi sağlamak için, aynı tasarım kullanılabilir. Ancak, HA gerekli olacaksa veya bir yedekleme sunucusu işlevi görecek şekilde yeterli depolama kapasitesine sahip ayrılmış bir VM kullanmak için yeterli olup olmadığı müşteriye ait olur.
+SAP HANA ölçeği genişletme gibi,/Hana/Shared Directory SAP HANA VM ile DT 2,0 VM arasında paylaşılmalıdır. Yüksek oranda kullanılabilir bir NFS sunucusu işlevi gören adanmış VM 'Ler kullanılarak SAP HANA ölçek genişletme için aynı mimari önerilir. Paylaşılan yedekleme birimi sağlamak için, aynı tasarım kullanılabilir. Ancak, HA gerekli olacaksa veya bir yedekleme sunucusu işlevi görecek şekilde yeterli depolama kapasitesine sahip ayrılmış bir VM kullanmak için yeterli olup olmadığı müşteriye ait olur.
 
 
 

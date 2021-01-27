@@ -3,12 +3,12 @@ title: Azure İşlevleri için uygulama ayarları başvurusu
 description: Azure Işlevleri uygulama ayarları veya ortam değişkenleri için başvuru belgeleri.
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: 80b2daebbd64f08dd4f5d728b2a9a4ee04b8952f
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: a28530fd4e4731065c4ddcc2f39e9a4660529921
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98729001"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881932"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Azure İşlevleri için uygulama ayarları başvurusu
 
@@ -239,7 +239,7 @@ Yalnızca Windows üzerinde çalışan bir tüketim veya Premium planlarına da�
 
 ## <a name="website_contentovervnet"></a>Web sItesI \_ contenentovervnet
 
-Yalnızca Premium planlar için. Bir değeri, `1` depolama hesabınız bir sanal ağla sınırlı olduğunda, işlev uygulamanızın ölçeğini belirlemenizi sağlar. Depolama hesabınızı bir sanal ağ ile kısıtlamadan bu ayarı etkinleştirmeniz gerekir. Daha fazla bilgi edinmek için bkz. [depolama hesabınızı bir sanal ağla kısıtlama](functions-networking-options.md#restrict-your-storage-account-to-a-virtual-network-preview). 
+Yalnızca Premium planlar için. Bir değeri, `1` depolama hesabınız bir sanal ağla sınırlı olduğunda, işlev uygulamanızın ölçeğini belirlemenizi sağlar. Depolama hesabınızı bir sanal ağ ile kısıtlamadan bu ayarı etkinleştirmeniz gerekir. Daha fazla bilgi edinmek için bkz. [depolama hesabınızı bir sanal ağla kısıtlama](functions-networking-options.md#restrict-your-storage-account-to-a-virtual-network).
 
 |Anahtar|Örnek değer|
 |---|------------|

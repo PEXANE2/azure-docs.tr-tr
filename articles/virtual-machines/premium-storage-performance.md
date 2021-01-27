@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/05/2020
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 26ef07269c9451c2e9d05d42e2247fbfcdae4844
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 7e93c659ad58db8d82e68380ab6a0855af27e1bf
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201969"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98882391"
 ---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Azure Premium Depolama: yüksek performans için tasarım
 
@@ -35,8 +35,8 @@ Premium depolamada çalışan iş yükleri yüksek performansa duyarlı olduğun
 >
 > Diskinizin kıyaslanmaya bakıyorsanız, bir diski sınama hakkında makalelerimize bakın:
 >
-> * Linux için: [Azure disk depolama uygulamanızı kıyaslama](linux/disks-benchmarks.md)
-> * Windows için: [diski sınama](windows/disks-benchmarks.md).
+> * Linux için: [Azure disk depolama uygulamanızı kıyaslama](./disks-benchmarks.md)
+> * Windows için: [diski sınama](./disks-benchmarks.md).
 >
 > VM 'niz hızlandırılmış ağı destekliyorsa etkinleştirildiğinden emin olun. Etkinleştirilmemişse, hem [Windows](../virtual-network/create-vm-accelerated-networking-powershell.md#enable-accelerated-networking-on-existing-vms) hem de [Linux](../virtual-network/create-vm-accelerated-networking-cli.md#enable-accelerated-networking-on-existing-vms)üzerinde zaten dağıtılmış VM 'lerde etkinleştirebilirsiniz.
 
@@ -380,8 +380,8 @@ Azure Premium Depolama, seçtiğiniz VM boyutlarına ve disk boyutlarına göre 
 
 Diskinizin kıyaslanmaya bakıyorsanız, bir diski sınama hakkında makalelerimize bakın:
 
-* Linux için: [Azure disk depolama uygulamanızı kıyaslama](linux/disks-benchmarks.md)
-* Windows için: [diski sınama](windows/disks-benchmarks.md).
+* Linux için: [Azure disk depolama uygulamanızı kıyaslama](./disks-benchmarks.md)
+* Windows için: [diski sınama](./disks-benchmarks.md).
 
 Kullanılabilir disk türleri hakkında daha fazla bilgi edinin:
 

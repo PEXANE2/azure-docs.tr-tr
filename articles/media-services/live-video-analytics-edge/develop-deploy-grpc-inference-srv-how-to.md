@@ -3,12 +3,12 @@ title: GRPC çıkarım sunucusu geliştirme ve dağıtma-Azure
 description: Bu makalede, bir gRPC çıkarım sunucusu geliştirme ve dağıtma konusunda rehberlik sunulmaktadır.
 ms.topic: how-to
 ms.date: 12/02/2020
-ms.openlocfilehash: 3f732a7432dacebeeefddd1822fec7d95dfbaa97
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 6184a369e73c26d3a8a716f9daf1c0420a5239fe
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97426033"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881661"
 ---
 # <a name="how-to-guide--develop-and-deploy-a-grpc-inference-server"></a>Nasıl yapılır Kılavuzu – gRPC çıkarım sunucusu geliştirme ve dağıtma
 
@@ -26,9 +26,9 @@ Bu makalede, Graf uzantısı aracılığıyla canlı video analizi (LVA) ile tü
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* [Desteklenen Linux işletim sistemlerinden](https://docs.microsoft.com/azure/iot-edge/support#operating-systems) veya bir Windows makinesinden birini çalıştıran x86-64 veya ARM64 bir cihaz.
+* [Desteklenen Linux işletim sistemlerinden](../../iot-edge/support.md#operating-systems) veya bir Windows makinesinden birini çalıştıran x86-64 veya ARM64 bir cihaz.
 * Makinenize [Docker 'Yi yüklemeyin](https://docs.docker.com/desktop/#download-and-install) .
-* [IoT Edge çalışma zamanını](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge?tabs=linux)yükler.
+* [IoT Edge çalışma zamanını](../../iot-edge/how-to-install-iot-edge.md?tabs=linux)yükler.
 
 ## <a name="grpc-implementation-steps"></a>gRPC uygulama adımları
 
@@ -197,7 +197,7 @@ GRPC sunucu bağlantı noktası bağlantılarını yapılandırdığımıza ve k
         1. Bir bayt dizisindeki görüntüyü işlenmek üzere dönüştürür. Bkz. yöntemi: `GetBytes(Bitmap image)`
         
             Kullandığımız örnek işlemci yalnızca JPG kodlamalı görüntü çerçevesini destekliyor ve piksel biçiminde yok. Özel işlemcinizin farklı bir kodlamayı ve/veya biçimi desteklemesi durumunda, `IsMediaFormatSupported` işlemci sınıfının yöntemini güncelleştirin.
-        1. [ColorMatrix sınıfını](https://docs.microsoft.com/dotnet/api/system.drawing.imaging.colormatrix?redirectedfrom=MSDN&view=dotnet-plat-ext-3.1&preserve-view=true)kullanarak görüntüyü gri ölçeğe dönüştürün. Bkz. Yöntem: `ToGrayScale(Image source)` .
+        1. [ColorMatrix sınıfını](/dotnet/api/system.drawing.imaging.colormatrix?preserve-view=true&view=dotnet-plat-ext-3.1)kullanarak görüntüyü gri ölçeğe dönüştürün. Bkz. Yöntem: `ToGrayScale(Image source)` .
         1. Gri ölçekli görüntüyü aldıktan sonra gri ölçekli baytların ortalamasını hesaplayabilirsiniz.
         1. Ortalama değer 127 <, görüntüyü "koyu" olarak sınıflandırırız; Aksi takdirde, bunları "açık" olarak, güvenilirlik değeri 1,0 olarak sınıflandırırız. Bkz. Yöntem: `ProcessImage(List<Image> images)` .
 
@@ -213,7 +213,7 @@ GRPC sunucu bağlantı noktası bağlantılarını yapılandırdığımıza ve k
 
 GRPC uzantı modülünüzü oluşturdığınıza göre artık medya grafiği topolojisini oluşturacağız ve dağıtacağız.
 
-1. Visual Studio Code kullanarak Docker 'da oturum açmak için [Bu yönergeleri](https://docs.microsoft.com/azure/iot-edge/tutorial-develop-for-linux#build-and-push-your-solution) izleyin.
+1. Visual Studio Code kullanarak Docker 'da oturum açmak için [Bu yönergeleri](../../iot-edge/tutorial-develop-for-linux.md#build-and-push-your-solution) izleyin.
 1. Visual Studio Code, src/Edge bölümüne gidin. . Env dosyanızı ve birkaç dağıtım şablonu dosyasını görürsünüz.
 
     Dağıtım şablonu, Edge cihazının dağıtım bildirimini ifade eder. Bazı yer tutucu değerleri içerir. . Env dosyası bu değişkenlerin değerlerini içerir.
@@ -309,4 +309,3 @@ Bu aşamada, Edge modüllerinin IoT Edge cihazınıza dağıtılması başladı.
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Örneği çalıştırmak ve sonuçları yorumlamak için model hızlı başlangıç [ile canlı videoyu çözümle](use-your-model-quickstart.md) bölümünde bahsedilen **olayları izlemeye hazırlama** adımlarını izleyin. Ayrıca, örnek gRPC topolojilerimize göz atın: [Grpcextension](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/grpcExtension/topology.json), [cvrwithgrpcextension](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/cvr-with-grpcExtension/topology.json), [Evrtoassetsbygrpcextension ve [EVROnMotionPlusGrpcExtension](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/motion-with-grpcExtension/topology.json).
-

@@ -8,12 +8,12 @@ ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: aa6429e27faf92f047c580986d5b434c9a418730
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: d38e631a5a12381b407dca4dd9e2f2ae63365453
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98044382"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98882461"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-portal"></a>Azure dijital TWINS örneği ve kimlik doğrulaması (portal) ayarlama
 
@@ -71,13 +71,13 @@ Artık hazır bir Azure dijital TWINS örneğiniz var. Daha sonra, uygun Azure K
 
 [!INCLUDE [digital-twins-setup-role-assignment.md](../../includes/digital-twins-setup-role-assignment.md)]
 
-İlk olarak, Azure portal Azure dijital TWINS örneğinizin sayfasını açın. Örneğin menüsünde, *erişim denetimi (IAM)* seçeneğini belirleyin. *Rol ataması Ekle* altında *Ekle* düğmesini seçin.
+İlk olarak, Azure portal Azure dijital TWINS örneğinizin sayfasını açın. Örneğin menüsünde, *erişim denetimi (IAM)* seçeneğini belirleyin. Yeni bir rol ataması eklemek için  **+ Ekle** düğmesini seçin.
 
 :::image type="content" source="media/how-to-set-up-instance/portal/add-role-assignment-1.png" alt-text="' Erişim denetimi (ıAM) ' sayfasından rol ataması eklemeyi seçme":::
 
 Aşağıdaki *rol ataması Ekle* sayfasında, değerleri girin (Azure aboneliğinde [yeterli izinlere](#prerequisites-permission-requirements) sahip bir kullanıcı tarafından tamamlanmalıdır):
 * **Rol**: açılan menüden *Azure dijital TWINS veri sahibini* seçin
-* **Erişim ata**: açılan menüden *Azure AD Kullanıcı, Grup veya hizmet sorumlusu ' nı* seçin
+* **Erişim ata**: *Kullanıcı, Grup veya hizmet sorumlusu* kullanma
 * **Seç**: atanacak kullanıcının adını veya e-posta adresini arayın. Sonucu seçtiğinizde, Kullanıcı *Seçili Üyeler* bölümünde görünür.
 
 :::row:::

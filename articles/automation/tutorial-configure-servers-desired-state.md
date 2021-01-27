@@ -5,12 +5,12 @@ services: automation
 ms.subservice: dsc
 ms.topic: conceptual
 ms.date: 08/08/2018
-ms.openlocfilehash: 55c7522ad1dc6c7f91fae608a777dab3cd67d2ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2e09607dde118ce25e5d2e5311e7614f2f18a590
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86183180"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98890739"
 ---
 # <a name="configure-machines-to-a-desired-state"></a>Makineleri istenen duruma yapılandırma
 
@@ -42,7 +42,7 @@ Yapılandırma olarak Configuration 'ı kullanarak sunucuları yönetmek için e
 
 ## <a name="log-in-to-azure"></a>Azure'da oturum açma
 
-[Connect-AzAccount](/powershell/module/Az.Accounts/Connect-AzAccount?view=azps-3.7.0) cmdlet 'Ini kullanarak Azure aboneliğinizde oturum açın ve ekrandaki yönergeleri izleyin.
+[Connect-AzAccount](/powershell/module/Az.Accounts/Connect-AzAccount) cmdlet 'Ini kullanarak Azure aboneliğinizde oturum açın ve ekrandaki yönergeleri izleyin.
 
 ```powershell
 Connect-AzAccount
@@ -51,7 +51,7 @@ Connect-AzAccount
 ## <a name="create-and-upload-a-configuration-to-azure-automation"></a>Azure Otomasyonu 'na bir yapılandırma oluşturma ve yükleme
 
 
-Bir metin düzenleyicisinde aşağıdakini yazın ve **TestConfig.ps1**olarak yerel olarak kaydedin.
+Bir metin düzenleyicisinde aşağıdakini yazın ve **TestConfig.ps1** olarak yerel olarak kaydedin.
 
 ```powershell
 configuration TestConfig {
@@ -68,7 +68,7 @@ configuration TestConfig {
 > [!NOTE]
 > DSC kaynaklarını sağlayan birden çok modülün içeri aktarılmasını gerektiren daha Gelişmiş senaryolarda, her modülün yapılandırmanızda benzersiz bir satıra sahip olduğundan emin olun `Import-DscResource` .
 
-Yapılandırmayı Otomasyon hesabınıza yüklemek için [Import-AzAutomationDscConfiguration](/powershell/module/Az.Automation/Import-AzAutomationDscConfiguration?view=azps-3.7.0) cmdlet 'ini çağırın.
+Yapılandırmayı Otomasyon hesabınıza yüklemek için [Import-AzAutomationDscConfiguration](/powershell/module/Az.Automation/Import-AzAutomationDscConfiguration) cmdlet 'ini çağırın.
 
 ```powershell
  Import-AzAutomationDscConfiguration -SourcePath 'C:\DscConfigs\TestConfig.ps1' -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'myAutomationAccount' -Published
@@ -78,7 +78,7 @@ Yapılandırmayı Otomasyon hesabınıza yüklemek için [Import-AzAutomationDsc
 
 Bir DSC yapılandırmasının bir düğüme atanabilmesi için önce düğüm yapılandırmasına derlenmesi gerekir. Bkz. [DSC yapılandırması](/powershell/scripting/dsc/configurations/configurations).
 
-Yapılandırmayı Otomasyon hesabınızda adlı bir düğüm yapılandırması olarak derlemek için [Start-AzAutomationDscCompilationJob](/powershell/module/Az.Automation/Start-AzAutomationDscCompilationJob?view=azps-3.7.0) cmdlet 'ini çağırın `TestConfig` `TestConfig.WebServer` .
+Yapılandırmayı Otomasyon hesabınızda adlı bir düğüm yapılandırması olarak derlemek için [Start-AzAutomationDscCompilationJob](/powershell/module/Az.Automation/Start-AzAutomationDscCompilationJob) cmdlet 'ini çağırın `TestConfig` `TestConfig.WebServer` .
 
 ```powershell
 Start-AzAutomationDscCompilationJob -ConfigurationName 'TestConfig' -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'myAutomationAccount'
@@ -88,7 +88,7 @@ Start-AzAutomationDscCompilationJob -ConfigurationName 'TestConfig' -ResourceGro
 
 Azure Otomasyonu durum yapılandırması 'nı kullanarak Azure VM 'lerini (hem klasik hem de Kaynak Yöneticisi), şirket içi VM 'Lere, Linux makinelere, AWS VM 'lerine ve şirket içi fiziksel makinelere yönetebilirsiniz. Bu konu başlığında yalnızca Azure Resource Manager VM 'lerinin nasıl kaydedileceği ele alınmaktadır. Diğer makine türlerini kaydetme hakkında daha fazla bilgi için bkz. [Azure Otomasyonu durum yapılandırmasına göre yönetim için makine ekleme](automation-dsc-onboarding.md).
 
-VM 'nizi Azure Otomasyonu durum yapılandırması ile yönetilen bir düğüm olarak kaydettirmek için [register-AzAutomationDscNode](/powershell/module/Az.Automation/Register-AzAutomationDscNode?view=azps-3.7.0) cmdlet 'ini çağırın. 
+VM 'nizi Azure Otomasyonu durum yapılandırması ile yönetilen bir düğüm olarak kaydettirmek için [register-AzAutomationDscNode](/powershell/module/Az.Automation/Register-AzAutomationDscNode) cmdlet 'ini çağırın. 
 
 ```powershell
 Register-AzAutomationDscNode -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'myAutomationAccount' -AzureVMName 'DscVm'
@@ -125,7 +125,7 @@ Bu, kayıtlı DSC düğümüne adlı düğüm yapılandırmasını atar `TestCon
 
 ## <a name="check-the-compliance-status-of-a-managed-node"></a>Yönetilen bir düğümün uyumluluk durumunu denetleme
 
-[Get-AzAutomationDscNodeReport](/powershell/module/Az.Automation/Get-AzAutomationDscNodeReport?view=azps-3.7.0) cmdlet 'ini kullanarak, yönetilen bir düğümün uyumluluk durumu hakkında raporlar alabilirsiniz.
+[Get-AzAutomationDscNodeReport](/powershell/module/Az.Automation/Get-AzAutomationDscNodeReport) cmdlet 'ini kullanarak, yönetilen bir düğümün uyumluluk durumu hakkında raporlar alabilirsiniz.
 
 ```powershell
 # Get the ID of the DSC node
@@ -146,9 +146,9 @@ Düğümü hizmetten kaldırmayı seçerseniz, Azure portal ya da az cmdlet 'ler
 > [!NOTE]
 > Bir düğümün hizmetten kaydı, düğümün artık hizmete bağlanmaması için yalnızca yerel Configuration Manager ayarlarını ayarlar.
 > Bu, düğüme uygulanmış olan yapılandırmayı etkilemez.
-> Geçerli yapılandırmayı kaldırmak için [PowerShell](/powershell/module/psdesiredstateconfiguration/remove-dscconfigurationdocument?view=powershell-5.1) 'i kullanın veya yerel yapılandırma dosyasını silin (Bu, Linux düğümlerine yönelik tek seçenektir).
+> Geçerli yapılandırmayı kaldırmak için [PowerShell](/powershell/module/psdesiredstateconfiguration/remove-dscconfigurationdocument) 'i kullanın veya yerel yapılandırma dosyasını silin (Bu, Linux düğümlerine yönelik tek seçenektir).
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure portalı
 
 Azure Otomasyonu ' ndan içindekiler tablosunda **Durum Yapılandırması (DSC)** seçeneğine tıklayın.
 Ardından, hizmete kayıtlı düğümlerin listesini görüntülemek için **düğümler** ' e tıklayın.
@@ -157,7 +157,7 @@ Açılan düğüm görünümünde, **kayıt Sil**' e tıklayın.
 
 ### <a name="powershell"></a>PowerShell
 
-PowerShell kullanarak Azure Otomasyonu durum yapılandırma hizmeti 'nden bir düğümün kaydını silmek için, [Unregister-AzAutomationDscNode](/powershell/module/az.automation/unregister-azautomationdscnode?view=azps-2.0.0)cmdlet 'inin belgelerini izleyin.
+PowerShell kullanarak Azure Otomasyonu durum yapılandırma hizmeti 'nden bir düğümün kaydını silmek için, [Unregister-AzAutomationDscNode](/powershell/module/az.automation/unregister-azautomationdscnode)cmdlet 'inin belgelerini izleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -166,4 +166,4 @@ PowerShell kullanarak Azure Otomasyonu durum yapılandırma hizmeti 'nden bir d�
 - Hedef düğümlere atayabilmeniz için DSC yapılandırmalarını derleme hakkında bilgi edinmek için bkz. [Azure Otomasyonu durum YAPıLANDıRMASıNDA DSC yapılandırmalarını derleme](automation-dsc-compile.md).
 - Azure Otomasyonu durum yapılandırması 'nı sürekli bir dağıtım ardışık düzeninde kullanmaya ilişkin bir örnek görmek için bkz. [Chocolatey ile sürekli dağıtımı ayarlama](automation-dsc-cd-chocolatey.md).
 - Fiyatlandırma bilgileri için bkz. [Azure Otomasyonu durum yapılandırması fiyatlandırması](https://azure.microsoft.com/pricing/details/automation/).
-- PowerShell cmdlet başvurusu için bkz. [az. Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation).
+- PowerShell cmdlet başvurusu için bkz. [az. Automation](/powershell/module/az.automation).

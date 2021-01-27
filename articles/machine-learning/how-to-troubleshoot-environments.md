@@ -10,12 +10,12 @@ ms.author: sagopal
 ms.date: 12/3/2020
 ms.topic: troubleshooting
 ms.custom: devx-track-python
-ms.openlocfilehash: 71061c056b499f79727f70fb855db7a81a65f3bd
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.openlocfilehash: 7ddd5dec87a122a0b36fee17b5434c8a49dcf434
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98572179"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881644"
 ---
 # <a name="troubleshoot-environment-image-builds"></a>Ortam görüntüsü Derlemeleriyle ilgili sorunları giderme
 
@@ -153,12 +153,12 @@ Olası hizmet tarafı hatalarıyla ilgili sorunları gidermek için aşağıdaki
 
 Olası sorunlar:
 - Kapsayıcı kayıt defterinin yol adı doğru çözümlenmeyebilir. Görüntü adlarının çift eğik çizgi ve Linux üzerinde eğik çizgilerin yönünü ve Windows konaklarına karşı doğru olup olmadığını denetleyin.
-- Bir sanal ağın arkasındaki bir kapsayıcı kayıt defteri [Desteklenmeyen bir bölgede](https://docs.microsoft.com/azure/private-link/private-link-overview#availability)özel bir uç nokta kullanıyorsa, portaldan hizmet uç noktasını (genel erişim) kullanarak kapsayıcı kayıt defterini yapılandırın ve yeniden deneyin.
-- Kapsayıcı kayıt defterini bir sanal ağın arkasına koyduktan sonra, çalışma alanının kapsayıcı kayıt defteri örneğiyle iletişim kurabilmesi için [Azure Resource Manager şablonunu](https://docs.microsoft.com/azure/machine-learning/how-to-enable-virtual-network#azure-container-registry) çalıştırın.
+- Bir sanal ağın arkasındaki bir kapsayıcı kayıt defteri [Desteklenmeyen bir bölgede](/azure/private-link/private-link-overview#availability)özel bir uç nokta kullanıyorsa, portaldan hizmet uç noktasını (genel erişim) kullanarak kapsayıcı kayıt defterini yapılandırın ve yeniden deneyin.
+- Kapsayıcı kayıt defterini bir sanal ağın arkasına koyduktan sonra, çalışma alanının kapsayıcı kayıt defteri örneğiyle iletişim kurabilmesi için [Azure Resource Manager şablonunu](/azure/machine-learning/how-to-enable-virtual-network#azure-container-registry) çalıştırın.
 
 ### <a name="you-get-a-401-error-from-a-workspace-container-registry"></a>Çalışma alanı kapsayıcısı kayıt defterinden 401 hatası alırsınız
 
-[Ws.sync_keys ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#sync-keys--)kullanarak depolama anahtarlarını yeniden eşitleyin.
+[Ws.sync_keys ()](/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#sync-keys--)kullanarak depolama anahtarlarını yeniden eşitleyin.
 
 ### <a name="the-environment-keeps-throwing-a-waiting-for-other-conda-operations-to-finish-error"></a>Ortam, "diğer Conda işlemlerinin bitmesi bekleniyor..." hatayla
 
@@ -166,7 +166,7 @@ Bir görüntü oluşturma devam ederken, Conda SDK istemcisi tarafından kilitle
 
 ### <a name="your-custom-docker-image-isnt-in-the-registry"></a>Özel Docker görüntünüz kayıt defterinde değil
 
-[Doğru etiketin](https://docs.microsoft.com/azure/machine-learning/how-to-use-environments#create-an-environment) kullanıldığını ve olduğunu denetleyin `user_managed_dependencies = True` . `Environment.python.user_managed_dependencies = True` Conda 'yi devre dışı bırakır ve kullanıcının yüklü paketlerini kullanır.
+[Doğru etiketin](/azure/machine-learning/how-to-use-environments#create-an-environment) kullanıldığını ve olduğunu denetleyin `user_managed_dependencies = True` . `Environment.python.user_managed_dependencies = True` Conda 'yi devre dışı bırakır ve kullanıcının yüklü paketlerini kullanır.
 
 ### <a name="you-get-one-of-the-following-common-virtual-network-issues"></a>Aşağıdaki ortak sanal ağ sorunlarından birini alırsınız
 
@@ -184,9 +184,9 @@ Bir görüntü oluşturma devam ederken, Conda SDK istemcisi tarafından kilitle
 
 ### <a name="you-cant-run-experiments-when-storage-has-network-security-enabled"></a>Depolamada ağ güvenliği etkinleştirildiğinde denemeleri çalıştıramazsınız
 
-Varsayılan Docker görüntülerini kullanıyorsanız ve Kullanıcı tarafından yönetilen bağımlılıkları etkinleştirirseniz, microsoftcontainerregistry ve azurefrontkapısı. firstparti [hizmeti etiketlerini](https://docs.microsoft.com/azure/machine-learning/how-to-enable-virtual-network) izin Azure Container Registry ve bağımlılıklarını kullanın.
+Varsayılan Docker görüntülerini kullanıyorsanız ve Kullanıcı tarafından yönetilen bağımlılıkları etkinleştirirseniz, microsoftcontainerregistry ve azurefrontkapısı. firstparti [hizmeti etiketlerini](/azure/machine-learning/how-to-enable-virtual-network) izin Azure Container Registry ve bağımlılıklarını kullanın.
 
- Daha fazla bilgi için bkz. [sanal ağları etkinleştirme](https://docs.microsoft.com/azure/machine-learning/how-to-enable-virtual-network#azure-container-registry).
+ Daha fazla bilgi için bkz. [sanal ağları etkinleştirme](/azure/machine-learning/how-to-enable-virtual-network#azure-container-registry).
 
 ### <a name="you-need-to-create-an-icm"></a>Bir ICM oluşturmanız gerekir
 

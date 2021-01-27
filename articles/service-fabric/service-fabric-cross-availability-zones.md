@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: 82161a8f66dd717a9dc448a743b818a9ab9938db
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 3db31431c24edd3377f6299046cc31067310b2ef
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98250987"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98876226"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-across-availability-zones"></a>Kullanılabilirlik Alanları arasında bir Azure Service Fabric kümesi dağıtma
 Azure 'daki Kullanılabilirlik Alanları, uygulamalarınızı ve verilerinizi veri merkezi hatalarından koruyan yüksek kullanılabilirliğe sahip bir tekliftir. Bir kullanılabilirlik alanı, bir Azure bölgesi içinde bağımsız güç, soğutma ve ağ ile donatılmış benzersiz bir fiziksel konumdur.
@@ -345,7 +345,7 @@ Bir sanal makine ölçek kümesindeki bölgeleri etkinleştirmek için, sanal ma
 
 * İlk değer, sanal makine ölçek kümesinde var olan Kullanılabilirlik Alanları belirten **Zones** özelliğidir.
 * İkinci değer, true olarak ayarlanması gereken "singlePlacementGroup" özelliğidir. **3 AZ ' de yayılmış ölçek kümesi, "singlePlacementGroup = true" ile birlikte 300 VM 'ye ölçeklendirebilir.**
-* Üçüncü değer "bölge bakiyesi" olup, doğru olarak ayarlandıysa katı bölge dengelemesi sağlar. VM 'lerin bölgeler arasında dengesiz şekilde dağıtılmasını önlemek için bunu true olarak ayarlamayı öneririz. [Bölge Dengeleme](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones#zone-balancing)hakkında bilgi edinin.
+* Üçüncü değer "bölge bakiyesi" olup, doğru olarak ayarlandıysa katı bölge dengelemesi sağlar. VM 'lerin bölgeler arasında dengesiz şekilde dağıtılmasını önlemek için bunu true olarak ayarlamayı öneririz. [Bölge Dengeleme](../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md#zone-balancing)hakkında bilgi edinin.
 * FaultDomain ve UpgradeDomain geçersiz kılmalarını yapılandırmak için gerekli değildir.
 
 ```json
@@ -416,9 +416,9 @@ Birden çok kullanılabilirlik bölgesini desteklemek için Service Fabric nodeT
 
 ### <a name="migration-to-the-node-type-with-multiple-availability-zones"></a>Birden çok Kullanılabilirlik Alanları düğüm türüne geçiş
 Tüm geçiş senaryoları için, birden çok kullanılabilirlik bölgesi desteklenmeleri gereken yeni bir nodeType eklenmelidir. Mevcut bir nodeType birden çok bölgeyi destekleyecek şekilde geçirilemez.
-[Buradaki](https://docs.microsoft.com/azure/service-fabric/service-fabric-scale-up-primary-node-type ) makale, yeni bir NodeType ekleme ve IP ve lb kaynakları gibi yeni NodeType için gereken diğer kaynakları ekleme hakkında ayrıntılı adımları yakalar. Aynı makalede, birden fazla kullanılabilirlik bölgesi olan nodeType, kümeye eklendikten sonra var olan nodeType devre dışı bırakılması de açıklanmaktadır.
+[Buradaki](./service-fabric-scale-up-primary-node-type.md) makale, yeni bir NodeType ekleme ve IP ve lb kaynakları gibi yeni NodeType için gereken diğer kaynakları ekleme hakkında ayrıntılı adımları yakalar. Aynı makalede, birden fazla kullanılabilirlik bölgesi olan nodeType, kümeye eklendikten sonra var olan nodeType devre dışı bırakılması de açıklanmaktadır.
 
-* Temel LB ve IP kaynaklarını kullanan bir nodeType 'ten geçiş: Bu, AZ önce bir düğüm türü olan çözüm için [burada](https://docs.microsoft.com/azure/service-fabric/service-fabric-cross-availability-zones#migrate-to-using-availability-zones-from-a-cluster-using-a-basic-sku-load-balancer-and-a-basic-sku-ip) açıklanmıştır. 
+* Temel LB ve IP kaynaklarını kullanan bir nodeType 'ten geçiş: Bu, AZ önce bir düğüm türü olan çözüm için [burada](#migrate-to-using-availability-zones-from-a-cluster-using-a-basic-sku-load-balancer-and-a-basic-sku-ip) açıklanmıştır. 
     Yeni düğüm türü için tek fark, yalnızca 1 sanal makine ölçek kümesi ve 1 NodeType, AZ başına 1 değil, her biri için 1 NodeType olacaktır.
 * NSG ile standart SKU LB ve IP kaynaklarını kullanan bir nodeType 'dan geçiş: yeni LB, IP ve NSG kaynakları eklemeye gerek olmadığı ve aynı kaynakların yeni nodeType içinde yeniden kullanılabilmesi için yukarıda açıklanan yordamın aynısını Izleyin.
 

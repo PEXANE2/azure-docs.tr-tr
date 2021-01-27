@@ -9,12 +9,12 @@ ms.subservice: security-fundamentals
 ms.topic: article
 ms.date: 11/10/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 4e64d866b5bd2f725db3be31d0fdd2f8663cfd7c
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: bb49523858f07e54887a67d9df68eb894e27ad34
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96029702"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881257"
 ---
 # <a name="azure-tls-certificate-changes"></a>Azure TLS sertifikası değişiklikleri  
 
@@ -30,7 +30,7 @@ Hizmete özgü ayrıntılar:
 - [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub) ve [DPS](../../iot-dps/index.yml) , Baltimore CyberTrust kök CA 'da kalacak, ancak ara CA 'ları değişecektir. [Ayrıntılar için buraya tıklayın](https://techcommunity.microsoft.com/t5/internet-of-things/azure-iot-tls-changes-are-coming-and-why-you-should-care/ba-p/1658456).
 - [Azure depolama](../../storage/index.yml) , Baltimore CyberTrust kök CA 'da kalacak, ancak ara CA 'ları değişecektir. [Ayrıntılar için buraya tıklayın](https://techcommunity.microsoft.com/t5/azure-storage/azure-storage-tls-changes-are-coming-and-why-you-care/ba-p/1705518).
 - [Redsıs Için Azure önbelleği](../../azure-cache-for-redis/index.yml) , Baltimore CyberTrust kök CA 'da kalacak, ancak ara CA 'ları değişecektir. [Ayrıntılar için buraya tıklayın](../../azure-cache-for-redis/cache-whats-new.md).
-- Azure Instance Metadata Service, Baltimore CyberTrust kök CA 'da kalacak, ancak ara CA 'Ları değişecektir. [Ayrıntılar için buraya tıklayın](https://docs.microsoft.com/answers/questions/172717/action-required-for-attested-data-tls-with-azure-i.html).
+- Azure Instance Metadata Service, Baltimore CyberTrust kök CA 'da kalacak, ancak ara CA 'Ları değişecektir. [Ayrıntılar için buraya tıklayın](/answers/questions/172717/action-required-for-attested-data-tls-with-azure-i.html).
 
 > [!IMPORTANT]
 > Müşterilerin, Azure hizmetlerine bağlanmaya çalışırken bağlantı başarısızlıklarını engellemek için bu değişiklikten sonra uygulama (ler) i güncelleştirmeleri güncelleştirmesi gerekebilir.

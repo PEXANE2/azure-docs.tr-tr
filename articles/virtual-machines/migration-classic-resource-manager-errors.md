@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: troubleshooting
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: 110d7186db97f6fac91b8fd785384a1c2ed7a8cd
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: 8b56d7294237c39d085a30a701ead3bde309759a
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96301697"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98882374"
 ---
 # <a name="errors-that-commonly-occur-during-classic-to-azure-resource-manager-migration"></a>Klasik ' e Azure Resource Manager geçiş sırasında sık karşılaşılan hatalar
 
@@ -41,7 +41,7 @@ Bu makale, IaaS kaynakları Azure klasik dağıtım modelinden Azure Resource Ma
 | HostedService {barındırılan-hizmet-adı} içindeki Dağıtım {dağıtım-adı}, fiziksel blob boyutu {veri-diskinin-bulunduğu-vhd-blobunun-boyutu} VM veri diski mantıksal boyutuyla {vm-api’sinde-belirtilen-veri-diskinin-boyutu} bayt eşleşmeyen bir Veri Diski {veri-diski-adı} olan bir VM {vm-adı} VM içeriyor. Geçiş, Azure Resource Manager VM için bir veri diski boyutu belirtilmeden devam edecek. | Bu hata, VHD blobunun boyutunu VM API modelinde güncelleştirmeden belirlediyseniz oluşur. Ayrıntılı sorun giderme adımları [aşağıdadır](#vm-with-data-disk-whose-physical-blob-size-bytes-does-not-match-the-vm-data-disk-logical-size-bytes).|
 | Bulut Hizmetinde {Bulut-Hizmeti-Adı} VM’si {VM-adı} için medya bağlantısı [veri-diski-Uri’si} olan veri diski {veri-diski-adı} doğrulanırken bir depolama özel durumu oluştu. Lütfen VHD medya bağlantısının bu sanal makine için erişilebilir olduğundan emin olun | Bu hata, VM diskleri silinmiş veya erişilemez durumda olduğunda oluşabilir. Lütfen VM’nin disklerinin var olduğundan emin olun.|
 | HostedService {barındırılan-hizmet-adı} içindeki VM {vm-adı}, blob adı {vhd-blob-adı} olan ve Azure Resource Manager'da desteklenmeyen bir MediaLink'li {vhd-uri’si} Disk içeriyor. | Blobun adı, İşlem Kaynak Sağlayıcısı tarafından şu anda desteklenmeyen "/" karakterini içeriyorsa bu hata oluşur. |
-| Bölgesel kapsamda olmadığından HostedService {bulut-hizmeti-adı} içindeki Dağıtım {dağıtım-adı} için geçişe izin verilmiyor. \/Bu dağıtımı bölgesel kapsama taşımak için lütfen https:/aka.MS/regionalscope adresine bakın. | 2014'te Azure, ağ kaynaklarının küme düzeyi kapsamından bölgesel kapsama taşınacağını duyurdu. [https://aka.ms/regionalscope](https://aka.ms/regionalscope)Daha fazla ayrıntı için bkz.. Geçirilmekte olan dağıtımda otomatik olarak bölgesel kapsama taşınan bir güncelleştirme işlemi yapılmamış olduğunda bu hata oluşur. En iyi çözüm, bir VM 'ye bir uç nokta veya VM 'ye bir veri diski eklemektir ve sonra geçişi yeniden dener. <br> Bkz. [Azure'da klasik bir Windows sanal makine üzerindeki uç noktaları ayarlama](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints#create-an-endpoint) veya [Klasik dağıtım modeli kullanılarak oluşturulmuş bir Windows sanal makinesine veri diski ekleme](/azure/virtual-machines/linux/attach-disk-portal)|
+| Bölgesel kapsamda olmadığından HostedService {bulut-hizmeti-adı} içindeki Dağıtım {dağıtım-adı} için geçişe izin verilmiyor. \/Bu dağıtımı bölgesel kapsama taşımak için lütfen https:/aka.MS/regionalscope adresine bakın. | 2014'te Azure, ağ kaynaklarının küme düzeyi kapsamından bölgesel kapsama taşınacağını duyurdu. [https://aka.ms/regionalscope](https://aka.ms/regionalscope)Daha fazla ayrıntı için bkz.. Geçirilmekte olan dağıtımda otomatik olarak bölgesel kapsama taşınan bir güncelleştirme işlemi yapılmamış olduğunda bu hata oluşur. En iyi çözüm, bir VM 'ye bir uç nokta veya VM 'ye bir veri diski eklemektir ve sonra geçişi yeniden dener. <br> Bkz. [Azure'da klasik bir Windows sanal makine üzerindeki uç noktaları ayarlama](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints#create-an-endpoint) veya [Klasik dağıtım modeli kullanılarak oluşturulmuş bir Windows sanal makinesine veri diski ekleme](./linux/attach-disk-portal.md)|
 | Ağ geçidi olmayan PaaS dağıtımları içerdiğinden, {VNET-Name} sanal ağı için geçiş desteklenmiyor. | Bu hata, sanal ağa bağlı Application Gateway veya API Management hizmetleri gibi ağ geçidi olmayan PaaS dağıtımlarınız olduğunda oluşur.|
 
 

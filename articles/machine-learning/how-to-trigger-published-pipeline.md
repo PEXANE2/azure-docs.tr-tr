@@ -10,12 +10,12 @@ author: lobrien
 ms.date: 12/16/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 9038d6bc9cd061200ef4553242889776f30d2dc1
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: a006dfd4f78f90ed323e5780b173cffb6daeac4a
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97964567"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881746"
 ---
 # <a name="trigger-machine-learning-pipelines-with-azure-machine-learning-sdk-for-python"></a>Python için Azure Machine Learning SDK ile makine öğrenimi işlem hatlarını tetikleme
 
@@ -27,7 +27,7 @@ Bu makalede, Azure 'da çalışması için programlı olarak bir işlem hattı z
 
 * Python için Azure Machine Learning SDK 'nın yüklendiği bir Python ortamı. Daha fazla bilgi için bkz [. eğitim ve dağıtım için yeniden kullanılabilir ortamları oluşturma ve yönetme Azure Machine Learning.](how-to-use-environments.md)
 
-* Yayımlanmış bir işlem hattına sahip Machine Learning çalışma alanı. [Azure MACHINE LEARNING SDK ile makine öğrenimi işlem hatları oluşturma ve çalıştırma](how-to-create-your-first-pipeline.md)sırasında yerleşik bir yapılandırma kullanabilirsiniz.
+* Yayımlanmış bir işlem hattına sahip Machine Learning çalışma alanı. [Azure MACHINE LEARNING SDK ile makine öğrenimi işlem hatları oluşturma ve çalıştırma](./how-to-create-machine-learning-pipelines.md)sırasında yerleşik bir yapılandırma kullanabilirsiniz.
 
 ## <a name="initialize-the-workspace--get-data"></a>Veri Al & çalışma alanını başlatma
 
@@ -142,7 +142,7 @@ Daha sonra yeniden çalıştırırsanız `Schedule.list(ws)` boş bir liste alma
 
 [Azure mantıksal uygulaması](../logic-apps/logic-apps-overview.md)kullanılarak daha karmaşık tetikleyici kuralları veya davranışları oluşturulabilir.
 
-Bir Machine Learning işlem hattını tetiklemek üzere bir Azure mantıksal uygulaması kullanmak için, yayımlanan bir Machine Learning işlem hattı için REST uç noktasına ihtiyacınız olacaktır. İşlem [hattınızı oluşturun ve yayımlayın](how-to-create-your-first-pipeline.md). Ardından, `PublishedPipeline` ardışık düzen kimliğini kullanarak VERILERINIZIN REST uç noktasını bulun:
+Bir Machine Learning işlem hattını tetiklemek üzere bir Azure mantıksal uygulaması kullanmak için, yayımlanan bir Machine Learning işlem hattı için REST uç noktasına ihtiyacınız olacaktır. İşlem [hattınızı oluşturun ve yayımlayın](./how-to-create-machine-learning-pipelines.md). Ardından, `PublishedPipeline` ardışık düzen kimliğini kullanarak VERILERINIZIN REST uç noktasını bulun:
 
 ```python
 # You can find the pipeline ID in Azure Machine Learning studio
@@ -219,7 +219,7 @@ Mantıksal uygulamanız sağlandıktan sonra, işlem hattınızda bir tetikleyic
 
 Bu makalede, bir işlem hattını iki farklı şekilde zamanlamak için Python için Azure Machine Learning SDK 'sını kullandınız. Bir zamanlama geçen saat zamanına göre yinelenir. Diğer zamanlama, belirtilen bir dosya `Datastore` veya bu depodaki bir dizin içinde değiştirilirse çalışır. İşlem hattını ve bireysel çalıştırmaları incelemek için portalın nasıl kullanılacağını gördünüz. İşlem hattının çalışmayı durdurması için zamanlamayı nasıl devre dışı bırakakullanacağınızı öğrendiniz. Son olarak, bir işlem hattının tetiklenmesi için bir Azure mantıksal uygulaması oluşturdunuz. 
 
-Daha fazla bilgi için bkz:
+Daha fazla bilgi için bkz.
 
 > [!div class="nextstepaction"]
 > [Batch Puanlama için Azure Machine Learning işlem hatları kullanma](tutorial-pipeline-batch-scoring-classification.md)

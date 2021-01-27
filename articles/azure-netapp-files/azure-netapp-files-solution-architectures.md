@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/22/2021
 ms.author: b-juche
-ms.openlocfilehash: 41e0f996bcd75ba1663bb8eb3880d550bed01f94
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 5984727f123da6e1d35d862c3f396bd85ce9e7f2
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98703445"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881461"
 ---
 # <a name="solution-architectures-using-azure-netapp-files"></a>Azure NetApp Files kullanan çözüm mimarileri
 Bu makalede, Azure NetApp Files kullanmaya yönelik çözüm mimarilerini anlamanıza yardımcı olabilecek en iyi yöntemlere başvurular sağlanmaktadır.  
@@ -96,7 +96,7 @@ Bu bölümde, Azure çözümlerinde SAP başvuruları sağlanmaktadır.
 
 ## <a name="azure-vmware-solutions"></a>Azure VMware çözümleri
 
-* [Azure VMware çözümü-Konuk işletim sistemi takmaları ile Azure NetApp Files](../azure-vmware/net-app-files-with-azure-vmware-solution.md)
+* [Azure VMware çözümü-Konuk işletim sistemi takmaları ile Azure NetApp Files](../azure-vmware/netapp-files-with-azure-vmware-solution.md)
 
 ## <a name="virtual-desktop-infrastructure-solutions"></a>Sanal masaüstü altyapısı çözümleri
 

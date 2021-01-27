@@ -3,12 +3,12 @@ title: Service Bus ile Azure kaynakları için Yönetilen kimlikler
 description: Bu makalede, Azure Service Bus varlıklara (kuyruklar, konular ve abonelikler) erişmek için yönetilen kimliklerin nasıl kullanılacağı açıklanır.
 ms.topic: article
 ms.date: 01/21/2021
-ms.openlocfilehash: 22be57a0108b6a8511a64165ad365675d006fb8f
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: dac12820adf863a7e51457d34f9180543089fc7b
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98808227"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881576"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-azure-service-bus-resources"></a>Azure Service Bus kaynaklara erişmek için Azure Active Directory ile yönetilen bir kimliğin kimliğini doğrulama
 [Azure kaynakları Için Yönetilen kimlikler](../active-directory/managed-identities-azure-resources/overview.md) , uygulama kodunuzun çalıştırıldığı dağıtımla ilişkili güvenli bir kimlik oluşturmanıza olanak sağlayan bir çapraz Azure özelliğidir. Daha sonra bu kimliği, uygulamanızın ihtiyaç duyacağı belirli Azure kaynaklarına erişim için özel izinler veren erişim denetimi rolleriyle ilişkilendirebilirsiniz.
@@ -137,7 +137,7 @@ Bu değişiklikleri yaptıktan sonra, uygulamayı yayımlayın ve çalıştırı
 
 
 > [!NOTE]
-> - Yönetilen kimlik yalnızca Azure ortamında, App Services, Azure VM 'Lerde ve ölçek kümelerinde kullanılabilir. Service Bus NuGet paketi tarafından kullanılan Microsoft. Azure. Services. AppAuthentication kitaplığı, .NET uygulamaları için, bu protokol üzerinden bir soyutlama sağlar ve yerel bir geliştirme deneyimini destekler. Bu kitaplık Ayrıca, Visual Studio, Azure CLı 2,0 veya tümleşik kimlik doğrulaması Active Directory kullanıcı hesabınızı kullanarak kodunuzu geliştirme makinenizde yerel olarak test etmenizi sağlar. Bu kitaplıkla ilgili yerel geliştirme seçenekleri hakkında daha fazla bilgi için bkz. [.NET kullanarak Azure Key Vault Için hizmetten hizmete kimlik doğrulaması](../key-vault/general/service-to-service-authentication.md).  
+> - Yönetilen kimlik yalnızca Azure ortamında, App Services, Azure VM 'Lerde ve ölçek kümelerinde kullanılabilir. Service Bus NuGet paketi tarafından kullanılan Microsoft. Azure. Services. AppAuthentication kitaplığı, .NET uygulamaları için, bu protokol üzerinden bir soyutlama sağlar ve yerel bir geliştirme deneyimini destekler. Bu kitaplık Ayrıca, Visual Studio, Azure CLı 2,0 veya tümleşik kimlik doğrulaması Active Directory kullanıcı hesabınızı kullanarak kodunuzu geliştirme makinenizde yerel olarak test etmenizi sağlar. Bu kitaplıkla ilgili yerel geliştirme seçenekleri hakkında daha fazla bilgi için bkz. [.NET kullanarak Azure Key Vault Için hizmetten hizmete kimlik doğrulaması](/dotnet/api/overview/azure/service-to-service-authentication).  
 > 
 > - Şu anda yönetilen kimlikler App Service dağıtım yuvaları ile çalışmaz.
 

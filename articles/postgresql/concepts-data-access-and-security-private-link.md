@@ -6,16 +6,16 @@ ms.author: sumuth
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: a864ce42888aace385cf60a4122f204c8f76831d
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: e0d1789d61bbe57c735f4dd2a70a1c2a8f183d90
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93240435"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881070"
 ---
 # <a name="private-link-for-azure-database-for-postgresql-single-server"></a>PostgreSQL-Single sunucusu için Azure veritabanı için özel bağlantı
 
-Özel bağlantı, PostgreSQL için Azure veritabanı-tek sunucu için özel uç noktalar oluşturmanızı sağlar ve bu nedenle Azure hizmetlerini özel sanal ağınız (VNet) içinde sunar. Özel uç nokta, veritabanı sunucunuza VNet 'teki diğer kaynaklar gibi bağlanmak için kullanabileceğiniz özel bir IP 'yi gösterir.
+Özel bağlantı, PostgreSQL için Azure veritabanı için özel uç noktalar oluşturmanızı sağlar-tek sunucu sanal ağınızın içine (VNet) getirebilir. Özel uç nokta, bir alt ağ içinde, VNet 'teki diğer kaynaklar gibi veritabanı sunucunuza bağlanmak için kullanabileceğiniz özel bir IP 'yi kullanıma sunar.
 
 Özel bağlantı işlevselliğini destekleyen PaaS hizmetlerinin listesi için özel bağlantı [belgelerini](../private-link/index.yml)gözden geçirin. Özel uç nokta, belirli bir [sanal](../virtual-network/virtual-networks-overview.md) ağ ve alt ağ içindeki özel bir IP adresidir.
 
@@ -41,7 +41,7 @@ Bu kurulumun sonunda, Azure VM yalnızca Batı ABD bölgesindeki PostgreSQL içi
 
 Özel bağlantı ile artık özel uç noktaya erişimi kısıtlamak için NSG 'ler gibi ağ erişim denetimlerini ayarlayabilirsiniz. Tek tek Azure PaaS kaynakları, belirli özel uç noktalara eşlenir. Kötü amaçlı bir Insider yalnızca eşlenmiş PaaS kaynağına (örneğin, PostgreSQL için Azure veritabanı) ve başka bir kaynağa erişebilir.
 
-## <a name="on-premises-connectivity-over-private-peering"></a>Özel eşleme üzerinden şirket içi bağlantı
+## <a name="on-premises-connectivity-over-private-peering"></a>Özel eşleme üzerinde şirket içi bağlantısı
 
 Şirket içi makinelerden ortak uç noktaya bağlandığınızda, IP adresinizin sunucu düzeyinde bir güvenlik duvarı kuralı kullanılarak IP tabanlı güvenlik duvarına eklenmesi gerekir. Bu model geliştirme veya test iş yükleri için bireysel makinelere erişim sağlamak için iyi bir şekilde çalıştığından, bir üretim ortamında yönetilmesi zordur.
 
@@ -113,7 +113,7 @@ Bir PostgreSQL için Azure veritabanı 'na bağlantı kurmak için [VNET-VNET VP
 
 ## <a name="deny-public-access-for-azure-database-for-postgresql-single-server"></a>PostgreSQL için Azure veritabanı tek sunucu için genel erişimi reddetme
 
-Yalnızca PostgreSQL için Azure veritabanı tek sunucuya erişim için özel uç noktalara erişmek istiyorsanız, veritabanı sunucusunda **ortak ağ erişimini engelle** özelliğini ayarlayarak tüm genel uç noktaları ( [güvenlik duvarı kuralları](concepts-firewall-rules.md) ve [VNET hizmet uç noktaları](concepts-data-access-and-security-vnet.md)) ayarlamayı devre dışı bırakabilirsiniz. 
+Yalnızca PostgreSQL için Azure veritabanı tek sunucuya erişim için özel uç noktalara erişmek istiyorsanız, veritabanı sunucusunda **ortak ağ erişimini engelle** özelliğini ayarlayarak tüm genel uç noktaları ([güvenlik duvarı kuralları](concepts-firewall-rules.md) ve [VNET hizmet uç noktaları](concepts-data-access-and-security-vnet.md)) ayarlamayı devre dışı bırakabilirsiniz. 
 
 Bu ayar *Evet* olarak ayarlandığında, PostgreSQL Için Azure veritabanı 'na yalnızca özel uç noktalar aracılığıyla bağlantılara izin verilir. Bu ayar *hiçbir Istemci yok* olarak ayarlandığında, güvenlik duvarınız veya VNET hizmeti uç noktası ayarına göre PostgreSQL Için Azure veritabanınıza bağlanabilir. Ayrıca, özel ağ erişiminin değeri ayarlandıktan sonra müşteriler var olan ' güvenlik duvarı kurallarını ' ve ' VNet hizmeti uç noktası kuralları ' ekleyemez ve/veya güncelleştiremez.
 

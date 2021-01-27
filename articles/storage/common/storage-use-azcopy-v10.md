@@ -8,12 +8,12 @@ ms.date: 12/08/2020
 ms.author: normesta
 ms.subservice: common
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: ab3cb403a8757f424a141206f99f9c29bf3e0b49
-ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
+ms.openlocfilehash: 87cc8af9206daa1f1e959b8abd8beb3e7f8ff2f2
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98108157"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881003"
 ---
 # <a name="get-started-with-azcopy"></a>AzCopy’yi kullanmaya başlama
 
@@ -79,7 +79,7 @@ Bu tabloyu kılavuz olarak kullan:
 Bu seçenek yalnızca BLOB depolama için kullanılabilir. Azure Active Directory kullanarak, her komuta bir SAS belirteci eklemek yerine kimlik bilgilerini bir kez sağlayabilirsiniz.  
 
 > [!NOTE]
-> Geçerli sürümde, blob 'ları depolama hesapları arasında kopyalamayı planlıyorsanız, her kaynak URL 'ye bir SAS belirteci eklemeniz gerekir. SAS belirtecini yalnızca hedef URL 'den atlayabilirsiniz. Örnekler için bkz. [depolama hesapları arasında blobları kopyalama](storage-use-azcopy-blobs.md).
+> Geçerli sürümde, blob 'ları depolama hesapları arasında kopyalamayı planlıyorsanız, her kaynak URL 'ye bir SAS belirteci eklemeniz gerekir. SAS belirtecini yalnızca hedef URL 'den atlayabilirsiniz. Örnekler için bkz. [depolama hesapları arasında blobları kopyalama](#transfer-data).
 
 Azure AD 'yi kullanarak erişim yetkisi vermek için bkz. [AzCopy ve Azure Active Directory (Azure AD) ile bloblara erişim yetkisi verme](storage-use-azcopy-authorize-azure-active-directory.md).
 
@@ -105,7 +105,7 @@ Kimliğinizi yetkilendirdikten veya bir SAS belirteci elde ettikten sonra, veri 
 
 | Hizmet | Makale |
 |--------|-----------|
-|Azure Blob depolama alanı |[Azure Blob depolama alanına dosya yükleme](storage-use-azcopy-blobs-upload.md)<br><br>[Blob 'ları Azure Blob depolamadan indirin](storage-use-azcopy-blobs-download.md)<br><br>[Blob 'ları Azure depolama hesapları arasında kopyalama](storage-use-azcopy-blobs-copy.md)<br><br>[Azure Blob depolama ile eşitlemeyi](storage-use-azcopy-blobs-synchronize.md)|
+|Azure Blob depolama |[Azure Blob depolama alanına dosya yükleme](storage-use-azcopy-blobs-upload.md)<br><br>[Blob 'ları Azure Blob depolamadan indirin](storage-use-azcopy-blobs-download.md)<br><br>[Blob 'ları Azure depolama hesapları arasında kopyalama](storage-use-azcopy-blobs-copy.md)<br><br>[Azure Blob depolama ile eşitlemeyi](storage-use-azcopy-blobs-synchronize.md)|
 |Azure Dosyaları |[AzCopy ve dosya depolama ile verileri aktarma](storage-use-azcopy-files.md)|
 |Amazon S3|[AzCopy ve Amazon S3 demetleri ile veri aktarma](storage-use-azcopy-s3.md)|
 |Azure Stack depolama|[AzCopy ve Azure Stack Storage ile veri aktarımı](/azure-stack/user/azure-stack-storage-transfer#azcopy)|

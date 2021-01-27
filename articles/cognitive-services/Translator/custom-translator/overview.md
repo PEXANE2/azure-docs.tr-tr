@@ -2,19 +2,19 @@
 title: Özel Çevirmen nedir?
 titleSuffix: Azure Cognitive Services
 description: Özel çevirmen, Microsoft Translator hub 'ının Istatistiksel makine çevirisi (SMT) için yaptığı, ancak özel olarak sinir makine çevirisi (NMT) sistemleri için de benzer özellikler sunar.
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 12/09/2019
-ms.author: swmachan
+ms.author: lajanuar
 ms.topic: overview
-ms.openlocfilehash: 6a7301fd878eb65e4c1dd540275611bcf9348afc
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 37d31d753812924607c4d31df6d4f4d5e7b32d69
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95241752"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98890722"
 ---
 # <a name="what-is-custom-translator"></a>Özel Çevirmen nedir?
 

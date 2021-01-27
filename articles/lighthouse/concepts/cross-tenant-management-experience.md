@@ -1,14 +1,14 @@
 ---
 title: Kiracılar arası yönetim deneyimleri
 description: Azure Temsilcili kaynak yönetimi, bir çapraz kiracı yönetim deneyimi sunar.
-ms.date: 01/20/2021
+ms.date: 01/26/2021
 ms.topic: conceptual
-ms.openlocfilehash: 0e380b49f122e63113e790f4e866fed40aa9beac
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 9af90e10d889c3d30375e001891ce0dc70767ab4
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98662721"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881410"
 ---
 # <a name="cross-tenant-management-experiences"></a>Kiracılar arası yönetim deneyimleri
 
@@ -97,7 +97,7 @@ Birçok görev ve hizmet, yönetilen kiracılar genelinde Temsilcili kaynaklar �
 
 - Tüm aboneliklerdeki uyarıları görüntüleme ve yenileme özelliği sayesinde, temsilci olan abonelikler için uyarıları görüntüleme
 - Temsilcili abonelikler için etkinlik günlüğü ayrıntılarını görüntüleme
-- Log Analytics: birden çok Kiracıdaki uzak çalışma alanlarından verileri sorgulama (müşteri kiracılarındaki çalışma alanlarından veriye erişmek için kullanılan Otomasyon hesaplarının aynı kiracıda oluşturulması gerektiğini unutmayın)
+- [Log Analytics](../../azure-monitor/platform/service-providers.md): birden çok Kiracıdaki uzak çalışma alanlarından verileri sorgulama (müşteri kiracılarındaki çalışma alanlarından veriye erişmek için kullanılan Otomasyon hesaplarının aynı kiracıda oluşturulması gerektiğini unutmayın)
 - Azure Otomasyonu runbook 'ları veya Azure Işlevleri gibi Otomasyonu tetikleyen müşteri kiracılarında, Web kancaları aracılığıyla kiracıyı yönetme bölümünde uyarı oluşturma
 - Yönetim kiracısındaki çalışma alanlarına kaynak günlükleri göndermek için müşteri kiracılarında [Tanılama ayarları](../..//azure-monitor/platform/diagnostic-settings.md) oluşturma
 - SAP iş yükleri için, [Müşteri kiracılar genelinde toplu bir görünüm Ile SAP Çözümleri ölçümlerini izleyin](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/using-azure-lighthouse-and-azure-monitor-for-sap-solutions-to/ba-p/1537293)

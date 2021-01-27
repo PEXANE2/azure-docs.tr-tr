@@ -1,6 +1,6 @@
 ---
-title: Azure bulut hizmeti oluşturma (genişletilmiş destek)-Şablonlar
-description: ARM şablonlarını kullanarak bir Azure bulut hizmeti (genişletilmiş destek) oluşturma
+title: Azure bulut hizmeti dağıtma (genişletilmiş destek)-Şablonlar
+description: ARM şablonlarını kullanarak bir Azure bulut hizmeti (genişletilmiş destek) dağıtma
 ms.topic: tutorial
 ms.service: cloud-services-extended-support
 author: gachandw
@@ -8,14 +8,14 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 3b28bc96703fa48e598bfb6f9622237e769119f2
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: f86b2a50040704aac2827c463a362a04f78ba34f
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98757161"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881830"
 ---
-# <a name="create-a-cloud-service-extended-support-using-arm-templates"></a>ARM şablonları kullanarak bir bulut hizmeti (genişletilmiş destek) oluşturma
+# <a name="deploy-a-cloud-service-extended-support-using-arm-templates"></a>ARM şablonları kullanarak bir bulut hizmeti (genişletilmiş destek) dağıtma
 
 Bu öğreticide, [ARM şablonları](https://docs.microsoft.com/azure/azure-resource-manager/templates/overview)kullanarak bir bulut hizmeti (genişletilmiş destek) dağıtımı oluşturma açıklanmaktadır. 
 
@@ -39,7 +39,7 @@ Bu öğreticide, [ARM şablonları](https://docs.microsoft.com/azure/azure-resou
     - Cloud Services (genişletilmiş destek) kaynağının Key Vault sertifikayı alabilmesi için ilişkili Key Vault uygun izinleri etkinleştirmelidir. Daha fazla bilgi için bkz. [Sertifikalar ve Key Vault](certificates-and-key-vault.md)
     - Anahtar kasasının, aşağıdaki adımlarda gösterilen ARM şablonunun OsProfile bölümünde başvurulması gerekir.
 
-## <a name="create-a-cloud-service-extended-support"></a>Bulut hizmeti oluşturma (genişletilmiş destek) 
+## <a name="deploy-a-cloud-service-extended-support"></a>Bulut hizmeti dağıtma (genişletilmiş destek) 
 1. Sanal ağ oluşturun. Sanal ağın adı, hizmet yapılandırma (. cscfg) dosyasındaki başvurularla aynı olmalıdır. Var olan bir sanal ağı kullanıyorsanız, ARM şablonundan bu bölümü atlayın.
 
     ```json
@@ -454,3 +454,4 @@ Bu öğreticide, [ARM şablonları](https://docs.microsoft.com/azure/azure-resou
 ## <a name="next-steps"></a>Sonraki adımlar 
 - Cloud Services için [sık sorulan soruları](faq.md) gözden geçirin (genişletilmiş destek).
 - [Azure Portal](deploy-portal.md), [PowerShell](deploy-powershell.md), [şablon](deploy-template.md) veya [Visual Studio](deploy-visual-studio.md)kullanarak bir bulut hizmeti (genişletilmiş destek) dağıtın.
+- [Cloud Services (genişletilmiş destek) örnekleri deposunu](https://github.com/Azure-Samples/cloud-services-extended-support) ziyaret edin

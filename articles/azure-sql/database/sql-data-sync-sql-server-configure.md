@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/14/2019
-ms.openlocfilehash: f5192176a6a0e174d5878c51defce70d949c1eb1
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: d6b5bab1c1b6c8db4821fdf84728eb66eb55b899
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96922307"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98882238"
 ---
 # <a name="tutorial-set-up-sql-data-sync-between-databases-in-azure-sql-database-and-sql-server"></a>Öğretici: Azure SQL veritabanı ve SQL Server veritabanları arasında SQL Data Sync ayarlama
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -57,7 +57,7 @@ SQL Data Sync nasıl yapılandırılacağı hakkında PowerShell örnekleri içi
 
    | Ayar                        | Açıklama |
    | ------------------------------ | ------------------------------------------------- |
-   | **Eşitleme grubu adı** | Yeni eşitleme grubu için bir ad girin. Bu ad, veritabanının kendisinin adından farklıdır. |
+   | **Eşitleme Grubu Adı** | Yeni eşitleme grubu için bir ad girin. Bu ad, veritabanının kendisinin adından farklıdır. |
    | **Meta veri veritabanını Eşitle** | Veritabanı oluşturmayı seçin (önerilir) veya var olan bir veritabanını kullanın.<br/><br/>**Yeni veritabanı**' nı seçerseniz **Yeni veritabanı oluştur** ' u seçin. Ardından **SQL veritabanı** sayfasında, yeni veritabanını adlandırın ve yapılandırın ve **Tamam**' ı seçin.<br/><br/>**Varolan veritabanını kullan**' ı seçerseniz, listeden veritabanını seçin. |
    | **Otomatik eşitleme** | **Açık** veya **kapalı** seçeneğini belirleyin.<br/><br/>**Açık**' ı seçerseniz, bir sayı girin ve **eşitleme sıklığı** bölümünde **saniye**, **dakika**, **saat** veya **gün** ' yı seçin.<br/> İlk eşitleme, seçilen Aralık süresi yapılandırmanın kaydedildiği zamandan geçtiğinde başlar.|
    | **Çakışma çözümleme** | **Hub Win** veya **member WIN**' i seçin.<br/><br/>**Merkez kazanma** , çakışmaların ne zaman meydana geldiğini, Merkez veritabanındaki verileri üye veritabanındaki çakışan verilerin üzerine yazar.<br/><br/>**Üye kazanma** , çakışmaların ne zaman meydana geldiğini, üye veritabanındaki verileri Merkez veritabanındaki çakışan verilerin üzerine yazar. |
@@ -179,10 +179,6 @@ Yeni eşitleme grubu üyeleri oluşturulup dağıtıldıktan sonra, **eşitleme 
 
 ## <a name="faq"></a>SSS
 
-**Veri eşitleme, verilerimi ne sıklıkta eşitler?**
-
-Eşitlemeler arasındaki en az süre beş dakikadır.
-
 **SQL Data Sync tamamen tablo oluşturur mi?**
 
 Hedef veritabanında eşitleme şeması tabloları eksikse SQL Data Sync seçtiğiniz sütunlarla o tabloları oluşturur. Bununla birlikte, bu, aşağıdaki nedenlerden dolayı tam aslına uygunluk şemasına neden olmaz:
@@ -250,7 +246,7 @@ SQL Data Sync hakkında daha fazla bilgi için bkz.:
 - [Azure SQL Data Sync için veri eşitleme Aracısı](sql-data-sync-agent-overview.md)
 - [En iyi uygulamalar](sql-data-sync-best-practices.md) ve [Azure SQL Data Sync sorunları nasıl giderilir](sql-data-sync-troubleshoot.md)
 - [Azure Izleyici günlükleriyle SQL Data Sync izleme](./monitor-tune-overview.md)
-- [Transact-SQL veya PowerShell ile eşitleme şemasını güncelleştirme](sql-data-sync-update-sync-schema.md) [PowerShell](scripts/update-sync-schema-in-sync-group.md)
+- [Transact-SQL veya PowerShell ile eşitleme şemasını güncelleştirme](sql-data-sync-update-sync-schema.md) [](scripts/update-sync-schema-in-sync-group.md)
 
 SQL Veritabanı hakkında daha fazla bilgi için bkz.:
 

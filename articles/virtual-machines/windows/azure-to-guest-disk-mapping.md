@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 11/17/2020
 ms.author: tibasham
-ms.openlocfilehash: f16e34f372016f284d4af79443e84d9d5cdea957
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.openlocfilehash: 373fd26c36bf2f77de6a376f738bd3caaf735f00
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96523676"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881881"
 ---
 # <a name="how-to-map-azure-disks-to-windows-vm-guest-disks"></a>Azure disklerini Windows VM Konuk disklerine eşleme
 
@@ -29,11 +29,11 @@ Alıştırmada yalnızca LUN 'yi kullanmanız gerekir.
 
 ## <a name="finding-the-lun"></a>LUN bulma
 
-LUN 'u bulmanın iki yöntemi vardır. Bu, [depolama alanları](https://docs.microsoft.com/windows-server/storage/storage-spaces/overview) kullanıyor olmanız durumunda sizin seçtiğiniz bir işlem olur.
+LUN 'u bulmanın iki yöntemi vardır. Bu, [depolama alanları](/windows-server/storage/storage-spaces/overview) kullanıyor olmanız durumunda sizin seçtiğiniz bir işlem olur.
 
 ### <a name="disk-management"></a>Disk Yönetimi
 
-Depolama havuzlarını kullanmıyorsanız, LUN 'U bulmak için [disk yönetimi](https://docs.microsoft.com/windows-server/storage/disk-management/overview-of-disk-management) ' ni kullanabilirsiniz.
+Depolama havuzlarını kullanmıyorsanız, LUN 'U bulmak için [disk yönetimi](/windows-server/storage/disk-management/overview-of-disk-management) ' ni kullanabilirsiniz.
 
 1. VM 'ye bağlanın ve disk yönetimi a ' yı açın. Başlat düğmesine sağ tıklayın ve "Disk Yönetimi" a ' yı seçin. Ayrıca `diskmgmt.msc` , aramaya başla kutusunu da yazabilirsiniz
 1. Alt bölmede, disklerden birine sağ tıklayın ve "Özellikler" i seçin
@@ -55,7 +55,7 @@ Azure portal, Azure CLı veya Azure PowerShell kullanarak bir Azure diskinin LUN
 1. Sanal makineyi seçin
 1. "Diskler" i seçin
 1. Eklenen diskler listesinden bir veri diski seçin.
-1. Diskin LUN 'U, disk ayrıntısı bölmesinde görüntülenir. Burada görüntülenen LUN, Aygıt Yöneticisi veya Sunucu Yöneticisi kullanılarak Konukta aranan LUN 'Lara göre açıklanmıştır.
+1. Diskin LUN 'U, disk ayrıntısı bölmesinde görüntülenir. Burada görüntülenen LUN, Device Manager veya Sunucu Yöneticisi kullanılarak Konukta aranan LUN 'Lara göre açıklanmıştır.
 
 ### <a name="finding-an-azure-disks-lun-using-azure-cli-or-azure-powershell"></a>Azure CLı veya Azure PowerShell kullanarak bir Azure diskinin LUN 'unu bulma
 

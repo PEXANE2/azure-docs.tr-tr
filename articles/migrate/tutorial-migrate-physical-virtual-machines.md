@@ -7,12 +7,12 @@ ms.manager: bsiva
 ms.topic: tutorial
 ms.date: 01/02/2021
 ms.custom: MVC
-ms.openlocfilehash: c0f4f1d7f0213ad24d25d8d34235475bbdb0316a
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.openlocfilehash: 3e098e64eacf8b126d6a6d72b1f242443e88d55c
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98567110"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881104"
 ---
 # <a name="migrate-machines-as-physical-servers-to-azure"></a>Makineleri fiziksel sunucu olarak Azure 'a geçirme
 
@@ -25,7 +25,7 @@ Bu makalede, Azure geçişi: sunucu geçiş aracını kullanarak makineleri fizi
 - Amazon Web Services (AWS) veya Google Cloud Platform (GCP) gibi genel bulutlarda çalışan VM 'Leri geçirin.
 
 
-Bu öğretici, fiziksel sunucuların Azure 'a nasıl değerlendirileceğini ve geçirileceğini gösteren bir serideki üçüncü bir seridir. Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğretici, fiziksel sunucuların Azure 'a nasıl değerlendirileceğini ve geçirileceğini gösteren bir serideki üçüncü bir seridir. Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Azure geçişi ile Azure 'u kullanmaya hazırlanma: sunucu geçişi.
@@ -55,7 +55,7 @@ Sunucu geçişi ile geçiş için Azure 'u hazırlayın.
 
 **Görev** | **Ayrıntılar**
 --- | ---
-**Azure Geçişi projesi oluşturma** | [Yeni bir proje oluşturmak](https://docs.microsoft.com/azure/migrate/create-manage-projects)için Azure hesabınızda katkıda bulunan veya sahip izinlerinin olması gerekir.
+**Azure Geçişi projesi oluşturma** | [Yeni bir proje oluşturmak](./create-manage-projects.md)için Azure hesabınızda katkıda bulunan veya sahip izinlerinin olması gerekir.
 **Azure hesabınız için izinleri doğrulama** | Azure hesabınızın bir VM oluşturmak ve Azure yönetilen diskine yazmak için izinleri olması gerekir.
 
 
@@ -239,7 +239,7 @@ Geçirmek istediğiniz makinelerde, Mobility hizmeti aracısını yüklemeniz ge
     - Platform tarafından yönetilen ve müşteri tarafından yönetilen anahtarlarla Çift şifreleme
 
    > [!NOTE]
-   > VM 'Leri CMK ile çoğaltmak için hedef kaynak grubu altında [bir disk şifreleme kümesi oluşturmanız](https://go.microsoft.com/fwlink/?linkid=2151800) gerekir. Bir disk şifreleme kümesi nesnesi yönetilen diskleri, SSE için kullanılacak CMK 'yi içeren bir Key Vault eşler.
+   > VM 'Leri CMK ile çoğaltmak için hedef kaynak grubu altında [bir disk şifreleme kümesi oluşturmanız](../virtual-machines/disks-enable-customer-managed-keys-portal.md#set-up-your-disk-encryption-set) gerekir. Bir disk şifreleme kümesi nesnesi yönetilen diskleri, SSE için kullanılacak CMK 'yi içeren bir Key Vault eşler.
   
 13. **Azure Hibrit Avantajı**’nda:
 

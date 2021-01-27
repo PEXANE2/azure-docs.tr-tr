@@ -12,12 +12,12 @@ ms.workload: ''
 ms.topic: conceptual
 ms.date: 01/05/2021
 ms.author: inhenkel
-ms.openlocfilehash: 36593efd4f2583f28dffbb4f5b491fbeec7ba21d
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 55a49d48af95c103d2a28d5106af5f3166605514
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97916329"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98882255"
 ---
 # <a name="azure-storage-accounts"></a>Azure Depolama hesapları
 
@@ -47,7 +47,7 @@ Media Services v3 'de, depolama API 'Leri dosyaları varlıklara yüklemek için
 
 Varlıkları bekleyen bir şekilde korumak için, varlıkların depolama tarafı şifrelemesi tarafından şifrelenmesi gerekir. Aşağıdaki tabloda, Media Services v3 'de depolama tarafı şifrelemesinin nasıl çalıştığı gösterilmektedir:
 
-|Şifreleme seçeneği|Açıklama|Media Services v3|
+|Şifreleme seçeneği|Description|Media Services v3|
 |---|---|---|
 |Media Services depolama şifrelemesi| AES-256 şifrelemesi, anahtar Media Services tarafından yönetiliyor. |Desteklenmez. <sup>(1)</sup>|
 |[Bekleyen veriler için depolama hizmeti şifrelemesi](../../storage/common/storage-service-encryption.md)|Azure depolama tarafından sunulan ve Azure tarafından yönetilen veya müşteri tarafından yönetilen sunucu tarafı şifrelemesi.|Destekleniyor.|
@@ -56,7 +56,7 @@ Varlıkları bekleyen bir şekilde korumak için, varlıkların depolama tarafı
 <sup>1</sup> Media Services v3 'de, depolama ŞIFRELEMESI (AES-256 şifrelemesi) yalnızca, varlıklarınız Media Services V2 ile oluşturulduysa, bu da v3 'in mevcut depolama şifreli varlıklarıyla çalıştığı ancak yeni olanların oluşturulmasına izin vermediği durumlarda geriye dönük uyumluluk için desteklenir.
 
 ## <a name="double-encryption"></a>Çift şifreleme
-Media Services, Çift şifrelemeyi destekler.  Çift şifreleme hakkında daha fazla bilgi edinmek için bkz. [Azure Çift şifreleme](https://docs.microsoft.com/azure/security/fundamentals/double-encryption).
+Media Services, Çift şifrelemeyi destekler.  Çift şifreleme hakkında daha fazla bilgi edinmek için bkz. [Azure Çift şifreleme](../../security/fundamentals/double-encryption.md).
 
 ## <a name="storage-account-errors"></a>Depolama hesabı hataları
 

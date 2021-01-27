@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 03/19/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 0d8d19256dfca21cc805c2689557099a6785f76b
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 2d531edeeae9e0dd7e392cae66d9e4d41c68dfa2
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629215"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98882272"
 ---
 # <a name="migrate-from-network-attached-storage-nas-to-a-hybrid-cloud-deployment-with-azure-file-sync"></a>Ağ bağlantılı depolamadan (NAS) Azure Dosya Eşitleme ile karma bulut dağıtımına geçiş
 
@@ -151,7 +151,7 @@ Arka plan
       /MıR
    :::column-end:::
    :::column span="1":::
-      Aynı hedefte/hedefte sırayla bu RoboCopy komutunu birkaç kez çalıştırmaya izin verir. Ne önce kopyalanmış olduğunu tanımlar ve onu atlar. Yalnızca değişiklikler, ekler ve " *silmeler* " işlenir. Bu, son çalıştırmasından bu yana yapılır. Komut daha önce çalıştırılmadıysa hiçbir şey atlanamaz. */MIR* bayrağı, hala etkin olarak kullanılan ve değişen kaynak konumları için mükemmel bir seçenektir.
+      Aynı hedefte/hedefte sırayla bu RoboCopy komutunu birkaç kez çalıştırmaya izin verir. Ne önce kopyalanmış olduğunu tanımlar ve onu atlar. Yalnızca değişiklikler, ekler ve "*silmeler*" işlenir. Bu, son çalıştırmasından bu yana yapılır. Komut daha önce çalıştırılmadıysa hiçbir şey atlanamaz. */MIR* bayrağı, hala etkin olarak kullanılan ve değişen kaynak konumları için mükemmel bir seçenektir.
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -208,7 +208,7 @@ Paylaşımı/paylaşım gruplarını ortak bir köke veya birime geçirmeyi tama
 Bu kopyaların birkaçını paralel olarak çalıştırmayı deneyebilirsiniz. Tek seferde bir Azure dosya paylaşımının kapsamını işlemeyi öneririz.
 
 > [!WARNING]
-> Tüm verileri NAS 'dan Windows Server 'a taşıdınız ve geçiş işlemi tamamlandıktan sonra: Azure portal * **Tüm** _ eşitleme gruplarına dönün ve bulut katmanlama birimi boş alan yüzdesi değerini önbellek kullanımı için daha uygun bir değere ayarlayın, %20 deyin. 
+> Tüm verileri NAS 'dan Windows Server 'a taşıdınız ve geçiş işlemi tamamlandıktan sonra: Azure portal ***Tüm** _ eşitleme gruplarına dönün ve bulut katmanlama birimi boş alan yüzdesi değerini önbellek kullanımı için daha uygun bir değere ayarlayın, %20 deyin. 
 
 Bulut katmanlama birimi boş alan ilkesi, büyük olasılıkla birden çok sunucu uç noktası ile eşitlenmesi olan bir birim düzeyinde çalışır. Tek bir sunucu uç noktasında boş alanı ayarlamayı unutursanız, eşitleme en kısıtlayıcı kuralı uygulamaya devam eder ve %99 boş disk alanı tutmaya çalışır ve bu da, yerel önbelleğin bekleneceği gibi yapılmadığından bu işlemi gerçekleştirmeyecektir. Amacınız yalnızca nadiren erişilen ve arşiv verileri içeren bir birimin ad alanına sahip olmadığı ve diğer bir senaryo için depolama alanının geri kalanını ayırdığınız durumlar dışında.
 
@@ -227,5 +227,5 @@ Sorun giderme Azure Dosya Eşitleme sorunları için aşağıdaki bölümdeki ba
 Azure dosya paylaşımları ve Azure Dosya Eşitleme hakkında daha fazla bilgi bulabilirsiniz. Aşağıdaki makalelerde gelişmiş seçenekler, en iyi uygulamalar ve ayrıca sorun giderme yardımı da yer almanıza yardımcı olur. Bu makaleler, [Azure dosya paylaşma belgelerini](storage-files-introduction.md) uygun şekilde bağlar.
 
 * [AFS genel bakış](./storage-sync-files-planning.md)
-* [AFS dağıtım kılavuzu](storage-files-deployment-guide.md)
+* [AFS dağıtım kılavuzu](./storage-how-to-create-file-share.md)
 * [AFS sorunlarını giderme](storage-sync-files-troubleshoot.md)
