@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/30/2020
-ms.openlocfilehash: e188c74c6eba5e4182f7b72277db8dd8e08db8d4
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 714b7bccea9b1e0c18ad78a4d98ed3526a279f5f
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97913949"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879267"
 ---
 # <a name="how-to-plan-a-saas-offer-for-the-commercial-marketplace"></a>Ticari Market için SaaS teklifi planlaması
 
@@ -113,10 +113,10 @@ SaaS teklifiniz hem BT çözümü (Azure Marketi) hem *de* bir iş çözümü (a
 
 | Ölçülen faturalandırma | Ortak plan | Özel plan | Kullanılabilir: |
 |---|---|---|---|
-| Evet             | Evet         | Hayır           | Azure Marketi ve Azure portal |
-| Evet             | Evet         | Evet          | Azure Marketi ve Azure portal * |
-| Evet             | Hayır          | Evet          | Yalnızca Azure portal |
-| Hayır              | Hayır          | Evet          | Yalnızca Azure portal |
+| Yes             | Yes         | Hayır           | Azure Marketi ve Azure portal |
+| Yes             | Yes         | Yes          | Azure Marketi ve Azure portal * |
+| Yes             | Hayır          | Yes          | Yalnızca Azure portal |
+| Hayır              | Hayır          | Yes          | Yalnızca Azure portal |
 |||||
 
 &#42; teklifin özel planı yalnızca Azure portal ile kullanılabilir
@@ -150,7 +150,7 @@ Iş Ortağı Merkezi 'nde [Yeni bir SaaS teklifi oluşturduğunuzda](create-new-
 6. Gizlilik ilkesi
 7. Teklif adı
 8. Özet
-9. Açıklama
+9. Description
 10. Ekran görüntüleri/videolar
 11. Belgeler
 
@@ -202,7 +202,7 @@ Teklifinizi daha kolay bir şekilde oluşturmaya yardımcı olmak için bu öğe
   - . png dosyası
   - Bir resim yazısı içermelidir
 - **Medya-videolar** (isteğe bağlı): aşağıdaki gereksinimlere sahip en fazla dört video ekleyebilirsiniz, bu da teklifinizi gösterir:
-  - Ad
+  - Name
   - URL: yalnızca YouTube veya Vimeo 'da barındırılmalıdır.
   - Küçük resim: 1280 x 720. png dosyası
 
@@ -250,7 +250,7 @@ Aşağıdaki örnek, acentelerde bir örnek dökümünü ve kurumlar modelini g�
 | Microsoft, lisans maliyetinizi %80 oranında ödetir<br>`*` Microsoft, tam SaaS uygulamaları için lisans maliyetlerinizin %90 ' ını öder| $80,00/ay<br>``*`` $90,00/ay |
 |||
 
-**`*` Daha az Market servis ücreti** – Microsoft 'un ticari Market 'te yayımladığı belirli SaaS teklifleri için, Microsoft 'un Market hizmet ücretini %20 ' den (Microsoft Publisher anlaşmasında açıklandığı gibi) %10 ' a azaltacak. Tekliflerinizin uygun olmasını sağlamak için teklifinizin Microsoft tarafından Azure IP ortak satışı incentivized olarak belirlenmiş olması gerekir. Uygunluk, en az beş (5) iş günü boyunca her bir takvim ayının sonundan önce, daha düşük Market servis ücretini alacak şekilde sağlanmalıdır. Uygunluk karşılandıktan sonra, sınırlı hizmet ücreti, aşağıdaki ayın ilk gününde geçerli olan tüm işlemlere uygulanır ve Azure IP ortak satışı incentivized durumu kaybolana kadar uygulamaya devam edecektir. IP ortak satışı uygunluğu hakkında daha fazla bilgi için bkz. [ortak satış durumu gereksinimleri](https://aka.ms/CertificationPolicies#3000-requirements-for-co-sell-status). Daha düşük Market hizmet ücreti, Azure IP ortak satış incentivized VM 'Leri, yönetilen uygulamalar ve ticari Market aracılığıyla sunulan diğer tüm nitelikli transactable IaaS teklifleri için de geçerlidir.
+**`*` Daha az Market servis ücreti** – Microsoft 'un ticari Market 'te yayımladığı belirli SaaS teklifleri için, Microsoft 'un Market hizmet ücretini %20 ' den (Microsoft Publisher anlaşmasında açıklandığı gibi) %10 ' a azaltacak. Tekliflerinizin uygun olmasını sağlamak için teklifinizin Microsoft tarafından Azure IP ortak satışı incentivized olarak belirlenmiş olması gerekir. Uygunluk, en az beş (5) iş günü boyunca her bir takvim ayının sonundan önce, daha düşük Market servis ücretini alacak şekilde sağlanmalıdır. Uygunluk karşılandıktan sonra, sınırlı hizmet ücreti, aşağıdaki ayın ilk gününde geçerli olan tüm işlemlere uygulanır ve Azure IP ortak satışı incentivized durumu kaybolana kadar uygulamaya devam edecektir. IP ortak satışı uygunluğu hakkında daha fazla bilgi için bkz. [ortak satış durumu gereksinimleri](/legal/marketplace/certification-policies#3000-requirements-for-co-sell-status). Daha düşük Market hizmet ücreti, Azure IP ortak satış incentivized VM 'Leri, yönetilen uygulamalar ve ticari Market aracılığıyla sunulan diğer tüm nitelikli transactable IaaS teklifleri için de geçerlidir.
 
 ## <a name="additional-sales-opportunities"></a>Ek satış fırsatları
 
@@ -258,7 +258,7 @@ Microsoft tarafından desteklenen pazarlama ve satış kanallarını kabul edebi
 
 - **CSP 'ler aracılığıyla yeniden Satım**: Microsoft bulut çözüm SAĞLAYıCıLARıNıN (CSP) iş ortaklarının, çözümünüzü bir paketlenmiş teklifin parçası olarak yeniden satmasına izin vermek için bu seçeneği kullanın. Bu program hakkında daha fazla bilgi için bkz. [bulut çözümü sağlayıcısı programı](cloud-solution-providers.md).
 
-- **Microsoft Ile ortak satış**: Bu seçenek, Microsoft satış ekiplerinin, müşterilerinin IHTIYAÇLARıNı değerlendirirken IP ortak satış için uygun çözümünüzü kabul etmenize olanak tanır. Ortak satış uygunluğu hakkında daha fazla bilgi için bkz. [ortak satış durumu gereksinimleri](https://aka.ms/CertificationPolicies#3000-requirements-for-co-sell-status). Teklifinizi değerlendirme için hazırlama hakkında ayrıntılı bilgi için bkz. [Partner Center 'Da ortak satış seçeneği](commercial-marketplace-co-sell.md).
+- **Microsoft Ile ortak satış**: Bu seçenek, Microsoft satış ekiplerinin, müşterilerinin IHTIYAÇLARıNı değerlendirirken IP ortak satış için uygun çözümünüzü kabul etmenize olanak tanır. Ortak satış uygunluğu hakkında daha fazla bilgi için bkz. [ortak satış durumu gereksinimleri](/legal/marketplace/certification-policies#3000-requirements-for-co-sell-status). Teklifinizi değerlendirme için hazırlama hakkında ayrıntılı bilgi için bkz. [Partner Center 'Da ortak satış seçeneği](commercial-marketplace-co-sell.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -3,20 +3,20 @@ title: Yedekleme Merkezi'ni kullanarak yedeklemeleri izleme ve çalıştırma
 description: Bu makalede yedekleme merkezi kullanılarak yedeklemelerin nasıl izleneceği ve çalıştırılacağı açıklanmaktadır
 ms.topic: conceptual
 ms.date: 09/01/2020
-ms.openlocfilehash: 29e09e502e83ea67af290f206ee0e68b847b2069
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9ce3b0f00c51e9b466a9ed040b677df811448b1d
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90998037"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98893787"
 ---
-# <a name="monitor-and-operate-backups-using-backup-center"></a>Yedekleme Merkezi'ni kullanarak yedeklemeleri izleme ve çalıştırma
+# <a name="monitor-and-operate-backups-using-backup-center-preview"></a>Yedekleme merkezi 'ni kullanarak yedeklemeleri izleme ve çalıştırma (Önizleme)
 
 Yedekleme Yöneticisi olarak, iş ve yedekleme envanterinizi gün temelinde izlemek için yedekleme merkezini tek bir cam bölmesi olarak kullanabilirsiniz. Ayrıca, isteğe bağlı yedekleme isteklerine yanıt verme, yedeklemeleri geri yükleme, yedekleme ilkeleri oluşturma gibi düzenli işlemleri gerçekleştirmek için yedekleme merkezi 'ni de kullanabilirsiniz.
 
 ## <a name="supported-scenarios"></a>Desteklenen senaryolar
 
-* Yedekleme merkezi şu anda Azure VM yedeklemesi ve PostgreSQL için Azure veritabanı sunucu yedeklemesi için destekleniyor.
+* Yedekleme merkezi şu anda Azure VM yedeklemesi, Azure SAP HANA 'da SQL VM yedeklemesi, Azure VM yedeklemesi, Azure dosyaları yedeklemesi ve PostgreSQL için Azure veritabanı sunucu yedeklemesi için desteklenmektedir.
 * Desteklenen ve desteklenmeyen senaryoların ayrıntılı bir listesi için [destek matrisine](backup-center-support-matrix.md) bakın.
 
 ## <a name="backup-instances"></a>Yedekleme örnekleri
@@ -70,7 +70,7 @@ Kılavuzdaki bir öğenin seçilmesi, belirtilen iş hakkında daha fazla ayrın
 
 ## <a name="vaults"></a>Kasalar
 
-Yedekleme merkezi 'nde **kasa** menü öğesini seçmek, erişiminiz olan tüm [Kurtarma Hizmetleri kasalarının ve yedek kasalarının](backup-azure-recovery-services-vault-overview.md) bir listesini görmenizi [Backup vaults](backup-vault-overview.md) sağlar. Aşağıdaki parametrelerle listeye filtre uygulayabilirsiniz:
+Yedekleme merkezi 'nde **kasa** menü öğesini seçmek, erişiminiz olan tüm [Kurtarma Hizmetleri kasalarının ve yedek kasalarının](backup-azure-recovery-services-vault-overview.md) bir listesini görmenizi [](backup-vault-overview.md) sağlar. Aşağıdaki parametrelerle listeye filtre uygulayabilirsiniz:
 
 * Kasa aboneliği
 * Kasa kaynak grubu

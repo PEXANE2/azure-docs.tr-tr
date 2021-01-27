@@ -3,14 +3,14 @@ title: Yedekleme merkezi 'ni kullanarak eylem gerçekleştirme
 description: Bu makalede, yedekleme merkezi kullanılarak eylemlerin nasıl gerçekleştirileceği açıklanır.
 ms.topic: conceptual
 ms.date: 09/07/2020
-ms.openlocfilehash: 65ac6374b1a9571d0415bc097a6ee957874d3d44
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 06229eb0b8cb76482035d3dfe1949c3ab8354f17
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91854435"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98894584"
 ---
-# <a name="perform-actions-using-backup-center"></a>Yedekleme merkezi 'ni kullanarak eylem gerçekleştirme
+# <a name="perform-actions-using-backup-center-preview"></a>Yedekleme merkezi (Önizleme) kullanarak eylem gerçekleştirme
 
 Yedekleme merkezi, tek bir kasaya gitmek zorunda kalmadan merkezi bir arabirimden ilgili anahtar yedeklemeyle ilgili eylemleri gerçekleştirmenize olanak tanır. Yedekleme merkezi 'nden gerçekleştirebileceğiniz bazı eylemler şunlardır:
 
@@ -23,26 +23,28 @@ Yedekleme merkezi, tek bir kasaya gitmek zorunda kalmadan merkezi bir arabirimde
 
 ## <a name="supported-scenarios"></a>Desteklenen senaryolar
 
-* Yedekleme merkezi şu anda Azure VM yedeklemesi ve PostgreSQL için Azure veritabanı sunucu yedeklemesi için destekleniyor.
+* Yedekleme merkezi şu anda Azure VM yedeklemesi, Azure SAP HANA 'da SQL VM yedeklemesi, Azure VM yedeklemesi, Azure dosyaları yedeklemesi ve PostgreSQL için Azure veritabanı sunucu yedeklemesi için desteklenmektedir.
 * Desteklenen ve desteklenmeyen senaryoların ayrıntılı bir listesi için [destek matrisine](backup-center-support-matrix.md) bakın.
 
 ## <a name="configure-backup"></a>Yedeklemeyi yapılandırma
 
+Azure VM 'leri, Azure VM 'leri, Azure VM 'lerde veya Azure dosyalarında SAP HANA yedekliyorsanız, bir kurtarma hizmetleri Kasası kullanmanız gerekir. PostgreSQL sunucusu için Azure veritabanlarını yedekliyorsanız, bir yedekleme Kasası kullanmanız gerekir. 
+
 Yedeklemek istediğiniz veri kaynağı türüne bağlı olarak, aşağıda açıklandığı gibi uygun yönergeleri izleyin.
 
-### <a name="configure-backup-for-azure-virtual-machines"></a>Azure sanal makineleri için yedeklemeyi yapılandırma
+### <a name="configure-backup-to-a-recovery-services-vault"></a>Yedeklemeyi bir kurtarma hizmetleri kasasına yapılandırma
 
 1. Yedekleme merkezi ' ne gidin ve **genel bakış** sekmesinin en üstündeki **+ Backup** ' ı seçin.
 
     ![Yedekleme merkezi 'ne genel bakış](./media/backup-center-actions/backup-center-overview-configure-backup.png)
 
-2. Yedeklemek istediğiniz veri kaynağı türünü seçin (Bu durumda Azure sanal makinesi).
+2. Yedeklemek istediğiniz veri kaynağı türünü seçin.
 
     ![VM yedeklemesini yapılandırmak için veri kaynağını seçin](./media/backup-center-actions/backup-select-datasource-vm.png)
 
 3. Bir kurtarma hizmetleri Kasası seçin ve **devam**' ı seçin. Bu, kurtarma hizmetleri kasasından erişilebilen bir yedekleme yapılandırma deneyimine yol açar. [Kurtarma Hizmetleri kasasıyla Azure sanal makineleri için yedeklemeyi yapılandırma hakkında daha fazla bilgi edinin](tutorial-backup-vm-at-scale.md).
 
-### <a name="configure-backup-for-azure-database-for-postgresql-server"></a>PostgreSQL için Azure veritabanı sunucusu için yedeklemeyi yapılandırma
+### <a name="configure-backup-to-a-backup-vault"></a>Yedeklemeyi bir yedekleme kasasına yapılandırma
 
 1. Yedekleme merkezi ' ne gidin ve **genel bakış** sekmesinin en üstündeki **+ Backup** ' ı seçin.
 2. Yedeklemek istediğiniz veri kaynağı türünü seçin (Bu durumda PostgreSQL için Azure veritabanı sunucusu).
@@ -55,19 +57,19 @@ Yedeklemek istediğiniz veri kaynağı türüne bağlı olarak, aşağıda açı
 
 Geri yüklemek istediğiniz veri kaynağı türüne bağlı olarak, aşağıda açıklandığı gibi uygun yönergeleri izleyin.
 
-### <a name="if-youre-restoring-an-azure-virtual-machine"></a>Bir Azure sanal makinesini geri yüklüyorsanız
+### <a name="if-youre-restoring-from-a-recovery-services-vault"></a>Bir kurtarma hizmetleri kasasından geri yükleme yapıyorsanız
 
 1. Yedekleme merkezi ' ne gidin ve **genel bakış** sekmesinin en üstünde **geri yükle** ' yi seçin.
 
     ![VM 'yi geri yüklemek için yedekleme merkezi 'Ne genel bakış](./media/backup-center-actions/backup-center-overview-restore.png)
 
-2. Geri yüklemek istediğiniz veri kaynağı türünü seçin (Bu durumda Azure sanal makinesi).
+2. Geri yüklemek istediğiniz veri kaynağı türünü seçin.
 
     ![VM geri yükleme için veri kaynağını seçin](./media/backup-center-actions/restore-select-datasource-vm.png)
 
 3. Bir yedekleme örneği seçin ve **devam**' ı seçin. Bu, kurtarma hizmetleri kasasından erişilebilen bir ile aynı olan geri yükleme ayarları deneyimine yol açar. Bir [Azure sanal makinesini kurtarma hizmetleri kasasıyla geri yükleme hakkında daha fazla bilgi edinin](backup-azure-arm-restore-vms.md#before-you-start).
 
-### <a name="if-youre-restoring-an-azure-database-for-postgresql-server"></a>PostgreSQL için Azure veritabanı sunucusunu geri yüklüyorsanız
+### <a name="if-youre-restoring-from-a-backup-vault"></a>Bir yedekleme kasasından geri yükleme yapıyorsanız
 
 1. Yedekleme merkezi ' ne gidin ve **genel bakış** sekmesinin en üstünde **geri yükle** ' yi seçin.
 2. Geri yüklemek istediğiniz veri kaynağı türünü seçin (Bu durumda PostgreSQL için Azure veritabanı sunucusu).
@@ -89,19 +91,19 @@ Yedekleme merkezi ' ne giderek ve **genel bakış** sekmesinin en üstünde **+ 
 
 Yedeklemek istediğiniz veri kaynağı türüne bağlı olarak, aşağıda açıklanan ilgili yönergeleri izleyin.
 
-### <a name="if-youre-backing-up-an-azure-virtual-machine"></a>Bir Azure sanal makinesini yedekliyorsanız
+### <a name="if-youre-backing-up-to-a-recovery-services-vault"></a>Kurtarma Hizmetleri kasasına yedekleme yapıyorsanız
 
 1. Yedekleme merkezi ' ne gidin ve **genel bakış** sekmesinin en üstündeki **+ ilke** ' yi seçin.
 
     ![Yedekleme ilkesi için yedekleme merkezi 'Ne genel bakış](./media/backup-center-actions/backup-center-overview-policy.png)
 
-2. Yedeklemek istediğiniz veri kaynağı türünü seçin (Bu durumda Azure sanal makinesi).
+2. Yedeklemek istediğiniz veri kaynağı türünü seçin.
 
     ![VM yedeklemesi için ilke için veri kaynağı seçin](./media/backup-center-actions/policy-select-datasource-vm.png)
 
 3. Bir kurtarma hizmetleri Kasası seçin ve **devam**' ı seçin. Bu, kurtarma hizmetleri kasasından erişilebilen bir ilke oluşturma deneyimine yol açar. [Kurtarma Hizmetleri kasasıyla Azure sanal makinesi için yeni bir yedekleme ilkesi oluşturma hakkında daha fazla bilgi edinin](backup-azure-arm-vms-prepare.md#create-a-custom-policy).
 
-### <a name="if-youre-backing-up-an-azure-database-for-postgresql-server"></a>PostgreSQL için Azure veritabanı sunucusunu yedekliyorsanız
+### <a name="if-youre-backing-up-to-a-backup-vault"></a>Bir yedekleme kasasına yedekleme yapıyorsanız
 
 1. Yedekleme merkezi ' ne gidin ve **genel bakış** sekmesinin en üstündeki **+ ilke** ' yi seçin.
 2. Yedeklemek istediğiniz veri kaynağı türünü seçin (Bu durumda PostgreSQL için Azure veritabanı sunucusu).

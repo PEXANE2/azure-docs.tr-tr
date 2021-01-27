@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 1/15/2021
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 71de1d17731e086d012da5365fa6671bcb9e6e3b
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 49184778c7d6592f074e04df535b9bc221f3162e
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98539252"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878808"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Azure Dosya Eşitleme ile ilgili sorunları giderme
 Şirket içi bir dosya sunucusunun esnekliğini, performansını ve uyumluluğunu koruyarak kuruluşunuzun dosya paylaşımlarını Azure dosyalarında merkezileştirmek için Azure Dosya Eşitleme kullanın. Azure Dosya Eşitleme, Windows Server’ı Azure dosya paylaşımınızın hızlı bir önbelleğine dönüştürür. Verilere yerel olarak erişmek için Windows Server üzerinde kullanılabilen tüm protokolleri (SMB, NFS ve FTPS gibi) kullanabilirsiniz. Dünyanın dört bir yanında ihtiyacınız olan sayıda önbellekler olabilir.
@@ -206,8 +206,8 @@ Portalda "çevrimdışı görünüyor" olarak gösterilen sunucuda, sunucunun ne
     - Sunucu bir proxy 'nin arkasındaysa, proxy [belgelerindeki](./storage-sync-files-firewall-and-proxy.md#proxy)adımları izleyerek makine genelinde veya uygulamaya özel proxy ayarlarını yapılandırın.
     - Hizmet uç noktalarına ağ bağlantısını denetlemek için Test-StorageSyncNetworkConnectivity cmdlet 'ini kullanın. Daha fazla bilgi için bkz. [hizmet uç noktalarına ağ bağlantısını test](./storage-sync-files-firewall-and-proxy.md#test-network-connectivity-to-service-endpoints)etme.
     - Sunucuda TLS şifre paketi sırası yapılandırılmışsa, şifre paketleri eklemek için Grup İlkesi veya TLS cmdlet 'leri kullanabilirsiniz:
-        - Grup İlkesi 'ni kullanmak için, bkz. [Grup İlkesi kullanarak TLS şifre paketi sırasını yapılandırma](https://docs.microsoft.com/windows-server/security/tls/manage-tls#configuring-tls-cipher-suite-order-by-using-group-policy).
-        - TLS cmdlet 'lerini kullanmak için TLS [PowerShell cmdlet 'lerini kullanarak TLS şifre paketi sırasını yapılandırma](https://docs.microsoft.com/windows-server/security/tls/manage-tls#configuring-tls-cipher-suite-order-by-using-tls-powershell-cmdlets)konusuna bakın.
+        - Grup İlkesi 'ni kullanmak için, bkz. [Grup İlkesi kullanarak TLS şifre paketi sırasını yapılandırma](/windows-server/security/tls/manage-tls#configuring-tls-cipher-suite-order-by-using-group-policy).
+        - TLS cmdlet 'lerini kullanmak için TLS [PowerShell cmdlet 'lerini kullanarak TLS şifre paketi sırasını yapılandırma](/windows-server/security/tls/manage-tls#configuring-tls-cipher-suite-order-by-using-tls-powershell-cmdlets)konusuna bakın.
     
         Azure Dosya Eşitleme Şu anda TLS 1,2 Protokolü için aşağıdaki şifre paketlerini desteklemektedir:  
         - TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384_P384  
@@ -386,7 +386,7 @@ Aşağıdaki tabloda, Azure Dosya Eşitleme henüz desteklemediği tüm Unicode 
 | **HRESULT** | 0x800704c7 |
 | **HRESULT (ondalık)** | -2147023673 | 
 | **Hata dizesi** | ERROR_CANCELLED |
-| **Düzeltme gerekli** | No |
+| **Düzeltme gerekli** | Hayır |
 
 Eşitleme oturumları, sunucunun yeniden başlatılması veya güncelleştirilmesini, VSS anlık görüntülerini vb. dahil çeşitli nedenlerle başarısız olabilir. Bu hata, izlenmesi gereken gibi görünse de, birkaç saat boyunca devam etmediği takdirde bu hatayı yoksaymak güvenlidir.
 
@@ -408,7 +408,7 @@ Eşitleme oturumları, sunucunun yeniden başlatılması veya güncelleştirilme
 | **HRESULT** | 0x80c8004c |
 | **HRESULT (ondalık)** | -2134376372 |
 | **Hata dizesi** | ECS_E_USER_REQUEST_THROTTLED |
-| **Düzeltme gerekli** | No |
+| **Düzeltme gerekli** | Hayır |
 
 Herhangi bir eylem gerekmez; sunucu yeniden denenecek. Bu hata birkaç saat devam ederse destek isteği oluşturun.
 
@@ -419,7 +419,7 @@ Herhangi bir eylem gerekmez; sunucu yeniden denenecek. Bu hata birkaç saat deva
 | **HRESULT** | 0x80c83075 |
 | **HRESULT (ondalık)** | -2134364043 |
 | **Hata dizesi** | ECS_E_SYNC_BLOCKED_ON_CHANGE_DETECTION_POST_RESTORE |
-| **Düzeltme gerekli** | No |
+| **Düzeltme gerekli** | Hayır |
 
 İşlem yapmanız gerekmez. Bir dosya veya dosya paylaşma (bulut uç noktası) Azure Backup kullanılarak geri yüklendiğinde, Azure dosya paylaşımında değişiklik algılama tamamlanana kadar eşitleme engellenir. Geri yükleme tamamlandıktan hemen sonra değişiklik algılama çalıştırılır ve çalışma süresi dosya paylaşımındaki dosyaların sayısına bağlıdır.
 
@@ -430,7 +430,7 @@ Herhangi bir eylem gerekmez; sunucu yeniden denenecek. Bu hata birkaç saat deva
 | **HRESULT** | 0x80041295 |
 | **HRESULT (ondalık)** | -2147216747 |
 | **Hata dizesi** | SYNC_E_METADATA_INVALID_OPERATION |
-| **Düzeltme gerekli** | No |
+| **Düzeltme gerekli** | Hayır |
 
 Normalde bir yedekleme uygulaması VSS anlık görüntüsü oluşturduğunda ve eşitleme veritabanının yüklemesi kaldırıldığında bu hata oluşur. Bu hata birkaç saat devam ederse destek isteği oluşturun.
 
@@ -599,7 +599,7 @@ Depolama hesabı güvenlik duvarından veya depolama hesabının bir sanal ağa 
 | **HRESULT** | 0x80c80219 |
 | **HRESULT (ondalık)** | -2134375911 |
 | **Hata dizesi** | ECS_E_SYNC_METADATA_WRITE_LOCK_TIMEOUT |
-| **Düzeltme gerekli** | No |
+| **Düzeltme gerekli** | Hayır |
 
 Bu hata genellikle kendiliğinden çözülür ve şunlar varsa gerçekleşebilir:
 
@@ -735,7 +735,7 @@ Bu hata birimin doldurulmuş olması nedeniyle oluşur. Bu hata genellikle sunuc
 | **HRESULT** | 0x80c8300f |
 | **HRESULT (ondalık)** | -2134364145 |
 | **Hata dizesi** | ECS_E_REPLICA_NOT_READY |
-| **Düzeltme gerekli** | No |
+| **Düzeltme gerekli** | Hayır |
 
 Bu hata, bulut uç noktasının Azure dosya paylaşımında zaten mevcut olan içerikle oluşturulduğu için oluşur. Azure Dosya Eşitleme, sunucu uç noktasının ilk eşitlemesine devam etmesini sağlamak için Azure dosya paylaşımında tüm içerikleri taramalıdır.
 
@@ -796,7 +796,7 @@ Yüklenmiş olan bulut katmanlama filtresi sürücüsü (StorageSync.sys) sürü
 | **HRESULT** | 0x80c8004b |
 | **HRESULT (ondalık)** | -2134376373 |
 | **Hata dizesi** | ECS_E_SERVICE_UNAVAILABLE |
-| **Düzeltme gerekli** | No |
+| **Düzeltme gerekli** | Hayır |
 
 Azure Dosya Eşitleme hizmeti kullanılamadığından bu hata oluşur. Azure Dosya Eşitleme hizmeti kullanılabilir olduğunda bu hata otomatik olarak çözülecektir.
 
@@ -807,7 +807,7 @@ Azure Dosya Eşitleme hizmeti kullanılamadığından bu hata oluşur. Azure Dos
 | **HRESULT** | 0x80131500 |
 | **HRESULT (ondalık)** | -2146233088 |
 | **Hata dizesi** | COR_E_EXCEPTION |
-| **Düzeltme gerekli** | No |
+| **Düzeltme gerekli** | Hayır |
 
 Eşitleme özel bir durum nedeniyle başarısız olduğu için bu hata oluşur. Hata birkaç saat devam ederse lütfen bir destek isteği oluşturun.
 
@@ -829,7 +829,7 @@ Depolama hesabı başka bir bölgeye yük devrettiği için bu hata oluştu. Azu
 | **HRESULT** | 0x80c8020e |
 | **HRESULT (ondalık)** | -2134375922 |
 | **Hata dizesi** | ECS_E_SYNC_METADATA_WRITE_LEASE_LOST |
-| **Düzeltme gerekli** | No |
+| **Düzeltme gerekli** | Hayır |
 
 Eşitleme veritabanındaki bir iç sorundan dolayı bu hata oluşur. Eşitleme yeniden denendiğinde bu hata otomatik olarak düzelecektir. Bu hata uzabir süre devam ederse, bir destek isteği oluşturun ve bu sorunu çözmenize yardımcı olması için sizinle iletişim kuracağız.
 
@@ -913,7 +913,7 @@ Bu hata, Azure Dosya Eşitleme HTTP yeniden yönlendirmeyi (3xx durum kodu) dest
 | **HRESULT** | 0x80c83085 |
 | **HRESULT (ondalık)** | -2134364027 |
 | **Hata dizesi** | ECS_E_DATA_INGESTION_WAIT_TIMEOUT |
-| **Düzeltme gerekli** | No |
+| **Düzeltme gerekli** | Hayır |
 
 Bu hata, bir veri alma işlemi zaman aşımını aştığında oluşur. Eşitleme ilerleme durumu (AppliedItemCount 0 ' dan büyükse) Bu hata yoksayılabilir. [Geçerli bir eşitleme oturumunun ilerlemesini izlemek nasıl yaparım? bakın mi?](#how-do-i-monitor-the-progress-of-a-current-sync-session).
 
@@ -931,7 +931,7 @@ Sunucu uç noktası yolu olarak kullanılan dizin yeniden adlandırılırsa veya
 Dizin silinmişse, mevcut sunucu uç noktasını kaldırmak ve yeni bir yol kullanarak yeni bir sunucu uç noktası oluşturmak için aşağıdaki adımları gerçekleştirin:
 
 1. [Sunucu uç noktasını kaldırma](./storage-sync-files-server-endpoint.md#remove-a-server-endpoint)bölümünde belgelenen adımları izleyerek eşitleme grubundaki sunucu uç noktasını kaldırın.
-2. [Sunucu uç noktası ekleme](https://docs.microsoft.com/azure/storage/files/storage-sync-files-server-endpoint#add-a-server-endpoint)bölümünde belgelenen adımları izleyerek eşitleme grubunda yeni bir sunucu uç noktası oluşturun.
+2. [Sunucu uç noktası ekleme](./storage-sync-files-server-endpoint.md#add-a-server-endpoint)bölümünde belgelenen adımları izleyerek eşitleme grubunda yeni bir sunucu uç noktası oluşturun.
 
 ### <a name="common-troubleshooting-steps"></a>Ortak sorun giderme adımları
 <a id="troubleshoot-storage-account"></a>**Depolama hesabının mevcut olduğundan emin olun.**  

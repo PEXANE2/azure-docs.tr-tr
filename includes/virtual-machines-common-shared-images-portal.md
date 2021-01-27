@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/06/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 1af80f208c72af9434d596f2c1219c08c0e3f719
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: e7a4af2c18bfc2b8fbd6149dab12c0bcfc665341
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96016008"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878839"
 ---
 ## <a name="create-an-image-gallery"></a>Görüntü galerisi oluşturma
 
@@ -35,7 +35,7 @@ Aşağıdaki örnek *Mygallerrg* kaynak grubunda *MyGallery* adlı bir galeri ol
 
 ## <a name="create-an-image-definition"></a>Görüntü tanımı oluşturma 
 
-Görüntü tanımları görüntüler için bir mantıksal gruplama oluşturur. Bunlar içinde oluşturulan görüntü sürümleri hakkındaki bilgileri yönetmek için kullanılır. Görüntü tanımı adları büyük veya küçük harflerden, rakamlardan, noktalardan, çizgilerden ve noktalardan oluşabilir. Bir görüntü tanımı için belirtebileceğiniz değerler hakkında daha fazla bilgi için bkz. [görüntü tanımları](../articles/virtual-machines/windows/shared-image-galleries.md#image-definitions).
+Görüntü tanımları görüntüler için bir mantıksal gruplama oluşturur. Bunlar içinde oluşturulan görüntü sürümleri hakkındaki bilgileri yönetmek için kullanılır. Görüntü tanımı adları büyük veya küçük harflerden, rakamlardan, noktalardan, çizgilerden ve noktalardan oluşabilir. Bir görüntü tanımı için belirtebileceğiniz değerler hakkında daha fazla bilgi için bkz. [görüntü tanımları](../articles/virtual-machines/shared-image-galleries.md#image-definitions).
 
 Galerinizin içinde galeri görüntü tanımını oluşturun. Bu örnekte, Galeri görüntüsü *Myımagedefinition* olarak adlandırılmıştır.
 
@@ -44,7 +44,7 @@ Galerinizin içinde galeri görüntü tanımını oluşturun. Bu örnekte, Galer
 1. **Görüntü tanımı adı** Için *myımagedefinition* yazın.
 1. **İşletim sistemi** için, kaynak sanal makinenize göre doğru seçeneği belirleyin.  
 1. **VM oluşturma** IÇIN kaynak sanal makinenize göre seçeneğini belirleyin. Çoğu durumda bu, *Gen 1* olacaktır. Daha fazla bilgi için bkz. [2. nesil sanal makineler Için destek](../articles/virtual-machines/generation-2.md).
-1. **İşletim sistemi durumu** için, kaynak sanal makinenize göre seçeneğini belirleyin. Daha fazla bilgi için bkz. [Genelleştirilmiş ve özelleştirilmiş](../articles/virtual-machines/linux/shared-image-galleries.md#generalized-and-specialized-images).
+1. **İşletim sistemi durumu** için, kaynak sanal makinenize göre seçeneğini belirleyin. Daha fazla bilgi için bkz. [Genelleştirilmiş ve özelleştirilmiş](../articles/virtual-machines/shared-image-galleries.md#generalized-and-specialized-images).
 1. **Yayımcı** Için *MyPublisher* yazın. 
 1. **Teklif** Için *myteklifini* yazın.
 1. **SKU** Için *mysku* yazın.

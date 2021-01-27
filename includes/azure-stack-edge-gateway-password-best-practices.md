@@ -4,15 +4,15 @@ ms.service: databox
 ms.topic: include
 ms.date: 04/16/2019
 ms.author: alkohli
-ms.openlocfilehash: 86b18c2a6fc3fbf342f5b7a4b6b563432c605f73
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 648c2e4ffc63dad42a87888e7cb5629fb7301eea
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96468045"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98901252"
 ---
 Bu en iyi yöntemleri göz önünde bulundurun:
 
 - Tüm parolaları güvenli bir yerde depolamanızı öneririz, böylece parola unutulursa parolayı sıfırlamanız gerekmez. Yönetim hizmeti mevcut parolaları alamıyor. Yalnızca Azure portal aracılığıyla sıfırlayabilir. Bir parolayı sıfırlarsanız, sıfırlamadan önce tüm kullanıcıları bilgilendirdiğinizden emin olun.
 - Cihazınızın Windows PowerShell arabirimine HTTP üzerinden uzaktan erişebilirsiniz. En iyi güvenlik uygulaması olarak yalnızca güvenilir ağlarda HTTP kullanmanız gerekir.
-- Cihaz parolalarının sağlam ve iyi korunduğundan emin olun. [En iyi parola uygulamalarını](https://docs.microsoft.com/azure/security/fundamentals/identity-management-best-practices#enable-password-management)izleyin.
+- Cihaz parolalarının sağlam ve iyi korunduğundan emin olun. [En iyi parola uygulamalarını](../articles/security/fundamentals/identity-management-best-practices.md#enable-password-management)izleyin.

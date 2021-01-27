@@ -1,24 +1,11 @@
 ---
-title: Media Services dönüşümler ve Işler
-titleSuffix: Azure Media Services
-description: Azure Media Services ' de videolarınızı işlemeye yönelik kuralları tanımlamaya yönelik dönüşümler oluşturmayı öğrenin.
-services: media-services
-documentationcenter: ''
-author: IngridAtMicrosoft
-manager: femila
-editor: ''
-ms.service: media-services
-ms.workload: ''
-ms.topic: conceptual
-ms.date: 08/19/2019
-ms.author: inhenkel
-ms.openlocfilehash: 4cb4bcf5eb205d27cbca764d5ec16890a23be5c6
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
-ms.translationtype: MT
-ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426785"
+# <a name="mandatory-fields-see-more-on-akamsskyeyemeta"></a>Zorunlu alanlar. Aka.ms/skyeye/meta hakkında daha fazla bilgi için bkz..
+Başlık: Media Services dönüşümler ve Işler: Azure Media Services Açıklama: Azure Media Services videolarınızı işlemek için kuralları betimleyen dönüşümler oluşturmayı öğrenin.
+Hizmetler: Media-Services belgetationcenter: ' ' Yazar: ınridatmicrosoft Manager: femila Düzenleyicisi: ' '
+
+MS. Service: Media-Services MS. Workload: MS. Topic: kavramsal MS. Date: 08/19/2019 MS. Author: inhenkel
 ---
+
 # <a name="transforms-and-jobs-in-media-services"></a>Media Services dönüşümler ve Işler
 
 Bu konu, [dönüşümler](/rest/api/media/transforms) ve [işlerle](/rest/api/media/jobs) ilgili ayrıntıları verir ve bu varlıklar arasındaki ilişkiyi açıklar.
@@ -58,7 +45,7 @@ Videoları kodlamaya veya çözümlemeye yönelik ortak görevleri yapılandırm
 
 ### <a name="viewing-schema"></a>Şemayı görüntüleme
 
-Media Services v3 'de, Önayarlar, API 'nin kendisinde kesin olarak belirlenmiş varlıklardır. Bu nesneler için "şema" tanımını [Open API belirtiminde (veya Swagger)](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01)bulabilirsiniz. [REST API](/rest/api/media/transforms/createorupdate#standardencoderpreset), [.net sdk](/dotnet/api/microsoft.azure.management.media.models.standardencoderpreset?view=azure-dotnet)veya diğer Media Services v3 SDK başvuru belgelerindeki önceden ayarlanmış tanımları ( **standardencoderönayar**gibi) da görüntüleyebilirsiniz.
+Media Services v3 'de, Önayarlar, API 'nin kendisinde kesin olarak belirlenmiş varlıklardır. Bu nesneler için "şema" tanımını [Open API belirtiminde (veya Swagger)](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01)bulabilirsiniz. [REST API](/rest/api/media/transforms/createorupdate#standardencoderpreset), [.net sdk](/dotnet/api/microsoft.azure.management.media.models.standardencoderpreset?view=azure-dotnet)veya diğer Media Services v3 SDK başvuru belgelerindeki önceden ayarlanmış tanımları ( **standardencoderönayar** gibi) da görüntüleyebilirsiniz.
 
 ### <a name="creating-transforms"></a>Dönüşümler oluşturma
 

@@ -8,12 +8,12 @@ ms.date: 12/11/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 6390aafca4937a480e4d92ff04003a294b9c0e20
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: c4e85195ace0a24aa11d4a03b8f429f2714399b0
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97356183"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879165"
 ---
 # <a name="azcopy-copy"></a>azcopy kopya
 
@@ -37,7 +37,7 @@ Daha fazla bilgi için bu makalenin örnekler bölümüne bakın.
 ## <a name="related-conceptual-articles"></a>İlgili kavramsal makaleler
 
 - [AzCopy’yi kullanmaya başlama](storage-use-azcopy-v10.md)
-- [AzCopy ve BLOB Storage ile veri aktarma](storage-use-azcopy-blobs.md)
+- [AzCopy ve BLOB Storage ile veri aktarma](./storage-use-azcopy-v10.md#transfer-data)
 - [AzCopy ve dosya depolama ile verileri aktarma](storage-use-azcopy-files.md)
 - [AzCopy 'i yapılandırma, iyileştirme ve sorun giderme](storage-use-azcopy-configure.md)
 
@@ -284,7 +284,7 @@ Dosya ve dizinleri Azure depolama hesabına aktarın ve BLOB üzerinde verilen s
 
 **--Include-model** dize, kopyalama sırasında yalnızca bu dosyaları içerir. Bu seçenek joker karakterler (*) destekler. Kullanarak dosyaları ayırın `;` .
 
-**--** ------------------------ Kaynağın tek bir Blobun işaret etmelidir ve bu bayrağı kullanarak dosyada belirtilen tüm sürüm kimlikleri yalnızca kaynak Blobun ait olmalıdır. AzCopy, belirtilen sürümleri belirtilen hedef klasöre indirecek. Daha fazla bilgi için bkz. [bir blob 'un önceki sürümlerini indirme](storage-use-azcopy-blobs.md#download-previous-versions-of-a-blob).
+**--** ------------------------ Kaynağın tek bir Blobun işaret etmelidir ve bu bayrağı kullanarak dosyada belirtilen tüm sürüm kimlikleri yalnızca kaynak Blobun ait olmalıdır. AzCopy, belirtilen sürümleri belirtilen hedef klasöre indirecek. Daha fazla bilgi için bkz. [bir blob 'un önceki sürümlerini indirme](./storage-use-azcopy-v10.md#transfer-data).
 
 **--günlük düzeyi** dize günlük dosyası, kullanılabilir düzeyler: bilgi (tüm istekler/yanıtlar), uyarı (yavaş yanıtlar), hata (yalnızca başarısız istekler) ve hiçbiri (çıktı günlüğü yok) için günlük ayrıntı düzeylerini tanımlar. (varsayılan `INFO` ). 
 

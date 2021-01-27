@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: f0ae4ac4cf50eb6e54d41ff25e1cc671e76819ee
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 62030d1c208fc778476f49e5b3165e46e6aa0d66
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98200813"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878859"
 ---
 # <a name="azure-security-baseline-for-linux-virtual-machines"></a>Linux Sanal Makineleri için Azure Güvenlik temeli
 
@@ -568,7 +568,7 @@ Microsoft, bulut hizmetleri ve müşteriler arasında seyahat edildiğinde veril
 
 * [Azure RBAC](../../role-based-access-control/overview.md)
 
-* [Azure yerleşik rolleri](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)
+* [Yerleşik Azure rolleri](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)
 
 **Azure Güvenlik Merkezi izleme**: kullanılamıyor
 
@@ -852,7 +852,7 @@ Yazılım uygulamalarının izlenmesi için Değişiklik İzleme kullanmanın ya
 
 * [Azure İlkesi'ni yapılandırma ve yönetme](../../governance/policy/tutorials/create-and-manage.md)
 
-* [VM şablonunun nasıl indirileceği hakkında bilgi](../windows/download-template.md)
+* [VM şablonunun nasıl indirileceği hakkında bilgi](/previous-versions/azure/virtual-machines/windows/download-template)
 
 **Azure Güvenlik Merkezi izleme**: kullanılamıyor
 
@@ -896,7 +896,7 @@ Yazılım uygulamalarının izlenmesi için Değişiklik İzleme kullanmanın ya
 
 Çoğu senaryoda, Azure Otomasyonu Istenen durum yapılandırması ile birleştirilmiş Microsoft temel VM şablonları, güvenlik gereksinimlerinin karşılanmasına ve bakımında yardımcı olabilir.
 
-* [VM şablonunun nasıl indirileceği hakkında bilgi](../windows/download-template.md)
+* [VM şablonunun nasıl indirileceği hakkında bilgi](/previous-versions/azure/virtual-machines/windows/download-template)
 
 * [ARM şablonları oluşturma hakkında bilgi](../windows/ps-template.md)
 

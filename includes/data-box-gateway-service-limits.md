@@ -4,12 +4,12 @@ ms.service: databox
 ms.topic: include
 ms.date: 10/15/2020
 ms.author: alkohli
-ms.openlocfilehash: a99d4f6a3957ca5dd4d07a50ff239b1988940fbe
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 968d8ad6e76956a12e1f8ddcf091eb905686d245
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96582648"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98901249"
 ---
 - Depolama hesabı, cihazın dağıtıldığı bölgeye fiziksel olarak en yakın olmalıdır (hizmetin dağıtıldığı yerden farklı olabilir).
-- Data Box Gateway kaynağını farklı bir aboneliğe veya kaynak grubuna taşıma işlemi desteklenmemektedir. Daha fazla ayrıntı için [kaynakları yeni kaynak grubuna veya aboneliğe taşıma](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)bölümüne gidin.
+- Data Box Gateway kaynağını farklı bir aboneliğe veya kaynak grubuna taşıma işlemi desteklenmemektedir. Daha fazla ayrıntı için [kaynakları yeni kaynak grubuna veya aboneliğe taşıma](../articles/azure-resource-manager/management/move-resource-group-and-subscription.md)bölümüne gidin.

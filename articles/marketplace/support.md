@@ -7,19 +7,19 @@ ms.topic: conceptual
 author: navits09
 ms.author: navits
 ms.date: 01/19/2020
-ms.openlocfilehash: 6075027124352746a3adbb8f6937d3787eb22b9d
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: a1726b29c153bf680d29fe821ac34aa958064335
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98602575"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879250"
 ---
 # <a name="support-for-the-commercial-marketplace-program-in-partner-center"></a>Iş Ortağı Merkezi 'nde ticari Market programı desteği
 
 Microsoft, çok çeşitli ürün ve hizmetler için destek sağlar. Doğru destek ekibinin bulunması, uygun ve zamanında yanıt sağlamak açısından önemlidir. Sorgunuzu uygun ekibe yönlendirmenize yardımcı olması gereken aşağıdaki senaryoları göz önünde bulundurun:
 
 - Bir yayımınız varsa ve müşterimiz varsa, [Azure Portal](https://portal.azure.com/)destek bağlantılarını kullanarak müşterinizden destek istemesine sorun.
-- Bir yayımsanız ve Azure üzerinde çalışan bir uygulamayla ilgili güvenlik sorunu algıladıysanız, bkz. [güvenlik olayı destek bileti günlüğe kaydetme](/azure/security/fundamentals/event-support-ticket). Yayımcılar, Azure Marketi yazılımlarının ve hizmet tekliflerinden oluşan güvenlik olayları ve güvenlik açıkları dahil şüpheli güvenlik olaylarını en erken fırsatta raporlamalarını sağlamalıdır.
+- Bir yayımsanız ve Azure üzerinde çalışan bir uygulamayla ilgili güvenlik sorunu algıladıysanız, bkz. [güvenlik olayı destek bileti günlüğe kaydetme](../security/fundamentals/event-support-ticket.md). Yayımcılar, Azure Marketi yazılımlarının ve hizmet tekliflerinden oluşan güvenlik olayları ve güvenlik açıkları dahil şüpheli güvenlik olaylarını en erken fırsatta raporlamalarını sağlamalıdır.
 - Bir yayımsanız ve uygulamanız veya hizmetiniz ile ilgili sorularınız varsa, aşağıdaki destek seçeneklerini gözden geçirin.
 
 ## <a name="get-help-or-open-a-support-ticket"></a>Yardım alın veya bir destek bileti açın

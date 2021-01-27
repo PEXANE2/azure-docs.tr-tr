@@ -1,27 +1,11 @@
 ---
-title: Media Services v3 ile canlı akış
-titleSuffix: Azure Media Services
-description: Azure Media Services v3 ile canlı akış yapmayı öğrenin.
-services: media-services
-documentationcenter: ''
-author: IngridAtMicrosoft
-manager: femila
-editor: ''
-ms.service: media-services
-ms.workload: media
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: tutorial
-ms.custom: mvc, devx-track-csharp
-ms.date: 06/13/2019
-ms.author: inhenkel
-ms.openlocfilehash: b2e456474a9d052d9515c8169ce233e9577a5c53
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
-ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89256574"
+Başlık: Media Services v3 ile canlı akış: Azure Media Services Açıklama: Azure Media Services v3 ile canlı akışı yapmayı öğrenin.
+Hizmetler: Media-Services belgetationcenter: ' ' Yazar: ınridatmicrosoft Manager: femila Düzenleyicisi: ' '
+
+MS. Service: Media-Services MS. Workload: Media ms.tgt_pltfrm: na MS. devlang: na MS. Topic: öğretici ms. Custom: "MVC, DevX-Track-CSharp" MS. Date: 06/13/2019 MS. Author: inhenkel
+
 ---
+
 # <a name="tutorial-stream-live-with-media-services"></a>Öğretici: Media Services ile canlı akış
 
 > [!NOTE]

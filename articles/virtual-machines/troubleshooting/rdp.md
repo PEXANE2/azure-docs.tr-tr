@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 12/13/2018
 ms.author: genli
-ms.openlocfilehash: 2fd2efa9de3deff1fcf983ac0fa45e412357d312
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 512130928c8e18aad90bce351e3be85d6fbe03f0
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "71057281"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878655"
 ---
 # <a name="troubleshoot-rdp-issues"></a>RDP sorunlarını giderme
 
@@ -36,7 +36,7 @@ Bu bölümde, bir VM bağlantısı için RDP oluşturmayla ilgili aşağıdaki s
 - [İç hata sorununu giderme](Troubleshoot-rdp-internal-error.md)
 - [Sık sık bağlantı kesilmesi sorununu giderme](troubleshoot-rdp-intermittent-connectivity.md)
 - [Genel hata sorununu giderme](troubleshoot-rdp-general-error.md)
-- [Kimlik doğrulama sorunlarını giderme](troubleshoot-authentication-error-rdp-vm.md)
+- [Kimlik doğrulama sorunlarını giderme](/troubleshoot/azure/virtual-machines/cannot-connect-rdp-azure-vm)
 - [Azure VM RDP bağlantı sorunlarını olay kimliğine göre giderme](event-id-troubleshoot-vm-rdp-connecton.md)
 - [Sanal makinede statik IP kaynaklı RDP hatasına yönelik sorun giderme](troubleshoot-rdp-static-ip.md)
 - [Sanal makinede NIC’nin devre dışı bırakılması kaynaklı RDP hatasına yönelik sorun giderme](troubleshoot-rdp-nic-disabled.md)
@@ -46,4 +46,3 @@ Bu bölümde, bir VM bağlantısı için RDP oluşturmayla ilgili aşağıdaki s
 - [Konuk işletim sistemi güvenlik duvarı gelen trafiği engelliyor](guest-os-firewall-blocking-inbound-traffic.md)
 - [Konuk işletim sistemi güvenlik duvarı yanlış yapılandırılmış](guest-os-firewall-misconfigured.md) 
 - [netvsc.sys dosyasından kaynaklanan RDP hatalarına yönelik sorun giderme](troubleshoot-rdp-driver-netvsc.md)
-

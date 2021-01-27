@@ -9,12 +9,12 @@ ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: beae92cc83f648cf48ab0ede7ea21e936e0cd6b9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d3d15b7dd5a44245a6a501dc4a4a324e93f3a7a6
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87294574"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879046"
 ---
 # <a name="azcopy-load"></a>azcopy load
 
@@ -27,7 +27,7 @@ Microsoft 'un avere Cloud FileSystem (CLFS) biçimi gibi belirli biçimlerdeki v
 ## <a name="related-conceptual-articles"></a>İlgili kavramsal makaleler
 
 - [AzCopy’yi kullanmaya başlama](storage-use-azcopy-v10.md)
-- [AzCopy ve BLOB Storage ile veri aktarma](storage-use-azcopy-blobs.md)
+- [AzCopy ve BLOB Storage ile veri aktarma](./storage-use-azcopy-v10.md#transfer-data)
 - [AzCopy ve dosya depolama ile verileri aktarma](storage-use-azcopy-files.md)
 - [AzCopy 'i yapılandırma, iyileştirme ve sorun giderme](storage-use-azcopy-configure.md)
 
@@ -55,4 +55,4 @@ azcopy load clfs "/path/to/dir" "https://[account].blob.core.windows.net/[contai
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-- [azcopy](storage-ref-azcopy.md)
+- [AzCopy](storage-ref-azcopy.md)

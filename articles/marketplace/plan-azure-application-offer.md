@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/06/2020
-ms.openlocfilehash: 45bc3aaf5217c626e2593b4eda861eaace2a8be2
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: f98f128e56810e3dd710ce454c8dc34b333690d1
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96620418"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879301"
 ---
 # <a name="plan-an-azure-application-offer-for-the-commercial-marketplace"></a>Ticari Market için bir Azure uygulaması teklifi planlayın
 
@@ -121,7 +121,7 @@ Iş Ortağı Merkezi 'nde yeni bir Azure uygulaması teklifi oluşturduğunuzda,
 5. Gizlilik ilkesi adresi (bağlantı)
 6. Teklif adı
 7. Özet
-8. Açıklama
+8. Description
 9. Ekran görüntüleri/videolar
 
 Aşağıdaki ekran görüntüsünde, teklif bilgilerinin Azure portal nasıl göründüğü gösterilmektedir:
@@ -177,7 +177,7 @@ Teklifinizi daha kolay bir şekilde oluşturmaya yardımcı olmak için bu öğe
   - . png dosyası
   - Bir resim yazısı içermelidir
 - **Medya – videolar** (isteğe bağlı): aşağıdaki gereksinimlere sahip en fazla beş video ekleyebilirsiniz, bu da teklifinizi gösterir:
-  - Ad
+  - Name
   - URL: yalnızca YouTube veya Vimeo 'da barındırılmalıdır.
   - Küçük resim: 1280 x 720. png dosyası
 
@@ -210,7 +210,7 @@ Azure abonelik kimliklerini kullanarak önizleme kitleyi, her biri için isteğe
 Microsoft tarafından desteklenen pazarlama ve satış kanallarını kabul edebilirsiniz. Iş Ortağı Merkezi 'nde teklifinizi oluştururken işlemin sonuna doğru iki sekme görürsünüz:
 
 - **CSP 'ler aracılığıyla yeniden Satım**: Microsoft bulut çözüm SAĞLAYıCıLARıNıN (CSP) iş ortaklarının, çözümünüzü bir paketlenmiş teklifin parçası olarak yeniden satmasına izin vermek için bu seçeneği kullanın. Daha fazla bilgi için bkz. [bulut çözümü sağlayıcısı programı](./cloud-solution-providers.md) .
-- **Microsoft Ile ortak satış**: Bu seçenek, Microsoft satış ekiplerinin, müşterilerinin IHTIYAÇLARıNı değerlendirirken IP ortak satış için uygun çözümünüzü kabul etmenize olanak tanır. Teklifinizi değerlendirme için hazırlama hakkında ayrıntılı bilgi için, bkz. [ticari Market 'Teki ortak satış seçeneği](commercial-marketplace-co-sell.md). IP ortak satışı gereksinimleriyle ilgili ayrıntılar için bkz. [ortak satış durumu gereksinimleri](https://aka.ms/CertificationPolicies#3000-requirements-for-co-sell-status). Teklifinizi Microsoft CSP iş ortağı kanalları aracılığıyla pazarlama hakkında daha fazla bilgi için bkz. [Cloud Solution Providers](cloud-solution-providers.md).
+- **Microsoft Ile ortak satış**: Bu seçenek, Microsoft satış ekiplerinin, müşterilerinin IHTIYAÇLARıNı değerlendirirken IP ortak satış için uygun çözümünüzü kabul etmenize olanak tanır. Teklifinizi değerlendirme için hazırlama hakkında ayrıntılı bilgi için, bkz. [ticari Market 'Teki ortak satış seçeneği](commercial-marketplace-co-sell.md). IP ortak satışı gereksinimleriyle ilgili ayrıntılar için bkz. [ortak satış durumu gereksinimleri](/legal/marketplace/certification-policies#3000-requirements-for-co-sell-status). Teklifinizi Microsoft CSP iş ortağı kanalları aracılığıyla pazarlama hakkında daha fazla bilgi için bkz. [Cloud Solution Providers](cloud-solution-providers.md).
 
 Daha fazla bilgi edinmek için bkz. [Azure Marketi ile bulut Işletmenizi büyütme](https://azuremarketplace.microsoft.com/sell).
 

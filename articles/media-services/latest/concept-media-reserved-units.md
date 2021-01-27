@@ -1,5 +1,5 @@
 ---
-title: Medya ayrılmış birimleri-Azure | Microsoft Docs
+title: Medya ayrılmış birimleri-Azure
 description: Medya ayrılmış birimleri medya işlemini ölçeklendirmenize ve medya işleme görevlerinizin hızını belirlemenizi sağlar.
 services: media-services
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: inhenkel
-ms.openlocfilehash: df691f5b9e74432f683e52fbb896dd4d44efe2aa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e0cfc47b546c31e6b93d224e64de20b79baacfd9
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91622108"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98891306"
 ---
 # <a name="media-reserved-units"></a>Medya ayrılmış birimleri
 

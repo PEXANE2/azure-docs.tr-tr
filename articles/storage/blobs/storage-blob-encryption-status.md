@@ -9,12 +9,12 @@ ms.date: 11/26/2019
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 6d0392cd8e94ba8a9026f557b90e740fbed7f50c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ee54357250e3f31ef9db633d933d897fff362f48
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84809085"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878570"
 ---
 # <a name="check-the-encryption-status-of-a-blob"></a>Bir Blobun şifreleme durumunu denetleme
 
@@ -26,14 +26,14 @@ Bu makalede, belirli bir Blobun şifrelenip şifrelenmediğini belirleme işlemi
 
 Blob 'un kod olmadan şifrelenip şifrelenmediğini anlamak için Azure portal, PowerShell veya Azure CLı kullanın.
 
-### <a name="azure-portal"></a>[Azure portalındaki](#tab/portal)
+### <a name="azure-portal"></a>[Azure portalı](#tab/portal)
 
 Bir Blobun şifrelenip şifrelenmediğini denetlemek için Azure portal kullanmak için şu adımları izleyin:
 
 1. Azure portalında depolama hesabınıza gidin.
 1. Hesaptaki kapsayıcıların listesine gitmek için **kapsayıcılar** ' ı seçin.
 1. Blobu bulun ve **genel bakış** sekmesini görüntüleyin.
-1. Sunucu tarafından **şifrelenen** özelliği görüntüleyin. **Doğru**ise, aşağıdaki görüntüde gösterildiği gibi BLOB şifrelenir. Blobun özelliklerinin, blob 'un oluşturulduğu tarih ve saati de içerdiğine dikkat edin.
+1. Sunucu tarafından **şifrelenen** özelliği görüntüleyin. **Doğru** ise, aşağıdaki görüntüde gösterildiği gibi BLOB şifrelenir. Blobun özelliklerinin, blob 'un oluşturulduğu tarih ve saati de içerdiğine dikkat edin.
 
     ![Azure portal 'da sunucu şifreli özelliğinin nasıl kontrol Leneceğini gösteren ekran görüntüsü](media/storage-blob-encryption-status/blob-encryption-property-portal.png)
 
@@ -94,7 +94,7 @@ Example:
 azcopy copy 'C:\temp\blob1.txt' 'https://storagesamples.blob.core.windows.net/sample-container/blob1.txt'
 ```
 
-Blob verilerini kopyalamak için AzCopy kullanma hakkında daha fazla bilgi için bkz. [AzCopy ve BLOB Storage ile veri aktarma](../common/storage-use-azcopy-blobs.md).
+Blob verilerini kopyalamak için AzCopy kullanma hakkında daha fazla bilgi için bkz. [AzCopy ve BLOB Storage ile veri aktarma](../common/storage-use-azcopy-v10.md#transfer-data).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

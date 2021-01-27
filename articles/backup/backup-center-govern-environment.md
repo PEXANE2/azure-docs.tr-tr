@@ -3,14 +3,14 @@ title: Yedekleme Merkezi'ni kullanarak tüm yedeklemelerinizi idare etme
 description: Tüm kaynaklarınızın yedekleme merkezi ile yedekleme açısından uyumlu olduğundan emin olmak için Azure ortamınızı nasıl yöneteceğinizi öğrenin.
 ms.topic: conceptual
 ms.date: 09/01/2020
-ms.openlocfilehash: ebb4d72c3a3377072e185251bd642762f6876c03
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 67b0591c7d7146d162687018854365d338105d76
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92173797"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98893855"
 ---
-# <a name="govern-your-backup-estate-using-backup-center"></a>Yedekleme Merkezi'ni kullanarak tüm yedeklemelerinizi idare etme
+# <a name="govern-your-backup-estate-using-backup-center-preview"></a>Yedekleme merkezi 'ni (Önizleme) kullanarak yedeklemenizi yönetme
 
 Yedekleme merkezi, tüm kaynaklarınızın yedekleme açısından uyumlu olduğundan emin olmak için Azure ortamınızı yönetmenize yardımcı olur. Aşağıda, yedekleme merkezi 'nin bazı idare özellikleri verilmiştir:
 
@@ -43,6 +43,11 @@ Yedekleme uyumluluğu menü öğesine tıkladığınızda kaynaklarınızın [uy
 **Korunabilir veri kaynakları** menü öğesinin seçilmesi, yedekleme için yapılandırılmamış tüm veri kaynaklarınızı görüntülemenize izin verir. Listeye veri kaynağı aboneliği, kaynak grubu, konum, tür ve etiketlere göre filtre uygulayabilirsiniz. Yedeklenmesi gereken bir veri kaynağını tanımladıktan sonra, ilgili kılavuz öğesine sağ tıklayıp kaynak için yedeklemeyi yapılandırmak üzere **Yedekle** ' yi seçebilirsiniz.
 
 ![Korunabilir veri kaynakları menüsü](./media/backup-center-govern-environment/protectable-datasources.png)
+
+> [!NOTE]
+> Veri kaynağı türü olarak **Azure VM 'de SQL** ' i seçerseniz **korunabilir veri kaynakları** görünümü, yedekleme IÇIN yapılandırılmış herhangi bir SQL veritabanına sahip olmayan tüm Galeri VM 'lerinin listesini görüntüler.
+> Veri kaynağı türü olarak **Azure depolama (Azure dosyaları)** seçeneğini belirlerseniz **korunabilir veri kaynakları** görünümü, yedekleme için yapılandırılmış herhangi bir dosya paylaşımına sahip olmayan tüm depolama hesaplarının (dosya paylaşımlarını destekleyen) listesini görüntüler.
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

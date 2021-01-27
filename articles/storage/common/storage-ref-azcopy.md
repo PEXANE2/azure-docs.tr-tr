@@ -8,12 +8,12 @@ ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 18972e991f08db7fa9548454a5c5cdc3ff0f552f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 19d5a5214ae4d2d6c0a18b68863211aa1f6573c6
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87285195"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878995"
 ---
 # <a name="azcopy"></a>azcopy
 
@@ -28,7 +28,7 @@ Sorunları bildirmek veya araç hakkında daha fazla bilgi edinmek için bkz [ht
 ## <a name="related-conceptual-articles"></a>İlgili kavramsal makaleler
 
 - [AzCopy’yi kullanmaya başlama](storage-use-azcopy-v10.md)
-- [AzCopy ve BLOB Storage ile veri aktarma](storage-use-azcopy-blobs.md)
+- [AzCopy ve BLOB Storage ile veri aktarma](./storage-use-azcopy-v10.md#transfer-data)
 - [AzCopy ve dosya depolama ile verileri aktarma](storage-use-azcopy-files.md)
 - [AzCopy 'i yapılandırma, iyileştirme ve sorun giderme](storage-use-azcopy-configure.md)
 
@@ -38,7 +38,7 @@ Sorunları bildirmek veya araç hakkında daha fazla bilgi edinmek için bkz [ht
 
 **--Yardım** AzCopy için yardım
       
-**--komut çıktısının çıkış türü**  (dize) biçimi. Seçenekler şunlardır: Text, JSON. Varsayılan değer: `text`. (varsayılan `text` )
+**--komut çıktısının çıkış türü**  (dize) biçimi. Seçenekler şunlardır: Text, JSON. `text` varsayılan değerdir. (varsayılan `text` )
 
 **--Güvenilen-Microsoft-Suffixes** (dize) Azure Active Directory oturum açma belirteçlerinin gönderilebileceği ek etki alanı soneklerini belirler.  Varsayılan değer '*. Core.Windows.net;*' dir. core.chinacloudapi.cn; *. Core.cloudapi.de;*. core.usgovcloudapi.net '. Burada listelenenler varsayılan olarak eklenir. Güvenlik için yalnızca Microsoft Azure etki alanlarını Buraya yerleştirmeniz gerekir. Birden çok girişi noktalı virgülle ayırın.
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 04/16/2020
-ms.openlocfilehash: 4a3d0ef3c112da87e73f83c6c87de8f3fce1fea0
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 465f00400c28de9642a95ebcb7bc6b2349d64bc5
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96621374"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878723"
 ---
 # <a name="how-to-get-featured-in-appsource-and-azure-marketplace"></a>AppSource ve Azure Marketi 'nde öne çıkanlar
 
@@ -30,7 +30,7 @@ Puanınızı geliştirmek için aşağıdaki eylem öğelerini alabilirsiniz:
 1. *Uygulamanızın veya hizmetinizin uygun şekilde sınıflandırıldığından emin olun*: uygulamanızı veya hizmetinizin yeteneklerini temsil eden üç kategori seçin.
 2. *Azure Market uygulamaları: aylık Azure kullanım aylarınızı büyütün.* Ayda 1.000 saat Azure kullanımı elde ediyorsanız, öne çıkan olasılığınızı önemli ölçüde artıracaksınız.
 3. *AppSource uygulamaları: teklifize gelen alımları artırın.* Ayda 10 alma elde edebiliyorsanız, önemli ölçüde öne çıkmanız ihtimalini büyük ölçüde artıracaksınız.
-4. *Co-Sell hazırlık durumu*: [ortak satış için gereksinimleri](https://aka.ms/CertificationPolicies#3000-requirements-for-co-sell-status)doldurun.
+4. *Co-Sell hazırlık durumu*: [ortak satış için gereksinimleri](/legal/marketplace/certification-policies#3000-requirements-for-co-sell-status)doldurun.
 5. *Teklifinizin kalitesini artırabilirsiniz*: teklifinizin nasıl değiştirileceği hakkında bilgi için bkz. [içerik listeleme kılavuzları](marketplace-criteria-content-validation.md)
 6. Market 'te birden çok teklif yayımlama: tüm çekirdek Uygulamalarınız ve hizmetleriniz listelenir mi? Deneme deneyiminize sahipsiniz musunuz?
 7. Müşterilerinizin İncelemeleri yazmasını önerin.

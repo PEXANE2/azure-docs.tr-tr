@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 09/13/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 8e657386c417ce3407aea9b3765419e1d2b70bb9
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: 242c0819e916f3ea7912d4d57b7d3e338152e4d9
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97962457"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878519"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows-smb"></a>Windows 'da Azure dosyaları sorunlarını giderme (SMB)
 
@@ -263,7 +263,7 @@ Azure dosya hizmetine dosya aktarmaya çalıştığınızda yavaş performans g�
 -   Yazmalar ile genişletilen bir dosyanın son boyutunu biliyorsanız ve bu dosyada, yazılı olmayan kuyruk sıfır içerdiğinde yazılım uyumluluk sorunlarıyla karşılaşırsanız, her yazma için bir genişletme yazma yapmak yerine dosya boyutunu önceden ayarlayın.
 -   Doğru kopyalama yöntemini kullanın:
     -   İki dosya paylaşımı arasındaki herhangi bir aktarım için [AzCopy](../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) kullanın.
-    -   Şirket içi bilgisayardaki dosya paylaşımları arasında [Robocopy](./storage-files-deployment-guide.md#robocopy) kullanın.
+    -   Şirket içi bilgisayardaki dosya paylaşımları arasında [Robocopy](./storage-how-to-create-file-share.md) kullanın.
 
 ### <a name="considerations-for-windows-81-or-windows-server-2012-r2"></a>Windows 8.1 veya Windows Server 2012 R2 ile ilgili konular
 
@@ -406,8 +406,8 @@ Cmdlet bu denetimleri sırayla gerçekleştirir ve hatalara yönelik rehberlik s
 5. Checksıdhasaaduser: oturum açan AD kullanıcısının Azure AD ile eşitlendiğinden emin olun. Belirli bir AD kullanıcısının Azure AD ile eşitlenip eşitlenmediğini aramak isterseniz, giriş parametrelerinde-UserName ve-Domain öğesini belirtebilirsiniz. 
 6. CheckGetKerberosTicket: depolama hesabına bağlanmak için bir Kerberos bileti almayı deneyin. Geçerli bir Kerberos belirteci yoksa, Klist Get CIFS/Storage-Account-Name. File. Core. Windows. net cmdlet 'ini çalıştırın ve hata kodunu, bilet alma hatasının köke neden olacak şekilde inceleyin.
 7. Checkstorageaccountdomainkatılmış: AD kimlik doğrulamasının etkinleştirilip etkinleştirilmediğini ve hesabın AD özelliklerinin doldurulup doldurulmadığını denetleyin. Aksi takdirde, Azure dosyalarında AD DS kimlik doğrulamasını etkinleştirmek için [buradaki](./storage-files-identity-ad-ds-enable.md) yönergeye başvurun. 
-8. CheckUserRbacAssignment: Azure dosyalarına erişim izni vermek için AD kullanıcısının uygun RBAC rol atamasına sahip olup olmadığını denetleyin. Aksi takdirde, paylaşma düzeyi iznini yapılandırmak için [buradaki](https://docs.microsoft.com/azure/storage/files/storage-files-identity-ad-ds-assign-permissions) yönergeye başvurun. (AzFilesHybrid v 0.2.3 + sürümünde desteklenir)
-9. CheckUserFileAccess: Azure dosyalarına erişmek için AD kullanıcısının doğru dizin/dosya iznine (Windows ACL 'Ler) sahip olup olmadığını denetleyin. Aksi takdirde, dizin/dosya düzeyi iznini yapılandırmak için [buradaki](https://docs.microsoft.com/azure/storage/files/storage-files-identity-ad-ds-configure-permissions) yönergeye başvurun. (AzFilesHybrid v 0.2.3 + sürümünde desteklenir)
+8. CheckUserRbacAssignment: Azure dosyalarına erişim izni vermek için AD kullanıcısının uygun RBAC rol atamasına sahip olup olmadığını denetleyin. Aksi takdirde, paylaşma düzeyi iznini yapılandırmak için [buradaki](./storage-files-identity-ad-ds-assign-permissions.md) yönergeye başvurun. (AzFilesHybrid v 0.2.3 + sürümünde desteklenir)
+9. CheckUserFileAccess: Azure dosyalarına erişmek için AD kullanıcısının doğru dizin/dosya iznine (Windows ACL 'Ler) sahip olup olmadığını denetleyin. Aksi takdirde, dizin/dosya düzeyi iznini yapılandırmak için [buradaki](./storage-files-identity-ad-ds-configure-permissions.md) yönergeye başvurun. (AzFilesHybrid v 0.2.3 + sürümünde desteklenir)
 
 ## <a name="unable-to-configure-directoryfile-level-permissions-windows-acls-with-windows-file-explorer"></a>Windows Dosya Gezgini ile dizin/dosya düzeyi izinleri (Windows ACL 'Leri) yapılandırılamıyor
 

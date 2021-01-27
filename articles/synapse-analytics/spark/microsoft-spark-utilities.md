@@ -10,12 +10,12 @@ ms.date: 09/10/2020
 ms.author: ruxu
 ms.reviewer: ''
 zone_pivot_groups: programming-languages-spark-all-minus-sql
-ms.openlocfilehash: c681195a60329320b875cc06919e9440b65eb9e5
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: d2e9e306e979f569819568650b25d49278997ede
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98120249"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878536"
 ---
 # <a name="introduction-to-microsoft-spark-utilities"></a>Microsoft Spark yardımcı programlarına giriş
 
@@ -39,7 +39,11 @@ ADLS 2. verilerine aşağıdaki URL aracılığıyla SYNAPSE Spark ile erişebil
 
 <code>abfss://<container_name>@<storage_account_name>.dfs.core.windows.net/<path></code>
 
-### <a name="configure-access-to-azure-blob-storage"></a>Azure Blob depolamaya erişimi yapılandırma 
+<!-- ### Configure access to Azure Blob Storage  -->
+
+:::zone pivot = "programming-language-python"
+
+### <a name="configure-access-to-azure-blob-storage"></a>Azure Blob depolamaya erişimi yapılandırma  
 
 SYNAPSE Azure Blob depolamaya erişmek için **paylaşılan erişim imzasını (SAS)** kullanın. Kodda SAS anahtarlarının açığa çıkarılması önlemek için, SYNAPSE çalışma alanında erişmek istediğiniz Azure Blob depolama hesabına yeni bir bağlı hizmet oluşturmanız önerilir.
 
@@ -58,9 +62,6 @@ Aşağıdaki URL aracılığıyla SYNAPSE Spark ile Azure Blob depolama üzerind
 <code>wasb[s]://<container_name>@<storage_account_name>.blob.core.windows.net/<path></code>
 
 Aşağıda bir kod örneği verilmiştir:
-
-
-:::zone pivot = "programming-language-python"
 
 ```python
 from pyspark.sql import SparkSession
@@ -85,6 +86,26 @@ print('Remote blob path: ' + wasb_path)
 
 :::zone pivot = "programming-language-scala"
 
+### <a name="configure-access-to-azure-blob-storage"></a>Azure Blob depolamaya erişimi yapılandırma  
+
+SYNAPSE Azure Blob depolamaya erişmek için **paylaşılan erişim imzasını (SAS)** kullanın. Kodda SAS anahtarlarının açığa çıkarılması önlemek için, SYNAPSE çalışma alanında erişmek istediğiniz Azure Blob depolama hesabına yeni bir bağlı hizmet oluşturmanız önerilir.
+
+Azure Blob depolama hesabı için yeni bir bağlı hizmet eklemek için aşağıdaki adımları izleyin:
+
+1. [Azure SYNAPSE Studio 'yu](https://web.azuresynapse.net/)açın.
+2. Sol panelden **Yönet** ' i seçin ve **dış bağlantılar** altında **bağlı hizmetler** ' i seçin.
+3. Sağ taraftaki **yeni bağlı hizmet** panelinde **Azure Blob Storage** 'ı arayın.
+4. **Devam**’ı seçin.
+5. Bağlı hizmet adına erişmek ve yapılandırmak için Azure Blob Depolama hesabını seçin. **Kimlik doğrulama yöntemi** için **hesap anahtarını** kullanmayı önerin.
+6. Ayarların doğru olduğunu doğrulamak için **Bağlantıyı Sına** ' yı seçin.
+7. Önce **Oluştur** ' u seçin ve değişikliklerinizi kaydetmek Için **Tümünü Yayımla** ' ya tıklayın. 
+
+Aşağıdaki URL aracılığıyla SYNAPSE Spark ile Azure Blob depolama üzerindeki verilere erişebilirsiniz:
+
+<code>wasb[s]://<container_name>@<storage_account_name>.blob.core.windows.net/<path></code>
+
+Aşağıda bir kod örneği verilmiştir:
+
 ```scala
 val blob_account_name = "" // replace with your blob name
 val blob_container_name = "" //replace with your container name
@@ -101,13 +122,13 @@ spark.conf.set(f"fs.azure.sas.$blob_container_name.$blob_account_name.blob.core.
 
 ::: zone-end
 
-:::zone pivot = "programming-language-csharp"
+<!-- :::zone pivot = "programming-language-csharp"
 
 ```csharp
 
 ```
 
-::: zone-end
+::: zone-end -->
  
 ###  <a name="configure-access-to-azure-key-vault"></a>Azure Key Vault erişimi yapılandırma
 
@@ -621,11 +642,15 @@ Credentials.GetSecret("azure key vault name","secret name")
 
 ::: zone-end
 
+<!-- ### Put secret using workspace identity
+
+Puts Azure Key Vault secret for a given Azure Key Vault name, secret name, and linked service name using workspace identity. Make sure you configure the access to [Azure Key Vault](#configure-access-to-azure-key-vault) appropriately. -->
+
+:::zone pivot = "programming-language-python"
+
 ### <a name="put-secret-using-workspace-identity"></a>Çalışma alanı kimliği kullanarak gizli dizi koy
 
 , Belirli bir Azure Key Vault adı, gizli adı ve çalışma alanı kimliği kullanarak bağlı hizmet adı için Azure Key Vault gizli dizisi koyar. [Azure Key Vault](#configure-access-to-azure-key-vault) erişimi uygun şekilde yapılandırdığınızdan emin olun.
-
-:::zone pivot = "programming-language-python"
 
 ```python
 mssparkutils.credentials.putSecret('azure key vault name','secret name','secret value','linked service name')
@@ -634,26 +659,34 @@ mssparkutils.credentials.putSecret('azure key vault name','secret name','secret 
 
 :::zone pivot = "programming-language-scala"
 
+### <a name="put-secret-using-workspace-identity"></a>Çalışma alanı kimliği kullanarak gizli dizi koy
+
+, Belirli bir Azure Key Vault adı, gizli adı ve çalışma alanı kimliği kullanarak bağlı hizmet adı için Azure Key Vault gizli dizisi koyar. [Azure Key Vault](#configure-access-to-azure-key-vault) erişimi uygun şekilde yapılandırdığınızdan emin olun.
+
 ```scala
 mssparkutils.credentials.putSecret("azure key vault name","secret name","secret value","linked service name")
 ```
 
 ::: zone-end
 
-:::zone pivot = "programming-language-csharp"
+<!-- :::zone pivot = "programming-language-csharp"
 
 ```csharp
 
 ```
 
-::: zone-end
+::: zone-end -->
 
+
+<!-- ### Put secret using user credentials
+
+Puts Azure Key Vault secret for a given Azure Key Vault name, secret name, and linked service name using user credentials.  -->
+
+:::zone pivot = "programming-language-python"
 
 ### <a name="put-secret-using-user-credentials"></a>Kullanıcı kimlik bilgilerini kullanarak gizli dizi koy
 
 Kullanıcı kimlik bilgilerini kullanarak belirli bir Azure Key Vault adı, gizli adı ve bağlı hizmet adı için Azure Key Vault gizli dizisi koyar. 
-
-:::zone pivot = "programming-language-python"
 
 ```python
 mssparkutils.credentials.putSecret('azure key vault name','secret name','secret value')
@@ -662,19 +695,23 @@ mssparkutils.credentials.putSecret('azure key vault name','secret name','secret 
 
 :::zone pivot = "programming-language-scala"
 
+### <a name="put-secret-using-user-credentials"></a>Kullanıcı kimlik bilgilerini kullanarak gizli dizi koy
+
+Kullanıcı kimlik bilgilerini kullanarak belirli bir Azure Key Vault adı, gizli adı ve bağlı hizmet adı için Azure Key Vault gizli dizisi koyar. 
+
 ```scala
 mssparkutils.credentials.putSecret("azure key vault name","secret name","secret value")
 ```
 
 ::: zone-end
 
-:::zone pivot = "programming-language-csharp"
+<!-- :::zone pivot = "programming-language-csharp"
 
 ```csharp
 
 ```
 
-::: zone-end
+::: zone-end -->
 
 
 ## <a name="environment-utilities"></a>Ortam yardımcı programları 

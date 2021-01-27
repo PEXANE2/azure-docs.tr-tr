@@ -11,23 +11,23 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 11/17/2020
 ms.author: axelg
-ms.openlocfilehash: 247324c30bbe0edaef78c0b0d5e6a6d593e8cac9
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 62b462d8e75fc291ac599ac99dbe4fb3a74fde2b
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97586406"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878706"
 ---
 # <a name="troubleshoot-the-azure-linux-agent"></a>Azure Linux Aracısı sorunlarını giderme
 
-[Azure Linux Aracısı](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux) , 168.63.129.16 IP adresinde bir sanal makınenın (VM) yapı DENETLEYICISI (VM 'nin barındırıldığı temeldeki fiziksel sunucu) ile iletişim kurmasını sağlar.
+[Azure Linux Aracısı](../extensions/agent-linux.md) , 168.63.129.16 IP adresinde bir sanal makınenın (VM) yapı DENETLEYICISI (VM 'nin barındırıldığı temeldeki fiziksel sunucu) ile iletişim kurmasını sağlar.
 
 >[!NOTE]
 >Bu IP adresi, iletişimi kolaylaştıran ve engellenmemelidir olması gereken sanal bir genel IP adresidir. Daha fazla bilgi için bkz. [IP adresi 168.63.129.16 nedir?](../../virtual-network/what-is-ip-address-168-63-129-16.md).
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Hala desteklendiğinden emin olmak için aracı durumunu ve sürümünü denetleyin. Sürüm desteğini denetlemek için bkz. [Azure 'da sanal makine aracıları Için en düşük sürüm desteği](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/support-extensions-agent-version) veya durumu ve sürümü bulma adımları Için [WALıNUXAGENT SSS](https://github.com/Azure/WALinuxAgent/wiki/FAQ#what-does-goal-state-agent-mean-in-waagent---version-output) .
+Hala desteklendiğinden emin olmak için aracı durumunu ve sürümünü denetleyin. Sürüm desteğini denetlemek için bkz. [Azure 'da sanal makine aracıları Için en düşük sürüm desteği](/troubleshoot/azure/virtual-machines/support-extensions-agent-version) veya durumu ve sürümü bulma adımları Için [WALıNUXAGENT SSS](https://github.com/Azure/WALinuxAgent/wiki/FAQ#what-does-goal-state-agent-mean-in-waagent---version-output) .
 
 ## <a name="troubleshoot-a-not-ready-status"></a>Hazırlanma durumunda sorun giderme
 
@@ -64,7 +64,7 @@ Hala desteklendiğinden emin olmak için aracı durumunu ve sürümünü denetle
    AutoUpdate.Enabled=y
    ```
 
-   Azure Linux aracısını güncelleştirme hakkında daha fazla bilgi için bkz. [VM 'de Azure Linux aracısını güncelleştirme](https://docs.microsoft.com/azure/virtual-machines/extensions/update-linux-agent).
+   Azure Linux aracısını güncelleştirme hakkında daha fazla bilgi için bkz. [VM 'de Azure Linux aracısını güncelleştirme](../extensions/update-linux-agent.md).
 
 1. VM 'nin doku denetleyicisine bağlanabildiğinizden emin olun. Sanal makinenin 80, 443 ve 32526 bağlantı noktalarında 168.63.129.16 'ye bağlanıp bağlanamamadığını test etmek için kıvrımlı gibi bir araç kullanın. VM beklendiği gibi bağlanmazsa, 80, 443 ve 32526 bağlantı noktaları üzerinden giden iletişimin VM 'deki yerel güvenlik duvarınızda açık olup olmadığını denetleyin. Bu IP adresi engellenirse, VM Aracısı beklenmeyen bir davranış gösterebilir.
 

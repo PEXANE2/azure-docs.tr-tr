@@ -11,12 +11,12 @@ ms.author: siarora
 ms.date: 12/1/2020
 ms.topic: conceptual
 ms.custom: troubleshooting,contperf-fy20q4, contperf-fy21q2
-ms.openlocfilehash: 78cc0aa6beb9ab83fea2039b271b071de1662fc1
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: aa25a81068b25b7b8696a7472eb04542e8bb1a60
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98629189"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878961"
 ---
 # <a name="manage-and-increase-quotas-for-resources-with-azure-machine-learning"></a>Azure Machine Learning olan kaynaklar için kotaları yönetme ve artırma
 
@@ -82,7 +82,7 @@ Kullanılabilir kaynaklar:
 + **Bölge başına kümelerin** varsayılan 200 limiti vardır. Bunlar, bir eğitim kümesi ve bir işlem örneği arasında paylaşılır. (Bir işlem örneği, kota amaçları için tek düğümlü bir küme olarak kabul edilir.)
 
 > [!TIP]
-> Kota artışı için gereken VM ailesi hakkında daha fazla bilgi edinmek için [Azure 'da sanal makine boyutlarını](https://docs.microsoft.com/azure/virtual-machines/sizes)inceleyin. Örneğin GPU VM aileleri, Aile adında bir "N" ile başlar (örn. NCv3 serisi)
+> Kota artışı için gereken VM ailesi hakkında daha fazla bilgi edinmek için [Azure 'da sanal makine boyutlarını](../virtual-machines/sizes.md)inceleyin. Örneğin GPU VM aileleri, Aile adında bir "N" ile başlar (örn. NCv3 serisi)
 
 Aşağıdaki tabloda, platformda ek sınırlamalar gösterilmektedir. Lütfen bir özel durum istemek için bir **Teknik** destek bileti aracılığıyla AzureML ürün ekibine ulaşın.
 

@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 06/22/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: e364578cdec8696688cf19e14fd0529f1ca3fbb3
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 223fdc215bc391bea5cad5d4cb9999b9d14ba570
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842626"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878791"
 ---
 # <a name="bringing-and-creating-linux-images-in-azure"></a>Azure 'da Linux görüntülerini getirme ve oluşturma
 
@@ -29,7 +29,7 @@ Azure, bir VHD 'yi platforma getirmenize, [yönetilen disk](../faq-for-disks.md#
 
 Azure yönetilen diskler tek VHD 'lardır. Mevcut bir VHD 'yi alabilir ve bundan yönetilen bir disk oluşturabilir ya da sıfırdan boş bir yönetilen disk oluşturabilirsiniz. Diski VM 'ye ekleyerek yönetilen disklerden VM 'Ler oluşturabilirsiniz, ancak yalnızca bir VM 'ye sahip bir VHD kullanabilirsiniz. Herhangi bir işletim sistemi özelliğini değiştiremezsiniz; Azure yalnızca VM 'yi açmayı ve bu diski kullanmaya başlamasını dener. 
 
-Azure görüntüleri, birden fazla işletim sistemi diski ve veri diski oluşturabilir. Bir VM oluşturmak için yönetilen bir görüntü kullandığınızda, platform görüntünün bir kopyasını oluşturur ve VM 'yi oluşturmak için bunu kullanır. bu nedenle, yönetilen görüntü desteği birden çok VM için aynı görüntüyü yeniden kullanır. Azure Ayrıca, genel çoğaltma ve [paylaşılan görüntü Galerisi](shared-image-galleries.md)aracılığıyla sürüm oluşturma gibi görüntüler için gelişmiş yönetim özellikleri de sağlar. 
+Azure görüntüleri, birden fazla işletim sistemi diski ve veri diski oluşturabilir. Bir VM oluşturmak için yönetilen bir görüntü kullandığınızda, platform görüntünün bir kopyasını oluşturur ve VM 'yi oluşturmak için bunu kullanır. bu nedenle, yönetilen görüntü desteği birden çok VM için aynı görüntüyü yeniden kullanır. Azure Ayrıca, genel çoğaltma ve [paylaşılan görüntü Galerisi](../shared-image-galleries.md)aracılığıyla sürüm oluşturma gibi görüntüler için gelişmiş yönetim özellikleri de sağlar. 
 
 
 
@@ -65,7 +65,7 @@ Bu görüntüler için sağlama aracıları gerekli değildir, ancak uzantı iş
 Linux görüntünüzü getirirken iki seçeneğiniz vardır:
 
 - Geliştirme ve test ortamında basit VM oluşturmak için yönetilen görüntüler.
-- Görüntü oluşturma ve resim paylaşma için [paylaşılan görüntü Galerisi](shared-image-galleries.md) .
+- Görüntü oluşturma ve resim paylaşma için [paylaşılan görüntü Galerisi](../shared-image-galleries.md) .
 
 
 ### <a name="managed-images"></a>Yönetilen görüntüler
@@ -76,7 +76,7 @@ Yönetilen görüntüler, tek bir bölge ve abonelik içinde kullanmak üzere bi
 
 ### <a name="azure-shared-image-gallery-sig"></a>Azure Paylaşılan görüntü Galerisi (SıG)
 
-[Paylaşılan görüntü galerileri](shared-image-galleries.md) , görüntü oluşturmak, yönetmek ve ölçeği ölçeklenebilir şekilde paylaşmak için önerilir. Paylaşılan görüntü galerileri, görüntülerinizin etrafında yapı ve kuruluş oluşturmanıza yardımcı olur.  
+[Paylaşılan görüntü galerileri](../shared-image-galleries.md) , görüntü oluşturmak, yönetmek ve ölçeği ölçeklenebilir şekilde paylaşmak için önerilir. Paylaşılan görüntü galerileri, görüntülerinizin etrafında yapı ve kuruluş oluşturmanıza yardımcı olur.  
 
 - Hem Genelleştirilmiş hem de özelleştirilmiş görüntüler için destek.
 - Hem 1. nesil hem de 2 görüntü için destek.

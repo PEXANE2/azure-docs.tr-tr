@@ -1,25 +1,10 @@
 ---
-title: Media Services v3 ile karşıya yükleme, kodlama ve akışla
-titleSuffix: Azure Media Services
-description: Azure Media Services v3 ile bir dosyayı karşıya yüklemeyi, videoyu kodlamayı ve akış içeriğini gösteren öğretici.
-services: media-services
-documentationcenter: ''
-author: IngridAtMicrosoft
-manager: femila
-editor: ''
-ms.service: media-services
-ms.workload: ''
-ms.topic: tutorial
-ms.custom: mvc
-ms.date: 08/31/2020
-ms.author: inhenkel
-ms.openlocfilehash: eedbb63f4928c0397150b40a47fdc7c3e87d1991
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
-ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89256778"
+Başlık: Media Services v3 ile karşıya yükle, kodla ve akışla: Azure Media Services Description: Azure Media Services v3 ile dosya yükleme, video kodlama ve içerik akışını gösteren öğretici.
+Hizmetler: Media-Services belgetationcenter: ' ' Yazar: ınridatmicrosoft Manager: femila Düzenleyicisi: ' '
+
+MS. Service: Media-Services MS. Workload: MS. Topic: öğretici ms. Custom: MVC MS. Date: 08/31/2020 MS. Author: inhenkel
 ---
+
 # <a name="tutorial-upload-encode-and-stream-videos-with-media-services-v3"></a>Öğretici: Media Services v3 ile videoları karşıya yükleme, kodlama ve akışla
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
@@ -67,11 +52,11 @@ Bu bölümde, *UploadEncodeAndStreamFiles* projesinin [Program.cs](https://githu
 Örnek aşağıdaki eylemleri gerçekleştirir:
 
 1. Yeni bir **dönüşüm** oluşturur (ilk olarak, belirtilen dönüştürmenin var olup olmadığını denetler).
-2. Kodlama **işinin**çıkışı olarak kullanılan bir çıktı **varlığı** oluşturur.
+2. Kodlama **işinin** çıkışı olarak kullanılan bir çıktı **varlığı** oluşturur.
 3. Bir giriş **varlığı** oluşturun ve belirtilen yerel video dosyasını bu dosyaya yükler. Varlık, işin girişi olarak kullanılır.
 4. Oluşturulan girişi ve çıktıyı kullanarak kodlama işini gönderir.
 5. İşin durumunu denetler.
-6. Bir **akış Bulucu**oluşturur.
+6. Bir **akış Bulucu** oluşturur.
 7. Akış URL'leri oluşturur.
 
 ### <a name="start-using-media-services-apis-with-net-sdk"></a>.NET SDK ile Media Services API’sini kullanmaya başlama
@@ -88,7 +73,7 @@ Media Services v3’te dosyaları karşıya yüklemek için Azure Depolama API�
 
 Aşağıdaki işlev şu eylemleri gerçekleştirir:
 
-* Bir **varlık**oluşturur.
+* Bir **varlık** oluşturur.
 * [Depolama alanındaki varlığın kapsayıcısına](../../storage/blobs/storage-quickstart-blobs-dotnet.md#upload-blobs-to-a-container)yazılabilir bir [SAS URL 'si](../../storage/common/storage-sas-overview.md) alır.
 
     SAS URL 'Lerini almak için varlığın [Listcontainersas](/rest/api/media/assets/listcontainersas) işlevini kullanıyorsanız, her depolama hesabı için iki depolama hesabı anahtarı olduğu için işlevin bırden çok SAS URL 'si döndürdüğünü unutmayın. Depolama hesabı anahtarlarının sorunsuz bir şekilde değiştirilmesini sağladığından bir depolama hesabının iki anahtarı vardır (örneğin, diğerini kullanırken bir tane değiştirin, yeni anahtarı kullanmaya başlayın ve diğer anahtarı döndürün). 1. SAS URL 'SI, Storage KEY1 ve ikinci bir Storage key2 öğesini temsil eder.
@@ -104,7 +89,7 @@ Aşağıdaki işlev şu eylemleri gerçekleştirir:
 
 ### <a name="create-a-transform-and-a-job-that-encodes-the-uploaded-file"></a>Bir Dönüşüm ve karşıya yüklenen dosyayı kodlayan İş oluşturma
 
-Media Services içeriği kodlarken veya işlerken, kodlama ayarlarını tarif olarak ayarlamak için ortak bir modeldir. Daha sonra bu tarifi bir videoya uygulamak üzere bir **İş** gönderirsiniz. Her yeni video için yeni işler göndererek, bu tarifi kitaplığınızdaki tüm videolara uygulayacağız. Media Services bir tarif, **dönüşüm**olarak adlandırılır. Daha fazla bilgi için [Dönüşümler ve İşler](./transforms-jobs-concept.md) konusuna bakın. Bu öğreticide açıklanan örnek, videoyu çeşitli iOS ve Android cihazlarına akışla aktarmak için kodlayan bir tarifi tanımlar.
+Media Services içeriği kodlarken veya işlerken, kodlama ayarlarını tarif olarak ayarlamak için ortak bir modeldir. Daha sonra bu tarifi bir videoya uygulamak üzere bir **İş** gönderirsiniz. Her yeni video için yeni işler göndererek, bu tarifi kitaplığınızdaki tüm videolara uygulayacağız. Media Services bir tarif, **dönüşüm** olarak adlandırılır. Daha fazla bilgi için [Dönüşümler ve İşler](./transforms-jobs-concept.md) konusuna bakın. Bu öğreticide açıklanan örnek, videoyu çeşitli iOS ve Android cihazlarına akışla aktarmak için kodlayan bir tarifi tanımlar.
 
 #### <a name="transform"></a>Dönüşüm
 
@@ -157,7 +142,7 @@ Bu konudaki örnek akışı ele alırken, aşamalı indirme yoluyla video teslim
 
 ### <a name="get-streaming-urls"></a>Akış URL'leri alma
 
-Artık [akış bulucunun](/rest/api/media/streaminglocators) oluşturulduğuna göre, **Getstreamingurls**Içinde gösterildiği gibi akış URL 'lerini alabilirsiniz. URL oluşturmak için, [akış uç noktası](/rest/api/media/streamingendpoints) ana bilgisayar adını ve **akış Bulucu** yolunu birleştirmeniz gerekir. Bu örnekte, *varsayılan* **akış uç noktası** kullanılır. İlk olarak bir medya hizmeti hesabı oluşturduğunuzda, bu *varsayılan* **akış uç noktası** durdurulmuş durumda olacaktır, bu yüzden **Start**'ı çağırmanız gerekir.
+Artık [akış bulucunun](/rest/api/media/streaminglocators) oluşturulduğuna göre, **Getstreamingurls** Içinde gösterildiği gibi akış URL 'lerini alabilirsiniz. URL oluşturmak için, [akış uç noktası](/rest/api/media/streamingendpoints) ana bilgisayar adını ve **akış Bulucu** yolunu birleştirmeniz gerekir. Bu örnekte, *varsayılan* **akış uç noktası** kullanılır. İlk olarak bir medya hizmeti hesabı oluşturduğunuzda, bu *varsayılan* **akış uç noktası** durdurulmuş durumda olacaktır, bu yüzden **Start**'ı çağırmanız gerekir.
 
 > [!NOTE]
 > Bu yöntemde, çıkış varlığı için **akış bulucuyu** oluştururken kullanılan locatorname öğesine ihtiyacınız vardır.

@@ -8,12 +8,12 @@ author: Microsoft-BradleyWright
 ms.author: brwrigh
 ms.reviewer: anbene
 ms.date: 12/23/2020
-ms.openlocfilehash: a504969d23fce8000119aadf9e45d599da0894f0
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 57a6883a2c4fff14507df27b55ac0f6621306bf5
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97918310"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879284"
 ---
 # <a name="how-to-plan-a-managed-service-offer-for-the-microsoft-commercial-marketplace"></a>Microsoft Commercial Market için yönetilen hizmet teklifi planlaması
 
@@ -25,7 +25,7 @@ Yönetilen hizmetler, Azure açık Thouse ile ormanlar arası ve çok kiracılı
 
 Yönetilen bir hizmeti yayımlamak için bulut platformunda bir altın veya gümüş Microsoft uzmanlığına sahip olmanız gerekir. Bu uzmanlık, müşterilere uzmanlığınızı gösterir. Daha fazla bilgi için bkz. [Microsoft iş ortağı ağı yetkinlikleri](https://partner.microsoft.com/membership/competencies).
 
-Teklifler, Azure Marketi 'nde yayımlanacak tüm geçerli [ticari Market sertifika ilkelerini](https://docs.microsoft.com/legal/marketplace/certification-policies) karşılamalıdır.
+Teklifler, Azure Marketi 'nde yayımlanacak tüm geçerli [ticari Market sertifika ilkelerini](/legal/marketplace/certification-policies) karşılamalıdır.
 
 ## <a name="customer-leads"></a>Müşteri liderleri
 
@@ -46,11 +46,11 @@ Yönetilen hizmet teklifinizi Iş Ortağı Merkezi 'nde oluşturduğunuzda metin
 **Çağrı açıklamaları**
 
 1. Logo
-1. Ad
+1. Name
 1. Kısa açıklama
 1. Kategoriler
 1. Yasal sözleşmeler ve Gizlilik ilkesi
-1. Açıklama
+1. Description
 1. Ekran görüntüleri/videolar
 1. Yararlı bağlantılar
 

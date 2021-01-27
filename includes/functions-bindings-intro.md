@@ -7,16 +7,16 @@ ms.topic: include
 ms.date: 01/09/2019
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: ef325f2e0673cae5fa492d656e584030baa68513
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: cd4e6a1b62d03dae705cb3b05e5b1433b3542cbe
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96000224"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98901243"
 ---
 Bu, Azure Işlevleri geliştiricileri için başvuru bilgileri. Azure Işlevleri 'ni kullanmaya yeni başladıysanız aşağıdaki kaynaklarla başlayın:
 
-* İlk işlevinizi oluşturun: [C#](../articles/azure-functions/functions-create-first-azure-function.md), [JavaScript](../articles/azure-functions/functions-create-first-azure-function.md), [Java](../articles/azure-functions/create-first-function-cli-java.md)veya [Python](../articles/azure-functions/create-first-function-cli-python.md).
+* İlk işlevinizi oluşturun: [C#](../articles/azure-functions/functions-get-started.md), [JavaScript](../articles/azure-functions/functions-get-started.md), [Java](../articles/azure-functions/create-first-function-cli-java.md)veya [Python](../articles/azure-functions/create-first-function-cli-python.md).
 * [Azure Işlevleri geliştirici başvurusu.](../articles/azure-functions/functions-reference.md)
 * Dile özgü başvuru: [c#](../articles/azure-functions/functions-dotnet-class-library.md), [c# betiği](../articles/azure-functions/functions-reference-csharp.md), [F #](../articles/azure-functions/functions-reference-fsharp.md), [Java](../articles/azure-functions/functions-reference-java.md), [JavaScript](../articles/azure-functions/functions-reference-node.md)veya [Python](../articles/azure-functions/functions-reference-python.md).
 * [Azure Işlevleri Tetikleyicileri ve bağlamaları kavramlarını.](../articles/azure-functions/functions-triggers-bindings.md)

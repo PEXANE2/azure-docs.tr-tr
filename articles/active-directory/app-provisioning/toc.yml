@@ -10,8 +10,10 @@
 - name: Öğreticiler
   expanded: true
   items:
-    - name: SCIM uç noktası oluşturma ve sağlamayı yapılandırma
+    - name: SCıM uç noktası için sağlamayı planlayın
       href: use-scim-to-provision-users-and-groups.md
+    - name: Örnek SCıM uç noktası geliştirme
+      href: use-scim-to-build-users-and-groups-endpoints.md
     - name: Öznitelik eşlemelerini özelleştirme
       href: customize-application-attributes.md
     - name: Uygulamaya özel sağlama öğreticileri
