@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 08/10/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ca2a844364d11dbb5ac2a244945e07d8ca725c1c
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 944e687c27d46a9cf3250cb21024b4e5a52dc62c
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98728449"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98871528"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>Azure 'da SAP iş yükleri: planlama ve dağıtım denetim listesi
 
@@ -137,7 +137,7 @@ Bir pilot dağıtımı sırasında tam bir HADR çözümü ve güvenlik tasarım
         - Sap destek notlarına [#500235](https://launchpad.support.sap.com/#/notes/500235) ve [#1100926](https://launchpad.support.sap.com/#/notes/1100926/E)göre SAP uygulama KATMANı VM 'leri ve DBMS VM 'ler arasındaki ağ gecikmesini test edin ve değerlendirin. [Sap desteği not#1100926](https://launchpad.support.sap.com/#/notes/1100926/E)ağ gecikmesi yönergelerine karşı sonuçları değerlendirin. Ağ gecikmesi orta veya iyi bir aralıkta olmalıdır. [Bu makalede](./hana-network-architecture.md#networking-architecture-for-hana-large-instance)belgelendiği gibi, VM 'ler ve Hana büyük örnek birimleri arasındaki trafik için özel durumlar geçerlidir.
         - ILB dağıtımlarının doğrudan sunucu dönüşü kullanacak şekilde ayarlandığından emin olun. Bu ayar, DBMS katmanında yüksek kullanılabilirlik yapılandırmalarında Azure ılbs 'ler kullanıldığında gecikme süresini azaltır.
         - Linux konuk işletim sistemleriyle birlikte Azure Load Balancer kullanıyorsanız, Linux ağ parametresinin **net.ipv4.tcp_timestamps** **0** olarak ayarlandığından emin olun. Bu öneri, daha eski [SAP note #2382421](https://launchpad.support.sap.com/#/notes/2382421)sürümlerindeki önerilerle çakışıyor. SAP Note artık bu parametrenin Azure yük dengeleyiciler ile çalışması için **0** olarak ayarlanması gerektiğini belirten bir durum olarak güncelleştirilir.
-        - En iyi ağ gecikmesini sağlamak için [Azure yakınlık yerleştirme gruplarını](../../linux/co-location.md) kullanmayı düşünün. Daha fazla bilgi için bkz. [SAP uygulamalarıyla en iyi ağ gecikmesi Için Azure yakınlık yerleşimi grupları](sap-proximity-placement-scenarios.md).
+        - En iyi ağ gecikmesini sağlamak için [Azure yakınlık yerleştirme gruplarını](../../co-location.md) kullanmayı düşünün. Daha fazla bilgi için bkz. [SAP uygulamalarıyla en iyi ağ gecikmesi Için Azure yakınlık yerleşimi grupları](sap-proximity-placement-scenarios.md).
    4. Yüksek kullanılabilirlik ve olağanüstü durum kurtarma dağıtımları.
         - SAP uygulama katmanını belirli bir Azure kullanılabilirlik bölgesi belirtmeden dağıtırsanız, SAP iletişim kutusu örnekleri veya tek bir SAP sisteminin ara yazılım örneklerini çalıştıran tüm VM 'Lerin bir [kullanılabilirlik kümesinde](../../manage-availability.md)dağıtıldığından emin olun.
         - SAP Merkezi Hizmetleri ve DBMS için yüksek kullanılabilirliğe ihtiyacınız yoksa, bu VM 'Leri SAP uygulama katmanıyla aynı Kullanılabilirlik kümesine dağıtabilirsiniz.
@@ -209,7 +209,7 @@ Bu aşamada, genellikle geliştirme sistemlerini, birim testi sistemlerini ve i�
 8.  Azure 'da yeni HANA sertifikalı SKU 'Lar için [SAP Web sitesini](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) denetleyin. Yeni SKU 'ların fiyatlandırmasını, kullanmak üzere planladığınız olanlarla karşılaştırın. Sonuç olarak, en iyi fiyat/performans oranına sahip olanları kullanmak için gerekli değişiklikleri yapın.
 9.  Dağıtım betiklerinizi yeni VM türlerini kullanmak ve kullanmak istediğiniz yeni Azure özelliklerini birleştirmek için uyarlayın.
 10. Altyapı dağıtımından sonra, sap destek notlarına [#500235](https://launchpad.support.sap.com/#/notes/500235) ve [#1100926](https://launchpad.support.sap.com/#/notes/1100926/E)göre SAP uygulama KATMANı VM 'Leri ve DBMS VM 'ler arasındaki ağ gecikmesini test edin ve değerlendirin. [Sap desteği not#1100926](https://launchpad.support.sap.com/#/notes/1100926/E)ağ gecikmesi yönergelerine karşı sonuçları değerlendirin. Ağ gecikmesi orta veya iyi bir aralıkta olmalıdır. [Bu makalede](./hana-network-architecture.md#networking-architecture-for-hana-large-instance)belgelendiği gibi, VM 'ler ve Hana büyük örnek birimleri arasındaki trafik için özel durumlar geçerlidir. [SAP iş yükleri Için Azure sanal MAKINELERI DBMS dağıtımı](./dbms_guide_general.md#azure-network-considerations) ve [Azure 'da altyapı yapılandırmalarının ve SAP HANA altyapı yapılandırmalarının ve işlemlerin](./hana-vm-operations.md) hiçbir şekilde belirtilmediği konusunda bahsedilen kısıtlamaların olmadığından emin olun.
-11. [SAP uygulamalarıyla en iyi ağ gecikmesi için](sap-proximity-placement-scenarios.md), sanal makinelerinizin doğru [Azure yakınlık yerleşimi grubuna](../../linux/co-location.md)dağıtıldığından emin olun.
+11. [SAP uygulamalarıyla en iyi ağ gecikmesi için](sap-proximity-placement-scenarios.md), sanal makinelerinizin doğru [Azure yakınlık yerleşimi grubuna](../../co-location.md)dağıtıldığından emin olun.
 11. İş yükünü uygulamadan önce kavram kanıtı aşaması için listelenen diğer tüm denetimleri gerçekleştirin.
 12. İş yükü geçerli olduğundan, sistemlerin kaynak tüketimini Azure 'da kaydedin. Bu tüketimi eski platformunuzun kayıtlarıyla karşılaştırın. Büyük farklarınızın olduğunu görürseniz gelecek dağıtımların sanal makine boyutunu ayarlayın. Sanal makinelerin boyutunu, depolamayı ve ağ bant genişliğini azaltdığınızda da azaltabileceğinizi aklınızda bulundurun.
     - [Azure'daki Windows sanal makinesi boyutları](../../sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
@@ -251,7 +251,7 @@ Bu aşamada, üretim dışı dağıtımlarınız sırasında karşılaştığın
     - SAP NetWeaver, Hybru veya S/4HANA 'ya dayalı sap sistemleri ve SAP sistemlerinin DBMS katmanı arasındaki iletişim yolunda hiçbir [Azure ağ sanal aygıtı](https://azure.microsoft.com/solutions/network-appliances/) yok.
     - Uygulama güvenlik grubu ve ağ güvenlik grubu kuralları, istenen ve planlanan şekilde iletişime izin verir ve gerektiğinde iletişimi engeller.
     - Zaman aşımı ayarları, daha önce açıklandığı gibi doğru şekilde ayarlanır.
-    - VM 'Ler, [SAP uygulamalarıyla en iyi ağ gecikmesi Için Azure yakınlık yerleşimi gruplarında](sap-proximity-placement-scenarios.md)açıklandığı gibi doğru [Azure yakınlık yerleşimi grubuna](../../linux/co-location.md)dağıtılır.
+    - VM 'Ler, [SAP uygulamalarıyla en iyi ağ gecikmesi Için Azure yakınlık yerleşimi gruplarında](sap-proximity-placement-scenarios.md)açıklandığı gibi doğru [Azure yakınlık yerleşimi grubuna](../../co-location.md)dağıtılır.
     - SAP uygulama katmanı VM 'Leri ve DBMS VM 'ler arasındaki ağ gecikmesi, SAP destek notları [#500235](https://launchpad.support.sap.com/#/notes/500235) ve [#1100926](https://launchpad.support.sap.com/#/notes/1100926/E)açıklandığı şekilde test edilir ve onaylanır. [Sap desteği not#1100926](https://launchpad.support.sap.com/#/notes/1100926/E)ağ gecikmesi yönergelerine karşı sonuçları değerlendirin. Ağ gecikmesi orta veya iyi bir aralıkta olmalıdır. [Bu makalede](./hana-network-architecture.md#networking-architecture-for-hana-large-instance)belgelendiği gibi, VM 'ler ve Hana büyük örnek birimleri arasındaki trafik için özel durumlar geçerlidir.
     - Şifreleme gerektiğinde ve uygun şifreleme yöntemiyle uygulandı.
     - Arabirimler ve diğer uygulamalar, yeni dağıtılan altyapıyı birbirine bağlayabilirler.

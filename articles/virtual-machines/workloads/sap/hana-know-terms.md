@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 11/20/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c1e4e223e7932f7fc8699c04a94b079b7f16e3d5
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 326e2a436f07d841a0b3196a4abddd5ee0f8b67c
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98198909"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98873595"
 ---
 # <a name="know-the-terms"></a>Terimleri öğrenme
 
@@ -36,7 +36,7 @@ ms.locfileid: "98198909"
 - **Azure 'da SAP HANA (büyük örnekler):** Azure 'daki teklifin, farklı Azure bölgelerinde büyük örnek Damgalarında dağıtılan SAP HANA TDı sertifikalı donanımlarda HANA örnekleri çalıştırmasına yönelik resmi ad. İlgili *Hana büyük örnek* terimi, *Azure 'Daki SAP HANA (büyük örnekler)* için kısaysa ve bu teknik dağıtım kılavuzunda yaygın olarak kullanılır.
 - **Şirketler arası**: VM 'lerin şirket içi veri merkezleri ile Azure arasında siteden siteye, çok siteli veya Azure ExpressRoute bağlantısı olan bir Azure aboneliğine dağıtıldığı bir senaryoyu açıklar. Yaygın Azure belgelerinde, bu tür dağıtımlar şirketler arası senaryolar olarak da açıklanmaktadır. Bağlantının nedeni şirket içi etki alanlarını, şirket içi Azure Active Directory/OpenLDAP ve şirket içi DNS 'yi Azure 'a genişletmenin nedenidir. Şirket içi yatay, Azure aboneliklerinin Azure varlıklarına genişletilir. Bu uzantıyla birlikte VM 'Ler, şirket içi etki alanının bir parçası olabilir. 
 
-   Şirket içi etki alanının etki alanı kullanıcıları sunuculara erişebilir ve bu VM 'lerde (DBMS hizmetleri gibi) Hizmetleri çalıştırabilir. Şirket içinde dağıtılan ve Azure tarafından dağıtılan VM 'Ler arasındaki iletişim ve ad çözümlemesi mümkündür. Bu senaryo, çoğu SAP varlıklarının dağıtılmasının tipik bir yoludur. Daha fazla bilgi için, bkz. [Azure VPN Gateway](../../../vpn-gateway/vpn-gateway-about-vpngateways.md) ve [Azure Portal kullanarak siteden siteye bağlantı Ile sanal ağ oluşturma](../../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md).
+   Şirket içi etki alanının etki alanı kullanıcıları sunuculara erişebilir ve bu VM 'lerde (DBMS hizmetleri gibi) Hizmetleri çalıştırabilir. Şirket içinde dağıtılan ve Azure tarafından dağıtılan VM 'Ler arasındaki iletişim ve ad çözümlemesi mümkündür. Bu senaryo, çoğu SAP varlıklarının dağıtılmasının tipik bir yoludur. Daha fazla bilgi için, bkz. [Azure VPN Gateway](../../../vpn-gateway/vpn-gateway-about-vpngateways.md) ve [Azure Portal kullanarak siteden siteye bağlantı Ile sanal ağ oluşturma](../../../vpn-gateway/tutorial-site-to-site-portal.md).
 - **Kiracı**: Hana büyük örnek damgasında dağıtılan bir müşteri bir *kiracıya yalıtılmış.* Bir kiracı, diğer kiracılardan ağ, depolama ve işlem katmanında yalıtılmıştır. Farklı kiracılara atanan depolama ve işlem birimleri, her bir diğerini göremez veya HANA büyük örnek damgası düzeyinde birbirleriyle iletişim kurabilir. Müşteri, farklı kiracılarda dağıtımları olmasını seçebilir. Daha sonra bile, HANA büyük örnek damgası düzeyinde kiracılar arasında iletişim yoktur.
 - **SKU kategorisi**: Hana büyük örneği için aşağıdaki iki SKU kategorisi sunulur:
     - **Tür ı sınıfı**: s72, S72m, S96, S144, S144m, S192, S192m, S192xm, S224 ve S224m

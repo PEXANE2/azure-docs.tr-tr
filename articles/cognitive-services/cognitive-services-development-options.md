@@ -8,12 +8,12 @@ ms.author: erhopf
 ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: a952bfa45515b9d35549d03d18fd94103679344d
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 975f7eec31839aefcb1782f573d0210df29a4d00
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96349478"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98873578"
 ---
 # <a name="cognitive-services-development-options"></a>Bilişsel Hizmetler dağıtım seçenekleri
 
@@ -125,7 +125,7 @@ Modelleri eğitmek ve yapılandırmak için kullanacağınız araçlar, bilişse
 | Yapı Taşı | Hizmet | Özelleştirme Kullanıcı arabirimi | Hızlı Başlangıç |
 |--------|---------|------------------|------------|
 | Görsel | Özel Görüntü İşleme | https://www.customvision.ai/ | [Hızlı Başlangıç](./custom-vision-service/quickstarts/image-classification.md?pivots=programming-language-csharp) | 
-| Görsel | Form Tanıma | Örnek etiketleme aracı | [Hızlı Başlangıç](./form-recognizer/quickstarts/label-tool.md?tabs=v2-0) |
+| Görsel | Form Tanıma | [Örnek etiketleme aracı](https://fott-preview.azurewebsites.net/) | [Hızlı Başlangıç](./form-recognizer/quickstarts/label-tool.md?tabs=v2-0) |
 | Karar | Content Moderator | https://contentmoderator.cognitive.microsoft.com/dashboard | [Hızlı Başlangıç](./content-moderator/review-tool-user-guide/human-in-the-loop.md) |
 | Karar | Ölçüm Danışmanı | https://metricsadvisor.azurewebsites.net/  | [Hızlı Başlangıç](./metrics-advisor/quickstarts/web-portal.md) |
 | Karar | Kişiselleştirme | Kullanıcı arabirimi, kişiselleştirici kaynağınız kapsamındaki Azure portal kullanılabilir. | [Hızlı Başlangıç](./personalizer/quickstart-personalizer-sdk.md) |

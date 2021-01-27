@@ -10,12 +10,12 @@ author: lobrien
 ms.date: 01/11/2021
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy20q4, devx-track-python, data4ml
-ms.openlocfilehash: 7285ab338e978f0de467f79bbce1d41409683b1e
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 80a995b488f335ac2eb60ae18621acb2b1df58e2
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98132962"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98871545"
 ---
 # <a name="moving-data-into-and-between-ml-pipeline-steps-python"></a>ML işlem hattı adımlarına ve adımlar arasında veri taşıma (Python)
 
@@ -32,7 +32,7 @@ Bu makalede nasıl yapılacağı gösterilmektedir:
 - İşlem `OutputFileDatasetConfig` hattı adımlarına girdi olarak nesneleri kullanma
 - `Dataset`Kalıcı hale getirmek istediğiniz yeni nesneler oluşturun `OutputFileDatasetConfig`
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Şunlara ihtiyacınız var:
 
@@ -53,7 +53,7 @@ Bu makalede nasıl yapılacağı gösterilmektedir:
 
 - Önceden varolan bazı veriler. Bu makalede bir [Azure Blob kapsayıcısının](../storage/blobs/storage-blobs-overview.md)kullanımı kısaca gösterilmektedir.
 
-- İsteğe bağlı: [Azure MACHINE LEARNING SDK ile makine öğrenimi işlem hatları oluşturma ve çalıştırma](how-to-create-your-first-pipeline.md)bölümünde açıklananlar gibi mevcut bir Machine Learning işlem hattı.
+- İsteğe bağlı: [Azure MACHINE LEARNING SDK ile makine öğrenimi işlem hatları oluşturma ve çalıştırma](./how-to-create-machine-learning-pipelines.md)bölümünde açıklananlar gibi mevcut bir Machine Learning işlem hattı.
 
 ## <a name="use-dataset-objects-for-pre-existing-data"></a>`Dataset`Önceden var olan veriler için nesneleri kullanma 
 
@@ -154,7 +154,7 @@ ds = Dataset.get_by_name(workspace=ws, name='mnist_opendataset')
 
 ## <a name="use-outputfiledatasetconfig-for-intermediate-data"></a>`OutputFileDatasetConfig`Ara veriler için kullanın
 
-`Dataset`Nesneler yalnızca kalıcı verileri temsil ederken, [`OutputFileDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py&preserve-view=true) nesne (ler) ardışık düzen adımlarında **ve** kalıcı çıkış verilerinden geçici veri çıktısı için kullanılabilir. `OutputFileDatasetConfig` BLOB depolama, FileShare, adlsgen1 veya adlsgen2 'e veri yazılmasını destekler. Bağlama modunu ve karşıya yükleme modunu destekler. Bağlama modunda, bağlı dizine yazılan dosyalar dosya kapatıldığında kalıcı olarak depolanır. Karşıya yükleme modunda, çıkış dizinine yazılan dosyalar işin sonuna yüklenir. İş başarısız olursa veya iptal edilirse, çıkış dizini karşıya yüklenmeyecektir.
+`Dataset`Nesneler yalnızca kalıcı verileri temsil ederken, [`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py) nesne (ler) ardışık düzen adımlarında **ve** kalıcı çıkış verilerinden geçici veri çıktısı için kullanılabilir. `OutputFileDatasetConfig` BLOB depolama, FileShare, adlsgen1 veya adlsgen2 'e veri yazılmasını destekler. Bağlama modunu ve karşıya yükleme modunu destekler. Bağlama modunda, bağlı dizine yazılan dosyalar dosya kapatıldığında kalıcı olarak depolanır. Karşıya yükleme modunda, çıkış dizinine yazılan dosyalar işin sonuna yüklenir. İş başarısız olursa veya iptal edilirse, çıkış dizini karşıya yüklenmeyecektir.
 
  `OutputFileDatasetConfig` nesnenin varsayılan davranışı, çalışma alanının varsayılan veri deposuna yazılır. `OutputFileDatasetConfig`Nesnelerinizi `PythonScriptStep` `arguments` parametresine geçirin.
 
@@ -184,7 +184,7 @@ OutputFileDatasetConfig(name="clean_data", destination=blob_store).as_upload(ove
 
 ### <a name="use-outputfiledatasetconfig-as-outputs-of-a-training-step"></a>`OutputFileDatasetConfig`Eğitim adımının çıkışları olarak kullanın
 
-Ardışık `PythonScriptStep` yollarınızın içinde, programın bağımsız değişkenlerini kullanarak kullanılabilir çıkış yollarını alabilirsiniz. Bu adım ilk ise ve çıktı verilerini başlatacaktır, belirtilen yolda dizini oluşturmanız gerekir. Daha sonra içine dahil etmek istediğiniz dosyaları yazabilirsiniz `OutputFileDatasetConfig` .
+İşlem hattınızın `PythonScriptStep` adımında programın bağımsız değişkenlerini kullanarak sağlanan çıkış yollarını alabilirsiniz. Bu ilk adımsa ve çıkış verilerini başlatacaksa belirtilen yolda dizini oluşturmanız gerekir. Daha sonra içine dahil etmek istediğiniz dosyaları yazabilirsiniz `OutputFileDatasetConfig` .
 
 ```python
 parser = argparse.ArgumentParser()
@@ -244,4 +244,4 @@ step1_output_ds = step1_output_data.register_on_complete(name='processed_data',
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Azure Machine Learning veri kümesi oluşturma](how-to-create-register-datasets.md)
-* [Azure Machine Learning SDK ile makine öğrenimi işlem hatları oluşturma ve çalıştırma](how-to-create-your-first-pipeline.md)
+* [Azure Machine Learning SDK ile makine öğrenimi işlem hatları oluşturma ve çalıştırma](./how-to-create-machine-learning-pipelines.md)

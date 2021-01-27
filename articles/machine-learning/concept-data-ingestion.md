@@ -11,12 +11,12 @@ author: nibaccam
 ms.author: nibaccam
 ms.date: 02/26/2020
 ms.custom: devx-track-python, data4ml
-ms.openlocfilehash: 60cf97c4cb650120a4b6e2989b93d96ea120d040
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: a096375e32e3d8a6760da88fe5ec86a70d364aff
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360131"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98872104"
 ---
 # <a name="data-ingestion-options-for-azure-machine-learning-workflows"></a>Azure Machine Learning iş akışları için veri alma seçenekleri
 
@@ -60,7 +60,7 @@ Bu adımlar ve aşağıdaki diyagramda Azure Data Factory veri alımı iş akı�
 
 ## <a name="azure-machine-learning-python-sdk"></a>Python SDK Azure Machine Learning 
 
-[Python SDK](/python/api/overview/azure/ml)ile veri alma görevlerini Azure Machine Learning bir işlem [hattı](how-to-create-your-first-pipeline.md) adımına ekleyebilirsiniz.
+[Python SDK](/python/api/overview/azure/ml)ile veri alma görevlerini Azure Machine Learning bir işlem [hattı](./how-to-create-machine-learning-pipelines.md) adımına ekleyebilirsiniz.
 
 Aşağıdaki tabloda, veri alma görevleri için SDK 'Yı ve bir ML işlem hattı adımını kullanmaya yönelik profesyonelleri ve Con özetlenmektedir.
 

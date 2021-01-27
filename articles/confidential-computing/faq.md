@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.subservice: workloads
 ms.date: 4/17/2020
 ms.author: jencook
-ms.openlocfilehash: 9df3d9771029e6d72e9d0092a129cddc27be6cd7
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 38bf12b46002e767bba50cf833637e2c8ace078f
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94564115"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98872341"
 ---
 # <a name="frequently-asked-questions-for-azure-confidential-computing"></a>Azure gizli bilgi Işlem için sık sorulan sorular
 
@@ -37,13 +37,21 @@ Hayır. Sanal makineler yalnızca Ubuntu Server 18,04, Ubuntu Server 16,04, Wind
 **DCsv2 sanal makineler portalda gri renkte bulunur ve bir tane seçemiyorum**
 
 VM 'nin yanındaki bilgi kabarcığa göre gerçekleştirilecek farklı eylemler vardır:
-   -    **Unsupportedgeneration** : sanal makine görüntüsünün neslini "Gen2" olarak değiştirin.
-   -    **NotAvailableForSubscription** : bölge, aboneliğiniz için henüz kullanılamıyor. Kullanılabilir bir bölge seçin.
-   -    **InsufficientQuota** : [kotayı artırmak için bir destek isteği oluşturun](../azure-portal/supportability/per-vm-quota-requests.md). Ücretsiz deneme aboneliklerinin, gizli bilgi işlem VM 'Leri için kotası yoktur. 
+   -    **Unsupportedgeneration**: sanal makine görüntüsünün neslini "Gen2" olarak değiştirin.
+   -    **NotAvailableForSubscription**: bölge, aboneliğiniz için henüz kullanılamıyor. Kullanılabilir bir bölge seçin.
+   -    **InsufficientQuota**: [kotayı artırmak için bir destek isteği oluşturun](../azure-portal/supportability/per-vm-quota-requests.md). Ücretsiz deneme aboneliklerinin, gizli bilgi işlem VM 'Leri için kotası yoktur. 
 
 **DCsv2 sanal makineler, Portal boyut Seçicisi 'nde arama yapmayı denediğimde gösterilmez**
 
 [Kullanılabilir bir bölge](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines)seçtiğinizden emin olun. Ayrıca, boyut seçicisindeki "tüm filtreleri temizle" yi seçtiğinizden emin olun. 
+
+**Azure gizli bilgi işlem ile hızlandırılmış ağı etkinleştirebilir miyim?**
+
+ Hayır. Hızlandırılmış ağ DC-Series veya DCsv2-Series sanal makinelerde desteklenmez. Her türlü gizli bilgi işlem sanal makine dağıtımı veya Azure Kubernetes hizmet kümesi dağıtımı için, gizli bilgi işlem sırasında çalışan her türlü gizli bilgi
+
+**Azure ayrılmış ana bilgisayarını Bu makinelerle kullanabilir miyim?**
+
+Evet. Azure adanmış konak desteği DCsv2 serisi sanal makineler. Azure adanmış ana bilgisayar, sanal makinelerinizi üzerinde çalıştırmak için tek kiracılı bir fiziksel sunucu sağlar. Kullanıcılar genellikle fiziksel güvenlik, veri bütünlüğü ve izleme gibi uyumluluk gereksinimlerini karşılamak için Azure ayrılmış ana bilgisayarını kullanır. 
 
 **Bir Azure Resource Manager şablonu dağıtım hatası hatası alıyorum: "onaylanan standart DcsV2 ailesi çekirdek kotasının aşıldığı için Işlem tamamlanamadı"**
 

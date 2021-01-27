@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: pafarley
-ms.openlocfilehash: 8a8ea8d5f13f72b0da1e11a27b69da2570eda543
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 3392cc5f3ee9daef1ae8397f6829f4ca7a42373a
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97913490"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98871409"
 ---
 # <a name="limits-and-quotas"></a>Limitler ve kotalar
 
@@ -42,6 +42,9 @@ Her proje için bir proje ve etiket için eğitim görüntülerinin sayısının
 |Piksel cinsinden en fazla görüntü yüksekliği/genişliği|10.240|10.240|
 |En fazla görüntü boyutu (eğitim resmi yüklemesi) |6 MB|6 MB|
 |En fazla görüntü boyutu (tahmin)|4 MB|4 MB|
-|Nesne algılama eğitim görüntüsü başına en fazla bölge|300|300|
-|Sınıflandırma görüntüsü başına en fazla etiket|100|100|
+|Görüntü başına en fazla bölge sayısı (nesne algılama)|300|300|
+|Görüntü başına en fazla etiket sayısı (sınıflandırma)|100|100|
 
+> [!NOTE]
+> 256 pikselden küçük resimler kabul edilir ancak ölçeklendirilir.
+> Görüntü en boy oranı 25 ' ten büyük olmamalıdır

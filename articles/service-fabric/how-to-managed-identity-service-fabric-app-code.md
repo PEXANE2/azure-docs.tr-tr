@@ -3,12 +3,12 @@ title: Yönetilen kimliği bir uygulamayla kullanma
 description: Azure hizmetlerine erişmek için Azure Service Fabric uygulama kodunda yönetilen kimlikler kullanma.
 ms.topic: article
 ms.date: 10/09/2019
-ms.openlocfilehash: bec640077a17ccef822afb85fc104728aabb13b1
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: e26a29020f26583f7e4aa16434c7e8647ba9a5a3
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98791331"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98871070"
 ---
 # <a name="how-to-leverage-a-service-fabric-applications-managed-identity-to-access-azure-services"></a>Azure hizmetlerine erişmek için Service Fabric uygulamasının yönetilen kimliğinden yararlanma
 
@@ -30,7 +30,7 @@ Azure Identity SDK artık Service Fabric desteklemektedir. Azure. Identity, beli
 Service Fabric desteği, bu diller için aşağıdaki sürümlerde sunulmaktadır: 
 - [1.3.0 sürümündeki C#](https://www.nuget.org/packages/Azure.Identity). Bkz. [C# örneği](https://github.com/Azure-Samples/service-fabric-managed-identity).
 - [Sürüm 1.5.0 Içinde Python](https://pypi.org/project/azure-identity/). Bkz. bir [Python örneği](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/identity/azure-identity/tests/managed-identity-live/service-fabric/service_fabric.md).
-- [1.2.0 sürümündeki Java](https://docs.microsoft.com/java/api/overview/azure/identity-readme).
+- [1.2.0 sürümündeki Java](/java/api/overview/azure/identity-readme).
 
 Azure Key Vault bir gizli anahtar getirmek için kimlik bilgilerini kullanan C# örneği:
 

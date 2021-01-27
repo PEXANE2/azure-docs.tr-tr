@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 10/19/2020
 ms.author: cherylmc
-ms.openlocfilehash: fe0280e302882fd5e50830950b531ea9ca169618
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 465d877da48e0d7027dbba6615302af32c6bb154
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94660551"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98872409"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-by-using-the-azure-portal"></a>Azure portal kullanarak VNet-VNet VPN Gateway bağlantısı yapılandırma
 
@@ -44,7 +44,7 @@ VNet 'ten VNet 'e bağlantı oluşturduğunuzda, yerel ağ geçidi adres alanı 
 
 ### <a name="site-to-site-ipsec"></a>Siteden Siteye (IPsec)
 
-Karmaşık bir ağ yapılandırmasıyla çalışıyorsanız, sanal ağlarınızı [siteden siteye bağlantı](vpn-gateway-howto-site-to-site-resource-manager-portal.md) kullanarak bağlamayı tercih edebilirsiniz. Siteden siteye IPSec adımlarını izlediğinizde, yerel ağ geçitlerini kendiniz oluşturup yapılandırırsınız. Her sanal ağa ait yerel ağ geçidi, diğer sanal ağa yerel bir site gibi davranır. Bu adımlar, trafiği yönlendirmek üzere yerel ağ geçidi için ek adres alanları belirtmenize olanak tanır. VNet için adres alanı değişirse, karşılık gelen yerel ağ geçidini el ile güncelleştirmeniz gerekir.
+Karmaşık bir ağ yapılandırmasıyla çalışıyorsanız, sanal ağlarınızı [siteden siteye bağlantı](./tutorial-site-to-site-portal.md) kullanarak bağlamayı tercih edebilirsiniz. Siteden siteye IPSec adımlarını izlediğinizde, yerel ağ geçitlerini kendiniz oluşturup yapılandırırsınız. Her sanal ağa ait yerel ağ geçidi, diğer sanal ağa yerel bir site gibi davranır. Bu adımlar, trafiği yönlendirmek üzere yerel ağ geçidi için ek adres alanları belirtmenize olanak tanır. VNet için adres alanı değişirse, karşılık gelen yerel ağ geçidini el ile güncelleştirmeniz gerekir.
 
 ### <a name="vnet-peering"></a>VNet eşlemesi
 
@@ -76,7 +76,7 @@ Bu makalede VNet-VNet bağlantı türünü kullanarak sanal ağların nasıl ba�
 * **Sanal ağ ayarları**
   * **Ad**: VNet1
   * **Adres alanı**: 10.1.0.0/16
-  * **Abonelik**: kullanmak istediğiniz aboneliği seçin.
+  * **Abonelik**: Kullanmak istediğiniz aboneliği seçin.
   * **Kaynak grubu**: TestRG1
   * **Konum**: Doğu ABD
   * **Alt ağ**
@@ -104,7 +104,7 @@ Bu makalede VNet-VNet bağlantı türünü kullanarak sanal ağların nasıl ba�
 * **Sanal ağ ayarları**
   * **Ad**: ile vnet4 arasında
   * **Adres alanı**: 10.41.0.0/16
-  * **Abonelik**: kullanmak istediğiniz aboneliği seçin.
+  * **Abonelik**: Kullanmak istediğiniz aboneliği seçin.
   * **Kaynak grubu**: TestRG4
   * **Konum**: Batı ABD
   * **Alt ağ**
@@ -200,7 +200,7 @@ Sonra, Ile vnet4 arasında ile VNet1 arasında bir bağlantı oluşturun. Portal
 
 ## <a name="add-additional-connections"></a>Ek bağlantı ekleme
 
-Ek bağlantılar eklemek istiyorsanız, bağlantıyı oluşturmak istediğiniz sanal ağ geçidine gidin ve **Bağlantılar**' ı seçin. Başka bir VNet-VNet bağlantısı oluşturabilir veya bir şirket içi konum ile IPSec Siteden Siteye bağlantısı oluşturabilirsiniz. **Bağlantı türünü**, oluşturmak istediğiniz bağlantı türüyle eşleşecek şekilde ayarladığınızdan emin olun. Ek bağlantılar oluşturmadan önce, sanal ağınızın adres alanının, bağlanmak istediğiniz adres alanları ile çakışmadığından emin olun. Siteden Siteye bağlantı oluşturma adımları için bkz. [Siteden Siteye bağlantı oluşturma](vpn-gateway-howto-site-to-site-resource-manager-portal.md).
+Ek bağlantılar eklemek istiyorsanız, bağlantıyı oluşturmak istediğiniz sanal ağ geçidine gidin ve **Bağlantılar**' ı seçin. Başka bir VNet-VNet bağlantısı oluşturabilir veya bir şirket içi konum ile IPSec Siteden Siteye bağlantısı oluşturabilirsiniz. **Bağlantı türünü**, oluşturmak istediğiniz bağlantı türüyle eşleşecek şekilde ayarladığınızdan emin olun. Ek bağlantılar oluşturmadan önce, sanal ağınızın adres alanının, bağlanmak istediğiniz adres alanları ile çakışmadığından emin olun. Siteden Siteye bağlantı oluşturma adımları için bkz. [Siteden Siteye bağlantı oluşturma](./tutorial-site-to-site-portal.md).
 
 ## <a name="vnet-to-vnet-faq"></a>Sanal Ağdan Sanal Ağa - SSS
 

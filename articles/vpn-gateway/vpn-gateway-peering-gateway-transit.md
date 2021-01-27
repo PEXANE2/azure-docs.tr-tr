@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 11/30/2020
 ms.author: cherylmc
-ms.openlocfilehash: 2fc12385c78135269b6a73038fd0ad810ebaedd6
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 73a7d76de34d29b2d51c54569b234cd8221b08f8
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96576209"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98872188"
 ---
 # <a name="configure-vpn-gateway-transit-for-virtual-network-peering"></a>Sanal ağ eşlemesi için VPN ağ geçidi aktarımını yapılandırma
 
@@ -43,15 +43,15 @@ Başlamadan önce, aşağıdaki sanal ağlara ve izinlere sahip olduğunuzu doğ
 
 |Sanal Ağ|Dağıtım modeli| Sanal ağ geçidi|
 |---|---|---|---|
-| Merkez-RM| [Resource Manager](vpn-gateway-howto-site-to-site-resource-manager-portal.md)| [Evet](tutorial-create-gateway-portal.md)|
-| Bağlı bileşen-RM | [Resource Manager](vpn-gateway-howto-site-to-site-resource-manager-portal.md)| Hayır |
+| Merkez-RM| [Resource Manager](./tutorial-site-to-site-portal.md)| [Evet](tutorial-create-gateway-portal.md)|
+| Bağlı bileşen-RM | [Resource Manager](./tutorial-site-to-site-portal.md)| Hayır |
 | Uç-Klasik | [Klasik](vpn-gateway-howto-site-to-site-classic-portal.md#CreatVNet) | Hayır |
 
 ### <a name="permissions"></a><a name="permissions"></a>İzinler
 
 Sanal ağ eşlemesi için kullandığınız hesaplar gerekli rol veya izinlere sahip olmalıdır. Aşağıdaki örnekte, **hub-RM** ve **bağlı bileşen-klasik** adlı iki sanal ağı eşkullandıysanız, hesabınız her bir sanal ağ için aşağıdaki rollere veya izinlere sahip olmalıdır:
 
-|Sanal Ağ|Dağıtım modeli|Role|İzinler|
+|Sanal Ağ|Dağıtım modeli|Rol|İzinler|
 |---|---|---|---|
 |Merkez-RM|Resource Manager|[Ağ Katılımcısı](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)|Microsoft.Network/virtualNetworks/virtualNetworkPeerings/write|
 | |Klasik|[Klasik Ağ Katılımcısı](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#classic-network-contributor)|Yok|

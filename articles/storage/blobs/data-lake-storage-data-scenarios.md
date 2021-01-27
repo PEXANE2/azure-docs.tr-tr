@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/14/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: eea7fb073cdf99ee1f4257f6824375a6502a4fad
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: bffa7894f7603f95c4840019be5e5670797881df
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95913632"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98873255"
 ---
 # <a name="using-azure-data-lake-storage-gen2-for-big-data-requirements"></a>Büyük veri gereksinimleri için Azure Data Lake Storage 2. kullanma
 
@@ -142,4 +142,4 @@ Data Lake Storage 2. verileri indirmek için kullanabileceğiniz araçların lis
 |Azure Data Factory | [Azure Data Factory’de Kopyalama Etkinliği](../../data-factory/copy-activity-overview.md) |
 |Apache DistCp | [Azure depolama Blobları ve Azure Data Lake Storage 2. arasında veri kopyalamak için DistCp kullanma](./data-lake-storage-use-distcp.md) |
 |Azure Depolama Gezgini|[Azure Data Lake Storage 2. Nesil’de dizinleri, dosyaları ve ACL’leri yönetmek için Azure Depolama Gezgini’ni kullanma](data-lake-storage-explorer.md)|
-|AzCopy aracı|[AzCopy ve BLOB Storage ile veri aktarma](../common/storage-use-azcopy-blobs.md)|
+|AzCopy aracı|[AzCopy ve BLOB Storage ile veri aktarma](../common/storage-use-azcopy-v10.md#transfer-data)|
