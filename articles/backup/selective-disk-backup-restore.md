@@ -4,12 +4,12 @@ description: Bu makalede, Azure sanal makine yedekleme çözümünü kullanarak 
 ms.topic: conceptual
 ms.date: 07/17/2020
 ms.custom: references_regions , devx-track-azurecli
-ms.openlocfilehash: 1f4d27563cf292632c6b14c82e36542b86c5d356
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: 38ead1591bf2ecadc8bfca5875ac1fa3e69d56ef
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98127728"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98806379"
 ---
 # <a name="selective-disk-backup-and-restore-for-azure-virtual-machines"></a>Azure sanal makineleri için seçmeli disk yedekleme ve geri yükleme
 
@@ -193,7 +193,7 @@ Koruma yapılandırma işlemi sırasında, disk listesi ayarını bir içerme/ç
 
 ### <a name="enable-backup-with-powershell"></a>PowerShell ile yedeklemeyi etkinleştir
 
-Örnek:
+Örneğin:
 
 ```azurepowershell
 $disks = ("0","1")
@@ -309,7 +309,7 @@ Seçmeli diskler Yedekleme işlevselliği, klasik sanal makineler ve şifrelenmi
 
 Şu anda Azure VM yedeklemesi, Ultra disklere veya bunlara bağlı paylaşılan disklere sahip VM 'Leri desteklemez. Seçmeli disk yedeklemesi bu gibi durumlarda kullanılamaz ve bu durumda diski hariç tutabilir ve VM 'yi yedekler.
 
-## <a name="billing"></a>Faturalama
+## <a name="billing"></a>Faturalandırma
 
 Azure sanal makine yedeklemesi, [burada](https://azure.microsoft.com/pricing/details/backup/)ayrıntılı olarak açıklanan mevcut fiyatlandırma modelini izler.
 
@@ -337,4 +337,4 @@ Seçmeli disk yedekleme özelliği, Azure sanal makine yedekleme çözümünün 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure VM yedekleme için destek matrisi](backup-support-matrix-iaas.md)
-- [Sık sorulan sorular-Azure VM 'lerini yedekleme](backup-azure-vm-backup-faq.md)
+- [Sık sorulan sorular-Azure VM 'lerini yedekleme](backup-azure-vm-backup-faq.yml)

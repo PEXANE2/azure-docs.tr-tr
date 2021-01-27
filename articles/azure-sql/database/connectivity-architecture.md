@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: sstein, vanto
-ms.date: 06/26/2020
-ms.openlocfilehash: 74dd3a6b19d241fdf05e6438226227147ba4afbd
-ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
+ms.date: 01/25/2021
+ms.openlocfilehash: da21fd2b6f8d427369cee89e0ad93d63e8608784
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98165952"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98808261"
 ---
 # <a name="azure-sql-database-and-azure-synapse-analytics-connectivity-architecture"></a>Azure SQL Veritabanı ve Azure Synapse Analytics bağlantı mimarisi
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -66,7 +66,7 @@ Azure dışından bağlanıyorsanız, bağlantılarınızın varsayılan olarak 
 ![TCP oturumunun Azure SQL veritabanı ağ geçidi aracılığıyla nasıl oluşturulduğunu ve sonraki tüm paketlerin ağ geçidiyle akışını gösteren diyagram.](./media/connectivity-architecture/connectivity-onprem.png)
 
 > [!IMPORTANT]
-> Ayrıca [, dac Ile bağlanmayı](/sql/database-engine/configure-windows/diagnostic-connection-for-database-administrators?view=sql-server-2017#connecting-with-dac) etkinleştirmek için 1434 ve 14000-14999 TCP bağlantı noktalarını açın
+> Ayrıca [, dac Ile bağlanmayı](/sql/database-engine/configure-windows/diagnostic-connection-for-database-administrators#connecting-with-dac) etkinleştirmek için 1434 ve 14000-14999 TCP bağlantı noktalarını açın
 
 ## <a name="gateway-ip-addresses"></a>Ağ geçidi IP adresleri
 
@@ -80,10 +80,10 @@ Trafiğin belirli bölgelerde yeni ağ geçitlerine nasıl geçirilme ayrıntıl
 | Orta Avustralya 2   | 20.36.113.0, 20.36.112.6 |
 | Doğu Avustralya       | 13.75.149.87, 40.79.161.1, 13.70.112.9 |
 | Avustralya Güneydoğu | 191.239.192.109, 13.73.109.251, 13.77.48.10 |
-| Brezilya Güney         | 104.41.11.5, 191.233.200.14, 191.234.144.16, 191.234.152.3 |
+| Güney Brezilya         | 104.41.11.5, 191.233.200.14, 191.234.144.16, 191.234.152.3 |
 | Orta Kanada       | 40.85.224.249, 52.246.152.0, 20.38.144.1 |
 | Doğu Kanada          | 40.86.226.166, 52.242.30.154, 40.69.105.9 , 40.69.105.10 |
-| Central US           | 13.67.215.62, 52.182.137.15, 23.99.160.139, 104.208.16.96, 104.208.21.1 |
+| Central US           | 13.67.215.62, 52.182.137.15, 23.99.160.139, 104.208.16.96, 104.208.21.1, 13.89.169.20 |
 | Doğu Çin           | 139.219.130.35     |
 | Çin Doğu 2         | 40.73.82.1         |
 | Kuzey Çin          | 139.219.15.17      |

@@ -1,15 +1,15 @@
 ---
 title: CIS için yasal uyumluluk ayrıntıları Microsoft Azure kuruluş kıyaslaması
 description: CIS ayrıntıları, kıyaslama mevzuatı uyumluluğu yerleşik girişimi 'nin temelleri Microsoft Azure. Her denetim, değerlendirmede yardımcı olan bir veya daha fazla Azure Ilke tanımına eşlenir.
-ms.date: 01/21/2021
+ms.date: 01/25/2021
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: 0e1c63f92809b6afa1f6d2e61b8ae169f9eec07d
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 85467c086225c4d9e7699debb9871dbd197ebfd2
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98685654"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98807065"
 ---
 # <a name="details-of-the-cis-microsoft-azure-foundations-benchmark-regulatory-compliance-built-in-initiative"></a>CIS Microsoft Azure temel bilgiler kıyaslama mevzuatı uyumluluğu yerleşik girişimi
 
@@ -135,7 +135,7 @@ Bu yerleşik girişim, [cıs Microsoft Azure temelleri şeması örneklerinden](
 
 |Name<br /><sub>(Azure portal)</sub> |Description |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
 |---|---|---|---|
-|[Güvenlik açıkları bir güvenlik açığı değerlendirme çözümü tarafından düzeltilmelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F760a85ff-6162-42b3-8d70-698e268f648c) |Azure Güvenlik Merkezi 'nde güvenlik açığı değerlendirmesi çözümü olmadan güvenlik açığı değerlendirme çözümü ve VM 'Ler tarafından algılanan güvenlik açıklarını izler. |Auditınotexists, devre dışı |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_VMVulnerabilities_Audit.json) |
+|[Sanal makinelerinizde bir güvenlik açığı değerlendirme çözümünün etkinleştirilmesi gerekir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F501541f7-f7e7-4cd6-868c-4190fdad3ac9) |Sanal makineleri, desteklenen bir güvenlik açığı değerlendirme çözümü çalıştırıp çalıştırmadığını tespit etmek üzere denetler. Her bir siber risk ve güvenlik programının çekirdek bileşeni, güvenlik açıklarının tanımlama ve analizidir. Azure Güvenlik Merkezi 'nin standart fiyatlandırma katmanı, sanal makineleriniz için ek ücret olmadan güvenlik açığı taraması içerir. Ayrıca, güvenlik merkezi bu aracı sizin için otomatik olarak dağıtabilir. |Auditınotexists, devre dışı |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_ServerVulnerabilityAssessment_Audit.json) |
 
 ### <a name="ensure-asc-default-policy-setting-monitor-jit-network-access-is-not-disabled"></a>"JıT ağ erişimini Izleme" için ASC varsayılan ilke ayarının "devre dışı" olmadığından emin olun
 
@@ -176,14 +176,6 @@ Bu yerleşik girişim, [cıs Microsoft Azure temelleri şeması örneklerinden](
 |Name<br /><sub>(Azure portal)</sub> |Description |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[Abonelikler güvenlik sorunları için bir iletişim e-posta adresine sahip olmalıdır](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F4f4f78b8-e367-4b10-a341-d9a4ad5cf1c7) |Aboneliklerinizden birinde potansiyel bir güvenlik ihlali olduğunda kuruluşunuzdaki ilgili kişilerin bilgilendirilmesine emin olmak için Güvenlik Merkezi 'nden e-posta bildirimleri alacak bir güvenlik kişisi ayarlayın. |Auditınotexists, devre dışı |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_Security_contact_email.json) |
-
-### <a name="ensure-that-security-contact-phone-number-is-set"></a>Güvenlik kişisinin ' telefon numarası ' ayarlandığından emin olun
-
-**Kimlik**: cıs Azure 2,17 **sahipliği**: müşteri
-
-|Name<br /><sub>(Azure portal)</sub> |Description |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
-|---|---|---|---|
-|[Aboneliğiniz için bir güvenlik ilgili kişisi telefon numarası belirtilmelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb4d66858-c922-44e3-9566-5cdb7a7be744) |Azure Güvenlik Merkezi, güvenliği aşılmış kaynaklar algıladığında bildirim almak için bir telefon numarası girin |Auditınotexists, devre dışı |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_Security_contact_phone_number.json) |
 
 ### <a name="ensure-that-send-email-notification-for-high-severity-alerts-is-set-to-on"></a>' Yüksek önem derecesi uyarıları için e-posta bildirimi gönder ' ' in ' olarak ayarlandığından emin olun
 
@@ -499,7 +491,7 @@ Bu yerleşik girişim, [cıs Microsoft Azure temelleri şeması örneklerinden](
 |---|---|---|---|
 |[Ağ Izleyicisi etkinleştirilmelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb6e2945c-0b7b-40f5-9233-7a5323b5cdc6) |Ağ Izleyicisi, Azure 'daki ve Azure 'dan bir ağ senaryosu düzeyinde koşulları izlemenizi ve tanılamanıza olanak tanıyan bölgesel bir hizmettir. Senaryo düzeyi izleme, bir uçtan uca ağ düzeyi görünümündeki sorunları tanılamanıza olanak sağlar. Ağ Izleyicisi ile kullanılabilen ağ tanılama ve görselleştirme araçları, Azure 'da ağınızı anlamanıza, tanılamanıza ve elde etmenize yardımcı olur. |Auditınotexists |[1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/NetworkWatcher_Enabled_Audit.json) |
 
-## <a name="virtual-machines"></a>Virtual Machines
+## <a name="virtual-machines"></a>Sanal Makineler
 
 ### <a name="ensure-that-os-disk-are-encrypted"></a>' İşletim sistemi diski 'nin şifrelendiğinden emin olun
 

@@ -1,15 +1,15 @@
 ---
 title: Azure portal için yerleşik ilke tanımları
 description: Azure portal için Azure Ilkesi yerleşik ilke tanımlarını listeler. Bu yerleşik ilke tanımları, Azure kaynaklarınızı yönetmek için yaygın yaklaşımlar sağlar.
-ms.date: 01/21/2021
+ms.date: 01/25/2021
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 1baef4965dce2935f68d24c86585a9cfd12fb1a9
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 4f75f8b9ce5545d914f14ba010799b1ccb8b7c8e
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98701076"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98806574"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-portal"></a>Azure portal için Azure Ilkesi yerleşik tanımları
 
@@ -17,7 +17,7 @@ Bu sayfa, Azure portal için [Azure ilkesi](../governance/policy/overview.md) ye
 
 Her yerleşik ilke tanımının adı Azure portal ilke tanımına bağlanır. Kaynağı [Azure Policy GitHub](https://github.com/Azure/azure-policy)deposunda görüntülemek için **Sürüm** sütunundaki bağlantıyı kullanın.
 
-## <a name="azure-portal"></a>Azure portal
+## <a name="azure-portal"></a>Azure portalı
 
 [!INCLUDE [azure-policy-reference-rp-portal](../../includes/policy/reference/byrp/microsoft.portal.md)]
 

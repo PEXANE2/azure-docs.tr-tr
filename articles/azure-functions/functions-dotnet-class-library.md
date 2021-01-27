@@ -4,12 +4,12 @@ description: C# kullanarak Azure Işlevleri geliştirmeyi anlayın.
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 07/24/2020
-ms.openlocfilehash: 77ae736c787666df5e78358bc78e06eee9b7d4f9
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 335cc3017e7b016666324306181c90a0e405a956
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936932"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98806319"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Azure Işlevleri C# Geliştirici Başvurusu
 
@@ -19,7 +19,7 @@ Bu makale, .NET sınıf kitaplıklarında C# kullanarak Azure Işlevleri gelişt
 
 Bir C# geliştiricisi olarak, aşağıdaki makalelerden biriyle de ilgileniyor olabilirsiniz:
 
-| Başlarken | Kavramlar| Kılavuzlu öğrenme/örnekler |
+| Kullanmaya başlama | Kavramlar| Kılavuzlu öğrenme/örnekler |
 | -- | -- | -- | 
 | <ul><li>[Visual Studio’yu kullanma](functions-create-your-first-function-visual-studio.md)</li><li>[Visual Studio Code’u kullanma](create-first-function-vs-code-csharp.md)</li><li>[Komut satırı araçlarını kullanma](create-first-function-cli-csharp.md)</li></ul> | <ul><li>[Barındırma seçenekleri](functions-scale.md)</li><li>[Performans &nbsp; konuları](functions-best-practices.md)</li><li>[Visual Studio geliştirme](functions-develop-vs.md)</li><li>[Bağımlılık ekleme](functions-dotnet-dependency-injection.md)</li></ul> | <ul><li>[Sunucusuz uygulamalar oluşturma](/learn/paths/create-serverless-applications/)</li><li>[C# örnekleri](/samples/browse/?products=azure-functions&languages=csharp)</li></ul> |
 
@@ -312,7 +312,7 @@ public static class CancellationTokenExample
 }
 ```
 
-## <a name="logging"></a>Günlüğe kaydetme
+## <a name="logging"></a>Günlüğe Kaydetme
 
 İşlev kodunuzda, Application Insights izleme olarak görünen günlüklere çıkış yazabilirsiniz. Günlüklere yazmak için önerilen yol, genellikle adlı [ILogger](/dotnet/api/microsoft.extensions.logging.ilogger)türünde bir parametre içerir `log` . `TraceWriter`Aynı zamanda Application Insights yazan, ancak yapısal günlüğü desteklemeyen işlevler çalışma zamanının sürüm 1. x. `Console.Write`Bu veriler Application Insights tarafından yakalandığından günlüklerinizi yazmak için kullanmayın. 
 

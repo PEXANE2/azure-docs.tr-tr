@@ -12,14 +12,14 @@ ms.devlang: NA
 ms.topic: troubleshooting
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 07/03/2017
+ms.date: 01/25/2021
 ms.author: alkohli
-ms.openlocfilehash: 600934e2d46c1a84a83fa1290db13b3d0d1508f4
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: bed1c8fd77e84c69571cfad7dd6b7eeb6607209f
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95995412"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98808035"
 ---
 # <a name="troubleshoot-storsimple-device-deployment-issues"></a>StorSimple cihaz dağıtımı sorunlarını giderme
 ## <a name="overview"></a>Genel Bakış
@@ -33,7 +33,7 @@ Bu bilgiler hem StorSimple 8000 serisi fiziksel cihaz hem de StorSimple Cloud Ap
 Bu makalede ayrıca StorSimple dağıtımlarının sorunlarını gidermeye yönelik araçlar açıklanmakta ve adım adım sorun giderme örneği sağlanmaktadır.
 
 ## <a name="first-time-deployment-issues"></a>İlk dağıtım sorunları
-Cihazınızı ilk kez dağıttığınızda bir sorunla karşılaşırsanız, aşağıdakileri göz önünde bulundurun:
+Cihazınızı ilk kez dağıttığınızda bir sorunla karşılaşırsanız aşağıdaki kılavuzu göz önünde bulundurun:
 
 * Fiziksel bir cihazda sorun yaşıyorsanız, donanımın yüklendiğinden ve [storsimple 8100 cihazınızı yükleme](storsimple-8100-hardware-installation.md) veya [StorSimple 8600 cihazınızı yükleme](storsimple-8600-hardware-installation.md)konularında açıklandığı şekilde yapılandırıldığından emin olun.
 * Dağıtım için önkoşulları denetleyin. [Dağıtım yapılandırma denetim listesinde](storsimple-8000-deployment-walkthrough-u2.md#deployment-configuration-checklist)açıklanan tüm bilgilere sahip olduğunuzdan emin olun.
@@ -41,13 +41,13 @@ Cihazınızı ilk kez dağıttığınızda bir sorunla karşılaşırsanız, aş
 
 Cihaz dağıtımı sırasında, kullanıcıların, Kurulum Sihirbazı 'nı çalıştırırken ve cihazı StorSimple için Windows PowerShell aracılığıyla kaydettiklerinde meydana gelen en yaygın sorunları ortaya çıkar. (StorSimple cihazınızı kaydetmek ve yapılandırmak için StorSimple için Windows PowerShell kullanırsınız. Cihaz kaydı hakkında daha fazla bilgi için bkz. [3. Adım: cihazınızı yapılandırma ve StorSimple için Windows PowerShell ile kaydetme](storsimple-8000-deployment-walkthrough-u2.md#step-3-configure-and-register-the-device-through-windows-powershell-for-storsimple).
 
-Aşağıdaki bölümler, StorSimple cihazını ilk kez yapılandırırken karşılaştığınız sorunları çözmenize yardımcı olabilir.
+Aşağıdaki bölümler, StorSimple cihazını ilk kez yapılandırdığınızda, içinde aldığınız sorunları çözmenize yardımcı olabilir.
 
 ## <a name="first-time-setup-wizard-process"></a>İlk kez Kurulum Sihirbazı işlemi
 Aşağıdaki adımlarda Kurulum Sihirbazı işlemi özetlenmektedir. Ayrıntılı kurulum bilgileri için bkz. Şirket [Içi StorSimple cihazınızı dağıtma](storsimple-8000-deployment-walkthrough-u2.md).
 
 1. Geri kalan adımlarda size yol gösterecek Kurulum Sihirbazı 'nı başlatmak için [Invoke-HcsSetupWizard](/previous-versions/windows/powershell-scripting/dn688135(v=wps.630)) cmdlet 'ini çalıştırın. 
-2. Ağı yapılandırma: Kurulum Sihirbazı, StorSimple cihazınızda VERI 0 ağ arabirimi için ağ ayarlarını yapılandırmanıza olanak tanır. Bu ayarlar aşağıdakileri içerir:
+2. Ağı yapılandırma: Kurulum Sihirbazı, StorSimple cihazınızda VERI 0 ağ arabirimi için ağ ayarlarını yapılandırmanıza olanak tanır. Aşağıdaki ayarlar dahildir:
    * Sanal IP (VIP), alt ağ maskesi ve ağ geçidi – [set-Hcsnetınterface](/previous-versions/windows/powershell-scripting/dn688161(v=wps.630)) cmdlet 'i arka planda yürütülür. StorSimple cihazınızda VERI 0 ağ arabirimi için IP adresini, alt ağ maskesini ve ağ geçidini yapılandırır.
    * Birincil DNS sunucusu – [set-HcsDnsClientServerAddress](/previous-versions/windows/powershell-scripting/dn688172(v=wps.630)) cmdlet 'i arka planda yürütülür. StorSimple çözümünüz için DNS ayarlarını yapılandırır.
    * NTP sunucusu: [set-HcsNtpClientServerAddress](/previous-versions/windows/powershell-scripting/dn688138(v=wps.630)) cmdlet 'i arka planda yürütülür. StorSimple çözümünüz için NTP sunucu ayarlarını yapılandırır.
@@ -58,7 +58,7 @@ Aşağıdaki adımlarda Kurulum Sihirbazı işlemi özetlenmektedir. Ayrıntıl�
      > [!IMPORTANT]
      > Parolalar kayıt öncesinde toplanır, ancak yalnızca cihazı başarıyla kaydettikten sonra uygulanır. Parola uygulama başarısız olursa, gerekli parolalar (karmaşıklık gereksinimlerini karşılayan) toplanana kadar parolayı yeniden girmeniz istenir.
      
-4. Cihazı kaydetme: son adım, cihazı Microsoft Azure çalıştıran StorSimple Aygıt Yöneticisi hizmetine kaydetmadır. Kayıt, Azure portal [hizmet kayıt anahtarını almanızı](storsimple-8000-manage-service.md#get-the-service-registration-key) ve Kurulum Sihirbazı 'nda sağlamanızı gerektirir. **Cihaz başarıyla kaydedildikten sonra size bir hizmet veri şifreleme anahtarı sağlanır. Sonraki tüm cihazların hizmetine kaydedilmesi gerektiğinden, bu şifreleme anahtarını güvenli bir konumda tutmayı unutmayın.**
+4. Cihazı kaydetme: son adım, cihazı Microsoft Azure çalıştıran StorSimple Device Manager hizmetine kaydetmadır. Kayıt, Azure portal [hizmet kayıt anahtarını almanızı](storsimple-8000-manage-service.md#get-the-service-registration-key) ve Kurulum Sihirbazı 'nda sağlamanızı gerektirir. **Cihaz başarıyla kaydedildikten sonra size bir hizmet veri şifreleme anahtarı sağlanır. Bu şifreleme anahtarını güvenli bir konumda tutmanız gerektiğinden emin olun çünkü bu, tüm gelecek cihazları hizmete kaydetmek için gerekli olacaktır.**
 
 ## <a name="common-errors-during-device-deployment"></a>Cihaz dağıtımı sırasında sık karşılaşılan hatalar
 Aşağıdaki tablolarda şunları yaptığınızda karşılaşabileceğiniz yaygın hatalar listelenmektedir:
@@ -94,12 +94,12 @@ Varsayılan cihaz yönetici parolası **Parola1**' dir. Bu parolanın ilk oturum
 Parolalarınızın aşağıdaki gereksinimleri karşıladığından emin olun:
 
 * Cihaz Yöneticisi parolanızın uzunluğu 8 ile 15 karakter arasında olmalıdır.
-* Parolalar şu 4 karakter türlerinden 3 ' ü içermelidir: küçük harf, büyük harf, sayısal ve özel. 
+* Parolalar şu karakter türlerinden üçünü içermelidir: küçük harf, büyük harf, sayısal ve özel. 
 * Parolanız son 24 parolayla aynı olamaz.
 
 Ayrıca, parolaların her yıl dolacağını ve yalnızca cihazı başarıyla kaydettikten sonra değiştirilebileceğini unutmayın. Kayıt herhangi bir nedenden dolayı başarısız olursa, parolalar değiştirilmez.
 
-Cihaz yönetici parolası hakkında daha fazla bilgi için StorSimple [Aygıt Yöneticisi hizmetini kullanarak StorSimple parolanızı değiştirin](storsimple-8000-change-passwords.md).
+Cihaz yönetici parolası hakkında daha fazla bilgi için StorSimple [Device Manager hizmetini kullanarak StorSimple parolanızı değiştirin](storsimple-8000-change-passwords.md).
 
 Cihaz Yöneticisi ve StorSimple Snapshot Manager parolalarını ayarlarken aşağıdaki hatalardan bir veya daha fazlasına karşılaşabilirsiniz.
 
@@ -121,16 +121,16 @@ Parolalar cihaz kaydedilmeden önce toplanır, ancak kayıt başarıyla kaydedil
 > Genel olarak, parola uygulama girişimi başarısız olursa, yazılım sürekli olarak parolayı toplamaya çalışır. Nadir örneklerde, parola uygulanamıyor. Bu durumda, cihazı kaydedebilir ve devam edebilir, ancak parolalar değiştirilmez. Azure portal kaydından sonra cihaz yönetici parolasını değiştirebilirsiniz.
 
 
-StorSimple Aygıt Yöneticisi hizmeti aracılığıyla Azure portal parolayı sıfırlayabilirsiniz. Daha fazla bilgi için [Cihaz yönetici parolasını değiştirme](storsimple-8000-change-passwords.md#change-the-device-administrator-password)bölümüne gidin.
+StorSimple Device Manager hizmeti aracılığıyla Azure portal parolayı sıfırlayabilirsiniz. Daha fazla bilgi için [Cihaz yönetici parolasını değiştirme](storsimple-8000-change-passwords.md#change-the-device-administrator-password)bölümüne gidin.
 
 ## <a name="errors-during-device-registration"></a>Cihaz kaydı sırasında karşılaşılan hatalar
-Cihazı kaydetmek için Microsoft Azure çalıştıran StorSimple Aygıt Yöneticisi hizmetini kullanırsınız. Cihaz kaydı sırasında aşağıdaki sorunlardan biri veya daha fazlası ile karşılaşabilirsiniz.
+Cihazı kaydetmek için Microsoft Azure çalıştıran StorSimple Device Manager hizmetini kullanırsınız. Cihaz kaydı sırasında aşağıdaki sorunlardan biri veya daha fazlası ile karşılaşabilirsiniz.
 
 | Hayır. | Hata iletisi | Olası nedenler | Önerilen eylem |
 | --- | --- | --- | --- |
-| 1 |Hata 350027: cihaza StorSimple Aygıt Yöneticisi kaydedilemedi. | |Birkaç dakika bekleyip işlemi yeniden deneyin. Sorun devam ederse, [Microsoft desteği başvurun](storsimple-8000-contact-microsoft-support.md). |
+| 1 |Hata 350027: cihaza StorSimple Device Manager kaydedilemedi. | |Birkaç dakika bekleyip işlemi yeniden deneyin. Sorun devam ederse, [Microsoft desteği başvurun](storsimple-8000-contact-microsoft-support.md). |
 | 2 |Hata 350013: cihaz kaydedilirken bir hata oluştu. Bunun nedeni yanlış hizmet kayıt anahtarıdır. | |Lütfen cihazı doğru hizmet kayıt anahtarıyla yeniden kaydedin. Daha fazla bilgi için bkz [. hizmet kayıt anahtarını edinme.](storsimple-8000-manage-service.md#get-the-service-registration-key) |
-| 3 |Hata 350063: StorSimple Aygıt Yöneticisi hizmetine yönelik kimlik doğrulaması başarılı ancak kayıt başarısız oldu. Lütfen bir süre sonra işlemi yeniden deneyin. |Bu hata, ACS ile kimlik doğrulamanın geçtiğini ancak hizmete yapılan kaydolma çağrısının başarısız olduğunu gösterir. Bu, tek tek bir ağ hatası olabilir. |Sorun devam ederse lütfen [Microsoft desteği başvurun](storsimple-8000-contact-microsoft-support.md). |
+| 3 |Hata 350063: StorSimple Device Manager hizmetine yönelik kimlik doğrulaması başarılı ancak kayıt başarısız oldu. Lütfen bir süre sonra işlemi yeniden deneyin. |Bu hata, ACS ile kimlik doğrulamanın geçtiğini ancak hizmete yapılan kaydolma çağrısının başarısız olduğunu gösterir. Bu, tek tek bir ağ hatası olabilir. |Sorun devam ederse lütfen [Microsoft desteği başvurun](storsimple-8000-contact-microsoft-support.md). |
 | 4 |Hata 350049: kayıt sırasında hizmete erişilemedi. |Hizmete çağrı yapıldığında, bir Web özel durumu alınır. Bazı durumlarda, işlemi daha sonra yeniden denemeden bu durum düzeltilebilir. |Lütfen IP adresinizi ve DNS adını denetleyip işlemi yeniden deneyin. Sorun devam ederse [Microsoft desteği başvurun.](storsimple-8000-contact-microsoft-support.md) |
 | 5 |Hata 350031: cihaz zaten kayıtlı. | |Herhangi bir işlem gerekli değil. |
 | 6 |Hata 350016: cihaz kaydı başarısız oldu. | |Lütfen kayıt anahtarının doğru olduğundan emin olun. |
@@ -139,10 +139,10 @@ Cihazı kaydetmek için Microsoft Azure çalıştıran StorSimple Aygıt Yöneti
 | 9 |Uyarı: cihaz etkinleştirilemedi. Cihaz yöneticiniz ve StorSimple Snapshot Manager parolalar değişmemiştir. |Kayıt başarısız olursa, Cihaz Yöneticisi ve StorSimple Snapshot Manager parolaları değiştirilmez. | |
 
 ## <a name="tools-for-troubleshooting-storsimple-deployments"></a>StorSimple dağıtımlarının sorunlarını gidermeye yönelik araçlar
-StorSimple, StorSimple çözümünüzün sorunlarını gidermek için kullanabileceğiniz çeşitli araçlar içerir. Bunlar:
+StorSimple, StorSimple çözümünüzün sorunlarını gidermek için kullanabileceğiniz çeşitli araçlar içerir. Bu araçlar şunları içerir:
 
 * Destek paketleri ve cihaz günlükleri.
-* Sorun giderme için özel olarak tasarlanan cmdlet 'ler.
+* Sorun giderme için tasarlanan cmdlet 'ler.
 
 ## <a name="support-packages-and-device-logs-available-for-troubleshooting"></a>Destek paketleri ve cihaz günlükleri sorun giderme için kullanılabilir
 Destek paketi, Microsoft Desteği ekibine cihaz sorunlarını giderme konusunda yardımcı olabilecek tüm ilgili günlükleri içerir. Daha sonra destek personeli ile paylaşabileceğiniz şifreli bir destek paketi oluşturmak için StorSimple için Windows PowerShell kullanabilirsiniz.
@@ -153,7 +153,7 @@ Destek paketi, Microsoft Desteği ekibine cihaz sorunlarını giderme konusunda 
 3. Destek paketini açmak ve şifresini çözmek için bu [adım adım yordamı](storsimple-8000-create-manage-support-package.md#edit-a-support-package) kullanın.
 4. Şifresi çözülen destek paketi günlükleri ETW/etbir biçimde. Bu dosyaları Windows Olay Görüntüleyicisi görüntülemek için aşağıdaki adımları uygulayabilirsiniz:
    
-   1. Windows istemciniz üzerinde **eventvwr** komutunu çalıştırın. Bu işlem Olay Görüntüleyicisi başlatacak.
+   1. Olay Görüntüleyicisi başlatmak için Windows istemciniz üzerinde **eventvwr** komutunu çalıştırın.
    2. **Eylemler** bölmesinde, **kaydedilmiş günlüğü aç** ' a tıklayın ve etbir/ETW biçimindeki (destek paketi) günlük dosyalarının üzerine gelin. Artık dosyayı görüntüleyebilirsiniz. Dosyayı açtıktan sonra sağ tıklayıp dosyayı metin olarak kaydedebilirsiniz.
       
       > [!IMPORTANT]
@@ -178,7 +178,7 @@ Bağlantı hatalarını algılamak için aşağıdaki Windows PowerShell cmdlet 
 * `Get-HcsRoutingTable`: Yerel IP yönlendirme tablosunu göstermek için bu cmdlet 'i kullanın.
 
 ## <a name="troubleshoot-with-the-get-netadapter-cmdlet"></a>Get-NetAdapter cmdlet ile sorun giderme
-Bir ilk kez cihaz dağıtımı için ağ arabirimlerini yapılandırdığınızda, cihaz henüz hizmete kayıtlı olmadığından StorSimple Aygıt Yöneticisi hizmeti kullanıcı arabiriminde donanım durumu kullanılamaz. Ayrıca, özellikle de hizmet eşitlemesini etkileyen sorunlar varsa, **donanım durumu** dikey penceresi cihazın durumunu her zaman doğru yansıtmayabilir. Bu durumlarda, `Get-NetAdapter` ağ arabirimlerinizin sistem durumunu ve durumunu öğrenmek için cmdlet 'ini kullanabilirsiniz.
+Bir ilk kez cihaz dağıtımı için ağ arabirimlerini yapılandırdığınızda, cihaz henüz hizmete kayıtlı olmadığından StorSimple Device Manager hizmeti kullanıcı arabiriminde donanım durumu kullanılamaz. Ayrıca, özellikle de hizmet eşitlemesini etkileyen sorunlar varsa, **donanım durumu** dikey penceresi cihazın durumunu her zaman doğru yansıtmayabilir. Bu durumlarda, `Get-NetAdapter` ağ arabirimlerinizin sistem durumunu ve durumunu öğrenmek için cmdlet 'ini kullanabilirsiniz.
 
 ### <a name="to-see-a-list-of-all-the-network-adapters-on-your-device"></a>Cihazınızdaki tüm ağ bağdaştırıcılarının listesini görmek için
 1. StorSimple için Windows PowerShell başlatın ve ardından yazın `Get-NetAdapter` . 
@@ -187,9 +187,9 @@ Bir ilk kez cihaz dağıtımı için ağ arabirimlerini yapılandırdığınızd
    * Arabirim sağlıklı ve etkinse, **Ifındex** durumu **yukarı** olarak gösterilir.
    * Arabirim sağlıklı ancak fiziksel olarak bağlı değilse (bir ağ kablosu ile) **Ifındex** **devre dışı** olarak gösterilir.
    * Arabirim sağlıklı ancak etkinleştirilmemişse, **Ifındex** durumu **Notas** olarak gösterilir.
-   * Arabirim yoksa, bu listede görünmez. StorSimple Aygıt Yöneticisi hizmeti kullanıcı arabirimi bu arabirimi yine de başarısız bir durumda göstermeye devam eder.
+   * Arabirim yoksa, bu listede görünmez. StorSimple Device Manager hizmeti kullanıcı arabirimi bu arabirimi yine de başarısız bir durumda göstermeye devam eder.
 
-Bu cmdlet 'in nasıl kullanılacağı hakkında daha fazla bilgi için, Windows PowerShell cmdlet başvurusunda [Get-NetAdapter](/powershell/module/netadapter/get-netadapter?view=win10-ps) sayfasına gidin.
+Bu cmdlet 'in nasıl kullanılacağı hakkında daha fazla bilgi için, Windows PowerShell cmdlet başvurusunda [Get-NetAdapter](/powershell/module/netadapter/get-netadapter?view=win10-ps&preserve-view=true) sayfasına gidin.
 
 Aşağıdaki bölümlerde, cmdlet 'inin çıkış örnekleri gösterilmektedir `Get-NetAdapter` .
 
@@ -206,7 +206,7 @@ Denetleyici 1 etkin denetleyiciydi ve şu şekilde yapılandırılmıştır:
 
 **Örnek çıkış – denetleyici 0**
 
-Aşağıda, Controller 0 ' dan (pasif denetleyici) çıktı verilmiştir. VERI 1, VERI 2 ve VERI 3 bağlı değil. VERI 4 ve VERI 5, cihazda bulunmadığından listelenmez.
+Aşağıdaki örnek veri, denetleyici 0 ' dan (pasif denetleyici) alınan çıktıdır. VERI 1, VERI 2 ve VERI 3 bağlı değil. VERI 4 ve VERI 5, cihazda bulunmadığından listelenmez.
 
 ```output
 Controller0>Get-NetAdapter
@@ -222,7 +222,7 @@ DATA0                Intel(R) 82574L Gigabit Network Conn...     15       Up
 
 **Örnek çıkış – denetleyici 1**
 
-Denetleyici 1 ' den (etkin denetleyici) alınan çıktı aşağıda verilmiştir. Yalnızca cihazdaki DATA 0 ağ arabirimi yapılandırılır ve çalışır.
+Aşağıdaki örnek veri, denetleyici 1 ' den (etkin denetleyici) alınan çıktıdır. Yalnızca cihazdaki DATA 0 ağ arabirimi yapılandırılır ve çalışır.
 
 ```output
 Controller1>Get-NetAdapter
@@ -241,7 +241,7 @@ DATA4                Intel(R) Gigabit ET Dual Port Serv...#2     17       NotPre
 ## <a name="troubleshoot-with-the-test-connection-cmdlet"></a>Test-Connection cmdlet ile sorun giderme
 `Test-Connection`StorSimple cihazınızın dış ağa bağlanıp bağlanamamadığını öğrenmek için cmdlet 'ini kullanabilirsiniz. DNS dahil tüm ağ parametreleri Kurulum sihirbazında doğru yapılandırılmışsa, `Test-Connection` Outlook.com gibi ağ dışındaki bilinen bir adrese ping eklemek için cmdlet 'ini kullanabilirsiniz.
 
-Ping devre dışıysa bu cmdlet ile bağlantı sorunlarını gidermek için ping etkinleştirmelisiniz.
+Ping cmdlet 'i devre dışıysa, bağlantı sorunlarını gidermek için ping komutunu etkinleştirmeniz gerekir.
 
 Cmdlet 'inden aşağıdaki çıkış örneklerine bakın `Test-Connection` .
 
@@ -250,7 +250,7 @@ Cmdlet 'inden aşağıdaki çıkış örneklerine bakın `Test-Connection` .
 
 **Örnek çıkış – yanlış DNS**
 
-Aşağıdaki örnekte, ıPV4 ve ıPV6 adresleri için DNS çözümlenmediğini gösteren bir çıktı yoktur. Bu, dış ağa bağlantı olmaması ve doğru bir DNS sağlanması gerektiği anlamına gelir.
+Aşağıdaki örnek, DNS 'in çözümlenmediğini belirten ıPV4 ve ıPV6 adresleri için herhangi bir çıkış içermez. Dış ağa bağlantı yoktur ve doğru bir DNS sağlanması gerekir.
 
 ```output
 Source        Destination     IPV4Address      IPV6Address
@@ -263,7 +263,7 @@ HCSNODE0      outlook.com
 
 **Örnek çıkış – doğru DNS**
 
-Aşağıdaki örnekte DNS, DNS 'nin doğru yapılandırıldığını belirten ıPV4 adresini döndürür. Bu, dış ağa bağlantı olduğunu onaylar.
+Aşağıdaki örnekte DNS, DNS 'nin doğru yapılandırıldığını belirten ıPV4 adresini döndürür. Çıktı, dış ağa bağlantı olduğunu onaylar.
 
 ```output
 Source        Destination     IPV4Address      IPV6Address
@@ -275,35 +275,35 @@ HCSNODE0      outlook.com     132.245.92.194
 ```
 
 ## <a name="troubleshoot-with-the-test-hcsmconnection-cmdlet"></a>Test-HcsmConnection cmdlet ile sorun giderme
-`Test-HcsmConnection`StorSimple aygıt yöneticisi hizmetinize zaten bağlı ve kayıtlı olan bir cihaz için cmdlet 'ini kullanın. Bu cmdlet, kayıtlı bir cihaz ve ilgili StorSimple Aygıt Yöneticisi hizmeti arasındaki bağlantıyı doğrulamanıza yardımcı olur. Bu komutu StorSimple için Windows PowerShell üzerinde çalıştırabilirsiniz.
+`Test-HcsmConnection`StorSimple Device Manager hizmetinize zaten bağlı ve kayıtlı olan bir cihaz için cmdlet 'ini kullanın. Bu cmdlet, kayıtlı bir cihaz ve ilgili StorSimple Device Manager hizmeti arasındaki bağlantıyı doğrulamanıza yardımcı olur. Bu komutu StorSimple için Windows PowerShell üzerinde çalıştırabilirsiniz.
 
 ### <a name="to-run-the-test-hcsmconnection-cmdlet"></a>Test-HcsmConnection cmdlet 'ini çalıştırmak için
 1. Cihazın kayıtlı olduğundan emin olun.
 2. Cihaz durumunu denetleyin. Cihaz devre dışı bırakılmışsa, bakım modunda veya çevrimdışı olduğunda aşağıdaki hatalardan birini görebilirsiniz:
    
-   * ErrorCode. Cıdevicedecommissioned – bu, cihazın devre dışı bırakıldığını gösterir.
-   * ErrorCode. DeviceNotReady – bu, cihazın bakım modunda olduğunu gösterir.
-   * ErrorCode. DeviceNotReady – bu, cihazın çevrimiçi olmadığını gösterir.
-3. StorSimple Aygıt Yöneticisi hizmetinin çalıştığını doğrulayın ( [Get-ClusterResource](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/ee461004(v=technet.10)) cmdlet 'ini kullanın). Hizmet çalışmıyorsa, aşağıdaki hatalarla karşılaşabilirsiniz:
+   * ErrorCode. Cıdevicedecommissioned: cihazın devre dışı bırakıldığını gösterir.
+   * ErrorCode. DeviceNotReady: cihazın bakım modunda olduğunu gösterir.
+   * ErrorCode. DeviceNotReady: cihazın çevrimiçi olmadığını gösterir.
+3. StorSimple Device Manager hizmetinin çalıştığını doğrulayın ( [Get-ClusterResource](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/ee461004(v=technet.10)) cmdlet 'ini kullanın). Hizmet çalışmıyorsa, aşağıdaki hatalarla karşılaşabilirsiniz:
    
    * ErrorCode. CiSApplianceAgentNotOnline
-   * ErrorCode. Cıpowershellscripthcserror – bu, Get-ClusterResource çalıştırdığınızda bir özel durum olduğunu gösterir.
+   * ErrorCode. Cıpowershellscripthcserror: Get-ClusterResource çalıştırdığınızda bir özel durum olduğunu gösterir.
 4. Access Control Service (ACS) belirtecini denetleyin. Bir Web özel durumu oluşturursa, bir ağ geçidi sorunu, eksik proxy kimlik doğrulaması, yanlış DNS veya kimlik doğrulama hatası olabilir. Aşağıdaki hatalarla karşılaşabilirsiniz:
    
-   * ErrorCode. CiSApplianceGateway – bu bir HttpStatusCode. BadGateway özel durumu belirtiyor: ad çözümleyici Hizmeti ana bilgisayar adını çözümleyemedi.
-   * ErrorCode. CiSApplianceProxy – bu, bir HttpStatusCode. ProxyAuthenticationRequired özel durumu gösterir (HTTP durum kodu 407): istemci, ara sunucu ile kimlik doğrulaması yapamadı.
-   * ErrorCode. CiSApplianceDNSError – bu bir WebExceptionStatus. NameResolutionFailure özel durumu belirtiyor: ad çözümleyici Hizmeti ana bilgisayar adını çözümleyemedi.
-   * ErrorCode. CiSApplianceACSError – bu, hizmetin bir kimlik doğrulama hatası döndürdüğünden, ancak bağlantı olduğunu gösterir.
+   * ErrorCode. CiSApplianceGateway: bir HttpStatusCode. BadGateway özel durumunu belirtir: ad çözümleyici Hizmeti ana bilgisayar adını çözümleyemedi.
+   * ErrorCode. CiSApplianceProxy: bir HttpStatusCode. ProxyAuthenticationRequired özel durumu gösterir (HTTP durum kodu 407): istemci, ara sunucu ile kimlik doğrulaması yapamadı.
+   * ErrorCode. CiSApplianceDNSError: bir WebExceptionStatus. NameResolutionFailure özel durumu belirtir: ad çözümleyici Hizmeti ana bilgisayar adını çözümleyemedi.
+   * ErrorCode. CiSApplianceACSError: hizmetin bir kimlik doğrulama hatası döndürmediğini, ancak bağlantı olduğunu gösterir.
      
-     Bir Web özel durumu oluşturmadığından, ErrorCode. CiSApplianceFailure için denetleyin. Bu, gerecin başarısız olduğunu gösterir.
+     Web özel durumu oluşturmadığından, gerecin başarısız olduğunu gösteren ErrorCode. CiSApplianceFailure olup olmadığını denetleyin.
 5. Bulut hizmeti bağlantısını kontrol edin. Hizmet bir Web özel durumu oluşturursa, aşağıdaki hataları görebilirsiniz:
    
-   * ErrorCode. CiSApplianceGateway – bu bir HttpStatusCode. BadGateway özel durumunu belirtir: ara sunucu sunucusu başka bir proxy 'den veya özgün sunucudan hatalı bir istek aldı.
-   * ErrorCode. CiSApplianceProxy – bu, bir HttpStatusCode. ProxyAuthenticationRequired özel durumu gösterir (HTTP durum kodu 407): istemci, ara sunucu ile kimlik doğrulaması yapamadı.
-   * ErrorCode. CiSApplianceDNSError – bu bir WebExceptionStatus. NameResolutionFailure özel durumu belirtiyor: ad çözümleyici Hizmeti ana bilgisayar adını çözümleyemedi.
-   * ErrorCode. CiSApplianceACSError – bu, hizmetin bir kimlik doğrulama hatası döndürdüğünden, ancak bağlantı olduğunu gösterir.
+   * ErrorCode. CiSApplianceGateway: bir HttpStatusCode. BadGateway özel durumunu belirtir: ara sunucu sunucusu başka bir proxy 'den veya özgün sunucudan hatalı bir istek aldı.
+   * ErrorCode. CiSApplianceProxy: bir HttpStatusCode. ProxyAuthenticationRequired özel durumu gösterir (HTTP durum kodu 407): istemci, ara sunucu ile kimlik doğrulaması yapamadı.
+   * ErrorCode. CiSApplianceDNSError: bir WebExceptionStatus. NameResolutionFailure özel durumu belirtir: ad çözümleyici Hizmeti ana bilgisayar adını çözümleyemedi.
+   * ErrorCode. CiSApplianceACSError: hizmetin bir kimlik doğrulama hatası döndürmediğini, ancak bağlantı olduğunu gösterir.
      
-     Bir Web özel durumu oluşturmadığından, ErrorCode. CiSApplianceSaasServiceError için denetleyin. Bu, StorSimple Aygıt Yöneticisi hizmetiyle ilgili bir sorun olduğunu gösterir.
+     Bir Web özel durumu oluşturmadığından, StorSimple Device Manager hizmetiyle ilgili bir sorun olduğunu bildiren ErrorCode. CiSApplianceSaasServiceError olup olmadığını denetleyin.
 6. Azure Service Bus bağlantısını denetleyin. ErrorCode. CiSApplianceServiceBusError, cihazın Service Bus bağlanamadığını gösterir.
 
 CiSCommandletLog0Curr. errlog ve CiSAgentsvc0Curr. errlog günlük dosyaları, özel durum ayrıntıları gibi daha fazla bilgiye sahip olacaktır.
@@ -357,7 +357,7 @@ Device is registered successfully
 Checking connectivity from device to SaaS.. Failure
 ```
 
-Cihaz, geçerli Web proxy yapılandırmasını kullanarak bağlanamadı. Bu, Web proxy yapılandırması veya ağ bağlantısı sorunu ile ilgili bir sorun olabilir. Bu durumda, Web proxy ayarlarınızın doğru olduğundan ve Web proxy sunucularınızın çevrimiçi ve ulaşılabilir olduğundan emin olun.
+Cihaz, geçerli Web proxy yapılandırmasını kullanarak bağlanamadı. Web proxy yapılandırması veya ağ bağlantısı sorunu ile ilgili bir sorun olabilir. Bu durumda, Web proxy ayarlarınızın doğru olduğundan ve Web proxy sunucularınızın çevrimiçi ve ulaşılabilir olduğundan emin olun.
 
 ## <a name="troubleshoot-with-the-sync-hcstime-cmdlet"></a>Sync-HcsTime cmdlet ile sorun giderme
 Cihaz saatini göstermek için bu cmdlet 'i kullanın. Cihaz saati NTP sunucusuyla bir uzaklığa sahipse, bu cmdlet 'i kullanarak saati NTP sunucunuz ile eşitler.
@@ -419,11 +419,11 @@ Trace complete.
 ## <a name="troubleshoot-with-the-get-hcsroutingtable-cmdlet"></a>Get-HcsRoutingTable cmdlet ile sorun giderme
 StorSimple cihazınız için yönlendirme tablosunu görüntülemek için bu cmdlet 'i kullanın. Yönlendirme tablosu, bir Internet Protokolü (IP) ağı üzerinden seyahat edilen veri paketlerinin nerede yönlendirilmeyeceğini belirlemede yardımcı olabilecek bir kurallar kümesidir.
 
-Yönlendirme tablosu, verileri belirtilen ağlara yönlendiren arabirimleri ve ağ geçidini gösterir. Ayrıca, belirli bir hedefe ulaşmak için alınan yol için karar Oluşturucu olan yönlendirme ölçüsünü de sağlar. Yönlendirme ölçümü ne kadar düşükse tercih daha yüksektir.
+Yönlendirme tablosu, verileri belirtilen ağlara yönlendiren arabirimleri ve ağ geçidini gösterir. Ayrıca, belirli bir hedefe ulaşmak için alınan yol için karar veren olan yönlendirme ölçüsünü de sağlar. Yönlendirme ölçümü ne kadar düşükse tercih daha yüksektir.
 
-Örneğin, 2 ağ arabirimsahipseniz, DATA 2 ve DATA 3, Internet 'e bağlanır. DATA 2 ve DATA 3 için yönlendirme ölçümleri sırasıyla 15 ve 261 ise, daha düşük yönlendirme ölçümüyle VERI 2, Internet 'e erişmek için kullanılan tercih edilen arabirimdir.
+Örneğin, Internet 'e bağlı iki ağ arabirimi (DATA 2 ve DATA 3) olduğunu varsayalım. DATA 2 ve DATA 3 için yönlendirme ölçümleri sırasıyla 15 ve 261 ise, daha düşük yönlendirme ölçümüyle VERI 2, Internet 'e erişmek için kullanılan tercih edilen arabirimdir.
 
-StorSimple cihazınızda güncelleştirme 1 ' i çalıştırıyorsanız, VERI 0 ağ arabiriminiz, bulut trafiği için en yüksek tercihe sahiptir. Bu, diğer bulut özellikli arabirimler olsa da, bulut trafiğinin 0 VERI aracılığıyla yönlendirilmesi anlamına gelir.
+StorSimple cihazınızda güncelleştirme 1 ' i çalıştırıyorsanız, VERI 0 ağ arabiriminiz, bulut trafiği için en yüksek tercihe sahiptir. Bu yapılandırmayla, diğer bulut özellikli arabirimler olsa bile, bulut trafiğinin çoğu VERI 0 üzerinden yönlendirilir.<!--This implies that even if there are other cloud-enabled interfaces, the cloud traffic would be routed through DATA 0. - Preceding sentence replaces this one. Use of "This implies" is a bit murky. DATA 0 will be the preferred network interface? Is my translation OK?-->
 
 `Get-HcsRoutingTable`Cmdlet 'i herhangi bir parametre belirtmeden çalıştırırsanız (aşağıdaki örnekte gösterildiği gibi), cmdlet hem IPv4 hem de IPv6 yönlendirme tablolarının çıktısını görüntüler. Alternatif olarak, `Get-HcsRoutingTable -IPv4` ilgili yönlendirme tablosunu da belirtebilir veya seçebilirsiniz `Get-HcsRoutingTable -IPv6`  .
 
@@ -504,7 +504,7 @@ Invoke-HcsSetupWizard: An error has occurred while registering the device. This 
 +FullyQualifiedErrorID: CiSClientCommunicationErros, Microsoft.HCS.Management.PowerShell.Cmdlets.InvokeHcsSetupWizardCommand
 ```
 
-Hatanın nedeni aşağıdakilerden biri olabilir:
+Hataya aşağıdaki sorunlardan biri neden olmuş olabilir:
 
 * Hatalı donanım yüklemesi
 * Hatalı ağ arabirimi
@@ -526,9 +526,10 @@ Hatanın nedeni aşağıdakilerden biri olabilir:
 3. Ağ arabiriminin sistem durumunu doğrulayın:
    
    * VERI 0 için ağ arabirimlerinin sistem durumunu algılamak üzere Get-NetAdapter cmdlet 'ini kullanın. 
-   * Bağlantı çalışmıyorsa, **ifındex** durumu arabirimin bittiğini gösterir. Daha sonra, bağlantı noktasının gerecine ve anahtara ağ bağlantısını denetlemeniz gerekir. Ayrıca, hatalı kablolar için de kural oluşturmanız gerekir. 
-   * Etkin denetleyicideki DATA 0 bağlantı noktasının başarısız olduğundan şüphelenirseniz, denetleyici 1 üzerindeki DATA 0 bağlantı noktasına bağlanarak bunu doğrulayabilirsiniz. Bunu onaylamak için, ağ kablosunu cihazın geri bağlantısı olan denetleyici 0 ' dan sökün, kabloyu Controller 1 ' e bağlayın ve sonra Get-NetAdapter cmdlet 'ini yeniden çalıştırın.
-     Bir denetleyicideki DATA 0 bağlantı noktası başarısız olursa, sonraki adımlar için [Microsoft desteği başvurun](storsimple-8000-contact-microsoft-support.md) . Sisteminizdeki denetleyiciyi değiştirmeniz gerekebilir.
+   * Bağlantı çalışmıyorsa, `ifindex` durum arabirimin bittiğini gösterir. Daha sonra, bağlantı noktasının gerecine ve anahtara ağ bağlantısını denetlemeniz gerekir. Ayrıca, hatalı kablolar için de kural oluşturmanız gerekir. 
+   * Etkin denetleyicideki VERI 0 bağlantı noktasının başarısız olduğundan şüphelenirseniz, denetleyici 1 ' deki DATA 0 bağlantı noktasına bağlanarak bu işlemi doğrulayabilirsiniz. Ağ kablosunu cihazın geri kaynağından denetleyici 0 ' dan sökün, kabloyu Controller 1 ' e bağlayın ve sonra Get-NetAdapter cmdlet 'ini yeniden çalıştırın.
+   
+     Bir denetleyicideki VERI 0 bağlantı noktası başarısız olursa, sonraki adımlar için [Microsoft desteği başvurun](storsimple-8000-contact-microsoft-support.md) . Sisteminizdeki denetleyiciyi değiştirmeniz gerekebilir.
 4. Anahtarla bağlantıyı doğrulayın:
    
    * Birincil muhafazadaki denetleyici 0 ve denetleyici 1 üzerindeki VERI 0 ağ arabirimlerinin aynı alt ağda olduğundan emin olun. 
@@ -537,14 +538,14 @@ Hatanın nedeni aşağıdakilerden biri olabilir:
 5. Kullanıcı hatalarını ortadan kaldırın:
    
    * Kurulum sihirbazını yeniden çalıştırın ( **Invoke-HcsSetupWizard**' ı çalıştırın) ve hata olmadığından emin olmak için değerleri yeniden girin. 
-   * Kullanılan kayıt anahtarını doğrulayın. Aynı kayıt anahtarı, birden çok cihazı StorSimple Aygıt Yöneticisi hizmetine bağlamak için kullanılabilir. Doğru kayıt anahtarını kullandığınızdan emin olmak için [hizmet kayıt anahtarını al](storsimple-8000-manage-service.md#get-the-service-registration-key) bölümündeki yordamı kullanın.
+   * Kullanılan kayıt anahtarını doğrulayın. Aynı kayıt anahtarı, birden çok cihazı StorSimple Device Manager hizmetine bağlamak için kullanılabilir. Doğru kayıt anahtarını kullandığınızdan emin olmak için [hizmet kayıt anahtarını al](storsimple-8000-manage-service.md#get-the-service-registration-key) bölümündeki yordamı kullanın.
      
      > [!IMPORTANT]
-     > Çalıştıran birden fazla hizmet varsa, cihazı kaydetmek için uygun hizmet kayıt anahtarının kullanıldığından emin olmanız gerekir. Yanlış StorSimple Aygıt Yöneticisi hizmetine sahip bir cihaz kaydettiniz, sonraki adımlar için [Microsoft desteği başvurmanız](storsimple-8000-contact-microsoft-support.md) gerekir. Cihazın fabrika sıfırlamasını (veri kaybına neden olabilir), daha sonra amaçlanan hizmete bağlayabilmeniz gerekebilir.
+     > Çalıştıran birden fazla hizmet varsa, cihazı kaydetmek için uygun hizmet kayıt anahtarının kullanıldığından emin olmanız gerekir. Yanlış StorSimple Device Manager hizmetine sahip bir cihaz kaydettiniz, sonraki adımlar için [Microsoft desteği başvurmanız](storsimple-8000-contact-microsoft-support.md) gerekir. Cihazın fabrika sıfırlamasını (veri kaybına neden olabilir), daha sonra amaçlanan hizmete bağlayabilmeniz gerekebilir.
      > 
      > 
 6. Dış ağa bağlantınız olduğunu doğrulamak için Test-Connection cmdlet 'ini kullanın. Daha fazla bilgi için [Test-Connection cmdlet Ile sorun giderme](#troubleshoot-with-the-test-connection-cmdlet)bölümüne gidin.
-7. Güvenlik Duvarı girişim olup olmadığını denetleyin. Sanal IP (VIP), alt ağ, ağ geçidi ve DNS ayarlarının tümünün doğru olduğunu doğruladıysanız ve hala bağlantı sorunları görüyorsanız, güvenlik duvarınızın cihazınız ile dışarıdaki ağ arasındaki iletişimi engellemesi mümkündür. 80 ve 443 bağlantı noktalarının giden iletişim için StorSimple cihazınızda kullanılabilir olduğundan emin olmanız gerekir. Daha fazla bilgi için bkz. [StorSimple cihazınız Için ağ gereksinimleri](storsimple-8000-system-requirements.md#networking-requirements-for-your-storsimple-device).
+7. Güvenlik Duvarı girişim olup olmadığını denetleyin. Sanal IP (VIP), alt ağ, ağ geçidi ve DNS ayarlarının tümünün doğru olduğunu doğruladıysanız ve hala bağlantı sorunları görüyorsanız, güvenlik duvarınızın cihazınız ve dış ağ arasındaki iletişimi engellemesi mümkündür. 80 ve 443 bağlantı noktalarının giden iletişim için StorSimple cihazınızda kullanılabilir olduğundan emin olun. Daha fazla bilgi için bkz. [StorSimple cihazınız Için ağ gereksinimleri](storsimple-8000-system-requirements.md#networking-requirements-for-your-storsimple-device).
 8. Günlüklere bakın. [Sorun giderme Için destek paketleri ve cihaz günlüklerine](#support-packages-and-device-logs-available-for-troubleshooting)gidin.
 9. Yukarıdaki adımlar sorunu çözmezse, yardım için [Microsoft desteği başvurun](storsimple-8000-contact-microsoft-support.md) .
 

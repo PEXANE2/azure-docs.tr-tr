@@ -4,20 +4,20 @@ description: StorSimple cihazınızı yönetmek için StorSimple için Windows P
 author: alkohli
 ms.service: storsimple
 ms.topic: how-to
-ms.date: 01/09/2018
+ms.date: 01/25/2021
 ms.author: alkohli
-ms.openlocfilehash: 65e9657c3948d8ce5883cd33ca8720f501352105
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: e41d2e531a051738a31325b4ea33961bfb39e7f9
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95995445"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98808021"
 ---
 # <a name="use-windows-powershell-for-storsimple-to-administer-your-device"></a>StorSimple için Windows PowerShell’i kullanarak cihazınızı yönetme
 
 ## <a name="overview"></a>Genel Bakış
 
-StorSimple için Windows PowerShell, Microsoft Azure StorSimple cihazınızı yönetmek için kullanabileceğiniz bir komut satırı arabirimi sağlar. Adından da anlaşılacağı gibi, bu, kısıtlı bir çalışma alanında oluşturulan Windows PowerShell tabanlı, komut satırı arabirimidir. Komut satırında kullanıcının perspektifinden, kısıtlı bir çalışma alanı Windows PowerShell 'in sınırlı bir sürümü olarak görünür. Windows PowerShell 'in bazı temel özelliklerini koruyarak, bu arabirimin Microsoft Azure StorSimple cihazınızı yönetmek için gereken ek adanmış cmdlet 'ler vardır.
+StorSimple için Windows PowerShell, Microsoft Azure StorSimple cihazınızı yönetmek için kullanabileceğiniz bir komut satırı arabirimi sağlar. Adından da anlaşılacağı gibi, bu, kısıtlı bir çalışma alanında oluşturulan Windows PowerShell tabanlı, komut satırı arabirimidir. Komut satırında kullanıcının perspektifinden, kısıtlı bir çalışma alanı Windows PowerShell 'in sınırlı bir sürümü olarak görünür. Windows PowerShell 'in bazı temel özelliklerini koruyarak, bu arabirimde Microsoft Azure StorSimple cihazınızı yönetmek için kullanabileceğiniz başka ve ayrılmış cmdlet 'ler vardır.
 
 Bu makalede, bu arabirime nasıl bağlanabileceğinizi de içeren StorSimple için Windows PowerShell özellikleri açıklanmakta ve bu arabirimi kullanarak gerçekleştirebileceğiniz adım adım yordamlara veya iş akışlarına bağlantılar yer almaktadır. İş akışları, cihazınızı nasıl kaydedeceğinizi, cihazınızda ağ arabirimini yapılandırmanıza, cihazın bakım modunda olmasını gerektiren güncelleştirmeleri yüklemeye, cihaz durumunu değiştirmeye ve karşılaşabileceğiniz sorunları gidermeye da dahildir.
 
@@ -28,8 +28,8 @@ Bu makaleyi okuduktan sonra şunları yapabilirsiniz:
 * StorSimple için Windows PowerShell yardım alın.
 
 > [!NOTE]
-> * StorSimple için Windows PowerShell cmdlet 'leri, StorSimple cihazınızı bir seri konsolundan veya Windows PowerShell uzaktan iletişim yoluyla uzaktan yönetmenize olanak sağlar. Bu arabirimde kullanılabilecek tek tek cmdlet 'ler hakkında daha fazla bilgi için, [StorSimple için Windows PowerShell için cmdlet başvurusuna](/powershell/module/hcs/?viewFallbackFrom=winserverr2-ps)gidin.
-> * Azure PowerShell StorSimple cmdlet 'leri, komut satırından StorSimple hizmet düzeyi ve geçiş görevlerini otomatikleştirmenizi sağlayan farklı cmdlet koleksiyonlardır. StorSimple için Azure PowerShell cmdlet 'leri hakkında daha fazla bilgi için [Azure StorSimple cmdlet başvurusuna](/powershell/module/servicemanagement/azure.service/?view=azuresmps-4.0.0&viewFallbackFrom=azuresmps-3.7.0#azure)gidin.
+> * StorSimple için Windows PowerShell cmdlet 'leri, StorSimple cihazınızı bir seri konsolundan veya Windows PowerShell uzaktan iletişim yoluyla uzaktan yönetmenize olanak sağlar. Bu arabirimde kullanılabilecek tek tek cmdlet 'ler hakkında daha fazla bilgi için, [StorSimple için Windows PowerShell için cmdlet başvurusuna](/powershell/module/hcs/?viewFallbackFrom=winserverr2-ps&preserve-view=true)gidin.
+> * Azure PowerShell StorSimple cmdlet 'leri, komut satırından StorSimple hizmet düzeyi ve geçiş görevlerini otomatikleştirmenizi sağlayan farklı cmdlet koleksiyonlardır. StorSimple için Azure PowerShell cmdlet 'leri hakkında daha fazla bilgi için [Azure StorSimple cmdlet başvurusuna](/powershell/module/servicemanagement/azure.service/?view=azuresmps-4.0.0&viewFallbackFrom=azuresmps-3.7.0&preserve-view=true#azure)gidin.
 
 
 Aşağıdaki yöntemlerden birini kullanarak StorSimple için Windows PowerShell erişebilirsiniz:
@@ -48,7 +48,7 @@ Seri konsolundan Windows PowerShell arabirimine bağlanmak için aşağıdaki Pu
 #### <a name="to-configure-putty"></a>PuTTY 'yi yapılandırmak için
 
 1. PuTTY yeniden **yapılandırması** Iletişim kutusundaki **Kategori** bölmesinde **klavye**' yi seçin.
-2. Aşağıdaki seçeneklerin seçili olduğundan emin olun (yeni bir oturum başlattığınızda bunlar varsayılan ayarlardır).
+2. Aşağıdaki seçeneklerde (yeni bir oturum başlattığınızda varsayılan ayarlar) seçili olduğundan emin olun.
    
    | Klavye öğesi | Şunu seçin: |
    | --- | --- |
@@ -89,12 +89,15 @@ Aşağıdaki görüntüde, seri konsol menüsünde bulunan çeşitli çalışma 
 
 Aşağıdaki ayarlardan seçim yapabilirsiniz:
 
-1. **Tam erişim Ile oturum açın** Bu seçenek, yerel denetleyicideki **Ssadminconsole** çalışma alanına bağlanmanızı sağlar (uygun kimlik bilgileriyle). (Yerel denetleyici, şu anda StorSimple cihazınızın seri konsolundan erişmekte olduğunuz denetleyiciden oluşur.) Bu seçenek, olası cihaz sorunlarını gidermek için Microsoft Desteği Kısıtlanmamış çalışma alanına (bir destek oturumu) erişmesine izin vermek için de kullanılabilir. Oturum açmak için 1 seçeneğini kullandıktan sonra, Microsoft Desteği mühendisinin belirli bir cmdlet çalıştırarak Kısıtlanmamış çalışma alanına erişmesine izin verebilirsiniz. Ayrıntılar için [destek oturumu başlatma](storsimple-8000-contact-microsoft-support.md#start-a-support-session-in-windows-powershell-for-storsimple)bölümüne bakın.
+1. **Tam erişimle oturum açın.**
+   Bu seçenek, yerel denetleyicideki **Ssadminconsole** çalışma alanına bağlanmanızı sağlar (uygun kimlik bilgileriyle). (Yerel denetleyici, şu anda StorSimple cihazınızın seri konsolundan erişmekte olduğunuz denetleyiciden oluşur.) Bu seçenek, olası cihaz sorunlarını gidermek için Microsoft Desteği Kısıtlanmamış çalışma alanına (bir destek oturumu) erişmesine izin vermek için de kullanılabilir. Oturum açmak için 1 seçeneğini kullandıktan sonra, Microsoft Desteği mühendisinin belirli bir cmdlet çalıştırarak Kısıtlanmamış çalışma alanına erişmesine izin verebilirsiniz. Ayrıntılar için [destek oturumu başlatma](storsimple-8000-contact-microsoft-support.md#start-a-support-session-in-windows-powershell-for-storsimple)bölümüne bakın.
    
-2. **Tam erişim ile eş denetleyicide oturum açma** Bu seçenek, bağlantı denetleyicisindeki **Ssadminconsole** çalışma alanına (uygun kimlik bilgileriyle) bağlanabiliyor olmanız dışında, seçenek 1 ile aynıdır. StorSimple cihazı, etkin-Pasif yapılandırmada iki denetleyicisi olan yüksek oranda kullanılabilir bir cihaz olduğundan, eş, seri konsol üzerinden eriştiğiniz cihazdaki diğer denetleyiciye başvurur.
+2. **Tam erişim ile eş denetleyicide oturum açın.**
+   Bu seçenek, bağlantı denetleyicisindeki **Ssadminconsole** çalışma alanına (uygun kimlik bilgileriyle) bağlanabiliyor olmanız dışında, seçenek 1 ile aynıdır. StorSimple cihazı, etkin-Pasif yapılandırmada iki denetleyicisi olan yüksek oranda kullanılabilir bir cihaz olduğundan, eş, seri konsol üzerinden eriştiğiniz cihazdaki diğer denetleyiciye başvurur.
    1. seçeneğe benzer şekilde, bu seçenek Microsoft Desteği eş denetleyicide Kısıtlanmamış çalışma alanına erişmesine izin vermek için de kullanılabilir.
 
-3. **Sınırlı erişimle bağlanma** Bu seçenek, Windows PowerShell arabirimine sınırlı modda erişmek için kullanılır. Sizden erişim kimlik bilgileri istenmez. Bu seçenek, Seçenekler 1 ve 2 ile karşılaştırıldığında daha kısıtlı bir çalışma alanına bağlanır.  Bu çalışma alanında *gerçekleştirilemediği 1* seçenek ile kullanılabilir görevlerden bazıları şunlardır:
+3. **Sınırlı erişimle bağlanın.**
+   Bu seçenek, Windows PowerShell arabirimine sınırlı modda erişmek için kullanılır. Sizden erişim kimlik bilgileri istenmez. Bu seçenek, Seçenekler 1 ve 2 ile karşılaştırıldığında daha kısıtlı bir çalışma alanına bağlanır.  Seçenek 1 aracılığıyla bu çalışma alanında *gerçekleştirilemediği görevlerden* bazıları şunlardır:
    
    * Fabrika ayarlarına sıfırla
    * Parolayı değiştirme
@@ -105,7 +108,8 @@ Aşağıdaki ayarlardan seçim yapabilirsiniz:
      > [!NOTE]
      > Bu, Cihaz Yöneticisi parolasını unuttuysanız ve 1 veya 2 ' den bağlantı kurmak için tercih edilen seçenektir.
 
-4. **Dili Değiştir** Bu seçenek, Windows PowerShell arabirimindeki görüntüleme dilini değiştirmenize izin verir. Desteklenen diller Ingilizce, Japonca, Rusça, Fransızca, Güney Korece, Ispanyolca, Italyanca, Almanca, Çince ve Portekizce 'Dir.
+4. **Dili Değiştir.**
+   Bu seçenek, Windows PowerShell arabirimindeki görüntüleme dilini değiştirmenize izin verir. Desteklenen diller Ingilizce, Japonca, Rusça, Fransızca, Güney Korece, Ispanyolca, Italyanca, Almanca, Çince ve Portekizce 'Dir.
 
 ## <a name="connect-remotely-to-storsimple-using-windows-powershell-for-storsimple"></a>StorSimple için Windows PowerShell kullanarak StorSimple 'a uzaktan bağlanma
 
@@ -124,10 +128,10 @@ Windows PowerShell uzaktan iletişimini kullanarak bağlanmak için HTTP veya HT
 
 ## <a name="connection-security-considerations"></a>Bağlantı güvenliği konuları
 
-StorSimple için Windows PowerShell bağlanma konusunda karar verirken aşağıdakileri göz önünde bulundurun:
+StorSimple için Windows PowerShell bağlanma konusunda karar verirken aşağıdaki faktörleri göz önünde bulundurun:
 
 * Doğrudan cihaz seri konsoluna bağlanmak güvenlidir, ancak ağ anahtarları üzerinden seri konsoluna bağlanmak değildir. Ağ anahtarları üzerinden cihaz seri durumuna bağlanırken güvenlik riskine karşı dikkatli olun.
-* HTTP oturumundan bağlantı, ağ üzerinden seri konsol üzerinden bağlanılarak daha fazla güvenlik sunabilir. Bu en güvenli yöntem olmasa da, güvenilen ağlarda kabul edilebilir.
+* HTTP oturumundan bağlantı, ağ üzerinden seri konsol üzerinden bağlanılarak daha fazla güvenlik sunabilir. Bir HTTP oturumu en güvenli bağlantı yöntemi olmasa da, güvenilir ağlarda kabul edilebilir.
 * HTTPS oturumu üzerinden bağlanmak en güvenli ve önerilen seçenektir.
 
 ## <a name="administer-your-storsimple-device-using-windows-powershell-for-storsimple"></a>StorSimple için Windows PowerShell kullanarak StorSimple cihazınızı yönetin
@@ -151,9 +155,9 @@ Aşağıdaki tabloda, StorSimple cihazınızın Windows PowerShell arabiriminde 
 
 StorSimple için Windows PowerShell, cmdlet yardımı kullanılabilir. Sisteminizde yardımı güncelleştirmek için kullanabileceğiniz, bu yardım 'ın çevrimiçi, güncel bir sürümü de mevcuttur.
 
-Bu arabirimde yardım almak, Windows PowerShell 'de buna benzer ve yardım ile ilgili cmdlet 'lerinin çoğu çalışacaktır. Windows PowerShell Online için yardım bulabilirsiniz: [Microsoft. PowerShell. Core](/powershell/module/Microsoft.PowerShell.Core/).
+Bu arabirimde yardım almak, Windows PowerShell 'de yardım almaya benzer ve yardım ile ilgili cmdlet 'lerinin çoğu çalışacaktır. Windows PowerShell Online için yardım bulabilirsiniz: [Microsoft. PowerShell. Core](/powershell/module/Microsoft.PowerShell.Core/).
 
-Aşağıda, bu Windows PowerShell arabirimine yönelik yardım türlerinin yanı sıra yardımı güncelleştirme hakkında kısa bir açıklama verilmiştir.
+<!--The following is a brief description of the types of Help for this Windows PowerShell interface, including how to update the Help. - OK to remove? Transition not needed.-->
 
 ### <a name="to-get-help-for-a-cmdlet"></a>Bir cmdlet için yardım almak üzere
 
@@ -169,7 +173,7 @@ Windows PowerShell arabirimindeki yardımı kolayca güncelleştirebilirsiniz. S
 1. Windows PowerShell 'i **yönetici olarak çalıştır** seçeneğiyle başlatın.
 2. Komut isteminde şunu yazın:  `Update-Help`
 3. Güncelleştirilmiş Yardım dosyaları yüklenecek.
-4. Yardım dosyaları yüklendikten sonra, şunu yazın: `Get-Help Get-Command` . Bu, yardım 'ın kullanılabildiği cmdlet 'lerin bir listesini görüntüler.
+4. Yardım dosyaları yüklendikten sonra, `Get-Help Get-Command` Yardım 'ın kullanılabildiği cmdlet 'lerin listesini göstermek için şunu yazın:.
 
 > [!NOTE]
 > Bir çalışma alanındaki tüm kullanılabilir cmdlet 'lerin listesini almak için, ilgili menü seçeneğinde oturum açın ve `Get-Command` cmdlet 'ini çalıştırın.

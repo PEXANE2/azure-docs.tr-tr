@@ -3,12 +3,12 @@ title: Yaygın soruların yanıtları
 description: 'Kurtarma Hizmetleri kasaları, neleri yedekleyebilir, nasıl çalışır, şifreleme ve limitlerin dahil olduğu Azure Backup özellikleriyle ilgili yaygın soruların yanıtları. '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: dbe6ce95427b559c037e38525f9f48195a2a76a4
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: f819440001180a3c446f366e61e3ac0f983fa67f
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98703428"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98806637"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup - Sık sorulan sorular
 
@@ -70,7 +70,7 @@ Data Box kullanarak doğrudan kurtarma hizmetleri kasasından şirket içine ver
 
 ### <a name="where-can-i-find-common-questions-about-the-azure-backup-agent-for-azure-vm-backup"></a>Azure VM yedeklemesi için Azure Backup aracısı hakkındaki yaygın soruları nerede bulabilirim?
 
-- Azure VM'lerinde çalıştırılan aracı için bu [SSS](backup-azure-vm-backup-faq.md) belgesini okuyun.
+- Azure VM'lerinde çalıştırılan aracı için bu [SSS](backup-azure-vm-backup-faq.yml) belgesini okuyun.
 - Azure dosya klasörlerini yedeklerken kullanılan aracı için bu [SSS](backup-azure-file-folder-backup-faq.md) belgesini okuyun.
 
 ## <a name="general-backup"></a>Genel yedekleme
@@ -236,5 +236,5 @@ Yedekleme verilerini şifrelemek için kullanılan anahtar yalnızca sizin siten
 
 Diğer SSS belgelerini okuyun:
 
-- Azure VM yedeklemeleriyle ilgili [yaygın sorular](backup-azure-vm-backup-faq.md).
+- Azure VM yedeklemeleriyle ilgili [yaygın sorular](backup-azure-vm-backup-faq.yml).
 - Azure Backup aracısıyla ilgili [yaygın sorular](backup-azure-file-folder-backup-faq.md)

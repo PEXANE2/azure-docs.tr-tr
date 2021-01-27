@@ -1,16 +1,16 @@
 ---
 title: Azure İşlevleri ağ seçenekleri
 description: Azure Işlevlerinde kullanılabilen tüm ağ seçeneklerine genel bakış.
-author: jeffhollan
+author: cachai2
 ms.topic: conceptual
-ms.date: 10/27/2020
-ms.author: jehollan
-ms.openlocfilehash: f4d7611f285535680469f3a334ab889b0b644bfe
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.date: 1/21/2021
+ms.author: cachai
+ms.openlocfilehash: 2c3f207e98f574bb6c43f87d34b0a404e263e83c
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936876"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98806990"
 ---
 # <a name="azure-functions-networking-options"></a>Azure İşlevleri ağ seçenekleri
 
@@ -85,12 +85,9 @@ Daha yüksek bir güvenlik düzeyi sağlamak için, hizmet uç noktalarını kul
 
 Daha fazla bilgi için bkz. [sanal ağ hizmeti uç noktaları](../virtual-network/virtual-network-service-endpoints-overview.md).
 
-## <a name="restrict-your-storage-account-to-a-virtual-network-preview"></a>Depolama hesabınızı bir sanal ağla sınırlayın (Önizleme)
+## <a name="restrict-your-storage-account-to-a-virtual-network"></a>Depolama hesabınızı bir sanal ağla sınırlayın 
 
-Bir işlev uygulaması oluşturduğunuzda, blob, kuyruk ve tablo depolamayı destekleyen genel amaçlı bir Azure depolama hesabı oluşturmanız veya bağlamanız gerekir.  Bu depolama hesabını hizmet uç noktaları veya özel uç nokta ile güvenli bir şekilde değiştirebilirsiniz.  Bu önizleme özelliği şu anda yalnızca Batı Avrupa Windows Premium planlarıyla birlikte çalışıyor.  Özel bir ağla sınırlı bir depolama hesabı ile bir işlev ayarlamak için:
-
-> [!NOTE]
-> Depolama hesabını kısıtlamak yalnızca Batı Avrupa Windows kullanan Premium işlevlerde çalışır
+Bir işlev uygulaması oluşturduğunuzda, blob, kuyruk ve tablo depolamayı destekleyen genel amaçlı bir Azure depolama hesabı oluşturmanız veya bağlamanız gerekir.  Bu depolama hesabını hizmet uç noktaları veya özel uç nokta ile güvenli bir şekilde değiştirebilirsiniz.  Bu özellik şu anda yalnızca Windows Premium planlarıyla birlikte çalışıyor.  Özel bir ağla sınırlı bir depolama hesabı ile bir işlev ayarlamak için:
 
 1. Hizmet uç noktaları etkin olmayan bir depolama hesabıyla bir işlev oluşturun.
 1. İşlevini sanal ağınıza bağlanacak şekilde yapılandırın.

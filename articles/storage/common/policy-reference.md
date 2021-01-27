@@ -1,18 +1,18 @@
 ---
 title: Azure depolama için yerleşik ilke tanımları
 description: Azure depolama için Azure Ilkesi yerleşik ilke tanımlarını listeler. Bu yerleşik ilke tanımları, Azure kaynaklarınızı yönetmek için yaygın yaklaşımlar sağlar.
-ms.date: 01/21/2021
+ms.date: 01/25/2021
 ms.topic: reference
 author: tamram
 ms.author: tamram
 ms.service: storage
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 492244d44d8ce95f8f7b12da71054235f0b01c77
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: c8b7889fe77527f2eac2951f9a4f9a798f32c6ed
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98704733"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98806802"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-storage"></a>Azure depolama için Azure Ilkesi yerleşik tanımları
 

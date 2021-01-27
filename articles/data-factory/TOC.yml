@@ -796,6 +796,10 @@
       href: /python/api/overview/azure/datafactory
 - name: Kaynaklar
   items:
+    - name: Veri akışı ayrılmış kapasitesine genel bakış
+      href: data-flow-reserved-capacity-overview.md
+    - name: 'Veri akışı, rezervasyon ücretlerini anlama'
+      href: data-flow-understand-reservation-charges.md
     - name: Teknik incelemeler
       href: whitepapers.md
     - name: SSS

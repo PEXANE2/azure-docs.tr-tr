@@ -3,12 +3,12 @@ title: Azure sanal makine geri yükleme işlemi hakkında
 description: Azure Backup hizmetinin Azure sanal makinelerini nasıl geri yüklediği hakkında bilgi edinin
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.openlocfilehash: f42266e64170b314f10fbfc026873d694ea58b9a
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 436859bfb3cee37501e0605465d8e19856a846d6
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98757737"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98806839"
 ---
 # <a name="about-azure-vm-restore"></a>Azure VM geri yükleme hakkında
 
@@ -50,6 +50,6 @@ Bu makalede, [Azure Backup hizmetinin](./backup-overview.md) Azure sanal makinel
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [VM geri yükleme hakkında sık sorulan sorular](./backup-azure-vm-backup-faq.md#restore)
+- [VM geri yükleme hakkında sık sorulan sorular](https://docs.microsoft.com/azure/backup/backup-azure-vm-backup-faq#restore)
 - [Desteklenen geri yükleme yöntemleri](./backup-support-matrix-iaas.md#supported-restore-methods)
 - [Geri yükleme sorunlarını giderme](./backup-azure-vms-troubleshoot.md#restore)

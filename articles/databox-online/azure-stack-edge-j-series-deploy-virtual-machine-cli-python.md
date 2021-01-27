@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 09/07/2020
+ms.date: 01/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 54a4a938be18d39993652cecb87b3604e268fcef
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: daf44afbb322cb30ab3a663dce4e935aefa7be13
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98678962"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98808068"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-using-azure-cli-and-python"></a>Azure CLı ve Python kullanarak Azure Stack Edge Pro GPU cihazınızda sanal makineler dağıtma
 
@@ -70,9 +70,9 @@ Azure CLı ve Python kullanarak Azure Stack Edge Pro cihazınızda bir VM oluşt
 
 3. Azure Stack Edge Pro cihazınızda ve istemcinizin güvenilir deposunda tüm sertifikaları oluşturdunuz ve yüklediniz. [2. Adım: sertifika oluşturma ve yüklemede](azure-stack-edge-j-series-connect-resource-manager.md#step-2-create-and-install-certificates)açıklanan yordamı izleyin.
 
-4. Azure Stack Edge Pro cihazınız için Base-64 kodlamalı bir *. cer* sertifikası (pek biçimi) oluşturdunuz. Bu, cihazda imza zinciri olarak karşıya yüklenmiş ve istemcinizdeki güvenilir kök depoya yüklenmiş. Bu sertifika, Python 'un bu istemcide çalışması için *ped* biçiminde de gereklidir.
+4. Azure Stack Edge Pro cihazınız için Base-64 kodlamalı bir *. cer* sertifikası (pek biçimi) oluşturdunuz. Bu sertifika, cihaza imza zinciri olarak zaten yüklenmiş ve istemcinizdeki güvenilir kök depoda yüklü. Bu sertifika, Python 'un bu istemcide çalışması için *ped* biçiminde de gereklidir.
 
-    Komutunu kullanarak bu sertifikayı ped biçimine dönüştürün `certutil` . Bu komutu, sertifikanızı içeren dizinde çalıştırmalısınız.
+    Komutunu kullanarak bu sertifikayı `pem` biçime dönüştürün `certutil` . Bu komutu, sertifikanızı içeren dizinde çalıştırmalısınız.
 
     ```powershell
     certutil.exe <SourceCertificateName.cer> <DestinationCertificateName.pem>
@@ -86,9 +86,9 @@ Azure CLı ve Python kullanarak Azure Stack Edge Pro cihazınızda bir VM oluşt
     CertUtil: -encode command completed successfully.
     PS C:\Certificates>
     ```    
-    Ayrıca, bu ped 'yi Python deposuna daha sonra ekleyeceksiniz.
+    Bunu `pem` daha sonra Python deposuna de ekleyeceksiniz.
 
-5. Cihaz IP 'sini, cihazın yerel Web Kullanıcı arabiriminde **ağ** sayfanızda atamış olursunuz. Bu IP 'yi şu şekilde eklemeniz gerekir:
+5. Cihaz IP 'sini, cihazın yerel Web Kullanıcı arabiriminde **ağ** sayfanızda atamış olursunuz. Bu IP 'yi şu şekilde ekleyin:
 
     - İstemci üzerindeki konak dosyası veya,
     - DNS sunucusu yapılandırması
@@ -117,11 +117,11 @@ Azure CLı ve Python kullanarak Azure Stack Edge Pro cihazınızda bir VM oluşt
 
 ### <a name="verify-profile-and-install-azure-cli"></a>Profili doğrulama ve Azure CLı 'yı yüklemeyi
 
-<!--1. Verify the API profile of the client and identify which version of the modules and libraries to include on your client. In this example, the client system will be running Azure Stack 1904 or later. For more information, see [Azure Resource Manager API profiles](/azure-stack/user/azure-stack-version-profiles?view=azs-1908#azure-resource-manager-api-profiles).-->
+<!--1. Verify the API profile of the client and identify which version of the modules and libraries to include on your client. In this example, the client system will be running Azure Stack 1904 or later. For more information, see [Azure Resource Manager API profiles](/azure-stack/user/azure-stack-version-profiles?view=azs-1908&preserve-view=true#azure-resource-manager-api-profiles).-->
 
 1. Azure CLı 'yi istemcinizi ' ne yüklersiniz. Bu örnekte, Azure CLı 2.0.80 yüklendi. Azure CLı sürümünü doğrulamak için `az --version` komutunu çalıştırın.
 
-    Yukarıdaki komutun örnek bir çıktısı aşağıda verilmiştir:
+    Yukarıdaki komutun örnek çıktısı aşağıda verilmiştir:
 
     ```output
     PS C:\windows\system32> az --version
@@ -149,7 +149,7 @@ Azure CLı ve Python kullanarak Azure Stack Edge Pro cihazınızda bir VM oluşt
 
     Azure CLı yoksa, [Windows 'Da Azure CLI](/cli/azure/install-azure-cli-windows)Indirin ve yükleyin. Windows komut istemi 'ni veya Windows PowerShell 'i kullanarak Azure CLı 'yı çalıştırabilirsiniz.
 
-2. CLı 'nın Python konumunu bir yere unutmayın. Azure CLı için güvenilen kök sertifika deposunun konumunu belirlemeniz gerekir.
+2. CLı 'nın Python konumunu bir yere unutmayın. Azure CLı için güvenilen kök sertifika deposunun konumunu öğrenmek için Python konumuna ihtiyacınız vardır.
 
 3. Bu makalede kullanılan örnek betiği çalıştırmak için, aşağıdaki Python kitaplık sürümlerine ihtiyacınız olacaktır:
 
@@ -266,7 +266,7 @@ Azure CLı ve Python kullanarak Azure Stack Edge Pro cihazınızda bir VM oluşt
     $ENV:ADAL_PYTHON_SSL_NO_VERIFY = 1
     ```
 
-2. Azure Resource Manager uç noktası için ortam değişkenlerini, kaynakların oluşturulduğu konumu ve kaynak VHD 'nin bulunduğu yolu ayarlayın. Kaynakların konumu tüm Azure Stack Edge Pro cihazlarında düzeltilir ve olarak ayarlanır `dbelocal` . Ayrıca adres öneklerini ve özel IP adresini belirtmeniz gerekir. Aşağıdaki ortam değişkenlerinin tümü, özel durumu olan değerleriniz temel alınarak değerlerdir `AZURE_RESOURCE_LOCATION` `"dbelocal"` .
+2. Azure Resource Manager uç noktası için ortam değişkenlerini, kaynakların oluşturulduğu konumu ve kaynak VHD 'nin bulunduğu yolu ayarlayın. Kaynakların konumu tüm Azure Stack Edge Pro cihazlarında düzeltilir ve olarak ayarlanır `dbelocal` . Ayrıca adres öneklerini ve özel IP adresini belirtmeniz gerekir. Aşağıdaki ortam değişkenlerinin tümü, için sabit değer olarak kodlanmalıdır; hariç değerleriniz temel alınarak değerlerdir `AZURE_RESOURCE_LOCATION` `"dbelocal"` .
 
     ```powershell
     $ENV:ARM_ENDPOINT = "https://management.team3device.teatraining1.com"
@@ -319,7 +319,7 @@ Azure CLı ve Python kullanarak Azure Stack Edge Pro cihazınızda bir VM oluşt
     ```powershell
     PS C:\Certificates> az login -u EdgeARMuser
     ```
-   Login komutunu kullandıktan sonra parola girmeniz istenir. Azure Resource Manager parolayı girin.
+   Login komutunu kullandıktan sonra sizden parola istenir. Azure Resource Manager parolayı girin.
 
    Aşağıda, parola alındıktan sonra başarılı bir oturum açma için örnek çıktı gösterilmektedir:  
    
@@ -342,7 +342,7 @@ Azure CLı ve Python kullanarak Azure Stack Edge Pro cihazınızda bir VM oluşt
    ]
    PS C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2>
    ```
-   `id` `tenantId` Azure Resource Manager abonelik kimliğiniz ve Azure Resource Manager kiracı kimliğinizi sırasıyla ve sonraki adımda kullanılacak şekilde, ve değerlerini bir yere iade edin.
+   `id` `tenantId` Bu değerler, sırasıyla Azure Resource Manager abonelik kimliğiniz ve Azure Resource Manager kiracı Kimliğiniz için karşılık gelen ve değerlerini bir yere iade edin ve sonraki adımda kullanılacaktır.
        
    Aşağıdaki ortam değişkenlerinin *hizmet sorumlusu* olarak çalışacak şekilde ayarlanması gerekir:
 

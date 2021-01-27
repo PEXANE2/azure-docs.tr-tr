@@ -10,12 +10,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 07/01/2019
-ms.openlocfilehash: 0542d7e0ea204d1e9279e89c9f36b9bc6c6c88fa
-ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
+ms.openlocfilehash: c34410fcb5e1992f8b7a358801a354a1e1cf190c
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98165867"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98808016"
 ---
 # <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>Azure SQL veritabanı trafiğini daha yeni ağ geçitlerine geçirme
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -27,6 +27,13 @@ Müşteriler, e-posta ile ve her bölgede kullanılabilir olan ağ geçitlerinde
 ## <a name="status-updates"></a>Durum güncelleştirmeleri
 
 # <a name="in-progress"></a>[Sürüyor](#tab/in-progress-ip)
+## <a name="february-2021"></a>Şubat 2021
+Yeni SQL ağ geçitleri aşağıdaki bölgelere ekleniyor:
+
+- Orta ABD: 13.89.169.20
+
+Bu SQL ağ geçitleri, 28 Şubat 2021 ' de müşteri trafiğini kabul etmeye başlar.
+
 ## <a name="january-2021"></a>Ocak 2021
 Yeni SQL ağ geçitleri aşağıdaki bölgelere ekleniyor:
 
@@ -41,7 +48,7 @@ Yeni SQL ağ geçitleri aşağıdaki bölgelere ekleniyor:
 - Kore Orta: 52.231.17.22, 52.231.17.23
 - Hindistan Batı: 104.211.144.4
 
-Bu SQL ağ geçitleri, 31 Ocak 2021 tarihinde müşteri trafiğini kabul etmeye başlayacaktır
+Bu SQL ağ geçitleri, 31 Ocak 2021 tarihinde müşteri trafiğini kabul etmeye başlar.
 
 # <a name="completed"></a>[Tamamlandı](#tab/completed-ip)
 Aşağıdaki ağ geçidi geçişleri tamamlanmıştır: 
@@ -101,7 +108,7 @@ Yeni SQL ağ geçitleri aşağıdaki bölgelere ekleniyor:
 Bu SQL ağ geçitleri, 10 Ağustos 2020 ' de müşteri trafiğini kabul etmeye başlar. 
 
 ### <a name="october-2019"></a>Ekim 2019
-- Brezilya Güney
+- Güney Brezilya
 - Batı ABD
 - West Europe
 - Doğu ABD

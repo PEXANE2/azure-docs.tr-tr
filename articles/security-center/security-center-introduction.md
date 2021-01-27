@@ -12,14 +12,14 @@ ms.topic: overview
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/24/2021
+ms.date: 01/26/2021
 ms.author: memildin
-ms.openlocfilehash: 3ed290cc35195dfb02db9fbb72f092f6f4688291
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 9f39988375f58f75dad2b623cd3d937022a072e7
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98757314"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98806194"
 ---
 # <a name="what-is-azure-security-center"></a>Azure Güvenlik Merkezi nedir?
 
@@ -105,9 +105,8 @@ Güvenlik Merkezi 'nin tehdit koruması, bir saldırı kampanyasının tam hikay
 
 ### <a name="integration-with-microsoft-defender-for-endpoint"></a>Uç nokta için Microsoft Defender ile tümleştirme
 
-Güvenlik Merkezi, uç nokta için Microsoft Defender ile otomatik, yerel tümleştirme içerir. Bu, herhangi bir yapılandırma olmadan Windows ve Linux makinelerinizin Güvenlik Merkezi 'nin önerileriyle ve değerlendirmelerinden tamamen tümleştirileceği anlamına gelir.
+Sunucular için Azure Defender, uç nokta için Microsoft Defender ile otomatik, yerel tümleştirme içerir. Daha fazla bilgi edinin, [Güvenlik Merkezi 'nin tümleşik EDR çözümü ile uç noktalarınızı koruyun: Endpoint Için Microsoft Defender](security-center-wdatp.md)
 
-Ayrıca, Güvenlik Merkezi, sunucu ortamlarında uygulama denetim ilkelerini otomatikleştirmenize imkan tanır. Güvenlik Merkezi 'ndeki Uyarlamalı uygulama denetimleri, Windows sunucularınız genelinde uçtan uca uygulama onayı listesini etkinleştirir. Kurallar oluşturmanız ve ihlalleri denetlemeniz gerekmez, bu işlem sizin için otomatik olarak yapılır.
 
 ### <a name="protect-paas"></a>PaaS 'yi koruma
 

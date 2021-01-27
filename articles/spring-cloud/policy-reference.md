@@ -1,18 +1,18 @@
 ---
 title: Azure yay bulutu için yerleşik ilke tanımları
 description: Azure yayı bulutu için Azure Ilkesi yerleşik ilke tanımlarını listeler. Bu yerleşik ilke tanımları, Azure kaynaklarınızı yönetmek için yaygın yaklaşımlar sağlar.
-ms.date: 01/21/2021
+ms.date: 01/25/2021
 ms.topic: reference
 author: bmitchell287
 ms.author: brendm
 ms.service: spring-cloud
 ms.custom: subject-policy-reference, devx-track-java
-ms.openlocfilehash: a5e9db12440fe274ece40d3ea3a166ec098ae982
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: d96d995f98dcef12539da6a420d7e6eff5950df3
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98702437"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98806267"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-spring-cloud"></a>Azure Ilkbahar bulutu için Azure Ilkesi yerleşik tanımları
 

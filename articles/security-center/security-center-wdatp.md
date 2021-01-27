@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/20/2020
 ms.author: memildin
-ms.openlocfilehash: 9fde0ecd8b6670e43aa3970b2df27a402b9c1a5c
-ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
+ms.openlocfilehash: 4b8141d99d654705450a14767b04ae6265766af9
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98747249"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98807092"
 ---
 # <a name="protect-your-endpoints-with-security-centers-integrated-edr-solution-microsoft-defender-for-endpoint"></a>Güvenlik Merkezi 'nin tümleşik EDR çözümü ile uç noktalarınızı koruyun: uç nokta için Microsoft Defender
 
@@ -43,7 +43,8 @@ Uç nokta için Microsoft Defender, bütünsel, bulut tarafından sunulan bir u�
 | Yayın durumu:                  | Genel olarak kullanılabilir (GA)                                                                                                                                                                                                                                                                                      |
 | Fiyat                        | [Sunucular Için Azure Defender](security-center-pricing.md) gerekir                                                                                                                                                                                                                                             |
 | Desteklenen platformlar:            | Windows çalıştıran Azure makineleri<br>Windows çalıştıran Azure Arc makineleri|
-| Desteklenen Windows sürümleri:  |  • Güvenlik Merkezi Windows Server 2016, 2012 R2 ve 2008 R2 SP1 'de algılamayı destekler<br> • Bu tümleştirmeyi kullanan sunucu uç noktası izleme Office 365 GCC müşterileri için devre dışı bırakılmıştır<br> • Windows Server 2019, Windows 10 1703 (ve daha yeni) veya Linux desteği yoktur|
+| Desteklenen Windows sürümleri:  |  • Güvenlik Merkezi Windows Server 2016, 2012 R2 ve 2008 R2 SP1 'de algılamayı destekler<br> • Bu tümleştirmeyi kullanan sunucu uç noktası izleme Office 365 GCC müşterileri için devre dışı bırakılmıştır|
+| Desteklenmeyen işletim sistemleri:  |  • Windows Server 2019<br> • Windows 10<br> • Linux|
 | Gerekli roller ve izinler: | Tümleştirmeyi etkinleştirmek/devre dışı bırakmak için: **Güvenlik Yöneticisi** veya **sahibi**<br>Güvenlik Merkezi 'nde MDADTP uyarılarını görüntülemek için: **güvenlik okuyucu**, **okuyucu**, **kaynak grubu katılımcısı**, **kaynak grubu sahibi**, **Güvenlik Yöneticisi**, **abonelik sahibi** veya **abonelik katılımcısı**|
 | Larının                         | ![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![Hayır](./media/icons/no-icon.png) Çin gov, diğer gov<br>![Hayır](./media/icons/no-icon.png) Küresel Azure bulutlarında iş yüklerini çalıştıran GCC müşterileri                                                        |
 |                                 |                                                                                                                                                                                                                                                                                                               |
@@ -105,7 +106,7 @@ Konumu yapılandırdıktan sonra değiştiremezsiniz. Uç nokta için Microsoft 
 Uç nokta sınama uyarısı için bir zararsız Microsoft Defender oluşturmak için:
 
 1. ' C:\Test-mbatp-test ' klasörünü oluşturun.
-1. Uzak Masaüstü 'Nü kullanarak bir Windows Server 2012 R2 VM 'sine veya Windows Server 2016 sanal makinesine erişin.
+1. Makinenize erişmek için Uzak Masaüstü 'Nü kullanın.
 1. Komut satırı penceresi açın.
 1. Komut isteminde aşağıdaki komutu kopyalayın ve çalıştırın. Komut Istemi penceresi otomatik olarak kapatılacak.
 

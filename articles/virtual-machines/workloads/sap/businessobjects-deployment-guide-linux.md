@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/05/2020
 ms.author: depadia
-ms.openlocfilehash: da04e7704274336f7f92237c1d7c30459caa7bc8
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: a7361dafce30b07e76d971bdcda41cf4b3cd9e6e
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936490"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98806163"
 ---
 # <a name="sap-businessobjects-bi-platform-deployment-guide-for-linux-on-azure"></a>Azure’da Linux için SAP BusinessObjects İş Zekası platformu dağıtım kılavuzu
 
@@ -555,7 +555,7 @@ Aşağıdaki bölümde, SAP BOBI platformunda her bir bileşen için yedekleme v
 
 Azure 'da, uygulama sunucularını ve tüm eklenen diskleri yedeklemenin en kolay yolu [Azure Backup](../../../backup/backup-overview.md) hizmetini kullanmaktır. Sanal makinelerinizdeki verilerin istenmeden bozmasını korumak için bağımsız ve yalıtılmış yedeklemeler sağlar. Yedekler, yerleşik kurtarma noktası yönetim özelliklerine sahip Kurtarma Hizmetleri kasasında depolanır. Yapılandırma ve ölçekleme basittir, yedeklemeler en iyi duruma getirilir ve gerektiğinde kolayca geri yüklenebilir.
 
-Yedekleme işleminin bir parçası olarak, anlık görüntü alınır ve veriler, üretim iş yükleri üzerinde hiçbir etkilenmeden kurtarma hizmeti kasasına aktarılır. Anlık görüntü, [anlık görüntü tutarlılığı](../../../backup/backup-azure-vms-introduction.md#snapshot-consistency) makalesinde açıklandığı gibi farklı düzeyde tutarlılık sağlar. Ayrıca, seçmeli diskler Yedekleme ve geri yükleme işlevini kullanarak VM 'deki veri disklerinin alt kümesini yedeklemeyi seçebilirsiniz. Daha fazla bilgi için bkz. [Azure VM yedekleme](../../../backup/backup-azure-vms-introduction.md) belgesi ve [SSS-Azure VM 'leri yedekleme](../../../backup/backup-azure-vm-backup-faq.md).
+Yedekleme işleminin bir parçası olarak, anlık görüntü alınır ve veriler, üretim iş yükleri üzerinde hiçbir etkilenmeden kurtarma hizmeti kasasına aktarılır. Anlık görüntü, [anlık görüntü tutarlılığı](../../../backup/backup-azure-vms-introduction.md#snapshot-consistency) makalesinde açıklandığı gibi farklı düzeyde tutarlılık sağlar. Ayrıca, seçmeli diskler Yedekleme ve geri yükleme işlevini kullanarak VM 'deki veri disklerinin alt kümesini yedeklemeyi seçebilirsiniz. Daha fazla bilgi için bkz. [Azure VM yedekleme](../../../backup/backup-azure-vms-introduction.md) belgesi ve [SSS-Azure VM 'leri yedekleme](../../../backup/backup-azure-vm-backup-faq.yml).
 
 #### <a name="backup--restore-for-file-repository-server"></a>Dosya deposu sunucusu için yedekleme & geri yükleme
 
