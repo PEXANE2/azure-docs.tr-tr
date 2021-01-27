@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 10/02/2020
-ms.openlocfilehash: 36781e7f975ee9d4a03cf899650701bf2d3940ac
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: b3503dead21eeca32d82e896f889b99d11435642
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98555959"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879739"
 ---
 # <a name="register-and-scan-an-azure-sql-database"></a>Azure SQL veritabanını kaydetme ve tarama
 
@@ -30,7 +30,7 @@ Azure SQL veritabanı veri kaynağı aşağıdaki işlevleri destekler:
 
 Azure purview, Azure SQL veritabanı 'nda [görünümlerin](/sql/relational-databases/views/views?view=azuresqldb-current&preserve-view=true) taranmasını desteklemez.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 1. Henüz bir tane yoksa yeni bir purview hesabı oluşturun.
 
@@ -39,7 +39,7 @@ Azure purview, Azure SQL veritabanı 'nda [görünümlerin](/sql/relational-data
 
 ### <a name="set-up-authentication-for-a-scan"></a>Tarama için kimlik doğrulamasını ayarlama
 
-Azure SQL veritabanı 'nı taramak için kimlik doğrulaması. Yeni kimlik doğrulaması oluşturmanız gerekiyorsa, [SQL veritabanı 'na veritabanı erişimini yetkilendirmeniz](https://docs.microsoft.com/azure/azure-sql/database/logins-create-manage)gerekir. Takiview 'un günümüzde desteklediği üç kimlik doğrulama yöntemi vardır:
+Azure SQL veritabanı 'nı taramak için kimlik doğrulaması. Yeni kimlik doğrulaması oluşturmanız gerekiyorsa, [SQL veritabanı 'na veritabanı erişimini yetkilendirmeniz](../azure-sql/database/logins-create-manage.md)gerekir. Takiview 'un günümüzde desteklediği üç kimlik doğrulama yöntemi vardır:
 
 - SQL kimlik doğrulaması
 - Hizmet Sorumlusu
@@ -88,8 +88,8 @@ Hizmet sorumlusu kullanmak için mevcut bir tane kullanabilir veya yeni bir tane
 
 Hizmet sorumlusu veya yönetilen kimliğin veritabanı, şemalar ve tablolar için meta verileri almak için izni olmalıdır. Ayrıca sınıflandırmanın örneklemesine yönelik tabloları sorgulayabilmelidir.
 
-- [Azure SQL ile Azure AD kimlik doğrulamasını yapılandırma ve yönetme](https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-configure)
-- Yönetilen kimlik kullanıyorsanız, purview hesabınızın kendi yönetilen kimliği vardır ve bu, temel olarak sizin oluşturduğunuz zaman sizin oluşturduğunuz bir addır. Azure SQL veritabanı ['nda hizmet sorumlusu kullanıcısı oluşturma](https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-service-principal-tutorial#create-the-service-principal-user-in-azure-sql-database)öğreticisini IZLEYEREK Azure SQL veritabanı 'Nda BIR Azure AD kullanıcısını tam olarak takip ettiğiniz yönetilen kimlik veya kendi hizmet sorumlusu ile oluşturmanız gerekir. Kimliğe doğru izinleri (örn. `db_owner` veya) atamanız gerekir `db_datareader` . Kullanıcı oluşturmak ve izin vermek için örnek SQL söz dizimi:
+- [Azure SQL ile Azure AD kimlik doğrulamasını yapılandırma ve yönetme](../azure-sql/database/authentication-aad-configure.md)
+- Yönetilen kimlik kullanıyorsanız, purview hesabınızın kendi yönetilen kimliği vardır ve bu, temel olarak sizin oluşturduğunuz zaman sizin oluşturduğunuz bir addır. Azure SQL veritabanı ['nda hizmet sorumlusu kullanıcısı oluşturma](../azure-sql/database/authentication-aad-service-principal-tutorial.md#create-the-service-principal-user-in-azure-sql-database)öğreticisini IZLEYEREK Azure SQL veritabanı 'Nda BIR Azure AD kullanıcısını tam olarak takip ettiğiniz yönetilen kimlik veya kendi hizmet sorumlusu ile oluşturmanız gerekir. Kimliğe doğru izinleri (örn. `db_owner` veya) atamanız gerekir `db_datareader` . Kullanıcı oluşturmak ve izin vermek için örnek SQL söz dizimi:
 
     ```sql
     CREATE USER [Username] FROM EXTERNAL PROVIDER

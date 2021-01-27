@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: f872159e538dc85121a7a6d4d6503fd18a263628
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b851e52141cf93aba4aab9b2768658f0aac4660f
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87543053"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879924"
 ---
 # <a name="frequently-asked-questions"></a>Sık sorulan sorular
 Sorularınız mı var? Daha fazla bilgi için aşağıdaki SSS bölümüne bakın.
@@ -82,7 +82,7 @@ Ancak, Azure DevOps, bu görevler yapıtları yayımladığınızda, yayın işl
 
 ### <a name="from-where-do-the-build-tasks-download-the-tools"></a>Derleme görevleri nereden araçlar indirir?
 
-Yapı görevleri, araçların NuGet paketlerini [Azure DevOps paket yönetimi akışından](https://securitytools.pkgs.visualstudio.com/_packaging/SecureDevelopmentTools/nuget/v3/index.json)indirebilir. Yapı görevleri, derleme aracısında önceden yüklenmiş olması gereken düğüm paket yöneticisini da kullanabilir. Bu tür bir yüklemeye örnek **NPM Install tslint**komutu vardır.
+Yapı görevleri, araçların NuGet paketlerini [Azure DevOps paket yönetimi akışından](https://securitytools.pkgs.visualstudio.com/_packaging/SecureDevelopmentTools/nuget/v3/index.json)indirebilir. Yapı görevleri, derleme aracısında önceden yüklenmiş olması gereken düğüm paket yöneticisini da kullanabilir. Bu tür bir yüklemeye örnek **NPM Install tslint** komutu vardır.
 
 ### <a name="what-effect-does-installing-the-extension-have-on-my-azure-devops-organization"></a>Uzantıyı yükleyen efekt, Azure DevOps kuruluşuma sahip mi? 
 
@@ -163,7 +163,7 @@ Aşağıdaki kaynaklar, gizli dizileri güvenli bir şekilde yönetmenize ve uyg
  - [Azure AD Yönetilen Hizmet Kimliği (MSI)](https://azure.microsoft.com/blog/keep-credentials-out-of-code-introducing-azure-ad-managed-service-identity/)
  - [Azure kaynakları için yönetilen kimlikler](../../active-directory/managed-identities-azure-resources/overview.md)
  - [Azure App Service ve Azure Işlevlerinde Yönetilen kimlikler](../../app-service/overview-managed-identity.md)
- - [AppAuthentication kitaplığı](../../key-vault/general/service-to-service-authentication.md)
+ - [AppAuthentication kitaplığı](/dotnet/api/overview/azure/service-to-service-authentication)
 
 
 Daha fazla bilgi için bkz. Web günlüğü gönderisi, [bulutta gizli dizileri güvenli bir şekilde yönetme](https://devblogs.microsoft.com/visualstudio/managing-secrets-securely-in-the-cloud/).
@@ -200,13 +200,13 @@ Tam hata iletisi:
 
 Roslyn, görevleri derlemenin bir parçası olarak çalıştırır, derleme makinesindeki kaynak ağacının oluşturulabilir bir durumda olması gerekir.
 
-Ana derleme ve Roslyn Çözümleyicileri adımları arasındaki bir adım, kaynak ağacını derlemeyi engelleyen bir duruma koymalarından kaynaklanabilir. Bu ek adım büyük olasılıkla ** yayımdotnet.exe**. Yalnızca Roslyn Çözümleyicileri adımından önce NuGet geri yüklemesi yapan adımı çoğaltma işlemini deneyin. Bu yinelenen adım, kaynak ağacını oluşturulabilir bir duruma geri yerleştirebilir.
+Ana derleme ve Roslyn Çözümleyicileri adımları arasındaki bir adım, kaynak ağacını derlemeyi engelleyen bir duruma koymalarından kaynaklanabilir. Bu ek adım büyük olasılıkla **yayımdotnet.exe**. Yalnızca Roslyn Çözümleyicileri adımından önce NuGet geri yüklemesi yapan adımı çoğaltma işlemini deneyin. Bu yinelenen adım, kaynak ağacını oluşturulabilir bir duruma geri yerleştirebilir.
 
 ##### <a name="cscexe-cant-create-an-analyzer-instance"></a>csc.exe, bir çözümleyici örneği oluşturamaz
 
 Tam hata iletisi:
 
-"' csc.exe ', hata kodu 1 ile çıkış yaptı--C: bbbb. dll dosyasından bir çözümleyici *aaaa* örneği oluşturulamıyor \\ *BBBB*: dosya veya ' Microsoft. CodeAnalysis, Version =*X.* x. x. x, Culture = neutral, PublicKeyToken = 31bf3856ad364e35 ' veya bağımlılıklarından biri yüklenemedi. Sistem belirtilen dosyayı bulamıyor. "
+"' csc.exe ', hata kodu 1 ile çıkış yaptı--C: bbbb. dll dosyasından bir çözümleyici *aaaa* örneği oluşturulamıyor \\ : dosya veya ' Microsoft. CodeAnalysis, Version =*X.* x. x. x, Culture = neutral, PublicKeyToken = 31bf3856ad364e35 ' veya bağımlılıklarından biri yüklenemedi. Sistem belirtilen dosyayı bulamıyor. "
 
 Derleyicisinin Roslyn çözümleyicilerinin desteklediğinden emin olun. **csc.exe/Version** komutunu çalıştırmak, 2,6 veya üzeri bir sürüm değeri bildirmelidir.
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/17/2021
 ms.author: yelevin
-ms.openlocfilehash: d323af2695a41e685e722c98603cf5df09866a15
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.openlocfilehash: 152fee2e4e72cee6a7bc1c768c0a8ca7b031ec39
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98568006"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878927"
 ---
 # <a name="connect-your-salesforce-service-cloud-to-azure-sentinel"></a>Salesforce hizmeti bulutunuzu Azure Sentinel 'e bağlama
 
@@ -31,13 +31,13 @@ Bu makalede Salesforce hizmeti bulut çözümünüzün Azure Sentinel 'e nasıl 
 > [!NOTE]
 > Veriler, Azure Sentinel çalıştırdığınız çalışma alanının coğrafi konumunda depolanır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure Sentinel çalışma alanında okuma ve yazma izninizin olması gerekir.
 
 - Çalışma alanı için paylaşılan anahtarlar için okuma izninizin olması gerekir. [Çalışma alanı anahtarları hakkında daha fazla bilgi edinin](../azure-monitor/platform/log-analytics-agent.md#workspace-id-and-key).
 
-- İşlev Uygulaması oluşturmak için Azure Işlevleri üzerinde okuma ve yazma izinlerine sahip olmanız gerekir. [Azure işlevleri hakkında daha fazla bilgi edinin](/azure/azure-functions/).
+- İşlev Uygulaması oluşturmak için Azure Işlevleri üzerinde okuma ve yazma izinlerine sahip olmanız gerekir. [Azure işlevleri hakkında daha fazla bilgi edinin](../azure-functions/index.yml).
 
 - Şu Salesforce REST API kimlik bilgilerine sahip olmanız gerekir: **SALESFORCE API Kullanıcı adı**, **Salesforce API parolası**, **Salesforce güvenlik belirteci**, **Salesforce tüketici anahtarı**, **Salesforce tüketici parolası**. [Salesforce REST API hakkında daha fazla bilgi edinin](https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/quickstart.htm).
 

@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 09/28/2020
 ms.custom: designer
-ms.openlocfilehash: 2e46da1657a7473d3ff8cdf4ac43e5341b143455
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.openlocfilehash: 46098b2b7ebbf219a3c17b4fa40e1fd52344f683
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/28/2020
-ms.locfileid: "97796117"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879805"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer"></a>Öğretici: Tasarımcıyla otomobil fiyatını tahmin etme
 
@@ -103,7 +103,7 @@ Her modülün varsayılan olarak aynı işlem hedefini kullanmasını söyleyece
 
 Kullanacağınız veri kümesini anlamak için verileri görselleştirebilirsiniz.
 
-1. **Otomobil fiyat verileri (ham)** öğesine sağ tıklayın ve **Görselleştir**' i seçin.
+1. **Otomobil fiyat verilerine (ham)** sağ tıklayın ve   >  **veri kümesi çıkışını** Görselleştir ' i seçin.
 
 1. Her biri hakkındaki bilgileri görüntülemek için veri penceresinde farklı sütunları seçin.
 
@@ -168,7 +168,7 @@ Bir modeli eğitedığınızda, eksik olan veriler hakkında bir şey yapmanız 
 
 1. Görüntülenen **sütunlar** penceresinde, **Ekle**' nin yanındaki açılan menüyü genişletin. Seç, **tüm sütunlar**
 
-1. **Kaydet**'i seçin
+1. **Kaydet**’i seçin
 
 1. Tuvalin sağ tarafındaki modül ayrıntıları bölmesinde, **temizleme modu**' nun altındaki **tüm satırı Kaldır** ' ı seçin.
 
@@ -284,7 +284,7 @@ Modelinizin test veri kümesini ne kadar iyi puanlaleceğini değerlendirmek iç
 
 Çalıştırma tamamlandıktan sonra, işlem hattı çalıştırmasının sonuçlarını görüntüleyebilirsiniz. İlk olarak, regresyon modeli tarafından oluşturulan tahmine göz atın.
 
-1. **Puan modeli** modülüne sağ tıklayın ve çıktısını görüntülemek Için **Görselleştir** ' i seçin.
+1. **Puan modeli** modülüne sağ tıklayın ve   >  çıktısını görüntülemek için **puanlanmış veri kümesini** Görselleştir ' i seçin.
 
     Burada, tahmin edilen fiyatları ve test verilerinin gerçek fiyatlarını görebilirsiniz.
 
@@ -294,7 +294,7 @@ Modelinizin test veri kümesini ne kadar iyi puanlaleceğini değerlendirmek iç
 
 Eğitim modelinin test veri kümesinde ne kadar iyi gerçekleştirildiğini görmek için **modeli değerlendir** ' i kullanın.
 
-1. **Modeli değerlendir** modülünü sağ tıklatın ve çıktısını görüntülemek Için **Görselleştir** ' i seçin.
+1. **Modeli değerlendir** modülünü sağ tıklatın ve   >  çıktısını görüntülemek için **değerlendirme sonuçlarını** Görselleştir ' i seçin.
 
 Modeliniz için aşağıdaki istatistikler gösterilmektedir:
 

@@ -8,12 +8,12 @@ ms.date: 12/11/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 382adb36712fbf4bee83044c8b2d096223eb6269
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 20da05399eed4cb9c5a4b69a82b0b1e799997751
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97630046"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880127"
 ---
 # <a name="download-blobs-from-azure-blob-storage-by-using-azcopy-v10"></a>AzCopy ile v10 arasındaki kullanarak blob 'ları Azure Blob depolamadan indirin
 
@@ -131,7 +131,7 @@ Ayrıntılı başvuru için bkz. [AzCopy kopyası](storage-ref-azcopy-copy.md) b
 
 [BLOB sürüm oluşturmayı](../blobs/versioning-enable.md)etkinleştirdiyseniz, bir Blobun bir veya daha fazla önceki sürümünü indirebilirsiniz. 
 
-İlk olarak, [Sürüm kimliklerinin](../blobs/versioning-overview.md)bir listesini içeren bir metin dosyası oluşturun. Her sürüm KIMLIĞI ayrı bir satırda görünmelidir. Örnek: 
+İlk olarak, [Sürüm kimliklerinin](../blobs/versioning-overview.md)bir listesini içeren bir metin dosyası oluşturun. Her sürüm KIMLIĞI ayrı bir satırda görünmelidir. Örneğin: 
 
 ```
 2020-08-17T05:50:34.2199403Z
@@ -143,7 +143,7 @@ Sonra, seçeneğiyle [AzCopy kopyalama](storage-ref-azcopy-copy.md) komutunu kul
 
 #### <a name="download-a-blob-snapshot"></a>Blob anlık görüntüsü indirin
 
-Blob anlık görüntüsünün **Tarih saat** değerine başvurarak bir [BLOB anlık görüntüsü](/azure/storage/blobs/snapshots-overview) indirebilirsiniz. 
+Blob anlık görüntüsünün **Tarih saat** değerine başvurarak bir [BLOB anlık görüntüsü](../blobs/snapshots-overview.md) indirebilirsiniz. 
 
 |    |     |
 |--------|-----------|

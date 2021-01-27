@@ -1,5 +1,5 @@
 ---
-title: Content Protection senaryo tabanlı geçiş kılavuzu | Microsoft Docs
+title: Content Protection senaryo tabanlı geçiş kılavuzu
 description: Bu makale size, en az Azure Media Services V2 'den v3 'e geçiş konusunda size yardımcı olacak içerik koruma senaryosu tabanlı kılavuzluk sağlar.
 services: media-services
 author: IngridAtMicrosoft
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: media
 ms.date: 1/14/2020
 ms.author: inhenkel
-ms.openlocfilehash: a546120a93f311be29083d5f23d4716316bf64f4
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: d1e8c8d1f7f710acff75fa1d78aab68df03c954d
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98690504"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98898299"
 ---
 # <a name="content-protection-scenario-based-migration-guidance"></a>Content Protection senaryo tabanlı geçiş kılavuzu
 

@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 11/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: da136c1f3ce36bf85592c3c73c9e8f92c41c7442
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: ea274914ac70540d5763884bbd01e41e349a530d
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97357917"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879839"
 ---
 # <a name="change-the-license-model-for-a-sql-virtual-machine-in-azure"></a>Azure'da SQL sanal makinesi için lisans modelini değiştirme
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -37,7 +37,7 @@ SQL Server barındıran bir Azure VM için üç lisans modeli vardır: Kullandı
 
 Azure Hibrit Avantajı, Azure sanal makinelerinde yazılım güvencesi ("nitelikli lisans") ile SQL Server lisansların kullanılmasına izin verir. Azure Hibrit Avantajı, müşteriler bir sanal makinede SQL Server Lisansı kullanımı için ücretlendirilmez. Ancak yine de temel alınan bulut işlem maliyeti (yani, taban fiyat), depolama ve yedeklemeler için ücret ödemelidir. Ayrıca, Hizmetleri kullanımıyla ilişkili g/ç için de ödeme yapılmalıdır (geçerli olduğu gibi).
 
-Microsoft Ürün koşullarına göre: "müşteriler Azure 'da iş yüklerini yapılandırırken SQL Server Azure hibrit avantajı altındaki Azure SQL veritabanı (yönetilen örnek, Elastik Havuz ve Tek Veritabanı), Azure Data Factory, SQL Server Integration Services veya SQL Server sanal makineler kullandığını göstermelidir."
+Microsoft [Ürün koşullarına](https://www.microsoft.com/licensing/terms/productoffering/MicrosoftAzureServices/EAEAS)göre: "müşteriler Azure 'da iş yüklerini yapılandırırken SQL Server Azure hibrit avantajı altındakı Azure SQL veritabanı (yönetilen örnek, Elastik Havuz ve tek veritabanı), Azure Data Factory, SQL Server Integration Services veya SQL Server sanal makineler kullandığını göstermelidir."
 
 Azure VM 'de SQL Server Azure Hibrit Avantajı kullanımını ve uyumlu olduğunu göstermek için üç seçeneğiniz vardır:
 
@@ -58,7 +58,7 @@ SQL Server VM lisanslama modelinin değiştirilmesi aşağıdaki gereksinimlere 
 
 ## <a name="change-license-model"></a>Lisans modelini değiştirme
 
-# <a name="azure-portal"></a>[Azure Portal](#tab/azure-portal)
+# <a name="azure-portal"></a>[Azure portalı](#tab/azure-portal)
 
 [!INCLUDE [windows-virtual-machines-sql-use-new-management-blade](../../../../includes/windows-virtual-machines-sql-new-resource.md)]
 

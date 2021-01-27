@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 7721100d902948364c9e4b1373f1fa805c680a50
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 619f2c2670d8e376ad0bca7cf8b93b971be067a0
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202224"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880734"
 ---
 # <a name="security-control-v2-privileged-access"></a>Güvenlik denetimi v2: ayrıcalıklı erişim
 
@@ -159,7 +159,7 @@ Güvenli, yalıtılmış iş istasyonları Yöneticiler, geliştiriciler ve krit
 
 - [Ayrıcalıklı erişim iş istasyonlarını anlama](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
-- [Ayrıcalıklı erişim iş istasyonu dağıtma](../../active-directory/devices/howto-azure-managed-workstation.md)
+- [Ayrıcalıklı erişim iş istasyonu dağıtma](/security/compass/privileged-access-deployment)
 
 **Sorumluluk**: Müşteri
 
@@ -217,4 +217,3 @@ Microsoft 'un müşteri verilerine erişmesi gereken destek senaryolarında, Mü
 - [Güvenlik Uyumluluk Yönetimi](/azure/cloud-adoption-framework/organize/cloud-security-compliance-management) 
 
 - [Kimlik ve anahtar yönetimi](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys)
-

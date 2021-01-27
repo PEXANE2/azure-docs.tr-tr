@@ -1,5 +1,5 @@
 ---
-title: Media Services V2-V3 geçiş denetim listesi | Microsoft Docs
+title: Media Services V2-V3 geçiş denetim listesi
 description: Bu makale, Azure Media Services V2 'den v3 'e geçiş yapmak için en az bir denetim listesi sağlar.
 services: media-services
 author: IngridAtMicrosoft
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 1/14/2021
 ms.author: inhenkel
-ms.openlocfilehash: 7d9597c16778a4ded7c1e2a7ed3ad5535b75cfde
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: bd1488a1e89bb7d5c8a3a2dedda60bd5a226e02e
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98690481"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98898265"
 ---
 # <a name="step-3---set-up-to-migrate-to-the-v3-rest-api-or-client-sdk"></a>3. adım-v3 REST API veya istemci SDK 'sına geçirilecek şekilde ayarlama
 

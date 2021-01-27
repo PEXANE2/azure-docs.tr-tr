@@ -2,18 +2,18 @@
 title: Azure portal hesap oluşturma
 description: Büyük ölçekli paralel iş yükleri bulutta çalıştırmak için Azure portalda bir Azure Batch hesabı oluşturmayı öğrenin
 ms.topic: how-to
-ms.date: 06/10/2020
+ms.date: 01/26/2021
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1205de2b800588b735aeb20d388ba4b64bc6b078
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 943fd145dbd4964e0d43d91f726ea5a79fda59de
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84711349"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896015"
 ---
 # <a name="create-a-batch-account-with-the-azure-portal"></a>Azure portalıyla Batch hesabı oluşturma
 
-Bu konuda, işlem senaryonuza uyan hesap özelliklerini seçerek [Azure portal](https://portal.azure.com)Azure Batch hesabının nasıl oluşturulacağı gösterilmektedir. Ayrıca erişim anahtarları ve hesap URL 'Leri gibi önemli hesap özelliklerini nerede bulacağınızı öğreneceksiniz.
+Bu konuda, işlem senaryonuza uyan hesap özelliklerini seçerek [Azure portal](https://portal.azure.com) [Azure Batch hesabının](accounts.md) nasıl oluşturulacağı gösterilmektedir. Ayrıca erişim anahtarları ve hesap URL 'Leri gibi önemli hesap özelliklerini nerede bulacağınızı öğreneceksiniz.
 
 Batch hesapları ve senaryoları hakkında arka plan için bkz. [Batch hizmeti iş akışı ve kaynakları](batch-service-workflow-features.md).
 
@@ -21,13 +21,15 @@ Batch hesapları ve senaryoları hakkında arka plan için bkz. [Batch hizmeti i
 
 [!INCLUDE [batch-account-mode-include](../../includes/batch-account-mode-include.md)]
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 
-1. **Kaynak oluştur**' u seçin ve ardından **Işlem** ve **Batch hizmeti**' ni seçin.
+1. Giriş sayfasından **kaynak oluştur**' u seçin.
 
-1. **Yeni Batch hesabı** ayarlarını girin. Aşağıdaki ayrıntılara bakın.
+1. Arama kutusuna **Batch hizmeti** girin. Sonuçlardan **Batch hizmeti** ' ni seçin ve ardından **Oluştur**' u seçin.
 
-    ![Batch hesabı oluşturma][account_portal]
+1. Aşağıdaki ayrıntıları girin.
+
+    :::image type="content" source="media/batch-account-create-portal/batch-account-portal.png" alt-text="Yeni Batch hesabı ekranının ekran görüntüsü.":::
 
     a. **Abonelik**: Batch hesabının oluşturulacağı bir abonelik. Yalnızca bir aboneliğiniz varsa, varsayılan olarak seçilidir.
 
@@ -37,15 +39,13 @@ Batch hesapları ve senaryoları hakkında arka plan için bkz. [Batch hizmeti i
 
     d. **Konum**: Batch hesabının oluşturulacağı bir Azure bölgesi. Yalnızca aboneliğiniz ve kaynak grubunuz tarafından desteklenen bölgeler seçenek olarak görüntülenir.
 
-    e. **Depolama hesabı**: Batch hesabınızla ilişkilendirdiğiniz isteğe bağlı bir Azure depolama hesabı. En iyi performans için genel amaçlı v2 depolama hesabı önerilir. Toplu Işteki tüm depolama hesabı seçenekleri için bkz. [Batch özelliğine genel bakış](accounts.md#azure-storage-accounts). Portalda, var olan bir depolama hesabını seçin veya yeni bir tane oluşturun.
+    e. **Depolama hesabı**: Batch hesabınızla ilişkilendirdiğiniz isteğe bağlı bir [Azure depolama hesabı](accounts.md#azure-storage-accounts) . Var olan bir depolama hesabını seçebilir veya yeni bir tane oluşturabilirsiniz. En iyi performans için genel amaçlı v2 depolama hesabı önerilir.
 
-      ![Depolama hesabı oluşturma][storage_account]
+    :::image type="content" source="media/batch-account-create-portal/storage_account.png" alt-text="Bir depolama hesabı oluştururken seçeneklerin ekran görüntüsü.":::
 
-    f. **Havuz ayırma modu**: **Gelişmiş** ayarlar sekmesinde, havuz ayırma modunu **Batch hizmeti** veya **Kullanıcı aboneliği**olarak belirtebilirsiniz. Çoğu senaryo için varsayılan **Batch hizmetini**kabul edin.
+1. İsterseniz, **kimlik türünü**, **genel ağ erişimini** veya **havuz ayırma modunu** belirtmek için **Gelişmiş** ' i seçin. Çoğu senaryo için varsayılan seçenekler iyidir.
 
-      ![Toplu işlem havuzu ayırma modu][pool_allocation]
-
-1. Hesabı oluşturmak için **Oluştur**'u seçin.
+1. **Gözden geçir + oluştur**' u seçin ve sonra hesabı oluşturmak için **Oluştur** ' u seçin.
 
 ## <a name="view-batch-account-properties"></a>Batch hesabı özelliklerini görüntüleme
 
@@ -54,17 +54,15 @@ Hesap oluşturulduktan sonra seçerek ayarlarına ve özelliklerine erişebilirs
 > [!NOTE]
 > Batch hesabının adı kendi KIMLIĞIDIR ve değiştirilemez. Bir Batch hesabının adını değiştirmeniz gerekiyorsa, hesabı silmeniz ve hedeflenen ada sahip yeni bir tane oluşturmanız gerekir.
 
-![Azure portalında Batch hesabı sayfası][account_blade]
+:::image type="content" source="media/batch-account-create-portal/batch_blade.png" alt-text="Azure portal Batch hesabı sayfasının ekran görüntüsü.":::
 
-* **Batch hesabı adı, URL’si ve anahtarları**: [Batch API'leri](batch-apis-tools.md#azure-accounts-for-batch-development) ile uygulama geliştirirken, Batch kaynaklarınıza erişebilmeniz için bir hesap URL'si ve anahtarı gereklidir. (Batch, Azure Active Directory kimlik doğrulamasını da destekler.)
+[Batch API 'leriyle](batch-apis-tools.md#azure-accounts-for-batch-development)bir uygulama geliştirirken, Batch kaynaklarınıza erişmeniz için bir hesap URL 'si ve anahtar gerekir. (Batch Azure Active Directory kimlik doğrulamasını da destekler.) Batch hesabı erişim bilgilerini görüntülemek için **anahtarlar**' ı seçin.
 
-    Batch hesabı erişim bilgilerini görüntülemek için **Anahtarlar**'ı seçin.
+:::image type="content" source="media/batch-account-create-portal/batch-account-keys.png" alt-text="Azure portal Batch hesabı anahtarlarının ekran görüntüsü.":::
 
-    ![Azure portalında Batch hesabı anahtarları][account_keys]
+Batch hesabınızla ilişkili depolama hesabının adını ve anahtarlarını görüntülemek için **Depolama hesabı**'nı seçin.
 
-* Batch hesabınızla ilişkili depolama hesabının adını ve anahtarlarını görüntülemek için **Depolama hesabı**'nı seçin.
-
-* Batch hesabı için geçerli olan kaynak kotalarını görüntülemek için **Kotalar**'ı seçin. Ayrıntılar için bkz. [Batch hizmeti kotaları ve limitleri](batch-quota-limit.md).
+Batch hesabına uygulanan [kaynak kotalarını](batch-quota-limit.md) görüntülemek için **Kotalar**' ı seçin.
 
 ## <a name="additional-configuration-for-user-subscription-mode"></a>Kullanıcı aboneliği modu için ek yapılandırma
 
@@ -74,73 +72,56 @@ Kullanıcı aboneliği modunda bir Batch hesabı oluşturmayı seçerseniz, hesa
 
 Kullanıcı aboneliği modunda ilk Batch hesabınızı oluştururken, aboneliğinizi Batch hizmetine kaydetmeniz gerekir. (Zaten bunu yaptıysanız sonraki bölüme atlayın.)
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 
 1. **Tüm hizmet**  >  **abonelikleri**' ni seçin ve Batch hesabı için kullanmak istediğiniz aboneliği seçin.
 
-1. **Abonelik** sayfasında **Kaynak sağlayıcıları**'nı seçip **Microsoft.Batch**'i arayın. **Microsoft.Batch** kaynak sağlayıcısının aboneliğe kayıtlı olup olmadığını kontrol edin. Kayıtlı değilse **Kaydet** bağlantısını seçin.
+1. **Abonelik** sayfasında **Kaynak sağlayıcıları**'nı seçip **Microsoft.Batch**'i arayın. **Microsoft.Batch** kaynak sağlayıcısının aboneliğe kayıtlı olup olmadığını kontrol edin. Aksi takdirde, ekranın üst kısmındaki **kayıt** bağlantısını seçin.
 
-    ![Microsoft.Batch sağlayıcısını kaydetme][register_provider]
+    :::image type="content" source="media/batch-account-create-portal/register_provider.png" alt-text="Microsoft.Batch kaynak sağlayıcısını gösteren ekran görüntüsü.":::
 
-1. **Abonelik** sayfasında, **erişim denetimi (IAM)**  >  **rol atamaları**  >  **rol ataması Ekle**' yi seçin.
+1. **Abonelik** sayfasına dönün, ardından **erişim denetimi (IAM)**  >  **rol atamaları**  >  **Ekle**  >  **rol ataması** Ekle ' yi seçin.
 
-    ![Abonelik erişim denetimi][subscription_access]
+    :::image type="content" source="media/batch-account-create-portal/subscription_iam.png" alt-text="Bir abonelik için rol atamaları sayfasının ekran görüntüsü.":::
 
-1. **Rol ataması Ekle** sayfasında, **katkıda** bulunan veya **sahip** rolü ' nü seçin ve Batch API 'sini arayın. API'yi bulana kadar aşağıdaki dizelerden her birini arayın:
-    1. **MicrosoftAzureBatch**.
-    1. **Microsoft Azure Batch**. Daha yeni Azure AD kiracıları bu adı kullanıyor olabilir.
-    1. Batch API'sinin kimliği: **ddbf3205-c6bd-46ae-8127-60eb93363864**.
+1. **Rol ataması Ekle** sayfasında, **katkıda** bulunan veya **sahip** rolü ' nü seçin ve Batch API 'sini arayın. API 'YI bulmak için **Microsoft Azure Batch** veya **MicrosoftAzureBatch** aratın. (**ddbf3205-c6bd-46AE-8127-60eb93363864** , Batch API 'Si IÇIN uygulama kimliğidir.)
 
 1. Batch API'sini bulduktan sonra seçin ve **Kaydet**'i seçin.
 
-    ![Batch izinleri ekleme][add_permission]
-
 ### <a name="create-a-key-vault"></a>Anahtar kasası oluşturma
 
-Kullanıcı aboneliği modunda bir [Azure Key Vault](../key-vault/general/overview.md) gereklidir. Key Vault, oluşturulacak Batch hesabıyla aynı abonelikte ve bölgede olmalıdır. 
+Kullanıcı aboneliği modunda bir [Azure Key Vault](../key-vault/general/overview.md) gereklidir. Key Vault, oluşturulacak Batch hesabıyla aynı abonelikte ve bölgede olmalıdır.
 
-1. [Azure portalında](https://portal.azure.com)**Yeni** > **Güvenlik** > **Anahtar Kasası**'nı seçin.
+1. [Azure Portal](https://portal.azure.com)ana sayfasında, **kaynak oluştur**' u seçin.
+1. Arama kutusuna **Key Vault** girin. Sonuçlardan **Key Vault** seçin ve ardından **Oluştur**' u seçin.
+1. **Anahtar Kasası oluştur** sayfasında, Key Vault için bir ad girin ve Batch hesabınız için istediğiniz bölgede yeni bir kaynak grubu oluşturun. Kalan ayarları varsayılan değerlerinde bırakın ve ardından **Oluştur**'u seçin.
 
-1. **Key Vault oluştur** sayfasında, Key Vault için bir ad girin ve Batch hesabınız için istediğiniz bölgede bir kaynak grubu oluşturun. Kalan ayarları varsayılan değerlerinde bırakın ve ardından **Oluştur**'u seçin.
+Kullanıcı aboneliği modunda Batch hesabını oluştururken, havuz ayırma modu olarak **Kullanıcı aboneliğini** belirtin, oluşturduğunuz Key Vault seçin ve Key Vault Azure Batch erişim izni vermek için kutuyu işaretleyin.
 
-Kullanıcı aboneliği modunda Batch hesabını oluştururken, havuz ayırma modu olarak **Kullanıcı aboneliğini** belirtin, Key Vault seçin ve Key Vault Azure Batch erişim izni vermek için kutuyu işaretleyin.
+Key Vault el ile erişim izni vermeyi tercih ediyorsanız, Key Vault **erişim ilkeleri** bölümüne gidin ve **erişim ilkesi Ekle**' yi seçin. **Sorumluyu Seç** ' in yanındaki bağlantıyı seçin ve **Microsoft Azure Batch** için arama yapın (uygulama kimliği **ddbf3205-c6bd-46AE-8127-60eb93363864**). Bu sorumluyu seçin ve ardından açılan menüyü kullanarak **gizli izinleri** yapılandırın. Azure Batch, en az **Get**, **list**, **set** ve **Delete** izinleri olarak verilmelidir.
 
-Key Vault el ile erişim izni vermeyi tercih ediyorsanız, Key Vault **erişim ilkeleri** bölümüne gidin, **erişim ilkesi Ekle** ' yi seçin ve **Microsoft Azure Batch**için arama yapın. Seçildikten sonra, açılan menüyü kullanarak **gizli izinleri** yapılandırmanız gerekecektir. Azure Batch, en az **Get**, **list**, **set**ve **Delete** izinleri olarak verilmelidir.
+:::image type="content" source="media/batch-account-create-portal/secret-permissions.png" alt-text="Azure Batch için gizli izinler seçimlerinin ekran görüntüsü":::
 
-![Azure Batch için gizli izinler](./media/batch-account-create-portal/secret-permissions.png)
+**Ekle**' yi seçin, sonra **dağıtım Için Azure sanal makinelerinin** ve **şablon dağıtımı için Azure Resource Manager** bağlı **Key Vault** kaynağı için seçili olduğundan emin olun. Değişikliklerinizi uygulamak için **Kaydet** ' i seçin.
 
-> [!NOTE]
-> **Dağıtım Için Azure sanal makinelerinin** ve **şablon dağıtımı için Azure Resource Manager** , bağlantılı **Key Vault** kaynağı için **erişim ilkeleri** altında seçili olduğundan emin olun.
->
-> ![Zorunlu Key Vault erişim Ilkesi](./media/batch-account-create-portal/key-vault-access-policy.png)
+:::image type="content" source="media/batch-account-create-portal/key-vault-access-policy.png" alt-text="Erişim ilkesi ekranının ekran görüntüsü.":::
 
 ### <a name="configure-subscription-quotas"></a>Abonelik kotalarını yapılandırma
 
-Kullanıcı aboneliği Batch hesapları için çekirdek kotaların el ile ayarlanması gerekir. Standart Batch çekirdek kotalar, kullanıcı aboneliği modundaki hesaplara uygulanmaz.
+Kullanıcı aboneliği Batch hesapları için [çekirdek kotaların](batch-quota-limit.md) el ile ayarlanması gerekir. Standart Batch çekirdek kotalar, kullanıcı aboneliği modundaki hesaplara ve bölgesel bilgi işlem çekirdekleri, seri başına işlem çekirdekleri ve diğer kaynakların kullanıldığı ve zorlandıkları [Kotalar](../azure-resource-manager/management/azure-subscription-service-limits.md) için geçerlidir.
 
 1. [Azure Portal](https://portal.azure.com), ayarlarını ve özelliklerini göstermek için Kullanıcı abonelik modu Batch hesabınızı seçin.
 1. Sol taraftaki menüden **Kotalar** ' ı seçerek Batch hesabınızla ilişkili çekirdek kotalarını görüntüleyin ve yapılandırın.
-
-Kullanıcı aboneliği modu çekirdek kotaları hakkında daha fazla bilgi için bkz. [Batch hizmeti kotaları ve limitleri](batch-quota-limit.md).
 
 ## <a name="other-batch-account-management-options"></a>Diğer Batch hesabı yönetim seçenekleri
 
 Azure portalını kullanmaya ek olarak Batch hesaplarını aşağıdaki gibi araçlarla oluşturup yönetebilirsiniz:
 
-* [Batch PowerShell cmdlet’leri](batch-powershell-cmdlets-get-started.md)
-* [Azure CLI](batch-cli-get-started.md)
-* [Batch Yönetimi .NET](batch-management-dotnet.md)
+- [Batch PowerShell cmdlet’leri](batch-powershell-cmdlets-get-started.md)
+- [Azure CLI](batch-cli-get-started.md)
+- [Batch Yönetimi .NET](batch-management-dotnet.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Batch hizmeti iş akışı ve](batch-service-workflow-features.md) havuzlar, düğümler, işler ve görevler gibi birincil kaynaklar hakkında bilgi edinin.
-* [Batch .NET istemci kitaplığı](quick-run-dotnet.md) veya [Python](quick-run-python.md) kullanarak Batch özellikli bir uygulama geliştirmenin temellerini öğrenin. Bu hızlı başlangıçlar, bir iş yükünü birden fazla işlem düğümünde yürütmek üzere Batch hizmetini kullanan örnek uygulamalar konusunda size rehberlik sağlamanın yanı sıra, iş yükü dosyası hazırlama ve alma işlemleri için Azure Depolama kullanma ile ilgili bilgiler de içerir.
-
-[account_blade]: ./media/batch-account-create-portal/batch_blade.png
-[account_portal]: ./media/batch-account-create-portal/batch-account-portal.png
-[pool_allocation]: ./media/batch-account-create-portal/batch-pool-allocation.png
-[account_keys]: ./media/batch-account-create-portal/batch-account-keys.png
-[storage_account]: ./media/batch-account-create-portal/storage_account.png
-[subscription_access]: ./media/batch-account-create-portal/subscription_iam.png
-[add_permission]: ./media/batch-account-create-portal/add_permission.png
-[register_provider]: ./media/batch-account-create-portal/register_provider.png
+- [Batch hizmeti iş akışı ve](batch-service-workflow-features.md) havuzlar, düğümler, işler ve görevler gibi birincil kaynaklar hakkında bilgi edinin.
+- [Batch .NET istemci kitaplığı](quick-run-dotnet.md) veya [Python](quick-run-python.md) kullanarak Batch özellikli bir uygulama geliştirmenin temellerini öğrenin. Bu hızlı başlangıç, iş yükü dosyası hazırlama ve alma için Azure depolama 'yı kullanarak birden çok işlem düğümünde bir iş yükü yürütmek üzere Batch hizmetini kullanan bir örnek uygulamada size rehberlik sağlar.

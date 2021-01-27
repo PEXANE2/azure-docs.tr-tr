@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/18/2020
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: 5a2a7abf0227812826428557b86c4468f7693c82
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: b8c9af31243d8bb58a58fbc687cad68130f64f7e
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98600383"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880751"
 ---
 # <a name="commercial-marketplace-transact-capabilities"></a>Ticari Market Transact özellikleri
 
@@ -90,7 +90,7 @@ Bu seçenek, genel kullanıma sunulan teklife göre daha yüksek veya daha düş
 
 Müşteriler, ticari Market 'ten alınan Transact teklifinizi satın alırken %20 Standart mağaza hizmeti ücreti ücretlendirir. Bu masrafın ayrıntıları için, [Microsoft Publisher sözleşmesinin](https://go.microsoft.com/fwlink/?LinkID=699560)bölüm 5c bölümüne bakın.
 
-Ticari Market 'te yayımladığınız bazı transactable teklifleri için, %10 oranında bir depolama hizmeti ücreti için uygun olabilir. Uygun bir teklif için, Microsoft tarafından Azure IP ortak satışı incentivized olarak atanmış olmalıdır. Uygunluk, daha düşük Market servis ücretini almak için her bir takvim ayının sonundan önce en az beş iş gününe ulaşılmalıdır. Uygunluk karşılandıktan sonra, sınırlı hizmet ücreti, Azure IP ortak satışı incentivized durumu kaybolana kadar aşağıdaki ayın ilk gününde geçerli olan tüm işlemler için geçerlidir. IP ortak satışı uygunluğu hakkında daha fazla bilgi için bkz. [ortak satış durumu gereksinimleri](https://aka.ms/CertificationPolicies#3000-requirements-for-co-sell-status).
+Ticari Market 'te yayımladığınız bazı transactable teklifleri için, %10 oranında bir depolama hizmeti ücreti için uygun olabilir. Uygun bir teklif için, Microsoft tarafından Azure IP ortak satışı incentivized olarak atanmış olmalıdır. Uygunluk, daha düşük Market servis ücretini almak için her bir takvim ayının sonundan önce en az beş iş gününe ulaşılmalıdır. Uygunluk karşılandıktan sonra, sınırlı hizmet ücreti, Azure IP ortak satışı incentivized durumu kaybolana kadar aşağıdaki ayın ilk gününde geçerli olan tüm işlemler için geçerlidir. IP ortak satışı uygunluğu hakkında daha fazla bilgi için bkz. [ortak satış durumu gereksinimleri](/legal/marketplace/certification-policies#3000-requirements-for-co-sell-status).
 
 Daha düşük Market hizmet ücreti, Azure IP ortak satışı incentivized SaaS, VM 'Ler, yönetilen uygulamalar ve ticari Market aracılığıyla sunulan diğer tüm nitelikli transactable IaaS çözümleri için geçerlidir. Tek bir Microsoft ekipleri uygulamasıyla ilişkili ücretli SaaS teklifleri veya en az iki Microsoft 365 eklentisi (Excel, PowerPoint, Word, Outlook ve SharePoint) ve Microsoft AppSource yayımlanan bu iskontoyu da alır.
 

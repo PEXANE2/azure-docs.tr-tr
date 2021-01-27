@@ -1,5 +1,5 @@
 ---
-title: Media Services v3 .NET-Azure kullanarak özel dönüştürmeyi kodla | Microsoft Docs
+title: Media Services v3 .NET-Azure kullanarak özel dönüştürmeyi kodla
 description: Bu konuda .NET kullanarak özel bir dönüşüm kodlamak için Azure Media Services v3 'nin nasıl kullanılacağı gösterilmektedir.
 services: media-services
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: b5bb505df3cad7856e0b08f04949c2e56ccec1ca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 035afd43b49c05f51149ad568a0eb16991dbaf85
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89295623"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897182"
 ---
 # <a name="how-to-encode-with-a-custom-transform---net"></a>Özel bir dönüşümle kodlama-.NET
 
@@ -32,7 +32,7 @@ Azure Media Services ile kodlarken, [akış dosyaları](stream-files-tutorial-wi
 * AVC içeriğinde yükseklik ve genişlik değerlerinin tümü 4 ' ün katı olmalıdır.
 * Azure Media Services v3 'de, tüm kodlama bit fiyatları bit/saniye cinsinden. Bu, birim olarak kilobit/saniye kullanan v2 API 'lerimiz olan ön ayarlardan farklıdır. Örneğin, v2 'deki bit hızı 128 (kilobit/saniye) olarak belirtilmişse, v3 'de 128000 (bit/saniye) olarak ayarlanır.
 
-## <a name="prerequisites"></a>Ön koşullar 
+## <a name="prerequisites"></a>Önkoşullar 
 
 [Media Services hesabı oluşturma](./create-account-howto.md)
 
@@ -48,7 +48,7 @@ Aşağıdaki komutu kullanarak makinenize tam .NET Core örneği içeren bir Git
 
 ## <a name="create-a-transform-with-a-custom-preset"></a>Özel önayar olan bir dönüşüm oluşturma 
 
-Yeni bir [dönüşüm](/rest/api/media/transforms)oluştururken, ne zaman çıkış olarak üretmek istediğinizi belirtmeniz gerekir. Gerekli parametre, aşağıdaki kodda gösterildiği gibi bir [TransformOutput](/rest/api/media/transforms/createorupdate#transformoutput) nesnesidir. Her **TransformOutput** bir **Ön ayar** içerir. **Önceden belirlenmiş** , Istenen **Transformoutput**oluşturmak için kullanılacak video ve/veya ses işleme işlemlerinin adım adım talimatlarını açıklar. Aşağıdaki **Transformoutput** , özel codec ve katman çıkış ayarları oluşturur.
+Yeni bir [dönüşüm](/rest/api/media/transforms)oluştururken, ne zaman çıkış olarak üretmek istediğinizi belirtmeniz gerekir. Gerekli parametre, aşağıdaki kodda gösterildiği gibi bir [TransformOutput](/rest/api/media/transforms/createorupdate#transformoutput) nesnesidir. Her **TransformOutput** bir **Ön ayar** içerir. **Önceden belirlenmiş** , Istenen **Transformoutput** oluşturmak için kullanılacak video ve/veya ses işleme işlemlerinin adım adım talimatlarını açıklar. Aşağıdaki **Transformoutput** , özel codec ve katman çıkış ayarları oluşturur.
 
 Bir [Dönüşüm](/rest/api/media/transforms) oluştururken ilk olarak aşağıdaki kodda gösterildiği gibi **Get** yöntemi ile bir dönüşümün zaten var olup olmadığını denetlemeniz gerekir. Media Services v3 'de varlık mevcut değilse (ad üzerinde büyük/küçük harfe duyarsız bir denetim), varlıklarda yöntemleri **Al** **null değeri** döndürür.
 

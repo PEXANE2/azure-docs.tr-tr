@@ -2,16 +2,16 @@
 title: Azure Otomasyonu runbook sorunlarını giderme
 description: Bu makalede, Azure Otomasyonu runbook 'larında sorunları gidermeye ve gidermeye nasıl çözüm yapılacağı açıklanır.
 services: automation
+ms.subservice: ''
 ms.date: 11/03/2020
-ms.topic: conceptual
-ms.service: automation
+ms.topic: troubleshooting
 ms.custom: has-adal-ref
-ms.openlocfilehash: c7ab093f601ebcd33d184b9a9008f9de447534a1
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 116677354009c538eece02184d801cfda11574a0
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94368092"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896317"
 ---
 # <a name="troubleshoot-runbook-issues"></a>Runbook sorunlarını giderme
 
@@ -291,7 +291,7 @@ Bu hata, eski Azure modülleri kullanılarak kaynaklanıyor olabilir.
 
 Azure modüllerinizi en son sürüme güncelleştirerek bu hatayı çözebilirsiniz:
 
-1. Otomasyon hesabınızda **modüller** ' i seçin ve ardından **Azure modüllerini Güncelleştir** ' i seçin.
+1. Otomasyon hesabınızda **modüller**' i seçin ve ardından **Azure modüllerini Güncelleştir**' i seçin.
 1. Güncelleştirme yaklaşık 15 dakika sürer. Tamamlandıktan sonra, başarısız olan runbook 'u yeniden çalıştırın.
 
 Modüllerinizi güncelleştirme hakkında daha fazla bilgi için bkz. Azure [Otomasyonu 'Nda Azure modüllerini güncelleştirme](../automation-update-azure-modules.md).
@@ -505,7 +505,7 @@ Ayda 500 dakikadan fazla işlem kullanmak istiyorsanız aboneliğinizi ücretsiz
 
 1. Azure aboneliğinizde oturum açın.
 1. Yükseltilecek Otomasyon hesabını seçin.
-1. **Ayarlar** ' ı seçin ve **fiyatlandırma** ' yı seçin.
+1. **Ayarlar**' ı seçin ve **fiyatlandırma**' yı seçin.
 1. Hesabınızı temel katmana yükseltmek için en alttaki sayfada **Etkinleştir** ' i seçin.
 
 ## <a name="scenario-runbook-output-stream-greater-than-1-mb"></a><a name="output-stream-greater-1mb"></a>Senaryo: runbook çıkış akışı 1 MB 'den büyük
@@ -686,4 +686,4 @@ Sorununuzu burada görmüyorsanız veya sorununuzu çözemezseniz daha fazla des
 
 * Azure [forumları](https://azure.microsoft.com/support/forums/)aracılığıyla Azure uzmanlarından yanıtlar alın.
 * [@AzureSupport](https://twitter.com/azuresupport)Müşteri deneyimini iyileştirmek için resmi Microsoft Azure hesabıyla bağlanın. Azure desteği, yanıtlar, destek ve uzmanlar için sizi Azure Community 'ye bağlar.
-* Daha fazla yardıma ihtiyacınız varsa, bir Azure destek olayı dosyası gönderebilirsiniz. [Azure destek sitesine](https://azure.microsoft.com/support/options/)gidin ve **Destek Al** ' ı seçin.
+* Daha fazla yardıma ihtiyacınız varsa, bir Azure destek olayı dosyası gönderebilirsiniz. [Azure destek sitesine](https://azure.microsoft.com/support/options/)gidin ve **Destek Al**' ı seçin.

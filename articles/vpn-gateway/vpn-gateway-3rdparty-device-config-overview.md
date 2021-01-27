@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: yushwang
-ms.openlocfilehash: 01ceb067f589ef04b04ff0bf05e2971ee30f407c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 484dad65310efaa60e8744b2f122b5e44ae13565
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89400169"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880161"
 ---
 # <a name="overview-of-partner-vpn-device-configurations"></a>İş ortağı VPN cihaz yapılandırmalarına genel bakış
 Bu makalede, Azure VPN ağ geçitlerine bağlanmak için şirket içi VPN cihazlarını yapılandırmaya ilişkin bir genel bakış sunulmaktadır. Aynı parametreleri kullanarak farklı şirket içi VPN cihaz yapılandırmalarına nasıl bağlanakullanacağınızı göstermek için örnek bir Azure sanal ağ ve VPN ağ geçidi kurulumu kullanılır.
@@ -27,7 +27,7 @@ Azure VPN ağ geçitleri, siteden siteye (S2S) VPN tünelleri için standart IPS
 
 ![Tek bir S2S VPN tünelinin diyagramı](./media/vpn-gateway-3rdparty-device-config-overview/singletunnel.png)
 
-Tek bir VPN tüneli ayarlamaya yönelik adım adım yönergeler için bkz. [siteden siteye bağlantı yapılandırma](vpn-gateway-howto-site-to-site-resource-manager-portal.md). Aşağıdaki bölümler, örnek yapılandırma için bağlantı parametrelerini belirtir ve başlamanıza yardımcı olması için bir PowerShell betiği sağlar.
+Tek bir VPN tüneli ayarlamaya yönelik adım adım yönergeler için bkz. [siteden siteye bağlantı yapılandırma](./tutorial-site-to-site-portal.md). Aşağıdaki bölümler, örnek yapılandırma için bağlantı parametrelerini belirtir ve başlamanıza yardımcı olması için bir PowerShell betiği sağlar.
 
 ### <a name="connection-parameters"></a>Bağlantı parametreleri
 Bu bölümde, önceki bölümlerde açıklanan örneklerin parametreleri listelenmektedir.
@@ -150,4 +150,3 @@ S2S VPN bağlantısını oluşturduğunuzda, isteğe bağlı olarak [VPN Gateway
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Etkin-etkin VPN Gateway 'leri ayarlamaya yönelik adım adım yönergeler için bkz. [şirketler arası ve sanal ağdan sanal ağa bağlantılar için etkin-ETKIN VPN ağ geçitleri yapılandırma](vpn-gateway-activeactive-rm-powershell.md).
-

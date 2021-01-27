@@ -7,15 +7,14 @@ ms.workload: infrastructure-services
 ms.author: cynthn
 author: cynthn
 ms.date: 10/26/2018
-ms.openlocfilehash: d1acbe82a086574a102e7897bbd3b99683c1185e
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: e7dd75a025b76773a0bf1e3b4f752b5a77db6786
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94595041"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897383"
 ---
 # <a name="tagging-a-vm-using-a-template"></a>Şablon kullanarak VM etiketleme
-
 
 Bu makalede, Azure 'da bir sanal makinenin Kaynak Yöneticisi şablonu kullanılarak nasıl etiketleneceğini açıklanmaktadır. Etiketler, doğrudan bir kaynağa veya bir kaynak grubuna yerleştirilebilecek Kullanıcı tanımlı anahtar/değer çiftleridir. Azure Şu anda kaynak ve kaynak grubu başına en fazla 50 etiketi desteklemektedir. Etiketler, oluşturma sırasında veya var olan bir kaynağa eklenen bir kaynağa yerleştirilebilir.
 
@@ -25,7 +24,7 @@ Bu makalede, Azure 'da bir sanal makinenin Kaynak Yöneticisi şablonu kullanıl
 
 ![Etiketlerle basit dağıtım](./media/tag/deploy-to-azure-tags.png)
 
-Bu şablon şu etiketleri içerir: *Departman* , *uygulama* ve *tarafından oluşturulan*. Farklı etiket adları istiyorsanız bu etiketleri doğrudan şablonda ekleyebilir/düzenleyebilirsiniz.
+Bu şablon şu etiketleri içerir: *Departman*, *uygulama* ve *tarafından oluşturulan*. Farklı etiket adları istiyorsanız bu etiketleri doğrudan şablonda ekleyebilir/düzenleyebilirsiniz.
 
 ![Bir şablonda Azure etiketleri](./media/tag/azure-tags-in-a-template.png)
 
@@ -46,8 +45,7 @@ Ardından, **parametreleri Düzenle** bölümünde etiketlerinizin değerlerini 
 
 Bu şablonu etiket değerlerinizle dağıtmak için **Oluştur** ' a tıklayın.
 
-
-**Sonraki adımlar**
+### <a name="next-steps"></a>Sonraki adımlar
 
 - Azure kaynaklarınızın etiketlenmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Resource Manager genel bakış](../azure-resource-manager/management/overview.md) ve [etiketleri kullanarak Azure kaynaklarınızı düzenleme](../azure-resource-manager/management/tag-resources.md).
-- Etiketlerin Azure kaynaklarını kullanımınızı yönetmenize nasıl yardımcı olduğunu görmek için bkz. [Azure Faturanızı Anlama](../cost-management-billing/understand/review-individual-bill.md) ve [Microsoft Azure Kaynak tüketiminiz hakkında öngörüler elde](../cost-management-billing/manage/usage-rate-card-overview.md)etme.
+- Etiketlerin Azure kaynakları kullanımını yönetmenize nasıl yardımcı olduğunu görmek için bkz. [Azure Faturanızı Anlama](../cost-management-billing/understand/review-individual-bill.md).

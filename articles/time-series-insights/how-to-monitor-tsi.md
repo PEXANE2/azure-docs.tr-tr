@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/10/2020
 ms.custom: lyrana
-ms.openlocfilehash: cff0c54cf5aa8854273be9502f5cf6df4e0a055b
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 3fc880e238c1c9f45c663975470a6ab57267a648
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97633068"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879553"
 ---
 # <a name="monitoring-time-series-insights"></a>İzleme Time Series Insights
 
@@ -27,9 +27,9 @@ Her Time Series Insights ortamı için Azure portal **genel bakış** sayfası, 
 
 ## <a name="what-is-azure-monitor"></a>Azure Izleyici nedir?
 
-Time Series Insights, Azure 'da, diğer bulutlardaki ve Şirket içindeki kaynaklara ek olarak Azure kaynaklarınızı izlemeye yönelik eksiksiz bir özellik kümesi sunan Azure [izleyici](https://docs.microsoft.com/azure/azure-monitor/overview)'yi kullanarak izleme verileri oluşturur.
+Time Series Insights, Azure 'da, diğer bulutlardaki ve Şirket içindeki kaynaklara ek olarak Azure kaynaklarınızı izlemeye yönelik eksiksiz bir özellik kümesi sunan Azure [izleyici](../azure-monitor/overview.md)'yi kullanarak izleme verileri oluşturur.
 
-Aşağıdaki kavramları açıklayan Azure [izleyici Ile Azure kaynaklarını izleme](https://docs.microsoft.com/azure/azure-monitor/insights/monitor-azure-resource)makalesini başlatın:
+Aşağıdaki kavramları açıklayan Azure [izleyici Ile Azure kaynaklarını izleme](../azure-monitor/insights/monitor-azure-resource.md)makalesini başlatın:
 
 - Azure İzleyici nedir?
 - İzleme ile ilişkili maliyetler
@@ -63,7 +63,7 @@ Azure Time Series Insights için aşağıdaki kategorilerden günlükleri toplay
 
 ## <a name="analyzing-metrics"></a>Ölçümler çözümleniyor
 
-Azure Izleyici menüsünden ölçümler ' i açarak, Azure Time Series Insights ölçümlerini, diğer Azure hizmetlerinden alınan ölçümlerle birlikte analiz edebilirsiniz. Bu aracı kullanma hakkında ayrıntılı bilgi için bkz. [Azure Ölçüm Gezgini](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-getting-started) kullanmaya başlama.
+Azure Izleyici menüsünden ölçümler ' i açarak, Azure Time Series Insights ölçümlerini, diğer Azure hizmetlerinden alınan ölçümlerle birlikte analiz edebilirsiniz. Bu aracı kullanma hakkında ayrıntılı bilgi için bkz. [Azure Ölçüm Gezgini](../azure-monitor/platform/metrics-getting-started.md) kullanmaya başlama.
 
 Toplanan platform ölçümlerinin bir listesi için bkz. [Azure Time Series Insights veri başvurusunu izleme](how-to-monitor-tsi-reference.md#metrics)
 
@@ -88,7 +88,7 @@ Azure Time Series Insights, verileri aşağıdaki tablolarda depolar.
 |:---|:---|
 | Tsıingress | Giriş kategorisinden veri depolayan tablo. Giriş kategorisi, giriş ardışık düzeninde oluşan hataları izler. Bu kategori olayları alırken meydana gelen hataları (örneğin, bir olay kaynağına bağlanma hataları) ve olayları (bir olay yükünü ayrıştırırken hatalar gibi) işlemeyi içerir.
 
-Verileri Azure Izleyici günlüklerine yönlendirmek için bir Log Analytics çalışma alanına kaynak günlükleri veya platform ölçümleri göndermek üzere bir tanılama ayarı oluşturmanız gerekir. Daha fazla bilgi için bkz. [koleksiyon ve yönlendirme](https://docs.microsoft.com/azure/iot-hub/monitor-iot-hub#collection-and-routing).
+Verileri Azure Izleyici günlüklerine yönlendirmek için bir Log Analytics çalışma alanına kaynak günlükleri veya platform ölçümleri göndermek üzere bir tanılama ayarı oluşturmanız gerekir. Daha fazla bilgi için bkz. [koleksiyon ve yönlendirme](../iot-hub/monitor-iot-hub.md#collection-and-routing).
 
 ## <a name="sample-queries"></a>Örnek sorgular
 
@@ -115,7 +115,7 @@ Azure Time Series Insights ortamınızı izlemenize yardımcı olması için kul
 
 ## <a name="alerts"></a>Uyarılar
 
-İzleme verilerinizde önemli koşullar bulunduğunda Azure Izleyici uyarıları size önceden bildirimde bulunur. Bunlar, müşterilerinizin sorunları fark etmeden önce sisteminizdeki sorunları tanımlamanızı ve ele belirlemenizi sağlar. [Ölçümler](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-overview), [Günlükler](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log)ve [etkinlik günlüğü](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-alerts)hakkında uyarı ayarlayabilirsiniz. Farklı uyarı türlerinin avantajları ve dezavantajları vardır.
+İzleme verilerinizde önemli koşullar bulunduğunda Azure Izleyici uyarıları size önceden bildirimde bulunur. Bunlar, müşterilerinizin sorunları fark etmeden önce sisteminizdeki sorunları tanımlamanızı ve ele belirlemenizi sağlar. [Ölçümler](../azure-monitor/platform/alerts-metric-overview.md), [Günlükler](../azure-monitor/platform/alerts-unified-log.md)ve [etkinlik günlüğü](../azure-monitor/platform/activity-log-alerts.md)hakkında uyarı ayarlayabilirsiniz. Farklı uyarı türlerinin avantajları ve dezavantajları vardır.
 
 Platform ölçümlerini temel alan bir uyarı kuralı oluştururken, sayı birimlerinde toplanan Time Series Insights platform ölçümleri için bazı toplamaların kullanılamayabilir veya kullanılamıyor olabileceğini unutmayın.
 

@@ -3,19 +3,19 @@ title: Translator çeviri yöntemi
 titleSuffix: Azure Cognitive Services
 description: Azure bilişsel hizmetler çeviricisinin çeviri yöntemi için parametreleri, üstbilgileri ve gövde iletilerini, metni çevirecek şekilde anlayın.
 services: cognitive-services
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 08/06/2020
-ms.author: swmachan
-ms.openlocfilehash: 15f20bab91a4feab056a9f8cd6b012792f036be2
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.author: lajanuar
+ms.openlocfilehash: d46fef0159b983f2685be40e2a0ab5471b96883b
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95016556"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895450"
 ---
 # <a name="translator-30-translate"></a>Translator 3,0: çeviri
 
@@ -37,7 +37,7 @@ Sorgu dizesine geçirilen istek parametreleri şunlardır:
 
 <table width="100%">
   <th width="20%">Sorgu parametresi</th>
-  <th>Description</th>
+  <th>Açıklama</th>
   <tr>
     <td>api-sürümü</td>
     <td><em>Gerekli parametre</em>.<br/>İstemci tarafından istenen API 'nin sürümü. Değer olmalıdır <code>3.0</code> .</td>
@@ -52,7 +52,7 @@ Sorgu dizesine geçirilen istek parametreleri şunlardır:
 
 <table width="100%">
   <th width="20%">Sorgu parametresi</th>
-  <th>Description</th>
+  <th>Açıklama</th>
   <tr>
     <td>Kaynak</td>
     <td><em>Isteğe bağlı parametre</em>.<br/>Giriş metninin dilini belirtir. Kapsam kullanarak <a href="./v3-0-languages.md">desteklenen dilleri</a> arayarak hangi dillerin çevrilebileceği hakkında bilgi edinin <code>translation</code> . <code>from</code>Parametresi belirtilmemişse, kaynak dili saptamak için otomatik dil algılama uygulanır. <br/><br/><code>from</code> <a href="/azure/cognitive-services/translator/dynamic-dictionary">Dinamik sözlük</a> özelliğini kullanırken, parametresini, oto algılaması yerine kullanmanız gerekir.</td>
@@ -391,7 +391,7 @@ Kaynak metinde küfür varlığından bağımsız olarak çeviride küfür almay
   </tr>
 </table> 
 
-Örnek:
+Örneğin:
 
 ```curl
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de&profanityAction=Marked" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'This is a freaking good idea.'}]"

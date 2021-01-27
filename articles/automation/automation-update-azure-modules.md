@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: 9cc5e5107784d447640ef0ae77d412885b1e5668
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 413293cdefd39285c57b58d4555d3d703492ea96
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86185781"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98894856"
 ---
 # <a name="update-azure-powershell-modules"></a>Azure PowerShell modüllerini güncelleştirme
 
@@ -38,7 +38,7 @@ Otomasyon hesabınızda Azure modüllerini güncelleştirmek için, açık kayna
 
 ## <a name="use-update-runbook-code-as-a-regular-powershell-script"></a>Runbook kodunu güncelleştirme 'yi düzenli bir PowerShell betiği olarak kullanın
 
-Runbook kodunu runbook yerine normal bir PowerShell betiği olarak kullanabilirsiniz. Bunu yapmak için önce [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-3.7.0) cmdlet 'Ini kullanarak Azure 'da oturum açın, sonra `-Login $false` betiğe geçirin.
+Runbook kodunu runbook yerine normal bir PowerShell betiği olarak kullanabilirsiniz. Bunu yapmak için önce [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) cmdlet 'Ini kullanarak Azure 'da oturum açın, sonra `-Login $false` betiğe geçirin.
 
 ## <a name="use-the-update-runbook-on-sovereign-clouds"></a>Bağımsız bulutlarda runbook güncelleştirme 'yi kullanma
 

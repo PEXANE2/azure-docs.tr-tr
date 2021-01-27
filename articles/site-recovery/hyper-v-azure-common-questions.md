@@ -3,12 +3,12 @@ title: Azure Site Recovery ile Hyper-V olağanüstü durum kurtarma için sık s
 description: Bu makalede, şirket içi Hyper-V sanal makineleri için Azure Site Recovery sitesini kullanarak Azure 'a olağanüstü durum kurtarma ayarlama hakkında sık sorulan sorular özetlenmektedir.
 ms.date: 11/12/2019
 ms.topic: conceptual
-ms.openlocfilehash: e4f5ee71fc56cad247b57f94bf08a68bed8775f9
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 649bd69f14cdf8d81fe05d3a5f5cac3389419fc3
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96754360"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879453"
 ---
 # <a name="common-questions---hyper-v-to-azure-disaster-recovery"></a>Sık sorulan sorular - Hyper-V'den Azure'a olağanüstü durum kurtarma
 
@@ -167,7 +167,7 @@ Hyper-V VM 'Leri, her 30 saniyede bir çoğaltılır (Premium Depolama hariç) v
 
 ### <a name="can-azure-site-recovery-and-hyper-v-replica-be-configured-together-on-a-hyper-v-machine"></a>Azure Site Recovery ve Hyper-v çoğaltma, Hyper-V makinesinde birlikte yapılandırılabilir mi?
 
-Evet, hem Azure Site Recovery hem de Hyper-V çoğaltma, bir makine için birlikte yapılandırılabilir. Ancak makinenin bir fiziksel makine olarak korunması ve bir yapılandırma/Işlem sunucusu kullanılarak Azure 'a çoğaltılması gerekir. Fiziksel [makineleri koruma](https://docs.microsoft.com/azure/site-recovery/physical-azure-architecture)hakkında daha fazla bilgi edinin.
+Evet, hem Azure Site Recovery hem de Hyper-V çoğaltma, bir makine için birlikte yapılandırılabilir. Ancak makinenin bir fiziksel makine olarak korunması ve bir yapılandırma/Işlem sunucusu kullanılarak Azure 'a çoğaltılması gerekir. Fiziksel [makineleri koruma](./physical-azure-architecture.md)hakkında daha fazla bilgi edinin.
 
 ### <a name="can-i-extend-replication"></a>Çoğaltmayı genişletebilir miyim?
 Genişletilmiş veya zincir çoğaltma desteklenmez. Bu özelliği [geri bildirim forumuna](https://feedback.azure.com/forums/256299-site-recovery/suggestions/6097959)iste.

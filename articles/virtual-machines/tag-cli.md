@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.date: 11/11/2020
 ms.author: cynthn
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 48f906bf0025bda03df226f32db1a0d6afdb9cee
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: 32d15730557c96362602b5e324254c76637ecb55
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94595068"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897451"
 ---
 # <a name="how-to-tag-a-vm-using-the-cli"></a>CLı kullanarak VM etiketleme
 
@@ -46,8 +46,7 @@ az vm update \
 
 Kaynaklarımıza Azure CLı ve Portal için Etiketler uyguladığımıza göre, şimdi de fatura portalındaki etiketleri görmek için kullanım ayrıntılarına göz atalım.
 
-
-**Sonraki adımlar**
+### <a name="next-steps"></a>Sonraki adımlar
 
 - Azure kaynaklarınızın etiketlenmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Resource Manager genel bakış](../azure-resource-manager/management/overview.md) ve [etiketleri kullanarak Azure kaynaklarınızı düzenleme](../azure-resource-manager/management/tag-resources.md).
-- Etiketlerin Azure kaynaklarını kullanımınızı yönetmenize nasıl yardımcı olduğunu görmek için bkz. [Azure Faturanızı Anlama](../cost-management-billing/understand/review-individual-bill.md) ve [Microsoft Azure Kaynak tüketiminiz hakkında öngörüler elde](../cost-management-billing/manage/usage-rate-card-overview.md)etme.
+- Etiketlerin Azure kaynakları kullanımını yönetmenize nasıl yardımcı olduğunu görmek için bkz. [Azure Faturanızı Anlama](../cost-management-billing/understand/review-individual-bill.md).

@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.custom:
 - devx-track-python
 - devx-track-azurecli
-ms.openlocfilehash: 5e2d21a5f9f764f260695f17c93d5a615fc62efa
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 664a43dee635fa202f69927569fc1a5297bd1997
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97937221"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880819"
 ---
 # <a name="quickstart-create-a-python-function-in-azure-from-the-command-line"></a>Hızlı başlangıç: Azure 'da komut satırından bir Python işlevi oluşturma
 
@@ -37,7 +37,7 @@ Başlamadan önce aşağıdakilere sahip olmanız gerekir:
 
     + Sürüm 5,0 veya üzeri [Azure PowerShell](/powershell/azure/install-az-ps) .
 
-+ [Python 3,8 (64-bit](https://www.python.org/downloads/release/python-382/)), [python 3,7 (64-](https://www.python.org/downloads/release/python-375/)bit), Python [3,6 (64](https://www.python.org/downloads/release/python-368/)-bit), tek başına Azure işlevleri sürüm 3. x tarafından desteklenir.
++ [Azure Işlevleri tarafından desteklenen Python sürümleri](supported-languages.md#languages-by-runtime-version)
 
 ### <a name="prerequisite-check"></a>Önkoşul denetimi
 

@@ -3,14 +3,14 @@ title: Azure Otomasyonu Güncelleştirme Yönetimi Genel Bakış
 description: Bu makalede, Windows ve Linux makineleriniz için güncelleştirmeleri uygulayan Güncelleştirme Yönetimi özelliğine bir genel bakış sunulmaktadır.
 services: automation
 ms.subservice: update-management
-ms.date: 01/13/2021
+ms.date: 01/22/2021
 ms.topic: conceptual
-ms.openlocfilehash: d66d4d32c788317d8b0781f9f24120fbce2f6f8f
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 718e812a8193797ad350fa61444bb05fe5a4b724
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98185623"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896910"
 ---
 # <a name="update-management-overview"></a>Güncelleştirme Yönetimi’ne genel bakış
 
@@ -185,16 +185,7 @@ Güncelleştirme Yönetimi kullanan bir makineye yönelik Azure Izleyici günlü
 
 ## <a name="network-planning"></a><a name="ports"></a>Ağ planlama
 
-Aşağıdaki adresler Güncelleştirme Yönetimi için özel olarak gereklidir. 443 numaralı bağlantı noktası üzerinden bu adreslerle iletişim oluşur.
-
-|Azure Genel  |Azure Kamu  |
-|---------|---------|
-|`*.ods.opinsights.azure.com`    | `*.ods.opinsights.azure.us`        |
-|`*.oms.opinsights.azure.com`     | `*.oms.opinsights.azure.us`        |
-|`*.blob.core.windows.net` | `*.blob.core.usgovcloudapi.net`|
-|`*.azure-automation.net` | `*.azure-automation.us`|
-
-Ağ grubu güvenlik kuralları oluşturduğunuzda veya Otomasyon hizmetine ve Log Analytics çalışma alanına giden trafiğe izin vermek üzere Azure Güvenlik Duvarı 'nı yapılandırdığınızda, **guestandhybridmanagement** ve **AzureMonitor** [hizmet etiketini](../../virtual-network/service-tags-overview.md#available-service-tags) kullanın. Bu, ağ güvenliği kurallarınızın devam eden yönetimini basitleştirir. Azure VM 'lerinizin Otomasyon hizmetine güvenli bir şekilde ve özel olarak bağlanmak için [Azure özel bağlantı kullanımı](../how-to/private-link-security.md)' nı gözden geçirin. Şirket içi güvenlik duvarı yapılandırmalarının bir parçası olarak dahil edilecek geçerli hizmet etiketi ve Aralık bilgilerini almak için bkz. [INDIRILEBILIR JSON dosyaları](../../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files).
+Güncelleştirme Yönetimi için gereken bağlantı noktaları, URL 'Ler ve diğer ağ ayrıntıları hakkında ayrıntılı bilgi için [Azure Otomasyonu ağ yapılandırması](../automation-network-configuration.md#hybrid-runbook-worker-and-state-configuration) 'nı denetleyin.
 
 Windows makinelerinde, Windows Update için gereken tüm uç noktalara giden trafiğe de izin vermeniz gerekir. [Http/proxy ile Ilgili sorunlarda](/windows/deployment/update/windows-update-troubleshooting#issues-related-to-httpproxy), gerekli uç noktaların güncelleştirilmiş bir listesini bulabilirsiniz. Yerel bir [Windows Update sunucunuz](/windows-server/administration/windows-server-update-services/plan/plan-your-wsus-deployment)varsa, [WSUS anahtarınıza](/windows/deployment/update/waas-wu-settings#configuring-automatic-updates-by-editing-the-registry)belirtilen sunucuya giden trafiğe de izin vermeniz gerekir.
 
@@ -227,11 +218,14 @@ Sonraki tabloda, Linux güncelleştirmeleri için desteklenen sınıflandırmala
 |Diğer güncelleştirmeler     | Doğası gereği önemli olmayan veya güvenlik güncelleştirmeleri olmayan diğer tüm güncelleştirmeler.        |
 
 >[!NOTE]
->Linux makineleri için güncelleştirme sınıflandırması yalnızca desteklenen Azure genel bulut bölgelerinde kullanıldığında kullanılabilir. Aşağıdaki ulusal bulut bölgelerinde Güncelleştirme Yönetimi kullanırken:
+>Linux makineleri için güncelleştirme sınıflandırması yalnızca desteklenen Azure genel bulut bölgelerinde kullanıldığında kullanılabilir. Aşağıdaki ulusal bulut bölgelerinde Güncelleştirme Yönetimi kullanılırken Linux güncelleştirmelerinin sınıflandırılması yoktur:
+>
 >* Azure ABD Kamu
 >* Çin 'de 21Vianet
 >
-> Linux güncelleştirmelerinin sınıflandırması yoktur ve bunlar **diğer güncelleştirmeler** kategorisi altında raporlanır. Güncelleştirme Yönetimi, desteklenen dağıtımlar tarafından yayınlanan verileri, özellikle de yayınlanan [oval](https://oval.mitre.org/) (açık güvenlik açığı ve değerlendirme dili) dosyalarını kullanır. Internet erişimi bu ulusal bulutlardan kısıtlandığı için Güncelleştirme Yönetimi bu dosyalara erişemez ve bu dosyaları tüketmez.
+> ' Nin sınıflandırılmakta olması yerine, **diğer güncelleştirmeler** kategorisi altında güncelleştirmeler raporlanır.
+>
+> Güncelleştirme Yönetimi, desteklenen dağıtımlar tarafından yayınlanan verileri, özellikle de yayınlanan [oval](https://oval.mitre.org/) (açık güvenlik açığı ve değerlendirme dili) dosyalarını kullanır. Internet erişimi bu ulusal bulutlardan kısıtlandığı için Güncelleştirme Yönetimi dosyalara erişemez.
 
 Linux için Güncelleştirme Yönetimi, bulutta bulunan önemli güncelleştirmeler **ve güvenlik güncelleştirmelerinin** **yanı sıra, bulutta** veri zenginleştirmesi nedeniyle değerlendirme verilerinin görüntülenmesini sağlar. Düzeltme eki uygulama Güncelleştirme Yönetimi makinede bulunan sınıflandırma verilerine bağımlıdır. Diğer dağıtımlardan farklı olarak, CentOS bu bilgileri RTM sürümünde kullanılamaz. Aşağıdaki komut için güvenlik verilerini döndürecek şekilde yapılandırılmış CentOS makineleriniz varsa, Güncelleştirme Yönetimi sınıflandırmalara göre düzeltme eki uygulanabilir.
 

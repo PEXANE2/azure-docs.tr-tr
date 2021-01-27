@@ -1,5 +1,5 @@
 ---
-title: Azure Media Services V2 ile v3 arasındaki terminoloji ve varlık değişiklikleri | Microsoft Docs
+title: Azure Media Services V2 ile v3 arasındaki terminoloji ve varlık değişiklikleri
 description: Bu makale, Azure Media Services V2 ile v3 arasındaki terminoloji farklarını açıklamaktadır.
 services: media-services
 author: IngridAtMicrosoft
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 1/14/2020
 ms.author: inhenkel
-ms.openlocfilehash: 9f657b853298cf0065da931835ea56ef2e0e0fe7
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: b53fbcb62004a8af9b2470c76f64f1ace845c1a8
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98690597"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98898401"
 ---
 # <a name="terminology-and-entity-changes-between-media-services-v2-and-v3"></a>Media Services V2 ve v3 arasındaki terminoloji ve varlık değişiklikleri
 
@@ -56,7 +56,7 @@ Media Services v3 kaynaklarına uygulanan adlandırma kurallarını gözden geç
 | `Job`<!-- row --> | `Job` | `Transform`Oluşturmadan önce oluşturun `Job` . | Hayır | Hayır |
 | `JobTemplate`<!-- row --> | `Transform` | `Transform`Bunun yerine bir kullanın. Bir dönüşüm, bir işten alınan ayrı bir varlıktır ve yeniden kullanılıyor. | Hayır | Hayır |
 | `Locator`<!-- row --> | `StreamingLocator` | <!--empty --> | Yes | Hayır |
-| `MediaProcessor`<!-- row --> | <!-- empty --> | `MediaProcessor`Adına göre kullanmak için ' i aramak yerine, bir dönüşüm tanımlarken istenen ön ayarı kullanın. Kullanılan ön ayar, iş sistemi tarafından kullanılan medya işlemcisini belirlemek için kullanılır. Bkz. [senaryo tabanlı kodlama](migrate-v-2-v-3-migration-scenario-based-encoding.md)içindeki kodlama konuları. <!--Probably needs a link to its own article so customers know Indexerv1 maps to AudioAnalyzerPreset in basic mode, etc.--> | No | NA (v2 'de ReadOnly) |
+| `MediaProcessor`<!-- row --> | <!-- empty --> | `MediaProcessor`Adına göre kullanmak için ' i aramak yerine, bir dönüşüm tanımlarken istenen ön ayarı kullanın. Kullanılan ön ayar, iş sistemi tarafından kullanılan medya işlemcisini belirlemek için kullanılır. Bkz. [senaryo tabanlı kodlama](migrate-v-2-v-3-migration-scenario-based-encoding.md)içindeki kodlama konuları. <!--Probably needs a link to its own article so customers know Indexerv1 maps to AudioAnalyzerPreset in basic mode, etc.--> | Hayır | NA (v2 'de ReadOnly) |
 | `NotificationEndPoint`<!-- row --> | <!--empty --> | V3 içindeki bildirimler Azure Event Grid aracılığıyla işlenir. , `NotificationEndpoint` Alınan Event Grid abonelik kaydıyla değiştirilmiştir (v2 'de `JobNotificationSubscription` Işin, `TaskNotificationSubscription` görevin ve telemetrisi tarafından işlendiği) yapılandırma için yapılandırmayı de Kapsüller `ComponentMonitoringSetting` . V2 telemetrisi, büyük Azure ekosisteminin geliştirmeleriyle uyum sağlamak için Azure Event Grid ile Azure Izleyici arasında bölündü. | Hayır | Hayır |
 | `Program`<!-- row --> | `LiveOutput` | Canlı çıktılar artık v3 API 'sindeki programları değiştirir.  | Hayır | Hayır |
 | `StreamingEndpoint`<!-- row --> | `StreamingEndpoint` | Akış uç noktaları, birincil olarak aynı kalır. Bunlar, doğrudan kaynaktan veya CDN aracılığıyla hem canlı hem de isteğe bağlı akış için HLS ve DASH içeriğinin dinamik paketleme, şifreleme ve teslim edilmesi için kullanılır. Yeni özellikler daha iyi Azure Izleyici tümleştirmesi ve grafik oluşturma desteği içerir. |  Yes | Yes |

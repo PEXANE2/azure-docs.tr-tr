@@ -8,12 +8,12 @@ ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 23c62562299768afb5f5d87bbcf4f7b19b3235ce
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: 1a319c728b918dbad7dd5f240bc7a0bfeb0c4c09
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97897867"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881053"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>AzCopy 'i yapılandırma, iyileştirme ve sorun giderme
 
@@ -22,7 +22,7 @@ AzCopy, bir depolama hesabına iki yönlü blob veya dosya kopyalama işlemi ger
 > [!NOTE]
 > AzCopy kullanmaya başlamanıza yardımcı olacak içerik arıyorsanız, aşağıdaki makalelerden birine bakın:
 > - [AzCopy’yi kullanmaya başlama](storage-use-azcopy-v10.md)
-> - [AzCopy ve BLOB Storage ile veri aktarma](storage-use-azcopy-blobs.md)
+> - [AzCopy ve BLOB Storage ile veri aktarma](./storage-use-azcopy-v10.md#transfer-data)
 > - [AzCopy ve dosya depolama ile verileri aktarma](storage-use-azcopy-files.md)
 > - [AzCopy ve Amazon S3 demetleri ile veri aktarma](storage-use-azcopy-s3.md)
 
@@ -220,5 +220,3 @@ Kullanılabilir günlük düzeyleri şunlardır: `NONE` , `DEBUG` , `INFO` , `WA
 Disk alanını kazanmak için yerel makinenizden tüm planı ve günlük dosyalarını kaldırmak istiyorsanız `azcopy jobs clean` komutunu kullanın.
 
 Yalnızca bir işle ilişkili planı ve günlük dosyalarını kaldırmak için kullanın `azcopy jobs rm <job-id>` . `<job-id>`Bu örnekteki yer tutucuyu işin iş kimliğiyle değiştirin.
-
-

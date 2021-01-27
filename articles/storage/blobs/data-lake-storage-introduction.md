@@ -8,12 +8,12 @@ ms.date: 02/25/2020
 ms.author: normesta
 ms.reviewer: jamesbak
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 5f2f3cfc5ccbdd6a3d3d3ede5bb39a3f6f548b19
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 1c4d04e25bf8f7d981c998baafb468f04b66eaf1
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95913105"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879907"
 ---
 # <a name="introduction-to-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage 2. Nesil'e giriş
 
@@ -39,7 +39,7 @@ Ayrıca, düşük maliyetli [Azure Blob depolama](storage-blobs-introduction.md)
 
 ## <a name="key-features-of-data-lake-storage-gen2"></a>Data Lake Storage 2. temel özellikleri
 
--   **Hadoop uyumlu erişim**: Data Lake Storage 2., verileri [Hadoop Dağıtılmış dosya sistemi (bir)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html)ile yaptığınız gibi yönetmenizi ve erişmenize olanak tanır. Yeni [ABFS sürücüsü](data-lake-storage-abfs-driver.md) (verilere erişmek için kullanılır) tüm Apache Hadoop ortamlarında kullanılabilir. Bu ortamlar [Azure HDInsight](../../hdinsight/index.yml)*,* [Azure Databricks](/azure/databricks/)ve [Azure SYNAPSE analizlerini](/azure/synapse-analytics)içerir.
+-   **Hadoop uyumlu erişim**: Data Lake Storage 2., verileri [Hadoop Dağıtılmış dosya sistemi (bir)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html)ile yaptığınız gibi yönetmenizi ve erişmenize olanak tanır. Yeni [ABFS sürücüsü](data-lake-storage-abfs-driver.md) (verilere erişmek için kullanılır) tüm Apache Hadoop ortamlarında kullanılabilir. Bu ortamlar [Azure HDInsight](../../hdinsight/index.yml)*,* [Azure Databricks](/azure/databricks/)ve [Azure SYNAPSE analizlerini](../../synapse-analytics/index.yml)içerir.
 
 -   **POSIX Izinlerinin bir üst kümesi**: Data Lake Gen2 için güvenlik modeli, Data Lake Storage 2. özgü bazı ayrıntı düzeyi Ile birlikte ACL 'LERI ve POSIX izinlerini destekler. Ayarlar, Depolama Gezgini veya Hive ve Spark gibi çerçeveler aracılığıyla yapılandırılabilir.
 

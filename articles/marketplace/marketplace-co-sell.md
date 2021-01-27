@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: vamahtan
 ms.author: vamahtan
 ms.date: 12/2/2020
-ms.openlocfilehash: 3693ff8ea213d0823237956c532e65d5094bf1ce
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 7969f5ffd3064a5af97a101185b6229c81c7613d
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96746327"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880296"
 ---
 # <a name="co-sell-partner-engagement"></a>Ortak satış iş ortağı etkileşimi
 
@@ -49,7 +49,7 @@ Bu tabloda, Market 'te ortak satış sunma veya ortak satış incentivized sağl
 ||Dynamics|<ul><li>ISV Connect Premium katmanında etkin bir kaydınız var.</li></ul>|Business Applications ortak satış incentivized|
 |||
 
-Ortak satış çözümü teklifleri için gereksinimler hakkında daha fazla bilgi için bkz. [ortak satış durumu gereksinimleri](https://aka.ms/CertificationPolicies#3000-requirements-for-co-sell-status).
+Ortak satış çözümü teklifleri için gereksinimler hakkında daha fazla bilgi için bkz. [ortak satış durumu gereksinimleri](/legal/marketplace/certification-policies#3000-requirements-for-co-sell-status).
 
 ## <a name="how-to-submit-co-sell-materials-in-partner-center"></a>Ortak Satım malzemeleri Iş Ortağı Merkezi 'ne nasıl gönderilir
 

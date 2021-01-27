@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 11/16/2020
 ms.author: cherylmc
-ms.openlocfilehash: 62ceafad0210065700e5c9734cfe9a055208ef35
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 01d87bcb5697326fa87b25b20354897049900d9d
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94657899"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880534"
 ---
 # <a name="configure-a-site-to-site-vpn-connection-over-expressroute-private-peering"></a>ExpressRoute özel eşlemesi üzerinden siteden siteye VPN bağlantısı yapılandırma
 
@@ -72,7 +72,7 @@ Bu örneklerde, Azure, VPN koruması olmadan doğrudan ExpressRoute üzerinden d
 
 ## <a name="portal-steps"></a><a name="portal"></a>Portal adımları
 
-1. Siteden siteye bağlantı yapılandırın. Adımlar için, [siteden siteye yapılandırma](vpn-gateway-howto-site-to-site-resource-manager-portal.md) makalesine bakın. Ağ Geçidi için bir bölge yedekli ağ geçidi SKU 'SU seçtiğinizden emin olun. 
+1. Siteden siteye bağlantı yapılandırın. Adımlar için, [siteden siteye yapılandırma](./tutorial-site-to-site-portal.md) makalesine bakın. Ağ Geçidi için bir bölge yedekli ağ geçidi SKU 'SU seçtiğinizden emin olun. 
 
    Bölgesel olarak yedekli SKU 'Ların SKU 'nun sonunda "AZ" vardır. Örneğin, **VpnGw1AZ**. Bölgesel olarak yedekli ağ geçitleri yalnızca kullanılabilirlik alanı hizmetinin kullanılabildiği bölgelerde kullanılabilir. Kullanılabilirlik bölgelerini desteklediğimiz bölgeler hakkında daha fazla bilgi için bkz. [kullanılabilirlik bölgelerini destekleyen bölgeler](../availability-zones/az-region.md).
 
@@ -80,7 +80,7 @@ Bu örneklerde, Azure, VPN koruması olmadan doğrudan ExpressRoute üzerinden d
 1. Ağ geçidinde özel IP 'Leri etkinleştirin. **Yapılandırma**' yı seçin, ardından **ağ geçidi özel IP** 'lerini **etkin** olarak ayarlayın. Değişikliklerinizi kaydetmek için **Kaydet** seçeneğini belirleyin.
 1. **Genel bakış** sayfasında, özel IP adresini görüntülemek Için **daha fazla göster** ' i seçin. Yapılandırma adımlarında daha sonra kullanmak için bu bilgileri yazın.
 
-   :::image type="content" source="media/site-to-site-vpn-private-peering/gateway-overview.png" alt-text="Genel Bakış sayfası" lightbox="media/site-to-site-vpn-private-peering/gateway-overview.png":::
+   :::image type="content" source="media/site-to-site-vpn-private-peering/gateway-overview.png" alt-text="Genel bakış sayfası" lightbox="media/site-to-site-vpn-private-peering/gateway-overview.png":::
 1. Bağlantıda **Azure özel IP adresi kullanımını** etkinleştirmek için  **yapılandırma**' yı seçin. **Azure özel IP adresi kullan** ' ı **etkin** olarak ayarlayın ve **Kaydet**' i seçin.
 
    :::image type="content" source="media/site-to-site-vpn-private-peering/connection.png" alt-text="Ağ Geçidi özel IP 'Leri-etkin":::
@@ -89,7 +89,7 @@ Bu örneklerde, Azure, VPN koruması olmadan doğrudan ExpressRoute üzerinden d
 
 ## <a name="powershell-steps"></a><a name="powershell"></a>PowerShell adımları
 
-1. Siteden siteye bağlantı yapılandırın. Adımlar için, [siteden sıteye VPN yapılandırma](vpn-gateway-howto-site-to-site-resource-manager-portal.md) makalesine bakın. Ağ Geçidi için bir bölge yedekli ağ geçidi SKU 'SU seçtiğinizden emin olun. Bölgesel olarak yedekli SKU 'Ların SKU 'nun sonunda "AZ" vardır. Örneğin, VpnGw1AZ.
+1. Siteden siteye bağlantı yapılandırın. Adımlar için, [siteden sıteye VPN yapılandırma](./tutorial-site-to-site-portal.md) makalesine bakın. Ağ Geçidi için bir bölge yedekli ağ geçidi SKU 'SU seçtiğinizden emin olun. Bölgesel olarak yedekli SKU 'Ların SKU 'nun sonunda "AZ" vardır. Örneğin, VpnGw1AZ.
 1. Aşağıdaki PowerShell komutlarını kullanarak ağ geçidinde özel IP 'yi kullanmak için bayrağını ayarlayın:
 
    ```azurepowershell-interactive

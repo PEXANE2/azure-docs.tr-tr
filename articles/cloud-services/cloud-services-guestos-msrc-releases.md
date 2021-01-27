@@ -10,48 +10,98 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 12/21/2020
+ms.date: 1/26/2021
 ms.author: yohaddad
-ms.openlocfilehash: 7f683b5002fd31b599ae6fadeb82e5c6f5ce56a0
-ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
+ms.openlocfilehash: 7384b902e1bde46c55bcfa30b2aa46122445b05e
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/21/2020
-ms.locfileid: "97708915"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98877518"
 ---
 # <a name="azure-guest-os"></a>Azure Konuk işletim sistemi
 Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güvenlik Yanıt Merkezi (MSRC) güncelleştirmeleri gösterilmektedir. Belirli bir güncelleştirmenin kullanmakta olduğunuz Konuk işletim sistemi için geçerli olup olmadığını öğrenmek için bu makaleye arama yapın. Güncelleştirmeler her zaman üzerinde tanıtılan belirli bir [Aile][family-explain] için ileri doğru şekilde devam ederler.
 
-## <a name="december-2020-guest-os"></a>Aralık 2020 Konuk işletim sistemi
->[!NOTE] 
-
->Aralık Konuk işletim sistemi şu anda otomatik güncelleştirmeler için yapılandırılmış bulut hizmeti VM 'lerine devredilir. Dağıtım tamamlandığında, bu sürüm Azure portal ve yapılandırma dosyaları aracılığıyla el ile güncelleştirmeler için kullanılabilir hale getirilir. Aşağıdaki düzeltme ekleri, Aralık Konuk işletim sisteminde bulunur. Bu liste değişikliğe tabidir. 
+## <a name="january-2021-guest-os"></a>Ocak 2021 Konuk işletim sistemi
+>[!NOTE]
+>Ocak Konuk işletim sistemi, şu anda otomatik güncelleştirmeler için yapılandırılmış bulut hizmeti VM 'lerine alındı. Dağıtım tamamlandığında, bu sürüm Azure portal ve yapılandırma dosyaları aracılığıyla el ile güncelleştirmeler için kullanılabilir hale getirilir. Aşağıdaki düzeltme ekleri, Ocak Konuk işletim sistemine dahildir. Bu liste değişebilir. "
 
 | Ürün Kategorisi | Üst KB makalesi | Güvenlik açığı açıklaması | Konuk işletim sistemi | Ilk tanıtılan Tarih |
 | --- | --- | --- | --- | --- |
-|  Rel 20-12 |  [4592440]  |  En son birikimli güncelleştirme | 6,26 | 8. ara, 2020 |
-|  Rel 20-12 |  [4580325]  |  Flash güncelleştirmesi | 3,92, 4,85, 5,50, 6,26 | 13 Ekim 2020 |
-|  Rel 20-12 |  [4586768]  |  IE toplu güncelleştirmeleri | 2,105, 3,92, 4,85 | 10 Kasım 2020 |
-|  Rel 20-12 |  [4593226]  |  En son birikimli güncelleştirme | 5,50 | 8. ara, 2020 |
-|  Rel 20-12 |  [4052623]  |  Defender | 5,50, 6,26 | 13. ara, 2020 |
-|  Rel 20-12 |  [4578952]  |  .NET Framework 3,5 güvenlik ve kalite toplaması | 2,105 | 10 Kasım 2020 |
-|  Rel 20-12 |  [4578955]  |  .NET Framework 4.5.2 güvenlik ve kalite toplaması | 2,105 | 10 Kasım 2020 |
-|  Rel 20-12 |  [4578953]  |  .NET Framework 3,5 güvenlik ve kalite toplaması | 4,85 | 10 Kasım 2020 |
-|  Rel 20-12 |  [4578956]  |  .NET Framework 4.5.2 güvenlik ve kalite toplaması | 4,85 | 10 Kasım 2020 |
-|  Rel 20-12 |  [4578950]  |  .NET Framework 3,5 güvenlik ve kalite toplaması | 3,92 | 10 Kasım 2020 |
-|  Rel 20-12 |  [4578954]  |  .NET Framework 4.5.2 güvenlik ve kalite toplaması | 3,92 | 10 Kasım 2020 |
-|  Rel 20-12 |  [4578966]  |  .NET Framework 3,5 ve 4.7.2 toplu güncelleştirmesi | 6,26 | 13 Ekim 2020 |
-|  Rel 20-12 |  [4592471]  |  Aylık toplu | 2,105 | 8. ara, 2020 |
-|  Rel 20-12 |  [4592468]  |  Aylık toplu | 3,92 | 8. ara, 2020 |
-|  Rel 20-12 |  [4592484]  |  Aylık toplu | 4,85 | 8. ara, 2020 |
-|  Rel 20-12 |  [4566426]  |  Hizmet yığını güncelleştirmesi | 3,92 | 14 Temmuz 2020 |
-|  Rel 20-12 |  [4566425]  |  Hizmet yığını güncelleştirmesi | 4,85 | 14 Temmuz 2020 |
-|  Rel 20-12 OOB |  [4578013]  |  Tek başına güvenlik güncelleştirmesi | 4,85 | 19 Ağu 2020 |
-|  Rel 20-12 |  [4576750]  |  Hizmet yığını güncelleştirmesi | 5,50 | 8 Eyl, 2020 |
-|  Rel 20-12 |  [4592510]  |  Hizmet yığını güncelleştirmesi | 2,105 | 8. ara, 2020 |
-|  Rel 20-12 |  [4587735]  |  Hizmet yığını güncelleştirmesi | 6,26 | 10 Kasım 2020 |
-|  Rel 20-12 |  [4494175]  |  Mikro kod | 5,50 | 1 Eyl, 2020 |
-|  Rel 20-12 |  [4494174]  |  Mikro kod | 6,26 | Eyl 3, 2020 |
+|  Rel 21-01 |  [4598230]  |  En son toplu güncelleştirme (LCU) | 6,27 | 12 Ocak 2021 |
+|  Rel 21-01 |  [4580325]  |  Flash güncelleştirmesi | 3,93, 4,86, 5,51, 6,27 | 13 Ekim 2020 |
+|  Rel 21-01 |  [4586768]  |  IE toplu güncelleştirmeleri | 2,106, 3,93, 4,86 | 10 Kasım 2020 |
+|  Rel 21-01 |  [4598243]  |  En son toplu güncelleştirme (LCU) | 5,51 | 12 Ocak 2021 |
+|  Rel 21-01 |  [4578952]  |  .NET Framework 3,5 güvenlik ve kalite toplaması | 2,106 | 12 Ocak 2021 |
+|  Rel 21-01 |  [4578955]  |  .NET Framework 4.5.2 güvenlik ve kalite toplaması | 2,106 | 12 Ocak 2021 |
+|  Rel 21-01 |  [4578953]  |  .NET Framework 3,5 güvenlik ve kalite toplaması | 4,86 | 12 Ocak 2021 |
+|  Rel 21-01 |  [4578956]  |  .NET Framework 4.5.2 güvenlik ve kalite toplaması | 4,86 | 12 Ocak 2021 |
+|  Rel 21-01 |  [4578950]  |  .NET Framework 3,5 güvenlik ve kalite toplaması | 3,93 | 12 Ocak 2021 |
+|  Rel 21-01 |  [4578954]  |  .NET Framework 4.5.2 güvenlik ve kalite toplaması | 3,93 | 12 Ocak 2021 |
+|  Rel 21-01 |  [4578966]  |  .NET Framework 3,5 ve 4.7.2 toplu güncelleştirmesi | 6,27 | 13 Ekim 2020 |
+|  Rel 21-01 |  [4598279]  |  Aylık toplu | 2,106 | 12 Ocak 2020 |
+|  Rel 21-01 |  [4598278]  |  Aylık toplu | 3,93 | 12 Ocak 2020 |
+|  Rel 21-01 |  [4598285]  |  Aylık toplu | 4,86 | 12 Ocak 2020 |
+|  Rel 21-01 |  [4566426]  |  Hizmet yığını güncelleştirmesi | 3,93 | 14 Temmuz 2020 |
+|  Rel 21-01 |  [4566425]  |  Hizmet yığını güncelleştirmesi | 4,86 | 14 Temmuz 2020 |
+|  Rel 21-01 OOB |  [4578013]  |  Tek başına güvenlik güncelleştirmesi | 4,86 | 19 Ağu 2020 |
+|  Rel 21-01 |  [4576750]  |  Hizmet yığını güncelleştirmesi | 5,51 | 8 Eyl, 2020 |
+|  Rel 21-01 |  [4592510]  |  Hizmet yığını güncelleştirmesi | 2,106 | 8. ara, 2020 |
+|  Rel 21-01 |  [4598480]  |  Hizmet yığını güncelleştirmesi | 6,27 | 12 Ocak 2021 |
+|  Rel 21-01 |  [4494175]  |  Mikro kod | 5,51 | 1 Eyl, 2020 |
+|  Rel 21-01 |  [4494174]  |  Mikro kod | 6,27 | Eyl 3, 2020 |
+
+[4598230]: https://support.microsoft.com/kb/4598230
+[4580325]: https://support.microsoft.com/kb/4580325
+[4586768]: https://support.microsoft.com/kb/4586768
+[4598243]: https://support.microsoft.com/kb/4598243
+[4578952]: https://support.microsoft.com/kb/4578952
+[4578955]: https://support.microsoft.com/kb/4578955
+[4578953]: https://support.microsoft.com/kb/4578953
+[4578956]: https://support.microsoft.com/kb/4578956
+[4578950]: https://support.microsoft.com/kb/4578950
+[4578954]: https://support.microsoft.com/kb/4578954
+[4578966]: https://support.microsoft.com/kb/4578966
+[4598279]: https://support.microsoft.com/kb/4598279
+[4598278]: https://support.microsoft.com/kb/4598278
+[4598285]: https://support.microsoft.com/kb/4598285
+[4566426]: https://support.microsoft.com/kb/4566426
+[4566425]: https://support.microsoft.com/kb/4566425
+[4578013]: https://support.microsoft.com/kb/4578013
+[4576750]: https://support.microsoft.com/kb/4576750
+[4592510]: https://support.microsoft.com/kb/4592510
+[4598480]: https://support.microsoft.com/kb/4598480
+[4494175]: https://support.microsoft.com/kb/4494175
+[4494174]: https://support.microsoft.com/kb/4494174
+
+
+## <a name="december-2020-guest-os"></a>Aralık 2020 Konuk işletim sistemi
+
+| Ürün Kategorisi | Üst KB makalesi | Güvenlik açığı açıklaması | Konuk işletim sistemi | Ilk tanıtılan Tarih |
+| --- | --- | --- | --- | --- |
+|  Rel 20-12 |  [4592440]  |  En son birikimli güncelleştirme | [6,26] | 8. ara, 2020 |
+|  Rel 20-12 |  [4580325]  |  Flash güncelleştirmesi | [3,92], [4,85], [5,50], [6,26] | 13 Ekim 2020 |
+|  Rel 20-12 |  [4586768]  |  IE toplu güncelleştirmeleri | [2,105], [3,92], [4,85] | 10 Kasım 2020 |
+|  Rel 20-12 |  [4593226]  |  En son birikimli güncelleştirme | [5,50] | 8. ara, 2020 |
+|  Rel 20-12 |  [4052623]  |  Defender | [5,50], [6,26] | 13. ara, 2020 |
+|  Rel 20-12 |  [4578952]  |  .NET Framework 3,5 güvenlik ve kalite toplaması | [2,105] | 10 Kasım 2020 |
+|  Rel 20-12 |  [4578955]  |  .NET Framework 4.5.2 güvenlik ve kalite toplaması | [2,105] | 10 Kasım 2020 |
+|  Rel 20-12 |  [4578953]  |  .NET Framework 3,5 güvenlik ve kalite toplaması | [4,85] | 10 Kasım 2020 |
+|  Rel 20-12 |  [4578956]  |  .NET Framework 4.5.2 güvenlik ve kalite toplaması | [4,85] | 10 Kasım 2020 |
+|  Rel 20-12 |  [4578950]  |  .NET Framework 3,5 güvenlik ve kalite toplaması | [3,92] | 10 Kasım 2020 |
+|  Rel 20-12 |  [4578954]  |  .NET Framework 4.5.2 güvenlik ve kalite toplaması | [3,92] | 10 Kasım 2020 |
+|  Rel 20-12 |  [4578966]  |  .NET Framework 3,5 ve 4.7.2 toplu güncelleştirmesi | [6,26] | 13 Ekim 2020 |
+|  Rel 20-12 |  [4592471]  |  Aylık toplu | [2,105] | 8. ara, 2020 |
+|  Rel 20-12 |  [4592468]  |  Aylık toplu | [3,92] | 8. ara, 2020 |
+|  Rel 20-12 |  [4592484]  |  Aylık toplu | [4,85] | 8. ara, 2020 |
+|  Rel 20-12 |  [4566426]  |  Hizmet yığını güncelleştirmesi | [3,92] | 14 Temmuz 2020 |
+|  Rel 20-12 |  [4566425]  |  Hizmet yığını güncelleştirmesi | [4,85] | 14 Temmuz 2020 |
+|  Rel 20-12 OOB |  [4578013]  |  Tek başına güvenlik güncelleştirmesi | [4,85] | 19 Ağu 2020 |
+|  Rel 20-12 |  [4576750]  |  Hizmet yığını güncelleştirmesi | [5,50] | 8 Eyl, 2020 |
+|  Rel 20-12 |  [4592510]  |  Hizmet yığını güncelleştirmesi | [2,105] | 8. ara, 2020 |
+|  Rel 20-12 |  [4587735]  |  Hizmet yığını güncelleştirmesi | [6,26] | 10 Kasım 2020 |
+|  Rel 20-12 |  [4494175]  |  Mikro kod | [5,50] | 1 Eyl, 2020 |
+|  Rel 20-12 |  [4494174]  |  Mikro kod | [6,26] | Eyl 3, 2020 |
 
 [4592440]: https://support.microsoft.com/kb/4592440
 [4580325]: https://support.microsoft.com/kb/4580325
@@ -76,7 +126,11 @@ Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güv
 [4587735]: https://support.microsoft.com/kb/4587735
 [4494175]: https://support.microsoft.com/kb/4494175
 [4494174]: https://support.microsoft.com/kb/4494174
-
+[2,105]: ./cloud-services-guestos-update-matrix.md#family-2-releases
+[3,92]: ./cloud-services-guestos-update-matrix.md#family-3-releases
+[4,85]: ./cloud-services-guestos-update-matrix.md#family-4-releases
+[5,50]: ./cloud-services-guestos-update-matrix.md#family-5-releases
+[6,26]: ./cloud-services-guestos-update-matrix.md#family-6-releases
 
 ## <a name="november-2020-guest-os"></a>Kasım 2020 Konuk işletim sistemi
 
@@ -446,14 +500,14 @@ Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güv
 
 | Ürün Kategorisi | Üst KB makalesi | Güvenlik açığı açıklaması | Konuk işletim sistemi | Ilk tanıtılan Tarih |
 | --- | --- | --- | --- | --- |
-|  Rel 20-04   |  [4550965]  |  Windows güvenliği   |  [2.97]  |  14 Nisan 2020  |
+|  Rel 20-04   |  [4550965]  |  Windows güvenliği   |  [2,97]  |  14 Nisan 2020  |
 |  Rel 20-04   |  [4550905]  |  Internet Explorer   |  [2,97], [3,84], [4,77]  |  14 Nisan 2020  |
 |  Rel 20-04   |  [4550971]  |  Windows güvenliği   |  [3,84]  |  14 Nisan 2020  |
 |  Rel 20-04   |  [4550970]  |  Windows güvenliği   |  [4,77]  |  14 Nisan 2020  |
 |  Rel 20-04   |  [4550929]  |  En son toplu güncelleştirme (LCU)   |  [5,42]  |  14 Nisan 2020  |
 |  Rel 20-04   |  [4549949]  |  En son toplu güncelleştirme (LCU)   |  [6,18]  |  14 Nisan 2020  |
-|  Rel 20-04   |  [4540688]  |  Aylık toplu   |  [2.97]  |  10 Mar, 2020  |
-|  Rel 20-04   |  [4550735]  |  Hizmet yığını güncelleştirmesi   |  [2.97]  |  10 Mar, 2020  |
+|  Rel 20-04   |  [4540688]  |  Aylık toplu   |  [2,97]  |  10 Mar, 2020  |
+|  Rel 20-04   |  [4550735]  |  Hizmet yığını güncelleştirmesi   |  [2,97]  |  10 Mar, 2020  |
 |  Rel 20-04   |  [4540726]  |  Hizmet yığını güncelleştirmesi   |  [3,84]  |  10 Mar, 2020  |
 |  Rel 20-04   |  [4541510]  |  Aylık toplu   |  [3,84]  |  10 Mar, 2020  |
 |  Rel 20-04   |  [4541509]  |  Aylık toplu   |  [4,77]  |  10 Mar, 2020  |
@@ -476,7 +530,7 @@ Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güv
 [4540725]: https://support.microsoft.com/kb/4540725
 [4540723]: https://support.microsoft.com/kb/4540723
 [4539571]: https://support.microsoft.com/kb/4539571
-[2.97]: ./cloud-services-guestos-update-matrix.md#family-2-releases
+[2,97]: ./cloud-services-guestos-update-matrix.md#family-2-releases
 [3,84]: ./cloud-services-guestos-update-matrix.md#family-3-releases
 [4,77]: ./cloud-services-guestos-update-matrix.md#family-4-releases
 [5,42]: ./cloud-services-guestos-update-matrix.md#family-5-releases
@@ -792,8 +846,8 @@ Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güv
 |  Rel 19-08   |  [4512482]  |  Windows güvenliği   |  [3,76]  |  13 Ağu, 2019  |
 |  Rel 19-08   |  [4494175]  |  Mikro kod güncelleştirmesi   |  [5,34]  |  18 Haz 2019  |
 |  Rel 19-08   |  [4512517]  |  En son birikimli güncelleştirme   |  [5,34]  |  13 Ağu, 2019  |
-|  Rel 19-08   |  [4494174]  |  Mikro kod güncelleştirmesi   |  [6,1]  |  18 Haz 2019  |
-|  Rel 19-08   |  [4511553]  |  En son birikimli güncelleştirme   |  [6,1]  |  13 Ağu, 2019  |
+|  Rel 19-08   |  [4494174]  |  Mikro kod güncelleştirmesi   |  [6.1]  |  18 Haz 2019  |
+|  Rel 19-08   |  [4511553]  |  En son birikimli güncelleştirme   |  [6.1]  |  13 Ağu, 2019  |
 |  Rel 19-08   |  [4512486]  |  Windows güvenliği   |  [2,89]  |  13 Ağu, 2019  |
 |  Rel 19-08   |  [4512489]  |  Windows güvenliği   |  [4,69]  |  13 Ağu, 2019  |
 |  Rel 19-08   |  [4511872]  |  Internet Explorer    |  [2,89], [3,76], [4,69]  |  15 Ağu, 2019  |
@@ -805,8 +859,8 @@ Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güv
 |  Rel 19-08   |  [4507005]  |  .NET 3,5 güvenlik dışı    |  [4,69]  |  12 Ağu, 2019  |
 |  Rel 19-08   |  [4507448]  |  Güvenlik dışı   |  [4,69]  |  9 Temmuz 2019  |
 |  Rel 19-08   |  [4509091]  |  Hizmet yığını güncelleştirmesi   |  [5,34]  |  9 Temmuz 2019  |
-|  Rel 19-08   |  [4509095]  |  Hizmet yığını güncelleştirmesi   |  [6,1]  |  9 Temmuz 2019  |
-|  Rel 19-08   |  [4512937]  |  Hizmet yığını güncelleştirmesi   |  [6,1]  |  29 Temmuz 2019  |
+|  Rel 19-08   |  [4509095]  |  Hizmet yığını güncelleştirmesi   |  [6.1]  |  9 Temmuz 2019  |
+|  Rel 19-08   |  [4512937]  |  Hizmet yığını güncelleştirmesi   |  [6.1]  |  29 Temmuz 2019  |
 |  Rel 19-08   |  [4507004]  |  .NET 3.5.1 güvenlik dışı    |  [2,89]  |  12 Ağu, 2019  |
 |  Rel 19-08   |  [4504418]  |  Hizmet yığını güncelleştirmesi   |  [3,76], [4,69]  |  11 Temmuz 2019  |
 |  Rel 19-08   |  [4507001]  |  .NET 4.5.2 güvenlik dışı   |  [2,89]  |  12 Ağu, 2019  |
@@ -835,7 +889,7 @@ Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güv
 [4507001]: https://support.microsoft.com/kb/4507001
 [4507704]: https://support.microsoft.com/kb/4507704
 
-[6,1]: ./cloud-services-guestos-update-matrix.md#family-6-releases
+[6.1]: ./cloud-services-guestos-update-matrix.md#family-6-releases
 [5,34]: ./cloud-services-guestos-update-matrix.md#family-5-releases
 [4,69]: ./cloud-services-guestos-update-matrix.md#family-4-releases
 [3,76]: ./cloud-services-guestos-update-matrix.md#family-3-releases
@@ -853,9 +907,9 @@ Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güv
 |  Rel 19-07   |  [4506965]  |  .NET 4.5.2 güvenliği   |  3,75  |  9 Temmuz 2019  |
 |  Rel 19-07   |  [4506974]  |  .NET 3,5 güvenliği   |  3,75  |  9 Temmuz 2019  |
 |  Rel 19-07   |  [4507464]  |  Windows güvenliği   |  3,75  |  9 Temmuz 2019  |
-|  Rel 19-07   |  [4506964]  |  .NET 4.5.2 güvenliği   |  4,68  |  9 Temmuz 2019  |
-|  Rel 19-07   |  [4506977]  |  .NET 3,5 güvenliği   |  4,68  |  9 Temmuz 2019  |
-|  Rel 19-07   |  [4507457]  |  Windows güvenliği   |  4,68  |  9 Temmuz 2019  |
+|  Rel 19-07   |  [4506964]  |  .NET 4.5.2 güvenliği   |  4.68  |  9 Temmuz 2019  |
+|  Rel 19-07   |  [4506977]  |  .NET 3,5 güvenliği   |  4.68  |  9 Temmuz 2019  |
+|  Rel 19-07   |  [4507457]  |  Windows güvenliği   |  4.68  |  9 Temmuz 2019  |
 |  Rel 19-07   |  [4507460]  |  Windows güvenliği   |  5.33  |  9 Temmuz 2019  |
 |  Rel 19-07   |  [4506998]  |  .NET 3,5 & 4.7.2 güvenliği   |  6,9  |  9 Temmuz 2019  |
 |  Rel 19-07   |  [4507469]  |  Windows güvenliği   |  6,9  |  9 Temmuz 2019  |
@@ -863,7 +917,7 @@ Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güv
 |  Yok  |  [4504369]  |  Haziran ' 19 hizmet yığını güncelleştirmesi (sunucu 2019)   |  6,9  |  14 Mayıs 2019  |
 |  Yok  |  [4503292]  |  Haziran ' 19 güvenlik dışı (sunucu 2008 R2)   |  2,88  |  20 Mayıs 2019  |
 |  Yok  |  [4503285]  |  Haziran ' 19 güvenlik dışı (sunucu 2012)   |  3,75  |  14 Mayıs 2019  |
-|  Yok  |  [4503276]  |  Haziran ' 19 güvenlik dışı (sunucu 2012 R2)   |  4,68  |  14 Mayıs 2019  |
+|  Yok  |  [4503276]  |  Haziran ' 19 güvenlik dışı (sunucu 2012 R2)   |  4.68  |  14 Mayıs 2019  |
 
 [4507434]: https://support.microsoft.com/kb/4507434
 [4506621]: https://support.microsoft.com/kb/4506621
@@ -1565,7 +1619,7 @@ Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güv
 ## <a name="april-2017-guest-os"></a>Nisan 2017 Konuk işletim sistemi
 | Ürün Kategorisi | Üst KB makalesi | Güvenlik açığı açıklaması | Konuk işletim sistemi | Ilk tanıtılan Tarih |
 | --- | --- | --- | --- | --- |
-| Rel 17-04 |  [4015217]  |WS 2016 OS kalite Iyileştirmeleri | 5,6 | 11 Nisan 2017 |
+| Rel 17-04 |  [4015217]  |WS 2016 OS kalite Iyileştirmeleri | 5.6 | 11 Nisan 2017 |
 | Rel 17-04 |  [4015546]  |Yalnızca Windows güvenliği |2,61 | 11 Nisan 2017 |
 | Rel 17-04 |  [4015547]  |Yalnızca Windows güvenliği |4,41 | 11 Nisan 2017 |
 | Rel 17-04 |  [4015548]  |Yalnızca Windows güvenliği |3,48 | 11 Nisan 2017 |
@@ -1573,7 +1627,7 @@ Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güv
 | Rel 17-04 |  [4014550]; [4014560]; [4014562]; [4014556]; [4014574] |.NET güvenliği |4,41 | 11 Nisan 2017 |
 | Rel 17-04 |  [4014564]; [4014572]; [4014549] |.NET güvenliği |3,48 | 11 Nisan 2017 |
 | Rel 17-04 |  [4014566]; [4014552]; [4014573]; [4014558]  |.NET güvenliği |2,61 | 11 Nisan 2017 |
-| Rel 17-04 |  [4015546]; [4015547]; [4015548]; [4015217]  |CVE-2017-0181 |5,6 | 11 Nisan 2017 |
+| Rel 17-04 |  [4015546]; [4015547]; [4015548]; [4015217]  |CVE-2017-0181 |5.6 | 11 Nisan 2017 |
 | Rel 17-04 |  [4015546]; [4015547]; [4015548]; [4015217]  |CVE-2017-0163; CVE-2017-0183; CVE-2017-0184; CVE-2017-0184; CVE-2017-0185; CVE-2017-0168 |2,61, 3,48, 4,41 | 11 Nisan 2017 |
 | Rel 17-04 |  [4015546]; [4015547]; [4015548]; [4015217]  |CVE-2017-0178; CVE-2017-0179; CVE-2017-0162; CVE-2017-0169 |4,41 | 11 Nisan 2017 |
 | Rel 17-04 |  [4015546]; [4015547]; [4015548]; [4015217]  |CVE-2017-0182; CVE-2017-0186; CVE-2017-0191 |2,61, 3,48, 4,41, 5,6 | 11 Nisan 2017 |
@@ -1585,7 +1639,7 @@ Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güv
 ## <a name="march-2017-guest-os"></a>Mart 2017 Konuk işletim sistemi
 | Ürün Kategorisi | Üst KB makalesi | Güvenlik açığı açıklaması | Konuk işletim sistemi | Ilk tanıtılan Tarih |
 | --- | --- | --- | --- | --- |
-| Rel 17-03 |  [4013429] |Geliştirmeler ve düzeltmeler | 5,5 | 14 Mart 2017 |
+| Rel 17-03 |  [4013429] |Geliştirmeler ve düzeltmeler | 5.5 | 14 Mart 2017 |
 | Rel 17-03 |  [4012212] |Windows 7 SP1 ve Windows Server 2008 R2 SP1 için Mart 2017 güvenlik yalnızca kalite güncelleştirmesi |2.60 |14 Mart 2017 |
 | Rel 17-03 |  [4012213] |Windows 8.1 ve Windows Server 2012 R2 için Mart 2017 güvenlik yalnızca kalite güncelleştirmesi |4,40 |14 Mart 2017 |
 | Rel 17-03 |  [4012214] |Mart 2017 güvenlik yalnızca Windows Server 2012 için kalite güncelleştirmesi|3,47 |14 Mart 2017 |
@@ -1594,7 +1648,7 @@ Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güv
 | Yok |  [3212646] |Windows 7 SP1 ve Windows Server 2008 R2 SP1 için Ocak 2017 güvenlik aylık kalite toplaması |2.60 |14 Mart 2017 |
 | Yok |  [3205409] |Windows Server 2012 için Aralık 2016 güvenlik aylık kalite toplaması |3,47 |14 Mart 2017 |
 | Yok |  [3205401] |Windows 8.1 ve Windows Server 2012 R2 için Aralık 2016 güvenlik aylık kalite toplaması |4,40 |14 Mart 2017 |
-| Yok |  [3211320] |Windows 10 sürüm 1607 ve Windows Server 2016 için yığın güncelleştirmesi Bakımı: 24 Ocak 2017 |5,5 |14 Mart 2017 |
+| Yok |  [3211320] |Windows 10 sürüm 1607 ve Windows Server 2016 için yığın güncelleştirmesi Bakımı: 24 Ocak 2017 |5.5 |14 Mart 2017 |
 
 ## <a name="january-2017-guest-os"></a>Ocak 2017 Konuk işletim sistemi
 | Bülten No | Üst KB makalesi | Güvenlik açığı açıklaması | Konuk işletim sistemi | Ilk tanıtılan Tarih |
@@ -1656,7 +1710,7 @@ Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güv
 | Yok |[3185278] |Windows 7 SP1 ve Windows Server 2008 R2 SP1 için Eylül 2016 güncelleştirme paketi |2,56 |11 Ekim 2016 |
 | Yok |[3185280] |Windows Server 2012 için Eylül 2016 güncelleştirme paketi |3,44 |11 Ekim 2016 |
 | Yok |[3185279] |Windows 8.1 ve Windows Server 2012 R2 için Eylül 2016 güncelleştirme paketi |4,37 |11 Ekim 2016 |
-| Yok |[3194798] |Windows 10 sürüm 1607 ve Windows Server 2016 için toplu güncelleştirme |5,2 |11 Ekim 2016 |
+| Yok |[3194798] |Windows 10 sürüm 1607 ve Windows Server 2016 için toplu güncelleştirme |5.2 |11 Ekim 2016 |
 
 ## <a name="september-2016-guest-os"></a>Eylül 2016 Konuk işletim sistemi
 | Bülten No | Üst KB makalesi | Güvenlik açığı açıklaması | Konuk işletim sistemi | Ilk tanıtılan Tarih |

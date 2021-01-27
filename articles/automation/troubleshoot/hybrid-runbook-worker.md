@@ -2,19 +2,15 @@
 title: Azure Otomasyonu karma Runbook Worker sorunlarını giderme
 description: Bu makalede, Azure Otomasyonu karma runbook çalışanları ile ortaya çıkan sorunları giderme ve çözme işlemleri açıklanır.
 services: automation
-ms.service: automation
 ms.subservice: ''
-author: mgoedtel
-ms.author: magoedte
 ms.date: 11/25/2019
-ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 1386dd820b10b63862ddab38c441f251bea1d83d
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.topic: troubleshooting
+ms.openlocfilehash: 214501c447632232dc00b61643ea21083bd0e4ac
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92428394"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896503"
 ---
 # <a name="troubleshoot-hybrid-runbook-worker-issues"></a>Karma Runbook Çalışanı ile ilgili sorunları giderme
 
@@ -46,7 +42,7 @@ Olası nedenler şunlardır:
 
 #### <a name="resolution"></a>Çözüm
 
-443 numaralı bağlantı noktasında bilgisayarın ** \* . Azure-Automation.net** 'e giden erişimi olduğunu doğrulayın.
+443 numaralı bağlantı noktasında bilgisayarın **\* . Azure-Automation.net** 'e giden erişimi olduğunu doğrulayın.
 
 Karma runbook çalışanı çalıştıran bilgisayarların, çalışan bu özelliği barındıracak şekilde yapılandırmadan önce en düşük donanım gereksinimlerini karşılaması gerekir. Runbook 'lar ve kullandıkları arka plan işlemi, sistemin aşırı kullanılmasına ve runbook iş gecikmeleri veya zaman aşımları oluşmasına neden olabilir.
 
@@ -58,7 +54,7 @@ Açıklamasıyla ilgili bir olay için **Microsoft-SMA** olay günlüğü ' ne b
 
 #### <a name="issue"></a>Sorun
 
-Karma Runbook Worker, bir sorgu sonucunun geçerli olmadığını belirten Event 15011 alır. Çalışan, [SignalR sunucusuyla](/aspnet/core/signalr/introduction?view=aspnetcore-3.1)bir bağlantı açmayı denediğinde aşağıdaki hata görüntülenir.
+Karma Runbook Worker, bir sorgu sonucunun geçerli olmadığını belirten Event 15011 alır. Çalışan, [SignalR sunucusuyla](/aspnet/core/signalr/introduction)bir bağlantı açmayı denediğinde aşağıdaki hata görüntülenir.
 
 ```error
 [AccountId={c7d22bd3-47b2-4144-bf88-97940102f6ca}]
@@ -194,7 +190,7 @@ Aracı çalışmıyorsa, hizmeti başlatmak için şu komutu çalıştırın: `s
 
 ### <a name="scenario-the-specified-class-doesnt-exist"></a><a name="class-does-not-exist"></a>Senaryo: belirtilen sınıf yok
 
-`The specified class does not exist..` **/Var/seçenek/Microsoft/omsconfig/omsconfig.log**dosyasında hata Iletisini görürseniz, Linux için Log Analytics aracısının güncelleştirilmesi gerekir. Aracıyı yeniden yüklemek için aşağıdaki komutu çalıştırın.
+`The specified class does not exist..` **/Var/seçenek/Microsoft/omsconfig/omsconfig.log** dosyasında hata Iletisini görürseniz, Linux için Log Analytics aracısının güncelleştirilmesi gerekir. Aracıyı yeniden yüklemek için aşağıdaki komutu çalıştırın.
 
 ```bash
 wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w <WorkspaceID> -s <WorkspaceKey>
@@ -226,7 +222,7 @@ PowerShell 'de aşağıdaki komutu girerek aracının çalıştığını doğrul
 
 #### <a name="cause"></a>Nedeni
 
-Bu sorunun nedeni, proxy 'niz veya ağ güvenlik duvarınız Microsoft Azure ile iletişimi engelliyor olabilir. 443 numaralı bağlantı noktasında bilgisayarın ** \* . Azure-Automation.net** 'e giden erişimi olduğunu doğrulayın.
+Bu sorunun nedeni, proxy 'niz veya ağ güvenlik duvarınız Microsoft Azure ile iletişimi engelliyor olabilir. 443 numaralı bağlantı noktasında bilgisayarın **\* . Azure-Automation.net** 'e giden erişimi olduğunu doğrulayın.
 
 #### <a name="resolution"></a>Çözüm
 
@@ -238,7 +234,7 @@ Hibrit çalışanlar, bulutta çalışan runbook işlerinin çıkış ve mesaj g
 
 #### <a name="issue"></a>Sorun
 
-Windows karma Runbook Worker üzerinde çalışan bir betik, Orchestrator korumalı alanında Microsoft 365 beklendiği gibi bağlanamaz. Betik, bağlantı için [Connect-MsolService](/powershell/module/msonline/connect-msolservice?view=azureadps-1.0) ' i kullanıyor. 
+Windows karma Runbook Worker üzerinde çalışan bir betik, Orchestrator korumalı alanında Microsoft 365 beklendiği gibi bağlanamaz. Betik, bağlantı için [Connect-MsolService](/powershell/module/msonline/connect-msolservice) ' i kullanıyor. 
 
 Proxy 'yi ve atlama listesini ayarlamak için **Orchestrator.Sandbox.exe.config** ayarlarsanız, korumalı alan hala düzgün şekilde bağlanmaz. Aynı ara sunucu ve atlama listesi ayarlarına sahip bir **Powershell_ise.exe.config** dosyası, beklendiği gibi çalışıyor gibi çalışır. Service Management Automation (SMA) günlükleri ve PowerShell günlükleri ara sunucu ile ilgili herhangi bir bilgi sağlamaz.
 
@@ -250,7 +246,7 @@ Sunucu üzerindeki Active Directory Federasyon Hizmetleri (AD FS) (AD FS) bağla
 
 Komut dosyanızı PowerShell cmdlet 'leri için MSOnline modülü yerine Azure Active Directory modüllerini kullanacak şekilde geçirerek Orchestrator korumalı alanı için sorunu çözebilirsiniz. Daha fazla bilgi için bkz. [Orchestrator 'Dan Azure Otomasyonu 'na (Beta) geçiş](../automation-orchestrator-migration.md).
 
-MSOnline modülü cmdlet 'lerini kullanmaya devam etmek istiyorsanız, komut dosyanızı [Invoke-komutunu](/powershell/module/microsoft.powershell.core/invoke-command?view=powershell-7)kullanacak şekilde değiştirin. Ve parametreleri için değerleri `ComputerName` belirtin `Credential` . 
+MSOnline modülü cmdlet 'lerini kullanmaya devam etmek istiyorsanız, komut dosyanızı [Invoke-komutunu](/powershell/module/microsoft.powershell.core/invoke-command)kullanacak şekilde değiştirin. Ve parametreleri için değerleri `ComputerName` belirtin `Credential` . 
 
 ```powershell
 $Credential = Get-AutomationPSCredential -Name MyProxyAccessibleCredential

@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 08/01/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: c51ef23e27cd63d3706c104d1e39a14bf61c258e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8d6b786ffaf309e147de27e8cd8be314a3d8a5fb
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86186359"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896995"
 ---
 # <a name="edit-textual-runbooks-in-azure-automation"></a>Azure Automation 'da metin runbook 'larını düzenleme
 
@@ -29,7 +29,7 @@ Bu makalede, bu düzenleyiciyle farklı işlevler gerçekleştirmeye yönelik ay
 ## <a name="edit-a-runbook-with-the-azure-portal"></a>Azure portal ile runbook 'u düzenleme
 
 1. Azure portal Otomasyon hesabınızı seçin.
-2. **Işlem Otomasyonu**altında runbook 'ların listesini açmak Için **runbook 'lar** ' ı seçin.
+2. **Işlem Otomasyonu** altında runbook 'ların listesini açmak Için **runbook 'lar** ' ı seçin.
 3. Düzenlenecek runbook 'u seçin ve ardından **Düzenle**' ye tıklayın.
 4. Runbook 'u düzenleyin.
 5. Düzenlemeleriniz tamamlandığında **Kaydet** 'e tıklayın.
@@ -101,4 +101,4 @@ Publish-AzAutomationRunbook -Name $runbookName -AutomationAccountName $automatio
 * [Kimlik bilgileri](./shared-resources/credentials.md).
 * [Zamanlamalar](./shared-resources/schedules.md).
 * [Değişkenler](./shared-resources/variables.md).
-* [PowerShell cmdlet başvurusu](/powershell/module/az.automation/?view=azps-3.7.0#automation).
+* [PowerShell cmdlet başvurusu](/powershell/module/az.automation).

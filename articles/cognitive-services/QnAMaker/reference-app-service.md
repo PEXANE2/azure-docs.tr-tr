@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 11/9/2020
-ms.openlocfilehash: e7dfc6db50432b19d515671fabe26edf9cfb45ef
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: c35306d3e0d874218b9ea03fbfeaaff722eacf76
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96345677"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896469"
 ---
 # <a name="service-configuration"></a>Hizmet yapılandırması
 
@@ -34,6 +34,7 @@ Uygulama Ayarları listesinden ayrı bir ayar ayarlayabilir veya **Gelişmiş D�
 |Userappınsi, Sappıd|Sohbet günlüğü ve telemetrisi|
 |Userappınsightskey|Sohbet günlüğü ve telemetrisi|
 |Userappınsightsname|Sohbet günlüğü ve telemetrisi|
+|QNAMAKER_EXTENSION_VERSION|Her zaman _en son_ olarak ayarlayın. Bu ayar App Service QnAMaker site uzantısını başlatacak.|
 
 Değişiklikleri yapmayı tamamladıktan sonra, Azure portal **genel bakış** sayfasından hizmeti **yeniden başlatmanız** gerekir.
 

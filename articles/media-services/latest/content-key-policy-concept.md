@@ -1,5 +1,5 @@
 ---
-title: Media Services-Azure 'da içerik anahtarı Ilkeleri | Microsoft Docs
+title: Media Services içerik anahtarı Ilkeleri-Azure
 description: Bu makalede, Içerik anahtarı Ilkelerinin ne olduğu ve Azure Media Services tarafından nasıl kullanıldıkları hakkında bir açıklama sunulmaktadır.
 services: media-services
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: dd19d0730b25685b008af16d1c1eac6537750612
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 29907a12f7edf7439f9bcfae0a1ad46b395d9ecf
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89297278"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897216"
 ---
 # <a name="content-key-policies"></a>İçerik Anahtar İlkeleri
 

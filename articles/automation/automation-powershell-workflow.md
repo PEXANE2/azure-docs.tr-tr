@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/14/2018
 ms.topic: conceptual
-ms.openlocfilehash: f175e495af8e925c0d5a6c61669a5e2f44f73ae7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 483d4c16f1b77bf7328857eb25e1571a741d144e
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86186019"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896927"
 ---
 # <a name="learn-powershell-workflow-for-azure-automation"></a>Azure Otomasyonu için PowerShell Iş akışını öğrenin
 
@@ -34,7 +34,7 @@ Workflow Test-Workflow
 }
 ```
 
-İş akışının adı, Otomasyon Runbook 'unun adıyla eşleşmelidir. Runbook içeri aktarıldıysa, dosya adının iş akışı adıyla eşleşmesi ve **. ps1**ile bitmesi gerekir.
+İş akışının adı, Otomasyon Runbook 'unun adıyla eşleşmelidir. Runbook içeri aktarıldıysa, dosya adının iş akışı adıyla eşleşmesi ve **. ps1** ile bitmesi gerekir.
 
 İş akışına parametre eklemek için, `Param` anahtar sözcüğünü komut dosyasında olduğu gibi kullanın.
 
@@ -290,7 +290,7 @@ workflow CreateTestVms
 ```
 
 > [!NOTE]
-> Grafik olmayan PowerShell runbook 'ları için `Add-AzAccount` ve `Add-AzureRMAccount` [Connect-azaccount](/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0)için diğer adlar. Bu cmdlet 'leri kullanabilir veya Otomasyon hesabınızdaki [modüllerinizi](automation-update-azure-modules.md) en son sürümlere güncelleştirebilirsiniz. Yeni bir Otomasyon hesabı oluşturmuş olsanız bile modüllerinizi güncelleştirmeniz gerekebilir. Hizmet sorumlusu ile yapılandırılmış bir farklı çalıştır hesabı kullanarak kimlik doğrulaması yapıyorsanız, bu cmdlet 'lerin kullanılması gerekli değildir.
+> Grafik olmayan PowerShell runbook 'ları için `Add-AzAccount` ve `Add-AzureRMAccount` [Connect-azaccount](/powershell/module/az.accounts/connect-azaccount)için diğer adlar. Bu cmdlet 'leri kullanabilir veya Otomasyon hesabınızdaki [modüllerinizi](automation-update-azure-modules.md) en son sürümlere güncelleştirebilirsiniz. Yeni bir Otomasyon hesabı oluşturmuş olsanız bile modüllerinizi güncelleştirmeniz gerekebilir. Hizmet sorumlusu ile yapılandırılmış bir farklı çalıştır hesabı kullanarak kimlik doğrulaması yapıyorsanız, bu cmdlet 'lerin kullanılması gerekli değildir.
 
 Denetim noktalarıyla ilgili daha fazla bilgi için bkz. [Betik İş Akışına Denetim Noktaları Ekleme](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj574114(v=ws.11)).
 

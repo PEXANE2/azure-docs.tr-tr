@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 10/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: b73fa80085cc0491c8b4d0856d0baacfef1b51c0
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: 4a080505f780e724bfd2ab997f5c823e467c4bec
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96301542"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896978"
 ---
 # <a name="run-runbooks-on-a-hybrid-runbook-worker"></a>Karma Runbook Çalışanı üzerinde runbook çalıştırma
 
@@ -22,7 +22,7 @@ Bir runbook 'u karma Runbook Worker üzerinde çalıştırmak için yazdığın�
 
 Azure Otomasyonu, karma runbook çalışanları üzerindeki işleri, Azure korumalı alanında çalıştırılan işlerden farklı işler. Uzun süre çalışan bir runbook 'a sahipseniz, olası yeniden başlatmanın dayanıklı olduğundan emin olun. İş davranışının ayrıntıları için bkz. [karma Runbook Worker işleri](automation-hybrid-runbook-worker.md#hybrid-runbook-worker-jobs).
 
-Karma runbook çalışanları için işler, Windows 'da yerel **sistem** hesabı veya Linux üzerinde **nxautomation** hesabı altında çalışır. Linux için, **nxautomation** hesabının, runbook modüllerinin depolandığı konuma erişimi olduğunu doğrulayın. [Install-Module](/powershell/module/powershellget/install-module) cmdlet 'ini kullandığınızda, `Scope` **nxautomation** hesabının erişimi olduğundan emin olmak için parametresi için ALLUSERS ' ı belirttiğinizden emin olun. Linux üzerinde PowerShell hakkında daha fazla bilgi için bkz. [Windows dışı platformlarda PowerShell Için bilinen sorunlar](/powershell/scripting/whats-new/what-s-new-in-powershell-70?view=powershell-7.1).
+Karma runbook çalışanları için işler, Windows 'da yerel **sistem** hesabı veya Linux üzerinde **nxautomation** hesabı altında çalışır. Linux için, **nxautomation** hesabının, runbook modüllerinin depolandığı konuma erişimi olduğunu doğrulayın. [Install-Module](/powershell/module/powershellget/install-module) cmdlet 'ini kullandığınızda, `Scope` **nxautomation** hesabının erişimi olduğundan emin olmak için parametresi için ALLUSERS ' ı belirttiğinizden emin olun. Linux üzerinde PowerShell hakkında daha fazla bilgi için bkz. [Windows dışı platformlarda PowerShell Için bilinen sorunlar](/powershell/scripting/whats-new/what-s-new-in-powershell-70).
 
 ## <a name="configure-runbook-permissions"></a>Runbook izinlerini yapılandırma
 
@@ -327,4 +327,4 @@ Karma Runbook Worker üzerinde çalışan runbook 'larınızla ilgili sorunları
 
 * Runbook 'larınız başarıyla tamamlanmadığından, [runbook yürütme hatalarıyla](troubleshoot/hybrid-runbook-worker.md#runbook-execution-fails)ilgili sorun giderme kılavuzunu gözden geçirin.
 * Dil başvurusu ve öğrenme modülleri de dahil olmak üzere PowerShell hakkında daha fazla bilgi için bkz. [PowerShell belgeleri](/powershell/scripting/overview).
-* PowerShell cmdlet başvurusu için bkz. [az. Automation](/powershell/module/az.automation#automation).
+* PowerShell cmdlet başvurusu için bkz. [az. Automation](/powershell/module/az.automation).

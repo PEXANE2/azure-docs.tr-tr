@@ -2,19 +2,19 @@
 title: Belge ayrıntıları-özel çevirici
 titleSuffix: Azure Cognitive Services
 description: Belge listesi sayfası, çalışma alanınızdaki ilk 10 belgeyi gösterir. Belgelerin her biri için adı, eşleştirmeyi, türü, dili, karşıya yükleme zaman damgasını ve belgeyi karşıya yükleyen kullanıcının e-posta adresini görüntüler.
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 08/17/2020
-ms.author: swmachan
+ms.author: lajanuar
 ms.topic: conceptual
-ms.openlocfilehash: 87b999069ef9088a731a4e972c5d548cac0b917c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 56093204516e156d670097c22b4edab42db54bde
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88509593"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895620"
 ---
 # <a name="view-document-details"></a>Belge ayrıntılarını görüntüleme
 
@@ -34,7 +34,7 @@ Kullanıcının bir belgeyi silmesi için belgeyi silmesi için bir çalışma a
 1. Belge sayfasına git
 2. Herhangi bir belge kaydına gelin ve çöp kutusu simgesine tıklayın.
 
-    ![Belgeyi silme](media/how-to/how-to-delete-document-1.png)
+    ![Belgeyi Sil](media/how-to/how-to-delete-document-1.png)
 
 3. Silmeyi onaylayın.
 

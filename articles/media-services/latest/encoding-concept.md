@@ -1,6 +1,5 @@
 ---
 title: Video ve ses Media Services kodlama
-titleSuffix: Azure Media Services
 description: Bu makalede, Azure Media Services ile video ve ses kodlama hakkında bilgi verilmektedir.
 services: media-services
 documentationcenter: ''
@@ -13,12 +12,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: 8533c99011232385e31f4e698743bbb1c6c00bc5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 159336d3e8949739cb00dbe66ed82fa90256dcfd
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89300213"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897909"
 ---
 # <a name="encoding-video-and-audio-with-media-services"></a>Video ve ses Media Services kodlama
 
@@ -138,7 +137,7 @@ Media Services, özel kodlama ihtiyaçlarınızı ve gereksinimlerinizi karşıl
 
 ## <a name="preset-schema"></a>Önceden ayarlanmış şema
 
-Media Services v3 'de, Önayarlar, API 'nin kendisinde kesin olarak belirlenmiş varlıklardır. Bu nesneler için "şema" tanımını [Open API belirtiminde (veya Swagger)](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01)bulabilirsiniz. Ayrıca, [REST API](/rest/api/media/transforms/createorupdate#standardencoderpreset), [.NET SDK](/dotnet/api/microsoft.azure.management.media.models.standardencoderpreset?view=azure-dotnet) (veya diğer Media Services v3 SDK başvuru belgelerinde) önceden ayarlanmış tanımları ( **standardencoderönayar**gibi) görüntüleyebilirsiniz.
+Media Services v3 'de, Önayarlar, API 'nin kendisinde kesin olarak belirlenmiş varlıklardır. Bu nesneler için "şema" tanımını [Open API belirtiminde (veya Swagger)](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01)bulabilirsiniz. Ayrıca, [REST API](/rest/api/media/transforms/createorupdate#standardencoderpreset), [.NET SDK](/dotnet/api/microsoft.azure.management.media.models.standardencoderpreset?view=azure-dotnet) (veya diğer Media Services v3 SDK başvuru belgelerinde) önceden ayarlanmış tanımları ( **standardencoderönayar** gibi) görüntüleyebilirsiniz.
 
 ## <a name="scaling-encoding-in-v3"></a>V3 'de ölçeklendirme kodlaması
 

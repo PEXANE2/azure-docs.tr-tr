@@ -10,12 +10,12 @@ ms.date: 01/15/2021
 author: dcstwh
 ms.author: weetok
 manager: anandsub
-ms.openlocfilehash: e463328df195b5a91db8ce272d138f980d000e79
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: c3c126a96c0eb2214f63a56120d0966b9a97efed
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98232072"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895399"
 ---
 # <a name="parameterize-linked-services-in-azure-data-factory"></a>Azure Data Factory bağlı hizmetleri Parametreleştir
 
@@ -27,6 +27,9 @@ Bağlı hizmetleri parametreleştirmek için Azure portal veya bir programlama a
 
 > [!TIP]
 > Parola veya gizli dizileri parametreetmememiz önerilir. Tüm bağlantı dizelerini Azure Key Vault ' de depolayın ve *gizli adı* parametreleştirin.
+
+> [!Note]
+> Parametre adlarında "-" kullanmak için açık hata var, hata çözümlenene kadar adları "-" olmadan kullanmanız önerilir.
 
 Bu özelliğin yedi dakikalık bir girişi ve gösterimi için aşağıdaki videoyu izleyin:
 

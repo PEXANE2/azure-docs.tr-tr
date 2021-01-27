@@ -8,16 +8,16 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 10/21/2020
+ms.date: 01/14/2021
 ms.author: juliako
-ms.openlocfilehash: 82dc9aa9615ef86c878fb75df6650dcc1f904a8f
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: 8e110ba9818b48d66c5f17bb524bada567d808ab
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97702628"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897165"
 ---
-# <a name="create-a-video-indexer-account-connected-to-azure"></a>Azure 'a bağlı bir Video Indexer hesabı oluşturun
+# <a name="create-a-video-indexer-account"></a>Video Indexer hesabı oluşturma
 
 Video Indexer hesabınızı oluştururken ücretsiz bir deneme hesabı (belirli sayıda ücretsiz dizin oluşturma dakikası elde edersiniz) veya ücretli bir seçenek (kota sınırlaması olmaz) arasından seçim yapabilirsiniz. Ücretsiz deneme kullanıldığında Video Indexer, web sitesi kullanıcılarına 600 dakikaya kadar ve API kullanıcılarına ise 2400 dakikaya kadar ücretsiz dizin oluşturma olanağı sunar. Ücretli seçenekle, Azure aboneliğinize bağlı bir Video Indexer hesabı oluşturursunuz. Dizin oluşturma için ödeme yaparsınız. daha fazla bilgi için bkz. [Media Services fiyatlandırması](https://azure.microsoft.com/pricing/details/media-services/).
 
@@ -25,7 +25,9 @@ Bu makalede, bir Azure aboneliğine ve bir Azure Media Services hesabına bağl�
 
 *Deneme* sürümünden *ücretli* video Indexer hesabına geçiş yapıyorsanız tüm videolar ve model özelleştirmesini, [içeriğinizi deneme hesabından içeri aktarma](#import-your-content-from-the-trial-account) bölümünde anlatıldığı şekilde yeni hesaba kopyalamayı seçebilirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+Makale Ayrıca [video Indexer hesabının Azure Kamu 'ya](#video-indexer-in-azure-government)bağlanmasını da içerir.
+
+## <a name="prerequisites-for-connecting-to-azure"></a>Azure 'a bağlanma önkoşulları
 
 * Azure aboneliği.
 
@@ -37,7 +39,7 @@ Bu makalede, bir Azure aboneliğine ve bir Azure Media Services hesabına bağl�
 
     Bu kullanıcının iş veya okul hesabı olan bir Azure AD kullanıcısı olması gerekir. Outlook.com, live.com veya hotmail.com gibi bir kişisel hesap kullanmayın.
 
-    ![Tüm AAD kullanıcıları](./media/create-account/all-aad-users.png)
+    ![Tüm Azure AD kullanıcıları](./media/create-account/all-aad-users.png)
 
 ### <a name="additional-prerequisites-for-automatic-flow"></a>Otomatik akış için ek önkoşullar
 
@@ -59,7 +61,7 @@ Bu makalede, bir Azure aboneliğine ve bir Azure Media Services hesabına bağl�
 
     ![EventGrid](./media/create-account/event-grid.png)
 
-## <a name="create-a-new-account"></a>Yeni hesap oluşturma
+## <a name="create-a-new-account-on-azure"></a>Azure 'da yeni bir hesap oluşturun 
 
 > [!NOTE]
 > Azure aboneliğiniz sertifika tabanlı Multi-Factor Authentication kullanıyorsa, gerekli sertifikaların yüklü olduğu bir cihazda aşağıdaki adımları gerçekleştirmeniz çok önemlidir.
@@ -155,7 +157,7 @@ Azure bağlantısı başarısız olduysa, el ile bağlanarak sorunu gidermeyi de
 |Uygulama Kimliği|Önceki bölümde oluşturduğunuz Azure AD uygulama KIMLIĞI (belirtilen Media Services hesabı için izinlerle).|
 |Uygulama anahtarı|Önceki bölümde oluşturduğunuz Azure AD uygulama anahtarı. |
 
-## <a name="import-your-content-from-the-trial-account"></a>İçeriğinizi *deneme* hesabından içeri aktarın
+### <a name="import-your-content-from-the-trial-account"></a>İçeriğinizi *deneme* hesabından içeri aktarın
 
 Yeni bir hesap oluştururken, içeriğinizi *deneme* hesabından yeni hesaba aktarma seçeneğiniz vardır. **Azure aboneliğindeki yeni hesap oluştur** iletişim kutusunda *içeri aktar* seçeneğini belirlerseniz, tüm medya ve içerik modeli özelleştirmeleri, *deneme* hesabından yeni hesaba kopyalanacaktır.
 
@@ -163,16 +165,10 @@ Yeni bir hesap oluştururken, içeriğinizi *deneme* hesabından yeni hesaba akt
 
 > [!NOTE]
 > İçerik her bir hesaptan yalnızca bir kez içeri aktarılabilir.
+>
+> *Deneme* hesabı, Azure Kamu Bulutu üzerinde bir kullanılabilirlik değildir.
 
-## <a name="delete-the-account"></a>Hesabı Sil
-
-Daha sonra hesabı silmek isterseniz, hesabı Video Indexer Web sitesinden silebilirsiniz. Hesabı silmek için sahip olmanız gerekir.
-
-Hesap > **ayarları**  ->  **Bu hesabı Sil**' i seçin. 
-
-Hesap, 90 gün içinde kalıcı olarak silinir.
-
-## <a name="considerations"></a>Dikkat edilmesi gerekenler
+## <a name="azure-media-services-considerations"></a>Azure Media Services konuları
 
 Aşağıdaki Azure Media Services ilgili konular geçerlidir:
 
@@ -201,9 +197,52 @@ Hesap oluşturma işleminin otomatik hale getirmek için iki adımdan oluşan bi
     [Media Services hesap oluşturma şablonuna](https://github.com/Azure-Samples/media-services-v3-arm-templates)bir örnek bakın.
 1. [Media Services ve Azure AD uygulamasıyla oluşturma-hesabını](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Create-Paid-Account)çağırın.
 
+## <a name="video-indexer-in-azure-government"></a>Azure Kamu 'da Video Indexer
+
+### <a name="prerequisites-for-connecting-to-azure-government"></a>Azure Kamu 'ya bağlanma önkoşulları
+
+-   [Azure Kamu](https://docs.microsoft.com/azure/azure-government/)'da Azure aboneliği.
+- Azure Kamu 'da Azure AD hesabı.
+- Yukarıdaki [Azure 'a bağlanma önkoşulları](#prerequisites-for-connecting-to-azure)bölümünde açıklandığı gibi, izinlerin ve kaynakların tüm ön gereksinimleri.
+
+### <a name="create-new-account-via-the-azure-government-portal"></a>Azure Kamu portalı aracılığıyla yeni hesap oluşturma
+
+> [!NOTE]
+> Azure Kamu Bulutu Video Indexer *deneme* deneyimini içermez.
+
+Video Indexer portalı aracılığıyla ücretli bir hesap oluşturmak için:
+
+1. Şuraya gidin: https://videoindexer.ai.azure.us 
+1. Azure Kamu Azure AD hesabınızla oturum açın.
+1.  Azure Kamu 'da sahip olduğunuz veya katkıda bulunan bir Video Indexer hesabınız yoksa, hesabınızı oluşturmaya başlayacağınız boş bir deneyim alacaksınız. 
+
+    Akışın geri kalanı yukarıda açıklanan şekilde, yalnızca seçilecek bölgeler, video Indexer 'ın kullanılabildiği kamu bölgeleri olacaktır 
+
+    Azure Kamu 'da mevcut bir veya daha fazla Video Indexer hesabının zaten katılımcısı veya bir yöneticisi varsa, bu hesaba yönlendirilirsiniz ve buradan açıklandığı gibi ek bir hesap oluşturmak için aşağıdaki adımları uygulayabilirsiniz.
+    
+### <a name="create-new-account-via-the-api-on-azure-government"></a>Azure Kamu 'da API aracılığıyla yeni hesap oluşturma
+
+Azure Kamu 'da ücretli bir hesap oluşturmak için, [Create-ücretli hesap](https://api-portal.videoindexer.ai.azure.us/docs/services/Operations/operations/Create-Paid-Account)' daki yönergeleri izleyin. Bu API uç noktası yalnızca kamu bulut bölgelerini içerir.
+
+### <a name="limitations-of-video-indexer-on-azure-government"></a>Azure Kamu 'daki Video Indexer sınırlamaları
+
+*   Kamu Bulutu 'nda el ile içerik denetlemesi yok. 
+
+    Ortak bulutta, içerik bir içerik denetimi temelinde rahatsız edici olarak kabul edildiğinde müşteri, bir insan 'nin bu içeriğe bakmasını isteyebilir ve bu kararı potansiyel olarak döndürebilir.  
+*   Deneme hesabı yok. 
+* Bing açıklaması-gov bulutu 'nda, ünlüler ve adlandırılan adlandırılmış varlıkların bir açıklamasını sunacağız. Bu yalnızca bir UI özelliğidir. 
+
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
 Bu Öğreticiyi tamamladıktan sonra, kullanmayı planlamadığını planladığınız kaynakları silin.
+
+### <a name="delete-a-video-indexer-account"></a>Video Indexer hesabı silme
+
+Bir Video Indexer hesabını silmek istiyorsanız, hesabı Video Indexer Web sitesinden silebilirsiniz. Hesabı silmek için sahip olmanız gerekir.
+
+Hesap > **ayarları**  ->  **Bu hesabı Sil**' i seçin. 
+
+Hesap, 90 gün içinde kalıcı olarak silinir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

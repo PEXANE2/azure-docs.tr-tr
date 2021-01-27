@@ -1,24 +1,10 @@
 ---
-title: Medyayı karşıya yükleme
-titleSuffix: Azure Media Services
-description: Akış veya kodlama için medya yüklemeyi öğrenin.
-services: media-services
-documentationcenter: ''
-author: IngridAtMicrosoft
-manager: femila
-editor: ''
-ms.service: media-services
-ms.workload: ''
-ms.topic: how-to
-ms.date: 08/31/2020
-ms.author: inhenkel
-ms.openlocfilehash: 3040369e655ab91f56f271313dc4d2613f02be06
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
-ms.translationtype: MT
-ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92015864"
+Başlık: medyayı karşıya yükle: Azure Media Services Açıklama: medya akışı veya kodlama için karşıya yüklemeyi öğrenin.
+Hizmetler: Media-Services belgetationcenter: ' ' Yazar: ınridatmicrosoft Manager: femila Düzenleyicisi: ' '
+
+MS. Service: Media-Services MS. Workload: MS. Topic: nasıl yapılır MS. Date: 08/31/2020 MS. Author: inhenkel
 ---
+
 # <a name="upload-media-for-streaming-or-encoding"></a>Akış veya kodlama için medya yükleme
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]

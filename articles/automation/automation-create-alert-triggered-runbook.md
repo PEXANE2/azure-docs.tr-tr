@@ -5,16 +5,16 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: acf31af6d3ba3d78a6435210fa17562aaddac0a3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 03f24bf4cf379504479e554b129f34d94ca423cd
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86186614"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896368"
 ---
 # <a name="use-an-alert-to-trigger-an-azure-automation-runbook"></a>Bir Azure Otomasyonu runbook 'unu tetiklemek için uyarı kullanma
 
-Azure [izleyici](../azure-monitor/overview.md?toc=%2fazure%2fautomation%2ftoc.json) 'Yi, Azure 'daki birçok hizmetin temel düzey ölçümlerini ve günlüklerini izlemek için kullanabilirsiniz. [Eylem gruplarını](../azure-monitor/platform/action-groups.md?toc=%2fazure%2fautomation%2ftoc.json) kullanarak veya uyarıları temel alarak görevleri otomatikleştirmek için klasik uyarıları kullanarak Azure Otomasyonu runbook 'larını çağırabilirsiniz. Bu makalede, uyarıları kullanarak bir runbook 'un nasıl yapılandırılacağı ve çalıştırılacağı gösterilmektedir.
+Azure [izleyici](../azure-monitor/overview.md) 'Yi, Azure 'daki birçok hizmetin temel düzey ölçümlerini ve günlüklerini izlemek için kullanabilirsiniz. [Eylem gruplarını](../azure-monitor/platform/action-groups.md) kullanarak veya uyarıları temel alarak görevleri otomatikleştirmek için klasik uyarıları kullanarak Azure Otomasyonu runbook 'larını çağırabilirsiniz. Bu makalede, uyarıları kullanarak bir runbook 'un nasıl yapılandırılacağı ve çalıştırılacağı gösterilmektedir.
 
 ## <a name="alert-types"></a>Uyarı türleri
 
@@ -29,11 +29,11 @@ Otomasyon Runbook 'larını üç uyarı türüyle kullanabilirsiniz:
 
 Bir uyarı runbook 'u çağırdığında, gerçek çağrı Web kancasına yönelik bir HTTP POST isteğidir. POST isteğinin gövdesi, uyarıyla ilgili yararlı özelliklere sahip olan JSON biçimli bir nesne içerir. Aşağıdaki tabloda her uyarı türü için yük şemasının bağlantıları listelenmektedir:
 
-|Uyarı  |Açıklama|Yük şeması  |
+|Uyarı  |Description|Yük şeması  |
 |---------|---------|---------|
-|[Ortak uyarı](../azure-monitor/platform/alerts-common-schema.md?toc=%2fazure%2fautomation%2ftoc.json)|Bugün Azure 'daki uyarı bildirimleri için tüketim deneyimini standartlaştıran ortak uyarı şeması.|Ortak uyarı yük şeması|
-|[Etkinlik günlüğü uyarısı](../azure-monitor/platform/activity-log-alerts.md?toc=%2fazure%2fautomation%2ftoc.json)    |Azure etkinlik günlüğündeki yeni bir olay belirli koşullara uyan bir bildirim gönderir. Örneğin, bir `Delete VM` Işlem **Myüretim resourcegroup** içinde veya etkin duruma sahip yeni bir Azure hizmet durumu olayı göründüğünde oluşur.| [Etkinlik günlüğü uyarısı yük şeması](../azure-monitor/platform/activity-log-alerts-webhook.md)        |
-|[Neredeyse gerçek zamanlı ölçüm uyarısı](../azure-monitor/platform/alerts-metric-near-real-time.md?toc=%2fazure%2fautomation%2ftoc.json)    |Bir veya daha fazla platform düzeyi ölçümü belirtilen koşullara uyuyorsa ölçüm uyarılarından daha hızlı bir bildirim gönderir. Örneğin, bir VM üzerindeki **CPU%** değeri 90 ' den büyükse ve **içindeki ağ** değeri, son 5 dakika boyunca 500 MB 'den büyük olur.| [Neredeyse gerçek zamanlı ölçüm uyarısı yük şeması](../azure-monitor/platform/alerts-webhooks.md#payload-schema)          |
+|[Ortak uyarı](../azure-monitor/platform/alerts-common-schema.md)|Bugün Azure 'daki uyarı bildirimleri için tüketim deneyimini standartlaştıran ortak uyarı şeması.|Ortak uyarı yük şeması|
+|[Etkinlik günlüğü uyarısı](../azure-monitor/platform/activity-log-alerts.md)    |Azure etkinlik günlüğündeki yeni bir olay belirli koşullara uyan bir bildirim gönderir. Örneğin, bir `Delete VM` Işlem **Myüretim resourcegroup** içinde veya etkin duruma sahip yeni bir Azure hizmet durumu olayı göründüğünde oluşur.| [Etkinlik günlüğü uyarısı yük şeması](../azure-monitor/platform/activity-log-alerts-webhook.md)        |
+|[Neredeyse gerçek zamanlı ölçüm uyarısı](../azure-monitor/platform/alerts-metric-near-real-time.md)    |Bir veya daha fazla platform düzeyi ölçümü belirtilen koşullara uyuyorsa ölçüm uyarılarından daha hızlı bir bildirim gönderir. Örneğin, bir VM üzerindeki **CPU%** değeri 90 ' den büyükse ve **içindeki ağ** değeri, son 5 dakika boyunca 500 MB 'den büyük olur.| [Neredeyse gerçek zamanlı ölçüm uyarısı yük şeması](../azure-monitor/platform/alerts-webhooks.md#payload-schema)          |
 
 Her uyarı türü tarafından belirtilen veriler farklı olduğundan, her uyarı türü farklı şekilde işlenir. Sonraki bölümde, farklı uyarı türlerini işlemek için bir runbook oluşturmayı öğreneceksiniz.
 
@@ -47,10 +47,10 @@ Bu örnek, bir VM 'den bir uyarı kullanır. Yük kaynağından VM verilerini al
 
 Runbook, `AzureRunAsConnection` VM 'ye karşı yönetim eylemini gerçekleştirmek üzere Azure ile kimlik doğrulaması yapmak için bağlantı varlığı [Farklı Çalıştır hesabını](./manage-runas-account.md) kullanır.
 
-**Stop-AzureVmInResponsetoVMAlert**adlı bir runbook oluşturmak için bu örneği kullanın. PowerShell betiğini değiştirebilir ve birçok farklı kaynakla kullanabilirsiniz.
+**Stop-AzureVmInResponsetoVMAlert** adlı bir runbook oluşturmak için bu örneği kullanın. PowerShell betiğini değiştirebilir ve birçok farklı kaynakla kullanabilirsiniz.
 
 1. Azure Otomasyonu hesabınıza gidin.
-2. **Işlem Otomasyonu**altında **runbook 'lar**' ı seçin.
+2. **Işlem Otomasyonu** altında **runbook 'lar**' ı seçin.
 3. Runbook 'ların listesinin en üstünde **+ runbook oluştur**' u seçin.
 4. **Runbook Ekle** sayfasında, Runbook adı için **stop-AzureVmInResponsetoVMAlert** girin. Runbook türü için **PowerShell**' i seçin. Ardından **Oluştur**’u seçin.  
 5. Aşağıdaki PowerShell örneğini **düzenleme** sayfasına kopyalayın.
@@ -170,22 +170,22 @@ Runbook, `AzureRunAsConnection` VM 'ye karşı yönetim eylemini gerçekleştirm
 
 Uyarılar, uyarı tarafından tetiklenen eylemlerin koleksiyonları olan eylem gruplarını kullanır. Runbook 'lar yalnızca eylem gruplarıyla kullanabileceğiniz birçok eylemden biridir.
 
-1. Otomasyon hesabınızda, **izleme**altında **Uyarılar** ' ı seçin.
+1. Otomasyon hesabınızda, **izleme** altında **Uyarılar** ' ı seçin.
 1. **+ Yeni uyarı kuralı**'nı seçin.
-1. **Kaynak**altında **Seç** ' e tıklayın. **Kaynak seçin** sayfasında, uyarı vermek için sanal makineyi seçin ve **bitti**' ye tıklayın.
-1. **Koşul**bölümünde **Koşul Ekle** ' ye tıklayın. Kullanmak istediğiniz sinyali seçin (örneğin **CPU yüzdesi** ) ve **bitti**' ye tıklayın.
-1. **Sinyal mantığını Yapılandır** sayfasında, **Uyarı mantığı**altında **eşik değerini** girin ve **bitti**' ye tıklayın.
+1. **Kaynak** altında **Seç** ' e tıklayın. **Kaynak seçin** sayfasında, uyarı vermek için sanal makineyi seçin ve **bitti**' ye tıklayın.
+1. **Koşul** bölümünde **Koşul Ekle** ' ye tıklayın. Kullanmak istediğiniz sinyali seçin (örneğin **CPU yüzdesi** ) ve **bitti**' ye tıklayın.
+1. **Sinyal mantığını Yapılandır** sayfasında, **Uyarı mantığı** altında **eşik değerini** girin ve **bitti**' ye tıklayın.
 1. **Eylem grupları**' nın altında **Yeni oluştur**' u seçin.
 1. **Eylem grubu Ekle** sayfasında, eylem grubunuza bir ad ve kısa ad verin.
-1. Eyleme bir ad verin. Eylem türü için **Otomasyon Runbook 'u**seçin.
-1. **Ayrıntıları Düzenle**' yi seçin. Runbook 'u **Yapılandır** sayfasında, **runbook kaynağı**altında **Kullanıcı**' yı seçin.  
-1. **Aboneliğinizi** ve **Otomasyon hesabınızı**seçin ve ardından **stop-AzureVmInResponsetoVMAlert** runbook ' u seçin.  
-1. **Ortak uyarı şemasını etkinleştirmek**için **Evet** ' i seçin.
+1. Eyleme bir ad verin. Eylem türü için **Otomasyon Runbook 'u** seçin.
+1. **Ayrıntıları Düzenle**' yi seçin. Runbook 'u **Yapılandır** sayfasında, **runbook kaynağı** altında **Kullanıcı**' yı seçin.  
+1. **Aboneliğinizi** ve **Otomasyon hesabınızı** seçin ve ardından **stop-AzureVmInResponsetoVMAlert** runbook ' u seçin.  
+1. **Ortak uyarı şemasını etkinleştirmek** için **Evet** ' i seçin.
 1. Eylem grubunu oluşturmak için **Tamam**' ı seçin.
 
     ![Eylem grubu Ekle sayfası](./media/automation-create-alert-triggered-runbook/add-action-group.png)
 
-    Bu eylem grubunu [etkinlik günlüğü uyarılarında](../azure-monitor/platform/activity-log-alerts.md?toc=%2fazure%2fautomation%2ftoc.json) ve oluşturduğunuz [neredeyse gerçek zamanlı uyarılarda](../azure-monitor/platform/alerts-overview.md?toc=%2fazure%2fautomation%2ftoc.json) kullanabilirsiniz.
+    Bu eylem grubunu [etkinlik günlüğü uyarılarında](../azure-monitor/platform/activity-log-alerts.md) ve oluşturduğunuz [neredeyse gerçek zamanlı uyarılarda](../azure-monitor/platform/alerts-overview.md) kullanabilirsiniz.
 
 1. **Uyarı ayrıntıları**' nın altında bir uyarı kuralı adı ve açıklaması ekleyin ve **Uyarı kuralı oluştur**' a tıklayın.
 
@@ -193,6 +193,6 @@ Uyarılar, uyarı tarafından tetiklenen eylemlerin koleksiyonları olan eylem g
 
 * Web kancası kullanarak bir runbook 'u başlatmak için bkz. [Web kancasından runbook başlatma](automation-webhooks.md).
 * Runbook 'u başlatmak için farklı yollar sağlamak üzere bkz. [runbook 'U başlatma](./start-runbooks.md).
-* Etkinlik günlüğü uyarısı oluşturmak için bkz. [etkinlik günlüğü uyarıları oluşturma](../azure-monitor/platform/activity-log-alerts.md?toc=%2fazure%2fautomation%2ftoc.json).
+* Etkinlik günlüğü uyarısı oluşturmak için bkz. [etkinlik günlüğü uyarıları oluşturma](../azure-monitor/platform/activity-log-alerts.md).
 * Neredeyse gerçek zamanlı uyarı oluşturmayı öğrenmek için [Azure Portal bir uyarı kuralı oluşturma](../azure-monitor/platform/alerts-metric.md?toc=/azure/azure-monitor/toc.json)bölümüne bakın.
-* PowerShell cmdlet başvurusu için bkz. [az. Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation).
+* PowerShell cmdlet başvurusu için bkz. [az. Automation](/powershell/module/az.automation).

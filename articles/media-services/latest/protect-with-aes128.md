@@ -1,25 +1,9 @@
 ---
-title: AES-128 ile videoyu şifreleme
-titleSuffix: Azure Media Services
-description: AES 128 bit şifreleme ile videoyu şifrelemeyi ve Azure Media Services ' de anahtar teslimi hizmeti 'ni kullanmayı öğrenin.
-services: media-services
-documentationcenter: ''
-author: IngridAtMicrosoft
-manager: femila
-editor: ''
-ms.service: media-services
-ms.workload: media
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: tutorial
-ms.date: 08/31/2020
-ms.author: inhenkel
-ms.openlocfilehash: 5347479d32dc9f4909483dc63891e8057fd7ff86
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
-ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89289356"
+Başlık: bir videoyu AES-128 ile şifreleyin: Azure Media Services açıklaması: AES 128 bit şifreleme ile videoyu şifrelemeyi ve Azure Media Services 'de anahtar teslimi hizmeti 'ni kullanmayı öğrenin.
+Hizmetler: Media-Services belgetationcenter: ' ' Yazar: ınridatmicrosoft Manager: femila Düzenleyicisi: ' '
+
+MS. Service: Media-Services MS. Workload: Media ms.tgt_pltfrm: na MS. devlang: na MS. Topic: öğretici ms. Date: 08/31/2020 MS. Author: inhenkel
+
 ---
 # <a name="tutorial-encrypt-video-with-aes-128-and-use-the-key-delivery-service"></a>Öğretici: AES-128 ile videoyu şifreleyin ve anahtar teslim hizmetini kullanın
 
@@ -113,7 +97,7 @@ Bu öğreticide, doğrudan bir [https kaynak URL](job-input-from-http-how-to.md)
 
 ## <a name="create-a-content-key-policy"></a>Içerik anahtarı Ilkesi oluşturma
 
-İçerik anahtarı, Varlıklarınıza güvenli bir şekilde erişilmesini sağlar. İçerik anahtarının son istemcilere nasıl teslim edildiğini yapılandıran bir **Içerik anahtarı ilkesi** oluşturmanız gerekir. İçerik anahtarı, **akış bulucunun**ilişkilendirildiği. Media Services, yetkili kullanıcılara şifreleme anahtarları sunan anahtar teslim hizmetini de sağlar.
+İçerik anahtarı, Varlıklarınıza güvenli bir şekilde erişilmesini sağlar. İçerik anahtarının son istemcilere nasıl teslim edildiğini yapılandıran bir **Içerik anahtarı ilkesi** oluşturmanız gerekir. İçerik anahtarı, **akış bulucunun** ilişkilendirildiği. Media Services, yetkili kullanıcılara şifreleme anahtarları sunan anahtar teslim hizmetini de sağlar.
 
 Player tarafından bir akış istendiğinde, Media Services içeriğinizi dinamik olarak şifrelemek için belirtilen anahtarı kullanır (Bu durumda, AES şifrelemesini kullanarak). Akışın şifresini çözmek için, Player anahtarı anahtar teslim hizmetinden ister. Hizmet, kullanıcının anahtarı alma yetkisine sahip olup olmadığını belirlemek için anahtar için belirlediğiniz içerik anahtarı ilkesini değerlendirir.
 
@@ -139,7 +123,7 @@ Bir [akış Bulucu](/rest/api/media/streaminglocators)oluştururken, Istenen **S
 
 Bu öğreticide içerik anahtarı ilkesi için belirteç sınırlaması getirilmektedir. Belirteç kısıtlamalı ilkenin beraberinde bir güvenlik belirteci hizmeti (STS) tarafından verilmiş bir belirteç bulunmalıdır. Media Services, [JWT](/previous-versions/azure/azure-services/gg185950(v=azure.100)#BKMK_3) biçimindeki belirteçleri destekler ve örnekte yapılandırdığımız şeydir.
 
-Contentkeyıdentifierclaim, **Içerik anahtarı ilkesinde**kullanılır. Bu, anahtar teslim hizmetine sunulan belirtecin, içindeki içerik anahtarının tanımlayıcısına sahip olması gerektiği anlamına gelir. Örnekte, akış bulucuyu oluştururken bir içerik anahtarı belirtmedik, sistem bizim için rastgele bir tane oluşturdu. Test belirtecini oluşturmak için Contentkeyıd öğesini Contentkeyıdentifierclaim talebine koymak üzere almalısınız.
+Contentkeyıdentifierclaim, **Içerik anahtarı ilkesinde** kullanılır. Bu, anahtar teslim hizmetine sunulan belirtecin, içindeki içerik anahtarının tanımlayıcısına sahip olması gerektiği anlamına gelir. Örnekte, akış bulucuyu oluştururken bir içerik anahtarı belirtmedik, sistem bizim için rastgele bir tane oluşturdu. Test belirtecini oluşturmak için Contentkeyıd öğesini Contentkeyıdentifierclaim talebine koymak üzere almalısınız.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithAES/Program.cs#GetToken)]
 

@@ -1,5 +1,5 @@
 ---
-title: Azure Izleyici aracılığıyla Media Services tanılama günlüklerini izleme | Microsoft Docs
+title: Azure Izleyici aracılığıyla Media Services tanılama günlüklerini izleme
 description: Bu makalede, Azure Izleyici aracılığıyla tanılama günlüklerinin nasıl yönlendirileceği ve görüntüleneceği gösterilmektedir.
 services: media-services
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: e756ff0133e3d3f0f86ea2f592005f2f2986488e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6c666228a8a82083c319aa6c2d7fd161f7e623f4
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91707770"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897977"
 ---
 # <a name="monitor-media-services-diagnostic-logs"></a>Tanılama günlüklerini izleme Media Services
 
@@ -29,7 +29,7 @@ ms.locfileid: "91707770"
 
 Bu makalede, verileri depolama hesabına yönlendirme ve sonra verileri görüntüleme işlemlerinin nasıl yapılacağı gösterilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - [Media Services hesabı oluşturun](./create-account-howto.md).
 - [İzleme Media Services ölçümleri ve tanılama günlüklerini](media-services-metrics-diagnostic-logs.md)inceleyin.
@@ -37,7 +37,7 @@ Bu makalede, verileri depolama hesabına yönlendirme ve sonra verileri görünt
 ## <a name="route-data-to-the-storage-account-using-the-portal"></a>Portalı kullanarak verileri depolama hesabına yönlendirme
 
 1. https://portal.azure.com adresinden Azure portalında oturum açın.
-1. İçinde Media Services hesabınıza gidin ve **izleyici**altındaki **Tanılama ayarları** ' na tıklayın. Burada, aboneliğinizde Azure İzleyici ile izleme verileri oluşturan tüm kaynakların bir listesini görürsünüz.
+1. İçinde Media Services hesabınıza gidin ve **izleyici** altındaki **Tanılama ayarları** ' na tıklayın. Burada, aboneliğinizde Azure İzleyici ile izleme verileri oluşturan tüm kaynakların bir listesini görürsünüz.
 
     ![Izleme bölümü altındaki tanılama ayarlarını vurgulayan ekran görüntüsü.](media/media-services-diagnostic-logs/logs01.png)
 
@@ -94,7 +94,7 @@ Olayın depolama hesabında görünmesi için beş dakikaya kadar beklemeniz ger
 
 1. Portalda, sol gezinti çubuğundaki **Depolama Hesapları** bölümüne gidin.
 1. Önceki bölümde oluşturduğunuz depolama hesabını belirleyin ve tıklayın.
-1. **Bloblar**' a ve ardından **Öngörüler-logs-keydeliveryrequests**etiketli kapsayıcıda öğesine tıklayın. Bu, günlüklerinizin bulunduğu kapsayıcıdır. İzleme verileri, kaynak KIMLIĞI ve sonra tarih ve saate göre kapsayıcılara ayrılır.
+1. **Bloblar**' a ve ardından **Öngörüler-logs-keydeliveryrequests** etiketli kapsayıcıda öğesine tıklayın. Bu, günlüklerinizin bulunduğu kapsayıcıdır. İzleme verileri, kaynak KIMLIĞI ve sonra tarih ve saate göre kapsayıcılara ayrılır.
 1. Kaynak kimliği, tarih ve saat için kapsayıcılara tıklayarak PT1H.json dosyasına gidin. PT1H.json dosyasına ve **İndir**’e tıklayın.
 
  Artık depolama hesabında depolanmış JSON olayını görüntüleyebilirsiniz.
@@ -183,7 +183,7 @@ Olayın depolama hesabında görünmesi için beş dakikaya kadar beklemeniz ger
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-* [Azure Izleyici ölçümleri](../../azure-monitor/platform/data-platform.md)
+* [Azure İzleyici Ölçümleri](../../azure-monitor/platform/data-platform.md)
 * [Azure Izleyici tanılama günlükleri](../../azure-monitor/platform/platform-logs-overview.md)
 * [Azure kaynaklarınızdan günlük verilerini toplama ve kullanma](../../azure-monitor/platform/platform-logs-overview.md)
 

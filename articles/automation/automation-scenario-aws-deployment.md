@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: 456a7e4f07b2416e1d2037205574f2e7149e70e2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 03f1f1659d120a2aa1b827063cb2bc84138f3655
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86185951"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896079"
 ---
 # <a name="deploy-an-amazon-web-services-vm-with-a-runbook"></a>Runbook ile Amazon Web Services VM dağıtma
 
@@ -24,7 +24,7 @@ Bir Azure Otomasyonu hesabınız ve bir Amazon Web Services (AWS) aboneliğine s
 
 VM sağlama runbook 'u, işini yapmak için AWS PowerShell modülünü kullanır. AWS abonelik kimlik bilgilerinizle yapılandırılmış Otomasyon hesabınıza modülünü eklemek için aşağıdaki adımları kullanın.  
 
-1. Web tarayıcınızı açın ve [PowerShell Galerisi](https://www.powershellgallery.com/packages/AWSPowerShell/) gidin ve **Azure Otomasyonu 'na dağıt düğmesine**tıklayın.<br><br> ![AWS PS modülü Içeri aktarma](./media/automation-scenario-aws-deployment/powershell-gallery-download-awsmodule.png)
+1. Web tarayıcınızı açın ve [PowerShell Galerisi](https://www.powershellgallery.com/packages/AWSPowerShell/) gidin ve **Azure Otomasyonu 'na dağıt düğmesine** tıklayın.<br><br> ![AWS PS modülü Içeri aktarma](./media/automation-scenario-aws-deployment/powershell-gallery-download-awsmodule.png)
 2. Azure oturum açma sayfasına götürülürsünüz ve kimlik doğrulamasından sonra, Azure portal yönlendirilecektir ve aşağıdaki sayfayla karşılaşırsınız:<br><br> ![Modül sayfasını içeri aktar](./media/automation-scenario-aws-deployment/deploy-aws-powershell-module-parameters.png)
 3. Kullanılacak Otomasyon hesabını seçin ve dağıtımı başlatmak için **Tamam** ' a tıklayın.
 
@@ -49,7 +49,7 @@ AWS PowerShell modülü dağıtıldıktan sonra, bir PowerShell betiği kullanar
    Save-Script -Name New-AwsVM -Path <path>
    ```
    <br>
-2. Azure portal Otomasyon hesabınızı açın ve **Işlem Otomasyonu**altında **runbook 'lar** ' ı seçin.  
+2. Azure portal Otomasyon hesabınızı açın ve **Işlem Otomasyonu** altında **runbook 'lar** ' ı seçin.  
 3. Runbook 'Lar sayfasında, **runbook Ekle**' yi seçin.
 4. Runbook Ekle bölmesinde **hızlı oluştur** ' u seçerek yeni bir runbook oluşturun.
 5. Runbook özellikleri bölmesinde, runbook 'larınız için bir ad yazın.
@@ -103,4 +103,4 @@ AWS PowerShell modülünün Azure Otomasyonu 'na aktarıldığından emin olun.
 * Runbook 'larla çalışmak için bkz. [Azure Otomasyonu 'nda runbook 'Ları yönetme](manage-runbooks.md).
 * PowerShell ayrıntıları için bkz. [PowerShell belgeleri](/powershell/scripting/overview).
 * Betik desteği için bkz. [Azure Otomasyonu 'Nda yerel PowerShell betiği desteği](https://azure.microsoft.com/blog/announcing-powershell-script-support-azure-automation-2/).
-* PowerShell cmdlet başvurusu için bkz. [az. Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation).
+* PowerShell cmdlet başvurusu için bkz. [az. Automation](/powershell/module/az.automation).

@@ -1,6 +1,5 @@
 ---
 title: Dinamik Paketleyiciyi kullanarak bildirimlerinizi filtreleyin
-titleSuffix: Azure Media Services
 description: Bildirimlerinizi filtreleyip seçmeli olarak akışa almak için dinamik Paketleyiciyi kullanarak filtre oluşturmayı öğrenin.
 services: media-services
 documentationcenter: ''
@@ -14,12 +13,12 @@ ms.devlang: ne
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: acb30c1659c4c29e0af83da5594bdd9a7e3465d8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3ffdb41752630e0e5e22303ff58ecd798595a890
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89299040"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897671"
 ---
 # <a name="filter-your-manifests-using-dynamic-packager"></a>Dinamik Paketleyiciyi kullanarak bildirimlerinizi filtreleyin
 
@@ -27,7 +26,7 @@ ms.locfileid: "89299040"
 
 Cihazlara bit hızı uyarlamalı akış içeriği sunarken, bazı durumlarda belirli cihaz yeteneklerini veya kullanılabilir ağ bant genişliğini hedeflemek için bir bildirimin birden çok sürümünü yayımlamanız gerekir. [Dinamik paketlendirme](dynamic-packaging-overview.md) , belirli codec bileşenlerinin, çözümlerin, bitlerin ve ses izleme birleşimlerinin anında filtreleyebilen filtreler belirtmenize olanak tanır. Bu filtreleme, birden çok kopya oluşturma gereksinimini ortadan kaldırır. Yalnızca hedef cihazlarınıza (iOS, Android, SmartTV ya da tarayıcılar) ve ağ özelliklerine (yüksek bant genişliği, mobil veya düşük bant genişlikli senaryolar) yapılandırılmış belirli bir filtre kümesiyle yeni bir URL yayımlamanız gerekir. Bu durumda, istemciler, içerik akışını sorgu dizesi aracılığıyla işleyebilir (kullanılabilir [varlık filtrelerini veya hesap filtrelerini](filters-concept.md)belirterek) ve bir akışın belirli bölümlerini akışa almak için filtreleri kullanabilirsiniz.
 
-Bazı teslim senaryoları, bir müşterinin belirli izlemelere erişegerektirmediğinden emin olmanızı gerektirir. Örneğin, belirli bir abone katmanında HD izleri içeren bir bildirim yayınlamak istemezsiniz olabilir. Ya da, belirli Uyarlamalı bit hızı (ABR) izlerini kaldırmak istiyor olabilirsiniz. Bu, ek İzlemelerden yararlanabilecek belirli bir cihaza teslim maliyetini azaltır. Bu durumda, önceden oluşturulmuş filtrelerin listesini oluşturma sırasında [akış konumunuzla](streaming-locators-concept.md) ilişkilendirebilirsiniz. Daha sonra istemciler, **akış Bulucu**tarafından tanımlandığından içeriğin nasıl akışa alınacağını işleyebilir.
+Bazı teslim senaryoları, bir müşterinin belirli izlemelere erişegerektirmediğinden emin olmanızı gerektirir. Örneğin, belirli bir abone katmanında HD izleri içeren bir bildirim yayınlamak istemezsiniz olabilir. Ya da, belirli Uyarlamalı bit hızı (ABR) izlerini kaldırmak istiyor olabilirsiniz. Bu, ek İzlemelerden yararlanabilecek belirli bir cihaza teslim maliyetini azaltır. Bu durumda, önceden oluşturulmuş filtrelerin listesini oluşturma sırasında [akış konumunuzla](streaming-locators-concept.md) ilişkilendirebilirsiniz. Daha sonra istemciler, **akış Bulucu** tarafından tanımlandığından içeriğin nasıl akışa alınacağını işleyebilir.
 
 [Akış Konumlandırıcı](filters-concept.md#associating-filters-with-streaming-locator) + istemci URL 'de belirttiği cihaza özgü ek filtreler hakkında filtre belirterek filtrelemeyi birleştirebilirsiniz. Bu bileşim, meta veri veya olay akışları, ses dilleri veya açıklayıcı ses parçaları gibi ek parçaları kısıtlamak için yararlıdır.
 
@@ -141,7 +140,7 @@ Daha fazla bilgi için [Bu blog gönderisine](https://azure.microsoft.com/blog/a
 
 ## <a name="considerations-and-limitations"></a>Önemli noktalar ve sınırlamalar
 
-- **Forceendtimestamp**, **Presentationwindowduration**ve **livebackoffduration** değerleri bir VOD filtresi için ayarlanmamalıdır. Yalnızca canlı filtre senaryolarında kullanılır.
+- **Forceendtimestamp**, **Presentationwindowduration** ve **livebackoffduration** değerleri bir VOD filtresi için ayarlanmamalıdır. Yalnızca canlı filtre senaryolarında kullanılır.
 - Dinamik bir bildirim GOP sınırları (anahtar çerçeveler) içinde çalışır, bu nedenle kırpılacak GOP doğruluğu vardır.
 - Hesap ve varlık filtreleri için aynı filtre adını kullanabilirsiniz. Varlık filtrelerinin önceliği daha yüksektir ve hesap filtrelerini geçersiz kılar.
 - Bir filtreyi güncelleştirirseniz akış uç noktasının kuralların yenilenmesi 2 dakika kadar sürebilir. İçeriği karşılamak için filtreler kullandıysanız (ve içeriği proxy 'lerde ve CDN önbelleklerinde önbelleğe alırsanız), bu filtrelerin güncelleştirilmesi oynatıcı hatalara neden olabilir. Filtreyi güncelleştirdikten sonra Önbelleği temizlemeniz önerilir. Bu seçenek mümkün değilse, farklı bir filtre kullanmayı göz önünde bulundurun.

@@ -7,12 +7,12 @@ ms.author: sumuth
 ms.topic: tutorial
 ms.date: 12/10/2020
 ms.custom: mvc
-ms.openlocfilehash: 15e94b647b0f12baceffc60ad1c6ab81cc84cf22
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: b4aa23079661150f40b39ff65117b7f4229a67e2
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97631967"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880903"
 ---
 # <a name="tutorial-deploy-django-app-on-aks-with-azure-database-for-postgresql---flexible-server"></a>Öğretici: PostgreSQL için Azure veritabanı ile AKS 'de Docgo uygulaması dağıtma-esnek sunucu
 
@@ -109,7 +109,7 @@ aks-nodepool1-31718369-0   Ready    agent   6m44s   v1.12.8
 ```
 
 ## <a name="create-an-azure-database-for-postgresql---flexible-server"></a>PostgreSQL için Azure veritabanı oluşturma-esnek sunucu
-[Az postgreSQL esnek-sunucu oluştur](/azure/postgresql/flexible-server?view=azure-cli-latest&preserve-view=true)komutuyla esnek bir sunucu oluşturun. Aşağıdaki komut, Azure CLı 'nın yerel bağlamından hizmet varsayılanlarını ve değerlerini kullanarak bir sunucu oluşturur:
+[Az postgreSQL esnek-sunucu oluştur](./index.yml?preserve-view=true&view=azure-cli-latest)komutuyla esnek bir sunucu oluşturun. Aşağıdaki komut, Azure CLı 'nın yerel bağlamından hizmet varsayılanlarını ve değerlerini kullanarak bir sunucu oluşturur:
 
 ```azurecli-interactive
 az postgres flexible-server create --public-access <YOUR-IP-ADDRESS>
@@ -298,7 +298,7 @@ service "python-svc" created
 
 Bir dağıtım ```django-app``` , dağıtımınız üzerinde uygulama için hangi görüntülerin kullanılacağı, Pod ve pod yapılandırmasının sayısı gibi bilgileri açıklar. Uygulamayı bir ```python-svc``` dış IP aracılığıyla göstermek için bir hizmet oluşturulur.
 
-## <a name="test-the-application"></a>Uygulamayı test etme
+## <a name="test-the-application"></a>Uygulamayı test edin
 
 Uygulama çalıştığında, bir Kubernetes hizmeti, uygulamanın ön ucuna internet 'e koyar. Bu işlemin tamamlanması birkaç dakika sürebilir.
 

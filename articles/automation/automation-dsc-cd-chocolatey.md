@@ -6,12 +6,12 @@ ms.subservice: dsc
 ms.date: 08/08/2018
 ms.topic: conceptual
 ms.custom: references_regions
-ms.openlocfilehash: 87504625c298c4fb858ff90430d707081e87cd5a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bb5f7b5e8214bd3b04bd7b9544ab4bc589f6c4bf
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86186580"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896334"
 ---
 # <a name="set-up-continuous-deployment-with-chocolatey"></a>Chocolatey ile sürekli dağıtım ayarlama
 
@@ -213,5 +213,5 @@ Bu noktadan itibaren, güncelleştirmeyi çekmek ve yüklemek için bu yapıland
 - Genel bakış için bkz. [Azure Otomasyonu durum yapılandırmasına genel bakış](automation-dsc-overview.md).
 - Özelliği kullanmaya başlamak için bkz. [Azure Automation durum yapılandırması ile çalışmaya](automation-dsc-getting-started.md)başlama.
 - Hedef düğümlere atayabilmeniz için DSC yapılandırmalarını derleme hakkında bilgi edinmek için bkz. [Azure Otomasyonu durum YAPıLANDıRMASıNDA DSC yapılandırmalarını derleme](automation-dsc-compile.md).
-- PowerShell cmdlet başvurusu için bkz. [az. Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation).
+- PowerShell cmdlet başvurusu için bkz. [az. Automation](/powershell/module/az.automation).
 - Fiyatlandırma bilgileri için bkz. [Azure Otomasyonu durum yapılandırması fiyatlandırması](https://azure.microsoft.com/pricing/details/automation/).

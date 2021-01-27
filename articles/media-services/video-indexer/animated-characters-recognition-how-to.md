@@ -11,12 +11,12 @@ ms.custom: references_regions
 ms.topic: how-to
 ms.date: 12/07/2020
 ms.author: juliako
-ms.openlocfilehash: 1ee179efbe936c742f1eb51b998c10f9349c14fb
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: 29dbdb896d1a6063fec277afa33327c84cb2f0cd
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97763396"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880936"
 ---
 # <a name="use-the-animated-character-detection-preview-with-portal-and-api"></a>Portal ve API ile animasyonlu karakter algılamayı (Önizleme) kullanma 
 
@@ -35,7 +35,7 @@ Video Indexer ücretli bir hesabınız varsa, önce bir Özel Görüntü İşlem
 > [!NOTE]
 > Her iki hesabın de aynı bölgede olması gerekir. Özel Görüntü İşleme tümleştirme Şu anda Japonya bölgesinde desteklenmiyor.
 
-Özel Görüntü İşleme hesabına erişimi olan ücretli hesaplar, modelleri ve etiketli görüntüleri burada görebilir.  [Özel görüntü işleme sınıflandırıcınızı iyileştirme](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-improving-your-classifier)hakkında daha fazla bilgi edinin. 
+Özel Görüntü İşleme hesabına erişimi olan ücretli hesaplar, modelleri ve etiketli görüntüleri burada görebilir.  [Özel görüntü işleme sınıflandırıcınızı iyileştirme](../../cognitive-services/custom-vision-service/getting-started-improving-your-classifier.md)hakkında daha fazla bilgi edinin. 
 
 Model eğitiminin, Özel Görüntü İşleme Web sitesi aracılığıyla değil, yalnızca Video Indexer ile yapılması gerektiğini unutmayın. 
 
@@ -108,7 +108,7 @@ Modeli etiketleyerek ve eğitimi yapmadan önce tüm animasyonlu karakterler "bi
 1. Yalnızca ücretli hesaplar: Özel Görüntü İşleme grupları gözden geçirin 
 
     > [!NOTE]
-    > Özel Görüntü İşleme hesabına erişimi olan ücretli hesaplar, modelleri ve etiketli görüntüleri burada görebilir.  [Özel görüntü işleme sınıflandırıcınızı iyileştirme](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-improving-your-classifier)hakkında daha fazla bilgi edinin. Modelin eğitiminin, Özel Görüntü İşleme Web sitesi aracılığıyla değil, yalnızca Video Indexer (Bu topıd 'de açıklandığı gibi) ile yapılması gerektiğine dikkat edin. 
+    > Özel Görüntü İşleme hesabına erişimi olan ücretli hesaplar, modelleri ve etiketli görüntüleri burada görebilir.  [Özel görüntü işleme sınıflandırıcınızı iyileştirme](../../cognitive-services/custom-vision-service/getting-started-improving-your-classifier.md)hakkında daha fazla bilgi edinin. Modelin eğitiminin, Özel Görüntü İşleme Web sitesi aracılığıyla değil, yalnızca Video Indexer (Bu topıd 'de açıklandığı gibi) ile yapılması gerektiğine dikkat edin. 
 
     1. Video Indexer **özel modeller** sayfasına gidin ve **animasyonlu karakterler** sekmesini seçin. 
     1. Özel Görüntü İşleme içinde yönetmek için üzerinde çalıştığınız modelin Düzenle düğmesine tıklayın. 

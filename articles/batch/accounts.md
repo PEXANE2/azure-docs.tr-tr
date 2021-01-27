@@ -2,13 +2,13 @@
 title: Batch hesapları ve Azure depolama hesapları
 description: Azure Batch hesapları ve bunların bir geliştirme açısından nasıl kullanılabilecekleri hakkında bilgi edinin.
 ms.topic: conceptual
-ms.date: 05/12/2020
-ms.openlocfilehash: 20a2a28d0eaa2c7997ea93e66d07ecb99bf297a2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 01/26/2021
+ms.openlocfilehash: 83108a265f91c9feef2fab424f1819939c2d58c9
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83791151"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896757"
 ---
 # <a name="batch-accounts-and-azure-storage-accounts"></a>Batch hesapları ve Azure depolama hesapları
 
@@ -20,9 +20,10 @@ Tüm işlem ve kaynaklar bir Batch hesabıyla ilişkilendirilir. Uygulamanız, B
 
 Tek bir Batch hesabında birden fazla Batch iş yükü çalıştırabilirsiniz. İş yüklerinizi aynı abonelikte bulunan ancak farklı Azure bölgelerinde bulunan Batch hesapları arasında da dağıtabilirsiniz.
 
+[Batch yönetimi .NET kitaplığı](batch-management-dotnet.md)ile gibi [Azure Portal](batch-account-create-portal.md) veya programlama yoluyla bir Batch hesabı oluşturabilirsiniz. Hesabı oluştururken işle ilgili giriş veya çıkış verilerini veya uygulamaları kaydetmek için bir Azure depolama hesabı ilişkilendirebilirsiniz.
+
 [!INCLUDE [batch-account-mode-include](../../includes/batch-account-mode-include.md)]
 
-[Batch yönetimi .NET kitaplığı](batch-management-dotnet.md)ile gibi [Azure Portal](batch-account-create-portal.md) veya programlama yoluyla bir Batch hesabı oluşturabilirsiniz. Hesabı oluştururken işle ilgili giriş veya çıkış verilerini veya uygulamaları kaydetmek için bir Azure depolama hesabı ilişkilendirebilirsiniz.
 
 ## <a name="azure-storage-accounts"></a>Azure Depolama hesapları
 
@@ -41,4 +42,5 @@ Batch hesabını oluşturduğunuzda veya daha sonra Batch hesabınızla bir depo
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Düğümler ve havuzlar](nodes-and-pools.md)hakkında bilgi edinin.
-- [Azure Portal](batch-account-create-portal.md)kullanarak Batch hesabı oluşturmayı öğrenin.
+- [Azure Portal](batch-account-create-portal.md) veya [Batch yönetimi .net](batch-management-dotnet.md)kullanarak Batch hesapları oluşturmayı ve yönetmeyi öğrenin.
+- Azure Batch hesaplarıyla [Özel uç noktaları](private-connectivity.md) nasıl kullanacağınızı öğrenin.

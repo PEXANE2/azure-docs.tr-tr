@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 8/11/2020
 ms.author: swmachan
-ms.openlocfilehash: f8175cbd469c8a3933526d01f433e1def714783b
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: c93b8254e1fc80865d9889072b33cbf3fc94326d
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024509"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880785"
 ---
 # <a name="translator-v30"></a>Translator v 3.0
 
@@ -39,9 +39,9 @@ Microsoft Translator, birden çok veri merkezi konumundan kullanıma sunulur. Ş
 
 Microsoft Translator 'a yönelik istekler, isteğin kaynaklandığı yere en yakın veri merkezi tarafından işlenen çoğu durumda bulunur. Bir veri merkezi arızası durumunda, istek Azure Coğrafya dışında yönlendirilebilir.
 
-İsteğin belirli bir Azure Coğrafya tarafından işlenmesine zorlamak için API isteğindeki genel uç noktasını istenen bölgesel uç noktaya değiştirin:
+İsteğin belirli bir Azure Coğrafya tarafından işlenmesine zorlamak için API isteğindeki genel uç noktasını istenen coğrafi uç noktaya değiştirin:
 
-|Description|Azure Coğrafya|Temel URL|
+|Description|Azure Coğrafya|Temel URL (coğrafi uç noktası)|
 |:--|:--|:--|
 |Azure|Genel (bölgesel olmayan)|   api.cognitive.microsofttranslator.com|
 |Azure|Birleşik Devletler|   api-nam.cognitive.microsofttranslator.com|

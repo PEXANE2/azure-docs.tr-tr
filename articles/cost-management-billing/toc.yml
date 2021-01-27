@@ -393,7 +393,7 @@
     - name: Faturalandırma Otomasyon Senaryoları
       href: manage/cost-management-automation-scenarios.md
     - name: Azure Faturalandırma API’sine genel bakış
-      href: manage/usage-rate-card-overview.md
+      href: /rest/api/cost-management/retail-prices/azure-retail-prices
     - name: Azure Faturalandırma REST API’si
       href: /rest/api/billing
     - name: Azure Tüketim API’sine genel bakış

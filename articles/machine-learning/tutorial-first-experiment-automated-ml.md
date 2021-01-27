@@ -11,12 +11,12 @@ ms.author: sacartac
 ms.reviewer: nibaccam
 ms.date: 12/21/2020
 ms.custom: automl
-ms.openlocfilehash: 90c827774f38f07b9791a6399a53b0304bbe28c8
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: ff9bd328dd98fbd614a3bb63a1edddc2027d97b2
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97695197"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879789"
 ---
 # <a name="tutorial-create-a-classification-model-with-automated-ml-in-azure-machine-learning"></a>Öğretici: Azure Machine Learning otomatik ML ile sınıflandırma modeli oluşturma
 
@@ -100,7 +100,7 @@ Denemenizi yapılandırmadan önce, veri dosyanızı Azure Machine Learning veri
         Sınırlayıcı|&nbsp;Düz metin veya diğer veri akışlarında ayrı, bağımsız bölgeler arasındaki sınırı belirtmek için bir veya daha fazla karakter. |Virgül
         Encoding|Veri kümenizi okumak için kullanılacak bit karakter şeması tablosunu belirler.| UTF-8
         Sütun başlıkları| Veri kümesinin üst bilgilerinin (varsa) nasıl değerlendirileceğini gösterir.| Tüm dosyaların aynı üst bilgileri var
-        Satırları atla | Veri kümesinde kaç tane, ne varsa satırların atlandığını gösterir.| Hiçbiri
+        Satırları atla | Veri kümesinde kaç tane, ne varsa satırların atlandığını gösterir.| Yok
 
     1. **Şema** formu, bu deneme için verilerinizin daha fazla yapılandırılmasını sağlar. Bu örnekte, hiçbir seçim yapmayız. **İleri**’yi seçin.
 
@@ -141,7 +141,7 @@ Verilerinizi yükleyip yapılandırdıktan sonra, denemenizin kurulumunu yapabil
             İşlem adı |  İşlem bağlamını tanımlayan benzersiz bir ad. | Oto ml-işlem
             En az/en fazla düğüm| Veri profili için, 1 veya daha fazla düğüm belirtmeniz gerekir.|En az düğümler: 1<br>En fazla düğüm: 6
             Ölçeği ölçeklendirmeye başlamadan önce boşta geçen Saniyeler | Küme otomatik olarak en düşük düğüm sayısına ölçeklendirildiğinde boşta geçen süre.|120 (varsayılan)
-            Gelişmiş ayarlar | Denemeniz için bir sanal ağ yapılandırma ve yetkilendirme ayarları.| Hiçbiri               
+            Gelişmiş ayarlar | Denemeniz için bir sanal ağ yapılandırma ve yetkilendirme ayarları.| Yok               
 
         1. İşlem hedefini oluşturmak için **Oluştur** ' u seçin. 
 
@@ -159,11 +159,11 @@ Verilerinizi yükleyip yapılandırdıktan sonra, denemenizin kurulumunu yapabil
 
     1. **Ek yapılandırma ayarlarını görüntüle** ' yi seçin ve alanları aşağıdaki gibi doldurun. Bu ayarlar, eğitim işini daha iyi denetliyor. Aksi takdirde, denemeler seçimine ve verilerine göre varsayılan ayarlar uygulanır.
 
-        Ek &nbsp; yapılandırma|Açıklama|&nbsp;Öğretici için &nbsp; değer
+        Ek &nbsp; yapılandırma|Description|&nbsp;Öğretici için &nbsp; değer
         ------|---------|---
         Birincil ölçüm| Makine öğrenimi algoritmasının ölçülecek değerlendirme ölçümü.|AUC_weighted
         En iyi modeli açıkla| Otomatik ML tarafından oluşturulan en iyi modelde explainability 'yi otomatik olarak gösterir.| Etkinleştir
-        Engellenen algoritmalar | Eğitim işinden dışlamak istediğiniz algoritmalar| Hiçbiri
+        Engellenen algoritmalar | Eğitim işinden dışlamak istediğiniz algoritmalar| Yok
         Çıkış ölçütü| Bir kriterle karşılanırsa eğitim işi durdurulur. |Eğitim &nbsp; işi &nbsp; süresi (saat): 1 <br> Ölçüm &nbsp; puan &nbsp; eşiği: yok
         Doğrulama | Çapraz doğrulama türü ve test sayısı seçin.|Doğrulama türü:<br>&nbsp;&nbsp;çapraz doğrulamayı yana kesme <br> <br> Doğrulama sayısı: 2
         Eşzamanlılık| Yineleme başına yürütülen en fazla paralel yineleme sayısı| En fazla &nbsp; eşzamanlı &nbsp; yineleme: 5
@@ -252,7 +252,7 @@ Dağıtım dosyaları veri ve deneme dosyalarından daha büyüktür, bu nedenle
 Bu otomatik makine öğrenimi öğreticisinde, bir sınıflandırma modeli oluşturmak ve dağıtmak için Azure Machine Learning otomatik ML arabirimini kullandınız. Daha fazla bilgi ve sonraki adımlar için aşağıdaki makalelere bakın:
 
 > [!div class="nextstepaction"]
-> [Bir web hizmetini kullanma](https://docs.microsoft.com/power-bi/connect-data/service-aml-integrate?context=azure/machine-learning/context/ml-context)
+> [Bir web hizmetini kullanma](/power-bi/connect-data/service-aml-integrate?context=azure%2fmachine-learning%2fcontext%2fml-context)
 
 + [Otomatik makine öğrenimi](concept-automated-ml.md)hakkında daha fazla bilgi edinin.
 + Sınıflandırma ölçümleri ve grafikler hakkında daha fazla bilgi için bkz. [otomatik makine öğrenimi sonuçlarını anlama](how-to-understand-automated-ml.md) makalesi.

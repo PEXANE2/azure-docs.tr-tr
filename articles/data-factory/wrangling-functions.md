@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/19/2021
-ms.openlocfilehash: a88f9fab2b10271aa7856a6d0b5ee114f46cfb49
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 659f6527d43e1b45a11fddf774050ca6d42bfe12
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98634330"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896672"
 ---
 # <a name="transformation-functions-in-power-query-for-data-wrangling"></a>Veri denetimi için Power Query dönüştürme işlevleri
 
@@ -24,7 +24,7 @@ Azure Data Factory veri ölçeği, Power Query ```M``` betikleri veri akışı b
 
 Şu anda tüm Power Query M işlevleri, yazma sırasında kullanılabilir olmasına rağmen veri denetimi için desteklenmez. Mash-ups 'larınızı oluştururken, bir işlev desteklenmiyorsa aşağıdaki hata iletisiyle karşılaşırsınız:
 
-`The Wrangling Data Flow is invalid. Expression.Error: The transformation logic is not supported. Please try a simpler expression.`
+`UserQuery : Expression.Error: The transformation logic is not supported as it requires dynamic access to rows of data, which cannot be scaled out.`
 
 Desteklenen Power Query d işlevlerinin listesi aşağıda verilmiştir.
 
@@ -96,7 +96,7 @@ Bağımsız tut ve çıkar, aralığı tut (karşılık gelen k işlevleri, yaln
 | Table.Distinct | Yinelenen satırları kaldırma desteklenmiyor. |
 | Table.RemoveLastN | Alt satırları kaldır desteklenmiyor. |
 | Table.RowCount | Desteklenmez, ancak 1 değerini içeren özel bir sütun eklenerek ve sonra bu sütunu List. Sum ile toplayarak elde edilebilir. Table. Group desteklenir. | 
-| Satır düzeyi hata işleme | Satır düzeyi hata işleme Şu anda desteklenmiyor. Örneğin, bir sütundan sayısal olmayan değerleri filtrelemek için, bir yaklaşım metin sütununu bir sayıya dönüştürmelidir. Dönüştürülemezse her hücre bir hata durumunda olur ve filtrelenebilir. Bu senaryo, denetimi veri akışında mümkün değildir. |
+| Satır düzeyi hata işleme | Satır düzeyi hata işleme Şu anda desteklenmiyor. Örneğin, bir sütundan sayısal olmayan değerleri filtrelemek için, bir yaklaşım metin sütununu bir sayıya dönüştürmelidir. Dönüştürülemezse her hücre bir hata durumunda olur ve filtrelenebilir. Bu senaryo, ölçeği ölçeklendirilerek mümkün değildir. |
 | Table.Transpose | Desteklenmez |
 | Table.Pivot | Desteklenmez |
 

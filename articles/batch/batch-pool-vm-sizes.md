@@ -4,12 +4,12 @@ description: Azure Batch havuzlarda işlem düğümleri için kullanılabilir VM
 ms.topic: conceptual
 ms.date: 11/24/2020
 ms.custom: seodec18
-ms.openlocfilehash: 8bb54a4db62f56f442f7cec81e6768241a05ffee
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 59218361c5fff51b33131fdd2455c599dd12b06a
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95895239"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897502"
 ---
 # <a name="choose-a-vm-size-and-image-for-compute-nodes-in-an-azure-batch-pool"></a>Bir Azure Batch havuzundaki işlem düğümleri için VM boyutu ve görüntüsü seçme
 
@@ -35,40 +35,38 @@ Sanal makine yapılandırmasındaki toplu iş havuzları neredeyse tüm [VM boyu
 | DC | Desteklenmez |
 | Dv2, DSv2 | Tüm Boyutlar |
 | Dv3, Dsv3 | Tüm Boyutlar |
-| Dav4<sup>1</sup> | Tüm Boyutlar |
-| Dasv4<sup>1</sup> | Tüm Boyutlar |
+| Dav4 | Tüm Boyutlar |
+| Dasv4 | Tüm Boyutlar |
 | Ddv4, Ddsv4 |  Tüm Boyutlar |
 | Dv4, Dsv4 | Desteklenmez |
 | Ev3, Esv3 | E64is_v3 dışındaki tüm boyutlar |
-| Eav4<sup>1</sup> | Tüm Boyutlar |
-| Easv4<sup>1</sup> | Tüm Boyutlar |
+| Eav4 | Tüm Boyutlar |
+| Easv4 | Tüm Boyutlar |
 | Edv4, Edsv4 |  Tüm Boyutlar |
 | Ev4, Esv4 | Desteklenmez |
 | F, FS | Tüm Boyutlar |
 | Fsv2 | Tüm Boyutlar |
 | G, GS | Tüm Boyutlar |
 | H | Tüm Boyutlar |
-| HB<sup>1</sup> | Tüm Boyutlar |
-| HBv2<sup>1</sup> | Tüm Boyutlar |
-| HC<sup>1</sup> | Tüm Boyutlar |
+| HB | Tüm Boyutlar |
+| HBv2 | Tüm Boyutlar |
+| HC | Tüm Boyutlar |
 | Ls | Tüm Boyutlar |
-| Lsv2<sup>1</sup> | Tüm Boyutlar |
-| A<sup>1</sup> | Tüm Boyutlar |
-| Mv2<sup>1, 2</sup> | Tüm Boyutlar |
+| Lsv2 | Tüm Boyutlar |
+| M | Tüm Boyutlar |
+| Mv2<sup>1</sup> | Tüm Boyutlar |
 | NC | Tüm Boyutlar |
-| NCv2<sup>1</sup> | Tüm Boyutlar |
-| NCv3<sup>1</sup> | Tüm Boyutlar |
+| NCv2 | Tüm Boyutlar |
+| NCv3 | Tüm Boyutlar |
 | NCasT4_v3 | Hiçbiri-henüz kullanılamıyor |
-| ND<sup>1</sup> | Tüm Boyutlar |
-| NDv2<sup>1</sup> | Hiçbiri-henüz kullanılamıyor |
+| ND | Tüm Boyutlar |
+| NDv2 | Hiçbiri-henüz kullanılamıyor |
 | NV | Tüm Boyutlar |
-| NVv3<sup>1</sup> | Tüm Boyutlar |
-| NVv4<sup>1</sup> | Tüm Boyutlar |
+| NVv3 | Tüm Boyutlar |
+| NVv4 | Tüm Boyutlar |
 | SAP HANA | Desteklenmez |
 
-<sup>1</sup> bu VM Serisi, sanal makine yapılandırmasındaki Batch havuzlarında ayrılabilir, ancak yeni bir Batch hesabı oluşturmanız ve belirli bir [Kota artışı](batch-quota-limit.md#increase-a-quota)istemeniz gerekir. Bu sınırlama, VM Serisi başına vCPU kotası Batch hesapları için tam olarak desteklendikten sonra kaldırılacaktır.
-
-<sup>2</sup> bu VM Serisi yalnızca 2. nesil VM görüntüleriyle kullanılabilir.
+<sup>1</sup> bu VM Serisi yalnızca 2. nesil VM görüntüleriyle kullanılabilir.
 
 ### <a name="using-generation-2-vm-images"></a>2. nesil VM görüntülerini kullanma
 

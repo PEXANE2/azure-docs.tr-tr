@@ -3,14 +3,14 @@ title: Azure Otomasyonu karma Runbook Worker genel bakış
 description: Bu makalede, yerel veri merkezinizdeki veya bulut sağlayıcınızdaki makinelerde runbook 'ları çalıştırmak için kullanabileceğiniz karma Runbook Worker 'a genel bakış sunulmaktadır.
 services: automation
 ms.subservice: process-automation
-ms.date: 01/11/2021
+ms.date: 01/22/2021
 ms.topic: conceptual
-ms.openlocfilehash: a23d30047a13b1d176b086a9923e140e7f8d3e45
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: 7cf18b6b677daaf97d425c86a0cad91b3abcb225
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98072148"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896961"
 ---
 # <a name="hybrid-runbook-worker-overview"></a>Karma Runbook Çalışanına genel bakış
 
@@ -20,7 +20,7 @@ Azure Otomasyonu 'ndaki runbook 'lar, Azure bulut platformunda çalıştıkları
 
 İki tür runbook çalışanı vardır-sistem ve Kullanıcı. Aşağıdaki tabloda aralarındaki fark açıklanmaktadır.
 
-|Tür | Açıklama |
+|Tür | Description |
 |-----|-------------|
 |**Sistem** |, Windows ve Linux makinelerine Kullanıcı tarafından belirtilen güncelleştirmeleri yüklemek için tasarlanan Güncelleştirme Yönetimi özelliği tarafından kullanılan bir gizli runbook kümesini destekler.<br> Bu karma runbook çalışanı türü karma Runbook Worker grubunun bir üyesi değildir ve bu nedenle bir runbook worker grubunu hedefleyen runbook 'ları çalıştırmaz. |
 |**Kullanıcı** |, Bir veya daha fazla Runbook Worker grubunun üyesi olan Windows ve Linux makinesinde doğrudan çalıştırılması amaçlanan Kullanıcı tanımlı runbook 'ları destekler. |
@@ -54,16 +54,7 @@ Bir Windows makinesi için önerilen yükleme yöntemi, bir Azure Otomasyonu run
 
 ## <a name="network-planning"></a><a name="network-planning"></a>Ağ planlama
 
-Hem bir sistem hem de Kullanıcı karma Runbook Worker 'ın Azure Otomasyonu 'na bağlanması ve kaydolmasının ardından bu bölümde açıklanan bağlantı noktası numarasına ve URL 'Lere erişimi olması gerekir. Çalışan Ayrıca Log Analytics aracısının Azure Izleyici Log Analytics çalışma alanına bağlanması için [gereken bağlantı noktalarına ve URL 'lere](../azure-monitor/platform/agent-windows.md) erişebilmelidir.
-
-Karma Runbook Worker için aşağıdaki bağlantı noktası ve URL 'Ler gereklidir:
-
-* Bağlantı noktası: giden internet erişimi için yalnızca TCP 443 gerekir
-* Genel URL: `*.azure-automation.net`
-* US Gov Virginia genel URL 'SI: `*.azure-automation.us`
-* Aracı hizmeti: `https://<workspaceId>.agentsvc.azure-automation.net`
-
-Belirli bir bölge için tanımlanan bir Otomasyon hesabınız varsa, karma Runbook Worker iletişimini ilgili bölge veri merkezi ile kısıtlayabilirsiniz. Azure Otomasyonu tarafından gerekli DNS kayıtları için [kullanılan DNS kayıtlarını](how-to/automation-region-dns-records.md) gözden geçirin.
+Bağlantı noktaları, URL 'Ler ve karma Runbook Worker için gereken diğer ağ ayrıntıları hakkında ayrıntılı bilgi için [Azure Otomasyonu ağ yapılandırması](automation-network-configuration.md#network-planning-for-hybrid-runbook-worker) 'nı denetleyin.
 
 ### <a name="proxy-server-use"></a>Proxy sunucusu kullanımı
 
@@ -94,7 +85,7 @@ Azure Otomasyonu karma Runbook Worker, Azure Kamu 'da aşağıdaki iki yapıland
 * Tek bir Azure aboneliğine ayrılmış bir veya daha fazla sanal makineyi barındırabilen fiziksel sunucular sağlayan [Azure ayrılmış Konakları](../azure-government/documentation-government-impact-level-5.md#azure-dedicated-host).
 
 >[!NOTE]
->Karma runbook çalışanı rolü aracılığıyla işlem yalıtımı, Azure ticari ve ABD kamu bulutları için kullanılabilir. 
+>Karma runbook çalışanı rolü aracılığıyla işlem yalıtımı, Azure ticari ve ABD kamu bulutları için kullanılabilir.
 
 ### <a name="update-management-addresses-for-hybrid-runbook-worker"></a>Karma Runbook Worker için Güncelleştirme Yönetimi adresleri
 

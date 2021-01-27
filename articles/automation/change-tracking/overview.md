@@ -3,14 +3,14 @@ title: Azure Otomasyonu Değişiklik İzleme ve envantere genel bakış
 description: Bu makalede, ortamınızdaki yazılım ve Microsoft hizmet değişikliklerini belirlemenize yardımcı olan Değişiklik İzleme ve envanter özelliği açıklanır.
 services: automation
 ms.subservice: change-inventory-management
-ms.date: 11/10/2020
+ms.date: 01/22/2021
 ms.topic: conceptual
-ms.openlocfilehash: b5390e4b3dc6d77390c3fca6323cbd52544c638a
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 0ef821634669739ff5aed58e4404d7c21b8d8222
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94445430"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896638"
 ---
 # <a name="change-tracking-and-inventory-overview"></a>Değişiklik İzleme ve envantere genel bakış
 
@@ -32,7 +32,7 @@ Değişiklik İzleme ve envanter, işletim sistemi ve uygulama dosyalarını ve 
 - Microsoft Hizmetleri
 - Linux Daemon 'ları
 
-Değişiklik İzleme ve envanterde bulunan tüm özelliklerin etkinleştirilmesi ek ücretlere neden olabilir. Devam etmeden önce [Otomasyon Fiyatlandırması](https://azure.microsoft.com/pricing/details/automation/) ve [Azure izleyici fiyatlandırmasını](https://azure.microsoft.com/pricing/details/monitor/)gözden geçirin. 
+Değişiklik İzleme ve envanterde bulunan tüm özelliklerin etkinleştirilmesi ek ücretlere neden olabilir. Devam etmeden önce [Otomasyon Fiyatlandırması](https://azure.microsoft.com/pricing/details/automation/) ve [Azure izleyici fiyatlandırmasını](https://azure.microsoft.com/pricing/details/monitor/)gözden geçirin.
 
 Değişiklik İzleme ve envanter verileri Azure Izleyici günlüklerine iletir ve bu toplanan veriler bir Log Analytics çalışma alanında depolanır. Dosya bütünlüğü Izleme (FIM) özelliği, yalnızca **sunucular Için Azure Defender** etkinleştirildiğinde kullanılabilir. Daha fazla bilgi için bkz. Azure Güvenlik Merkezi [fiyatlandırması](../../security-center/security-center-pricing.md) . FIM, verileri Değişiklik İzleme ve envanterden depolamak için oluşturulan Log Analytics çalışma alanına yükler. Tam kullanımınızın izlenmesini sağlamak için bağlantılı Log Analytics çalışma alanınızı izlemenizi öneririz. Azure Izleyici günlüklerinin veri kullanımını çözümleme hakkında daha fazla bilgi için bkz. [kullanımı ve maliyeti yönetme](../../azure-monitor/platform/manage-cost-storage.md).
 
@@ -70,20 +70,11 @@ Değişiklik İzleme ve stok yalnızca Python2 destekler. Makineniz, varsayılan
 - Ubuntu, debir: `apt-get install -y python2`
 - SUSE `zypper install -y python2`
 
-Python2 yürütülebilir dosyası *Python* 'un diğer adı olmalıdır.
+Python2 yürütülebilir dosyası *Python*'un diğer adı olmalıdır.
 
 ## <a name="network-requirements"></a>Ağ gereksinimleri
 
-Aşağıdaki adresler, Değişiklik İzleme ve envanter için özel olarak gereklidir. 443 numaralı bağlantı noktası üzerinden bu adreslerle iletişim oluşur.
-
-|Azure Genel  |Azure Kamu  |
-|---------|---------|
-|*.ods.opinsights.azure.com    | *. ods.opinsights.azure.us         |
-|*.oms.opinsights.azure.com     | *. oms.opinsights.azure.us        |
-|*.blob.core.windows.net | *. blob.core.usgovcloudapi.net|
-|*.azure-automation.net | *. azure-automation.us|
-
-Ağ grubu güvenlik kuralları oluşturduğunuzda veya Otomasyon hizmetine ve Log Analytics çalışma alanına giden trafiğe izin vermek üzere Azure Güvenlik Duvarı 'nı yapılandırdığınızda, **guestandhybridmanagement** ve **AzureMonitor** [hizmet etiketini](../../virtual-network/service-tags-overview.md#available-service-tags) kullanın. Bu, ağ güvenliği kurallarınızın devam eden yönetimini basitleştirir. Azure VM 'lerinizin Otomasyon hizmetine güvenli bir şekilde ve özel olarak bağlanmak için [Azure özel bağlantı kullanımı](../how-to/private-link-security.md)' nı gözden geçirin. Şirket içi güvenlik duvarı yapılandırmalarının bir parçası olarak dahil edilecek geçerli hizmet etiketi ve Aralık bilgilerini almak için bkz. [INDIRILEBILIR JSON dosyaları](../../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files).
+Değişiklik İzleme ve envanter için gereken bağlantı noktaları, URL 'Ler ve diğer ağ ayrıntıları hakkında ayrıntılı bilgi için [Azure Otomasyonu ağ yapılandırması](../automation-network-configuration.md#update-management-and-change-tracking-and-inventory) 'nı denetleyin.
 
 ## <a name="enable-change-tracking-and-inventory"></a>Değişiklik İzlemeyi ve Sayımı Etkinleştirme
 
@@ -172,7 +163,7 @@ Değişiklik İzleme ve envanter kullanan bir makineye yönelik ortalama Log Ana
 
 ### <a name="microsoft-service-data"></a>Microsoft hizmet verileri
 
-Microsoft Hizmetleri için varsayılan toplama sıklığı 30 dakikadır. **Ayarları Düzenle** ' nin altındaki **Microsoft Hizmetleri** sekmesinde bir kaydırıcıyı kullanarak sıklığı yapılandırabilirsiniz.
+Microsoft Hizmetleri için varsayılan toplama sıklığı 30 dakikadır. **Ayarları Düzenle**' nin altındaki **Microsoft Hizmetleri** sekmesinde bir kaydırıcıyı kullanarak sıklığı yapılandırabilirsiniz.
 
 ![Microsoft Hizmetleri kaydırıcısı](./media/overview/windowservices.png)
 
@@ -185,7 +176,7 @@ Log Analytics Aracısı, performansı iyileştirmek için yalnızca değişiklik
 
 Değişiklik İzleme ve envanterin önemli bir özelliği, karma ortamınızın yapılandırma durumundaki değişiklikler hakkında uyarı verebilir. Uyarılara yanıt olarak tetiklenecek birçok yararlı eylem vardır. Örneğin, Azure işlevleri, Otomasyon Runbook 'ları, Web kancaları ve benzeri eylemler. Bir makine için **c:\Windows\system32\drivers\etc\hosts** dosyasında yapılan değişikliklerle ilgili uyarı verme, değişiklik izleme ve envanter verileri için tek iyi bir uyarı uygulamasıdır. Sonraki tabloda tanımlanan sorgu senaryoları da dahil olmak üzere, uyarı için çok daha fazla senaryo vardır.
 
-|Sorgu  |Açıklama  |
+|Sorgu  |Description  |
 |---------|---------|
 |ConfigurationChange <br>ConfigChangeType = = "Files" ve Filesystemmpath "c: \\ Windows \\ system32 \\ drivers \\ " içerdiğinde &#124;|Sistem açısından kritik dosyalarda yapılan değişiklikleri izlemek için faydalıdır.|
 |ConfigurationChange <br>Alanlardaki "FileContentChecksum" ve Filesystemmpath = = "c: \\ Windows \\ system32 \\ Drivers ve \\ \\ Konakları" içeren &#124;|Anahtar yapılandırma dosyalarında yapılan değişiklikleri izlemek için faydalıdır.|

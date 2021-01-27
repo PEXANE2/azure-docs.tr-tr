@@ -1,26 +1,11 @@
 ---
-title: Azure Izleyici ile ölçümleri ve tanılama günlüklerini Media Services
-titleSuffix: Azure Media Services
-description: Azure Izleyici aracılığıyla Azure Media Services ölçümleri ve tanılama günlüklerini izlemeyi öğrenin.
-services: media-services
-documentationcenter: ''
-author: IngridAtMicrosoft
-manager: femila
-editor: ''
-ms.service: media-services
-ms.workload: media
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: conceptual
-ms.date: 11/02/2020
-ms.author: inhenkel
-ms.openlocfilehash: ed436336b9b1f9f5815938d13315e821694e5f1c
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
-ms.translationtype: MT
-ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94685197"
+Başlık: Azure Izleyici ile ölçümleri ve tanılama günlüklerini Media Services: Azure Media Services Açıklama: Azure Izleyici aracılığıyla Azure Media Services ölçümleri ve tanılama günlüklerini izlemeyi öğrenin.
+Hizmetler: Media-Services belgetationcenter: ' ' Yazar: ınridatmicrosoft Manager: femila Düzenleyicisi: ' '
+
+MS. Service: Media-Services MS. Workload: Media ms.tgt_pltfrm: na MS. devlang: na MS. Topic: kavramsal MS. Date: 11/02/2020 MS. Author: inhenkel
+
 ---
+
 # <a name="monitor-media-services-metrics-and-diagnostic-logs-with-azure-monitor"></a>Azure Izleyici ile Media Services ölçümleri ve tanılama günlüklerini izleme
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
@@ -44,7 +29,7 @@ Media Services aşağıdaki kaynaklar için izleme ölçümlerini destekler:
 
 Aşağıdaki hesap ölçümlerini izleyebilirsiniz.
 
-|Ölçüm adı|Görünen ad|Açıklama|
+|Ölçüm adı|Görünen ad|Description|
 |---|---|---|
 |AssetCount|Varlık sayısı|Hesabınızdaki varlıklar.|
 |AssetQuota|Varlık kotası|Hesabınızdaki varlık kotası.|
@@ -62,7 +47,7 @@ Aşağıdaki hesap ölçümlerini izleyebilirsiniz.
 
 Aşağıdaki Media Services [akış uç noktası](/rest/api/media/streamingendpoints) ölçümleri desteklenir:
 
-|Ölçüm adı|Görünen ad|Açıklama|
+|Ölçüm adı|Görünen ad|Description|
 |---|---|---|
 |İstekler|İstekler|Akış uç noktası tarafından hizmet verilen toplam HTTP isteği sayısını sağlar.|
 |Çıkış|Çıkış|Akış uç noktası başına dakika başına toplam çıkış baytı.|

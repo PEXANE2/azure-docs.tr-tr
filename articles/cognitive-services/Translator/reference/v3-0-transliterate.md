@@ -3,19 +3,19 @@ title: Çevirmen Alfabardın yöntemi
 titleSuffix: Azure Cognitive Services
 description: Bir dildeki metni, çevirmen alfabede bulunan yöntemi ile bir betikten başka bir betiğe dönüştürür.
 services: cognitive-services
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
-ms.author: swmachan
-ms.openlocfilehash: 4b985d7b2eb07ca8bbd3556a237fbcaba5392fe5
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.author: lajanuar
+ms.openlocfilehash: 0d5a7f8df0c722ca52780ba254e9af9608f26b54
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95016488"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895433"
 ---
 # <a name="translator-30-transliterate"></a>Çevirici 3,0: alfabede
 
@@ -35,7 +35,7 @@ Sorgu dizesine geçirilen istek parametreleri şunlardır:
 
 <table width="100%">
   <th width="20%">Sorgu parametresi</th>
-  <th>Description</th>
+  <th>Açıklama</th>
   <tr>
     <td>api-sürümü</td>
     <td>*Gerekli parametre*.<br/>İstemci tarafından istenen API 'nin sürümü. Değer olmalıdır `3.0` .</td>
@@ -46,11 +46,11 @@ Sorgu dizesine geçirilen istek parametreleri şunlardır:
   </tr>
   <tr>
     <td>fromScript</td>
-    <td>*Gerekli parametre*.<br/>Giriş metni tarafından kullanılan betiği belirtir. [supported languages](./v3-0-languages.md) `transliteration` Seçili dil için kullanılabilen giriş betiklerini bulmak için kapsamı kullanarak desteklenen dilleri arayın.</td>
+    <td>*Gerekli parametre*.<br/>Giriş metni tarafından kullanılan betiği belirtir. [](./v3-0-languages.md) `transliteration` Seçili dil için kullanılabilen giriş betiklerini bulmak için kapsamı kullanarak desteklenen dilleri arayın.</td>
   </tr>
   <tr>
     <td>Toscrıpt</td>
-    <td>*Gerekli parametre*.<br/>Çıkış betiğini belirtir. [supported languages](./v3-0-languages.md) `transliteration` Seçilen giriş dili ve giriş betiği birleşimi için kullanılabilir çıkış betikleri bulmak için, kapsamı kullanarak desteklenen dilleri arayın.</td>
+    <td>*Gerekli parametre*.<br/>Çıkış betiğini belirtir. [](./v3-0-languages.md) `transliteration` Seçilen giriş dili ve giriş betiği birleşimi için kullanılabilir çıkış betikleri bulmak için, kapsamı kullanarak desteklenen dilleri arayın.</td>
   </tr>
 </table> 
 

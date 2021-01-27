@@ -1,5 +1,5 @@
 ---
-title: Media Services v3 Azure CLı kullanarak özel dönüştürmeyi kodla | Microsoft Docs
+title: Media Services v3 Azure CLı kullanarak özel dönüştürmeyi kodla
 description: Bu konu, Azure CLı kullanarak özel bir dönüşüm kodlamak için Azure Media Services v3 'in nasıl kullanılacağını gösterir.
 services: media-services
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.topic: how-to
 ms.custom: devx-track-azurecli
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: c61ac8c7cf85b1fae4c9b531f16b951dd2b80876
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9758ed7403e11ca30732377a65bbde1944368cb2
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89295794"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897199"
 ---
 # <a name="how-to-encode-with-a-custom-transform---azure-cli"></a>Özel bir dönüşümle kodlama-Azure CLı
 
@@ -32,7 +32,7 @@ Azure Media Services ile kodlarken, [akış dosyaları](stream-files-cli-quickst
 * AVC içeriğinde yükseklik ve genişlik değerlerinin tümü 4 ' ün katı olmalıdır.
 * Azure Media Services v3 'de, tüm kodlama bit fiyatları bit/saniye cinsinden. Bu, birim olarak kilobit/saniye kullanan v2 API 'lerimiz olan ön ayarlardan farklıdır. Örneğin, v2 'deki bit hızı 128 (kilobit/saniye) olarak belirtilmişse, v3 'de 128000 (bit/saniye) olarak ayarlanır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [Media Services hesabı oluşturun](./create-account-howto.md).
 

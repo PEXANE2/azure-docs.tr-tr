@@ -1,5 +1,5 @@
 ---
-title: Azure Media Services ile video dosyalarını akışa alma - .NET | Microsoft Docs
+title: Azure Media Services .NET ile video dosyaları akışı
 description: Yeni bir Azure Media Services hesabı oluşturmak, bir dosya kodlamak ve Azure Media Player göndermek için .NET kullanmak üzere Bu öğreticinin adımlarını izleyin.
 services: media-services
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 530089b9c6b9544201b0f07368cac3d1a695a4f8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dc6b240a2d97e0b4aa313f858b3965f241dd0b08
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91268698"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98898197"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---net"></a>Öğretici: URL 'yi temel alarak uzak bir dosyayı kodlayın ve videoyu akışa sunun-.NET
 
@@ -54,11 +54,11 @@ Aşağıdaki komutu kullanarak, akış .NET örneğini içeren bir GitHub havuzu
 Örnek aşağıdaki eylemleri gerçekleştirir:
 
 1. Bir **dönüşüm** oluşturur (ilk olarak, belirtilen dönüştürmenin var olup olmadığını denetler). 
-2. Kodlama **işinin**çıkışı olarak kullanılan bir çıktı **varlığı** oluşturur.
-3. Bir HTTPS URL 'sini temel alan, **işin**girişini oluşturur.
+2. Kodlama **işinin** çıkışı olarak kullanılan bir çıktı **varlığı** oluşturur.
+3. Bir HTTPS URL 'sini temel alan, **işin** girişini oluşturur.
 4. Daha önce oluşturulmuş giriş ve çıktıyı kullanarak kodlama **işini** gönderir.
 5. İşin durumunu denetler.
-6. Bir **akış Bulucu**oluşturur.
+6. Bir **akış Bulucu** oluşturur.
 7. Akış URL'leri oluşturur.
 
 Örnekteki her bir işlevin ne yaptığına dair açıklamalar için kodu inceleyin ve [bu kaynak dosyadaki](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/blob/master/AMSV3Quickstarts/EncodeAndStreamFiles/Program.cs) açıklamalara bakın.

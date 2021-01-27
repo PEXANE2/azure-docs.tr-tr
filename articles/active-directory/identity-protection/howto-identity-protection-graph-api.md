@@ -1,47 +1,45 @@
 ---
-title: Azure Active Directory Kimlik Koruması için API Microsoft Graph
+title: Microsoft Graph PowerShell SDK ve Azure Active Directory Kimlik Koruması
 description: Microsoft Graph risk algılamalarını ve ilgili bilgileri nasıl sorguleyeceğinizi öğrenin Azure Active Directory
 services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: how-to
-ms.date: 10/06/2020
+ms.date: 01/25/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5367e5027bfae2fa3ed7e87a779e50e4048ba608
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 2db8cfe652c0fca4b68b00d846e345c1b60cd05d
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96861740"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880245"
 ---
-# <a name="get-started-with-azure-active-directory-identity-protection-and-microsoft-graph"></a>Azure Active Directory Kimlik Koruması ve Microsoft Graph kullanmaya başlama
+# <a name="azure-active-directory-identity-protection-and-the-microsoft-graph-powershell-sdk"></a>Azure Active Directory Kimlik Koruması ve Microsoft Graph PowerShell SDK 'Sı
 
-Microsoft Graph, Microsoft Birleşik API uç noktası ve [Azure Active Directory kimlik koruması](./overview-identity-protection.md) API 'lerinin ana adresidir. Riskli kullanıcılar ve oturum açma bilgileri sunan üç API vardır. İlk API, **riskDetection**, hem Kullanıcı hem de oturum açma ile bağlantılı risk algılamaları ve algılamayla ilgili bilgiler için Microsoft Graph sorgulamanızı sağlar. İkinci API, **Riskyusers**, risk halinde algılanan kullanıcılar kimlik koruması hakkında bilgi için Microsoft Graph sorgulamanızı sağlar. Üçüncü API, **oturum** açma, risk durumu, ayrıntı ve düzeyiyle ilgili belirli ÖZELLIKLERLE Azure AD oturum açma bilgileri için Microsoft Graph sorgulamanızı sağlar. 
+Microsoft Graph, Microsoft Birleşik API uç noktası ve [Azure Active Directory kimlik koruması](./overview-identity-protection.md) API 'lerinin ana adresidir. Bu makalede, PowerShell kullanarak riskli Kullanıcı ayrıntılarını almak için [Microsoft Graph PowerShell SDK 'sının](/graph/powershell/get-started) nasıl kullanılacağı gösterilir. Microsoft Graph API 'Leri doğrudan sorgulamak isteyen kuruluşlar, öğretici: Bu yolculuğa başlamak için [Microsoft Graph API 'leri kullanarak riskleri belirlemek ve](/graph/tutorial-riskdetection-api) düzeltmek için bu makaleyi kullanabilir.
 
-Bu makale, Microsoft Graph bağlanma ve bu API 'Leri sorgulama ile çalışmaya başlamanızı sağlar. Ayrıntılı bir giriş, tam belgeler ve grafik Gezgini 'ne erişim için, bu API 'Ler için [Microsoft Graph sitesine](https://graph.microsoft.io/) veya belirli başvuru belgelerine bakın:
 
-* [riskDetection API'si](/graph/api/resources/riskdetection?view=graph-rest-v1.0)
-* [riskyUsers API'si](/graph/api/resources/riskyuser?view=graph-rest-v1.0)
-* [signIn API'si](/graph/api/resources/signin?view=graph-rest-v1.0)
-
-## <a name="connect-to-microsoft-graph"></a>Microsoft Graph 'a bağlanma
+## <a name="connect-to-microsoft-graph"></a>Microsoft Graph Bağlan
 
 Kimlik koruma verilerine Microsoft Graph aracılığıyla erişmenin dört adımı vardır:
 
-- [Etki alanı adınızı alın](#retrieve-your-domain-name)
+- [Sertifika oluşturma](#create-a-certificate)
 - [Yeni bir uygulama kaydı oluşturun](#create-a-new-app-registration)
 - [API izinlerini yapılandırma](#configure-api-permissions)
 - [Geçerli bir kimlik bilgisi yapılandırın](#configure-a-valid-credential)
 
-### <a name="retrieve-your-domain-name"></a>Etki alanı adınızı alın 
+### <a name="create-a-certificate"></a>Sertifika oluşturma
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.  
-1. **Azure Active Directory**  >  **Özel etki alanı adlarına** Azure Active Directory gidin. 
-1. `.onmicrosoft.com`Etki alanını bir yere göz atın, bu bilgilere sonraki bir adımda ihtiyacınız olacaktır.
+Üretim ortamında, üretim Sertifika yetkilinizden bir sertifika kullanırsınız, ancak bu örnekte otomatik olarak imzalanan bir sertifika kullanacağız. Aşağıdaki PowerShell komutlarını kullanarak sertifikayı oluşturun ve dışarı aktarın.
+
+```powershell
+$cert = New-SelfSignedCertificate -Subject "CN=MSGraph_ReportingAPI" -CertStoreLocation "Cert:\CurrentUser\My" -KeyExportPolicy Exportable -KeySpec Signature -KeyLength 2048 -KeyAlgorithm RSA -HashAlgorithm SHA256
+Export-Certificate -Cert $cert -FilePath "C:\Reporting\MSGraph_ReportingAPI.cer"
+```
 
 ### <a name="create-a-new-app-registration"></a>Yeni bir uygulama kaydı oluşturun
 
@@ -51,9 +49,11 @@ Kimlik koruma verilerine Microsoft Graph aracılığıyla erişmenin dört adım
    1. **Ad** metin kutusuna uygulamanız için bir ad yazın (örneğin: Azure AD risk algılama API 'si).
    1. **Desteklenen hesap türleri** altında, API 'leri kullanacak hesapların türünü seçin.
    1. **Kaydet**’i seçin.
-1. **Uygulama kimliğini** kopyalayın.
+1. Bu öğelere daha sonra ihtiyacınız olacağı için **uygulama (istemci) kimliği** ve **Dizin (kiracı) kimliğini** de göz önünde bulabilirsiniz.
 
 ### <a name="configure-api-permissions"></a>API izinlerini yapılandırma
+
+Bu örnekte, bu örneğe katılımsız olarak kullanılmasına izin veren uygulama izinlerini yapılandıracağız. Oturum açan bir kullanıcıya izin veriyorsanız, bunun yerine temsilci izinleri ' ni seçin. Farklı izin türleri hakkında daha fazla bilgi, [Microsoft Identity platformunda makalesinde, izinlerde ve onayda](../develop/v2-permissions-and-consent.md#permission-types)bulunabilir.
 
 1. Oluşturduğunuz **uygulamadan** , **API izinleri**' ni seçin.
 1. **Yapılandırılan izinler** sayfasında, üstteki araç çubuğundan **izin Ekle**' ye tıklayın.
@@ -68,109 +68,34 @@ Kimlik koruma verilerine Microsoft Graph aracılığıyla erişmenin dört adım
 ### <a name="configure-a-valid-credential"></a>Geçerli bir kimlik bilgisi yapılandırın
 
 1. Oluşturduğunuz **uygulamadan** **Sertifikalar & parolaları**' nı seçin.
-1. **İstemci gizli** dizileri altında **yeni istemci parolası**' nı seçin.
-   1. İstemciye gizli dizi **açıklaması** verin ve kullanım süresi sonu süresini kuruluş ilkelerinize göre ayarlayın.
+1. **Sertifikalar** altında **sertifikayı karşıya yükle**' yi seçin.
+   1. Açılan pencereden daha önce aktarılmış sertifikayı seçin.
    1. **Ekle**’yi seçin.
+1. Bir sonraki adımda bu bilgiye ihtiyacınız olacağı için sertifikanın **parmak izini** göz önünde bulabilirsiniz.
 
-   > [!NOTE]
-   > Bu anahtarı kaybederseniz, bu bölüme dönüp yeni bir anahtar oluşturmanız gerekir. Bu anahtarı gizli tut: verilerinize erişebilen herkes, verilerinize erişebilir.
+## <a name="list-risky-users-using-powershell"></a>PowerShell kullanarak riskli kullanıcıları listeleme
 
-## <a name="authenticate-to-microsoft-graph-and-query-the-identity-risk-detections-api"></a>Kimlik doğrulama Microsoft Graph ve kimlik riski algılama API 'sini sorgulama
+Microsoft Graph sorgulama özelliğini etkinleştirmek için, `Microsoft.Graph` komutunu kullanarak modülü PowerShell penceremiz olarak yüklememiz gerekir `Install-Module Microsoft.Graph` .
 
-Bu noktada, şunları yapmanız gerekir:
+Aşağıdaki değişkenleri önceki adımlarda oluşturulan bilgileri içerecek şekilde değiştirin ve ardından PowerShell kullanarak riskli Kullanıcı ayrıntılarını almak için bunları bir bütün olarak çalıştırın.
 
-- Kiracınızın etki alanının adı
-- Uygulama (istemci) KIMLIĞI 
-- İstemci parolası veya sertifikası 
+```powershell
+$ClientID       = "<your client ID here>"        # Application (client) ID gathered when creating the app registration
+$tenantdomain   = "<your tenant domain here>"    # Directory (tenant) ID gathered when creating the app registration
+$Thumbprint     = "<your client secret here>"    # Certificate thumbprint gathered when configuring your credential
 
-Kimlik doğrulaması yapmak için, gövdesinde aşağıdaki parametrelerle öğesine bir post isteği gönderin `https://login.microsoft.com` :
+Select-MgProfile -Name "beta"
+  
+Connect-MgGraph -ClientId $ClientID -TenantId $tenantdomain -CertificateThumbprint $Thumbprint
 
-- grant_type: "**client_credentials**"
-- Kaynak `https://graph.microsoft.com`
-- client_id: \<your client ID\>
-- client_secret: \<your key\>
-
-Başarılı olursa, bu istek bir kimlik doğrulama belirteci döndürür.  
-API 'yi çağırmak için aşağıdaki parametreyle bir üst bilgi oluşturun:
-
-```
-`Authorization`="<token_type> <access_token>"
-```
-
-Kimlik doğrulanırken, döndürülen belirteçte belirteç türünü ve erişim belirtecini bulabilirsiniz.
-
-Bu üstbilgiyi aşağıdaki API URL 'sine bir istek olarak gönderin: `https://graph.microsoft.com/v1.0/identityProtection/riskDetections`
-
-Başarılı olursa yanıt, bir kimlik riski algılamaları ve, uygun gördüğünüz şekilde ayrıştırılabilen ve işlenebilen OData JSON biçimindeki ilişkili veriler koleksiyonudur.
-
-### <a name="sample"></a>Örnek
-
-Bu örnek, kimlik doğrulaması için paylaşılan bir gizli dizi kullanımını gösterir. Kod içinde gizli dizileri depolayan bir üretim ortamında genellikle üzerine kayamış olur. Kuruluşlar, bu kimlik bilgilerini güvenli hale getirmek için Azure kaynakları için Yönetilen kimlikler kullanabilir. Yönetilen kimlikler hakkında daha fazla bilgi için [Azure kaynakları için Yönetilen kimlikler](../managed-identities-azure-resources/overview.md)başlıklı makaleye bakın.
-
-PowerShell kullanarak API 'YI doğrulamak ve çağırmak için örnek kod aşağıda verilmiştir.  
-Yalnızca istemci KIMLIĞINIZI, gizli anahtarı ve kiracı etki alanını ekleyin.
-
-```PowerShell
-    $ClientID       = "<your client ID here>"        # Should be a ~36 hex character string; insert your info here
-    $ClientSecret   = "<your client secret here>"    # Should be a ~44 character string; insert your info here
-    $tenantdomain   = "<your tenant domain here>"    # For example, contoso.onmicrosoft.com
-
-    $loginURL       = "https://login.microsoft.com"
-    $resource       = "https://graph.microsoft.com"
-
-    $body       = @{grant_type="client_credentials";resource=$resource;client_id=$ClientID;client_secret=$ClientSecret}
-    $oauth      = Invoke-RestMethod -Method Post -Uri $loginURL/$tenantdomain/oauth2/token?api-version=1.0 -Body $body
-
-    Write-Output $oauth
-
-    if ($oauth.access_token -ne $null) {
-        $headerParams = @{'Authorization'="$($oauth.token_type) $($oauth.access_token)"}
-
-        $url = "https://graph.microsoft.com/v1.0/identityProtection/riskDetections"
-        Write-Output $url
-
-        $myReport = (Invoke-WebRequest -UseBasicParsing -Headers $headerParams -Uri $url)
-
-        foreach ($event in ($myReport.Content | ConvertFrom-Json).value) {
-            Write-Output $event
-        }
-
-    } else {
-        Write-Host "ERROR: No Access Token"
-    } 
-```
-
-## <a name="query-the-apis"></a>API 'Leri sorgulama
-
-Bu üç API, kuruluşunuzdaki riskli kullanıcılar ve oturum açma bilgileri hakkında bilgi almak için çok sayıda fırsat sağlar. Aşağıda, bu API 'Ler ve ilişkili örnek istekler için bazı yaygın kullanım durumları verilmiştir. Bu sorguları yukarıdaki örnek kodu kullanarak veya [grafik Gezginini](https://developer.microsoft.com/graph/graph-explorer)kullanarak çalıştırabilirsiniz.
-
-### <a name="get-all-of-the-offline-risk-detections-riskdetection-api"></a>Tüm çevrimdışı risk algılamalarını al (riskDetection API)
-
-Kimlik koruması oturum açma risk ilkeleriyle, risk gerçek zamanlı olarak algılandığında koşullar uygulayabilirsiniz. Ancak çevrimdışı bulunan algılamalar nelerdir? Hangi algılamaların çevrimdışı olduğunu anlamak ve bu nedenle oturum açma risk ilkesini tetiklemeyeceğini anlamak için riskDetection API 'sini sorgulayabilirsiniz.
-
-```
-GET https://graph.microsoft.com/v1.0/identityProtection/riskDetections?$filter=detectionTimingType eq 'offline'
-```
-
-### <a name="get-all-of-the-users-who-successfully-passed-an-mfa-challenge-triggered-by-risky-sign-ins-policy-riskyusers-api"></a>Riskli oturum açma ilkesi (riskyUsers API) tarafından tetiklenen MFA sınamasını başarıyla geçen tüm kullanıcıları alın
-
-Kuruluşunuzda etkili kimlik koruması risk tabanlı ilkelerin olduğunu anlamak için, riskli oturum açma ilkesi tarafından tetiklenen bir MFA sınamasını başarıyla geçen tüm kullanıcıları sorgulayabilirsiniz. Bu bilgiler, hangi kullanıcıların kimlik koruması 'nın riskli olarak ne olduğunu ve meşru kullanıcılarınızın AI tarafından riskli bir işlem gerçekleştiriyor olabileceğini anlamanıza yardımcı olabilir.
-
-```
-GET https://graph.microsoft.com/v1.0/identityProtection/riskyUsers?$filter=riskDetail eq 'userPassedMFADrivenByRiskBasedPolicy'
+Get-MgRiskyUser -All
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Tebrikler, Microsoft Graph için ilk çağrdınız yaptınız!  
-Artık kimlik riski algılamalarını sorgulayabilir ve verileri kullanabilirsiniz, ancak bunları kullanın.
-
-Microsoft Graph ve Graph API kullanarak uygulama oluşturma hakkında daha fazla bilgi edinmek için [Microsoft Graph sitesinde](https://developer.microsoft.com/graph) [belgelere](/graph/overview) ve çok daha fazlasına göz atın. 
-
-İlgili bilgiler için bkz.:
-
-- [Azure Active Directory Kimlik Koruması](./overview-identity-protection.md)
-- [Azure Active Directory Kimlik Koruması tarafından algılanan risk algılamaları türleri](./overview-identity-protection.md)
-- [Microsoft Graph](https://developer.microsoft.com/graph/)
+- [Microsoft Graph PowerShell SDK 'sını kullanmaya başlama](/graph/powershell/get-started)
+- [Öğretici: Microsoft Graph API 'Leri kullanarak riskleri tanımla ve Düzelt](/graph/tutorial-riskdetection-api)
 - [Microsoft Graph’a genel bakış](https://developer.microsoft.com/graph/docs)
+- [Kullanıcı olmadan erişim sağlayın](/graph/auth-v2-service)
 - [Azure AD Kimlik Koruması hizmeti kökü](/graph/api/resources/identityprotectionroot)
+- [Azure Active Directory Kimlik Koruması](./overview-identity-protection.md)

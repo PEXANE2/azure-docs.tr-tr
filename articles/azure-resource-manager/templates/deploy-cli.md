@@ -2,13 +2,13 @@
 title: Azure CLı ve şablonuyla kaynak dağıtma
 description: Azure 'a kaynak dağıtmak için Azure Resource Manager ve Azure CLı kullanın. Kaynaklar, bir Resource Manager şablonunda tanımlanır.
 ms.topic: conceptual
-ms.date: 01/15/2021
-ms.openlocfilehash: d79a5c93bf79c5851beabbba2eb3a663c6ab5999
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.date: 01/26/2021
+ms.openlocfilehash: f01409db36ca29deb2f6938ce3118cdcb20cd1a1
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251089"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881308"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-cli"></a>ARM şablonları ve Azure CLı ile kaynak dağıtma
 
@@ -103,6 +103,18 @@ az deployment group create \
 ```
 
 Önceki örnekte, şablon için genel olarak erişilebilir bir URI gerekir ve bu, şablonunuz önemli verileri içermemelidir. Gizli veriler (yönetici parolası gibi) belirtmeniz gerekiyorsa, bu değeri güvenli bir parametre olarak geçirin. Bununla birlikte, şablona erişimi yönetmek istiyorsanız, [şablon](#deploy-template-spec)özelliklerini kullanmayı göz önünde bulundurun.
+
+Bir depolama hesabında depolanan göreli yol ile uzak bağlantılı şablonlar dağıtmak için, `query-string` SAS belirtecini belirtmek için kullanın:
+
+```azurepowershell
+az deployment group create \
+  --name linkedTemplateWithRelativePath \
+  --resource-group myResourceGroup \
+  --template-uri "https://stage20210126.blob.core.windows.net/template-staging/mainTemplate.json" \
+  --query-string $sasToken
+```
+
+Daha fazla bilgi için bkz. [bağlantılı şablonlar için göreli yol kullanma](./linked-templates.md#linked-template).
 
 ## <a name="deployment-name"></a>Dağıtım adı
 

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 03/19/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 46bcfd48d8fdfb228670b87df166c1ad8de61e52
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 0ef4faf14ec01a25419fd22ba8c73a8a033b4172
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94626359"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879991"
 ---
 # <a name="migrate-from-linux-to-a-hybrid-cloud-deployment-with-azure-file-sync"></a>Azure Dosya Eşitleme ile Linux 'tan karma bulut dağıtımına geçiş
 
@@ -220,5 +220,5 @@ Sorun giderme Azure Dosya Eşitleme sorunları için aşağıdaki bölümdeki ba
 Azure dosya paylaşımları ve Azure Dosya Eşitleme hakkında daha fazla bilgi bulabilirsiniz. Aşağıdaki makalelerde gelişmiş seçenekler, en iyi uygulamalar ve sorun giderme yardımı bulunur. Bu makaleler, [Azure dosya paylaşma belgelerini](storage-files-introduction.md) uygun şekilde bağlar.
 
 * [Azure Dosya Eşitleme genel bakış](./storage-sync-files-planning.md)
-* [Azure Dosya Eşitleme dağıtım kılavuzu](storage-files-deployment-guide.md)
+* [Azure Dosya Eşitleme dağıtım kılavuzu](./storage-how-to-create-file-share.md)
 * [Azure Dosyalar Eşitleme sorunlarını giderme](storage-sync-files-troubleshoot.md)

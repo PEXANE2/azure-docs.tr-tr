@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: f112d0e96c6ff0caf3c5e3762304158f70963f14
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 42416b1fc06ff59a68a6f5044b8bcca5dc7f035f
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98787038"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880195"
 ---
 # <a name="prerequisites-for-deploying-azure-cloud-services-extended-support"></a>Azure Cloud Services dağıtımı önkoşulları (genişletilmiş destek)
 
@@ -126,3 +126,4 @@ Key Vault, Cloud Services ilişkili sertifikaları (genişletilmiş destek) depo
 - Cloud Services için [dağıtım önkoşullarını](deploy-prerequisite.md) gözden geçirin (genişletilmiş destek).
 - [Azure Portal](deploy-portal.md), [PowerShell](deploy-powershell.md), [şablon](deploy-template.md) veya [Visual Studio](deploy-visual-studio.md)kullanarak bir bulut hizmeti (genişletilmiş destek) dağıtın.
 - Cloud Services için [sık sorulan soruları](faq.md) gözden geçirin (genişletilmiş destek).
+- [Cloud Services (genişletilmiş destek) örnekleri deposunu](https://github.com/Azure-Samples/cloud-services-extended-support) ziyaret edin

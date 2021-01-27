@@ -8,16 +8,16 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 11/06/2019
 ms.author: cynthn
-ms.openlocfilehash: 57cebed8ac229ed54945d75786b84b3cd2a36252
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 25cd75035a814fd718cc1101e6575f78c50f105e
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844208"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879706"
 ---
 # <a name="create-an-azure-shared-image-gallery-using-the-portal"></a>Portalı kullanarak Azure Paylaşılan görüntü galerisi oluşturma
 
-[Paylaşılan görüntü Galerisi](shared-image-galleries.md) , kuruluşunuz genelinde özel görüntü paylaşımını basitleştirir. Özel görüntüler market görüntüleri gibidir, ancak bunları kendiniz oluşturursunuz. Özel görüntüler, uygulamalar, uygulama yapılandırması ve diğer işletim sistemi yapılandırmalarının dağıtım görevlerinin önyüklemesi için kullanılabilir. 
+[Paylaşılan görüntü Galerisi](../shared-image-galleries.md) , kuruluşunuz genelinde özel görüntü paylaşımını basitleştirir. Özel görüntüler market görüntüleri gibidir, ancak bunları kendiniz oluşturursunuz. Özel görüntüler, uygulamalar, uygulama yapılandırması ve diğer işletim sistemi yapılandırmalarının dağıtım görevlerinin önyüklemesi için kullanılabilir. 
 
 Paylaşılan görüntü Galerisi, özel VM görüntülerinizi kuruluşunuzdaki diğer kişilerle, bir AAD kiracısı içinde veya bölgeler arasında paylaşmanızı sağlar. Hangi görüntüleri paylaşmak istediğinizi, içinde hangi bölgelerin kullanılabilir olmasını istediğinizi ve bunları ile paylaşmak istediğinizi seçin. Paylaşılan görüntüleri mantıksal olarak gruplandırabilmeniz için birden çok Galeri oluşturabilirsiniz. 
 
@@ -46,7 +46,7 @@ Artık bir veya daha fazla yeni VM oluşturabilirsiniz. Bu örnek, *Doğu ABD* v
 1. **Sanal makine adı** alanına *myvm* yazın.
 1. **Bölge** için *Doğu ABD*' yi seçin.
 1. **Kullanılabilirlik seçenekleri** için, varsayılan *altyapı yedekliliği gerekmez*' ı gerekli olarak bırakın.
-1. Görüntü **Image** `latest` tanımı için sayfadan başladıysanız görüntünün değeri otomatik olarak görüntü sürümü ile doldurulur.
+1. Görüntü  `latest` tanımı için sayfadan başladıysanız görüntünün değeri otomatik olarak görüntü sürümü ile doldurulur.
 1. **Boyut** için kullanılabilir boyutlar LISTESINDEN bir VM boyutu seçin ve ardından **Seç**' i seçin.
 1. **Yönetici hesabı** altında, görüntü Genelleştirilmiş ise, *azureuser* ve parola gibi bir Kullanıcı adı sağlamanız gerekir. Parola en az 12 karakter uzunluğunda olmalı ve [tanımlanmış karmaşıklık gereksinimlerini](faq.md#what-are-the-password-requirements-when-creating-a-vm)karşılamalıdır. Görüntünüz özelleştirilise, kaynak VM 'nin Kullanıcı adı ve parolası kullanıldığı için Kullanıcı adı ve parola alanları gri kalır.
 1. VM 'ye uzaktan erişime izin vermek istiyorsanız, **ortak gelen bağlantı noktaları** altında **Seçili bağlantı noktalarına izin ver** ' i seçin ve ardından açılır listeden **RDP (3389)** seçeneğini belirleyin. VM 'ye uzaktan erişime izin vermek istemiyorsanız, **Genel gelen bağlantı noktaları** için **hiçbirini** seçilmemiş bırakın.
@@ -69,4 +69,4 @@ Ayrıca, şablonlar kullanarak paylaşılan görüntü Galerisi kaynağı da olu
 - [Paylaşılan Görüntü Galerisinde Görüntü Sürümü Oluşturma](https://azure.microsoft.com/resources/templates/101-sig-image-version-create/)
 - [Görüntü Sürümünden Sanal Makine Oluşturma](https://azure.microsoft.com/resources/templates/101-vm-from-sig/)
 
-Paylaşılan görüntü galerileri hakkında daha fazla bilgi için bkz. [genel bakış](shared-image-galleries.md). Sorunlarla karşılaşırsanız bkz. [paylaşılan görüntü galerilerine sorun giderme](../troubleshooting-shared-images.md).
+Paylaşılan görüntü galerileri hakkında daha fazla bilgi için bkz. [genel bakış](../shared-image-galleries.md). Sorunlarla karşılaşırsanız bkz. [paylaşılan görüntü galerilerine sorun giderme](../troubleshooting-shared-images.md).

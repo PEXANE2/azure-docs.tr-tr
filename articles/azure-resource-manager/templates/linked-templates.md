@@ -2,13 +2,13 @@
 title: Dağıtım için şablonları bağlama
 description: Modüler şablon çözümü oluşturmak için bir Azure Resource Manager şablonunda (ARM şablonu) bağlantılı şablonların nasıl kullanılacağını açıklar. Parametre değerlerinin nasıl geçirileceğini, bir parametre dosyası ve dinamik olarak oluşturulan URL 'Leri gösterir.
 ms.topic: conceptual
-ms.date: 01/25/2021
-ms.openlocfilehash: 7d4df67b7f69b3e58799f45ad72bd9ed68540dc2
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.date: 01/26/2021
+ms.openlocfilehash: aae3947656e475d15bc4f0da770d0398fafa13c5
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98790944"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880447"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Azure kaynaklarını dağıtırken bağlı ve iç içe şablonları kullanma
 
@@ -496,6 +496,91 @@ Parametre değerlerini satır içi olarak geçirmek için `parameters` özelliğ
 
 Hem satır içi parametreleri hem de bir parametre dosyası bağlantısını kullanamazsınız. Hem hem de belirtildiğinde dağıtım bir hata ile başarısız olur `parametersLink` `parameters` .
 
+### <a name="use-relative-path-for-linked-templates"></a>Bağlantılı şablonlar için göreli yol kullan
+
+`relativePath`Özelliği, `Microsoft.Resources/deployments` bağlantılı şablonlar yazmayı kolaylaştırır. Bu özellik, üst öğeye göre bir konuma uzak bağlantılı şablon dağıtmak için kullanılabilir. Bu özellik tüm şablon dosyalarının GitHub veya Azure depolama hesabı gibi uzak bir URI 'de hazırlanmalıdır ve kullanılabilir olmasını gerektirir. Ana şablon, Azure PowerShell veya Azure CLı 'dan bir URI kullanılarak çağrıldığında, alt dağıtım URI 'SI üst ve relativePath 'in bir birleşimidir.
+
+> [!NOTE]
+> TemplateSpec oluştururken, özelliği tarafından başvurulan tüm şablonlar `relativePath` Azure PowerShell veya Azure CLI tarafından templatespec kaynağında paketlenmiştir. Dosyaların hazırlanması gerekmez. Daha fazla bilgi için bkz. [bağlantılı şablonlarla şablon belirtimi oluşturma](./template-specs.md#create-a-template-spec-with-linked-templates).
+
+Şöyle bir klasör yapısı varsayın:
+
+![Resource Manager bağlı şablon göreli yolu](./media/linked-templates/resource-manager-linked-templates-relative-path.png)
+
+Aşağıdaki şablonda *mainTemplate.js* , önceki görüntüde gösterilen *nestedChild.js* nasıl dağıttığı gösterilmektedir.
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {},
+  "functions": [],
+  "variables": {},
+  "resources": [
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2020-10-01",
+      "name": "childLinked",
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "relativePath": "children/nestedChild.json"
+        }
+      }
+    }
+  ],
+  "outputs": {}
+}
+```
+
+Aşağıdaki dağıtımda, önceki şablondaki bağlantılı şablonun URI 'SI **https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/linked-template-relpath/children/nestedChild.json** .
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+```azurepowershell
+New-AzResourceGroupDeployment `
+  -Name linkedTemplateWithRelativePath `
+  -ResourceGroupName "myResourceGroup" `
+  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/linked-template-relpath/mainTemplate.json"
+```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+```azurecli
+az deployment group create \
+  --name linkedTemplateWithRelativePath \
+  --resource-group myResourceGroup \
+  --template-uri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/linked-template-relpath/mainTemplate.json"
+```
+
+---
+
+Bağlı şablonları bir Azure depolama hesabında depolanan göreli yol ile dağıtmak için, `QueryString` / `query-string` templateuri parametresiyle kullanılacak SAS belirtecini belirtmek için parametresini kullanın. Bu parametre yalnızca Azure CLı sürüm 2,18 veya üzeri tarafından desteklenir ve sürüm 5,4 veya üzeri Azure PowerShell.
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+```azurepowershell
+New-AzResourceGroupDeployment `
+  -Name linkedTemplateWithRelativePath `
+  -ResourceGroupName "myResourceGroup" `
+  -TemplateUri "https://stage20210126.blob.core.windows.net/template-staging/mainTemplate.json" `
+  -QueryString $sasToken
+```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+```azurecli
+az deployment group create \
+  --name linkedTemplateWithRelativePath \
+  --resource-group myResourceGroup \
+  --template-uri "https://stage20210126.blob.core.windows.net/template-staging/mainTemplate.json" \
+  --query-string $sasToken
+```
+
+---
+
+QueryString içinde önde gelen "?" bulunmadığından emin olun. Dağıtım, dağıtımlar için URI 'yi montaj sırasında bir tane ekler.
+
 ## <a name="template-specs"></a>Şablon belirtimleri
 
 Bağlı şablonlarınızı erişilebilir bir uç noktada tutmak yerine, ana şablonu ve onun bağlantılı şablonlarını dağıtabileceğiniz tek bir varlığa paketleyen bir [şablon belirtimi](template-specs.md) oluşturabilirsiniz. Şablon belirtimi, Azure aboneliğinizdeki bir kaynaktır. Şablonu kuruluşunuzdaki kullanıcılarla güvenli bir şekilde paylaşmayı kolaylaştırır. Şablon belirtimine erişim sağlamak için Azure rol tabanlı erişim denetimi (Azure RBAC) kullanırsınız. Bu özellik şu anda önizleme aşamasındadır.
@@ -797,7 +882,7 @@ az deployment group create --resource-group ExampleGroup --template-uri $url?$to
 
 Aşağıdaki örneklerde, bağlantılı şablonların yaygın kullanımları gösterilmektedir.
 
-|Ana şablon  |Bağlantılı şablon |Açıklama  |
+|Ana şablon  |Bağlantılı şablon |Description  |
 |---------|---------| ---------|
 |[Hello World](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/helloworldparent.json) |[bağlantılı şablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/helloworld.json) | Bağlantılı şablondan dize döndürür. |
 |[Genel IP adresi ile Load Balancer](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json) |[bağlantılı şablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) |Bağlı şablondan ortak IP adresini döndürür ve yük dengeleyicide bu değeri ayarlar. |

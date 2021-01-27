@@ -11,12 +11,12 @@ ms.subservice: msi
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: references_regions
-ms.openlocfilehash: 7ebe56b95b0c4b938c31c0ece04d27fd1b234b05
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 1861a4e75f34cfd7fe386c094cce3a638b3e1a1e
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98729921"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880802"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Azure kaynakları için yönetilen kimlikleri destekleyen hizmetler
 
@@ -159,8 +159,6 @@ Azure Data Factory v2 için yönetilen kimliği yapılandırmak üzere aşağıd
 - [REST](~/articles/data-factory/data-factory-service-identity.md#generate-managed-identity-using-rest-api)
 - ['SıNıN](~/articles/data-factory/data-factory-service-identity.md#generate-managed-identity-using-sdk)
 
-
-
 ### <a name="azure-event-grid"></a>Azure Event Grid
 
 Yönetilen kimlik türü |Tüm genel kullanıma açık<br>Küresel Azure bölgeleri | Azure Kamu | Azure Almanya | Azure China 21Vianet |
@@ -168,13 +166,12 @@ Yönetilen kimlik türü |Tüm genel kullanıma açık<br>Küresel Azure bölgel
 | Sistem tarafından atanan | Önizleme | Önizleme | Kullanılamaz | Önizleme |
 | Kullanıcı tarafından atanan | Kullanılamaz | Kullanılamaz  | Kullanılamaz  | Kullanılamaz |
 
+### <a name="azure-firewall-policy"></a>Azure Güvenlik Duvarı Ilkesi
 
-
-
-
-
-
-
+Yönetilen kimlik türü |Tüm genel kullanıma açık<br>Küresel Azure bölgeleri | Azure Kamu | Azure Almanya | Azure China 21Vianet |
+| --- | :-: | :-: | :-: | :-: |
+| Sistem tarafından atanan | Kullanılamaz | Kullanılamaz | Kullanılamaz | Kullanılamaz |
+| Kullanıcı tarafından atanan | Önizleme | Kullanılamaz  | Kullanılamaz  | Kullanılamaz |
 
 ### <a name="azure-functions"></a>Azure İşlevleri
 

@@ -8,12 +8,12 @@ ms.date: 01/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 29f7f241f119ca7fab50409881b517961b00cf20
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: cfeb124aeb614906cef1dc710eb8485e63806539
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98610480"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880584"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Azure Dosya Eşitleme dağıtımı planlama
 
@@ -309,8 +309,8 @@ Azure Dosya Eşitleme, aşağıdaki bölgelerde kullanılabilir:
 | Genel | Asya | Doğu Asya | `eastasia` |
 | Genel | Asya | Güneydoğu Asya | `southeastasia` |
 | Genel | Avustralya | Doğu Avustralya | `australiaeast` |
-| Genel | Avustralya | Avustralya Güneydoğu | `australiasoutheast` |
-| Genel | Brezilya | Brezilya Güney | `brazilsouth` |
+| Genel | Avustralya | Güneydoğu Avustralya | `australiasoutheast` |
+| Genel | Brezilya | Güney Brezilya | `brazilsouth` |
 | Genel | Kanada | Orta Kanada | `canadacentral` |
 | Genel | Kanada | Doğu Kanada | `canadaeast` |
 | Genel | Avrupa | Kuzey Avrupa | `northeurope` |
@@ -387,6 +387,6 @@ Bulut katmanlaması etkinleştirilirse, sunucu uç noktasını veya sunucu uç n
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Güvenlik duvarını ve proxy ayarlarını değerlendirin](storage-sync-files-firewall-and-proxy.md)
 * [Azure Dosyalar dağıtımını planlama](storage-files-planning.md)
-* [Azure Dosyaları’nı dağıtma](storage-files-deployment-guide.md)
+* [Azure Dosyaları’nı dağıtma](./storage-how-to-create-file-share.md)
 * [Azure Dosya Eşitleme’yi dağıtma](storage-sync-files-deployment-guide.md)
 * [Azure Dosya Eşitleme’yi izleme](storage-sync-files-monitoring.md)

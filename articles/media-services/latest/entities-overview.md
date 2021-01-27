@@ -1,6 +1,5 @@
 ---
 title: Media Services varlıkların filtrelenmesi, sıralanması ve sayfalama
-titleSuffix: Azure Media Services
 description: Azure Media Services v3 varlıklarının filtrelenmesini, sıralanmasını ve sayfalamayı öğrenin.
 services: media-services
 documentationcenter: ''
@@ -13,12 +12,12 @@ ms.topic: overview
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 9a8cff3685cdaad011332adf58dc76f74976cd44
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 50f562927fcbcf66ca7006ac2d100520311ac917
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89300196"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897892"
 ---
 # <a name="filtering-ordering-and-paging-of-media-services-entities"></a>Media Services varlıkların filtrelenmesi, sıralanması ve sayfalama
 
@@ -158,7 +157,7 @@ client.Jobs.List(config.ResourceGroup, config.AccountName, VideoAnalyzerTransfor
 
 Aşağıdaki tabloda, filtreleme ve sıralama seçeneklerinin farklı varlıklara nasıl uygulanacağı gösterilmektedir:
 
-|Varlık adı|Özellik adı|Filtre|Sipariş verme|
+|Varlık adı|Özellik adı|Filtre|Sipariş|
 |---|---|---|---|
 |[Varlıklar](/rest/api/media/assets/)|name|`eq`, `gt`, `lt`, `ge`, `le`|`asc` ve `desc`|
 ||Properties. AlternateId |`eq`||

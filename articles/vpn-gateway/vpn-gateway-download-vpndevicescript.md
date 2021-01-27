@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: yushwang
-ms.openlocfilehash: 70d9a8069979a299ad3031de37c525438ab0159d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d2593c656e17310c5afb4a897b94cc8c12a618f0
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89394610"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879503"
 ---
 # <a name="download-vpn-device-configuration-scripts-for-s2s-vpn-connections"></a>S2S VPN bağlantıları için VPN cihaz yapılandırma betiklerini indirme
 
@@ -34,7 +34,7 @@ Aşağıdaki cihazlarda kullanılabilir betikler var:
 3. Azure VPN ağ geçidi ve yerel ağ geçidi arasında bir Azure VPN bağlantısı oluşturma ve yapılandırma
 4. Azure VPN ağ geçidi ile gerçek S2S VPN tüneli oluşturmak için yerel ağ geçidi tarafından temsil edilen şirket içi VPN cihazını yapılandırın
 
-Azure [Portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md), [PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)veya [CLI](vpn-gateway-howto-site-to-site-resource-manager-cli.md)kullanarak 1 ile 3 arasındaki adımları tamamlayabilirsiniz. Son adım, şirket içi VPN cihazlarının Azure dışında yapılandırılmasını içerir. Bu özellik, Azure VPN ağ geçidinizin, sanal ağınız ve şirket içi ağ adresi öneklerinizin ve VPN bağlantı özelliklerinin, vb. için karşılık gelen değerleriyle VPN cihazınız için bir yapılandırma betiği indirmelerini sağlar. Betiği bir başlangıç noktası olarak kullanabilir veya komut dosyasını yapılandırma konsolu aracılığıyla şirket içi VPN cihazlarınıza doğrudan uygulayabilirsiniz.
+Azure [Portal](./tutorial-site-to-site-portal.md), [PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)veya [CLI](vpn-gateway-howto-site-to-site-resource-manager-cli.md)kullanarak 1 ile 3 arasındaki adımları tamamlayabilirsiniz. Son adım, şirket içi VPN cihazlarının Azure dışında yapılandırılmasını içerir. Bu özellik, Azure VPN ağ geçidinizin, sanal ağınız ve şirket içi ağ adresi öneklerinizin ve VPN bağlantı özelliklerinin, vb. için karşılık gelen değerleriyle VPN cihazınız için bir yapılandırma betiği indirmelerini sağlar. Betiği bir başlangıç noktası olarak kullanabilir veya komut dosyasını yapılandırma konsolu aracılığıyla şirket içi VPN cihazlarınıza doğrudan uygulayabilirsiniz.
 
 > [!IMPORTANT]
 > * Her VPN cihaz yapılandırma betiği için sözdizimi farklıdır ve modeller ve bellenim sürümlerine yoğun bir şekilde bağımlıdır. Kullanılabilir şablonlara karşı cihaz modelinize ve sürüm bilgilerine özel dikkat edin.
@@ -49,7 +49,7 @@ Azure [Portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md), [Powe
 
 Bir Azure VPN ağ geçidi, yerel ağ geçidi ve ikisini bağlayan bir bağlantı kaynağı oluşturun. Aşağıdaki sayfa adımlarda size rehberlik eder:
 
-* [Azure portalında Siteden Siteye bağlantı oluşturma](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+* [Azure portalında Siteden Siteye bağlantı oluşturma](./tutorial-site-to-site-portal.md)
 
 Bağlantı kaynağı oluşturulduktan sonra, VPN cihaz yapılandırma betiklerini indirmek için aşağıdaki yönergeleri izleyin:
 
@@ -99,4 +99,4 @@ Yapılandırma betiğini indirip doğruladıktan sonra, bir sonraki adım, beti�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Siteden siteye bağlantınızı](vpn-gateway-howto-site-to-site-resource-manager-portal.md)yapılandırmaya devam edin.
+[Siteden siteye bağlantınızı](./tutorial-site-to-site-portal.md)yapılandırmaya devam edin.
