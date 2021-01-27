@@ -8,16 +8,16 @@ ms.topic: how-to
 ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.reviewer: danis
-ms.openlocfilehash: 02ce065c9eecf4b4bf616e40913fc5abd319c5a8
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 4714d9e089094e8990ac71d94107a20e0b7be776
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92442312"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98876318"
 ---
 # <a name="preview-create-a-linux-image-and-distribute-it-to-a-shared-image-gallery-by-using-azure-cli"></a>Önizleme: Azure CLı kullanarak bir Linux görüntüsü oluşturun ve paylaşılan bir görüntü galerisine dağıtın
 
-Bu makalede, [paylaşılan bir görüntü galerisinde](../windows/shared-image-galleries.md)bir görüntü sürümü oluşturmak Için Azure Image Builder 'ı ve Azure CLI 'yi nasıl kullanabileceğinizi ve görüntüyü küresel olarak nasıl dağıtabileceğiniz gösterilmektedir. Bunu [Azure PowerShell](../windows/image-builder-gallery.md)kullanarak da yapabilirsiniz.
+Bu makalede, [paylaşılan bir görüntü galerisinde](../shared-image-galleries.md)bir görüntü sürümü oluşturmak Için Azure Image Builder 'ı ve Azure CLI 'yi nasıl kullanabileceğinizi ve görüntüyü küresel olarak nasıl dağıtabileceğiniz gösterilmektedir. Bunu [Azure PowerShell](../windows/image-builder-gallery.md)kullanarak da yapabilirsiniz.
 
 
 Görüntüyü yapılandırmak için bir Sample. JSON şablonu kullanacağız. Kullandığımız. JSON dosyası şurada: [helloImageTemplateforSIG.json](https://github.com/danielsollondon/azvmimagebuilder/blob/master/quickquickstarts/1_Creating_a_Custom_Linux_Shared_Image_Gallery_Image/helloImageTemplateforSIG.json). 
@@ -298,4 +298,4 @@ az group delete -n $sigResourceGroup -y
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure Paylaşılan görüntü galerileri](shared-image-galleries.md)hakkında daha fazla bilgi edinin.
+[Azure Paylaşılan görüntü galerileri](../shared-image-galleries.md)hakkında daha fazla bilgi edinin.

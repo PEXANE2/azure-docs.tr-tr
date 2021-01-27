@@ -7,12 +7,12 @@ ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
 ms.date: 12/07/2020
-ms.openlocfilehash: 0114c75d99d79041631e5078deb33f77863dc35a
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 84d98eedb3ea6f3faaeaecf832811f9f4c78c7c5
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98043787"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880364"
 ---
 # <a name="migration-of-co-sell-solutions-from-ocp-gtm-to-the-commercial-marketplace"></a>OCP GTM 'den ticari Market 'e ortak satış çözümlerini geçirme
 
@@ -44,7 +44,7 @@ Ticari Market 'e kaydolduktan sonra, çözümlerinizi OCP GTM 'den geçirmeye ha
 
 Çözümlerinizi OCP GTM 'den içeri aktarmadan önce şu adımları izleyin:
 
-1. Şirketinizin [Yayımcı listesini](https://partner.microsoft.com/dashboard/account/v3/publishers/list)ziyaret edin. Bu, erişimi yayımlayan hesap sahibini, yöneticileri ve geliştiricileri içerir. [Iş Ortağı Merkezi Kullanıcı rolleri](/azure/marketplace/partner-center-portal/manage-account#define-user-roles-and-permissions)hakkında daha fazla bilgi edinin.
+1. Şirketinizin [Yayımcı listesini](https://partner.microsoft.com/dashboard/account/v3/publishers/list)ziyaret edin. Bu, erişimi yayımlayan hesap sahibini, yöneticileri ve geliştiricileri içerir. [Iş Ortağı Merkezi Kullanıcı rolleri](./partner-center-portal/manage-account.md#define-user-roles-and-permissions)hakkında daha fazla bilgi edinin.
 2. Yalnızca bu roller tarafından düzenlenebilir ve yayımlayabildiği için, listelenen kişilerden birini *yönetici* veya *Geliştirici* olarak ticari Market 'e [eklemek](https://partner.microsoft.com/dashboard/account/usermanagement) üzere sorun.
 3. Çözümlerinizi OCP GTM hesabınızdan ticari Market 'e taşımak için geliştiricilerinizden çalışın.
 4. Aşağıdakilerden hangisi yapmak istediğinize karar verin:
@@ -156,4 +156,3 @@ Teklifinizin yayımlanabilmesi için sağlamanız gereken bilgiler hakkında ayr
 - [CSP İş Ortakları aracılığıyla perakende satış](cloud-solution-providers.md)
 - [Ortak Satım malzemeleri iş ortağı merkezi 'ne nasıl gönderilir](marketplace-co-sell.md#how-to-submit-co-sell-materials-in-partner-center)
 - Bu [SSS](https://partner.microsoft.com/resources/detail/co-sell-requirements-publish-commercial-marketplace-faq-pdf) 'yi görüntüle (PDF)
-

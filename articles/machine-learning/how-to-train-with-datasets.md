@@ -12,22 +12,22 @@ ms.reviewer: nibaccam
 ms.date: 07/31/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, data4ml
-ms.openlocfilehash: 2d6282c527293abdb8b21e0591548cb51e1339a9
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 688bec24cbcd88130470634abff0688ead8005ef
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98539665"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881695"
 ---
 # <a name="train-models-with-azure-machine-learning-datasets"></a>Azure Machine Learning veri kümeleriyle modelleri eğitme 
 
 Bu makalede makine öğrenimi modellerini eğitmek için [Azure Machine Learning veri kümeleriyle](/python/api/azureml-core/azureml.core.dataset%28class%29?preserve-view=true&view=azure-ml-py) nasıl çalışacağınızı öğreneceksiniz.  Bağlantı dizeleri veya veri yolları hakkında endişelenmeden, yerel veya uzaktan işlem Hedefinizdeki veri kümelerini kullanabilirsiniz. 
 
-Azure Machine Learning veri kümeleri, [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py), [hyperdrive](/python/api/azureml-train-core/azureml.train.hyperdrive?preserve-view=true&view=azure-ml-py) ve [Azure Machine Learning işlem hatları](how-to-create-your-first-pipeline.md)gibi Azure Machine Learning eğitim işlevleriyle sorunsuz bir tümleştirme sağlar.
+Azure Machine Learning veri kümeleri, [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py), [hyperdrive](/python/api/azureml-train-core/azureml.train.hyperdrive?preserve-view=true&view=azure-ml-py) ve [Azure Machine Learning işlem hatları](./how-to-create-machine-learning-pipelines.md)gibi Azure Machine Learning eğitim işlevleriyle sorunsuz bir tümleştirme sağlar.
 
 Verilerinizi model eğitimi için kullanılabilir hale getirmek için hazır değilseniz, ancak verilerinizi veri araştırması için Not defterinize yüklemek istiyorsanız, bkz. veri [kümenizdeki verileri keşfetme](how-to-create-register-datasets.md#explore-data). 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Veri kümeleri oluşturup eğitmeniz için şunlar gerekir:
 
@@ -263,7 +263,7 @@ src.run_config.source_directory_data_store = "workspaceblobstore"
 ## <a name="troubleshooting"></a>Sorun giderme
 
 * **DataSet başlatılamadı: bağlama noktasının hazır olması beklenirken zaman aşımı oluştu**: 
-  * Herhangi bir giden [ağ güvenlik grubu](https://docs.microsoft.com/azure/virtual-network/network-security-groups-overview) kuralına sahip değilseniz ve `azureml-sdk>=1.12.0` `azureml-dataset-runtime` onun bağımlılıklarını, belirli bir alt sürüm için en son olacak şekilde güncelleştirebilir veya bir çalıştırmada kullanıyorsanız, bu düzeltme ile en son düzeltme ekine sahip olması için ortamınızı yeniden oluşturun. 
+  * Herhangi bir giden [ağ güvenlik grubu](../virtual-network/network-security-groups-overview.md) kuralına sahip değilseniz ve `azureml-sdk>=1.12.0` `azureml-dataset-runtime` onun bağımlılıklarını, belirli bir alt sürüm için en son olacak şekilde güncelleştirebilir veya bir çalıştırmada kullanıyorsanız, bu düzeltme ile en son düzeltme ekine sahip olması için ortamınızı yeniden oluşturun. 
   * Kullanıyorsanız `azureml-sdk<1.12.0` , en son sürüme yükseltin.
   * Giden NSG kurallarınız varsa, hizmet etiketi için tüm trafiğe izin veren bir giden kuralı olduğundan emin olun `AzureResourceMonitor` .
 
@@ -293,4 +293,4 @@ Veri aktarımı gibi diğer iş yükleri için dosya paylaşma 'yı kullanıyors
 
 * Dosya veri kümeleri ile [görüntü sınıflandırma modellerini eğitme](https://aka.ms/filedataset-samplenotebook) .
 
-* İşlem [hatları kullanarak veri kümeleriyle eğitme](how-to-create-your-first-pipeline.md).
+* İşlem [hatları kullanarak veri kümeleriyle eğitme](./how-to-create-machine-learning-pipelines.md).

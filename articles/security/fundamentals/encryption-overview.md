@@ -9,12 +9,12 @@ ms.subservice: security-fundamentals
 ms.topic: article
 ms.date: 07/20/2020
 ms.author: mbaldwin
-ms.openlocfilehash: ff023ad98c7ffa269223b5d0b4a1cecc5fde1feb
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: d7d438b369c863660a032f101e466b6fadf639fa
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94410224"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879723"
 ---
 # <a name="azure-encryption-overview"></a>Azure'da şifrelemeye genel bakış
 
@@ -45,11 +45,11 @@ Azure, hizmet tarafından yönetilen anahtarlar, Key Vault içindeki müşteri t
 
 Üç sunucu tarafı şifreleme modeli, gereksinimlerinize göre seçebileceğiniz farklı anahtar yönetim özellikleri sunar:
 
-- **Hizmet tarafından yönetilen anahtarlar** : düşük ek yük ile denetim ve kolaylık sağlayan bir bileşim sunar.
+- **Hizmet tarafından yönetilen anahtarlar**: düşük ek yük ile denetim ve kolaylık sağlayan bir bileşim sunar.
 
-- **Müşteri tarafından yönetilen anahtarlar** : kendi anahtarlarınızı getır (bYok) desteği de dahil olmak üzere anahtarlar üzerinde denetim sağlar veya yenilerini oluşturmanıza izin verir.
+- **Müşteri tarafından yönetilen anahtarlar**: kendi anahtarlarınızı getır (bYok) desteği de dahil olmak üzere anahtarlar üzerinde denetim sağlar veya yenilerini oluşturmanıza izin verir.
 
-- **Müşteri denetimli donanımda hizmet tarafından yönetilen anahtarlar** : özel deponuzdaki anahtarları Microsoft denetimi dışında yönetmenizi sağlar. Bu özellik kendi anahtarınızı barındırın (HYOK) olarak adlandırılır. Ancak, yapılandırma karmaşıktır ve çoğu Azure hizmeti bu modeli desteklemez.
+- **Müşteri denetimli donanımda hizmet tarafından yönetilen anahtarlar**: özel deponuzdaki anahtarları Microsoft denetimi dışında yönetmenizi sağlar. Bu özellik kendi anahtarınızı barındırın (HYOK) olarak adlandırılır. Ancak, yapılandırma karmaşıktır ve çoğu Azure hizmeti bu modeli desteklemez.
 
 ### <a name="azure-disk-encryption"></a>Azure disk şifrelemesi
 
@@ -181,7 +181,7 @@ Azure portal, PowerShell veya Azure CLı kullanarak bir sanal ağa siteden sitey
 
 Daha fazla bilgi için bkz.
 
-[Azure portal siteden siteye bağlantı oluşturma](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+[Azure portal siteden siteye bağlantı oluşturma](../../vpn-gateway/tutorial-site-to-site-portal.md)
 
 [PowerShell 'de siteden siteye bağlantı oluşturma](../../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)
 
@@ -202,7 +202,7 @@ Key Vault, kuruluşların donanım güvenlik modülleri (HSM) ve anahtar yöneti
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure güvenliğine genel bakış](./overview.md)
-- [Azure ağ güvenliğine genel bakış](network-overview.md)
+- [Azure ile ağ güvenliğine genel bakış](network-overview.md)
 - [Azure veritabanı güvenliğine genel bakış](../../azure-sql/database/security-overview.md)
 - [Azure sanal makineler güvenliğine genel bakış](virtual-machines-overview.md)
 - [Bekleme sırasında veri şifrelemesi](encryption-atrest.md)

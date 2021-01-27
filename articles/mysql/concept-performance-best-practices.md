@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 11/23/2020
-ms.openlocfilehash: c29c043a3af46086751629b31ce68217e7226442
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 30176e2df850e6d2794ab9c1542bcb6a89d8f89f
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96355056"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880415"
 ---
 # <a name="best-practices-for-optimal-performance-of-your-azure-database-for-mysql---single-server"></a>MySQL için Azure veritabanınızın en iyi performansı için en iyi uygulamalar-tek sunucu
 
@@ -46,9 +46,9 @@ Yeni bir bağlantı kurmak her zaman pahalı ve zaman alıcı bir görevdir. Bir
 
 MySQL için Azure veritabanı performansı en iyi uygulaması, çalışma kümesi neredeyse tamamen bellekte yer alacak şekilde yeterli miktarda RAM ayırmaya yöneliktir. 
 
-- [MySQL sunucusunun ölçümlerini](https://docs.microsoft.com/azure/mysql/concepts-monitoring)kullanarak [sınırlara](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers) ulaşılması halinde kullanılan bellek yüzdesinin olup olmadığını denetleyin. 
+- [MySQL sunucusunun ölçümlerini](./concepts-monitoring.md)kullanarak [sınırlara](./concepts-pricing-tiers.md) ulaşılması halinde kullanılan bellek yüzdesinin olup olmadığını denetleyin. 
 - Sunucuların sınırlara ulaştığı şekilde bu tür uyarılar için uyarı ayarlayın. Tanımlanan sınırlara bağlı olarak, veritabanı SKU 'sunun ölçeğini, daha yüksek işlem boyutuna veya daha iyi bir fiyatlandırma katmanına göre ölçeklendirerek, performansı önemli ölçüde artarak elde edin. 
-- Ölçek işleminden sonra performans numaralarınızı önemli ölçüde düşene kadar ölçeği ölçeklendirin. Bir VERITABANı örneğinin ölçümlerini izleme hakkında bilgi için bkz. [MySQL db ölçümleri](https://docs.microsoft.com/azure/mysql/concepts-monitoring#metrics).
+- Ölçek işleminden sonra performans numaralarınızı önemli ölçüde düşene kadar ölçeği ölçeklendirin. Bir VERITABANı örneğinin ölçümlerini izleme hakkında bilgi için bkz. [MySQL db ölçümleri](./concepts-monitoring.md#metrics).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: eb31bb09c1e09e4799715fc5a1cbca4b216b28a2
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 469d7ba9e86751312ebf6a6c82b35f065ee6cb50
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96922960"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880381"
 ---
 # <a name="connect-a-vpn-gateway-virtual-network-gateway-to-virtual-wan"></a>VPN Gateway (sanal ağ geçidi) sanal WAN 'a bağlama
 
@@ -91,7 +91,7 @@ Bu bölümde, önceki bölümde oluşturduğunuz her bir sitenin VPN yapılandı
 
 Bu bölümde, iki Azure VPN Gateway yerel ağ geçidi oluşturursunuz. Önceki adımdaki yapılandırma dosyaları, ağ geçidi yapılandırma ayarlarını içerir. Azure VPN Gateway yerel ağ geçitleri oluşturmak ve yapılandırmak için bu ayarları kullanın.
 
-1. Bu ayarları kullanarak yerel ağ geçidini oluşturun. VPN Gateway yerel ağ geçidi oluşturma hakkında daha fazla bilgi için bkz. [yerel ağ geçidi oluşturma](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md#LocalNetworkGateway)VPN Gateway makalesi.
+1. Bu ayarları kullanarak yerel ağ geçidini oluşturun. VPN Gateway yerel ağ geçidi oluşturma hakkında daha fazla bilgi için bkz. [yerel ağ geçidi oluşturma](../vpn-gateway/tutorial-site-to-site-portal.md#LocalNetworkGateway)VPN Gateway makalesi.
 
    * **IP adresi** -yapılandırma dosyasından *gatewayconfiguration* Için gösterilen örnek0 IP adresini kullanın.
    * **BGP** -bağlantı BGP ÜZERINDEN ise **BGP ayarlarını yapılandır** ' ı seçin ve ' 65515 ' ASN 'yi girin. BGP eşi IP adresini girin. Yapılandırma dosyasından *gatewayconfiguration* Için ' Örnek0 BgpPeeringAddresses ' kullanın.
@@ -105,7 +105,7 @@ Bu bölümde, iki Azure VPN Gateway yerel ağ geçidi oluşturursunuz. Önceki a
 
 ## <a name="5-create-connections"></a><a name="createlocalgateways"></a>5. bağlantı oluştur
 
-Bu bölümde, VPN Gateway yerel ağ geçitleri ve sanal ağ geçidi arasında bir bağlantı oluşturursunuz. VPN Gateway bağlantısı oluşturma adımları için bkz. [bağlantı yapılandırma](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md#CreateConnection).
+Bu bölümde, VPN Gateway yerel ağ geçitleri ve sanal ağ geçidi arasında bir bağlantı oluşturursunuz. VPN Gateway bağlantısı oluşturma adımları için bkz. [bağlantı yapılandırma](../vpn-gateway/tutorial-site-to-site-portal.md#CreateConnection).
 
 1. Portalda, sanal ağ geçidinize gidin ve **Bağlantılar**' a tıklayın. Bağlantılar sayfasının üstündeki **+Ekle**’ye tıklayarak **Bağlantı ekle** sayfasını açın.
 2. **Bağlantı ekle** sayfasında, bağlantınız için aşağıdaki değerleri yapılandırın:

@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 130fcaacedc8aaea7790f6aa9ca7463b4e378e02
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: cf3a3d3fdfcd03f068224c93643d364cd2646290
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98070720"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895637"
 ---
 # <a name="select-a-vmware-migration-option"></a>VMware geçiş seçeneği seçin
 
@@ -43,7 +43,7 @@ Sınırlamaları inceledikten sonra, her bir çözümü dağıtmaya ilişkin ad�
 **Görev** | **Ayrıntılar** |**Aracısız** | **Aracı tabanlı**
 --- | --- | --- | ---
 **Azure Geçişi aletini dağıtma** | VMware VM üzerinde çalışan bir basit gereç.<br/><br/> Gereç, makineleri saptamak ve değerlendirmek ve aracısız geçiş kullanarak makineleri geçirmek için kullanılır. | Gereklidir.<br/><br/> Gereci zaten değerlendirme için ayarladıysanız, aracısız geçiş için aynı gereci kullanabilirsiniz. | Gerekli değildir.<br/><br/> Değerlendirme için bir gereç ayarladıysanız bu uygulamayı yerinde bırakabilir veya değerlendirme ile işiniz bittiğinde kaldırabilirsiniz.
-**Sunucu değerlendirmesi aracını kullanma** | Azure geçişi: Sunucu değerlendirmesi aracı ile makineleri değerlendirin. | Makineleri geçirmeden önce değerlendirebilirsiniz, ancak şunları yapmanız gerekmez. | Değerlendirme isteğe bağlıdır.
+**Sunucu değerlendirmesi aracını kullanma** | Azure geçişi: Sunucu değerlendirmesi aracı ile makineleri değerlendirin. | Değerlendirme isteğe bağlıdır. | Değerlendirme isteğe bağlıdır.
 **Sunucu geçiş aracını kullanma** | Azure geçişi projesine Azure geçiş sunucusu geçiş aracı 'nı ekleyin. | Gerekli | Gerekli
 **VMware 'yi geçişe hazırlama** | VMware sunucularında ve VM 'lerde ayarları yapılandırın. | Gerekli | Gerekli
 **VM 'Lere Mobility hizmetini yükler** | Mobility hizmeti, çoğaltmak istediğiniz her VM üzerinde çalışır | Gerekli değil | Gerekli

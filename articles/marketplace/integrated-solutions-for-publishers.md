@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: vikrambmsft
 ms.author: vikramb
 ms.date: 04/16/2020
-ms.openlocfilehash: 70dfccb32389d2f1fb492669c9f84a3e6ae77bbb
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 0a3188d5dc2c34c9959ae488ad5a5f962a99f02f
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96621357"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880279"
 ---
 # <a name="publish-an-integrated-solution"></a>Tümleşik bir çözüm yayımlama
 
@@ -32,16 +32,16 @@ Tümleşik çözümler programına genel bakış için [iş ortakları Için gen
 ## <a name="eligibility-criteria"></a>Uygunluk ölçütleri
 
 * Katılımcı iş ortakları bir MPN KIMLIĞINE sahip olmalıdır.
-* Katılım Hizmetleri sağlayıcılarının [ortak satış için hazırlanma](https://aka.ms/CertificationPolicies#3000-requirements-for-co-sell-status)olması gerekir.
-* Katılan yazılım satıcıları, [IP ortak satışı](https://aka.ms/CertificationPolicies#3000-requirements-for-co-sell-status)hazırlanmalıdır.
+* Katılım Hizmetleri sağlayıcılarının [ortak satış için hazırlanma](/legal/marketplace/certification-policies#3000-requirements-for-co-sell-status)olması gerekir.
+* Katılan yazılım satıcıları, [IP ortak satışı](/legal/marketplace/certification-policies#3000-requirements-for-co-sell-status)hazırlanmalıdır.
 * En az bir katılım ortağının aşağıdaki alanlardan birinde altın uzmanlık olması gerekir:
     - Uygulama Geliştirme
     - Uygulama Tümleştirme
     - Uygulama Yaşam Döngüsü Yönetimi
-    - Bulut platformu
+    - Bulut Platformu
     - Veri Analizi
     - Veri merkezi
-    - Veri platformu
+    - Veri Platformu
     - DevOps
 
 * Çözüm, bir bütün müşteri çözümü ve deneyimi için IP ve Hizmetleri bir araya getiren en az iki iş ortağı kuruluş içermelidir.
@@ -55,7 +55,7 @@ Programa katılmak isteyen iş ortakları, birlikte çalışmak istedikleri diğ
 
 ## <a name="develop-an-integrated-solution"></a>Tümleşik bir çözüm geliştirin
 
-Adaylarınız onaylandıktan sonra, tümleşik çözümünüzü geliştirmek için bağlantılı program kaynaklarını kullanın. Şu adımları izleyin:
+Adaylarınız onaylandıktan sonra, tümleşik çözümünüzü geliştirmek için bağlantılı program kaynaklarını kullanın. Şu adımları uygulayın:
 
 1. Çözüm ve tümleştirme yaklaşımını tanımlamak için bir Workshop formatında önemli iş ve teknik tartışmalar yapın.
 

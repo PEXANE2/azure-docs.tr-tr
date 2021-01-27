@@ -6,12 +6,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 07/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: efdb195ad41b036f7f470884b3a441de1db7f7f4
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 320668f9596376cf7aa12ed97872671404a07658
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96003710"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895926"
 ---
 # <a name="manage-role-permissions-and-security"></a>Rol izinlerini ve güvenliği yönetme
 
@@ -319,7 +319,7 @@ Otomasyon hesabını yönetmesiz veya kuruluş için artık çalışan bir kulla
 
 Ayrıca, aşağıdaki [Azure PowerShell cmdlet 'lerini](../role-based-access-control/role-assignments-powershell.md)kullanarak bir Otomasyon hesabına rol tabanlı erişimi de yapılandırabilirsiniz:
 
-[Get-AzRoleDefinition](/powershell/module/Az.Resources/Get-AzRoleDefinition?view=azps-3.7.0) , Azure Active Directory bulunan tüm Azure rollerini listeler. `Name`Belirli bir rolün gerçekleştirebileceği tüm eylemleri listelemek için bu cmdlet 'i parametresiyle birlikte kullanabilirsiniz.
+[Get-AzRoleDefinition](/powershell/module/Az.Resources/Get-AzRoleDefinition) , Azure Active Directory bulunan tüm Azure rollerini listeler. `Name`Belirli bir rolün gerçekleştirebileceği tüm eylemleri listelemek için bu cmdlet 'i parametresiyle birlikte kullanabilirsiniz.
 
 ```azurepowershell-interactive
 Get-AzRoleDefinition -Name 'Automation Operator'
@@ -338,7 +338,7 @@ NotActions       : {}
 AssignableScopes : {/}
 ```
 
-[Get-Azroleatama](/powershell/module/az.resources/get-azroleassignment?view=azps-3.7.0) , Azure rol atamalarını belirtilen kapsamda listeler. Hiçbir parametre olmadan bu cmdlet, abonelik altında yapılan tüm rol atamalarını döndürür. `ExpandPrincipalGroups`Belirtilen kullanıcı için erişim atamalarını ve kullanıcının ait olduğu grupları listelemek için parametresini kullanın.
+[Get-Azroleatama](/powershell/module/az.resources/get-azroleassignment) , Azure rol atamalarını belirtilen kapsamda listeler. Hiçbir parametre olmadan bu cmdlet, abonelik altında yapılan tüm rol atamalarını döndürür. `ExpandPrincipalGroups`Belirtilen kullanıcı için erişim atamalarını ve kullanıcının ait olduğu grupları listelemek için parametresini kullanın.
 
 **Örnek:** Bir Otomasyon hesabı içindeki tüm kullanıcıları ve rollerinin listesini listelemek için aşağıdaki cmdlet 'i kullanın.
 
@@ -360,7 +360,7 @@ ObjectId           : 15f26a47-812d-489a-8197-3d4853558347
 ObjectType         : User
 ```
 
-Kullanıcılara, gruplara ve uygulamalara belirli bir kapsama erişim atamak için [New-Azroleatama](/powershell/module/Az.Resources/New-AzRoleAssignment?view=azps-3.7.0) kullanın.
+Kullanıcılara, gruplara ve uygulamalara belirli bir kapsama erişim atamak için [New-Azroleatama](/powershell/module/Az.Resources/New-AzRoleAssignment) kullanın.
 
 **Örnek:** Otomasyon hesabı kapsamındaki bir kullanıcı için "Otomasyon Işleci" rolünü atamak için aşağıdaki komutu kullanın.
 
@@ -382,7 +382,7 @@ ObjectId           : f5ecbe87-1181-43d2-88d5-a8f5e9d8014e
 ObjectType         : User
 ```
 
-Belirli bir kapsamdaki belirtilen kullanıcı, Grup veya uygulamanın erişimini kaldırmak için [Remove-Azroleatama](/powershell/module/Az.Resources/Remove-AzRoleAssignment?view=azps-3.7.0) komutunu kullanın.
+Belirli bir kapsamdaki belirtilen kullanıcı, Grup veya uygulamanın erişimini kaldırmak için [Remove-Azroleatama](/powershell/module/Az.Resources/Remove-AzRoleAssignment) komutunu kullanın.
 
 **Örnek:** Kullanıcıyı Otomasyon hesabı kapsamındaki otomasyon operatörü rolünden kaldırmak için aşağıdaki komutu kullanın.
 

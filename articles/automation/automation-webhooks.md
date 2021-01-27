@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: db4f49c1b788cd7a55fd6fbbd48f845f2c94d757
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: df19f32be41b17e13a9da575e828830e29da4e55
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92073538"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98894771"
 ---
 # <a name="start-a-runbook-from-a-webhook"></a>Web kancasından runbook başlatma
 
@@ -95,7 +95,7 @@ Aşağıdaki stratejileri göz önünde bulundurun:
 
 Azure portal bir runbook 'a bağlı yeni bir Web kancası oluşturmak için aşağıdaki yordamı kullanın.
 
-1. Azure portal runbook 'Lar sayfasında, runbook ayrıntılarını görüntülemek için Web kancasının başladığı runbook 'a tıklayın. Runbook **durum** alanının **yayımlanmış**olarak ayarlandığından emin olun.
+1. Azure portal runbook 'Lar sayfasında, runbook ayrıntılarını görüntülemek için Web kancasının başladığı runbook 'a tıklayın. Runbook **durum** alanının **yayımlanmış** olarak ayarlandığından emin olun.
 2. Web kancası Ekle sayfasını açmak için sayfanın üst kısmındaki **Web kancası** ' ne tıklayın.
 3. **Yeni Web kancası** oluştur ' a tıklayarak Web kancası oluştur sayfasını açın.
 4. Web kancası için **ad** ve **sona erme tarihi** alanlarını doldurup etkinleştirilmesi gerekip gerekmediğini belirtin. Bu özellikler hakkında daha fazla bilgi için bkz. [Web kancası özellikleri](#webhook-properties) .
@@ -142,16 +142,16 @@ Bir Web kancası oluşturulduğunda, geçerlilik süresi on yıl, sonrasında ot
 Sona erme süresine ulaşmayan bir Web kancasını genişletebilirsiniz. Web kancasını genişletmek için:
 
 1. Web kancasını içeren runbook 'a gidin. 
-2. **Kaynaklar**altında **Web kancaları** ' nı seçin. 
+2. **Kaynaklar** altında **Web kancaları** ' nı seçin. 
 3. Genişletmek istediğiniz Web kancasına tıklayın. 
 4. Web kancası sayfasında, yeni bir sona erme tarihi ve saati seçip **Kaydet**' e tıklayın.
 
 ## <a name="sample-runbook"></a>Örnek runbook
 
-Aşağıdaki örnek runbook, Web kancası verilerini kabul eder ve istek gövdesinde belirtilen sanal makineleri başlatır. Bu runbook 'u test etmek için Runbook **'ların**altındaki Otomasyon hesabınızda **runbook oluştur ' a**tıklayın. Runbook oluşturmayı bilmiyorsanız, bkz. [runbook oluşturma](automation-quickstart-create-runbook.md).
+Aşağıdaki örnek runbook, Web kancası verilerini kabul eder ve istek gövdesinde belirtilen sanal makineleri başlatır. Bu runbook 'u test etmek için Runbook **'ların** altındaki Otomasyon hesabınızda **runbook oluştur ' a** tıklayın. Runbook oluşturmayı bilmiyorsanız, bkz. [runbook oluşturma](automation-quickstart-create-runbook.md).
 
 > [!NOTE]
-> Grafik olmayan PowerShell runbook 'ları için `Add-AzAccount` ve `Add-AzureRMAccount` [Connect-azaccount](/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0)için diğer adlar. Bu cmdlet 'leri kullanabilir veya Otomasyon hesabınızdaki [modüllerinizi](automation-update-azure-modules.md) en son sürümlere güncelleştirebilirsiniz. Yeni bir Otomasyon hesabı oluşturmuş olsanız bile modüllerinizi güncelleştirmeniz gerekebilir.
+> Grafik olmayan PowerShell runbook 'ları için `Add-AzAccount` ve `Add-AzureRMAccount` [Connect-azaccount](/powershell/module/az.accounts/connect-azaccount)için diğer adlar. Bu cmdlet 'leri kullanabilir veya Otomasyon hesabınızdaki [modüllerinizi](automation-update-azure-modules.md) en son sürümlere güncelleştirebilirsiniz. Yeni bir Otomasyon hesabı oluşturmuş olsanız bile modüllerinizi güncelleştirmeniz gerekebilir.
 
 ```powershell
 param

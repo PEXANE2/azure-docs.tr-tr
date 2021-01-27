@@ -5,12 +5,12 @@ services: automation
 ms.subservice: dsc
 ms.date: 04/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: 3bb42886c653afbdf8975b532bd2e1e1c3c63ce9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b45aad71e04418c7c7dda4fc3f0c84a5fe99ecdf
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86186546"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896351"
 ---
 # <a name="compile-dsc-configurations-in-azure-automation-state-configuration"></a>Azure Otomasyonu durum yapılandırmasında DSC yapılandırmalarını derleme
 
@@ -41,7 +41,7 @@ Azure VM 'lerinize yapılandırma göndermek için Azure Istenen durum yapıland
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-Windows PowerShell ile derlemeyi başlatmak için [Start-AzAutomationDscCompilationJob](/powershell/module/az.automation/start-azautomationdsccompilationjob) kullanabilirsiniz. Aşağıdaki örnek kod **SampleConfig**ADLı bir DSC yapılandırmasının derlemesini başlatır.
+Windows PowerShell ile derlemeyi başlatmak için [Start-AzAutomationDscCompilationJob](/powershell/module/az.automation/start-azautomationdsccompilationjob) kullanabilirsiniz. Aşağıdaki örnek kod **SampleConfig** ADLı bir DSC yapılandırmasının derlemesini başlatır.
 
 ```powershell
 Start-AzAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'MyAutomationAccount' -ConfigurationName 'SampleConfig'
@@ -257,7 +257,7 @@ Düğüm yapılandırmalarının imzalanması hakkında daha fazla bilgi için b
 
 ### <a name="import-a-node-configuration-in-the-azure-portal"></a>Azure portal düğüm yapılandırmasını içeri aktarma
 
-1. Otomasyon hesabınızda, **yapılandırma yönetimi**altında **Durum Yapılandırması (DSC)** seçeneğine tıklayın.
+1. Otomasyon hesabınızda, **yapılandırma yönetimi** altında **Durum Yapılandırması (DSC)** seçeneğine tıklayın.
 1. Durum Yapılandırması (DSC) sayfasında, **yapılandırmalar** sekmesine tıklayın ve ardından **Ekle**' ye tıklayın.
 1. Içeri aktarma sayfasında, yerel bilgisayarınızdaki bir düğüm yapılandırması MOF dosyasına gitmek için **düğüm yapılandırma dosyası** alanının yanındaki klasör simgesine tıklayın.
 
@@ -278,6 +278,6 @@ Import-AzAutomationDscNodeConfiguration -AutomationAccountName 'MyAutomationAcco
 
 - Başlamak için bkz. [Azure Otomasyonu durum yapılandırmasını kullanmaya başlama](automation-dsc-getting-started.md).
 - Hedef düğümlere atayabilmeniz için DSC yapılandırmalarını derleme hakkında bilgi edinmek için bkz. [Azure Otomasyonu durum YAPıLANDıRMASıNDA DSC yapılandırmalarını derleme](automation-dsc-compile.md).
-- PowerShell cmdlet başvurusu için bkz. [az. Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation).
+- PowerShell cmdlet başvurusu için bkz. [az. Automation](/powershell/module/az.automation).
 - Fiyatlandırma bilgileri için bkz. [Azure Otomasyonu durum yapılandırması fiyatlandırması](https://azure.microsoft.com/pricing/details/automation/).
 - Sürekli dağıtım işlem hattında durum yapılandırması kullanmanın bir örneği için bkz. [Chocolatey ile sürekli dağıtımı ayarlama](automation-dsc-cd-chocolatey.md).

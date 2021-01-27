@@ -2,15 +2,15 @@
 title: Azure Otomasyonu özelliği dağıtım sorunlarını giderme
 description: Bu makalede, Azure Otomasyonu özellikleri dağıtıldığında ortaya çıkan sorunların nasıl giderileceği ve çözüleceği açıklanır.
 services: automation
+ms.subservice: ''
 ms.date: 06/30/2020
-ms.topic: conceptual
-ms.service: automation
-ms.openlocfilehash: a6b8384193e821e6c41a0d4d979cda51f6c65b3a
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.topic: troubleshooting
+ms.openlocfilehash: 6668fe3c30bd5187016ac2e0c766e7e78d5b3e8c
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92070495"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896520"
 ---
 # <a name="troubleshoot-feature-deployment-issues"></a>Özellik dağıtımı sorunlarını giderme
 
@@ -100,7 +100,7 @@ Sorguyu değiştirmiş olabilirsiniz veya sistem onu değiştirmiş olabilir.
 
 #### <a name="resolution"></a>Çözüm
 
-Özelliğin sorgusunu silebilir ve sonra yeniden etkinleştirerek özelliği yeniden oluşturabilirsiniz. Sorgu, **kayıtlı aramalar**altında çalışma alanınızda bulunabilir. Sorgunun adı **Microsoftdefaultcomputergroup**, sorgunun kategorisi ise ilişkili özelliğin adıdır. Birden çok özellik etkinleştirilirse, **Microsoftdefaultcomputergroup** sorgusu **kayıtlı aramalarda**birden çok kez görünür.
+Özelliğin sorgusunu silebilir ve sonra yeniden etkinleştirerek özelliği yeniden oluşturabilirsiniz. Sorgu, **kayıtlı aramalar** altında çalışma alanınızda bulunabilir. Sorgunun adı **Microsoftdefaultcomputergroup**, sorgunun kategorisi ise ilişkili özelliğin adıdır. Birden çok özellik etkinleştirilirse, **Microsoftdefaultcomputergroup** sorgusu **kayıtlı aramalarda** birden çok kez görünür.
 
 ### <a name="scenario-policyviolation"></a><a name="policy-violation"></a>Senaryo: policyihla
 
@@ -148,7 +148,7 @@ Aşağıdaki özelliklerle ilgili kaynakları, kullanıyorsanız, çalışma ala
 Özellik kaynaklarını kaldırdıktan sonra, çalışma alanınızın bağlantısını kaldırabilirsiniz. Çalışma alanınızda ve otomasyon hesabınızda bu özelliklerden var olan yapıtları temizlemek önemlidir:
 
 * Güncelleştirme Yönetimi için, Otomasyon hesabınızdan **güncelleştirme dağıtımlarını (zamanlamalar)** kaldırın.
-* VM'leri çalışma saatleri dışında Başlat/Durdur için, Otomasyon hesabınızdaki Özellik bileşenlerinde bulunan kilitleri **Ayarlar**  >  **kilitleri**altında kaldırın. Daha fazla bilgi için bkz. [özelliği kaldırma](../automation-solution-vm-management.md#remove-the-feature).
+* VM'leri çalışma saatleri dışında Başlat/Durdur için, Otomasyon hesabınızdaki Özellik bileşenlerinde bulunan kilitleri **Ayarlar**  >  **kilitleri** altında kaldırın. Daha fazla bilgi için bkz. [özelliği kaldırma](../automation-solution-vm-management.md#remove-the-feature).
 
 ## <a name="log-analytics-for-windows-extension-failures"></a><a name="mma-extension-failures"></a>Windows uzantısı hatalarında Log Analytics
 

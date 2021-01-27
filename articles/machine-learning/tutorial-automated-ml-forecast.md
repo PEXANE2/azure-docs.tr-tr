@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 author: cartacioS
 ms.date: 12/21/2020
 ms.custom: automl
-ms.openlocfilehash: 31e9ff3fd07a7d305c88d28629f3252db5d857c8
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: 2653161b5828d89858234a9ca98fe432e0eacb5c
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97695430"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879368"
 ---
 # <a name="tutorial-forecast-demand-with-automated-machine-learning"></a>Öğretici: otomatik makine öğrenimi ile talep tahmini
 
@@ -82,7 +82,7 @@ Denemenizi yapılandırmadan önce, veri dosyanızı Azure Machine Learning veri
         Sınırlayıcı|&nbsp;Düz metin veya diğer veri akışlarında ayrı, bağımsız bölgeler arasındaki sınırı belirtmek için bir veya daha fazla karakter. |Virgül
         Encoding|Veri kümenizi okumak için kullanılacak bit karakter şeması tablosunu belirler.| UTF-8
         Sütun başlıkları| Veri kümesinin üst bilgilerinin (varsa) nasıl değerlendirileceğini gösterir.| İlk dosyadaki üst bilgileri kullan
-        Satırları atla | Veri kümesinde kaç tane, ne varsa satırların atlandığını gösterir.| Hiçbiri
+        Satırları atla | Veri kümesinde kaç tane, ne varsa satırların atlandığını gösterir.| Yok
 
     1. **Şema** formu, bu deneme için verilerinizin daha fazla yapılandırılmasını sağlar. 
     
@@ -126,7 +126,7 @@ Verilerinizi yükleyip yapılandırdıktan sonra, uzaktan işlem hedefini ayarla
             İşlem adı |  İşlem bağlamını tanımlayan benzersiz bir ad. | Bisiklet-işlem
             En az/en fazla düğüm| Veri profili için, 1 veya daha fazla düğüm belirtmeniz gerekir.|En az düğümler: 1<br>En fazla düğüm: 6
             Ölçeği ölçeklendirmeye başlamadan önce boşta geçen Saniyeler | Küme otomatik olarak en düşük düğüm sayısına ölçeklendirildiğinde boşta geçen süre.|120 (varsayılan)
-            Gelişmiş ayarlar | Denemeniz için bir sanal ağ yapılandırma ve yetkilendirme ayarları.| Hiçbiri 
+            Gelişmiş ayarlar | Denemeniz için bir sanal ağ yapılandırma ve yetkilendirme ayarları.| Yok 
   
         1. İşlem hedefini almak için **Oluştur** ' u seçin. 
 
@@ -148,7 +148,7 @@ Machine Learning görev türünü ve yapılandırma ayarlarını belirterek otom
 
 1. **Ek yapılandırma ayarlarını görüntüle** ' yi seçin ve alanları aşağıdaki gibi doldurun. Bu ayarlar, eğitim işini daha iyi denet, tahmininize yönelik ayarları belirtmenize yöneliktir. Aksi takdirde, denemeler seçimine ve verilerine göre varsayılan ayarlar uygulanır.
 
-    Ek &nbsp; yapılandırma|Açıklama|&nbsp;Öğretici için &nbsp; değer
+    Ek &nbsp; yapılandırma|Description|&nbsp;Öğretici için &nbsp; değer
     ------|---------|---
     Birincil ölçüm| Makine öğrenimi algoritmasının ölçülecek değerlendirme ölçümü.|Normalleştirilmiş kök ortalama kare hatası
     En iyi modeli açıkla| Otomatik ML tarafından oluşturulan en iyi modelde explainability 'yi otomatik olarak gösterir.| Etkinleştir
@@ -240,7 +240,7 @@ Bu öğreticide, Bisiklet payını tahmin eden bir zaman serisi tahmin modeli ol
 Yeni dağıtılan Web hizmetinizin tüketimini kolaylaştırmak için Power BI desteklenen bir şema oluşturma adımları için bu makaleye bakın.
 
 > [!div class="nextstepaction"]
-> [Bir web hizmetini kullanma](https://docs.microsoft.com/power-bi/connect-data/service-aml-integrate?context=azure/machine-learning/context/ml-context)
+> [Bir web hizmetini kullanma](/power-bi/connect-data/service-aml-integrate?context=azure%2fmachine-learning%2fcontext%2fml-context)
 
 + [Otomatik makine öğrenimi](concept-automated-ml.md)hakkında daha fazla bilgi edinin.
 + Sınıflandırma ölçümleri ve grafikler hakkında daha fazla bilgi için bkz. [otomatik makine öğrenimi sonuçlarını anlama](how-to-understand-automated-ml.md) makalesi.

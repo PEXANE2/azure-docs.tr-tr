@@ -2,13 +2,13 @@
 title: Azure VMware çözümü için sanal Işlemleri ayarlama
 description: Azure VMware çözümünüz özel bulutunuz için sanal Işlemleri ayarlamayı öğrenin.
 ms.topic: how-to
-ms.date: 09/22/2020
-ms.openlocfilehash: 25469089cf1fef076711bfaf1492fad43edbcf33
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.date: 01/26/2021
+ms.openlocfilehash: c2470ecde0874b46da1236ca6e99e6b0b3eb990d
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371792"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880700"
 ---
 # <a name="set-up-vrealize-operations-for-azure-vmware-solution"></a>Azure VMware çözümü için sanal Işlemleri ayarlama
 
@@ -27,8 +27,8 @@ Vfarkında Operations Manager, VMware altyapı yöneticilerinin sistem kaynaklar
 * İsteğe bağlı olarak, Azure VMware Çözüm dağıtımı seçeneğini yöneten şirket içi sanal Işlemler için [sanal Işlemler uzak denetleyicisi](https://docs.vmware.com/en/vRealize-Operations-Manager/8.1/com.vmware.vcom.vapp.doc/GUID-263F9219-E801-4383-8A59-E84F3D01ED6B.html) ürün belgelerini gözden geçirin. 
 
 
-
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
+* [Vfarkında Operations Manager](https://docs.vmware.com/en/vRealize-Operations-Manager/8.1/com.vmware.vcom.vapp.doc/GUID-7FFC61A0-7562-465C-A0DC-46D092533984.html) yüklendi.
 * Şirket içi ve Azure VMware çözümü SDDC arasında yapılandırılmış bir VPN veya Azure ExpressRoute.
 * Azure 'da bir Azure VMware çözümü özel bulutu dağıtıldı.
 
@@ -50,12 +50,13 @@ Sanal Işlem yeteneklerini Azure VMware Çözüm özel bulutuna genişletmek iç
 
 Başka bir seçenek de, özel buluttaki bir vSphere kümesine bir vanOperations Manager örneği dağıtmaktır. 
 
-:::image type="content" source="media/vrealize-operations-manager/vrealize-operations-deployment-option-2.png" alt-text="Azure VMware çözüm dağıtımını yöneten şirket içi sanal Işlemler" border="false":::
+>[!IMPORTANT]
+>Bu seçenek şu anda VMware tarafından desteklenmiyor.
+
+:::image type="content" source="media/vrealize-operations-manager/vrealize-operations-deployment-option-2.png" alt-text="Azure VMware çözümünde çalışan sanal Işlemler" border="false":::
 
 Örnek dağıtıldıktan sonra, vCenter, ESXi, NSX-T, vSAN ve HCX 'ten veri toplamak için sanal Işlemleri yapılandırabilirsiniz. 
 
-> [!TIP]
-> Vfarkında Operations Manager yükleme hakkında adım adım kılavuz için [VMware belgelerine](https://docs.vmware.com/en/vRealize-Operations-Manager/8.1/com.vmware.vcom.vapp.doc/GUID-7FFC61A0-7562-465C-A0DC-46D092533984.html) bakın.
 
 
 ## <a name="known-limitations"></a>Bilinen sınırlamalar
@@ -68,11 +69,11 @@ Başka bir seçenek de, özel buluttaki bir vSphere kümesine bir vanOperations 
 
 Azure VMware Çözüm vCenter 'ı vCenter Server bir bulut hesabı kullanarak Operations Manager Vfarkında 'e bağladığınızda, bir uyarı görürsünüz:
 
-:::image type="content" source="./media/vrealize-operations-manager/warning-adapter-instance-creation-succeeded.png" alt-text="Azure VMware çözüm dağıtımını yöneten şirket içi sanal Işlemler":::
+:::image type="content" source="./media/vrealize-operations-manager/warning-adapter-instance-creation-succeeded.png" alt-text="Uyarı bağdaştırıcı örneği oluşturma başarılı oldu":::
 
 Uyarı oluşur çünkü Azure VMware çözümünde **cloudadmin \@ vSphere. Local** kullanıcısı kayıt için gereken tüm vCenter Server eylemlerini yapmak için yeterli ayrıcalıklara sahip değil. Ancak, ayrıcalıklar aşağıda görüldüğü gibi, bağdaştırıcı örneğinin veri toplamayı yapması için yeterlidir:
 
-:::image type="content" source="./media/vrealize-operations-manager/adapter-instance-to-perform-data-collection.png" alt-text="Azure VMware çözüm dağıtımını yöneten şirket içi sanal Işlemler":::
+:::image type="content" source="./media/vrealize-operations-manager/adapter-instance-to-perform-data-collection.png" alt-text="Veri toplamayı gerçekleştirmek için bağdaştırıcı örneği":::
 
 Daha fazla bilgi için bkz. [vCenter bağdaştırıcı örneği yapılandırmak Için gereken ayrıcalıklar](https://docs.vmware.com/en/vRealize-Operations-Manager/8.1/com.vmware.vcom.core.doc/GUID-3BFFC92A-9902-4CF2-945E-EA453733B426.html).
 

@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: ac9a1b43ba4ffb537afd658c84edb48ed59a3694
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: a84e4e767092a1507ef0608c21ff1896cb1dde0d
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98683491"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880953"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>Modelleri Azure Machine Learning ile eğitme
 
@@ -76,7 +76,7 @@ Yinelemeleri, hiper parametre ayarlarını, fealeştirme ve diğer ayarları tan
 Machine Learning işlem hatları, daha önce bahsedilen eğitim yöntemlerini kullanabilir. İşlem hatları, bir iş akışı oluşturma hakkında daha fazla bilgi için yalnızca modellerin eğitimine kıyasla daha fazla bilgi alırlar. Bir işlem hattında, otomatik makine öğrenimi kullanarak bir modeli eğitebilirsiniz veya yapılandırma çalıştırabilirsiniz.
 
 * [Azure Machine Learning ML işlem hatları nelerdir?](concept-ml-pipelines.md)
-* [Azure Machine Learning SDK ile makine öğrenimi işlem hatları oluşturma ve çalıştırma](how-to-create-your-first-pipeline.md)
+* [Azure Machine Learning SDK ile makine öğrenimi işlem hatları oluşturma ve çalıştırma](./how-to-create-machine-learning-pipelines.md)
 * [Öğretici: Batch Puanlama için Azure Machine Learning işlem hatları kullanma](tutorial-pipeline-batch-scoring-classification.md)
 * [Örnekler: makine öğrenimi ardışık düzenleri Jupyter Notebook örnekleri](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/machine-learning-pipelines)
 * [Örnekler: otomatik makine öğrenimiyle işlem hattı](https://aka.ms/pl-automl)

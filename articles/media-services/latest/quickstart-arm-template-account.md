@@ -1,25 +1,11 @@
 ---
-title: Media Services hesabı ARM şablonu
-titleSuffix: Azure Media Services
-description: Bu makalede bir ARM şablonunun bir Media Services hesabı oluşturmak için nasıl kullanılacağı gösterilmektedir.
-services: media-services
-documentationcenter: ''
-author: IngridAtMicrosoft
-manager: femila
-editor: ''
-ms.service: media-services
-ms.workload: ''
-ms.topic: quickstart
-ms.date: 11/24/2020
-ms.author: inhenkel
-ms.custom: subject-armqs
-ms.openlocfilehash: 541a4c17a3212f711be7e2cf096ce3a2d632ee64
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
-ms.translationtype: MT
-ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879655"
+Başlık: Media Services Account ARM şablonu: Azure Media Services Description: Bu makalede, bir medya Hizmetleri hesabı oluşturmak için ARM şablonunun nasıl kullanılacağı gösterilmektedir.
+Hizmetler: Media-Services belgetationcenter: ' ' Yazar: ınridatmicrosoft Manager: femila Düzenleyicisi: ' '
+
+MS. Service: Media-Services MS. Workload: MS. Topic: hızlı başlangıç MS. Date: 11/24/2020 MS. Author: inhenkel MS. Custom: Subject-armqs
+
 ---
+
 # <a name="quickstart-media-services-account-arm-template"></a>Hızlı başlangıç: Media Services hesabı ARM şablonu
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]

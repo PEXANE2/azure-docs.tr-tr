@@ -9,12 +9,12 @@ ms.date: 04/08/2019
 ms.author: tamram
 ms.subservice: tables
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 20e776e649d13e435a7bc9215802fcd89efe0867
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 2eb109078728b8a9070b3991733450c1da790d9e
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96019234"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879604"
 ---
 # <a name="table-design-patterns"></a>Tablo tasarımı desenleri
 Bu makalede, tablo hizmeti çözümleriyle kullanım için uygun bazı desenler açıklanmaktadır. Ayrıca, diğer tablo depolama Tasarım makalelerinde ele alınan bazı sorunları ve ilgili konuları nasıl uygulayakullanabileceğinizi öğreneceksiniz. Aşağıdaki diyagramda, farklı desenler arasındaki ilişkiler özetlenmektedir:  
@@ -264,7 +264,7 @@ Tek bir nokta sorgusuyla ihtiyacınız olan tüm verileri almanızı sağlamak i
 ![Departman varlığı ve çalışan varlığı](media/storage-table-design-guide/storage-table-design-IMAGE16.png)
 
 ### <a name="solution"></a>Çözüm
-Verileri iki ayrı varlıkta depolamak yerine, verileri yeniden oluşturup, Bölüm varlığındaki yöneticinin ayrıntılarının bir kopyasını saklayın. Örnek:  
+Verileri iki ayrı varlıkta depolamak yerine, verileri yeniden oluşturup, Bölüm varlığındaki yöneticinin ayrıntılarının bir kopyasını saklayın. Örneğin:  
 
 ![Bölüm varlığı](media/storage-table-design-guide/storage-table-design-IMAGE17.png)
 
@@ -711,7 +711,7 @@ Depolama Istemci kitaplığı bir EGT çalıştırdığında oluşturulan özel 
 Ayrıca, tasarımınızın, istemci uygulamanızın eşzamanlılık ve güncelleştirme işlemlerini nasıl işlediğini nasıl etkilediğini de göz önünde bulundurmanız gerekir.  
 
 ### <a name="managing-concurrency"></a>Eşzamanlılığı yönetme
-Varsayılan olarak, tablo hizmeti, bir istemcinin tablo hizmetini bu denetimleri atlayacak şekilde zorlaması mümkün olsa da, **ekleme**, **birleştirme** ve **silme** işlemleri için tek tek varlıkların düzeyindeki iyimser eşzamanlılık denetimleri uygular. Tablo hizmetinin eşzamanlılık 'yi nasıl yönettiği hakkında daha fazla bilgi için bkz.  [Microsoft Azure depolama eşzamanlılık yönetimi](../../storage/common/storage-concurrency.md).  
+Varsayılan olarak, tablo hizmeti, bir istemcinin tablo hizmetini bu denetimleri atlayacak şekilde zorlaması mümkün olsa da, **ekleme**, **birleştirme** ve **silme** işlemleri için tek tek varlıkların düzeyindeki iyimser eşzamanlılık denetimleri uygular. Tablo hizmetinin eşzamanlılık 'yi nasıl yönettiği hakkında daha fazla bilgi için bkz.  [Microsoft Azure depolama eşzamanlılık yönetimi](../blobs/concurrency-manage.md).  
 
 ### <a name="merge-or-replace"></a>Birleştir veya Değiştir
 **Tableoperation** sınıfının **Replace** yöntemi her zaman tablo hizmetindeki tüm varlığın yerini alır. Saklı varlıkta bu özellik varsa istek içine bir özellik eklemezseniz, istek bu özelliği saklı varlıktan kaldırır. Bir özelliği saklı bir varlıktan açıkça kaldırmak istemediğiniz müddetçe, istekteki her özelliği dahil etmeniz gerekir.  

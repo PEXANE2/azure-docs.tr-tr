@@ -1,5 +1,5 @@
 ---
-title: Öğretici-Azure Spring Cloud 'ı bir sanal ağda dağıtma
+title: Azure Spring Cloud 'ı bir sanal ağda dağıtma
 description: Azure yay bulutu 'nı bir sanal ağda (VNet ekleme) dağıtın.
 author: MikeDodaro
 ms.author: brendm
@@ -7,14 +7,14 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 07/21/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 9d72d60bd3a1ef23b8122b2bc5ba4f0c5c701254
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 73dd60dba50d3bd29cda0f538462884822054cf9
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97587732"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880614"
 ---
-# <a name="tutorial-deploy-azure-spring-cloud-in-a-virtual-network"></a>Öğretici: Azure yay bulutu 'nı bir sanal ağda dağıtma
+# <a name="deploy-azure-spring-cloud-in-a-virtual-network"></a>Azure Spring Cloud 'ı bir sanal ağda dağıtma
 
 **Bu makale şu şekilde geçerlidir:** ✔️ Java ✔️ C #
 
@@ -26,7 +26,10 @@ Dağıtım şunları sunar:
 * Azure, şirket içi veri merkezlerinde veya diğer sanal ağlardaki Azure hizmetlerinde bulunan sistemlerle bulut etkileşimini ister.
 * Müşterilerin Azure yay bulutu için gelen ve giden ağ iletişimlerini denetlemesine olanak sağlar.
 
-## <a name="prerequisites"></a>Ön koşullar
+> [!Note]
+> Azure Sanal ağınızı, yalnızca yeni bir Azure yay bulut hizmeti örneği oluşturduğunuzda seçebilirsiniz. Azure yay bulutu oluşturulduktan sonra başka bir sanal ağ kullanmak için geçiş yapılamaz.
+
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure yay bulut kaynak sağlayıcısı **Microsoft. AppPlatform** ve **Microsoft. Containerservice** [' i Azure Portal kaynak sağlayıcısını kaydetme](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal) BÖLÜMÜNDEKI yönergelere göre veya aşağıdaki Azure CLI komutunu çalıştırarak kaydedin:
 
@@ -77,6 +80,7 @@ Azure yay bulutu örneğini barındıracak bir sanal ağınız zaten varsa 1, 2 
 1. **Gözden geçir ve oluştur**’u seçin. Rest 'i varsayılan olarak bırakın ve **Oluştur**' u seçin.
 
 ## <a name="grant-service-permission-to-the-virtual-network"></a>Sanal ağ için hizmet izni verme
+Azure yay bulutu, daha fazla dağıtım ve bakım için sanal ağ üzerinde adanmış ve dinamik hizmet sorumlusu sağlamak üzere sanal ağınıza **sahip** izni gerektirir.
 
 Daha önce oluşturduğunuz sanal ağı **Azure-Spring-Cloud-VNET** ' i seçin.
 
@@ -160,9 +164,9 @@ Bu ağ kaynakları, önceki görüntüde oluşturulan sanal ağınıza bağlanı
    > [!Important]
    > Kaynak grupları, Azure yay bulut hizmeti tarafından tam olarak yönetilir. İçindeki herhangi bir *kaynağı el ile silmeyin veya değiştirmeyin.*
 
-## <a name="limitations"></a>Sınırlamalar
+## <a name="using-smaller-subnet-ranges"></a>Küçük alt ağ aralıklarını kullanma
 
-Küçük bir alt ağ aralığı IP adreslerini kaydeder, ancak Azure Spring Cloud örneğinin tutabilmesine izin verilen en fazla uygulama örneği sayısına yönelik sınırlamalar getirir.
+Bu tabloda, Azure Spring Cloud 'ın daha küçük bir alt ağ aralığı kullanımını desteklediği en fazla uygulama örneği sayısı gösterilmektedir.
 
 | Uygulama alt ağı CıDR | Toplam IP sayısı | Kullanılabilir IP 'Ler | En fazla uygulama örnekleri                                        |
 | --------------- | --------- | ------------- | ------------------------------------------------------------ |

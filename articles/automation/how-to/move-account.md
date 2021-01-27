@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 03/11/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 562ea5e0e9e4851ed59bd3ef917be2f9c48cd2a7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8454c5a5bb5b44d2a60ae0095a9b82a19ed27c8d
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86185560"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896655"
 ---
 # <a name="move-your-azure-automation-account-to-another-subscription"></a>Azure Otomasyonu hesabınızı başka bir aboneliğe taşıma
 
@@ -41,7 +41,7 @@ Otomasyon hesabı, taşıyacağınız kaynaklardan biridir. Bu makalede, Otomasy
 
     ![Azure portal Özellik kaynaklarını silme ekran görüntüsü](../media/move-account/delete-solutions.png)
 
-İsterseniz, [Remove-AzResource](/powershell/module/Az.Resources/Remove-AzResource?view=azps-3.7.0) cmdlet 'ini kullanarak kaynakları silebilirsiniz:
+İsterseniz, [Remove-AzResource](/powershell/module/Az.Resources/Remove-AzResource) cmdlet 'ini kullanarak kaynakları silebilirsiniz:
 
 ```azurepowershell-interactive
 $workspaceName = <myWorkspaceName>
@@ -74,13 +74,13 @@ VM'leri çalışma saatleri dışında başlat/durdur için, özelliği tarafın
 
 4. Uyarı kurallarını kaldırdığınızda, VM'leri çalışma saatleri dışında başlat/durdur bildirimleri için oluşturulan eylem grubunu kaldırmanız gerekir. Azure Portal, **izleme**  >  **uyarıları**  >  **işlem gruplarını yönet**' i seçin.
 
-5. **StartStop_VM_Notification**seçin. 
+5. **StartStop_VM_Notification** seçin. 
 
 6. Eylem grubu sayfasında **Sil**' i seçin.
 
     ![Eylem Grup sayfasının ekran görüntüsü](../media/move-account/delete-action-group.png)
 
-İsterseniz, [Remove-AzActionGroup](/powershell/module/az.monitor/remove-azactiongroup?view=azps-3.7.0) cmdlet 'ini kullanarak eylem grubunuzu silebilirsiniz:
+İsterseniz, [Remove-AzActionGroup](/powershell/module/az.monitor/remove-azactiongroup) cmdlet 'ini kullanarak eylem grubunuzu silebilirsiniz:
 
 ```azurepowershell-interactive
 Remove-AzActionGroup -ResourceGroupName <myResourceGroup> -Name StartStop_VM_Notification
@@ -100,7 +100,7 @@ Artık çalışma alanınızın bağlantısını kaldırabilirsiniz:
 
 Artık Otomasyon hesabınızı ve Runbook 'larını taşıyabilirsiniz. 
 
-1. Azure portal, Otomasyon hesabınızın kaynak grubuna gidin. **Taşımayı**  >  **başka bir aboneliğe**taşıma ' yı seçin.
+1. Azure portal, Otomasyon hesabınızın kaynak grubuna gidin. **Taşımayı**  >  **başka bir aboneliğe** taşıma ' yı seçin.
 
     ![Kaynak grubu sayfasının ekran görüntüsü, başka bir aboneliğe taşıma](../media/move-account/move-resources.png)
 
@@ -110,7 +110,7 @@ Artık Otomasyon hesabınızı ve Runbook 'larını taşıyabilirsiniz.
 
 [Farklı Çalıştır hesapları](../manage-runas-account.md) Azure kaynaklarıyla kimlik doğrulaması yapmak için Azure Active Directory bir hizmet sorumlusu oluşturur. Abonelikleri değiştirdiğinizde, Otomasyon hesabı artık mevcut farklı çalıştır hesabını kullanmaz. Farklı Çalıştır hesaplarını yeniden oluşturmak için:
 
-1. Yeni abonelikte Otomasyon hesabınıza gidin ve **Hesap ayarları**altında **Farklı Çalıştır hesapları** ' nı seçin. Farklı Çalıştır hesaplarının şimdi tamamlanmamış olarak gösterileceğini görürsünüz.
+1. Yeni abonelikte Otomasyon hesabınıza gidin ve **Hesap ayarları** altında **Farklı Çalıştır hesapları** ' nı seçin. Farklı Çalıştır hesaplarının şimdi tamamlanmamış olarak gösterileceğini görürsünüz.
 
     ![Farklı Çalıştır hesaplarının, tamamlanmamış olduğunu gösteren ekran görüntüsü](../media/move-account/run-as-accounts.png)
 
@@ -119,7 +119,7 @@ Artık Otomasyon hesabınızı ve Runbook 'larını taşıyabilirsiniz.
     > [!NOTE]
     > Farklı Çalıştır hesaplarını oluşturma veya görüntüleme izniniz yoksa şu iletiyi görürsünüz: `You do not have permissions to create an Azure Run As account (service principal) and grant the Contributor role to the service principal.` daha fazla bilgi için, [Farklı Çalıştır hesaplarını yapılandırmak Için gereken izinler](../manage-runas-account.md#permissions)bölümüne bakın.
 
-3. Farklı Çalıştır hesaplarını sildikten sonra **Azure farklı çalıştır hesabı**altında **Oluştur** ' u seçin. 
+3. Farklı Çalıştır hesaplarını sildikten sonra **Azure farklı çalıştır hesabı** altında **Oluştur** ' u seçin. 
 
 4. Farklı Çalıştır hesabı ve hizmet sorumlusu oluşturmak için Azure farklı çalıştır hesabı Ekle sayfasında **Oluştur** ' u seçin. 
 
@@ -135,7 +135,7 @@ Farklı Çalıştır hesaplarını yeniden oluşturduktan sonra, taşımadan ön
 
     ![Taşınan Otomasyon hesabınızdaki özelliklerin yeniden etkinleştirilmesi için ekran görüntüsü](../media/move-account/reenable-solutions.png)
 
-3. Özelliklerinizi etkinleştirilmiş makineler, mevcut Log Analytics çalışma alanını bağladığınızda görülebilir. VM'leri çalışma saatleri dışında başlat/durdur özelliğini etkinleştirmek için yeniden etkinleştirmeniz gerekir. **İlgili kaynaklar**' ın altında, **VM 'leri Başlat/Durdur**' u seçin  >  **ve**  >  dağıtımı başlatmak için çözüm**oluşturma** ' yı etkinleştirin.
+3. Özelliklerinizi etkinleştirilmiş makineler, mevcut Log Analytics çalışma alanını bağladığınızda görülebilir. VM'leri çalışma saatleri dışında başlat/durdur özelliğini etkinleştirmek için yeniden etkinleştirmeniz gerekir. **İlgili kaynaklar**' ın altında, **VM 'leri Başlat/Durdur**' u seçin  >  **ve**  >  dağıtımı başlatmak için çözüm **oluşturma** ' yı etkinleştirin.
 
 4. Çözüm Ekle sayfasında, Log Analytics çalışma alanınızı ve otomasyon hesabınızı seçin.
 

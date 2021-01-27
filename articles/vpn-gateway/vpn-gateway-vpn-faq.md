@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 09/02/2020
 ms.author: yushwang
-ms.openlocfilehash: 7e59c8ecc0d7af341ddc1ea79aa42460e00fa444
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 467c2b9fe8758db5c1da43a65c1bfde133df0823
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89419784"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880110"
 ---
 # <a name="vpn-gateway-faq"></a>VPN Gateway SSS
 
@@ -38,7 +38,7 @@ Hayır.
 
 Aşağıdaki şirket içi ve dışı bağlantılar desteklenmektedir:
 
-* Siteden Siteye – IPsec üzerinden (IKE v1 ve IKE v2) VPN bağlantısı. Bu bağlantı türüne şirket içi bir VPN cihazı ya da RRAS gerekir. Daha fazla bilgi için bkz. [Siteden Siteye](vpn-gateway-howto-site-to-site-resource-manager-portal.md).
+* Siteden Siteye – IPsec üzerinden (IKE v1 ve IKE v2) VPN bağlantısı. Bu bağlantı türüne şirket içi bir VPN cihazı ya da RRAS gerekir. Daha fazla bilgi için bkz. [Siteden Siteye](./tutorial-site-to-site-portal.md).
 * Noktadan Siteye – SSTP (Güvenli Yuva Tünel Protokolü) veya IKE v2 üzerinden VPN bağlantısı. Bu bağlantıya VPN cihazı gerekmez. Daha fazla bilgi için bkz. [Noktadan Siteye](vpn-gateway-howto-point-to-site-resource-manager-portal.md).
 * Sanal Ağdan Sanal Ağa – Bu bağlantı türü, Siteden Siteye yapılandırmasıyla aynıdır. VNet - VNet, IPsec üzerinden (IKE v1 ve IKE v2) bir VPN bağlantısıdır. VPN cihazı gerekmez. Daha fazla bilgi için bkz. [Sanal Ağdan Sanal Ağa](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md).
 * Çok Siteli – Birden çok şirket içi sitenin bir sanal ağa bağlanmasına olanak sağlayan Siteden Siteye yapılandırmanın bir çeşididir. Daha fazla bilgi için bkz. [Çok Siteli](vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md).
@@ -70,13 +70,13 @@ Rota tabanlı ağ geçitleri yol tabanlı VPN'leri uygular. Rota temelli VPN'ler
 
 ### <a name="can-i-update-my-policy-based-vpn-gateway-to-route-based"></a>İlke tabanlı VPN ağ Geçidimi rota temelinde güncelleştirebilir miyim?
 
-Hayır.Bir Azure sanal ağ geçidi türü ilke temelli veya rota temelli olarak değiştirilemez. Ağ geçidinin silinip yeniden oluşturulması gerekir ve bu işlem yaklaşık 60 dakika sürer. Ağ geçidinin IP adresi veya Önceden Paylaşılan Anahtar (PSK) korunmaz.
+Hayır. Bir Azure sanal ağ geçidi türü ilke temelli veya rota temelli olarak değiştirilemez. Ağ geçidinin silinip yeniden oluşturulması gerekir ve bu işlem yaklaşık 60 dakika sürer. Ağ geçidinin IP adresi veya Önceden Paylaşılan Anahtar (PSK) korunmaz.
 1. Silinecek ağ geçidiyle ilişkilendirilmiş bağlantıları silin.
 1. Ağ geçidini silin:
    - [Azure portalındaki](vpn-gateway-delete-vnet-gateway-portal.md)
    - [Azure PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
    - [Azure PowerShell-klasik](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
-1. İstediğiniz [türde yeni bir ağ geçidi oluşturun ve VPN kurulumunu doldurun](vpn-gateway-howto-site-to-site-resource-manager-portal.md#VNetGateway).
+1. İstediğiniz [türde yeni bir ağ geçidi oluşturun ve VPN kurulumunu doldurun](./tutorial-site-to-site-portal.md#VNetGateway).
 
 ### <a name="do-i-need-a-gatewaysubnet"></a>'GatewaySubnet' gerekli mi?
 

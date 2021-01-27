@@ -2,19 +2,19 @@
 title: Microsoft Translator hub çalışma alanı ve projeleri geçişi yapılsın mı? -Özel çevirici
 titleSuffix: Azure Cognitive Services
 description: Bu makalede, hub çalışma alanınızı ve projelerinizi Azure bilişsel hizmetler özel çeviricisine nasıl geçirebileceğiniz açıklanır.
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 05/26/2020
-ms.author: swmachan
+ms.author: lajanuar
 ms.topic: conceptual
-ms.openlocfilehash: 64c449bdefe6fb067a7c0e26b155b58b6f00c399
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 89658ce88b4f1ac9d5bacac7bd45511b4aa0a1be
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94368296"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895720"
 ---
 # <a name="migrate-hub-workspace-and-projects-to-custom-translator"></a>Hub çalışma alanını ve projelerini özel çevirmene geçirme
 
@@ -130,7 +130,7 @@ Projeleriniz, seyahat ve belgeler hakkında daha ayrıntılı geçiş raporu ist
 
 Bu tablo, Microsoft Translator hub ve özel çevirmen arasındaki özellikleri karşılaştırır.
 
-| Özellik | Hub | Özel Çevirmen |
+| Öne çıkan özelliği | Hub | Özel Çevirmen |
 | ------- | :-: | :---------------: |
 | Özelleştirme özelliği durumu    | Genel kullanılabilirlik    | Genel kullanılabilirlik |
 | Metin API 'SI sürümü    | V2     | Yüklemesinde  |

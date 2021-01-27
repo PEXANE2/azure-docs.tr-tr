@@ -6,12 +6,12 @@ author: gundarev
 ms.topic: conceptual
 ms.date: 11/16/2020
 ms.author: denisgun
-ms.openlocfilehash: bfcd8b3c482b4d429a9e3a4d7bc75e27ada63a98
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: c1cdafe2929502293aada32dbae06e342761862b
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98134407"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98876707"
 ---
 # <a name="windows-virtual-desktop-rdp-shortpath-preview"></a>Windows sanal masaüstü RDP ShortPath (Önizleme)
 
@@ -58,7 +58,7 @@ Aşağıdaki diyagramda RDP ShortPath ağ bağlantısına ilişkin üst düzey b
 RDP Shortfılepath 'i desteklemek için, Windows sanal masaüstü istemcisinin oturum ana bilgisayarına doğrudan bir görüş satırı olması gerekir. Aşağıdaki teknolojilerden birini kullanarak doğrudan bir görüş satırı edinebilirsiniz:
 
 * [ExpressRoute özel eşlemesi](../expressroute/expressroute-circuit-peerings.md)
-* [Siteden siteye VPN (IPSec tabanlı)](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+* [Siteden siteye VPN (IPSec tabanlı)](../vpn-gateway/tutorial-site-to-site-portal.md)
 * [Noktadan siteye VPN (IPSec tabanlı)](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md)
 * [Genel IP adresi ataması](../virtual-network/virtual-network-public-ip-address.md)
 

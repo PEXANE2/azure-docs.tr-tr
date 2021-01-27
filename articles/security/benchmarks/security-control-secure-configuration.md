@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 349456b0a4de65520dd633efe0573d24ea1c89c4
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: f945699256b4de9bd87ee4ab7500268302e93089
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94409034"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880178"
 ---
 # <a name="security-control-secure-configuration"></a>Güvenlik denetimi: güvenli yapılandırma
 
@@ -60,7 +60,7 @@ Tüm işlem kaynaklarında güvenlik yapılandırmalarının bakımını yapmak 
 
 | Azure KIMLIĞI | CIS kimlikleri | Ğuna |
 |--|--|--|
-| 7.3 | 5,2 | Müşteri |
+| 7.3 | 5.2 | Müşteri |
 
 Azure kaynaklarınızın tamamında güvenli ayarları zorlamak için Azure Ilkesi [reddetme] ve [dağıtım yoksa dağıt] kullanın.  Ayrıca, kuruluşunuz tarafından gerekli olan Azure kaynaklarınızın güvenlik yapılandırmasını sürdürmek için Azure Resource Manager şablonları kullanabilirsiniz. 
 
@@ -74,7 +74,7 @@ Azure kaynaklarınızın tamamında güvenli ayarları zorlamak için Azure Ilke
 
 | Azure KIMLIĞI | CIS kimlikleri | Ğuna |
 |--|--|--|
-| 7.4 | 5,2 | Paylaşılan |
+| 7.4 | 5.2 | Paylaşılan |
 
 Azure işlem kaynaklarınız üzerinde güvenlik açığı değerlendirmesi gerçekleştirerek Azure Güvenlik Merkezi önerilerini izleyin.  Ayrıca, kuruluşunuz tarafından istenen işletim sisteminin güvenlik yapılandırmasını sürdürmek için Azure Resource Manager şablonları, özel işletim sistemi görüntüleri veya Azure Otomasyonu durum yapılandırması ' nı kullanabilirsiniz.   Azure Otomasyonu Istenen durum yapılandırması ile birleştirilmiş Microsoft sanal makine şablonları, güvenlik gereksinimlerinin karşılanmasına ve bakımında yardımcı olabilir. 
 
@@ -88,9 +88,9 @@ Ayrıca, Microsoft tarafından yayımlanan Azure Marketi Sanal makine görüntü
 
 - [Azure portal Windows sanal makinesi oluşturma](../../virtual-machines/windows/quick-create-portal.md)
 
-- [VM şablonunun nasıl indirileceği hakkında bilgi](../../virtual-machines/windows/download-template.md)
+- [VM şablonunun nasıl indirileceği hakkında bilgi](/previous-versions/azure/virtual-machines/windows/download-template)
 
-- [Bir VHD’yi Azure’a yüklemek ve yeni bir sanal makine oluşturmak için örnek betik](../../virtual-machines/scripts/virtual-machines-windows-powershell-upload-generalized-script.md)
+- [Bir VHD’yi Azure’a yüklemek ve yeni bir sanal makine oluşturmak için örnek betik](/previous-versions/azure/virtual-machines/scripts/virtual-machines-windows-powershell-upload-generalized-script)
 
 ## <a name="75-securely-store-configuration-of-azure-resources"></a>7,5: Azure kaynaklarının yapılandırmasını güvenli bir şekilde depolayın
 
@@ -118,7 +118,7 @@ Kodunuzu özel Azure ilkeleri, Azure Resource Manager şablonları ve Istenen du
 
 - [Azure RBAC 'yi yapılandırma](../../role-based-access-control/quickstart-assign-role-user-portal.md)
 
-- [Paylaşılan görüntü galerisine genel bakış](../../virtual-machines/windows/shared-image-galleries.md)
+- [Paylaşılan görüntü galerisine genel bakış](../../virtual-machines/shared-image-galleries.md)
 
 ## <a name="77-deploy-configuration-management-tools-for-azure-resources"></a>7,7: Azure kaynakları için yapılandırma yönetimi araçları dağıtma
 
@@ -128,7 +128,7 @@ Kodunuzu özel Azure ilkeleri, Azure Resource Manager şablonları ve Istenen du
 
 Azure Ilkesi 'ni kullanarak Azure kaynakları için standart güvenlik yapılandırması tanımlayın ve uygulayın. Azure kaynaklarınızın ağ yapılandırmasını denetlemek veya zorlamak için özel ilkeler oluşturmak üzere Azure Ilke diğer adlarını kullanın. Ayrıca, belirli kaynaklarınızla ilgili yerleşik ilke tanımlarından da yararlanabilirsiniz.  Ayrıca, Azure Otomasyonu ' nu yapılandırma değişikliklerini dağıtmak için de kullanabilirsiniz.
 
-- [Azure Ilkesini yapılandırma ve yönetme](../../governance/policy/tutorials/create-and-manage.md)
+- [Azure İlkesi'ni yapılandırma ve yönetme](../../governance/policy/tutorials/create-and-manage.md)
 
 - [Diğer adları kullanma](../../governance/policy/concepts/definition-structure.md#aliases)
 
@@ -146,7 +146,7 @@ Azure Otomasyonu durum yapılandırması, herhangi bir bulutta veya şirket içi
 
 | Azure KIMLIĞI | CIS kimlikleri | Ğuna |
 |--|--|--|
-| 7,9 | 5,5 | Müşteri |
+| 7.9 | 5.5 | Müşteri |
 
 Azure kaynaklarınızın temel taranmasını gerçekleştirmek için Azure Güvenlik Merkezi 'ni kullanın.  Ayrıca Azure Ilkesi 'ni kullanarak Azure Kaynak konfigürasyonları 'nı uyarır ve denetleyin.
 
@@ -156,7 +156,7 @@ Azure kaynaklarınızın temel taranmasını gerçekleştirmek için Azure Güve
 
 | Azure KIMLIĞI | CIS kimlikleri | Ğuna |
 |--|--|--|
-| 7,10 | 5,5 | Müşteri |
+| 7,10 | 5.5 | Müşteri |
 
 Kapsayıcılar için işletim sistemi ve Docker ayarlarına yönelik temel taramalar gerçekleştirmek üzere Azure Güvenlik Merkezi 'ni kullanın.
 
@@ -166,7 +166,7 @@ Kapsayıcılar için işletim sistemi ve Docker ayarlarına yönelik temel taram
 
 | Azure KIMLIĞI | CIS kimlikleri | Ğuna |
 |--|--|--|
-| 7,11 | 13,1 | Müşteri |
+| 7,11 | 13.1 | Müşteri |
 
 Bulut uygulamalarınız için gizli yönetimi basitleştirmek ve güvenli hale getirmek için Azure Key Vault ile birlikte Yönetilen Hizmet Kimliği kullanın.
 
@@ -194,7 +194,7 @@ Azure AD 'de otomatik olarak yönetilen bir kimlik ile Azure hizmetleri sağlama
 |--|--|--|
 | 7,13 | 18,1, 18,7 | Müşteri |
 
-Kod içinde kimlik bilgilerini tanımlamak için kimlik bilgisi tarayıcısı uygulayın. Kimlik bilgisi tarayıcısı, bulunan kimlik bilgilerini Azure Key Vault gibi daha güvenli konumlara taşımayı de teşvik eder. 
+Kod içinde kimlik bilgilerini tanımlamak için kimlik bilgisi tarayıcısı uygulayın. Kimlik Bilgisi Tarayıcısı ayrıca bulunan kimlik bilgilerinin Azure Key Vault gibi daha güvenlik konumlara aktarılmasını sağlar. 
 
 - [Kimlik bilgisi tarayıcısı kurulumu](https://secdevtools.azurewebsites.net/helpcredscan.html)
 

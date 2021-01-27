@@ -7,12 +7,12 @@ ms.manager: bsiva
 ms.topic: tutorial
 ms.date: 06/09/2020
 ms.custom: mvc
-ms.openlocfilehash: f9e7547b8b9a8728c2c1ce7d1d01d06ad1d55dc1
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
+ms.openlocfilehash: a858bcc0e6f6364a1eb5c37d555f5f1e7064b650
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97387250"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879469"
 ---
 # <a name="migrate-vmware-vms-to-azure-agentless"></a>VMware VM 'lerini Azure 'a geçirme (aracısız)
 
@@ -90,7 +90,7 @@ Aşağıda belirtilen şekilde çoğaltmayı etkinleştirin:
     - Müşteri tarafından yönetilen anahtarla bekleyen şifreleme
 
    > [!NOTE]
-   > VM 'Leri CMK ile çoğaltmak için hedef kaynak grubu altında [bir disk şifreleme kümesi oluşturmanız](https://go.microsoft.com/fwlink/?linkid=2151800) gerekir. Bir disk şifreleme kümesi nesnesi yönetilen diskleri, SSE için kullanılacak CMK 'yi içeren bir Key Vault eşler.
+   > VM 'Leri CMK ile çoğaltmak için hedef kaynak grubu altında [bir disk şifreleme kümesi oluşturmanız](../virtual-machines/disks-enable-customer-managed-keys-portal.md#set-up-your-disk-encryption-set) gerekir. Bir disk şifreleme kümesi nesnesi yönetilen diskleri, SSE için kullanılacak CMK 'yi içeren bir Key Vault eşler.
   
 10. **Azure Hibrit Avantajı**’nda:
 

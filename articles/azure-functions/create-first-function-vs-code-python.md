@@ -4,12 +4,12 @@ description: Visual Studio Code ' deki Azure Işlevleri uzantısını kullanarak
 ms.topic: quickstart
 ms.date: 11/04/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 9e4ddc479b0adcb88e846b92e6603dfdf3c99baa
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: 0d7b98c44b85e17d084994bbcaa285c55c7a5e4d
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97967999"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880853"
 ---
 # <a name="quickstart-create-a-function-in-azure-with-python-using-visual-studio-code"></a>Hızlı başlangıç: Visual Studio Code kullanarak Azure 'da Python ile bir işlev oluşturma
 
@@ -29,40 +29,40 @@ Başlamadan önce, aşağıdaki gereksinimlerin yerinde olduğundan emin olun:
 
 + [Azure Functions Core Tools](functions-run-local.md#install-the-azure-functions-core-tools) sürüm 3. x.
 
-+ Python [3,8](https://www.python.org/downloads/release/python-381/), [Python 3,7](https://www.python.org/downloads/release/python-375/), Python [3,6](https://www.python.org/downloads/release/python-368/) , Azure işlevleri (x64) tarafından desteklenir.
++ [Azure Işlevleri tarafından desteklenen Python sürümleri](supported-languages.md#languages-by-runtime-version)
 
-+ [Desteklenen platformlardan](https://code.visualstudio.com/docs/supporting/requirements#_platforms)birine [Visual Studio Code](https://code.visualstudio.com/) .
++ [Desteklenen platformlardan](https://code.visualstudio.com/docs/supporting/requirements#_platforms) birinde çalışan [Visual Studio Code](https://code.visualstudio.com/).
 
 + Visual Studio Code için [Python uzantısı](https://marketplace.visualstudio.com/items?itemName=ms-python.python) .  
 
-+ Visual Studio Code için [Azure işlevleri uzantısı](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) .
++ Visual Studio Code için [Azure İşlevleri uzantısı](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions).
 
 ## <a name="create-your-local-project"></a><a name="create-an-azure-functions-project"></a>Yerel projenizi oluşturma
 
-Bu bölümde, Python 'da yerel bir Azure Işlevleri projesi oluşturmak için Visual Studio Code kullanırsınız. Bu makalenin ilerleyen kısımlarında, işlev kodunuzu Azure 'a yayımlayacaksınız.
+Bu bölümde, Python 'da yerel bir Azure Işlevleri projesi oluşturmak için Visual Studio Code kullanırsınız. Bu makalenin ilerleyen bölümlerinde işlev kodunu Azure'da yayımlayacaksınız.
 
-1. Etkinlik çubuğunda Azure simgesini seçin, sonra **Azure: işlevler** alanında **Yeni proje oluştur...** simgesini seçin.
+1. Etkinlik çubuğundan Azure simgesini seçtikten sonra **Azure: İşlevler** alanında **Yeni proje oluştur...** simgesini seçin.
 
-    ![Yeni proje oluştur seçeneğini belirleyin](./media/functions-create-first-function-vs-code/create-new-project.png)
+    ![Yeni proje oluştur'u seçin](./media/functions-create-first-function-vs-code/create-new-project.png)
 
-1. Proje çalışma alanınız için bir dizin konumu seçin ve **Seç**' i seçin.
+1. Projenizin çalışma alanı için bir dizin konumu seçtikten sonra **Seç**'i belirleyin.
 
     > [!NOTE]
     > Bu adımlar, bir çalışma alanının dışında tamamlanacak şekilde tasarlandı. Bu örnekte, bir çalışma alanının parçası olan bir proje klasörünü seçmeyin.
 
-1. İstemlere aşağıdaki bilgileri sağlayın:
+1. İstemlerde aşağıdaki bilgileri sağlayın:
 
-    + **İşlev projeniz için bir dil seçin**: seçin `Python` .
+    + **İşlev projeniz için bir dil seçin**: `Python` öğesini seçin.
 
     + **Sanal ortam oluşturmak için bir Python diğer adı seçin**: Python yorumlayıcının konumunu seçin. Konum gösterilmemişse, Python ikilisinin tam yolunu yazın.  
 
-    + **Projenizin ilk işlevi için bir şablon seçin**: seçin `HTTP trigger` .
+    + **Projenizin ilk işlevi için bir şablon seçin**: `HTTP trigger` öğesini seçin.
 
-    + **Bir işlev adı girin**: tür `HttpExample` .
+    + **Bir işlev adı sağlayın**: `HttpExample` yazın.
 
     + **Yetkilendirme düzeyi**: `Anonymous` herhangi bir kişinin işlev uç noktanızı çağırmasını sağlayan öğesini seçin. Yetkilendirme düzeyi hakkında bilgi edinmek için bkz. [Yetkilendirme anahtarları](functions-bindings-http-webhook-trigger.md#authorization-keys).
 
-    + **Projenizi nasıl açmak Istediğinizi seçin**: seçin `Add to workspace` .
+    + **Projenizi nasıl açmak istediğinizi seçin**: `Add to workspace` öğesini seçin.
 
 1. Bu bilgileri kullanarak, Visual Studio Code HTTP tetikleyicisiyle bir Azure Işlevleri projesi oluşturur. Yerel proje dosyalarını Gezgin içinde görüntüleyebilirsiniz. Oluşturulan dosyalar hakkında daha fazla bilgi edinmek için bkz. [oluşturulan proje dosyaları](functions-develop-vs-code.md#generated-project-files).
 
@@ -83,13 +83,13 @@ Bu bölümde, Azure aboneliğinizde bir işlev uygulaması ve ilgili kaynaklar o
 
     ![Projenizi Azure'da yayımlama](./media/functions-create-first-function-vs-code/function-app-publish-project.png)
 
-1. İstemlere aşağıdaki bilgileri sağlayın:
+1. İstemlerde aşağıdaki bilgileri sağlayın:
 
     + **Klasör seçin**: çalışma alanınızdan bir klasör seçin veya işlev uygulamanızı içeren bir klasöre gidin. Zaten açılmış geçerli bir işlev uygulamanız varsa bunu göremezsiniz.
 
     + **Abonelik seçin**: kullanılacak aboneliği seçin. Yalnızca bir aboneliğiniz varsa bunu göremezsiniz.
 
-    + **Azure 'da işlev uygulaması seçin**: Seç `+ Create new Function App` . ( `Advanced` Bu makalede kapsanmayan seçeneğini seçmeyin.)
+    + **Azure'daki işlev uygulamasını seçin**: `+ Create new Function App` öğesini seçin. ( `Advanced` Bu makalede kapsanmayan seçeneğini seçmeyin.)
 
     + **İşlev uygulaması için genel olarak benzersiz bir ad girin**: URL yolunda geçerli olan bir ad yazın. Yazdığınız ad, Azure Işlevlerinde benzersiz olduğundan emin olmak için onaylanır. 
 

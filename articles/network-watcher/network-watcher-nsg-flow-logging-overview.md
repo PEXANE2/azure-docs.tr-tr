@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: damendo
-ms.openlocfilehash: 987281bd13b7ac053f07a4ef1fb7605c85686d56
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: 4deda838d229081ccd23c123f75d0c0ada2383bb
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97898632"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878672"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>Ağ güvenlik grupları için akış günlük kaydına giriş
 
@@ -309,7 +309,7 @@ Devamlılık _C_ ve bitiş _E_ akışı durumları için bayt ve paket sayılar�
 
 Akış günlüklerini etkinleştirme yönergeleri için aşağıda yer alan ilgili bağlantıyı kullanın.
 
-- [Azure Portal](./network-watcher-nsg-flow-logging-portal.md)
+- [Azure portalı](./network-watcher-nsg-flow-logging-portal.md)
 - [PowerShell](./network-watcher-nsg-flow-logging-powershell.md)
 - [CLI](./network-watcher-nsg-flow-logging-cli.md)
 - [REST](./network-watcher-nsg-flow-logging-rest.md)
@@ -317,7 +317,7 @@ Akış günlüklerini etkinleştirme yönergeleri için aşağıda yer alan ilgi
 
 ## <a name="updating-parameters"></a>Parametreleri güncelleştirme
 
-**Azure Portal**
+**Azure portalı**
 
 Azure portal, ağ Izleyicisi 'nde NSG akış günlükleri bölümüne gidin. Sonra NSG adına tıklayın. Bu işlem, akış günlüğü için ayarlar bölmesini getirir. İstediğiniz parametreleri değiştirin ve değişiklikleri dağıtmak için **Kaydet** 'e basın.
 
@@ -362,13 +362,13 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 
 **Internet IP 'lerinden ortak IP Içermeyen VM 'lere kaydedilen gelen akışlar**: bir genel IP adresi, örnek DÜZEYI genel IP olarak NIC ile ilişkili bir genel IP adresi aracılığıyla atanmamış veya temel bir yük dengeleyici arka uç havuzunun parçası olan VM 'ler, [varsayılan SNAT](../load-balancer/load-balancer-outbound-connections.md) 'yi kullanın ve giden bağlantıyı kolaylaştırmak için Azure tarafından atanmış bir IP adresine sahip olmalıdır. Sonuç olarak, akış, SNAT için atanan bağlantı noktası aralığındaki bir bağlantı noktasına gidiyor ise internet IP adreslerinden akışlar için akış günlüğü girişleri görebilirsiniz. Azure bu akışlara sanal makineye izin vermediğinden, deneme günlüğe kaydedilir ve tasarıma göre ağ Izleyicisi 'nin NSG akış günlüğünde görüntülenir. İstenmeyen gelen internet trafiğinin NSG ile açıkça engellenmesini öneririz.
 
-**Application Gateway v2 alt ağ NSG Ile sorun**: Application Gateway v2 alt ağ NSG 'de akış günlüğü oluşturma şu anda [desteklenmiyor](https://docs.microsoft.com/azure/application-gateway/application-gateway-faq#are-nsg-flow-logs-supported-on-nsgs-associated-to-application-gateway-v2-subnet) . Bu sorun Application Gateway v1 'yi etkilemez.
+**Application Gateway v2 alt ağ NSG Ile sorun**: Application Gateway v2 alt ağ NSG 'de akış günlüğü oluşturma şu anda [desteklenmiyor](../application-gateway/application-gateway-faq.yml#are-nsg-flow-logs-supported-on-nsgs-associated-to-application-gateway-v2-subnet) . Bu sorun Application Gateway v1 'yi etkilemez.
 
 **Uyumsuz hizmetler**: geçerli platform sınırlamaları nedeniyle, NSG akış günlükleri tarafından desteklenmeyen küçük bir Azure Hizmetleri kümesi desteklenmez. Uyumsuz hizmetlerin geçerli listesi
 - [Azure Kubernetes Services (AKS)](https://azure.microsoft.com/services/kubernetes-service/)
 - [Logic Apps](https://azure.microsoft.com/services/logic-apps/) 
 
-## <a name="best-practices"></a>En iyi deneyimler
+## <a name="best-practices"></a>En iyi uygulamalar
 
 **Kritik VNET 'lerde/alt ağlarda etkinleştir**: akış günlüklerinin, aboneliğinizdeki tüm kritik VNET 'lerde/alt ağlarda bir denetlenebilirlik ve Security en iyi uygulaması olarak etkinleştirilmesi gerekir. 
 

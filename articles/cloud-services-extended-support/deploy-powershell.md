@@ -8,14 +8,14 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 82e154d8261d5fb24ce63e6266f2dfe8d8622e70
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 8bfa7c164f5b974a8cf8974b3ff346f3401dd218
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98787071"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880228"
 ---
-# <a name="create-a-cloud-service-extended-support-using-azure-powershell"></a>Azure PowerShell kullanarak bir bulut hizmeti (genişletilmiş destek) oluşturma
+# <a name="deploy-a-cloud-service-extended-support-using-azure-powershell"></a>Azure PowerShell kullanarak bir bulut hizmeti (genişletilmiş destek) dağıtma
 
 Bu makalede, `Az.CloudService` Azure 'da birden çok rol (WebRole ve WorkerRole) ve Uzak Masaüstü uzantısı olan Cloud Services (genişletilmiş destek) dağıtmak için PowerShell modülünün nasıl kullanılacağı gösterilmektedir. 
 
@@ -23,28 +23,31 @@ Bu makalede, `Az.CloudService` Azure 'da birden çok rol (WebRole ve WorkerRole)
 > Cloud Services (genişletilmiş destek) Şu anda genel önizleme aşamasındadır.
 > Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-1. Cloud Services (genişletilmiş destek) için [dağıtım önkoşullarını](deploy-prerequisite.md) gözden geçirin ve ilişkili kaynakları oluşturun. 
+## <a name="before-you-begin"></a>Başlamadan önce
 
-3. Install az. CloudService PowerShell Module  
+Cloud Services (genişletilmiş destek) için [dağıtım önkoşullarını](deploy-prerequisite.md) gözden geçirin ve ilişkili kaynakları oluşturun. 
+
+## <a name="deploy-a-cloud-services-extended-support"></a>Cloud Services Dağıtma (genişletilmiş destek)
+1. Install az. CloudService PowerShell Module  
 
     ```powershell
     Install-Module -Name Az.CloudService 
     ```
 
-4. Yeni bir kaynak grubu oluşturma. Mevcut bir kaynak grubu kullanılıyorsa bu adım isteğe bağlıdır.   
+2. Yeni bir kaynak grubu oluşturma. Mevcut bir kaynak grubu kullanılıyorsa bu adım isteğe bağlıdır.   
 
     ```powershell
     New-AzResourceGroup -ResourceGroupName “ContosOrg” -Location “East US” 
     ```
 
-5. Bulut hizmeti paketi (. cspkg) ve hizmet yapılandırma (. cscfg) dosyalarını depolamak için kullanılacak bir depolama hesabı ve kapsayıcı oluşturun. Depolama hesabı adı için benzersiz bir ad kullanmanız gerekir. 
+3. Bulut hizmeti paketi (. cspkg) ve hizmet yapılandırma (. cscfg) dosyalarını depolamak için kullanılacak bir depolama hesabı ve kapsayıcı oluşturun. Depolama hesabı adı için benzersiz bir ad kullanmanız gerekir. 
 
     ```powershell
     $storageAccount = New-AzStorageAccount -ResourceGroupName “ContosOrg” -Name “contosostorageaccount” -Location “East US” -SkuName “Standard_RAGRS” -Kind “StorageV2” 
     $container = New-AzStorageContainer -Name “ContosoContainer” -Context $storageAccount.Context -Permission Blob 
     ```
 
-6. Bulut hizmeti paketinizi (cspkg) depolama hesabına yükleyin.
+4. Bulut hizmeti paketinizi (cspkg) depolama hesabına yükleyin.
 
     ```powershell
     $tokenStartTime = Get-Date 
@@ -55,7 +58,7 @@ Bu makalede, `Az.CloudService` Azure 'da birden çok rol (WebRole ve WorkerRole)
     ```
  
 
-7.  Bulut hizmeti yapılandırmanızı (cscfg) depolama hesabına yükleyin. 
+5.  Bulut hizmeti yapılandırmanızı (cscfg) depolama hesabına yükleyin. 
 
     ```powershell
     $cscfgBlob = Set-AzStorageBlobContent -File “./ContosoApp/ContosoApp.cscfg” -Container ContosoContainer -Blob “ContosoApp.cscfg” -Context $storageAccount.Context 
@@ -63,20 +66,20 @@ Bu makalede, `Az.CloudService` Azure 'da birden çok rol (WebRole ve WorkerRole)
     $cscfgUrl = $cscfgBlob.ICloudBlob.Uri.AbsoluteUri + $cscfgToken 
     ```
 
-8. Sanal ağı ve alt ağı oluşturun. Mevcut bir ağ ve alt ağ kullanılıyorsa bu adım isteğe bağlıdır. Bu örnek, hem bulut hizmeti rolleri (WebRole hem de WorkerRole) için tek bir sanal ağ ve alt ağ kullanır. 
+6. Sanal ağı ve alt ağı oluşturun. Mevcut bir ağ ve alt ağ kullanılıyorsa bu adım isteğe bağlıdır. Bu örnek, hem bulut hizmeti rolleri (WebRole hem de WorkerRole) için tek bir sanal ağ ve alt ağ kullanır. 
 
     ```powershell
     $subnet = New-AzVirtualNetworkSubnetConfig -Name "ContosoWebTier1" -AddressPrefix "10.0.0.0/24" -WarningAction SilentlyContinue 
     $virtualNetwork = New-AzVirtualNetwork -Name “ContosoVNet” -Location “East US” -ResourceGroupName “ContosOrg” -AddressPrefix "10.0.0.0/24" -Subnet $subnet 
     ```
  
-9. Genel IP adresi oluşturun ve (isteğe bağlı olarak) genel IP adresinin DNS etiketi özelliğini ayarlayın. Statik IP kullanıyorsanız, hizmet yapılandırma dosyasında bir Ayrılmış IP olarak başvurulması gerekir.  
+7. Genel IP adresi oluşturun ve (isteğe bağlı olarak) genel IP adresinin DNS etiketi özelliğini ayarlayın. Statik IP kullanıyorsanız, hizmet yapılandırma dosyasında bir Ayrılmış IP olarak başvurulması gerekir.  
 
     ```powershell
     $publicIp = New-AzPublicIpAddress -Name “ContosIp” -ResourceGroupName “ContosOrg” -Location “East US” -AllocationMethod Dynamic -IpAddressVersion IPv4 -DomainNameLabel “contosoappdns” -Sku Basic 
     ```
 
-10. Ağ profili nesnesi oluşturun ve genel IP adresini platform tarafından oluşturulan yük dengeleyicinin ön ucu ile ilişkilendirin.  
+8. Ağ profili nesnesi oluşturun ve genel IP adresini platform tarafından oluşturulan yük dengeleyicinin ön ucu ile ilişkilendirin.  
 
     ```powershell
     $publicIP = Get-AzPublicIpAddress -ResourceGroupName ContosOrg -Name ContosIp  
@@ -85,13 +88,13 @@ Bu makalede, `Az.CloudService` Azure 'da birden çok rol (WebRole ve WorkerRole)
     $networkProfile = @{loadBalancerConfiguration = $loadBalancerConfig} 
     ```
  
-11. Anahtar Kasası oluşturun. Bu Key Vault, bulut hizmeti (genişletilmiş destek) rolleriyle ilişkili sertifikaları depolamak için kullanılacaktır. Key Vault, bulut hizmeti ile aynı bölgede ve abonelikte yer almalıdır ve benzersiz bir ada sahip olmalıdır. Daha fazla bilgi için bkz. [Azure Cloud Services sertifikaları kullanma (genişletilmiş destek)](certificates-and-key-vault.md).
+9. Anahtar Kasası oluşturun. Bu Key Vault, bulut hizmeti (genişletilmiş destek) rolleriyle ilişkili sertifikaları depolamak için kullanılacaktır. Key Vault, bulut hizmeti ile aynı bölgede ve abonelikte yer almalıdır ve benzersiz bir ada sahip olmalıdır. Daha fazla bilgi için bkz. [Azure Cloud Services sertifikaları kullanma (genişletilmiş destek)](certificates-and-key-vault.md).
 
     ```powershell
     New-AzKeyVault -Name "ContosKeyVault” -ResourceGroupName “ContosoOrg” -Location “East US” 
     ```
 
-13. Key Vault erişim ilkesini güncelleştirin ve Kullanıcı hesabınıza sertifika izinleri verin. 
+10. Key Vault erişim ilkesini güncelleştirin ve Kullanıcı hesabınıza sertifika izinleri verin. 
 
     ```powershell
     Set-AzKeyVaultAccessPolicy -VaultName 'ContosKeyVault' -ResourceGroupName 'ContosoOrg' -UserPrincipalName 'user@domain.com' -PermissionsToCertificates create,get,list,delete 
@@ -104,14 +107,14 @@ Bu makalede, `Az.CloudService` Azure 'da birden çok rol (WebRole ve WorkerRole)
     ```
  
 
-14. Bu örnekte, bir Key Vault otomatik olarak imzalanan bir sertifika ekleyeceğiz. Sertifika parmak izinin, bulut hizmeti rollerinde dağıtım için bulut hizmeti yapılandırma (. cscfg) dosyasına eklenmesi gerekir. 
+11. Bu örnekte, bir Key Vault otomatik olarak imzalanan bir sertifika ekleyeceğiz. Sertifika parmak izinin, bulut hizmeti rollerinde dağıtım için bulut hizmeti yapılandırma (. cscfg) dosyasına eklenmesi gerekir. 
 
     ```powershell
     $Policy = New-AzKeyVaultCertificatePolicy -SecretContentType "application/x-pkcs12" -SubjectName "CN=contoso.com" -IssuerName "Self" -ValidityInMonths 6 -ReuseKeyOnRenewal 
     Add-AzKeyVaultCertificate -VaultName "ContosKeyVault" -Name "ContosCert" -CertificatePolicy $Policy 
     ```
  
-15. Bellek içi bir nesne için bir işletim sistemi profili oluşturun. İşletim sistemi profili, bulut hizmeti rolleriyle ilişkili sertifikaları belirtir. Bu, önceki adımda oluşturulan sertifika ile aynı olacaktır. 
+12. Bellek içi bir nesne için bir işletim sistemi profili oluşturun. İşletim sistemi profili, bulut hizmeti rolleriyle ilişkili sertifikaları belirtir. Bu, önceki adımda oluşturulan sertifika ile aynı olacaktır. 
 
     ```powershell
     $keyVault = Get-AzKeyVault -ResourceGroupName ContosOrg -VaultName ContosKeyVault 
@@ -120,7 +123,7 @@ Bu makalede, `Az.CloudService` Azure 'da birden çok rol (WebRole ve WorkerRole)
     $osProfile = @{secret = @($secretGroup)} 
     ```
 
-16. Bellek içi nesne için bir rol profili oluşturun. Rol profili, ad, kapasite ve katman gibi bir rol SKU 'ya özgü özellikleri tanımlar. Bu örnekte, iki rol tanımlıyoruz: frontendRole ve backendRole. Rol profili bilgileri, yapılandırma (cscfg) dosya ve hizmet tanımı (csdef) dosyasında tanımlanan rol yapılandırması ile eşleşmelidir. 
+13. Bellek içi nesne için bir rol profili oluşturun. Rol profili, ad, kapasite ve katman gibi bir rol SKU 'ya özgü özellikleri tanımlar. Bu örnekte, iki rol tanımlıyoruz: frontendRole ve backendRole. Rol profili bilgileri, yapılandırma (cscfg) dosya ve hizmet tanımı (csdef) dosyasında tanımlanan rol yapılandırması ile eşleşmelidir. 
 
     ```powershell
     $frontendRole = New-AzCloudServiceRoleProfilePropertiesObject -Name 'ContosoFrontend' -SkuName 'Standard_D1_v2' -SkuTier 'Standard' -SkuCapacity 2 
@@ -128,7 +131,7 @@ Bu makalede, `Az.CloudService` Azure 'da birden çok rol (WebRole ve WorkerRole)
     $roleProfile = @{role = @($frontendRole, $backendRole)} 
     ```
 
-17. Seçim Bulut hizmetinize eklemek istediğiniz bir uzantı profili bellek içi nesnesi oluşturun. Bu örnekte, RDP uzantısı ekleyeceğiz. 
+14. Seçim Bulut hizmetinize eklemek istediğiniz bir uzantı profili bellek içi nesnesi oluşturun. Bu örnekte, RDP uzantısı ekleyeceğiz. 
 
     ```powershell
     $credential = Get-Credential 
@@ -138,13 +141,13 @@ Bu makalede, `Az.CloudService` Azure 'da birden çok rol (WebRole ve WorkerRole)
     $wadExtension = New-AzCloudServiceDiagnosticsExtension -Name "WADExtension" -ResourceGroupName "ContosOrg" -CloudServiceName "ContosCS" -StorageAccountName "ContosSA" -StorageAccountKey $storageAccountKey[0].Value -DiagnosticsConfigurationPath $configFile -TypeHandlerVersion "1.5" -AutoUpgradeMinorVersion $true 
     $extensionProfile = @{extension = @($rdpExtension, $wadExtension)} 
     ```
-18. Seçim Bulut hizmetinize eklemek istediğiniz etiketleri PowerShell karma tablosu olarak tanımlayın. 
+15. Seçim Bulut hizmetinize eklemek istediğiniz etiketleri PowerShell karma tablosu olarak tanımlayın. 
 
     ```powershell
     $tag=@{"Owner" = "Contoso"} 
     ```
 
-19. SAS URL 'Leri & profil nesneleri kullanarak bulut hizmeti dağıtımı oluşturun.
+17. SAS URL 'Leri & profil nesneleri kullanarak bulut hizmeti dağıtımı oluşturun.
 
     ```powershell
     $cloudService = New-AzCloudService ` 
@@ -164,3 +167,4 @@ Bu makalede, `Az.CloudService` Azure 'da birden çok rol (WebRole ve WorkerRole)
 ## <a name="next-steps"></a>Sonraki adımlar 
 - Cloud Services için [sık sorulan soruları](faq.md) gözden geçirin (genişletilmiş destek).
 - [Azure Portal](deploy-portal.md), [PowerShell](deploy-powershell.md), [şablon](deploy-template.md) veya [Visual Studio](deploy-visual-studio.md)kullanarak bir bulut hizmeti (genişletilmiş destek) dağıtın.
+- [Cloud Services (genişletilmiş destek) örnekleri deposunu](https://github.com/Azure-Samples/cloud-services-extended-support) ziyaret edin

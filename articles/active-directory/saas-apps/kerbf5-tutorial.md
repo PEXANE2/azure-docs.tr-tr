@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 16fff00f04c4cd57ad46759cceb50134e58d5e01
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 139366277feab0a04c47311b4f0210223b2bc8d9
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97933124"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98892064"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-f5"></a>Öğretici: F5 ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -28,7 +28,7 @@ Bu öğreticide, F5 'i Azure Active Directory (Azure AD) ile tümleştirmeyi ö�
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -493,3 +493,9 @@ Erişim panelinde F5 kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız 
 - [Üst bilgi tabanlı uygulama için F5 çoklu oturum açmayı yapılandırma](headerf5-tutorial.md)
 
 - [Gelişmiş Kerberos uygulaması için F5 çoklu oturum açmayı yapılandırma](advance-kerbf5-tutorial.md)
+
+- [F5 BIG-IP APM ve güvenli karma erişim için Azure AD tümleştirmesi](https://docs.microsoft.com/azure/active-directory/manage-apps/f5-aad-integration)
+
+- [Güvenli karma erişim için Azure IaaS 'de F5 BIG-IP Virtual Edition VM dağıtma öğreticisi](https://docs.microsoft.com/azure/active-directory/manage-apps/f5-bigip-deployment-guide)
+
+- [Parola açısından daha az VPN için F5 BIG-IP ile çoklu oturum açma tümleştirmesi Azure Active Directory öğreticisi](https://docs.microsoft.com/azure/active-directory/manage-apps/f5-aad-password-less-vpn)

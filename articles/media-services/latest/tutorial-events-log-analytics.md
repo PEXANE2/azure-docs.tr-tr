@@ -1,24 +1,8 @@
 ---
-title: Azure 'da Azure Media Services olaylarını depolama Log Analytics
-titleSuffix: Azure Media Services
-description: Azure Media Services olaylarını Azure Log Analytics depolama hakkında bilgi edinin.
-services: media-services
-documentationcenter: ''
-author: IngridAtMicrosoft
-manager: femila
-editor: ''
-ms.service: media-services
-ms.workload: ''
-ms.topic: tutorial
-ms.date: 08/24/2020
-ms.author: inhenkel
-ms.openlocfilehash: cc3060c9253b23b97089ea35625aceb26737baba
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
-ms.translationtype: MT
-ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92017004"
+Başlık: Azure Log Analytics 'de Azure Media Services olaylarını depola: Azure Media Services açıklaması: Azure Media Services olaylarını Azure Log Analytics depolama hakkında bilgi edinin.
+Hizmetler: Media-Services belgetationcenter: ' ' Yazar: ınridatmicrosoft Manager: femila Düzenleyicisi: ' ' MS. Service: Media-Services MS. Workload: MS. Topic: öğretici ms. Date: 08/24/2020 MS. Author: inhenkel
 ---
+
 # <a name="tutorial-store-azure-media-services-events-in-azure-log-analytics"></a>Öğretici: Azure 'da Azure Media Services olaylarını depolama Log Analytics
 
 ## <a name="azure-media-services-events"></a>Azure Media Services olaylar
@@ -38,7 +22,7 @@ Azure Media Services v3, olayları [Azure Event Grid](media-services-event-schem
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 > * [Azure aboneliği](how-to-set-azure-subscription.md)
 > * [Media Services](create-account-howto.md) hesabı ve kaynak grubu.
@@ -55,9 +39,9 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 1. Bir mantıksal uygulama oluşturmak için **Logic Apps simgesini** seçin. Bu işlem, olayları yakalamak ve Log Analytics göndermek için akış oluşturabileceğiniz mantıksal uygulama Tasarımcısını açar. 
     > [!div class="mx-imgBorder"]
-    > ![Mantıksal Uygulama oluşturma](media/tutorial-events-log-analytics/select-logic-app-02.png)
+    > ![Mantıksal uygulama oluşturma](media/tutorial-events-log-analytics/select-logic-app-02.png)
 
-1. **+ Simgesini**seçin, kullanmak istediğiniz kiracıyı seçin ve oturum aç ' ı seçin. Bir Microsoft oturum açma istemi görürsünüz.
+1. **+ Simgesini** seçin, kullanmak istediğiniz kiracıyı seçin ve oturum aç ' ı seçin. Bir Microsoft oturum açma istemi görürsünüz.
     > [!div class="mx-imgBorder"]
     > ![](media/tutorial-events-log-analytics/select-event-add-grid-03.png)
  ![ Kiracıyı seçmek Azure Event Grid bağlanın](media/tutorial-events-log-analytics/select-tenant-03a.png)
@@ -70,7 +54,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
     > [!div class="mx-imgBorder"]
     >![Kaynak olaylarını Azure Media Services](media/tutorial-events-log-analytics/locate-azure-media-services-events-05.png)
 
-1. **Olay türü öğesini**seçin. Yayar Azure Media Services tüm olayların bir listesi olacaktır. İzlemek istediğiniz olayları seçebilirsiniz. Birden çok olay türü ekleyebilirsiniz. (Daha sonra, her olay türünü ayrı bir Log Analytics günlüğünde depolamak ve olay türü adını dinamik olarak Log Analytics günlük adına yaymak için mantıksal uygulama akışında küçük bir değişiklik yaparsınız.)
+1. **Olay türü öğesini** seçin. Yayar Azure Media Services tüm olayların bir listesi olacaktır. İzlemek istediğiniz olayları seçebilirsiniz. Birden çok olay türü ekleyebilirsiniz. (Daha sonra, her olay türünü ayrı bir Log Analytics günlüğünde depolamak ve olay türü adını dinamik olarak Log Analytics günlük adına yaymak için mantıksal uygulama akışında küçük bir değişiklik yaparsınız.)
     > [!div class="mx-imgBorder"]
     > ![Azure Media Services olay türü](media/tutorial-events-log-analytics/select-azure-media-services-event-type-06.png)
 
@@ -102,13 +86,13 @@ Etkinliğe abone olduğunuza göre artık bir eylem oluşturun.
     > [!div class="mx-imgBorder"]
     > ![Azure Log Analytics Agents yönetimi](media/tutorial-events-log-analytics/select-agents-management-09.png)
 
-1. *Çalışma alanı kimliğini*kopyalayın.
+1. *Çalışma alanı kimliğini* kopyalayın.
     > [!div class="mx-imgBorder"]
     > ![Çalışma alanı KIMLIĞINI Kopyala](media/tutorial-events-log-analytics/copy-workspace-id.png)
 
 1. Diğer tarayıcı sekmesinde veya penceresinde, Azure Log Analytics veri toplayıcısı altında **veri Gönder**' i seçin, bağlantıya bir ad verin ve **çalışma alanı kimliği ALANıNA çalışma** alanı *kimliğini* yapıştırın.
 
-1. Çalışma alanı tarayıcısı sekmesine veya penceresine dönün ve *çalışma alanı anahtarını*kopyalayın.
+1. Çalışma alanı tarayıcısı sekmesine veya penceresine dönün ve *çalışma alanı anahtarını* kopyalayın.
     > [!div class="mx-imgBorder"]
     > ![Aracı yönetimi birincil anahtarı](media/tutorial-events-log-analytics/agents-management-primary-key-10.png)
 
@@ -120,7 +104,7 @@ Etkinliğe abone olduğunuza göre artık bir eylem oluşturun.
 
 1. **Dinamik Içerik Ekle** ' yi seçin ve **Konu**' ı seçin.
 
-1. **Özel günlük adı**için aynısını yapın.
+1. **Özel günlük adı** için aynısını yapın.
     > [!div class="mx-imgBorder"]
     > ![Konu seçildi](media/tutorial-events-log-analytics/topic-selected.png)
 
@@ -134,7 +118,7 @@ Etkinliğe abone olduğunuza göre artık bir eylem oluşturun.
     > [!div class="mx-imgBorder"]
     > ![Değişiklikten sonra mantıksal uygulama JSON 'ı](media/tutorial-events-log-analytics/changed-lines.png)
 
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.
 
 1. Doğrulamak için **mantıksal uygulama Tasarımcısı**' nı seçin.
     > [!div class="mx-imgBorder"]
@@ -144,7 +128,7 @@ Etkinliğe abone olduğunuza göre artık bir eylem oluşturun.
     > [!div class="mx-imgBorder"]
     > ![Kaynak grubundaki tüm yeni kaynakları görüntüle](media/tutorial-events-log-analytics/contoso-rg-listing.png)
 
-## <a name="test"></a>Test etme
+## <a name="test"></a>Test
 
 Gerçekten nasıl çalıştığını test etmek için Azure Media Services ' de canlı bir olay oluşturun. Bir RTMP canlı olayı oluşturun ve bir. mp4 örnek dosyasına dayalı bir "canlı" akış göndermek için FFmpeg kullanın. Olay oluşturulduktan sonra, RTMP alma URL 'sini alın.
 
@@ -174,7 +158,7 @@ Gerçekten nasıl çalıştığını test etmek için Azure Media Services ' de 
 
 1. **İçerik/dosya... onay kutusunu kullanma haklarım ' ı** seçin.
 
-1. **Gözden geçir + oluştur**’u seçin.
+1. **Gözden geçir ve oluştur**’u seçin.
 
 1. Ayarlarınızı gözden geçirin ve **Oluştur**' u seçin.  Canlı olay listesi görüntülenir ve canlı olay alma URL 'SI gösterilir.
 
@@ -216,7 +200,7 @@ Canlı akışla Azure Media Services mantıksal uygulama akışını tetikleyen 
 
 1. Daha önce oluşturduğunuz Log Analytics çalışma alanına gidin.
 
-1. **Günlükleri**seçin.
+1. **Günlükleri** seçin.
 1. Örnek sorgular açılan penceresini kapatın.
 1. Özel bir Günlükler listesi görüntülenir. Genişletmek için aşağı oku seçin. Olay adını görürsünüz `MicrosoftMediaLiveEventEncoderConnected` .
 1. Genişletilecek olay adını seçin.

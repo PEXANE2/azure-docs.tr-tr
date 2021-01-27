@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: 137670715af8b90d8a867459fa50249cd9be8e70
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: 44b89aae2f446a13207c8e3b586892ad085bd790
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97897125"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879419"
 ---
 # <a name="platform-supported-migration-of-iaas-resources-from-classic-to-azure-resource-manager-in-linux"></a>Linux 'ta IaaS kaynaklarının klasik 'ten Azure Resource Manager geçişi desteklenir
 
@@ -24,7 +24,7 @@ ms.locfileid: "97897125"
 
 Bu makalede, Azure Service Manager (asm) diğer adıyla Classic 'ten Kaynak Yöneticisi (ARM) dağıtım modelleriyle kaynakları geçirme ve sanal ağ siteden siteye ağ geçitleri kullanılarak aboneliğinizde bulunan iki dağıtım modelinden kaynakları bağlama hakkında genel bakış sunulmaktadır. [Azure Resource Manager özellikleri ve avantajları](../azure-resource-manager/management/overview.md)hakkında daha fazla bilgi edinebilirsiniz. 
 
-ASM iki farklı işlem ürününü destekler, Azure sanal makineleri (klasik) diğer adıyla IaaS VM 'leri, [Azure Cloud Services (klasik)](https://docs.microsoft.com/azure/cloud-services/) diğer adıyla PaaS VM 'leri veya Web/çalışan rolleri &. Bu belge yalnızca Azure sanal makinelerini (klasik) geçirme hakkında konuşur.
+ASM iki farklı işlem ürününü destekler, Azure sanal makineleri (klasik) diğer adıyla IaaS VM 'leri, [Azure Cloud Services (klasik)](../cloud-services/index.yml) diğer adıyla PaaS VM 'leri veya Web/çalışan rolleri &. Bu belge yalnızca Azure sanal makinelerini (klasik) geçirme hakkında konuşur.
 
 ## <a name="goal-for-migration"></a>Geçiş için hedef
 Kaynak Yöneticisi, şablonlar aracılığıyla karmaşık uygulamaların dağıtılmasını, sanal makineleri VM uzantıları kullanarak yapılandırmayı ve erişim yönetimi ve etiketleme özelliklerini içerir. Azure Resource Manager, sanal makineler için kullanılabilirlik kümelerine ölçeklenebilir, paralel dağıtım içerir. Yeni dağıtım modeli ayrıca işlem, ağ ve depolamanın yaşam döngüsü yönetimini bağımsız olarak sağlar. Son olarak, bir sanal ağ içindeki sanal makinelerin zorlanması ile varsayılan olarak güvenliği etkinleştirmeye odaklanılmıştır.
@@ -39,7 +39,7 @@ Klasik dağıtım modelinden neredeyse tüm özellikler Azure Resource Manager a
 * Depolama Hesapları
 * Sanal Ağlar
 * VPN Ağ Geçitleri
-* [Hızlı rota ağ geçitleri](https://docs.microsoft.com/azure/expressroute/expressroute-howto-move-arm) _(yalnızca sanal ağ ile aynı abonelikte)_
+* [Hızlı rota ağ geçitleri](../expressroute/expressroute-howto-move-arm.md) _(yalnızca sanal ağ ile aynı abonelikte)_
 * Ağ Güvenlik Grupları
 * Yönlendirme Tabloları
 * Ayrılmış IP’ler
@@ -116,7 +116,7 @@ Bazı özellikler ve Konfigürasyonlar Şu anda desteklenmiyor; Aşağıdaki bö
 ### <a name="unsupported-features"></a>Desteklenmeyen özellikler
 Aşağıdaki özellikler Şu anda desteklenmemektedir. İsteğe bağlı olarak bu ayarları kaldırabilir, VM 'Leri geçirebilir ve sonra Kaynak Yöneticisi dağıtım modelindeki ayarları yeniden etkinleştirebilirsiniz.
 
-| Kaynak sağlayıcısı | Özellik | Öneri |
+| Kaynak sağlayıcısı | Öne çıkan özelliği | Öneri |
 | --- | --- | --- |
 | İşlem | İlişkilendirilmemiş sanal makine diskleri. | Depolama hesabı geçirildiğinde bu disklerin arkasındaki VHD blob 'ları geçirilir |
 | İşlem | Sanal makine görüntüleri. | Depolama hesabı geçirildiğinde bu disklerin arkasındaki VHD blob 'ları geçirilir |

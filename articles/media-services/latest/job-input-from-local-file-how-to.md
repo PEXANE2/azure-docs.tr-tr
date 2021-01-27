@@ -1,5 +1,5 @@
 ---
-title: Yerel dosyadan Azure Media Services iş girişi oluştur | Microsoft Docs
+title: Yerel dosyadan Azure Media Services iş girişi oluşturma
 description: Bu makalede, yerel bir dosyadan Azure Media Services işi girişi oluşturma işlemi gösterilmektedir.
 services: media-services
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 02aaae89f7544392765b46361b1617e0fd7dae8c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2121807405849b74b354d9e638a79948c1501da5
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89296816"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895348"
 ---
 # <a name="create-a-job-input-from-a-local-file"></a>Yerel dosyadan iş girişi oluşturma
 
@@ -24,7 +24,7 @@ ms.locfileid: "89296816"
 
 Media Services v3 sürümünde işlenecek İşleri videolarınıza gönderirken Media Services'a giriş videosunun yerini de bildirmeniz gerekir. Giriş videosu bir medya hizmeti varlığı olarak depolanabilir, bu durumda bir dosyayı temel alan bir giriş varlığı (yerel olarak veya Azure Blob depolama alanında depolanır) oluşturabilirsiniz. Bu konu başlığı altında, yerel bir dosyadan nasıl iş girişi oluşturacağınız gösterilmektedir. Tam bir örnek için bkz. [GitHub örneği](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs).
 
-## <a name="prerequisites"></a>Ön koşullar 
+## <a name="prerequisites"></a>Önkoşullar 
 
 * [Media Services hesabı oluşturun](./create-account-howto.md).
 

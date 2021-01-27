@@ -2,19 +2,19 @@
 title: Belge biçimleri ve adlandırma kuralları-özel çevirici
 titleSuffix: Azure Cognitive Services
 description: Bu, özel Çevirmendeki belge biçimleri ve adlandırma kuralı kılavuzudur. Bu kavram, belge adlarının daha iyi yönetilmesine ve adlandırma çakışmalarını önlemenize yardımcı olur.
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 08/17/2020
-ms.author: swmachan
+ms.author: lajanuar
 ms.topic: conceptual
-ms.openlocfilehash: 46a19cd4396e598a74f9099727ac80d44c0a44f5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9598d3c1d339d1c37b02892cc83164acae447434
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88507255"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895858"
 ---
 # <a name="document-formats-and-naming-convention-guidance"></a>Belge biçimleri ve adlandırma kuralı Kılavuzu
 
@@ -22,7 +22,7 @@ ms.locfileid: "88507255"
 
 Bu tablo, çeviri sisteminizi oluşturmak için kullanabileceğiniz tüm desteklenen dosya biçimlerini içerir:
 
-| Biçimlendir            | Uzantıları   | Açıklama                                                                                                                                                                                                                                                                    |
+| Biçimlendir            | Uzantıları   | Description                                                                                                                                                                                                                                                                    |
 |-------------------|--------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | DOSYASıNA             | . XLF,. DOSYASıNA | Bir paralel belge biçimi, çeviri belleği sistemlerini dışarı aktarma. Kullanılan diller dosya içinde tanımlanmıştır.                                                                                                                                                              |
 | TMX               | . TMX         | Bir paralel belge biçimi, çeviri belleği sistemlerini dışarı aktarma. Kullanılan diller dosya içinde tanımlanmıştır.                                                                                                                                                              |

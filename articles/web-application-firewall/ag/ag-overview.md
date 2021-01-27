@@ -8,12 +8,12 @@ ms.service: web-application-firewall
 ms.date: 12/04/2020
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 36f04b02774a01814811ea131388629de27e9f07
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 2de8a47b841a4a5c82aaeb92419ec3d9714268ea
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96621034"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879436"
 ---
 # <a name="what-is-azure-web-application-firewall-on-azure-application-gateway"></a>Azure Application Gateway Azure Web uygulaması güvenlik duvarı nedir?
 
@@ -29,7 +29,7 @@ Application Gateway, uygulama teslim denetleyicisi (ADC) olarak çalışır. Dah
 
 Application Gateway güvenlik geliştirmeleri TLS ilkesi yönetimi ve uçtan uca TLS desteği içerir. Uygulama güvenliği, Application Gateway ' ye WAF tümleştirmesi tarafından Güçbir hale döndürüldü. Birleşim, Web uygulamalarınızı yaygın güvenlik açıklarına karşı korur. Ve yönetmek için kolay yapılandırma merkezi bir konum sağlar.
 
-## <a name="benefits"></a>Yararları
+## <a name="benefits"></a>Avantajlar
 
 Bu bölümde, Application Gateway için WAF 'nin sağladığı temel avantajlar açıklanmaktadır.
 
@@ -157,7 +157,7 @@ Application Gateway Günlükler [Azure izleyici](../../azure-monitor/overview.md
 
 #### <a name="azure-security-center"></a>Azure Güvenlik Merkezi
 
-[Güvenlik Merkezi](../../security-center/security-center-introduction.md) , tehditleri önlemenize, algılamanıza ve yanıtlamanıza yardımcı olur. Azure kaynaklarınızın güvenliği üzerinde daha fazla görünürlük ve denetim sağlar. Application Gateway, [Güvenlik Merkezi ile tümleşiktir](../../application-gateway/application-gateway-integration-security-center.md). Güvenlik Merkezi, korumasız Web uygulamalarını algılamak için ortamınızı tarar. Bu güvenlik açığı bulunan kaynakları korumak için WAF Application Gateway önerilir. Güvenlik duvarlarını doğrudan güvenlik merkezi 'nden oluşturursunuz. Bu WAF örnekleri güvenlik merkezi ile tümleşiktir. Raporlama için Güvenlik Merkezi 'ne uyarılar ve sistem durumu bilgileri gönderir.
+[Güvenlik Merkezi](../../security-center/security-center-introduction.md) , tehditleri önlemenize, algılamanıza ve yanıtlamanıza yardımcı olur. Azure kaynaklarınızın güvenliği üzerinde daha fazla görünürlük ve denetim sağlar. Application Gateway, [Güvenlik Merkezi ile tümleşiktir](../../security-center/security-center-partner-integration.md#integrated-azure-security-solutions). Güvenlik Merkezi, korumasız Web uygulamalarını algılamak için ortamınızı tarar. Bu güvenlik açığı bulunan kaynakları korumak için WAF Application Gateway önerilir. Güvenlik duvarlarını doğrudan güvenlik merkezi 'nden oluşturursunuz. Bu WAF örnekleri güvenlik merkezi ile tümleşiktir. Raporlama için Güvenlik Merkezi 'ne uyarılar ve sistem durumu bilgileri gönderir.
 
 ![Güvenlik Merkezi genel bakış penceresi](../media/ag-overview/figure1.png)
 
@@ -175,7 +175,7 @@ Yerleşik Azure WAF güvenlik duvarı olayları çalışma kitabı ile WAF 'nizi
 
 Bu çalışma kitabı, birkaç filtrelenebilir panel üzerinde güvenlikle ilgili WAF olaylarının özel görselleştirilmesini mümkün hale getiriyor. Application Gateway, ön kapı ve CDN dahil olmak üzere tüm WAF türleriyle birlikte çalışarak, WAF türüne veya belirli bir WAF örneğine göre filtrelenebilir. ARM şablonu veya Galeri şablonu aracılığıyla içeri aktarın. Bu çalışma kitabını dağıtmak için bkz. [WAF çalışma kitabı](https://github.com/Azure/Azure-Network-Security/tree/master/Azure%20WAF/Azure%20Monitor%20Workbook).
 
-#### <a name="logging"></a>Günlüğe kaydetme
+#### <a name="logging"></a>Günlüğe Kaydetme
 
 WAF Application Gateway algıladığı her tehdit üzerinde ayrıntılı raporlama sağlar. Günlüğe kaydetme, Azure Tanılama günlükleriyle tümleşiktir. Uyarılar. JSON biçiminde kaydedilir. Bu Günlükler, [Azure izleyici günlükleri](../../azure-monitor/insights/azure-networking-analytics.md)ile tümleştirilebilir.
 

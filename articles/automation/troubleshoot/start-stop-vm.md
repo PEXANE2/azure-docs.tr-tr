@@ -2,19 +2,15 @@
 title: Azure Otomasyonu VM'leri çalışma saatleri dışında başlat/durdur sorunlarını giderme
 description: Bu makalede, VM'leri çalışma saatleri dışında başlat/durdur özelliğinin kullanımı sırasında oluşan sorunların nasıl giderileceği ve çözüleceği açıklanır.
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 04/04/2019
-ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: bb8fa53fa07d666693ae545c193faaf3d6d0a30c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.topic: troubleshooting
+ms.openlocfilehash: 763e1321556ade73778b82ea70926af21a83f7ec
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86187158"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896283"
 ---
 # <a name="troubleshoot-startstop-vms-during-off-hours-issues"></a>VM'leri çalışma saatleri dışında başlat/durdur sorunlarını giderme
 
@@ -154,7 +150,7 @@ Olası çözümler için aşağıdaki listeyi gözden geçirin:
 
 * VM 'Leri başlatmak ve durdurmak için, Otomasyon hesabının farklı çalıştır hesabı VM 'de uygun izinlere sahip olmalıdır. Bir kaynaktaki izinleri nasıl denetleyeceğinizi öğrenmek için bkz. [hızlı başlangıç: Azure Portal kullanarak bir kullanıcıya atanan rolleri görüntüleme](../../role-based-access-control/check-access.md). Farklı Çalıştır hesabı tarafından kullanılan hizmet sorumlusu için uygulama KIMLIĞINI sağlamanız gerekir. Azure portal Otomasyon hesabınıza giderek bu değeri alabilirsiniz. **Hesap ayarları** altında **Farklı Çalıştır hesapları** ' nı seçin ve uygun farklı çalıştır hesabını seçin.
 * VM 'de başlatma veya ayırmayı kaldırma konusunda bir sorun varsa, sanal makinenin kendisi üzerinde bir sorun olabilir. Örnekler, sanal makine kapanmaya çalışırken uygulanan bir güncelleştirmedir, askıda olan bir hizmet ve daha fazlasını sağlar. Günlüklerde hata olup olmadığını görmek için VM kaynağına gidin ve **etkinlik günlükleri** ' ne bakın. Ayrıca, olay günlüklerinde herhangi bir hata olup olmadığını görmek için VM 'de oturum açma girişiminde bulunabilir. VM 'nizin sorunlarını giderme hakkında daha fazla bilgi edinmek için bkz. [Azure sanal makinelerinde sorun giderme](../../virtual-machines/troubleshooting/index.yml).
-* Herhangi bir hata bulmak için [iş akışlarını](../automation-runbook-execution.md#job-statuses) denetleyin. Portalda Otomasyon hesabınıza gidin ve **Işlem Otomasyonu**altında **işler** ' i seçin.
+* Herhangi bir hata bulmak için [iş akışlarını](../automation-runbook-execution.md#job-statuses) denetleyin. Portalda Otomasyon hesabınıza gidin ve **Işlem Otomasyonu** altında **işler** ' i seçin.
 
 ## <a name="scenario-my-custom-runbook-fails-to-start-or-stop-my-vms"></a><a name="custom-runbook"></a>Senaryo: özel runbook sunucum sanal makinelerimi başlatamıyor veya durdurabilir
 
@@ -164,7 +160,7 @@ Olası çözümler için aşağıdaki listeyi gözden geçirin:
 
 ### <a name="cause"></a>Nedeni
 
-Hatanın pek çok nedeni olabilir. Azure portal Otomasyon hesabınıza gidin ve **Işlem Otomasyonu**altında **işler** ' i seçin. **İşler** sayfasından, iş başarısızlıklarını görüntülemek için Runbook 'ınızdan işler ' i arayın.
+Hatanın pek çok nedeni olabilir. Azure portal Otomasyon hesabınıza gidin ve **Işlem Otomasyonu** altında **işler** ' i seçin. **İşler** sayfasından, iş başarısızlıklarını görüntülemek için Runbook 'ınızdan işler ' i arayın.
 
 ### <a name="resolution"></a>Çözüm
 
@@ -189,7 +185,7 @@ Bu sorun, VM 'lerde hatalı etiketlemesinin oluşmasına neden olur.
 
 1. `sequencestart`Durumunuza bağlı olarak, başlatılacak veya durdurulmuş tüm VM 'lerin veya etiketine sahip olduğundan emin olun `sequencestop` . Bu etiketlerin değeri olarak pozitif bir tamsayı olması gerekir. VM 'Ler, bu değere göre artan sırada işlenir.
 1. Başlatılacak veya durdurulacak VM 'Ler için kaynak gruplarının, `External_Start_ResourceGroupNames` `External_Stop_ResourceGroupNames` durumunuza bağlı olarak veya değişkenlerinde olduğundan emin olun.
-1. **SequencedStartStop_Parent** `WHATIF` Değişikliklerinizi önizlemek için parametresi doğru olarak ayarlanmış SequencedStartStop_Parent runbook 'unu yürüterek yaptığınız değişiklikleri test edin.
+1.  `WHATIF` Değişikliklerinizi önizlemek için parametresi doğru olarak ayarlanmış SequencedStartStop_Parent runbook 'unu yürüterek yaptığınız değişiklikleri test edin.
 
 ## <a name="scenario-startstop-vms-during-off-hours-job-fails-with-403-forbidden-error"></a><a name="403"></a>Senaryo: VM'leri çalışma saatleri dışında başlat/durdur işi 403 Yasak hata ile başarısız oluyor
 
@@ -203,7 +199,7 @@ Bu sorun, yanlış yapılandırılmış veya zaman aşımına uğramamış farkl
 
 ### <a name="resolution"></a>Çözüm
 
-Farklı Çalıştır hesabınızın düzgün yapılandırıldığını doğrulamak için, Azure portal Otomasyon hesabınıza gidin ve **Hesap ayarları**altında **Farklı Çalıştır hesapları** ' nı seçin. Farklı Çalıştır hesabı yanlış yapılandırılmamışsa veya süre dolmuşsa, durum koşulu gösterir.
+Farklı Çalıştır hesabınızın düzgün yapılandırıldığını doğrulamak için, Azure portal Otomasyon hesabınıza gidin ve **Hesap ayarları** altında **Farklı Çalıştır hesapları** ' nı seçin. Farklı Çalıştır hesabı yanlış yapılandırılmamışsa veya süre dolmuşsa, durum koşulu gösterir.
 
 Farklı Çalıştır hesabınız yanlış yapılandırılmış ise, farklı çalıştır hesabınızı silin ve yeniden oluşturun. Daha fazla bilgi için bkz. [Azure Otomasyonu farklı çalıştır hesaplarını yönetme](../manage-runas-account.md).
 

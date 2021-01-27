@@ -4,12 +4,12 @@ description: Azure kaynaklarını faturalandırma ve yönetmeye göre düzenleme
 ms.topic: conceptual
 ms.date: 01/04/2021
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 3d1161eb99e1145c7a003326310db1922ec3d55c
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: fb93673b643fd13efe9ffea148c5fb1d072f9e05
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97881757"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896232"
 ---
 # <a name="use-tags-to-organize-your-azure-resources-and-management-hierarchy"></a>Azure kaynaklarınızı ve yönetim hiyerarşinizi düzenlemek için etiketleri kullanma
 
@@ -238,7 +238,7 @@ $subscription = (Get-AzSubscription -SubscriptionName "Example Subscription").Id
 Remove-AzTag -ResourceId "/subscriptions/$subscription"
 ```
 
-## <a name="azure-cli"></a>Azure CLI
+## <a name="azure-cli"></a>Azure CLI’si
 
 ### <a name="apply-tags"></a>Etiketleri Uygula
 
@@ -697,7 +697,7 @@ Kaynak grubuna veya aboneliğe uygulanan Etiketler kaynaklar tarafından devral�
 
 Etiketleri kullanarak faturalama verilerinizi gruplandırabilirsiniz. Örneğin, farklı organizasyonlar için birden çok sanal makine çalıştırıyorsanız, maliyet merkezine göre kullanımı gruplandırmak için etiketleri kullanın. Ayrıca etiketleri kullanarak, üretim ortamında çalışan sanal makineler için faturalama kullanımı gibi, maliyetleri çalışma zamanı ortamına göre kategorilere ayırabilirsiniz.
 
-[Azure Kaynak kullanımı ve ücret kartı API 'leri](../../cost-management-billing/manage/usage-rate-card-overview.md) veya kullanım virgülle ayrılmış değerler (CSV) dosyası aracılığıyla Etiketler hakkında bilgi alabilirsiniz. Kullanım dosyasını Azure portal indirebilirsiniz. Daha fazla bilgi için bkz. [Azure Faturalandırma faturanızı ve günlük kullanım verilerinizi indirme veya görüntüleme](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md). Kullanım dosyasını Azure Hesap Merkezi indirirken **sürüm 2**' yi seçin. İle etiketleri destekleyen hizmetler **için Etiketler, Etiketler sütununda görüntülenir** .
+Azure portal kullanılabilir bir virgülle ayrılmış değerler (CSV) dosyası olan kullanım dosyasını indirerek Etiketler hakkında bilgi alabilirsiniz. Daha fazla bilgi için bkz. [Azure Faturalandırma faturanızı ve günlük kullanım verilerinizi indirme veya görüntüleme](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md). Kullanım dosyasını Azure Hesap Merkezi indirirken **sürüm 2**' yi seçin. İle etiketleri destekleyen hizmetler **için Etiketler, Etiketler sütununda görüntülenir** .
 
 REST API işlemler için bkz. [Azure faturalandırma REST API başvurusu](/rest/api/billing/).
 

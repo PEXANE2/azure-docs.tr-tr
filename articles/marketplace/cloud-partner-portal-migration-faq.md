@@ -7,12 +7,12 @@ ms.topic: article
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: 8346edd0f6016f1751a392213e5d6321f875baf2
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 091feacceb510038786ae487c0895f9ff1e47aba
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96455650"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880347"
 ---
 # <a name="frequently-asked-questions-about-transitioning-from-the-cloud-partner-portal-to-partner-center"></a>Bulut İş Ortağı Portalı Iş ortağı merkezine geçiş hakkında sık sorulan sorular
 
@@ -77,17 +77,17 @@ Iş Ortağı Merkezi 'nde desteklenen teklif türleri için tüm teklifler, duru
 
 | Teklif türü <img src="" width=150px>| Iş Ortağı Merkezi 'ne taşındı mi? <img src="" width=100px>| Sonraki adımlar |
 | --- | --- | --- |
-| SaaS | Evet | Yeni teklifler oluşturmak ve Bulut İş Ortağı Portalı oluşturulan teklifleri yönetmek için Iş Ortağı Merkezi ' nde oturum açın. [Ticari Market için bir SaaS teklifi planlayın](plan-saas-offer.md)hakkında daha fazla bilgi edinin. |
-| Sanal Makine | Evet | Yeni teklifler oluşturmak ve Bulut İş Ortağı Portalı oluşturulan teklifleri yönetmek için Iş Ortağı Merkezi ' nde oturum açın. [Bir sanal makine teklifi planlayın](marketplace-virtual-machines.md)hakkında daha fazla bilgi edinin. |
-| Azure uygulaması | Evet | Yeni teklifler oluşturmak ve Bulut İş Ortağı Portalı oluşturulan teklifleri yönetmek için Iş Ortağı Merkezi ' nde oturum açın. [Azure Uygulama teklifi oluşturma](create-new-azure-apps-offer.md)hakkında daha fazla bilgi edinin. |
+| SaaS | Yes | Yeni teklifler oluşturmak ve Bulut İş Ortağı Portalı oluşturulan teklifleri yönetmek için Iş Ortağı Merkezi ' nde oturum açın. [Ticari Market için bir SaaS teklifi planlayın](plan-saas-offer.md)hakkında daha fazla bilgi edinin. |
+| Sanal Makine | Yes | Yeni teklifler oluşturmak ve Bulut İş Ortağı Portalı oluşturulan teklifleri yönetmek için Iş Ortağı Merkezi ' nde oturum açın. [Bir sanal makine teklifi planlayın](marketplace-virtual-machines.md)hakkında daha fazla bilgi edinin. |
+| Azure uygulaması | Yes | Yeni teklifler oluşturmak ve Bulut İş Ortağı Portalı oluşturulan teklifleri yönetmek için Iş Ortağı Merkezi ' nde oturum açın. [Azure Uygulama teklifi oluşturma](create-new-azure-apps-offer.md)hakkında daha fazla bilgi edinin. |
 | Dynamics 365 Business Central | Evet | Yeni teklifler oluşturmak ve Bulut İş Ortağı Portalı oluşturulan teklifleri yönetmek için Iş Ortağı Merkezi ' nde oturum açın. [Dynamics 365 Iş Merkezi teklifi oluşturma](partner-center-portal/create-new-business-central-offer.md)hakkında daha fazla bilgi edinin. |
-| PowerApps & müşteri katılımı için Dynamics 365 | Evet | Yeni teklifler oluşturmak ve Bulut İş Ortağı Portalı oluşturulan teklifleri yönetmek için Iş Ortağı Merkezi ' nde oturum açın. Daha fazla bilgi edinmek [Için Dynamics 365 for Customer Engagement & PowerApps teklifini oluşturun](partner-center-portal/create-new-customer-engagement-offer.md). |
-| Dynamics 365 for Operations | Evet | Yeni teklifler oluşturmak ve Bulut İş Ortağı Portalı oluşturulan teklifleri yönetmek için Iş Ortağı Merkezi ' nde oturum açın. [Dynamics 365 for Operations teklifini oluşturma](partner-center-portal/create-new-operations-offer.md)hakkında daha fazla bilgi edinin. |
-| Power BI App | Evet | Yeni teklifler oluşturmak ve Bulut İş Ortağı Portalı oluşturulan teklifleri yönetmek için Iş Ortağı Merkezi ' nde oturum açın. [AppSource için Power BI uygulaması oluşturma](partner-center-portal/create-power-bi-app-offer.md)hakkında daha fazla bilgi edinin. |
-| IoT Edge modülü | Evet | Yeni teklifler oluşturmak ve Bulut İş Ortağı Portalı oluşturulan teklifleri yönetmek için Iş Ortağı Merkezi ' nde oturum açın. [Azure Marketi 'nde IoT Edge modül teklifi oluşturma, yapılandırma ve yayımlama](partner-center-portal/azure-iot-edge-module-creation.md)hakkında daha fazla bilgi edinin. |
-| Kapsayıcı | Evet | Yeni teklifler oluşturmak ve Bulut İş Ortağı Portalı oluşturulan teklifleri yönetmek için Iş Ortağı Merkezi ' nde oturum açın. [Azure Container teklifi oluşturma](./create-azure-container-offer.md)hakkında daha fazla bilgi edinin. |
-| Danışmanlık Hizmetleri | Evet | Yeni teklifler oluşturmak ve Bulut İş Ortağı Portalı oluşturulan teklifleri yönetmek için Iş Ortağı Merkezi ' nde oturum açın. [Danışmanlık hizmeti teklifi oluşturma](./create-consulting-service-offer.md)hakkında daha fazla bilgi edinin. |
-| Yönetilen hizmet | Evet | Yeni teklifler oluşturmak ve Bulut İş Ortağı Portalı oluşturulan teklifleri yönetmek için Iş Ortağı Merkezi ' nde oturum açın. [Yönetilen hizmet teklifi oluşturma](partner-center-portal/create-new-managed-service-offer.md)hakkında daha fazla bilgi edinin. |
+| PowerApps & müşteri katılımı için Dynamics 365 | Yes | Yeni teklifler oluşturmak ve Bulut İş Ortağı Portalı oluşturulan teklifleri yönetmek için Iş Ortağı Merkezi ' nde oturum açın. Daha fazla bilgi edinmek [Için Dynamics 365 for Customer Engagement & PowerApps teklifini oluşturun](partner-center-portal/create-new-customer-engagement-offer.md). |
+| Dynamics 365 for Operations | Yes | Yeni teklifler oluşturmak ve Bulut İş Ortağı Portalı oluşturulan teklifleri yönetmek için Iş Ortağı Merkezi ' nde oturum açın. [Dynamics 365 for Operations teklifini oluşturma](partner-center-portal/create-new-operations-offer.md)hakkında daha fazla bilgi edinin. |
+| Power BI App | Yes | Yeni teklifler oluşturmak ve Bulut İş Ortağı Portalı oluşturulan teklifleri yönetmek için Iş Ortağı Merkezi ' nde oturum açın. [AppSource için Power BI uygulaması oluşturma](partner-center-portal/create-power-bi-app-offer.md)hakkında daha fazla bilgi edinin. |
+| IoT Edge modülü | Yes | Yeni teklifler oluşturmak ve Bulut İş Ortağı Portalı oluşturulan teklifleri yönetmek için Iş Ortağı Merkezi ' nde oturum açın. [Azure Marketi 'nde IoT Edge modül teklifi oluşturma, yapılandırma ve yayımlama](partner-center-portal/azure-iot-edge-module-creation.md)hakkında daha fazla bilgi edinin. |
+| Kapsayıcı | Yes | Yeni teklifler oluşturmak ve Bulut İş Ortağı Portalı oluşturulan teklifleri yönetmek için Iş Ortağı Merkezi ' nde oturum açın. [Azure Container teklifi oluşturma](./create-azure-container-offer.md)hakkında daha fazla bilgi edinin. |
+| Danışmanlık Hizmetleri | Yes | Yeni teklifler oluşturmak ve Bulut İş Ortağı Portalı oluşturulan teklifleri yönetmek için Iş Ortağı Merkezi ' nde oturum açın. [Danışmanlık hizmeti teklifi oluşturma](./create-consulting-service-offer.md)hakkında daha fazla bilgi edinin. |
+| Yönetilen hizmet | Yes | Yeni teklifler oluşturmak ve Bulut İş Ortağı Portalı oluşturulan teklifleri yönetmek için Iş Ortağı Merkezi ' nde oturum açın. [Yönetilen hizmet teklifi oluşturma](./plan-managed-service-offer.md)hakkında daha fazla bilgi edinin. |
 | Dynamics NAV yönetilen hizmeti | Hayır | Microsoft Dynamics NAV yönetilen hizmetini [dynamics 365 Business Central](/dynamics365/business-central/)'a geliştirmiştir. bu nedenle, appsource 'TAN Dynamics NAV yönetilen hizmet canlı teklifleri de listelenmiştir. Bu teklifler artık müşteriler tarafından keşfedilemez ve Iş Ortağı Merkezi 'ne taşınmadı. Tekliflerinizi AppSource 'ta kullanılabilir hale getirmek için bunları Dynamics 365 Iş Merkezi teklifleridir ve [Iş Ortağı Merkezi](https://partner.microsoft.com/)'nde gönderebilirsiniz. [Dynamics 365 Iş Merkezi teklifi oluşturma](partner-center-portal/create-new-business-central-offer.md)hakkında daha fazla bilgi edinin. |
 | Cortana Intelligence | Hayır | Microsoft, Cortana Intelligence için ürün yol haritasını geliştirmiştir, bu nedenle AppSource 'tan canlı tekliflerle Cortana Intelligence listeliyoruz. Bu teklifler artık müşteriler tarafından keşfedilemez ve Iş Ortağı Merkezi 'ne taşınmadı. Tekliflerinizi ticari Market 'te kullanılabilir hale getirmek için, tekliflerinizi hizmet olarak yazılım (SaaS) teklifleri ile uyarlayın ve [Iş Ortağı Merkezi](https://partner.microsoft.com/)'ne gönderebilirsiniz. [Iş Ortağı Merkezi 'Nde SaaS teklifi oluşturma denetim listesi](./plan-saas-offer.md)hakkında daha fazla bilgi edinin. |
 

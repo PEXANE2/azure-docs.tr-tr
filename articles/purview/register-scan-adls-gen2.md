@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/17/2020
-ms.openlocfilehash: 0232682661387e635e6ce8bfb5fc6e03301d130c
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: 4b7f71b5405708cc1988fafa5ca9c4628fe0d80b
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97694804"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98882408"
 ---
 # <a name="register-and-scan-azure-data-lake-storage-gen2"></a>Kaydet ve Tara Azure Data Lake Storage 2.
 
@@ -44,11 +44,11 @@ Bağlantıyı kurmak için **yönetilen kimlik**' i seçtiğinizde, önce purvie
 
 1. ADLS 2. depolama hesabınıza gidin.
 1. Sol gezinti menüsünden **Access Control (IAM)** seçeneğini belirleyin. 
-1. **+ Ekle** öğesini seçin.
+1. **+ Ekle**'yi seçin.
 1. **Rolü** **Depolama Blobu veri okuyucusu** olarak ayarlayın ve giriş kutusunu **seçin** altında Azure purview hesabınızın adını girin. Ardından, bu rol atamasını purview hesabınıza vermek için **Kaydet** ' i seçin.
 
 > [!Note]
-> Daha fazla ayrıntı için lütfen [Azure Active Directory kullanarak bloblara ve kuyruklara erişim yetkisi verme](https://docs.microsoft.com/azure/storage/common/storage-auth-aad) adımları bölümüne bakın
+> Daha fazla ayrıntı için lütfen [Azure Active Directory kullanarak bloblara ve kuyruklara erişim yetkisi verme](../storage/common/storage-auth-aad.md) adımları bölümüne bakın
 
 #### <a name="account-key"></a>Hesap anahtarı
 
@@ -94,7 +94,7 @@ Hizmet sorumlusunun uygulama KIMLIĞI ve gizli anahtarı almak için gereklidir:
 
 1. Depolama hesabınıza gidin.
 1. Sol gezinti menüsünden **Access Control (IAM)** seçeneğini belirleyin. 
-1. **+ Ekle** öğesini seçin.
+1. **+ Ekle**'yi seçin.
 1. **Rolü** **Depolama Blobu veri okuyucusu** olarak ayarlayın ve giriş kutusunu **seçin** altında hizmet asıl adınızı veya nesne kimliğinizi girin. Ardından, bu rol için hizmet sorumlusu atamasını sağlamak üzere **Kaydet** ' i seçin.
 ### <a name="firewall-settings"></a>Güvenlik duvarı ayarları
 

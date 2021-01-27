@@ -10,12 +10,12 @@ ms.date: 05/04/2020
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurecli
 ms.reviewer: akjosh
-ms.openlocfilehash: 22609465abfa0cbf30165bc9327d786b3244357e
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 956e7c18deb597f6347dfd5dfdca99709a7052a0
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844787"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880986"
 ---
 # <a name="tutorial-create-a-custom-image-of-an-azure-vm-with-the-azure-cli"></a>Öğretici: Azure CLI ile bir Azure VM'nin özel görüntüsünü oluşturma
 
@@ -35,7 +35,7 @@ CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu öğreticide, Az
 
 ## <a name="overview"></a>Genel Bakış
 
-[Paylaşılan görüntü Galerisi](shared-image-galleries.md) , kuruluşunuz genelinde özel görüntü paylaşımını basitleştirir. Özel görüntüler market görüntüleri gibidir, ancak bunları kendiniz oluşturursunuz. Özel görüntüler, uygulamaları, uygulama yapılandırmalarını ve diğer işletim sistemi yapılandırmalarını önceden yükleme gibi yapılandırmaları önyüklemek için kullanılabilir. 
+[Paylaşılan görüntü Galerisi](../shared-image-galleries.md) , kuruluşunuz genelinde özel görüntü paylaşımını basitleştirir. Özel görüntüler market görüntüleri gibidir, ancak bunları kendiniz oluşturursunuz. Özel görüntüler, uygulamaları, uygulama yapılandırmalarını ve diğer işletim sistemi yapılandırmalarını önceden yükleme gibi yapılandırmaları önyüklemek için kullanılabilir. 
 
 Paylaşılan görüntü Galerisi, özel VM görüntülerinizi başkalarıyla paylaşmanıza olanak sağlar. Hangi görüntüleri paylaşmak istediğinizi, içinde hangi bölgelerin kullanılabilir olmasını istediğinizi ve bunları ile paylaşmak istediğinizi seçin. 
 
@@ -90,11 +90,11 @@ Görüntü tanımları görüntüler için bir mantıksal gruplama oluşturur. B
 
 Görüntü tanımı adları büyük veya küçük harflerden, rakamlardan, noktalardan, çizgilerden ve noktalardan oluşabilir. 
 
-Bir görüntü tanımı için belirtebileceğiniz değerler hakkında daha fazla bilgi için bkz. [görüntü tanımları](./shared-image-galleries.md#image-definitions).
+Bir görüntü tanımı için belirtebileceğiniz değerler hakkında daha fazla bilgi için bkz. [görüntü tanımları](../shared-image-galleries.md#image-definitions).
 
 Galeride [az Sig Image-Definition Create](/cli/azure/sig/image-definition#az-sig-image-definition-create)kullanarak bir görüntü tanımı oluşturun. 
 
-Bu örnekte, görüntü tanımı *Myımagedefinition* olarak adlandırılır ve [özelleştirilmiş](./shared-image-galleries.md#generalized-and-specialized-images) bir Linux işletim sistemi görüntüsü içindir. 
+Bu örnekte, görüntü tanımı *Myımagedefinition* olarak adlandırılır ve [özelleştirilmiş](../shared-image-galleries.md#generalized-and-specialized-images) bir Linux işletim sistemi görüntüsü içindir. 
 
 ```azurecli-interactive 
 az sig image-definition create \
@@ -180,7 +180,7 @@ Azure RBAC kullanarak kaynakları paylaşma hakkında daha fazla bilgi için bkz
 
 ## <a name="azure-image-builder"></a>Azure Görüntü Oluşturucusu
 
-Azure Ayrıca, Packer, [Azure VM Image Builder](./image-builder-overview.md)üzerine inşa olan bir hizmet sunar. Özelleştirmeleri bir şablonda açıklamanız yeterlidir ve görüntü oluşturma işleme alınacaktır. 
+Azure Ayrıca, Packer, [Azure VM Image Builder](../image-builder-overview.md)üzerine inşa olan bir hizmet sunar. Özelleştirmeleri bir şablonda açıklamanız yeterlidir ve görüntü oluşturma işleme alınacaktır. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

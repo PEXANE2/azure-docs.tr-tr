@@ -7,12 +7,12 @@ ms.service: stream-analytics
 ms.topic: tutorial
 ms.custom: mvc, devx-track-csharp
 ms.date: 01/27/2020
-ms.openlocfilehash: ffc056a97d3c0fd14bab186614015a9352a34077
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 74e09e61a6132858d716686bdb6687bb670f0d33
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98015156"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879519"
 ---
 # <a name="tutorial-run-azure-functions-from-azure-stream-analytics-jobs"></a>Öğretici: Azure Stream Analytics işlerden Azure Işlevleri çalıştırma 
 
@@ -53,7 +53,7 @@ Bir olay hub’ı oluşturmak, olay oluşturucu uygulamasını başlamak ve bir 
 
 ## <a name="create-a-function-in-azure-functions-that-can-write-data-to-azure-cache-for-redis"></a>Azure Işlevlerinde Redsıs için Azure önbelleğine veri yazabilmesi için bir işlev oluşturma
 
-1. İşlevler belgesinin [İşlev uygulaması oluşturma](../azure-functions/functions-create-first-azure-function.md#create-a-function-app) bölümüne bakın. Bu bölümde, CSharp dilini kullanarak Azure Işlevlerinde bir işlev uygulaması ve [http ile tetiklenen bir işlev](../azure-functions/functions-create-first-azure-function.md#create-function)oluşturma işlemi adım adım açıklanmaktadır.  
+1. İşlevler belgesinin [İşlev uygulaması oluşturma](../azure-functions/functions-get-started.md) bölümüne bakın. Bu bölümde, CSharp dilini kullanarak Azure Işlevlerinde bir işlev uygulaması ve [http ile tetiklenen bir işlev](../azure-functions/functions-get-started.md)oluşturma işlemi adım adım açıklanmaktadır.  
 
 2. **run.csx** işlevine göz atın. Aşağıdaki kodla güncelleştirin. **" \<your Azure Cache for Redis connection string goes here\> "** Değerini, önceki bölümde aldığınız redo birincil bağlantı dizesi için Azure önbelleği ile değiştirin. 
 

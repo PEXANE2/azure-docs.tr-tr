@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: 404999cfac5037702eb61fdf74b2c5245ce9eb30
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: cf0b5d29e0dc375a07fe024ef0763c8200275055
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95526128"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880717"
 ---
 # <a name="performance-tiers-for-block-blob-storage"></a>Blok blobu depolaması için performans katmanları
 
@@ -65,7 +65,7 @@ Standart performans, verileri en düşük maliyetli şekilde depolamak için far
 
 Mevcut bir standart performans depolama hesabını Premium performansa sahip bir blok BLOB depolama hesabına dönüştüremezsiniz. Premium performans depolama hesabına geçiş yapmak için bir BlockBlobStorage hesabı oluşturmanız ve verileri yeni hesaba geçirmeniz gerekir. Daha fazla bilgi için bkz. [blok Blobstorage hesabı oluşturma](storage-blob-create-account-block-blob.md).
 
-Blob 'ları depolama hesapları arasında kopyalamak için [AzCopy](../common/storage-use-azcopy-blobs.md) komut satırı aracının en son sürümünü kullanabilirsiniz. Azure Data Factory gibi diğer araçlar da veri taşıma ve dönüştürme için de kullanılabilir.
+Blob 'ları depolama hesapları arasında kopyalamak için [AzCopy](../common/storage-use-azcopy-v10.md#transfer-data) komut satırı aracının en son sürümünü kullanabilirsiniz. Azure Data Factory gibi diğer araçlar da veri taşıma ve dönüştürme için de kullanılabilir.
 
 ## <a name="blob-lifecycle-management"></a>Blob yaşam döngüsü yönetimi
 

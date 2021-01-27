@@ -3,17 +3,17 @@ title: Azure IoT Hub cihaz sağlama hizmeti ile özel ayırma ilkeleri
 description: Azure IoT Hub cihaz sağlama hizmeti (DPS) ile özel ayırma ilkeleri kullanma
 author: wesmc7777
 ms.author: wesmc
-ms.date: 11/14/2019
+ms.date: 01/26/2021
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 26615b82bb9dcbc1247bec9b7a06b579dfa1eb2b
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 4931258af0dd50d091bec98824df5da0e91dbf53
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96571649"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895765"
 ---
 # <a name="how-to-use-custom-allocation-policies"></a>Özel ayırma ilkeleri kullanma
 
@@ -66,7 +66,7 @@ Bu bölümde, **contoso Toalar bölümünü** ve **contoso ısı pumps bölümü
     az group create --name contoso-us-resource-group --location westus
     ```
 
-2. [Az IoT DPS Create](/cli/azure/iot/dps#az-iot-dps-create) komutuyla bir cihaz sağlama hizmeti oluşturmak için Azure Cloud Shell kullanın. Sağlama hizmeti *contoso-US-Resource-Group*' a eklenecektir.
+2. [Az IoT DPS Create](/cli/azure/iot/dps#az-iot-dps-create) komutuyla bir cihaz sağlama HIZMETI (DPS) oluşturmak için Azure Cloud Shell kullanın. Sağlama hizmeti *contoso-US-Resource-Group*' a eklenecektir.
 
     Aşağıdaki örnek, *westus* konumunda *contoso-sağlama-Service-1098* adlı bir sağlama hizmeti oluşturur. Benzersiz bir hizmet adı kullanmanız gerekir. Hizmet adında **1098** yerine kendi son ekini oluşturun.
 
@@ -96,11 +96,30 @@ Bu bölümde, **contoso Toalar bölümünü** ve **contoso ısı pumps bölümü
 
     Bu komutun tamamlanması birkaç dakika sürebilir.
 
+5. IoT Hub 'ları, DPS kaynağıyla bağlantılı olmalıdır. 
+
+    Az önce oluşturduğunuz hubların bağlantı dizelerini almak için aşağıdaki iki komutu çalıştırın:
+
+    ```azurecli-interactive 
+    hubToastersConnectionString=$(az iot hub connection-string show --hub-name contoso-toasters-hub-1098 --key primary --query connectionString -o tsv)
+    hubHeatpumpsConnectionString=$(az iot hub connection-string show --hub-name contoso-heatpumps-hub-1098 --key primary --query connectionString -o tsv)
+    ```
+
+    Hub 'ları DPS kaynağına bağlamak için aşağıdaki komutları çalıştırın:
+
+    ```azurecli-interactive 
+    az iot dps linked-hub create --dps-name contoso-provisioning-service-1098 --resource-group contoso-us-resource-group --connection-string $hubToastersConnectionString --location westus
+    az iot dps linked-hub create --dps-name contoso-provisioning-service-1098 --resource-group contoso-us-resource-group --connection-string $hubHeatpumpsConnectionString --location westus
+    ```
+
+
+
+
 ## <a name="create-the-custom-allocation-function"></a>Özel ayırma işlevini oluşturma
 
 Bu bölümde, özel ayırma ilkenizi uygulayan bir Azure işlevi oluşturacaksınız. Bu işlev, kayıt KIMLIĞI **-contoso-tstrsd-007** veya **-contoso-hpsd-088** dizesini içerip içermediğini temel alarak bir cihazın ne kadar kolay bir şekilde kaydedilmesi gerektiğini belirler. Ayrıca, cihazın bir Toaster veya ısı göndericisi olup olmadığına bağlı olarak cihaz ikizi başlangıç durumunu da ayarlar.
 
-1. [Azure portalda](https://portal.azure.com) oturum açın. Giriş sayfanızda **+ kaynak oluştur**' u seçin.
+1. [Azure portalında](https://portal.azure.com) oturum açın. Giriş sayfanızda **+ kaynak oluştur**' u seçin.
 
 2. Market aramasını *Ara* kutusuna "işlev uygulaması" yazın. Aşağı açılan listeden **işlev uygulaması**' yi seçin ve ardından **Oluştur**' u seçin.
 
@@ -114,6 +133,8 @@ Bu bölümde, özel ayırma ilkenizi uygulayan bir Azure işlevi oluşturacaksı
 
     **Çalışma zamanı yığını**: açılan listeden **.NET Core** ' u seçin.
 
+    **Sürüm**: açılan listeden **3,1** ' u seçin.
+
     **Bölge**: kaynak grubağınız ile aynı bölgeyi seçin. Bu örnek **Batı ABD** kullanır.
 
     > [!NOTE]
@@ -123,19 +144,15 @@ Bu bölümde, özel ayırma ilkenizi uygulayan bir Azure işlevi oluşturacaksı
 
 4. İşlev uygulamasını oluşturmak için **Özet** sayfasında **Oluştur** ' u seçin. Dağıtım birkaç dakika sürebilir. Tamamlandığında **Kaynağa Git**' i seçin.
 
-5. İşlev uygulamasına **genel bakış** sayfasının sol bölmesinde, **+** Yeni bir Işlev eklemek için **işlevler** ' in ileri ' yi seçin.
+5. İşlev uygulamasına **genel bakış** sayfasının sol bölmesinde **işlevler** ' e tıklayın ve ardından yeni bir Işlev eklemek için **+ Ekle** ' ye tıklayın.
 
-    ![İşlev Uygulaması bir işlev ekleyin](./media/how-to-use-custom-allocation-policies/create-function.png)
+6. **Işlev Ekle** sayfasında **http tetikleyicisi**' ne ve ardından **Ekle** düğmesine tıklayın.
 
-6. **.Net Için Azure işlevleri-Başlarken** sayfasında, **bir dağıtım ortamı Seç** adımı için **Portal içi** kutucuğunu seçin ve ardından **devam**' ı seçin.
+7. Sonraki sayfada, **kod + test**' e tıklayın. Bu, **HttpTrigger1** adlı işlev için kodu düzenlemenizi sağlar. **Run. CSX** kod dosyası düzenlenmek için açılmalıdır.
 
-    ![Portal geliştirme ortamını seçin](./media/how-to-use-custom-allocation-policies/function-choose-environment.png)
+8. Gerekli NuGet paketlerine başvur. İlk cihaz ikizi oluşturmak için, özel ayırma işlevi barındırma ortamına yüklenmesi gereken iki NuGet paketinde tanımlanan sınıfları kullanır. Azure Işlevleri ile, NuGet paketlerine bir *function. proj* dosyası kullanılarak başvurulur. Bu adımda, gerekli derlemeler için bir *function. proj* dosyasını kaydedip karşıya yüklersiniz.  Daha fazla bilgi için bkz. [Azure işlevleri Ile NuGet paketlerini kullanma](../azure-functions/functions-reference-csharp.md#using-nuget-packages).
 
-7. Bir sonraki sayfada, **Işlev oluşturma** adımı Için **Web kancası + API** kutucuğunu seçin ve ardından **Oluştur**' u seçin. **HttpTrigger1** adlı bir işlev oluşturulur ve Portal **Run. CSX** kod dosyasının içeriğini görüntüler.
-
-8. Gerekli NuGet paketlerine başvur. İlk cihaz ikizi oluşturmak için, özel ayırma işlevi barındırma ortamına yüklenmesi gereken iki NuGet paketinde tanımlanan sınıfları kullanır. Azure Işlevleri ile, NuGet paketlerine bir *function. Host* dosyası kullanılarak başvurulur. Bu adımda, bir *işlev. ana bilgisayar* dosyasını kaydedip karşıya yüklersiniz.
-
-    1. Aşağıdaki satırları en sevdiğiniz düzenleyiciye kopyalayın ve dosyayı bilgisayarınıza *function. Host* olarak kaydedin.
+    1. Aşağıdaki satırları en sevdiğiniz düzenleyiciye kopyalayın ve dosyayı bilgisayarınıza *function. proj* olarak kaydedin.
 
         ```xml
         <Project Sdk="Microsoft.NET.Sdk">  
@@ -143,21 +160,15 @@ Bu bölümde, özel ayırma ilkenizi uygulayan bir Azure işlevi oluşturacaksı
                 <TargetFramework>netstandard2.0</TargetFramework>  
             </PropertyGroup>  
             <ItemGroup>  
-                <PackageReference Include="Microsoft.Azure.Devices.Provisioning.Service" Version="1.5.0" />  
-                <PackageReference Include="Microsoft.Azure.Devices.Shared" Version="1.16.0" />  
+                <PackageReference Include="Microsoft.Azure.Devices.Provisioning.Service" Version="1.16.3" />
+                <PackageReference Include="Microsoft.Azure.Devices.Shared" Version="1.27.0" />
             </ItemGroup>  
         </Project>
         ```
 
-    2. **HttpTrigger1** işlevinde, pencerenin sağ tarafındaki **dosyaları görüntüle** sekmesini genişletin.
+    2. *Function. proj* dosyanızı karşıya yüklemek için kod Düzenleyicisi 'nin üzerinde bulunan **karşıya yükle** düğmesine tıklayın. Karşıya yükledikten sonra, içeriği doğrulamak için açılan kutuyu kullanarak kod düzenleyicisinde dosyayı seçin.
 
-        ![Görünüm dosyalarını aç](./media/how-to-use-custom-allocation-policies/function-open-view-files.png)
-
-    3. **Karşıya yükle**' yi seçin, **function. proj** dosyasına gidin ve dosyayı karşıya yüklemek için **Aç** ' ı seçin.
-
-        ![Karşıya dosya yükle ' yi seçin](./media/how-to-use-custom-allocation-policies/function-choose-upload-file.png)
-
-9. **HttpTrigger1** işlevi için kodu aşağıdaki kodla değiştirin ve **Kaydet**' i seçin:
+9. Kod düzenleyicisinde **HttpTrigger1** için *Run. CSX* ' in seçildiğinden emin olun. **HttpTrigger1** işlevi için kodu aşağıdaki kodla değiştirin ve **Kaydet**' i seçin:
 
     ```csharp
     #r "Newtonsoft.Json"
@@ -314,29 +325,15 @@ Bu bölümde, özel ayırma ilkesini kullanan yeni bir kayıt grubu oluşturacak
 
     **Cihazları hub 'lara nasıl atamak Istediğinizi seçin**: özel ' i seçin **(Azure işlevi kullanın)**.
 
+    **Abonelik**: Azure işlevinizi oluşturduğunuz aboneliği seçin.
+
+    **İşlev uygulaması**: işlev uygulamanızı ada göre seçin. **contoso-Function-App-1098** Bu örnekte kullanılmıştır.
+
+    **İşlev**: **HttpTrigger1** işlevini seçin.
+
     ![Simetrik anahtar kanıtlama için özel ayırma kayıt grubu ekleme](./media/how-to-use-custom-allocation-policies/create-custom-allocation-enrollment.png)
 
-4. Yeni bir IoT Hub 'ınızı bağlamak için **kayıt grubu Ekle**' ye **Yeni bir IoT Hub 'ı bağla** ' yı seçin.
-
-    Bu adımı, her iki sizin de IoT Hub 'larınız için yürütün.
-
-    **Abonelik**: birden fazla aboneliğiniz varsa, daha fazla IoT Hub 'ını oluşturduğunuz aboneliği seçin.
-
-    **IoT Hub**: oluşturduğunuz bir veya daha fazla hub 'dan birini seçin.
-
-    **Erişim ilkesi**: **ıothubowner** öğesini seçin.
-
-    ![Kaynak IoT Hub 'larını sağlama hizmeti ile bağlama](./media/how-to-use-custom-allocation-policies/link-divisional-hubs.png)
-
-5. **Kayıt grubu Ekle** sayfasında, her Iki bir IoT Hub 'ı bağlantısı kurulduktan sonra, bunları aşağıda gösterildiği gibi kayıt grubu için IoT Hub grubu olarak seçmeniz gerekir:
-
-    ![Kayıt için DivisionaL hub grubunu oluşturma](./media/how-to-use-custom-allocation-policies/enrollment-divisional-hub-group.png)
-
-6. **Kayıt grubu Ekle** sayfasında, **Azure işlevi seçin** bölümüne gidin, önceki bölümde oluşturduğunuz işlev uygulamasını seçin. Ardından, oluşturduğunuz işlevi seçin ve kayıt grubunu kaydetmek için Kaydet ' i seçin.
-
-    ![İşlevi seçin ve kayıt grubunu kaydedin](./media/how-to-use-custom-allocation-policies/save-enrollment.png)
-
-7. Kayıt kaydedildikten sonra yeniden açın ve **birincil anahtarı** bir yere getirin. Anahtarların oluşturulması için önce kaydı kaydetmelisiniz. Bu anahtar, daha sonra sanal cihazlar için benzersiz cihaz anahtarları oluşturmak üzere kullanılacaktır.
+4. Kayıt kaydedildikten sonra yeniden açın ve **birincil anahtarı** bir yere getirin. Anahtarların oluşturulması için önce kaydı kaydetmelisiniz. Bu anahtar, daha sonra sanal cihazlar için benzersiz cihaz anahtarları oluşturmak üzere kullanılacaktır.
 
 ## <a name="derive-unique-device-keys"></a>Benzersiz cihaz anahtarları türet
 
@@ -386,7 +383,7 @@ Windows tabanlı bir iş istasyonu kullanıyorsanız, aşağıdaki örnekte gös
     $REG_ID2='mainbuilding167-contoso-hpsd-088'
 
     $hmacsha256 = New-Object System.Security.Cryptography.HMACSHA256
-    $hmacsha256.key = [Convert]::FromBase64String($key)
+    $hmacsha256.key = [Convert]::FromBase64String($KEY)
     $sig1 = $hmacsha256.ComputeHash([Text.Encoding]::ASCII.GetBytes($REG_ID1))
     $sig2 = $hmacsha256.ComputeHash([Text.Encoding]::ASCII.GetBytes($REG_ID2))
     $derivedkey1 = [Convert]::ToBase64String($sig1)

@@ -10,12 +10,12 @@ ms.author: peterlu
 ms.date: 06/28/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: be2921f88ad2ecf88c555daf8385f1bd6733e836
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 70f5e17c4cc42201e9aa3d36c9937f6ceb9527d0
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94554024"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880212"
 ---
 # <a name="transform-data-in-azure-machine-learning-designer"></a>Azure Machine Learning tasarımcısında veri dönüştürme
 
@@ -52,11 +52,7 @@ Bu bölümde, örnek veri kümesini içeri aktarmayı ve verileri ABD ve ABD dı
 
 1. **Yetişkin Census gelir ikili sınıflandırma** veri kümesini tuvale sürükleyip bırakın.
 
-1. **Yetişkinlere yönelik gelir** veri kümesi modülünü seçin.
-
-1. Tuvalin sağında görüntülenen Ayrıntılar bölmesinde, **çıktılar** ' i seçin.
-
-1. Görselleştir simgesini seçin ![Görselleştir simgesi](media/how-to-designer-transform-data/visualize-icon.png).
+1. **Yetişkinlere yönelik gelir** veri kümesi modülüne sağ tıklayın ve   >  **veri kümesi çıkışını** görselleştirin ' i seçin
 
 1. Veri kümesini araştırmak için veri önizleme penceresini kullanın. "Yerel-ülke" sütun değerlerini göz önünde edin.
 
@@ -103,13 +99,13 @@ Bu bölümde, "yerel-ülke" sütununda "Birleşik Devletler" içeren satırları
 
 1. Tuvalin sağ tarafındaki modül ayrıntıları bölmesinde, aşağıdaki seçenekleri ayarlayın:
     
-    **Veri deposu türü** : Azure Blob depolama
+    **Veri deposu türü**: Azure Blob depolama
 
-    **Veri deposu** : mevcut bir veri deposunu seçin veya Şimdi bir tane oluşturmak Için "yeni veri deposu" seçeneğini belirleyin
+    **Veri deposu**: mevcut bir veri deposunu seçin veya Şimdi bir tane oluşturmak Için "yeni veri deposu" seçeneğini belirleyin
 
-    **Yol** : `/data/us-income`
+    **Yol**: `/data/us-income`
 
-    **Dosya biçimi** : CSV
+    **Dosya biçimi**: CSV
 
     > [!NOTE]
     > Bu makalede, geçerli Azure Machine Learning çalışma alanına kayıtlı bir veri deposuna erişiminizin olduğu varsayılır. Bir veri deposu ayarlama hakkında yönergeler için bkz. [Azure Storage Services 'A bağlanma](how-to-connect-data-ui.md#create-datastores).
@@ -120,13 +116,13 @@ Bu bölümde, "yerel-ülke" sütununda "Birleşik Devletler" içeren satırları
 
 1. Tuvalin sağ tarafındaki modül ayrıntıları bölmesinde, aşağıdaki seçenekleri ayarlayın:
     
-    **Veri deposu türü** : Azure Blob depolama
+    **Veri deposu türü**: Azure Blob depolama
 
-    **Veri deposu** : Yukarıdaki ile aynı veri deposunu seçin
+    **Veri deposu**: Yukarıdaki ile aynı veri deposunu seçin
 
-    **Yol** : `/data/non-us-income`
+    **Yol**: `/data/non-us-income`
 
-    **Dosya biçimi** : CSV
+    **Dosya biçimi**: CSV
 
 1. **Bölünmüş verilerin** sol bağlantı noktasına bağlı **dışarı aktarma veri** modülünün **yolu** olduğunu doğrulayın `/data/us-income` .
 
@@ -140,7 +136,7 @@ Bu bölümde, "yerel-ülke" sütununda "Birleşik Devletler" içeren satırları
 
 İşlem hattınızda verileri bölüye ve dışarı aktarmaya yönelik bir işlem hattı çalıştırması gönderilir.
 
-1. Tuvalin üst kısmında **Gönder** ' i seçin.
+1. Tuvalin üst kısmında **Gönder**' i seçin.
 
 1. İşlem **hattı çalıştırmasını ayarla** iletişim kutusunda **Yeni oluştur** ' u seçerek bir deneme oluşturun.
 
@@ -148,7 +144,7 @@ Bu bölümde, "yerel-ülke" sütununda "Birleşik Devletler" içeren satırları
 
 1. "Split-Census-Data" gibi açıklayıcı bir deneme adı sağlayın.
 
-1. **Gönder** ’i seçin.
+1. **Gönder**’i seçin.
 
 ## <a name="view-results"></a>Sonuçları görüntüleme
 
@@ -156,13 +152,13 @@ Bu bölümde, "yerel-ülke" sütununda "Birleşik Devletler" içeren satırları
 
 1. **Bölünmüş veri** modülünü seçin.
 
-1. Tuvalin sağ tarafındaki modül ayrıntıları bölmesinde, **çıktılar + Günlükler** ' i seçin. 
+1. Tuvalin sağ tarafındaki modül ayrıntıları bölmesinde, **çıktılar + Günlükler**' i seçin. 
 
-1. Sonuçlar DataSet1 ' ın yanındaki Görselleştir simgesini görselleştirin ![ simgesini seçin ](media/how-to-designer-transform-data/visualize-icon.png) . **Results dataset1** 
+1. Sonuçlar DataSet1 ' ın yanındaki Görselleştir simgesini görselleştirin ![ simgesini seçin ](media/how-to-designer-transform-data/visualize-icon.png) .  
 
 1. "Yerel-ülke" sütununun yalnızca "Amerika Birleşik Devletleri" değerini içerdiğini doğrulayın.
 
-1. Sonuçlar DataSet2 ' ın yanındaki Görselleştir simgesini görselleştirin ![ simgesini seçin ](media/how-to-designer-transform-data/visualize-icon.png) . **Results dataset2** 
+1. Sonuçlar DataSet2 ' ın yanındaki Görselleştir simgesini görselleştirin ![ simgesini seçin ](media/how-to-designer-transform-data/visualize-icon.png) .  
 
 1. "Yerel-ülke" sütununun "Amerika Birleşik Devletleri" değerini içermediğini doğrulayın.
 

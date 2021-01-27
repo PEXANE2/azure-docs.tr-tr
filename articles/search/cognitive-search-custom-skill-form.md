@@ -8,12 +8,12 @@ ms.author: pafarley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/21/2020
-ms.openlocfilehash: 58f1c2621165a7074c04752832c6560b2fd3e423
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: a3b073cdb90e0c427bfbca15c1440b9122672610
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96011974"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880144"
 ---
 # <a name="example-create-a-form-recognizer-custom-skill"></a>Örnek: form tanıyıcı özel yeteneği oluşturma
 
@@ -30,7 +30,7 @@ Bu Azure Bilişsel Arama Beceri örneğinde, C# ve Visual Studio kullanarak form
 
 ## <a name="train-your-model"></a>Modelinizi eğitme
 
-Bu yeteneği kullanmadan önce, giriş formlarınıza bir form tanıyıcı modeli eğmeniz gerekir. Bir modeli eğitme hakkında bilgi edinmek için [kıvrımlı hızlı](../cognitive-services/form-recognizer/quickstarts/curl-train-extract.md) başlangıcı izleyin. Bu hızlı başlangıçta sunulan örnek formları kullanabilir veya kendi verilerinizi kullanabilirsiniz. Model eğitilirken, KIMLIK değerini güvenli bir konuma kopyalayın.
+Bu yeteneği kullanmadan önce, giriş formlarınıza bir form tanıyıcı modeli eğmeniz gerekir. Bir modeli eğitme hakkında bilgi edinmek için [kıvrımlı hızlı](../cognitive-services/form-recognizer/quickstarts/client-library.md?pivots=programming-language-rest-api) başlangıcı izleyin. Bu hızlı başlangıçta sunulan örnek formları kullanabilir veya kendi verilerinizi kullanabilirsiniz. Model eğitilirken, KIMLIK değerini güvenli bir konuma kopyalayın.
 
 ## <a name="set-up-the-custom-skill"></a>Özel yeteneği ayarlama
 

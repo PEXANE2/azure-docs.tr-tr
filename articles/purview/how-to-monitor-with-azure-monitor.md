@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 12/03/2020
-ms.openlocfilehash: 2c21f84b9a10db504afb8ead67ae479518a0afba
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 22c69288479e0247e499a33c2e818c19f7edb2ae
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96603518"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879957"
 ---
 # <a name="azure-purview-metrics-in-azure-monitor"></a>Azure Izleyici 'de Azure purview ölçümleri
 
@@ -62,7 +62,7 @@ Azure portal ölçüm bölümünün nasıl kullanılacağına ilişkin familiari
 
 Aşağıdaki tablo, Azure portal araştırmak için kullanılabilen ölçümlerin listesini içerir:
 
-| Ölçüm Adı | Ölçüm Ad Alanı | Toplama türü | Açıklama |
+| Ölçüm Adı | Ölçüm Ad Alanı | Toplama türü | Description |
 | ------------------- | ------------------- | ------------------- | ----------------- |
 | Tarama Iptal edildi | Otomatik tarama | Sum <br> Count | Zaman aralığı için iptal edilen veri kaynağı taramalarının toplamı |
 | Tarama tamamlandı | Otomatik tarama | Sum <br> Count | Zaman aralığı boyunca tamamlanan veri kaynağı taramalarının toplamı |
@@ -79,11 +79,11 @@ Azure purview hesabınız için bir tanılama ayarı oluşturma adımlarını iz
 
    :::image type="content" source="./media/how-to-monitor-with-azure-monitor/step-one-diagnostic-setting.png" alt-text="Tanılama günlüğü oluşturmayı gösteren ekran görüntüsü." lightbox="./media/how-to-monitor-with-azure-monitor/step-one-diagnostic-setting.png":::
 
-2. Olayları bir depolama hesabına kaydedin. Tanılama günlüklerini arşivlemek için ayrılmış bir depolama hesabı önerilir. [Bir depolama hesabı oluşturmak](../storage/common/storage-quickstart-create-account.md?tabs=azure-portal)için bu makaleyi takip edin.
+2. Olayları bir depolama hesabına kaydedin. Tanılama günlüklerini arşivlemek için ayrılmış bir depolama hesabı önerilir. [Bir depolama hesabı oluşturmak](../storage/common/storage-account-create.md?tabs=azure-portal)için bu makaleyi takip edin.
 
    :::image type="content" source="./media/how-to-monitor-with-azure-monitor/step-two-diagnostic-setting.png" alt-text="Tanılama günlüğü için depolama hesabı atamayı gösteren ekran görüntüsü." lightbox="./media/how-to-monitor-with-azure-monitor/step-two-diagnostic-setting.png":::
 
-Yeni oluşturulan depolama hesabında günlük almaya başlamak için 15 dakikaya kadar izin verin. [Bkz. Azure Storage hesabındaki kaynak günlüklerinin veri saklama ve şema](../azure-monitor/platform/resource-logs-collect-storage.md). Tanılama günlükleri yapılandırıldıktan sonra olaylar depolama hesabına akar.
+Yeni oluşturulan depolama hesabında günlük almaya başlamak için 15 dakikaya kadar izin verin. [Bkz. Azure Storage hesabındaki kaynak günlüklerinin veri saklama ve şema](../azure-monitor/platform/resource-logs.md#send-to-azure-storage). Tanılama günlükleri yapılandırıldıktan sonra olaylar depolama hesabına akar.
 
 ### <a name="scanstatuslogevent"></a>ScanStatusLogEvent
 

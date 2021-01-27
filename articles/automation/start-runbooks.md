@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: 52cb701312f598b1b8492226709a7d2767db9600
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b5c5166785ad8c82c114fb7193cd49716536b408
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86187277"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896605"
 ---
 # <a name="start-a-runbook-in-azure-automation"></a>Azure Otomasyonu'nda Runbook başlatma
 
@@ -18,10 +18,10 @@ Aşağıdaki tablo, belirli senaryonuz için en uygun olan Azure Otomasyonu 'nda
 
 | **Yöntem** | **Özellikler** |
 | --- | --- |
-| [Azure portalındaki](#start-a-runbook-with-the-azure-portal) |<li>Etkileşimli kullanıcı arabirimiyle en basit yöntem.<br> <li>Basit parametre değerleri sağlamak için form.<br> <li>İş durumunu kolayca izleyin.<br> <li>Azure oturum açma ile erişim kimliği doğrulandı. |
+| [Azure portalı](#start-a-runbook-with-the-azure-portal) |<li>Etkileşimli kullanıcı arabirimiyle en basit yöntem.<br> <li>Basit parametre değerleri sağlamak için form.<br> <li>İş durumunu kolayca izleyin.<br> <li>Azure oturum açma ile erişim kimliği doğrulandı. |
 | [Windows PowerShell](/powershell/module/azurerm.automation/start-azurermautomationrunbook) |<li>Windows PowerShell cmdlet 'leri ile komut satırından çağrı.<br> <li>, Birden çok adımla otomatikleştirilmiş bir özelliğe eklenebilir.<br> <li>İstek sertifika veya OAuth Kullanıcı sorumlusu/hizmet sorumlusu ile doğrulandı.<br> <li>Basit ve karmaşık parametre değerlerini sağlayın.<br> <li>İş durumunu izleyin.<br> <li>PowerShell cmdlet 'lerini desteklemek için gereken istemci. |
 | [Azure Otomasyonu API 'SI](/rest/api/automation/) |<li>En esnek yöntem, ancak çoğu karmaşıktır.<br> <li>HTTP istekleri yapan herhangi bir özel koddan çağırın.<br> <li>Sertifika veya OAuth Kullanıcı sorumlusu/hizmet sorumlusu ile kimlik doğrulaması iste.<br> <li>Basit ve karmaşık parametre değerlerini sağlayın. *API 'yi kullanarak bir Python runbook 'u arıyorsanız JSON yükünün serileştirilmesi gerekir.*<br> <li>İş durumunu izleyin. |
-| [Web Kancaları](automation-webhooks.md) |<li>Tek bir HTTP isteğinden runbook 'u başlatın.<br> <li>URL 'de güvenlik belirteci ile kimlik doğrulandı.<br> <li>İstemci, Web kancası oluşturulduğunda belirtilen parametre değerlerini geçersiz kılamaz. Runbook, HTTP istek ayrıntıları ile doldurulmuş tek bir parametre tanımlayabilir.<br> <li>Web kancası URL 'SI aracılığıyla iş durumunu izleyebilme yeteneği yoktur. |
+| [Web kancaları](automation-webhooks.md) |<li>Tek bir HTTP isteğinden runbook 'u başlatın.<br> <li>URL 'de güvenlik belirteci ile kimlik doğrulandı.<br> <li>İstemci, Web kancası oluşturulduğunda belirtilen parametre değerlerini geçersiz kılamaz. Runbook, HTTP istek ayrıntıları ile doldurulmuş tek bir parametre tanımlayabilir.<br> <li>Web kancası URL 'SI aracılığıyla iş durumunu izleyebilme yeteneği yoktur. |
 | [Azure uyarısına yanıt verme](../azure-monitor/platform/alerts-overview.md) |<li>Azure uyarısına yanıt olarak bir runbook başlatın.<br> <li>Runbook için Web kancasını yapılandırın ve uyarı bağlantısı yapın.<br> <li>URL 'de güvenlik belirteci ile kimlik doğrulandı. |
 | [Zamanla](./shared-resources/schedules.md) |<li>Runbook 'u saatlik, günlük, haftalık veya aylık zamanlamaya göre otomatik olarak başlatın.<br> <li>Azure portal, PowerShell cmdlet 'leri veya Azure API aracılığıyla zamanlamayı işleme.<br> <li>Zamanlamaya göre kullanılacak parametre değerlerini sağlayın. |
 | [Başka bir runbook 'tan](automation-child-runbooks.md) |<li>Runbook 'u başka bir runbook 'ta etkinlik olarak kullanın.<br> <li>Birden çok runbook tarafından kullanılan işlevsellik için faydalıdır.<br> <li>Alt runbook 'a parametre değerleri sağlayın ve üst runbook 'ta çıktıyı kullanın. |
@@ -77,7 +77,7 @@ Smith
 
 Parametre, [dizi] veya [String []] gibi bir diziyse, değerlerin bir listesini göndermek için şu JSON biçimini kullanabilirsiniz: *[değer1, değer2, Value3]*. Bu değerler basit türler olmalıdır.
 
-*kullanıcı*adlı bir parametreyi kabul eden aşağıdaki sınama runbook’u göz önünde bulundurun.
+*kullanıcı* adlı bir parametreyi kabul eden aşağıdaki sınama runbook’u göz önünde bulundurun.
 
 ```powershell
 Workflow Test-Parameters
@@ -145,13 +145,13 @@ jsmith
 
 ## <a name="start-a-runbook-with-powershell"></a>PowerShell ile runbook başlatma
 
-Windows PowerShell ile bir runbook başlatmak için [Start-AzAutomationRunbook](/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.7.0) 'u kullanabilirsiniz. Aşağıdaki örnek kod, **Test-runbook**adlı bir runbook 'u başlatır.
+Windows PowerShell ile bir runbook başlatmak için [Start-AzAutomationRunbook](/powershell/module/az.automation/start-azautomationrunbook) 'u kullanabilirsiniz. Aşağıdaki örnek kod, **Test-runbook** adlı bir runbook 'u başlatır.
 
 ```azurepowershell-interactive
 Start-AzAutomationRunbook -AutomationAccountName "MyAutomationAccount" -Name "Test-Runbook" -ResourceGroupName "ResourceGroup01"
 ```
 
-`Start-AzAutomationRunbook` Runbook başlatıldıktan sonra durumu izlemek için kullanabileceğiniz bir iş nesnesi döndürür. Daha sonra bu iş nesnesini [Get-AzAutomationJob](/powershell/module/Az.Automation/Get-AzAutomationJob?view=azps-3.7.0) ile birlikte kullanarak, işinin durumunu belirleyebilir ve çıktısını almak için [Get-Azautomationjoi put](/powershell/module/az.automation/get-azautomationjoboutput?view=azps-3.7.0) ' i kullanabilirsiniz. Aşağıdaki örnek, **Test-runbook**adlı bir runbook başlatır, tamamlanmasını bekler ve ardından çıktısını görüntüler.
+`Start-AzAutomationRunbook` Runbook başlatıldıktan sonra durumu izlemek için kullanabileceğiniz bir iş nesnesi döndürür. Daha sonra bu iş nesnesini [Get-AzAutomationJob](/powershell/module/Az.Automation/Get-AzAutomationJob) ile birlikte kullanarak, işinin durumunu belirleyebilir ve çıktısını almak için [Get-Azautomationjoi put](/powershell/module/az.automation/get-azautomationjoboutput) ' i kullanabilirsiniz. Aşağıdaki örnek, **Test-runbook** adlı bir runbook başlatır, tamamlanmasını bekler ve ardından çıktısını görüntüler.
 
 ```azurepowershell-interactive
 $runbookName = "Test-Runbook"

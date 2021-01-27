@@ -8,12 +8,12 @@ ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: d79b647d216fe28241e5891def574ab598304828
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d28a20a6afc78939491e56f46a32782b4c0844cc
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89078229"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879012"
 ---
 # <a name="azcopy-remove"></a>azcopy kaldırma
 
@@ -28,7 +28,7 @@ azcopy remove [resourceURL] [flags]
 ## <a name="related-conceptual-articles"></a>İlgili kavramsal makaleler
 
 - [AzCopy’yi kullanmaya başlama](storage-use-azcopy-v10.md)
-- [AzCopy ve BLOB Storage ile veri aktarma](storage-use-azcopy-blobs.md)
+- [AzCopy ve BLOB Storage ile veri aktarma](./storage-use-azcopy-v10.md#transfer-data)
 - [AzCopy ve dosya depolama ile verileri aktarma](storage-use-azcopy-files.md)
 - [AzCopy 'i yapılandırma, iyileştirme ve sorun giderme](storage-use-azcopy-configure.md)
 
@@ -99,7 +99,7 @@ azcopy rm "https://[account].dfs.core.windows.net/[container]/[path/to/directory
 
 **--Include-Path** dize yalnızca kaldırılırken Bu yolları içerir. Bu seçenek joker karakterleri (*) desteklemez. Göreli yol önekini denetler. Örnek: `myFolder;myFolder/subDirName/file.pdf`
 
-**--Include-model** dize yalnızca adı, model listesiyle eşleşen dosyaları içerir. Örneğin: * `.jpg` ;* `.pdf` ;`exactName`
+**--Include-model** dize yalnızca adı, model listesiyle eşleşen dosyaları içerir. Örneğin: *`.jpg` ;* `.pdf` ;`exactName`
 
 **--dosya listesi** dizesi, silinecek dosya ve dizinlerin listesini içeren bir dosyanın konumunu tanımlar. Göreli yollar satır sonları ile sınırlandırılmalıdır ve yolların URL kodlamalı olmaması gerekir. 
 
@@ -119,4 +119,4 @@ azcopy rm "https://[account].dfs.core.windows.net/[container]/[path/to/directory
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-- [azcopy](storage-ref-azcopy.md)
+- [AzCopy](storage-ref-azcopy.md)

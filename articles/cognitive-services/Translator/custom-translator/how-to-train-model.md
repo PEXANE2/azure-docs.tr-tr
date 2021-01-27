@@ -2,19 +2,19 @@
 title: Model-özel bir çevirici eğitme
 titleSuffix: Azure Cognitive Services
 description: Model eğitimi, bir çeviri modeli oluştururken önemli bir adımdır. Eğitim, söz konusu insanlar için seçtiğiniz belgelere göre yapılır.
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 08/17/2020
-ms.author: swmachan
+ms.author: lajanuar
 ms.topic: conceptual
-ms.openlocfilehash: 824516a327d45feb5b6a084a113633bd3a486abe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5c17f842b93fb99a6a06b94f84ae26126794b776
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88508379"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896435"
 ---
 # <a name="train-a-model"></a>Modeli eğitme
 

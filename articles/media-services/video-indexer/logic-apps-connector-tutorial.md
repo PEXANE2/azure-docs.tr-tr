@@ -8,12 +8,12 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: tutorial
 ms.date: 09/21/2020
-ms.openlocfilehash: 5c545fa7d58d925dfcb9fa98b301c3bb0a20833e
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: f3504ca4a706e92081209f4eaaa86af9f71c52b3
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97358580"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880919"
 ---
 # <a name="tutorial-use-video-indexer-with-logic-app-and-power-automate"></a>Öğretici: mantıksal uygulama ve güç otomatikleştirme ile Video Indexer kullanma
 
@@ -137,4 +137,4 @@ Bu öğretici yalnızca bir Video Indexer bağlayıcılar örneği olduğunu gö
 > [!div class="nextstepaction"]
 > [Video Indexer API'sini kullanma](video-indexer-use-apis.md)
 
-Ek kaynaklar için [video dizin oluşturucuda](https://docs.microsoft.com/connectors/videoindexer-v2/) bu belgeye başvurun.
+Ek kaynaklar için [video dizin oluşturucuda](/connectors/videoindexer-v2/) bu belgeye başvurun.

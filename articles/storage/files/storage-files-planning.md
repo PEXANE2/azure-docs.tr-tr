@@ -8,12 +8,12 @@ ms.date: 09/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: e1b29d901630156471bbb9cb8b939bb4bb29c836
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 8a96b44a280e0aea15a6d0843f02f4ed16f8fcf4
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97724242"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879856"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Azure Dosyaları dağıtımı planlama
 [Azure dosyaları](storage-files-introduction.md) , iki ana şekilde dağıtılabilir: doğrudan sunucusuz Azure dosya paylaşımlarını bağlayarak veya Azure dosya eşitleme kullanarak şirket içi Azure dosya paylaşımlarını önbelleğe alarak. Seçtiğiniz dağıtım seçeneği, dağıtımınız için planlarken göz önünde bulundurmanız gereken şeyleri değiştirir. 
@@ -131,6 +131,6 @@ Daha fazla bilgi için bkz. [Azure depolama Için Gelişmiş tehdit koruması](.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Azure Dosya Eşitleme dağıtımı için planlama yapma](storage-sync-files-planning.md)
-* [Azure dosyalarını dağıtma](storage-files-deployment-guide.md)
+* [Azure dosyalarını dağıtma](./storage-how-to-create-file-share.md)
 * [Azure Dosya Eşitleme dağıtma](storage-sync-files-deployment-guide.md)
 * [Senaryonuza yönelik geçiş kılavuzunu bulmak için geçişe genel bakış makalesine göz atın](storage-files-migration-overview.md)

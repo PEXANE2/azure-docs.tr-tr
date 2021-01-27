@@ -8,12 +8,12 @@ ms.author: tagore
 author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 67c20823d1f80360b2ab23dc3f208673d36a7374
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: dd7b19a2c9e872b811c1aab6e504accb7de383b2
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98742225"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896486"
 ---
 # <a name="deployment-issues-for-azure-cloud-services-classic-frequently-asked-questions-faqs"></a>Azure Cloud Services için dağıtım sorunları (klasik): sık sorulan sorular (SSS)
 
@@ -52,7 +52,7 @@ Ayrılan kaynaklar bölge/veri merkezi düzeyinde hizmetiniz için izin verilen 
 
 Ayrıca, portalda aboneliğiniz için geçerli kullanımı/kotayı da izleyebilirsiniz: Azure portal => abonelikler => \<appropriate subscription>   => "kullanım + kota".
 
-Kaynak kullanımı/tüketim ile ilgili bilgiler de Azure Faturalama API'leri aracılığıyla alınabilir. Bkz. [Azure Kaynak kullanımı API 'si (Önizleme)](../cost-management-billing/manage/usage-rate-card-overview.md#azure-resource-usage-api-preview).
+Kaynak kullanımı/tüketim ile ilgili bilgiler de Azure Faturalama API'leri aracılığıyla alınabilir. Bkz. [Azure tüketim API 'sine genel bakış](../cost-management-billing/manage/consumption-api-overview.md).
 
 ## <a name="how-can-i-change-the-size-of-a-deployed-cloud-service-vm-without-redeploying-it"></a>Dağıtılmış bir bulut hizmeti VM 'sinin boyutunu yeniden dağıtmaya gerek kalmadan nasıl değiştirebilirim?
 Dağıtılmış bir bulut hizmetinin VM boyutunu yeniden dağıtmaya gerek kalmadan değiştiremezsiniz. VM boyutu, yalnızca yeniden dağıtım ile güncelleştirilebilen CSDEF içinde yerleşiktir.

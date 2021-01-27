@@ -3,19 +3,19 @@ title: Translator V 3.0 başvurusu
 titleSuffix: Azure Cognitive Services
 description: Translator V 3.0 için başvuru belgeleri. Çeviricisinin 3. sürümü, modern bir JSON tabanlı Web API 'SI sağlar.
 services: cognitive-services
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 8/11/2020
-ms.author: swmachan
-ms.openlocfilehash: c93b8254e1fc80865d9889072b33cbf3fc94326d
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.author: lajanuar
+ms.openlocfilehash: 021a65ba69b9d1909df4a86d92b660c0c1033a3b
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880785"
+ms.locfileid: "98895467"
 ---
 # <a name="translator-v30"></a>Translator v 3.0
 

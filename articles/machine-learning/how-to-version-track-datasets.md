@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 03/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, data4ml
-ms.openlocfilehash: 3290574b26abe544c8c749165e22bef41a83ecf3
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: d72d2d094e220bd4e460cfca6b422f0609c083af
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98538154"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880076"
 ---
 # <a name="version-and-track-azure-machine-learning-datasets"></a>Azure Machine Learning veri kümelerini sürüm ve izleme
 
@@ -27,7 +27,7 @@ Tipik sürüm oluşturma senaryoları:
 * Yeniden eğitim için yeni veriler kullanılabilir olduğunda
 * Farklı veri hazırlama veya özellik Mühendisliği yaklaşımları uygularken
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğretici için şunlar gerekir:
 
@@ -119,7 +119,7 @@ dataset2.register(workspace = workspace,
 
 Her [ml ardışık düzen](concept-ml-pipelines.md) adımının giriş ve çıkış olarak bir veri kümesi kullanabilirsiniz. İşlem hatlarını yeniden çalıştırdığınızda, her bir ardışık düzen adımının çıktısı yeni bir veri kümesi sürümü olarak kaydedilir.
 
-ML işlem hatları, her adımın çıkışını ardışık düzen yeniden her yeniden çalıştırıldığında yeni bir klasöre doldurur. Bu davranış, sürümlü çıktı veri kümelerinin tekrarlanabilir olmasını sağlar. İşlem hatlarında [veri kümeleri](how-to-create-your-first-pipeline.md#steps)hakkında daha fazla bilgi edinin.
+ML işlem hatları, her adımın çıkışını ardışık düzen yeniden her yeniden çalıştırıldığında yeni bir klasöre doldurur. Bu davranış, sürümlü çıktı veri kümelerinin tekrarlanabilir olmasını sağlar. İşlem hatlarında [veri kümeleri](./how-to-create-machine-learning-pipelines.md#steps)hakkında daha fazla bilgi edinin.
 
 ```Python
 from azureml.core import Dataset

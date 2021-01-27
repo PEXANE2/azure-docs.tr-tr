@@ -5,12 +5,12 @@ author: IngridAtMicrosoft
 ms.topic: how-to
 ms.author: inhenkel
 ms.date: 12/04/2020
-ms.openlocfilehash: d49f048df7a624dc490acf7cb4c8e5f33aa5f1c6
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: d23294c21d49b1c2ab83c4bf8f110d5d4bc7aafb
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98060240"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878299"
 ---
 # <a name="troubleshoot-live-video-analytics-on-iot-edge"></a>IoT Edge 'da canlı video analizi sorunlarını giderme
 
@@ -66,7 +66,7 @@ Doğrudan yöntemler kullanarak medya grafiğinin bir tanılamasını çalışt�
     * 500-IoT Edge çalışma zamanında bir hata oluştu.
 
     > [!TIP]
-    > Ortamınızda Azure IoT Edge modüller çalıştıran sorunlarla karşılaşırsanız, sorun giderme ve Tanılama için kılavuz olarak **[Azure IoT Edge standart tanılama adımlarını](https://docs.microsoft.com/azure/iot-edge/troubleshoot?view=iotedge-2018-06&preserve-view=true)** kullanın.
+    > Ortamınızda Azure IoT Edge modüller çalıştıran sorunlarla karşılaşırsanız, sorun giderme ve Tanılama için kılavuz olarak **[Azure IoT Edge standart tanılama adımlarını](../../iot-edge/troubleshoot.md?preserve-view=true&view=iotedge-2018-06)** kullanın.
 ### <a name="post-deployment-direct-method-error-code"></a>Dağıtım sonrası: doğrudan yöntem hata kodu
 1. Bir durum alırsanız `501 code` doğrudan yöntem adının doğru olduğundan emin olun. Yöntem adı ve istek yükü doğru ise, başarılı kod = 200 ile birlikte sonuçları almalısınız. 
 1. İstek yükü doğru değilse, `400 code` doğrudan yöntem çağrla ilgili sorunu tanılamanıza yardımcı olması gereken hata kodunu ve iletiyi gösteren bir durum ve yanıt yükü alacaksınız.
@@ -96,7 +96,7 @@ Canlı video analizi, IoT Edge cihazında bir IoT Edge modülü olarak dağıtı
 * [IoT Edge modülü başarıyla dağıtıldı ve sonra cihazdan kayboluyor](../../iot-edge/troubleshoot-common-errors.md#iot-edge-module-deploys-successfully-then-disappears-from-device).
 
     > [!TIP]
-    > Ortamınızda Azure IoT Edge modüller çalıştıran sorunlarla karşılaşırsanız, sorun giderme ve Tanılama için kılavuz olarak **[Azure IoT Edge standart tanılama adımlarını](https://docs.microsoft.com/azure/iot-edge/troubleshoot?view=iotedge-2018-06&preserve-view=true)** kullanın.
+    > Ortamınızda Azure IoT Edge modüller çalıştıran sorunlarla karşılaşırsanız, sorun giderme ve Tanılama için kılavuz olarak **[Azure IoT Edge standart tanılama adımlarını](../../iot-edge/troubleshoot.md?preserve-view=true&view=iotedge-2018-06)** kullanın.
 ### <a name="live-video-analytics-working-with-external-modules"></a>Canlı video analizi dış modüllerle çalışıyor
 
 Medya grafiği uzantısı işlemcileri ile canlı video analizi, medya grafiğinin HTTP veya gRPC protokollerini kullanarak diğer IoT Edge modüllerden veri göndermesini ve almasını sağlayabilir. Belirli bir [örnek](https://github.com/Azure/live-video-analytics/tree/master/MediaGraph/topologies/httpExtension)olarak, bu medya grafiği, video çerçevelerini Yolo v3 gibi bir dış çıkarım MODÜLÜNE ve http protokolünü kullanarak JSON tabanlı analiz sonuçları almaya gönderebilir. Böyle bir topolojide, olayların hedefi çoğunlukla IoT Hub 'idir. Hub 'da çıkarım olaylarını görmeme durumlarında, aşağıdakileri denetleyin:
@@ -212,7 +212,7 @@ IoT Edge modülündeki canlı video analizlerini hata ayıklama günlükleri olu
     > Bu komut, uç aygıtı ve kapsayıcısı arasındaki Günlükler klasörlerini bağlar. Günlükleri farklı bir konumda toplamak istiyorsanız, aşağıdaki komutu kullanın ve **$LOG _LOCATION_ON_EDGE_DEVICE** , kullanmak istediğiniz konumla değiştirin: `/var/$LOG_LOCATION_ON_EDGE_DEVICE:/var/lib/azuremediaservices/logs`
 
 1. **Güncelleştir**’i seçin.
-1. **Gözden geçir + oluştur**' u seçin. Başarılı bir doğrulama iletisi yeşil bir başlık altında gönderilir.
+1. **Gözden geçir + Oluştur**’u seçin. Başarılı bir doğrulama iletisi yeşil bir başlık altında gönderilir.
 1. **Oluştur**’u seçin.
 1. **Modül kimliği ikizi** öğesini, günlüklerin toplandığı dizine Işaret eden DebugLogsDirectory parametresini işaret etmek üzere güncelleştirin:
 
@@ -272,7 +272,7 @@ public static IHostBuilder CreateHostBuilder(string[] args) =>
 
 ``` 
 
-[GRPC 'de .net üzerinde günlüğe kaydetme ve tanılama](https://docs.microsoft.com/aspnet/core/grpc/diagnostics?view=aspnetcore-3.1&preserve-view=true) , bir GRPC sunucusundan bazı tanılama günlüklerini toplamak için bazı yönergeler sağlar. 
+[GRPC 'de .net üzerinde günlüğe kaydetme ve tanılama](/aspnet/core/grpc/diagnostics?preserve-view=true&view=aspnetcore-3.1) , bir GRPC sunucusundan bazı tanılama günlüklerini toplamak için bazı yönergeler sağlar. 
 
 ### <a name="a-failed-grpc-connection"></a>Başarısız bir gRPC bağlantısı 
 
@@ -282,7 +282,7 @@ Grafik etkin ve kameradan akışa alıyorsa, bağlantı canlı video analizi tar
 
 Canlı video analizi, herhangi bir donanım kaynağı izlemeyi izlemez veya sağlamıyor. Geliştiricilerin donanım üreticileri izleme çözümlerini kullanması gerekecektir. Ancak, Kubernetes kapsayıcıları kullanıyorsanız, [Kubernetes panosunu](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/)kullanarak cihazı izleyebilirsiniz. 
 
-.NET Core belgelerindeki gRPC, [performans En Iyi uygulamaları](https://docs.microsoft.com/aspnet/core/grpc/performance?view=aspnetcore-3.1&preserve-view=true) ve [Yük Dengelemesi](https://docs.microsoft.com/aspnet/core/grpc/performance?view=aspnetcore-3.1#load-balancing&preserve-view=true)hakkında bazı değerli bilgileri de paylaşır.  
+.NET Core belgelerindeki gRPC, [performans En Iyi uygulamaları](/aspnet/core/grpc/performance?preserve-view=true&view=aspnetcore-3.1) ve [Yük Dengelemesi](/aspnet/core/grpc/performance?preserve-view=true&view=aspnetcore-3.1#load-balancing)hakkında bazı değerli bilgileri de paylaşır.  
 
 ### <a name="troubleshooting-an-inference-server-when-it-does-not-receive-any-frames-and-you-are-receiving-an-unknown-protocol-error"></a>Bir çıkarım sunucusunda herhangi bir çerçeve almadığı ve aldığınız zaman bir "Bilinmeyen" protokol hatası olduğunda sorun giderme 
 
@@ -296,7 +296,7 @@ Sorun hakkında daha fazla bilgi almak için yapabileceğiniz birkaç şey vard�
    ```
 
    Komut, içe geçmiş bir metnin kısa bir dizesini çıktısa, Telnet, çıkarım sunucunuza bir bağlantı açmak ve bir ikili gRPC kanalı açmak için başarıyla yapılır. Bunu görmüyorsanız, Telnet bir ağ hatası rapor eder. 
-* Çıkarım sunucunuzda, gRPC kitaplığında ek günlük kaydını etkinleştirebilirsiniz. Bu, gRPC kanalının kendisi hakkında daha fazla bilgi verebilir. Bunu yapmak dile göre farklılık [gösterir.](https://docs.microsoft.com/aspnet/core/grpc/diagnostics?view=aspnetcore-3.1&preserve-view=true) 
+* Çıkarım sunucunuzda, gRPC kitaplığında ek günlük kaydını etkinleştirebilirsiniz. Bu, gRPC kanalının kendisi hakkında daha fazla bilgi verebilir. Bunu yapmak dile göre farklılık [gösterir.](/aspnet/core/grpc/diagnostics?preserve-view=true&view=aspnetcore-3.1) 
 
 ### <a name="picking-more-images-from-buffer-of-grpc-without-sending-back-result-for-first-buffer"></a>İlk arabellek için geri sonuç göndermeksizin gRPC arabelleğinden daha fazla görüntü seçme
 
