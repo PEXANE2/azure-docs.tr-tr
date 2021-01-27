@@ -7,12 +7,12 @@ ms.date: 9/12/2020
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 500fa45db7e0e6bffb587d9d352ee1ab49f14703
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b30e08a2739000d2a7ec14a95742f2654e1d2ea1
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91712281"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98916243"
 ---
 # <a name="harden-your-docker-hosts"></a>Docker konaklarınızı sağlamlaştırma
 
@@ -29,10 +29,10 @@ Güvenlik açıkları bulunduğunda, bunlar tek bir öneri içinde gruplandırı
 
 |Görünüş|Ayrıntılar|
 |----|:----|
-|Yayın durumu:|Genel olarak kullanılabilir (GA)|
+|Yayın durumu:|Genel kullanılabilirlik (GA)|
 |Fiyat|[Sunucular Için Azure Defender](defender-for-servers-introduction.md) gerekir|
 |Gerekli roller ve izinler:|Konağın bağlandığı çalışma alanındaki **okuyucu**|
-|Larının|![Evet](./media/icons/yes-icon.png) Ticari bulutlar<br>![Evet](./media/icons/yes-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
+|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Yes](./media/icons/yes-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
 |||
 
 ## <a name="identify-and-remediate-security-vulnerabilities-in-your-docker-configuration"></a>Docker yapılandırmanızda güvenlik açıklarını belirleyip düzeltin
@@ -50,11 +50,11 @@ Güvenlik açıkları bulunduğunda, bunlar tek bir öneri içinde gruplandırı
     > [!TIP]
     > Varlık envanteri sayfasından başladıysanız ve bu öneriye buradan ulaştıysanız, öneri sayfasında **eylem al** düğmesine basın.
     >
-    > :::image type="content" source="./media/monitor-container-security/host-security-take-action-button.png" alt-text="Kapsayıcı güvenlik yapılandırmalarında güvenlik açıklarını düzeltme önerisi ":::
+    > :::image type="content" source="./media/monitor-container-security/host-security-take-action-button.png" alt-text="Log Analytics başlatmak için eylem Al düğmesi":::
 
     Log Analytics, çalıştırmaya hazırlamış özel bir işlemle açılır. Varsayılan özel sorgu, sorunları çözmenize yardımcı olacak yönergeler ile birlikte, değerlendirilen tüm başarısız kuralların bir listesini içerir.
 
-    :::image type="content" source="./media/monitor-container-security/docker-host-vulnerabilities-in-query.png" alt-text="Kapsayıcı güvenlik yapılandırmalarında güvenlik açıklarını düzeltme önerisi ":::
+    :::image type="content" source="./media/monitor-container-security/docker-host-vulnerabilities-in-query.png" alt-text="Başarısız olan tüm CIS denetimlerini gösteren sorguyla Log Analytics sayfası":::
 
 1. Gerekirse sorgu parametrelerini ince ayar.
 

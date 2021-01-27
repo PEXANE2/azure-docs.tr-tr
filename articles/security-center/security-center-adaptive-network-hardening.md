@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/11/2020
 ms.author: memildin
-ms.openlocfilehash: e2b17e15c5548b4c9b93a62a7d4dfe62ff44404c
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: ca60d5afa38a560492c8574aadd43d6170eca253
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92341762"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98916193"
 ---
 # <a name="adaptive-network-hardening-in-azure-security-center"></a>Azure Güvenlik Merkezi 'nde Uyarlamalı ağ sağlamlaştırma
 Güvenlik Merkezi 'nde Uyarlamalı ağ sağlamlaştırma yapılandırma hakkında bilgi edinin.
@@ -26,10 +26,10 @@ Güvenlik Merkezi 'nde Uyarlamalı ağ sağlamlaştırma yapılandırma hakkınd
 ## <a name="availability"></a>Kullanılabilirlik
 |Görünüş|Ayrıntılar|
 |----|:----|
-|Yayın durumu:|Genel olarak kullanılabilir (GA)|
+|Yayın durumu:|Genel kullanılabilirlik (GA)|
 |Fiyat|[Sunucular Için Azure Defender](defender-for-servers-introduction.md) gerekir|
 |Gerekli roller ve izinler:|Makinenin NSG 'leri üzerinde yazma izinleri|
-|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![No](./media/icons/no-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
+|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Hayır](./media/icons/no-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
 |||
 
 ## <a name="what-is-adaptive-network-hardening"></a>Uyarlamalı ağ sağlamlaştırma nedir?
@@ -57,10 +57,10 @@ Uyarlamalı ağ sağlamlaştırma, NSG kurallarına daha fazla uyum sağlamak i�
    * **Sağlıklı kaynaklar**: uyarılar ve öneriler olmadan VM 'ler.
    * **Taranmamış kaynaklar**: aşağıdaki nedenlerden biri nedeniyle Uyarlamalı ağ sağlamlaştırma algoritması üzerinde çalıştırılamaz VM 'ler:
       * **Sanal makineler klasik VM**'ler: yalnızca Azure Resource Manager VM 'ler desteklenir.
-      * **Yeterli veri**yok: doğru trafik sağlamlaştırma önerilerini oluşturmak Için, güvenlik merkezi 'nin en az 30 günlük trafik verisi olması gerekir.
+      * **Yeterli veri** yok: doğru trafik sağlamlaştırma önerilerini oluşturmak Için, güvenlik merkezi 'nin en az 30 günlük trafik verisi olması gerekir.
       * **VM, Azure Defender tarafından korunmuyor**: yalnızca [sunucular için Azure Defender](defender-for-servers-introduction.md) ile korunan VM 'ler bu özellik için uygundur.
 
-    :::image type="content" source="./media/security-center-adaptive-network-hardening/recommendation-details-page.png" alt-text="Uyarlamalı ağ sağlamlaştırma araçlarına erişme":::
+    :::image type="content" source="./media/security-center-adaptive-network-hardening/recommendation-details-page.png" alt-text="Öneri Uyarlamalı ağ sağlamlaştırma önerilerinin Ayrıntılar sayfası internet 'e yönelik sanal makinelere uygulanmalıdır":::
 
 1. **Sağlıksız kaynaklar** sekmesinden, uyarılarını ve uygulanacak önerilen sağlamlaştırma kurallarını görüntülemek IÇIN bir VM seçin.
 
@@ -78,12 +78,12 @@ Uyarlamalı ağ sağlamlaştırma, NSG kurallarına daha fazla uyum sağlamak i�
     > [!TIP]
     > İzin verilen kaynak IP aralıkları ' none ' olarak gösteriyorsa, önerilen kural bir *reddetme* kuralı olduğu anlamına gelir, aksi takdirde bir *izin verme* kuralıdır.
 
-    :::image type="content" source="./media/security-center-adaptive-network-hardening/hardening-alerts.png" alt-text="Uyarlamalı ağ sağlamlaştırma araçlarına erişme":::
+    :::image type="content" source="./media/security-center-adaptive-network-hardening/hardening-alerts.png" alt-text="Uyarlamalı ağ sağlamlaştırma kurallarını yönetme":::
 
       > [!NOTE]
       > Zorlanan kurallar VM 'yi koruyan NSG 'ler 'e eklenir. (VM, NIC ile ilişkili bir NSG veya VM 'nin bulunduğu alt ağ veya her ikisi de) ile korunabilir
 
-### <a name="modify-a-rule"></a>Bir kuralı <a name ="modify-rule"> </a> değiştirme
+### <a name="modify-a-rule"></a>Bir kuralı <a name ="modify-rule"></a> değiştirme
 
 Önerilen bir kuralın parametrelerini değiştirmek isteyebilirsiniz. Örneğin, önerilen IP aralıklarını değiştirmek isteyebilirsiniz.
 
@@ -116,7 +116,7 @@ Uyarlamalı ağ sağlamlaştırma kuralını değiştirmek için bazı önemli y
 
     ![kuralı zorla](./media/security-center-adaptive-network-hardening/enforce-hard-rule.png)
 
-### <a name="add-a-new-rule"></a>Yeni kural <a name ="add-rule"> </a> Ekle
+### <a name="add-a-new-rule"></a>Yeni kural <a name ="add-rule"></a> Ekle
 
 Güvenlik Merkezi 'nin önerilmeyen bir "izin verme" kuralı ekleyebilirsiniz.
 
@@ -139,7 +139,7 @@ Güvenlik Merkezi 'nin önerilmeyen bir "izin verme" kuralı ekleyebilirsiniz.
     ![kuralı zorla](./media/security-center-adaptive-network-hardening/enforce-hard-rule.png)
 
 
-### <a name="delete-a-rule"></a>Bir kuralı <a name ="delete-rule"> </a> silme
+### <a name="delete-a-rule"></a>Bir kuralı <a name ="delete-rule"></a> silme
 
 Gerektiğinde, geçerli oturum için önerilen bir kuralı silebilirsiniz. Örneğin, önerilen bir kuralı uygulamanın meşru trafiği engelleyeceğini belirleyebilirsiniz.
 

@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 11/16/2020
+ms.date: 01/17/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 80e6dbdc02b68c279452127933532106b0f78ab8
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 96a72dbc0e45ebd50a49000ae66e3713cb28aa9a
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97654668"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98916937"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>Azure AD B2C bir SAML uygulaması kaydetme
 
@@ -71,28 +71,9 @@ Hizmet sağlayıcınız ve Azure AD B2C arasında bir güven ilişkisi oluşturm
 
 Bir ortak sertifika yetkilisi tarafından verilen bir sertifika veya bu öğreticide, kendinden imzalı bir sertifika kullanabilirsiniz.
 
-### <a name="11-prepare-a-self-signed-certificate"></a>1,1 kendinden imzalı bir sertifika hazırlama
+### <a name="11-create-a-self-signed-certificate"></a>1,1 otomatik olarak imzalanan sertifika oluşturma
 
-Henüz bir sertifikanız yoksa, bu öğretici için otomatik olarak imzalanan bir sertifika kullanabilirsiniz. Windows 'da, bir sertifika oluşturmak için PowerShell 'in [New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate) cmdlet 'ini kullanabilirsiniz.
-
-1. Otomatik olarak imzalanan bir sertifika oluşturmak için bu PowerShell komutunu yürütün. `-Subject`Bağımsız değişkeni, uygulamanız için uygun şekilde değiştirin ve kiracı adı Azure AD B2C. Ayrıca, `-NotAfter` sertifika için farklı bir süre sonu belirtmek üzere tarihi de ayarlayabilirsiniz.
-
-    ```PowerShell
-    New-SelfSignedCertificate `
-        -KeyExportPolicy Exportable `
-        -Subject "CN=yourappname.yourtenant.onmicrosoft.com" `
-        -KeyAlgorithm RSA `
-        -KeyLength 2048 `
-        -KeyUsage DigitalSignature `
-        -NotAfter (Get-Date).AddMonths(12) `
-        -CertStoreLocation "Cert:\CurrentUser\My"
-    ```
-
-1. **Kullanıcı sertifikalarını Yönet**  >  **Geçerli Kullanıcı**  >  **Kişisel**  >  **sertifikalarını** aç  >  *YourAppName.yourtenant.onmicrosoft.com*
-1.   >  **Tüm görevler**  >  **dışarı aktarma** işlemini > sertifikayı seçin
-1. **Evet**  >  **İleri**  >  **Evet ' i seçin, bir sonraki özel anahtarı dışarı aktar**  >  
-1. **Dışarı aktarma dosya biçimi** için varsayılanları kabul et
-1. Sertifika için bir parola girin
+[!INCLUDE [active-directory-b2c-create-self-signed-certificate](../../includes/active-directory-b2c-create-self-signed-certificate.md)]
 
 ### <a name="12-upload-the-certificate"></a>1,2 sertifikayı karşıya yükle
 

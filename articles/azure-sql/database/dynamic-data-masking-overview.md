@@ -12,12 +12,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 01/25/2021
 tags: azure-synpase
-ms.openlocfilehash: 0f92d8dbfe423efa58231831fe012a27e45f9208
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: b10b00e724324779eb753bfefccce77a5eb2a39d
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98787697"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98918120"
 ---
 # <a name="dynamic-data-masking"></a>Dinamik veri maskeleme 
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -26,7 +26,7 @@ Azure SQL veritabanı, Azure SQL yönetilen örneği ve Azure SYNAPSE Analytics,
 
 Dinamik veri maskeleme müşterilerin uygulama katmanını çok az etkileyerek hassas verilerin ne kadarının gösterileceğini belirlemelerini sağlar ve hassas verilere yetkisiz erişimin engellenmesine yardımcı olur. Bu özellik, hassas verileri belirlenen veritabanı alanlarına yapılan sorgunun sonuç kümesinde gizleyen ancak veritabanındaki verileri değiştirmeyen ilke tabanlı bir güvenlik özelliğidir.
 
-Örneğin, bir çağrı merkezindeki hizmet temsilcisi çağıranları e-posta adreslerinin birkaç basamağıyla tanımlayabilir, ancak bu veri öğeleri hizmet temsilcisine tam olarak gösterilmemelidir. Herhangi bir sorgunun sonuç kümesindeki tüm e-posta adreslerini maskele alan bir maskeleme kuralı tanımlanabilir. Başka bir örnek olarak, bir geliştiricinin uyumluluk düzenlemelerini ihlal etmeden üretim ortamlarını, sorun giderme amacıyla sorgulayabilmesi için, kişisel verileri korumak üzere uygun bir veri maskesi tanımlanabilir.
+Örneğin, bir çağrı merkezindeki bir hizmet temsilcisi, kendi e-posta adreslerinin birkaç karakterini onaylayan bir çağrıyı tanımlayabilir, ancak e-posta adresinin tamamı hizmet temsilcisine görmemelidir. Herhangi bir sorgunun sonuç kümesindeki tüm e-posta adreslerini maskele alan bir maskeleme kuralı tanımlanabilir. Başka bir örnek olarak, bir geliştiricinin uyumluluk düzenlemelerini ihlal etmeden üretim ortamlarını, sorun giderme amacıyla sorgulayabilmesi için, kişisel verileri korumak üzere uygun bir veri maskesi tanımlanabilir.
 
 ## <a name="dynamic-data-masking-basics"></a>Dinamik veri maskeleme temelleri
 

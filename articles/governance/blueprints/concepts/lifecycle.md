@@ -1,14 +1,14 @@
 ---
 title: Şema 'in yaşam döngüsünü anlama
 description: Şema tanımının ilerleyen yaşam döngüsü ve şema atamalarını güncelleştirme ve kaldırma dahil olmak üzere her aşama hakkında ayrıntılı bilgi edinin.
-ms.date: 08/27/2020
+ms.date: 01/27/2021
 ms.topic: conceptual
-ms.openlocfilehash: c1de2cf869362154b112c3eef74ed1fb0db3a993
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 721a198b5732af01c6712e86bc0c8e8ef543b404
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89049715"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98918526"
 ---
 # <a name="understand-the-lifecycle-of-an-azure-blueprint"></a>Azure Blueprint yaşam döngüsünü anlama
 
@@ -28,30 +28,30 @@ Bir şema ve aşamaları tamamen anlamak için standart yaşam döngüsünü ele
 
 Bir Blueprint oluştururken, bu yapıya yapıt ekleyin, bir yönetim grubuna veya aboneliğine kaydedin ve benzersiz bir ad ve benzersiz bir sürüm sağlamış olmanız gerekir. Şema artık **taslak** modunda ve henüz atanamaz. **Taslak** modundayken, güncelleştirilme ve değiştirme devam edebilir.
 
-**Taslak** modunda hiçbir şekilde yayımlanmamış bir şema, şema **tanımları** sayfasında **yayımlandıklarından**farklı bir simge görüntüler. **En son sürüm** , bu yayımlanmamış hiçbir şema için **taslak** olarak görüntülenir.
+**Taslak** modunda hiçbir şekilde yayımlanmamış bir şema, şema **tanımları** sayfasında **yayımlandıklarından** farklı bir simge görüntüler. **En son sürüm** , bu yayımlanmamış hiçbir şema için **taslak** olarak görüntülenir.
 
 [Azure Portal](../create-blueprint-portal.md#create-a-blueprint) veya [REST API](../create-blueprint-rest-api.md#create-a-blueprint)bir şema oluşturun ve düzenleyin.
 
 ## <a name="publishing-a-blueprint"></a>Şema yayımlama
 
-Tüm planlı değişiklikler **taslak** modunda bir şema üzerinde yapıldıktan sonra **yayımlanabilir** ve atama için kullanılabilir hale getirilebilir. Şema 'in **yayımlanan** sürümü değiştirilemez. **Yayımladıktan**sonra, şema **taslak** taslaktan farklı bir simgeyle görüntülenir ve belirtilen sürüm numarasını **en son sürüm** sütununda görüntüler.
+Tüm planlı değişiklikler **taslak** modunda bir şema üzerinde yapıldıktan sonra **yayımlanabilir** ve atama için kullanılabilir hale getirilebilir. Şema 'in **yayımlanan** sürümü değiştirilemez. **Yayımladıktan** sonra, şema **taslak** taslaktan farklı bir simgeyle görüntülenir ve belirtilen sürüm numarasını **en son sürüm** sütununda görüntüler.
 
 [Azure Portal](../create-blueprint-portal.md#publish-a-blueprint) veya [REST API](../create-blueprint-rest-api.md#publish-a-blueprint)ile bir şema yayımlayın.
 
 ## <a name="creating-and-editing-a-new-version-of-the-blueprint"></a>Şema 'in yeni bir sürümünü oluşturma ve düzenlemeyle
 
-Bir şema 'in **yayımlanmış** bir sürümü değiştirilemez. Ancak, yeni bir şema sürümü var olan şema öğesine eklenebilir ve gerektiğinde değiştirilebilir. Varolan bir şemayı düzenleyerek değişiklik yapın. Yeni değişiklikler kaydedildiğinde, şema şimdi **yayımdan kaldırılmış değişiklikleri**içerir. Bu değişiklikler, Blueprint 'in yeni bir **taslak** sürümüdür.
+Bir şema 'in **yayımlanmış** bir sürümü değiştirilemez. Ancak, yeni bir şema sürümü var olan şema öğesine eklenebilir ve gerektiğinde değiştirilebilir. Varolan bir şemayı düzenleyerek değişiklik yapın. Yeni değişiklikler kaydedildiğinde, şema şimdi **yayımdan kaldırılmış değişiklikleri** içerir. Bu değişiklikler, Blueprint 'in yeni bir **taslak** sürümüdür.
 
 [Azure Portal](../create-blueprint-portal.md#edit-a-blueprint)ile bir şema 'i düzenleyin.
 
 ## <a name="publishing-a-new-version-of-the-blueprint"></a>Şema 'in yeni bir sürümünü yayımlama
 
-Bir şema 'in düzenlenmiş her sürümü, atanmadan önce **yayımlanmalıdır** . Bir **şema Için yayımdan kaldırılan değişiklikler** yapıldı Ancak **Yayımlanmadığında**, şemayı **Yayınla** sayfasında şeması Düzenle düğmesi bulunur. Düğme görünür değilse, şema zaten **yayımlandı** ve **yayımlanmamış değişikliklere**sahip değildir.
+Bir şema 'in düzenlenmiş her sürümü, atanmadan önce **yayımlanmalıdır** . Bir **şema Için yayımdan kaldırılan değişiklikler** yapıldı Ancak **Yayımlanmadığında**, şemayı **Yayınla** sayfasında şeması Düzenle düğmesi bulunur. Düğme görünür değilse, şema zaten **yayımlandı** ve **yayımlanmamış değişikliklere** sahip değildir.
 
 > [!NOTE]
 > Tek bir şema, her biri aboneliğe atanabileceği birden çok **yayımlanmış** sürüme sahip olabilir.
 
-**Yayımlanmamış değişikliklerle**bir şema yayımlamak için, yeni bir şema yayımlamak için aynı adımları kullanın.
+**Yayımlanmamış değişikliklerle** bir şema yayımlamak için, yeni bir şema yayımlamak için aynı adımları kullanın.
 
 ## <a name="deleting-a-specific-version-of-the-blueprint"></a>Şema 'in belirli bir sürümünü silme
 

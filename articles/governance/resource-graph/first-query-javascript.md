@@ -1,15 +1,15 @@
 ---
 title: 'Hızlı başlangıç: ilk JavaScript sorgunuz'
 description: Bu hızlı başlangıçta, JavaScript için kaynak grafik kitaplığını etkinleştirmek ve ilk sorgunuzu çalıştırmak için adımları izleyin.
-ms.date: 10/14/2020
+ms.date: 01/27/2021
 ms.topic: quickstart
 ms.custom: devx-track-js
-ms.openlocfilehash: 194097594340e2f34433c07185c6132f8a13c845
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 97cbd9ddf65a4135f55304f6dd67c704c6fcac5d
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057425"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98917530"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-javascript"></a>Hızlı başlangıç: JavaScript kullanarak ilk kaynak grafik sorgunuzu çalıştırma
 
@@ -17,7 +17,7 @@ Bu hızlı başlangıç, JavaScript yüklemenize kitaplıkları ekleme sürecind
 
 Bu işlemin sonunda, JavaScript yüklemenize kitaplıkları eklemiş ve ilk kaynak Graf sorgunuzu çalıştıracaksınız.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - **Azure aboneliği**: bir Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
@@ -95,7 +95,7 @@ JavaScript 'i Azure Kaynak Grafiği 'ni sorgulamak üzere etkinleştirmek için,
    > [!NOTE]
    > Bu sorgu örneği gibi bir sıralama değiştiricisi sağlamadığından `order by` , bu sorguyu birden çok kez çalıştırmak, istek başına farklı bir kaynak kümesi sunmamasından kaynaklanıyor olabilir.
 
-1. İlk parametreyi öğesine değiştirin `index.js` ve sorguyu Name özelliği olarak değiştirin `order by` . **Name** `<YOUR_SUBSCRIPTION_ID_LIST>`ABONELIK Kimliğinizle değiştirin:
+1. İlk parametreyi öğesine değiştirin `index.js` ve sorguyu Name özelliği olarak değiştirin `order by` .  `<YOUR_SUBSCRIPTION_ID_LIST>`ABONELIK Kimliğinizle değiştirin:
 
    ```bash
    node index.js --query "Resources | project name, type | limit 5 | order by name asc" --subs "<YOUR_SUBSCRIPTION_ID_LIST>"

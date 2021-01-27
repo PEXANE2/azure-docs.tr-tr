@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 675751433657a7d630d0c42482716702f520ff82
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 42e8a1f4ff06f6ca6af4afd428008ca174823c5f
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881393"
+ms.locfileid: "98916430"
 ---
 # <a name="introduction-to-azure-defender-for-storage"></a>Depolama için Azure Defender'a giriş
 
@@ -25,7 +25,7 @@ Etkinlikte anomali oluştuğunda güvenlik uyarıları tetiklenir. Bu uyarılar 
 
 |Görünüş|Ayrıntılar|
 |----|:----|
-|Yayın durumu:|Genel olarak kullanılabilir (GA)|
+|Yayın durumu:|Genel kullanılabilirlik (GA)|
 |Fiyat|**Depolama Için Azure Defender** , [fiyatlandırma sayfasında](security-center-pricing.md) gösterildiği gibi faturalandırılır|
 |Korumalı Depolama türleri:|[Blob Depolama](https://azure.microsoft.com/services/storage/blobs/)<br>[Azure Dosyaları](../storage/files/storage-files-introduction.md)<br>[Azure Data Lake Storage 2. Nesil](../storage/blobs/data-lake-storage-introduction.md)|
 |Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![Hayır](./media/icons/no-icon.png) Çin gov, diğer gov|

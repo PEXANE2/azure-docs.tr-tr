@@ -1,14 +1,14 @@
 ---
 title: 'Öğretici: yeni ortama Blueprint örneği'
 description: Bu öğreticide, iki kaynak grubu ayarlayan ve her biri için bir rol ataması yapılandıran bir şema tanımı oluşturmak üzere bir şema örneği kullanırsınız.
-ms.date: 08/27/2020
+ms.date: 01/27/2021
 ms.topic: tutorial
-ms.openlocfilehash: 891240dcafe0cbfbfab4ff1fd415cba4abf682a5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aea3760128221d42e092e4ca45200874d54da54a
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89048741"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98915566"
 ---
 # <a name="tutorial-create-an-environment-from-a-blueprint-sample"></a>Öğretici: bir şema örneğinden ortam oluşturma
 
@@ -39,12 +39,12 @@ Bu öğreticiyi tamamlayabilmeniz için bir Azure aboneliği gerekir. Azure abon
 
 1. Şema örneğinin _Temel bilgiler_ bölümüne girin:
 
-   - **Şema adı**: şema örneğinin kopyasına bir ad verin. Bu öğreticide,- _role-atamaları ile birlikte iki-RGS_adı kullanacağız.
+   - **Şema adı**: şema örneğinin kopyasına bir ad verin. Bu öğreticide,- _role-atamaları ile birlikte iki-RGS_ adı kullanacağız.
    - **Tanım konumu**: üç noktayı kullanın ve örnek kopyanızı kaydetmek için yönetim grubunu veya aboneliği seçin.
 
 1. Sayfanın üst kısmındaki _Yapıtlar_ sekmesini seçin veya sayfanın en altındaki **Sonraki: Yapıtlar** seçeneğini belirleyin.
 
-1. Şema örneğini oluşturan yapıtların listesini gözden geçirin. Bu örnek, _prodrg_ ve _preprodrg_görünen adları ile iki kaynak grubu tanımlar. Her kaynak grubunun son adı ve konumu, şema atama sırasında ayarlanır. _Prodrg_ kaynak grubuna _katkıda_ bulunan rolü atanır ve _Preprodrg_ kaynak grubuna _sahip_ ve _Okuyucular_ rolleri atanır. Tanımda atanan roller statiktir, ancak rol atanmış kullanıcı, uygulama veya Grup, şema atama sırasında ayarlanır.
+1. Şema örneğini oluşturan yapıtların listesini gözden geçirin. Bu örnek, _prodrg_ ve _preprodrg_ görünen adları ile iki kaynak grubu tanımlar. Her kaynak grubunun son adı ve konumu, şema atama sırasında ayarlanır. _Prodrg_ kaynak grubuna _katkıda_ bulunan rolü atanır ve _Preprodrg_ kaynak grubuna _sahip_ ve _Okuyucular_ rolleri atanır. Tanımda atanan roller statiktir, ancak rol atanmış kullanıcı, uygulama veya Grup, şema atama sırasında ayarlanır.
 
 1. Şema örneğini gözden geçirmeyi tamamladığınızda **Taslağı Kaydet**’i seçin.
 
@@ -68,7 +68,7 @@ Bu adım, şema 'in bir aboneliğe atanmasını olanaklı kılar. Yayımlandıkt
 
 ## <a name="assign-the-sample-copy"></a>Örnek kopyayı atama
 
-Şema örneğinin kopyası başarıyla **yayımlandıktan**sonra, kaydedildiği yönetim grubu içindeki bir aboneliğe atanabilir. Bu adımda, şema örneği kopyasının her bir dağıtımını benzersiz hale getirmek için parametreler sağlanır.
+Şema örneğinin kopyası başarıyla **yayımlandıktan** sonra, kaydedildiği yönetim grubu içindeki bir aboneliğe atanabilir. Bu adımda, şema örneği kopyasının her bir dağıtımını benzersiz hale getirmek için parametreler sağlanır.
 
 1. Sol bölmede **Tüm hizmetler**'i seçin. **Şemalar**’ı arayıp seçin.
 
@@ -110,7 +110,7 @@ Bu adım, şema 'in bir aboneliğe atanmasını olanaklı kılar. Yayımlandıkt
 
 1. Tüm parametreler girildikten sonra, sayfanın alt kısmında **Ata** seçeneğini belirleyin.
 
-Bu adım, tanımlı kaynakları dağıtır ve seçili **kilit atamasını**yapılandırır. Blueprint kilitlerinin uygulanması 30 dakika kadar sürebilir.
+Bu adım, tanımlı kaynakları dağıtır ve seçili **kilit atamasını** yapılandırır. Blueprint kilitlerinin uygulanması 30 dakika kadar sürebilir.
 
 Şema **tanımı başarılı oldu** Portal bildirimi seçildikten sonra bir sonraki adıma geçin.
 
@@ -126,25 +126,25 @@ Bu adım, tanımlı kaynakları dağıtır ve seçili **kilit atamasını**yapı
 
 1. **Üretim RG** kaynak grubunu seçin.
 
-   Kaynak grubunun adının, yapıt görünen adı _Prodrg_değil, **Üretim** için olduğunu görüyoruz. Bu ad, şema ataması sırasında ayarlanan değerle eşleşir.
+   Kaynak grubunun adının, yapıt görünen adı _Prodrg_ değil, **Üretim** için olduğunu görüyoruz. Bu ad, şema ataması sırasında ayarlanan değerle eşleşir.
 
 1. Sol taraftaki **erişim denetimi (IAM)** sayfasını ve ardından **rol atamaları** sekmesini seçin.
 
-   Burada, hesabınıza _Bu kaynağın_kapsamında _katkıda_ bulunan rolü verildiğini görüyoruz. ----------------- _Owner_ --------------- _Rol atamaları_ Bu izinler, yapılandırılmış şema kilitleri olan kaynakları yönetmek için de kullanılır.
+   Burada, hesabınıza _Bu kaynağın_ kapsamında _katkıda_ bulunan rolü verildiğini görüyoruz. -----------------  --------------- _Rol atamaları_ Bu izinler, yapılandırılmış şema kilitleri olan kaynakları yönetmek için de kullanılır.
 
-1. Azure portal içerik haritasında, bir sayfa geri **gitmek için----** ------------- **PreProductionRG** ------------
+1. Azure portal içerik haritasında, bir sayfa geri **gitmek için----** -------------  ------------
 
 1. Sol taraftaki **erişim denetimi (IAM)** sayfasını ve ardından **rol atamaları** sekmesini seçin.
 
-   Burada, hesabınıza hem _sahip_ hem de _okuyucu_ rollerinin verildiğini, her ikisi de _Bu kaynağın_kapsamını görürsünüz. Şema atamasının aynı zamanda ilk kaynak grubu gibi _sahip_ rolü de vardır.
+   Burada, hesabınıza hem _sahip_ hem de _okuyucu_ rollerinin verildiğini, her ikisi de _Bu kaynağın_ kapsamını görürsünüz. Şema atamasının aynı zamanda ilk kaynak grubu gibi _sahip_ rolü de vardır.
 
 1. **Atamaları Reddet** sekmesini seçin.
 
-   Şema ataması, _salt okuma_ şeması kilit modunu zorlamak için dağıtılan kaynak grubunda bir [reddetme ataması](../../../role-based-access-control/deny-assignments.md) oluşturdu. Reddetme ataması, _rol atamaları_ sekmesinde uygun haklara sahip birinin belirli eylemleri almasını engeller. Reddetme ataması _tüm sorumluları_etkiler.
+   Şema ataması, _salt okuma_ şeması kilit modunu zorlamak için dağıtılan kaynak grubunda bir [reddetme ataması](../../../role-based-access-control/deny-assignments.md) oluşturdu. Reddetme ataması, _rol atamaları_ sekmesinde uygun haklara sahip birinin belirli eylemleri almasını engeller. Reddetme ataması _tüm sorumluları_ etkiler.
 
 1. Reddetme atamasını seçin, ardından sol taraftaki **Izinleri reddedildi** sayfasını seçin.
 
-   Reddetme ataması, ve eylem yapılandırmasıyla tüm işlemleri engellemektedir **\*** , **Action** ancak **NotActions**aracılığıyla ** \* /Read** 'i dışlayarak okuma erişimine izin verir.
+   Reddetme ataması **\* *_ ve _* eylem** yapılandırmasıyla tüm işlemleri engellemektedir, ancak **NotActions** aracılığıyla **\* /Read** 'i dışlayarak okuma erişimine izin verir.
 
 1. Azure portal içerik haritasında, **ön üretim RG-Access Control (IAM)** seçeneğini belirleyin. Ardından sol taraftaki **genel bakış** sayfasını ve ardından **kaynak grubunu sil** düğmesini seçin. Silmeyi onaylamak için _Preüretim RG_ adını girin ve bölmenin altındaki **Sil** ' i seçin.
 

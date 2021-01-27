@@ -3,12 +3,12 @@ title: Azure disk yedekleme 'ye Genel Bakış
 description: Azure disk yedekleme çözümü hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 01/07/2021
-ms.openlocfilehash: d73c431fdc2b2906dc1d3d9485bded9449b2f2ba
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 4db2a5f3f02322f18fcf9203c3560905cde86996
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98733039"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98915517"
 ---
 # <a name="overview-of-azure-disk-backup-in-preview"></a>Azure disk yedekleme 'ye Genel Bakış (önizlemede)
 
@@ -53,7 +53,7 @@ Azure disk yedekleme çözümü aşağıdaki senaryolarda kullanışlıdır:
 
 ## <a name="how-the-backup-and-restore-process-works"></a>Yedekleme ve geri yükleme işleminin nasıl çalıştığı
 
-- Azure dosya paylaşımları için yedeklemeyi yapılandırmanın ilk adımı bir [Yedekleme Kasası](backup-vault-overview.md)oluşturuyor. Kasa, farklı iş yükleri genelinde yapılandırılmış yedeklemelerin birleştirilmiş bir görünümünü sunar.
+- Azure yönetilen diskler için yedeklemeyi yapılandırmanın ilk adımı bir [Yedekleme Kasası](backup-vault-overview.md)oluşturuyor. Kasa, farklı iş yükleri genelinde yapılandırılmış yedeklemelerin birleştirilmiş bir görünümünü sunar.
 
 - Ardından yedekleme sıklığını ve saklama süresini yapılandırmanıza olanak tanıyan bir yedekleme ilkesi oluşturun.
 

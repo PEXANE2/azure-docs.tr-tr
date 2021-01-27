@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 10/05/2020
+ms.date: 01/27/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: 980e830716b66b63c8f2dc6e641a88af26d44871
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 80be5ca22f3dfb673f09327108e66fccc9de6ddd
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97027073"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98918052"
 ---
 # <a name="password-policies-and-account-restrictions-in-azure-active-directory"></a>Azure Active Directory 'deki parola ilkeleri ve hesap kısıtlamaları
 
@@ -75,6 +75,7 @@ Varsayılan olarak, yönetici hesapları self servis parola sıfırlama için et
   * Partner Katman1 desteği
   * Partner Katman2 desteği
   * Exchange yöneticisi
+  * Posta kutusu Yöneticisi
   * Skype Kurumsal yöneticisi
   * Kullanıcı yöneticisi
   * Dizin yazarları
@@ -85,10 +86,12 @@ Varsayılan olarak, yönetici hesapları self servis parola sıfırlama için et
   * Güvenlik yöneticisi
   * Ayrıcalıklı rol yöneticisi
   * Intune yöneticisi
+  * Azure AD 'ye katılmış cihaz yerel Yöneticisi
   * Uygulama Proxy Hizmeti Yöneticisi
   * Dynamics 365 Yöneticisi
   * Power BI hizmet yöneticisi
   * Kimlik doğrulama Yöneticisi
+  * Parola yöneticisi
   * Ayrıcalıklı kimlik doğrulama Yöneticisi
 
 * Deneme aboneliğinde 30 gün geçtikten sonra veya

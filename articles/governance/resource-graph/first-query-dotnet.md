@@ -1,15 +1,15 @@
 ---
 title: 'Hızlı başlangıç: ilk .NET Core sorgunuz'
 description: Bu hızlı başlangıçta, .NET Core için kaynak grafiği NuGet paketlerini etkinleştirmek ve ilk sorgunuzu çalıştırmak için adımları izleyin.
-ms.date: 10/14/2020
+ms.date: 01/27/2021
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5f825b22712956c0b94531ddb163301167f30f00
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 0135dfd499af48b3c60314679f4c9b635a5ce15a
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057476"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98917580"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-net-core"></a>Hızlı başlangıç: .NET Core kullanarak ilk kaynak grafik sorgunuzu çalıştırma
 
@@ -20,7 +20,7 @@ Bu işlemin sonunda, paketleri .NET Core yüklemenize eklemiş ve ilk kaynak Gra
 ## <a name="prerequisites"></a>Önkoşullar
 
 - Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
-- _ClientID_ ve _ClientSecret_dahil olmak üzere bir Azure hizmet sorumlusu. Kaynak Graph ile kullanım için bir hizmet sorumlusu yoksa veya yeni bir tane oluşturmak istiyorsanız bkz. [.net Için Azure Yönetim kitaplıkları kimlik doğrulaması](/dotnet/azure/sdk/authentication#mgmt-auth).
+- _ClientID_ ve _ClientSecret_ dahil olmak üzere bir Azure hizmet sorumlusu. Kaynak Graph ile kullanım için bir hizmet sorumlusu yoksa veya yeni bir tane oluşturmak istiyorsanız bkz. [.net Için Azure Yönetim kitaplıkları kimlik doğrulaması](/dotnet/azure/sdk/authentication#mgmt-auth).
   Sonraki adımlarda bunu yapacağımız için .NET Core paketlerini yüklemek için adımı atlayın.
 
 ## <a name="create-the-resource-graph-project"></a>Kaynak Grafiği projesi oluşturma
@@ -114,7 +114,7 @@ Her çağrıda `argQuery` , kendi değerlerinizle değiştirmeniz gereken kullan
    > [!NOTE]
    > Bu sorgu örneği, `order by` gibi bir sıralama değiştirici sağlamadığı için, bu sorgunun birden çok kez çalıştırılması muhtemelen istek başına farklı bir kaynak kümesi sunacaktır.
 
-1. Son parametreyi olarak değiştirin `argQuery.exe` ve sorguyu Name özelliği olarak değiştirin `order by` : **Name**
+1. Son parametreyi olarak değiştirin `argQuery.exe` ve sorguyu Name özelliği olarak değiştirin `order by` : 
 
    ```bash
    argQuery "{tenantId}" "{clientId}" "{clientSecret}" "{subscriptionId}" "Resources | project name, type | limit 5 | order by name asc"

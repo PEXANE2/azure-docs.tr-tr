@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 03/26/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 91edbbda43365b17b8276572804ba788dbee9f13
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: a808e37c0f0aae2816eb536dc43485c125354b81
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426732"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98916209"
 ---
 # <a name="use-intellij-to-deploy-azure-spring-cloud-applications"></a>IntelliJ kullanarak Azure Spring Cloud uygulamalarını dağıtma
 
@@ -22,15 +22,13 @@ Azure yay bulutu için IntelliJ eklentisi, IntelliJ FIKRINDEN uygulama dağıtı
 
 Bu örneği çalıştırmadan önce [temel hızlı](spring-cloud-quickstart.md)başlangıcı deneyebilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
-* [JDK 8 Azul Zulu](/java/azure/jdk/java-jdk-install?preserve-view=true&view=azure-java-stable)
-* [Maven 3.5.0 +](https://maven.apache.org/download.cgi)
+## <a name="prerequisites"></a>Önkoşullar
 * [IntelliJ fıkır, topluluk/Ultimate Edition, sürüm 2020.1/2020.2](https://www.jetbrains.com/idea/download/#section=windows)
 
 ## <a name="install-the-plug-in"></a>Eklentiyi yükler
 IntelliJ **eklentileri** kullanıcı ARABIRIMINDEN Azure Toolkit for IntelliJ fikir 3.43.0 ekleyebilirsiniz.
 
-1. IntelliJ 'yi başlatın.  Daha önce bir proje açtıysanız, hoş geldiniz iletişim kutusunu görüntülemek için projeyi kapatın. Sağ alt bağlantıdan **Yapılandır** ' ı seçin ve sonra eklenti yapılandırması iletişim kutusunu **açmak için eklentiler** ' i tıklatın ve **eklentileri diskten yüklemeyi**seçin.
+1. IntelliJ 'yi başlatın.  Daha önce bir proje açtıysanız, hoş geldiniz iletişim kutusunu görüntülemek için projeyi kapatın. Sağ alt bağlantıdan **Yapılandır** ' ı seçin ve sonra eklenti yapılandırması iletişim kutusunu **açmak için eklentiler** ' i tıklatın ve **eklentileri diskten yüklemeyi** seçin.
 
     ![Yapılandır 'ı seçin](media/spring-cloud-intellij-howto/configure-plugin-1.png)
 
@@ -38,7 +36,7 @@ IntelliJ **eklentileri** kullanıcı ARABIRIMINDEN Azure Toolkit for IntelliJ fi
 
     ![Eklentiyi yükler](media/spring-cloud-intellij-howto/install-plugin.png)
 
-1. **IDE 'Yi yeniden Başlat**seçeneğine tıklayın.
+1. **IDE 'Yi yeniden Başlat** seçeneğine tıklayın.
 
 ## <a name="tutorial-procedures"></a>Öğretici yordamları
 Aşağıdaki yordamlar IntelliJ FIKRINI kullanarak bir Merhaba Dünya uygulaması dağıtır.
@@ -64,12 +62,12 @@ Azure 'a dağıtmak için Azure hesabınızla oturum açmanız ve aboneliğinizi
     ![Azure 'a dağıtma 1](media/spring-cloud-intellij-howto/deploy-to-azure-1.png)
 
 1. **Ad** alanındaki uygulamanın adını kabul edin. **Ad** , uygulama adı değil, yapılandırmaya başvurur. Kullanıcıların genellikle bunu değiştirmesi gerekmez.
-1. **Yapıt**için projeden tanımlayıcıyı kabul edin.
+1. **Yapıt** için projeden tanımlayıcıyı kabul edin.
 1. **Uygulama seçin:** ardından **uygulama oluştur...** öğesine tıklayın.
 
     ![Azure 2 ' ye dağıtma](media/spring-cloud-intellij-howto/deploy-to-azure-2.png)
 
-1. **Uygulama adı**girin ve ardından **Tamam**' a tıklayın.
+1. **Uygulama adı** girin ve ardından **Tamam**' a tıklayın.
 
     ![Azure 'a dağıtma Tamam](media/spring-cloud-intellij-howto/deploy-to-azure-2a.png)
 

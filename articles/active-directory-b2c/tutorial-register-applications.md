@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 04/10/2020
+ms.date: 01/27/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 84a3ef7b41b17e85c594213246211d45911ac56a
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: a39230cc65db6ef12b6fa4364454aeb434efddf6
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94953058"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98918220"
 ---
 # <a name="tutorial-register-a-web-application-in-azure-active-directory-b2c"></a>Öğretici: bir Web uygulamasını Azure Active Directory B2C kaydetme
 
@@ -98,6 +98,14 @@ Bir Web uygulaması için bir uygulama gizli anahtarı oluşturmanız gerekir. B
 1. Anahtarı görüntülemek için **Kaydet** ' i seçin. **Uygulama anahtarı** değerini not edin. Bu değeri, uygulamanızın kodunda uygulama gizli anahtarı olarak kullanırsınız.
 
 * * *
+
+## <a name="enable-id-token-implicit-grant"></a>KIMLIK belirteci örtük izni etkinleştir
+
+Örtük izin tanımlama özelliği, KIMLIK ve erişim belirteçleri gibi belirteçlerin uygulamaya doğrudan Azure AD B2C döndürüldüğünden oluşur. ASP.NET Core Web Apps ve [https://jwt.ms](https://jwt.ms) doğrudan yetkilendirme uç noktasından BIR kimlik belirteci isteyen Web Apps için, uygulama kaydında örtük verme akışını etkinleştirin.
+
+1. Sol taraftaki menüde, **Yönet** altında **kimlik doğrulaması**' nı seçin.
+1. Örtük izin ' ın altında, **erişim belirteçleri** ve **Kimlik belirteçleri** onay kutularını seçin.
+1. **Kaydet**’i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

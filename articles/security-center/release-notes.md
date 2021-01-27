@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/25/2021
+ms.date: 01/27/2021
 ms.author: memildin
-ms.openlocfilehash: ee9a20d3e5bb6974676d6d7a8285a56247756f64
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 5dd58dd5f43481184b17ca4bdd694a1df76697db
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98784957"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98916479"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure Güvenlik Merkezi 'ndeki yenilikler nelerdir?
 
@@ -46,6 +46,7 @@ Ocak ayında güncelleştirmeler şunları içerir:
 - [Azure Güvenlik kıyaslamasının kapsamını artırmak için 35 önizleme önerisi eklendi](#35-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark)
 - [Filtrelenmiş öneriler listesinin CSV dışa aktarılması](#csv-export-of-filtered-list-of-recommendations)
 - ["Uygulanamaz" kaynakları artık Azure Ilke değerlendirmelerinde "uyumlu" olarak bildirildi](#not-applicable-resources-now-reported-as-compliant-in-azure-policy-assessments)
+- [Sürekli dışa aktarma ile güvenli Puanlama ve mevzuat uyumluluk verilerinin haftalık anlık görüntülerini dışarı aktarma (Önizleme)](#export-weekly-snapshots-of-secure-score-and-regulatory-compliance-data-with-continuous-export-preview)
 
 
 ### <a name="azure-security-benchmark-is-now-the-default-policy-initiative-for-azure-security-center"></a>Azure Güvenlik kıyaslaması artık Azure Güvenlik Merkezi için varsayılan ilke girişimidir
@@ -224,6 +225,18 @@ Daha önce, bir öneri için değerlendirilen ve **geçerli olmayan** kaynaklar 
 Azure Ilkesinde, uyumlu kaynakların sayısının arttıracağı tek etkisi görünür. Azure Güvenlik Merkezi 'nde güvenli puanınızın hiçbir etkisi olmayacaktır.
 
 
+### <a name="export-weekly-snapshots-of-secure-score-and-regulatory-compliance-data-with-continuous-export-preview"></a>Sürekli dışa aktarma ile güvenli Puanlama ve mevzuat uyumluluk verilerinin haftalık anlık görüntülerini dışarı aktarma (Önizleme)
+
+Güvenli Puanlama ve mevzuat uyumluluk verilerinin haftalık anlık görüntülerini dışarı aktarmak için [sürekli dışa aktarma](continuous-export.md) araçlarına yeni bir önizleme özelliği ekledik.
+
+Sürekli dışarı aktarma tanımladığınızda dışa aktarma sıklığını ayarlayın:
+
+:::image type="content" source="media/release-notes/export-frequency.png" alt-text="Sürekli dışarı aktarmanın sıklığını seçme":::
+
+- **Akış** – bir kaynağın sistem durumu güncelleştirildiğinde değerlendirmeler gerçek zamanlı olarak gönderilir (hiçbir güncelleştirme gerçekleşmezse, hiçbir veri gönderilmez).
+- **Anlık görüntüler** : tüm yasal uyumluluk değerlendirmelerinin geçerli durumunun bir anlık görüntüsü her hafta gönderilir (Bu, güvenli puanlar ve mevzuat uyumluluk verilerinin haftalık anlık görüntüleri için bir önizleme özelliğidir).
+
+[Güvenlik Merkezi verilerini sürekli dışa aktarma](continuous-export.md) bölümünde bu özelliğin tüm özellikleri hakkında daha fazla bilgi edinin
 
 ## <a name="december-2020"></a>Aralık 2020
 

@@ -1,14 +1,14 @@
 ---
 title: Şema dağıtımının aşamaları
-description: Şema atama oluştururken Azure şemaları hizmetlerinin üzerinden geçen güvenlik ve yapıt ile ilgili adımları öğrenin.
-ms.date: 08/27/2020
+description: Azure şemaları hizmetlerinin bir şema ataması oluştururken üzerinden gittiği güvenlik ve yapıt ile ilgili adımları öğrenin.
+ms.date: 01/27/2021
 ms.topic: conceptual
-ms.openlocfilehash: 73d5d67cf77d4ccc48517c895630b8299081e2e0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e686dec1c9d79e42dafee17d8a937284aac4fdd6
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89049783"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98918560"
 ---
 # <a name="stages-of-a-blueprint-deployment"></a>Şema dağıtımının aşamaları
 

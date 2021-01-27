@@ -4,12 +4,12 @@ description: Bu makalede, yedeklemeleri ve kurtarma noktalarını depolayan kurt
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.custom: references_regions
-ms.openlocfilehash: 3ba9f47da4a4c9719c313ba196ca121f8cde54ad
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
+ms.openlocfilehash: 51d095ab68bc9277cb610bd226039ffbde8d7ddf
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97387743"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98915735"
 ---
 # <a name="create-and-configure-a-recovery-services-vault"></a>Kurtarma Hizmetleri Kasası oluşturma ve yapılandırma
 
@@ -46,9 +46,9 @@ Azure Backup kasa için depolamayı otomatik olarak işler. Bu depolamanın nas�
 
 Aşağıdaki veri kaynaklarını destekler:
 
-- Azure VM’leri
-- Azure VM 'lerinde barındırılan SQL veritabanları
-- Azure VM 'lerinde barındırılan SAP HANA veritabanları
+- Azure VM 'Leri (genel kullanılabilirlik)
+- Azure VM 'lerinde barındırılan SQL veritabanları (Önizleme)
+- Azure VM 'lerinde barındırılan SAP HANA veritabanları (Önizleme)
 
 Çapraz bölge geri yükleme kullanmak şunları yapmanıza olanak sağlar:
 
@@ -65,11 +65,12 @@ Bu işlem depolama düzeyinde olduğundan, [fiyatlandırma etkileri](https://azu
 >Başlamadan önce:
 >
 >- Desteklenen yönetilen türlerin ve bölgelerin listesi için [destek matrisini](backup-support-matrix.md#cross-region-restore) gözden geçirin.
->- Çapraz bölge geri yükleme (CRR) özelliği artık tüm Azure genel bölgelerinde önizlenebilir.
+>- Azure VM 'Leri için çapraz bölge geri yükleme (CRR) özelliği artık tüm Azure genel bölgelerinde genel kullanıma sunuldu.
+>- SQL ve SAP HANA veritabanları için çapraz bölge geri yükleme, tüm Azure genel bölgelerinde önizleme aşamasındadır.
 >- CRR, herhangi bir GRS Kasası için kasa düzeyi katılım özelliğidir (varsayılan olarak kapalıdır).
 >- Bu işlem yapıldıktan sonra, yedekleme öğelerinin ikincil bölgelerde kullanılabilmesi 48 saat kadar sürebilir.
 >- Azure VM 'Leri için şu anda CRR yalnızca Azure Resource Manager Azure VM 'Leri için desteklenir. Klasik Azure VM 'Leri desteklenmez.  Ek yönetim türleri CRR 'yi desteklediklerinde, bunlar **otomatik olarak** kaydedilir.
->- Koruma ilk kez başlatıldığında çapraz bölge geri yüklemesi şu anda GRS veya LRS 'ye geri döndürülemez.
+>- Koruma ilk kez başlatıldığında çapraz bölge geri yüklemesi şu anda GRS veya LRS 'ye **geri döndürülemez** .
 
 ### <a name="configure-cross-region-restore"></a>Çapraz bölge geri yüklemeyi yapılandırma
 

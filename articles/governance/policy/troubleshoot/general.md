@@ -1,14 +1,14 @@
 ---
 title: Sık karşılaşılan hataları giderme
 description: İlke tanımları, çeşitli SDK 'lar ve Kubernetes için eklenti oluşturma sorunlarını giderme hakkında bilgi edinin.
-ms.date: 12/01/2020
+ms.date: 01/26/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: 6f31f6e6f8d24f83f44dc14112f1bdc90c8af859
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 0a64346188696cc7cc16d832474ec4ee6befdae2
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 01/27/2021
-ms.locfileid: "98897080"
+ms.locfileid: "98917752"
 ---
 # <a name="troubleshoot-errors-with-using-azure-policy"></a>Azure Ilkesini kullanmayla ilgili sorunları giderme
 
@@ -36,13 +36,14 @@ Hata ayrıntılarının konumu, üzerinde çalıştığınız Azure Ilkesinin en
 
 #### <a name="resolution"></a>Çözüm
 
-İlk olarak, Kaynak Yöneticisi özelliğinin bir diğer adı olduğunu doğrulayın. Kullanılabilir diğer adları aramak için Visual Studio Code veya SDK [Için Azure ilke uzantısı](../how-to/extension-for-vscode.md) ' na gidin. Bir Kaynak Yöneticisi özelliği için diğer ad yoksa, bir destek bileti oluşturun.
+İlk olarak, Kaynak Yöneticisi özelliğinin bir diğer adı olduğunu doğrulayın. Kullanılabilir diğer adları aramak için Visual Studio Code veya SDK [Için Azure ilke uzantısı](../how-to/extension-for-vscode.md) ' na gidin.
+Bir Kaynak Yöneticisi özelliği için diğer ad yoksa, bir destek bileti oluşturun.
 
 ### <a name="scenario-evaluation-details-arent-up-to-date"></a>Senaryo: değerlendirme ayrıntıları güncel değil
 
 #### <a name="issue"></a>Sorun
 
-Kaynak *başlatılmamış* durumda veya uyumluluk ayrıntıları güncel değil.
+Kaynak _başlatılmamış_ durumda veya uyumluluk ayrıntıları güncel değil.
 
 #### <a name="cause"></a>Nedeni
 
@@ -90,7 +91,8 @@ Azure Ilkesinin üzerinde çalışmasını beklediğinizi belirten bir kaynak ü
 
 #### <a name="cause"></a>Nedeni
 
-İlke ataması, _devre dışı bırakılmış_ bir [**Enforcementmode**](../concepts/assignment-structure.md#enforcement-mode) ayarı için yapılandırıldı. **Enforcementmode** devre dışı olsa da, ilke efekti zorlanmaz ve etkinlik günlüğünde giriş yoktur.
+İlke ataması, _devre dışı bırakılmış_ bir [**Enforcementmode**](../concepts/assignment-structure.md#enforcement-mode) ayarı için yapılandırıldı.
+**Enforcementmode** devre dışı olsa da, ilke efekti zorlanmaz ve etkinlik günlüğünde giriş yoktur.
 
 #### <a name="resolution"></a>Çözüm
 
@@ -101,7 +103,7 @@ Aşağıdakileri yaparak ilke atamasının zorlanmasıyla ilgili sorunları gide
 1. Azure PowerShell veya REST API ile yeni bir değerlendirme taraması başlatmak için bkz. [isteğe bağlı değerlendirme taraması](../how-to/get-compliance-data.md#on-demand-evaluation-scan).
 1. Atama parametrelerinin ve atama kapsamının doğru ayarlandığından ve **Enforcementmode** 'un _etkinleştirildiğinden_ emin olun.
 1. [İlke tanımı modunu](../concepts/definition-structure.md#mode) denetleyin:
-   - Mod `all` tüm ' kaynak türleri için olmalıdır.
+   - Mod `all` tüm kaynak türleri için olmalıdır.
    - `indexed`İlke tanımı, etiketleri veya konumu denetlediğinde mod olmalıdır.
 1. Kaynak kapsamının [dışlandığından](../concepts/assignment-structure.md#excluded-scopes) veya [muaf](../concepts/exemption-structure.md)olmadığından emin olun.
 1. Kaynak yükünün ilke mantığını eşleştirdiğini doğrulayın. Bu, [BIR http Arşivi (Har) izlemesi yakalanarak](../../../azure-portal/capture-browser-trace.md) veya Azure Resource Manager şablonu (ARM şablonu) özelliklerini inceleyerek yapılabilir.
@@ -186,7 +188,7 @@ Konuk yapılandırma DeployIfNotExists tanımlarında daha önce kullanılan ilk
 
 #### <a name="resolution"></a>Çözüm
 
-Daha önce Bu soruna neden olan tanımlar *[kullanım dışı]* olarak görünür ve Kullanıcı tarafından atanan yönetilen kimlikleri kaldırmadan önkoşulları yöneten ilke tanımlarına göre değiştirilirler. El ile bir adım gereklidir. *[Kullanım dışı]* olarak işaretlenen tüm mevcut ilke atamalarını silin ve bunları orijinalle aynı ada sahip güncelleştirilmiş önkoşul ilkesi girişimi ve ilke tanımlarıyla değiştirin.
+Daha önce Bu soruna neden olan tanımlar _\[ kullanım dışı \]_ olarak görünür ve Kullanıcı tarafından atanan yönetilen kimlikleri kaldırmadan önkoşulları yöneten ilke tanımlarına göre değiştirilirler. El ile bir adım gereklidir. _\[ Kullanım dışı \]_ olarak işaretlenen tüm mevcut ilke atamalarını silin ve bunları, orijinalle aynı ada sahip olan güncelleştirilmiş önkoşul ilkesi girişimi ve ilke tanımlarıyla değiştirin.
 
 Ayrıntılı bir anlatım için, [Konuk yapılandırma denetim ilkeleri Için önemli değişiklik yayımlanan](https://techcommunity.microsoft.com/t5/azure-governance-and-management/important-change-released-for-guest-configuration-audit-policies/ba-p/1655316)blog gönderisine bakın.
 
@@ -226,11 +228,11 @@ Eklenti Azure Ilke hizmeti uç noktasına ulaşamıyor ve aşağıdaki hatalarda
 Bu hata, kümeye _Add-Pod kimliği_ yüklendiğinde ve _Kuto-System_ 'ların _AAD-Pod kimliği_'nde dışlanmadığı durumlarda oluşur.
 
 _AAD-Pod kimliği_ bileşen düğümü yönetilen kimliği (NMI) Pod, Azure örnek meta veri uç noktası çağrılarını ele almak için düğümlerin Iptables 'larını değiştirir. Bu kurulum, Pod 'ın _AAD-Pod kimliği_ kullanmıyor olsa bile meta veri uç noktasına yapılan tüm istekler nmi tarafından yakalanmasıdır.
-*AzurePodIdentityException* customresourcedefinition (CRD), _AAD_ 'de tanımlanan etiketlerle eşleşen bir pod 'dan kaynaklanan bir meta veri uç noktasına yapılan isteklerin NMI 'da herhangi bir işlem yapılmadan proxy olması gerektiğini bildirmek üzere yapılandırılabilir.
+_AzurePodIdentityException_ customresourcedefinition (CRD), _AAD_ 'de tanımlanan etiketlerle eşleşen bir pod 'dan kaynaklanan bir meta veri uç noktasına yapılan isteklerin NMI 'da herhangi bir işlem yapılmadan proxy olması gerektiğini bildirmek üzere yapılandırılabilir.
 
 #### <a name="resolution"></a>Çözüm
 
-`kubernetes.azure.com/managedby: aks` *AzurePodIdentityException* CRD 'yi yapılandırarak _AAD-Pod-identity_ içindeki _Kuto-System_ ad alanında etiketi olan sistem yığınlarını hariç tutun.
+`kubernetes.azure.com/managedby: aks` _AzurePodIdentityException_ CRD 'yi yapılandırarak _AAD-Pod-identity_ içindeki _Kuto-System_ ad alanında etiketi olan sistem yığınlarını hariç tutun.
 
 Daha fazla bilgi için bkz. [belirli bir pod/uygulama için Azure Active Directory (Azure AD) Pod kimliğini devre dışı bırakma](https://azure.github.io/aad-pod-identity/docs/configure/application_exception).
 
@@ -264,11 +266,11 @@ spec:
 Eklenti Azure Ilke hizmeti uç noktasına ulaşabilir, ancak eklenti günlükleri aşağıdaki hatalardan birini görüntüler:
 
 - `The resource provider 'Microsoft.PolicyInsights' is not registered in subscription '{subId}'. See
-https://aka.ms/policy-register-subscription for how to register subscriptions.`
+  https://aka.ms/policy-register-subscription for how to register subscriptions.`
 
 - `policyinsightsdataplane.BaseClient#CheckDataPolicyCompliance: Failure responding to request:
-StatusCode=500 -- Original Error: autorest/azure: Service returned an error. Status=500
-Code="InternalServerError" Message="Encountered an internal server error.`
+  StatusCode=500 -- Original Error: autorest/azure: Service returned an error. Status=500
+  Code="InternalServerError" Message="Encountered an internal server error.`
 
 #### <a name="cause"></a>Nedeni
 

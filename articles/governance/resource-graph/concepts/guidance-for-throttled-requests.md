@@ -1,15 +1,15 @@
 ---
 title: Kısıtlanan istekler için yönergeler
 description: Azure Kaynak Grafiği tarafından daraltılan isteklerin önüne geçmek için, paralel olarak Grup, Stagger, sayfal ve sorgu yapmayı öğrenin.
-ms.date: 10/14/2020
+ms.date: 01/27/2021
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4a8ba991d13b9be221e67f2ff1e393fb01f8a2d4
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: ddd3cf4d411733e831c94039c3bc9aeaf0e95271
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92056183"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98917716"
 ---
 # <a name="guidance-for-throttled-requests-in-azure-resource-graph"></a>Azure Kaynak grafiğinde kısıtlanmış isteklere yönelik kılavuz
 
@@ -132,7 +132,7 @@ Kısıtlama zorlandığı için sorguların kademeli olmasını öneririz. Diğe
   |---------------------|-----|------|-------|-------|
   | Zaman aralığı (sn) | 0-5 | 5-10 | 10-15 | 15-20 |
 
-Azure Kaynak Grafını sorgularken azaltma üst bilgilerini önceden oluşturma örneği aşağıda verilmiştir:
+Azure Kaynak Grafını sorgularken azaltma üst bilgilerini önceden oluşturma hakkında bir örnek aşağıda verilmiştir:
 
 ```csharp
 while (/* Need to query more? */)
@@ -156,7 +156,7 @@ while (/* Need to query more? */)
 
 ### <a name="query-in-parallel"></a>Paralel olarak sorgula
 
-Gruplandırmanın paralelleştirme üzerinde kullanılması önerilse de, sorguların kolayca gruplanamamasının zaman vardır. Bu durumlarda, paralel bir biçimde birden fazla sorgu göndererek Azure Kaynak grafiğini sorgulamak isteyebilirsiniz. Bu tür senaryolarda azaltma üst bilgilerine göre nasıl _geri_ alınacağını gösteren bir örnek aşağıda verilmiştir:
+Gruplandırmanın paralelleştirme üzerinde kullanılması önerilse de, sorguların kolayca gruplanamamasının zaman vardır. Bu durumlarda, paralel bir biçimde birden fazla sorgu göndererek Azure Kaynak grafiğini sorgulamak isteyebilirsiniz. Bu tür senaryolarda azaltma üst bilgilerine göre _geri_ alma hakkında bir örnek aşağıda verilmiştir:
 
 ```csharp
 IEnumerable<IEnumerable<string>> queryGroup = /* Groups of queries  */

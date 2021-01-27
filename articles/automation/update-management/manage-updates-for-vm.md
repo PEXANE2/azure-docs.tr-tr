@@ -4,14 +4,13 @@ description: Bu makalede, Azure ve Azure olmayan sanal makinelerinize yönelik g
 services: automation
 ms.subservice: update-management
 ms.topic: conceptual
-ms.date: 07/28/2020
-ms.custom: mvc
-ms.openlocfilehash: 24dcb501872aabf9fac3da0cccc2a1af9c9b06ff
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.date: 01/27/2021
+ms.openlocfilehash: c86c9049bc0afc81f5dfd8553d2aa98cfd4b1a46
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92223040"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98915991"
 ---
 # <a name="manage-updates-and-patches-for-your-vms"></a>VM 'niz için güncelleştirmeleri ve düzeltme eklerini yönetme
 
@@ -35,11 +34,13 @@ Güncelleştirme Yönetimi, güncelleştirmeleri almak için bilgisayarları hed
 
 Makinelerinize yazılım güncelleştirmeleri dağıtmadan önce, etkinleştirilmiş makineler için güncelleştirme uyumluluğu değerlendirmesi sonuçlarını gözden geçirin. Her yazılım güncelleştirmesi için, uyumluluk durumu kaydedilir ve değerlendirme tamamlandıktan sonra Azure Izleyici günlüklerine toplu olarak toplanır ve iletilir.
 
-Bir Windows makinesinde, uyumluluk taraması varsayılan olarak her 12 saatte bir çalıştırılır. Zamanlanan taramaya ek olarak, güncelleştirme uyumluluğuna yönelik tarama, güncelleştirme yüklemesinden önce ve güncelleştirme yüklemesinden sonra, Windows için Log Analytics aracısının 15 dakika içinde başlatılır. Ayrıca, doğru yönetilmesini engelleyen sorunlardan kaçınmak için [Windows Update istemcisinin güncelleştirme yönetimi yapılandırma](configure-wuagent.md) önerilerini gözden geçirmeniz önemlidir.
+Bir Windows makinesinde, uyumluluk taraması varsayılan olarak her 12 saatte bir çalıştırılır ve Windows için Log Analytics Aracısı başlatıldığında 15 dakika içinde başlatılır. Değerlendirme verileri daha sonra çalışma alanına iletilir ve **güncelleştirmeler** tablosu yenilenir. Güncelleştirme yüklemesinden önce ve sonra, eksik güncelleştirmeleri belirlemek için bir güncelleştirme uyumluluğu taraması yapılır, ancak sonuçlar tablodaki değerlendirme verilerini güncelleştirmek için kullanılmaz.
+
+Doğru yönetilmesini engelleyen sorunlardan kaçınmak için [Windows Update istemcisinin güncelleştirme yönetimi yapılandırma](configure-wuagent.md) önerilerini gözden geçirmeniz önemlidir.
 
 Bir Linux makinesi için, uyumluluk taraması her saat varsayılan olarak gerçekleştirilir. Linux için Log Analytics Aracısı yeniden başlatılırsa, 15 dakika içinde bir uyumluluk taraması başlatılır.
 
-Uyumluluk sonuçları, değerlendirilen her makine için Güncelleştirme Yönetimi olarak sunulur. Yönetim için etkinleştirilen yeni bir makine için panonun güncelleştirilmiş verileri görüntülemesi 30 dakika kadar sürebilir.
+Uyumluluk sonuçları, değerlendirilen her makine için Güncelleştirme Yönetimi olarak sunulur. Panonun yönetim için etkinleştirilen yeni bir makineden güncelleştirilmiş verileri görüntülemesi 30 dakika kadar sürebilir.
 
 Uyumluluk sonuçlarının nasıl görüntüleneceğini öğrenmek için [yazılım güncelleştirmelerini izleyin](view-update-assessments.md) ' i gözden geçirin.
 

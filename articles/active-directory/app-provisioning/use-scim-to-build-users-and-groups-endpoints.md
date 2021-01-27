@@ -1,27 +1,22 @@
 ---
-title: Azure AD 'den uygulamalara Kullanıcı hazırlama için bir SCıM uç noktası oluşturun
-description: Etki alanları arası kimlik yönetimi (SCıM) sistemi, otomatik Kullanıcı sağlamayı standartlaştırlar. Bir SCıM uç noktası geliştirmeyi, SCıM API 'nizi Azure Active Directory ile tümleştirmeyi ve bulut uygulamalarınıza kullanıcıları ve grupları sağlamayı otomatik hale getirmeye başlamasını öğrenin.
+title: Azure Active Directory 'ten uygulamalara Kullanıcı sağlaması için bir SCıM uç noktası oluşturun
+description: Etki alanları arası kimlik yönetimi (SCıM) sistemi, otomatik Kullanıcı sağlamayı standartlaştırlar. Bir SCıM uç noktası geliştirmeyi, SCıM API 'nizi Azure Active Directory tümleştirme ve Azure Active Directory ile bulut uygulamalarınıza sağlama kullanıcıları ve grupları otomatikleştirmeye başlama hakkında bilgi edinin.
 services: active-directory
-documentationcenter: ''
-author: msmimart
+author: kenwith
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/07/2020
-ms.author: mimart
+ms.date: 01/27/2021
+ms.author: kenwith
 ms.reviewer: arvinh
-ms.custom: aaddev;it-pro;seohack1
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ae36af981b113d44ac1b8fd45a1d084760b0294
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 34fa76197c4e08cffd1d8c66d6877b3e427e9fd6
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 01/27/2021
-ms.locfileid: "98900248"
+ms.locfileid: "98918153"
 ---
 # <a name="tutorial-develop-a-sample-scim-endpoint"></a>Öğretici: örnek SCıM uç noktası geliştirme
 
@@ -30,72 +25,12 @@ Sıfırdan yeni bir uç nokta derlemek istemediğinde, [SCIM](https://aka.ms/sci
 Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
-> * Başvuru kodunu indirin
 > * SCıM uç noktanızı Azure 'da dağıtma
 > * SCıM uç noktanızı test etme
 
-Dahil edilen uç nokta özellikleri şunlardır:
-
-|Uç Nokta|Açıklama|
-|---|---|
-|`/User`|Kullanıcı kaynağında CRUD işlemleri gerçekleştirme: **oluşturma**, **güncelleştirme**, **silme**, **Al**, **Listele**, **filtre**|
-|`/Group`|Bir grup kaynağında CRUD işlemleri gerçekleştirme: **Oluştur**, **Güncelleştir**, **Sil**, **Al**, **Listele**, **Filtrele**|
-|`/Schemas`|Desteklenen bir veya daha fazla şema alın.<br/><br/>Her bir hizmet sağlayıcı tarafından desteklenen bir kaynağın öznitelik kümesi farklılık gösterebilir. Örneğin, servis sağlayıcı B, kullanıcılar için "ad", "başlık" ve "phoneNumbers" i destekleirken "ad", "başlık" ve "e-postaları" destekler.|
-|`/ResourceTypes`|Desteklenen kaynak türlerini alın.<br/><br/>Her bir hizmet sağlayıcısı tarafından desteklenen kaynak sayısı ve türleri farklılık gösterebilir. Örneğin, servis sağlayıcı B kullanıcıları ve grupları destekleirken, hizmet sağlayıcı A kullanıcıları destekler.|
-|`/ServiceProviderConfig`|Hizmet sağlayıcısının SCıM yapılandırmasını al<br/><br/>Her bir hizmet sağlayıcısı tarafından desteklenen SCıM özellikleri farklılık gösterebilir. Örneğin, hizmet sağlayıcısı B, yama Işlemlerini ve şema bulmayı destekleirken, hizmet sağlayıcı A, yama işlemlerini destekler.|
-
-## <a name="download-the-reference-code"></a>Başvuru kodunu indirin
-
-İndirilecek [başvuru kodu](https://github.com/AzureAD/SCIMReferenceCode) aşağıdaki projeleri içerir:
-
-- Bir SCıM API 'SI derlemek ve sağlamak için .NET Core MVC web API 'SI olan **TemforcrossdomainıdentitymanagementMicrosoft.Sys**
-- SCıM uç noktasının çalışan bir örneği olan **Microsoft. SCIM. WebHostSample**
-
-Projeler aşağıdaki klasörleri ve dosyaları içerir:
-
-|Dosya/klasör|Description|
-|-|-|
-|**Şemalar** klasörü| Paylaşılan işlevler için şema gibi bazı soyut sınıflarla birlikte **Kullanıcı** ve **Grup** kaynakları için modeller.<br/><br/> **Kullanıcılar** ve adresler gibi **grupların** karmaşık özniteliklerinin sınıf tanımlarını içeren **öznitelikler** klasörü.|
-|**Hizmet** klasörü | Kaynakların sorgulanma ve güncelleştirilme yöntemiyle ilgili eylemler için mantık içerir.<br/><br/> Başvuru kodunda kullanıcıları ve grupları döndürmek için hizmetler vardır.<br/><br/>**Denetleyiciler** klasörü çeşitli SCIM uç noktalarını içerir. Kaynak denetleyicileri kaynak üzerinde CRUD işlemleri gerçekleştirmeye yönelik HTTP fiillerini içerir (**Get**, **Post**, **PUT**, **Patch**, **Delete**). Denetleyiciler, eylemleri gerçekleştirmek için Hizmetleri kullanır.|
-|**Protokol** klasörü|, Kaynakların SCıM RFC 'e göre döndürüldüğü şekilde ilgili eylemler için mantığı içerir:<br/><ul><li>Birden çok kaynak liste olarak döndürülüyor.</li><li>Yalnızca belirli kaynaklar bir filtreye göre döndürülüyor.</li><li>Bir sorguyu tek filtrelerin bağlantılı listeleri listesine dönüştürme.</li><li>Bir yama isteğini değer yolu ile ilgili özniteliklerle bir işleme açma.</li><li>Kaynak nesnelerine değişiklikler uygulamak için kullanılabilecek işlem türünü tanımlama.</li></ul>|
-|`Microsoft.SystemForCrossDomainIdentityManagement`| Örnek kaynak kodu.|
-|`Microsoft.SCIM.WebHostSample`| SCıM kitaplığının örnek uygulama.|
-|*. gitignore*|Kayıt zamanında yoksayılacağını tanımlayın.|
-|*CHANGELOG.md*|Örnekteki değişikliklerin listesi.|
-|*CONTRIBUTING.md*|Örneğe katkıda bulunmak için yönergeler.|
-|*BENİOKU.MD*|Bu **Benioku** dosyası.|
-|*LISAN*|Örnek için lisans.|
-
-> [!NOTE]
-> Bu kod, bir SCıM uç noktası oluşturmaya başlamanıza yardımcı olmak için tasarlanmıştır ve **olarak** sağlanır. Dahil edilen başvuruların etkin bakım veya destek garantisi yoktur.
->
-> Bu proje [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/) (Microsoft Açık Kaynak Kullanım Kuralları) belgesinde listelenen kurallara uygundur. Topluluktaki [katkılar](https://github.com/AzureAD/SCIMReferenceCode/wiki/Contributing-Overview) , depoyu oluşturmaya ve tutmaya yardımcı olmak ve diğer açık kaynaklı katkılar gibi, katkıda bulunan lisans sözleşmesi 'NI (CLA) kabul etmiş olursunuz. Bu anlaşma, sahip olduğunuz ve katkılarınızı kullanma haklarına verdiğiniz bilgileri bildirir ve Ayrıntılar için bkz. [Microsoft açık kaynak](https://cla.opensource.microsoft.com).
->
-> Daha fazla bilgi için [Kullanım Kuralları hakkında SSS](https://opensource.microsoft.com/codeofconduct/faq/) bölümüne bakın veya başka soru ya da görüşleriniz olursa [opencode@microsoft.com](mailto:opencode@microsoft.com) ile iletişime geçin.
-
-###  <a name="use-multiple-environments"></a>Birden çok ortam kullanma
-
-Dahil edilen SCıM kodu, geliştirme sırasında ve dağıtımdan sonra kullanım için Yetkilendirmeyi denetlemek üzere bir ASP.NET Core ortamı kullanır, bkz. [ASP.NET Core birden çok ortam kullanma](https://docs.microsoft.com/aspnet/core/fundamentals/environments?view=aspnetcore-3.1).
-
-```csharp
-private readonly IWebHostEnvironment _env;
-...
-
-public void ConfigureServices(IServiceCollection services)
-{
-    if (_env.IsDevelopment())
-    {
-        ...
-    }
-    else
-    {
-        ...
-    }
-```
-
 ## <a name="deploy-your-scim-endpoint-in-azure"></a>SCıM uç noktanızı Azure 'da dağıtma
 
-Burada sunulan adımlar, [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/) ve [Azure Uygulama Hizmetleri](https://docs.microsoft.com/azure/app-service/)'ni kullanarak SCIM uç noktasını bir hizmete dağıtır. SCıM başvuru kodu, şirket içi sunucu tarafından barındırılan veya başka bir dış hizmete dağıtılan yerel olarak da çalıştırılabilir. 
+Burada sunulan adımlar, [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/) ve [Azure Uygulama Hizmetleri](https://docs.microsoft.com/azure/app-service/)'ni kullanarak SCIM uç noktasını bir hizmete dağıtır. SCıM başvuru kodu, şirket içi bir sunucu tarafından barındırılan veya başka bir dış hizmete dağıtılan yerel olarak da çalıştırılabilir. 
 
 ### <a name="open-solution-and-deploy-to-azure-app-service"></a>Çözümü açın ve Azure App Service dağıtın
 
@@ -139,7 +74,7 @@ Kullanıcı adı/parola gibi güvenli olmayan yöntemlerden, OAuth gibi daha gü
 > [!NOTE]
 > Depoda belirtilen yetkilendirme yöntemleri yalnızca test içindir. Azure AD ile tümleştirilirken, yetkilendirme kılavuzunu gözden geçirebilirsiniz, bkz. [BIR SCıM uç noktası Için plan sağlama](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#authorization-for-provisioning-connectors-in-the-application-gallery). 
 
-Geliştirme ortamı, güvenlik belirteci doğrulamasının davranışını denetlemek için başvuru kodu gibi üretime yönelik güvenli olmayan özellikleri sağlar. Belirteç doğrulama kodu, kendinden imzalı bir güvenlik belirteci kullanacak şekilde yapılandırılmıştır ve imzalama anahtarı yapılandırma dosyasında depolanır, dosyadaki *appsettings.Development.js* **belirteç: ıssuersigningkey** parametresine bakın.
+Geliştirme ortamı, güvenlik belirteci doğrulamasının davranışını denetlemek için başvuru kodu gibi üretime yönelik güvenli olmayan özellikleri sağlar. Belirteç doğrulama kodu otomatik olarak imzalanan bir güvenlik belirteci kullanacak şekilde yapılandırılmıştır ve imzalama anahtarı yapılandırma dosyasında depolanır, dosyadaki *appsettings.Development.js* **belirteç: ıssuersigningkey** parametresine bakın.
 
 ```json
 "Token": {
@@ -206,7 +141,7 @@ Uç noktalar `{host}/scim/` dizinde bulunur ve standart http istekleri kullanıl
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
-Bir istemci için birlikte çalışabilirlik ile bir SCıM uyumlu Kullanıcı ve grup uç noktası geliştirmek için, bkz. [SCIM istemci uygulama](http://www.simplecloud.info/#Implementations2).
+Bir istemci için birlikte çalışabilirlik özellikli bir SCıM uyumlu Kullanıcı ve grup uç noktası geliştirmek için bkz. [SCIM istemci uygulama](http://www.simplecloud.info/#Implementations2).
 
 > [!div class="nextstepaction"]
 > [Öğretici: SCıM uç noktası Için geliştirme ve plan sağlama](use-scim-to-provision-users-and-groups.md) 

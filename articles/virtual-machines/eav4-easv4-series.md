@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 80cacdcda39d3a7c443c1c94a797e69ba9a52bfd
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 41290952350111464bb8137568d158a76585f25c
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98065465"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98917967"
 ---
 # <a name="eav4-and-easv4-series"></a>Eav4 ve Easv4 serisi
 
@@ -26,6 +26,7 @@ Eav4-Series ve Easv4 serisi, en fazla 256 MB boyutlu önbellek kullanan çok iş
 [Dinamik geçiş](maintenance-and-updates.md): destekleniyor<br>
 [Güncelleştirmeleri koruyan bellek](maintenance-and-updates.md): desteklenir<br>
 [VM oluşturma desteği](generation-2.md): 1. ve 2. nesil<br>
+[Hızlandırılmış ağ](../virtual-network/create-vm-accelerated-networking-cli.md): desteklenir<br>
 <br>
 
 Eav4 serisi Boyutlar, 3.35 GHz 'nin en yüksek frekansını elde etmeye yönelik 2.35 GHz AMD EPıC<sup>TM</sup> 7452 işlemcisini temel alır. Eav4 serisi Boyutlar, bellek açısından yoğun kurumsal uygulamalar için idealdir. Veri disk depolaması, sanal makinelerden ayrı olarak faturalandırılır. Premium SSD 'yi kullanmak için Easv4-Series boyutlarını kullanın. Easv4 boyutları için fiyatlandırma ve faturalandırma ölçümleri Eav3 serisi ile aynıdır.
@@ -50,6 +51,7 @@ Eav4 serisi Boyutlar, 3.35 GHz 'nin en yüksek frekansını elde etmeye yönelik
 [Dinamik geçiş](maintenance-and-updates.md): destekleniyor<br>
 [Güncelleştirmeleri koruyan bellek](maintenance-and-updates.md): desteklenir<br>
 [VM oluşturma desteği](generation-2.md): 1. ve 2. nesil<br>
+[Hızlandırılmış ağ](../virtual-network/create-vm-accelerated-networking-cli.md): desteklenir<br>
 <br>
 
 Easv4 serisi Boyutlar, 3.35 GHz 'nin en yüksek frekansını ve Premium SSD 'yi kullanmayı sağlayan 2.35 GHz AMD EPIC<sup>TM</sup> 7452 işlemcisini temel alır. Easv4 serisi Boyutlar, bellek açısından yoğun kurumsal uygulamalar için idealdir.

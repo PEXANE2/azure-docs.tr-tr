@@ -4,12 +4,12 @@ description: Azure Kubernetes Service 'te (AKS) Azure CNı (Gelişmiş) ağını
 services: container-service
 ms.topic: article
 ms.date: 06/03/2019
-ms.openlocfilehash: 58c2c597c7a75c801af91cd735561071250bda2c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 0a6ea45156477c0d0e95b9d345cffe1a75c773b6
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96000581"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98917816"
 ---
 # <a name="configure-azure-cni-networking-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service 'te (AKS) Azure CNı ağını yapılandırma
 
@@ -63,7 +63,7 @@ AKS kümesindeki düğüm başına en fazla düğüm sayısı 250 ' dir. Düğü
 | -- | :--: | :--: | -- |
 | Azure CLI’si | 110 | 30 | Evet (250 'e kadar) |
 | Resource Manager şablonu | 110 | 30 | Evet (250 'e kadar) |
-| Portal | 110 | 30 | No |
+| Portal | 110 | 30 | Hayır |
 
 ### <a name="configure-maximum---new-clusters"></a>En fazla yeni küme yapılandırma
 
@@ -96,6 +96,8 @@ Bir AKS kümesi oluşturduğunuzda, aşağıdaki parametreler Azure CNı ağı i
 **Sanal ağ**: Kubernetes kümesini dağıtmak istediğiniz sanal ağ. Kümeniz için yeni bir sanal ağ oluşturmak isterseniz, *Yeni oluştur* ' u seçin ve *sanal ağ oluşturma* bölümündeki adımları izleyin. Bir Azure sanal ağı için sınırlamalar ve Kotalar hakkında daha fazla bilgi için bkz. [Azure aboneliği ve hizmet limitleri, Kotalar ve kısıtlamalar](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-resource-manager-virtual-networking-limits).
 
 **Alt ağ**: kümeyi dağıtmak istediğiniz sanal ağ içindeki alt ağ. Kümeniz için sanal ağda yeni bir alt ağ oluşturmak isterseniz, *Yeni oluştur* ' u seçin ve *alt ağ oluşturma* bölümündeki adımları izleyin. Karma bağlantı için, adres aralığı ortamınızdaki diğer tüm sanal ağlarla çakışmamalıdır.
+
+**Azure ağ eklentisi**: Azure ağ eklentisi kullanıldığında, aks kümesine ait olmayan clusterCIDR IÇINDEKI bir IP 'ye sahip VM 'Lerden "ExternalTrafficPolicy = Local" Iç yük dengeleyici hizmetine erişilemez.
 
 **Kubernetes hizmeti adres aralığı**: Bu, Kubernetes 'in kümenizdeki iç [hizmetlere][services] atadığı sanal IP kümesidir. Aşağıdaki gereksinimleri karşılayan herhangi bir özel adres aralığını kullanabilirsiniz:
 
@@ -188,7 +190,7 @@ Aşağıdaki makalelerde AKS 'de ağ oluşturma hakkında daha fazla bilgi edini
 - [Dinamik bir genel IP ile giriş denetleyicisi oluşturun ve otomatik olarak TLS sertifikaları oluşturmak için şifrelemeyi yapılandırın][aks-ingress-tls]
 - [Statik bir genel IP ile giriş denetleyicisi oluşturun ve otomatik olarak TLS sertifikaları oluşturmak için şifrelemeyi yapılandırın][aks-ingress-static-tls]
 
-### <a name="aks-engine"></a>AKS altyapısı
+### <a name="aks-engine"></a>AKS Engine
 
 [Azure Kubernetes hizmet altyapısı (AKS motoru)][aks-engine] , Azure 'Da Kubernetes kümelerini dağıtmak için kullanabileceğiniz Azure Resource Manager şablonlar üreten bir açık kaynaklı projem projesidir.
 

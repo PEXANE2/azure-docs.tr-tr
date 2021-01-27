@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 12/24/2020
 ms.author: memildin
-ms.openlocfilehash: 823992ba6d3b175c8d20a001f8298a5c4af9a1ae
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 845ff6f0905b232b9ec68dbe127ef7f47a6ad898
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97832718"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98916800"
 ---
 # <a name="continuously-export-security-center-data"></a>Güvenlik Merkezi verilerini sürekli dışa aktarma
 
@@ -25,6 +25,8 @@ Azure Güvenlik Merkezi, ayrıntılı güvenlik uyarıları ve önerileri oluşt
 - SQL sunucularınızın güvenlik açığı değerlendirme taramalarının tüm Orta veya yüksek önem dereceleri, belirli bir Log Analytics çalışma alanına gönderilir
 - Belirli öneriler, her oluşturulduğunda bir olay hub 'ına veya Log Analytics çalışma alanına teslim edilir 
 - Bir denetimin puanı 0,01 veya daha fazla değişiklik yaptığı zaman bir aboneliğin güvenli puanı Log Analytics bir çalışma alanına gönderilir 
+
+Özellik *sürekli* olarak adlandırılsa da, güvenli Puanlama veya mevzuat uyumluluk verilerinin haftalık anlık görüntülerini dışarı aktarma seçeneği de vardır.
 
 Bu makalede Log Analytics çalışma alanlarına veya Azure Event Hubs sürekli dışarı aktarmanın nasıl yapılandırılacağı açıklanır.
 
@@ -39,7 +41,7 @@ Bu makalede Log Analytics çalışma alanlarına veya Azure Event Hubs sürekli 
 
 |Görünüş|Ayrıntılar|
 |----|:----|
-|Yayın durumu:|Genel olarak kullanılabilir (GA)|
+|Yayın durumu:|Genel kullanılabilirlik (GA)|
 |Fiyat|Ücretsiz|
 |Gerekli roller ve izinler:|<ul><li>Kaynak grubundaki **Güvenlik Yöneticisi** veya **sahibi**</li><li>Hedef kaynak için yazma izinleri</li><li>Aşağıda açıklanan Azure Ilkesi ' DeployIfNotExist ' ilkelerini kullanıyorsanız, ilke atama izinlerine de ihtiyacınız olacaktır</li></ul>|
 |Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Yes](./media/icons/yes-icon.png) US Gov, diğer gov<br>![Yes](./media/icons/yes-icon.png) Çin gov (Olay Hub 'ına)|
@@ -78,6 +80,10 @@ Aşağıdaki adımlar Log Analytics çalışma alanına veya Azure Event Hubs s�
     Burada dışa aktarma seçeneklerini görürsünüz. Kullanılabilir her dışa aktarma hedefi için bir sekme vardır. 
 
 1. Dışarı aktarmak istediğiniz veri türünü seçin ve her bir türdeki filtrelerden birini seçin (örneğin, yalnızca yüksek önem derecesine sahip uyarıları dışarı aktarın).
+1. Uygun dışarı aktarma sıklığını seçin:
+    - **Akış** – bir kaynağın sistem durumu güncelleştirildiğinde değerlendirmeler gerçek zamanlı olarak gönderilir (hiçbir güncelleştirme gerçekleşmezse, hiçbir veri gönderilmez).
+    - **Anlık görüntüler** : tüm yasal uyumluluk değerlendirmelerinin geçerli durumunun bir anlık görüntüsü her hafta gönderilir (Bu, güvenli puanlar ve mevzuat uyumluluk verilerinin haftalık anlık görüntüleri için bir önizleme özelliğidir).
+
 1. İsteğe bağlı olarak, seçiminiz Bu önerilerden birini içeriyorsa, güvenlik açığı değerlendirmesi bulgularını bunlarla birlikte dahil edebilirsiniz:
     - SQL veritabanlarındaki güvenlik açığı değerlendirmesi bulguları düzeltildi
     - Makinelerdeki SQL sunucularınızda bulunan güvenlik açığı değerlendirmesi (Önizleme) düzeltilmelidir.

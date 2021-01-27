@@ -1,14 +1,14 @@
 ---
 title: 'Hızlı başlangıç: portalda bir şema oluşturma'
 description: Bu hızlı başlangıçta, Azure portal aracılığıyla yapıtlar oluşturmak, tanımlamak ve dağıtmak için Azure şemaları kullanırsınız.
-ms.date: 08/27/2020
+ms.date: 01/27/2021
 ms.topic: quickstart
-ms.openlocfilehash: bb9aeb4d4b96227f7bf7296854c56df4058fbe69
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 75a4e9deca4859ac8b9f302fcb62ecc1d12dd8c9
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96022539"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98918339"
 ---
 # <a name="quickstart-define-and-assign-a-blueprint-in-the-portal"></a>Hızlı başlangıç: portalda bir şema tanımlama ve atama
 
@@ -145,7 +145,7 @@ Uyumluluk için standart desen tanımlamanın ilk adımı kullanılabilir durumd
 
    :::image type="content" source="./media/create-blueprint-portal/add-resource-manager-template.png" alt-text="Bir şema tanımına eklemek için Kaynak Yöneticisi şablonu yapıt seçeneklerinin ekran görüntüsü." border="false":::
 
-1. Tamamladığınız şema aşağıdakine benzer olmalıdır. Her yapının **Parameters** sütununda doldurulmuş **_x_ -Out _y_ parametresi** olduğuna dikkat edin. Dinamik parametreler şemanın her atamasında ayarlanır.
+1. Tamamladığınız şema aşağıdakine benzer olmalıdır. Her yapının **Parameters** sütununda doldurulmuş **_x_ -Out  parametresi** olduğuna dikkat edin. Dinamik parametreler şemanın her atamasında ayarlanır.
 
    :::image type="content" source="./media/create-blueprint-portal/completed-blueprint.png" alt-text="Her yapıt türüyle tamamlanmış bir şema tanımının ekran görüntüsü." border="false":::
 
@@ -206,7 +206,7 @@ Yayımlama, BLUEPRINT 'in bir aboneliğe atanmasını sağlar.
 
 1. **Şeması ata** sayfasında, **abonelik** açılan listesinde, bu şemayı dağıtmak istediğiniz abonelikleri seçin.
 
-   [Azure faturalandırmaya](../../cost-management-billing/index.yml)sunulan desteklenen kurumsal teklifler varsa, **abonelik** kutusu altında **Yeni bir oluştur** bağlantısı etkinleştirilir. Şu adımları izleyin:
+   [Azure faturalandırmaya](../../cost-management-billing/index.yml)sunulan desteklenen kurumsal teklifler varsa, **abonelik** kutusu altında **Yeni bir oluştur** bağlantısı etkinleştirilir. Şu adımları uygulayın:
 
    1. Yeni bir abonelik oluşturmak için **Yeni oluştur** bağlantısını seçin.
 

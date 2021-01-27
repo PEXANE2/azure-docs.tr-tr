@@ -3,12 +3,12 @@ title: Şablon ile hızlı görev Çalıştır
 description: Bir Azure Resource Manager şablonu kullanarak bir görüntü oluşturmak için bir ACR görevi çalıştırmasını sıraya al
 ms.topic: article
 ms.date: 04/22/2020
-ms.openlocfilehash: 7ad40d2e925d5e1443af9bce4115d45b0e8c06e1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6e8023c088ac328c2b6e95fccd0230c4d40325c1
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82927777"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98916074"
 ---
 # <a name="run-acr-tasks-using-resource-manager-templates"></a>Kaynak Yöneticisi şablonları kullanarak ACR görevlerini çalıştırma
 
@@ -48,7 +48,7 @@ Bu örnek için aşağıdaki şablon parametreleri için değerler sağlayın:
 
 ### <a name="deploy-the-template"></a>Şablonu dağıtma
 
-[Az Deployment Group Create][az-deployment-group-create] komutuyla şablonu dağıtın. Bu örnek, *HelloWorld-node: TestRun* görüntüsünü, *mycontainerregistry*adlı bir kayıt defterine oluşturur ve gönderir.
+[Az Deployment Group Create][az-deployment-group-create] komutuyla şablonu dağıtın. Bu örnek, *HelloWorld-node: TestRun* görüntüsünü, *mycontainerregistry* adlı bir kayıt defterine oluşturur ve gönderir.
 
 ```azurecli
 az deployment group create \
@@ -58,7 +58,7 @@ az deployment group create \
     registryName=mycontainerregistry \
     repository=helloworld-node \
     taskRunName=testrun \
-    sourceLocation=https://github.com/Azure-Samples/acr-build-helloworld-node.git
+    sourceLocation=https://github.com/Azure-Samples/acr-build-helloworld-node.git#main
  ```
 
 Önceki komut, parametreleri komut satırına geçirir. İsterseniz bunları bir [Parametreler dosyasında](../azure-resource-manager/templates/parameter-files.md)geçirin.
@@ -112,7 +112,7 @@ az acr task logs \
 Azure portal görev çalıştırma günlüğünü de görüntüleyebilirsiniz. 
 
 1. Kapsayıcı Kayıt defterinize gidin
-2. **Hizmetler**altında **Görevler**  >  **çalıştırmalar**' ı seçin.
+2. **Hizmetler** altında **Görevler**  >  **çalıştırmalar**' ı seçin.
 3. Çalıştırma KIMLIĞINI seçin (Bu durumda *CA1*). 
 
 Portal, görev çalıştırma günlüğünü gösterir.
@@ -127,7 +127,7 @@ Bu senaryo, [Azure tarafından yönetilen bir kimlik kullanılarak ACR görevind
 
 Tanıtım amacıyla, temel kayıt defteri olarak ayrı bir kapsayıcı kayıt defteri oluşturun ve Docker Hub 'ından bir Node.js temel görüntüsünü gönderin.
 
-1. Temel görüntüleri depolamak için örneğin, *mybaseregner*gibi ikinci bir kapsayıcı kayıt defteri oluşturun.
+1. Temel görüntüleri depolamak için örneğin, *mybaseregner* gibi ikinci bir kapsayıcı kayıt defteri oluşturun.
 1. `node:9-alpine`Resmi Docker Hub 'ından çekin, temel kayıt defteriniz için etiketleyin ve temel kayıt defterine gönderin:
 
   ```azurecli
@@ -142,7 +142,7 @@ Tanıtım amacıyla, temel kayıt defteri olarak ayrı bir kapsayıcı kayıt de
 Temel görüntüyü taban Kayıt defterinizden çeken bir Dockerfile oluşturun. GitHub deposunun yerel çatalınızda aşağıdaki adımları gerçekleştirin, örneğin, `https://github.com/myGitHubID/acr-build-helloworld-node.git` .
 
 1. GitHub Kullanıcı arabiriminde **yeni dosya oluştur**' u seçin.
-1. Dosyanızı *Dockerfile-test* olarak adlandırın ve aşağıdaki içeriği yapıştırın. *Mybaseregbakanlığı*için kayıt defteri adınızı değiştirin.
+1. Dosyanızı *Dockerfile-test* olarak adlandırın ve aşağıdaki içeriği yapıştırın. *Mybaseregbakanlığı* için kayıt defteri adınızı değiştirin.
     ```
     FROM mybaseregistry.azurecr.io/baseimages/node:9-alpine
     COPY . /src
@@ -156,7 +156,7 @@ Temel görüntüyü taban Kayıt defterinizden çeken bir Dockerfile oluşturun.
 
 ### <a name="give-identity-pull-permissions-to-the-base-registry"></a>Temel kayıt defterine kimlik çekme izinleri verme
 
-Yönetilen kimliğe, *mybaseregbakanlığı*temel kayıt defterinden çekme için izin verin.
+Yönetilen kimliğe, *mybaseregbakanlığı* temel kayıt defterinden çekme için izin verin.
 
 Temel kayıt defterinin kaynak KIMLIĞINI almak ve bir değişkende depolamak için [az ACR Show][az-acr-show] komutunu kullanın:
 
@@ -187,12 +187,12 @@ Bu örnek için aşağıdaki şablon parametreleri için değerler sağlayın:
 |Useratandıdentity |Görevde etkin olan kullanıcı tarafından atanan kimliğin kaynak KIMLIĞI|
 |Customregistryıdentity | Görevde etkin olan kullanıcı tarafından atanan kimliğin istemci KIMLIĞI, özel kayıt defteri ile kimlik doğrulaması için kullanılır |
 |customRegistry |Görevde erişilen özel kayıt defterinin oturum açma sunucusu adı, örneğin, *mybaseregistry.azurecr.io*|
-|sourceLocation     |Derleme görevinin uzak bağlamı; Örneğin, * https://github.com/ \<your-GitHub-ID\> /ACR-Build-HelloWorld-Node.* |
+|sourceLocation     |Derleme görevinin uzak bağlamı; Örneğin, *https://github.com/ \<your-GitHub-ID\> /ACR-Build-HelloWorld-Node.* |
 |dockerFilePath | Görüntüyü oluşturmak için kullanılan uzak bağlamdaki Dockerfile dosyasının yolu. |
 
 ### <a name="deploy-the-template"></a>Şablonu dağıtma
 
-[Az Deployment Group Create][az-deployment-group-create] komutuyla şablonu dağıtın. Bu örnek, *HelloWorld-node: TestRun* görüntüsünü, *mycontainerregistry*adlı bir kayıt defterine oluşturur ve gönderir. Temel görüntü *mybaseregistry.azurecr.io*' dan çekilir.
+[Az Deployment Group Create][az-deployment-group-create] komutuyla şablonu dağıtın. Bu örnek, *HelloWorld-node: TestRun* görüntüsünü, *mycontainerregistry* adlı bir kayıt defterine oluşturur ve gönderir. Temel görüntü *mybaseregistry.azurecr.io*' dan çekilir.
 
 ```azurecli
 az deployment group create \
@@ -204,7 +204,7 @@ az deployment group create \
     taskRunName=basetask \
     userAssignedIdentity=$resourceID \
     customRegistryIdentity=$clientID \
-    sourceLocation=https://github.com/<your-GitHub-ID>/acr-build-helloworld-node.git \
+    sourceLocation=https://github.com/<your-GitHub-ID>/acr-build-helloworld-node.git#main \
     dockerFilePath=Dockerfile-test \
     customRegistry=mybaseregistry.azurecr.io
 ```

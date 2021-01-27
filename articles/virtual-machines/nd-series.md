@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: f37341233eec45a22fe92450e69d486e61f26eb4
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 6428f3eafc9d19060fb065082ea3cbe06bb74d81
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97585318"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98917024"
 ---
 # <a name="nd-series"></a>ND serisi
 
@@ -23,6 +23,7 @@ ND serisi sanal makineler, AI için tasarlanan GPU ailesine ve derin öğrenme i
 [Dinamik geçiş](maintenance-and-updates.md): desteklenmiyor<br>
 [Güncelleştirmeleri koruyan bellek](maintenance-and-updates.md): desteklenmiyor<br>
 [VM oluşturma desteği](generation-2.md): 1. ve 2. nesil<br>
+[Hızlandırılmış ağ](../virtual-network/create-vm-accelerated-networking-cli.md): desteklenmez<br>
 NVIDIA NVLink Interconnect: desteklenmiyor<br>
 
 > [!IMPORTANT]

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/06/2020
 ms.author: memildin
-ms.openlocfilehash: 473353c3f61d1096beb11c521c08ac723d54b780
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: 103f2c87cf9d14f81462fed145ff8df3d69bfca0
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98071615"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98916142"
 ---
 # <a name="use-adaptive-application-controls-to-reduce-your-machines-attack-surfaces"></a>Makinelerinizin saldırı yüzeylerini azaltmak için uyarlamalı uygulama denetimleri kullanma
 
@@ -50,11 +50,11 @@ Bilinen güvenli uygulamalar listesini tanımlayarak ve başka bir şey yürüt�
 
 |Görünüş|Ayrıntılar|
 |----|:----|
-|Yayın durumu:|Genel olarak kullanılabilir (GA)|
+|Yayın durumu:|Genel kullanılabilirlik (GA)|
 |Fiyat|[Sunucular Için Azure Defender](defender-for-servers-introduction.md) gerekir|
 |Desteklenen makineler:|![Evet ](./media/icons/yes-icon.png) Azure ve Windows ve Linux çalıştıran Azure dışı makineler<br>![Evet ](./media/icons/yes-icon.png) [Azure yay](../azure-arc/index.yml) makineleri|
 |Gerekli roller ve izinler:|**Güvenlik okuyucu** ve **okuyucu** rolleri hem grupları hem de bilinen güvenli uygulamaların listesini görüntüleyebilir<br>**Katkıda bulunan** ve **Güvenlik yönetici** rolleri, grupları ve bilinen güvenli uygulamaların listesini düzenleyebilir|
-|Larının|![Evet](./media/icons/yes-icon.png) Ticari bulutlar<br>![Evet](./media/icons/yes-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
+|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Yes](./media/icons/yes-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
 |||
 
 
@@ -209,7 +209,7 @@ Bir makineyi bir gruptan diğerine taşıdığınızda, uygulanan uygulama denet
 
 1. Hedef grubunu seçin ve **makineyi taşı**' yı seçin.
 
-1. Değişikliklerinizi kaydetmek için **Kaydet**' i seçin.
+1. Yaptığınız değişiklikleri kaydetmek için **Kaydet**'i seçin.
 
 
 

@@ -1,14 +1,14 @@
 ---
 title: 'Öğretici: Azure portal sorguları yönetme'
 description: Bu öğreticide, bir kaynak grafiği sorgusu oluşturur ve yeni sorguyu Azure portal başkalarıyla paylaşabilirsiniz.
-ms.date: 10/14/2020
+ms.date: 01/27/2021
 ms.topic: tutorial
-ms.openlocfilehash: 98d4c7d0493686a45bdfef9d85823432cb637a66
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 7240a843cfa041137b28284e396c8a4b62a81926
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057935"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98916687"
 ---
 # <a name="tutorial-create-and-share-an-azure-resource-graph-query-in-the-azure-portal"></a>Öğretici: Azure portal Azure Kaynak Grafiği sorgusu oluşturma ve paylaşma
 
@@ -24,7 +24,7 @@ Bu öğreticide, aşağıdaki görevleri tamamlayacaksınız:
 > - Paylaşılan sorguları bulma
 > - Paylaşılan bir sorguyu silme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için bir Azure aboneliğinizin olması gerekir. Aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 
@@ -46,16 +46,16 @@ Bu öğreticiyi tamamlamak için bir Azure aboneliğinizin olması gerekir. Abon
 
    Bu sorgu hakkında daha fazla bilgi için bkz. [Samples: sanal makineleri işletim sistemi türüne göre say](../samples/starter.md#count-os).
 
-1. **Farklı** **Kaydet ' i seçin,** ad **olarak işletim sistemine göre VM sayısını** girin, türü **özel sorgu**olarak bırakın ve ardından Save **Query** bölmesinin en altında bulunan **Kaydet** ' i seçin. Sekme başlığı, **sorgu 1** ' den **Işletim sistemine göre VM 'lere göre**değişir.
+1. **Farklı** **Kaydet ' i seçin,** ad **olarak işletim sistemine göre VM sayısını** girin, türü **özel sorgu** olarak bırakın ve ardından Save **Query** bölmesinin en altında bulunan **Kaydet** ' i seçin. Sekme başlığı, **sorgu 1** ' den **Işletim sistemine göre VM 'lere göre** değişir.
 
 1. Azure portal Azure Kaynak Grafiği Gezgini ' nden uzakta ilerleyin ve sonra buna geri dönün. Kaydedilen sorgunun artık gösterilmediğine ve **sorgu 1** sekmesinin döndürüldiğine dikkat edin.
 
-1. **Sorgu aç**' ı seçin. Türün **özel sorgu**olduğundan emin olun. **İşletim sistemi tarafından kaydedilen ad sayısı VM 'leri** artık **sorgu adı** listesinde görünür. Kaydedilen sorgunun başlık bağlantısını seçtiğinizde, bu sorgu adı ile yeni bir sekmeye yüklenir.
+1. **Sorgu aç**' ı seçin. Türün **özel sorgu** olduğundan emin olun. **İşletim sistemi tarafından kaydedilen ad sayısı VM 'leri** artık **sorgu adı** listesinde görünür. Kaydedilen sorgunun başlık bağlantısını seçtiğinizde, bu sorgu adı ile yeni bir sekmeye yüklenir.
 
    > [!NOTE] 
    > Kaydedilen bir sorgu açık olduğunda ve sekme bu adı gösteriyorsa, **Kaydet** düğmesi seçildiğinde bu değişiklik yapılmış değişikliklerle güncelleştirilir. Bu açık sorgudan yeni bir kaydedilmiş sorgu oluşturmak için **farklı kaydet** ' i seçin ve yeni bir yepyeni sorgu kaydediyorsanız devam edin.
 
-1. Kayıtlı sorguyu silmek için **sorguyu yeniden aç** ' ı seçin ve **tür** alanının **özel sorgu**olarak ayarlandığını doğrulayın. Kaydedilen `Count VMs by OS` sorgunun satırında **Sil** ' i (geri dönüşüm kutusu simgesi) seçin. Onay iletişim kutusunda, sorguyu silmeyi sona bırakmak için **Evet** ' i seçin.
+1. Kayıtlı sorguyu silmek için **sorguyu yeniden aç** ' ı seçin ve **tür** alanının **özel sorgu** olarak ayarlandığını doğrulayın. Kaydedilen `Count VMs by OS` sorgunun satırında **Sil** ' i (geri dönüşüm kutusu simgesi) seçin. Onay iletişim kutusunda, sorguyu silmeyi sona bırakmak için **Evet** ' i seçin.
    Sonra, **bir sorgu aç** bölmesini kapatın.
 
 ## <a name="create-a-shared-query"></a>Paylaşılan sorgu oluşturma
@@ -82,13 +82,13 @@ Bu öğreticiyi tamamlamak için bir Azure aboneliğinizin olması gerekir. Abon
 
 1. **Sorguyu Kaydet** bölmesinde, ad için **Işletim sistemine göre sayı VM 'leri** girin.
 
-1. Türü **paylaşılan sorgu**olarak değiştirin, açıklamasını **işletim sistemi türüne göre sanal makine sayısı**olarak ayarlayın ve sorgu kaynağının nerede oluşturulacağını belirtmek için **abonelik** ayarlayın.
+1. Türü **paylaşılan sorgu** olarak değiştirin, açıklamasını **işletim sistemi türüne göre sanal makine sayısı** olarak ayarlayın ve sorgu kaynağının nerede oluşturulacağını belirtmek için **abonelik** ayarlayın.
 
-1. **Kaynak olarak Yayımla-Graph-Queries kaynak grubu** onay kutusunu seçili bırakın ve **kaynak grubu konumu** **(US) Orta Batı ABD**olarak ayarlanır.
+1. **Kaynak olarak Yayımla-Graph-Queries kaynak grubu** onay kutusunu seçili bırakın ve **kaynak grubu konumu** **(US) Orta Batı ABD** olarak ayarlanır.
 
-1. **Sorguyu Kaydet** bölmesinin en altında bulunan **Kaydet** ' i seçin. Sekme başlığı, **sorgu 1** ' den **Işletim sistemine göre VM 'lere göre**değişir. **Kaynak-grafik sorguları** kaynak grubu ilk kez kullanıldığında, kaynak grubu oluşturulduğundan, kaydetme beklenenden uzun sürer.
+1. **Sorguyu Kaydet** bölmesinin en altında bulunan **Kaydet** ' i seçin. Sekme başlığı, **sorgu 1** ' den **Işletim sistemine göre VM 'lere göre** değişir. **Kaynak-grafik sorguları** kaynak grubu ilk kez kullanıldığında, kaynak grubu oluşturulduğundan, kaydetme beklenenden uzun sürer.
    
-   :::image type="content" source="../media/create-share-query/save-shared-query-window.png" alt-text="Kaydet düğmesini kullanarak yeni sorguyu kaydetme" border="false":::
+   :::image type="content" source="../media/create-share-query/save-shared-query-window.png" alt-text="Yeni sorguyu paylaşılan sorgu olarak kaydet" border="false":::
 
    > [!NOTE] 
    > Paylaşılan sorguyu kaydetmek için mevcut bir kaynak grubunun adını sağlamak istiyorsanız **kaynağa Yayımla-Graph-Queries kaynak grubu** onay kutusunu temizleyebilirsiniz. Sorgular için varsayılan adlandırılmış kaynak grubunun kullanılması, paylaşılan sorguları bulmayı kolaylaştırır. Ayrıca, bu kaynak grubunun amacını daha belirgin hale getirir. Bununla birlikte, mevcut izinlere göre güvenlik nedenleriyle mevcut bir kaynak grubunu seçebilirsiniz.
@@ -97,7 +97,7 @@ Bu öğreticiyi tamamlamak için bir Azure aboneliğinizin olması gerekir. Abon
 
 1. **Sorgu aç**' ı seçin. Türün **paylaşılan sorgu** olarak ayarlandığını, **aboneliğin** ve **kaynak grubunun** birleşimini, sorguyu kaydettiğiniz yere göre eşleştiğini doğrulayın. **İşletim sistemi öğesine göre kaydedilen sayı VM 'leri** artık **sorgu adı** listesinde görünür. Kaydedilen sorgunun başlık bağlantısını seçerek sorgunun adına sahip yeni bir sekmeye yükleyin. Paylaşılan bir sorgu olarak, başlığın yanındaki sekmede, paylaşılan olarak gösterildiği gibi bir simge görüntüler.
 
-   :::image type="content" source="../media/create-share-query/show-saved-shared-query.png" alt-text="Kaydet düğmesini kullanarak yeni sorguyu kaydetme" border="false":::
+   :::image type="content" source="../media/create-share-query/show-saved-shared-query.png" alt-text="Paylaşılan sorguyu simge ile göster" border="false":::
 
    > [!NOTE] 
    > Kaydedilen bir sorgu açık olduğunda ve sekme bu adı gösteriyorsa, **Kaydet** düğmesi bunu yapılmış değişikliklerle günceller. Yeni kaydedilmiş bir sorgu oluşturmak için **farklı kaydet** ' i seçin ve yepyeni bir sorgu kaydediyorsunuz gibi ilerleyin.
@@ -106,7 +106,7 @@ Bu öğreticiyi tamamlamak için bir Azure aboneliğinizin olması gerekir. Abon
 
 Paylaşılan bir sorgu Kaynak Yöneticisi kaynak olduğundan, bir tane bulmak için çeşitli yollar vardır:
 
-- Kaynak grafik Gezgini ' nden. **Sorgu aç** ' ı seçin ve türü **paylaşılan sorgu**olarak ayarlayın.
+- Kaynak grafik Gezgini ' nden. **Sorgu aç** ' ı seçin ve türü **paylaşılan sorgu** olarak ayarlayın.
 - Kaynak Grafiği sorguları portalı sayfasından.
 - Paylaşılan sorgunun kaydedildiği kaynak grubundan.
 - Kaynak grafiğine bir sorgu üzerinden.
@@ -117,7 +117,7 @@ Azure portal, kaynak grafiği sorguları sayfasında, oturum açma hesabının e
 
 Sorgulardan birini seçmek kaynak grafiği sorgu sayfasını açar. Diğer Kaynak Yöneticisi kaynaklar gibi bu sayfada, etkinlik günlüğü, erişim denetimi ve etiketleriyle birlikte etkileşimli bir genel bakış sunulmaktadır. Ayrıca, bu sayfadan doğrudan bir kaynak kilidi uygulayabilirsiniz.
 
-**Tüm hizmetler** ' i seçerek veya tüm sayfaların en üstündeki Azure Arama kutusunu kullanarak portal menüsünden Kaynak Grafiği sorguları sayfasına gidin. **Kaynak Grafiği Gezginini**arayın ve seçin.
+**Tüm hizmetler** ' i seçerek veya tüm sayfaların en üstündeki Azure Arama kutusunu kullanarak portal menüsünden Kaynak Grafiği sorguları sayfasına gidin. **Kaynak Grafiği Gezginini** arayın ve seçin.
 
 ### <a name="list-resource-groups-resources"></a>Kaynak grupları kaynaklarını listeleme
 

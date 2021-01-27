@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 01/14/2020
 ms.author: danlep
-ms.openlocfilehash: f3294698f6973437a23fab798e8daf5642cc9b49
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8f2749a18a5ac6aed0822553d59beaacc9060228
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77111774"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98915956"
 ---
 # <a name="use-an-azure-managed-identity-in-acr-tasks"></a>ACR görevlerinde Azure tarafından yönetilen bir kimlik kullanma 
 
@@ -58,7 +58,7 @@ Sistem tarafından atanan bir kimliği etkinleştirmek için `--assign-identity`
 az acr task create \
     --image hello-world:{{.Run.ID}} \
     --name hello-world --registry MyRegistry \
-    --context https://github.com/Azure-Samples/acr-build-helloworld-node.git \
+    --context https://github.com/Azure-Samples/acr-build-helloworld-node.git#main \
     --file Dockerfile \
     --commit-trigger-enabled false \
     --assign-identity
@@ -70,7 +70,7 @@ Kullanıcı tarafından atanan bir kimliği etkinleştirmek için, `--assign-ide
 az acr task create \
     --image hello-world:{{.Run.ID}} \
     --name hello-world --registry MyRegistry \
-    --context https://github.com/Azure-Samples/acr-build-helloworld-node.git \
+    --context https://github.com/Azure-Samples/acr-build-helloworld-node.git#main \
     --file Dockerfile \
     --commit-trigger-enabled false
     --assign-identity <resourceID>
@@ -84,7 +84,7 @@ Daha [az Identity Show][az-identity-show] komutunu çalıştırarak KIMLIğIN ka
 
 ### <a name="3-grant-the-identity-permissions-to-access-other-azure-resources"></a>3. diğer Azure kaynaklarına erişmek için kimlik izinleri verin
 
-Görevin gereksinimlerine bağlı olarak, diğer Azure kaynaklarına erişmek için kimlik izinlerini verin. Örneklere şunlar dahildir:
+Görevin gereksinimlerine bağlı olarak, diğer Azure kaynaklarına erişmek için kimlik izinlerini verin. Örnekler arasında şunlar yer almaktadır:
 
 * Azure 'da bir hedef kapsayıcı kayıt defterine çekme, gönderme ve çekme veya diğer izinlerle yönetilen kimliğe bir rol atayın. Kayıt defteri rollerinin tüm listesi için bkz. [Azure Container Registry rolleri ve izinleri](container-registry-roles.md). 
 * Bir Azure anahtar kasasındaki gizli dizileri okumak için yönetilen kimliğe bir rol atayın.
@@ -105,7 +105,7 @@ az role assignment create \
 
 Görevin başka bir özel kayıt defterine görüntü çekmek veya göndermek için kimlik bilgileri gerekiyorsa veya diğer kaynaklara erişmek için, göreve kimlik bilgileri ekleyin. Kimlik bilgilerini eklemek için [az ACR Task Credential Add][az-acr-task-credential-add] komutunu çalıştırın ve `--use-identity` kimliğin kimlik bilgilerine erişemeyeceğini belirtmek için parametresini geçirin. 
 
-Örneğin, Azure Container Registry *targetregistry*ile kimlik doğrulaması yapmak için sistem tarafından atanan bir kimliğin kimlik bilgilerini eklemek için şunu geçirin `use-identity [system]` :
+Örneğin, Azure Container Registry *targetregistry* ile kimlik doğrulaması yapmak için sistem tarafından atanan bir kimliğin kimlik bilgilerini eklemek için şunu geçirin `use-identity [system]` :
 
 ```azurecli
 az acr task credential add \
@@ -115,7 +115,7 @@ az acr task credential add \
     --use-identity [system]
 ```
 
-Kayıt defteri *targetregistry*ile kimlik doğrulaması yapmak üzere Kullanıcı tarafından atanan bir kimliğin kimlik bilgilerini eklemek için, `use-identity` kimliğin *istemci kimliği* değeriyle geçirin. Örneğin:
+Kayıt defteri *targetregistry* ile kimlik doğrulaması yapmak üzere Kullanıcı tarafından atanan bir kimliğin kimlik bilgilerini eklemek için, `use-identity` kimliğin *istemci kimliği* değeriyle geçirin. Örneğin:
 
 ```azurecli
 az acr task credential add \

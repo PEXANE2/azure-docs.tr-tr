@@ -3,12 +3,12 @@ title: Azure Service Fabric küme sürümünüzü yükseltme
 description: Service Fabric ekibi blogundan en yeni sürümlere bağlantı dahil olmak üzere Azure Service Fabric 'deki küme sürümleri hakkında bilgi edinin.
 ms.topic: troubleshooting
 ms.date: 06/15/2020
-ms.openlocfilehash: cd9c4be285c68e5482f7276429dd5514c72ae135
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: a99b38a33a5bb83345898769b466ce0cab0a4d4d
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881559"
+ms.locfileid: "98918119"
 ---
 # <a name="upgrade-your-azure-service-fabric-cluster-version"></a>Azure Service Fabric küme sürümünüzü yükseltme
 
@@ -118,10 +118,12 @@ Aşağıdaki tabloda Service Fabric sürümleri ve destek bitiş tarihleri liste
 | 7.1.458.* | 7.0.466.* |Sürüm 4,1 ' den küçük veya buna eşit |31 Mart 2021 |
 | 7.1.459.* | 7.0.466.* |Sürüm 4,1 ' den küçük veya buna eşit |31 Mart 2021 |
 | 7.1.503.* | 7.0.466.* |Sürüm 4,1 ' den küçük veya buna eşit |31 Mart 2021 |
+| 7.1.510.* | 7.0.466.* |Sürüm 4,1 ' den küçük veya buna eşit |31 Mart 2021 |
 | 7.2.413.* | 7.0.470.* |Sürüm 4,2 ' den küçük veya buna eşit |Geçerli sürüm, bu nedenle bitiş tarihi yok |
 | 7.2.432.* | 7.0.470.* |Sürüm 4,2 ' den küçük veya buna eşit |Geçerli sürüm, bu nedenle bitiş tarihi yok |
 | 7.2.433.* | 7.0.470.* |Sürüm 4,2 ' den küçük veya buna eşit |Geçerli sürüm, bu nedenle bitiş tarihi yok |
 | 7.2.445.* | 7.0.470.* |Sürüm 4,2 ' den küçük veya buna eşit |Geçerli sürüm, bu nedenle bitiş tarihi yok |
+| 7.2.452.* | 7.0.470.* |Sürüm 4,2 ' den küçük veya buna eşit |Geçerli sürüm, bu nedenle bitiş tarihi yok |
 
 ## <a name="supported-operating-systems"></a>Desteklenen işletim sistemleri
 
@@ -198,7 +200,9 @@ Aşağıdaki tabloda Service Fabric sürüm adları ve bunlara karşılık gelen
 | 7,1 CU5 | 7.1.458.9590 | 7.1.454.1 |
 | 7,1 CU6 | 7.1.459.9590 | 7.1.455.1 |
 | 7,1 CU8 | 7.1.503.9590 | 7.1.508.1 |
-| 7,2 RTO | 7.2.413.9590 | Uygulanamaz|
+| 7,1 CU10 | 7.1.510.9590 | NA |
+| 7,2 RTO | 7.2.413.9590 | NA |
 | 7,2 CU2 UYGULAMAZSANıZ | 7.2.432.9590 | 7.2.431.1 |
 | 7,2 CU3 | 7.2.433.9590 | Uygulanamaz|
 | 7,2 CU4 | 7.2.445.9590 | 7.2.447.1 |
+| 7,2 CU5 | 7.2.452.9590 | 7.2.454.1 |

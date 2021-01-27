@@ -1,14 +1,14 @@
 ---
 title: NIST SP 800-53 R4 şema örneğine genel bakış
 description: NIST SP 800-53 R4 şema örneğine genel bakış. Bu şema örneği, müşterilerin belirli NIST SP 800-53 R4 denetimlerini değerlendirmesine yardımcı olur.
-ms.date: 08/27/2020
+ms.date: 01/27/2021
 ms.topic: sample
-ms.openlocfilehash: f40451e1e82833aba4f626052e708f2c1136f832
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b773013c61a8bed3c5c5f4e8b24878f10889f954
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89048780"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98918136"
 ---
 # <a name="nist-sp-800-53-r4-blueprint-sample"></a>NIST SP 800-53 R4 şema örneği
 
@@ -60,7 +60,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 ### <a name="assign-the-sample-copy"></a>Örnek kopyayı atama
 
-Şema örneğinin kopyası başarıyla **yayımlandıktan**sonra, kaydedildiği yönetim grubu içindeki bir aboneliğe atanabilir. Bu adımda, şema örneği kopyasının her bir dağıtımını benzersiz hale getirmek için parametreler sağlanır.
+Şema örneğinin kopyası başarıyla **yayımlandıktan** sonra, kaydedildiği yönetim grubu içindeki bir aboneliğe atanabilir. Bu adımda, şema örneği kopyasının her bir dağıtımını benzersiz hale getirmek için parametreler sağlanır.
 
 1. Sol bölmede **Tüm hizmetler**'i seçin. **Şemalar**’ı arayıp seçin.
 

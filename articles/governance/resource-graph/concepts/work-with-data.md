@@ -1,15 +1,15 @@
 ---
 title: Büyük veri kümeleriyle çalışma
 description: Azure Kaynak Grafında çalışırken büyük veri kümelerinde kayıtları alma, biçimlendirme, sayfa ve atlamayı anlayın.
-ms.date: 09/30/2020
+ms.date: 01/27/2021
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 59f69738bf9fe25cb739539b7a1f93e4499d781a
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.openlocfilehash: 1eaabfdd78712966f3b21d869259a312db31b7bc
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97826025"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98917699"
 ---
 # <a name="working-with-large-azure-resource-data-sets"></a>Büyük Azure Kaynak veri kümeleriyle çalışma
 
@@ -65,7 +65,7 @@ Search-AzGraph -Query "Resources | project name | order by name asc" -Skip 10
 ## <a name="paging-results"></a>Disk belleği sonuçları
 
 Bir sonuç kümesini işlenmek üzere daha küçük kayıt kümelerine bölmek gerektiğinde veya bir sonuç kümesi, döndürülen en fazla _1000_ kayıt değerini aşacağından, sayfalama kullanın. [REST API](/rest/api/azureresourcegraph/resourcegraph(2019-04-01)/resources/resources) 
- **queryresponse** , bir sonuç kümesinin parçalanmış olduğunu belirten değerler sağlar: **resultkesildi** ve **$skipToken**. **Resultkesildi** , yanıtta ek kayıtlar döndürülmediğinde tüketiciyi bildiren bir Boole değeridir. **Count** özelliği **totalRecords** özelliğinden daha az olduğunda bu durum da tanımlanabilir. **totalRecords** sorguyla eşleşen kaç kayıt olduğunu tanımlar.
+ **queryresponse** , bir sonuç kümesinin parçalanmış olduğunu belirten değerler sağlar: **resultkesildi** ve **$skipToken**. **Resultkesildi** , yanıtta daha fazla kayıt döndürülmediğinde tüketiciyi bildiren bir Boole değeridir. **Count** özelliği **totalRecords** özelliğinden daha az olduğunda bu durum da tanımlanabilir. **totalRecords** sorguyla eşleşen kaç kayıt olduğunu tanımlar.
 
  hiçbir sütun ya da bir sorgunun istediği daha az kaynak olduğunda, sayfalama devre dışı bırakıldığında veya mümkün olmadığında **Resultkesilecek** değeri **true** 'dur `id` . **Resultkesilecek** **değeri true** olduğunda **$skipToken** özelliği ayarlı değildir.
 
@@ -94,7 +94,7 @@ Azure CLı sonuçları JSON 'da varsayılan olarak sağlanır. Azure PowerShell 
 
 Varsayılan biçim, _tablo_, sorgu tarafından döndürülen özelliklerin sütun tasarımını ve satır değerlerini vurgulamak için tasarlanan bir JSON biçiminde sonuçları döndürür. Bu biçim, yapılandırılmış bir tabloda veya bir elektronik tabloda, ilk olarak tanımlanan sütunları ve sonra bu sütunlara hizalanmış verileri temsil eden her bir satır için tanımlanan verilere benzer.
 
-_Tablo_ biçimlendirmesiyle bir sorgu sonucu örneği aşağıda verilmiştir:
+Aşağıda _tablo_ biçimlendirmesiyle bir sorgu sonucu örneği verilmiştir:
 
 ```json
 {
@@ -136,7 +136,7 @@ _Tablo_ biçimlendirmesiyle bir sorgu sonucu örneği aşağıda verilmiştir:
 
 _Objectarray_ BIÇIMI sonuçları JSON biçiminde de döndürür. Ancak, bu tasarım, sütun ve satır verilerinin dizi gruplarında eşleştiği JSON 'da ortak olan anahtar/değer çifti ilişkisine hizalanır.
 
-_Objectarray_ biçimlendirmesiyle bir sorgu sonucu örneği aşağıda verilmiştir:
+Aşağıda _Objectarray_ biçimlendirmesiyle bir sorgu sonucu örneği verilmiştir:
 
 ```json
 {

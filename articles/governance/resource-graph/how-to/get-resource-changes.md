@@ -1,14 +1,14 @@
 ---
 title: Kaynak değişikliklerini alma
 description: Bir kaynağın ne zaman değiştiğini öğrenin, değiştirilen özelliklerin bir listesini alın ve diffs 'yi değerlendirin.
-ms.date: 10/14/2020
+ms.date: 01/27/2021
 ms.topic: how-to
-ms.openlocfilehash: 70213caeaf71e1adc5a11ec0e9cbadfea032dca4
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 58dcb7256b0876d5e7fa9d7569db102538f92bab
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92203475"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98917435"
 ---
 # <a name="get-resource-changes"></a>Kaynak değişikliklerini alma
 
@@ -144,14 +144,14 @@ Yanıt aşağıdaki örneğe benzer şekilde görünür:
 - **Changeıd** -bu değer bu kaynak için benzersizdir. **Changeıd** dizesi bazen başka özellikler de içerebilirken, yalnızca benzersiz olması garanti edilir.
 - **Beforesnapshot** -bir değişiklik algılanmadan önce alınan kaynak anlık görüntüsünün **anlık görüntü kimliğini** ve **zaman damgasını** içerir.
 - **Aftersnapshot** -bir değişiklik algılandıktan sonra gerçekleştirilen kaynak anlık görüntüsünün **anlık görüntü kimliğini** ve **zaman damgasını** içerir.
-- **ChangeType** - **Beforesnapshot** ve **aftersnapshot**arasındaki değişiklik kaydının tamamı için algılanan değişikliğin türünü açıklar. Değerler şunlardır: _Oluştur_, _Güncelleştir_ve _Sil_. **PropertyChanges** Özellik dizisi yalnızca **ChangeType** _güncelleştirme_olduğunda dahil edilir.
-- **PropertyChanges** -bu özellik dizisi, **Beforesnapshot** ve **aftersnapshot**arasında güncelleştirilmiş kaynak özelliklerinin tümünü ayrıntılardır:
+- **ChangeType** - **Beforesnapshot** ve **aftersnapshot** arasındaki değişiklik kaydının tamamı için algılanan değişikliğin türünü açıklar. Değerler şunlardır: _Oluştur_, _Güncelleştir_ ve _Sil_. **PropertyChanges** Özellik dizisi yalnızca **ChangeType** _güncelleştirme_ olduğunda dahil edilir.
+- **PropertyChanges** -bu özellik dizisi, **Beforesnapshot** ve **aftersnapshot** arasında güncelleştirilmiş kaynak özelliklerinin tümünü ayrıntılardır:
   - **PropertyName** -değiştirilen kaynak özelliğinin adı.
   - **Changecategory** -değişikliğin ne yaptığını açıklar. Değerler şunlardır: _sistem_ ve _Kullanıcı_.
   - **ChangeType** -tek kaynak özelliği için algılanan değişikliğin türünü açıklar.
     Değerler şunlardır: _Insert_, _Update_, _Remove_.
-  - **Beforevalue** - **Beforesnapshot**içindeki Resource özelliğinin değeri. **ChangeType** _eklendiğinde gösterilmez._
-  - **aftervalue** - **aftersnapshot**içindeki Resource özelliğinin değeri. **ChangeType** 'ı _kaldırırken_gösterilmez.
+  - **Beforevalue** - **Beforesnapshot** içindeki Resource özelliğinin değeri. **ChangeType** _eklendiğinde gösterilmez._
+  - **aftervalue** - **aftersnapshot** içindeki Resource özelliğinin değeri. **ChangeType** 'ı _kaldırırken_ gösterilmez.
 
 ## <a name="compare-resource-changes"></a>Kaynak değişikliklerini karşılaştırın
 
@@ -279,7 +279,7 @@ Yanıt aşağıdaki örneğe benzer şekilde görünür:
 }
 ```
 
-**Beforesnapshot** ve **aftersnapshot** her biri anlık görüntünün alındığı zamanı ve o anda özellikleri sağlar. Değişiklik, bu anlık görüntüler arasındaki bir noktada gerçekleşti. Önceki örneğe bakarak, değiştirilen özelliğin **supportsHttpsTrafficOnly**olduğunu görebiliriz.
+**Beforesnapshot** ve **aftersnapshot** her biri anlık görüntünün alındığı zamanı ve o anda özellikleri sağlar. Değişiklik, bu anlık görüntüler arasındaki bir noktada gerçekleşti. Önceki örneğe bakarak, değiştirilen özelliğin **supportsHttpsTrafficOnly** olduğunu görebiliriz.
 
 Sonuçları karşılaştırmak için, **Resourcechanges** içindeki **Changes** özelliğini kullanın veya her bir anlık görüntünün **içerik** bölümünü, bu farkı öğrenmek için **resourcechangedetails** ' de değerlendirin. Anlık görüntüleri karşılaştırırsanız, zaman **damgası** beklenmesine rağmen her zaman fark olarak gösterilir.
 

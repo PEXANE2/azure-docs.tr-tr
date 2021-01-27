@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 01/10/2021
-ms.openlocfilehash: b6836eee7e0e6ccbfa2628e0e371152f31ddf9d2
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 9d8d37e1b161dfc8344d7ff03bc0093d23f86101
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98757551"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98917841"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure İzleyici müşteri tarafından yönetilen anahtar 
 
@@ -30,9 +30,6 @@ Müşteri tarafından yönetilen anahtar, daha yüksek koruma düzeyi ve denetim
 Son 14 gün içinde alınan veriler, verimli sorgu altyapısı işlemi için etkin-önbellek (SSD-desteklenen) olarak da tutulur. Bu veriler, müşteri tarafından yönetilen anahtar yapılandırmasına bakılmaksızın Microsoft anahtarlarıyla şifreli olarak kalır, ancak SSD verileri üzerindeki denetiminiz [anahtar iptalinde](#key-revocation)kalır. 2021 ilk yarısında, SSD verilerinin müşteri tarafından yönetilen anahtarla şifrelenmesini sağlamak için çalışıyoruz.
 
 Log Analytics adanmış kümeler 1000 GB/gün üzerinden başlayan bir kapasite ayırma [fiyatlandırma modeli](../log-query/logs-dedicated-clusters.md#cluster-pricing-model) kullanır.
-
-> [!IMPORTANT]
-> Geçici kapasite kısıtlamaları nedeniyle, bir küme oluşturmadan önce ' a ön kayıt yapmanız gerekir. Kişilerinizi Microsoft 'a kullanın veya abonelik kimliklerinizi kaydetmek için destek isteği ' ni açın.
 
 ## <a name="how-customer-managed-key-works-in-azure-monitor"></a>Azure Izleyici 'de müşteri tarafından yönetilen anahtarın nasıl çalıştığı
 
@@ -68,7 +65,6 @@ Aşağıdaki kurallar geçerlidir:
 
 ### <a name="customer-managed-key-provisioning-steps"></a>Customer-Managed anahtar sağlama adımları
 
-1. Aboneliğinizi küme oluşturmaya izin verecek şekilde kaydetme
 1. Azure Key Vault oluşturma ve anahtar depolama
 1. Küme oluşturuluyor
 1. Key Vault izinler veriliyor
@@ -107,10 +103,6 @@ Authorization: Bearer <token>
 ```
 
 ---
-
-### <a name="allowing-subscription"></a>Aboneliğe izin verme
-
-Abonelik kimliklerinizi sağlamak için kişilerinizi Microsoft 'a kullanın veya Log Analytics destek isteği açın.
 
 ## <a name="storing-encryption-key-kek"></a>Şifreleme anahtarını depolama (KEK)
 

@@ -1,14 +1,14 @@
 ---
 title: Dinamik şemaları oluşturmak için parametreleri kullanma
 description: Statik ve dinamik parametreler hakkında bilgi edinin ve bunların güvenli ve dinamik planlar oluşturmak için nasıl kullanılacağını öğrenin.
-ms.date: 08/27/2020
+ms.date: 01/27/2021
 ms.topic: conceptual
-ms.openlocfilehash: b6cefe7ec75ec622cb341d8f12edfd9c0cfa66e6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5dbf7ec02e89eac791ec3e17202a5ab13a04b81d
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89651956"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98918543"
 ---
 # <a name="creating-dynamic-blueprints-through-parameters"></a>Parametreler aracılığıyla dinamik planlar oluşturma
 
@@ -28,15 +28,15 @@ REST API aracılığıyla parametreler, şema üzerinde oluşturulabilir. Bu par
 
 ### <a name="using-securestring-and-secureobject-parameters"></a>SecureString ve secureObject parametrelerini kullanma
 
-ARM şablon _yapıtı_ , **SecureString** ve **secureobject** türlerindeki parametreleri desteklese de Azure şemaları, her birinin bir Azure Key Vault bağlı olmasını gerektirir. Bu güvenlik önlemi, gizli dizileri depolar ve güvenli desenlerin çalışmasını teşvik eder. Azure şemaları, ARM şablon _yapıtında_güvenli parametrelerin dahil edilmesini algılayan bu güvenlik ölçüsünü destekler. Hizmet daha sonra, algılanan güvenli parametre başına aşağıdaki Key Vault özellikleri için atama sırasında uyarır:
+ARM şablon _yapıtı_ , **SecureString** ve **secureobject** türlerindeki parametreleri desteklese de Azure şemaları, her birinin bir Azure Key Vault bağlı olmasını gerektirir. Bu güvenlik önlemi, gizli dizileri depolar ve güvenli desenlerin çalışmasını teşvik eder. Azure şemaları, ARM şablon _yapıtında_ güvenli parametrelerin dahil edilmesini algılayan bu güvenlik ölçüsünü destekler. Hizmet daha sonra, algılanan güvenli parametre başına aşağıdaki Key Vault özellikleri için atama sırasında uyarır:
 
 - Key Vault kaynak KIMLIĞI
 - Key Vault gizli dizi adı
 - Key Vault gizli sürümü
 
-Şema ataması **sistem tarafından atanan yönetilen kimlik**kullanıyorsa, başvurulan Key Vault şema tanımının atandığı abonelikte aynı _olması gerekir_ .
+Şema ataması **sistem tarafından atanan yönetilen kimlik** kullanıyorsa, başvurulan Key Vault şema tanımının atandığı abonelikte aynı _olması gerekir_ .
 
-Şema ataması **Kullanıcı tarafından atanan yönetilen kimlik**kullanıyorsa, _başvurulan Key Vault merkezi bir abonelikte bulunabilir._ Yönetilen kimliğe, şema atamasından önce Key Vault uygun haklara sahip olmalıdır.
+Şema ataması **Kullanıcı tarafından atanan yönetilen kimlik** kullanıyorsa, _başvurulan Key Vault merkezi bir abonelikte bulunabilir._ Yönetilen kimliğe, şema atamasından önce Key Vault uygun haklara sahip olmalıdır.
 
 > [!IMPORTANT]
 > Her iki durumda da, Key Vault **erişim ilkeleri** sayfasında yapılandırılmış **şablon dağıtımı Için Azure Resource Manager erişimi etkinleştir** olmalıdır. Bu özelliğin nasıl etkinleştirileceği hakkında yönergeler için bkz. [Key Vault-şablon dağıtımını etkinleştirme](../../../azure-resource-manager/managed-applications/key-vault-access.md#enable-template-deployment).
@@ -47,7 +47,7 @@ Azure Key Vault hakkında daha fazla bilgi için bkz. [Key Vault genel bakış](
 
 ### <a name="static-parameters"></a>Statik parametreler
 
-Şema 'in tanımında tanımlanan bir parametre değerine **statik parametre**denir, çünkü şema 'in her kullanımı yapıyı bu statik değeri kullanarak dağıtacaktır. Kaynak grubu örneğinde, kaynak grubunun adı için anlamlı olmasa da konum için anlamlı olabilir. Ardından, şema 'in her ataması, kaynak grubunu, atama sırasında her ne olursa olsun, aynı konumda oluşturur. Bu esneklik, atama sırasında nelerin değiştirilebileceklerini ve gerekli olarak tanımladıklarınızı seçmenize olanak sağlar.
+Şema 'in tanımında tanımlanan bir parametre değerine **statik parametre** denir, çünkü şema 'in her kullanımı yapıyı bu statik değeri kullanarak dağıtacaktır. Kaynak grubu örneğinde, kaynak grubunun adı için anlamlı olmasa da konum için anlamlı olabilir. Ardından, şema 'in her ataması, kaynak grubunu, atama sırasında her ne olursa olsun, aynı konumda oluşturur. Bu esneklik, atama sırasında nelerin değiştirilebileceklerini ve gerekli olarak tanımladıklarınızı seçmenize olanak sağlar.
 
 #### <a name="setting-static-parameters-in-the-portal"></a>Portalda statik parametreleri ayarlama
 
@@ -63,9 +63,9 @@ Azure Key Vault hakkında daha fazla bilgi için bkz. [Key Vault genel bakış](
 
    :::image type="content" source="../media/parameters/parameter-column.png" alt-text="Bir şema tanımının ekran görüntüsü ve ' X/Y parametrelerinin doldurulmuş ' vurgulanacaktır." border="false":::
 
-1. **Yapıtı Düzenle** sayfası, seçilen yapıya uygun değer seçeneklerini görüntüler. Yapıtın üzerindeki her parametrenin bir başlığı, bir değer kutusu ve bir onay kutusu vardır. Bir **statik parametre**yapmak için kutuyu işaretsiz olarak ayarlayın. Aşağıdaki örnekte, yalnızca _konum_ işaretlenmemiştir ve _kaynak grubu adı_ denetlendiğinden bir **statik parametredir** .
+1. **Yapıtı Düzenle** sayfası, seçilen yapıya uygun değer seçeneklerini görüntüler. Yapıtın üzerindeki her parametrenin bir başlığı, bir değer kutusu ve bir onay kutusu vardır. Bir **statik parametre** yapmak için kutuyu işaretsiz olarak ayarlayın. Aşağıdaki örnekte, yalnızca _konum_ işaretlenmemiştir ve _kaynak grubu adı_ denetlendiğinden bir **statik parametredir** .
 
-   :::image type="content" source="../media/parameters/static-parameter.png" alt-text="Bir şema tanımının ekran görüntüsü ve ' X/Y parametrelerinin doldurulmuş ' vurgulanacaktır." border="false":::
+   :::image type="content" source="../media/parameters/static-parameter.png" alt-text="Bir şema yapıtı üzerindeki statik parametrelerin ekran görüntüsü." border="false":::
 
 #### <a name="setting-static-parameters-from-rest-api"></a>REST API statik parametreleri ayarlama
 
@@ -130,11 +130,11 @@ Aşağıdaki REST API örnek, şema üzerinde bir rol atama yapıtı oluşturur 
   }
   ```
 
-Bu örnekte, **Prenalids** özelliği bir değerini kullanarak **sahipler** şeması ' nı kullanır `[parameters('owners')]` . Bir şema üzerinde bir parametre ayarlamak bir şema düzeyi parametresini kullanarak bir **statik parametre**örneği olmaya devam eder. Şema level parametresi, şema atama sırasında ayarlanamaz ve her atamada aynı değer olacaktır.
+Bu örnekte, **Prenalids** özelliği bir değerini kullanarak **sahipler** şeması ' nı kullanır `[parameters('owners')]` . Bir şema üzerinde bir parametre ayarlamak bir şema düzeyi parametresini kullanarak bir **statik parametre** örneği olmaya devam eder. Şema level parametresi, şema atama sırasında ayarlanamaz ve her atamada aynı değer olacaktır.
 
 ##### <a name="artifact-level-parameter"></a>Yapıt düzeyi parametresi
 
-Bir yapıtın üzerinde **statik parametreler** oluşturmak benzerdir, ancak işlevini kullanmak yerine düz bir değer alır `parameters()` . Aşağıdaki örnek iki statik parametre, **TagName** ve **tagvalue**oluşturur. Her bir üzerinde değer doğrudan sağlanır ve bir işlev çağrısı kullanmaz.
+Bir yapıtın üzerinde **statik parametreler** oluşturmak benzerdir, ancak işlevini kullanmak yerine düz bir değer alır `parameters()` . Aşağıdaki örnek iki statik parametre, **TagName** ve **tagvalue** oluşturur. Her bir üzerinde değer doğrudan sağlanır ve bir işlev çağrısı kullanmaz.
 
 - REST API URI'si
 
@@ -176,11 +176,11 @@ Statik parametrenin tersi, **dinamik bir parametredir**. Bu parametre Blueprint 
 
 1. **Şeması ata** sayfasında, **yapıt parametreleri** bölümünü bulun. En az bir **dinamik parametresi** olan her yapıt yapıt ve yapılandırma seçeneklerini görüntüler. Blueprint 'i atamadan önce parametrelere gerekli değerler sağlayın. Aşağıdaki örnekte _ad_ , şema atamasını tamamlayacak şekilde tanımlanması gereken **dinamik bir parametredir** .
 
-   :::image type="content" source="../media/parameters/dynamic-parameter.png" alt-text="Bir şema tanımının ekran görüntüsü ve ' X/Y parametrelerinin doldurulmuş ' vurgulanacaktır." border="false":::
+   :::image type="content" source="../media/parameters/dynamic-parameter.png" alt-text="Şema ataması sırasında dinamik parametreleri ayarlamanın ekran görüntüsü." border="false":::
 
 #### <a name="setting-dynamic-parameters-from-rest-api"></a>REST API dinamik parametreleri ayarlama
 
-Atama sırasında **dinamik parametrelerin** ayarlanması, doğrudan değer girilerek yapılır. [Parametreler ()](../reference/blueprint-functions.md#parameters)gibi bir işlev kullanmak yerine, belirtilen değer uygun bir dizedir. Bir kaynak grubunun yapıtları, "şablon adı", **ad**ve **konum** özellikleriyle tanımlanır. Dahil edilen yapıt için diğer tüm parametreler, **parameters** **\<name\>** ve **değerleri** anahtar çifti parametreleri altında tanımlanmıştır. Şema, atama sırasında sağlanmayan dinamik bir parametre için yapılandırılmışsa, atama başarısız olur.
+Atama sırasında **dinamik parametrelerin** ayarlanması, doğrudan değer girilerek yapılır. [Parametreler ()](../reference/blueprint-functions.md#parameters)gibi bir işlev kullanmak yerine, belirtilen değer uygun bir dizedir. Bir kaynak grubunun yapıtları, "şablon adı", **ad** ve **konum** özellikleriyle tanımlanır. Dahil edilen yapıt için diğer tüm parametreler,  **\<name\>** ve **değerleri** anahtar çifti parametreleri altında tanımlanmıştır. Şema, atama sırasında sağlanmayan dinamik bir parametre için yapılandırılmışsa, atama başarısız olur.
 
 - REST API URI'si
 

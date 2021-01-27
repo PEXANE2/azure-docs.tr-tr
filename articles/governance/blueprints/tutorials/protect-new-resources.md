@@ -1,14 +1,14 @@
 ---
 title: 'Öğretici: kilitlerle yeni kaynakları koruma'
 description: Bu öğreticide, Azure şemaları kaynak kilitleri seçeneklerini salt okunurdur ve yeni dağıtılan kaynakları korumak için silmeyin.
-ms.date: 08/27/2020
+ms.date: 01/27/2021
 ms.topic: tutorial
-ms.openlocfilehash: 3ed75a1dee925f2a55ac46705a171bec5fc1d30e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c671d641982ba833b54586c1b33979a97747396b
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89048579"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98915415"
 ---
 # <a name="tutorial-protect-new-resources-with-azure-blueprints-resource-locks"></a>Öğretici: Azure şemaları kaynak kilitleri ile yeni kaynakları koruma
 
@@ -33,28 +33,28 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 1. Sol bölmede **Tüm hizmetler**'i seçin. **Şemalar**’ı arayıp seçin.
 
-1. Soldaki **Başlarken** sayfasında, şema **Oluştur**altında **Oluştur** ' u seçin.
+1. Soldaki **Başlarken** sayfasında, şema **Oluştur** altında **Oluştur** ' u seçin.
 
 1. Sayfanın üst kısmındaki **boş BLUEPRINT** şema örneğini bulun. **Boş şema ile Başlat**' ı seçin.
 
 1. **Temel** bilgiler sekmesinde bu bilgileri girin:
 
-   - **Şema adı**: şema örneğinin kopyasına bir ad verin. Bu öğreticide, **kilitli-storageaccount**adını kullanacağız.
-   - **Şema açıklaması**: şema tanımı için bir açıklama ekleyin. **Dağıtılan kaynaklarda şema kaynak kilitlemeyi test etmek için**kullanın.
+   - **Şema adı**: şema örneğinin kopyasına bir ad verin. Bu öğreticide, **kilitli-storageaccount** adını kullanacağız.
+   - **Şema açıklaması**: şema tanımı için bir açıklama ekleyin. **Dağıtılan kaynaklarda şema kaynak kilitlemeyi test etmek için** kullanın.
    - **Tanım konumu**: üç nokta düğmesini (...) seçin ve ardından şema tanımınızı kaydetmek için yönetim grubunu veya aboneliği seçin.
 
 1. Sayfanın üst kısmındaki **yapıtlar** sekmesini seçin veya sayfanın altındaki **yapıtlar** ' ı seçin.
 
 1. Abonelik düzeyinde bir kaynak grubu ekleyin:
-   1. **Abonelik**altında **yapıt Ekle** satırını seçin.
-   1. **Yapıt türü**altında **kaynak grubu** ' nu seçin.
-   1. **Yapıt görünen adını** **rgtolock**olarak ayarlayın.
-   1. **Kaynak grubu adını** ve **konum** kutularını boş bırakın, ancak her bir özellikte onay kutusunun seçili olduğundan emin olun ve **dinamik parametreleri**yapın.
+   1. **Abonelik** altında **yapıt Ekle** satırını seçin.
+   1. **Yapıt türü** altında **kaynak grubu** ' nu seçin.
+   1. **Yapıt görünen adını** **rgtolock** olarak ayarlayın.
+   1. **Kaynak grubu adını** ve **konum** kutularını boş bırakın, ancak her bir özellikte onay kutusunun seçili olduğundan emin olun ve **dinamik parametreleri** yapın.
    1. Yapıtı şemasını Blueprint öğesine eklemek için **Ekle** ' yi seçin.
 
 1. Kaynak grubunun altına bir şablon ekleyin:
    1. **Rgtolock** girişinin altındaki **yapıt Ekle** satırını seçin.
-   1. **Yapıt türü**altında **Azure Resource Manager şablonu** ' nu seçin, **yapıt görünen adını** **storageaccount**olarak ayarlayın ve **açıklamayı** boş bırakın.
+   1. **Yapıt türü** altında **Azure Resource Manager şablonu** ' nu seçin, **yapıt görünen adını** **storageaccount** olarak ayarlayın ve **açıklamayı** boş bırakın.
    1. **Şablon** sekmesinde, aşağıdaki ARM şablonunu düzenleyici kutusuna yapıştırın. Şablonu yapıştırdıktan sonra, yapıtı şemasını Blueprint 'e eklemek için **Ekle** ' yi seçin.
 
    ```json
@@ -113,7 +113,7 @@ Bu adım, seçilen yönetim grubunda veya abonelikte şema tanımını oluşturu
 
 1. Sol taraftaki **Blueprint tanımları** sayfasını seçin. **Kilitli-storageaccount** şeması tanımını bulmak için filtreleri kullanın ve ardından seçin.
 
-1. Sayfanın üst kısmında **Şemayı yayımla**’yı seçin. Sağdaki yeni bölmede **Sürüm**olarak **1,0** girin. Daha sonra bir değişiklik yaparsanız bu özellik faydalıdır. **Şeması dağıtılan kaynakları kilitlemek için yayımlanan ilk sürüm**gibi **değişiklik notlarını**girin. Sayfanın alt kısmında **Yayımla** düğmesini seçin.
+1. Sayfanın üst kısmında **Şemayı yayımla**’yı seçin. Sağdaki yeni bölmede **Sürüm** olarak **1,0** girin. Daha sonra bir değişiklik yaparsanız bu özellik faydalıdır. **Şeması dağıtılan kaynakları kilitlemek için yayımlanan ilk sürüm** gibi **değişiklik notlarını** girin. Sayfanın alt kısmında **Yayımla** düğmesini seçin.
 
 Bu adım, şema 'in bir aboneliğe atanmasını olanaklı kılar. Şema tanımı yayımlandıktan sonra yine de değişiklik yapabilirsiniz. Değişiklik yaparsanız, aynı şema tanımının sürümleri arasındaki farkları izlemek için tanımı yeni bir sürüm değeriyle yayımlamanız gerekir.
 
@@ -134,7 +134,7 @@ Bu adım, şema 'in bir aboneliğe atanmasını olanaklı kılar. Şema tanımı
    - **Temel Bilgiler**
 
      - **Abonelikler**: şema tanımınızı kaydettiğiniz yönetim grubunda olan bir veya daha fazla abonelik seçin. Birden fazla abonelik seçerseniz, girdiğiniz parametreleri kullanarak her bir abonelik için bir atama oluşturulacaktır.
-     - **Atama adı**: ad, şema tanımının adına göre önceden doldurulur. Bu atamanın yeni kaynak grubunu kilitlemeyi göstermesini istiyoruz, bu nedenle atama adını **atama-kilitli-storageaccount-Testingbpkilitler**olarak değiştirin.
+     - **Atama adı**: ad, şema tanımının adına göre önceden doldurulur. Bu atamanın yeni kaynak grubunu kilitlemeyi göstermesini istiyoruz, bu nedenle atama adını **atama-kilitli-storageaccount-Testingbpkilitler** olarak değiştirin.
      - **Konum**: yönetilen kimliğin oluşturulacağı bölgeyi seçin. Azure Blueprint bu yönetilen kimliği kullanarak tüm yapıtları atanmış şemaya dağıtır. Daha fazla bilgi için bkz. [Azure kaynakları için yönetilen kimlikler](../../../active-directory/managed-identities-azure-resources/overview.md).
        Bu öğretici için **Doğu ABD 2**' yi seçin.
      - Şema **tanımı sürümü**: şema tanımının yayınlanan **1,0** sürümünü seçin.
@@ -159,7 +159,7 @@ Bu adım, şema 'in bir aboneliğe atanmasını olanaklı kılar. Şema tanımı
 
 1. Tüm parametreleri girdikten sonra sayfanın alt kısmındaki **ata** ' yı seçin.
 
-Bu adım, tanımlı kaynakları dağıtır ve seçili **kilit atamasını**yapılandırır. Şema kilitlerinin uygulanması 30 dakika kadar sürebilir.
+Bu adım, tanımlı kaynakları dağıtır ve seçili **kilit atamasını** yapılandırır. Şema kilitlerinin uygulanması 30 dakika kadar sürebilir.
 
 Şema **tanımı başarılı oldu** Portal bildirimi seçildikten sonra, bir sonraki adıma gidin.
 
@@ -181,13 +181,13 @@ Atama, _Testingbpkilitler_ kaynak grubunu ve ARM şablonu yapıtı tarafından d
 
 1. **Atamaları Reddet** sekmesini seçin.
 
-   Şema ataması, **salt okuma** şeması kilit modunu zorlamak için dağıtılan kaynak grubunda bir [reddetme ataması](../../../role-based-access-control/deny-assignments.md) oluşturdu. Reddetme ataması, **rol atamaları** sekmesinde uygun haklara sahip birinin belirli eylemleri almasını engeller. Reddetme ataması _tüm sorumluları_etkiler.
+   Şema ataması, **salt okuma** şeması kilit modunu zorlamak için dağıtılan kaynak grubunda bir [reddetme ataması](../../../role-based-access-control/deny-assignments.md) oluşturdu. Reddetme ataması, **rol atamaları** sekmesinde uygun haklara sahip birinin belirli eylemleri almasını engeller. Reddetme ataması _tüm sorumluları_ etkiler.
 
    Bir sorumluyu reddetme atamasından dışlamak hakkında bilgi için bkz. [kaynak kilitlemeyi planlar](../concepts/resource-locking.md#exclude-a-principal-from-a-deny-assignment).
 
 1. Reddetme atamasını seçin ve ardından sol taraftaki **Reddedilenler izinleri** sayfasını seçin.
 
-   Reddetme ataması, ve eylem yapılandırmasıyla tüm işlemleri engellemektedir **\*** , **Action** ancak **NotActions**aracılığıyla ** \* /Read** 'i dışlayarak okuma erişimine izin verir.
+   Reddetme ataması **\* *_ ve _* eylem** yapılandırmasıyla tüm işlemleri engellemektedir, ancak **NotActions** aracılığıyla **\* /Read** 'i dışlayarak okuma erişimine izin verir.
 
 1. Azure portal içerik haritasında **Testingbpkilitler-Access Control (IAM)** öğesini seçin. Ardından sol taraftaki **genel bakış** sayfasını ve ardından **kaynak grubunu sil** düğmesini seçin. Silmeyi onaylamak için **Testingbpkilitleri** adını girin ve ardından bölmenin altındaki **Sil** ' i seçin.
 

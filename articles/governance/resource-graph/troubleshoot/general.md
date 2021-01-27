@@ -1,14 +1,14 @@
 ---
 title: Sık karşılaşılan hataları giderme
 description: Azure Resource Graph ile Azure kaynaklarını sorgularken çeşitli SDK 'lar ile ilgili sorunları nasıl giderebileceğinizi öğrenin.
-ms.date: 10/14/2020
+ms.date: 01/27/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: 13c5d5ffde8b0b82fcafa5e8149400555a0b18a6
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 0d783b9cb4fa30e3c3e0ff82536b4878c29c7a0d
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92056966"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98916712"
 ---
 # <a name="troubleshoot-errors-using-azure-resource-graph"></a>Azure Kaynak Grafiği 'ni kullanarak hatalarda sorun giderme
 
@@ -84,11 +84,11 @@ Azure Kaynak grafiğini sorgulayan müşteriler REST API bir _500_ (Iç sunucu h
 
 #### <a name="cause"></a>Nedeni
 
-Azure Kaynak Grafiği REST API yalnızca bir `Content-Type` **uygulama/JSON**'ı destekler. Bazı REST araçları veya aracıları, REST API tarafından desteklenmeyen **metin/düz**için varsayılan değer.
+Azure Kaynak Grafiği REST API yalnızca bir `Content-Type` **uygulama/JSON**'ı destekler. Bazı REST araçları veya aracıları, REST API tarafından desteklenmeyen **metin/düz** için varsayılan değer.
 
 #### <a name="resolution"></a>Çözüm
 
-Azure Kaynak Grafiği 'ni sorgulamak için kullanmakta olduğunuz aracın veya aracının, `Content-Type` **Application/JSON**için yapılandırılmış REST API üst bilgisine sahip olduğunu doğrulayın.
+Azure Kaynak Grafiği 'ni sorgulamak için kullanmakta olduğunuz aracın veya aracının, `Content-Type` **Application/JSON** için yapılandırılmış REST API üst bilgisine sahip olduğunu doğrulayın.
 
 ### <a name="scenario-no-read-permission-to-all-subscriptions-in-list"></a><a name="rest-403"></a>Senaryo: listedeki tüm abonelikler için okuma izni yok
 

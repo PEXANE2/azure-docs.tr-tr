@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 10/28/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: bff15cbc8827f4a0eb09a243e01b2cdb95ba5f2f
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 7882fc6a6823a93d09c04a8ae2c19005df4843d8
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98681362"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98917102"
 ---
 # <a name="what-is-azure-synapse-analytics"></a>Azure Synapse Analytics nedir?
 
@@ -26,8 +26,7 @@ Kurumsal analizler, ham, iyileştirilmiş veya yüksek düzeyde bir şekilde, he
 
 ### <a name="industry-leading-sql"></a>Sektör lideri SQL
 
-* **SYNAPSE SQL** , kuruluşların standart ve tanıdık T-SQL deneyimlerini kullanarak veri depolama ve veri sanallaştırma senaryoları uygulamasına olanak tanıyan bir dağıtılmış sorgu sistemidir. Ayrıca, SQL 'in, akış ve makine öğrenimi senaryolarına yönelik yeteneklerini de genişletir.
-
+* **SYNAPSE SQL** , veri depolama ve veri sanallaştırma senaryolarına olanak tanıyan ve t-SQL ' i, akış ve makine öğrenimi senaryolarına yönelik olarak genişleten t-SQL için dağıtılmış bir sorgu sistemidir.
 * SYNAPSE SQL, gereksinimlerinize uyacak şekilde hem **sunucusuz** hem de **adanmış** kaynak modelleri sunarak tüketim ve faturalandırma seçenekleri sunar. Tahmin edilebilir performans ve maliyet için, SQL tablolarında depolanan verilere yönelik işlem gücü ayırmak üzere ayrılmış SQL havuzları oluşturun. Planlanmamış veya bursty iş yükleri için, her zaman kullanılabilir, sunucusuz SQL uç noktasını kullanın.
 * Bulut veri kaynaklarından SQL tablolarına veri aktarmak için yerleşik **akış** yeteneklerini kullanın
 * [T-SQL tahmin işlevini](/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest&preserve-view=true) kullanarak verileri öğrenmek için **Machine LEARNING** MODELLERINI kullanarak AI 'yi SQL ile tümleştirin

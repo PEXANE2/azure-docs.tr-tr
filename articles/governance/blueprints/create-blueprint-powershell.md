@@ -1,14 +1,14 @@
 ---
 title: 'Hızlı başlangıç: PowerShell ile bir şema oluşturma'
 description: Bu hızlı başlangıçta, PowerShell kullanarak yapıtlar oluşturmak, tanımlamak ve dağıtmak için Azure şemaları kullanırsınız.
-ms.date: 08/27/2020
+ms.date: 01/27/2021
 ms.topic: quickstart
-ms.openlocfilehash: 339cd4628cda5f469a783db02c10f86259c93941
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 65d573d0aec7d5f292bc985483e1f12c350ae03a
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89051534"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98918288"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-powershell"></a>Hızlı başlangıç: PowerShell ile Azure Blueprint tanımlama ve atama
 
@@ -16,9 +16,9 @@ ms.locfileid: "89051534"
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free) oluşturun.
-
-Zaten yüklü değilse, PowerShell Galerisi **az** . Blueprint modülünü yüklemek ve doğrulamak için [az. Blueprint modülünü ekleme](./how-to/manage-assignments-ps.md#add-the-azblueprint-module) bölümündeki yönergeleri izleyin.
+- Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free) oluşturun.
+- Zaten yüklü değilse, PowerShell Galerisi **az** . Blueprint modülünü yüklemek ve doğrulamak için [az. Blueprint modülünü ekleme](./how-to/manage-assignments-ps.md#add-the-azblueprint-module) bölümündeki yönergeleri izleyin.
+- Daha önce Azure şemaları kullanmadıysanız, ile Azure PowerShell aracılığıyla kaynak sağlayıcısını kaydedin `Register-AzResourceProvider -ProviderNamespace Microsoft.Blueprint` .
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -104,7 +104,7 @@ Uyumluluk için standart desen tanımlamanın ilk adımı kullanılabilir durumd
      > Şema tanımlarınızı programlı olarak oluştururken _blueprint.js_ dosya adı kullanın.
      > Bu dosya adı, [Import-AzBlueprintWithArtifact](/powershell/module/az.blueprint/import-azblueprintwithartifact)çağrılırken kullanılır.
 
-     Şema nesnesi varsayılan olarak varsayılan abonelikte oluşturulur. Yönetim grubunu belirtmek için, ' **ManagementGroupId**parametresini kullanın. Aboneliği belirtmek için, **SubscriptionID**parametresini kullanın.
+     Şema nesnesi varsayılan olarak varsayılan abonelikte oluşturulur. Yönetim grubunu belirtmek için, ' **ManagementGroupId** parametresini kullanın. Aboneliği belirtmek için, **SubscriptionID** parametresini kullanın.
 
 1. Abonelikte rol ataması ekleyin. **Artifactfile** , yapıt _türünü_ tanımlar, Özellikler rol tanımı tanımlayıcısına hizalanır ve asıl kimlikler bir değer dizisi olarak geçirilir. Aşağıdaki örnekte belirtilen rolün verildiği sorumlu kimlikleri, şema ataması sırasında ayarlanan bir parametreyle yapılandırılmıştır. Bu örnek, bir GUID 'SI ile _katkıda_ bulunan yerleşik rolünü kullanır `b24988ac-6180-42a0-ab88-20f7382dd24c` .
 

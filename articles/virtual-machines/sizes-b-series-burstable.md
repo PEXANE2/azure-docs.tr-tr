@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: sttsinar
-ms.openlocfilehash: 14c8584699ddc981fc24cc29b78c187288c6fb57
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 31a65cab7dfdd478560b7babba156cec7645cf33
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98203397"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98917260"
 ---
 # <a name="b-series-burstable-virtual-machine-sizes"></a>B serisi Burstable sanal makine boyutları
 
@@ -27,8 +27,12 @@ B serisi aşağıdaki VM boyutlarında gelir:
 [Dinamik geçiş](maintenance-and-updates.md): destekleniyor<br>
 [Güncelleştirmeleri koruyan bellek](maintenance-and-updates.md): desteklenir<br>
 [VM oluşturma desteği](generation-2.md): 1. ve 2. nesil<br>
+[Hızlandırılmış ağ](../virtual-network/create-vm-accelerated-networking-cli.md): desteklenen * *<br>
+
+* B serisi VM 'Ler Burstable olur ve bu nedenle ACU numaraları iş yüklerine ve temel kullanıma bağlı olarak farklılık gösterir.<br>
+* * Hızlandırılmış ağ yalnızca *Standard_B12ms*, *Standard_B16ms* ve *Standard_B20ms* için desteklenir.
 <br>
-* B serisi VM 'Ler Burstable olur ve bu nedenle ACU numaraları iş yüklerine ve temel kullanıma bağlı olarak farklılık gösterir.
+<br>
 
 | Boyut | Sanal işlemci | Bellek: GiB | Geçici depolama (SSD) GiB | VM 'nin temel CPU performansı | VM 'nin en yüksek CPU performansı | İlk krediler | Bankaya açık/saat | Maksimum bankaya ait krediler | Maksimum veri diskleri | Maksimum önbelleğe alınmış ve geçici depolama aktarım hızı: ıOPS/MBps | Önbelleğe alınmamış maksimum disk aktarım hızı: ıOPS/MBps | En fazla NIC |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|

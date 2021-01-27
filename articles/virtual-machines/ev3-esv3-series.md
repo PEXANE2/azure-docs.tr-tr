@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: daberry
-ms.openlocfilehash: 07564955e9cfa6931e461df00ef50a237a66b9b3
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 1a0943c9f87960f9fcec074941b6e8ead81d92af
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500691"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98917918"
 ---
 # <a name="ev3-and-esv3-series"></a>Ev3 ve Esv3 serisi
 
@@ -32,6 +32,7 @@ Ev3 serisi VM 'nin özelliği Intel® Hyper-Threading teknolojisi.
 [Dinamik geçiş](maintenance-and-updates.md): destekleniyor<br>
 [Güncelleştirmeleri koruyan bellek](maintenance-and-updates.md): desteklenir<br>
 [VM oluşturma desteği](generation-2.md): 1. nesil<br>
+[Hızlandırılmış ağ](../virtual-network/create-vm-accelerated-networking-cli.md): desteklenir<br>
 <br>
 
 | Boyut | Sanal işlemci | Bellek: GiB | Geçici depolama (SSD) GiB | Maksimum veri diskleri | Maksimum geçici depolama aktarım hızı: IOPS / Okuma MB/sn / Yazma MB/sn | Maksimum NIC/Ağ bant genişliği |
@@ -62,6 +63,7 @@ Esv3 serisi VM 'nin özelliği Intel® Hyper-Threading teknolojisi.
 [Dinamik geçiş](maintenance-and-updates.md): destekleniyor<br>
 [Güncelleştirmeleri koruyan bellek](maintenance-and-updates.md): desteklenir<br>
 [VM oluşturma desteği](generation-2.md): 1. ve 2. nesil<br>
+[Hızlandırılmış ağ](../virtual-network/create-vm-accelerated-networking-cli.md): desteklenir<br>
 <br>
 
 | Boyut | Sanal işlemci | Bellek: GiB | Geçici depolama (SSD) GiB | Maksimum veri diskleri | Maksimum önbelleğe alınmış ve geçici depolama aktarım hızı: ıOPS/MBps (GiB 'de önbellek boyutu) | Önbelleğe alınan veri bloğu ve geçici depolama aktarım hızı: ıOPS/MBps<sup>3</sup> | Önbelleğe alınmamış maksimum disk aktarım hızı: ıOPS/MBps |  Önbelleğe alınmamış disk aktarım hızı: ıOPS/MBps<sup>3</sup>| En fazla NIC/beklenen ağ bant genişliği (Mbps) |

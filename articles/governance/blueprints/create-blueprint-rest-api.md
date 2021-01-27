@@ -1,14 +1,14 @@
 ---
 title: 'Hızlı başlangıç: REST API bir şema oluşturma'
 description: Bu hızlı başlangıçta, REST API kullanarak yapıtlar oluşturmak, tanımlamak ve dağıtmak için Azure şemaları kullanırsınız.
-ms.date: 10/14/2020
+ms.date: 01/27/2021
 ms.topic: quickstart
-ms.openlocfilehash: aa25a65b20b295045b52a49c8c47fb8849c3cba3
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: eaf6dbb2ff14106ba8d2798d86a8f093855de85e
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057000"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98915650"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-rest-api"></a>Hızlı başlangıç: REST API Azure Blueprint tanımlama ve atama
 
@@ -200,7 +200,7 @@ Her bir REST API URI'sinde kendi değerlerinizle değiştirmeniz gereken değiş
      }
      ```
 
-1. Kaynak grubuna şablon ekleyin. ARM şablonu için **Istek gövdesi** , ŞABLONUN normal JSON bileşenini içerir ve **Properties. resourceGroup**ile hedef kaynak grubunu tanımlar. Şablon aynı zamanda **storageAccountType**, **tagName** ve **tagValue** şema parametrelerini şablona geçirerek hepsini yeniden kullanır. Şema parametreleri **properties.parameters** tanımlanarak şemaya sunulur ve bu anahtar-değer çifti şema JSON nesnesinde kullanılarak değer eklenir. Şema ve şablon parametresi adları aynı olabilir ancak burada şemadan şablon yapıtına geçirme işleminin gösterilmesi için farklı olarak belirlenmiştir.
+1. Kaynak grubuna şablon ekleyin. ARM şablonu için **Istek gövdesi** , ŞABLONUN normal JSON bileşenini içerir ve **Properties. resourceGroup** ile hedef kaynak grubunu tanımlar. Şablon aynı zamanda **storageAccountType**, **tagName** ve **tagValue** şema parametrelerini şablona geçirerek hepsini yeniden kullanır. Şema parametreleri **properties.parameters** tanımlanarak şemaya sunulur ve bu anahtar-değer çifti şema JSON nesnesinde kullanılarak değer eklenir. Şema ve şablon parametresi adları aynı olabilir ancak burada şemadan şablon yapıtına geçirme işleminin gösterilmesi için farklı olarak belirlenmiştir.
 
    - REST API URI'si
 
