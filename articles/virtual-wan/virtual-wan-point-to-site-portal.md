@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: tutorial
 ms.date: 11/09/2020
 ms.author: cherylmc
-ms.openlocfilehash: e7e65d5d2941765df98b3bf3b7fb8ff2e89b7e9f
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 1876ab86e6f4c46edc23361dd884d8b32328f36c
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94411210"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919081"
 ---
 # <a name="tutorial-create-a-user-vpn-connection-using-azure-virtual-wan"></a>Öğretici: Azure sanal WAN kullanarak bir kullanıcı VPN bağlantısı oluşturma
 
@@ -24,6 +24,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Sanal WAN oluşturma
 > * P2S yapılandırması oluşturma
 > * Sanal hub oluşturma
+> * İstemci adres havuzlarını seçin
 > * DNS sunucularını belirtme
 > * VPN istemci profili yapılandırma paketi oluştur
 > * VPN istemcilerini yapılandırma
@@ -49,6 +50,11 @@ Noktadan siteye (P2S) yapılandırması, uzak istemcileri bağlamaya yönelik pa
 
 [!INCLUDE [Create hub](../../includes/virtual-wan-p2s-hub-include.md)]
 
+
+## <a name="choose-p2s-client-address-pools"></a><a name="chooseclientpools"></a> P2S Istemci adresi havuzları Seç
+
+[!INCLUDE [Choose pools](../../includes/virtual-wan-allocating-p2s-pools.md)]
+
 ## <a name="specify-dns-server"></a><a name="dns"></a>DNS sunucusunu belirtin
 
 Bu ayarı, hub 'ı oluştururken yapılandırabilir veya daha sonra değiştirebilirsiniz. Değiştirmek için sanal hub 'ı bulun. **Kullanıcı VPN (site üzerine gelin)** altında **Yapılandır** ' ı SEÇIN ve DNS sunucusu IP adreslerini **özel DNS sunucuları** metin kutusuna (es) girin. En fazla 5 DNS sunucusu belirtebilirsiniz.
@@ -73,6 +79,8 @@ Uzaktan erişim VPN istemcilerini yapılandırmak için indirilen profil paketin
 1. Sanal WAN'a gidin.
 1. **Genel bakış** sayfasında, haritadaki her bir nokta bir hub 'ı temsil eder.
 1. Hub **'lar ve bağlantılar** bölümünde, hub durumu, site, bölge, VPN bağlantı durumu ve baytları içinde ve dışarı izleyebilirsiniz.
+
+
 
 ## <a name="clean-up-resources"></a><a name="cleanup"></a>Kaynakları temizleme
 

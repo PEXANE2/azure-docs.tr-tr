@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2017
 ms.author: rohink
-ms.openlocfilehash: 3adbf34e4c19a76c2b5b2b1968c7821f37965929
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: c72e17e601ebf87b0f344a4723159ae22abc81d1
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94965638"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919893"
 ---
 # <a name="configure-reverse-dns-for-services-hosted-in-azure"></a>Azure 'da barındırılan hizmetler için ters DNS yapılandırma
 
@@ -33,7 +33,7 @@ Bu makaleyi okumadan önce, [Azure 'da ters DNS ve desteğe genel bakış](dns-r
 Azure DNS, işlem kaynakları (sanal makineler, sanal makine ölçek kümeleri veya Service Fabric kümeler gibi) bir Publicıpaddress kaynağı aracılığıyla sunulur. Ters DNS aramaları, Publicıpaddress 'in ' Smarfqdn ' özelliği kullanılarak yapılandırılır.
 
 
-Azure App Service için ters DNS şu anda desteklenmiyor.
+Azure App Service ve Application Gateway için ters DNS şu anda desteklenmiyor.
 
 ## <a name="validation-of-reverse-dns-records"></a>Ters DNS kayıtlarının doğrulanması
 
@@ -92,7 +92,7 @@ Zaten DNS adı olmayan mevcut bir Publicıpaddress 'e ters DNS eklemek için bir
 azure network public-ip set -n PublicIp -g MyResourceGroup -d contosoapp1 -f contosoapp1.westus.cloudapp.azure.com.
 ```
 
-#### <a name="azure-cli"></a>Azure CLI
+#### <a name="azure-cli"></a>Azure CLI’si
 
 Mevcut bir Publicıpaddress 'e ters DNS eklemek için:
 
@@ -122,7 +122,7 @@ New-AzPublicIpAddress -Name "PublicIp" -ResourceGroupName "MyResourceGroup" -Loc
 azure network public-ip create -n PublicIp -g MyResourceGroup -l westus -d contosoapp3 -f contosoapp3.westus.cloudapp.azure.com.
 ```
 
-#### <a name="azure-cli"></a>Azure CLI
+#### <a name="azure-cli"></a>Azure CLI’si
 
 ```azurecli
 az network public-ip create --name PublicIp --resource-group MyResourceGroup --location westcentralus --dns-name contosoapp1 --reverse-fqdn contosoapp1.westcentralus.cloudapp.azure.com
@@ -144,7 +144,7 @@ Get-AzPublicIpAddress -Name "PublicIp" -ResourceGroupName "MyResourceGroup"
 azure network public-ip show -n PublicIp -g MyResourceGroup
 ```
 
-#### <a name="azure-cli"></a>Azure CLI
+#### <a name="azure-cli"></a>Azure CLI’si
 
 ```azurecli
 az network public-ip show --name PublicIp --resource-group MyResourceGroup
@@ -168,7 +168,7 @@ Set-AzPublicIpAddress -PublicIpAddress $pip
 azure network public-ip set -n PublicIp -g MyResourceGroup –f ""
 ```
 
-#### <a name="azure-cli"></a>Azure CLI
+#### <a name="azure-cli"></a>Azure CLI’si
 
 ```azurecli
 az network public-ip update --resource-group MyResourceGroup --name PublicIp --reverse-fqdn ""

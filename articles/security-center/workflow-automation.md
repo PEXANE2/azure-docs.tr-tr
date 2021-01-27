@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 10/27/2020
 ms.author: memildin
-ms.openlocfilehash: a7341362183aee4a23556a164677bc320babdfec
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 674ba1cf03f48eb1c746b115d981740b5b938aab
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900830"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919536"
 ---
 # <a name="automate-responses-to-security-center-triggers"></a>Güvenlik Merkezi tetikleyicilerine yönelik yanıtları otomatikleştirin
 
@@ -26,45 +26,34 @@ Bu makalede, Azure Güvenlik Merkezi 'nin iş akışı Otomasyonu özelliği aç
 
 |Görünüş|Ayrıntılar|
 |----|:----|
-|Yayın durumu:|Genel olarak kullanılabilir (GA)|
+|Yayın durumu:|Genel kullanılabilirlik (GA)|
 |Fiyat|Ücretsiz|
 |Gerekli roller ve izinler:|Kaynak grubundaki **Güvenlik Yöneticisi rolü** veya **sahibi**<br>Ayrıca hedef kaynak için yazma izinlerine sahip olmalıdır<br><br>Azure Logic Apps iş akışlarıyla çalışmak için aşağıdaki Logic Apps rollere/izinlere de sahip olmanız gerekir:<br> - [Mantıksal uygulama işleci](../role-based-access-control/built-in-roles.md#logic-app-operator) izinleri gerekiyor veya mantıksal uygulama okuma/tetikleme erişimi (Bu rol, mantıksal uygulamalar oluşturamaz veya düzenleyemez; yalnızca var olanları *Çalıştır* )<br> - Mantıksal uygulama oluşturma ve değiştirme için [mantıksal uygulama katılımcısı](../role-based-access-control/built-in-roles.md#logic-app-contributor) izinleri gereklidir<br>Logic App bağlayıcıları kullanmak istiyorsanız, ilgili hizmetlerinde oturum açmak için ek kimlik bilgilerine ihtiyacınız olabilir (örneğin, Outlook/takımlar/bolluk örnekleri)|
-|Larının|![Evet](./media/icons/yes-icon.png) Ticari bulutlar<br>![Evet](./media/icons/yes-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
+|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Yes](./media/icons/yes-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
 |||
 
 
 
 ## <a name="create-a-logic-app-and-define-when-it-should-automatically-run"></a>Bir mantıksal uygulama oluşturun ve ne zaman otomatik olarak çalışacağını tanımlayın 
 
-1. Güvenlik Merkezi 'nin kenar çubuğundan **Iş akışı Otomasyonu** ' nu seçin.
+1. Güvenlik Merkezi 'nin kenar çubuğundan **Iş akışı Otomasyonu**' nu seçin.
 
-    :::image type="content" source="./media/workflow-automation/list-of-workflow-automations.png" alt-text="İş akışı otomasyonları listesi&quot;:::
+    :::image type="content" source="./media/workflow-automation/list-of-workflow-automations.png" alt-text="İş akışı otomasyonları listesi":::
 
     Bu sayfadan yeni otomasyon kuralları oluşturabilir, Ayrıca var olanları etkinleştirebilir, devre dışı bırakabilir veya silebilirsiniz.
 
-1. Yeni bir iş akışı tanımlamak için **iş akışı Otomasyonu Ekle** ' ye tıklayın. 
+1. Yeni bir iş akışı tanımlamak için **iş akışı Otomasyonu Ekle**' ye tıklayın. 
 
     Yeni otomasyonuna yönelik seçenekleri içeren bir bölme açılır. Buraya şunu girebilirsiniz:
     1. Otomasyon için bir ad ve açıklama.
-    1. Bu otomatik iş akışını başlatacak Tetikleyiciler. Örneğin, &quot;SQL&quot; içeren bir güvenlik uyarısı oluşturulduğunda mantıksal uygulamanızın çalışmasını isteyebilirsiniz.
+    1. Bu otomatik iş akışını başlatacak Tetikleyiciler. Örneğin, "SQL" içeren bir güvenlik uyarısı oluşturulduğunda mantıksal uygulamanızın çalışmasını isteyebilirsiniz.
 
         > [!NOTE]
-        > Tetikleyiciniz &quot;alt öneriler" içeren bir öneridir, örneğin **SQL veritabanlarınızdaki güvenlik açığı değerlendirmesi düzeltilmelidir** , mantıksal uygulama her yeni güvenlik bulma işlemi için tetiklemez; yalnızca ana önerinin durumu değiştiğinde.
+        > Tetikleyiciniz "alt öneriler" içeren bir öneridir, örneğin **SQL veritabanlarınızdaki güvenlik açığı değerlendirmesi düzeltilmelidir**, mantıksal uygulama her yeni güvenlik bulma işlemi için tetiklemez; yalnızca ana önerinin durumu değiştiğinde.
 
     1. Tetikleyici koşullarınız karşılandığında çalıştırılacak mantıksal uygulama. 
 
-        :::image type="content" source="./media/workflow-automation/add-workflow.png" alt-text="İş akışı otomasyonları listesi&quot;:::
-
-    Bu sayfadan yeni otomasyon kuralları oluşturabilir, Ayrıca var olanları etkinleştirebilir, devre dışı bırakabilir veya silebilirsiniz.
-
-1. Yeni bir iş akışı tanımlamak için **iş akışı Otomasyonu Ekle** ' ye tıklayın. 
-
-    Yeni otomasyonuna yönelik seçenekleri içeren bir bölme açılır. Buraya şunu girebilirsiniz:
-    1. Otomasyon için bir ad ve açıklama.
-    1. Bu otomatik iş akışını başlatacak Tetikleyiciler. Örneğin, &quot;SQL&quot; içeren bir güvenlik uyarısı oluşturulduğunda mantıksal uygulamanızın çalışmasını isteyebilirsiniz.
-
-        > [!NOTE]
-        > Tetikleyiciniz &quot;alt öneriler":::
+        :::image type="content" source="./media/workflow-automation/add-workflow.png" alt-text="İş akışı otomatiklamalar bölmesi Ekle":::
 
 1. Mantıksal uygulama oluşturma işlemini başlatmak için Eylemler bölümünden **Yeni bir tane oluştur ' a** tıklayın.
 
@@ -72,7 +61,7 @@ Bu makalede, Azure Güvenlik Merkezi 'nin iş akışı Otomasyonu özelliği aç
 
     [![Yeni bir mantıksal uygulama oluşturma](media/workflow-automation/logic-apps-create-new.png)](media/workflow-automation/logic-apps-create-new.png#lightbox)
 
-1. Bir ad, kaynak grubu ve konum girin ve **Oluştur** ' a tıklayın.
+1. Bir ad, kaynak grubu ve konum girin ve **Oluştur**' a tıklayın.
 
 1. Yeni mantıksal uygulamanızda, güvenlik kategorisinden yerleşik, önceden tanımlanmış şablonlar arasından seçim yapabilirsiniz. Ya da bu işlem tetiklendiğinde gerçekleşecek özel olay akışını tanımlayabilirsiniz.
 
@@ -101,7 +90,7 @@ Bu makalede, Azure Güvenlik Merkezi 'nin iş akışı Otomasyonu özelliği aç
 
 Ayrıca, herhangi bir güvenlik uyarısını veya öneriyi görüntülerken Logic Apps el ile de çalıştırabilirsiniz.
 
-Bir mantıksal uygulamayı el ile çalıştırmak için bir uyarı veya öneri açın ve **mantıksal uygulamayı Tetikle** ' ye tıklayın:
+Bir mantıksal uygulamayı el ile çalıştırmak için bir uyarı veya öneri açın ve **mantıksal uygulamayı Tetikle**' ye tıklayın:
 
 [![Mantıksal uygulamayı el ile tetikleme](media/workflow-automation/manually-trigger-logic-app.png)](media/workflow-automation/manually-trigger-logic-app.png#lightbox)
 
@@ -127,33 +116,11 @@ Bu ilkeleri uygulamak için:
     > [!TIP]
     > Ayrıca, Azure Ilkesi 'ni arayarak bunları bulabilirsiniz:
     > 1. Azure Ilkesini açın.
-    > :::image type="content" source="./media/continuous-export/opening-azure-policy.png" alt-text="İş akışı otomasyonları listesi&quot;:::
-
-    Bu sayfadan yeni otomasyon kuralları oluşturabilir, Ayrıca var olanları etkinleştirebilir, devre dışı bırakabilir veya silebilirsiniz.
-
-1. Yeni bir iş akışı tanımlamak için **iş akışı Otomasyonu Ekle** ' ye tıklayın. 
-
-    Yeni otomasyonuna yönelik seçenekleri içeren bir bölme açılır. Buraya şunu girebilirsiniz:
-    1. Otomasyon için bir ad ve açıklama.
-    1. Bu otomatik iş akışını başlatacak Tetikleyiciler. Örneğin, &quot;SQL&quot; içeren bir güvenlik uyarısı oluşturulduğunda mantıksal uygulamanızın çalışmasını isteyebilirsiniz.
-
-        > [!NOTE]
-        > Tetikleyiciniz &quot;alt öneriler":::
+    > :::image type="content" source="./media/continuous-export/opening-azure-policy.png" alt-text="Azure Ilkesine erişme":::
     > 2. Azure Ilke menüsünden **tanımlar** ' ı seçin ve adları ada göre arayın. 
 
-1. İlgili Azure Ilkesi sayfasında **ata** ' yı seçin.
-    :::image type="content" source="./media/workflow-automation/export-policy-assign.png" alt-text="İş akışı otomasyonları listesi&quot;:::
-
-    Bu sayfadan yeni otomasyon kuralları oluşturabilir, Ayrıca var olanları etkinleştirebilir, devre dışı bırakabilir veya silebilirsiniz.
-
-1. Yeni bir iş akışı tanımlamak için **iş akışı Otomasyonu Ekle** ' ye tıklayın. 
-
-    Yeni otomasyonuna yönelik seçenekleri içeren bir bölme açılır. Buraya şunu girebilirsiniz:
-    1. Otomasyon için bir ad ve açıklama.
-    1. Bu otomatik iş akışını başlatacak Tetikleyiciler. Örneğin, &quot;SQL&quot; içeren bir güvenlik uyarısı oluşturulduğunda mantıksal uygulamanızın çalışmasını isteyebilirsiniz.
-
-        > [!NOTE]
-        > Tetikleyiciniz &quot;alt öneriler":::
+1. İlgili Azure Ilkesi sayfasında **ata**' yı seçin.
+    :::image type="content" source="./media/workflow-automation/export-policy-assign.png" alt-text="Azure Ilkesi atama":::
 
 1. Her sekmeyi açın ve parametreleri istediğiniz şekilde ayarlayın:
     1. **Temel bilgiler** sekmesinde, ilke kapsamını ayarlayın. Merkezi Yönetim 'i kullanmak için, ilkeyi iş akışı Otomasyonu yapılandırmasını kullanacak olan abonelikleri içeren yönetim grubuna atayın. 
@@ -162,22 +129,11 @@ Bu ilkeleri uygulamak için:
         > Her parametrenin size sunulan seçenekleri açıklayan bir araç ipucu vardır.
         >
         > Azure Ilkesinin Parametreler sekmesi (1), güvenlik merkezi 'nin iş akışı Otomasyonu sayfası (2) olarak benzer yapılandırma seçeneklerine erişim sağlar.
-        > :::image type="content" source="./media/workflow-automation/azure-policy-next-to-workflow-automation.png" alt-text="İş akışı otomasyonları listesi&quot;:::
-
-    Bu sayfadan yeni otomasyon kuralları oluşturabilir, Ayrıca var olanları etkinleştirebilir, devre dışı bırakabilir veya silebilirsiniz.
-
-1. Yeni bir iş akışı tanımlamak için **iş akışı Otomasyonu Ekle** ' ye tıklayın. 
-
-    Yeni otomasyonuna yönelik seçenekleri içeren bir bölme açılır. Buraya şunu girebilirsiniz:
-    1. Otomasyon için bir ad ve açıklama.
-    1. Bu otomatik iş akışını başlatacak Tetikleyiciler. Örneğin, &quot;SQL&quot; içeren bir güvenlik uyarısı oluşturulduğunda mantıksal uygulamanızın çalışmasını isteyebilirsiniz.
-
-        > [!NOTE]
-        > Tetikleyiciniz &quot;alt öneriler" lightbox="./media/workflow-automation/azure-policy-next-to-workflow-automation.png":::
+        > :::image type="content" source="./media/workflow-automation/azure-policy-next-to-workflow-automation.png" alt-text="Azure Ilkesiyle iş akışı otomasyonunda parametreleri karşılaştırma" lightbox="./media/workflow-automation/azure-policy-next-to-workflow-automation.png":::
 
     1. İsteğe bağlı olarak, bu atamayı mevcut aboneliklere uygulamak için **Düzeltme** sekmesini açın ve bir düzeltme görevi oluşturma seçeneğini belirleyin.
 
-1. Özet sayfasını gözden geçirin ve **Oluştur** ' u seçin.
+1. Özet sayfasını gözden geçirin ve **Oluştur**' u seçin.
 
 
 ## <a name="data-types-schemas"></a>Veri türleri şemaları

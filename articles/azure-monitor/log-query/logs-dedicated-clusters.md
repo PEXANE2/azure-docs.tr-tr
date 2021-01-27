@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 09/16/2020
-ms.openlocfilehash: a5cbbed3881433121f5ab811082969bc3c6c4f7f
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: adcc894db630bba11e84e2f277705d2f31caf7dc
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98609953"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98920232"
 ---
 # <a name="azure-monitor-logs-dedicated-clusters"></a>Azure Izleyici, ayrılmış kümeleri günlüğe kaydeder
 
@@ -25,9 +25,6 @@ Adanmış kümeler gerektiren yetenekler şunlardır:
 - **[Çoklu çalışma alanı](../log-query/cross-workspace-query.md)** -bir müşteri üretim için birden fazla çalışma alanı kullanıyorsa, adanmış kümeyi kullanmak mantıklı olabilir. Tüm çalışma alanları aynı kümede ise, çoklu çalışma alanları sorguları daha hızlı çalışır. Atanan kapasite rezervasyon katmanları tüm küme alımını hesaba alcağından ve bu, bazıları küçük ve kapasite rezervasyon indirimlerine uygun olmasa bile, tüm çalışma alanları için geçerli olan adanmış kümeyi kullanmak daha uygun maliyetli olabilir.
 
 Adanmış kümeler, müşterilerin gün başına en az 1 TB veri alma kapasitesi kullanarak işlemesini gerektirir. Adanmış bir kümeye geçiş basittir. Veri kaybı veya hizmet kesintisi yok. 
-
-> [!IMPORTANT]
-> Adanmış kümeler onaylanır ve üretim dağıtımları için tam olarak desteklenir. Ancak geçici kapasite kısıtlamaları nedeniyle, özelliği kullanmak için ön kayıt yapmanız gerekir. Abonelik kimliklerinizi sağlamak için kişilerinizi Microsoft 'a kullanın.
 
 ## <a name="management"></a>Yönetim 
 

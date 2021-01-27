@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2ead7291f52f33c271768ae2f470af65aca98030
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 5d79c296163dfcb1d81b4713f8a8673485950e05
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98734756"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919774"
 ---
 # <a name="how-to-use-openrowset-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te sunucusuz SQL havuzu kullanarak OPENROWSET kullanma
 
@@ -121,7 +121,7 @@ Aşağıda, <storage account path> belirli dış veri kaynağınıza bağlanacak
 | Azure Blob Depolama         | fazla b [s]  | \<container>@\<storage_account>. blob.core.windows.net/path/file |
 | Azure Data Lake Storage 1. Nesil | http [s]  | \<storage_account>. azuredatalakestore.net/webhdfs/v1 |
 | Azure Data Lake Storage 2. Nesil | http [s]  | \<storage_account>. dfs.core.windows.net/Path/File   |
-| Azure Data Lake Storage 2. Nesil | aufs [s]  | [\<file_system>@\<account_name>. dfs.core.windows.net/path/file](../../storage/blobs/data-lake-storage-introduction-abfs-uri.md#uri-syntax)              |
+| Azure Data Lake Storage 2. Nesil | ABFS [s]  | [\<file_system>@\<account_name>. dfs.core.windows.net/path/file](../../storage/blobs/data-lake-storage-introduction-abfs-uri.md#uri-syntax)              |
 ||||
 
 '\<storage_path>'

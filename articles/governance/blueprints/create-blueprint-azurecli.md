@@ -1,14 +1,14 @@
 ---
 title: 'Hızlı başlangıç: Azure CLI ile bir şema oluşturma'
 description: Bu hızlı başlangıçta, Azure CLı kullanarak yapıtlar oluşturmak, tanımlamak ve dağıtmak için Azure şemaları kullanırsınız.
-ms.date: 01/26/2021
+ms.date: 01/27/2021
 ms.topic: quickstart
-ms.openlocfilehash: a0e44925bdec78b8b02a50c8b3f91db0bb764976
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 6ce3031c93f973c2efb251fad371a6f3750ae0fd
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 01/27/2021
-ms.locfileid: "98875220"
+ms.locfileid: "98920249"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-azure-cli"></a>Hızlı başlangıç: Azure CLı ile Azure Blueprint tanımlama ve atama
 
@@ -167,6 +167,9 @@ Uyumluluk için standart desen tanımlamanın ilk adımı kullanılabilir durumd
         --parameters artifacts\policyTags.json
      ```
 
+     > [!NOTE]
+     > `az blueprint`Mac üzerinde kullanırken, `\` yolunu içeren `/` parametre değerleri için ile değiştirin. Bu durumda, **parametrelerin** değeri olur `artifacts/policyTags.json` .
+
 1. Abonelikte Depolama etiketi için (_storageAccountType_ parametresini yeniden kullanarak) başka bir ilke ataması ekleyin. Bu ek ilke ataması yapıtı, şemada tanımlanan bir parametrenin birden fazla yapıt tarafından kullanılabileceğini gösterir. Örnekte kaynak grubunda etiket ayarlamak için **storageAccountType** kullanılmıştır. Bu değer, bir sonraki adımda oluşturulan depolama hesabıyla ilgili bilgi sağlar. Bu örnekte, GUID 'SI ile birlikte _Apply etiketi ve varsayılan değerini kaynak grupları_ yerleşik İlkesi kullanır `49c88fc8-6fd1-46fd-a676-f12d1d3a4c71` .
 
    - JSON dosyası-artifacts\policyStorageTags.json
@@ -193,6 +196,9 @@ Uyumluluk için standart desen tanımlamanın ilk adımı kullanılabilir durumd
         --description 'Apply storage tag and the parameter also used by the template to resource groups' \
         --parameters artifacts\policyStorageTags.json
      ```
+
+     > [!NOTE]
+     > `az blueprint`Mac üzerinde kullanırken, `\` yolunu içeren `/` parametre değerleri için ile değiştirin. Bu durumda, **parametrelerin** değeri olur `artifacts/policyStorageTags.json` .
 
 1. Kaynak grubuna şablon ekleyin. ARM şablonunun **şablon** parametresi, ŞABLONUN normal JSON bileşenlerini içerir. Şablon aynı zamanda **storageAccountType**, **tagName** ve **tagValue** şema parametrelerini şablona geçirerek hepsini yeniden kullanır. Şema parametreleri parametre **parametreleri** kullanılarak ve şablon içinde, değer eklemek için anahtar-değer ÇIFTININ kullanıldığı JSON içinde kullanılabilir. Şema ve Template parametre adları aynı olabilir.
 
@@ -276,6 +282,9 @@ Uyumluluk için standart desen tanımlamanın ilk adımı kullanılabilir durumd
         --parameters artifacts\templateStorageParams.json \
         --resource-group-art 'storageRG'
      ```
+
+     > [!NOTE]
+     > `az blueprint`Mac üzerinde kullanırken, `\` yolunu içeren `/` parametre değerleri için ile değiştirin. Bu durumda, **şablon** değeri `artifacts/templateStorage.json` ve **parametreleri** haline gelir `artifacts/templateStorageParams.json` .
 
 1. Rol atamasını kaynak grubuna ekleyin. Yukarıdaki rol ataması girişine benzer şekilde aşağıdaki örnekte de **Sahip** rolü için tanımlayıcı kullanılır ve şemadan farklı bir parametre sunulur. Bu örnek, GUID 'SI ile _sahip_ yerleşik rolünü kullanır `8e3af657-a8ff-443c-a75c-2fe8c4bcb635` .
 

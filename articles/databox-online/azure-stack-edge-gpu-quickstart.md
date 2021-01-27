@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: quickstart
-ms.date: 09/17/2020
+ms.date: 01/27/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to quickly deploy Azure Stack Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: 200e7f191cb19588fa79ba685c91a75dabd0156a
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 2d1bd7d2a4f066311ea01046a8d71e6ecb52c3f5
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91349191"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919822"
 ---
 # <a name="quickstart-get-started-with-azure-stack-edge-pro-with-gpu"></a>Hızlı başlangıç: GPU ile Azure Stack Edge Pro ile çalışmaya başlama 
 
@@ -43,9 +43,9 @@ Dağıtmadan önce, aşağıdaki önkoşulların yerinde olduğundan emin olun:
 
     Cihazınızın dağıtılması için gereken en düşük kablolama yapılandırması aşağıda verilmiştir:  ![ bir kablolu cihazın arka düzlemi](./media/azure-stack-edge-gpu-quickstart/backplane-min-cabling-1.png)
 
-2. **Bağlan**: bilgisayarınızdaki Ethernet bağdaştırıcısında IPv4 ayarlarını **192.168.100.5** ve alt ağ **255.255.255.0**statik IP adresiyle yapılandırın. Tarayıcınızı açın ve konumundaki cihazın yerel Web Kullanıcı arabirimine bağlanın https://192.168.100.10 . Bu birkaç dakika sürebilir. Güvenlik sertifikası uyarısını gördüğünüzde Web sayfasına devam edin.
+2. **Bağlan**: bilgisayarınızdaki Ethernet bağdaştırıcısında IPv4 ayarlarını **192.168.100.5** ve alt ağ **255.255.255.0** statik IP adresiyle yapılandırın. Tarayıcınızı açın ve konumundaki cihazın yerel Web Kullanıcı arabirimine bağlanın https://192.168.100.10 . Bu birkaç dakika sürebilir. Güvenlik sertifikası uyarısını gördüğünüzde Web sayfasına devam edin.
 
-3. **Oturum aç**: varsayılan parola *Parola1*ile cihazda oturum açın. Cihaz yönetici parolasını değiştirin. Parolanın uzunluğu 8 ila 16 karakter, büyük harf, küçük harf, sayısal ve özel karakterlerden oluşan 3 içermelidir.
+3. **Oturum aç**: varsayılan parola *Parola1* ile cihazda oturum açın. Cihaz yönetici parolasını değiştirin. Parolanın uzunluğu 8 ila 16 karakter, büyük harf, küçük harf, sayısal ve özel karakterlerden oluşan 3 içermelidir.
 
 4. **Ağı Yapılandır**: AĞıNıZDA bir DHCP sunucusu varsa, bağlı veri bağlantı noktası IÇIN varsayılan DHCP yapılandırmasını kabul edin. Aksi takdirde, bir IP, DNS sunucusu ve varsayılan ağ geçidi sağlayın. [Ağ ayarları](azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy.md#configure-network)hakkında daha fazla bilgi için bkz..
 
@@ -53,7 +53,7 @@ Dağıtmadan önce, aşağıdaki önkoşulların yerinde olduğundan emin olun:
 
     Tüm Kapsayıcılı iş yüklerini dağıtmak için Kubernetes gereklidir. [İşlem ağ ayarları](azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy.md#enable-compute-network)hakkında daha fazla bilgi için bkz..
 
-6. **Web proxy 'Yi yapılandırma**: ortamınızda Web Proxy kullanıyorsanız, Web proxy sunucusu IP 'sini girin `http://<web-proxy-server-FQDN>:<port-id>` . Kimlik doğrulamasını **none**olarak ayarlayın. [Web proxy ayarları](azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy.md#configure-web-proxy)hakkında daha fazla bilgi görüntüleyin.
+6. **Web proxy 'Yi yapılandırma**: ortamınızda Web Proxy kullanıyorsanız, Web proxy sunucusu IP 'sini girin `http://<web-proxy-server-FQDN>:<port-id>` . Kimlik doğrulamasını **none** olarak ayarlayın. [Web proxy ayarları](azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy.md#configure-web-proxy)hakkında daha fazla bilgi görüntüleyin.
 
 7. **Cihazı yapılandırma**: bir cihaz adı ve DNS etki alanı girin veya Varsayılanları kabul edin. 
 
@@ -71,7 +71,7 @@ Dağıtmadan önce, aşağıdaki önkoşulların yerinde olduğundan emin olun:
     1. Azure portal **Azure Stack Edge kaynağına gidin > genel bakış > cihaz kurulumu > > oluştur etkinleştirin**. Anahtarı kopyalayın. 
     1. Yerel Web Kullanıcı arabiriminde, etkinleştirme ' **> başlayın** ' a gidin ve etkinleştirme anahtarını sağlayın. Anahtar uygulandığında, cihazın etkinleştirilmesi birkaç dakika sürer. `<device-serial-number>`Gelecekteki bir kurtarma için gereken cihaz anahtarlarını güvenli bir şekilde depolamak isteyip istemediğiniz sorulduğunda. json dosyasını indirin. 
 
-12. **Işlem yapılandırma**: Azure Portal **genel bakış > cihazına**gidin. Cihazın **çevrimiçi**olduğunu doğrulayın. Sol bölmedeki kenar işleme ' ya gidin **> Edge işlem > işlem > yapılandırma**. Var olan veya yeni bir IoT Hub hizmeti sağlayın ve işlem yapılandırması için yaklaşık 20 dakika bekleyin. Öğretici hakkında daha fazla bilgi için bkz [. Azure Stack Edge Pro GPU cihazında Işlem yapılandırma](azure-stack-edge-gpu-deploy-configure-compute.md)
+12. **Işlem yapılandırma**: Azure Portal **genel bakış > cihazına** gidin. Cihazın **çevrimiçi** olduğunu doğrulayın. Sol bölmedeki kenar işleme ' ya gidin **> Edge işlem > işlem > yapılandırma**. Var olan veya yeni bir IoT Hub hizmeti sağlayın ve işlem yapılandırması için yaklaşık 20 dakika bekleyin. Öğretici hakkında daha fazla bilgi için bkz [. Azure Stack Edge Pro GPU cihazında Işlem yapılandırma](azure-stack-edge-gpu-deploy-configure-compute.md)
 
 İşlem iş yüklerini cihazınızda IoT Edge [, `kubectl` ](azure-stack-edge-gpu-create-kubernetes-cluster.md) [Azure Arc etkin Kubernetes](azure-stack-edge-gpu-deploy-arc-kubernetes-cluster.md)aracılığıyla veya aracılığıyla [aracılığıyla](azure-stack-edge-gpu-deploy-sample-module-marketplace.md)dağıtmaya hazır olursunuz! Kurulum sırasında herhangi bir sorunla karşılaşırsanız [cihaz sorunlarını giderme](), [sipariş sorunları](azure-stack-edge-gpu-troubleshoot.md), [sertifika sorunları](azure-stack-edge-j-series-certificate-troubleshooting.md)veya Kubernetes sorunlarını giderme bölümüne gidin. 
 

@@ -1,14 +1,14 @@
 ---
 title: Gelişmiş sorgu örnekleri
 description: Sütunlarla çalışma, kullanılan etiketleri listeleme ve normal ifadelerle eşleşen kaynakları de içeren bazı gelişmiş sorguları çalıştırmak için Azure Kaynak grafiğini kullanın.
-ms.date: 10/14/2020
+ms.date: 01/27/2021
 ms.topic: sample
-ms.openlocfilehash: dff4b06cc5cf4385820c7f6251efaae792d9c22d
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b0a13fb798a9403b240c97fb207bf9b76e01028f
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96005410"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98918878"
 ---
 # <a name="advanced-resource-graph-query-samples"></a>Gelişmiş kaynak grafiği sorgu örnekleri
 
@@ -255,7 +255,7 @@ Search-AzGraph -Query "Resources | where type =~ 'microsoft.documentdb/databasea
 
 ## <a name="key-vaults-with-subscription-name"></a><a name="join"></a>Abonelik adına sahip anahtar kasaları
 
-Aşağıdaki sorgu, türü ile bir karmaşık kullanımı `join` _soltouter_ olarak göstermektedir. **kind** Sorgu, birleştirilmiş tabloyu abonelik kaynakları ile sınırlandırır ve `project` yalnızca özgün alan _SubscriptionID_ ve _ad_ alanı, _SubName_ olarak yeniden adlandırılır. Alan, `join` _kaynaklar_ bölümünde zaten mevcut olduğundan, yeniden adlandırma, _name1_ olarak eklenmesini önler. Özgün tablo ile filtrelenmiştir `where` ve aşağıdakiler `project` her iki tablodan sütunları içerir. Sorgu sonucu, türü, anahtar kasasının adını ve içindeki aboneliğin adını görüntüleyen tüm anahtar kasaları.
+Aşağıdaki sorgu, türü ile bir karmaşık kullanımı `join` _soltouter_ olarak göstermektedir.  Sorgu, birleştirilmiş tabloyu abonelik kaynakları ile sınırlandırır ve `project` yalnızca özgün alan _SubscriptionID_ ve _ad_ alanı, _SubName_ olarak yeniden adlandırılır. Alan, `join` _kaynaklar_ bölümünde zaten mevcut olduğundan, yeniden adlandırma, _name1_ olarak eklenmesini önler. Özgün tablo ile filtrelenmiştir `where` ve aşağıdakiler `project` her iki tablodan sütunları içerir. Sorgu sonucu, türü, anahtar kasasının adını ve içindeki aboneliğin adını görüntüleyen tüm anahtar kasaları.
 
 ```kusto
 Resources
@@ -288,7 +288,7 @@ Search-AzGraph -Query "Resources | join kind=leftouter (ResourceContainers | whe
 
 ## <a name="list-sql-databases-and-their-elastic-pools"></a><a name="join-sql"></a>SQL veritabanlarını ve bunların elastik havuzlarını listeleyin
 
-Aşağıdaki sorgu, varsa **leftouter** `join` SQL veritabanı kaynaklarını ve bunlarla ilişkili elastik havuzlarını birlikte getirmek için soltouter kullanır.
+Aşağıdaki sorgu, varsa  `join` SQL veritabanı kaynaklarını ve bunlarla ilişkili elastik havuzlarını birlikte getirmek için soltouter kullanır.
 
 ```kusto
 Resources
@@ -326,7 +326,7 @@ Search-AzGraph -Query "Resources | where type =~ 'microsoft.sql/servers/database
 
 ## <a name="list-virtual-machines-with-their-network-interface-and-public-ip"></a><a name="join-vmpip"></a>Sanal makineleri ağ arabirimiyle ve genel IP 'si ile listeleyin
 
-Bu sorgu, **leftouter** `join` Kaynak Yöneticisi dağıtım modeliyle oluşturulan sanal makineleri, ilgili ağ arabirimlerini ve bu ağ arabirimleriyle ilgili genel IP adreslerini birlikte getirmek için iki soltouter komutu kullanır.
+Bu sorgu,  `join` Kaynak Yöneticisi dağıtım modeliyle oluşturulan sanal makineleri, ilgili ağ arabirimlerini ve bu ağ arabirimleriyle ilgili genel IP adreslerini birlikte getirmek için iki soltouter komutu kullanır.
 
 ```kusto
 Resources
@@ -423,7 +423,7 @@ Search-AzGraph -Query "Resources | where type == 'microsoft.compute/virtualmachi
 
 ## <a name="find-storage-accounts-with-a-specific-tag-on-the-resource-group"></a><a name="join-findstoragetag"></a>Kaynak grubunda belirli bir etikete sahip depolama hesaplarını bulma
 
-Aşağıdaki sorgu, belirli bir **inner** `join` büyük küçük harfe duyarlı etiket adı ve etiket değeri olan kaynak gruplarıyla depolama hesaplarını bağlamak için bir iç kullanır.
+Aşağıdaki sorgu, belirli bir  `join` büyük küçük harfe duyarlı etiket adı ve etiket değeri olan kaynak gruplarıyla depolama hesaplarını bağlamak için bir iç kullanır.
 
 ```kusto
 Resources

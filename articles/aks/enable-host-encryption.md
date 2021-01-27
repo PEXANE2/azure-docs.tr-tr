@@ -3,13 +3,13 @@ title: Azure Kubernetes Service (AKS) üzerinde ana bilgisayar tabanlı şifrele
 description: Azure Kubernetes Service (AKS) kümesinde konak tabanlı şifrelemeyi yapılandırma hakkında bilgi edinin
 services: container-service
 ms.topic: article
-ms.date: 07/10/2020
-ms.openlocfilehash: 531d1dc4169b5f4adecfb29c3e116049cb99c3c9
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.date: 01/27/2021
+ms.openlocfilehash: 1d071305b457cddde56a11982e08c9331e1d5463
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98787833"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919657"
 ---
 # <a name="host-based-encryption-on-azure-kubernetes-service-aks-preview"></a>Azure Kubernetes hizmeti (AKS) üzerinde ana bilgisayar tabanlı şifreleme (Önizleme)
 
@@ -23,9 +23,9 @@ Bu özellik yalnızca küme oluşturma veya düğüm havuzu oluşturma zamanınd
 > [!NOTE]
 > Ana bilgisayar tabanlı şifreleme, Azure yönetilen disklerin sunucu tarafı şifrelemesini ve yalnızca belirli [desteklenen VM boyutlarını][supported-sizes]destekleyen [Azure bölgelerinde][supported-regions] kullanılabilir.
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
-- `aks-preview`CLI uzantısının v 0.4.55 veya üzeri yüklü olduğundan emin olun
+- `aks-preview`CLI uzantısının v 0.4.73 veya üzeri yüklü olduğundan emin olun
 - `EnableEncryptionAtHostPreview`Özellik bayrağının etkin ' in altında olduğundan emin olun `Microsoft.ContainerService` .
 
 VM 'niz veya sanal makine ölçek kümeleriniz için konakta şifrelemeyi kullanabilmeniz için, özelliği aboneliğinizde etkinleştirilmiş olarak almanız gerekir. encryptionAtHost@microsoftAbonelikleriniz için etkin özelliği sağlamak üzere abonelik kimliklerinizle. com adresine bir e-posta gönderin.
@@ -35,18 +35,18 @@ VM 'niz veya sanal makine ölçek kümeleriniz için konakta şifrelemeyi kullan
 > [!IMPORTANT]
 > encryptionAtHost@microsoftİşlem kaynakları için etkinleştirilen özelliği almak için abonelik kimlikleriniz ile e-posta gönderin. Bu kaynaklar için kendiniz etkinleştiremezsiniz. Bunları kapsayıcı hizmetinde kendiniz etkinleştirebilirsiniz.
 
-Konak tabanlı şifreleme kullanan bir AKS kümesi oluşturmak için `EnableEncryptionAtHostPreview` `EncryptionAtHost` aboneliğinizdeki ve özellik bayraklarını etkinleştirmeniz gerekir.
+Konak tabanlı şifreleme kullanan bir AKS kümesi oluşturmak için `EncryptionAtHost` aboneliğinizdeki Özellik bayrağını etkinleştirmeniz gerekir.
 
 `EncryptionAtHost`Aşağıdaki örnekte gösterildiği gibi [az Feature Register][az-feature-register] komutunu kullanarak özellik bayrağını kaydedin:
 
 ```azurecli-interactive
-az feature register --namespace "Microsoft.ContainerService"  --name "EnableEncryptionAtHostPreview"
+az feature register --namespace "Microsoft.ContainerService"  --name "EnableEncryptionAtHost"
 ```
 
 Durumun *kayıtlı* gösterilmesi birkaç dakika sürer. [Az Feature List][az-feature-list] komutunu kullanarak kayıt durumunu denetleyebilirsiniz:
 
 ```azurecli-interactive
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/EnableEncryptionAtHostPreview')].{Name:name,State:properties.state}"
+az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/EnableEncryptionAtHost')].{Name:name,State:properties.state}"
 ```
 
 Hazırlanıyor, `Microsoft.ContainerService` `Microsoft.Compute` [az Provider Register][az-provider-register] komutunu kullanarak ve kaynak sağlayıcılarının kaydını yenileyin:
@@ -80,7 +80,7 @@ az extension update --name aks-preview
 Küme oluşturulduğunda küme Aracısı düğümlerini konak tabanlı şifrelemeyi kullanacak şekilde yapılandırın. `--aks-custom-headers`Üstbilgiyi ayarlamak için bayrağını kullanın `EnableEncryptionAtHost` .
 
 ```azurecli-interactive
-az aks create --name myAKSCluster --resource-group myResourceGroup -s Standard_DS2_v2 -l westus2 --aks-custom-headers EnableEncryptionAtHost=true
+az aks create --name myAKSCluster --resource-group myResourceGroup -s Standard_DS2_v2 -l westus2 --aks-custom-headers --enable-encryption-at-host
 ```
 
 Konak tabanlı şifreleme olmadan kümeler oluşturmak istiyorsanız, özel parametreyi atlayarak bunu yapabilirsiniz `--aks-custom-headers` .
@@ -90,7 +90,7 @@ Konak tabanlı şifreleme olmadan kümeler oluşturmak istiyorsanız, özel para
 Kümenize yeni bir düğüm havuzu ekleyerek, var olan kümelerde konak tabanlı şifrelemeyi etkinleştirebilirsiniz. Bayrağını kullanarak ana bilgisayar tabanlı şifrelemeyi kullanmak için yeni bir düğüm havuzu yapılandırın `--aks-custom-headers` .
 
 ```azurecli
-az aks nodepool add --name hostencrypt --cluster-name myAKSCluster --resource-group myResourceGroup -s Standard_DS2_v2 -l westus2 --aks-custom-headers EnableEncryptionAtHost=true
+az aks nodepool add --name hostencrypt --cluster-name myAKSCluster --resource-group myResourceGroup -s Standard_DS2_v2 -l westus2 --aks-custom-headers --enable-encryption-at-host
 ```
 
 Konak tabanlı şifreleme özelliği olmadan yeni düğüm havuzları oluşturmak istiyorsanız, özel parametreyi atlayarak bunu yapabilirsiniz `--aks-custom-headers` .

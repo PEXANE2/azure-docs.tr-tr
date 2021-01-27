@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: gsilva
 ms.custom: ''
-ms.openlocfilehash: 5b91d6e58f4ae93bbf020f202991f878e7773114
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 643a52c9be04fb325b8e1d088faeb68e473aa673
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222964"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919961"
 ---
 # <a name="create-a-linux-virtual-machine-with-accelerated-networking-using-azure-cli"></a>Azure CLI kullanarak Hızlandırılmış Ağ ile Linux sanal makinesi oluşturma
 
@@ -56,11 +56,9 @@ Aşağıdaki dağıtımlar Azure galerisindeki kutudan çıkar:
 ## <a name="limitations-and-constraints"></a>Sınırlamalar ve kısıtlamalar
 
 ### <a name="supported-vm-instances"></a>Desteklenen VM örnekleri
-Hızlandırılmış ağ, 2 veya daha fazla vCPU ile en genel amaçlı ve işlem için iyileştirilmiş örnek boyutlarında desteklenir.  Desteklenen bu seriler şunlardır: D/DSv2 ve F/FS
+Hızlandırılmış ağ, 2 veya daha fazla vCPU ile en genel amaçlı ve işlem için iyileştirilmiş örnek boyutlarında desteklenir. Hiper iş parçacığı destekleyen örneklerde, hızlandırılmış ağ, 4 veya daha fazla vCPU içeren VM örneklerinde desteklenir. 
 
-Hiper iş parçacığı destekleyen örneklerde, hızlandırılmış ağ, 4 veya daha fazla vCPU içeren VM örneklerinde desteklenir. Desteklenen seriler şunlardır: D/Dsv3, D/Dsv4, gg/Ddv4, da/Dasv4, E/Esv3, E/Esv4, Ed/Edsv4, EA/Easv4, Fsv2, Lsv2, MS/MMS ve MS/Mmsv2.
-
-VM örnekleri hakkında daha fazla bilgi için bkz. [LINUX VM boyutları](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+Hızlandırılmış ağ desteği ayrı [sanal makine boyutları](../virtual-machines/sizes.md) belgelerinde bulunabilir. 
 
 ### <a name="custom-images"></a>Özel Görüntüler
 Özel bir görüntü kullanıyorsanız ve görüntünüz hızlandırılmış ağı destekliyorsa, lütfen Azure 'da Mellanox ConnectX-3 ve ConnectX-4 LX NIC 'lerle çalışmak için gerekli sürücülere sahip olduğunuzdan emin olun.

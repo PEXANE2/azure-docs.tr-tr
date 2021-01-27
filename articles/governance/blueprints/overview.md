@@ -1,14 +1,14 @@
 ---
 title: Azure Blueprints’e genel bakış
 description: Azure şemaları hizmetinin Azure ortamınızda yapıt oluşturmanıza, tanımlamanıza ve dağıtmanıza nasıl olanak sağladığını anlayın.
-ms.date: 09/30/2020
+ms.date: 01/27/2021
 ms.topic: overview
-ms.openlocfilehash: 0dbf5ab54b694399c9d15cce84e8eca34a5d924e
-ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
+ms.openlocfilehash: f4ba77f5fcb376bf600d94997b0d6ba569f04f82
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91892736"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919351"
 ---
 # <a name="what-is-azure-blueprints"></a>Azure Blueprints nedir?
 
@@ -31,7 +31,7 @@ Azure şemaları 'nda dağıtım için eklemek istediğiniz neredeyse her şey A
 
 Azure şemaları ile şema tanımı (dağıtılması _gereken_ ) ve şema ataması _(dağıtılan)_ arasındaki ilişki korunur. Bu bağlantı dağıtımların daha iyi izlenmesini ve denetlenmesini destekler. Azure şemaları ayrıca aynı Blueprint tarafından yönetilen birçok aboneliği aynı anda yükseltebilir.
 
-ARM şablonuyla bir Blueprint arasında seçim yapmanız gerekmez. Her bir şema, sıfır veya daha fazla ARM şablon _yapıtlarından_oluşabilir. Bu destek, daha önceki bir ARM şablonları kitaplığı geliştirme ve bakımını yapma çabalarının Azure 'da yeniden kullanılabilir olduğunu gösterir.
+ARM şablonuyla bir Blueprint arasında seçim yapmanız gerekmez. Her bir şema, sıfır veya daha fazla ARM şablon _yapıtlarından_ oluşabilir. Bu destek, daha önceki bir ARM şablonları kitaplığı geliştirme ve bakımını yapma çabalarının Azure 'da yeniden kullanılabilir olduğunu gösterir.
 
 ## <a name="how-its-different-from-azure-policy"></a>Azure İlkesi ile arasındaki farklar
 
@@ -45,9 +45,9 @@ Bir ilke, şema tanımındaki birçok _yapıtlardan_ biri olarak eklenebilir. Ş
 
 ## <a name="blueprint-definition"></a>Şema tanımı
 
-Bir şema _yapıtlardan_oluşur. Azure şemaları Şu anda yapıt olarak aşağıdaki kaynakları desteklemektedir:
+Bir şema _yapıtlardan_ oluşur. Azure şemaları Şu anda yapıt olarak aşağıdaki kaynakları desteklemektedir:
 
-|Kaynak  | Hiyerarşi seçenekleri| Açıklama  |
+|Kaynak  | Hiyerarşi seçenekleri| Description  |
 |---------|---------|---------|
 |Kaynak Grupları | Abonelik | Şema içindeki diğer yapıtlar tarafından kullanılacak yeni bir kaynak grubu oluşturur.  Bu yer tutucu kaynak grupları, kaynakları tam olarak istediğiniz şekilde düzenlemenize olanak tanır ve dahil edilen ilke ve rol atama yapıtları ve ARM şablonları için bir kapsam sınırlayıcısı sağlar. |
 |ARM şablonu | Abonelik, Kaynak Grubu | İç içe ve bağlı şablonlar dahil olmak üzere şablonlar, karmaşık ortamları oluşturmak için kullanılır. Örnek ortamlar: SharePoint grubu, Azure Otomasyonu Durum Yapılandırması veya Log Analytics çalışma alanı. |
@@ -69,8 +69,8 @@ Daha fazla bilgi için bkz. [şema parametreleri](./concepts/parameters.md).
 
 ### <a name="blueprint-publishing"></a>Şema yayımlama
 
-Şema ilk oluşturulduğunda **Taslak** modunda olur. Atanmaya hazır olduğunda **Yayımlandı** durumuna alınması gerekir. Yayımlamak için bir **Sürüm** dizesi (harfler, sayılar ve kısa çizgiler, maksimum 20 karakter) ve isteğe bağlı **Değişiklik notları** tanımlanması gerekir. **Sürüm** değeri şemada daha sonra yapılacak değişikliklerin tanımlanmasını sağlar ve her sürümün ayrıca atanmasını mümkün hale getirir. Sürüm oluşturma aynı zamanda aynı şemanın farklı **Sürümlerinin** aynı aboneliğe atanabileceği anlamına da gelir. Şema üzerinde ek değişiklikler yapıldığında, **Published** 
- **yayımlanmamış değişiklikler**olduğu gibi yayımlanan**Sürüm** yine de mevcuttur. Değişiklikler tamamlandıktan sonra güncelleştirilen şema yeni ve benzersiz bir **Sürüm** değeriyle **Yayımlanır** ve atamaya hazır hale gelir.
+Şema ilk oluşturulduğunda **Taslak** modunda olur. Atanmaya hazır olduğunda **Yayımlandı** durumuna alınması gerekir. Yayımlamak için bir **Sürüm** dizesi (harfler, sayılar ve kısa çizgiler, maksimum 20 karakter) ve isteğe bağlı **Değişiklik notları** tanımlanması gerekir. **Sürüm** değeri şemada daha sonra yapılacak değişikliklerin tanımlanmasını sağlar ve her sürümün ayrıca atanmasını mümkün hale getirir. Sürüm oluşturma aynı zamanda aynı şemanın farklı **Sürümlerinin** aynı aboneliğe atanabileceği anlamına da gelir. Şema üzerinde ek değişiklikler yapıldığında,  
+ **yayımlanmamış değişiklikler** olduğu gibi yayımlanan **Sürüm** yine de mevcuttur. Değişiklikler tamamlandıktan sonra güncelleştirilen şema yeni ve benzersiz bir **Sürüm** değeriyle **Yayımlanır** ve atamaya hazır hale gelir.
 
 ## <a name="blueprint-assignment"></a>Şema ataması
 
@@ -108,7 +108,7 @@ Bir şemayı atamak veya atamasını kaldırmak için hesabınız şu izinlere s
 
 Aşağıdaki yerleşik roller kullanılabilir:
 
-|Azure rolü | Açıklama |
+|Azure rolü | Description |
 |-|-|
 |[Sahibi](../../role-based-access-control/built-in-roles.md#owner) | Diğer izinlerin yanı sıra, tüm Azure Blueprint ilgili izinleri içerir. |
 |[Katkıda Bulunan](../../role-based-access-control/built-in-roles.md#contributor) | Diğer izinlerin yanı sıra, şema tanımları oluşturup silebilir, ancak şema atama izinlerine sahip değildir. |
@@ -126,10 +126,10 @@ Belirli alanlar için aşağıdaki sınırlamalar mevcuttur:
 
 |Nesne|Alan|İzin verilen karakterler|En çok, Uzunluk|
 |-|-|-|-|
-|Şema|Adı|harfler, rakamlar, tireler ve noktalar|48|
+|Şema|Name|harfler, rakamlar, tireler ve noktalar|48|
 |Şema|Sürüm|harfler, rakamlar, tireler ve noktalar|20|
-|Şema ataması|Adı|harfler, rakamlar, tireler ve noktalar|90|
-|Blueprint yapıtı|Adı|harfler, rakamlar, tireler ve noktalar|48|
+|Şema ataması|Name|harfler, rakamlar, tireler ve noktalar|90|
+|Blueprint yapıtı|Name|harfler, rakamlar, tireler ve noktalar|48|
 
 ## <a name="video-overview"></a>Genel bakış videosu
 

@@ -225,7 +225,7 @@
           href: livestream.md
     - name: Azure Sentinel’ı kaldırma
       href: offboard.md
-- name: Başvuru (Yeni!)
+- name: Başvuru
   items:
     - name: Azure RBAC rolleri
       items:
@@ -241,10 +241,20 @@
           href: hunting-with-rest-api.md
         - name: REST API ile Watchlists yönetme
           href: watchlist-with-rest-api.md
+    - name: Azure Izleyici veri başvurusu
+      href: /azure/azure-monitor/reference/
     - name: Azure Sentinel Logic Apps bağlayıcısı
       href: /connectors/azuresentinel/
     - name: Ağ normalleştirme şeması
       href: normalization-schema.md
+    - name: Veri kaynağı şema başvurusu
+      href: data-source-schema-reference.md
+    - name: Kusto Sorgu Dili
+      items:
+        - name: Kusto sorguya genel bakış
+          href: /azure/data-explorer/kusto/query/
+        - name: Kusto sorgu dili hızlı başvurusu
+          href: /azure/data-explorer/kql-quick-reference
     - name: UEBA zenginleştirmeleri
       href: ueba-enrichments.md
 - name: Kaynaklar

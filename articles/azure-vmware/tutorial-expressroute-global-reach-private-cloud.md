@@ -2,13 +2,13 @@
 title: Eğitim-şirket içi ortamlarından özel bir buluta
 description: Azure VMware çözümünde özel buluta ExpressRoute Global Reach eşlemesi oluşturmayı öğrenin.
 ms.topic: tutorial
-ms.date: 1/5/2021
-ms.openlocfilehash: 613aece6ed548f70840349e017de4416883d6cf3
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.date: 01/27/2021
+ms.openlocfilehash: e7b1e349f67fe63f63183c0ff6d1522498c65f8c
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97913168"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98918729"
 ---
 # <a name="tutorial-peer-on-premises-environments-to-a-private-cloud"></a>Öğretici: şirket içi ortamlar için özel bir buluta
 
@@ -28,12 +28,12 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 ExpressRoute Global Reach kullanarak iki ExpressRoute bağlantı hattı arasında bağlantıyı etkinleştirmeden önce, [farklı Azure aboneliklerinde bağlantının nasıl etkinleştirileceği](../expressroute/expressroute-howto-set-global-reach-cli.md#enable-connectivity-between-expressroute-circuits-in-different-azure-subscriptions)hakkındaki belgeleri gözden geçirin.  
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure VMware Çözüm özel bulutuyla, ExpressRoute bağlantı hattı, bir Azure sanal ağı 'nda (VNet) bir ExpressRoute bağlantı hattı ile, eşleme yordamlarından itibaren _devre 2_ olan bağlantı kurdu.  
 - Şirket içi ortamları Azure 'a bağlamak için kullanılan, eşleme yordamlarının perspektifinden _devre_ dışı olan ayrı, çalışan bir ExpressRoute devresi.
 - ExpressRoute Global Reach eşlemesi için/29 çakışmayan bir [ağ adresi bloğu](../expressroute/expressroute-routing.md#ip-addresses-used-for-peerings) .
-- ExpressRoute sağlayıcısı hizmeti de dahil olmak üzere tüm yönlendiricilerin 4 baytlık özerk sistem numarasını (ASN) desteklediğinden emin olun. Azure VMware çözümü, yolları tanıtmak için 4 baytlık genel ASNs kullanır.
+- ExpressRoute sağlayıcısının hizmeti de dahil olmak üzere tüm ağ geçitlerinin 4 baytlık otonom sistem numarası 'nı (ASN) desteklemesini sağlayın. Azure VMware çözümü, reklam rotaları için 4 baytlık genel ASNs kullanır.
 
 > [!TIP]
 > Bu önkoşulların bağlamında, şirket içi ExpressRoute bağlantı hattı devre _1_' dir ve özel bulut ExpressRoute devreniz farklı bir abonelikte ve _devre 2_' etiketlidir. 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 04/15/2020
 ms.author: gsilva
-ms.openlocfilehash: b3728a2b67529bab0900d42b3e39140d9329bc83
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: b0ebb75530858a589c3166e21261e2f737fff50d
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98223644"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919978"
 ---
 # <a name="create-a-windows-vm-with-accelerated-networking-using-azure-powershell"></a>Azure PowerShell kullanarak hızlandırılmış ağ ile Windows sanal makinesi oluşturma
 
@@ -61,11 +61,9 @@ Aşağıdaki dağıtımlar doğrudan Azure galerisinden desteklenir:
 
 ### <a name="supported-vm-instances"></a>Desteklenen VM örnekleri
 
-Hızlandırılmış ağ, iki veya daha fazla sanal CPU (vCPU) ile en genel amaçlı ve işlem için iyileştirilmiş örnek boyutlarında desteklenir.  Bu desteklenen seriler şunlardır: dv2/DSv2 ve F/FS.
+Hızlandırılmış ağ, 2 veya daha fazla vCPU ile en genel amaçlı ve işlem için iyileştirilmiş örnek boyutlarında desteklenir. Hiper iş parçacığı destekleyen örneklerde, hızlandırılmış ağ, 4 veya daha fazla vCPU içeren VM örneklerinde desteklenir. 
 
-Hiper iş parçacığı destekleyen örneklerde, hızlandırılmış ağ, dört veya daha fazla vCPU içeren VM örneklerinde desteklenir. Desteklenen Seriler: D/Dsv3, D/Dsv4, da/Dasv4, E/Esv3, EA/Easv4, Fsv2, Lsv2, MS/MMS ve MS/Mmsv2.
-
-VM örnekleri hakkında daha fazla bilgi için bkz. [Azure 'Da Windows sanal makineleri Için boyutlar](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+Hızlandırılmış ağ desteği ayrı [sanal makine boyutları](../virtual-machines/sizes.md) belgelerinde bulunabilir. 
 
 ### <a name="custom-images"></a>Özel görüntüler
 
@@ -90,7 +88,7 @@ Bu makalede, Azure PowerShell kullanarak hızlandırılmış ağ içeren bir VM 
 > [!NOTE]
 > Portal aracılığıyla yalnızca desteklenen işletim sistemleri etkinleştirilebilir. Özel bir görüntü kullanıyorsanız ve görüntünüz hızlandırılmış ağı destekliyorsa, lütfen CLı veya PowerShell kullanarak VM 'nizi oluşturun. 
 
-VM 'yi oluşturduktan sonra hızlandırılmış ağ oluşturma özelliğinin etkinleştirilip etkinleştirilmediğini doğrulayabilirsiniz. Aşağıdaki yönergeleri izleyin:
+VM 'yi oluşturduktan sonra hızlandırılmış ağ oluşturma özelliğinin etkinleştirilip etkinleştirilmediğini doğrulayabilirsiniz. Şu yönergeleri izleyin:
 
 1. VM 'lerinizi yönetmek için [Azure Portal](https://portal.azure.com) gidin. **Sanal makineleri** arayın ve seçin.
 
@@ -252,13 +250,13 @@ VM 'yi Azure 'da oluşturduktan sonra VM 'ye bağlanın ve Ethernet denetleyicis
 
 5. . Rdp dosyasını açın ve ardından VM 'de [sanal makine oluşturma ve ağ arabirimi iliştirme](#create-a-vm-and-attach-the-network-interface) bölümüne girdiğiniz kimlik bilgileriyle oturum açın. Azure 'da bir Windows sanal makinesine hiç bağlanmadıysanız, bkz. [sanal makineye bağlanma](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#connect-to-virtual-machine).
 
-6. VM 'niz için Uzak Masaüstü oturumu görüntülendikten sonra, Windows Başlat düğmesine sağ tıklayın ve **Aygıt Yöneticisi**' yi seçin.
+6. VM 'niz için Uzak Masaüstü oturumu görüntülendikten sonra, Windows Başlat düğmesine sağ tıklayın ve **Device Manager**' yi seçin.
 
-7. **Aygıt Yöneticisi** penceresinde, **ağ bağdaştırıcıları** düğümünü genişletin.
+7. **Device Manager** penceresinde, **ağ bağdaştırıcıları** düğümünü genişletin.
 
 8. Aşağıdaki görüntüde gösterildiği gibi, **Mellanox ConnectX-3 sanal Işlevi Ethernet bağdaştırıcısının** göründüğünü onaylayın:
 
-    ![Mellanox ConnectX-3 sanal Işlevi Ethernet bağdaştırıcısı, hızlandırılmış ağ için yeni ağ bağdaştırıcısı, Aygıt Yöneticisi](./media/create-vm-accelerated-networking/device-manager.png)
+    ![Mellanox ConnectX-3 sanal Işlevi Ethernet bağdaştırıcısı, hızlandırılmış ağ için yeni ağ bağdaştırıcısı, Device Manager](./media/create-vm-accelerated-networking/device-manager.png)
 
 Hızlandırılmış ağ, VM 'niz için artık etkinleştirilmiştir.
 

@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: 1792535fab79ed20bdf77f96b4fc39f13b0c7bbb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e2578b47d27ef062d83ba8621a49e9a8f439897c
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90016018"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919034"
 ---
 # <a name="reference---choose-a-communication-protocol"></a>Başvuru-iletişim protokolü seçin
 
@@ -42,7 +42,7 @@ Aşağıdaki tabloda, protokol seçiminiz için üst düzey öneriler verilmişt
 
 Cihaz tarafı iletişimleri için protokollerinizi seçerken aşağıdaki noktaları göz önünde bulundurun:
 
-* **Buluttan cihaza yönelik model**. HTTPS, sunucu gönderimi uygulamak için etkili bir yola sahip değildir. Bu nedenle, HTTPS kullanırken, cihazlar buluttan cihaza iletiler için IoT Hub yoklar. Bu yaklaşım hem cihaz hem de IoT Hub için verimsiz bir değer. Geçerli HTTPS yönergeleri altında her bir cihaz, her 25 dakikada bir veya daha fazla ileti yoklamalıdır. MQTT ve AMQP, buluttan cihaza iletiler alırken sunucu gönderimi destekler. IoT Hub iletileri cihaza anında göndermeyi etkinleştirir. Teslim gecikmesi bir sorun oluşturacaksa, MQTT veya AMQP kullanılacak en iyi protokollerdir. Nadiren bağlanan cihazlarda, HTTPS de kullanılabilir.
+* **Buluttan cihaza yönelik model**. HTTPS, sunucu gönderimi uygulamak için etkili bir yola sahip değildir. Bu nedenle, HTTPS kullanırken, cihazlar buluttan cihaza iletiler için IoT Hub yoklar. Bu yaklaşım hem cihaz hem de IoT Hub için verimsiz bir değer. Geçerli HTTPS yönergeleri altında her bir cihaz, her 25 dakikada bir veya daha fazla ileti yoklamalıdır. Daha fazla HTTPS vermek istekleri IoT Hub azaltarak sonuçları alır. MQTT ve AMQP, buluttan cihaza iletiler alırken sunucu gönderimi destekler. IoT Hub iletileri cihaza anında göndermeyi etkinleştirir. Teslim gecikmesi bir sorun oluşturacaksa, MQTT veya AMQP kullanılacak en iyi protokollerdir. Nadiren bağlanan cihazlarda, HTTPS de kullanılabilir.
 
 * **Alan ağ geçitleri**. MQTT ve HTTPS, TLS bağlantısı başına yalnızca tek bir cihaz kimliğini (cihaz KIMLIĞI ve kimlik bilgileri) destekler. Bu nedenle, bu protokoller IoT Hub için tek bir veya yukarı akış bağlantısı havuzu genelinde birden çok cihaz kimliği kullanarak çoğullama iletileri gerektiren [alan ağ geçidi senaryolarında](iot-hub-devguide-endpoints.md#field-gateways) desteklenmez. Bu tür ağ geçitleri, her bağlantı için, yukarı akış trafiği için AMQP gibi birden çok cihaz kimliği destekleyen bir protokol kullanabilir.
 

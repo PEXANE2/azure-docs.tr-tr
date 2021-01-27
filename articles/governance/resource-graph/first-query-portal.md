@@ -1,14 +1,14 @@
 ---
 title: 'Hızlı başlangıç: ilk portal sorgunuz'
 description: Bu hızlı başlangıçta, Azure Kaynak Grafiği gezginini kullanarak Azure portal ilk sorgunuzu çalıştırmak için adımları izleyin.
-ms.date: 10/14/2020
+ms.date: 01/27/2021
 ms.topic: quickstart
-ms.openlocfilehash: b5f5203b3842ebc3edbd97bca1ca3c101f47e397
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: cb62a1ae3a29a7aae793fcee6fd896fe0260dc10
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057391"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98920112"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-resource-graph-explorer"></a>Hızlı başlangıç: Azure Kaynak Grafiği gezginini kullanarak ilk kaynak Graph sorgunuzu çalıştırma
 
@@ -16,7 +16,7 @@ Azure Kaynak Graph 'ın gücü Azure Kaynak grafik Gezgini aracılığıyla Azur
 
 Bu hızlı başlangıçta, ilk kaynak Graph sorgunuzu çalıştırmak ve sonuçları bir panoya sabitlediğiniz Azure portal ve kaynak Graph Explorer 'ı kullandınız.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
@@ -24,7 +24,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
 
 İlk kaynak grafik sorgunuzu çalıştırmak için aşağıdaki adımları izleyerek kaynak grafiği Gezginini bulmak ve kullanmak üzere [Azure Portal](https://portal.azure.com) açın:
 
-1. Sol bölmede **Tüm hizmetler**'i seçin. **Kaynak Grafiği Gezginini**arayın ve seçin.
+1. Sol bölmede **Tüm hizmetler**'i seçin. **Kaynak Grafiği Gezginini** arayın ve seçin.
 
 1. Pencerenin **sorgu 1** bölümünde sorguyu girin `Resources | project name, type | limit 5` ve **Sorguyu Çalıştır**' ı seçin.
 
@@ -47,7 +47,7 @@ Son sorgu birkaç kez çalıştırıldığında, ortamınızdaki hiçbir şeyin 
 Şema tarayıcısı, kaynak grafik Gezgini 'nin sol bölmesinde bulunur. Bu kaynak listesi, Azure Kaynak Grafiği tarafından desteklenen ve erişim sahibi olduğunuz bir kiracıda bulunan Azure kaynaklarının tüm _kaynak türlerini_ gösterir. Kaynak türü veya alt özellikleri genişletmek, kaynak grafik sorgusu oluşturmak için kullanılabilecek alt özellikleri gösterir.
 
 Kaynak türünü seçme `where type =="<resource type>"` sorgu kutusuna yer koyar. Alt özelliklerden birini seçmek `where <propertyName> == "INSERT_VALUE_HERE"` sorgu kutusuna eklenir.
-Şema tarayıcısı, sorgularda kullanılacak özellikleri bulmayı çok iyi bir yoldur. _ \_ \_ Buraya, ekleme değerini_ kendi değer ile değiştirdiğinizden emin olun, sorguyu koşullar, işleçler ve işlevlerle ayarlayıp amaçlanan sonuçlara ulaşın.
+Şema tarayıcısı, sorgularda kullanılacak özellikleri bulmayı çok iyi bir yoldur. _\_ \_ Buraya, ekleme değerini_ kendi değer ile değiştirdiğinizden emin olun, sorguyu koşullar, işleçler ve işlevlerle ayarlayıp amaçlanan sonuçlara ulaşın.
 
 ## <a name="create-a-chart-from-the-resource-graph-query"></a>Kaynak grafik sorgusundan grafik oluşturma
 
@@ -94,7 +94,7 @@ Kaynak Grafiği sorgularına örnek sağlamak ve kaynak Graph Explorer 'ın Azur
 
 - [Kaynak Grafiği Gezgini-örnek Pano #2](https://github.com/Azure-Samples/Governance/blob/master/src/resource-graph/portal-dashboards/sample-2/resourcegraphexplorer-sample-2.json)
 
-  :::image type="content" source="./media/arge-sample2-small.png" alt-text="Örnek Pano için örnek resim #1" lightbox="./media/arge-sample2-large.png":::
+  :::image type="content" source="./media/arge-sample2-small.png" alt-text="Örnek Pano için örnek resim #2" lightbox="./media/arge-sample2-large.png":::
 
 > [!NOTE]
 > Yukarıdaki örnek Pano ekran görüntülerinin sayısı ve grafikleri, Azure ortamınıza bağlı olarak farklılık gösterir.

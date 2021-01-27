@@ -1,18 +1,18 @@
 ---
 title: Azure Güvenlik Karşılaştırması şema örneğine genel bakış
 description: Azure Güvenlik Karşılaştırması şema örneğine genel bakış. Bu şema örneği, müşterilerin belirli denetimleri değerlendirmesine yardımcı olur.
-ms.date: 10/14/2020
+ms.date: 01/27/2021
 ms.topic: sample
-ms.openlocfilehash: 6b147ffd4efbf814b6119f5d7e90dc7af2ea2687
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 38a50970999965b6a86b8ce8882006c169f2dc5a
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057595"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919247"
 ---
 # <a name="azure-security-benchmark-blueprint-sample"></a>Azure Güvenlik kıyaslaması şeması örneği
 
-Azure Güvenlik Karşılaştırması şema örneği, belirli [Azure Güvenlik Karşılaştırması](../../../security/benchmarks/overview.md) denetimlerini değerlendirmenize yardımcı olan [Azure İlkesi](../../policy/overview.md)’ni kullanarak idare korumaları sağlar. Bu şema müşterilerin, Azure Güvenlik Karşılaştırması denetimlerini uygulamayı amaçladığı, Azure’da dağıtılmış herhangi bir mimari için bir dizi ilke dağıtmasına yardımcı olur.
+Azure Güvenlik kıyaslaması şeması örneği, belirli [Azure Güvenlik kıyaslaması](../../../security/benchmarks/overview.md) denetimlerini değerlendirmenize yardımcı olan [Azure ilkesini](../../policy/overview.md) kullanarak idare koruması-rayları sağlar. Bu şema müşterilerin, Azure Güvenlik Karşılaştırması denetimlerini uygulamayı amaçladığı, Azure’da dağıtılmış herhangi bir mimari için bir dizi ilke dağıtmasına yardımcı olur.
 
 ## <a name="control-mapping"></a>Denetim eşlemesi
 
@@ -37,7 +37,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 1. Soldaki **Başlangıç** sayfasında, _Şema oluştur_ bölümündeki **Oluştur** düğmesini seçin.
 
-1. _Diğer örnekler_ altında **Azure Güvenlik kıyaslaması** şeması örneğini bulun ve bu örneği seçmek için adı seçin.
+1. _Diğer örnekler_ altında **Azure Güvenlik kıyaslaması v1** şeması örneğini bulun ve bu örneği seçmek için adı seçin.
 
 1. Şema örneğinin _Temel bilgiler_ bölümüne girin:
 
@@ -60,7 +60,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 ### <a name="assign-the-sample-copy"></a>Örnek kopyayı atama
 
-Şema örneğinin kopyası başarıyla **yayımlandıktan**sonra, kaydedildiği yönetim grubu içindeki bir aboneliğe atanabilir. Bu adımda, şema örneği kopyasının her bir dağıtımını benzersiz hale getirmek için parametreler sağlanır.
+Şema örneğinin kopyası başarıyla **yayımlandıktan** sonra, kaydedildiği yönetim grubu içindeki bir aboneliğe atanabilir. Bu adımda, şema örneği kopyasının her bir dağıtımını benzersiz hale getirmek için parametreler sağlanır.
 
 1. Sol bölmede **Tüm hizmetler**'i seçin. **Şemalar**’ı arayıp seçin.
 

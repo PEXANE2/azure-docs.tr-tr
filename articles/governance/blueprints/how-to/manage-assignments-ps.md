@@ -1,14 +1,14 @@
 ---
 title: PowerShell ile atamaları yönetme
 description: Resmi Azure şemaları PowerShell modülü az. şema ile şema atamalarını yönetmeyi öğrenin.
-ms.date: 08/27/2020
+ms.date: 01/27/2021
 ms.topic: how-to
-ms.openlocfilehash: 3bcb3731bd1270497945fa86406d08b2f9750c85
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d60fb887e07b4697b8e86a4e2fd74a735ac0bb58
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89051415"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919385"
 ---
 # <a name="how-to-manage-assignments-with-powershell"></a>PowerShell ile atamaları yönetme
 
@@ -27,7 +27,7 @@ Azure şemaları modülü için aşağıdaki yazılımlar gereklidir:
 
 ### <a name="install-the-module"></a>Modülü yükler
 
-PowerShell için Azure şemaları modülü **az. Blueprint**olur.
+PowerShell için Azure şemaları modülü **az. Blueprint** olur.
 
 1. Bir **Yönetim** PowerShell isteminde aşağıdaki komutu çalıştırın:
 
@@ -49,7 +49,7 @@ PowerShell için Azure şemaları modülü **az. Blueprint**olur.
 ## <a name="get-blueprint-definitions"></a>Şema tanımlarını al
 
 Atama ile çalışmanın ilk adımı, genellikle bir şema tanımına başvuru almaktır.
-`Get-AzBlueprint`Cmdlet 'i bir veya daha fazla şema tanımı alır. Cmdlet 'i ile olan bir yönetim grubundan şema tanımlarını `-ManagementGroupId {mgId}` veya ile aboneliği alabilir `-SubscriptionId {subId}` . **Name** parametresi bir şema tanımı alır, ancak **ManagementGroupId** veya **SubscriptionID**ile birlikte kullanılmalıdır. **Sürüm** , **ad** ile birlikte kullanılabilir ve bu, hangi şema tanımının döndürüldüğünden daha açık olacaktır. **Sürüm**yerine, anahtar `-LatestPublished` en son yayımlanan sürümü de dönüştürür.
+`Get-AzBlueprint`Cmdlet 'i bir veya daha fazla şema tanımı alır. Cmdlet 'i ile olan bir yönetim grubundan şema tanımlarını `-ManagementGroupId {mgId}` veya ile aboneliği alabilir `-SubscriptionId {subId}` . **Name** parametresi bir şema tanımı alır, ancak **ManagementGroupId** veya **SubscriptionID** ile birlikte kullanılmalıdır. **Sürüm** , **ad** ile birlikte kullanılabilir ve bu, hangi şema tanımının döndürüldüğünden daha açık olacaktır. **Sürüm** yerine, anahtar `-LatestPublished` en son yayımlanan sürümü de dönüştürür.
 
 Aşağıdaki örnek, `Get-AzBlueprint` ' 101-planlar-Definition-Subscription ' adlı bir şema tanımının tüm sürümlerini şu şekilde gösterilen belirli bir abonelikten almak için kullanır `{subId}` :
 
@@ -153,7 +153,7 @@ ResourceGroups    : ResourceGroup
 - **Parametre** (isteğe bağlı)
   - Şema atamasında [dinamik parametreleri](../concepts/parameters.md#dynamic-parameters) ayarlamak için anahtar/değer çiftlerinin [karma tablosu](/powershell/module/microsoft.powershell.core/about/about_hash_tables)
   - Bir dinamik parametre için varsayılan değer, tanımdaki **DefaultValue** 'dir
-  - Bir parametre sağlanmazsa ve **DefaultValue**yoksa, parametre isteğe bağlı değildir
+  - Bir parametre sağlanmazsa ve **DefaultValue** yoksa, parametre isteğe bağlı değildir
 
     > [!NOTE]
     > **Parametre** securestrings 'i desteklemiyor.
@@ -161,14 +161,14 @@ ResourceGroups    : ResourceGroup
 - **Resourcegroupparameter** (isteğe bağlı)
   - Kaynak grubu yapıtlarının [karma tablosu](/powershell/module/microsoft.powershell.core/about/about_hash_tables)
   - Her kaynak grubu yapıt yer tutucusu, bu kaynak grubu yapıtı üzerinde dinamik ayar **adı** ve **konumu** için anahtar/değer çiftlerine sahiptir
-  - Bir kaynak grubu parametresi sağlanmazsa ve **DefaultValue**yoksa, kaynak grubu parametresi isteğe bağlı değildir
+  - Bir kaynak grubu parametresi sağlanmazsa ve **DefaultValue** yoksa, kaynak grubu parametresi isteğe bağlı değildir
 - **Atamadosyası** (isteğe bağlı)
   - Bir şema atamasının JSON dosyası gösteriminin yolu
-  - Bu parametre, yalnızca **Name**, **Blueprint**ve **SubscriptionID**ve ortak parametreleri içeren bir PowerShell parametre kümesinin bir parçasıdır.
+  - Bu parametre, yalnızca **Name**, **Blueprint** ve **SubscriptionID** ve ortak parametreleri içeren bir PowerShell parametre kümesinin bir parçasıdır.
 
 ### <a name="example-1-provide-parameters"></a>Örnek 1: parametre sağlama
 
-Aşağıdaki örnek ile birlikte getirilen ' My-şema ' şema tanımının ' 1,1 ' sürümünün yeni bir atamasını oluşturur `Get-AzBlueprint` , yönetilen kimliği ve atama nesnesi konumunu ' westus2 ' olarak ayarlar, kaynakları _allresourcesreadonly_ile kilitler ve aşağıdaki gibi belirli bir abonelikte hem **parametre** hem de **resourcegroupparameter** için karma tabloları ayarlar `{subId}` :
+Aşağıdaki örnek ile birlikte getirilen ' My-şema ' şema tanımının ' 1,1 ' sürümünün yeni bir atamasını oluşturur `Get-AzBlueprint` , yönetilen kimliği ve atama nesnesi konumunu ' westus2 ' olarak ayarlar, kaynakları _allresourcesreadonly_ ile kilitler ve aşağıdaki gibi belirli bir abonelikte hem **parametre** hem de **resourcegroupparameter** için karma tabloları ayarlar `{subId}` :
 
 ```azurepowershell-interactive
 # Login first with Connect-AzAccount if not using Cloud Shell
@@ -205,7 +205,7 @@ ResourceGroups    : ResourceGroup
 
 ### <a name="example-2-use-a-json-assignment-definition-file"></a>Örnek 2: JSON atama tanım dosyası kullanma
 
-Aşağıdaki örnekte, [Örnek 1](#example-1-provide-parameters)ile neredeyse aynı atama oluşturulur. Cmdlet 'e parametre geçirmek yerine, örnek bir JSON atama tanımı dosyası ve **Atamadosyası** parametresinin kullanımını gösterir. Ayrıca, **Excludedsorumlularını** özelliği **kilitlerin**bir parçası olarak yapılandırılır. **Excludedsorumlularını** Için bir PowerShell parametresi yoktur ve ÖZELLIK yalnızca JSON atama tanımı dosyası aracılığıyla ayarlanarak yapılandırılabilir.
+Aşağıdaki örnekte, [Örnek 1](#example-1-provide-parameters)ile neredeyse aynı atama oluşturulur. Cmdlet 'e parametre geçirmek yerine, örnek bir JSON atama tanımı dosyası ve **Atamadosyası** parametresinin kullanımını gösterir. Ayrıca, **Excludedsorumlularını** özelliği **kilitlerin** bir parçası olarak yapılandırılır. **Excludedsorumlularını** Için bir PowerShell parametresi yoktur ve ÖZELLIK yalnızca JSON atama tanımı dosyası aracılığıyla ayarlanarak yapılandırılabilir.
 
 ```json
 {
@@ -250,7 +250,7 @@ Kullanıcı tarafından atanan yönetilen kimliğin JSON atama tanım dosyasın�
 
 ## <a name="update-blueprint-assignments"></a>Şema atamalarını Güncelleştir
 
-Bazen zaten oluşturulmuş bir şema atamasının güncelleştirilmesi gerekir. `Set-AzBlueprintAssignment`Cmdlet 'i bu eylemi işler. Cmdlet 'i cmdlet 'in kullandığı parametrelerin çoğunu alır `New-AzBlueprintAssignment` ve atamada ayarlanan her şeyin güncelleştirilmesine izin verir. Özel durumlar _ad_, _Blueprint_ve _SubscriptionID_' dir. Yalnızca belirtilen değerler güncellenir.
+Bazen zaten oluşturulmuş bir şema atamasının güncelleştirilmesi gerekir. `Set-AzBlueprintAssignment`Cmdlet 'i bu eylemi işler. Cmdlet 'i cmdlet 'in kullandığı parametrelerin çoğunu alır `New-AzBlueprintAssignment` ve atamada ayarlanan her şeyin güncelleştirilmesine izin verir. Özel durumlar _ad_, _Blueprint_ ve _SubscriptionID_' dir. Yalnızca belirtilen değerler güncellenir.
 
 Bir şema atamasını güncelleştirirken ne olduğunu anlamak için bkz. [atamaları güncelleştirme kuralları](./update-existing-assignments.md#rules-for-updating-assignments).
 
@@ -281,7 +281,7 @@ Bir şema atamasını güncelleştirirken ne olduğunu anlamak için bkz. [atama
 - **Parametre** (isteğe bağlı)
   - Şema atamasında [dinamik parametreleri](../concepts/parameters.md#dynamic-parameters) ayarlamak için anahtar/değer çiftlerinin [karma tablosu](/powershell/module/microsoft.powershell.core/about/about_hash_tables)
   - Bir dinamik parametre için varsayılan değer, tanımdaki **DefaultValue** 'dir
-  - Bir parametre sağlanmazsa ve **DefaultValue**yoksa, parametre isteğe bağlı değildir
+  - Bir parametre sağlanmazsa ve **DefaultValue** yoksa, parametre isteğe bağlı değildir
 
     > [!NOTE]
     > **Parametre** securestrings 'i desteklemiyor.
@@ -289,7 +289,7 @@ Bir şema atamasını güncelleştirirken ne olduğunu anlamak için bkz. [atama
 - **Resourcegroupparameter** (isteğe bağlı)
   - Kaynak grubu yapıtlarının [karma tablosu](/powershell/module/microsoft.powershell.core/about/about_hash_tables)
   - Her kaynak grubu yapıt yer tutucusu, bu kaynak grubu yapıtı üzerinde dinamik ayar **adı** ve **konumu** için anahtar/değer çiftlerine sahiptir
-  - Bir kaynak grubu parametresi sağlanmazsa ve **DefaultValue**yoksa, kaynak grubu parametresi isteğe bağlı değildir
+  - Bir kaynak grubu parametresi sağlanmazsa ve **DefaultValue** yoksa, kaynak grubu parametresi isteğe bağlı değildir
 
 Aşağıdaki örnek, kilit modunu değiştirerek ' My-şema ' şema tanımının ' 1,1 ' sürümünün atamasını güncelleştirir `Get-AzBlueprint` :
 

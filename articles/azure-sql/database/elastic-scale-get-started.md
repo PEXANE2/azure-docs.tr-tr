@@ -11,12 +11,12 @@ author: anumjs
 ms.author: anjangsh
 ms.reviewer: sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: 423fd0f91de3e936e2920d57e5bc606bb86a2437
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 74343b2f05bb4a59e475449c87524ff66cdd605d
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92786726"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919553"
 ---
 # <a name="get-started-with-elastic-database-tools"></a>Elastik veritabanı araçlarını kullanmaya başlama
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -25,7 +25,7 @@ Bu belgede, örnek bir uygulama çalıştırmanıza yardımcı olarak [elastik v
 
 ## <a name="elastic-database-tools-for-java"></a>Java için elastik veritabanı araçları
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 * Java geliştirici seti (JDK), sürüm 1,8 veya üzeri
 * [Maven](https://maven.apache.org/download.cgi)
@@ -72,7 +72,7 @@ Tebrikler! Azure SQL veritabanı 'nda elastik veritabanı araçlarını kullanar
 
 ## <a name="elastic-database-tools-for-net"></a>.NET için elastik veritabanı araçları
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 * C# ile Visual Studio 2012 veya üzeri. [Visual Studio Indirmelerinde](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx)ücretsiz bir sürüm indirin.
 * NuGet 2,7 veya üzeri. En son sürümü almak için bkz. [NuGet 'ı yükleme](https://docs.nuget.org/docs/start-here/installing-nuget).
@@ -85,13 +85,15 @@ Kitaplığı yüklemek için [Microsoft. Azure. SQLDatabase. Elaol Scale. Client
 
 1. [Azure SQL Için elastik veritabanı araçları-başlangıç örneği](https://github.com/Azure/elastic-db-tools)' ni indirin. Örneği, seçtiğiniz bir konuma ayıklayın.
 
-2. Bir proje oluşturmak için *C#* dizininden *Elakıscalestarterkit. sln* çözümünü açın.
+2. Bir proje oluşturmak için, *elastik-DB-Tools-Master* dizininden *elavedatabasetools. sln* çözümünü açın. 
 
-3. Örnek projenin çözümünde *app.config* dosyasını açın. Ardından, sunucu adınızı ve oturum açma bilgilerinizi (Kullanıcı adı ve parola) eklemek için dosyadaki yönergeleri izleyin.
+3. *Elakıscalestarterkit* projesini başlangıç projesi olarak ayarlayın.
 
-4. Uygulamayı derleyin ve çalıştırın. İstendiğinde, çözümün NuGet paketlerini geri yüklemek için Visual Studio 'Yu etkinleştirin. Bu eylem, en son elastik veritabanı istemci kitaplığı sürümünü NuGet 'den indirir.
+4. *Elalarscalestarterkit* projesinde *App.config* dosyasını açın. Ardından, sunucu adınızı ve oturum açma bilgilerinizi (Kullanıcı adı ve parola) eklemek için dosyadaki yönergeleri izleyin.
 
-5. İstemci kitaplığı özellikleri hakkında daha fazla bilgi edinmek için çeşitli seçeneklerle denemeler yapın. Uygulamanın konsol çıkışında aldığı ve arka planda kodu keşfetmeye yönelik adımlara göz atın.
+5. Uygulamayı derleyin ve çalıştırın. İstendiğinde, çözümün NuGet paketlerini geri yüklemek için Visual Studio 'Yu etkinleştirin. Bu eylem, en son elastik veritabanı istemci kitaplığı sürümünü NuGet 'den indirir.
+
+6. İstemci kitaplığı özellikleri hakkında daha fazla bilgi edinmek için çeşitli seçeneklerle denemeler yapın. Uygulamanın konsol çıkışında aldığı ve arka planda kodu keşfetmeye yönelik adımlara göz atın.
 
    ![İlerleme Durumu][4]
 
@@ -102,13 +104,13 @@ Tebrikler! SQL veritabanı 'nda elastik veritabanı araçlarını kullanarak ilk
 
 ## <a name="key-pieces-of-the-code-sample"></a>Kod örneğinin temel parçaları
 
-* **Parçaları ve parça haritalarını yönetme** : kod, *ShardManagementUtils.cs* dosyasındaki parçalar, aralıklar ve eşlemelerle çalışmayı gösterir. Daha fazla bilgi için bkz. parça [eşleme yöneticisiyle veritabanlarını genişletme](https://go.microsoft.com/?linkid=9862595).  
+* **Parçaları ve parça haritalarını yönetme**: kod, *ShardManagementUtils.cs* dosyasındaki parçalar, aralıklar ve eşlemelerle çalışmayı gösterir. Daha fazla bilgi için bkz. parça [eşleme yöneticisiyle veritabanlarını genişletme](https://go.microsoft.com/?linkid=9862595).  
 
-* **Verilere bağımlı yönlendirme** : işlemlerin sağ parçaya yönlendirilmesi *DataDependentRoutingSample.cs* dosyasında gösterilmiştir. Daha fazla bilgi için bkz. [verilere bağımlı yönlendirme](https://go.microsoft.com/?linkid=9862596).
+* **Verilere bağımlı yönlendirme**: işlemlerin sağ parçaya yönlendirilmesi *DataDependentRoutingSample.cs* dosyasında gösterilmiştir. Daha fazla bilgi için bkz. [verilere bağımlı yönlendirme](https://go.microsoft.com/?linkid=9862596).
 
-* **Birden çok parça üzerinde sorgulama** : parçalar arasında sorgulama *MultiShardQuerySample.cs* dosyasında gösterilmiştir. Daha fazla bilgi için bkz. [çok parçalı sorgulama](https://go.microsoft.com/?linkid=9862597).
+* **Birden çok parça üzerinde sorgulama**: parçalar arasında sorgulama *MultiShardQuerySample.cs* dosyasında gösterilmiştir. Daha fazla bilgi için bkz. [çok parçalı sorgulama](https://go.microsoft.com/?linkid=9862597).
 
-* **Boş parçalar ekleniyor** : yeni boş parçaların eklenmesi, *CreateShardSample.cs* dosyasındaki kod tarafından gerçekleştirilir. Daha fazla bilgi için bkz. parça [eşleme yöneticisiyle veritabanlarını genişletme](https://go.microsoft.com/?linkid=9862595).
+* **Boş parçalar ekleniyor**: yeni boş parçaların eklenmesi, *CreateShardSample.cs* dosyasındaki kod tarafından gerçekleştirilir. Daha fazla bilgi için bkz. parça [eşleme yöneticisiyle veritabanlarını genişletme](https://go.microsoft.com/?linkid=9862595).
 
 ## <a name="other-elastic-scale-operations"></a>Diğer elastik ölçeklendirme işlemleri
 

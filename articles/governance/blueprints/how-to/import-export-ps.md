@@ -1,18 +1,18 @@
 ---
 title: PowerShell ile şemaları içeri ve dışarı aktarma
 description: Şema tanımlarınız kodu olarak nasıl çalışacağınızı öğrenin. Dışarı aktarma ve içeri aktarma komutlarını kullanarak bunları paylaşabilirsiniz, kaynak denetimi yapın ve yönetin.
-ms.date: 08/27/2020
+ms.date: 01/27/2021
 ms.topic: how-to
-ms.openlocfilehash: 87e8f00013fec3abb8132f92c1c717f152d1e264
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a5b1adda0b02e2e2490441c5958ca9334febc24c
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89051449"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919995"
 ---
 # <a name="import-and-export-blueprint-definitions-with-powershell"></a>Şema tanımlarını PowerShell ile içeri ve dışarı aktarma
 
-Azure şemaları, Azure portal aracılığıyla tam olarak yönetilebilir. Kuruluşlar Azure şemaları kullanımıyla geliştikçe, şema tanımlarını yönetilen kod olarak düşünmeye başlamalıdır. Bu kavram genellikle kod olarak altyapı (IAC) olarak adlandırılır. Şema tanımlarınızın kod olarak davranılması, Azure portal sunduğu avantajlardan daha fazla avantaj sunar. Bu avantajlar şunlardır:
+Azure şemaları, Azure portal aracılığıyla tam olarak yönetilebilir. Kuruluşlar Azure şemaları kullanımıyla geliştikçe, şema tanımlarını yönetilen kod olarak düşünmeye başlamalıdır. Bu kavram genellikle kod olarak altyapı (IAC) olarak adlandırılır. Şema tanımlarınızın kod olarak davranılması, Azure portal sunduğu avantajlardan daha fazla avantaj sunar. Bu avantajlar:
 
 - Şema tanımlarını paylaşma
 - Şema tanımlarınızı yedekleme
@@ -23,7 +23,7 @@ Azure şemaları, Azure portal aracılığıyla tam olarak yönetilebilir. Kurul
 
 Nedenleriniz ne olursa olsun, şema tanımlarınızı kod olarak yönetme avantajlara sahiptir. Bu makalede, `Import-AzBlueprintWithArtifact` `Export-AzBlueprintWithArtifact` [az. Blueprint](https://powershellgallery.com/packages/Az.Blueprint/) modülündeki ve komutlarının nasıl kullanılacağı gösterilmektedir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makalede, Azure şemaları hakkında orta düzeyde çalışma bilgisi varsayılmaktadır. Henüz yapmadıysanız, aşağıdaki makalelerle çalışın:
 

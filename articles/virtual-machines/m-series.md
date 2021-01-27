@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 03/31/2020
 ms.author: jushiman
-ms.openlocfilehash: fe63f9d5a9d215a31a56d7214170d86f46a4e4a2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 972eaf3aa20324bc68ce24d2b7c0db041bb8baa4
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91653664"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98918645"
 ---
 # <a name="m-series"></a>M serisi
 
@@ -27,6 +27,7 @@ A serisi VM 'nin Özellik Intel &reg; Hyper-Threading teknolojisi.
 [Güncelleştirmeleri koruyan bellek](maintenance-and-updates.md): desteklenmiyor<br>
 [VM oluşturma desteği](generation-2.md): 1. ve 2. nesil<br>
 [Yazma Hızlandırıcısı](./how-to-enable-write-accelerator.md): destekleniyor<br>
+[Hızlandırılmış ağ](../virtual-network/create-vm-accelerated-networking-cli.md): desteklenir<br>
 <br>
 
 | Boyut | Sanal işlemci | Bellek: GiB | Geçici depolama (SSD) GiB | Maksimum veri diskleri | Maksimum önbelleğe alınmış ve geçici depolama aktarım hızı: ıOPS/MBps (GiB 'de önbellek boyutu) | Önbelleğe alınmamış maksimum disk aktarım hızı: ıOPS/MBps | En fazla NIC|Beklenen ağ bant genişliği (MB/sn) |
@@ -46,7 +47,7 @@ A serisi VM 'nin Özellik Intel &reg; Hyper-Threading teknolojisi.
 | Standard_M128 <sup>1</sup>     | 128 | 2048   | 14336 | 64 | 250000/1600 (2456)  | 80000/2000 | 8|32000 |
 | Standard_M128m <sup>1</sup>    | 128 | 3892   | 14336 | 64 | 250000/1600 (2456)  | 80000/2000 | 8|32000 |
 
-<sup>1</sup> 64 'Den fazla vCPU, desteklenen bu konuk sanal sistemlerinden birini gerektirir: Windows Server 2016, Ubuntu 16,04 LTS, SLES 12 SP2 ve Red Hat Enterprise Linux, centos 7,3 ya da LIS 4.2.1 ile Oracle Linux 7,3.
+<sup>1</sup> 64 vCPU 'dan fazla bu desteklenen konuk sürümlerinden birini gerektir: Windows Server 2016, Ubuntu 16,04 LTS, SLES 12 SP2 ve Red Hat Enterprise Linux, centos 7,3 ya da LIS 4.2.1 ile Oracle Linux 7,3.
 
 <sup>2</sup> örnek, tek bir müşteriye adanmış donanımlar için yalıtılmıştır.
 

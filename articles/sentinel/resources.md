@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/02/2019
+ms.date: 01/27/2021
 ms.author: yelevin
-ms.openlocfilehash: 2465cf74dbf4fbf074aed8f8e4097a236e628425
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 11c5c77623fcc693210d5a42bf94c968e884fec3
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94660653"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98920029"
 ---
 # <a name="useful-resources-for-working-with-azure-sentinel"></a>Azure Sentinel ile çalışmaya yönelik faydalı kaynaklar
 
@@ -28,7 +28,7 @@ ms.locfileid: "94660653"
 
 Bu makalede, Azure Sentinel ile çalışma hakkında daha fazla bilgi almanıza yardımcı olabilecek kaynaklar listelenmektedir.
 
-Azure Logic Apps bağlayıcılar: <https://docs.microsoft.com/connectors/>
+- **Azure Logic Apps bağlayıcılar**: <https://docs.microsoft.com/connectors/>
 
 
 ## <a name="auditing-and-reporting"></a>Denetim ve raporlama
@@ -86,10 +86,25 @@ Azure etkinlik günlüğünden bu verileri, daha sonra araştırma ve analiz ger
 
 ## <a name="blogs-and-forums"></a>Bloglar ve Forumlar
 
-Sorularınızı Azure Sentinel için [Techcommunity alanına](https://techcommunity.microsoft.com/t5/Azure-Sentinel/bd-p/AzureSentinel) gönderin.
+Kullanıcılarımızdan aldığımız bir duyuyoruz!
 
-[Techcommunity](https://techcommunity.microsoft.com/t5/Azure-Sentinel/bg-p/AzureSentinelBlog) ve [Microsoft Azure](https://azure.microsoft.com/blog/tag/azure-sentinel/)Azure Sentinel blog yayınlarını görüntüleyin.
+- **Sorularınızı** Azure Sentinel Için [Techcommunity alanına](https://techcommunity.microsoft.com/t5/Azure-Sentinel/bd-p/AzureSentinel) gönderin. 
+
+- [Kullanıcı sesli](https://feedback.azure.com/forums/920458-azure-sentinel) programımız aracılığıyla **geliştirmeler için öneriler gönderin** .
+
+- Azure Sentinel blog gönderilerimizi **görüntüleyin ve açıklama ekleyin** :
+
+    - [TechCommunity](https://techcommunity.microsoft.com/t5/Azure-Sentinel/bg-p/AzureSentinelBlog) 
+    - [Microsoft Azure](https://azure.microsoft.com/blog/tag/azure-sentinel/)
+
+Azure güvenliği ve uyumluluğu hakkında daha fazla bilgi için bkz. [güvenlik ve Uyumluluk blogu Microsoft Azure](https://techcommunity.microsoft.com/t5/microsoft-security-and/bg-p/MicrosoftSecurityandCompliance).
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bu belgede, Azure Sentinel ile çalışırken yararlı olan kaynakların bir listesini aldınız. [Microsoft Azure Güvenlik ve uyumluluk blogunu](/archive/blogs/azuresecurity/)Azure Güvenlik ve uyumluluğu hakkında daha fazla bilgi bulacaksınız.
+
+> [!div class="nextstepaction"]
+> [Sertifikalı alın!](/learn/paths/security-ops-sentinel/)
+
+> [!div class="nextstepaction"]
+> [Müşteri kullanım örneği hikayelerini okuyun](https://customers.microsoft.com/en-us/search?sq=%22Azure%20Sentinel%20%22&ff=&p=0&so=story_publish_date%20desc)
+

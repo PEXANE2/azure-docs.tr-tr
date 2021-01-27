@@ -7,12 +7,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 1/21/2021
 ms.author: cavoeg
-ms.openlocfilehash: 48dbd0892c9ec02f203edba55d1104f1ab0118a8
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 8ad5ee78a525b3798bbf613168ff74a9e21fe99b
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737617"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98920266"
 ---
 # <a name="how-to-export-fhir-data"></a>FHıR verilerini dışa aktarma
 
@@ -46,7 +46,8 @@ $Export işleri için ayarlanması gereken iki gerekli üst bilgi parametresi va
 
 ### <a name="query-parameters"></a>Sorgu parametreleri
 FHıR için Azure API 'SI aşağıdaki sorgu parametrelerini destekler. Bu parametrelerin tümü isteğe bağlıdır:
-|Sorgu parametresi        | FHIR belirtimi tarafından tanımlandı mı?    |  Açıklama|
+
+|Sorgu parametresi        | FHIR belirtimi tarafından tanımlandı mı?    |  Description|
 |------------------------|---|------------|
 | \_outputFormat | Yes | Şu anda, FHıR belirtimine uyum sağlamak için üç değeri desteklemektedir: Application/fhır + ndjson, Application/ndjson veya yalnızca ndjson. Tüm dışarı aktarma işleri döndürülecek `ndjson` ve geçirilen değerin kod davranışı üzerinde hiçbir etkisi olmayacaktır. |
 | \_getirildikten | Yes | Yalnızca belirtilen süreden bu yana değiştirilen kaynakları dışarı aktarmanız sağlar |

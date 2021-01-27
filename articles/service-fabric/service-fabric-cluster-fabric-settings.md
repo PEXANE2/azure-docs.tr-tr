@@ -3,12 +3,12 @@ title: Azure Service Fabric küme ayarlarını değiştirme
 description: Bu makalede, özelleştirebileceğiniz doku ayarları ve doku yükseltme ilkeleri açıklanmaktadır.
 ms.topic: reference
 ms.date: 08/30/2019
-ms.openlocfilehash: c055ad1dad8b9574c8d811284a34619ee3648a10
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 34a63a86bc10a787ef077b9067c3fba5a9e4da25
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97095279"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919791"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Service Fabric kümesi ayarlarını özelleştirme
 Bu makalede, Service Fabric kümeniz için özelleştirebileceğiniz çeşitli yapı ayarları açıklanmaktadır. Azure 'da barındırılan kümeler için [Azure Portal](https://portal.azure.com) veya Azure Resource Manager şablonu kullanarak ayarları özelleştirebilirsiniz. Daha fazla bilgi için bkz. [Azure kümesinin yapılandırmasını yükseltme](service-fabric-cluster-config-upgrade-azure.md). Tek başına kümeler için, dosyadaki *ClusterConfig.js* güncelleyerek ve kümenizde bir yapılandırma yükseltmesi gerçekleştirerek ayarları özelleştirirsiniz. Daha fazla bilgi için bkz. [tek başına kümenin yapılandırmasını yükseltme](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -521,7 +521,7 @@ Aşağıda, bölümüne göre organize ettiğiniz doku ayarlarının bir listesi
 |Oto algılayıcısı Tavailablereso,|bool, varsayılan değer doğru|Statik|Bu yapılandırma, bu yapılandırma true olarak ayarlandığında, düğüm üzerindeki kullanılabilir kaynakların otomatik olarak algılanmasını tetikler (CPU ve bellek). Kullanıcı hatalı düğüm kapasiteleri belirtse veya bu yapılandırma false olarak ayarlandıysa, kullanıcının hatalı düğüm kapasiteleri belirttiğimiz bir uyarı izliyoruz; Ancak bunlar düzeltilmeyecektir; kullanıcının, gerçekten sahip olduğu veya kapasitesi tanımsız olan > olarak belirtilen kapasiteye sahip olmasını istediği anlamına gelir; Sınırsız kapasite kabul eder |
 |BalancingDelayAfterNewNode | Saniye cinsinden süre, varsayılan değer 120 ' dir |Dinamik|Zaman aralığı değerini saniye cinsinden belirtin. Yeni bir düğüm ekledikten sonra bu süre içinde etkinlikleri dengelemeyi başlatma. |
 |BalancingDelayAfterNodeDown | Saniye cinsinden süre, varsayılan değer 120 ' dir |Dinamik|Zaman aralığı değerini saniye cinsinden belirtin. Düğüm azaltma olayından sonra bu süre içinde etkinlikleri dengelemeyi başlatmayın. |
-|BlockNodeInUpgradeConstraintPriority | Int, varsayılan değer 0 ' dır |Dinamik|Kapasite kısıtlamasının önceliğini belirler: 0: Hard; 1: geçici; negatif: yoksay  |
+|BlockNodeInUpgradeConstraintPriority | Int, varsayılan değer-1 |Dinamik|Kapasite kısıtlamasının önceliğini belirler: 0: Hard; 1: geçici; negatif: yoksay  |
 |CapacityConstraintPriority | Int, varsayılan değer 0 ' dır | Dinamik|Kapasite kısıtlamasının önceliğini belirler: 0: Hard; 1: geçici; negatif: yoksay. |
 |ConsecutiveDroppedMovementsHealthReportLimit | Int, varsayılan değer 20 ' dir | Dinamik|Tanılama gerçekleştirilmeden ve sistem durumu uyarıları yayınlanmadan önce, Resourcedengeleyiciden çıkarılan hareketlerin kaç kez bırakılacağını tanımlar. Negatif: Bu koşul altına hiçbir uyarı yayınlanmadı. |
 |ConstraintFixPartialDelayAfterNewNode | Saniye cinsinden süre, varsayılan değer 120 ' dir |Dinamik| Zaman aralığı değerini saniye cinsinden belirtin. Yeni bir düğüm eklendikten sonra bu süre içinde FaultDomain ve UpgradeDomain kısıtlama ihlallerini Düzelmeyin. |
@@ -879,7 +879,7 @@ Aşağıda, bölümüne göre organize ettiğiniz doku ayarlarının bir listesi
 |FrameHeaderErrorCheckingEnabled|bool, varsayılan değer doğru|Statik|Çerçeve üstbilgisinde güvenli olmayan modda hata denetimi için varsayılan ayar; bileşen ayarı bunu geçersiz kılar. |
 |MessageErrorCheckingEnabled|bool, varsayılan değer doğru|Statik|İleti üst bilgisinde ve gövdesinde güvenli olmayan modda hata denetimi için varsayılan ayar; bileşen ayarı bunu geçersiz kılar. |
 |ResolveOption|dize, varsayılan değer "belirtilmemiş"|Statik|FQDN 'nin nasıl çözümlendiğini belirler.  Geçerli değerler şunlardır "belirtilmemiş/IPv4/IPv6". |
-|Binding üstündeki SendTimeout|TimeSpan, varsayılan:: TimeSpan:: FromSeconds (300)|Dinamik|Zaman aralığı değerini saniye cinsinden belirtin. Takılmış bağlantıyı algılamak için zaman aşımı gönder. TCP hata raporları, bazı ortamlarda güvenilir değildir. Bunun, kullanılabilir ağ bant genişliğine ve giden verilerin boyutuna ( \* MaxMessageSize \/ \* sendqueuesizelimit) göre ayarlanması gerekebilir. |
+|SendTimeout|TimeSpan, varsayılan:: TimeSpan:: FromSeconds (300)|Dinamik|Zaman aralığı değerini saniye cinsinden belirtin. Takılmış bağlantıyı algılamak için zaman aşımı gönder. TCP hata raporları, bazı ortamlarda güvenilir değildir. Bunun, kullanılabilir ağ bant genişliğine ve giden verilerin boyutuna ( \* MaxMessageSize \/ \* sendqueuesizelimit) göre ayarlanması gerekebilir. |
 
 ## <a name="upgradeorchestrationservice"></a>UpgradeOrchestrationService
 

@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 02/02/2019
 ms.author: anvang
 ms.reviewer: jrasnick
-ms.openlocfilehash: 1c5bc4400e99fb1c24e321e623aaee523b9c7383
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e1565d4f7792dca5242965d11c58faa90e2222d3
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85210992"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98920384"
 ---
 # <a name="use-maintenance-schedules-to-manage-service-updates-and-maintenance"></a>Bakım zamanlamalarını kullanarak hizmet güncelleştirmelerini ve bakımını yönetme
 
@@ -38,7 +38,7 @@ Hizmet durumu bildirimleri ve Kaynak Durumu Check Monitor ile tümleştirme, mü
 24 saatlik bir öncelikli bildirim, DWC400c ve alt katmanlar için olmayan tüm bakım olaylarının önüne gelir.
 
 > [!NOTE]
-> Zaman açısından kritik güncelleştirme dağıtımı için gerekli olan olayda gelişmiş bildirim süreleri önemli ölçüde azaltılabilir.
+> Zaman açısından kritik güncelleştirme dağıtımı için gerekli olan olayda gelişmiş bildirim süreleri önemli ölçüde azaltılabilir. Bu, güncelleştirmenin kritik doğası nedeniyle, tanımlanan bir bakım penceresinin dışında gerçekleşebilir.
 
 Bakım gerçekleştireceğiz, ancak bildirimde bir süre boyunca bakım gerçekleştirilemediği takdirde, bir iptal bildirimi alırsınız. Bakım daha sonra zamanlanan bir sonraki bakım döneminde sürdürülecek.
 
@@ -54,9 +54,9 @@ Varsayılan olarak, yeni oluşturulan tüm veri ambarı örneklerinin dağıtım
 
 SYNAPSE SQL havuzunuza uygulanan bakım zamanlamasını görüntülemek için aşağıdaki adımları izleyin:
 
-1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 2. Görüntülemek istediğiniz SYNAPSE SQL havuzunu seçin.
-3. Seçilen SYNAPSE SQL havuzu genel bakış dikey penceresinde açılır. Veri ambarına uygulanan bakım zamanlaması **bakım zamanlaması**altında görünür.
+3. Seçilen SYNAPSE SQL havuzu genel bakış dikey penceresinde açılır. Veri ambarına uygulanan bakım zamanlaması **bakım zamanlaması** altında görünür.
 
 ![Genel Bakış dikey penceresi](./media/maintenance-scheduling/clear-overview-blade.PNG)
 
@@ -70,7 +70,7 @@ Birincil ve ikincil pencerelerin ayrı gün aralıkları olmalıdır. Örnek ola
 
 SYNAPSE SQL havuzunuzun bakım zamanlamasını değiştirmek için aşağıdaki adımları izleyin:
 
-1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 2. Güncelleştirmek istediğiniz SYNAPSE SQL havuzunu seçin. Sayfa, genel bakış dikey penceresinde açılır.
 Genel Bakış dikey penceresinde **bakım zamanlaması Özeti** bağlantısını seçerek bakım zamanlaması ayarları sayfasını açın. Ya da sol taraftaki kaynak menüsünde **bakım zamanlaması** seçeneğini belirleyin.
 

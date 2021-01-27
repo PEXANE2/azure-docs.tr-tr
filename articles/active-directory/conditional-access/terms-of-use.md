@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: compliance
 ms.topic: how-to
-ms.date: 12/02/2020
+ms.date: 01/27/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f3e64b0af455ab1f84653093b26654530ee3dfab
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 95fe70c774b933113c94125d227976e32a9e353f
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98232786"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919638"
 ---
 # <a name="azure-active-directory-terms-of-use"></a>Kullanım koşulları Azure Active Directory
 
@@ -26,7 +26,7 @@ Azure AD kullanım koşulları ilkeleri, kuruluşların son kullanıcılara bilg
 
 ## <a name="overview-videos"></a>Genel Bakış videoları
 
-Aşağıdaki videoda kullanım koşulları ilkelerine ilişkin hızlı bir genel bakış sunulmaktadır.
+Aşağıdaki videoda, ToU ilkelerine hızlı bir genel bakış sunulmaktadır.
 
 >[!VIDEO https://www.youtube.com/embed/tj-LK0abNao]
 
@@ -52,7 +52,7 @@ Azure AD kullanım koşulları ilkeleri aşağıdaki yeteneklere sahiptir:
 - Uyumluluk ve denetim için kullanım koşulları ilke etkinliği günlüğünü görüntüleyin.
 - [Microsoft Graph API 'leri](/graph/api/resources/agreement?view=graph-rest-beta) kullanarak kullanım koşulları ilkeleri oluşturun ve yönetin (Şu anda önizleme aşamasındadır).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD kullanım koşulları ilkelerini kullanmak ve yapılandırmak için, şunları yapmanız gerekir:
 
@@ -183,7 +183,7 @@ Azure AD denetim günlükleri 'ni kullanmaya başlamak için aşağıdaki yordam
 
 ## <a name="what-terms-of-use-looks-like-for-users"></a>Kullanıcılar için hangi kullanım koşulları gibi görünüyor
 
-Kullanım koşulları ilkesi oluşturulup zorlandıktan sonra, kapsamdaki kullanıcılar, oturum açma işlemi sırasında aşağıdaki ekranı görür.
+Bir ToU ilkesi oluşturulup zorlandıktan sonra, kapsamdaki kullanıcılar, oturum açma işlemi sırasında aşağıdaki ekranı görür.
 
 ![Kullanıcı oturum açtığında görüntülenen örnek kullanım koşulları](./media/terms-of-use/user-tou.png)
 
@@ -191,7 +191,7 @@ Kullanıcılar kullanım koşullarını görüntüleyebilir ve gerekirse, yakın
 
 ![Yakınlaştırma düğmeleriyle kullanım koşullarını görüntüleme](./media/terms-of-use/zoom-buttons.png)
 
-Aşağıdaki ekranda, kullanım koşullarının mobil cihazlarda nasıl göründüğü gösterilmektedir.
+Aşağıdaki ekranda, bir ToU ilkesinin mobil cihazlarda nasıl göründüğü gösterilmektedir.
 
 ![Kullanıcı bir mobil cihazda oturum açtığında görüntülenen örnek kullanım koşulları](./media/terms-of-use/mobile-tou.png)
 
@@ -226,7 +226,7 @@ Kullanım koşullarının bazı ayrıntılarını düzenleyebilirsiniz, ancak va
     - Önizle **Mevcut bir kullanım koşulları belgesini güncelleştirebilirsiniz**
     - Mevcut bir ToU 'ya bir dil ekleyebilirsiniz
 
-   PDF belgesi gibi değiştirmek istediğiniz başka ayarlar varsa, kullanıcıların her cihazda onay vermesini, consents 'nin süresini, yeniden kabul etmeden önceki süreyi veya koşullu erişim ilkesini, yeni bir kullanım koşulları ilkesi oluşturmanız gerekir.
+   PDF belgesi gibi değiştirmek istediğiniz başka ayarlar varsa, kullanıcıların her cihazda onay vermesini, consents 'nin süresini, yeniden kabul etmeden önce geçmesi veya koşullu erişim ilkesini zorunlu kılmak için yeni bir ToU ilkesi oluşturmanız gerekir.
 
     ![Farklı dil seçeneklerini göstermeyi Düzenle ](./media/terms-of-use/edit-terms-use.png)
 
@@ -249,7 +249,7 @@ Kullanım koşullarının bazı ayrıntılarını düzenleyebilirsiniz, ancak va
 7.  Yeni PDF 'nizi karşıya yükledikten ve yeniden kabul etmeye karar verdikten sonra bölmenin alt kısmındaki Ekle ' ye tıklayın.
 8.  Artık belge sütununun altında en son sürümü görürsünüz.
 
-## <a name="view-previous-versions-of-a-terms-of-use"></a>Kullanım koşullarının önceki sürümlerini görüntüleme
+## <a name="view-previous-versions-of-a-tou"></a>ToU 'un önceki sürümlerini görüntüleme
 
 1.  Azure'da oturum açın ve **Kullanım Koşulları**'na erişmek için https://aka.ms/catou sayfasına gidin.
 2.  Sürüm geçmişini görüntülemek istediğiniz kullanım koşulları ilke koşullarını seçin.
@@ -269,9 +269,9 @@ Kullanım koşullarının bazı ayrıntılarını düzenleyebilirsiniz, ancak va
 5.  Alternatif olarak, belirli sürümü kimlerin kabul ettiğini görmek için **Sürüm**  açılan listesinden belirli bir sürümü seçebilirsiniz.
 
 
-## <a name="add-a-terms-of-use-language"></a>Kullanım koşulları dili ekleme
+## <a name="add-a-tou-language"></a>ToU dili Ekle
 
-Aşağıdaki yordamda bir kullanım koşulları dilinin nasıl ekleneceği açıklanmaktadır.
+Aşağıdaki yordamda bir ToU dilinin nasıl ekleneceği açıklanmaktadır.
 
 1. Azure'da oturum açın ve **Kullanım Koşulları**'na erişmek için [https://aka.ms/catou](https://aka.ms/catou) sayfasına gidin.
 1. Düzenlemek istediğiniz kullanım koşulları ilkesini seçin.
@@ -344,9 +344,13 @@ Aşağıdaki yordamı kullanarak eski kullanım koşulları ilkelerini silebilir
 
    Kullanım koşullarınızı artık göremezsiniz.
 
-## <a name="deleted-users-and-active-terms-of-use"></a>Silinen kullanıcılar ve etkin kullanım koşulları
+## <a name="user-acceptance-record-deletion"></a>Kullanıcı kabul kaydı silme
 
-Varsayılan olarak, silinmiş bir kullanıcı Azure AD'de 30 gün boyunca silinmiş durumda kalır ve bu süre boyunca gerekirse bir yönetici tarafından geri alınabilir. 30 gün sonra bu kullanıcı kalıcı olarak silinir. Ayrıca, bir Genel Yönetici bu süreye ulaşılmadan önce Azure Active Directory portalını kullanarak [kısa süre önce silinmiş bir kullanıcıyı kalıcı olarak silebilir](../fundamentals/active-directory-users-restore.md). Bir Kullanıcı kalıcı olarak silindi, bu kullanıcı hakkındaki sonraki veriler, etkin kullanım koşulları ilkesinden kaldırılacak. Silinmiş kullanıcılara ilişkin denetim bilgileri, denetim günlüğünde kalır.
+Kullanıcı kabul kayıtları silinir:
+
+- Yönetici ToU 'yi açıkça sildiğinde. Bu durumda, söz konusu ToU ile ilişkili tüm kabul kayıtları da silinir.
+- Kiracı Azure Active Directory Premium lisansını kaybeder.
+- Kiracı silindiğinde.
 
 ## <a name="policy-changes"></a>İlke değişiklikleri
 

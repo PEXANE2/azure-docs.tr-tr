@@ -1,14 +1,14 @@
 ---
 title: 'Hızlı başlangıç: ilk Ruby sorgunuz'
 description: Bu hızlı başlangıçta, Ruby için kaynak grafiği GEFA 'yı etkinleştirmek ve ilk sorgunuzu çalıştırmak için adımları izleyin.
-ms.date: 10/14/2020
+ms.date: 01/27/2021
 ms.topic: quickstart
-ms.openlocfilehash: 4ffd7f33fb83b7a1f247f687b77dd2ef9c8e5bc9
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 41769359eaa1f930d34b0a182f35da38a6f5109d
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057323"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98920049"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-ruby"></a>Hızlı başlangıç: Ruby kullanarak ilk kaynak grafik sorgunuzu çalıştırma
 
@@ -16,10 +16,10 @@ Azure Kaynak Grafiği 'ni kullanmanın ilk adımı, Ruby için gereken Gems 'ler
 
 Bu işlemin sonunda, Ruby yüklemenize Gems 'yi eklemiş ve ilk kaynak Graf sorgunuzu çalıştıracaksınız.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
-- _ClientID_ ve _ClientSecret_dahil olmak üzere bir Azure hizmet sorumlusu.
+- _ClientID_ ve _ClientSecret_ dahil olmak üzere bir Azure hizmet sorumlusu.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -105,7 +105,7 @@ Her çağrıda `argQuery` , kendi değerlerinizle değiştirmeniz gereken kullan
    > [!NOTE]
    > Bu sorgu örneği, `order by` gibi bir sıralama değiştirici sağlamadığı için, bu sorgunun birden çok kez çalıştırılması muhtemelen istek başına farklı bir kaynak kümesi sunacaktır.
 
-1. Son parametreyi olarak değiştirin `argQuery.rb` ve sorguyu Name özelliği olarak değiştirin `order by` : **Name**
+1. Son parametreyi olarak değiştirin `argQuery.rb` ve sorguyu Name özelliği olarak değiştirin `order by` : 
 
    ```bash
    ruby argQuery.rb "{tenantId}" "{clientId}" "{clientSecret}" "{subscriptionId}" "Resources | project name, type | limit 5 | order by name asc"

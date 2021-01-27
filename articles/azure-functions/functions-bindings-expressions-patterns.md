@@ -6,16 +6,16 @@ ms.topic: reference
 ms.custom: devx-track-csharp
 ms.date: 02/18/2019
 ms.author: cshoe
-ms.openlocfilehash: 161e3e7fbc5b343ee73142f0e968367c3cbfaa6b
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 7245b0c0fb1e96959ef5dca4992cf52a38accb58
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92927422"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98920299"
 ---
 # <a name="azure-functions-binding-expression-patterns"></a>Azure Işlevleri bağlama ifadesi desenleri
 
-[Tetikleyiciler ve bağlamaların](./functions-triggers-bindings.md) en güçlü özelliklerinden biri *bağlama ifadeleri* . Dosyadaki *function.js* ve işlev parametreleri ve kodu ' nda, çeşitli kaynaklardaki değerlere çözüm veren ifadeleri kullanabilirsiniz.
+[Tetikleyiciler ve bağlamaların](./functions-triggers-bindings.md) en güçlü özelliklerinden biri *bağlama ifadeleri*. Dosyadaki *function.js* ve işlev parametreleri ve kodu ' nda, çeşitli kaynaklardaki değerlere çözüm veren ifadeleri kullanabilirsiniz.
 
 Çoğu ifade küme ayracı içinde tanımlanır. Örneğin, bir kuyruk tetikleyicisi işlevinde, `{queueTrigger}` kuyruk ileti metnine çözülür. `path`Blob çıkış bağlamasının özelliği ise `container/{queueTrigger}` ve işlev bir kuyruk iletisi tarafından tetikleniyorsa `HelloWorld` adlı bir blob `HelloWorld` oluşturulur.
 
@@ -164,6 +164,7 @@ Bir tetikleyici tarafından belirtilen veri yüküne ek olarak (bir işlevi teti
 Bu meta veri değerlerine dosya özelliklerindeki *function.js* erişilebilir. Örneğin, bir kuyruk tetikleyicisi kullandığınızı ve kuyruk iletisinin, okumak istediğiniz bir Blobun adını içerdiğini varsayalım. Dosyadaki *function.js* , `queueTrigger` `path` Aşağıdaki örnekte gösterildiği gibi BLOB özelliğinde meta veri özelliğini kullanabilirsiniz:
 
 ```json
+{
   "bindings": [
     {
       "name": "myQueueItem",
@@ -179,6 +180,7 @@ Bu meta veri değerlerine dosya özelliklerindeki *function.js* erişilebilir. �
       "connection": "MyStorageConnection"
     }
   ]
+}
 ```
 
 Her tetikleyicinin meta veri özelliklerinin ayrıntıları, ilgili başvuru makalesinde açıklanmıştır. Bir örnek için bkz. [kuyruk tetikleyicisi meta verileri](functions-bindings-storage-queue-trigger.md#message-metadata). Belgeler, portalın **tümleştirme** sekmesinde, bağlama yapılandırma alanının altındaki **Belgeler** bölümünde de bulunur.  
