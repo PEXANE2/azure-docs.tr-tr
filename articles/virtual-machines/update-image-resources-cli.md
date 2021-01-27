@@ -10,12 +10,12 @@ ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 6fcd7ba0e3582a614acab46bffd5f76e5baa982f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6099afc82e76ed28e8557ac0eee3e64cb292a715
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87496364"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98882017"
 ---
 # <a name="list-update-and-delete-image-resources"></a>Görüntü kaynaklarını listeleme, güncelleştirme ve silme 
 
@@ -27,4 +27,4 @@ Azure CLı kullanarak paylaşılan görüntü Galerisi kaynaklarınızı yönete
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure görüntü Oluşturucu (Önizleme)](./linux/image-builder-overview.md) , görüntü sürümü oluşturmayı otomatikleştirmenize yardımcı olabilir, hatta [mevcut bir görüntü sürümünden yeni bir görüntü sürümünü](./linux/image-builder-gallery-update-image-version.md)güncelleştirmek ve oluşturmak için de kullanabilirsiniz. 
+[Azure görüntü Oluşturucu (Önizleme)](./image-builder-overview.md) , görüntü sürümü oluşturmayı otomatikleştirmenize yardımcı olabilir, hatta [mevcut bir görüntü sürümünden yeni bir görüntü sürümünü](./linux/image-builder-gallery-update-image-version.md)güncelleştirmek ve oluşturmak için de kullanabilirsiniz.

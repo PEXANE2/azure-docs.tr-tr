@@ -9,16 +9,16 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 090b041c605c2328add8b46a97b6f151bae268c6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ec589848625e1114dedd8c58b41f7ecbc991f311
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87501091"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881983"
 ---
 # <a name="create-a-vm-from-a-generalized-image-version-using-the-cli"></a>CLı kullanarak Genelleştirilmiş görüntü sürümünden VM oluşturma
 
-Paylaşılan görüntü galerisinde depolanan [Genelleştirilmiş görüntü sürümünden](./linux/shared-image-galleries.md#generalized-and-specialized-images) bir VM oluşturun. Özel bir görüntü kullanarak bir VM oluşturmak istiyorsanız, bkz. [özel bir GÖRÜNTÜDEN VM oluşturma](vm-specialized-image-version-powershell.md). 
+Paylaşılan görüntü galerisinde depolanan [Genelleştirilmiş görüntü sürümünden](./shared-image-galleries.md#generalized-and-specialized-images) bir VM oluşturun. Özel bir görüntü kullanarak bir VM oluşturmak istiyorsanız, bkz. [özel bir GÖRÜNTÜDEN VM oluşturma](vm-specialized-image-version-powershell.md). 
 
 
 ## <a name="get-the-image-id"></a>Görüntü KIMLIĞINI al
@@ -59,4 +59,4 @@ Ayrıca, parametresi için görüntü sürümü KIMLIĞINI kullanarak belirli bi
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure görüntü Oluşturucu (Önizleme)](./linux/image-builder-overview.md) , görüntü sürümü oluşturmayı otomatikleştirmenize yardımcı olabilir, hatta [mevcut bir görüntü sürümünden yeni bir görüntü sürümünü](./linux/image-builder-gallery-update-image-version.md)güncelleştirmek ve oluşturmak için de kullanabilirsiniz. 
+[Azure görüntü Oluşturucu (Önizleme)](./image-builder-overview.md) , görüntü sürümü oluşturmayı otomatikleştirmenize yardımcı olabilir, hatta [mevcut bir görüntü sürümünden yeni bir görüntü sürümünü](./linux/image-builder-gallery-update-image-version.md)güncelleştirmek ve oluşturmak için de kullanabilirsiniz.

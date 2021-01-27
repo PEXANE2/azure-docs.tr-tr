@@ -7,12 +7,12 @@ ms.manager: bsiva
 ms.topic: tutorial
 ms.date: 08/19/2020
 ms.custom: MVC
-ms.openlocfilehash: 892b731f662af57916d067c562d48f4ec25e2210
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 12b8e30b0107b6b008cbd6467ada7c2d44f5e6d6
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98233058"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98871646"
 ---
 # <a name="discover-assess-and-migrate-google-cloud-platform-gcp-vms-to-azure"></a>Google Cloud Platform (GCP) sanal makinelerini Azure 'a bulma, değerlendirme ve geçirme
 
@@ -61,7 +61,7 @@ Bir değerlendirmeyi denemenizi öneririz, ancak değerlendirme gerçekleştirme
 
 
 
-## <a name="prerequisites"></a>Ön koşullar 
+## <a name="prerequisites"></a>Önkoşullar 
 
 - Geçirmek istediğiniz GCP VM 'lerinin desteklenen bir işletim sistemi sürümünü çalıştırdığından emin olun. GCP VM 'Leri geçiş amacıyla fiziksel makineler gibi değerlendirilir. Fiziksel sunucu geçişi iş akışı için [desteklenen işletim sistemlerini ve çekirdek sürümlerini](../site-recovery/vmware-physical-azure-support-matrix.md#replicated-machines) gözden geçirin. Linux sanal makinelerinize yönelik işletim sistemi ve çekirdek sürümlerini denetlemek için *hostnamectl* veya *uname-a* gibi standart komutları kullanabilirsiniz.  Gerçek geçişe devam etmeden önce VM 'nin beklendiği gibi çalışıp çalışmadığını doğrulamak için bir test geçişi gerçekleştirmenizi öneririz.
 - GCP sanal makinelerinizin Azure 'a geçiş için [desteklenen yapılandırmalara](./migrate-support-matrix-physical-migration.md#physical-server-requirements) uyduğundan emin olun.
@@ -77,7 +77,7 @@ Azure geçişi: sunucu geçiş aracı ile geçiş için Azure 'u hazırlayın.
 
 **Görev** | **Ayrıntılar**
 --- | ---
-**Azure Geçişi projesi oluşturma** | [Yeni bir proje oluşturmak](https://docs.microsoft.com/azure/migrate/create-manage-projects)için Azure hesabınızda katkıda bulunan veya sahip izinlerinin olması gerekir.
+**Azure Geçişi projesi oluşturma** | [Yeni bir proje oluşturmak](./create-manage-projects.md)için Azure hesabınızda katkıda bulunan veya sahip izinlerinin olması gerekir.
 **Azure hesabınız için izinleri doğrulama** | Azure hesabınızın bir VM oluşturmak ve Azure yönetilen diskine yazmak için izinleri olması gerekir.
 
 ### <a name="assign-permissions-to-create-project"></a>Proje oluşturmak için izin atama
@@ -252,7 +252,7 @@ Geçirilecek kaynak GCP sanal makinelerinde Mobility hizmeti aracısının yükl
     - Platform tarafından yönetilen ve müşteri tarafından yönetilen anahtarlarla Çift şifreleme
 
    > [!NOTE]
-   > VM 'Leri CMK ile çoğaltmak için hedef kaynak grubu altında [bir disk şifreleme kümesi oluşturmanız](https://go.microsoft.com/fwlink/?linkid=2151800) gerekir. Bir disk şifreleme kümesi nesnesi yönetilen diskleri, SSE için kullanılacak CMK 'yi içeren bir Key Vault eşler.
+   > VM 'Leri CMK ile çoğaltmak için hedef kaynak grubu altında [bir disk şifreleme kümesi oluşturmanız](../virtual-machines/disks-enable-customer-managed-keys-portal.md#set-up-your-disk-encryption-set) gerekir. Bir disk şifreleme kümesi nesnesi yönetilen diskleri, SSE için kullanılacak CMK 'yi içeren bir Key Vault eşler.
   
 12. **Azure Hibrit Avantajı**’nda:
 

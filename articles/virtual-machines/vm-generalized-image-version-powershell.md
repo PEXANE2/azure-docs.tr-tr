@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: fd541b9ff65a5417bff21c0293f4d62f5b6791a7
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: b198c094ffd5f2113603fc9d8d2fb1c4e5cd6fe1
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91972858"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881966"
 ---
 # <a name="create-a-vm-using-a-generalized-image"></a>Genelleştirilmiş görüntü kullanarak VM oluşturma 
 
@@ -146,7 +146,7 @@ New-AzVM `
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[Azure görüntü Oluşturucu (Önizleme)](./windows/image-builder-overview.md) , görüntü sürümü oluşturmayı otomatikleştirmenize yardımcı olabilir, hatta [mevcut bir görüntü sürümünden yeni bir görüntü sürümünü](./windows/image-builder-gallery-update-image-version.md)güncelleştirmek ve oluşturmak için de kullanabilirsiniz. 
+[Azure görüntü Oluşturucu (Önizleme)](./image-builder-overview.md) , görüntü sürümü oluşturmayı otomatikleştirmenize yardımcı olabilir, hatta [mevcut bir görüntü sürümünden yeni bir görüntü sürümünü](./windows/image-builder-gallery-update-image-version.md)güncelleştirmek ve oluşturmak için de kullanabilirsiniz. 
 
 Ayrıca, şablonlar kullanarak paylaşılan görüntü Galerisi kaynağı da oluşturabilirsiniz. Çeşitli Azure hızlı başlangıç şablonları mevcuttur: 
 
@@ -155,4 +155,4 @@ Ayrıca, şablonlar kullanarak paylaşılan görüntü Galerisi kaynağı da olu
 - [Paylaşılan Görüntü Galerisinde Görüntü Sürümü Oluşturma](https://azure.microsoft.com/resources/templates/101-sig-image-version-create/)
 - [Görüntü Sürümünden Sanal Makine Oluşturma](https://azure.microsoft.com/resources/templates/101-vm-from-sig/)
 
-Paylaşılan görüntü galerileri hakkında daha fazla bilgi için bkz. [genel bakış](./windows/shared-image-galleries.md). Sorunlarla karşılaşırsanız bkz. [paylaşılan görüntü galerilerine sorun giderme](troubleshooting-shared-images.md).
+Paylaşılan görüntü galerileri hakkında daha fazla bilgi için bkz. [genel bakış](./shared-image-galleries.md). Sorunlarla karşılaşırsanız bkz. [paylaşılan görüntü galerilerine sorun giderme](troubleshooting-shared-images.md).

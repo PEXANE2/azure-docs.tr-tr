@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/01/2020
 ms.author: radeltch
-ms.openlocfilehash: 525c705db81dc0f152c8dbc55de5ebac841e5d57
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 62b235fa9ea84409a5c29609a5dc0fde1671684c
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201748"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878774"
 ---
 # <a name="public-endpoint-connectivity-for-virtual-machines-using-azure-standard-load-balancer-in-sap-high-availability-scenarios"></a>SAP yüksek kullanılabilirlik senaryolarında Azure Standart Load Balancer kullanan sanal makineler için genel uç nokta bağlantısı
 
@@ -45,8 +45,8 @@ SAP sistemleri genellikle hassas iş verileri içerir. SAP sistemlerini barınd�
 
 Azure genel uç noktasına erişim gerektiren senaryolara örnek olarak şunlar verilebilir:  
 - Azure çit Aracısı, **Management.Azure.com** ve **login.microsoftonline.com** için erişim gerektirir  
-- [Azure Backup](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db#set-up-network-connectivity)
-- [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#outbound-connectivity-for-urls)  
+- [Azure Backup](../../../backup/tutorial-backup-sap-hana-db.md#set-up-network-connectivity)
+- [Azure Site Recovery](../../../site-recovery/azure-to-azure-about-networking.md#outbound-connectivity-for-urls)  
 - Işletim sisteminde düzeltme eki uygulama için ortak depoyu kullanma
 - SAP uygulama veri akışı, genel uç noktasına giden bağlantı gerektirebilir
 
@@ -165,7 +165,7 @@ Mimari şöyle görünür:
    Güvenlik duvarı kuralı şöyle görünür: ![ güvenlik duvarının neye benzebileceklerini gösteren diyagram.](./media/high-availability-guide-standard-load-balancer/high-availability-guide-standard-load-balancer-firewall-rule.png)
 
 6. VM 'nizin alt ağından, **Myazurefirewall** özel IP 'Sinden Kullanıcı tanımlı yol oluşturun.
-   1. Yol tablosuna yerleştirdiğiniz gibi rotalar ' ı tıklatın. Ekle’yi seçin. 
+   1. Yol tablosuna yerleştirdiğiniz gibi rotalar ' ı tıklatın. Ekle ' yi seçin. 
    1. Yol adı: ToMyAzureFirewall, adres ön eki: **0.0.0.0/0**. Sonraki atlama türü: Sanal Gereç seçin. Sonraki atlama adresi: yapılandırdığınız güvenlik duvarının özel IP adresini girin: **11.97.1.4**.  
    1. Kaydet
 

@@ -39,8 +39,6 @@
       href: restart-resize-error-troubleshooting.md
     - name: 'Hizmetleri Yeniden Başlatma, Kapatma veya Durdurma'
       href: boot-error-troubleshoot-windows.md
-    - name: Linux sanal makinesinde dolu bir işletim sistemi diskiyle ilgili sorunlar
-      href: os-disk-full-linux.md
 - name: Beklenmeyen yeniden başlatma
   items:
     - name: Ekli VHD’ler ile VM’lerin beklenmeyen yeniden başlatmaları
@@ -153,7 +151,7 @@
         - name: Genel hata sorununu giderme
           href: troubleshoot-rdp-general-error.md
         - name: Kimlik doğrulama sorunlarını giderme
-          href: troubleshoot-authentication-error-rdp-vm.md
+          href: /troubleshoot/azure/virtual-machines/cannot-connect-rdp-azure-vm
         - name: Azure VM RDP bağlantı sorunlarını olay kimliğine göre giderme
           href: event-id-troubleshoot-vm-rdp-connecton.md
         - name: Sanal makinede statik IP kaynaklı RDP hatasına yönelik sorun giderme

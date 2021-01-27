@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 12/29/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1e6aaf1b37073bf93e0aca8237161bf11af3a872
-ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
+ms.openlocfilehash: ee28f25e766940eb51e92b61fd782b97fd888705
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97827232"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879621"
 ---
 # <a name="azure-proximity-placement-groups-for-optimal-network-latency-with-sap-applications"></a>SAP uygulamalarıyla en iyi ağ gecikmesi için Azure yakınlık yerleştirme grupları
 SAP NetWeaver veya SAP S/4HANA mimarisine dayanan SAP uygulamaları, SAP uygulama katmanı ve SAP veritabanı katmanı arasındaki ağ gecikmesinden duyarlıdır. Bu duyarlılık, uygulama katmanında çalışan iş mantığının büyük bir sonucudur. SAP uygulama katmanı iş mantığını çalıştırdığı için, bir saniyede binlerce veya onlarca binlerce veya on binde bir hızda veritabanı katmanına sorgu verir. Çoğu durumda, bu sorguların doğası basittir. Bunlar, genellikle 500 mikrosaniye veya daha az bir veritabanı katmanında çalıştırılabilir.
@@ -30,11 +30,11 @@ Uygulama katmanından veritabanı katmanına bu tür bir sorgu göndermek için 
 
 Birçok Azure bölgesinde, veri merkezlerinin sayısı artmıştır. Aynı zamanda, özellikle yüksek kaliteli SAP sistemleri için müşteriler, M veya Mv2 ailesi veya HANA büyük örnekleri için daha özel VM SKU 'Ları kullanıyor. Bu Azure sanal makine türleri, Azure bölgesini tamamlayan tüm veri merkezlerinde her zaman kullanılabilir değildir. Bu olgular, SAP uygulama katmanı ve SAP DBMS katmanı arasındaki ağ gecikmesini iyileştirmek için fırsat oluşturabilir.
 
-Ağ gecikmesini en uygun hale getirmenize olanak tanımak için Azure, [yakınlık yerleştirme grupları](../../linux/co-location.md)sunar. Bu farklı VM türleri arasındaki ağ gecikmesini en iyi şekilde iyileştirmek için yakınlık yerleşimi grupları, farklı VM türlerini tek bir Azure veri merkezine gruplamayı zorlamak üzere kullanılabilir. İlk VM 'yi böyle bir yakınlık yerleşimi grubuna dağıtma işleminde, VM belirli bir veri merkezine bağlanır. Bu aday müşteri seslerinden dolayı, yapının kullanımı da bazı kısıtlamalar getirir:
+Ağ gecikmesini en uygun hale getirmenize olanak tanımak için Azure, [yakınlık yerleştirme grupları](../../co-location.md)sunar. Bu farklı VM türleri arasındaki ağ gecikmesini en iyi şekilde iyileştirmek için yakınlık yerleşimi grupları, farklı VM türlerini tek bir Azure veri merkezine gruplamayı zorlamak üzere kullanılabilir. İlk VM 'yi böyle bir yakınlık yerleşimi grubuna dağıtma işleminde, VM belirli bir veri merkezine bağlanır. Bu aday müşteri seslerinden dolayı, yapının kullanımı da bazı kısıtlamalar getirir:
 
 - Tüm Azure sanal makine türlerinin her ve tüm Azure veri merkezlerinde kullanılabilir olduğunu varsayamaz. Sonuç olarak, bir yakınlık yerleşimi grubu içindeki farklı VM türlerinin birleşimi kısıtlanabilir. Bu kısıtlamalar, belirli bir VM türünü çalıştırmak için gereken konak donanımının, yerleştirme grubunun dağıtıldığı veri merkezinde mevcut olmaması nedeniyle oluşur
 - Bir yakınlık yerleşimi grubundaki sanal makinelerin parçalarını yeniden boyutlandırdıkça, her durumda yeni sanal makine türünün, yakınlık yerleşimi grubunun parçası olan diğer VM 'Lerle aynı veri merkezinde kullanılabilir olduğunu otomatik olarak kabul edilemez.
-- Azure, donanımı borçlandırmaya karşı bir yakınlık yerleşimi grubunun belirli sanal makinelerini başka bir Azure veri merkezine zorlayabilir. Bu durumu kapsayan Ayrıntılar için, [iyileştirilmiş gecikme süresi için belgeyi birlikte bulma kaynaklarını](../../linux/co-location.md#planned-maintenance-and-proximity-placement-groups) okuyun  
+- Azure, donanımı borçlandırmaya karşı bir yakınlık yerleşimi grubunun belirli sanal makinelerini başka bir Azure veri merkezine zorlayabilir. Bu durumu kapsayan Ayrıntılar için, [iyileştirilmiş gecikme süresi için belgeyi birlikte bulma kaynaklarını](../../co-location.md#planned-maintenance-and-proximity-placement-groups) okuyun  
 
 > [!IMPORTANT]
 > Olası kısıtlamaların bir sonucu olarak, yakınlık yerleşimi gruplarının kullanılması gerekir:

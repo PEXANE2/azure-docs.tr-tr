@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.date: 11/24/2020
 ms.author: inhenkel
 ms.custom: subject-armqs
-ms.openlocfilehash: 6a23c3a20e79fe6fff7de8faccf4e4ef78f02585
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 541a4c17a3212f711be7e2cf096ce3a2d632ee64
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96185053"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879655"
 ---
 # <a name="quickstart-media-services-account-arm-template"></a>Hızlı başlangıç: Media Services hesabı ARM şablonu
 
@@ -41,7 +41,7 @@ ARM şablonlarıyla karşılaşan okuyucular [dağıtım bölümüne](#deploy-th
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-Daha önce bir ARM şablonu dağıtmadıysanız, [Azure ARM şablonları](https://docs.microsoft.com/azure/azure-resource-manager/templates/) hakkında bilgi edinmek ve [öğreticiden](https://docs.microsoft.com/azure/azure-resource-manager/templates/template-tutorial-create-first-template?tabs=azure-powershell)gezinmek yararlı olur.
+Daha önce bir ARM şablonu dağıtmadıysanız, [Azure ARM şablonları](../../azure-resource-manager/templates/index.yml) hakkında bilgi edinmek ve [öğreticiden](../../azure-resource-manager/templates/template-tutorial-create-first-template.md?tabs=azure-powershell)gezinmek yararlı olur.
 
 ## <a name="review-the-template"></a>Şablonu gözden geçirme
 
@@ -118,8 +118,8 @@ The syntax for the JSON code fence is:
 
 Şablonda üç Azure Kaynak türü tanımlanmıştır:
 
-- [Microsoft. Media/mediaservices](https://docs.microsoft.com/azure/templates/microsoft.media/mediaservices): Media Services hesap oluşturma
-- [Microsoft. Storage/storageAccounts](https://docs.microsoft.com/azure/templates/microsoft.storage/storageaccounts): depolama hesabı oluşturma
+- [Microsoft. Media/mediaservices](/azure/templates/microsoft.media/mediaservices): Media Services hesap oluşturma
+- [Microsoft. Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts): depolama hesabı oluşturma
 
 ## <a name="set-the-account"></a>Hesabı ayarla
 
@@ -277,4 +277,4 @@ az group delete --name {name of the resource group}
 Parametreleri, değişkenleri ve daha fazlasını içeren bir şablon oluşturma işlemini izleyerek ARM şablonunu kullanma hakkında daha fazla bilgi için, deneyin
 
 > [!div class="nextstepaction"]
-> [Öğretici: ilk ARM şablonunuzu oluşturma ve dağıtma](/azure/azure-resource-manager/templates/template-tutorial-create-first-template)
+> [Öğretici: ilk ARM şablonunuzu oluşturma ve dağıtma](../../azure-resource-manager/templates/template-tutorial-create-first-template.md)

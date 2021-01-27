@@ -1,5 +1,5 @@
 ---
-title: Estimators 'dan ScriptRunConfig 'e geçiş
+title: Tahmin Araçlarından ScriptRunConfig'e geçirme
 titleSuffix: Azure Machine Learning
 description: Eğitim işlerini yapılandırmak için estimators 'dan ScriptRunConfig 'e geçiş kılavuzu.
 services: machine-learning
@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 12/14/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q1
-ms.openlocfilehash: 64c03b1c9fc18a4e78af9914b893599683069ced
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: d603a12f851dac5b7cefc5bad728d42967bb27dc
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97633081"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878604"
 ---
 # <a name="migrating-from-estimators-to-scriptrunconfig"></a>Estimators 'dan ScriptRunConfig 'e geçiş
 
@@ -30,7 +30,7 @@ Bu makalede, estimators 'dan ScriptRunConfig 'e geçiş yaparken sık görülen 
 > Estimators 'dan ScriptRunConfig 'e geçiş yapmak için Python SDK >= 1.15.0 kullandığınızdan emin olun.
 
 ## <a name="scriptrunconfig-documentation-and-samples"></a>ScriptRunConfig belgeleri ve örnekleri
-Azure Machine Learning belge ve örnekler, iş yapılandırması ve gönderimi için [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.script_run_config.scriptrunconfig?view=azure-ml-py&preserve-view=true) kullanacak şekilde güncelleştirilmiştir.
+Azure Machine Learning belge ve örnekler, iş yapılandırması ve gönderimi için [ScriptRunConfig](/python/api/azureml-core/azureml.core.script_run_config.scriptrunconfig?preserve-view=true&view=azure-ml-py) kullanacak şekilde güncelleştirilmiştir.
 
 ScriptRunConfig kullanma hakkında daha fazla bilgi için aşağıdaki belgelere bakın:
 * [Eğitim çalıştırmalarını yapılandırma ve gönderme](how-to-set-up-training-targets.md)
@@ -104,10 +104,10 @@ src.run_config.data_references = {data_ref.data_reference_name: data_ref.to_conf
 ```
 
 Eğitim için veri kullanma hakkında daha fazla bilgi için bkz.
-* [Azure ML 'de veri kümeleriyle eğitme](https://docs.microsoft.com/azure/machine-learning/how-to-train-with-datasets)
+* [Azure ML 'de veri kümeleriyle eğitme](./how-to-train-with-datasets.md)
 
 ## <a name="distributed-training"></a>Dağıtılmış eğitim
-Eğitim için bir dağıtılmış iş yapılandırmanız gerekiyorsa, `distributed_job_config` ScriptRunConfig oluşturucusunda parametresini belirterek bunu yapın. İlgili türlerin dağıtılmış işleri için bir [Mpiconation](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration?view=azure-ml-py&preserve-view=true), [pytorchconfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.pytorchconfiguration?view=azure-ml-py&preserve-view=true)veya [tensorflowconfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.tensorflowconfiguration?view=azure-ml-py&preserve-view=true) geçirin.
+Eğitim için bir dağıtılmış iş yapılandırmanız gerekiyorsa, `distributed_job_config` ScriptRunConfig oluşturucusunda parametresini belirterek bunu yapın. İlgili türlerin dağıtılmış işleri için bir [Mpiconation](/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration?preserve-view=true&view=azure-ml-py), [pytorchconfiguration](/python/api/azureml-core/azureml.core.runconfig.pytorchconfiguration?preserve-view=true&view=azure-ml-py)veya [tensorflowconfiguration](/python/api/azureml-core/azureml.core.runconfig.tensorflowconfiguration?preserve-view=true&view=azure-ml-py) geçirin.
 
 Aşağıdaki örnek, MPı/Horovod ile dağıtılmış eğitimi kullanmak için PyTorch eğitim işini yapılandırır:
 ```python
@@ -120,7 +120,7 @@ src = ScriptRunConfig(source_directory='.',
                       distributed_job_config=MpiConfiguration(node_count=2, process_count_per_node=2))
 ```
 
-Daha fazla bilgi için bkz:
+Daha fazla bilgi için bkz.
 * [PyTorch ile dağıtılmış eğitim](how-to-train-pytorch.md#distributed-training)
 * [TensorFlow ile dağıtılmış eğitim](how-to-train-tensorflow.md#distributed-training)
 

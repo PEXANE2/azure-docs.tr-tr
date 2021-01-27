@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: quickstart
 ms.date: 10/23/2020
-ms.openlocfilehash: 6aeb4e29390b5b456d3aa820e4b3b8be762dbddd
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: dea881acc4cec90c4a8ad6169d94734f24d5b759
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98115795"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880042"
 ---
 # <a name="quickstart-create-an-azure-purview-account-in-the-azure-portal"></a>Hızlı başlangıç: Azure portal bir Azure purview hesabı oluşturun
 
@@ -21,11 +21,11 @@ ms.locfileid: "98115795"
 
 Bu hızlı başlangıçta bir Azure purview hesabı oluşturursunuz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-* Kendi [Azure Active Directory kiracınız](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant).
+* Kendi [Azure Active Directory kiracınız](../active-directory/fundamentals/active-directory-access-create-new-tenant.md).
 
 * Hesabınız abonelikte kaynak oluşturma iznine sahip olmalıdır
 
@@ -35,7 +35,7 @@ Bu hızlı başlangıçta bir Azure purview hesabı oluşturursunuz.
     > Azure Ilkeniz yoksa veya mevcut bir Azure Ilkesi **depolama hesabı** ve **EventHub ad alanı** oluşturulmasını engellemiyor ise bu adımı izlemeniz gerekmez.
 
     1. Azure portal gidin ve **ilkeyi** arayın
-    1. Operator ve Tag ile iki özel durum eklemek için [özel ilke tanımı oluştur](https://docs.microsoft.com/azure/governance/policy/tutorials/create-custom-policy-definition) veya mevcut ilkeyi Değiştir ' i izleyin `not` `resourceBypass` :
+    1. Operator ve Tag ile iki özel durum eklemek için [özel ilke tanımı oluştur](../governance/policy/tutorials/create-custom-policy-definition.md) veya mevcut ilkeyi Değiştir ' i izleyin `not` `resourceBypass` :
 
         ```json
         {
@@ -83,7 +83,7 @@ Bu hızlı başlangıçta bir Azure purview hesabı oluşturursunuz.
 
         :::image type="content" source="./media/create-catalog-portal/policy-definition.png" alt-text="İlke tanımının nasıl oluşturulacağını gösteren ekran görüntüsü.":::
 
-    1. Oluşturulan özel ilkeyi kullanarak [bir ilke ataması oluşturun](https://docs.microsoft.com/azure/governance/policy/assign-policy-portal) .
+    1. Oluşturulan özel ilkeyi kullanarak [bir ilke ataması oluşturun](../governance/policy/assign-policy-portal.md) .
 
         [![İlke atamasının nasıl oluşturulacağını gösteren ekran görüntüsü](./media/create-catalog-portal/policy-assignment.png)](./media/create-catalog-portal/policy-assignment.png#lightbox)
 
@@ -155,7 +155,7 @@ Ekle ' ye tıkladığınızda, hem işaretlenmiş (devre dışı) hem de işaret
 
 1. **Rol ataması ekle**’yi seçin.
 
-1. Güvenlik sorumlusunun kullanım için ne olduğuna bağlı olarak, **purview Data Curator rolü** veya **purview veri kaynağı Yöneticisi rolünü** inceleyin. Ayrıntılar için lütfen bkz. Azure Active Directory [Katalog izinleri](catalog-permissions.md) ve [uygulama ve hizmet sorumlusu nesneleri](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals) .
+1. Güvenlik sorumlusunun kullanım için ne olduğuna bağlı olarak, **purview Data Curator rolü** veya **purview veri kaynağı Yöneticisi rolünü** inceleyin. Ayrıntılar için lütfen bkz. Azure Active Directory [Katalog izinleri](catalog-permissions.md) ve [uygulama ve hizmet sorumlusu nesneleri](../active-directory/develop/app-objects-and-service-principals.md) .
 
 1. **Ata erişimi** için varsayılan, **Kullanıcı, Grup veya hizmet sorumlusu**' nı bırakın.
 

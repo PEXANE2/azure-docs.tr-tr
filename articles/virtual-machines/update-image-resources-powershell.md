@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 04/27/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: c6bc4fea05f79c446f318eb4cbc86beb160ea108
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d480d880d9b26666f393c179efa953b653c80c3e
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82797012"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98882000"
 ---
 # <a name="list-update-and-delete-image-resources-using-powershell"></a>PowerShell kullanarak görüntü kaynaklarını listeleme, güncelleştirme ve silme 
 
@@ -26,4 +26,4 @@ Azure PowerShell kullanarak, paylaşılan görüntü Galerisi kaynaklarınızı 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure görüntü Oluşturucu (Önizleme)](./linux/image-builder-overview.md) , görüntü sürümü oluşturmayı otomatikleştirmenize yardımcı olabilir, hatta [mevcut bir görüntü sürümünden yeni bir görüntü sürümünü](./linux/image-builder-gallery-update-image-version.md)güncelleştirmek ve oluşturmak için de kullanabilirsiniz.
+[Azure görüntü Oluşturucu (Önizleme)](./image-builder-overview.md) , görüntü sürümü oluşturmayı otomatikleştirmenize yardımcı olabilir, hatta [mevcut bir görüntü sürümünden yeni bir görüntü sürümünü](./linux/image-builder-gallery-update-image-version.md)güncelleştirmek ve oluşturmak için de kullanabilirsiniz.

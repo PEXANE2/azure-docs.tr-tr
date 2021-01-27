@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 01/17/2021
-ms.openlocfilehash: aede7e3dec886d6a6213c64b386cacd725dd74f5
-ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
+ms.openlocfilehash: 1b2e914057aa72934524cc4977e3d2292394d0b7
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98562803"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98882110"
 ---
 # <a name="how-to-manually-fix-sync-problems"></a>Eşitleme sorunlarını el ile çözme
 
@@ -22,16 +22,16 @@ Bağlantıyı yeniden etkinleştirmek ve belirteci yenilemek için aşağıdaki 
 
 1. Üst arama başlığında çözümü arayın ve ilgili çözümleri seçin
 
-    ![En üstteki arama başlığını ve ilgili çözümlerin nerede seçdiğinin gösterildiği ekran görüntüsü.](media/itsmc-resync-servicenow/solution-search-8bit.png)
+    ![En üstteki arama başlığını ve ilgili çözümlerin nerede seçdiğinin gösterildiği ekran görüntüsü.](media/itsmc-resync-servicenow/solution-search-8-bit.png)
 
 1. Çözüm ekranında, abonelik filtresindeki "Tümünü Seç" i seçin ve ardından "ServiceDesk" olarak filtreleyin
 
-    ![Tümünü Seç ' in nerede ve ServiceDesk tarafından filtreleneceğini gösteren ekran görüntüsü.](media/itsmc-resync-servicenow/solutions-list-8bit.png)
+    ![Tümünü Seç ' in nerede ve ServiceDesk tarafından filtreleneceğini gösteren ekran görüntüsü.](media/itsmc-resync-servicenow/solutions-list-8-bit.png)
 
 1. ITSM bağlantınızın çözümünü seçin.
 1. Sol başlıkta ıTSM bağlantısı ' nı seçin.
 
-    ![ITSM bağlantılarının nerede seçdiğinin gösterildiği ekran görüntüsü.](media/itsmc-resync-servicenow/itsm-connector-8bit.png)
+    ![ITSM bağlantılarının nerede seçdiğinin gösterildiği ekran görüntüsü.](media/itsmc-resync-servicenow/itsm-connector-8-bit.png)
 
 1. Listedeki her bağlayıcıyı seçin. 
     1. Yapılandırmak için bağlayıcı adına tıklayın
@@ -41,10 +41,10 @@ Bağlantıyı yeniden etkinleştirmek ve belirteci yenilemek için aşağıdaki 
 
     1. Eşitle 'ye tıklayın
 
-       ![Eşitle düğmesini vurgulayan ekran görüntüsü.](media/itsmc-resync-servicenow/resync-8bit2.png)
+       ![Eşitle düğmesini vurgulayan ekran görüntüsü.](media/itsmc-resync-servicenow/resync-8-bit-2.png)
 
     1. Kaydet 'e tıklayın
 
-        ![Yeni bağlantı](media/itsmc-resync-servicenow/save-8bit.png)
+        ![Yeni bağlantı](media/itsmc-resync-servicenow/save-8-bit.png)
 
 f.    İşlemin başlayıp başlamadığına bakmak için bildirimleri gözden geçirin.

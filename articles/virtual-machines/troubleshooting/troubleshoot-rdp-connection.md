@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 03/23/2018
 ms.author: akjosh
-ms.openlocfilehash: 66e4ea622f546981d1f0651b20368590e59056d3
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 33bd7c82568f836e498a05411d2b3cf1c6a950b9
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201629"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878638"
 ---
 # <a name="troubleshoot-remote-desktop-connections-to-an-azure-virtual-machine"></a>Azure sanal makinesine yönelik uzak masaüstü bağlantılarında sorun giderme
 Windows tabanlı Azure sanal makinenize (VM) olan Uzak Masaüstü Protokolü (RDP) bağlantısı çeşitli sebeplerle başarısız olabilir ve VM'nize erişememenize yol açabilir. Bu sorun VM'deki Uzak Masaüstü hizmetinden, ağ bağlantısından veya ana bilgisayarınızdaki Uzak Masaüstü istemcisinden kaynaklanabilir. Bu makale RDP bağlantı sorunlarını çözmeye yönelik en yaygın yöntemlerin bazılarında size yol gösterir. 
@@ -46,7 +46,7 @@ Her bir sorun giderme adımından sonra, sanal makineye yeniden bağlanmayı den
 Daha ayrıntılı adımlar ve açıklamalar gerekiyorsa okumaya devam edin. Yönlendiriciler ve güvenlik duvarları gibi yerel ağ donanımının, [AYRıNTıLı RDP sorun giderme senaryolarında](detailed-troubleshoot-rdp.md)belirtildiği gıbı giden TCP bağlantı noktası 3389 ' i engellemediğinden emin olun.
 
 > [!TIP]
-> VM 'niz için **Bağlan** düğmesi portalda gri Ise ve Azure 'A bir [Express Route](../../expressroute/expressroute-introduction.md) veya [siteden siteye VPN](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md) bağlantısı aracılığıyla bağlı DEĞILSENIZ, RDP 'YI kullanabilmeniz için sanal makinenizin genel IP adresini oluşturmanız ve atamanız gerekir. [Azure’da genel IP adresleri](../../virtual-network/public-ip-addresses.md) hakkında daha fazlasını okuyabilirsiniz.
+> VM 'niz için **Bağlan** düğmesi portalda gri Ise ve Azure 'A bir [Express Route](../../expressroute/expressroute-introduction.md) veya [siteden siteye VPN](../../vpn-gateway/tutorial-site-to-site-portal.md) bağlantısı aracılığıyla bağlı DEĞILSENIZ, RDP 'YI kullanabilmeniz için sanal makinenizin genel IP adresini oluşturmanız ve atamanız gerekir. [Azure’da genel IP adresleri](../../virtual-network/public-ip-addresses.md) hakkında daha fazlasını okuyabilirsiniz.
 
 
 ## <a name="ways-to-troubleshoot-rdp-issues"></a>RDP sorunlarını gidermeye yönelik yollar
