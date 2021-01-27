@@ -6,12 +6,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: amgowda
-ms.openlocfilehash: b4b6c04a1e35031387a006b6350ebf6cbe502fee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 51e2095b0df8fdc965926c6c612c45f582c9b9d2
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90998242"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98874493"
 ---
 # <a name="frequently-asked-questions-about-confidential-computing-nodes-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) üzerinde gizli bilgi Işlem düğümleri hakkında sık sorulan sorular
 
@@ -24,6 +24,10 @@ Bu makalede, Azure Kubernetes Service (AKS) üzerinde Intel SGX tabanlı gizli b
 ## <a name="what-is-attestation-and-how-can-we-do-attestation-of-apps-running-in-enclaves"></a>Kanıtlama nedir ve şifreli olarak çalışan uygulamalar için kanıtlama yapabilir mi? 
 
 Kanıtlama, belirli donanım platformunda yazılım parçasının düzgün bir şekilde örneğinin oluşturulmasını gösteren ve doğrulama işlemidir. Ayrıca, bu özelliğin güvenli bir platformda çalıştığı ve kurcalanmadığından emin olmak için kanıtsızmasını sağlar. Kuşatma uygulamaları için kanıtlama 'nın nasıl yapıldığı hakkında [daha fazla bilgi edinin](attestation.md) .
+
+## <a name="can-i-enable-accelerated-networking-with-azure-confidential-computing-aks-clusters"></a>Azure gizli bilgi işlem AKS kümeleriyle hızlandırılmış ağı etkinleştirebilir miyim? 
+
+Hayır. Hızlandırılmış ağ, AKS 'teki gizli bilgi işlem düğümlerinde desteklenmez. Dağıtımınızda hızlandırılmış ağ 'ın devre dışı bırakıldığından emin olun. 
 
 ## <a name="can-i-bring-my-existing-containerized-applications-and-run-it-on-aks-with-azure-confidential-computing"></a>Mevcut Kapsayıcılı uygulamalarınızı getirebilir ve Azure gizli bilgi Işlem ile AKS 'de çalıştırabilir miyim? 
 

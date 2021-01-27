@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 07/28/2020
 ms.author: delhan
-ms.openlocfilehash: 4e87e99f16a89cab95f9bd07b75b80f1c13d47f1
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: 9a20db58846ca48afb4fb256adae58e1fccdff3a
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97900663"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98875745"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure Depolama Gezgini sorun giderme kılavuzu
 
@@ -70,13 +70,13 @@ Diğer kaynak türleri için şu anda Azure RBAC ile ilgili bir çözümünüz y
 ### <a name="recommended-azure-built-in-roles"></a>Önerilen Azure yerleşik rolleri
 
 Depolama Gezgini kullanmak için gereken izinleri sağlayabilecek çeşitli Azure yerleşik rolleri vardır. Bu rollerden bazıları şunlardır:
-- [Sahip](/azure/role-based-access-control/built-in-roles#owner): kaynaklara erişim dahil olmak üzere her şeyi yönetin.
-- [Katkıda bulunan](/azure/role-based-access-control/built-in-roles#contributor): kaynaklara erişimi hariç her şeyi yönetin.
-- [Okuyucu](/azure/role-based-access-control/built-in-roles#reader): kaynakları okuyun ve listeleyin.
-- [Depolama hesabı katılımcısı](/azure/role-based-access-control/built-in-roles#storage-account-contributor): depolama hesaplarının tam yönetimi.
-- [Depolama Blobu veri sahibi](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner): Azure depolama blob kapsayıcılarına ve verilerine tam erişim.
-- [Depolama Blobu verileri katılımcısı](/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor): Azure depolama kapsayıcıları ve bloblarını okuma, yazma ve silme.
-- [Depolama Blobu veri okuyucusu](/azure/role-based-access-control/built-in-roles#storage-blob-data-reader): Azure depolama kapsayıcıları ve bloblarını okuyun ve listeleyin.
+- [Sahip](../../role-based-access-control/built-in-roles.md#owner): kaynaklara erişim dahil olmak üzere her şeyi yönetin.
+- [Katkıda bulunan](../../role-based-access-control/built-in-roles.md#contributor): kaynaklara erişimi hariç her şeyi yönetin.
+- [Okuyucu](../../role-based-access-control/built-in-roles.md#reader): kaynakları okuyun ve listeleyin.
+- [Depolama hesabı katılımcısı](../../role-based-access-control/built-in-roles.md#storage-account-contributor): depolama hesaplarının tam yönetimi.
+- [Depolama Blobu veri sahibi](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner): Azure depolama blob kapsayıcılarına ve verilerine tam erişim.
+- [Depolama Blobu verileri katılımcısı](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor): Azure depolama kapsayıcıları ve bloblarını okuma, yazma ve silme.
+- [Depolama Blobu veri okuyucusu](../../role-based-access-control/built-in-roles.md#storage-blob-data-reader): Azure depolama kapsayıcıları ve bloblarını okuyun ve listeleyin.
 
 > [!NOTE]
 > Sahip, katkıda bulunan ve depolama hesabı katılımcısı rolleri hesap anahtarı erişimi verir.
@@ -103,7 +103,7 @@ Sertifikanın nereden geldiği konusunda emin değilseniz, bulmak için aşağı
 2. OpenSSL 'yi çalıştırın.
     * Windows: yükleme dizinini açın, **/bin/** seçin ve ardından **openssl.exe** öğesine çift tıklayın.
     * Mac ve Linux: `openssl` terminalden çalıştırın.
-3. `s_client -showcerts -connect microsoft.com:443` öğesini çalıştırın.
+3. Şu komutu çalıştırın: `s_client -showcerts -connect microsoft.com:443`.
 4. Otomatik olarak imzalanan sertifikaları bulun. Hangi sertifikaların kendinden imzalandığına ilişkin emin değilseniz, konunun ve verenin aynı olduğu her yerde dikkat edin `("s:")` `("i:")` .
 5. Her biri için otomatik olarak imzalanan sertifikalar bulduğunuzda, (ve dahil) her şeyi `-----BEGIN CERTIFICATE-----` `-----END CERTIFICATE-----` Yeni bir. cer dosyasına kopyalayıp yapıştırın.
 6. Depolama Gezgini açın ve   >  **SSL sertifikalarını** düzenlemek için  >  **sertifikaları içeri aktarın**' a gidin. Ardından, oluşturduğunuz. cer dosyalarını bulmak, seçmek ve açmak için dosya seçiciyi kullanın.

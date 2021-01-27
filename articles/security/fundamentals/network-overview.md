@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/29/2018
 ms.author: terrylan
-ms.openlocfilehash: 8a82fd6e6dc1bea0804c429f3af46884f004de69
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 17d48b6093d88a926569d5cfe84475fc0c306a0d
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96489777"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98874392"
 ---
 # <a name="azure-network-security-overview"></a>Azure ile ağ güvenliğine genel bakış
 
@@ -178,7 +178,7 @@ Bunu gerçekleştirmenin bir yolu, [siteden sıteye VPN](https://www.techopedia.
 
 Daha fazla bilgi edinin:
 
-* [Azure portal kullanarak siteden siteye VPN bağlantısı ile Kaynak Yöneticisi VNet oluşturma](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+* [Azure portal kullanarak siteden siteye VPN bağlantısı ile Kaynak Yöneticisi VNet oluşturma](../../vpn-gateway/tutorial-site-to-site-portal.md)
 * [VPN Gateway hakkında](../../vpn-gateway/vpn-gateway-about-vpngateways.md)
 
 ### <a name="connect-your-on-premises-network-to-a-virtual-network-with-a-dedicated-wan-link"></a>Şirket içi ağınızı adanmış WAN bağlantısı olan bir sanal ağa bağlama

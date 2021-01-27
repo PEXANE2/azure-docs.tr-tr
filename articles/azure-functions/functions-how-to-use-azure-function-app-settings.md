@@ -5,12 +5,12 @@ ms.assetid: 81eb04f8-9a27-45bb-bf24-9ab6c30d205c
 ms.topic: conceptual
 ms.date: 04/13/2020
 ms.custom: cc996988-fb4f-47, devx-track-azurecli
-ms.openlocfilehash: 4db6abeb3e6f4a07780268a6455177e0ca237205
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 5080d16a7b14506b24e07e2ee4ba862c645f83a8
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98598488"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98875458"
 ---
 # <a name="manage-your-function-app"></a>İşlev uygulamanızı yönetme 
 
@@ -37,6 +37,8 @@ Uygulama ayarları [Azure Portal](functions-how-to-use-azure-function-app-settin
 Bu ayarlar şifreli olarak depolanır. Daha fazla bilgi için bkz. [uygulama ayarları güvenliği](security-concepts.md#application-settings).
 
 # <a name="portal"></a>[Portal](#tab/portal)
+
+Uygulama ayarlarını bulmak için [Azure Portal kullanmaya başlama](#get-started-in-the-azure-portal)bölümüne bakın. 
 
 **Uygulama ayarları** sekmesi, işlev uygulamanız tarafından kullanılan ayarları korur. Portalda değerleri görmek için **değerleri göster** ' i seçmelisiniz. Portalda bir ayar eklemek için **Yeni uygulama ayarı** ' nı seçin ve yeni anahtar-değer çiftini ekleyin.
 
@@ -268,7 +270,7 @@ az functionapp cors add --name <FUNCTION_APP_NAME> \
 
 [`az functionapp cors show`](/cli/azure/functionapp/cors#az-functionapp-cors-show)Mevcut izin verilen kaynakları listelemek için komutunu kullanın.
 
-### <a name="authentication"></a><a name="auth"></a>Yetkilendirmesi
+### <a name="authentication"></a><a name="auth"></a>Kimlik Doğrulaması
 
 ![İşlev uygulaması için kimlik doğrulamasını yapılandırma](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-authentication.png)
 

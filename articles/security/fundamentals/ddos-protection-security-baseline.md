@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: cbc22f9b55f8d20880b43516a2a5bc8f55d389f5
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: b4b2a3bf8c9a3a2e2ec7f1b22785a037f8dedc60
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97814508"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98873969"
 ---
 # <a name="azure-security-baseline-for-azure-ddos-protection-standard"></a>Azure DDoS koruma standardı için Azure Güvenlik temeli
 
@@ -38,7 +38,7 @@ Bu güvenlik temeli [Azure Güvenlik kıyaslayıcılarından](../benchmarks/over
 
 Azure etkinlik günlüğü tanılama ayarlarını etkinleştirin ve günlükleri bir Log Analytics çalışma alanına, Azure Olay Hub 'ına veya Arşiv için Azure depolama hesabına gönderin. Etkinlik günlükleri, denetim düzlemi düzeyinde Redsıs örnekleri için Azure önbelleğiniz üzerinde gerçekleştirilen işlemlere ilişkin öngörüler sağlar. Azure etkinlik günlüğü verilerini kullanarak, Azure DDoS koruma örnekleriniz için denetim düzlemi düzeyinde gerçekleştirilen herhangi bir yazma işlemi (PUT, POST, DELETE) için "ne, kim ve ne zaman" seçeneğini belirleyebilirsiniz.
 
-- [DDoS tanılama günlüğünü görüntüleyin ve yapılandırın](../../ddos-protection/diagnostic-logging.md)
+- [DDoS tanılama günlüğünü görüntüleme ve yapılandırma](../../ddos-protection/diagnostic-logging.md)
 
 - [Azure etkinlik günlüğü için tanılama ayarlarını etkinleştirme](../../azure-monitor/platform/activity-log.md)
 
@@ -164,7 +164,7 @@ Ayrıca, özel yönetim hesaplarını izlemenize yardımcı olmak için Azure G�
 
 **Rehberlik**: Azure müşteri kasası isteklerinizi açmak ve yapılandırmak IÇIN azure ad MULTI-Factor AUTHENTICATION (MFA) özellikli güvenli, Azure tarafından yönetilen bir iş istasyonu kullanın.
 
-- [Güvenli, Azure tarafından yönetilen bir iş istasyonu dağıtma](../../active-directory/devices/howto-azure-managed-workstation.md)
+- [Güvenli, Azure tarafından yönetilen bir iş istasyonu dağıtma](/security/compass/privileged-access-deployment)
 
 - [Bulut tabanlı Azure AD Multi-Factor Authentication dağıtımı planlama](../../active-directory/authentication/howto-mfa-getstarted.md)
 

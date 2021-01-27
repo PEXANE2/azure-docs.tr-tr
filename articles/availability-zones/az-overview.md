@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/27/2020
 ms.author: cynthn
 ms.custom: fasttrack-edit, mvc
-ms.openlocfilehash: 485042c795fd94ef7daa8e00b9869190e9df61c8
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: b19f5c3ae0666a0b0e9b0255f848f5924d9d3910
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97678540"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98874748"
 ---
 # <a name="regions-and-availability-zones-in-azure"></a>Azure 'da bölgeler ve Kullanılabilirlik Alanları
 
@@ -22,7 +22,7 @@ Microsoft Azure Hizmetleri, bulut işlemlerinizi en uygun düzeyde olacak şekil
 
 Azure 'da bölgeleri ve Kullanılabilirlik Alanları daha iyi anlamak için, temel hüküm veya kavramların anlaşılmasına yardımcı olur.
 
-| Terim veya kavram | Açıklama |
+| Terim veya kavram | Description |
 | --- | --- |
 | region | Gecikme süresi tanımlı bir çevre içinde dağıtılan ve ayrılmış bölgesel düşük gecikmeli bir ağ ile bağlanmış bir veri merkezleri kümesi. |
 | Coğrafya | En az bir Azure bölgesi içeren bir dünya alanı. Geographiler, veri uygunluğunu ve uyumluluk sınırlarını koruyan ayrı bir pazar tanımlar. Coğrafyalar, özel veri yerleşikliği ve uyumluluk gereksinimleri olan müşterilerin verileri ile uygulamalarını yakın tutmasına olanak tanır. Geographiler, adanmış yüksek kapasiteli ağ altyapımıza yönelik bağlantı yoluyla, tam bölge arızalarına karşı dayanıklı bir şekilde hataya dayanıklıdır. |
@@ -86,102 +86,74 @@ Belirli bir bölgede bir hizmet teklifi yoksa, Microsoft satış temsilcinizle i
 Daha önce belirtildiği gibi, Azure hizmetleri üç kategoride sınıflandırır: temel, genel ve özel. Hizmet kategorileri genel kullanıma sunulduğuna göre atanır. Genellikle, hizmetler yaşam döngüsünü özelleştirilmiş bir hizmet olarak başlatır ve talep ve kullanım artışları, temel veya temel olarak yükseltilebilir. Aşağıdaki tabloda, hizmetler için temel, genel veya özel olarak kategori listelenmektedir. Tabloyla ilgili olarak aşağıdakileri göz önünde belirtmelisiniz:
 
 - Bazı hizmetler bölgesel değildir. Bölgesel olmayan hizmetlerin bilgileri ve bir listesi için bkz. [bölgelere göre kullanılabilir ürünler](https://azure.microsoft.com/global-infrastructure/services/).
-- Daha eski nesil sanal makineler listelenmez. Daha fazla bilgi için bkz. [önceki nesil sanal makine boyutlarında](../virtual-machines/sizes-previous-gen.md)belgeler.
+- Daha eski nesil sanal makineler listelenmez. Daha fazla bilgi için bkz. [önceki nesil sanal makine boyutlarında](../virtual-machines/sizes-previous-gen.md) belgeler
+- . Hizmetlere genel kullanıma (GA) kadar bir kategori atanmaz. Bilgi ve önizleme hizmetlerinin bir listesi için bkz. [bölgelere göre kullanılabilir ürünler](https://azure.microsoft.com/global-infrastructure/services/). 
 
 > [!div class="mx-tableFixed"]
-> | Temel | Temel | Özelleştirilmiş |
-> | --- | --- | --- |
-> | Hesap depolama alanı | API Management | FHIR için Azure API'si |
-> | Application Gateway | Uygulama Yapılandırması | Azure Analysis Services |
-> | Azure Backup | App Service | Azure Blok Zinciri Hizmeti |
-> | Azure Cosmos DB | Otomasyon | Azure Blueprints |
-> | Azure Data Lake Storage Gen2 | Azure Active Directory Domain Services | MariaDB için Azure Veritabanı |
-> | Azure ExpressRoute | Azure Bastion | Azure Ayrılmış HSM |
-> | Azure SQL Veritabanı | Redis için Azure Önbelleği | Azure Dev Spaces |
-> | Cloud Services | Azure Bilişsel Arama | Azure Digital Twins |
-> | Cloud Services: Av2-Series | Azure Veri Gezgini | Azure Lab Services |
-> | Cloud Services: Dv2-Series | Azure Veri Paylaşımı | Azure NetApp Files |
-> | Cloud Services: Dv3-Series | MySQL için Azure Veritabanı | Azure hisse |
-> | Cloud Services: Ev3-Series | PostgreSQL için Azure Veritabanı | Azure yay bulut hizmeti |
-> | Cloud Services: örnek düzeyi IP 'Leri | Azure Veritabanı Geçiş Hizmeti | Azure Zaman Serisi Görüşleri |
-> | Cloud Services: Ayrılmış IP | Azure Databricks | CloudSimple tarafından sunulan Azure VMware Çözümü |
-> | Disk Depolama | Azure DDoS Koruması | Cloud Services: G serisi |
-> | Event Hubs | Azure DevTest Labs | Cloud Services: H serisi |
-> | Key Vault | Azure Güvenlik Duvarı | Bilişsel hizmetler: Özel Görüntü İşleme |
-> | Yük dengeleyici | Azure Güvenlik Duvarı Yöneticisi | Bilişsel hizmetler: konuşmacı tanıma |
-> | Service Bus | Azure İşlevleri | Data Box Heavy |
-> | Service Fabric | Azure HPC Önbelleği | Veri Kataloğu |
-> | Sanal Makine Ölçek Kümeleri | Azure IoT Hub | Data Factory: Data Factory v1 |
-> | Sanal Makineler | Azure Kubernetes Hizmeti (AKS) | Data Lake Analytics |
-> | Sanal makineler: Av2-Series | Azure Machine Learning | Azure Machine Learning Studio (klasik)|
-> | Sanal makineler: Bs-Series | Azure Özel Bağlantı | Microsoft Genomiks |
-> | Sanal makineler: DSv2-Series | Azure Red Hat OpenShift | Remote Rendering |
-> | Sanal makineler: DSv3-Series | Azure SignalR Hizmeti | Spatial Anchors |
-> | Sanal makineler: Dv2-Series | Azure Site Recovery | StorSimple |
-> | Sanal makineler: Dv3-Series | Azure Stack Hub | Video Indexer |
-> | Sanal makineler: ESv3-Series | Azure Stream Analytics | Sanal makineler: DASv4-Series |
-> | Sanal makineler: Ev3-Series | Azure Synapse Analytics | Sanal makineler: DAv4-Series |
-> | Sanal makineler: F serisi | Batch | Sanal makineler: DCsv2-Series |
-> | Sanal makineler: FS-Series | Cloud Services: a serisi | Sanal makineler: EASv4-Series |
-> | Sanal makineler: örnek düzeyi IP 'Leri | Bilişsel Hizmetler | Sanal makineler: EAv4-Series |
-> | Sanal makineler: Ayrılmış IP | Bilişsel hizmetler: Görüntü İşleme | Sanal makineler: G serisi |
-> | Sanal Ağ | Bilişsel hizmetler: Content Moderator | Sanal makineler: GS-Series |
-> | VPN Gateway | Bilişsel hizmetler: yüz | Sanal makineler: HBv1-Series |
-> |  | Bilişsel hizmetler: form tanıyıcı | Sanal makineler: HBv2-Series |
-> |  | Bilişsel hizmetler: Language Understanding | Sanal makineler: HCv1-Series |
-> |  | Bilişsel hizmetler: Soru-Cevap Oluşturma | Sanal makineler: H serisi |
-> |  | Bilişsel hizmetler: konuşma Hizmetleri | Sanal makineler: LS-Series |
-> |  | Container Instances | Sanal makineler: LSv2-Series |
-> |  | Container Registry | Sanal makineler: Mv2-Series |
-> |  | Data Factory | Sanal makineler: NC-Series |
-> |  | Event Grid | Sanal makineler: NCv2-Series |
-> |  | HDInsight | Sanal makineler: NCv3-Series |
-> |  | Logic Apps | Sanal makineler: NDs-Series |
-> |  | Media Services | Sanal makineler: NDv2-Series |
-> |  | Ağ İzleyicisi | Sanal makineler: NV-Series |
-> |  | Notification Hubs | Sanal makineler: NVv3-Series |
-> |  | Power BI Embedded | Sanal makineler: NVv4-Series |
-> |  | Premium blob depolaması | Sanal makineler: Azure üzerinde SAP HANA Büyük Örnekleri |
-> |  | Premium dosya depolaması | Visual Studio App Center |
-> |  | Depolama alanı: Arşiv Depolama |  |
-> |  | Ultra Disk Depolama |  |
-> |  | Sanal makineler: Ddsv4-Series |  |
-> |  | Sanal makineler: Ddv4-Series |  |
-> |  | Sanal makineler: Dsv4-Series |  |
-> |  | Sanal makineler: Dv4-Series |  |
-> |  | Sanal makineler: Edsv4-Series |  |
-> |  | Sanal makineler: Edv4-Series |  |
-> |  | Sanal makineler: Esv4-Series |  |
-> |  | Sanal makineler: Ev4-Series |  |
-> |  | Sanal makineler: Fsv2-Series |  |
-> |  | Sanal makineler: a serisi |  |
-> |  | Sanal WAN |  |
+> | Temel                          | Temel                                        | Özelleştirilmiş                                          |
+> |---------------------------------------|---------------------------------------------------|------------------------------------------------------|
+> | Depolama Hesapları                      | API Management                                    | FHIR için Azure API'si                                   |
+> | Application Gateway                   | Uygulama Yapılandırması                                 | Azure Analysis Services                              |
+> | Azure Backup                          | App Service                                       | Azure bilişsel hizmetler: anomali algılayıcısı           |
+> | Azure Cosmos DB                       | Otomasyon                                        | Azure bilişsel hizmetler: Özel Görüntü İşleme              |
+> | Azure Data Lake Storage Gen2          | Azure Active Directory Domain Services            | Azure bilişsel hizmetler: form tanıyıcı            |
+> | Azure ExpressRoute                    | Azure Bastion                                     | Azure bilişsel hizmetler: kişiselleştirici               |
+> | Azure Genel IP                       | Redis için Azure Önbelleği                             | Azure bilişsel hizmetler: Soru-Cevap Oluşturma                  |
+> | Azure SQL Veritabanı                    | Azure Bilişsel Arama                            | MariaDB için Azure Veritabanı                           |
+> | Azure SQL: yönetilen örnek          | Azure Bilişsel Hizmetler                          | Azure Veritabanı Geçiş Hizmeti                     |
+> | Cloud Services                        | Azure Bilişsel Hizmetler: Görüntü İşleme         | Azure Ayrılmış HSM                                  |
+> | Cloud Services: Av2-Series            | Azure bilişsel hizmetler: Content Moderator       | Azure Digital Twins                                  |
+> | Cloud Services: Dv2-Series            | Azure bilişsel hizmetler: yüz                    | Azure sistem durumu bot                                     |
+> | Cloud Services: Dv3-Series            | Azure bilişsel hizmetler: modern okuyucu        | Azure HPC Önbelleği                                      |
+> | Cloud Services: Ev3-Series            | Azure bilişsel hizmetler: Language Understanding  | Azure Lab Services                                   |
+> | Cloud Services: örnek düzeyi IP 'Leri    | Azure bilişsel hizmetler: konuşma Hizmetleri         | Azure NetApp Files                                   |
+> | Cloud Services: Ayrılmış IP           | Azure Bilişsel Hizmetler: Metin Analizi          | Azure SignalR Hizmeti                                |
+> | Disk Depolama                          | Azure bilişsel hizmetler: çevirmen              | Azure yay bulut hizmeti                           |
+> | Event Hubs                            | Azure Veri Gezgini                               | Azure Zaman Serisi Görüşleri                           |
+> | Key Vault                             | Azure Veri Paylaşımı                                  | Azure VMware Çözümü                                |
+> | Yük dengeleyici                         | MySQL için Azure Veritabanı                          | CloudSimple tarafından sunulan Azure VMware Çözümü                 |
+> | Service Bus                           | PostgreSQL için Azure Veritabanı                     | Cloud Services: H serisi                             |
+> | Service Fabric                        | Azure Databricks                                  | Veri Kataloğu                                         |
+> | Depolama: sık/seyrek erişimli BLOB depolama katmanları  | Azure DDoS Koruması                             | Data Lake Analytics                                  |
+> | Depolama: yönetilen diskler                | Azure DevTest Labs                                | Azure Machine Learning Studio (klasik)              |
+> | Sanal Makine Ölçek Kümeleri            | Azure Güvenlik Duvarı                                    | Spatial Anchors                                      |
+> | Sanal Makineler                      | Azure Güvenlik Duvarı Yöneticisi                            | Depolama alanı: Arşiv Depolama                             |
+> | Sanal makineler: Av2-Series          | Azure İşlevleri                                   | StorSimple                                           |
+> | Sanal makineler: Bs-Series           | Azure IoT Hub                                     | Ultra Disk Depolama                                   |
+> | Sanal makineler: DSv2-Series         | Azure Kubernetes Service (AKS)                    | Video Indexer                                        |
+> | Sanal makineler: DSv3-Series         | Azure Machine Learning                            | Sanal makineler: DASv4-Series                       |
+> | Sanal makineler: Dv2-Series          | Azure Izleyici: Application Insights               | Sanal makineler: DAv4-Series                        |
+> | Sanal makineler: Dv3-Series          | Azure Izleyici: Log Analytics                      | Sanal makineler: DCsv2-Series                       |
+> | Sanal makineler: ESv3-Series         | Azure Özel Bağlantı                                | Sanal makineler: EASv4-Series                       |
+> | Sanal makineler: Ev3-Series          | Azure Red Hat OpenShift                           | Sanal makineler: EAv4-Series                        |
+> | Sanal makineler: örnek düzeyi IP 'Leri  | Azure Site Recovery                               | Sanal makineler: HBv1-Series                        |
+> | Sanal makineler: Ayrılmış IP         | Azure Stream Analytics                            | Sanal makineler: HBv2-Series                        |
+> | Sanal Ağ                       | Azure Synapse Analytics                           | Sanal makineler: HCv1-Series                        |
+> | VPN Gateway                           | Batch                                             | Sanal makineler: H serisi                           |
+> |                                       | Cloud Services: a serisi                          | Sanal makineler: LSv2-Series                        |
+> |                                       | Container Instances                               | Sanal makineler: Mv2-Series                         |
+> |                                       | Container Registry                                | Sanal makineler: NCv3-Series                        |
+> |                                       | Data Factory                                      | Sanal makineler: NDv2-Series                        |
+> |                                       | Event Grid                                        | Sanal makineler: NVv3-Series                        |
+> |                                       | HDInsight                                         | Sanal makineler: NVv4-Series                        |> 
+> |                                       | Logic Apps                                        | Sanal makineler: Azure üzerinde SAP HANA Büyük Örnekleri  |
+> |                                       | Media Services                                    |                                                      |
+> |                                       | Ağ İzleyicisi                                   |                                                      |
+> |                                       | Notification Hubs                                 |                                                      |
+> |                                       | Premium blob depolaması                              |                                                      |
+> |                                       | Premium dosya depolaması                             |                                                      |
+> |                                       | Sanal makineler: Ddsv4-Series                    |                                                      |
+> |                                       | Sanal makineler: Ddv4-Series                     |                                                      |
+> |                                       | Sanal makineler: Dsv4-Series                     |                                                      |
+> |                                       | Sanal makineler: Dv4-Series                      |                                                      |
+> |                                       | Sanal makineler: Edsv4-Series                    |                                                      |
+> |                                       | Sanal makineler: Edv4-Series                     |                                                      |
+> |                                       | Sanal makineler: Esv4-Series                     |                                                      |
+> |                                       | Sanal makineler: Ev4-Series                      |                                                      |
+> |                                       | Sanal makineler: Fsv2-Series                     |                                                      |
+> |                                       | Sanal makineler: a serisi                        |                                                      |
+> |                                       | Sanal WAN                                       |                                                      |
 
-###  <a name="services-resiliency"></a>Hizmet dayanıklılığı
-
-Tüm Azure Yönetim Hizmetleri bölge düzeyindeki hatalardan dayanıklı olacak şekilde tasarlanmıştır. Başarısızlık kapsamında, bir bölgedeki bir veya daha fazla kullanılabilirlik bölgesi hatası, tüm bölge arızasına kıyasla daha küçük bir hata Radius içermelidir. Azure, bölgedeki veya başka bir Azure bölgesindeki yönetim hizmetlerinden oluşan bölge düzeyindeki bir hatadan kurtuya ait olabilir. Azure, bir bölgedeki Kullanılabilirlik Alanları arasında dağıtılan müşteri kaynaklarını etkileyen tüm sorunları engellemek için bir bölge içinde tek seferde kritik bakım gerçekleştirir.
-
-### <a name="pricing-for-vms-in-availability-zones"></a>Kullanılabilirlik Alanları VM 'Leri için fiyatlandırma
-
-Bir kullanılabilirlik bölgesinde dağıtılan sanal makineler için ek ücret yoktur. % 99,99 VM çalışma süresi SLA 'Sı, iki veya daha fazla VM bir Azure bölgesi içinde iki veya daha fazla Kullanılabilirlik Alanları dağıtıldığında sunulur. Ek kullanılabilirlik alanı VM 'leri-VM veri aktarımı ücretleri olacaktır. Daha fazla bilgi için [bant genişliği fiyatlandırma](https://azure.microsoft.com/pricing/details/bandwidth/) sayfasını gözden geçirin.
-
-### <a name="get-started-with-availability-zones"></a>Kullanılabilirlik Alanları kullanmaya başlayın
-
-- [Sanal makine oluşturma](../virtual-machines/windows/create-portal-availability-zone.md)
-- [PowerShell kullanarak yönetilen disk ekleme](../virtual-machines/windows/attach-disk-ps.md#add-an-empty-data-disk-to-a-virtual-machine)
-- [Bölge yedekli sanal makine ölçek kümesi oluşturma](../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md)
-- [Bölgesel olarak yedekli bir ön uç ile bir Standart Load Balancer kullanarak VM 'lerde Yük Dengeleme](../load-balancer/quickstart-load-balancer-standard-public-cli.md)
-- [Bir bölge içindeki VM 'leri, bölgesel ön ucu ile standart Load Balancer kullanarak yük dengeleme](../load-balancer/quickstart-load-balancer-standard-public-cli.md)
-- [Alanlar arası yedekli depolama](../storage/common/storage-redundancy.md)
-- [SQL veritabanı genel amaçlı katmanı](../azure-sql/database/high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)
-- [Event Hubs coğrafi olağanüstü durum kurtarma](../event-hubs/event-hubs-geo-dr.md#availability-zones)
-- [Service Bus coğrafi olağanüstü durum kurtarma](../service-bus-messaging/service-bus-geo-dr.md#availability-zones)
-- [Alanlar arası yedekli sanal ağ geçidi oluşturma](../vpn-gateway/create-zone-redundant-vnet-gateway.md)
-- [Azure Cosmos DB için bölge yedekli bölgesi ekleme](../cosmos-db/high-availability.md#availability-zone-support)
-- [Redsıs için Azure önbelleği Başlarken Kullanılabilirlik Alanları](https://aka.ms/redis/az/getstarted)
-- [Azure Active Directory Domain Services örneği oluşturma](../active-directory-domain-services/tutorial-create-instance.md)
-- [Kullanılabilirlik Alanları kullanan bir Azure Kubernetes hizmeti (AKS) kümesi oluşturma](../aks/availability-zones.md)
-- [Azure Container Registry bölgede yedekliliği etkinleştir](../container-registry/zone-redundancy.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

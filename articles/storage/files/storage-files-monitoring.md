@@ -10,12 +10,12 @@ ms.date: 10/26/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring, devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 2af4f5467cb0f604f16d1faf841618a14d292806
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: cc1e4bf44827f82b3ca592e41fc3e6640f36e1bb
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97585743"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98875153"
 ---
 # <a name="monitoring-azure-files"></a>Azure dosyalarını izleme
 
@@ -71,7 +71,7 @@ Genel rehberlik için bkz. [Azure 'da platform günlüklerini ve ölçümlerini 
 
 ### <a name="azure-portal"></a>[Azure portalı](#tab/azure-portal)
 
-1. Azure portalında oturum açın.
+1. Azure Portal’da oturum açın.
 
 2. Depolama hesabınıza gidin.
 
@@ -677,6 +677,6 @@ Aşağıdaki tabloda, izlemek için bazı örnek senaryolar ve uyarı için kull
 - [Azure Izleyici ile Azure kaynaklarını izleme](../../azure-monitor/insights/monitor-azure-resource.md)
 - [Azure depolama ölçümleri geçişi](../common/storage-metrics-migration.md)
 - [Azure Dosyalar dağıtımını planlama](./storage-files-planning.md)
-- [Azure Dosyaları’nı dağıtma](./storage-files-deployment-guide.md)
+- [Azure Dosyaları’nı dağıtma](./storage-how-to-create-file-share.md)
 - [Windows’ta Azure Dosyaları Sorunlarını Giderme](./storage-troubleshoot-windows-file-connection-problems.md)
 - [Linux’ta Azure Dosyaları Sorunlarını Giderme](./storage-troubleshoot-linux-file-connection-problems.md)

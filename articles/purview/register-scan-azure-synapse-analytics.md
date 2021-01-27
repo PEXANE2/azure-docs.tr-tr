@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 10/22/2020
-ms.openlocfilehash: 3ba43b83166b5548dee4ea4e52c7411db48d23f5
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.openlocfilehash: 62ca32ab4e348e1488fbb87672e582436b91d05d
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98567266"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98875018"
 ---
 # <a name="register-and-scan-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'i kaydetme ve tarama
 
@@ -26,7 +26,7 @@ Azure SYNAPSE Analytics (eski adıyla SQL DW), meta verileri ve şemayı yakalam
 
 Azure purview, Azure SYNAPSE Analytics 'te [görünümlerin](/sql/relational-databases/views/views?view=azure-sqldw-latest&preserve-view=true) taranmasını desteklemez
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Veri kaynaklarını kaydetmeden önce bir Azure purview hesabı oluşturun. Bir purview hesabı oluşturma hakkında daha fazla bilgi için bkz. [hızlı başlangıç: Azure purview hesabı oluşturma](create-catalog-portal.md).
 - Azure purview veri kaynağı Yöneticisi olmanız gerekir
@@ -45,7 +45,7 @@ Azure SYNAPSE Analytics için kimlik doğrulaması kurmanın üç yolu vardır:
 
 ### <a name="managed-identity-recommended"></a>Yönetilen kimlik (önerilen) 
    
-Takip ettiğiniz hesap, sizin oluşturduğunuz sırada önemli bir değer olan kendi yönetilen kimliği vardır. Azure AD [uygulamaları kullanarak Azure AD kullanıcıları oluşturma](/azure/azure-sql/database/authentication-aad-service-principal-tutorial)hakkında önkoşulları ve öğreticiyi Izleyerek Azure SYNAPSE Analytics 'te (eskı ADıYLA SQL DW) BIR Azure AD kullanıcısı oluşturmanız gerekir.
+Takip ettiğiniz hesap, sizin oluşturduğunuz sırada önemli bir değer olan kendi yönetilen kimliği vardır. Azure AD [uygulamaları kullanarak Azure AD kullanıcıları oluşturma](../azure-sql/database/authentication-aad-service-principal-tutorial.md)hakkında önkoşulları ve öğreticiyi Izleyerek Azure SYNAPSE Analytics 'te (eskı ADıYLA SQL DW) BIR Azure AD kullanıcısı oluşturmanız gerekir.
 
 Kullanıcı oluşturmak ve izin vermek için örnek SQL söz dizimi:
 
@@ -87,7 +87,7 @@ Hizmet sorumlusunun uygulama KIMLIĞI ve gizli anahtarı almak için gereklidir:
 
 #### <a name="granting-the-service-principal-access-to-your-azure-synapse-analytics-formerly-sql-dw"></a>Azure SYNAPSE Analytics 'e hizmet sorumlusu erişimi verme (eski adıyla SQL DW)
 
-Ayrıca Azure AD [uygulamalarını kullanarak Azure AD kullanıcıları oluşturma](https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-service-principal-tutorial)hakkında önkoşulları ve öğreticiyi Izleyerek Azure SYNAPSE Analytics 'Te BIR Azure AD kullanıcısı oluşturmanız gerekir. Kullanıcı oluşturmak ve izin vermek için örnek SQL söz dizimi:
+Ayrıca Azure AD [uygulamalarını kullanarak Azure AD kullanıcıları oluşturma](../azure-sql/database/authentication-aad-service-principal-tutorial.md)hakkında önkoşulları ve öğreticiyi Izleyerek Azure SYNAPSE Analytics 'Te BIR Azure AD kullanıcısı oluşturmanız gerekir. Kullanıcı oluşturmak ve izin vermek için örnek SQL söz dizimi:
 
 ```sql
 CREATE USER [ServicePrincipalName] FROM EXTERNAL PROVIDER
@@ -140,4 +140,3 @@ Yeni bir Azure SYNAPSE Analytics sunucusunu veri kataloğunuza kaydetmek için a
 
 - [Azure purview veri kataloğuna gözatın](how-to-browse-catalog.md)
 - [Azure purview Veri Kataloğu 'Nda arama](how-to-search-catalog.md)
-

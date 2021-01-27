@@ -8,12 +8,12 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 37753265afa7e76e87dbcdc5893595bea66798f4
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: 4e9c84efe7b96cf61a69c54e3f5ecbc469ac7d8d
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98610259"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98874151"
 ---
 # <a name="prepare-an-application-for-deployment-in-azure-spring-cloud"></a>Azure Spring Cloud 'da bir uygulamayı dağıtıma hazırlama
 
@@ -146,12 +146,12 @@ Azure yay bulutu, Spring Boot sürüm 2,1 veya sürüm 2,2 ' nin yalnızca Sprin
 
 Spring Boot sürümü | Yay bulutu sürümü
 ---|---
-2.2 | Hoxton. SR8
+2,2 | Hoxton. SR8
 2.3 | Hoxton. SR8
 2.4.1 + | 2020.0.0
 
 > [!NOTE]
-> Uygulama ve Eureka arasında TLS kimlik doğrulamasında Spring Boot 2.4.0 ile ilgili bir sorun belirledik, lütfen 2.4.1 veya üstünü kullanın. 2.4.0 kullanarak insist geçici çözüm için lütfen [SSS bölümüne](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-faq?pivots=programming-language-java#development) bakın.
+> Uygulama ve Eureka arasında TLS kimlik doğrulamasında Spring Boot 2.4.0 ile ilgili bir sorun belirledik, lütfen 2.4.1 veya üstünü kullanın. 2.4.0 kullanarak insist geçici çözüm için lütfen [SSS bölümüne](./spring-cloud-faq.md?pivots=programming-language-java#development) bakın.
 
 ### <a name="dependencies-for-spring-boot-version-2223"></a>Spring Boot sürüm 2.2/2.3 için bağımlılıklar
 

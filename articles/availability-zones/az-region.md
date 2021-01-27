@@ -7,20 +7,18 @@ ms.topic: article
 ms.date: 12/17/2020
 ms.author: cynthn
 ms.custom: fasttrack-edit, mvc, references_regions
-ms.openlocfilehash: c63ea4f9cdb961ca492d5dcf22a89627864236cd
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 2a2e4ac57eec866d9857f564d6c76ad4a775d223
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98733209"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98874617"
 ---
 # <a name="azure-services-that-support-availability-zones"></a>Kullanılabilirlik Alanlarını destekleyen Azure Hizmetleri
 
-Kullanılabilirlik Alanları, uygulamalarınızı ve verilerinizi veri merkezi hatalarından koruyan yüksek kullanılabilirliğe sahip bir tekliftir. Kullanılabilirlik Alanları destekleyen mevcut ve yaklaşan bölgelerin listesi için bkz. [Azure 'Da bölgeler ve kullanılabilirlik alanları](az-overview.md).  
+Microsoft Azure küresel altyapı, müşterilerine en yüksek düzeyde artıklık ve dayanıklılık sağlamak için her katmanda tasarlanır ve oluşturulur. Azure altyapısı, bir başarısızlık yarıçapını sınırlayan ve bu nedenle müşteri uygulamalarına ve verilerine potansiyel etkiyi sınırlayan coğrafi bölgeler, bölgeler ve Kullanılabilirlik Alanları oluşur. Azure Kullanılabilirlik Alanları yapısı, veri merkezi hatalarıyla korunmaya yönelik bir yazılım ve ağ çözümü sağlamak ve müşterilerimiz için yüksek kullanılabilirlik (HA) sağlamak üzere geliştirilmiştir.
 
-Bu bölümde Kullanılabilirlik Alanları destekleyen Azure hizmetleri listelenmektedir. 
-
-Her bölgede kullanılabilir olan hizmetler, kullanılabilirlik için yaklaşan yol haritası ile birlikte [bölge tarafından kullanılabilen ürünlerde](https://azure.microsoft.com/global-infrastructure/services/)bulunabilir.
+Kullanılabilirlik Alanları, Azure bölgesi içinde fiziksel olarak benzersiz konumlardır. Her bölge, bağımsız güç, soğutma ve ağ ile bir veya daha fazla veri merkezinden oluşur. Bir bölgedeki kullanılabilirlik alanları fiziksel ayrımı, büyük ölçekli taşımalar, büyük fırtınalarını 'ler ve süper fırtınalarını gibi bölge hatalarından ve site erişimini, güvenli akışını, genişletilmiş yardımcı programları ve kaynakların kullanılabilirliğini kesintiye uğratabilecek diğer olayları kısıtlar. Kullanılabilirlik Alanları ve ilişkili veri merkezleri, bir bölgenin güvenliği tehlikeye girerse, hizmetler, kapasite ve kullanılabilirlik bölgesindeki diğer Kullanılabilirlik Alanları tarafından desteklenir.
 
 Tüm Azure Yönetim Hizmetleri bölge düzeyindeki hatalardan dayanıklı olacak şekilde tasarlanmıştır. Başarısızlık kapsamında, bir bölgedeki bir veya daha fazla kullanılabilirlik bölgesi hatası, tüm bölge arızasına kıyasla daha küçük bir hata Radius içermelidir. Azure, bir bölgedeki yönetim hizmetlerinin bölge düzeyindeki başarısızlığından kurtudan kurtarır. Azure, bir bölgedeki Kullanılabilirlik Alanları arasında dağıtılan müşteri kaynaklarını etkileyen tüm sorunları engellemek için bir bölge içinde tek seferde kritik bakım gerçekleştirir.
 
@@ -34,165 +32,143 @@ Kullanılabilirlik alanları destekleyen Azure hizmetleri üç kategoride yer al
 
 - Bölgesel olarak **yedekli hizmetler** – Azure platformu, kaynakları ve verileri bölgeler arasında çoğaltır.  Azure, bölge içindeki örnekleri otomatik olarak çoğalttığından ve dağıttığından yüksek kullanılabilirlik teslimini yönetir.  ZRS, örneğin, bir bölge hatası verilerin HA 'sini etkilemeyecek şekilde verileri üç bölge arasında çoğaltır. 
 
-- **Bölgesel olmayan hizmetler** – belirli bir Azure bölgesine bağımlılığı olmayan, bölge genelinde kesintiler ve bölge genelinde kesintiler için esnek hale getiren hizmetler.
+- **Bölgesel olmayan hizmetler** – hizmetler Azure coğrafi bölgeler tarafından her zaman kullanılabilir ve bölge genelinde kesintiler ve bölge genelinde kesintilere karşı dayanıklıdır. 
 
 
 Azure 'da kapsamlı iş sürekliliği elde etmek için Azure bölge çiftleriyle Kullanılabilirlik Alanları birleşimini kullanarak uygulama mimarinizi geliştirin. Uygulamalarınızı ve verilerinizi Azure bölgesindeki Kullanılabilirlik Alanları kullanarak yüksek kullanılabilirlik ve olağanüstü durum kurtarma koruması için Azure bölgelerinde zaman uyumsuz olarak çoğaltma yapabilirsiniz. Daha fazla bilgi edinmek için [kullanılabilirlik alanları kullanarak yüksek kullanılabilirlik için çözüm oluşturma](/azure/architecture/high-availability/building-solutions-for-high-availability)makalesini okuyun. 
 
+## <a name="azure-services-supporting-availability-zones"></a>Kullanılabilirlik Alanları destekleyen Azure hizmetleri
 
-### <a name="azure-services-supporting-availability-zones"></a>Kullanılabilirlik Alanları destekleyen Azure hizmetleri
+ - Eski nesil sanal makineler listelenmez. Daha fazla bilgi için bkz. [önceki nesil sanal makine boyutları](../virtual-machines/sizes-previous-gen.md).
+ - [Azure 'Daki bölgelerde ve kullanılabilirlik alanları](az-overview.md)bölümünde belirtildiği gibi, bazı hizmetler bölgesel değildir. Bu hizmetlerin belirli bir Azure bölgesine bağımlılığı yoktur, bu nedenle bölge genelinde kesintiler ve bölge genelinde kesintiler vardır.  Bölgesel olmayan hizmetlerin listesi, [bölgeye göre kullanılabilir ürünler](https://azure.microsoft.com/global-infrastructure/services/)' de bulunabilir.
+
+
+## <a name="azure-regions-with-availability-zones"></a>Kullanılabilirlik Alanları olan Azure bölgeleri
+
+
+| Kuzey ve Güney Amerika           | Avrupa         | Almanya              | Afrika              | Asya Pasifik   |
+|--------------------|----------------|----------------------|---------------------|----------------|
+|                    |                |                      |                     |                |
+| Orta Kanada     | Orta Fransa | Almanya Orta Batı | Güney Afrika Kuzey * | Doğu Japonya     |
+| Central US         | Kuzey Avrupa   |                      |                     | Güneydoğu Asya |
+| Doğu ABD            | Güney Birleşik Krallık       |                      |                     | Doğu Avustralya |
+| Doğu ABD 2          | West Europe    |                      |                     |                |
+| Orta Güney ABD |                |                      |                     |                |
+| US Gov Virginia * |                |                      |                     |                |
+| Batı ABD 2        |                |                      |                     |                |
+
+
+Bu bölgelerde Kullanılabilirlik Alanları ve kullanılabilir Hizmetler desteği hakkında daha fazla bilgi edinmek için Microsoft Sales veya müşteri temsilcinizle iletişime geçin. Kullanılabilirlik Alanları destekleyecek yaklaşan bölgeler için bkz. [Azure geographiler](https://azure.microsoft.com/en-us/global-infrastructure/geographies/).
+
+
+## <a name="azure-services-supporting-availability-zones"></a>Kullanılabilirlik Alanları destekleyen Azure hizmetleri
 
 - Daha eski nesil sanal makineler aşağıda listelenmez. Daha fazla bilgi için bkz. [önceki nesil sanal makine boyutları](../virtual-machines/sizes-previous-gen.md).
 
 - Bazı hizmetler bölgesel değildir; daha fazla bilgi için bkz. [Azure 'Da bölgeler ve kullanılabilirlik alanları](az-overview.md) . Bu hizmetlerin, belirli bir Azure bölgesine bağımlılığı yoktur, bu da bölge genelinde kesintiler ve bölge genelinde kesintiler için esnek hale getirir.  Bölgesel olmayan hizmetlerin listesi, [bölgeye göre kullanılabilir ürünler](https://azure.microsoft.com/global-infrastructure/services/)' de bulunabilir.
 
 
+### <a name="zone-resilient-services"></a>Bölge dayanıklı Hizmetleri 
 
-## <a name="americas"></a>Kuzey ve Güney Amerika
+: globe_with_meridians: bölgesel olmayan hizmetler-hizmetler Azure coğrafi bölgeler tarafından her zaman kullanılabilir ve bölge genelinde kesintiler ve bölge genelinde kesintiler sağlar.
 
-| **Ürünler** | **Central US** | **Doğu ABD** | **Doğu ABD 2** | **Batı ABD 2** | **Orta Kanada** |
-|--|--|--|--|--|--|
-| **İşlem** |  |  |  |  |  |
-| [App Service ortamları (ıLB)](../app-service/environment/zone-redundancy.md#how-to-deploy-an-app-service-environment-in-an-availability-zone) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Service Fabric](../service-fabric/service-fabric-cross-availability-zones.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Sanal Makine Ölçek Kümeleri](../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Sanal Makineler](https://azure.microsoft.com/services/virtual-machines/) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | 
-| **Kapsayıcılar** |  |  |  |
-| [Azure Kubernetes Service (AKS)](../aks/availability-zones.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Container Registry](../container-registry/zone-redundancy.md) |  | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  | 
-| **Depolama** |  |  |  |  |  |
-| [Azure Data Lake Storage 2. Nesil](../storage/common/storage-account-create.md?tabs=azure-portal)  | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Premium dosya depolaması](../storage/files/storage-files-planning.md) |  | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
-| [Blob Depolama](../storage/blobs/storage-blobs-introduction.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Yönetilen Diskler](https://azure.microsoft.com/en-gb/updates/azure-managed-snapshots-images-ga/) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| **Ağ** |  |  |  |  |  |
-| [Application Gateway v2](../application-gateway/application-gateway-autoscaling-zone-redundant.md)  | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Azure Express Route](../expressroute/designing-for-high-availability-with-expressroute.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Azure Güvenlik Duvarı](../firewall/deploy-availability-zone-powershell.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Standart IP adresi](../virtual-network/public-ip-addresses.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Load Balancer](../load-balancer/load-balancer-standard-availability-zones.md#concepts) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Sanal ağ](../vpn-gateway/create-zone-redundant-vnet-gateway.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Sanal ağ NAT](../virtual-network/nat-gateway-resource.md#availability-zones) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Sanal WAN](../virtual-wan/virtual-wan-faq.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [VPN Gateway](../vpn-gateway/about-zone-redundant-vnet-gateways.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| **Veritabanları** |  |  |  |  |  |
-| [Redis için Azure Önbelleği](../azure-cache-for-redis/cache-overview.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Azure Cosmos DB](../cosmos-db/high-availability.md#availability-zone-support) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Azure Veri Gezgini](/azure/data-explorer/create-cluster-database-portal) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [MySQL için Azure veritabanı-esnek sunucu](../mysql/flexible-server/concepts-high-availability.md) | sayı | sayı | :heavy_check_mark: | :heavy_check_mark: | sayı |
-| [PostgreSQL için Azure veritabanı-esnek sunucu](../postgresql/flexible-server/overview.md) | sayı | sayı | :heavy_check_mark: | :heavy_check_mark: | sayı |
-| [Azure SQL veritabanı (Genel Amaçlı katmanı)](../azure-sql/database/high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview) | sayı | : heavy_check_mark: (Önizleme) | : heavy_check_mark: (Önizleme) | : heavy_check_mark: (Önizleme) | sayı |
-| [Azure SQL veritabanı (Premium & İş Açısından Kritik katmanları)](../azure-sql/database/high-availability-sla.md#premium-and-business-critical-service-tier-zone-redundant-availability) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| **Analiz** |  |  |  |  |  |
-| [Event Hubs](../event-hubs/index.yml) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| **Tümleştirme** |  |  |  |  |  |
-| [Event Grid](../event-grid/index.yml) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Service Bus](../service-fabric/service-fabric-cross-availability-zones.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| **Yönetim ve Idare** |  |  |  |  |  |
-| [Ağ İzleyicisi](../network-watcher/frequently-asked-questions.md) | sayı | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | sayı |
-| **Güvenlik** |  |  |  |  |  |
-| [Azure Active Directory Domain Services](../active-directory-domain-services/overview.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
+: large_blue_diamond: bölge genelinde kesintiler için esnek 
 
-## <a name="europe"></a>Avrupa
+**Temel hizmetler**
 
-| **Ürünler** | **Orta Fransa** | **Kuzey Avrupa** | **Güney Birleşik Krallık** | **West Europe** |
-|--|--|--|--|--|
-| **İşlem** |  |  |  |  |
-| [App Service ortamları (ıLB)](../app-service/environment/zone-redundancy.md#how-to-deploy-an-app-service-environment-in-an-availability-zone) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Azure Kubernetes Service (AKS)](../aks/availability-zones.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Service Fabric](../service-fabric/service-fabric-cross-availability-zones.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Sanal Makine Ölçek Kümeleri](../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Sanal Makineler](https://azure.microsoft.com/services/virtual-machines/) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| **Depolama** |  |  |  |  |
-| [Azure Data Lake Storage 2. Nesil](../storage/common/storage-account-create.md?tabs=azure-portal)  | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Premium dosya depolaması](../storage/files/storage-files-planning.md) |  | :heavy_check_mark: | :heavy_check_mark: |  |
-| [Blob Depolama](../storage/blobs/storage-blobs-introduction.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Yönetilen Diskler](https://azure.microsoft.com/en-gb/updates/azure-managed-snapshots-images-ga/) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| **Ağ** |  |  |  |  |
-| [Application Gateway v2](../application-gateway/application-gateway-autoscaling-zone-redundant.md)  | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Azure Express Route](../expressroute/designing-for-high-availability-with-expressroute.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Azure Güvenlik Duvarı](../firewall/deploy-availability-zone-powershell.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Standart IP adresi](../virtual-network/public-ip-addresses.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Load Balancer](../load-balancer/load-balancer-standard-availability-zones.md#concepts) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Sanal ağ](../vpn-gateway/create-zone-redundant-vnet-gateway.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Sanal ağ NAT](../virtual-network/nat-gateway-resource.md#availability-zones) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Sanal WAN](../virtual-wan/virtual-wan-faq.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [VPN Gateway](../vpn-gateway/about-zone-redundant-vnet-gateways.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| **Veritabanları** |  |  |  |  |
-| [Redis için Azure Önbelleği](../azure-cache-for-redis/cache-overview.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Azure Cosmos DB](../cosmos-db/high-availability.md#availability-zone-support) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Azure Veri Gezgini](/azure/data-explorer/create-cluster-database-portal) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [MySQL için Azure veritabanı-esnek sunucu](../mysql/flexible-server/concepts-high-availability.md) | sayı | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [PostgreSQL için Azure veritabanı-esnek sunucu](../postgresql/flexible-server/overview.md) | sayı | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Azure SQL veritabanı (Genel Amaçlı katmanı)](../azure-sql/database/high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview) | : heavy_check_mark: (Önizleme) | : heavy_check_mark: (Önizleme) | sayı | : heavy_check_mark: (Önizleme) |
-| [Azure SQL veritabanı (Premium & İş Açısından Kritik katmanları)](../azure-sql/database/high-availability-sla.md#premium-and-business-critical-service-tier-zone-redundant-availability) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| **Analiz** |  |  |  |  |
-| [Event Hubs](../event-hubs/index.yml) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| **Tümleştirme** |  |  |  |  |
-| [Event Grid](../event-grid/index.yml) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Service Bus](../service-fabric/service-fabric-cross-availability-zones.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| **Yönetim ve Idare** |  |  |  |  |
-| [Ağ İzleyicisi](../network-watcher/frequently-asked-questions.md) | :heavy_check_mark: | :heavy_check_mark: | sayı | :heavy_check_mark: |
-| **Güvenlik** |  |  |  |  |
-| [Azure Active Directory Domain Services](../active-directory-domain-services/overview.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
-
-## <a name="asia-pacific"></a>Asya Pasifik
+|     Ürünler                                                    | Dayanıklılık             |
+|-----------------------------------------------------------------|:----------------------------:|
+|     Depolama hesabı                                           | : large_blue_diamond:  |
+|     Application Gateway (v2)                                  | : large_blue_diamond:  |
+|     Azure Backup                                                | : large_blue_diamond:  |
+|     Azure Cosmos DB                                           | : large_blue_diamond:  |
+|     Azure Data Lake Storage Gen 2                             | : large_blue_diamond:  |
+|     Azure Express Route                                       | : large_blue_diamond:  |
+|     Azure genel IP                                           | : large_blue_diamond:  |
+|     Azure SQL veritabanı (Genel Amaçlı katmanı)                 | : large_blue_diamond:  |
+|     Azure SQL veritabanı (Premium & İş Açısından Kritik katmanı)     | : large_blue_diamond:  |
+|     Disk Depolama                                                | : large_blue_diamond:  |
+|     Event Hubs                                                  | : large_blue_diamond:  |
+|     Key Vault                                                   | : large_blue_diamond:  |
+|     Load Balancer                                               | : large_blue_diamond:  |
+|     Service Bus                                                 | : large_blue_diamond:  |
+|     Service Fabric                                            | : large_blue_diamond:  |
+|     Depolama: sık/seyrek erişimli BLOB depolama katmanları                      | : large_blue_diamond:  |
+|     Depolama: yönetilen diskler                                    | : large_blue_diamond:  |
+|     Sanal Makine Ölçek Kümeleri                               | : large_blue_diamond:  |
+|     Sanal makineler                                          | : large_blue_diamond:  |
+|     Sanal makineler: Av2-Series                              | : large_blue_diamond:  |
+|     Sanal makineler: Bs-Series                               | : large_blue_diamond:  |
+|     Sanal makineler: DSv2-Series                             | : large_blue_diamond:  |
+|     Sanal makineler: DSv3-Series                             | : large_blue_diamond:  |
+|     Sanal makineler: Dv2-Series                              | : large_blue_diamond:  |
+|     Sanal makineler: Dv3-Series                              | : large_blue_diamond:  |
+|     Sanal makineler: ESv3-Series                             | : large_blue_diamond:  |
+|     Sanal makineler: Ev3-Series                              | : large_blue_diamond:  |
+|     Sanal ağ                                           | : large_blue_diamond:  |
+|     VPN Gateway                                                 | : large_blue_diamond:  |
 
 
+**Temel hizmetler**
 
-| **Ürünler** | **Doğu Japonya** | **Güneydoğu Asya** | **Doğu Avustralya** |
-|--|--|--|--|
-| **İşlem** |  |  |  |
-| [App Service ortamları (ıLB)](../app-service/environment/zone-redundancy.md#how-to-deploy-an-app-service-environment-in-an-availability-zone) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Azure Kubernetes Service (AKS)](../aks/availability-zones.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Service Fabric](../service-fabric/service-fabric-cross-availability-zones.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Sanal Makine Ölçek Kümeleri](../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Sanal Makineler](https://azure.microsoft.com/services/virtual-machines/) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| **Depolama** |  |  |  |
-| [Azure Data Lake Storage 2. Nesil](../storage/common/storage-account-create.md?tabs=azure-portal)  | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Premium dosya depolaması](../storage/files/storage-files-planning.md) |  | :heavy_check_mark: | :heavy_check_mark: |
-| [Blob Depolama](../storage/blobs/storage-blobs-introduction.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Yönetilen Diskler](https://azure.microsoft.com/en-gb/updates/azure-managed-snapshots-images-ga/) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| **Ağ** |  |  |  |
-| [Application Gateway v2](../application-gateway/application-gateway-autoscaling-zone-redundant.md)  | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Azure Express Route](../expressroute/designing-for-high-availability-with-expressroute.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Azure Güvenlik Duvarı](../firewall/deploy-availability-zone-powershell.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Standart IP adresi](../virtual-network/public-ip-addresses.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Load Balancer](../load-balancer/load-balancer-standard-availability-zones.md#concepts) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Sanal ağ](../vpn-gateway/create-zone-redundant-vnet-gateway.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Sanal ağ NAT](../virtual-network/nat-gateway-resource.md#availability-zones) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Sanal WAN](../virtual-wan/virtual-wan-faq.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [VPN Gateway](../vpn-gateway/about-zone-redundant-vnet-gateways.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| **Veritabanları** |  |  |  |
-| [Redis için Azure Önbelleği](../azure-cache-for-redis/cache-overview.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Azure Cosmos DB](../cosmos-db/high-availability.md#availability-zone-support) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Azure Veri Gezgini](/azure/data-explorer/create-cluster-database-portal) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [MySQL için Azure veritabanı-esnek sunucu](../mysql/flexible-server/concepts-high-availability.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [PostgreSQL için Azure veritabanı-esnek sunucu](../postgresql/flexible-server/overview.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Azure SQL veritabanı (Genel Amaçlı katmanı)](../azure-sql/database/high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview) | : heavy_check_mark: (Önizleme) | : heavy_check_mark: (Önizleme) | : heavy_check_mark: (Önizleme) |
-| [Azure SQL veritabanı (Premium & İş Açısından Kritik katmanları)](../azure-sql/database/high-availability-sla.md#premium-and-business-critical-service-tier-zone-redundant-availability) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| **Analiz** |  |  |  |
-| [Event Hubs](../event-hubs/index.yml) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| **Tümleştirme** |  |  |  |
-| [Event Grid](../event-grid/index.yml) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Service Bus](../service-fabric/service-fabric-cross-availability-zones.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| **Yönetim ve Idare** |  |  |  |
-| [Ağ İzleyicisi](../network-watcher/frequently-asked-questions.md) | :heavy_check_mark: | sayı | sayı |
-| **Güvenlik** |  |  |  |
-| [Azure Active Directory Domain Services](../active-directory-domain-services/overview.md) | :heavy_check_mark: | :heavy_check_mark: |  |
+| Ürünler                                        | Dayanıklılık |
+|-------------------------------------------------|:------------:|
+| App Service ortamları                        |      : large_blue_diamond:  |
+| Azure Active Directory Domain Services          |      : large_blue_diamond:  |
+| Azure Bastion                                   |      : large_blue_diamond:  |
+| Redis için Azure Önbelleği                           |      : large_blue_diamond:  |
+| Azure Bilişsel Hizmetler: Metin Analizi        |      : large_blue_diamond:  |
+| Azure Veri Gezgini                             |      : large_blue_diamond:  |
+| MySQL için Azure veritabanı – esnek sunucu      |      : large_blue_diamond:  |
+| PostgreSQL için Azure veritabanı – esnek sunucu |      : large_blue_diamond:  |
+| Azure DDoS Koruması                           |      : large_blue_diamond:  |
+| Azure Güvenlik Duvarı                                  |      : large_blue_diamond:  |
+| Azure Güvenlik Duvarı Yöneticisi                          |      : large_blue_diamond:  |
+| Azure Kubernetes Service (AKS)                  |      : large_blue_diamond:  |
+| Azure Özel Bağlantı                              |      : large_blue_diamond:  |
+| Azure Red Hat OpenShift                         |      : large_blue_diamond:  |
+| Azure Site Recovery                             |      : large_blue_diamond:  |
+| Container Registry                              |      : large_blue_diamond:  |
+| Event Grid                                      |      : large_blue_diamond:  |
+| Ağ İzleyicisi                                 |      : large_blue_diamond:  |
+| Power BI Embedded                               |      : large_blue_diamond:  |
+| Premium blob depolaması                            |      : large_blue_diamond:  |
+| Sanal makineler: Ddsv4-Series                  |      : large_blue_diamond:  |
+| Sanal makineler: Ddv4-Series                   |      : large_blue_diamond:  |
+| Sanal makineler: Dsv4-Series                   |      : large_blue_diamond:  |
+| Sanal makineler: Dv4-Series                    |      : large_blue_diamond:  |
+| Sanal makineler: Edsv4-Series                  |      : large_blue_diamond:  |
+| Sanal makineler: Edv4-Series                   |      : large_blue_diamond:  |
+| Sanal makineler: Esv4-Series                   |      : large_blue_diamond:  |
+| Sanal makineler: Ev4-Series                    |      : large_blue_diamond:  |
+| Sanal makineler: Fsv2-Series                   |      : large_blue_diamond:  |
+| Sanal makineler: a serisi                      |      : large_blue_diamond:  |
+| Sanal WAN                                     |      : large_blue_diamond:  |
 
 
-## <a name="upcoming-availability-zones"></a>Yaklaşan Kullanılabilirlik Alanları 
+**Bölgesel olmayan**
 
-Azure, aşağıdaki bölgelerde Kullanılabilirlik Alanları destek sunar:
-- US Gov Virginia
-- Güney Afrika - Kuzey
-- Orta Güney ABD
-- Almanya Orta Batı
-
-Kullanılabilirlik Alanları destekleyen mevcut ve yaklaşan bölgelerin listesi [burada](https://azure.microsoft.com/global-infrastructure/geographies/)bulunabilir.    
-
-Bu bölgelerde Kullanılabilirlik Alanları destek hakkında daha fazla bilgi edinmek için Microsoft Sales veya müşteri temsilcinizle iletişime geçin.
+|     Ürünler                                  |     Dayanıklılık    |
+|-----------------------------------------------|:-------------------:|
+|     Azure DNS                                 |     : globe_with_meridians:             |
+|     Azure Active Directory                  |     : globe_with_meridians:             |
+|     Azure Danışmanı                             |     : globe_with_meridians:             |
+|     Azure Bot Hizmetleri                        |     : globe_with_meridians:             |
+|     IoT için Azure Defender                  |     : globe_with_meridians:             |
+|     Azure Information Protection            |     : globe_with_meridians:             |
+|     Azure hafif kullanım                        |     : globe_with_meridians:             |
+|     Azure yönetilen uygulamalar              |     : globe_with_meridians:             |
+|     Azure Haritalar                                |     : globe_with_meridians:             |
+|     Azure İlkesi                              |     : globe_with_meridians:             |
+|     Azure Kaynak Grafiği                    |     : globe_with_meridians:             |
+|     Azure Stack                               |     : globe_with_meridians:             |
+|     Azure Stack uç                        |     : globe_with_meridians:             |
+|     Cloud Shell                               |     : globe_with_meridians:             |
+|     Microsoft Azure için Müşteri Kasası    |     : globe_with_meridians:             |
+|     Microsoft Azure eşleme hizmeti         |     : globe_with_meridians:             |
+|     Microsoft Azure portal                  |     : globe_with_meridians:             |
+|     Güvenlik Merkezi                         |     : globe_with_meridians:             |
+|     Traffic Manager                         |     : globe_with_meridians:             |
 
 
 ## <a name="pricing-for-vms-in-availability-zones"></a>Kullanılabilirlik Alanları VM 'Leri için fiyatlandırma
