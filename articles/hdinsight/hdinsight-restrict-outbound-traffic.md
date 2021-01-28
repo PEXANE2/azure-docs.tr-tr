@@ -1,19 +1,16 @@
 ---
 title: Giden ağ trafiği kısıtlamasını Yapılandırma-Azure HDInsight
 description: Azure HDInsight kümeleri için giden ağ trafiği kısıtlamasını yapılandırma hakkında bilgi edinin.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/17/2020
-ms.openlocfilehash: 4c703fc1ddac4af2e3cf8716764a21da7e870b19
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 79e3349f009f71c5cd387a7c7265ad4904f2a40d
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98048683"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98932128"
 ---
 # <a name="configure-outbound-network-traffic-for-azure-hdinsight-clusters-using-firewall"></a>Güvenlik duvarını kullanarak Azure HDInsight kümeleri için giden ağ trafiği yapılandırma
 
@@ -69,13 +66,13 @@ Kümenin önemli iletişimleri göndermesini ve almasını sağlayan bir uygulam
 
     **FQDN etiketleri bölümü**
 
-    | Ad | Kaynak adres | FQDN etiketi | Notlar |
+    | Name | Kaynak adres | FQDN etiketi | Notlar |
     | --- | --- | --- | --- |
     | Rule_1 | * | WindowsUpdate ve HDInsight | HDI Hizmetleri için gerekli |
 
     **Hedef FQDN bölümü**
 
-    | Ad | Kaynak adresler | Protokol:Bağlantı Noktası | Hedef FQDN 'ler | Notlar |
+    | Name | Kaynak adresler | Protokol:Bağlantı Noktası | Hedef FQDN 'ler | Notlar |
     | --- | --- | --- | --- | --- |
     | Rule_2 | * | https:443 | login.windows.net | Windows oturum açma etkinliğine izin verir |
     | Rule_3 | * | https:443 | login.microsoftonline.com | Windows oturum açma etkinliğine izin verir |
@@ -103,7 +100,7 @@ HDInsight kümenizi doğru şekilde yapılandırmak için ağ kuralları oluştu
 
     **Hizmet etiketleri bölümü**
 
-    | Ad | Protokol | Kaynak Adresler | Hizmet Etiketleri | Hedef bağlantı noktaları | Notlar |
+    | Name | Protokol | Kaynak Adresler | Hizmet Etiketleri | Hedef bağlantı noktaları | Notlar |
     | --- | --- | --- | --- | --- | --- |
     | Rule_5 | TCP | * | SQL | 1433 | HDInsight tarafından sunulan varsayılan SQL sunucularını kullanıyorsanız SQL için SQL trafiğini günlüğe kaydederek ve denetim altına alacak olan hizmet etiketleri bölümünde bir ağ kuralı yapılandırın. HDInsight alt ağında SQL Server için hizmet uç noktaları yapılandırmadığınız takdirde, güvenlik duvarını atlayacak olur. Ambarı, Oozie, Ranger ve Hive meta depolar için özel SQL Server kullanıyorsanız yalnızca kendi özel SQL sunucularınız için trafiğe izin vermeniz gerekir.|
     | Rule_6 | TCP | * | Azure İzleyici | * | seçim Otomatik ölçeklendirme özelliğini kullanmayı planlayan müşterilerin bu kuralı eklemesi gerekir. |

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/26/2020
 ms.author: kumud
-ms.openlocfilehash: 2cf28565818f6de4d52b57040a80c21d0e03a76c
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 61076b49d396c83a67635e46eb4f1b928b3f9e1d
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98218543"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98933975"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure Sanal Ağ hakkında sık sorulan sorular (SSS)
 
@@ -239,7 +239,7 @@ Evet. [Azure Resource Manager](/rest/api/virtual-network) ve [Klasik](/previous-
 ### <a name="is-there-tooling-support-for-vnets"></a>VNET 'ler için araç desteği var mı?
 Evet. Kullanma hakkında daha fazla bilgi edinin:
 - [Azure Resource Manager](manage-virtual-network.md#create-a-virtual-network) ve [Klasik](/previous-versions/azure/virtual-network/virtual-networks-create-vnet-classic-pportal) dağıtım modelleriyle vnet 'leri dağıtmak için Azure Portal.
-- [Kaynak Yöneticisi](/powershell/module/az.network) ve [Klasik](/powershell/module/servicemanagement/azure.service/?view=azuresmps-3.7.0) dağıtım modelleriyle dağıtılan sanal ağları yönetmek için PowerShell.
+- [Kaynak Yöneticisi](/powershell/module/az.network) ve [Klasik](/powershell/module/servicemanagement/azure.service/) dağıtım modelleriyle dağıtılan sanal ağları yönetmek için PowerShell.
 - [Kaynak Yöneticisi](/cli/azure/network/vnet) ve [Klasik](/previous-versions/azure/virtual-machines/azure-cli-arm-commands?toc=%2fazure%2fvirtual-network%2ftoc.json#network-resources) dağıtım modelleri aracılığıyla dağıtılan VNET 'leri dağıtmak ve yönetmek için Azure komut satırı arabirimi (CLI).  
 
 ## <a name="vnet-peering"></a>VNet eşlemesi

@@ -3,12 +3,12 @@ title: Azure VM 'lerde performansı izleme-Azure Application Insights
 description: Azure VM ve Azure sanal makine ölçek kümeleri için uygulama performansı izleme. Grafik yükleme ve yanıt süresi, bağımlılık bilgileri ve performans üzerinde Uyarılar ayarlama.
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.openlocfilehash: ed56bc88a9d2e8a9490331605cd4a72aef6930db
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 0ea005427348e5265867a9e7ee805b0e6aa202f2
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98677952"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98933909"
 ---
 # <a name="deploy-the-azure-monitor-application-insights-agent-on-azure-virtual-machines-and-azure-virtual-machine-scale-sets"></a>Azure sanal makineler ve Azure sanal makine ölçek kümelerinde Azure Izleyici Application Insights aracısını dağıtma
 
@@ -49,7 +49,7 @@ Azure sanal makineleri ve Azure sanal makine ölçek kümeleri barındırılan u
 > Application Insights aracısını yüklemeden önce bir bağlantı dizesine ihtiyacınız vardır. [Yeni bir Application Insights kaynağı oluşturun](./create-new-resource.md) veya var olan bir Application Insights kaynağından bağlantı dizesini kopyalayın.
 
 > [!NOTE]
-> PowerShell 'de yeni misiniz? [Başlarken kılavuzuna](/powershell/azure/get-started-azureps?view=azps-2.5.0)göz atın.
+> PowerShell 'de yeni misiniz? [Başlarken kılavuzuna](/powershell/azure/get-started-azureps)göz atın.
 
 Application Insights aracısını Azure sanal makineleri için bir uzantı olarak yükler veya güncelleştirin
 ```powershell

@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/07/2021
-ms.openlocfilehash: ee6105376f5e8dc884f13e04db51126c039328e9
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: 203782ef2d95cd2b47082f630fa12531a110d49e
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97968900"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98933922"
 ---
 # <a name="troubleshoot-copy-activity-performance"></a>Kopyalama etkinliği performansını sorun giderme
 
@@ -53,7 +53,7 @@ Bir başvuru olarak şu anda performans ayarlama ipuçları aşağıdaki durumla
 
 Kopyalama etkinliği izleme görünümünün en altındaki yürütme ayrıntıları ve süreleri, kopyalama etkinliğinizin (Bu makalenin başındaki örnek), özellikle de kopyalama performansının giderilmesi için yararlı olan anahtar aşamalarını açıklar. Kopya çalışmalarınızın performans sorunu en uzun süreye sahip bir süredir. Her bir aşamanın tanımında aşağıdaki tabloya başvurun ve [Azure IR kopyalama etkinliğinin nasıl giderileceğini](#troubleshoot-copy-activity-on-azure-ir) ve bu tür bilgiyle şirket IÇINDE [barındırılan IR 'de kopyalama etkinliğinin nasıl giderileceğini](#troubleshoot-copy-activity-on-self-hosted-ir) öğrenin.
 
-| Aşama           | Açıklama                                                  |
+| Aşama           | Description                                                  |
 | --------------- | ------------------------------------------------------------ |
 | Kuyruk           | Kopyalama etkinliği tümleştirme çalışma zamanı üzerinde çalışmaya başlanana kadar geçen süre. |
 | Kopyalama öncesi betiği | IR ve kopyalama etkinliğinden itibaren kopyalama etkinliği arasındaki geçen süre, havuz veri deposunda kopyalama öncesi betiği yürütmeyi tamamlıyor. Veritabanı havuzları için kopyalama öncesi betiği yapılandırdığınızda, örneğin Azure SQL veritabanı 'na veri yazarken yeni verileri kopyalamaya başlamadan önce bu uygulamayı temizleyebilirsiniz. |
@@ -194,7 +194,7 @@ Etkinlik yürütme süresi, veri kümesinin farklı Integration Runtime temel al
 
     - Azure SQL veritabanı katmanı yeterince yüksek değil.
 
-    - Azure SQL veritabanı DTU kullanımı %100 ' e yakın. [Performansı izleyebilir](https://docs.microsoft.com/azure/azure-sql/database/monitor-tune-overview) ve Azure SQL veritabanı katmanını yükseltmeyi göz önünde bulundurun.
+    - Azure SQL veritabanı DTU kullanımı %100 ' e yakın. [Performansı izleyebilir](../azure-sql/database/monitor-tune-overview.md) ve Azure SQL veritabanı katmanını yükseltmeyi göz önünde bulundurun.
 
     - Dizinler düzgün ayarlanmadı. Veri yüklemeden önce tüm dizinleri kaldırın ve yükleme tamamlandıktan sonra yeniden oluşturun.
 
@@ -202,7 +202,6 @@ Etkinlik yürütme süresi, veri kümesinin farklı Integration Runtime temel al
 
     - Toplu iç içe değil, saklı yordam kullanılıyor, bu da daha kötü performansa sahip olması beklenir. 
 
-- **Çözüm**: [kopyalama etkinliği performansını sorun giderme](https://docs.microsoft.com/azure/data-factory/copy-activity-performance-troubleshooting)bölümüne bakın.
 
 ### <a name="timeout-or-slow-performance-when-parsing-large-excel-file"></a>Büyük Excel dosyası ayrıştırılırken zaman aşımı veya yavaş performans
 

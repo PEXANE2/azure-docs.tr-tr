@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 03/09/2020
 ms.author: aahi
 ms.reviewer: jdesousa
-ms.openlocfilehash: c587bb042601b947b71658bf790e9acdfbdbf742
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: f5b63503792b13e089568004ba67e5be8a3d0c7f
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94363791"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98932365"
 ---
 # <a name="text-offsets-in-the-text-analytics-api-output"></a>Metin Analizi API'si çıkışındaki metin uzaklıkları
 
@@ -34,9 +34,9 @@ Her kaydırın, [adlandırılmış varlık tanıma](../how-tos/text-analytics-ho
 
 ## <a name="extracting-substrings-from-text-with-offsets"></a>Uzaklıkları olan metinden alt dizeleri ayıklama
 
-Uzaklıklar, .NET [substring ()](/dotnet/api/system.string.substring?view=netframework-4.8) yöntemi gibi karakter tabanlı alt dize yöntemleri kullanılırken sorunlara yol açabilir. Bir sorun, bir kaydırın bir alt dize yönteminin, son yerine çok karakterli grafem kodlamasının ortasında sonlanmasına neden olabilir.
+Uzaklıklar, .NET [substring ()](/dotnet/api/system.string.substring) yöntemi gibi karakter tabanlı alt dize yöntemleri kullanılırken sorunlara yol açabilir. Bir sorun, bir kaydırın bir alt dize yönteminin, son yerine çok karakterli grafem kodlamasının ortasında sonlanmasına neden olabilir.
 
-.NET ' te, dize, tek tek karakter nesneleri yerine bir dizi metin öğesi olarak çalışmanıza olanak sağlayan [StringInfo](/dotnet/api/system.globalization.stringinfo?view=netframework-4.8) sınıfını kullanmayı düşünün. Ayrıca, tercih ettiğiniz yazılım ortamınızda grafem Bölümlendirici kitaplıklarını da arayabilirsiniz. 
+.NET ' te, dize, tek tek karakter nesneleri yerine bir dizi metin öğesi olarak çalışmanıza olanak sağlayan [StringInfo](/dotnet/api/system.globalization.stringinfo) sınıfını kullanmayı düşünün. Ayrıca, tercih ettiğiniz yazılım ortamınızda grafem Bölümlendirici kitaplıklarını da arayabilirsiniz. 
 
 Metin Analizi API'si kolaylık sağlamak için bu metinsel öğeleri de döndürür.
 
@@ -53,7 +53,7 @@ API sürümü 3,1-Preview. 1 ' den başlayarak, bir fark döndüren tüm Metin A
 ## <a name="see-also"></a>Ayrıca bkz.
 
 * [Metin Analizine genel bakış](../overview.md)
-* [Yaklaşım analizi](../how-tos/text-analytics-how-to-sentiment-analysis.md)
+* [Yaklaşım Analizi](../how-tos/text-analytics-how-to-sentiment-analysis.md)
 * [Varlık tanıma](../how-tos/text-analytics-how-to-entity-linking.md)
 * [Dil algılama](../how-tos/text-analytics-how-to-keyword-extraction.md)
 * [Dil tanıma](../how-tos/text-analytics-how-to-language-detection.md)

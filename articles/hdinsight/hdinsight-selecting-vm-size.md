@@ -2,19 +2,16 @@
 title: Azure HDInsight kümeniz için doğru VM boyutunu seçme
 description: HDInsight kümeniz için doğru VM boyutunu seçme hakkında bilgi edinin.
 keywords: VM boyutları, küme boyutları, küme yapılandırması
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/09/2019
-ms.openlocfilehash: d347707b0f48314dd872bc3ad34ac624817d2937
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 51043f0a1009994528783a1b56ec5ccec68e99b3
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92535323"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98931789"
 ---
 # <a name="selecting-the-right-vm-size-for-your-azure-hdinsight-cluster"></a>Azure HDInsight kümeniz için doğru VM boyutunu seçme
 

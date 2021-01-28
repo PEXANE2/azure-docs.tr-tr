@@ -1,19 +1,16 @@
 ---
 title: Azure HDInsight 'ta fırtınası için SCP.NET Programlama Kılavuzu
 description: Oluşturmak için SCP.NET kullanmayı öğrenin. Azure HDInsight 'ta çalışan fırtınası ile kullanım için NET tabanlı fırtınası topolojileri.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-csharp
 ms.date: 01/13/2020
-ms.openlocfilehash: d54a06c457451fc5323ae37b34b53411cdd6abda
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bd52157e2f0e20e9282d944b07f656c08d9e57da
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89000150"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98932643"
 ---
 # <a name="scp-programming-guide-for-apache-storm-in-azure-hdinsight"></a>Azure HDInsight 'ta Apache Storm için SCP Programlama Kılavuzu
 
@@ -35,9 +32,9 @@ SCP 'deki veriler, tanımlama gruplarının sürekli akışları olarak modellen
 
 Fırtınası ' da, bir uygulama topolojisi bir hesaplama grafiğini tanımlar. Bir topolojideki her düğüm, işlem mantığını içerir. Düğümler arasındaki bağlantılar veri akışını gösterir.
 
-Topolojiye giriş verisi eklenen düğümlere _Spout_adı verilir. Bunları verileri sıralamak için kullanabilirsiniz. Giriş verileri, dosya günlükleri, bir işlem veritabanı veya sistem performans sayacı gibi bir kaynaktan gelebilir.
+Topolojiye giriş verisi eklenen düğümlere _Spout_ adı verilir. Bunları verileri sıralamak için kullanabilirsiniz. Giriş verileri, dosya günlükleri, bir işlem veritabanı veya sistem performans sayacı gibi bir kaynaktan gelebilir.
 
-Hem giriş hem de çıkış verisi akışları olan düğümlere _cıvatalar_denir. Gerçek veri filtreleme, seçimler ve toplama işlemlerini yapar.
+Hem giriş hem de çıkış verisi akışları olan düğümlere _cıvatalar_ denir. Gerçek veri filtreleme, seçimler ve toplama işlemlerini yapar.
 
 SCP, en az bir kez ve tam bir kez veri işleme olmak üzere en iyi çabaları destekler.
 
@@ -95,7 +92,7 @@ public interface ISCPSpout : ISCPPlugin
 
 **Nexttuple** çağrıldığında, C# kodunuz bir veya daha fazla tanımlama grubu yayabilir. Yayma için bir şey yoksa, bu yöntem hiçbir şeyi yaymadan döndürmelidir.
 
-**Nexttuple**, **ACK**ve **Fail** yöntemlerinin hepsi, C# işleminin tek bir iş parçacığında sıkı bir döngüde çağırılır. Görüntülenecek bir tanımlama grubu olmadığında, 10 milisaniyeye benzer bir süre için **Nexttuple** uyumaya sahip olması gerekir. Bu uyku, CPU kullanılabilirliğini gereksiz şekilde önlemenize yardımcı olur.
+**Nexttuple**, **ACK** ve **Fail** yöntemlerinin hepsi, C# işleminin tek bir iş parçacığında sıkı bir döngüde çağırılır. Görüntülenecek bir tanımlama grubu olmadığında, 10 milisaniyeye benzer bir süre için **Nexttuple** uyumaya sahip olması gerekir. Bu uyku, CPU kullanılabilirliğini gereksiz şekilde önlemenize yardımcı olur.
 
 **ACK** ve **Fail** yöntemleri yalnızca bir belirtim dosyası bildirim mekanizmasını etkinleştirmesine izin verecek şekilde çağrılır. *SeqID* parametresi, onaylanan veya başarısız olan kayıt grubunu tanımlar. Bildirim, işlem dışı bir topolojide etkinleştirilirse, aşağıdaki **yayma** işlevi bir Spout içinde kullanılmalıdır:
 
@@ -133,9 +130,9 @@ public interface ISCPTxSpout : ISCPPlugin
 }
 ```
 
-Yalnızca işlem dışı ortaklarınıza benzer şekilde, **Nexttx**, **ACK**ve **Fail** , C# işleminin tek bir iş parçacığında sıkı bir döngüde çağırılır. Görüntülenecek bir tanımlama grubu olmadığında, 10 milisaniyeye benzer bir süre için **Nexttx** uyumaya sahip olması gerekir. Bu uyku, CPU kullanılabilirliğini gereksiz şekilde önlemenize yardımcı olur.
+Yalnızca işlem dışı ortaklarınıza benzer şekilde, **Nexttx**, **ACK** ve **Fail** , C# işleminin tek bir iş parçacığında sıkı bir döngüde çağırılır. Görüntülenecek bir tanımlama grubu olmadığında, 10 milisaniyeye benzer bir süre için **Nexttx** uyumaya sahip olması gerekir. Bu uyku, CPU kullanılabilirliğini gereksiz şekilde önlemenize yardımcı olur.
 
-Yeni bir işlem başlatmak için **Nexttx** çağrıldığında, *SeqID* çıkış parametresi işlemi tanımlar. İşlem **ACK** ve **Fail**içinde de kullanılır. **Nexttx** yönteminiz, Java tarafında veri yayabilir. Veriler, yeniden yürütmeyi desteklemek için ZooKeeper içinde depolanır. ZooKeeper sınırlı kapasiteye sahip olduğundan, kodunuz yalnızca bir işlem biriktirme dosyasında toplu verileri değil, yalnızca meta verileri göstermelidir.
+Yeni bir işlem başlatmak için **Nexttx** çağrıldığında, *SeqID* çıkış parametresi işlemi tanımlar. İşlem **ACK** ve **Fail** içinde de kullanılır. **Nexttx** yönteminiz, Java tarafında veri yayabilir. Veriler, yeniden yürütmeyi desteklemek için ZooKeeper içinde depolanır. ZooKeeper sınırlı kapasiteye sahip olduğundan, kodunuz yalnızca bir işlem biriktirme dosyasında toplu verileri değil, yalnızca meta verileri göstermelidir.
 
 Fırtınası başarısız bir işlemi otomatik olarak yeniden yürüttüğünde, **başarısızlık** genellikle çağrılmaz. Ancak SCP bir işlem biriktirme tarafından oluşturulan meta verileri denet, meta veriler geçersiz olduğunda **başarısız** olabilir.
 
@@ -161,11 +158,11 @@ SCP.NET, her **Stormtxgirişim** nesnesini işlemek Için, Java 'daki her bir TB
 
 ## <a name="object-model"></a>Nesne modeli
 
-SCP.NET ayrıca geliştiricilerin ile programlama için basit bir temel nesne kümesi sağlar. Nesneler **bağlam**, **Statestore**ve **SCPRuntime**. Bunlar bu bölümde ele alınmıştır.
+SCP.NET ayrıca geliştiricilerin ile programlama için basit bir temel nesne kümesi sağlar. Nesneler **bağlam**, **Statestore** ve **SCPRuntime**. Bunlar bu bölümde ele alınmıştır.
 
 ### <a name="context"></a>Bağlam
 
-**Bağlam** nesnesi, bir uygulamaya çalışan bir ortam sağlar. **Icpspout**, **iscpcıvam**, **iscptxspout**veya **ıscpbatchcıvatinin** her bir **SCC** örneği karşılık gelen bir **bağlam** örneğine sahiptir. **Bağlam** tarafından sunulan işlevsellik, bu iki parçaya ayrılmıştır:
+**Bağlam** nesnesi, bir uygulamaya çalışan bir ortam sağlar. **Icpspout**, **iscpcıvam**, **iscptxspout** veya **ıscpbatchcıvatinin** her bir **SCC** örneği karşılık gelen bir **bağlam** örneğine sahiptir. **Bağlam** tarafından sunulan işlevsellik, bu iki parçaya ayrılmıştır:
 
 * Tüm C# işleminde bulunan statik bölüm
 * Yalnızca belirli **bağlam** örneği için kullanılabilen dinamik bölüm
@@ -357,7 +354,7 @@ public void Abort();
     public T GetAttribute<T>(string key);
 ```
 
-**Simplemode** **true**olarak ayarlandığında, **COMMIT** yöntemi ZooKeeper içinde karşılık gelen znode 'u siler. Aksi takdirde, yöntemi geçerli ZNode 'u siler ve KAYDEDILMIŞ yola yeni bir düğüm ekler \_ .
+**Simplemode** **true** olarak ayarlandığında, **COMMIT** yöntemi ZooKeeper içinde karşılık gelen znode 'u siler. Aksi takdirde, yöntemi geçerli ZNode 'u siler ve KAYDEDILMIŞ yola yeni bir düğüm ekler \_ .
 
 ### <a name="scpruntime"></a>SCPRuntime
 
@@ -373,13 +370,13 @@ public static void LaunchPlugin(newSCPPlugin createDelegate);
 
 **Launchplugin** yöntemi ileti işleme döngüsünü başlatır. Bu döngüde, C# eklentisi Java tarafında iletileri alır. Bu iletiler, tanımlama işaretleri ve denetim sinyalleri içerir. Daha sonra eklenti, belki kodunuzun verdiği arabirim yöntemini çağırarak iletileri işler.
 
-**Launchplugin** için giriş parametresi bir temsilcisidir. Yöntemi, **ıscpspout**, **iscpcıvata**, **ıscptxspout**veya **ıscpbatchcıvatu** arabirimini uygulayan bir nesne döndürebilir.
+**Launchplugin** için giriş parametresi bir temsilcisidir. Yöntemi, **ıscpspout**, **iscpcıvata**, **ıscptxspout** veya **ıscpbatchcıvatu** arabirimini uygulayan bir nesne döndürebilir.
 
 ```csharp
 public delegate ISCPPlugin newSCPPlugin(Context ctx, Dictionary<string, Object> parms);
 ```
 
-**Iscpbatchcıvaı**için, *parametreleri* parametresinden bir **stormtxgirişim** nesnesi alabilir ve bu işlemi, denemesinin yeniden yürütülmüş bir girişimin olup olmadığını jeetmek için kullanabilirsiniz. Yeniden yürütme denemesine yönelik denetim genellikle yürütme sürgüsü üzerinden yapılır. Merhaba Worldtx örneği bu makalenin ilerleyen kısımlarında bu denetim gösterilmektedir.
+**Iscpbatchcıvaı** için, *parametreleri* parametresinden bir **stormtxgirişim** nesnesi alabilir ve bu işlemi, denemesinin yeniden yürütülmüş bir girişimin olup olmadığını jeetmek için kullanabilirsiniz. Yeniden yürütme denemesine yönelik denetim genellikle yürütme sürgüsü üzerinden yapılır. Merhaba Worldtx örneği bu makalenin ilerleyen kısımlarında bu denetim gösterilmektedir.
 
 SCP eklentileri genellikle iki modda çalışabilir: Yerel test modu ve normal mod.
 
@@ -434,19 +431,19 @@ SCP topolojisi belirtimi, SCP topolojilerini tanımlamak ve yapılandırmak içi
 
 SCP.NET, işlem topolojilerini tanımlamak için aşağıdaki işlevleri ekledi:
 
-| Yeni işlev | Parametreler | Açıklama |
+| Yeni işlev | Parametreler | Description |
 | --- | --- | --- |
 | **TX-topolopy** |*topoloji-adı*<br />*Spout eşleme*<br />*cıvata eşleme* |Topoloji adı, Spout tanım eşlemesi ve cıvatalar tanım eşlemesi ile bir işlem topolojisini tanımlar. |
-| **SCP-TX-Spout** |*exec-adı*<br />*args*<br />*alanını* |İşlem biriktirme listesini tanımlar. İşlevi, *Exec-Name* tarafından belirtilen uygulamayı çalıştırır ve *bağımsız değişkenleri*kullanır.<br /><br />*Fields* parametresi, Spout için çıkış alanlarını belirtir. |
+| **SCP-TX-Spout** |*exec-adı*<br />*args*<br />*alanını* |İşlem biriktirme listesini tanımlar. İşlevi, *Exec-Name* tarafından belirtilen uygulamayı çalıştırır ve *bağımsız değişkenleri* kullanır.<br /><br />*Fields* parametresi, Spout için çıkış alanlarını belirtir. |
 | **SCP-TX-Batch-sürgüsü** |*exec-adı*<br />*args*<br />*alanını* |İşlem Batch sürgüsü tanımlar. İşlevi, *Exec-Name* tarafından belirtilen uygulamayı çalıştırır ve *bağımsız değişkenleri kullanır.*<br /><br />*Fields* parametresi, cıvatanın çıkış alanlarını belirtir. |
-| **SCP-TX-COMMIT-cıvata** |*exec-adı*<br />*args*<br />*alanını* |İşlem bir işleme sürgüsü tanımlar. İşlevi, *Exec-Name* tarafından belirtilen uygulamayı çalıştırır ve *bağımsız değişkenleri*kullanır.<br /><br />*Fields* parametresi, cıvatanın çıkış alanlarını belirtir. |
+| **SCP-TX-COMMIT-cıvata** |*exec-adı*<br />*args*<br />*alanını* |İşlem bir işleme sürgüsü tanımlar. İşlevi, *Exec-Name* tarafından belirtilen uygulamayı çalıştırır ve *bağımsız değişkenleri* kullanır.<br /><br />*Fields* parametresi, cıvatanın çıkış alanlarını belirtir. |
 | **TX olmayan topoloji** |*topoloji-adı*<br />*Spout eşleme*<br />*cıvata eşleme* |Topoloji adı, Spout tanım eşlemesi ve cıvatalar tanım eşlemesi ile işlem dışı bir topoloji tanımlar. |
-| **SCP-Spout** |*exec-adı*<br />*args*<br />*alanını*<br />*parametrelere* |İşlem dışı bir Spout tanımlar. İşlevi, *Exec-Name* tarafından belirtilen uygulamayı çalıştırır ve *bağımsız değişkenleri*kullanır.<br /><br />*Fields* parametresi, Spout için çıkış alanlarını belirtir.<br /><br />*Parameters* parametresi isteğe bağlıdır. "İşlem dışı. ACK. Enabled" gibi parametreleri belirtmek için bunu kullanın. |
-| **SCP-sürgüsü** |*exec-adı*<br />*args*<br />*alanını*<br />*parametrelere* |İşlem dışı bir sürgülü tanımlar. İşlevi, *Exec-Name* tarafından belirtilen uygulamayı çalıştırır ve *bağımsız değişkenleri*kullanır.<br /><br />*Fields* parametresi, cıvatanın çıkış alanlarını belirtir<br /><br />*Parameters* parametresi isteğe bağlıdır. "İşlem dışı. ACK. Enabled" gibi parametreleri belirtmek için bunu kullanın. |
+| **SCP-Spout** |*exec-adı*<br />*args*<br />*alanını*<br />*parametrelere* |İşlem dışı bir Spout tanımlar. İşlevi, *Exec-Name* tarafından belirtilen uygulamayı çalıştırır ve *bağımsız değişkenleri* kullanır.<br /><br />*Fields* parametresi, Spout için çıkış alanlarını belirtir.<br /><br />*Parameters* parametresi isteğe bağlıdır. "İşlem dışı. ACK. Enabled" gibi parametreleri belirtmek için bunu kullanın. |
+| **SCP-sürgüsü** |*exec-adı*<br />*args*<br />*alanını*<br />*parametrelere* |İşlem dışı bir sürgülü tanımlar. İşlevi, *Exec-Name* tarafından belirtilen uygulamayı çalıştırır ve *bağımsız değişkenleri* kullanır.<br /><br />*Fields* parametresi, cıvatanın çıkış alanlarını belirtir<br /><br />*Parameters* parametresi isteğe bağlıdır. "İşlem dışı. ACK. Enabled" gibi parametreleri belirtmek için bunu kullanın. |
 
 SCP.NET aşağıdaki anahtar sözcükleri tanımlar:
 
-| Sözcükle | Açıklama |
+| Sözcükle | Description |
 | --- | --- |
 | **: ad** |Topoloji adı |
 | **: topoloji** |Önceki tabloda ve yerleşik işlevlerde bulunan işlevleri kullanan topoloji |
@@ -691,7 +688,7 @@ Ana bilgisayar modunda, SCP platformu tarafından çağrılması için kodunuzu 
 
 ### <a name="helloworld"></a>HelloWorld
 
-Aşağıdaki basit HelloWorld örneği, SCP.NET bir listesini gösterir. **Oluşturucu** adlı ve **Splitter** ve **sayaç**olarak adlandırılan iki cıvam ile birlikte işlem dışı bir topoloji kullanır. **Generator** Spout, cümleleri rastgele oluşturur ve bu cümleleri **bölümlendiriciye**yayar. **Bölümlendirici** , cümleleri sözcüklere böler ve bu sözcükleri **sayaç** sürgüsü 'a yayar. **Sayaç** sürgüsü, her sözcüğün oluşumunu kaydetmek için bir sözlük kullanır.
+Aşağıdaki basit HelloWorld örneği, SCP.NET bir listesini gösterir. **Oluşturucu** adlı ve **Splitter** ve **sayaç** olarak adlandırılan iki cıvam ile birlikte işlem dışı bir topoloji kullanır. **Generator** Spout, cümleleri rastgele oluşturur ve bu cümleleri **bölümlendiriciye** yayar. **Bölümlendirici** , cümleleri sözcüklere böler ve bu sözcükleri **sayaç** sürgüsü 'a yayar. **Sayaç** sürgüsü, her sözcüğün oluşumunu kaydetmek için bir sözlük kullanır.
 
 Bu örnek iki belirtim dosyasına sahiptir: HelloWorld. spec ve HelloWorld \_ enableack. spec. C# kodu, nesneyi Java tarafında alarak onay yapılıp yapılmayacağını bulabilir `pluginConf` .
 
@@ -728,7 +725,7 @@ public void Fail(long seqId, Dictionary<string, Object> parms)
 
 ### <a name="helloworldtx"></a>Merhaba Worldtx
 
-Aşağıdaki HelloWorldTx örneği, işlem topolojisinin nasıl uygulanacağını gösterir. Örnek, **Oluşturucu**adlı bir Spout, **kısmi sayı**olarak adlandırılan bir yığın işareti ve **Count-Sum**adlı bir COMMIT sürgüsü içerir. Örnekte ayrıca üç mevcut metin dosyası vardır: DataSource0.txt, DataSource1.txt ve DataSource2.txt.
+Aşağıdaki HelloWorldTx örneği, işlem topolojisinin nasıl uygulanacağını gösterir. Örnek, **Oluşturucu** adlı bir Spout, **kısmi sayı** olarak adlandırılan bir yığın işareti ve **Count-Sum** adlı bir COMMIT sürgüsü içerir. Örnekte ayrıca üç mevcut metin dosyası vardır: DataSource0.txt, DataSource1.txt ve DataSource2.txt.
 
 Her işlemde, **Oluşturucu** Spout var olan üç dosyadan rastgele iki dosya seçer ve iki dosya adını **kısmi sayı** sürgüüne yayar. **Kısmi sayı** sürgüsü:
 

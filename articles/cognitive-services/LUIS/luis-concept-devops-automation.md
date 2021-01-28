@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 06/5/2020
-ms.openlocfilehash: 1ce78e02c652777b524964559b579530f3e022fa
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 215399e4b131162097e54c15b84cb6fa7dac72e3
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97561316"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98932531"
 ---
 # <a name="continuous-integration-and-continuous-delivery-workflows-for-luis-devops"></a>LUSıS DevOps için sürekli tümleştirme ve sürekli teslim iş akışları
 
@@ -41,7 +41,7 @@ LUSıS için Otomasyon iş akışları oluşturmak üzere aşağıdaki araçlar�
 
 * [Bot Framework Tools lusıs](https://github.com/microsoft/botbuilder-tools/tree/master/packages/LUIS) , lusıs uygulamaları ve sürümleri ile çalışmak, eğitme, test etme ve onları lusıs hizmeti içinde yayımlamaktır.
 
-* [Azure 'da](/cli/azure/?view=azure-cli-latest) Azure aboneliklerini sorgulama, lusıs yazma ve tahmin anahtarları getirme ve otomasyon kimlik doğrulaması için kullanılan bir Azure [hizmet sorumlusu](/cli/azure/ad/sp?view=azure-cli-latest) oluşturma.
+* [Azure 'da](/cli/azure/) Azure aboneliklerini sorgulama, lusıs yazma ve tahmin anahtarları getirme ve otomasyon kimlik doğrulaması için kullanılan bir Azure [hizmet sorumlusu](/cli/azure/ad/sp) oluşturma.
 
 * [NLU. ](https://github.com/microsoft/NLU.DevOps) [Bir lusıs uygulamasını test](luis-concept-devops-testing.md) etmek ve test sonuçlarını çözümlemek için DevOps aracı.
 

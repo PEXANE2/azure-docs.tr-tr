@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/18/2020
-ms.openlocfilehash: 0466105ab99d191b5dd9beab1d5d5b61f4b3225e
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 68d88ef667da9f22d3e3a17f10036693fcca0c3f
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98790893"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98932523"
 ---
 # <a name="devops-practices-for-luis"></a>LUSıS için DevOps uygulamaları
 
@@ -18,7 +18,7 @@ Language Understanding (LUU) uygulaması geliştiren yazılım mühendisleri, bu
 
 ## <a name="source-control-and-branch-strategies-for-luis"></a>LUIS için kaynak denetimi ve dal stratejileri
 
-DevOps başarısının başarımının, [kaynak denetimi](/azure/devops/user-guide/source-control?view=azure-devops)olduğuna göre önemli faktörlerden biridir. Kaynak denetim sistemi, geliştiricilerin kod üzerinde işbirliği yapmasına ve değişiklikleri izlemesine olanak sağlar. Dalların kullanımı, geliştiricilerin kod tabanının farklı sürümleri arasında geçiş yapmasına ve takımın diğer üyelerinden bağımsız olarak çalışmasına izin verir. Geliştiriciler bir daldan diğerine güncelleştirme önermek üzere bir [çekme isteği](https://help.github.com/github/collaborating-with-issues-and-pull-requests/about-pull-requests) (PR) oluşturduğunda veya değişiklikler birleştirildiğinde, bu, [Otomatik derlemeler](luis-concept-devops-automation.md) için kod oluşturmak ve sürekli test etmek üzere tetikler olabilir.
+DevOps başarısının başarımının, [kaynak denetimi](/azure/devops/user-guide/source-control)olduğuna göre önemli faktörlerden biridir. Kaynak denetim sistemi, geliştiricilerin kod üzerinde işbirliği yapmasına ve değişiklikleri izlemesine olanak sağlar. Dalların kullanımı, geliştiricilerin kod tabanının farklı sürümleri arasında geçiş yapmasına ve takımın diğer üyelerinden bağımsız olarak çalışmasına izin verir. Geliştiriciler bir daldan diğerine güncelleştirme önermek üzere bir [çekme isteği](https://help.github.com/github/collaborating-with-issues-and-pull-requests/about-pull-requests) (PR) oluşturduğunda veya değişiklikler birleştirildiğinde, bu, [Otomatik derlemeler](luis-concept-devops-automation.md) için kod oluşturmak ve sürekli test etmek üzere tetikler olabilir.
 
 Bu belgede açıklanan kavramları ve yönergeleri kullanarak, bir kaynak denetim sistemindeki değişiklikleri izlerken bir LUO uygulaması geliştirebilir ve bu yazılım mühendisliği en iyi yöntemlerini takip edebilirsiniz:
 
@@ -42,7 +42,7 @@ Bu belgede açıklanan kavramları ve yönergeleri kullanarak, bir kaynak deneti
 
 ## <a name="source-control"></a>Kaynak denetimi
 
-Kaynak kod yönetimi sisteminde bir LUO uygulamasının [uygulama şeması tanımını](./app-schema-definition.md) korumak için, uygulamanın [LUI biçimi ( `.lu` )](/azure/bot-service/file-format/bot-builder-lu-file-format?view=azure-bot-service-4.0)  gösterimini kullanın. `.lu` biçimlendirme `.json` , okunabilir olduğundan, PR 'ler 'de değişiklikleri daha kolay hale getirmek ve gözden geçirmek daha kolay hale getiren biçim için tercih edilir.
+Kaynak kod yönetimi sisteminde bir LUO uygulamasının [uygulama şeması tanımını](./app-schema-definition.md) korumak için, uygulamanın [LUI biçimi ( `.lu` )](/azure/bot-service/file-format/bot-builder-lu-file-format)  gösterimini kullanın. `.lu` biçimlendirme `.json` , okunabilir olduğundan, PR 'ler 'de değişiklikleri daha kolay hale getirmek ve gözden geçirmek daha kolay hale getiren biçim için tercih edilir.
 
 ### <a name="save-a-luis-app-using-the-ludown-format"></a>Luo uygulamasını Lui biçimini kullanarak kaydetme
 
@@ -81,7 +81,7 @@ Abonelik anahtarlarını veya benzer gizli değerleri, deponuzda, yetkisiz perso
 - LUSıS yazma ve tahmin anahtarları
 - LUSıS yazma ve tahmin uç noktaları
 - Azure abonelik anahtarları
-- Otomasyon kimlik doğrulaması için kullanılan bir Azure [hizmet sorumlusu](/cli/azure/ad/sp?view=azure-cli-latest) belirteci gibi erişim belirteçleri
+- Otomasyon kimlik doğrulaması için kullanılan bir Azure [hizmet sorumlusu](/cli/azure/ad/sp) belirteci gibi erişim belirteçleri
 
 #### <a name="strategies-for-securely-managing-secrets"></a>Gizli dizileri güvenli bir şekilde yönetme stratejileri
 
@@ -183,7 +183,7 @@ Luu biçimindeki bir LUO uygulaması, gözden geçirime uygun bir PR 'deki deği
 
 ## <a name="versioning"></a>Sürüm Oluşturma
 
-Bir uygulama, [Azure bot hizmetinde](/azure/bot-service/bot-service-overview-introduction?view=azure-bot-service-4.0)çalışan bir bot, [soru-cevap oluşturma](https://www.qnamaker.ai/), [Azure konuşma hizmeti](../speech-service/overview.md)ve daha fazlası gibi işlemleri içerebilen birden çok bileşenden oluşur. Gevşek olarak bağlanmış uygulamaların amacını elde etmek için, bir uygulamanın her bileşeninin bağımsız olarak sürümü oluşturulmuş olması için [Sürüm denetimini](/azure/devops/learn/git/what-is-version-control) kullanın, böylece geliştiricilerin sürüm numarasına bakarak, önemli değişiklikleri veya güncelleştirmeleri algılamasına izin vermiş olur. LUSıS uygulamanızı kendi depolarından korumak için diğer bileşenlerden bağımsız olarak kolayca yükleyebilirsiniz.
+Bir uygulama, [Azure bot hizmetinde](/azure/bot-service/bot-service-overview-introduction)çalışan bir bot, [soru-cevap oluşturma](https://www.qnamaker.ai/), [Azure konuşma hizmeti](../speech-service/overview.md)ve daha fazlası gibi işlemleri içerebilen birden çok bileşenden oluşur. Gevşek olarak bağlanmış uygulamaların amacını elde etmek için, bir uygulamanın her bileşeninin bağımsız olarak sürümü oluşturulmuş olması için [Sürüm denetimini](/azure/devops/learn/git/what-is-version-control) kullanın, böylece geliştiricilerin sürüm numarasına bakarak, önemli değişiklikleri veya güncelleştirmeleri algılamasına izin vermiş olur. LUSıS uygulamanızı kendi depolarından korumak için diğer bileşenlerden bağımsız olarak kolayca yükleyebilirsiniz.
 
 Ana dala yönelik Lua uygulamasının bir sürüm oluşturma düzeni uygulanmış olması gerekir. `.lu`BIR Luo uygulaması için güncelleştirmelerini Main olarak birleştirdiğinizde, bu güncelleştirilmiş kaynağı, ana dal IÇIN Luo uygulamasındaki yeni bir sürüme içeri aktarırsınız.
 

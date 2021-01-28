@@ -1,19 +1,16 @@
 ---
 title: 'Azure Toolkit for IntelliJ: Spark uygulaması-HDInsight'
 description: Scala 'da yazılmış Spark uygulamaları geliştirmek ve bunları bir HDInsight Spark kümesine göndermek için Azure Toolkit for IntelliJ kullanın.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 04/13/2020
-ms.openlocfilehash: b70de1915e6c068bd658dff60776085075412789
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 0b2c2a91ba9d029bcf24b0980d0a2339194e6d8a
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96024019"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98931034"
 ---
 # <a name="use-azure-toolkit-for-intellij-to-create-apache-spark-applications-for-hdinsight-cluster"></a>HDInsight kümesi için Apache Spark uygulamalar oluşturmak için Azure Toolkit for IntelliJ kullanma
 
@@ -47,7 +44,7 @@ Scala eklentisini yüklemeye yönelik adımlar:
 
 1. IntelliJ IDEA’yı açın.
 
-2. Giriş ekranında **Configure**, eklentiler  >  penceresini açmak için **eklentileri** Yapılandır ' a gidin **Plugins** .
+2. Giriş ekranında , eklentiler  >  penceresini açmak için **eklentileri** Yapılandır ' a gidin  .
 
     ![IntelliJ fıkır Scala eklentisine izin verebilir](./media/apache-spark-intellij-tool-plugin/enable-scala-plugin1.png)
 
@@ -84,7 +81,7 @@ Scala eklentisini yüklemeye yönelik adımlar:
 
     ![Apache Spark SDK 'sını seçme](./media/apache-spark-intellij-tool-plugin/intellij-new-project.png)
 
-7. **Son**’u seçin.  Projenin kullanılabilir hale gelmesi birkaç dakika sürebilir.
+7. **Son**'u seçin.  Projenin kullanılabilir hale gelmesi birkaç dakika sürebilir.
 
 8. Spark projesi sizin için otomatik olarak bir yapı oluşturur. Yapıtı görüntülemek için aşağıdaki adımları uygulayın:
 

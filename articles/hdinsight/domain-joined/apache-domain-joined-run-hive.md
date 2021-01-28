@@ -3,17 +3,16 @@ title: Apache Ranger 'da ilke Apache Hive-Azure HDInsight
 description: Azure HDInsight hizmetinde Hive için Kurumsal Güvenlik Paketi Apache Ranger ilkelerini yapılandırma hakkında bilgi edinin.
 author: omidm1
 ms.author: omidm
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/27/2019
-ms.openlocfilehash: f2d9c96a616f05c22c8b999fdc6cab2505c27485
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 8ebc03d0847414730c51b899be4cf6586d064696
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92544945"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98932234"
 ---
 # <a name="configure-apache-hive-policies-in-hdinsight-with-enterprise-security-package"></a>Kurumsal Güvenlik Paketi ile HDInsight içinde Apache Hive ilkelerini yapılandırma
 
@@ -49,14 +48,14 @@ Bu bölümde, hivesampletable 'a erişmek için iki Ranger ilkesi oluşturacaks�
 **Ranger ilkeleri oluşturmak için**
 
 1. Ranger Yönetici Arabirimini açın. Bkz. Apache Ranger Yönetici Arabirimine bağlanma.
-2. **Hive** altında **CLUSTERNAME_Hive** ' yi seçin. Önceden yapılandırılmış iki ilke göreceksiniz.
-3. **Yeni Ilke Ekle** ' yi seçin ve ardından aşağıdaki değerleri girin:
+2. **Hive** altında **CLUSTERNAME_Hive**' yi seçin. Önceden yapılandırılmış iki ilke göreceksiniz.
+3. **Yeni Ilke Ekle**' yi seçin ve ardından aşağıdaki değerleri girin:
 
     |Özellik |Değer |
     |---|---|
     |İlke Adı|Read-hivesampletable-tümü|
     |Hive veritabanı|default|
-    |table|hivesampletable|
+    |tablo|hivesampletable|
     |Hive sütunu|*|
     |Kullanıcı Seçin|hiveuser1 kullanıcısının|
     |İzinler|seçin|
@@ -74,7 +73,7 @@ Bu bölümde, hivesampletable 'a erişmek için iki Ranger ilkesi oluşturacaks�
     |---|---|
     |İlke Adı|Read-hivesampletable-devicemake|
     |Hive veritabanı|default|
-    |table|hivesampletable|
+    |tablo|hivesampletable|
     |Hive sütunu|ClientID, devicemake|
     |Kullanıcı Seçin|hiveuser2|
     |İzinler|seçin|
@@ -89,13 +88,13 @@ Talimatlara [Hive ODBC veri kaynağı oluşturma](../hadoop/apache-hadoop-connec
  | Ana bilgisayar | CLUSTERNAME.azurehdinsight.net girin. Örnek: HDIKumesi.azurehdinsight.net |
  | Bağlantı noktası | **443** yazın. (Önceden 563 olan bu bağlantı noktası 443 olarak değiştirilmiştir.) |
  | Veritabanı | **Varsayılanı** kullanın. |
- | Hive Server Type | **Hive Server 2** ’yi seçin |
- | Mechanism | **Azure HDInsight Service** ’i seçin |
+ | Hive Server Type | **Hive Server 2**’yi seçin |
+ | Mechanism | **Azure HDInsight Service**’i seçin |
  | HTTP Path | Boş bırakın. |
  | User Name | hiveuser1@contoso158.onmicrosoft.com yazın. Farklı olduğunda, etki alanı adını güncelleştirin. |
  | Parola | hiveuser1 kullanıcısının parolasını girin. |
 
-Veri kaynağını kaydetmeden önce **Test** ’e tıklayın.
+Veri kaynağını kaydetmeden önce **Test**’e tıklayın.
 
 ## <a name="import-data-into-excel-from-hdinsight"></a>HDInsight’tan Excel’e veri aktarma
 
@@ -103,21 +102,21 @@ Son bölümde iki ilke yapılandırdınız.  hiveuser1 tüm sütunlarda select i
 
 1. Excel’de yeni veya mevcut bir çalışma kitabını açın.
 
-1. ODBC 'den başlatmak için **veri** sekmesinden **Get Data**  >  **From Other Sources**  >  **ODBC 'den** **From ODBC** diğer kaynaklardan veri al ' a gidin.
+1. ODBC 'den başlatmak için **veri** sekmesinden   >    >  **ODBC 'den**  diğer kaynaklardan veri al ' a gidin.
 
     ![Veri bağlantısı açma Sihirbazı](./media/apache-domain-joined-run-hive/simbahiveodbc-excel-dataconnection1.png)
 
-1. Aşağı açılan listeden, son bölümde oluşturduğunuz veri kaynağı adını seçin ve ardından **Tamam** ' ı seçin.
+1. Aşağı açılan listeden, son bölümde oluşturduğunuz veri kaynağı adını seçin ve ardından **Tamam**' ı seçin.
 
 1. İlk kullanım için bir **ODBC sürücüsü** iletişim kutusu açılır. Sol menüden **Windows** ' u seçin. Ardından, **Gezgin** penceresini açmak için **Bağlan** ' ı seçin.
 
 1. **Veritabanı ve Tablo Seç** iletişim kutusunun açılmasını bekleyin. Bu işlem birkaç saniye sürebilir.
 
-1. **Hivesampletable** ' ı seçin ve ardından **İleri** ' yi seçin.
+1. **Hivesampletable**' ı seçin ve ardından **İleri**' yi seçin.
 
-1. **Son** ’u seçin.
+1. **Son**'u seçin.
 
-1. **Verileri İçeri Aktar** iletişim kutusunda sorguyu değiştirebilir veya belirtebilirsiniz. Bunu yapmak için **Özellikler** ' i seçin. Bu işlem birkaç saniye sürebilir.
+1. **Verileri İçeri Aktar** iletişim kutusunda sorguyu değiştirebilir veya belirtebilirsiniz. Bunu yapmak için **Özellikler**' i seçin. Bu işlem birkaç saniye sürebilir.
 
 1. **Tanım** sekmesini seçin. Komut metni:
 
@@ -131,7 +130,7 @@ Son bölümde iki ilke yapılandırdınız.  hiveuser1 tüm sütunlarda select i
 
 1. **Verileri Içeri aktar** iletişim kutusunu kapatmak için **Tamam ' ı** seçin.  
 
-1. hiveuser1 kullanıcısının parolasını tekrar girin ve **Tamam** ’a tıklayın. Verilerin Excel’e aktarılması birkaç saniye sürer. İşlem tamamlandığında 11 ' den fazla veri sütunu görürsünüz.
+1. hiveuser1 kullanıcısının parolasını tekrar girin ve **Tamam**’a tıklayın. Verilerin Excel’e aktarılması birkaç saniye sürer. İşlem tamamlandığında 11 ' den fazla veri sütunu görürsünüz.
 
 İkinci ilkeyi test etmek için (Read-hivesampletable-devicemake), son bölümde oluşturduğunuz
 

@@ -1,18 +1,16 @@
 ---
 title: Azure HDInsight için ağ güvenlik grubu (NSG) hizmet etiketleri
 description: NSG 'lerinize IP adresleri eklemeden, sistem durumu ve Yönetim Hizmetleri düğümlerinden kümenize gelen trafiğe izin vermek için HDInsight hizmet etiketlerini kullanın.
-author: hrasheed-msft
-ms.author: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 08/11/2020
-ms.openlocfilehash: 1a90bc6636dcb3aa81f09b0489850c1a95b3256d
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: d17d067b88add3006bc5c7fb10caa6b80a80a827
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96022760"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98931773"
 ---
 # <a name="nsg-service-tags-for-azure-hdinsight"></a>Azure HDInsight için NSG hizmet etiketleri
 
@@ -59,7 +57,7 @@ Kümeniz bu tabloda listelenen bir bölgede bulunuyorsa, NSG 'nize yalnızca tek
 | Ülke | Bölge | Hizmet etiketi |
 | ---- | ---- | ---- |
 | Avustralya | Doğu Avustralya | HDInsight. AustraliaEast |
-| &nbsp; | Avustralya Güneydoğu | HDInsight. AustraliaSoutheast |
+| &nbsp; | Güneydoğu Avustralya | HDInsight. AustraliaSoutheast |
 | &nbsp; | Orta Avustralya | HDInsight. AustraliaCentral |
 | Çin | Çin Doğu 2 | HDInsight. ChinaEast2 |
 | &nbsp; | Çin Kuzey 2 | HDInsight. ChinaNorth2 |
@@ -67,7 +65,7 @@ Kümeniz bu tabloda listelenen bir bölgede bulunuyorsa, NSG 'nize yalnızca tek
 | &nbsp; | Batı ABD 2 | HDInsight. WestUS2 |
 | &nbsp; | Orta Batı ABD | HDInsight. WestCentralUS |
 | Kanada | Doğu Kanada | HDInsight. Canadadoğu |
-| Brezilya | Brezilya Güney | HDInsight. BrazilSouth |
+| Brezilya | Güney Brezilya | HDInsight. BrazilSouth |
 | Güney Kore | Güney Kore - Orta | HDInsight. KoreaCentral |
 | &nbsp; | Güney Kore - Güney | HDInsight. Koreagüney |
 | Hindistan | Orta Hindistan | HDInsight. merkezde Hindistan |
@@ -99,7 +97,7 @@ Kümeniz aşağıdaki tablodaki bölgelerden birinde oluşturulduysa, hizmet eti
 | Ülke | Bölge | Hizmet etiketi |
 | ---- | ---- | ---- |
 | Birleşik Devletler | Doğu ABD 2 | HDInsight. EastUS2 |
-| &nbsp; | Orta ABD | HDInsight. merkezde ABD |
+| &nbsp; | Central US | HDInsight. merkezde ABD |
 | &nbsp; | Kuzey Orta ABD | 'Tan. Kuzeydoğu ABD |
 | &nbsp; | Orta Güney ABD | HDInsight. Güneydoğu ABD |
 | &nbsp; | Doğu ABD | HDInsight. EastUS |

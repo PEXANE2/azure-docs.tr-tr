@@ -7,12 +7,12 @@ author: aniket-ms
 ms.author: aadnaik
 ms.reviewer: HDI HiveLLAP Team
 ms.date: 05/05/2020
-ms.openlocfilehash: 626b061cc237f7238d47863a3e1ed88961d2f742
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: 7df75077785c66215008e045ef0b1e451ba29f57
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97680536"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98931099"
 ---
 # <a name="azure-hdinsight-interactive-query-cluster-hive-llap-sizing-guide"></a>Azure HDInsight etkileşimli sorgu kümesi (Hive LLAP) boyutlandırma Kılavuzu
 
@@ -29,7 +29,7 @@ Bu belge, makul bir performansa ulaşmak için tipik bir iş yükü için HDInsi
 **_Note: tüm önerilen yapılandırma değerleri D14 v2 türü çalışan düğümü _ ' i temel alır._*  
 
 ### <a name="_configuration"></a>_ *Yapılandırması:**    
-| Yapılandırma Anahtarı      | Önerilen değer  | Açıklama |
+| Yapılandırma Anahtarı      | Önerilen değer  | Description |
 | :---        |    :----:   | :---     |
 | Yarn. NodeManager. Resource. Memory-MB | 102400 (MB) | Bir düğümdeki tüm YARN kapsayıcıları için, MB olarak verilen toplam bellek | 
 | Yarn. Scheduler. maksimum ayırma-MB | 102400 (MB) | RM 'de, MB cinsinden her kapsayıcı isteği için en yüksek ayırma. Bu değerden daha yüksek bellek istekleri uygulanmayacak |
@@ -216,7 +216,7 @@ Lütfen unutmayın:
  - İş yükü yönetimi sıra kapasitesi = 20 GB
  - Varsayılan sıra kapasitesi = 10 GB
 
-İş yükü yönetimi sıra kapasitesinde 20 GB ile bir kaynak planı `QUERY_PARALLELISM` beş olarak değer belirtebilir, bu da iş yükü yönetiminin her biri 4 GB kapsayıcı boyutuyla beş tez AMs başlatabileceği anlamına gelir. `QUERY_PARALLELISM`Kapasiteden yüksekse, bazı tez AMs askıda `ACCEPTED` durumunda görebilirsiniz. Hiveserver2 Interactive, durum içinde olmayan tez AMs 'ye sorgu parçaları gönderemiyor `RUNNING` .
+İş yükü yönetimi sıra kapasitesinde 20 GB ile bir kaynak planı `QUERY_PARALLELISM` beş olarak değer belirtebilir, bu da iş yükü yönetiminin her biri 4 GB kapsayıcı boyutuyla beş tez AMs başlatabileceği anlamına gelir. `QUERY_PARALLELISM`Kapasiteden yüksekse, bazı tez AMs durma yanıt verme `ACCEPTED` durumunu görebilirsiniz. Hiveserver2 Interactive, durum içinde olmayan tez AMs 'ye sorgu parçaları gönderemiyor `RUNNING` .
 
 
 #### <a name="next-steps"></a>**Sonraki adımlar**

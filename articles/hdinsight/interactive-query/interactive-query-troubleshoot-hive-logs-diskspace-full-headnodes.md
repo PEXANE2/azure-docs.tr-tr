@@ -5,14 +5,13 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 author: nisgoel
 ms.author: nisgoel
-ms.reviewer: jasonh
 ms.date: 10/05/2020
-ms.openlocfilehash: 107ec012bf2ff76ee1cbe4c5f8252566a5a16127
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: cd7e6a7f13f6cccb5be5d23d69c2a44fc655cf55
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93288928"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98930951"
 ---
 # <a name="scenario-apache-hive-logs-are-filling-up-the-disk-space-on-the-head-nodes-in-azure-hdinsight"></a>Senaryo: Apache Hive Günlükler Azure HDInsight 'taki baş düğümlerdeki disk alanını dolduriyor
 
@@ -42,7 +41,7 @@ Gelişmiş Hive Log4J yapılandırmalarında, geçerli varsayılan silme zamanla
 
 1. Ambarı portalındaki Hive bileşen Özeti ' ne gidin ve **configs** sekmesini seçin.
 
-2. `Advanced hive-log4j` **Gelişmiş ayarlar** ' da bölümüne gidin.
+2. `Advanced hive-log4j` **Gelişmiş ayarlar**' da bölümüne gidin.
 
 3. `appender.RFA.strategy.action.condition.age`Parametresini tercih ettiğiniz bir yaş olarak ayarlayın. Bu örnek, yaşı 14 gün olarak ayarlar: `appender.RFA.strategy.action.condition.age = 14D`
 

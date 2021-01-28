@@ -1,19 +1,16 @@
 ---
 title: HDInsight 'ta Apache Hadoop işleri için veri yükleme
 description: HDInsight 'ta Apache Hadoop işleri için verileri karşıya yükleme ve verilere erişme hakkında bilgi edinin. Azure klasik CLı, Azure Depolama Gezgini, Azure PowerShell, Hadoop komut satırı veya Sqoop kullanın.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdiseo17may2017,seoapr2020
 ms.date: 04/27/2020
-ms.openlocfilehash: 47262e0dc7247e1d514eeb64512c21ff1ae527ab
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: a8d21b88298b6092c869b89d48fe4c259c2365b6
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92534830"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98931340"
 ---
 # <a name="upload-data-for-apache-hadoop-jobs-in-hdinsight"></a>HDInsight 'ta Apache Hadoop işleri için veri yükleme
 
@@ -37,7 +34,7 @@ Microsoft, Azure depolama ile çalışmak için aşağıdaki yardımcı programl
 
 | Araç | Linux | OS X | Windows |
 | --- |:---:|:---:|:---:|
-| [Azure Portal](../storage/blobs/storage-quickstart-blobs-portal.md) |✔ |✔ |✔ |
+| [Azure portalı](../storage/blobs/storage-quickstart-blobs-portal.md) |✔ |✔ |✔ |
 | [Azure CLI](../storage/blobs/storage-quickstart-blobs-cli.md) |✔ |✔ |✔ |
 | [Azure PowerShell](../storage/blobs/storage-quickstart-blobs-powershell.md) | | |✔ |
 | [AzCopy](../storage/common/storage-use-azcopy-v10.md) |✔ | |✔ |
@@ -99,7 +96,7 @@ Azure Data Factory hizmeti, veri oluşturmaya yönelik tam olarak yönetilen bir
 |Depolama türü|Belgeler|
 |----|----|
 |Azure Blob depolama|[Azure Data Factory kullanarak Azure Blob depolama alanına veya oradan veri kopyalama](../data-factory/connector-azure-blob-storage.md)|
-|Azure Data Lake Storage 1. Nesil|[Azure Data Factory kullanarak Azure Data Lake Storage 1. veri kopyalama](../data-factory/connector-azure-data-lake-store.md)|
+|Azure Data Lake Storage Gen1|[Azure Data Factory kullanarak Azure Data Lake Storage 1. veri kopyalama](../data-factory/connector-azure-data-lake-store.md)|
 |Azure Data Lake Storage Gen2 |[Azure Data Factory ile Azure Data Lake Storage 2. verileri yükleme](../data-factory/load-azure-data-lake-storage-gen2.md)|
 
 ### <a name="apache-sqoop"></a>Apache Sqoop

@@ -2,26 +2,23 @@
 title: 'Öğretici: HDInsight Apache Storm depolama-Azure/Data Lake'
 description: Öğretici-Azure HDInsight için, Apache Storm ile uyumlu depolamaya yazmak üzere kullanmayı öğrenin.
 ms.service: hdinsight
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 06/24/2019
-ms.openlocfilehash: 8cdcc60e6eeec22e202d670c3fc057711bd432a6
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 4e648c57be699620e669ce7db0845dad2b876095
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545455"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98932549"
 ---
 # <a name="tutorial-write-to-apache-hadoop-hdfs-from-apache-storm-on-azure-hdinsight"></a>Öğretici: Azure HDInsight 'ta Apache Storm Apache Hadoop ini yazma
 
-Bu öğreticide, HDInsight üzerinde Apache Storm tarafından kullanılan, Apache Storm ile uyumlu depolamaya veri yazmak için nasıl kullanılacağı gösterilmektedir. HDInsight hem Azure Storage hem de Azure Data Lake Storage ile uyumlu depolama olarak kullanabilir. Fırtınası,, [HdfsBolt](https://storm.apache.org/releases/current/javadocs/org/apache/storm/hdfs/bolt/HdfsBolt.html) verileri, Bu belge, Hdfscıvata her iki depolama türüne yazma hakkında bilgi sağlar.
+Bu öğreticide, HDInsight üzerinde Apache Storm tarafından kullanılan, Apache Storm ile uyumlu depolamaya veri yazmak için nasıl kullanılacağı gösterilmektedir. HDInsight hem Azure Storage hem de Azure Data Lake Storage ile uyumlu depolama olarak kullanabilir. Fırtınası,, [](https://storm.apache.org/releases/current/javadocs/org/apache/storm/hdfs/bolt/HdfsBolt.html) verileri, Bu belge, Hdfscıvata her iki depolama türüne yazma hakkında bilgi sağlar.
 
 Bu belgede kullanılan örnek topoloji, HDInsight üzerinde fırtınası ile birlikte gelen bileşenlere bağımlıdır. Diğer Apache Storm kümeleriyle birlikte kullanıldığında, değişikliğin Azure Data Lake Storage çalışmasını gerektirebilir.
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Kümeyi betik eylemiyle yapılandırma
@@ -36,7 +33,7 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 * Apache [Maven](https://maven.apache.org/download.cgi) , Apache 'e göre düzgün şekilde [yüklendi](https://maven.apache.org/install.html) .  Maven, Java projeleri için bir proje derleme sistemidir.
 
-* Bir SSH istemcisi. Daha fazla bilgi için bkz. [SSH kullanarak HDInsight 'A bağlanma (Apache Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md).
+* Bir SSH istemcisi. Daha fazla bilgi için bkz. [SSH kullanarak HDInsight'a (Apache Hadoop) bağlanma](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 * Kümelerinizin birincil depolama alanı için [URI şeması](../hdinsight-hadoop-linux-information.md#URI-and-scheme) . Bu `wasb://` , `abfs://` Azure Data Lake Storage 2. veya Azure Data Lake Storage 1. Için Azure depolama için olacaktır `adl://` . Azure depolama için güvenli aktarım etkinse URI olur `wasbs://` .  Ayrıca bkz. [Güvenli aktarım](../../storage/common/storage-require-secure-transfer.md).
 
@@ -160,7 +157,7 @@ Bu betiği kümenizle birlikte kullanma hakkında bilgi için bkz. [betik eyleml
     hdfs.url: wasbs:///
     ```
 
-    Dosyayı kaydetmek için __CTRL + X__ , sonra __Y__ ve son olarak __ENTER__ tuşlarını kullanın. Bu dosyadaki değerler, depolama URL 'sini ve verilerin yazıldığı dizin adını ayarlar.
+    Dosyayı kaydetmek için __CTRL + X__, sonra __Y__ ve son olarak __ENTER__ tuşlarını kullanın. Bu dosyadaki değerler, depolama URL 'sini ve verilerin yazıldığı dizin adını ayarlar.
 
 1. Topolojiyi başlatmak için aşağıdaki komutu kullanın:
 
@@ -205,9 +202,9 @@ Bu öğretici ile oluşturulan kaynakları temizlemek için kaynak grubunu sileb
 
 Azure portalını kullanarak kaynak grubunu kaldırmak için:
 
-1. Azure portalında sol taraftaki menüyü genişleterek hizmet menüsünü açın ve sonra __Kaynak Grupları__ 'nı seçerek kaynak gruplarınızın listesini görüntüleyin.
+1. Azure portalında sol taraftaki menüyü genişleterek hizmet menüsünü açın ve sonra __Kaynak Grupları__'nı seçerek kaynak gruplarınızın listesini görüntüleyin.
 2. Silinecek kaynak grubunu bulun ve sonra listenin sağ tarafındaki __Daha fazla__ düğmesine (...) sağ tıklayın.
-3. __Kaynak grubunu sil__ 'i seçip onaylayın.
+3. __Kaynak grubunu sil__'i seçip onaylayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

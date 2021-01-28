@@ -1,7 +1,7 @@
 ---
 title: Çok cihazlı konuşma (Önizleme)-konuşma hizmeti
 titleSuffix: Azure Cognitive Services
-description: ''
+description: Çoklu cihaz konuşması, birden fazla istemci arasında konuşma veya metin konuşması oluşturmayı ve aralarında gönderilen iletileri koordine etmelerini kolaylaştırır.
 services: cognitive-services
 author: trevorbye
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: trbye
-ms.openlocfilehash: 3c2dbaf8f65208126c52617d4b89d901b3670dac
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 7b38bc390b28788003c2de757f45e8ecdfd5c89a
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95025183"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98932423"
 ---
 # <a name="what-is-multi-device-conversation-preview"></a>Çok cihazlı konuşma (Önizleme) nedir?
 
@@ -37,7 +37,7 @@ Bir cihaz dizisi genelinde çalışacak bir özellik veya çözüm oluşturabili
 ## <a name="key-features"></a>Önemli özellikler
 
 - **Gerçek** zamanlı döküm: herkes, konuşmanın bir dökümünü alacak ve böylece metni gerçek zamanlı olarak takip edebilir veya daha sonra için kaydedebilir.
-- **Gerçek zamanlı çeviri** – metin çevirisi için 60 ' den fazla [dil](language-support.md#text-languages) ile kullanıcılar, görüşmeyi tercih edilen dillere çevirebilir.
+- **Gerçek zamanlı çeviri** – metin çevirisi için 70 ' den fazla [dil](language-support.md#text-languages) ile kullanıcılar, görüşmeyi tercih edilen dillere çevirebilir.
 - **Okunabilir** döküm-noktalama ve çeviri, noktalama ve tümce sonları ile kolayca takip edilir.
 - **Ses veya metin girişi** – her bir Kullanıcı, katılımcının seçili dili için etkinleştirilen dil desteği özelliklerine bağlı olarak kendi cihazını konuşarak veya yazabilir. Lütfen [dil desteğine](language-support.md#speech-to-text)başvurun.
 - **İleti geçişi** -çok cihazlı görüşme hizmeti, bir istemci tarafından gönderilen iletileri kendi seçtikleri dillerde, diğer tüm kullanıcılara dağıtır.
@@ -58,9 +58,6 @@ Gerçek zamanlı döküm ve çeviri, konuşmaları farklı diller konuştan ve/v
 ### <a name="presentations"></a>Sunular
 
 Ayrıca, hem ekranda hem de hedef kitle üyelerinin kendi cihazlarındaki sunular ve seminerler için açıklamalı alt yazılar sağlayabilirsiniz. Hedef kitle konuşma koduyla birleştikten sonra, kendi cihazındaki bu dökümü kendi tercih ettiği dilde görebilirler.
-
-> [!NOTE]
-> Bir örnek görmek için, çok cihazlı konuşma hizmetini kullanan bir PowerPoint eklentisi olan [sunu çeviricisine](https://www.microsoft.com/translator/apps/presentation-translator/)göz atın. Söz konusu dosyayı [buradan](https://download.cnet.com/s/powerpoint-add-in/) indirebilirsiniz.
 
 ## <a name="how-it-works"></a>Nasıl çalışır?
 
