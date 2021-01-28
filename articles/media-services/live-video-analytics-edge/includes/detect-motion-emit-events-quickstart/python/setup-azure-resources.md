@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 40d2f957ce115b43a1dcc138b86e05ec9cc47384
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: c5c1fd202b52c8708ab067ca802481f4d4bb4e27
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98060630"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98956380"
 ---
 Bu öğreticide aşağıdaki Azure kaynakları gereklidir:
 
@@ -26,7 +26,19 @@ Bu hızlı başlangıç için, Azure aboneliğinizde gerekli kaynakları dağıt
     bash -c "$(curl -sL https://aka.ms/lva-edge/setup-resources-for-samples)"
     ```
     
-    Betiği başarıyla tamamladıktan sonra aboneliğinizdeki tüm gerekli kaynakları görmeniz gerekir.
+    Betiği başarıyla tamamladıktan sonra aboneliğinizdeki tüm gerekli kaynakları görmeniz gerekir. Komut dosyası tarafından toplam 12 kaynak oluşturulur:
+    1. **Akış uç noktası** -bu, kayıtlı AMS varlığını yürütmeye yardımcı olur.
+    1. **Sanal makine** -bu, Edge cihazınız olarak görev yapacak bir sanal makinedir.
+    1. **Disk** -bu, medya ve yapıtları depolamak için sanal makineye bağlı bir depolama disktir.
+    1. **Ağ güvenlik grubu** -bu, bir Azure sanal ağındaki Azure kaynaklarından gelen ve giden ağ trafiğini filtrelemek için kullanılır.
+    1. **Ağ arabirimi** -bu, bir Azure sanal makinesinin Internet, Azure ve diğer kaynaklarla iletişim kurmasını sağlar.
+    1. Savunma **bağlantısı** -bu, tarayıcınızı ve Azure Portal kullanarak sanal makinenize bağlanmanızı sağlar.
+    1. **Genel IP adresi** -bu, Azure kaynaklarının Internet ve genel kullanıma yönelik Azure hizmetleriyle iletişim kurmasını sağlar
+    1. **Sanal ağ** -bu, sanal makineniz gibi birçok Azure Kaynak türünün, internet ve şirket içi ağlarla güvenli bir şekilde iletişim kurmasını sağlar. [Sanal ağlar](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) hakkında daha fazla bilgi
+    1. **IoT Hub** -bu, IoT uygulamanız, IoT Edge modülleriniz ve yönettiği cihazlar arasında çift yönlü iletişim için bir merkezi ileti hub 'ı görevi görür.
+    1. **Medya hizmeti hesabı** -bu, Azure 'da medya içeriğini yönetmeye ve akışa yardımcı olur.
+    1. **Depolama hesabı** -bir birincil depolama hesabınız olmalıdır ve Media Services hesabınızla Ilişkili birkaç ikincil depolama hesabı olabilir. Daha fazla bilgi için bkz. [Azure Media Services hesapları Ile Azure depolama hesapları](https://docs.microsoft.com/azure/media-services/latest/storage-account-concept).
+    1. **Kapsayıcı kayıt defteri** -bu, özel Docker kapsayıcı görüntülerinizi ve ilgili yapıtlarınızı depolamaya ve yönetmeye yardımcı olur.
 1. Betik tamamlandıktan sonra, klasör yapısını göstermek için süslü ayraçları seçin. *~/CloudDrive/LVA-Sample* dizininde birkaç dosya görürsünüz. Bu hızlı başlangıçta ilgilendiğiniz:
 
      * ***~/CloudDrive/LVA-Sample/Edge-Deployment/.exe**-bu dosya Visual Studio Code bir uç cihaza modül dağıtmak için kullandığı özellikleri içerir.

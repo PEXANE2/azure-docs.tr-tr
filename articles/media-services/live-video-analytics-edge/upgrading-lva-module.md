@@ -5,12 +5,12 @@ author: naiteeks
 ms.topic: how-to
 ms.author: naiteeks
 ms.date: 12/14/2020
-ms.openlocfilehash: aa8657550c6475afd9f893acf8985c50cec0f199
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 49c17946203bc6c3655b1aaf7b04a1ee3ea67388
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98119467"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955658"
 ---
 # <a name="upgrading-live-video-analytics-on-iot-edge-from-10-to-20"></a>1,0 ' den 2,0 ' e IoT Edge canlı video analizlerini yükseltme
 
@@ -37,7 +37,7 @@ Dağıtım şablonunuzda, düğüm altındaki IoT Edge modülünde canlı video 
 "image": "mcr.microsoft.com/media/live-video-analytics:2"
 ```
 > [!TIP]
-IoT Edge modülündeki canlı video analizinin adını değiştirmediyse, `lvaEdge` Modül düğümünün altında öğesine bakın.
+> IoT Edge modülündeki canlı video analizinin adını değiştirmediyse, `lvaEdge` Modül düğümünün altında öğesine bakın.
 
 ### <a name="topology-file-changes"></a>Topoloji dosyası değişiklikleri
 Topoloji dosyalarınızda, **`apiVersion`** 2,0 olarak ayarlandığından emin olun
@@ -58,9 +58,9 @@ Topoloji dosyalarınızda, **`apiVersion`** 2,0 olarak ayarlandığından emin o
 >, **`outputSelectors`** İsteğe bağlı bir özelliktir. Bu kullanılmazsa, medya grafiği sesi (etkinse) ve RTSP kamera aşağı akış üzerinden iletir. 
 
 * `MediaGraphHttpExtension`Ve `MediaGraphGrpcExtension` işlemcilerde, aşağıdaki değişiklikleri aklınızda:  
-    * **Görüntü özellikleri**
-        * `MediaGraphImageFormatEncoded` artık desteklenmiyor. 
-        * Bunun yerine, **`MediaGraphImageFormatBmp`** veya **`MediaGraphImageFormatJpeg`** kullanın **`MediaGraphImageFormatPng`** . Örneğin,
+    #### <a name="image-properties"></a>Görüntü özellikleri
+    * `MediaGraphImageFormatEncoded` artık desteklenmiyor. 
+      * Bunun yerine, **`MediaGraphImageFormatBmp`** veya **`MediaGraphImageFormatJpeg`** kullanın **`MediaGraphImageFormatPng`** . Örneğin,
         ```
         "image": {
                 "scale": 
@@ -94,14 +94,14 @@ Topoloji dosyalarınızda, **`apiVersion`** 2,0 olarak ayarlandığından emin o
         >[!NOTE]
         > Olası pixelFormat değerleri şunlardır: `yuv420p` , `rgb565be` ,, `rgb565le` `rgb555be` , `rgb555le` , `rgb24` , `bgr24` , `argb` , `rgba` , `abgr` , `bgra`  
 
-    * **GRPC uzantı işlemcisi için extensionConfiguration**  
-        * `MediaGraphGrpcExtension`İşlemcide, **`extensionConfiguration`** GRPC sözleşmesinin bir parçası olarak kullanılabilen isteğe bağlı bir dize olan adlı yeni bir özellik kullanılabilir. Bu alan, çıkarım sunucusuna herhangi bir veri geçirmek için kullanılabilir ve çıkarım sunucusunun bu verileri nasıl kullandığını tanımlayabilirsiniz.  
-        Tek bir çıkarım sunucusunda paketlenmiş birden çok AI modeli olduğunda bu özelliğin bir kullanım durumu vardır. Bu özellikle, her AI modeli için bir düğüm kullanıma almanız gerekmez. Bunun yerine, bir uzantı sağlayıcısı olarak bir grafik örneği için, özelliği kullanarak farklı AI modellerinin nasıl Seçileni tanımlayabilir **`extensionConfiguration`** ve yürütme sırasında LVA, bu dizeyi Istenen AI modelini çağırmak için kullanabilir.  
+    #### <a name="extensionconfiguration-for-grpc-extension-processor"></a>GRPC uzantı işlemcisi için extensionConfiguration  
+    * `MediaGraphGrpcExtension`İşlemcide, **`extensionConfiguration`** GRPC sözleşmesinin bir parçası olarak kullanılabilen isteğe bağlı bir dize olan adlı yeni bir özellik kullanılabilir. Bu alan, çıkarım sunucusuna herhangi bir veri geçirmek için kullanılabilir ve çıkarım sunucusunun bu verileri nasıl kullandığını tanımlayabilirsiniz.  
+    Tek bir çıkarım sunucusunda paketlenmiş birden çok AI modeli olduğunda bu özelliğin bir kullanım durumu vardır. Bu özellikle, her AI modeli için bir düğüm kullanıma almanız gerekmez. Bunun yerine, bir uzantı sağlayıcısı olarak bir grafik örneği için, özelliği kullanarak farklı AI modellerinin nasıl Seçileni tanımlayabilir **`extensionConfiguration`** ve yürütme sırasında LVA, bu dizeyi Istenen AI modelini çağırmak için kullanabilir.  
 
-    * **AI kompozisyonu**
-        * Canlı video analizi 2,0 artık bir topoloji içinde birden fazla medya Graf uzantısı işlemcisi kullanmayı desteklemektedir. RTSP kamerasından medya çerçevelerini farklı AI modellerine, paralel veya her ikisinin birleşimine geçirebilirsiniz. Lütfen sıralı olarak kullanılan iki AI modelini gösteren örnek topolojiye bakın.
+    #### <a name="ai-composition"></a>AI kompozisyonu
+    * Canlı video analizi 2,0 artık bir topoloji içinde birden fazla medya Graf uzantısı işlemcisi kullanmayı desteklemektedir. RTSP kamerasından medya çerçevelerini farklı AI modellerine, paralel veya her ikisinin birleşimine geçirebilirsiniz. Lütfen sıralı olarak kullanılan iki AI modelini gösteren örnek topolojiye bakın.
 
-
+### <a name="disk-space-management-with-sink-nodes"></a>Havuz düğümleri ile disk alanı yönetimi
 * **Dosya havuzu** Düğümünüzün artık IoT Edge modülündeki canlı video analizinin işlenen görüntüleri depolamak için ne kadar disk alanı kullandığını belirtebilirsiniz. Bunu yapmak için, **`maximumSizeMiB`** alanı FileSink düğümüne ekleyin. Örnek bir dosya havuzu düğümü aşağıdaki gibidir:
     ```
     "sinks": [
@@ -154,6 +154,7 @@ Topoloji dosyalarınızda, **`apiVersion`** 2,0 olarak ayarlandığından emin o
     >[!NOTE]
     >  **Dosya havuzu** yolu temel dizin yolu ve dosya adı düzenine bölünür, ancak **varlık havuz** yolu temel dizin yolunu içerir.  
 
+### <a name="frame-rate-management"></a>Kare hızı yönetimi
 * **`MediaGraphFrameRateFilterProcessor`****IoT Edge 2,0 modülündeki canlı video analizinden** kullanım dışıdır.
     * İşlenmek üzere gelen videoyu örneklemek için, **`samplingOptions`** özelliği MediaGraph uzantı işlemcilere ( `MediaGraphHttpExtension` veya `MediaGraphGrpcExtension` ) ekleyin  
      ```
@@ -169,7 +170,7 @@ Bu sürümde, telegraf Azure Izleyici 'ye ölçüm göndermek için kullanılabi
 > [!div class="mx-imgBorder"]
 > :::image type="content" source="./media/telemetry-schema/telegraf.png" alt-text="Olayların taksonomisi":::
 
-Docker 'ı kullanarak özel bir yapılandırmaya sahip telegraf görüntüsünü kolayca oluşturabilirsiniz. [İzleme ve günlüğe kaydetme](monitoring-logging.md#azure-monitor-collection-via-telegraf) sayfasında bu konuda daha fazla bilgi edinin.
+Docker 'ı kullanarak özel bir yapılandırmaya sahip telegraf görüntüsünü kolayca oluşturabilirsiniz. [İzleme ve günlüğe kaydetme](monitoring-logging.md#azure-monitor-collection-via-telegraf) sayfasında daha fazla bilgi edinin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

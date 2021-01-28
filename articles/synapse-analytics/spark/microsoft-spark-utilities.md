@@ -10,12 +10,12 @@ ms.date: 09/10/2020
 ms.author: ruxu
 ms.reviewer: ''
 zone_pivot_groups: programming-languages-spark-all-minus-sql
-ms.openlocfilehash: 262177d8cde3a5eee2721f2af8a0511c205da9b9
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: d36086052f4e5719fd17989e3326a4b5728ee3ca
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98890538"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954302"
 ---
 # <a name="introduction-to-microsoft-spark-utilities"></a>Microsoft Spark yardımcı programlarına giriş
 
@@ -39,10 +39,6 @@ ADLS 2. verilerine aşağıdaki URL aracılığıyla SYNAPSE Spark ile erişebil
 
 <code>abfss://<container_name>@<storage_account_name>.dfs.core.windows.net/<path></code>
 
-<!-- ### Configure access to Azure Blob Storage  -->
-
-:::zone pivot = "programming-language-python"
-
 ### <a name="configure-access-to-azure-blob-storage"></a>Azure Blob depolamaya erişimi yapılandırma  
 
 SYNAPSE Azure Blob depolamaya erişmek için **paylaşılan erişim imzasını (SAS)** kullanın. Kodda SAS anahtarlarının açığa çıkarılması önlemek için, SYNAPSE çalışma alanında erişmek istediğiniz Azure Blob depolama hesabına yeni bir bağlı hizmet oluşturmanız önerilir.
@@ -62,6 +58,8 @@ Aşağıdaki URL aracılığıyla SYNAPSE Spark ile Azure Blob depolama üzerind
 <code>wasb[s]://<container_name>@<storage_account_name>.blob.core.windows.net/<path></code>
 
 Aşağıda bir kod örneği verilmiştir:
+
+:::zone pivot = "programming-language-python"
 
 ```python
 from pyspark.sql import SparkSession
@@ -86,26 +84,6 @@ print('Remote blob path: ' + wasb_path)
 
 :::zone pivot = "programming-language-scala"
 
-### <a name="configure-access-to-azure-blob-storage"></a>Azure Blob depolamaya erişimi yapılandırma  
-
-SYNAPSE Azure Blob depolamaya erişmek için **paylaşılan erişim imzasını (SAS)** kullanın. Kodda SAS anahtarlarının açığa çıkarılması önlemek için, SYNAPSE çalışma alanında erişmek istediğiniz Azure Blob depolama hesabına yeni bir bağlı hizmet oluşturmanız önerilir.
-
-Azure Blob depolama hesabı için yeni bir bağlı hizmet eklemek için aşağıdaki adımları izleyin:
-
-1. [Azure SYNAPSE Studio 'yu](https://web.azuresynapse.net/)açın.
-2. Sol panelden **Yönet** ' i seçin ve **dış bağlantılar** altında **bağlı hizmetler** ' i seçin.
-3. Sağ taraftaki **yeni bağlı hizmet** panelinde **Azure Blob Storage** 'ı arayın.
-4. **Devam**’ı seçin.
-5. Bağlı hizmet adına erişmek ve yapılandırmak için Azure Blob Depolama hesabını seçin. **Kimlik doğrulama yöntemi** için **hesap anahtarını** kullanmayı önerin.
-6. Ayarların doğru olduğunu doğrulamak için **Bağlantıyı Sına** ' yı seçin.
-7. Önce **Oluştur** ' u seçin ve değişikliklerinizi kaydetmek Için **Tümünü Yayımla** ' ya tıklayın. 
-
-Aşağıdaki URL aracılığıyla SYNAPSE Spark ile Azure Blob depolama üzerindeki verilere erişebilirsiniz:
-
-<code>wasb[s]://<container_name>@<storage_account_name>.blob.core.windows.net/<path></code>
-
-Aşağıda bir kod örneği verilmiştir:
-
 ```scala
 val blob_account_name = "" // replace with your blob name
 val blob_container_name = "" //replace with your container name
@@ -123,27 +101,6 @@ spark.conf.set(f"fs.azure.sas.$blob_container_name.$blob_account_name.blob.core.
 ::: zone-end
 
 :::zone pivot = "programming-language-csharp"
-
-
-### <a name="configure-access-to-azure-blob-storage"></a>Azure Blob depolamaya erişimi yapılandırma  
-
-SYNAPSE Azure Blob depolamaya erişmek için **paylaşılan erişim imzasını (SAS)** kullanın. Kodda SAS anahtarlarının açığa çıkarılması önlemek için, SYNAPSE çalışma alanında erişmek istediğiniz Azure Blob depolama hesabına yeni bir bağlı hizmet oluşturmanız önerilir.
-
-Azure Blob depolama hesabı için yeni bir bağlı hizmet eklemek için aşağıdaki adımları izleyin:
-
-1. [Azure SYNAPSE Studio 'yu](https://web.azuresynapse.net/)açın.
-2. Sol panelden **Yönet** ' i seçin ve **dış bağlantılar** altında **bağlı hizmetler** ' i seçin.
-3. Sağ taraftaki **yeni bağlı hizmet** panelinde **Azure Blob Storage** 'ı arayın.
-4. **Devam**’ı seçin.
-5. Bağlı hizmet adına erişmek ve yapılandırmak için Azure Blob Depolama hesabını seçin. **Kimlik doğrulama yöntemi** için **hesap anahtarını** kullanmayı önerin.
-6. Ayarların doğru olduğunu doğrulamak için **Bağlantıyı Sına** ' yı seçin.
-7. Önce **Oluştur** ' u seçin ve değişikliklerinizi kaydetmek Için **Tümünü Yayımla** ' ya tıklayın. 
-
-Aşağıdaki URL aracılığıyla SYNAPSE Spark ile Azure Blob depolama üzerindeki verilere erişebilirsiniz:
-
-<code>wasb[s]://<container_name>@<storage_account_name>.blob.core.windows.net/<path></code>
-
-Aşağıda bir kod örneği verilmiştir:
 
 ```csharp
 var blob_account_name = "";  // replace with your blob name

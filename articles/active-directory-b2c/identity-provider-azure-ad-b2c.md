@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/15/2021
+ms.date: 01/27/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit, project-no-code
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 8a0d69ea57eb5b8b2a074c37d4798a99c576ce95
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: ea4def3cfaa19e27dc05e955bf97b41976ec2190
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98538175"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98953929"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-an-azure-ad-b2c-account-from-another-azure-ad-b2c-tenant"></a>Başka bir Azure AD B2C kiracısından Azure AD B2C hesabıyla kaydolma ve oturum açma ayarlama
 
@@ -37,7 +37,7 @@ Bu makalede, başka bir Azure AD B2C kiracısıyla bir Federasyonun nasıl ayarl
 ![Başka bir Azure AD B2C kiracısıyla Azure AD B2C Federasyonu](./media/identity-provider-azure-ad-b2c/azure-ad-b2c-federation.png)
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
@@ -107,6 +107,17 @@ Bir uygulama oluşturmak için.
 
 1. **Kaydet**’i seçin.
 
+## <a name="add-azure-ad-b2c-identity-provider-to-a-user-flow"></a>Kullanıcı akışına Azure AD B2C Identity sağlayıcısı ekleme 
+
+1. Azure AD B2C kiracınızda **Kullanıcı akışları**' nı seçin.
+1. Azure AD B2C kimlik sağlayıcısını eklemek istediğiniz kullanıcı akışına tıklayın.
+1. **Sosyal kimlik sağlayıcıları** altında **fabrikam**' ı seçin.
+1. **Kaydet**’i seçin.
+1. İlkenizi test etmek için **Kullanıcı akışını Çalıştır**' ı seçin.
+1. **Uygulama** için, daha önce kaydettiğiniz *testapp1* adlı Web uygulamasını seçin. **Yanıt URL 'si** gösterilmesi gerekir `https://jwt.ms` .
+1. **Kullanıcı akışını Çalıştır** 'a tıklayın
+1. Kaydolma veya oturum açma sayfasından *fabrikam* ' ı seçerek diğer Azure AD B2C kiracısıyla oturum açın.
+
 ::: zone-end
 
 ::: zone pivot="b2c-custom-policy"
@@ -125,9 +136,9 @@ Daha önce Azure AD B2C kiracınızda oluşturduğunuz uygulama anahtarını dep
 1. **Anahtar kullanımı** için öğesini seçin `Signature` .
 1. **Oluştur**’u seçin.
 
-## <a name="add-a-claims-provider"></a>Talep sağlayıcısı ekleme
+## <a name="configure-azure-ad-b2c-as-an-identity-provider"></a>Kimlik sağlayıcısı olarak Azure AD B2C yapılandırma
 
-Kullanıcıların diğer Azure AD B2C (Fabrikam) kullanarak oturum açmasını istiyorsanız, diğer Azure AD B2C Azure AD B2C bir uç nokta aracılığıyla iletişim kurabildiği bir talep sağlayıcı olarak tanımlamanız gerekir. Uç noktası, belirli bir kullanıcının kimliği doğrulandığını doğrulamak için Azure AD B2C tarafından kullanılan bir talep kümesi sağlar.
+Kullanıcıların başka bir Azure AD B2C kiracısından (Fabrikam) bir hesap kullanarak oturum açmasını sağlamak için diğer Azure AD B2C, Azure AD B2C bir uç nokta aracılığıyla iletişim kurabildiği bir talep sağlayıcısı olarak tanımlamanız gerekir. Uç noktası, belirli bir kullanıcının kimliği doğrulandığını doğrulamak için Azure AD B2C tarafından kullanılan bir talep kümesi sağlar.
 
 Azure AD B2C, ilkenizin uzantısı dosyasındaki **ClaimsProvider** öğesine Azure AD B2C ekleyerek bir talep sağlayıcı olarak tanımlayabilirsiniz.
 
@@ -139,7 +150,7 @@ Azure AD B2C, ilkenizin uzantısı dosyasındaki **ClaimsProvider** öğesine Az
       <Domain>fabrikam.com</Domain>
       <DisplayName>Federation with Fabrikam tenant</DisplayName>
       <TechnicalProfiles>
-        <TechnicalProfile Id="Fabrikam-OpenIdConnect">
+        <TechnicalProfile Id="AzureADB2CFabrikam-OpenIdConnect">
         <DisplayName>Fabrikam</DisplayName>
         <Protocol Name="OpenIdConnect"/>
         <Metadata>
@@ -188,83 +199,29 @@ Azure AD B2C, ilkenizin uzantısı dosyasındaki **ClaimsProvider** öğesine Az
     |CryptographicKeys| **Storagereferenceıd** değerini, daha önce oluşturduğunuz ilke anahtarının adı olarak güncelleştirin. Örneğin, `B2C_1A_FabrikamAppSecret`.| 
     
 
-### <a name="upload-the-extension-file-for-verification"></a>Uzantı dosyasını doğrulama için karşıya yükle
-
-Şu anda ilkenizi, diğer Azure AD B2C kiracısıyla nasıl iletişim kuracağını Azure AD B2C bilmesini sağlayacak şekilde yapılandırdınız. Şu ana kadar herhangi bir sorun olmadığını doğrulamak için, ilkenizin uzantı dosyasını karşıya yüklemeyi deneyin.
-
-1. Azure AD B2C kiracınızdaki **özel ilkeler** sayfasında, **ilkeyi karşıya yükle**' yi seçin.
-1. Varsa **Ilkenin üzerine yazmayı** etkinleştirin ve sonra *TrustFrameworkExtensions.xml* dosyasına gidip seçin.
-1. **Karşıya Yükle**'ye tıklayın.
-
-## <a name="register-the-claims-provider"></a>Talep sağlayıcısını Kaydet
-
-Bu noktada, kimlik sağlayıcısı ayarlanmıştır, ancak kaydolma/oturum açma sayfalarında henüz mevcut değildir. Kullanılabilir hale getirmek için, var olan bir şablon Kullanıcı yolculuğunun bir yinelemesini oluşturun ve ardından Azure AD kimlik sağlayıcısı 'nı da içerecek şekilde değiştirin:
-
-1. *TrustFrameworkBase.xml* dosyasını başlangıç paketinden açın.
-1. Dahil olan **Userelde ney** öğesinin tüm içeriğini bulup kopyalayın `Id="SignUpOrSignIn"` .
-1. *TrustFrameworkExtensions.xml* açın ve **User, neys** öğesini bulun. Öğe yoksa, bir tane ekleyin.
-1. **User, neys** öğesinin bir alt öğesi olarak kopyaladığınız **User, ney** öğesinin tüm içeriğini yapıştırın.
-1. Kullanıcı yolculuğunun KIMLIĞINI yeniden adlandırın. Örneğin, `SignUpSignInFabrikam`.
-
-### <a name="display-the-button"></a>Düğmeyi görüntüleme
-
-**Claimsproviderselection** öğesi, kaydolma/oturum açma sayfasındaki bir kimlik sağlayıcısı düğmesine benzer. Azure AD B2C için bir **Claimsproviderselection** öğesi eklerseniz, bir Kullanıcı sayfada yer alıyorsa yeni bir düğme görüntülenir.
-
-1. TrustFrameworkExtensions.xmloluşturduğunuz Kullanıcı yolculuğuna dahil olan **Orchestrationstep** öğesini bulun `Order="1"` **.
-1. **Claimsproviderseçimleri** altında aşağıdaki öğeyi ekleyin. **Targetclaimsexchangeıd** değerini uygun bir değere ayarlayın, örneğin `FabrikamExchange` :
-
-    ```xml
-    <ClaimsProviderSelection TargetClaimsExchangeId="FabrikamExchange" />
-    ```
-
-### <a name="link-the-button-to-an-action"></a>Düğmeyi bir eyleme bağlama
-
-Artık bir düğmeye sahip olduğunuza göre, bunu bir eyleme bağlamanız gerekir. Bu durumda Azure AD B2C, bir belirteci almak için diğer Azure AD B2C iletişim kurmak üzere kullanılır. Azure AD B2C talep sağlayıcısı için teknik profili bağlayarak düğmeyi bir eyleme bağlayın:
-
-1. Kullanıcı yolculuğu ' nda yer alan **Orchestrationstep** ' i bulun `Order="2"` .
-1. **Targetclaimsexchangeıd** Için kullandığınız **ID** için aynı değeri kullandığınızdan emin olmak Için aşağıdaki **claimsexchange** öğesini ekleyin:
-
-    ```xml
-    <ClaimsExchange Id="FabrikamExchange" TechnicalProfileReferenceId="Fabrikam-OpenIdConnect" />
-    ```
-
-    **TechnicalProfileReferenceId** değerini daha önce oluşturduğunuz teknik profilin **kimliğiyle** güncelleştirin. Örneğin, `Fabrikam-OpenIdConnect`.
-
-1. *TrustFrameworkExtensions.xml* dosyasını kaydedin ve doğrulama için yeniden yükleyin.
-
-::: zone-end
-
-::: zone pivot="b2c-user-flow"
-
-## <a name="add-azure-ad-b2c-identity-provider-to-a-user-flow"></a>Kullanıcı akışına Azure AD B2C Identity sağlayıcısı ekleme 
-
-1. Azure AD B2C kiracınızda **Kullanıcı akışları**' nı seçin.
-1. Azure AD B2C kimlik sağlayıcısını eklemek istediğiniz kullanıcı akışına tıklayın.
-1. **Sosyal kimlik sağlayıcıları** altında **fabrikam**' ı seçin.
-1. **Kaydet**’i seçin.
-1. İlkenizi test etmek için **Kullanıcı akışını Çalıştır**' ı seçin.
-1. **Uygulama** için, daha önce kaydettiğiniz *testapp1* adlı Web uygulamasını seçin. **Yanıt URL 'si** gösterilmesi gerekir `https://jwt.ms` .
-1. **Kullanıcı akışını Çalıştır** 'a tıklayın
-1. Kaydolma veya oturum açma sayfasından *fabrikam* ' ı seçerek diğer Azure AD B2C kiracısıyla oturum açın.
-
-::: zone-end
-
-::: zone pivot="b2c-custom-policy"
+[!INCLUDE [active-directory-b2c-add-identity-provider-to-user-journey](../../includes/active-directory-b2c-add-identity-provider-to-user-journey.md)]
 
 
-## <a name="update-and-test-the-relying-party-file"></a>Bağlı olan taraf dosyasını güncelleştirme ve test etme
+```xml
+<OrchestrationStep Order="1" Type="CombinedSignInAndSignUp" ContentDefinitionReferenceId="api.signuporsignin">
+  <ClaimsProviderSelections>
+    ...
+    <ClaimsProviderSelection TargetClaimsExchangeId="AzureADB2CFabrikamExchange" />
+  </ClaimsProviderSelections>
+  ...
+</OrchestrationStep>
 
-Oluşturduğunuz Kullanıcı yolculuğunu başlatan bağlı olan taraf (RP) dosyasını güncelleştirin.
+<OrchestrationStep Order="2" Type="ClaimsExchange">
+  ...
+  <ClaimsExchanges>
+    <ClaimsExchange Id="AzureADB2CFabrikamExchange" TechnicalProfileReferenceId="AzureADB2CFabrikam-OpenIdConnect" />
+  </ClaimsExchanges>
+</OrchestrationStep>
+```
 
-1. Çalışma dizininizde *SignUpOrSignIn.xml* bir kopyasını oluşturun ve yeniden adlandırın. Örneğin, *SignUpSignInFabrikam.xml* olarak yeniden adlandırın.
-1. Yeni dosyayı açın ve **TrustFrameworkPolicy** Için **PolicyId** özniteliğinin değerini benzersiz bir değerle güncelleştirin. Örneğin, `SignUpSignInFabrikam`.
-1. **Publicpolicyuri** DEĞERINI ilke URI 'siyle güncelleştirin. Örneğin, `http://contoso.com/B2C_1A_signup_signin_fabrikam`.
-1. **Defaultuseryolculuney** Içindeki **referenceıd** özniteliğinin değerini, daha önce oluşturduğunuz Kullanıcı yolculuğunun kimliğiyle eşleşecek şekilde güncelleştirin. Örneğin, *Signupsignınfabrikam*.
-1. Değişikliklerinizi kaydedin ve dosyayı karşıya yükleyin.
-1. **Özel ilkeler** altında, listeden yeni ilkeyi seçin.
-1. **Uygulama Seç** açılan penceresinde, daha önce oluşturduğunuz Azure AD B2C uygulamayı seçin. Örneğin, *testapp1*.
-1. **Şimdi Çalıştır** 'ı seçin 
-1. Kaydolma veya oturum açma sayfasından *fabrikam* ' ı seçerek diğer Azure AD B2C kiracısıyla oturum açın.
+[!INCLUDE [active-directory-b2c-configure-relying-party-policy](../../includes/active-directory-b2c-configure-relying-party-policy-user-journey.md)]
+
+[!INCLUDE [active-directory-b2c-test-relying-party-policy](../../includes/active-directory-b2c-test-relying-party-policy-user-journey.md)]
 
 ::: zone-end
 

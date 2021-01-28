@@ -1,5 +1,5 @@
 ---
-title: Birden çok DRM içerik koruma sistemi-Azure Media Services v3
+title: Çoklu DRM içerik koruma sistemi
 description: Bu makaleler, Azure Media Services ile birden çok DRM içerik koruma sisteminin nasıl tasarlanacağını ayrıntılı olarak açıklamaktadır.
 services: media-services
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: willzhan
 ms.custom: seodec18
-ms.openlocfilehash: 58edf1e0257cf9de8d8f3a3b56f295dcaf1f6cbf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e0104dd2761f74fbd84486aebbf8c3c4e128eb08
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89298207"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954910"
 ---
 # <a name="design-of-a-multi-drm-content-protection-system-with-access-control"></a>Erişim denetimi ile çoklu DRM'ye sahip içerik koruma sistemi tasarlama
 

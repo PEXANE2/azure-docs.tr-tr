@@ -4,12 +4,12 @@ description: Destek ayarları ve kısıtlamaları için Azure disk yedekleme 'ni
 ms.topic: conceptual
 ms.date: 01/07/2021
 ms.custom: references_regions
-ms.openlocfilehash: 5281a5f0b833759c2594b6748cf06f2e12c03822
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 08d2ac8451e88dd8d40ed5faee0368ff7739cd16
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98757483"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954707"
 ---
 # <a name="azure-disk-backup-support-matrix-in-preview"></a>Azure disk yedekleme desteği matrisi (önizlemede)
 
@@ -65,6 +65,8 @@ Kullanılabilir olduklarında daha fazla bölge duyurulacaktır.
 - Yönetilen diskler, dağıtım sırasında veya daha sonra diskin boyutunu değiştirmeden performans katmanını değiştirmeye izin verir. Azure disk yedekleme çözümü, yedeklenmekte olan kaynak diskte performans katmanı değişikliklerini destekler. Geri yükleme sırasında geri yüklenen diskin performans katmanı, yedekleme sırasında kaynak disk ile aynı olacaktır. Geri yükleme işleminden sonra diskinizin performans katmanını değiştirmek için [buradaki](../virtual-machines/disks-performance-tiers-portal.md) belgeleri izleyin.
 
 - Yönetilen diskler için [özel bağlantılar](../virtual-machines/disks-enable-private-links-for-import-export-portal.md) desteği, yönetilen disklerin içeri ve dışarı aktarılmasını yalnızca Azure sanal ağınızda gerçekleşmeyecek şekilde kısıtlamanıza olanak tanır. Azure disk yedekleme, Özel uç noktaları etkin olan disklerin yedeklenmesini destekler. Bu, Özel uç nokta aracılığıyla erişilebilen yedekleme verilerini veya anlık görüntüleri içermez.
+
+- Önizleme sırasında yedeklemeyi devre dışı bırakamazsanız, yedeklemeyi **Durdur ve yedekleme verilerini koruma** seçeneği desteklenmez. Yalnızca yedeklemeyi durdurmayacak, ancak tüm yedekleme verilerini silen bir yedekleme örneğini silebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

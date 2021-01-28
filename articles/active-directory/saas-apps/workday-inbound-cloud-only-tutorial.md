@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.workload: identity
 ms.date: 05/26/2020
 ms.author: chmutali
-ms.openlocfilehash: 197b7ff0a6c613a019007ba507d678b619c9afd4
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: ef4381f305292b366348aa3729209dc3f5e8c87b
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358601"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954098"
 ---
 # <a name="tutorial-configure-workday-to-azure-ad-user-provisioning"></a>Öğretici: Workday 'yi Azure AD Kullanıcı sağlaması için yapılandırma
 Bu öğreticinin amacı, Workday 'den çalışan verileri Azure Active Directory ' ye sağlamak için gerçekleştirmeniz gereken adımları gösteriyoruz. 
@@ -95,13 +95,13 @@ Aşağıdaki bölümlerde, yalnızca bulutta bulunan dağıtımlar için Workday
 
 2. Azure portal, araması yapın ve **Azure Active Directory** seçin.
 
-3. **Kuruluş uygulamaları** ' nı ve ardından **tüm uygulamalar** ' ı seçin.
+3. **Kuruluş uygulamaları**' nı ve ardından **tüm uygulamalar**' ı seçin.
 
-4. **Uygulama Ekle** ' yi seçin ve ardından **Tüm** kategoriyi seçin.
+4. **Uygulama Ekle**' yi seçin ve ardından **Tüm** kategoriyi seçin.
 
-5. **Azure AD Kullanıcı sağlaması Için Workday** 'i arayın ve bu uygulamayı Galeriden ekleyin.
+5. **Azure AD Kullanıcı sağlaması Için Workday**'i arayın ve bu uygulamayı Galeriden ekleyin.
 
-6. Uygulama eklendikten ve Uygulama Ayrıntıları Ekranı gösterildikten sonra **sağlama** ' yı seçin.
+6. Uygulama eklendikten ve Uygulama Ayrıntıları Ekranı gösterildikten sonra **sağlama**' yı seçin.
 
 7. **Sağlama** **modunu** **Otomatik** olarak değiştirin.
 
@@ -115,8 +115,8 @@ Aşağıdaki bölümlerde, yalnızca bulutta bulunan dağıtımlar için Workday
    
      | URL biçimi | WWS API sürümü kullanıldı | XPATH değişiklikleri gerekiyor |
      |------------|----------------------|------------------------|
-     | https://####.workday.com/ccx/service/tenantName | v 21.1 | No |
-     | https://####.workday.com/ccx/service/tenantName/Human_Resources | v 21.1 | No |
+     | https://####.workday.com/ccx/service/tenantName | v 21.1 | Hayır |
+     | https://####.workday.com/ccx/service/tenantName/Human_Resources | v 21.1 | Hayır |
      | https://####.workday.com/ccx/service/tenantName/Human_Resources/v##.# | v # #. # | Yes |
 
       > [!NOTE]
@@ -195,7 +195,7 @@ Workday sağlama uygulama yapılandırması tamamlandıktan sonra, Azure portal 
 
 1. **Sağlama** sekmesinde, **sağlama durumunu** **Açık** olarak ayarlayın.
 
-2. **Kaydet** ’e tıklayın.
+2. **Kaydet**’e tıklayın.
 
 3. Bu işlem, iş günü kiracısında kaç Kullanıcı olduğuna bağlı olarak değişken sayıda saat sürebilen ilk eşitlemeyi başlatacak. İlerleme çubuğunu, eşitleme döngüsünün ilerlemesini izlemek için kontrol edebilirsiniz. 
 
@@ -208,11 +208,11 @@ Workday sağlama uygulama yapılandırması tamamlandıktan sonra, Azure portal 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
+* [Azure AD ve Workday tümleştirme senaryoları ve Web hizmeti çağrıları hakkında daha fazla bilgi edinin](../app-provisioning/workday-integration-reference.md)
 * [Gelen sağlama için desteklenen Workday öznitelikleri hakkında daha fazla bilgi edinin](../app-provisioning/workday-attribute-reference.md)
 * [Workday geri yazmayı yapılandırma hakkında bilgi edinin](workday-writeback-tutorial.md)
 * [Hazırlama etkinliği günlüklerini incelemeyi ve rapor oluşturmayı öğrenin](../app-provisioning/check-status-user-account-provisioning.md)
 * [Workday ve Azure Active Directory arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin](workday-tutorial.md)
-* [Diğer SaaS uygulamalarını Azure Active Directory ile tümleştirmeyi öğrenin](tutorial-list.md)
 * [Sağlama yapılandırmalarınızı dışarı ve içeri aktarma hakkında bilgi edinin](../app-provisioning/export-import-provisioning-configuration.md)
 
 

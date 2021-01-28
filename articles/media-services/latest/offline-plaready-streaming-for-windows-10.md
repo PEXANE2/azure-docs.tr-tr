@@ -1,5 +1,5 @@
 ---
-title: Azure Media Services v3 ile çevrimdışı PlayReady akışını yapılandırma
+title: Çevrimdışı PlayReady akışını yapılandırma
 description: Bu makalede, Azure Media Services v3 hesabınızı Windows 10 ' un çevrimdışı için nasıl yapılandıracağınız açıklanmaktadır.
 services: media-services
 keywords: DASH, DRM, Widevine çevrimdışı modu, Exooynatıcı, Android
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/31/2020
 ms.author: willzhan
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 19c930915de20d7f3a8938570e074458b32a8efb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ea3d895970c6a18286d719471a693f774efaa387
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90975686"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955247"
 ---
 # <a name="offline-playready-streaming-for-windows-10-with-media-services-v3"></a>Media Services v3 ile Windows 10 için çevrimdışı PlayReady akışı
 
@@ -38,7 +38,7 @@ Azure Media Services, DRM koruması ile çevrimdışı indirmeyi/kayıttan yür�
 
 Bu bölüm, çevrimdışı modda Kayıttan yürütmede bazı arka plan sağlar, özellikle neden:
 
-* Bazı ülkelerde/bölgelerde Internet kullanılabilirliği ve/veya bant genişliği hala sınırlı olur.Kullanıcılar, tatmin edici görüntüleme deneyimi için yeterince yüksek çözünürlükte içerik izleyebilmek için önce indirmeyi seçebilir. Bu durumda, genellikle ağ bant genişliği sınırlı olduğundan, sorun ağ kullanılabilirliği değildir. OTT/OVP sağlayıcıları çevrimdışı mod desteği istiyor.
+* Bazı ülkelerde/bölgelerde Internet kullanılabilirliği ve/veya bant genişliği hala sınırlı olur. Kullanıcılar, tatmin edici görüntüleme deneyimi için yeterince yüksek çözünürlükte içerik izleyebilmek için önce indirmeyi seçebilir. Bu durumda, genellikle ağ bant genişliği sınırlı olduğundan, sorun ağ kullanılabilirliği değildir. OTT/OVP sağlayıcıları çevrimdışı mod desteği istiyor.
 * Netflix 2016 Q3 shareş konferansında, içerik indirme "oft-istenen bir özelliktir" ve "açık olan", Netflix CEO Hastings tarafından söylenen
 * Bazı içerik sağlayıcıları, bir ülke/bölge kenarlığının ötesinde DRM lisans teslimine izin verebilir. Bir kullanıcının kuruluşunun seyahat yapması ve yine de içerik izlemek istiyorsa, çevrimdışı indirme gerekir.
  

@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 09/29/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python,contperf-fy21q1, automl
-ms.openlocfilehash: 9021d933e3808867ec784ad3c6d0f8810d608ea3
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 6971d67204beb39ff0afa6c68dbecf278d86b299
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98600073"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954724"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Python’da otomatik ML denemelerini yapılandırma
 
@@ -37,7 +37,7 @@ Otomatik makine öğreniminde kullanılabilen yapılandırma seçenekleri:
 
 Kod deneyimini tercih ediyorsanız, [Azure Machine Learning Studio 'da otomatik makine öğrenimi denemeleri de oluşturabilirsiniz](how-to-use-automated-ml-for-ml-models.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 İhtiyacınız olan bu makalede, 
 * Azure Machine Learning çalışma alanı. Çalışma alanını oluşturmak için, bkz. [Azure Machine Learning çalışma alanı oluşturma](how-to-manage-workspace.md).
@@ -203,15 +203,53 @@ Sınıflandırma | Regresyon | Zaman Serileri Tahmini
 ### <a name="primary-metric"></a>Birincil ölçüm
 `primary metric`Parametresi, iyileştirme için model eğitimi sırasında kullanılacak ölçümü belirler. Seçebileceğiniz kullanılabilir ölçümler, seçtiğiniz görev türüne göre belirlenir ve aşağıdaki tabloda her bir görev türü için geçerli birincil ölçümler gösterilmektedir.
 
+Otomatik makine öğrenimi için en iyileştirmek üzere bir birincil ölçüm seçilmesi birçok faktöre bağlıdır. Birincil düşünmeniz, iş gereksinimlerinizi en iyi şekilde temsil eden bir ölçüm seçmeniz önerilir. Daha sonra ölçümün veri kümesi profiliniz için uygun olup olmadığını (veri boyutu, Aralık, sınıf dağıtımı vb.) göz önünde bulundurun.
+
 [Otomatik makine öğrenimi sonuçlarını anlamak](how-to-understand-automated-ml.md)için bu ölçümlerin belirli tanımları hakkında bilgi edinin.
 
 |Sınıflandırma | Regresyon | Zaman Serileri Tahmini
 |--|--|--
-|accuracy| spearman_correlation | spearman_correlation
-|AUC_weighted | normalized_root_mean_squared_error | normalized_root_mean_squared_error
-|average_precision_score_weighted | r2_score | r2_score
-|norm_macro_recall | normalized_mean_absolute_error | normalized_mean_absolute_error
-|precision_score_weighted |
+|`accuracy`| `spearman_correlation` | `spearman_correlation`
+|`AUC_weighted` | `normalized_root_mean_squared_error` | `normalized_root_mean_squared_error`
+|`average_precision_score_weighted` | `r2_score` | `r2_score`
+|`norm_macro_recall` | `normalized_mean_absolute_error` | `normalized_mean_absolute_error`
+|`precision_score_weighted` |
+
+### <a name="primary-metrics-for-classification-scenarios"></a>Sınıflandırma senaryoları için birincil ölçümler 
+
+,,, Ve gibi eşik değerleri,,, `accuracy` `average_precision_score_weighted` ve gibi `norm_macro_recall` `precision_score_weighted` en iyi hale getiremeyebilir, çok büyük sınıf eğriliği (sınıf imdenizliği) veya beklenen ölçüm değeri 0,0 veya 1,0 ' e yakın olduğunda. Bu durumlarda, `AUC_weighted` birincil ölçüm için daha iyi bir seçenek olabilir. Otomatik makine öğrenimini tamamladıktan sonra, iş gereksinimlerinize en uygun ölçüm temelinde kazanan modeli seçebilirsiniz.
+
+| Metric | Örnek kullanım örneği |
+| ------ | ------- |
+| `accuracy` | Görüntü sınıflandırması, yaklaşım analizi, dalgalanma tahmini |
+| `AUC_weighted` | Sahtekarlık algılama, görüntü sınıflandırması, anomali algılama/istenmeyen posta algılama |
+| `average_precision_score_weighted` | Yaklaşım analizi |
+| `norm_macro_recall` | Dalgalanma tahmini |
+| `precision_score_weighted` |  |
+
+### <a name="primary-metrics-for-regression-scenarios"></a>Gerileme senaryoları için birincil ölçümler
+
+`r2_score`Ve `spearman_correlation` değerlerini tahmin edilecek şekilde ölçeklendirmek çok sayıda büyüklük halinde olduğunda, ve gibi ölçümler, modelin kalitesini daha iyi temsil edebilir. Örnek maaş tahmini için, birçok kişinin ücret $20K ile $100k arasında bir ücret ödemesine karşın, ölçek, $100M aralığındaki bazı ücretler ile çok daha yüksek bir konuma gider. 
+
+`normalized_mean_absolute_error``normalized_root_mean_squared_error`Bu durumda, bir çalışan için $20K tahmin hatası, çalışan olarak $30k maaş olan bir çalışan için aynı şekilde davranır. Gerçekte, bir $20M maaşından yalnızca $20K ' ı tahmin etmek çok yakındır (küçük% 0,1 göreli bir fark), $30k 'den $20K kapalı değildir (büyük %67 göreli bir fark). `normalized_mean_absolute_error` ve `normalized_root_mean_squared_error` tahmin edilecek değerler benzer bir ölçekte olduğunda faydalıdır.
+
+| Metric | Örnek kullanım örneği |
+| ------ | ------- |
+| `spearman_correlation` | |
+| `normalized_root_mean_squared_error` | Fiyat tahmini (şirket/ürün/ipucu), gözden geçirme puan tahmini |
+| `r2_score` | Airline gecikmesi, maaş tahmini, hata çözümleme süresi |
+| `normalized_mean_absolute_error` |  |
+
+### <a name="primary-metrics-for-time-series-forecasting-scenarios"></a>Zaman serisi tahmin senaryolarına yönelik birincil ölçümler
+
+Yukarıdaki regresyon notlarına bakın.
+
+| Metric | Örnek kullanım örneği |
+| ------ | ------- |
+| `spearman_correlation` | |
+| `normalized_root_mean_squared_error` | Fiyat tahmini (tahmin), stok iyileştirmesi, talep tahmini |
+| `r2_score` | Fiyat tahmini (tahmin), stok iyileştirmesi, talep tahmini |
+| `normalized_mean_absolute_error` | |
 
 ### <a name="data-featurization"></a>Veri korturlama
 
@@ -219,7 +257,7 @@ Her otomatik makine öğrenimi denemesinde, verileriniz, farklı ölçeklerde bu
 
 Denemeleri 'nizi yapılandırırken `AutoMLConfig` , ayarı etkinleştirebilir/devre dışı bırakabilirsiniz `featurization` . Aşağıdaki tabloda, [oto Mlconfig nesnesinde](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)fealeştirme için kabul edilen ayarlar gösterilmektedir. 
 
-|Korleştirme yapılandırması | Açıklama |
+|Korleştirme yapılandırması | Description |
 | ------------- | ------------- |
 |`"featurization": 'auto'`| Ön işleme 'nin bir parçası olarak, [veri guardı ve korleştirme adımlarının](how-to-configure-auto-features.md#featurization) otomatik olarak gerçekleştirileceğini belirtir. **Varsayılan ayar**.|
 |`"featurization": 'off'`| Korleştirme adımının otomatik olarak yapılmaması gerektiğini gösterir.|

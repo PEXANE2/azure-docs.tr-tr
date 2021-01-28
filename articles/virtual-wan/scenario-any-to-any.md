@@ -6,19 +6,19 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 01/27/2021
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 09dddad24794491b53a11f7b0e4347f43f11598b
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: a866c21e067293481a52dd563873892de8b5444c
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92440493"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955284"
 ---
 # <a name="scenario-any-to-any"></a>Senaryo: any-any
 
-Sanal WAN sanal hub 'ı yönlendirme ile çalışırken, kullanılabilecek oldukça az sayıda senaryo vardır. Dilediğiniz bir senaryoda, herhangi bir bağlı bileşen başka bir bağlı bileşene erişebilir. Birden çok hub mevcut olduğunda, standart sanal WAN 'da hub-hub arası yönlendirme (hub 'lar olarak da bilinir) varsayılan olarak etkindir. Sanal hub yönlendirmesi hakkında daha fazla bilgi için bkz. [sanal hub yönlendirmesi hakkında](about-virtual-hub-routing.md).
+Sanal WAN sanal hub 'ı yönlendirme ile çalışırken, kullanılabilecek oldukça az sayıda senaryo vardır. Dilediğiniz bir senaryoda, herhangi bir bağlı bileşen başka bir bağlı bileşene erişebilir. Birden çok hub mevcut olduğunda, standart sanal WAN 'da hub-hub arası yönlendirme (hub 'lar olarak da bilinir) varsayılan olarak etkindir. Bu yapılandırmayı Azure portal veya [Azure hızlı başlangıç şablonu](https://azure.microsoft.com/resources/templates/201-virtual-wan-with-all-gateways/)gibi çeşitli farklı yöntemler kullanarak oluşturabilirsiniz. Sanal hub yönlendirmesi hakkında daha fazla bilgi için bkz. [sanal hub yönlendirmesi hakkında](about-virtual-hub-routing.md). 
 
 ## <a name="design"></a><a name="design"></a>Tasarım
 
@@ -50,7 +50,7 @@ Sanal hub yönlendirmesi hakkında daha fazla bilgi için bkz. [sanal hub yönle
 * Sanal ağ bağlantısı, sanal bir ağı bir sanal hub 'a bağlar. Sanal hub 'ın yönlendiricisi, sanal ağlar arasında aktarım işlevi sağlar.
 * ExpressRoute bağlantısı, bir ExpressRoute bağlantı hattını ExpressRoute bağlantı hattına bağlar.
 
-Bu bağlantılar (varsayılan olarak, oluşturma sırasında), bağlantının yönlendirme yapılandırmasını **hiçbiri**veya özel bir yol tablosu olarak ayarlamadığınız takdirde varsayılan yol tablosuyla ilişkilendirilir. Bu bağlantılar, varsayılan olarak varsayılan yol tablosuna aynı zamanda yolları da yayar. Bu, herhangi bir bağlı bileşen (VNet, VPN, ER, P2S) birbirlerine ulaşabulabildiği herhangi bir senaryoya olanak sağlar.
+Bu bağlantılar (varsayılan olarak, oluşturma sırasında), bağlantının yönlendirme yapılandırmasını **hiçbiri** veya özel bir yol tablosu olarak ayarlamadığınız takdirde varsayılan yol tablosuyla ilişkilendirilir. Bu bağlantılar, varsayılan olarak varsayılan yol tablosuna aynı zamanda yolları da yayar. Bu, herhangi bir bağlı bileşen (VNet, VPN, ER, P2S) birbirlerine ulaşabulabildiği herhangi bir senaryoya olanak sağlar.
 
 **Şekil 1**
 
@@ -58,7 +58,7 @@ Bu bağlantılar (varsayılan olarak, oluşturma sırasında), bağlantının y�
 
 ## <a name="workflow"></a><a name="workflow"></a>İş akışı
 
-Bu senaryo, standart sanal WAN için varsayılan olarak etkinleştirilmiştir. Şube dalı için ayarı WAN yapılandırmasında devre dışıysa, bu, dal arasında bağlantı yapılmasına izin vermez. VPN/ExpressRoute/Kullanıcı VPN, sanal WAN 'da dal olarak kabul edilir
+Bu senaryo, standart sanal WAN için varsayılan olarak etkinleştirilmiştir. Daldan dala yönelik ayarlar WAN yapılandırmasında devre dışıysa, bu da dal arasında bağlantı yapılmasına izin vermez. VPN/ExpressRoute/Kullanıcı VPN, sanal WAN 'da dal olarak kabul edilir
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

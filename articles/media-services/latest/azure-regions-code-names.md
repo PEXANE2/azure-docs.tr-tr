@@ -1,5 +1,5 @@
 ---
-title: Azure Media Services v3 'nin kullanılabildiği bulutlar ve bölgeler
+title: Azure Media Services v3 için bulutlar ve bölgeler
 description: Bu makale, uç noktalar için kullanılan URL 'Ler ve bölgelere yönelik kodlar hakkında konuşur.
 services: media-services
 author: IngridAtMicrosoft
@@ -8,14 +8,14 @@ ms.service: media-services
 ms.topic: reference
 ms.date: 10/28/2020
 ms.author: inhenkel
-ms.openlocfilehash: c17eeda91af46c4159f7c4b1747416298f24c703
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 74f30ebb766ea34603c0a30455837c47222967c0
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93319645"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954336"
 ---
-# <a name="regional-code-names-and-endpoints"></a>Bölgesel kod adları ve uç noktaları
+# <a name="regional-code-names-and-endpoints"></a>Bölgesel kod adları ve uç noktalar
 
 ### <a name="region-code-name"></a>Bölge kodu adı
 
@@ -84,7 +84,7 @@ Aşağıdaki uç noktalar, farklı ulusal Azure bulutlarından Media Services he
 ## <a name="see-also"></a>Ayrıca bkz.
 
 * [Azure bölgeleri](https://azure.microsoft.com/global-infrastructure/regions/)
-* [Bölgesel kod adları ve uç noktaları](azure-regions-code-names.md)
+* [Bölgesel kod adları ve uç noktalar](azure-regions-code-names.md)
 * [Azure coğrafyaları](https://azure.microsoft.com/global-infrastructure/geographies/)
 * [Azure konumları](https://azure.microsoft.com/global-infrastructure/locations/)
 

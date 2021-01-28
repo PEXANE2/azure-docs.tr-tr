@@ -1,5 +1,5 @@
 ---
-title: Wıdevine lisans şablonuna genel bakış ile Azure Media Services v3
+title: Media Services v3 Widevine lisans şablonuna genel bakış
 description: Widevine lisans şablonuyla Azure Media Services ve Widevine lisanslarını yapılandırmak için nasıl kullanılacağını öğrenin.
 author: IngridAtMicrosoft
 manager: femila
@@ -14,16 +14,16 @@ ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: abedbd60a82f280bcd983c05a43685524a3a24e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 39cccd270a4947820640940ae43fa0feb3e52028
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91598154"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954488"
 ---
 # <a name="media-services-v3-with-widevine-license-template-overview"></a>Wıdevine lisans şablonuna genel bakış ile Media Services v3
 
-Azure Media Services **Google Widevine**ile içeriğinizi şifrelemenizi sağlar. Media Services Ayrıca Widevine lisansları teslim etmek için bir hizmet sağlar. Wıdevine lisanslarını yapılandırmak için Azure Media Services API 'Leri kullanabilirsiniz. Bir oyuncu Widevine korumalı içeriğinizi yürütmeye çalıştığında, lisans almak için lisans teslim hizmetine bir istek gönderilir. Lisans hizmeti isteği onayladığında, hizmet lisansı yayınlar. İstemciye gönderilir ve belirtilen içeriğin şifresini çözmek ve yürütmek için kullanılır.
+Azure Media Services **Google Widevine** ile içeriğinizi şifrelemenizi sağlar. Media Services Ayrıca Widevine lisansları teslim etmek için bir hizmet sağlar. Wıdevine lisanslarını yapılandırmak için Azure Media Services API 'Leri kullanabilirsiniz. Bir oyuncu Widevine korumalı içeriğinizi yürütmeye çalıştığında, lisans almak için lisans teslim hizmetine bir istek gönderilir. Lisans hizmeti isteği onayladığında, hizmet lisansı yayınlar. İstemciye gönderilir ve belirtilen içeriğin şifresini çözmek ve yürütmek için kullanılır.
 
 [!INCLUDE [Widevine is not available in the GovCloud region.](./includes/widevine-not-available-govcloud.md)]
 

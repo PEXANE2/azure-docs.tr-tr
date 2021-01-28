@@ -1,5 +1,5 @@
 ---
-title: Azure Izleyici aracılığıyla Media Services tanılama günlüklerini izleme
+title: Azure Izleyici aracılığıyla tanılama günlüklerini izleme
 description: Bu makalede, Azure Izleyici aracılığıyla tanılama günlüklerinin nasıl yönlendirileceği ve görüntüleneceği gösterilmektedir.
 services: media-services
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 6c666228a8a82083c319aa6c2d7fd161f7e623f4
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 1d9252a5fdf7b1c68c1bb64bd22ede8640184a0c
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98897977"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98953963"
 ---
 # <a name="monitor-media-services-diagnostic-logs"></a>Tanılama günlüklerini izleme Media Services
 

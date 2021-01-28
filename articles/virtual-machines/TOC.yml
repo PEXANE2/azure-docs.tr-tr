@@ -1741,7 +1741,7 @@
         - name: Birden fazla VM’yi yedekleme
           href: ../backup/tutorial-backup-vm-at-scale.md
         - name: Geri yükleme seçenekleri
-          href: /backup/backup-azure-arm-restore-vms.md
+          href: ../backup/backup-azure-arm-restore-vms.md
         - name: Destek matrisi
           href: ../backup/backup-support-matrix-iaas.md
         - name: Fiyatlandırma

@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.workload: identity
 ms.date: 01/19/2021
 ms.author: chmutali
-ms.openlocfilehash: 8e83841031593d0d1af4499f3ef9a15400ce7794
-ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
+ms.openlocfilehash: a34881901fd8642fff9ac37512cd2ef260ad9d1c
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98569615"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954234"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlama için Workday yapılandırma
 
@@ -109,7 +109,7 @@ Tüm Workday sağlama bağlayıcılarının ortak bir gereksinimi, Workday Insan
 1. Bir yönetici hesabı kullanarak Workday kiracınızda oturum açın. **Workday uygulamasında**, arama kutusuna kullanıcı oluştur yazın ve ardından **tümleştirme sistemi kullanıcısı oluştur**' a tıklayın.
 
    >[!div class="mx-imgBorder"] 
-   >![Kullanıcı oluştur](./media/workday-inbound-tutorial/wd_isu_01.png "Kullanıcı oluştur")
+   >![Kullanıcı Oluştur](./media/workday-inbound-tutorial/wd_isu_01.png "Kullanıcı oluştur")
 2. Yeni bir tümleştirme sistemi kullanıcısı için bir Kullanıcı adı ve parola sağlayarak **tümleştirme sistemi kullanıcısı oluştur** görevini doldurun.  
 
    * Bu Kullanıcı programlı olarak oturum **açacağından, bir sonraki oturum açma seçeneğinde yeni parola gerektir** seçeneğini işaretlenmemiş olarak bırakın.
@@ -157,7 +157,7 @@ Bu adımda, güvenlik grubuna çalışan verileri için "etki alanı güvenliği
 
 1. Önceki adımda oluşturulan güvenlik grubunu arayın ve seçin. 
    >[!div class="mx-imgBorder"]
-   >![Güvenlik grubu seç](./media/workday-inbound-tutorial/select-security-group-msft-wdad.png)
+   >![Güvenlik grubu seç](./media/workday-inbound-tutorial/select-security-group-workday.png)
 
 1. Grup adının yanındaki üç nokta (...) simgesine tıklayın ve menüden güvenlik grubu **Için etki alanı Izinlerini koru > güvenlik** grubu ' nu seçin.
    >[!div class="mx-imgBorder"]
@@ -228,7 +228,7 @@ Bu adımda, güvenlik grubuna çalışan verileri için "iş işlem güvenliği"
 
 ## <a name="provisioning-agent-installation-prerequisites"></a>Aracı yükleme önkoşullarını sağlama
 
-Sonraki bölüme geçmeden önce [sağlama Aracısı yükleme önkoşullarını](../cloud-provisioning/how-to-prerequisites.md) gözden geçirin. 
+Sonraki bölüme geçmeden önce [sağlama Aracısı yükleme önkoşullarını](../cloud-sync/how-to-prerequisites.md) gözden geçirin. 
 
 ## <a name="configuring-user-provisioning-from-workday-to-active-directory"></a>Workday 'den Kullanıcı sağlamasını Active Directory olarak yapılandırma
 
@@ -267,7 +267,7 @@ Bu bölümde, tümleştirmenizi kapsamındaki her bir Active Directory etki alan
 
 Şirket içi Active Directory sağlamak için, sağlama aracısının, istenen Active Directory etki alanına ağ erişimi olan, etki alanına katılmış bir sunucuya yüklenmesi gerekir.
 
-İndirilen Aracı yükleyicisini sunucu konağına aktarın ve aracı yapılandırmasını gerçekleştirmek için [ **aracıyı yükleme** bölümünde](../cloud-provisioning/how-to-install.md) listelenen adımları izleyin.
+İndirilen Aracı yükleyicisini sunucu konağına aktarın ve aracı yapılandırmasını gerçekleştirmek için [ **aracıyı yükleme** bölümünde](../cloud-sync/how-to-install.md) listelenen adımları izleyin.
 
 ### <a name="part-3-in-the-provisioning-app-configure-connectivity-to-workday-and-active-directory"></a>3. kısım: sağlama uygulamasında, Workday ve Active Directory bağlantısını yapılandırın
 Bu adımda, Workday ve Azure portal Active Directory ile bağlantı kuruyoruz. 
@@ -336,7 +336,7 @@ Bu bölümde, Kullanıcı verilerinin Workday 'den Active Directory 'e nasıl ak
       * İşleç: NULL DEĞIL
 
    > [!TIP]
-   > Sağlama uygulamasını ilk kez yapılandırırken, istenen sonucu elde ettiğinizden emin olmak için öznitelik eşlemelerinizi ve ifadelerini test etmeniz ve doğrulamanız gerekir. Microsoft, iş Workday 'den birkaç test kullanıcısı ile eşlemelerinizi test etmek için **kaynak nesne kapsamı** kapsamındaki kapsam filtrelerinin kullanılmasını önerir. Eşlemelerin çalıştığını doğruladıktan sonra filtreyi kaldırabilir ya da daha fazla kullanıcı eklemek için onu kademeli olarak genişletebilirsiniz.
+   > Sağlama uygulamasını ilk kez yapılandırırken, istenen sonucu elde ettiğinizden emin olmak için öznitelik eşlemelerinizi ve ifadelerini test etmeniz ve doğrulamanız gerekir. Microsoft, iş Workday 'den birkaç test kullanıcısı ile eşlemelerinizi test etmek için **kaynak nesne kapsamı** ve [isteğe bağlı sağlama](../app-provisioning/provision-on-demand.md) kapsamında [kapsam filtrelerin](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) kullanılmasını önerir. Eşlemelerin çalıştığını doğruladıktan sonra filtreyi kaldırabilir ya da daha fazla kullanıcı eklemek için onu kademeli olarak genişletebilirsiniz.
 
    > [!CAUTION] 
    > Sağlama altyapısının varsayılan davranışı, kapsam dışına çıkan kullanıcıları devre dışı bırakmak/silmektir. Bu, Workday 'de AD tümleştirmesi için istenmeyebilir. Bu varsayılan davranışı geçersiz kılmak için, [kapsam dışı olan kullanıcı hesaplarını silmeyi atlama](../app-provisioning/skip-out-of-scope-deletions.md) makalesine başvurun.
@@ -1065,7 +1065,8 @@ Azure AD sağlama hizmeti, veri bekletmeye göre rapor oluşturmaz, analiz uygul
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
+* [Azure AD ve Workday tümleştirme senaryoları ve Web hizmeti çağrıları hakkında daha fazla bilgi edinin](../app-provisioning/workday-integration-reference.md)
 * [Hazırlama etkinliği günlüklerini incelemeyi ve rapor oluşturmayı öğrenin](../app-provisioning/check-status-user-account-provisioning.md)
 * [Workday ve Azure Active Directory arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin](workday-tutorial.md)
-* [Diğer SaaS uygulamalarını Azure Active Directory ile tümleştirmeyi öğrenin](tutorial-list.md)
+* [Workday geri yazmayı yapılandırma hakkında bilgi edinin](workday-writeback-tutorial.md)
 * [Sağlama yapılandırmalarının yönetimi için Microsoft Graph API 'Lerini nasıl kullanacağınızı öğrenin](/graph/api/resources/synchronization-overview)

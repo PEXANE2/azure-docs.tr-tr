@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 64064a584681d84eb6ba023c4777c0fdc4e6ec3d
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 566563dde26d2dd36f4358bc8c6dcdcfb5ba8465
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98791938"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954876"
 ---
 # <a name="tutorial-provision-multiple-x509-devices-using-enrollment-groups"></a>Öğretici: kayıt grupları kullanarak birden çok X. 509.440 cihazı sağlama
 
@@ -42,7 +42,7 @@ Bu öğreticide, aşağıdaki hedefleri tamamlayacaksınız:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Aşağıdaki Önkoşullar bir Windows geliştirme ortamı içindir. Linux veya macOS için SDK belgelerinde [geliştirme ortamınızı hazırlama](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md) konusunun ilgili bölümüne bakın.
 
@@ -352,6 +352,9 @@ Bu öğreticinin özel HSM saplama kodunu güncelleştirmek için:
 Windows dışı cihazlarda, sertifika zincirini koddan sertifika deposu olarak geçirebilirsiniz.
 
 Windows tabanlı cihazlarda, imzalama sertifikalarını (root ve ara) bir Windows [sertifika deposuna](/windows/win32/secauthn/certificate-stores)eklemeniz gerekir. Aksi takdirde, imzalama sertifikaları, Aktarım Katmanı Güvenliği (TLS) ile güvenli bir kanal tarafından DPS 'e aktarılmayacaktır.
+
+> [!TIP]
+> C SDK ile güvenli kanal (Schannel) yerine OpenSSL kullanmak da mümkündür. OpenSSL kullanma hakkında daha fazla bilgi için bkz. [SDK 'Da OpenSSL kullanma](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md#using-openssl-in-the-sdk).
 
 Windows tabanlı cihazlarda sertifika deposuna imzalama sertifikaları eklemek için:
 

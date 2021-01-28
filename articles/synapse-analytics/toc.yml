@@ -96,6 +96,8 @@
           href: ./cicd/continuous-integration-deployment.md
         - name: Güvenlik
           items:
+            - name: Azure Ilkesine göre güvenlik denetimleri
+              href: ./security-controls-policy.md
             - name: Şifreleme
               href: ./security/workspaces-encryption.md
             - name: Ağ Güvenliği

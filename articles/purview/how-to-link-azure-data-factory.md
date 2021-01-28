@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/22/2020
-ms.openlocfilehash: dbd7937667a3c4d5af9f13e15cdd4ff2081241f0
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 0e993cb1e53645f7081a20fc6a2785b8cfef1cce
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98723889"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954200"
 ---
 # <a name="how-to-connect-azure-data-factory-and-azure-purview"></a>Azure Data Factory ve Azure purview 'a bağlanma
 
@@ -69,12 +69,22 @@ Mevcut bir Data Factory hesaplarını purview veri kataloğunuza bağlamak için
 >[!Note]
 >Artık aynı anda 10 ' dan fazla veri fabrikası eklemeyi destekliyoruz. Aynı anda 10 ' dan fazla veri fabrikası eklemek istiyorsanız, lütfen bir destek bileti dosyası sağlayın.
 
+### <a name="how-does-the-authentication-work"></a>Kimlik doğrulaması nasıl çalışır?
+
+Bir purview kullanıcısı, erişimi olan bir Data Factory kaydettiğinde arka uçta aşağıdakiler olur:
+
+1. **Data Factory MSI** , PURVIEW RBAC rolüne eklenmiştir: **purview veri Curator**.
+
+    :::image type="content" source="./media/how-to-link-azure-data-factory/adf-msi.png" alt-text="Azure Data Factory MSI gösteren ekran görüntüsü." lightbox="./media/how-to-link-azure-data-factory/adf-msi.png":::
+     
+2. Data Factory işlem hattının yeniden yürütülmesi gerekir, böylece kökenini meta verileri purview 'a geri gönderilir.
+3. Yürütme sonrası Data Factory meta veriler purview 'a gönderilir.
 
 ### <a name="remove-data-factory-connections"></a>Data Factory bağlantılarını kaldırma
 Bir Data Factory bağlantısını kaldırmak için aşağıdakileri yapın:
 
 1. **Data Factory bağlantısı** sayfasında, bir veya daha fazla veri fabrikası bağlantısının yanındaki **Kaldır** düğmesini seçin.
-1. Seçili Veri Fabrikası bağlantılarını silmek için açılan pencerede **Onayla** ' yı seçin.
+2. Seçili Veri Fabrikası bağlantılarını silmek için açılan pencerede **Onayla** ' yı seçin.
 
     :::image type="content" source="./media/how-to-link-azure-data-factory/remove-data-factory-connection.png" alt-text="Bağlantıyı kaldırmak için veri fabrikalarının nasıl seçileceğini gösteren ekran görüntüsü." lightbox="./media/how-to-link-azure-data-factory/remove-data-factory-connection.png":::
 

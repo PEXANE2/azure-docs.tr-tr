@@ -91,7 +91,7 @@
     - name: Python örnekleri
       href: samples-python.md
     - name: REST örnekleri
-      href: /samples/browse/?expanded=azure&languages=http&products=azure-cognitive-search
+      href: samples-rest.md
 - name: Kavramlar
   items:
     - name: Tam metin arama
@@ -410,7 +410,7 @@
           href: cognitive-search-common-errors-warnings.md
 - name: Başvuru
   items:
-    - name: Azure CLI
+    - name: Azure CLI’si
       href: /cli/azure/search
     - name: Azure PowerShell
       href: /powershell/module/az.search

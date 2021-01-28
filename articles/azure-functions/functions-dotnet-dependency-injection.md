@@ -4,15 +4,15 @@ description: .NET işlevlerinde Hizmetleri kaydetmek ve kullanmak için bağıml
 author: ggailey777
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.date: 08/15/2020
+ms.date: 01/27/2021
 ms.author: glenga
 ms.reviewer: jehollan
-ms.openlocfilehash: 70ec9248db002823e969fa5f4fba8bf1074a9af7
-ms.sourcegitcommit: 0830e02635d2f240aae2667b947487db01f5fdef
+ms.openlocfilehash: 66e2cd22f4bcb95be65d6d04345dcac622436a04
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/21/2020
-ms.locfileid: "97706941"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955097"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>.NET Azure İşlevleri'nde bağımlılık eklemeyi kullanma
 
@@ -190,7 +190,7 @@ Günlük düzeyleri hakkında daha fazla bilgi için bkz. [günlük düzeylerini
 
 İşlev Konağı birçok hizmeti kaydeder. Aşağıdaki hizmetler uygulamanızda bir bağımlılık olarak ele alınır:
 
-|Hizmet Türü|Ömür|Açıklama|
+|Hizmet Türü|Ömür|Description|
 |--|--|--|
 |`Microsoft.Extensions.Configuration.IConfiguration`|Adet|Çalışma zamanı yapılandırması|
 |`Microsoft.Azure.WebJobs.Host.Executors.IHostIdProvider`|Adet|Konak örneğinin KIMLIĞINI sağlamaktan sorumlu|
@@ -256,6 +256,24 @@ public class HttpTrigger
 ```
 
 Seçeneklerle çalışma hakkında daha fazla ayrıntı için [ASP.NET Core Içindeki seçenekler düzenine](/aspnet/core/fundamentals/configuration/options) bakın.
+
+## <a name="using-aspnet-core-user-secrets"></a>ASP.NET Core Kullanıcı gizli dizileri kullanma
+
+Yerel olarak geliştirilirken, ASP.NET Core gizli bilgileri proje kökü dışında depolamanızı sağlayan bir [gizli dizi Yöneticisi aracı](/aspnet/core/security/app-secrets#secret-manager) sağlar. Parolaların yanlışlıkla kaynak denetimine kaydedilmesine daha az neden olur. Azure Functions Core Tools (sürüm 3.0.3233 veya üzeri), ASP.NET Core gizli Yöneticisi tarafından oluşturulan gizli dizileri otomatik olarak okur.
+
+Bir .NET Azure Işlevleri projesini Kullanıcı gizli dizilerini kullanacak şekilde yapılandırmak için, proje kökünde aşağıdaki komutu çalıştırın.
+
+```bash
+dotnet user-secrets init
+```
+
+Ardından, `dotnet user-secrets set` gizli dizileri oluşturmak veya güncelleştirmek için komutunu kullanın.
+
+```bash
+dotnet user-secrets set MySecret "my secret value"
+```
+
+İşlev uygulaması kodunuzda Kullanıcı gizli dizileri değerlerine erişmek için `IConfiguration` veya kullanın `IOptions` .
 
 ## <a name="customizing-configuration-sources"></a>Yapılandırma kaynaklarını özelleştirme
 

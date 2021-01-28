@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.workload: identity
 ms.date: 01/19/2021
 ms.author: chmutali
-ms.openlocfilehash: ce48d87c6e04e6c349b681e953647feb5e7ddda5
-ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
+ms.openlocfilehash: 7b59e0ae2fbb73f341d5254fd2804d50ad141a19
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98570125"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98953810"
 ---
 # <a name="tutorial-configure-sap-successfactors-to-active-directory-user-provisioning"></a>Öğretici: Kullanıcı sağlamasını Active Directory için SAP başarılı faktörleri yapılandırma 
 Bu öğreticinin amacı, kullanıcıları başarıyla Active Directory (AD) ve Azure AD 'ye, isteğe bağlı e-posta adresi olarak başarılı bir şekilde geri yazma işlemi ile Azure AD 'ye sağlamak için gerçekleştirmeniz gereken adımları gösteriyoruz. 
@@ -186,7 +186,7 @@ Bu bölüm, tümleştirmenizi kapsamındaki her bir Active Directory etki alanı
 
 Şirket içi Active Directory sağlamak için, sağlama aracısının, istenen Active Directory etki alanına ağ erişimi olan, etki alanına katılmış bir sunucuya yüklenmesi gerekir.
 
-İndirilen Aracı yükleyicisini sunucu konağına aktarın ve aracı yapılandırmasını gerçekleştirmek için [aracıyı yükleme bölümünde](../cloud-provisioning/how-to-install.md) listelenen adımları izleyin.
+İndirilen Aracı yükleyicisini sunucu konağına aktarın ve aracı yapılandırmasını gerçekleştirmek için [aracıyı yükleme bölümünde](../cloud-sync/how-to-install.md) listelenen adımları izleyin.
 
 ### <a name="part-3-in-the-provisioning-app-configure-connectivity-to-successfactors-and-active-directory"></a>3. kısım: sağlama uygulamasında, başarılı etkenlere ve Active Directory bağlantı yapılandırın
 Bu adımda, başarılı faktörlerle bağlantı kurmaya ve Azure portal Active Directory. 
@@ -209,12 +209,12 @@ Bu adımda, başarılı faktörlerle bağlantı kurmaya ve Azure portal Active D
         > Bu ayar yalnızca *parentDistinguishedName* özniteliği öznitelik eşlemelerinde yapılandırılmamışsa, Kullanıcı hesabı oluşturmaları için oynatılır. Bu ayar Kullanıcı arama veya güncelleştirme işlemleri için kullanılmaz. Tüm etki alanı alt ağacının, arama işleminin kapsamında olması.
 
    * **Bildirim e-postası –** E-posta adresinizi girin ve "hata oluşursa e-posta gönder" onay kutusunu işaretleyin.
-    > [!NOTE]
-    > Azure AD sağlama hizmeti, sağlama işi [karantina](../app-provisioning/application-provisioning-quarantine-status.md) durumuna geçtiğinde e-posta bildirimi gönderir.
+     > [!NOTE]
+     > Azure AD sağlama hizmeti, sağlama işi [karantina](../app-provisioning/application-provisioning-quarantine-status.md) durumuna geçtiğinde e-posta bildirimi gönderir.
 
    * **Bağlantıyı Sına** düğmesine tıklayın. Bağlantı testi başarılı olursa üstteki **Kaydet** düğmesine tıklayın. Başarısız olursa, aracı kurulumunda yapılandırılmış başarılı kimlik bilgilerinin ve AD kimlik bilgilerinin geçerli olup olmadığını iki kez denetleyin.
-    >[!div class="mx-imgBorder"]
-    >![Azure portalda](./media/sap-successfactors-inbound-provisioning/sf2ad-provisioning-creds.png)
+     >[!div class="mx-imgBorder"]
+     >![Azure portalda](./media/sap-successfactors-inbound-provisioning/sf2ad-provisioning-creds.png)
 
    * Kimlik bilgileri başarıyla kaydedildikten sonra, **eşlemeler** bölümünde varsayılan eşleme, **kullanıcıları şirket içinde olan başarılı bir şekilde eşitler Active Directory** görüntülenir.
 
@@ -250,9 +250,8 @@ Bu bölümde, Kullanıcı verilerinin başarıyla Active Directory olarak nasıl
 
 1. **Öznitelik eşlemeleri** bölümünde, tek tek faktörlerin özniteliklerinin Active Directory özniteliklerle nasıl eşlendiğini tanımlayabilirsiniz.
 
-  >[!NOTE]
-  >Uygulama tarafından desteklenen başarılı bir öznitelik özniteliği listesi için lütfen başarılı bir şekilde ifade edin [öznitelik başvurusu](../app-provisioning/sap-successfactors-attribute-reference.md)
-
+     >[!NOTE]
+     >Uygulama tarafından desteklenen başarılı bir öznitelik özniteliği listesi için lütfen başarılı bir şekilde ifade edin [öznitelik başvurusu](../app-provisioning/sap-successfactors-attribute-reference.md)
 
 1. Güncelleştirmek için varolan bir öznitelik eşlemesine tıklayın veya yeni eşlemeler eklemek için ekranın alt kısmındaki **Yeni eşleme Ekle** ' ye tıklayın. Tek bir öznitelik eşlemesi bu özellikleri destekler:
 

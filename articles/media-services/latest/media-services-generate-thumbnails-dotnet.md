@@ -1,5 +1,5 @@
 ---
-title: .NET ile Media Services Kodlayıcısı standardını kullanarak küçük resimler oluşturma
+title: Media Encoder Standard .NET kullanarak küçük resimler oluşturma
 description: Bu makalede, Media Encoder Standard kullanarak aynı anda bir varlık kodlamak ve küçük resimler oluşturmak için .NET kullanımı gösterilmektedir.
 services: media-services
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.topic: how-to
 ms.date: 12/01/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: fe051ceec43ec919ddf92a4d7f7e4bfab0b351f5
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 551574685ec9a2f9eb1ef569fbec7c9a104353ff
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 01/28/2021
-ms.locfileid: "98938763"
+ms.locfileid: "98955877"
 ---
 # <a name="how-to-generate-thumbnails-using-encoder-standard-with-net"></a>.NET ile kodlayıcı standardını kullanarak küçük resimleri oluşturma
 

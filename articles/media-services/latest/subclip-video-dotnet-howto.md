@@ -1,5 +1,5 @@
 ---
-title: Azure Media Services ile kodlarken bir videoyu alt kırpın
+title: Media Services ile kodlarken bir videoyu alt kırpın
 description: Bu konuda, .NET SDK kullanarak Azure Media Services kodlama sırasında bir videonun nasıl alt kırpılacağını açıklamaktadır
 services: media-services
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.topic: how-to
 ms.date: 06/09/2019
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 1725fab30ddb4d40e0bf5345683588c878658052
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a9408adfe33fc71707532f3bf5646f3727fd7dda
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89296575"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955063"
 ---
 # <a name="subclip-a-video-when-encoding-with-media-services---net"></a>Media Services .NET ile kodlarken bir videoyu alt kırpın
 
@@ -27,7 +27,7 @@ Bir [işi](/rest/api/media/jobs)kullanarak kodlarken videoyu kırpabilir veya al
 
 Aşağıdaki C# örneği bir varlık içinde bir kodlama işi gönderdiği bir videoyu kırpan bir iş oluşturur. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu konuda açıklanan adımları tamamlayabilmeniz için şunları yapmanız gerekir:
 

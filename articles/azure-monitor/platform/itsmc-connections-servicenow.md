@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 12/21/2020
-ms.openlocfilehash: 7d1b4b3542f6914d413a5e29e57baa15e7a53346
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 3cc38fad6f26bf6f382b4a275638c450c8333a04
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98012793"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955741"
 ---
 # <a name="connect-servicenow-with-it-service-management-connector"></a>ServiceNow 'ı BT Hizmet Yönetimi Bağlayıcısı bağlama
 
@@ -122,7 +122,7 @@ Bir ServiceNow bağlantısı oluşturmak için aşağıdaki yordamı kullanın.
    | --- | --- |
    | **Bağlantı adı**   | ISMC ile bağlanmak istediğiniz ServiceNow örneği için bir ad girin. Bu adı daha sonra, ıTSM iş öğelerini yapılandırdığınızda ve ayrıntılı analizi görüntülerken Log Analytics ' de kullanırsınız. |
    | **İş ortağı türü**   | **ServiceNow**' ı seçin. |
-   | **Sunucu URL'si**   | ISMC 'a bağlamak istediğiniz ServiceNow örneğinin URL 'sini girin. URL, suffix *. ServiceNow.com* ile desteklenen bir SaaS sürümüne işaret etmelidir.|
+   | **Sunucu URL'si**   | ISMC 'a bağlamak istediğiniz ServiceNow örneğinin URL 'sini girin. URL, suffix *. ServiceNow.com* ile desteklenen bir SaaS sürümüne işaret etmelidir (örneğin, https://XXXXX.service-now.com/) .|
    | **Kullanıcı adı**   | ISMC bağlantısını desteklemek için ServiceNow uygulamasında oluşturduğunuz tümleştirme Kullanıcı adı ' nı girin.|
    | **Parola**   | Bu kullanıcı adıyla ilişkili parolayı girin. **Note**: Kullanıcı adı ve parola yalnızca kimlik doğrulama belirteçleri oluşturmak için kullanılır. Bunlar, ıSMC hizmetinin içinde herhangi bir yerde depolanmaz.  |
    | **İstemci kimliği**   | Daha önce oluşturduğunuz OAuth2 kimlik doğrulaması için kullanmak istediğiniz istemci KIMLIĞINI girin. İstemci KIMLIĞI ve gizli anahtar oluşturma hakkında daha fazla bilgi için bkz. [OAuth ayarlama](https://wiki.servicenow.com/index.php?title=OAuth_Setup). |

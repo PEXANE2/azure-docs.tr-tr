@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/28/2020
+ms.date: 01/27/2021
 ms.author: alkohli
-ms.openlocfilehash: 915146cd17b90272daea4ce57f5243baf1d49cb3
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 8ecd1a99d41dc1391e6dba129d50eb53a67843d1
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94578799"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955381"
 ---
 # <a name="set-azure-resource-manager-password-on-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU cihazında Azure Resource Manager parola ayarlama
 
@@ -21,53 +21,55 @@ ms.locfileid: "94578799"
 
 Bu makalede Azure Resource Manager parolanızın nasıl ayarlanacağı açıklanır. Azure Resource Manager aracılığıyla cihaz yerel API 'Lerine bağlanırken bu parolayı ayarlamanız gerekir.
 
-Azure portalını veya PowerShell cmdlet'lerini kullanma durumunuza göre parola ayarlama yordamı farklı olabilir. Bu yordamların her biri aşağıdaki bölümlerde açıklanmıştır.
+<!--The procedure to set the password can be different depending upon whether you use the Azure portal or the PowerShell cmdlets. Each of these procedures is described in the following sections.-->
 
 
 ## <a name="reset-password-via-the-azure-portal"></a>Azure portal aracılığıyla parolayı sıfırlama
 
-1. Azure portal, cihazınızı yönetmek için oluşturduğunuz Azure Stack Edge kaynağına gidin. **Edge compute >** başlayın ' a gidin.
-
-2. Sağ taraftaki bölmede komut çubuğundan **Edge ARM parolasını sıfırla** 'yı seçin. 
+1. Azure portal, cihazınızı yönetmek için oluşturduğunuz Azure Stack Edge kaynağına gidin. **Bulut depolama ağ geçidi > Edge Hizmetleri**' ne gidin.
 
     ![EdgeARM Kullanıcı parolasını sıfırla 1](media/azure-stack-edge-j-series-set-azure-resource-manager-password/set-edgearm-password-1.png)
 
-3. **EdgeArm Kullanıcı parolasını sıfırla** dikey penceresinde, Azure Resource Manager aracılığıyla cihaz yerel API 'nize bağlanmak için bir parola girin. Parolayı onaylayın ve **Sıfırla** ' yı seçin.
+2. Sağ taraftaki bölmede komut çubuğundan **Edge ARM parolasını sıfırla**'yı seçin. 
 
     ![EdgeARM Kullanıcı parolasını sıfırla 2](media/azure-stack-edge-j-series-set-azure-resource-manager-password/set-edgearm-password-2.png)
 
+3. **EdgeArm Kullanıcı parolasını sıfırla** dikey penceresinde, Azure Resource Manager aracılığıyla cihaz yerel API 'nize bağlanmak için bir parola girin. Parolayı onaylayın ve **Sıfırla**' yı seçin.
+
+    ![EdgeARM Kullanıcı parolasını sıfırla 3](media/azure-stack-edge-j-series-set-azure-resource-manager-password/set-edgearm-password-3.png)
 
 
-## <a name="reset-password-via-powershell"></a>PowerShell aracılığıyla parolayı sıfırlama
 
-1. Azure portalında, cihazınızı yönetmek için oluşturduğunuz Azure Stack Edge kaynağına gidin. **Genel bakış** sayfasında aşağıdaki parametreleri bir yere göz atın.
+<!--## Reset password via PowerShell
 
-    - Azure Stack Edge kaynak adı
-    - Abonelik Kimliği
+1. In the Azure Portal, go to the Azure Stack Edge resource you created to manage your device. Make a note of the following parameters in the **Overview** page.
 
-2. **Ayarlar > Özellikler** ' e gidin. **Özellikler** sayfasında aşağıdaki parametreleri bir yere getirin.
+    - Azure Stack Edge resource name
+    - Subscription ID
 
-    - Kaynak grubu
-    - CıK şifreleme anahtarı: Görünüm ' ü seçin ve ardından **şifreleme anahtarını** kopyalayın.
+2. Go to **Settings > Properties**. Make a note of the following parameters in the **Properties** page.
 
-    ![CıK şifreleme anahtarı al](media/azure-stack-edge-j-series-set-azure-resource-manager-password/get-cik-portal.png)
+    - Resource group
+    - CIK encryption key: Select view and then copy the **Encryption Key**.
+
+    ![Get CIK encryption key](media/azure-stack-edge-j-series-set-azure-resource-manager-password/get-cik-portal.png)
  
-3. Azure Resource Manager bağlanmak için kullanacağınız bir parola belirler.
+3. Identify a password that you will use to connect to Azure Resource Manager.
 
-4. Cloud Shell 'i başlatın. Sağ üst köşedeki simgeyi seçin:
+4. Start the cloud shell. Select on the icon in the top right corner:
 
-    ![Cloud Shell 'i Başlat](media/azure-stack-edge-j-series-set-azure-resource-manager-password/start-cloud-shell.png) 
+    ![Start cloud shell](media/azure-stack-edge-j-series-set-azure-resource-manager-password/start-cloud-shell.png) 
 
-    Cloud Shell başlatıldıktan sonra PowerShell 'e geçmeniz gerekebilir.
+    Once the cloud shell has started, you may need to switch to PowerShell.
 
     ![Cloud shell](media/azure-stack-edge-j-series-set-azure-resource-manager-password/cloud-shell.png)   
 
 
-5. Bağlam ayarla. Şunu yazın:
+5. Set context. Type:
 
     `Set-AzContext -SubscriptionId <Subscription ID>`
 
-    Örnek çıktı aşağıdaki gibidir:
+    Here is a sample output:
 
     
     ```azurepowershell
@@ -80,11 +82,11 @@ Azure portalını veya PowerShell cmdlet'lerini kullanma durumunuza göre parola
         PS Azure:/
     ```
     
-5.  Eski PS modülleriniz varsa, bunları yüklemeniz gerekir.
+5.  If you have any old PS modules, you need to install those.
 
     `Remove-Module  Az.DataBoxEdge -force`
 
-    Örnek bir çıktı aşağıda verilmiştir. Bu örnekte, yüklenecek eski modül yoktu.
+    Here is a sample output. In this example, there were no old modules to be installed.
 
     
     ```azurepowershell
@@ -99,7 +101,7 @@ Azure portalını veya PowerShell cmdlet'lerini kullanma durumunuza göre parola
         PS Azure:\
     ```
 
-6. Sonraki komut kümesi, PowerShell modüllerini yüklemek için bir komut dosyası indirir ve çalıştırır.
+6. Next set of commands will download and run a script to install PowerShell modules.
     
     ```azurepowershell
         cd ~/clouddrive
@@ -108,7 +110,7 @@ Azure portalını veya PowerShell cmdlet'lerini kullanma durumunuza göre parola
         Import-Module ~/clouddrive/Az.DataBoxEdge/Az.DataBoxEdge.psd1 -Force
     ```
 
-7. Sonraki komut kümesinde kaynak adı, kaynak grubu adı, şifreleme anahtarı ve önceki adımda belirlediğiniz parolayı sağlamanız gerekir.
+7. In the next set of commands, you'll need to provide the resource name, resource group name, encryption key, and the password you identified in the previous step.
 
     ```azurepowershell
     $devicename = "<Azure Stack Edge resource name>"
@@ -116,18 +118,18 @@ Azure portalını veya PowerShell cmdlet'lerini kullanma durumunuza göre parola
     $cik = "<Encryption key>"
     $password = "<Password>"
     ```
-    Parola ve şifreleme anahtarı parametrelerinin güvenli dizeler olarak geçirilmesi gerekir. Parolayı ve şifreleme anahtarını güvenli dizeler için dönüştürmek üzere aşağıdaki cmdlet 'leri kullanın.
+    The password and encryption key parameters must be passed as secure strings. Use the following cmdlets to convert the password and encryption key to secure strings.
 
     ```azurepowershell
     $pass = ConvertTo-SecureString $password -AsPlainText -Force
     $key = ConvertTo-SecureString $cik -AsPlainText -Force
     ```
-    Parolayı sıfırlamak için, Set-AzDataBoxEdgeUser cmdlet 'inde yukarıdaki oluşturulan güvenli dizeleri parametre olarak kullanın. Azure Stack Edge Pro/Data Box Gateway kaynağını oluştururken kullandığınız kaynak grubunu kullanın.
+    Use the above generated secure strings as parameters in the Set-AzDataBoxEdgeUser cmdlet to reset the password. Use the same resource group that you used when creating the Azure Stack Edge Pro/Data Box Gateway resource.
 
     ```azurepowershell
     Set-AzDataBoxEdgeUser -ResourceGroupName $resourceGroup -DeviceName $devicename -Name EdgeARMUser  -Password $pass -EncryptionKey $key
     ```
-    Örnek çıktı aşağıda verilmiştir.
+    Here is the sample output.
     
     ```azurepowershell
     PS /home/aseuser/clouddrive> $devicename = "myaseresource"
@@ -144,7 +146,7 @@ Azure portalını veya PowerShell cmdlet'lerini kullanma durumunuza göre parola
     
         PS /home/aseuser/clouddrive>
     ```
-Azure Resource Manager bağlanmak için yeni parolayı kullanın.
+Use the new password to connect to Azure Resource Manager.-->
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

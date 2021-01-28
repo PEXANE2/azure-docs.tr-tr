@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 12/07/2020
+ms.date: 01/27/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: 640098e118db87214d7364132a5119e35cb94c0a
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: ac64233467166ca6567f1601c3b90f80fdba3dcf
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96778725"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954656"
 ---
 # <a name="tutorial-configure-network-for-azure-stack-edge-pro-with-gpu"></a>Öğretici: Azure Stack Edge Pro için ağı GPU ile yapılandırma
 
@@ -132,7 +132,8 @@ Bu, isteğe bağlı bir yapılandırmadır.
 
 > [!IMPORTANT]
 > * İşlem ve Azure Stack Edge Pro cihazınızda IoT Edge modülü kullanıyorsanız, Web proxy kimlik doğrulamasını **hiçbiri** olarak ayarlamanızı öneririz. NTLM desteklenmez.
->* Proxy-otomatik yapılandırma (PAC) dosyaları desteklenmez. PAC dosyası, Web tarayıcılarının ve diğer Kullanıcı aracılarının belirli bir URL 'YI getirmek için uygun proxy sunucusunu (erişim yöntemi) otomatik olarak nasıl seçebileceğini tanımlar. Ara sunucunun sertifikası güvenilir olmadığından, tüm trafiği kesmeye ve okumaya çalışır (sonra her şeyi kendi sertifikalarıyla yeniden imzala) uyumlu değildir. Genellikle saydam proxy 'ler Azure Stack Edge Pro ile iyi çalışır. Saydam olmayan Web proxy 'leri desteklenmez.
+> * Proxy-otomatik yapılandırma (PAC) dosyaları desteklenmez. PAC dosyası, Web tarayıcılarının ve diğer Kullanıcı aracılarının belirli bir URL 'YI getirmek için uygun proxy sunucusunu (erişim yöntemi) otomatik olarak nasıl seçebileceğini tanımlar. 
+> * Saydam proxy 'ler Azure Stack Edge Pro ile iyi çalışır. Tüm trafiği kesme ve okuma (proxy sunucusuna yüklenmiş kendi sertifikaları aracılığıyla) saydam olmayan proxy 'ler için, proxy 'nin sertifikasının ortak anahtarını Azure Stack Edge Pro cihazınıza imzalama zinciri olarak yükleyin. Daha sonra Azure Stack Edge cihazınızda ara sunucu ayarlarını yapılandırabilirsiniz. Daha fazla bilgi için bkz. [yerel kullanıcı arabiriminden kendi sertifikalarınızı getirme ve karşıya yükleme](azure-stack-edge-gpu-deploy-configure-certificates.md#bring-your-own-certificates).  
 
 <!--1. Go to the **Get started** page in the local web UI of your device.
 2. On the **Network** tile, configure your web proxy server settings. Although web proxy configuration is optional, if you use a web proxy, you can configure it on this page only.

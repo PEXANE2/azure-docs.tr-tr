@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.workload: identity
 ms.date: 01/19/2021
 ms.author: chmutali
-ms.openlocfilehash: 6a73ecf18a4bd89567dc603758d9ff8501267a1f
-ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
+ms.openlocfilehash: a39f7701d0244eff7f914908a6708dfc14873b35
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98570056"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954865"
 ---
 # <a name="tutorial-configure-sap-successfactors-to-azure-ad-user-provisioning"></a>Öğretici: Azure AD Kullanıcı sağlaması için SAP başarılı faktörleri yapılandırma
 Bu öğreticinin amacı, başarılı bir şekilde, başarılı bir şekilde e-posta adresi geri yazma işlemi sayesinde, başarılı bir şekilde çalışan verileri Azure Active Directory, çalışan verileri sağlamak için gerçekleştirmeniz gereken adımları gösterir. 
@@ -223,9 +223,8 @@ Bu bölümde, Kullanıcı verilerinin başarıyla Active Directory olarak nasıl
 
 1. **Öznitelik eşlemeleri** bölümünde, tek tek faktörlerin özniteliklerinin Active Directory özniteliklerle nasıl eşlendiğini tanımlayabilirsiniz.
 
-  >[!NOTE]
-  >Uygulama tarafından desteklenen başarılı bir öznitelik özniteliği listesi için lütfen başarılı bir şekilde ifade edin [öznitelik başvurusu](../app-provisioning/sap-successfactors-attribute-reference.md)
-
+     >[!NOTE]
+     >Uygulama tarafından desteklenen başarılı bir öznitelik özniteliği listesi için lütfen başarılı bir şekilde ifade edin [öznitelik başvurusu](../app-provisioning/sap-successfactors-attribute-reference.md)
 
 1. Güncelleştirmek için varolan bir öznitelik eşlemesine tıklayın veya yeni eşlemeler eklemek için ekranın alt kısmındaki **Yeni eşleme Ekle** ' ye tıklayın. Tek bir öznitelik eşlemesi bu özellikleri destekler:
 

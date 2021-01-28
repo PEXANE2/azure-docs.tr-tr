@@ -10,12 +10,12 @@ ms.topic: reference
 ms.workload: identity
 ms.date: 01/18/2021
 ms.author: chmutali
-ms.openlocfilehash: 251e1d4249373ec52afb3d7edaa2325c992b66f1
-ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
+ms.openlocfilehash: 38a93d5db6f8331da6e7afdef3e91b2764537459
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98570170"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954030"
 ---
 # <a name="how-azure-active-directory-provisioning-integrates-with-workday"></a>Azure Active Directory sağlama Workday ile nasıl tümleştirilir
 
@@ -43,7 +43,7 @@ Azure AD sağlama hizmeti ile Workday arasındaki bağlantıyı daha da güvenli
 1. Bu öğe *Adresspredüzeltmeleriyle* LISTELENEN tüm IP adresi aralıklarını KOPYALAYıN ve IP adresi listenizi derlemek için aralığı kullanın.
 1. Workday Yönetim Portalı ' nda oturum açın. 
 1. Azure veri merkezleri için yeni bir IP aralığı oluşturmak üzere **IP aralıklarını koru** görevine erişin. IP aralıklarını (CıDR gösterimini kullanarak) virgülle ayrılmış bir liste olarak belirtin.  
-1. Yeni bir kimlik doğrulama ilkesi oluşturmak için **kimlik doğrulama Ilkelerini Yönet** görevine erişin. Kimlik doğrulama ilkesinde, **kimlik doğrulama beyaz listesini** kullanarak Azure AD IP aralığını ve bu IP aralığından erişime izin verilecek güvenlik grubunu belirtin. Değişiklikleri kaydedin. 
+1. Yeni bir kimlik doğrulama ilkesi oluşturmak için **kimlik doğrulama Ilkelerini Yönet** görevine erişin. Kimlik doğrulama ilkesinde, Azure AD IP aralığını ve bu IP aralığından erişime izin verilecek güvenlik grubunu belirtmek için kimlik doğrulaması izin verilenler listesini kullanın. Değişiklikleri kaydedin. 
 1. Değişiklikleri onaylamak için **tüm bekleyen kimlik doğrulama Ilkesi değişikliklerini etkinleştir** görevine erişin.
 
 ### <a name="limiting-access-to-worker-data-in-workday-using-constrained-security-groups"></a>Kısıtlanmış güvenlik grupları kullanarak Workday 'de çalışan verilerine erişimi sınırlama
@@ -348,7 +348,7 @@ Yukarıdaki sorguların herhangi biri gelecek tarihli bir işe dönerse, gelecek
 </Get_Workers_Request>
 ```
 
-### <a name="retrieving-worker-data-attributes"></a>Çalışan verileri öznitelikleri alınıyor
+## <a name="retrieving-worker-data-attributes"></a>Çalışan verileri öznitelikleri alınıyor
 
 *Get_Workers* API 'si bir çalışan ile ilişkili farklı veri kümeleri döndürebilir. Sağlama şemasında yapılandırılan [XPath API ifadelerine](workday-attribute-reference.md) bağlı olarak, Azure AD sağlama hizmeti, Workday 'den hangi veri kümelerinin alınacağı belirler. Buna uygun olarak, *Response_Group* bayrakları *Get_Workers* isteğinde ayarlanır. 
 
@@ -402,6 +402,9 @@ Aşağıdaki tablo, belirli bir veri kümesini almak için kullanmak üzere eşl
 | 44 | Taödünme değerlendirmesi verileri               | Hayır                  | WD: çalışan \_ verileri/WD: Taödünme \_ değerlendirmesi \_ verileri                                   |
 | 45 | Kullanıcı hesabı verileri                    | Hayır                  | WD: çalışan \_ verileri/WD: Kullanıcı \_ hesabı \_ verileri                                        |
 | 46 | Çalışan belge verileri                 | Hayır                  | WD: Worker \_ Data/WD: çalışan \_ Belge \_ verileri                                     |
+
+>[!NOTE]
+>Tabloda listelenen her Workday varlığı, Workday içindeki bir **etki alanı güvenlik ilkesi** tarafından korunur. Doğru XPATH 'i ayarladıktan sonra varlıkla ilişkili herhangi bir özniteliği alamadıysanız, uygun etki alanı güvenlik ilkesinin, sağlama uygulamasıyla ilişkili tümleştirme sistemi kullanıcısı için yapılandırıldığından emin olmak üzere Workday yöneticinizle görüşün. Örneğin, *beceri verileri* almak Için, Workday etki alanı *çalışan verileri: yetenekler ve deneyim* üzerinde erişim *elde* edin. 
 
 İşte, belirli gereksinimleri karşılamak için Workday tümleştirmesini nasıl genişletebileceğinizi gösteren bazı örnekler aşağıda verilmiştir. 
 

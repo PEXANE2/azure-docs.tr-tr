@@ -3,12 +3,12 @@ title: Bulut öğreticiden buluta ve kayıttan yürütmeye yönelik olay tabanl�
 description: Bu öğreticide, bulutta olay tabanlı bir video kaydı kaydetmek ve buluttan kayıttan yürütmek için Azure Live video analizinin Azure IoT Edge nasıl kullanılacağını öğreneceksiniz.
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: cfb4648d991565470133d603194c07b797f89311
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: fb8d8c8499029777ae5765f53ff51db92b3bd587
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98060444"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954471"
 ---
 # <a name="tutorial-event-based-video-recording-to-the-cloud-and-playback-from-the-cloud"></a>Öğretici: buluta yönelik olay tabanlı video kaydı ve buluttan kayıttan yürütme
 
@@ -170,6 +170,12 @@ Bu adım, üzerinde src/Edge/config/deployment.objectCounter.amd64.jsüzerinde I
 > :::image type="content" source="./media/quickstarts/create-deployment-single-device.png" alt-text="Tek bir cihaz için dağıtım oluşturma":::
 
 IoT Edge üzerinde canlı video analiziyle ilgili ilk öğreticeniz varsa, Visual Studio Code IoT Hub bağlantı dizesini girmenizi ister. Dosyadaki appsettings.jskopyalayabilirsiniz.
+
+> [!NOTE]
+> IoT Hub için yerleşik uç nokta bilgisi sağlamanız istenebilir. Bu bilgileri almak için Azure portal ' de IoT Hub gidin ve sol gezinti bölmesindeki **yerleşik uç noktalar** seçeneğini bulun. Buraya tıklayın ve **Olay Hub** 'ı ile uyumlu uç nokta bölümünde **Olay Hub 'ı ile uyumlu uç noktası** bölümüne bakın. Kutusunda metni kopyalayın ve kullanın. Uç nokta şuna benzer şekilde görünecektir:  
+    ```
+    Endpoint=sb://iothub-ns-xxx.servicebus.windows.net/;SharedAccessKeyName=iothubowner;SharedAccessKey=XXX;EntityPath=<IoT Hub name>
+    ```
 
 Sonra, Visual Studio Code IoT Hub bir cihaz seçmenizi ister. LVA-örnek-cihaz olması gereken IoT Edge cihazınızı seçin.
 

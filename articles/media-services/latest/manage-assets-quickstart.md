@@ -1,17 +1,17 @@
 ---
-title: İçeriği karşıya yüklemek, kodlamak ve akışa almak için Portal 'ı kullanma-Azure
+title: Portal kullanarak içeriği karşıya yükleme, kodlama ve akışını yapma
 description: Bu hızlı başlangıçta, Azure Media Services ile içeriği karşıya yüklemek, kodlamak ve akışa almak için Portal 'ın nasıl kullanılacağı gösterilir.
 ms.topic: quickstart
 ms.date: 08/31/2020
 author: IngridAtMicrosoft
 ms.author: inhenkel
 manager: femila
-ms.openlocfilehash: 0793c8abee27ca415feba313efb029daf092bec9
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 3831892b6cd241643b3e5753689f768d59e27704
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94683038"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955979"
 ---
 # <a name="quickstart-upload-encode-and-stream-content-with-portal"></a>Hızlı başlangıç: portala karşıya içerik yükleme, kodlama ve akışla
 

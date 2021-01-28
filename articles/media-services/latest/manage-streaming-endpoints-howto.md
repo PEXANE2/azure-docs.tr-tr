@@ -1,5 +1,5 @@
 ---
-title: Azure Media Services v3 ile akış uç noktalarını yönetme
+title: Akış uç noktalarını yönetme
 description: Bu makalede, Azure Media Services v3 ile akış uç noktalarının nasıl yönetileceği gösterilmektedir.
 services: media-services
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: 8d3835d78ec55f120f6b9439aea9c29434e6bd47
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d656ce23cf68a1eec23421b769d5847f9b661bb4
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89289486"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955911"
 ---
 # <a name="manage-streaming-endpoints-with--media-services-v3"></a>Media Services v3 ile akış uç noktalarını yönetme
 
@@ -33,7 +33,7 @@ Bu makalede, farklı teknolojiler kullanarak akış uç noktanıza [Başlangıç
 > [!NOTE]
 > Yalnızca akış uç noktanız çalışır durumdaysa faturalandırılırsınız.
     
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 İncelemeyi 
 
@@ -62,7 +62,7 @@ Daha fazla bilgi için bkz.
 1. Sol bölmede,  **akış uç noktaları**' nı seçin.
 1. Başlatmak istediğiniz akış uç noktasını seçin ve ardından **Başlat**' ı seçin.
 
-## <a name="use-the-azure-cli"></a>Azure CLI'yi kullanma
+## <a name="use-the-azure-cli"></a>Azure CLI kullanma
 
 ```cli
 az ams streaming-endpoint start [--account-name]

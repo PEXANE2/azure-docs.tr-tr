@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 01/27/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to quickly deploy Azure Stack Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: 2d1bd7d2a4f066311ea01046a8d71e6ecb52c3f5
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 642ab348cd2bb5cd2cedd2b481b0d06fb6c4b425
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98919822"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98953946"
 ---
 # <a name="quickstart-get-started-with-azure-stack-edge-pro-with-gpu"></a>Hızlı başlangıç: GPU ile Azure Stack Edge Pro ile çalışmaya başlama 
 
@@ -28,7 +28,7 @@ Toplam yordamın tamamlanması yaklaşık 1,5 saat sürer. Ayrıntılı adım ad
 Dağıtmadan önce, aşağıdaki önkoşulların yerinde olduğundan emin olun:
 
 1. Azure Stack Edge Pro GPU cihazı, sitenize, [paketten](azure-stack-edge-gpu-deploy-install.md#unpack-the-device) [takılmış ve rafa takılı](azure-stack-edge-gpu-deploy-install.md#rack-the-device)olarak dağıtılır. 
-1. Ağınızı, cihazınızın [listelenen URL desenlerine ve bağlantı noktalarına](azure-stack-edge-gpu-system-requirements.md#networking-port-requirements)ulaşabileceği şekilde yapılandırın. 
+1. Ağınızı, cihazınızın [LISTELENEN URL desenlerine ve bağlantı noktalarına](azure-stack-edge-gpu-system-requirements.md#networking-port-requirements)ulaşabileceği şekilde yapılandırın. 
 1. Azure aboneliğine sahip veya katkıda bulunan erişiminiz var.
 1. Azure portal, **abonelik > kaynak sağlayıcılarına > giriş > abonelikleri**' ne gidin. `Microsoft.DataBoxEdge`Kaynak sağlayıcısını arayın ve kaydedin. `Microsoft.Devices`İşlem iş yüklerini dağıtmak üzere bir IoT Hub kaynağı oluşturacağınızı, kaydolmak için tekrarlayın.
 1. Kubernetes düğümleri için en az 2 ücretsiz, statik, bitişik IP ve IoT Edge hizmeti için en az 1 statik IP kullandığınızdan emin olun. Her modül veya dış hizmet için, dağıtırsınız, 1 ek IP gerekir.

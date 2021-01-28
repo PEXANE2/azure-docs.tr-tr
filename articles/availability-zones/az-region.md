@@ -1,18 +1,19 @@
 ---
 title: Kullanılabilirlik Alanlarını destekleyen Azure Hizmetleri
 description: Azure 'da yüksek oranda kullanılabilir ve dayanıklı uygulamalar oluşturmak için, kaynaklarınızı çalıştırmak için kullanabileceğiniz fiziksel olarak ayrı konumlar sağlayın Kullanılabilirlik Alanları.
-author: cynthn
+author: prsandhu
 ms.service: azure
-ms.topic: article
-ms.date: 12/17/2020
-ms.author: cynthn
+ms.topic: conceptual
+ms.date: 01/26/2021
+ms.author: prsandhu
+ms.reviewer: cynthn
 ms.custom: fasttrack-edit, mvc, references_regions
-ms.openlocfilehash: 2a2e4ac57eec866d9857f564d6c76ad4a775d223
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: e8e62d92afb70ec9d4df40f677de05583ef472b0
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98874617"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955792"
 ---
 # <a name="azure-services-that-support-availability-zones"></a>Kullanılabilirlik Alanlarını destekleyen Azure Hizmetleri
 
@@ -58,7 +59,7 @@ Azure 'da kapsamlı iş sürekliliği elde etmek için Azure bölge çiftleriyle
 | Batı ABD 2        |                |                      |                     |                |
 
 
-Bu bölgelerde Kullanılabilirlik Alanları ve kullanılabilir Hizmetler desteği hakkında daha fazla bilgi edinmek için Microsoft Sales veya müşteri temsilcinizle iletişime geçin. Kullanılabilirlik Alanları destekleyecek yaklaşan bölgeler için bkz. [Azure geographiler](https://azure.microsoft.com/en-us/global-infrastructure/geographies/).
+\* Bu bölgelerde Kullanılabilirlik Alanları ve kullanılabilir Hizmetler desteği hakkında daha fazla bilgi edinmek için Microsoft Sales veya müşteri temsilcinizle iletişime geçin. Kullanılabilirlik Alanları destekleyecek yaklaşan bölgeler için bkz. [Azure geographiler](https://azure.microsoft.com/en-us/global-infrastructure/geographies/).
 
 
 ## <a name="azure-services-supporting-availability-zones"></a>Kullanılabilirlik Alanları destekleyen Azure hizmetleri

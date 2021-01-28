@@ -1,5 +1,5 @@
 ---
-title: Azure Media Services v3 REST API çağrıları için Postman yapılandırma
+title: Azure Media Services v3 için Postman yapılandırma REST API
 description: Bu makalede, Postman 'ın Azure Media Services (AMS) REST API 'Lerini çağırmak için kullanılabilmesi üzere nasıl yapılandırılacağı gösterilmektedir.
 services: media-services
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: aa10cb207011051c30866a3a3ed693e7113b5882
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b0a521ddeee6d93ce809e5e6e85eefa1f01a3f12
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89297737"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98953980"
 ---
 # <a name="configure-postman-for-media-services-v3-rest-api-calls"></a>Media Services v3 REST API çağrıları için Postman yapılandırma
 
@@ -28,7 +28,7 @@ Bu makalede, **Postman** 'ın Azure Media Services (AMS) REST API 'lerini çağ�
 
 Geliştirmeye başlamadan önce [Media Services v3 API 'leri Ile geliştirmeyi](media-services-apis-overview.md)inceleyin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - [Media Services hesabı oluşturun](./create-account-howto.md). Kaynak grubu adını ve Media Services hesap adını hatırlayacağınızdan emin olun. 
 - [API 'lere erişmek](./access-api-howto.md) için gereken bilgileri alın

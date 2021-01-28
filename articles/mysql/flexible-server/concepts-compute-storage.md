@@ -5,13 +5,13 @@ author: savjani
 ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 10/20/2020
-ms.openlocfilehash: 36f31ee390a6a208b202698ec9bda59b644c9e30
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.date: 01/27/2021
+ms.openlocfilehash: 267b362c94b04b3be634f7e61c2b6d67604d7854
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94534679"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954690"
 ---
 # <a name="compute-and-storage-options-in-azure-database-for-mysql---flexible-server-preview"></a>MySQL için Azure veritabanı 'nda işlem ve depolama seçenekleri-esnek sunucu (Önizleme)
 
@@ -70,6 +70,9 @@ Kullanılabilir sunucu türlerinin ayrıntılı özellikleri şunlardır:
 | Standard_E64ds_v4    | 64     | 504               |
 
 Kullanılabilir işlem serisi hakkında daha fazla bilgi edinmek için bkz. [Burstable (B-serisi)](../../virtual-machines/sizes-b-series-burstable.md), [genel amaçlı (Ddsv4-Series)](../../virtual-machines/ddv4-ddsv4-series.md)ve [bellek için iyileştirilmiş (Edsv4-Series)](../../virtual-machines/edv4-edsv4-series.md)için Azure VM belgeleri.
+
+>[!NOTE]
+>Kullanıcı tarafından başlatılan, planlı veya planlanmamış bakım gibi nedenlerle sunucu yeniden başlatıldığında, [Burstable (B serisi)](../../virtual-machines/sizes-b-series-burstable.md) işlem katmanı için birikmiş kredi kaybolabilir. Bu nedenle, MySQL için Azure veritabanı 'nın aynı düğümde kaldığı her seferinde birikmiş kredi korunur. Yazdığında, MySQL için Azure veritabanı sunucusu yeni bir düğümde yeni bir kez başladığında bir başlangıç kredisi alır. Daha fazla bilgi için [bkz. Burstable (B serisi) SSS](https://docs.microsoft.com/azure/virtual-machines/sizes-b-series-burstable#q-why-is-my-remaining-credit-set-to-0-after-a-redeploy-or-a-stopstart).
 
 ## <a name="storage"></a>Depolama
 
@@ -132,7 +135,7 @@ Sağlanan depolamayı arttırarak veya daha büyük bir işlem boyutuna taşıya
 
 En yüksek etkin ıOPS, işlem boyutu başına kullanılabilir maksimum ıOPS 'ye bağımlıdır. Aşağıdaki formüle bakın ve [B serisi](../../virtual-machines/sizes-b-series-burstable.md), [Ddsv4-Series](../../virtual-machines/ddv4-ddsv4-series.md)ve [Edsv4 serisi](../../virtual-machines/edv4-edsv4-series.md) belgelerinde *MAKSIMUM önbelleğe alınmamış disk aktarım hızı: IOPS/Mbps* sütununa bakın.
 
-**Maksimum ETKIN IOPS** = MINIMUM ( *"önbelleğe alınmış maksimum disk aktarım hızı: IOPS/Mbps"* Işlem boyutu, gib * 3 ' te sağlanan depolama)
+**Maksimum ETKIN IOPS** = MINIMUM (*"önbelleğe alınmış maksimum disk aktarım hızı: IOPS/Mbps"* Işlem boyutu, gib * 3 ' te sağlanan depolama)
 
 G/ç tüketiminizi, Azure portal (Azure Izleyici ile) üzerinde [GÇ yüzdesi](./concepts-monitoring.md) ölçümünü kullanarak izleyebilirsiniz. Daha fazla ıOPS gerekiyorsa, işlem boyutu veya sağlanan depolama alanı tarafından kısıtlanıp kısıtlanmayacağını anlamanız gerekir. Sunucunuzun işlem veya depolama alanı için uygun şekilde ölçeklendirme yapın.
 
@@ -153,7 +156,7 @@ Depolamanın ölçeklendirilmesi ve yedekleme saklama süresinin değiştirilmes
 
 ## <a name="pricing"></a>Fiyatlandırma
 
-En güncel fiyatlandırma bilgileri için bkz. hizmet [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/MySQL/). İstediğiniz yapılandırmanın maliyetini görmek için [Azure Portal](https://portal.azure.com/#create/Microsoft.MySQLServer/flexibleServers) , seçtiğiniz seçeneklere göre **işlem + depolama** sekmesindeki aylık maliyeti gösterir. Azure aboneliğiniz yoksa, tahmini bir fiyat almak için Azure Fiyatlandırma hesaplayıcısı ' nı kullanabilirsiniz. [Azure Fiyatlandırma Hesaplayıcı](https://azure.microsoft.com/pricing/calculator/) Web sitesinde, **öğe Ekle** ' yi seçin, **veritabanları** kategorisini genişletin, **MySQL için Azure veritabanı** ' nı seçin ve seçenekleri özelleştirmek için dağıtım türü olarak **esnek sunucu** ' yı seçin.
+En güncel fiyatlandırma bilgileri için bkz. hizmet [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/MySQL/). İstediğiniz yapılandırmanın maliyetini görmek için [Azure Portal](https://portal.azure.com/#create/Microsoft.MySQLServer/flexibleServers) , seçtiğiniz seçeneklere göre **işlem + depolama** sekmesindeki aylık maliyeti gösterir. Azure aboneliğiniz yoksa, tahmini bir fiyat almak için Azure Fiyatlandırma hesaplayıcısı ' nı kullanabilirsiniz. [Azure Fiyatlandırma Hesaplayıcı](https://azure.microsoft.com/pricing/calculator/) Web sitesinde, **öğe Ekle**' yi seçin, **veritabanları** kategorisini genişletin, **MySQL için Azure veritabanı**' nı seçin ve seçenekleri özelleştirmek için dağıtım türü olarak **esnek sunucu** ' yı seçin.
 
 Sunucu maliyetini iyileştirmek isterseniz, aşağıdaki ipuçlarını göz önünde bulundurun:
 

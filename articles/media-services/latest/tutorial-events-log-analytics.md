@@ -1,8 +1,23 @@
 ---
-Başlık: Azure Log Analytics 'de Azure Media Services olaylarını depola: Azure Media Services açıklaması: Azure Media Services olaylarını Azure Log Analytics depolama hakkında bilgi edinin.
-Hizmetler: Media-Services belgetationcenter: ' ' Yazar: ınridatmicrosoft Manager: femila Düzenleyicisi: ' ' MS. Service: Media-Services MS. Workload: MS. Topic: öğretici ms. Date: 08/24/2020 MS. Author: inhenkel
+title: Azure 'da Media Services olaylarını depolama Log Analytics
+description: Azure Media Services olaylarını Azure Log Analytics depolama hakkında bilgi edinin.
+services: media-services
+documentationcenter: ''
+author: IngridAtMicrosoft
+manager: femila
+editor: ''
+ms.service: media-services
+ms.workload: ''
+ms.topic: tutorial
+ms.date: 08/24/2020
+ms.author: inhenkel
+ms.openlocfilehash: 2bfd1064a02f0fb4982c9d2747b85707e98b5bcd
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.translationtype: MT
+ms.contentlocale: tr-TR
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954538"
 ---
-
 # <a name="tutorial-store-azure-media-services-events-in-azure-log-analytics"></a>Öğretici: Azure 'da Azure Media Services olaylarını depolama Log Analytics
 
 ## <a name="azure-media-services-events"></a>Azure Media Services olaylar

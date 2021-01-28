@@ -3,12 +3,12 @@ title: IoT Edge sürüm notlarında canlı video analizi-Azure
 description: Bu konu, IoT Edge sürümler, geliştirmeler, hata düzeltmeleri ve bilinen sorunlar üzerine canlı video analizinin sürüm notlarını sağlar.
 ms.topic: conceptual
 ms.date: 08/19/2020
-ms.openlocfilehash: 328fe97c4e03f039a1224d13ce6712ccff06b3b7
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: f130b93b8d799c371a640f2b29c22c0d77834cba
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98629785"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954404"
 ---
 # <a name="live-video-analytics-on-iot-edge-release-notes"></a>IoT Edge sürüm notlarında canlı video analizi
 
@@ -35,7 +35,7 @@ mcr.microsoft.com/media/live-video-analytics:2.0.1
 > Hızlı başlangıç ve öğreticiler bölümünde, dağıtım bildirimleri 2 (canlı-video-analiz: 2) etiketini kullanır. Bu nedenle, bu tür bildirimleri yeniden dağıtmak Edge > cihazlarınızda modülü güncellemelidir.
 ### <a name="bug-fixes"></a>Hata düzeltmeleri 
 
-* Alanlar `ActivationSignalOffset` `MinimumActivationTime` ve `MaximumActivationTime` sinyal kapısı işlemcilerinde gereken özellikler yanlış ayarlandı. Artık **isteğe bağlı** özelliklerdir.
+* , `ActivationSignalOffset` `MinimumActivationTime` Ve `MaximumActivationTime` sinyal kapısı işlemcilerinde bulunan alanlar, gereken özellikler olarak doğru ayarlanmıştı. Artık **isteğe bağlı** özelliklerdir.
 * IoT Edge modülündeki canlı video analizlerinin belirli bölgelerde dağıtıldığında kilitlenmesine neden olan bir kullanım hatası düzeltildi.
 
 <hr width=100%>
@@ -48,7 +48,7 @@ Bu sürüm, IoT Edge üzerindeki canlı video analizinin genel önizleme sürüm
 ```
 ### <a name="module-updates"></a>Modül güncelleştirmeleri
 * Grafik topolojisi başına birden fazla HTTP uzantı işlemcisi ve gRPC uzantı işlemcisi kullanımı için destek eklendi.
-* Havuz düğümleri için disk alanı yönetimine yönelik destek eklendi.
+* [Havuz düğümleri Için disk alanı yönetimine](upgrading-lva-module.md#disk-space-management-with-sink-nodes)yönelik destek eklendi.
 * `MediaGraphGrpcExtension` düğüm artık tek bir gRPC sunucusu içinde birden çok AI modeli kullanmak için [Extensionconfiguration](grpc-extension-protocol.md) özelliğini destekliyor.
 * [Prometheus biçiminde](https://prometheus.io/docs/practices/naming/)canlı video analizi modülü ölçümleri toplama desteği eklendi. [Azure izleyici 'de ölçümleri ve görünümü toplama](monitoring-logging.md#azure-monitor-collection-via-telegraf) hakkında daha fazla bilgi edinin. 
 * Çıkış seçimini filtreleme özelliği eklendi. Herhangi bir grafik düğümüne yardım ile **yalnızca ses** veya **video** ya da video **ile videoları** doğrudan gönderebilirsiniz `outputSelectors` . 
@@ -56,7 +56,7 @@ Bu sürüm, IoT Edge üzerindeki canlı video analizinin genel önizleme sürüm
     * Çerçeve hızı yönetimi artık grafik uzantısı işlemci düğümlerinin içinde kullanılabilir.
 
 ### <a name="visual-studio-code-extension"></a>Visual Studio Code uzantısı
-* LVA medya grafiklerini yönetmenize yardımcı olmak için IoT Edge bir Visual Studio Code uzantısında [canlı video analizi](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.live-video-analytics-edge) yayınlandı. Bu uzantı **LVA 2,0 modülü** ile birlikte çalışarak, çok şık ve kullanımı kolay bir grafik arabirimiyle medya grafiklerini düzenleme ve yönetme olanağı sunar.
+* LVA medya grafiklerini yönetmenize yardımcı olmak için IoT Edge bir Visual Studio Code uzantısında [canlı video analizi](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.live-video-analytics-edge) yayınlandı. Bu uzantı **LVA 2,0 modülü** ile birlikte çalışarak, şık ve kullanımı kolay bir grafik arabirimiyle medya grafiklerini düzenleme ve yönetme olanağı sunar.
 ## <a name="september-22-2020"></a>22 Eylül 2020
 
 Bu yayın etiketi, modülün Eylül 2020 yenilemesi için kullanılır:
@@ -93,15 +93,15 @@ mcr.microsoft.com/media/live-video-analytics:1.0.3
 
 ### <a name="module-updates"></a>Modül güncelleştirmeleri
 
-* Artık, gRPC çerçevesini kullanarak IoT Edge ve özel uzantınız üzerinde canlı video analizi arasında yüksek veri içeriği aktarım performansı alabilirsiniz. Başlamak için [bunu](analyze-live-video-use-your-grpc-model-quickstart.md) inceleyin.
+* Artık, gRPC çerçevesini kullanarak IoT Edge ve özel uzantınız üzerinde canlı video analizi arasında yüksek veri içeriği aktarım performansı alabilirsiniz. Kullanmaya başlamak için [hızlı başlangıç](analyze-live-video-use-your-grpc-model-quickstart.md) bölümüne bakın.
 * Canlı video analizinin daha geniş bölgesel dağıtımı ve yalnızca bulut hizmeti güncelleştirilmiştir.  
-* Canlı video analizi artık dünya genelinde 25 ek bölgede kullanılabilir. Tüm kullanılabilir bölgelerin [listesi](https://azure.microsoft.com/global-infrastructure/services/?products=media-services) aşağıda verilmiştir.  
+* Canlı video analizi artık dünya genelinde 25 daha fazla bölgede kullanılabilir. Tüm kullanılabilir bölgelerin [listesi](https://azure.microsoft.com/global-infrastructure/services/?products=media-services) aşağıda verilmiştir.  
 * Hızlı [çalışmaya yönelik kurulum](https://aka.ms/lva-edge/setup-resources-for-samples) , yeni bölgelerin desteğiyle birlikte güncelleştirilmiştir.
     * Zaten kaynakları kuran herkes için eylem çağrısı yoktur
 
 ### <a name="bug-fixes"></a>Hata düzeltmeleri 
 
-* Kurulum betikindeki kullanım dışı bırakılmış bir Azure uzantısının kullanımını kaldırma
+* Kurulum komut dosyasında kullanımdan kaldırılan bir Azure uzantısının kullanımını kaldırma
 
 <hr width=100%>
 
@@ -118,7 +118,7 @@ mcr.microsoft.com/media/live-video-analytics:1.0.2
 
 ### <a name="module-updates"></a>Modül güncelleştirmeleri
 
-* Artık bir varlık havuzu düğümünün yanı sıra bir sinyal kapısı işlemcisi düğümünün bir dosya havuzu düğümü aşağı akış olan Graph topolojileri oluşturabilirsiniz. Bir [örnek için bkz](https://github.com/Azure/live-video-analytics/tree/master/MediaGraph/topologies/evr-motion-assets-files) ..
+* Artık bir varlık havuzu düğümü ve bir sinyal kapısı işlemci düğümünün bir dosya havuzu düğümü aşağı akış olan Graf topolojileri oluşturabilirsiniz. Bir örnek için [topolojiyi](https://github.com/Azure/live-video-analytics/tree/master/MediaGraph/topologies/evr-motion-assets-files) inceleyin.
 
 ### <a name="bug-fixes"></a>Hata düzeltmeleri
 

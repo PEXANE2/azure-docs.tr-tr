@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 01/18/2021
-ms.openlocfilehash: c3e6408a6a3473380edbe2966eba41970bd73562
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: be6d47d8f40746bfb2154ddb62cf2e9ce93e74aa
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98762763"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955692"
 ---
 # <a name="errors-in-the-connector-status-section"></a>Bağlayıcı durumu bölümündeki hatalar
 
@@ -66,6 +66,10 @@ Bu bölümde, bağlayıcı durumu bölümünde sunulan yaygın hataları ve bunl
 
 * **Hata**: "bir sorun oluştu. Bağlantı ayrıntıları alınamadı. " Bu hata, müşteri ıTSM eylem grubunu tanımladığında sunulur.
 
-    **Neden**: yeni oluşturulan ITSM Bağlayıcısı ilk eşitlemeyi henüz bitiremedi.
+    **Neden**: Bu hata şu durumlarda görüntülenir:
+    * Yeni oluşturulan ITSM Bağlayıcısı ilk eşitlemeyi henüz bitiremedi.
+    * Bağlayıcı doğru tanımlanmadı
 
-    **Çözüm**: yenı bir ITSM bağlayıcısı oluşturulduğunda ITSM Bağlayıcısı, çalışma öğesi şablonları ve iş ÖĞELERI gibi ITSM sisteminden bilgi eşitlemeye başlar. [Burada](./itsmc-resync-servicenow.md)açıklandığı gibi yeni bir yenileme belirteci oluşturmak için ITSM Bağlayıcısı eşitleyin.
+    **Çözüm**: 
+    * Yeni bir ıTSM Bağlayıcısı oluşturulduğunda ITSM Bağlayıcısı, çalışma öğesi şablonları ve iş öğeleri gibi ıTSM sisteminden bilgi eşitlemeye başlar. [Burada](./itsmc-resync-servicenow.md)açıklandığı gibi yeni bir yenileme belirteci oluşturmak için ITSM Bağlayıcısı eşitleyin.
+    * ITSM bağlayıcısında yer alan bağlantı ayrıntılarınızı [burada](./itsmc-connections-servicenow.md#create-a-connection) açıklandığı gibi gözden GEÇIRIN ve ITSM bağlayıcısının başarıyla [eşitlenebilir](./itsmc-resync-servicenow.md)olup olmadığını kontrol edin.

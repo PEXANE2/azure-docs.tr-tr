@@ -104,6 +104,8 @@
           href: overview-managed-identity.md
         - name: Güvenlik temeli
           href: security-baseline.md
+        - name: Azure İlkesi’ne göre güvenlik denetimleri
+          href: ./security-controls-policy.md
     - name: Yüksek kullanılabilirlik
       items:
         - name: Dayanıklılık ve olağanüstü durum kurtarma

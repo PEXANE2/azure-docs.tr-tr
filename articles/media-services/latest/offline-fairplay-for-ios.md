@@ -1,5 +1,5 @@
 ---
-title: İOS için Azure Media Services v3 ile çevrimdışı FairPlay Akışı
+title: İOS için Media Services v3 offline FairPlay Akışı
 description: Bu konu, genel bir bakış sağlar ve Apple FairPlay ile HTTP Canlı Akışı (HLS) içeriğinizi çevrimdışı modda dinamik olarak şifrelemek üzere Azure Media Services v3 'yi nasıl kullanacağınızı gösterir.
 services: media-services
 keywords: HLS, DRM, FairPlay Akışı (FPS), çevrimdışı, iOS 10
@@ -16,12 +16,12 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: willzhan
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 886a8aa1a6f062b5fe01476e387742f34efc0c56
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 399f9b0184217db8180fcec38e4f78917d5c9bc8
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90532248"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955250"
 ---
 # <a name="offline-fairplay-streaming-for-ios-with-media-services-v3"></a>İOS için Media Services v3 ile çevrimdışı FairPlay Akışı
 
@@ -49,7 +49,7 @@ Bu makalede iOS 10 veya üstünü çalıştıran cihazları hedefleyen FairPlay 
 > [!NOTE]
 > Çevrimdışı DRM yalnızca içeriği indirdiğinizde lisans için tek bir istek yapmak üzere faturalandırılır. Tüm hatalar faturalandırılmaz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 İOS 10 + cihazında FairPlay için çevrimdışı DRM uygulamadan önce:
 

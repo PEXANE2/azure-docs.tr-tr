@@ -1,5 +1,5 @@
 ---
-title: Azure Media Services v3 bulutları ve bölgeleri kullanılabilirliği
+title: Azure Media Services v3 bölgeleri kullanılabilirliği
 description: Bu makalede, Azure Media Services v3 'nin kullanılabildiği Azure bulutları ve bölgeleri hakkında bilgi sağlanır.
 services: media-services
 author: IngridAtMicrosoft
@@ -8,12 +8,12 @@ ms.service: media-services
 ms.topic: reference
 ms.date: 10/28/2020
 ms.author: inhenkel
-ms.openlocfilehash: 20c025cfabf6ed3cedd838f8be964bec06ad595e
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: 91df515703b4b6b368b07482fad1aa8b781281f6
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93242721"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954455"
 ---
 # <a name="azure-media-services-v3-clouds-and-regions-availability"></a>Azure Media Services v3 bulutları ve bölgeleri kullanılabilirliği
 
@@ -66,7 +66,7 @@ Azure Media Services v3 Azure Resource Manager ile kullanılabilir. Ancak tüm A
 ## <a name="see-also"></a>Ayrıca bkz.
 
 * [Azure bölgeleri](https://azure.microsoft.com/global-infrastructure/regions/)
-* [Bölgesel kod adları ve uç noktaları](azure-regions-code-names.md)
+* [Bölgesel kod adları ve uç noktalar](azure-regions-code-names.md)
 * [Azure coğrafyaları](https://azure.microsoft.com/global-infrastructure/geographies/)
 * [Azure konumları](https://azure.microsoft.com/global-infrastructure/locations/)
 

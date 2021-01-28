@@ -1,9 +1,25 @@
 ---
-Başlık: Azure Media Services DRM şifreleme ve lisans teslimi hizmeti: Azure Media Services Açıklama: Microsoft PlayReady, Google Widevine veya Apple FairPlay lisanslarıyla şifrelenmiş akışlar sunmak için DRM dinamik şifrelemesini ve lisans teslim hizmetini nasıl kullanacağınızı öğrenin.
-Hizmetler: Media-Services belgetationcenter: ' ' Yazar: ınridatmicrosoft Manager: femila Düzenleyicisi: ' '
-
-MS. Service: Media-Services MS. Workload: Media ms.tgt_pltfrm: na MS. devlang: na MS. Topic: öğretici ms. Date: 08/31/2020 MS. Author: inhenkel MS. Custom: seodec18
-
+title: DRM şifrelemesini ve lisans teslimini Media Services
+description: Microsoft PlayReady, Google Widevine veya Apple FairPlay lisanslarıyla şifrelenmiş akışlar sunmak için DRM dinamik şifrelemesini ve lisans teslim hizmetini nasıl kullanacağınızı öğrenin.
+services: media-services
+documentationcenter: ''
+author: IngridAtMicrosoft
+manager: femila
+editor: ''
+ms.service: media-services
+ms.workload: media
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: tutorial
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.custom: seodec18
+ms.openlocfilehash: a4f5810f76af7116421bac3953b4eb65370055e3
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.translationtype: MT
+ms.contentlocale: tr-TR
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955199"
 ---
 # <a name="tutorial-use-drm-dynamic-encryption-and-license-delivery-service"></a>Öğretici: DRM dinamik şifrelemesini ve lisans teslim hizmetini kullanın
 

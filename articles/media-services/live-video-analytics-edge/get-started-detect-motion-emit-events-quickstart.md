@@ -3,12 +3,12 @@ title: IoT Edge Azure 'da canlı video analiziyle çalışmaya başlama
 description: Bu hızlı başlangıçta IoT Edge 'da canlı video analiziyle çalışmaya başlama gösterilmektedir. Canlı video akışında hareket algılamayı öğrenin.
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: cbe4b1280897064938222680fc932cfe289d2f32
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 2ae8292375c0b85cc4c771c1fe7d853c5fcd3afd
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98631945"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955775"
 ---
 # <a name="quickstart-get-started---live-video-analytics-on-iot-edge"></a>Hızlı başlangıç: IoT Edge kullanmaya başlama-canlı video analizi
 
@@ -59,7 +59,21 @@ Bu hızlı başlangıç için, Azure aboneliğinizde gerekli kaynakları dağıt
     bash -c "$(curl -sL https://aka.ms/lva-edge/setup-resources-for-samples)"
     ```
     
-Betiği başarıyla tamamladıktan sonra aboneliğinizdeki tüm gerekli kaynakları görmeniz gerekir. Betik çıktısında, kaynak tablosu IoT Hub adını listeler. Kaynak türünü bulun **`Microsoft.Devices/IotHubs`** ve adı aklınızda yazın. Sonraki adımda bu ada ihtiyacınız olacaktır.  
+    Betiği başarıyla tamamladıktan sonra aboneliğinizdeki tüm gerekli kaynakları görmeniz gerekir. Komut dosyası tarafından toplam 12 kaynak oluşturulur:
+    1. **Akış uç noktası** -bu, kayıtlı AMS varlığını yürütmeye yardımcı olur.
+    1. **Sanal makine** -bu, Edge cihazınız olarak görev yapacak bir sanal makinedir.
+    1. **Disk** -bu, medya ve yapıtları depolamak için sanal makineye bağlı bir depolama disktir.
+    1. **Ağ güvenlik grubu** -bu, bir Azure sanal ağındaki Azure kaynaklarından gelen ve giden ağ trafiğini filtrelemek için kullanılır.
+    1. **Ağ arabirimi** -bu, bir Azure sanal makinesinin Internet, Azure ve diğer kaynaklarla iletişim kurmasını sağlar.
+    1. Savunma **bağlantısı** -bu, tarayıcınızı ve Azure Portal kullanarak sanal makinenize bağlanmanızı sağlar.
+    1. **Genel IP adresi** -bu, Azure kaynaklarının Internet ve genel kullanıma yönelik Azure hizmetleriyle iletişim kurmasını sağlar
+    1. **Sanal ağ** -bu, sanal makineniz gibi birçok Azure Kaynak türünün, internet ve şirket içi ağlarla güvenli bir şekilde iletişim kurmasını sağlar. [Sanal ağlar](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) hakkında daha fazla bilgi
+    1. **IoT Hub** -bu, IoT uygulamanız, IoT Edge modülleriniz ve yönettiği cihazlar arasında çift yönlü iletişim için bir merkezi ileti hub 'ı görevi görür.
+    1. **Medya hizmeti hesabı** -bu, Azure 'da medya içeriğini yönetmeye ve akışa yardımcı olur.
+    1. **Depolama hesabı** -bir birincil depolama hesabınız olmalıdır ve Media Services hesabınızla Ilişkili birkaç ikincil depolama hesabı olabilir. Daha fazla bilgi için bkz. [Azure Media Services hesapları Ile Azure depolama hesapları](https://docs.microsoft.com/azure/media-services/latest/storage-account-concept).
+    1. **Kapsayıcı kayıt defteri** -bu, özel Docker kapsayıcı görüntülerinizi ve ilgili yapıtlarınızı depolamaya ve yönetmeye yardımcı olur.
+
+Betik çıktısında, kaynak tablosu IoT Hub adını listeler. Kaynak türünü bulun **`Microsoft.Devices/IotHubs`** ve adı aklınızda yazın. Sonraki adımda bu ada ihtiyacınız olacaktır.  
 
 > [!NOTE]
 > Betik Ayrıca **_~/CloudDrive/LVA-Sample/_* _ dizininde birkaç yapılandırma dosyası oluşturur. Bu dosyalar hızlı başlangıçta daha sonra gerekecektir.
@@ -101,6 +115,12 @@ Azure IoT araçları uzantısını kullanarak IoT Hub 'ınıza bağlanmak için 
 1. **Gezgin** sekmesinin sol alt köşesinde **Azure IoT Hub**' yi seçin.
 1. Bağlam menüsünü görmek için **diğer seçenekler** simgesini seçin. Sonra **IoT Hub bağlantı dizesi ayarla**' yı seçin.
 1. Bir giriş kutusu göründüğünde IoT Hub bağlantı dizenizi girin. Cloud Shell, bağlantı dizesini *~/CloudDrive/LVA-Sample/appsettings.jstarihinde* alabilirsiniz.
+
+> [!NOTE]
+> IoT Hub için yerleşik uç nokta bilgisi sağlamanız istenebilir. Bu bilgileri almak için Azure portal ' de IoT Hub gidin ve sol gezinti bölmesindeki **yerleşik uç noktalar** seçeneğini bulun. Buraya tıklayın ve **Olay Hub** 'ı ile uyumlu uç nokta bölümünde **Olay Hub 'ı ile uyumlu uç noktası** bölümüne bakın. Kutusunda metni kopyalayın ve kullanın. Uç nokta şuna benzer şekilde görünecektir:  
+    ```
+    Endpoint=sb://iothub-ns-xxx.servicebus.windows.net/;SharedAccessKeyName=iothubowner;SharedAccessKey=XXX;EntityPath=<IoT Hub name>
+    ```
 
 Bağlantı başarılı olursa Edge cihazlarının listesi görüntülenir. **LVA-Sample-Device** adlı en az bir cihaz görmeniz gerekir. Artık IoT Edge cihazlarınızı yönetebilir ve bağlam menüsü aracılığıyla Azure IoT Hub etkileşim kurabilirsiniz. Sınır cihazında dağıtılan modülleri görüntülemek için, **LVA-örnek-cihaz** altında **modüller** düğümünü genişletin.
 

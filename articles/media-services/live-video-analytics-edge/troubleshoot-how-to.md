@@ -5,12 +5,12 @@ author: IngridAtMicrosoft
 ms.topic: how-to
 ms.author: inhenkel
 ms.date: 12/04/2020
-ms.openlocfilehash: d23294c21d49b1c2ab83c4bf8f110d5d4bc7aafb
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: d519193d55c9535dc71206d2d9f72661d7a40d71
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98878299"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954421"
 ---
 # <a name="troubleshoot-live-video-analytics-on-iot-edge"></a>IoT Edge 'da canlı video analizi sorunlarını giderme
 
@@ -97,6 +97,17 @@ Canlı video analizi, IoT Edge cihazında bir IoT Edge modülü olarak dağıtı
 
     > [!TIP]
     > Ortamınızda Azure IoT Edge modüller çalıştıran sorunlarla karşılaşırsanız, sorun giderme ve Tanılama için kılavuz olarak **[Azure IoT Edge standart tanılama adımlarını](../../iot-edge/troubleshoot.md?preserve-view=true&view=iotedge-2018-06)** kullanın.
+
+**[Canlı video analizi kaynakları kurulum betiğini](https://github.com/Azure/live-video-analytics/tree/master/edge/setup)** çalıştırırken da sorunlarla karşılaşabilirsiniz. Bazı yaygın sorunlar şunlardır:
+
+* Sahip ayrıcalıklarınız olmayan bir abonelik kullanma. Bu, betiğin bir **ForbiddenError** veya **AuthorizationFailed** hatasıyla başarısız olmasına neden olur.
+    * Bu sorunu daha fazla almak için, kullanmayı planladığınız abonelik için **sahip** ayrıcalıklarına sahip olduğunuzdan emin olun. Kendiniz bunu yapaamadıysanız, doğru ayrıcalıklara izin vermek için lütfen abonelik yöneticisine ulaşın.
+* **İlke ihlali nedeniyle şablon dağıtımı başarısız oldu.**
+    * Bu sorunu geçebilmeniz için lütfen BT yöneticinizle birlikte çalışarak SSH kimlik doğrulamasını engellemeyi atlamak için sanal makine oluşturmak üzere yapılan çağrı (ler) in olduğundan emin olun. Azure kaynaklarıyla iletişim kurmak için Kullanıcı adı ve parola gerektiren bir güvenli Savunma Ağı kullandığımızda bu gerekli olmayacaktır. Bu kimlik bilgileri, sanal makine başarıyla oluşturulduğunda, dağıtıldıktan ve IoT Hub eklendikten sonra Cloud Shell **~/CloudDrive/LVA-Sample/vm-edge-device-credentials.txt** dosyasında depolanır.
+* Kurulum betiği, hizmet sorumlusu ve/veya Azure kaynakları oluşturamaz.
+    * Bu sorunu daha fazla almak için lütfen aboneliğinizin ve Azure kiracınızın en yüksek hizmet sınırlarına ulaşmadığını kontrol edin. [Azure ad hizmeti sınırları ve kısıtlamaları](https://docs.microsoft.com/azure/active-directory/enterprise-users/directory-service-limits-restrictions) ile [Azure aboneliği ve hizmet limitleri, Kotalar ve kısıtlamalar](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits) hakkında daha fazla bilgi edinin.
+
+
 ### <a name="live-video-analytics-working-with-external-modules"></a>Canlı video analizi dış modüllerle çalışıyor
 
 Medya grafiği uzantısı işlemcileri ile canlı video analizi, medya grafiğinin HTTP veya gRPC protokollerini kullanarak diğer IoT Edge modüllerden veri göndermesini ve almasını sağlayabilir. Belirli bir [örnek](https://github.com/Azure/live-video-analytics/tree/master/MediaGraph/topologies/httpExtension)olarak, bu medya grafiği, video çerçevelerini Yolo v3 gibi bir dış çıkarım MODÜLÜNE ve http protokolünü kullanarak JSON tabanlı analiz sonuçları almaya gönderebilir. Böyle bir topolojide, olayların hedefi çoğunlukla IoT Hub 'idir. Hub 'da çıkarım olaylarını görmeme durumlarında, aşağıdakileri denetleyin:

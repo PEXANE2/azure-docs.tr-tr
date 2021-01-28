@@ -11,12 +11,12 @@ ms.author: mnark
 author: MrudulaN
 ms.reviewer: larryfr
 ms.date: 03/05/2020
-ms.openlocfilehash: 17b2d717ac6f244cb3ddddfdbc2f29581aa1f59f
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: d8b1c2a5384e479e39d169d368554f16c300a33e
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95527318"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954555"
 ---
 # <a name="deploy-a-model-to-azure-machine-learning-compute-instances"></a>Azure Machine Learning işlem örneklerine model dağıtma
 
@@ -38,11 +38,12 @@ Azure Machine Learning kullanarak bir modeli Azure Machine Learning işlem örne
 
 Yerel dağıtımları gösteren örnek bir not defteri, işlem örneğinize dahil edilmiştir. Not defterini yüklemek ve modeli bir Web hizmeti olarak sanal makineye dağıtmak için aşağıdaki adımları kullanın:
 
-1. [Azure Machine Learning Studio](https://ml.azure.com)'dan Azure Machine Learning işlem örneklerinizi seçin.
+1. [Azure Machine Learning Studio](https://ml.azure.com)'Dan "Not defterleri" ni seçin ve ardından "örnek Not defterleri" altında How-to-Use-azureml/Deployment/Deploy-to-Local/Register-model-Deploy-Local. ipynb ' yi seçin. Bu Not defterini Kullanıcı klasörünüze kopyalayın.
 
-1. `samples-*`Alt dizini açın ve açın `how-to-use-azureml/deployment/deploy-to-local/register-model-deploy-local.ipynb` . Açıldığında, Not defterini çalıştırın.
+1. 1. adımda kopyalanan Not defterini bulun, Not defterini çalıştırmak için bir Işlem örneği seçin veya oluşturun.
 
     ![Not defterindeki çalışan yerel hizmetin ekran görüntüsü](./media/how-to-deploy-local-container-notebook-vm/deploy-local-service.png)
+
 
 1. Not defteri, hizmetin üzerinde çalıştığı URL 'YI ve bağlantı noktasını görüntüler. Örneğin, `https://localhost:6789`. Ayrıca, `print('Local service port: {}'.format(local_service.port))` bağlantı noktasını göstermek için içeren hücreyi de çalıştırabilirsiniz.
 

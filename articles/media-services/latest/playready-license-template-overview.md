@@ -1,5 +1,5 @@
 ---
-title: Microsoft PlayReady lisans şablonuyla Azure Media Services v3
+title: Microsoft PlayReady lisans şablonu Media Services
 description: PlayReady lisans şablonuyla Azure Media Services v3 ve PlayReady lisanslarını yapılandırma hakkında bilgi edinin.
 author: IngridAtMicrosoft
 manager: femila
@@ -14,18 +14,18 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0a4b694ca449390e5b2f282f1361f0a455ba5750
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0dc015ee1798bb4b9ce632d11f952178156155d6
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90531449"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955198"
 ---
 # <a name="media-services-v3-with-playready-license-template"></a>PlayReady lisans şablonuyla v3 Media Services
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-Azure Media Services içeriğinizi **Microsoft PlayReady**ile şifrelemenizi sağlar. Media Services, PlayReady lisanslarını teslim etmek için de bir hizmet sağlar. PlayReady lisanslarını yapılandırmak için Media Services API 'Leri kullanabilirsiniz. Bir oyuncu PlayReady korumalı içeriğinizi yürütmeye çalıştığında, lisans almak için lisans teslim hizmetine bir istek gönderilir. Lisans hizmeti isteği onayladığında, istemciye gönderilen lisansı yayınlar ve belirtilen içeriğin şifresini çözmek ve yürütmek için kullanılır.
+Azure Media Services içeriğinizi **Microsoft PlayReady** ile şifrelemenizi sağlar. Media Services, PlayReady lisanslarını teslim etmek için de bir hizmet sağlar. PlayReady lisanslarını yapılandırmak için Media Services API 'Leri kullanabilirsiniz. Bir oyuncu PlayReady korumalı içeriğinizi yürütmeye çalıştığında, lisans almak için lisans teslim hizmetine bir istek gönderilir. Lisans hizmeti isteği onayladığında, istemciye gönderilen lisansı yayınlar ve belirtilen içeriğin şifresini çözmek ve yürütmek için kullanılır.
 
 PlayReady lisansları, bir kullanıcı tarafından korunan içeriği yürütmeye çalıştığında PlayReady dijital hak yönetimi (DRM) çalışma zamanının uygulanmasını istediğiniz hakları ve kısıtlamaları içerir. Burada, şunları belirtebileceğiniz PlayReady lisans kısıtlamalarına örnek verilmiştir:
 

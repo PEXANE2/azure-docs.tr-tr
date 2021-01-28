@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -14,19 +14,37 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: 730ff3c274fd93e6344cec688ba2db212d285baf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 75650d7ff0ac647aeb6dace76c270680b1b89347
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76758962"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98954977"
 ---
-Uygulamanızı harika hale getirin:
+## <a name="enable-logging"></a>Günlü kaydını etkinleştir
 
-- [Günlüğe kaydetmeyi](../articles/active-directory/develop/msal-logging.md)etkinleştirin.
-- Telemetriyi etkinleştirin.
-- [Proxy 'leri etkinleştirin ve http istemcilerini özelleştirin](../articles/active-directory/develop/msal-net-provide-httpclient.md).
+Hata ayıklama ve kimlik doğrulama sırasında hata giderme senaryolarında, Microsoft kimlik doğrulama kitaplığı yerleşik günlük desteği sağlar. Günlüğe kaydetme her bir kitaplık aşağıdaki makalelerde ele alınmıştır:
 
-Tümleştirmenizi test edin:
+:::row:::
+    :::column:::
+        - [MSAL.NET’te oturum açma](../articles/active-directory/develop/msal-logging-dotnet.md)
+        - [Android için MSAL’de oturum açma](../articles/active-directory/develop/msal-logging-android.md)
+        - [MSAL.js’de oturum açma](../articles/active-directory/develop/msal-logging-js.md)
+    :::column-end:::
+    :::column:::
+        - [iOS/macOS için MSAL’de oturum açma](../articles/active-directory/develop/msal-logging-ios.md)
+        - [Java için MSAL’de oturum açma](../articles/active-directory/develop/msal-logging-java.md)
+        - [Python için MSAL’de oturum açma](../articles/active-directory/develop/msal-logging-python.md)
+    :::column-end:::
+:::row-end:::
 
-- [Microsoft Identity platform için tümleştirme denetim listesini](../articles/active-directory/develop/identity-platform-integration-checklist.md)kullanın.
+Veri toplama için bazı öneriler aşağıda verilmiştir:
+
+- Kullanıcılar sorun yaşadıklarında yardım isteyebilir. Günlükleri yakalamak ve geçici olarak depolamak en iyi uygulamadır. Kullanıcıların günlükleri karşıya yükleyebilecekleri bir konum belirtin. MSAL, kimlik doğrulamasıyla ilgili ayrıntılı bilgileri yakalamak için günlüğe kaydetme uzantıları sağlar.
+
+- Telemetri varsa, kullanıcıların uygulamanızda oturum açma hakkında veri toplamak için MSAL aracılığıyla etkinleştirin.
+
+
+## <a name="validate-your-integration"></a>Tümleştirmenizi doğrulama
+
+[Microsoft Identity platform tümleştirme denetim listesini](../articles/active-directory/develop/identity-platform-integration-checklist.md)izleyerek tümleştirmenizi test edin.

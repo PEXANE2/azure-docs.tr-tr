@@ -15,7 +15,7 @@
       items:
         - name: Service Bus kuyruğu oluşturma
           items:
-            - name: Azure portal
+            - name: Azure portalı
               href: service-bus-quickstart-portal.md
             - name: Azure PowerShell
               href: service-bus-quickstart-powershell.md
@@ -210,14 +210,20 @@
               href: service-bus-auto-forwarding.md
             - name: İşlem gerçekleştirme
               href: service-bus-transactions.md
-        - name: Uçtan uca izleme ve tanılama
-          href: service-bus-end-to-end-tracing.md
         - name: Çok katmanlı Service Bus uygulaması derleme
           href: service-bus-dotnet-multi-tier-app-using-service-bus-queues.md
     - name: Geçiş
       items:
         - name: ActiveMQ’dan Azure Service Bus’a geçiş
           href: migrate-jms-activemq-to-servicebus.md
+    - name: İzleyici
+      items:
+        - name: Uçtan uca izleme ve tanılama
+          href: service-bus-end-to-end-tracing.md
+        - name: Tanılama günlükleri
+          href: service-bus-diagnostic-logs.md
+        - name: Azure Izleyici ölçümleri
+          href: service-bus-metrics-azure-monitor.md
     - name: Tümleştirme
       items:
         - name: RabbitMQ ile tümleştirme
@@ -228,12 +234,8 @@
           href: automate-update-messaging-units.md
         - name: Varlıkları sağlamak için Azure PowerShell kullanma
           href: service-bus-manage-with-ps.md
-        - name: Azure İzleyici ile Service Bus’ı izleme
-          href: service-bus-metrics-azure-monitor.md
         - name: Service Bus yönetim kitaplıkları
           href: service-bus-management-libraries.md
-        - name: Kaynak günlükleri
-          href: service-bus-diagnostic-logs.md
         - name: Mesajlaşma varlıklarını askıya alma ve yeniden etkinleştirme
           href: entity-suspend.md
         - name: Service Bus üzerinde veri işlemleri gerçekleştirmek için Service Bus Explorer’ı kullanma

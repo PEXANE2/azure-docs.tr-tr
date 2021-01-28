@@ -113,6 +113,8 @@
           href: reference-data-guidelines.md
     - name: Görüntü biçimi
       href: reference-markdown-format.md
+    - name: Özel bağlantılar
+      href: reference-private-endpoint.md
     - name: Toplu test biçimi
       href: reference-tsv-format-batch-testing.md
     - name: Şifreleme

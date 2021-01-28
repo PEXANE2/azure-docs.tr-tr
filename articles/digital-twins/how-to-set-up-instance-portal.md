@@ -8,12 +8,12 @@ ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 61b396cbcc8c91c75c961f702de7ed6a33e676e4
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 5e0c2541c398f2e135b8763cc753ec8c20c3967d
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 01/28/2021
-ms.locfileid: "98947029"
+ms.locfileid: "98953759"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-portal"></a>Azure dijital TWINS örneği ve kimlik doğrulaması (portal) ayarlama
 
@@ -56,8 +56,8 @@ Aşağıdaki **kaynak oluştur** sayfasında, aşağıda verilen değerleri giri
 
 **Kaynak oluştur** işlemindeki diğer sekmeleri kullanarak kurulum sırasında yapılandırabileceğiniz ek seçenekler aşağıda verilmiştir.
 
-* **Ağ**: Bu sekmede, örneğinizin ortak ağ görünürlüğünü ortadan kaldırmak Için [Azure özel bağlantısı](../private-link/private-link-overview.md) ile özel uç noktaları etkinleştirebilirsiniz. Yönergeler için bkz. [*nasıl yapılır: özel bağlantıyla özel erişimi etkinleştirme*](how-to-enable-private-link.md#add-a-private-endpoint-during-instance-creation).
-* **Gelişmiş**: Bu sekmede, örneğiniz için olayları [uç noktalara](concepts-route-events.md)iletirken kullanılabilecek [sistem tarafından yönetilen bir kimliği](../active-directory/managed-identities-azure-resources/overview.md) etkinleştirebilirsiniz. Yönergeler için bkz. [*nasıl yapılır: yönetilen kimlikleri yönlendirme olayları Için etkinleştirme*](how-to-enable-managed-identities.md).
+* **Ağ**: Bu sekmede, örneğinizin ortak ağ görünürlüğünü ortadan kaldırmak Için [Azure özel bağlantısı](../private-link/private-link-overview.md) ile özel uç noktaları etkinleştirebilirsiniz. Yönergeler için bkz. [*nasıl yapılır: özel bağlantı ile özel erişimi etkinleştirme (Önizleme)*](how-to-enable-private-link.md#add-a-private-endpoint-during-instance-creation).
+* **Gelişmiş**: Bu sekmede, örneğiniz için olayları [uç noktalara](concepts-route-events.md)iletirken kullanılabilecek [sistem tarafından yönetilen bir kimliği](../active-directory/managed-identities-azure-resources/overview.md) etkinleştirebilirsiniz. Yönergeler için bkz. [*nasıl yapılır: yönetilen kimlikleri yönlendirme olayları Için etkinleştirme (Önizleme)*](how-to-enable-managed-identities.md#add-a-system-managed-identity-during-instance-creation).
 * **Etiketler**: Bu sekmede, Azure kaynaklarınız arasında düzenleme yapmanıza yardımcı olması için örneğinize Etiketler ekleyebilirsiniz. Azure Kaynak etiketleri hakkında daha fazla bilgi için bkz. [*mantıksal kuruluş Için etiket kaynakları, kaynak grupları ve abonelikler*](../azure-resource-manager/management/tag-resources.md).
 
 ### <a name="verify-success-and-collect-important-values"></a>Başarıyı doğrulama ve önemli değerleri toplama

@@ -1,5 +1,5 @@
 ---
-title: Azure Media Services ve Azure CLı ile video dosyaları akışı
+title: Azure Media Services CLı ile video dosyaları akışı
 description: Yeni bir Azure Media Services hesabı oluşturmak, bir dosya kodlamak ve Azure Media Player göndermek için Azure CLı 'yi kullanmak üzere Bu öğreticinin adımlarını izleyin.
 services: media-services
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.custom: devx-track-azurecli
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: f4a71509c29555da2fdbc1e7eed2fd985237d6a5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c78205d7e2b41628de9e8b92c9fa5506e82158cb
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91268800"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954504"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---azure-cli"></a>Öğretici: URL 'yi temel alarak uzak bir dosyayı kodlama ve videoyu akışa oluşturma-Azure CLı
 
@@ -85,7 +85,7 @@ Aşağıdakine benzer bir yanıt alırsınız:
 
 ## <a name="start-the-streaming-endpoint"></a>Akış uç noktasını başlatma
 
-Aşağıdaki Azure CLı komutu varsayılan **akış uç noktasını**başlatır.
+Aşağıdaki Azure CLı komutu varsayılan **akış uç noktasını** başlatır.
 
 ```azurecli-interactive
 az ams streaming-endpoint start  -n default -a amsaccount -g amsResourceGroup
@@ -237,7 +237,7 @@ Aşağıdakine benzer bir yanıt alırsınız:
 
 ### <a name="check-status"></a>Durumu kontrol etme
 
-Beş dakika içinde işin durumunu kontrol edin. "Tamamlandı" olmalıdır. Tamamlanmadı, birkaç dakika sonra yeniden denetleyin. İşiniz bittiğinde sonraki adıma gidin ve bir **akış Bulucu**oluşturun.
+Beş dakika içinde işin durumunu kontrol edin. "Tamamlandı" olmalıdır. Tamamlanmadı, birkaç dakika sonra yeniden denetleyin. İşiniz bittiğinde sonraki adıma gidin ve bir **akış Bulucu** oluşturun.
 
 ```azurecli-interactive
 az ams job show -a amsaccount -g amsResourceGroup -t testEncodingTransform -n testJob001

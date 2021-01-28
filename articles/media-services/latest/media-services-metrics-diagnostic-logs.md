@@ -1,11 +1,25 @@
 ---
-Başlık: Azure Izleyici ile ölçümleri ve tanılama günlüklerini Media Services: Azure Media Services Açıklama: Azure Izleyici aracılığıyla Azure Media Services ölçümleri ve tanılama günlüklerini izlemeyi öğrenin.
-Hizmetler: Media-Services belgetationcenter: ' ' Yazar: ınridatmicrosoft Manager: femila Düzenleyicisi: ' '
-
-MS. Service: Media-Services MS. Workload: Media ms.tgt_pltfrm: na MS. devlang: na MS. Topic: kavramsal MS. Date: 11/02/2020 MS. Author: inhenkel
-
+title: Azure Izleyici ile ölçümler ve tanılama günlükleri
+description: Azure Izleyici aracılığıyla Azure Media Services ölçümleri ve tanılama günlüklerini izlemeyi öğrenin.
+services: media-services
+documentationcenter: ''
+author: IngridAtMicrosoft
+manager: femila
+editor: ''
+ms.service: media-services
+ms.workload: media
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: conceptual
+ms.date: 11/02/2020
+ms.author: inhenkel
+ms.openlocfilehash: 35b0d9c2937024341be6183ac1438b7c4500d6ef
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.translationtype: MT
+ms.contentlocale: tr-TR
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954995"
 ---
-
 # <a name="monitor-media-services-metrics-and-diagnostic-logs-with-azure-monitor"></a>Azure Izleyici ile Media Services ölçümleri ve tanılama günlüklerini izleme
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]

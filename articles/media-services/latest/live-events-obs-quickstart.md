@@ -1,5 +1,5 @@
 ---
-title: OBS Studio ile Azure Media Services canlı akış oluşturma
+title: OBS Studio ile canlı akış oluşturma
 description: Portal ve OBS Studio kullanarak Azure Media Services canlı akış oluşturmayı öğrenin
 services: media-services
 ms.service: media-services
@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.author: inhenkel
 author: IngridAtMicrosoft
 ms.date: 08/31/2020
-ms.openlocfilehash: 04b0ef0d6a480270b1f0a3546319b2608d638677
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 83f072b67f5aa162137a55d2b311dccf0daf7f53
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89265516"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98956081"
 ---
 # <a name="create-an-azure-media-services-live-stream-with-obs"></a>OBS ile Azure Media Services canlı akış oluşturma
 
@@ -59,7 +59,7 @@ Web tarayıcınızı açın ve [Microsoft Azure Portal](https://portal.azure.com
 1. Yeni bir canlı akış olayı oluşturmak için **canlı etkinlik Ekle** ' yi seçin.
 
    ![Canlı olay simgesi ekle](media/live-events-obs-quickstart/add-live-event.png)
-1. Yeni olaylarınız için, **canlı olay adı** kutusuna *testliveevent*gibi bir ad girin.
+1. Yeni olaylarınız için, **canlı olay adı** kutusuna *testliveevent* gibi bir ad girin.
 
    ![Canlı olay adı kutusu](media/live-events-obs-quickstart/live-event-name.png)
 1. **Açıklama** kutusuna olay için isteğe bağlı bir açıklama girin.
@@ -67,7 +67,7 @@ Web tarayıcınızı açın ve [Microsoft Azure Portal](https://portal.azure.com
 
    ![Bulut kodlama seçeneği](media/live-events-obs-quickstart/cloud-encoding.png)
 1. **RTMP** seçeneğini belirleyin.
-1. Canlı etkinlik için ücretsiz olarak faturalandırılmaya engel olmak için, **canlı etkinlik Başlat**için **Hayır** seçeneğinin seçildiğinden emin olun. (Faturalandırma, canlı etkinlik başlatıldığında başlayacaktır.)
+1. Canlı etkinlik için ücretsiz olarak faturalandırılmaya engel olmak için, **canlı etkinlik Başlat** için **Hayır** seçeneğinin seçildiğinden emin olun. (Faturalandırma, canlı etkinlik başlatıldığında başlayacaktır.)
 
    ![Canlı etkinlik seçeneğini Başlat](media/live-events-obs-quickstart/start-live-event-no.png)
 1. Ayarları gözden geçirmek için **gözden geçir + oluştur** düğmesini seçin.
@@ -120,7 +120,7 @@ Sonraki yordamda, çıkış ayarlarına girmek üzere giriş URL 'sini kopyalama
 1. Portalın Azure Media Services sayfasında, canlı akış olayını başlatmak için **Başlat** ' ı seçin. (Faturalandırma şimdi başlar.)
 
    ![Başlangıç simgesi](media/live-events-obs-quickstart/start.png)
-1. **RTMP** 'Yi **RTMPS**olarak ayarlayın.
+1. **RTMP** 'Yi **RTMPS** olarak ayarlayın.
 1. **Giriş URL 'si** kutusuna URL 'yi panonuza kopyalayın.
 
    ![Giriş URL 'SI](media/live-events-obs-quickstart/input-url.png)

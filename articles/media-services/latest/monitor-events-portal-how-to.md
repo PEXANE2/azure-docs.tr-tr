@@ -1,5 +1,5 @@
 ---
-title: Portal ile Event Grid Azure Media Services olaylarını izleme
+title: Event Grid portalı ile Media Services olaylarını izleme
 description: Bu makalede, Azure Media Services olaylarını izlemek için Event Grid nasıl abone olunacağı gösterilmektedir.
 services: media-services
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 65459dbdf8eaa92525fa20eda158f4beacf58780
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9f1a74ee1668594d2e28bed0ad36793bf47653fe
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89294382"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955267"
 ---
 # <a name="create-and-monitor-media-services-events-with-event-grid-using-the-azure-portal"></a>Azure portalını kullanarak Event Grid ile Media Services olayları oluşturma ve izleme
 
@@ -32,7 +32,7 @@ Bu makalede, Azure Media Services hesabınıza yönelik olaylara abone olmak iç
 
 İşiniz bittiğinde, olay verilerinin web uygulamasına gönderildiğini görürsünüz.
 
-## <a name="prerequisites"></a>Ön koşullar 
+## <a name="prerequisites"></a>Önkoşullar 
 
 * Etkin bir Azure aboneliğine sahip olma.
 * [Bu hızlı başlangıçta](./create-account-howto.md) açıklandığı gibi yeni bir Azure Media Services hesabı oluşturun.
@@ -61,7 +61,7 @@ Event Grid’e hangi olayları izlemek istediğinizi ve olayların nereye gönde
    ![Web kancasını seçme](./media/monitor-events-portal/select-web-hook.png)
 
 1. Olay aboneliği, Media Services hesabınızın değerleriyle önceden doldurulmuştur. 
-1. **Uç nokta türü**Için ' Web kancası ' seçeneğini belirleyin.
+1. **Uç nokta türü** Için ' Web kancası ' seçeneğini belirleyin.
 1. Bu konu başlığında, **tüm olay türlerine abone ol** seçeneğini işaretlenmiş olarak bırakıyoruz. Ancak, işaretini kaldırın ve belirli olay türleri için filtre uygulayabilirsiniz. 
 1. **Uç nokta seçin** bağlantısına tıklayın.
 

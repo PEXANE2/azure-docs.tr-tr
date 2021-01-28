@@ -1,5 +1,5 @@
 ---
-title: Media Services ve Isteğe bağlı video (VOD) ile yüksek kullanılabilirlik
+title: Isteğe bağlı Media Services video ile yüksek kullanılabilirlik
 description: Bu makalede, VOD uygulaması için yüksek kullanılabilirliği kolaylaştırmak amacıyla kullanabileceğiniz Azure hizmetlerine genel bakış sunulmaktadır.
 services: media-services
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.custom: ''
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 15a23ab5b05ad1093069b4297ad1d292beeb3a42
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: be3fd9b3d910e64245a1b52056499bbfba2e6379
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96494962"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955860"
 ---
 # <a name="high-availability-with-media-services-and-video-on-demand-vod"></a>Media Services ve Isteğe bağlı video (VOD) ile yüksek kullanılabilirlik
 
@@ -55,7 +55,7 @@ Bu üst düzey diyagramda, yüksek kullanılabilirlik ve Medya Hizmetleri ile ç
 
 [![İsteğe bağlı video (VOD) yüksek düzey mimari diyagramı ](media/media-services-high-availability-encoding/high-availability-architecture.svg)](media/media-services-high-availability-encoding/high-availability-architecture.svg#lightbox)
 
-## <a name="best-practices"></a>En iyi yöntemler
+## <a name="best-practices"></a>En iyi uygulamalar
 
 ### <a name="regions"></a>Bölgeler
 

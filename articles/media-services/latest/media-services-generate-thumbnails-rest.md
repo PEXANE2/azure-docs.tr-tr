@@ -1,5 +1,5 @@
 ---
-title: Azure Media Services v3 .NET kullanarak bir ilkeden imzalama anahtarı alın
+title: Media Encoder Standard REST kullanarak küçük resimler oluşturma
 description: Bu makalede, Media Encoder Standard kullanarak aynı anda bir varlık kodlamak ve küçük resimler oluşturmak için REST 'in nasıl kullanılacağı gösterilmektedir.
 services: media-services
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 75b8fd53836cce02816413afaeb656c3ac3f8796
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: f4456a65f422c23da73f36dd74680fbb598db186
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 01/28/2021
-ms.locfileid: "98935394"
+ms.locfileid: "98955843"
 ---
 # <a name="how-to-generate-thumbnails-using-encoder-standard-with-rest"></a>REST ile kodlayıcı standardını kullanarak küçük resimleri oluşturma
 

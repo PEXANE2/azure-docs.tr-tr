@@ -1,5 +1,5 @@
 ---
-title: Azure Media Services iş (kodlama ve çözümleme) hata kodları
+title: İş (kodlama ve çözümleme) hata kodları
 description: Bu makale, iş hata kodları başvuru konusuna bağlanır ve ilgili konulara yararlı bağlantılar sağlar.
 author: IngridAtMicrosoft
 manager: femila
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: error-reference
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 64d8d889d3b9b55d6e47bb96afc7f9badac9e2ee
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: ed57252a112aad8dd7d94dda95219867424dbb8f
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98895382"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954166"
 ---
 # <a name="media-services-job-error-codes"></a>Media Services iş hata kodları
 

@@ -3,12 +3,12 @@ title: Yeni bir Azure Izleyici Application Insights çalışma alanı tabanlı k
 description: Yeni Azure Izleyici Application Insights çalışma alanı tabanlı kaynakları etkinleştirmek için gereken adımlar hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 10/06/2020
-ms.openlocfilehash: 9d1ef158b8096c12c36673b62f87e1d02be69175
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: f1cc7db7eea4485ad40062a0e11a76dc14234b41
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 01/28/2021
-ms.locfileid: "98936458"
+ms.locfileid: "98956063"
 ---
 # <a name="workspace-based-application-insights-resources"></a>Çalışma alanı tabanlı Application Insights kaynakları
 
@@ -33,6 +33,7 @@ Bu Ayrıca, kaynaklarınız genelinde ortak Azure rol tabanlı erişim denetimi 
 
 [Azure Portal](https://portal.azure.com)oturum açın ve bir Application Insights kaynağı oluşturun:
 
+[!div class="mx-imgBorder"]
 ![Çalışma alanı tabanlı Application Insights kaynağı](./media/create-workspace-resource/create-workspace-based.png)
 
 Zaten mevcut bir Log Analytics çalışma alanınız yoksa, [Log Analytics çalışma alanı oluşturma belgelerine başvurun](../learn/quick-create-workspace.md).

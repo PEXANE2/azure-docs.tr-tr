@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 09/16/2020
-ms.openlocfilehash: adcc894db630bba11e84e2f277705d2f31caf7dc
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 1222108694ff7274e5d8fd063635b70a76ffc59c
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98920232"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954758"
 ---
 # <a name="azure-monitor-logs-dedicated-clusters"></a>Azure Izleyici, ayrılmış kümeleri günlüğe kaydeder
 
@@ -81,10 +81,12 @@ Aşağıdaki özellikler belirtilmelidir:
 
 *Küme* kaynağını oluşturduktan sonra, *SKU*, * Keyvaultproperties veya *billingtype* gibi ek özellikleri düzenleyebilirsiniz. Daha fazla ayrıntı için aşağıya bakın.
 
+Her bölge için abonelik başına en fazla 2 etkin kümeniz olabilir. Küme silinirse, hala 14 gün için ayrılmıştır. Her bölge için abonelik başına en fazla 4 ayrılmış kümeniz olabilir (etkin veya son silinen).
+
 > [!WARNING]
 > Küme oluşturma işlemi kaynak ayırmayı ve sağlamayı tetikler. Bu işlemin tamamlanması bir saate kadar sürebilir. Bunu zaman uyumsuz olarak çalıştırmanız önerilir.
 
-Kümeleri oluşturan kullanıcı hesabının standart Azure kaynak oluşturma izni: `Microsoft.Resources/deployments/*` ve küme yazma iznine sahip olması gerekir `(Microsoft.OperationalInsights/clusters/write)` .
+Kümeleri oluşturan kullanıcı hesabı, standart Azure kaynak oluşturma iznine sahip olmalıdır: `Microsoft.Resources/deployments/*` ve `Microsoft.OperationalInsights/clusters/write` rol atamalarında bu belirli eylem ya da veya ya da buna sahip olarak küme yazma izni olmalıdır `Microsoft.OperationalInsights/*` `*/write` .
 
 ### <a name="create"></a>Oluştur 
 
@@ -503,7 +505,9 @@ Kümeyi silmek için aşağıdaki REST çağrısını kullanın:
 
 ## <a name="limits-and-constraints"></a>Sınırlar ve kısıtlamalar
 
-- Bölge başına en fazla küme sayısı ve abonelik 2 ' dir
+- Bölge ve abonelik başına en fazla etkin küme sayısı 2 ' dir
+
+- Her bölge ve abonelik için en fazla ayrılmış küme (etkin veya son silinen) sayısı 4 ' ün 
 
 - Kümeye en fazla bağlantılı çalışma alanı 1000
 

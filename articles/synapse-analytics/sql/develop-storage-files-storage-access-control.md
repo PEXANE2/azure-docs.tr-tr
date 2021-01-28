@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: e693bd15e5255fda135a7a1dc416dd67f24f7f25
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 9e3fe0f8c14fdcfa9b3e97a02331d777abca2600
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98120419"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954268"
 ---
 # <a name="control-storage-account-access-for-serverless-sql-pool-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te sunucusuz SQL havuzu için depolama hesabı erişimini denetleme
 
@@ -49,7 +49,7 @@ Sunucusuz SQL havuzunda oturum açan bir kullanıcının, dosyalar herkese açı
 **Azure portal > depolama hesabı-> paylaşılan erişim imzası-> Izinleri yapılandırma-> SAS ve bağlantı dizesi oluşturma '** ya gıderek bir SAS belirteci alabilirsiniz.
 
 > [!IMPORTANT]
-> Bir SAS belirteci oluşturulduğunda, belirtecin başlangıcında bir soru işareti ('? ') içerir. Belirteci sunucusuz SQL havuzunda kullanmak için, bir kimlik bilgisi oluştururken soru işaretini ('? ') kaldırmanız gerekir. Örnek:
+> Bir SAS belirteci oluşturulduğunda, belirtecin başlangıcında bir soru işareti ('? ') içerir. Belirteci sunucusuz SQL havuzunda kullanmak için, bir kimlik bilgisi oluştururken soru işaretini ('? ') kaldırmanız gerekir. Örneğin:
 >
 > SAS belirteci:? ZF = 2018-03-28&SS = bfqt&SRT = SCO&SP = rwdlacup&se = 2019-04-18T20:42:12Z&St = 2019-04-18T12:42:12Z&spr = https&SIG = lQHczNvrk1KoYLCpFdSsMANd0ef9BrIPBNJ3VYEIq78% 3D
 
@@ -107,7 +107,7 @@ Depolama hesabı güvenlik duvarını yapılandırmak ve SYNAPSE çalışma alan
     Install-Module -Name Az.Storage -RequiredVersion 3.0.1-preview -AllowPrerelease
     ```
     > [!IMPORTANT]
-    > Sürüm 3.0.1 veya daha yeni bir sürümünü kullandığınızdan emin olun. Şu komutu çalıştırarak az. Storage sürümünüzü kontrol edebilirsiniz:  
+    > **3.0.1 sürümünü** kullandığınızdan emin olun. Şu komutu çalıştırarak az. Storage sürümünüzü kontrol edebilirsiniz:  
     > ```powershell 
     > Get-Module -ListAvailable -Name  Az.Storage | select Version
     > ```
@@ -187,7 +187,7 @@ Sunucu düzeyi KIMLIK BILGISI adı, depolama hesabının (ve isteğe bağlı ola
 | Dış veri kaynağı       | Ön ek | Depolama hesabı yolu                                |
 | -------------------------- | ------ | --------------------------------------------------- |
 | Azure Blob Depolama         | https  | <storage_account>. blob.core.windows.net             |
-| Azure Data Lake Storage 1. Nesil | https  | <storage_account>. azuredatalakestore.net/webhdfs/v1 |
+| Azure Data Lake Storage Gen1 | https  | <storage_account>. azuredatalakestore.net/webhdfs/v1 |
 | Azure Data Lake Storage Gen2 | https  | <storage_account>. dfs.core.windows.net              |
 
 Sunucu kapsamlı kimlik bilgileri, aşağıdaki kimlik doğrulama türlerini kullanarak Azure depolama 'ya erişim sağlar:

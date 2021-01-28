@@ -1,5 +1,5 @@
 ---
-title: Adım 1-Media Services API v3 'e geçiş avantajlarından yararlanın
+title: Media Services API v3 'e geçiş avantajları
 description: Bu makalede Media Services V2 'den v3 'e geçiş avantajları listelenmektedir.
 services: media-services
 author: IngridAtMicrosoft
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: media
 ms.date: 1/14/2020
 ms.author: inhenkel
-ms.openlocfilehash: 5980da900cd1394d5d9a9ddf99063662cad3c88b
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 70f64813546c66c0f9e3533e09de192315f75600
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98898384"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955080"
 ---
 # <a name="step-1---understand-the-benefits-of-migrating-to-media-services-api-v3"></a>Adım 1-Media Services API v3 'e geçiş avantajlarından yararlanın
 
