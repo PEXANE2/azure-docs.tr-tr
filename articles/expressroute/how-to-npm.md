@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 01/25/2019
 ms.author: duau
-ms.openlocfilehash: c8127a60a4685a615bc07e21a1efb4dd216c5b8c
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 837d1f78a9fde72137383e6c22adb8870997dc9b
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92201061"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98986048"
 ---
 # <a name="configure-network-performance-monitor-for-expressroute"></a>ExpressRoute için Ağ Performansı İzleyicisi’ni Yapılandırma
 
@@ -97,14 +97,14 @@ Yedeklilik için ExpressRoute bağlantısının her bir tarafına en az iki arac
 
 1. ExpressRoute 'U izlemek için kullanmak istediğiniz her sunucuya aracıyı yüklemek için **kurulumu** çalıştırın. İzleme için kullandığınız sunucu, bir VM ya da şirket içi olabilir ve Internet erişimi olmalıdır. Şirket içinde en az bir aracı ve Azure 'da izlemek istediğiniz her ağ kesimine bir aracı yüklemeniz gerekir.
 2. **Hoş Geldiniz** sayfasında **İleri**'ye tıklayın.
-3. **Lisans koşulları** sayfasında, Lisansı okuyun ve ardından **kabul**ediyorum ' a tıklayın.
+3. **Lisans koşulları** sayfasında, Lisansı okuyun ve ardından **kabul** ediyorum ' a tıklayın.
 4. **Hedef klasör** sayfasında, varsayılan yükleme klasörünü değiştirin veya koruyun ve ardından **İleri**' ye tıklayın.
 5. **Aracı kurulum seçenekleri** sayfasında, aracıyı Azure izleyici günlüklerine veya Operations Manager bağlamayı seçebilirsiniz. Ya da, aracıyı daha sonra yapılandırmak istiyorsanız seçimleri boş bırakabilirsiniz. Seçiminizi yaptıktan sonra **İleri**' ye tıklayın.
 
    * **Azure Log Analytics**'e bağlanmayı seçerseniz, önceki bölümde not defteri ' ne kopyaladığınız **çalışma alanı kimliğini** ve **çalışma alanı anahtarını** (birincil anahtar) yapıştırın. Ardından **İleri**' ye tıklayın.
 
      ![KIMLIK ve anahtar](./media/how-to-npm/8.png)
-   * **Operations Manager**' ye bağlanmayı seçerseniz, **Yönetim grubu yapılandırması** sayfasında **Yönetim grubu adı**, **Yönetim sunucusu**ve **Yönetim sunucusu bağlantı noktasını**yazın. Ardından **İleri**' ye tıklayın.
+   * **Operations Manager**' ye bağlanmayı seçerseniz, **Yönetim grubu yapılandırması** sayfasında **Yönetim grubu adı**, **Yönetim sunucusu** ve **Yönetim sunucusu bağlantı noktasını** yazın. Ardından **İleri**' ye tıklayın.
 
      ![Operations Manager](./media/how-to-npm/9.png)
    * **Aracı eylem hesabı** sayfasında, **yerel sistem** hesabı veya **etki alanı ya da yerel bilgisayar hesabı**' nı seçin. Ardından **İleri**' ye tıklayın.
@@ -122,7 +122,7 @@ Internet 'e erişmek için bir Web Proxy kullanıyorsanız, Microsoft Monitoring
 
 Denetim Masası 'nı kullanarak Microsoft Monitoring Agent proxy ayarlarını yapılandırmak için:
 
-1. **Denetim masasını**açın.
+1. **Denetim masasını** açın.
 2. **Microsoft İzleme Aracısı**'nı açın.
 3. **Ara Sunucu Ayarları** sekmesine tıklayın.
 4. **Proxy sunucusu kullan** ' ı seçin ve gerekirse URL 'yi ve bağlantı noktası numarasını yazın. Ara sunucunuz kimlik doğrulaması gerektiriyorsa ara sunucuya erişmek için kullanıcı adını ve parolayı yazın.
@@ -133,8 +133,8 @@ Denetim Masası 'nı kullanarak Microsoft Monitoring Agent proxy ayarlarını ya
 
 Aracılarınızın iletişim olup olmadığını kolayca doğrulayabilirsiniz.
 
-1. İzleme Aracısı olan bir sunucuda, **denetim masasını**açın.
-2. **Microsoft Monitoring Agent**açın.
+1. İzleme Aracısı olan bir sunucuda, **denetim masasını** açın.
+2. **Microsoft Monitoring Agent** açın.
 3. **Azure Log Analytics** sekmesine tıklayın.
 4. **Durum** sütununda, aracının Azure izleyici günlüklerine başarıyla bağlandığını görmeniz gerekir.
 
@@ -169,7 +169,7 @@ NSG hakkında daha fazla bilgi için bkz. [ağ güvenlik grupları](../virtual-n
 
 ## <a name="step-4-discover-peering-connections"></a><a name="setupmonitor"></a>4. Adım: eşleme bağlantılarını bulma
 
-1. **Tüm kaynaklar** sayfasına giderek ağ performansı İzleyicisi genel bakış kutucuğuna gidin ve ardından beyaz listelenen NPM çalışma alanına tıklayın.
+1. **Tüm kaynaklar** sayfasına giderek ağ performansı İzleyicisi genel bakış kutucuğuna gidin ve ardından ALLOWLISTELENMIŞ NPM çalışma alanına tıklayın.
 
    ![NPM çalışma alanı](./media/how-to-npm/npm.png)
 2. Panoyu açmak için **ağ performansı İzleyicisi** genel bakış kutucuğuna tıklayın. Pano, ExpressRoute 'un ' yapılandırılmamış durum ' içinde olduğunu gösteren bir ExpressRoute sayfası içerir. Ağ Performansı İzleyicisi yapılandırma sayfasını açmak için **özellik kurulumu** ' na tıklayın.
@@ -184,16 +184,16 @@ NSG hakkında daha fazla bilgi için bkz. [ağ güvenlik grupları](../virtual-n
             
 ## <a name="step-5-configure-monitors"></a><a name="configmonitor"></a>5. Adım: izleyicileri yapılandırma
 
-Bu bölümde, izleyicileri yapılandırırsınız. İzlemek istediğiniz eşleme türü için şu adımları izleyin: **özel eşleme**veya **Microsoft eşleme**.
+Bu bölümde, izleyicileri yapılandırırsınız. İzlemek istediğiniz eşleme türü için şu adımları izleyin: **özel eşleme** veya **Microsoft eşleme**.
 
 ### <a name="private-peering"></a>Özel eşleme
 
-Özel eşleme için, bulma tamamlandığında, benzersiz **devre adı** ve **VNET adı**için kurallar görürsünüz. Başlangıçta, bu kurallar devre dışı bırakılmıştır.
+Özel eşleme için, bulma tamamlandığında, benzersiz **devre adı** ve **VNET adı** için kurallar görürsünüz. Başlangıçta, bu kurallar devre dışı bırakılmıştır.
 
 ![rules](./media/how-to-npm/14.png)
 
 1. **Bu eşlemeyi izle** onay kutusunu işaretleyin.
-2. **Bu eşleme Için sistem durumu Izlemeyi etkinleştir**onay kutusunu seçin.
+2. **Bu eşleme Için sistem durumu Izlemeyi etkinleştir** onay kutusunu seçin.
 3. İzleme koşullarını seçin. Eşik değerlerini yazarak sistem durumu olayları oluşturmak için özel eşikler ayarlayabilirsiniz. Koşulun değeri seçili ağ/alt ağ çifti için seçili eşiğin üstünde olduğunda bir sistem durumu olayı oluşturulur.
 4. Özel eşleme bağlantısını izlemek istediğiniz şirket içi sunucuları eklemek için ŞIRKET içi ARACıLAR **aracıları Ekle** düğmesine tıklayın. Yalnızca adım 2 ' nin bölümünde belirttiğiniz Microsoft hizmet uç noktasına bağlantısı olan aracıları seçtiğinizden emin olun. Şirket içi aracıların ExpressRoute bağlantısını kullanarak uç noktaya erişebilmesi gerekir.
 5. Ayarları kaydedin.
@@ -212,7 +212,7 @@ Microsoft eşlemesi için, izlemek istediğiniz Microsoft eşleme bağlantısın
     ![Özel URL](./media/how-to-npm/custom_url.png)<br>
 
     * Bu isteğe bağlı ayarları kullanıyorsanız, burada yalnızca Microsoft hizmet uç noktasının seçildiğinden emin olun. Uç noktanın ExpressRoute 'a bağlanması ve şirket içi aracılar tarafından erişilebilir olması gerekir.
-3. **Bu eşleme Için sistem durumu Izlemeyi etkinleştir**onay kutusunu seçin.
+3. **Bu eşleme Için sistem durumu Izlemeyi etkinleştir** onay kutusunu seçin.
 4. İzleme koşullarını seçin. Eşik değerlerini yazarak sistem durumu olayları oluşturmak için özel eşikler ayarlayabilirsiniz. Koşulun değeri seçili ağ/alt ağ çifti için seçili eşiğin üstünde olduğunda bir sistem durumu olayı oluşturulur.
 5. Microsoft eşleme bağlantısını izlemek istediğiniz şirket içi sunucuları eklemek için ŞIRKET içi ARACıLAR **aracıları Ekle** düğmesine tıklayın. Yalnızca adım 2 için bölümünde belirttiğiniz Microsoft hizmet uç noktalarına bağlantısı olan aracıları seçtiğinizden emin olun. Şirket içi aracıların ExpressRoute bağlantısını kullanarak uç noktaya erişebilmesi gerekir.
 6. Ayarları kaydedin.
@@ -258,7 +258,7 @@ Seçilen ExpressRoute eşleme bağlantısı için şirket içi düğümler ve Az
 
 Devre topolojisini görüntülemek için **topoloji** kutucuğuna tıklayın. Bu, sizi seçili Devre veya eşlemenin topoloji görünümüne götürür. Topoloji diyagramı, ağdaki her segment için gecikme süresi sağlar. Her katman 3 atlama, diyagramın bir düğümü ile temsil edilir. Bir atlamaya tıkladığınızda atlama hakkında daha fazla ayrıntı ortaya koyarlar.
 
-Kaydırıcı çubuğunu **filtrelerin**altına taşıyarak şirket içi atlamaları dahil etmek için görünürlük düzeyini artırabilirsiniz. Kaydırıcı çubuğunu sola veya sağa taşımak, topoloji grafiğindeki atlama sayısını artırır/azaltır. Her bir kesimde gecikme süresi görünür ve bu, ağınızda yüksek gecikme süreli segmentlerin daha hızlı yalıtımına olanak tanır.
+Kaydırıcı çubuğunu **filtrelerin** altına taşıyarak şirket içi atlamaları dahil etmek için görünürlük düzeyini artırabilirsiniz. Kaydırıcı çubuğunu sola veya sağa taşımak, topoloji grafiğindeki atlama sayısını artırır/azaltır. Her bir kesimde gecikme süresi görünür ve bu, ağınızda yüksek gecikme süreli segmentlerin daha hızlı yalıtımına olanak tanır.
 
 ![filtreler](./media/how-to-npm/topology.png)
 

@@ -10,12 +10,12 @@ ms.custom: how-to, devx-track-azurecli, devx-track-azurepowershell
 ms.author: larryfr
 author: Blackmist
 ms.date: 09/30/2020
-ms.openlocfilehash: bd9199bc73e56ec36343b30d9b24f0b48799835e
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 06614fc33910eda44bf6bf8369c4ad4b3c0b25fe
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96445197"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98986031"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>Azure Machine Learning için bir çalışma alanı oluşturmak üzere Azure Resource Manager şablonu kullanma
 
@@ -73,7 +73,7 @@ Kaynak grubu, Hizmetleri tutan kapsayıcıdır. Azure Machine Learning çalışm
 > [!TIP]
 > Bu belgeyle ilişkili şablon yeni bir Azure Container Registry oluştururken, kapsayıcı kayıt defteri oluşturmadan de yeni bir çalışma alanı oluşturabilirsiniz. Bir kapsayıcı kayıt defteri gerektiren bir işlem gerçekleştirdiğinizde bu bir tane oluşturulur. Örneğin, bir modeli eğitme veya dağıtma.
 >
-> Ayrıca, yeni bir tane oluşturmak yerine Azure Resource Manager şablonundaki mevcut bir kapsayıcı kayıt defterine veya depolama hesabına başvurabilirsiniz. Ancak, kullandığınız kapsayıcı kayıt defterinde __yönetici hesabının__ etkinleştirilmiş olması gerekir. Yönetici hesabını etkinleştirme hakkında daha fazla bilgi için bkz. [yönetici hesabı](../container-registry/container-registry-authentication.md#admin-account).
+> Ayrıca, yeni bir tane oluşturmak yerine Azure Resource Manager şablonundaki mevcut bir kapsayıcı kayıt defterine veya depolama hesabına başvurabilirsiniz. Bunu yaparken, [yönetilen bir kimlik](how-to-use-managed-identities.md) (Önizleme) kullanmanız ya da kapsayıcı kayıt defteri için [yönetici hesabını etkinleştirmeniz](../container-registry/container-registry-authentication.md#admin-account) gerekir.
 
 [!INCLUDE [machine-learning-delete-acr](../../includes/machine-learning-delete-acr.md)]
 
@@ -182,7 +182,7 @@ Daha fazla bilgi için bkz. [bekleyen şifreleme](concept-data-encryption.md#enc
 > * Azure Key Vault, Azure Machine Learning çalışma alanını oluşturmayı planladığınız bölgede olmalıdır.
 > * Azure Key Vault KIMLIĞINI ve şifreleme anahtarının URI 'sini belirtmeniz gerekir.
 
-__To get the values__ `cmk_keyvault` Bu şablon için gereken (Key Vault kimliği) ve `resource_cmk_uri` (anahtar URI) parametrelerinin değerlerini almak için aşağıdaki adımları kullanın:    
+ `cmk_keyvault` Bu şablon için gereken (Key Vault kimliği) ve `resource_cmk_uri` (anahtar URI) parametrelerinin değerlerini almak için aşağıdaki adımları kullanın:    
 
 1. Key Vault KIMLIĞI almak için aşağıdaki komutu kullanın:  
 
@@ -224,8 +224,8 @@ __To get the values__ `cmk_keyvault` Bu şablon için gereken (Key Vault kimliğ
 Müşteri tarafından yönetilen anahtarların kullanımını etkinleştirmek için, şablonu dağıttığınızda aşağıdaki parametreleri ayarlayın:
 
 * **Encryption_status** **etkin**.
-* **cmk_keyvault** `cmk_keyvault` önceki adımlarda elde edilen değere cmk_keyvault.
-* **resource_cmk_uri** `resource_cmk_uri` önceki adımlarda elde edilen değere resource_cmk_uri.
+*  `cmk_keyvault` önceki adımlarda elde edilen değere cmk_keyvault.
+*  `resource_cmk_uri` önceki adımlarda elde edilen değere resource_cmk_uri.
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 
@@ -282,7 +282,7 @@ Verileriniz için sağlayabilmeniz için ek bir yapılandırma **confidential_da
 
 ### <a name="only-deploy-workspace-behind-private-endpoint"></a>Çalışma alanını yalnızca özel uç nokta arkasında dağıt
 
-İlişkili kaynaklarınız bir sanal ağın arkasında değilse, **privateEndpointType** `AutoAproval` `ManualApproval` çalışma alanını özel bir uç noktanın arkasında dağıtmak için privateendpointtype parametresini veya olarak ayarlayabilirsiniz. Bu, hem yeni hem de mevcut çalışma alanları için yapılabilir. Mevcut bir çalışma alanını güncelleştirirken, şablon parametrelerini mevcut çalışma alanındaki bilgilerle birlikte girin.
+İlişkili kaynaklarınız bir sanal ağın arkasında değilse,  `AutoAproval` `ManualApproval` çalışma alanını özel bir uç noktanın arkasında dağıtmak için privateendpointtype parametresini veya olarak ayarlayabilirsiniz. Bu, hem yeni hem de mevcut çalışma alanları için yapılabilir. Mevcut bir çalışma alanını güncelleştirirken, şablon parametrelerini mevcut çalışma alanındaki bilgilerle birlikte girin.
 
 > [!IMPORTANT]
 > Azure Kamu bölgelerinde veya Azure Çin 21Vianet bölgelerinde özel bağlantıyla birlikte bir Azure Machine Learning çalışma alanı kullanılması kullanılamaz.
@@ -615,7 +615,7 @@ Bu sorundan kaçınmak için aşağıdaki yaklaşımlardan birini öneririz:
         },
         ```
 
-    * **Remove** `"[resourceId('Microsoft.KeyVault/vaults', variables('keyVaultName'))]",` `dependsOn` Çalışma alanının bölümündeki satırı kaldırın. Ayrıca **Change** , `keyVault` `properties` çalışma alanının bölümündeki girişi parametreye başvuracak şekilde değiştirin `keyVaultId` :
+    *  `"[resourceId('Microsoft.KeyVault/vaults', variables('keyVaultName'))]",` `dependsOn` Çalışma alanının bölümündeki satırı kaldırın. Ayrıca  , `keyVault` `properties` çalışma alanının bölümündeki girişi parametreye başvuracak şekilde değiştirin `keyVaultId` :
 
         ```json
         {

@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9e3fe0f8c14fdcfa9b3e97a02331d777abca2600
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: e884ceab652136c505ce7032f0e78588fb20be89
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 01/28/2021
-ms.locfileid: "98954268"
+ms.locfileid: "98986963"
 ---
 # <a name="control-storage-account-access-for-serverless-sql-pool-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te sunucusuz SQL havuzu için depolama hesabı erişimini denetleme
 
@@ -102,9 +102,10 @@ Kullanıcı kimliği aracılığıyla güvenlik duvarıyla korunan depolamaya er
 Depolama hesabı güvenlik duvarını yapılandırmak ve SYNAPSE çalışma alanı için bir özel durum eklemek için aşağıdaki adımları izleyin.
 
 1. PowerShell 'i açın veya [PowerShell 'i yükleyip](/powershell/scripting/install/installing-powershell-core-on-windows?preserve-view=true&view=powershell-7.1)
-2. Güncelleştirilmiş az. Depolama modülü: 
+2. Az. Storage 3.0.1 modülünü ve az. SYNAPSE 0.7.0 'yi yükler: 
     ```powershell
     Install-Module -Name Az.Storage -RequiredVersion 3.0.1-preview -AllowPrerelease
+    Install-Module -Name Az.Synapse -RequiredVersion 0.7.0
     ```
     > [!IMPORTANT]
     > **3.0.1 sürümünü** kullandığınızdan emin olun. Şu komutu çalıştırarak az. Storage sürümünüzü kontrol edebilirsiniz:  
@@ -121,16 +122,23 @@ Depolama hesabı güvenlik duvarını yapılandırmak ve SYNAPSE çalışma alan
     - Kaynak grubu adı-bu Azure portal, SYNAPSE çalışma alanına genel bakış bölümünde bulabilirsiniz.
     - Hesap adı-güvenlik duvarı kuralları tarafından korunan depolama hesabının adı.
     - Kiracı KIMLIĞI-bunu, kiracı bilgilerinde Azure Active Directory Azure portal bulabilirsiniz.
-    - Kaynak KIMLIĞI-bu Azure portal, SYNAPSE çalışma alanına genel bakış bölümünde bulabilirsiniz.
+    - Çalışma alanı adı-SYNAPSE çalışma alanının adı.
 
     ```powershell
         $resourceGroupName = "<resource group name>"
         $accountName = "<storage account name>"
         $tenantId = "<tenant id>"
-        $resourceId = "<Synapse workspace resource id>"
+        $workspaceName = "<synapse workspace name>"
+        
+        $workspace = Get-AzSynapseWorkspace -Name $workspaceName
+        $resourceId = $workspace.Id
+        $index = $resourceId.IndexOf("/resourceGroups/", 0)
+        # Replace G with g - /resourceGroups/ to /resourcegroups/
+        $resourceId = $resourceId.Substring(0,$index) + "/resourcegroups/" + $resourceId.Substring($index + "/resourceGroups/".Length)
+        $resourceId
     ```
     > [!IMPORTANT]
-    > Kaynak kimliğinin Bu şablonla eşleştiğinden emin olun.
+    > Kaynak kimliğinin RESOURCEID değişkeninin yazdırılması içinde bu şablonla eşleştiğinden emin olun.
     >
     > Daha küçük bir durumda **ResourceGroups** yazmak önemlidir.
     > Bir kaynak kimliği örneği: 
@@ -145,7 +153,14 @@ Depolama hesabı güvenlik duvarını yapılandırmak ve SYNAPSE çalışma alan
 6. Kuralın depolama hesabınıza uygulandığını doğrulayın: 
     ```powershell
         $rule = Get-AzStorageAccountNetworkRuleSet -ResourceGroupName $resourceGroupName -Name $accountName
-        $rule.ResourceAccessRules
+        $rule.ResourceAccessRules | ForEach-Object { 
+        if ($_.ResourceId -cmatch "\/subscriptions\/(\w\-*)+\/resourcegroups\/(.)+") { 
+            Write-Host "Storage account network rule is successfully configured." -ForegroundColor Green
+            $rule.ResourceAccessRules
+        } else {
+            Write-Host "Storage account network rule is not configured correctly. Remove this rule and follow the steps in detail." -ForegroundColor Red
+            $rule.ResourceAccessRules
+        }
     ```
 
 #### <a name="managed-identity"></a>Yönetilen Kimlik

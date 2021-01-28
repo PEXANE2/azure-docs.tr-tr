@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/18/2020
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: b8c9af31243d8bb58a58fbc687cad68130f64f7e
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 59768e4fc04613a5ecac6a76059382499b7aaa86
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880751"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98986471"
 ---
 # <a name="commercial-marketplace-transact-capabilities"></a>Ticari Market Transact özellikleri
 
@@ -84,7 +84,7 @@ Transact yayımlama senaryolarında, aboneliğe bağlı olarak, yazılım lisans
 
 Teklif türlerini ve faturalandırma modellerini bir teklifi ayırmak için kullanmanın yanı sıra, anlaşmalı, anlaşmaya özgü fiyatlandırma veya özel yapılandırmalarda özel bir teklif elde edebilirsiniz. Özel teklifler, her üç Transact yayımlama seçeneği tarafından desteklenir.
 
-Bu seçenek, genel kullanıma sunulan teklife göre daha yüksek veya daha düşük fiyatlandırmayı sağlar. Özel teklifleri indirimle veya bir teklifle bir Premium eklemek için kullanabilirsiniz. Özel teklifleri bir veya daha fazla müşteri tarafından kullanılabilir hale getirerek Azure aboneliklerini teklif düzeyinde listeleyerek görüntüleyebilirsiniz.
+Bu seçenek, genel kullanıma sunulan teklife göre daha yüksek veya daha düşük fiyatlandırmayı sağlar. Özel teklifleri indirimle veya bir teklifle bir Premium eklemek için kullanabilirsiniz. Özel teklifleri bir veya daha fazla müşterinin Azure aboneliğini teklif düzeyinde listeleyerek bir veya daha fazla müşteri için kullanılabilir hale getirebilirsiniz.
 
 ### <a name="commercial-marketplace-service-fees"></a>Ticari Market hizmet ücretleri
 

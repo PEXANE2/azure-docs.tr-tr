@@ -3,12 +3,12 @@ title: Azure Stack üzerinde Azure Backup Sunucusu'nu yükleme
 description: Bu makalede, Azure Stack iş yüklerini korumak veya yedeklemek için Azure Backup Sunucusu nasıl kullanacağınızı öğrenin.
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.openlocfilehash: 7153e2ff03a4f78ee1cc92ca04054fb2955d11a5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 12dfd15c2bd43816dd361fdf45995bcbcd6fba56
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90970239"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98987014"
 ---
 # <a name="install-azure-backup-server-on-azure-stack"></a>Azure Stack üzerinde Azure Backup Sunucusu'nu yükleme
 
@@ -125,7 +125,7 @@ Azure Backup Sunucusu yükleyicisini indirmenin iki yolu vardır. Azure Backup S
 
     ![Ana menüdeki tüm hizmetler seçeneğini belirleyin](./media/backup-mabs-install-azure-stack/click-all-services.png)
 
-3. **Tüm hizmetler** Iletişim kutusunda *Kurtarma Hizmetleri*yazın. Yazmaya başladığınızda, giriş, kaynak listesini filtreler. Bunu görtikten sonra **Kurtarma Hizmetleri kasaları**' nı seçin.
+3. **Tüm hizmetler** Iletişim kutusunda *Kurtarma Hizmetleri* yazın. Yazmaya başladığınızda, giriş, kaynak listesini filtreler. Bunu görtikten sonra **Kurtarma Hizmetleri kasaları**' nı seçin.
 
     ![Tüm Hizmetler iletişim kutusunda kurtarma hizmetleri yazın](./media/backup-mabs-install-azure-stack/all-services.png)
 
@@ -159,7 +159,7 @@ Azure Backup Sunucusu yükleyicisini indirmenin iki yolu vardır. Azure Backup S
 
     ![İndirme Merkezi açılır](./media/backup-mabs-install-azure-stack/mabs-download-center-page.png)
 
-9. Azure Backup Sunucusu yükleyicisi sekiz dosyadan oluşur-bir yükleyici ve yedi. bin dosyası. Tüm gerekli dosyaları seçmek için **dosya adını** denetleyin ve **İleri ' yi**seçin. Tüm dosyaları aynı klasöre indirin.
+9. Azure Backup Sunucusu yükleyicisi sekiz dosyadan oluşur-bir yükleyici ve yedi. bin dosyası. Tüm gerekli dosyaları seçmek için **dosya adını** denetleyin ve **İleri ' yi** seçin. Tüm dosyaları aynı klasöre indirin.
 
     ![İndirme Merkezi, seçili dosyalar](./media/backup-mabs-install-azure-stack/download-center-selected-files.png)
 
@@ -193,7 +193,7 @@ Tüm dosyaları Azure Stack sanal makinenize indirdikten sonra, indirme konumuna
 
    ![Sihirbaz dosyaları ayıklar](./media/backup-mabs-install-azure-stack/mabs-install-wizard-install-3.png)
 
-6. Ayıklama işlemi tamamlandıktan sonra **son**' u seçin. Varsayılan olarak, **setup.exeÇalıştır ** seçilidir. **Son**' u seçtiğinizde, Setup.exe Microsoft Azure Backup sunucusunu belirtilen konuma yükleyecek.
+6. Ayıklama işlemi tamamlandıktan sonra **son**' u seçin. Varsayılan olarak, **setup.exeÇalıştır** seçilidir. **Son**' u seçtiğinizde, Setup.exe Microsoft Azure Backup sunucusunu belirtilen konuma yükleyecek.
 
    ![Kurulum Microsoft Azure Backup sunucusu dosyalarını ayıklar](./media/backup-mabs-install-azure-stack/mabs-install-wizard-finish-4.png)
 
@@ -245,7 +245,7 @@ Azure Backup Sunucusu kodu Data Protection Manager paylaşır. Azure Backup Sunu
 
     Azure 'a yedeklemek için karalama konumu gereklidir. Karalama konumunun boyutunun Azure 'a yedeklenmek üzere planlandığı verilerin en az %5 ' ine eşit olduğundan emin olun. Disk koruması için, yükleme tamamlandıktan sonra ayrı disklerin yapılandırılması gerekir. Depolama havuzları hakkında daha fazla bilgi için bkz. [veri depolamayı hazırlama](/system-center/dpm/plan-long-and-short-term-data-storage).
 
-6. **Güvenlik ayarları** ekranında, kısıtlı yerel kullanıcı hesapları için güçlü bir parola girin ve **İleri ' yi**seçin.
+6. **Güvenlik ayarları** ekranında, kısıtlı yerel kullanıcı hesapları için güçlü bir parola girin ve **İleri ' yi** seçin.
 
     ![Güvenlik ayarları ekranı](./media/backup-mabs-install-azure-stack/mabs-install-wizard-security-12.png)
 
@@ -257,7 +257,7 @@ Azure Backup Sunucusu kodu Data Protection Manager paylaşır. Azure Backup Sunu
 
     ![Microsoft Update Opt-In ekran](./media/backup-mabs-install-azure-stack/mabs-install-wizard-update-13.png)
 
-8. *Ayarların özetini* gözden geçirin ve **yüklemeyi**seçin.
+8. *Ayarların özetini* gözden geçirin ve **yüklemeyi** seçin.
 
     ![Ayarların Özeti](./media/backup-mabs-install-azure-stack/mabs-install-wizard-summary-14.png)
 
@@ -277,7 +277,7 @@ Azure Backup Sunucusu kodu Data Protection Manager paylaşır. Azure Backup Sunu
 
     ![Aracı yüklemesi başarıyla tamamlandı](./media/backup-mabs-install-azure-stack/mabs-install-wizard-complete-16.png)
 
-    Yükleyici, **sunucu kaydetme Sihirbazı 'nı**başlatır.
+    Yükleyici, **sunucu kaydetme Sihirbazı 'nı** başlatır.
 
 12. Azure aboneliğinize ve kurtarma hizmetleri kasanıza geçiş yapın. **Altyapıyı hazırla** menüsünde, kasa kimlik bilgilerini Indirmek için **İndir** ' i seçin. 2. adımdaki **İndir** düğmesi etkin değilse, düğmeyi etkinleştirmek için **zaten indirilmiş ' i veya en son Azure Backup sunucusu yüklemesini** kullanın. Kasa kimlik bilgileri, İndirmeleri depoladığınız konuma indirilir. Bir sonraki adımda ihtiyaç duyacağınız için bu konumu unutmayın.
 
@@ -289,7 +289,7 @@ Azure Backup Sunucusu kodu Data Protection Manager paylaşır. Azure Backup Sunu
 
     **Kasa kimlik bilgilerini seçin** iletişim kutusunda, indirme konumuna gidin, kasa kimlik bilgilerinizi seçin ve **Aç**' ı seçin.
 
-    Kimlik bilgilerinin yolu, kasa kimliği menüsünde görüntülenir. **Şifreleme ayarlarına**Ilerlemek için **İleri ' yi** seçin.
+    Kimlik bilgilerinin yolu, kasa kimliği menüsünde görüntülenir. **Şifreleme ayarlarına** Ilerlemek için **İleri ' yi** seçin.
 
 14. **Şifreleme ayarı** iletişim kutusunda, yedekleme şifrelemesi için bir parola ve parolayı depolamak için bir konum belirtin ve **İleri**' yi seçin.
 
@@ -335,22 +335,28 @@ Azure bağlantısının ve Azure aboneliğinin durumunu öğrendikten sonra, sun
 
 ### <a name="recovering-from-loss-of-connectivity"></a>Bağlantı kaybından kurtarma
 
-Bir güvenlik duvarı veya proxy Azure 'a erişimi engelliyorsa, güvenlik duvarı/proxy profili izin verilenler listesine şu etki alanı adreslerini ekleyin:
+Makinenizin internet erişimi sınırlı ise, makinedeki veya proxy 'deki güvenlik duvarı ayarlarının aşağıdaki URL 'Lere ve IP adreslerine izin verildiğinden emin olun:
 
-- `http://www.msftncsi.com/ncsi.txt`
-- \*.Microsoft.com
-- \*.WindowsAzure.com
-- \*.microsoftonline.com
-- \*.windows.net
+* URL’ler
+  * `www.msftncsi.com`
+  * `*.Microsoft.com`
+  * `*.WindowsAzure.com`
+  * `*.microsoftonline.com`
+  * `*.windows.net`
+  * `www.msftconnecttest.com`
+* IP adresleri
+  * 20.190.128.0/18
+  * 40.126.0.0/18
 
-Azure 'a bağlantı Azure Backup Sunucusu geri yüklendikten sonra, Azure abonelik durumu gerçekleştirilebileceği işlemleri belirler. Sunucu **bağlandıktan**sonra, kullanılabilir işlemleri görmek için [ağ bağlantısı](backup-mabs-install-azure-stack.md#network-connectivity) 'ndaki tabloyu kullanın.
+
+Azure 'a bağlantı Azure Backup Sunucusu geri yüklendikten sonra, Azure abonelik durumu gerçekleştirilebileceği işlemleri belirler. Sunucu **bağlandıktan** sonra, kullanılabilir işlemleri görmek için [ağ bağlantısı](backup-mabs-install-azure-stack.md#network-connectivity) 'ndaki tabloyu kullanın.
 
 ### <a name="handling-subscription-states"></a>Abonelik durumlarını işleme
 
-Bir Azure aboneliğini, *zaman aşımına uğradı* veya *sağlaması kaldırılmış* durumundan *etkin* duruma değiştirmek mümkündür. Abonelik durumu *etkin*değil:
+Bir Azure aboneliğini, *zaman aşımına uğradı* veya *sağlaması kaldırılmış* durumundan *etkin* duruma değiştirmek mümkündür. Abonelik durumu *etkin* değil:
 
-- Abonelik *sağlaması kaldırılırken, işlevselliği*kaybeder. Aboneliği *etkin*olarak geri yükleme, yedekleme/geri yükleme işlevini yeniden canlandırın. Yerel diskteki yedekleme verileri yeterince büyük bir bekletme süresiyle korunursa, bu yedekleme verileri alınabilir. Ancak, abonelik *sağlanan* duruma girdiğinde Azure 'daki yedekleme verileri irretrievably kaybolur.
-- Aboneliğin süre *dolduğunda*işlevselliği kaybeder. Zamanlanan yedeklemeler, aboneliğin süre *dolduğunda*çalışmaz.
+- Abonelik *sağlaması kaldırılırken, işlevselliği* kaybeder. Aboneliği *etkin* olarak geri yükleme, yedekleme/geri yükleme işlevini yeniden canlandırın. Yerel diskteki yedekleme verileri yeterince büyük bir bekletme süresiyle korunursa, bu yedekleme verileri alınabilir. Ancak, abonelik *sağlanan* duruma girdiğinde Azure 'daki yedekleme verileri irretrievably kaybolur.
+- Aboneliğin süre *dolduğunda* işlevselliği kaybeder. Zamanlanan yedeklemeler, aboneliğin süre *dolduğunda* çalışmaz.
 
 ## <a name="troubleshooting"></a>Sorun giderme
 

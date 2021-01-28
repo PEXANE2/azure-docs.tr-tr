@@ -3,12 +3,12 @@ title: IoT Edge Azure 'da canlı video analiziyle çalışmaya başlama
 description: Bu hızlı başlangıçta IoT Edge 'da canlı video analiziyle çalışmaya başlama gösterilmektedir. Canlı video akışında hareket algılamayı öğrenin.
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 2ae8292375c0b85cc4c771c1fe7d853c5fcd3afd
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: fde82dde7df3fa9756c145940178f35ed255ce37
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 01/28/2021
-ms.locfileid: "98955775"
+ms.locfileid: "98986556"
 ---
 # <a name="quickstart-get-started---live-video-analytics-on-iot-edge"></a>Hızlı başlangıç: IoT Edge kullanmaya başlama-canlı video analizi
 
@@ -31,7 +31,7 @@ IoT Edge ' de canlı video analiziyle çalışmaya başlama hakkında ayrıntıl
   > Hizmet sorumluları oluşturma izinlerine sahip bir Azure aboneliğine ihtiyacınız olacak (**sahip rolü** bunu sağlar). Doğru izinleriniz yoksa, size doğru izinleri vermek için lütfen hesap yöneticinize ulaşın.  
 
 * Geliştirme makinenizde [Visual Studio Code](https://code.visualstudio.com/) . [Azure IoT araçları uzantısına](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)sahip olduğunuzdan emin olun.
-* Geliştirme makinenizin bağlı olduğu ağın bağlantı noktası 5671 üzerinden gelişmiş Ileti sıraya alma Protokolü (AMQP) izin verdiğinden emin olun. Bu kurulum, Azure IoT araçlarının Azure IoT Hub ile iletişim kurmasını sağlar.
+* Geliştirme makinenizin bağlı olduğu ağın, giden trafik için 5671 numaralı bağlantı noktası üzerinden gelişmiş Ileti sıraya alma Protokolü (AMQP) izin verdiğinden emin olun. Bu kurulum, Azure IoT araçlarının Azure IoT Hub ile iletişim kurmasını sağlar.
 
 > [!TIP]
 > Azure IoT araçları uzantısını yüklerken Docker yüklemeniz istenebilir. İstemi yok saymaktan çekinmeyin.
@@ -67,7 +67,7 @@ Bu hızlı başlangıç için, Azure aboneliğinizde gerekli kaynakları dağıt
     1. **Ağ arabirimi** -bu, bir Azure sanal makinesinin Internet, Azure ve diğer kaynaklarla iletişim kurmasını sağlar.
     1. Savunma **bağlantısı** -bu, tarayıcınızı ve Azure Portal kullanarak sanal makinenize bağlanmanızı sağlar.
     1. **Genel IP adresi** -bu, Azure kaynaklarının Internet ve genel kullanıma yönelik Azure hizmetleriyle iletişim kurmasını sağlar
-    1. **Sanal ağ** -bu, sanal makineniz gibi birçok Azure Kaynak türünün, internet ve şirket içi ağlarla güvenli bir şekilde iletişim kurmasını sağlar. [Sanal ağlar](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) hakkında daha fazla bilgi
+    1. **Sanal ağ** -bu, sanal makineniz gibi birçok Azure Kaynak türünün, internet ve şirket içi ağlarla güvenli bir şekilde iletişim kurmasını sağlar. [Sanal ağlar](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)hakkında daha fazla bilgi edinin.
     1. **IoT Hub** -bu, IoT uygulamanız, IoT Edge modülleriniz ve yönettiği cihazlar arasında çift yönlü iletişim için bir merkezi ileti hub 'ı görevi görür.
     1. **Medya hizmeti hesabı** -bu, Azure 'da medya içeriğini yönetmeye ve akışa yardımcı olur.
     1. **Depolama hesabı** -bir birincil depolama hesabınız olmalıdır ve Media Services hesabınızla Ilişkili birkaç ikincil depolama hesabı olabilir. Daha fazla bilgi için bkz. [Azure Media Services hesapları Ile Azure depolama hesapları](https://docs.microsoft.com/azure/media-services/latest/storage-account-concept).
@@ -165,7 +165,7 @@ Modüldeki tüm [grafik topolojilerini](media-graph-concept.md#media-graph-topol
 
 ### <a name="invoke-graphtopologyset"></a>Graphtopologyıset komutunu çağır
 
-Çağırma adımlarını kullanarak `GraphTopologyList` `GraphTopologySet` bir [Graph topolojisi](media-graph-concept.md#media-graph-topologies-and-instances)ayarlamayı çağırabilirsiniz. Yük olarak aşağıdaki JSON 'ı kullanın.
+Daha önce yaptığımız gibi, artık `GraphTopologySet` bir [Graph topolojisi](media-graph-concept.md#media-graph-topologies-and-instances)ayarlamak için komutunu çalıştırabilirsiniz. Yük olarak aşağıdaki JSON 'ı kullanın.
 
 ```
 {

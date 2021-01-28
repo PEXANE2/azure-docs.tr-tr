@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 17c0e63b02d61b3aecf70624bc97a468d18f66fe
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 10f21067f48155a394ac20337d77e3e82aae64d8
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97607516"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98985946"
 ---
 # <a name="what-is-azure-arc-enabled-postgresql-hyperscale"></a>Azure Arc etkin PostgreSQL Hyperscale nedir?
 
@@ -26,7 +26,7 @@ Azure Arc etkin PostgreSQL hiper ölçek, Azure Arc etkin veri Hizmetleri 'nin b
 - Bağlantısı kesik senaryo desteği
 
 Ayrıntılar hakkında daha fazla bilgi edinin:
-- [Azure Arc özellikli veri hizmetleri nedir?](overview.md)
+- [Azure Arc etkin veri Hizmetleri nedir?](overview.md)
 - [Bağlantı modları ve gereksinimler](connectivity.md)
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
@@ -48,13 +48,13 @@ Bu, Azure 'da hizmet olarak veritabanı olarak kullanılabilen Postgres veritaba
 Bu, Azure Arc etkin veri Hizmetleri ile kullanılabilen Postgres veritabanı altyapısının hiper ölçekli form faktördür. Ayrıca, hiper ölçek deneyimini sağlayan Citus uzantısı tarafından da desteklenir. Bu form faktöründe, müşterilerimiz sistemleri barındıran altyapıyı sağlar ve bunları çalışır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- **Oluştur**
-   > **Yalnızca bir şeyi denemek mi istiyorsunuz? Bir Kubernetes kümeniz yok mu? Size bir korumalı alan sağlıyoruz:**  
-   > Azure Kubernetes Service (AKS), AWS elastik Kubernetes Service (EKS), Google Cloud Kubernetes Engine (GKE) veya bir Azure VM 'de [Azure Arc Jumpstart](https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_data/) ile hızlıca çalışmaya başlayın.
+- **Deneyin.** Azure Kubernetes Service (AKS), AWS elastik Kubernetes Service (EKS), Google Cloud Kubernetes Engine (GKE) veya bir Azure VM 'de [Azure Arc Jumpstart](https://github.com/microsoft/azure_arc#azure-arc-enabled-data-services) ile hızlıca çalışmaya başlayın. 
 
-   - **Oluşturma**
-      - [İstemci araçları 'nı yükler](install-client-tools.md)
-      - [Azure Arc veri denetleyicisi oluşturma](create-data-controller.md) (önce istemci araçlarının yüklenmesini gerektirir)
-      - [Azure Arc 'Da PostgreSQL Için Azure veritabanı hiper ölçek sunucu grubu oluşturma](create-postgresql-hyperscale-server-group.md) (önce Azure Arc veri denetleyicisi oluşturulmasını gerektirir.)
-- [**Azure Arc etkin veri hizmetleri hakkında daha fazla bilgi edinin**](https://azure.microsoft.com/services/azure-arc/hybrid-data-services)
-- [**Azure Arc hakkında bilgi edinin**](https://aka.ms/azurearc)
+- **Kendinizinkini oluşturun.** Kendi Kubernetes kümenizde oluşturmak için aşağıdaki adımları izleyin: 
+   1. [İstemci araçları 'nı yükler](install-client-tools.md)
+   2. [Azure Arc veri denetleyicisi oluşturma](create-data-controller.md)
+   3. [Azure Arc 'da PostgreSQL için Azure veritabanı hiper ölçek sunucu grubu oluşturma](create-postgresql-hyperscale-server-group.md) 
+
+- **Learn**
+   - [Azure Arc etkin veri hizmetleri hakkında daha fazla bilgi edinin](https://azure.microsoft.com/services/azure-arc/hybrid-data-services)
+   - [Azure Arc hakkında bilgi edinin](https://aka.ms/azurearc)

@@ -96,6 +96,8 @@
       items:
         - name: Azure Arc özellikli PostgreSQL Hiper Ölçek nedir?
           href: what-is-azure-arc-enabled-postgres-hyperscale.md
+        - name: Sınırlamalar
+          href: limitations-postgresql-hyperscale.md
     - name: Hızlı Başlangıçlar
       items:
         - name: Desteklenen sürümler

@@ -4,12 +4,12 @@ description: Bu makalede, paylaşılan erişim imzalarını kullanarak Event Hub
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 26c921213168e1028f311eabaa417efdb76f5c97
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: ff141fc1bb681e2356a4471dfdc808d622fd76b5
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97510099"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98986505"
 ---
 # <a name="authenticate-access-to-event-hubs-resources-using-shared-access-signatures-sas"></a>Paylaşılan erişim imzalarını (SAS) kullanarak Event Hubs kaynaklarına erişimin kimliğini doğrulama
 Paylaşılan erişim imzası (SAS), paylaşılan erişim imzasına sahip istemcilere verdiğiniz erişim türü üzerinde ayrıntılı denetim sağlar. SAS içinde ayarlayabileceğiniz bazı denetimler aşağıda verilmiştir: 
@@ -203,7 +203,7 @@ Tüm belirteçler SAS anahtarlarıyla atanır. Genellikle, tüm belirteçler ayn
 
 
 > [!NOTE]
-> Önerilmese de, bir olay hub 'ına veya bir ad alanına erişim izni veren belirteçlerle donabilme mümkündür. Bu belirteci tutan herhangi bir cihaz, doğrudan bu olay hub 'ına ileti gönderebilir. Ayrıca, cihaz, bu olay hub 'ına gönderilmeden listelenebilir.
+> Önerilmese de, bir olay hub 'ına veya bir ad alanına erişim izni veren belirteçlerle donabilme mümkündür. Bu belirteci tutan herhangi bir cihaz, doğrudan bu olay hub 'ına ileti gönderebilir. Ayrıca, cihaz bu olay hub 'ına gönderilmeden silinemez.
 > 
 > Belirli ve ayrıntılı kapsamları sağlamak her zaman önerilir.
 

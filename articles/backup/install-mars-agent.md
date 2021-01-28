@@ -3,12 +3,12 @@ title: Microsoft Azure Kurtarma Hizmetleri (MARS) aracısını yükler
 description: Windows makinelerini yedeklemek için Microsoft Azure Kurtarma Hizmetleri (MARS) aracısını yüklemeyi öğrenin.
 ms.topic: conceptual
 ms.date: 03/03/2020
-ms.openlocfilehash: fb59c245c469791233ce973b00426a127b116535
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: acf38fdf338fcdd0cd7902d4295f0f03310543a8
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90975312"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98986879"
 ---
 # <a name="install-the-azure-backup-mars-agent"></a>Azure Backup MARS aracısını yükler
 
@@ -51,7 +51,7 @@ Depolama çoğaltma türünü değiştirmek için:
 
 1. Yeni kasada, **Ayarlar** bölümünün altındaki **Özellikler** ' i seçin.
 
-1. **Özellikler** sayfasında, **yedekleme yapılandırması**altında **Güncelleştir**' i seçin.
+1. **Özellikler** sayfasında, **yedekleme yapılandırması** altında **Güncelleştir**' i seçin.
 
 1. Depolama çoğaltma türünü seçin ve **Kaydet**' i seçin.
 
@@ -88,6 +88,9 @@ Ortak eşlemeyi kullanmak için önce aşağıdaki etki alanlarına ve adreslere
 * `.WindowsAzure.com`
 * `.microsoftonline.com`
 * `.windows.net`
+* IP adresleri
+  * 20.190.128.0/18
+  * 40.126.0.0/18
 
 Microsoft eşlemesini kullanmak için aşağıdaki hizmetleri, bölgeleri ve ilgili topluluk değerlerini seçin:
 
@@ -121,13 +124,13 @@ Aracıyı herhangi bir makineye zaten yüklediyseniz aracının en son sürümü
 
     ![Dosyaları ve klasörleri yapılandırma](./media/backup-try-azure-backup-in-10-mins/set-file-folder.png)
 
-1. **Altyapıyı hazırlama**bölümünde, **Kurtarma Hizmetleri ARACıSı yükleme**altında Mars aracısını indirin.
+1. **Altyapıyı hazırlama** bölümünde, **Kurtarma Hizmetleri ARACıSı yükleme** altında Mars aracısını indirin.
 
     ![Altyapıyı hazırlama](./media/backup-try-azure-backup-in-10-mins/choose-agent-for-server-client.png)
 
 1. İndir menüsünde **Kaydet**' i seçin. Varsayılan olarak, *MARSagentinstaller.exe* dosyası İndirilenler klasörünüze kaydedilir.
 
-1. **Zaten indirmeyi seçin veya en son kurtarma hizmetleri aracısını**kullanın ve ardından kasa kimlik bilgilerini indirin.
+1. **Zaten indirmeyi seçin veya en son kurtarma hizmetleri aracısını** kullanın ve ardından kasa kimlik bilgilerini indirin.
 
     ![Kasa kimlik bilgilerini indirme](./media/backup-try-azure-backup-in-10-mins/download-vault-credentials.png)
 
@@ -142,14 +145,14 @@ Aracıyı herhangi bir makineye zaten yüklediyseniz aracının en son sürümü
 
     ![MARS Aracısı kurulum sihirbazında yükleme ayarlarını seçin](./media/backup-configure-vault/mars1.png)
 
-1. **Ara sunucu yapılandırması**Için, Windows makinesinde çalışan aracının internet 'e nasıl bağlanacağını belirtin. Sonra **İleri**’yi seçin.
+1. **Ara sunucu yapılandırması** Için, Windows makinesinde çalışan aracının internet 'e nasıl bağlanacağını belirtin. Sonra **İleri**’yi seçin.
 
    * Özel bir proxy kullanıyorsanız, gerekli tüm proxy ayarlarını ve kimlik bilgilerini belirtin.
    * Aracının [belirli URL 'lere](#before-you-start)erişmesi gerektiğini unutmayın.
 
     ![MARS sihirbazında Internet erişimini ayarlama](./media/backup-configure-vault/mars2.png)
 
-1. **Yükleme**için önkoşulları gözden geçirin ve **yükleme**' yi seçin.
+1. **Yükleme** için önkoşulları gözden geçirin ve **yükleme**' yi seçin.
 1. Aracı yüklendikten sonra, **kayda devam et**' i seçin.
 1. **Sunucu kaydetme Sihirbazı**  >  **kasa kimliği**' nde, indirdiğiniz kimlik bilgileri dosyasına gidin ve seçin. Sonra **İleri**’yi seçin.
 
@@ -160,7 +163,7 @@ Aracıyı herhangi bir makineye zaten yüklediyseniz aracının en son sürümü
     * Parolayı güvenli bir konuma kaydedin. Bir yedeklemeyi geri yüklemeniz gerekir.
     * Parolayı kaybeder veya unutursanız, Microsoft, yedekleme verilerini kurtarmanıza yardımcı olamaz.
 
-1. **Son**’u seçin. Aracı Şimdi yüklendi ve makineniz kasaya kayıtlı. Yedeklemenizi yapılandırıp zamanlamak için hazırsınız.
+1. **Son**'u seçin. Aracı Şimdi yüklendi ve makineniz kasaya kayıtlı. Yedeklemenizi yapılandırıp zamanlamak için hazırsınız.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

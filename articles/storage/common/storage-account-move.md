@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 05/11/2020
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: b70beb90fae794eb5512cb8b466524169c4c7b53
-ms.sourcegitcommit: ac7029597b54419ca13238f36f48c053a4492cb6
+ms.openlocfilehash: 76482266f0bbb1f80c1699c736048c705b90b4dc
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/29/2020
-ms.locfileid: "92792999"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98986929"
 ---
 # <a name="move-an-azure-storage-account-to-another-region"></a>Bir Azure Depolama hesabını başka bir bölgeye taşıma
 
@@ -35,7 +35,7 @@ Bu makalede şunları yapmayı öğreneceksiniz:
 
 - Hesabınızın kullandığı hizmetlerin ve özelliklerin hedef bölgede desteklendiğinden emin olun.
 
-- Önizleme özellikleri için aboneliğinizin hedef bölgede beyaz listeye eklendiğinden emin olun.
+- Önizleme özellikleri için, aboneliğinizin hedef bölge için allowlistelendiğinden emin olun.
 
 <a id="prepare"></a>
 
@@ -156,7 +156,7 @@ PowerShell kullanarak şablonu dağıtmak için:
     },
     ``` 
 
-2. Dosyadakitemplate.js **konum** özelliğini hedef bölgeye **template.json** düzenleyin. Bu örnek, hedef bölgeyi olarak ayarlar `eastus` .
+2. Dosyadakitemplate.js **konum** özelliğini hedef bölgeye  düzenleyin. Bu örnek, hedef bölgeyi olarak ayarlar `eastus` .
 
     ```json
     "resources": [{
@@ -219,7 +219,7 @@ Bazı özellikler şablona aktarılmayacağından onları yeni depolama hesabın
 
 Aşağıdaki tabloda bu özelliklerin yanı sıra bunları yeni depolama hesabınıza ekleme konusunda yönergeler verilmiştir.
 
-| Özellik    | Rehber    |
+| Öne çıkan özelliği    | Rehber    |
 |--------|-----------|
 | **Yaşam döngüsü yönetim ilkeleri** | [Azure Blob depolama yaşam döngüsünü yönetme](../blobs/storage-lifecycle-management-concepts.md) |
 | **Statik web siteleri** | [Azure depolama 'da statik bir Web sitesi barındırma](../blobs/storage-blob-static-website-how-to.md) |

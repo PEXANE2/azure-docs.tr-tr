@@ -4,12 +4,12 @@ description: Destek ayarları ve kısıtlamaları için Azure disk yedekleme 'ni
 ms.topic: conceptual
 ms.date: 01/07/2021
 ms.custom: references_regions
-ms.openlocfilehash: 08d2ac8451e88dd8d40ed5faee0368ff7739cd16
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 6046c5e05db60b51d803d6391a655ced80b0be6e
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 01/28/2021
-ms.locfileid: "98954707"
+ms.locfileid: "98986795"
 ---
 # <a name="azure-disk-backup-support-matrix-in-preview"></a>Azure disk yedekleme desteği matrisi (önizlemede)
 
@@ -22,7 +22,7 @@ Azure disklerini korumak için [Azure Backup](./backup-overview.md) kullanabilir
 
 ## <a name="supported-regions"></a>Desteklenen bölgeler
 
-Azure disk yedekleme, aşağıdaki bölgelerde önizlemede sunulmaktadır: Orta Batı ABD, Doğu ABD2, Kore Orta, Kore Güney, Japonya Batı, BAE Kuzey. 
+Azure disk yedekleme, şu bölgelerde önizlemede kullanılabilir: Batı ABD, Orta Batı ABD, Doğu ABD2, Kore Orta, Kore Güney, Japonya Batı, Doğu Asya, BAE Kuzey. 
 
 Kullanılabilir olduklarında daha fazla bölge duyurulacaktır.
 

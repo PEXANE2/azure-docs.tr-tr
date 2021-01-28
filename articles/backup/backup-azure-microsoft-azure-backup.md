@@ -3,12 +3,12 @@ title: İş yüklerini yedeklemek için Azure Backup Sunucusu kullanma
 description: Bu makalede, Microsoft Azure Backup sunucusu (MABS) kullanarak iş yüklerini korumak ve yedeklemek için ortamınızı nasıl hazırlayacağınızı öğrenin.
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: 1be2af43f4d923a27fd96c5c0888a234725775a3
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: d476c228a619f03f798c1a2cd6854a8d603c3637
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92056710"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98987031"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Azure Backup Sunucusu yükleyip yükseltin
 
@@ -54,7 +54,7 @@ Azure Backup Sunucusu olan iş yüklerini koruma çok sayıda nusmaya sahiptir. 
 
 Temel sunucuyu Azure 'da çalıştırmak istemiyorsanız, sunucuyu bir Hyper-V VM 'sinde, VMware VM 'de veya fiziksel bir konakta çalıştırabilirsiniz. Sunucu donanımı için önerilen minimum gereksinimler iki çekirdek ve 8 GB RAM 'dir. Desteklenen işletim sistemleri aşağıdaki tabloda listelenmiştir:
 
-| İşletim Sistemi | Platform | SKU |
+| Operating System | Platform | SKU |
 |:--- | --- |:--- |
 | Windows Server 2019 |64 bit |Standard, Datacenter, Essentials |
 | Windows Server 2016 ve en son SPs |64 bit |Standard, Datacenter, Essentials  |
@@ -85,7 +85,7 @@ Depolama çoğaltma seçeneği, coğrafi olarak yedekli depolama ve yerel olarak
 Depolama çoğaltma ayarını düzenlemek için:
 
 1. **Kurtarma Hizmetleri kasaları** bölmesinden yeni kasayı seçin. **Ayarlar** bölümünde **Özellikler**' i seçin.
-2. **Özellikler**' de, **yedekleme yapılandırması**altında **Güncelleştir**' i seçin.
+2. **Özellikler**' de, **yedekleme yapılandırması** altında **Güncelleştir**' i seçin.
 
 3. Depolama çoğaltma türünü seçin ve **Kaydet**' i seçin.
 
@@ -95,11 +95,11 @@ Depolama çoğaltma ayarını düzenlemek için:
 
 ### <a name="downloading-the-software-package"></a>Yazılım paketi indiriliyor
 
-1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 2. Zaten açık bir kurtarma hizmetleri Kasası varsa adım 3 ' e geçin. Kurtarma Hizmetleri Kasası açık değilse, ancak Azure portal, ana menüde, **Araştır**' ı seçin.
 
    * Kaynak listesinde **Kurtarma Hizmetleri** yazın.
-   * Yazmaya başladığınızda liste, girdinize göre filtrelenir. **Kurtarma Hizmetleri kasalarını**gördüğünüzde, bunu seçin.
+   * Yazmaya başladığınızda liste, girdinize göre filtrelenir. **Kurtarma Hizmetleri kasalarını** gördüğünüzde, bunu seçin.
 
      ![Kurtarma Hizmetleri Kasası oluşturma adımı 1](./media/backup-azure-microsoft-azure-backup/open-recovery-services-vault.png)
 
@@ -139,7 +139,7 @@ Depolama çoğaltma ayarını düzenlemek için:
 
     ![Altyapıyı Azure Backup Sunucusu için hazırla](./media/backup-azure-microsoft-azure-backup/azure-backup-server-prep-infra.png)
 
-7. Tüm dosyalar ' ı seçin ve **İleri ' yi**seçin. Microsoft Azure Backup indirme sayfasından gelen tüm dosyaları indirin ve tüm dosyaları aynı klasöre yerleştirin.
+7. Tüm dosyalar ' ı seçin ve **İleri ' yi** seçin. Microsoft Azure Backup indirme sayfasından gelen tüm dosyaları indirin ve tüm dosyaları aynı klasöre yerleştirin.
 
     ![İndirme Merkezi 1](./media/backup-azure-microsoft-azure-backup/downloadcenter.png)
 
@@ -182,7 +182,7 @@ Ayıklama işlemi tamamlandıktan sonra, Microsoft Azure Backup sunucusunu yükl
 
     **SQL 2017 ile SSRS yapılandırması**
 
-    Kendi SQL 2017 örneğinizi kullandığınızda SSRS 'yi el ile yapılandırmanız gerekir. SSRS yapılandırmasından sonra, SSRS 'nin *ısınbaşlatılmış* özelliğinin *true*olarak ayarlandığından emin olun. Bu true olarak ayarlandığında, MABS SSRS 'nin zaten yapılandırıldığını varsayar ve SSRS yapılandırmasını atlar.
+    Kendi SQL 2017 örneğinizi kullandığınızda SSRS 'yi el ile yapılandırmanız gerekir. SSRS yapılandırmasından sonra, SSRS 'nin *ısınbaşlatılmış* özelliğinin *true* olarak ayarlandığından emin olun. Bu true olarak ayarlandığında, MABS SSRS 'nin zaten yapılandırıldığını varsayar ve SSRS yapılandırmasını atlar.
 
     SSRS yapılandırması için aşağıdaki değerleri kullanın:
     * Hizmet hesabı: ' yerleşik hesabı kullan ' ağ hizmeti olmalıdır
@@ -195,7 +195,7 @@ Ayıklama işlemi tamamlandıktan sonra, Microsoft Azure Backup sunucusunu yükl
     > [!NOTE]
     > MABS için veritabanı olarak kullanılan SQL Server Lisanslama, [Microsoft çevrimiçi hizmet koşulları](https://www.microsoft.com/licensing/product-licensing/products) (OST) tarafından yönetilir. OST 'ye göre, MABS ile paketlenmiş SQL Server yalnızca MABS için veritabanı olarak kullanılabilir.
 
-4. Microsoft Azure Backup Server dosyalarının yüklenmesi için bir konum belirtin ve **İleri ' yi**seçin.
+4. Microsoft Azure Backup Server dosyalarının yüklenmesi için bir konum belirtin ve **İleri ' yi** seçin.
 
     ![Dosyaların yüklenmesi için konum belirtin](./media/backup-azure-microsoft-azure-backup/space-screen.png)
 
@@ -203,10 +203,10 @@ Ayıklama işlemi tamamlandıktan sonra, Microsoft Azure Backup sunucusunu yükl
 
     Disk depolaması için kapasite gereksinimleri, birincil olarak korunan verilerin boyutuna, günlük kurtarma noktası boyutuna, beklenen birim veri büyüme hızına ve Bekletme aralığı hedeflerine bağlıdır. Disk depolamasını korunan verilerin iki katı boyutta yapmanızı öneririz. Bu, korunan veri boyutunun %10’u olan günlük kurtarma noktası boyutu ve 10 günlük bekletme aralığı varsayar. Boyut iyi bir şekilde tahmin etmek için [DPM Capacity Planner](https://www.microsoft.com/download/details.aspx?id=54301)gözden geçirin. 
 
-5. Kısıtlanmış yerel kullanıcı hesapları için güçlü bir parola sağlayın ve **İleri ' yi**seçin.
+5. Kısıtlanmış yerel kullanıcı hesapları için güçlü bir parola sağlayın ve **İleri ' yi** seçin.
 
     ![Güçlü parola sağla](./media/backup-azure-microsoft-azure-backup/security-screen.png)
-6. Güncelleştirmeleri denetlemek için *Microsoft Update* kullanmak isteyip istemediğinizi seçin ve **İleri ' yi**seçin.
+6. Güncelleştirmeleri denetlemek için *Microsoft Update* kullanmak isteyip istemediğinizi seçin ve **İleri ' yi** seçin.
 
    > [!NOTE]
    > Windows ve Microsoft Azure Backup Server gibi diğer ürünler için güvenlik ve önemli güncelleştirmeler sunan Microsoft Update Windows Update yeniden yönlendirmenizi öneririz.
@@ -214,7 +214,7 @@ Ayıklama işlemi tamamlandıktan sonra, Microsoft Azure Backup sunucusunu yükl
    >
 
     ![Microsoft Update Opt-In](./media/backup-azure-microsoft-azure-backup/update-opt-screen2.png)
-7. *Ayarların özetini* gözden geçirin ve **yüklemeyi**seçin.
+7. *Ayarların özetini* gözden geçirin ve **yüklemeyi** seçin.
 
     ![Ayarların Özeti](./media/backup-azure-microsoft-azure-backup/summary-screen.png)
 8. Yükleme aşamalarda gerçekleşir. İlk aşamada Microsoft Azure Kurtarma Hizmetleri Aracısı sunucuya yüklenir. Sihirbaz ayrıca Internet bağlantısını denetler. Internet bağlantısı varsa, yüklemeye devam edebilirsiniz. Aksi takdirde, Internet 'e bağlanmak için proxy ayrıntılarını sağlamanız gerekir.
@@ -254,9 +254,9 @@ Aşağıdaki bölümlerde, istemci bilgisayarlar için koruma aracılarının na
 
 3. Seçili bilgisayarlara güncelleştirilmiş koruma aracıları yüklemek için, **Eylemler** bölmesinde **Güncelleştir**' i seçin.
 
-4. Ağa bağlı olmayan bir istemci bilgisayar için, bilgisayar ağa bağlanana kadar **Aracı durumu** sütununda **bekleyen güncelleştirme**durumu gösterilmektedir.
+4. Ağa bağlı olmayan bir istemci bilgisayar için, bilgisayar ağa bağlanana kadar **Aracı durumu** sütununda **bekleyen güncelleştirme** durumu gösterilmektedir.
 
-   Bir istemci bilgisayar ağa bağlandıktan sonra, istemci bilgisayar için **Aracı Updates** sütununda **güncelleştirme**durumu gösterilir.
+   Bir istemci bilgisayar ağa bağlandıktan sonra, istemci bilgisayar için **Aracı Updates** sütununda **güncelleştirme** durumu gösterilir.
 
 ## <a name="move-mabs-to-a-new-server"></a>MABS 'leri yeni bir sunucuya taşıma
 
@@ -303,13 +303,18 @@ Azure bağlantısının ve Azure aboneliğinin durumunu öğrendikten sonra, sun
 
 ### <a name="recovering-from-loss-of-connectivity"></a>Bağlantı kaybından kurtarma
 
-Azure 'a erişimi engelleyen bir güvenlik duvarınız veya bir ara sunucu varsa, güvenlik duvarı/proxy profilinde aşağıdaki etki alanı adreslerine izin vermeniz gerekir:
+Makinenizin internet erişimi sınırlı ise, makinedeki veya proxy 'deki güvenlik duvarı ayarlarının aşağıdaki URL 'Lere ve IP adreslerine izin verildiğinden emin olun:
 
-* `http://www.msftncsi.com/ncsi.txt`
-* \*.Microsoft.com
-* \*.WindowsAzure.com
-* \*.microsoftonline.com
-* \*.windows.net
+* URL’ler
+  * `www.msftncsi.com`
+  * `*.Microsoft.com`
+  * `*.WindowsAzure.com`
+  * `*.microsoftonline.com`
+  * `*.windows.net`
+  * `www.msftconnecttest.com`
+* IP adresleri
+  * 20.190.128.0/18
+  * 40.126.0.0/18
 
 ExpressRoute Microsoft eşlemesi kullanıyorsanız, aşağıdaki hizmetleri/bölgeleri seçin:
 
@@ -323,9 +328,9 @@ Azure 'a bağlantı Azure Backup Sunucusu makineye geri yüklendikten sonra, ger
 
 ### <a name="handling-subscription-states"></a>Abonelik durumlarını işleme
 
-Bir Azure aboneliğini, *zaman aşımına uğradı* veya *sağlaması kaldırılmış* bir durumdan *etkin* duruma almak mümkündür. Ancak, bu durum *etkin*olmadığında ürünün davranışında bazı etkileri vardır:
+Bir Azure aboneliğini, *zaman aşımına uğradı* veya *sağlaması kaldırılmış* bir durumdan *etkin* duruma almak mümkündür. Ancak, bu durum *etkin* olmadığında ürünün davranışında bazı etkileri vardır:
 
-* Sağlaması *kaldırılmış* bir abonelik, sağlanan süre için işlevselliği kaybeder. *Etkin*açıldığında, yedekleme/geri yükleme 'nin ürün işlevselliği yeniden canlandırılır. Yerel diskteki yedekleme verileri, yeterince büyük bir bekletme süresi ile tutuluyorsa da alınabilir. Ancak, abonelik *sağlanan* duruma girdiğinde Azure 'daki yedekleme verileri irretrievably kaybolur.
+* Sağlaması *kaldırılmış* bir abonelik, sağlanan süre için işlevselliği kaybeder. *Etkin* açıldığında, yedekleme/geri yükleme 'nin ürün işlevselliği yeniden canlandırılır. Yerel diskteki yedekleme verileri, yeterince büyük bir bekletme süresi ile tutuluyorsa da alınabilir. Ancak, abonelik *sağlanan* duruma girdiğinde Azure 'daki yedekleme verileri irretrievably kaybolur.
 * *Süresi biten* bir abonelik, yalnızca yeniden *etkin* hale getirilene kadar işlevselliği kaybeder. Aboneliğin *süresi dolduğunda* zamanlanan tüm yedeklemeler çalışmaz.
 
 ## <a name="upgrade-mabs"></a>MABS 'leri yükselt

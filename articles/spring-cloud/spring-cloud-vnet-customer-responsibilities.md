@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 12/02/2020
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 63fbac0919e06b29377afacaaa5708d195c6b319
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 5ecf9e49887eb584269f724d5199cbfb014351e0
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98887312"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98986862"
 ---
 # <a name="customer-responsibilities-for-running-azure-spring-cloud-in-vnet"></a>VNET 'te Azure Spring Cloud çalıştırmaya yönelik müşteri sorumlulukları
 Bu belge, bir sanal ağda Azure Spring Cloud 'ın kullanımına yönelik belirtimleri içerir.
@@ -57,6 +57,9 @@ Azure Güvenlik Duvarı, aşağıdaki yapılandırmaların basitleşmesi için *
   | <i>login.microsoftonline.com</i> | HTTPS: 443 | Azure Active Directory kimlik doğrulaması. |
   |<i>packages.microsoft.com</i>    | HTTPS: 443 | Microsoft paketleri deposu. |
   | <i>acs-mirror.azureedge.net</i> | HTTPS: 443 | Kubernetes kullanan ve Azure CNı gibi gerekli ikilileri yüklemek için depo gereklidir. |
+  | *mscrl.microsoft.com* | HTTPS: 80 | Gerekli Microsoft sertifika zinciri yolları. |
+  | *crl.microsoft.com* | HTTPS: 80 | Gerekli Microsoft sertifika zinciri yolları. |
+  | *crl3.digicert.com* | HTTPS: 80 | 3. taraf SSL sertifika zinciri yolları. |
 
 ## <a name="see-also"></a>Ayrıca bkz.
 * [Uygulamanıza özel bir ağda erişin](spring-cloud-access-app-virtual-network.md)

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2021
 ms.author: memildin
-ms.openlocfilehash: 7ea871428fffe685cc9d43dd698bfefb8d8a511a
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 19128f0372f9a5bda0d16155167a507eccaf436a
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98756687"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98986638"
 ---
 # <a name="manage-security-policies"></a>Güvenlik ilkelerini yönetin
 
@@ -54,7 +54,7 @@ Güvenlik Merkezi'nde güvenlik ilkelerinizi görüntüleme:
 
 1. Bu abonelik veya yönetim grubu için güvenlik ilkesi sayfası görüntülenir. Kullanılabilir ve atanan ilkeleri gösterir.
 
-   ![ilke sayfası](./media/tutorial-security-policy/security-policy-page.png)
+    :::image type="content" source="./media/tutorial-security-policy/security-policy-page.png" alt-text="Güvenlik Merkezi 'nin güvenlik ilkesi sayfası" lightbox="./media/tutorial-security-policy/security-policy-page.png":::
 
     > [!NOTE]
     > Varsayılan ilkenize göre "MG devralınmış" etiketi varsa, ilke bir yönetim grubuna atandı ve görüntülemekte olduğunuz aboneliğin Devralındığı anlamına gelir.
@@ -102,7 +102,7 @@ Devre dışı bırakmak istediğiniz öneri, güvenlik merkezi 'nin mevzuat uyum
 
 1. Güvenlik Merkezi 'nde, **ilke & uyumluluk** bölümünde **güvenlik ilkesi**' ni seçin.
 
-   ![ilke yönetimi](./media/tutorial-security-policy/policy-management.png)
+    :::image type="content" source="./media/tutorial-security-policy/policy-management.png" alt-text="Azure Güvenlik Merkezi 'nde ilke yönetimi işlemini başlatma":::
 
 2. Öneriyi devre dışı bırakmak istediğiniz aboneliği veya yönetim grubunu seçin.
 
@@ -111,7 +111,7 @@ Devre dışı bırakmak istediğiniz öneri, güvenlik merkezi 'nin mevzuat uyum
 
 1. **Geçerli Ilkeyi görüntüle**' yi seçin.
 
-   ![ilkeyi görüntüle](./media/tutorial-security-policy/view-effective-policy.png)
+    :::image type="content" source="./media/tutorial-security-policy/view-effective-policy.png" alt-text="Aboneliğinize atanan geçerli ilkeyi açma":::
 
 1. Atanan ilkeyi seçin.
 
@@ -126,10 +126,8 @@ Devre dışı bırakmak istediğiniz öneri, güvenlik merkezi 'nin mevzuat uyum
    > [!NOTE]
    > İlke devre dışı bırakma değişikliklerinin etkili olması 12 saate kadar sürebilir.
 
-
-
 ## <a name="next-steps"></a>Sonraki adımlar
-Bu makalede güvenlik ilkeleri açıklanmaktadır. İlgili bilgiler için aşağıdaki makalelere bakın:
+Bu sayfa güvenlik ilkeleri açıklanmıştı. İlgili bilgiler için, aşağıdaki sayfalara bakın:
 
 - [PowerShell kullanarak ilkeleri ayarlamayı öğrenin](../governance/policy/assign-policy-powershell.md) - 
 - [Azure Ilkesinde bir güvenlik ilkesini nasıl düzenleyeceğinizi öğrenin](../governance/policy/tutorials/create-and-manage.md) - 

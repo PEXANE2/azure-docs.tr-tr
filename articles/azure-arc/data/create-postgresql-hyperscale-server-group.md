@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: d432f29e91097491fc4719ec59a11cb96948f431
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 45bb045e7bad2d5f8a56b71787b3abb5921cb7d5
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97609063"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98985895"
 ---
 # <a name="create-an-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Azure Arc özellikli PostgreSQL Hiper Ölçek sunucu grubu oluşturma
 
@@ -24,7 +24,7 @@ Bu belgede, Azure Arc üzerinde bir PostgreSQL hiper ölçek sunucu grubu oluşt
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
-## <a name="getting-started"></a>Başlarken
+## <a name="getting-started"></a>Kullanmaya başlama
 Aşağıdaki konularda zaten bilgi sahibiyseniz bu paragrafı atlayabilirsiniz.
 Oluşturmaya devam etmeden önce, okumak isteyebileceğiniz önemli konular vardır:
 - [Azure Arc etkin veri Hizmetleri 'ne genel bakış](overview.md)
@@ -78,9 +78,16 @@ azdata arc postgres server create -n <name> --workers <# worker nodes with #>=2>
 #azdata arc postgres server create -n postgres01 --workers 2
 ```
 
+> [!IMPORTANT]
+> - Yedeklemeler için kullanılan depolama sınıfı (_--Storage-Class-Backups-SCB_) sağlanmazsa veri denetleyicisinin veri depolama sınıfına varsayılan olarak ayarlanır.
+> - Bir sunucu grubunu ayrı bir sunucu grubuna geri yüklemek için (zaman içinde nokta geri yükleme gibi), sunucu grubunuzu ReadWriteMany erişim moduyla PVC 'leri kullanacak şekilde yapılandırmanız gerekir. Bunun için sunucu grubunun oluşturulması gerekir. Oluşturulduktan sonra değiştirilemez. Daha ayrıntılı bilgi için şunu okuyun:
+>    - [Yedekleme ve geri yükleme ile ilgili bu bölüm](https://docs.microsoft.com/azure/azure-arc/data/backup-restore-postgresql-hyperscale#create-a-server-group-that-is-ready-for-backups-and-restores)
+>    - [Bu bölüm, Azure Arc etkin PostgreSQL Hyperscale sınırlamaları hakkında](https://docs.microsoft.com/azure/azure-arc/data/limitations-postgresql-hyperscale)
+
+
 > [!NOTE]
 > - **Kullanılabilir başka komut satırı parametreleri vardır.  ' İ çalıştırarak seçeneklerin tüm listesini görüntüleyin `azdata arc postgres server create --help` .**
-> - Yedeklemeler için kullanılan depolama sınıfı (_--Storage-Class-Backups-SCB_) sağlanmazsa veri denetleyicisinin veri depolama sınıfına varsayılan olarak ayarlanır.
+
 > - --Volume-size-* parametreleri tarafından kabul edilen birim bir Kubernetes kaynak miktarıdır (bundan sonra, bu, bu sahip olan bu sahip (T, G, M, K, m) veya bunların iki bitlik eşdeğerinden (TI, gi, mı, ki) biridir).
 > - Adların uzunluğu 12 karakter veya daha az olmalıdır ve DNS adlandırma kurallarına uymalıdır.
 > - _Postgres_ standart yönetici kullanıcısının parolasını girmeniz istenir.  `AZDATA_PASSWORD`Create komutunu çalıştırmadan önce oturum ortam değişkenini ayarlayarak etkileşimli istemi atlayabilirsiniz.
@@ -112,7 +119,7 @@ Bir PostgreSQL örneğine ilişkin uç noktaları görüntülemek için aşağı
 ```console
 azdata arc postgres endpoint list -n <server group name>
 ```
-Örnek:
+Örneğin:
 ```console
 [
   {

@@ -1,18 +1,18 @@
 ---
 title: Temsilcili kaynaklar üzerindeki etkisini izlemek için iş ortağı KIMLIĞINIZI bağlayın
 description: İş ortağı KIMLIĞINIZI, Azure açık Thouse aracılığıyla yönettiğiniz müşteri kaynaklarında iş ortağı kazanılan kredisi (PEC) alacak şekilde ilişkilendirmeyi öğrenin.
-ms.date: 10/30/2020
+ms.date: 01/28/2021
 ms.topic: how-to
-ms.openlocfilehash: fcbcc70e380116b8e9f9b1c1e365dee1adb87a99
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 46338b925b1ad44019c9cc95e4b7f8c0963c07c4
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93080286"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98985980"
 ---
 # <a name="link-your-partner-id-to-track-your-impact-on-delegated-resources"></a>Temsilcili kaynaklar üzerindeki etkisini izlemek için iş ortağı KIMLIĞINIZI bağlayın 
 
-[Microsoft iş ortağı ağı](https://partner.microsoft.com/)üyesiyse Iş ortağı kimliğinizi, temsilcili müşteri kaynaklarını yönetmek için kullanılan kimlik bilgileriyle bağlantılandırabilirsiniz. İş ortağı yönetici bağlantısı (PAL), Microsoft 'un Azure müşteri başarısını çalıştıran iş ortaklarını belirlemesine ve tanımasını sağlar. Bu bağlantı Ayrıca [CSP (bulut çözümü sağlayıcısı)](/partner-center/csp-overview) iş ortaklarının [, Microsoft Müşteri SÖZLEŞMESI 'ni (MCA) imzalayan](/partner-center/confirm-customer-agreement) ve [Azure planı kapsamında](/partner-center/azure-plan-get-started)olan müşteriler için [yönetilen hizmetler (PEC) için iş ortağı kazanılmış kredisi](/partner-center/partner-earned-credit) almasına izin verir.
+[Microsoft iş ortağı ağı](https://partner.microsoft.com/)üyesiyse, Iş ortağı kimliğinizi, Microsoft tarafından verilen müşteri kaynaklarını yönetmek için kullanılan kimlik bilgileriyle bağlantılandırın ve Microsoft 'un, Azure müşteri başarısını çalıştıran iş ortaklarını belirlemesine ve tanımasına izin verebilirsiniz. Bu bağlantı Ayrıca [CSP (bulut çözümü sağlayıcısı)](/partner-center/csp-overview) iş ortaklarının [, Microsoft Müşteri SÖZLEŞMESI 'ni (MCA) imzalayan](/partner-center/confirm-customer-agreement) ve [Azure planı kapsamında](/partner-center/azure-plan-get-started)olan müşteriler için [yönetilen hizmetler (PEC) için iş ortağı kazanılmış kredisi](/partner-center/partner-earned-credit) almasına izin verir.
 
 [Azure Market 'Te yönetilen hizmet teklifleri olan müşteriler](publish-managed-services-offers.md)eklerseniz,, teklifleri yayımlamak Için kullanılan Iş Ortağı Merkezi hesabıyla ilişkili MPN kimliği kullanılarak otomatik olarak bağlantı gerçekleşir. Bu müşterilere yönelik etkileri izlemek için başka bir eylem gerekmez.
 
@@ -30,7 +30,7 @@ Kolaylık olması için kiracınızda bir hizmet sorumlusu hesabı oluşturmanı
 
 Bu adımları izleyerek, yönettiğiniz her müşteri kiracının iş ortağı KIMLIĞINIZLE ilişkilendirilmesi gerekir. Sağlayıcı Otomasyonu hesabının, müşteri kiracısında herhangi bir eylem doğrulaması veya yapması gerekmez.
 
-:::image type="content" source="../media/lighthouse-pal.jpg" alt-text="Azure ınthouse ile PAL işlemini gösteren diyagram.":::
+:::image type="content" source="../media/lighthouse-pal.jpg" alt-text="Azure ınthouse ile iş ortağı KIMLIĞI bağlama işlemini gösteren diyagram.":::
 
 ## <a name="add-your-partner-id-to-previously-onboarded-customers"></a>İş ortağı KIMLIĞINIZI daha önce eklendi müşterilerine ekleyin
 

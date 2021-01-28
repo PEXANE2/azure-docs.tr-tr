@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 05/21/2018
+ms.date: 01/28/2021
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 0b7fee330f93097b561714ecc938eaf3fee8f2b5
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 04c26609b046f7525c513796622be74633a20e91
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94657338"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98986777"
 ---
 # <a name="problem-installing-the-application-proxy-agent-connector"></a>Uygulama Ara Sunucusu Aracı Bağlayıcısı’nı yüklerken sorun oluşuyor
 
@@ -24,7 +24,7 @@ Microsoft Azure Active Directory uygulama proxy Bağlayıcısı, bulut kullanıl
 
 ## <a name="general-problem-areas-with-connector-installation"></a>Bağlayıcı yüklemesiyle ilgili genel sorun alanı
 
-Bağlayıcının yüklemesi başarısız olduğunda, kök neden genellikle aşağıdaki alanlardan biridir:
+Bağlayıcının yüklemesi başarısız olduğunda, kök neden genellikle aşağıdaki alanlardan biridir. **Herhangi bir sorun giderme işlemi için bağlayıcıyı yeniden başlattığınızdan emin olun.**
 
 1.  **Bağlantı** – başarılı bir yükleme işleminin tamamlanabilmesi için yeni bağlayıcının sonraki güven özelliklerini kaydetmesi ve kurması gerekir. Bu, Azure Active Directory Uygulama Ara Sunucusu bulut hizmetine bağlanarak yapılır.
 
@@ -109,7 +109,7 @@ Register-AppProxyConnector komutu hakkında daha fazla bilgi edinmek için lütf
 
 **Kimlik bilgilerinin doğru olduğunu doğrulamak için:**
 
-' A bağlanın `https://login.microsoftonline.com` ve aynı kimlik bilgilerini kullanın. Oturum açmanın başarılı olduğundan emin olun. **Azure Active Directory**  - &gt; **Kullanıcılar ve gruplar**  - &gt; **tüm kullanıcılar** Azure Active Directory giderek Kullanıcı rolünü kontrol edebilirsiniz. 
+' A bağlanın `https://login.microsoftonline.com` ve aynı kimlik bilgilerini kullanın. Oturum açmanın başarılı olduğundan emin olun.   - &gt; **Kullanıcılar ve gruplar**  - &gt; **tüm kullanıcılar** Azure Active Directory giderek Kullanıcı rolünü kontrol edebilirsiniz. 
 
 Kullanıcı hesabınızı ve ardından ortaya çıkan menüdeki "Dizin rolü" nü seçin. Seçili rolün "uygulama Yöneticisi" olduğunu doğrulayın. Bu adımlarla ilgili sayfaların hiçbirine erişemiyorsanız, gerekli rolünüzün olması gerekmez.
 

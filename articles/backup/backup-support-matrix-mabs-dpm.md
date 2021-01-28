@@ -3,12 +3,12 @@ title: MABS & System Center DPM destek matrisi
 description: Bu makalede, şirket içi ve Azure VM kaynaklarını yedeklemek için Microsoft Azure Backup sunucusu (MABS) veya System Center DPM kullandığınızda Azure Backup desteği özetlenmektedir.
 ms.date: 02/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: 0180135da793aaf7869441ee290f6125ea88fc88
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: aaa68dba0bbd1f3f5ffb5480a2bdb0a48ae85656
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92276967"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98986065"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>Microsoft Azure Backup Server veya System Center DPM ile yedekleme için destek matrisi
 
@@ -111,13 +111,18 @@ Azure Stack sanal makinelerin ve iş yüklerinin yedeklemesini tek bir konumdan 
 
 ### <a name="url-access"></a>URL erişimi
 
-DPM sunucusu/MABS 'nin bu URL 'Lere erişmesi gerekir:
+DPM sunucusu/MABS sunucusunun bu URL 'Lere ve IP adreslerine erişmesi gerekir:
 
-- `http://www.msftncsi.com/ncsi.txt`
-- `*.Microsoft.com`
-- `*.WindowsAzure.com`
-- `*.microsoftonline.com`
-- `*.windows.net`
+* URL’ler
+  * `www.msftncsi.com`
+  * `*.Microsoft.com`
+  * `*.WindowsAzure.com`
+  * `*.microsoftonline.com`
+  * `*.windows.net`
+  * `www.msftconnecttest.com`
+* IP adresleri
+  * 20.190.128.0/18
+  * 40.126.0.0/18:
 
 ### <a name="azure-expressroute-support"></a>Azure ExpressRoute desteği
 
@@ -125,11 +130,16 @@ Azure ExpressRoute üzerinden verilerinizi, genel eşleme (eski devreler için k
 
 Ortak eşleme ile: aşağıdaki etki alanlarına/adreslere erişim sağlayın:
 
-- `http://www.msftncsi.com/ncsi.txt`
-- `microsoft.com`
-- `.WindowsAzure.com`
-- `.microsoftonline.com`
-- `.windows.net`
+* URL’ler
+  * `www.msftncsi.com`
+  * `*.Microsoft.com`
+  * `*.WindowsAzure.com`
+  * `*.microsoftonline.com`
+  * `*.windows.net`
+  * `www.msftconnecttest.com`
+* IP adresleri
+  * 20.190.128.0/18
+  * 40.126.0.0/18
 
 Microsoft eşlemesi ile aşağıdaki hizmetleri/bölgeleri ve ilgili topluluk değerlerini seçin:
 
@@ -146,7 +156,7 @@ Daha fazla bilgi için bkz. [ExpressRoute yönlendirme gereksinimleri](../expres
 
 Yedeklemelerin düzgün çalışması için Azure Backup hizmetine bağlantı gereklidir ve Azure aboneliği etkin olmalıdır. Aşağıdaki tabloda, bu iki şey gerçekleşmezseniz davranış gösterilmektedir.
 
-**MABS 'ten Azure 'a** | **Abonelik** | **Yedekleme/Geri Yükleme**
+**MABS 'ten Azure 'a** | **Abonelik** | **Yedekleme/geri yükleme**
 --- | --- | ---
 Bağlı | Etkin | DPM/MABS diskine yedekleme.<br/><br/> Azure 'a yedekleyin.<br/><br/> Diskten geri yükle.<br/><br/> Azure 'dan geri yükleyin.
 Bağlı | Süre dolma/sağlaması kaldırılmış | Diske veya Azure 'a yedekleme yok.<br/><br/> Aboneliğin geçerliliği dolmuşsa diskten veya Azure 'dan geri yükleme yapabilirsiniz.<br/><br/> Abonelik kullanımdan bulunursa diskten veya Azure 'dan geri yükleme yapamazsınız. Azure kurtarma noktaları silinir.
