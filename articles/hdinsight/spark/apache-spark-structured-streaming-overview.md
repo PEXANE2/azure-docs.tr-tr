@@ -1,19 +1,16 @@
 ---
 title: Azure HDInsight 'ta Spark yapılandırılmış akışı
 description: HDInsight Spark kümelerinde Spark yapılandırılmış akış uygulamalarını kullanma.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/24/2019
-ms.openlocfilehash: 46a65720c9998a7a56d0ca269c344f85c5955546
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9f92007c271da5b6d2cb8db6c3904a62b114e7c2
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86086152"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98929498"
 ---
 # <a name="overview-of-apache-spark-structured-streaming"></a>Apache Spark yapılandırılmış akışa genel bakış
 
@@ -30,11 +27,11 @@ Yapılandırılmış akış, giriş verilerine seçim, projeksiyon, toplama, Pen
 
 ## <a name="streams-as-tables"></a>Tablolar olarak akışlar
 
-Spark yapılandırılmış akış, bir veri akışını derinlemesine sınırsız bir tablo olarak temsil eder, diğer bir deyişle, yeni veri geldiğinde tablo büyümeye devam eder. Bu *giriş tablosu* , uzun süre çalışan bir sorgu tarafından sürekli olarak işlenir ve bir *Çıkış tablosuna*gönderilir:
+Spark yapılandırılmış akış, bir veri akışını derinlemesine sınırsız bir tablo olarak temsil eder, diğer bir deyişle, yeni veri geldiğinde tablo büyümeye devam eder. Bu *giriş tablosu* , uzun süre çalışan bir sorgu tarafından sürekli olarak işlenir ve bir *Çıkış tablosuna* gönderilir:
 
 ![Yapılandırılmış akış kavramı](./media/apache-spark-structured-streaming-overview/hdinsight-spark-structured-streaming-concept.png)
 
-Yapılandırılmış akışta, veriler sisteme ulaşır ve hemen bir giriş tablosuna alınır. Bu giriş tablosuna yönelik işlemler gerçekleştiren sorguları (DataFrame ve DataSet API 'Leri kullanarak) yazarsınız. Sorgu çıktısı başka bir tablo, *Sonuçlar tablosu*oluşturur. Sonuçlar tablosu, bir dış veri deposu için veri çizdiğiniz, örneğin ilişkisel bir veritabanının sonuçlarını içerir. Giriş tablosundan verilerin işlendiği zaman zamanlaması, *tetikleyici aralığı*tarafından denetlenir. Varsayılan olarak, tetikleyici aralığı sıfırdır, bu nedenle yapılandırılmış akış, verileri ulaştığı anda işlemeye çalışır. Uygulamada, bu, yapılandırılmış akış önceki sorgunun çalışmasını işlemeyi tamamladıktan sonra, yeni alınan tüm verilere karşı başka bir işlem çalıştırması başlattığı anlamına gelir. Tetikleyiciyi, zaman tabanlı toplu işlerle işlenmek üzere bir aralıkta çalışacak şekilde yapılandırabilirsiniz.
+Yapılandırılmış akışta, veriler sisteme ulaşır ve hemen bir giriş tablosuna alınır. Bu giriş tablosuna yönelik işlemler gerçekleştiren sorguları (DataFrame ve DataSet API 'Leri kullanarak) yazarsınız. Sorgu çıktısı başka bir tablo, *Sonuçlar tablosu* oluşturur. Sonuçlar tablosu, bir dış veri deposu için veri çizdiğiniz, örneğin ilişkisel bir veritabanının sonuçlarını içerir. Giriş tablosundan verilerin işlendiği zaman zamanlaması, *tetikleyici aralığı* tarafından denetlenir. Varsayılan olarak, tetikleyici aralığı sıfırdır, bu nedenle yapılandırılmış akış, verileri ulaştığı anda işlemeye çalışır. Uygulamada, bu, yapılandırılmış akış önceki sorgunun çalışmasını işlemeyi tamamladıktan sonra, yeni alınan tüm verilere karşı başka bir işlem çalıştırması başlattığı anlamına gelir. Tetikleyiciyi, zaman tabanlı toplu işlerle işlenmek üzere bir aralıkta çalışacak şekilde yapılandırabilirsiniz.
 
 Sonuçlar tablolarındaki veriler, yalnızca sorgunun son işlendiği zamandan beri yeni olan verileri (*ekleme modu*) içerebilir veya tablo, akış sorgusunun başlamasından bu yana tüm çıktı verilerini içermesi için her yeni veri her seferinde yenilenebilir. (*tamamlanmış mod*).
 

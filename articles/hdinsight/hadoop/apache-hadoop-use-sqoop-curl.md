@@ -1,18 +1,15 @@
 ---
 title: Azure HDInsight 'ta Apache Sqoop ile verileri dışarı aktarmak için kıvrımlı kullanma
 description: Kıvrımlı kullanarak Apache Sqoop işlerini Azure HDInsight 'a uzaktan göndermeyi öğrenin.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 01/06/2020
-ms.openlocfilehash: 9104be9975568c52f6a96994a0afb782a406fe4e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4de42bf30824fd71228aa27cc478a54ec3741da9
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86076275"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98928356"
 ---
 # <a name="run-apache-sqoop-jobs-in-hdinsight-with-curl"></a>HDInsight 'ta kıvrımlı ile Apache Sqoop işleri çalıştırma
 
@@ -99,12 +96,12 @@ REST API’sinin güvenliği [temel kimlik doğrulaması](https://en.wikipedia.o
     curl -G -u %USERNAME%:%PASSWORD% -d user.name=%USERNAME% https://%CLUSTERNAME%.azurehdinsight.net/templeton/v1/jobs/%JOBID% | C:\HDI\jq-win64.exe .status.state
     ```
 
-    İş tamamlandıysa, durum **başarılı**olur.
+    İş tamamlandıysa, durum **başarılı** olur.
 
    > [!NOTE]  
    > Bu kıvrımlı istek, işle ilgili bilgiler içeren bir JavaScript Nesne Gösterimi (JSON) belgesi döndürür; JQ yalnızca durum değerini almak için kullanılır.
 
-1. İşin durumu **başarılı**olarak değiştirildikten sonra, Azure Blob depolamadan iş sonuçlarını alabilirsiniz. `statusdir`Sorguyla geçirilen parametre, çıkış dosyasının konumunu içerir; bu durumda, `wasb:///example/data/sqoop/curl` . Bu adres, iş çıktısını `example/data/sqoop/curl` HDInsight kümeniz tarafından kullanılan varsayılan depolama kapsayıcısının dizininde depolar.
+1. İşin durumu **başarılı** olarak değiştirildikten sonra, Azure Blob depolamadan iş sonuçlarını alabilirsiniz. `statusdir`Sorguyla geçirilen parametre, çıkış dosyasının konumunu içerir; bu durumda, `wasb:///example/data/sqoop/curl` . Bu adres, iş çıktısını `example/data/sqoop/curl` HDInsight kümeniz tarafından kullanılan varsayılan depolama kapsayıcısının dizininde depolar.
 
     Stderr ve STDOUT bloblarına erişmek için Azure portal kullanabilirsiniz.
 

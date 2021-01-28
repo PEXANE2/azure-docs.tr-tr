@@ -1,28 +1,25 @@
 ---
 title: Apache Spark sorguları hızlandırmak için Azure HDInsight 'ta parlak CRUISE kullanın
 description: Apache Spark sorgularının verimliliğini artırmak için, parlak CRUISE iyileştirme platformunu nasıl kullanacağınızı öğrenin.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 07/27/2020
-ms.openlocfilehash: 1a73b4707f83d6a23dffc20d95aa7b8a0fa465b3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f07ea3007d2e72c179abe38cca56178b564bc231
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88649066"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98928277"
 ---
 # <a name="sparkcruise-on-azure-hdinsight"></a>Azure HDInsight 'ta parlak CRUISE
 
-Bu belgede, sorgu verimliliğini artırmak için Apache Spark hesaplamaları otomatik olarak yeniden kullanan, Azure HDInsight özelliği *parlak CRUISE*anlatılmaktadır.
+Bu belgede, sorgu verimliliğini artırmak için Apache Spark hesaplamaları otomatik olarak yeniden kullanan, Azure HDInsight özelliği *parlak CRUISE* anlatılmaktadır.
 
 ## <a name="overview"></a>Genel Bakış
 
 Apache Spark gibi bir analiz platformunda çalıştırdığınız sorgular, daha küçük alt sorgular içeren bir sorgu planına parçalanır. Bu alt sorgular, birden çok sorgu için sorgu planlarında tekrar tekrar gösterilebilir. Her gerçekleştiğinde, sonuçları döndürmek için yeniden yürütülür. Ancak aynı sorguyu yeniden yürütmek, verimsiz olabilir ve gereksiz hesaplama maliyetlerine neden olabilir.
 
-*Parlak CRUISE* , genel hesaplamaları yeniden kullanan, genel sorgu yürütme süresi ve veri aktarımı maliyetlerini düşüren bir iş yükü iyileştirme platformudur. Platform, sonuçları önceden hesaplanmış biçimde depolanan bir sorgu olan *gerçekleştirilmiş bir görünüm*kavramını kullanır. Bu sonuçlar daha sonra, sonuçların tümünün tekrar yeniden oluşturulması yerine sorgunun kendisi daha sonra tekrar görüntülendiğinde yeniden kullanılabilir.
+*Parlak CRUISE* , genel hesaplamaları yeniden kullanan, genel sorgu yürütme süresi ve veri aktarımı maliyetlerini düşüren bir iş yükü iyileştirme platformudur. Platform, sonuçları önceden hesaplanmış biçimde depolanan bir sorgu olan *gerçekleştirilmiş bir görünüm* kavramını kullanır. Bu sonuçlar daha sonra, sonuçların tümünün tekrar yeniden oluşturulması yerine sorgunun kendisi daha sonra tekrar görüntülendiğinde yeniden kullanılabilir.
 
 ## <a name="setup-and-installation"></a>Kurulum ve yükleme
 

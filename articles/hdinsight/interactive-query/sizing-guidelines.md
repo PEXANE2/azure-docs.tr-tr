@@ -1,18 +1,15 @@
 ---
 title: Azure HDInsight 'ta etkileşimli sorgu kümesi boyutlandırma Kılavuzu
 description: Azure HDInsight 'ta etkileşimli sorgu boyutlandırma Kılavuzu
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: a81eff1dcf48996c319933aa4dd46170043b943b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a7baa9340a1f0a99b94bfcbe535c73d0b502e2a0
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83664938"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98933055"
 ---
 # <a name="interactive-query-cluster-sizing-guide-in-azure-hdinsight"></a>Azure HDInsight 'ta etkileşimli sorgu kümesi boyutlandırma Kılavuzu
 
@@ -79,7 +76,7 @@ Varsayılan HDInsight kümesinde dört çalışan düğümünde çalışan dört
 Önerilen değer **4096 MB**'dir.
 
 `hive.tez.container.size` Tez kapsayıcısı için verilen bellek miktarını tanımlar. Bu değer, YARN en az kapsayıcı boyutu ( `yarn.scheduler.minimum-allocation-mb` ) Ile Yarn maksimum kapsayıcı boyutu () arasında ayarlanmalıdır `yarn.scheduler.maximum-allocation-mb` .  
-**4096 MB**olarak ayarlanması önerilir.  
+**4096 MB** olarak ayarlanması önerilir.  
 
 Genel bir kural, her kapsayıcı için bir işlemciyi göz önünde bulundurarak, işlemci başına bellek miktarından daha az tutulacağız. `Rreserve` LLAP Daemon için bellek vermeden önce bir düğümdeki tez AMs sayısı için bellek. Örneğin, düğüm başına iki adet tez AMs (her biri 4 GB) kullanıyorsanız, iki tez AMs için, LLAP arka plan programı 8 GB için 82 GB 'ye 90 GB verin.
 
@@ -143,7 +140,7 @@ Yürütücü başına yaklaşık 6 GB yığın alanı ayırmanız önerilir. Kul
 
 Bu değer, yürüticileri için iş parçacığı havuzu boyutunu belirtir. Yürüticileri belirtilen şekilde sabitlendiği için, LLAP Daemon başına yürüticilerinin sayısıyla aynı olacaktır.
 
-D14 v2 için, bu değerin **12**olarak ayarlanması önerilir.
+D14 v2 için, bu değerin **12** olarak ayarlanması önerilir.
 
 Bu yapılandırma değeri aşamaz `yarn.nodemanager.resource.cpu-vcores` .
 
@@ -151,7 +148,7 @@ Bu yapılandırma değeri aşamaz `yarn.nodemanager.resource.cpu-vcores` .
 
 Bu parametrenin etkin olması için etkinleştirdiğinizden emin olun `hive.auto.convert.join.noconditionaltask` . Bu yapılandırma, kullanıcının harita birleştirmesini yapmak için belleğe sığamayacak olan tabloların boyutunu belirtmesini sağlar. N-Way JOIN için n-1 değerinin toplam `tables/partitions` değeri yapılandırılan değerden azsa, eşleme birleşimi seçilir. Map JOIN 'e otomatik dönüştürme eşiğini hesaplamak için LLAP yürütücü bellek boyutu kullanılmalıdır.
 
-D14 v2 için, bu değerin **2048 MB**olarak ayarlanması önerilir.
+D14 v2 için, bu değerin **2048 MB** olarak ayarlanması önerilir.
 
 İş yükünüz için uygun olan bu değerin, bu değeri çok düşük olarak ayarlamak, oto Dönüştür özelliği kullanmayabilir. Bunun çok yüksek olması, GC duraklamaları oluşmasına neden olabilir ve bu da sorgu performansını olumsuz yönde etkileyebilir.
 

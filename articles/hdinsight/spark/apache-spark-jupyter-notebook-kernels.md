@@ -1,19 +1,16 @@
 ---
 title: Azure HDInsight 'ta Spark kümelerinde Jupyter Notebook kernels
 description: Azure HDInsight 'ta Spark kümeleri ile kullanılabilen Jupyter Notebook pyspark, PySpark3 ve Spark çekirdekler hakkında bilgi edinin.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 04/24/2020
-ms.openlocfilehash: b1139ce2358d5e5b3b52376892524e7ee0dd5611
-ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
+ms.openlocfilehash: a16ec623d7475a80e546df43495db1a357a5fa66
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97822242"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98930391"
 ---
 # <a name="kernels-for-jupyter-notebook-on-apache-spark-clusters-in-azure-hdinsight"></a>Azure HDInsight 'ta Apache Spark kümelerinde Jupyter Notebook kernels
 
@@ -70,7 +67,7 @@ Spark HDInsight kümelerinde Jupyter Notebook yeni çekirdekler kullanmanın baz
 
     Aşağıdaki tabloda kernels aracılığıyla kullanılabilen farklı mıknatıler listelenmiştir.
 
-   | Magic | Örnek | Açıklama |
+   | Magic | Örnek | Description |
    | --- | --- | --- |
    | Yardım |`%%help` |Örnek ve açıklama ile tüm kullanılabilir mıknatıc 'nin bir tablosunu oluşturur |
    | bilgiler |`%%info` |Geçerli Livy uç noktası için oturum bilgilerini çıkışlar |
@@ -78,7 +75,7 @@ Spark HDInsight kümelerinde Jupyter Notebook yeni çekirdekler kullanmanın baz
    | sql |`%%sql -o <variable name>`<br> `SHOW TABLES` |SqlContext 'e karşı bir Hive sorgusu yürütür. `-o`Parametresi geçirilirse, sorgunun sonucu%% yerel Python bağlamında [Pandas](https://pandas.pydata.org/) dataframe olarak kalıcı hale getirilir. |
    | yerel |`%%local`<br>`a=1` |Sonraki satırlardaki tüm kodlar yerel olarak yürütülür. Kod, hangi çekirdekten bağımsız olarak geçerli Python2 kodu olmalıdır. Bu nedenle, Not defterini oluştururken **PySpark3** veya **Spark** çekirdekler ' ı seçmiş olsanız bile, `%%local` Magic 'i bir hücrede kullanırsanız, o hücre yalnızca geçerli Python2 koduna sahip olmalıdır. |
    | günlükler |`%%logs` |Geçerli Livy oturumunun günlüklerini çıkış. |
-   | delete |`%%delete -f -s <session number>` |Geçerli Livy uç noktasının belirli bir oturumunu siler. Çekirdek için başlatılan oturumu silemezsiniz. |
+   | silme |`%%delete -f -s <session number>` |Geçerli Livy uç noktasının belirli bir oturumunu siler. Çekirdek için başlatılan oturumu silemezsiniz. |
    | temizle |`%%cleanup -f` |Bu not defteri 'nin oturumu dahil olmak üzere, geçerli Livy uç noktası için tüm oturumları siler. Zorla bayrağı-f zorunludur. |
 
    > [!NOTE]  
@@ -90,7 +87,7 @@ Spark HDInsight kümelerinde Jupyter Notebook yeni çekirdekler kullanmanın baz
 
 `%%sql`Magic, sorguları çalıştırdığınızda aldığınız çıkışın türünü denetlemek için kullanabileceğiniz farklı parametreleri destekler. Aşağıdaki tabloda çıkış listelenmiştir.
 
-| Parametre | Örnek | Açıklama |
+| Parametre | Örnek | Description |
 | --- | --- | --- |
 | -o |`-o <VARIABLE NAME>` |Sorgunun sonucunu%% yerel Python bağlamında [Pandas](https://pandas.pydata.org/) dataframe olarak kalıcı hale getirmek için bu parametreyi kullanın. Dataframe değişkeninin adı belirttiğiniz değişken adıdır. |
 | -q |`-q` |Hücrenin görselleştirmeleri devre dışı bırakmak için bu parametreyi kullanın. Bir hücrenin içeriğini görselleştirmeyi ve yalnızca bir veri çerçevesi olarak yakalamak istemiyorsanız, öğesini kullanın `-q -o <VARIABLE>` . Sonuçları yakalamadan görselleştirmeleri devre dışı bırakmak istiyorsanız (örneğin, bir SQL sorgusunu bir ifade gibi çalıştırmak için `CREATE TABLE` ), `-q` bir `-o` bağımsız değişken belirtmeden kullanın. |

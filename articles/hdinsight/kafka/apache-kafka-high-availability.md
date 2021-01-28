@@ -1,19 +1,16 @@
 ---
 title: Apache Kafka-Azure HDInsight ile yüksek kullanılabilirlik
 description: Azure HDInsight’ta Apache Kafka ile nasıl yüksek kullanılabilirlik sağlayacağınız hakkında bilgi edinin. HDInsight içeren Azure bölgesindeki farklı hata etki alanlarında olmaları için bölüm çoğaltmalarını Kafka’da yeniden dengeleme hakkında bilgi edinin.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/09/2019
-ms.openlocfilehash: 4504463fa35d5fececbb2ab5895de2965ca4e647
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: e3f31bc1876a0c1f90ad4882ff782be25b4b6ed6
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92534422"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98932750"
 ---
 # <a name="high-availability-of-your-data-with-apache-kafka-on-hdinsight"></a>HDInsight’ta Apache Kafka ile verilerinizin yüksek kullanılabilirliği
 

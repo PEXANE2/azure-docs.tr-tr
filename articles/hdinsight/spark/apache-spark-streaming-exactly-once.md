@@ -1,19 +1,16 @@
 ---
 title: Spark akış & tam bir kez olay işleme-Azure HDInsight
 description: Bir olayı bir kez ve yalnızca bir kez işlemek için Apache Spark akışı ayarlama.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 11/15/2018
-ms.openlocfilehash: 8e0037f6aea4aef53efc192066027e0a0143bda1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4ba7df665b24a3eba2cd185d85a17bd0ef456b0b
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86086186"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98929664"
 ---
 # <a name="create-apache-spark-streaming-jobs-with-exactly-once-event-processing"></a>Tam bir kez olay işleme ile Apache Spark akış işleri oluşturma
 
@@ -39,13 +36,13 @@ Tam bir kez semantiği, herhangi bir noktada hiçbir veri kaybolmamasını ve bu
 
 ### <a name="replayable-sources"></a>Replayable kaynaklar
 
-Spark akış uygulamanızın olaylarınızın okuduğu kaynak *replayable*olmalıdır. Bu, iletinin alındığı, ancak iletinin kalıcı hale getirilmesi veya işlenebilmesi için sistemin başarısız olduğu durumlarda, kaynağın aynı iletiyi yeniden sağlaması gerektiği anlamına gelir.
+Spark akış uygulamanızın olaylarınızın okuduğu kaynak *replayable* olmalıdır. Bu, iletinin alındığı, ancak iletinin kalıcı hale getirilmesi veya işlenebilmesi için sistemin başarısız olduğu durumlarda, kaynağın aynı iletiyi yeniden sağlaması gerektiği anlamına gelir.
 
 Azure 'da, HDInsight üzerinde hem Azure Event Hubs hem de [Apache Kafka](https://kafka.apache.org/) replayable kaynakları sağlar. Bir replayable kaynağına ait başka bir örnek, [Apache Hadoop](https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html), Azure depolama Blobları veya Azure Data Lake Storage gibi hataya dayanıklı bir dosya sistemidir. Bu durumda, tüm veriler süresiz olarak ve tüm durumlarda verileri tamamen yeniden okuyabilirsiniz.
 
 ### <a name="reliable-receivers"></a>Güvenilir alıcılar
 
-Spark akışında, Event Hubs ve Kafka gibi kaynaklarda *güvenilir alıcılar*vardır; burada her alıcı, kaynağı okurken ilerleme durumunu izler. Güvenilir bir alıcı, [Apache ZooKeeper](https://zookeeper.apache.org/) içinde ya da "' ye yazılan Spark akış denetim noktalarında veya hata toleranslı depolama alanında durumunu devam ettirir. Böyle bir alıcı başarısız olursa ve daha sonra yeniden başlatılırsa, kaldığınız yerden devam edebilir.
+Spark akışında, Event Hubs ve Kafka gibi kaynaklarda *güvenilir alıcılar* vardır; burada her alıcı, kaynağı okurken ilerleme durumunu izler. Güvenilir bir alıcı, [Apache ZooKeeper](https://zookeeper.apache.org/) içinde ya da "' ye yazılan Spark akış denetim noktalarında veya hata toleranslı depolama alanında durumunu devam ettirir. Böyle bir alıcı başarısız olursa ve daha sonra yeniden başlatılırsa, kaldığınız yerden devam edebilir.
 
 ### <a name="use-the-write-ahead-log"></a>Write-Ahead günlüğünü kullanma
 

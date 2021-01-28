@@ -1,19 +1,16 @@
 ---
 title: Sanal ağları kullanarak Kafka 'e bağlanma-Azure HDInsight
 description: Azure sanal ağı aracılığıyla HDInsight 'ta Kafka 'e doğrudan bağlanmayı öğrenin. VPN Gateway kullanarak veya VPN Gateway cihazı kullanarak şirket içi ağınızdaki istemcilerden Kafka 'a nasıl bağlanacağınızı öğrenin.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-python
 ms.date: 03/04/2020
-ms.openlocfilehash: ca5bff7f8a14efc0916210296048e3731aec5a59
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ad802b2bdf08a8e43179beece5f52d869513aff3
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87873475"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98933044"
 ---
 # <a name="connect-to-apache-kafka-on-hdinsight-through-an-azure-virtual-network"></a>Azure Sanal Ağı üzerinden HDInsight üzerinde Apache Kafka'ya bağlanma
 
@@ -284,7 +281,7 @@ Varsayılan olarak, Apache Zookeeper, istemcilere Kafka aracıların etki alanı
 
     ![Yeniden Başlat düğmesi tüm etkilenen vurgulanmış vurgulanmış](./media/apache-kafka-connect-vpn-gateway/restart-required-button.png)
 
-11. Bakım modunu devre dışı bırakmak için, __hizmet eylemleri__ düğmesini kullanın ve __bakım modunu__Kapat ' ı seçin. Bu işlemi gerçekleştirmek için **Tamam ' ı** seçin.
+11. Bakım modunu devre dışı bırakmak için, __hizmet eylemleri__ düğmesini kullanın ve __bakım modunu__ Kapat ' ı seçin. Bu işlemi gerçekleştirmek için **Tamam ' ı** seçin.
 
 ### <a name="connect-to-the-vpn-gateway"></a>VPN ağ geçidine bağlanma
 
@@ -339,7 +336,7 @@ Kafka bağlantısını doğrulamak için, aşağıdaki adımları kullanarak bir
 
     `'kafka_broker'`Girişleri bu bölümdeki 1. adımdan döndürülen adreslerle değiştirin:
 
-   * __Yazılım VPN istemcisi__kullanıyorsanız, `kafka_broker` girdileri çalışan düğümlerinizin IP adresiyle değiştirin.
+   * __Yazılım VPN istemcisi__ kullanıyorsanız, `kafka_broker` girdileri çalışan düğümlerinizin IP adresiyle değiştirin.
 
    * __Özel BIR DNS sunucusu aracılığıyla ad çözümlemesini etkinleştirdiyseniz__, `kafka_broker` GIRDILERI çalışan düğümlerinin FQDN 'siyle değiştirin.
 
@@ -362,7 +359,7 @@ Kafka bağlantısını doğrulamak için, aşağıdaki adımları kullanarak bir
 
     `'kafka_broker'`Girişleri bu bölümdeki 1. adımdan döndürülen adreslerle değiştirin:
 
-    * __Yazılım VPN istemcisi__kullanıyorsanız, `kafka_broker` girdileri çalışan düğümlerinizin IP adresiyle değiştirin.
+    * __Yazılım VPN istemcisi__ kullanıyorsanız, `kafka_broker` girdileri çalışan düğümlerinizin IP adresiyle değiştirin.
 
     * __Özel BIR DNS sunucusu aracılığıyla ad çözümlemesini etkinleştirdiyseniz__, `kafka_broker` GIRDILERI çalışan düğümlerinin FQDN 'siyle değiştirin.
 

@@ -1,19 +1,16 @@
 ---
 title: Azure HDInsight 'ta Spark akışı
 description: HDInsight Spark kümelerinde Apache Spark akışlı uygulamalar kullanma.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/23/2020
-ms.openlocfilehash: a88d4893daa12ff2c35ee7cf8f4e5b7569f854f6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bde6c5b2bad12df8642dd3c9b4a49548f7bc9a6d
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86086203"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98929519"
 ---
 # <a name="overview-of-apache-spark-streaming"></a>Apache Spark akışa genel bakış
 
@@ -31,7 +28,7 @@ DStream, Ham olay verilerinin üzerine bir soyutlama katmanı sağlar.
 
 Tek bir olayla başlayın ve bağlı bir termostat 'dan bir sıcaklık okuyun. Bu olay Spark akış uygulamanıza ulaştığında, olay, birden çok düğümde çoğaltılan güvenilir bir şekilde depolanır. Bu hata toleransı, tek bir düğümün başarısızlığının olaylarınızın kaybına neden olmamasını sağlar. Spark Core, verileri kümedeki birden çok düğüme dağıtan bir veri yapısı kullanır. Her düğüm, en iyi performans için genellikle kendi verilerini bellek içinde tutar. Bu veri yapısına dayanıklı bir *Dağıtılmış veri kümesi* (RDD) adı verilir.
 
-Her RDD, *toplu iş aralığı*olarak adlandırılan Kullanıcı tanımlı bir zaman diliminde toplanan olayları temsil eder. Her toplu iş aralığı geçtiğinde, bu aralıktaki tüm verileri içeren yeni bir RDD oluşturulur. Sürekli RDDs kümesi bir DStream 'e toplanır. Örneğin, toplu iş aralığı bir ikinci uzunsa DStream, saniye içinde alınan tüm verileri içeren bir RDD 'yi içeren bir toplu işlem yayar. DStream işlenirken, sıcaklık olayı Bu toplu işlemlerden birinde görünür. Spark akış uygulaması olayları içeren toplu işleri işler ve sonunda her bir RDD 'de depolanan veriler üzerinde işlem yapar.
+Her RDD, *toplu iş aralığı* olarak adlandırılan Kullanıcı tanımlı bir zaman diliminde toplanan olayları temsil eder. Her toplu iş aralığı geçtiğinde, bu aralıktaki tüm verileri içeren yeni bir RDD oluşturulur. Sürekli RDDs kümesi bir DStream 'e toplanır. Örneğin, toplu iş aralığı bir ikinci uzunsa DStream, saniye içinde alınan tüm verileri içeren bir RDD 'yi içeren bir toplu işlem yayar. DStream işlenirken, sıcaklık olayı Bu toplu işlemlerden birinde görünür. Spark akış uygulaması olayları içeren toplu işleri işler ve sonunda her bir RDD 'de depolanan veriler üzerinde işlem yapar.
 
 ![Sıcaklık olayları ile örnek DStream](./media/apache-spark-streaming-overview/hdinsight-spark-streaming-example.png)
 
@@ -154,7 +151,7 @@ SELECT * FROM demo_numbers
 
 Elde edilen çıktı aşağıdaki çıktı gibi görünür:
 
-| değer | saat |
+| değer | time |
 | --- | --- |
 |10 | 1497314465256 |
 |11 | 1497314470272 |
@@ -222,7 +219,7 @@ ssc.start()
 
 İlk dakika sonra, pencerede toplanan iki toplu işlem için altı giriş olan 12 girdi vardır.
 
-| değer | saat |
+| değer | time |
 | --- | --- |
 | 1 | 1497316294139 |
 | 2 | 1497316299158

@@ -7,13 +7,13 @@ ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: conceptual
-ms.date: 09/02/2020
-ms.openlocfilehash: 869009d7dd26685842da3c948fbdc058a38feb21
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
-ms.translationtype: HT
+ms.date: 01/27/2021
+ms.openlocfilehash: 4f6187ccb143f065fed236495128add7a2ab1ee4
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89398435"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98928528"
 ---
 # <a name="reservation-recommendations"></a>Rezervasyon önerileri
 
@@ -25,11 +25,11 @@ Aşağıdaki adımlar önerilerin nasıl hesaplanacağını tanımlar:
 2. Kullanım verilerine bağlı olarak altyapı, rezervasyonlar ile ve rezervasyonlar olmadan maliyetlerinizin simülasyonunu yapar.
 3. Farklı miktarlar için maliyet simülasyonu yapılır ve tasarruf miktarını en üst düzeye çıkaran miktar önerilir.
 4. Kaynaklarınız düzenli olarak kapatılıyorsa simülasyon hiçbir tasarruf olanağı bulamaz ve herhangi bir satın alma önerisi sağlanmaz.
-5. Önerilerde, isteğe bağlı kullanım oranlarınız üzerinden size sağlanan özel indirimler hesaba katılır.
+5. Öneri hesaplamaları, isteğe bağlı kullanım hızlarınızda sahip olabileceğiniz özel indirimleri içerir.
 
 ## <a name="recommendations-in-the-azure-portal"></a>Azure portalındaki öneriler
 
-Satın alma deneyiminde, Azure portalında rezervasyon satın alma önerileri gösterilir. Öneriler, **Önerilen Miktar** ile birlikte gösterilir. Azure'ın önerdiği miktar satın alındığında mümkün olan en yüksek tasarruf elde edilir. İstediğiniz miktarı satın alabilirsiniz ama farklı bir miktar satın alırsanız tasarruflarınız en iyi düzeyde olmaz.
+Satın alma deneyiminde, Azure portalında rezervasyon satın alma önerileri gösterilir. Öneriler, **Önerilen Miktar** ile birlikte gösterilir. Azure'ın önerdiği miktar satın alındığında mümkün olan en yüksek tasarruf elde edilir. İstediğiniz miktarı satın alabilirsiniz, ancak farklı bir miktar satın alırsanız tasarruflar ideal olmayacaktır.
 
 Şimdi bunun nedenini bazı örneklerle gösterelim.
 
@@ -37,13 +37,13 @@ Seçili öneriyi gösteren aşağıdaki örnek resimde Azure 6 adet satın alın
 
 :::image type="content" source="./media/reserved-instance-purchase-recommendations/recommended-quantity.png" alt-text="Rezervasyon satın alma önerisini gösteren örnek" lightbox="./media/reserved-instance-purchase-recommendations/recommended-quantity.png" :::
 
-**Ayrıntılara göz atın** bağlantısını seçtiğinizde öneri hakkında daha fazla bilgi gösterilir. Aşağıdaki resimde öneri hakkındaki ayrıntılar gösterilir. Önerilen miktar, geçmiş kullanımınız temel alınarak mümkün olan en yüksek kullanım için hesaplanır. Kullanımınız tutarsızsa, öneriniz %100 kullanım için hesaplanmamış olabilir. Örnekte kullanımın zamanla dalgalanma gösterdiğine dikkat edin. Rezervasyon maliyeti, olası tasarruflar ve kullanım yüzdesi gösterilir.
+**Ayrıntıları görüntüle**' yi seçtiğinizde öneri hakkında daha fazla bilgi görüntülenir. Aşağıdaki resimde öneri hakkındaki ayrıntılar gösterilir. Önerilen miktar, mümkün olan en yüksek kullanım için hesaplanır ve geçmiş kullanımınıza göre belirlenir. Kullanımınız tutarsızsa, öneriniz %100 kullanım için hesaplanmamış olabilir. Örnekte, kullanımın zaman içinde dalgalanulduğuna dikkat edin. Rezervasyon maliyeti, olası tasarruflar ve kullanım yüzdesi gösterilir.
 
-:::image type="content" source="./media/reserved-instance-purchase-recommendations/recommended-quantity-details.png" alt-text="Rezervasyon satın alma önerisinin ayrıntılarını gösteren örnek" :::
+:::image type="content" source="./media/reserved-instance-purchase-recommendations/recommended-quantity-details.png" alt-text="Bir rezervasyon satın alma önerisi için ayrıntıları gösteren örnek " :::
 
-Rezervasyonu önerilen miktarın üzerine çıkarır veya altına düşürürseniz, grafik ve tahmini değer değişir. Rezervasyon miktarını artırdığınızda tasarruflarınız düşer çünkü sonuçta düşük rezervasyon kullanımıyla karşı karşıya kalırsınız. Diğer bir deyişle tam olarak kullanılmayan rezervasyonlar için ödeme yaparsınız.
+Önerilen miktarı artırdığınızda grafik ve tahmini değerler değişir. Rezervasyon miktarını artırarak tasarrufunuzun azalmasıyla, daha az rezervasyon kullanımı azaltacak. Diğer bir deyişle tam olarak kullanılmayan rezervasyonlar için ödeme yaparsınız.
 
-Rezervasyon miktarını azaltırsanız tasarruflarınız da azalır. Kullanımınız artsa da, rezervasyonlarınızın kullanımınızı tam olarak karşılamadığı dönemler olacaktır. Rezervasyon miktarınızı aşan kullanımda, daha pahalı olan kullandıkça öde kaynakları kullanılır. Aşağıdaki örnek resimde bu nokta gösterilir. Rezervasyon miktarını kendimiz 4'e düşürdük. Rezervasyon kullanımı artar ama genel olarak tasarruflar azalır çünkü kullandıkça öde maliyetleri söz konusudur.
+Rezervasyon miktarını düşürürseniz tasarruflarınız da azaltılır. Kullanımınız artsa da, rezervasyonlarınızın kullanımınızı tam olarak karşılamadığı dönemler olacaktır. Rezervasyon miktarınızı aşan kullanımda, daha pahalı olan kullandıkça öde kaynakları kullanılır. Aşağıdaki örnek resimde bu nokta gösterilir. Rezervasyon miktarını kendimiz 4'e düşürdük. Rezervasyon kullanımı artmıştır, ancak Kullandıkça Öde maliyetleri mevcut olduğundan genel tasarruf azalır.
 
 :::image type="content" source="./media/reserved-instance-purchase-recommendations/recommended-quantity-details-changed.png" alt-text="Değişen rezervasyon satın alma önerisinin ayrıntılarını gösteren örnek" :::
 
@@ -53,11 +53,12 @@ Rezervasyonlardan yapılan tasarrufları en üst düzeye çıkarmak için mümk�
 
 Rezervasyon satın alma önerileri Azure Danışmanı’nda kullanıma sunulmuştur. Aşağıdaki noktaları göz önünde bulundurun:
 
-- Danışman, yalnızca tek abonelik kapsamında öneriler sunar. Faturalama kapsamının (faturalama hesabı veya faturalama profili) tamamı için önerileri görmek istiyorsanız Azure portal > Rezervasyonlar > Ekle’ye gidin ve öneri almak istediğiniz türü seçin.
-- Son 30 günlük kullanım eğilimleri hesaba katılarak Danışman’da öneriler sunulur.
-- Öneri miktarı ve tasarrufları mümkün olduğunda 3 Yıllık rezervasyona yöneliktir. Hizmet için 3 Yıllık rezervasyon satılmıyorsa, öneri 1 yıllık rezervasyon fiyatı kullanılarak hesaplanır.
-- Önerilerde, isteğe bağlı kullanım oranlarınız üzerinden size sağlanan özel indirimler hesaba katılır.
-- Paylaşılan kapsam rezervasyonu satın alırsanız, Danışman rezervasyon satın alma önerilerinin kapatılması 5 güne kadar sürebilir.
+- Danışman, yalnızca tek abonelik kapsamında öneriler sunar. Tüm faturalandırma kapsamının (faturalandırma hesabı veya faturalandırma profili) önerilerini görmek isterseniz:
+  -  Azure Portal, **rezervasyonlar**  >  **Ekle** ' ye gidin ve önerilerini görmek istediğiniz türü seçin.
+- Danışmandaki öneriler, son 30 günlük kullanım eğilimi göz önünde bulundurun.
+- Önerilerin miktarı ve tasarrufları, kullanılabilir olduğunda üç yıllık rezervasyon için geçerlidir. Hizmet için üç yıllık rezervasyon satılmazsa, öneri bir yıllık rezervasyon fiyatı kullanılarak hesaplanır.
+- Öneri hesaplamaları, isteğe bağlı kullanım hızlarınızda sahip olabileceğiniz özel indirimleri içerir.
+- Paylaşılan kapsam rezervasyonu satın alırsanız, danışman rezervasyon satın alma önerilerinin en fazla beş gün sürme önerisi olabilir.
 
 ## <a name="other-expected-api-behavior"></a>Diğer beklenen API davranışı
 

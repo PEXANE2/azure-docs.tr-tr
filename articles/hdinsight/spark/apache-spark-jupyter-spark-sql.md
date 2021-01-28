@@ -1,19 +1,16 @@
 ---
 title: 'Hızlı başlangıç: şablon kullanarak Apache Spark kümesi oluşturma-Azure HDInsight'
 description: Bu hızlı başlangıçta, Azure HDInsight 'ta bir Apache Spark kümesi oluşturmak ve bir Spark SQL sorgusu çalıştırmak için Kaynak Yöneticisi şablonunun nasıl kullanılacağı gösterilmektedir.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 03/13/2020
-ms.openlocfilehash: 50cf756f56da0ad636ccc865f31f3ddf4974847c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1bbf3cbffe2ab51f10e86dc3b9fe4ea6040a7911
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91854469"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98930276"
 ---
 # <a name="quickstart-create-apache-spark-cluster-in-azure-hdinsight-using-arm-template"></a>Hızlı başlangıç: ARM şablonunu kullanarak Azure HDInsight 'ta Apache Spark kümesi oluşturma
 
@@ -63,7 +60,7 @@ Bu hızlı başlangıçta kullanılan şablon [Azure Hızlı Başlangıç Şablo
 
     ![Azure Resource Manager şablonu kullanarak HDInsight 'ta Spark kümesi oluşturma](./media/apache-spark-jupyter-spark-sql/resource-manager-template-spark.png "Azure Resource Manager şablonu kullanarak HDInsight 'ta Spark kümesi oluşturma")
 
-1. **Hüküm ve koşulları**gözden geçirin. Ardından, **yukarıda belirtilen hüküm ve koşulları kabul ediyorum**' u ve ardından **satın al**' ı seçin. Dağıtımınızın devam ettiğini belirten bir bildirim alırsınız. Bir küme oluşturmak yaklaşık 20 dakika sürer.
+1. **Hüküm ve koşulları** gözden geçirin. Ardından, **yukarıda belirtilen hüküm ve koşulları kabul ediyorum**' u ve ardından **satın al**' ı seçin. Dağıtımınızın devam ettiğini belirten bir bildirim alırsınız. Bir küme oluşturmak yaklaşık 20 dakika sürer.
 
 HDInsight kümeleri oluşturma ile ilgili bir sorun yaşıyorsanız, bunu yapmak için doğru izinlere sahip değilsiniz. Daha fazla bilgi için bkz. [Erişim denetimi gereksinimleri](../hdinsight-hadoop-customize-cluster-linux.md#access-control).
 
@@ -85,7 +82,7 @@ Küme oluşturulduktan sonra **Kaynağa Git** bağlantısına sahip bir **dağı
 
    ![Etkileşimli Spark SQL sorgusu çalıştırmak için Jupyter Notebook açın](./media/apache-spark-jupyter-spark-sql/hdinsight-spark-open-jupyter-interactive-spark-sql-query.png "Etkileşimli Spark SQL sorgusu çalıştırmak için Jupyter Notebook açın")
 
-4. **New**  >  Bir not defteri oluşturmak için yeni**pyspark** ' ı seçin.
+4.   >  Bir not defteri oluşturmak için yeni **pyspark** ' ı seçin.
 
    ![Etkileşimli Spark SQL sorgusu çalıştırmak için bir Jupyter Notebook dosyası oluşturma](./media/apache-spark-jupyter-spark-sql/hdinsight-spark-create-jupyter-interactive-spark-sql-query.png "Etkileşimli Spark SQL sorgusu çalıştırmak için Jupyter Notebook oluşturma")
 

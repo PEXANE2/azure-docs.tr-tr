@@ -1,19 +1,16 @@
 ---
 title: HDInsight üzerinde Kafka ile Azure Kubernetes hizmetini kullanma
 description: Azure Kubernetes Service 'te (AKS) barındırılan kapsayıcı görüntülerinden HDInsight üzerinde Kafka kullanmayı öğrenin.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/04/2019
-ms.openlocfilehash: ab87f181f78158d2ea0dd6575a30e6087600f60c
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: d807b591229644984f6658cdacd0bf447759f292
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92485690"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98933023"
 ---
 # <a name="use-azure-kubernetes-service-with-apache-kafka-on-hdinsight"></a>HDInsight üzerinde Apache Kafka Azure Kubernetes hizmetini kullanma
 
@@ -58,7 +55,7 @@ Zaten bir AKS kümeniz yoksa, bir tane oluşturma hakkında bilgi edinmek için 
 * [Azure Kubernetes hizmeti (AKS) kümesi dağıtma-CLı](../../aks/kubernetes-walkthrough.md)
 
 > [!IMPORTANT]  
-> AKS, yükleme sırasında **ek** bir kaynak grubunda bir sanal ağ oluşturur. Ek kaynak grubu **MC_resourceGroup_AKSclusterName_location**adlandırma kuralına uyar.  
+> AKS, yükleme sırasında **ek** bir kaynak grubunda bir sanal ağ oluşturur. Ek kaynak grubu **MC_resourceGroup_AKSclusterName_location** adlandırma kuralına uyar.  
 > Bu ağ, sonraki bölümde HDInsight için oluşturulmuş bir ile eşlenmez.
 
 ## <a name="configure-virtual-network-peering"></a>Sanal Ağ eşlemesini yapılandırma
@@ -69,11 +66,11 @@ Zaten bir AKS kümeniz yoksa, bir tane oluşturma hakkında bilgi edinmek için 
 
 2. Kaynak grubundan __sanal ağ__ kaynağını seçin. Adı daha sonra kullanmak için not edin.
 
-3. **Ayarlar**altında __Adres alanı__' nı seçin. Listelenen adres alanını dikkate alın.
+3. **Ayarlar**’dan __Adres alanı__’nı seçin. Listelenen adres alanını dikkate alın.
 
 ### <a name="create-virtual-network"></a>Sanal ağ oluşturma
 
-1. HDInsight için bir sanal ağ oluşturmak için __+ kaynak__  >  __ağ__  >  __sanal ağı__oluşturma bölümüne gidin.
+1. HDInsight için bir sanal ağ oluşturmak için __+ kaynak__  >  __ağ__  >  __sanal ağı__ oluşturma bölümüne gidin.
 
 1. Belirli özellikler için aşağıdaki yönergeleri kullanarak ağı oluşturun:
 
@@ -86,14 +83,14 @@ Zaten bir AKS kümeniz yoksa, bir tane oluşturma hakkında bilgi edinmek için 
 
 ### <a name="configure-peering"></a>Eşlemeyi yapılandırma
 
-1. HDInsight ağı ile AKS küme ağı arasındaki eşlemeyi yapılandırmak için sanal __ağı seçin ve__ardından eşlemeler ' i seçin.
+1. HDInsight ağı ile AKS küme ağı arasındaki eşlemeyi yapılandırmak için sanal __ağı seçin ve__ ardından eşlemeler ' i seçin.
 
 1. __+ Ekle__ ' yi seçin ve formu doldurmak için aşağıdaki değerleri kullanın:
 
     |Özellik |Değer |
     |---|---|
     |\<this VN>Uzak sanal ağa eşleme adı|Bu eşleme yapılandırması için benzersiz bir ad girin.|
-    |Sanal ağ|**aks kümesi**için sanal ağı seçin.|
+    |Sanal ağ|**aks kümesi** için sanal ağı seçin.|
     |Eşleme adı \<AKS VN>\<this VN>|Benzersiz bir ad girin.|
 
     Tüm diğer alanları varsayılan değerde bırakın, sonra eşlemeyi yapılandırmak için __Tamam__ ' ı seçin.
@@ -148,9 +145,9 @@ Kafka 'yi etki alanı adları yerine IP adreslerini tanıtmak üzere yapılandı
 
     ![Yeniden Başlat düğmesi tüm etkilenen vurgulanmış vurgulanmış](./media/apache-kafka-azure-container-services/restart-required-button.png)
 
-11. Bakım modunu devre dışı bırakmak için, __hizmet eylemleri__ düğmesini kullanın ve __bakım modunu__Kapat ' ı seçin. Bu işlemi gerçekleştirmek için **Tamam ' ı** seçin.
+11. Bakım modunu devre dışı bırakmak için, __hizmet eylemleri__ düğmesini kullanın ve __bakım modunu__ Kapat ' ı seçin. Bu işlemi gerçekleştirmek için **Tamam ' ı** seçin.
 
-## <a name="test-the-configuration"></a>Yapılandırmayı test etme
+## <a name="test-the-configuration"></a>Yapılandırmayı test edin
 
 Bu noktada, Kafka ve Azure Kubernetes hizmeti, eşlenmiş sanal ağlarla iletişim kurmaktadır. Bu bağlantıyı test etmek için aşağıdaki adımları kullanın:
 

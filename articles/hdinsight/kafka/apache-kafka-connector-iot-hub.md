@@ -1,19 +1,16 @@
 ---
 title: Azure ile HDInsight üzerinde Apache Kafka kullanın IoT Hub
 description: Azure IoT Hub ile HDInsight üzerinde Apache Kafka nasıl kullanacağınızı öğrenin. Kafka Connect Azure IoT Hub projesi, Kafka için bir kaynak ve havuz Bağlayıcısı sağlar. Kaynak bağlayıcı IoT Hub verileri okuyabilir ve havuz Bağlayıcısı IoT Hub yazar.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/26/2019
-ms.openlocfilehash: 0722119b35ecebf3ed1e7a377707de02a6c127bf
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.openlocfilehash: 7980003dd63e5e51d87f85542029a1f25e7223df
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97825189"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98932867"
 ---
 # <a name="use-apache-kafka-on-hdinsight-with-azure-iot-hub"></a>Azure ile HDInsight üzerinde Apache Kafka kullanın IoT Hub
 
@@ -122,7 +119,7 @@ SSH bağlantınızdan kenar düğümüne, bağlayıcıyı tek başına modda ça
     |---|---|---|
     |`bootstrap.servers=localhost:9092`|Değeri, `localhost:9092` önceki adımdaki aracı konaklarıyla değiştirin|Kafka aracılarını bulmak için kenar düğümü için tek başına yapılandırmayı yapılandırır.|
     |`key.converter=org.apache.kafka.connect.json.JsonConverter`|`key.converter=org.apache.kafka.connect.storage.StringConverter`|Bu değişiklik, Kafka ile birlikte sunulan konsol üreticisi 'ni kullanarak test etmenizi sağlar. Diğer üreticileri ve tüketiciler için farklı dönüştürücülerin olması gerekebilir. Diğer dönüştürücü değerlerini kullanma hakkında daha fazla bilgi için bkz [https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md) ..|
-    |`value.converter=org.apache.kafka.connect.json.JsonConverter`|`value.converter=org.apache.kafka.connect.storage.StringConverter`|Yukarıdaki gibi.|
+    |`value.converter=org.apache.kafka.connect.json.JsonConverter`|`value.converter=org.apache.kafka.connect.storage.StringConverter`|Yukarıdakiyle aynıdır.|
     |Yok|`consumer.max.poll.records=10`|Dosyanın sonuna ekleyin. Bu değişiklik, havuz bağlayıcısında aynı anda 10 kayıt arasında sınırlama yaparak zaman aşımlarını önlemektir. Daha fazla bilgi için bkz. [https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md).|
 
 1. Dosyayı kaydetmek için __CTRL + X__, __Y__ kullanın ve ardından __girin__.
@@ -157,7 +154,7 @@ Bağlayıcı tarafından kullanılan IoT Hub bilgilerini almak için aşağıdak
 
          * __Olay Hub 'ı ile uyumlu ad__
          * __Olay Hub 'ı ile uyumlu uç nokta__
-         * __Bölümler__
+         * __Bölüme__
 
         > [!IMPORTANT]  
         > Portaldaki uç nokta değeri, bu örnekte gerekli olmayan ek metin içerebilir. Bu düzenle eşleşen metni ayıklayın `sb://<randomnamespace>.servicebus.windows.net/` .

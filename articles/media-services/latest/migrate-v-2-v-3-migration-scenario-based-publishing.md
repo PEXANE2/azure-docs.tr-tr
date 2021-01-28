@@ -1,5 +1,5 @@
 ---
-title: Paketleme ve teslim senaryosu-tabanlı geçiş kılavuzu
+title: Paketleme ve teslim geçirme Kılavuzu
 description: Bu makalede, Azure Media Services V2 'den v3 'e geçiş yaparken size yardımcı olacak paketleme ve dağıtım için senaryo tabanlı rehberlik sunulmaktadır.
 services: media-services
 author: IngridAtMicrosoft
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: media
 ms.date: 1/14/2020
 ms.author: inhenkel
-ms.openlocfilehash: 78f3e6ee53d5158096882f5554054c3ff06a32b4
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 90dfc2fd6f6258ec5bfdea38423489c72ee06e03
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98895246"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98928189"
 ---
 # <a name="packaging-and-delivery-scenario-based-migration-guidance"></a>Paketleme ve teslim senaryosu-tabanlı geçiş kılavuzu
 

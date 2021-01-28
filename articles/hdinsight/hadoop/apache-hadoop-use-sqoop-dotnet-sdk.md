@@ -1,19 +1,16 @@
 ---
 title: .NET ve HDInsight kullanarak Apache Sqoop işleri çalıştırma-Azure
 description: Apache Hadoop kümesi ile Azure SQL veritabanı arasında Apache Sqoop içeri aktarma ve dışarı aktarma çalıştırmak için HDInsight .NET SDK 'sını nasıl kullanacağınızı öğrenin.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive, hdiseo17may2017, devx-track-csharp
 ms.date: 01/14/2020
-ms.openlocfilehash: bc4b3019cb8308ea19d86eea7bf886063ea28563
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a06326f5b4cf34a06475c10e368c6dcbb49ca9e4
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89008293"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98928349"
 ---
 # <a name="run-apache-sqoop-jobs-by-using-net-sdk-for-apache-hadoop-in-hdinsight"></a>HDInsight 'ta Apache Hadoop için .NET SDK kullanarak Apache Sqoop işleri çalıştırma
 
@@ -21,7 +18,7 @@ ms.locfileid: "89008293"
 
 HDInsight kümesi ile Azure SQL veritabanı veya SQL Server veritabanı arasında içeri ve dışarı aktarmak için HDInsight 'ta Apache Sqoop işleri çalıştırmak üzere Azure HDInsight .NET SDK 'sını nasıl kullanacağınızı öğrenin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Test ortamını ayarlama](./hdinsight-use-sqoop.md#create-cluster-and-sql-database) , [HDInsight 'Ta Hadoop Ile Apache Sqoop kullanın](./hdinsight-use-sqoop.md).
 

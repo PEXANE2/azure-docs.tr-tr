@@ -1,19 +1,16 @@
 ---
 title: Azure Izleme günlükleri Apache Kafka-Azure HDInsight
 description: Azure Izleyici günlüklerini kullanarak Azure HDInsight 'ta Apache Kafka kümeden günlükleri analiz etme hakkında bilgi edinin.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 02/17/2020
-ms.openlocfilehash: 5128ac7608dfce08471f7a7f97ed28a7971e62b2
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: d577e96c3ae95103a412b96eba3e1293142f1acd
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92534456"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98932778"
 ---
 # <a name="analyze-logs-for-apache-kafka-on-hdinsight"></a>HDInsight üzerinde Apache Kafka için günlükleri çözümleme
 
@@ -25,7 +22,7 @@ HDInsight üzerinde Apache Kafka tarafından oluşturulan günlükleri çözüml
 
 Kümedeki Apache Kafka Günlükler konumunda bulunur `/var/log/kafka` . Yönetilen diskler kullanılıyorsa, Kafka günlükleri küme yaşam döngüleri arasında kaydedilmez veya kalıcı olmaz. Aşağıdaki tabloda kullanılabilir Günlükler gösterilmektedir.
 
-|Günlük |Açıklama |
+|Günlük |Description |
 |---|---|
 |Kafka. Out|Kafka işleminin stdout ve stderr 'i. Bu dosyada Kafka başlangıç ve kapalı günlükleri bulacaksınız.|
 |Server. log|Ana Kafka sunucu günlüğü. Tüm Kafka Aracısı günlükleri burada sona erdir.|
@@ -37,7 +34,7 @@ Kümedeki Apache Kafka Günlükler konumunda bulunur `/var/log/kafka` . Yönetil
 
 HDInsight için Azure Izleyici günlüklerini etkinleştirme adımları tüm HDInsight kümeleri için aynıdır. Gerekli hizmetleri nasıl oluşturup yapılandıracağınızı anlamak için aşağıdaki bağlantıları kullanın:
 
-1. Log Analytics çalışma alanı oluşturun. Daha fazla bilgi için bkz. [Azure izleyici belgesinde Günlükler](../../azure-monitor/platform/data-platform-logs.md) .
+1. Log Analytics çalışma alanı oluşturma. Daha fazla bilgi için bkz. [Azure izleyici belgesinde Günlükler](../../azure-monitor/platform/data-platform-logs.md) .
 
 2. HDInsight kümesi üzerinde bir Kafka oluşturun. Daha fazla bilgi için bkz. [HDInsight 'ta Apache Kafka kullanmaya başlama](apache-kafka-get-started.md) belgesi.
 
@@ -50,7 +47,7 @@ HDInsight için Azure Izleyici günlüklerini etkinleştirme adımları tüm HDI
 
 1. [Azure Portal](https://portal.azure.com), Log Analytics çalışma alanınızı seçin.
 
-2. Sol taraftaki menüden, **genel** altında **Günlükler** ' i seçin. Buradan, Kafka adresinden toplanan verileri arayabilirsiniz. Sorgu penceresinde bir sorgu girin ve sonra **Çalıştır** ' ı seçin. Aşağıda bazı örnek aramalar verilmiştir:
+2. Sol taraftaki menüden, **genel** altında **Günlükler**' i seçin. Buradan, Kafka adresinden toplanan verileri arayabilirsiniz. Sorgu penceresinde bir sorgu girin ve sonra **Çalıştır**' ı seçin. Aşağıda bazı örnek aramalar verilmiştir:
 
 * Disk kullanımı:
 
@@ -94,7 +91,7 @@ HDInsight için Azure Izleyici günlüklerini etkinleştirme adımları tüm HDI
 
     `*`Günlüğe kaydedilen tüm türleri aramak için de girebilirsiniz. Şu anda sorgularda aşağıdaki Günlükler mevcuttur:
 
-    | Günlük türü | Açıklama |
+    | Günlük türü | Description |
     | ---- | ---- |
     | log \_ kafkaserver \_ CL | Kafka Broker Server. log |
     | log \_ kafkacontroller \_ CL | Kafka Broker Controller. log |

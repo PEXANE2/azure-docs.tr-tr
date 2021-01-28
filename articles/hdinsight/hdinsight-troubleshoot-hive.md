@@ -3,17 +3,14 @@ title: Azure HDInsight kullanarak Hive sorunlarını giderme
 description: Apache Hive ve Azure HDInsight ile çalışma hakkında sık sorulan soruların yanıtlarını alın.
 keywords: Azure HDInsight, Hive, SSS, sorun giderme kılavuzu, sık sorulan sorular
 ms.service: hdinsight
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.topic: troubleshooting
 ms.date: 08/15/2019
-ms.openlocfilehash: f1a26e3323e4d1db2e9b2bda9afaa2756307749b
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: a76974b8daddf225b0d9b8b581475d657322847e
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93288971"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98931439"
 ---
 # <a name="troubleshoot-apache-hive-by-using-azure-hdinsight"></a>Azure HDInsight kullanarak Apache Hive sorunlarını giderme
 
@@ -120,17 +117,17 @@ Apache ambarı 'nda Apache Hive yükleri ile çalışırken önde gelen sorular 
    İlk bağımsız değişken olarak örnek bir program sağlamanız gerekir.
 
    Geçerli program adları şunları içerir:
-    - **Containerreuseanalyzer** : bir dag 'de kapsayıcı yeniden kullanım ayrıntılarını yazdırma
-    - **Kritikpath** : bir dag 'nin kritik yolunu bulma
-    - **LocalityAnalyzer** : konum AYRıNTıLARıNı bir dag 'da yazdırma
-    - **Karıştırılmış Letimeanalyzer** : bir dag 'de karıştırma süresi ayrıntılarını çözümleme
-    - **SkewAnalyzer** : bir dag 'de eğme ayrıntılarını çözümleme
-    - **Yavaşlatma Nodeanalyzer** : bir dag 'de düğüm ayrıntılarını yazdırma
-    - **Yavaştaskidentifier** : bir dag 'de yavaş görev ayrıntılarını yazdırma
-    - **SlowestVertexAnalyzer** : en yavaş köşe AYRıNTıLARıNı bir dag 'da Yazdır
-    - **SpillAnalyzer** : bir dag 'de taşma ayrıntılarını yazdırma
-    - **TaskConcurrencyAnalyzer** : görev eşzamanlılık AYRıNTıLARıNı bir dag 'da yazdırma
-    - **Vertexlevelcriticalhandle Pathanalyzer** : bir dag 'de köşe düzeyinde kritik yolu bulma
+    - **Containerreuseanalyzer**: bir dag 'de kapsayıcı yeniden kullanım ayrıntılarını yazdırma
+    - **Kritikpath**: bir dag 'nin kritik yolunu bulma
+    - **LocalityAnalyzer**: konum AYRıNTıLARıNı bir dag 'da yazdırma
+    - **Karıştırılmış Letimeanalyzer**: bir dag 'de karıştırma süresi ayrıntılarını çözümleme
+    - **SkewAnalyzer**: bir dag 'de eğme ayrıntılarını çözümleme
+    - **Yavaşlatma Nodeanalyzer**: bir dag 'de düğüm ayrıntılarını yazdırma
+    - **Yavaştaskidentifier**: bir dag 'de yavaş görev ayrıntılarını yazdırma
+    - **SlowestVertexAnalyzer**: en yavaş köşe AYRıNTıLARıNı bir dag 'da Yazdır
+    - **SpillAnalyzer**: bir dag 'de taşma ayrıntılarını yazdırma
+    - **TaskConcurrencyAnalyzer**: görev eşzamanlılık AYRıNTıLARıNı bir dag 'da yazdırma
+    - **Vertexlevelcriticalhandle Pathanalyzer**: bir dag 'de köşe düzeyinde kritik yolu bulma
 
 ### <a name="additional-reading"></a>Ek okuma
 
@@ -155,7 +152,7 @@ Tez DAG verilerini toplamanın iki yolu vardır:
   1. Ambarı 'na gidin.
   2. Tez görünümüne gidin (sağ üst köşedeki kutucuklar simgesi altında).
   3. Görüntülemek istediğiniz DAG 'yi seçin.
-  4. **Verileri indir** ' i seçin.
+  4. **Verileri indir**' i seçin.
 
 ### <a name="additional-reading"></a><a name="additional-reading-end"></a>Ek okuma
 

@@ -1,19 +1,16 @@
 ---
 title: Apache Spark ile Microsoft Cognitive Toolkit-Azure HDInsight
 description: Eğitim Microsoft Cognitive Toolkit derinlemesine bir öğrenme modelinin, bir Azure HDInsight Spark kümesinde Spark Python API 'sini kullanarak bir veri kümesine nasıl uygulanacağını öğrenin.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/14/2020
-ms.openlocfilehash: 7fa3355ff7e61d624d57da68d0f835faa7ca3736
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: cddbc4b6a5c7a2c787c8305fdf703e34543746f8
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505435"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98929964"
 ---
 # <a name="use-microsoft-cognitive-toolkit-deep-learning-model-with-azure-hdinsight-spark-cluster"></a>Microsoft Cognitive Toolkit derin öğrenme modelini Azure HDInsight Spark kümesiyle kullanma
 

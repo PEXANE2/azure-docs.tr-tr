@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2020
 ms.author: blehr
-ms.openlocfilehash: 70fb502e45a6cdcc196f5fb97ee4c8c59ba6c27d
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 4d2f339f5a1339b5f249172170fed54c91f1dc24
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98223559"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98927187"
 ---
 # <a name="quickstart-create-a-public-ip-address-using-azure-cli"></a>Hızlı başlangıç: Azure CLı kullanarak genel IP adresi oluşturma
 
@@ -30,7 +30,7 @@ Bu makalede, Azure CLı kullanarak genel IP adresi kaynağı oluşturma konusu g
 
 Azure kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır.
 
-**Eastus2** konumunda, [az Group Create](/cli/azure/group?view=azure-cli-latest#az-group-create) **myresourcegroup** adlı bir kaynak grubu oluşturun.
+**Eastus2** konumunda, [az Group Create](/cli/azure/group#az-group-create) **myresourcegroup** adlı bir kaynak grubu oluşturun.
 
 ```azurecli-interactive
   az group create \
@@ -46,7 +46,7 @@ Azure kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir
 >[!NOTE]
 >Aşağıdaki komut API sürüm 2020-08-01 veya üzeri için geçerlidir.  Kullanılmakta olan API sürümü hakkında daha fazla bilgi için lütfen [kaynak sağlayıcıları ve türleri](../azure-resource-manager/management/resource-providers-and-types.md)inceleyin.
 
-**Myresourcegroup** Içinde **Mystandardzrpublicıp** adlı standart bölge-yedekli genel IP adresi oluşturmak için [az Network public-ip Create](/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create) komutunu kullanın.
+**Myresourcegroup** Içinde **Mystandardzrpublicıp** adlı standart bölge-yedekli genel IP adresi oluşturmak için [az Network public-ip Create](/cli/azure/network/public-ip#az-network-public-ip-create) komutunu kullanın.
 
 ```azurecli-interactive
   az network public-ip create \
@@ -76,7 +76,7 @@ Bölgeler için yukarıdaki seçeneklerin yalnızca [kullanılabilirlik alanlar�
 >[!NOTE]
 >Aşağıdaki komut API sürüm 2020-08-01 veya üzeri için geçerlidir.  Kullanılmakta olan API sürümü hakkında daha fazla bilgi için lütfen [kaynak sağlayıcıları ve türleri](../azure-resource-manager/management/resource-providers-and-types.md)inceleyin.
 
-**Myresourcegroup** Içinde **mystandardpublicpublic** adlı bir kaynak olarak standart bir genel IP adresi oluşturmak için [az Network public-ip Create](/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create) komutunu kullanın.
+**Myresourcegroup** Içinde **mystandardpublicpublic** adlı bir kaynak olarak standart bir genel IP adresi oluşturmak için [az Network public-ip Create](/cli/azure/network/public-ip#az-network-public-ip-create) komutunu kullanın.
 
 ```azurecli-interactive
   az network public-ip create \
@@ -88,7 +88,7 @@ Bu seçim tüm bölgelerde geçerlidir ve [kullanılabilirlik alanları](../avai
 
 # <a name="basic-sku"></a>[**Temel SKU**](#tab/option-create-public-ip-basic)
 
-**Myresourcegroup** Içinde **mybasicpublicıp** adlı temel bir statik genel IP adresi oluşturmak için [az Network public-ip Create](/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create) komutunu kullanın.  Temel genel IP 'Lerde kullanılabilirlik alanları kavramı yoktur.
+**Myresourcegroup** Içinde **mybasicpublicıp** adlı temel bir statik genel IP adresi oluşturmak için [az Network public-ip Create](/cli/azure/network/public-ip#az-network-public-ip-create) komutunu kullanın.  Temel genel IP 'Lerde kullanılabilirlik alanları kavramı yoktur.
 
 ```azurecli-interactive
   az network public-ip create \

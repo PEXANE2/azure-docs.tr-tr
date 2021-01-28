@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 06/11/2020
 ms.author: allensu
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: e99ee28460c1639a7f0b9dd989bbe5a287a9158c
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 457749b353b9b7fabfb137ebe907463bb17158ba
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98221905"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98926943"
 ---
 # <a name="tutorial-create-a-nat-gateway-using-azure-cli-and-test-the-nat-service"></a>Öğretici: Azure CLı kullanarak bir NAT ağ geçidi oluşturma ve NAT hizmetini test etme
 
@@ -61,7 +61,7 @@ Genel Internet 'e erişmek için NAT ağ geçidi için bir veya daha fazla genel
 
 ### <a name="create-a-public-ip-prefix"></a>Genel IP öneki oluşturma
 
-NAT ağ geçidiyle bir veya daha fazla genel IP adresi kaynağı, genel IP ön ekleri veya her ikisini birden kullanabilirsiniz. Bu senaryoya göstermek için genel bir IP ön eki kaynağı ekleyeceğiz.   **Myresourcegroupnat** içinde **myPublicIPprefixsource** adlı bir genel IP öneki kaynağı oluşturmak için [az Network public-ip Create](/cli/azure/network/public-ip/prefix?view=azure-cli-latest#az-network-public-ip-prefix-create) öğesini kullanın.
+NAT ağ geçidiyle bir veya daha fazla genel IP adresi kaynağı, genel IP ön ekleri veya her ikisini birden kullanabilirsiniz. Bu senaryoya göstermek için genel bir IP ön eki kaynağı ekleyeceğiz.   **Myresourcegroupnat** içinde **myPublicIPprefixsource** adlı bir genel IP öneki kaynağı oluşturmak için [az Network public-ip Create](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-create) öğesini kullanın.
 
 ```azurecli-interactive
   az network public-ip prefix create \
@@ -77,7 +77,7 @@ Bu bölümde, NAT ağ geçidi kaynağını kullanarak NAT hizmetinin aşağıdak
   - NAT ağ geçidi kaynağı tarafından çevrilen giden akışlar için kullanılacak genel IP havuzu ve genel IP öneki.
   - Boşta kalma zaman aşımını varsayılan olarak 4 dakika ile 10 dakika arasında değiştirin.
 
-[Az Network NAT Gateway](/cli/azure/network/nat?view=azure-cli-latest) adlı **mynatgateway** ADLı bir genel Azure NAT ağ geçidi oluşturun. Komut, **Mypublicıp** genel IP adresini ve **Mypublicipprefix** genel IP önekini kullanır. Bu komut ayrıca boşta kalma zaman aşımını 10 dakika olarak değiştirir.
+[Az Network NAT Gateway](/cli/azure/network/nat) adlı **mynatgateway** ADLı bir genel Azure NAT ağ geçidi oluşturun. Komut, **Mypublicıp** genel IP adresini ve **Mypublicipprefix** genel IP önekini kullanır. Bu komut ayrıca boşta kalma zaman aşımını 10 dakika olarak değiştirir.
 
 ```azurecli-interactive
   az network nat gateway create \
@@ -144,7 +144,7 @@ Kaynak VM 'ye erişmek için kullanılacak bir genel IP oluşturacağız. **Myre
 
 ### <a name="create-an-nsg-for-source-vm"></a>Kaynak VM için bir NSG oluşturma
 
-Standart genel IP adresleri ' varsayılan olarak güvenli ' olduğundan, SSH erişimi için gelen erişime izin vermek üzere bir NSG oluşturulması gerekir.  Azure NAT hizmeti akış yönü farkındır. Bu NSG, aynı alt ağda NAT ağ geçidi yapılandırıldıktan sonra giden için kullanılmaz. **Myresourcegroupnat** Içinde **Mynsgsource** adlı bir NSG kaynağı oluşturmak için [az Network NSG Create](/cli/azure/network/nsg?view=azure-cli-latest#az-network-nsg-create) kullanın.
+Standart genel IP adresleri ' varsayılan olarak güvenli ' olduğundan, SSH erişimi için gelen erişime izin vermek üzere bir NSG oluşturulması gerekir.  Azure NAT hizmeti akış yönü farkındır. Bu NSG, aynı alt ağda NAT ağ geçidi yapılandırıldıktan sonra giden için kullanılmaz. **Myresourcegroupnat** Içinde **Mynsgsource** adlı bir NSG kaynağı oluşturmak için [az Network NSG Create](/cli/azure/network/nsg#az-network-nsg-create) kullanın.
 
 ```azurecli-interactive
   az network nsg create \
@@ -155,7 +155,7 @@ Standart genel IP adresleri ' varsayılan olarak güvenli ' olduğundan, SSH eri
 
 ### <a name="expose-ssh-endpoint-on-source-vm"></a>Kaynak VM 'de SSH uç noktasını kullanıma sunma
 
-Kaynak VM 'ye SSH erişimi için NSG 'de bir kural oluşturacağız. **SSH** adlı bir NSG kuralı oluşturmak için [az Network NSG Rule Create](/cli/azure/network/nsg/rule?view=azure-cli-latest#az-network-nsg-rule-create) kullanın. Bu kural, **Myresourcegroupnat** kaynak grubundaki **Mynsgsource** adlı NSG 'de oluşturulacaktır.
+Kaynak VM 'ye SSH erişimi için NSG 'de bir kural oluşturacağız. **SSH** adlı bir NSG kuralı oluşturmak için [az Network NSG Rule Create](/cli/azure/network/nsg/rule#az-network-nsg-rule-create) kullanın. Bu kural, **Myresourcegroupnat** kaynak grubundaki **Mynsgsource** adlı NSG 'de oluşturulacaktır.
 
 ```azurecli-interactive
   az network nsg rule create \
@@ -237,7 +237,7 @@ Kaynak VM 'ye erişmek için kullanılacak bir genel IP oluşturacağız. **Myre
 
 ### <a name="create-an-nsg-for-destination-vm"></a>Hedef VM için bir NSG oluşturma
 
-Standart genel IP adresleri ' güvenli olarak güvenlidir ', SSH için gelen erişime izin vermek üzere bir NSG oluşturmanız gerekir. Azure NAT hizmeti akış yönü farkındır. Bu NSG, aynı alt ağda NAT ağ geçidi yapılandırıldıktan sonra giden için kullanılmaz. **Myresourcegroupnat** Içinde **Mynsgdestination** adlı bir NSG kaynağı oluşturmak için [az Network NSG Create](/cli/azure/network/nsg?view=azure-cli-latest#az-network-nsg-create) kullanın.
+Standart genel IP adresleri ' güvenli olarak güvenlidir ', SSH için gelen erişime izin vermek üzere bir NSG oluşturmanız gerekir. Azure NAT hizmeti akış yönü farkındır. Bu NSG, aynı alt ağda NAT ağ geçidi yapılandırıldıktan sonra giden için kullanılmaz. **Myresourcegroupnat** Içinde **Mynsgdestination** adlı bir NSG kaynağı oluşturmak için [az Network NSG Create](/cli/azure/network/nsg#az-network-nsg-create) kullanın.
 
 ```azurecli-interactive
     az network nsg create \
@@ -248,7 +248,7 @@ Standart genel IP adresleri ' güvenli olarak güvenlidir ', SSH için gelen eri
 
 ### <a name="expose-ssh-endpoint-on-destination-vm"></a>Hedef VM 'de SSH uç noktasını kullanıma sunma
 
-Hedef VM 'ye SSH erişimi için NSG 'de bir kural oluşturacağız. **SSH** adlı bir NSG kuralı oluşturmak için [az Network NSG Rule Create](/cli/azure/network/nsg/rule?view=azure-cli-latest#az-network-nsg-rule-create) kullanın. Bu kural, **Myresourcegroupnat** kaynak grubundaki **Mynsgdestination** adlı NSG 'de oluşturulacaktır.
+Hedef VM 'ye SSH erişimi için NSG 'de bir kural oluşturacağız. **SSH** adlı bir NSG kuralı oluşturmak için [az Network NSG Rule Create](/cli/azure/network/nsg/rule#az-network-nsg-rule-create) kullanın. Bu kural, **Myresourcegroupnat** kaynak grubundaki **Mynsgdestination** adlı NSG 'de oluşturulacaktır.
 
 ```azurecli-interactive
     az network nsg rule create \
@@ -266,7 +266,7 @@ Hedef VM 'ye SSH erişimi için NSG 'de bir kural oluşturacağız. **SSH** adl�
 
 ### <a name="expose-http-endpoint-on-destination-vm"></a>Hedef VM 'de HTTP uç noktasını kullanıma sunma
 
-Hedef VM 'ye HTTP erişimi için NSG 'de bir kural oluşturacağız. **Myresourcegroupnat** Içinde **Mynsgdestination** adlı NSG adında **http** adlı bir NSG kuralı oluşturmak için [az Network NSG Rule Create](/cli/azure/network/nsg/rule?view=azure-cli-latest#az-network-nsg-rule-create) kullanın.
+Hedef VM 'ye HTTP erişimi için NSG 'de bir kural oluşturacağız. **Myresourcegroupnat** Içinde **Mynsgdestination** adlı NSG adında **http** adlı bir NSG kuralı oluşturmak için [az Network NSG Rule Create](/cli/azure/network/nsg/rule#az-network-nsg-rule-create) kullanın.
 
 ```azurecli-interactive
     az network nsg rule create \

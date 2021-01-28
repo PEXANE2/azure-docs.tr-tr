@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/02/2018
 ms.author: kegorman
 ms.reviewer: cynthn
-ms.openlocfilehash: 303244d153877ba71796ff1f075e2e58a5084469
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: d9ff355ac81d3375a7c41b18df687f6068ee7069
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880330"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98926963"
 ---
 # <a name="implement-oracle-data-guard-on-an-azure-linux-virtual-machine"></a>Azure Linux sanal makinesinde Oracle Data Guard 'ı uygulama 
 
@@ -267,13 +267,13 @@ SQL> ALTER DATABASE FORCE LOGGING;
 SQL> ALTER SYSTEM SWITCH LOGFILE;
 ```
 
-Bekleme yineleme günlükleri oluştur:
+Bekleme yeniden yineleme günlükleri oluşturun, birincil veritabanıyla aynı boyut ve miktarı ayarlama Günlükler şunlardır:
 
 ```bash
-SQL> ALTER DATABASE ADD STANDBY LOGFILE ('/u01/app/oracle/oradata/cdb1/standby_redo01.log') SIZE 50M;
-SQL> ALTER DATABASE ADD STANDBY LOGFILE ('/u01/app/oracle/oradata/cdb1/standby_redo02.log') SIZE 50M;
-SQL> ALTER DATABASE ADD STANDBY LOGFILE ('/u01/app/oracle/oradata/cdb1/standby_redo03.log') SIZE 50M;
-SQL> ALTER DATABASE ADD STANDBY LOGFILE ('/u01/app/oracle/oradata/cdb1/standby_redo04.log') SIZE 50M;
+SQL> ALTER DATABASE ADD STANDBY LOGFILE ('/u01/app/oracle/oradata/cdb1/standby_redo01.log') SIZE 200M;
+SQL> ALTER DATABASE ADD STANDBY LOGFILE ('/u01/app/oracle/oradata/cdb1/standby_redo02.log') SIZE 200M;
+SQL> ALTER DATABASE ADD STANDBY LOGFILE ('/u01/app/oracle/oradata/cdb1/standby_redo03.log') SIZE 200M;
+SQL> ALTER DATABASE ADD STANDBY LOGFILE ('/u01/app/oracle/oradata/cdb1/standby_redo04.log') SIZE 200M;
 ```
 
 Flashback 'ı etkinleştirin (Bu, kurtarmayı çok daha kolay hale getirir) ve bekleme \_ Dosya \_ yönetimini otomatik olarak ayarlar. bundan sonra SQL * Plus 'den çıkın.

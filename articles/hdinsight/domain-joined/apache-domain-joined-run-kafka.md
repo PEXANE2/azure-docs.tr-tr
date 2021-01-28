@@ -1,24 +1,21 @@
 ---
 title: Öğretici-Apache Kafka & kurumsal güvenlik-Azure HDInsight
 description: Öğretici-Azure HDInsight 'ta Kurumsal Güvenlik Paketi ile Kafka için Apache Ranger ilkelerini yapılandırmayı öğrenin.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 05/19/2020
-ms.openlocfilehash: d2780b3456a802904800b894f6849544cfee4e61
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 552998de23bebd98f56ba28eb6ad581689e52e41
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96010138"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98933687"
 ---
 # <a name="tutorial-configure-apache-kafka-policies-in-hdinsight-with-enterprise-security-package-preview"></a>Öğretici: HDInsight 'ta Kurumsal Güvenlik Paketi ile Apache Kafka ilkeleri yapılandırma (Önizleme)
 
 Kurumsal Güvenlik Paketi (ESP) Apache Kafka kümeleri için Apache Ranger ilkelerini nasıl yapılandıracağınızı öğrenin. ESP kümeleri bir etki alanına bağlıdır ve kullanıcıların etki alanı kimlik bilgileriyle kimlik doğrulaması yapmasına olanak sağlar. Bu öğreticide, `sales` ve `marketingspend` konularına erişimi kısıtlamak için iki Ranger ilkesi oluşturacaksınız.
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Etki alanı kullanıcılarını oluşturma
@@ -139,7 +136,7 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
    Örnek: `export KAFKABROKERS=wn0-khdicl.contoso.com:9092,wn1-khdicl.contoso.com:9092`
 
-3. Derleme bölümünde 3. adımı izleyin **ve örneği** öğreticide dağıtın: sales_user için de kullanılabilir olduğundan emin olmak Için [Apache Kafka Producer ve Consumer API 'lerini kullanın](../kafka/apache-kafka-producer-consumer-api.md#build-and-deploy-the-example) `kafka-producer-consumer.jar` . **sales_user**
+3. Derleme bölümünde 3. adımı izleyin **ve örneği** öğreticide dağıtın: sales_user için de kullanılabilir olduğundan emin olmak Için [Apache Kafka Producer ve Consumer API 'lerini kullanın](../kafka/apache-kafka-producer-consumer-api.md#build-and-deploy-the-example) `kafka-producer-consumer.jar` . 
 
    > [!NOTE]  
    > Bu öğreticide, lütfen "Domainkatılmış-Producer-Consumer" projesi altındaki Kafka-Producer-Consumer. jar dosyasını kullanın (etki alanına katılmış olmayan senaryolar için Producer-Consumer projesi altında değil).

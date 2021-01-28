@@ -9,12 +9,12 @@ ms.date: 03/20/2020
 ms.author: justipat
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: cfef6ce0fb38f074f854d5ceb77677843e44b91b
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 4d9845fad8c9013bd20499c45a8d1714e30e9dbf
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96345738"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98927404"
 ---
 # <a name="use-system-assigned-managed-identities-to-access-azure-cosmos-db-data"></a>Azure Cosmos DB verilerine erişmek için sistem tarafından atanan Yönetilen kimlikler kullanın
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -35,7 +35,7 @@ Bu adımda, işlev uygulamanıza sistem tarafından atanmış bir yönetilen kim
 
    :::image type="content" source="./media/managed-identity-based-authentication/identity-tab-selection.png" alt-text="İşlev uygulaması için platform özelliklerini ve kimlik seçeneklerini gösteren ekran görüntüsü.":::
 
-1. **Kimlik** sekmesinde, sistem kimliği durumunu **açın ve** **Kaydet**' **Status** i seçin. **Kimlik** bölmesi aşağıdaki gibi görünmelidir:  
+1. **Kimlik** sekmesinde, sistem kimliği durumunu **açın ve** **Kaydet**'  i seçin. **Kimlik** bölmesi aşağıdaki gibi görünmelidir:  
 
    :::image type="content" source="./media/managed-identity-based-authentication/identity-tab-system-managed-on.png" alt-text="Sistem kimliği durumunun açık olarak ayarlandığını gösteren ekran görüntüsü.":::
 
@@ -43,7 +43,7 @@ Bu adımda, işlev uygulamanıza sistem tarafından atanmış bir yönetilen kim
 
 Bu adımda, işlev uygulamasının sistem tarafından atanan yönetilen kimliğine bir rol atayacaksınız. Azure Cosmos DB yönetilen kimliğe atayabilmeniz için birden çok yerleşik rol içerir. Bu çözüm için aşağıdaki iki rolü kullanacaksınız:
 
-|Yerleşik rol  |Açıklama  |
+|Yerleşik rol  |Description  |
 |---------|---------|
 |[DocumentDB hesabı Katılımcısı](../role-based-access-control/built-in-roles.md#documentdb-account-contributor)|, Azure Cosmos DB hesaplarını yönetebilir. Okuma/yazma anahtarlarının alınmasına izin verir. |
 |[Cosmos DB hesabı okuyucu rolü](../role-based-access-control/built-in-roles.md#cosmos-db-account-reader-role)|Azure Cosmos DB hesabı verilerini okuyabilir. Okuma anahtarlarının alınmasına izin verir. |
@@ -130,7 +130,7 @@ namespace Monitor
 }
 ```
 
-Sistem tarafından atanan yönetilen kimlik belirtecini almak için [Microsoft. Azure. Services. AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) kitaplığını kullanacaksınız. Belirteci almanın ve kitaplık hakkında daha fazla bilgi bulmanın diğer yollarını öğrenmek için `Microsoft.Azure.Service.AppAuthentication` , [hizmetten hizmete kimlik doğrulama](../key-vault/general/service-to-service-authentication.md) makalesine bakın.
+Sistem tarafından atanan yönetilen kimlik belirtecini almak için [Microsoft. Azure. Services. AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) kitaplığını kullanacaksınız. Belirteci almanın ve kitaplık hakkında daha fazla bilgi bulmanın diğer yollarını öğrenmek için `Microsoft.Azure.Service.AppAuthentication` , [hizmetten hizmete kimlik doğrulama](/dotnet/api/overview/azure/service-to-service-authentication) makalesine bakın.
 
 
 ```csharp

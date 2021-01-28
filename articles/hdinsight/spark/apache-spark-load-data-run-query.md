@@ -1,25 +1,22 @@
 ---
 title: 'Öğretici: verileri yükleme & sorguları Apache Spark ile çalıştırma-Azure HDInsight'
 description: Öğretici-Azure HDInsight 'ta verileri yükleme ve Spark kümelerinde etkileşimli sorgular çalıştırma hakkında bilgi edinin.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,mvc
 ms.date: 02/12/2020
-ms.openlocfilehash: 85c4298c0c83480c244cc12238c21160a4a4282e
-ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
+ms.openlocfilehash: d3c8a08a14b23492c4bf032dd2b722c59bdf80ff
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97822123"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98930087"
 ---
 # <a name="tutorial-load-data-and-run-queries-on-an-apache-spark-cluster-in-azure-hdinsight"></a>Öğretici: Azure HDInsight içindeki bir Apache Spark kümesinde veri yükleme ve sorgular çalıştırma
 
 Bu öğreticide, bir CSV dosyasından bir veri çerçevesi oluşturmayı ve etkileşimli Spark SQL sorgularını Azure HDInsight 'ta bir [Apache Spark](https://spark.apache.org/) kümesinde çalıştırmayı öğreneceksiniz. Spark’ta dataframe, adlandırılmış sütunlar halinde düzenlenmiş, dağıtılmış bir veri koleksiyonudur. Dataframe kavramsal olarak, ilişkisel bir veritabanındaki tabloya veya R/Python’daki veri çerçevesine eşdeğerdir.
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!div class="checklist"]
 > * Bir csv dosyasından dataframe oluşturma
 > * Dataframe üzerinde sorgular çalıştırma

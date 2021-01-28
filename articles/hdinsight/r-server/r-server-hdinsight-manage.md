@@ -1,19 +1,16 @@
 ---
 title: HDInsight 'ta ML hizmetleri kümesini yönetme-Azure
 description: Azure HDInsight 'ta ML Hizmetleri kümesindeki çeşitli görevleri yönetmeyi öğrenin.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 06/19/2019
-ms.openlocfilehash: 898a02796d578d76f9b45d167f4e92a4bf9831ba
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: e4c9124ebd0b61b8db1b1da964355a3c36b5bba5
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92536292"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98930561"
 ---
 # <a name="manage-ml-services-cluster-on-azure-hdinsight"></a>Azure HDInsight 'ta ML hizmetleri kümesini yönetme
 
@@ -31,8 +28,8 @@ RStudio Community sürümünün çalıştığı Edge düğümüne daha fazla kul
 
 ![HDI Azure portal oturum açma parametreleri](./media/r-server-hdinsight-manage/hdi-concurrent-users1.png)
 
-- **Küme oturum açma kullanıcı adı** : Oluşturduğunuz HDInsight kümelerini korumak için kullanılan HDInsight ağ geçidinden kimlik doğrulaması yapmak için kullanılan HTTP kullanıcısı. Bu HTTP kullanıcısı, Apache ambarı Kullanıcı arabirimine, Apache Hadoop YARN Kullanıcı arabirimine ve diğer UI bileşenlerine erişmek için kullanılır.
-- **Secure Shell (SSH) Kullanıcı adı** : güvenli kabuk aracılığıyla kümeye erişmek IÇIN bir SSH kullanıcısı. Bu kullanıcı Linux sisteminde tüm baş düğümler, çalışan düğümleri ve kenar düğümler için kullanılan kullanıcıdır. Bu sayede uzak kümedeki düğümlere erişmek için Secure Shell kullanabilirsiniz.
+- **Küme oturum açma kullanıcı adı**: Oluşturduğunuz HDInsight kümelerini korumak için kullanılan HDInsight ağ geçidinden kimlik doğrulaması yapmak için kullanılan HTTP kullanıcısı. Bu HTTP kullanıcısı, Apache ambarı Kullanıcı arabirimine, Apache Hadoop YARN Kullanıcı arabirimine ve diğer UI bileşenlerine erişmek için kullanılır.
+- **Secure Shell (SSH) Kullanıcı adı**: güvenli kabuk aracılığıyla kümeye erişmek IÇIN bir SSH kullanıcısı. Bu kullanıcı Linux sisteminde tüm baş düğümler, çalışan düğümleri ve kenar düğümler için kullanılan kullanıcıdır. Bu sayede uzak kümedeki düğümlere erişmek için Secure Shell kullanabilirsiniz.
 
 HDInsight 'ta ML Hizmetleri kümesinde kullanılan R Studio Server Community sürümü, oturum açma mekanizması olarak yalnızca Linux Kullanıcı adı ve parolasını kabul eder. Belirteç iletmeyi desteklemez. Bu nedenle, bir ML Hizmetleri kümesinde R Studio 'Yu ilk kez erişmeye çalıştığınızda iki kez oturum açmanız gerekir.
 
@@ -74,7 +71,7 @@ Aşağıdaki ekran görüntüsünde çıktılar gösterilmektedir.
 
 RStudio 'dan ' ye erişin `https://CLUSTERNAME.azurehdinsight.net/rstudio/` . Kümeyi oluşturduktan sonra ilk kez oturum açıyorsanız, Küme Yöneticisi kimlik bilgilerini ve ardından oluşturduğunuz SSH kullanıcı kimlik bilgilerini girin. İlk oturum açma işlemi değilse, yalnızca oluşturduğunuz SSH kullanıcısına ait kimlik bilgilerini girin.
 
-Ayrıca, başka bir tarayıcı penceresinden aynı anda özgün kimlik bilgilerini (varsayılan olarak *sshuser* ) kullanarak da oturum açabilirsiniz.
+Ayrıca, başka bir tarayıcı penceresinden aynı anda özgün kimlik bilgilerini (varsayılan olarak *sshuser*) kullanarak da oturum açabilirsiniz.
 
 Ayrıca yeni eklenen kullanıcıların Linux sisteminde kök ayrıcalıklarına sahip olmadığına ancak uzak HDFS ve WASB depolama alanındaki tüm dosyalara aynı düzeyde erişime sahip olduğuna dikkat edin.
 
@@ -197,7 +194,7 @@ Kümenin çalışan düğümlerine R paketleri yüklemek için bir betik eylemi 
 
 3. **Betiği gönder eylemi** için aşağıdaki bilgileri sağlayın:
 
-   * **Betik türü** için **özel** ' i seçin.
+   * **Betik türü** için **özel**' i seçin.
 
    * **Ad** için, betik eylemi için bir ad sağlayın.
 
@@ -205,7 +202,7 @@ Kümenin çalışan düğümlerine R paketleri yüklemek için bir betik eylemi 
 
    * Yalnızca **çalışan** için onay kutusunu seçin.
 
-   * **Parametreler** : Yüklenecek R paketleri. Örneğin, `bitops stringr arules`
+   * **Parametreler**: Yüklenecek R paketleri. Örneğin, `bitops stringr arules`
 
    * **Bu betik eylemini kalıcı hale** getirmek için onay kutusunu işaretleyin.  
 
@@ -216,7 +213,7 @@ Kümenin çalışan düğümlerine R paketleri yüklemek için bir betik eylemi 
 
    ![Betik eylemini Azure portal gönder](./media/r-server-hdinsight-manage/submit-script-action.png)
 
-4. Betiği çalıştırmak için **Oluştur** ’u seçin. Betik tamamlandıktan sonra R paketleri tüm çalışan düğümlerinde kullanılabilir.
+4. Betiği çalıştırmak için **Oluştur**’u seçin. Betik tamamlandıktan sonra R paketleri tüm çalışan düğümlerinde kullanılabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

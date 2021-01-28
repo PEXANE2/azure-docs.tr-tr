@@ -7,17 +7,17 @@ ms.subservice: cosmosdb-mongo
 ms.topic: troubleshooting
 ms.date: 12/01/2020
 ms.author: thvankra
-ms.openlocfilehash: c969e4fac3ae30088cfe47a7b0edff22c578cb8b
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: 75ce307056d24f84e9f72f746eb77b09b89e21b2
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97802380"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98927495"
 ---
 # <a name="troubleshoot-common-issues-in-azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB Cassandra API genel sorunları giderme
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
-Azure Cosmos DB Cassandra API, popüler açık kaynaklı Apache Cassandra veritabanı için [kablo protokol desteği](cassandra-support.md) sağlayan ve [Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/introduction)tarafından desteklenen bir uyumluluk katmanıdır. Tam olarak yönetilen bir bulutta yerel hizmet olarak, Azure Cosmos DB Cassandra API [kullanılabilirlik, aktarım hızı ve tutarlılık hakkında garanti](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_3/) sağlar. Bu garanti, Apache Cassandra 'ın eski uygulamalarında mümkün değildir. Cassandra API ayrıca sıfır bakım platformu işlemlerini ve sıfır kapalı kalma süresi düzeltme ekini kolaylaştırır. Bu nedenle, arka uç işlemlerinin birçoğu Apache Cassandra 'dan farklı olduğundan, yaygın hatalardan kaçınmak için belirli ayarları ve yaklaşımları öneririz. 
+Azure Cosmos DB Cassandra API, popüler açık kaynaklı Apache Cassandra veritabanı için [kablo protokol desteği](cassandra-support.md) sağlayan ve [Azure Cosmos DB](./introduction.md)tarafından desteklenen bir uyumluluk katmanıdır. Tam olarak yönetilen bir bulutta yerel hizmet olarak, Azure Cosmos DB Cassandra API [kullanılabilirlik, aktarım hızı ve tutarlılık hakkında garanti](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_3/) sağlar. Bu garanti, Apache Cassandra 'ın eski uygulamalarında mümkün değildir. Cassandra API ayrıca sıfır bakım platformu işlemlerini ve sıfır kapalı kalma süresi düzeltme ekini kolaylaştırır. Bu nedenle, arka uç işlemlerinin birçoğu Apache Cassandra 'dan farklı olduğundan, yaygın hatalardan kaçınmak için belirli ayarları ve yaklaşımları öneririz. 
 
 Bu makalede, Azure Cosmos DB Cassandra API kullanan uygulamalar için sık karşılaşılan hatalar ve çözümler açıklanmaktadır.
 
@@ -97,4 +97,3 @@ datastax-java-driver {
 
 - Azure Cosmos DB Cassandra API [desteklenen özellikler](cassandra-support.md) hakkında bilgi edinin.
 - [Yerel Apache Cassandra 'dan Azure Cosmos DB Cassandra API geçiş](cassandra-migrate-cosmos-db-databricks.md) yapmayı öğrenin
-

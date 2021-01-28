@@ -1,18 +1,15 @@
 ---
 title: Azure HDInsight 'ta Apache ambarı Hive görünümünden sorgu çalıştırırken oluşan özel durum
 description: Azure HDInsight 'ta Apache ambarı Hive görünümü aracılığıyla Apache Hive sorguları çalıştırırken sorun giderme adımları.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 12/23/2019
-ms.openlocfilehash: aeedda5c26a2e9dc0fa2b228285cfda45d880d29
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 40ef380cd2bd4743b92daf44a0a5b70ade1cbb35
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547393"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98933002"
 ---
 # <a name="exception-when-running-queries-from-apache-ambari-hive-view-in-azure-hdinsight"></a>Azure HDInsight 'ta Apache ambarı Hive görünümünden sorgu çalıştırırken oluşan özel durum
 
@@ -60,7 +57,7 @@ Durumu iyileştirecek bazı genel öneriler:
 
 * Küme üzerinde Ranger yüklüyse, lütfen her bir sorgu için değerlendirilmesi gereken çok fazla sayıda Ranger ilkesi olup olmadığını kontrol edin. Yinelenen veya gerekmeyen ilkeleri arayın.
 
-* **HiveServer2 yığın boyutu** değerini, ambarı 'ndan denetleyin. **Hive**  >  **configs**  >  **ayarları**  >  **iyileştirmesi** ' na gidin. Değerin 10 GB 'tan büyük olduğundan emin olun. Performansı iyileştirmek için gereken şekilde ayarlayın.
+* **HiveServer2 yığın boyutu** değerini, ambarı 'ndan denetleyin. **Hive**  >  **configs**  >  **ayarları**  >  **iyileştirmesi**' na gidin. Değerin 10 GB 'tan büyük olduğundan emin olun. Performansı iyileştirmek için gereken şekilde ayarlayın.
 
 * Hive sorgusunun iyi ayarlanmış olduğundan emin olun. Daha fazla bilgi için bkz. [Azure HDInsight 'ta Apache Hive sorgularını iyileştirme](../hdinsight-hadoop-optimize-hive-query.md).
 

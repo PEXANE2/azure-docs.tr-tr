@@ -1,19 +1,17 @@
 ---
 title: Azure Active Directory kullanıcılarını HDInsight kümesiyle eşitler
 description: Kimliği doğrulanmış kullanıcıları Azure Active Directory bir HDInsight kümesine eşitler.
-author: hrasheed-msft
-ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/21/2019
-ms.openlocfilehash: 19466174faeef20b8ac29882b047d74ad2adc5ff
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: a3307c5d677028c17717c0d591790f0373f131d6
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92535187"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98931624"
 ---
 # <a name="synchronize-azure-active-directory-users-to-an-hdinsight-cluster"></a>Azure Active Directory kullanıcılarını HDInsight kümesine eşitleme
 
@@ -29,7 +27,7 @@ Konaklarınızı görüntülemek için, ambarı Web Kullanıcı arabirimini aç�
 
 1. [Azure Portal](https://portal.azure.com), ESP kümeniz Ile ILIŞKILI Azure AD dizinine gidin.
 
-2. Sol taraftaki menüden **tüm kullanıcılar** ' ı seçin ve ardından **Yeni Kullanıcı** ' yı seçin.
+2. Sol taraftaki menüden **tüm kullanıcılar** ' ı seçin ve ardından **Yeni Kullanıcı**' yı seçin.
 
     ![Azure portal kullanıcılar ve gruplar](./media/hdinsight-sync-aad-users-to-cluster/users-and-groups-new.png)
 
@@ -37,7 +35,7 @@ Konaklarınızı görüntülemek için, ambarı Web Kullanıcı arabirimini aç�
 
     ![Azure portal Kullanıcı bölmesi grupları seçin](./media/hdinsight-sync-aad-users-to-cluster/hdinsight-new-user-form.png)
 
-4. **Oluştur** ’u seçin.
+4. **Oluştur**’u seçin.
 
 ## <a name="use-the-apache-ambari-rest-api-to-synchronize-users"></a>Kullanıcıları eşleştirmek için Apache ambarı REST API kullanma
 
@@ -120,7 +118,7 @@ Aşağıdaki yöntem REST API ambarı ile GÖNDERI kullanır. Daha fazla bilgi i
     }
     ```
 
-1. Bu sonuç, durumun **tamamlandığını** , yeni bir kullanıcının oluşturulduğunu ve kullanıcıya bir üyelik atandığını gösterir. Bu örnekte, Kullanıcı Azure AD 'de aynı gruba eklendiğinden, Kullanıcı "HiveUsers" ile eşitlenen LDAP grubuna atanır.
+1. Bu sonuç, durumun **tamamlandığını**, yeni bir kullanıcının oluşturulduğunu ve kullanıcıya bir üyelik atandığını gösterir. Bu örnekte, Kullanıcı Azure AD 'de aynı gruba eklendiğinden, Kullanıcı "HiveUsers" ile eşitlenen LDAP grubuna atanır.
 
     > [!NOTE]  
     > Önceki yöntem, yalnızca küme oluşturma sırasında etki alanı ayarlarının **Erişim Kullanıcı grubu** özelliğinde BELIRTILEN Azure AD gruplarını eşitler. Daha fazla bilgi için bkz.  [HDInsight kümesi oluşturma](./domain-joined/apache-domain-joined-configure-using-azure-adds.md).

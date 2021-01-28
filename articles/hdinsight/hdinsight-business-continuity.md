@@ -1,19 +1,16 @@
 ---
 title: Azure HDInsight iş sürekliliği
 description: Bu makalede, Azure HDInsight iş sürekliliği planlaması için en iyi yöntemlere, tek bölge kullanılabilirliğine ve en iyi duruma getirme seçeneklerine genel bakış sunulmaktadır.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 keywords: Hadoop yüksek kullanılabilirlik
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/08/2020
-ms.openlocfilehash: f83f5aec264aeae1a729e81932843825a0ce6673
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 74f8bdd26e000b89bfae84102077c241f85abf7e
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546951"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98933311"
 ---
 # <a name="azure-hdinsight-business-continuity"></a>Azure HDInsight iş sürekliliği
 
@@ -53,7 +50,7 @@ Temel bir HDInsight sisteminde aşağıdaki bileşenler bulunur. Tüm bileşenle
 
 Azure Key Vault ve Azure Data Factory gibi kullanılabilecek başka isteğe bağlı hizmetler vardır.
 
-:::image type="content" source="media/hdinsight-business-continuity/hdinsight-components.png" alt-text="veri dönüştürme ve veri sunma katmanları":::
+:::image type="content" source="media/hdinsight-business-continuity/hdinsight-components.png" alt-text="HDInsight bileşenleri":::
 
 ### <a name="azure-hdinsight-cluster-compute"></a>Azure HDInsight kümesi (işlem)
 
@@ -113,7 +110,7 @@ Bölgeler arası yüksek kullanılabilirlik olağanüstü durum kurtarma kullana
 |Veri Depolama|İkincil bölgedeki birincil verileri/tabloları çoğaltma|Yalnızca seçkin verileri Çoğalt|
 |Veri çıkış|Giden çapraz bölge veri aktarımları bir fiyata gelir. Bant genişliği fiyatlandırma yönergelerini gözden geçirin|Bölge çıkış parmak izini azaltmak için yalnızca seçkin verileri Çoğalt|
 |Küme Işlem|İkincil bölgede ek HDInsight kümesi/s|Birincil hatadan sonra ikincil işlem dağıtmak için otomatikleştirilmiş betikleri kullanın. İkincil küme boyutunu en düşük düzeyde tutmak için otomatik ölçeklendirmeyi kullanın. Ucuz VM SKU 'larını kullanın. VM SKU 'Larının indirimli olabileceği bölgelerde ikincil öğeler oluşturun.|
-|Kimlik Doğrulama |İkincil bölgedeki çok kullanıcılı senaryolar, ek Azure AD DS kurulumları oluşturacak|İkincil bölgedeki çok kullanıcılı kurulumlardan kaçının.|
+|Kimlik Doğrulaması |İkincil bölgedeki çok kullanıcılı senaryolar, ek Azure AD DS kurulumları oluşturacak|İkincil bölgedeki çok kullanıcılı kurulumlardan kaçının.|
 
 ### <a name="complexity-optimizations"></a>Karmaşıklık iyileştirmeleri
 

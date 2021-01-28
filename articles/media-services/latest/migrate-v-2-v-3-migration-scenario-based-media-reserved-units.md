@@ -1,5 +1,5 @@
 ---
-title: Medya ayrılmış birimleri (MRUs) senaryo tabanlı geçiş kılavuzu
+title: Medya ayrılmış birimleri (MRUs) geçiş kılavuzu
 description: Bu makalede, Azure Media Services V2 'den v3 'e geçiş yaparken size yardımcı olacak MRU senaryo tabanlı rehberlik sunulmaktadır.
 services: media-services
 author: IngridAtMicrosoft
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: media
 ms.date: 1/14/2020
 ms.author: inhenkel
-ms.openlocfilehash: 375b4ecdc6153162b3a819b831af152ce390a5dc
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 5ca01bcea348b866c0f40f82ebe90dc31d032739
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98898333"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98927079"
 ---
 # <a name="media-reserved-units-mrus-scenario-based-migration-guidance"></a>Medya ayrılmış birimleri (MRUs) senaryo tabanlı geçiş kılavuzu
 

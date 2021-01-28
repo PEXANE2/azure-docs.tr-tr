@@ -2,7 +2,7 @@
 title: 'Hızlı başlangıç: Java ile Azure IoT Hub telemetri gönderme'
 description: Bu hızlı başlangıçta bir IoT hub’a sanal telemetri göndermek ve bulutta işlemek üzere IoT hub’dan gelen telemetriyi okumak için iki örnek Java uygulaması çalıştırırsınız.
 author: wesmc7777
-manager: philmea
+manager: lizross
 ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
@@ -15,13 +15,13 @@ ms.custom:
 - mqtt
 - devx-track-java
 - devx-track-azurecli
-ms.date: 05/26/2020
-ms.openlocfilehash: 8ac2ada18cdb3c9af4902b28d16fef640f979101
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.date: 01/27/2021
+ms.openlocfilehash: c0f1272bf195c6d5ef2dfe88cc6541f731fa51c8
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98121456"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98928567"
 ---
 # <a name="quickstart-send-telemetry-to-an-azure-iot-hub-and-read-it-with-a-java-application"></a>Hızlı başlangıç: Azure IoT Hub 'ına telemetri gönderin ve Java uygulamasıyla okuyun
 
@@ -29,11 +29,11 @@ ms.locfileid: "98121456"
 
 Bu hızlı başlangıçta, Azure IoT Hub telemetri gönderirsiniz ve Java uygulamasıyla okuyabilirsiniz. IoT Hub, IoT cihazlarınızdan buluta depolama veya işleme amacıyla yüksek hacimlerde telemetri almanızı sağlayan bir Azure hizmetidir. Bu hızlı başlangıç, önceden yazılmış iki Java uygulaması kullanır: bir tane, Telemetriyi ve bir hub 'dan Telemetriyi okumak üzere bir tane. Bu iki uygulamayı çalıştırmadan önce bir IoT hub oluşturur ve hub’a bir cihaz kaydedersiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Etkin aboneliği olan bir Azure hesabı. [Ücretsiz bir tane oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-* Java SE Development Kit 8. [Azure ve Azure Stack Için Java uzun süreli destek](/java/azure/jdk/?view=azure-java-stable), **uzun süreli destek** altında **Java 8**' i seçin.
+* Java SE Development Kit 8. [Azure ve Azure Stack Için Java uzun süreli destek](/java/azure/jdk/?view=azure-java-stable&preserve-view=true), **uzun süreli destek** altında **Java 8**' i seçin.
 
     Aşağıdaki komutu kullanarak geliştirme makinenizde geçerli Java sürümünü doğrulayabilirsiniz:
 
@@ -49,7 +49,9 @@ Bu hızlı başlangıçta, Azure IoT Hub telemetri gönderirsiniz ve Java uygula
     mvn --version
     ```
 
-* [Örnek bir Java projesi](https://github.com/Azure-Samples/azure-iot-samples-java/archive/master.zip).
+* Azure-IoT-Samples- [Java deposu sayfasındaki](https://github.com/Azure-Samples/azure-iot-samples-java) **kod** düğmesini kullanarak Azure-IoT-Samples-Java deposunu indirin veya kopyalayın. 
+
+    Bu makalede, depodaki [sanal cihaz](https://github.com/Azure-Samples/azure-iot-samples-java/tree/master/iot-hub/Quickstarts/simulated-device) ve [Read-D2C-messages](https://github.com/Azure-Samples/azure-iot-samples-java/tree/master/iot-hub/Quickstarts/read-d2c-messages) örnekleri kullanılmaktadır.
 
 * Bağlantı noktası 8883 güvenlik duvarınızda açık. Bu hızlı başlangıçta bulunan cihaz örneği, 8883 bağlantı noktası üzerinden iletişim kuran MQTT protokolünü kullanır. Bu bağlantı noktası, bazı kurumsal ve eğitim ağ ortamlarında engellenebilir. Bu sorunu geçici olarak çözmek için daha fazla bilgi ve IoT Hub bkz. [bağlanma (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
@@ -113,6 +115,16 @@ Simülasyon cihazı uygulaması, IoT hub’ınız üzerindeki cihaza özgü bir 
 
     Değişkenin değerini, `connString` daha önce bir değişiklik yaptığınız cihaz bağlantı dizesiyle değiştirin. Ardından **SimulatedDevice. Java**' da yaptığınız değişiklikleri kaydedin.
 
+    ```java
+    public class SimulatedDevice {
+      // The device connection string to authenticate the device with your IoT hub.
+      // Using the Azure CLI:
+      // az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyJavaDevice --output table
+
+      //private static String connString = "{Your device connection string here}";    
+      private static String connString = "HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyJavaDevice;SharedAccessKey={YourSharedAccessKey}";    
+     ```
+
 3. Yerel terminal penceresinde, aşağıdaki komutları çalıştırarak gerekli kitaplıkları yükleyin ve simülasyon cihazı uygulamasını derleyin:
 
     ```cmd/sh
@@ -142,6 +154,23 @@ Arka uç uygulaması, IoT Hub’ınızdaki bir hizmet tarafı **Olaylar** uç no
     | `EVENT_HUBS_COMPATIBLE_ENDPOINT` | Değişkenin değerini, daha önce bir değişiklik yaptığınız Event Hubs uyumlu uç nokta ile değiştirin. |
     | `EVENT_HUBS_COMPATIBLE_PATH`     | Değişkenin değerini, daha önce bir değişiklik yaptığınız Event Hubs uyumlu yol ile değiştirin. |
     | `IOT_HUB_SAS_KEY`                | Değişkenin değerini, daha önce bir değişiklik yaptığınız hizmet birincil anahtarıyla değiştirin. |
+
+    ```java
+    public class ReadDeviceToCloudMessages {
+    
+      private static final String EH_COMPATIBLE_CONNECTION_STRING_FORMAT = "Endpoint=%s/;EntityPath=%s;"
+          + "SharedAccessKeyName=%s;SharedAccessKey=%s";
+    
+      // az iot hub show --query properties.eventHubEndpoints.events.endpoint --name {your IoT Hub name}
+      private static final String EVENT_HUBS_COMPATIBLE_ENDPOINT = "{your Event Hubs compatible endpoint}";
+    
+      // az iot hub show --query properties.eventHubEndpoints.events.path --name {your IoT Hub name}
+      private static final String EVENT_HUBS_COMPATIBLE_PATH = "{your Event Hubs compatible name}";
+    
+      // az iot hub policy show --name service --query primaryKey --hub-name {your IoT Hub name}
+      private static final String IOT_HUB_SAS_KEY = "{your service primary key}";    
+    ```
+
 
 3. Yerel terminal penceresinde, aşağıdaki komutları çalıştırarak gerekli kitaplıkları yükleyin ve arka uç uygulamasını derleyin:
 

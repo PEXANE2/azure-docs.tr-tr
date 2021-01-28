@@ -1,19 +1,16 @@
 ---
 title: Azure HDInsight 'ta Apache ambarı ile küme kullanılabilirliğini izleme
 description: Küme durumunu ve kullanılabilirliğini izlemek için Apache ambarı 'nı nasıl kullanacağınızı öğrenin.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 05/01/2020
-ms.openlocfilehash: 5cfc2abad828a3974c04074a4cde062a479f673f
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 34f752d4c3d50d5f680e317b2724b1e631537f32
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92533572"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98933194"
 ---
 # <a name="how-to-monitor-cluster-availability-with-apache-ambari-in-azure-hdinsight"></a>Azure HDInsight 'ta Apache ambarı ile küme kullanılabilirliğini izleme
 
@@ -55,7 +52,7 @@ Uyarı tanımlarının ve durumlarının listesini görüntülemek için, aşağ
 
 Ambarı aşağıdakiler dahil olmak üzere kullanılabilirliğiyle ilgili çok sayıda önceden tanımlı uyarı sunar:
 
-| Uyarı Adı                        | Açıklama   |
+| Uyarı Adı                        | Description   |
 |---|---|
 | Dadtanode sistem durumu Özeti           | Sağlıksız bir kades varsa, bu hizmet düzeyi uyarı tetiklenir|
 | Süs Yot yüksek kullanılabilirlik durumu | Bu hizmet düzeyi uyarı, etkin bir süs Code veya standby süs ODE çalışmıyorsa tetiklenir.|
