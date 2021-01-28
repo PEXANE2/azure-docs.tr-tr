@@ -3,14 +3,14 @@ title: Azure Otomasyonu’nda modülleri yönetme
 description: Bu makalede, DSC yapılandırmalarında runbook 'larda ve DSC kaynaklarında cmdlet 'leri etkinleştirmek için PowerShell modüllerinin nasıl kullanılacağı açıklanır.
 services: automation
 ms.subservice: shared-capabilities
-ms.date: 10/22/2020
+ms.date: 01/25/2021
 ms.topic: conceptual
-ms.openlocfilehash: c940ede63e2a467a29ae56308893d573925d0039
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: d62ed96f86078839e66a4cf2ce71f304de2abf4d
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92458158"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98936635"
 ---
 # <a name="manage-modules-in-azure-automation"></a>Azure Otomasyonu’nda modülleri yönetme
 
@@ -25,10 +25,18 @@ Azure Otomasyonu, DSC yapılandırmalarında runbook 'larda ve DSC kaynaklarınd
 
 Bir Otomasyon hesabı oluşturduğunuzda, Azure Otomasyonu bazı modülleri varsayılan olarak içeri aktarır. Bkz. [varsayılan modüller](#default-modules).
 
+## <a name="sandboxes"></a>Korumalı Alanlar
+
 Otomasyon Runbook ve DSC derleme işlerini yürüttüğünde, modülleri runbook 'ların çalıştırılabileceği ve DSC yapılandırmalarının derleyeceği sanal alanlara yükler. Otomasyon Ayrıca DSC çekme sunucusundaki modüllerde DSC kaynaklarını otomatik olarak koyar. Makineler DSC yapılandırmasını uygularsa kaynakları çekebilir.
 
 >[!NOTE]
 >Yalnızca runbook 'larınızın ve DSC yapılandırmalarının gerektirdiği modülleri içeri aktardığınızdan emin olun. Kök az modülünün içeri aktarılmasını önermiyoruz. Bu, ihtiyacınız olmayan birçok farklı modül içerir ve bu da performans sorunlarına neden olabilir. Bunun yerine, az. COMPUTE gibi ayrı modülleri içeri aktarın.
+
+Bulut korumalı alanı, en fazla 48 sistem çağrısı destekler ve tüm diğer çağrıları güvenlik nedenleriyle kısıtlar. Kimlik bilgisi yönetimi ve bazı ağ gibi diğer işlevler, bulut korumalı alanında desteklenmez.
+
+Dahil edilen modül ve cmdlet 'lerin sayısı nedeniyle cmdlet 'lerinin desteklenmeyen çağrılar yapıp yapabileceklerini anlamak zordur. Genellikle, yükseltilmiş erişim gerektiren cmdlet 'lerle ilgili sorunları gördük, parametre olarak kimlik bilgisi veya ağ ile ilgili cmdlet 'ler gerektirir. Tam yığın ağ işlemleri gerçekleştiren tüm cmdlet 'ler, Aıpservice PowerShell modülünden [Connect-aıpservice](/powershell/module/aipservice/connect-aipservice) ve DNSClient modülünden [Resolve-DnsName](/powershell/module/dnsclient/resolve-dnsname) de dahil olmak üzere korumalı alanda desteklenmez.
+
+Bunlar, korumalı alan ile ilgili bilinen sınırlamalardır. Önerilen geçici çözüm, [karma bir runbook worker](../automation-hybrid-runbook-worker.md) dağıtmak veya [Azure işlevleri](../../azure-functions/functions-overview.md)kullanmaktır.
 
 ## <a name="default-modules"></a>Varsayılan modüller
 
@@ -51,7 +59,7 @@ Otomasyon, kök az modülünü yeni veya mevcut Otomasyon hesaplarına otomatik 
 | AzureRM.Sql | 1.0.3 |
 | AzureRM.Storage | 1.0.3 |
 | ComputerManagementDsc | 5.0.0.0 |
-| GPRegistryPolicyParser | 0.2 |
+| GPRegistryPolicyParser | 0,2 |
 | Microsoft. PowerShell. Core | 0 |
 | Microsoft. PowerShell. Diagnostics |  |
 | Microsoft. PowerShell. Management |  |
@@ -134,7 +142,7 @@ Az modülünün Otomasyon hesabınıza aktarılması, modülün runbook 'ların 
 
 Azure portal az modülleri içeri aktarabilirsiniz. Tüm az. Automation modülünü değil, yalnızca ihtiyacınız olan az modülleri içe aktarmayı unutmayın. [Az. Accounts](https://www.powershellgallery.com/packages/Az.Accounts/1.1.0) diğer az modüllerle ilgili bir bağımlılık olduğundan, bu modülü diğerlerinden önce içeri aktardığınızdan emin olun.
 
-1. Otomasyon hesabınızdan, **paylaşılan kaynaklar**altında **modüller**' i seçin.
+1. Otomasyon hesabınızdan, **paylaşılan kaynaklar** altında **modüller**' i seçin.
 2. **Galeriye gözatamazsınız**' ı seçin.  
 3. Arama çubuğuna modül adını (örneğin, `Az.Accounts` ) girin.
 4. PowerShell modülü sayfasında, modülü Otomasyon hesabınıza aktarmak için **Içeri aktar** ' ı seçin.
@@ -169,7 +177,7 @@ TestModule
 
 Sürüm klasörlerinin her biri içinde, ilgili sürüm klasörüne bir modül oluşturan PowerShell. psm1,. psd1 veya PowerShell Module **. dll** dosyalarını kopyalayın. Azure Otomasyonu 'nun dosyayı tek bir. zip dosyası olarak içe aktarabilmesi için modül klasörünü ZIP. Automation yalnızca, içeri aktarılan modülün en yüksek sürümünü gösteriyorsa, modül paketi modülün yan yana sürümlerini içeriyorsa, runbook 'larınızda veya DSC yapılandırmalarında kullanıma sunulmuştur.  
 
-Otomasyon aynı paket içinde yan yana sürümler içeren modülleri destekleirken, modül paketi içeri aktarmaları arasında bir modülün birden çok sürümünün kullanılmasını desteklemez. Örneğin, 1 ve 2 sürümlerini Otomasyon hesabınıza içeren **A modülünü**içeri aktarırsınız. Daha sonra, **A modülünü** 3 ve 4 sürümlerini içerecek şekilde güncelleştirdiğinizde, Otomasyon hesabınıza aktardığınızda yalnızca 3 ve 4 sürümleri herhangi bir runbook 'TA veya DSC yapılandırmasında kullanılabilir. Tüm 1, 2, 3 ve 4 sürümlerinin kullanılabilir olmasını istiyorsanız, içeri aktardığınız. zip dosyası sürüm 1, 2, 3 ve 4 ' ü içermelidir.
+Otomasyon aynı paket içinde yan yana sürümler içeren modülleri destekleirken, modül paketi içeri aktarmaları arasında bir modülün birden çok sürümünün kullanılmasını desteklemez. Örneğin, 1 ve 2 sürümlerini Otomasyon hesabınıza içeren **A modülünü** içeri aktarırsınız. Daha sonra, **A modülünü** 3 ve 4 sürümlerini içerecek şekilde güncelleştirdiğinizde, Otomasyon hesabınıza aktardığınızda yalnızca 3 ve 4 sürümleri herhangi bir runbook 'TA veya DSC yapılandırmasında kullanılabilir. Tüm 1, 2, 3 ve 4 sürümlerinin kullanılabilir olmasını istiyorsanız, içeri aktardığınız. zip dosyası sürüm 1, 2, 3 ve 4 ' ü içermelidir.
 
 Runbook 'lar arasında aynı modülün farklı sürümlerini kullanacaksanız, cmdlet 'ini kullanarak runbook 'unuz üzerinde kullanmak istediğiniz sürümü her zaman bildirmeniz `Import-Module` ve parametresini eklemeniz gerekir `-RequiredVersion <version>` . Kullanmak istediğiniz sürüm en son sürümse bile. Bunun nedeni, runbook işlerinin aynı korumalı alanda çalıştırılabileceğinden kaynaklanır. Korumalı alan, belirli bir sürüm numarasına ait bir modülü zaten açık bir biçimde yüklemiştir, çünkü o korumalı alanda önceki bir iş bu şekilde olduğu gibi, bu korumalı alanda gelecekte yapılacak işler o modülün en son sürümünü otomatik olarak yüklemez. Bunun nedeni, onun bazı sürümünün korumalı alana zaten yüklenmiş olması olabilir.
 
@@ -316,7 +324,7 @@ Bu bölümde, Otomasyon hesabınıza bir modül içeri aktarabileceğiniz çeşi
 Azure portal bir modül içeri aktarmak için:
 
 1. Otomasyon hesabınıza gidin.
-2. **Paylaşılan kaynaklar**altında **modüller**' i seçin.
+2. **Paylaşılan kaynaklar** altında **modüller**' i seçin.
 3. **Modül Ekle**' yi seçin.
 4. Modülünüzü içeren **. zip** dosyasını seçin.
 5. İşlemi içeri aktarmaya başlamak için **Tamam ' ı** seçin.
@@ -329,7 +337,7 @@ Azure portal bir modül içeri aktarmak için:
 New-AzAutomationModule -Name <ModuleName> -ContentLinkUri <ModuleUri> -ResourceGroupName <ResourceGroupName> -AutomationAccountName <AutomationAccountName>
 ```
 
-Ayrıca, PowerShell Galerisi doğrudan bir modül içeri aktarmak için aynı cmdlet 'i de kullanabilirsiniz. `ModuleName`PowerShell Galerisi ve ' den aldığınızdan emin olun `ModuleVersion` . [PowerShell Gallery](https://www.powershellgallery.com)
+Ayrıca, PowerShell Galerisi doğrudan bir modül içeri aktarmak için aynı cmdlet 'i de kullanabilirsiniz. `ModuleName`PowerShell Galerisi ve ' den aldığınızdan emin olun `ModuleVersion` . [](https://www.powershellgallery.com)
 
 ```azurepowershell-interactive
 $moduleName = <ModuleName>
@@ -344,14 +352,14 @@ New-AzAutomationModule -AutomationAccountName <AutomationAccountName> -ResourceG
 Bir modülü doğrudan PowerShell Galerisi içeri aktarmak için:
 
 1. Adresine gidin https://www.powershellgallery.com ve içeri aktarılacak modüle yönelik arama yapın.
-2. **Yükleme seçenekleri**altında **Azure Otomasyonu** sekmesinde **Azure Otomasyonu 'na dağıt**' ı seçin. Bu eylem Azure portal açar. 
+2. **Yükleme seçenekleri** altında **Azure Otomasyonu** sekmesinde **Azure Otomasyonu 'na dağıt**' ı seçin. Bu eylem Azure portal açar. 
 3. Içeri Aktar sayfasında Otomasyon hesabınızı seçin ve **Tamam**' ı seçin.
 
 ![PowerShell Galerisi içeri aktarma modülünün ekran görüntüsü](../media/modules/powershell-gallery.png)
 
 Bir PowerShell Galerisi modülünü doğrudan Otomasyon hesabınızdan içeri aktarmak için:
 
-1. **Paylaşılan kaynaklar**altında **modüller**' i seçin. 
+1. **Paylaşılan kaynaklar** altında **modüller**' i seçin. 
 2. **Gözden geçirme Galerisi**' ni seçin ve ardından galeride bir modül arayın. 
 3. İçeri aktarılacak modülü seçin ve **Içeri aktar**' ı seçin. 
 4. İçeri aktarma işlemini başlatmak için **Tamam ' ı** seçin.
@@ -366,7 +374,7 @@ Modülle ilgili sorunlarınız varsa veya bir modülün önceki bir sürümüne 
 
 Azure portal bir modülü kaldırmak için:
 
-1. Otomasyon hesabınıza gidin. **Paylaşılan kaynaklar**altında **modüller**' i seçin.
+1. Otomasyon hesabınıza gidin. **Paylaşılan kaynaklar** altında **modüller**' i seçin.
 2. Kaldırmak istediğiniz modülü seçin.
 3. Modül sayfasında **Sil**' i seçin. Bu modül [varsayılan modüllerden](#default-modules)biri Ise, Otomasyon hesabı oluşturulduğunda var olan sürüme geri döner.
 

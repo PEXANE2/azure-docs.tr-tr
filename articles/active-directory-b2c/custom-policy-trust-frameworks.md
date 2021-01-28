@@ -10,20 +10,20 @@ ms.topic: reference
 ms.date: 12/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 644192de74a888daa0391b31dd42eb6028403fd8
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 514ce0a43904048952f38edd6a9d38713f6ef8f3
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98674483"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98936672"
 ---
 # <a name="azure-ad-b2c-custom-policy-overview"></a>Azure AD B2C özel ilkeye genel bakış
 
-Özel ilkeler, Azure Active Directory B2C (Azure AD B2C) kiracınızın davranışını tanımlayan yapılandırma dosyalarıdır. [Kullanıcı akışları](user-flow-overview.md) , en yaygın kimlik görevlerinin Azure AD B2C portalında önceden tanımlanmıştır. Özel ilkeler, bir kimlik geliştiricisi tarafından birçok farklı görevi tamamlayabilecek şekilde tamamen düzenlenebilir.
+Özel ilkeler, Azure Active Directory B2C (Azure AD B2C) kiracınızın davranışını tanımlayan yapılandırma dosyalarıdır. [Kullanıcı akışları](user-flow-overview.md) , en yaygın kimlik görevlerinin Azure AD B2C portalında önceden tanımlanmış olsa da, özel ilkeler birçok farklı görevi tamamlayabilmesi için bir kimlik geliştiricisi tarafından tamamen düzenlenebilir.
 
-Özel bir ilke, OpenID Connect, OAuth, SAML gibi standart protokol biçimlerindeki varlıklar arasında güveni düzenleyen ve örneğin REST API tabanlı sistemden sisteme talep alışverişi gibi standart olmayan, ilke odaklı bir ilke tabanlıdır. Framework, Kullanıcı dostu, beyaz etiketli deneyimler oluşturur.
+Özel bir ilke tamamen yapılandırılabilir ve ilke odaklı olur. Özel bir ilke, OpenID Connect, OAuth, SAML ve standart olmayan birkaç standart protokol biçimleri (örneğin, REST API tabanlı sistemden sistem talepleri alışverişi) gibi standart protokol biçimlerindeki varlıklar arasında güveni düzenler. Framework, Kullanıcı dostu, beyaz etiketli deneyimler oluşturur.
 
-Özel bir ilke, bir veya daha fazla XML biçimli dosya olarak temsil edilir ve hiyerarşik bir zincirde birbirini ifade eder. XML öğeleri, derleme bloonları, kullanıcıyla etkileşimi ve diğer tarafları ve iş mantığını tanımlar. 
+Özel bir ilke, bir veya daha fazla XML biçimli dosya olarak temsil edilir ve hiyerarşik bir zincirde birbirini ifade eder. XML öğeleri, derleme bloklarını, kullanıcıyla etkileşimi ve diğer tarafları ve iş mantığını tanımlar. 
 
 ## <a name="custom-policy-starter-pack"></a>Özel ilke başlangıç paketi
 
@@ -31,7 +31,7 @@ Azure AD B2C özel ilke [Starter Pack](custom-policy-get-started.md#get-the-star
 
 - **LocalAccounts** -yalnızca yerel hesapların kullanılmasına izin verir.
 - **Socialaccounts** -yalnızca sosyal (veya federal) hesapların kullanılmasını mümkün.
-- **SocialAndLocalAccounts** -hem yerel hem de sosyal hesapların kullanımını mümkün. Örneklerimizin çoğu bu ilkeye başvurduğumuz.
+- **SocialAndLocalAccounts** -hem yerel hem de sosyal hesapların kullanımını mümkün. Örneklerimizin çoğu bu ilkeye başvurur.
 - **SocialAndLocalAccountsWithMFA** -sosyal, yerel ve Multi-Factor Authentication seçeneklerini sunar.
 
 ## <a name="understanding-the-basics"></a>Temel bilgileri anlama 
@@ -49,7 +49,7 @@ Bir talep, Azure AD B2C ilkesi yürütmesi sırasında verilerin geçici olarak 
 
 ### <a name="manipulating-your-claims"></a>Taleplerinizi düzenleme
 
-[Talep dönüştürmeleri](claimstransformations.md) , belirli bir talebi başka bir talebe dönüştürmek, bir talebi değerlendirmek veya bir talep değeri ayarlamak için kullanılabilen önceden tanımlanmış işlevlerdir. Örneğin, bir dize koleksiyonuna bir öğe ekleme, bir dizenin durumunu değiştirme veya bir veri ve zaman talebini değerlendirme. Bir talep dönüştürmesi bir Transform yöntemini belirtir. 
+[Talep dönüştürmeleri](claimstransformations.md) , belirli bir talebi başka bir talebe dönüştürmek, bir talebi değerlendirmek veya bir talep değeri ayarlamak için kullanılabilen önceden tanımlanmış işlevlerdir. Örneğin, bir dize koleksiyonuna bir öğe ekleme, bir dizenin durumunu değiştirme veya tarih ve saat talebi değerlendirme. Bir talep dönüştürmesi bir Transform yöntemini belirtir. 
 
 ### <a name="customize-and-localize-your-ui"></a>Kullanıcı arabiriminizi özelleştirin ve yerelleştirin
 
@@ -61,17 +61,17 @@ Dile özgü dizeleri özelleştirmek için [Yerelleştirme](localization.md) ö�
 
 ## <a name="relying-party-policy-overview"></a>Bağlı olan taraf ilkesine genel bakış
 
-Bağlı olan taraf uygulaması veya hizmet sağlayıcısı olarak bilinen SAML protokolünde, belirli bir Kullanıcı yolculuğu yürütmek için [bağlı olan taraf ilkesini](relyingparty.md) çağırır. Bağlı olan taraf ilkesi, yürütülecek Kullanıcı yolculuğunu ve belirtecin içerdiği taleplerin listesini belirtir. 
+SAML protokolünde bir hizmet sağlayıcı olarak bilinen bir bağlı olan taraf uygulaması, belirli bir Kullanıcı yolculuğu yürütmek için [bağlı olan taraf ilkesini](relyingparty.md) çağırır. Bağlı olan taraf ilkesi, yürütülecek Kullanıcı yolculuğunu ve belirtecin içerdiği taleplerin listesini belirtir. 
 
 ![İlke yürütme akışını gösteren diyagram](./media/custom-policy-trust-frameworks/custom-policy-execution.png)
 
-Aynı ilkeyi kullanan tüm bağlı olan taraf uygulamaları, aynı belirteç taleplerini alır ve Kullanıcı aynı kullanıcı yolculuğuna gider.
+Aynı ilkeyi kullanan tüm bağlı olan taraf uygulamaları aynı belirteç taleplerini alır ve Kullanıcı aynı kullanıcı yolculuğuna gider.
 
 ### <a name="user-journeys"></a>Kullanıcı yolculukları
 
 [Kullanıcı yolculukları](userjourneys.md) , uygulamanıza erişmek için kullanıcının takip edecesiyle birlikte iş mantığını tanımlamanızı sağlar. Kullanıcı, uygulamanıza sunulacak talepleri almak için Kullanıcı yolculuğu üzerinden alınır. Kullanıcı yolculuğu bir [düzenleme adımı](userjourneys.md#orchestrationsteps)dizisinden oluşturulmuştur. Bir Kullanıcı belirteç almak için son adıma ulaşmalıdır. 
 
-Aşağıda, [sosyal ve yerel hesap başlangıç paketi](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/SocialAndLocalAccounts) ilkesine düzenleme adımlarını nasıl ekleyebileceğiniz açıklanmaktadır. Eklenen REST API çağrının bir örneği aşağıda verilmiştir.
+Aşağıdaki yönergelerde, [sosyal ve yerel hesap Başlatıcı paketi](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/SocialAndLocalAccounts) ilkesine düzenleme adımlarını nasıl ekleyebileceğiniz açıklanır. Eklenen REST API çağrının bir örneği aşağıda verilmiştir.
 
 ![özelleştirilmiş Kullanıcı yolculuğu](media/custom-policy-trust-frameworks/user-journey-flow.png)
 
@@ -92,15 +92,13 @@ Aşağıdaki diyagramda Kullanıcı yolculuğun düzenleme adımlarının talep 
 
 Teknik bir profil, farklı türlerde taraflar ile iletişim kurmak için bir arabirim sağlar. Kullanıcı yolculuğu, iş mantığınızı tanımlamak için düzenleme adımları aracılığıyla teknik profilleri çağırmayı birleştirir.
 
-Tüm teknik profil türleri aynı kavramı paylaşır. Giriş talepleri gönderir, talep dönüşümünü çalıştırır ve yapılandırılmış tarafla iletişim kurun. İşlem tamamlandıktan sonra teknik profil, istek paketine giden çıkış taleplerini döndürür. Daha fazla bilgi için bkz. [Teknik profillere genel bakış](technicalprofiles.md)
+Tüm teknik profil türleri aynı kavramı paylaşır. Giriş talepleri gönderir, talep dönüşümünü çalıştırır ve yapılandırılmış tarafla iletişim kurun. İşlem tamamlandıktan sonra teknik profil, istek paketine giden çıkış taleplerini döndürür. Daha fazla bilgi için bkz. [Teknik profillere genel bakış](technicalprofiles.md).
 
 ### <a name="validation-technical-profile"></a>Doğrulama teknik profili
 
 Bir Kullanıcı Kullanıcı arabirimiyle etkileşime geçtiğinde, toplanan verileri doğrulamak isteyebilirsiniz. Kullanıcıyla etkileşime geçmek için, [kendiliğinden onaylanan bir teknik profilin](self-asserted-technical-profile.md) kullanılması gerekir.
 
-Kullanıcı girişini doğrulamak için, kendi kendine onaylanan teknik profilden bir [doğrulama teknik profilleri](validation-technical-profile.md) çağırılır. 
-
-Doğrulama teknik profili, etkileşimli olmayan teknik bir profili çağırmak için bir yöntemdir. Bu durumda, teknik profil çıkış taleplerini veya bir hata iletisi döndürebilir. Hata iletisi kullanıcıya ekranda işlenir ve kullanıcının yeniden denenmesine izin verir.
+Kullanıcı girişini doğrulamak için, kendi kendine onaylanan teknik profilden bir [doğrulama teknik profili](validation-technical-profile.md) çağırılır. Doğrulama teknik profili, etkileşimli olmayan teknik bir profili çağırmak için bir yöntemdir. Bu durumda, teknik profil çıkış taleplerini veya bir hata iletisi döndürebilir. Hata iletisi kullanıcıya ekranda işlenir ve kullanıcının yeniden denenmesine izin verir.
 
 Aşağıdaki diyagramda, Azure AD B2C kullanıcının kimlik bilgilerini doğrulamak için bir doğrulama teknik profili nasıl kullandığı gösterilmektedir.
 
@@ -110,14 +108,14 @@ Aşağıdaki diyagramda, Azure AD B2C kullanıcının kimlik bilgilerini doğrul
 
 Her başlatıcı paketi aşağıdaki dosyaları içerir:
 
-- Tanımlarının çoğunu içeren bir **temel** dosya. İlkeleriniz için sorun giderme ve uzun süreli bakımla yardımcı olmak üzere bu dosyada en az sayıda değişiklik yapmanız önerilir.
+- Tanımlarının çoğunu içeren bir **temel** dosya. İlkeleriniz için sorun giderme ve uzun süreli bakımda yardımcı olması için bu dosyada yaptığınız değişikliklerin sayısını en aza indirmenize çalışın.
 - Kiracınız için benzersiz yapılandırma değişikliklerini tutan bir **uzantı** dosyası. Bu ilke dosyası temel dosyadan türetilir. Yeni işlevsellik eklemek veya var olan işlevleri geçersiz kılmak için bu dosyayı kullanın. Örneğin, bu dosyayı yeni kimlik sağlayıcılarıyla federasyona eklemek için kullanın.
 - Web, mobil veya masaüstü uygulamalarınız gibi bağlı olan taraf uygulaması tarafından doğrudan çağrılan tek bir görev odaklı dosya olan bir **bağlı olan taraf (RP)** dosyası. Kaydolma, oturum açma, parola sıfırlama veya profil düzenleme gibi her benzersiz görev, kendi bağlı olan taraf ilkesi dosyasını gerektirir. Bu ilke dosyası, uzantılar dosyasından türetilir.
 
 Devralma modeli aşağıdaki gibidir:
 
 - Herhangi bir düzeydeki alt ilke üst ilkeden devralınabilir ve yeni öğeler ekleyerek genişletebilirler.
-- Daha karmaşık senaryolar için daha fazla ınhabitance düzeyi (toplamda 5 ' e kadar) ekleyebilirsiniz
+- Daha karmaşık senaryolar için daha fazla devralma düzeyi (toplamda 5 ' e kadar) ekleyebilirsiniz.
 - Daha fazla bağlı olan taraf ilkesi ekleyebilirsiniz. Örneğin, Hesabımı Sil, telefon numarası, SAML bağlı olan taraf ilkesini ve daha fazlasını değiştirin.
 
 Aşağıdaki diyagramda, ilke dosyaları ve bağlı olan taraf uygulamaları arasındaki ilişki gösterilmektedir.
@@ -129,23 +127,23 @@ Aşağıdaki diyagramda, ilke dosyaları ve bağlı olan taraf uygulamaları ara
 
 ### <a name="best-practices"></a>En iyi uygulamalar
 
-Azure AD B2C özel bir ilke içinde, kullanıcıların ihtiyaç duyduğu ve genişletmeniz için kendi iş mantığınızı tümleştirebilmeniz gerekir. Kullanmaya başlamak için en iyi uygulama ve önerilerden oluşan bir kümesidir.
+Azure AD B2C özel bir ilke içinde, kendi iş mantığınızı tümleştirmenize gerek duyduğunuz kullanıcı deneyimlerini oluşturabilir ve hizmetin işlevselliğini genişletebilirsiniz. Kullanmaya başlamak için en iyi uygulama ve önerilerden oluşan bir kümesidir.
 
-- **Uzantı ilkesi** veya **geçiş partisi ilkesi** içinde mantığınızı oluşturun. Aynı KIMLIĞE başvurarak temel ilkeyi geçersiz kılacak yeni öğeler ekleyebilirsiniz. Bu, Microsoft 'un yeni başlangıç paketleri yayımlarsa temel ilkeyi daha sonra yükseltmeyi kolaylaştırırken projenizi ölçeklendirmenize olanak tanır.
-- **Temel ilke** içinde herhangi bir değişiklik yapmaktan kaçınıyoruz.  Gerektiğinde, değişikliklerin yapıldığı yerde yorum yapın.
+- **Uzantı ilkesi** veya **bağlı olan taraf ilkesi** içinde mantığınızı oluşturun. Aynı KIMLIĞE başvurarak temel ilkeyi geçersiz kılacak yeni öğeler ekleyebilirsiniz. Bu, Microsoft 'un yeni başlangıç paketleri yayımlarsa temel ilkeyi daha sonra yükseltmeyi kolaylaştırırken projenizi ölçeklendirmenize olanak tanır.
+- **Temel ilke** içinde herhangi bir değişiklik yapmaktan kaçınıyoruz. Gerektiğinde, değişikliklerin yapıldığı yere yorum yapın.
 - Teknik profil meta verileri gibi bir öğeyi geçersiz kıldığınızda, tüm teknik profilin temel ilkeden kopyalanmasını önleyin. Bunun yerine, öğesinin yalnızca gerekli kısmını kopyalayın. Değişikliğin nasıl yapılacağını gösteren bir örnek için bkz. [e-posta doğrulamayı devre dışı bırakma](./disable-email-verification.md) .
 - Temel işlevlerin paylaşıldığı teknik profillerin çoğaltılmasını azaltmak için [Teknik profille içerme](technicalprofiles.md#include-technical-profile)özelliğini kullanın.
 - Oturum açma sırasında Azure AD dizinine yazmaktan kaçının, bu da azaltma sorunlarına yol açabilir.
-- İlkenizin dış bağımlılıkları varsa REST API gibi, yüksek oranda kullanılabilir olduklarından emin olur.
-- Daha iyi bir kullanıcı deneyimi için, özel HTML şablonlarınızın [çevrimiçi içerik teslimi](../cdn/index.yml)kullanılarak küresel bir şekilde dağıtıldığından emin olun. Azure Content Delivery Network (CDN), yükleme sürelerini azaltmanıza, bant genişliğinden tasarruf etmenize ve yanıt hızını hızlandırmanıza olanak tanır.
-- Kullanıcı yolculuğunda değişiklik yapmak istiyorsanız. Kullanıcı yolculuğunun tamamını temel ilkeden uzantı ilkesine kopyalayın. Kopyaladığınız Kullanıcı yolculuğuna benzersiz bir Kullanıcı yolculuğu KIMLIĞI sağlayın. Ardından [bağlı olan taraf ilkesinde](relyingparty.md), [Varsayılan Kullanıcı](relyingparty.md#defaultuserjourney) yolculuğu öğesini yeni Kullanıcı yolculuğuna işaret etmek üzere değiştirin.
+- İlkenize REST API 'Ler gibi dış bağımlılıklar varsa, bunların yüksek oranda kullanılabilir olduklarından emin olur.
+- Daha iyi bir kullanıcı deneyimi için, özel HTML şablonlarınızın [çevrimiçi içerik teslimi](../cdn/index.yml)kullanılarak küresel bir şekilde dağıtıldığından emin olun. Azure Content Delivery Network (CDN), yükleme sürelerini azaltmanıza, bant genişliğinden tasarruf etmenize ve yanıt hızını iyileştirmenize olanak tanır.
+- Kullanıcı yolculuğunda bir değişiklik yapmak istiyorsanız, tüm Kullanıcı yolculuğunu temel ilkeden uzantı ilkesine kopyalayın. Kopyaladığınız Kullanıcı yolculuğuna benzersiz bir Kullanıcı yolculuğu KIMLIĞI sağlayın. Ardından [bağlı olan taraf ilkesinde](relyingparty.md), [Varsayılan Kullanıcı](relyingparty.md#defaultuserjourney) yolculuğu öğesini yeni Kullanıcı yolculuğuna işaret etmek üzere değiştirin.
 
 ## <a name="troubleshooting"></a>Sorun giderme
 
 Azure AD B2C ilkeleriyle geliştirme yaparken, Kullanıcı yolculuğunu yürütürken hatalarla veya özel durumlarla karşılaşabilirsiniz. Application Insights kullanılarak araştırılır.
 
 - [Özel durumları tanılamak](troubleshoot-with-application-insights.md)için Application Insights Azure AD B2C ile tümleştirin.
-- [Vs Code için Azure AD B2C uzantısı](https://marketplace.visualstudio.com/items?itemName=AzureADB2CTools.aadb2c) , ilke adı ve saatine göre günlüklere erişmenize ve bunları [görselleştirmenize](https://github.com/azure-ad-b2c/vscode-extension/blob/master/src/help/app-insights.md) yardımcı olabilir.
+- [Visual Studio Code için Azure AD B2C uzantısı](https://marketplace.visualstudio.com/items?itemName=AzureADB2CTools.aadb2c) , ilke adı ve saatine göre günlüklere erişmenize ve bunları [görselleştirmenize](https://github.com/azure-ad-b2c/vscode-extension/blob/master/src/help/app-insights.md) yardımcı olabilir.
 - Özel ilkeleri ayarlamadaki en yaygın hata hatalı biçimli XML 'dir. XML dosyanızı karşıya yüklemeden önce hataları belirlemek için [XML şema doğrulamasını](troubleshoot-custom-policies.md) kullanın.
 
 ## <a name="continuous-integration"></a>Sürekli tümleştirme
@@ -157,20 +155,19 @@ Azure Pipelines ' de ayarladığınız bir sürekli tümleştirme ve teslim (CI/
 Azure AD B2C özel ilke ile çalışmaya başlayın:
 
 1. [Azure AD B2C kiracısı oluşturma](tutorial-create-tenant.md)
-1. [Bir Web uygulamasını](tutorial-register-applications.md) Azure Portal kullanarak kaydedin. Bu nedenle, ilkenizi test edebilirsiniz.
-1. Gerekli [ilke anahtarlarını](custom-policy-get-started.md#add-signing-and-encryption-keys) ekleme ve [kimlik deneyimi çerçevesi uygulamalarını kaydetme](custom-policy-get-started.md#register-identity-experience-framework-applications)
+1. Azure portal kullanarak [bir Web uygulaması kaydedin](tutorial-register-applications.md) , böylece ilkenizi test edebilirsiniz.
+1. Gerekli [ilke anahtarlarını](custom-policy-get-started.md#add-signing-and-encryption-keys) ekleyin ve [kimlik deneyimi çerçevesi uygulamalarını kaydedin](custom-policy-get-started.md#register-identity-experience-framework-applications).
 1. [Azure AD B2C İlkesi başlangıç paketini alın](custom-policy-get-started.md#get-the-starter-pack) ve kiracınıza yükleyin. 
-1. Başlangıç paketini karşıya yükledikten sonra [kaydolma veya oturum açma ilkenizi test](custom-policy-get-started.md#test-the-custom-policy) edin
-1. [Visual Studio Code](https://code.visualstudio.com/) indirip yüklemenizi öneririz (vs Code). Visual Studio Code masaüstünüzde çalışan ve Windows, macOS ile Linux’ta kullanılabilen hafif ama güçlü bir kaynak kod düzenleyicidir. VS Code, Azure AD B2C özel ilke XML dosyalarını düzenleyebilirsiniz.
-1. Azure AD B2C özel ilkelerde hızlıca gezinmek için, [vs Code için Azure AD B2C uzantısı](https://marketplace.visualstudio.com/items?itemName=AzureADB2CTools.aadb2c) yüklemenizi öneririz
+1. Başlangıç paketini karşıya yükledikten sonra [kaydolma veya oturum açma ilkenizi test](custom-policy-get-started.md#test-the-custom-policy)edin.
+1. [Visual Studio Code](https://code.visualstudio.com/) indirip yüklemenizi öneririz (vs Code). Visual Studio Code, masaüstünüzde çalışan ve Windows, macOS ve Linux 'ta kullanılabilen hafif ancak güçlü bir kaynak kod düzenleyicidir. VS Code, [vs Code için Azure AD B2C uzantısını](https://marketplace.visualstudio.com/items?itemName=AzureADB2CTools.aadb2c) yükleyerek Azure AD B2C özel ilke XML dosyalarınızda hızlıca gezinebilirsiniz ve düzenleyebilirsiniz
  
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Azure AD B2C ilkenizi ayarlayıp test ettikten sonra ilkenizi özelleştirmeye başlayabilirsiniz. Aşağıdakilerin nasıl yapılacağını öğrenmek için aşağıdaki makalelere bakın:
 
-- Özel ilkeler kullanarak [talepler ekleyin ve Kullanıcı girişini özelleştirin](./configure-user-input.md) . Bir talep tanımlama hakkında bilgi edinin, bazı başlangıç paketi teknik profillerini özelleştirerek Kullanıcı arabirimine talep ekleme.
+- Özel ilkeler kullanarak [talepler ekleyin ve Kullanıcı girişini özelleştirin](./configure-user-input.md) . Bir talep tanımlama ve Kullanıcı arabirimine bir talep ekleme hakkında bilgi edinmek için bazı başlangıç paketi teknik profillerini özelleştirin.
 - Özel bir ilke kullanarak uygulamanızın [Kullanıcı arabirimini özelleştirin](customize-ui-with-html.md) . Kendi HTML içeriğinizi oluşturmayı ve içerik tanımını özelleştirmeyi öğrenin.
 - Özel bir ilke kullanarak uygulamanızın [Kullanıcı arabirimini yerelleştirin](./language-customization.md) . Desteklenen dillerin listesini ayarlamayı ve yerelleştirilmiş kaynaklar öğesini ekleyerek dile özgü Etiketler sağlamayı öğrenin.
-- İlke geliştirme ve test etme sırasında, [e-posta doğrulamasını devre dışı](./disable-email-verification.md)bırakabilirsiniz. Teknik profil meta verilerinin üzerine yazmayı öğrenin.
+- İlke geliştirme ve test etme işlemleri sırasında [e-posta doğrulamasını devre dışı](./disable-email-verification.md)bırakabilirsiniz. Teknik profil meta verilerinin üzerine yazmayı öğrenin.
 - Özel ilkeler kullanarak [bir Google hesabı ile oturum açma ayarlayın](./identity-provider-google.md) . OAuth2 Technical profile ile yeni bir talep sağlayıcı oluşturmayı öğrenin. Ardından Kullanıcı yolculuğu 'nı Google oturum açma seçeneğini içerecek şekilde özelleştirin.
-- Özel ilkeleriniz ile ilgili sorunları tanılamak için, [Application Insights Azure Active Directory B2C günlüklerini toplayabilirsiniz](troubleshoot-with-application-insights.md). Yeni teknik profillerin nasıl ekleneceğini ve geçiş partisi ilkenizi nasıl yapılandıracağınızı öğrenin.
+- Özel ilkeleriniz ile ilgili sorunları tanılamak için, [Application Insights Azure Active Directory B2C günlüklerini toplayabilirsiniz](troubleshoot-with-application-insights.md). Yeni teknik profillerin nasıl ekleneceğini ve bağlı olan taraf ilkenizi nasıl yapılandıracağınızı öğrenin.

@@ -5,13 +5,13 @@ author: enkrumah
 ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 08/25/2020
-ms.openlocfilehash: 5484d13a70d8eaf905d3c8a51d575f177427019b
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.date: 01/27/2021
+ms.openlocfilehash: 3ce22837da2ca30249b399a297b6188d950b1ea4
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98882170"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98935137"
 ---
 # <a name="blob-storage-and-azure-data-lake-gen2-output-from-azure-stream-analytics"></a>BLOB depolama ve Azure Stream Analytics Azure Data Lake Gen2 çıkışı
 
@@ -44,7 +44,7 @@ Aşağıdaki tabloda, bir blob veya ADLS 2. çıkışı oluşturmak için özell
 Blob depolamayı çıkış olarak kullanırken, blob 'da aşağıdaki durumlarda yeni bir dosya oluşturulur:
 
 * Dosya izin verilen maksimum blok sayısını aşarsa (Şu anda 50.000). İzin verilen en fazla blok sayısına ulaşmadan izin verilen en fazla blok sayısına ulaşmanız gerekir. Örneğin, çıkış oranı yüksekse, blok başına daha fazla bayt görebilirsiniz ve dosya boyutu daha büyüktür. Çıkış hızı düşükse, her bloğun daha az verileri vardır ve dosya boyutu daha küçüktür.
-* Çıktıda bir şema değişikliği varsa ve çıkış biçimi sabit şema (CSV ve avro) gerektirir.
+* Çıktıda bir şema değişikliği varsa ve çıkış biçimi sabit şemayı (CSV, avro, Parquet) gerektiriyorsa.
 * Bir iş yeniden başlatılırsa, bir kullanıcı tarafından durduruluyor ve başlatıldığında ya da sistem bakımı veya hata kurtarma için dahili olarak.
 * Sorgu tamamen bölümlenmiş ise ve her bir çıkış bölümü için yeni bir dosya oluşturulur.
 * Kullanıcı bir dosyayı veya depolama hesabının kapsayıcısını silerse.

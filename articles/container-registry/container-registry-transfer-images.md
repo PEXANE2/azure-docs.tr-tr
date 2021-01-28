@@ -4,12 +4,12 @@ description: Azure depolama hesaplarını kullanarak bir aktarım işlem hattı 
 ms.topic: article
 ms.date: 10/07/2020
 ms.custom: ''
-ms.openlocfilehash: fd2cee972ef173853572b871bc80b92b28c505cd
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: ab6657ecd335a6de8c6c93e3c2ff392ac54c487c
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91932609"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98935349"
 ---
 # <a name="transfer-artifacts-to-another-registry"></a>Yapıtları başka bir kayıt defterine aktar
 
@@ -30,7 +30,7 @@ Bu özellik **Premium** kapsayıcı kayıt defteri hizmet katmanında kullanıla
 > [!IMPORTANT]
 > Bu özellik şu anda önizleme sürümündedir. Önizlemeler, [ek kullanım koşullarını][terms-of-use] kabul etmeniz şartıyla kullanımınıza sunulur. Bu özelliğin bazı yönleri genel kullanıma açılmadan önce değişebilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * **Kapsayıcı kayıt defterleri** -aktarılacak yapıtlara ve hedef kayıt defterine sahip mevcut bir kaynak kayıt defterine ihtiyacınız vardır. ACR aktarımı, fiziksel olarak bağlantısı kesilen bulutlar arasında hareket etmek için tasarlanmıştır. Test için kaynak ve hedef kayıt defterleri aynı veya farklı bir Azure aboneliğinde, Active Directory kiracısında veya bulutta olabilir. 
 
@@ -39,7 +39,7 @@ Bu özellik **Premium** kapsayıcı kayıt defteri hizmet katmanında kullanıla
 
   Gerekirse, [Azure CLI](../storage/common/storage-account-create.md?tabs=azure-cli) veya diğer araçlarla depolama hesapları oluşturun. 
 
-  Her hesapta yapıt aktarımı için bir blob kapsayıcısı oluşturun. Örneğin, *Aktarım*adlı bir kapsayıcı oluşturun. İki veya daha fazla aktarım işlem hattı aynı depolama hesabını paylaşabilir, ancak farklı depolama kapsayıcısı kapsamları kullanmalıdır.
+  Her hesapta yapıt aktarımı için bir blob kapsayıcısı oluşturun. Örneğin, *Aktarım* adlı bir kapsayıcı oluşturun. İki veya daha fazla aktarım işlem hattı aynı depolama hesabını paylaşabilir, ancak farklı depolama kapsayıcısı kapsamları kullanmalıdır.
 * **Anahtar** kasaları-Anahtar kasaları, kaynak ve hedef depolama hesaplarına erişmek IÇIN kullanılan SAS belirteç gizli dizileri depolamak için gereklidir. Kaynak ve hedef kayıt defterlerinden aynı Azure aboneliğinde veya aboneliklerde kaynak ve hedef anahtar kasaları oluşturun. Tanıtım amacıyla, bu makalede kullanılan şablonlar ve komutlar, kaynak ve hedef anahtar kasalarının sırasıyla kaynak ve hedef kayıt defterleri ile aynı kaynak gruplarında bulunduğunu da varsayar. Ortak kaynak gruplarının bu kullanımı gerekli değildir, ancak bu makalede kullanılan şablonları ve komutları basitleştirir.
 
    Gerekirse, [Azure CLI](../key-vault/secrets/quick-create-cli.md) veya diğer araçlarla Anahtar kasaları oluşturun.
@@ -312,7 +312,7 @@ az storage blob list \
 
 ## <a name="transfer-blob-optional"></a>Blob aktarma (isteğe bağlı) 
 
-Kaynak depolama hesabından hedef depolama hesabına [BLOB verileri aktarmak](../storage/common/storage-use-azcopy-blobs.md#copy-blobs-between-storage-accounts) Için AzCopy aracını veya diğer yöntemleri kullanın.
+Kaynak depolama hesabından hedef depolama hesabına [BLOB verileri aktarmak](../storage/common/storage-use-azcopy-v10.md#transfer-data) Için AzCopy aracını veya diğer yöntemleri kullanın.
 
 Örneğin, aşağıdaki [`azcopy copy`](../storage/common/storage-ref-azcopy-copy.md) komut myblob 'u kaynak hesabındaki *Aktarım* kapsayıcısından hedef hesaptaki *Aktarım* kapsayıcısına kopyalar. Blob hedef hesapta varsa, üzerine yazılır. Kimlik doğrulaması, SAS belirteçlerini kaynak ve hedef kapsayıcılar için uygun izinlerle kullanır. (Belirteç oluşturma adımları gösterilmez.)
 
@@ -377,7 +377,7 @@ az acr repository list --name <target-registry-name>
 
 ## <a name="redeploy-pipelinerun-resource"></a>Ardışık düzen eylemsizlik kaynağını yeniden Dağıt
 
-*Aynı özelliklerle*bir ardışık düzen eylemsizlik kaynağını yeniden dağıtıyorsanız, **forceupdatetag** özelliğinden yararlanabilirsiniz. Bu özellik, yapılandırma değişmemiş olsa bile ardışık düzen eylemsizlik kaynağının yeniden oluşturulması gerektiğini gösterir. Lütfen, ardışık düzen eylemsizlik kaynağını her yeniden dağıtırken forceUpdateTag 'in farklı olduğundan emin olun. Aşağıdaki örnek, dışa aktarma için bir ardışık düzen eylemsizlik oluşturur. ForceUpdateTag ' i ayarlamak için geçerli tarih saat kullanılır, bu nedenle bu özelliğin her zaman benzersiz olmasını sağlar.
+*Aynı özelliklerle* bir ardışık düzen eylemsizlik kaynağını yeniden dağıtıyorsanız, **forceupdatetag** özelliğinden yararlanabilirsiniz. Bu özellik, yapılandırma değişmemiş olsa bile ardışık düzen eylemsizlik kaynağının yeniden oluşturulması gerektiğini gösterir. Lütfen, ardışık düzen eylemsizlik kaynağını her yeniden dağıtırken forceUpdateTag 'in farklı olduğundan emin olun. Aşağıdaki örnek, dışa aktarma için bir ardışık düzen eylemsizlik oluşturur. ForceUpdateTag ' i ayarlamak için geçerli tarih saat kullanılır, bu nedenle bu özelliğin her zaman benzersiz olmasını sağlar.
 
 ```console
 CURRENT_DATETIME=`date +"%Y-%m-%d:%T"`

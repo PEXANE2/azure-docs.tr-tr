@@ -7,12 +7,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.topic: conceptual
 ms.date: 12/14/2020
-ms.openlocfilehash: 6ff5731e7d346c954253ec4186357595461b7678
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: e1b175a176255da465433b2db45cb3cb67d360d1
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400278"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98934493"
 ---
 # <a name="use-azure-iot-dps-ip-connection-filters"></a>Azure IoT DPS IP bağlantı filtrelerini kullanma
 
@@ -258,5 +258,5 @@ IP filtresi kurallarınızın yeni sırasını kaydetmek için **Kaydet**'e tık
 DPS yönetimini daha fazla incelemek için bkz:
 
 * [IoT DPS IP adreslerini anlama](iot-dps-understand-ip-address.md)
-* [Azure CLI’yı kullanarak DPS'yi yapılandırma](how-to-manage-dps-with-cli.md)
+* [Azure CLı kullanarak DPS ayarlama](quick-setup-auto-provision-cli.md)
 * [DPS'ye erişimi denetleme](how-to-control-access.md)

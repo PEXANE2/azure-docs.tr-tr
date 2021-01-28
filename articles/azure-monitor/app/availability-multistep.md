@@ -3,12 +3,12 @@ title: Çok adımlı Web testleri ile izleme-Azure Application Insights
 description: Web uygulamalarınızı Azure Application Insights izlemek için çok adımlı Web testleri ayarlayın
 ms.topic: conceptual
 ms.date: 05/26/2020
-ms.openlocfilehash: 2df8b7450423c901665090608da83f68b43b30e5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0031971dc2ccd2a9e681220dd835f46d33e36dbb
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87024785"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98934855"
 ---
 # <a name="multi-step-web-tests"></a>Çok adımlı web testleri
 
@@ -25,7 +25,7 @@ ms.locfileid: "87024785"
 * Visual Studio 2017 Enterprise veya üzeri.
 * Visual Studio Web performansı ve yük testi araçları.
 
-Test araçlarını önkoşul olarak belirlemek için. **Visual Studio Installer**  >  **Individual components**  >  **Hata ayıklama ve**  >  **Web performansını ve yük testi araçlarını**test etmek Visual Studio yükleyicisi bireysel bileşenleri başlatın.
+Test araçlarını önkoşul olarak belirlemek için.   >    >  **Hata ayıklama ve**  >  **Web performansını ve yük testi araçlarını** test etmek Visual Studio yükleyicisi bireysel bileşenleri başlatın.
 
 ![Web performans ve yük testi araçları için öğenin yanında bir onay kutusu ile seçili tek bileşenlere sahip Visual Studio Installer Kullanıcı arabiriminin ekran görüntüsü](./media/availability-multistep/web-performance-load-testing.png)
 
@@ -37,11 +37,11 @@ Test araçlarını önkoşul olarak belirlemek için. **Visual Studio Installer*
 > [!WARNING]
 > Artık multi-step kaydedicisinin kullanılması önerilmez. Kaydedici, temel etkileşimleri olan statik HTML sayfaları için geliştirilmiştir ve modern web sayfaları için işlevsel bir deneyim sağlamıyor.
 
-Visual Studio Web testleri oluşturma konusunda rehberlik için [resmi Visual studio 2019 belgelerine](/visualstudio/test/how-to-create-a-web-service-test?view=vs-2019)bakın.
+Visual Studio Web testleri oluşturma konusunda rehberlik için [resmi Visual studio 2019 belgelerine](/visualstudio/test/how-to-create-a-web-service-test)bakın.
 
 ## <a name="upload-the-web-test"></a>Web testini karşıya yükleyin
 
-1. Kullanılabilirlik bölmesindeki Application Insights portalında, **Test**  >  **test türü**  >  **çoklu adım Web testi**oluştur ' u seçin.
+1. Kullanılabilirlik bölmesindeki Application Insights portalında, **Test**  >  **test türü**  >  **çoklu adım Web testi** oluştur ' u seçin.
 
 2. Test konumlarını, sıklığını ve uyarı parametrelerini ayarlayın.
 
@@ -66,7 +66,7 @@ Visual Studio Web testleri oluşturma konusunda rehberlik için [resmi Visual st
 |----|----|----|
 |**Neredeyse gerçek zamanlı (Önizleme)** | Neredeyse gerçek zamanlı uyarıların kullanılması önerilir. Bu tür bir uyarının yapılandırılması, kullanılabilirlik testiniz oluşturulduktan sonra yapılır.  |
 |**Klasik** | Artık yeni kullanılabilirlik testleri için klasik uyarıların kullanılması önerilmez.|
-|**Uyarı konum eşiği**|En az 3/5 konum önerilir. Uyarı konumu eşiği ve test konumlarının sayısı arasındaki en iyi ilişki, **alert location threshold**  =  **en az beş test konumu ile test konumlarından oluşan uyarı konum eşiği sayısıdır-2.**|
+|**Uyarı konum eşiği**|En az 3/5 konum önerilir. Uyarı konumu eşiği ve test konumlarının sayısı arasındaki en iyi ilişki,   =  **en az beş test konumu ile test konumlarından oluşan uyarı konum eşiği sayısıdır-2.**|
 
 ## <a name="configuration"></a>Yapılandırma
 
@@ -106,7 +106,7 @@ Her durumda, uygulamanızda yalnızca test amacıyla bir hesap oluşturmalısın
 
 **SAML kimlik doğrulaması**
 
-|Özellik adı| Açıklama|
+|Özellik adı| Description|
 |----|-----|
 | Hedef kitle Uri 'Si | SAML belirteci için hedef kitle URI 'SI.  Bu, ACS ad alanı ve ana bilgisayar adı da dahil olmak üzere Access Control Service (ACS) URI 'sidir. |
 | Sertifika parolası | Katıştırılmış özel anahtara erişim sağlayacak istemci sertifikası parolası. |

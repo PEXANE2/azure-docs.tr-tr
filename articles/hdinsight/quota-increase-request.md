@@ -1,19 +1,16 @@
 ---
 title: CPU çekirdeği kota artışı isteği-Azure HDInsight
 description: Aboneliğinize ayrılan CPU çekirdekleri için bir artış isteme işlemini öğrenin.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 05/07/2020
-ms.openlocfilehash: 93c07b47e03bde20d494feb1c86179cd9a24ba26
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: a539acc423feeab500830fb33262d1b824101072
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92539420"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98935844"
 ---
 # <a name="requesting-quota-increases-for-azure-hdinsight"></a>Azure HDInsight için kota artışı isteniyor
 
@@ -30,7 +27,7 @@ Kota sınırına ulaşmamızı belirten bir hata aldıysanız, önemli bilgiler 
 
     1. [Azure portalında](https://portal.azure.com/) oturum açın.
     1. HDInsight kümesinin **genel bakış** sayfasına gidin.
-    1. Sol taraftaki menüden **kota sınırları** ' nı seçin. Sayfada kullanılan çekirdek sayısı, mevcut çekirdek sayısı ve toplam çekirdek sayısı görüntülenir.
+    1. Sol taraftaki menüden **kota sınırları**' nı seçin. Sayfada kullanılan çekirdek sayısı, mevcut çekirdek sayısı ve toplam çekirdek sayısı görüntülenir.
 
 Kota artışı istemek için aşağıdaki adımları uygulayın:
 
@@ -39,16 +36,16 @@ Kota artışı istemek için aşağıdaki adımları uygulayın:
 
     ![Yardım ve destek düğmesi](./media/quota-increase-request/help-support-button.png)
 
-1. **Yeni destek isteği** ’ni seçin.
+1. **Yeni destek isteği**’ni seçin.
 1. **Yeni destek isteği** sayfasının **Temel Bilgiler** sekmesinde aşağıdaki seçenekleri belirtin:
 
-   - **Sorun türü** : **hizmet ve abonelik limitleri (kotalar)**
-   - **Abonelik** : değiştirmek istediğiniz abonelik
-   - **Kota türü** : **HDInsight**
+   - **Sorun türü**: **hizmet ve abonelik limitleri (kotalar)**
+   - **Abonelik**: değiştirmek istediğiniz abonelik
+   - **Kota türü**: **HDInsight**
 
      ![HDInsight çekirdek kotasını artırmak için bir destek isteği oluşturma](./media/quota-increase-request/hdinsight-quota-support-request.png)
 
-1. **İleri ' yi seçin: çözümler >>** .
+1. **İleri ' yi seçin: çözümler >>**.
 1. **Ayrıntılar** sayfasında, sorun için bir açıklama girin, sorunun önem derecesini, tercih ettiğiniz iletişim yöntemini ve diğer gerekli alanları seçin. Gerekli bilgileri sağladığınızdan emin olmak için aşağıda listelenen şablonu kullanın. Kota artışı istekleri, HDInsight ürün ekibi tarafından değil, Azure kapasite ekibi tarafından değerlendirilir. Sağladığınız daha fazla bilgi, isteğiniz daha büyük olasılıkla onaylanır.
 
     ```
@@ -61,8 +58,8 @@ Kota artışı istemek için aşağıdaki adımları uygulayın:
 
     ![Sorun ayrıntıları](./media/quota-increase-request/problem-details.png)
 
-1. **İleri ' yi seçin: gözden geçir + oluştur >>** .
-1. **Gözden geçir + oluştur** sekmesinde **Oluştur** ' u seçin.
+1. **İleri ' yi seçin: gözden geçir + oluştur >>**.
+1. **Gözden geçir + oluştur** sekmesinde **Oluştur**' u seçin.
 
 > [!NOTE]  
 > Özel bir bölgedeki HDInsight Core kotasını artırmanız gerekiyorsa, [onaylı bir liste isteği gönderebilirsiniz](https://aka.ms/canaryintwhitelist).

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: 1acdc311cdd75cb35cfd4b9acc35f4bc954c7f43
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: e9bb0f499e8df712107a6fcdbff14ee367a02bf4
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98221332"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98934169"
 ---
 # <a name="deploy-an-ipv6-dual-stack-application-using-basic-load-balancer---cli"></a>Temel Load Balancer CLı kullanarak IPv6 ikili yığın uygulaması dağıtma
 
@@ -94,7 +94,7 @@ Bu bölümde, yük dengeleyici için çift ön uç IP (IPv4 ve IPv6) ve arka uç
 
 ### <a name="create-load-balancer"></a>Yük dengeleyici oluşturma
 
-Önceki adımda oluşturduğunuz **DsPublicIP_v4** ıPV4 genel IP adresi ile ilişkili **dsLbBackEndPool_v4** adlı bir arka uç havuzu içeren, [az network lb Create](/cli/azure/network/lb?view=azure-cli-latest) adlı **dsdsLbFrontEnd_v4 lb** adlı temel Load Balancer oluşturun.  
+Önceki adımda oluşturduğunuz **DsPublicIP_v4** ıPV4 genel IP adresi ile ilişkili **dsLbBackEndPool_v4** adlı bir arka uç havuzu içeren, [az network lb Create](/cli/azure/network/lb) adlı **dsdsLbFrontEnd_v4 lb** adlı temel Load Balancer oluşturun.  
 
 ```azurecli-interactive
 az network lb create \
@@ -109,7 +109,7 @@ az network lb create \
 
 ### <a name="create-ipv6-frontend"></a>IPv6 ön ucu oluşturma
 
-[Az Network lb ön uç-IP Create](/cli/azure/network/lb/frontend-ip?view=azure-cli-latest#az-network-lb-frontend-ip-create)komutuyla bir IPv6 ön uç IP 'si oluşturun. Aşağıdaki örnek, *dsLbFrontEnd_v6* adlı bir ön uç IP yapılandırması oluşturur ve *dsPublicIP_v6* adresini iliştirir:
+[Az Network lb ön uç-IP Create](/cli/azure/network/lb/frontend-ip#az-network-lb-frontend-ip-create)komutuyla bir IPv6 ön uç IP 'si oluşturun. Aşağıdaki örnek, *dsLbFrontEnd_v6* adlı bir ön uç IP yapılandırması oluşturur ve *dsPublicIP_v6* adresini iliştirir:
 
 ```azurecli-interactive
 az network lb frontend-ip create \
@@ -122,7 +122,7 @@ az network lb frontend-ip create \
 
 ### <a name="configure-ipv6-back-end-address-pool"></a>IPv6 arka uç adres havuzunu yapılandırma
 
-[Az Network lb Address-Pool Create](/cli/azure/network/lb/address-pool?view=azure-cli-latest#az-network-lb-address-pool-create)komutuyla bir IPv6 arka uç adres havuzu oluşturun. Aşağıdaki örnek, IPv6 NIC yapılandırmalarına sahip VM 'Leri dahil etmek için *dsLbBackEndPool_v6*  adlı arka uç adres havuzunu oluşturur:
+[Az Network lb Address-Pool Create](/cli/azure/network/lb/address-pool#az-network-lb-address-pool-create)komutuyla bir IPv6 arka uç adres havuzu oluşturun. Aşağıdaki örnek, IPv6 NIC yapılandırmalarına sahip VM 'Leri dahil etmek için *dsLbBackEndPool_v6*  adlı arka uç adres havuzunu oluşturur:
 
 ```azurecli-interactive
 az network lb address-pool create \
@@ -132,7 +132,7 @@ az network lb address-pool create \
 ```
 
 ### <a name="create-a-health-probe"></a>Durum araştırması oluşturma
-Sanal makinelerin durumunu izlemek için [az network lb probe create](/cli/azure/network/lb/probe?view=azure-cli-latest) ile bir durum araştırması oluşturun. 
+Sanal makinelerin durumunu izlemek için [az network lb probe create](/cli/azure/network/lb/probe) ile bir durum araştırması oluşturun. 
 
 ```azurecli-interactive
 az network lb probe create -g DsResourceGroup01  --lb-name dsLB -n dsProbe --protocol tcp --port 3389
@@ -142,7 +142,7 @@ az network lb probe create -g DsResourceGroup01  --lb-name dsLB -n dsProbe --pro
 
 Trafiğin VM’lere dağıtımını tanımlamak için bir yük dengeleyici kuralı kullanılır. Gerekli kaynak ve hedef bağlantı noktalarının yanı sıra gelen trafik için ön uç IP yapılandırması ve trafiği almak için arka uç IP havuzu tanımlamanız gerekir. 
 
-[az network lb rule create](/cli/azure/network/lb/rule?view=azure-cli-latest#az-network-lb-rule-create) komutuyla bir yük dengeleyici kuralı oluşturun. Aşağıdaki örnek, *dsLBrule_v4* ve *dsLBrule_v6* adlı yük dengeleyici kuralları oluşturur ve *TCP* bağlantı noktası *80* ' deki trafiği IPv4 ve IPv6 ön uç IP yapılandırmalarına dengeler:
+[az network lb rule create](/cli/azure/network/lb/rule#az-network-lb-rule-create) komutuyla bir yük dengeleyici kuralı oluşturun. Aşağıdaki örnek, *dsLBrule_v4* ve *dsLBrule_v6* adlı yük dengeleyici kuralları oluşturur ve *TCP* bağlantı noktası *80* ' deki trafiği IPv4 ve IPv6 ön uç IP yapılandırmalarına dengeler:
 
 ```azurecli-interactive
 az network lb rule create \
@@ -175,7 +175,7 @@ Bazı VM 'Leri dağıtmadan önce destekleyici ağ kaynakları (kullanılabilirl
 ### <a name="create-an-availability-set"></a>Kullanılabilirlik kümesi oluşturma
 Uygulamanızın kullanılabilirliğini artırmak için VM 'lerinizi bir kullanılabilirlik kümesine yerleştirin.
 
-[az vm availability-set create](/cli/azure/vm/availability-set?view=azure-cli-latest) komutunu kullanarak bir kullanılabilirlik kümesi oluşturun. Aşağıdaki örnek, *Dsavset* adlı bir kullanılabilirlik kümesi oluşturur:
+[az vm availability-set create](/cli/azure/vm/availability-set) komutunu kullanarak bir kullanılabilirlik kümesi oluşturun. Aşağıdaki örnek, *Dsavset* adlı bir kullanılabilirlik kümesi oluşturur:
 
 ```azurecli-interactive
 az vm availability-set create \
@@ -192,7 +192,7 @@ VNET 'iniz içindeki gelen ve giden iletişimi yönetecek kurallar için bir ağ
 
 #### <a name="create-a-network-security-group"></a>Ağ güvenlik grubu oluşturma
 
-[Az Network NSG Create](/cli/azure/network/nsg?view=azure-cli-latest#az-network-nsg-create) komutuyla bir ağ güvenlik grubu oluşturun
+[Az Network NSG Create](/cli/azure/network/nsg#az-network-nsg-create) komutuyla bir ağ güvenlik grubu oluşturun
 
 
 ```azurecli-interactive
@@ -205,7 +205,7 @@ az network nsg create \
 
 #### <a name="create-a-network-security-group-rule-for-inbound-and-outbound-connections"></a>Gelen ve giden bağlantılar için bir ağ güvenlik grubu kuralı oluşturma
 
-Bağlantı noktası 3389 üzerinden RDP bağlantılarına izin vermek için bir ağ güvenlik grubu kuralı oluşturun, bağlantı noktası 80 üzerinden internet bağlantısı ve [az Network NSG Rule Create](/cli/azure/network/nsg/rule?view=azure-cli-latest#az-network-nsg-rule-create)ile giden bağlantılar için.
+Bağlantı noktası 3389 üzerinden RDP bağlantılarına izin vermek için bir ağ güvenlik grubu kuralı oluşturun, bağlantı noktası 80 üzerinden internet bağlantısı ve [az Network NSG Rule Create](/cli/azure/network/nsg/rule#az-network-nsg-rule-create)ile giden bağlantılar için.
 
 ```azurecli-interactive
 # Create inbound rule for port 3389
@@ -258,7 +258,7 @@ az network nsg rule create \
 
 ### <a name="create-a-virtual-network"></a>Sanal ağ oluşturma
 
-[az network vnet create](/cli/azure/network/vnet?view=azure-cli-latest#az-network-vnet-create) komutu ile bir sanal ağ oluşturun. Aşağıdaki örnek, alt ağlar *dsSubNET_v4* ve *DsSubNET_v6* ile *dsvnet* adlı bir sanal ağ oluşturur:
+[az network vnet create](/cli/azure/network/vnet#az-network-vnet-create) komutu ile bir sanal ağ oluşturun. Aşağıdaki örnek, alt ağlar *dsSubNET_v4* ve *DsSubNET_v6* ile *dsvnet* adlı bir sanal ağ oluşturur:
 
 ```azurecli-interactive
 # Create the virtual network
@@ -280,7 +280,7 @@ az network vnet subnet create \
 
 ### <a name="create-nics"></a>NIC’leri oluşturma
 
-[Az Network Nic Create](/cli/azure/network/nic?view=azure-cli-latest#az-network-nic-create)Ile her VM Için sanal NIC 'ler oluşturun. Aşağıdaki örnek her VM için bir sanal NIC oluşturur. Her NIC 'de iki IP yapılandırması vardır (1 IPv4 yapılandırması, 1 IPv6 yapılandırması). IPV6 yapılandırmasını [az Network Nic IP-Config Create](/cli/azure/network/nic/ip-config?view=azure-cli-latest#az-network-nic-ip-config-create)ile oluşturursunuz.
+[Az Network Nic Create](/cli/azure/network/nic#az-network-nic-create)Ile her VM Için sanal NIC 'ler oluşturun. Aşağıdaki örnek her VM için bir sanal NIC oluşturur. Her NIC 'de iki IP yapılandırması vardır (1 IPv4 yapılandırması, 1 IPv6 yapılandırması). IPV6 yapılandırmasını [az Network Nic IP-Config Create](/cli/azure/network/nic/ip-config#az-network-nic-ip-config-create)ile oluşturursunuz.
 
 ```azurecli-interactive
 # Create NICs
@@ -331,7 +331,7 @@ az network nic ip-config create \
 
 ### <a name="create-virtual-machines"></a>Sanal makineler oluşturma
 
-[Az VM Create](/cli/azure/vm?view=azure-cli-latest#az-vm-create)Ile VM 'ler oluşturun. Aşağıdaki örnekte, zaten mevcut değilse iki VM ve gerekli sanal ağ bileşenleri oluşturulur. 
+[Az VM Create](/cli/azure/vm#az-vm-create)Ile VM 'ler oluşturun. Aşağıdaki örnekte, zaten mevcut değilse iki VM ve gerekli sanal ağ bileşenleri oluşturulur. 
 
 *DsVM0* sanal makinesini aşağıdaki şekilde oluşturun:
 

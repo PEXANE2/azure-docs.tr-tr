@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/18/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: d62e7566038af6647cab2992b02184a4ea5ba30b
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: bf92765431ea6b0f80b96ab7d61e8e830220dc82
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96344156"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98934553"
 ---
 # <a name="secure-azure-digital-twins"></a>Güvenli Azure dijital TWINS
 
@@ -49,7 +49,7 @@ Yönetilen kimlikler ile Azure platformu bu çalışma zamanı kimliğini yönet
 
 Azure, Azure dijital TWINS [veri düzlemi API 'lerine](how-to-use-apis-sdks.md#overview-data-plane-apis)erişim yetkisi veren **iki Azure yerleşik rolü** sağlar. Rollere ada veya KIMLIĞE göre başvurabilirsiniz:
 
-| Yerleşik rol | Açıklama | ID | 
+| Yerleşik rol | Description | ID | 
 | --- | --- | --- |
 | Azure dijital TWINS veri sahibi | Azure dijital TWINS kaynakları üzerinden tam erişim sağlar | bcd981a7-7f74-457b-83e1-cceb9e632ffe |
 | Azure dijital TWINS veri okuyucusu | Azure dijital TWINS kaynaklarına salt okuma erişimi verir | d57506d4-4c8d-48b1-8587-93c323f6a5a3 |
@@ -72,7 +72,7 @@ Yerleşik rollerin nasıl tanımlandığı hakkında daha fazla bilgi için bkz.
 Otomatikleştirilmiş senaryolardaki rollere başvuru yaparken, bunlara adları yerine **kimliklerini** yazmanız önerilir. Adlar yayınlar arasında değişebilir, ancak kimlikler bu şekilde Otomasyon 'da daha kararlı bir başvuru haline getirir.
 
 > [!TIP]
-> (Başvuru) gibi bir cmdlet 'e sahip rolleriniz assiging `New-AzRoleAssignment` ,[reference](/powershell/module/az.resources/new-azroleassignment) `-RoleDefinitionId` `-RoleDefinitionName` rol için bir ad yerine kimliği geçirmek yerine parametresini kullanabilirsiniz.
+> (Başvuru) gibi bir cmdlet 'e sahip rolleriniz assiging `New-AzRoleAssignment` ,[](/powershell/module/az.resources/new-azroleassignment) `-RoleDefinitionId` `-RoleDefinitionName` rol için bir ad yerine kimliği geçirmek yerine parametresini kullanabilirsiniz.
 
 ### <a name="permission-scopes"></a>İzin kapsamları
 
@@ -89,11 +89,44 @@ Aşağıdaki listede, Azure dijital TWINS kaynaklarına erişimi kapsama ekleyeb
 
 Bir kullanıcı rolü tarafından izin verilmeyen bir eylem gerçekleştirmeye çalışırsa, hizmet isteği okumada bir hata alabilir `403 (Forbidden)` . Daha fazla bilgi ve sorun giderme adımları için bkz. [*sorun giderme: Azure dijital TWINS isteği şu durumla başarısız oldu: 403 (yasak)*](troubleshoot-error-403.md).
 
+## <a name="managed-identity-for-accessing-other-resources-preview"></a>Diğer kaynaklara erişmek için yönetilen kimlik (Önizleme)
+
+Azure dijital TWINS örneği için [Azure Active Directory (Azure AD)](../active-directory/fundamentals/active-directory-whatis.md) **tarafından yönetilen bir kimlik** ayarlamak, örneğin [Azure Key Vault](../key-vault/general/overview.md)gibi diğer Azure AD korumalı kaynaklara kolayca erişmesine izin verebilir. Kimlik, Azure platformu tarafından yönetilir ve herhangi bir gizli dizi sağlamanızı veya döndürmenizi gerektirmez. Azure AD 'de Yönetilen kimlikler hakkında daha fazla bilgi için bkz. [*Azure kaynakları Için Yönetilen kimlikler*](../active-directory/managed-identities-azure-resources/overview.md). 
+
+Azure iki tür yönetilen kimliği destekler: sistem tarafından atanan ve Kullanıcı tarafından atanan. Şu anda Azure Digital TWINS yalnızca **sistem tarafından atanan kimlikleri** destekliyor. 
+
+[Özel tanımlanmış bir uç noktada](concepts-route-events.md#create-an-endpoint)kimlik doğrulaması yapmak Için Azure dijital örneğiniz için sistem tarafından atanan yönetilen bir kimlik kullanabilirsiniz. Azure dijital TWINS, [Olay Hub](../event-hubs/event-hubs-about.md) 'ı ve [Service Bus](../service-bus-messaging/service-bus-messaging-overview.md)hedeflerine yönelik uç noktalara   ve atılacak Ileti olayları için bir [Azure depolama kapsayıcısı](../storage/blobs/storage-blobs-introduction.md)   uç noktasına [](concepts-route-events.md#dead-letter-events)sistem tarafından atanan kimlik tabanlı kimlik doğrulamasını destekler. [Event Grid](../event-grid/overview.md)   uç noktalar şu anda yönetilen kimlikler için desteklenmiyor.
+
+Azure dijital TWINS için sistem tarafından yönetilen bir kimliğin nasıl etkinleştirileceği ve olayları yönlendirmek için nasıl kullanılacağı hakkında yönergeler için bkz. [*nasıl yapılır: yönlendirme olayları için yönetilen kimliği etkinleştirme (Önizleme)*](how-to-enable-managed-identities.md).
+
+## <a name="private-network-access-with-azure-private-link-preview"></a>Azure özel bağlantısı ile özel ağ erişimi (Önizleme)
+
+Azure [özel bağlantı](../private-link/private-link-overview.md) , Azure kaynaklarına ( [Azure Event Hubs](../event-hubs/event-hubs-about.md), [Azure depolama](../storage/common/storage-introduction.md)ve [Azure Cosmos DB](../cosmos-db/introduction.md)gibi) ve Azure 'Da barındırılan müşteri ve iş ortağı hizmetlerine Azure [sanal ağınızdaki (VNet)](../virtual-network/virtual-networks-overview.md)özel bir uç nokta üzerinden erişmenizi sağlayan bir hizmettir. 
+
+Benzer şekilde, sanal Ağınızdaki istemcilerin özel bağlantı üzerinden örneğe güvenli bir şekilde erişmesini sağlamak için Azure Digital Ikizi örneğiniz için özel uç noktalar kullanabilirsiniz. 
+
+Özel uç nokta, Azure VNet adres alanınızda bir IP adresi kullanır. Özel ağınızdaki bir istemci ile Azure dijital TWINS örneği arasındaki ağ trafiği, Microsoft omurgası ağı üzerinde, genel İnternet 'te pozlandırmayı ortadan kaldıran VNet üzerinden ve özel bir bağlantıdan geçer. Bu sistemin görsel bir gösterimi aşağıda verilmiştir:
+
+:::image type="content" source="media/concepts-security/private-link.png" alt-text="İnternet/genel bulut erişimi olmayan korumalı bir sanal ağ olan ve CityOfTwins adlı bir Azure dijital TWINS örneğine özel bağlantıyla bağlantı kurarak PowerGrid şirketinin ağını gösteren bir diyagram.":::
+
+Azure dijital TWINS örneğiniz için özel bir uç nokta yapılandırmak, Azure dijital TWINS örneğinizi güvenli hale getirmenizi ve genel pozlamayı ortadan kaldırmanıza ve sanal ağınızdan veri alımını önlemenize olanak sağlar.
+
+Azure dijital TWINS için özel bağlantı ayarlama hakkında yönergeler için bkz. [*nasıl yapılır: özel bağlantı ile özel erişimi etkinleştirme (Önizleme)*](how-to-enable-private-link.md).
+
+### <a name="design-considerations"></a>Tasarım konusunda dikkat edilmesi gerekenler 
+
+Azure dijital TWINS için özel bağlantıyla çalışırken göz önünde bulundurmanız isteyebileceğiniz bazı faktörler şunlardır:
+* **Fiyatlandırma**: Fiyatlandırma ayrıntıları için bkz. [Azure özel bağlantı fiyatlandırması](https://azure.microsoft.com/pricing/details/private-link). 
+* **Bölgesel kullanılabilirlik**: Azure Digital TWINS için bu özellik, Azure Digital TWINS 'in kullanılabildiği tüm Azure bölgelerinde kullanılabilir. 
+* **Azure dijital TWINS örneği başına en fazla özel uç nokta sayısı**: 10
+
+Özel bağlantı sınırları hakkında daha fazla bilgi için bkz. [Azure özel bağlantı belgeleri: sınırlamalar](../private-link/private-link-service-overview.md#limitations).
+
 ## <a name="service-tags"></a>Hizmet etiketleri
 
 **Hizmet etiketi** , belirli bir Azure HIZMETINDEN bir IP adresi önekleri grubunu temsil eder. Microsoft, hizmet etiketi ile çevrelenmiş adres öneklerini yönetir ve adres değişikliği olarak hizmet etiketini otomatik olarak güncelleştirir ve ağ güvenlik kuralları için sık sık güncelleştirmelerin karmaşıklığını en aza indirir. Hizmet etiketleri hakkında daha fazla bilgi için bkz. [*sanal ağ etiketleri*](../virtual-network/service-tags-overview.md). 
 
- [network security groups](../virtual-network/network-security-groups-overview.md#security-rules)   Güvenlik KURALLARı oluştururken belirli IP adreslerinin yerine hizmet etiketleri kullanarak ağ güvenlik gruplarında veya [Azure Güvenlik duvarında](../firewall/service-tags.md)ağ erişim denetimleri tanımlamak için hizmet etiketlerini kullanabilirsiniz. Bir kuralın uygun *kaynak* veya hedef alanındaki hizmet etiketi adını (Bu durumda **AzureDigitalTwins**) belirterek    *destination*   , karşılık gelen hizmet için trafiğe izin verebilir veya bu trafiği reddedebilirsiniz. 
+ [](../virtual-network/network-security-groups-overview.md#security-rules)   Güvenlik KURALLARı oluştururken belirli IP adreslerinin yerine hizmet etiketleri kullanarak ağ güvenlik gruplarında veya [Azure Güvenlik duvarında](../firewall/service-tags.md)ağ erişim denetimleri tanımlamak için hizmet etiketlerini kullanabilirsiniz. Bir kuralın uygun *kaynak* veya hedef alanındaki hizmet etiketi adını (Bu durumda **AzureDigitalTwins**) belirterek    **   , karşılık gelen hizmet için trafiğe izin verebilir veya bu trafiği reddedebilirsiniz. 
 
 Aşağıda **AzureDigitalTwins** hizmeti etiketinin ayrıntıları verilmiştir.
 
@@ -123,7 +156,7 @@ Azure dijital TWINS, veri merkezlerimizde yazıldığı sırada verilerin geri k
 
 Azure dijital TWINS Şu anda **çıkış noktaları arası kaynak paylaşımını (CORS)** desteklememektedir. Sonuç olarak, bir tarayıcı uygulamasından, bir [API Management (APıM)](../api-management/api-management-key-concepts.md) arabiriminden veya bir [Power Apps](/powerapps/powerapps-overview) bağlayıcısından REST API arıyorsanız bir ilke hatası görebilirsiniz.
 
-Bu hatayı çözmek için aşağıdakilerden birini yapabilirsiniz:
+Bu hatayı çözmek için aşağıdaki eylemlerden birini yapabilirsiniz:
 * İletibir bilgisayardan CORS üst bilgisini şerit `Access-Control-Allow-Origin` . Bu üstbilgi yanıtın paylaşılıp paylaşılamayacağını gösterir. 
 * Alternatif olarak, bir CORS proxy 'si oluşturun ve Azure dijital TWINS REST API isteği üzerinden isteyin. 
 

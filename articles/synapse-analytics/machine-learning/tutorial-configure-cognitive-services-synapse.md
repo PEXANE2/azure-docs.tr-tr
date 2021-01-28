@@ -1,6 +1,6 @@
 ---
-title: "Öğretici: Azure 'da bilişsel hizmetler için önkoşulları SYNAPSE"
-description: Azure 'da bilişsel hizmetler 'i kullanmaya ilişkin önkoşulları yapılandırma öğreticisi SYNAPSE
+title: "Öğretici: Azure SYNAPSE Analytics 'te bilişsel hizmetler için Önkoşullar"
+description: Azure SYNAPSE 'da bilişsel hizmetler 'i kullanmaya yönelik önkoşulları yapılandırmayı öğrenin.
 services: synapse-analytics
 ms.service: synapse-analytics
 ms.subservice: machine-learning
@@ -9,68 +9,71 @@ ms.reviewer: jrasnick, garye
 ms.date: 11/20/2020
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: eef65db05ab94b5b8de5ff82c2c51dba0730f170
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 3ab861caca0ef6f58c2c1bc722412774deb725ce
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222182"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98936675"
 ---
-# <a name="tutorial-pre-requisites-for-using-cognitive-services-in-azure-synapse"></a>Öğretici: Azure 'da bilişsel hizmetler 'i kullanmaya yönelik önkoşulların önkoşulları SYNAPSE
+# <a name="tutorial-prerequisites-for-using-cognitive-services-in-azure-synapse-analytics"></a>Öğretici: Azure SYNAPSE Analytics 'te bilişsel hizmetler kullanma önkoşulları
 
-Bu öğreticide, Azure SYNAPSE 'de bilişsel hizmetler 'i güvenli bir şekilde kullanmak için önkoşulları nasıl ayarlayacağınızı öğreneceksiniz.
+Bu öğreticide, Azure SYNAPSE Analytics 'te Azure bilişsel hizmetler 'i kullanarak güvenli bir şekilde önkoşulları nasıl ayarlayacağınızı öğreneceksiniz.
 
 Bu öğreticinin içindekiler:
 > [!div class="checklist"]
-> - Bilişsel hizmetler kaynakları oluşturun. Örneğin Metin Analizi veya anomali algılayıcısı.
-> - Hizmet kaynaklarına Azure Anahtar Kasası 'nda gizli dizi olarak kimlik doğrulama anahtarını depolayın ve Azure SYNAPSE çalışma alanı için erişimi yapılandırın.
-> - Azure SYNAPSE Analytics çalışma alanınızda Azure Anahtar Kasası bağlı hizmetini oluşturun.
+> - Metin Analizi veya anomali algılayıcısı gibi bilişsel hizmetler kaynağı oluşturun.
+> - Hizmet kaynaklarını Azure Key Vault gizli dizi olarak bilişsel hizmetler için bir kimlik doğrulama anahtarı depolayın ve bir Azure SYNAPSE Analytics çalışma alanı için erişimi yapılandırın.
+> - Azure SYNAPSE Analytics çalışma alanınızda Azure Key Vault bağlı bir hizmet oluşturun.
 
 Azure aboneliğiniz yoksa [başlamadan önce ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-- Varsayılan depolama alanı olarak yapılandırılmış bir ADLS 2. depolama hesabıyla [Azure SYNAPSE Analytics çalışma alanı](../get-started-create-workspace.md) . Birlikte çalıştığınız ADLS 2. FileSystem 'ın **Depolama Blobu veri katılımcısı** olması gerekir.
+- Varsayılan depolama alanı olarak yapılandırılmış bir Azure Data Lake Storage 2. depolama hesabıyla [Azure SYNAPSE Analytics çalışma alanı](../get-started-create-workspace.md) . Birlikte çalıştığınız Azure Data Lake Storage 2. dosya sisteminin *Depolama Blobu veri katılımcısı* olması gerekir.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure portalda](https://portal.azure.com/) oturum açma
+[Azure portalında](https://portal.azure.com/) oturum açın.
 
-## <a name="create-a-cognitive-services-resource"></a>Bilişsel hizmetler kaynağı oluşturma
+## <a name="create-a-cognitive-services-resource"></a>Bilişsel Hizmetler kaynağı oluşturma
 
-[Azure](../../cognitive-services/index.yml) bilişsel hizmetler birçok farklı hizmet türü içerir. Aşağıda, SYNAPSE öğreticilerinde kullanılan bazı örnekler verilmiştir.
+[Azure](../../cognitive-services/index.yml) bilişsel hizmetler pek çok hizmet türü içerir. Metin Analizi ve anomali algılayıcısı, Azure SYNAPSE öğreticilerinde iki örnektir.
 
-### <a name="create-an-anomaly-detector-resource"></a>Anomali algılayıcısı kaynağı oluşturma
-Azure portal bir [anomali algılayıcısı](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics) oluşturun.
+Azure portal bir [metin analizi](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics) kaynağı oluşturabilirsiniz:
 
-![Anomali algılayıcısı oluşturma](media/tutorial-configure-cognitive-services/tutorial-configure-cognitive-services-00a.png)
+![Portalda, oluştur düğmesiyle Metin Analizi gösteren ekran görüntüsü.](media/tutorial-configure-cognitive-services/tutorial-configure-cognitive-services-00b.png)
 
-### <a name="create-a-text-analytics-resource"></a>Metin Analizi kaynağı oluşturma
-Azure portal [metin analizi](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics) bir kaynak oluşturun.
+Azure portal bir [anomali algılayıcısı](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics) kaynağı oluşturabilirsiniz:
 
-![Metin analizi oluşturma](media/tutorial-configure-cognitive-services/tutorial-configure-cognitive-services-00b.png)
+![Portalda, Oluştur düğmesine sahip anomali algılayıcısının gösterildiği ekran görüntüsü.](media/tutorial-configure-cognitive-services/tutorial-configure-cognitive-services-00a.png)
 
-## <a name="create-key-vault-and-configure-secrets-and-access"></a>Key Vault oluşturma ve parolaları ve erişimi yapılandırma
+## <a name="create-a-key-vault-and-configure-secrets-and-access"></a>Anahtar Kasası oluşturma ve gizli dizileri ve erişimi yapılandırma
 
-1. Azure portal [Key Vault](https://ms.portal.azure.com/#create/Microsoft.KeyVault) oluşturun.
-2. **Key Vault > erişim ilkelerine** gidin ve Azure Key Vault gizli dizileri okumak Için [Azure SYNAPSE çalışma alanı MSI](../security/synapse-workspace-managed-identity.md) izinleri verin.
+1. Azure portal bir [Anahtar Kasası](https://ms.portal.azure.com/#create/Microsoft.KeyVault) oluşturun.
+2. **Key Vault**  >  **erişim ilkelerine** gidin ve Azure Key Vault gizli dizileri okumak için [Azure SYNAPSE çalışma alanı MSI](../security/synapse-workspace-managed-identity.md) izinleri verin.
 
->İlke değişikliklerinin kaydedildiğinden emin olun. Bu adımın kaçırılması kolaydır.
+   > [!NOTE]
+   > İlke değişikliklerinin kaydedildiğinden emin olun. Bu adımın kaçırılması kolaydır.
 
-![Erişim İlkesi Ekle](media/tutorial-configure-cognitive-services/tutorial-configure-cognitive-services-00c.png)
+   ![Erişim ilkesi ekleme seçimlerini gösteren ekran görüntüsü.](media/tutorial-configure-cognitive-services/tutorial-configure-cognitive-services-00c.png)
 
-3. Bilişsel hizmet kaynağına gidin, örneğin **anomali algılayıcı-> anahtarlar ve uç nokta**, iki anahtardan birini Pano 'ya kopyalayın.
+3. Bilişsel hizmetler kaynağına gidin. Örneğin, **anomali algılayıcı**  >  **anahtarlarına ve uç noktaya** gidin. Ardından iki anahtardan birini Pano 'ya kopyalayın.
 
-4. Yeni bir gizli dizi oluşturmak için **Key Vault > gizli** sayfasına gidin. Gizli anahtar adını belirtin ve ardından önceki adımdan "değer" alanına yapıştırın. Son olarak, **Oluştur**'a tıklayın.
+4.   >  Yeni bir gizli dizi oluşturmak için Key Vault **gizli** sayfasına gidin. Gizli anahtar adını belirtin ve ardından önceki adımdan **değeri değer** alanına yapıştırın. Son olarak **Oluştur**' u seçin.
 
-![Gizli dizi oluştur](media/tutorial-configure-cognitive-services/tutorial-configure-cognitive-services-00d.png)
+   ![Gizli dizi oluşturma seçimlerini gösteren ekran görüntüsü.](media/tutorial-configure-cognitive-services/tutorial-configure-cognitive-services-00d.png)
 
-> Bu gizli adı anımsadığınızdan veya aklınızda olduğunuzdan emin olun! Daha sonra, Azure SYNAPSE Studio 'dan bilişsel hizmetlere bağlandığınızda kullanacaksınız.
+   > [!IMPORTANT]
+   > Bu gizli dizi adını anımsadığınızdan veya aklınızda olduğunuzdan emin olun. Daha sonra Azure SYNAPSE Studio 'dan bilişsel hizmetlere bağlandığınızda kullanacaksınız.
 
-## <a name="create-azure-keyvault-linked-service-in-azure-synapse"></a>Azure 'da Azure Anahtar Kasası bağlı hizmeti oluşturma SYNAPSE
+## <a name="create-an-azure-key-vault-linked-service-in-azure-synapse"></a>Azure 'da Azure Key Vault bağlantılı hizmet oluşturma SYNAPSE
 
-1. Azure SYNAPSE Studio 'da çalışma alanınızı açın. **Yönet-> bağlı hizmetleri**' ne gidin. Yeni oluşturduğumuz Key Vault işaret eden AB "Azure Key Vault" bağlı hizmeti oluşturun. Sonra, "Bağlantıyı Sına" düğmesine tıklayıp yeşil olup olmadığını kontrol ederek bağlantıyı doğrulayın. Herhangi bir şey düzgün çalışıyorsa, önce "Oluştur" düğmesine tıklayın ve ardından "tümünü Yayımla" ' ya tıklayarak değişikliğinizi kaydedin.
-![Bağlı hizmet](media/tutorial-configure-cognitive-services/tutorial-configure-cognitive-services-00e.png)
+1. Azure SYNAPSE Studio 'da çalışma alanınızı açın. 
+2. Bağlı Hizmetleri **Yönet**' e gidin  >  . Yeni oluşturduğunuz anahtar kasasının üzerine gelerek **Azure Key Vault** bağlantılı bir hizmet oluşturun. 
+3. Bağlantıyı **Sına** düğmesini seçerek bağlantıyı doğrulayın. Bağlantı yeşil ise **Oluştur** ' u seçin ve ardından **Tümünü Yayımla** ' yı seçerek değişiklerinizi kaydedin.
+
+![Yeni bağlı hizmet olarak Azure Key Vault gösteren ekran görüntüsü.](media/tutorial-configure-cognitive-services/tutorial-configure-cognitive-services-00e.png)
 
 Artık Azure SYNAPSE Studio 'da Azure bilişsel hizmetler deneyimini kullanmaya yönelik öğreticilerden biriyle devam etmeye hazırsınız.
 

@@ -7,18 +7,18 @@ ms.topic: article
 ms.date: 11/09/2020
 author: sayantanroy83
 ms.author: sroy
-ms.openlocfilehash: 563ccdb0633f94acccf3ade9faf1c40c28f108ac
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 9f798751065d4889569f4b798ac864342f3e54ef
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462929"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98934405"
 ---
 # <a name="usage-dashboard-in-commercial-marketplace-analytics"></a>Ticari market analizinde Kullanım panosu
 
 Bu makalede, Iş Ortağı Merkezi 'ndeki kullanım panosu hakkında bilgi sağlanır. Bu Pano tüm sanal makineleri (VM) üç ayrı sekmede normalleştirilmiş kullanım, ham kullanım ve ölçümlü faturalandırma ölçümleri sunar: VM normalleştirilmiş kullanımı, VM ham kullanımı ve tarifeli faturalandırma kullanımı.
 
-İş Ortağı Merkezi 'ndeki kullanım panosuna erişmek için, **ticari Market** altında kullanımı **[Çözümle](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)**' yi seçin  >  **Usage**.
+İş Ortağı Merkezi 'ndeki kullanım panosuna erişmek için, **ticari Market** altında kullanımı **[Çözümle](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)**' yi seçin  >  .
 
 >[!NOTE]
 > Analiz terminolojisi hakkında ayrıntılı tanımlamalar için bkz. [ticari Market Analytics terminolojisi ve sık sorulan sorular](./analytics-faq.md).
@@ -122,12 +122,12 @@ _**Tablo 1: veri koşullarının sözlüğü**_
 | Market abonelik kimliği | Market abonelik KIMLIĞI | Ticari Market teklifinizi satın almak için kullanılan müşterinin Azure aboneliğiyle ilişkili benzersiz tanımlayıcı. KIMLIĞI daha önce Azure aboneliği GUID 'iydi. |
 | MonthStartDate | Ay başlangıç tarihi | Ayın başlangıç tarihi, satın alma ayını temsil eder. |
 | Teklif Türü | Teklif Türü | Ticari Market teklifi türü. |
-| Azure lisans türü | Azure lisans türü | Müşteriler tarafından Azure satın alma için kullanılan lisans sözleşmesinin türü. Kanal olarak da bilinir. Olası değerler şunlardır:<ui><li>Bulut çözümü sağlayıcısı</li><li>Enterprise</li><li>Satıcı aracılığıyla kurumsal</li><li>Kullandıkça öde</li></ul> |
+| Azure lisans türü | Azure lisans türü | Müşteriler tarafından Azure satın alma için kullanılan lisans sözleşmesinin türü. Kanal olarak da bilinir. Olası değerler şunlardır:<ui><li>Bulut çözümü sağlayıcısı</li><li>Kurumsal</li><li>Satıcı aracılığıyla kurumsal</li><li>Kullandıkça öde</li></ul> |
 | Market lisans türü | Market lisans türü | Ticari Market teklifinin faturalandırma yöntemi. Olası değerler şunlardır:<ul><li>Azure üzerinden faturalandırılır</li><li>Kendi lisansınızı getirin</li><li>Ücretsiz</li><li>Satıcı olarak Microsoft</li></ul> |
 | SKU | SKU | Teklifle ilişkili plan. |
 | Müşteri ülkesi | Müşteri ülkesi/bölgesi | Müşterinin sunduğu ülke/bölge adı. Ülke/bölge, müşterinin Azure aboneliğindeki ülke/bölgeden farklı olabilir. |
 | Önizleme SKU 'SU | Önizleme SKU 'SU | Değer, SKU 'YU "Önizleme" olarak etiketlediyseniz görüntülenir. SKU buna uygun şekilde etiketlenmişse değer "Evet" olur ve yalnızca sizin tarafından yetkilendirilen Azure abonelikleri bu görüntüyü dağıtabilir ve kullanabilir. SKU "Önizleme" olarak tanımlanmamışsa, değer "Hayır" olacaktır. |
-| SKU faturalandırma türü | SKU faturalandırma türü | Teklifteki her SKU ile ilişkili faturalandırma türü. Olası değerler şunlardır:<ul><li>Ücretsiz</li><li>Ödenmemiş</li></ul> |
+| SKU faturalandırma türü | SKU faturalandırma türü | Teklifteki her SKU ile ilişkili faturalandırma türü. Olası değerler şunlardır:<ul><li>Ücretsiz</li><li>Ücretli</li></ul> |
 | IsInternal | Kullanım Dışı | Kullanım Dışı |
 | VM Boyutu | Sanal makine boyutu | VM tabanlı teklif türleri için bu varlık, teklifin SKU 'SU ile ilişkili VM 'nin boyutunu belirtir. |
 | Bulut örneği adı | Bulut örneği adı | Bir VM dağıtımının gerçekleştiği Microsoft Bulut. |
@@ -135,7 +135,7 @@ _**Tablo 1: veri koşullarının sözlüğü**_
 | Teklif Adı | Teklif Adı | Ticari Market sunumunun adı. |
 | DeploymentMethod | Kullanım Dışı | Kullanım dışı (teklif türü olarak aynı tanım)
  |
-| Müşteri şirket adı | Müşteri şirket adı | Müşterinin sunduğu şirket adı. Ad, müşterinin Azure aboneliğindeki şehirden farklı olabilir. |
+| Müşteri şirket adı | Müşteri şirket adı | Müşterinin sunduğu şirket adı. Ad, müşterinin Azure aboneliğindeki adından farklı olabilir. |
 | Kullanım Tarihi | Kullanım Tarihi | Kullanım tabanlı varlıklar için kullanım olayı oluşturma tarihi. |
 | Imultisolution | Çok çözüm | Teklifin çok çözüm teklif türü olup olmadığını belirtir. |
 | Yeni müşteri | Kullanım Dışı | Kullanım Dışı |

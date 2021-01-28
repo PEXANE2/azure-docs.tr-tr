@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 01/13/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 25685d7e933c9d171e1547be2f5899c08443321a
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.openlocfilehash: 92bf066c9769cc4b2525923b9e18ed3c0e9c577a
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98246579"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937133"
 ---
 # <a name="identify-required-appliances"></a>Gerekli gereçlerini tanımlama
 
@@ -225,7 +225,7 @@ Bu bölümde, Microsoft tarafından sertifikalı ancak önceden yapılandırılm
 | Görüntü | :::image type="content" source="media/how-to-prepare-your-network/deployment-type-enterprise-for-azure-defender-for-iot-v2.png" alt-text="Kurumsal Dağıtım türü."::: |
 | Modelleme | Dell PowerEdge R340 XL |
 | İzleme bağlantı noktaları | En fazla dokuz RJ45 veya altı OPT |
-| En fazla bant genişliği [1](#anchortext2)| 1G MB/sn |
+| En fazla bant genişliği [1](#anchortext2)| 1 GB/sn |
 | En fazla korumalı cihaz | 10,000 |
 
 <a id="anchortext2">Bir</a> Bant genişliği kapasitesi, protokoller dağıtımına bağlı olarak farklılık gösterebilir.

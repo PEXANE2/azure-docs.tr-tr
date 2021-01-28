@@ -9,74 +9,74 @@ ms.reviewer: jrasnick, garye
 ms.date: 09/25/2020
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: 605a5f2f74ca6fb46d851c41f60001c48a95be95
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: d8db9257ad6eed98b39cd2c9a52351f013453365
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96450880"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98935237"
 ---
 # <a name="tutorial-machine-learning-model-scoring-wizard-preview-for-dedicated-sql-pools"></a>Öğretici: adanmış SQL havuzları için makine öğrenme modeli Puanlama Sihirbazı (Önizleme)
 
-Tahmine dayalı makine öğrenimi modelleri sayesinde verilerinizi adanmış SQL havuzlarında kolayca zenginleştirme hakkında bilgi edinin.  Veri bilimcilerinin oluşturmakta olduğu modeller artık tahmine dayalı analiz için veri uzmanlarına kolayca erişebilir. SYNAPSE ' deki bir veri uzmanı, yalnızca SYNAPSE SQL havuzlarında dağıtım için Azure Machine Learning modeli kayıt defterinden bir model seçebilir ve verileri zenginleştirmek için tahminleri başlatabilir.
+Tahmine dayalı makine öğrenimi modelleri sayesinde verilerinizi adanmış SQL havuzlarında kolayca zenginleştirme hakkında bilgi edinin. Veri bilimcilerinin oluşturmakta olduğu modeller artık tahmine dayalı analiz için veri uzmanlarına kolayca erişebilir. Azure SYNAPSE Analytics 'teki bir veri uzmanı, Azure SYNAPSE SQL havuzları 'nda dağıtım için Azure Machine Learning modeli kayıt defterinden bir model seçebilir ve verileri zenginleştirmek için tahminleri başlatabilir.
 
 Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
-> - Tahmine dayalı makine öğrenimi modelini eğitme ve modeli Azure Machine Learning model kayıt defterine kaydetme
-> - Adanmış SQL havuzunda tahminlerini başlatmak için SQL Puanlama Sihirbazı 'nı kullanma
+> - Tahmine dayalı makine öğrenimi modelini eğitme ve modeli Azure Machine Learning modeli kayıt defterine kaydetme.
+> - Adanmış bir SQL havuzunda tahminleri başlatmak için SQL Puanlama Sihirbazı 'nı kullanın.
 
 Azure aboneliğiniz yoksa [başlamadan önce ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-- Varsayılan depolama alanı olarak yapılandırılmış bir ADLS 2. depolama hesabıyla [SYNAPSE Analytics çalışma alanı](../get-started-create-workspace.md) . Birlikte çalıştığınız ADLS 2. FileSystem 'ın **Depolama Blobu veri katılımcısı** olması gerekir.
+- Varsayılan depolama alanı olarak yapılandırılmış bir Azure Data Lake Storage 2. depolama hesabıyla [Azure SYNAPSE Analytics çalışma alanı](../get-started-create-workspace.md) . Birlikte çalıştığınız Data Lake Storage 2. dosya sisteminin *Depolama Blobu veri katılımcısı* olması gerekir.
 - Azure SYNAPSE Analytics çalışma alanınızda adanmış SQL Havuzu. Ayrıntılar için bkz. [adanmış BIR SQL havuzu oluşturma](../quickstart-create-sql-pool-studio.md).
-- Azure SYNAPSE Analytics çalışma alanınızda bağlı hizmeti Azure Machine Learning. Ayrıntılar için bkz. [SYNAPSE içinde Azure Machine Learning bağlantılı hizmet oluşturma](quickstart-integrate-azure-machine-learning.md).
+- Azure SYNAPSE Analytics çalışma alanınızda bağlı hizmeti Azure Machine Learning. Ayrıntılar için bkz. [Azure SYNAPSE 'de Azure Machine Learning bağlantılı hizmet oluşturma](quickstart-integrate-azure-machine-learning.md).
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure portalda](https://portal.azure.com/) oturum açma
+[Azure portalında](https://portal.azure.com/) oturum açın.
 
 ## <a name="train-a-model-in-azure-machine-learning"></a>Azure Machine Learning bir modeli eğitme
 
-Başlamadan önce, **sköğren** sürümünüzün 0.20.3 olduğunu doğrulayın.
+Başlamadan önce, sköğren sürümünüzün 0.20.3 olduğunu doğrulayın.
 
 Not defterindeki tüm hücreleri çalıştırmadan önce, işlem örneğinin çalışıp çalışmadığını denetleyin.
 
-![AML işlem doğrulama](media/tutorial-sql-pool-model-scoring-wizard/tutorial-sql-scoring-wizard-train-00b.png)
+![Azure Machine Learning işlem doğrulaması gösteren ekran görüntüsü.](media/tutorial-sql-pool-model-scoring-wizard/tutorial-sql-scoring-wizard-train-00b.png)
 
 1. Azure Machine Learning çalışma alanınıza gidin.
 
 1. İndirme [tahmin NYC TAXI Tips. ipynb](https://go.microsoft.com/fwlink/?linkid=2144301)'yi indirin.
 
-1. [Azure Machine Learning Studio](https://ml.azure.com)'da Azure Machine Learning çalışma alanını başlatın.
+1. [Azure Machine Learning Studio](https://ml.azure.com)Azure Machine Learning çalışma alanını açın.
 
-1. **Not defterleri** ' ne gidin ve **dosyaları karşıya yükle**' ye tıkladıktan sonra dosyayı indirdiğiniz ve karşıya yüklediğiniz "NYC Taxi Tips. ipynb" öğesini seçin.
-   ![Dosya yükleme](media/tutorial-sql-pool-model-scoring-wizard/tutorial-sql-scoring-wizard-train-00a.png)
+1. **Not defterleri**  >  **dosyaları karşıya yükleme** bölümüne gidin. Ardından, indirdiğiniz **NYC TAXI Tips. ipynb** dosyasını seçin ve karşıya yükleyin.
+   ![Dosya yükleme düğmesinin ekran görüntüsü.](media/tutorial-sql-pool-model-scoring-wizard/tutorial-sql-scoring-wizard-train-00a.png)
 
-1. Not defteri karşıya yüklenip açıldıktan sonra **tüm hücreleri Çalıştır**' a tıklayın.
+1. Not defteri karşıya yüklenip açıldıktan sonra **tüm hücreleri Çalıştır**' ı seçin.
 
-   Hücrelerden biri başarısız olabilir ve Azure 'da kimlik doğrulaması isteyip istemediğinizi sorar. Hücre çıktılarında bunun için bir göz atın ve bağlantıyı izleyerek ve kodu girerek tarayıcınızda kimlik doğrulaması yapın. Ardından, Not defterini yeniden çalıştırın.
+   Hücrelerden biri başarısız olabilir ve Azure 'da kimlik doğrulaması yapmanız istenir. Bunu hücre çıktılarında izleyin ve bağlantıyı izleyerek ve kodu girerek tarayıcınızda kimlik doğrulaması yapın. Ardından, Not defterini yeniden çalıştırın.
 
-1. Not defteri bir ONNX modelini eğitecektir ve MLFlow 'a kaydeder. Yeni modelin düzgün şekilde kaydedilip kaydedilmediği denetlemek için **modeller** ' e gidin.
-   ![Kayıt defterinde model](media/tutorial-sql-pool-model-scoring-wizard/tutorial-sql-scoring-wizard-train-00c.png)
+1. Not defteri bir ONNX modelini eğitecektir ve MLflow 'a kaydeder. Yeni modelin düzgün şekilde kaydedilip kaydedilmediği denetlemek için **modeller** ' e gidin.
+   ![Kayıt defterindeki modeli gösteren ekran görüntüsü.](media/tutorial-sql-pool-model-scoring-wizard/tutorial-sql-scoring-wizard-train-00c.png)
 
-1. Not defteri çalıştırıldığında, test verileri bir CSV dosyasına da dışarı aktarılacaktır. CSV dosyasını yerel sisteminize indirin. Daha sonra, CSV dosyasını adanmış SQL havuzuna aktarırsınız ve verileri kullanarak modeli test edersiniz.
+1. Not defteri çalıştırıldığında, test verileri bir CSV dosyasına da dışarı aktarılacaktır. CSV dosyasını yerel sisteminize indirin. Daha sonra, CSV dosyasını adanmış bir SQL havuzuna aktarır ve bu verileri kullanarak modeli test edersiniz.
 
-   CSV dosyası, Not defteri dosyanız ile aynı klasörde oluşturulur. Hemen görmüyorsanız dosya Gezgini 'nde "Yenile" ye tıklayın.
+   CSV dosyası, Not defteri dosyanız ile aynı klasörde oluşturulur. Hemen görmüyorsanız dosya Gezgini 'nde **Yenile** ' yi seçin.
 
-   ![CSV dosyası](media/tutorial-sql-pool-model-scoring-wizard/tutorial-sql-scoring-wizard-train-00d.png)
+   ![C S V dosyasını gösteren ekran görüntüsü.](media/tutorial-sql-pool-model-scoring-wizard/tutorial-sql-scoring-wizard-train-00d.png)
 
-## <a name="launch-predictions-with-sql-scoring-wizard"></a>SQL Puanlama sihirbazıyla tahminleri başlatma
+## <a name="launch-predictions-with-the-sql-scoring-wizard"></a>SQL Puanlama sihirbazıyla tahminleri başlatma
 
-1. SYNAPSE Studio ile SYNAPSE çalışma alanını açın.
+1. SYNAPSE Studio ile Azure SYNAPSE çalışma alanını açın.
 
-1. **Veri**  ->  **bağlantılı**  ->  **depolama hesaplarına** gidin. `test_data.csv`Varsayılan depolama hesabına yükleyin.
+1. **Veri**  >  **bağlantılı**  >  **depolama hesaplarına** gidin. `test_data.csv`Varsayılan depolama hesabına yükleyin.
 
-   ![Verileri karşıya yükleme](media/tutorial-sql-pool-model-scoring-wizard/tutorial-sql-scoring-wizard-00a.png)
+   ![Karşıya veri yükleme seçimlerini gösteren ekran görüntüsü.](media/tutorial-sql-pool-model-scoring-wizard/tutorial-sql-scoring-wizard-00a.png)
 
-1. **Develop**  ->  **SQL betikleri** geliştirmeye gidin. Adanmış SQL havuzunuza yüklemek için yeni bir SQL betiği oluşturun `test_data.csv` .
+1.   >  **SQL betikleri** geliştirmeye gidin. Adanmış SQL havuzunuza yüklemek için yeni bir SQL betiği oluşturun `test_data.csv` .
 
    > [!NOTE]
    > Bu betikteki dosya URL 'sini çalıştırmadan önce güncelleştirin.
@@ -119,34 +119,36 @@ Not defterindeki tüm hücreleri çalıştırmadan önce, işlem örneğinin ça
 
    ![Verileri adanmış SQL havuzuna yükleme](media/tutorial-sql-pool-model-scoring-wizard/tutorial-sql-scoring-wizard-00b.png)
 
-1. **Veri**  ->  **çalışma alanına** gidin. Adanmış SQL havuzu tablosuna sağ tıklayarak SQL Puanlama Sihirbazı 'nı açın. **Machine Learning**  ->  **Mevcut modelle Machine Learning zenginleştirme** seçeneğini belirleyin.
+1. **Veri**  >  **çalışma alanına** gidin. Adanmış SQL havuzu tablosuna sağ tıklayarak SQL Puanlama Sihirbazı 'nı açın.   >  **Mevcut modelle Machine Learning zenginleştirme** seçeneğini belirleyin.
 
    > [!NOTE]
-   > Azure Machine Learning için oluşturulmuş bağlı bir hizmetiniz yoksa makine öğrenimi seçeneği görünmez (Bu öğreticinin başındaki **önkoşullara** bakın).
+   > Azure Machine Learning için oluşturulmuş bağlı bir hizmetiniz yoksa makine öğrenimi seçeneği görünmez. (Bu öğreticinin başındaki [önkoşullara](#prerequisites) bakın.)
 
-   ![Machine Learning seçeneği](media/tutorial-sql-pool-model-scoring-wizard/tutorial-sql-scoring-wizard-00c.png)
+   ![Machine Learning seçeneğini gösteren ekran görüntüsü.](media/tutorial-sql-pool-model-scoring-wizard/tutorial-sql-scoring-wizard-00c.png)
 
-1. Açılan kutuda bağlı bir Azure Machine Learning çalışma alanı seçin. Bu, seçilen Azure Machine Learning çalışma alanının model kayıt defterinden makine öğrenimi modellerinin bir listesini yükler. Şu anda yalnızca ONNX modelleri desteklenir, bu nedenle yalnızca ONNX modellerini görüntüler.
+1. Açılan kutuda bağlı bir Azure Machine Learning çalışma alanı seçin. Bu adım, seçili Azure Machine Learning çalışma alanının model kayıt defterinden makine öğrenimi modellerinin bir listesini yükler. Şu anda yalnızca ONNX modelleri desteklenir, bu nedenle bu adım yalnızca ONNX modellerini görüntüler.
 
-1. Az önce eğitilen modeli seçin, sonra **devam**' a tıklayın.
+1. Az önce eğitilen modeli seçin ve ardından **devam**' ı seçin.
 
-   ![Azure Machine Learning modeli seçin](media/tutorial-sql-pool-model-scoring-wizard/tutorial-sql-scoring-wizard-00d.png)
+   ![Azure Machine Learning modelini seçen ekran görüntüsü.](media/tutorial-sql-pool-model-scoring-wizard/tutorial-sql-scoring-wizard-00d.png)
 
-1. Sonra, tablo sütunlarını model girişleri ile eşleyin ve model çıkışlarını belirtin. Model MLFlow biçiminde kaydedilirse ve model imzası doldurulduktan sonra, eşleme, adların benzerliğine göre bir mantık kullanarak sizin için otomatik olarak yapılır. Arabirim ayrıca el ile eşlemeyi de destekler.
+1. Tablo sütunlarını model girişleri ile eşleyin ve model çıkışlarını belirtin. Model MLflow biçiminde kaydedilirse ve model imzası doldurulduktan sonra, eşleme, adların benzerliğine göre bir mantık kullanılarak sizin için otomatik olarak yapılır. Arabirim ayrıca el ile eşlemeyi de destekler.
 
-   **Devam**’a tıklayın.
+   **Devam**’ı seçin.
 
-   ![Modellemeden tablo eşleme](media/tutorial-sql-pool-model-scoring-wizard/tutorial-sql-scoring-wizard-00e.png)
+   ![Tablo-model eşlemeyi gösteren ekran görüntüsü.](media/tutorial-sql-pool-model-scoring-wizard/tutorial-sql-scoring-wizard-00e.png)
 
-1. Oluşturulan T-SQL kodu, saklı bir yordamın içine sarmalanır. Bu nedenle bir saklı yordama bir ad sağlamanız gerekir. Meta veriler (sürüm, açıklama, vb.) de dahil olmak üzere model ikili dosyası Azure Machine Learning ' den ayrılmış bir SQL havuzu tablosuna fiziksel olarak kopyalanacaktır. Bu nedenle, modelin hangi tabloya kaydedileceğini belirtmeniz gerekir. "Var olan bir tabloyu kullan" seçeneğini veya "yeni tablo oluştur" seçeneğini belirleyebilirsiniz. İşiniz bittiğinde, modeli dağıtmak ve T-SQL tahmin betiği oluşturmak için **modeli dağıt + düzenleyiciyi aç** ' a tıklayın.
+1. Oluşturulan T-SQL kodu, saklı bir yordamın içine sarmalanır. Bu nedenle, bir saklı yordam adı sağlamanız gerekir. Meta veriler (sürüm, açıklama ve diğer bilgiler) de dahil olmak üzere model ikili dosyası, fiziksel olarak Azure Machine Learning ' den adanmış bir SQL havuzu tablosuna kopyalanacaktır. Bu nedenle, modelin hangi tabloya kaydedileceğini belirtmeniz gerekir. 
 
-   ![Yordam oluştur](media/tutorial-sql-pool-model-scoring-wizard/tutorial-sql-scoring-wizard-00f.png)
+   **Mevcut tablo** veya **Yeni oluştur** seçeneklerinden birini belirleyebilirsiniz. İşiniz bittiğinde modeli dağıtmak ve T-SQL tahmin betiği oluşturmak için **modeli dağıt + betiği aç** ' ı seçin.
 
-1. Betik oluşturulduktan sonra, Puanlama yürütmek ve öngörülere ulaşmak için "Çalıştır" a tıklayın.
+   ![Saklı yordam oluşturma seçimlerini gösteren ekran görüntüsü.](media/tutorial-sql-pool-model-scoring-wizard/tutorial-sql-scoring-wizard-00f.png)
 
-   ![Tahminleri Çalıştır](media/tutorial-sql-pool-model-scoring-wizard/tutorial-sql-scoring-wizard-00g.png)
+1. Betik oluşturulduktan sonra, Puanlama yürütmek ve tahminleri almak için **Çalıştır** ' ı seçin.
+
+   ![Puanlama ve tahminleri gösteren ekran görüntüsü.](media/tutorial-sql-pool-model-scoring-wizard/tutorial-sql-scoring-wizard-00g.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Hızlı başlangıç: SYNAPSE 'de yeni Azure Machine Learning bağlantılı hizmet oluşturma](quickstart-integrate-azure-machine-learning.md)
+- [Hızlı başlangıç: Azure 'da yeni Azure Machine Learning bağlantılı hizmet oluşturma SYNAPSE](quickstart-integrate-azure-machine-learning.md)
 - [Azure SYNAPSE Analytics 'teki Machine Learning özellikleri](what-is-machine-learning.md)

@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: d19190723ebc415e9cf3053b929788dff68aeb0e
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: fe54c4495e589459fe734f315138cafa8d7cd033
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98734548"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98934741"
 ---
 # <a name="spatial-analysis-operations"></a>Uzamsal analiz işlemleri
 
@@ -23,7 +23,7 @@ Uzamsal analiz kamera cihazlarından gelen gerçek zamanlı akış videosunun an
 
 Uzamsal analiz kapsayıcısı aşağıdaki işlemleri uygular:
 
-| İşlem tanımlayıcısı| Açıklama|
+| İşlem tanımlayıcısı| Description|
 |---------|---------|
 | biliveservices. Vision. spatialanalysis-PersonCount | Kameranın görünüm alanındaki belirli bir bölgedeki kişileri sayar. PersonCount 'un doğru toplamı kaydedebilmesi için bölgenin tek bir kamera tarafından tam olarak kapsanmış olması gerekir. <br> Sayı değiştiğinde ilk bir _personcountevent_ olayını ve sonra da _personcountevent_ olaylarını yayar.  |
 | biliveservices. Vision. spatialanalysis-personcrossingline | Bir kişinin, kameranın görünüm alanındaki belirli bir satırı ne zaman kesişdiğini izler. <br>Kişi çizgiyi kesen ve yön bilgisi sağlayan bir _Personlineevent_ olayı yayar. 
@@ -32,7 +32,7 @@ Uzamsal analiz kapsayıcısı aşağıdaki işlemleri uygular:
 
 Tüm yukarıdaki işlemler, `.debug` işlenmekte oldukları gibi video çerçevelerini görselleştirme özelliğine sahip olan sürümde de mevcuttur. `xhost +`Video çerçevelerinin ve olaylarının görselleştirilmesini sağlamak için ana bilgisayarda çalıştırmanız gerekir.
 
-| İşlem tanımlayıcısı| Açıklama|
+| İşlem tanımlayıcısı| Description|
 |---------|---------|
 | biliveservices. Vision. spatialanalysis-PersonCount. Debug | Kameranın görünüm alanındaki belirli bir bölgedeki kişileri sayar. <br> Sayı değiştiğinde ilk bir _personcountevent_ olayını ve sonra da _personcountevent_ olaylarını yayar.  |
 | biliveservices. Vision. spatialanalysis-personcrossingline. Debug | Bir kişinin, kameranın görünüm alanındaki belirli bir satırı ne zaman kesişdiğini izler. <br>Kişi çizgiyi kesen ve yön bilgisi sağlayan bir _Personlineevent_ olayı yayar. 
@@ -43,7 +43,7 @@ Uzamsal analiz, video AI modülü olarak [canlı video analizi](../../media-serv
 
 <!--more details on the setup can be found in the [LVA Setup page](LVA-Setup.md). Below is the list of the operations supported with Live Video Analytics. -->
 
-| İşlem tanımlayıcısı| Açıklama|
+| İşlem tanımlayıcısı| Description|
 |---------|---------|
 | biliveservices. Vision. spatialanalysis-PersonCount. livevideoanalytics | Kameranın görünüm alanındaki belirli bir bölgedeki kişileri sayar. <br> Sayı değiştiğinde ilk bir _personcountevent_ olayını ve sonra da _personcountevent_ olaylarını yayar.  |
 | biliveservices. Vision. spatialanalysis-personcrossingline. livevideoanalytics | Bir kişinin, kameranın görünüm alanındaki belirli bir satırı ne zaman kesişdiğini izler. <br>Kişi çizgiyi kesen ve yön bilgisi sağlayan bir _Personlineevent_ olayı yayar. 
@@ -57,11 +57,11 @@ Canlı video analizi işlemleri de `.debug` (örneğin, biliveservices. Vision. 
 
 Bunlar, bu uzamsal analiz işlemlerinin her biri için gereken parametrelerdir.
 
-| İşlem parametreleri| Açıklama|
+| İşlem parametreleri| Description|
 |---------|---------|
 | İşlem KIMLIĞI | Yukarıdaki tablodan Işlem tanımlayıcısı.|
 | enabled | Boolean: true veya false|
-| VIDEO_URL| Kamera cihazının RTSP URL 'si (örnek: `rtsp://username:password@url` ). Uzamsal analiz, RTSP, http veya MP4 aracılığıyla H., kodlanmış akışı destekler. Video_URL, AES şifrelemesi kullanılarak karıştırılmış bir Base64 dizesi değeri olarak sağlanır ve video URL 'si karıştırılmış `KEY_ENV` ve `IV_ENV` ortam değişkenleri olarak sağlanması gerekiyorsa. Anahtar ve şifreleme oluşturmak için örnek yardımcı program [burada](/dotnet/api/system.security.cryptography.aesmanaged?preserve-view=true&view=net-5.0)bulunabilir. |
+| VIDEO_URL| Kamera cihazının RTSP URL 'si (örnek: `rtsp://username:password@url` ). Uzamsal analiz, RTSP, http veya MP4 aracılığıyla H., kodlanmış akışı destekler. Video_URL, AES şifrelemesi kullanılarak karıştırılmış bir Base64 dizesi değeri olarak sağlanır ve video URL 'si karıştırılmış `KEY_ENV` ve `IV_ENV` ortam değişkenleri olarak sağlanması gerekiyorsa. Anahtar ve şifreleme oluşturmak için örnek yardımcı program [burada](/dotnet/api/system.security.cryptography.aesmanaged)bulunabilir. |
 | VIDEO_SOURCE_ID | Kamera cihazı veya video akışı için kolay bir ad. Bu, olay JSON çıkışıyla döndürülür.|
 | VIDEO_IS_LIVE| Kamera aygıtları için doğru; Kayıtlı videolar için false.|
 | VIDEO_DECODE_GPU_INDEX| Video çerçevesinin kodunu çözecek GPU. Varsayılan olarak 0 ' dır. `gpu_index`, Gibi diğer düğüm yapılandırması ile aynı olmalıdır `VICA_NODE_CONFIG` `DETECTOR_NODE_CONFIG` .|
@@ -122,7 +122,7 @@ Bu, tüm uzamsal analiz işlemleri için DETECTOR_NODE_CONFIG parametrelerine bi
 }
 ```
 
-| Ad | Tür| Açıklama|
+| Ad | Tür| Description|
 |---------|---------|---------|
 | `zones` | list| Bölgelerin listesi. |
 | `name` | string| Bu bölge için kolay ad.|
@@ -167,7 +167,7 @@ Bu, bir satırı yapılandıran SPACEANALYTICS_CONFIG parametresi için bir JSON
 }
 ```
 
-| Ad | Tür| Açıklama|
+| Ad | Tür| Description|
 |---------|---------|---------|
 | `lines` | list| Satır listesi.|
 | `name` | string| Bu satır için kolay ad.|
@@ -213,7 +213,7 @@ Bu, bir bölgeyi yapılandıran SPACEANALYTICS_CONFIG parametresine yönelik JSO
 }
 ```
 
-| Ad | Tür| Açıklama|
+| Ad | Tür| Description|
 |---------|---------|---------|
 | `zones` | list| Bölgelerin listesi. |
 | `name` | string| Bu bölge için kolay ad.|
@@ -247,7 +247,7 @@ Bu, **biliveservices. Vision. spatialanalysis-persondistance** için bir bölgey
 }
 ```
 
-| Ad | Tür| Açıklama|
+| Ad | Tür| Description|
 |---------|---------|---------|
 | `zones` | list| Bölgelerin listesi. |
 | `name` | string| Bu bölge için kolay ad.|
@@ -964,7 +964,7 @@ GPU 'ların en iyi performansını ve kullanımını sağlamak için, grafik ör
       }
   }
   ```
-| Ad | Tür| Açıklama|
+| Ad | Tür| Description|
 |---------|---------|---------|
 | `batch_size` | int | İşlemde kullanılacak kameraları sayısını belirtir. |
 
