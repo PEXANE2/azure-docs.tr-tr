@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c065b7a7269c8da42493ede50466f44f7dd2658
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 5f0a84af0c7a4105327405cfb809f5101ab42931
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98219955"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98938384"
 ---
 # <a name="conditional-access-grant"></a>Koşullu erişim: ver
 
@@ -121,7 +121,9 @@ Koşullu erişim ilkenizde, seçili bulut uygulamalarına erişim izni vermeden 
 
 Bu izin denetiminden yararlanmak için, koşullu erişim cihazın bir aracı uygulamasının kullanılmasını gerektiren Azure Active Directory kaydedilmesini gerektirir. Aracı uygulama, iOS için Microsoft Authenticator ya da Android cihazlar için Microsoft Şirket portalı olabilir. Kullanıcı kimlik doğrulamaya çalıştığında cihazda bir aracı uygulaması yüklü değilse, aracı uygulamasını yüklemek için Kullanıcı App Store 'a yönlendirilir.
 
-Bu ayar, aşağıdaki istemci uygulamaları için geçerlidir:
+Uygulamalar, **Ilke güvencesi** ile **Intune SDK 'sını** sağlamak ve bu ayarı desteklemek için belirli diğer gereksinimleri karşılamak zorundadır. Intune SDK 'Sı ile uygulama uygulayan geliştiriciler, bu gereksinimlere ilişkin SDK belgelerinde daha fazla bilgi bulabilir.
+
+Bu ayarı desteklemek için aşağıdaki istemci uygulamaları onaylandı:
 
 - Microsoft Cortana
 - Microsoft Edge

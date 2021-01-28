@@ -1,19 +1,16 @@
 ---
 title: Apache Hive ve HiveQL nedir-Azure HDInsight
 description: Apache Hive, Apache Hadoop için bir veri ambarı sistemidir. Hive içinde depolanan verileri, Transact-SQL ' e benzer HiveQL kullanarak sorgulayabilirsiniz. Bu belgede, Azure HDInsight ile Hive ve HiveQL kullanmayı öğrenin.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 02/28/2020
-ms.openlocfilehash: d2e59b35a30bd838eab2b05dcacf83d8b2c21236
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 4e8c6b25055dfc38d56509e1744b8c7fcac40700
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92540406"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944299"
 ---
 # <a name="what-is-apache-hive-and-hiveql-on-azure-hdinsight"></a>Azure HDInsight 'ta Apache Hive ve HiveQL nedir?
 
@@ -23,7 +20,7 @@ Hive büyük ölçüde yapılandırılmamış veriler üzerinde proje yapısı o
 
 HDInsight, belirli iş yükleri için ayarlanmış çeşitli küme türleri sağlar. Aşağıdaki küme türleri genellikle Hive sorguları için kullanılır:
 
-|Küme türü |Açıklama|
+|Küme türü |Description|
 |---|---|
 |Interactive Query|Etkileşimli sorguların yanıt sürelerini geliştirmek için [düşük gecikme süreli analitik işleme (LLAP)](https://cwiki.apache.org/confluence/display/Hive/LLAP) işlevselliği sağlayan bir Hadoop kümesi. Daha fazla bilgi için bkz. [HDInsight 'Ta etkileşimli sorguya başlama](../interactive-query/apache-interactive-query-get-started.md) belgesi.|
 |Hadoop|Toplu işleme iş yükleri için ayarlanmış bir Hadoop kümesi. Daha fazla bilgi için bkz. [HDInsight 'ta Apache Hadoop kullanmaya başlama](../hadoop/apache-hadoop-linux-tutorial-get-started.md) belgesi.|
@@ -72,14 +69,14 @@ Hive tarafından desteklenen dosya biçimleri hakkında daha fazla bilgi için b
 
 Hive ile oluşturabileceğiniz iki tür tablo vardır:
 
-* __İç__ : veriler Hive veri ambarında depolanır. Veri ambarı, `/hive/warehouse/` kümenin varsayılan depolama alanında bulunur.
+* __İç__: veriler Hive veri ambarında depolanır. Veri ambarı, `/hive/warehouse/` kümenin varsayılan depolama alanında bulunur.
 
     Aşağıdaki koşullardan biri geçerli olduğunda iç tabloları kullanın:
 
     * Veriler geçicidir.
     * Hive 'ın tablo ve veri yaşam döngüsünü yönetmesini istiyorsunuz.
 
-* __Harici__ : veriler veri ambarının dışında saklanır. Veriler, küme tarafından erişilebilen herhangi bir depolama alanında depolanabilir.
+* __Harici__: veriler veri ambarının dışında saklanır. Veriler, küme tarafından erişilebilen herhangi bir depolama alanında depolanabilir.
 
     Aşağıdaki koşullardan biri geçerli olduğunda dış tabloları kullanın:
 

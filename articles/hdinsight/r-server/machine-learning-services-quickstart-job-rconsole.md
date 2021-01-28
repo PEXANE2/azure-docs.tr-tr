@@ -1,19 +1,16 @@
 ---
 title: 'Hızlı başlangıç: ML hizmetlerinde R betiği & R konsolu-Azure HDInsight'
 description: Hızlı başlangıçta, R konsolu 'nu kullanarak Azure HDInsight 'ta bir ML Hizmetleri kümesinde bir R betiği yürütülecektir.
-author: hrasheed-msft
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: quickstart
 ms.date: 06/19/2019
-ms.author: hrasheed
 ms.custom: mvc
-ms.openlocfilehash: af41a7569dedc9a56f67be8ae791d7185e0c7489
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: eac6fd14acfe12a0f505419a229bb78e423706d1
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "73241606"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98935742"
 ---
 # <a name="quickstart-execute-an-r-script-on-an-ml-services-cluster-in-azure-hdinsight-using-r-console"></a>Hızlı başlangıç: R konsolunu kullanarak Azure HDInsight 'ta bir ML Hizmetleri kümesinde R betiği yürütme
 
@@ -23,9 +20,9 @@ Bu hızlı başlangıçta, r konsolu ile, dağıtılmış R hesaplamaları için
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* HDInsight üzerinde bir ML Hizmetleri kümesi. Bkz. [Azure Portal kullanarak Apache Hadoop kümeleri oluşturma](../hdinsight-hadoop-create-linux-clusters-portal.md) ve **küme türü**için **ml Hizmetleri** seçme.
+* HDInsight üzerinde bir ML Hizmetleri kümesi. Bkz. [Azure Portal kullanarak Apache Hadoop kümeleri oluşturma](../hdinsight-hadoop-create-linux-clusters-portal.md) ve **küme türü** için **ml Hizmetleri** seçme.
 
-* Bir SSH istemcisi. Daha fazla bilgi için bkz. [SSH kullanarak HDInsight 'A bağlanma (Apache Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md).
+* Bir SSH istemcisi. Daha fazla bilgi için bkz. [SSH kullanarak HDInsight'a (Apache Hadoop) bağlanma](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 
 ## <a name="connect-to-r-console"></a>R konsoluna bağlanma
@@ -150,7 +147,7 @@ Bu hızlı başlangıçta, r konsolu ile, dağıtılmış R hesaplamaları için
     
       ---
     
-      Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+      Signif. codes:  0 ‘**_’ 0.001 ‘_*’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
     
       Condition number of final variance-covariance matrix: 11904202
       Number of iterations: 7

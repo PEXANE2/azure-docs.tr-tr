@@ -4,12 +4,12 @@ description: Application Insights’ta web testleri ayarlayın. Web sitesi kulla
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 1b51c70dcebbfad5417a8478f4a956fb5d0608b1
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: b0f66608c6e0f23b861e207d0dea07a546b41c2a
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98198671"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937417"
 ---
 # <a name="monitor-the-availability-of-any-website"></a>Herhangi bir Web sitesinin kullanılabilirliğini izleme
 
@@ -23,12 +23,12 @@ Genel İnternet'ten erişilebilen herhangi bir HTTP veya HTTPS uç noktası içi
 
 * [URL ping testi](#create-a-url-ping-test): Azure portalında oluşturabileceğiniz basit bir test.
 * [Çok adımlı Web testi](availability-multistep.md): daha karmaşık senaryoları test etmek için oynatılabilecek Web istekleri dizisinin bir kaydı. Çok adımlı Web testleri Visual Studio Enterprise oluşturulur ve yürütülmek üzere portala yüklenir.
-* [Özel Izleme kullanılabilirlik testleri](/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability?view=azure-dotnet): kullanılabilirlik testlerini çalıştırmak için özel bir uygulama oluşturmaya karar verirseniz, bu `TrackAvailability()` Yöntem sonuçları Application Insights göndermek için kullanılabilir.
+* [Özel Izleme kullanılabilirlik testleri](/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability): kullanılabilirlik testlerini çalıştırmak için özel bir uygulama oluşturmaya karar verirseniz, bu `TrackAvailability()` Yöntem sonuçları Application Insights göndermek için kullanılabilir.
 
 **Application Insights kaynak başına en çok 100 kullanılabilirlik testi oluşturabilirsiniz.**
 
 > [!IMPORTANT]
-> Her ikisi de, [URL ping testi](#create-a-url-ping-test) ve [çok adımlı Web testi](availability-multistep.md) , sınanan uç noktaların etki alanı adlarını çözümlemek için genel internet DNS altyapısını kullanır. Bu, Özel DNS kullanıyorsanız, testinizin her etki alanı adının aynı zamanda genel etki alanı adı sunucuları tarafından çözümlenebilmesini veya mümkün olmadığında, bunun yerine [özel izleme kullanılabilirlik testlerini](/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability?view=azure-dotnet) kullanabilirsiniz.
+> Her ikisi de, [URL ping testi](#create-a-url-ping-test) ve [çok adımlı Web testi](availability-multistep.md) , sınanan uç noktaların etki alanı adlarını çözümlemek için genel internet DNS altyapısını kullanır. Bu, Özel DNS kullanıyorsanız, testinizin her etki alanı adının aynı zamanda genel etki alanı adı sunucuları tarafından çözümlenebilmesini veya mümkün olmadığında, bunun yerine [özel izleme kullanılabilirlik testlerini](/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability) kullanabilirsiniz.
 
 ## <a name="create-an-application-insights-resource"></a>Application Insights kaynağı oluşturma
 
@@ -94,7 +94,7 @@ Azure Resource Manager kullanarak bir kullanılabilirlik URL 'SI ping testi dağ
 | Görünen Ad                           | Popülasyon adı   |
 |----------------------------------------|-------------------|
 | Avustralya Doğu                         | EMEA-au-Syd-Edge  |
-| Brezilya Güney                           | LATAM-br-Gru-Edge |
+| Güney Brezilya                           | LATAM-br-Gru-Edge |
 | Central US                             | ABD-fl-Mia-Edge    |
 | Doğu Asya                              | APAC-HK-hkn-azr   |
 | Doğu ABD                                | ABD-VA-Ash-azr     |

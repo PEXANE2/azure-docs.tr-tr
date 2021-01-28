@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 10/14/2020
 ms.author: alkohli
-ms.openlocfilehash: aaa75988e1177590a0ff6f4ca2e00f92de68789f
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 0c0ef6157ebf70c896fbac5ff692246e4fad2c14
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96583731"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937213"
 ---
 # <a name="tutorial-transfer-data-with-azure-data-box-gateway"></a>Öğretici: Azure Data Box Gateway veri aktarma
 
@@ -57,7 +57,7 @@ Bir paylaşma oluşturmak için aşağıdaki yordamı uygulayın:
 
     3. Paylaşımın duracağı depolama hesabını sağlayın. Henüz kapsayıcı yoksa, yeni oluşturulan paylaşım adıyla depolama hesabında oluşturulur. Kapsayıcı zaten varsa, kapsayıcı kullanılır.
        > [!IMPORTANT]
-       > Kullandığınız Azure depolama hesabının, Data Box Gateway bir cihazla kullanıyorsanız, bu sunucuda ayarlanmış bir kullanılabilirlik ilkesi olmadığından emin olun. Daha fazla bilgi için bkz. [BLOB depolama için dengesde kullanılabilirlik Ilkelerini ayarlama ve yönetme](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage).
+       > Kullandığınız Azure depolama hesabının, Data Box Gateway bir cihazla kullanıyorsanız, bu sunucuda ayarlanmış bir kullanılabilirlik ilkesi olmadığından emin olun. Daha fazla bilgi için bkz. [BLOB depolama için dengesde kullanılabilirlik Ilkelerini ayarlama ve yönetme](../storage/blobs/storage-blob-immutability-policies-manage.md).
     
     4. Blok blobundan, sayfa blobundan veya dosyadan **Depolama hizmeti**'ni seçin. Seçilen hizmetin türü, verilerin Azure'da hangi biçimde tutulmasını istediğinize bağlıdır. Örneğin, buradaki örnekte biz verilerin Azure'da blob blokları olarak tutulmasını istediğimiz için Blok Blobunu seçtik. Sayfa Blobunu seçerseniz, verilerinizi 512 bayt hizalı olduğundan emin olmalısınız. Örneğin VHDX her zaman 512 bayt hizalıdır.
    
@@ -107,7 +107,7 @@ Data Box Gateway'inize bağlı Windows Server istemcinizde aşağıdaki komutlar
 
 
 2. Klavyenizde Windows + R ' yi seçin. 
-3. **Çalıştır** penceresinde, öğesini belirtip Tamam ' `\\<device IP address>` ı seçin. **OK** Dosya Gezgini açılır. Artık oluşturduğunuz paylaşımları klasörler olarak görüntüleyebiliyor olmalısınız. İçeriğini görüntülemek için Dosya Gezgini'nde paylaşıma (klasöre) çift tıklayın.
+3. **Çalıştır** penceresinde, öğesini belirtip Tamam ' `\\<device IP address>` ı seçin.  Dosya Gezgini açılır. Artık oluşturduğunuz paylaşımları klasörler olarak görüntüleyebiliyor olmalısınız. İçeriğini görüntülemek için Dosya Gezgini'nde paylaşıma (klasöre) çift tıklayın.
  
     ![SMB paylaşımına bağlanma](./media/data-box-gateway-deploy-add-shares/connect-to-share2.png)-->
 

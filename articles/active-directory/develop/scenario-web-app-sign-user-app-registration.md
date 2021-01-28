@@ -12,20 +12,20 @@ ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: b6240f88d309cbf4f26375c5f961d716b472755d
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 7f7be27e67bfa266c368927227f1b8d1083a5124
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98756272"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937887"
 ---
 # <a name="web-app-that-signs-in-users-app-registration"></a>Kullanıcılarda oturum açan Web uygulaması: uygulama kaydı
 
-Bu makalede, kullanıcılarda oturum açan bir Web uygulaması için uygulama kaydı özellikleri açıklanmaktadır.
+Bu makalede, kullanıcılarda oturum açan bir Web uygulaması için uygulama kaydı adımları açıklanmaktadır.
 
 Uygulamanızı kaydetmek için şunu kullanabilirsiniz:
 
-- [Web uygulaması hızlı başlangıç](#register-an-app-by-using-the-quickstarts). Uygulama oluşturmaya yönelik harika bir ilk deneyim olmasının yanı sıra Azure portal hızlı başlangıçlar, **Bu değişikliği bana yap** adlı bir düğme içerir. Bu düğmeyi, mevcut bir uygulama için bile ihtiyacınız olan özellikleri ayarlamak için kullanabilirsiniz. Bu özelliklerin değerlerini kendi servis talebine uyarlamanız gerekir. Özellikle, uygulamanız için Web API URL 'SI muhtemelen önerilen varsayılan sunucudan farklı olacaktır, bu da oturum kapatma URI 'sini de etkileyecektir.
+- [Web uygulaması hızlı başlangıç](#register-an-app-by-using-the-quickstarts). Uygulama oluşturmaya yönelik harika bir ilk deneyim olmasının yanı sıra Azure portal hızlı başlangıçlar, **Bu değişikliği bana yap** adlı bir düğme içerir. Bu düğmeyi, mevcut bir uygulama için bile ihtiyacınız olan özellikleri ayarlamak için kullanabilirsiniz. Bu özelliklerin değerlerini kendi çalışmanıza uyarlayabilirsiniz. Özellikle, uygulamanız için Web API URL 'SI muhtemelen önerilen varsayılan sunucudan farklı olacaktır, bu da oturum kapatma URI 'sini de etkileyecektir.
 - [Uygulamanızı el ile kaydetmek](#register-an-app-by-using-the-azure-portal)için Azure Portal.
 - PowerShell ve komut satırı araçları.
 
@@ -56,8 +56,8 @@ Web uygulamanızın oluşturulmasını önyüklemek için bu bağlantıları kul
    1. **Kaydet**’i seçin.
 1. **Yönet** altında **kimlik doğrulaması** ' nı seçin ve ardından aşağıdaki bilgileri ekleyin:
    1. **Web** bölümünde, `https://localhost:44321/signin-oidc` **yeniden yönlendirme URI 'si** olarak ekleyin.
-   1. `https://localhost:44321/signout-oidc` **Oturum kapatma URL 'si** olarak ekleyin.
-   1. **Örtük onay**'ın altında **Kimlik belirteçleri**'ni seçin.
+   1. **Ön kanal oturum kapatma URL 'si**' nde, girin `https://localhost:44321/signout-oidc` .
+   1. **Örtük verme ve karma akışlar** altında **Kimlik belirteçleri**' ni seçin.
    1. **Kaydet**’i seçin.
    
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
@@ -65,10 +65,10 @@ Web uygulamanızın oluşturulmasını önyüklemek için bu bağlantıları kul
 1. **Uygulama kaydet** sayfası göründüğünde uygulamanızın kayıt bilgilerini girin:
    1. Uygulamanız için bir **ad** girin (örneğin,) `MailApp-openidconnect-v2` . Uygulamanızın kullanıcıları bu adı görebilir ve daha sonra değiştirebilirsiniz.
    1. Uygulamanız için desteklenen hesap türlerini seçin. (Bkz. [Desteklenen hesap türleri](./v2-supported-account-types.md).)
-   1. **Yeniden yönlendirme URI 'si (isteğe bağlı)** bölümünde, açılan kutuda **Web** ' i seçin ve aşağıdaki yeniden yönlendirme URI 'sini girin: **https://localhost:44326/** .
+   1. **Yeniden yönlendirme URI 'si (isteğe bağlı)** bölümünde, açılan kutuda **Web** ' i seçin ve BIR **yeniden yönlendirme URI 'si** girin `https://localhost:44326/` .
    1. Uygulamayı kaydetmek için **Kaydet**'i seçin.
 1. **Yönet** altında **kimlik doğrulaması**' nı seçin.
-1. **Örtük izin** bölümünde **Kimlik belirteçleri**' ni seçin. Bu örnek, kullanıcının oturum açması için [örtük verme akışının](v2-oauth2-implicit-grant-flow.md) etkinleştirilmesini gerektirir.
+1. **Örtük verme ve karma akışlar** bölümünde **Kimlik belirteçleri**' ni seçin. Bu örnek, kullanıcının oturum açması için [örtük verme akışının](v2-oauth2-implicit-grant-flow.md) etkinleştirilmesini gerektirir.
 1. **Kaydet**’i seçin.
 
 # <a name="java"></a>[Java](#tab/java)
@@ -81,10 +81,10 @@ Web uygulamanızın oluşturulmasını önyüklemek için bu bağlantıları kul
 1. **Web**'i seçin.
 1. **Yeniden yönlendirme URI 'si** için, aynı ana bilgisayar ve bağlantı noktası numarasını girin ve ardından `/msal4jsample/secure/aad` oturum açma sayfasına yazın. 
 1. **Yapılandır**'ı seçin.
-1. **Web** bölümünde, ana bilgisayar ve bağlantı noktası numarasını, ardından **/msal4jsample/Graph/Me** ' yi, Kullanıcı bilgileri sayfası için **yeniden yönlendirme URI 'si** olarak kullanın.
+1. **Web** bölümünde, ana bilgisayar ve bağlantı noktası numarasını, ardından `/msal4jsample/graph/me` Kullanıcı bilgileri sayfası Için bir **yeniden yönlendirme URI 'si** olarak kullanın.
 Varsayılan olarak, örnek şunları kullanır:
-   - **http://localhost:8080/msal4jsample/secure/aad**
-   - **http://localhost:8080/msal4jsample/graph/me**
+   - `http://localhost:8080/msal4jsample/secure/aad`
+   - `http://localhost:8080/msal4jsample/graph/me`
 
 1. **Kaydet**’i seçin.
 1. **Yönet**’in altında **Sertifikalar ve gizli diziler**’i seçin.
@@ -100,7 +100,7 @@ Varsayılan olarak, örnek şunları kullanır:
 1. **Uygulama kaydet** sayfası göründüğünde uygulamanızın kayıt bilgilerini girin:
    1. Uygulamanız için bir **ad** girin (örneğin,) `python-webapp` . Uygulamanızın kullanıcıları bu adı görebilir ve daha sonra değiştirebilirsiniz.
    1. **Desteklenen hesap türlerini** **Tüm Kurumsal dizin ve kişisel Microsoft hesaplarında (ör. Skype, Xbox, Outlook.com) hesaplar** olarak değiştirin.
-   1. **Yeniden yönlendirme URI 'si (isteğe bağlı)** bölümünde, açılan kutuda **Web** ' i seçin ve aşağıdaki yeniden yönlendirme URI 'sini girin: **http://localhost:5000/getAToken** .
+   1. **Yeniden yönlendirme URI 'si (isteğe bağlı)** bölümünde, açılan kutuda **Web** ' i seçin ve aşağıdaki yeniden yönlendirme URI 'sini girin: `http://localhost:5000/getAToken` .
    1. Uygulamayı kaydetmek için **Kaydet**'i seçin.
 1. Uygulamanın **genel bakış** sayfasında, **uygulama (istemci) kimlik** değerini bulun ve daha sonra için kaydedin. Bu proje için Visual Studio yapılandırma dosyasını yapılandırmak için gerekli olacaktır.
 1. **Yönet**’in altında **Sertifikalar ve gizli diziler**’i seçin.

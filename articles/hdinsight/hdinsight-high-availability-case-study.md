@@ -1,19 +1,16 @@
 ---
 title: Azure HDInsight yüksek oranda kullanılabilir çözüm mimarisi örnek olay incelemesi
 description: Bu makale, olası bir Azure HDInsight yüksek oranda kullanılabilir çözüm mimarisine yönelik kurgusal bir olay incelemesi.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 keywords: Hadoop yüksek kullanılabilirlik
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/08/2020
-ms.openlocfilehash: 4b98b03c2d7eb4a0403b4595c1376656ed42511b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0616694d05e3fc9d2255ad97647ebe3bce545a93
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91855047"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945367"
 ---
 # <a name="azure-hdinsight-highly-available-solution-architecture-case-study"></a>Azure HDInsight yüksek oranda kullanılabilir çözüm mimarisi örnek olay incelemesi
 
@@ -68,7 +65,7 @@ Olağanüstü durum varsa, ihtiyacınız olan en düşük iş işlevlerini belir
 
 Aşağıdaki görüntüde contoso perakende yüksek kullanılabilirlik olağanüstü durum kurtarma mimarisi gösterilmektedir.
 
-:::image type="content" source="./media/hdinsight-high-availability-case-study/contoso-solution.png" alt-text="Contoso perakende mimarisi":::
+:::image type="content" source="./media/hdinsight-high-availability-case-study/contoso-solution.png" alt-text="Contoso çözümü":::
 
 **Kafka** , birincil bölgeden Ikincil bölgeye Kafka konularını yansıtmak için [etkin – Pasif](hdinsight-business-continuity-architecture.md#apache-kafka) çoğaltma kullanır. Kafka çoğaltma için bir alternatif, her iki bölgede de Kafka 'e üretmek olabilir.
 

@@ -1,19 +1,16 @@
 ---
 title: Azure HDInsight ile küme oluşturma hatalarıyla ilgili sorunları giderme
 description: Azure HDInsight için Apache kümesi oluşturma sorunlarını giderme hakkında bilgi edinin.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 04/14/2020
-ms.openlocfilehash: b8be230044d868cc3ec03f6dc3fc2d21e102f121
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e12b96883ae26b6c10e3622c35914ce498afca48
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91856305"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944436"
 ---
 # <a name="troubleshoot-cluster-creation-failures-with-azure-hdinsight"></a>Azure HDInsight ile küme oluşturma hatalarıyla ilgili sorunları giderme
 
@@ -53,10 +50,10 @@ Aşağıdaki tablodaki IP adreslerinden gelen trafiğe izin verin.
 
 | Kaynak IP adresi | Hedef | Yön |
 |---|---|---|
-| 168.61.49.99 | *: 443 | Inbound |
-| 23.99.5.239 | *: 443 | Inbound |
-| 168.61.48.131 | *: 443 | Inbound |
-| 138.91.141.162 | *: 443 | Inbound |
+| 168.61.49.99 | *: 443 | Gelen |
+| 23.99.5.239 | *: 443 | Gelen |
+| 168.61.48.131 | *: 443 | Gelen |
+| 138.91.141.162 | *: 443 | Gelen |
 
 Ayrıca, kümenin oluşturulduğu bölgeye özgü IP adreslerini de ekleyin. Her bir Azure bölgesinin adres listesi için bkz. [HDInsight YÖNETIMI IP adresleri](../hdinsight-management-ip-addresses.md) .
 

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/10/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 7d34039a5d56feb42473b1a2b24def5244ec3e04
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 984b85ff831146060f1642b9eeec7079ff966db3
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98756136"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937828"
 ---
 # <a name="tutorial-build-a-multi-tenant-daemon-that-uses-the-microsoft-identity-platform"></a>Öğretici: Microsoft Identity platformunu kullanan çok kiracılı bir Daemon oluşturma
 
@@ -33,7 +33,7 @@ Bu öğreticide:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - [Visual Studio 2017 veya 2019](https://visualstudio.microsoft.com/downloads/).
 - Azure AD kiracısı. Daha fazla bilgi için bkz. [Azure AD kiracısı alma](quickstart-create-new-tenant.md).
@@ -109,7 +109,7 @@ Otomasyonu kullanmak istemiyorsanız, aşağıdaki bölümlerde bulunan adımlar
 1. Uygulamayı kaydetmek için **Kaydet**'i seçin.
 1. Uygulamanın **genel bakış** sayfasında, **uygulama (istemci) kimlik** değerini bulun ve daha sonra kullanmak üzere kaydedin. Bu proje için Visual Studio yapılandırma dosyasını yapılandırmak için gerekli olacaktır.
 1. **Yönet** altında **kimlik doğrulaması**' nı seçin.
-1. **Logout URL 'sini** olarak ayarlayın `https://localhost:44316/Account/EndSession` .
+1. **Ön kanal oturum kapatma URL 'sini** olarak ayarlayın `https://localhost:44316/Account/EndSession` .
 1. **Örtük izin** bölümünde, **erişim belirteçleri** ve **Kimlik belirteçleri**' ni seçin. Bu örnek, kullanıcının oturum açması ve bir API çağırması için [örtük verme akışının](v2-oauth2-implicit-grant-flow.md) etkinleştirilmesini gerektirir.
 1. **Kaydet**’i seçin.
 1. **Yönet**’in altında **Sertifikalar ve gizli diziler**’i seçin.
@@ -227,7 +227,7 @@ Visual Studio projeyi yayımlayacak ve projenin URL 'sine otomatik olarak bir ta
 1. <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>geri dönün.
 1. Sol bölmede **Azure Active Directory** hizmetini seçin ve **uygulama kayıtları**' ı seçin.
 1. **DotNet-Web-Daemon-v2** uygulamasını seçin.
-1. Uygulamanızın **kimlik doğrulama** sayfasında, **oturum kapatma URL 'si** alanlarını hizmetinizin adresiyle güncelleştirin. Örneğin, kullanın `https://dotnet-web-daemon-v2-contoso.azurewebsites.net` .
+1. Uygulamanızın **kimlik doğrulama** sayfasında, **ön kanal oturum kapatma URL 'si** alanlarını hizmetinizin adresiyle güncelleştirin. Örneğin, kullanın `https://dotnet-web-daemon-v2-contoso.azurewebsites.net/Account/EndSession` .
 1. **Marka** menüsünde, **giriş sayfası URL 'sini** hizmetinizin adresi olarak güncelleştirin. Örneğin, kullanın `https://dotnet-web-daemon-v2-contoso.azurewebsites.net` .
 1. Yapılandırmayı kaydedin.
 1. **Kimlik doğrulaması**  >  **yeniden yönlendirme URI** 'lerinin değerleri listesinde aynı URL 'yi ekleyin. Birden çok yeniden yönlendirme URL 'SI varsa, her yönlendirme URL 'si için App Service 'in URI 'sini kullanan yeni bir giriş olduğundan emin olun.

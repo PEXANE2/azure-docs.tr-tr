@@ -1,19 +1,16 @@
 ---
 title: Azure HDInsight 'ta Hadoop ile Data Lake Storage 1. kullanma
 description: Azure Data Lake Storage 1. verileri sorgulamayı ve analizinizdeki sonuçları nasıl depolayacağınızı öğrenin.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 04/24/2020
-ms.openlocfilehash: 5949bab7bdf11b11e0ff71f9054098ed83d95ab4
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 35941f585a0ae5c0d3915c769db5b18737b299f0
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92539845"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945405"
 ---
 # <a name="use-data-lake-storage-gen1-with-azure-hdinsight-clusters"></a>Azure HDInsight kümeleri ile Data Lake Storage 1. kullanma
 
@@ -43,11 +40,11 @@ HDInsight kümeleri, Data Lake Storage 1. iki şekilde kullanabilir:
 | HDInsight küme türü | Varsayılan depolama alanı olarak Data Lake Storage 1. | Ek depolama alanı olarak Data Lake Storage 1.| Notlar |
 |------------------------|------------------------------------|---------------------------------------|------|
 | HDInsight sürüm 4,0 | Hayır | Hayır |HDInsight 4,0 ADLS 1. desteklenmez |
-| HDInsight sürümü 3.6 | Evet | Evet | HBase haricinde|
-| HDInsight sürümü 3.5 | Evet | Evet | HBase haricinde|
-| HDInsight sürümü 3.4 | Hayır | Evet | |
+| HDInsight sürümü 3.6 | Yes | Yes | HBase haricinde|
+| HDInsight sürümü 3.5 | Yes | Yes | HBase haricinde|
+| HDInsight sürümü 3.4 | Hayır | Yes | |
 | HDInsight sürümü 3.3 | Hayır | Hayır | |
-| HDInsight sürümü 3.2 | Hayır | Evet | |
+| HDInsight sürümü 3.2 | Hayır | Yes | |
 | Storm | | |Data Lake Storage 1., bir fırtınası topolojisinden veri yazmak için kullanabilirsiniz. Daha sonra, bir fırtınası topolojisi tarafından okunabilen başvuru verileri için Data Lake Storage 1. de kullanabilirsiniz.|
 
 > [!WARNING]  
@@ -62,7 +59,7 @@ HDInsight, varsayılan depolama alanı olarak Data Lake Storage 1. dağıtıldı
 * Cluster1 `adl://mydatalakestore/cluster1storage` yolunu kullanabilir.
 * Cluster2 `adl://mydatalakestore/cluster2storage` yolunu kullanabilir.
 
-Her iki küme de aynı Data Lake Storage 1. hesabını kullanır **mydatalakestore** . Her kümenin, Data Lake Storage içinde kendi kök dosya sistemine erişimi vardır. Azure portal dağıtım deneyimi, kök yolu için **/Clusters/ \<clustername>** gibi bir klasör adı kullanmanızı ister.
+Her iki küme de aynı Data Lake Storage 1. hesabını kullanır **mydatalakestore**. Her kümenin, Data Lake Storage içinde kendi kök dosya sistemine erişimi vardır. Azure portal dağıtım deneyimi, kök yolu için **/Clusters/ \<clustername>** gibi bir klasör adı kullanmanızı ister.
 
 Data Lake Storage 1. varsayılan depolama alanı olarak kullanmak için, hizmet sorumlusu erişimini aşağıdaki yollara vermeniz gerekir:
 
@@ -137,19 +134,19 @@ Erişim denetimi modeli hakkında daha fazla bilgi için, [Azure Data Lake Stora
 
 HDInsight kümesinden Data Lake Storage dosyalara erişmek için çeşitli yollar vardır.
 
-* **Tam adı kullanarak** . Bu yöntemle, erişmek istediğiniz dosyanın tam yolunu girersiniz.
+* **Tam adı kullanarak**. Bu yöntemle, erişmek istediğiniz dosyanın tam yolunu girersiniz.
 
     ```
     adl://<data_lake_account>.azuredatalakestore.net/<cluster_root_path>/<file_path>
     ```
 
-* **Kısaltılmış yol biçimi kullanarak** . Bu yaklaşımda, yolu küme köküne kadar değiştirirsiniz:
+* **Kısaltılmış yol biçimi kullanarak**. Bu yaklaşımda, yolu küme köküne kadar değiştirirsiniz:
 
     ```
     adl:///<file path>
     ```
 
-* **Göreli yolu kullanarak** . Bu yöntemle, erişmek istediğiniz dosyanın yalnızca göreli yolunu girersiniz.
+* **Göreli yolu kullanarak**. Bu yöntemle, erişmek istediğiniz dosyanın yalnızca göreli yolunu girersiniz.
 
     ```
     /<file.path>/
@@ -214,7 +211,7 @@ LOCATION '/example/data/';
 
 ## <a name="identify-storage-path-from-ambari"></a>Ambarı 'ndan depolama yolunu tanımla
 
-Yapılandırılmış varsayılan deponun tüm yolunu belirlemek için,, 1. **olarak gidin**  >  **Configs** ve `fs.defaultFS` filtre girişi kutusuna girin.
+Yapılandırılmış varsayılan deponun tüm yolunu belirlemek için,, 1. **olarak gidin**  >   ve `fs.defaultFS` filtre girişi kutusuna girin.
 
 ## <a name="create-hdinsight-clusters-with-access-to-data-lake-storage-gen1"></a>Data Lake Storage 1. erişimi olan HDInsight kümeleri oluşturma
 

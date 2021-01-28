@@ -3,17 +3,16 @@ title: Azure HDInsight oluşturma-Azure Data Lake Storage 2.-Portal
 description: Portalı kullanarak Azure HDInsight kümeleriyle Azure Data Lake Storage 2. kullanmayı öğrenin.
 author: guyhay
 ms.author: guyhay
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 09/17/2020
-ms.openlocfilehash: 104424c1e3bd1df69106db7da45b744755b51e82
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d54c005ffb17571be172b5716723febb742253a3
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91858814"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945394"
 ---
 # <a name="create-a-cluster-with-data-lake-storage-gen2-using-the-azure-portal"></a>Azure portal kullanarak Data Lake Storage 2. bir küme oluşturma
 
@@ -30,7 +29,7 @@ Depolama için Data Lake Storage 2. kullanan bir HDInsight kümesi oluşturmak i
 Henüz bir tane yoksa, Kullanıcı tarafından atanan bir yönetilen kimlik oluşturun.
 
 1. [Azure portalında](https://portal.azure.com) oturum açın.
-1. Sol üst köşedeki **kaynak oluştur ' a**tıklayın.
+1. Sol üst köşedeki **kaynak oluştur ' a** tıklayın.
 1. Arama kutusuna **Kullanıcı atandı** yazın ve **Kullanıcı tarafından atanan yönetilen kimlik**' e tıklayın.
 1. **Oluştur**’a tıklayın.
 1. Yönetilen Kimliğiniz için bir ad girin, doğru aboneliği, kaynak grubunu ve konumu seçin.
@@ -45,7 +44,7 @@ Yönetilen kimliklerin Azure HDInsight 'ta nasıl çalıştığı hakkında daha
 Azure Data Lake Storage 2. ile kullanmak için bir depolama hesabı oluşturun.
 
 1. [Azure portalında](https://portal.azure.com) oturum açın.
-1. Sol üst köşedeki **kaynak oluştur ' a**tıklayın.
+1. Sol üst köşedeki **kaynak oluştur ' a** tıklayın.
 1. Arama kutusuna **depolama** yazın ve **depolama hesabı**' na tıklayın.
 1. **Oluştur**’a tıklayın.
 1. **Depolama hesabı oluştur** ekranında:
@@ -70,17 +69,17 @@ Yönetilen kimliği depolama hesabındaki **Depolama Blobu veri sahibi** rolüne
     ![Depolama erişim denetimi ayarlarını gösteren ekran görüntüsü](./media/hdinsight-hadoop-use-data-lake-storage-gen2/portal-access-control.png)
 
 1. Yeni bir rol eklemek için **+ rol ataması Ekle** düğmesini seçin.
-1. **Rol ataması Ekle** penceresinde, **Depolama Blobu veri sahibi** rolünü seçin. Ardından, yönetilen kimliğe ve depolama hesabına sahip aboneliği seçin. Ardından, daha önce oluşturduğunuz Kullanıcı tarafından atanan yönetilen kimliği bulmak için arama yapın. Son olarak, yönetilen kimliği seçin ve **Seçilen Üyeler**altında listelenecektir.
+1. **Rol ataması Ekle** penceresinde, **Depolama Blobu veri sahibi** rolünü seçin. Ardından, yönetilen kimliğe ve depolama hesabına sahip aboneliği seçin. Ardından, daha önce oluşturduğunuz Kullanıcı tarafından atanan yönetilen kimliği bulmak için arama yapın. Son olarak, yönetilen kimliği seçin ve **Seçilen Üyeler** altında listelenecektir.
 
     ![Azure rolü atamayı gösteren ekran görüntüsü](./media/hdinsight-hadoop-use-data-lake-storage-gen2/add-rbac-role3-window.png)
 
 1. **Kaydet**’i seçin. Seçtiğiniz kullanıcı tarafından atanan kimlik artık seçili rol altında listelenmiştir.
 1. Bu ilk kurulum tamamlandıktan sonra Portal aracılığıyla bir küme oluşturabilirsiniz. Küme, depolama hesabıyla aynı Azure bölgesinde olmalıdır. Küme oluşturma menüsünün **depolama** sekmesinde aşağıdaki seçenekleri belirtin:
 
-    * **Birincil depolama türü**için **Azure Data Lake Storage 2.**' yi seçin.
-    * **Birincil depolama hesabı**altında, Data Lake Storage 2. depolama ile yeni oluşturulan depolama hesabını arayıp seçin.
+    * **Birincil depolama türü** için **Azure Data Lake Storage 2.**' yi seçin.
+    * **Birincil depolama hesabı** altında, Data Lake Storage 2. depolama ile yeni oluşturulan depolama hesabını arayıp seçin.
 
-    * **Kimlik**altında, yeni oluşturulan kullanıcı tarafından atanan yönetilen kimliği seçin.
+    * **Kimlik** altında, yeni oluşturulan kullanıcı tarafından atanan yönetilen kimliği seçin.
 
         ![Azure HDInsight ile Data Lake Storage 2. kullanmaya yönelik depolama ayarları](./media/hdinsight-hadoop-use-data-lake-storage-gen2/azure-portal-cluster-storage-gentwo.png)
 

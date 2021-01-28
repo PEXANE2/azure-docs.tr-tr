@@ -4,12 +4,12 @@ description: Trace, NLog veya Log4Net tarafından oluşturulan arama günlükler
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 05/08/2019
-ms.openlocfilehash: 90777da4d0b67587afebaa7111e3503af2afcb9a
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 083ddbd06561550f89e414d6c679cdc6433fa338
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920340"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937556"
 ---
 # <a name="explore-netnet-core-and-python-trace-logs-in-application-insights"></a>Application Insights 'de .NET/.NET Core ve Python izleme günlüklerini keşfet
 
@@ -85,7 +85,7 @@ Log4net veya NLog tercih ediyorsanız şunu kullanın:
 ```
 
 ## <a name="use-eventsource-events"></a>EventSource olaylarını kullanma
-[System. Diagnostics. Tracing. EventSource](/dotnet/api/system.diagnostics.tracing.eventsource?view=netcore-3.1) olaylarını, izleme olarak Application Insights gönderilmek üzere yapılandırabilirsiniz. İlk olarak, `Microsoft.ApplicationInsights.EventSourceListener` NuGet paketini yüklemeniz gerekir. Sonra `TelemetryModules` [ApplicationInsights.config](./configuration-with-applicationinsights-config.md) dosyasının bölümünü düzenleyin.
+[System. Diagnostics. Tracing. EventSource](/dotnet/api/system.diagnostics.tracing.eventsource) olaylarını, izleme olarak Application Insights gönderilmek üzere yapılandırabilirsiniz. İlk olarak, `Microsoft.ApplicationInsights.EventSourceListener` NuGet paketini yüklemeniz gerekir. Sonra `TelemetryModules` [ApplicationInsights.config](./configuration-with-applicationinsights-config.md) dosyasının bölümünü düzenleyin.
 
 ```xml
     <Add Type="Microsoft.ApplicationInsights.EventSourceListener.EventSourceTelemetryModule, Microsoft.ApplicationInsights.EventSourceListener">
@@ -136,7 +136,7 @@ Her kaynak için aşağıdaki parametreleri ayarlayabilirsiniz:
 ## <a name="use-the-trace-api-directly"></a>Trace API 'sini doğrudan kullanma
 Application Insights Trace API 'sine doğrudan çağrı yapabilirsiniz. Günlüğe kaydetme bağdaştırıcıları bu API 'YI kullanır.
 
-Örnek:
+Örneğin:
 
 ```csharp
 TelemetryConfiguration configuration = TelemetryConfiguration.CreateDefault();
@@ -146,7 +146,7 @@ telemetry.TrackTrace("Slow response - database01");
 
 TrackTrace 'in avantajı, oldukça uzun verileri iletiye koyacağınızdır. Örneğin, veri Gönder ' i burada bulabilirsiniz.
 
-İletinize önem düzeyi de ekleyebilirsiniz. Diğer telemetri gibi, farklı izleme kümelerini filtrelemek veya aramak için özellik değerleri ekleyebilirsiniz. Örnek:
+İletinize önem düzeyi de ekleyebilirsiniz. Diğer telemetri gibi, farklı izleme kümelerini filtrelemek veya aramak için özellik değerleri ekleyebilirsiniz. Örneğin:
 
   ```csharp
   TelemetryConfiguration configuration = TelemetryConfiguration.CreateDefault();
@@ -203,7 +203,7 @@ Java SDK 'sını kullanıyorsanız, [Java günlük bağdaştırıcılarını](./
 
 ### <a name="theres-no-log-adapter-option-in-the-configuration-tool"></a>Yapılandırma aracında günlük bağdaştırıcısı seçeneği yok
 * Önce günlüğe kaydetme çerçevesini yükler.
-* System. Diagnostics. Trace kullanıyorsanız, [ *web.config*' de yapılandırdığınızdan](/dotnet/api/system.diagnostics.eventlogtracelistener?view=dotnet-plat-ext-3.1)emin olun.
+* System. Diagnostics. Trace kullanıyorsanız, [ *web.config*' de yapılandırdığınızdan](/dotnet/api/system.diagnostics.eventlogtracelistener)emin olun.
 * Application Insights en son sürümüne sahip olduğunuzdan emin olun. Visual Studio 'da **Araçlar**  >  **Uzantılar ve güncelleştirmeler**' e gidin ve **güncelleştirmeler** sekmesini açın. **Developer Analytics Tools** , güncelleştirmek için seçin.
 
 ### <a name="i-get-the-instrumentation-key-cannot-be-empty-error-message"></a><a name="emptykey"></a>"Izleme anahtarı boş olamaz" hata iletisini alıyorum

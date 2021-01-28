@@ -1,18 +1,15 @@
 ---
 title: Azure HDInsight 'ta yüksek kullanılabilirlik bileşenleri
 description: HDInsight kümeleri tarafından kullanılan çeşitli yüksek kullanılabilirlik bileşenlerine genel bakış.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/07/2020
-ms.openlocfilehash: 1ff7932f0afb128f6e7568ecdae602c6471db0bd
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 336fe91174a8fc6d73d6e45c5fd1e2bf244eda52
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92539726"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945315"
 ---
 # <a name="high-availability-services-supported-by-azure-hdinsight"></a>Azure HDInsight tarafından desteklenen yüksek kullanılabilirlik Hizmetleri
 
@@ -65,7 +62,7 @@ Microsoft, HDInsight kümelerinde aşağıdaki tabloda bulunan dört Apache hizm
 
 Her HDInsight kümesinin sırasıyla etkin ve bekleme modlarında iki yayın düğümü vardır. HDInsight ha Hizmetleri yalnızca baş üzerinde çalışır. Bu hizmetler her zaman etkin headnode üzerinde çalışmalıdır ve bekleme konumuna durdurulup bakım moduna konur.
 
-HA hizmetlerinin doğru durumlarını korumak ve hızlı yük devretme sağlamak için HDInsight, dağıtılmış uygulamalar için bir düzenleme hizmeti olan Apache ZooKeeper kullanır ve bu da etkin baş düğüm seçimi yürütmek için kullanılır. HDInsight, HDInsight HA Hizmetleri için yük devretme yordamını koordine eden bazı arka plan Java işlemleri de sağlar. Bu hizmetler şunlardır: Ana yük devretme denetleyicisi, bağımlı yük devretme denetleyicisi, *Master-ha-Service* ve *bağımlı-ha-Service* .
+HA hizmetlerinin doğru durumlarını korumak ve hızlı yük devretme sağlamak için HDInsight, dağıtılmış uygulamalar için bir düzenleme hizmeti olan Apache ZooKeeper kullanır ve bu da etkin baş düğüm seçimi yürütmek için kullanılır. HDInsight, HDInsight HA Hizmetleri için yük devretme yordamını koordine eden bazı arka plan Java işlemleri de sağlar. Bu hizmetler şunlardır: Ana yük devretme denetleyicisi, bağımlı yük devretme denetleyicisi, *Master-ha-Service* ve *bağımlı-ha-Service*.
 
 ### <a name="apache-zookeeper"></a>Apache ZooKeeper
 

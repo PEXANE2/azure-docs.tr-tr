@@ -1,19 +1,16 @@
 ---
 title: 'Hızlı başlangıç: RStudio Server & R-Azure HDInsight için ML Hizmetleri'
 description: Hızlı başlangıçta, Azure HDInsight 'taki bir ML Hizmetleri kümesinde RStudio sunucusu kullanarak bir R betiği yürütüyoruz.
-author: hrasheed-msft
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: quickstart
 ms.date: 06/19/2019
-ms.author: hrasheed
 ms.custom: mvc
-ms.openlocfilehash: 8a6a204ee5080e3acf99c13ecba1e1c7664d68b4
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 7604a327c43ed1942d336399b6d8b9dbb1e64d75
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "73241892"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98935724"
 ---
 # <a name="quickstart-execute-an-r-script-on-an-ml-services-cluster-in-azure-hdinsight-using-rstudio-server"></a>Hızlı başlangıç: RStudio Server kullanarak Azure HDInsight 'ta bir ML Hizmetleri kümesinde R betiği yürütme
 
@@ -23,7 +20,7 @@ Bu hızlı başlangıçta, dağıtılmış R hesaplamaları için Spark kullanma
 
 ## <a name="prerequisite"></a>Önkoşul
 
-HDInsight üzerinde bir ML Hizmetleri kümesi. Bkz. [Azure Portal kullanarak Apache Hadoop kümeleri oluşturma](../hdinsight-hadoop-create-linux-clusters-portal.md) ve **küme türü**için **ml Hizmetleri** seçme.
+HDInsight üzerinde bir ML Hizmetleri kümesi. Bkz. [Azure Portal kullanarak Apache Hadoop kümeleri oluşturma](../hdinsight-hadoop-create-linux-clusters-portal.md) ve **küme türü** için **ml Hizmetleri** seçme.
 
 ## <a name="connect-to-rstudio-server"></a>RStudio Server’a bağlanma
 
@@ -144,7 +141,7 @@ Bağlandıktan sonra ekranınız aşağıdaki ekran görüntüsüne benzemelidir
     
       ---
     
-      Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+      Signif. codes:  0 ‘**_’ 0.001 ‘_*’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
     
       Condition number of final variance-covariance matrix: 11904202
       Number of iterations: 7

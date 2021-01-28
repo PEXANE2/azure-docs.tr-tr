@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: erhopf
 ms.service: cognitive-services
 ms.date: 01/05/2021
-ms.openlocfilehash: 8833c27421dfbfd4799828bce79afcad7c377fd8
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 41acfb2465382e8de4751b54c5b93e77bd12daaf
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98197362"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937316"
 ---
 # <a name="cognitive-services-docs-whats-new-for-december-1-2020---december-31-2020"></a>Bilişsel hizmetler belgeleri: 1 Aralık 2020 ' deki yenilikler-31 Aralık 2020
 
@@ -32,37 +32,37 @@ ms.locfileid: "98197362"
 
 ### <a name="updated-articles"></a>Güncelleştirilmiş makaleler
 
-- [Anomali algılayıcısı REST API hızlı başlangıç](https://docs.microsoft.com/azure/cognitive-services/anomaly-detector/quickstarts/client-libraries?tabs=windows&pivots=rest-api)
+- [Anomali algılayıcısı REST API hızlı başlangıç](./anomaly-detector/quickstarts/client-libraries.md?pivots=rest-api&tabs=windows)
 
 ## <a name="bing-visual-search"></a>Bing Görsel Arama
 
 ### <a name="updated-articles"></a>Güncelleştirilmiş makaleler
 
-- [Bir görüntü için Öngörüler elde etmek için bir Öngörüler belirteci kullanma](/azure/cognitive-services/bing-visual-search/use-insights-token)
+- [Bir görüntü için Öngörüler elde etmek için bir Öngörüler belirteci kullanma](./bing-visual-search/use-insights-token.md)
 
 ## <a name="containers"></a>Kapsayıcılar
 
 ### <a name="updated-articles"></a>Güncelleştirilmiş makaleler
 
-- [Azure Container Örneğinde kapsayıcı dağıtma ve çalıştırma](/azure/cognitive-services/containers/azure-container-instance-recipe)
+- [Azure Container Örneğinde kapsayıcı dağıtma ve çalıştırma](./containers/azure-container-instance-recipe.md)
 
 ## <a name="form-recognizer"></a>Form Tanıma
 
 ### <a name="updated-articles"></a>Güncelleştirilmiş makaleler
 
-- [Form tanıyıcı giriş sayfası](/azure/cognitive-services/form-recognizer/)
-- [Hızlı başlangıç: form tanıyıcı istemci kitaplığını kullanma](/azure/cognitive-services/form-recognizer/quickstarts/client-library)
+- [Form tanıyıcı giriş sayfası](./form-recognizer/index.yml)
+- [Hızlı başlangıç: form tanıyıcı istemci kitaplığını kullanma](./form-recognizer/quickstarts/client-library.md)
 
 ## <a name="text-analytics"></a>Metin Analizi
 
 ### <a name="updated-articles"></a>Güncelleştirilmiş makaleler
 
-- [Metin Analizi API'si v3 dil desteği](/azure/cognitive-services/text-analytics/language-support)
-- [Metin Analizi nasıl çağrılacağını REST API](/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-call-api)
-- [Metin Analizi içinde adlandırılmış varlık tanımayı kullanma](/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking)
-- [Örnek: Metin Analizi kullanarak anahtar tümceleri ayıklama](/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-keyword-extraction)
-- [Metin Analizi API’si Belgeleri - Öğreticiler, API Başvurusu - Azure Bilişsel Hizmetler | Microsoft Docs](/azure/cognitive-services/text-analytics/)
-- [Hızlı başlangıç: Metin Analizi istemci kitaplığı ve REST API kullanın](/azure/cognitive-services/text-analytics/quickstarts/client-libraries-rest-api)
+- [Metin Analizi API'si v3 dil desteği](./text-analytics/language-support.md)
+- [Metin Analizi nasıl çağrılacağını REST API](./text-analytics/how-tos/text-analytics-how-to-call-api.md)
+- [Metin Analizi içinde adlandırılmış varlık tanımayı kullanma](./text-analytics/how-tos/text-analytics-how-to-entity-linking.md)
+- [Örnek: Metin Analizi kullanarak anahtar tümceleri ayıklama](./text-analytics/how-tos/text-analytics-how-to-keyword-extraction.md)
+- [Metin Analizi API’si Belgeleri - Öğreticiler, API Başvurusu - Azure Bilişsel Hizmetler | Microsoft Docs](./text-analytics/index.yml)
+- [Hızlı başlangıç: Metin Analizi istemci kitaplığı ve REST API kullanın](./text-analytics/quickstarts/client-libraries-rest-api.md)
 
 ## <a name="community-contributors"></a>Topluluk katkı sağlayanlar
 

@@ -16,12 +16,12 @@ ms.date: 08/13/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5e50b9e5dc683eb30452dbb96d82c9f66de93763
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 88eae702782e2f1af9c20797676214db458c2adc
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94408014"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937626"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on"></a>Azure Active Directory Sorunsuz Çoklu Oturum Açma
 
@@ -35,8 +35,13 @@ Kesintisiz SSO, [Parola karması eşitlemesi](how-to-connect-password-hash-synch
 
 ![Kesintisiz tek Sign-On](./media/how-to-connect-sso/sso1.png)
 
->[!IMPORTANT]
->Sorunsuz SSO Kullanıcı cihazının yalnızca **etki alanına katılmış** olmasını gerektirir, ancak [Azure AD 'ye katılmış](../devices/concept-azure-ad-join.md) veya [hibrit Azure AD 'ye katılmış](../devices/concept-azure-ad-join-hybrid.md) cihazlarda kullanılmaz. Azure AD 'ye katılmış, hibrit Azure AD 'ye katılmış ve Azure AD 'ye kayıtlı cihazlarda SSO, [birincil yenileme belirtecine](../devices/concept-primary-refresh-token.md)göre çalışmaktadır.
+## <a name="sso-via-primary-refresh-token-vs-seamless-sso"></a>Birincil yenileme belirteci ve sorunsuz SSO ile SSO
+
+Windows 10 için, SSO 'yu birincil yenileme belirteci (PRT) aracılığıyla kullanmanız önerilir. Windows 7 ve 8,1 için sorunsuz SSO kullanmanız önerilir.
+Sorunsuz SSO Kullanıcı cihazının etki alanına katılmış olmasını gerektirir, ancak Windows 10 [Azure AD 'ye katılmış cihazlarda](../devices/concept-azure-ad-join.md) veya [karma Azure AD 'ye katılmış cihazlarda](../devices/concept-azure-ad-join-hybrid.md)kullanılmaz. Azure AD 'ye katılmış, hibrit Azure AD 'ye katılmış ve Azure AD 'ye kayıtlı cihazlarda SSO, [birincil yenileme belirtecine (PRT)](../devices/concept-primary-refresh-token.md) göre çalışmaktadır
+
+PRT aracılığıyla SSO, karma Azure AD 'ye katılmış, Azure AD 'ye katılmış veya kişisel kayıtlı cihazlarda Iş veya okul hesabı ekle yoluyla cihazlar Azure AD 'ye kaydedildikten sonra çalışır. Windows 10 ile PRT kullanarak SSO 'nun nasıl çalıştığı hakkında daha fazla bilgi için bkz. [birincil yenileme belirteci (prt) ve Azure AD](../devices/concept-primary-refresh-token.md)
+
 
 ## <a name="key-benefits"></a>Önemli avantajlar
 
@@ -63,11 +68,11 @@ Kesintisiz SSO, [Parola karması eşitlemesi](how-to-connect-password-hash-synch
 
 | OS\Browser |Internet Explorer|Microsoft Edge|Google Chrome|Mozilla Firefox|Safari|
 | --- | --- |--- | --- | --- | -- 
-|Windows 10|Evet\*|Evet|Evet|Evet\*\*\*|YOK
-|Windows 8.1|Evet\*|Yes\*\*\*|Evet|Evet\*\*\*|YOK
-|Windows 8|Evet\*|YOK|Evet|Evet\*\*\*|YOK
-|Windows 7|Evet\*|YOK|Evet|Evet\*\*\*|YOK
-|Windows Server 2012 R2 veya üzeri|Yes\*\*|YOK|Evet|Evet\*\*\*|YOK
+|Windows 10|Evet\*|Yes|Yes|Evet\*\*\*|Yok
+|Windows 8.1|Yes\*|Yes\*\*\*|Yes|Evet\*\*\*|Yok
+|Windows 8|Yes\*|YOK|Evet|Evet\*\*\*|Yok
+|Windows 7|Evet\*|YOK|Evet|Evet\*\*\*|Yok
+|Windows Server 2012 R2 veya üzeri|Yes\*\*|YOK|Evet|Evet\*\*\*|Yok
 |Mac OS X|Yok|Yok|Evet\*\*\*|Evet\*\*\*|Evet\*\*\*
 
 
@@ -78,9 +83,6 @@ Kesintisiz SSO, [Parola karması eşitlemesi](how-to-connect-password-hash-synch
 \*\*\*[Ek yapılandırma](how-to-connect-sso-quick-start.md#browser-considerations)gerektirir.
 
 \*\*\*\*Microsoft Edge sürüm 77 veya üstünü gerektirir.
-
->[!NOTE]
->Windows 10 ' da, Azure AD 'ye yönelik en iyi çoklu oturum açma deneyimi için [Azure AD JOIN](../devices/concept-azure-ad-join.md) 'in kullanılması önerilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -11,12 +11,12 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: lenalepa, manrath
-ms.openlocfilehash: 77521150e73014c5568003597059a9d32f6e80ee
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: eea2e587a075d774a25f479ec61575a002b57f75
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98752964"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937815"
 ---
 # <a name="validation-differences-by-supported-account-types-signinaudience"></a>Desteklenen hesap türlerine (Signınaudience) göre doğrulama farklılıkları
 
@@ -24,9 +24,9 @@ Bir uygulamayı geliştiriciler için Microsoft Identity platformu ile kaydederk
 
 Seçenekler şunları içerir:
 
-- *Azureadmyorg*: yalnızca uygulamanın kaydedildiği kuruluş dizinindeki hesaplar (tek kiracılı)
-- *Azureadmultipleorgs*: herhangi bir kuruluş dizinindeki (çok kiracılı) hesaplar
-- *Azureadandpersonmicrosoftaccount*: herhangi bir kurumsal dizin (çok kiracılı) ve kişisel Microsoft hesabı (örneğin, Skype, Xbox ve Outlook.com) hesapları
+- **Azureadmyorg**: yalnızca uygulamanın kaydedildiği (tek kiracılı) kuruluş dizinindeki hesaplar.
+- **Azureadmultipleorgs**: herhangi bir kuruluş dizinindeki (çok kiracılı) hesaplar.
+- **Azureadandpersonmicrosoftaccount**: herhangi bir kuruluş dizinindeki (çok kiracılı) ve kişisel Microsoft hesaplarındaki hesaplar (örneğin, Skype, Xbox ve Outlook.com).
 
 Kayıtlı uygulamalar için, desteklenen hesap türleri için değeri bir uygulamanın **kimlik doğrulama** bölümünde bulabilirsiniz. `signInAudience` **Bildirimin** özelliği altında de bulabilirsiniz.
 
@@ -44,11 +44,11 @@ Desteklenen farklı hesap türleri için çeşitli özelliklerin doğrulama fark
 | Bu API () tarafından tanımlanan kapsamlar `oauth2Permissions` | 120 karakterlik en büyük kapsam adı uzunluğu <br><br> Tanımlı kapsam sayısında sınır yok * | 120 karakterlik en büyük kapsam adı uzunluğu <br><br> Tanımlı kapsam sayısında sınır yok * |  40 karakterlik en büyük kapsam adı uzunluğu <br><br> Tanımlanan en fazla 100 kapsam | 
 | Yetkilendirilmiş istemci uygulamaları ( `preAuthorizedApplications` ) | Sınır yok * | Sınır yok * | Toplam 500 üst sınırı <br><br> En fazla 100 istemci uygulaması tanımlandı <br><br> İstemci başına tanımlanan en fazla 30 kapsam | 
 | appRoles | Desteklenir <br> Sınır yok * | Desteklenir <br> Sınır yok * | Desteklenmez | 
-| Oturum kapatma URL 'SI | http://localhost izin verilir <br><br> En fazla 255 karakter uzunluğunda | http://localhost izin verilir <br><br> En fazla 255 karakter uzunluğunda | <br><br> https://localhost izin veriliyor, http://localhost MSA için başarısız oluyor <br><br> En fazla 255 karakter uzunluğunda <br><br> HTTP şemasına izin verilmiyor <br><br> Joker karakterler desteklenmiyor | 
+| Ön kanal oturum kapatma URL 'SI | https://localhost izin verilir <br><br> `http` şemaya izin verilmiyor <br><br> En fazla 255 karakter uzunluğunda | https://localhost izin verilir <br><br> `http` şemaya izin verilmiyor <br><br> En fazla 255 karakter uzunluğunda | <br><br> https://localhost izin veriliyor, http://localhost MSA için başarısız oluyor <br><br> En fazla 255 karakter uzunluğunda <br><br> `http` şemaya izin verilmiyor <br><br> Joker karakterler desteklenmiyor | 
 
-* Uygulama nesnesindeki tüm koleksiyon özellikleri üzerinde 1000 öğe hakkında genel bir limit vardır
+* Uygulama nesnesindeki tüm koleksiyon özellikleri üzerinde 1000 öğe hakkında genel bir sınır vardır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Uygulama kaydı](app-objects-and-service-principals.md) hakkında bilgi edinin
-- [Uygulama bildirimi](reference-app-manifest.md) hakkında bilgi edinin
+- [Uygulama kaydı](app-objects-and-service-principals.md)hakkında bilgi edinin.
+- [Uygulama bildirimi](reference-app-manifest.md)hakkında bilgi edinin.

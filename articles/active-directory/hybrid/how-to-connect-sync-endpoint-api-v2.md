@@ -12,12 +12,12 @@ ms.date: 12/04/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0067ed618f95e7f83fc041fe214bbc4d715a504f
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.openlocfilehash: 0ecfd277f2cc86102d59b201e7b43fa8519bdd3a
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98567622"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937614"
 ---
 # <a name="azure-ad-connect-sync-v2-endpoint-api"></a>Azure AD Connect eşitleme v2 uç nokta API’si 
 Microsoft, Azure Active Directory için eşitleme hizmeti işlemlerinin performansını geliştiren Azure AD Connect için yeni bir uç nokta (API) dağıttı. Yeni v2 uç noktasından yararlanarak, Azure AD 'ye dışarı ve içeri aktarma sırasında dikkat çekici performans kazanımları yaşarsınız. Bu yeni uç nokta şunları destekler:
@@ -28,7 +28,7 @@ Microsoft, Azure Active Directory için eşitleme hizmeti işlemlerinin performa
 > [!NOTE]
 > Şu anda, yeni uç noktanın geri yazılan Microsoft 365 grupları için yapılandırılmış bir Grup boyutu sınırı yok. Bu, Active Directory ve eşitleme döngüleriyle gecikme süreleriyle ilgili bir etkiye sahip olabilir. Grup boyutlarınızı artımlı olarak artırmanız önerilir.  
 
-## <a name="prerequisites"></a>Ön koşullar  
+## <a name="prerequisites"></a>Önkoşullar  
 Yeni v2 uç noktasını kullanabilmek için, [Azure AD Connect sürüm 1.5.30.0](https://www.microsoft.com/download/details.aspx?id=47594) veya üstünü kullanmanız ve aşağıdaki dağıtım adımlarını izleyerek Azure AD Connect sunucunuz için v2 uç noktasını etkinleştirmeniz gerekir.   
 
 ## <a name="deployment-guidance"></a>Dağıtım Kılavuzu 
@@ -176,7 +176,7 @@ V2 uç noktasını etkinleştirdiyseniz ve geri almanız gerekiyorsa, şu adıml
 ## <a name="frequently-asked-questions"></a>Sık sorulan sorular  
  
 **Yeni bitiş noktası, yükseltmeler ve yeni yüklemeler için varsayılan olarak ne zaman olur?**  
-</br>Ocak 2021 ' de karşıdan yüklenmek üzere yayımlanacak AADConnect 'in yeni bir sürümünü planlıyoruz. Bu sürüm, varsayılan olarak v2 uç noktasını kullanır ve ek yapılandırma olmadan 50K 'den büyük olan eşitleme gruplarını etkinleştirir. Bu sürüm daha sonra uygun sunuculara otomatik olarak yükseltme için yayımlanacak.
+</br>Şubat 2021 ' de karşıdan yüklenmek üzere yayımlanacak AADConnect 'in yeni bir sürümünü planlıyoruz. Bu sürüm, varsayılan olarak v2 uç noktasını kullanır ve ek yapılandırma olmadan 50K 'den büyük olan eşitleme gruplarını etkinleştirir. Bu sürüm daha sonra uygun sunuculara otomatik olarak yükseltme için yayımlanacak.
  
 ## <a name="next-steps"></a>Sonraki adımlar
 

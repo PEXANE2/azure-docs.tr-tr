@@ -1,19 +1,16 @@
 ---
 title: Apache Kafka ile akış Apache Spark-Azure HDInsight
 description: DStreams kullanarak Apache Kafka veri akışını veya bu verileri dışarı aktarmak için Apache Spark nasıl kullanacağınızı öğrenin. Bu örnekte, HDInsight üzerinde Spark 'tan bir Jupyter Notebook kullanarak veri akışı oluşturursunuz.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/21/2019
-ms.openlocfilehash: 88a62b2d1ebee3bf933729ab82bc9e37a3db066b
-ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
+ms.openlocfilehash: d14b96843b489b28fc7d83348e39638272c06da5
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97821188"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942763"
 ---
 # <a name="apache-spark-streaming-dstream-example-with-apache-kafka-on-hdinsight"></a>HDInsight üzerinde Apache Kafka Apache Spark streaming (DStream) örneği
 

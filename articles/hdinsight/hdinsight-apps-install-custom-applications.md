@@ -1,19 +1,16 @@
 ---
 title: Azure HDInsight 'a özel Apache Hadoop uygulamalarınızı yükler
 description: Azure HDInsight 'ta Apache Hadoop kümeleri için HDInsight uygulamalarını yüklemeyi öğrenin.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/29/2019
-ms.openlocfilehash: dca248d217f4fb90d41c0a98a42b5eda4783913f
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.openlocfilehash: 9591551b7d5657803e770bd71b47acb141b40fb6
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97825211"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942699"
 ---
 # <a name="install-custom-apache-hadoop-applications-on-azure-hdinsight"></a>Azure HDInsight 'ta özel Apache Hadoop uygulamaları yüklemeyi
 
@@ -75,7 +72,7 @@ Uygulama yüklemesini doğrulamak için Azure portalında uygulama durumunu dene
 
 **Ton** için aşağıdaki adımları kullanabilirsiniz:
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure portalı
 
 1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Uygulamayı yüklediğiniz kümeyi seçin.
@@ -83,7 +80,7 @@ Uygulama yüklemesini doğrulamak için Azure portalında uygulama durumunu dene
 1. Özellikleri görüntülemek için listeden **ton** ' ı seçin.  
 1. Web sitesini doğrulamak için Web sayfası bağlantısını seçin.
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure CLI’si
 
 `CLUSTERNAME`Ve `RESOURCEGROUP` değerlerini ilgili değerlerle değiştirin ve ardından aşağıdaki komutları girin:
 
@@ -123,7 +120,7 @@ Uygulama yüklemesi başarısız olursa, üç konumdan hata iletilerini ve hata 
 
 ## <a name="remove-hdinsight-applications"></a>HDInsight uygulamalarını kaldırma
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure portalı
 
 1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Uygulamayı yüklediğiniz kümeyi seçin.
@@ -131,7 +128,7 @@ Uygulama yüklemesi başarısız olursa, üç konumdan hata iletilerini ve hata 
 1. Kaldırmak istediğiniz uygulamaya sağ tıklayın ve ardından **Sil**' i seçin.
 1. Onaylamak için **Evet**’i seçin.
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure CLI’si
 
 `NAME`, `CLUSTERNAME` Ve `RESOURCEGROUP` değerlerini ilgili değerlerle değiştirin ve aşağıdaki komutu girin:
 

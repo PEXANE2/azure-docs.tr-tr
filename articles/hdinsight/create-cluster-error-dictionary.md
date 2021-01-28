@@ -3,17 +3,16 @@ title: Azure HDInsight küme oluşturma-hata sözlüğü
 description: Azure HDInsight kümeleri oluştururken oluşan hataların nasıl giderileceği hakkında bilgi edinin
 author: karkrish
 ms.author: v-todmc
-ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 08/24/2020
-ms.openlocfilehash: 97cad12ad1854df37b54ff663385fe79ca15b7c2
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 6b8c0069d619d3ebd87e3c54b4f653812199f590
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92543109"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943334"
 ---
 # <a name="azure-hdinsight-cluster-creation-errors"></a>Azure HDInsight: küme oluşturma hataları
 
@@ -24,7 +23,7 @@ Bu makalede, küme oluştururken karşılaşabileceğiniz hatalara yönelik çö
 
 ## <a name="error-codedeploymentdocument-csmdocument_2_0-failed-the-validation"></a>Hata kodu: ' CsmDocument_2_0 ' DeploymentDocument doğrulaması başarısız oldu
 
-**Hata** : "betik eylemi konumuna erişilemiyor URI: \<SCRIPT ACTION URL\> "
+**Hata**: "betik eylemi konumuna erişilemiyor URI: \<SCRIPT ACTION URL\> "
 
 ### <a name="error-message-1"></a>Hata iletisi 1
 

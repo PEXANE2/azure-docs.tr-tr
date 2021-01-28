@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 09/10/2020
-ms.openlocfilehash: 774b605859df41e0b71ee82c38a6b08bdf5b9c49
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a5050958f01743ff3c6fdcdecfee3067b1d2073e
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91629820"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98934277"
 ---
 # <a name="move-your-azure-cognitive-search-service-to-another-azure-region"></a>Azure Bilişsel Arama hizmetinizi başka bir Azure bölgesine taşıyın
 
@@ -23,7 +23,7 @@ Bazen, müşteriler bir arama hizmetini başka bir bölgeye taşımayı ister. �
 > [!NOTE]
 > Azure portal, tüm hizmetlerin bir **şablonu dışarı aktar** komutu vardır. Azure Bilişsel Arama söz konusu olduğunda, bu komut bir hizmetin temel tanımını (ad, konum, katman, çoğaltma ve bölüm sayısı) üretir, ancak hizmetinizin içeriğini tanımaz, ya da anahtar, rol ya da Günlükler üzerinde devam etmez. Komut var olsa da, bir arama hizmeti taşımak için kullanılması önerilmez.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 + Hesabınızın kullandığı hizmetlerin ve özelliklerin hedef bölgede desteklendiğinden emin olun.
 
@@ -77,7 +77,7 @@ In this article, you'll learn how to:
 
 - Ensure that the services and features that your account uses are supported in the target region.
 
-- For preview features, ensure that your subscription is whitelisted for the target region. For more information about preview features, see [knowledge stores](./knowledge-store-concept-intro.md), [incremental enrichment](./cognitive-search-incremental-indexing-conceptual.md), and [private endpoint](./service-create-private-endpoint.md).
+- For preview features, ensure that your subscription is allowlisted for the target region. For more information about preview features, see [knowledge stores](./knowledge-store-concept-intro.md), [incremental enrichment](./cognitive-search-incremental-indexing-conceptual.md), and [private endpoint](./service-create-private-endpoint.md).
 
 ## Assessment and planning
 

@@ -3,16 +3,13 @@ title: Azure HDInsight 'ta Apache HBase Master başlatılamadı
 description: Apache HBase Master (HMaster) Azure HDInsight 'ta başlatılamıyor
 ms.service: hdinsight
 ms.topic: troubleshooting
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.date: 08/14/2019
-ms.openlocfilehash: 032c25969bf477e1163b8db2aca631044c457939
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: c30077d0d8f359e93745b53755f9dae998073d4d
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92539981"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98936894"
 ---
 # <a name="apache-hbase-master-hmaster-fails-to-start-in-azure-hdinsight"></a>Apache HBase Master (HMaster) Azure HDInsight 'ta başlatılamıyor
 
@@ -83,7 +80,7 @@ Bu sorunla, HMaster hizmetlerinizi yeniden başlattığınızda temizlenen çok 
 
 ### <a name="resolution"></a>Çözüm
 
-1. Apache ambarı kullanıcı arabiriminden, **HBase**  >  **configs** ' a gidin. Özel `hbase-site.xml` dosyada aşağıdaki ayarı ekleyin:
+1. Apache ambarı kullanıcı arabiriminden, **HBase**  >  **configs**' a gidin. Özel `hbase-site.xml` dosyada aşağıdaki ayarı ekleyin:
 
     ```
     Key: hbase.master.namespace.init.timeout Value: 2400000  
@@ -113,7 +110,7 @@ Uzun `regionserver` JVM GC duraklatma. Duraklamanın `regionserver` yanıt verme
 
 Yalnızca ayarı değil, Zookeeper oturum zaman aşımını değiştirin, `hbase-site` `zookeeper.session.timeout` ancak aynı zamanda Zookeeper `zoo.cfg` ayarının `maxSessionTimeout` değiştirilmesi gerekir.
 
-1. Ambarı Kullanıcı arabirimine erişin, **HBase-> configs-> ayarlar** ' a gidin, zaman aşımları bölümünde Zookeeper oturum zaman aşımı değerini değiştirin.
+1. Ambarı Kullanıcı arabirimine erişin, **HBase-> configs-> ayarlar**' a gidin, zaman aşımları bölümünde Zookeeper oturum zaman aşımı değerini değiştirin.
 
 1. Ambarı Kullanıcı arabirimine erişin, **Zookeeper-> configs sayfasına gidin, özel >** `zoo.cfg` , aşağıdaki ayarı ekleyin/değiştirin. Değerin HBase ile aynı olduğundan emin olun `zookeeper.session.timeout` .
 

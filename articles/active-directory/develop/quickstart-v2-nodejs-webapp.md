@@ -12,18 +12,18 @@ ms.workload: identity
 ms.date: 10/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET, devx-track-js
-ms.openlocfilehash: bd750a05f34a18a1260226fb979a82cc620dfbfb
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: ab3677ede2805fc8ecb076e8a40da605c038b54b
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178288"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937922"
 ---
 # <a name="quickstart-add-sign-in-using-openid-connect-to-a-nodejs-web-app"></a>Hızlı başlangıç: Node.js Web uygulamasına OpenID Connect ile oturum açma ekleme
 
 Bu hızlı başlangıçta, Express ile Node.js kullanılarak oluşturulmuş bir Web uygulamasında OpenID Connect kimlik doğrulamasının nasıl ayarlanacağını gösteren bir kod örneği indirip çalıştırırsınız. Örnek, herhangi bir platformda çalışmak üzere tasarlanmıştır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - [Node.js](https://nodejs.org/en/download/).
@@ -37,14 +37,14 @@ Bu hızlı başlangıçta, Express ile Node.js kullanılarak oluşturulmuş bir 
 1. Uygulamanız için bir **ad** girin (örneğin,) `MyWebApp` . Uygulamanızın kullanıcıları bu adı görebilir ve daha sonra değiştirebilirsiniz.
 1. **Desteklenen hesap türleri** bölümünde, **herhangi bir kurumsal dizin ve kişisel Microsoft hesabında (ör. Skype, Xbox, Outlook.com) hesaplar**' ı seçin.
 
-    Birden fazla yeniden yönlendirme URI 'si varsa, bunları daha sonra uygulama başarıyla oluşturulduktan sonra **kimlik doğrulama** sekmesinden eklemeniz gerekir.
+    Birden fazla yeniden yönlendirme URI 'si varsa, bunları daha sonra uygulama başarıyla oluşturulduktan sonra **kimlik doğrulama** sekmesinden ekleyin.
 
 1. Uygulamayı oluşturmak için **Kaydet** ' i seçin.
 1. Uygulamanın **genel bakış** sayfasında, **uygulama (istemci) kimlik** değerini bulun ve daha sonra için kaydedin. Uygulamayı bu projede daha sonra yapılandırmak için bu değere ihtiyacınız olacak.
 1. **Yönet** altında **kimlik doğrulaması**' nı seçin.
 1. **Platform Web ekle**' yi seçin  >  . 
 1. **Yeniden yönlendirme URI 'leri** bölümünde, girin `http://localhost:3000/auth/openid/return` .
-1. Bir **oturum kapatma URL 'si** girin `https://localhost:3000` .
+1. **Ön kanal oturum kapatma URL 'si** girin `https://localhost:3000` .
 1. Örtük izin bölümünde, **kimlik belirteçlerini** denetleyin. Bu örnek, kullanıcının oturum açması için [örtük verme akışının](./v2-oauth2-implicit-grant-flow.md) etkinleştirilmesini gerektirir.
 1. **Yapılandır**'ı seçin.
 1. **Yönet**' in altında **Sertifikalar & gizli**  >  **anahtar istemci parolası**' nı seçin.

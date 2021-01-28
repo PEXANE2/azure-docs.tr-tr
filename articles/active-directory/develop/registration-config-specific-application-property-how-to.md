@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: ryanwi
 ROBOTS: NOINDEX
-ms.openlocfilehash: 222c961f9e5587cd5526778e6ef1c800f5085a69
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 6da6187e59bf028101eac2ea6f09fb1530821bfd
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98064309"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937869"
 ---
 # <a name="azure-portal-registration-fields-for-custom-developed-apps"></a>Özel olarak geliştirilmiş uygulamalar için Azure portalı kayıt alanlarını bulma
 
@@ -57,11 +57,11 @@ Yukarıdaki alanları doldurduktan sonra uygulama Azure portal kaydedilir ve uyg
 | Yeni logoyu karşıya yükle | Uygulamanızı bir logo yüklemek için bunu kullanabilirsiniz. Logo. bmp,. jpg veya. png biçiminde olmalıdır ve dosya boyutu 100 KB 'den az olmalıdır. Resim için Boyutlar, 94x94 piksel olan orta görüntü boyutları ile 215x215 piksel olmalıdır.|
 | Giriş sayfası URL 'SI   | Bu, uygulama kaydı sırasında belirtilen oturum açma URL 'sidir.|
 
-### <a name="authentication"></a>Kimlik Doğrulama
+### <a name="authentication"></a>Kimlik Doğrulaması
 
 | Alan           | Açıklama        |
 |-----------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Oturum kapatma URL 'SI      | Bu, çoklu oturum kapatma oturum kapatma URL 'sidir. Azure AD, başka bir kayıtlı uygulamayı kullanarak Kullanıcı oturumunu Azure AD ile temizlediğinde bu URL 'ye bir oturum kapatma isteği gönderir.|
+| Ön kanal oturum kapatma URL 'SI      | Bu, çoklu oturum kapatma oturum kapatma URL 'sidir. Azure AD, başka bir kayıtlı uygulamayı kullanarak Kullanıcı oturumunu Azure AD ile temizlediğinde bu URL 'ye bir oturum kapatma isteği gönderir.|
 | Desteklenen hesap türleri  | Bu anahtar, uygulamanın birden çok kiracı tarafından kullanılıp kullanılamayacağını belirtir. Genellikle, bu, harici kuruluşların kendi kiracısına kaydederek ve kuruluşunuzun verilerine erişim izni vererek uygulamanızı kullanabileceği anlamına gelir.|
 | Yeniden Yönlendirme URL'leri      | Yeniden yönlendirme veya yanıtlama, URL 'Ler, Azure AD 'nin uygulamanızın isteklerinizle ilgili belirteçleri döndürdüğü uç noktalardır. Yerel uygulamalar için, başarılı yetkilendirme sonrasında kullanıcının gönderildiği yerdir. Azure AD, uygulamanızın OAuth 2,0 isteğindeki sağladığı yeniden yönlendirme URI 'sinin, portaldaki kayıtlı değerlerden biriyle eşleşip eşleşmediğini denetler.|
 

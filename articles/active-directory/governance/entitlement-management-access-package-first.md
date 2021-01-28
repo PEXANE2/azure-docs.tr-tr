@@ -3,7 +3,7 @@ title: Öğretici-erişim paketi oluşturma-Azure AD Yetkilendirme Yönetimi
 description: Azure Active Directory yetkilendirme yönetimi 'nde ilk erişim paketinizi oluşturma konusunda adım adım öğretici.
 services: active-directory
 documentationCenter: ''
-author: barclayn
+author: ajburnle
 manager: daveba
 editor: markwahl-msft
 ms.service: active-directory
@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.subservice: compliance
 ms.date: 09/30/2020
-ms.author: barclayn
+ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2e8d68643b5cc0002467f738dd60343fb2c42dc6
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 2625b1e0ccc4c3129f412eff144f47d9dc97b961
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97631300"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937898"
 ---
 # <a name="tutorial-create-your-first-access-package-in-azure-ad-entitlement-management"></a>Öğretici: Azure AD Yetkilendirme Yönetimi 'nde ilk erişim paketinizi oluşturma
 
@@ -119,7 +119,7 @@ Kaynak dizininde paylaşılacak bir veya daha fazla kaynak bulunur. Bu adımda, 
     ![Yeni erişim paketi-kaynak rolleri sekmesi](./media/entitlement-management-access-package-first/resource-roles.png)
 
     >[!IMPORTANT]
-    >Bir erişim paketine eklenen rol atanabilir gruplar, **rollere atanabilir** alt tür kullanılarak belirtilir. Azure AD rollerine atanabilir gruplar hakkında daha fazla ayrıntı için Azure Active Directory [rol atanabilir Grup oluşturma](../roles/groups-create-eligible.md) bölümüne bakın. Eklemek istediğiniz rol atanabilir bir grup görmüyorsanız veya bu işlemi ekleyemezseniz, bu işlemi gerçekleştirmek için gerekli Azure AD rolüne ve Yetkilendirme Yönetimi rolüne sahip olduğunuzdan emin olun. Gerekli rolleri, kaynağı kataloğunuza eklemek isteyip istemebilmeniz gerekebilir. Daha fazla bilgi için bkz. [bir kataloğa kaynak eklemek Için gerekli roller](entitlement-management-delegate.md#required-roles-to-add-resources-to-a-catalog).
+    >Bir erişim paketine eklenen rol atanabilir gruplar, **rollere atanabilir** alt tür kullanılarak belirtilir. Azure AD rollerine atanabilir gruplar hakkında daha fazla ayrıntı için Azure Active Directory [rol atanabilir Grup oluşturma](../roles/groups-create-eligible.md) bölümüne bakın. Bir erişim paketi kataloğunda rol atanabilir bir grup olduğunda, genel Yöneticiler, Kullanıcı yöneticileri ve kataloğun Katalog sahipleri dahil olmak üzere, yetkilendirme yönetiminde yönetebilen yönetici kullanıcılar, katalogdaki erişim paketlerini denetleyebilir ve bu gruplara kimlerin eklenebileceğini seçebilmesini sağlar. Eklemek istediğiniz rol atanabilir bir grup görmüyorsanız veya bu işlemi ekleyemezseniz, bu işlemi gerçekleştirmek için gerekli Azure AD rolüne ve Yetkilendirme Yönetimi rolüne sahip olduğunuzdan emin olun. Gerekli rolleri, kaynağı kataloğunuza eklemek isteyip istemebilmeniz gerekebilir. Daha fazla bilgi için bkz. [bir kataloğa kaynak eklemek Için gerekli roller](entitlement-management-delegate.md#required-roles-to-add-resources-to-a-catalog).
 
     >[!NOTE]
     > [Dinamik grupları](../enterprise-users/groups-create-rule.md) kullanırken, sahibin yanı sıra başka bir rol de görmezsiniz. Bu tasarım gereğidir.

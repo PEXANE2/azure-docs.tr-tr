@@ -296,8 +296,8 @@
         - name: Kapsayıcılar için Azure İzleyici
           href: ../azure-monitor/insights/container-insights-overview.md
           maintainContext: true
-        - name: Ana bileşen günlüklerini görüntüleme
-          href: view-master-logs.md
+        - name: Denetim düzlemi bileşen günlüklerini görüntüleme
+          href: view-control-plane-logs.md
         - name: Kubelet günlüklerini görüntüleme
           href: kubelet-logs.md
         - name: Kapsayıcı verilerini gerçek zamanlı olarak görüntüleme

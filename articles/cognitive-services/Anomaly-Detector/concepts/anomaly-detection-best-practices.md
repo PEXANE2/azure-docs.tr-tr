@@ -10,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 01/22/2021
 ms.author: mbullwin
-ms.openlocfilehash: b0869335c386712e6b759bb0ced459ebd1bf383c
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 43ccde054a9630b251aa6c206028d29c7c699316
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98702735"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98936202"
 ---
 # <a name="best-practices-for-using-the-anomaly-detector-api"></a>Anomali algılayıcı API 'sini kullanmaya yönelik en iyi uygulamalar
 
@@ -52,7 +52,7 @@ Batch anomali algılama kullanılarak aynı veri kümesi aşağıda verilmiştir
 
 ## <a name="data-preparation"></a>Veri hazırlama
 
-Anomali algılayıcı API 'SI, bir JSON istek nesnesi halinde biçimlendirilen zaman serisi verilerini kabul eder. Zaman serisi, zaman içinde sıralı olarak kaydedilmiş herhangi bir sayısal veri olabilir. API 'nin performansını geliştirmek için zaman serisi verilerinizin pencerelerini anomali algılayıcı API uç noktasına gönderebilirsiniz. Gönderebilmeniz gereken en az veri noktası sayısı 12, üst sınır 8640 puntodur. [Ayrıntı düzeyi](/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.granularity?view=azure-dotnet-preview) , verilerinizin örneklendiği hız olarak tanımlanmıştır. 
+Anomali algılayıcı API 'SI, bir JSON istek nesnesi halinde biçimlendirilen zaman serisi verilerini kabul eder. Zaman serisi, zaman içinde sıralı olarak kaydedilmiş herhangi bir sayısal veri olabilir. API 'nin performansını geliştirmek için zaman serisi verilerinizin pencerelerini anomali algılayıcı API uç noktasına gönderebilirsiniz. Gönderebilmeniz gereken en az veri noktası sayısı 12, üst sınır 8640 puntodur. [Ayrıntı düzeyi](/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.granularity) , verilerinizin örneklendiği hız olarak tanımlanmıştır. 
 
 Anomali algılayıcı API 'sine gönderilen veri noktaları, geçerli bir Eşgüdümlü Evrensel Saat (UTC) Zaman damgasına ve sayısal bir değere sahip olmalıdır. 
 

@@ -1,19 +1,16 @@
 ---
 title: Azure portal kullanarak HDInsight 'ta Apache Hadoop kümelerini yönetme
 description: Azure portal kullanarak Azure HDInsight kümeleri oluşturmayı ve yönetmeyi öğrenin.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 04/24/2020
-ms.openlocfilehash: 7c644583e994e51f11bdf7991755a6ea94b01e76
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 5d308bfbe605e5ec3bed3bf5d6506ccafc53836e
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96012824"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942834"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>HDInsight 'ta Apache Hadoop kümelerini Azure portal kullanarak yönetin
 
@@ -25,7 +22,7 @@ ms.locfileid: "96012824"
 
 HDInsight 'ta mevcut bir Apache Hadoop kümesi.  Bkz. [HDInsight 'ta Azure Portal kullanarak Linux tabanlı kümeler oluşturma](hdinsight-hadoop-create-linux-clusters-portal.md).
 
-## <a name="getting-started"></a>Başlarken
+## <a name="getting-started"></a>Kullanmaya Başlama
 
 [https://portal.azure.com](https://portal.azure.com) adresinde oturum açın.
 
@@ -112,7 +109,7 @@ HDInsight 'ta mevcut bir Apache Hadoop kümesi.  Bkz. [HDInsight 'ta Azure Porta
 |İşletim Sistemi|**Windows** ya da **Linux**.|
 |TÜR|Hadoop, HBase, fırtınası, Spark.|
 |Sürüm|Bkz. [HDInsight sürümleri](hdinsight-component-versioning.md).|
-|En düşük TLS sürümü|TLS sürümü.|
+|Minimum TLS sürümü|TLS sürümü.|
 |ABONELİK|Abonelik adı.|
 |VARSAYıLAN VERI KAYNAĞı|Varsayılan küme dosya sistemi.|
 |Çalışan düğümleri boyutları|Çalışan düğümlerinin seçili VM boyutu.|

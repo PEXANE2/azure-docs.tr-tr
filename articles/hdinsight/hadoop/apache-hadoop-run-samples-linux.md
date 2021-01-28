@@ -1,19 +1,16 @@
 ---
 title: HDInsight 'ta Apache Hadoop MapReduce örnekleri çalıştırma-Azure
 description: HDInsight 'ta bulunan jar dosyalarında MapReduce örneklerini kullanmaya başlayın. Kümeye bağlanmak için SSH kullanın ve ardından örnek işleri çalıştırmak için Hadoop komutunu kullanın.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 12/12/2019
-ms.openlocfilehash: cc0918f3d9739a214e682d7faa460b6cc519cb0b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5e75a39b1f9e8503097914b0c9e735915f9ae667
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86207843"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943210"
 ---
 # <a name="run-the-mapreduce-examples-included-in-hdinsight"></a>HDInsight 'ta bulunan MapReduce örneklerini çalıştırma
 
@@ -25,7 +22,7 @@ HDInsight üzerinde Apache Hadoop eklenen MapReduce örneklerini çalıştırmay
 
 * HDInsight üzerinde bir Apache Hadoop kümesi. Bkz. [Linux 'Ta HDInsight kullanmaya başlama](./apache-hadoop-linux-tutorial-get-started.md).
 
-* Bir SSH istemcisi. Daha fazla bilgi için bkz. [SSH kullanarak HDInsight 'A bağlanma (Apache Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md).
+* Bir SSH istemcisi. Daha fazla bilgi için bkz. [SSH kullanarak HDInsight'a (Apache Hadoop) bağlanma](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 ## <a name="the-mapreduce-examples"></a>MapReduce örnekleri
 
@@ -168,7 +165,7 @@ Bu örneği çalıştırmak için aşağıdaki komutu kullanın. Bu komut, Pi de
 yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar pi 16 10000000
 ```
 
-Bu komut tarafından döndürülen değer **3.14159155000000000000**benzerdir. Başvurular için, Pi 'nin ilk 10 ondalık basamak 3,1415926535 ' dir.
+Bu komut tarafından döndürülen değer **3.14159155000000000000** benzerdir. Başvurular için, Pi 'nin ilk 10 ondalık basamak 3,1415926535 ' dir.
 
 ## <a name="10-gb-graysort-example"></a>10 GB gri sıralama örneği
 

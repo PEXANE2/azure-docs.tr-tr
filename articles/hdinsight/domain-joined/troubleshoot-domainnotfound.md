@@ -1,18 +1,15 @@
 ---
 title: Azure HDInsight 'ta küme oluşturma, DomainNotFound hatasıyla başarısız oluyor
 description: Azure HDInsight kümeleriyle etkileşim kurarken sorun giderme adımları ve olası çözümleri
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/23/2020
-ms.openlocfilehash: 79cd3b687dc8a2eb838146a6dc8a40b184a55fe6
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 54096e6d1741a7be9f50d4b4f7f0fcabbe880588
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96005954"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943348"
 ---
 # <a name="scenario-cluster-creation-fails-with-domainnotfound-error-in-azure-hdinsight"></a>Senaryo: Azure HDInsight 'ta küme oluşturma, DomainNotFound hatasıyla başarısız oluyor
 

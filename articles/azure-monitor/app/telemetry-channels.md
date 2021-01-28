@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 05/14/2019
 ms.custom: devx-track-csharp
 ms.reviewer: mbullwin
-ms.openlocfilehash: fec7bfc16e2cc36d19c84b93b5b93c3c1365b166
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a22a0d112671019d73eb4c9a3853462e4e9c8c75
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90564024"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937361"
 ---
 # <a name="telemetry-channels-in-application-insights"></a>Application Insights telemetri kanalları
 
@@ -18,7 +18,7 @@ Telemetri kanalları, [Azure Application Insights SDK](./app-insights-overview.m
 
 ## <a name="what-are-telemetry-channels"></a>Telemetri kanalları nelerdir?
 
-Telemetri kanalları, telemetri öğelerini arabelleğe almayı ve bunları sorgulamak ve analiz etmek için depolanacağı Application Insights hizmetine göndermekten sorumludur. Telemetri kanalı arabirimini uygulayan herhangi bir sınıftır [`Microsoft.ApplicationInsights.ITelemetryChannel`](/dotnet/api/microsoft.applicationinsights.channel.itelemetrychannel?view=azure-dotnet) .
+Telemetri kanalları, telemetri öğelerini arabelleğe almayı ve bunları sorgulamak ve analiz etmek için depolanacağı Application Insights hizmetine göndermekten sorumludur. Telemetri kanalı arabirimini uygulayan herhangi bir sınıftır [`Microsoft.ApplicationInsights.ITelemetryChannel`](/dotnet/api/microsoft.applicationinsights.channel.itelemetrychannel) .
 
 `Send(ITelemetry item)`Telemetri kanalının yöntemi, tüm telemetri başlatıcıları ve telemetri işlemcileri çağrıldıktan sonra çağrılır. Bu nedenle, bir telemetri işlemcisi tarafından bırakılan tüm öğeler kanala erişmez. `Send()` genellikle öğeleri arka uca anında göndermez. Genellikle, bunları bellekte arabelleğe alır ve etkili iletim için bunları toplu halde gönderir.
 

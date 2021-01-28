@@ -1,18 +1,15 @@
 ---
 title: Azure HDInsight 'ta ağ trafiğini denetleme
 description: Azure HDInsight kümelerine gelen ve giden trafiği denetleme tekniklerini öğrenin.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 348b9b80c74f085ce31ecce93753a253782fe3ea
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 0cbda0b533a64e627bfeef9589ab95c4163ae73e
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92543177"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943363"
 ---
 # <a name="control-network-traffic-in-azure-hdinsight"></a>Azure HDInsight 'ta ağ trafiğini denetleme
 
@@ -40,7 +37,7 @@ Ağ trafiğini denetlemek için **ağ güvenlik grupları** kullanmayı planlıy
 
 3. HDInsight 'ı yüklemeyi planladığınız alt ağ için ağ güvenlik grupları oluşturun veya değiştirin.
 
-    * __Ağ güvenlik grupları__ : ıp adreslerinden __443__ numaralı bağlantı noktasında __gelen__ trafiğe izin verin. Bu, HDInsight Yönetim Hizmetleri 'nin kümeye sanal ağ dışından ulaşmasını güvence altına alabilir. __Kafka Rest proxy__ etkinleştirilmiş kümeler için bağlantı noktası __9400__ ' de __gelen__ trafiğe de izin verin. Bu, Kafka REST proxy sunucusuna ulaşılacağından emin olur.
+    * __Ağ güvenlik grupları__: ıp adreslerinden __443__ numaralı bağlantı noktasında __gelen__ trafiğe izin verin. Bu, HDInsight Yönetim Hizmetleri 'nin kümeye sanal ağ dışından ulaşmasını güvence altına alabilir. __Kafka Rest proxy__ etkinleştirilmiş kümeler için bağlantı noktası __9400__ ' de __gelen__ trafiğe de izin verin. Bu, Kafka REST proxy sunucusuna ulaşılacağından emin olur.
 
 Ağ güvenlik grupları hakkında daha fazla bilgi için bkz. [ağ güvenlik gruplarına genel bakış](../virtual-network/network-security-groups-overview.md).
 

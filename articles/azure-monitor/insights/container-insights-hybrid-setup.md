@@ -3,12 +3,12 @@ title: Kapsayıcılar için Azure Izleyici ile karma Kubernetes kümelerini yap�
 description: Bu makalede, Azure Stack veya başka bir ortamda barındırılan Kubernetes kümelerini izlemek üzere kapsayıcılar için Azure Izleyicisini nasıl yapılandırabileceğiniz açıklanmaktadır.
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: d481af07013c0a5b4c5a381527c6f555400a2559
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 12901b1d2d7edd85fbe1650600856d09105c15b2
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92890471"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98936408"
 ---
 # <a name="configure-hybrid-kubernetes-clusters-with-azure-monitor-for-containers"></a>Kapsayıcılar için Azure Izleyici ile karma Kubernetes kümelerini yapılandırma
 
@@ -21,7 +21,7 @@ Aşağıdaki konfigürasyonlar, kapsayıcılar için Azure Izleyici ile resmi ol
 - Lý
 
     - Şirket içi Kubernetes
-    - Azure 'da AKS altyapısı ve Azure Stack. Daha fazla bilgi için bkz. [Azure Stack aks altyapısı](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908&preserve-view=true)
+    - Azure 'da AKS altyapısı ve Azure Stack. Daha fazla bilgi için bkz. [Azure Stack aks altyapısı](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview)
     - [OpenShift](https://docs.openshift.com/container-platform/4.3/welcome/index.html) sürüm 4 ve üzeri, şirket içi veya diğer bulut ortamları.
 
 - Kubernetes ve destek ilkesi sürümleri [desteklenen aks](../../aks/supported-kubernetes-versions.md)sürümleriyle aynıdır.
@@ -92,7 +92,7 @@ Bu yöntem iki JSON şablonu içerir. Bir şablon, izlemeyi etkinleştirmek içi
 - **workspaceResourceId** -Log Analytics çalışma alanınızın tam kaynak kimliği.
 - **workspaceRegion** -çalışma alanının oluşturulduğu bölge, Azure Portal görüntülenirken çalışma alanı özelliklerinde **konum** olarak da adlandırılır.
 
-DosyacontainerSolutionParams.jsiçindeki parametre değeri için gereken Log Analytics çalışma alanınızın tam kaynak KIMLIĞINI belirlemek için `workspaceResourceId` , aşağıdaki adımları **containerSolutionParams.json** uygulayın ve ardından çözümü eklemek için PowerShell cmdlet 'INI veya Azure CLI komutunu çalıştırın.
+DosyacontainerSolutionParams.jsiçindeki parametre değeri için gereken Log Analytics çalışma alanınızın tam kaynak KIMLIĞINI belirlemek için `workspaceResourceId` , aşağıdaki adımları  uygulayın ve ardından çözümü eklemek için PowerShell cmdlet 'INI veya Azure CLI komutunu çalıştırın.
 
 1. Aşağıdaki komutu kullanarak erişiminiz olan tüm abonelikleri listeleyin:
 
@@ -202,7 +202,7 @@ DosyacontainerSolutionParams.jsiçindeki parametre değeri için gereken Log Ana
     }
     ```
 
-7. Adım 3 ' te kopyaladığınız değeri kullanarak **workspaceResourceId** değerlerini düzenleyin ve **WorkspaceRegion** for the Azure CLI komutunu çalıştırdıktan sonra **bölge** değerini kopyalayın [az Monitor Log-Analytics Workspace Show](/cli/azure/monitor/log-analytics/workspace?view=azure-cli-latest#az-monitor-log-analytics-workspace-list&preserve-view=true).
+7. Adım 3 ' te kopyaladığınız değeri kullanarak **workspaceResourceId** değerlerini düzenleyin ve **WorkspaceRegion** for the Azure CLI komutunu çalıştırdıktan sonra **bölge** değerini kopyalayın [az Monitor Log-Analytics Workspace Show](/cli/azure/monitor/log-analytics/workspace#az-monitor-log-analytics-workspace-list&preserve-view=true).
 
 8. Bu dosyayı yerel bir klasöre containerSolutionParams.jsolarak kaydedin.
 

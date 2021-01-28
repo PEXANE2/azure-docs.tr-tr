@@ -3,7 +3,7 @@ title: Yetkilendirme yönetiminde yetkilendirme ve roller-Azure AD
 description: Erişim yönetimini, BT yöneticilerinden departman yöneticilerine ve proje yöneticilerine, erişimi yönetebilmeleri için nasıl atayacağınızı öğrenin.
 services: active-directory
 documentationCenter: ''
-author: barclayn
+author: ajburnle
 manager: daveba
 editor: markwahl-msft
 ms.service: active-directory
@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
 ms.date: 12/23/2020
-ms.author: barclayn
+ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2cf3784cc5f6014b04b4668517faf3f319ce55d5
-ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
+ms.openlocfilehash: 7a5812d4dbbd1a63b16d5bee77bb018ea18dd1d6
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97746686"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937686"
 ---
 # <a name="delegation-and-roles-in-azure-ad-entitlement-management"></a>Azure AD yetkilendirme yönetiminde yetkilendirme ve roller
 
@@ -76,7 +76,7 @@ Temsilcinin ardından, pazarlama departmanı aşağıdaki tabloya benzer rollere
 
 Yetkilendirme yönetiminin, yetkilendirme yönetimine özgü aşağıdaki rolleri vardır.
 
-| Yetkilendirme Yönetimi rolü | Açıklama |
+| Yetkilendirme Yönetimi rolü | Description |
 | --- | --- |
 | Katalog Oluşturucu | Kataloglar oluşturun ve yönetin. Genellikle genel yönetici olmayan bir BT Yöneticisi veya bir kaynak koleksiyonu için kaynak sahibi. Katalog oluşturan kişi otomatik olarak kataloğun ilk katalog sahibi olur ve ek Katalog sahipleri ekleyebilir. Bir katalog Oluşturucu yönetmez veya sahip olmadıkları katalogları göremez ve bir kataloğa ait olmadıkları kaynakları ekleyemez. Katalog oluşturucunun başka bir kataloğu yönetmesi veya sahip olmadıkları kaynakları eklemesi gerekiyorsa, o kataloğun veya kaynağın ortak sahibi olmasını isteyebilir. |
 | Katalog sahibi | Mevcut katalogları düzenleyin ve yönetin. Genellikle bir BT Yöneticisi veya kaynak sahipleri veya kataloğun sahibi tarafından atanan bir kullanıcı. |
@@ -85,9 +85,9 @@ Yetkilendirme yönetiminin, yetkilendirme yönetimine özgü aşağıdaki roller
 
 Ayrıca, atanan bir onaylayan ve bir erişim paketinin istek sahibi de haklara sahiptir, ancak bu roller rol değildir.
 
-| Sağ | Açıklama |
+| Sağ | Description |
 | --- | --- |
-| Kişi | Erişim paketi tanımlarını değiştiremese de, paketlere erişim isteklerini onaylamak veya reddetmek için bir ilke tarafından yetkilendirilmiştir. |
+| Onaylayan | Erişim paketi tanımlarını değiştiremese de, paketlere erişim isteklerini onaylamak veya reddetmek için bir ilke tarafından yetkilendirilmiştir. |
 | Requestor | Erişim paketi istemek için bir erişim paketi ilkesi tarafından yetkilendirilir. |
 
 Aşağıdaki tabloda, Yetkilendirme Yönetimi rollerinin gerçekleştirebileceği görevler listelenmiştir.
@@ -118,7 +118,7 @@ Aşağıdaki tabloda, Yetkilendirme Yönetimi rollerinin gerçekleştirebileceğ
 
 ## <a name="required-roles-to-add-resources-to-a-catalog"></a>Kataloğa kaynak eklemek için gerekli roller
 
-Genel yönetici, bir katalogda grup (bulut tarafından oluşturulan güvenlik grupları veya bulut tarafından oluşturulan Microsoft 365 grupları), uygulama veya SharePoint Online sitesi ekleyebilir veya kaldırabilir. Bir Kullanıcı Yöneticisi, Dizin rolüne atanabilir olarak yapılandırılmış bir grup dışında, bir katalogda grup veya uygulama ekleyebilir veya kaldırabilir.
+Genel yönetici, bir katalogda grup (bulut tarafından oluşturulan güvenlik grupları veya bulut tarafından oluşturulan Microsoft 365 grupları), uygulama veya SharePoint Online sitesi ekleyebilir veya kaldırabilir. Bir Kullanıcı Yöneticisi, Dizin rolüne atanabilir olarak yapılandırılmış bir grup dışında, bir katalogda grup veya uygulama ekleyebilir veya kaldırabilir. Bir Kullanıcı yöneticisinin, Dizin rolüne atanabilir olarak yapılandırılmış grupları içeren bir katalogdaki erişim paketlerini yönetebileceğini unutmayın.
 
 Genel yönetici veya Kullanıcı Yöneticisi olmayan bir kullanıcı için bir kataloğa gruplar, uygulamalar veya SharePoint Online siteleri eklemek üzere, bu kullanıcının hem gerekli Azure AD dizin rolüne hem *de* Katalog sahibi yetkilendirme yönetimi rolüne sahip olması gerekir. Aşağıdaki tabloda, bir kataloğa kaynak eklemek için gereken rol birleşimleri listelenmektedir. Bir katalogdan kaynakları kaldırmak için aynı rollere sahip olmanız gerekir.
 

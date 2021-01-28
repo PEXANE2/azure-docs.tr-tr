@@ -3,16 +3,13 @@ title: İzleme hatası Azure HDInsight kümesinden hata durumunda yumuşak kilit
 description: İzleme hatası Soft kilitleniyor CPU, Azure HDInsight kümesi 'ndeki çekirdek Syslog 'lar 'da görünür
 ms.service: hdinsight
 ms.topic: troubleshooting
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.date: 08/05/2019
-ms.openlocfilehash: 33990e40507f088962fd8d8efd241de5d2fcc63b
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 5d9d7b0fc21660dd22ff92bbe2de38c759c440ec
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289058"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944340"
 ---
 # <a name="scenario-watchdog-bug-soft-lockup---cpu-error-from-an-azure-hdinsight-cluster"></a>Senaryo: "izleme: hata: bir Azure HDInsight kümesinden yazılım kilitleme-CPU" hatası
 
@@ -46,7 +43,7 @@ Linux çekirdeğindeki bir [hata](https://bugzilla.kernel.org/show_bug.cgi?id=19
 
     Yeni düğümler eklendiğinde betiği yürütmek istiyorsanız **bu betiği kalıcı yap...** öğesini seçin.
 
-1. **Oluştur** ’u seçin.
+1. **Oluştur**’u seçin.
 
 1. Yürütmenin başarılı olmasını bekleyin.
 

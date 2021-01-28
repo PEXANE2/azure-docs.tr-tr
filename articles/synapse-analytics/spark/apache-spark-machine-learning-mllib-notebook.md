@@ -1,6 +1,6 @@
 ---
 title: 'Öğretici: Apache Spark MLlib ile makine öğrenimi uygulaması derleme'
-description: Lojistik gerileme aracılığıyla sınıflandırma kullanarak bir veri kümesini analiz eden bir makine öğrenimi uygulaması oluşturmak için MLlib Apache Spark kullanma hakkında bir öğretici.
+description: Lojistik gerileme aracılığıyla sınıflandırmayı kullanarak bir veri kümesini analiz eden bir makine öğrenimi uygulaması oluşturmak için MLlib Apache Spark kullanma hakkında bir öğretici.
 services: synapse-analytics
 author: euangMS
 ms.service: synapse-analytics
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.subservice: machine-learning
 ms.date: 04/15/2020
 ms.author: euang
-ms.openlocfilehash: 30ddee7c203ef1654972675f610256d1bfb1f21c
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 39ba8a5884abb4be9fa0b8e32a292e06738e1550
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98116917"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98935654"
 ---
 # <a name="tutorial-build-a-machine-learning-app-with-apache-spark-mllib-and-azure-synapse-analytics"></a>Öğretici: Apache Spark MLlib ve Azure SYNAPSE Analytics ile Machine Learning uygulaması derleme
 
@@ -31,25 +31,25 @@ Mini bilgi ve MLlib, için uygun olan yardımcı programlar dahil olmak üzere m
 
 ## <a name="understand-classification-and-logistic-regression"></a>Sınıflandırmayı ve lojistik regresyonunu anlayın
 
-Popüler bir makine öğrenimi görevi *sınıflandırması*, giriş verilerini kategorilere sıralama işlemidir. Bu, sağladığınız giriş verilerine nasıl etiket atanacağını anlamak için bir sınıflandırma algoritmasının *işleridir* . Örneğin, stok bilgilerini girdi olarak kabul eden bir makine öğrenimi algoritmasını düşünebilirsiniz ve stoku iki kategoriye böler: satmanız gereken hisse senetleri ve tutmanız gereken hisse senetleri.
+Popüler bir makine öğrenimi görevi *sınıflandırması*, giriş verilerini kategorilere sıralama işlemidir. Bu, sağladığınız giriş verilerine nasıl etiket atanacağını anlamak için bir sınıflandırma algoritmasının *işleridir* . Örneğin, stok bilgilerini girdi olarak kabul eden bir makine öğrenimi algoritmasını düşünebilirsiniz ve stoku iki kategoriye ayırabilirsiniz: satış yapmanız gereken stoklar ve tutmanız gereken hisse senetleri.
 
-*Lojistik regresyon* , sınıflandırma için kullanabileceğiniz bir algoritmadır. Spark 'un lojistik regresyon API 'SI, *ikili sınıflandırmada* veya giriş verilerinin iki gruptan birinde sınıflandırılmasına yardımcı olur. Lojistik gerilemeleri hakkında daha fazla bilgi için bkz. [Vikipedi](https://en.wikipedia.org/wiki/Logistic_regression).
+*Lojistik regresyon* , sınıflandırma için kullanabileceğiniz bir algoritmadır. Spark 'un lojistik regresyon API 'SI, *ikili sınıflandırmada* veya giriş verilerinin iki gruptan birinde sınıflandırılmasına yardımcı olur. Lojistik regresyon hakkında daha fazla bilgi için bkz. [Vikipedi](https://en.wikipedia.org/wiki/Logistic_regression).
 
-Özet olarak, lojistik regresyon süreci, bir giriş vektörünün bir grupta veya diğeri ait olma olasılığını tahmin etmek için kullanılabilecek bir *lojistik işlevi* üretir.
+Özet olarak, lojistik regresyon süreci, bir giriş vektörünün bir grupta ya da diğeri ait olma olasılığını tahmin etmek için kullanabileceğiniz bir *lojistik işlevi* üretir.
 
 ## <a name="predictive-analysis-example-on-nyc-taxi-data"></a>NYC TAXI verilerinde tahmine dayalı analiz örneği
 
-Bu örnekte, New York 'dan TAXI Seyahat ipucu verilerinde bazı tahmine dayalı analiz gerçekleştirmek için Spark 'ı kullanırsınız. Veriler [Azure açık veri kümeleri](https://azure.microsoft.com/services/open-datasets/catalog/nyc-taxi-limousine-commission-yellow-taxi-trip-records/)aracılığıyla kullanılabilir. Veri kümesinin bu alt kümesi, her seyahat hakkında bilgiler, başlangıç ve bitiş saati ve konumları, maliyet ve diğer ilgi çekici öznitelikler dahil olmak üzere sarı TAXI seyahatleriyle ilgili bilgiler içerir.
+Bu örnekte, New York 'dan alınan TAXI-Seyahat ipucu verilerinde bazı tahmine dayalı analiz gerçekleştirmek için Spark 'ı kullanırsınız. Veriler [Azure açık veri kümeleri](https://azure.microsoft.com/services/open-datasets/catalog/nyc-taxi-limousine-commission-yellow-taxi-trip-records/)aracılığıyla kullanılabilir. Veri kümesinin bu alt kümesi, her seyahat hakkında bilgiler, başlangıç ve bitiş saati ve konumları, maliyet ve diğer ilgi çekici öznitelikler dahil olmak üzere sarı TAXI seyahatleriyle ilgili bilgiler içerir.
 
 > [!IMPORTANT]
-> Bu verilerin depolama konumundan çekilerek ilgili ek ücretler olabilir.
+> Bu verilerin depolama konumundan çekilerek ilgili ek ücretler de olabilir.
 
 Aşağıdaki adımlarda, belirli bir yolculuğa bir tıp içerip içermediğini tahmin etmek için bir model geliştirirsiniz.
 
-## <a name="create-an-apache-spark--machine-learning-model"></a>Apache Spark Machine Learning modeli oluşturma
+## <a name="create-an-apache-spark-machine-learning-model"></a>Apache Spark Machine Learning modeli oluşturma
 
 1. PySpark çekirdeğini kullanarak bir not defteri oluşturun. Yönergeler için bkz. [Not defteri oluşturma](../quickstart-apache-spark-notebook.md#create-a-notebook).
-2. Bu uygulama için gereken türleri içeri aktarın. Aşağıdaki kodu kopyalayıp boş bir hücreye yapıştırın ve sonra **SHIFT + enter** tuşlarına basın ya da kodun solundaki mavi yürütme simgesini kullanarak hücreyi çalıştırın.
+2. Bu uygulama için gereken türleri içeri aktarın. Aşağıdaki kodu kopyalayıp boş bir hücreye yapıştırın ve ardından SHIFT + enter tuşlarına basın. Veya kodun solundaki mavi yürütme simgesini kullanarak hücreyi çalıştırın.
 
     ```python
     import matplotlib.pyplot as plt
@@ -69,9 +69,11 @@ Aşağıdaki adımlarda, belirli bir yolculuğa bir tıp içerip içermediğini 
 
 ## <a name="construct-the-input-dataframe"></a>Giriş veri çerçevesini oluşturun
 
-Ham veriler bir Parquet biçiminde olduğundan, dosyayı doğrudan veri çerçevesi olarak belleğe çekmek için Spark bağlamını kullanabilirsiniz. Aşağıdaki kod varsayılan seçenekleri kullandığından, gerekirse veri türlerinin ve diğer şema özniteliklerinin eşlenmesini zorlamak mümkündür.
+Ham veriler bir Parquet biçiminde olduğundan, dosyayı doğrudan veri çerçevesi olarak belleğe çekmek için Spark bağlamını kullanabilirsiniz. Aşağıdaki adımlarda bulunan kod varsayılan seçenekleri kullandığından, gerekirse veri türlerinin ve diğer şema özniteliklerinin eşlenmesine zorlamak mümkündür.
 
-1. Kodu yeni bir hücreye yapıştırarak Spark dataframe oluşturmak için aşağıdaki satırları çalıştırın. Bu, verileri açık veri kümeleri API 'SI aracılığıyla alır. Bu verilerin tümünün çekilerek 1.500.000.000 satır hakkında bilgi oluşturulur. Sunucusuz Apache Spark havuzunuzun boyutuna bağlı olarak, ham veriler çok büyük olabilir veya üzerinde çalışmak için çok fazla zaman alabilir. Bu verileri daha küçük bir değere filtreleyerek azaltabilirsiniz. Aşağıdaki kod örneği, verilerin tek bir ayı döndüren bir filtre uygulamak için start_date ve end_date kullanır.
+1. Kodu yeni bir hücreye yapıştırarak Spark DataFrame oluşturmak için aşağıdaki satırları çalıştırın. Bu adım, verileri açık veri kümeleri API 'SI aracılığıyla alır. Bu verilerin tümünün çekilerek 1.500.000.000 satır hakkında bilgi oluşturulur. 
+
+   Sunucusuz Apache Spark havuzunuzun boyutuna bağlı olarak, ham veriler çok büyük olabilir veya üzerinde çalışmak için çok fazla zaman alabilir. Bu verileri daha küçük bir değere filtreleyerek azaltabilirsiniz. Aşağıdaki kod örneği, `start_date` `end_date` verilerin tek bir ayı döndüren bir filtre uygulamak için ve kullanır.
 
     ```python
     from azureml.opendatasets import NycTlcYellow
@@ -82,29 +84,33 @@ Ham veriler bir Parquet biçiminde olduğundan, dosyayı doğrudan veri çerçev
     filtered_df = nyc_tlc.to_spark_dataframe()
     ```
 
-2. Daha basit filtrelemeye yönelik aşağı, istatistiksel bir perspektiften verilere yönelik sapma gösterebilir. Diğer bir yaklaşım, Spark içinde yerleşik olarak bulunan örneklemeyi kullanmaktır. Aşağıdaki kod, yukarıdaki koddan sonra uygulanırsa veri kümesini 2000 satır kadar azaltır. Bu örnekleme adımı basit filtre yerine veya basit filtreyle birlikte kullanılabilir.
+2. Daha basit filtrelemeye yönelik aşağı, istatistiksel bir perspektiften verilere yönelik sapma gösterebilir. Diğer bir yaklaşım, Spark içinde yerleşik olarak bulunan örneklemeyi kullanmaktır. 
+
+   Aşağıdaki kod, yukarıdaki koddan sonra uygulanırsa veri kümesini yaklaşık 2.000 satır için azaltır. Bu örnekleme adımını basit filtre yerine veya basit filtreyle birlikte kullanabilirsiniz.
 
     ```python
-    # To make development easier, faster and less expensive down sample for now
+    # To make development easier, faster, and less expensive, downsample for now
     sampled_taxi_df = filtered_df.sample(True, 0.001, seed=1234)
     ```
 
-3. Artık okunmuş olduğunu görmek için verilere bakmak mümkündür. Veri kümesinin boyutuna bağlı olarak tam küme yerine bir alt kümeyle verileri gözden geçirmek genellikle daha iyidir. Aşağıdaki kod, verileri görüntülemenin iki yolunu sunar: daha basit olan ve ikincisi daha zengin bir kılavuz deneyimi sağlama ve verileri grafiksel olarak görselleştirme özelliği.
+3. Artık okunmuş olduğunu görmek için verilere bakmak mümkündür. Veri kümesinin boyutuna bağlı olarak, verileri tam küme yerine bir alt kümeyle gözden geçirmek genellikle daha iyidir. 
+
+   Aşağıdaki kod, verileri görüntülemenin iki yolunu sunar. İlk yöntem temel ' dir. İkinci şekilde, verileri grafik halinde görselleştirme özelliği ile birlikte daha zengin bir kılavuz deneyimi sağlanır.
 
     ```python
     #sampled_taxi_df.show(5)
     display(sampled_taxi_df)
     ```
 
-4. Oluşturulan veri kümesi boyutunun boyutuna ve Not defterini birçok kez denemenize veya çalıştırmaya ihtiyaç duyuyorsanız, veri kümesinin çalışma alanında yerel olarak önbelleğe almanız önerilir. Açık önbelleğe alma gerçekleştirmek için üç yol vardır:
+4. Oluşturulan veri kümesinin boyutuna ve Not defterini pek çok kez denemenize veya çalıştırmaya ihtiyaç duyuyorsanız, veri kümesini çalışma alanında yerel olarak önbelleğe almak isteyebilirsiniz. Açık önbelleğe alma gerçekleştirmek için üç yol vardır:
 
-   - Veri çerçevesini yerel olarak bir dosya olarak kaydet
-   - Veri çerçevesini geçici bir tablo veya görünüm olarak kaydet
-   - Veri çerçevesini kalıcı tablo olarak kaydet
+   - Veri çerçevesini yerel olarak bir dosya olarak kaydedin.
+   - Veri çerçevesini geçici bir tablo veya görünüm olarak kaydedin.
+   - Veri çerçevesini kalıcı bir tablo olarak kaydedin.
 
-Bu yaklaşımların ilk 2 ' nin aşağıdaki kod örneklerine dahil edilmiştir.
+Bu yaklaşımların ilk ikisi aşağıdaki kod örneklerine dahil edilmiştir.
 
-Geçici bir tablo veya görünüm oluşturmak verilere farklı erişim yolları sağlar, ancak yalnızca Spark örnek oturumunun süresine göre sürer.
+Geçici bir tablo veya görünüm oluşturmak verilere farklı erişim yolları sağlar, ancak yalnızca Spark örnek oturumunun süresi boyunca sürer.
 
 ```Python
 sampled_taxi_df.createOrReplaceTempView("nytaxi")
@@ -112,14 +118,14 @@ sampled_taxi_df.createOrReplaceTempView("nytaxi")
 
 ## <a name="prepare-the-data"></a>Verileri hazırlama
 
-Ham biçimindeki veriler genellikle doğrudan bir modele geçirilmesi için uygun değildir. Veri üzerinde, modelin tüketebileceği bir duruma getirmek için bir dizi eylem gerçekleştirilmesi gerekir.
+Ham biçimindeki veriler genellikle doğrudan bir modele geçirilmesi için uygun değildir. Veri üzerinde, modelin tüketebileceği bir duruma getirmek için bir dizi eylem gerçekleştirmeniz gerekir.
 
-Aşağıdaki kodda dört işlem sınıfı verilmiştir:
+Aşağıdaki kodda dört işlem sınıfı gerçekleştirirsiniz:
 
-- Filtreleyiciler/hatalı değerler filtrelemeye göre kaldırılıyor.
+- Filtreleme yoluyla aykırı değerleri veya hatalı değerleri kaldırma.
 - Gerekli olmayan sütunların kaldırılması.
-- Bir şekilde daha verimli hale getirmek için ham verilerden türetilmiş yeni sütunların oluşturulması, bazen korleştirme olarak adlandırılır.
-- Etiketleme-ikili sınıflandırmadan (belirli bir yolculuğa bir ipucu olacak ya da bu bir seyahat üzerinde değil), ipucu miktarını 0 veya 1 değerine dönüştürmeniz gerekir.
+- Modelin daha verimli bir şekilde çalışmasını sağlamak için ham verilerden türetilmiş yeni sütunların oluşturulması. Bu işlem bazen korturlama olarak adlandırılır.
+- Kapatma. İkili sınıflandırma az olduğu için (belirli bir yolculuğa sahip bir ipucu olacaktır), ipucu miktarını 0 veya 1 değerine dönüştürmeniz gerekir.
 
 ```python
 taxi_df = sampled_taxi_df.select('totalAmount', 'fareAmount', 'tipAmount', 'paymentType', 'rateCodeId', 'passengerCount'\
@@ -139,7 +145,7 @@ taxi_df = sampled_taxi_df.select('totalAmount', 'fareAmount', 'tipAmount', 'paym
                                 )
 ```
 
-Son özellikleri eklemek için ikinci bir geçiş daha sonra veriler üzerinde yapılır.
+Ardından son özellikleri eklemek için verilerin üzerine ikinci bir geçiş yaparsınız.
 
 ```Python
 taxi_featurised_df = taxi_df.select('totalAmount', 'fareAmount', 'tipAmount', 'paymentType', 'passengerCount'\
@@ -155,16 +161,18 @@ taxi_featurised_df = taxi_df.select('totalAmount', 'fareAmount', 'tipAmount', 'p
 
 ## <a name="create-a-logistic-regression-model"></a>Lojistik regresyon modeli oluşturma
 
-Son görev, etiketli verileri Lojistik gerileme tarafından çözümlenebilecek bir biçime dönüştürmelidir. Lojistik regresyon algoritmasının girişi, *özellik vektörünün* giriş noktasını temsil eden bir sayı vektörü olduğu bir *etiket özelliği vektör çiftleri* kümesi olması gerekir. Bu nedenle, kategorik sütunları sayılara dönüştürmemiz gerekiyor. `trafficTimeBins`Ve `weekdayString` sütunlarının tamsayı temsillerine dönüştürülmesi gerekir. Dönüştürmeyi gerçekleştirmeye yönelik birden çok yaklaşım vardır, ancak bu örnekte gerçekleştirilen yaklaşım yaygın bir yaklaşım olan *Onehotenkodlamaya* sahiptir.
+Son görev, etiketli verileri Lojistik gerileme aracılığıyla çözümlenebilecek bir biçime dönüştürmelidir. Lojistik regresyon algoritmasının girişi, *özellik vektörünün* giriş noktasını temsil eden bir sayı vektörü olduğu bir *etiket/özellik vektör çiftleri* kümesi olmalıdır. 
+
+Bu nedenle, kategorik sütunları sayılara dönüştürmeniz gerekir. Özellikle, `trafficTimeBins` ve `weekdayString` sütunlarını tamsayı temsillerine dönüştürmeniz gerekir. Dönüştürmeyi gerçekleştirmeye yönelik birden çok yaklaşım vardır. Aşağıdaki örnek `OneHotEncoder` , yaygın olarak kullanılan yaklaşımı kullanır.
 
 ```python
-# Since the sample uses an algorithm that only works with numeric features, convert them so they can be consumed
+# Because the sample uses an algorithm that works only with numeric features, convert them so they can be consumed
 sI1 = StringIndexer(inputCol="trafficTimeBins", outputCol="trafficTimeBinsIndex")
 en1 = OneHotEncoder(dropLast=False, inputCol="trafficTimeBinsIndex", outputCol="trafficTimeBinsVec")
 sI2 = StringIndexer(inputCol="weekdayString", outputCol="weekdayIndex")
 en2 = OneHotEncoder(dropLast=False, inputCol="weekdayIndex", outputCol="weekdayVec")
 
-# Create a new dataframe that has had the encodings applied
+# Create a new DataFrame that has had the encodings applied
 encoded_final_df = Pipeline(stages=[sI1, en1, sI2, en2]).fit(taxi_featurised_df).transform(taxi_featurised_df)
 ```
 
@@ -172,40 +180,42 @@ Bu eylem, bir modeli eğitebilmeniz için tüm sütunları doğru biçimde içer
 
 ## <a name="train-a-logistic-regression-model"></a>Lojistik regresyon modeli eğitme
 
-İlk görev, veri kümesini bir eğitim kümesine ve test ya da doğrulama kümesine bölemedir. Burada bölme işlemi rasgele olur ve modeli etkileyebileceğini görmek için farklı bölünmüş ayarlarla birlikte oynamalısınız.
+İlk görev, veri kümesini bir eğitim kümesine ve test ya da doğrulama kümesine bölemedir. Burada bölme isteğe bağlı olarak belirlenir. Modeli etkilediklerini görmek için farklı bölünmüş ayarlarla denemeler yapın.
 
 ```python
-#Decide on the split between training and testing data from the dataframe
+# Decide on the split between training and testing data from the DataFrame
 trainingFraction = 0.7
 testingFraction = (1-trainingFraction)
 seed = 1234
 
-# Split the dataframe into test and training dataframes
+# Split the DataFrame into test and training DataFrames
 train_data_df, test_data_df = encoded_final_df.randomSplit([trainingFraction, testingFraction], seed=seed)
 ```
 
-Artık iki veri çerçevesi olduğuna göre, bir sonraki görev model formülünü oluşturmak ve bunu eğitim veri çerçevesinde çalıştırmak ve ardından test veri çerçevesine karşı doğrulamak olacaktır. Farklı birleşimlerin etkilerini görmek için model formülünün farklı sürümleriyle denemeler yapmanız gerekir.
+Artık iki veri çerçevesi olduğuna göre, sonraki görev model formülünü oluşturmak ve eğitim veri çerçevesinde çalıştırmak içindir. Daha sonra test veri çerçevesine göre doğrulayabilirsiniz. Farklı birleşimlerin etkilerini görmek için model formülünün farklı sürümleriyle denemeler yapın.
 
 > [!Note]
-> Modeli kaydetmek için Depolama Blobu verileri katılımcısı Azure rolüne ihtiyacınız olacaktır. Depolama hesabınız altında Access Control (ıAM) bölümüne gidin ve **rol ataması Ekle**' yi seçin. Depolama Blobu verileri katılımcısı Azure rolünü SQL veritabanı sunucunuza atayın. Yalnızca sahibi ayrıcalığına sahip Üyeler bu adımı gerçekleştirebilir. Çeşitli Azure yerleşik rolleri için bu [kılavuza](../../role-based-access-control/built-in-roles.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)bakın.
+> Modeli kaydetmek için *Depolama Blobu verileri katılımcısı* Azure rolüne ihtiyacınız olacaktır. Depolama hesabınız altında **Access Control (IAM)** bölümüne gidin ve **rol ataması Ekle**' yi seçin. Depolama Blobu veri katılımcısı rolünü Azure SQL veritabanı sunucunuza atayın. Yalnızca sahip ayrıcalıklarına sahip Üyeler bu adımı gerçekleştirebilir. 
+>
+>Çeşitli Azure yerleşik rolleri için [bu kılavuza](../../role-based-access-control/built-in-roles.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)bakın.
 
 ```python
-## Create a new LR object for the model
+## Create a new logistic regression object for the model
 logReg = LogisticRegression(maxIter=10, regParam=0.3, labelCol = 'tipped')
 
 ## The formula for the model
 classFormula = RFormula(formula="tipped ~ pickupHour + weekdayVec + passengerCount + tripTimeSecs + tripDistance + fareAmount + paymentType+ trafficTimeBinsVec")
 
-## Undertake training and create an LR model
+## Undertake training and create a logistic regression model
 lrModel = Pipeline(stages=[classFormula, logReg]).fit(train_data_df)
 
-## Saving the model is optional but its another form of inter session cache
+## Saving the model is optional, but it's another form of inter-session cache
 datestamp = datetime.now().strftime('%m-%d-%Y-%s')
 fileName = "lrModel_" + datestamp
 logRegDirfilename = fileName
 lrModel.save(logRegDirfilename)
 
-## Predict tip 1/0 (yes/no) on the test dataset, evaluation using AUROC
+## Predict tip 1/0 (yes/no) on the test dataset; evaluation using area under ROC
 predictions = lrModel.transform(test_data_df)
 predictionAndLabels = predictions.select("label","prediction").rdd
 metrics = BinaryClassificationMetrics(predictionAndLabels)
@@ -223,7 +233,7 @@ Area under ROC = 0.9779470729751403
 Artık bu testin sonuçları hakkında neden olacak bir son görselleştirme oluşturabilirsiniz. [ROC eğrisi](https://en.wikipedia.org/wiki/Receiver_operating_characteristic) , sonucu gözden geçirmek için bir yoldur.
 
 ```python
-## Plot the ROC curve, no need for pandas as this uses the modelSummary object
+## Plot the ROC curve; no need for pandas, because this uses the modelSummary object
 modelSummary = lrModel.stages[-1].summary
 
 plt.plot([0, 1], [0, 1], 'r--')
@@ -234,11 +244,11 @@ plt.ylabel('True Positive Rate')
 plt.show()
 ```
 
-![Lojistik regresyon ipucu modeli için ROC eğrisi](./media/apache-spark-machine-learning-mllib-notebook/nyc-taxi-roc.png)
+![İpucu modelinde Lojistik gerileme için ROC eğrisini gösteren grafik.](./media/apache-spark-machine-learning-mllib-notebook/nyc-taxi-roc.png)
 
 ## <a name="shut-down-the-spark-instance"></a>Spark örneğini kapatma
 
-Uygulamayı çalıştırmayı bitirdikten sonra, sekmeyi kapatarak veya Not defterinin alt kısmındaki durum panelinden **oturumu bitir** ' i seçerek kaynakları serbest bırakmak için Not defterini kapatın.
+Uygulamayı çalıştırmayı bitirdikten sonra, sekmeyi kapatarak, kaynakları serbest bırakmak için Not defterini kapatın. Veya Not defteri 'nin altındaki durum panelinden **oturumu sonlandır** ' ı seçin.
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
@@ -251,4 +261,4 @@ Uygulamayı çalıştırmayı bitirdikten sonra, sekmeyi kapatarak veya Not deft
 - [Resmi belgeleri Apache Spark](https://spark.apache.org/docs/2.4.5/)
 
 >[!NOTE]
-> Bazı resmi Apache Spark belgeleri, Azure SYNAPSE Spark 'da kullanılamayan Spark konsolunun kullanılmasına bağımlıdır. Bunun yerine [Not defteri](../quickstart-apache-spark-notebook.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) veya [IntelliJ](../spark/intellij-tool-synapse.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) deneyimlerini kullanın.
+> Bazı resmi Apache Spark belgeleri, Azure SYNAPSE Analytics 'te Apache Spark bulunmayan Spark konsolunun kullanılmasına bağımlıdır. Bunun yerine [Not defteri](../quickstart-apache-spark-notebook.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) veya [IntelliJ](../spark/intellij-tool-synapse.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) deneyimlerini kullanın.

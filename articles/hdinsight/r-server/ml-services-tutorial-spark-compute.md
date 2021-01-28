@@ -1,25 +1,22 @@
 ---
 title: "Öğretici: Azure HDInsight 'ta Spark işlem bağlamında R kullanma"
 description: Öğretici-Azure HDInsight Machine Learning Hizmetleri kümesinde R ve Spark ile çalışmaya başlayın.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 06/21/2019
-ms.openlocfilehash: 6e727bc7ad8b7f0b8a04c48f3abd1f1ac0806c66
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: bd6015529fb521e3b157e46ee808aea43e993dee
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545914"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98935661"
 ---
 # <a name="tutorial-use-r-in-a-spark-compute-context-in-azure-hdinsight"></a>Öğretici: Azure HDInsight 'ta Spark işlem bağlamında R kullanma
 
 Bu öğreticide, Azure HDInsight Machine Learning Hizmetleri kümesinde çalışan Apache Spark R işlevlerinin kullanılmasına yönelik adım adım bir giriş sunulmaktadır.
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Örnek verileri yerel depolamaya indirme
@@ -33,7 +30,7 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* Azure HDInsight Machine Learning Hizmetleri kümesi. [Azure Portal kullanarak Apache Hadoop kümeleri oluşturma](../hdinsight-hadoop-create-linux-clusters-portal.md) bölümüne gidin ve **küme türü** için **ml Hizmetleri** ' ni seçin.
+* Azure HDInsight Machine Learning Hizmetleri kümesi. [Azure Portal kullanarak Apache Hadoop kümeleri oluşturma](../hdinsight-hadoop-create-linux-clusters-portal.md) bölümüne gidin ve **küme türü** için **ml Hizmetleri**' ni seçin.
 
 ## <a name="connect-to-rstudio-server"></a>RStudio Server’a bağlanma
 
@@ -43,7 +40,7 @@ RStudio sunucusu kümenin Edge düğümünde çalışır. Aşağıdaki siteye gi
 https://CLUSTERNAME.azurehdinsight.net/rstudio/
 ```
 
-İlk kez oturum açtığınızda iki kez kimlik doğrulaması yapmanız gerekir. İlk kimlik doğrulaması isteminde, Küme Yöneticisi Kullanıcı adı ve parolasını (varsayılan *yönetici* ) sağlayın. İkinci kimlik doğrulama isteminde SSH kullanıcı adını ve parolasını belirtin (varsayılan olarak *sshuser* ' dir). Sonraki oturum açma işlemleri yalnızca SSH kimlik bilgilerini gerektirir.
+İlk kez oturum açtığınızda iki kez kimlik doğrulaması yapmanız gerekir. İlk kimlik doğrulaması isteminde, Küme Yöneticisi Kullanıcı adı ve parolasını (varsayılan *yönetici*) sağlayın. İkinci kimlik doğrulama isteminde SSH kullanıcı adını ve parolasını belirtin (varsayılan olarak *sshuser*' dir). Sonraki oturum açma işlemleri yalnızca SSH kimlik bilgilerini gerektirir.
 
 ## <a name="download-the-sample-data-to-local-storage"></a>Örnek verileri yerel depolamaya indirme
 
@@ -363,7 +360,7 @@ Bir kümeyi silmek için bkz. [tarayıcınızı, PowerShell 'i veya Azure CLI 'y
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, bir HDInsight Machine Learning Hizmetleri kümesinde çalışan Apache Spark R işlevlerinin nasıl kullanılacağını öğrendiniz. Daha fazla bilgi için aşağıdaki makalelere bakın:
+Bu öğreticide, bir HDInsight Machine Learning Hizmetleri kümesinde çalışan Apache Spark R işlevlerinin nasıl kullanılacağını öğrendiniz. Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
 
 * [Azure HDInsight Machine Learning Hizmetleri kümesi için işlem bağlamı seçenekleri](r-server-compute-contexts.md)
 * [Hadoop üzerinde Spark için R Işlevleri](/machine-learning-server/r-reference/revoscaler/revoscaler-hadoop-functions)

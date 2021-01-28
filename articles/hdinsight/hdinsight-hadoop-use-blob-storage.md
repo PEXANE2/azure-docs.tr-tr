@@ -1,19 +1,16 @@
 ---
 title: HDFS uyumlu Azure Depolama'da veri sorgulama - Azure HDInsight
 description: Azure depolama 'dan verileri sorgulamayı ve analizin sonuçlarını depolamak için Azure Data Lake Storage öğrenin.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: ead9b775b8c61d0d89abd4821bef2b1aaaea0d76
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: cedc0ff1b3c2aa64f32445eabc800748a753981d
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547444"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945419"
 ---
 # <a name="use-azure-storage-with-azure-hdinsight-clusters"></a>Azure HDInsight kümeleri ile Azure Depolama'yı kullanma
 
@@ -32,7 +29,7 @@ Bu makalede Azure Depolama'nın HDInsight kümeleri ile nasıl çalıştığı h
 | Depolama hesabı türü | Desteklenen hizmetler | Desteklenen performans katmanları |Desteklenmeyen performans katmanları| Desteklenen erişim katmanları |
 |----------------------|--------------------|-----------------------------|---|------------------------|
 | StorageV2 (genel amaçlı v2)  | Blob     | Standart                    |Premium| Sık erişimli, seyrek erişimli Arşiv\*   |
-| Depolama (genel amaçlı v1)   | Blob     | Standart                    |Premium| YOK                    |
+| Depolama (genel amaçlı v1)   | Blob     | Standart                    |Premium| Yok                    |
 | BlobStorage                    | Blob     | Standart                    |Premium| Sık erişimli, seyrek erişimli Arşiv\*   |
 
 İş verilerini depolamak için varsayılan blob kapsayıcısını kullanmanızı önermiyoruz. Depolama maliyetini azaltmak için blob kapsayıcısının her kullanımdan sonra silinmesi iyi bir uygulamadır. Varsayılan kapsayıcı, uygulama ve sistem günlükleri içerir. Kapsayıcıyı silmeden önce günlükleri aldığınızdan emin olun.
@@ -44,23 +41,23 @@ Birden çok küme için varsayılan dosya sistemi olarak bir blob kapsayıcısı
 
 ## <a name="access-files-from-within-cluster"></a>Küme içinden dosyalara erişme
 
-HDInsight kümesinden Data Lake Storage dosyalara erişmek için çeşitli yollar vardır. URI şeması, şifrelenmemiş erişim (yani, ile birlikte *:* ön ek ile) ve TLS şifreli erişimi ( *GB* 'ler ile) sağlar. Azure’da aynı bölgede bulunan verilere erişirken dahi mümkün olduğunda *wasbs* kullanmanızı öneririz.
+HDInsight kümesinden Data Lake Storage dosyalara erişmek için çeşitli yollar vardır. URI şeması, şifrelenmemiş erişim (yani, ile birlikte *:* ön ek ile) ve TLS şifreli erişimi ( *GB*'ler ile) sağlar. Azure’da aynı bölgede bulunan verilere erişirken dahi mümkün olduğunda *wasbs* kullanmanızı öneririz.
 
-* **Tam adı kullanarak** . Bu yöntemle, erişmek istediğiniz dosyanın tam yolunu girersiniz.
+* **Tam adı kullanarak**. Bu yöntemle, erişmek istediğiniz dosyanın tam yolunu girersiniz.
 
     ```
     wasb://<containername>@<accountname>.blob.core.windows.net/<file.path>/
     wasbs://<containername>@<accountname>.blob.core.windows.net/<file.path>/
     ```
 
-* **Kısaltılmış yol biçimi kullanarak** . Bu yaklaşımda, yolu küme köküne kadar değiştirirsiniz:
+* **Kısaltılmış yol biçimi kullanarak**. Bu yaklaşımda, yolu küme köküne kadar değiştirirsiniz:
 
     ```
     wasb:///<file.path>/
     wasbs:///<file.path>/
     ```
 
-* **Göreli yolu kullanarak** . Bu yöntemle, erişmek istediğiniz dosyanın yalnızca göreli yolunu girersiniz.
+* **Göreli yolu kullanarak**. Bu yöntemle, erişmek istediğiniz dosyanın yalnızca göreli yolunu girersiniz.
 
     ```
     /<file.path>/
@@ -132,7 +129,7 @@ Microsoft, Azure depolama ile çalışmak için aşağıdaki araçları sağlar:
 
 | Araç | Linux | OS X | Windows |
 | --- |:---:|:---:|:---:|
-| [Azure Portal](../storage/blobs/storage-quickstart-blobs-portal.md) |✔ |✔ |✔ |
+| [Azure portalı](../storage/blobs/storage-quickstart-blobs-portal.md) |✔ |✔ |✔ |
 | [Azure CLI](../storage/blobs/storage-quickstart-blobs-cli.md) |✔ |✔ |✔ |
 | [Azure PowerShell](../storage/blobs/storage-quickstart-blobs-powershell.md) | | |✔ |
 | [AzCopy](../storage/common/storage-use-azcopy-v10.md) |✔ | |✔ |
@@ -141,11 +138,11 @@ Microsoft, Azure depolama ile çalışmak için aşağıdaki araçları sağlar:
 
 * Yapılandırılmış varsayılan deponun tüm yolunu belirlemek için şuraya gidin:
 
-    **HDFS** Bu  >  **Ve sonra** `fs.defaultFS` filtre giriş kutusuna girin.
+     Bu  >  **Ve sonra** `fs.defaultFS` filtre giriş kutusuna girin.
 
 * Bellek deposunun ikincil depolama olarak yapılandırılıp yapılandırılmadığını denetlemek için şuraya gidin:
 
-    **HDFS** Bu  >  **Ve sonra** `blob.core.windows.net` filtre giriş kutusuna girin.
+     Bu  >  **Ve sonra** `blob.core.windows.net` filtre giriş kutusuna girin.
 
 Ambarı REST API kullanarak yolu elde etmek için bkz. [varsayılan depolamayı alma](./hdinsight-hadoop-manage-ambari-rest-api.md#get-the-default-storage).
 

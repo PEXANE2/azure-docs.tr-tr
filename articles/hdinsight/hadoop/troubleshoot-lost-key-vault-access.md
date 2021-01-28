@@ -1,18 +1,15 @@
 ---
 title: Disk şifrelemesi ile Azure HDInsight kümeleri Key Vault erişimi kaybeder
 description: Azure HDInsight kümeleriyle etkileşim kurarken Key Vault erişim sorunları için sorun giderme adımları ve olası çözümler.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/30/2020
-ms.openlocfilehash: bc8162f3a7ca8744a94aba039996275b5f13c727
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: ce2929ca84746de1ab8b51882f3004c3699f17ca
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92533419"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943109"
 ---
 # <a name="scenario-azure-hdinsight-clusters-with-disk-encryption-lose-key-vault-access"></a>Senaryo: disk şifrelemesi ile Azure HDInsight kümeleri Key Vault erişimi kaybeder
 

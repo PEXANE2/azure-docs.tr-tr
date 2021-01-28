@@ -1,18 +1,15 @@
 ---
 title: Azure HDInsight 'ta Apache HBase 'i Apache ambarı ile iyileştirme
 description: Apache HBase 'i yapılandırmak ve iyileştirmek için Apache ambarı Web Kullanıcı arabirimini kullanın.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 05/04/2020
-ms.openlocfilehash: b262e07bd07320e4b10b12a2f2cf07b97e58c61e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 307e9decad35c20885fbe550cc1f7de58c9386c0
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91821697"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942585"
 ---
 # <a name="optimize-apache-hbase-with-apache-ambari-in-azure-hdinsight"></a>Azure HDInsight 'ta Apache HBase 'i Apache ambarı ile iyileştirme
 
@@ -46,7 +43,7 @@ Blok önbelleği, okuma önbelleğidir. Boyutu parametresi tarafından denetleni
 
 ### <a name="memstore-size"></a>Memstore boyutu
 
-Tüm düzenlemeler, bellek arabelleğinde saklanır, bu, *Memstore*olarak adlandırılır. Bu arabellek, tek bir işlemde diske yazılabilen toplam veri miktarını artırır. Ayrıca son düzenlemelere erişimi de hızlandırır. Memstore boyutu aşağıdaki iki parametre tarafından tanımlanır:
+Tüm düzenlemeler, bellek arabelleğinde saklanır, bu, *Memstore* olarak adlandırılır. Bu arabellek, tek bir işlemde diske yazılabilen toplam veri miktarını artırır. Ayrıca son düzenlemelere erişimi de hızlandırır. Memstore boyutu aşağıdaki iki parametre tarafından tanımlanır:
 
 * `hbase.regionserver.global.memstore.UpperLimit`: Alt veri deposu 'nun kullanabileceği en yüksek bölge sunucusu yüzdesini tanımlar.
 
@@ -69,7 +66,7 @@ Aşağıdaki konfigürasyonlar, yazma ağır iş yüklerinin performansını art
 
 ### <a name="maximum-region-file-size"></a>En büyük bölge dosyası boyutu
 
-HBase verileri *hfile*adlı dahili bir dosya biçiminde depolar. Özelliği, `hbase.hregion.max.filesize` bir bölge için tek bir HFile boyutunu tanımlar.  Bir bölgedeki tüm HFiles değerlerinin bu ayardan büyük olması halinde bölge iki bölgeye ayrılır.
+HBase verileri *hfile* adlı dahili bir dosya biçiminde depolar. Özelliği, `hbase.hregion.max.filesize` bir bölge için tek bir HFile boyutunu tanımlar.  Bir bölgedeki tüm HFiles değerlerinin bu ayardan büyük olması halinde bölge iki bölgeye ayrılır.
 
 ![' Apache HBase HRegion en fazla dosya boyutu '](./media/optimize-hbase-ambari/hbase-hregion-max-filesize.png)
 

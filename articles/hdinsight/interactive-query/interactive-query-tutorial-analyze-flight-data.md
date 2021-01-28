@@ -1,19 +1,16 @@
 ---
 title: 'Öğretici: etkileşimli sorgu ile ETL işlemleri-Azure HDInsight'
 description: Öğretici-ham CSV veri kümesinden verilerin nasıl ayıklanacağını öğrenin. HDInsight üzerinde etkileşimli sorgu kullanarak dönüştürün. Ardından, dönüştürülmüş verileri Apache Sqoop kullanarak Azure SQL veritabanı 'na yükleyin.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,mvc
 ms.date: 07/02/2019
-ms.openlocfilehash: 730a6bfa627eafcab799fc811db4e20a1d4cec48
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 13b6b8658aa2d896ec154cfa3c7a961e37df6cbf
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92534592"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98935905"
 ---
 # <a name="tutorial-extract-transform-and-load-data-using-interactive-query-in-azure-hdinsight"></a>Öğretici: Azure HDInsight 'ta etkileşimli sorgu kullanarak verileri ayıklama, dönüştürme ve yükleme
 
@@ -34,7 +31,7 @@ Bu öğretici aşağıdaki görevleri kapsar:
 
 * Azure SQL veritabanı 'nda bir veritabanı. Veritabanını hedef veri deposu olarak kullanırsınız. Azure SQL veritabanında bir veritabanınız yoksa, bkz. [Azure Portal Azure SQL veritabanı 'nda veritabanı oluşturma](../../azure-sql/database/single-database-create-quickstart.md).
 
-* Bir SSH istemcisi. Daha fazla bilgi için bkz. [SSH kullanarak HDInsight 'A bağlanma (Apache Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md).
+* Bir SSH istemcisi. Daha fazla bilgi için bkz. [SSH kullanarak HDInsight'a (Apache Hadoop) bağlanma](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 ## <a name="download-the-flight-data"></a>Uçuş verilerini indirme
 
@@ -48,7 +45,7 @@ Bu öğretici aşağıdaki görevleri kapsar:
    | Dönem Filtresi |Ocak |
    | Alanlar |`Year, FlightDate, Reporting_Airline, DOT_ID_Reporting_Airline, Flight_Number_Reporting_Airline, OriginAirportID, Origin, OriginCityName, OriginState, DestAirportID, Dest, DestCityName, DestState, DepDelayMinutes, ArrDelay, ArrDelayMinutes, CarrierDelay, WeatherDelay, NASDelay, SecurityDelay, LateAircraftDelay`. |
 
-3. **İndir** 'i seçin. Seçtiğiniz veri alanlarını içeren bir .zip dosyası alırsınız.
+3. **İndir**'i seçin. Seçtiğiniz veri alanlarını içeren bir .zip dosyası alırsınız.
 
 ## <a name="upload-data-to-an-hdinsight-cluster"></a>Verileri bir HDInsight kümesine yükleme
 
@@ -165,7 +162,7 @@ Hive işinin bir parçası olarak, verileri .csv dosyasından **Delays** adlı b
     FROM delays_raw;
     ```
 
-3. Dosyayı kaydetmek için **CTRL + X** , ardından **y** tuşlarına basın ve ardından girin.
+3. Dosyayı kaydetmek için **CTRL + X**, ardından **y** tuşlarına basın ve ardından girin.
 
 4. Hive’ı başlatmak ve **flightdelays.hql** dosyasını çalıştırmak için aşağıdaki komutu kullanın:
 

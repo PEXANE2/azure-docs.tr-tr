@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/21/2021
+ms.date: 01/27/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 96772020e70aeb32fa1a8ae18bf3818396887877
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: 50042b749c917752d08198c31ada3c73a5ef540b
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98805229"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98938479"
 ---
 # <a name="manage-azure-ad-b2c-with-microsoft-graph"></a>Microsoft Graph ile Azure AD B2C yönetme
 
@@ -35,18 +35,29 @@ MS Graph API kullanmak ve Azure AD B2C kiracınızdaki kaynaklarla etkileşim ku
 - [Kullanıcı güncelleştirme](/graph/api/user-update)
 - [Kullanıcı silme](/graph/api/user-delete)
 
-## <a name="user-phone-number-management"></a>Kullanıcı telefon numarası yönetimi
+## <a name="user-phone-number-management-beta"></a>Kullanıcı telefon numarası yönetimi (Beta)
+
+Kullanıcı tarafından [SMS veya sesli çağrılar](identity-provider-local.md#phone-sign-in-preview)veya [Multi-Factor Authentication](multi-factor-authentication.md)kullanarak oturum açmak için kullanılabilecek bir telefon numarası. Daha fazla bilgi için bkz. [Azure AD kimlik doğrulama yöntemleri API 'si](/graph/api/resources/phoneauthenticationmethod).
 
 - [Ekle](/graph/api/authentication-post-phonemethods)
-- [Al](/graph/api/b2cauthenticationmethodspolicy-get)
-- [Güncelleştirme](/graph/api/b2cauthenticationmethodspolicy-update)
+- [Liste](/graph/api/authentication-list-phonemethods)
+- [Al](/graph/api/phoneauthenticationmethod-get)
+- [Güncelleştirme](/graph/api/phoneauthenticationmethod-update)
 - [Silme](/graph/api/phoneauthenticationmethod-delete)
 
-Kullanıcının oturum açma telefon numarasını yönetme hakkında daha fazla bilgi için bkz. [B2C kimlik doğrulama yöntemleri](/graph/api/resources/b2cauthenticationmethodspolicy).
+## <a name="self-service-password-reset-email-address-beta"></a>Self servis parola sıfırlama e-posta adresi (Beta)
 
-## <a name="identity-providers-user-flow"></a>Kimlik sağlayıcıları (Kullanıcı akışı)
+Kullanıcı tarafından Kullanıcı [adı oturum açma hesabının](identity-provider-local.md#username-sign-in)parolasını geri yüklemek için kullanılabilecek bir e-posta adresi. Daha fazla bilgi için bkz. [Azure AD kimlik doğrulama yöntemleri API 'si](/graph/api/resources/emailauthenticationmethod).
 
-Azure AD B2C kiracınızdaki Kullanıcı akışlarınız için kullanılabilen kimlik sağlayıcılarını yönetin.
+- [Ekle](/graph/api/emailauthenticationmethod-post)
+- [Liste](/graph/api/emailauthenticationmethod-list)
+- [Al](/graph/api/emailauthenticationmethod-get)
+- [Güncelleştirme](/graph/api/emailauthenticationmethod-update)
+- [Silme](/graph/api/emailauthenticationmethod-delete)
+
+## <a name="identity-providers"></a>Kimlik sağlayıcıları
+
+Azure AD B2C kiracınızdaki Kullanıcı akışlarınız için kullanılabilen [kimlik sağlayıcılarını](add-identity-provider.md) yönetin.
 
 - [Azure AD B2C kiracısında kayıtlı kimlik sağlayıcılarını listeleyin](/graph/api/identityprovider-list)
 - [Kimlik sağlayıcısı oluşturma](/graph/api/identityprovider-post-identityproviders)
@@ -62,6 +73,13 @@ Kaydolma, oturum açma, Birleşik kayıt ve oturum açma, parola sıfırlama ve 
 - [Kullanıcı akışı oluşturma](/graph/api/identitycontainer-post-b2cuserflows)
 - [Kullanıcı akışı al](/graph/api/b2cidentityuserflow-get)
 - [Kullanıcı akışını silme](/graph/api/b2cidentityuserflow-delete)
+
+## <a name="user-flow-authentication-methods-beta"></a>Kullanıcı akışı kimlik doğrulama yöntemleri (Beta)
+
+Kullanıcıların yerel hesaplar aracılığıyla kaydolmasına izin vermek için bir mekanizma seçin. Yerel hesaplar, Azure AD 'nin kimlik onaylama işlemi olduğu hesaplardır. Daha fazla bilgi için bkz. [b2cAuthenticationMethodsPolicy Resource Type](/graph/api/resources/b2cauthenticationmethodspolicy).
+
+- [Al](/graph/api/b2cauthenticationmethodspolicy-get)
+- [Güncelleştirme](/graph/api/b2cauthenticationmethodspolicy-update)
 
 ## <a name="custom-policies"></a>Özel ilkeler
 

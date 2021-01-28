@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 5b0b86321f7f2b320c3fea8e7c5bfa45bd936b77
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: f8fa5532a5664741c9ddb9b78b35d5eed8e2e4e0
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98753008"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937838"
 ---
 # <a name="web-app-that-signs-in-users-sign-in-and-sign-out"></a>Kullanıcı oturumu açan Web uygulaması: oturum açma ve oturum kapatma
 
@@ -222,19 +222,19 @@ Daha fazla bilgi edinmek için [Microsoft Identity platform ve OpenID Connect Pr
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-Uygulama kaydı sırasında, oturum kapatma sonrası URI 'sini kaydedersiniz. Öğreticimizde, `https://localhost:44321/signout-oidc` **kimlik doğrulama** sayfasındaki **Gelişmiş ayarlar** bölümünün **oturum kapatma URL 'si** alanına kaydolduysanız. Ayrıntılar için bkz. [ WebApp uygulamasını kaydetme](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-1-MyOrg#register-the-webapp-app-webapp).
+Uygulama kaydı sırasında ön kanal oturum kapatma URL 'sini kaydedersiniz. Öğreticimizde, `https://localhost:44321/signout-oidc` **kimlik doğrulama** sayfasındaki **ön kanal oturum kapatma URL 'si** alanına kaydolduysanız. Ayrıntılar için bkz. [WebApp uygulamasını kaydetme](scenario-web-app-sign-user-app-registration.md#register-an-app-by-using-the-azure-portal).
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
-Uygulama kaydı sırasında, oturum kapatma sonrası URI 'sini kaydedersiniz. Öğreticimizde, `https://localhost:44308/Account/EndSession` **kimlik doğrulama** sayfasındaki **Gelişmiş ayarlar** bölümünün **oturum kapatma URL 'si** alanına kaydolduysanız. Ayrıntılar için bkz. [WebApp uygulamasını kaydetme](https://github.com/Azure-Samples/active-directory-dotnet-web-single-sign-out#register-the-service-app-webapp-distributedsignout-dotnet).
+Uygulama kaydı sırasında, ek bir ön kanal oturum kapatma URL 'sini kaydetmeniz gerekmez. Uygulama, ana URL 'sinde geri çağrılacaktır. 
 
 # <a name="java"></a>[Java](#tab/java)
 
-Uygulama kaydı sırasında, oturum kapatma sonrası URI 'sini kaydedersiniz. Öğreticimizde, `http://localhost:8080/msal4jsample/sign_out` **kimlik doğrulama** sayfasındaki **Gelişmiş ayarlar** bölümünün **oturum kapatma URL 'si** alanına kaydolduysanız.
+Uygulama kaydında ön kanal oturum kapatma URL 'SI gerekli değildir.
 
 # <a name="python"></a>[Python](#tab/python)
 
-Uygulama kaydı sırasında, fazladan bir oturum kapatma URL 'SI kaydetmeniz gerekmez. Uygulama, ana URL 'sinde geri çağrılacaktır.
+Uygulama kaydı sırasında, ek bir ön kanal oturum kapatma URL 'sini kaydetmeniz gerekmez. Uygulama, ana URL 'sinde geri çağrılacaktır.
 
 ---
 
@@ -336,7 +336,7 @@ ASP.NET Core şablonlarının önceki sürümlerinde, `Account` Denetleyici Web 
 - Çağrı `Signout()` , OpenID Connect ara yazılım Microsoft Identity platform uç noktasıyla bağlantı sağlar `logout` . Bitiş noktası bundan sonra:
 
   - Oturum tanımlama bilgisini tarayıcıdan temizler.
-  - Oturum kapatma URL 'sini geri çağırır. Varsayılan olarak, oturum kapatma URL 'SI, imzalanmış görünüm sayfasını [SignedOut.cshtml.cs](https://github.com/AzureAD/microsoft-identity-web/blob/master/src/Microsoft.Identity.Web.UI/Areas/MicrosoftIdentity/Pages/Account/SignedOut.cshtml.cs)görüntüler. Bu sayfa MIcrosoft. Identity. Web 'in bir parçası olarak da sağlanır.
+  - Kapatma sonrası yeniden yönlendirme URI 'sini geri çağırır. Varsayılan olarak, kapatma sonrası yeniden yönlendirme URI 'SI, imzalanmış görünüm sayfasını [SignedOut.cshtml.cs](https://github.com/AzureAD/microsoft-identity-web/blob/master/src/Microsoft.Identity.Web.UI/Areas/MicrosoftIdentity/Pages/Account/SignedOut.cshtml.cs)görüntüler. Bu sayfa Microsoft. Identity. Web 'in bir parçası olarak da sağlanır.
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 

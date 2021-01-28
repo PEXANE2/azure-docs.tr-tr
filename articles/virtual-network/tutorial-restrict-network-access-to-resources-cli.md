@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 03/14/2018
 ms.author: kumud
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: b4f9dcf6fd43749cdf71098b3cd0da8a42020f6d
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 5c23259a9cb1f3c409ad437a1e91151b5f401129
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98221774"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946292"
 ---
 # <a name="restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-the-azure-cli"></a>Azure CLı kullanarak sanal ağ hizmet uç noktaları ile PaaS kaynaklarına ağ erişimini kısıtlama
 
@@ -326,7 +326,7 @@ Erişim reddedilir ve `mount error(13): Permission denied` *MyVmPublic* VM *orta
 
 SSH oturumundan *myVmPublic* VM 'sine çıkın.
 
-Bilgisayarınızdan, [az Storage Share List](/cli/azure/storage/share?view=azure-cli-latest)komutuyla Depolama hesabınızdaki paylaşımları görüntülemeyi deneyin. Ve depolama hesabı `<account-name>` `<account-key>` [Oluştur](#create-a-storage-account)' dan depolama hesabı adını ve anahtarını değiştirin:
+Bilgisayarınızdan, [az Storage Share List](/cli/azure/storage/share)komutuyla Depolama hesabınızdaki paylaşımları görüntülemeyi deneyin. Ve depolama hesabı `<account-name>` `<account-key>` [Oluştur](#create-a-storage-account)' dan depolama hesabı adını ve anahtarını değiştirin:
 
 ```azurecli-interactive
 az storage share list \
