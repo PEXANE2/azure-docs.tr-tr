@@ -1,18 +1,15 @@
 ---
 title: Apache Pig 'i Azure HDInsight 'ta Apache ambarı ile iyileştirme
 description: Apache Pig 'yi yapılandırmak ve iyileştirmek için Apache ambarı Web Kullanıcı arabirimini kullanın.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 05/04/2020
-ms.openlocfilehash: d6f20780ccd90d83631ce07411820fb8c9280c3e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 690cfc66d0f08e63ac6ef1d21b6722fed59eca14
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86084095"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98939014"
 ---
 # <a name="optimize-apache-pig-with-apache-ambari-in-azure-hdinsight"></a>Apache Pig 'i Azure HDInsight 'ta Apache ambarı ile iyileştirme
 
@@ -37,13 +34,13 @@ Pig betiklerini yürütmek için iki yürütme altyapısı mevcuttur: MapReduce 
 
 1. Yürütme altyapısını değiştirmek için, **Gelişmiş Pig-Özellikler** bölmesinde özelliği bulun `exectype` .
 
-1. Varsayılan değer **MapReduce**' dir. **Tez**olarak değiştirin.
+1. Varsayılan değer **MapReduce**' dir. **Tez** olarak değiştirin.
 
 ## <a name="enable-local-mode"></a>Yerel modu etkinleştir
 
 Hive ile benzer şekilde, yerel mod, işleri görece daha az miktarda veri ile hızlandırmak için kullanılır.
 
-1. Yerel modu etkinleştirmek için `pig.auto.local.enabled` **true**olarak ayarlayın. Varsayılan değer false'tur.
+1. Yerel modu etkinleştirmek için `pig.auto.local.enabled` **true** olarak ayarlayın. Varsayılan değer false'tur.
 
 1. Giriş veri boyutu özellik değerinden küçük olan işlerin `pig.auto.local.input.maxbytes` küçük işler olduğu kabul edilir. Varsayılan değer 1 GB 'tır.
 

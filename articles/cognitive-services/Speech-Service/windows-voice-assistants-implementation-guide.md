@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: travisw
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0503e0bf2fe152296ca6890e14503d05bd3bbeef
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 92ab043d4fccbe0764e361eac6f71ef69a5963cb
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024781"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98939860"
 ---
 # <a name="implementing-voice-assistants-on-windows"></a>Windows 'da sesli yardımcılar uygulama
 
@@ -30,7 +30,7 @@ Bu kılavuzda, Windows üzerinde bir ses Yardımcısı oluşturmaya yönelik ön
 
 #### <a name="ensure-that-the-microphone-is-available-and-accessible-then-monitor-its-state"></a>Mikrofonun kullanılabilir ve erişilebilir olduğundan emin olun, sonra durumunu izleyin
 
-MVA 'nın, bir ses etkinleştirmesini algılayabilmesi için bir mikrofonun mevcut ve erişilebilir olması gerekir. Sırasıyla mikrofon gizlilik erişimi, cihaz varlığı ve cihaz durumu (birim ve sessiz gibi) için denetim sağlamak üzere [Appcapability](/uwp/api/windows.security.authorization.appcapabilityaccess.appcapability?view=winrt-18362), [Deviceizleyici](/uwp/api/windows.devices.enumeration.devicewatcher?view=winrt-18362)ve [MediaCapture](/uwp/api/windows.media.capture.mediacapture?view=winrt-18362) sınıflarını kullanın.
+MVA 'nın, bir ses etkinleştirmesini algılayabilmesi için bir mikrofonun mevcut ve erişilebilir olması gerekir. Sırasıyla mikrofon gizlilik erişimi, cihaz varlığı ve cihaz durumu (birim ve sessiz gibi) için denetim sağlamak üzere [Appcapability](/uwp/api/windows.security.authorization.appcapabilityaccess.appcapability), [Deviceizleyici](/uwp/api/windows.devices.enumeration.devicewatcher)ve [MediaCapture](/uwp/api/windows.media.capture.mediacapture) sınıflarını kullanın.
 
 ### <a name="register-the-application-with-the-background-service"></a>Uygulamayı arka plan hizmetine kaydetme
 
@@ -38,7 +38,7 @@ MVA 'nın uygulamayı arka planda başlatması için, uygulamanın arka plan hiz
 
 ### <a name="unlock-the-limited-access-feature"></a>Sınırlı erişim özelliğinin kilidini aç
 
-Ses Yardımcısı özelliğinin kilidini açmak için Microsoft tarafından sağlanmış sınırlı erişim özelliği anahtarınızı kullanın. Bunu yapmak için Windows SDK ' den [Limitedaccessfeature](/uwp/api/windows.applicationmodel.limitedaccessfeatures?view=winrt-18362) sınıfını kullanın.
+Ses Yardımcısı özelliğinin kilidini açmak için Microsoft tarafından sağlanmış sınırlı erişim özelliği anahtarınızı kullanın. Bunu yapmak için Windows SDK ' den [Limitedaccessfeature](/uwp/api/windows.applicationmodel.limitedaccessfeatures) sınıfını kullanın.
 
 ### <a name="register-the-keyword-for-the-application"></a>Uygulamanın anahtar sözcüğünü kaydetme
 
@@ -86,7 +86,7 @@ Ses Aracısı uygulaması sesle etkinleştirildikten sonra, bir sonraki adım an
 
 ### <a name="retrieve-activation-audio"></a>Etkinleştirme sesini al
 
-Bir [Audiograph](/uwp/api/windows.media.audio.audiograph) oluşturun ve ' a geçirin `CreateAudioDeviceInputNodeAsync` `ConversationalAgentSession` . Bu işlem *, anahtar sözcüğünün algılanmadan önce*, sesin ses arabelleğini yaklaşık 3 saniye sonra başlayacak şekilde yükler. Bu ek önde gelen ses, çok sayıda anahtar sözcük uzunluğu ve hoparlör hızını karşılamak için eklenmiştir. Ardından ses grafiğindeki miktar ' dan [başlatılan](/uwp/api/windows.media.audio.audiograph.quantumstarted?view=winrt-18362) olayı işleyin.
+Bir [Audiograph](/uwp/api/windows.media.audio.audiograph) oluşturun ve ' a geçirin `CreateAudioDeviceInputNodeAsync` `ConversationalAgentSession` . Bu işlem *, anahtar sözcüğünün algılanmadan önce*, sesin ses arabelleğini yaklaşık 3 saniye sonra başlayacak şekilde yükler. Bu ek önde gelen ses, çok sayıda anahtar sözcük uzunluğu ve hoparlör hızını karşılamak için eklenmiştir. Ardından ses grafiğindeki miktar ' dan [başlatılan](/uwp/api/windows.media.audio.audiograph.quantumstarted) olayı işleyin.
 
 ```csharp
 var inputNode = await agentSession.CreateAudioDeviceInputNodeAsync(audioGraph);

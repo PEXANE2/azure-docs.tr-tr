@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 122e76e4bde96823ff18207bc24df4a8e91afb1c
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 8e51d7d00120f6facb0fb53a8e379d157ae79ea4
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92517977"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98938574"
 ---
 # <a name="scenario-route-traffic-through-nvas-by-using-custom-settings"></a>Senaryo: özel ayarları kullanarak trafiği NVA 'lar aracılığıyla yönlendirme
 
@@ -58,16 +58,19 @@ Aşağıdaki bilgileri unutmayın:
   * İlişkili yol tablosu: **varsayılan**
   * Yol tablolarına yayma: **RT_SHARED** ve **varsayılan**
 
+> [!NOTE] 
+> Lütfen bağlı olan sanal ağların varsayılan etikete yaymadığından emin olun. Bu, dallardan bağlı olan sanal ağlara giden trafiğin NVA 'lar 'e iletilmesini sağlar.
+
 Bu statik yollar, sanal ağa ve daldan gelen ve giden trafiğin hizmet VNet 'inde (VNet 4) NVA üzerinden geçmemesini sağlar:
 
-| Açıklama | Yol tablosu | Statik yol              |
+| Description | Yol tablosu | Statik yol              |
 | ----------- | ----------- | ------------------------- |
 | Dallar    | RT_V2B      | 10.2.0.0/16-> vnet4conn  |
 | NVA tekerlek  | Varsayılan     | 10.1.0.0/16-> vnet4conn  |
 
 Artık, sanal WAN 'ı kullanarak paketlerin gönderileceği doğru bağlantıyı seçebilirsiniz. Ayrıca, bu paketleri alırken gerçekleştirilecek doğru eylemi seçmek için sanal WAN kullanmanız gerekir. Bunun için bağlantı yolu tablolarını aşağıdaki gibi kullanırsınız:
 
-| Açıklama | Bağlantı | Statik yol            |
+| Description | Bağlantı | Statik yol            |
 | ----------- | ---------- | ----------------------- |
 | VNet2Branch | vnet4conn  | 10.2.0.0/16-> 10.4.0.5 |
 | Branch2VNet | vnet4conn  | 10.1.0.0/16-> 10.4.0.5 |
@@ -78,7 +81,7 @@ Daha fazla bilgi için bkz. [sanal hub yönlendirmesi hakkında](about-virtual-h
 
 Makalenin önceki kısımlarında açıklanan mimarinin bir diyagramı aşağıda verilmiştir.
 
-**Hub 1**adlı bir hub vardır.
+**Hub 1** adlı bir hub vardır.
 
 * **Hub 1** , NVA sanal ağları **VNET 4** ve **VNET 5**' e doğrudan bağlanır.
 
@@ -94,7 +97,7 @@ NVA aracılığıyla yönlendirmeyi ayarlamak için şunları göz önünde bulu
 
 1. İnternet 'e bağlanan trafiğin VNet 5 üzerinden gitmesi için sanal ağ eşlemesi ile VNet 5 arasında doğrudan bağlantı kurmak üzere VNET 'ler 1, 2 ve 3 gerekir. Ayrıca 0.0.0.0/0 ve sonraki atlama 10.5.0.5 için sanal ağlarda Kullanıcı tanımlı bir yol ayarlamış olmanız gerekir. Şu anda sanal WAN, 0.0.0.0/0 için sanal hub 'da bir sonraki atlamaya izin vermez.
 
-1. Azure portal sanal hub 'ınıza gidin ve **RT_Shared**adlı özel bir yol tablosu oluşturun. Bu tablo, tüm sanal ağlardan ve şube bağlantılarından yayma yoluyla yolları öğrenir. Bu boş tabloyu aşağıdaki diyagramda görebilirsiniz.
+1. Azure portal sanal hub 'ınıza gidin ve **RT_Shared** adlı özel bir yol tablosu oluşturun. Bu tablo, tüm sanal ağlardan ve şube bağlantılarından yayma yoluyla yolları öğrenir. Bu boş tabloyu aşağıdaki diyagramda görebilirsiniz.
 
    * **Rotalar:** Herhangi bir statik yol eklemeniz gerekmez.
 
@@ -120,7 +123,7 @@ NVA aracılığıyla yönlendirmeyi ayarlamak için şunları göz önünde bulu
 
    * **Yayma:** Dallar (VPN/ER/P2S) seçeneğinin seçildiğinden emin olun ve şirket içi bağlantıların yolları varsayılan yol tablosuna yaydığından emin olun.
 
-:::image type="content" source="./media/routing-scenarios/nva-custom/figure-2.png" alt-text="Ağ mimarisi diyagramı." lightbox="./media/routing-scenarios/nva-custom/figure-2.png":::
+:::image type="content" source="./media/routing-scenarios/nva-custom/figure-2.png" alt-text="İş akışının diyagramı." lightbox="./media/routing-scenarios/nva-custom/figure-2.png":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

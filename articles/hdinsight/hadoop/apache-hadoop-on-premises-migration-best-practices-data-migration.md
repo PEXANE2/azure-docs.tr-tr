@@ -1,19 +1,17 @@
 ---
 title: "Veri geçişi: Azure HDInsight 'a şirket içi Apache Hadoop"
 description: Şirket içi Hadoop kümelerini Azure HDInsight 'a geçirmek için veri geçişi en iyi yöntemlerini öğrenin.
-author: hrasheed-msft
-ms.author: hrasheed
 ms.reviewer: ashishth
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/22/2019
-ms.openlocfilehash: d2a2c734b256ad934b7a17d7cefd1783b406e766
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: cdb028bcd608aa7a19a7c83e5e2c1129386928a0
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92537193"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98939791"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---data-migration-best-practices"></a>Şirket içi Apache Hadoop kümelerini Azure HDInsight 'a geçirme-veri geçişi en iyi yöntemleri
 
@@ -36,7 +34,7 @@ Bu makale, Azure HDInsight 'a veri taşımaya yönelik öneriler sağlar. Şirke
 
 Aşağıdaki tabloda, veri hacmi ve ağ bant genişliğine bağlı olarak yaklaşık veri aktarım süresi bulunur. Veri geçişinin üç haftadan uzun sürmesine bekleniyorsa bir veri kutusu kullanın.
 
-|Veri mik | Ağ bant genişliği<br>/<br>**45 Mbps (T3)**|Ağ bant genişliği<br>/<br>**100 Mb/sn**|Ağ bant genişliği<br>/<br>**1 Gb/sn**|Ağ bant genişliği<br>/<br>**10 Gbps**|
+|Veri mik | Ağ bant genişliği<br>/<br>**45 Mbps (T3)**|Ağ bant genişliği<br>/<br>**100 Mbps**|Ağ bant genişliği<br>/<br>**1 Gbps**|Ağ bant genişliği<br>/<br>**10 Gbps**|
 |---|:---:|:---:|:---:|:---:|
 |1 TB|2 gün|1 gün| 2 saat|14 dakika|
 |10 TB|22 gün|10 gün|1 gün|2 saat|

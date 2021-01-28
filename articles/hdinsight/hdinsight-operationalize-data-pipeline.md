@@ -1,19 +1,16 @@
 ---
 title: Veri Analizi ardışık düzeni oluşturma-Azure
 description: Yeni veriler tarafından tetiklenen ve kısa sonuçlar üreten bir örnek veri işlem hattı ayarlayın ve çalıştırın.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/25/2019
-ms.openlocfilehash: 1e73c403a03eef9a47bc0550b37769db302a599c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a306890560497b0c7196f1286de3f73039821ea2
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89504427"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98939525"
 ---
 # <a name="operationalize-a-data-analytics-pipeline"></a>Veri analizi işlem hattını kullanıma hazır hale getirme
 
@@ -39,7 +36,7 @@ Aşağıdaki diyagramda örnek işlem hattı gösterilmektedir.
 
 Bu işlem hattı, HDInsight Hadoop kümesinde çalışan Apache Oozie kullanır.
 
-Oozie, *işlem hatlarını işlemler*, *iş akışları*ve *Koordinatörler*açısından açıklar. Eylemler, bir Hive sorgusu çalıştırma gibi gerçekleştirilecek fiili işi tespit. İş akışları eylemlerin sırasını tanımlar. Düzenleyiciler, iş akışının çalıştırılacağı zamanlamayı tanımlar. Düzenleyiciler, iş akışının bir örneğini başlatmadan önce yeni verilerin kullanılabilirliğini de bekleyebilir.
+Oozie, *işlem hatlarını işlemler*, *iş akışları* ve *Koordinatörler* açısından açıklar. Eylemler, bir Hive sorgusu çalıştırma gibi gerçekleştirilecek fiili işi tespit. İş akışları eylemlerin sırasını tanımlar. Düzenleyiciler, iş akışının çalıştırılacağı zamanlamayı tanımlar. Düzenleyiciler, iş akışının bir örneğini başlatmadan önce yeni verilerin kullanılabilirliğini de bekleyebilir.
 
 Aşağıdaki diyagramda Bu örnek Oozie işlem hattının üst düzey tasarımı gösterilmektedir.
 
@@ -78,7 +75,7 @@ Azure SQL veritabanınız artık hazır.
 
 ### <a name="provision-an-apache-hadoop-cluster"></a>Apache Hadoop kümesi sağlama
 
-Özel bir meta veri deposu ile Apache Hadoop kümesi oluşturun. Portalda küme oluşturma sırasında, **depolama** sekmesinden, **meta veri deposu ayarları**altında SQL veritabanınızı seçtiğinizden emin olun. Bir meta veri deposu seçme hakkında daha fazla bilgi için bkz. [küme oluşturma sırasında özel bir meta veri deposu seçme](./hdinsight-use-external-metadata-stores.md#select-a-custom-metastore-during-cluster-creation). Küme oluşturma hakkında daha fazla bilgi için bkz. [Linux 'Ta HDInsight kullanmaya başlama](hadoop/apache-hadoop-linux-tutorial-get-started.md).
+Özel bir meta veri deposu ile Apache Hadoop kümesi oluşturun. Portalda küme oluşturma sırasında, **depolama** sekmesinden, **meta veri deposu ayarları** altında SQL veritabanınızı seçtiğinizden emin olun. Bir meta veri deposu seçme hakkında daha fazla bilgi için bkz. [küme oluşturma sırasında özel bir meta veri deposu seçme](./hdinsight-use-external-metadata-stores.md#select-a-custom-metastore-during-cluster-creation). Küme oluşturma hakkında daha fazla bilgi için bkz. [Linux 'Ta HDInsight kullanmaya başlama](hadoop/apache-hadoop-linux-tutorial-get-started.md).
 
 ## <a name="verify-ssh-tunneling-set-up"></a>SSH tünelini ayarlamayı doğrulama
 
@@ -97,7 +94,7 @@ Koordinatör ve iş akışı örneklerinizin durumunu görüntülemek için Oozi
 
     `http://headnodehost:8080`
 
-1. **Oozie web konsoluna** , ambarı içinden erişmek için **Oozie**  >  **hızlı bağlantılara** > [Active Server] > **Oozie Web Kullanıcı arabirimine**gidin.
+1. **Oozie web konsoluna** , ambarı içinden erişmek için **Oozie**  >  **hızlı bağlantılara** > [Active Server] > **Oozie Web Kullanıcı arabirimine** gidin.
 
 ## <a name="configure-hive"></a>Hive 'yi yapılandırma
 
@@ -132,7 +129,7 @@ Koordinatör ve iş akışı örneklerinizin durumunu görüntülemek için Oozi
 
 1. ' A giderek, ambarı 'nda oturum açın `http://headnodehost:8080` .
 
-2. Hizmetler listesinden **Hive**öğesini seçin.
+2. Hizmetler listesinden **Hive** öğesini seçin.
 
     ![Apache ambarı hizmetleri listesi Hive seçme](./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive.png)
 
@@ -234,7 +231,7 @@ Ardından, belirli ortamınızın değerlerini güncelleştirin. Metnin altında
     | --- | --- |
     | nameNode | HDInsight kümenize eklenen Azure depolama kapsayıcısının tam yolu. |
     | Jobtracker 'a | Etkin kümenizin YARN baş düğümüne ait iç ana bilgisayar adı. Ambarı giriş sayfasında, hizmetler listesinden YARN ' yi seçin ve ardından etkin Kaynak Yöneticisi ' ni seçin. Ana bilgisayar adı URI 'SI sayfanın en üstünde görüntülenir. 8050 numaralı bağlantı noktasını ekleyin. |
-    | Adı | Hive eylemleri planlanırken kullanılan YARN kuyruğunun adı. Varsayılan olarak bırakın. |
+    | Adı | Hive eylemleri planlanırken kullanılan YARN kuyruğunun adı. Varsayılan değerde bırakın. |
     | oozie.use.sysdıtem. libpath | Doğru olarak bırakın. |
     | Uygulama tabanı dizininin | Oozie iş akışını ve destekleyici dosyaları dağıttığınız Azure depolama 'daki alt klasörün yolu. |
     | Oozie. WF. Application. Path | Çalıştırılacak Oozie iş akışının konumu `workflow.xml` . |
@@ -416,11 +413,11 @@ Oozie iş akışınızı ( `workflow.xml` ), Hive sorgularını ( `hive-load-fli
     oozie job -config job.properties -run
     ```
 
-1. Oozie web konsolunu kullanarak durumu gözlemleyin. Ambarı içinden **Oozie**, **hızlı bağlantılar**ve sonra **Oozie Web Konsolu**' nu seçin. **Iş akışı işleri** sekmesinde **tüm işler**' i seçin.
+1. Oozie web konsolunu kullanarak durumu gözlemleyin. Ambarı içinden **Oozie**, **hızlı bağlantılar** ve sonra **Oozie Web Konsolu**' nu seçin. **Iş akışı işleri** sekmesinde **tüm işler**' i seçin.
 
     ![HDI Oozie Web konsolu iş akışları](./media/hdinsight-operationalize-data-pipeline/hdi-oozie-web-console-workflows.png)
 
-1. Durum başarılı olduğunda, ekli satırları görüntülemek için SQL veritabanı tablosunu sorgulayın. Azure portal kullanarak, SQL veritabanınızın bölmesine gidin, **Araçlar**' ı seçin ve **sorgu düzenleyicisini**açın.
+1. Durum başarılı olduğunda, ekli satırları görüntülemek için SQL veritabanı tablosunu sorgulayın. Azure portal kullanarak, SQL veritabanınızın bölmesine gidin, **Araçlar**' ı seçin ve **sorgu düzenleyicisini** açın.
 
     ```sql
     SELECT * FROM dailyflights
@@ -507,7 +504,7 @@ Gördüğünüz gibi, düzenleyicinin çoğunluğu yalnızca yapılandırma bilg
     <coordinator-app ... start="2017-01-01T00:00Z" end="2017-01-05T00:00Z" frequency="${coord:days(1)}" ...>
     ```
 
-    Bir düzenleyici, ve tarih aralığı içindeki eylemlerin, `start` `end` öznitelik tarafından belirtilen aralığa göre planlanmasından sorumludur `frequency` . Her zamanlanmış eylem, iş akışını yapılandırılmış olarak çalıştırır. Yukarıdaki düzenleyici tanımında, Koordinatör 1 Ocak 2017 ' den 5 Ocak 2017 ' e kadar olan eylemleri çalıştıracak şekilde yapılandırılmıştır. Sıklık, [Oozie Ifade dili](https://oozie.apache.org/docs/4.2.0/CoordinatorFunctionalSpec.html#a4.4._Frequency_and_Time-Period_Representation) sıklık ifadesi tarafından bir güne ayarlanır `${coord:days(1)}` . Bu, düzenleyicinin bir eylemi (ve dolayısıyla iş akışını) günde bir kez zamanlamaya neden olur. Geçmişte olan tarih aralıkları için, bu örnekte olduğu gibi, eylem gecikme olmadan çalışacak şekilde zamanlanır. Bir eylemin çalıştırılmak üzere zamanlandığı tarihin başlangıcı *nominal zaman*olarak adlandırılır. Örneğin, 1 Ocak 2017 ' den itibaren verileri işlemek için, düzenleyici işlemi, saat 2017-01-01T00:00:00 ' da olan eylemi zamancak.
+    Bir düzenleyici, ve tarih aralığı içindeki eylemlerin, `start` `end` öznitelik tarafından belirtilen aralığa göre planlanmasından sorumludur `frequency` . Her zamanlanmış eylem, iş akışını yapılandırılmış olarak çalıştırır. Yukarıdaki düzenleyici tanımında, Koordinatör 1 Ocak 2017 ' den 5 Ocak 2017 ' e kadar olan eylemleri çalıştıracak şekilde yapılandırılmıştır. Sıklık, [Oozie Ifade dili](https://oozie.apache.org/docs/4.2.0/CoordinatorFunctionalSpec.html#a4.4._Frequency_and_Time-Period_Representation) sıklık ifadesi tarafından bir güne ayarlanır `${coord:days(1)}` . Bu, düzenleyicinin bir eylemi (ve dolayısıyla iş akışını) günde bir kez zamanlamaya neden olur. Geçmişte olan tarih aralıkları için, bu örnekte olduğu gibi, eylem gecikme olmadan çalışacak şekilde zamanlanır. Bir eylemin çalıştırılmak üzere zamanlandığı tarihin başlangıcı *nominal zaman* olarak adlandırılır. Örneğin, 1 Ocak 2017 ' den itibaren verileri işlemek için, düzenleyici işlemi, saat 2017-01-01T00:00:00 ' da olan eylemi zamancak.
 
 * 2. nokta: iş akışının tarih aralığı Içinde, `dataset` öğesi belirli bir tarih aralığı için verilerin ne şekilde görüneceğini belirtir ve Oozie 'nin verilerin henüz işlenmek üzere kullanılabilir olup olmadığını nasıl belirlediğini yapılandırır.
 
@@ -594,7 +591,7 @@ Bu dosyada sunulan tek yeni özellikler `job.properties` şunlardır:
     oozie job -config job.properties -run
     ```
 
-5. Oozie web konsolunu kullanarak durumu doğrulayın, bu kez **Düzenleyici işleri** sekmesini ve ardından  **tüm işleri**seçin.
+5. Oozie web konsolunu kullanarak durumu doğrulayın, bu kez **Düzenleyici işleri** sekmesini ve ardından  **tüm işleri** seçin.
 
     ![Oozie Web Konsolu Düzenleyicisi Işleri](./media/hdinsight-operationalize-data-pipeline/hdi-oozie-web-console-coordinator-jobs.png)
 

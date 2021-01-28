@@ -6,17 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/24/2020
+ms.date: 01/27/2021
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 228595bf633ef0545a13abe19308e49da82cf75a
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 38978982baea41d23958a857b19a1edf2e454f37
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844021"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98938719"
 ---
 # <a name="change-how-a-storage-account-is-replicated"></a>Depolama hesabının çoğaltma yöntemini değiştirme
 
@@ -39,16 +39,17 @@ Aşağıdaki tabloda, her bir çoğaltma türünden diğerine nasıl geçkullan�
 
 | Geçiş | ... LRS 'ye | ... GRS/RA-GRS 'ye | ... ZRS 'ye | ... GZRS/RA-GZRS |
 |--------------------|----------------------------------------------------|---------------------------------------------------------------------|----------------------------------------------------|---------------------------------------------------------------------|
-| <b>... LRS 'den</b> | YOK | Azure portal, PowerShell veya CLı kullanarak çoğaltma ayarını değiştirme<sup>1</sup> | El ile geçiş gerçekleştirme <br /><br /> VEYA <br /><br /> Dinamik geçiş isteme | El ile geçiş gerçekleştirme <br /><br /> VEYA <br /><br /> Önce GRS/RA-GRS ' y e geçin ve ardından dinamik geçiş isteyin<sup>1</sup> |
-| <b>... GRS/RA-GRS 'den</b> | Çoğaltma ayarını değiştirmek için Azure portal, PowerShell veya CLı kullanın | YOK | El ile geçiş gerçekleştirme <br /><br /> VEYA <br /><br /> Önce LRS 'ye geçin ve ardından dinamik geçiş isteyin | El ile geçiş gerçekleştirme <br /><br /> VEYA <br /><br /> Dinamik geçiş isteme |
-| <b>... ZRS 'den</b> | El ile geçiş gerçekleştirme | El ile geçiş gerçekleştirme | YOK | Azure portal, PowerShell veya CLı kullanarak çoğaltma ayarlarını değiştirme<sup>1, 2</sup> |
-| <b>... GZRS/RA-GZRS öğesinden</b> | El ile geçiş gerçekleştirme | El ile geçiş gerçekleştirme | Çoğaltma ayarını değiştirmek için Azure portal, PowerShell veya CLı kullanın | YOK |
+| <b>... LRS 'den</b> | Yok | Azure portal, PowerShell veya CLı kullanarak çoğaltma ayarlarını değiştirme<sup>1, 2</sup> | El ile geçiş gerçekleştirme <br /><br /> VEYA <br /><br /> Dinamik geçiş isteme | El ile geçiş gerçekleştirme <br /><br /> VEYA <br /><br /> Önce GRS/RA-GRS ' y e geçin ve ardından dinamik geçiş isteyin<sup>1</sup> |
+| <b>... GRS/RA-GRS 'den</b> | Çoğaltma ayarını değiştirmek için Azure portal, PowerShell veya CLı kullanın | Yok | El ile geçiş gerçekleştirme <br /><br /> VEYA <br /><br /> Önce LRS 'ye geçin ve ardından dinamik geçiş isteyin | El ile geçiş gerçekleştirme <br /><br /> VEYA <br /><br /> Dinamik geçiş isteme |
+| <b>... ZRS 'den</b> | El ile geçiş gerçekleştirme | El ile geçiş gerçekleştirme | Yok | Azure portal, PowerShell veya CLı kullanarak çoğaltma ayarlarını değiştirme<sup>1, 3</sup> |
+| <b>... GZRS/RA-GZRS öğesinden</b> | El ile geçiş gerçekleştirme | El ile geçiş gerçekleştirme | Çoğaltma ayarını değiştirmek için Azure portal, PowerShell veya CLı kullanın | Yok |
 
 <sup>1</sup> bir kerelik çıkış ücreti doğurur.<br />
-<sup>2</sup> ZRS 'den GZRS/ra-GZRS veya tam tersi olarak dönüştürme şu bölgelerde desteklenmez: ABD Doğu 2, ABD Doğu, Avrupa Batı.
+<sup>2</sup> depolama hesabı arşiv KATMANıNDAKI Bloblar IÇERIYORSA LRS 'den GRS 'ye geçiş desteklenmez.<br />
+Şu bölgelerde ZRS 'den GZRS/RA-GZRS veya tam tersi için <sup>3</sup> dönüştürme desteklenmez: ABD Doğu 2, ABD Doğu, Avrupa Batı.
 
 > [!CAUTION]
-> (RA-) GRS veya (RA-) GZRS hesabınız için bir [Hesap yük devretmesi](storage-disaster-recovery-guidance.md) gerçekleştirdiyseniz, hesap yük devretmeden sonra yeni birincil bölgede yerel olarak yedekli olur. Yük devretme işleminden kaynaklanan bir LRS hesabı için ZRS veya GZRS 'e dinamik geçiş desteklenmez. Bu, yeniden çalışma işlemleri olarak adlandırılan bu durum da geçerlidir. Örneğin, RA-GZRS ' d e bir hesap yük devretmesini ikincil bölgedeki LRS 'ye devreder ve sonra yeniden RA-GRS olarak yapılandırıp özgün birincil bölgeye başka bir hesap yük devretme işlemi gerçekleştirirseniz, birincil bölgede RA-GZRS için özgün dinamik geçişe yönelik desteğe başvuramıyoruz. Bunun yerine, ZRS veya GZRS için el ile geçiş gerçekleştirmeniz gerekir.
+> (RA-) GRS veya (RA-) GZRS hesabınız için bir [Hesap yük devretmesi](storage-disaster-recovery-guidance.md) gerçekleştirdiyseniz, hesap, yük devretmeden sonra yeni birincil bölgedeki yerel olarak yedekli (LRS). Yük devretme işleminden kaynaklanan bir LRS hesabı için ZRS veya GZRS 'e dinamik geçiş desteklenmez. Bu, yeniden çalışma işlemleri olarak adlandırılan bu durum da geçerlidir. Örneğin, RA-GZRS ' d e bir hesap yük devretmesini ikincil bölgedeki LRS 'ye devreder ve sonra yeniden RA-GRS olarak yapılandırıp özgün birincil bölgeye başka bir hesap yük devretme işlemi gerçekleştirirseniz, birincil bölgede RA-GZRS için özgün dinamik geçişe yönelik desteğe başvuramıyoruz. Bunun yerine, ZRS veya GZRS için el ile geçiş gerçekleştirmeniz gerekir.
 
 ## <a name="change-the-replication-setting"></a>Çoğaltma ayarını değiştir
 

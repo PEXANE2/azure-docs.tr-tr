@@ -7,14 +7,14 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 12/04/2020
+ms.date: 01/27/2021
 ms.author: aahi
-ms.openlocfilehash: 3b6c2a5a50cedadd8818eae735df55b661e794ef
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 8fa10164ae2d697f68156777f224b92f0562475f
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97034029"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98940038"
 ---
 # <a name="configure-azure-cognitive-services-virtual-networks"></a>Azure Bilişsel Hizmetler sanal ağlarını yapılandırma
 
@@ -78,7 +78,7 @@ Bilişsel hizmetler kaynakları, varsayılan olarak herhangi bir ağdaki istemci
 
 Bilişsel hizmetler kaynakları için Azure portal, PowerShell veya Azure CLı aracılığıyla varsayılan ağ erişim kurallarını yönetebilirsiniz.
 
-# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure portalı](#tab/portal)
 
 1. Güvenli hale getirmek istediğiniz bilişsel hizmetler kaynağına gidin.
 
@@ -180,7 +180,7 @@ Bilişsel hizmetler kaynağı ve erişim verilen sanal ağlar, farklı bir Azure
 
 Bilişsel hizmetler kaynakları için sanal ağ kurallarını Azure portal, PowerShell veya Azure CLı aracılığıyla yönetebilirsiniz.
 
-# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure portalı](#tab/portal)
 
 1. Güvenli hale getirmek istediğiniz bilişsel hizmetler kaynağına gidin.
 
@@ -341,9 +341,6 @@ Formunda [CIDR gösterimini](https://tools.ietf.org/html/rfc4632) `16.17.18.0/24
 
 IP ağ kurallarına yalnızca **genel İnternet** IP adresleri için izin verilir. Özel ağlar için ayrılan IP adresi aralıklarına ( [RFC 1918](https://tools.ietf.org/html/rfc1918#section-3)' de tanımlandığı gıbı) IP kurallarında izin verilmez. Özel ağlarda,, ve ile başlayan adresler bulunur `10.*` `172.16.*`  -  `172.31.*` `192.168.*` .
 
-   > [!NOTE]
-   > IP ağ kuralları, bilişsel hizmetler kaynağı ile aynı Azure bölgesinden kaynaklanan isteklere hiçbir etkiye sahip değildir. Aynı bölge isteklerine izin vermek için [sanal ağ kurallarını](#grant-access-from-a-virtual-network) kullanın.
-
 Şu anda yalnızca ıPV4 adresleri destekleniyor. Her bilişsel hizmetler kaynağı, [sanal ağ kurallarıyla](#grant-access-from-a-virtual-network)birleştirilebilir en fazla 100 IP ağ kuralını destekler.
 
 ### <a name="configuring-access-from-on-premises-networks"></a>Şirket içi ağlardan erişimi yapılandırma
@@ -356,7 +353,7 @@ IP ağ kurallarına yalnızca **genel İnternet** IP adresleri için izin verili
 
 Bilişsel hizmetler kaynakları için Azure portal, PowerShell veya Azure CLı aracılığıyla IP ağ kurallarını yönetebilirsiniz.
 
-# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure portalı](#tab/portal)
 
 1. Güvenli hale getirmek istediğiniz bilişsel hizmetler kaynağına gidin.
 

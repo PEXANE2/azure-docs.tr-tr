@@ -1,18 +1,15 @@
 ---
 title: Azure HDInsight 'ta Apache ambarı ile Apache Hive iyileştirin
 description: Apache Hive yapılandırmak ve iyileştirmek için Apache ambarı Web Kullanıcı arabirimini kullanın.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 05/04/2020
-ms.openlocfilehash: 33c2ee7bc477d3c9d3823642dbdd974650017822
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 349f58720e6fff52191dfff65108cd1320e41eed
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86084367"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98939252"
 ---
 # <a name="optimize-apache-hive-with-apache-ambari-in-azure-hdinsight"></a>Azure HDInsight 'ta Apache ambarı ile Apache Hive iyileştirin
 
@@ -100,7 +97,7 @@ Hive, veri satırını satıra göre işler. Vektörleştirme, Hive 'yi aynı an
 
 Varsayılan olarak, Hive en iyi bir sorgu yürütme planını bulmak için bir kurallar kümesi izler. Maliyet tabanlı iyileştirme (CBO), bir sorguyu yürütmek için birden çok planı değerlendirir. Ve her plana bir maliyet atar ve ardından bir sorgu yürütmek için en ucuz planı belirler.
 
-CBO 'i etkinleştirmek için **Hive**  >  **configs**  >  **ayarları** ' na gidin ve **maliyet tabanlı İyileştiriciyi etkinleştir**' i bulun ve geçiş düğmesini **Açık**olarak değiştirin.
+CBO 'i etkinleştirmek için **Hive**  >  **configs**  >  **ayarları** ' na gidin ve **maliyet tabanlı İyileştiriciyi etkinleştir**' i bulun ve geçiş düğmesini **Açık** olarak değiştirin.
 
 ![HDInsight maliyet tabanlı iyileştirici](./media/optimize-hive-ambari/hdinsight-cbo-config.png)
 
@@ -135,7 +132,7 @@ Kullanılabilir sıkıştırma türleri şunlardır:
 | Biçimlendir | Araç | Algoritma | Dosya Uzantısı | Bölünebilir? |
 | --- | --- | --- | --- | --- |
 | Gzip | Gzip | Söndür | `.gz` | Hayır |
-| Bzip2 | Bzip2 | Bzip2 |`.bz2` | Evet |
+| Bzip2 | Bzip2 | Bzip2 |`.bz2` | Yes |
 | LZO | `Lzop` | LZO | `.lzo` | Dizine alınmışsa Evet |
 | Snappy | Yok | Snappy | Snappy | Hayır |
 
@@ -152,7 +149,7 @@ Genel bir kural olarak, sıkıştırma yöntemi bölünmüş tablo önemli oldu�
 
 1. Özel bir ayar eklemek için:
 
-    a. **Hive**  >  **configs**  >  **Gelişmiş**  >  **özel Hive-site**bölümüne gidin.
+    a. **Hive**  >  **configs**  >  **Gelişmiş**  >  **özel Hive-site** bölümüne gidin.
 
     b. Özel Hive sitesi bölmesinin alt kısmındaki **Özellik Ekle...** öğesini seçin.
 
@@ -193,7 +190,7 @@ Hive, her bölümü önceden tanımlamaya gerek kalmadan bir tabloya kayıt ekle
 
 1. Hive 'nin dinamik bölümleri yapması için `hive.exec.dynamic.partition` parametre değeri true (varsayılan) olmalıdır.
 
-1. Dinamik bölüm modunu *katı*olarak değiştirin. Katı modda, en az bir bölümün statik olması gerekir. Bu ayar WHERE yan tümcesinde bölüm filtresi olmadan sorguları engeller, diğer bir deyişle, *katı* tüm bölümleri tarayan sorguları önler. Hive **configs** sekmesine gidin ve `hive.exec.dynamic.partition.mode` **katı**olarak ayarlayın. Varsayılan değer **katı olmayan**bir değerdir.
+1. Dinamik bölüm modunu *katı* olarak değiştirin. Katı modda, en az bir bölümün statik olması gerekir. Bu ayar WHERE yan tümcesinde bölüm filtresi olmadan sorguları engeller, diğer bir deyişle, *katı* tüm bölümleri tarayan sorguları önler. Hive **configs** sekmesine gidin ve `hive.exec.dynamic.partition.mode` **katı** olarak ayarlayın. Varsayılan değer **katı olmayan** bir değerdir.
 
 1. Oluşturulacak dinamik bölüm sayısını sınırlandırmak için `hive.exec.max.dynamic.partitions` parametreyi değiştirin. Varsayılan değer 5000 ' dir.
 

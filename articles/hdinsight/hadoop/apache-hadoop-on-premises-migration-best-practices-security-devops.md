@@ -1,19 +1,17 @@
 ---
 title: "Güvenlik: şirket içi Apache Hadoop Azure HDInsight 'a geçirme"
 description: Şirket içi Hadoop kümelerini Azure HDInsight 'a geçirmeye yönelik güvenlik ve DevOps en iyi uygulamalarını öğrenin.
-author: hrasheed-msft
-ms.author: hrasheed
 ms.reviewer: ashishth
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/19/2019
-ms.openlocfilehash: 6fd59a346a36a304f699894c493d8ba9800489b2
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: fa6a4a8686fe5a33a6f240a8e972a687e872732a
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545268"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98939738"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---security-and-devops-best-practices"></a>Şirket içi Apache Hadoop kümelerini Azure HDInsight 'a geçirme-Security ve DevOps en iyi uygulamaları
 
@@ -51,7 +49,7 @@ Etki alanına katılmış HDInsight kümesini dağıtmak için aşağıdaki adı
     |LDAPS URL 'SI|Örneğin, `ldaps://contoso.onmicrosoft.com:636` .|
     |Erişim Kullanıcı grubu|Kullanıcıları kümeyle eşitlemek istediğiniz güvenlik grupları, örneğin: `HiveUsers` . Birden çok kullanıcı grubu belirtmek istiyorsanız, bunları noktalı virgül '; ' ile ayırın. ESP kümesi oluşturulmadan önce, gruplar dizinde bulunmalıdır.|
 
-Daha fazla bilgi için aşağıdaki makalelere bakın:
+Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
 
 - [Etki alanına katılmış HDInsight kümeleriyle güvenliği Apache Hadoop bir giriş](../domain-joined/hdinsight-security-overview.md)
 - [HDInsight 'ta Azure etki alanına katılmış Apache Hadoop kümeleri planlayın](../domain-joined/apache-domain-joined-architecture.md)
@@ -81,7 +79,7 @@ Aşağıdaki denetimler kullanılarak uçtan uca kurumsal güvenlik elde edilebi
     - Microsoft tarafından yönetilen anahtarlar veya müşteri tarafından yönetilen anahtarlar kullanılarak saydam Server-Side şifrelemesi.
     - Client-Side şifreleme, https ve TLS kullanarak geçiş şifrelemesi.
 
-Daha fazla bilgi için aşağıdaki makalelere bakın:
+Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
 
 - [Azure sanal ağlarına genel bakış](../../virtual-network/virtual-networks-overview.md)
 - [Azure ağ güvenlik gruplarına genel bakış](../../virtual-network/network-security-groups-overview.md)
@@ -93,7 +91,7 @@ Daha fazla bilgi için aşağıdaki makalelere bakın:
 
 Daha fazla bilgi için şu makaleye bakın:
 
-[Azure Izleyicisine genel bakış](../../azure-monitor/overview.md)
+[Azure İzleyiciye Genel Bakış](../../azure-monitor/overview.md)
 
 ## <a name="upgrade-clusters"></a>Küme yükseltme
 

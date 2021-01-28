@@ -3,16 +3,13 @@ title: Apache Zookeeper 'a bağlantı Apache Hive-Azure HDInsight
 description: Azure HDInsight 'ta Apache Zookeeper sorunları nedeniyle Apache Hive görünümüne erişilemiyor
 ms.service: hdinsight
 ms.topic: troubleshooting
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.date: 07/30/2019
-ms.openlocfilehash: 1ac237edeea777225b7cf99946d359c921331b18
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 42fb9f5389cbc31e772dc9cf36b6a975c5e18d3c
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93288911"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98939302"
 ---
 # <a name="scenario-apache-hive-fails-to-establish-a-connection-to-apache-zookeeper-in-azure-hdinsight"></a>Senaryo: Apache Hive Azure HDInsight 'ta Apache Zookeeper bağlantısı kuramıyor
 

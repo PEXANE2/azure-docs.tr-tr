@@ -1,19 +1,16 @@
 ---
 title: Birden çok HDInsight kümesi bir Azure Data Lake Storage hesabı &
 description: Tek bir Data Lake Storage hesabıyla birden fazla HDInsight kümesi kullanmayı öğrenin
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/18/2019
-ms.openlocfilehash: df28374d0f124ceb46d2f97d55218d428275deca
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 6e220592f53103320c3bdb586fcbd0106219bfed
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92533096"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98939539"
 ---
 # <a name="use-multiple-hdinsight-clusters-with-an-azure-data-lake-storage-account"></a>Azure Data Lake Storage hesabıyla birden çok HDInsight kümesi kullanma
 
@@ -28,7 +25,7 @@ Bu makalenin geri kalanında, [Azure Data Lake Storage erişim denetiminde](../d
 
 ## <a name="data-lake-storage-setup-for-multiple-hdinsight-clusters"></a>Birden çok HDInsight kümesi için Data Lake Storage kurulum
 
-Data Lake Storage hesabıyla birden çok HDInsight kümesi kullanma önerilerini açıklamak için iki düzeyli bir klasör hiyerarşisi getirmemize izin verin. **/Clusters/finans** klasör yapısına sahip bir Data Lake Storage hesabınız olduğunu düşünün. Bu yapıyla, finans organizasyonu için gereken tüm kümeler depolama konumu olarak/Clusters/finans kullanabilir. Daha sonra, başka bir kuruluş, pazarlama söylediğinde aynı Data Lake Storage hesabını kullanarak HDInsight kümeleri oluşturmak istiyorsa,/Clusters/Marketing oluşturamazlar. Şimdilik yalnızca **/Clusters/finans** ' ı kullanalım.
+Data Lake Storage hesabıyla birden çok HDInsight kümesi kullanma önerilerini açıklamak için iki düzeyli bir klasör hiyerarşisi getirmemize izin verin. **/Clusters/finans** klasör yapısına sahip bir Data Lake Storage hesabınız olduğunu düşünün. Bu yapıyla, finans organizasyonu için gereken tüm kümeler depolama konumu olarak/Clusters/finans kullanabilir. Daha sonra, başka bir kuruluş, pazarlama söylediğinde aynı Data Lake Storage hesabını kullanarak HDInsight kümeleri oluşturmak istiyorsa,/Clusters/Marketing oluşturamazlar. Şimdilik yalnızca **/Clusters/finans**' ı kullanalım.
 
 Bu klasör yapısını HDInsight kümeleri tarafından etkin bir şekilde kullanılmak üzere etkinleştirmek için, Data Lake Storage Yöneticisi tabloda açıklandığı gibi uygun izinleri atamalıdır. Tabloda gösterilen izinler, varsayılan ACL 'Ler değil, Access-ACL 'Lerine karşılık gelir.
 
@@ -48,7 +45,7 @@ AAD uygulaması oluşturma hakkında yönergeler için (Ayrıca bir hizmet sorum
 
 Göz önünde bulundurmanız gereken bazı önemli noktaları.
 
-- İki düzey klasör yapısı ( **/Clusters/Finance/** ), kümeler için depolama hesabı kullanılmadan **önce** Data Lake Storage yöneticisinin uygun izinlerle oluşturulması ve sağlanması gerekir. Bu yapı, kümeler oluşturulurken otomatik olarak oluşturulmaz.
+- İki düzey klasör yapısı (**/Clusters/Finance/**), kümeler için depolama hesabı kullanılmadan **önce** Data Lake Storage yöneticisinin uygun izinlerle oluşturulması ve sağlanması gerekir. Bu yapı, kümeler oluşturulurken otomatik olarak oluşturulmaz.
 - Yukarıdaki örnek, **/Clusters/finans** 'ın sahip olduğu grubunu **fingrp** olarak ayarlamayı ve kökten başlayarak tüm klasör hiyerarşisine fingrp için **r-x** erişimine izin sağlamasını önerir. Bu, FINGRP üyelerinin kök 'dan başlayarak klasör yapısına gidebilmesini sağlar.
 - Farklı AAD hizmet sorumluları **/Clusters/finans** altında kümeler oluşturabilmesini durumunda, yapışkan bit ( **finans** klasöründe ayarlandığında), bir hizmet sorumlusu tarafından oluşturulan klasörlerin diğer tarafından silinebilmesini sağlar.
 - Klasör yapısı ve izinler oluşturulduktan sonra, HDInsight kümesi oluşturma işlemi **/Clusters/Finance/** altında kümeye özgü bir depolama konumu oluşturur. Örneğin, fincluster01 adlı bir küme için depolama alanı **/Clusters/Finance/f, ter01** olabilir. HDInsight kümesi tarafından oluşturulan klasörler için sahiplik ve izinler burada tabloda gösterilmiştir.
