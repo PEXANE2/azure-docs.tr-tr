@@ -116,10 +116,16 @@
       href: concepts-device-oem-security-practices.md
 - name: Nasıl yapılır kılavuzları
   items:
-    - name: MXChip IoT DevKit’i IoT Hub’a bağlama
-      href: how-to-connect-mxchip-iot-devkit.md
-    - name: Özel ayırma ilkelerini kullanarak cihaz sağlama
-      href: how-to-use-custom-allocation-policies.md
+    - name: Geliştirme
+      items:
+        - name: MXChip IoT DevKit’i IoT Hub’a bağlama
+          href: how-to-connect-mxchip-iot-devkit.md
+        - name: Cihazlardan ek veriler gönderme
+          href: how-to-send-additional-data.md
+        - name: Özel ayırma ilkelerini kullanarak cihaz sağlama
+          href: how-to-use-custom-allocation-policies.md
+        - name: MQTT protokolünü kullanarak DPS ile iletişim kurma
+          href: iot-dps-mqtt-support.md
     - name: Cihaz Sağlama Hizmetini yönetme
       items:
         - name: Kayıtları yönetme - Portal
@@ -138,8 +144,6 @@
           href: how-to-control-access.md
         - name: IP filtrelemeyi yapılandırma
           href: iot-dps-ip-filtering.md
-        - name: Azure CLI’sini kullanarak Cihaz Sağlama Hizmetini yapılandırma
-          href: how-to-manage-dps-with-cli.md
     - name: IoT Edge cihazları hazırlama
       items:
         - name: Linux
@@ -148,12 +152,8 @@
         - name: Windows
           href: ../iot-edge/how-to-auto-provision-simulated-device-windows.md
           maintainContext: true
-    - name: Cihazlardan ek veriler gönderme
-      href: how-to-send-additional-data.md
     - name: Sorun giderme
       href: how-to-troubleshoot-dps.md
-    - name: MQTT protokolünü kullanarak DPS ile iletişim kurma
-      href: iot-dps-mqtt-support.md
 - name: Başvuru
   items:
     - name: REST API

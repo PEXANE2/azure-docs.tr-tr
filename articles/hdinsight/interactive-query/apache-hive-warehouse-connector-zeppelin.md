@@ -3,29 +3,28 @@ title: Hive ambarı Bağlayıcısı-Livy-Azure HDInsight kullanan Apache Zeppeli
 description: Hive ambarı bağlayıcısını Azure HDInsight 'ta Apache Zeppelin ile tümleştirmeyi öğrenin.
 author: nis-goel
 ms.author: nisgoel
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 05/28/2020
-ms.openlocfilehash: bccf2b9a3dfe42ca439a45eb1e35cfaff58d0208
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 4859ff098bf3fdffbecc70608cb147d17d9d7f59
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426951"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98941161"
 ---
 # <a name="integrate-apache-zeppelin-with-hive-warehouse-connector-in-azure-hdinsight"></a>Azure HDInsight 'ta Apache Zeppelin 'i Hive ambarı Bağlayıcısı ile tümleştirme
 
 HDInsight Spark kümeleri, farklı yorumlayıcılara sahip Apache Zeppelin not defterlerini içerir. Bu makalede, Hive ambar Bağlayıcısı 'nı kullanarak Spark 'tan Hive tablolarına erişmek için yalnızca Livy Yorumlayıcısına odaklanacağız.
 
 > [!NOTE]
-> Bu makalede, Microsoft tarafından kullanılmayan bir terim olan *beyaz liste*teriminin başvuruları yer almaktadır. Terim yazılımlardan kaldırıldığında, bu makaleden kaldıracağız.
+> Bu makalede, Microsoft tarafından kullanılmayan bir terim olan *beyaz liste* teriminin başvuruları yer almaktadır. Terim yazılımlardan kaldırıldığında, bu makaleden kaldıracağız.
 
 ## <a name="prerequisite"></a>Önkoşul
 
 [Hive ambarı Bağlayıcısı kurulum](apache-hive-warehouse-connector.md#hive-warehouse-connector-setup) adımlarını doldurun.
 
-## <a name="getting-started"></a>Başlarken
+## <a name="getting-started"></a>Kullanmaya başlama
 
 1. Apache Spark kümenize bağlanmak için [SSH komutunu](../hdinsight-hadoop-linux-use-ssh-unix.md) kullanın. CLUSTERNAME öğesini kümenizin adıyla değiştirerek aşağıdaki komutu düzenleyin ve ardından şu komutu girin:
 
@@ -62,7 +61,7 @@ Zeppelin 'daki Hive tablolarına Livy yorumlayıcısıyla erişmek için aşağ�
 
 1. Bir Web tarayıcısından, `https://CLUSTERNAME.azurehdinsight.net/#/main/services/SPARK2/configs` CLUSTERNAME Apache Spark Kümenizin adı ' na gidin.
 
-1. **Custom livy2-conf**öğesini genişletin. Aşağıdaki yapılandırmayı eklemek için **Özellik Ekle...** öğesini seçin:
+1. **Custom livy2-conf** öğesini genişletin. Aşağıdaki yapılandırmayı eklemek için **Özellik Ekle...** öğesini seçin:
 
     | Yapılandırma                 | Değer                                      |
     | ----------------------------- |------------------------------------------  |
@@ -74,7 +73,7 @@ Zeppelin 'daki Hive tablolarına Livy yorumlayıcısıyla erişmek için aşağ�
 
 1. Bir Web tarayıcısından, ' a gidin `https://CLUSTERNAME.azurehdinsight.net/zeppelin/#/interpreter` , burada `CLUSTERNAME` Apache Spark kümenizin adıdır.
 
-1. **Livy2**adresine gidin.
+1. **Livy2** adresine gidin.
 
 1. Aşağıdaki konfigürasyonları ekleyin:
 
@@ -96,7 +95,7 @@ Zeppelin 'daki Hive tablolarına Livy yorumlayıcısıyla erişmek için aşağ�
     |---|---|
     | Livy. spark. Sql. Hive. hiveserver2. JDBC. URL. Principal | `hive/<llap-headnode>@<AAD-Domain>` |
 
-    * Bir Web tarayıcısından, CLUSTERNAME öğesine gidin ve `https://CLUSTERNAME.azurehdinsight.net/#/main/services/HIVE/summary` etkileşimli sorgu kümenizin adıdır. **HiveServer2 Interactive**seçeneğine tıklayın. Ekran görüntüsünde gösterildiği gibi LLAP 'nin çalıştığı baş düğümün tam etki alanı adını (FQDN) görürsünüz. `<llap-headnode>`Bu değerle değiştirin.
+    * Bir Web tarayıcısından, CLUSTERNAME öğesine gidin ve `https://CLUSTERNAME.azurehdinsight.net/#/main/services/HIVE/summary` etkileşimli sorgu kümenizin adıdır. **HiveServer2 Interactive** seçeneğine tıklayın. Ekran görüntüsünde gösterildiği gibi LLAP 'nin çalıştığı baş düğümün tam etki alanı adını (FQDN) görürsünüz. `<llap-headnode>`Bu değerle değiştirin.
 
         ![Hive ambar Bağlayıcısı baş düğümü](./media/apache-hive-warehouse-connector/head-node-hive-server-interactive.png)
 

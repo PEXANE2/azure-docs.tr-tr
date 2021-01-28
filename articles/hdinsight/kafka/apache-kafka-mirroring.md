@@ -1,26 +1,23 @@
 ---
 title: Yansıtma Apache Kafka konuları-Azure HDInsight
 description: Bir ikincil kümeye konuları yansıtarak HDInsight kümesinde bir Kafka çoğaltmasını sürdürmek için Apache Kafka yansıtma özelliğini kullanmayı öğrenin.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/29/2019
-ms.openlocfilehash: d4a2be6719fdaaa9dc859df21cc030478e474210
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: c2fce6d4ee95a56cc087d50184fcd69ac113620f
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92428244"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98940837"
 ---
 # <a name="use-mirrormaker-to-replicate-apache-kafka-topics-with-kafka-on-hdinsight"></a>MirrorMaker kullanarak Apache Kafka konularını HDInsight üzerinde Kafka ile çoğaltma
 
 Apache Kafka yansıtma özelliğini kullanarak konuları ikincil bir kümeye nasıl çoğaltacağınızı öğrenin. Yansıtma sürekli bir işlem olarak çalıştırılabilir veya bir kümeden diğerine veri geçirme yöntemi olarak zaman zaman kullanılabilir.
 
 > [!NOTE]
-> Bu makalede, Microsoft tarafından kullanılmayan bir terim olan *beyaz liste*teriminin başvuruları yer almaktadır. Terim yazılımlardan kaldırıldığında, bu makaleden kaldıracağız.
+> Bu makalede, Microsoft tarafından kullanılmayan bir terim olan *beyaz liste* teriminin başvuruları yer almaktadır. Terim yazılımlardan kaldırıldığında, bu makaleden kaldıracağız.
 
 Bu örnekte, iki HDInsight kümesi arasındaki konuları çoğaltmak için yansıtma kullanılır. Her iki küme de farklı veri merkezlerinde farklı sanal ağlarda bulunur.
 
@@ -71,8 +68,8 @@ Bu mimari, farklı kaynak gruplarındaki ve sanal ağlardaki iki kümeyi sunar: 
     | Kafka-birincil-RG | Central US |
     | Kafka-ikincil-RG | Orta Kuzey ABD |
 
-1. **Kafka-Primary-RG**içinde yeni bir sanal ağ **Kafka-Primary-VNET** oluşturun. Varsayılan ayarları bırakın.
-1. Aynı zamanda varsayılan ayarlarla, **Kafka-Secondary-RG**içinde yeni bir sanal ağ **Kafka-Secondary-VNET** oluşturun.
+1. **Kafka-Primary-RG** içinde yeni bir sanal ağ **Kafka-Primary-VNET** oluşturun. Varsayılan ayarları bırakın.
+1. Aynı zamanda varsayılan ayarlarla, **Kafka-Secondary-RG** içinde yeni bir sanal ağ **Kafka-Secondary-VNET** oluşturun.
 
 1. İki yeni Kafka kümesi oluşturun:
 
@@ -83,7 +80,7 @@ Bu mimari, farklı kaynak gruplarındaki ve sanal ağlardaki iki kümeyi sunar: 
 
 1. Sanal ağ eşlemesi oluşturun. Bu adım iki eşleme oluşturur: biri **Kafka-Primary-VNET** 'ten **Kafka-ikincil-VNET** 'e, diğeri **Kafka-ikincil VNET** 'ten **Kafka-Primary-VNET**'e kadar bir geri.
     1. **Kafka-Primary-VNET** sanal ağını seçin.
-    1. Ayarlar **altında eşlemeler** ' **Settings**i seçin.
+    1. Ayarlar **altında eşlemeler** ' i seçin.
     1. **Ekle**’yi seçin.
     1. **Eşleme Ekle** ekranında, aşağıdaki ekran görüntüsünde gösterildiği gibi ayrıntıları girin.
 
@@ -108,13 +105,13 @@ Bir istemcinin etki alanı adları yerine aracı IP adreslerini kullanarak bağl
 1. **Yapılandırma kaydet** ekranına bir Note girin ve **Kaydet**' e tıklayın.
 1. Yapılandırma Uyarısı sorulursa, **yine de devam et**' e tıklayın.
 1. **Yapılandırma değişikliklerini kaydet**' de **Tamam ' ı** seçin.
-1. Yeniden **Restart**başlatma  >  **gerekli** bildiriminde**etkilenen tüm** yeniden Başlat ' ı seçin. **Tümünü yeniden başlatmayı Onayla**seçeneğini belirleyin.
+1. Yeniden başlatma  >  **gerekli** bildiriminde **etkilenen tüm** yeniden Başlat ' ı seçin. **Tümünü yeniden başlatmayı Onayla** seçeneğini belirleyin.
 
     ![Apache ambarı yeniden başlatma etkilendi](./media/apache-kafka-mirroring/ambari-restart-notification.png)
 
 ### <a name="configure-kafka-to-listen-on-all-network-interfaces"></a>Tüm ağ arabirimlerini dinlemek için Kafka yapılandırın.
     
-1. **Hizmetler**Kafka ' nin altındaki **configs** sekmesinde kalın  >  **Kafka**. **Kafka Broker** bölümünde **Listeners** özelliğini olarak ayarlayın `PLAINTEXT://0.0.0.0:9092` .
+1. **Hizmetler** Kafka ' nin altındaki **configs** sekmesinde kalın  >  . **Kafka Broker** bölümünde **Listeners** özelliğini olarak ayarlayın `PLAINTEXT://0.0.0.0:9092` .
 1. **Kaydet**’i seçin.
 1. **Yeniden Başlat**' ı seçin ve **tümünün yeniden başlatılmasını onaylayın**.
 
@@ -201,7 +198,7 @@ Bir istemcinin etki alanı adları yerine aracı IP adreslerini kullanarak bağl
 
     Bu dosya, birincil Kafka kümesinden okurken kullanılacak tüketici bilgilerini açıklamaktadır. Daha fazla bilgi için tüketici yapılandırması, kafka.apache.org adresindeki [Tüketici yapılandırmaları](https://kafka.apache.org/documentation#consumerconfigs) bölümüne bakın.
 
-    Dosyayı kaydetmek için **CTRL + X**, **Y**kullanın ve ardından **girin**.
+    Dosyayı kaydetmek için **CTRL + X**, **Y** kullanın ve ardından **girin**.
 
 1. İkincil kümeyle iletişim kuran üreticisi yapılandırmadan önce, **İkincil** KÜMENIN aracı IP adresleri için bir değişken ayarlayın. Bu değişkeni oluşturmak için aşağıdaki komutları kullanın:
 

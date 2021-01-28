@@ -1,19 +1,16 @@
 ---
 title: Visual Studio için Apache Hive & Data Lake araçları-Azure HDInsight
 description: Azure HDInsight üzerinde Apache Hadoop ile Apache Hive sorguları çalıştırmak üzere Visual Studio için Data Lake araçları 'nı nasıl kullanacağınızı öğrenin.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/27/2019
-ms.openlocfilehash: c8645ae9cb901b9fc95f00665d73e223a24fda63
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3e54991f6afd2ace19bf7b70e57bda6f551f7780
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86076462"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943173"
 ---
 # <a name="run-apache-hive-queries-using-the-data-lake-tools-for-visual-studio"></a>Visual Studio için Data Lake araçlarını kullanarak Apache Hive sorgularını çalıştırma
 
@@ -50,11 +47,11 @@ Geçici sorgular **toplu** veya **etkileşimli** modda çalıştırılabilir.
     SELECT * FROM hivesampletable;
     ```
 
-5. **Yürüt**’ü seçin. Yürütme modu varsayılan olarak **etkileşimli**olur.
+5. **Yürüt**’ü seçin. Yürütme modu varsayılan olarak **etkileşimli** olur.
 
     ![Etkileşimli Hive sorgusu yürütme, Visual Studio](./media/apache-hadoop-use-hive-visual-studio/vs-execute-hive-query.png)
 
-6. **Toplu iş** modunda aynı sorguyu çalıştırmak için açılan listeyi **etkileşimli** moddan **Toplu işe**değiştirin. Yürütme düğmesi **Execute** iken **Gönder**olarak değişir.
+6. **Toplu iş** modunda aynı sorguyu çalıştırmak için açılan listeyi **etkileşimli** moddan **Toplu işe** değiştirin. Yürütme düğmesi **Execute** iken **Gönder** olarak değişir.
 
     ![Toplu işlem Hive sorgusu, Visual Studio 'Yu gönder](./media/apache-hadoop-use-hive-visual-studio/visual-studio-batch-query.png)
 
@@ -62,7 +59,7 @@ Geçici sorgular **toplu** veya **etkileşimli** modda çalıştırılabilir.
 
 7. Sorgu araç çubuğunda (sorgu sekmesinin altındaki ve sorgu metninin üzerindeki alan), **Gönder**' i seçin ya da **Gönder** ' ın yanındaki aşağı açılan oku seçin ve açılan listeden **Gelişmiş** ' i seçin. İkinci seçeneği belirlerseniz,
 
-8. Gelişmiş gönder seçeneğini belirlediyseniz, **betik gönder** Iletişim kutusunda **iş adı**, **bağımsız değişkenler**, **ek konfigürasyonlar**ve **durum dizini** ' ni yapılandırın. Sonra **Gönder**' i seçin.
+8. Gelişmiş gönder seçeneğini belirlediyseniz, **betik gönder** Iletişim kutusunda **iş adı**, **bağımsız değişkenler**, **ek konfigürasyonlar** ve **durum dizini** ' ni yapılandırın. Sonra **Gönder**' i seçin.
 
     ![Betik Gönder iletişim kutusu, HDInsight Hadoop Hive sorgusu](./media/apache-hadoop-use-hive-visual-studio/vs-tools-submit-jobs-advanced.png)
 
@@ -70,13 +67,13 @@ Geçici sorgular **toplu** veya **etkileşimli** modda çalıştırılabilir.
 
 Hive uygulaması oluşturarak Hive sorgusu çalıştırmak için aşağıdaki adımları izleyin:
 
-1. **Visual Studio 'yu**açın.
+1. **Visual Studio 'yu** açın.
 
 2. **Başlangıç** penceresinde **Yeni proje oluştur**' u seçin.
 
-3. **Yeni proje oluştur** penceresinde, **şablon ara** kutusuna *Hive*yazın. Ardından **Hive uygulaması** ' nı seçin ve **İleri**' yi seçin.
+3. **Yeni proje oluştur** penceresinde, **şablon ara** kutusuna *Hive* yazın. Ardından **Hive uygulaması** ' nı seçin ve **İleri**' yi seçin.
 
-4. **Yeni projeyi yapılandırın** penceresinde bir **Proje adı**girin, yeni proje için bir **konum** seçin veya oluşturun ve ardından **Oluştur**' u seçin.
+4. **Yeni projeyi yapılandırın** penceresinde bir **Proje adı** girin, yeni proje için bir **konum** seçin veya oluşturun ve ardından **Oluştur**' u seçin.
 
 5. Bu projeyle oluşturulan **Script. HQL** dosyasını açın ve aşağıdaki HiveQL deyimlerine yapıştırın:
 
@@ -110,7 +107,7 @@ Hive uygulaması oluşturarak Hive sorgusu çalıştırmak için aşağıdaki ad
 
 6. Sorgu dosyası araç çubuğundan (diğer bir deyişle, geçici sorgu araç çubuğuna benzer bir görünüm), bu sorgu için kullanmak istediğiniz HDInsight kümesini seçin. Ardından **etkileşimli** olarak **Batch** (gerekliyse) seçeneğini değiştirin ve deyimleri Hive Işi olarak çalıştırmak için **Gönder** ' i seçin.
 
-   **Hive Iş Özeti** görünür ve çalışan iş hakkında bilgileri görüntüler. İş **durumu** **tamamlanana**kadar değişene kadar Iş bilgilerini yenilemek için **Yenile** bağlantısını kullanın.
+   **Hive Iş Özeti** görünür ve çalışan iş hakkında bilgileri görüntüler. İş **durumu** **tamamlanana** kadar değişene kadar Iş bilgilerini yenilemek için **Yenile** bağlantısını kullanın.
 
    ![Tamamlanan Hive iş Özeti, Hive uygulaması, Visual Studio](./media/apache-hadoop-use-hive-visual-studio/hdinsight-job-summary.png)
 

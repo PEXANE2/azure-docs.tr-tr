@@ -1,19 +1,16 @@
 ---
 title: Azure HDInsight 'ta Apache Hadoop kümelerinde boş kenar düğümlerini kullanma
 description: HDInsight kümesine boş bir Edge düğümü ekleme. İstemci olarak kullanılır ve ardından HDInsight uygulamalarınızı test edin veya barındırın.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 04/16/2020
-ms.openlocfilehash: ddd1a6fa2fc25add30664da5b739338e87e7e74f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4061df2dfcfb4cf993e2312fb3438de66863a476
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96010121"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942673"
 ---
 # <a name="use-empty-edge-nodes-on-apache-hadoop-clusters-in-hdinsight"></a>HDInsight 'ta Apache Hadoop kümelerinde boş kenar düğümlerini kullanma
 
@@ -64,7 +61,7 @@ Edge düğümü oluşturduktan sonra, SSH kullanarak kenar düğümüne bağlana
 > * [Microsoft Q&HDInsight için soru sayfası] (/Yanıtlayıcı/topics/azure-hdinsight.html
 > * [https://stackoverflow.com](https://stackoverflow.com).
 >
-> Apache teknolojisi kullanıyorsanız, üzerinde Apache Hadoop sitesi gibi Apache proje siteleri aracılığıyla yardım bulabilirsiniz [https://apache.org](https://apache.org) . [Apache Hadoop](https://hadoop.apache.org/)
+> Apache teknolojisi kullanıyorsanız, üzerinde Apache Hadoop sitesi gibi Apache proje siteleri aracılığıyla yardım bulabilirsiniz [https://apache.org](https://apache.org) . [](https://hadoop.apache.org/)
 
 > [!IMPORTANT]
 > Ubuntu görüntüleri, yayımlanmakta olan 3 ay içinde yeni HDInsight kümesi oluşturma için kullanılabilir hale gelir. 2019 Ocak itibariyle, çalışan kümeler (kenar düğümleri dahil) Otomatik Düzeltme Eki **uygulanmaz** . Müşterilerin çalışan bir kümeyi yaması için betik eylemleri veya diğer mekanizmaları kullanması gerekir.  Daha fazla bilgi için bkz. [HDInsight Için Işletim sistemi düzeltme eki uygulama](./hdinsight-os-patching.md).

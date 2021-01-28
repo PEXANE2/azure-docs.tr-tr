@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: nitinme
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 74861df30ba2854c9299e1f779d0cee59abbc5a8
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: b2b3ebdf61349d88d088ebeff5443a9c3e947d73
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92911214"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943626"
 ---
 # <a name="migrate-your-face-data-to-a-different-face-subscription"></a>Yüz verilerinizi farklı bir yüz aboneliğine geçirin
 
@@ -37,12 +37,12 @@ Aşağıdaki öğeler gereklidir:
 Bu kılavuz, yüz veri geçişini çalıştırmak için basit bir konsol uygulaması kullanır. Tam bir uygulama için GitHub 'daki [yüz anlık görüntü örneğine](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/FaceApiSnapshotSample/FaceApiSnapshotSample) bakın.
 
 1. Visual Studio 'da yeni bir konsol uygulaması .NET Framework projesi oluşturun. Bunu çok **yönlü Apisnapshotsample** olarak adlandırın.
-1. Gereken NuGet paketlerini alın. Çözüm Gezgini projenize sağ tıklayın ve **NuGet Paketlerini Yönet** ' i seçin. **Tarayıcı** sekmesini seçin ve **ön sürümü dahil et** ' i seçin. Aşağıdaki paketi bulup yükler:
+1. Gereken NuGet paketlerini alın. Çözüm Gezgini projenize sağ tıklayın ve **NuGet Paketlerini Yönet**' i seçin. **Tarayıcı** sekmesini seçin ve **ön sürümü dahil et**' i seçin. Aşağıdaki paketi bulup yükler:
     - [Microsoft. Azure. Biliveservices. Vision. Face 2.3.0-Önizleme](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.2.0-preview)
 
 ## <a name="create-face-clients"></a>Yüz istemcileri oluşturma
 
-*Program.cs* ' deki **Main** yönteminde, kaynak ve hedef abonelikleriniz için iki [faceclient](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet) örneği oluşturun. Bu örnek, hedef olarak Doğu Asya bölgesindeki bir yüz aboneliğini kaynak ve Batı ABD bir abonelik kullanır. Bu örnek, verilerin bir Azure bölgesinden diğerine nasıl geçirileceğini gösterir. 
+*Program.cs*' deki **Main** yönteminde, kaynak ve hedef abonelikleriniz için iki [faceclient](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient) örneği oluşturun. Bu örnek, hedef olarak Doğu Asya bölgesindeki bir yüz aboneliğini kaynak ve Batı ABD bir abonelik kullanır. Bu örnek, verilerin bir Azure bölgesinden diğerine nasıl geçirileceğini gösterir. 
 
 [!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
@@ -63,7 +63,7 @@ Kaynak ve hedef abonelikleriniz için abonelik anahtarı değerlerini ve uç nok
 
 ## <a name="prepare-a-persongroup-for-migration"></a>Bir kişilik grubunu geçiş için hazırlama
 
-Hedef aboneliğe geçirmek için kaynak aboneliğinizdeki PersonGroup 'un KIMLIĞINE sahip olmanız gerekir. [Persongroupoperationsextensions. ListAsync](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.persongroupoperationsextensions.listasync?view=azure-dotnet) yöntemini kullanarak, persongroup nesnelerinizin bir listesini alın. Ardından, [Persongroup. Persongroupıd](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.persongroup.persongroupid?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Vision_Face_Models_PersonGroup_PersonGroupId) özelliğini alın. Bu işlem, sahip olduğunuz PersonGroup nesnelerine göre farklılık yapar. Bu kılavuzda, kaynak kişinin KIMLIĞI ' nde depolanır `personGroupId` .
+Hedef aboneliğe geçirmek için kaynak aboneliğinizdeki PersonGroup 'un KIMLIĞINE sahip olmanız gerekir. [Persongroupoperationsextensions. ListAsync](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.persongroupoperationsextensions.listasync) yöntemini kullanarak, persongroup nesnelerinizin bir listesini alın. Ardından, [Persongroup. Persongroupıd](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.persongroup.persongroupid#Microsoft_Azure_CognitiveServices_Vision_Face_Models_PersonGroup_PersonGroupId) özelliğini alın. Bu işlem, sahip olduğunuz PersonGroup nesnelerine göre farklılık yapar. Bu kılavuzda, kaynak kişinin KIMLIĞI ' nde depolanır `personGroupId` .
 
 > [!NOTE]
 > [Örnek kod](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/FaceApiSnapshotSample/FaceApiSnapshotSample) , geçirilecek yeni bir persongroup oluşturur ve bunları ister. Çoğu durumda, kullanmak için zaten bir PersonGroup grubunuz olmalıdır.
@@ -72,7 +72,7 @@ Hedef aboneliğe geçirmek için kaynak aboneliğinizdeki PersonGroup 'un KIMLI�
 
 Anlık görüntü, belirli yüz veri türleri için geçici bir uzak depodır. Verileri bir abonelikten diğerine kopyalamak için Pano türü olarak çalışır. İlk olarak, kaynak abonelikteki verilerin bir anlık görüntüsünü alın. Ardından, hedef abonelikte yeni bir veri nesnesine uygularsınız.
 
-Kaynak aboneliğin FaceClient örneğini kullanarak PersonGroup 'un anlık görüntüsünü alın. PersonID ve hedef aboneliğin KIMLIĞIYLE birlikte bulunan [Takeasync](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.snapshotoperationsextensions.takeasync?view=azure-dotnet) kullanın. Birden çok hedef aboneliğiniz varsa, bunları üçüncü parametreye dizi girdileri olarak ekleyin.
+Kaynak aboneliğin FaceClient örneğini kullanarak PersonGroup 'un anlık görüntüsünü alın. PersonID ve hedef aboneliğin KIMLIĞIYLE birlikte bulunan [Takeasync](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.snapshotoperationsextensions.takeasync) kullanın. Birden çok hedef aboneliğiniz varsa, bunları üçüncü parametreye dizi girdileri olarak ekleyin.
 
 ```csharp
 var takeSnapshotResult = await FaceClientEastAsia.Snapshot.TakeAsync(
@@ -82,7 +82,7 @@ var takeSnapshotResult = await FaceClientEastAsia.Snapshot.TakeAsync(
 ```
 
 > [!NOTE]
-> Anlık görüntü alma ve uygulama işlemi, kaynak veya hedef kişiler veya çok yönlü listeler için düzenli olarak yapılan çağrıları kesintiye uğratmaz. Örneğin, çok [yönlü liste yönetimi çağrıları](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.facelistoperations?view=azure-dotnet) veya [Persongroup eğitme](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.persongroupoperations?view=azure-dotnet) çağrısı gibi kaynak nesneyi değiştiren eşzamanlı çağrılar yapmayın. Anlık görüntü işlemi, bu işlemlerden önce veya sonra çalışabilir ya da hatalarla karşılaşabilirler.
+> Anlık görüntü alma ve uygulama işlemi, kaynak veya hedef kişiler veya çok yönlü listeler için düzenli olarak yapılan çağrıları kesintiye uğratmaz. Örneğin, çok [yönlü liste yönetimi çağrıları](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.facelistoperations) veya [Persongroup eğitme](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.persongroupoperations) çağrısı gibi kaynak nesneyi değiştiren eşzamanlı çağrılar yapmayın. Anlık görüntü işlemi, bu işlemlerden önce veya sonra çalışabilir ya da hatalarla karşılaşabilirler.
 
 ## <a name="retrieve-the-snapshot-id"></a>Anlık görüntü KIMLIĞINI alma
 
@@ -233,7 +233,7 @@ await FaceClientEastAsia.Snapshot.DeleteAsync(snapshotId);
 
 Ardından, ilgili API başvuru belgelerine bakın, anlık görüntü özelliğini kullanan örnek bir uygulamayı keşfedebilir veya burada bahsedilen diğer API işlemlerini kullanmaya başlamak için nasıl yapılır kılavuzunu izleyin:
 
-- [Anlık görüntü başvuru belgeleri (.NET SDK)](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.snapshotoperations?view=azure-dotnet)
+- [Anlık görüntü başvuru belgeleri (.NET SDK)](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.snapshotoperations)
 - [Yüz anlık görüntü örneği](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/FaceApiSnapshotSample/FaceApiSnapshotSample)
 - [Yüz ekleme](how-to-add-faces.md)
 - [Bir görüntüdeki yüzleri algılama](HowtoDetectFacesinImage.md)

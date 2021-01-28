@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/26/2020
-ms.openlocfilehash: d0bbde0ee4fd0eaf7387abaf6d548dc563e5b715
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 34ece92e4603c0c74190003745d55be0aea5cdb0
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86515453"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98941764"
 ---
 # <a name="create-and-configure-a-log-analytics-workspace-in-azure-monitor-using-powershell"></a>PowerShell kullanarak Azure Izleyici 'de Log Analytics çalışma alanı oluşturma ve yapılandırma
 Bu makale, Azure Izleyici 'de bir Log Analytics çalışma alanı oluşturmayı ve yapılandırmayı gösteren iki kod örneği sunar.  
@@ -193,7 +193,7 @@ New-AzOperationalInsightsCustomLogDataSource -ResourceGroupName $ResourceGroup -
 ```
 
 > [!NOTE]
-> Özel bir günlük için yapılandırmayı tanımlayan **Customlograwjson** parametresinin biçimi karmaşık olabilir. Mevcut bir özel günlüğün yapılandırmasını almak için [Get-Azoperationalınsightsdatasource](/powershell/module/az.operationalinsights/get-azoperationalinsightsdatasource?view=azps-3.2.0) komutunu kullanın. **Properties** özelliği, **Customlograwjson** parametresi için gereken yapılandırmadır.
+> Özel bir günlük için yapılandırmayı tanımlayan **Customlograwjson** parametresinin biçimi karmaşık olabilir. Mevcut bir özel günlüğün yapılandırmasını almak için [Get-Azoperationalınsightsdatasource](/powershell/module/az.operationalinsights/get-azoperationalinsightsdatasource) komutunu kullanın. **Properties** özelliği, **Customlograwjson** parametresi için gereken yapılandırmadır.
 
 Yukarıdaki örnekte regexDelimiter, \\ yeni satır için "n" olarak tanımlandı. Günlük sınırlayıcısı de bir zaman damgası olabilir.  Desteklenen biçimler şunlardır:
 
@@ -214,8 +214,8 @@ Yukarıdaki örnekte regexDelimiter, \\ yeni satır için "n" olarak tanımland�
 ## <a name="troubleshooting"></a>Sorun giderme
 Son 14 gün içinde silinen bir çalışma alanı oluşturduğunuzda ve [geçici silme durumunda](./delete-workspace.md#soft-delete-behavior)işlem, çalışma alanı yapılandırmanıza bağlı olarak farklı bir sonuca sahip olabilir:
 1. Silinen çalışma alanında aynı çalışma alanı adı, kaynak grubu, abonelik ve bölge sağlarsanız, çalışma alanınız veri, yapılandırma ve bağlı aracılar dahil kurtarılacak.
-2. Aynı çalışma alanı adını, ancak farklı kaynak grubunu, aboneliği veya bölgeyi kullanıyorsanız, *' Workspace-Name ' çalışma alanı adı benzersiz değil*veya *Çakışma*olduğunda bir hata alırsınız. Geçici silme işlemini geçersiz kılmak ve çalışma alanınızı kalıcı olarak silmek ve aynı ada sahip yeni bir çalışma alanı oluşturmak için, önce çalışma alanını kurtarmak ve kalıcı silme gerçekleştirmek için şu adımları izleyin:
-   * Çalışma alanınızı [kurtarın](./delete-workspace.md#recover-workspace)
+2. Aynı çalışma alanı adını, ancak farklı kaynak grubunu, aboneliği veya bölgeyi kullanıyorsanız, *' Workspace-Name ' çalışma alanı adı benzersiz değil* veya *Çakışma* olduğunda bir hata alırsınız. Geçici silme işlemini geçersiz kılmak ve çalışma alanınızı kalıcı olarak silmek ve aynı ada sahip yeni bir çalışma alanı oluşturmak için, önce çalışma alanını kurtarmak ve kalıcı silme gerçekleştirmek için şu adımları izleyin:
+   * Çalışma alanınızı [kurtarma](./delete-workspace.md#recover-workspace)
    * Çalışma alanınızı [kalıcı olarak silme](./delete-workspace.md#permanent-workspace-delete)
    * Aynı çalışma alanı adını kullanarak yeni bir çalışma alanı oluştur
 

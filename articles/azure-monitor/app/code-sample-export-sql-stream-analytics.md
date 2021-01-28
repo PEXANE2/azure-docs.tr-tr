@@ -3,12 +3,12 @@ title: Azure 'dan SQL 'e aktarma Application Insights | Microsoft Docs
 description: Application Insights verileri sürekli olarak SQL 'e Stream Analytics kullanarak dışarı aktarın.
 ms.topic: conceptual
 ms.date: 09/11/2017
-ms.openlocfilehash: 90aab1794a9b412de2498edcc4d221f4bcc86968
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5fb7093dd9945893b17f1b8f5e596cfe5181c3b6
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90979453"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942419"
 ---
 # <a name="walkthrough-export-to-sql-from-application-insights-using-stream-analytics"></a>İzlenecek yol: Application Insights Stream Analytics kullanarak SQL 'e aktarma
 Bu makalede, [azure Application Insights][start] [sürekli dışa aktarma][export] ve [Azure Stream ANALYTICS](https://azure.microsoft.com/services/stream-analytics/)kullanarak telemetri verilerinizi Azure SQL veritabanı 'na nasıl taşıyacağınız gösterilmektedir. 
@@ -35,7 +35,7 @@ Sürekli dışarı aktarma, verileri her zaman bir Azure depolama hesabına çı
 1. [Azure Portal][portal]aboneliğinizde bir depolama hesabı oluşturun.
    
     ![Azure portal yeni, veri, depolama ' yı seçin. Klasik ' i seçin, Oluştur ' u seçin. Depolama adı belirtin.](./media/code-sample-export-sql-stream-analytics/040-store.png)
-2. Bir kapsayıcı oluşturma
+2. Kapsayıcı oluşturma
    
     ![Yeni depolama alanında kapsayıcılar ' ı seçin, kapsayıcılar kutucuğuna tıklayın ve ardından Ekle](./media/code-sample-export-sql-stream-analytics/050-container.png)
 3. Depolama erişim anahtarını kopyalama
@@ -82,7 +82,7 @@ Sunucunun Azure hizmetlerine erişime izin verdiğinden emin olun:
 ![Azure 'a, sunuculara, sunucunuza, ayarlarınıza, güvenlik duvarına erişime Izin verin](./media/code-sample-export-sql-stream-analytics/100-sqlaccess.png)
 
 ## <a name="create-a-table-in-azure-sql-database"></a>Azure SQL veritabanı 'nda tablo oluşturma
-Önceki bölümde oluşturulan ve tercih ettiğiniz yönetim araclarınızın veritabanına bağlanın. Bu izlenecek yolda [SQL Server Yönetim Araçları](/sql/ssms/sql-server-management-studio-ssms?view=sql-server-ver15) (SSMS) kullanacağız.
+Önceki bölümde oluşturulan ve tercih ettiğiniz yönetim araclarınızın veritabanına bağlanın. Bu izlenecek yolda [SQL Server Yönetim Araçları](/sql/ssms/sql-server-management-studio-ssms) (SSMS) kullanacağız.
 
 ![Azure SQL Veritabanı'na bağlanma](./media/code-sample-export-sql-stream-analytics/31-sql-table.png)
 
@@ -164,7 +164,7 @@ webapplication27_12345678123412341234123456789abcdef0/PageViews/{date}/{time}
 Bu örnekte:
 
 * `webapplication27` Application Insights kaynağın adı, **hepsi küçük bir durumdur**. 
-* `1234...` , Application Insights kaynağın ana **çizgiler kaldırılmış olan**izleme anahtarıdır. 
+* `1234...` , Application Insights kaynağın ana **çizgiler kaldırılmış olan** izleme anahtarıdır. 
 * `PageViews` analiz etmek istediğimiz veri türüdür. Kullanılabilir türler, sürekli dışarı aktarma sırasında ayarladığınız filtreye bağlıdır. Dışarı aktarılmış verileri inceleyerek diğer kullanılabilir türleri görüntüleyin ve [veri aktarma modelini](./export-data-model.md)görüntüleyin.
 * `/{date}/{time}` , harfine yazılmış bir örüntü.
 

@@ -6,15 +6,15 @@ ms.reviewer: baolcsva
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.topic: conceptual
-ms.date: 11/11/2020
+ms.date: 01/27/2021
 ms.author: banders
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: f5555662c6cb5f44be3959ec3d22d1cf1953674d
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
-ms.translationtype: HT
+ms.openlocfilehash: 7aa57fa20c3a043cdb210ccd8a5ddbf61323716d
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97030102"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943687"
 ---
 # <a name="azure-enterprise-transfers"></a>Azure Kurumsal aktarımlar
 
@@ -55,22 +55,22 @@ Kayıt aktarımı şu durumlarda göz önünde bulundurulur:
 - Bir kaydın süresi dolmuş/uzatılmış durumda olması ve yeni bir anlaşmanın yapılması.
 - Birden fazla kaydınızın olması ve tüm hesaplarla faturaları tek kayıtta birleştirmek istemeniz.
 
-Eylem bir kurumsal yönetici tarafından gerçekleştirilemediği için bu bölüm yalnızca bilgilendirme amaçlıdır. Bir kurumsal kaydı yeni bir kayda aktarmak için destek isteği oluşturulması gerekir.
+Eylem bir kurumsal yönetici tarafından gerçekleştirilemediği için bu bölüm yalnızca bilgilendirme amaçlıdır. Kayıt [otomatik kayıt aktarımına](#auto-enrollment-transfer)uygun olmadığı takdirde, bir kuruluş kaydını yeni bir kayda aktarmak için bir destek isteği gerekir.
 
 Bir kuruluş kaydının tamamını bir kayda aktarmak istediğinizde aşağıdaki eylemler gerçekleşir:
 
 - Tüm EA departman yöneticileri de dahil olmak üzere tüm Azure hizmetleri, abonelikleri, hesapları, departmanları ve kayıt yapısının tamamı yeni hedef kayda aktarılır.
 - Kayıt durumu _Aktarıldı_ olarak ayarlanır. Aktarılan kayıt yalnızca geçmiş kullanım raporlama amacıyla kullanılabilir.
-- Aktarılan bir kayda rol veya abonelik ekleyemezsiniz. Aktarıldı durumu, kayda aykırı ek kullanım yapılmasını önler.
+- Aktarılan bir kayda rol veya abonelik ekleyemezsiniz. Aktarılan durum, kayıtta daha fazla kullanım yapılmasını önler.
 - Anlaşmadaki kalan Azure Ön Ödeme bakiyeleri, geleceğe dönük hükümler de dahil olmak üzere kaybedilir.
--    Aktardığınız kayıtta satın alınmış ayrılmış örnekler varsa ayrılmış örnek satın alma ücreti kaynak kayıtta kalır ancak tüm ayrılmış örnek avantajları yeni kayıtta kullanılmak üzere aktarılır.
--    Market için tek seferlik satın alma ücreti ve eski kayıtta tahakkuk etmiş olan aylık sabit ücretler yeni kayda aktarılmaz. Tüketime dayalı market ücretleri aktarılır.
+-    Aktardığınız kayıt, RI satın alımlarına sahipse, RI satın alma ücreti kaynak kaydında kalır, ancak tüm RI avantajları yeni kayıtta kullanılmak üzere üzerinden aktarılır.
+-    Market tek seferlik satın alma ücreti ve eski kayıt üzerinde zaten tahakkuk eden aylık sabit ücretler yeni kayda aktarılmaz. Tüketime dayalı market ücretleri aktarılır.
 
 ### <a name="effective-transfer-date"></a>Geçerli aktarım tarihi
 
 Geçerli aktarım tarihi, hedef kaydın başlangıç tarihi veya daha sonraki bir tarih olabilir.
 
-Kaynak kayıt kullanımı, Azure Ön Ödemesi karşılığında veya fazla kullanım olarak ücretlendirilir. Geçerli aktarım tarihinden sonra gerçekleşen kullanımlar yeni kayda aktarılır ve uygun şekilde ücretlendirilir.
+Kaynak kayıt kullanımı, Azure Ön Ödemesi karşılığında veya fazla kullanım olarak ücretlendirilir. Etkin aktarım tarihi yeni kayda aktarıldıktan ve ücretlendirildikten sonra gerçekleşen kullanım.
 
 ### <a name="prerequisites"></a>Ön koşullar
 
@@ -78,13 +78,24 @@ Bir kayıt aktarımı istediğinizde aşağıdaki bilgileri sağlayın:
 
 - Kaynak kaydı için, kayıt numarası.
 - Hedef kaydı için, aktarımın yapılacağı kayıt numarası.
-- Kayıt aktarımı geçerlilik tarihi, hedef kaydın başlangıç tarihi veya sonrasındaki bir tarih olabilir. Seçilen tarih, daha önce düzenlenmiş bir fazla kullanım faturası için kullanımı etkilemez.
+- Kayıt aktarımı geçerlilik tarihi, hedef kaydın başlangıç tarihi veya sonrasındaki bir tarih olabilir. Seçilen tarih, zaten verilen fazla kullanım faturasının kullanımını etkilemiyor.
 
 Kayıt aktarımından önce göz önünde bulundurmanız gereken diğer noktalar:
 
 - Hem hedef hem de kaynak kaydı EA Yöneticilerinden onay gerekir.
 - Kayıt aktarımı gereksinimlerinizi karşılamıyorsa, hesap aktarımı yapmayı düşünün.
 - Kaynak kaydı durumu aktarıldı olarak güncelleştirilir ve yalnızca geçmiş kullanım raporlama amaçları için kullanılabilir olur.
+
+### <a name="auto-enrollment-transfer"></a>Otomatik kayıt aktarımı
+
+Kayıt aktarımı istemek için bir destek bileti göndermemiş olsanız bile bir kaydın **aktarılan** duruma sahip olduğunu görebilirsiniz. **Aktarılan** durum, otomatik kayıt aktarma işleminden oluşur. Yenileme tümceciği sırasında otomatik kayıt aktarma işleminin gerçekleşmesi için, yeni sözleşmeye dahil edilmesi gereken birkaç öğe vardır:
+
+- Önceki kayıt numarası (EA portalında bulunması gerekir)
+- Önceki kayıt numarasının sona erme tarihi, yeni sözleşmenin geçerlilik başlangıç tarihinden bir gün önce
+- Yeni sözleşme, geçerli bir tarihi olan veya geri eklenen bir faturalanmış Azure ön ödeme siparişi içeriyor
+- Yeni kayıt EA portalında oluşturulur
+
+EA portalında, önceki kayıt ve yeni kayıt arasında eksik kullanım verileri yoksa, bir aktarım destek bileti oluşturmanız gerekmez.
 
 ### <a name="azure-prepayment"></a>Azure Ön Ödemesi
 

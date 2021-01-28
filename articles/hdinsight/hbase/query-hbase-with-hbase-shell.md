@@ -2,19 +2,16 @@
 title: "Hızlı başlangıç: Azure HDInsight 'ta Apache HBase 'i sorgulama-HBase kabuğu"
 description: Bu hızlı başlangıçta Apache HBase kabuğunu kullanarak Apache HBase sorgularını nasıl çalıştıracağınızı öğreneceksiniz.
 keywords: HDInsight, Hadoop, HBase
-author: hrasheed-msft
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: quickstart
 ms.date: 06/12/2019
-ms.author: hrasheed
-ms.openlocfilehash: 572262cbece26171f9a67bf073906fa2dfd4d8e1
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 358e058667cb1750a6fc97dffebcbfb2c6e06f84
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "79371078"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942926"
 ---
 # <a name="quickstart-query-apache-hbase-in-azure-hdinsight-with-hbase-shell"></a>Hızlı başlangıç: Azure HDInsight 'ta HBase kabuğu ile Apache HBase 'i sorgulama
 
@@ -26,7 +23,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 * Apache HBase kümesi. HDInsight kümesi oluşturmak için bkz. [küme oluşturma](../hadoop/apache-hadoop-linux-tutorial-get-started.md) .  **HBase** küme türünü seçtiğinizden emin olun.
 
-* Bir SSH istemcisi. Daha fazla bilgi için bkz. [SSH kullanarak HDInsight 'A bağlanma (Apache Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md).
+* Bir SSH istemcisi. Daha fazla bilgi için bkz. [SSH kullanarak HDInsight'a (Apache Hadoop) bağlanma](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 ## <a name="create-a-table-and-manipulate-data"></a>Tablo oluşturma ve verileri işleme
 

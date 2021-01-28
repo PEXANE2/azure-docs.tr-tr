@@ -1,25 +1,22 @@
 ---
 title: Apache Hive-Azure HDInsight ile Apache Beeline kullanma
 description: HDInsight 'ta Hadoop ile Hive sorguları çalıştırmak için Beeline istemcisini nasıl kullanacağınızı öğrenin. Beeline, JDBC üzerinden HiveServer2 ile çalışmaya yönelik bir yardımcı programdır.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 10/28/2020
 ms.custom: contperf-fy21q1, contperf-fy21q2
-ms.openlocfilehash: 70fbbdfc5d8f1bac5fa27175ea25be1503a77594
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: e8b7478ba64da0f99a9b7a710222ff2953795adf
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97031904"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943207"
 ---
 # <a name="use-the-apache-beeline-client-with-apache-hive"></a>Apache Beeline istemcisini Apache Hive ile kullanma
 
 Bu makalede, bir SSH bağlantısı üzerinden Apache Hive sorguları oluşturmak ve yürütmek için komut satırı [Apache Beeline](https://cwiki.apache.org/confluence/display/Hive/HiveServer2+Clients#HiveServer2Clients-Beeline–NewCommandLineShell) istemcisinin nasıl kullanılacağı açıklanır.
 
-## <a name="background"></a>Arka plan
+## <a name="background"></a>Arka Plan
 
 Beeline, HDInsight kümenizin baş düğümlerine eklenen bir Hive istemcanıdır. HDInsight kümenize yüklenmiş Beeline istemcisine bağlanmak veya Beeline yerel olarak yüklemek için bkz. [Apache Beeline bağlanma veya yükleme](connect-install-beeline.md). Beeline, HDInsight kümenizde barındırılan bir hizmet olan HiveServer2 'e bağlanmak için JDBC kullanır. Ayrıca, HDInsight 'ta Internet üzerinden uzaktan erişim sağlamak için Beeline da kullanabilirsiniz. Aşağıdaki örneklerde, Beeline 'dan HDInsight 'a bağlanmak için kullanılan en yaygın bağlantı dizeleri sağlanmaktadır.
 

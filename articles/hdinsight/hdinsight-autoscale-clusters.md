@@ -1,19 +1,16 @@
 ---
 title: Azure HDInsight kümelerini otomatik olarak ölçeklendirme
 description: Azure HDInsight kümelerini bir zamanlamaya veya performans ölçümlerine göre otomatik olarak ölçeklendirmek için otomatik ölçeklendirme özelliğini kullanın.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: contperf-fy21q1, contperf-fy21q2
 ms.date: 12/14/2020
-ms.openlocfilehash: 2b23b4256e79723ce0b5edafd59186dc345eb791
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 130a5a58fc7dab6f94c011cf9764743f9114e48a
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97629264"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942648"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters"></a>Azure HDInsight kümelerini otomatik olarak ölçeklendirme
 
@@ -38,7 +35,7 @@ Bir ölçeklendirme türü seçerken aşağıdaki faktörleri göz önünde bulu
 
 Otomatik ölçeklendirme, kümeyi sürekli izler ve aşağıdaki ölçümleri toplar:
 
-|Ölçüm|Açıklama|
+|Metric|Açıklama|
 |---|---|
 |Toplam bekleyen CPU|Tüm bekleyen kapsayıcıları yürütmeye başlamak için gereken toplam çekirdek sayısı.|
 |Toplam bekleyen bellek|Tüm bekleyen kapsayıcıların yürütülmesini başlatmak için gereken toplam bellek (MB cinsinden).|

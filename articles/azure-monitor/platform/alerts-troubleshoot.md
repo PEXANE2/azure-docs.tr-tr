@@ -6,12 +6,12 @@ ms.author: ofmanor
 ms.topic: reference
 ms.date: 03/16/2020
 ms.subservice: alerts
-ms.openlocfilehash: d86c6d8b67546aede86a3fc3c905f6feb40d92db
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 856aeb4dabc64edc2ade2869fddc3d14cb21a81b
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91403424"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942169"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-alerts"></a>Azure Izleyici uyarıları sorunlarını giderme
 
@@ -34,7 +34,7 @@ Azure portal tetiklenen bir uyarı görebilir, ancak bazı eylemler veya bildiri
 
 Azure portalında tetiklenen bir uyarı görebiliyorsanız ama bu konuda yapılandırdığınız e-postayı almadıysanız şu adımları izleyin:
 
-1. **E-posta bir [eylem kuralı](alerts-action-rules.md)tarafından gizlendi**mu?
+1. **E-posta bir [eylem kuralı](alerts-action-rules.md)tarafından gizlendi** mu?
 
     Portalda tetiklenen uyarıya tıklayarak denetleyin ve gizlenen [eylem grupları](action-groups.md) için geçmiş sekmesine bakın:
 
@@ -42,7 +42,7 @@ Azure portalında tetiklenen bir uyarı görebiliyorsanız ama bu konuda yapıla
 
 1. **"E-posta Azure Resource Manager rolü" eyleminin türüdür mi?**
 
-    Bu eylem yalnızca abonelik kapsamındaki ve *Kullanıcı*türünde Azure Resource Manager rol atamalarına bakar.  Rolü kaynak veya kaynak grubu düzeyinde değil abonelik düzeyinde atadığınızdan emin olun.
+    Bu eylem yalnızca abonelik kapsamındaki ve *Kullanıcı* türünde Azure Resource Manager rol atamalarına bakar.  Rolü kaynak veya kaynak grubu düzeyinde değil abonelik düzeyinde atadığınızdan emin olun.
 
 1. **E-posta sunucunuz ve posta kutunuz dış e-postaları kabul ediyor mu**
 
@@ -245,7 +245,7 @@ Bir [eylem kuralı](alerts-action-rules.md)oluşturmaya, güncelleştirmeye veya
 
 1. **Eylem kuralı parametrelerini doğrulamadınız mı?**  
 
-    [Eylem kuralı belgelerini](alerts-action-rules.md)veya [PowerShell set-azactionrule komutunu eylem kuralını](/powershell/module/az.alertsmanagement/set-azactionrule?view=azps-3.5.0) denetleyin. 
+    [Eylem kuralı belgelerini](alerts-action-rules.md)veya [PowerShell set-azactionrule komutunu eylem kuralını](/powershell/module/az.alertsmanagement/set-azactionrule) denetleyin. 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

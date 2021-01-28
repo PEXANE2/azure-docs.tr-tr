@@ -3,16 +3,15 @@ title: Apache Spark & Hive-Hive ambar Bağlayıcısı-Azure HDInsight
 description: Apache Spark ve Apache Hive Azure HDInsight 'ta Hive ambarı Bağlayıcısı ile tümleştirmeyi öğrenin.
 author: nis-goel
 ms.author: nisgoel
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 05/28/2020
-ms.openlocfilehash: 24968511d038b2cea41a59187c0a361684c6720e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 39eb007c85d9f0623b4a5611e36d4ed7a75423e0
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86511900"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98941190"
 ---
 # <a name="integrate-apache-spark-and-apache-hive-with-hive-warehouse-connector-in-azure-hdinsight"></a>Azure HDInsight 'ta Hive ambarı Bağlayıcısı ile Apache Spark ve Apache Hive tümleştirme
 
@@ -79,8 +78,8 @@ Hive ambarı Bağlayıcısı Spark ve etkileşimli sorgu iş yükleri için ayr�
     |`spark.sql.hive.hiveserver2.jdbc.url`| **HiveServer2 ıNTERACTIVE JDBC URL** 'sinden daha önce edindiğiniz değer |
     |`spark.datasource.hive.warehouse.metastoreUri`| Daha önce **Hive. metaser. Uri**'lerden edindiğiniz değer. |
     |`spark.security.credentials.hiveserver2.enabled`|`true` YARN küme modu ve `false` Yarn istemci modu için. |
-    |`spark.hadoop.hive.zookeeper.quorum`| Daha önce **Hive. Zookeeper. Quorum**öğesinden edindiğiniz değer. |
-    |`spark.hadoop.hive.llap.daemon.service.hosts`| Daha önce **Hive. LLAP. Daemon. Service. konaklarından**edindiğiniz değer. |
+    |`spark.hadoop.hive.zookeeper.quorum`| Daha önce **Hive. Zookeeper. Quorum** öğesinden edindiğiniz değer. |
+    |`spark.hadoop.hive.llap.daemon.service.hosts`| Daha önce **Hive. LLAP. Daemon. Service. konaklarından** edindiğiniz değer. |
 
 1. Değişiklikleri kaydedin ve etkilenen tüm bileşenleri yeniden başlatın.
 
@@ -90,7 +89,7 @@ Kurumsal Güvenlik Paketi (ESP), Azure HDInsight 'ta Apache Hadoop kümelerine y
 
 Önceki bölümde bahsedilen yapılandırmalardan ayrı olarak, ESP kümelerinde HWC kullanmak için aşağıdaki yapılandırmayı ekleyin.
 
-1. Spark kümesinin ambarı Web kullanıcı arabiriminden **Spark2**  >  **configs**  >  **Custom Spark2-Defaults**dizinine gidin.
+1. Spark kümesinin ambarı Web kullanıcı arabiriminden **Spark2**  >  **configs**  >  **Custom Spark2-Defaults** dizinine gidin.
 
 1. Aşağıdaki özelliği güncelleştirin.
 
@@ -98,7 +97,7 @@ Kurumsal Güvenlik Paketi (ESP), Azure HDInsight 'ta Apache Hadoop kümelerine y
     |----|----|
     | `spark.sql.hive.hiveserver2.jdbc.url.principal`    | `hive/<llap-headnode>@<AAD-Domain>` |
     
-    * Bir Web tarayıcısından, CLUSTERNAME öğesine gidin ve `https://CLUSTERNAME.azurehdinsight.net/#/main/services/HIVE/summary` etkileşimli sorgu kümenizin adıdır. **HiveServer2 Interactive**seçeneğine tıklayın. Ekran görüntüsünde gösterildiği gibi LLAP 'nin çalıştığı baş düğümün tam etki alanı adını (FQDN) görürsünüz. `<llap-headnode>`Bu değerle değiştirin.
+    * Bir Web tarayıcısından, CLUSTERNAME öğesine gidin ve `https://CLUSTERNAME.azurehdinsight.net/#/main/services/HIVE/summary` etkileşimli sorgu kümenizin adıdır. **HiveServer2 Interactive** seçeneğine tıklayın. Ekran görüntüsünde gösterildiği gibi LLAP 'nin çalıştığı baş düğümün tam etki alanı adını (FQDN) görürsünüz. `<llap-headnode>`Bu değerle değiştirin.
 
         ![Hive ambar Bağlayıcısı baş düğümü](./media/apache-hive-warehouse-connector/head-node-hive-server-interactive.png)
 
@@ -212,13 +211,13 @@ kinit USERNAME
 
 1. Sütunun yalnızca son dört karakterini gösteren bir sütun maskeleme ilkesi uygulayın.  
     1. Adresindeki Ranger Yönetici Kullanıcı arabirimine gidin `https://LLAPCLUSTERNAME.azurehdinsight.net/ranger/` .
-    1. **Hive**altındaki kümeniz için Hive hizmetine tıklayın.
+    1. **Hive** altındaki kümeniz için Hive hizmetine tıklayın.
         ![Ranger Service Manager](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-service-manager.png)
     1. **Maskeleme** sekmesine tıklayın ve ardından **Yeni ilke ekleyin**
 
         ![Hive ambar Bağlayıcısı Ranger Hive ilke listesi](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-hive-policy-list.png)
 
-    1. İstenen bir ilke adı belirtin. Veritabanı seçin: **varsayılan**, Hive tablosu: **demo**, Hive sütunu: **ad**, Kullanıcı: **Rsadmin2**, erişim türleri: **Select**ve **kısmi maske:** **maskeleme seç seçenek** menüsünden son 4 ' ü göster. **Ekle**'ye tıklayın.
+    1. İstenen bir ilke adı belirtin. Veritabanı seçin: **varsayılan**, Hive tablosu: **demo**, Hive sütunu: **ad**, Kullanıcı: **Rsadmin2**, erişim türleri: **Select** ve **kısmi maske:** **maskeleme seç seçenek** menüsünden son 4 ' ü göster. **Ekle**'ye tıklayın.
                 ![ilke oluştur](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-create-policy.png)
 1. Tablonun içeriğini yeniden görüntüleyin. Ranger ilkesini uyguladıktan sonra sütunun yalnızca son dört karakterini görebiliriz.
 

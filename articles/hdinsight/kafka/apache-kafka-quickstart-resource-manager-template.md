@@ -1,19 +1,16 @@
 ---
 title: 'Hızlı başlangıç: Azure Resource Manager kullanarak Apache Kafka-HDInsight'
 description: Bu hızlı başlangıçta, Azure Resource Manager şablonu kullanarak Azure HDInsight 'ta Apache Kafka kümesi oluşturmayı öğreneceksiniz. Kafka konuları, aboneleri ve tüketicileri hakkında da bilgi edinirsiniz.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 03/13/2020
-ms.openlocfilehash: 12988feeb26bc5821e8f08db3e688a2e1c429e19
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 1bd4a3bfc2ba208371ed71720cc8c89a796ad9a2
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92532637"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98940815"
 ---
 # <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-arm-template"></a>Hızlı başlangıç: ARM şablonunu kullanarak Azure HDInsight 'ta Apache Kafka kümesi oluşturma
 
@@ -53,17 +50,17 @@ Bu hızlı başlangıçta kullanılan şablon [Azure Hızlı Başlangıç Şablo
     |Özellik |Açıklama |
     |---|---|
     |Abonelik|Aşağı açılan listeden, küme için kullanılan Azure aboneliğini seçin.|
-    |Kaynak grubu|Aşağı açılan listeden, mevcut kaynak grubunuzu seçin veya **Yeni oluştur** ' u seçin.|
+    |Kaynak grubu|Aşağı açılan listeden, mevcut kaynak grubunuzu seçin veya **Yeni oluştur**' u seçin.|
     |Konum|Değer, kaynak grubu için kullanılan konum ile tekrar doldurulur.|
     |Küme Adı|Genel olarak benzersiz bir ad girin. Bu şablon için yalnızca küçük harfler ve rakamlar kullanın.|
-    |Küme Oturum Açma Kullanıcı Adı|Kullanıcı adını belirtin, varsayılan olarak **admin** ' dir.|
+    |Küme Oturum Açma Kullanıcı Adı|Kullanıcı adını belirtin, varsayılan olarak **admin**' dir.|
     |Küme Oturum Açma Parolası|Bir parola belirtin. Parola en az 10 karakter uzunluğunda olmalıdır ve en az bir rakam, bir büyük harf ve bir küçük harf, bir alfasayısal olmayan karakter (' "' karakterleri dışında) içermelidir. |
     |SSH Kullanıcı adı|Kullanıcı adını belirtin, varsayılan olarak **sshuser**|
     |SSH parolası|Parolayı girin.|
 
     ![Şablon özelliklerinin ekran görüntüsü](./media/apache-kafka-quickstart-resource-manager-template/resource-manager-template-kafka.png)
 
-1. **Hüküm ve koşulları** gözden geçirin. Ardından, **yukarıda belirtilen hüküm ve koşulları kabul ediyorum** ' u ve ardından **satın al** ' ı seçin. Dağıtımınızın devam ettiğini belirten bir bildirim alırsınız. Bir küme oluşturmak yaklaşık 20 dakika sürer.
+1. **Hüküm ve koşulları** gözden geçirin. Ardından, **yukarıda belirtilen hüküm ve koşulları kabul ediyorum**' u ve ardından **satın al**' ı seçin. Dağıtımınızın devam ettiğini belirten bir bildirim alırsınız. Bir küme oluşturmak yaklaşık 20 dakika sürer.
 
 ## <a name="review-deployed-resources"></a>Dağıtılan kaynakları gözden geçirme
 
@@ -135,7 +132,7 @@ Bu bölümde, kümedeki Ambari REST API’sinden ana bilgisayar bilgilerini alı
 
 Kafka, veri akışlarını *konular* içinde depolar. Konuları yönetmek için `kafka-topics.sh` yardımcı programını kullanabilirsiniz.
 
-* **Bir konu oluşturmak için** , SSH bağlantısında aşağıdaki komutu kullanın:
+* **Bir konu oluşturmak için**, SSH bağlantısında aşağıdaki komutu kullanın:
 
     ```bash
     /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --create --replication-factor 3 --partitions 8 --topic test --zookeeper $KAFKAZKHOSTS
@@ -222,11 +219,11 @@ Ayrıca programlı olarak üretici ve tüketici de oluşturabilirsiniz. Bu API '
 
 Hızlı başlangıcı tamamladıktan sonra kümeyi silmek isteyebilirsiniz. HDInsight ile Verileriniz Azure Storage 'da depolanır, bu sayede bir kümeyi kullanımda olmadığında güvenle silebilirsiniz. Ayrıca, kullanımda olmasa bile bir HDInsight kümesi için de ücretlendirilirsiniz. Kümenin ücretleri depolama ücretinden çok daha fazla olduğundan, kullanımda olmadıkları zaman kümeleri silmek ekonomik bir anlam sağlar.
 
-Azure portal kümenize gidin ve **Sil** ' i seçin.
+Azure portal kümenize gidin ve **Sil**' i seçin.
 
 ![Kaynak Yöneticisi şablonu HBase](./media/apache-kafka-quickstart-resource-manager-template/azure-portal-delete-kafka.png)
 
-Kaynak grubu adını seçerek de kaynak grubu sayfasını açabilir ve sonra **Kaynak grubunu sil** ’i seçebilirsiniz. Kaynak grubunu silerek, hem HDInsight kümesini hem de varsayılan depolama hesabını silersiniz.
+Kaynak grubu adını seçerek de kaynak grubu sayfasını açabilir ve sonra **Kaynak grubunu sil**’i seçebilirsiniz. Kaynak grubunu silerek, hem HDInsight kümesini hem de varsayılan depolama hesabını silersiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

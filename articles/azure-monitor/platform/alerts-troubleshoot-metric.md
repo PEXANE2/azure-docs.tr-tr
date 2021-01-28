@@ -6,12 +6,12 @@ ms.author: harelbr
 ms.topic: troubleshooting
 ms.date: 01/21/2021
 ms.subservice: alerts
-ms.openlocfilehash: 11dc71578b3d94ce41fe040557184ff32bcf3240
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: f7425e1cf34348b7742b739ef5440a5cb0355077
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98661806"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942098"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Azure İzleyici ölçüm uyarılarındaki sorunları giderme 
 
@@ -107,7 +107,7 @@ Bir Azure kaynağını sildiğinizde o kaynakla ilişkilendirilmiş olan ölçü
 
 ## <a name="make-metric-alerts-occur-every-time-my-condition-is-met"></a>Koşulumun her karşılanışında ölçüm uyarılarını meydana getirme
 
-Ölçüm uyarıları varsayılan olarak durum bilgisine sahiptir ve bu nedenle, belirli bir zaman serisinde zaten tetiklenen bir uyarı varsa ek uyarılar tetiklenmez. Belirli bir ölçüm uyarısı kuralını durum bilgisiz yapmak ve uyarı koşulunun karşılandığı her değerlendirmede uyarı almak istiyorsanız, uyarı kuralını programlı bir şekilde oluşturun (örneğin, [Kaynak Yöneticisi](./alerts-metric-create-templates.md), [PowerShell](/powershell/module/az.monitor/?view=azps-3.6.1), [rest](/rest/api/monitor/metricalerts/createorupdate), [CLI](/cli/azure/monitor/metrics/alert?view=azure-cli-latest)) ve *oto hafifletmek* özelliğini ' false ' olarak ayarlayın.
+Ölçüm uyarıları varsayılan olarak durum bilgisine sahiptir ve bu nedenle, belirli bir zaman serisinde zaten tetiklenen bir uyarı varsa ek uyarılar tetiklenmez. Belirli bir ölçüm uyarısı kuralını durum bilgisiz yapmak ve uyarı koşulunun karşılandığı her değerlendirmede uyarı almak istiyorsanız, uyarı kuralını programlı bir şekilde oluşturun (örneğin, [Kaynak Yöneticisi](./alerts-metric-create-templates.md), [PowerShell](/powershell/module/az.monitor/), [rest](/rest/api/monitor/metricalerts/createorupdate), [CLI](/cli/azure/monitor/metrics/alert)) ve *oto hafifletmek* özelliğini ' false ' olarak ayarlayın.
 
 > [!NOTE] 
 > Ölçüm uyarısı kuralının durum bilgisiz olması, tetiklenen uyarıların çözümlenmesini önler, bu nedenle, koşulun artık karşılanmaması durumunda, başlatılan uyarılar 30 gün Bekletme süresine kadar tetiklenen bir durumda kalır.
@@ -175,9 +175,9 @@ Kota sınırına ulaştıysanız, aşağıdaki adımlar sorunu çözmeye yardım
 
 ### <a name="from-api"></a>API'den
 
-- PowerShell - [Get-AzMetricAlertRuleV2](/powershell/module/az.monitor/get-azmetricalertrulev2?view=azps-3.7.0)
+- PowerShell - [Get-AzMetricAlertRuleV2](/powershell/module/az.monitor/get-azmetricalertrulev2)
 - REST API - [Aboneliğe göre listeleme](/rest/api/monitor/metricalerts/listbysubscription)
-- Azure CLI - [az monitor metrics alert list](/cli/azure/monitor/metrics/alert?view=azure-cli-latest#az-monitor-metrics-alert-list)
+- Azure CLI - [az monitor metrics alert list](/cli/azure/monitor/metrics/alert#az-monitor-metrics-alert-list)
 
 ## <a name="managing-alert-rules-using-resource-manager-templates-rest-api-powershell-or-azure-cli"></a>Kaynak Yöneticisi şablonları, REST API, PowerShell veya Azure CLı kullanarak uyarı kurallarını yönetme
 
@@ -196,14 +196,14 @@ Tüm parametreleri doğru şekilde geçirdiğinizi doğrulamak için [REST API k
 
 Ölçüm uyarıları için doğru PowerShell cmdlet 'lerini kullandığınızdan emin olun:
 
-- Ölçüm uyarılarına yönelik PowerShell cmdlet’leri [Az.Monitor modülünde](/powershell/module/az.monitor/?view=azps-3.6.1) de sunulur
-- Yeni (klasik olmayan) ölçüm uyarıları için ' v2 ' ile biten cmdlet 'leri kullandığınızdan emin olun (örneğin, [Add-AzMetricAlertRuleV2](/powershell/module/az.monitor/add-azmetricalertrulev2?view=azps-3.6.1))
+- Ölçüm uyarılarına yönelik PowerShell cmdlet’leri [Az.Monitor modülünde](/powershell/module/az.monitor/) de sunulur
+- Yeni (klasik olmayan) ölçüm uyarıları için ' v2 ' ile biten cmdlet 'leri kullandığınızdan emin olun (örneğin, [Add-AzMetricAlertRuleV2](/powershell/module/az.monitor/add-azmetricalertrulev2))
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure CLI’si
 
 Ölçüm uyarıları için doğru CLı komutlarını kullandığınızdan emin olun:
 
-- Ölçümlere yönelik CLI komutları `az monitor metrics alert` ile başlar. Söz dizimi hakkında bilgi edinmek için [Azure CLI başvurusunu](/cli/azure/monitor/metrics/alert?view=azure-cli-latest) gözden geçirin.
+- Ölçümlere yönelik CLI komutları `az monitor metrics alert` ile başlar. Söz dizimi hakkında bilgi edinmek için [Azure CLI başvurusunu](/cli/azure/monitor/metrics/alert) gözden geçirin.
 - [Ölçüm uyarısı CLI komutlarını kullanmayı gösteren örneğe](./alerts-metric.md#with-azure-cli) bakabilirsiniz
 - Özel bir ölçümde uyarı tetiklemek için ölçüm adını ilgili ölçümün alan adına ön ek olarak getirdiğinizden emin olun: NAMESPACE.METRIC
 
@@ -253,7 +253,7 @@ Birden çok koşul içeren bir uyarı kuralında boyutları kullanırken aşağ�
 - Her bir koşul içinde yalnızca boyut başına bir değer seçebilirsiniz.
 - "Tüm geçerli ve gelecekteki değerleri Seç" seçeneğini (Select \* ) kullanamazsınız.
 - Farklı koşullarda yapılandırılan ölçümler aynı boyutu destekledikleri zaman, yapılandırılmış bir boyut değerinin tüm bu ölçümler için (ilgili koşullarda) aynı şekilde ayarlanması gerekir.
-Örnek:
+Örneğin:
     - Bir depolama hesabında tanımlanan ölçüm uyarısı kuralını düşünün ve iki koşulu izler:
         * Toplam **işlem** sayısı > 5
         * Ortalama **SuccessE2ELatency** > 250 MS

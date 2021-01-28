@@ -1,19 +1,16 @@
 ---
 title: Azure HDInsight 'ta Power BI etkileşimli sorgu Hive verilerine bakın
 description: Azure HDInsight 'tan etkileşimli sorgu Hive verilerini görselleştirmek için Microsoft Power BI kullanma
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 06/17/2019
-ms.openlocfilehash: 92e94c911acb701b1ccf8e39636d152cc5bfb575
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 7f249bb0e81bf3a371b8743a304ef49baffaed7a
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92534813"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98941378"
 ---
 # <a name="visualize-interactive-query-apache-hive-data-with-microsoft-power-bi-using-direct-query-in-hdinsight"></a>HDInsight 'ta doğrudan sorgu kullanarak Microsoft Power BI ile etkileşimli sorgu Apache Hive verilerini görselleştirme
 
@@ -26,8 +23,8 @@ Power BI Desktop Genel ODBC Bağlayıcısı aracılığıyla içeri aktarmak iç
 ## <a name="prerequisites"></a>Önkoşullar
 Bu makaleye geçmeden önce aşağıdaki öğelere sahip olmanız gerekir:
 
-* **HDInsight kümesi** . Küme, Apache Hive veya yeni bir etkileşimli sorgu kümesi olan bir HDInsight kümesi olabilir. Küme oluşturmak için bkz. [küme oluşturma](../hadoop/apache-hadoop-linux-tutorial-get-started.md).
-* **[Microsoft Power BI Desktop](https://powerbi.microsoft.com/desktop/)** . Bir kopyasını [Microsoft Indirme merkezi](https://www.microsoft.com/download/details.aspx?id=45331)' nden indirebilirsiniz.
+* **HDInsight kümesi**. Küme, Apache Hive veya yeni bir etkileşimli sorgu kümesi olan bir HDInsight kümesi olabilir. Küme oluşturmak için bkz. [küme oluşturma](../hadoop/apache-hadoop-linux-tutorial-get-started.md).
+* **[Microsoft Power BI Desktop](https://powerbi.microsoft.com/desktop/)**. Bir kopyasını [Microsoft Indirme merkezi](https://www.microsoft.com/download/details.aspx?id=45331)' nden indirebilirsiniz.
 
 ## <a name="load-data-from-hdinsight"></a>HDInsight 'tan veri yükleme
 
@@ -41,23 +38,23 @@ Bu makaleye geçmeden önce aşağıdaki öğelere sahip olmanız gerekir:
 
 3. **Veri al** penceresinde, arama kutusuna **HDInsight** girin.  
 
-4. Arama sonuçlarından **HDInsight etkileşimli sorgu** ' yı seçin ve ardından **Bağlan** ' ı seçin.  **HDInsight etkileşimli sorgusunu** görmüyorsanız Power BI Desktop en son sürüme güncelleştirmeniz gerekir.
+4. Arama sonuçlarından **HDInsight etkileşimli sorgu**' yı seçin ve ardından **Bağlan**' ı seçin.  **HDInsight etkileşimli sorgusunu** görmüyorsanız Power BI Desktop en son sürüme güncelleştirmeniz gerekir.
 
 5. **Üçüncü taraf bir hizmet** Iletişim kutusuna bağlanmayı kapatmak için **devam** ' ı seçin.
 
-6. **HDInsight etkileşimli sorgu** penceresinde aşağıdaki bilgileri girip **Tamam** ' ı seçin:
+6. **HDInsight etkileşimli sorgu** penceresinde aşağıdaki bilgileri girip **Tamam**' ı seçin:
 
     |Özellik | Değer |
     |---|---|
-    |Sunucu |Küme adını girin, örneğin *myiqcluster.azurehdinsight.net* .|
+    |Sunucu |Küme adını girin, örneğin *myiqcluster.azurehdinsight.net*.|
     |Veritabanı |Bu makale için **varsayılan** girin.|
     |Veri Bağlantısı modu |Bu makale için **DirectQuery** 'yi seçin.|
 
     ![HDInsight etkileşimli sorgu Power BI DirectQuery Connect](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-interactive-query-power-bi-connect.png)
 
-7. HTTP kimlik bilgilerini girin ve sonra **Bağlan** ' ı seçin. Varsayılan Kullanıcı adı **admin** ' dir.
+7. HTTP kimlik bilgilerini girin ve sonra **Bağlan**' ı seçin. Varsayılan Kullanıcı adı **admin**' dir.
 
-8. Sol bölmedeki **Gezgin** penceresinden **hivesampletale** ' yı seçin.
+8. Sol bölmedeki **Gezgin** penceresinden **hivesampletale**' yı seçin.
 
 9. Ana pencereden **Yükle** ' yi seçin.
 
@@ -71,7 +68,7 @@ Son yordamdan devam edin.
 
     ![HDInsight Power BI raporu özelleştirir](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-power-bi-customize.png)
 
-2. Alanlar bölmesinde, **ülke** ve **devicemake** ' ı seçin. Veri noktalarıyla bir dünya haritası, birkaç dakika sonra ana pencerede görüntülenir.
+2. Alanlar bölmesinde, **ülke** ve **devicemake**' ı seçin. Veri noktalarıyla bir dünya haritası, birkaç dakika sonra ana pencerede görüntülenir.
 
 3. Haritayı genişletin.
 

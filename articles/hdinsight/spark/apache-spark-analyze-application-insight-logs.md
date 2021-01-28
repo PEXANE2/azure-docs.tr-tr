@@ -1,19 +1,16 @@
 ---
 title: Spark-Azure HDInsight ile uygulama Insight günlüklerini çözümleme
 description: Application Insight günlüklerini blob depolamaya aktarmayı öğrenin ve ardından HDInsight 'ta Spark ile günlükleri çözümleyin.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/17/2019
-ms.openlocfilehash: 1ddf2b6879d8d33f99281daba6fb1040e24a37af
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fbca4b23b6fc414727ea1b5a4012d2847d6b8d78
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86078808"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98940475"
 ---
 # <a name="analyze-application-insights-telemetry-logs-with-apache-spark-on-hdinsight"></a>HDInsight üzerinde Apache Spark Application Insights telemetri günlüklerini çözümleme
 
@@ -72,9 +69,9 @@ Azure Depolama hesabını mevcut bir kümeye eklemek için, [ek depolama hesapla
 
 1. Bir Web tarayıcısından `https://CLUSTERNAME.azurehdinsight.net/jupyter` clustername öğesinin Kümenizin adı olduğu yere gidin.
 
-2. Jupi sayfasının sağ üst köşesinde, **Yeni**ve ardından **pyspark**' ı seçin. Python tabanlı Jupyter Notebook içeren yeni bir tarayıcı sekmesi açılır.
+2. Jupi sayfasının sağ üst köşesinde, **Yeni** ve ardından **pyspark**' ı seçin. Python tabanlı Jupyter Notebook içeren yeni bir tarayıcı sekmesi açılır.
 
-3. Sayfada ilk alanda ( **hücre**olarak adlandırılır) aşağıdaki metni girin:
+3. Sayfada ilk alanda ( **hücre** olarak adlandırılır) aşağıdaki metni girin:
 
    ```python
    sc._jsc.hadoopConfiguration().set('mapreduce.input.fileinputformat.input.dir.recursive', 'true')
@@ -225,7 +222,7 @@ Azure Depolama hesabını mevcut bir kümeye eklemek için, [ek depolama hesapla
 
 2. Jupi sayfasının sağ üst köşesinde, **Yeni**' yi ve ardından **Scala**' yı seçin. Scala tabanlı Jupyter Notebook içeren yeni bir tarayıcı sekmesi görüntülenir.
 
-3. Sayfada ilk alanda ( **hücre**olarak adlandırılır) aşağıdaki metni girin:
+3. Sayfada ilk alanda ( **hücre** olarak adlandırılır) aşağıdaki metni girin:
 
    ```scala
    sc.hadoopConfiguration.set("mapreduce.input.fileinputformat.input.dir.recursive", "true")

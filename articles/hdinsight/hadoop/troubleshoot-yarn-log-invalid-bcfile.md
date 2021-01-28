@@ -1,18 +1,15 @@
 ---
 title: Azure HDInsight 'ta Apache Yarn günlüğü okunamıyor
 description: Azure HDInsight kümeleriyle etkileşim kurarken sorun giderme adımları ve olası çözümleri.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/23/2020
-ms.openlocfilehash: b6bd7d807916ef53177b11df6ed9ce0b22f530be
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 02a79de8aee169f5f702d5fae67194c62363e8c4
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92533351"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943053"
 ---
 # <a name="scenario-unable-to-read-apache-yarn-log-in-azure-hdinsight"></a>Senaryo: Azure HDInsight 'ta Apache Yarn günlüğü okunamıyor
 
@@ -34,7 +31,7 @@ Apache Yarn günlüğü, `IndexFile` dosya ayrıştırıcısı tarafından deste
 
 1. Bir Web tarayıcısından, `https://CLUSTERNAME.azurehdinsight.net` , `CLUSTERNAME` Kümenizin adı olan ' a gidin.
 
-1. Ambarı kullanıcı arabiriminden, **Yarn**  >  **configs**  >  **Gelişmiş**  >  **Gelişmiş Yarn-site** ' ye gidin.
+1. Ambarı kullanıcı arabiriminden, **Yarn**  >  **configs**  >  **Gelişmiş**  >  **Gelişmiş Yarn-site**' ye gidin.
 
 1. ILB depolaması için: için varsayılan değer `yarn.log-aggregation.file-formats` `IndexedFormat,TFile` . Değerini olarak değiştirin `TFile` .
 

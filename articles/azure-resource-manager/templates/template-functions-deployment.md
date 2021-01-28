@@ -2,13 +2,13 @@
 title: Şablon işlevleri-dağıtım
 description: Dağıtım bilgilerini almak için bir Azure Resource Manager şablonunda (ARM şablonu) kullanılacak işlevleri açıklar.
 ms.topic: conceptual
-ms.date: 11/18/2020
-ms.openlocfilehash: e63caef669a2c28d29cd0bbd649b0997cea14ee1
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.date: 01/27/2021
+ms.openlocfilehash: 438afc947b07ac7425de365a2d63c427cf53e2ff
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920511"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943472"
 ---
 # <a name="deployment-functions-for-arm-templates"></a>ARM şablonları için dağıtım işlevleri
 
@@ -33,6 +33,7 @@ Geçerli dağıtım işlemiyle ilgili bilgileri döndürür.
 
 Bu işlev, dağıtım sırasında geçirilen nesneyi döndürür. Döndürülen nesnedeki özellikler şunları yapıp etmeksizin farklılık gösterir:
 
+* şablon veya şablon belirtimini dağıtma.
 * Yerel bir dosya olan veya bir URI üzerinden erişilen uzak dosya olan bir şablonu dağıtan bir şablon dağıtma.
 * bir kaynak grubuna dağıtma veya diğer kapsamlardan birine dağıtma ([Azure aboneliği](deploy-to-subscription.md), [Yönetim grubu](deploy-to-management-group.md)veya [kiracı](deploy-to-tenant.md)).
 
@@ -66,6 +67,31 @@ Bir kaynak grubuna uzak şablon dağıtıldığında: işlev aşağıdaki biçim
   "properties": {
     "templateLink": {
       "uri": ""
+    },
+    "template": {
+      "$schema": "",
+      "contentVersion": "",
+      "parameters": {},
+      "variables": {},
+      "resources": [],
+      "outputs": {}
+    },
+    "templateHash": "",
+    "parameters": {},
+    "mode": "",
+    "provisioningState": ""
+  }
+}
+```
+
+Bir kaynak grubuna bir şablon belirtimi dağıttığınızda, işlev aşağıdaki biçimi döndürür:
+
+```json
+{
+  "name": "",
+  "properties": {
+    "templateLink": {
+      "id": ""
     },
     "template": {
       "$schema": "",
@@ -295,9 +321,9 @@ Bir parametre değeri döndürür. Belirtilen parametre adı, şablonun parametr
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Açıklama |
+| Parametre | Gerekli | Tür | Description |
 |:--- |:--- |:--- |:--- |
-| parameterName |Evet |string |Döndürülecek parametrenin adı. |
+| parameterName |Yes |string |Döndürülecek parametrenin adı. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -444,7 +470,7 @@ Değişkenin değerini döndürür. Belirtilen değişken adının şablonun de�
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Açıklama |
+| Parametre | Gerekli | Tür | Description |
 |:--- |:--- |:--- |:--- |
 | variableName |Evet |Dize |Döndürülecek değişkenin adı. |
 

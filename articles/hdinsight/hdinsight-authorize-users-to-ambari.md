@@ -1,19 +1,16 @@
 ---
 title: Kullanıcıları, ambarı görünümleri için yetkilendirme-Azure HDInsight
 description: ESP özellikli HDInsight kümeleri için ambarı Kullanıcı ve grup izinlerini yönetme.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/27/2019
-ms.openlocfilehash: b1cd6d93ff45d7fb40ae7ca1874343486bd0b8cb
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 0b6d4dacf43d80f371a2a4d286af1972198c3be3
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547937"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942712"
 ---
 # <a name="authorize-users-for-apache-ambari-views"></a>Kullanıcıları Apache Ambari Görünümleri için yetkilendirme
 
@@ -32,17 +29,17 @@ Daha önce yapmadıysanız, yeni bir ESP kümesi sağlamak için [Bu yönergeler
 
 ![Apache ambarı Pano Yönetimi](./media/hdinsight-authorize-users-to-ambari/manage-apache-ambari.png)
 
-## <a name="add-users"></a>Kullanıcı ekleme
+## <a name="add-users"></a>Kullanıcı ekle
 
 ### <a name="add-users-through-the-portal"></a>Portalı kullanarak Kullanıcı ekleme
 
-1. Yönetim sayfasından **Kullanıcılar** ' ı seçin.
+1. Yönetim sayfasından **Kullanıcılar**' ı seçin.
 
     ![Apache ambarı yönetim sayfası kullanıcıları](./media/hdinsight-authorize-users-to-ambari/apache-ambari-management-page-users.png)
 
-1. **+ Yerel kullanıcı oluştur** ' u seçin.
+1. **+ Yerel kullanıcı oluştur**' u seçin.
 
-1. **Kullanıcı adı** ve **parola** belirtin. **Kaydet** ' i seçin.
+1. **Kullanıcı adı** ve **parola** belirtin. **Kaydet**' i seçin.
 
 ### <a name="add-users-through-powershell"></a>PowerShell aracılığıyla Kullanıcı ekleme
 

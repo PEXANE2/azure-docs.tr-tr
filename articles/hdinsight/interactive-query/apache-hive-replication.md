@@ -1,18 +1,15 @@
 ---
 title: Azure HDInsight kümelerinde Apache Hive çoğaltma kullanma
 description: Hive meta veri deposu ve Azure Data Lake Storage Gen 2 Data Lake ' i çoğaltmak için HDInsight kümelerinde Hive çoğaltmasını nasıl kullanacağınızı öğrenin.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/08/2020
-ms.openlocfilehash: af74392b3368a25e5d238f774292c80de5f91c65
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3dd894a46b666703f64e44336c0bf022da8a063a
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91857750"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98941328"
 ---
 # <a name="how-to-use-apache-hive-replication-in-azure-hdinsight-clusters"></a>Azure HDInsight kümelerinde Apache Hive çoğaltma kullanma
 
@@ -140,7 +137,7 @@ Artımlı çoğaltma aynı süreci izler ve son çoğaltılan olay KIMLIĞINI gi
 
 Çoğaltma normalde, birincil ve ikincil arasında tek yönlü bir şekilde yapılandırılmıştır ve burada, birincil ve ikincil, okuma ve yazma istekleri. İkincil küme, yalnızca okuma isteklerini okur. Bir olağanüstü durum varsa ikincil üzerinde yazma işlemleri yapılır, ancak ters çoğaltmanın birincil olarak yeniden yapılandırılması gerekir.
 
-:::image type="content" source="media/apache-hive-replication/replication-pattern.png" alt-text="Hive çoğaltma diyagramı":::
+:::image type="content" source="media/apache-hive-replication/replication-pattern.png" alt-text="Hive çoğaltma kalıbı":::
 
 Birincil – Ikincil, hub ve bağlı bileşen ve geçiş dahil olmak üzere Hive çoğaltması için uygun olan çok sayıda desen vardır.
 

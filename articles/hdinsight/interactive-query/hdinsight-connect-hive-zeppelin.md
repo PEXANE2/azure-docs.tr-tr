@@ -1,19 +1,16 @@
 ---
 title: "Hızlı başlangıç: Apache Zeppelin ile Azure HDInsight 'ta Apache Hive"
 description: Bu hızlı başlangıçta, Apache Hive sorguları çalıştırmak için Apache Zeppelin kullanmayı öğreneceksiniz.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: quickstart
 ms.custom: hdinsightactive
 ms.date: 12/03/2019
-ms.openlocfilehash: 49b576fd511d17616880e5d981fd3f649de797df
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 1199fee82532eacf1f0ef41b877b970d7d9f2cf5
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "79367933"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98941070"
 ---
 # <a name="quickstart-execute-apache-hive-queries-in-azure-hdinsight-with-apache-zeppelin"></a>Hızlı başlangıç: Apache Zeppelin ile Azure HDInsight 'ta Apache Hive sorguları yürütme
 
@@ -42,7 +39,7 @@ Etkileşimli sorgu kümesi An HDInsight. HDInsight kümesi oluşturmak için bkz
 
 5. **Dekont oluştur**' u seçin.
 
-6. Kod bölümüne aşağıdaki Hive sorgusunu girin ve ardından **SHIFT + enter**tuşlarına basın:
+6. Kod bölümüne aşağıdaki Hive sorgusunu girin ve ardından **SHIFT + enter** tuşlarına basın:
 
     ```hive
     %jdbc(hive)
@@ -53,7 +50,7 @@ Etkileşimli sorgu kümesi An HDInsight. HDInsight kümesi oluşturmak için bkz
 
     İlk satırdaki **% JDBC (Hive)** deyimleri, Not DEFTERINE Hive JDBC yorumlayıcı kullanmasını söyler.
 
-    Sorgu **hivesampletable**adlı bir Hive tablosu döndürmelidir.
+    Sorgu **hivesampletable** adlı bir Hive tablosu döndürmelidir.
 
     **Hivesampletable**'a karşı çalıştırabileceğiniz Iki ek Hive sorgusu aşağıda verilmiştir:
 

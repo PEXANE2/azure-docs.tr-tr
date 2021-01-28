@@ -9,12 +9,12 @@ ms.subservice: machine-learning
 ms.date: 06/30/2020
 ms.author: midesa
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2594e25bff3ca949b329f8b66f4427eb1f6950b0
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: fc9909614a9d557c19a22e215b7513a038f88c33
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98118719"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942334"
 ---
 # <a name="tutorial-train-a-model-in-python-with-automated-machine-learning"></a>Öğretici: otomatik makine öğrenimi ile Python 'da model eğitme
 
@@ -22,16 +22,16 @@ Azure Machine Learning, makine öğrenimi modellerini eğmenize, dağıtmanıza,
 
 Bu öğreticide, TAXI tarifeli havayolu fiyatlarını tahmin etmek üzere bir gerileme modeli oluşturmak için Azure Machine Learning ' de [otomatik makine öğrenimini](../../machine-learning/concept-automated-ml.md) kullanırsınız. Bu işlem, eğitim verilerini ve yapılandırma ayarlarını kabul ederek ve farklı yöntemlerin, modellerin ve hiper parametre ayarlarının birleşimlerinde otomatik olarak yinelenerek en iyi modele ulaşır.
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 - Apache Spark ve Azure açık veri kümelerini kullanarak verileri indirin.
-- Apache Spark dataframe kullanarak verileri dönüştürün ve temizleyin.
-- Otomatik makine öğrenimi regresyon modelini eğitme.
+- Apache Spark Dataframe kullanarak verileri dönüştürün ve temizleyin.
+- Otomatik makine öğrenimi 'nde regresyon modeli eğitme.
 - Model doğruluğunu hesaplayın.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-- [Sunucusuz Apache Spark havuzu oluşturma hızlı](../quickstart-create-apache-spark-pool-studio.md)başlangıcı ' nı izleyerek sunucusuz Apache Spark havuzu oluşturun.
-- Mevcut bir Azure Machine Learning çalışma alanınız yoksa [Azure Machine Learning çalışma alanı kurulum öğreticisini](../../machine-learning/tutorial-1st-experiment-sdk-setup.md) doldurun. 
+- [Sunucusuz Apache Spark havuzu oluşturma](../quickstart-create-apache-spark-pool-studio.md) hızlı başlangıcı ' nı izleyerek sunucusuz Apache Spark havuzu oluşturun.
+- Mevcut bir Azure Machine Learning çalışma alanınız yoksa [Azure Machine Learning çalışma alanı kurulum](../../machine-learning/tutorial-1st-experiment-sdk-setup.md) öğreticisini doldurun. 
 
 ## <a name="understand-regression-models"></a>Gerileme modellerini anlama
 
@@ -39,7 +39,7 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 ### <a name="example-based-on-new-york-city-taxi-data"></a>New York City TAXI verilerine dayalı örnek
 
-Bu örnekte, New York şehrinden (NYC) TAXI Seyahat ipucu verileri hakkında bazı analizler gerçekleştirmek için Spark 'ı kullanacaksınız. Veriler [Azure açık veri kümeleri](https://azure.microsoft.com/services/open-datasets/catalog/nyc-taxi-limousine-commission-yellow-taxi-trip-records/)aracılığıyla kullanılabilir. Veri kümesinin bu alt kümesi, her seyahat, başlangıç ve bitiş saati ve konumları ve maliyeti dahil olmak üzere sarı TAXI seyahatleriyle ilgili bilgiler içerir.
+Bu örnekte, New York şehrinden (NYC), TAXI gidiş dönüş ipucu verilerinde bazı analizler gerçekleştirmek için Spark 'ı kullanırsınız. Veriler [Azure açık veri kümeleri](https://azure.microsoft.com/services/open-datasets/catalog/nyc-taxi-limousine-commission-yellow-taxi-trip-records/)aracılığıyla kullanılabilir. Veri kümesinin bu alt kümesi, her seyahat, başlangıç ve bitiş saati ve konumları ve maliyeti dahil olmak üzere sarı TAXI seyahatleriyle ilgili bilgiler içerir.
 
 > [!IMPORTANT]
 > Bu verilerin depolama konumundan çekilerek ilgili ek ücretler de olabilir. Aşağıdaki adımlarda, NYC TAXI tarifeli havayolu fiyatlarını tahmin etmek için bir model geliştirirsiniz. 
@@ -53,7 +53,7 @@ Aşağıdaki adımları uygulayın:
     > [!Note]
     > PySpark çekirdeği nedeniyle, açıkça herhangi bir bağlam oluşturmanız gerekmez. İlk kod hücresini çalıştırdığınızda Spark bağlamı sizin için otomatik olarak oluşturulur.
   
-2. Ham veriler bir Parquet biçiminde olduğundan, dosyayı doğrudan belleğe bir veri çerçevesi olarak çekmek için Spark bağlamını kullanabilirsiniz. Açık veri kümeleri API 'SI aracılığıyla verileri alarak Spark dataframe oluşturun. Burada, `schema on read` veri türlerini ve şemayı çıkarması Için Spark dataframe özelliklerini kullanırsınız. 
+2. Ham veriler bir Parquet biçiminde olduğundan, dosyayı doğrudan belleğe bir veri çerçevesi olarak çekmek için Spark bağlamını kullanabilirsiniz. Açık veri kümeleri API 'SI aracılığıyla verileri alarak Spark DataFrame oluşturun. Burada, `schema on read` veri türlerini ve şemayı çıkarması Için Spark DataFrame özelliklerini kullanırsınız. 
    
     ```python
     blob_account_name = "azureopendatastorage"
@@ -61,16 +61,16 @@ Aşağıdaki adımları uygulayın:
     blob_relative_path = "yellow"
     blob_sas_token = r""
 
-    # Allow Spark to read from Blob remotely
+    # Allow Spark to read from the blob remotely
     wasbs_path = 'wasbs://%s@%s.blob.core.windows.net/%s' % (blob_container_name, blob_account_name, blob_relative_path)
     spark.conf.set('fs.azure.sas.%s.%s.blob.core.windows.net' % (blob_container_name, blob_account_name),blob_sas_token)
 
-    # Spark read parquet, note that it won't load any data yet by now
+    # Spark read parquet; note that it won't load any data yet
     df = spark.read.parquet(wasbs_path)
 
     ```
 
-3. Spark havuzunuzun boyutuna bağlı olarak, ham veriler çok büyük olabilir veya üzerinde çalışmak için çok fazla zaman alabilir. Ve filtrelerini kullanarak bu verileri daha küçük bir değere filtreleyebilirsiniz ```start_date``` ```end_date``` . Bu, veri ayı döndüren bir filtre uygular. Filtrelenmiş veri çerçevesini aldıktan sonra, ```describe()``` her bir alanın Özet istatistiklerini görmek için yeni veri çerçevesinde işlevi de çalıştırırsınız. 
+3. Spark havuzunuzun boyutuna bağlı olarak, ham veriler çok büyük olabilir veya üzerinde çalışmak için çok fazla zaman alabilir. Ve filtrelerini kullanarak bu verileri bir ay gibi daha küçük bir değere filtreleyebilirsiniz ```start_date``` ```end_date``` . Bir veri çerçevesini filtreledikten sonra, ```describe()``` her bir alanın Özet istatistiklerini görmek için yeni veri çerçevesinde işlevi de çalıştırırsınız. 
 
    Özet istatistiklerine bağlı olarak, veride bazı dar bir düzeyi olduğunu görebilirsiniz. Örneğin, istatistik en düşük seyahat mesafesinin 0 ' dan küçük olduğunu gösterir. Bu düzensiz veri noktalarını filtrelemeniz gerekir.
    
@@ -84,13 +84,13 @@ Aşağıdaki adımları uygulayın:
    filtered_df.describe().show()
    ```
 
-4. Ardından, bir sütun kümesi seçip toplama tarih/saati alanından çeşitli zamana dayalı özellikler oluşturarak veri kümesinden Özellikler oluşturun. Önceki adımdan tanımlanan aykırı değerleri filtreleyin ve daha sonra eğitim için gereksiz olduklarından son birkaç sütunu kaldırın.
+4. Bir sütun kümesi seçip toplama alanından çeşitli zamana dayalı özellikler oluşturarak veri kümesinden Özellikler oluşturun `datetime` . Önceki adımdan tanımlanan aykırı değerleri filtreleyin ve daha sonra eğitim için gereksiz olduklarından son birkaç sütunu kaldırın.
    
    ```python
    from datetime import datetime
    from pyspark.sql.functions import *
 
-   # To make development easier, faster and less expensive down sample for now
+   # To make development easier, faster, and less expensive, downsample for now
    sampled_taxi_df = filtered_df.sample(True, 0.001, seed=1234)
 
    taxi_df = sampled_taxi_df.select('vendorID', 'passengerCount', 'tripDistance',  'startLon', 'startLat', 'endLon' \
@@ -119,7 +119,7 @@ Aşağıdaki adımları uygulayın:
 Son veri kümeniz olduktan sonra Spark 'daki işlevini kullanarak verileri eğitim ve test kümelerine bölebilirsiniz ```random_ split ``` . Bu işlev, sunulan ağırlıkları kullanarak verileri model eğitimi için eğitim veri kümesine ve test için doğrulama veri kümesine rastgele ayırır.
 
 ```python
-# Random split dataset using Spark, convert Spark to Pandas
+# Random split dataset using Spark; convert Spark to pandas
 training_data, validation_data = taxi_df.randomSplit([0.8,0.2], 223)
 
 ```
@@ -144,19 +144,19 @@ ws = Workspace(workspace_name = workspace_name,
 ```
 
 ## <a name="convert-a-dataframe-to-an-azure-machine-learning-dataset"></a>Bir veri çerçevesini Azure Machine Learning veri kümesine dönüştürme
-Uzak bir deneme göndermek için veri kümenizi bir Azure Machine Learning dönüştürün ```TabularDatset``` . [Tabulardataset](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py) , belirtilen dosyaları ayrıştırarak verileri tablolu biçimde temsil eder.
+Uzak bir deneme göndermek için veri kümenizi bir Azure Machine Learning ```TabularDatset``` örneğine dönüştürün. [Tabulardataset](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py) , belirtilen dosyaları ayrıştırarak verileri tablosal biçimde temsil eder.
 
-Aşağıdaki kod, mevcut çalışma alanını ve varsayılan Azure Machine Learning varsayılan veri deposunu alır. Daha sonra yeni bir oluşturmak için veri deposu ve dosya konumlarını yol parametresine geçirir ```TabularDataset``` . 
+Aşağıdaki kod, mevcut çalışma alanını ve varsayılan Azure Machine Learning veri deposunu alır. Daha sonra yeni bir örnek oluşturmak için veri deposunu ve dosya konumlarını yol parametresine geçirir ```TabularDataset``` . 
 
 ```python
 import pandas 
 from azureml.core import Dataset
 
-# Get the Azure Machine Learning Default Datastore
+# Get the Azure Machine Learning default datastore
 datastore = ws.get_default_datastore()
 training_pd = training_data.toPandas().to_csv('training_pd.csv', index=False)
 
-# Convert into Azure Machine Learning Tabular Dataset
+# Convert into an Azure Machine Learning tabular dataset
 datastore.upload_files(files = ['training_pd.csv'],
                        target_path = 'train-dataset/tabular/',
                        overwrite = True,
@@ -215,12 +215,12 @@ local_run = experiment.submit(automl_config, show_output=True, tags = tags)
 # Use the get_details function to retrieve the detailed output for the run.
 run_details = local_run.get_details()
 ```
-Deneme tamamlandığında, çıktı tamamlanan yinelemeler hakkındaki ayrıntıları döndürür. Her yineleme için model türünü, çalışma süresini ve eğitim doğruluğunu görürsünüz. **En iyi** alan, ölçüm türünüz temelinde en iyi çalışan eğitim Puanını izler.
+Deneme tamamlandığında, çıktı tamamlanan yinelemeler hakkındaki ayrıntıları döndürür. Her yineleme için model türünü, çalışma süresini ve eğitim doğruluğunu görürsünüz. `BEST`Alan, ölçüm türünüz temelinde en iyi çalışan eğitim Puanını izler.
 
 ![Model çıktısının ekran görüntüsü.](./media/azure-machine-learning-spark-notebook/model-output.png)
 
 > [!NOTE]
-> Otomatik makine öğrenimi denemesini gönderdikten sonra, çeşitli yinelemeler ve model türleri çalışır. Bu çalıştırma genellikle 60-90 dakika sürer. 
+> Otomatik makine öğrenimi denemesini gönderdikten sonra, çeşitli yinelemeler ve model türleri çalışır. Bu çalıştırma genellikle 90 60 dakika sürer. 
 
 ### <a name="retrieve-the-best-model"></a>En iyi modeli alma
 Yinelemeden en iyi modeli seçmek için, ```get_output``` işlevi kullanarak en iyi çalışma ve sığdırılmış modeli döndürün. Aşağıdaki kod, herhangi bir günlüğe kaydedilmiş ölçüm veya belirli bir yineleme için en iyi çalıştırma ve sığdırılmış modeli alır.
@@ -231,7 +231,7 @@ best_run, fitted_model = local_run.get_output()
 ```
 
 ### <a name="test-model-accuracy"></a>Test modeli doğruluğu
-1. Model doğruluğunu test etmek için, test veri kümesinde TAXI tarifeli havayolu öngörülerini çalıştırmak üzere en iyi modeli kullanın. ```predict```İşlevi en iyi modeli kullanır ve doğrulama veri kümesinden y (tarifeli havayolu amount) değerlerini tahmin eder. 
+1. Model doğruluğunu test etmek için, test veri kümesinde TAXI tarifeli havayolu öngörülerini çalıştırmak üzere en iyi modeli kullanın. ```predict```İşlevi en iyi modeli kullanır ve `y` doğrulama veri kümesinden (tarifeli havayolu amount) değerlerini tahmin eder. 
 
    ```python
    # Test best model accuracy
@@ -242,13 +242,13 @@ best_run, fitted_model = local_run.get_output()
 
 1. Kök-ortalama-kare hatası, bir model tarafından tahmin edilen örnek değerler ve gözlenen değerler arasındaki farklılıklara ilişkin sık kullanılan bir ölçüdür. Veri çerçevesini model tarafından tahmin edilen değerlerle karşılaştırarak sonuçların kök-ortalama-kare hatasını hesaplayabilirsiniz `y_test` . 
 
-   İşlevi ```mean_squared_error``` iki dizi alır ve aralarındaki ortalama kare içinde hata hesaplar. Sonra sonucun kare kökünü alın. Bu ölçüm, TAXI tarifeli havayolu tahminlerinin gerçek Fares değerlerinden kabaca ne kadar olduğunu gösterir.
+   İşlevi ```mean_squared_error``` iki dizi alır ve aralarındaki ortalama kare içinde hata hesaplar. Sonra sonucun kare kökünü alın. Bu ölçüm, TAXI tarifeli havayolu tahminlerinin gerçek tarifeli havayolu değerlerinden kabaca ne kadar olduğunu gösterir.
 
    ```python
    from sklearn.metrics import mean_squared_error
    from math import sqrt
 
-   # Calculate Root Mean Square Error
+   # Calculate root-mean-square error
    y_actual = y_test.values.flatten().tolist()
    rmse = sqrt(mean_squared_error(y_actual, y_predict))
 
@@ -265,7 +265,7 @@ best_run, fitted_model = local_run.get_output()
 1. Ortalama-mutlak-yüzde hatasını hesaplamak için aşağıdaki kodu çalıştırın. Bu ölçüm, hatanın yüzdesi olarak doğruluğu ifade eder. Bu, tahmin edilen ve gerçek değerler arasındaki mutlak bir farkı hesaplayarak ve tüm farkları toplayarak yapar. Ardından, bu toplamı gerçek değerlerin toplamının yüzdesi olarak ifade eder.
 
    ```python
-   # Calculate MAPE and Model Accuracy 
+   # Calculate mean-absolute-percent error and model accuracy 
    sum_actuals = sum_errors = 0
 
    for actual_val, predict_val in zip(y_actual, y_predict):
@@ -301,26 +301,26 @@ best_run, fitted_model = local_run.get_output()
    import numpy as np
    from sklearn.metrics import mean_squared_error, r2_score
 
-   # Calculate the R2 score using the predicted and actual fare prices
+   # Calculate the R2 score by using the predicted and actual fare prices
    y_test_actual = y_test["fareAmount"]
    r2 = r2_score(y_test_actual, y_predict)
 
-   # Plot the Actual vs Predicted Fare Amount Values
+   # Plot the actual versus predicted fare amount values
    plt.style.use('ggplot')
    plt.figure(figsize=(10, 7))
    plt.scatter(y_test_actual,y_predict)
    plt.plot([np.min(y_test_actual), np.max(y_test_actual)], [np.min(y_test_actual), np.max(y_test_actual)], color='lightblue')
    plt.xlabel("Actual Fare Amount")
    plt.ylabel("Predicted Fare Amount")
-   plt.title("Actual vs Predicted Fare Amont R^2={}".format(r2))
+   plt.title("Actual vs Predicted Fare Amount R^2={}".format(r2))
    plt.show()
 
    ```
    ![Regresyon grafiğinin ekran görüntüsü.](./media/azure-machine-learning-spark-notebook/fare-amount.png)
 
-   Sonuçlardan, fark yüzdesinin yüzde 95 ' luk için R-kare ölçü hesaplarının olduğunu görebilirsiniz. Bu aynı zamanda, gözlemlenen çizim ile gerçek çizim tarafından da onaylanır. Regresyon modeli tarafından yapılmış olan daha fazla fark, veri noktalarının ne kadar yakın olması, sığdırılmış regresyon satırına girer.  
+   Sonuçlardan, fark yüzdesinin yüzde 95 ' luk için R-kare ölçü hesaplarının olduğunu görebilirsiniz. Bu aynı zamanda, gözlemlenen çizim ile gerçek çizim tarafından da onaylanır. Regresyon modeli hesaplarının için ne kadar çok fark olursa, veri noktalarının daha yakın olması, sığdırılmış regresyon satırına girer.  
 
-## <a name="register-model-to-azure-machine-learning"></a>Modeli Azure Machine Learning Kaydet
+## <a name="register-the-model-to-azure-machine-learning"></a>Modeli Azure Machine Learning için kaydedin
 En iyi modelinizi doğruladıktan sonra, Azure Machine Learning kaydedebilirsiniz. Ardından, kayıtlı modeli indirebilir veya dağıtabilir ve kaydettiğiniz tüm dosyaları alabilirsiniz.
 
 ```python
@@ -333,7 +333,7 @@ print(model.name, model.version)
 NYCGreenTaxiModel 1
 ```
 ## <a name="view-results-in-azure-machine-learning"></a>Sonuçları Azure Machine Learning görüntüle
-Son olarak, Azure Machine Learning çalışma alanınızdaki deneye giderek yinelemelerin sonuçlarına de erişebilirsiniz. Burada, çalışma, denek modellerinin ve diğer model ölçümlerinizin durumu hakkında ek ayrıntılara ulaşabilirsiniz. 
+Ayrıca, Azure Machine Learning çalışma alanınızdaki deneye giderek yinelemelerin sonuçlarına erişebilirsiniz. Burada, çalıştırma, deneme modellerinin ve diğer model ölçümlerinizin durumu hakkında daha fazla bilgi edinebilirsiniz. 
 
 ![Azure Machine Learning çalışma alanının ekran görüntüsü.](./media/azure-machine-learning-spark-notebook/azure-machine-learning-workspace.png)
 

@@ -1,6 +1,6 @@
 ---
 title: 'Öğretici: bilişsel hizmetler ile anomali algılama'
-description: SYNAPSE 'de anomali algılama için bilişsel hizmetlerden yararlanma öğreticisi
+description: Azure SYNAPSE Analytics 'te anomali algılama için bilişsel hizmetler 'i nasıl kullanacağınızı öğrenin.
 services: synapse-analytics
 ms.service: synapse-analytics
 ms.subservice: machine-learning
@@ -9,94 +9,95 @@ ms.reviewer: jrasnick, garye
 ms.date: 11/20/2020
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: 5e7b914d459d2452704f93987ce1bf91bfba988c
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: c54300bf37f6f4526c525b1502d902e5f4336ed7
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222216"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943498"
 ---
 # <a name="tutorial-anomaly-detection-with-cognitive-services-preview"></a>Öğretici: bilişsel hizmetler ile anomali algılama (Önizleme)
 
-Bu öğreticide, bilişsel [Hizmetler](../../cognitive-services/index.yml)Ile Azure SYNAPSE 'da verilerinizi kolayca zenginleştirme hakkında bilgi edineceksiniz. Anomali algılama işlemini gerçekleştirmek için [anomali algılayıcısının](../../cognitive-services/anomaly-detector/index.yml) kullanılması gerekir. Azure SYNAPSE ' deki bir Kullanıcı, anomali algılama için zenginleştirmek üzere bir tablo seçebilir.
+Bu öğreticide, Azure bilişsel [Hizmetler](../../cognitive-services/index.yml)Ile Azure SYNAPSE Analytics 'te verilerinizi kolayca zenginleştirme hakkında bilgi edineceksiniz. [Anomali algılayıcısının](../../cognitive-services/anomaly-detector/index.yml) öğrenilerini bulmak için kullanacaksınız. Azure SYNAPSE ' deki bir Kullanıcı, anomali algılama için zenginleştirmek üzere bir tablo seçebilir.
 
 Bu öğreticinin içindekiler:
 
 > [!div class="checklist"]
 > - Zaman serisi verilerini içeren Spark tablo veri kümesini alma adımları.
-> - Anomali algılayıcı bilişsel hizmetini kullanarak verileri zenginleştirmek için Azure SYNAPSE 'de sihirbaz deneyimi kullanın.
+> - Bilişsel hizmetler 'de anomali algılayıcısı kullanarak verileri zenginleştirmek için Azure SYNAPSE 'de sihirbaz deneyimi kullanımı.
 
 Azure aboneliğiniz yoksa [başlamadan önce ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-- Varsayılan depolama alanı olarak yapılandırılmış bir ADLS 2. depolama hesabıyla [Azure SYNAPSE Analytics çalışma alanı](../get-started-create-workspace.md) . Birlikte çalıştığınız ADLS 2. FileSystem 'ın **Depolama Blobu veri katılımcısı** olması gerekir.
+- Varsayılan depolama alanı olarak yapılandırılmış bir Azure Data Lake Storage 2. depolama hesabıyla [Azure SYNAPSE Analytics çalışma alanı](../get-started-create-workspace.md) . Birlikte çalıştığınız Data Lake Storage 2. dosya sisteminin *Depolama Blobu veri katılımcısı* olması gerekir.
 - Azure SYNAPSE Analytics çalışma alanınızdaki Spark Havuzu. Ayrıntılar için bkz. [Azure 'Da Spark havuzu oluşturma SYNAPSE](../quickstart-create-sql-pool-studio.md).
-- Bu öğreticiyi kullanabilmeniz için, bu öğreticide açıklanan ön yapılandırma adımlarını da gerçekleştirmeniz gerekir. [Azure SYNAPSE 'de bilişsel hizmetler 'ı yapılandırın](tutorial-configure-cognitive-services-synapse.md).
+- Azure 'da bilişsel [Hizmetler 'ı yapılandırma SYNAPSE](tutorial-configure-cognitive-services-synapse.md) öğreticisindeki yapılandırma öncesi adımların tamamlanması.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure portalda](https://portal.azure.com/) oturum açma
+[Azure portalında](https://portal.azure.com/) oturum açın.
 
 ## <a name="create-a-spark-table"></a>Spark tablosu oluşturma
 
-Bu öğretici için Spark tablosuna ihtiyacınız olacaktır.
+Bu öğretici için bir Spark tablosu gerekir.
 
-1. Spark tablosu oluşturmak için kodu içeren aşağıdaki Not defteri dosyasını indirin: [prepare_anomaly_detector_data. ipynb](https://go.microsoft.com/fwlink/?linkid=2149577)
+1. Spark tablosu oluşturmak için kod içeren aşağıdaki Not defteri dosyasını indirin: [prepare_anomaly_detector_data. ipynb](https://go.microsoft.com/fwlink/?linkid=2149577).
 
 1. Dosyayı Azure SYNAPSE çalışma alanınıza yükleyin.
-![Not defterini karşıya yükle](media/tutorial-cognitive-services/tutorial-cognitive-services-anomaly-00a.png)
 
-1. Not defteri dosyasını açın ve tüm hücreleri **çalıştırmayı** seçin.
-![Spark tablosu oluşturma](media/tutorial-cognitive-services/tutorial-cognitive-services-anomaly-00b.png)
+   ![Not defteri karşıya yükleme seçimlerini gösteren ekran görüntüsü.](media/tutorial-cognitive-services/tutorial-cognitive-services-anomaly-00a.png)
+
+1. Not defteri dosyasını açın ve tüm hücreleri çalıştırmak için **Tümünü Çalıştır** ' ı seçin.
+
+   ![Spark tablosu oluşturma seçimlerini gösteren ekran görüntüsü.](media/tutorial-cognitive-services/tutorial-cognitive-services-anomaly-00b.png)
 
 1. **Anomaly_detector_testing_data** adlı Spark tablosu artık varsayılan Spark veritabanında görünmelidir.
 
-## <a name="launch-cognitive-services-wizard"></a>Bilişsel hizmetler Sihirbazı 'nı Başlat
+## <a name="open-the-cognitive-services-wizard"></a>Bilişsel hizmetler Sihirbazı 'nı açın
 
-1. Önceki adımda oluşturulan Spark tablosuna sağ tıklayın. Sihirbazı açmak için "Machine Learning->" var olan modelle zenginleştirme "seçeneğini belirleyin.
-![Puanlama Başlatma Sihirbazı](media/tutorial-cognitive-services/tutorial-cognitive-services-anomaly-00g.png)
+1. Önceki adımda oluşturulan Spark tablosuna sağ tıklayın.   >  Sihirbazı açmak için **mevcut modeliyle Machine Learning zenginleştirme** seçeneğini belirleyin.
 
-2. Bir yapılandırma paneli görünür ve bilişsel hizmetler modeli seçmeniz istenir. Anomali algılayıcısı ' nı seçin.
+   ![Puanlama Sihirbazı 'nı açmak için seçimleri gösteren ekran görüntüsü.](media/tutorial-cognitive-services/tutorial-cognitive-services-anomaly-00g.png)
 
-![Puanlama Başlatma Sihirbazı-Adım](media/tutorial-cognitive-services/tutorial-cognitive-services-anomaly-00c.png)
+2. Bir yapılandırma paneli görünür ve bilişsel hizmetler modeli seçmeniz istenir. **Anomali algılayıcısı**' nı seçin.
+
+   ![Model olarak anomali algılayıcısı seçimini gösteren ekran görüntüsü.](media/tutorial-cognitive-services/tutorial-cognitive-services-anomaly-00c.png)
 
 ## <a name="provide-authentication-details"></a>Kimlik doğrulama ayrıntılarını sağlayın
 
-Bilişsel hizmetler 'in kimliğini doğrulamak için, Key Vault kullanmak üzere gizli dizi başvurusunda bulunmak gerekir. Aşağıdaki girişler, bu adımdan önce tamamlanması gereken [Önkoşul adımlarına](tutorial-configure-cognitive-services-synapse.md) bağlıdır.
+Bilişsel hizmetler 'in kimliğini doğrulamak için Anahtar Kasanızda gizli dizi başvurusunda bulunmak gerekir. Aşağıdaki girişler, bu noktadan önce tamamlanması gereken [Önkoşul adımlarına](tutorial-configure-cognitive-services-synapse.md) bağımlıdır.
 
 - **Azure aboneliği**: anahtar kasanızın ait olduğu Azure aboneliğini seçin.
-- Bilişsel **Hizmetler hesabı**: Bu, bağlandığınız metin analizi kaynağıdır.
-- **Bağlı hizmet Azure Key Vault**: önkoşul adımlarının bir parçası olarak, metin analizi kaynağınız için bağlı bir hizmet oluşturdunuz. Lütfen buradan seçin.
-- **Gizli dizi adı**: Bu, anahtar kasasındaki gizli anahtar, bilişsel hizmetler kaynağınızın kimlik doğrulaması için kullanılacak anahtarı içeren addır.
+- Bilişsel **Hizmetler hesabı**: bağlanacağı metin analizi kaynağını girin.
+- **Bağlı hizmet Azure Key Vault**: önkoşul adımlarının bir parçası olarak, metin analizi kaynağınız için bağlı bir hizmet oluşturdunuz. Buradan seçin.
+- **Gizli dizi adı**: bilişsel hizmetler kaynağınız için kimlik doğrulaması yapmak üzere anahtarı içeren anahtar kasanızda gizli dizi adını girin.
 
-![Azure Key Vault ayrıntılarını sağlayın](media/tutorial-cognitive-services/tutorial-cognitive-services-anomaly-00d.png)
+![Bir Anahtar Kasası için kimlik doğrulama ayrıntılarını gösteren ekran görüntüsü.](media/tutorial-cognitive-services/tutorial-cognitive-services-anomaly-00d.png)
 
-## <a name="configure-anomaly-detection"></a>Anomali algılamayı yapılandırma
+## <a name="configure-anomaly-detector"></a>Anomali algılayıcısı 'nı yapılandırma
 
-Sonra anomali algılamayı yapılandırmanız gerekir. Lütfen aşağıdaki ayrıntıları sağlayın:
+Anomali algılayıcısı 'nı yapılandırmak için aşağıdaki ayrıntıları sağlayın:
 
-- Ayrıntı düzeyi: verilerinizin örneklendiği hız. Örneğin, veriniz her dakika için bir değer içeriyorsa, ayrıntı düzeyi dakikalarınızın süresi geçde olur. **Aylık** Seç 
+- **Ayrıntı düzeyi**: verilerinizin örneklendiği hız. **Aylık** seçeneğini belirleyin. 
 
-- Zaman damgası: serinin saatini temsil eden sütun. Sütun **zaman damgasını** seçin
+- **Zaman damgası sütunu**: serinin saatini temsil eden sütun. **Zaman damgası (dize)** seçin.
 
-- Timeseries değeri: zaman damgası sütunu tarafından belirtilen zamanda serinin değerini temsil eden sütun. Sütun **değeri** Seç
+- **Timeseries değer sütunu**: zaman damgası sütunu tarafından belirtilen zamanda serinin değerini temsil eden sütun. **Değer (Double)** seçeneğini belirleyin.
 
-- Gruplandırma: seriyi gruplandıran sütun. Diğer bir deyişle, bu sütunda aynı değere sahip tüm satırlar bir zaman serisi oluşturmalıdır. Sütun **grubu** seçin
+- **Gruplandırma sütunu**: seriyi gruplandıran sütun. Diğer bir deyişle, bu sütunda aynı değere sahip tüm satırlar bir zaman serisi oluşturmalıdır. **Grup (dize)** öğesini seçin.
 
-İşiniz bittiğinde, **Not defterini aç**' ı seçin. Bu işlem, Azure bilişsel hizmetler 'i kullanarak anomali algılama gerçekleştiren PySpark kodu ile sizin için bir not defteri oluşturur.
+İşiniz bittiğinde, **Not defteri 'Ni aç**' ı seçin. Bu işlem, Azure bilişsel hizmetler 'i kullanarak, anormallikleri tespit etmek için bir not defteri oluşturur.
 
-![Anomali algılayıcısı 'nı yapılandırma](media/tutorial-cognitive-services/tutorial-cognitive-services-anomaly-00e.png)
+![Anomali algılayıcısı için yapılandırma ayrıntılarını gösteren ekran görüntüsü.](media/tutorial-cognitive-services/tutorial-cognitive-services-anomaly-00e.png)
 
-## <a name="open-notebook-and-run"></a>Not defteri 'ni açın ve çalıştırın
+## <a name="run-the-notebook"></a>Not defterini çalıştırma
 
-Az önce açtığınız Not defteri, bilişsel hizmetlere bağlanmak için [mmlspark kitaplığını](https://github.com/Azure/mmlspark) kullanıyor.
+Az önce açtığınız Not defteri, bilişsel hizmetlere bağlanmak için [mmlspark kitaplığını](https://github.com/Azure/mmlspark) kullanır. Belirttiğiniz Azure Key Vault ayrıntıları, bu deneyimdeki gizli dizilerinize onları göstermeden güvenli bir şekilde başvurmanızı sağlar.
 
-Verdiğiniz Azure Key Vault ayrıntıları, bu deneyimden verilerinize güvenli bir şekilde başvurmanızı sağlar.
+Şimdi anomali algılama işlemini gerçekleştirmek için tüm hücreleri çalıştırabilirsiniz. **Tümünü Çalıştır**' ı seçin. Bilişsel [Hizmetler 'de anomali algılayıcısı hakkında daha fazla bilgi edinin](../../cognitive-services/anomaly-detector/index.yml).
 
-Şimdi anomali algılama işlemini gerçekleştirmek için **tüm hücreleri çalıştırabilirsiniz** . Bilişsel [Hizmetler-anomali algılayıcısı](../../cognitive-services/anomaly-detector/index.yml)hakkında daha fazla bilgi edinin.
-
-![Anomali algılama çalıştırma](media/tutorial-cognitive-services/tutorial-cognitive-services-anomaly-00f.png)
+![Anomali algılamayı gösteren ekran görüntüsü.](media/tutorial-cognitive-services/tutorial-cognitive-services-anomaly-00f.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -1,18 +1,15 @@
 ---
 title: Azure HDInsight üzerinde Grafana kullanma
 description: Azure HDInsight 'ta Apache Hadoop kümeleriyle Grafana panosuna erişmeyi öğrenin
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 12/27/2019
-ms.openlocfilehash: 7750544367044cab2a0243577c200025bb9ff693
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cd2a09b6c3196302dcb74fd363481706021a4d4d
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86083041"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98940872"
 ---
 # <a name="access-grafana-in-azure-hdinsight"></a>Azure HDInsight'ta Grafana'ya erişme
 
@@ -24,7 +21,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 ## <a name="create-an-apache-hadoop-cluster"></a>Apache Hadoop kümesi oluşturma
 
-Bkz. [Azure Portal kullanarak Apache Hadoop kümeleri oluşturma](../hdinsight-hadoop-create-linux-clusters-portal.md). **Küme türü**için **Spark**, **Kafka**, **HBase**veya **etkileşimli sorgu**' yı seçin.
+Bkz. [Azure Portal kullanarak Apache Hadoop kümeleri oluşturma](../hdinsight-hadoop-create-linux-clusters-portal.md). **Küme türü** için **Spark**, **Kafka**, **HBase** veya **etkileşimli sorgu**' yı seçin.
 
 ## <a name="access-the-grafana-dashboard"></a>Grafana panosuna erişin
 
@@ -40,11 +37,11 @@ Bkz. [Azure Portal kullanarak Apache Hadoop kümeleri oluşturma](../hdinsight-h
 
 Bu uygulamayı kullanmaya devam etmeyecekecekseniz, oluşturduğunuz kümeyi aşağıdaki adımlarla silin:
 
-1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
-1. Üstteki **arama** kutusuna **HDInsight**yazın.
+1. Üstteki **arama** kutusuna **HDInsight** yazın.
 
-1. **Hizmetler**altında **HDInsight kümeleri** ' ni seçin.
+1. **Hizmetler** altında **HDInsight kümeleri** ' ni seçin.
 
 1. Görüntülenen HDInsight kümeleri listesinde, oluşturduğunuz kümenin yanındaki **...** seçeneğini belirleyin.
 

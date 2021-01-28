@@ -1,5 +1,5 @@
 - name: Azure Data Box Gateway Belgeleri
-  href: /azure/databox-gateway/
+  href: ./index.yml
 - name: Genel Bakış
   Expanded: true
   items:

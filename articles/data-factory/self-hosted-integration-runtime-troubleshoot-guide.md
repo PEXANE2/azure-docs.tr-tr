@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 01/25/2021
 ms.author: lle
-ms.openlocfilehash: e81a12f4c5d817670fe1f7968184bcc97e78a53c
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 8a722550d12d019e25ff39de27cc0df2c2762a01
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98757687"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942056"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>Şirket içinde barındırılan tümleştirme çalışma zamanı sorunlarını giderme
 
@@ -198,7 +198,7 @@ Aşağıdaki hatada, *System. ValueTuple* derlemesinin eksik olduğunu net bir �
  
 " \<LogProperties> \<ErrorInfo> [{" Code ": 0," Message ":" ' Npgsql. poolmanager ' için tür başlatıcısı bir özel durum oluşturdu. "," EventType ": 0," Category ": 5," Data ": {} ," MsgID ": null," ExceptionType ":" System. TypeInitializationException "," kaynak ":" npgsql "," StackTrace ":" "," ınnereventinfos ": [{" Code ": 0," Message ":" dosya veya derleme ' System. ValueTuple, sürüm = 4.0.2.0, Culture = neutral, PUBLICKEYTOKEN = xxxxxxxxx ' veya bağımlılıklarından biri yüklenemedi. Sistem belirtilen dosyayı bulamıyor. "," EventType ": 0," Kategori ": 5," veri ": {} ," MsgId":null,"ExceptionType":"System. IO. FileNotFoundException "," kaynak ":" Npgsql "," StackTrace ":" "," ınnereventınfos ": []}]}] \</ErrorInfo> \</LogProperties> "
  
-GAC hakkında daha fazla bilgi için bkz. [genel derleme önbelleği](https://docs.microsoft.com/dotnet/framework/app-domains/gac).
+GAC hakkında daha fazla bilgi için bkz. [genel derleme önbelleği](/dotnet/framework/app-domains/gac).
 
 
 ### <a name="self-hosted-integration-runtime-authentication-key-is-missing"></a>Şirket içinde barındırılan tümleştirme çalışma zamanı kimlik doğrulama anahtarı eksik

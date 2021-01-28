@@ -4,12 +4,12 @@ description: Azure Işlevlerine kod dağıtabilmeniz için farklı yollar edinin
 ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.openlocfilehash: 51a76adcf25d5d1bc4025eab12073df0886fde3d
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 4a65a00c28a20c9381d3dcc6fd7545137528d5c0
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98681839"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943643"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Azure Işlevlerinde dağıtım teknolojileri
 
@@ -106,7 +106,7 @@ Aşağıdaki dağıtım yöntemleri Azure Işlevleri 'nde kullanılabilir.
 
 İşlev uygulamanızı içeren bir uzak paket (. zip) dosyasına başvurmak için bir dış paket URL 'SI kullanabilirsiniz. Dosya, girilen URL 'den indirilir ve uygulama [paket modundan Çalıştır](run-functions-from-deployment-package.md) bölümünde çalışır.
 
->__Nasıl kullanılır:__ `WEBSITE_RUN_FROM_PACKAGE` Uygulama ayarlarınıza ekleyin. Bu ayarın değeri bir URL olmalıdır (çalıştırmak istediğiniz belirli paket dosyasının konumu). Ayarları [portalda](functions-how-to-use-azure-function-app-settings.md#settings) ya da [Azure CLI kullanarak](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set)ekleyebilirsiniz.
+>__Nasıl kullanılır:__ [`WEBSITE_RUN_FROM_PACKAGE`](functions-app-settings.md#website_run_from_package) Uygulama ayarlarınıza ekleyin. Bu ayarın değeri bir URL olmalıdır (çalıştırmak istediğiniz belirli paket dosyasının konumu). Ayarları [portalda](functions-how-to-use-azure-function-app-settings.md#settings) ya da [Azure CLI kullanarak](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set)ekleyebilirsiniz.
 >
 >Azure Blob depolama kullanırsanız, IŞLEVLERE pakete erişim sağlamak için [paylaşılan erişim imzası (SAS)](../vs-azure-tools-storage-manage-with-storage-explorer.md#generate-a-sas-in-storage-explorer) olan bir özel kapsayıcı kullanın. Uygulamanın her yeniden başlatıldığı zaman içeriğin bir kopyasını getirir. Başvurunuz, uygulamanın ömrü için geçerli olmalıdır.
 
@@ -118,7 +118,7 @@ Aşağıdaki dağıtım yöntemleri Azure Işlevleri 'nde kullanılabilir.
 
 >__Nasıl kullanılır:__ En sevdiğiniz istemci aracını kullanarak dağıtın: [Visual Studio Code](functions-develop-vs-code.md#publish-to-azure), [Visual Studio](functions-develop-vs.md#publish-to-azure)veya [Azure Functions Core Tools](functions-run-local.md#project-file-deployment)kullanarak komut satırı. Varsayılan olarak, bu araçlar ZIP dağıtımını kullanır ve [paketinden çalıştırılır](run-functions-from-deployment-package.md). Temel araçlar ve Visual Studio Code uzantısı, Linux 'a dağıtım yaparken [uzak derlemeyi](#remote-build) etkinleştirir. Bir. zip dosyasını işlev uygulamanıza el ile dağıtmak için, [bir. zip dosyasından veya URL 'Den dağıtma](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file-or-url)' daki yönergeleri izleyin.
 
->ZIP dağıtımını kullanarak dağıtırken, uygulamanızı [paketten çalışacak](run-functions-from-deployment-package.md)şekilde ayarlayabilirsiniz. Paketten çalıştırmak için `WEBSITE_RUN_FROM_PACKAGE` uygulama ayarı değerini olarak ayarlayın `1` . ZIP dağıtımı önerilir. Uygulamalarınız için daha hızlı yükleme süreleri verir ve VS Code, Visual Studio ve Azure CLı için varsayılandır.
+>ZIP dağıtımını kullanarak dağıtırken, uygulamanızı [paketten çalışacak](run-functions-from-deployment-package.md)şekilde ayarlayabilirsiniz. Paketten çalıştırmak için [ `WEBSITE_RUN_FROM_PACKAGE` ] (işlevler-App-settings. MD # website_run_from_package uygulama ayarı değerini olarak ayarlayın `1` . ZIP dağıtımı önerilir. Uygulamalarınız için daha hızlı yükleme süreleri verir ve VS Code, Visual Studio ve Azure CLı için varsayılandır.
 
 >__Ne zaman kullanılır:__ ZIP dağıtımı, Azure Işlevleri için önerilen dağıtım teknolojisidir.
 
@@ -181,7 +181,7 @@ FTP 'yi kullanarak doğrudan Azure Işlevlerine dosya aktarabilirsiniz.
 
 Portal tabanlı düzenleyicide, işlev uygulamanızda olan dosyaları doğrudan düzenleyebilirsiniz (aslında yaptığınız değişiklikleri her kaydedişinizde dağıtım yapabilirsiniz).
 
->__Nasıl kullanılır:__ Azure portal işlevlerinizi düzenleyebilmek için, [işlevlerinizi portalda oluşturmuş](./functions-get-started.md)olmanız gerekir. Tek bir gerçeği kaynağını korumak için, başka bir dağıtım yöntemi kullanmak, işlevinizi salt okunurdur ve Portal düzenlemesini devam ettirmesini önler. Azure portal dosyalarınızı düzenleyebileceğiniz bir duruma dönmek için, düzenleme modunu el ile yeniden açıp `Read/Write` dağıtıma ilişkin tüm uygulama ayarlarını (gibi `WEBSITE_RUN_FROM_PACKAGE` ) kaldırabilirsiniz.
+>__Nasıl kullanılır:__ Azure portal işlevlerinizi düzenleyebilmek için, [işlevlerinizi portalda oluşturmuş](./functions-get-started.md)olmanız gerekir. Tek bir gerçeği kaynağını korumak için, başka bir dağıtım yöntemi kullanmak, işlevinizi salt okunurdur ve Portal düzenlemesini devam ettirmesini önler. Azure portal dosyalarınızı düzenleyebileceğiniz bir duruma geri dönmek için, düzenleme modunu el ile yeniden açıp `Read/Write` dağıtım ile ilgili tüm uygulama ayarlarını kaldırabilirsiniz (örneğin, [`WEBSITE_RUN_FROM_PACKAGE`](functions-app-settings.md#website_run_from_package) .
 
 >__Ne zaman kullanılır:__ Portal, Azure Işlevleri 'ni kullanmaya başlamak için iyi bir yoldur. Daha yoğun bir geliştirme çalışması için aşağıdaki istemci araçlarından birini kullanmanızı öneririz:
 >

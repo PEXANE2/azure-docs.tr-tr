@@ -1,19 +1,17 @@
 ---
 title: "Avantajlar: şirket içi Apache Hadoop Azure HDInsight 'a geçirme"
 description: Şirket içi Hadoop kümelerini Azure HDInsight 'a geçirmeye yönelik mosyon ve avantajları öğrenin.
-author: hrasheed-msft
-ms.author: hrasheed
 ms.reviewer: ashishth
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 11/15/2019
-ms.openlocfilehash: 595bf6f921265e9e8dbc0e0e065fe835efea14bc
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 975d72df32027888e217d5da9171dba0ba61f257
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92331660"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943246"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---motivation-and-benefits"></a>Şirket içi Apache Hadoop kümelerini Azure HDInsight 'a geçirme-mosyon ve avantajlar
 
@@ -101,7 +99,7 @@ Bu bölümde hakkında önemli bilgiler toplamaya yardımcı olacak şablon anke
 |Ana düğüm yapılandırması|d/y, CPU, disk vb.|
 |Veri düğümleri yapılandırması|d/y, CPU, disk vb.|
 |Kenar düğümleri yapılandırması|d/y, CPU, disk vb.|
-|Bu şifreleme?|Evet|
+|Bu şifreleme?|Yes|
 |Yüksek Kullanılabilirlik|, Metasha, meta veri deposu HA|
 |Olağanüstü durum kurtarma/yedekleme|Yedekleme kümesi mi?|  
 |Kümeye bağımlı sistemler|SQL Server, Teradata, Power BI, MongoDB|
@@ -167,8 +165,8 @@ Bu bölümde hakkında önemli bilgiler toplamaya yardımcı olacak şablon anke
 |---|---|---|
 |**Konu**: **altyapı** |||
 | Tercih edilen bölge|ABD Doğu||
-|VNet tercih edildi mi?|Evet||
-|HA/DR gerekli mi?|Evet||
+|VNet tercih edildi mi?|Yes||
+|HA/DR gerekli mi?|Yes||
 |Diğer bulut hizmetleriyle tümleştirme yapılsın mı?|ADF, CosmosDB||
 |**Konu**:   **veri taşıma**  |||
 |İlk yükleme tercihi|DistCp, Data Box, ADF, WANDisco||
@@ -177,25 +175,25 @@ Bu bölümde hakkında önemli bilgiler toplamaya yardımcı olacak şablon anke
 |**Konu**:   **izleme & uyarma** |||
 |Azure Izleme & uyarı, üçüncü taraf izlemeyi tümleştirme karşılaştırması|Azure Izleme & uyarma kullanma||
 |**Konu**:   **Güvenlik tercihleri** |||
-|Özel ve korunan veri ardışık düzeni?|Evet||
-|Etki alanına katılmış küme (ESP)?|     Evet||
-|Şirket Içi AD Eşitleme buluta mı?|     Evet||
+|Özel ve korunan veri ardışık düzeni?|Yes||
+|Etki alanına katılmış küme (ESP)?|     Yes||
+|Şirket Içi AD Eşitleme buluta mı?|     Yes||
 |Eşitlenecek AD kullanıcılarının sayısı?|          100||
-|Parolalar buluta eşitlensin mi?|    Evet||
-|Yalnızca bulut kullanıcıları mı?|                 Evet||
+|Parolalar buluta eşitlensin mi?|    Yes||
+|Yalnızca bulut kullanıcıları mı?|                 Yes||
 |MFA gerekli mi?|                       Hayır|| 
-|Veri yetkilendirme gereksinimleri?|  Evet||
-|Rol tabanlı erişim denetimi?|        Evet||
-|Denetim gerekli mi?|                  Evet||
-|Bekleyen veri şifrelemesi|          Evet||
-|Geçiş sırasında veri şifrelemesi yapılsın mı?|       Evet||
+|Veri yetkilendirme gereksinimleri?|  Yes||
+|Rol tabanlı erişim denetimi?|        Yes||
+|Denetim gerekli mi?|                  Yes||
+|Bekleyen veri şifrelemesi|          Yes||
+|Geçiş sırasında veri şifrelemesi yapılsın mı?|       Yes||
 |**Konu**:   **yeniden mimari tercihleri** |||
 |Tek küme, belirli küme türlerine karşı|Belirli küme türleri||
 |Birlikte bulunan depolama ve uzak depolama karşılaştırması|Uzak depolama||
 |Veriler uzaktan depolandığından daha küçük küme boyutu var mı?|Daha küçük küme boyutu||
 |Tek bir büyük küme yerine birden çok daha küçük küme kullanın mi?|Birden çok daha küçük küme kullanın||
-|Uzak bir meta veri deposu mı kullanıyorsunuz?|Evet||
-|Farklı kümeler arasında meta tasares paylaşma yapılsın mı?|Evet||
+|Uzak bir meta veri deposu mı kullanıyorsunuz?|Yes||
+|Farklı kümeler arasında meta tasares paylaşma yapılsın mı?|Yes||
 |İş yüklerini kaldırma|Hive işlerini Spark işleriyle değiştirme||
 |Veri düzenleme için ADF kullanılsın mı?|Hayır||
 

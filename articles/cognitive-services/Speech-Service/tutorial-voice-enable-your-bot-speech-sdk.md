@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6b231b5af208a51cbe8f4370c2dc532be1ba3af9
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 9ee7116efe931d101a1505bc2d9d866d8ea5b92a
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024934"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943431"
 ---
 # <a name="tutorial-voice-enable-your-bot-using-the-speech-sdk"></a>Öğretici: konuşma SDK 'sını kullanarak bot uygulamanızı etkinleştirin
 
@@ -75,7 +75,7 @@ Bu öğreticide oluşturacağınız istemci uygulaması, el ile Azure hizmetleri
    * **Kaynak grubunuz** için bir ad girin. **SpeechEchoBotTutorial-ResourceGroup** önerilir.
    * **Bölge** açılır listesinden **Batı ABD**' yi seçin.
 1. **Gözden geçir ve oluştur**’a tıklayın. Okuma **doğrulamasının geçtiğini** belirten bir başlık görmeniz gerekir.
-1. **Oluştur**'a tıklayın. Kaynak grubunun oluşturulması birkaç dakika sürebilir.
+1. **Oluştur**’a tıklayın. Kaynak grubunun oluşturulması birkaç dakika sürebilir.
 1. Bu öğreticide daha sonra oluşturacağınız kaynaklarda olduğu gibi, kolay erişim için bu kaynak grubunu panonuza sabitlemek iyi bir fikirdir. Bu kaynak grubunu sabitlemek isterseniz, kaynak grubu adının sağ sabitleme simgesine tıklayın.
 
 ### <a name="choosing-an-azure-region"></a>Azure bölgesi seçme
@@ -124,7 +124,7 @@ Sonraki adım App Service bir plan oluşturmaktır. App Service planı, bir web 
    * **Bölge** için **Batı ABD**' yi seçin.
    * **Fiyatlandırma katmanı** Için **Standart S1** ' in seçildiğinden emin olun. Bu, varsayılan değer olmalıdır. Değilse, **Işletim sistemini** yukarıda açıklandığı gibi **Windows** 'a ayarladığınızdan emin olun.
 5. **Gözden geçir ve oluştur**’a tıklayın. Okuma **doğrulamasının geçtiğini** belirten bir başlık görmeniz gerekir.
-6. **Oluştur**'a tıklayın. Kaynak grubunun oluşturulması birkaç dakika sürebilir.
+6. **Oluştur**’a tıklayın. Kaynak grubunun oluşturulması birkaç dakika sürebilir.
 
 Bu noktada, kaynak grubunuz (**SpeechEchoBotTutorial-ResourceGroup**) iki kaynak olduğunu kontrol edin:
 
@@ -167,7 +167,7 @@ Bazı kaynaklar oluşturduğunuza göre artık bir bot oluşturalım. Adın gös
 1. [Bot Framework öykünücü](https://github.com/Microsoft/BotFramework-Emulator/releases/latest) sürümü 4.3.0 veya üstünü yükler
 2. Bot Framework öykünücüsünü başlatın ve botunuzu açın:
    * **Dosya**  ->  **Bot 'ı açın**.
-3. Bot 'unuzun URL 'sini girin. Örnek:
+3. Bot 'unuzun URL 'sini girin. Örneğin:
 
    ```
    http://localhost:3978/api/messages
@@ -201,7 +201,7 @@ Sonraki adım, yankı bot 'ı Azure 'a dağıtmaktır. Bir bot dağıtmanın bir
    * **Abonelik** Için, **ücretsiz deneme** olarak ayarlayın
    * **Kaynak grubu** için **SpeechEchoBotTutorial-ResourceGroup** öğesini seçin
    * **Barındırma planı** için **SpeechEchoBotTutorial-appserviceplan** ' ı seçin.
-1. **Oluştur**'a tıklayın. Son sihirbaz ekranında **son**' a tıklayın.
+1. **Oluştur**’a tıklayın. Son sihirbaz ekranında **son**' a tıklayın.
 1. Yayımla ekranının sağ tarafında **Yayımla** ' ya tıklayın. Visual Studio, bot 'ı Azure 'a dağıtır.
 1. Visual Studio 'nun çıkış penceresinde şuna benzer bir başarı iletisi görmeniz gerekir:
 
@@ -234,7 +234,7 @@ Botunuzun Web yuvalarını kullanarak doğrudan hat konuşma kanalıyla iletişi
 
 ## <a name="create-a-channel-registration"></a>Kanal kaydı oluşturma
 
-Botunuzu barındırmak için bir Azure App Service oluşturduğunuza göre, sonraki adım bir **bot kanalları kaydı** oluşturmaktır. Kanal kaydı oluşturma, botunuzu doğrudan hat konuşma kanalı dahil, bot Framework kanallarıyla kaydetmeye yönelik bir önkoşuldur. Botların kanalları kullanma hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [kanallara bir bot bağlama](/azure/bot-service/bot-service-manage-channels?view=azure-bot-service-4.0).
+Botunuzu barındırmak için bir Azure App Service oluşturduğunuza göre, sonraki adım bir **bot kanalları kaydı** oluşturmaktır. Kanal kaydı oluşturma, botunuzu doğrudan hat konuşma kanalı dahil, bot Framework kanallarıyla kaydetmeye yönelik bir önkoşuldur. Botların kanalları kullanma hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [kanallara bir bot bağlama](/azure/bot-service/bot-service-manage-channels).
 
 1. <a href="https://ms.portal.azure.com/#create/Microsoft.BotServiceConnectivityGalleryPackage" target="_blank">Azure bot kanalları kaydı oluşturma <span class="docon docon-navigate-external x-hidden-focus"></span></a>
 2. Sizden bazı bilgiler sağlamanız istenecektir:
@@ -244,7 +244,7 @@ Botunuzu barındırmak için bir Azure App Service oluşturduğunuza göre, sonr
    * **Konum** için **Batı ABD**' yi seçin.
      * **Fiyatlandırma katmanı** için **F0** öğesini seçin.
      * **Mesajlaşma uç noktası** için, yolun sonuna eklendiği Web uygulamanızın URL 'sini girin `/api/messages` . Örneğin: genel olarak benzersiz uygulamanızın adı **EchoBot20190805125647** ise, mesajlaşma uç noktanız şöyle olacaktır: `https://EchoBot20190805125647.azurewebsites.net/api/messages/` .
-     * **Application Insights** Için bunu **kapalı** olarak ayarlayabilirsiniz. Daha fazla bilgi için bkz. [bot Analytics](/azure/bot-service/bot-service-manage-analytics?view=azure-bot-service-4.0).
+     * **Application Insights** Için bunu **kapalı** olarak ayarlayabilirsiniz. Daha fazla bilgi için bkz. [bot Analytics](/azure/bot-service/bot-service-manage-analytics).
      * **Otomatik uygulama kimliği ve parola oluşturmayı** yoksay.
 5. **Bot kanalları kayıt** dikey penceresinin alt kısmındaki **Oluştur**' a tıklayın.
 
@@ -298,7 +298,7 @@ Azure bot kanalları kayıt sayfasında, **bot Management** altında **Web sohbe
    * **Kaydet**’e tıklayın.
 
 > [!TIP]
-> Daha fazla bilgi edinmek istiyorsanız, bkz. [konuşmayı doğrudan konuşmaya bağlamak için bir bot bağlama](/azure/bot-service/bot-service-channel-connect-directlinespeech?view=azure-bot-service-4.0). Bu sayfa, ek bilgi ve bilinen sorunları içerir.
+> Daha fazla bilgi edinmek istiyorsanız, bkz. [konuşmayı doğrudan konuşmaya bağlamak için bir bot bağlama](/azure/bot-service/bot-service-channel-connect-directlinespeech). Bu sayfa, ek bilgi ve bilinen sorunları içerir.
 
 ## <a name="run-the-windows-voice-assistant-client"></a>Windows Voice Yardımcısı Istemcisini çalıştırma
 
@@ -412,7 +412,7 @@ Anahtar sözcük modeli oluşturmak için bu adımları izleyin, Windows Voice Y
 
 Windows Voice Yardımcısı Istemci kaynak kodunda, anahtar sözcük algılamayı etkinleştirmek için kullanılan kodu gözden geçirmek için şu dosyalara göz atın:
 
-1. [`VoiceAssistantClient\Models.cs`](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/blob/master/clients/csharp-wpf/VoiceAssistantClient/Models.cs) , bir konuşma SDK yöntemine bir çağrı içerir [`KeywordRecognitionModel.fromFile()`](/javascript/api/microsoft-cognitiveservices-speech-sdk/keywordrecognitionmodel?preserve-view=true&view=azure-node-latest#fromfile-string-) ve bu, modeli diskteki yerel bir dosyadan oluşturmak için kullanılır.
+1. [`VoiceAssistantClient\Models.cs`](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/blob/master/clients/csharp-wpf/VoiceAssistantClient/Models.cs) , bir konuşma SDK yöntemine bir çağrı içerir [`KeywordRecognitionModel.fromFile()`](/javascript/api/microsoft-cognitiveservices-speech-sdk/keywordrecognitionmodel#fromfile-string-) ve bu, modeli diskteki yerel bir dosyadan oluşturmak için kullanılır.
 1. [`VoiceAssistantClient\MainWindow.xaml.cs`](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/blob/master/clients/csharp-wpf/VoiceAssistantClient/MainWindow.xaml.cs) sürekli anahtar sözcük algılamayı etkinleştiren konuşma SDK yöntemine bir çağrı içerir [`DialogServiceConnector.StartKeywordRecognitionAsync()`](/dotnet/api/microsoft.cognitiveservices.speech.dialog.dialogserviceconnector.startkeywordrecognitionasync) .
 
 ## <a name="optional-change-the-language-and-bot-voice"></a>Seçim Dili ve bot sesini değiştirme
@@ -480,5 +480,5 @@ Bu öğreticide dağıtılan Echo-bot 'ı kullanmaya devam edemeyecekseniz, **Sp
   * [Bot hizmeti fiyatlandırması](https://azure.microsoft.com/pricing/details/bot-service/)
   * [Konuşma hizmeti](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)
 * Kendi seslendirmeyi kullanan bot 'ı derleme ve dağıtma:
-  * Bir [bot Framework bot](https://dev.botframework.com/)oluşturun. [Doğrudan hat konuşma kanalına](/azure/bot-service/bot-service-channel-connect-directlinespeech?view=azure-bot-service-4.0) kaydolun ve [botunuzu ses için özelleştirin](/azure/bot-service/directline-speech-bot?view=azure-bot-service-4.0)
+  * Bir [bot Framework bot](https://dev.botframework.com/)oluşturun. [Doğrudan hat konuşma kanalına](/azure/bot-service/bot-service-channel-connect-directlinespeech) kaydolun ve [botunuzu ses için özelleştirin](/azure/bot-service/directline-speech-bot)
   * Mevcut [bot Framework çözümlerini](https://microsoft.github.io/botframework-solutions/index)keşfet: sanal bir [yardımcı](https://microsoft.github.io/botframework-solutions/overview/virtual-assistant-solution/) oluşturun ve [doğrudan konuşmaya konuşma için genişletin](https://microsoft.github.io/botframework-solutions/clients-and-channels/tutorials/enable-speech/1-intro/)

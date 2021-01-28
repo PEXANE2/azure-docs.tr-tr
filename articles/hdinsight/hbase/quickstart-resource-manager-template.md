@@ -1,19 +1,16 @@
 ---
 title: 'Hızlı başlangıç: şablon kullanarak Apache HBase kümesi oluşturma-Azure HDInsight'
 description: Bu hızlı başlangıçta, Azure HDInsight 'ta Apache HBase kümesi oluşturmak için Kaynak Yöneticisi şablonunun nasıl kullanılacağı gösterilmektedir.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 03/12/2020
-ms.openlocfilehash: ee69148f7dfe7a0ba39b4103a736ea09d3f57c13
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3a6b55ee2d665ee38df9a0e0f58260e97f3b81f5
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91855795"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942944"
 ---
 # <a name="quickstart-create-apache-hbase-cluster-in-azure-hdinsight-using-arm-template"></a>Hızlı başlangıç: ARM şablonunu kullanarak Azure HDInsight 'ta Apache HBase kümesi oluşturma
 
@@ -61,7 +58,7 @@ Bu hızlı başlangıçta kullanılan şablon [Azure Hızlı Başlangıç Şablo
 
     ![Kaynak Yöneticisi şablonu dağıtma HBase](./media/quickstart-resource-manager-template/resource-manager-template-hbase.png)
 
-1. **Hüküm ve koşulları**gözden geçirin. Ardından, **yukarıda belirtilen hüküm ve koşulları kabul ediyorum**' u ve ardından **satın al**' ı seçin. Dağıtımınızın devam ettiğini belirten bir bildirim alırsınız. Bir küme oluşturmak yaklaşık 20 dakika sürer.
+1. **Hüküm ve koşulları** gözden geçirin. Ardından, **yukarıda belirtilen hüküm ve koşulları kabul ediyorum**' u ve ardından **satın al**' ı seçin. Dağıtımınızın devam ettiğini belirten bir bildirim alırsınız. Bir küme oluşturmak yaklaşık 20 dakika sürer.
 
 
 ## <a name="review-deployed-resources"></a>Dağıtılan kaynakları gözden geçirme

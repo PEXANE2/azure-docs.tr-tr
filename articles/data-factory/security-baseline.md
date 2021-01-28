@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: ff777f079116942eba32e49f359c7f7e0b99f65d
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: 690dcca23aedb129090b3bf4f0da8874705b5fcc
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98555789"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98941468"
 ---
 # <a name="azure-security-baseline-for-azure-data-factory"></a>Azure Data Factory için Azure Güvenlik temeli
 
@@ -960,7 +960,7 @@ Bunun yalnızca Integration Runtime bir Azure sanal makinesinde çalışıyor ol
 
 Çoğu senaryoda, Azure Otomasyonu Istenen durum yapılandırması ile birleştirilmiş Microsoft temel VM şablonları, güvenlik gereksinimlerinin karşılanmasına ve bakımında yardımcı olabilir.
 
-* [VM şablonunun nasıl indirileceği hakkında bilgi](../virtual-machines/windows/download-template.md)
+* [VM şablonunun nasıl indirileceği hakkında bilgi](/previous-versions/azure/virtual-machines/windows/download-template)
 
 * [Azure Resource Manager şablonları oluşturma hakkında bilgi](../virtual-machines/windows/ps-template.md)
 

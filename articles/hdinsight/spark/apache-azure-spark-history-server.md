@@ -1,23 +1,20 @@
 ---
 title: Uygulamalarda hata ayıklamak için Apache Spark geçmiş sunucuda genişletilmiş özellikleri kullanma-Azure HDInsight
 description: Spark uygulamalarında hata ayıklamak ve tanılamak için Apache Spark geçmiş sunucusundaki genişletilmiş özellikleri kullanın-Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 11/25/2019
-ms.openlocfilehash: d8dd9aaeaadf13fa48577cf2853e7bcf58badb41
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1d53d9e9ee2a7fa6588ea0993b3bebdb2a287351
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86079301"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98941049"
 ---
 # <a name="use-the-extended-features-of-the-apache-spark-history-server-to-debug-and-diagnose-spark-applications"></a>Spark uygulamalarında hata ayıklamak ve tanılamak için Apache Spark geçmiş sunucusunun genişletilmiş özelliklerini kullanın
 
-Bu makalede, Apache Spark geçmiş sunucusunun genişletilmiş özelliklerinin, tamamlanan veya çalışan Spark uygulamalarında hata ayıklamak ve tanılamak için nasıl kullanılacağı gösterilir. Uzantı bir **veri** sekmesi, bir **grafik** sekmesi ve bir **Tanılama** sekmesi içerir. **Veri** sekmesinde Spark işinin giriş ve çıkış verilerini kontrol edebilirsiniz. **Grafik** sekmesinde veri akışını denetleyebilir ve iş grafiğini yeniden çalabilirsiniz. **Tanılama** sekmesinde **veri eğme**, **zaman eğriltme**ve **yürütücü Kullanım Analizi** özelliklerine başvurabilirsiniz.
+Bu makalede, Apache Spark geçmiş sunucusunun genişletilmiş özelliklerinin, tamamlanan veya çalışan Spark uygulamalarında hata ayıklamak ve tanılamak için nasıl kullanılacağı gösterilir. Uzantı bir **veri** sekmesi, bir **grafik** sekmesi ve bir **Tanılama** sekmesi içerir. **Veri** sekmesinde Spark işinin giriş ve çıkış verilerini kontrol edebilirsiniz. **Grafik** sekmesinde veri akışını denetleyebilir ve iş grafiğini yeniden çalabilirsiniz. **Tanılama** sekmesinde **veri eğme**, **zaman eğriltme** ve **yürütücü Kullanım Analizi** özelliklerine başvurabilirsiniz.
 
 ## <a name="get-access-to-the-spark-history-server"></a>Spark geçmiş sunucusuna erişim sağlayın
 
@@ -42,7 +39,7 @@ Spark geçmiş sunucusu Web Kullanıcı arabirimi şu resme benzer şekilde gör
 
 İş KIMLIĞINI seçin ve ardından veri görünümünü görmek için araç menüsündeki **veriler** ' i seçin.
 
-+ Ayrı sekmeleri seçerek **girişleri**, **çıkışları**ve **tablo işlemlerini** gözden geçirin.
++ Ayrı sekmeleri seçerek **girişleri**, **çıkışları** ve **tablo işlemlerini** gözden geçirin.
 
     ![Spark uygulaması için veriler sayfasında veri sekmeleri.](./media/apache-azure-spark-history-server/apache-spark-data-tabs.png)
 
@@ -97,7 +94,7 @@ Spark geçmiş sunucusu Web Kullanıcı arabirimi şu resme benzer şekilde gör
    ![Spark uygulaması & Iş grafiği sayfasında ısı haritası.](./media/apache-azure-spark-history-server/sparkui-graph-heatmap.png)
 
 
-    |Color |Açıklama |
+    |Renk |Description |
     |---|---|
     |Yeşil|İş başarıyla tamamlandı.|
     |Orange|Görev başarısız oldu, ancak bu, işin nihai sonucunu etkilemez. Bu görevler daha sonra başarılı olabilecek yinelenen veya yeniden deneme örnekleri var.|
@@ -151,9 +148,9 @@ Spark geçmiş sunucusu Web Kullanıcı arabirimi şu resme benzer şekilde gör
 
 ## <a name="use-the-diagnosis-tab-in-the-spark-history-server"></a>Spark geçmiş sunucusundaki tanılama sekmesini kullanın
 
-İş KIMLIĞI ' ni seçin ve ardından araç menüsünde **Tanılama** ' yı seçerek iş tanılama görünümünü görüntüleyin. **Tanılama** sekmesi **veri eğriltme**, **zaman eğriltme**ve **yürütücü kullanım analizini**içerir.
+İş KIMLIĞI ' ni seçin ve ardından araç menüsünde **Tanılama** ' yı seçerek iş tanılama görünümünü görüntüleyin. **Tanılama** sekmesi **veri eğriltme**, **zaman eğriltme** ve **yürütücü kullanım analizini** içerir.
 
-+ Sırasıyla sekmeleri seçerek **veri eğriltme**, **zaman eğriltme**ve **yürütücü kullanım analizini** gözden geçirin.
++ Sırasıyla sekmeleri seçerek **veri eğriltme**, **zaman eğriltme** ve **yürütücü kullanım analizini** gözden geçirin.
 
     ![Tanılama sekmesinin içindeki veri eğriltme sekmesi.](./media/apache-azure-spark-history-server/sparkui-diagnosis-tabs.png)
 
@@ -185,7 +182,7 @@ Spark geçmiş sunucusu Web Kullanıcı arabirimi şu resme benzer şekilde gör
 
 **Parametreleri belirtin** bölümü, zaman eğriliği algılamak için kullanılan parametreleri görüntüler. Varsayılan kural: görev yürütme süresi, ortalama yürütme zamanının üç katından fazla ve görev yürütme süresi 30 saniyeden fazla. Parametreleri gereksinimlerinize göre değiştirebilirsiniz. **Çarpıklık** ve **eğme grafiğinde** , ilgili aşamalar ve görev bilgileri, tıpkı **veri eğriltme** sekmesinde olduğu gibi görüntülenir.
 
-**Zaman eğriliği**seçtiğinizde, filtrelenmiş sonuç, **parametreleri belirt** bölümünde ayarlanan parametrelere göre **asimetrik aşama** bölümünde görüntülenir. **Çarpıtılmış aşama** bölümünde bir öğe seçtiğinizde, ilgili grafik üçüncü bölümde drafted ve görev ayrıntıları sağ alt panelde görüntülenir.
+**Zaman eğriliği** seçtiğinizde, filtrelenmiş sonuç, **parametreleri belirt** bölümünde ayarlanan parametrelere göre **asimetrik aşama** bölümünde görüntülenir. **Çarpıtılmış aşama** bölümünde bir öğe seçtiğinizde, ilgili grafik üçüncü bölümde drafted ve görev ayrıntıları sağ alt panelde görüntülenir.
 
 ![Tanılama sekmesi içindeki zaman eğriltme sekmesi.](./media/apache-azure-spark-history-server/sparkui-diagnosis-timeskew-section2.png)
 
@@ -193,7 +190,7 @@ Spark geçmiş sunucusu Web Kullanıcı arabirimi şu resme benzer şekilde gör
 
 **Yürütücü kullanım grafiği** , işin gerçek yürütücü ayırmasını ve çalışma durumunu görüntüler.  
 
-**Yürütücü Kullanım Analizi**' ni seçtiğinizde, yürütücü kullanımı hakkında dört farklı eğri drafted: **ayrılmış Yürüticileri**, **yürüticileri**, **boştaki yürüticileri**ve **en fazla yürütücü örneğini**çalıştırın. Her **yürütücü eklenen** veya **yürütücü tarafından kaldırılan** olay, ayrılan yürütmeleri arttırır veya azaltır. Daha fazla karşılaştırma için **işler** sekmesinde **olay zaman çizelgesini** kontrol edebilirsiniz.
+**Yürütücü Kullanım Analizi**' ni seçtiğinizde, yürütücü kullanımı hakkında dört farklı eğri drafted: **ayrılmış Yürüticileri**, **yürüticileri**, **boştaki yürüticileri** ve **en fazla yürütücü örneğini** çalıştırın. Her **yürütücü eklenen** veya **yürütücü tarafından kaldırılan** olay, ayrılan yürütmeleri arttırır veya azaltır. Daha fazla karşılaştırma için **işler** sekmesinde **olay zaman çizelgesini** kontrol edebilirsiniz.
 
 ![Tanılama sekmesinin içindeki yürütücü Kullanım Analizi sekmesi.](./media/apache-azure-spark-history-server/sparkui-diagnosis-executors.png)
 
@@ -208,10 +205,10 @@ Tüm taslaklarına karşılık gelen içeriği seçmek veya seçimini kaldırmak
 Topluluk sürümüne dönmek için aşağıdaki adımları uygulayın.
 
 1. Kümeyi ambarı 'nda açın.
-1. **Spark2**  >  **configs**sayfasına gidin.
+1. **Spark2**  >  **configs** sayfasına gidin.
 1. **Özel spark2-varsayılanlar**' ı seçin.
 1. **Özellik Ekle...** seçeneğini belirleyin.
-1. **Spark. UI. geliştirmesi. Enabled = False**ekleyin ve sonra kaydedin.
+1. **Spark. UI. geliştirmesi. Enabled = False** ekleyin ve sonra kaydedin.
 1. Özelliği şimdi **yanlış** olarak ayarlanır.
 1. Yapılandırmayı kaydetmek için **Kaydet** ' i seçin.
 
@@ -221,7 +218,7 @@ Topluluk sürümüne dönmek için aşağıdaki adımları uygulayın.
 
     ![Apache ambarı 'ndaki Özet görünümü.](./media/apache-azure-spark-history-server/apache-spark-restart1.png)
 
-1. Spark geçmiş sunucusunu yeniden başlatmak için **Spark2 geçmiş sunucusunun**sağ tarafındaki **başlatılan** düğmesini seçin ve ardından açılan menüden **Yeniden Başlat** ' ı seçin.
+1. Spark geçmiş sunucusunu yeniden başlatmak için **Spark2 geçmiş sunucusunun** sağ tarafındaki **başlatılan** düğmesini seçin ve ardından açılan menüden **Yeniden Başlat** ' ı seçin.
 
     ![Apache ambarı 'nda Spark geçmiş sunucusunu yeniden başlatın.](./media/apache-azure-spark-history-server/apache-spark-restart2.png)  
 

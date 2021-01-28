@@ -1,19 +1,16 @@
 ---
 title: Azure HDInsight için bir Java HBase istemcisi oluşturmak için Apache Maven kullanma
 description: Apache Maven kullanarak Java tabanlı bir Apache HBase uygulaması oluşturma ve ardından bunu Azure HDInsight 'ta HBase 'e dağıtma hakkında bilgi edinin.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seodec18, devx-track-java
 ms.date: 12/24/2019
-ms.openlocfilehash: 61b8aaf9ea61ebe85eac6708d7390c386dea2696
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 13616cf99db39ec4dac1d13e3dcd2cefc5a44614
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547920"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942964"
 ---
 # <a name="build-java-applications-for-apache-hbase"></a>Apache HBase için Java uygulamaları oluşturma
 
@@ -29,7 +26,7 @@ Bu belgedeki adımlarda, projeyi oluşturmak ve derlemek için [Apache Maven](ht
 
 * Apache [Maven](https://maven.apache.org/download.cgi) , Apache 'e göre düzgün şekilde [yüklendi](https://maven.apache.org/install.html) .  Maven, Java projeleri için bir proje derleme sistemidir.
 
-* Bir SSH istemcisi. Daha fazla bilgi için bkz. [SSH kullanarak HDInsight 'A bağlanma (Apache Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md).
+* Bir SSH istemcisi. Daha fazla bilgi için bkz. [SSH kullanarak HDInsight'a (Apache Hadoop) bağlanma](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 * PowerShell kullanıyorsanız [az Module](/powershell/azure/)gerekecektir.
 

@@ -6,12 +6,12 @@ ms.author: noakuper
 ms.topic: conceptual
 ms.date: 10/05/2020
 ms.subservice: ''
-ms.openlocfilehash: 5008da99b63cabba41dade9a745fbd5853345737
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 637e66956eadf57199d2e5191368d6355e2cd118
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98734975"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98941897"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>Ağları Azure İzleyici'ye güvenle bağlamak için Azure Özel Bağlantı'yı kullanma
 
@@ -217,13 +217,13 @@ Erişimin bu şekilde kısıtlanması yalnızca Application Insights kaynaktaki 
 
 Azure Resource Manager şablonları, REST ve komut satırı arabirimlerini kullanarak daha önce açıklanan işlemi otomatikleştirebilirsiniz.
 
-Özel bağlantı kapsamları oluşturup yönetmek için [REST API](/rest/api/monitor/private%20link%20scopes%20(preview)) veya [Azure CLI (az Monitor Private-link-scope)](/cli/azure/monitor/private-link-scope?view=azure-cli-latest)kullanın.
+Özel bağlantı kapsamları oluşturup yönetmek için [REST API](/rest/api/monitor/private%20link%20scopes%20(preview)) veya [Azure CLI (az Monitor Private-link-scope)](/cli/azure/monitor/private-link-scope)kullanın.
 
-Ağ erişimini yönetmek için, bayraklarını `[--ingestion-access {Disabled, Enabled}]` ve `[--query-access {Disabled, Enabled}]` [Log Analytics çalışma alanlarını](/cli/azure/monitor/log-analytics/workspace?view=azure-cli-latest) veya [Application Insights bileşenlerini](/cli/azure/ext/application-insights/monitor/app-insights/component?view=azure-cli-latest)kullanın.
+Ağ erişimini yönetmek için, bayraklarını `[--ingestion-access {Disabled, Enabled}]` ve `[--query-access {Disabled, Enabled}]` [Log Analytics çalışma alanlarını](/cli/azure/monitor/log-analytics/workspace) veya [Application Insights bileşenlerini](/cli/azure/ext/application-insights/monitor/app-insights/component)kullanın.
 
 ## <a name="collect-custom-logs-over-private-link"></a>Özel bağlantı üzerinden özel günlükleri topla
 
-Depolama hesapları özel günlüklerin alma işleminde kullanılır. Varsayılan olarak, hizmet tarafından yönetilen depolama hesapları kullanılır. Ancak özel bağlantılar üzerinde özel Günlükler almak için kendi depolama hesaplarınızı kullanmanız ve bunları Log Analytics çalışma alanı (ler) ile ilişkilendirmeniz gerekir. Bu hesapları [komut satırını](/cli/azure/monitor/log-analytics/workspace/linked-storage?view=azure-cli-latest)kullanarak ayarlama hakkında daha fazla ayrıntı için bkz..
+Depolama hesapları özel günlüklerin alma işleminde kullanılır. Varsayılan olarak, hizmet tarafından yönetilen depolama hesapları kullanılır. Ancak özel bağlantılar üzerinde özel Günlükler almak için kendi depolama hesaplarınızı kullanmanız ve bunları Log Analytics çalışma alanı (ler) ile ilişkilendirmeniz gerekir. Bu hesapları [komut satırını](/cli/azure/monitor/log-analytics/workspace/linked-storage)kullanarak ayarlama hakkında daha fazla ayrıntı için bkz..
 
 Kendi depolama hesabınızı getirme hakkında daha fazla bilgi için bkz. [günlük alma Için müşterinin sahip olduğu depolama hesapları](private-storage.md)
 
@@ -246,13 +246,13 @@ $ sudo /opt/microsoft/omsagent/bin/omsadmin.sh -X
 $ sudo /opt/microsoft/omsagent/bin/omsadmin.sh -w <workspace id> -s <workspace key>
 ```
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure portalı
 
 Application Insights ve Log Analytics gibi Azure Izleyici portalı deneyimlerini kullanmak için, Azure portal ve Azure Izleyici uzantılarına özel ağlarda erişilebilir durumda izin vermeniz gerekir. Ağ güvenlik grubunuza **AzureActiveDirectory**, **AzureResourceManager**, **Azurefrontkapısı. Firstpartisi** ve **Azurefrontkapısı. ön uç** [hizmeti etiketleri](../../firewall/service-tags.md) ekleyin.
 
 ### <a name="programmatic-access"></a>Programlı erişim
 
-REST API, [CLI](/cli/azure/monitor?view=azure-cli-latest) veya PowerShell 'i özel ağlarda Azure izleyici ile kullanmak için,**AzureActiveDirectory** ve AzureResourceManager [hizmet etiketlerini](../../virtual-network/service-tags-overview.md)güvenlik duvarınızın  içine ekleyin.  
+REST API, [CLI](/cli/azure/monitor) veya PowerShell 'i özel ağlarda Azure izleyici ile kullanmak için,**AzureActiveDirectory** ve AzureResourceManager [hizmet etiketlerini](../../virtual-network/service-tags-overview.md)güvenlik duvarınızın  içine ekleyin.  
 
 Bu etiketlerin eklenmesi, Log Analytics çalışma alanlarını ve AI bileşenlerini sorgulama, oluşturma ve yönetme gibi eylemleri gerçekleştirmenize olanak tanır.
 

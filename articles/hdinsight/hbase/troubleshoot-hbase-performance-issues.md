@@ -1,18 +1,15 @@
 ---
 title: Azure HDInsight'ta Apache HBase performans sorunlarını giderme
 description: Azure HDInsight 'ta en iyi performansı elde etmek için çeşitli Apache HBase performansı ayarlama yönergeleri ve ipuçları.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 09/24/2019
-ms.openlocfilehash: 5be3f02a80524d9c4b633e1e34d581fc26bfd32d
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 466fac524601e2d569bfa0ccf90179fe9419210d
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547903"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942895"
 ---
 # <a name="troubleshoot-apache-hbase-performance-issues-on-azure-hdinsight"></a>Azure HDInsight'ta Apache HBase performans sorunlarını giderme
 
@@ -73,7 +70,7 @@ Aşağıda, belirlediğimiz diğer özel parametrelerden bazıları ve değişen
 
 - `memstore`Boyutu varsayılan 128 MB ile 256 MB arasında artırın. Genellikle, bu ayar ağır yazma senaryolarında önerilir.
 
-- Varsayılan değer olan **1** ' den **4** ' e kadar sıkıştırma için ayrılan iş parçacıklarının sayısını artırın. Sık karşılaşılan küçük işlemleri gözlemlememiz durumunda bu ayar geçerlidir.
+- Varsayılan değer olan **1** ' den **4**' e kadar sıkıştırma için ayrılan iş parçacıklarının sayısını artırın. Sık karşılaşılan küçük işlemleri gözlemlememiz durumunda bu ayar geçerlidir.
 
 - `memstore`Depolama sınırı nedeniyle temizlemeyi engellemeyi önleyin. Bu arabelleği sağlamak için `Hbase.hstore.blockingStoreFiles` ayarı **100** olarak arttırın.
 

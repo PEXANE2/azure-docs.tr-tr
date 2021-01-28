@@ -2,19 +2,16 @@
 title: ODBC sürücüsü ile sorgu Apache Hive & PowerShell-Azure HDInsight
 description: Azure HDInsight 'ta Apache Hive kümelerini sorgulamak için Microsoft Hive ODBC sürücüsünü ve PowerShell 'i kullanın.
 keywords: Hive, Hive ODBC, PowerShell
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 06/27/2019
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 211b23db56b6deebb519b9eaac4164ea83edabac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1a6274ce36878af6cfbae04be935485c462bc86a
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89078580"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98941371"
 ---
 # <a name="tutorial-query-apache-hive-with-odbc-and-powershell"></a>Öğretici: ODBC ve PowerShell ile Apache Hive sorgulama
 
@@ -43,7 +40,7 @@ Bu öğreticiye başlamadan önce aşağıdaki öğelere sahip olmanız gerekir:
 
 Aşağıdaki adımlarda Apache Hive ODBC veri kaynağı oluşturma adımları gösterilmektedir.
 
-1. Windows 'da, **Start**  >  **Windows Yönetim Araçları**  >  **ODBC veri kaynakları (32 bit)/(64 bit)** Başlat ' a gidin.  **ODBC veri kaynağı Yöneticisi** penceresi açılır.
+1. Windows 'da,   >  **Windows Yönetim Araçları**  >  **ODBC veri kaynakları (32 bit)/(64 bit)** Başlat ' a gidin.  **ODBC veri kaynağı Yöneticisi** penceresi açılır.
 
     ![OBDC veri kaynağı Yöneticisi](./media/apache-hive-query-odbc-driver-powershell/hive-odbc-driver-dsn-setup.png "ODBC veri kaynağı Yöneticisi 'ni kullanarak bir DSN yapılandırma")
 
@@ -58,7 +55,7 @@ Aşağıdaki adımlarda Apache Hive ODBC veri kaynağı oluşturma adımları g�
    |  Data Source Name |Veri kaynağınız için bir ad verin |
    |  Ana bilgisayar (ler) |`CLUSTERNAME.azurehdinsight.net` yazın. Örneğin, `myHDICluster.azurehdinsight.net` |
    |  Bağlantı noktası |**443** yazın.|
-   |  Veritabanı |**Varsayılanı**kullanın. |
+   |  Veritabanı |**Varsayılanı** kullanın. |
    |  Mechanism |**Windows Azure HDInsight hizmetini** seçin |
    |  User Name |HDInsight kümesi HTTP Kullanıcı Kullanıcı adı girin. Varsayılan kullanıcı adı **admin** şeklindedir. |
    |  Parola |HDInsight kümesi Kullanıcı parolasını girin. **Parolayı Kaydet (şifreli)** onay kutusunu seçin.|
@@ -73,7 +70,7 @@ Aşağıdaki adımlarda Apache Hive ODBC veri kaynağı oluşturma adımları g�
 
     ![Gelişmiş DSN yapılandırma seçenekleri](./media/apache-hive-query-odbc-driver-powershell/odbc-data-source-advanced-options.png "Gelişmiş DSN yapılandırma seçenekleri")
 
-1. Veri kaynağını test etmek için **Test** ' i seçin. Veri kaynağı doğru şekilde yapılandırıldığında, test sonucu **başarıyı**gösterir.  
+1. Veri kaynağını test etmek için **Test** ' i seçin. Veri kaynağı doğru şekilde yapılandırıldığında, test sonucu **başarıyı** gösterir.  
 
 1. Test penceresini kapatmak için **Tamam ' ı** seçin.  
 

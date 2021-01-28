@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 12/01/2020
 ms.author: sngun
 ms.custom: subject-monitoring
-ms.openlocfilehash: f7cc9d4062ad9a49ff84db6ac035ff53934ae0a0
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: d5cfdca24193b899926bd30995063ed55b3dd3eb
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96532066"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943463"
 ---
 # <a name="monitor-azure-cosmos-db"></a>Azure Cosmos DB'yi izleme
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -67,7 +67,7 @@ Azure Cosmos DB, [Azure kaynaklarından gelen verileri izleme](../azure-monitor/
 
 Her Azure Cosmos veritabanı için Azure portal **genel bakış** sayfası, isteği ve saatlik faturalandırma kullanımı dahil olmak üzere veritabanı kullanımının kısa bir görünümünü içerir. Bu yararlı bir bilgi olmakla kalmaz, yalnızca küçük miktarda izleme verisi kullanılabilir. Bu verilerden bazıları otomatik olarak toplanır ve analiz için kullanılabilir, ancak bazı yapılandırma ile ek veri toplamayı etkinleştirebilirsiniz.
 
-:::image type="content" source="media/monitor-cosmos-db/overview-page.png" alt-text="Genel Bakış sayfası":::
+:::image type="content" source="media/monitor-cosmos-db/overview-page.png" alt-text="Genel bakış sayfası":::
 
 ## <a name="collection-and-routing"></a>Toplama ve yönlendirme
 
@@ -129,7 +129,7 @@ Azure Izleyici günlüklerindeki veriler, her tablonun kendine ait benzersiz öz
 
 Azure Izleyici 'deki tüm kaynak günlüklerine aynı alanlar ve hizmete özgü alanlar gelir. Ortak şema, [Azure izleyici kaynak günlüğü şemasında](../azure-monitor/platform/resource-logs-schema.md#top-level-common-schema)özetlenmiştir. Azure Cosmos DB için toplanan kaynak günlüklerinin türlerinin listesi için bkz. [izleme Azure Cosmos DB veri başvurusu](monitor-cosmos-db-reference.md#resource-logs).
 
-[Etkinlik günlüğü](/azure/azure-monitor/platform/activity-log) , abonelik düzeyindeki olaylara ilişkin Öngörüler sağlayan bir Azure platformu oturum açma işlemi. Bunu bağımsız olarak görüntüleyebilir veya Azure Izleyici günlüklerine yönlendirebilirsiniz, burada Log Analytics kullanarak çok daha karmaşık sorgular yapabilirsiniz.  
+[Etkinlik günlüğü](../azure-monitor/platform/activity-log.md) , abonelik düzeyindeki olaylara ilişkin Öngörüler sağlayan bir Azure platformu oturum açma işlemi. Bunu bağımsız olarak görüntüleyebilir veya Azure Izleyici günlüklerine yönlendirebilirsiniz, burada Log Analytics kullanarak çok daha karmaşık sorgular yapabilirsiniz.  
 
 Azure Cosmos DB, verileri aşağıdaki tablolarda depolar.
 
@@ -176,7 +176,7 @@ Azure Cosmos kaynaklarınızı izlemenize yardımcı olması için **günlük ar
 
 Örneğin, aşağıdaki tabloda kaynaklarınız için birkaç uyarı kuralı listelenmektedir. Azure portal uyarı kurallarının ayrıntılı bir listesini bulabilirsiniz. Daha fazla bilgi için bkz. [Uyarıları yapılandırma](create-alerts.md) makalesi.  
 
-| Uyarı türü | Koşul | Açıklama  |
+| Uyarı türü | Koşul | Description  |
 |:---|:---|:---|
 |İstek birimlerindeki hız sınırlaması (ölçüm uyarısı) |Boyut adı: StatusCode, Işleç: Equals, boyut değerleri: 429  | Kapsayıcı veya veritabanı sağlanan aktarım hızı sınırını aşarsa uyarır. |
 |Yük devredilen bölge |İşleç: büyüktür, toplama türü: Count, eşik değeri: 1 | Tek bir bölgenin yük devretme durumunda. Otomatik yük devretmeyi etkinleştirmezseniz bu uyarı yararlı olur. |
