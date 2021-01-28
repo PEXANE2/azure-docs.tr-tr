@@ -1,19 +1,16 @@
 ---
 title: "Öğretici: Azure Otomasyonu runbook 'larını kullanarak kümeler oluşturma-Azure HDInsight"
 description: Azure Otomasyonu runbook 'ları kullanarak bulutta çalışan betiklerle Azure HDInsight kümeleri oluşturmayı ve silmeyi öğrenin.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 12/27/2019
-ms.openlocfilehash: 05c0aaf6cc33442fa4f36eb38eb0d6d593fc6c1f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 255542d820d135d1a88e193a8ef13ae590ce4016
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75553516"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944040"
 ---
 # <a name="tutorial-create-azure-hdinsight-clusters-with-azure-automation"></a>Öğretici: Azure Otomasyonu ile Azure HDInsight kümeleri oluşturma
 
@@ -28,7 +25,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Mevcut bir [Azure Otomasyonu hesabı](../automation/automation-quickstart-create-account.md).
 * Küme depolama alanı olarak kullanılacak mevcut bir [Azure depolama hesabı](../storage/common/storage-account-create.md).
@@ -37,14 +34,14 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 1. [Azure Portal](https://portal.azure.com)oturum açın.
 1. Azure Otomasyonu hesaplarınızı seçin.
-1. **Paylaşılan kaynaklar**altında **modüller Galerisi** ' ni seçin.
+1. **Paylaşılan kaynaklar** altında **modüller Galerisi** ' ni seçin.
 1. Kutuya **Azurerd. Profile** yazın ve aramak için ENTER tuşuna basın. Kullanılabilir arama sonucunu seçin.
 1. **Azurerd. Profile** ekranında **içeri aktar**' ı seçin. Azure modüllerini güncelleştirmek için kutuyu işaretleyin ve ardından **Tamam**' ı seçin.
 
     ![Azurerd. Profile modülünü içeri aktarma](./media/manage-clusters-runbooks/import-azurermprofile-module.png)
 
-1. **Paylaşılan kaynaklar**altında **modüller Galerisi** ' ni seçerek modüller galerisine dönün.
-1. **HDInsight**yazın. **Azurerd. HDInsight**öğesini seçin.
+1. **Paylaşılan kaynaklar** altında **modüller Galerisi** ' ni seçerek modüller galerisine dönün.
+1. **HDInsight** yazın. **Azurerd. HDInsight** öğesini seçin.
 
     ![HDInsight modüllerine gözatamıyorum](./media/manage-clusters-runbooks/browse-modules-hdinsight.png)
 
@@ -54,13 +51,13 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 ## <a name="create-credentials"></a>Kimlik bilgileri oluştur
 
-1. **Paylaşılan kaynaklar**altında **kimlik bilgileri**' ni seçin.
+1. **Paylaşılan kaynaklar** altında **kimlik bilgileri**' ni seçin.
 1. **Kimlik bilgisi ekle**' yi seçin.
 1. **Yeni kimlik bilgileri** paneline gerekli bilgileri girin. Bu kimlik bilgisi, ambarı 'nda oturum açma olanağı sağlayacak şekilde küme parolasını deposıdır.
 
     | Özellik | Değer |
     | --- | --- |
-    | Adı | `cluster-password` |
+    | Ad | `cluster-password` |
     | Kullanıcı adı | `admin` |
     | Parola | `SECURE_PASSWORD` |
     | Parolayı onayla | `SECURE_PASSWORD` |
@@ -72,7 +69,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 ## <a name="create-a-runbook-to-create-a-cluster"></a>Küme oluşturmak için Runbook oluşturma
 
-1. **Işlem Otomasyonu**altında **runbook 'ları** seçin.
+1. **Işlem Otomasyonu** altında **runbook 'ları** seçin.
 1. **Runbook oluştur**' u seçin.
 1. **Runbook oluştur** panelinde, runbook için gibi bir ad girin `hdinsight-cluster-create` . **Runbook türü** açılan listesinden **PowerShell** ' i seçin.
 1. **Oluştur**’u seçin.
@@ -128,7 +125,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 ## <a name="create-a-runbook-to-delete-a-cluster"></a>Kümeyi silmek için Runbook oluşturma
 
-1. **Işlem Otomasyonu**altında **runbook 'ları** seçin.
+1. **Işlem Otomasyonu** altında **runbook 'ları** seçin.
 1. **Runbook oluştur**' u seçin.
 1. **Runbook oluştur** panelinde, runbook için gibi bir ad girin `hdinsight-cluster-delete` . **Runbook türü** açılan listesinden **PowerShell** ' i seçin.
 1. **Oluştur**’u seçin.
@@ -152,7 +149,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 ### <a name="create-a-cluster"></a>Küme oluşturma
 
-1. **Işlem Otomasyonu**altında **runbook 'ları** seçerek Otomasyon hesabınızın runbook 'larının listesini görüntüleyin.
+1. **Işlem Otomasyonu** altında **runbook 'ları** seçerek Otomasyon hesabınızın runbook 'larının listesini görüntüleyin.
 1. `hdinsight-cluster-create`Küme oluşturma runbook 'unuzu oluştururken kullandığınız adı seçin.
 1. Runbook 'u hemen yürütmek için **Başlat** ' ı seçin. Ayrıca, runbook 'ları düzenli aralıklarla çalışacak şekilde zamanlayabilirsiniz. Bkz. [Azure Otomasyonu 'nda Runbook zamanlama](../automation/shared-resources/schedules.md)
 1. Betik için gerekli parametreleri girin ve **Tamam**' ı seçin. Bu, **clustername** parametresinde belirttiğiniz ada sahip yeni bir HDInsight kümesi oluşturur.

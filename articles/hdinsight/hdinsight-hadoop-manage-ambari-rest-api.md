@@ -1,19 +1,16 @@
 ---
 title: REST API-Azure HDInsight ile Hadoop izleme ve yönetme
 description: Azure HDInsight 'ta Hadoop kümelerini izlemek ve yönetmek için ambarı 'nı nasıl kullanacağınızı öğrenin. Bu belgede, HDInsight kümelerine eklenen REST API ambarı 'nı nasıl kullanacağınızı öğreneceksiniz.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/29/2020
-ms.openlocfilehash: 6ba1d1e15b1dbb3efb24219b6c09a6827e701d46
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 1d4e6f0d6a0242cda919364965a61e4314927d87
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546084"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945577"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-rest-api"></a>Apache ambarı 'nı kullanarak HDInsight kümelerini yönetme REST API
 
@@ -37,11 +34,11 @@ Apache ambarı, [REST API 'leri](https://github.com/apache/ambari/blob/trunk/amb
 
 ## <a name="base-uniform-resource-identifier-for-ambari-rest-api"></a>Ambarı REST API 'SI için temel Tekdüzen Kaynak tanımlayıcısı
 
- HDInsight üzerinde REST API ambarı için temel Tekdüzen Kaynak tanımlayıcısı (URI), `https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME` burada `CLUSTERNAME` kümenizin adıdır.  URI 'Lerinde küme adları **büyük/küçük harfe duyarlıdır** .  URI () öğesinin tam etki alanı adı (FQDN) bölümünde küme adı `CLUSTERNAME.azurehdinsight.net` büyük/küçük harfe duyarsız olsa da, URI 'deki diğer oluşumlar büyük/küçük harfe duyarlıdır.
+ HDInsight üzerinde REST API ambarı için temel Tekdüzen Kaynak tanımlayıcısı (URI), `https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME` burada `CLUSTERNAME` kümenizin adıdır.  URI 'Lerinde küme adları **büyük/küçük harfe duyarlıdır**.  URI () öğesinin tam etki alanı adı (FQDN) bölümünde küme adı `CLUSTERNAME.azurehdinsight.net` büyük/küçük harfe duyarsız olsa da, URI 'deki diğer oluşumlar büyük/küçük harfe duyarlıdır.
 
-## <a name="authentication"></a>Kimlik Doğrulama
+## <a name="authentication"></a>Kimlik Doğrulaması
 
-HDInsight üzerinde ambarı 'na bağlanmak için HTTPS gerekir. Küme oluşturma sırasında verdiğiniz yönetici hesabı adını (varsayılan **yönetici** ) ve parolayı kullanın.
+HDInsight üzerinde ambarı 'na bağlanmak için HTTPS gerekir. Küme oluşturma sırasında verdiğiniz yönetici hesabı adını (varsayılan **yönetici**) ve parolayı kullanın.
 
 Yerine Kurumsal Güvenlik Paketi kümeleri için `admin` , gibi tam bir Kullanıcı adı kullanın `username@domain.onmicrosoft.com` .
 

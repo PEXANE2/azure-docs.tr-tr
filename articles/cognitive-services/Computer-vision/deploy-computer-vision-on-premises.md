@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 11/23/2020
+ms.date: 01/27/2020
 ms.author: aahi
-ms.openlocfilehash: b3e1bb3f418f21c75e29b5a1cad337c6f3c10145
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.openlocfilehash: 8f795a7c0d8a2bac09c588924b0fd87e62258da3
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98246647"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946193"
 ---
 # <a name="use-computer-vision-container-with-kubernetes-and-helm"></a>Kubernetes ve Held ile Görüntü İşleme kapsayıcısı kullanma
 
 Şirket içi Görüntü İşleme Kapsayıcılarınızı yönetmenin bir seçeneği, Kubernetes ve Held 'yi kullanmaktır. Kubernetes ve Held kullanarak bir Görüntü İşleme kapsayıcı görüntüsü tanımlamak için bir Kubernetes paketi oluşturacağız. Bu paket, şirket içi bir Kubernetes kümesine dağıtılacak. Son olarak, dağıtılan hizmetleri nasıl test ettireceğiz. Kubernetes düzenlemesi olmadan Docker kapsayıcılarını çalıştırma hakkında daha fazla bilgi için bkz. [görüntü işleme kapsayıcıları yükleyip çalıştırma](computer-vision-how-to-install-containers.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Şirket içinde Görüntü İşleme kapsayıcıları kullanmadan önce aşağıdaki Önkoşullar:
 
@@ -176,11 +176,11 @@ Aynı *Şablonlar* klasöründe aşağıdaki yardımcı işlevleri kopyalayıp i
 {{- end -}}
 
 {{- define "redis.connStr" -}}
-{{- $hostMaster := printf "%s-redis-master:6379" .Release.Name }}
-{{- $hostSlave := printf "%s-redis-slave:6379" .Release.Name -}}
+{{- $hostMain := printf "%s-redis-master:6379" .Release.Name }}
+{{- $hostReplica := printf "%s-redis-slave:6379" .Release.Name -}}
 {{- $passWord := printf "password=%s" .Values.read.image.args.redis.password -}}
 {{- $connTail := "ssl=False,abortConnect=False" -}}
-{{- printf "%s,%s,%s,%s" $hostMaster $hostSlave $passWord $connTail -}}
+{{- printf "%s,%s,%s,%s" $hostMain $hostReplica $passWord $connTail -}}
 {{- end -}}
 ```
 Şablon, bir yük dengeleyici hizmetini ve okuma için kapsayıcının/görüntünüzün dağıtımını belirtir.

@@ -1,19 +1,16 @@
 ---
 title: HDInsight 'ta WebHCat hatalarını anlama ve çözme-Azure
 description: HDInsight 'ta WebHCat tarafından döndürülen yaygın hataları ve bunların nasıl çözümleneceğini öğrenin.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.custom: hdinsightactive
 ms.date: 04/14/2020
-ms.openlocfilehash: 951dba6e64561301dc7dbb6ebd6fd6b641c90a47
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: ce7a21a2b5401c68c6b58bc934fb20b0225ba8ad
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93285685"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945461"
 ---
 # <a name="understand-and-resolve-errors-received-from-webhcat-on-hdinsight"></a>HDInsight’ta WebHCat’ten alınan hataları anlama ve düzeltme
 
@@ -39,7 +36,7 @@ Aşağıdaki varsayılan değerler aşılırsa, WebHCat performansını düşür
 
 ## <a name="too-many-requests"></a>Çok fazla istek
 
-**Http durum kodu** : 429
+**Http durum kodu**: 429
 
 | Nedeni | Çözüm |
 | --- | --- |
@@ -47,7 +44,7 @@ Aşağıdaki varsayılan değerler aşılırsa, WebHCat performansını düşür
 
 ## <a name="server-unavailable"></a>Sunucu kullanılamıyor
 
-**Http durum kodu** : 503
+**Http durum kodu**: 503
 
 | Nedeni | Çözüm |
 | --- | --- |
@@ -55,7 +52,7 @@ Aşağıdaki varsayılan değerler aşılırsa, WebHCat performansını düşür
 
 ## <a name="bad-request-content-could-not-find-job"></a>Hatalı istek Içeriği: iş bulunamadı
 
-**Http durum kodu** : 400
+**Http durum kodu**: 400
 
 | Nedeni | Çözüm |
 | --- | --- |
@@ -65,7 +62,7 @@ Aşağıdaki varsayılan değerler aşılırsa, WebHCat performansını düşür
 
 ## <a name="bad-gateway"></a>Hatalı ağ geçidi
 
-**Http durum kodu** : 502
+**Http durum kodu**: 502
 
 | Nedeni | Çözüm |
 | --- | --- |

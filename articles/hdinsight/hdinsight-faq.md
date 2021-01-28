@@ -4,17 +4,16 @@ description: HDInsight hakkında sık sorulan sorular
 keywords: sık sorulan sorular, SSS
 author: Ramakoni1
 ms.author: ramakoni
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,seoapr2020
 ms.topic: conceptual
 ms.date: 11/20/2019
-ms.openlocfilehash: 120a73c7bf2ea9ee61d1fe1aef9ffa39a3cb3f76
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 13282962886d8682b6056d10f8f0cc5a7f626d60
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97882407"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946027"
 ---
 # <a name="azure-hdinsight-frequently-asked-questions"></a>Azure HDInsight: Sık sorulan sorular
 
@@ -178,7 +177,7 @@ VM 'Leri bir etki alanına katmak için bir etki alanı denetleyiciniz olması g
 
 ### <a name="can-i-use-a-self-signed-certificate-in-an-aad-ds-secure-ldap-setup-and-provision-an-esp-cluster"></a>AAD-DS Güvenli LDAP kurulumunda kendinden imzalı bir sertifika kullanabilir ve bir ESP kümesi sağlayabilir miyim?
 
-Sertifika yetkilisi tarafından verilen bir sertifikanın kullanılması önerilir. Ancak, otomatik olarak imzalanan bir sertifika kullanmak, ESP üzerinde de desteklenir. Daha fazla bilgi için bkz:
+Sertifika yetkilisi tarafından verilen bir sertifikanın kullanılması önerilir. Ancak, otomatik olarak imzalanan bir sertifika kullanmak, ESP üzerinde de desteklenir. Daha fazla bilgi için bkz.
 
 - [Azure Active Directory Domain Services’ı etkinleştirme](domain-joined/apache-domain-joined-configure-using-azure-adds.md#enable-azure-ad-ds)
 
@@ -255,7 +254,7 @@ done
 
 Şu anda, BLOB depolama ve Azure Data Lake Storage 1. veya Gen2 için Ranger eklentisi yok. ESP kümeleri için Azure Data Lake Storage kullanmanız gerekir. En azından, dosya sistemi düzeyinde,,,,,,,,,,,,,,,,, Ayrıca, Azure Data Lake Storage kullanırken, ESP kümeleri, bazı dosya sistemi erişim denetimini küme düzeyinde Azure Active Directory kullanarak yapacaktır. 
 
-Azure Depolama Gezgini kullanarak kullanıcılarınızın güvenlik gruplarına veri erişim ilkeleri atayabilirsiniz. Daha fazla bilgi için bkz:
+Azure Depolama Gezgini kullanarak kullanıcılarınızın güvenlik gruplarına veri erişim ilkeleri atayabilirsiniz. Daha fazla bilgi için bkz.
 
 - [Nasıl yaparım?, Azure AD kullanıcılarının Hive veya diğer hizmetleri kullanarak Data Lake Storage 2. verileri sorgulaması için izinleri ayarlamak ister misiniz?](hdinsight-hadoop-use-data-lake-storage-gen2.md#how-do-i-set-permissions-for-azure-ad-users-to-query-data-in-data-lake-storage-gen2-by-using-hive-or-other-services)
 - [Azure Data Lake Storage 2. ile Azure Depolama Gezgini kullanarak dosya ve Dizin düzeyi izinleri ayarlama](../storage/blobs/data-lake-storage-explorer.md)

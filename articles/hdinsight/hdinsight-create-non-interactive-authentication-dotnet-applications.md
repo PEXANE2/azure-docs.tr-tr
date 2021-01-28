@@ -1,19 +1,16 @@
 ---
 title: Etkileşimli olmayan kimlik doğrulaması .NET uygulaması-Azure HDInsight
 description: Azure HDInsight 'ta etkileşimli olmayan kimlik doğrulama Microsoft .NET uygulamaları oluşturmayı öğrenin.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-csharp
 ms.date: 12/23/2019
-ms.openlocfilehash: a696ba4f7bab85f2353e80d028220688531b3b69
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 121c5850ef47999f54d206b95b69e10775d3e5c9
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89021774"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946092"
 ---
 # <a name="create-a-non-interactive-authentication-net-hdinsight-application"></a>Etkileşimli olmayan bir kimlik doğrulama .NET HDInsight uygulaması oluşturma
 
@@ -21,11 +18,11 @@ Microsoft .NET Azure HDInsight uygulamanızı uygulamanın kendi kimliği (etkil
 
 Etkileşimli olmayan .NET uygulamanızdan şunları yapmanız gerekir:
 
-* Azure abonelik kiracı KIMLIĞINIZ ( *DIZIN kimliği*olarak da bilinir). Bkz. [KIRACı kimliği Al](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in).
+* Azure abonelik kiracı KIMLIĞINIZ ( *DIZIN kimliği* olarak da bilinir). Bkz. [KIRACı kimliği Al](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in).
 * Azure Active Directory (Azure AD) uygulama istemci KIMLIĞI. Bkz. [Azure Active Directory uygulama oluşturma](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal) ve [uygulama kimliği edinme](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in).
 * Azure AD uygulama gizli anahtarı. Bkz. [uygulama kimlik doğrulama anahtarını al](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 An HDInsight küme. Kullanmaya başlama [öğreticisine](hadoop/apache-hadoop-linux-tutorial-get-started.md)bakın.
 

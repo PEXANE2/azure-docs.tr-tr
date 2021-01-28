@@ -1,18 +1,15 @@
 ---
 title: Azure HDInsight ile Apache Sqoop işleri çalıştırma (Apache Hadoop)
 description: Bir Hadoop kümesi ile Azure SQL veritabanı arasında Sqoop içeri aktarma ve dışarı aktarma çalıştırmak için bir iş istasyonundan Azure PowerShell nasıl kullanacağınızı öğrenin.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 12/06/2019
-ms.openlocfilehash: c09a910ea5f6ac5c66a94c73bda49d1f65630708
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 1c34b673cd970a9e7577b7ff01d27eb0e4cc1ac1
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545234"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946442"
 ---
 # <a name="use-apache-sqoop-with-hadoop-in-hdinsight"></a>HDInsight'ta Hadoop ile Apache Sqoop'u kullanma
 
@@ -99,7 +96,7 @@ Küme, SQL veritabanı ve diğer nesneler, Azure portal aracılığıyla Azure R
 
 3. **Yukarıda belirtilen hüküm ve koşulları kabul ediyorum '** u seçin.
 
-4. **Satın al** 'ı seçin. Şablon dağıtımı için dağıtım gönderme başlıklı yeni bir kutucuk görürsünüz. Kümenin ve SQL Database’in oluşturulması yaklaşık 20 dakika sürer.
+4. **Satın al**'ı seçin. Şablon dağıtımı için dağıtım gönderme başlıklı yeni bir kutucuk görürsünüz. Kümenin ve SQL Database’in oluşturulması yaklaşık 20 dakika sürer.
 
 ## <a name="run-sqoop-jobs"></a>Sqoop işlerini Çalıştır
 

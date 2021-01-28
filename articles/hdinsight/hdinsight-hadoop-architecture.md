@@ -1,19 +1,16 @@
 ---
 title: Apache Hadoop mimarisi-Azure HDInsight
 description: Azure HDInsight kümelerinde Apache Hadoop depolamayı ve işlemeyi açıklar.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/07/2020
-ms.openlocfilehash: 389aee77ac56407f3a116d42ad62fbd94de1bb4e
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 6f291e5aa440a3e6e45a1dcdb872e18c8d4557ce
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92541953"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945907"
 ---
 # <a name="apache-hadoop-architecture-in-hdinsight"></a>HDInsight’ta Apache Hadoop mimarisi
 
@@ -37,7 +34,7 @@ Bir MapReduce uygulaması bir kümede çalıştığında, ResourceManager uygula
 
 ResourceManager Ayrıca uygulamaların durumunu izlemek için bir Web Kullanıcı arabirimi sağlayan bir Web sunucusu işlemi çalıştırır.
 
-Bir kullanıcı küme üzerinde çalışacak bir MapReduce uygulaması gönderdiğinde, uygulama ResourceManager 'ya gönderilir. Sırasıyla, ResourceManager, kullanılabilir NodeManager düğümlerinde bir kapsayıcı ayırır. NodeManager düğümleri uygulamanın aslında çalıştırıldığı yerdir. Ayrılan ilk kapsayıcı, ApplicationMaster adlı özel bir uygulama çalıştırır. Bu ApplicationMaster, gönderilen uygulamayı çalıştırmak için gereken sonraki kapsayıcılar biçiminde kaynakları edinmekten sorumludur. ApplicationMaster, eşleme aşaması ve aşamayı azaltma gibi uygulama aşamalarını ve ne kadar veri işlenmesi gerektiğine ilişkin faktörleri inceler. Daha sonra ApplicationMaster, uygulama adına kaynak üzerinde bulunan kaynakları ( *anlaşma* ) ister. Ayrıca ResourceManager, kümedeki NodeManager 'dan uygulamayı yürütürken kullanması için kaynak yöneticilerden kaynak sağlar.
+Bir kullanıcı küme üzerinde çalışacak bir MapReduce uygulaması gönderdiğinde, uygulama ResourceManager 'ya gönderilir. Sırasıyla, ResourceManager, kullanılabilir NodeManager düğümlerinde bir kapsayıcı ayırır. NodeManager düğümleri uygulamanın aslında çalıştırıldığı yerdir. Ayrılan ilk kapsayıcı, ApplicationMaster adlı özel bir uygulama çalıştırır. Bu ApplicationMaster, gönderilen uygulamayı çalıştırmak için gereken sonraki kapsayıcılar biçiminde kaynakları edinmekten sorumludur. ApplicationMaster, eşleme aşaması ve aşamayı azaltma gibi uygulama aşamalarını ve ne kadar veri işlenmesi gerektiğine ilişkin faktörleri inceler. Daha sonra ApplicationMaster, uygulama adına kaynak üzerinde bulunan kaynakları (*anlaşma*) ister. Ayrıca ResourceManager, kümedeki NodeManager 'dan uygulamayı yürütürken kullanması için kaynak yöneticilerden kaynak sağlar.
 
 Nodeyöneticileri, uygulamayı oluşturan görevleri çalıştırır ve sonra ilerleme durumunu ve durumlarını ApplicationMaster 'a bildirir. İçindeki ApplicationMaster, uygulamanın durumunu ResourceManager 'ya geri bildirir. ResourceManager, istemciye herhangi bir sonuç döndürür.
 
@@ -51,7 +48,7 @@ Tüm HDInsight küme türleri YARN 'yi dağıtır. ResourceManager, birincil ve 
 
 Depolama hesabınızdan bir dosyayı geri almak için, bkz.:
 
-### <a name="azure-storage"></a>Azure Depolama
+### <a name="azure-storage"></a>Azure Storage
 
 * [Azure Depolama blobları için geçici silme](../storage/blobs/soft-delete-blob-overview.md)
 * [Blobu geri al](/rest/api/storageservices/undelete-blob)
@@ -66,7 +63,7 @@ Depolama hesabınızdan bir dosyayı geri almak için, bkz.:
 
 ## <a name="trash-purging"></a>Çöp Temizleme
 
-`fs.trash.interval` **HDFS**  >  **Advanced core-site** `0` Yerel dosya sisteminde herhangi bir veri depolamamanız gerektiğinden,,,, Bu değer, uzak depolama hesaplarını etkilemez (EB, ADLS GEN1, ABFS)
+`fs.trash.interval`   >   `0` Yerel dosya sisteminde herhangi bir veri depolamamanız gerektiğinden,,,, Bu değer, uzak depolama hesaplarını etkilemez (EB, ADLS GEN1, ABFS)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

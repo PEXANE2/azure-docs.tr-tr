@@ -1,19 +1,16 @@
 ---
 title: C#, Apache Hive & Apache Pig on Apache Hadoop-Azure HDInsight
 description: Azure HDInsight 'ta Apache Hive ve Apache Pig akışı ile C# Kullanıcı tanımlı işlevleri (UDF) kullanmayı öğrenin.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-csharp
 ms.date: 12/06/2019
-ms.openlocfilehash: e99d68d31f1da4dcb3ef1086a2bbd90f0ab30410
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 97b23a2b9e3b95a5ea0efcd27d0ec185b1c456f1
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96023134"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946550"
 ---
 # <a name="use-c-user-defined-functions-with-apache-hive-and-apache-pig-on-apache-hadoop-in-hdinsight"></a>HDInsight 'ta Apache Hadoop üzerinde Apache Hive ve Apache Pig ile C# Kullanıcı tanımlı işlevleri kullanma
 
@@ -111,7 +108,7 @@ Apache Hive UDF için C# projesi oluşturmak için:
     }
     ```
 
-6. Menü çubuğundan **Build**  >  Projeyi derlemek için derleme **Build Solution** ' ı seçin.
+6. Menü çubuğundan   >  Projeyi derlemek için derleme **Build Solution** ' ı seçin.
 
 7. Çözümü kapatın.
 
@@ -160,7 +157,7 @@ Apache Hive UDF için C# projesi oluşturmak için:
 
     Bu kod, Pig adresinden gönderilen satırları ayrıştırır ve ile başlayan satırları yeniden biçimlendirir `java.lang.Exception` .
 
-6. Menü çubuğundan **Build**  >  Projeyi derlemek için derleme **Build Solution** ' ı seçin.
+6. Menü çubuğundan   >  Projeyi derlemek için derleme **Build Solution** ' ı seçin.
 
 7. Çözümü açık bırakın.
 
@@ -168,7 +165,7 @@ Apache Hive UDF için C# projesi oluşturmak için:
 
 Ardından, Hive ve Pig UDF uygulamalarını bir HDInsight kümesindeki depolamaya yükleyin.
 
-1. Visual Studio 'da Sunucu Gezgini **görüntüle**' ye gidin  >  **Server Explorer**.
+1. Visual Studio 'da Sunucu Gezgini **görüntüle**' ye gidin  >  .
 
 1. **Sunucu Gezgini**' den **Azure**' a sağ tıklayın, **Microsoft Azure aboneliğine Bağlan**' ı seçin ve oturum açma işlemini doldurun.
 
@@ -196,7 +193,7 @@ Ardından, Hive ve Pig UDF uygulamalarını bir HDInsight kümesindeki depolamay
 
 Artık Hive UDF uygulamanızı kullanan bir Hive sorgusu çalıştırabilirsiniz.
 
-1. Visual Studio 'da Sunucu Gezgini **görüntüle**' ye gidin  >  **Server Explorer**.
+1. Visual Studio 'da Sunucu Gezgini **görüntüle**' ye gidin  >  .
 
 2. **Azure** seçeneğini ve sonra **HDInsight** seçeneğini genişletin.
 
@@ -252,7 +249,7 @@ Ayrıca, Pig UDF uygulamanızı kullanan bir Pig işi de çalıştırabilirsiniz
     DUMP DETAILS;
     ```
 
-    `DEFINE`İfade,PigUDF.exeuygulaması için bir diğer ad oluşturur `streamer` ve *PigUDF.exe* `CACHE` bunu küme için varsayılan depolamadan yükler. Daha sonra, `streamer` `STREAM` içinde bulunan tek satırları işlemek `LOG` ve verileri bir dizi sütun olarak döndürmek için işleciyle birlikte kullanılır.
+    `DEFINE`İfade,PigUDF.exeuygulaması için bir diğer ad oluşturur `streamer` ve  `CACHE` bunu küme için varsayılan depolamadan yükler. Daha sonra, `streamer` `STREAM` içinde bulunan tek satırları işlemek `LOG` ve verileri bir dizi sütun olarak döndürmek için işleciyle birlikte kullanılır.
 
     > [!NOTE]
     > Akış için kullanılan uygulama adının, \` diğer ad ve ile birlikte kullanıldığında ' (tek tırnak) karakteriyle çevrelenmelidir `SHIP` .

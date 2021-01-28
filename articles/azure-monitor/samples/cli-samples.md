@@ -7,19 +7,19 @@ author: bwren
 ms.author: bwren
 ms.date: 05/16/2018
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: abfac23ad37d750a6d7ef84e5dec2559904ebb1f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 196a1d580bd5888a6604c3f98b108e39c08a3412
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87496313"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945020"
 ---
 # <a name="azure-monitor-cli-samples"></a>Azure Izleyici CLı örnekleri
 Bu makalede, Azure Izleyici özelliklerine erişmenize yardımcı olacak örnek komut satırı arabirimi (CLı) komutları gösterilmektedir. Azure Izleyici, Cloud Services, sanal makineleri ve Web Apps otomatik olarak ve yapılandırılmış telemetri verileri değerlerine göre uyarı bildirimleri göndermenizi veya Web URL 'Lerini çağırmayı sağlar.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-Azure CLı 'yı henüz yüklemediyseniz [Azure CLI yükleme](/cli/azure/install-azure-cli)yönergelerini izleyin. Ayrıca, CLı 'yı tarayıcınızda etkileşimli bir deneyim olarak çalıştırmak için [Azure Cloud Shell](/azure/cloud-shell) de kullanabilirsiniz. [Azure IZLEYICI CLI başvurusu](/cli/azure/monitor?view=azure-cli-latest)'ndaki tüm kullanılabilir komutların tam başvurusuna bakın. 
+Azure CLı 'yı henüz yüklemediyseniz [Azure CLI yükleme](/cli/azure/install-azure-cli)yönergelerini izleyin. Ayrıca, CLı 'yı tarayıcınızda etkileşimli bir deneyim olarak çalıştırmak için [Azure Cloud Shell](/azure/cloud-shell) de kullanabilirsiniz. [Azure IZLEYICI CLI başvurusu](/cli/azure/monitor)'ndaki tüm kullanılabilir komutların tam başvurusuna bakın. 
 
 ## <a name="log-in-to-azure"></a>Azure'da oturum açma
 İlk adım, Azure hesabınızda oturum açmak için kullanılır.

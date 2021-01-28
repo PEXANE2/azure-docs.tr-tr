@@ -1,19 +1,16 @@
 ---
 title: HDInsight 'ta Hadoop ile ton Linux tabanlı kümeler-Azure
 description: HDInsight kümelerine ton yüklemeyi öğrenin ve istekleri tona yönlendirmek için Tüneli kullanın. Depolamaya gözatıp Hive veya Pig çalıştırmak için ton kullanın.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 03/31/2020
-ms.openlocfilehash: e80df5d1c3d2b2195e76622964406cc65c933a63
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 8d4663aac6af4abb8d9855d2f972965e997d9c92
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546203"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945675"
 ---
 # <a name="install-and-use-hue-on-hdinsight-hadoop-clusters"></a>HDInsight Hadoop kümelerinde ton 'u yükleyip kullanma
 
@@ -87,11 +84,11 @@ Normal kümeler üzerinde ton ile yalnızca bir Kullanıcı hesabınız olabilir
 
 ### <a name="run-a-hive-query"></a>Hive sorgusu çalıştırma
 
-1. Ton portalından **Sorgu Düzenleyicileri** ' ni seçin ve Hive düzenleyicisini açmak için **Hive** ' ı seçin.
+1. Ton portalından **Sorgu Düzenleyicileri**' ni seçin ve Hive düzenleyicisini açmak için **Hive** ' ı seçin.
 
     ![HDInsight ton portalı Hive düzenleyicisini kullanma](./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-use-hive.png "Hive kullanma")
 
-2. **Yardım** sekmesinde, **veritabanı** altında, **hivesampletable** ' ı görmeniz gerekir. Bu, HDInsight üzerinde tüm Hadoop kümeleriyle birlikte gelen örnek bir tablodur. Sağ bölmede örnek bir sorgu girin ve ekran yakalama bölümünde gösterildiği gibi aşağıdaki bölmedeki **sonuçlar** sekmesinde yer alan çıktıyı görüntüleyin.
+2. **Yardım** sekmesinde, **veritabanı** altında, **hivesampletable**' ı görmeniz gerekir. Bu, HDInsight üzerinde tüm Hadoop kümeleriyle birlikte gelen örnek bir tablodur. Sağ bölmede örnek bir sorgu girin ve ekran yakalama bölümünde gösterildiği gibi aşağıdaki bölmedeki **sonuçlar** sekmesinde yer alan çıktıyı görüntüleyin.
 
     ![HDInsight ton portalı Hive sorgusu](./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-hive-query.png "Hive sorgusu Çalıştır")
 

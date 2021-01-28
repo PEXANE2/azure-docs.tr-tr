@@ -1,19 +1,16 @@
 ---
 title: "Öğretici: Azure CLı kullanarak HDInsight 'ta Apache Kafka REST proxy etkin kümesi oluşturma"
 description: Azure HDInsight üzerinde Kafka REST proxy kullanarak Apache Kafka işlemlerini nasıl gerçekleştireceğinizi öğrenin.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 02/27/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 68dddcbc5771ef1a8b5d6ea423674a1c6845a5e6
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: ff11b8461b483f5a66df19bb1b108a1fe1168fb9
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92539488"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944021"
 ---
 # <a name="tutorial-create-an-apache-kafka-rest-proxy-enabled-cluster-in-hdinsight-using-azure-cli"></a>Öğretici: Azure CLı kullanarak HDInsight 'ta Apache Kafka REST proxy etkin kümesi oluşturma
 

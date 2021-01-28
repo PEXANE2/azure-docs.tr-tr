@@ -1,19 +1,16 @@
 ---
 title: Azure HDInsight kümeleriyle Azure Data Lake Storage 2. Nesil hizmetini kullanma
 description: Azure Data Lake Storage 2. Azure HDInsight kümeleri ile nasıl kullanacağınızı öğrenin.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020, devx-track-azurecli
 ms.date: 04/24/2020
-ms.openlocfilehash: cc17cd23ae197db25fed440eb249f2cf069d4859
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 2bbfbd2d953ea663453f0092ff366e95f6dd5ea7
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92744590"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945374"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>Azure HDInsight kümeleriyle Azure Data Lake Storage 2. Nesil hizmetini kullanma
 
@@ -66,19 +63,19 @@ Kullanıcıların verileri sorgulamasına yönelik izinleri ayarlamak için, ACL
 
 HDInsight kümesinden Data Lake Storage 2. dosyalara erişmek için çeşitli yollar vardır.
 
-* **Tam adı kullanarak** . Bu yöntemle, erişmek istediğiniz dosyanın tam yolunu girersiniz.
+* **Tam adı kullanarak**. Bu yöntemle, erişmek istediğiniz dosyanın tam yolunu girersiniz.
 
     ```
     abfs://<containername>@<accountname>.dfs.core.windows.net/<file.path>/
     ```
 
-* **Kısaltılmış yol biçimi kullanarak** . Bu yaklaşımda, yolu küme köküne kadar değiştirirsiniz:
+* **Kısaltılmış yol biçimi kullanarak**. Bu yaklaşımda, yolu küme köküne kadar değiştirirsiniz:
 
     ```
     abfs:///<file.path>/
     ```
 
-* **Göreli yolu kullanarak** . Bu yöntemle, erişmek istediğiniz dosyanın yalnızca göreli yolunu girersiniz.
+* **Göreli yolu kullanarak**. Bu yöntemle, erişmek istediğiniz dosyanın yalnızca göreli yolunu girersiniz.
 
     ```
     /<file.path>/

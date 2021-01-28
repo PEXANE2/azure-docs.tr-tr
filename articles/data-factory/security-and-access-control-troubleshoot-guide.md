@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 01/05/2021
 ms.author: lle
 ms.reviewer: craigg
-ms.openlocfilehash: 3b7b405e34b6ca82da593507ad6103d360c5df1e
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: 70e4d0c1a9f26f83924c1343e4e8e51c5595b324
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97968594"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944517"
 ---
 # <a name="troubleshoot-azure-data-factory-security-and-access-control-issues"></a>Azure Data Factory güvenlik ve erişim denetimi sorunlarını giderme
 
@@ -49,13 +49,13 @@ Soruna genellikle aşağıdaki faktörlerden biri neden olur:
 
 * **Şirket içinde barındırılan BIR IR** kullanıyorsanız, bir Azure IR kullanıyorsanız aynı veri deposuna bağlanma işlemi başarılı olabileceğinden proxy, güvenlik duvarı ve ağ ayarlarınızı kontrol edin. Bu senaryonun sorunlarını gidermek için bkz.:
 
-   * [Şirket içinde barındırılan IR bağlantı noktaları ve güvenlik duvarları](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime#ports-and-firewalls)
-   * [Azure Data Lake Storage Bağlayıcısı](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-store)
+   * [Şirket içinde barındırılan IR bağlantı noktaları ve güvenlik duvarları](./create-self-hosted-integration-runtime.md#ports-and-firewalls)
+   * [Azure Data Lake Storage Bağlayıcısı](./connector-azure-data-lake-store.md)
   
 * **Azure IR** kullanıyorsanız, veri deposunun güvenlik duvarı ayarını devre dışı bırakmayı deneyin. Bu yaklaşım aşağıdaki iki durumda sorunları çözebilir:
   
-   * [Azure IR IP adresleri](https://docs.microsoft.com/azure/data-factory/azure-integration-runtime-ip-addresses) izin verilenler listesinde değil.
-   * [Azure Blob depolama](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#supported-capabilities) Için *Güvenilen Microsoft hizmetlerinin bu depolama hesabına erişmesine izin ver* özelliği kapalı ve [Azure Data Lake Storage Gen 2](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#supported-capabilities).
+   * [Azure IR IP adresleri](./azure-integration-runtime-ip-addresses.md) izin verilenler listesinde değil.
+   * [Azure Blob depolama](./connector-azure-blob-storage.md#supported-capabilities) Için *Güvenilen Microsoft hizmetlerinin bu depolama hesabına erişmesine izin ver* özelliği kapalı ve [Azure Data Lake Storage Gen 2](./connector-azure-data-lake-storage.md#supported-capabilities).
    * *Azure hizmetlerine erişime Izin ver* ayarı Azure Data Lake Storage 1. için etkinleştirilmemiş.
 
 Yukarıdaki yöntemlerin hiçbiri işe yarar olursa yardım için Microsoft 'a başvurun.
@@ -88,7 +88,7 @@ Data Factory tam etki alanı adının (FQDN) genel IP adresi olarak çözümleni
 #### <a name="resolution"></a>Çözüm
 
 Sorunu gidermek için şunları yapın:
-- [Azure Data Factory Için Azure özel bağlantısı](https://docs.microsoft.com/azure/data-factory/data-factory-private-link#dns-changes-for-private-endpoints) makalesine başvurun. Yönerge, özel DNS bölgesini veya sunucusunu Data Factory FQDN 'yi özel bir IP adresine çözümlemek üzere yapılandırmaya yöneliktir.
+- [Azure Data Factory Için Azure özel bağlantısı](./data-factory-private-link.md#dns-changes-for-private-endpoints) makalesine başvurun. Yönerge, özel DNS bölgesini veya sunucusunu Data Factory FQDN 'yi özel bir IP adresine çözümlemek üzere yapılandırmaya yöneliktir.
 
 - Uzun süreli çözüm olarak özel bir DNS kullanmanızı öneririz. Ancak, özel DNS bölgesini veya sunucusunu yapılandırmak istemiyorsanız, aşağıdaki geçici çözümü deneyin:
 
@@ -120,7 +120,7 @@ Sorun, şirket içinde barındırılan IR 'yi yüklemeye çalıştığınız VM 
  
 Sorunu gidermek için şunları yapın:
 
-1. [Fabrikalar-Güncelleştir](https://docs.microsoft.com/rest/api/datafactory/Factories/Update) sayfasına gidin.
+1. [Fabrikalar-Güncelleştir](/rest/api/datafactory/Factories/Update) sayfasına gidin.
 
 1. Sağ üst köşedeki **deneyin** düğmesini seçin.
 1. **Parametreler** altında gerekli bilgileri doldurun. 
@@ -146,7 +146,7 @@ Sorunu gidermek için şunları yapın:
 
 **Çözüm 2**
 
-Sorunu çözmek için [Azure Data Factory Için Azure özel bağlantısı](https://docs.microsoft.com/azure/data-factory/data-factory-private-link)' na gidin.
+Sorunu çözmek için [Azure Data Factory Için Azure özel bağlantısı](./data-factory-private-link.md)' na gidin.
 
 Aşağıdaki ekran görüntüsünde gösterildiği gibi, Kullanıcı arabiriminde ortak ağ erişimini etkinleştirmeyi deneyin:
 

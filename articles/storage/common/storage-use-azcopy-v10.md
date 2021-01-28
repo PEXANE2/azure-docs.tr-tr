@@ -8,12 +8,12 @@ ms.date: 12/08/2020
 ms.author: normesta
 ms.subservice: common
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 87cc8af9206daa1f1e959b8abd8beb3e7f8ff2f2
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: bec221f762213fa8576ccef30e9b6a27aa708f01
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881003"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944136"
 ---
 # <a name="get-started-with-azcopy"></a>AzCopy’yi kullanmaya başlama
 
@@ -105,7 +105,7 @@ Kimliğinizi yetkilendirdikten veya bir SAS belirteci elde ettikten sonra, veri 
 
 | Hizmet | Makale |
 |--------|-----------|
-|Azure Blob depolama |[Azure Blob depolama alanına dosya yükleme](storage-use-azcopy-blobs-upload.md)<br><br>[Blob 'ları Azure Blob depolamadan indirin](storage-use-azcopy-blobs-download.md)<br><br>[Blob 'ları Azure depolama hesapları arasında kopyalama](storage-use-azcopy-blobs-copy.md)<br><br>[Azure Blob depolama ile eşitlemeyi](storage-use-azcopy-blobs-synchronize.md)|
+|Azure Blob Depolama |[Azure Blob depolama alanına dosya yükleme](storage-use-azcopy-blobs-upload.md)<br><br>[Blob 'ları Azure Blob depolamadan indirin](storage-use-azcopy-blobs-download.md)<br><br>[Blob 'ları Azure depolama hesapları arasında kopyalama](storage-use-azcopy-blobs-copy.md)<br><br>[Azure Blob depolama ile eşitlemeyi](storage-use-azcopy-blobs-synchronize.md)|
 |Azure Dosyaları |[AzCopy ve dosya depolama ile verileri aktarma](storage-use-azcopy-files.md)|
 |Amazon S3|[AzCopy ve Amazon S3 demetleri ile veri aktarma](storage-use-azcopy-s3.md)|
 |Azure Stack depolama|[AzCopy ve Azure Stack Storage ile veri aktarımı](/azure-stack/user/azure-stack-storage-transfer#azcopy)|

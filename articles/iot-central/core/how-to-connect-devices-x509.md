@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: d36cf2344891bb70ab5499e77699b111429a936b
-ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
+ms.openlocfilehash: bffff099e8df2b944cbef50a074ef625267ed238
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96121836"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944635"
 ---
 # <a name="how-to-connect-devices-with-x509-certificates-using-nodejs-device-sdk-for-iot-central-application"></a>IoT Central uygulama için Node.js cihaz SDK 'sını kullanarak X. 509.440 sertifikalarıyla cihazları bağlama
 
@@ -21,7 +21,7 @@ IoT Central, bir cihaz ve uygulamanız arasındaki iletişimin güvenliğini sa�
 
 Bu makalede, genellikle üretim ortamında kullanılan X. 509.440- [Group](how-to-connect-devices-x509.md#use-a-group-enrollment) kayıtlarını kullanmanın iki yolu ve [bireysel](how-to-connect-devices-x509.md#use-an-individual-enrollment) kayıtlar test için yararlıdır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - [Bir istemci uygulamasını oluşturma ve Azure IoT Central uygulamanızın (JavaScript)](./tutorial-connect-device.md) öğreticisine bağlama işleminin tamamlanması.
 - [Git](https://git-scm.com/download/).
@@ -199,7 +199,7 @@ Cihaz artık X. 509.440 sertifikası ile sağlanıyor.
 
 1. _Mytestselfcertprimary_key. pek_ ve _mytestselfcertprimary_cert. pea_ dosyalarını, **simple_thermostat.js** uygulamasını içeren _Azure-IoT-SDK-node/Device/Samples/PNP_ klasörüne kopyalayın. Bu uygulamayı [cihaz bağlama (JavaScript) öğreticisini](./tutorial-connect-device.md)tamamladığınızda kullandınız.
 
-1. İçinde kullandığınız ortam değişkenlerini aşağıdaki gibi değiştirin:
+1. Yukarıdaki örnekte kullandığınız ortam değişkenlerini aşağıdaki şekilde değiştirin:
 
     ```cmd/sh
     set IOTHUB_DEVICE_DPS_DEVICE_ID=mytestselfcertprimary

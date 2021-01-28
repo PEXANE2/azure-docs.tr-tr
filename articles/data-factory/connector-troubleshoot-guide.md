@@ -9,12 +9,12 @@ ms.date: 01/07/2021
 ms.author: jingwang
 ms.reviewer: craigg
 ms.custom: has-adal-ref
-ms.openlocfilehash: 68547b8fb673cd54b7c21963ede122553bbbc390
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: 4b586b95232af2a154993523402f81ee88a22cda
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97967132"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946162"
 ---
 # <a name="troubleshoot-azure-data-factory-connectors"></a>Azure Data Factory bağlayıcı sorunlarını giderme
 
@@ -121,7 +121,7 @@ Bu makalede Azure Data Factory içindeki bağlayıcılar için genel sorun gider
 
 - **Neden**: CosmosDbSqlApi işlemi isabet sorunu.
 
-- **Öneri**: ayrıntıdaki hatayı denetleyin. [Cosmosdb yardım belgesi](https://docs.microsoft.com/azure/cosmos-db/troubleshoot-dot-net-sdk)' ne bakın. Yardım gerekirse CosmosDb ekibine başvurun.
+- **Öneri**: ayrıntıdaki hatayı denetleyin. [Cosmosdb yardım belgesi](../cosmos-db/troubleshoot-dot-net-sdk.md)' ne bakın. Yardım gerekirse CosmosDb ekibine başvurun.
 
 
 ## <a name="azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1
@@ -198,7 +198,7 @@ Bu makalede Azure Data Factory içindeki bağlayıcılar için genel sorun gider
 
     - ExpressRoute gibi özel bir ağ ayarı olup olmadığını denetleyin ve ağın yeterli bant genişliğine sahip olduğundan emin olun. Genel bant genişliği düşük olduğunda şirket içinde barındırılan IR eş zamanlı işleri ayarının daha az olması önerilir, bu da birden çok eş zamanlı iş genelinde ağ kaynağı yarışmasını önleyebilir.
 
-    - Dosya boyutu orta veya küçük olduğunda bu zaman aşımı hatasını azaltmak için ikili olmayan kopya için daha küçük blok boyutu kullanın. [BLOB depolama yerleştirme bloğuna](https://docs.microsoft.com/rest/api/storageservices/put-block)bakın.
+    - Dosya boyutu orta veya küçük olduğunda bu zaman aşımı hatasını azaltmak için ikili olmayan kopya için daha küçük blok boyutu kullanın. [BLOB depolama yerleştirme bloğuna](/rest/api/storageservices/put-block)bakın.
 
        Özel blok boyutunu belirtmek için,. JSON düzenleyicisinde özelliği düzenleyebilirsiniz:
         ```
@@ -260,7 +260,7 @@ Bu makalede Azure Data Factory içindeki bağlayıcılar için genel sorun gider
 
 - **Neden**: hata Iletisinde "SqlException" varsa, SQL veritabanı belirli bir işlemi başarısız olduğunu belirten bir hata oluşturur.
 
-- **Öneri**: SQL hatası net değilse, lütfen veritabanını en son uyumluluk düzeyi olan ' 150 ' olarak değiştirmeyi deneyin. En son sürüm SQL hatalarını oluşturabilir. [Belge ayrıntısı](/sql/t-sql/statements/alter-database-transact-sql-compatibility-level#backwardCompat)bölümüne bakın.
+- **Öneri**: SQL hatası net değilse, lütfen veritabanını en son uyumluluk düzeyi olan ' 150 ' olarak değiştirmeyi deneyin. Bu, SQL hatalarının en son sürümünü oluşturabilir. [Belge ayrıntısı](/sql/t-sql/statements/alter-database-transact-sql-compatibility-level#backwardCompat)bölümüne bakın.
 
     SQL sorunlarını gidermek için lütfen daha fazla ayrıntı için bu başvuru belgesi içindeki SQL hata kodu ile arama yapın: https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors . Daha fazla yardıma ihtiyacınız varsa Azure SQL desteği ile iletişime geçin.
 
@@ -486,7 +486,7 @@ Bu makalede Azure Data Factory içindeki bağlayıcılar için genel sorun gider
 
 - **Çözüm**: sorunu çözmek için aşağıdaki adımları deneyin:
 
-    1. Hangi satırların soruna sahip olduğunu gidermek için, özellikle "Redirectıncompatiblerowsettings" SQL havuzu [hata toleransı](https://docs.microsoft.com/azure/data-factory/copy-activity-fault-tolerance)uygulayın.
+    1. Hangi satırların soruna sahip olduğunu gidermek için, özellikle "Redirectıncompatiblerowsettings" SQL havuzu [hata toleransı](./copy-activity-fault-tolerance.md)uygulayın.
 
         > [!NOTE]
         > Lütfen hata toleransı ek yürütme süresi ortaya çıkarabilir ve bu da daha yüksek maliyetli olabilir.
@@ -496,7 +496,7 @@ Bu makalede Azure Data Factory içindeki bağlayıcılar için genel sorun gider
     3. Tablo şemasını buna göre güncelleştirin.
 
 
-## <a name="azure-table-storage"></a>Azure Table Storage
+## <a name="azure-table-storage"></a>Azure Tablo Depolama
 
 ### <a name="error-code--azuretableduplicatecolumnsfromsource"></a>Hata kodu: AzureTableDuplicateColumnsFromSource
 

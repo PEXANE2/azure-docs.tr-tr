@@ -1,19 +1,16 @@
 ---
 title: Go için Azure HDInsight SDK
 description: Go ve Apache Hadoop kümeleri için Azure HDInsight SDK 'Yı kullanmaya yönelik başvuru malzemeleri
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seodec18, devx-track-azurecli
 ms.date: 01/03/2020
-ms.openlocfilehash: 6fdd7b9e5fda92bd75e54ea5b4aad6a3ba6ecbea
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: dc8528c40fe7e3b32e2f38152afc8abb0ae18ba5
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92748749"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945986"
 ---
 # <a name="hdinsight-sdk-for-go-preview"></a>Go için HDInsight SDK (Önizleme)
 
@@ -25,7 +22,7 @@ Go için HDInsight SDK 'Sı, HDInsight kümelerinizi yönetmenize imkan tanıyan
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Bir [ `go get` araç](https://github.com/golang/go/wiki/GoGetTools).
 * [Git](https://golang.org/dl/).

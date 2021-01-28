@@ -1,19 +1,16 @@
 ---
 title: Apache Phoenix ile Azure HDInsight 'ta Apache temel sorguları çalıştırma
 description: Apache Zeppelin kullanarak Apache temel sorgularını Phoenix ile çalıştırma hakkında bilgi edinin.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 10/14/2019
-ms.openlocfilehash: e85226e7a2544cda01f40a1c1be6be32f11d9dfc
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 50a72d0400b23162e05b17b37bdad48783261072
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92542803"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944770"
 ---
 # <a name="use-apache-zeppelin-to-run-apache-phoenix-queries-over-apache-hbase-in-azure-hdinsight"></a>Azure HDInsight 'ta Apache HBase üzerinde Apache Phoenix sorguları çalıştırmak için Apache Zeppelin kullanma
 
@@ -31,7 +28,7 @@ HDInsight 'ta Apache HBase kümesi. Bkz. [Apache HBase ile çalışmaya başlama
 
 1. `CLUSTERNAME`AŞAĞıDAKI URL 'deki kümenizin adıyla değiştirin `https://CLUSTERNAME.azurehdinsight.net/zeppelin` . Sonra URL 'YI bir Web tarayıcısına girin. Küme oturum açma kullanıcı adınızı ve parolanızı girin.
 
-1. Zeppelin sayfasında **Yeni dekont oluştur** ' u seçin.
+1. Zeppelin sayfasında **Yeni dekont oluştur**' u seçin.
 
     ![HDInsight etkileşimli sorgu Zeppelin](./media/apache-hbase-phoenix-zeppelin/hbase-zeppelin-create-note.png)
 
@@ -40,7 +37,7 @@ HDInsight 'ta Apache HBase kümesi. Bkz. [Apache HBase ile çalışmaya başlama
     - Note adı: nota bir ad girin.
     - Varsayılan yorumlayıcı: açılan listeden **JDBC** ' ı seçin.
 
-    Ardından, **Note oluştur** ' u seçin.
+    Ardından, **Note oluştur**' u seçin.
 
 1. Not defteri üstbilgisinin bağlı bir durum belirttiğinden emin olun. Sağ üst köşedeki yeşil noktayla gösterilir.
 

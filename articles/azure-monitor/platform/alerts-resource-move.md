@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 06/26/2020
 ms.subservice: alerts
-ms.openlocfilehash: 4ea5c8552d35db67a1d2caf20c0143c74cdd642e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 36cf5882913426062e281194b61a8c760141512a
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86505491"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944163"
 ---
 # <a name="how-to-update-alert-rules-or-action-rules-when-their-target-resource-moves-to-a-different-azure-region"></a>Hedef kaynakları farklı bir Azure bölgesine hareket ettirildiğinde uyarı kurallarını veya eylem kurallarını güncelleştirme
 
@@ -76,7 +76,7 @@ Kapsamdaki kaynakların **yalnızca bir kısmı** taşınırsa, taşınan kaynak
 ### <a name="change-scope-of-a-rule-from-the-azure-portal"></a>Azure portal bir kuralın kapsamını değiştirme
 
 1. Önceki adımda belirlediğiniz kuralı, üzerine tıklayarak açın.
-2. **Kaynak**altında **Düzenle** ' ye tıklayın ve gerektiğinde kapsamı ayarlayın.
+2. **Kaynak** altında **Düzenle** ' ye tıklayın ve gerektiğinde kapsamı ayarlayın.
 3. Kuralın diğer özelliklerini gerektiği gibi ayarlayın.
 4. **Kaydet**’e tıklayın.
 
@@ -88,7 +88,7 @@ Kapsamdaki kaynakların **yalnızca bir kısmı** taşınırsa, taşınan kaynak
    1. Portalın kaynak grupları bölümüne gidin ve kuralı içeren kaynak grubunu açın.
    2. Genel bakış bölümünde **gizli türü göster** onay kutusunu işaretleyin ve kuralın ilgili türüne göre filtreleyin.
    3. Ayrıntılarını görüntülemek için ilgili kuralı seçin.
-   4. **Ayarlar**altında, **şablonu dışarı aktar**' ı seçin.
+   4. **Ayarlar** altında, **şablonu dışarı aktar**' ı seçin.
 2. Şablonu değiştirin. Gerekirse, iki kurala ayırın (yukarıda belirtilen bazı ölçüm uyarıları durumları için geçerlidir).
 3. Şablonu yeniden dağıtın.
 
@@ -106,7 +106,7 @@ Kapsamdaki kaynakların **yalnızca bir kısmı** taşınırsa, taşınan kaynak
 
 ### <a name="change-the-scope-of-a-rule-using-azure-cli"></a>Azure CLı kullanarak bir kuralın kapsamını değiştirme
 
-1.  Mevcut kuralı al ([ölçüm uyarıları](/cli/azure/monitor/metrics/alert?view=azure-cli-latest#az-monitor-metrics-alert-show), [etkinlik günlüğü uyarıları](/cli/azure/monitor/activity-log/alert#az-monitor-activity-log-alert-list)).
+1.  Mevcut kuralı al ([ölçüm uyarıları](/cli/azure/monitor/metrics/alert#az-monitor-metrics-alert-show), [etkinlik günlüğü uyarıları](/cli/azure/monitor/activity-log/alert#az-monitor-activity-log-alert-list)).
 2.  Kural kapsamını doğrudan güncelleştirme ([ölçüm uyarıları](/cli/azure/monitor/metrics/alert#az-monitor-metrics-alert-update), [etkinlik günlüğü uyarıları](/cli/azure/monitor/activity-log/alert/scope))
 3.  Gerekirse, iki kurala ayırın (yukarıda belirtilen bazı ölçüm uyarıları durumları için geçerlidir).
 

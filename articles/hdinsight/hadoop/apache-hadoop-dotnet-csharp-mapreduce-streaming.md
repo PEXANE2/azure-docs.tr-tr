@@ -1,19 +1,16 @@
 ---
 title: HDInsight 'ta Hadoop 'ta MapReduce Ile C# kullanma-Azure
 description: C# kullanarak Azure HDInsight 'ta Apache Hadoop MapReduce çözümleri oluşturma hakkında bilgi edinin.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive, seoapr2020, devx-track-csharp
 ms.date: 04/28/2020
-ms.openlocfilehash: 4153b612b4b15883f28517d806acf6b340a94e49
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 6948491091f558aa7f317d519b0f92c63cac4788
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92543058"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946639"
 ---
 # <a name="use-c-with-mapreduce-streaming-on-apache-hadoop-in-hdinsight"></a>HDInsight 'ta Apache Hadoop on MapReduce streaming Ile C# kullanma
 
@@ -147,9 +144,9 @@ Uygulamayı oluşturduktan sonra, */bin/Debug/reducer.exe* dosyasını proje diz
 
 Ardından, *Eşleyici* ve *Reducer* uygulamalarını HDInsight depolama alanına yüklemeniz gerekir.
 
-1. Visual Studio 'da Sunucu Gezgini **görüntüle** ' yi seçin  >  **Server Explorer** .
+1. Visual Studio 'da Sunucu Gezgini **görüntüle**' yi seçin  >  .
 
-1. **Azure** ' a sağ tıklayın, **Microsoft Azure aboneliğine Bağlan...** öğesini seçin ve oturum açma işlemini doldurun.
+1. **Azure**' a sağ tıklayın, **Microsoft Azure aboneliğine Bağlan...** öğesini seçin ve oturum açma işlemini doldurun.
 
 1. Bu uygulamayı dağıtmak istediğiniz HDInsight kümesini genişletin. Metin **(varsayılan depolama hesabı)** içeren bir giriş listelenir.
 
@@ -165,9 +162,9 @@ Ardından, *Eşleyici* ve *Reducer* uygulamalarını HDInsight depolama alanına
 
         ![Eşleyici için HDInsight karşıya yükleme simgesi, Visual Studio](./media/apache-hadoop-dotnet-csharp-mapreduce-streaming/hdinsight-upload-icon.png)
 
-        **Yeni dosyayı karşıya yükle** Iletişim kutusundaki **dosya adı** altında, **Araştır** ' ı seçin. **Blobu karşıya yükle** iletişim kutusunda *Eşleyici* projesi için *bin\Debug* klasörüne gidin ve *mapper.exe* dosyasını seçin. Son olarak, **Aç** ' ı ve ardından **Tamam** ' ı seçerek karşıya yüklemeyi tamamlayabilirsiniz.
+        **Yeni dosyayı karşıya yükle** Iletişim kutusundaki **dosya adı** altında, **Araştır**' ı seçin. **Blobu karşıya yükle** iletişim kutusunda *Eşleyici* projesi için *bin\Debug* klasörüne gidin ve *mapper.exe* dosyasını seçin. Son olarak, **Aç** ' ı ve ardından **Tamam** ' ı seçerek karşıya yüklemeyi tamamlayabilirsiniz.
 
-    * **Azure Data Lake Storage** için, dosya listesinde boş bir alana sağ tıklayın ve ardından **karşıya yükle** ' yi seçin. Son olarak *mapper.exe* dosyasını seçin ve sonra **Aç** ' ı seçin.
+    * **Azure Data Lake Storage** için, dosya listesinde boş bir alana sağ tıklayın ve ardından **karşıya yükle**' yi seçin. Son olarak *mapper.exe* dosyasını seçin ve sonra **Aç**' ı seçin.
 
     *mapper.exe* karşıya yükleme işlemi tamamlandıktan sonra, *reducer.exe* dosyası için karşıya yükleme işlemini tekrarlayın.
 
@@ -194,7 +191,7 @@ Aşağıdaki yordam bir SSH oturumu kullanarak MapReduce işinin nasıl çalış
             -output /example/wordcountout
         ```
 
-    * Varsayılan depolama **Data Lake Storage 1.** :
+    * Varsayılan depolama **Data Lake Storage 1.**:
 
         ```bash
         yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-streaming.jar \
@@ -205,7 +202,7 @@ Aşağıdaki yordam bir SSH oturumu kullanarak MapReduce işinin nasıl çalış
             -output /example/wordcountout
         ```
 
-   * Varsayılan depolama **Data Lake Storage 2.** :
+   * Varsayılan depolama **Data Lake Storage 2.**:
 
         ```bash
         yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-streaming.jar \

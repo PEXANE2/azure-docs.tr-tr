@@ -1,19 +1,16 @@
 ---
 title: HDInsight kümesi için günlükleri yönetme-Azure HDInsight
 description: HDInsight etkinlik günlüğü dosyaları için türleri, boyutları ve bekletme ilkelerini belirleme.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 02/05/2020
-ms.openlocfilehash: c2aa33ac9e92f6763c0d89f0a049409c1a6a4049
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 0a6e837284917129bb56c6230e68927b79e95dac
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546033"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945270"
 ---
 # <a name="manage-logs-for-an-hdinsight-cluster"></a>HDInsight kümesi için günlükleri yönetme
 
@@ -77,11 +74,11 @@ Tipik bir HDInsight kümesi, çeşitli hizmetleri ve açık kaynaklı yazılım 
 
 Apache ambarı, bir Web Kullanıcı arabirimi ve REST API sağlayarak bir HDInsight kümesinin yönetimini, yapılandırılmasını ve izlenmesini basitleştirir. Ambarı, Linux tabanlı HDInsight kümelerine dahildir. Azure portal HDInsight sayfasında **küme Pano** bölmesini seçerek **küme panoları** bağlantı sayfasını açın.  Ardından, yeni kullanıcı arabirimi ' ni açmak için **HDInsight kümesi Pano** bölmesini seçin.  Sizden küme oturum açma kimlik bilgileriniz istenir.
 
-Hizmet görünümlerinin listesini açmak için HDInsight için Azure portal sayfasındaki **ambarı görünümleri** bölmesini seçin.  Bu liste, yüklediğiniz kitaplıklara bağlı olarak farklılık gösterir.  Örneğin, YARN kuyruğu Yöneticisi, Hive görünümü ve tez görünümü ' ne bakabilirsiniz.  Yapılandırma ve hizmet bilgilerini görmek için herhangi bir hizmet bağlantısı seçin.  Ambarı Kullanıcı arabirimi **yığını ve sürümü** sayfasında, küme hizmetleri yapılandırma ve hizmet sürümü geçmişi hakkında bilgi sağlanır. Ambarı Kullanıcı arabiriminin bu bölümüne gitmek için **yönetici** menüsünü ve ardından **yığınlar ve sürümler** ' i seçin.  Hizmet sürümü bilgilerini görmek için **sürümler** sekmesini seçin.
+Hizmet görünümlerinin listesini açmak için HDInsight için Azure portal sayfasındaki **ambarı görünümleri** bölmesini seçin.  Bu liste, yüklediğiniz kitaplıklara bağlı olarak farklılık gösterir.  Örneğin, YARN kuyruğu Yöneticisi, Hive görünümü ve tez görünümü ' ne bakabilirsiniz.  Yapılandırma ve hizmet bilgilerini görmek için herhangi bir hizmet bağlantısı seçin.  Ambarı Kullanıcı arabirimi **yığını ve sürümü** sayfasında, küme hizmetleri yapılandırma ve hizmet sürümü geçmişi hakkında bilgi sağlanır. Ambarı Kullanıcı arabiriminin bu bölümüne gitmek için **yönetici** menüsünü ve ardından **yığınlar ve sürümler**' i seçin.  Hizmet sürümü bilgilerini görmek için **sürümler** sekmesini seçin.
 
 ![Apache ambarı yönetici yığını ve sürümleri](./media/hdinsight-log-management/ambari-stack-versions.png)
 
-Ambarı Kullanıcı arabirimini kullanarak, kümedeki belirli bir konakta (veya düğümünde) çalışan tüm (veya tüm) hizmetlerin yapılandırmasını indirebilirsiniz.  **Konaklar** menüsünü ve ardından ilgilendiğiniz konağın bağlantısını seçin. Bu konağın sayfasında, **konak eylemleri** düğmesini seçin ve ardından **istemci yapılandırması** ' nı indirin.
+Ambarı Kullanıcı arabirimini kullanarak, kümedeki belirli bir konakta (veya düğümünde) çalışan tüm (veya tüm) hizmetlerin yapılandırmasını indirebilirsiniz.  **Konaklar** menüsünü ve ardından ilgilendiğiniz konağın bağlantısını seçin. Bu konağın sayfasında, **konak eylemleri** düğmesini seçin ve ardından **istemci yapılandırması**' nı indirin.
 
 ![Apache ambarı indirme konak istemci yapılandırması](./media/hdinsight-log-management/download-client-configs.png)
 
@@ -144,7 +141,7 @@ YARN ResourceManager Kullanıcı arabirimi küme baş düğümünde çalışır 
 
 1. Bir web tarayıcısında `https://CLUSTERNAME.azurehdinsight.net` sayfasına gidin. CLUSTERNAME değerini HDInsight kümenizin adıyla değiştirin.
 2. Soldaki hizmetler listesinden YARN ' yi seçin.
-3. Hızlı bağlantılar açılan listesinden küme baş düğümlerinden birini seçin ve ardından **ResourceManager günlükleri** ' ni seçin. YARN günlüklerine bağlantıların bir listesini görürsünüz.
+3. Hızlı bağlantılar açılan listesinden küme baş düğümlerinden birini seçin ve ardından **ResourceManager günlükleri**' ni seçin. YARN günlüklerine bağlantıların bir listesini görürsünüz.
 
 ## <a name="step-4-forecast-log-volume-storage-sizes-and-costs"></a>4. Adım: günlük birimi depolama boyutlarını ve maliyetlerini tahmin etme
 

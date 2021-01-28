@@ -10,33 +10,33 @@ keywords: bilişsel hizmetler, bilişsel zeka, bilişsel çözümler, AI Hizmetl
 ms.topic: conceptual
 ms.date: 09/14/2020
 ms.author: aahi
-ms.openlocfilehash: e276d96e8a81b435ec4d0c270cf818555d512ae0
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: c52d935738916ebc546315d9913d7a48c77cbf9a
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94368908"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945014"
 ---
 # <a name="quickstart-create-a-cognitive-services-resource-using-the-azure-command-line-interfacecli"></a>Hızlı başlangıç: Azure Command-Line arabirimini (CLı) kullanarak bilişsel hizmetler kaynağı oluşturma
 
-Azure [komut satırı arabirimi 'ni (CLI)](/cli/azure/install-azure-cli?view=azure-cli-latest)kullanarak Azure bilişsel hizmetler 'i kullanmaya başlamak için bu hızlı başlangıcı kullanın.
+Azure [komut satırı arabirimi 'ni (CLI)](/cli/azure/install-azure-cli)kullanarak Azure bilişsel hizmetler 'i kullanmaya başlamak için bu hızlı başlangıcı kullanın.
 
 Azure bilişsel hizmetler, REST API 'lerle bulut tabanlı hizmetlerdir ve geliştiricilerin doğrudan yapay zeka (AI) veya veri bilimi becerileri veya bilgi sahibi olmadan uygulamalara bilişsel zeka bilgileri oluşturmalarına yardımcı olacak istemci kitaplığı SDK 'Ları. Azure bilişsel hizmetler, geliştiricilerin kendi uygulamalarına kolayca bilişsel özellikler eklemesine, duymasına, konuşmasına, anlamasına ve hatta başlayabilmesine olanak tanıyan bilişsel çözümler sunar.
 
 Bilişsel hizmetler, Azure aboneliğinizde oluşturduğunuz Azure [kaynakları](../azure-resource-manager/management/manage-resources-portal.md) tarafından temsil edilir. Kaynağı oluşturduktan sonra, uygulamalarınızın kimliğini doğrulamak için oluşturulan anahtarları ve uç noktayı kullanın.
 
-Bu hızlı başlangıçta, Azure [komut satırı arabirimi 'ni (CLI)](/cli/azure/install-azure-cli?view=azure-cli-latest)kullanarak Azure bilişsel hizmetler 'e kaydolmayı ve tek hizmet veya çok hizmet aboneliği olan bir hesabı oluşturmayı öğreneceksiniz. Bu hizmetler Azure [kaynakları](../azure-resource-manager/management/manage-resources-portal.md)tarafından temsil edilir ve Azure bilişsel hizmetler API'si bir veya daha fazlasına bağlanmanızı sağlar.
+Bu hızlı başlangıçta, Azure [komut satırı arabirimi 'ni (CLI)](/cli/azure/install-azure-cli)kullanarak Azure bilişsel hizmetler 'e kaydolmayı ve tek hizmet veya çok hizmet aboneliği olan bir hesabı oluşturmayı öğreneceksiniz. Bu hizmetler Azure [kaynakları](../azure-resource-manager/management/manage-resources-portal.md)tarafından temsil edilir ve Azure bilişsel hizmetler API'si bir veya daha fazlasına bağlanmanızı sağlar.
 
 [!INCLUDE [cognitive-services-subscription-types](../../includes/cognitive-services-subscription-types.md)]
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 * Geçerli bir Azure aboneliği-ücretsiz olarak [bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services) .
-* [Azure komut satırı arabirimi (CLI)](/cli/azure/install-azure-cli?view=azure-cli-latest)
+* [Azure komut satırı arabirimi (CLI)](/cli/azure/install-azure-cli)
 
 ## <a name="install-the-azure-cli-and-sign-in"></a>Azure CLı 'yı yükleyip oturum açın
 
-[Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)'yı yükler. CLı 'nın yerel yüklemesinde oturum açmak için [az Login](/cli/azure/reference-index#az-login) komutunu çalıştırın:
+[Azure CLI](/cli/azure/install-azure-cli)'yı yükler. CLı 'nın yerel yüklemesinde oturum açmak için [az Login](/cli/azure/reference-index#az-login) komutunu çalıştırın:
 
 ```azurecli-interactive
 az login
@@ -80,7 +80,7 @@ Yeni bir kaynak oluştururken, kullanmak istediğiniz hizmetin "tür" i ve isted
 
 ### <a name="multi-service"></a>Çoklu hizmet
 
-| Hizmet                    | Tür                      |
+| Hizmet                    | Tip                      |
 |----------------------------|---------------------------|
 | Birden çok hizmet. Daha fazla bilgi için [fiyatlandırma](https://azure.microsoft.com/pricing/details/cognitive-services/) sayfasına bakın.            | `CognitiveServices`     |
 
@@ -90,7 +90,7 @@ Yeni bir kaynak oluştururken, kullanmak istediğiniz hizmetin "tür" i ve isted
 
 ### <a name="vision"></a>Görsel
 
-| Hizmet                    | Tür                      |
+| Hizmet                    | Tip                      |
 |----------------------------|---------------------------|
 | Görüntü İşleme            | `ComputerVision`          |
 | Özel Görüntü İşleme tahmin | `CustomVision.Prediction` |
@@ -99,9 +99,9 @@ Yeni bir kaynak oluştururken, kullanmak istediğiniz hizmetin "tür" i ve isted
 | Form Tanıma            | `FormRecognizer`          |
 | Mürekkep Tanıma             | `InkRecognizer`           |
 
-### <a name="search"></a>Arama
+### <a name="search"></a>Arayın
 
-| Hizmet            | Tür                  |
+| Hizmet            | Tip                  |
 |--------------------|-----------------------|
 | Bing Otomatik Öneri   | `Bing.Autosuggest.v7` |
 | Bing Özel Arama | `Bing.CustomSearch`   |
@@ -111,14 +111,14 @@ Yeni bir kaynak oluştururken, kullanmak istediğiniz hizmetin "tür" i ve isted
 
 ### <a name="speech"></a>Konuşma
 
-| Hizmet            | Tür                 |
+| Hizmet            | Tip                 |
 |--------------------|----------------------|
 | Konuşma Hizmetleri    | `SpeechServices`     |
 | Konuşma Tanıma | `SpeakerRecognition` |
 
 ### <a name="language"></a>Dil
 
-| Hizmet            | Tür                |
+| Hizmet            | Tip                |
 |--------------------|---------------------|
 | Form anlama | `FormUnderstanding` |
 | LUIS               | `LUIS`              |
@@ -128,13 +128,13 @@ Yeni bir kaynak oluştururken, kullanmak istediğiniz hizmetin "tür" i ve isted
 
 ### <a name="decision"></a>Karar
 
-| Hizmet           | Tür               |
+| Hizmet           | Tip               |
 |-------------------|--------------------|
 | Anomali Algılayıcısı  | `AnomalyDetector`  |
 | Content Moderator | `ContentModerator` |
 | Kişiselleştirme      | `Personalizer`     |
 
-Mevcut bilişsel hizmet hizmeti "türlerinin" bir listesini [az biliveservices hesap listesi-tür](/cli/azure/cognitiveservices/account?view=azure-cli-latest#az-cognitiveservices-account-list-kinds) komutuyla bulabilirsiniz:
+Mevcut bilişsel hizmet hizmeti "türlerinin" bir listesini [az biliveservices hesap listesi-tür](/cli/azure/cognitiveservices/account#az-cognitiveservices-account-list-kinds) komutuyla bulabilirsiniz:
 
 ```azurecli-interactive
 az cognitiveservices account list-kinds
@@ -142,7 +142,7 @@ az cognitiveservices account list-kinds
 
 ### <a name="add-a-new-resource-to-your-resource-group"></a>Kaynak grubunuza yeni bir kaynak ekleyin
 
-Yeni bir bilişsel hizmetler kaynağı oluşturup abone olmak için [az biliveservices hesabı oluştur](/cli/azure/cognitiveservices/account?view=azure-cli-latest#az-cognitiveservices-account-create) komutunu kullanın. Bu komut, daha önce oluşturulan kaynak grubuna yeni bir faturalanabilir kaynak ekler. Yeni kaynağınızı oluştururken, kullanmak istediğiniz hizmetin "tür" değerini, fiyatlandırma katmanını (veya SKU 'su) ve bir Azure konumunu bilmeniz gerekir:
+Yeni bir bilişsel hizmetler kaynağı oluşturup abone olmak için [az biliveservices hesabı oluştur](/cli/azure/cognitiveservices/account#az-cognitiveservices-account-create) komutunu kullanın. Bu komut, daha önce oluşturulan kaynak grubuna yeni bir faturalanabilir kaynak ekler. Yeni kaynağınızı oluştururken, kullanmak istediğiniz hizmetin "tür" değerini, fiyatlandırma katmanını (veya SKU 'su) ve bir Azure konumunu bilmeniz gerekir:
 
 Anomali algılayıcısı için aşağıdaki komutla adlandırılmış bir F0 (ücretsiz) kaynağı oluşturabilirsiniz `anomaly-detector-resource` .
 
@@ -160,13 +160,13 @@ az cognitiveservices account create \
 
 ## <a name="get-the-keys-for-your-resource"></a>Kaynağınızın anahtarlarını alın
 
-Command-Line arabirimi (CLı) yerel yüklemenizde oturum açmak için [az Login](/cli/azure/reference-index?view=azure-cli-latest#az-login) komutunu kullanın.
+Command-Line arabirimi (CLı) yerel yüklemenizde oturum açmak için [az Login](/cli/azure/reference-index#az-login) komutunu kullanın.
 
 ```azurecli-interactive
 az login
 ```
 
-Bilişsel hizmet kaynağınızın anahtarlarını almak için [az biliveservices hesap anahtarları listesi](/cli/azure/cognitiveservices/account/keys?view=azure-cli-latest#az-cognitiveservices-account-keys-list) komutunu kullanın.
+Bilişsel hizmet kaynağınızın anahtarlarını almak için [az biliveservices hesap anahtarları listesi](/cli/azure/cognitiveservices/account/keys#az-cognitiveservices-account-keys-list) komutunu kullanın.
 
 ```azurecli-interactive
     az cognitiveservices account keys list \
@@ -185,7 +185,7 @@ Fiyatlandırma katmanları (ve faturalandırılan miktar), kimlik doğrulama bil
 
 ## <a name="get-current-quota-usage-for-your-resource"></a>Kaynağınız için geçerli kota kullanımını alın
 
-Bilişsel hizmet kaynağınızın kullanımını almak için [az biliveservices hesap listesi-kullanım](/cli/azure/cognitiveservices/account?view=azure-cli-latest#az-cognitiveservices-account-list-usage) komutunu kullanın.
+Bilişsel hizmet kaynağınızın kullanımını almak için [az biliveservices hesap listesi-kullanım](/cli/azure/cognitiveservices/account#az-cognitiveservices-account-list-usage) komutunu kullanın.
 
 ```azurecli-interactive
 az cognitiveservices account list-usage \

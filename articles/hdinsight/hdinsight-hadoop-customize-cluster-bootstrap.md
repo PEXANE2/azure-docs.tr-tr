@@ -1,19 +1,16 @@
 ---
 title: Önyükleme kullanarak Azure HDInsight küme yapılandırmasını özelleştirme
 description: .NET, PowerShell ve Kaynak Yöneticisi şablonlarını kullanarak HDInsight küme yapılandırmasını programlı bir şekilde özelleştirmeyi öğrenin.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 04/01/2020
-ms.openlocfilehash: 246c5600da3b554ba65872780f0719a58f3f4be2
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 306ebcf7db3c11f783af8cf4c1779bd3d1a013a4
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547495"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945755"
 ---
 # <a name="customize-hdinsight-clusters-using-bootstrap"></a>Önyükleme kullanarak HDInsight kümelerini özelleştirme
 
@@ -21,7 +18,7 @@ ms.locfileid: "92547495"
 
 HDInsight kümeniz oluşturulurken yapılandırma dosyası ayarlarını ayarlamak için üç yaklaşım vardır:
 
-* Azure PowerShell'i kullanma
+* Azure PowerShell kullanma
 * .NET SDK kullanma
 * Azure Resource Manager şablonu kullan
 
@@ -50,7 +47,7 @@ Oluşturma süresi boyunca HDInsight kümesine ek bileşenler yükleme hakkında
 
 * PowerShell kullanıyorsanız [az Module](/powershell/azure/)gerekecektir.
 
-## <a name="use-azure-powershell"></a>Azure PowerShell'i kullanma
+## <a name="use-azure-powershell"></a>Azure PowerShell kullanma
 
 Aşağıdaki PowerShell kodu bir [Apache Hive](https://hive.apache.org/) yapılandırmasını özelleştirir:
 
@@ -86,8 +83,8 @@ New-AzHDInsightCluster `
 **Değişikliği doğrulamak için:**
 
 1. `https://CLUSTERNAME.azurehdinsight.net/`Kümenizin adı olduğu yere gidin `CLUSTERNAME` .
-1. Sol menüden **Hive**  >  **configs**  >  **İleri** ' ye gidin.
-1. **Gelişmiş Hive-site** ' ı genişletin.
+1. Sol menüden **Hive**  >  **configs**  >  **İleri**' ye gidin.
+1. **Gelişmiş Hive-site**' ı genişletin.
 1. **Hive. metasarı. Client. Socket. Timeout** öğesini bulun ve değerin **90** olduğunu onaylayın.
 
 Diğer yapılandırma dosyalarını özelleştirmeye ilişkin bazı örnekler:

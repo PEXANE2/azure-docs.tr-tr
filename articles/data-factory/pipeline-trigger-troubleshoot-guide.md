@@ -7,12 +7,12 @@ ms.date: 12/15/2020
 ms.topic: troubleshooting
 ms.author: susabat
 ms.reviewer: susabat
-ms.openlocfilehash: 0ceee3c65e8c4df5d843bb441fb6426a0f4eb696
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 1a5f665627da1b08ec57b04863a58f227c673af4
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98220278"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944899"
 ---
 # <a name="troubleshoot-pipeline-orchestration-and-triggers-in-azure-data-factory"></a>Azure Data Factory 'da işlem hattı düzenleme ve Tetikleyicileri sorunlarını giderme
 
@@ -60,7 +60,7 @@ Hata iletisi:
 Type=Microsoft.DataTransfer.Execution.Core.ExecutionException,Message=There are substantial concurrent MappingDataflow executions which is causing failures due to throttling under Integration Runtime 'AutoResolveIntegrationRuntime'.
 `
 
-**Neden**: Integration Runtime 'ın kapasite sınırına ulaştınız. Aynı tümleştirme çalışma zamanını aynı anda kullanarak büyük miktarda veri akışı çalıştırıyor olabilirsiniz. Ayrıntılar için bkz. [Azure aboneliği ve hizmet limitleri, Kotalar ve kısıtlamalar](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#version-2) .
+**Neden**: Integration Runtime 'ın kapasite sınırına ulaştınız. Aynı tümleştirme çalışma zamanını aynı anda kullanarak büyük miktarda veri akışı çalıştırıyor olabilirsiniz. Ayrıntılar için bkz. [Azure aboneliği ve hizmet limitleri, Kotalar ve kısıtlamalar](../azure-resource-manager/management/azure-subscription-service-limits.md#version-2) .
 
 **Çözüm**:
  
@@ -76,13 +76,13 @@ Azure Data Factory tüm yaprak düzeyindeki etkinliklerin sonucunu değerlendiri
 **Çözünürlük**
 
 1. İşlem [hattı hatalarının ve hatalarının nasıl işleneceğini](https://techcommunity.microsoft.com/t5/azure-data-factory/understanding-pipeline-failures-and-error-handling/ba-p/1630459)izleyerek etkinlik düzeyi denetimleri uygulayın.
-1. İşlem hatlarını [fabrika tarafından sorgu](https://docs.microsoft.com/rest/api/datafactory/pipelineruns/querybyfactory)izleyen düzenli aralıklarla izlemek için Azure Logic Apps kullanın.
+1. İşlem hatlarını [fabrika tarafından sorgu](/rest/api/datafactory/pipelineruns/querybyfactory)izleyen düzenli aralıklarla izlemek için Azure Logic Apps kullanın.
 
 ## <a name="monitor-pipeline-failures-in-regular-intervals"></a>Düzenli aralıklarla işlem hattı başarısızlıklarını izleme
 
 Başarısız Data Factory işlem hatlarını dakikalar içinde izlemeniz, 5 dakika söylemeniz gerekebilir. Uç noktasını kullanarak bir veri fabrikasında işlem hattı çalıştırmalarını sorgulayabilir ve filtreleyebilirsiniz. 
 
-[Fabrika tarafından sorgulama](https://docs.microsoft.com/rest/api/datafactory/pipelineruns/querybyfactory)bölümünde açıklandığı gibi, tüm başarısız işlem hatlarını 5 dakikada bir sorgulamak Için bir Azure mantıksal uygulaması ayarlayın. Daha sonra, olayları, anahtar oluşturma sistemimize rapor edebilirsiniz.
+[Fabrika tarafından sorgulama](/rest/api/datafactory/pipelineruns/querybyfactory)bölümünde açıklandığı gibi, tüm başarısız işlem hatlarını 5 dakikada bir sorgulamak Için bir Azure mantıksal uygulaması ayarlayın. Daha sonra, olayları, anahtar oluşturma sistemimize rapor edebilirsiniz.
 
 Daha fazla bilgi için [Data Factory, Bölüm 2 ' den bildirim gönder '](https://www.mssqltips.com/sqlservertip/5962/send-notifications-from-an-azure-data-factory-pipeline--part-2/)e gidin.
 

@@ -3,12 +3,12 @@ title: Kapsayıcılar için Azure Izleyicisine genel bakış | Microsoft Docs
 description: Bu makalede AKS kapsayıcı öngörüleri çözümünü izleyen kapsayıcılar için Azure Izleyici ve AKS kümelerinizin sistem durumunu ve Azure 'daki Container Instances izleyerek sunduğu değer açıklanmaktadır.
 ms.topic: conceptual
 ms.date: 09/08/2020
-ms.openlocfilehash: 215427adc38ebd554ca7ac650ec65a05f5a781e8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a21a0e506082b58473870baed014ede16665e837
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91317167"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943800"
 ---
 # <a name="azure-monitor-for-containers-overview"></a>Kapsayıcılar için Azure İzleyici’ye genel bakış
 
@@ -17,7 +17,7 @@ Kapsayıcılar için Azure Izleyici, ' ye dağıtılan kapsayıcı iş yüklerin
 - [Azure Kubernetes Service (AKS)](../../aks/intro-kubernetes.md) üzerinde barındırılan yönetilen Kubernetes kümeleri
 - [Aks altyapısı](https://github.com/Azure/aks-engine) kullanılarak Azure üzerinde barındırılan, kendi kendine yönetilen Kubernetes kümeleri
 - [Azure Container Instances](../../container-instances/container-instances-overview.md)
-- [Azure Stack](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1910&preserve-view=true) veya şirket içinde barındırılan, kendi kendine yönetilen Kubernetes kümeleri
+- [Azure Stack](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview) veya şirket içinde barındırılan, kendi kendine yönetilen Kubernetes kümeleri
 - [Azure Red Hat OpenShift](../../openshift/intro-openshift.md)
 - [Azure Arc etkin Kubernetes](../../azure-arc/kubernetes/overview.md) (Önizleme)
 
@@ -31,7 +31,7 @@ Kapsayıcılar için Azure Izleyici, ölçüm API 'SI aracılığıyla Kubernete
 
 ## <a name="what-does-azure-monitor-for-containers-provide"></a>Kapsayıcılar için Azure Izleyici ne sağlar?
 
-Kapsayıcılar için Azure Izleyici, Azure Izleyici 'nin farklı özelliklerini kullanarak kapsamlı bir izleme deneyimi sağlar. Bu özellikler, Linux ve Windows Server 2019 işletim sistemi ve kapsayıcı iş yüklerini çalıştıran Kubernetes kümenizin performansını ve sistem durumunu anlamanıza olanak tanır. Kapsayıcılar için Azure Izleyici ile şunları yapabilirsiniz:
+Kapsayıcılar için Azure Izleyici, Azure Izleyici 'nin farklı özelliklerini kullanarak kapsamlı bir izleme deneyimi sağlar. Bu özellikler, Linux ve Windows Server 2019 işletim sistemi ve kapsayıcı iş yüklerini çalıştıran Kubernetes kümenizin performansını ve sistem durumunu anlamanıza olanak tanır. Kapsayıcılar için Azure İzleyici ile yapabilecekleriniz:
 
 * Düğüm üzerinde çalışan AKS kapsayıcılarını ve bunların ortalama işlemci ve bellek kullanımını belirler. Bu bilgi, kaynak performans sorunlarını belirlemenize yardımcı olabilir.
 * Kapsayıcı gruplarının ve Azure Container Instances barındırılan kapsayıcılarının işlemci ve bellek kullanımını belirler.
@@ -40,7 +40,7 @@ Kapsayıcılar için Azure Izleyici, Azure Izleyici 'nin farklı özelliklerini 
 * Kümenin davranışını ortalama ve en ağır yüklerle anlayın. Bu bilgi, kapasite gereksinimlerini belirlemenize ve kümenin hangi yük için uygun olduğunu belirlemenize yardımcı olabilir.
 * Düğümleri veya kapsayıcılardaki CPU ve bellek kullanımı eşiklerinizi aştığında ya da altyapı ya da düğümler sistem durumu toplamakta olan kümede bir sistem durumu değişikliği gerçekleştiğinde sizi önceden bilgilendirmesi veya kaydetmek için uyarıları yapılandırın.
 * Özel uyarılar, panolar oluşturmak ve ayrıntılı analiz gerçekleştirmek için [sorguları](container-insights-log-search.md) kullanarak düğümlerden ve Kubernetes tarafından toplanan uygulama ve iş yükü ölçümlerini görüntülemek Için [Prometheus](https://prometheus.io/docs/introduction/overview/) ile tümleştirin.
-* Şirket içi ve [aks altyapısına Azure Stack üzerinde](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908&preserve-view=true) [dağıtılan](https://github.com/Azure/aks-engine) kapsayıcı iş yüklerini izleyin.
+* Şirket içi ve [aks altyapısına Azure Stack üzerinde](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview) [dağıtılan](https://github.com/Azure/aks-engine) kapsayıcı iş yüklerini izleyin.
 * [Azure Red Hat OpenShift 'e dağıtılan](../../openshift/intro-openshift.md)kapsayıcı iş yüklerini izleyin.
 
     >[!NOTE]

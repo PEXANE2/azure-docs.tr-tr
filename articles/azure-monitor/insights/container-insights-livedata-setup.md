@@ -4,12 +4,12 @@ description: Bu makalede, kapsayıcılar için Azure Izleyici ile kubectl kullan
 ms.topic: conceptual
 ms.date: 01/08/2020
 ms.custom: references_regions
-ms.openlocfilehash: d5b978e7138e10ed88f5748b84ff62ddd22bebec
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 3c176b2db659577d585ac077eebe0484203eb9cf
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98050791"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943859"
 ---
 # <a name="how-to-set-up-the-live-data-preview-feature"></a>Canlı veriler (Önizleme) özelliğini ayarlama
 
@@ -19,7 +19,7 @@ Bu özellik günlüklere, olaylara ve ölçümlere erişimi denetlemek için aş
 
 - Kubernetes RBAC yetkilendirmesi etkin olmayan AKS
 - Kubernetes RBAC yetkilendirmesi ile AKS etkin
-    - Küme rolü bağlama **[Clustermonitoringuser](/rest/api/aks/managedclusters/listclustermonitoringusercredentials?view=azurermps-5.2.0&preserve-view=true) ile yapılandırılan aks 'ler**
+    - Küme rolü bağlama **[Clustermonitoringuser](/rest/api/aks/managedclusters/listclustermonitoringusercredentials) ile yapılandırılan aks 'ler**
 - Azure Active Directory (AD) SAML tabanlı çoklu oturum açma ile AKS etkin
 
 Bu yönergeler, Kubernetes kümenize yönetim erişiminin yanı sıra Kullanıcı kimlik doğrulaması için Azure Active Directory (AD) kullanmak üzere yapılandırılıyorsa, Azure AD 'ye yönetici erişimi gerektirir.

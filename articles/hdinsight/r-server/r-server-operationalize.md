@@ -1,19 +1,16 @@
 ---
 title: HDInsight 'ta ML hizmetlerini çalıştırma-Azure
 description: Azure HDInsight 'ta ML Hizmetleri ile tahmine dayalı hale getirmek için veri modelinizi nasıl gerçekleştireceğinizi öğrenin.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 06/27/2018
-ms.openlocfilehash: 20159cf911670eb70fd5757991c07b63b3f1776b
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: c90642e58c026c78ce854e7fe74dd36963d48b67
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92536275"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944000"
 ---
 # <a name="operationalize-ml-services-cluster-on-azure-hdinsight"></a>Azure HDInsight 'ta ML hizmetleri kümesini operationleştir
 
@@ -86,7 +83,7 @@ HDInsight 'ta ML hizmetleri kümesini kullandıktan sonra veri modelinizi tamaml
 
 ### <a name="long-delays-when-consuming-web-service-on-apache-spark"></a>Apache Spark Web hizmetini tükettiren uzun gecikmeler
 
-Apache Spark işlem bağlamında mrsdeploy işlevleriyle oluşturulmuş bir Web hizmetini kullanmaya çalışırken uzun gecikmeler yaşarsanız, bazı eksik klasörleri eklemeniz gerekebilir. Spark uygulaması mrsdeoploy işlevleri kullanılarak bir web hizmetinden çağrıldığında ' *rserve2* ' adlı bir kullanıcıya ait oluyor. Bu soruna geçici bir çözüm olarak:
+Apache Spark işlem bağlamında mrsdeploy işlevleriyle oluşturulmuş bir Web hizmetini kullanmaya çalışırken uzun gecikmeler yaşarsanız, bazı eksik klasörleri eklemeniz gerekebilir. Spark uygulaması mrsdeoploy işlevleri kullanılarak bir web hizmetinden çağrıldığında '*rserve2*' adlı bir kullanıcıya ait oluyor. Bu soruna geçici bir çözüm olarak:
 
 ```r
 # Create these required folders for user 'rserve2' in local and hdfs:
@@ -155,17 +152,17 @@ ML Hizmetleri kümesi [Apache Hadoop YARN](https://hadoop.apache.org/docs/curren
 
 1. Çalışan düğümlerini seçin (kullanımdan kaldırılacak).
 
-1. **Eylemler**  >  **Seçili konaklar**  >  **konaklar**  >  **bakım modunu aç** ' a tıklayın. Örneğin, aşağıdaki görüntüde yetkisini almak üzere wn3 ve wn4 seçilmiştir.  
+1. **Eylemler**  >  **Seçili konaklar**  >  **konaklar**  >  **bakım modunu aç**' a tıklayın. Örneğin, aşağıdaki görüntüde yetkisini almak üzere wn3 ve wn4 seçilmiştir.  
 
    ![Apache ambarı bakım modunu aç](./media/r-server-operationalize/get-started-operationalization.png)  
 
-* Seçili **Eylemler** ' i seçin ve sonra da yük  >  **Selected Hosts**  >  **DataNodes** **Al** ' a tıklayın >
-* Seçili **Eylemler** seçin  >  **Selected Hosts**  >  **NodeManager** Konakları > **Al** ' a tıklayın.
-* Seçili **Eylemler** seçin  >  **Selected Hosts**  >  >, **gün** sonra **Durdur** ' a tıklayın.
-* Seçili **Eylemler**  >  **Selected Hosts**  >  ' i seçin **nodeyöneticileri** Konakları > **Durdur** ' a tıklayın.
-* **Eylemler**  >  **Seçili** konaklar Konaklar  >  **Hosts** ' ı seçin > **tüm bileşenleri durdur** ' a tıklayın.
+* Seçili **Eylemler**' i seçin ve sonra da yük  >    >   **Al**' a tıklayın >
+* Seçili **Eylemler** seçin  >    >  **NodeManager** Konakları > **Al**' a tıklayın.
+* Seçili **Eylemler** seçin  >    >  >,**gün** sonra **Durdur**' a tıklayın.
+* Seçili **Eylemler**  >    >  ' i seçin **nodeyöneticileri** Konakları > **Durdur**' a tıklayın.
+* **Eylemler**  >  **Seçili** konaklar Konaklar  >   ' ı seçin > **tüm bileşenleri durdur**' a tıklayın.
 * Çalışan düğümlerinin seçimini kaldırın ve baş düğümleri seçin.
-* **Eylemler**  >  **Seçili konaklar** ' ı seçin > " **konaklar**  >  **tüm bileşenleri yeniden Başlat** .
+* **Eylemler**  >  **Seçili konaklar** ' ı seçin > "**konaklar**  >  **tüm bileşenleri yeniden Başlat**.
 
 ### <a name="step-2-configure-compute-nodes-on-each-decommissioned-worker-nodes"></a>2. Adım: her kullanımdan kaldırılan çalışan düğümlerinde işlem düğümlerini yapılandırma
 

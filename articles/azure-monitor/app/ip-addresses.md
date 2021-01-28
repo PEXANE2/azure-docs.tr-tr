@@ -1,17 +1,17 @@
 ---
-title: Application Insights ve Log Analytics tarafından kullanılan IP adresleri | Microsoft Docs
+title: Azure Izleyici tarafından kullanılan IP adresleri
 description: Application Insights için gereken sunucu güvenlik duvarı özel durumları
 ms.topic: conceptual
-ms.date: 09/15/2020
-ms.openlocfilehash: eb0739cb44b9f67258069a574ed0bedb95eac5a4
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.date: 01/27/2020
+ms.openlocfilehash: 5a6cc190f84b74cc8a1d4ff24d10cbfa07f3c2fb
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98625191"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945056"
 ---
-# <a name="ip-addresses-used-by-application-insights-and-log-analytics"></a>Application Insights ve Log Analytics tarafından kullanılan IP Adresleri
-[Azure Application Insights](./app-insights-overview.md) hizmeti, birkaç IP adresi kullanır. İzlemekte olduğunuz uygulama bir güvenlik duvarının arkasında barındırılıyorsa, bu adresleri bilmeniz gerekebilir.
+# <a name="ip-addresses-used-by-azure-monitor"></a>Azure Izleyici tarafından kullanılan IP adresleri
+[Azure izleyici](../overview.md) birkaç IP adresi kullanır. Azure Izleyici, temel platform ölçümlerinden oluşur ve Log Analytics ve Application Insights ek olarak oturum açın. İzlemekte olduğunuz uygulama veya altyapının bir güvenlik duvarının arkasında barındırıldığı durumlarda bu adresleri bilmeniz gerekebilir.
 
 > [!NOTE]
 > Bu adresler statik olsa da, bunları zaman zaman değiştirmek zorunda olduğumuz olasıdır. Tüm Application Insights trafiği, gelen güvenlik duvarı kuralları gerektiren kullanılabilirlik izleme ve Web kancaları dışında giden trafiği temsil eder.

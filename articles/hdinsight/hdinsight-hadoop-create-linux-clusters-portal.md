@@ -1,19 +1,16 @@
 ---
 title: Web tarayıcısı, Azure HDInsight kullanarak Apache Hadoop kümeleri oluşturma
 description: HDInsight üzerinde Apache Hadoop, Apache HBase, Apache Storm veya Apache Spark kümeleri oluşturmayı öğrenin. Web tarayıcısını ve Azure portal kullanın.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 08/06/2020
-ms.openlocfilehash: ebfd5c456d3658c6339e5174c9c4ab33f6c52d4d
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: c68d342cf21d69fa97ba3d5171ba596662fd845f
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92541715"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945826"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-by-using-the-azure-portal"></a>Azure portal kullanarak HDInsight 'ta Linux tabanlı kümeler oluşturun
 
@@ -33,13 +30,13 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 1. [Azure portalında](https://portal.azure.com) oturum açın.
 
-1. Üstteki menüden **+ kaynak oluştur** ' u seçin.
+1. Üstteki menüden **+ kaynak oluştur**' u seçin.
 
     ![Azure portal yeni bir küme oluşturun](./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-create-resource.png "Azure portal yeni bir küme oluşturma")
 
 1. **Analiz**  >  **Azure HDInsight** ' ı seçerek **HDInsight kümesi oluşturma** sayfasına gidin.
 
-## <a name="basics"></a>Temel Bilgiler
+## <a name="basics"></a>Temel bilgiler
 
 ![HDInsight küme oluşturma temelleri](./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-basics.png "Azure portal yeni bir küme oluşturma")
 
@@ -48,12 +45,12 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 |Özellik |Açıklama |
 |---|---|
 |Abonelik|Aşağı açılan listeden, küme için kullanılan Azure aboneliğini seçin.|
-|Kaynak grubu|Aşağı açılan listeden, mevcut kaynak grubunuzu seçin veya **Yeni oluştur** ' u seçin.|
+|Kaynak grubu|Aşağı açılan listeden, mevcut kaynak grubunuzu seçin veya **Yeni oluştur**' u seçin.|
 |Küme adı|Genel olarak benzersiz bir ad girin.|
 |Bölge|Aşağı açılan listeden, kümenin oluşturulduğu bir bölge seçin.|
 |Küme türü|Bir listeyi açmak için **küme türünü seç** ' e tıklayın. Listeden istenen küme türünü seçin. HDInsight kümeleri farklı türlerde gelir. Bunlar, kümenin ayarlanmış olduğu iş yüküne veya teknolojiye karşılık gelir. Birden çok türü birleştiren bir küme oluşturmak için desteklenen bir yöntem yoktur.|
 |Sürüm|Aşağı açılan listeden bir **Sürüm** seçin. Ne seçeceğimizi bilmiyorsanız varsayılan sürümü kullanın. Daha fazla bilgi için bkz. [HDInsight küme sürümleri](hdinsight-component-versioning.md).|
-|Küme oturum açma kullanıcı adı|Kullanıcı adını belirtin, varsayılan olarak **admin** ' dir.|
+|Küme oturum açma kullanıcı adı|Kullanıcı adını belirtin, varsayılan olarak **admin**' dir.|
 |Küme oturum açma parolası|Parolayı girin.|
 |Küme oturum açma parolasını onaylayın|Parolayı yeniden girin|
 |Secure Shell (SSH) kullanıcı adı|Kullanıcı adını belirtin, varsayılan olarak **sshuser**|
@@ -72,8 +69,8 @@ Ileri ' yi seçin: bir sonraki sekmeye ilerlemek için **depolama >>** .
 
 **Birincil depolama türü** için aşağı açılan listeden varsayılan depolama türünü seçin. Tamamlanacak sonraki alanlar, seçiminize göre farklılık gösterecektir. **Azure depolama** için:
 
-1. **Seçim yöntemi** Için **listeden seç** ' i veya **erişim anahtarı** ' nı seçin.
-    * **Listeden seç** ' in ardından, açılan listeden **birincil depolama hesabınızı** seçin veya **Yeni oluştur** ' u seçin.
+1. **Seçim yöntemi** Için **listeden seç**' i veya **erişim anahtarı**' nı seçin.
+    * **Listeden seç**' in ardından, açılan listeden **birincil depolama hesabınızı** seçin veya **Yeni oluştur**' u seçin.
     * **Kullanım erişim anahtarı** için **depolama hesabınızın adını** girin. Daha sonra **erişim anahtarını** sağlayın.
 
 1. **Kapsayıcı** için varsayılan değeri kabul edin veya yeni bir tane girin.
@@ -128,7 +125,7 @@ Küme yapılandırmasını doğrulamak ve son sekmeye ilerlemek için **gözden 
 
 ![HDInsight küme Özeti oluştur](./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-review-create-hadoop.png "Küme düğümlerinin sayısını belirtin")
 
-Ayarları gözden geçirin. **Oluştur** ’u seçerek kümeyi oluşturun.
+Ayarları gözden geçirin. **Oluştur**’u seçerek kümeyi oluşturun.
 
 Kümenin oluşturulması genellikle yaklaşık 20 dakika sürer. Sağlama işlemini denetlemek için **bildirimleri** izleyin.
 

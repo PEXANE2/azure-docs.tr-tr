@@ -3,18 +3,18 @@ title: 'Öğretici: Azure bütçesi oluşturma ve yönetme'
 description: Bu öğretici, kullandığınız Azure hizmetlerinin maliyetleriyle ilgili plan yapmanıza yardımcı olmaktadır.
 author: bandersmsft
 ms.author: banders
-ms.date: 12/16/2020
+ms.date: 01/27/2021
 ms.topic: tutorial
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: c8b0265a72911688f08e0f8c4a39fa657f034472
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
-ms.translationtype: HT
+ms.openlocfilehash: 5659f3b2d020a97ed2460c55283bb41f2f7606cc
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97630148"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943730"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>Öğretici: Azure bütçesi oluşturma ve yönetme
 
@@ -22,7 +22,7 @@ Maliyet Yönetimi hizmetindeki bütçe işlevi, kuruluşunuzda sorumluluk kült�
 
 Maliyet ve kullanım verileri genellikle 8-24 saat içinde kullanıma sunulur ve bütçeler 24 saatte bir bu maliyetlere göre değerlendirilir. [Maliyet ve kullanım verileri güncelleştirmelerinin](./understand-cost-mgt-data.md#cost-and-usage-data-updates-and-retention) özelliklerini öğrendiğinizden emin olun. Bir bütçe eşiği karşılandığında e-posta bildirimleri genellikle değerlendirmeyi izleyen bir saat içinde gönderilir.
 
-Gelecekte bir son kullanma tarihi seçtiğinizde bütçeler, dönem sonunda (ay, üç ay veya yıl) otomatik olarak aynı bütçe tutarına geri döner. Aynı bütçe tutarına geri döndükleri için bütçedeki para birimlerinin ilerleyen dönemlerde farklı olması halinde ayrı bütçeler oluşturmanız gerekir.
+Gelecekte bir son kullanma tarihi seçtiğinizde bütçeler, dönem sonunda (ay, üç ay veya yıl) otomatik olarak aynı bütçe tutarına geri döner. Aynı bütçe tutarına geri döndükleri için bütçedeki para birimlerinin ilerleyen dönemlerde farklı olması halinde ayrı bütçeler oluşturmanız gerekir. Bir bütçenin süresi dolmuşsa, otomatik olarak silinir.
 
 Bu öğreticideki örnekler, Azure Kurumsal Anlaşma (EA) aboneliği için bütçe oluşturma ve düzenleme konusunda size yol gösterecektir.
 

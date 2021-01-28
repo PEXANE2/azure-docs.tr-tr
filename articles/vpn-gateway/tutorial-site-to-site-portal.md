@@ -7,12 +7,12 @@ ms.author: cherylmc
 ms.service: vpn-gateway
 ms.topic: tutorial
 ms.date: 12/04/2020
-ms.openlocfilehash: d078d4b106136c95d67eb467bc16e22e2bb91c5c
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: ccb43c3e7efb9289450ad9a71c003f54e5362b66
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96747368"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945200"
 ---
 # <a name="tutorial-create-a-site-to-site-connection-in-the-azure-portal"></a>Öğretici: Azure portal siteden siteye bağlantı oluşturma
 
@@ -85,7 +85,7 @@ Aşağıdaki değerleri kullanarak bir VPN Ağ Geçidi oluşturun:
 
 Ağ Geçidi genel IP adresini ağ geçidinizin **genel bakış** sayfasında görüntüleyebilirsiniz.
 
-:::image type="content" source="./media/tutorial-create-gateway-portal/address.png" alt-text="Genel Bakış sayfası":::
+:::image type="content" source="./media/tutorial-create-gateway-portal/address.png" alt-text="Genel bakış sayfası":::
 
 Genel IP adresi nesnesiyle ilgili ek bilgileri görmek için **genel IP adresi**' nin yanındaki ad/IP adresi bağlantısına tıklayın.
 
@@ -153,7 +153,7 @@ Bir veya daha fazla Siteden Siteye VPN tünelinde şirketler arası VPN bağlant
 
 [!INCLUDE [reset a gateway](../../includes/vpn-gateway-reset-gw-portal-include.md)]
 
-### <a name="additional-configuration-considerations"></a><a name="connectVM"></a>Ek yapılandırma konuları
+### <a name="additional-configuration-considerations"></a><a name="additional"></a>Ek yapılandırma konuları
 
 S2S yapılandırması çeşitli yollarla özelleştirilebilir. Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
 

@@ -1,19 +1,16 @@
 ---
 title: Azure HDInsight kümelerini izlemek için Azure Izleyici günlüklerini sorgulama
 description: HDInsight kümesinde çalışan işleri izlemek için Azure Izleyici günlüklerinde sorguları çalıştırmayı öğrenin.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/02/2019
-ms.openlocfilehash: c2ddcd8ea3524b4afdfa7f70d21f0cba96975f72
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f9213f36ec33939c3df3b56d21822aa3b6a17c03
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86085370"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945608"
 ---
 # <a name="query-azure-monitor-logs-to-monitor-hdinsight-clusters"></a>HDInsight kümelerini izlemek için Azure Izleyici günlüklerini sorgulama
 
@@ -44,7 +41,7 @@ HDInsight kümeniz için belirli ölçümleri nasıl bakacağınızı öğrenin.
 
 1. Sol menüden **filtre** sekmesini seçin.
 
-1. **Tür**altında **sinyal**' yı seçin. Sonra **uygula & Çalıştır**' ı seçin.
+1. **Tür** altında **sinyal**' yı seçin. Sonra **uygula & Çalıştır**' ı seçin.
 
     ![Günlük Analizi arama belirli ölçümler](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-search-specific-metrics.png "Belirli ölçümleri arama")
 
@@ -115,13 +112,13 @@ Uyarı oluşturmanın ilk adımı, uyarının tetiklendiği bir sorguya ulaşaca
 
 1. Azure portal Log Analytics çalışma alanını açın.
 
-1. Sol taraftaki menüden, **izleme**altında **Uyarılar**' ı seçin.
+1. Sol taraftaki menüden, **izleme** altında **Uyarılar**' ı seçin.
 
 1. En üste doğru, **Uyarı kurallarını yönet**' i seçin.
 
 1. Düzenlemek veya silmek istediğiniz uyarıyı seçin.
 
-1. Şu seçeneklere sahipsiniz: **Kaydet**, **çıkart**, **devre dışı bırak**ve **Sil**.
+1. Şu seçeneklere sahipsiniz: **Kaydet**, **çıkart**, **devre dışı bırak** ve **Sil**.
 
     ![HDInsight Azure Izleyici günlükleri uyarı silme düzenlemesi](media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-edit-alert.png)
 

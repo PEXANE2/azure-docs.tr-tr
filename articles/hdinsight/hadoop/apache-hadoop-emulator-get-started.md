@@ -2,19 +2,16 @@
 title: Apache Hadoop korumalı alan kullanmayı öğrenin-Azure HDInsight
 description: 'Apache Hadoop ekosistemini kullanma hakkında bilgi edinmeye başlamak için bir Azure sanal makinesinde Hortonçalışmalardan bir Hadoop korumalı alanı ayarlayabilirsiniz. '
 keywords: Hadoop öykünücüsü, Hadoop korumalı alanı
-ms.reviewer: jasonh
-author: hrasheed-msft
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: how-to
 ms.date: 05/29/2019
-ms.author: hrasheed
-ms.openlocfilehash: 4f19797fa1c79261dc3459e2b924ed45d0b7e36e
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: eb286adfd7267a78fcf80bcf5ad34f8f1cc9f493
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547971"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946610"
 ---
 # <a name="get-started-with-an-apache-hadoop-sandbox-an-emulator-on-a-virtual-machine"></a>Sanal makinede öykünücü olan Apache Hadoop korumalı alan ile çalışmaya başlama
 
@@ -39,8 +36,8 @@ Eski bir HDP sürüm korumalı alanını indirmek için **eski sürümlerin** al
 ## <a name="start-the-virtual-machine"></a>Sanal makineyi Başlat
 
 1. Oracle VM VirtualBox öğesini açın.
-1. **Dosya** menüsünde gereci **içeri aktar** ' a tıklayın ve ardından Hortonçalışmalar korumalı alanı görüntüsünü belirtin.
-1. Hortonçalışmalar korumalı alanını seçin, **Başlat** ' a ve ardından **normal Başlat** ' a tıklayın. Sanal makine önyükleme işlemini tamamladıktan sonra oturum açma yönergelerini görüntüler.
+1. **Dosya** menüsünde gereci **içeri aktar**' a tıklayın ve ardından Hortonçalışmalar korumalı alanı görüntüsünü belirtin.
+1. Hortonçalışmalar korumalı alanını seçin, **Başlat**' a ve ardından **normal Başlat**' a tıklayın. Sanal makine önyükleme işlemini tamamladıktan sonra oturum açma yönergelerini görüntüler.
 
     ![VirtualBox Manager normal başlangıç](./media/apache-hadoop-emulator-get-started/virtualbox-normal-start.png)
 
@@ -48,7 +45,7 @@ Eski bir HDP sürüm korumalı alanını indirmek için **eski sürümlerin** al
 
 ## <a name="set-sandbox-passwords"></a>Korumalı alan parolalarını ayarla
 
-1. Hortonçalışmalar korumalı alanı sayfasının **Başlarken** adımından **Gelişmiş seçenekleri görüntüle** ' yi seçin. SSH kullanarak korumalı alanda oturum açmak için bu sayfadaki bilgileri kullanın. Belirtilen adı ve parolayı kullanın.
+1. Hortonçalışmalar korumalı alanı sayfasının **Başlarken** adımından **Gelişmiş seçenekleri görüntüle**' yi seçin. SSH kullanarak korumalı alanda oturum açmak için bu sayfadaki bilgileri kullanın. Belirtilen adı ve parolayı kullanın.
 
    > [!NOTE]
    > Yüklü bir SSH istemciniz yoksa, üzerinde sanal makine tarafından belirtilen Web tabanlı SSH 'yi kullanabilirsiniz **http://localhost:4200/** .

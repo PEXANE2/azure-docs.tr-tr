@@ -2,19 +2,16 @@
 title: Azure HDInsight 'ta bir Hive bellek yetersiz hatası giderme
 description: HDInsight 'ta bir Hive bellek yetersiz hatası giderme. Müşteri senaryosu birçok büyük tablo üzerinde bir sorgudur.
 keywords: yetersiz bellek hatası, OOM, Hive ayarları
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.custom: hdinsightactive
 ms.date: 11/28/2019
-ms.openlocfilehash: d91da1aa6f7079069541ac955fce8331591a3bc6
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: c0810d33f3ac939b9382bf321448ed72b6d87474
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546186"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945722"
 ---
 # <a name="fix-an-apache-hive-out-of-memory-error-in-azure-hdinsight"></a>Azure HDInsight 'ta bellek yetersiz Apache Hive hatasını çözme
 
@@ -109,7 +106,7 @@ Büyük olasılıkla Map JOIN, Java yığın alanının bellek yetersiz hatası 
 
 ![Tez kapsayıcı bellek diyagramı: Hive bellek yetersiz hatası](./media/hdinsight-hadoop-hive-out-of-memory-error-oom/hive-out-of-memory-error-oom-tez-container-memory.png)
 
-Blog gönderisi önerdiğinde, aşağıdaki iki bellek ayarı yığın için kapsayıcı belleğini tanımlar: **Hive. tez. Container. size** ve **Hive. tez. Java. opts** . Deneyimimizden, yetersiz bellek özel durumu, kapsayıcı boyutu çok küçük olduğu anlamına gelmez. Java yığın boyutunun (Hive. tez. Java. opts) çok küçük olduğu anlamına gelir. Bellek yetersiz olduğunda **Hive. tez. Java. opts** 'yi artırmayı deneyebilirsiniz. Gerekirse **Hive. tez. Container. size** öğesini artırmanız gerekebilir. **Java. opts** ayarı kapsayıcının %80 ' inden oluşmalıdır. **Boyut** .
+Blog gönderisi önerdiğinde, aşağıdaki iki bellek ayarı yığın için kapsayıcı belleğini tanımlar: **Hive. tez. Container. size** ve **Hive. tez. Java. opts**. Deneyimimizden, yetersiz bellek özel durumu, kapsayıcı boyutu çok küçük olduğu anlamına gelmez. Java yığın boyutunun (Hive. tez. Java. opts) çok küçük olduğu anlamına gelir. Bellek yetersiz olduğunda **Hive. tez. Java. opts**'yi artırmayı deneyebilirsiniz. Gerekirse **Hive. tez. Container. size** öğesini artırmanız gerekebilir. **Java. opts** ayarı kapsayıcının %80 ' inden oluşmalıdır. **Boyut**.
 
 > [!NOTE]  
 > **Hive. tez. Java. opts** ayarı her zaman **Hive. tez. Container. SIZE** değerinden küçük olmalıdır.

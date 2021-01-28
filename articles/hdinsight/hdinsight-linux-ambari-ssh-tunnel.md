@@ -1,19 +1,16 @@
 ---
 title: Azure HDInsight 'a erişmek için SSH tüneli kullanma
 description: Linux tabanlı HDInsight düğümlerinde barındırılan Web kaynaklarına güvenli bir şekilde gözatmaya yönelik bir SSH tüneli kullanmayı öğrenin.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 04/14/2020
-ms.openlocfilehash: 09fef350a0ff8cc8c2481acd7b8f74cee15d1b9d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5bbc770fa6ae5ac69b2aa939f9d2c70bb01f5403
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86075561"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945290"
 ---
 # <a name="use-ssh-tunneling-to-access-apache-ambari-web-ui-jobhistory-namenode-apache-oozie-and-other-uis"></a>Apache ambarı Web Kullanıcı arabirimi, JobHistory, süs Yot, Apache Oozie ve diğer Uıto 'a erişmek için SSH tüneli kullanın
 
@@ -42,7 +39,7 @@ Web hizmetini kullanıma sunan betik eylemleriyle yüklenen hizmetler SSH tünel
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* Bir SSH istemcisi. Daha fazla bilgi için bkz. [SSH kullanarak HDInsight 'A bağlanma (Apache Hadoop)](hdinsight-hadoop-linux-use-ssh-unix.md).
+* Bir SSH istemcisi. Daha fazla bilgi için bkz. [SSH kullanarak HDInsight'a (Apache Hadoop) bağlanma](hdinsight-hadoop-linux-use-ssh-unix.md).
 
 * SOCKS5 proxy kullanacak şekilde yapılandırılabilecek bir Web tarayıcısı.
 
@@ -140,7 +137,7 @@ Küme kurulduktan sonra, aşağıdaki adımları kullanarak hizmet Web Hizmetler
 
     ![Apache ambarı hizmeti seçildi](./media/hdinsight-linux-ambari-ssh-tunnel/hdfs-service-selected.png)
 
-3. Bir hizmet bilgisi görüntülendiğinde **hızlı bağlantılar**' ı seçin. Küme kafası düğümlerinin bir listesi görüntülenir. Baş düğümlerden birini seçin ve ardından **süs Code Kullanıcı arabirimini**seçin.
+3. Bir hizmet bilgisi görüntülendiğinde **hızlı bağlantılar**' ı seçin. Küme kafası düğümlerinin bir listesi görüntülenir. Baş düğümlerden birini seçin ve ardından **süs Code Kullanıcı arabirimini** seçin.
 
     ![QuickLinks menüsü genişletilmiş resim](./media/hdinsight-linux-ambari-ssh-tunnel/namenode-drop-down-menu.png)
 

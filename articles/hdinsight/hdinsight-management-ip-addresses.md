@@ -1,19 +1,16 @@
 ---
 title: Azure HDInsight yönetim IP adresleri
 description: Azure HDInsight ile sanal ağ için ağ güvenlik gruplarını ve Kullanıcı tanımlı yolları doğru bir şekilde yapılandırmak amacıyla gelen trafiğe izin vermeniz gereken IP adreslerini öğrenin.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 08/11/2020
-ms.openlocfilehash: 9fa38e045bbe29e5d45587adf0d277c1414fee4c
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 89d749a04c22967198be217350ff38751336fe67
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96549047"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944111"
 ---
 # <a name="hdinsight-management-ip-addresses"></a>HDInsight yönetim IP adresleri
 
@@ -59,8 +56,8 @@ Kaynaklarınızın bulunduğu belirli bir Azure bölgesindeki Azure HDInsight si
 | Asya | Doğu Asya | 23.102.235.122</br>52.175.38.134 | \*: 443 | Gelen |
 | &nbsp; | Güneydoğu Asya | 13.76.245.160</br>13.76.136.249 | \*: 443 | Gelen |
 | Avustralya | Doğu Avustralya | 104.210.84.115</br>13.75.152.195 | \*: 443 | Gelen |
-| &nbsp; | Avustralya Güneydoğu | 13.77.2.56</br>13.77.2.94 | \*: 443 | Gelen |
-| Brezilya | Brezilya Güney | 191.235.84.104</br>191.235.87.113 | \*: 443 | Gelen |
+| &nbsp; | Güneydoğu Avustralya | 13.77.2.56</br>13.77.2.94 | \*: 443 | Gelen |
+| Brezilya | Güney Brezilya | 191.235.84.104</br>191.235.87.113 | \*: 443 | Gelen |
 | Kanada | Doğu Kanada | 52.229.127.96</br>52.229.123.172 | \*: 443 | Gelen |
 | &nbsp; | Orta Kanada | 52.228.37.66</br>52.228.45.222 |\*: 443 | Gelen |
 | Çin | Kuzey Çin | 42.159.96.170</br>139.217.2.219</br></br>42.159.198.178</br>42.159.234.157 | \*: 443 | Gelen |

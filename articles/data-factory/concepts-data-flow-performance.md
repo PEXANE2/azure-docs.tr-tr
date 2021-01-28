@@ -7,12 +7,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
 ms.date: 12/18/2020
-ms.openlocfilehash: d23b2f65f25b704beaee12c53e47706653dcc208
-ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
+ms.openlocfilehash: 9706bee07f028c36b4d03311a7abbb969a1be685
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97858595"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944995"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Veri akışlarını eşleme performansı ve ayarlama Kılavuzu
 
@@ -161,7 +161,7 @@ Azure SQL veritabanı ' kaynak ' bölümlendirme adlı benzersiz bir bölümlend
 
 #### <a name="isolation-level"></a>Yalıtım düzeyi
 
-Azure SQL kaynak sistemi üzerinde okunan yalıtım düzeyinin performansı üzerinde etkisi vardır. ' READ UNCOMMITTED ' seçeneğinin belirlenmesi en hızlı performansı sağlar ve tüm veritabanı kilitlerini önler. SQL yalıtım düzeyleri hakkında daha fazla bilgi için lütfen bkz. [yalıtım düzeylerini anlama](https://docs.microsoft.com/sql/connect/jdbc/understanding-isolation-levels).
+Azure SQL kaynak sistemi üzerinde okunan yalıtım düzeyinin performansı üzerinde etkisi vardır. ' READ UNCOMMITTED ' seçeneğinin belirlenmesi en hızlı performansı sağlar ve tüm veritabanı kilitlerini önler. SQL yalıtım düzeyleri hakkında daha fazla bilgi için lütfen bkz. [yalıtım düzeylerini anlama](/sql/connect/jdbc/understanding-isolation-levels).
 
 #### <a name="read-using-query"></a>Sorguyu kullanarak oku
 
@@ -208,7 +208,7 @@ Bunlar her ikisi de Azure SQL VERITABANı veya SYNAPSE havuzu içindeki SQL önc
 ![Dizinleri devre dışı bırak](media/data-flow/disable-indexes-sql.png "Dizinleri devre dışı bırak")
 
 > [!WARNING]
-> Dizinler devre dışı bırakıldığında, veri akışı bir veritabanının denetimini etkili bir şekilde ele alınır ve sorguların Şu anda başarılı olması düşüktür. Sonuç olarak, bu çakışmayı önlemek için gece ortasında birçok ETL işi tetiklenir. Daha fazla bilgi için [dizinleri devre dışı bırakma kısıtlamaları](https://docs.microsoft.com/sql/relational-databases/indexes/disable-indexes-and-constraints) hakkında bilgi edinin
+> Dizinler devre dışı bırakıldığında, veri akışı bir veritabanının denetimini etkili bir şekilde ele alınır ve sorguların Şu anda başarılı olması düşüktür. Sonuç olarak, bu çakışmayı önlemek için gece ortasında birçok ETL işi tetiklenir. Daha fazla bilgi için [dizinleri devre dışı bırakma kısıtlamaları](/sql/relational-databases/indexes/disable-indexes-and-constraints) hakkında bilgi edinin
 
 #### <a name="scaling-up-your-database"></a>Veritabanınızı ölçeklendirme
 
@@ -216,7 +216,7 @@ Bunlar her ikisi de Azure SQL VERITABANı veya SYNAPSE havuzu içindeki SQL önc
 
 ### <a name="azure-synapse-analytics-sinks"></a>Azure SYNAPSE Analytics havuzları
 
-Azure SYNAPSE Analytics 'e yazarken, **hazırlama etkinleştirmeyi etkinleştir** ' in true olarak ayarlandığından emin olun. Bu, ADF 'yi toplu olarak verileri etkin bir şekilde yükleyen [SQL copy komutunu](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql) kullanarak yazmasını sağlar. Hazırlama kullanılırken verileri hazırlamak için bir Azure Data Lake Storage Gen2 veya Azure Blob depolama hesabına başvurmanız gerekir.
+Azure SYNAPSE Analytics 'e yazarken, **hazırlama etkinleştirmeyi etkinleştir** ' in true olarak ayarlandığından emin olun. Bu, ADF 'yi toplu olarak verileri etkin bir şekilde yükleyen [SQL copy komutunu](/sql/t-sql/statements/copy-into-transact-sql) kullanarak yazmasını sağlar. Hazırlama kullanılırken verileri hazırlamak için bir Azure Data Lake Storage Gen2 veya Azure Blob depolama hesabına başvurmanız gerekir.
 
 Hazırlama dışında, Azure SYNAPSE Analytics için Azure SQL veritabanı olarak aynı en iyi uygulamalar geçerlidir.
 

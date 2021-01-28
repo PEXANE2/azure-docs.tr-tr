@@ -1,19 +1,16 @@
 ---
 title: "Öğretici: Apache Kafka üreticisi & tüketici API 'Leri-Azure HDInsight"
 description: HDInsight’ta Apache Kafka Üretici ve Tüketici API’lerini kullanmayı öğrenin. Bu öğreticide, bu API’leri HDInsight üzerinde Kafka ile kullanmayı öğreneceksiniz.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 05/19/2020
-ms.openlocfilehash: b942fb321d2bceef64930bea0c660f66747508b6
-ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
+ms.openlocfilehash: e5a635a8837aadaf423c6f3a0925dbac4080e60f
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92629315"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945173"
 ---
 # <a name="tutorial-use-the-apache-kafka-producer-and-consumer-apis"></a>Öğretici: Apache Kafka Üretici ve Tüketici API’lerini kullanma
 
@@ -31,12 +28,12 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 API’ler hakkında daha fazla bilgi için [Üretici API’si](https://kafka.apache.org/documentation/#producerapi) ve [Tüketici API’si](https://kafka.apache.org/documentation/#consumerapi) hakkında Apache belgelerine bakın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * HDInsight kümesinde Apache Kafka. Küme oluşturma hakkında bilgi edinmek için bkz. [HDInsight 'ta Apache Kafka kullanmaya başlama](apache-kafka-get-started.md).
 * [Java geliştirici seti (JDK) sürüm 8](/azure/developer/java/fundamentals/java-jdk-long-term-support) veya OpenJDK gibi bir eşdeğer.
 * Apache [Maven](https://maven.apache.org/download.cgi) , Apache 'e göre düzgün şekilde [yüklendi](https://maven.apache.org/install.html) .  Maven, Java projeleri için bir proje derleme sistemidir.
-* PuTTY gibi bir SSH istemcisi. Daha fazla bilgi için bkz. [SSH kullanarak HDInsight 'A bağlanma (Apache Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md).
+* PuTTY gibi bir SSH istemcisi. Daha fazla bilgi için bkz. [SSH kullanarak HDInsight'a (Apache Hadoop) bağlanma](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 ## <a name="understand-the-code"></a>Kodu anlama
 
@@ -219,7 +216,7 @@ Kafka içinde depolanan kayıtlar bir bölüm içinde alındıkları sırada dep
 
 1. **Konu oluşturma başarısız** Kümeniz kurumsal güvenlik paketi etkinse, [üretici ve tüketici için önceden oluşturulmuş jar dosyalarını](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/blob/master/Prebuilt-Jars/kafka-producer-consumer-esp.jar)kullanın. ESP jar, [ `DomainJoined-Producer-Consumer` alt dizindeki](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/tree/master/DomainJoined-Producer-Consumer)koddan oluşturulabilir. Üretici ve tüketici özellikleri, `CommonClientConfigs.SECURITY_PROTOCOL_CONFIG` ESP etkin kümeler için ek bir özelliğe sahiptir.
 
-2. **ESP etkin kümelerde hata** : oluşturma ve kullanma işlemleri başarısız olursa ve bir ESP etkin küme kullanıyorsanız, kullanıcının `kafka` Tüm Ranger ilkelerinde mevcut olup olmadığını denetleyin. Mevcut değilse, tüm Ranger ilkelerine ekleyin.
+2. **ESP etkin kümelerde hata**: oluşturma ve kullanma işlemleri başarısız olursa ve bir ESP etkin küme kullanıyorsanız, kullanıcının `kafka` Tüm Ranger ilkelerinde mevcut olup olmadığını denetleyin. Mevcut değilse, tüm Ranger ilkelerine ekleyin.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
@@ -227,9 +224,9 @@ Bu öğretici ile oluşturulan kaynakları temizlemek için kaynak grubunu sileb
 
 Azure portalını kullanarak kaynak grubunu kaldırmak için:
 
-1. Azure portalında sol taraftaki menüyü genişleterek hizmet menüsünü açın ve sonra __Kaynak Grupları__ 'nı seçerek kaynak gruplarınızın listesini görüntüleyin.
+1. Azure portalında sol taraftaki menüyü genişleterek hizmet menüsünü açın ve sonra __Kaynak Grupları__'nı seçerek kaynak gruplarınızın listesini görüntüleyin.
 2. Silinecek kaynak grubunu bulun ve sonra listenin sağ tarafındaki __Daha fazla__ düğmesine (...) sağ tıklayın.
-3. __Kaynak grubunu sil__ 'i seçip onaylayın.
+3. __Kaynak grubunu sil__'i seçip onaylayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -1,19 +1,16 @@
 ---
 title: HDInsight 'ta ML Hizmetleri için işlem bağlamı seçenekleri-Azure
 description: HDInsight üzerinde ML Hizmetleri olan kullanıcılara sunulan farklı işlem bağlamı seçenekleri hakkında bilgi edinin
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/02/2020
-ms.openlocfilehash: 21781015aa91c9c953d716b9b3399851f25be9b5
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 71ce0d87faa33bd7d533242edfcf3b131c8f7e47
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92536343"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943959"
 ---
 # <a name="compute-context-options-for-ml-services-on-hdinsight"></a>HDInsight üzerinde ML Hizmetleri için işlem bağlamı seçenekleri
 
@@ -29,8 +26,8 @@ Bir kümenin kenar düğümü, kümeye bağlanmak ve R betiklerinizi çalıştı
 
 Genel olarak, kenar düğümündeki ML Hizmetleri kümesinde çalıştırılan bir R betiği, o düğümdeki R yorumlayıcısı içinde çalışır. Özel durumlar, Iptal edilmiş bir işlevi çağıran bu adımlardır. Iptal etme işlemi, geri alınamaz işlem bağlamını nasıl ayarlayacağınızla belirlenen bir işlem ortamında çalışır.  R betiğini bir kenar düğümünden çalıştırdığınızda, işlem bağlamının olası değerleri şunlardır:
 
-- Yerel sıralı ( *Yerel* )
-- Yerel paralel ( *localpar* )
+- Yerel sıralı (*Yerel*)
+- Yerel paralel (*localpar*)
 - Harita azalt
 - Spark
 

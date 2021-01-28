@@ -1,19 +1,16 @@
 ---
 title: Apache Hadoop, Apache Spark, Apache Kafka ve daha fazlasıyla HDInsight'ta küme oluşturma
 description: HDInsight için Hadoop, Kafka, Spark, HBase, R Server veya fırtınası kümelerini tarayıcıdan, klasik Azure CLı, Azure PowerShell, REST veya SDK 'dan ayarlayın.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.date: 08/06/2020
-ms.openlocfilehash: 6ce5de354583da04905f9f889cfabe36e6da6667
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 4e81ccb541b188fedfefd150233082e9cb1f8c22
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546135"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945546"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-apache-hadoop-apache-spark-apache-kafka-and-more"></a>Apache Hadoop, Apache Spark, Apache Kafka ve daha fazlasıyla HDInsight'ta küme oluşturma
 
@@ -34,16 +31,16 @@ Aşağıdaki tabloda, bir HDInsight kümesi kurmak için kullanabileceğiniz far
 
 | İle oluşturulan kümeler | Web tarayıcısı | Komut satırı | REST API | SDK |
 | --- |:---:|:---:|:---:|:---:|
-| [Azure Portal](hdinsight-hadoop-create-linux-clusters-portal.md) |✔ |&nbsp; |&nbsp; |&nbsp; |
+| [Azure portalı](hdinsight-hadoop-create-linux-clusters-portal.md) |✔ |&nbsp; |&nbsp; |&nbsp; |
 | [Azure Data Factory](hdinsight-hadoop-create-linux-clusters-adf.md) |✔ |✔ |✔ |✔ |
 | [Azure CLI](hdinsight-hadoop-create-linux-clusters-azure-cli.md) |&nbsp; |✔ |&nbsp; |&nbsp; |
 | [Azure PowerShell](hdinsight-hadoop-create-linux-clusters-azure-powershell.md) |&nbsp; |✔ |&nbsp; |&nbsp; |
-| [cURL](hdinsight-hadoop-create-linux-clusters-curl-rest.md) |&nbsp; |✔ |✔ |&nbsp; |
+| [kıvr](hdinsight-hadoop-create-linux-clusters-curl-rest.md) |&nbsp; |✔ |✔ |&nbsp; |
 | [Azure Resource Manager şablonları](hdinsight-hadoop-create-linux-clusters-arm-templates.md) |&nbsp; |✔ |&nbsp; |&nbsp; |
 
 Bu makalede, bir HDInsight kümesi oluşturabileceğiniz [Azure Portal](https://portal.azure.com)kurulum işlemi adım adım açıklanmaktadır.
 
-## <a name="basics"></a>Temel Bilgiler
+## <a name="basics"></a>Temel bilgiler
 
 ![HDInsight oluşturma seçenekleri özel hızlı](./media/hdinsight-hadoop-provision-linux-clusters/azure-portal-cluster-basics-blank-fs.png)
 
@@ -92,7 +89,7 @@ Bu küme için HDInsight sürümünü seçin. Daha fazla bilgi için bkz. [deste
 
 HDInsight kümeleri ile, küme oluşturma sırasında iki kullanıcı hesabını yapılandırabilirsiniz:
 
-* Küme oturum açma Kullanıcı adı: Varsayılan Kullanıcı adı *admin* . Azure portal temel yapılandırmayı kullanır. Bazen "Cluster user" veya "HTTP user" olarak adlandırılır.
+* Küme oturum açma Kullanıcı adı: Varsayılan Kullanıcı adı *admin*. Azure portal temel yapılandırmayı kullanır. Bazen "Cluster user" veya "HTTP user" olarak adlandırılır.
 * Secure Shell (SSH) Kullanıcı adı: kümeye SSH aracılığıyla bağlanmak için kullanılır. Daha fazla bilgi için bkz. [HDInsight ile SSH kullanma](hdinsight-hadoop-linux-use-ssh-unix.md).
 
 HTTP Kullanıcı adı aşağıdaki kısıtlamalara sahiptir:
@@ -117,10 +114,10 @@ Hadoop 'un Şirket içi yüklemesi kümedeki depolama için Hadoop Dağıtılmı
 HDInsight kümeleri aşağıdaki depolama seçeneklerini kullanabilir:
 
 * Azure Data Lake Storage Gen2
-* Azure Data Lake Storage 1. Nesil
+* Azure Data Lake Storage Gen1
 * Azure Depolama Genel Amaçlı v2
 * Azure Depolama Genel Amaçlı v1
-* Azure Storage Blok Blobu ( **yalnızca ikincil depolama olarak desteklenir** )
+* Azure Storage Blok Blobu (**yalnızca ikincil depolama olarak desteklenir**)
 
 HDInsight ile depolama seçenekleri hakkında daha fazla bilgi için bkz. [Azure HDInsight kümeleri ile kullanım için depolama seçeneklerini karşılaştırma](hdinsight-hadoop-compare-storage-options.md).
 

@@ -1,19 +1,16 @@
 ---
 title: Azure HDInsight 'ta ML hizmetlerine giriş
 description: Büyük veri analizi için uygulamalar oluşturmak üzere HDInsight 'ta ML hizmetlerini nasıl kullanacağınızı öğrenin.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: overview
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/20/2020
-ms.openlocfilehash: b3a6fc2ff45d61d63118edc23f40f69f16db9131
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 87f4181e820b1c6ecdeb0fda85a88e80db248dd2
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92536156"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943929"
 ---
 # <a name="what-is-ml-services-in-azure-hdinsight"></a>Azure HDInsight 'ta ML Hizmetleri nedir?
 
@@ -58,7 +55,7 @@ HDInsight 'ta ML Hizmetleri aşağıdaki avantajları sağlar:
 
 Aşağıdaki özellikler, HDInsight üzerinde ML hizmetlerine eklenmiştir.
 
-| Özellik kategorisi | Açıklama |
+| Özellik kategorisi | Description |
 |------------------|-------------|
 | R-etkin | R 'de yazılmış çözümler için r ve betik yürütme için çalışma zamanı altyapısını içeren r için [r paketleri](/machine-learning-server/r-reference/introducing-r-server-r-package-reference) . |
 | Python etkin | Python 'da yazılmış çözümler için Python [modülleri](/machine-learning-server/python-reference/introducing-python-package-reference) , Python 'un açık kaynaklı bir dağıtımı ve betik yürütme için çalışma zamanı altyapısı.

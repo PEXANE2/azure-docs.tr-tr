@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 03/26/2020
 ms.custom: devx-track-java, devx-track-csharp
 ms.author: aahi
-ms.openlocfilehash: afac19a6debb3804c99492338428669928f1118b
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: d1c9589265726bae01b86c152853c40f79825ceb
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94371850"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98947104"
 ---
 Java istemci kitaplığı 'nı kullanarak Bing Görsel Arama hizmetinden görüntü öngörülerini almaya başlamak için bu hızlı başlangıcı kullanın. Bing Görsel Arama, çoğu programlama dili ile uyumlu bir REST API sahip olsa da, istemci kitaplığı, hizmeti uygulamalarınızla tümleştirmenin kolay bir yolunu sağlar. Bu hızlı başlangıç için kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingVisualSearch)' da bulabilirsiniz.
 
@@ -23,7 +23,7 @@ Java için Bing Görsel Arama istemci kitaplığını kullanarak şunları yapı
 * Görsel arama isteği göndermek için bir görüntü karşıya yükleyin.
 * Görüntü Insight belirtecini ve görsel arama etiketlerini alın.
 
-[Başvuru belgeleri](/java/api/overview/azure/cognitiveservices/client/bingvisualsearch?view=azure-java-stable)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Search.BingVisualSearch)  |  [Yapıt (Maven)](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-visualsearch/)  |  [Örnekler](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples)
+[Başvuru belgeleri](/java/api/overview/azure/cognitiveservices/client/bingvisualsearch)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Search.BingVisualSearch)  |  [Yapıt (Maven)](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-visualsearch/)  |  [Örnekler](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples)
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -49,7 +49,7 @@ mkdir myapp && cd myapp
 gradle init --type basic
 ```
 
-Bir **DSL** seçmeniz Istendiğinde, **Kotlin** ' ı seçin.
+Bir **DSL** seçmeniz Istendiğinde, **Kotlin**' ı seçin.
 
 *Build. Gradle. kts* ' i bulun ve tercıh ettiğiniz IDE veya metin düzenleyicinizle açın. Sonra bu derleme yapılandırmasında Kopyala:
 
@@ -127,7 +127,7 @@ Bu kod parçacıkları, Bing Görsel Arama istemci kitaplığı ve Java ile aşa
 > Bu hızlı başlangıçta adlı Bing Görsel Arama anahtarınız için [bir ortam değişkeni oluşturdunuz](../../../cognitive-services-apis-create-account.md#configure-an-environment-variable-for-authentication) varsayılır `BING_SEARCH_V7_SUBSCRIPTION_KEY` .
 
 
-Ana yönteminizin içinde, bir [Bingvisualsearchapı](/java/api/com.microsoft.azure.cognitiveservices.search.visualsearch.bingvisualsearchapi?view=azure-java-stable) nesnesi oluşturmak için abonelik anahtarınızı kullandığınızdan emin olun.
+Ana yönteminizin içinde, bir [Bingvisualsearchapı](/java/api/com.microsoft.azure.cognitiveservices.search.visualsearch.bingvisualsearchapi) nesnesi oluşturmak için abonelik anahtarınızı kullandığınızdan emin olun.
 
 ```csharp
 BingVisualSearchAPI client = BingVisualSearchManager.authenticate(subscriptionKey);
@@ -135,13 +135,13 @@ BingVisualSearchAPI client = BingVisualSearchManager.authenticate(subscriptionKe
 
 ## <a name="send-a-visual-search-request"></a>Görsel arama isteği gönder
 
-Yeni bir yöntemde, `main()` Istemcinin [Bingimages (). VisualSearch (](/java/api/com.microsoft.azure.cognitiveservices.search.visualsearch.bingimages.visualsearch?view=azure-java-stable#com_microsoft_azure_cognitiveservices_search_visualsearch_BingImages_visualSearch__) ) yöntemini kullanarak görüntü bayt dizisini (yöntemde oluşturulan) gönderin. 
+Yeni bir yöntemde, `main()` Istemcinin [Bingimages (). VisualSearch (](/java/api/com.microsoft.azure.cognitiveservices.search.visualsearch.bingimages.visualsearch#com_microsoft_azure_cognitiveservices_search_visualsearch_BingImages_visualSearch__) ) yöntemini kullanarak görüntü bayt dizisini (yöntemde oluşturulan) gönderin. 
 
 [!code-java[visualSearch() method](~/cognitive-services-java-sdk-samples/Search/BingVisualSearch/src/main/java/BingVisualSearchSample.java?name=visualSearch)]
 
 ## <a name="print-the-image-insight-token-and-visual-search-tags"></a>Görüntü Insight belirtecini ve görsel arama etiketlerini yazdır
 
-[Imagekşimdi Ledge](/java/api/com.microsoft.azure.cognitiveservices.search.visualsearch.models.imageknowledge?view=azure-java-stable) nesnesinin null olup olmadığını denetleyin. Aksi takdirde, Image Insights belirtecini, etiket sayısını, eylem sayısını ve ilk eylem türünü yazdırın.
+[Imagekşimdi Ledge](/java/api/com.microsoft.azure.cognitiveservices.search.visualsearch.models.imageknowledge) nesnesinin null olup olmadığını denetleyin. Aksi takdirde, Image Insights belirtecini, etiket sayısını, eylem sayısını ve ilk eylem türünü yazdırın.
 
 [!code-java[Print token and tags](~/cognitive-services-java-sdk-samples/Search/BingVisualSearch/src/main/java/BingVisualSearchSample.java?name=printVisualSearchResults)]
 

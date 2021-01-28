@@ -1,19 +1,16 @@
 ---
 title: Azure HDInsight 'ta Hive sorgularını iyileştirme
 description: Bu makalede, Azure HDInsight 'ta Apache Hive sorgularınızın nasıl iyileştirileceği açıklanır.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 10/28/2020
-ms.openlocfilehash: 840c481a54451e1f8374aec4799df10b96fb2e4d
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: a15c3e0fb3550c6e50b3fba2279611fdba25bc84
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92910891"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945562"
 ---
 # <a name="optimize-apache-hive-queries-in-azure-hdinsight"></a>Azure HDInsight’ta Apache Hive sorgularını iyileştirme
 
@@ -53,11 +50,11 @@ HDInsight ölçeklendirme hakkında daha fazla bilgi için bkz. [HDInsight küme
 
 Tez şu nedenle daha hızlıdır:
 
-* **MapReduce altyapısında tek bir iş olarak yönlendirilmiş çevrimsiz grafiği (DAG) yürütün** . DAG, her bir mapıset 'in arkasından bir dizi azaltıcının gerektirir. Bu gereksinim, her Hive sorgusu için birden çok MapReduce işinin devre dışı bırakılmasına neden olur. Tez bu tür kısıtlamasına sahip değildir ve bir iş, iş başlangıç yükünü en aza indirerek karmaşık DAG 'yi işleyebilir.
-* **Gereksiz yazmaları önler** . MapReduce altyapısında aynı Hive sorgusunu işlemek için birden çok iş kullanılır. Her MapReduce işinin çıktısı, ara veriler için bir. Tez, her Hive sorgusu için iş sayısını en aza indirir, bu, gereksiz yazmaları önleyebilir.
-* **Başlangıç gecikmelerini en aza indirir** . Tez, başlaması gereken mapkas sayısını azaltarak ve ayrıca iyileştirme 'yi iyileştirmek için başlangıç gecikmesini en aza indirmenize daha iyidir.
-* **Kapsayıcıları yeniden kullanır** . Mümkün olan tez, kapsayıcılardan başlayan gecikme süresinin azaltıldığı durumlarda kapsayıcıları yeniden kullanır.
-* **Sürekli iyileştirme teknikleri** . Derleme aşamasında geleneksel iyileştirme gerçekleştirildi. Ancak, çalışma zamanı sırasında daha iyi iyileştirilmesine izin veren girişler hakkında daha fazla bilgi sağlanır. Tez, planın çalışma zamanı aşamasına daha fazla iyileştirmesine imkan tanıyan sürekli iyileştirme teknikleri kullanır.
+* **MapReduce altyapısında tek bir iş olarak yönlendirilmiş çevrimsiz grafiği (DAG) yürütün**. DAG, her bir mapıset 'in arkasından bir dizi azaltıcının gerektirir. Bu gereksinim, her Hive sorgusu için birden çok MapReduce işinin devre dışı bırakılmasına neden olur. Tez bu tür kısıtlamasına sahip değildir ve bir iş, iş başlangıç yükünü en aza indirerek karmaşık DAG 'yi işleyebilir.
+* **Gereksiz yazmaları önler**. MapReduce altyapısında aynı Hive sorgusunu işlemek için birden çok iş kullanılır. Her MapReduce işinin çıktısı, ara veriler için bir. Tez, her Hive sorgusu için iş sayısını en aza indirir, bu, gereksiz yazmaları önleyebilir.
+* **Başlangıç gecikmelerini en aza indirir**. Tez, başlaması gereken mapkas sayısını azaltarak ve ayrıca iyileştirme 'yi iyileştirmek için başlangıç gecikmesini en aza indirmenize daha iyidir.
+* **Kapsayıcıları yeniden kullanır**. Mümkün olan tez, kapsayıcılardan başlayan gecikme süresinin azaltıldığı durumlarda kapsayıcıları yeniden kullanır.
+* **Sürekli iyileştirme teknikleri**. Derleme aşamasında geleneksel iyileştirme gerçekleştirildi. Ancak, çalışma zamanı sırasında daha iyi iyileştirilmesine izin veren girişler hakkında daha fazla bilgi sağlanır. Tez, planın çalışma zamanı aşamasına daha fazla iyileştirmesine imkan tanıyan sürekli iyileştirme teknikleri kullanır.
 
 Bu kavramlar hakkında daha fazla bilgi için bkz. [Apache TEZ](https://tez.apache.org/).
 
@@ -132,9 +129,9 @@ Daha fazla bilgi için bkz. [bölümlenmiş tablolar](https://cwiki.apache.org/c
 
 Hive farklı dosya biçimlerini destekler. Örneğin:
 
-* **Metin** : varsayılan dosya biçimi ve çoğu senaryolarla birlikte kullanılır.
-* **Avro** : birlikte çalışabilirlik senaryolarında iyi sonuç verir.
-* **Orc/Parquet** : en iyi performans için idealdir.
+* **Metin**: varsayılan dosya biçimi ve çoğu senaryolarla birlikte kullanılır.
+* **Avro**: birlikte çalışabilirlik senaryolarında iyi sonuç verir.
+* **Orc/Parquet**: en iyi performans için idealdir.
 
 ORC (En Iyi duruma getirilmiş satır sütunlu) biçimi, Hive verilerini depolamanın son derece verimli bir yoludur. Diğer biçimlere kıyasla ORC aşağıdaki avantajlara sahiptir:
 
@@ -199,7 +196,7 @@ Göz önünde bulundurmanız gereken daha fazla iyileştirme yöntemi vardır, �
 
 * **Hive demetlenmesidir:** sorgu performansını iyileştirmek için büyük veri kümelerinin kümelamasına veya segmentine izin veren bir tekniktir.
 * **Birleştirme iyileştirmesi:** kovanın verimliliğini artırmak ve Kullanıcı ipuçlarına ihtiyacı azaltmak için Hive sorgu yürütme planlamasının iyileştirmesi. Daha fazla bilgi için bkz. [JOIN iyileştirmesi](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+JoinOptimization#LanguageManualJoinOptimization-JoinOptimization).
-* **Azaltıcının artırın** .
+* **Azaltıcının artırın**.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -3,12 +3,12 @@ title: Kapsayıcılar için Azure Izleyici ile Azure Red Hat OpenShift v4. x yap
 description: Bu makalede, Azure Red Hat OpenShift sürüm 4 veya sonraki sürümlerde barındırılan Azure Izleyici ile bir Kubernetes kümesi için izlemenin nasıl yapılandırılacağı açıklanır.
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: e9f31d1b71122c53a67dc40af31d33255e2e98d8
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 8cd551a028f2fc67c26f8e32d59c0e0650aa1e54
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91994552"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944537"
 ---
 # <a name="configure-azure-red-hat-openshift-v4x-with-azure-monitor-for-containers"></a>Kapsayıcılar için Azure Izleyici ile Azure Red Hat OpenShift v4. x yapılandırma
 
@@ -20,7 +20,7 @@ Kapsayıcılar için Azure Izleyici, Azure Kubernetes hizmeti (AKS) ve AKS motor
 
 Bu makalede açıklanan desteklenen yöntemleri kullanarak bir veya daha fazla mevcut Azure Red Hat OpenShift v4. x dağıtımına yönelik kapsayıcılar için Azure Izleyicisini etkinleştirebilirsiniz.
 
-Var olan bir küme için [Azure CLI 'da bu Bash betiğini](/cli/azure/openshift?view=azure-cli-latest#az-openshift-create&preserve-view=true)çalıştırın.
+Var olan bir küme için [Azure CLI 'da bu Bash betiğini](/cli/azure/openshift#az-openshift-create&preserve-view=true)çalıştırın.
 
 ## <a name="supported-and-unsupported-features"></a>Desteklenen ve desteklenmeyen özellikler
 
@@ -97,7 +97,7 @@ Belirtmek için bir çalışma alanınız yoksa, [varsayılan çalışma alanı 
     Microsoft Azure                       AzureCloud   0fb60ef2-03cc-4290-b595-e71108e8f4ce  Enabled  True
     ```
 
-1. **SubscriptionID**değerini kopyalayın.
+1. **SubscriptionID** değerini kopyalayın.
 
 1. Aşağıdaki komutu çalıştırarak Log Analytics çalışma alanını barındıran aboneliğe geçin:
 
@@ -111,7 +111,7 @@ Belirtmek için bir çalışma alanınız yoksa, [varsayılan çalışma alanı 
     az resource list --resource-type Microsoft.OperationalInsights/workspaces -o json
     ```
 
-1. Çıktıda, çalışma alanı adını bulun ve alan **kimliği**altında bu Log Analytics çalışma alanının tam kaynak kimliğini kopyalayın.
+1. Çıktıda, çalışma alanı adını bulun ve alan **kimliği** altında bu Log Analytics çalışma alanının tam kaynak kimliğini kopyalayın.
 
 1. İzlemeyi etkinleştirmek için aşağıdaki komutu çalıştırın. `azureAroV4ClusterResourceId`, `logAnalyticsWorkspaceResourceId` Ve parametrelerinin değerlerini değiştirin `kubeContext` .
 
@@ -133,7 +133,7 @@ Bu bölümde, indirdiğiniz Bash betiğini kullanarak Azure Red Hat OpenShift v4
 
 Bu örnekte, var olan bir çalışma alanını önceden oluşturmanız veya belirtmeniz gerekmez. Bu komut, bölge içinde zaten mevcut değilse, küme aboneliğinin varsayılan kaynak grubunda varsayılan bir çalışma alanı oluşturarak işlemi sizin için basitleştirir.
 
-Oluşturulan varsayılan çalışma alanı *defaultworkspace- \<GUID> - \<Region> *biçimindedir.  
+Oluşturulan varsayılan çalışma alanı *defaultworkspace- \<GUID> - \<Region>* biçimindedir.  
 
 `azureAroV4ClusterResourceId`Ve parametrelerinin değerlerini değiştirin `kubeContext` .
 
@@ -142,7 +142,7 @@ export azureAroV4ClusterResourceId="/subscriptions/<subscriptionId>/resourceGrou
 export kubeContext="<kubeContext name of your ARO v4 cluster>"
 ```
 
-Örnek:
+Örneğin:
 
 `bash enable-monitoring.sh --resource-id $azureAroV4ClusterResourceId --kube-context $kubeContext`
 

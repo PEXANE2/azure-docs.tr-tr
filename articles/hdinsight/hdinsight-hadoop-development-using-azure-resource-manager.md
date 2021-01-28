@@ -1,19 +1,16 @@
 ---
 title: HDInsight için Azure Resource Manager araçlarına geçiş
 description: HDInsight kümeleri için Azure Resource Manager geliştirme araçlarına geçiş yapma
-ms.reviewer: jasonh
-author: hrasheed-msft
-ms.author: hrasheed
 ms.service: hdinsight
 ms.custom: hdinsightactive, devx-track-azurecli
 ms.topic: how-to
 ms.date: 02/21/2018
-ms.openlocfilehash: 57dec799cbda03e20717a402a88f1d818d9acd92
-ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
+ms.openlocfilehash: 2ff62f4feba44a1c706ab85db1be3f7f654e6135
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92629485"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945775"
 ---
 # <a name="migrating-to-azure-resource-manager-based-development-tools-for-hdinsight-clusters"></a>HDInsight kümeleri için Azure Resource Manager tabanlı geliştirme araçlarına geçiş
 
@@ -83,7 +80,7 @@ MapReduce, Apache Hive ve Apache Pig etkileşimli Apache Hadoop diğer yolları 
 ## <a name="migrating-azure-powershell-to-azure-resource-manager"></a>Azure PowerShell Azure Resource Manager geçiriliyor
 Azure Resource Manager modundaki Azure PowerShell hakkındaki genel bilgiler [Azure Resource Manager ile Azure PowerShell kullanma](../azure-resource-manager/management/manage-resources-powershell.md)bölümünde bulunabilir.
 
-Azure PowerShell Kaynak Yöneticisi cmdlet 'leri ASM cmdlet 'leri ile yan yana yüklenebilir. İki moddan gelen cmdlet 'ler adlarıyla ayırt edilebilir.  Kaynak Yöneticisi modu, eski Azure hizmet yönetimi modunda *AzureHDInsight* ile karşılaştıran cmdlet adlarında *azhdınsight* 'a sahiptir.  Örneğin, *New-AzHDInsightCluster* vs. *New-AzureHDInsightCluster* . Parametreler ve anahtarlar haber adlarına sahip olabilir ve Kaynak Yöneticisi kullanırken kullanılabilecek birçok yeni parametre vardır.  Örneğin, birkaç cmdlet *-resourcegroupname* adlı yeni bir anahtar gerektirir.
+Azure PowerShell Kaynak Yöneticisi cmdlet 'leri ASM cmdlet 'leri ile yan yana yüklenebilir. İki moddan gelen cmdlet 'ler adlarıyla ayırt edilebilir.  Kaynak Yöneticisi modu, eski Azure hizmet yönetimi modunda *AzureHDInsight* ile karşılaştıran cmdlet adlarında *azhdınsight* 'a sahiptir.  Örneğin, *New-AzHDInsightCluster* vs. *New-AzureHDInsightCluster*. Parametreler ve anahtarlar haber adlarına sahip olabilir ve Kaynak Yöneticisi kullanırken kullanılabilecek birçok yeni parametre vardır.  Örneğin, birkaç cmdlet *-resourcegroupname* adlı yeni bir anahtar gerektirir.
 
 HDInsight cmdlet 'lerini kullanabilmeniz için önce Azure hesabınıza bağlanmanız ve yeni bir kaynak grubu oluşturmanız gerekir:
 
@@ -134,17 +131,17 @@ Aşağıda yalnızca Kaynak Yöneticisi modunda kullanılabilen yeni cmdlet 'ler
 
 **Betik eylemiyle ilgili cmdlet 'ler:**
 
-* **Get-AzHDInsightPersistedScriptAction** : bir küme için kalıcı betik eylemlerini alır ve bunları kronolojik sırada listeler veya belirtilen kalıcı betik eyleminin ayrıntılarını alır. 
-* **Get-AzHDInsightScriptActionHistory** : bir küme için betik eylem geçmişini alır ve bunu ters kronolojik düzende listeler veya daha önce yürütülen bir betik eyleminin ayrıntılarını alır. 
-* **Remove-AzHDInsightPersistedScriptAction** : bir HDInsight kümesinden kalıcı betik eylemini kaldırır.
-* **Set-AzHDInsightPersistedScriptAction** : daha önce yürütülen bir betik eylemini kalıcı betik eylemi olacak şekilde ayarlar.
-* **Gönderme-AzHDInsightScriptAction** : bir Azure HDInsight kümesine yeni bir betik eylemi gönderir. 
+* **Get-AzHDInsightPersistedScriptAction**: bir küme için kalıcı betik eylemlerini alır ve bunları kronolojik sırada listeler veya belirtilen kalıcı betik eyleminin ayrıntılarını alır. 
+* **Get-AzHDInsightScriptActionHistory**: bir küme için betik eylem geçmişini alır ve bunu ters kronolojik düzende listeler veya daha önce yürütülen bir betik eyleminin ayrıntılarını alır. 
+* **Remove-AzHDInsightPersistedScriptAction**: bir HDInsight kümesinden kalıcı betik eylemini kaldırır.
+* **Set-AzHDInsightPersistedScriptAction**: daha önce yürütülen bir betik eylemini kalıcı betik eylemi olacak şekilde ayarlar.
+* **Gönderme-AzHDInsightScriptAction**: bir Azure HDInsight kümesine yeni bir betik eylemi gönderir. 
 
 Ek kullanım bilgileri için bkz. [betik eylemi kullanarak Linux tabanlı HDInsight kümelerini özelleştirme](hdinsight-hadoop-customize-cluster-linux.md).
 
 **Küme kimliğiyle ilgili cmdlet 'ler:**
 
-* **Add-AzHDInsightClusterIdentity** : hdınsight kümesinin Azure Data Lake Storage erişebilmesi için bir küme yapılandırma nesnesine bir küme kimliği ekler. Bkz. [Azure PowerShell kullanarak Data Lake Storage HDInsight kümesi oluşturma](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell.md).
+* **Add-AzHDInsightClusterIdentity**: hdınsight kümesinin Azure Data Lake Storage erişebilmesi için bir küme yapılandırma nesnesine bir küme kimliği ekler. Bkz. [Azure PowerShell kullanarak Data Lake Storage HDInsight kümesi oluşturma](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell.md).
 
 ### <a name="examples"></a>Örnekler
 **Küme oluşturma**

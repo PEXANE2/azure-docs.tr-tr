@@ -1,19 +1,16 @@
 ---
 title: HDInsight 'a ek Azure Storage hesapları ekleme
 description: Mevcut bir HDInsight kümesine daha fazla Azure depolama hesabı eklemeyi öğrenin.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/27/2020
-ms.openlocfilehash: 51977c00dc8c9932def89d54ec1b6ec34afad652
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 11852046442901c70112b5e80fef371671546412
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92542004"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945930"
 ---
 # <a name="add-additional-storage-accounts-to-hdinsight"></a>HDInsight 'a ek depolama hesapları ekleme
 
@@ -97,7 +94,7 @@ foreach ($name in $value ) { $name.Name.Split(".")[4]}
 
 1. Bir Web tarayıcısından, `https://CLUSTERNAME.azurehdinsight.net` , `CLUSTERNAME` Kümenizin adı olan ' a gidin.
 
-1. Bu **HDFS**  >  **Configs**  >  **Gelişmiş**  >  **özel çekirdek sitesine** gidin.
+1. Bu   >    >  **Gelişmiş**  >  **özel çekirdek sitesine** gidin.
 
 1. İle başlayan anahtarları gözlemleyin `fs.azure.account.key` . Hesap adı bu örnek görüntüde görüldüğü gibi anahtarın bir parçası olacaktır:
 
@@ -107,7 +104,7 @@ foreach ($name in $value ) { $name.Name.Split(".")[4]}
 
 1. Bir Web tarayıcısından, `https://CLUSTERNAME.azurehdinsight.net` , `CLUSTERNAME` Kümenizin adı olan ' a gidin.
 
-1. Bu **HDFS**  >  **Configs**  >  **Gelişmiş**  >  **özel çekirdek sitesine** gidin.
+1. Bu   >    >  **Gelişmiş**  >  **özel çekirdek sitesine** gidin.
 
 1. Aşağıdaki anahtarları kaldırın:
     * `fs.azure.account.key.<STORAGE_ACCOUNT_NAME>.blob.core.windows.net`

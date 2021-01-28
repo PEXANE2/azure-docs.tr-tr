@@ -3,16 +3,15 @@ title: Ayrıntılı rol tabanlı erişim Azure HDInsight küme yapılandırması
 description: HDInsight küme yapılandırmalarına yönelik ayrıntılı rol tabanlı erişime geçiş kapsamında gereken değişiklikler hakkında bilgi edinin.
 author: tylerfox
 ms.author: tyfox
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/20/2020
-ms.openlocfilehash: d2e9c1fe89866511f8eae0b900563471cd6e52e9
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 08be42f4f0801fc700b3e0fc645c1bbc1b747e91
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92533317"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944089"
 ---
 # <a name="migrate-to-granular-role-based-access-for-cluster-configurations"></a>Küme yapılandırmaları için ayrıntılı rol tabanlı erişime geçme
 
@@ -29,7 +28,7 @@ Ayrıca, katkıda bulunan veya sahip 'in yönetim izinleri verilmeden gizli dizi
 | Rol                                  | Virüslü                                                                                       | Ileri git       |
 |---------------------------------------|--------------------------------------------------------------------------------------------------|-----------|
 | Okuyucu                                | -Gizli dizileri de içeren okuma erişimi.                                                                   | -Gizli dizileri **hariç** okuma erişimi |           |   |   |
-| HDInsight küme operatörü<br>(Yeni rol) | YOK                                                                                              | -Gizli dizileri dahil okuma/yazma erişimi         |   |   |
+| HDInsight küme operatörü<br>(Yeni rol) | Yok                                                                                              | -Gizli dizileri dahil okuma/yazma erişimi         |   |   |
 | Katılımcı                           | -Parolalar da dahil olmak üzere okuma/yazma erişimi.<br>-Tüm Azure kaynakları türlerini oluşturun ve yönetin.<br>-Betik eylemlerini yürütün.     | düzeltme sınıfı, |
 | Sahip                                 | -Gizlilikler dahil olmak üzere okuma/yazma erişimi.<br>-Tüm kaynaklara tam erişim<br>-Başkalarına erişim yetkisi verin.<br>-Betik eylemlerini yürütün. | düzeltme sınıfı, |
 

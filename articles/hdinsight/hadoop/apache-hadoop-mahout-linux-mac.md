@@ -1,19 +1,16 @@
 ---
 title: Azure HDInsight 'ta Apache Mahout kullanarak öneriler oluşturma
 description: HDInsight ile film önerileri oluşturmak için Apache Mahout Machine Learning kitaplığını nasıl kullanacağınızı öğrenin.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 05/14/2020
-ms.openlocfilehash: a4e4a45519526dd0eeb938a3b83e737d82589c1e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c31ffaf094801bdd49e5800bd338a15d8b8315f6
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86207664"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946503"
 ---
 # <a name="generate-recommendations-using-apache-mahout-in-azure-hdinsight"></a>Azure HDInsight 'ta Apache Mahout kullanarak öneriler oluşturma
 
@@ -35,9 +32,9 @@ Aşağıdaki iş akışı, film verileri kullanan Basitleştirilmiş bir örnekt
 
 * **Ortak yinelenme**: ali, Gamze ve Bob tüm beğenilen *yıldız çatışmaları*, *Empire geri* *dönerek JEDI 'nın geri dönmesi*. Mahout, bu filmlerde herhangi birini beğenen, diğer iki de gibi kullanıcıları belirler.
 
-* **Ortak olay**: Bob ve Gamze, *hayalet Menace*, *klonların saldırıları*ve *Revenge 'in*de beğenilmiş. Mahout, önceki üç film de bu üç film gibi beğenilen kullanıcıları belirler.
+* **Ortak olay**: Bob ve Gamze, *hayalet Menace*, *klonların saldırıları* ve *Revenge 'in* de beğenilmiş. Mahout, önceki üç film de bu üç film gibi beğenilen kullanıcıları belirler.
 
-* **Benzerlik önerisi**: ali, ilk üç film Beğentiğinden, Mahout, benzer tercihleri beğenen, ancak ali 'nin (beğenilmiş/derecelendirildi) diğer filmlere bakar. Bu durumda Mahout, *hayali Menace*, *klonların saldırıları*ve *SITH Revenge*için önerilir.
+* **Benzerlik önerisi**: ali, ilk üç film Beğentiğinden, Mahout, benzer tercihleri beğenen, ancak ali 'nin (beğenilmiş/derecelendirildi) diğer filmlere bakar. Bu durumda Mahout, *hayali Menace*, *klonların saldırıları* ve *SITH Revenge* için önerilir.
 
 ### <a name="understanding-the-data"></a>Verileri anlama
 
@@ -160,7 +157,7 @@ Kolay bir şekilde [Grouplens araştırması](https://grouplens.org/datasets/mov
    print "------------------------"
    ```
 
-    Verileri kaydetmek için **CTRL + X**, **Y**ve son olarak **ENTER** tuşlarına basın.
+    Verileri kaydetmek için **CTRL + X**, **Y** ve son olarak **ENTER** tuşlarına basın.
 
 4. Python betiğini çalıştırın. Aşağıdaki komut, tüm dosyaların indirileceği dizinde olduğunuzu varsayar:
 

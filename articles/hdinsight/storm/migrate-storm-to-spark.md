@@ -1,18 +1,15 @@
 ---
 title: Azure HDInsight 3,6 Apache Storm HDInsight 4,0 Apache Spark geçirin
 description: Apache Storm iş yüklerini Spark akışına veya Spark yapılandırılmış akışa geçirmeye yönelik farklılıklar ve geçiş akışı.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 01/16/2019
-ms.openlocfilehash: e1262a4699bc42cb5b9a4398be2254854c5d5ff2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aa57c01558cfdcf069b17fad9e86f7640553dcfd
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86081205"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944788"
 ---
 # <a name="migrate-azure-hdinsight-36-apache-storm-to-hdinsight-40-apache-spark"></a>Azure HDInsight 3,6 Apache Storm HDInsight 4,0 Apache Spark geçirin
 
@@ -67,7 +64,7 @@ Storm topolojileri döngüsel olmayan yönlü grafikte (DAG) düzenlenmiş birde
 
 Fırtınası, fırtınası kümesinin çalışmasını tutan aşağıdaki üç Daemon 'ları oluşur.
 
-|İnin |Açıklama |
+|İnin |Description |
 |---|---|
 |Nimbus|Hadoop JobTracker 'e benzer şekilde, kodu kümeye dağıtmaktan ve makinelere görevler atamaya ve hatalara yönelik izlemeye karşı sorumludur.|
 |Zookeeper|Küme düzenlemesi için kullanılır.|
@@ -104,7 +101,7 @@ Spark yapılandırılmış akış, bir veri akışını derinlemesine sınırsı
 
 Yapılandırılmış akışta, veriler sisteme ulaşır ve hemen bir giriş tablosuna alınır. Bu giriş tablosuna yönelik işlemler gerçekleştiren sorguları (DataFrame ve DataSet API 'Leri kullanarak) yazarsınız.
 
-Sorgu çıktısı sorgunuzun sonuçlarını içeren bir *sonuç tablosu*oluşturur. İlişkisel bir veritabanı gibi, bir dış veri deposu için sonuçlar tablosundan veri çizebilirsiniz.
+Sorgu çıktısı sorgunuzun sonuçlarını içeren bir *sonuç tablosu* oluşturur. İlişkisel bir veritabanı gibi, bir dış veri deposu için sonuçlar tablosundan veri çizebilirsiniz.
 
 Giriş tablosundan verilerin işlendiği zaman zamanlaması, tetikleyici aralığı tarafından denetlenir. Varsayılan olarak, tetikleyici aralığı sıfırdır, bu nedenle yapılandırılmış akış, verileri ulaştığı anda işlemeye çalışır. Uygulamada, bu, yapılandırılmış akış önceki sorgunun çalışmasını işlemeyi tamamladıktan sonra, yeni alınan tüm verilere karşı başka bir işlem çalıştırması başlattığı anlamına gelir. Tetikleyiciyi, zaman tabanlı toplu işlerle işlenmek üzere bir aralıkta çalışacak şekilde yapılandırabilirsiniz.
 

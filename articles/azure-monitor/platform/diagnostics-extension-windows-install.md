@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: bwren
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: e6ccba27fb599cb26da86e94d3500f4f806ecb76
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 14f37d0779f245301b3750329658a580dc3f9e42
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91328879"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946202"
 ---
 # <a name="install-and-configure-windows-azure-diagnostics-extension-wad"></a>Windows Azure tanılama uzantısı 'nı (WAD) yükleyip yapılandırma
 Azure [Tanılama uzantısı](diagnostics-extension-overview.md) , Azure izleyici 'de Konuk işletim sisteminden ve Azure sanal makinelerinin ve diğer işlem kaynaklarının iş yüklerinden izleme verilerini toplayan bir aracıdır. Bu makalede, Windows Tanılama uzantısı 'nı yükleme ve yapılandırma hakkında ayrıntılar ve verilerin ve Azure depolama hesabında nasıl depolandığı hakkında bir açıklama sağlanmaktadır.
@@ -78,7 +78,7 @@ Tanılama uzantısını, yapılandırma ile doğrudan çalışmaktan farklı bir
 Tanılama uzantısını Azure Resource Manager şablonlarıyla dağıtma hakkında [bir Windows sanal makinesi ve Azure Resource Manager şablonları ile izleme ve tanılamayı kullanma](../../virtual-machines/extensions/diagnostics-template.md) konusuna bakın. 
 
 ## <a name="azure-cli-deployment"></a>Azure CLı dağıtımı
-Azure CLı, aşağıdaki örnekte olduğu gibi [az VM Extension set](/cli/azure/vm/extension?view=azure-cli-latest#az-vm-extension-set) kullanılarak mevcut bir sanal makineye Azure tanılama uzantısını dağıtmak için kullanılabilir. 
+Azure CLı, aşağıdaki örnekte olduğu gibi [az VM Extension set](/cli/azure/vm/extension#az-vm-extension-set) kullanılarak mevcut bir sanal makineye Azure tanılama uzantısını dağıtmak için kullanılabilir. 
 
 ```azurecli
 az vm extension set \
@@ -192,7 +192,7 @@ Ayrıca bkz. [Windows çalıştıran bir sanal makinede Azure tanılama etkinle�
 Aşağıdaki tabloda, tanılama uzantısından toplanan farklı veri türleri ve bunların bir tablo ya da blob olarak saklanıp saklanmayacağı listelenmiştir. Tablolarda depolanan veriler ayrıca, ortak yapılandırmanızda [StorageType ayarına](diagnostics-extension-schema-windows.md#publicconfig-element) bağlı olarak bloblarda depolanabilir.
 
 
-| Veriler | Depolama türü | Açıklama |
+| Veriler | Depolama türü | Description |
 |:---|:---|:---|
 | WADDiagnosticInfrastructureLogsTable | Tablo | Tanılama İzleyicisi ve yapılandırma değişiklikleri. |
 | WADDirectoriesTable | Tablo | Tanılama izleyicisinin izlediği dizinler.  Buna IIS günlükleri, IIS başarısız istek günlükleri ve özel dizinler dahildir.  Blob günlük dosyasının konumu kapsayıcı alanında belirtilir ve BLOB adı RelativePath alanında bulunur.  AbsolutePath alanı, Azure sanal makinesinde var olan dosyanın konumunu ve adını gösterir. |

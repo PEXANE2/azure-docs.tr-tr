@@ -1,19 +1,16 @@
 ---
 title: Linux tabanlı HDInsight 'ta Hadoop kullanmaya yönelik ipuçları-Azure
 description: Azure bulutunda çalışan tanıdık bir Linux ortamında Linux tabanlı HDInsight (Hadoop) kümelerini kullanmaya yönelik uygulama ipuçları alın.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,seoapr2020
 ms.topic: conceptual
 ms.date: 04/29/2020
-ms.openlocfilehash: 0f0073c72c28395d89cec74a489cbc36a8f3ffe7
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 2d2619c7bd7bc09eeab3845599758db7134b4134
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546118"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945650"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>Linux’ta HDInsight kullanma ile ilgili bilgiler
 
@@ -24,9 +21,9 @@ Azure HDInsight kümeleri, Azure bulutu 'nda çalışan tanıdık bir Linux orta
 Bu belgedeki adımların birçoğu, sisteminizde yüklü olması gerekebilecek aşağıdaki yardımcı programları kullanır.
 
 * [kıvrımlı](https://curl.haxx.se/) -Web tabanlı hizmetlerle iletişim kurmak için kullanılır.
-* bir komut satırı JSON işlemcisi olan **JQ** .  Bkz [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/) ..
+* bir komut satırı JSON işlemcisi olan **JQ**.  Bkz [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/) ..
 * [Azure CLI](/cli/azure/install-azure-cli) -Azure hizmetlerini uzaktan yönetmek için kullanılır.
-* **Bir SSH istemcisi** . Daha fazla bilgi için bkz. [SSH kullanarak HDInsight 'A bağlanma (Apache Hadoop)](hdinsight-hadoop-linux-use-ssh-unix.md).
+* **Bir SSH istemcisi**. Daha fazla bilgi için bkz. [SSH kullanarak HDInsight'a (Apache Hadoop) bağlanma](hdinsight-hadoop-linux-use-ssh-unix.md).
 
 ## <a name="users"></a>Kullanıcılar
 
@@ -92,8 +89,8 @@ Daha fazla bilgi için bkz. [HDInsight 'ta Apache Hadoop Services tarafından ku
 
 Hadoop ile ilgili dosyalar konumundaki küme düğümlerinde bulunabilir `/usr/hdp` . Bu dizin aşağıdaki alt dizinleri içerir:
 
-* **2.6.5.3009-43** : Dizin adı, HDInsight tarafından kullanılan Hadoop platformunun sürümüdür. Kümenizdeki sayı burada listelenenden farklı olabilir.
-* **geçerli** : Bu dizin, **2.6.5.3009-43** dizininde bulunan alt dizinlere bağlantılar içerir. Bu dizin, sürüm numarasını anımsamanıza gerek kalmayacak şekilde bulunur.
+* **2.6.5.3009-43**: Dizin adı, HDInsight tarafından kullanılan Hadoop platformunun sürümüdür. Kümenizdeki sayı burada listelenenden farklı olabilir.
+* **geçerli**: Bu dizin, **2.6.5.3009-43** dizininde bulunan alt dizinlere bağlantılar içerir. Bu dizin, sürüm numarasını anımsamanıza gerek kalmayacak şekilde bulunur.
 
 Örnek veri ve JAR dosyaları, ve ' de Hadoop Dağıtılmış Dosya Sistemi bulunabilir `/example` `/HdiSamples` .
 
@@ -183,7 +180,7 @@ Ayrıca, aşağıdaki adımları kullanarak Azure portal kullanarak depolama bil
 
 1. [Azure Portal](https://portal.azure.com/)HDInsight kümenizi seçin.
 
-2. **Özellikler** bölümünde **depolama hesapları** ' nı seçin. Küme için depolama bilgileri görüntülenir.
+2. **Özellikler** bölümünde **depolama hesapları**' nı seçin. Küme için depolama bilgileri görüntülenir.
 
 ### <a name="how-do-i-access-files-from-outside-hdinsight"></a>HDInsight dışından Dosya Nasıl yaparım? erişim
 

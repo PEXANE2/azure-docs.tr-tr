@@ -3,12 +3,12 @@ title: Azure Izleyici Application Insights klasik kaynağını çalışma alanı
 description: Azure monitörünüzü Application Insights klasik kaynağınızı yeni çalışma alanı tabanlı modele yükseltmek için gereken adımlar hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 709cff1326bb6393a14c594ea434a6c16fb80860
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 5316bf5b919fe8b24ea1dd601214df62aa034f37
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95536532"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945104"
 ---
 # <a name="migrate-to-workspace-based-application-insights-resources"></a>Çalışma alanı tabanlı Application Insights kaynaklarına geçirin
 
@@ -51,7 +51,7 @@ Var olan bir kaynağı geçirmeniz gerekmiyorsa ve bunun yerine yeni bir çalı�
 - Çalışma alanı tabanlı kaynaklar için sürekli dışarı aktarma desteklenmez ve devre dışı bırakılmalıdır.
 Geçiş işlemi tamamlandıktan sonra, bir depolama hesabına veya Azure Olay Hub 'ına akış olarak veri arşivlemeyi yapılandırmak için [tanılama ayarlarını](../platform/diagnostic-settings.md) kullanabilirsiniz.  
 
-- **General**  >  Log Analytics çalışma alanınız için genel **kullanım altında ve tahmini maliyet**  >  **veri saklama** ' nın altında bulunan geçerli bekletme ayarlarını denetleyin. Bu ayar, Application Insights kaynağınızı geçirdikten sonra yeni verilerin ne kadar süreyle depolanabileceğini etkiler. Şu anda varsayılan 90 günden daha uzun bir süre için Application Insights verileri depoluuyorsanız ve bu daha büyük saklama süresini saklamak istiyorsanız çalışma alanı bekletme ayarlarınızı ayarlamanız gerekebilir.
+-   >  Log Analytics çalışma alanınız için genel **kullanım altında ve tahmini maliyet**  >  **veri saklama** ' nın altında bulunan geçerli bekletme ayarlarını denetleyin. Bu ayar, Application Insights kaynağınızı geçirdikten sonra yeni verilerin ne kadar süreyle depolanabileceğini etkiler. Şu anda varsayılan 90 günden daha uzun bir süre için Application Insights verileri depoluuyorsanız ve bu daha büyük saklama süresini saklamak istiyorsanız çalışma alanı bekletme ayarlarınızı ayarlamanız gerekebilir.
 
 ## <a name="migrate-your-resource"></a>Kaynağınızı geçirin
 
@@ -61,7 +61,7 @@ Bu bölüm, klasik Application Insights kaynağını yeni çalışma alanı taba
 
     ![Kırmızı kutuda vurgulanan Özellikler](./media/convert-classic-resource/properties.png)
 
-2. **`Migrate to Workspace-based`** seçeneğini belirleyin.
+2. **`Migrate to Workspace-based`** öğesini seçin.
     
      ![Kaynak geçir düğmesi](./media/convert-classic-resource/migrate.png)
 
@@ -86,7 +86,7 @@ Application Insights deneyiminde Application Insights klasik kaynak sorguları, 
 
 ## <a name="programmatic-resource-migration"></a>Programlı kaynak geçişi
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure CLI’si
 
 Azure CLı komutlarına önizleme Application Insights erişmek için öncelikle şunu çalıştırmanız gerekir:
 
@@ -114,7 +114,7 @@ az monitor app-insights component update --app
 az monitor app-insights component update --app your-app-insights-resource-name -g your_resource_group --workspace "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test1234/providers/microsoft.operationalinsights/workspaces/test1234555"
 ```
 
-Bu komutla ilgili tam Azure CLı belgeleri için [Azure CLI belgelerine](/cli/azure/ext/application-insights/monitor/app-insights/component?view=azure-cli-latest#ext-application-insights-az-monitor-app-insights-component-update)başvurun.
+Bu komutla ilgili tam Azure CLı belgeleri için [Azure CLI belgelerine](/cli/azure/ext/application-insights/monitor/app-insights/component#ext-application-insights-az-monitor-app-insights-component-update)başvurun.
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
@@ -237,7 +237,7 @@ Eski sürekli dışa aktarma işlevselliği, çalışma alanı tabanlı kaynakla
 
 Geçirmeden önce herhangi bir değişiklik yapmanız gerekmez, ancak bu ileti geçerli Application Insights bekletme ayarlarınızın varsayılan 90 günlük bekletme dönemine ayarlamadığında sizi uyarır. Bu uyarı iletisi, yeni verileri geçirmeden ve almadan önce Log Analytics çalışma alanınızın bekletme ayarlarını değiştirmek isteyebileceğiniz anlamına gelir. 
 
-**General**  >  Log Analytics kullanıcı arabiriminden genel **kullanım ve tahmini maliyet**  >  **veri saklama** altında Log Analytics için geçerli bekletme ayarlarınızı kontrol edebilirsiniz. Bu ayar, Application Insights kaynağınızı geçirdikten sonra yeni verilerin ne kadar süreyle depolanabileceğini etkiler.
+  >  Log Analytics kullanıcı arabiriminden genel **kullanım ve tahmini maliyet**  >  **veri saklama** altında Log Analytics için geçerli bekletme ayarlarınızı kontrol edebilirsiniz. Bu ayar, Application Insights kaynağınızı geçirdikten sonra yeni verilerin ne kadar süreyle depolanabileceğini etkiler.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -1,18 +1,15 @@
 ---
 title: Azure HDInsight kümelerini özelleştirmek için betik eylemleri geliştirme
 description: HDInsight kümelerini özelleştirmek için bash betiklerini nasıl kullanacağınızı öğrenin. Betik eylemleri, küme yapılandırma ayarlarını değiştirmek veya ek yazılım yüklemek için küme oluşturma sırasında veya sonrasında betikleri çalıştırmanızı sağlar.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 11/28/2019
-ms.openlocfilehash: f7959b639b75d912d44670c8b00a7327cb7857d6
-ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
+ms.openlocfilehash: b6705728fddc9a5a3c9cb8eb2f1811412fb3a290
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92629451"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945478"
 ---
 # <a name="script-action-development-with-hdinsight"></a>HDInsight ile betik eylemi geliştirme
 
@@ -26,7 +23,7 @@ Betik eylemleri aşağıdaki yöntemlerle uygulanabilir:
 
 | Betik uygulamak için bu yöntemi kullanın... | Küme oluşturma sırasında... | Çalışan bir kümede... |
 | --- |:---:|:---:|
-| Azure portal |✓ |✓ |
+| Azure portalı |✓ |✓ |
 | Azure PowerShell |✓ |✓ |
 | Azure Klasik CLI |&nbsp; |✓ |
 | HDInsight .NET SDK 'Sı |✓ |✓ |
@@ -235,7 +232,7 @@ wget -O /tmp/HDInsightUtilities-v01.sh -q https://hdiconfigactions.blob.core.win
 
 Aşağıdaki yardımcılar betiğinizdeki kullanım için kullanılabilir:
 
-| Yardımcı kullanım | Açıklama |
+| Yardımcı kullanım | Description |
 | --- | --- |
 | `download_file SOURCEURL DESTFILEPATH [OVERWRITE]` |Kaynak URI 'den belirtilen dosya yoluna bir dosya indirir. Varsayılan olarak, varolan bir dosyanın üzerine yazmaz. |
 | `untar_file TARFILE DESTDIR` |Bir tar dosyasını (kullanarak `-xf` ) hedef dizine ayıklar. |
@@ -290,7 +287,7 @@ Bir kümeyi özelleştirmek için kullanılan betikler aşağıdaki konumlardan 
 
 * Kümeyle ilişkili __ek bir depolama hesabı__ .
 
-* __Genel olarak okunabilir BIR URI__ . Örneğin, OneDrive, Dropbox veya diğer dosya barındırma hizmeti 'nde depolanan verilerin URL 'SI.
+* __Genel olarak okunabilir BIR URI__. Örneğin, OneDrive, Dropbox veya diğer dosya barındırma hizmeti 'nde depolanan verilerin URL 'SI.
 
 * HDInsight kümesiyle ilişkili bir __Azure Data Lake Storage hesabı__ . HDInsight ile Azure Data Lake Storage kullanma hakkında daha fazla bilgi için bkz. [hızlı başlangıç: HDInsight 'ta kümeleri ayarlama](./hdinsight-hadoop-provision-linux-clusters.md).
 
@@ -317,7 +314,7 @@ Aşağıda, bir betiği dağıtmaya hazırlanırken yapılacak adımlar verilmi�
 
 Aşağıdaki yöntemleri kullanarak HDInsight kümelerini özelleştirmek için betik eylemleri kullanabilirsiniz:
 
-* Azure portal
+* Azure portalı
 * Azure PowerShell
 * Azure Resource Manager şablonları
 * HDInsight .NET SDK 'Sı.
@@ -332,13 +329,13 @@ Microsoft, bir HDInsight kümesine bileşen yüklemek için örnek betikler sağ
 
 Aşağıda, geliştirmiş olduğunuz betikleri kullanırken karşılaşabileceğiniz hatalar verilmiştir:
 
-**Hata** : `$'\r': command not found` . Bazen sonrasında `syntax error: unexpected end of file` .
+**Hata**: `$'\r': command not found` . Bazen sonrasında `syntax error: unexpected end of file` .
 
-*Neden* : Bu hata, bir betikteki satırlar CRLF ile bitmediğinde oluşur. UNIX sistemleri, son satır olarak yalnızca LF bekler.
+*Neden*: Bu hata, bir betikteki satırlar CRLF ile bitmediğinde oluşur. UNIX sistemleri, son satır olarak yalnızca LF bekler.
 
 Bu sorun çoğu zaman, komut dosyası bir Windows ortamında yazıldığı için, CRLF Windows üzerinde birçok metin Düzenleyicisi için biten ortak bir satır olduğundan, çoğu zaman oluşur.
 
-*Çözüm* : metin düzenleyicinizde bir seçenek varsa, satır sonu için UNIX BIÇIMI veya LF 'yi seçin. CRLF 'yi bir LF olarak değiştirmek için bir UNIX sisteminde aşağıdaki komutları da kullanabilirsiniz:
+*Çözüm*: metin düzenleyicinizde bir seçenek varsa, satır sonu için UNIX BIÇIMI veya LF 'yi seçin. CRLF 'yi bir LF olarak değiştirmek için bir UNIX sisteminde aşağıdaki komutları da kullanabilirsiniz:
 
 > [!NOTE]  
 > Aşağıdaki komutlar, CRLF satır sonlarını LF olarak değiştirmeleri için kabaca eşdeğerdir. Sisteminizde bulunan yardımcı programlara göre birini seçin.
@@ -350,11 +347,11 @@ Bu sorun çoğu zaman, komut dosyası bir Windows ortamında yazıldığı için
 | `perl -pi -e 's/\r\n/\n/g' INFILE` | Dosyayı doğrudan değiştirir |
 | ```sed 's/$'"/`echo \\\r`/" INFILE > OUTFILE``` |ÇıKıŞDOSYASı yalnızca LF sonları olan bir sürüm içeriyor. |
 
-**Hata** : `line 1: #!/usr/bin/env: No such file or directory` .
+**Hata**: `line 1: #!/usr/bin/env: No such file or directory` .
 
-*Neden* : komut dosyası UTF-8 olarak bir bayt sırası IŞARETIYLE (BOM) kaydedildiğinde bu hata oluşur.
+*Neden*: komut dosyası UTF-8 olarak bir bayt sırası IŞARETIYLE (BOM) kaydedildiğinde bu hata oluşur.
 
-*Çözüm* : dosyayı ASCII ya da bir BOM olmadan UTF-8 olarak kaydedin. Ayrıca, bir Linux veya UNIX sisteminde, BOM olmadan bir dosya oluşturmak için aşağıdaki komutu kullanabilirsiniz:
+*Çözüm*: dosyayı ASCII ya da bir BOM olmadan UTF-8 olarak kaydedin. Ayrıca, bir Linux veya UNIX sisteminde, BOM olmadan bir dosya oluşturmak için aşağıdaki komutu kullanabilirsiniz:
 
 ```bash
 awk 'NR==1{sub(/^\xef\xbb\xbf/,"")}{print}' INFILE > OUTFILE

@@ -1,19 +1,16 @@
 ---
 title: Linux tabanlı HDInsight 'ta Hadoop MapReduce ile .NET kullanma-Azure
 description: Linux tabanlı HDInsight 'ta MapReduce akışı için .NET uygulamalarını nasıl kullanacağınızı öğrenin.
-author: hrasheed-msft
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 02/27/2018
-ms.author: hrasheed
-ms.openlocfilehash: a6e9bea5d600771a7754142a4df4c0af503ccf5d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1ceb5d323ecfed54b4e01d13d66c640769a224ee
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86075493"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945598"
 ---
 # <a name="migrate-net-solutions-for-windows-based-hdinsight-to-linux-based-hdinsight"></a>Windows tabanlı HDInsight için .NET çözümlerini Linux tabanlı HDInsight 'a geçirme
 
@@ -34,15 +31,15 @@ Mono ve .NET arasındaki uyumlulukla ilgili daha fazla bilgi için bkz. [mono uy
 
 1. [.Net taşınabilirlik Çözümleyicisi](https://marketplace.visualstudio.com/items?itemName=ConnieYau.NETPortabilityAnalyzer)'ni yükler. Yükleme sırasında, kullanılacak Visual Studio sürümünü seçin.
 
-2. Visual Studio 2015 ' den __Analyze__  >  __taşınabilirlik Çözümleyicisi ayarlarını__Çözümle ' yi seçin ve __mono__ bölümünde __4,5__ ' nin işaretli olduğundan emin olun.
+2. Visual Studio 2015 ' den   >  __taşınabilirlik Çözümleyicisi ayarlarını__ Çözümle ' yi seçin ve __mono__ bölümünde __4,5__ ' nin işaretli olduğundan emin olun.
 
     ![4,5, çözümleyici ayarları için mono bölümünde işaretlendi](./media/hdinsight-hadoop-migrate-dotnet-to-linux/portability-analyzer-settings.png)
 
     Yapılandırmayı kaydetmek için __Tamam ' ı__ seçin.
 
-3. Analiz __Analyze__  >  __taşınabilirlik derlemesini__Çözümle ' yi seçin. Çözümünüzü içeren derlemeyi seçin ve ardından Analize Başlamak için __Aç__ ' ı seçin.
+3. Analiz   >  __taşınabilirlik derlemesini__ Çözümle ' yi seçin. Çözümünüzü içeren derlemeyi seçin ve ardından Analize Başlamak için __Aç__ ' ı seçin.
 
-4. Analiz tamamlandıktan sonra, __Analyze__  >  __Görünüm analiz raporlarını__analiz et ' i seçin. __Taşınabilirlik Analizi sonuçlarında__rapor açmak Için __raporu aç__ ' ı seçin.
+4. Analiz tamamlandıktan sonra,   >  __Görünüm analiz raporlarını__ analiz et ' i seçin. __Taşınabilirlik Analizi sonuçlarında__ rapor açmak Için __raporu aç__ ' ı seçin.
 
     ![Taşınabilirlik Çözümleyicisi sonuçları iletişim kutusu](./media/hdinsight-hadoop-migrate-dotnet-to-linux/portability-analyzer-results.png)
 

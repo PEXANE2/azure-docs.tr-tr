@@ -1,19 +1,16 @@
 ---
 title: Apache Spark için veri işlemeyi iyileştirme-Azure HDInsight
 description: Azure HDInsight ile Apache Spark verilerinizi işlemek için en verimli işlemleri nasıl seçebileceğinizi öğrenin.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 3b85f6238bec4ef85d724a2fc48ea5988c3fceb2
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 98457456bc1c8f9fdb08c32fdcd319a3aa9ff14a
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97031734"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944717"
 ---
 # <a name="data-processing-optimization-for-apache-spark"></a>Apache Spark için veri işleme iyileştirmesi
 
