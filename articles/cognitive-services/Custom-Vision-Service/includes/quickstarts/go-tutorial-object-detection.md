@@ -3,26 +3,26 @@ author: areddish
 ms.author: areddish
 ms.service: cognitive-services
 ms.date: 09/15/2020
-ms.openlocfilehash: bae0887ca540dd553cc80849d9e134516089d016
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 439a75907ccdc6d2f1af4f2a3d9fc951bdd6307d
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97582717"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98947722"
 ---
 Bu kılavuz, bir nesne algılama modeli oluşturmak üzere Go için Özel Görüntü İşleme istemci kitaplığını kullanmaya başlamanıza yardımcı olacak yönergeler ve örnek kod sağlar. Bir proje oluşturacak, Etiketler ekleyecek, projeyi eğtireceksiniz ve projenin tahmin uç nokta URL 'sini programlı bir şekilde test etmek üzere kullanacaksınız. Bu örneği kendi görüntü tanıma uygulamanızı oluşturmak için bir şablon olarak kullanın.
 
 > [!NOTE]
 > Bir nesne _algılama modelini kod yazmadan derlemek_ ve eğitebilmek istiyorsanız, bunun yerine [tarayıcı tabanlı kılavuza](../../get-started-build-detector.md) bakın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - [Go 1.8 +](https://golang.org/doc/install)
 - [!INCLUDE [create-resources](../../includes/create-resources.md)]
 
 ## <a name="install-the-custom-vision-client-library"></a>Özel Görüntü İşleme istemci kitaplığını yükler
 
-Go için Özel Görüntü İşleme bir görüntü analizi uygulaması yazmak için Özel Görüntü İşleme hizmeti istemci kitaplığı gerekir. PowerShell 'de şu komutu çalıştırın:
+Go için Özel Görüntü İşleme bir görüntü analizi uygulaması yazmak için Özel Görüntü İşleme hizmeti istemci kitaplığı gerekir. PowerShell'de aşağıdaki komutu çalıştırın:
 
 ```shell
 go get -u github.com/Azure/azure-sdk-for-go/...
@@ -45,7 +45,7 @@ Tercih ettiğiniz proje dizinine *örnek. go* adlı yeni bir dosya oluşturun.
 
 Yeni bir Özel Görüntü İşleme hizmeti projesi oluşturmak için betiğinize aşağıdaki kodu ekleyin. Abonelik anahtarlarınızı uygun tanımlara ekleyin. Ayrıca, Özel Görüntü İşleme Web sitesinin ayarlar sayfasından uç nokta URL 'nizi alın.
 
-Projenizi oluştururken diğer seçenekleri belirtmek için bkz. [CreateProject](/java/api/com.microsoft.azure.cognitiveservices.vision.customvision.training.trainings.createproject?view=azure-java-stable#com_microsoft_azure_cognitiveservices_vision_customvision_training_Trainings_createProject_String_CreateProjectOptionalParameter_) yöntemi ( [bir algılayıcı derleme](../../get-started-build-detector.md) Web portalı kılavuzunda açıklanmıştır).
+Projenizi oluştururken diğer seçenekleri belirtmek için bkz. [CreateProject](/java/api/com.microsoft.azure.cognitiveservices.vision.customvision.training.trainings.createproject#com_microsoft_azure_cognitiveservices_vision_customvision_training_Trainings_createProject_String_CreateProjectOptionalParameter_) yöntemi ( [bir algılayıcı derleme](../../get-started-build-detector.md) Web portalı kılavuzunda açıklanmıştır).
 
 ```go
 import(

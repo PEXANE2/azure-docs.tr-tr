@@ -4,12 +4,12 @@ ms.author: areddish
 ms.service: cognitive-services
 ms.date: 10/26/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 2867fd3a777242218495f8759611178130ae0c17
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 70890488ecfddc8cb9877c128c79eedd684ea193
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98256250"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98948592"
 ---
 Bu kılavuz, bir görüntü sınıflandırma modeli oluşturmak için Node.js Özel Görüntü İşleme istemci kitaplığını kullanmaya başlamanıza yardımcı olacak yönergeler ve örnek kod sağlar. Bir proje oluşturacak, Etiketler ekleyecek, projeyi eğtireceksiniz ve projenin tahmin uç nokta URL 'sini programlı bir şekilde test etmek üzere kullanacaksınız. Bu örneği kendi görüntü tanıma uygulamanızı oluşturmak için bir şablon olarak kullanın.
 
@@ -25,9 +25,9 @@ Bu kılavuz, bir görüntü sınıflandırma modeli oluşturmak için Node.js Ö
 * Geçerli yinelemeyi Yayımla
 * Tahmin uç noktasını test etme
 
-Başvuru belgeleri [(eğitim)](/javascript/api/@azure/cognitiveservices-customvision-training/?view=azure-node-latest) [(tahmin)](/javascript/api/@azure/cognitiveservices-customvision-prediction/?view=azure-node-latest) | Kitaplık kaynak kodu [(eğitim)](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-customvision-training) [(tahmin)](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-customvision-prediction) | Paket (NPM) ( [eğitim)](https://www.npmjs.com/package/@azure/cognitiveservices-customvision-training) [(tahmin)](https://www.npmjs.com/package/@azure/cognitiveservices-customvision-prediction)  |  [örnekleri](/samples/browse/?products=azure&terms=custom%20vision&languages=javascript)
+Başvuru belgeleri [(eğitim)](/javascript/api/@azure/cognitiveservices-customvision-training/) [(tahmin)](/javascript/api/@azure/cognitiveservices-customvision-prediction/) | Kitaplık kaynak kodu [(eğitim)](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-customvision-training) [(tahmin)](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-customvision-prediction) | Paket (NPM) ( [eğitim)](https://www.npmjs.com/package/@azure/cognitiveservices-customvision-training) [(tahmin)](https://www.npmjs.com/package/@azure/cognitiveservices-customvision-prediction)  |  [örnekleri](/samples/browse/?products=azure&terms=custom%20vision&languages=javascript)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services/)
 * [Node.js](https://nodejs.org/) geçerli sürümü
@@ -88,9 +88,9 @@ Ayrıca, zaman uyumsuz çağrılar için proje adınız ve zaman aşımı parame
 
 |Ad|Açıklama|
 |---|---|
-|[TrainingAPIClient](/javascript/api/@azure/cognitiveservices-customvision-training/trainingapiclient?view=azure-node-latest) | Bu sınıf, modellerinizin oluşturulmasını, eğitimini ve yayımlanmasını işler. |
-|[PredictionAPIClient](/javascript/api/@azure/cognitiveservices-customvision-prediction/predictionapiclient?view=azure-node-latest)| Bu sınıf, görüntü sınıflandırması tahminleri için modellerinizin sorgulanmasını işler.|
-|[Tahmin](/javascript/api/@azure/cognitiveservices-customvision-prediction/prediction?view=azure-node-latest)| Bu arabirim tek bir görüntüde tek bir tahmin tanımlar. Nesne KIMLIĞI ve adı ve Güvenirlik puanı özelliklerini içerir.|
+|[TrainingAPIClient](/javascript/api/@azure/cognitiveservices-customvision-training/trainingapiclient) | Bu sınıf, modellerinizin oluşturulmasını, eğitimini ve yayımlanmasını işler. |
+|[PredictionAPIClient](/javascript/api/@azure/cognitiveservices-customvision-prediction/predictionapiclient)| Bu sınıf, görüntü sınıflandırması tahminleri için modellerinizin sorgulanmasını işler.|
+|[Hızlı](/javascript/api/@azure/cognitiveservices-customvision-prediction/prediction)| Bu arabirim tek bir görüntüde tek bir tahmin tanımlar. Nesne KIMLIĞI ve adı ve Güvenirlik puanı özelliklerini içerir.|
 
 ## <a name="code-examples"></a>Kod örnekleri
 
@@ -106,7 +106,7 @@ Bu kod parçacıkları, JavaScript için Özel Görüntü İşleme istemci kitap
 
 ## <a name="authenticate-the-client"></a>İstemcinin kimliğini doğrulama
 
-Uç noktanız ve anahtarınızla istemci nesneleri oluşturun. Anahtarınızla bir **Apikeycredentials** nesnesi oluşturun ve bir [Trainingapiclient](/javascript/api/@azure/cognitiveservices-customvision-training/trainingapiclient?view=azure-node-latest) ve [PredictionAPIClient](/javascript/api/@azure/cognitiveservices-customvision-prediction/predictionapiclient?view=azure-node-latest) nesnesi oluşturmak için bunu uç noktanızla birlikte kullanın.
+Uç noktanız ve anahtarınızla istemci nesneleri oluşturun. Anahtarınızla bir **Apikeycredentials** nesnesi oluşturun ve bir [Trainingapiclient](/javascript/api/@azure/cognitiveservices-customvision-training/trainingapiclient) ve [PredictionAPIClient](/javascript/api/@azure/cognitiveservices-customvision-prediction/predictionapiclient) nesnesi oluşturmak için bunu uç noktanızla birlikte kullanın.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/CustomVision/ImageClassification/CustomVisionQuickstart.js?name=snippet_auth)]
 
@@ -201,5 +201,5 @@ Artık, nesne algılama işleminin her adımının kodda nasıl yapılabileceği
 
 * [Özel Görüntü İşleme nedir?](../../overview.md)
 * Bu örneğe ilişkin kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/CustomVision/ImageClassification/CustomVisionQuickstart.js) 'da bulunabilir
-* [SDK başvuru belgeleri (eğitim)](/javascript/api/@azure/cognitiveservices-customvision-training/?view=azure-node-latest)
-* [SDK başvuru belgeleri (tahmin)](/javascript/api/@azure/cognitiveservices-customvision-prediction/?view=azure-node-latest)
+* [SDK başvuru belgeleri (eğitim)](/javascript/api/@azure/cognitiveservices-customvision-training/)
+* [SDK başvuru belgeleri (tahmin)](/javascript/api/@azure/cognitiveservices-customvision-prediction/)

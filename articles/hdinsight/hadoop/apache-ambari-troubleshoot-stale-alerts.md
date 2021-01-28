@@ -1,18 +1,15 @@
 ---
 title: Azure HDInsight 'ta Apache ambarı eski uyarıları
 description: HDInsight 'ta Apache ambarı eski uyarıları için olası nedenleri ve çözümleri tartışma ve çözümleme.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/22/2020
-ms.openlocfilehash: 9564e149055dcabf205694b3cf6c3ddc03163037
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: e31e5d5a5b27f4dcb267905eae6329666fc3292c
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92533844"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946720"
 ---
 # <a name="scenario-apache-ambari-stale-alerts-in-azure-hdinsight"></a>Senaryo: Azure HDInsight 'ta Apache ambarı eski uyarıları
 
@@ -46,17 +43,17 @@ Kümenizin yanıt süresi ve yüküne göre ayrı bir uyarı aralığının değ
 
 1. Apache ambarı Kullanıcı arabiriminde, **Uyarılar** sekmesini seçin.
 1. İstediğiniz uyarı tanımı adını seçin.
-1. Tanımdan **Düzenle** ' yi seçin.
-1. **Denetim aralığı** değerini artırıp **Kaydet** ' i seçin.
+1. Tanımdan **Düzenle**' yi seçin.
+1. **Denetim aralığı** değerini artırıp **Kaydet**' i seçin.
 
 ### <a name="increase-the-alert-interval-time-for-ambari-server-alerts"></a>Ambarı sunucusu uyarıları için uyarı aralığı süresini artırın
 
 1. Apache ambarı Kullanıcı arabiriminde, **Uyarılar** sekmesini seçin.
-1. **Gruplar** açılan listesinden, **ambarı varsayılanı** ' nı seçin.
+1. **Gruplar** açılan listesinden, **ambarı varsayılanı**' nı seçin.
 1. **Ambarı sunucusu uyarıları** uyarısını seçin.
-1. Tanımdan **Düzenle** ' yi seçin.
+1. Tanımdan **Düzenle**' yi seçin.
 1. **Denetim aralığı** değerini artırın.
-1. **Aralık çarpanı** değerini artırıp **Kaydet** ' i seçin.
+1. **Aralık çarpanı** değerini artırıp **Kaydet**' i seçin.
 
 ### <a name="disable-and-reenable-the-alert"></a>Uyarıyı devre dışı bırakma ve yeniden etkinleştirme
 
@@ -65,10 +62,10 @@ Eski bir uyarıyı atmak için devre dışı bırakıp yeniden etkinleştirin:
 1. Apache ambarı Kullanıcı arabiriminde, **Uyarılar** sekmesini seçin.
 1. İstediğiniz uyarı tanımı adını seçin.
 1. Tanımdan, Kullanıcı arabiriminin en sağ bölümünde **etkin** ' i seçin.
-1. **Onay** açılır penceresinde **devre dışı bırak** ' ı seçin.
+1. **Onay** açılır penceresinde **devre dışı bırak**' ı seçin.
 1. Sayfada gösterilen tüm uyarı "örneklerinin" temizlenmesi için birkaç saniye bekleyin.
 1. Tanımdan, Kullanıcı arabiriminin en sağ bölümünde **devre dışı** seçeneğini belirleyin.
-1. **Onay** açılır penceresinde **Etkinleştir** ' i seçin.
+1. **Onay** açılır penceresinde **Etkinleştir**' i seçin.
 
 ### <a name="increase-the-alert-grace-period"></a>Uyarı yetkisiz kullanım süresini artırın
 
@@ -84,6 +81,6 @@ Sorununuz burada bahsedilmiyorsa veya çözemezseniz, daha fazla destek için a�
 
 * Twitter 'da ile bağlantı kurmak [@AzureSupport](https://twitter.com/azuresupport) . Bu, müşteri deneyimini iyileştirmeye yönelik resmi Microsoft Azure hesabıdır. Azure Community 'yi doğru kaynaklara bağlar: yanıtlar, destek ve uzmanlar.
 
-* Daha fazla yardıma ihtiyacınız varsa [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)bir destek isteği gönderebilirsiniz. Buradan yararlanmak için Portal menüsünden Yardım ( **?** ) seçeneğini belirleyin veya **Yardım + Destek** bölmesini açın. Daha fazla bilgi için bkz. [Azure destek isteği oluşturma](../../azure-portal/supportability/how-to-create-azure-support-request.md). 
+* Daha fazla yardıma ihtiyacınız varsa [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)bir destek isteği gönderebilirsiniz. Buradan yararlanmak için Portal menüsünden Yardım (**?**) seçeneğini belirleyin veya **Yardım + Destek** bölmesini açın. Daha fazla bilgi için bkz. [Azure destek isteği oluşturma](../../azure-portal/supportability/how-to-create-azure-support-request.md). 
 
   Abonelik yönetimi ve faturalandırma desteği Microsoft Azure aboneliğinize dahildir. Teknik destek, [Azure destek planları](https://azure.microsoft.com/support/plans/)aracılığıyla sağlanır.

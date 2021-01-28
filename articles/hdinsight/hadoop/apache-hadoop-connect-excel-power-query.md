@@ -1,25 +1,22 @@
 ---
 title: Apache Hadoop Power Query-Azure HDInsight ile Excel 'e bağlanma
 description: İş zekası bileşenlerinden nasıl yararlanacağınızı öğrenin ve HDInsight 'ta Hadoop 'ta depolanan verilere erişmek için Excel için Power Query kullanın.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/17/2019
-ms.openlocfilehash: 8664efd40bb5392f56803515f09cccc800fdf21c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bcca511bcb61ceab8395ee56b377efa99f095586
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91397122"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946693"
 ---
 # <a name="connect-excel-to-apache-hadoop-by-using-power-query"></a>Power Query kullanarak Excel 'i Apache Hadoop bağlama
 
 Microsoft büyük veri çözümünün bir anahtar özelliği, Microsoft Business Intelligence (BI) bileşenlerinin Azure HDInsight 'ta Apache Hadoop kümeleriyle Tümleştirmesidir. Birincil örnek, Excel için Microsoft Power Query eklentisini kullanarak, Excel 'i Hadoop kümeniz ile ilişkili verileri içeren Azure depolama hesabına bağlama olanağıdır. Bu makalede, HDInsight ile yönetilen bir Hadoop kümesiyle ilişkili verileri sorgulamak için Power Query ayarlama ve kullanma adımları gösterilmektedir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * HDInsight üzerinde bir Apache Hadoop kümesi. Bkz. [Linux 'Ta HDInsight kullanmaya başlama](./apache-hadoop-linux-tutorial-get-started.md).
 * Windows 10, 7, Windows Server 2008 R2 veya daha sonraki bir işletim sistemini çalıştıran bir iş istasyonu.
@@ -43,23 +40,23 @@ Excel için Power Query eklentisi, HDInsight kümenizdeki verileri Excel 'e akta
 
    * Excel 2016
 
-     * Azure **Data**  >  **Get Data**  >  **From Azure**  >  **HDInsight 'tan Azure HDInsight 'tan**veri almak > verileri seçin.
+     * Azure   >    >    >  **HDInsight 'tan Azure HDInsight 'tan** veri almak > verileri seçin.
 
        ![HDI. PowerQuery. SelectHdiSource. 2016](./media/apache-hadoop-connect-excel-power-query/powerquery-selecthdisource-excel2016.png)
 
    * Excel 2013/2010
 
-     * Microsoft Azure HDInsight **Power Query**  >  **Azure 'dan**Power Query seçin  >  **From Microsoft Azure HDInsight**.
+     * Microsoft Azure HDInsight   >  **Azure 'dan** Power Query seçin  >  .
 
        ![HDI. PowerQuery. SelectHdiSource](./media/apache-hadoop-connect-excel-power-query/powerquery-selecthdisource.png)
 
        **Note:** **Power Query** menüsünü görmüyorsanız, **Dosya**  >  **seçenekleri**  >  **eklentileri**' ne gidin ve sayfanın alt kısmındaki aşağı açılan **Yönet** kutusundan **com eklentileri** ' ni seçin. **Git...** düğmesini seçin ve Excel eklentisi için Power Query kutusunun işaretli olduğunu doğrulayın.
 
-       **Note:** Power Query Ayrıca **diğer kaynaklardan**seçerek de verileri bir sunucudan içeri aktarmanıza olanak tanır.
+       **Note:** Power Query Ayrıca **diğer kaynaklardan** seçerek de verileri bir sunucudan içeri aktarmanıza olanak tanır.
 
-1. **Azure HDInsight (bir)** iletişim kutusunda, **Hesap adı veya URL** metin kutusuna kümenizle ilişkili Azure Blob depolama hesabının adını girin. Ardından **Tamam**'ı seçin. Bu hesap, varsayılan depolama hesabı veya bağlı bir depolama hesabı olabilir.  Biçim `https://StorageAccountName.blob.core.windows.net/` .
+1. **Azure HDInsight (bir)** iletişim kutusunda, **Hesap adı veya URL** metin kutusuna kümenizle ilişkili Azure Blob depolama hesabının adını girin. Ardından **Tamam**’ı seçin. Bu hesap, varsayılan depolama hesabı veya bağlı bir depolama hesabı olabilir.  Biçim `https://StorageAccountName.blob.core.windows.net/` .
 
-1. **Hesap anahtarı**Için, BLOB depolama hesabının anahtarını girin ve sonra **Bağlan**' ı seçin. (Bu mağazaya yalnızca ilk kez eriştiğinizde hesap bilgilerini girmeniz gerekir.)
+1. **Hesap anahtarı** Için, BLOB depolama hesabının anahtarını girin ve sonra **Bağlan**' ı seçin. (Bu mağazaya yalnızca ilk kez eriştiğinizde hesap bilgilerini girmeniz gerekir.)
 
 1. Sorgu Düzenleyicisi 'nin solundaki **Gezgin** bölmesinde, kümeinizle ilişkili BLOB depolama kapsayıcısı adına çift tıklayın. Varsayılan olarak, kapsayıcı adı küme adı ile aynı addır.
 

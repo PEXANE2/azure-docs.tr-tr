@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 11/12/2020
 ms.author: aahi
-ms.openlocfilehash: 82c33c038a1f8eaba540c9906efcffa0a9214762
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: af8fec56c32b52e2af584e59f08db6cc7129c9c5
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98689653"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98948346"
 ---
 ## <a name="install-the-container"></a>Kapsayıcıyı yükler
 
@@ -62,7 +62,7 @@ Logging:Disk:Format=json
 > [!NOTE]
 > Demo yalnızca sistem durumu kapsayıcısı için Metin Analizi kullanılabilir.
 
-Kapsayıcı REST tabanlı sorgu tahmin uç noktası API’lerini sağlar.  Ayrıca, kapsayıcının uç noktasına eklenerek erişilebilen kapsayıcıda bir görselleştirme aracı sağladık `/demo` . Örnek:
+Kapsayıcı REST tabanlı sorgu tahmin uç noktası API’lerini sağlar.  Ayrıca, kapsayıcının uç noktasına eklenerek erişilebilen kapsayıcıda bir görselleştirme aracı sağladık `/demo` . Örneğin:
 
 ```
 http://<serverURL>:5000/demo
@@ -112,7 +112,7 @@ az webapp config appsettings set -g $resource_group_name -n $appservice_name --s
 
 Ayrıca, dağıtımı kolaylaştırmak için bir Azure Container Instance (acı) kullanabilirsiniz. ACI, yönetilen, sunucusuz bir Azure ortamında Docker kapsayıcılarını isteğe bağlı olarak çalıştırmanıza olanak tanıyan bir kaynaktır. 
 
-Azure portal kullanarak ACI kaynağını dağıtma adımları için bkz. [Azure Container Instances nasıl kullanılır](../how-tos/text-analytics-how-to-use-container-instances.md) . Ayrıca, kapsayıcı görüntüsünü kullanarak aboneliğinizde bir ACI oluşturacak olan Azure CLı kullanarak aşağıdaki PowerShell betiğini de kullanabilirsiniz.  İlk isteği göndermeden önce betiğin (yaklaşık 25-30 dakika) tamamlanmasını bekleyin.  ACI kaynağı başına en fazla CPU sayısı sınırı nedeniyle, her istek için 5 ' ten fazla büyük belge (yaklaşık 5000 karakter) göndermeyi düşünüyorsanız bu seçeneği seçmeyin.
+Azure portal kullanarak ACI kaynağını dağıtma adımları için bkz. [Azure Container Instances nasıl kullanılır](../../containers/azure-container-instance-recipe.md) . Ayrıca, kapsayıcı görüntüsünü kullanarak aboneliğinizde bir ACI oluşturacak olan Azure CLı kullanarak aşağıdaki PowerShell betiğini de kullanabilirsiniz.  İlk isteği göndermeden önce betiğin (yaklaşık 25-30 dakika) tamamlanmasını bekleyin.  ACI kaynağı başına en fazla CPU sayısı sınırı nedeniyle, her istek için 5 ' ten fazla büyük belge (yaklaşık 5000 karakter) göndermeyi düşünüyorsanız bu seçeneği seçmeyin.
 Kullanılabilirlik bilgileri için [acı bölgesel destek](../../../container-instances/container-instances-region-availability.md) makalesine bakın. 
 
 > [!NOTE] 
@@ -213,4 +213,3 @@ docker-compose up
 ```
 
 Daha fazla bilgi için, [NGıNX SSL sonlandırmasına](https://docs.nginx.com/nginx/admin-guide/security-controls/terminating-ssl-http/)ilişkin NGINX belgeleri bölümüne bakın.
-
