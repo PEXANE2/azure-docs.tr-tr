@@ -11,12 +11,12 @@ ms.topic: include
 ms.date: 09/15/2020
 ms.author: pafarley
 ms.custom: devx-track-dotnet, cog-serv-seo-aug-2020
-ms.openlocfilehash: 8a715c23900ac0d5a16ff4a0a8ade5ea9458cfed
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: ed9d7aee5f677a5c278a985c3f8102364e94ab7e
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97561503"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98947975"
 ---
 .NET için Azure Content Moderator istemci kitaplığı 'nı kullanmaya başlayın. NuGet paketini yüklemek için bu adımları izleyin ve temel görevler için örnek kodu deneyin. 
 
@@ -28,7 +28,7 @@ Content Moderator, rahatsız edici, riskli veya başka türlü istenmeyen içeri
 * Orta görüntüler
 * İnceleme oluştur
 
-[Başvuru belgeleri](/dotnet/api/overview/azure/cognitiveservices/client/contentmoderator?view=azure-dotnet)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.ContentModerator)  |  [Paket (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/)  |  [Örnekler](../../samples-dotnet.md)
+[Başvuru belgeleri](/dotnet/api/overview/azure/cognitiveservices/client/contentmoderator)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.ContentModerator)  |  [Paket (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/)  |  [Örnekler](../../samples-dotnet.md)
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -118,10 +118,10 @@ Aşağıdaki sınıflar Content Moderator .NET istemci kitaplığının bazı ö
 
 |Ad|Açıklama|
 |---|---|
-|[ContentModeratorClient](/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.contentmoderatorclient?view=azure-dotnet)|Bu sınıf tüm Content Moderator işlevleri için gereklidir. Bunu Abonelik bilgileriniz ile birlikte başlatır ve diğer sınıfların örneklerini oluşturmak için kullanırsınız.|
-|[Imagedenetlemesi](/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.imagemoderation?view=azure-dotnet)|Bu sınıf yetişkinlere yönelik içerik, kişisel bilgiler veya insan yüzeyleri için görüntüleri analiz etmek üzere işlevsellik sağlar.|
-|[Textdenetlemesi](/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.textmoderation?view=azure-dotnet)|Bu sınıf, dil, küfür, hatalar ve kişisel bilgiler için metin çözümleme işlevlerini sağlar.|
-|[İncelemeler](/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.reviews?view=azure-dotnet)|Bu sınıf, iş oluşturma, özel iş akışları ve insan incelemeleri için yöntemler de dahil olmak üzere, gözden geçirme API 'lerinin işlevlerini sağlar.|
+|[ContentModeratorClient](/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.contentmoderatorclient)|Bu sınıf tüm Content Moderator işlevleri için gereklidir. Bunu Abonelik bilgileriniz ile birlikte başlatır ve diğer sınıfların örneklerini oluşturmak için kullanırsınız.|
+|[Imagedenetlemesi](/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.imagemoderation)|Bu sınıf yetişkinlere yönelik içerik, kişisel bilgiler veya insan yüzeyleri için görüntüleri analiz etmek üzere işlevsellik sağlar.|
+|[Textdenetlemesi](/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.textmoderation)|Bu sınıf, dil, küfür, hatalar ve kişisel bilgiler için metin çözümleme işlevlerini sağlar.|
+|[İncelemeler](/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.reviews)|Bu sınıf, iş oluşturma, özel iş akışları ve insan incelemeleri için yöntemler de dahil olmak üzere, gözden geçirme API 'lerinin işlevlerini sağlar.|
 
 ## <a name="code-examples"></a>Kod örnekleri
 
@@ -158,10 +158,10 @@ Ardından, **Program** sınıfınıza bir yerde metin denetleme yöntemi tanıml
 
 ## <a name="moderate-images"></a>Orta görüntüler
 
-Aşağıdaki kod, Yetişkin ve kcy içeriği için uzak görüntüleri çözümlemek üzere bir [ımagemoderasyonu](/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.imagemoderation?view=azure-dotnet) nesnesiyle birlikte bir Content moderator istemcisi kullanır.
+Aşağıdaki kod, Yetişkin ve kcy içeriği için uzak görüntüleri çözümlemek üzere bir [ımagemoderasyonu](/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.imagemoderation) nesnesiyle birlikte bir Content moderator istemcisi kullanır.
 
 > [!NOTE]
-> Yerel görüntünün içeriğini de çözümleyebilirsiniz. Yerel görüntülerle çalışan Yöntemler ve işlemler için [başvuru belgelerine](/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.imagemoderation.evaluatefileinputwithhttpmessagesasync?view=azure-dotnet#Microsoft_Azure_CognitiveServices_ContentModerator_ImageModeration_EvaluateFileInputWithHttpMessagesAsync_System_IO_Stream_System_Nullable_System_Boolean__System_Collections_Generic_Dictionary_System_String_System_Collections_Generic_List_System_String___System_Threading_CancellationToken_) bakın.
+> Yerel görüntünün içeriğini de çözümleyebilirsiniz. Yerel görüntülerle çalışan Yöntemler ve işlemler için [başvuru belgelerine](/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.imagemoderation.evaluatefileinputwithhttpmessagesasync#Microsoft_Azure_CognitiveServices_ContentModerator_ImageModeration_EvaluateFileInputWithHttpMessagesAsync_System_IO_Stream_System_Nullable_System_Boolean__System_Collections_Generic_Dictionary_System_String_System_Collections_Generic_List_System_String___System_Threading_CancellationToken_) bakın.
 
 ### <a name="get-sample-images"></a>Örnek görüntüleri al
 
@@ -204,7 +204,7 @@ Ekranları Content Moderator görüntü öznitelikleri hakkında daha fazla bilg
 
 Content Moderator .NET istemci kitaplığını kullanarak, insan yöneticileri tarafından gözden geçirebilmeleri için içeriği [Gözden geçirme aracında](https://contentmoderator.cognitive.microsoft.com) bulabilirsiniz. Inceleme aracı hakkında daha fazla bilgi edinmek için bkz. [İnceleme aracı kavramsal Kılavuzu](../../review-tool-user-guide/human-in-the-loop.md).
 
-Bu bölümdeki Yöntem, gözden geçirme oluşturmak, KIMLIĞINI almak ve gözden geçirme aracının Web portalı aracılığıyla insan girişini aldıktan sonra ayrıntılarını denetlemek için [İncelemeleri](/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.reviews?view=azure-dotnet) sınıfını kullanır. Tüm bu bilgileri bir çıktı metin dosyasında günlüğe kaydeder. 
+Bu bölümdeki Yöntem, gözden geçirme oluşturmak, KIMLIĞINI almak ve gözden geçirme aracının Web portalı aracılığıyla insan girişini aldıktan sonra ayrıntılarını denetlemek için [İncelemeleri](/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.reviews) sınıfını kullanır. Tüm bu bilgileri bir çıktı metin dosyasında günlüğe kaydeder. 
 
 ### <a name="get-sample-images"></a>Örnek görüntüleri al
 

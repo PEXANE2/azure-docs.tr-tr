@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 12/11/2020
 ms.author: aahi
 ms.reviewer: assafi
-ms.openlocfilehash: 805ee7f5b210a09335b2177b83777c5caa805858
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: aee064a15d465c412d16dd313279168c37af0e98
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98147580"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98947429"
 ---
 <a name="HOLTop"></a>
 
@@ -28,11 +28,11 @@ ms.locfileid: "98147580"
 
 # <a name="version-21"></a>[Sürüm 2,1](#tab/version-2)
 
-[v2 başvuru belgeleri](/dotnet/api/overview/azure/cognitiveservices/client?view=azure-dotnet)  |  [v2 kitaplığı kaynak kodu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Language.TextAnalytics)  |  [v2 paketi (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.TextAnalytics/)  |  [v2 örnekleri](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples)
+[v2 başvuru belgeleri](/dotnet/api/overview/azure/cognitiveservices/client)  |  [v2 kitaplığı kaynak kodu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Language.TextAnalytics)  |  [v2 paketi (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.TextAnalytics/)  |  [v2 örnekleri](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples)
 
 ---
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services)
 * [Visual STUDIO IDE](https://visualstudio.microsoft.com/vs/)

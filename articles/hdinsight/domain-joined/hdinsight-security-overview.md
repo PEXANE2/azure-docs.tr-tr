@@ -1,19 +1,16 @@
 ---
 title: Azure HDInsight 'ta Kurumsal güvenliğe genel bakış
 description: Azure HDInsight 'ta kurumsal güvenlik sağlamaya yönelik çeşitli yöntemleri öğrenin.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: overview
 ms.custom: seoapr2020
 ms.date: 08/24/2020
-ms.openlocfilehash: 7f450d54a0039f591178ae839fbb404f31d80671
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: f4fa1e64e00f2ae027d80960072da7d73d3a89cb
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92537278"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946830"
 ---
 # <a name="overview-of-enterprise-security-in-azure-hdinsight"></a>Azure HDInsight 'ta Kurumsal güvenliğe genel bakış
 
@@ -33,7 +30,7 @@ HDInsight 'ta çevre güvenliği [sanal ağlar](../hdinsight-plan-virtual-networ
 
 VNET 'te dağıtılan tüm kümelerin özel bir uç noktası da olur. Uç noktası, küme ağ geçitlerine özel HTTP erişimi için VNET 'in içindeki özel bir IP 'ye çözümlenir.
 
-### <a name="authentication"></a>Kimlik Doğrulama
+### <a name="authentication"></a>Kimlik Doğrulaması
 
 HDInsight 'tan [Kurumsal güvenlik paketi](apache-domain-joined-architecture.md) , Active Directory tabanlı kimlik doğrulaması, çoklu Kullanıcı desteği ve rol tabanlı erişim denetimi sağlar. Active Directory tümleştirme [Azure Active Directory Domain Services](../../active-directory-domain-services/overview.md)kullanılarak elde edilir. Bu özelliklerde, bir Active Directory etki alanına katılmış bir HDInsight kümesi oluşturabilirsiniz. Daha sonra, kuruluş içinden kümeye kimlik doğrulayabilecek çalışanların bir listesini yapılandırın.
 
@@ -92,8 +89,8 @@ Aşağıdaki tabloda her güvenlik çözümü türü için kaynakların bağlant
 |  | [Gelen ağ güvenlik grubu (NSG) kurallarını](../control-network-traffic.md) veya [özel bağlantıyı](../hdinsight-private-link.md) yapılandırma | Müşteri |
 |  | Güvenlik duvarıyla [giden trafik kısıtlamasını](../hdinsight-restrict-outbound-traffic.md) yapılandırma | Müşteri |
 |  | Küme düğümleri arasındaki [geçişte IPSec şifrelemesini](encryption-in-transit.md) yapılandırma | Müşteri |
-| Sanallaştırılmış altyapı | YOK | HDInsight (bulut sağlayıcısı) |
-| Fiziksel altyapı güvenliği | YOK | HDInsight (bulut sağlayıcısı) |
+| Sanallaştırılmış altyapı | Yok | HDInsight (bulut sağlayıcısı) |
+| Fiziksel altyapı güvenliği | Yok | HDInsight (bulut sağlayıcısı) |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

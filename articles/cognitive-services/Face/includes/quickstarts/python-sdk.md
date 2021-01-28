@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: include
 ms.date: 11/10/2020
 ms.author: pafarley
-ms.openlocfilehash: 88eb9a693efa872af681ab55b3f4381d27b260d1
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: 72d0154a1522f2ebd909132d705939ab591dde5d
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98698062"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98948452"
 ---
 Python için yüz istemci kitaplığını kullanarak yüz tanıma ile çalışmaya başlayın. Paketi yüklemek için bu adımları izleyin ve temel görevler için örnek kodu deneyin. Yüz tanıma hizmeti, görüntülerdeki insan yüzlerini algılayıp tanımayı sağlayan gelişmiş algoritmalara erişmenizi sağlar.
 
@@ -26,7 +26,7 @@ Python için yüz istemci kitaplığını kullanarak şunları yapın:
 * [Yüz tanıma](#identify-a-face)
 * [Yüzeyleri doğrula](#verify-faces)
 
-[Başvuru belgeleri](/python/api/azure-cognitiveservices-vision-face/?view=azure-python)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-face)  |  [Paket (PiPy)](https://pypi.org/project/azure-cognitiveservices-vision-face/)  |  [Örnekler](/samples/browse/?products=azure&term=face)
+[Başvuru belgeleri](/python/api/azure-cognitiveservices-vision-face/)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-face)  |  [Paket (PiPy)](https://pypi.org/project/azure-cognitiveservices-vision-face/)  |  [Örnekler](/samples/browse/?products=azure&term=face)
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -70,13 +70,13 @@ Aşağıdaki sınıflar ve arabirimler, yüz Python istemci kitaplığının ön
 
 |Ad|Açıklama|
 |---|---|
-|[FaceClient](/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.faceclient?view=azure-python) | Bu sınıf, yüz hizmetini kullanma yetkinizi temsil eder ve tüm yüz işlevleri için buna ihtiyacınız vardır. Bunu Abonelik bilgileriniz ile birlikte başlatır ve diğer sınıfların örneklerini oluşturmak için kullanırsınız. |
-|[Çok yönlü Işlemler](/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.operations.faceoperations?view=azure-python)|Bu sınıf, insan yüzeyleri ile gerçekleştirebileceğiniz temel algılama ve tanıma görevlerini işler. |
-|[DetectedFace](/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.models.detectedface?view=azure-python)|Bu sınıf, görüntüde tek bir yüz tarafından algılanan tüm verileri temsil eder. Yüz hakkında ayrıntılı bilgi almak için bu uygulamayı kullanabilirsiniz.|
-|[FaceListOperations](/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.operations.facelistoperations?view=azure-python)|Bu sınıf, bir assıralanan yüz kümesini depolayan, bulutta depolanan çok **yönlü liste** yapılarını yönetir. |
-|[PersonGroupPersonOperations](/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.operations.persongrouppersonoperations?view=azure-python)| Bu sınıf, tek bir kişiye ait olan bir yüzey kümesini depolayan, bulutta depolanan **kişi** yapılarını yönetir.|
-|[PersonGroupOperations](/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.operations.persongroupoperations?view=azure-python)| Bu sınıf, bir dizi yönetilen **kişi** nesnesini depolayan, bulut ile depolanmış olan **persongroup** yapılarını yönetir. |
-|[ShapshotOperations](/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.operations.snapshotoperations?view=azure-python)|Bu sınıf, anlık görüntü işlevlerini yönetir; Tüm bulut tabanlı yüz verilerinizi geçici olarak kaydetmek ve bu verileri yeni bir Azure aboneliğine geçirmek için kullanabilirsiniz. |
+|[FaceClient](/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.faceclient) | Bu sınıf, yüz hizmetini kullanma yetkinizi temsil eder ve tüm yüz işlevleri için buna ihtiyacınız vardır. Bunu Abonelik bilgileriniz ile birlikte başlatır ve diğer sınıfların örneklerini oluşturmak için kullanırsınız. |
+|[Çok yönlü Işlemler](/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.operations.faceoperations)|Bu sınıf, insan yüzeyleri ile gerçekleştirebileceğiniz temel algılama ve tanıma görevlerini işler. |
+|[DetectedFace](/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.models.detectedface)|Bu sınıf, görüntüde tek bir yüz tarafından algılanan tüm verileri temsil eder. Yüz hakkında ayrıntılı bilgi almak için bu uygulamayı kullanabilirsiniz.|
+|[FaceListOperations](/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.operations.facelistoperations)|Bu sınıf, bir assıralanan yüz kümesini depolayan, bulutta depolanan çok **yönlü liste** yapılarını yönetir. |
+|[PersonGroupPersonOperations](/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.operations.persongrouppersonoperations)| Bu sınıf, tek bir kişiye ait olan bir yüzey kümesini depolayan, bulutta depolanan **kişi** yapılarını yönetir.|
+|[PersonGroupOperations](/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.operations.persongroupoperations)| Bu sınıf, bir dizi yönetilen **kişi** nesnesini depolayan, bulut ile depolanmış olan **persongroup** yapılarını yönetir. |
+|[ShapshotOperations](/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.operations.snapshotoperations)|Bu sınıf, anlık görüntü işlevlerini yönetir; Tüm bulut tabanlı yüz verilerinizi geçici olarak kaydetmek ve bu verileri yeni bir Azure aboneliğine geçirmek için kullanabilirsiniz. |
 
 ## <a name="code-examples"></a>Kod örnekleri
 
@@ -91,18 +91,18 @@ Bu kod parçacıkları, Python için yüz istemci kitaplığıyla aşağıdaki g
 
 ## <a name="authenticate-the-client"></a>İstemcinin kimliğini doğrulama
 
-Uç noktanız ve anahtarınızla bir istemci örneği oluşturun. Anahtarınızla bir [Biliveservicescredentials](/python/api/msrest/msrest.authentication.cognitiveservicescredentials?view=azure-python) nesnesi oluşturun ve bir [faceclient](/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.faceclient?view=azure-python) nesnesi oluşturmak için bunu uç noktanızla birlikte kullanın.
+Uç noktanız ve anahtarınızla bir istemci örneği oluşturun. Anahtarınızla bir [Biliveservicescredentials](/python/api/msrest/msrest.authentication.cognitiveservicescredentials) nesnesi oluşturun ve bir [faceclient](/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.faceclient) nesnesi oluşturmak için bunu uç noktanızla birlikte kullanın.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_auth)]
 
 ## <a name="detect-faces-in-an-image"></a>Bir görüntüdeki yüzleri algılama
 
-Aşağıdaki kod, uzak görüntüde bir yüz algılar. Algılanan yüz KIMLIĞINI konsola yazdırır ve ayrıca program belleğine depolar. Daha sonra, birden çok kişiye sahip bir görüntüdeki yüzeyleri algılar ve kimliklerini konsola yazdırır. [Detect_with_url](/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.operations.faceoperations?view=azure-python#detect-with-url-url--return-face-id-true--return-face-landmarks-false--return-face-attributes-none--recognition-model--recognition-01---return-recognition-model-false--detection-model--detection-01---custom-headers-none--raw-false----operation-config-) yöntemindeki parametreleri değiştirerek, her bir [detectedface](/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.models.detectedface?view=azure-python) nesnesiyle farklı bilgiler döndürebilirsiniz.
+Aşağıdaki kod, uzak görüntüde bir yüz algılar. Algılanan yüz KIMLIĞINI konsola yazdırır ve ayrıca program belleğine depolar. Daha sonra, birden çok kişiye sahip bir görüntüdeki yüzeyleri algılar ve kimliklerini konsola yazdırır. [Detect_with_url](/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.operations.faceoperations#detect-with-url-url--return-face-id-true--return-face-landmarks-false--return-face-attributes-none--recognition-model--recognition-01---return-recognition-model-false--detection-model--detection-01---custom-headers-none--raw-false----operation-config-) yöntemindeki parametreleri değiştirerek, her bir [detectedface](/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.models.detectedface) nesnesiyle farklı bilgiler döndürebilirsiniz.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_detect)]
 
 > [!TIP]
-> Ayrıca, yerel görüntüdeki yüzeyleri de algılayabilirsiniz. **Detect_with_stream** gibi çok [yönlü işlemler](/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.operations.faceoperations?view=azure-python) yöntemlerine bakın.
+> Ayrıca, yerel görüntüdeki yüzeyleri de algılayabilirsiniz. **Detect_with_stream** gibi çok [yönlü işlemler](/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.operations.faceoperations) yöntemlerine bakın.
 
 ### <a name="display-and-frame-faces"></a>Görüntü ve çerçeve yüzeyleri
 
@@ -122,7 +122,7 @@ Aşağıdaki kod, algılanan tek bir yüzeyi (kaynak) alır ve eşleşmeleri (y�
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_detectgroup)]
 
-Sonra gruptaki ilk yüzün örneklerini bulmak için aşağıdaki kod bloğunu ekleyin. Bu davranışı nasıl değiştireceğinizi öğrenmek için [find_similar](/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.operations.faceoperations?view=azure-python#find-similar-face-id--face-list-id-none--large-face-list-id-none--face-ids-none--max-num-of-candidates-returned-20--mode--matchperson---custom-headers-none--raw-false----operation-config-) yöntemine bakın.
+Sonra gruptaki ilk yüzün örneklerini bulmak için aşağıdaki kod bloğunu ekleyin. Bu davranışı nasıl değiştireceğinizi öğrenmek için [find_similar](/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.operations.faceoperations#find-similar-face-id--face-list-id-none--large-face-list-id-none--face-ids-none--max-num-of-candidates-returned-20--mode--matchperson---custom-headers-none--raw-false----operation-config-) yöntemine bakın.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_findsimilar)]
 
@@ -157,7 +157,7 @@ Aşağıdaki kod, görüntülerinizi ön ekine göre sıralar, yüzeyleri algıl
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_persongroup_assign)]
 
 > [!TIP]
-> URL tarafından başvurulan uzak görüntülerden de bir **Persongroup** oluşturabilirsiniz. **Add_face_from_url** gibi [Persongrouppersonoperations](/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.operations.persongrouppersonoperations?view=azure-python) yöntemlerine bakın.
+> URL tarafından başvurulan uzak görüntülerden de bir **Persongroup** oluşturabilirsiniz. **Add_face_from_url** gibi [Persongrouppersonoperations](/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.operations.persongrouppersonoperations) yöntemlerine bakın.
 
 ### <a name="train-persongroup"></a>Kişilik grubu eğitme
 
@@ -237,7 +237,7 @@ Bu hızlı başlangıçta bir **kişilik grubu** oluşturduysanız ve onu silmek
 Bu hızlı başlangıçta, temel olarak yüz tanıma görevlerini yapmak için Python için yüz istemci kitaplığı 'nı nasıl kullanacağınızı öğrendiniz. Daha sonra, kitaplık hakkında daha fazla bilgi edinmek için başvuru belgelerini inceleyin.
 
 > [!div class="nextstepaction"]
-> [Yüz Tanıma API'si Başvurusu (Python)](/python/api/azure-cognitiveservices-vision-face/?view=azure-python)
+> [Yüz Tanıma API'si Başvurusu (Python)](/python/api/azure-cognitiveservices-vision-face/)
 
 * [Yüz Tanıma hizmeti nedir?](../../overview.md)
 * Bu örneğe ilişkin kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/Face/FaceQuickstart.py)' da bulunabilir.

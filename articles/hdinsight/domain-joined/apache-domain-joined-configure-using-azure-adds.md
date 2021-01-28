@@ -2,19 +2,16 @@
 title: Azure Active Directory tümleştirme için kümeleri yapılandırma
 titleSuffix: Azure HDInsight
 description: Azure Active Directory Domain Services ve Kurumsal Güvenlik Paketi özelliğini kullanarak Active Directory ile tümleştirilmiş bir HDInsight kümesi ayarlamayı ve yapılandırmayı öğrenin.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seodec18,seoapr2020, contperf-fy21q2
 ms.date: 10/30/2020
-ms.openlocfilehash: c5c5db892f417f2e2ef3fde3535d806d39342327
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 15869a547ec5debee939c956d7495bfa58357555
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97631559"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946928"
 ---
 # <a name="configure-hdinsight-clusters-for-azure-active-directory-integration-with-enterprise-security-package"></a>Kurumsal Güvenlik Paketi ile Azure Active Directory tümleştirme için HDInsight kümelerini yapılandırma
 
@@ -22,7 +19,7 @@ Bu makalede, Azure Active Directory ile tümleştirilmiş bir HDInsight kümesi 
 
 Azure 'da bir etki alanı ayarlamaya ve yapılandırmaya ve ardından Şirket içi kullanıcıları eşitlemeye yönelik ayrıntılı bir adım adım öğretici için bkz. [Azure HDInsight 'ta kurumsal güvenlik paketi kümeleri oluşturma ve yapılandırma](apache-domain-joined-create-configure-enterprise-security-cluster.md).
 
-## <a name="background"></a>Arka plan
+## <a name="background"></a>Arka Plan
 
 Kurumsal Güvenlik Paketi (ESP), Azure HDInsight için Active Directory tümleştirme sağlar. Bu tümleştirme, etki alanı kullanıcılarının, HDInsight kümelerinde kimlik doğrulamak ve büyük veri işleri çalıştırmak için etki alanı kimlik bilgilerini kullanmasına olanak tanır.
 

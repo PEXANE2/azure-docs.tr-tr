@@ -11,12 +11,12 @@ ms.topic: include
 ms.date: 10/16/2020
 ms.custom: devx-track-java, cog-serv-seo-aug-2020
 ms.author: pafarley
-ms.openlocfilehash: b45873da5e34c77d3eae706975619df948d84874
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: 147985ce5aff54f3784363720a576b7e46d6e647
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98697913"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98947700"
 ---
 Java için Azure Content Moderator istemci kitaplığı 'nı kullanmaya başlayın. Maven paketini yüklemek için bu adımları izleyin ve temel görevler için örnek kodu deneyin. 
 
@@ -27,7 +27,7 @@ Java için Content Moderator istemci kitaplığını kullanarak şunları yapın
 * Orta metin
 * Orta görüntüler
 
-[Başvuru belgeleri](/java/api/overview/azure/cognitiveservices/client/contentmoderator?view=azure-java-stable)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cognitiveservices/ms-azure-cs-contentmoderator)  | [Yapıt (Maven)](https://mvnrepository.com/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-contentmoderator)  |  [Örnekler](/samples/browse/?products=azure&term=content-moderator)
+[Başvuru belgeleri](/java/api/overview/azure/cognitiveservices/client/contentmoderator)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cognitiveservices/ms-azure-cs-contentmoderator)  | [Yapıt (Maven)](https://mvnrepository.com/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-contentmoderator)  |  [Örnekler](/samples/browse/?products=azure&term=content-moderator)
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -116,10 +116,10 @@ Aşağıdaki sınıflar Content Moderator Java istemci kitaplığı 'nın bazı 
 
 |Ad|Açıklama|
 |---|---|
-|[ContentModeratorClient](/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.contentmoderatorclient?view=azure-java-stable)|Bu sınıf tüm Content Moderator işlevleri için gereklidir. Bunu Abonelik bilgileriniz ile birlikte başlatır ve diğer sınıfların örneklerini oluşturmak için kullanırsınız.|
-|[Imagedenetlemesi](/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.imagemoderations?view=azure-java-stable)|Bu sınıf yetişkinlere yönelik içerik, kişisel bilgiler veya insan yüzeyleri için görüntüleri analiz etmek üzere işlevsellik sağlar.|
-|[Metin Moderations](/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.textmoderations?view=azure-java-stable)|Bu sınıf, dil, küfür, hatalar ve kişisel bilgiler için metin çözümleme işlevlerini sağlar.|
-|[İncelemeler](/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.reviews?view=azure-java-stable)|Bu sınıf, iş oluşturma, özel iş akışları ve insan incelemeleri için yöntemler de dahil olmak üzere, gözden geçirme API 'lerinin işlevlerini sağlar.|
+|[ContentModeratorClient](/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.contentmoderatorclient)|Bu sınıf tüm Content Moderator işlevleri için gereklidir. Bunu Abonelik bilgileriniz ile birlikte başlatır ve diğer sınıfların örneklerini oluşturmak için kullanırsınız.|
+|[Imagedenetlemesi](/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.imagemoderations)|Bu sınıf yetişkinlere yönelik içerik, kişisel bilgiler veya insan yüzeyleri için görüntüleri analiz etmek üzere işlevsellik sağlar.|
+|[Metin Moderations](/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.textmoderations)|Bu sınıf, dil, küfür, hatalar ve kişisel bilgiler için metin çözümleme işlevlerini sağlar.|
+|[İncelemeler](/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.reviews)|Bu sınıf, iş oluşturma, özel iş akışları ve insan incelemeleri için yöntemler de dahil olmak üzere, gözden geçirme API 'lerinin işlevlerini sağlar.|
 
 
 ## <a name="code-examples"></a>Kod örnekleri
@@ -133,7 +133,7 @@ Bu kod parçacıkları, Java için Content Moderator istemci kitaplığı ile a�
 
 ## <a name="authenticate-the-client"></a>İstemcinin kimliğini doğrulama
 
-Uygulamanın `main` yönteminde, abonelik uç noktası değerini ve abonelik anahtarınızı kullanarak bir [Contentmoderatorclient](/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.contentmoderatorclient?view=azure-java-stable) nesnesi oluşturun.
+Uygulamanın `main` yönteminde, abonelik uç noktası değerini ve abonelik anahtarınızı kullanarak bir [Contentmoderatorclient](/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.contentmoderatorclient) nesnesi oluşturun.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_client)]
 
@@ -168,7 +168,7 @@ Denetleme sonuçlarını proje dizininizde bir. JSON dosyasına yazdırmak için
 
 ### <a name="set-up-sample-image"></a>Örnek görüntü ayarlama
 
-Yeni bir yöntemde, bir görüntüyü işaret eden belirli bir URL dizesiyle bir **[Bodymodelmodel](/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.models.bodymodelmodel?view=azure-java-stable)** nesnesi oluşturun.
+Yeni bir yöntemde, bir görüntüyü işaret eden belirli bir URL dizesiyle bir **[Bodymodelmodel](/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.models.bodymodelmodel)** nesnesi oluşturun.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_imagemod)]
 

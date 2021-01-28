@@ -9,19 +9,19 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 10/26/2020
 ms.author: pafarley
-ms.openlocfilehash: fb9d74da6030c430cce4a2a3c4c5e4299183ca15
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: e578cd08177eb9db03e5e4af4a134473a8484a41
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98132314"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98948561"
 ---
 > [!IMPORTANT]
 > * Bu makaledeki kod, basitlik nedenlerle zaman uyumlu Yöntemler ve güvenli olmayan kimlik bilgileri depolaması kullanır. Aşağıdaki başvuru belgelerine bakın. 
 
 [Başvuru belgeleri](/python/api/azure-ai-formrecognizer)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/azure/ai/formrecognizer)  |  [Paket (Pypı)](https://pypi.org/project/azure-ai-formrecognizer/)  |  [Örnekler](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services)
 * [Python 3.x](https://www.python.org/)
@@ -146,7 +146,7 @@ Belirli bir URL 'deki bir dosyanın içeriğini tanımak için `begin_recognize_
 [!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart.py?name=snippet_getcontent)]
 
 > [!TIP]
-> Ayrıca, yerel görüntülerden içerik alabilirsiniz. Gibi [Formrecognizerclient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python) yöntemlerine bakın `begin_recognize_content` . Ya da, yerel görüntüleri içeren senaryolar için [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) 'daki örnek koda bakın.
+> Ayrıca, yerel görüntülerden içerik alabilirsiniz. Gibi [Formrecognizerclient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient) yöntemlerine bakın `begin_recognize_content` . Ya da, yerel görüntüleri içeren senaryolar için [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) 'daki örnek koda bakın.
 
 ### <a name="output"></a>Çıktı
 
@@ -178,7 +178,7 @@ Bu bölümde, önceden eğitilen bir makbuz modeli kullanılarak ABD makbuzları
 [!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart.py?name=snippet_receipts)]
 
 > [!TIP]
-> Ayrıca, yerel alındı görüntülerini da tanıyabilirsiniz. Gibi [Formrecognizerclient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python) yöntemlerine bakın `begin_recognize_receipts` . Ya da, yerel görüntüleri içeren senaryolar için [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) 'daki örnek koda bakın.
+> Ayrıca, yerel alındı görüntülerini da tanıyabilirsiniz. Gibi [Formrecognizerclient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient) yöntemlerine bakın `begin_recognize_receipts` . Ya da, yerel görüntüleri içeren senaryolar için [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) 'daki örnek koda bakın.
 
 ### <a name="output"></a>Çıktı
 
@@ -217,7 +217,7 @@ Bu bölümde, önceden eğitilen bir model kullanarak Ingilizce iş kartlarında
 [!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart-preview.py?name=snippet_bc)]
 
 > [!TIP]
-> Ayrıca, yerel iş kartı görüntülerini da tanıyabilirsiniz. Gibi [Formrecognizerclient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python) yöntemlerine bakın `begin_recognize_business_cards` . Ya da, yerel görüntüleri içeren senaryolar için [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) 'daki örnek koda bakın.
+> Ayrıca, yerel iş kartı görüntülerini da tanıyabilirsiniz. Gibi [Formrecognizerclient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient) yöntemlerine bakın `begin_recognize_business_cards` . Ya da, yerel görüntüleri içeren senaryolar için [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) 'daki örnek koda bakın.
 
 ---
 
@@ -235,7 +235,7 @@ Bu bölümde, önceden eğitilen bir model kullanılarak satış faturalarından
 [!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart-preview.py?name=snippet_invoice)]
 
 > [!TIP]
-> Ayrıca, yerel fatura görüntülerini da tanıyabilirsiniz. Gibi [Formrecognizerclient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python) yöntemlerine bakın `begin_recognize_invoices` . Ya da, yerel görüntüleri içeren senaryolar için [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) 'daki örnek koda bakın.
+> Ayrıca, yerel fatura görüntülerini da tanıyabilirsiniz. Gibi [Formrecognizerclient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient) yöntemlerine bakın `begin_recognize_invoices` . Ya da, yerel görüntüleri içeren senaryolar için [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) 'daki örnek koda bakın.
 
 ---
 
@@ -345,7 +345,7 @@ Bu bölümde, kendi formlarınız ile eğitilen modeller kullanılarak özel for
 [!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart.py?name=snippet_analyze)]
 
 > [!TIP]
-> Yerel görüntüleri de analiz edebilirsiniz. Gibi [Formrecognizerclient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python) yöntemlerine bakın `begin_recognize_custom_forms` . Ya da, yerel görüntüleri içeren senaryolar için [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) 'daki örnek koda bakın.
+> Yerel görüntüleri de analiz edebilirsiniz. Gibi [Formrecognizerclient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient) yöntemlerine bakın `begin_recognize_custom_forms` . Ya da, yerel görüntüleri içeren senaryolar için [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) 'daki örnek koda bakın.
 
 
 ### <a name="output"></a>Çıktı

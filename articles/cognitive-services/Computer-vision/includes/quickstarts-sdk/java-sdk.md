@@ -10,12 +10,12 @@ ms.topic: include
 ms.date: 12/15/2020
 ms.custom: devx-track-java
 ms.author: pafarley
-ms.openlocfilehash: 7057644207fae866e7fe789f951d2279b1c8e3eb
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: 6eec9cf199068db6b87e69dd97dd0e105f629a14
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98697920"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98947980"
 ---
 <a name="HOLTop"></a>
 
@@ -24,7 +24,7 @@ Görüntü İşleme istemci kitaplığını kullanarak şunları yapın:
 * Etiketler, metin açıklaması, yüzeyler, yetişkinlere yönelik içerik ve daha fazlası için bir görüntüyü çözümleyin.
 * Okuma API 'SI ile yazdırılmış ve el yazısı metin okuyun.
 
-[Başvuru belgeleri](/java/api/overview/azure/cognitiveservices/client/computervision?view=azure-java-stable)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cognitiveservices/ms-azure-cs-computervision)  | [Yapıt (Maven)](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-computervision)  |  [Örnekler](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision&sort=0)
+[Başvuru belgeleri](/java/api/overview/azure/cognitiveservices/client/computervision)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cognitiveservices/ms-azure-cs-computervision)  | [Yapıt (Maven)](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-computervision)  |  [Örnekler](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision&sort=0)
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -113,9 +113,9 @@ Aşağıdaki sınıflar ve arabirimler Görüntü İşleme Java SDK 'sının baz
 
 |Ad|Açıklama|
 |---|---|
-| [ComputerVisionClient](/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-java-stable) | Bu sınıf tüm Görüntü İşleme işlevleri için gereklidir. Bunu Abonelik bilgileriniz ile birlikte başlatır ve diğer sınıfların örneklerini oluşturmak için kullanırsınız.|
-|[Bilgisayar vizyonu](/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.computervision?view=azure-java-stable)| Bu sınıf, istemci nesnesinden gelir ve görüntü analizi, metin algılama ve küçük resim oluşturma gibi tüm görüntü işlemlerini doğrudan işler.|
-|[VisualFeatureTypes](/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.models.visualfeaturetypes?view=azure-java-stable)| Bu Enum, standart bir çözümle işleminde yapılabilecek farklı görüntü analizi türlerini tanımlar. İhtiyaçlarınıza bağlı olarak bir VisualFeatureTypes değeri kümesi belirtirsiniz. |
+| [ComputerVisionClient](/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.computervisionclient) | Bu sınıf tüm Görüntü İşleme işlevleri için gereklidir. Bunu Abonelik bilgileriniz ile birlikte başlatır ve diğer sınıfların örneklerini oluşturmak için kullanırsınız.|
+|[Bilgisayar vizyonu](/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.computervision)| Bu sınıf, istemci nesnesinden gelir ve görüntü analizi, metin algılama ve küçük resim oluşturma gibi tüm görüntü işlemlerini doğrudan işler.|
+|[VisualFeatureTypes](/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.models.visualfeaturetypes)| Bu Enum, standart bir çözümle işleminde yapılabilecek farklı görüntü analizi türlerini tanımlar. İhtiyaçlarınıza bağlı olarak bir VisualFeatureTypes değeri kümesi belirtirsiniz. |
 
 ## <a name="code-examples"></a>Kod örnekleri
 
@@ -127,7 +127,7 @@ Bu kod parçacıkları, Java için Görüntü İşleme istemci kitaplığı ile 
 
 ## <a name="authenticate-the-client"></a>İstemcinin kimliğini doğrulama
 
-Yeni bir yöntemde, uç nokta ve anahtarınızla bir [ComputerVisionClient](/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-java-stable) nesnesi örneği oluşturun.
+Yeni bir yöntemde, uç nokta ve anahtarınızla bir [ComputerVisionClient](/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.computervisionclient) nesnesi örneği oluşturun.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_auth)]
 
@@ -139,7 +139,7 @@ Yeni bir yöntemde, uç nokta ve anahtarınızla bir [ComputerVisionClient](/jav
 Aşağıdaki kod, `AnalyzeLocalImage` yerel bir görüntüyü çözümlemek ve sonuçları yazdırmak için istemci nesnesini kullanan yöntemini tanımlar. Yöntemi bir metin açıklaması, kategori, etiket listesi, algılanan yüzeyler, yetişkinlere yönelik içerik bayrakları, ana renkler ve görüntü türü döndürür.
 
 > [!TIP]
-> Ayrıca, bir uzak görüntüyü URL 'sini kullanarak çözümleyebilirsiniz. Bkz. **analiz Zeımage** gibi [Computervision](/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.computervision?view=azure-java-stable) yöntemleri. Ya da, uzak görüntüleri içeren senaryolar için [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java) 'daki örnek koda bakın.
+> Ayrıca, bir uzak görüntüyü URL 'sini kullanarak çözümleyebilirsiniz. Bkz. **analiz Zeımage** gibi [Computervision](/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.computervision) yöntemleri. Ya da, uzak görüntüleri içeren senaryolar için [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java) 'daki örnek koda bakın.
 
 ### <a name="set-up-test-image"></a>Test görüntüsünü ayarla
 
@@ -149,7 +149,7 @@ Aşağıdaki kod, `AnalyzeLocalImage` yerel bir görüntüyü çözümlemek ve s
 
 ### <a name="specify-visual-features"></a>Görsel özellikleri belirtin
 
-Ardından, analizinizden hangi görsel özellikleri çıkarmak istediğinizi belirtin. Listenin tamamı için [Visualfeaturetypes](/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.models.visualfeaturetypes?view=azure-java-stable) numaralandırması bölümüne bakın.
+Ardından, analizinizden hangi görsel özellikleri çıkarmak istediğinizi belirtin. Listenin tamamı için [Visualfeaturetypes](/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.models.visualfeaturetypes) numaralandırması bölümüne bakın.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_analyzelocal_features)]
 
@@ -222,7 +222,7 @@ Aşağıdaki kod, &mdash; küçük resim veya çizgi çizme gibi görüntü tür
 Görüntü İşleme görüntüdeki görünür metni okuyabilir ve bunu bir karakter akışına dönüştürebilir. Bu bölüm, bir `ReadFromFile` yerel dosya yolu alan ve görüntünün metnini konsola yazdıran bir yöntemini tanımlar.
 
 > [!TIP]
-> Ayrıca, URL tarafından başvurulan uzak görüntüdeki metni okuyabilirsiniz. Bkz. **Read** gibi [Computervision](/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.computervision?view=azure-java-stable) yöntemleri. Ya da, uzak görüntüleri içeren senaryolar için [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java) 'daki örnek koda bakın.
+> Ayrıca, URL tarafından başvurulan uzak görüntüdeki metni okuyabilirsiniz. Bkz. **Read** gibi [Computervision](/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.computervision) yöntemleri. Ya da, uzak görüntüleri içeren senaryolar için [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java) 'daki örnek koda bakın.
 
 ### <a name="set-up-test-image"></a>Test görüntüsünü ayarla
 
@@ -295,7 +295,7 @@ Bilişsel hizmetler aboneliğini temizlemek ve kaldırmak istiyorsanız, kaynağ
 Bu hızlı başlangıçta, Görüntü İşleme Java kitaplığı 'nı kullanarak temel görevleri nasıl kullanacağınızı öğrendiniz. Daha sonra, kitaplık hakkında daha fazla bilgi edinmek için başvuru belgelerini inceleyin.
 
 > [!div class="nextstepaction"]
->[Görüntü İşleme başvurusu (Java)](/java/api/overview/azure/cognitiveservices/client/computervision?view=azure-java-stable)
+>[Görüntü İşleme başvurusu (Java)](/java/api/overview/azure/cognitiveservices/client/computervision)
 
 
 * [Görüntü İşleme nedir?](../../overview.md)

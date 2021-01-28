@@ -1,18 +1,15 @@
 ---
 title: HDInsight 'ta Azure Izleyici günlükleri ile küme kullanılabilirliğini izleme
 description: Küme durumunu ve kullanılabilirliğini izlemek için Azure Izleyici günlüklerini nasıl kullanacağınızı öğrenin.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 08/12/2020
-ms.openlocfilehash: f86b2166ea9bd2a547a29a777d6b709877036161
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: d52cb1c5f3b1dd1b23adb39f2f65d0e66968e482
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92542548"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946960"
 ---
 # <a name="how-to-monitor-cluster-availability-with-azure-monitor-logs-in-hdinsight"></a>HDInsight 'ta Azure Izleyici günlükleri ile küme kullanılabilirliğini izleme
 
@@ -26,7 +23,7 @@ Bir önkoşul olarak, toplanan verileri depolamak için bir Log Analytics çalı
 
 ## <a name="enable-hdinsight-azure-monitor-logs-integration"></a>HDInsight Azure Izleyici günlükleri tümleştirmesini etkinleştirme
 
-Portaldaki HDInsight küme kaynağı sayfasından **Azure İzleyicisi** ' ni seçin. Ardından, **Etkinleştir** ' i seçin ve açılan listeden Log Analytics çalışma alanınızı seçin.
+Portaldaki HDInsight küme kaynağı sayfasından **Azure İzleyicisi**' ni seçin. Ardından, **Etkinleştir** ' i seçin ve açılan listeden Log Analytics çalışma alanınızı seçin.
 
 ![HDInsight Operations Management Suite](media/cluster-availability-monitor-logs/azure-portal-monitoring.png)
 
@@ -34,13 +31,13 @@ Varsayılan olarak, bu, Edge düğümleri hariç tüm küme düğümlerine OMS a
 
 ## <a name="query-metrics-and-logs-tables"></a>Sorgu ölçümleri ve günlük tabloları
 
-Azure Izleyici günlük tümleştirmesi etkinleştirildikten sonra (Bu işlem birkaç dakika sürebilir) **Log Analytics çalışma alanı** kaynağına gidin ve **Günlükler** ' i seçin.
+Azure Izleyici günlük tümleştirmesi etkinleştirildikten sonra (Bu işlem birkaç dakika sürebilir) **Log Analytics çalışma alanı** kaynağına gidin ve **Günlükler**' i seçin.
 
 ![Log Analytics çalışma alanı günlükleri](media/cluster-availability-monitor-logs/hdinsight-portal-logs.png)
 
 Günlükler bir dizi örnek sorgu listeler, örneğin:
 
-| Sorgu adı                      | Açıklama                                                               |
+| Sorgu adı                      | Description                                                               |
 |---------------------------------|---------------------------------------------------------------------------|
 | Günümüzde kullanılabilirlik bilgisayarları    | Günlük gönderen bilgisayarların sayısını, her saat                     |
 | Sinyalleri Listele                 | Son saatin tüm bilgisayar sinyalleriyle listeleme                           |
@@ -61,7 +58,7 @@ Sağ üst köşedeki **sabitle** ' ye tıklayarak bu tabloyu paylaşılan bir pa
 
 Ayrıca, bir ölçüm değeri veya bir sorgu sonuçlarının belirli koşullara uyması durumunda tetiklenecek Azure Izleyici uyarılarını da ayarlayabilirsiniz. Örnek olarak, bir veya daha fazla düğüm 5 saat içinde bir sinyal göndermediği zaman bir e-posta göndermek için bir uyarı oluşturalım (yani, kullanılamaz olarak kabul edilir).
 
-**Günlüklerde** , aşağıda gösterildiği gibi, bu sorguda **Çalıştır** ' ı seçerek **kullanılamayan bilgisayarlar** örnek sorgusunu çalıştırın.
+**Günlüklerde**, aşağıda gösterildiği gibi, bu sorguda **Çalıştır** ' ı seçerek **kullanılamayan bilgisayarlar** örnek sorgusunu çalıştırın.
 
 ![Log Analytics çalışma alanı günlükleri ' kullanılamayan bilgisayarlar ' örneği](media/cluster-availability-monitor-logs/portal-unavailable-computers.png)
 
@@ -74,7 +71,7 @@ Sinyal mantığını yapılandırmayı tamamlaması için aşağıda gösterildi
 
 ![Portal uyarısı kural oluşturma koşulu](media/cluster-availability-monitor-logs/portal-condition-title.png)
 
-Bu işlem, **sinyal mantığını Yapılandır** ' ını açar.
+Bu işlem, **sinyal mantığını Yapılandır**' ını açar.
 
 **Uyarı mantığı** bölümünü aşağıdaki şekilde ayarlayın:
 
@@ -94,7 +91,7 @@ Zaten mevcut bir eylem grubunuz yoksa, **eylem grupları** bölümünde **Yeni o
 
 ![Uyarı kuralı yeni eylem grubu oluşturuyor](media/cluster-availability-monitor-logs/portal-create-new-action-group.png)
 
-Bu işlem, **eylem grubu Ekle** ' ye açılır. Bir **eylem grubu adı** , **kısa ad** , **abonelik** ve **kaynak grubu seçin.** **Eylemler** bölümünde, **eylem adı** ' nı seçin ve **eylem türü** olarak **e-posta/SMS/Push/ses'** i seçin.
+Bu işlem, **eylem grubu Ekle**' ye açılır. Bir **eylem grubu adı**, **kısa ad**, **abonelik** ve **kaynak grubu seçin.** **Eylemler** bölümünde, **eylem adı** ' nı seçin ve **eylem türü** olarak **e-posta/SMS/Push/ses'** i seçin.
 
 > [!NOTE]
 > Bir uyarının bir Azure Işlevi, LogicApp, Web kancası, ıTSM ve Otomasyon Runbook 'u gibi bir e-posta/SMS/Push/sesden farklı olarak tetikleyebileceği birkaç başka eylem vardır. [Daha fazla bilgi edinin.](../azure-monitor/platform/action-groups.md#action-specific-information)

@@ -8,19 +8,19 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 02/27/2020
 ms.author: aahi
-ms.openlocfilehash: 92df45e38a926b4a791315f731e1d1cb078d5852
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 3019881c42e0f7b64cc766b8b9e575eb60612432
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94371825"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98947908"
 ---
 Python için Bing Özel Arama istemci kitaplığı ile çalışmaya başlayın. Paketi yüklemek için bu adımları izleyin ve temel görevler için örnek kodu deneyin. Bing Özel Arama API'si, ilgilendiğiniz konular için özel, reklam ücretsiz arama deneyimleri oluşturmanıza olanak sağlar. Bu örneğe ilişkin kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/custom_search_samples.py)' da bulunabilir.
 
 Python için Bing Özel Arama istemci kitaplığını şu şekilde kullanın:
 * Bing Özel Arama örneğinden Web 'de arama sonuçları bulun.
 
-[Başvuru belgeleri](/python/api/azure-cognitiveservices-search-customsearch/?view=azure-python)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-search-customsearch)  |  [Paket (Pypı)](https://pypi.org/project/azure-cognitiveservices-search-customsearch/)  |  [Örnekler](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/)
+[Başvuru belgeleri](/python/api/azure-cognitiveservices-search-customsearch/)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-search-customsearch)  |  [Paket (Pypı)](https://pypi.org/project/azure-cognitiveservices-search-customsearch/)  |  [Örnekler](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/)
 
 
 ## <a name="prerequisites"></a>Önkoşullar

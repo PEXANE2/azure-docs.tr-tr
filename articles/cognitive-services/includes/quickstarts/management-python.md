@@ -8,14 +8,14 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: 074df0e79313a570e83ea72239394c1aa4946fc0
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 521f6c39a10259b09d741a61dcd8e81d8a0c35b2
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97956458"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98947822"
 ---
-[Başvuru belgeleri](/python/api/azure-mgmt-cognitiveservices/azure.mgmt.cognitiveservices?view=azure-python)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-mgmt-cognitiveservices)  |  [Paket (Pypı)](https://pypi.org/project/azure-mgmt-cognitiveservices/)  |  [Örnekler](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-mgmt-cognitiveservices/tests)
+[Başvuru belgeleri](/python/api/azure-mgmt-cognitiveservices/azure.mgmt.cognitiveservices)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-mgmt-cognitiveservices)  |  [Paket (Pypı)](https://pypi.org/project/azure-mgmt-cognitiveservices/)  |  [Örnekler](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-mgmt-cognitiveservices/tests)
 
 ## <a name="python-prerequisites"></a>Python önkoşulları
 
@@ -100,7 +100,7 @@ python <your-script-name>.py
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-* [Azure Yönetim SDK 'Sı başvuru belgeleri](/python/api/azure-mgmt-cognitiveservices/azure.mgmt.cognitiveservices?view=azure-python)
+* [Azure Yönetim SDK 'Sı başvuru belgeleri](/python/api/azure-mgmt-cognitiveservices/azure.mgmt.cognitiveservices)
 * [Azure bilişsel hizmetler nedir?](../../what-are-cognitive-services.md)
 * [Azure bilişsel hizmetler 'e yönelik isteklerin kimliğini doğrulama](../../authentication.md)
 * [Azure portalını kullanarak yeni kaynak oluşturma](../../cognitive-services-apis-create-account.md)

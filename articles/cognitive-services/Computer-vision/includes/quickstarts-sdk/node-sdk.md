@@ -10,12 +10,12 @@ ms.topic: include
 ms.date: 12/15/2020
 ms.author: pafarley
 ms.custom: devx-track-js
-ms.openlocfilehash: 8fd7c820a25f098799f1c2fa69ba700a334e932d
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: 13017424c1b9f0406ad60dc25f61f198f3655323
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98697968"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98948275"
 ---
 <a name="HOLTop"></a>
 
@@ -24,7 +24,7 @@ Görüntü İşleme istemci kitaplığını kullanarak şunları yapın:
 * Etiketler, metin açıklaması, yüzeyler, yetişkinlere yönelik içerik ve daha fazlası için bir görüntüyü çözümleyin.
 * Okuma API 'SI ile yazdırılmış ve el yazısı metin okuyun.
 
-[Başvuru belgeleri](/javascript/api/@azure/cognitiveservices-computervision/?view=azure-node-latest)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-computervision)  |  [Paket (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-computervision)  |  [Örnekler](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision&sort=0)
+[Başvuru belgeleri](/javascript/api/@azure/cognitiveservices-computervision/)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-computervision)  |  [Paket (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-computervision)  |  [Örnekler](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision&sort=0)
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -91,8 +91,8 @@ Aşağıdaki sınıflar ve arabirimler, Görüntü İşleme Node.js SDK 'nın ba
 
 |Ad|Açıklama|
 |---|---|
-| [ComputerVisionClient](/javascript/api/@azure/cognitiveservices-computervision/computervisionclient?view=azure-node-latest) | Bu sınıf tüm Görüntü İşleme işlevleri için gereklidir. Bunu Abonelik bilgileriniz ile birlikte başlatır ve birçok görüntü işlemini yapmak için kullanırsınız.|
-|[VisualFeatureTypes](/javascript/api/@azure/cognitiveservices-computervision/visualfeaturetypes?view=azure-node-latest)| Bu Enum, standart bir çözümle işleminde yapılabilecek farklı görüntü analizi türlerini tanımlar. İhtiyaçlarınıza bağlı olarak bir **Visualfeaturetypes** değeri kümesi belirtirsiniz. |
+| [ComputerVisionClient](/javascript/api/@azure/cognitiveservices-computervision/computervisionclient) | Bu sınıf tüm Görüntü İşleme işlevleri için gereklidir. Bunu Abonelik bilgileriniz ile birlikte başlatır ve birçok görüntü işlemini yapmak için kullanırsınız.|
+|[VisualFeatureTypes](/javascript/api/@azure/cognitiveservices-computervision/visualfeaturetypes)| Bu Enum, standart bir çözümle işleminde yapılabilecek farklı görüntü analizi türlerini tanımlar. İhtiyaçlarınıza bağlı olarak bir **Visualfeaturetypes** değeri kümesi belirtirsiniz. |
 
 ## <a name="code-examples"></a>Kod örnekleri
 
@@ -105,7 +105,7 @@ Bu kod parçacıkları, Node.js için Görüntü İşleme istemci kitaplığı i
 ## <a name="authenticate-the-client"></a>İstemcinin kimliğini doğrulama
 
 
-Uç noktanız ve anahtarınızla bir istemci örneği oluşturun. Anahtar ve uç noktanızla bir [Apikeycredentials](/python/api/msrest/msrest.authentication.apikeycredentials?view=azure-python) nesnesi oluşturun ve bunu bir [ComputerVisionClient](/javascript/api/@azure/cognitiveservices-computervision/computervisionclient?view=azure-node-latest) nesnesi oluşturmak için kullanın.
+Uç noktanız ve anahtarınızla bir istemci örneği oluşturun. Anahtar ve uç noktanızla bir [Apikeycredentials](/python/api/msrest/msrest.authentication.apikeycredentials) nesnesi oluşturun ve bunu bir [ComputerVisionClient](/javascript/api/@azure/cognitiveservices-computervision/computervisionclient) nesnesi oluşturmak için kullanın.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_client)]
 
@@ -120,10 +120,10 @@ Ardından, bir işlev tanımlayın `computerVision` ve birincil işlev ve geri �
 
 ## <a name="analyze-an-image"></a>Resim çözümleme
 
-Bu bölümdeki kod, çeşitli görsel özellikleri ayıklamak için uzak görüntüleri analiz eder. Bu işlemleri, istemci nesnesinin **analiz Zeımage** yönteminin bir parçası olarak gerçekleştirebilir veya tek tek yöntemler kullanarak çağırabilirsiniz. Ayrıntılar için [başvuru belgelerine](/javascript/api/@azure/cognitiveservices-computervision/?view=azure-node-latest) bakın.
+Bu bölümdeki kod, çeşitli görsel özellikleri ayıklamak için uzak görüntüleri analiz eder. Bu işlemleri, istemci nesnesinin **analiz Zeımage** yönteminin bir parçası olarak gerçekleştirebilir veya tek tek yöntemler kullanarak çağırabilirsiniz. Ayrıntılar için [başvuru belgelerine](/javascript/api/@azure/cognitiveservices-computervision/) bakın.
 
 > [!NOTE]
-> Yerel bir görüntüyü de analiz edebilirsiniz. **AnalyzeImageInStream** gibi [ComputerVisionClient](/javascript/api/@azure/cognitiveservices-computervision/computervisionclient?view=azure-node-latest) yöntemlerine bakın. Ya da, yerel görüntüleri içeren senaryolar için [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/ComputerVision/ComputerVisionQuickstart.js) 'daki örnek koda bakın.
+> Yerel bir görüntüyü de analiz edebilirsiniz. **AnalyzeImageInStream** gibi [ComputerVisionClient](/javascript/api/@azure/cognitiveservices-computervision/computervisionclient) yöntemlerine bakın. Ya da, yerel görüntüleri içeren senaryolar için [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/ComputerVision/ComputerVisionQuickstart.js) 'daki örnek koda bakın.
 
 ### <a name="get-image-description"></a>Görüntü açıklamasını al
 
@@ -245,7 +245,7 @@ Metin ayıklamak istediğiniz görüntülerin URL 'SI başvurusunu kaydedin.
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_read_images)]
 
 > [!NOTE]
-> Ayrıca, yerel görüntüden metin okuyabilirsiniz. **ReadInStream** gibi [ComputerVisionClient](/javascript/api/@azure/cognitiveservices-computervision/computervisionclient?view=azure-node-latest) yöntemlerine bakın. Ya da, yerel görüntüleri içeren senaryolar için [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/ComputerVision/ComputerVisionQuickstart.js) 'daki örnek koda bakın.
+> Ayrıca, yerel görüntüden metin okuyabilirsiniz. **ReadInStream** gibi [ComputerVisionClient](/javascript/api/@azure/cognitiveservices-computervision/computervisionclient) yöntemlerine bakın. Ya da, yerel görüntüleri içeren senaryolar için [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/ComputerVision/ComputerVisionQuickstart.js) 'daki örnek koda bakın.
 
 ### <a name="call-the-read-api"></a>Okuma API 'sini çağırma
 
@@ -292,7 +292,7 @@ Bilişsel hizmetler aboneliğini temizlemek ve kaldırmak istiyorsanız, kaynağ
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
->[Görüntü İşleme API'si Başvurusu (Node.js)](/javascript/api/@azure/cognitiveservices-computervision/?view=azure-node-latest)
+>[Görüntü İşleme API'si Başvurusu (Node.js)](/javascript/api/@azure/cognitiveservices-computervision/)
 
 
 * [Görüntü İşleme nedir?](../../overview.md)

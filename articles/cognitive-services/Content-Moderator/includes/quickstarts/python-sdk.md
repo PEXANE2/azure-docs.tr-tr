@@ -11,12 +11,12 @@ ms.topic: include
 ms.date: 09/15/2020
 ms.custom: cog-serv-seo-aug-2020
 ms.author: pafarley
-ms.openlocfilehash: 324f89d2de56666242ed4f6231eff0855ec561b3
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 1058b93a304dbf6f08d9a3e8f995e123a6dc6631
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96356486"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98947772"
 ---
 Python için Azure Content Moderator istemci kitaplığı ile çalışmaya başlayın. PiPy paketini yüklemek için bu adımları izleyin ve temel görevler için örnek kodu deneyin. 
 
@@ -30,7 +30,7 @@ Python için Content Moderator istemci kitaplığını şu şekilde kullanın:
 * Özel görüntü listesi kullanma
 * İnceleme oluştur
 
-[Başvuru belgeleri](/python/api/overview/azure/cognitiveservices/contentmoderator?view=azure-python)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-contentmoderator)  |  [Paket (PiPy)](https://pypi.org/project/azure-cognitiveservices-vision-contentmoderator/)  |  [Örnekler](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)
+[Başvuru belgeleri](/python/api/overview/azure/cognitiveservices/contentmoderator)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-contentmoderator)  |  [Paket (PiPy)](https://pypi.org/project/azure-cognitiveservices-vision-contentmoderator/)  |  [Örnekler](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -75,10 +75,10 @@ Aşağıdaki sınıflar, Content Moderator Python istemci kitaplığının bazı
 
 |Ad|Açıklama|
 |---|---|
-|[ContentModeratorClient](/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.content_moderator_client.contentmoderatorclient?view=azure-python)|Bu sınıf tüm Content Moderator işlevleri için gereklidir. Bunu Abonelik bilgileriniz ile birlikte başlatır ve diğer sınıfların örneklerini oluşturmak için kullanırsınız.|
-|[Imagemoderationoperations](/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.imagemoderationoperations?view=azure-python)|Bu sınıf yetişkinlere yönelik içerik, kişisel bilgiler veya insan yüzeyleri için görüntüleri analiz etmek üzere işlevsellik sağlar.|
-|[TextModerationOperations](/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.textmoderationoperations?view=azure-python)|Bu sınıf, dil, küfür, hatalar ve kişisel bilgiler için metin çözümleme işlevlerini sağlar.|
-[ReviewsOperations](/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.reviewsoperations?view=azure-python)|Bu sınıf, iş oluşturma, özel iş akışları ve insan incelemeleri için yöntemler de dahil olmak üzere, gözden geçirme API 'lerinin işlevlerini sağlar.|
+|[ContentModeratorClient](/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.content_moderator_client.contentmoderatorclient)|Bu sınıf tüm Content Moderator işlevleri için gereklidir. Bunu Abonelik bilgileriniz ile birlikte başlatır ve diğer sınıfların örneklerini oluşturmak için kullanırsınız.|
+|[Imagemoderationoperations](/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.imagemoderationoperations)|Bu sınıf yetişkinlere yönelik içerik, kişisel bilgiler veya insan yüzeyleri için görüntüleri analiz etmek üzere işlevsellik sağlar.|
+|[TextModerationOperations](/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.textmoderationoperations)|Bu sınıf, dil, küfür, hatalar ve kişisel bilgiler için metin çözümleme işlevlerini sağlar.|
+[ReviewsOperations](/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.reviewsoperations)|Bu sınıf, iş oluşturma, özel iş akışları ve insan incelemeleri için yöntemler de dahil olmak üzere, gözden geçirme API 'lerinin işlevlerini sağlar.|
 
 ## <a name="code-examples"></a>Kod örnekleri
 
@@ -93,7 +93,7 @@ Bu kod parçacıkları, Python için Content Moderator istemci kitaplığı ile 
 
 ## <a name="authenticate-the-client"></a>İstemcinin kimliğini doğrulama
 
-Uç noktanız ve anahtarınızla bir istemci örneği oluşturun. Anahtarınızla bir [Biliveservicescredentials](/python/api/msrest/msrest.authentication.cognitiveservicescredentials?view=azure-python) nesnesi oluşturun ve bir [Contentmoderatorclient](/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.content_moderator_client.contentmoderatorclient?view=azure-python) nesnesi oluşturmak için bunu uç noktanızla birlikte kullanın.
+Uç noktanız ve anahtarınızla bir istemci örneği oluşturun. Anahtarınızla bir [Biliveservicescredentials](/python/api/msrest/msrest.authentication.cognitiveservicescredentials) nesnesi oluşturun ve bir [Contentmoderatorclient](/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.content_moderator_client.contentmoderatorclient) nesnesi oluşturmak için bunu uç noktanızla birlikte kullanın.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ContentModerator/ContentModeratorQuickstart.py?name=snippet_client)]
 
@@ -116,7 +116,7 @@ Ardından, Python betiğe aşağıdaki kodu ekleyin.
 
 ## <a name="use-a-custom-terms-list"></a>Özel terimler listesi kullanma
 
-Aşağıdaki kod, metin düzenlemesi için özel terimlerin bir listesini yönetmeyi gösterir. [ListManagementTermListsOperations](/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.listmanagementtermlistsoperations?view=azure-python) sınıfını kullanarak bir hüküm listesi oluşturabilir, tek tek koşulları yönetebilir ve diğer metin gövdelerini buna karşı görüntüleyebilirsiniz.
+Aşağıdaki kod, metin düzenlemesi için özel terimlerin bir listesini yönetmeyi gösterir. [ListManagementTermListsOperations](/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.listmanagementtermlistsoperations) sınıfını kullanarak bir hüküm listesi oluşturabilir, tek tek koşulları yönetebilir ve diğer metin gövdelerini buna karşı görüntüleyebilirsiniz.
 
 ### <a name="get-sample-text"></a>Örnek metin al
 
@@ -186,7 +186,7 @@ Tüm koşullarının listesini temizlemek için aşağıdaki kodu kullanın.
 
 ## <a name="moderate-images"></a>Orta görüntüler
 
-Aşağıdaki kod, Yetişkin ve kcy içeriğinin görüntülerini çözümlemek için bir [ımagemoderationoperations](/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.imagemoderationoperations?view=azure-python) nesnesiyle birlikte bir Content moderator istemcisi kullanır.
+Aşağıdaki kod, Yetişkin ve kcy içeriğinin görüntülerini çözümlemek için bir [ımagemoderationoperations](/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.imagemoderationoperations) nesnesiyle birlikte bir Content moderator istemcisi kullanır.
 
 ### <a name="get-sample-images"></a>Örnek görüntüleri al
 
@@ -218,7 +218,7 @@ Aşağıdaki kod, resmi insan yüzeyleri için denetler ve sonuçları konsola y
 
 ## <a name="use-a-custom-image-list"></a>Özel görüntü listesi kullanma
 
-Aşağıdaki kod, görüntü düzenlemesi için özel bir görüntü listesini yönetmeyi gösterir. Bu özellik, platformunuz Sıklıkla, ekran dışına almak istediğiniz görüntü kümesinin örneklerini alırsa kullanışlıdır. Bu belirli görüntülerin bir listesini tutarak performansı artırabilirsiniz. [ListManagementImageListsOperations](/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.listmanagementimagelistsoperations?view=azure-python) sınıfı, bir görüntü listesi oluşturmanıza, listedeki tek resimleri yönetmenize ve diğer görüntüleri buna karşı karşılaştırmanıza olanak sağlar.
+Aşağıdaki kod, görüntü düzenlemesi için özel bir görüntü listesini yönetmeyi gösterir. Bu özellik, platformunuz Sıklıkla, ekran dışına almak istediğiniz görüntü kümesinin örneklerini alırsa kullanışlıdır. Bu belirli görüntülerin bir listesini tutarak performansı artırabilirsiniz. [ListManagementImageListsOperations](/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.listmanagementimagelistsoperations) sınıfı, bir görüntü listesi oluşturmanıza, listedeki tek resimleri yönetmenize ve diğer görüntüleri buna karşı karşılaştırmanıza olanak sağlar.
 
 Bu senaryoda kullanacağınız görüntü URL 'Lerini depolamak için aşağıdaki metin değişkenlerini oluşturun.
 
@@ -296,7 +296,7 @@ Belirli bir görüntü listesini silmek için aşağıdaki kodu kullanın.
 
 İçerik akışını [Gözden](https://contentmoderator.cognitive.microsoft.com) geçirmek Için Content moderator Python istemci Kitaplığı ' nı kullanarak, insan moderatör tarafından gözden geçirebilirsiniz. Inceleme aracı hakkında daha fazla bilgi edinmek için bkz. [İnceleme aracı kavramsal Kılavuzu](../../review-tool-user-guide/human-in-the-loop.md).
 
-Aşağıdaki kod, gözden geçirme oluşturmak, KIMLIĞINI almak ve gözden geçirme aracının Web portalı aracılığıyla insan girişini aldıktan sonra ayrıntılarını denetlemek için [ReviewsOperations](/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.reviewsoperations?view=azure-python) sınıfını kullanır.
+Aşağıdaki kod, gözden geçirme oluşturmak, KIMLIĞINI almak ve gözden geçirme aracının Web portalı aracılığıyla insan girişini aldıktan sonra ayrıntılarını denetlemek için [ReviewsOperations](/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.reviewsoperations) sınıfını kullanır.
 
 ### <a name="get-review-credentials"></a>Inceleme kimlik bilgilerini al
 

@@ -10,12 +10,12 @@ ms.topic: include
 ms.date: 10/26/2020
 ms.author: pafarley
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 8ca42367db5607faedb4497f0a0fb0ca160464bc
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: a4d29dfb2a57dde2bb21244b2e5335f1a8ea1fcf
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98698133"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98947472"
 ---
 > [!IMPORTANT]
 > * Bu makaledeki kod, basitlik nedenlerle zaman uyumlu Yöntemler ve güvenli olmayan kimlik bilgileri depolaması kullanır. Aşağıdaki başvuru belgelerine bakın. 
@@ -134,7 +134,7 @@ Bir modeli eğmenize gerek kalmadan belgeler içindeki tabloları, çizgileri ve
 
 
 > [!TIP]
-> Ayrıca, yerel bir dosyadan içerik alabilirsiniz. **Beginrecognizecontent** gibi [Formrecognizerclient](/javascript/api/@azure/ai-form-recognizer/formrecognizerclient?view=azure-node-latest) yöntemlerine bakın. Ya da, yerel görüntüleri içeren senaryolar için [GitHub](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/samples) 'daki örnek koda bakın.
+> Ayrıca, yerel bir dosyadan içerik alabilirsiniz. **Beginrecognizecontent** gibi [Formrecognizerclient](/javascript/api/@azure/ai-form-recognizer/formrecognizerclient) yöntemlerine bakın. Ya da, yerel görüntüleri içeren senaryolar için [GitHub](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/samples) 'daki örnek koda bakın.
 
 ### <a name="output"></a>Çıktı
 
@@ -161,7 +161,7 @@ Bir URI 'den alındıları tanımak için `beginRecognizeReceiptsFromUrl` yönte
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/FormRecognizer/FormRecognizerQuickstart.js?name=snippet_receipts)]
 
 > [!TIP]
-> Ayrıca, yerel alındı görüntülerini da tanıyabilirsiniz. **BeginRecognizeReceipts** gibi [Formrecognizerclient](/javascript/api/@azure/ai-form-recognizer/formrecognizerclient?view=azure-node-latest) yöntemlerine bakın. Ya da, yerel görüntüleri içeren senaryolar için [GitHub](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/samples) 'daki örnek koda bakın.
+> Ayrıca, yerel alındı görüntülerini da tanıyabilirsiniz. **BeginRecognizeReceipts** gibi [Formrecognizerclient](/javascript/api/@azure/ai-form-recognizer/formrecognizerclient) yöntemlerine bakın. Ya da, yerel görüntüleri içeren senaryolar için [GitHub](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/samples) 'daki örnek koda bakın.
 
 ### <a name="output"></a>Çıktı
 
@@ -281,7 +281,7 @@ Bu bölümde, kendi formlarınız ile eğitilen modeller kullanılarak özel for
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/FormRecognizer/FormRecognizerQuickstart.js?name=snippet_analyze)]
 
 > [!TIP]
-> Yerel dosyaları da analiz edebilirsiniz. **Beginrecognizeccustomforms** gibi [Formrecognizerclient](/javascript/api/@azure/ai-form-recognizer/formrecognizerclient?view=azure-node-latest) yöntemlerine bakın. Ya da, yerel görüntüleri içeren senaryolar için [GitHub](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/samples) 'daki örnek koda bakın.
+> Yerel dosyaları da analiz edebilirsiniz. **Beginrecognizeccustomforms** gibi [Formrecognizerclient](/javascript/api/@azure/ai-form-recognizer/formrecognizerclient) yöntemlerine bakın. Ya da, yerel görüntüleri içeren senaryolar için [GitHub](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/samples) 'daki örnek koda bakın.
 
 
 ### <a name="output"></a>Çıktı

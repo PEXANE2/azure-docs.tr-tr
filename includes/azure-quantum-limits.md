@@ -6,12 +6,12 @@ ms.service: azure-quantum
 ms.topic: include
 ms.date: 01/08/2021
 ms.author: dasto
-ms.openlocfilehash: c312ee63f9f00e4eef726924fc01f2862ba2884f
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 2106a48a583f120f8b4dde4eb32a30f1a1b1d85b
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98920484"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98948127"
 ---
 ### <a name="provider-limits--quota"></a>Sağlayıcı sınır & kotası
 
@@ -32,11 +32,11 @@ Microsoft 'un ilk taraf Iyileştirme çözümleri sağlayıcısı için yayımla
 
 #### <a name="performance-at-scale-sku"></a>Ölçek SKU 'sunda performans
 
-| Kaynak | Sınır |
-| --- | --- |
-| CPU tabanlı eşzamanlı işler | 100 adede kadar eşzamanlı iş |
-| FPGA tabanlı eşzamanlı işler | 10 adede kadar eşzamanlı iş |
-| Çözücü saati | ayda 50.000 saat  |
+| Kaynak | Varsayılan Sınır | Üst Sınır |
+| --- | --- | --- |
+| CPU tabanlı eşzamanlı işler | 100 adede kadar eşzamanlı iş | Varsayılan sınırla aynı |
+| FPGA tabanlı eşzamanlı işler | 10 adede kadar eşzamanlı iş | Varsayılan sınırla aynı |
+| Çözücü saati | ayda 1.000 saat  | ayda 50.000 saate kadar |
 
 Sınır artışı istemeniz gerekiyorsa lütfen Azure desteğine ulaşın. 
 

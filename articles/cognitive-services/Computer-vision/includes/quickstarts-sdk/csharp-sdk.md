@@ -10,12 +10,12 @@ ms.topic: include
 ms.date: 12/15/2020
 ms.author: pafarley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8bd919d2896b187d32ad5347e6b8729ccb8555de
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: 58ad4acaa60abe56849490df39c91949abec2f5d
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98612942"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98947411"
 ---
 <a name="HOLTop"></a>
 
@@ -24,7 +24,7 @@ Görüntü İşleme istemci kitaplığını kullanarak şunları yapın:
 * Etiketler, metin açıklaması, yüzeyler, yetişkinlere yönelik içerik ve daha fazlası için bir görüntüyü çözümleyin.
 * Okuma API 'SI ile yazdırılmış ve el yazısı metin okuyun.
 
-[Başvuru belgeleri](/dotnet/api/overview/azure/cognitiveservices/client/computervision?view=azure-dotnet)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.ComputerVision)  |  [Paket (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.ComputerVision/)  |  [Örnekler](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision&sort=0)
+[Başvuru belgeleri](/dotnet/api/overview/azure/cognitiveservices/client/computervision)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.ComputerVision)  |  [Paket (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.ComputerVision/)  |  [Örnekler](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision&sort=0)
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -114,9 +114,9 @@ Aşağıdaki sınıflar ve arabirimler, Görüntü İşleme .NET SDK 'sının ba
 
 |Ad|Açıklama|
 |---|---|
-| [ComputerVisionClient](/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-dotnet) | Bu sınıf tüm Görüntü İşleme işlevleri için gereklidir. Bunu Abonelik bilgileriniz ile birlikte başlatır ve birçok görüntü işlemini yapmak için kullanırsınız.|
-|[ComputerVisionClientExtensions](/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.computervisionclientextensions?view=azure-dotnet)| Bu sınıf, **ComputerVisionClient** için ek yöntemler içerir.|
-|[VisualFeatureTypes](/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.models.visualfeaturetypes?view=azure-dotnet)| Bu Enum, standart bir çözümle işleminde yapılabilecek farklı görüntü analizi türlerini tanımlar. İhtiyaçlarınıza bağlı olarak bir VisualFeatureTypes değeri kümesi belirtirsiniz. |
+| [ComputerVisionClient](/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.computervisionclient) | Bu sınıf tüm Görüntü İşleme işlevleri için gereklidir. Bunu Abonelik bilgileriniz ile birlikte başlatır ve birçok görüntü işlemini yapmak için kullanırsınız.|
+|[ComputerVisionClientExtensions](/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.computervisionclientextensions)| Bu sınıf, **ComputerVisionClient** için ek yöntemler içerir.|
+|[VisualFeatureTypes](/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.models.visualfeaturetypes)| Bu Enum, standart bir çözümle işleminde yapılabilecek farklı görüntü analizi türlerini tanımlar. İhtiyaçlarınıza bağlı olarak bir VisualFeatureTypes değeri kümesi belirtirsiniz. |
 
 ## <a name="code-examples"></a>Kod örnekleri
 
@@ -131,7 +131,7 @@ Bu kod parçacıkları, .NET için Görüntü İşleme istemci kitaplığı ile 
 > [!NOTE]
 > Bu hızlı başlangıçta, ve sırasıyla adlı Görüntü İşleme anahtarınız ve uç noktanız için [ortam değişkenleri oluşturduğunuzu](../../../cognitive-services-apis-create-account.md#configure-an-environment-variable-for-authentication) varsaymış olursunuz `COMPUTER_VISION_SUBSCRIPTION_KEY` `COMPUTER_VISION_ENDPOINT` .
 
-Yeni bir yöntemde, uç nokta ve anahtarınızla bir istemci örneği oluşturun. Anahtarınızla bir **[ApiKeyServiceClientCredentials](/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.apikeyserviceclientcredentials?view=azure-dotnet)** nesnesi oluşturun ve bir **[ComputerVisionClient](/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-dotnet)** nesnesi oluşturmak için bunu uç noktanızla birlikte kullanın.
+Yeni bir yöntemde, uç nokta ve anahtarınızla bir istemci örneği oluşturun. Anahtarınızla bir **[ApiKeyServiceClientCredentials](/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.apikeyserviceclientcredentials)** nesnesi oluşturun ve bir **[ComputerVisionClient](/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.computervisionclient)** nesnesi oluşturmak için bunu uç noktanızla birlikte kullanın.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_auth)]
 
@@ -143,7 +143,7 @@ Yeni bir yöntemde, uç nokta ve anahtarınızla bir istemci örneği oluşturun
 Aşağıdaki kod, `AnalyzeImageUrl` uzak bir görüntüyü çözümlemek ve sonuçları yazdırmak için istemci nesnesini kullanan yöntemini tanımlar. Yöntemi bir metin açıklaması, kategori, etiket listesi, algılanan yüzeyler, yetişkinlere yönelik içerik bayrakları, ana renkler ve görüntü türü döndürür.
 
 > [!TIP]
-> Yerel bir görüntüyü de analiz edebilirsiniz. Bkz. **analiz Zeımageınstreamasync** gibi [ComputerVisionClient](/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-dotnet) yöntemleri. Ya da, yerel görüntüleri içeren senaryolar için [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/ComputerVision/ComputerVisionQuickstart.cs) 'daki örnek koda bakın.
+> Yerel bir görüntüyü de analiz edebilirsiniz. Bkz. **analiz Zeımageınstreamasync** gibi [ComputerVisionClient](/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.computervisionclient) yöntemleri. Ya da, yerel görüntüleri içeren senaryolar için [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/ComputerVision/ComputerVisionQuickstart.cs) 'daki örnek koda bakın.
 
 ### <a name="set-up-test-image"></a>Test görüntüsünü ayarla
 
@@ -153,7 +153,7 @@ Aşağıdaki kod, `AnalyzeImageUrl` uzak bir görüntüyü çözümlemek ve sonu
 
 ### <a name="specify-visual-features"></a>Görsel özellikleri belirtin
 
-Görüntü analizi için yeni yönteminizi tanımlayın. Analizinizden ayıklamak istediğiniz görsel özellikleri belirten aşağıdaki kodu ekleyin. Listenin tamamı için **[Visualfeaturetypes](/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.models.visualfeaturetypes?view=azure-dotnet)** numaralandırması bölümüne bakın.
+Görüntü analizi için yeni yönteminizi tanımlayın. Analizinizden ayıklamak istediğiniz görsel özellikleri belirten aşağıdaki kodu ekleyin. Listenin tamamı için **[Visualfeaturetypes](/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.models.visualfeaturetypes)** numaralandırması bölümüne bakın.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_visualfeatures)]
 
@@ -245,7 +245,7 @@ Aşağıdaki kod, &mdash; küçük resim veya çizgi çizme gibi görüntü tür
 Görüntü İşleme görüntüdeki görünür metni okuyabilir ve bunu bir karakter akışına dönüştürebilir. Metin tanıma hakkında daha fazla bilgi için bkz. [optik karakter tanıma (OCR)](../../concept-recognizing-text.md#read-api) kavramsal belgesi. Bu bölümdeki kod, [okuma 3,0 için en son görüntü işleme SDK sürümünü](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.ComputerVision/6.0.0-preview.1) kullanır ve bir yöntemi tanımlar, bu, `BatchReadFileUrl` görüntüdeki metni algılamak ve ayıklamak için istemci nesnesini kullanır.
 
 > [!TIP]
-> Ayrıca, yerel görüntüden metin de ayıklayabilirsiniz. **Readınstreamasync** gibi [ComputerVisionClient](/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-dotnet) yöntemlerine bakın. Ya da, yerel görüntüleri içeren senaryolar için [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/ComputerVision/ComputerVisionQuickstart.cs) 'daki örnek koda bakın.
+> Ayrıca, yerel görüntüden metin de ayıklayabilirsiniz. **Readınstreamasync** gibi [ComputerVisionClient](/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.computervisionclient) yöntemlerine bakın. Ya da, yerel görüntüleri içeren senaryolar için [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/ComputerVision/ComputerVisionQuickstart.cs) 'daki örnek koda bakın.
 
 ### <a name="set-up-test-image"></a>Test görüntüsünü ayarla
 
@@ -285,7 +285,7 @@ Bilişsel hizmetler aboneliğini temizlemek ve kaldırmak istiyorsanız, kaynağ
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
->[Görüntü İşleme API'si Başvurusu (.NET)](/dotnet/api/overview/azure/cognitiveservices/client/computervision?view=azure-dotnet)
+>[Görüntü İşleme API'si Başvurusu (.NET)](/dotnet/api/overview/azure/cognitiveservices/client/computervision)
 
 * [Görüntü İşleme nedir?](../../overview.md)
 * Bu örneğe ilişkin kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/ComputerVision/ComputerVisionQuickstart.cs)' da bulunabilir.

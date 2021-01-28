@@ -9,19 +9,19 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 10/06/2020
 ms.author: pafarley
-ms.openlocfilehash: 9befe33f70341f218c3339a13dcc1d31dc452d34
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 93282e79321f8999ddf8c737ebcb5ea76fbf6e02
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98132348"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98948045"
 ---
 > [!IMPORTANT]
 > Bu makaledeki kod, basitlik nedenlerle zaman uyumlu Yöntemler ve güvenli olmayan kimlik bilgileri depolaması kullanır.
 
 [Başvuru belgeleri](/dotnet/api/overview/azure/ai.formrecognizer-readme)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/src)  |  [Paket (NuGet)](https://www.nuget.org/packages/Azure.AI.FormRecognizer)  |  [Örnekler](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services/)
 * [Visual STUDIO IDE](https://visualstudio.microsoft.com/vs/) veya [.NET Core](https://dotnet.microsoft.com/download/dotnet-core)'un geçerli sürümü.
@@ -198,7 +198,7 @@ Belirli bir URL 'deki bir dosyanın içeriğini tanımak için `StartRecognizeCo
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_getcontent_call)]
 
 > [!TIP]
-> Ayrıca, yerel bir dosyadan içerik alabilirsiniz. **Startrecognizecontent** gibi [Formrecognizerclient](/dotnet/api/azure.ai.formrecognizer.formrecognizerclient?view=azure-dotnet) yöntemlerine bakın. Ya da, yerel görüntüleri içeren senaryolar için [GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) 'daki örnek koda bakın.
+> Ayrıca, yerel bir dosyadan içerik alabilirsiniz. **Startrecognizecontent** gibi [Formrecognizerclient](/dotnet/api/azure.ai.formrecognizer.formrecognizerclient) yöntemlerine bakın. Ya da, yerel görüntüleri içeren senaryolar için [GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) 'daki örnek koda bakın.
 
 Bu görevin geri kalanı, içerik bilgilerini konsola yazdırır.
 
@@ -248,7 +248,7 @@ Bir URL 'den alındıları tanımak için `StartRecognizeReceiptsFromUri` yönte
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_receipt_call)]
 
 > [!TIP]
-> Ayrıca, yerel alındı görüntülerini da tanıyabilirsiniz. **StartRecognizeReceipts** gibi [Formrecognizerclient](/dotnet/api/azure.ai.formrecognizer.formrecognizerclient?view=azure-dotnet) yöntemlerine bakın. Ya da, yerel görüntüleri içeren senaryolar için [GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) 'daki örnek koda bakın.
+> Ayrıca, yerel alındı görüntülerini da tanıyabilirsiniz. **StartRecognizeReceipts** gibi [Formrecognizerclient](/dotnet/api/azure.ai.formrecognizer.formrecognizerclient) yöntemlerine bakın. Ya da, yerel görüntüleri içeren senaryolar için [GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) 'daki örnek koda bakın.
 
 Döndürülen değer bir `RecognizedReceipt` nesne koleksiyonudur: gönderilen belgedeki her sayfa için bir tane. Aşağıdaki kod, belirtilen URI 'de alış irsaliyesini işler ve ana alanları ve değerleri konsola yazdırır.
 
@@ -315,7 +315,7 @@ Bir URL 'den iş kartlarını tanımak için `StartRecognizeBusinessCardsFromUri
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart-preview.cs?name=snippet_bc_call)]
 
 > [!TIP]
-> Ayrıca, yerel alındı görüntülerini da tanıyabilirsiniz. **Startrecognizebusinesscarlar** gibi [Formrecognizerclient](/dotnet/api/azure.ai.formrecognizer.formrecognizerclient?view=azure-dotnet) yöntemlerine bakın. Ya da, yerel görüntüleri içeren senaryolar için [GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) 'daki örnek koda bakın.
+> Ayrıca, yerel alındı görüntülerini da tanıyabilirsiniz. **Startrecognizebusinesscarlar** gibi [Formrecognizerclient](/dotnet/api/azure.ai.formrecognizer.formrecognizerclient) yöntemlerine bakın. Ya da, yerel görüntüleri içeren senaryolar için [GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) 'daki örnek koda bakın.
 
 Döndürülen değer bir `RecognizedForm` nesne koleksiyonudur: belgedeki her kart için bir tane. Aşağıdaki kod, belirtilen URI 'de iş kartını işler ve ana alanları ve değerleri konsola yazdırır.
 
@@ -339,7 +339,7 @@ Bir URL 'den faturaları tanımak için `StartRecognizeInvoicesFromUriAsync` yö
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart-preview.cs?name=snippet_invoice_call)]
 
 > [!TIP]
-> Ayrıca, yerel fatura görüntülerini da tanıyabilirsiniz. **Startrecognizeınices** gibi [Formrecognizerclient](/dotnet/api/azure.ai.formrecognizer.formrecognizerclient?view=azure-dotnet) yöntemlerine bakın. Ya da, yerel görüntüleri içeren senaryolar için [GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) 'daki örnek koda bakın.
+> Ayrıca, yerel fatura görüntülerini da tanıyabilirsiniz. **Startrecognizeınices** gibi [Formrecognizerclient](/dotnet/api/azure.ai.formrecognizer.formrecognizerclient) yöntemlerine bakın. Ya da, yerel görüntüleri içeren senaryolar için [GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) 'daki örnek koda bakın.
 
 Döndürülen değer bir `RecognizedForm` nesne koleksiyonudur: gönderilen belgedeki her fatura için bir tane. Aşağıdaki kod, belirtilen URI 'de faturayı işler ve ana alanları ve değerleri konsola yazdırır.
 
@@ -493,7 +493,7 @@ Bu bölümde, kendi formlarınız ile eğitilen modeller kullanılarak özel for
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_analyze)]
 
 > [!TIP]
-> Yerel bir dosyayı da analiz edebilirsiniz. **Startrecognizeccustomforms** gibi [Formrecognizerclient](/dotnet/api/azure.ai.formrecognizer.formrecognizerclient?view=azure-dotnet) yöntemlerine bakın. Ya da, yerel görüntüleri içeren senaryolar için [GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) 'daki örnek koda bakın.
+> Yerel bir dosyayı da analiz edebilirsiniz. **Startrecognizeccustomforms** gibi [Formrecognizerclient](/dotnet/api/azure.ai.formrecognizer.formrecognizerclient) yöntemlerine bakın. Ya da, yerel görüntüleri içeren senaryolar için [GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) 'daki örnek koda bakın.
 
 Döndürülen değer bir `RecognizedForm` nesne koleksiyonudur: gönderilen belgedeki her sayfa için bir tane. Aşağıdaki kod, analiz sonuçlarını konsola yazdırır. Her tanınan alanı ve karşılık gelen değeri, Güvenirlik puanı ile birlikte yazdırır.
 

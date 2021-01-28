@@ -11,12 +11,12 @@ ms.topic: include
 ms.date: 09/14/2020
 ms.author: nitinme
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: cef5aaae58797e38745b3f5164c171581a005562
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 080b9dac8dad099f2901f2b820da58501310471b
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94372005"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98947553"
 ---
 [Modern okuyucu](https://www.onenote.com/learningtools) , yeni okuyucular, dil öğrenimi ve öğrenimi gibi öğrenme farklılığı olan kişiler için okuma kavramasını geliştirmek üzere kanıtlanmış teknikler uygulayan, benzer şekilde tasarlanmış bir araçtır. Uygulamalarınızı odaklamak üzere metin yalıtmak, yaygın olarak kullanılan sözcüklerin resimlerini göstermek, konuşma parçalarını vurgulamak, seçili metni sesli okumak, sözcükleri ve tümceleri gerçek zamanlı olarak çevirmek ve daha fazlasını yapmak için uygulamalarınızda modern okuyucu kullanabilirsiniz.
 
@@ -42,7 +42,7 @@ Visual Studio 'da, yerleşik Model-View-Controller ve ASP.NET Core 2,1 ASP.NET C
 
 ### <a name="configure-authentication-values"></a>Kimlik doğrulama değerlerini yapılandırma
 
-_Çözüm Gezgini_ projeye sağ tıklayın ve **Kullanıcı gizli dizilerini Yönet** ' i seçin. Bu, _üzerindesecrets.js_ adlı bir dosya açar. Bu dosya kaynak denetimine iade edilmedi. [Burada](/aspnet/core/security/app-secrets?preserve-view=true&tabs=windows&view=aspnetcore-3.1) daha fazla bilgi edinin. Derinlikli okuyucu kaynağınızı oluştururken verilen değerleri sağlayarak, _üzerindekisecrets.js_ içeriğini aşağıdaki şekilde değiştirin.
+_Çözüm Gezgini_ projeye sağ tıklayın ve **Kullanıcı gizli dizilerini Yönet**' i seçin. Bu, _üzerindesecrets.js_ adlı bir dosya açar. Bu dosya kaynak denetimine iade edilmedi. [Daha fazla bilgi edinin](/aspnet/core/security/app-secrets?tabs=windows). Derinlikli okuyucu kaynağınızı oluştururken verilen değerleri sağlayarak, _üzerindekisecrets.js_ içeriğini aşağıdaki şekilde değiştirin.
 
 ```json
 {
@@ -218,7 +218,7 @@ Metnin tümünde, metnin dillerini açıklayan bir **lang** özniteliği olduğu
 
 ## <a name="add-javascript-to-handle-launching-immersive-reader"></a>Derinlikli okuyucu başlatma tanıtıcısına JavaScript ekleme
 
-Modern okuyucu kitaplığı, derinlikli okuyucu başlatma ve tam ekran okuyucu düğmelerini işleme gibi işlevler sağlar. [Burada](../../reference.md) daha fazla bilgi edinin.
+Modern okuyucu kitaplığı, derinlikli okuyucu başlatma ve tam ekran okuyucu düğmelerini işleme gibi işlevler sağlar. [Daha fazla bilgi edinin](../../reference.md).
 
 _Views\home\ındex.cshtml_ altında aşağıdaki kodu ekleyin:
 
@@ -292,7 +292,7 @@ _Views\home\ındex.cshtml_ altında aşağıdaki kodu ekleyin:
 
 ## <a name="build-and-run-the-app"></a>Uygulamayı derleyin ve çalıştırın
 
-Menü çubuğundan **hata ayıkla > hata ayıklamayı Başlat** ' ı seçin veya **F5** ' e basarak uygulamayı başlatın.
+Menü çubuğundan **hata ayıkla > hata ayıklamayı Başlat**' ı seçin veya **F5** ' e basarak uygulamayı başlatın.
 
 Tarayıcınızda şunları görmeniz gerekir:
 

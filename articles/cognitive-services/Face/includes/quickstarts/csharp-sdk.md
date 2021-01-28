@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: include
 ms.date: 10/26/2020
 ms.author: pafarley
-ms.openlocfilehash: 972609b0a1b2249c9da9ab6da9309c0950e76734
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: a01afdcb54ff124bf4141d6ceb34b77303bef104
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98697964"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98948085"
 ---
 .NET için yüz istemci kitaplığını kullanarak yüz tanıma ile çalışmaya başlayın. Paketi yüklemek için bu adımları izleyin ve temel görevler için örnek kodu deneyin. Yüz tanıma hizmeti, görüntülerdeki insan yüzlerini algılayıp tanımayı sağlayan gelişmiş algoritmalara erişmenizi sağlar.
 
@@ -25,7 +25,7 @@ ms.locfileid: "98697964"
 * [Kişi grubu oluştur](#create-a-person-group)
 * [Yüz tanıma](#identify-a-face)
 
-[Başvuru belgeleri](/dotnet/api/overview/azure/cognitiveservices/client/faceapi?view=azure-dotnet)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.Face)  |  [Paket (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.6.0-preview.1)  |  [Örnekler](/samples/browse/?products=azure&term=face)
+[Başvuru belgeleri](/dotnet/api/overview/azure/cognitiveservices/client/faceapi)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.Face)  |  [Paket (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.6.0-preview.1)  |  [Örnekler](/samples/browse/?products=azure&term=face)
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -110,12 +110,12 @@ Aşağıdaki sınıflar ve arabirimler, yüz .NET istemci kitaplığının bazı
 
 |Ad|Açıklama|
 |---|---|
-|[FaceClient](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet) | Bu sınıf, yüz hizmetini kullanma yetkinizi temsil eder ve tüm yüz işlevleri için buna ihtiyacınız vardır. Bunu Abonelik bilgileriniz ile birlikte başlatır ve diğer sınıfların örneklerini oluşturmak için kullanırsınız. |
-|[Çok yönlü Işlemler](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperations?view=azure-dotnet)|Bu sınıf, insan yüzeyleri ile gerçekleştirebileceğiniz temel algılama ve tanıma görevlerini işler. |
-|[DetectedFace](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.detectedface?view=azure-dotnet)|Bu sınıf, görüntüde tek bir yüz tarafından algılanan tüm verileri temsil eder. Yüz hakkında ayrıntılı bilgi almak için bu uygulamayı kullanabilirsiniz.|
-|[FaceListOperations](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.facelistoperations?view=azure-dotnet)|Bu sınıf, bir assıralanan yüz kümesini depolayan, bulutta depolanan çok **yönlü liste** yapılarını yönetir. |
-|[Persongrouppersonextensıons](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.persongrouppersonextensions?view=azure-dotnet)| Bu sınıf, tek bir kişiye ait olan bir yüzey kümesini depolayan, bulutta depolanan **kişi** yapılarını yönetir.|
-|[PersonGroupOperations](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.persongroupoperations?view=azure-dotnet)| Bu sınıf, bir dizi yönetilen **kişi** nesnesini depolayan, bulut ile depolanmış olan **persongroup** yapılarını yönetir. |
+|[FaceClient](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient) | Bu sınıf, yüz hizmetini kullanma yetkinizi temsil eder ve tüm yüz işlevleri için buna ihtiyacınız vardır. Bunu Abonelik bilgileriniz ile birlikte başlatır ve diğer sınıfların örneklerini oluşturmak için kullanırsınız. |
+|[Çok yönlü Işlemler](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperations)|Bu sınıf, insan yüzeyleri ile gerçekleştirebileceğiniz temel algılama ve tanıma görevlerini işler. |
+|[DetectedFace](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.detectedface)|Bu sınıf, görüntüde tek bir yüz tarafından algılanan tüm verileri temsil eder. Yüz hakkında ayrıntılı bilgi almak için bu uygulamayı kullanabilirsiniz.|
+|[FaceListOperations](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.facelistoperations)|Bu sınıf, bir assıralanan yüz kümesini depolayan, bulutta depolanan çok **yönlü liste** yapılarını yönetir. |
+|[Persongrouppersonextensıons](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.persongrouppersonextensions)| Bu sınıf, tek bir kişiye ait olan bir yüzey kümesini depolayan, bulutta depolanan **kişi** yapılarını yönetir.|
+|[PersonGroupOperations](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.persongroupoperations)| Bu sınıf, bir dizi yönetilen **kişi** nesnesini depolayan, bulut ile depolanmış olan **persongroup** yapılarını yönetir. |
 
 ## <a name="code-examples"></a>Kod örnekleri
 
@@ -129,7 +129,7 @@ Aşağıdaki kod parçacıkları, .NET için yüz istemci kitaplığı ile aşa�
 
 ## <a name="authenticate-the-client"></a>İstemcinin kimliğini doğrulama
 
-Yeni bir yöntemde, uç nokta ve anahtarınızla bir istemci örneği oluşturun. Anahtarınızla bir **[ApiKeyServiceClientCredentials](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.apikeyserviceclientcredentials?view=azure-dotnet)** nesnesi oluşturun ve bir **[faceclient](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet)** nesnesi oluşturmak için bunu uç noktanızla birlikte kullanın.
+Yeni bir yöntemde, uç nokta ve anahtarınızla bir istemci örneği oluşturun. Anahtarınızla bir **[ApiKeyServiceClientCredentials](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.apikeyserviceclientcredentials)** nesnesi oluşturun ve bir **[faceclient](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient)** nesnesi oluşturmak için bunu uç noktanızla birlikte kullanın.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_auth)]
 
@@ -147,16 +147,16 @@ Daha sonra ekleyeceğiniz birçok yüz işlemi için aşağıdaki alanlar gerekl
 
 ### <a name="get-detected-face-objects"></a>Algılanan yüz nesneleri Al
 
-Yüzeyleri algılamak için yeni bir yöntem oluşturun. `DetectFaceExtract`Yöntemi, VERILEN URL 'nin üç görüntüsünü işler ve program belleğindeki **[algılayıcısı](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.detectedface?view=azure-dotnet)** olan nesnelerin bir listesini oluşturur. **[Faceattributetype](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.faceattributetype?view=azure-dotnet)** değerlerinin listesi hangi özelliklerin ayıklanacağını belirtir. 
+Yüzeyleri algılamak için yeni bir yöntem oluşturun. `DetectFaceExtract`Yöntemi, VERILEN URL 'nin üç görüntüsünü işler ve program belleğindeki **[algılayıcısı](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.detectedface)** olan nesnelerin bir listesini oluşturur. **[Faceattributetype](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.faceattributetype)** değerlerinin listesi hangi özelliklerin ayıklanacağını belirtir. 
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_detect)]
 
 > [!TIP]
-> Ayrıca, yerel görüntüdeki yüzeyleri de algılayabilirsiniz. **Detectwithstreamasync** gibi [ifasetat işlemleri](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.ifaceoperations?view=azure-dotnet) yöntemlerine bakın.
+> Ayrıca, yerel görüntüdeki yüzeyleri de algılayabilirsiniz. **Detectwithstreamasync** gibi [ifasetat işlemleri](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.ifaceoperations) yöntemlerine bakın.
 
 ### <a name="display-detected-face-data"></a>Algılanan yüz verileri görüntüle
 
-Yöntemin geri kalanı `DetectFaceExtract` algılanan her bir yüzey için öznitelik verilerini ayrıştırır ve yazdırır. Her öznitelik, özgün yüz algılama API çağrısında ( **[Faceattributetype](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.faceattributetype?view=azure-dotnet)** listesinde) ayrı olarak belirtilmelidir. Aşağıdaki kod her özniteliği işler, ancak büyük olasılıkla yalnızca bir veya birkaç tane kullanmanız gerekir.
+Yöntemin geri kalanı `DetectFaceExtract` algılanan her bir yüzey için öznitelik verilerini ayrıştırır ve yazdırır. Her öznitelik, özgün yüz algılama API çağrısında ( **[Faceattributetype](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.faceattributetype)** listesinde) ayrı olarak belirtilmelidir. Aşağıdaki kod her özniteliği işler, ancak büyük olasılıkla yalnızca bir veya birkaç tane kullanmanız gerekir.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_detect_parse)]
 
@@ -205,7 +205,7 @@ Sonra, Sözlükteki her kişi için bir **kişi** nesnesi oluşturmak ve uygun g
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_persongroup_create)]
 
 > [!TIP]
-> Yerel görüntülerden de bir **Persongroup** oluşturabilirsiniz. **Addfacefromstreamasync** gibi [ıpersongroupperson](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.ipersongroupperson?view=azure-dotnet) yöntemlerine bakın.
+> Yerel görüntülerden de bir **Persongroup** oluşturabilirsiniz. **Addfacefromstreamasync** gibi [ıpersongroupperson](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.ipersongroupperson) yöntemlerine bakın.
 
 ### <a name="train-the-persongroup"></a>PersonGroup 'ı eğitme
 
@@ -264,7 +264,7 @@ Aşağıdaki kodla birlikte silme yöntemini tanımlayın:
 Bu hızlı başlangıçta, temel yüz tanıma görevlerini yapmak için .NET için yüz istemci kitaplığı 'nı nasıl kullanacağınızı öğrendiniz. Daha sonra, kitaplık hakkında daha fazla bilgi edinmek için başvuru belgelerini inceleyin.
 
 > [!div class="nextstepaction"]
-> [Yüz Tanıma API'si Başvurusu (.NET)](/dotnet/api/overview/azure/cognitiveservices/client/faceapi?view=azure-dotnet)
+> [Yüz Tanıma API'si Başvurusu (.NET)](/dotnet/api/overview/azure/cognitiveservices/client/faceapi)
 
 * [Yüz Tanıma hizmeti nedir?](../../overview.md)
 * Bu örneğe ilişkin kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/Face/FaceQuickstart.cs)' da bulunabilir.
