@@ -1,19 +1,16 @@
 ---
 title: Apache Storm örnek Java topolojisi-Azure HDInsight
 description: Örnek bir sözcük sayısı topolojisi oluşturarak Java 'da Apache Storm topolojileri oluşturmayı öğrenin.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017,seoapr2020,devx-track-java
 ms.date: 04/27/2020
-ms.openlocfilehash: 881ec4aa36261958b566dc2d7c4d06475a76bad4
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 620a4e1627b25af22db68173f35924376e26f5f8
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545506"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98929131"
 ---
 # <a name="create-an-apache-storm-topology-in-java"></a>Java 'da Apache Storm topolojisi oluşturma
 
@@ -199,7 +196,7 @@ Bu bölüm eklenti, kaynak ve diğer derleme yapılandırma seçeneklerini eklem
 
     Diğer bir faydalı eklenti, [`Apache Maven Compiler Plugin`](https://maven.apache.org/plugins/maven-compiler-plugin/) derleme seçeneklerini değiştirmek için kullanılan ' dır. Maven 'nin uygulamanızın kaynağı ve hedefi için kullandığı Java sürümünü değiştirin.
 
-  * HDInsight __3,4 veya önceki sürümlerde__ , kaynak ve hedef Java sürümünü __1,7__ olarak ayarlayın.
+  * HDInsight __3,4 veya önceki sürümlerde__, kaynak ve hedef Java sürümünü __1,7__ olarak ayarlayın.
 
   * HDInsight __3,5__ için, kaynak ve hedef Java sürümünü __1,8__ olarak ayarlayın.
 
@@ -237,11 +234,11 @@ Bu örnek, proje () köküne kaynaklar `${basedir}` içeren bir konum olarak kay
 
 Java tabanlı Apache Storm topolojisi, bir bağımlılık olarak yazmak (veya başvuru yapmanız gereken üç bileşenden oluşur).
 
-* **Spout** : dış kaynaklardaki verileri okur ve veri akışlarını topolojiye yayar.
+* **Spout**: dış kaynaklardaki verileri okur ve veri akışlarını topolojiye yayar.
 
-* **Cıvatalar** : spolar veya diğer cıvatları tarafından yayılan akışlar üzerinde işleme yapar ve bir veya daha fazla akış yayar.
+* **Cıvatalar**: spolar veya diğer cıvatları tarafından yayılan akışlar üzerinde işleme yapar ve bir veya daha fazla akış yayar.
 
-* **Topoloji** : Spout ve cıvatların nasıl düzenlendiğini tanımlar ve topoloji için giriş noktası sağlar.
+* **Topoloji**: Spout ve cıvatların nasıl düzenlendiğini tanımlar ve topoloji için giriş noktası sağlar.
 
 ### <a name="create-the-spout"></a>Spout oluşturma
 
@@ -327,9 +324,9 @@ public class RandomSentenceSpout extends BaseRichSpout {
 
 Cıvatalar, veri işlemeyi işler. Cıvatalar, örneğin hesaplama, kalıcılık veya dış bileşenlere konuşuyor gibi her şeyi gerçekleştirebilir. Bu topoloji iki cıvatları kullanır:
 
-* **Splitcümlesini** : **Rasgelesentencespout** tarafından tek tek sözcüklere yayılan cümleler böler.
+* **Splitcümlesini**: **Rasgelesentencespout** tarafından tek tek sözcüklere yayılan cümleler böler.
 
-* **WORDCOUNT** : her bir sözcüğün kaç kez oluştuğunu sayar.
+* **WORDCOUNT**: her bir sözcüğün kaç kez oluştuğunu sayar.
 
 #### <a name="splitsentence"></a>Splitcümlesi
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: 2db93ec6806d4b9cc8c8ac17cfb2c15458bf4dc9
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 050c16670ea0c6df53345216d8dd450c159792ea
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97401160"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98927462"
 ---
 # <a name="speech-service-release-notes"></a>Konuşma hizmeti sürüm notları
 
@@ -86,9 +86,9 @@ Yeni özellikleri kullanıma almak için [Ses Içeriği oluşturma aracı](https
 - **Python/amaç-C**: API için destek eklendi `KeywordRecognizer` . Belgeler [burada](./custom-keyword-basics.md)görünür.
 - **C++/Java/c #**: aracılığıyla herhangi bir `HttpHeader` anahtar/değer ayarlamak için destek eklendi `ServicePropertyChannel::HttpHeader` .
 - **JavaScript**: API için destek eklendi `ConversationTranscriber` . Belgeleri [buradan](./how-to-use-conversation-transcription.md?pivots=programming-language-javascript)okuyun. 
-- **C++/c #**: yeni `AudioDataStream FromWavFileInput` Yöntem eklendi (okuma için. WAV dosyaları) [burada (C++)](/cpp/cognitive-services/speech/audiodatastream) ve [burada (C#)](/dotnet/api/microsoft.cognitiveservices.speech.audiodatastream?view=azure-dotnet).
--  **C++/c #/Java/Python/Objective-C/Swift**: `stopSpeakingAsync()` metin okuma senmetini durdurmak için bir yöntem eklendi. Burada başvuru belgelerini [(C++)](/cpp/cognitive-services/speech/microsoft-cognitiveservices-speech-namespace), burada ( [C#)](/dotnet/api/microsoft.cognitiveservices.speech?view=azure-dotnet), burada ( [Java)](/java/api/com.microsoft.cognitiveservices.speech), burada ( [Python)](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech?view=azure-python)ve [burada (hedef-C/Swift)](/objectivec/cognitive-services/speech/)okuyun.
-- **C#, C++, Java**: `FromDialogServiceConnector()` `Connection` sınıfına yönelik bağlantı ve bağlantı kesme olaylarını izlemek için kullanılabilecek bir işlev eklendi `DialogServiceConnector` . Başvuru belgelerini [burada (C#)](/dotnet/api/microsoft.cognitiveservices.speech.connection?view=azure-dotnet), [burada (C++)](/cpp/cognitive-services/speech/connection)ve [burada (Java)](/java/api/com.microsoft.cognitiveservices.speech.connection)okuyun.
+- **C++/c #**: yeni `AudioDataStream FromWavFileInput` Yöntem eklendi (okuma için. WAV dosyaları) [burada (C++)](/cpp/cognitive-services/speech/audiodatastream) ve [burada (C#)](/dotnet/api/microsoft.cognitiveservices.speech.audiodatastream).
+-  **C++/c #/Java/Python/Objective-C/Swift**: `stopSpeakingAsync()` metin okuma senmetini durdurmak için bir yöntem eklendi. Burada başvuru belgelerini [(C++)](/cpp/cognitive-services/speech/microsoft-cognitiveservices-speech-namespace), burada ( [C#)](/dotnet/api/microsoft.cognitiveservices.speech), burada ( [Java)](/java/api/com.microsoft.cognitiveservices.speech), burada ( [Python)](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech)ve [burada (hedef-C/Swift)](/objectivec/cognitive-services/speech/)okuyun.
+- **C#, C++, Java**: `FromDialogServiceConnector()` `Connection` sınıfına yönelik bağlantı ve bağlantı kesme olaylarını izlemek için kullanılabilecek bir işlev eklendi `DialogServiceConnector` . Başvuru belgelerini [burada (C#)](/dotnet/api/microsoft.cognitiveservices.speech.connection), [burada (C++)](/cpp/cognitive-services/speech/connection)ve [burada (Java)](/java/api/com.microsoft.cognitiveservices.speech.connection)okuyun.
 - **C++/c #/Java/Python/Objective-C/Swift**: konuşma söylenişini değerlendiren ve konuşmadan elde edilecek doğruluk ve akıcı hale karşı konuşmacıya geri bildirimde bulunan telaffuz değerlendirmesi için destek eklendi. [Buradaki](how-to-pronunciation-assessment.md)belgeleri okuyun.
 
 **Son değişiklik**
@@ -387,18 +387,18 @@ Sağlıklı olun!
 **Yeni özellikler**
 - Linux: sistemi konuşma SDK 'Sı için yapılandırma [yönergeleriyle](./how-to-configure-rhel-centos-7.md) birlikte Red Hat Enterprise Linux (RHEL)/CentOS 7 x64 Için destek eklendi.
 - Linux: Linux ARM32 ve ARM64 üzerinde .NET Core C# desteği eklendi. Daha fazla bilgi için [buraya](./speech-sdk.md?tabs=linux) bakabilirsiniz. 
-- C#, C++: `UtteranceId` içinde `ConversationTranscriptionResult` , tüm hammaddeleri ve nihai konuşma tanıma sonucunda TUTARLı bir kimlik eklenmiştir. [C#](/dotnet/api/microsoft.cognitiveservices.speech.transcription.conversationtranscriptionresult?preserve-view=true&view=azure-dotnet), [C++](/cpp/cognitive-services/speech/transcription-conversationtranscriptionresult)için ayrıntılar.
+- C#, C++: `UtteranceId` içinde `ConversationTranscriptionResult` , tüm hammaddeleri ve nihai konuşma tanıma sonucunda TUTARLı bir kimlik eklenmiştir. [C#](/dotnet/api/microsoft.cognitiveservices.speech.transcription.conversationtranscriptionresult), [C++](/cpp/cognitive-services/speech/transcription-conversationtranscriptionresult)için ayrıntılar.
 - Python: için destek eklendi `Language ID` . [GitHub](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/python/console)deposunda speech_sample. Kopyala bölümüne bakın.
 - Windows: tüm Win32 konsol uygulamaları için Windows platformunda sıkıştırılmış ses girişi biçim desteği eklendi. Ayrıntıları [burada bulabilirsiniz](./how-to-use-codec-compressed-audio-input-streams.md). 
-- JavaScript: NodeJS 'de konuşma birleştirme (metinden konuşmaya) desteği. [Burada](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript/node/text-to-speech) daha fazla bilgi edinin. 
-- JavaScript: tüm gönderme ve alma iletilerinin incelemesini sağlamak için yeni API 'ler ekleyin. [Burada](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript) daha fazla bilgi edinin. 
+- JavaScript: NodeJS 'de konuşma birleştirme (metinden konuşmaya) desteği. [Daha fazla bilgi edinin](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript/node/text-to-speech). 
+- JavaScript: tüm gönderme ve alma iletilerinin incelemesini sağlamak için yeni API 'ler ekleyin. [Daha fazla bilgi edinin](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript). 
         
 **Hata düzeltmeleri**
-- C#, C++: bir sorun düzeltildi, bu nedenle `SendMessageAsync` ikili ileti artık ikili tür olarak gönderilir. [C#](/dotnet/api/microsoft.cognitiveservices.speech.connection.sendmessageasync?view=azure-dotnet#Microsoft_CognitiveServices_Speech_Connection_SendMessageAsync_System_String_System_Byte___System_UInt32_), [C++](/cpp/cognitive-services/speech/connection)için ayrıntılar.
-- C#, C++: `Connection MessageReceived` `Recognizer` nesnesinden önce atıldığı takdirde olay kullanmanın kilitlenmeye neden olabileceği bir sorun düzeltildi `Connection` . [C#](/dotnet/api/microsoft.cognitiveservices.speech.connection.messagereceived?preserve-view=true&view=azure-dotnet), [C++](/cpp/cognitive-services/speech/connection#messagereceived)için ayrıntılar.
+- C#, C++: bir sorun düzeltildi, bu nedenle `SendMessageAsync` ikili ileti artık ikili tür olarak gönderilir. [C#](/dotnet/api/microsoft.cognitiveservices.speech.connection.sendmessageasync#Microsoft_CognitiveServices_Speech_Connection_SendMessageAsync_System_String_System_Byte___System_UInt32_), [C++](/cpp/cognitive-services/speech/connection)için ayrıntılar.
+- C#, C++: `Connection MessageReceived` `Recognizer` nesnesinden önce atıldığı takdirde olay kullanmanın kilitlenmeye neden olabileceği bir sorun düzeltildi `Connection` . [C#](/dotnet/api/microsoft.cognitiveservices.speech.connection.messagereceived), [C++](/cpp/cognitive-services/speech/connection#messagereceived)için ayrıntılar.
 - Android: gecikme süresini artırmak için mikrofondan gelen ses arabellek boyutu, 800ms 'den 100ms 'e düşer.
 - Android: Android Studio 'de x86 Android öykünücüsü ile ilgili bir [sorun](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/563) düzeltildi.
-- JavaScript: API ile Çin 'deki bölgeler için destek eklendi `fromSubscription` . Ayrıntıları [burada bulabilirsiniz](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?preserve-view=true&view=azure-node-latest#fromsubscription-string--string-). 
+- JavaScript: API ile Çin 'deki bölgeler için destek eklendi `fromSubscription` . Ayrıntıları [burada bulabilirsiniz](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig#fromsubscription-string--string-). 
 - JavaScript: NodeJS ' den bağlantı hatalarıyla ilgili daha fazla hata bilgisi ekleyin.
         
 **Örnekler**

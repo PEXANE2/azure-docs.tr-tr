@@ -1,19 +1,16 @@
 ---
 title: 'Hızlı başlangıç: Apache Storm topolojisi oluşturma/yönetme-Azure HDInsight'
 description: Hızlı başlangıçta Azure HDInsight 'ta Apache Storm topolojisi oluşturma ve izleme hakkında bilgi edinin.
-author: hrasheed-msft
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: quickstart
 ms.date: 06/14/2019
-ms.author: hrasheed
 ms.custom: mvc
-ms.openlocfilehash: 8f13c813eee9bcfde578ba210c5aa2f2fe1cac2c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: fe7b1cdc96ae95ac361183342ea491432c3ab4b4
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "86045034"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98928855"
 ---
 # <a name="quickstart-create-and-monitor-an-apache-storm-topology-in-azure-hdinsight"></a>Hızlı başlangıç: Azure HDInsight 'ta Apache Storm topolojisi oluşturma ve izleme
 
@@ -23,9 +20,9 @@ Bu hızlı başlangıçta, var olan bir Apache Storm kümesine Apache Storm topo
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* HDInsight üzerinde bir Apache Storm kümesi. Bkz. [Azure Portal kullanarak Apache Hadoop kümeleri oluşturma](../hdinsight-hadoop-create-linux-clusters-portal.md) ve **küme türü**için **fırtınası** seçme.
+* HDInsight üzerinde bir Apache Storm kümesi. Bkz. [Azure Portal kullanarak Apache Hadoop kümeleri oluşturma](../hdinsight-hadoop-create-linux-clusters-portal.md) ve **küme türü** için **fırtınası** seçme.
 
-* Bir SSH istemcisi. Daha fazla bilgi için bkz. [SSH kullanarak HDInsight 'A bağlanma (Apache Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md).
+* Bir SSH istemcisi. Daha fazla bilgi için bkz. [SSH kullanarak HDInsight'a (Apache Hadoop) bağlanma](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 ## <a name="create-the-topology"></a>Topolojiyi oluşturma
 
@@ -49,7 +46,7 @@ Storm Kullanıcı Arabirimini kullanarak topolojiyi izlemek için aşağıdaki a
 
 1. Storm kullanıcı arabirimini görüntülemek için bir web tarayıcısı açarak `https://CLUSTERNAME.azurehdinsight.net/stormui` adresine gidin. `CLUSTERNAME` değerini kümenizin adıyla değiştirin.
 
-2. **Topoloji Özeti**altında **ad** sütununda **WORDCOUNT** girişini seçin. Topoloji hakkında bilgiler görüntülenir.
+2. **Topoloji Özeti** altında **ad** sütununda **WORDCOUNT** girişini seçin. Topoloji hakkında bilgiler görüntülenir.
 
     ![Storm-starter WordCount topoloji bilgilerini içeren Storm Panosu.](./media/apache-storm-quickstart/hdi-topology-summary.png)
 

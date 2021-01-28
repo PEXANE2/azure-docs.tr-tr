@@ -5,12 +5,12 @@ author: aagup
 ms.topic: conceptual
 ms.date: 10/30/2018
 ms.author: aagup
-ms.openlocfilehash: 3d881033b8dde6cc55a9720ec94084bd876116f1
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 8566d82ef0d91caff47ff17a9cb12fcdc8241884
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207402"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98928023"
 ---
 # <a name="restoring-backup-in-azure-service-fabric"></a>Azure Service Fabric yedeklemeyi geri yükleme
 
@@ -28,11 +28,16 @@ Azure Service Fabric 'de, güvenilir durum bilgisi olan güvenilir hizmetler ve 
 - Bir geri yüklemeyi tetiklemek için, küme için _hata analiz hizmeti 'nin (Fas)_ etkinleştirilmesi gerekir.
 - Yedekleme _geri yükleme hizmeti (BRS)_ yedeklemeyi oluşturdu.
 - Geri yükleme yalnızca bir bölümde tetiklenebilir.
-- Yapılandırma çağrıları yapmak için Microsoft. ServiceFabric. PowerShell. http modülünü [önizlemede] yüklersiniz.
+- Yapılandırma çağrıları yapmak için Microsoft. ServiceFabric. PowerShell. http modülünü (Önizleme) yükler.
 
 ```powershell
     Install-Module -Name Microsoft.ServiceFabric.Powershell.Http -AllowPrerelease
 ```
+
+> [!NOTE]
+> PowerShellGet sürümünüz 1.6.0 'den küçükse, *-allowbir ön* sürüm bayrağı için destek eklemek üzere ' yi güncelleştirmeniz gerekir:
+>
+> `Install-Module -Name PowerShellGet -Force`
 
 - `Connect-SFCluster`Microsoft. ServiceFabric. PowerShell. http modülünü kullanarak herhangi bir yapılandırma isteği yapmadan önce, kümenin komutunu kullanarak bağlı olduğundan emin olun.
 
@@ -47,8 +52,8 @@ Azure Service Fabric 'de, güvenilir durum bilgisi olan güvenilir hizmetler ve 
 
 Aşağıdaki senaryolardan herhangi biri için bir geri yükleme tetiklenebilir:
 
-- _Olağanüstü durum kurtarma_için veri geri yükleme.
-- Veri _bozulması/veri kaybı_için veri geri yükleme.
+- _Olağanüstü durum kurtarma_ için veri geri yükleme.
+- Veri _bozulması/veri kaybı_ için veri geri yükleme.
 
 ### <a name="data-restore-in-the-case-of-disaster-recovery"></a>Olağanüstü durum kurtarma durumunda veri geri yükleme
 
@@ -154,7 +159,7 @@ Ayrıca, [bölüm düzeninde](service-fabric-concepts-partitioning.md#get-starte
 
 Alternatif kümedeki bölüm KIMLIĞI ise `1c42c47f-439e-4e09-98b9-88b8f60800c6` , `974bd92a-b395-4631-8a7f-53bd4ae9cf22` _sıralaştırılmış bölümlendirme (UniformInt64Partition)_ için yüksek anahtar ve düşük anahtarı KARŞıLAŞTıRARAK özgün küme bölümü kimliğiyle eşleyebilirsiniz.
 
-_Adlandırılmış bölümlendirme_için ad değeri, alternatif kümede hedef bölümü tanımlamak üzere karşılaştırılır.
+_Adlandırılmış bölümlendirme_ için ad değeri, alternatif kümede hedef bölümü tanımlamak üzere karşılaştırılır.
 
 #### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>Microsoft. ServiceFabric. PowerShell. http modülünü kullanan PowerShell
 
@@ -205,15 +210,15 @@ Service Fabric Explorer bir geri yükleme tetikleyebilirsiniz. Service Fabric Ex
 
     ![Bölüm geri yükleme dosya yüklemesini tetikleme][3]
 
-### <a name="data-restore-for-_data-corruption__data-loss_"></a>Veri bozulması veri _data corruption_ / _kaybı_ için veri geri yükleme
+### <a name="data-restore-for-_data-corruption__data-loss_"></a>Veri bozulması veri  / _kaybı_ için veri geri yükleme
 
-_Veri kaybı_ veya _veri bozulması_Için, güvenilir durum bilgisi olan hizmet ve Reliable Actors bölümlerinin yedeklenen bölümleri seçilen yedeklemelerin hiçbirine geri yüklenebilir.
+_Veri kaybı_ veya _veri bozulması_ Için, güvenilir durum bilgisi olan hizmet ve Reliable Actors bölümlerinin yedeklenen bölümleri seçilen yedeklemelerin hiçbirine geri yüklenebilir.
 
 Aşağıdaki örnek, [güvenilir durum bilgisi olan hizmet ve Reliable Actors için düzenli yedeklemeyi etkinleştirmenin bir devamıdır](service-fabric-backuprestoreservice-quickstart-azurecluster.md#enabling-periodic-backup-for-reliable-stateful-service-and-reliable-actors). Bu örnekte, bölüm için bir yedekleme ilkesi etkinleştirilir ve hizmet Azure Storage 'da istenen bir sıklıkta yedeklemeler yapıyor.
 
 [Getbackupapı](service-fabric-backuprestoreservice-quickstart-azurecluster.md#list-backups)çıktısından bir yedekleme seçin. Bu senaryoda, yedekleme daha önceki ile aynı kümeden oluşturulur.
 
-Geri yüklemeyi tetiklemek için listeden bir yedekleme seçin. Geçerli _veri kaybı_ / _verileri bozulması_için aşağıdaki yedeklemeyi seçin:
+Geri yüklemeyi tetiklemek için listeden bir yedekleme seçin. Geçerli _veri kaybı_ / _verileri bozulması_ için aşağıdaki yedeklemeyi seçin:
 
 ```
 BackupId                : b0035075-b327-41a5-a58f-3ea94b68faa4
@@ -297,7 +302,7 @@ Geri yükleme isteği aşağıdaki sırada ilerler:
     RestoredLsn   : 3552
     ```
     
-3. **Başarı**, **hata**veya **zaman aşımı**: istenen geri yükleme aşağıdaki durumların hiçbirinde tamamlanabilir. Her durum aşağıdaki anlam ve yanıt ayrıntılarına sahiptir:
+3. **Başarı**, **hata** veya **zaman aşımı**: istenen geri yükleme aşağıdaki durumların hiçbirinde tamamlanabilir. Her durum aşağıdaki anlam ve yanıt ayrıntılarına sahiptir:
     - **Başarılı**: _başarılı_ geri yükleme durumu, bir bölüm durumunun durumunu gösterir. Bölüm, UTC 'deki zamanla birlikte _RestoredEpoch_ ve _restoredlsn_ durumlarını raporlar.
 
         ```
@@ -325,7 +330,7 @@ Geri yükleme isteği aşağıdaki sırada ilerler:
 
 ## <a name="automatic-restore"></a>Otomatik geri yükleme
 
-_Otomatik geri yükleme_için Service Fabric kümesinde güvenilir durum bilgisi olan hizmet ve Reliable Actors bölümleri yapılandırabilirsiniz. Yedekleme İlkesi ' nde, `AutoRestore` _doğru_olarak ayarlayın. _Otomatik geri yüklemeyi_ etkinleştirmek, veri kaybı bildirildiğinde en son bölüm yedeklemesinden verileri otomatik olarak geri yükler. Daha fazla bilgi için bkz.
+_Otomatik geri yükleme_ için Service Fabric kümesinde güvenilir durum bilgisi olan hizmet ve Reliable Actors bölümleri yapılandırabilirsiniz. Yedekleme İlkesi ' nde, `AutoRestore` _doğru_ olarak ayarlayın. _Otomatik geri yüklemeyi_ etkinleştirmek, veri kaybı bildirildiğinde en son bölüm yedeklemesinden verileri otomatik olarak geri yükler. Daha fazla bilgi için bkz.
 
 - [Yedekleme Ilkesinde etkinleştirme otomatik geri yükleme](service-fabric-backuprestoreservice-configure-periodic-backup.md#auto-restore-on-data-loss)
 - [Restobölümlemek API başvurusu](/rest/api/servicefabric/sfclient-api-restorepartition)

@@ -3,12 +3,12 @@ title: Azure Service Fabric’te düzenli yedekleme ve geri yükleme
 description: Uygulama verilerinizin düzenli veri yedeklemesini etkinleştirmek için Service Fabric düzenli yedekleme ve geri yükleme özelliğini kullanın.
 ms.topic: conceptual
 ms.date: 5/24/2019
-ms.openlocfilehash: 18d10b365cb2e4f4b4e3592233d5f467714bd5b5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2d167b261f9b5915a970b4c219113f0765c039cb
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91538679"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98927986"
 ---
 # <a name="periodic-backup-and-restore-in-an-azure-service-fabric-cluster"></a>Azure Service Fabric kümesinde düzenli olarak yedekleme ve geri yükleme
 > [!div class="op_single_selector"]
@@ -43,16 +43,21 @@ Service Fabric, düzenli yedekleme ve geri yükleme özelliğiyle ilgili aşağ�
 - Yedeklemeleri geçici olarak askıya al
 - Yedeklemelerin bekletme yönetimi (yakında)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 * Yapı sürümü 6,4 veya üzeri bir küme Service Fabric. Azure kaynak şablonu kullanarak Service Fabric kümesi oluşturma adımları için bu [makaleye](service-fabric-cluster-creation-via-arm.md) başvurun.
 * Yedeklemeleri depolamak üzere depolamaya bağlanmak için gereken gizli dizileri şifrelemek için X. 509.440 sertifikası. X. 509.952 sertifikası alma veya oluşturma hakkında bilgi edinmek için [makaleye](service-fabric-cluster-creation-via-arm.md) bakın.
 * Service Fabric SDK 3,0 veya üzeri sürümleri kullanılarak oluşturulmuş güvenilir durum bilgisi olan uygulamayı Service Fabric. .NET Core 2,0 'yi hedefleyen uygulamalar için, uygulama Service Fabric SDK sürümü 3,1 veya üzeri kullanılarak oluşturulmalıdır.
 * Uygulama yedeklemelerini depolamak için Azure depolama hesabı oluşturun.
-* Yapılandırma çağrıları yapmak için Microsoft. ServiceFabric. PowerShell. http modülünü [önizlemede] yüklersiniz.
+* Yapılandırma çağrıları yapmak için Microsoft. ServiceFabric. PowerShell. http modülünü (Önizleme) yükler.
 
 ```powershell
     Install-Module -Name Microsoft.ServiceFabric.Powershell.Http -AllowPrerelease
 ```
+
+> [!NOTE]
+> PowerShellGet sürümünüz 1.6.0 'den küçükse, *-allowbir ön* sürüm bayrağı için destek eklemek üzere ' yi güncelleştirmeniz gerekir:
+>
+> `Install-Module -Name PowerShellGet -Force`
 
 * `Connect-SFCluster`Microsoft. ServiceFabric. PowerShell. http modülünü kullanarak herhangi bir yapılandırma isteği yapmadan önce, kümenin komutunu kullanarak bağlı olduğundan emin olun.
 
@@ -86,7 +91,7 @@ Service Fabric, düzenli yedekleme ve geri yükleme özelliğiyle ilgili aşağ�
     }
     ```
 
-2. Şimdi _backup and restore service_ `addonFeatures` `properties` Aşağıdaki kod parçacığında gösterildiği gibi bölümüne aşağıdaki bölümü ekleyerek yedekleme ve geri yükleme hizmetini etkinleştirin: 
+2. Şimdi  `addonFeatures` `properties` Aşağıdaki kod parçacığında gösterildiği gibi bölümüne aşağıdaki bölümü ekleyerek yedekleme ve geri yükleme hizmetini etkinleştirin: 
 
     ```json
         "properties": {
@@ -118,7 +123,7 @@ Service Fabric, düzenli yedekleme ve geri yükleme özelliğiyle ilgili aşağ�
 
 ## <a name="enabling-periodic-backup-for-reliable-stateful-service-and-reliable-actors"></a>Güvenilir durum bilgisi olan hizmet ve Reliable Actors için düzenli yedeklemeyi etkinleştirme
 Güvenilir durum bilgisi olan hizmet ve Reliable Actors için düzenli yedeklemeyi etkinleştirme adımlarını inceleyelim. Bu adımlarda varsayılmaktadır
-- Küme, _yedekleme ve geri yükleme hizmeti_ile X. 509.440 Security kullanılarak ayarlanır.
+- Küme, _yedekleme ve geri yükleme hizmeti_ ile X. 509.440 Security kullanılarak ayarlanır.
 - Küme üzerinde güvenilir bir durum bilgisi olan hizmet dağıtılır. Bu hızlı başlangıç kılavuzunun amacı için uygulama URI 'si `fabric:/SampleApp` ve bu uygulamaya ait güvenilir durum bilgisi olan hizmet URI 'si `fabric:/SampleApp/MyStatefulService` . Bu hizmet tek bölüm ile dağıtılır ve bölüm KIMLIĞI olur `974bd92a-b395-4631-8a7f-53bd4ae9cf22` .
 - Yönetici rolüne sahip istemci sertifikası, aşağıdaki betiklerin çağrıldığı makinede bulunan _CurrentUser_ sertifika depolama konumunun (_Kişisel_) depolama _adı ' na_ yüklenir. Bu örnek `1b7ebe2174649c45474a4819dafae956712c31d3` , bu sertifikanın parmak izi olarak kullanır. İstemci sertifikaları hakkında daha fazla bilgi için bkz. [Service Fabric istemcileri Için rol tabanlı erişim denetimi](service-fabric-cluster-security-roles.md).
 

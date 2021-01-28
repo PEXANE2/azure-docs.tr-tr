@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 09/14/2020
 ms.author: aahi
 ms.custom: subject-armqs, devx-track-azurecli
-ms.openlocfilehash: 4afaad77fdff7a1ba80a385e9f2c3d8ddef8ab96
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 856fd86b08dfe74925e682661df0d20692839bd5
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842116"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98928658"
 ---
 # <a name="quickstart-create-a-cognitive-services-resource-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonunu kullanarak bilişsel hizmetler kaynağı oluşturma
 
@@ -34,7 +34,7 @@ Ortamınız önkoşulları karşılıyorsa ve ARM şablonlarını kullanma hakk�
 
 [![Bilişsel hizmetinizi Azure 'a dağıtma](../media/template-deployments/deploy-to-azure.svg "Bilişsel hizmetinizi Azure 'a dağıtma")](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cognitive-services-universalkey%2Fazuredeploy.json)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliğiniz yoksa [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services).
 
@@ -73,9 +73,9 @@ Bu hızlı başlangıçta kullanılan şablon [Azure Hızlı Başlangıç Şablo
 # <a name="azure-cli"></a>[Azure CLI](#tab/CLI)
 
 > [!NOTE]
-> `az deployment group` oluşturma için Azure CLı sürüm 2,6 veya üzeri gerekir. Sürüm türünü görüntüleme `az --version` . Daha fazla bilgi için [belgelerine](/cli/azure/deployment/group)bakın.
+> `az deployment group` oluşturma için Azure CLı sürüm 2,6 veya üzeri gerekir. Sürüm türünü görüntüleme `az --version` . Daha fazla bilgi için [belgelere](/cli/azure/deployment/group) bakın.
 
-[Yerel makinenizde](/cli/azure/install-azure-cli?view=azure-cli-latest)Azure komut satırı arabirimi 'NI (CLI) kullanarak veya **deneyin** düğmesine sahip bir tarayıcıda aşağıdaki betiği çalıştırın. Yeni bir kaynak grubu için bir ad ve konum (örneğin `centralus` ) girin ve ARM şablonu bunun içinde bilişsel hizmetler kaynağını dağıtmak için kullanılacaktır. Kullandığınız adı unutmayın. Daha sonra dağıtımı doğrulamak için kullanacaksınız.
+[Yerel makinenizde](/cli/azure/install-azure-cli)Azure komut satırı arabirimi 'NI (CLI) kullanarak veya **deneyin** düğmesine sahip bir tarayıcıda aşağıdaki betiği çalıştırın. Yeni bir kaynak grubu için bir ad ve konum (örneğin `centralus` ) girin ve ARM şablonu bunun içinde bilişsel hizmetler kaynağını dağıtmak için kullanılacaktır. Kullandığınız adı unutmayın. Daha sonra dağıtımı doğrulamak için kullanacaksınız.
 
 
 ```azurecli-interactive

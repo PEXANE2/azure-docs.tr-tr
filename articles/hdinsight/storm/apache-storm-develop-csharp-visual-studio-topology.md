@@ -2,19 +2,16 @@
 title: Visual Studio ve C# ile topoloji Apache Storm-Azure HDInsight
 description: C# ' de bir fırtınası topolojisi oluşturmayı öğrenin. Visual Studio için Hadoop araçlarını kullanarak Visual Studio 'da bir sözcük sayısı topolojisi oluşturun.
 ROBOTS: NOINDEX
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 12/31/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 271f62625433a6651ba0e3230a62be51e5147f3e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a81f2b21545a5362168482f3f0a65fbbbf381c10
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89000201"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98929166"
 ---
 # <a name="develop-c-topologies-for-apache-storm-by-using-the-data-lake-tools-for-visual-studio"></a>Visual Studio için Data Lake araçları 'nı kullanarak Apache Storm için C# topolojileri geliştirme
 
@@ -32,7 +29,7 @@ C# topolojileri, .NET 4,5 kullanır ve HDInsight kümesinde çalıştırmak içi
 
 ## <a name="prerequisite"></a>Önkoşul
 
-HDInsight üzerinde bir Apache Storm kümesi. Bkz. [Azure Portal kullanarak Apache Hadoop kümeleri oluşturma](../hdinsight-hadoop-create-linux-clusters-portal.md) ve **küme türü**için **fırtınası** seçme.
+HDInsight üzerinde bir Apache Storm kümesi. Bkz. [Azure Portal kullanarak Apache Hadoop kümeleri oluşturma](../hdinsight-hadoop-create-linux-clusters-portal.md) ve **küme türü** için **fırtınası** seçme.
 
 ## <a name="install-visual-studio"></a>Visual Studio'yu yükleme
 
@@ -59,30 +56,30 @@ using System;
 using System.IO;
 namespace ConsoleApplication2
 {
-   class Program
-   {
-       static void Main(string[] args)
-       {
-           string javaHome = Environment.GetEnvironmentVariable("JAVA_HOME");
-           if (!string.IsNullOrEmpty(javaHome))
-           {
-               string jarExe = Path.Combine(javaHome + @"\bin", "jar.exe");
-               if (File.Exists(jarExe))
-               {
-                   Console.WriteLine("JAVA Is Installed properly");
-                    return;
-               }
-               else
-               {
-                   Console.WriteLine("A valid JAVA JDK is not found. Looks like JRE is installed instead of JDK.");
-               }
-           }
-           else
-           {
-             Console.WriteLine("A valid JAVA JDK is not found. JAVA_HOME environment variable is not set.");
-           }
-       }  
-   }
+   class Program
+   {
+       static void Main(string[] args)
+       {
+           string javaHome = Environment.GetEnvironmentVariable("JAVA_HOME");
+           if (!string.IsNullOrEmpty(javaHome))
+           {
+               string jarExe = Path.Combine(javaHome + @"\bin", "jar.exe");
+               if (File.Exists(jarExe))
+               {
+                   Console.WriteLine("JAVA Is Installed properly");
+                    return;
+               }
+               else
+               {
+                   Console.WriteLine("A valid JAVA JDK is not found. Looks like JRE is installed instead of JDK.");
+               }
+           }
+           else
+           {
+             Console.WriteLine("A valid JAVA JDK is not found. JAVA_HOME environment variable is not set.");
+           }
+       }  
+   }
 }
 ```
 
@@ -129,7 +126,7 @@ Visual Studio 'da C# topolojisi projesi oluşturmak için:
 
 1. **Yeni proje oluştur** penceresinde, ' ye kaydırın ve **fırtınası uygulaması**' nı seçin ve ardından **İleri**' yi seçin.
 
-1. **Yeni projenizi yapılandırın** penceresinde, *WORDCOUNT*için bir **Proje adı** girin, proje için bir **konum** dizini yolu seçin veya oluşturun ve ardından **Oluştur**' u seçin.
+1. **Yeni projenizi yapılandırın** penceresinde, *WORDCOUNT* için bir **Proje adı** girin, proje için bir **konum** dizini yolu seçin veya oluşturun ve ardından **Oluştur**' u seçin.
 
     ![Fırtınası uygulaması, yeni projenizi yapılandırma iletişim kutusu, Visual Studio](./media/apache-storm-develop-csharp-visual-studio-topology/apache-storm-new-project.png)
 
@@ -221,7 +218,7 @@ Ardından, bir dış kaynaktan bir topolojideki verileri okumak için kullanıla
 
 1. Varolan *Bolt.cs* dosyasını projeden silin.
 
-2. **Çözüm Gezgini**, projeye sağ tıklayın ve **Add**  >  **Yeni öğe**Ekle ' yi seçin. Listeden **fırtınası**' ı seçin ve ad olarak *Splitter.cs* girin. Yeni dosyanın kodunda, ad alanı adını olarak değiştirin `WordCount` . Ardından, *Counter.cs*adlı ikinci bir sürgüyi oluşturmak için bu işlemi tekrarlayın.
+2. **Çözüm Gezgini**, projeye sağ tıklayın ve   >  **Yeni öğe** Ekle ' yi seçin. Listeden **fırtınası**' ı seçin ve ad olarak *Splitter.cs* girin. Yeni dosyanın kodunda, ad alanı adını olarak değiştirin `WordCount` . Ardından, *Counter.cs* adlı ikinci bir sürgüyi oluşturmak için bu işlemi tekrarlayın.
 
    * *Splitter.cs*: cümleleri tek tek sözcüklere ayıran bir sürgüler uygular ve yeni bir sözcük akışı yayar.
 
@@ -342,7 +339,7 @@ Spout, Splitter sürgüsü örneklerine dağıtılan cümleler yayar. Bölümlen
 
 Sayaç örneği yerel olarak sözcük sayısını taşıdığı için, belirli sözcüklerin aynı sayaç sürgüsü örneğine akmasını sağlamak istiyorsunuz. Her örnek belirli sözcükleri izler. Splitter sürgüsü durum içermediğinden, bu, ayırıcının hangi örneğinin hangi cümleyi alacağını oldukça önemlidir.
 
-*Program.cs*'i açın. Önemli yöntemi `GetTopologyBuilder` , fırtınası 'ya gönderilen topolojiyi tanımlamak için kullanılır. `GetTopologyBuilder`Daha önce açıklanan topolojiyi uygulamak için aşağıdaki kodla içeriğini değiştirin:
+*Program.cs* dosyasını açın. Önemli yöntemi `GetTopologyBuilder` , fırtınası 'ya gönderilen topolojiyi tanımlamak için kullanılır. `GetTopologyBuilder`Daha önce açıklanan topolojiyi uygulamak için aşağıdaki kodla içeriğini değiştirin:
 
 ```csharp
 // Create a new topology named 'WordCount'
@@ -406,7 +403,7 @@ return topologyBuilder;
 
 Artık topolojiyi HDInsight kümenize göndermeye hazırsınız.
 
-1. Sunucu Gezgini **görüntüle**' ye gidin  >  **Server Explorer**.
+1. Sunucu Gezgini **görüntüle**' ye gidin  >  .
 
 1. **Azure**' a sağ tıklayın, **Microsoft Azure aboneliğine Bağlan...** öğesini seçin ve oturum açma işlemini doldurun.
 
@@ -419,7 +416,7 @@ Artık topolojiyi HDInsight kümenize göndermeye hazırsınız.
     ![Fırtınası topolojisi Görünüm penceresi, HDInsight kümesi, Visual Studio](./media/apache-storm-develop-csharp-visual-studio-topology/storm-topology-view.png)
 
     > [!NOTE]  
-    > Ayrıca, **Sunucu Gezgini**karşı **fırtınası topolojilerini** görüntüleyebilirsiniz. **Azure**  >  **HDInsight**' ı genişletin, HDInsight kümesinde bir fırtınası ' a sağ tıklayın ve ardından **fırtınası topolojilerini görüntüle**' yi seçin.
+    > Ayrıca, **Sunucu Gezgini** karşı **fırtınası topolojilerini** görüntüleyebilirsiniz. **Azure**  >  **HDInsight**' ı genişletin, HDInsight kümesinde bir fırtınası ' a sağ tıklayın ve ardından **fırtınası topolojilerini görüntüle**' yi seçin.
 
     Topolojideki bileşenler hakkında bilgi görüntülemek için diyagramda bir bileşen seçin.
 
@@ -476,7 +473,7 @@ Karma topoloji oluştururken ve gönderirken aşağıdakileri göz önünde bulu
 
 * Java `microsoft.scp.storm.multilang.CustomizedInteropJSONSerializer` NESNELERINDEN JSON 'a veri aktarmak veya bu bileşenleri kapatmak için kullanın.
 
-* Topoloji sunucuya gönderilirken, **Java dosya yollarını**belirtmek için **ek konfigürasyonlar** seçeneğini kullanmanız gerekir. Belirtilen yol, Java sınıflarınızı içeren JAR dosyalarına sahip olan dizin olmalıdır.
+* Topoloji sunucuya gönderilirken, **Java dosya yollarını** belirtmek için **ek konfigürasyonlar** seçeneğini kullanmanız gerekir. Belirtilen yol, Java sınıflarınızı içeren JAR dosyalarına sahip olan dizin olmalıdır.
 
 ### <a name="azure-event-hubs"></a>Azure Event Hubs
 
@@ -568,16 +565,16 @@ Bir kümeye topoloji dağıtmak kolay olsa da, bazı durumlarda bir topolojiyi y
 > [!WARNING]  
 > Yerel test yalnızca temel, yalnızca C# topolojileri için geçerlidir. Birden çok akış kullanan karma topolojiler veya topolojiler için yerel test kullanamazsınız.
 
-1. **Çözüm Gezgini**, projeye sağ tıklayın ve **Özellikler**' i seçin. Proje özelliklerinde. Ardından **çıktı türünü** **konsol uygulaması**olarak değiştirin.
+1. **Çözüm Gezgini**, projeye sağ tıklayın ve **Özellikler**' i seçin. Proje özelliklerinde. Ardından **çıktı türünü** **konsol uygulaması** olarak değiştirin.
 
    ![HDInsight fırtınası uygulaması, proje özellikleri, çıkış türü](./media/apache-storm-develop-csharp-visual-studio-topology/hdi-output-type-window.png)
 
    > [!NOTE]
    > Topolojiyi bir kümeye dağıtmadan önce, **çıkış türünü** yeniden **sınıf kitaplığına** değiştirmeyi unutmayın.
 
-1. **Çözüm Gezgini**, projeye sağ tıklayın ve ardından **Add**  >  **Yeni öğe**Ekle ' yi seçin. **Sınıf**' ı seçin ve sınıf adı olarak *LocalTest.cs* girin. Son olarak, **Ekle**' yi seçin.
+1. **Çözüm Gezgini**, projeye sağ tıklayın ve ardından   >  **Yeni öğe** Ekle ' yi seçin. **Sınıf**' ı seçin ve sınıf adı olarak *LocalTest.cs* girin. Son olarak, **Ekle**' yi seçin.
 
-1. *LocalTest.cs*açın ve aşağıdaki `using` ifadeyi en üste ekleyin:
+1. *LocalTest.cs* açın ve aşağıdaki `using` ifadeyi en üste ekleyin:
 
     ```csharp
     using Microsoft.SCP;
@@ -664,7 +661,7 @@ Bir kümeye topoloji dağıtmak kolay olsa da, bazı durumlarda bir topolojiyi y
 
     Kod açıklamalarını okumak için bir dakikanızı ayırın. Bu kod, `LocalContext` geliştirme ortamındaki bileşenleri çalıştırmak için kullanır. Yerel sürücüdeki bileşenler arasındaki veri akışını sürdürür.
 
-1. *Program.cs*açın ve yöntemine aşağıdaki kodu ekleyin `Main` :
+1. *Program.cs* açın ve yöntemine aşağıdaki kodu ekleyin `Main` :
 
     ```csharp
     Console.WriteLine("Starting tests");
@@ -685,12 +682,12 @@ Bir kümeye topoloji dağıtmak kolay olsa da, bazı durumlarda bir topolojiyi y
     Console.ReadKey();
     ```
 
-1. Değişiklikleri kaydedin ve ardından **F5** ' i seçin veya **Debug**  >  projeyi başlatmak için hata**ayıklamayı Başlat** ' ı seçin. Bir konsol penceresi görünür ve test ilerleme durumu olarak günlüğe kaydedilir. `Tests finished`Göründüğünde, pencereyi kapatmak için herhangi bir anahtar seçin.
+1. Değişiklikleri kaydedin ve ardından **F5** ' i seçin veya   >  projeyi başlatmak için hata **ayıklamayı Başlat** ' ı seçin. Bir konsol penceresi görünür ve test ilerleme durumu olarak günlüğe kaydedilir. `Tests finished`Göründüğünde, pencereyi kapatmak için herhangi bir anahtar seçin.
 
-1. Projenizi içeren dizini bulmak için **Windows Gezgini** 'ni kullanın. (Örneğin: *C: \\ Users \\ \<your_user_name> \\ kaynak \\ depoları \\ WORDCOUNT \\ WORDCOUNT*.) Sonra bu dizinde, *bin*' i açın ve ardından *Hata Ayıkla*' yı seçin. Testler çalıştırıldığında üretilen metin dosyalarını görmeniz gerekir: *sentences.txt*, *counter.txt*ve *splitter.txt*. Her metin dosyasını açın ve verileri inceleyin.
+1. Projenizi içeren dizini bulmak için **Windows Gezgini** 'ni kullanın. (Örneğin: *C: \\ Users \\ \<your_user_name> \\ kaynak \\ depoları \\ WORDCOUNT \\ WORDCOUNT*.) Sonra bu dizinde, *bin*' i açın ve ardından *Hata Ayıkla*' yı seçin. Testler çalıştırıldığında üretilen metin dosyalarını görmeniz gerekir: *sentences.txt*, *counter.txt* ve *splitter.txt*. Her metin dosyasını açın ve verileri inceleyin.
 
    > [!NOTE]  
-   > Dize verileri, bu dosyalardaki ondalık değerlerin bir dizisi olarak devam ettirir. Örneğin, `[[97,103,111]]` **splitter.txt** dosyası *önce*kelimeyi temsil eder.
+   > Dize verileri, bu dosyalardaki ondalık değerlerin bir dizisi olarak devam ettirir. Örneğin, `[[97,103,111]]` **splitter.txt** dosyası *önce* kelimeyi temsil eder.
 
 > [!NOTE]  
 > HDInsight kümesindeki bir fırtınası üzerine dağıtılmadan önce proje özelliklerinde **proje türünü** **sınıf kitaplığına** geri ayarladığınızdan emin olun.
@@ -701,7 +698,7 @@ Kullanarak topoloji bileşenlerinizin bilgilerini kolayca günlüğe kaydedebili
 
 `Context.Logger.Info("Component started");`
 
-Günlüğe kaydedilen bilgiler, **Sunucu Gezgini**bulunan **Hadoop hizmeti günlüğünden**görüntülenebilir. HDInsight kümesinde fırtınası için girişi genişletin ve ardından **Hadoop hizmeti günlüğü**' ne genişletin. Son olarak, görüntülenecek günlük dosyasını seçin.
+Günlüğe kaydedilen bilgiler, **Sunucu Gezgini** bulunan **Hadoop hizmeti günlüğünden** görüntülenebilir. HDInsight kümesinde fırtınası için girişi genişletin ve ardından **Hadoop hizmeti günlüğü**' ne genişletin. Son olarak, görüntülenecek günlük dosyasını seçin.
 
 > [!NOTE]  
 > Günlükler, kümeniz tarafından kullanılan Azure depolama hesabında depolanır. Günlükleri Visual Studio 'da görüntülemek için, depolama hesabının sahibi olan Azure aboneliğinde oturum açmanız gerekir.
@@ -712,7 +709,7 @@ Günlüğe kaydedilen bilgiler, **Sunucu Gezgini**bulunan **Hadoop hizmeti günl
 
 1. **Sunucu Gezgini**, HDInsight kümesindeki fırtınası kümesine sağ tıklayın ve **fırtınası topolojilerini görüntüle**' yi seçin.
 
-   **Spout** ve **Cıvatları**için **son hata** sütunu son hata hakkındaki bilgileri içerir.
+   **Spout** ve **Cıvatları** için **son hata** sütunu son hata hakkındaki bilgileri içerir.
 
 2. Listelenen bir hata içeren bileşen için **Spout kimliği** veya **cıvatıd kimliğini** seçin. Ayrıntılar sayfasında sayfanın altındaki **hatalar** bölümünde ek hata bilgileri görüntülenir.
 

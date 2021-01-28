@@ -1,19 +1,16 @@
 ---
 title: Apache Storm nedir? - Azure HDInsight
 description: Apache Storm, veri akışlarını gerçek zamanlı olarak işlemenize olanak tanır. Azure HDInsight, Azure bulutu üzerinde Storm kümelerini kolayca oluşturmanıza olanak tanır. Visual Studio ile C# kullanarak Storm çözümleri oluşturabilir ve sonra HDInsight Storm kümelerinize dağıtabilirsiniz.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: overview
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 04/20/2020
-ms.openlocfilehash: 97b1466e6ac1f2c2dfb931655b64b0f9937ba21d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a2bca34f683df27c97b131d57c6c3278f7cb175e
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "82183271"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98928893"
 ---
 # <a name="what-is-apache-storm-on-azure-hdinsight"></a>Azure HDInsight’ta Apache Storm nedir?
 
@@ -63,7 +60,7 @@ Apache Storm kümeleri için varsayılan yapılandırma yalnızca bir Nimbus dü
 
 ## <a name="ease-of-use"></a>Kullanım kolaylığı
 
-|Kullanın |Açıklama |
+|Kullanın |Description |
 |---|---|
 |Secure Shell (SSH) bağlantısı|SSH kullanarak, Internet üzerinden fırtınası kümenizin baş düğümlerine erişebilirsiniz. SSH kullanarak komutları doğrudan kümeniz üzerinde çalıştırabilirsiniz. Daha fazla bilgi için bkz. [HDInsight ile SSH kullanma](../hdinsight-hadoop-linux-use-ssh-unix.md).|
 |Web bağlantısı|Tüm HDInsight kümeleri, ambarı Web Kullanıcı arabirimi sağlar. Ambari web kullanıcı arabirimini kullanarak kümenizdeki hizmetleri kolayca izleyebilir, yapılandırabilir ve yönetebilirsiniz. Storm kümeleri ayrıca Storm Kullanıcı Arabirimini sağlar. Storm kullanıcı arabirimini kullanarak, çalışan Storm topolojilerini tarayıcınızdan izleyip yönetebilirsiniz. Daha fazla bilgi için bkz. [Apache ambarı Web Kullanıcı arabirimini kullanarak HDInsight 'ı yönetme](../hdinsight-hadoop-manage-ambari.md) ve [Apache Storm UI belgelerini kullanarak izleme ve yönetme](apache-storm-deploy-monitor-topology-linux.md#monitor-and-manage-a-topology-using-the-storm-ui) .|
@@ -91,7 +88,7 @@ HDInsight üzerinde Storm kullanabileceğiniz bazı yaygın senaryolar aşağıd
 * Sosyal analiz
 * Ayıklama, dönüşüm ve yükleme (ETL)
 * Ağ izleme
-* Arama
+* Arayın
 * Mobil katılım
 
 Gerçek zamanlı senaryolar hakkında daha fazla bilgi için bkz. [şirketler Apache Storm belge kullanma](https://storm.apache.org/Powered-By.html) .

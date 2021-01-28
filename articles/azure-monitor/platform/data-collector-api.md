@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/14/2020
-ms.openlocfilehash: ab0ed536bd23aaf15d85af85e4f924bc2f51f3d4
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: bdbb4307f46566d1cac259cbdc4c81d1dfba5c7e
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96006636"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98927781"
 ---
 # <a name="send-log-data-to-azure-monitor-with-the-http-data-collector-api-public-preview"></a>HTTP Veri Toplayıcı API 'SI ile günlük verilerini Azure Izleyici 'ye gönderme (Genel Önizleme)
 Bu makalede, Azure Izleyici 'ye bir REST API istemcisinden günlük verileri göndermek için HTTP Veri Toplayıcı API 'sinin nasıl kullanılacağı gösterilmektedir.  Betik veya uygulamanız tarafından toplanan verilerin nasıl biçimlendirileceğini, bir isteğe dahil edileceğini ve bu isteğin Azure Izleyici tarafından yetkilendirildiğini açıklar.  PowerShell, C# ve Python için örnekler verilmiştir.
@@ -66,7 +66,7 @@ Yetkilendirme üstbilgisinin biçimi aşağıdadır:
 Authorization: SharedKey <WorkspaceID>:<Signature>
 ```
 
-Workspace *ID* , Log Analytics çalışma alanının benzersiz tanımlayıcısıdır. *İmza* , istekten oluşturulan ve sonra [SHA256 algoritması](/dotnet/api/system.security.cryptography.sha256?view=netcore-3.1)kullanılarak hesaplanan, [karma tabanlı bir ileti kimlik doğrulama kodu (HMAC)](/dotnet/api/system.security.cryptography.hmacsha256?view=netcore-3.1) . Ardından, Base64 kodlaması kullanarak bunu kodlayabilirsiniz.
+Workspace *ID* , Log Analytics çalışma alanının benzersiz tanımlayıcısıdır. *İmza* , istekten oluşturulan ve sonra [SHA256 algoritması](/dotnet/api/system.security.cryptography.sha256)kullanılarak hesaplanan, [karma tabanlı bir ileti kimlik doğrulama kodu (HMAC)](/dotnet/api/system.security.cryptography.hmacsha256) . Ardından, Base64 kodlaması kullanarak bunu kodlayabilirsiniz.
 
 **Sharedkey** imza dizesini kodlamak için bu biçimi kullanın:
 

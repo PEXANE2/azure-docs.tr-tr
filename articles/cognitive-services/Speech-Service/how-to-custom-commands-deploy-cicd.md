@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: 6dda50a443babca88a0a650fde60df0744d0a1d2
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 686e342eb68e2e5c97bdbae9cd11bdff5819b5d6
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95021839"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98927602"
 ---
 # <a name="continuous-deployment-with-azure-devops"></a>Azure DevOps ile Sürekli Dağıtım
 
@@ -25,7 +25,7 @@ Bu makalede, özel komutlar uygulamalarınız için sürekli dağıtımı ayarla
 > [!div class = "checklist"]
 > * Geliştirme için özel bir komutlar uygulaması (geliştirme)
 > * Üretim için özel bir komutlar uygulaması (üretim)
-> * [Azure Pipelines](/azure/devops/pipelines/get-started/pipelines-sign-up?view=azure-devops) için kaydolun
+> * [Azure Pipelines](/azure/devops/pipelines/get-started/pipelines-sign-up) için kaydolun
 
 ## <a name="exportimportpublish"></a>Dışarı/Içeri aktarma/yayımlama
 
@@ -110,7 +110,7 @@ Betikler bilişsel [Hizmetler ses Yardımcısı-özel komutlarda](https://github
     ```BASH
     bash/export.sh -r <region> -s <subscriptionkey> -c en-us -a <appid> -f apps/myapp.json
     ```
-    | Arguments | Description |
+    | Bağımsız değişkenler | Description |
     | ------- | --------------- | ----------- |
     | region | uygulamanın bölgesi (örn. westus2). |
     | subscriptionkey | konuşma kaynağınızın abonelik anahtarı. |

@@ -5,27 +5,32 @@ author: aagup
 ms.topic: conceptual
 ms.date: 10/30/2018
 ms.author: aagup
-ms.openlocfilehash: 04d8bb4a9f8157a229751d073e8d351f5448fa68
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d7986c8cd8d0714215c7b4dc57170be346e627ed
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86247906"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98928041"
 ---
 # <a name="on-demand-backup-in-azure-service-fabric"></a>Azure Service Fabric isteğe bağlı yedekleme
 
 Güvenilir durum bilgisi olan hizmetleri ve Reliable Actors olağanüstü durum veya veri kaybı senaryolarına yönelik verileri yedekleyebilirsiniz.
 
-Azure Service Fabric, verilerin düzenli olarak [yedeklenmesi](service-fabric-backuprestoreservice-quickstart-azurecluster.md) ve verilerin yedeklenmesi için gerekli özelliklere sahiptir. İsteğe bağlı yedekleme, _data loss_ / temel hizmette veya ortamındaki planlı değişiklikler nedeniyle veri kaybı_verisinin bozulmasına_ karşı koruma sağladığından yararlıdır.
+Azure Service Fabric, verilerin düzenli olarak [yedeklenmesi](service-fabric-backuprestoreservice-quickstart-azurecluster.md) ve verilerin yedeklenmesi için gerekli özelliklere sahiptir. İsteğe bağlı yedekleme,  / temel hizmette veya ortamındaki planlı değişiklikler nedeniyle veri kaybı _verisinin bozulmasına_ karşı koruma sağladığından yararlıdır.
 
 İsteğe bağlı yedekleme özellikleri, bir hizmet veya hizmet ortamı işlemini el ile tetiklemeniz için hizmetlerin durumunu yakalamaya yardımcı olur. Örneğin, hizmeti yükseltirken veya eski sürüme düşürme sırasında hizmet ikili dosyalarında değişiklik yaparsanız. Böyle bir durumda, isteğe bağlı yedekleme, uygulama kodu hataları ile verileri bozulmaya karşı korumanıza yardımcı olabilir.
 ## <a name="prerequisites"></a>Önkoşullar
 
-- Yapılandırma çağrıları yapmak için Microsoft. ServiceFabric. PowerShell. http modülünü [önizlemede] yüklersiniz.
+- Yapılandırma çağrıları yapmak için Microsoft. ServiceFabric. PowerShell. http modülünü (Önizleme) yükler.
 
 ```powershell
     Install-Module -Name Microsoft.ServiceFabric.Powershell.Http -AllowPrerelease
 ```
+
+> [!NOTE]
+> PowerShellGet sürümünüz 1.6.0 'den küçükse, *-allowbir ön* sürüm bayrağı için destek eklemek üzere ' yi güncelleştirmeniz gerekir:
+>
+> `Install-Module -Name PowerShellGet -Force`
 
 - `Connect-SFCluster`Microsoft. ServiceFabric. PowerShell. http modülünü kullanarak herhangi bir yapılandırma isteği yapmadan önce, kümenin komutunu kullanarak bağlı olduğundan emin olun.
 
@@ -149,7 +154,7 @@ $backupResponse
   LsnOfLastBackupRecord   : 0
   FailureError            :
   ```
-- **Başarı**, **hata**veya **zaman aşımı**: istenen isteğe bağlı yedekleme, aşağıdaki durumların hiçbirinde tamamlanabilir:
+- **Başarı**, **hata** veya **zaman aşımı**: istenen isteğe bağlı yedekleme, aşağıdaki durumların hiçbirinde tamamlanabilir:
   - **Başarı**: _başarılı_ yedekleme durumu, Bölüm durumunun başarıyla yedeklendiğini gösterir. Yanıt, bölüm için _backupdönem_ ve _BACKUPLSN_ sağlar ve UTC 'deki zaman ile birlikte.
     ```
     BackupState             : Success

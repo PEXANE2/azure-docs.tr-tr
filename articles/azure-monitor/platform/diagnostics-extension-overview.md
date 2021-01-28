@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/14/2020
-ms.openlocfilehash: 6201a4e0551f0f75dde65b2bc4b8b560a0f5ea20
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4d424a22a26119dcb3ef6a0e5c4f3dc0c13b1aa4
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87008005"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98927588"
 ---
 # <a name="azure-diagnostics-extension-overview"></a>Azure Tanılama uzantısına genel bakış
 Azure Tanılama uzantısı, Azure [izleyici 'de](agents-overview.md) sanal makineler dahil olmak üzere Azure işlem kaynaklarının Konuk işletim sisteminden izleme verilerini toplayan bir aracıdır. Bu makalede, desteklediği belirli işlevler ve yükleme ve yapılandırma seçenekleri de dahil olmak üzere Azure Tanılama uzantısına genel bakış sunulmaktadır. 
@@ -44,13 +44,13 @@ Aşağıdaki tablolarda Windows ve Linux Tanılama uzantısı tarafından toplan
 
 ### <a name="windows-diagnostics-extension-wad"></a>Windows Tanılama uzantısı (WAD)
 
-| Veri Kaynağı | Açıklama |
+| Veri Kaynağı | Description |
 | --- | --- |
 | Windows olay günlükleri   | Windows olay günlüğü 'nden olaylar. |
 | Performans sayaçları | Sayısal değerler, işletim sistemi ve iş yüklerinin farklı yönlerinin performansını ölçerek. |
 | IIS Günlükleri             | Konuk işletim sisteminde çalışan IIS Web siteleri için kullanım bilgileri. |
 | Uygulama günlükleri     | Uygulamanız tarafından yazılan izleme iletileri. |
-| .NET EventSource günlükleri |.NET [EventSource](/dotnet/api/system.diagnostics.tracing.eventsource?view=netcore-3.1) sınıfını kullanarak kod yazma olayları |
+| .NET EventSource günlükleri |.NET [EventSource](/dotnet/api/system.diagnostics.tracing.eventsource) sınıfını kullanarak kod yazma olayları |
 | [Bildirim tabanlı ETW günlükleri](/windows/desktop/etw/about-event-tracing) |Herhangi bir işlem tarafından oluşturulan Windows olayları için olay Izleme. |
 | Kilitlenme dökümü (Günlükler)   | Uygulamanın kilitlenirse işlemin durumu hakkında bilgiler. |
 | Dosya tabanlı Günlükler    | Uygulamanız veya hizmetiniz tarafından oluşturulan Günlükler. |
@@ -59,7 +59,7 @@ Aşağıdaki tablolarda Windows ve Linux Tanılama uzantısı tarafından toplan
 
 ### <a name="linux-diagnostics-extension-lad"></a>Linux Tanılama uzantısı (LAD)
 
-| Veri Kaynağı | Açıklama |
+| Veri Kaynağı | Description |
 | --- | --- |
 | Syslog | Linux olay günlüğü sistemine gönderilen olaylar.   |
 | Performans sayaçları  | Sayısal değerler, işletim sistemi ve iş yüklerinin farklı yönlerinin performansını ölçerek. |
@@ -72,9 +72,9 @@ Diğer ek hedeflere veri göndermek için bir veya daha fazla *veri havuzları* 
 
 ### <a name="windows-diagnostics-extension-wad"></a>Windows Tanılama uzantısı (WAD)
 
-| Hedef | Açıklama |
+| Hedef | Description |
 |:---|:---|
-| Azure Izleyici ölçümleri | Performans verilerini Azure Izleyici ölçümlerine toplayın. Bkz. [Azure izleyici ölçüm veritabanına Konuk işletim sistemi ölçümleri gönderme](collect-custom-metrics-guestos-resource-manager-vm.md).  |
+| Azure İzleyici Ölçümleri | Performans verilerini Azure Izleyici ölçümlerine toplayın. Bkz. [Azure izleyici ölçüm veritabanına Konuk işletim sistemi ölçümleri gönderme](collect-custom-metrics-guestos-resource-manager-vm.md).  |
 | Event Hubs | Azure 'un dışında veri göndermek için Azure Event Hubs kullanın. Bkz. [akış Azure Tanılama verileri Event Hubs](diagnostics-extension-stream-event-hubs.md) |
 | Azure depolama Blobları | Tablolara ek olarak Azure Storage 'daki bloblara veri yazma. |
 | Application Insights | Diğer uygulama izlemeyle tümleştirilecek Application Insights için sanal makinenizde çalışan uygulamalardan veri toplayın. Bkz. [Application Insights Tanılama verileri gönderme](diagnostics-extension-to-application-insights.md). |
@@ -85,11 +85,11 @@ Ayrıca, Log Analytics Aracısı genellikle bu işlev için kullanılsa da, Azur
 ### <a name="linux-diagnostics-extension-lad"></a>Linux Tanılama uzantısı (LAD)
 LAD, verileri Azure depolama 'daki tablolara yazar. Aşağıdaki tabloda yer aldığı havuzları destekler.
 
-| Hedef | Açıklama |
+| Hedef | Description |
 |:---|:---|
 | Event Hubs | Azure 'un dışında veri göndermek için Azure Event Hubs kullanın. |
 | Azure depolama Blobları | Tablolara ek olarak Azure Storage 'daki bloblara veri yazma. |
-| Azure Izleyici ölçümleri | Telegraf aracısını, LAD 'ya ek olarak yükleme. Bkz. [etkileyen bir LINUX VM için özel ölçümleri toplama telegraf Aracısı](collect-custom-metrics-linux-telegraf.md).
+| Azure İzleyici Ölçümleri | Telegraf aracısını, LAD 'ya ek olarak yükleme. Bkz. [etkileyen bir LINUX VM için özel ölçümleri toplama telegraf Aracısı](collect-custom-metrics-linux-telegraf.md).
 
 
 ## <a name="installation-and-configuration"></a>Yükleme ve yapılandırma

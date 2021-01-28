@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/12/2019
-ms.openlocfilehash: 489b4bfee1eaa2c381b16e88dbcc0bcb7fd8555f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 288e3f0c048bddb3f3378226889dc519de27764b
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91441503"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98927898"
 ---
 # <a name="integrate-system-center-operations-manager-with-azure-monitor-for-vms-map-feature"></a>System Center Operations Manager VM'ler için Azure İzleyici eşleme özelliğiyle tümleştirin
 
@@ -20,7 +20,7 @@ VM'ler için Azure İzleyici, Azure 'da veya ortamınızda çalışan Windows ve
 >[!NOTE]
 >Zaten Hizmet Eşlemesi dağıttıysanız, sanal makine sistem durumunu ve performansını izlemek için ek özellikler içeren haritalarınızı VM'ler için Azure İzleyici görüntüleyebilirsiniz. VM'ler için Azure İzleyici Map özelliği, tek başına Hizmet Eşlemesi çözümünün yerini alacak şekilde tasarlanmıştır. Daha fazla bilgi için bkz. [VM'ler için Azure izleyici genel bakış](vminsights-overview.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * System Center Operations Manager yönetim grubu (2012 R2 veya üzeri).
 * VM'ler için Azure İzleyici desteklemek için yapılandırılmış bir Log Analytics çalışma alanı.
@@ -38,7 +38,7 @@ Operations Manager ile eşleme özelliği arasında tümleştirmeyi etkinleştir
 
 ## <a name="configure-integration"></a>Tümleştirmeyi yapılandırma
 
-Hizmet Eşlemesi yönetim paketini yükledikten sonra, **hizmet eşlemesi**yeni bir düğüm, Operations Manager işletim konsolunuzun **Yönetim** bölmesinde **Operations Management Suite** altında görüntülenir.
+Hizmet Eşlemesi yönetim paketini yükledikten sonra, **hizmet eşlemesi** yeni bir düğüm, Operations Manager işletim konsolunuzun **Yönetim** bölmesinde **Operations Management Suite** altında görüntülenir.
 
 >[!NOTE]
 >[Operations Management Suite, Log Analytics dahil olan hizmetlerden oluşan bir koleksiyondur](../terminology.md#april-2018---retirement-of-operations-management-suite-brand) . artık [Azure izleyici](../overview.md)'nin bir parçasıdır.
@@ -57,7 +57,7 @@ VM'ler için Azure İzleyici eşleme tümleştirmesini yapılandırmak için aş
 
     ![Operations Manager yapılandırma çalışma alanı](media/service-map-scom/scom-config-workspace.png)
 
-4. **Makine grubu seçim** penceresinde, Operations Manager eşitlemek Istediğiniz hizmet eşlemesi makine gruplarını seçersiniz. **Makine gruplarını Ekle/Kaldır**' a tıklayın, **kullanılabilir makine grupları**listesinden gruplar ' ı seçin ve **Ekle**' ye tıklayın.  Grupları seçmeyi tamamladığınızda, **Tamam** ' a tıklayarak işlemi sona erdirin.
+4. **Makine grubu seçim** penceresinde, Operations Manager eşitlemek Istediğiniz hizmet eşlemesi makine gruplarını seçersiniz. **Makine gruplarını Ekle/Kaldır**' a tıklayın, **kullanılabilir makine grupları** listesinden gruplar ' ı seçin ve **Ekle**' ye tıklayın.  Grupları seçmeyi tamamladığınızda, **Tamam** ' a tıklayarak işlemi sona erdirin.
 
     ![Operations Manager yapılandırma makinesi grupları](media/service-map-scom/scom-config-machine-groups.png)
 
@@ -117,7 +117,7 @@ Bu geçerli sürümde yalnızca bir Log Analytics çalışma alanı yapılandır
 
 ## <a name="configure-rules-and-overrides"></a>Kuralları ve geçersiz kılmaları yapılandırma
 
-Bir kural, *Microsoft.SystemCenter. Servicemapımport. Rule*, düzenli aralıklarla VM'ler için Azure izleyici harita özelliğinden bilgi getirir. Eşitleme aralığını değiştirmek için kuralı geçersiz kılabilir ve değeri **ınterinterval**parametresi için değiştirebilirsiniz.
+Bir kural, *Microsoft.SystemCenter. Servicemapımport. Rule*, düzenli aralıklarla VM'ler için Azure izleyici harita özelliğinden bilgi getirir. Eşitleme aralığını değiştirmek için kuralı geçersiz kılabilir ve değeri **ınterinterval** parametresi için değiştirebilirsiniz.
 
 ![Operations Manager Özellikler penceresi geçersiz kılınır](media/service-map-scom/scom-overrides.png)
 
@@ -139,7 +139,7 @@ Geçerli tasarımda aşağıdaki sorunlar ve sınırlamalar sunulmaktadır:
 Hizmet sorumlusu oluşturma hakkında resmi Azure belgeleri için bkz.:
 
 * [PowerShell kullanarak hizmet sorumlusu oluşturma](../../active-directory/develop/howto-authenticate-service-principal-powershell.md)
-* [Azure CLı kullanarak hizmet sorumlusu oluşturma](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest)
+* [Azure CLı kullanarak hizmet sorumlusu oluşturma](/cli/azure/create-an-azure-service-principal-azure-cli)
 * [Azure portal kullanarak bir hizmet sorumlusu oluşturma](../../active-directory/develop/howto-create-service-principal-portal.md)
 
 ### <a name="suggestions"></a>Öneriler

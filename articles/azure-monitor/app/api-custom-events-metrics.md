@@ -4,12 +4,12 @@ description: Kullanımı izlemek ve sorunları tanılamak için cihazınıza vey
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 8fecca4875ba291da093bf1eea596eef290f80c8
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 72e79ff90422a6f055d5b883ba208555244687b3
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98678121"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98927826"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Özel olaylar ve ölçümler için Application Insights API
 
@@ -439,7 +439,7 @@ exceptions
 | summarize sum(itemCount) by type
 ```
 
-Önemli yığın bilgilerinin çoğu farklı değişkenlere zaten ayıklandı, ancak `details` daha fazla bilgi edinmek için yapıyı ayırabilirsiniz. Bu yapı dinamik olduğundan, sonucu istediğiniz türe atamalısınız. Örnek:
+Önemli yığın bilgilerinin çoğu farklı değişkenlere zaten ayıklandı, ancak `details` daha fazla bilgi edinmek için yapıyı ayırabilirsiniz. Bu yapı dinamik olduğundan, sonucu istediğiniz türe atamalısınız. Örneğin:
 
 ```kusto
 exceptions
@@ -502,7 +502,7 @@ Yöntemi girme veya bir yönteme ayrılma gibi bir tanılama olayını günlüğ
 Boyut sınırı, `message` özellikleri sınırından çok daha yüksek.
 TrackTrace 'in avantajı, oldukça uzun verileri iletiye koyacağınızdır. Örneğin, veri Gönder ' i burada bulabilirsiniz.  
 
-Ayrıca, iletinize önem düzeyi ekleyebilirsiniz. Diğer telemetri gibi, farklı izleme kümelerini filtrelemenize veya aramanıza yardımcı olacak özellik değerleri ekleyebilirsiniz. Örnek:
+Ayrıca, iletinize önem düzeyi ekleyebilirsiniz. Diğer telemetri gibi, farklı izleme kümelerini filtrelemenize veya aramanıza yardımcı olacak özellik değerleri ekleyebilirsiniz. Örneğin:
 
 *C#*
 
@@ -1068,7 +1068,7 @@ var appInsights = window.appInsights || function(config){ ...
 
 ## <a name="telemetrycontext"></a>TelemetryContext
 
-TelemetryClient, tüm telemetri verileriyle birlikte gönderilen değerleri içeren bir Context özelliğine sahiptir. Bunlar normalde standart telemetri modülleri tarafından ayarlanır, ancak bunları kendiniz de ayarlayabilirsiniz. Örnek:
+TelemetryClient, tüm telemetri verileriyle birlikte gönderilen değerleri içeren bir Context özelliğine sahiptir. Bunlar normalde standart telemetri modülleri tarafından ayarlanır, ancak bunları kendiniz de ayarlayabilirsiniz. Örneğin:
 
 ```csharp
 telemetry.Context.Operation.Name = "MyOperationName";
@@ -1098,8 +1098,8 @@ Verilerin ne kadar süreyle tutulacağını öğrenmek için bkz. [veri saklama 
 
 ## <a name="reference-docs"></a>Başvuru belgeleri
 
-* [ASP.NET başvurusu](/dotnet/api/overview/azure/insights?view=azure-dotnet)
-* [Java başvurusu](/java/api/overview/azure/appinsights?view=azure-java-stable/)
+* [ASP.NET başvurusu](/dotnet/api/overview/azure/insights)
+* [Java başvurusu](/java/api/overview/azure/appinsights)
 * [JavaScript başvurusu](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md)
 
 ## <a name="sdk-code"></a>SDK kodu
