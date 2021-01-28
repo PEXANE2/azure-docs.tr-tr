@@ -1,5 +1,5 @@
 ---
-title: Yerel dosyadan Azure Media Services iş girişi oluşturma
+title: Yerel dosyadan iş girişi oluşturma
 description: Bu makalede, yerel bir dosyadan Azure Media Services işi girişi oluşturma işlemi gösterilmektedir.
 services: media-services
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 2121807405849b74b354d9e638a79948c1501da5
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 75cd5922804eb1724eaca0157f2c242a86406aab
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98895348"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98951387"
 ---
 # <a name="create-a-job-input-from-a-local-file"></a>Yerel dosyadan iş girişi oluşturma
 

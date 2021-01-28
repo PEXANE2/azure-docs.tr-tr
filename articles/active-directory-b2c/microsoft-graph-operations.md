@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/27/2021
+ms.date: 01/28/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 50042b749c917752d08198c31ada3c73a5ef540b
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: a7e9e523d3aae7cf1444c048c023ca1d85fde41f
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 01/28/2021
-ms.locfileid: "98938479"
+ms.locfileid: "98952248"
 ---
 # <a name="manage-azure-ad-b2c-with-microsoft-graph"></a>Microsoft Graph ile Azure AD B2C yönetme
 
@@ -45,9 +45,13 @@ Kullanıcı tarafından [SMS veya sesli çağrılar](identity-provider-local.md#
 - [Güncelleştirme](/graph/api/phoneauthenticationmethod-update)
 - [Silme](/graph/api/phoneauthenticationmethod-delete)
 
+[Liste](/graph/api/authentication-list-phonemethods) işleminin yalnızca etkin telefon numaralarını döndürdüğünü göz önünde kalmaz. Aşağıdaki telefon numarası, liste işlemleriyle birlikte kullanılmak üzere etkinleştirilmelidir. 
+
+![Telefonla oturum açmayı etkinleştir](./media/microsoft-graph-operations/enable-phone-sign-in.png)
+
 ## <a name="self-service-password-reset-email-address-beta"></a>Self servis parola sıfırlama e-posta adresi (Beta)
 
-Kullanıcı tarafından Kullanıcı [adı oturum açma hesabının](identity-provider-local.md#username-sign-in)parolasını geri yüklemek için kullanılabilecek bir e-posta adresi. Daha fazla bilgi için bkz. [Azure AD kimlik doğrulama yöntemleri API 'si](/graph/api/resources/emailauthenticationmethod).
+Parolayı sıfırlamak için [Kullanıcı adı oturum açma hesabı](identity-provider-local.md#username-sign-in) tarafından kullanılabilen bir e-posta adresi. Daha fazla bilgi için bkz. [Azure AD kimlik doğrulama yöntemleri API 'si](/graph/api/resources/emailauthenticationmethod).
 
 - [Ekle](/graph/api/emailauthenticationmethod-post)
 - [Liste](/graph/api/emailauthenticationmethod-list)

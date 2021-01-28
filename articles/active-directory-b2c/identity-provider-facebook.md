@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 64a4404fa881181f92d442a73e5da4c16ae87ae3
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: e0e71bc0e3a81b5ab2f455224ed2ed4281532d55
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98598878"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98952683"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-facebook-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C kullanarak kayıt ve Facebook hesabı ile oturum açma ayarlama
 
@@ -30,7 +30,7 @@ ms.locfileid: "98598878"
 
 ::: zone-end
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
@@ -84,6 +84,21 @@ Azure Active Directory B2C (Azure AD B2C) ' de Facebook hesabı olan kullanıcı
 ::: zone-end
 
 ::: zone pivot="b2c-custom-policy"
+
+## <a name="create-a-policy-key"></a>İlke anahtarı oluşturma
+
+Daha önce Azure AD B2C kiracınızda kaydettiğiniz uygulama gizli anahtarını depolamanız gerekir.
+
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
+2. Azure AD B2C kiracınızı içeren dizini kullandığınızdan emin olun. Üstteki menüden **Dizin + abonelik** filtresini seçin ve kiracınızı içeren dizini seçin.
+3. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **Azure AD B2C**' i arayıp seçin.
+4. Genel Bakış sayfasında **kimlik deneyimi çerçevesi**' ni seçin.
+5. **Ilke anahtarlarını** seçin ve ardından **Ekle**' yi seçin.
+6. **Seçenekler** için öğesini seçin `Manual` .
+7. İlke anahtarı için bir **ad** girin. Örneğin, `FacebookSecret`. Ön ek, `B2C_1A_` anahtarınızın adına otomatik olarak eklenir.
+8. **Gizli**, daha önce kaydettiğiniz uygulama gizli anahtarını girin.
+9. **Anahtar kullanımı** için öğesini seçin `Signature` .
+10. **Oluştur**’a tıklayın.
 
 ## <a name="configure-a-facebook-account-as-an-identity-provider"></a>Bir Facebook hesabını kimlik sağlayıcısı olarak yapılandırma
 

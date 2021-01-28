@@ -3,14 +3,14 @@ author: msmimart
 ms.service: active-directory-b2c
 ms.subservice: B2C
 ms.topic: include
-ms.date: 01/18/2021
+ms.date: 01/27/2021
 ms.author: mimart
-ms.openlocfilehash: f94076f06fb13bae2a26e8ab6003d7574a2dacfd
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 73216b1b089444c1dc92bbe73ed07895de3711b2
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98674247"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98951552"
 ---
 ## <a name="configure-the-relying-party-policy"></a>Bağlı olan taraf ilkesini yapılandırma
 
@@ -33,11 +33,5 @@ Aşağıdaki örnekte, `CustomSignUpOrSignIn` Kullanıcı yolculuğu Için **ref
 1. **İlkeler** altında **kimlik deneyimi çerçevesi**' ni seçin.
 1. **Özel Ilkeyi karşıya yükle**' yi seçin ve ardından, değiştirdiğiniz iki ilke dosyasını aşağıdaki sırada karşıya yükleyin: uzantı ilkesi, örneğin, `TrustFrameworkExtensions.xml` `SignUpSignIn.xml` .
 
-## <a name="test-your-custom-policy"></a>Özel ilkenizi test etme
 
-1. Bağlı olan taraf ilkenizi seçin, örneğin `B2C_1A_signup_signin`
-1. **Uygulama** için, daha önce kaydetmiş olduğunuz bir Web uygulamasını seçin. **Yanıt URL 'si** gösterilmesi gerekir `https://jwt.ms` .
-1. **Şimdi Çalıştır** düğmesini seçin.
-
-Oturum açma işlemi başarılı olursa, tarayıcınız öğesine yönlendirilir `https://jwt.ms` ve bu, Azure AD B2C tarafından döndürülen belirtecin içeriğini görüntüler.
 

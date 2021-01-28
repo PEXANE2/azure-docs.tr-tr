@@ -1,16 +1,16 @@
 ---
 title: Apprenlet modu-kişiselleştirici
-description: ''
+description: Herhangi bir kodu değiştirmeden bir modelde güvenle kazanmak için apprence modunu nasıl kullanacağınızı öğrenin.
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: f793535f04b36d231cec384b7acd66e38a7eb039
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f2b9f6dfe60aa50eb4ec6da76fe8781ecd8a1f13
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91253539"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98951336"
 ---
 # <a name="use-apprentice-mode-to-train-personalizer-without-affecting-your-existing-application"></a>Mevcut uygulamanızı etkilemeden Kişiselleştiriciye eğitme için Apprenlet modunu kullanın
 
@@ -62,7 +62,7 @@ Apprence modunun, aşağıdaki yollarla çevrimiçi moddan ne zaman farklılık 
 |Alan|Acemi modu|Çevrimiçi mod|
 |--|--|--|
 |Kullanıcı deneyimine etkisi|Mevcut kullanıcı davranışını, **varsayılan eylediklerinizin** ne olduğunu ve elde ettiği bir şeyi gözlemleyerek (etkilenmemesini), kişiselleştirerek eğitmenize izin vererek, kişisel bir şekilde eğitme yapmak için kullanabilirsiniz. Bu, kullanıcılarınızın deneyimi ve bunların iş sonuçlarının etkilenmeyeceği anlamına gelir.|Kullanıcı davranışını etkilemek için derece çağrısından döndürülen en iyi eylemi görüntüle.|
-|Öğrenme hızı|Kişiselleştirici, çevrimiçi modda öğrenirken Apprenlet modundayken daha yavaş bilgi ediniyor. Apprenlet modu, hiçbir araştırma gerçekleştirilemediği için öğrenme hızını sınırlayan **varsayılan eyleminiz**tarafından elde edilen rekişlerinizi gözlemleyerek öğreniyor.|Her ikisi de geçerli modelden yararlanabileceğinden ve yeni eğilimleri keşfedebildiğinden daha hızlı bir şekilde öğrenir.|
+|Öğrenme hızı|Kişiselleştirici, çevrimiçi modda öğrenirken Apprenlet modundayken daha yavaş bilgi ediniyor. Apprenlet modu, hiçbir araştırma gerçekleştirilemediği için öğrenme hızını sınırlayan **varsayılan eyleminiz** tarafından elde edilen rekişlerinizi gözlemleyerek öğreniyor.|Her ikisi de geçerli modelden yararlanabileceğinden ve yeni eğilimleri keşfedebildiğinden daha hızlı bir şekilde öğrenir.|
 |Öğrenme verimliliği "tavan"|Kişiselleştirici, temel iş mantığınızın performansını tahmin edebilir, çok nadiren eşleştirebilir ve hiçbir şekilde hiçbir şekilde aşmaz (her bir derece çağrısının **varsayılan eylemi** ile elde edilen toplam).|Kişiselleştirmede uygulamalar taban çizgisini aşmalı ve zaman içinde, modelde iyileştirmeler almaya devam etmek için çevrimdışı değerlendirme ve özellik değerlendirmesi yapmanız gerekir. |
 |Rewarterctionıd için derecelendirme API değeri|_Rewarterctionıd_ her zaman sıralama isteğinde göndereceğiniz ilk eylem olduğundan, kullanıcıların deneyimi etkilenmez. Diğer bir deyişle, sıralama API 'SI Apprensu modu sırasında uygulamanız için hiçbir şey görünmez. Uygulamanızdaki Reward API 'Leri, bir mod ve diğeri arasında Reward API 'YI nasıl kullandığını değiştirmemelidir.|Kullanıcıların deneyimi, kişiselleştirici uygulamanız için seçtiği _Rewarterctionıd_ tarafından değiştirilir. |
 |Lerim|Kişiselleştirici, varsayılan iş mantığınızın elde edilen ödül toplamlarını bir karşılaştırmasına devam eder ve bu noktada çevrimiçi modda elde edilen toplam kişiselleştirici, daha fazla zaman oluşturur. Bu kaynak için Azure portal bir karşılaştırma kullanılabilir|Toplam yeniden çalışma kişiselleştirmesini, uygulamanın temel aldığı potansiyel depoların elde ettiği bir şekilde karşılaştırmanızı sağlayan [çevrimdışı değerlendirmeler](concepts-offline-evaluation.md)çalıştırarak kişiselleştirici verimliliğini değerlendirin.|
@@ -88,7 +88,7 @@ Genellikle kişiselleştirici için, geçmiş verilerle eğitimle karşılaştı
 
 Bu, bir veya daha fazla çevrimiçi modda öğrentikten sonra kişiselleştirici anlaşmalar için yalnızca bir/B testi yapmanız yararlı olur. Apprenlet modunda, yalnızca **varsayılan eylem** kullanılır. Bu, tüm kullanıcıların Denetim deneyimini etkin bir şekilde görebildikleri anlamına gelir.
 
-Kişiselleştirici yalnızca _işleme_olsa bile, verileri doğrularken eğitim kişiselleştirici için iyi hale geldiğinde aynı zorluk vardır. Bunun yerine, %100 trafik ve tüm kullanıcılar denetim (etkilenmemiştir) deneyimi ile birlikte apprenlet modu kullanılabilir.
+Kişiselleştirici yalnızca _işleme_ olsa bile, verileri doğrularken eğitim kişiselleştirici için iyi hale geldiğinde aynı zorluk vardır. Bunun yerine, %100 trafik ve tüm kullanıcılar denetim (etkilenmemiştir) deneyimi ile birlikte apprenlet modu kullanılabilir.
 
 Kişiselleştirici ve öğrenimi kullanarak bir kullanım örneğine sahip olduktan sonra, bir/B denemeleri, reklerde kullanılan sinyallerden daha karmaşık olabilecek sonuçlar ile denetimli ve bilimsel bir şekilde karşılaştırma yapmanıza olanak sağlar. A/B testi yanıt verebilen örnek bir soru şudur: `In a retail website, Personalizer optimizes a layout and gets more users to _check out_ earlier, but does this reduce total revenue per transaction?`
 

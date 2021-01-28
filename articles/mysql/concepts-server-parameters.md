@@ -1,17 +1,17 @@
 ---
 title: Sunucu parametreleri-MySQL için Azure veritabanı
 description: Bu konuda, MySQL için Azure veritabanı 'nda sunucu parametrelerini yapılandırmaya yönelik yönergeler sağlanmaktadır.
-author: savjani
-ms.author: pariks
+author: Bashar-MSFT
+ms.author: bahusse
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 6/25/2020
-ms.openlocfilehash: 0fddc1e8f80e257548d0dda91758273eb8c8ac78
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.date: 1/26/2021
+ms.openlocfilehash: 9485d346384344bd7c35d0577245419ca1f56574
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94534917"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98951319"
 ---
 # <a name="server-parameters-in-azure-database-for-mysql"></a>MySQL için Azure veritabanı 'nda sunucu parametreleri
 
@@ -108,7 +108,7 @@ Bu parametre hakkında daha fazla bilgi edinmek için [MySQL belgelerini](https:
 
 MySQL, InnoDB tablosunu tablo oluşturma sırasında verdiğiniz yapılandırmaya göre farklı Tablespaces halinde depolar. [Sistem tablo](https://dev.mysql.com/doc/refman/5.7/en/innodb-system-tablespace.html) alanı, InnoDB veri sözlüğü için depolama alanıdır. [Tablo başına dosya tablosu](https://dev.mysql.com/doc/refman/5.7/en/innodb-file-per-table-tablespaces.html) , tek bir InnoDB tablosunun verilerini ve dizinlerini içerir ve dosya sisteminde kendi veri dosyasında depolanır. Bu davranış, `innodb_file_per_table` sunucu parametresi tarafından denetlenir. `innodb_file_per_table`İçin ayarı `OFF` , InnoDB 'in, sistem tablo tablosu 'nda tablo oluşturmasına neden olur. Aksi halde, InnoDB tablo başına tabloalanları içinde tablo oluşturur.
 
-MySQL için Azure veritabanı, tek bir veri dosyasında en büyük, **4 TB** 'yi destekler. Veritabanınızın boyutu 4 TB 'den büyükse, tabloyu [innodb_file_per_table](https://dev.mysql.com/doc/refman/5.7/en/innodb-parameters.html#sysvar_innodb_file_per_table) tablo alanında oluşturmanız gerekir. 4 TB 'tan büyük tek bir tablo boyutunuz varsa, bölüm tablosunu kullanmanız gerekir.
+MySQL için Azure veritabanı, tek bir veri dosyasında en büyük, **4 TB**'yi destekler. Veritabanınızın boyutu 4 TB 'den büyükse, tabloyu [innodb_file_per_table](https://dev.mysql.com/doc/refman/5.7/en/innodb-parameters.html#sysvar_innodb_file_per_table) tablo alanında oluşturmanız gerekir. 4 TB 'tan büyük tek bir tablo boyutunuz varsa, bölüm tablosunu kullanmanız gerekir.
 
 ### <a name="join_buffer_size"></a>join_buffer_size
 
@@ -261,6 +261,18 @@ Bu parametre hakkında daha fazla bilgi edinmek için [MySQL belgelerini](https:
 |Bellek İçin İyileştirilmiş|8|16777216|1024|536870912|
 |Bellek İçin İyileştirilmiş|16|16777216|1024|1073741824|
 |Bellek İçin İyileştirilmiş|32|16777216|1024|1073741824|
+
+### <a name="innodb-buffer-pool-warmup"></a>InnoDB arabellek havuzu Warmup
+MySQL sunucusu için Azure veritabanı 'nı yeniden başlattıktan sonra, tablolar sorgulandığında diskte bulunan veri sayfaları yüklenir. Bu, daha fazla gecikme süresi ve sorguların ilk yürütülmesi için daha yavaş performans sağlar. Bu, gecikme süresine duyarlı iş yükleri için kabul edilebilir olmayabilir. InnoDB arabellek havuzunun kullanıldığı ısınma, bir süre önce arabellek havuzunda bulunan disk sayfalarını DML veya belirli satırlara erişmek için işlem işlemleri yerine yeniden başlatmadan önce yeniden başlatarak ısınma süresini kısaltır.
+
+[InnoDB arabellek havuzu sunucu parametrelerini](https://dev.mysql.com/doc/refman/8.0/en/innodb-preload-buffer-pool.html)yapılandırarak bir performans avantajını temsil eden MySQL için Azure veritabanı sunucunuzu yeniden başlattıktan sonra ısınma süresini azaltabilirsiniz. InnoDB, sunucu kapatılmadan her bir arabellek havuzu için en son kullanılan sayfaların yüzdesini kaydeder ve bu sayfaları sunucu başlangıcında geri yükler.
+
+Ayrıca, gelişmiş performansın sunucu için daha uzun başlangıç zamanı harcamasıyla birlikte geldiğini unutmayın. Bu parametre etkinleştirildiğinde sunucu başlatma ve yeniden başlatma süresinin, sunucuda sağlanan ıOPS 'ye bağlı olarak artması beklenir. Bu süre boyunca sunucu kullanılamadığından başlatma/yeniden başlatma performansının kabul edilebilir olmasını sağlamak için yeniden başlatma süresini test etmenizi ve izlemenizi öneririz. Sağlanan ıOPS 1000 ıOPS 'den (veya başka bir deyişle, sağlanan depolama alanı 335GB 'den az olduğunda) Bu parametrenin kullanılması önerilmez.
+
+Sunucu kapatılmadan önce ayarlanan sunucu parametresi için arabellek havuzunun durumunu kaydetmek için `innodb_buffer_pool_dump_at_shutdown` `ON` . Benzer şekilde, sunucu `innodb_buffer_pool_load_at_startup` `ON` başlatma sırasında arabellek havuzu durumunu geri yüklemek için sunucu parametresini olarak ayarlayın. Başlangıç/yeniden başlatma üzerindeki etkiyi, sunucu parametresinin değerini indirerek ve ince ayar yaparak, `innodb_buffer_pool_dump_pct` Varsayılan olarak, bu parametrenin olarak ayarlandığını kontrol edebilirsiniz `25` .
+
+> [!Note]
+> InnoDB arabellek havuzu ısınma parametreleri yalnızca 16 TB 'a kadar depolama alanı bulunan genel amaçlı depolama sunucularında desteklenir. [MySQL Için Azure veritabanı depolama seçenekleri](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers#storage)hakkında daha fazla bilgi edinin.
 
 ### <a name="time_zone"></a>time_zone
 

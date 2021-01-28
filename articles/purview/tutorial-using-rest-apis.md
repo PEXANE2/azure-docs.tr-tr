@@ -7,18 +7,18 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 12/03/2020
-ms.openlocfilehash: fcc3e487d949a9450f792a6cc230b64e7dbe950a
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: bfb808c634ba946e1a4825d7828db6df8963352c
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202955"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98951251"
 ---
 # <a name="tutorial-use-the-rest-apis"></a>Öğretici: REST API 'Lerini kullanma
 
 Bu öğreticide, Azure purview REST API 'Lerini nasıl kullanacağınızı öğreneceksiniz. Azure purview kataloğuna veri göndermek isteyen herkes, kataloğu otomatik bir işlemin parçası olarak dahil eder veya katalog üzerinde kendi kullanıcı deneyimlerini oluşturmak için REST API 'Lerini kullanabilir.
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 >
@@ -92,7 +92,7 @@ Azure purview 'ı yeni hizmet sorumlusuna güvenmek üzere yapılandırmak için
 
 1. Ata 'nın varsayılan, **Kullanıcı, Grup veya hizmet sorumlusunu** bırakma **erişimi** için
 
-1. **Seçim** için, atamak istediğiniz kullanıcının adını, Azure Active Directory grubu veya hizmet sorumlusunu girin ve ardından sonuçlar bölmesinde adına tıklayın.
+1. **Seç** için, atamak istediğiniz previosly oluşturulan hizmet sorumlusunun adını girin ve ardından sonuçlar bölmesinde adına tıklayın.
 
 1. **Kaydet** 'e tıklayın
 

@@ -3,12 +3,12 @@ title: Yeni bir Azure Application Insights kaynağı oluşturma | Microsoft Docs
 description: Yeni bir canlı uygulama için Application Insights izlemeyi el ile ayarlayın.
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: 2924ccbbf591020d7872d3e9cca62a9c271db7c0
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: adc40db493c701a21fd30d10a4452edee1b87ab9
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 01/28/2021
-ms.locfileid: "98944597"
+ms.locfileid: "98951284"
 ---
 # <a name="create-an-application-insights-resource"></a>Application Insights kaynağı oluşturma
 
@@ -36,6 +36,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
 
 Gerekli alanlara uygun değerleri girin ve ardından **gözden geçir + oluştur**' u seçin.
 
+[!div class="mx-imgBorder"]
 ![Gerekli alanlara değerler girin ve ardından "gözden geçir + oluştur" u seçin.](./media/create-new-resource/review-create.png)
 
 Uygulamanız oluşturulduğunda yeni bir bölme açılır. Bu bölme, izlenen uygulamanızla ilgili performans ve kullanım verilerini görebileceğiniz yerdir. 
