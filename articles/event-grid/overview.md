@@ -2,13 +2,13 @@
 title: Azure Event Grid nedir?
 description: Azure Event Grid olan bir kaynaktan işleyicilere olay verileri gönderin. Olay tabanlı uygulamalar oluşturun ve Azure hizmetleriyle tümleştirin.
 ms.topic: overview
-ms.date: 09/24/2020
-ms.openlocfilehash: a4f614a22fdfa7d2272c70751f56f19145a10fa6
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.date: 01/28/2021
+ms.openlocfilehash: e53665c88c3860d37b3512c6498ab626b02a6400
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94576691"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99055149"
 ---
 # <a name="what-is-azure-event-grid"></a>Azure Event Grid nedir?
 
@@ -20,7 +20,7 @@ Azure Event Grid, her bölgedeki birden çok hata etki alanına ve kullanılabil
 
 Bu makalede Azure Event Grid’e genel bir bakış sağlanmıştır. Event Grid kullanmaya başlamak istiyorsanız bkz. [Azure Event Grid ile özel olaylar oluşturma ve yönlendirme](custom-event-quickstart.md). 
 
-:::image type="content" source="./media/overview/functional-model.png" alt-text="Kaynak ve işleyicilerle Event Grid modeli" lightbox="./media/overview/functional-model.png":::
+:::image type="content" source="./media/overview/functional-model.png" alt-text="Kaynak ve işleyicilerle Event Grid modeli" lightbox="./media/overview/functional-model-big.png":::
 
 Bu görüntü, Event Grid kaynakları ve işleyicileri nasıl bağladığını gösterir ve desteklenen tümleştirmelerin kapsamlı bir listesi değildir.
 
@@ -42,6 +42,7 @@ Bu görüntü, Event Grid kaynakları ve işleyicileri nasıl bağladığını g
 - [Azure Service Bus](event-schema-service-bus.md)
 - [Azure SignalR](event-schema-azure-signalr.md)
 - [Azure abonelikleri](event-schema-subscriptions.md)
+- [Redis için Azure Önbelleği](event-schema-azure-cache.md)
 
 ## <a name="event-handlers"></a>Olay işleyicileri
 
@@ -55,7 +56,7 @@ Bu görüntü, Event Grid kaynakları ve işleyicileri nasıl bağladığını g
 * [Güç otomatikleştirme (eskiden Microsoft Flow olarak bilinirdi)](https://preview.flow.microsoft.com/connectors/shared_azureeventgrid/azure-event-grid/)
 * [Service Bus](handler-service-bus.md)
 * [Kuyruk Depolama](handler-storage-queues.md)
-* [Web kancaları](handler-webhooks.md)
+* [Web Kancaları](handler-webhooks.md)
 
 ## <a name="concepts"></a>Kavramlar
 

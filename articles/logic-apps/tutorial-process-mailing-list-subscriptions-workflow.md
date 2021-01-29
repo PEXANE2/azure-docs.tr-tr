@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 10/07/2020
-ms.openlocfilehash: 102b1946021aff7f8ab5491ed70fbc6cf772e3a8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1690b8d143b86e5caa691f5f8f479f715f57f0c8
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91842443"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054661"
 ---
 # <a name="tutorial-create-automated-approval-based-workflows-by-using-azure-logic-apps"></a>Öğretici: Azure Logic Apps kullanarak otomatik onay tabanlı iş akışları oluşturma
 
@@ -44,6 +44,8 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 * Office 365 Outlook veya Outlook.com 'de onay iş akışlarını destekleyen bir e-posta hesabı. Bu öğreticide Office 365 Outlook kullanılmaktadır. Farklı bir e-posta hesabı kullanırsanız genel adımlar aynı kalır, ancak kullanıcı arabiriminiz biraz farklı görünebilir.
 
+* Mantıksal uygulamanızın trafiği belirli IP adresleriyle sınırlayan bir güvenlik duvarı üzerinden iletişim kurması gerekiyorsa, söz konusu güvenlik duvarının, mantıksal uygulamanızın bulunduğu Azure bölgesindeki Logic Apps hizmeti veya çalışma zamanı tarafından kullanılan [gelen](logic-apps-limits-and-config.md#inbound) ve [giden](logic-apps-limits-and-config.md#outbound) IP *adresleri için erişime* izin verilmesi gerekir. Mantıksal uygulamanız ayrıca Office 365 Outlook Bağlayıcısı veya SQL Bağlayıcısı gibi [yönetilen bağlayıcılar](../connectors/apis-list.md#managed-api-connectors)kullanıyorsa veya [özel bağlayıcılar](/connectors/custom-connectors/)kullanıyorsa, güvenlik duvarının ayrıca mantıksal uygulamanızın Azure bölgesindeki *Tüm* [yönetilen bağlayıcı giden IP adresleri](logic-apps-limits-and-config.md#outbound) için erişime izin verilmesi gerekir.
+
 ## <a name="create-your-logic-app"></a>Mantıksal uygulamanızı oluşturma
 
 1. Azure hesabınızın kimlik bilgileriyle [Azure portalında](https://portal.azure.com) oturum açın. Azure giriş sayfasında, **kaynak oluştur**' u seçin.
@@ -58,10 +60,10 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
    | Özellik | Değer | Açıklama |
    |----------|-------|-------------|
-   | **Abonelik** | <*Azure-abonelik-adı*> | Azure abonelik adınız. Bu örnekte, kullanılır `Pay-As-You-Go` . |
+   | **Abonelik** | <*Azure-abonelik-adı*> | Azure abonelik adınız. Bu örnekte `Pay-As-You-Go` kullanılmıştır. |
    | **Kaynak grubu** | LA-MailingList-RG | İlgili kaynakları düzenlemek için kullanılan [Azure Kaynak grubunun](../azure-resource-manager/management/overview.md)adı. Bu örnek adlı yeni bir kaynak grubu oluşturur `LA-MailingList-RG` . |
-   | **Ad** | LA-MailingList | Mantıksal uygulamanızın adı, yalnızca harf, sayı, kısa çizgi ( `-` ), alt çizgi ( `_` ), parantez ( `(` , `)` ) ve nokta ( `.` ) içerebilir. Bu örnekte, kullanılır `LA-MailingList` . |
-   | **Konum** | Batı ABD | Mantıksal uygulama bilgilerinizin depolanacağı bölge. Bu örnekte, kullanılır `West US` . |
+   | **Ad** | LA-MailingList | Mantıksal uygulamanızın adı, yalnızca harf, sayı, kısa çizgi ( `-` ), alt çizgi ( `_` ), parantez ( `(` , `)` ) ve nokta ( `.` ) içerebilir. Bu örnekte `LA-MailingList` kullanılmıştır. |
+   | **Konum** | Batı ABD | Mantıksal uygulama bilgilerinizin depolanacağı bölge. Bu örnekte `West US` kullanılmıştır. |
    | **Log Analytics** | Kapalı | Tanılama günlüğüne kaydetme ayarını **Kapalı** durumda bırakın. |
    ||||
 
@@ -79,7 +81,7 @@ Sonra, abonelik istekleri olan gelen e-postaları dinleyen bir Outlook [tetikley
 
 ## <a name="add-trigger-to-monitor-emails"></a>E-postaları izlemek için tetikleyici ekleme
 
-1. Logic Apps tasarımcı arama kutusuna girin `when email arrives` ve **Yeni bir e-posta geldiğinde**adlı tetikleyiciyi seçin.
+1. Logic Apps tasarımcı arama kutusuna girin `when email arrives` ve **Yeni bir e-posta geldiğinde** adlı tetikleyiciyi seçin.
 
    * Azure iş veya okul hesapları için **Office 365 Outlook** girişini seçin.
    * Kişisel Microsoft hesapları için **Outlook.com** girişini seçin.
@@ -122,7 +124,7 @@ Artık tetikleyiciniz olduğuna göre, isteği onaylamak veya reddetmek üzere e
 
 1. Logic Apps tasarımcısında, **Yeni bir e-posta geldiğinde** tetikleme bölümünde **yeni adım**' ı seçin.
 
-1. **Işlem seçin**altında, arama kutusuna girin `send approval` ve **onay e-postası gönder**adlı eylemi seçin.
+1. **Işlem seçin** altında, arama kutusuna girin `send approval` ve **onay e-postası gönder** adlı eylemi seçin.
 
    !["Onay" eylemleri ve "onay e-postası gönder" eylemi seçili "bir işlem seçin" listesinin gösterildiği ekran görüntüsü.](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-send-approval-email.png)
 
@@ -132,7 +134,7 @@ Artık tetikleyiciniz olduğuna göre, isteği onaylamak veya reddetmek üzere e
 
    | Özellik | Değer | Açıklama |
    |----------|-------|-------------|
-   | **Amaç** | <*onay-e-posta adresi*> | Onaylayanın e-posta adresi. Test için kendi adresinizi kullanabilirsiniz. Bu örnek kurgusal `sophiaowen@fabrikam.com` e-posta adresini kullanır. |
+   | **Kime** | <*onay-e-posta adresi*> | Onaylayanın e-posta adresi. Test için kendi adresinizi kullanabilirsiniz. Bu örnek kurgusal `sophiaowen@fabrikam.com` e-posta adresini kullanır. |
    | **Konu** | `Approve member request for test-members-ML` | Açıklayıcı bir e-posta konusu |
    | **Kullanıcı Seçenekleri** | `Approve, Reject` | Bu özelliğin varsayılan olarak **onaylama** veya **reddetme** olan, onaylayanın seçim yapabileceği yanıt seçeneklerini belirttiğinden emin olun. |
    ||||
@@ -148,7 +150,7 @@ Sonra, onaylayanın seçili yanıtını denetleyen bir koşul ekleyin.
 
 1. **Onay e-postası gönder** eyleminin altında **yeni adım**' ı seçin.
 
-1. **Işlem seçin**altında, **yerleşik**' i seçin. Arama kutusuna girin `condition` ve **koşul**adlı eylemi seçin.
+1. **Işlem seçin** altında, **yerleşik**' i seçin. Arama kutusuna girin `condition` ve **koşul** adlı eylemi seçin.
 
    !["Koşul" eylemi seçili durumdayken arama terimi olarak "yerleşik" seçili ve "koşul" içeren "işlem seçin" arama kutusunu gösteren ekran görüntüsü.](./media/tutorial-process-mailing-list-subscriptions-workflow/select-condition-action.png)
 
@@ -156,11 +158,11 @@ Sonra, onaylayanın seçili yanıtını denetleyen bir koşul ekleyin.
 
    !["Ayarlar" listesinin açıldığı ve "yeniden adlandır" komutunun seçildiği üç nokta düğmesini gösteren ekran görüntüsü.](./media/tutorial-process-mailing-list-subscriptions-workflow/rename-condition-description.png)
 
-1. Onaylayanın **seçili olup**olmadığını denetleyen bir koşul oluşturun.
+1. Onaylayanın **seçili olup** olmadığını denetleyen bir koşul oluşturun.
 
    1. Koşulun sol tarafında, **bir değer seçin** kutusunun içine tıklayın.
 
-   1. Görünen dinamik içerik listesinden **onay e-postası gönder**altında **SelectedOption** özelliğini seçin.
+   1. Görünen dinamik içerik listesinden **onay e-postası gönder** altında **SelectedOption** özelliğini seçin.
 
       !["Onay e-postası gönder" bölümünde yer alan dinamik içerik listesini gösteren ekran görüntüsü, "SelectedOption" çıkışının seçili olduğunu gösterir.](./media/tutorial-process-mailing-list-subscriptions-workflow/build-condition-check-approval-response.png)
 
@@ -182,7 +184,7 @@ Ardından, gözden geçiren bir isteği onayladığında mantıksal uygulamanız
 
 1. Koşulun **doğru** dalında **Eylem Ekle**' yi seçin.
 
-1. İşlem araması **seçin** arama kutusunda **Tümü**' nü seçin. Arama kutusuna girin `mailchimp` ve ardından **üye Ekle listesine**adlı eylemi seçin.
+1. İşlem araması **seçin** arama kutusunda **Tümü**' nü seçin. Arama kutusuna girin `mailchimp` ve ardından **üye Ekle listesine** adlı eylemi seçin.
 
    !["MailChimp" arama terimi ve "listeye üye Ekle" eylemi seçili olan "işlem seç" kutusunu gösteren ekran görüntüsü.](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-mailchimp-add-member.png)
 
@@ -194,9 +196,9 @@ Ardından, gözden geçiren bir isteği onayladığında mantıksal uygulamanız
 
    | Özellik | Gerekli | Değer | Açıklama |
    |----------|----------|-------|-------------|
-   | **Liste Kimliği** | Evet | <*posta-liste-adı*> | MailChimp posta listenizin adını seçin. Bu örnekte, kullanılır `test-members-ML` . |
-   | **E-posta adresi** | Evet | <*yeni-üye-e-posta adresi*> | Açılan dinamik içerik listesinde, **Yeni bir e-posta geldiğinde** bölümünden **Çıkış ' ı seçin ve**yeni üyenin e-posta adresini belirtin. |
-   | **Durum** | Evet | <*üye-abonelik-durum*> | Yeni üye için ayarlanacak abonelik durumunu seçin. Bu örnek seçer `subscribed` . <p>Daha fazla bilgi için bkz. [MailChimp API'siyle aboneleri yönetme](https://developer.mailchimp.com/documentation/mailchimp/guides/manage-subscribers-with-the-mailchimp-api/). |
+   | **Liste Kimliği** | Yes | <*posta-liste-adı*> | MailChimp posta listenizin adını seçin. Bu örnekte `test-members-ML` kullanılmıştır. |
+   | **E-posta adresi** | Yes | <*yeni-üye-e-posta adresi*> | Açılan dinamik içerik listesinde, **Yeni bir e-posta geldiğinde** bölümünden **Çıkış ' ı seçin ve** yeni üyenin e-posta adresini belirtin. |
+   | **Durum** | Yes | <*üye-abonelik-durum*> | Yeni üye için ayarlanacak abonelik durumunu seçin. Bu örnek seçer `subscribed` . <p>Daha fazla bilgi için bkz. [MailChimp API'siyle aboneleri yönetme](https://developer.mailchimp.com/documentation/mailchimp/guides/manage-subscribers-with-the-mailchimp-api/). |
    |||||
 
    **Listeye üye Ekle** eylem özellikleri hakkında daha fazla bilgi Için, [MailChimp bağlayıcı başvurusuna](/connectors/mailchimp/)bakın.
@@ -209,7 +211,7 @@ Ardından, yeni üyenin posta listenize başarıyla katılıp katılmadığını
 
 1. **Doğru** dalda, **listeye üye Ekle** eyleminin altında **Eylem Ekle**' yi seçin.
 
-1. **Işlem seçin**altında, **yerleşik**' i seçin. Arama kutusuna girin `condition` ve **koşul**adlı eylemi seçin.
+1. **Işlem seçin** altında, **yerleşik**' i seçin. Arama kutusuna girin `condition` ve **koşul** adlı eylemi seçin.
 
 1. Koşulu şu açıklama ile yeniden adlandırın: `If add member succeeded`
 
@@ -237,7 +239,7 @@ Ardından, onaylanan üye e-posta listenize katılırken başarılı veya başar
 
    !["Üye ekleme başarılı oldu" koşulunun "bir eylem Ekle" seçiliyken "doğru" dalını gösteren ekran görüntüsü.](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-email-success.png)
 
-1. İşlem araması **seçin** arama kutusuna girin `outlook send email` ve **e-posta gönder**adlı eylemi seçin.
+1. İşlem araması **seçin** arama kutusuna girin `outlook send email` ve **e-posta gönder** adlı eylemi seçin.
 
    !["Outlook Gönder e-postası" ve bildirim için "e-posta gönder" eylemi seçili "bir işlem seçin" arama kutusunu gösteren ekran görüntüsü.](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-email-success-2.png)
 
@@ -249,9 +251,9 @@ Ardından, onaylanan üye e-posta listenize katılırken başarılı veya başar
 
    | Özellik | Gerekli | Değer | Açıklama |
    |----------|----------|-------|-------------|
-   | **Gövde** | Evet | <*başarılı-e-posta gövdesi*> | Başarı e-postasının gövde içeriği. Bu öğretici için aşağıdaki adımları izleyin: <p>1. bu metni sonundaki bir boşluk ile girin: `New member has joined "test-members-ML":` <p>2. görüntülenen dinamik içerik listesinden **e-posta adresi** özelliğini seçin. <p>**Note**: Bu özellik görünmezse **listede üye Ekle** bölüm başlığının yanındaki **daha fazla göster**' i seçin. <p>3. sonraki satırda, bu metni sonundaki bir boşluk ile girin: `Member opt-in status: ` <p>4. dinamik içerik listesinden **üye Ekle**altında, **durum** özelliğini seçin. |
-   | **Konu** | Evet | <*başarılı-e-posta-konu*> | Başarı e-postasının konusu. Bu öğretici için aşağıdaki adımları izleyin: <p>1. bu metni sonundaki bir boşluk ile girin: `Success! Member added to "test-members-ML": ` <p>2. dinamik içerik listesinden **üye Ekle**' nin altında, **e-posta adresi** özelliğini seçin. |
-   | **Amaç** | Evet | <*e-posta adresiniz*> | Başarı e-postasının gönderileceği e-posta adresi. Test için kendi e-posta adresinizi kullanabilirsiniz. |
+   | **Gövde** | Yes | <*başarılı-e-posta gövdesi*> | Başarı e-postasının gövde içeriği. Bu öğretici için aşağıdaki adımları izleyin: <p>1. bu metni sonundaki bir boşluk ile girin: `New member has joined "test-members-ML":` <p>2. görüntülenen dinamik içerik listesinden **e-posta adresi** özelliğini seçin. <p>**Note**: Bu özellik görünmezse **listede üye Ekle** bölüm başlığının yanındaki **daha fazla göster**' i seçin. <p>3. sonraki satırda, bu metni sonundaki bir boşluk ile girin: `Member opt-in status: ` <p>4. dinamik içerik listesinden **üye Ekle** altında, **durum** özelliğini seçin. |
+   | **Konu** | Yes | <*başarılı-e-posta-konu*> | Başarı e-postasının konusu. Bu öğretici için aşağıdaki adımları izleyin: <p>1. bu metni sonundaki bir boşluk ile girin: `Success! Member added to "test-members-ML": ` <p>2. dinamik içerik listesinden **üye Ekle**' nin altında, **e-posta adresi** özelliğini seçin. |
+   | **Kime** | Yes | <*e-posta adresiniz*> | Başarı e-postasının gönderileceği e-posta adresi. Test için kendi e-posta adresinizi kullanabilirsiniz. |
    |||||
 
 1. Mantıksal uygulamanızı kaydedin.
@@ -262,7 +264,7 @@ Ardından, onaylanan üye e-posta listenize katılırken başarılı veya başar
 
    !["Üye ekleme başarılı" koşulun "yanlış" dalını "Eylem Ekle" seçiliyken gösteren ekran görüntüsü.](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-email-failed.png)
 
-1. İşlem araması **seçin** arama kutusuna girin `outlook send email` ve **e-posta gönder**adlı eylemi seçin.
+1. İşlem araması **seçin** arama kutusuna girin `outlook send email` ve **e-posta gönder** adlı eylemi seçin.
 
    !["Outlook Gönder e-postası" girilmiş ve "e-posta gönder" eylemi seçili olan "işlem seçin" arama kutusunu gösteren ekran görüntüsü.](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-email-failed-2.png)
 
@@ -274,9 +276,9 @@ Ardından, onaylanan üye e-posta listenize katılırken başarılı veya başar
 
    | Özellik | Gerekli | Değer | Açıklama |
    |----------|----------|-------|-------------|
-   | **Gövde** | Evet | <*hata gövdesi-e-posta*> | Başarısızlık e-postasının gövde içeriği. Bu öğretici için şu metni girin: <p>`Member might already exist. Check your MailChimp account.` |
-   | **Konu** | Evet | <*sorun-e-posta*> | Başarısızlık e-postasının konusu. Bu öğretici için aşağıdaki adımları izleyin: <p>1. bu metni sonundaki bir boşluk ile girin: `Failed, member not added to "test-members-ML": ` <p>2. dinamik içerik listesinden **üye Ekle**' nin altında, **e-posta adresi** özelliğini seçin. |
-   | **Amaç** | Evet | <*e-posta adresiniz*> | Başarısızlık e-postasının gönderileceği e-posta adresi. Test için kendi e-posta adresinizi kullanabilirsiniz. |
+   | **Gövde** | Yes | <*hata gövdesi-e-posta*> | Başarısızlık e-postasının gövde içeriği. Bu öğretici için şu metni girin: <p>`Member might already exist. Check your MailChimp account.` |
+   | **Konu** | Yes | <*sorun-e-posta*> | Başarısızlık e-postasının konusu. Bu öğretici için aşağıdaki adımları izleyin: <p>1. bu metni sonundaki bir boşluk ile girin: `Failed, member not added to "test-members-ML": ` <p>2. dinamik içerik listesinden **üye Ekle**' nin altında, **e-posta adresi** özelliğini seçin. |
+   | **Kime** | Yes | <*e-posta adresiniz*> | Başarısızlık e-postasının gönderileceği e-posta adresi. Test için kendi e-posta adresinizi kullanabilirsiniz. |
    |||||
 
 1. Mantıksal uygulamanızı kaydedin. 
@@ -319,7 +321,7 @@ Mantıksal uygulamanız, uygulamayı devre dışı bırakana veya silme yapılı
    !["La-mailinglist-RG" girilmiş ve * * LA-MailingList-RG * * seçili olan Azure Arama kutusunu gösteren ekran görüntüsü.](./media/tutorial-process-mailing-list-subscriptions-workflow/find-resource-group.png)
 
    > [!TIP]
-   > Azure giriş sayfasında **son kaynaklar**altında kaynak grubu görünüyorsa, giriş sayfasından grubu seçebilirsiniz.
+   > Azure giriş sayfasında **son kaynaklar** altında kaynak grubu görünüyorsa, giriş sayfasından grubu seçebilirsiniz.
 
 1. Kaynak grubu menüsünde, **genel bakış** ' ın seçili olduğunu denetleyin. **Genel bakış** bölmesinin araç çubuğunda **kaynak grubunu sil**' i seçin.
 

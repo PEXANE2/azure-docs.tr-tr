@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
-ms.date: 01/22/2021
-ms.openlocfilehash: b16e95c231096b7b37175cda5233019696fba19c
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.date: 01/25/2021
+ms.openlocfilehash: 8e5b43383e0b49c0fe6fffdd9ffee6667fb540f8
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98726524"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054763"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure Logic Apps için sınırlar ve yapılandırma bilgileri
 
@@ -380,27 +380,42 @@ Bir mantıksal uygulamayı devre dışı bıraktığınızda, yeni çalıştırm
 Mantıksal uygulamayı sildiğinizde yeni çalıştırma başlatılmaz. Devam eden ve bekleme durumunda olan tüm çalıştırmalar iptal edilir. Binlerce çalıştırma varsa iptal işleminin tamamlanması zaman alabilir.
 
 <a name="configuration"></a>
+<a name="firewall-ip-configuration"></a>
 
 ## <a name="firewall-configuration-ip-addresses-and-service-tags"></a>Güvenlik duvarı yapılandırması: IP adresleri ve hizmet etiketleri
 
-Azure Logic Apps gelen ve giden çağrılar için kullandığı IP adresleri, mantıksal uygulamanızın bulunduğu bölgeye göre değişir. Aynı bölgedeki *Tüm* mantıksal uygulamalar aynı IP adresi aralıklarını kullanır. **Http** ve **http + openapı** Istekleri gibi bazı [güç otomatikleştirme](/power-automate/getting-started) çağrıları, doğrudan Azure Logic Apps hizmetine giderek burada listelenen IP adreslerinden gelir. Güç otomatikleştirme tarafından kullanılan IP adresleri hakkında daha fazla bilgi için bkz. [Güç otomatikleştirmede sınırlamalar ve yapılandırma](/flow/limits-and-config#ip-address-configuration).
+Mantıksal uygulamanızın trafiği belirli IP adresleriyle sınırlayan bir güvenlik duvarı üzerinden iletişim kurması gerektiğinde, bu güvenlik duvarının, mantıksal uygulamanızın bulunduğu Azure bölgesindeki Logic Apps hizmeti veya çalışma zamanı tarafından kullanılan [gelen](#inbound) ve [giden](#outbound) IP *adresleri için erişime* izin verilmesi gerekir. Aynı bölgedeki *Tüm* mantıksal uygulamalar aynı IP adresi aralıklarını kullanır.
 
-> [!TIP]
-> Güvenlik kuralları oluştururken karmaşıklığı azaltmaya yardımcı olmak için, bu bölümün ilerleyen kısımlarında açıklanan her bir bölgenin Logic Apps IP adreslerini belirtmek yerine isteğe bağlı olarak [hizmet etiketleri](../virtual-network/service-tags-overview.md)kullanabilirsiniz.
-> Bu Etiketler Logic Apps hizmetinin kullanılabildiği bölgelerde çalışır:
->
-> * **Logicappsmanagement**: Logic Apps hizmeti IÇIN gelen IP adresi öneklerini temsil eder.
-> * **Logicapps**: Logic Apps hizmeti IÇIN giden IP adresi öneklerini temsil eder.
+Örneğin, Batı ABD bölgesindeki mantıksal uygulamaların, [http tetikleyicisi veya eylemi](../connectors/connectors-native-http.md)gibi yerleşik Tetikleyiciler ve eylemler aracılığıyla gönderme veya alma işlemini desteklemesi için, güvenlik duvarınızın, Batı ABD bölgesinde mevcut olan *Tüm* Logic Apps hizmeti gelen IP adresleri *ve* giden IP adresleri için erişime izin verilmesi gerekir.
 
-* [Azure Çin 21Vianet](/azure/china/)için, [özel bağlayıcılar](../logic-apps/custom-connector-overview.md) ve [yönetilen bağlayıcılar](../connectors/apis-list.md#managed-api-connectors)(örneğin, azure depolama, SQL Server, Office 365 Outlook vb.) için sabit veya ayrılmış IP adresleri kullanılamaz.
+Mantıksal uygulamanız ayrıca Office 365 Outlook Bağlayıcısı veya SQL Bağlayıcısı gibi [yönetilen bağlayıcılar](../connectors/apis-list.md#managed-api-connectors)kullanıyorsa veya [özel bağlayıcılar](/connectors/custom-connectors/)kullanıyorsa, güvenlik duvarının ayrıca mantıksal uygulamanızın Azure bölgesindeki *Tüm* [yönetilen bağlayıcı giden IP adresleri](#outbound) için erişime izin verilmesi gerekir. Ayrıca, [Azure 'da şirket içi veri ağ geçidi kaynağı](logic-apps-gateway-connection.md)aracılığıyla şirket içi kaynaklara erişen özel bağlayıcılar kullanırsanız, ağ geçidi yüklemesini, ilgili *YÖNETILEN bağlayıcılar [giden IP adreslerine](#outbound)* erişime izin verecek şekilde ayarlamanız gerekir.
 
-* Mantıksal uygulamalarınızın doğrudan [http](../connectors/connectors-native-http.md), [http + Swagger](../connectors/connectors-native-http-swagger.md)ve diğer http istekleriyle yaptığı çağrıları desteklemek için, mantıksal uygulamalarınızın bulunduğu bölgelere göre Logic Apps hizmeti tarafından kullanılan tüm [gelen](#inbound) *ve* [giden](#outbound) IP adresleriyle güvenlik duvarınızı ayarlayın. Bu adresler, bu bölümdeki **gelen** ve **giden** başlıkların altında görüntülenir ve bölgeye göre sıralanır.
+Ağ geçidinde iletişim ayarlarını ayarlama hakkında daha fazla bilgi için şu konulara bakın:
 
-* [Yönetilen bağlayıcıların](../connectors/apis-list.md#managed-api-connectors) yaptığı çağrıları desteklemek için, mantıksal uygulamalarınızın bulunduğu bölgelere göre bu bağlayıcılar tarafından kullanılan *Tüm* [giden](#outbound) IP adresleriyle güvenlik duvarınızı ayarlayın. Bu adresler, bu bölümdeki **giden** başlık altında görüntülenir ve bölgeye göre sıralanır.
+* [Şirket içi veri ağ geçidi için iletişim ayarlarını yapılandırma](/data-integration/gateway/service-gateway-communication)
+* [Şirket içi veri ağ geçidi için ara sunucu ayarlarını yapılandırma](/data-integration/gateway/service-gateway-proxy)
 
-* Bir tümleştirme hizmeti ortamında (ıSE) çalışan Logic Apps iletişimini etkinleştirmek için, [Bu bağlantı noktalarını açtığınızdan](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#network-ports-for-ise)emin olun.
+<a name="ip-setup-considerations"></a>
 
-* Mantıksal uygulamalarınızın [güvenlik duvarları ve güvenlik duvarı kuralları](../storage/common/storage-network-security.md)kullanan Azure depolama hesaplarına erişme sorunları varsa, [erişimi etkinleştirmek için çeşitli seçenekleriniz](../connectors/connectors-create-api-azureblobstorage.md#access-storage-accounts-behind-firewalls)vardır.
+### <a name="firewall-ip-configuration-considerations"></a>Güvenlik Duvarı IP yapılandırması konuları
+
+Güvenlik duvarınızı IP adresleriyle ayarlamadan önce, şu hususları gözden geçirin:
+
+* [Güç otomatikleştirme](/power-automate/getting-started)'yi kullanıyorsanız, **http** ve **http + openapı** gibi bazı eylemler doğrudan Azure Logic Apps HIZMETI aracılığıyla gider ve burada listelenen IP adreslerinden gelir. Güç otomatikleştirme tarafından kullanılan IP adresleri hakkında daha fazla bilgi için bkz. [Güç otomatikleştirme Için sınırlamalar ve yapılandırma](/flow/limits-and-config#ip-address-configuration).
+
+* [Azure Çin 21Vianet](/azure/china/)için, [özel bağlayıcılar](../logic-apps/custom-connector-overview.md) ve Azure depolama, SQL Server, Office 365 Outlook gibi [yönetilen BAĞLAYıCıLAR](../connectors/apis-list.md#managed-api-connectors)için sabit veya ayrılmış IP adresleri kullanılamaz.
+
+* Mantıksal uygulamalarınız bir [tümleştirme hizmeti ortamında (ıSE)](connect-virtual-network-vnet-isolated-environment-overview.md)çalışıyorsa, [Bu bağlantı noktalarını da açtığınızdan](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#network-ports-for-ise)emin olun.
+
+* Oluşturmak istediğiniz güvenlik kurallarını basitleştirmenize yardımcı olmak için, her bölge için IP adresi öneklerini belirtmek yerine isteğe bağlı olarak [hizmet etiketleri](../virtual-network/service-tags-overview.md) kullanabilirsiniz. Bu Etiketler Logic Apps hizmetinin kullanılabildiği bölgelerde çalışır:
+
+  * **Logicappsmanagement**: Logic Apps hizmeti IÇIN gelen IP adresi öneklerini temsil eder.
+
+  * **Logicapps**: Logic Apps hizmeti IÇIN giden IP adresi öneklerini temsil eder.
+
+  * **AzureConnectors**: Logic Apps hizmetine gelen Web kancası geri çağırmaları ve Azure depolama veya Azure Event Hubs gibi ilgili hizmetlerine giden çağrıları yapan, yönetilen BAĞLAYıCıLAR için IP adresi öneklerini temsil eder.
+
+* Mantıksal uygulamalarınızın [güvenlik duvarları ve güvenlik duvarı kuralları](../storage/common/storage-network-security.md)kullanan Azure depolama hesaplarına erişme sorunları varsa, [erişimi etkinleştirmek için çeşitli diğer seçenekleriniz](../connectors/connectors-create-api-azureblobstorage.md#access-storage-accounts-behind-firewalls)vardır.
 
   Örneğin Logic Apps, güvenlik duvarı kurallarını kullanan ve aynı bölgede bulunan depolama hesaplarına doğrudan erişemez. Ancak, [bölgeniz içindeki yönetilen bağlayıcılar için gıden IP adreslerine](../logic-apps/logic-apps-limits-and-config.md#outbound)izin verirseniz, mantıksal uygulamalarınız Azure Tablo depolama veya Azure kuyruk depolama bağlayıcıları ' nı kullandığınız durumlar dışında farklı bir bölgedeki depolama hesaplarına erişebilir. Tablo depolama veya kuyruk depolama verilerinize erişmek için bunun yerine HTTP tetikleyicisini ve eylemlerini kullanabilirsiniz. Diğer seçenekler için bkz. [güvenlik duvarlarının arkasındaki depolama hesaplarına erişme](../connectors/connectors-create-api-azureblobstorage.md#access-storage-accounts-behind-firewalls).
 
@@ -411,9 +426,7 @@ Azure Logic Apps gelen ve giden çağrılar için kullandığı IP adresleri, ma
 Bu bölüm yalnızca Azure Logic Apps hizmeti için gelen IP adreslerini listeler. Azure Kamu kullanıyorsanız bkz. [Azure Kamu-gelen IP adresleri](#azure-government-inbound).
 
 > [!TIP]
-> Güvenlik kuralları oluştururken karmaşıklığı azaltmaya yardımcı olmak için, isteğe bağlı olarak her bölge için gelen Logic Apps IP adresi öneklerini belirtmek yerine **logicappsmanagement** [hizmet etiketini](../virtual-network/service-tags-overview.md)kullanabilirsiniz.
-> Yönetilen bağlayıcılar için, isteğe bağlı olarak her bölge için gelen yönetilen bağlayıcı IP adresi öneklerini belirtmek yerine **AzureConnectors** Service etiketini kullanabilirsiniz.
-> Bu Etiketler Logic Apps hizmetinin kullanılabildiği bölgelerde çalışır.
+> Güvenlik kuralları oluştururken karmaşıklığı azaltmaya yardımcı olmak için, isteğe bağlı olarak her bölge için gelen Logic Apps IP adresi öneklerini belirtmek yerine **logicappsmanagement** [hizmet etiketini](../virtual-network/service-tags-overview.md)kullanabilirsiniz. İsteğe bağlı olarak, her bölge için gelen yönetilen bağlayıcı IP adresi öneklerini belirtmek yerine Logic Apps hizmetine gelen Web kancası geri çağırmaları oluşturan yönetilen bağlayıcılar için **AzureConnectors** hizmeti etiketini kullanabilirsiniz. Bu Etiketler Logic Apps hizmetinin kullanılabildiği bölgelerde çalışır.
 
 <a name="multi-tenant-inbound"></a>
 
@@ -479,8 +492,7 @@ Bu bölüm yalnızca Azure Logic Apps hizmeti için gelen IP adreslerini listele
 Bu bölümde Azure Logic Apps hizmeti ve yönetilen bağlayıcılar için giden IP adresleri listelenir. Azure Kamu kullanıyorsanız bkz. [Azure Kamu-gıden IP adresleri](#azure-government-outbound).
 
 > [!TIP]
-> Güvenlik kuralları oluştururken karmaşıklığı azaltmaya yardımcı olmak için, isteğe bağlı olarak her bölge için giden Logic Apps IP adresi öneklerini belirtmek yerine **logicapps** [hizmet etiketini](../virtual-network/service-tags-overview.md)kullanabilirsiniz.
-> Bu etiket Logic Apps hizmetinin kullanılabildiği bölgelerde çalışıyor. 
+> Güvenlik kuralları oluştururken karmaşıklığı azaltmaya yardımcı olmak için, isteğe bağlı olarak her bölge için giden Logic Apps IP adresi öneklerini belirtmek yerine **logicapps** [hizmet etiketini](../virtual-network/service-tags-overview.md)kullanabilirsiniz. İsteğe bağlı olarak, her bölge için giden yönetilen bağlayıcı IP adresi öneklerini belirtmek yerine, Azure depolama veya Azure Event Hubs gibi ilgili hizmetlere giden çağrılar yapan yönetilen bağlayıcılar için **AzureConnectors** hizmet etiketini kullanabilirsiniz. Bu Etiketler Logic Apps hizmetinin kullanılabildiği bölgelerde çalışır.
 
 <a name="multi-tenant-outbound"></a>
 

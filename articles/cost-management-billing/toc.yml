@@ -384,15 +384,15 @@
       href: /rest/api/cost-management
     - name: Azure Tüketim REST API’si
       href: /rest/api/consumption
-    - name: Resource Manager şablonu
+    - name: Tüketim REST API ARM bütçe şablonu
       href: /azure/templates/microsoft.consumption/budgets
     - name: Maliyet Yönetimi REST API Örnekleri
       href: 'https://github.com/Azure-Samples/Cost-Management-Samples'
-    - name: Maliyet Yönetimi - Azure PowerShell
+    - name: Maliyet yönetimi için Azure PowerShell cmdlet 'leri
       href: /powershell/module/Az.CostManagement
     - name: Faturalandırma Otomasyon Senaryoları
       href: manage/cost-management-automation-scenarios.md
-    - name: Azure Faturalandırma API’sine genel bakış
+    - name: Azure perakende fiyatları REST API
       href: /rest/api/cost-management/retail-prices/azure-retail-prices
     - name: Azure Faturalandırma REST API’si
       href: /rest/api/billing
@@ -400,25 +400,21 @@
       href: manage/consumption-api-overview.md
     - name: Azure Tüketim REST API’si
       href: /rest/api/consumption
-    - name: RateCard REST API’si
-      href: /previous-versions/azure/reference/mt219005(v=azure.100)
-    - name: Kullanım REST API’si
-      href: /previous-versions/azure/reference/mt219003(v=azure.100)
-    - name: Kurumsal raporlamaya genel bakış
+    - name: Kurumsal raporlama REST API genel bakış
       href: manage/enterprise-api.md
-    - name: Kurumsal raporlama REST API’si
+    - name: Kurumsal raporlama REST API 'Leri
       href: /rest/api/billing/enterprise/billing-enterprise-api-balance-summary
     - name: Rezervasyonlar
       items:
         - name: Rezervasyonlar REST API’si
           href: reservations/reservation-apis.md?toc=/azure/cost-management-billing/toc.json
-        - name: Rezervasyonlar - Azure PowerShell
+        - name: Ayırmalar için Azure PowerShell cmdlet 'leri
           href: /powershell/module/azurerm.reservations
-        - name: Rezervasyonlar - CLI
+        - name: Ayırmalar için Azure CLı
           href: /cli/azure/reservations/reservation
-        - name: Maliyet Yönetimi - Tüketim Kullanım Ayrıntıları REST API’si
+        - name: Kullanım ayrıntıları REST API
           href: /rest/api/consumption/usagedetails
-        - name: Maliyet Yönetimi - Tüketim Rezervasyon Ayrıntıları REST API’si
+        - name: Rezervasyonlar ayrıntıları REST API
           href: /rest/api/consumption/reservationsdetails
 - name: Kaynaklar
   items:

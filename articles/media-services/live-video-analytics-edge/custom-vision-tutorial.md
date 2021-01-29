@@ -4,12 +4,12 @@ description: Azure Özel Görüntü İşleme kullanarak bir oyunsuna algılayan 
 ms.topic: tutorial
 ms.date: 09/08/2020
 zone_pivot_groups: ams-lva-edge-programming-languages
-ms.openlocfilehash: de788c337ce8030b73538565e4f374ffc7db55b8
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: 0b5d011ac7832436edf1f5c898b1fe1e239d0aea
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98060528"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99055373"
 ---
 # <a name="tutorial-analyze-live-video-with-live-video-analytics-on-iot-edge-and-azure-custom-vision"></a>Öğretici: IoT Edge ve Azure Özel Görüntü İşleme canlı video analizi ile canlı videoyu çözümleyin
 
@@ -51,7 +51,6 @@ Başlamadan önce aşağıdaki makaleleri okuyun:
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [prerequisites](includes/custom-vision-tutorial/csharp/prerequisites.md)]
 ::: zone-end
@@ -59,6 +58,10 @@ Başlamadan önce aşağıdaki makaleleri okuyun:
 ::: zone pivot="programming-language-python"
 [!INCLUDE [prerequisites](includes/custom-vision-tutorial/python/prerequisites.md)]
 ::: zone-end
+
+> [!IMPORTANT]
+> Bu Özel Görüntü İşleme modülü yalnızca **Intel x86 ve AMD64** mimarilerini destekler. Lütfen devam etmeden önce Edge cihazınızın mimarisini kontrol edin.
+
 ## <a name="review-the-sample-video"></a>Örnek videoyu gözden geçirin
 
 Bu öğreticide, canlı bir akışın benzetimini yapmak için bir [oyuncar bir video](https://lvamedia.blob.core.windows.net/public/t2.mkv) dosyası kullanılmaktadır. [VLC medya oynatıcı](https://www.videolan.org/vlc/)gibi bir uygulama aracılığıyla videoyu inceleyebilirsiniz. **CTRL + N**' ı seçin ve ardından kayıttan yürütmeyi başlatmak üzere [oyuncar arabasının videosunu](https://lvamedia.blob.core.windows.net/public/t2.mkv) bir bağlantı yapıştırın. Videoyu izlerken videoda bir oyunçın 36 saniyelik işaretçisi ile ilgili olduğunu unutmayın. Özel model bu oyuncak kamyonu algılamak için eğitildi. 
@@ -81,6 +84,9 @@ HTTP uzantısı düğümü bir ara sunucu rolünü yürütür.  Bu, alanı kulla
 Ad Özel Görüntü İşleme önerdiğinde, bulutu kullanarak kendi özel nesne algılayıcısının veya sınıflandırıcınızı oluşturabilirsiniz. Bulutta veya bir kenara kapsayıcılar aracılığıyla dağıtılabilecek Özel Görüntü İşleme modeller oluşturmak için basit, kullanımı kolay ve sezgisel bir arabirim sağlar.
 
 Bir oyunker algılayıcısı oluşturmak için [hızlı başlangıç: özel görüntü işleme Web sitesiyle bir nesne algılayıcısı oluşturma](../../cognitive-services/custom-vision-service/get-started-build-detector.md)' daki adımları izleyin.
+
+> [!IMPORTANT]
+> Bu Özel Görüntü İşleme modülü yalnızca yalnızca **Intel x86 ve AMD64** mimarilerini destekler. Lütfen devam etmeden önce Edge cihazınızın mimarisini kontrol edin.
 
 Ek notlar:
  

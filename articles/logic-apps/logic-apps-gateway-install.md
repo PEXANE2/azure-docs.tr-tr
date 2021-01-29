@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: arthii, logicappspm
 ms.topic: article
 ms.date: 05/15/2020
-ms.openlocfilehash: a36b9d20fa20df56ec53e090976ea86e689ac74b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 799e879b4d9fd54367d54c17b3d275acfc5f34c1
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91322521"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054780"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>Azure Logic Apps için şirket içi veri ağ geçidi yükleme
 
@@ -26,7 +26,7 @@ Bu makalede şirket içi veri ağ geçidinizi indirme, yükleme ve kurma işleml
 
 <a name="requirements"></a>
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Bir Azure hesabı ve aboneliği Aboneliği olan bir Azure hesabınız yoksa, [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -97,7 +97,7 @@ Bu makalede şirket içi veri ağ geçidinizi indirme, yükleme ve kurma işleml
 
    Ağ Geçidi yüklemeniz yalnızca bir Azure hesabına bağlanabilir.
 
-1. Sonra **Bu bilgisayarda yeni bir ağ geçidi Kaydet '** i seçin  >  **Next**. Bu adım ağ geçidi yükleme cihazınızı [ağ geçidi bulut hizmetine](#gateway-cloud-service)kaydeder.
+1. Sonra **Bu bilgisayarda yeni bir ağ geçidi Kaydet '** i seçin  >  . Bu adım ağ geçidi yükleme cihazınızı [ağ geçidi bulut hizmetine](#gateway-cloud-service)kaydeder.
 
    ![Ağ geçidini yerel bilgisayara kaydet](./media/logic-apps-gateway-install/register-gateway-local-computer.png)
 
@@ -112,7 +112,7 @@ Bu makalede şirket içi veri ağ geçidinizi indirme, yükleme ve kurma işleml
    > [!IMPORTANT]
    > Kurtarma Anahtarınızı güvenli bir yerde kaydedin ve saklayın. Konumu değiştirmek, taşımak, kurtarmak veya bir ağ geçidi yüklemesini almak istiyorsanız bu anahtara ihtiyacınız vardır.
 
-   [Yüksek kullanılabilirlik senaryoları](#high-availability)için ek ağ geçitleri yüklerken seçtiğiniz **mevcut bir ağ geçidi kümesine ekleme**seçeneğini göz önünde bulabilirsiniz.
+   [Yüksek kullanılabilirlik senaryoları](#high-availability)için ek ağ geçitleri yüklerken seçtiğiniz **mevcut bir ağ geçidi kümesine ekleme** seçeneğini göz önünde bulabilirsiniz.
 
 1. Ağ Geçidi Bulut hizmeti ve ağ geçidi yüklemeniz tarafından kullanılan [mesajlaşma örneği Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) için bölgeyi denetleyin. Bu bölge, varsayılan olarak Azure hesabınız için Azure AD kiracısı ile aynı konumdadır.
 
@@ -138,9 +138,15 @@ Bu makalede şirket içi veri ağ geçidinizi indirme, yükleme ve kurma işleml
 
 1. Şimdi [ağ geçidi yüklemeniz Için Azure kaynağını oluşturun](../logic-apps/logic-apps-gateway-connection.md).
 
+<a name="communication-settings"></a>
+
 ## <a name="check-or-adjust-communication-settings"></a>İletişim ayarlarını denetle veya ayarla
 
-Şirket içi veri ağ geçidi, bulut bağlantısı için [Azure Service Bus mesajlaşma](../service-bus-messaging/service-bus-messaging-overview.md) 'ya bağlıdır ve ağ geçidinin ilişkili Azure bölgesine karşılık gelen giden bağlantıları kurar. İş ortamınız internet 'e erişmek için bir ara sunucu veya güvenlik duvarından geçtiğinde, bu kısıtlama şirket içi veri ağ geçidinin ağ geçidi bulut hizmetine bağlanmasını ve mesajlaşma Azure Service Bus engelleyebilir. Ağ geçidinde, ayarlayabileceğiniz çeşitli iletişim ayarları vardır. Daha fazla bilgi için şu konulara bakın:
+Şirket içi veri ağ geçidi, bulut bağlantısı için [Azure Service Bus mesajlaşma](../service-bus-messaging/service-bus-messaging-overview.md) 'ya bağlıdır ve ağ geçidinin ilişkili Azure bölgesine karşılık gelen giden bağlantıları kurar. İş ortamınız internet 'e erişmek için bir ara sunucu veya güvenlik duvarından geçtiğinde, bu kısıtlama şirket içi veri ağ geçidinin ağ geçidi bulut hizmetine bağlanmasını ve mesajlaşma Azure Service Bus engelleyebilir. Ağ geçidinde, ayarlayabileceğiniz çeşitli iletişim ayarları vardır.
+
+Örnek senaryo, Azure 'da şirket içi veri ağ geçidi kaynağını kullanarak şirket içi kaynaklara erişen özel bağlayıcılar kullandığınız yerdir. Ayrıca belirli IP adresleriyle trafiği sınırlayan bir güvenlik duvarınız varsa, ilgili *yönetilen bağlayıcılar [giden IP adreslerine](logic-apps-limits-and-config.md#outbound)* erişime izin vermek için ağ geçidi yüklemesini ayarlamanız gerekir. Aynı bölgedeki *Tüm* mantıksal uygulamalar aynı IP adresi aralıklarını kullanır.
+
+Daha fazla bilgi için şu konulara bakın:
 
 * [Şirket içi veri ağ geçidi için iletişim ayarlarını yapılandırma](/data-integration/gateway/service-gateway-communication)
 * [Şirket içi veri ağ geçidi için ara sunucu ayarlarını yapılandırma](/data-integration/gateway/service-gateway-proxy)

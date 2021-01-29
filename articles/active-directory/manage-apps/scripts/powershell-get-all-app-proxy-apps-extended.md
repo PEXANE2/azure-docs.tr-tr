@@ -11,16 +11,18 @@ ms.topic: sample
 ms.date: 12/05/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 330bd9b78c2f550ab40f1f4f3679b6c9788ddb64
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 62dae175b529bd54b2f139eece89bbde6f98cd38
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96859403"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99055017"
 ---
 # <a name="get-all-application-proxy-apps-and-list-extended-information"></a>Tüm uygulama proxy 'Si uygulamalarını al ve genişletilmiş bilgileri Listele
 
-Bu PowerShell betiği örneği, uygulama KIMLIĞI (AppID), adı (DisplayName), dış URL (ExternalUrl), iç URL (InternalUrl) ve kimlik doğrulama türü (ExternalAuthenticationType) dahil olmak üzere tüm Azure Active Directory (Azure AD) uygulama proxy uygulamaları hakkındaki bilgileri listeler.
+Bu PowerShell betiği örneği, uygulama KIMLIĞI (AppID), adı (DisplayName), dış URL (ExternalUrl), iç URL (InternalUrl), kimlik doğrulama türü (ExternalAuthenticationType), SSO modu ve diğer ayarlar dahil olmak üzere tüm Azure Active Directory (Azure AD) uygulama proxy uygulamaları hakkındaki bilgileri listeler.
+
+$SsoMode değişkenin değerini değiştirmek, filtrelenmiş bir çıktıyı SSO moduna izin vermez. Diğer ayrıntılar betikte belgelenmiştir.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
 
@@ -28,7 +30,7 @@ Bu PowerShell betiği örneği, uygulama KIMLIĞI (AppID), adı (DisplayName), d
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
 
-Bu örnek, Graf modülü (azuread) [Için Azuread v2 PowerShell](/powershell/azure/active-directory/install-adv2) 'ı veya Graf modülü önizleme sürümü (azureadpreview) [Için Azuread v2 PowerShell](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview) 'i gerektirir.
+Bu örnek, Graf modülü (azuread) [Için Azuread v2 PowerShell](/powershell/azure/active-directory/install-adv2) gerektirir.
 
 ## <a name="sample-script"></a>Örnek betik
 

@@ -1,4 +1,4 @@
-- name: Kullanıcı Yardım Belgeleri
+- name: Kullanıcı Yardım belgeleri
   href: index.yml
 - name: İki aşamalı doğrulama yardımı
   items:
@@ -50,6 +50,8 @@
       href: auth-app-android-china.md
     - name: Hesaplarınızı yedekleme ve kurtarma
       href: user-help-auth-app-backup-recovery.md
+    - name: Parolaları Authenticator uygulamasına aktar
+      href: user-help-authenticator-app-import-passwords.md
     - name: SSS
       href: user-help-auth-app-faq.md
 - name: Hesabım portalı yardımı

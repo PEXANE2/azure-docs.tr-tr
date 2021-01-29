@@ -16,12 +16,12 @@ ms.date: 11/13/2019
 ms.subservice: app-mgmt
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d7a570fb322d24bf0d32efcb6f1a2ee515862755
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 37b9733c8c48f477efcd42571b2206405efdd5cb
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98736978"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99055102"
 ---
 # <a name="application-management-best-practices"></a>Uygulama yönetimi en iyi uygulamaları
 
@@ -34,7 +34,7 @@ Bu makalede, Azure Active Directory (Azure AD) içinde uygulamaları yönetmeye 
 | Federal SAML tabanlı SSO kullanın  | Bir uygulama bunu destekliyorsa, parola tabanlı SSO ve ADFS yerine Azure AD ile Federal ve SAML tabanlı SSO kullanın.  | 
 | Sertifika imzalama için SHA-256 kullanın  | Azure AD, SAML Yanıtını imzalamak için varsayılan olarak SHA-256 algoritmasını kullanır. Uygulama SHA-1 gerektirmediği takdirde SHA-256 kullanın (bkz. [sertifika imzalama seçenekleri](certificate-signing-options.md) ve [uygulama oturum açma sorunu](application-sign-in-problem-application-error.md).)  | 
 | Kullanıcı Ataması gerektir  | Varsayılan olarak, kullanıcılar bu kullanıcılara atanmadan kurumsal uygulamalarınıza erişebilir. Ancak, uygulama rolleri kullanıma sunarsa veya uygulamanın kullanıcı uygulamamda görünmesini istiyorsanız, Kullanıcı Ataması gerektir.  | 
-| Uygulamalarımı kullanıcılarınıza dağıtın | Konumundaki [uygulamalarım](end-user-experiences.md) `https://myapps.microsoft.com` , kullanıcılara atanan bulut tabanlı uygulamalar için tek bir giriş noktası sağlayan Web tabanlı bir portaldır. Grup Yönetimi ve self servis parola sıfırlama gibi ek yetenekler eklendikçe, kullanıcılar bunları uygulamamda bulabilir. Bkz. [uygulamalarımı dağıtımını planla](access-panel-deployment-plan.md).
+| Uygulamalarımı kullanıcılarınıza dağıtın | Konumundaki [uygulamalarım](end-user-experiences.md) `https://myapps.microsoft.com` , kullanıcılara atanan bulut tabanlı uygulamalar için tek bir giriş noktası sağlayan Web tabanlı bir portaldır. Grup Yönetimi ve self servis parola sıfırlama gibi ek yetenekler eklendikçe, kullanıcılar bunları uygulamamda bulabilir. Bkz. [uygulamalarımı dağıtımını planla](my-apps-deployment-plan.md).
 | Grup atamasını kullanma  | Aboneliğinize dahil ise, grup sahibine devam eden erişim yönetimini devredebilmeniz için bir uygulamaya gruplar atayın.  | 
 | Sertifikaları yönetmek için bir işlem oluşturma | İmza sertifikasının maksimum ömrü üç yıldır. Sertifikanın süresi dolduğunda kesinti oluşmasını engellemek veya en aza indirmek için, sertifikayla ilgili değişiklik bildirimlerinin yakından izlendiğinden emin olmak için roller ve e-posta dağıtım listelerini kullanın. |
 

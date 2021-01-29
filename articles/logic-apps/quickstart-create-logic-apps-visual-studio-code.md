@@ -7,12 +7,12 @@ ms.reviewer: jonfan, deli, logicappspm
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 10/28/2020
-ms.openlocfilehash: 170a919ca184c959800e62cb0d8ede8659c96df4
-ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
+ms.openlocfilehash: f46c093bffcc26b5f7975d25ccaca648bdc527da
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/21/2020
-ms.locfileid: "97709000"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054695"
 ---
 # <a name="quickstart-create-and-manage-logic-app-workflow-definitions-by-using-visual-studio-code"></a>Hızlı Başlangıç: Visual Studio Code kullanarak mantıksal uygulama iş akışı tanımlarını oluşturma ve yönetme
 
@@ -23,6 +23,8 @@ Aynı görevleri [Azure Portal](https://portal.azure.com) ve Visual Studio 'da g
 Bu makalede, temel kavramlara daha fazla odaklanan olan bu [hızlı](../logic-apps/quickstart-create-first-logic-app-workflow.md)başlangıçta aynı mantıksal uygulamayı oluşturabilirsiniz. Ayrıca [Visual Studio 'da örnek uygulamayı oluşturmayı](quickstart-create-logic-apps-with-visual-studio.md)ve [Azure Command-Line ARABIRIMI (Azure CLI) aracılığıyla uygulama oluşturmayı ve yönetmeyi](quickstart-logic-apps-azure-cli.md)öğrenin. Visual Studio Code, mantıksal uygulama şu örneğe benzer şekilde görünür:
 
 ![Örnek mantıksal uygulama iş akışı tanımı](./media/quickstart-create-logic-apps-visual-studio-code/visual-studio-code-overview.png)
+
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce şunlara sahip olduğunuzdan emin olun:
 
@@ -49,6 +51,8 @@ Başlamadan önce şunlara sahip olduğunuzdan emin olun:
     ![Uzantının doğru yüklendiğini onaylayın](./media/quickstart-create-logic-apps-visual-studio-code/confirm-installed-visual-studio-code-extension.png)
 
     Daha fazla bilgi için bkz. [uzantı marketi](https://code.visualstudio.com/docs/editor/extension-gallery). Bu uzantının açık kaynaklı sürümüne katkıda bulunmak için [GitHub 'daki Visual Studio Code Azure Logic Apps uzantısını](https://github.com/Microsoft/vscode-azurelogicapps)ziyaret edin.
+
+* Mantıksal uygulamanızın trafiği belirli IP adresleriyle sınırlayan bir güvenlik duvarı üzerinden iletişim kurması gerekiyorsa, söz konusu güvenlik duvarının, mantıksal uygulamanızın bulunduğu Azure bölgesindeki Logic Apps hizmeti veya çalışma zamanı tarafından kullanılan [gelen](logic-apps-limits-and-config.md#inbound) ve [giden](logic-apps-limits-and-config.md#outbound) IP *adresleri için erişime* izin verilmesi gerekir. Mantıksal uygulamanız ayrıca Office 365 Outlook Bağlayıcısı veya SQL Bağlayıcısı gibi [yönetilen bağlayıcılar](../connectors/apis-list.md#managed-api-connectors)kullanıyorsa veya [özel bağlayıcılar](/connectors/custom-connectors/)kullanıyorsa, güvenlik duvarının ayrıca mantıksal uygulamanızın Azure bölgesindeki *Tüm* [yönetilen bağlayıcı giden IP adresleri](logic-apps-limits-and-config.md#outbound) için erişime izin verilmesi gerekir.
 
 <a name="access-azure"></a>
 

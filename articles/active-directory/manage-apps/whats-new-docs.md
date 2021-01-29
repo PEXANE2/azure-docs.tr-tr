@@ -9,12 +9,12 @@ ms.workload: identity
 ms.author: kenwith
 author: kenwith
 manager: CelesteDG
-ms.openlocfilehash: bad312b777c57a48c3205de588325d477b5773af
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: ea2e08db91d23e9523b7bc95e01b7adc9c93b3cc
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97563407"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054830"
 ---
 # <a name="azure-active-directory-application-management-whats-new"></a>Uygulama yönetimi Azure Active Directory: yenilikler
 
@@ -90,7 +90,7 @@ Azure Active Directory Uygulama yönetimi belgelerindeki yenilikler ' e hoş gel
 - [Self Servis uygulama erişimini kullanma](access-panel-manage-self-service-access.md)
 - [Azure AD uygulamalarımın bir uygulamada oturum açma sorunlarını giderme](application-sign-in-other-problem-access-panel.md)
 - [Azure AD’de parola tabanlı çoklu oturum açma sorunlarını giderme](troubleshoot-password-based-sso.md)
-- [Azure Active Directory uygulamalarımın dağıtımını planlayın](access-panel-deployment-plan.md)
+- [Azure Active Directory uygulamalarımın dağıtımını planlayın](my-apps-deployment-plan.md)
 - [Çoklu oturum açma (SSO) nedir?](what-is-single-sign-on.md)
 - [Azure Active Directory fazla ayrıcalıklı veya şüpheli uygulamalarda işlem yapın](manage-application-permissions.md)
 - [Hızlı başlangıç: Azure Active Directory (Azure AD) kiracınızdaki bir uygulama için özellikleri yapılandırma](add-application-portal-configure.md)

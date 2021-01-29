@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 10/30/2020
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: 39645e8bd370dfd518d570c3088c56a22aa77748
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: b353fad64b08f5fc50af2b8d31abab77cd797e25
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98927035"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99055051"
 ---
 # <a name="virtual-network-service-tags"></a>Sanal ağ hizmeti etiketleri
 <a name="network-service-tags"></a>
@@ -58,7 +58,7 @@ Varsayılan olarak, hizmet etiketleri tüm bulutun aralıklarını yansıtır. B
 | **AzureBotService** | Azure bot hizmeti. | Giden | Hayır | Hayır |
 | **AzureCloud** | Tüm [veri merkezi genel IP adresleri](https://www.microsoft.com/download/details.aspx?id=56519). | Giden | Yes | Yes |
 | **Azurecognivesearch** | Azure Bilişsel Arama. <br/><br/>Bu etiket veya bu etiketin kapsadığı IP adresleri, dizin oluşturucularının veri kaynaklarına güvenli erişimini sağlamak için kullanılabilir. Daha fazla ayrıntı için [Dizin Oluşturucu bağlantı belgelerine](../search/search-indexer-troubleshooting.md#connection-errors) bakın. <br/><br/> *Not*: Arama hizmetinin IP 'si, bu hizmet etıketı için IP aralıkları listesine dahil değildir ve ayrıca VERI kaynaklarının IP güvenlik duvarına **eklenmelidir** . | Gelen | Hayır | Hayır |
-| **AzureConnectors** | Araştırma/arka uç bağlantıları için bağlayıcılar Azure Logic Apps. | Gelen | Yes | Yes |
+| **AzureConnectors** | Bu etiket, Azure Logic Apps hizmetine gelen Web kancası geri aramalarını ve ilgili hizmetlerine giden çağrıları (örneğin, Azure depolama veya Azure Event Hubs) oluşturan yönetilen bağlayıcılar için kullanılan IP adreslerini temsil eder. | Gelen/giden | Yes | Yes |
 | **AzureContainerRegistry** | Azure Container Registry. | Giden | Yes | Yes |
 | **Azu, Smosdb** | Azure Cosmos DB. | Giden | Yes | Yes |
 | **AzureDatabricks** | Azure Databricks. | Her ikisi | Hayır | Hayır |

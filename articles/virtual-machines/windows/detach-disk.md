@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 01/26/2021
 ms.author: cynthn
-ms.openlocfilehash: 95f6ce2fefacd20102abe9bbe818f228139ca33d
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: a995cd1d02438ae3be7091ba55e945549558829d
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98898520"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99055204"
 ---
 # <a name="how-to-detach-a-data-disk-from-a-windows-virtual-machine"></a>Bir Windows sanal makinesindeki veri diskini ayırma
 
@@ -53,7 +53,7 @@ Bir veri diskini *etkin* bir şekilde kaldırabilirsiniz, ancak diski VM 'den ku
 1. Sol taraftaki menüden **sanal makineler**' i seçin.
 1. Ayırmak istediğiniz veri diskine sahip sanal makineyi seçin.
 1. **Ayarlar**'ın altında **Diskler**’i seçin.
-1. **Diskler** bölmesinde, ayırmak istediğiniz veri diskinin en sağında bulunan **X** Sil düğmesine tıklayın.
+1. **Diskler** bölmesinde, ayırmak istediğiniz veri diskinin en sağında bulunan **X Detach** düğmesine tıklayın.
 1. Değişikliklerinizi kaydetmek için sayfanın üst kısmındaki **Kaydet** ' i seçin.
 
 Disk depolamada kalır, ancak artık bir sanal makineye bağlı değildir.

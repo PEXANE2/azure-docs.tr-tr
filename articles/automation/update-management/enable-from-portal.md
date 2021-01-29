@@ -2,15 +2,16 @@
 title: Azure portal Azure Otomasyonu Güncelleştirme Yönetimi etkinleştirme
 description: Bu makalede Azure portal Güncelleştirme Yönetimi nasıl etkinleştirileceği açıklanır.
 services: automation
-ms.date: 04/11/2019
-ms.topic: article
+ms.subservice: update-management
+ms.date: 01/07/2021
+ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: ac402587c8346c14f34b683ba10832c7779b660b
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 089c5fea6ac4a6fc4fb25af2d631335ef51cf4cc
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182776"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054915"
 ---
 # <a name="enable-update-management-from-the-azure-portal"></a>Azure portalından Güncelleştirme Yönetimi’ni etkinleştirme
 
@@ -21,10 +22,10 @@ VM 'lerinizi yönetmek için kullanabileceğiniz kaynak gruplarının sayısı [
 > [!NOTE]
 > Güncelleştirme Yönetimi etkinleştirilirken, bir Log Analytics çalışma alanını ve bir Otomasyon hesabını bağlamak için yalnızca belirli bölgeler desteklenir. Desteklenen eşleme çiftlerinin bir listesi için bkz. [Otomasyon hesabı ve Log Analytics çalışma alanı Için bölge eşleme](../how-to/region-mappings.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği. Henüz bir hesabınız yoksa [MSDN abone avantajlarınızı etkinleştirebilir](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) veya [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)için kaydolabilirsiniz.
-* Makineleri yönetmek için [Otomasyon hesabı](../index.yml).
+* Makineleri yönetmek için [Otomasyon hesabı](../automation-security-overview.md).
 * Bir [sanal makine](../../virtual-machines/windows/quick-create-portal.md).
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma

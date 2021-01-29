@@ -2,15 +2,16 @@
 title: Otomasyon hesabından Azure Otomasyonu Güncelleştirme Yönetimi etkinleştirme
 description: Bu makalede bir Otomasyon hesabından Güncelleştirme Yönetimi nasıl etkinleştirileceği açıklanır.
 services: automation
+ms.subservice: update-management
 ms.date: 11/09/2020
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: b97e1e61401697204f79004e4678e6f2286f4a98
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: 06a29cd07a870e7553d599b5f719943acb259c2a
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94380547"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054932"
 ---
 # <a name="enable-update-management-from-an-automation-account"></a>Otomasyon hesabından Güncelleştirme Yönetimi’ni etkinleştirme
 
@@ -22,7 +23,7 @@ Bu makalede, [Azure Arc etkin sunucularına](../../azure-arc/servers/overview.md
 ## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği. Henüz bir hesabınız yoksa [MSDN abone avantajlarınızı etkinleştirebilir](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) veya [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)için kaydolabilirsiniz.
-* Makineleri yönetmek için [Otomasyon hesabı](../index.yml).
+* Makineleri yönetmek için [Otomasyon hesabı](../automation-security-overview.md).
 * Bir [Azure sanal makinesi](../../virtual-machines/windows/quick-create-portal.md)veya Arc etkin SUNUCULARLA kayıtlı VM veya sunucu. Azure dışı VM 'Ler veya sunucular, Windows veya Linux için [Log Analytics aracısına](../../azure-monitor/platform/log-analytics-agent.md) sahip olmalıdır ve otomasyon hesabına bağlı olan çalışma alanına rapor verebilir güncelleştirme yönetimi ' de etkinleştirilir. Windows veya Linux için Log Analytics aracısını, önce makinenizi [Azure Arc etkin sunucularına](../../azure-arc/servers/overview.md)bağlayarak ve ardından Azure ilkesi 'ni kullanarak, [ *Linux* veya *Windows* Azure Arc makineler yerleşik ilkesine dağıtım Log Analytics aracısını](../../governance/policy/samples/built-in-policies.md#monitoring) atamak için önerilir. Alternatif olarak, makineleri VM'ler için Azure İzleyici ile izlemeyi planlıyorsanız, bunun yerine [Enable VM'ler için Azure izleyici](../../governance/policy/samples/built-in-initiatives.md#monitoring) girişimi kullanın.
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
@@ -53,7 +54,7 @@ Azure Arc etkin sunucularla kayıtlı olanlar da dahil olmak üzere Azure dış�
 
 1. Otomasyon **hesabınızdan güncelleştirme yönetimi altında** **güncelleştirme yönetimi** ' ni seçin.
 
-2. **Azure dışı makine Ekle** ' yi seçin. Bu eylem, makinenin Güncelleştirme Yönetimi raporlamaya başlayabilmesi için [Windows Log Analytics aracısını yükleyip yapılandırmaya yönelik yönergeler](../../azure-monitor/platform/log-analytics-agent.md) içeren yeni bir tarayıcı penceresi açar. Şu anda Operations Manager tarafından yönetilen bir makine etkinleştiriyorsanız, yeni bir aracı gerekli değildir. Çalışma alanı bilgileri aracılar yapılandırmasına eklenir.
+2. **Azure dışı makine Ekle**' yi seçin. Bu eylem, makinenin Güncelleştirme Yönetimi raporlamaya başlayabilmesi için [Windows Log Analytics aracısını yükleyip yapılandırmaya yönelik yönergeler](../../azure-monitor/platform/log-analytics-agent.md) içeren yeni bir tarayıcı penceresi açar. Şu anda Operations Manager tarafından yönetilen bir makine etkinleştiriyorsanız, yeni bir aracı gerekli değildir. Çalışma alanı bilgileri aracılar yapılandırmasına eklenir.
 
 ## <a name="enable-machines-in-the-workspace"></a>Çalışma alanındaki makineleri etkinleştir
 
@@ -61,13 +62,13 @@ Güncelleştirme Yönetimi etkinleştirilmesi için, çalışma alanınıza zate
 
 1. Otomasyon **hesabınızdan güncelleştirme yönetimi altında** **güncelleştirme yönetimi** ' ni seçin.
 
-2. **Makineleri Yönet** ' i seçin. Daha önce **tüm mevcut ve gelecekteki makinelerde etkinleştir** seçeneğini belirlediyseniz **makineleri Yönet** düğmesi gri olabilir
+2. **Makineleri Yönet**' i seçin. Daha önce **tüm mevcut ve gelecekteki makinelerde etkinleştir** seçeneğini belirlediyseniz **makineleri Yönet** düğmesi gri olabilir
 
     ![Kayıtlı aramalar](media/enable-from-automation-account/managemachines.png)
 
 3. Çalışma alanına rapor veren tüm kullanılabilir makineler için Güncelleştirme Yönetimi etkinleştirmek üzere makineleri Yönet sayfasında **kullanılabilir tüm makinelerde etkinleştir** ' i seçin. Bu eylem, tek başına makineleri eklemek için denetimi devre dışı bırakır ve çalışma alanına raporlayan tüm makineleri, bilgisayar grubu kayıtlı arama sorgusuna ekler `MicrosoftDefaultComputerGroup` . Seçildiğinde, bu eylem **makineleri Yönet** seçeneğini devre dışı bırakır.
 
-4. Tüm kullanılabilir makineler ve gelecekteki makineler için özelliği etkinleştirmek üzere **tüm kullanılabilir ve gelecekteki makinelerde etkinleştir** ' i seçin. Bu seçenek, kaydedilen arama ve kapsam yapılandırmasını çalışma alanından siler ve özelliğin, şu anda veya gelecekte olan tüm Azure dışı makineleri, çalışma alanına rapor olarak içermesini sağlar. Seçildiğinde, bu eylem, kullanılabilir kapsam yapılandırması olmadığından, **makineleri Yönet** seçeneğini kalıcı olarak devre dışı bırakır.
+4. Tüm kullanılabilir makineler ve gelecekteki makineler için özelliği etkinleştirmek üzere **tüm kullanılabilir ve gelecekteki makinelerde etkinleştir**' i seçin. Bu seçenek, kaydedilen arama ve kapsam yapılandırmasını çalışma alanından siler ve özelliğin, şu anda veya gelecekte olan tüm Azure dışı makineleri, çalışma alanına rapor olarak içermesini sağlar. Seçildiğinde, bu eylem, kullanılabilir kapsam yapılandırması olmadığından, **makineleri Yönet** seçeneğini kalıcı olarak devre dışı bırakır.
 
     > [!NOTE]
     > Bu seçenek Log Analytics içindeki kayıtlı arama ve kapsam yapılandırmasını sildiği için, bu seçeneği seçmeden önce Log Analytics çalışma alanındaki tüm silme kilitlerini kaldırmak önemlidir. Bunu yapmazsanız, bu seçenek yapılandırmaların kaldırılmasına neden olur ve bunları el ile kaldırmanız gerekir.

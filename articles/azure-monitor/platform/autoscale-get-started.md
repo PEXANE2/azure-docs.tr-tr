@@ -4,12 +4,12 @@ description: Azure 'da kaynak Web uygulamanızı, bulut hizmetinizi, sanal makin
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
-ms.openlocfilehash: ee36db3f657365036bb68f641be53fd434f1b64b
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: 9bbd4da77d2892064906dc7ae272bcc770b6bdc4
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97694914"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99055289"
 ---
 # <a name="get-started-with-autoscale-in-azure"></a>Azure'da otomatik ölçeklendirmeyi kullanmaya başlama
 Bu makalede, Microsoft Azure portal kaynağınız için otomatik ölçeklendirme ayarlarınızı nasıl ayarlayabileceğinizi açıklar.
@@ -115,36 +115,9 @@ Artık ölçeklendirmek istediğiniz örneklerin sayısını el ile ayarlayabili
 
 ## <a name="route-traffic-to-healthy-instances-app-service"></a>Trafiği sağlıklı örneklere yönlendir (App Service)
 
-Birden çok örneğe ölçeklendirilen zaman, App Service yalnızca sağlıklı örneklere trafik yönlendirmek için örneklerinizi üzerinde sistem durumu denetimleri gerçekleştirebilir. Bunu yapmak için, portalı App Service açın ve ardından **izleme** altında **sistem durumu denetimi** ' ni seçin. **Etkinleştir** ' i seçin ve uygulamanızda, veya gibi GEÇERLI bir URL yolu sağlayın `/health` `/api/health` . **Kaydet**’e tıklayın.
+<a id="health-check-path"></a>
 
-Özelliği ARM şablonlarıyla etkinleştirmek için, `healthcheckpath` `Microsoft.Web/sites` kaynağın özelliğini sitenizdeki sistem durumu denetim yolu olarak ayarlayın, örneğin: `"/api/health/"` . Özelliği devre dışı bırakmak için, özelliğini boş dizeye geri ayarlayın `""` .
-
-### <a name="health-check-path"></a>Sistem durumu denetim yolu
-
-Yol, 200 ve 299 (dahil) arasında bir durum kodu ile bir dakika içinde yanıt vermelidir. Yol bir dakika içinde yanıt vermezse veya aralığın dışında bir durum kodu döndürürse, örnek "sağlıksız" olarak değerlendirilir. App Service sistem durumu denetim yolundaki 30 kata (301, 302, 307, vb.) yeniden yönlendirmeleri takip etmez, bu durum kodları **sağlıksız** olarak kabul edilir. Sistem durumu denetimi, App Service kimlik doğrulaması ve yetkilendirme özellikleriyle tümleştirilir, bu güvenlik özellikleri etkin olsa bile sistem uç noktaya ulaşacaktır. Kendi kimlik doğrulama sisteminizi kullanıyorsanız, sistem durumu denetimi yolu anonim erişime izin vermelidir. Site yalnızca HTTP **s** etkinse, healthcheck Isteği http **s** aracılığıyla gönderilir.
-
-Sistem durumu denetim yolu, uygulamanızın kritik bileşenlerini denetlemelidir. Örneğin, uygulamanız bir veritabanına ve bir mesajlaşma sistemine bağımlıysa, sistem durumu denetimi uç noktasının bu bileşenlere bağlanması gerekir. Uygulama kritik bir bileşene bağlanamıyorsa, uygulamanın sağlıksız olduğunu göstermek için yol 500 düzeyinde bir yanıt kodu döndürmelidir.
-
-#### <a name="security"></a>Güvenlik 
-
-Büyük kuruluşlarda bulunan geliştirme ekipleri, genellikle sunulan API 'Ler için güvenlik gereksinimlerine bağlı kalmalıdır. Healthcheck uç noktasının güvenliğini sağlamak için öncelikle, uygulamaya erişimi kısıtlamak üzere [IP kısıtlamaları](../../app-service/app-service-ip-restrictions.md#set-an-ip-address-based-rule), [istemci sertifikaları](../../app-service/app-service-ip-restrictions.md#set-an-ip-address-based-rule)veya bir sanal ağ gibi özellikleri kullanmanız gerekir. Gelen isteğin eşleşmesini isteyerek healthcheck uç noktasının kendisini güvenli hale getirebilirsiniz `User-Agent` `ReadyForRequest/1.0` . İstek önceki güvenlik özellikleri tarafından zaten güvenli hale getirildiğinden User-Agent taklit edilemez.
-
-### <a name="behavior"></a>Davranış
-
-Sistem durumu denetim yolu sağlandığında, App Service tüm örneklerdeki yolu ping yapar. Başarılı bir yanıt kodu 5 pingden sonra alınmıyorsa, bu örnek "sağlıksız" olarak değerlendirilir. 2 veya daha fazla örneğe ölçeklendirdiyseniz ve [temel katmanı](../../app-service/overview-hosting-plans.md) veya daha üstünü kullanıyorsanız, sağlıksız örnekler yük dengeleyici rotasyondan dışlanır. Uygulama ayarıyla gereken başarısız Ping sayısını yapılandırabilirsiniz `WEBSITE_HEALTHCHECK_MAXPINGFAILURES` . Bu uygulama ayarı, 2 ile 10 arasında herhangi bir tamsayıya ayarlanabilir. Örneğin, bu olarak ayarlanırsa `2` , örneklerinizin iki başarısız Ping sonrasında yük dengeleyiciden kaldırılması gerekir. Ayrıca, ölçeği büyütme veya küçültme sırasında App Service, yeni örneklerin yük dengeleyiciye eklenmeden önce isteklere hazır olmasını sağlamak için sistem durumu denetim yoluna ping yapar.
-
-> [!NOTE]
-> App Service planınızın 2 veya daha fazla örneğe ölçeklendirilmesi ve yük dengeleyici dışlamanın gerçekleşmesi için **temel katman veya daha yüksek** olması gerektiğini unutmayın. Yalnızca 1 örnek varsa, sağlıksız olsa bile yük dengeleyiciden kaldırılmaz. 
-
-Ayrıca, ölçek genişletme işlemleri sırasında, el ile yeniden başlatmalar veya SCM sitesi aracılığıyla kod dağıtımı gibi örnekler eklendiğinde veya yeniden başlatıldığında sistem durumu denetim yolu ping yapılır. Bu işlemler sırasında sistem durumu denetimi başarısız olursa, başarısız olan örnekler yük dengeleyiciye eklenmez. Bu işlem, bu işlemlerin uygulamanızın kullanılabilirliğini olumsuz şekilde etkilemelerini engeller.
-
-Healthcheck kullanılırken, kalan sağlıklı örneklerinizin yükü daha fazla olabilir. Kalan örneklerin aşırı bir kısmını ortadan kaldırmak için, örneklerinizin yarısını hariç tutulamayacak. Örneğin, bir App Service planı 4 örneğe ölçeklenirse ve 3 ' ü sağlıksız olan 3 tanesi, yük dengeleyici dönüşüyle dışarıda bırakılır. Diğer 2 örnek (1 sağlıklı ve 1 sağlıksız) istekleri almaya devam edecektir. Tüm örneklerin sağlıksız olduğu en kötü durum senaryosunda, hiçbiri dışlanacaktır. Bu davranışı geçersiz kılmak istiyorsanız, `WEBSITE_HEALTHCHECK_MAXUNHEALTHYWORKERPERCENT` uygulama ayarını ve arasında bir değer olarak ayarlayabilirsiniz `0` `100` . Bunun daha yüksek bir değere ayarlanması, sağlıksız örneklerin kaldırıldığı anlamına gelir (varsayılan değer 50 ' dir).
-
-Bir saatteki bir örnekteki tüm uygulamalarda sistem durumu denetimleri başarısız olursa, örnek değişir. En fazla bir örnek, App Service plan başına günde en fazla üç örnek olacak şekilde saat başına değiştirilmeyecektir.
-
-### <a name="monitoring"></a>İzleme
-
-Uygulamanızın sistem durumu Denetim yolunu sağladıktan sonra, Azure Izleyici 'yi kullanarak sitenizin sistem durumunu izleyebilirsiniz. Portaldaki **sistem durumu denetimi** dikey penceresinde, üst araç çubuğundan **ölçümler** ' e tıklayın. Bu, sitenin geçmiş sistem durumunu görebileceğiniz ve yeni bir uyarı kuralı oluşturabileceğiniz yeni bir dikey pencere açar. Sitelerinizi izleme hakkında daha fazla bilgi için [bkz. Azure izleyici Kılavuzu](../../app-service/web-sites-monitor.md).
+Azure Web uygulamanız birden çok örneğe ölçeklenirse, App Service sağlıklı örneklere trafiği yönlendirmek için örneklerinizi üzerinde sistem durumu denetimleri gerçekleştirebilir. Daha fazla bilgi edinmek için [App Service sistem durumu denetiminde bu makaleye](../../app-service/monitor-instances-health-check.md)bakın.
 
 ## <a name="moving-autoscale-to-a-different-region"></a>Otomatik ölçeklendirmeyi farklı bir bölgeye taşıma
 Bu bölümde, Azure otomatik ölçeklendirmeyi aynı abonelik ve kaynak grubu altındaki başka bir bölgeye nasıl taşıyacağınız açıklanmaktadır. Otomatik ölçeklendirme ayarlarını taşımak için REST API kullanabilirsiniz.

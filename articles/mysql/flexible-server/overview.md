@@ -7,12 +7,12 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 8/21/2020
-ms.openlocfilehash: f6ec6bced9c84e4e5b0f04cc32eebb438052bd6c
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: cdf029e0dd9ae126310842b8919c818f4721218e
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348296"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054746"
 ---
 # <a name="azure-database-for-mysql---flexible-server-preview"></a>MySQL için Azure veritabanı-esnek sunucu (Önizleme)
 
@@ -132,20 +132,22 @@ Hizmet MySQL 'in topluluk sürümünü çalıştırır. Bu, tam uygulama uyumlul
 
 Azure 'da iş yükünüzü çalıştırmanın avantajlarından biri küresel erişime sahip. MySQL için Azure veritabanı esnek sunucusu şu Azure bölgelerinde bugün kullanılabilir:
 
-- West Europe
-- North Europe
-- Güney Birleşik Krallık
-- Doğu ABD 2
-- Batı ABD 2
-- Central US
-- Doğu ABD
-- Orta Kanada
-- Güneydoğu Asya
-- Güney Kore - Orta
-- Doğu Japonya
-- Doğu Avustralya
+| Bölge | Yüksek Kullanılabilirlik | 
+| --- | --- |
+| West Europe | :heavy_check_mark: | 
+| Kuzey Avrupa | :heavy_check_mark: | 
+| Güney Birleşik Krallık | sayı | 
+| Doğu ABD 2 | :heavy_check_mark: | 
+| Batı ABD 2 | :heavy_check_mark: | 
+| Central US | sayı | 
+| Doğu ABD | :heavy_check_mark: | 
+| Orta Kanada | sayı | 
+| Güneydoğu Asya | :heavy_check_mark: | 
+| Güney Kore - Orta | sayı | 
+| Doğu Japonya | sayı | 
+| Doğu Avustralya | :heavy_check_mark: |
 
-Yakında yeni sunucular eklemeye çalışıyoruz.
+Yakında yeni bölgeler eklemek için çalışıyoruz.
 
 ## <a name="contacts"></a>Kişiler
 MySQL için Azure veritabanı esnek sunucusu 'nda olabilecek herhangi bir soru veya öneri için, MySQL için Azure veritabanı ekibine ([ @Ask MySQL IÇIN Azure DB](mailto:AskAzureDBforMySQL@service.microsoft.com)) bir e-posta gönderin. Bu e-posta adresi bir teknik destek diğer adı değil.

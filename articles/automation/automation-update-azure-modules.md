@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: 413293cdefd39285c57b58d4555d3d703492ea96
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: f05c3247ecdd77fe4cf02db70c7ba4b2c534f959
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98894856"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99055357"
 ---
 # <a name="update-azure-powershell-modules"></a>Azure PowerShell modüllerini güncelleştirme
 
@@ -23,7 +23,7 @@ En yaygın PowerShell modülleri, her Otomasyon hesabında varsayılan olarak sa
 
 Runbook 'larınızı ve otomatikleştiredikleri işlemleri etkilememek için, güncelleştirme yaparken test ve doğrulama yaptığınızdan emin olun. Bu amaçla tasarlanan adanmış bir Otomasyon hesabınız yoksa, runbook 'larınızın geliştirilmesi sırasında birçok farklı senaryoyu test edebilmeniz için bir tane oluşturmayı düşünün. Bu test, PowerShell modüllerini güncelleştirme gibi yinelemeli değişiklikler içermelidir.
 
-Otomasyon hesabınızda bir [Azure farklı çalıştır hesabı kimlik bilgisi](manage-runas-account.md) oluşturulduğundan emin olun.
+Otomasyon hesabınızda bir [Azure farklı çalıştır hesabı](automation-security-overview.md#run-as-accounts) oluşturulduğundan emin olun.
 
 Betikleri yerel olarak geliştirirseniz, aynı sonuçları aldığınızdan emin olmak için test edilirken Otomasyon hesabınızda aynı modül sürümlerinin yerel olarak olması önerilir. Sonuçlar doğrulandıktan sonra ve gerekli değişiklikleri uyguladıysanız, değişiklikleri üretime taşıyabilirsiniz.
 

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: ''
 ms.date: 11/25/2019
 ms.topic: troubleshooting
-ms.openlocfilehash: 214501c447632232dc00b61643ea21083bd0e4ac
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 7f034f5043c3cb88ec705b42b06887c5ba56bd6d
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98896503"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99055340"
 ---
 # <a name="troubleshoot-hybrid-runbook-worker-issues"></a>Karma Runbook Çalışanı ile ilgili sorunları giderme
 
@@ -106,7 +106,7 @@ At line:3 char:1
 ```
 #### <a name="cause"></a>Nedeni
 
-Bu hata, farklı çalıştır hesabı sertifikasının bulunmadığı bir karma runbook çalışanında çalışan bir runbook 'ta [Farklı Çalıştır hesabını](../manage-runas-account.md) kullanmayı denediğinizde oluşur. Karma runbook çalışanları varsayılan olarak sertifika varlığını yerel olarak içermez. Farklı Çalıştır hesabı, bu varlığın düzgün şekilde çalışmasını gerektirir.
+Bu hata, farklı çalıştır hesabı sertifikasının bulunmadığı bir karma runbook çalışanında çalışan bir runbook 'ta [Farklı Çalıştır hesabını](../automation-security-overview.md#run-as-accounts) kullanmayı denediğinizde oluşur. Karma runbook çalışanları varsayılan olarak sertifika varlığını yerel olarak içermez. Farklı Çalıştır hesabı, bu varlığın düzgün şekilde çalışmasını gerektirir.
 
 #### <a name="resolution"></a>Çözüm
 

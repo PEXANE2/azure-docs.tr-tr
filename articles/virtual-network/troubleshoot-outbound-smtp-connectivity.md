@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: genli
-ms.openlocfilehash: e1e7e78cab1f3a240737b5e25e0dff28c420add8
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 518b8e33ac9adfdd1aa121e0cb8d1558545980e7
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97883121"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054864"
 ---
 # <a name="troubleshoot-outbound-smtp-connectivity-problems-in-azure"></a>Azure 'da giden SMTP bağlantısı sorunlarını giderme
 
@@ -27,7 +27,7 @@ Bu davranış değişikliği yalnızca 15 Kasım 2017 ' den sonra oluşturulan a
 
 ## <a name="recommended-method-of-sending-email"></a>E-posta göndermek için önerilen yöntem
 
-Azure VM 'lerinden veya Azure App Service 'den e-posta göndermek için kimliği doğrulanmış SMTP geçiş hizmetlerini kullanmanızı öneririz. (Bu geçiş Hizmetleri genellikle TCP bağlantı noktası 587 veya 443 aracılığıyla bağlanır, ancak diğer bağlantı noktalarını destekler.) Bu hizmetler, üçüncü taraf e-posta sağlayıcılarının iletileri reddetme olasılığını en aza indirmek için IP veya etki alanı saygınlığını sürdürmek üzere kullanılır. [SendGrid](https://sendgrid.com/partners/azure/) , bu tür bir SMTP geçiş hizmetidir, ancak diğerleri vardır. Ayrıca, şirket içinde kullanabileceğiniz güvenli bir SMTP geçiş hizmetiniz de olabilir.
+Azure VM 'lerinden veya Azure App Service 'den e-posta göndermek için kimliği doğrulanmış SMTP geçiş hizmetlerini kullanmanızı öneririz. (Bu geçiş Hizmetleri genellikle TCP bağlantı noktası 587 üzerinden bağlanır, ancak diğer bağlantı noktalarını destekler.) Bu hizmetler, üçüncü taraf e-posta sağlayıcılarının iletileri reddetme olasılığını en aza indirmek için IP veya etki alanı saygınlığını sürdürmek üzere kullanılır. [SendGrid](https://sendgrid.com/partners/azure/) , bu tür bir SMTP geçiş hizmetidir, ancak diğerleri vardır. Ayrıca, şirket içinde kullanabileceğiniz güvenli bir SMTP geçiş hizmetiniz de olabilir.
 
 Bu e-posta teslim hizmetlerinin kullanılması, abonelik türünden bağımsız olarak Azure 'da kısıtlı değildir.
 

@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla, rarayudu
 ms.topic: conceptual
 ms.date: 01/20/2021
-ms.openlocfilehash: 337e242e3c194c8ec9f66e1888926e6a8f6a8375
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: a74868beea6e5903b6b17a7bc0c82cc822fcd36f
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98633087"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99055187"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Azure Logic Apps 'da güvenli erişim ve veriler
 
@@ -866,7 +866,7 @@ Mantıksal uygulamanızdan gönderilen çağrıları işleyen uç noktaların g�
 
 * Mantıksal uygulama IP adreslerinden erişimi kısıtlayın.
 
-  Mantıksal uygulamalardan gelen uç noktalara yapılan tüm çağrılar, mantıksal uygulamalarınızın bölgelerini temel alan belirli IP adreslerinden kaynaklardır. Yalnızca bu IP adreslerinden istekleri kabul eden filtre ekleyebilirsiniz. Bu IP adreslerini almak için bkz. [Azure Logic Apps Için sınırlar ve yapılandırma](logic-apps-limits-and-config.md#configuration).
+  Mantıksal uygulamalardan gelen uç noktalara yapılan tüm çağrılar, mantıksal uygulamalarınızın bölgelerini temel alan belirli IP adreslerinden kaynaklardır. Yalnızca bu IP adreslerinden istekleri kabul eden filtre ekleyebilirsiniz. Bu IP adreslerini almak için bkz. [Azure Logic Apps Için sınırlar ve yapılandırma](logic-apps-limits-and-config.md#firewall-ip-configuration).
 
 * Şirket içi sistemlerle bağlantı için güvenliği geliştirme.
 
@@ -967,7 +967,7 @@ Gizli bilgileri işlemek ve güvenli hale getirmek için [güvenli parametreleri
 |---------------------|-----------------|----------|-------|-------------|
 | **Kimlik Doğrulaması** | `type` | Yes | **İstemci sertifikası** <br>veya <br>`ClientCertificate` | Kullanılacak kimlik doğrulaması türü. Sertifikaları [Azure API Management](../api-management/api-management-howto-mutual-certificates.md)yönetebilirsiniz. <p></p>**Note**: özel bağlayıcılar hem gelen hem de giden çağrılar için sertifika tabanlı kimlik doğrulamasını desteklemez. |
 | **Türk** | `pfx` | Yes | <*kodlanmış-pfx-dosya-içerik*> | Kişisel bilgi değişimi (PFX) dosyasından gelen Base64 kodlamalı içerik <p><p>PFX dosyasını Base64 kodlamalı biçime dönüştürmek için aşağıdaki adımları izleyerek PowerShell kullanabilirsiniz: <p>1. sertifika içeriğini bir değişkene kaydedin: <p>   `$pfx_cert = get-content 'c:\certificate.pfx' -Encoding Byte` <p>2. işlevi kullanarak sertifika içeriğini dönüştürün `ToBase64String()` ve bu içeriği bir metin dosyasına kaydedin: <p>   `[System.Convert]::ToBase64String($pfx_cert) | Out-File 'pfx-encoded-bytes.txt'` <p><p>**Sorun giderme**: `cert mmc/PowerShell` komutunu kullanırsanız, şu hatayı alabilirsiniz: <p><p>`Could not load the certificate private key. Please check the authentication certificate password is correct and try again.` <p><p>Bu hatayı çözmek için PFX dosyasını bir ped dosyasına dönüştürmeyi ve komutunu kullanarak yeniden geri dönüştürmeyi deneyin `openssl` : <p><p>`openssl pkcs12 -in certificate.pfx -out certificate.pem` <br>`openssl pkcs12 -in certificate.pem -export -out certificate2.pfx` <p><p>Daha sonra, sertifikanın yeni dönüştürülen PFX dosyası için Base64 kodlamalı dizeyi aldığınızda, dize artık Azure Logic Apps ' de çalışmaktadır. |
-| **Parola** | `password`| No | <*-pfx dosyası için parola*> | PFX dosyasına erişim parolası |
+| **Parola** | `password`| Hayır | <*-pfx dosyası için parola*> | PFX dosyasına erişim parolası |
 |||||
 
 Gizli bilgileri işlemek ve güvenli hale getirmek için [güvenli parametreleri](#secure-action-parameters) kullandığınızda (örneğin, [dağıtımı otomatikleştirmek için bir Azure Resource Manager şablonunda](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)), çalışma zamanında bu parametre değerlerine erişmek için ifadeleri kullanabilirsiniz. Bu örnek HTTP eylemi tanımı, kimlik doğrulamasını `type` olarak belirtir `ClientCertificate` ve parametre değerlerini almak için [Parameters () işlevini](../logic-apps/workflow-definition-language-functions-reference.md#parameters) kullanır:
@@ -1005,7 +1005,7 @@ Istek Tetikleyicileri üzerinde, mantıksal uygulamanız için [Azure AD yetkile
 | Özellik (Tasarımcı) | Özellik (JSON) | Gerekli | Değer | Açıklama |
 |---------------------|-----------------|----------|-------|-------------|
 | **Kimlik Doğrulaması** | `type` | Yes | **Active Directory OAuth** <br>veya <br>`ActiveDirectoryOAuth` | Kullanılacak kimlik doğrulaması türü. Logic Apps Şu anda [OAuth 2,0 protokolünü](../active-directory/develop/v2-overview.md)izler. |
-| **Yetkili** | `authority` | No | <*URL-for-Authority-Token-Issuer*> | Erişim belirtecini sağlayan yetkilinin URL 'SI. Varsayılan olarak, bu değer `https://login.windows.net` . |
+| **Yetkili** | `authority` | Hayır | <*URL-for-Authority-Token-Issuer*> | Erişim belirtecini sağlayan yetkilinin URL 'SI. Varsayılan olarak, bu değer `https://login.windows.net` . |
 | **Kiracı** | `tenant` | Yes | <*Kiracı KIMLIĞI*> | Azure AD kiracısı için kiracı KIMLIĞI |
 | **Hedef kitle** | `audience` | Yes | <*kaynaktan yetkilendirme*> | Yetkilendirme için kullanmak istediğiniz kaynak (örneğin, `https://management.core.windows.net/` |
 | **İstemci Kimliği** | `clientId` | Yes | <*istemci KIMLIĞI*> | Yetkilendirme isteyen uygulamanın istemci KIMLIĞI |

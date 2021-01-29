@@ -9,20 +9,19 @@ ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: end-user-help
-ms.date: 12/08/2020
+ms.date: 01/27/2021
 ms.author: curtand
-ms.openlocfilehash: 7b3af7c5bd55e748b1d1f4cf8f192797187da30a
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: d499417414e560bdaa3fcd0a12255946aca413d9
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96901805"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054862"
 ---
 # <a name="microsoft-authenticator-for-android-in-the-public-cloud-in-china"></a>Çin 'de Genel bulutta Android için Microsoft Authenticator
 
 Android için Microsoft Authenticator uygulaması Çin 'de indirilebilir. Google Play Store Çin 'de kullanılamaz, bu nedenle uygulama diğer Çince uygulama marketlerinden indirilmelidir. Android için Microsoft Authenticator uygulaması şu anda Çin 'deki şu depolarda sunulmaktadır:
 
-- [Baidu](https://shouji.baidu.com/software/26638379.html)
 - [Lenovo](https://www.lenovomm.com/appdetail/com.azure.authenticator/20197724)
 - [Huawei](https://appgallery.cloud.huawei.com/uowap/index.html#/detailApp/C100262999?source=appshare&subsource=C100262999&shareTo=weixin&locale=zh_CN)
 - [Samsung Galaxy Mağazası](http://apps.samsung.com/appquery/appDetail.as?appId=com.azure.authenticator)
@@ -50,12 +49,12 @@ Kullanıcılar, Multi-Factor Authentication için anında iletme bildirimleri ku
 
 Microsoft Authenticator özelliği | Çin 'de kullanılabilirlik
 ------------------------------- | ---------------------
-Anında iletme bildirimlerini kullanarak MFA kaydı | No
-Önceden var olan MFA hesabı anında iletme bildirimleri kullanılarak kimlik doğrulanıyor | No
+Anında iletme bildirimlerini kullanarak MFA kaydı | Hayır
+Önceden var olan MFA hesabı anında iletme bildirimleri kullanılarak kimlik doğrulanıyor | Hayır
 Önceden var olan MFA hesabı, bildirimler için el ile denetim gerçekleştiriliyor | Yes
 Yalnızca TOTP/doğrulama kodlarını kullanarak MFA kaydı/kimlik doğrulaması | Yes
-Telefonla oturum açma kaydı | No
-Anında iletme bildirimlerini kullanarak mevcut telefonda oturum açma | No
+Telefonla oturum açma kaydı | Hayır
+Anında iletme bildirimlerini kullanarak mevcut telefonda oturum açma | Hayır
 Kimlik doğrulama istekleri için el ile denetim gerçekleştirerek mevcut telefon oturum açma doğrulaması | Yes
 Kişisel Microsoft hesapları için kimlik doğrulayıcı uygulaması desteği | Hayır
 

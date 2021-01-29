@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: micflan
 ms.custom: ''
-ms.openlocfilehash: 61a8dbbdde87af792bb4337660d4d3c34f7cf802
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
-ms.translationtype: HT
+ms.openlocfilehash: 729444b1d1ccf55f34e54a4b59508131458c472b
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132304"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054813"
 ---
 # <a name="understand-and-work-with-scopes"></a>Kapsamları anlama ve bunlarla çalışma
 
@@ -114,7 +114,7 @@ Kullandıkça öde ve Ücretsiz Deneme ile geliştirme ve test teklifleri gibi b
 
     Kaynak türü: Uygulanamaz
 
-Bağımsız Azure abonelik hesabı yöneticileri, faturalar ve ödemeler gibi faturalandırma verilerini [Azure Hesap Merkezi](https://account.azure.com/subscriptions)'nden görüntüleyebilir ve yönetebilir. Ancak bu yöneticiler, Azure portalında maliyet verilerini görüntüleyemez veya kaynakları yönetemez. Hesap yöneticisine erişim vermek için yukarıda anlatılan Maliyet Yönetimi rollerini kullanın.
+Bireysel Azure aboneliği hesap yöneticileri, [Azure Portal](https://portal.azure.com)aboneliklerinden fatura ve ödemeler gibi faturalandırma verilerini görüntüleyebilir ve yönetebilir  >   > bir abonelik seçin.
 
 EA'dan farklı olarak bağımsız Azure abonelik hesabı yöneticileri, Azure portalında faturalarını görebilir. Maliyet Yönetimi Okuyucusu ile Maliyet Yönetimi Katkıda Bulunanı rollerinin fatura erişimi sağlamadığını unutmayın. Daha fazla bilgi için bkz. [Faturalara erişim izni verme](../manage/manage-billing-access.md#give-read-only-access-to-billing).
 

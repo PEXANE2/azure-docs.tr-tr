@@ -3,12 +3,12 @@ title: Özel Uç Noktalar
 description: Azure Backup için özel uç noktalar oluşturma sürecini anlayın ve özel uç noktaları kullanmanın kaynaklarınızın güvenliğini sağlamaya yardımcı olur.
 ms.topic: conceptual
 ms.date: 05/07/2020
-ms.openlocfilehash: b1412a79fa6137ce1f8c73d5875e52b6382048fa
-ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
+ms.openlocfilehash: 0d9d77c139896f9067f73943dbb213fc655f00f6
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98986980"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054881"
 ---
 # <a name="private-endpoints-for-azure-backup"></a>Azure Backup için özel uç noktalar
 
@@ -32,7 +32,7 @@ Bu makale, Azure Backup için özel uç noktalar oluşturma sürecini anlamanız
 
 Kasa için özel uç noktalar etkinleştirildiğinden, bunlar SQL ve SAP HANA iş yüklerini yalnızca bir Azure VM ve MARS aracı yedeklemesi için yedekleme ve geri yükleme için kullanılır. Diğer iş yüklerinin yedeklenmesi için kasayı da kullanabilirsiniz (ancak özel uç noktalar gerektirmez). MARS Aracısı kullanılarak SQL ve SAP HANA iş yüklerinin ve yedeklemenin yedeğinin yanı sıra, Azure VM yedeklemesi için dosya kurtarma gerçekleştirmek üzere özel uç noktalar da kullanılır. Daha fazla bilgi için aşağıdaki tabloya bakın:
 
-| Azure VM 'de iş yüklerini yedekleme (SQL, SAP HANA), MARS Aracısı kullanarak yedekleme | Özel uç noktaların kullanımı, sanal ağlarınızdan Azure Backup veya Azure depolama için herhangi bir IP/FQDN 'nin izin vermeksizin, yedekleme ve geri yüklemeye izin vermek için önerilir. |
+| Azure VM 'de iş yüklerini yedekleme (SQL, SAP HANA), MARS Aracısı kullanarak yedekleme | Yedekleme ve geri yüklemeye izin vermek için özel uç noktaların kullanımı, sanal ağlarınızdan Azure Backup veya Azure depolama için herhangi bir IP/FQDN 'nin, izin kullanılmasına gerek kalmadan önerilir. Bu senaryoda, SQL veritabanlarını barındıran VM 'Lerin Azure AD IP 'lerine veya FQDN 'Lere erişebildiğinden emin olun. |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | **Azure VM yedeklemesi**                                         | VM yedeklemesi herhangi bir IP veya FQDN 'ye erişim izni vermeyi gerektirmez. Bu nedenle, disklerin yedeklenmesi ve geri yüklenmesi için özel uç noktalar gerektirmez.  <br><br>   Ancak, Özel uç noktaları içeren bir kasadan dosya kurtarma, kasa için özel bir uç nokta içeren sanal ağlarla kısıtlıdır. <br><br>    Acled yönetilmeyen diskler kullanılırken, diskleri içeren depolama hesabının, **güvenilir Microsoft hizmetlerine** erişim izni verdiğinden emin olun. |
 | **Azure dosyaları yedeklemesi**                                      | Azure dosyaları yedeklemeleri yerel depolama hesabında depolanır. Bu nedenle, yedekleme ve geri yükleme için özel uç noktalar gerektirmez. |
@@ -386,7 +386,7 @@ $privateEndpoint = New-AzPrivateEndpoint `
 
 #### <a name="create-dns-zones-for-custom-dns-servers"></a>Özel DNS sunucuları için DNS bölgeleri oluşturma
 
-Üç özel DNS bölgesi oluşturmanız ve bunları sanal ağınıza bağlamanız gerekir.
+Üç özel DNS bölgesi oluşturmanız ve bunları sanal ağınıza bağlamanız gerekir. Blob ve kuyruğun aksine, yedekleme hizmeti genel URL 'Lerinin özel bağlantı DNS bölgelerine yeniden yönlendirme için Azure genel DNS 'e kaydolmayacağını aklınızda bulundurun. 
 
 | **Bölge**                                                     | **Hizmet** |
 | ------------------------------------------------------------ | ----------- |

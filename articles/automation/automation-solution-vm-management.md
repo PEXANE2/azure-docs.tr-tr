@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 3210aa5ae2ff94ba2c7dda673fbb60847c4dfd0b
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 89566bdfb56ca662813b586b2203eec7e7e5566b
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92372166"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99055390"
 ---
 # <a name="startstop-vms-during-off-hours-overview"></a>VM'leri çalışma saatleri dışında başlat/durdur genel bakış
 
@@ -35,9 +35,9 @@ Geçerli özellikle ilgili sınırlamalar aşağıda verilmiştir:
 - Herhangi bir bölgedeki VM 'Leri yönetir, ancak yalnızca Azure Otomasyonu hesabınızla aynı abonelikte kullanılabilir.
 - Azure ve Azure Kamu 'da, bir Log Analytics çalışma alanını, bir Azure Otomasyonu hesabını ve uyarıları destekleyen her bölgede kullanılabilir. Azure Kamu bölgeleri Şu anda e-posta işlevlerini desteklememektedir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-- Çalışma saatleri dışında VM 'Leri Başlat/Durdur özelliği için Runbook 'lar bir [Azure farklı çalıştır hesabıyla](./manage-runas-account.md)çalışır. Bu farklı çalıştır hesabı, kullanım süresini dolacak veya sıklıkla değiştirebilen bir parola yerine sertifika kimlik doğrulaması kullandığından, tercih edilen kimlik doğrulama yöntemidir.
+- Çalışma saatleri dışında VM 'Leri Başlat/Durdur özelliği için Runbook 'lar bir [Azure farklı çalıştır hesabıyla](./automation-security-overview.md#run-as-accounts)çalışır. Bu farklı çalıştır hesabı, kullanım süresini dolacak veya sıklıkla değiştirebilen bir parola yerine sertifika kimlik doğrulaması kullandığından, tercih edilen kimlik doğrulama yöntemidir.
 
 - Bağlı Otomasyon hesabı ve Log Analytics çalışma alanının aynı kaynak grubunda olması gerekir.
 
@@ -79,7 +79,7 @@ Mevcut bir Otomasyon hesabı ve Log Analytics çalışma alanı kullanarak VM'le
 Yeni bir Otomasyon hesabı ve Log Analytics çalışma alanı kullanarak VM'leri çalışma saatleri dışında başlat/durdur özelliği için sanal makineleri etkinleştirebilirsiniz. Bu durumda, önceki bölümde tanımlanan izinlere ve bu bölümde tanımlanan izinlere ihtiyacınız vardır. Ayrıca aşağıdaki rolleri de gereklidir:
 
 - Abonelikte Co-Administrator. Klasik VM 'Leri yönetecekdeyseniz, bu rol klasik farklı çalıştır hesabını oluşturmak için gereklidir. [Klasik farklı çalıştır hesapları](automation-create-standalone-account.md#create-a-classic-run-as-account) artık varsayılan olarak oluşturulmaz.
-- [Azure AD](../active-directory/roles/permissions-reference.md) uygulama geliştirici rolünde üyelik. Farklı Çalıştır hesaplarını yapılandırma hakkında daha fazla bilgi için bkz. [Farklı Çalıştır hesaplarını yapılandırma izinleri](manage-runas-account.md#permissions).
+- [Azure AD](../active-directory/roles/permissions-reference.md) uygulama geliştirici rolünde üyelik. Farklı Çalıştır hesaplarını yapılandırma hakkında daha fazla bilgi için bkz. [Farklı Çalıştır hesaplarını yapılandırma izinleri](automation-security-overview.md#permissions).
 - Abonelik üzerinde veya aşağıdaki izinlerle katkıda bulunan.
 
 | İzin |Kapsam|
@@ -150,7 +150,7 @@ Aşağıdaki tabloda, Otomasyon hesabınızda oluşturulan değişkenler listele
 >[!NOTE]
 >Değişken için `External_WaitTimeForVMRetryInSeconds` , varsayılan değer 600 ' den 2100 ' e güncelleştirilmiştir. 
 
-Tüm senaryolarda, ve değişkenleri, `External_Start_ResourceGroupNames`  `External_Stop_ResourceGroupNames` `External_ExcludeVMNames` **AutoStop_CreateAlert_Parent**, **SequencedStartStop_Parent**ve **ScheduledStartStop_Parent** runbook 'Ları Için virgülle ayrılmış VM listeleri hariç olmak üzere VM 'leri hedeflemek için gereklidir. Diğer bir deyişle, sanal makinelerinizin başlatma ve durdurma eylemlerinin gerçekleşmesi için hedef kaynak gruplarına ait olması gerekir. Mantığı Azure Ilkesine benzer şekilde çalışarak abonelik veya kaynak grubunu hedefleyebilir ve yeni oluşturulan VM 'Ler tarafından devralınan eylemlere sahip olabilirsiniz. Bu yaklaşım her VM için ayrı bir zamanlamanın korunmasını, sonra da her bir sanal makine için ayrı bir zamanlama olmasını önler.
+Tüm senaryolarda, ve değişkenleri, `External_Start_ResourceGroupNames`  `External_Stop_ResourceGroupNames` `External_ExcludeVMNames` **AutoStop_CreateAlert_Parent**, **SequencedStartStop_Parent** ve **ScheduledStartStop_Parent** runbook 'Ları Için virgülle ayrılmış VM listeleri hariç olmak üzere VM 'leri hedeflemek için gereklidir. Diğer bir deyişle, sanal makinelerinizin başlatma ve durdurma eylemlerinin gerçekleşmesi için hedef kaynak gruplarına ait olması gerekir. Mantığı Azure Ilkesine benzer şekilde çalışarak abonelik veya kaynak grubunu hedefleyebilir ve yeni oluşturulan VM 'Ler tarafından devralınan eylemlere sahip olabilirsiniz. Bu yaklaşım her VM için ayrı bir zamanlamanın korunmasını, sonra da her bir sanal makine için ayrı bir zamanlama olmasını önler.
 
 ### <a name="schedules"></a>Zamanlamalar
 
@@ -158,12 +158,12 @@ Aşağıdaki tabloda, Otomasyon hesabınızda oluşturulan varsayılan zamanlama
 
 Tüm zamanlamaları etkinleştirmeyin, çünkü bu durum çakışan zamanlama eylemleri oluşturabilir. En iyi yöntem, hangi iyileştirmelerin yapmak istediğinizi belirlemektir ve bunları uygun şekilde değiştirebilirsiniz. Daha fazla açıklama için genel bakış bölümündeki örnek senaryolar bölümüne bakın.
 
-|Zamanlama adı | Frequency | Description|
+|Zamanlama adı | Sıklık | Description|
 |--- | --- | ---|
 |Schedule_AutoStop_CreateAlert_Parent | 8 saatte bir | **AutoStop_CreateAlert_Parent** runbook 'u her 8 saatte bir çalıştırır ve bu da, `External_Start_ResourceGroupNames` `External_Stop_ResourceGroupNames` ve değişkenlerinde VM tabanlı değerleri de durduruyor `External_ExcludeVMNames` . Alternatif olarak, parametresini kullanarak, VM 'lerin virgülle ayrılmış bir listesini belirtebilirsiniz `VMList` .|
-|Scheduled_StopVM | Kullanıcı tanımlı, günlük | **ScheduledStopStart_Parent** runbook 'u `Stop` her gün belirtilen zamanda bir parametre ile çalıştırır. , Değişken varlıklar tarafından tanımlanan kuralları karşılayan tüm VM 'Leri otomatik olarak sonlandırır. **Zamanlanan-StartVM**ilgili zamanlamasını etkinleştirin.|
+|Scheduled_StopVM | Kullanıcı tanımlı, günlük | **ScheduledStopStart_Parent** runbook 'u `Stop` her gün belirtilen zamanda bir parametre ile çalıştırır. , Değişken varlıklar tarafından tanımlanan kuralları karşılayan tüm VM 'Leri otomatik olarak sonlandırır. **Zamanlanan-StartVM** ilgili zamanlamasını etkinleştirin.|
 |Scheduled_StartVM | Kullanıcı tanımlı, günlük | **ScheduledStopStart_Parent** runbook 'u, `Start` belirtilen saatte her gün bir parametre değeri ile çalıştırır. , Değişken varlıklar tarafından tanımlanan kuralları karşılayan tüm VM 'Leri otomatik olarak başlatır. İlgili zamanlamayı **Zamanlanmış-StopVM**' i etkinleştirin.|
-|Sequenced-StopVM | 1:00 (UTC), her Cuma | **Sequenced_StopStop_Parent** runbook 'U her Cuma için belirtilen zamanda bir parametre değeri ile çalıştırır `Stop` . Sıralı (artan), uygun değişkenler tarafından tanımlanan bir **SequenceStop** etiketine sahip tüm VM 'leri sonlandırır. Etiket değerleri ve varlık değişkenleri hakkında daha fazla bilgi için bkz. [runbook 'lar](#runbooks). **Sıralı-StartVM**ilgili zamanlamasını etkinleştirin.|
+|Sequenced-StopVM | 1:00 (UTC), her Cuma | **Sequenced_StopStop_Parent** runbook 'U her Cuma için belirtilen zamanda bir parametre değeri ile çalıştırır `Stop` . Sıralı (artan), uygun değişkenler tarafından tanımlanan bir **SequenceStop** etiketine sahip tüm VM 'leri sonlandırır. Etiket değerleri ve varlık değişkenleri hakkında daha fazla bilgi için bkz. [runbook 'lar](#runbooks). **Sıralı-StartVM** ilgili zamanlamasını etkinleştirin.|
 |Sequenced-StartVM | 1:00 PM (UTC), her Pazartesi | **SequencedStopStart_Parent** runbook 'U her Pazartesi için belirtilen zamanda bir parametre değeri ile çalıştırır `Start` . Sıralı (azalan), uygun değişkenlerle tanımlanan **Sequencestart** etiketiyle tüm VM 'leri başlatır. Etiket değerleri ve değişken varlıklar hakkında daha fazla bilgi için bkz. [runbook 'lar](#runbooks). İlgili zamanlamayı, **sıralı-StopVM**'yi etkinleştirin.
 
 ## <a name="use-the-feature-with-classic-vms"></a>Klasik VM 'lerle özelliği kullanma
@@ -191,7 +191,7 @@ Azure CSP abonelikleri yalnızca Azure Resource Manager modelini destekler. Azur
 
 Etkin özelliğe erişmek için aşağıdaki mekanizmalardan birini kullanın:
 
-* Otomasyon hesabınızdan **Ilgili kaynaklar**altında **sanal makineyi Başlat/Durdur** ' u seçin. VM 'yi Başlat/Durdur sayfasında, **sanal makine çözümlerini Başlat/Durdur**altında **çözümü Yönet** ' i seçin.
+* Otomasyon hesabınızdan **Ilgili kaynaklar** altında **sanal makineyi Başlat/Durdur** ' u seçin. VM 'yi Başlat/Durdur sayfasında, **sanal makine çözümlerini Başlat/Durdur** altında **çözümü Yönet** ' i seçin.
 
 * Otomasyon hesabınıza bağlı Log Analytics çalışma alanına gidin. Çalışma alanını seçtikten sonra sol bölmeden **çözümler** ' i seçin. Çözümler sayfasında, listeden **Başlat-Durdur-VM [çalışma alanı]** öğesini seçin.  
 
@@ -211,11 +211,11 @@ Artık özelliği kullanmanız gerekmiyorsa, Otomasyon hesabından silebilirsini
 
 VM'leri çalışma saatleri dışında başlat/durdur silmek için:
 
-1. Otomasyon hesabınızdan **ilgili kaynaklar**altında **bağlantılı çalışma alanı** ' nı seçin.
+1. Otomasyon hesabınızdan **ilgili kaynaklar** altında **bağlantılı çalışma alanı** ' nı seçin.
 
 2. **Çalışma alanına git**' i seçin.
 
-3. **Genel**altında **çözümler** ' e tıklayın. 
+3. **Genel** altında **çözümler** ' e tıklayın. 
 
 4. Çözümler sayfasında, **Başlat-Durdur-VM [çalışma alanı]** seçeneğini belirleyin. 
 
@@ -223,11 +223,11 @@ VM'leri çalışma saatleri dışında başlat/durdur silmek için:
 
 6. Çözümü Sil penceresinde, özelliği silmek istediğinizi onaylayın.
 
-7. Bilgiler doğrulanırken ve özellik silinirken, menüden seçili olan **Bildirimler**altında ilerlemeyi izleyebilirsiniz. Kaldırma işleminden sonra çözümler sayfasına döndürülürsünüz.
+7. Bilgiler doğrulanırken ve özellik silinirken, menüden seçili olan **Bildirimler** altında ilerlemeyi izleyebilirsiniz. Kaldırma işleminden sonra çözümler sayfasına döndürülürsünüz.
 
 8. Otomasyon hesabı ve Log Analytics çalışma alanı bu işlemin bir parçası olarak silinmez. Log Analytics çalışma alanını tutmak istemiyorsanız, Azure portal el ile silmeniz gerekir:
 
-    1. **Log Analytics çalışma alanlarını**arayın ve seçin.
+    1. **Log Analytics çalışma alanlarını** arayın ve seçin.
 
     2. Log Analytics çalışma alanı sayfasında, çalışma alanını seçin.
 

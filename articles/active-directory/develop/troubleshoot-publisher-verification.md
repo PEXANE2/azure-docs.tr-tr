@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: troubleshooting
 ms.workload: identity
-ms.date: 05/08/2020
+ms.date: 01/28/2021
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: 10609f2706d257dbe5d8f43b85da5f06cb986cae
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: dd1edc001e51bf20f3ff7745baa520b3844c139b
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98756182"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054678"
 ---
 # <a name="troubleshoot-publisher-verification"></a>Yayımcı doğrulaması ile ilgili sorunları giderme
 Bu işlemi tamamlayamadıysanız veya [yayımcı doğrulaması](publisher-verification-overview.md)ile ilgili beklenmeyen davranışlarla karşılaşıyorsanız, hata alıyorsanız veya beklenmeyen davranışı görüyorsanız aşağıdakileri yaparak başlatmanız gerekir: 
@@ -149,87 +149,95 @@ HTTP/1.1 200 OK
 
 Aşağıda, Microsoft Graph ile sorun giderirken veya uygulama kayıt portalındaki işlemden ilerleyecekseniz alabileceğiniz olası hata kodlarının bir listesi verilmiştir.
 
-### <a name="mpnaccountnotfoundornoaccess"></a>MPNAccountNotFoundOrNoAccess     
+### <a name="mpnaccountnotfoundornoaccess"></a>MPNAccountNotFoundOrNoAccess
 
-Verdiğiniz MPN KIMLIĞI <MPNID> yok veya ona erişiminiz yok. Geçerli bir MPN KIMLIĞI sağlayın ve yeniden deneyin.
+Verdiğiniz MPN KIMLIĞI `MPNID` yok veya ona erişiminiz yok. Geçerli bir MPN KIMLIĞI sağlayın ve yeniden deneyin.
     
 Genellikle, oturum açan kullanıcının Iş Ortağı Merkezi 'nde MPN hesabı için uygun rolün bir üyesi olmaması nedeniyle, uygun rollerin bir listesi için [gereksinimlere](publisher-verification-overview.md#requirements) bakın ve daha fazla bilgi için [sık karşılaşılan sorunları](#common-issues) inceleyin. Ayrıca, uygulamanın MPN hesabına eklenmediği veya geçersiz bir MPN KIMLIĞI olan kiracı tarafından da oluşabilir.
 
-### <a name="mpnglobalaccountnotfound"></a>MPNGlobalAccountNotFound     
+### <a name="mpnglobalaccountnotfound"></a>MPNGlobalAccountNotFound
 
-Verdiğiniz MPN KIMLIĞI <MPNID> geçerli değil. Geçerli bir MPN KIMLIĞI sağlayın ve yeniden deneyin.
+Verdiğiniz MPN KIMLIĞI `MPNID` geçerli değil. Geçerli bir MPN KIMLIĞI sağlayın ve yeniden deneyin.
     
 En yaygın olarak, bir Iş ortağı konum hesabına (PLA) karşılık gelen bir MPN KIMLIĞI sağlandığında oluşur. Yalnızca Iş ortağı genel hesapları desteklenir. Daha fazla ayrıntı için bkz. [Iş ortağı merkezi hesap yapısı](/partner-center/account-structure) .
 
-### <a name="mpnaccountinvalid"></a>Mpnaccountgeçersiz    
+### <a name="mpnaccountinvalid"></a>Mpnaccountgeçersiz
 
-Verdiğiniz MPN KIMLIĞI <MPNID> geçerli değil. Geçerli bir MPN KIMLIĞI sağlayın ve yeniden deneyin.
+Verdiğiniz MPN KIMLIĞI `MPNID` geçerli değil. Geçerli bir MPN KIMLIĞI sağlayın ve yeniden deneyin.
     
 En yaygın olarak, yanlış MPN KIMLIĞI sağlanmasından kaynaklanır.
 
-### <a name="mpnaccountnotvetted"></a>MPNAccountNotVetted  
+### <a name="mpnaccountnotvetted"></a>MPNAccountNotVetted
 
-Verdiğiniz MPN KIMLIĞI ( <MPNID> ), diting işlemini tamamlamamıştır. Iş Ortağı Merkezi 'nde bu işlemi tamamlayıp yeniden deneyin. 
+Verdiğiniz MPN KIMLIĞI ( `MPNID` ), diting işlemini tamamlamamıştır. Iş Ortağı Merkezi 'nde bu işlemi tamamlayıp yeniden deneyin. 
     
 En yaygın olarak, MPN hesabının [doğrulama](/partner-center/verification-responses) işlemini tamamlamamasından kaynaklanır.
 
-### <a name="nopublisheridonassociatedmpnaccount"></a>NoPublisherIdOnAssociatedMPNAccount  
+### <a name="nopublisheridonassociatedmpnaccount"></a>NoPublisherIdOnAssociatedMPNAccount
 
-Verdiğiniz MPN KIMLIĞI <MPNID> geçerli değil. Geçerli bir MPN KIMLIĞI sağlayın ve yeniden deneyin. 
+Verdiğiniz MPN KIMLIĞI `MPNID` geçerli değil. Geçerli bir MPN KIMLIĞI sağlayın ve yeniden deneyin. 
    
 En yaygın olarak, yanlış MPN KIMLIĞI sağlanmasından kaynaklanır.
 
-### <a name="mpniddoesnotmatchassociatedmpnaccount"></a>Mpnidyok Notmatchilişkili Mpnaccount    
+### <a name="mpniddoesnotmatchassociatedmpnaccount"></a>Mpnidyok Notmatchilişkili Mpnaccount
 
-Verdiğiniz MPN KIMLIĞI <MPNID> geçerli değil. Geçerli bir MPN KIMLIĞI sağlayın ve yeniden deneyin.
+Verdiğiniz MPN KIMLIĞI `MPNID` geçerli değil. Geçerli bir MPN KIMLIĞI sağlayın ve yeniden deneyin.
     
 En yaygın olarak, yanlış MPN KIMLIĞI sağlanmasından kaynaklanır.
 
-### <a name="applicationnotfound"></a>ApplicationNotFound  
+### <a name="applicationnotfound"></a>ApplicationNotFound
 
-Hedef uygulama ( <AppId> ) bulunamıyor. Geçerli bir uygulama KIMLIĞI sağlayın ve yeniden deneyin.
+Hedef uygulama ( `AppId` ) bulunamıyor. Geçerli bir uygulama KIMLIĞI sağlayın ve yeniden deneyin.
     
 En yaygın olarak, doğrulama Graph API aracılığıyla gerçekleştirilmediğinde ve belirtilen uygulamanın kimliği yanlış olduğunda oluşur. Not-uygulamanın kimliği, AppID/ClientID değil belirtilmelidir.
 
-### <a name="b2ctenantnotallowed"></a>B2CTenantNotAllowed  
+### <a name="b2ctenantnotallowed"></a>B2CTenantNotAllowed
 
-Bu yetenek Azure AD B2C kiracısında desteklenmez. 
+Bu yetenek Azure AD B2C kiracısında desteklenmez.
 
-### <a name="emailverifiedtenantnotallowed"></a>EmailVerifiedTenantNotAllowed    
+### <a name="emailverifiedtenantnotallowed"></a>EmailVerifiedTenantNotAllowed
 
-Bu özellik, e-posta tarafından doğrulanan bir kiracıda desteklenmez. 
+Bu özellik, e-posta tarafından doğrulanan bir kiracıda desteklenmez.
 
-### <a name="nopublisherdomainonapplication"></a>NoPublisherDomainOnApplication   
+### <a name="nopublisherdomainonapplication"></a>NoPublisherDomainOnApplication
 
-Hedef uygulamanın ( \<AppId\> ) bir yayımcı etki alanı ayarlanmış olması gerekir. Bir yayımcı etki alanı ayarlayıp yeniden deneyin.
+Hedef uygulamanın ( `AppId` ) bir yayımcı etki alanı ayarlanmış olması gerekir. Bir yayımcı etki alanı ayarlayıp yeniden deneyin.
 
 Uygulama üzerinde bir [Yayımcı etki alanı](howto-configure-publisher-domain.md) yapılandırılmadığı zaman gerçekleşir.
 
-### <a name="publisherdomainmismatch"></a>Publisherdomainuyuşmazlık  
+### <a name="publisherdomainmismatch"></a>Publisherdomainuyuşmazlık
 
-Hedef uygulamanın yayımcı etki alanı ( <publisherDomain> ), Iş Ortağı Merkezi 'nde () e-posta doğrulaması gerçekleştirmek için kullanılan etki alanı ile eşleşmiyor <pcDomain> . Bu etki alanlarının eşleştiğinden emin olun ve yeniden deneyin. 
+Hedef uygulamanın yayımcı etki alanı ( `publisherDomain` ), Iş Ortağı Merkezi 'nde () e-posta doğrulaması gerçekleştirmek için kullanılan etki alanı ile eşleşmiyor `pcDomain` . Bu etki alanlarının eşleştiğinden emin olun ve yeniden deneyin. 
     
 Uygulamanın [Yayımcı etki alanı](howto-configure-publisher-domain.md) veya Azure AD kiracısına eklenen [özel etki alanlarından](../fundamentals/add-custom-domain.md) biri, iş ortağı merkezi 'nde e-posta doğrulamasını gerçekleştirmek için kullanılan etki alanıyla aynı olduğunda gerçekleşir.
 
-### <a name="notauthorizedtoverifypublisher"></a>NotAuthorizedToVerifyPublisher   
+### <a name="notauthorizedtoverifypublisher"></a>NotAuthorizedToVerifyPublisher
 
-Uygulamada () doğrulanmış yayımcı özelliğini ayarlama yetkiniz yok <AppId> 
+Uygulamada doğrulanan yayımcı özelliğini ayarlama yetkiniz yok (<`AppId` ) 
   
 Genellikle, oturum açan kullanıcının Azure AD 'de MPN hesabı için uygun rolün bir üyesi olmaması, uygun rollerin bir listesi için [gereksinimlere](publisher-verification-overview.md#requirements) bakın ve daha fazla bilgi için [sık karşılaşılan sorunları](#common-issues) inceleyin.
 
-### <a name="mpnidwasnotprovided"></a>Mpnıdınotsaðlanan  
+### <a name="mpnidwasnotprovided"></a>Mpnıdınotsaðlanan
 
-MPN KIMLIĞI istek gövdesinde sağlanmadı veya istek içerik türü "Application/JSON" değildi. 
+MPN KIMLIĞI istek gövdesinde sağlanmadı veya istek içerik türü "Application/JSON" değildi.
 
-### <a name="msanotsupported"></a>MSANotSupported  
+### <a name="msanotsupported"></a>MSANotSupported 
 
 Bu özellik Microsoft tüketici hesaplarında desteklenmez. Yalnızca Azure AD kullanıcısı tarafından Azure AD 'de kayıtlı olan uygulamalar desteklenir.
 
 ### <a name="interactionrequired"></a>Interactionrequired
 
-Uygulamaya doğrulanmış bir yayımcı eklenmeye çalışmadan önce çok faktörlü kimlik doğrulaması gerçekleştirilmediğinde gerçekleşir. Daha fazla bilgi için bkz. [yaygın sorunlar](#common-issues) . Note: bir doğrulanmış yayımcı eklenmeye çalışılırken MFA aynı oturumda gerçekleştirilmelidir. MFA etkin ancak oturumda gerçekleştirilmesi gerekmiyorsa, istek başarısız olur.   
+Uygulamaya doğrulanmış bir yayımcı eklenmeye çalışmadan önce çok faktörlü kimlik doğrulaması gerçekleştirilmediğinde gerçekleşir. Daha fazla bilgi için bkz. [yaygın sorunlar](#common-issues) . Note: bir doğrulanmış yayımcı eklenmeye çalışılırken MFA aynı oturumda gerçekleştirilmelidir. MFA etkin ancak oturumda gerçekleştirilmesi gerekmiyorsa, istek başarısız olur. 
 
 Görüntülenecek hata iletisi: "yöneticiniz tarafından gerçekleştirilen bir yapılandırma değişikliği nedeniyle veya yeni bir konuma taşıdığınız için çok faktörlü kimlik doğrulaması kullanmanız gerekir."
+
+### <a name="unabletoaddpublisher"></a>UnableToAddPublisher
+
+Şu hata iletisi görüntülenir: "doğrulanmış bir yayımcı bu uygulamaya eklenemez. Yardım için lütfen yöneticinize başvurun. "
+
+İlk olarak, [Yayımcı doğrulama gereksinimlerini](publisher-verification-overview.md#requirements)karşıladığınızı doğrulayın.
+
+Doğrulanmış bir yayımcı ekleme isteği yapıldığında, güvenlik riski değerlendirmesi yapmak için bir dizi sinyal kullanılır. İsteğin riskli olduğu belirlenirse bir hata döndürülür. Microsoft, güvenlik nedenleriyle, bir isteğin riskli olup olmadığını belirlemede kullanılan belirli kriterleri açıklamaz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

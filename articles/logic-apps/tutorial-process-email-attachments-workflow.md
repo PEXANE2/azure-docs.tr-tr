@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: tutorial
 ms.custom: mvc, devx-track-csharp
 ms.date: 02/27/2020
-ms.openlocfilehash: 7e58dcf8206ae9feab4d8a09517bf9efda244dd5
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 95cc13a79f39888a5be10e423bda4c7cd7c84cb3
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96451575"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054796"
 ---
 # <a name="tutorial-automate-tasks-to-process-emails-by-using-azure-logic-apps-azure-functions-and-azure-storage"></a>Öğretici: Azure Logic Apps, Azure Işlevleri ve Azure Storage kullanarak e-postaları işlemek için görevleri otomatikleştirme
 
@@ -36,7 +36,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
+* Bir Azure hesabı ve aboneliği Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 
 * Logic Apps tarafından desteklenen Office 365 Outlook, Outlook.com veya Gmail gibi bir e-posta sağlayıcıdan alınmış e-posta hesabı. Diğer sağlayıcılar için [buradaki bağlayıcı listesini inceleyin](/connectors/).
 
@@ -46,6 +46,8 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
   > Gmail bağlayıcısını kullanmak istiyorsanız, mantıksal uygulamalarda kısıtlama olmadan yalnızca G-Suite iş hesapları bu bağlayıcıyı kullanabilir. Gmail tüketicisi hesabınız varsa, bu bağlayıcıyı yalnızca belirli Google onaylı hizmetlerle kullanabilirsiniz veya [Gmail Bağlayıcınız ile kimlik doğrulaması için kullanmak üzere bir Google istemci uygulaması oluşturabilirsiniz](/connectors/gmail/#authentication-and-bring-your-own-application). Daha fazla bilgi için, bkz. [Azure Logic Apps Google bağlayıcıları Için veri güvenliği ve gizlilik ilkeleri](../connectors/connectors-google-data-security-privacy-policy.md).
 
 * [Ücretsiz Microsoft Azure Depolama Gezgini](https://storageexplorer.com/)’ni indirip yükleyin. Bu araç, depolama kapsayıcınızın doğru şekilde ayarlanıp ayarlanmadığını denetlemenize yardımcı olur.
+
+* Mantıksal uygulamanızın trafiği belirli IP adresleriyle sınırlayan bir güvenlik duvarı üzerinden iletişim kurması gerekiyorsa, söz konusu güvenlik duvarının, mantıksal uygulamanızın bulunduğu Azure bölgesindeki Logic Apps hizmeti veya çalışma zamanı tarafından kullanılan [gelen](logic-apps-limits-and-config.md#inbound) ve [giden](logic-apps-limits-and-config.md#outbound) IP *adresleri için erişime* izin verilmesi gerekir. Mantıksal uygulamanız ayrıca Office 365 Outlook Bağlayıcısı veya SQL Bağlayıcısı gibi [yönetilen bağlayıcılar](../connectors/apis-list.md#managed-api-connectors)kullanıyorsa veya [özel bağlayıcılar](/connectors/custom-connectors/)kullanıyorsa, güvenlik duvarının ayrıca mantıksal uygulamanızın Azure bölgesindeki *Tüm* [yönetilen bağlayıcı giden IP adresleri](logic-apps-limits-and-config.md#outbound) için erişime izin verilmesi gerekir.
 
 ## <a name="set-up-storage-to-save-attachments"></a>Ekleri kaydetmek için depolamayı ayarlama
 
@@ -86,7 +88,7 @@ Gelen e-postaları ve ekleri, [Azure depolama kapsayıcısında](../storage/comm
 
       ![Depolama hesabı adını ve anahtarını kopyalayıp kaydedin](./media/tutorial-process-email-attachments-workflow/copy-save-storage-name-key.png)
 
-   Depolama hesabınızın erişim anahtarını almak için [Azure PowerShell](/powershell/module/az.storage/get-azstorageaccountkey) veya [Azure CLI](/cli/azure/storage/account/keys?view=azure-cli-latest.md#az-storage-account-keys-list) uygulamalarını da kullanabilirsiniz.
+   Depolama hesabınızın erişim anahtarını almak için [Azure PowerShell](/powershell/module/az.storage/get-azstorageaccountkey) veya [Azure CLI](/cli/azure/storage/account/keys.md#az-storage-account-keys-list) uygulamalarını da kullanabilirsiniz.
 
 1. E-posta ekleriniz için bir blob depolama kapsayıcısı oluşturun.
 
@@ -102,7 +104,7 @@ Gelen e-postaları ve ekleri, [Azure depolama kapsayıcısında](../storage/comm
 
       ![Tamamlanan depolama kapsayıcısı](./media/tutorial-process-email-attachments-workflow/created-storage-container.png)
 
-   Bir depolama kapsayıcısı oluşturmak için [Azure PowerShell](/powershell/module/az.storage/new-azstoragecontainer) veya [Azure CLI](/cli/azure/storage/container?view=azure-cli-latest#az-storage-container-create)'yi de kullanabilirsiniz.
+   Bir depolama kapsayıcısı oluşturmak için [Azure PowerShell](/powershell/module/az.storage/new-azstoragecontainer) veya [Azure CLI](/cli/azure/storage/container#az-storage-container-create)'yi de kullanabilirsiniz.
 
 Sonra, Depolama Gezgini’ni depolama hesabınıza bağlayın.
 
@@ -114,7 +116,7 @@ Sonra, Depolama Gezgini’ni depolama hesabınıza bağlayın.
 
    Depolama Gezgini, depolama hesabınızla bağlantı kurmanızı ister.
 
-1. **Azure depolama 'ya Bağlan** bölmesinde **bir depolama hesabı adı ve anahtarı kullan**' ı seçin  >  **Next**.
+1. **Azure depolama 'ya Bağlan** bölmesinde **bir depolama hesabı adı ve anahtarı kullan**' ı seçin  >  .
 
    ![Depolama Gezgini - Depolama hesabına bağlanma](./media/tutorial-process-email-attachments-workflow/storage-explorer-choose-storage-account.png)
 
@@ -149,7 +151,7 @@ Sonra, gelen e-postadan HTML’yi kaldıran bir [Azure işlevi](../azure-functio
    | **Konum** | Batı ABD | Daha önce kullandığınız bölge |
    | **Çalışma Zamanı Yığını** | Tercih edilen dil | En sevdiğiniz işlev programlama dilinizi destekleyen bir çalışma zamanı seçin. C# ve F # işlevleri için **.net** ' i seçin. |
    | **Depolama** | cleantextfunctionstorageacct | İşlev uygulamanız için bir depolama hesabı oluşturun. Yalnızca küçük harfleri ve rakamları kullanın. <p>**Note:** Bu depolama hesabı, işlev uygulamalarınızı içerir ve e-posta ekleri için önceden oluşturulmuş depolama hesabınızdan farklıdır. |
-   | **Uygulama Bilgileri** | Devre Dışı Bırak | [Application Insights](../azure-monitor/app/app-insights-overview.md)ile uygulama izlemeyi etkinleştirir, ancak bu öğretici için Uygula ' yı **devre dışı bırak**' ı seçin  >  **Apply**. |
+   | **Uygulama Bilgileri** | Devre Dışı Bırak | [Application Insights](../azure-monitor/app/app-insights-overview.md)ile uygulama izlemeyi etkinleştirir, ancak bu öğretici için Uygula ' yı **devre dışı bırak**' ı seçin  >  . |
    ||||
 
    İşlev uygulamanız dağıtımdan sonra otomatik olarak açılmazsa, [Azure Portal](https://portal.azure.com) arama kutusunda **işlev uygulaması** bulun ve seçin. **İşlev uygulaması** altında, işlev uygulamanızı seçin.
@@ -259,7 +261,7 @@ Sonra ek içeren gelen e-postaları dinleyen bir [tetikleyici](../logic-apps/log
 
 1. Arama kutusuna tasarımcıda `when new email arrives` filtreniz olarak yazın. E-posta sağlayıcınız için bu tetikleyiciyi seçin: **Yeni bir e-posta geldiğinde - <*e-posta-sağlayıcınız*>**
 
-   Örnek:
+   Örneğin:
 
    ![E-posta sağlayıcısı için şu tetikleyiciyi seçin: "Yeni bir e-posta geldiğinde"](./media/tutorial-process-email-attachments-workflow/add-trigger-when-email-arrives.png)
 
@@ -278,8 +280,8 @@ Sonra ek içeren gelen e-postaları dinleyen bir [tetikleyici](../logic-apps/log
       | Ayar | Değer | Açıklama |
       | ------- | ----- | ----------- |
       | **Klasör** | Gelen Kutusu | Denetlenecek e-posta klasörü |
-      | **Eki Var** | Evet | Yalnızca ek içeren e-postaları alın. <p>**Not:** Tetikleyici, hesabınızdaki e-postaları kaldırmaz, yalnızca yeni iletileri denetler ve yalnızca konu filtresiyle eşleşen e-postaları işler. |
-      | **Ekleri Dahil Et** | Evet | Yalnızca ekleri denetlemek yerine, iş akışınız için giriş olarak ekleri alın. |
+      | **Eki Var** | Yes | Yalnızca ek içeren e-postaları alın. <p>**Not:** Tetikleyici, hesabınızdaki e-postaları kaldırmaz, yalnızca yeni iletileri denetler ve yalnızca konu filtresiyle eşleşen e-postaları işler. |
+      | **Ekleri Dahil Et** | Yes | Yalnızca ekleri denetlemek yerine, iş akışınız için giriş olarak ekleri alın. |
       | **Aralık** | 1 | Denetimler arasında beklenecek aralık sayısı |
       | **Sıklık** | Dakika | Denetimler arası her aralık için zaman birimi |
       ||||
@@ -440,7 +442,7 @@ Ardından e-posta gövdesini kaydedebilmek için depolama kapsayıcınızda blob
    | Ayar | Değer | Açıklama |
    | ------- | ----- | ----------- |
    | **Bağlantı adı** | AttachmentStorageConnection | Bağlantı için açıklayıcı bir ad |
-   | **Depolama hesabı** | attachmentstorageacct | Ekleri kaydetmek için daha önce oluşturduğunuz depolama hesabının adı |
+   | **Depolama Hesabı** | attachmentstorageacct | Ekleri kaydetmek için daha önce oluşturduğunuz depolama hesabının adı |
    ||||
 
 1. **Blob oluştur** eylemini şu açıklama ile yeniden adlandırın: `Create blob for email body`
@@ -601,8 +603,8 @@ Sonra mantıksal uygulamanızın ekleri gözden geçirmek üzere e-posta gönder
 
    | Ayar | Değer | Notlar |
    | ------- | ----- | ----- |
-   | **Hedef** | <*alıcı-e-posta adresi*> | Test için kendi e-posta adresinizi kullanabilirsiniz. |
-   | **Konu**  | ```ASAP - Review applicant for position:``` **Konu** | Dahil etmek istediğiniz e-posta konusu. Bu kutunun içine tıklayın, örnek metni girin ve dinamik içerik listesinin **Yeni bir e-posta geldiğinde** bölümünde **Konu** alanını seçin. |
+   | **Kime** | <*alıcı-e-posta adresi*> | Test için kendi e-posta adresinizi kullanabilirsiniz. |
+   | **Konu**  | ```ASAP - Review applicant for position:```**Konu** | Dahil etmek istediğiniz e-posta konusu. Bu kutunun içine tıklayın, örnek metni girin ve dinamik içerik listesinin **Yeni bir e-posta geldiğinde** bölümünde **Konu** alanını seçin. |
    | **Gövde** | ```Please review new applicant:``` <p>```Applicant name:```**Şuradan** <p>```Application file location:``` **Yol** <p>```Application email content:``` **Gövde** | E-posta gövdesinin içeriği. Bu kutunun içine tıklayın, örnek metni girin ve dinamik içerik listesinden şu alanları seçin: <p>- **Yeni bir e-posta geldiğinde** bölümünde **Kimden** alanı </br>- **E-posta gövdesi için blob oluşturma** bölümünde **Yol** alanı </br>- **E-posta gövdesini temizlemek için RemoveHTMLFunction işlevini çağırma** bölümünde **Gövde** alanı |
    ||||
 

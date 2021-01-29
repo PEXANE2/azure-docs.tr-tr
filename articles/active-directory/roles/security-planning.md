@@ -14,12 +14,12 @@ ms.subservice: roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 12f262347938720a9d5a95e070d792a83ac9188c
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: e38ca27606ecf04b08bd29867894ba269148260c
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98740814"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99055255"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Azure AD'de karma ve bulut dağıtımları için ayrıcalıklı erişim güvenliğini sağlama
 
@@ -147,9 +147,10 @@ Yol haritası 'nın 2. aşaması, kimlik bilgilerinin hırsızlık ve kötüye k
 
 Kişisel e-posta hesapları, kişisel e-posta adreslerini genel yönetici hesapları için kabul edilemez hale getiren bir risk olan siber saldırganlar tarafından düzenli olarak çok fazla İnternet risklerini yönetici ayrıcalıklarından ayırmaya yardımcı olmak için, her kullanıcı için yönetici ayrıcalıklarına sahip adanmış hesaplar oluşturun.
 
-* Kullanıcıların genel yönetici görevlerini yapması için ayrı hesaplar oluşturmayı unutmayın
-* Genel yöneticilerinizin e-postaları yanlışlıkla açmasını veya yönetici hesaplarıyla programları çalıştırmasını sağlayın
-* Bu hesapların e-postalarını çalışan bir posta kutusuna iletdiğinden emin olun
+* Kullanıcıların genel yönetici görevlerini yapması için ayrı hesaplar oluşturmayı unutmayın.
+* Genel yöneticilerinizin e-postaları yanlışlıkla açmasını veya yönetici hesaplarıyla programları çalıştırmasını sağlayın.
+* Bu hesapların e-postalarını çalışan bir posta kutusuna iletdiğinden emin olun.
+* Genel yönetici (ve diğer ayrıcalıklı gruplar) hesapları, şirket içi Active Directory bağlı olmayan salt bulut hesapları olmalıdır.
 
 #### <a name="ensure-the-passwords-of-administrative-accounts-have-recently-changed"></a>Yönetim hesaplarının parolalarının yakın zamanda değiştiğinden emin olun
 

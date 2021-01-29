@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: article
 ms.date: 11/13/2020
 tags: connectors
-ms.openlocfilehash: 9caf69a7f78c7872f0a5f8a2ed07bdc749a29023
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 790879894c3b268fcd55aafc96507319b29fe1e5
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94683004"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99055085"
 ---
 # <a name="manage-email-contacts-and-calendars-in-office-365-outlook-by-using-azure-logic-apps"></a>Azure Logic Apps’i kullanarak Office 365 Outlook’ta e-postayı, kişileri ve takvimleri yönetme
 
@@ -92,17 +92,19 @@ ms.locfileid: "94683004"
 
 ## <a name="connect-using-other-accounts"></a>Diğer hesapları kullanarak bağlan
 
-Azure 'da oturum açmış olandan farklı bir hesap kullanarak Outlook 'a bağlanmayı denerseniz, [Çoklu oturum açma (SSO)](../active-directory/manage-apps/what-is-single-sign-on.md) hataları alabilirsiniz. Bu sorun, Azure portal bir hesapla oturum açtığınızda oluşur, ancak bağlantıyı oluşturmak için farklı bir hesap kullanın. Logic App Designer, Azure 'da oturum açan hesabı kullanmayı bekler. Bu sorunu çözmek için şu seçeneklere sahipsiniz:
+Azure 'da oturum açmış olandan farklı bir hesap kullanarak Outlook 'a bağlanmayı denerseniz, [Çoklu oturum açma (SSO)](../active-directory/manage-apps/what-is-single-sign-on.md) hataları alabilirsiniz. Bu sorun, Azure portal bir hesapla oturum açtığınızda oluşur, ancak bağlantıyı oluşturmak için farklı bir hesap kullanın. Tasarımcı, Azure portal oturum açmış hesabı kullanmanızı bekler. Bu sorunu çözmek için şu seçeneklere sahipsiniz:
 
-* Diğer hesabı mantıksal uygulamanızın kaynak grubuna **katkıda bulunan** olarak ayarlayın.
+* Mantıksal uygulamanızın kaynak grubundaki **katkıda** bulunan rolüyle diğer hesabı ayarlayın.
 
-  1. Mantıksal uygulamanızın kaynak grubu menüsünde, **erişim denetimi (IAM)** seçeneğini belirleyin. Diğer hesabı **katkıda** bulunan rolüyle ayarlayın. Daha fazla bilgi için bkz. [Azure portalı kullanarak Azure rol atamalarını ekleme veya kaldırma](../role-based-access-control/role-assignments-portal.md).
+  1. Mantıksal uygulamanızın kaynak grubu menüsünde, **erişim denetimi (IAM)** seçeneğini belirleyin. Diğer hesabı **katkıda** bulunan rolüyle ayarlayın. 
+  
+     Daha fazla bilgi için bkz. [Azure portalı kullanarak Azure rol atamalarını ekleme veya kaldırma](../role-based-access-control/role-assignments-portal.md).
 
-  1. İş veya okul hesabınızla Azure portal oturum açtıysanız, oturumunuzu kapatıp diğer hesabınızla yeniden oturum açın. Artık, diğer hesabı kullanarak Outlook bağlantısı oluşturabilirsiniz.
+  1. Bu rolü ayarladıktan sonra, Azure portal ' de artık katkıda bulunan izinleri olan hesapla oturum açın. Outlook bağlantısını oluşturmak için artık bu hesabı kullanabilirsiniz.
 
 * İş veya okul hesabınızda "Farklı Gönder" izinleri olması için diğer hesabı ayarlayın.
 
-   Yönetici izinleriniz varsa, hizmet hesabının posta kutusunda, oturum veya okul hesabınızda, **Farklı Gönder** veya Izin **adına Gönder** seçeneklerinden birini ayarlayın. Daha fazla bilgi için bkz. [Diğer Kullanıcı Yöneticisi yardımına posta kutusu Izinleri verme](/microsoft-365/admin/add-users/give-mailbox-permissions-to-another-user). Daha sonra iş veya okul hesabınızı kullanarak bağlantı oluşturabilirsiniz. Şimdi, göndereni belirtebileceğiniz Tetikleyiciler veya Eylemler ' de, hizmet hesabının e-posta adresini kullanabilirsiniz.
+   Yönetici izinleriniz varsa, hizmet hesabının posta kutusunda iş veya okul hesabınızı, **Farklı Gönder** veya Izin **adına Gönder** seçeneğiyle ayarlayın. Daha fazla bilgi için bkz. [Diğer Kullanıcı Yöneticisi yardımına posta kutusu Izinleri verme](/microsoft-365/admin/add-users/give-mailbox-permissions-to-another-user). Daha sonra iş veya okul hesabınızı kullanarak bağlantı oluşturabilirsiniz. Şimdi, göndereni belirtebileceğiniz Tetikleyiciler veya Eylemler ' de, hizmet hesabının e-posta adresini kullanabilirsiniz.
 
    Örneğin, **e-posta gönder** eyleminde, **(farklı Gönder)**, eyleme ekleyebileceğiniz ve hizmet hesabınızın e-posta adresini Gönderici olarak kullanabileceğiniz isteğe bağlı bir parametre vardır. Bu parametreyi eklemek için aşağıdaki adımları izleyin:
 
