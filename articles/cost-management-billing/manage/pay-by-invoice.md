@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 01/13/2021
 ms.author: banders
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: a5c95ca2e1fbe00f410c0a5015f8ce695783b27b
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
-ms.translationtype: HT
+ms.openlocfilehash: 0afaa9a577432741da44317a9d13e288cdea0d0d
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98538202"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99052490"
 ---
 # <a name="pay-for-your-azure-subscription-by-invoice"></a>Azure abonelikleriniz için fatura ile ödeme
 
@@ -108,4 +108,4 @@ Bazen Microsoft, verdiğiniz bilgiler eksikse veya doğrulanabilir değilse yasa
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Gerekirse, [Azure Hesap Merkezi](https://account.azure.com/Profile)’nde faturalama iletişim bilgilerinizi güncelleştirin.
+* Gerekirse faturalandırma iletişim bilgilerinizi [Azure Portal](https://portal.azure.com)güncelleştirin.

@@ -3,12 +3,12 @@ title: Kayıt defterinde oturum açma sorunlarını giderme
 description: Azure Container Registry 'de oturum açarken karşılaşılan sorunların belirtileri, nedenleri ve çözümleri
 ms.topic: article
 ms.date: 08/11/2020
-ms.openlocfilehash: 5499c64bef8ce36a5f622c4d847b417ef49a5a03
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 5deb1717cf3886d8ea9c021d92afa358946b16dc
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93379511"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99052087"
 ---
 # <a name="troubleshoot-registry-login"></a>Kayıt defteri oturum açma sorunlarını giderme
 
@@ -40,6 +40,8 @@ Kayıt defteri ortamının sistem durumu ve isteğe bağlı olarak bir hedef kay
 
 Bkz. komut örnekleri için [Azure Container Registry 'nin sistem durumunu denetleme](container-registry-check-health.md) . Hatalar raporlandıysanız, önerilen çözümler için [hata başvurusunu](container-registry-health-error-reference.md) ve aşağıdaki bölümleri gözden geçirin.
 
+Wih Azure Kubernetes hizmetini kullanarak sorun yaşıyorsanız, kayıt defterinin AKS kümesinden erişilebilir olduğunu doğrulamak için [az aks Check-ACR](/cli/azure/aks#az_aks_check_acr) komutunu çalıştırın.
+
 > [!NOTE]
 > Bazı kimlik doğrulama veya yetkilendirme hataları, kayıt defteri erişimini önleyen güvenlik duvarı veya ağ yapılandırması varsa da oluşabilir. Bkz. [kayıt defteri ile ağ sorunlarını giderme](container-registry-troubleshoot-access.md).
 
@@ -51,7 +53,7 @@ Bkz. komut örnekleri için [Azure Container Registry 'nin sistem durumunu denet
 
 İlgili bağlantılar:
 
-* [Kimlik Doğrulamasına genel bakış](container-registry-authentication.md#authentication-options)
+* [Kimlik doğrulamasına genel bakış](container-registry-authentication.md#authentication-options)
 * [Kapsayıcı kayıt defteri SSS](container-registry-faq.md)
 
 ### <a name="specify-correct-registry-name"></a>Doğru kayıt defteri adını belirtin
@@ -79,13 +81,13 @@ Senaryonuz için kullandığınız kimlik bilgilerinin geçerliliğini denetleyi
 * Active Directory hizmet sorumlusu kullanıyorsanız, Active Directory kiracısında doğru kimlik bilgilerini kullandığınızdan emin olun:
   * Kullanıcı adı-hizmet sorumlusu uygulama KIMLIĞI ( *ISTEMCI kimliği* olarak da bilinir)
   * Parola-hizmet sorumlusu parolası ( *istemci gizli anahtarı* da denir)
-* Kayıt defterine erişmek için Azure Kubernetes hizmeti veya Azure DevOps gibi bir Azure hizmeti kullanıyorsanız, hizmetinizin kayıt defteri yapılandırmasını onaylayın.
+* Kayıt defterine erişmek için Azure Kubernetes hizmeti veya Azure DevOps gibi bir Azure hizmeti kullanıyorsanız, hizmetinizin kayıt defteri yapılandırmasını onaylayın. 
 * `az acr login` `--expose-token` Docker Daemon kullanılmadan kayıt defteri oturum açma imkanı sağlayan seçeneğiyle çalıştırdıysanız, Kullanıcı adıyla kimlik doğrulaması gerçekleştirdiğinizden emin olun `00000000-0000-0000-0000-000000000000` .
 * Kayıt defteriniz [anonim çekme erişimi](container-registry-faq.md#how-do-i-enable-anonymous-pull-access)için yapılandırıldıysa, önceki bir Docker oturumundan depolanan mevcut Docker kimlik bilgileri anonim erişimi engelleyebilir. `docker logout`Kayıt defterinde anonim çekme işlemini denemeden önce ' i çalıştırın.
 
 İlgili bağlantılar:
 
-* [Kimlik Doğrulamasına genel bakış](container-registry-authentication.md#authentication-options)
+* [Kimlik doğrulamasına genel bakış](container-registry-authentication.md#authentication-options)
 * [Azure AD ile bireysel oturum açma](container-registry-authentication.md#individual-login-with-azure-ad)
 * [Hizmet sorumlusu ile oturum açma](container-registry-auth-service-principal.md)
 * [Yönetilen kimlikle oturum açma](container-registry-authentication-managed-identity.md)
@@ -143,7 +145,7 @@ Sorununuzu burada çözemezseniz, aşağıdaki seçeneklere bakın.
 
 * Diğer kayıt defteri sorunlarını giderme konuları şunları içerir:
   * [Kayıt defteri ile ağ sorunlarını giderme](container-registry-troubleshoot-access.md)
-  * [Kayıt defteri performansı sorunlarını giderme](container-registry-troubleshoot-performance.md)
+  * [Kayıt defteri performansının sorunlarını giderme](container-registry-troubleshoot-performance.md)
 * [Topluluk desteği](https://azure.microsoft.com/support/community/) seçenekleri
 * [Microsoft Soru-Cevap](/answers/products/)
 * Sağladığınız bilgilere bağlı olarak [bir destek bileti açın](https://azure.microsoft.com/support/create-ticket/) . kayıt defterinizde kimlik doğrulama hatalarıyla ilgili hızlı bir tanılama çalıştırılabilir

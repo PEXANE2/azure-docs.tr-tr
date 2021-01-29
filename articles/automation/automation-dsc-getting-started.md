@@ -2,19 +2,15 @@
 title: Azure Otomasyonu durum yapılandırması 'nı kullanmaya başlama
 description: Bu makalede, Azure Otomasyonu durum yapılandırmasında en sık kullanılan görevlerin nasıl yapılacağı açıklanır.
 services: automation
-ms.service: automation
 ms.subservice: dsc
-author: mgoedtel
-ms.author: magoedte
 ms.date: 04/15/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 25f5e92aa8aa211782bc238781c59b9ca0511173
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 95072970004ae53663f130a78af36a84a6fab685
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98897250"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99051507"
 ---
 # <a name="get-started-with-azure-automation-state-configuration"></a>Azure Otomasyonu durum yapılandırması 'nı kullanmaya başlama
 
@@ -26,7 +22,7 @@ Bu makalede açıklanan adımları izleyerek zaten ayarlanmış bir örnek ortam
 
 Bu makaledeki örnekleri tamamlayabilmeniz için aşağıdakiler gereklidir:
 
-- Azure Otomasyonu hesabı. Bir Azure Otomasyonu Garklı Çalıştır hesabı oluşturma yönergeleri için bkz. [Azure Farklı Çalıştır Hesabı](./manage-runas-account.md).
+- Azure Otomasyonu hesabı. Otomasyon hesabı ve gereksinimleri hakkında daha fazla bilgi edinmek için bkz. [Otomasyon hesabı kimlik doğrulamasına genel bakış](./automation-security-overview.md).
 - [Desteklenen bir işletim sistemi](automation-dsc-overview.md#operating-system-requirements)çalıştıran BIR Azure Resource Manager VM (klasik değil). VM oluşturma yönergeleri için bkz. [Azure portalında ilk Windows sanal makinenizi oluşturma](../virtual-machines/windows/quick-create-portal.md)
 
 ## <a name="create-a-dsc-configuration"></a>DSC yapılandırması oluşturma

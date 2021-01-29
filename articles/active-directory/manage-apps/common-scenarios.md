@@ -15,12 +15,12 @@ ms.date: 03/02/2019
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2b78562bc3590bdf5b15e4061ba23e1284b07c16
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 882770fefbb48524ad5f11a56089132b319470aa
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94835501"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99053355"
 ---
 # <a name="centralize-application-management-with-azure-ad"></a>Azure AD ile uygulama yönetimini merkezileştirme
 
@@ -43,7 +43,7 @@ Daha fazla parola yönetilme. Şirket kimlik bilgilerinizle ihtiyacınız olan t
 |Özellik  | Açıklama | Öneri |
 |---------|---------|---------|
 |SSO|Güvenilen sektör standartları kullanarak standartlara dayalı Federasyon SSO 'SU.|Uygulamanız destekliyorsa, SSO 'yu etkinleştirmek için her zaman [SAML/OıDC](../develop/v2-howto-app-gallery-listing.md) kullanın.|
-|Uygulamalarım|Kullanıcılarınıza tüm uygulamalarını keşfetmek ve bunlara erişmek için basit bir hub sunun. Uygulamalar ve gruplar için erişim isteğinde bulunma veya diğerleri adına kaynaklara erişimi yönetme gibi self servis özellikleri ile daha üretken olmalarını sağlayın.| Uygulamalarınızı SSO için Azure AD ile tümleştirdikten sonra [uygulamalarımı](./access-panel-deployment-plan.md) kuruluşunuzda dağıtın.|
+|Uygulamalarım|Kullanıcılarınıza tüm uygulamalarını keşfetmek ve bunlara erişmek için basit bir hub sunun. Uygulamalar ve gruplar için erişim isteğinde bulunma veya diğerleri adına kaynaklara erişimi yönetme gibi self servis özellikleri ile daha üretken olmalarını sağlayın.| Uygulamalarınızı SSO için Azure AD ile tümleştirdikten sonra [uygulamalarımı](my-apps-deployment-plan.md) kuruluşunuzda dağıtın.|
 
 ## <a name="scenario-2-automate-provisioning-and-deprovisioning"></a>Senaryo 2: sağlamayı ve sağlamayı kaldırmayı otomatikleştirme 
 

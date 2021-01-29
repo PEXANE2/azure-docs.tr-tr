@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 10/27/2020
-ms.openlocfilehash: ff195f7a0071c06d5309f95f77e32ae75f584f82
-ms.sourcegitcommit: 003ac3b45abcdb05dc4406661aca067ece84389f
+ms.openlocfilehash: 8181097425045e5b1ed838c5fcc08b0069185908
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96749173"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99051966"
 ---
 # <a name="quickstart-create-automated-tasks-processes-and-workflows-with-azure-logic-apps---visual-studio"></a>Hızlı Başlangıç: Azure Logic Apps ile otomatik görevler, işlemler ve iş akışları oluşturma - Visual Studio
 
@@ -60,6 +60,8 @@ Bu hızlı başlangıçta, Azure portal hızlı başlangıç olarak Visual Studi
   > [!IMPORTANT]
   > Gmail bağlayıcısını kullanmak istiyorsanız, mantıksal uygulamalarda kısıtlama olmadan yalnızca G-Suite iş hesapları bu bağlayıcıyı kullanabilir. Gmail tüketicisi hesabınız varsa, bu bağlayıcıyı yalnızca belirli Google onaylı hizmetlerle kullanabilirsiniz veya [Gmail Bağlayıcınız ile kimlik doğrulaması için kullanmak üzere bir Google istemci uygulaması oluşturabilirsiniz](/connectors/gmail/#authentication-and-bring-your-own-application). Daha fazla bilgi için, bkz. [Azure Logic Apps Google bağlayıcıları Için veri güvenliği ve gizlilik ilkeleri](../connectors/connectors-google-data-security-privacy-policy.md).
 
+* Mantıksal uygulamanızın trafiği belirli IP adresleriyle sınırlayan bir güvenlik duvarı üzerinden iletişim kurması gerekiyorsa, söz konusu güvenlik duvarının, mantıksal uygulamanızın bulunduğu Azure bölgesindeki Logic Apps hizmeti veya çalışma zamanı tarafından kullanılan [gelen](logic-apps-limits-and-config.md#inbound) ve [giden](logic-apps-limits-and-config.md#outbound) IP *adresleri için erişime* izin verilmesi gerekir. Mantıksal uygulamanız ayrıca Office 365 Outlook Bağlayıcısı veya SQL Bağlayıcısı gibi [yönetilen bağlayıcılar](../connectors/apis-list.md#managed-api-connectors)kullanıyorsa veya [özel bağlayıcılar](/connectors/custom-connectors/)kullanıyorsa, güvenlik duvarının ayrıca mantıksal uygulamanızın Azure bölgesindeki *Tüm* [yönetilen bağlayıcı giden IP adresleri](logic-apps-limits-and-config.md#outbound) için erişime izin verilmesi gerekir.
+
 <a name="azure-government"></a>
 
 ## <a name="set-up-visual-studio-for-azure-government"></a>Azure Kamu için Visual Studio’yu ayarlama
@@ -105,7 +107,7 @@ Başlamak için bir [Azure Kaynak Grubu projesi](../azure-resource-manager/templ
    ![Azure Kaynak Grubu projesi oluşturma](./media/quickstart-create-logic-apps-with-visual-studio/create-azure-cloud-service-project.png)
 
    > [!NOTE]
-   > Kaynak grubu adları yalnızca harf, sayı, nokta ( `.` ), alt çizgi ( `_` ), kısa çizgi ( `-` ) ve parantez ( `(` ,) içerebilir `)` , ancak nokta *end* () ile bitemez `.` .
+   > Kaynak grubu adları yalnızca harf, sayı, nokta ( `.` ), alt çizgi ( `_` ), kısa çizgi ( `-` ) ve parantez ( `(` ,) içerebilir `)` , ancak nokta  () ile bitemez `.` .
    >
    > **Bulut** veya **Azure Kaynak grubu** görünmezse, VISUAL Studio için Azure SDK 'yi yüklediğinizden emin olun.
 
@@ -140,7 +142,7 @@ Azure Kaynak grubu projeniz olduğunda, mantıksal uygulamanızı **boş mantık
 
    ![Azur aboneliği, kaynak grubu ve kaynak konumu seçme](./media/quickstart-create-logic-apps-with-visual-studio/select-azure-subscription-resource-group-location.png)
 
-   | Ayar | Örnek değer | Açıklama |
+   | Ayar | Örnek değer | Description |
    | ------- | ------------- | ----------- |
    | Kullanıcı hesabı | Fabrikam <br> sophia-owen@fabrikam.com | Visual Studio 'da oturum açtığınızda kullandığınız hesap |
    | **Abonelik** | Kullandıkça Öde <br> (sophia-owen@fabrikam.com) | Azure aboneliğinizin ve ilişkili hesabın adı |
@@ -172,7 +174,7 @@ Sonra, yeni bir akış öğesi göründüğünde harekete çıkan bir RSS [tetik
 
 Mantıksal uygulamanızı çalıştırıp test etmeden önce, uygulamayı Visual Studio 'dan Azure 'a dağıtın.
 
-1. Çözüm Gezgini, projenizin kısayol menüsünde Yeni **Dağıt**' ı seçin  >  **New**. Sorulursa Azure hesabınızla oturum açın.
+1. Çözüm Gezgini, projenizin kısayol menüsünde Yeni **Dağıt**' ı seçin  >  . Sorulursa Azure hesabınızla oturum açın.
 
    ![Mantıksal uygulama dağıtımı oluşturma](./media/quickstart-create-logic-apps-with-visual-studio/create-logic-app-deployment.png)
 
@@ -212,7 +214,7 @@ Mevcut bir Azure Kaynak grubu projeniz varsa, JSON ana hattı penceresini kullan
 
    ![JSON ana hat penceresi](./media/quickstart-create-logic-apps-with-visual-studio/json-outline-window-add-resource.png)
 
-1. **Kaynak Ekle** iletişim kutusunda, arama kutusunda, mantıksal uygulama ' yı bulun `logic app` ve seçin. **Logic App** Mantıksal uygulamanızı adlandırın ve **Ekle**' yi seçin.
+1. **Kaynak Ekle** iletişim kutusunda, arama kutusunda, mantıksal uygulama ' yı bulun `logic app` ve seçin.  Mantıksal uygulamanızı adlandırın ve **Ekle**' yi seçin.
 
    ![Kaynak Ekle](./media/quickstart-create-logic-apps-with-visual-studio/add-logic-app-resource.png)
 

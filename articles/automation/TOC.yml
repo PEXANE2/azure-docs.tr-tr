@@ -66,14 +66,20 @@
           href: automation-create-standalone-account.md
         - name: Resource Manager şablonu ile Otomasyon hesabı oluşturma
           href: quickstart-create-automation-account-template.md
+        - name: Farklı Çalıştır hesabı
+          items:
+            - name: Farklı Çalıştır hesabı oluştur
+              href: create-run-as-account.md
+            - name: Farklı Çalıştır hesabını silme
+              href: delete-run-as-account.md
+            - name: Farklı Çalıştır hesabını Yönet
+              href: manage-runas-account.md
         - name: Amazon Web Services ile kimlik doğrulamasını yapılandırma
           href: automation-config-aws-account.md
         - name: Azure AD ile kimlik doğrulamasını yapılandırma
           href: automation-use-azure-ad.md
-        - name: Otomasyon tarafından kullanılan DNS kaydını yönetme
+        - name: Otomasyon tarafından kullanılan DNS kayıtlarını yönetme
           href: how-to/automation-region-dns-records.md
-        - name: Otomasyon Farklı Çalıştır hesabı yönetme
-          href: manage-runas-account.md
         - name: Otomasyon hesabına özel olarak bağlanma
           href: how-to/private-link-security.md
         - name: Rol izinlerini ve güvenliği yönetme

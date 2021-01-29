@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 10/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: 6ac7d99f4a47711f9974d30d877a3237eec15443
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 71273c456b14fa4ea289e2a48d441de99ce8a4b1
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078842"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99053916"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Azure Otomasyonu’nda runbook yürütme
 
@@ -112,7 +112,7 @@ Log Analytics Aracısı ve **nxautomation** hesabı için kullanılabilir Günl�
 
 ## <a name="runbook-permissions"></a>Runbook izinleri
 
-Bir runbook 'un kimlik bilgileriyle Azure 'da kimlik doğrulaması için izinleri olması gerekir. Bkz. [Azure Otomasyonu farklı çalıştır hesaplarını yönetme](manage-runas-account.md).
+Bir runbook 'un kimlik bilgileriyle Azure 'da kimlik doğrulaması için izinleri olması gerekir. Bkz. [Azure Otomasyonu kimlik doğrulamasına genel bakış](automation-security-overview.md).
 
 ## <a name="modules"></a>Modül
 
@@ -139,6 +139,7 @@ Aşağıdaki tabloda, bir iş için olası durumlar açıklanmaktadır. Tüm run
 
 | Durum | Açıklama |
 |:--- |:--- |
+| Mesiyle |İş etkinleştiriliyor. |
 | Tamamlandı |İş başarıyla tamamlandı. |
 | Başarısız |Grafik veya PowerShell Iş akışı runbook 'u derlenemedi. PowerShell runbook 'u başlatılamadı veya iş bir özel duruma sahipti. Bkz. [Azure Otomasyonu runbook türleri](automation-runbook-types.md).|
 | Başarısız, kaynak bekleniyor |İş başarısız oldu çünkü bu, [dengeli](#fair-share) bir şekilde, her seferinde ve aynı denetim noktasından ya da runbook 'un başlangıcından her seferinde başlatılmış |

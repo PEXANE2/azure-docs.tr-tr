@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 10/30/2020
-ms.openlocfilehash: 9d402599c4d6732ce92b8c64af6f660bcedbc4ba
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: d90b9e38158d951990fffc21a43317c688da12c9
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96455067"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99052051"
 ---
 # <a name="quickstart-create-your-first-logic-apps-workflow---azure-portal"></a>Hızlı başlangıç: ilk Logic Apps iş akışınızı oluşturma-Azure portal
 
@@ -30,11 +30,14 @@ Bu hızlı başlangıçta, [Azure Portal](https://portal.azure.com)üzerinden [A
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* Azure aboneliği. Bir hesabınız yoksa, [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Bir Azure hesabı ve aboneliği Bir hesabınız yoksa, [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+
 * Logic Apps tarafından desteklenen hizmetten (Office 365 Outlook veya Outlook.com gibi) bir e-posta hesabı. Desteklenen diğer e-posta sağlayıcıları için [bağlayıcı listesini gözden geçirin](/connectors/).
 
     > [!IMPORTANT]
     > [Gmail bağlayıcısını](/connectors/gmail/)kullanıyorsanız, yalnızca G Suite hesaplarının Logic Apps kısıtlaması olmadan bu bağlayıcıyı kullanabileceğini unutmayın. Bir tüketici Gmail hesabınız varsa, [Gmail Bağlayıcınız ile kimlik doğrulaması için kullanmak üzere bir Google istemci uygulaması oluşturmadığınız](/connectors/gmail/#authentication-and-bring-your-own-application)müddetçe bu bağlayıcıyı yalnızca belirli Google onaylı hizmetlerle kullanabilirsiniz. Daha fazla bilgi için, bkz. [Azure Logic Apps Google bağlayıcıları Için veri güvenliği ve gizlilik ilkeleri](../connectors/connectors-google-data-security-privacy-policy.md).
+
+* Mantıksal uygulamanızın trafiği belirli IP adresleriyle sınırlayan bir güvenlik duvarı üzerinden iletişim kurması gerekiyorsa, söz konusu güvenlik duvarının, mantıksal uygulamanızın bulunduğu Azure bölgesindeki Logic Apps hizmeti veya çalışma zamanı tarafından kullanılan [gelen](logic-apps-limits-and-config.md#inbound) ve [giden](logic-apps-limits-and-config.md#outbound) IP *adresleri için erişime* izin verilmesi gerekir. Mantıksal uygulamanız ayrıca Office 365 Outlook Bağlayıcısı veya SQL Bağlayıcısı gibi [yönetilen bağlayıcılar](../connectors/apis-list.md#managed-api-connectors)kullanıyorsa veya [özel bağlayıcılar](/connectors/custom-connectors/)kullanıyorsa, güvenlik duvarının ayrıca mantıksal uygulamanızın Azure bölgesindeki *Tüm* [yönetilen bağlayıcı giden IP adresleri](logic-apps-limits-and-config.md#outbound) için erişime izin verilmesi gerekir.
 
 <a name="create-logic-app"></a>
 
@@ -51,7 +54,7 @@ Bu hızlı başlangıçta, [Azure Portal](https://portal.azure.com)üzerinden [A
    ![Mantıksal uygulamalar listesini ve seçili "" Ekle "düğmesini gösteren Azure portal Logic Apps hizmet sayfasının ekran görüntüsü.](./media/quickstart-create-first-logic-app-workflow/add-new-logic-app.png)
 
 1. **Mantıksal uygulama** bölmesinde mantıksal uygulamanız için temel ayrıntıları ve ayarları sağlayın. Bu örnek mantıksal uygulamanın amaçları doğrultusunda yeni bir [kaynak grubu](../azure-resource-manager/management/overview.md#terminology) oluşturun.
-    
+
    | Özellik | Değer | Açıklama |
    |----------|-------|-------------|
    | **Ad** | <*Logic-App-adı*> | Mantıksal uygulamanızın adı, bölgeler arasında benzersiz olmalıdır. Ad yalnızca harf, sayı, kısa çizgi ( `-` ), alt çizgi ( `_` ), parantez ( `(` , `)` ) ve nokta () içerebilir `.` . Bu örnek "My-First-Logic-App" kullanır. |

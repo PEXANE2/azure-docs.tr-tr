@@ -3,14 +3,14 @@ title: Azure Otomasyonu paylaşılan kaynak sorunlarını giderme
 description: Bu makalede, Azure Otomasyonu paylaşılan kaynaklarıyla ilgili sorunların nasıl giderileceği ve çözüleceği açıklanır.
 services: automation
 ms.subservice: ''
-ms.date: 03/12/2019
+ms.date: 01/27/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: c4ede0bffedc256f4af621d4945ebbbea0f8a4b6
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 1a822166ae4c2bf793e0fa50e93018f499fcc27a
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98896300"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99053633"
 ---
 # <a name="troubleshoot-shared-resource-issues"></a>Paylaşılan kaynak sorunlarını giderme
 
@@ -131,7 +131,7 @@ Farklı Çalıştır hesabı oluşturmak veya güncelleştirmek için gerekli iz
 
 #### <a name="resolution"></a>Çözüm
 
-Farklı Çalıştır hesabı oluşturmak veya güncelleştirmek için, farklı çalıştır hesabı tarafından kullanılan çeşitli kaynaklara uygun [izinlere](../manage-runas-account.md#permissions) sahip olmanız gerekir. 
+Farklı Çalıştır hesabı oluşturmak veya güncelleştirmek için, farklı çalıştır hesabı tarafından kullanılan çeşitli kaynaklara uygun [izinlere](../automation-security-overview.md#permissions) sahip olmanız gerekir.
 
 Sorun bir kilit nedeniyle, kilidin kaldırılabildiğini doğrulayın. Ardından Azure portal kilitlenen kaynağa gidin, kilidi sağ tıklatın ve **Sil**' i seçin.
 
@@ -147,7 +147,7 @@ Unable to find an entry point named 'GetPerAdapterInfo' in DLL 'iplpapi.dll'
 
 #### <a name="cause"></a>Nedeni
 
-Bu hata büyük olasılıkla yanlış yapılandırılmış bir [Farklı Çalıştır hesabı](../manage-runas-account.md)nedeniyle oluşur.
+Bu hata büyük olasılıkla yanlış yapılandırılmış bir [Farklı Çalıştır hesabı](../automation-security-overview.md)nedeniyle oluşur.
 
 #### <a name="resolution"></a>Çözüm
 
@@ -166,4 +166,3 @@ Bu makale sorununuzu gidermezse, ek destek için aşağıdaki kanallardan birini
 * Azure [forumları](https://azure.microsoft.com/support/forums/)aracılığıyla Azure uzmanlarından yanıtlar alın.
 * İle bağlanın [@AzureSupport](https://twitter.com/azuresupport) . Bu, Azure Community 'yi doğru kaynaklara bağlamaya yönelik resmi Microsoft Azure hesabıdır: yanıtlar, destek ve uzmanlar.
 * Azure destek olayı dosyası oluşturma. [Azure destek sitesine](https://azure.microsoft.com/support/options/)gidin ve **Destek Al**' ı seçin.
-

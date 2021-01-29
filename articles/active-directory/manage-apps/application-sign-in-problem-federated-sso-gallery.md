@@ -12,17 +12,17 @@ ms.date: 02/18/2019
 ms.author: kenwith
 ms.reviewer: luleon, asteen
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 596af29fe72a41b5a86a09e4e6d5072d63b6ac71
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 62b828a23805c6d3ab544dd2b9f78b45a3327cde
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97586355"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99053406"
 ---
 # <a name="problems-signing-in-to-saml-based-single-sign-on-configured-apps"></a>SAML tabanlı çoklu oturum açma ile yapılandırılmış uygulamalarda oturum açma sorunları
 Aşağıdaki oturum açma sorunlarını gidermek için, çözümü daha iyi tanılayıp otomatik hale getirmek için aşağıdaki işlemleri yapmanızı öneririz:
 
-- Azure portalda test deneyimi kullanılırken Azure Active Directory’ye (Azure AD) daha iyi tanılama ve çözümler sağlama konusunda yardımcı olmak için [Uygulamalarım Güvenli Tarayıcı Eklentisini](./access-panel-deployment-plan.md) yükleyin.
+- Azure portalda test deneyimi kullanılırken Azure Active Directory’ye (Azure AD) daha iyi tanılama ve çözümler sağlama konusunda yardımcı olmak için [Uygulamalarım Güvenli Tarayıcı Eklentisini](my-apps-deployment-plan.md) yükleyin.
 - Azure portalın uygulama yapılandırma sayfasında test deneyimini kullanarak hatayı yeniden oluşturun. [SAML tabanlı çoklu oturum açma uygulamalarında hata ayıklama](./debug-saml-sso-issues.md) hakkında daha fazla bilgi edinin
 
 Uygulamalarım güvenli tarayıcı uzantısı ile Azure portal [Test deneyimini](./debug-saml-sso-issues.md) KULLANıYORSANıZ, SAML tabanlı çoklu oturum açma yapılandırması sayfasını açmak için aşağıdaki adımları el ile izlemeniz gerekmez.

@@ -1,17 +1,17 @@
 ---
 title: İşlem ve depolama seçenekleri-MySQL için Azure veritabanı-esnek sunucu
 description: Bu makalede, MySQL için Azure veritabanı-esnek sunucusu 'nda işlem ve depolama seçenekleri açıklanmaktadır.
-author: savjani
-ms.author: pariks
+author: Bashar-MSFT
+ms.author: bahusse
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 01/27/2021
-ms.openlocfilehash: 267b362c94b04b3be634f7e61c2b6d67604d7854
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.date: 1/28/2021
+ms.openlocfilehash: b1e8093a1991a97220060c2b6936368f9a4be796
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98954690"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99052355"
 ---
 # <a name="compute-and-storage-options-in-azure-database-for-mysql---flexible-server-preview"></a>MySQL için Azure veritabanı 'nda işlem ve depolama seçenekleri-esnek sunucu (Önizleme)
 
@@ -72,7 +72,7 @@ Kullanılabilir sunucu türlerinin ayrıntılı özellikleri şunlardır:
 Kullanılabilir işlem serisi hakkında daha fazla bilgi edinmek için bkz. [Burstable (B-serisi)](../../virtual-machines/sizes-b-series-burstable.md), [genel amaçlı (Ddsv4-Series)](../../virtual-machines/ddv4-ddsv4-series.md)ve [bellek için iyileştirilmiş (Edsv4-Series)](../../virtual-machines/edv4-edsv4-series.md)için Azure VM belgeleri.
 
 >[!NOTE]
->Kullanıcı tarafından başlatılan, planlı veya planlanmamış bakım gibi nedenlerle sunucu yeniden başlatıldığında, [Burstable (B serisi)](../../virtual-machines/sizes-b-series-burstable.md) işlem katmanı için birikmiş kredi kaybolabilir. Bu nedenle, MySQL için Azure veritabanı 'nın aynı düğümde kaldığı her seferinde birikmiş kredi korunur. Yazdığında, MySQL için Azure veritabanı sunucusu yeni bir düğümde yeni bir kez başladığında bir başlangıç kredisi alır. Daha fazla bilgi için [bkz. Burstable (B serisi) SSS](https://docs.microsoft.com/azure/virtual-machines/sizes-b-series-burstable#q-why-is-my-remaining-credit-set-to-0-after-a-redeploy-or-a-stopstart).
+>Sanal makine başlatılmış/durdurulmuş ya da yeniden başlatılırsa, [Burstable (B-serisi) işlem katmanı](../../virtual-machines/sizes-b-series-burstable.md) için krediler kaybolmuş olabilir. Daha fazla bilgi için bkz. [Burstable (B serisi) SSS](https://docs.microsoft.com/azure/virtual-machines/sizes-b-series-burstable#q-why-is-my-remaining-credit-set-to-0-after-a-redeploy-or-a-stopstart).
 
 ## <a name="storage"></a>Depolama
 

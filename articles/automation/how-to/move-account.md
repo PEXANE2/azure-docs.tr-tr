@@ -2,19 +2,15 @@
 title: Azure Otomasyonu hesabınızı başka bir aboneliğe taşıma
 description: Bu makalede Otomasyon hesabınızı başka bir aboneliğe nasıl taşıyacağınız açıklanır.
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
-ms.date: 03/11/2019
+ms.date: 01/07/2021
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 8454c5a5bb5b44d2a60ae0095a9b82a19ed27c8d
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: a86d876a723c89eb8dcdf18c8318f2a9c740a229
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98896655"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99051033"
 ---
 # <a name="move-your-azure-automation-account-to-another-subscription"></a>Azure Otomasyonu hesabınızı başka bir aboneliğe taşıma
 
@@ -108,7 +104,7 @@ Artık Otomasyon hesabınızı ve Runbook 'larını taşıyabilirsiniz.
 
 ## <a name="re-create-run-as-accounts"></a>Farklı Çalıştır hesaplarını yeniden oluşturma
 
-[Farklı Çalıştır hesapları](../manage-runas-account.md) Azure kaynaklarıyla kimlik doğrulaması yapmak için Azure Active Directory bir hizmet sorumlusu oluşturur. Abonelikleri değiştirdiğinizde, Otomasyon hesabı artık mevcut farklı çalıştır hesabını kullanmaz. Farklı Çalıştır hesaplarını yeniden oluşturmak için:
+[Farklı Çalıştır hesapları](../automation-security-overview.md#run-as-accounts) Azure kaynaklarıyla kimlik doğrulaması yapmak için Azure Active Directory bir hizmet sorumlusu oluşturur. Abonelikleri değiştirdiğinizde, Otomasyon hesabı artık mevcut farklı çalıştır hesabını kullanmaz. Farklı Çalıştır hesaplarını yeniden oluşturmak için:
 
 1. Yeni abonelikte Otomasyon hesabınıza gidin ve **Hesap ayarları** altında **Farklı Çalıştır hesapları** ' nı seçin. Farklı Çalıştır hesaplarının şimdi tamamlanmamış olarak gösterileceğini görürsünüz.
 
@@ -117,7 +113,7 @@ Artık Otomasyon hesabınızı ve Runbook 'larını taşıyabilirsiniz.
 2. Farklı Çalıştır hesaplarını, **Özellikler** sayfasında **Sil** ' i seçerek tek seferde silin. 
 
     > [!NOTE]
-    > Farklı Çalıştır hesaplarını oluşturma veya görüntüleme izniniz yoksa şu iletiyi görürsünüz: `You do not have permissions to create an Azure Run As account (service principal) and grant the Contributor role to the service principal.` daha fazla bilgi için, [Farklı Çalıştır hesaplarını yapılandırmak Için gereken izinler](../manage-runas-account.md#permissions)bölümüne bakın.
+    > Farklı Çalıştır hesaplarını oluşturma veya görüntüleme izniniz yoksa şu iletiyi görürsünüz: `You do not have permissions to create an Azure Run As account (service principal) and grant the Contributor role to the service principal.` daha fazla bilgi için, [Farklı Çalıştır hesaplarını yapılandırmak Için gereken izinler](../automation-security-overview.md#permissions)bölümüne bakın.
 
 3. Farklı Çalıştır hesaplarını sildikten sonra **Azure farklı çalıştır hesabı** altında **Oluştur** ' u seçin. 
 

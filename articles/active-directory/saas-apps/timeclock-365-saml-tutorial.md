@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/16/2020
+ms.date: 01/28/2021
 ms.author: jeedes
-ms.openlocfilehash: 329e0fbfdea43f3933333744f89ed1c03ef0ed13
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: d0c8364cc85cfce900021272d17456527919122b
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98729339"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99050812"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-timeclock-365-saml"></a>Öğretici: TimeClock 365 SAML ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -26,7 +26,7 @@ Bu öğreticide, TimeClock 365 SAML Azure Active Directory (Azure AD) ile tümle
 * Kullanıcılarınızın Azure AD hesaplarıyla TimeClock 365 SAML için otomatik olarak oturum açmalarına olanak sağlayın.
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -70,7 +70,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. Azure portal, **TimeClock 365 SAML** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
 1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
-1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
+1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** kalem simgesine tıklayın.
 
    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -109,7 +109,15 @@ Bu bölümde, TimeClock 365 SAML erişimi vererek Azure çoklu oturum açma öze
 
 ## <a name="configure-timeclock-365-saml-sso"></a>TimeClock 365 SAML SSO 'yu yapılandırma
 
-1. Tarayıcınızda yeni bir sekme açın ve saat saat 365 SAML şirket sitenizde yönetici olarak oturum açın.
+1. Süreyi TimeClock 365 SAML içinde otomatik hale getirmek için, **uzantıyı yüklemeniz**' ne tıklayarak **uygulamalarım güvenli oturum açma tarayıcı uzantısı** ' nı yüklemeniz gerekir.
+
+    ![Uygulamalarım uzantısı](common/install-myappssecure-extension.png)
+
+2. Tarayıcıya Uzantı eklendikten sonra, kurulum **zaman saati 365 SAML** 'ya tıkladığınızda sizi timeclock 365 SAML uygulamasına yönlendirirsiniz. Buradan, TimeClock 365 SAML 'da oturum açmak için yönetici kimlik bilgilerini sağlayın. Tarayıcı uzantısı, uygulamayı sizin için otomatik olarak yapılandırır ve 3-4 adımlarını otomatikleştirecektir.
+
+    ![Kurulum yapılandırması](common/setup-sso.png)
+
+3. TimeClock 365 SAML 'yi el ile ayarlamak istiyorsanız, farklı bir Web tarayıcısı penceresinde, zaman saati 365 SAML şirket sitenizde yönetici olarak oturum açın.
 
 1. Aşağıda bahsedilen adımları gerçekleştirin.
 

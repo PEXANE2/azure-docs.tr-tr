@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/04/2019
 ms.topic: troubleshooting
-ms.openlocfilehash: 763e1321556ade73778b82ea70926af21a83f7ec
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: ff2ef8970afa21c0218da20a5b79ea2fb782dd5c
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98896283"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99053593"
 ---
 # <a name="troubleshoot-startstop-vms-during-off-hours-issues"></a>VM'leri çalışma saatleri dışında başlat/durdur sorunlarını giderme
 
@@ -109,7 +109,7 @@ Olası çözümler için aşağıdaki listeyi gözden geçirin:
   * **ScheduledStartStop_Parent**
   * **SequencedStartStop_Parent**
 
-* [Farklı Çalıştır hesabınızın](../manage-runas-account.md) başlatmaya çalıştığınız veya durdurduğunuz VM 'ler için uygun izinlere sahip olduğunu doğrulayın. Bir kaynaktaki izinleri nasıl denetleyeceğinizi öğrenmek için bkz. [hızlı başlangıç: Azure Portal kullanarak bir kullanıcıya atanan rolleri görüntüleme](../../role-based-access-control/check-access.md). Farklı Çalıştır hesabı tarafından kullanılan hizmet sorumlusu için uygulama KIMLIĞINI sağlamanız gerekir. Azure portal Otomasyon hesabınıza giderek bu değeri alabilirsiniz. **Hesap ayarları**' nın altında **Farklı Çalıştır hesapları** ' nı seçin ve uygun farklı çalıştır hesabını seçin.
+* [Farklı Çalıştır hesabınızın](../automation-security-overview.md#run-as-accounts) başlatmaya çalıştığınız veya durdurduğunuz VM 'ler için uygun izinlere sahip olduğunu doğrulayın. Bir kaynaktaki izinleri nasıl denetleyeceğinizi öğrenmek için bkz. [hızlı başlangıç: Azure Portal kullanarak bir kullanıcıya atanan rolleri görüntüleme](../../role-based-access-control/check-access.md). Farklı Çalıştır hesabı tarafından kullanılan hizmet sorumlusu için uygulama KIMLIĞINI sağlamanız gerekir. Azure portal Otomasyon hesabınıza giderek bu değeri alabilirsiniz. **Hesap ayarları**' nın altında **Farklı Çalıştır hesapları** ' nı seçin ve uygun farklı çalıştır hesabını seçin.
 
 * VM 'Ler açıkça dışlandıklarında, sanal makineler başlatılmamış veya durdurulmuş olabilir. Dışlanan VM 'Ler, `External_ExcludeVMNames` özelliğin dağıtıldığı Otomasyon hesabındaki değişkende ayarlanır. Aşağıdaki örnek, bu değeri PowerShell ile nasıl sorgulayakullanabileceğinizi gösterir.
 
@@ -201,7 +201,7 @@ Bu sorun, yanlış yapılandırılmış veya zaman aşımına uğramamış farkl
 
 Farklı Çalıştır hesabınızın düzgün yapılandırıldığını doğrulamak için, Azure portal Otomasyon hesabınıza gidin ve **Hesap ayarları** altında **Farklı Çalıştır hesapları** ' nı seçin. Farklı Çalıştır hesabı yanlış yapılandırılmamışsa veya süre dolmuşsa, durum koşulu gösterir.
 
-Farklı Çalıştır hesabınız yanlış yapılandırılmış ise, farklı çalıştır hesabınızı silin ve yeniden oluşturun. Daha fazla bilgi için bkz. [Azure Otomasyonu farklı çalıştır hesaplarını yönetme](../manage-runas-account.md).
+Farklı Çalıştır hesabınız yanlış yapılandırılmış ise, farklı çalıştır hesabınızı silin ve yeniden oluşturun. Daha fazla bilgi için bkz. [Azure Otomasyonu farklı çalıştır hesapları](../automation-security-overview.md#run-as-accounts).
 
 Farklı Çalıştır hesabınız için sertifikanın geçerliliği dolmuşsa, sertifikayı yenilemek için [otomatik olarak imzalanan sertifika yenileme](../manage-runas-account.md#cert-renewal) bölümündeki adımları izleyin.
 

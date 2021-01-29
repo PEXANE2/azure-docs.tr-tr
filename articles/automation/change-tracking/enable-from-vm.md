@@ -5,12 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 10/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: 9b14dcb9ce2f2426d8d1496541022602a114cb6e
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 61b45d6f6414b1e8e1f48f6d46957b21b9b8c58b
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92210407"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99052507"
 ---
 # <a name="enable-change-tracking-and-inventory-from-an-azure-vm"></a>Azure VM’den Değişiklik İzleme ve Stok özelliğini etkinleştirme
 
@@ -22,7 +22,7 @@ Bu makalede, diğer makinelerde [değişiklik izleme ve envanteri](overview.md) 
 ## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği. Henüz bir hesabınız yoksa [MSDN abone avantajlarınızı etkinleştirebilir](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) veya [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)için kaydolabilirsiniz.
-* Makineleri yönetmek için [Otomasyon hesabı](../index.yml).
+* Makineleri yönetmek için [Otomasyon hesabı](../automation-security-overview.md).
 * Bir [sanal makine](../../virtual-machines/windows/quick-create-portal.md).
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
@@ -35,7 +35,7 @@ https://portal.azure.com adresinden Azure portalında oturum açın.
 
 2. Değişiklik İzleme ve envanterini etkinleştirmek istediğiniz VM 'yi seçin. Otomasyon hesabınızın konumu ne olduğuna bakılmaksızın, VM 'Ler herhangi bir bölgede bulunabilir.
 
-3. VM sayfasında, **yapılandırma yönetimi**altında **Stok** veya **değişiklik izleme** ' yi seçin.
+3. VM sayfasında, **yapılandırma yönetimi** altında **Stok** veya **değişiklik izleme** ' yi seçin.
 
 4. `Microsoft.OperationalInsights/workspaces/read`VM 'nin bir çalışma alanı için etkinleştirilip etkinleştirilmediğini belirleme izninizin olması gerekir. Gerekli ek izinler hakkında daha fazla bilgi edinmek için bkz. [özellik kurulumu izinleri](../automation-role-based-access-control.md#feature-setup-permissions). Aynı anda birden çok makineyi etkinleştirmeyi öğrenmek için bkz. [Otomasyon hesabından değişiklik izleme ve envanteri etkinleştirme](enable-from-automation-account.md).
 

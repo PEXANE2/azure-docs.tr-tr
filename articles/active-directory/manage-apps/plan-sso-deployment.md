@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 14520c7c448231045b36e025c2c92332f9daac53
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 5f207a0b5f829e952c92133a66313f49e9352f51
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658732"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99053217"
 ---
 # <a name="plan-a-single-sign-on-deployment"></a>Çoklu oturum açma dağıtımını planlama
 
@@ -62,7 +62,7 @@ Kullanıcılarınızın uygulamalarınıza çoklu oturum açma imkanı sağlaman
 
 Parola tabanlı SSO için Azure AD 'nin kullanılması, kimlik bilgilerini güvenli bir şekilde alacak ve oturum açma formlarını dolduran bir tarayıcı uzantısının dağıtılmasını gerektirir. Uzantıyı [desteklenen tarayıcılarla](../user-help/my-apps-portal-end-user-access.md)bir ölçekte dağıtmak için bir mekanizma tanımlayın. Seçeneklere şunlar dahildir:
 
-- [Internet Explorer için grup ilkesi](./access-panel-deployment-plan.md)
+- [Internet Explorer için grup ilkesi](my-apps-deployment-plan.md)
 - [Internet Explorer için Configuration Manager](/configmgr/core/clients/deploy/deploy-clients-to-windows-computers)
 - [Chrome, Firefox, Microsoft Edge veya IE için Kullanıcı odaklı indirme ve yapılandırma](../user-help/my-apps-portal-end-user-access.md)
 

@@ -6,12 +6,12 @@ ms.subservice: shared-capabilities
 ms.date: 12/22/2020
 ms.topic: conceptual
 ms.custom: has-adal-ref
-ms.openlocfilehash: 8deb249dc042701ec02c3e5e30f3603be132d0ec
-ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
+ms.openlocfilehash: 5f6494eb72084c683ddbb8b27a49acdb1fbc2bfc
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97734003"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054272"
 ---
 # <a name="manage-connections-in-azure-automation"></a>Azure Otomasyonu 'nda bağlantıları yönetme
 
@@ -35,7 +35,7 @@ Azure Otomasyonu aşağıdaki yerleşik bağlantı türlerini kullanılabilir ha
 * `AzureServicePrincipal` -Azure farklı çalıştır hesabı tarafından kullanılan bir bağlantıyı temsil eder.
 * `AzureClassicCertificate` -Klasik Azure farklı çalıştır hesabı tarafından kullanılan bir bağlantıyı temsil eder.
 
-Çoğu durumda, bir [Farklı Çalıştır hesabı](manage-runas-account.md)oluşturduğunuzda oluşturulduğundan bir bağlantı kaynağı oluşturmanız gerekmez.
+Çoğu durumda, bir [Farklı Çalıştır hesabı](automation-security-overview.md)oluşturduğunuzda oluşturulduğundan bir bağlantı kaynağı oluşturmanız gerekmez.
 
 ## <a name="powershell-cmdlets-to-access-connections"></a>Bağlantılara erişim için PowerShell cmdlet 'leri
 
@@ -52,7 +52,7 @@ Aşağıdaki tablodaki cmdlet 'ler, PowerShell ile otomasyon bağlantıları olu
 
 Aşağıdaki tablodaki iç cmdlet, runbook 'larınızda ve DSC yapılandırmalarında bağlantılara erişmek için kullanılır. Bu cmdlet, genel modülle birlikte gelir `Orchestrator.AssetManagement.Cmdlets` . Daha fazla bilgi için bkz. [iç cmdlet 'ler](shared-resources/modules.md#internal-cmdlets).
 
-|İç cmdlet|Açıklama|
+|İç cmdlet|Description|
 |---|---|
 |`Get-AutomationConnection` | Bağlantıdaki farklı alanların değerlerini alır ve bunları bir [karma tablosu](/powershell/module/microsoft.powershell.core/about/about_hash_tables)olarak döndürür. Daha sonra bu Hashtable 'ı runbook veya DSC yapılandırmasındaki uygun komutlarla kullanabilirsiniz.|
 

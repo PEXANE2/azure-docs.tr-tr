@@ -188,14 +188,17 @@
       items:
         - name: Kullanıcı erişimini yapılandırma
           href: configure-user-input.md
-        - name: Kullanıcı arabirimini şirket markasıyla özelleştirme
-          href: company-branding.md
+        - name: Kullanıcı arabirimini özelleştirme
+          displayName: company branding
+          href: customize-ui.md
         - name: Kullanıcı arabirimini HTML şablonuyla özelleştirme
+          displayName: content definitions
           href: customize-ui-with-html.md
         - name: JavaScript ve sayfa düzenleri
           href: javascript-and-page-layout.md
         - name: Dil özelleştirme
           href: language-customization.md
+          displayName: localization
         - name: Parola karmaşıklığı
           href: password-complexity.md
         - name: E-posta doğrulamayı devre dışı bırakma
@@ -259,12 +262,13 @@
           items:
             - name: Application Insights’ı kullanarak günlük toplama
               href: troubleshoot-with-application-insights.md
-              displayName: troubleshooting
+              displayName: 'troubleshooting, app insights'
             - name: Doğrulamayı yeniden deneme
               href: troubleshoot-custom-policies.md
               displayName: troubleshooting
         - name: Kullanım analizi
           href: analytics-with-application-insights.md
+          displayName: 'application insights, app insights'
         - name: Başvuru
           items:
             - name: TrustFrameworkPolicy

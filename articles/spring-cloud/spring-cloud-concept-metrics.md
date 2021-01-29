@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: a4838dd6e8f9f4959fc1e4d0dc8dbc2218a30f30
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 119b00e67cf8337123028840ec6a7ecd29e97a05
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98755474"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99051609"
 ---
 # <a name="understand-metrics-for-azure-spring-cloud"></a>Azure yay bulutu için ölçümleri anlama
 
@@ -121,6 +121,7 @@ Aşağıdaki tablolarda kullanılabilir ölçümler ve Ayrıntılar gösterilmek
 >| Gen 0 GC sayısı  | Gen-0-GC-Count | Count        | Saniye başına kuşak 0 çöp koleksiyonlarının sayısı. |
 >| Gen 1 GC sayısı  | Gen-1-GC-sayısı | Count        | Saniye başına 1. nesil atık koleksiyonları sayısı. |
 >| Gen 2 GC sayısı  | Gen-2-GC-sayım | Count        | Saniye başına 2. nesil atık toplama sayısı. |
+>| GC zamanı      | timein-GC      | Yüzde      | Son çöp toplamadan bu yana atık toplamada geçen sürenin yüzdesi. |
 >| Gen 0 yığın boyutu | Gen-0-boyut     | Bayt        | Nesil 0 yığın boyutu. |
 >| Gen 1 yığın boyutu | Gen-1-boyut     | Bayt        | 1. nesil yığın boyutu. |
 >| Gen 2 yığın boyutu | Gen-2 boyutu     | Bayt        | 2. nesil yığın boyutu. |

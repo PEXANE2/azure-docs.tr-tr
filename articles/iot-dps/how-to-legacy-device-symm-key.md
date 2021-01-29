@@ -3,17 +3,17 @@ title: Simetrik anahtarlar kullanarak cihazları Sağlama-Azure IoT Hub cihaz sa
 description: Cihaz sağlama hizmeti (DPS) örneğiniz ile cihazları sağlamak için simetrik anahtarlar kullanma
 author: wesmc7777
 ms.author: wesmc
-ms.date: 07/13/2020
+ms.date: 01/28/2021
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-manager: eliotga
-ms.openlocfilehash: dc33dcd2c80b2a6d4a1cc27778e49dc06ac48b34
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+manager: lizross
+ms.openlocfilehash: a4c16347d1883e1522fda18c2382f2d67b8ace80
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967321"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99051118"
 ---
 # <a name="how-to-provision-devices-using-symmetric-key-enrollment-groups"></a>Simetrik anahtar kayıt grupları kullanarak cihazları sağlama
 
@@ -21,9 +21,7 @@ Bu makalede, birden çok simetrik anahtar cihazı bir kayıt grubu kullanılarak
 
 Bazı cihazlarda, cihazı güvenli bir şekilde tanımlamak için kullanılabilecek bir sertifika, TPM veya başka bir güvenlik özelliği bulunmayabilir. Cihaz sağlama hizmeti [simetrik anahtar kanıtlama](concepts-symmetric-key-attestation.md)içerir. Simetrik anahtar kanıtlama, MAC adresi veya seri numarası gibi benzersiz bilgileri temel alarak bir cihazı belirlemek için kullanılabilir.
 
-Bir [donanım güvenlik modülünü (HSM)](concepts-service.md#hardware-security-module) ve bir sertifikayı kolayca yükleyebiliyorsanız, cihazlarınızı tanımlamaya ve sağlamaya yönelik daha iyi bir yaklaşım olabilir. Bu yaklaşım, tüm cihazlarınıza dağıtılan kodu güncelleştirme işlemini atlamanıza izin verebilir ve cihaz yansımanıza gömülü bir gizli anahtar yoktur.
-
-Bu makalede, ne bir HSM veya bir sertifikanın uygun bir seçenek olduğu varsayılır. Ancak, bu cihazları sağlamak için cihaz kodu güncelleştirme bir yöntem, cihaz sağlama hizmetini kullanmak üzere bir yöntem olduğunu varsayın. 
+Bir [donanım güvenlik modülünü (HSM)](concepts-service.md#hardware-security-module) ve bir sertifikayı kolayca yükleyebiliyorsanız, cihazlarınızı tanımlamaya ve sağlamaya yönelik daha iyi bir yaklaşım olabilir. Bir HSM kullanmak, tüm cihazlarınıza dağıtılan kodu güncelleştirme işlemini atlamanıza izin verir ve cihaz görüntülerinize gömülü bir gizli anahtar yoktur. Bu makalede, ne bir HSM veya bir sertifikanın uygun bir seçenek olduğu varsayılır. Ancak, bu cihazları sağlamak için cihaz kodu güncelleştirme bir yöntem, cihaz sağlama hizmetini kullanmak üzere bir yöntem olduğunu varsayın. 
 
 Bu makalede ayrıca, ana grup anahtarına veya türetilmiş cihaz anahtarına yetkisiz erişimi engellemek için cihaz güncelleştirmesinin güvenli bir ortamda gerçekleştiği varsayılmaktadır.
 
@@ -43,7 +41,7 @@ Bu makalede gösterilen cihaz kodu, [hızlı başlangıç: simetrik anahtarlarla
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [IoT Hub cihazı sağlama hizmetini Azure Portal](./quick-setup-auto-provision.md) hızlı başlangıç ile tamamlama.
 
@@ -142,39 +140,18 @@ Bu örnekte, bir kayıt KIMLIĞI için aşağıdaki dizeyi oluşturan bir MAC ad
 sn-007-888-abc-mac-a1-b2-c3-d4-e5-f6
 ```
 
-Cihazınız için benzersiz bir kayıt KIMLIĞI oluşturun. Geçerli karakterler küçük harfli alfasayısal ve tire ('-').
+Her cihaz için benzersiz kayıt kimlikleri oluşturun. Geçerli karakterler küçük harfli alfasayısal ve tire ('-').
 
 
 ## <a name="derive-a-device-key"></a>Bir cihaz anahtarı türet 
 
-Cihaz anahtarı oluşturmak için, cihaz için benzersiz kayıt KIMLIĞI için [HMAC-SHA256](https://wikipedia.org/wiki/HMAC) hesaplamak ve sonucu base64 biçimine dönüştürmek için Grup ana anahtarını kullanın.
+Cihaz anahtarları oluşturmak için, her bir cihaz için kayıt KIMLIĞI için [HMAC-SHA256](https://wikipedia.org/wiki/HMAC) hesaplamak üzere kayıt grubu ana anahtarını kullanın. Sonuç daha sonra her cihaz için base64 biçimine dönüştürülür.
 
 > [!WARNING]
-> Cihaz kodunuz yalnızca tek bir cihaz için türetilmiş Cihaz anahtarını içermelidir. Grup ana anahtarınızı cihaz kodunuza eklemeyin. Güvenliği aşılmış bir ana anahtar, kimlik doğrulamasından geçen tüm cihazların güvenliğine güvenme olasılığı vardır.
+> Her bir cihaz için cihaz kodunuz yalnızca ilgili cihaz için karşılık gelen türetilmiş Cihaz anahtarını içermelidir. Grup ana anahtarınızı cihaz kodunuza eklemeyin. Güvenliği aşılmış bir ana anahtar, kimlik doğrulamasından geçen tüm cihazların güvenliğine güvenme olasılığı vardır.
 
 
-#### <a name="linux-workstations"></a>Linux iş istasyonları
-
-Bir Linux iş istasyonu kullanıyorsanız, aşağıdaki örnekte gösterildiği gibi, türetilen cihaz anahtarınızı oluşturmak için OpenSSL kullanabilirsiniz.
-
-**Anahtarın** değerini, daha önce not ettiğiniz **birincil anahtarla** değiştirin.
-
-**REG_ID** DEĞERINI kayıt Kimliğinizle değiştirin.
-
-```bash
-KEY=8isrFI1sGsIlvvFSSFRiMfCNzv21fjbE/+ah/lSh3lF8e2YG1Te7w1KpZhJFFXJrqYKi9yegxkqIChbqOS9Egw==
-REG_ID=sn-007-888-abc-mac-a1-b2-c3-d4-e5-f6
-
-keybytes=$(echo $KEY | base64 --decode | xxd -p -u -c 1000)
-echo -n $REG_ID | openssl sha256 -mac HMAC -macopt hexkey:$keybytes -binary | base64
-```
-
-```bash
-Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=
-```
-
-
-#### <a name="windows-based-workstations"></a>Windows tabanlı iş istasyonları
+# <a name="windows"></a>[Windows](#tab/windows)
 
 Windows tabanlı bir iş istasyonu kullanıyorsanız, aşağıdaki örnekte gösterildiği gibi, türetilmiş cihaz anahtarınızı oluşturmak için PowerShell kullanabilirsiniz.
 
@@ -197,8 +174,29 @@ echo "`n$derivedkey`n"
 Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=
 ```
 
+# <a name="linux"></a>[Linux](#tab/linux)
 
-Cihazınız, sağlama sırasında kayıt grubuyla simetrik anahtar kanıtlama gerçekleştirmek için, benzersiz kayıt KIMLIĞINIZLE türetilmiş Cihaz anahtarını kullanır.
+Bir Linux iş istasyonu kullanıyorsanız, aşağıdaki örnekte gösterildiği gibi, türetilen cihaz anahtarınızı oluşturmak için OpenSSL kullanabilirsiniz.
+
+**Anahtarın** değerini, daha önce not ettiğiniz **birincil anahtarla** değiştirin.
+
+**REG_ID** DEĞERINI kayıt Kimliğinizle değiştirin.
+
+```bash
+KEY=8isrFI1sGsIlvvFSSFRiMfCNzv21fjbE/+ah/lSh3lF8e2YG1Te7w1KpZhJFFXJrqYKi9yegxkqIChbqOS9Egw==
+REG_ID=sn-007-888-abc-mac-a1-b2-c3-d4-e5-f6
+
+keybytes=$(echo $KEY | base64 --decode | xxd -p -u -c 1000)
+echo -n $REG_ID | openssl sha256 -mac HMAC -macopt hexkey:$keybytes -binary | base64
+```
+
+```bash
+Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=
+```
+
+---
+
+Her cihaz, sağlama sırasında kayıt grubuyla simetrik anahtar kanıtlama gerçekleştirmek için kendi türetilmiş Cihaz anahtarını ve benzersiz kayıt KIMLIĞINI kullanır.
 
 
 
@@ -206,7 +204,7 @@ Cihazınız, sağlama sırasında kayıt grubuyla simetrik anahtar kanıtlama ge
 
 Bu bölümde, daha önce ayarladığınız Azure IoT C SDK 'sında bulunan **prov \_ dev \_ Client \_ Sample** adlı bir sağlama örneğini güncelleşolursunuz. 
 
-Bu örnek kod, cihaz sağlama hizmeti örneğinize sağlama isteği gönderen bir cihaz önyükleme sırasının benzetimini yapar. Önyükleme sırası, cihazın tanınmasına ve kayıt grubunda yapılandırdığınız IoT Hub 'ına atanmasına neden olur.
+Bu örnek kod, cihaz sağlama hizmeti örneğinize sağlama isteği gönderen bir cihaz önyükleme sırasının benzetimini yapar. Önyükleme sırası, cihazın tanınmasına ve kayıt grubunda yapılandırdığınız IoT Hub 'ına atanmasına neden olur. Bu, kayıt grubu kullanılarak sağlanacak her bir cihaz için tamamlanır.
 
 1. Azure Portal'da Cihaz Sağlama hizmetiniz için **Genel Bakış** sekmesini seçin ve **_Kimlik Kapsamı_** değerini not alın.
 
@@ -280,10 +278,7 @@ Bu örnek kod, cihaz sağlama hizmeti örneğinize sağlama isteği gönderen bi
 
 ## <a name="security-concerns"></a>Güvenlik sorunları
 
-Bunun, önerilen bir en iyi güvenlik uygulaması olmayan, görüntünün bir parçası olarak bulunan türetilmiş Cihaz anahtarını bırakdığının farkında olun. Bu, güvenliğin ve kullanım kolaylığının neden olmasının bir nedenidir. 
-
-
-
+Bu, önerilen bir en iyi güvenlik uygulaması olmayan her bir cihaz için görüntünün bir parçası olarak bulunan türetilmiş Cihaz anahtarını bırakdığının farkında olun. Bu, güvenliğin ve kullanım kolaylığının genellikle dengede olmasının bir nedenidir. Kendi gereksinimlerinize göre cihazlarınızın güvenliğini tam olarak gözden geçirmeniz gerekir.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

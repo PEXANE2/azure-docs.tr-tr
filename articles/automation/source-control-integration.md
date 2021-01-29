@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 11/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: c2ddb0143bb9cba0dc2fc48ff9b9df94dc55c29c
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: e7a6b6d3e753352820cdcb910dcbfa9362793493
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94579462"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99050779"
 ---
 # <a name="use-source-control-integration"></a>Kaynak denetimi tümleştirmesini kullanma
 
@@ -26,10 +26,10 @@ Azure Otomasyonu üç tür kaynak denetimi destekler:
 * Azure Repos (git)
 * Azure Repos (TFVC)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Kaynak denetimi deposu (GitHub veya Azure Repos)
-* [Farklı Çalıştır hesabı](manage-runas-account.md)
+* [Farklı Çalıştır hesabı](automation-security-overview.md#run-as-accounts)
 * Otomasyon hesabınızda modül dahil [en son Azure modülleri](automation-update-azure-modules.md) `Az.Accounts` (az Module eşdeğeri `AzureRM.Profile` )
 
 > [!NOTE]
@@ -43,11 +43,11 @@ Bu bölümde Otomasyon hesabınız için kaynak denetiminin nasıl yapılandır�
 
 Azure portal kullanarak kaynak denetimini yapılandırmak için bu yordamı kullanın.
 
-1. Otomasyon hesabınızda, **kaynak denetimi** ' ni seçin ve **Ekle** ' ye tıklayın.
+1. Otomasyon hesabınızda, **kaynak denetimi** ' ni seçin ve **Ekle**' ye tıklayın.
 
     ![Kaynak denetimi seçin](./media/source-control-integration/select-source-control.png)
 
-2. **Kaynak denetim türünü** seçin ve ardından **kimlik doğrula** ' ya tıklayın.
+2. **Kaynak denetim türünü** seçin ve ardından **kimlik doğrula**' ya tıklayın.
 
 3. Bir tarayıcı penceresi açılır ve oturum açmanızı ister. Kimlik doğrulamasını tamamlamaya yönelik istemleri izleyin.
 
@@ -57,9 +57,9 @@ Azure portal kullanarak kaynak denetimini yapılandırmak için bu yordamı kull
     |---------|---------|
     |Kaynak Denetim adı     | Kaynak denetimi için kolay bir ad. Bu ad yalnızca harf ve rakam içermelidir.        |
     |Kaynak Denetim türü     | Kaynak denetimi mekanizmasının türü. Kullanılabilen seçenekler:</br> * GitHub</br>* Azure Repos (git)</br> * Azure Repos (TFVC)        |
-    |Depo     | Deponun veya projenin adı. İlk 200 depo alınır. Bir depoyu aramak için alana adı yazın ve **GitHub 'Da ara** ' yı tıklatın.|
+    |Depo     | Deponun veya projenin adı. İlk 200 depo alınır. Bir depoyu aramak için alana adı yazın ve **GitHub 'Da ara**' yı tıklatın.|
     |Dal     | Kaynak dosyaları çekilecek dal. TFVC kaynak denetimi türü için dal hedefleme kullanılamıyor.          |
-    |Klasör yolu     | Eşitlenmesi gereken runbook 'ları içeren klasör, örneğin, **/runbook** 'lar. Yalnızca belirtilen klasördeki runbook 'lar eşitlenir. Özyineleme desteklenmiyor.        |
+    |Klasör yolu     | Eşitlenmesi gereken runbook 'ları içeren klasör, örneğin, **/runbook**'lar. Yalnızca belirtilen klasördeki runbook 'lar eşitlenir. Özyineleme desteklenmiyor.        |
     |Otomatik eşitleme<sup>1</sup>     | Kaynak denetim deposunda bir kayıt yapıldığında otomatik eşitlemeyi açan veya kapatan ayar.        |
     |Runbook 'U Yayımla     | Runbook 'lar kaynak denetiminden eşitlemeden sonra otomatik olarak yayımlanıyorsa ve aksi takdirde, ' nin ayarlanması.           |
     |Description     | Kaynak denetimi ile ilgili ek ayrıntıları belirten metin.        |
@@ -69,7 +69,7 @@ Azure portal kullanarak kaynak denetimini yapılandırmak için bu yordamı kull
    ![Kaynak denetimi Özeti](./media/source-control-integration/source-control-summary.png)
 
 > [!NOTE]
-> Kaynak denetimi deponuz için oturum açma Azure portal, oturum açınızdan farklı olabilir. Kaynak denetimini yapılandırırken kaynak denetimi deponuzun doğru hesabıyla oturum açtığınızdan emin olun. Şüpheli bir sorun varsa, tarayıcınızda yeni bir sekme açın, **dev.Azure.com** , **VisualStudio.com** veya **GitHub.com** oturumunu açın ve kaynak denetimine yeniden bağlanmayı deneyin.
+> Kaynak denetimi deponuz için oturum açma Azure portal, oturum açınızdan farklı olabilir. Kaynak denetimini yapılandırırken kaynak denetimi deponuzun doğru hesabıyla oturum açtığınızdan emin olun. Şüpheli bir sorun varsa, tarayıcınızda yeni bir sekme açın, **dev.Azure.com**, **VisualStudio.com** veya **GitHub.com** oturumunu açın ve kaynak denetimine yeniden bağlanmayı deneyin.
 
 ### <a name="configure-source-control-in-powershell"></a>PowerShell 'de kaynak denetimini yapılandırma
 
@@ -193,7 +193,7 @@ Kaynak denetim deposundan bağlantıyı kesmek için:
 
 2. Kaldırılacak kaynak denetim mekanizmasını seçin.
 
-3. Kaynak denetimi Özeti sayfasında **Sil** ' e tıklayın.
+3. Kaynak denetimi Özeti sayfasında **Sil**' e tıklayın.
 
 ## <a name="handle-encoding-issues"></a>Kodlama sorunlarını işle
 
@@ -209,4 +209,4 @@ Farklı düzenleyiciler kullanarak kaynak denetim deponuzdaki runbook 'ları bir
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Azure Automation 'da kaynak denetimini tümleştirmek için bkz. Azure Otomasyonu [: Azure Otomasyonu 'Nda kaynak denetimi tümleştirmesi](https://azure.microsoft.com/blog/azure-automation-source-control-13/).  
-* Visual Studio Online ile runbook kaynak denetimini tümleştirmek için bkz. [Azure Otomasyonu: Visual Studio Online kullanarak runbook kaynak denetimini tümleştirme](https://azure.microsoft.com/blog/azure-automation-integrating-runbook-source-control-using-visual-studio-online/).
+* Runbook kaynak denetimini Visual Studio Codespaces ile tümleştirmek için bkz. [Azure Otomasyonu: Visual Studio codespaces kullanarak runbook kaynak denetimini tümleştirme](https://azure.microsoft.com/blog/azure-automation-integrating-runbook-source-control-using-visual-studio-online/).

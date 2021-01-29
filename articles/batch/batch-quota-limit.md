@@ -2,14 +2,14 @@
 title: Hizmet kotaları ve limitleri
 description: Varsayılan Azure Batch kotaları, sınırları ve kısıtlamaları hakkında bilgi edinin ve kota artışlarının nasıl isteneceğini öğrenin
 ms.topic: conceptual
-ms.date: 12/29/2020
+ms.date: 01/28/2021
 ms.custom: seodec18
-ms.openlocfilehash: 11c9ad1e916ad7e64b59cc13c0967d2b9daed4aa
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: 433272c76b9ff27d9cad542cf65a8ec0d8fc0378
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97814644"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99052389"
 ---
 # <a name="batch-service-quotas-and-limits"></a>Batch hizmet kotaları ve limitleri
 
@@ -33,19 +33,7 @@ Ayrıca kotaların garantili değerler olmadığına de unutmayın. Kotalar, Bat
 
 ### <a name="cores-quotas-in-batch-service-mode"></a>Batch hizmeti modundaki çekirdek kotaları
 
-Adanmış çekirdek kotaları zorlaması, aşamalar halinde kullanılabilir hale getirilmekte olan değişiklikler ve tüm Batch hesapları için 2021 Ocak 'un sonuna kadar tamamlanarak geliştirilmiştir.
-
-Toplu Işlem tarafından desteklenen her bir VM Serisi için çekirdek kotalar bulunur ve portalda **Kotalar** sayfasında görüntülenir. VM Serisi kota sınırları, aşağıda açıklandığı gibi bir destek isteğiyle de yapılandırılabilir.
-
-Var olan mekanizmanın kullanıma alınması sırasında, VM Serisi için kota sınırları denetlenmez, yalnızca hesap için toplam kota sınırı uygulanır. Bu, toplam hesap kota sınırına kadar VM Serisi kotası tarafından belirtikten farklı bir VM Serisi için daha fazla çekirdek ayırabileceğiniz anlamına gelir.
-
-Güncelleştirilmiş mekanizma, toplam hesap kotasına ek olarak VM Serisi kotalarını zorunlu tutar. Yeni mekanizmaya geçişin bir parçası olarak, ayırma hatalarından kaçınmak için VM Serisi kota değerleri güncelleştirilemeyebilir; son aylarda kullanılan tüm VM dizileri, VM Serisi kotasının toplam hesap kotasıyla eşleşecek şekilde güncelleştirilmesini sağlar. Bu değişiklik, zaten kullanılabilir olandan daha fazla kapasite kullanımını etkinleştirmez.
-
-Şu onay yoluyla bir Batch hesabı için VM Serisi kotası zorlamasının etkinleştirilip etkinleştirilmediğini tespit etmek mümkündür:
-
-* Batch hesabı [dedicatedCoreQuotaPerVMFamilyEnforced](/rest/api/batchmanagement/batchaccount/get#batchaccount) API özelliği.
-
-* Portalda Batch hesabı **kotaları** sayfasındaki metin.
+Toplu Işlem tarafından desteklenen her bir VM Serisi için çekirdek kotalar bulunur ve portalda **Kotalar** sayfasında görüntülenir. VM Serisi kota sınırları, aşağıda açıklandığı gibi bir destek isteğiyle de yapılandırılabilir. Adanmış düğümler için Batch, her bir VM Serisi için bir çekirdek kota sınırı ve tüm Batch hesabı için toplam çekirdek kota sınırı uygular. Düşük öncelikli düğümler için Batch, farklı VM serileri arasında ayrım yapmadan Batch hesabı için yalnızca toplam çekirdek kotasını zorlar.
 
 ### <a name="cores-quotas-in-user-subscription-mode"></a>Kullanıcı abonelik modundaki çekirdek kotaları
 

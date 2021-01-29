@@ -8,17 +8,67 @@ manager: jhakulin
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 08/17/2020
+ms.date: 01/27/2021
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: 050c16670ea0c6df53345216d8dd450c159792ea
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: eec2919eddc4c9631c3153d6016485d64d368902
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98927462"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99050863"
 ---
 # <a name="speech-service-release-notes"></a>Konuşma hizmeti sürüm notları
+
+## <a name="speech-sdk-1150-2021-january-release"></a>Konuşma SDK 1.15.0:2021-Ocak sürümü
+
+**Note**: Windows üzerinde konuşma SDK 'Sı, Visual Studio 2015, 2017 ve 2019 için paylaşılan Microsoft Visual C++ yeniden dağıtılabilir 'e bağlıdır. [Buradan](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)indirin.
+
+**Geliştirmeleri**
+- Konuşma SDK 'sının bellek kullanımını ve disk parmak izini azaltmak için çoklu sürüm çabamız başladık. İlk adım olarak, çoğu platformda paylaşılan kitaplıklarda önemli dosya boyutu indirimleri yaptık. 1,14 sürümüyle karşılaştırıldığında:
+  - 64-bit UWP uyumlu Windows kitaplıkları yaklaşık %30 daha küçüktür;
+  - 32-bit Windows kitaplıkları henüz bir boyut geliştirmesi görmüyor.
+  - Linux kitaplıkları% 20-25 daha küçüktür;
+  - Android kitaplıkları% 3-5 daha küçüktür;
+
+**Yeni özellikler**
+- **Tümü**: yerel çıktı örnek ücretleri 24khz 'den yüksek olan özel seslerin ses kalitesini iyileştirmek IÇIN özel TTS sesleri Için 48kHz biçimi eklenmiştir.
+- **Tümü**: `EndpointId` ([C++](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig#setendpointid), [C#](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.endpointid?view=azure-dotnet#Microsoft_CognitiveServices_Speech_SpeechConfig_EndpointId), [Java](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig.setendpointid?view=azure-java-stable#com_microsoft_cognitiveservices_speech_SpeechConfig_setEndpointId_String_), [JavaScript](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest#endpointId), [Amaç-C](https://docs.microsoft.com/objectivec/cognitive-services/speech/spxspeechconfiguration#endpointid), [Python](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python#endpoint-id)) aracılığıyla özel ses ayarlama desteği eklendi. Bu değişiklikten önce, özel sesli kullanıcıların uç nokta URL 'sini yöntemi aracılığıyla ayarlaması gerekir `FromEndpoint` . Artık müşteriler `FromSubscription` yalnızca genel sesler gibi yöntemi kullanabilir ve sonra dağıtım kimliğini ayarla olarak sağlayabilir `EndpointId` . Bu, özel seslerin ayarlanmasını basitleştirir. 
+- **C++/c #/Java/Objective-C/Python**: `IntentRecognizer` artık, `LanguageUnderstandingModel FromEndpoint` URI parametresini kullanarak yalnızca en üst Puanlama amacını değil, tüm hedefleri içeren JSON sonucunun yapılandırılmasını destekler `verbose=true` . Bu, [GitHub sorununun #880](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/880)adresleridir. Güncelleştirilmiş [belgelere bakın](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/intent-recognition/#add-a-languageunderstandingmodel-and-intents).
+- **C++/c #/Java**: `DialogServiceConnector` ([c++](https://docs.microsoft.com/cpp/cognitive-services/speech/dialog-dialogserviceconnector), [C#](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.dialog.dialogserviceconnector?view=azure-dotnet), [Java](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.dialog.dialogserviceconnector?view=azure-java-stable)) artık eşlik eden bir `StopListeningAsync()` yönteme sahip `ListenOnceAsync()` . Bu işlem, ses yakalamayı hemen durdurur ve bir sonuç için düzgün şekilde bekleyip "Şimdi durdur" düğmesine basarak kullanımı kusursuz hale getirir.
+- **C++/c #/Java/JavaScript**: `DialogServiceConnector` ([c++](https://docs.microsoft.com/cpp/cognitive-services/speech/dialog-dialogserviceconnector), [C#](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.dialog.dialogserviceconnector?view=azure-dotnet), [Java](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.dialog.dialogserviceconnector?view=azure-java-stable), [JavaScript](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/dialogserviceconnector?view=azure-node-latest)) artık yeni bir `TurnStatusReceived` olay işleyicisine sahiptir. Bu isteğe bağlı olaylar [`ITurnContext`](https://docs.microsoft.com/dotnet/api/microsoft.bot.builder.iturncontext?view=botbuilder-dotnet-stable) , bot üzerindeki her çözünürlüğe karşılık gelir ve doğrudan çizgi konuşma ve bot arasında işlenmeyen bir özel durum, zaman aşımı veya ağ bırakması sonucu olarak, gerçekleşen yürütme başarısızlıklarını rapor eder. `TurnStatusReceived` başarısızlık koşullarına yanıt vermeyi kolaylaştırır. Örneğin, bir bot, arka uç veritabanı sorgusunda çok uzun sürüyorsa (örn. bir ürün aranıyor), `TurnStatusReceived` istemcinin "Maalesef" ne yazık ki bunu bir kez daha deneyebilirsiniz "veya benzer bir şekilde yeniden sormasını sağlamasına izin verir.
+- **C++/c #**: konuşma SDK 'sı [NuGet paketi](https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech) artık, konuşma SDK 'sını daha fazla makine türü üzerinde daha kullanışlı hale getirmek IÇIN Windows ARM/ARM64 masaüstü yerel ikili dosyalarını (UWP zaten desteklenmektedir) destekliyor.
+- **Java**: [`DialogServiceConnector`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.dialog.dialogserviceconnector?view=azure-java-stable) artık `setSpeechActivityTemplate()` daha önce dilden yanlışlıkla dışlanan bir yöntemi vardır. Bu, özelliği ayarlamaya eşdeğerdir `Conversation_Speech_Activity_Template` ve doğrudan hat konuşma hizmeti tarafından oluşturulan tüm gelecek bot Framework etkinliklerinin, belirtilen IÇERIĞI JSON yükleriyle birleştirmesine yönelik istekleri ister.
+- **Java**: [`Connection`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.connection?view=azure-java-stable) sınıf artık `MessageReceived` diğer programlama dillerine benzer şekilde bir olaya sahiptir (C++, C#). Bu olay, hizmetten gelen verilere alt düzey erişim sağlar ve tanılama ve hata ayıklama için yararlı olabilir.
+- **JavaScript**: [`BotFrameworkConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/botframeworkconfig) artık, `fromHost()` `fromEndpoint()` özellikleri el ile ayarlamak için özel hizmet konumlarının kullanımını kolaylaştıran ve fabrika yöntemlerine sahiptir. Ayrıca, `botId` yapılandırma fabrikaları genelinde varsayılan olmayan bir bot kullanmak için isteğe bağlı belirtimini de standartlıyoruz.
+- **JavaScript**: WebSocket sıkıştırması için dize denetim özelliği eklendi. Performans nedenleriyle, varsayılan olarak WebSocket sıkıştırmasını devre dışı bırakmış olma. Bu, düşük bant genişliği senaryolarında yeniden etkinleştirilebilir. Burada daha fazla ayrıntı [bulabilirsiniz](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/propertyid). Bu, [GitHub sorununun #242](https://github.com/microsoft/cognitive-services-speech-sdk-js/issues/242)adresleridir.
+- **JavaScript**: konuşma söylenişi değerlendirmesini sağlamak üzere Söyleniş değerlendirmesi için destek eklendi. [Hızlı başlangıç](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-pronunciation-assessment?pivots=programming-language-javascript)başlığına bakın.
+
+**Hata düzeltmeleri**
+- **Tümü** (JavaScript hariç): tanıyıcı tarafından çok fazla belleğin ayrıldığı sürüm 1,14 ' de bir gerileme düzeltildi.
+- **C++**: ile bir atık toplama sorunu düzeltildi `DialogServiceConnector` , [GitHub sorunu #794](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/794)adreslenir.
+- **C#**: iş parçacığı kapatmada bir sorun düzeltildi.
+- **C++/c #/Java**: bir uygulamanın konuşma yetkilendirme belirtecini veya etkinlik şablonunu bir kereden fazla açmasını engellediği bir özel durum düzeltildi `DialogServiceConnector` .
+- **C++/c #/Java**: teartik içindeki bir yarış durumu nedeniyle tanıyıcı kilitlenme düzeltildi.
+- **JavaScript**: [`DialogServiceConnector`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/dialogserviceconnector) daha önce `botId` , fabrikalar içinde belirtilen isteğe bağlı parametreyi karşılamadı `BotFrameworkConfig` . Bu, `botId` sorgu dizesi parametresini varsayılan olmayan bir bot kullanmak üzere el ile ayarlamak için gerekli hale yaptı. Hata düzeltildi ve `botId` fabrikalar için belirtilen değerler `BotFrameworkConfig` , yeni ve eklemeler dahil olmak üzere kabul edilecek ve kullanılacaktır `fromHost()` `fromEndpoint()` . Bu, `applicationId` için parametresi için de geçerlidir `CustomCommandsConfig` .
+- **JavaScript**: [hata #881](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/881)düzeltildi, tanıyıcı nesnesi yeniden kullanıma izin veriliyor.
+- **JavaScript**: SKD 'nin `speech.config` tek bir TTS oturumunda birden çok kez gönderdiği bir sorun düzeltildi ve bant genişliği boşa alındı.
+- **JavaScript**: bir kullanıcının tarayıcısında mikrofon girişine izin verilmediği durumlarda daha açıklayıcı bir ileti vermesini sağlayan mikrofon yetkilendirmesi üzerinde Basitleştirilmiş hata işleme.
+- **JavaScript**: ' de tür hatalarının bulunduğu ve [](https://github.com/microsoft/cognitive-services-speech-sdk-js/issues/249) `ConversationTranslator` `ConversationTranscriber` TypeScript kullanıcıları Için derleme hatasına neden olan düzeltilen GitHub sorunu #249.
+- **Amaç-C**: GStreamer derlemesinin xcode 11,4 üzerinde iOS için başarısız olduğu bir sorun düzeltildi, [GitHub sorununun #911](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/911).
+- **Python**: düzeltilen [GitHub sorunu #870](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/870), "Kullanımdan kaldırılmış cationwarning uyarısı: imp modülü, ımportlib 'in daha sık kullanım aşamasında".
+
+**Örnekler**
+- [JavaScript tarayıcısı için dosya öncesi örnek](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/quickstart/javascript/browser/from-file/index.html) artık konuşma tanıma için dosyaları kullanıyor. Bu, [GitHub sorununun #884](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/884)adresleridir.
+
+## <a name="speech-cli-also-known-as-spx-2021-january-release"></a>Konuşma CLı (SPX olarak da bilinir): 2021-Ocak sürümü
+
+**Yeni özellikler**
+- Konuşma CLı artık bir [NuGet paketi](https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech.CLI/) olarak kullanılabilir ve kabuk/komut satırından çağrın .NET genel aracı olarak .net CLI aracılığıyla yüklenebilir.
+- [Özel konuşma tanıma DevOps şablonu deposu](https://github.com/Azure-Samples/Speech-Service-DevOps-Template) , özel konuşma tanıma iş akışları IÇIN konuşma CLI kullanacak şekilde güncelleştirilmiştir.
+
+**Covıd-19 iş temelli test**: devam eden pandemik, mühendislerimizin evden çalışmasını gerektirirken, ön pandemik el ile doğrulama betikleri önemli ölçüde azaltılmıştır. Daha az yapılandırmaya sahip daha az cihaz üzerinde test ediyoruz ve ortama özgü hataların oluşma olasılığı artırılabilir. Büyük bir Otomasyon kümesiyle hala dikkatli bir şekilde doğrulama yaptık. Bir şey kaçırdığımız olası bir olayda, lütfen [GitHub](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues?q=is%3Aissue+is%3Aopen)'da bize bildirin.<br>
+Sağlıklı olun!
 
 ## <a name="text-to-speech-2020-december-release"></a>Metinden konuşmaya 2020-Aralık yayını
 
@@ -75,7 +125,7 @@ Yeni özellikleri kullanıma almak için [Ses Içeriği oluşturma aracı](https
 - İçinde gelişmiş sözcük düzeyi Okunuş doğruluğu `pl-PL` (hata oranı azaltma: %51) ve `fi-FI` (hata oranı azaltma: %58)
 - `ja-JP`Sözlük senaryosu için geliştirilmiş tek sözcük okuma. %80 oranında azaltılmış telaffuz hatası.
 - `zh-CN-XiaoxiaoNeural`: Geliştirilmiş yaklaşım/CustomerService/Newscast/kimerli/angın stili ses kalitesi.
-- `zh-CN`: Geliştirilmiş Erhua telaffuz ve açık ton ve iyileştirilmiş alan Prosody, intelligibility büyük ölçüde geliştirilmiştir. 
+- `zh-CN`: Geliştirilmiş Erhua telaffuz ve hafif ton ve iyileştirilmiş alan Prosody, intelligibility büyük ölçüde geliştirilmiştir. 
 
 ## <a name="speech-sdk-1140-2020-october-release"></a>Konuşma SDK 1.14.0:2020-Ekim yayını
 

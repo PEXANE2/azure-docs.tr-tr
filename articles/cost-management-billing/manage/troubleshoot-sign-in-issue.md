@@ -10,12 +10,12 @@ ms.subservice: billing
 ms.topic: troubleshooting
 ms.date: 08/20/2020
 ms.author: v-miegge
-ms.openlocfilehash: 2e9b14fa264f3286134913e3c279c4400ce5bcc3
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
-ms.translationtype: HT
+ms.openlocfilehash: 915b4fb289b6af6f4aac84d8bfa4d491a7f77efe
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132338"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99050479"
 ---
 # <a name="troubleshoot-azure-subscription-sign-in-issues"></a>Azure aboneliği oturum açma sorunlarını giderme
 
@@ -32,7 +32,7 @@ Bu kılavuz, Azure portalında veya Azure hesap merkezinde oturum açamama sorun
 - Farklı bir İnternet tarayıcısı kullanın.
 - Tarayıcınızda özel gözatma modunu kullanın:
 
-   - **Microsoft Edge:** **Ayarlar**’ı (profil resminizin yanındaki üç nokta) açın, **Yeni InPrivate pencere**’yi seçin ve [Azure portalına](https://portal.azure.com/) veya [Azure hesap merkezine](https://account.azure.com/Subscriptions) gidip burada oturum açın. 
+   - **Edge:** **Ayarları** açın (profil resminiz için üç nokta), **Yeni InPrivate pencere**' yi seçin ve [Azure Portal](https://portal.azure.com/)gidip oturum açın. 
    - **Chrome:** **Gizli** modu seçin.
    - **Safari:** **Dosya**’yı ve sonra **Yeni Özel Pencere**’yi seçin.
 
@@ -53,7 +53,7 @@ Sorunu çözmek için aşağıdaki yöntemlerden birini deneyin:
    - **Chrome:** **Ayarlar**’ı ve sonra **Gizlilik ve Güvenlik** bölümünden **Gözatma verilerini temizle**’yi seçin.
 - Tarayıcı ayarlarınızı varsayılana sıfırlayın.
 - Tarayıcınızda özel gözatma modunu kullanın. 
-   - **Microsoft Edge:** **Ayarlar**’ı (profil resminizin yanındaki üç nokta) açın, **Yeni InPrivate pencere**’yi seçin ve [Azure portalına](https://portal.azure.com/) veya [Azure hesap merkezine](https://account.azure.com/Subscriptions) gidip burada oturum açın. 
+   - **Edge:** **Ayarları** açın (profil resminiz için üç nokta), **Yeni InPrivate pencere**' yi seçin ve [Azure Portal](https://portal.azure.com/)gidip oturum açın. 
    - **Chrome:** **Gizli** modu seçin.
    - **Safari:** **Dosya**’yı ve sonra **Yeni Özel Pencere**’yi seçin.
 

@@ -45,6 +45,14 @@
       items:
         - name: Spring Boot Başlatıcı uygulaması kullanma
           href: /azure/developer/java/spring-framework/configure-spring-boot-initializer-java-app-with-redis-cache
+    - name: Azure Event Grid
+      items:
+        - name: Olayları Azure portal ile yönlendirme
+          href: cache-event-grid-quickstart-portal.md
+        - name: Azure CLı ile olayları yönlendirme
+          href: cache-event-grid-quickstart-cli.md
+        - name: Olayları PowerShell ile yönlendirme
+          href: cache-event-grid-quickstart-powershell.md
     - name: Puan tabloları oluşturma
       href: cache-web-app-cache-aside-leaderboard.md
     - name: Makine öğrenmesi modeli dağıtma
@@ -128,6 +136,8 @@
           href: cache-administration.md#schedule-updates
         - name: redis-cli.exe erişimini yapılandırma
           href: cache-how-to-redis-cli-tool.md
+        - name: Redsıs olayları için Azure önbelleğini yayımlama
+          href: cache-event-grid.md
         - name: TLS 1.0 ve 1.1'i kaldırma
           href: cache-remove-tls-10-11.md
         - name: Yönetim hakkında SSS

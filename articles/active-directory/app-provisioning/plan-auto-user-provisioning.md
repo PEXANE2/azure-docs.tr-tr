@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/31/2020
 ms.author: kenwith
 ms.reviewer: arvindha, celested
-ms.openlocfilehash: 689276d44a175f3c314b0fcf681fd6a995b8dde2
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 8855969a9f1e431fc45b831063732501eead7e99
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97832633"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99051796"
 ---
 # <a name="plan-an-automatic-user-provisioning-deployment"></a>Otomatik kullanıcı sağlama dağıtımı planlama
 
@@ -322,7 +322,7 @@ Sağlama sırasında oluşabilecek sorunları gidermek için aşağıdaki bağla
 
 * [Azure AD 'deki yenilikleri güncel tutun](https://azure.microsoft.com/updates/?product=active-directory)
 
-* [Yığın taşması Azure AD Forumu](https://stackoverflow.com/questions/tagged/azure-active-directory)
+* [Microsoft Q&bir Azure AD Forumu](https://docs.microsoft.com/answers/topics/azure-active-directory.html)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Otomatik Kullanıcı sağlamayı yapılandırma](../app-provisioning/configure-automatic-user-provisioning-portal.md)

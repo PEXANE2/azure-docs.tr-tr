@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: a998491729a1d3bd472ecc3de9722c142f8dc182
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 65d3badc02efbb02df50189885c28a8abe851415
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98953793"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99050456"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-twitter-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C kullanarak bir Twitter hesabıyla kaydolma ve oturum açma ayarlama
 
@@ -45,7 +45,7 @@ Azure AD B2C bir Twitter hesabı olan kullanıcılar için oturum açmayı etkin
 1. **Kimlik doğrulama ayarları** altında **Düzenle** ' yi seçin.
     1. **3-lelenmiş OAuth** onay kutusunu Etkinleştir ' i seçin.
     1. **Kullanıcılardan e-posta adresini iste** onay kutusunu seçin.
-    1. **Geri çağırma URL 'leri** için girin `https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/your-user-flow-Id/oauth1/authresp` . Öğesini `your-tenant` kiracı adınızın adıyla ve `your-user-flow-Id` Kullanıcı akışınız tanımlayıcısıyla değiştirin. Örneğin, `b2c_1A_signup_signin_twitter`. Azure AD B2C büyük harfle tanımlansalar bile kiracı adınızı ve Kullanıcı akış kimliğinizi girerken tüm küçük harfleri kullanın.
+    1. **Geri çağırma URL 'leri** için girin `https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/your-user-flow-Id/oauth1/authresp` . Öğesini `your-tenant` kiracı adınızın adıyla ve `your-user-flow-Id` Kullanıcı akışınız tanımlayıcısıyla değiştirin. Örneğin, `b2c_1a_signup_signin_twitter`. Azure AD B2C büyük harfle tanımlansalar bile kiracı adınızı ve Kullanıcı akış kimliğinizi girerken tüm küçük harfleri kullanın.
     1. **Web sitesi URL 'si** için girin `https://your-tenant.b2clogin.com` . `your-tenant`Kiracınızın adıyla değiştirin. Örneğin, `https://contosob2c.b2clogin.com`.
     1. **Hizmet koşulları** IÇIN bir URL girin (örneğin,) `http://www.contoso.com/tos` . İlke URL 'SI, uygulamanız için hüküm ve koşullar sağlamak üzere tuttuğunuz bir sayfasıdır.
     1. **Gizlilik ilkesi** IÇIN bir URL girin, örneğin `http://www.contoso.com/privacy` . İlke URL 'SI, uygulamanız için gizlilik bilgilerini sağlamak üzere tuttuğunuz bir sayfasıdır.

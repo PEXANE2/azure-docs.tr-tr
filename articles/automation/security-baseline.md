@@ -4,15 +4,15 @@ description: Otomasyon için Azure Güvenlik temeli
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 06/22/2020
+ms.date: 01/07/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: ea984e527eb526e49c87ce5385ba5715803cc72d
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 79282e99894bccad4f3c265cdffe4bee2e465950
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737261"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99052762"
 ---
 # <a name="azure-security-baseline-for-automation"></a>Otomasyon için Azure Güvenlik temeli
 
@@ -336,11 +336,11 @@ Ancak, karma Runbook Worker özelliği kullanılırken Azure Güvenlik Merkezi, 
 
 **Rehberlik**: açık olarak atanabilen ve sorgulanabilecek Azure Active Directory yerleşik yönetici rolleri kullanın. Yönetim gruplarının üyesi olan hesapları bulmaya yönelik geçici sorgular gerçekleştirmek için Azure AD PowerShell modülünü kullanın. Runbook 'larınız için Otomasyon hesabı farklı çalıştır hesaplarını kullanırken, bu hizmet sorumlularının, genellikle daha fazla zaman yükseltilmiş izinlere sahip olduğundan envanterinizde izlenmesi gerekir. Sunulan saldırı yüzeyini en aza indirmek için kullanılmayan farklı çalıştır hesaplarını silin.
 
-* [Azure AD 'de PowerShell ile dizin rolü alma](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
+* [Azure AD 'de PowerShell ile dizin rolü alma](/powershell/module/azuread/get-azureaddirectoryrole)
 
-* [Azure AD 'de PowerShell ile bir dizin rolünün üyelerini alma](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+* [Azure AD 'de PowerShell ile bir dizin rolünün üyelerini alma](/powershell/module/azuread/get-azureaddirectoryrolemember)
 
-* [Farklı Çalıştır veya Klasik Farklı Çalıştır hesabını silme](./manage-runas-account.md#delete-a-run-as-or-classic-run-as-account)
+* [Farklı Çalıştır veya Klasik Farklı Çalıştır hesabını silme](./delete-run-as-account.md)
 
 * [Azure Otomasyonu farklı çalıştır hesabını yönetme](./manage-runas-account.md)
 
@@ -364,7 +364,7 @@ Ayrıca, Microsoft Hizmetleri için Azure AD Privileged Identity Management ayr�
 
 * [Privileged Identity Management hakkında daha fazla bilgi edinin](../active-directory/privileged-identity-management/index.yml)
 
-* [Farklı Çalıştır veya Klasik Farklı Çalıştır hesabını silme](./manage-runas-account.md#delete-a-run-as-or-classic-run-as-account)
+* [Farklı Çalıştır veya Klasik Farklı Çalıştır hesabını silme](./delete-run-as-account.md)
 
 * [Azure Otomasyonu farklı çalıştır hesabını yönetme](./manage-runas-account.md)
 
@@ -454,7 +454,7 @@ Ayrıca, Microsoft Hizmetleri için Azure AD Privileged Identity Management ayr�
 
 * [Azure kimlik erişimi incelemelerini kullanma](../active-directory/governance/access-reviews-overview.md)
 
-* [Farklı Çalıştır veya Klasik Farklı Çalıştır hesabını silme](./manage-runas-account.md#delete-a-run-as-or-classic-run-as-account)
+* [Farklı Çalıştır veya Klasik Farklı Çalıştır hesabını silme](./delete-run-as-account.md)
 
 * [Azure Otomasyonu farklı çalıştır hesabını yönetme](./manage-runas-account.md)
 
@@ -696,7 +696,7 @@ Azure sanal makineler tarafından desteklenen karma runbook çalışanları kull
 
 * [Azure Kaynak Graf ile sorgu oluşturma](../governance/resource-graph/first-query-portal.md)
 
-* [Azure aboneliklerinizi görüntüleme](/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+* [Azure aboneliklerinizi görüntüleme](/powershell/module/az.accounts/get-azsubscription)
 
 * [Azure RBAC 'yi anlama](../role-based-access-control/overview.md)
 
@@ -724,7 +724,7 @@ Azure sanal makineler tarafından desteklenen karma runbook çalışanları kull
 
 * [Etiketler oluşturma ve kullanma](../azure-resource-manager/management/tag-resources.md)
 
-* [Farklı Çalıştır veya Klasik Farklı Çalıştır hesabını silme](./manage-runas-account.md#delete-a-run-as-or-classic-run-as-account)
+* [Farklı Çalıştır veya Klasik Farklı Çalıştır hesabını silme](./delete-run-as-account.md)
 
 * [Azure Otomasyonu farklı çalıştır hesabını yönetme](./manage-runas-account.md)
 
@@ -836,7 +836,7 @@ Uyarlamalı uygulama denetimi, Azure Güvenlik Merkezi 'nden, Azure ve Azure dı
 
 **Rehberlik**: karma Runbook Worker özelliğini kullanırken ve betiklerin türüne bağlı olarak, kullanıcıların Azure işlem kaynakları içinde betikleri yürütme yeteneğini sınırlamak için işletim sistemine özgü yapılandırma veya üçüncü taraf kaynakları kullanabilirsiniz. Ayrıca, Azure Güvenlik Merkezi Uyarlamalı uygulama denetimlerinden yararlanarak yalnızca yetkili yazılımın yürütüldüğünü ve tüm yetkisiz yazılımların Azure sanal makinelerinde yürütülmesini engellemiş olmasını sağlayabilirsiniz.
 
-* [Windows ortamlarında PowerShell betiği yürütmeyi denetleme](/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6)
+* [Windows ortamlarında PowerShell betiği yürütmeyi denetleme](/powershell/module/microsoft.powershell.security/set-executionpolicy)
 
 * [Azure Güvenlik Merkezi Uyarlamalı uygulama denetimlerini kullanma](../security-center/security-center-adaptive-application.md)
 
@@ -878,7 +878,7 @@ Ayrıca, Azure Resource Manager, yapılandırmanın kuruluşunuzun güvenlik ger
 
 Azure Güvenlik Merkezi 'nin önerilerini Azure kaynaklarınız için güvenli bir yapılandırma temeli olarak da kullanabilirsiniz.
 
-* [Kullanılabilir Azure Ilkesi diğer adlarını görüntüleme](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+* [Kullanılabilir Azure Ilkesi diğer adlarını görüntüleme](/powershell/module/az.resources/get-azpolicyalias)
 
 * [Öğretici: uyumluluğu zorlamak için ilke oluşturma ve yönetme](../governance/policy/tutorials/create-and-manage.md)
 
@@ -942,7 +942,7 @@ Karma Runbook Worker özelliğini kullanırken, dağıtım için Azure sanal mak
 
 * [ARM şablonları oluşturma hakkında bilgi](../virtual-machines/windows/ps-template.md)
 
-* [Özel bir VM VHD 'sini Azure 'a yükleme](/azure-stack/operator/azure-stack-add-vm-image?view=azs-1910)
+* [Özel bir VM VHD 'sini Azure 'a yükleme](/azure-stack/operator/azure-stack-add-vm-image)
 
 **Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 
@@ -952,7 +952,7 @@ Karma Runbook Worker özelliğini kullanırken, dağıtım için Azure sanal mak
 
 **Kılavuz**: özel Azure ilkeleri, Azure Resource Manager şablonları ve Istenen durum yapılandırması betikleri gibi kodunuzu güvenli bir şekilde depolamak ve yönetmek Için Azure DevOps kullanın. Azure DevOps 'da yönettiğiniz kaynaklara erişmek için, Azure DevOps ile tümleşikse veya TFS ile tümleşikse Active Directory belirli kullanıcılara, yerleşik güvenlik gruplarına veya Azure Active Directory tanımlı gruplara izin verebilir veya vermeyebilirsiniz. Kaynak denetimi deponuzdaki betiklerle Otomasyon hesabınızda runbook 'larınızı güncel tutmak için kaynak denetimi tümleştirme özelliğini kullanın.
 
-* [Azure DevOps 'da kod depolama](/azure/devops/repos/git/gitworkflow?view=azure-devops)
+* [Azure DevOps 'da kod depolama](/azure/devops/repos/git/gitworkflow)
 
 * [Azure DevOps 'da izinler ve gruplar hakkında](/azure/devops/organizations/security/about-permissions)
 
@@ -1134,7 +1134,7 @@ Kaynak denetimi deponuzdaki betiklerle Otomasyon hesabınızda runbook 'larını
 
 * [Azure Otomasyonu 'na giriş](./automation-intro.md)
 
-* [Azure 'da Anahtar Kasası anahtarlarını yedekleme](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
+* [Azure 'da Anahtar Kasası anahtarlarını yedekleme](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey)
 
 * [Otomasyon hesabı için müşteri tarafından yönetilen anahtarların kullanımı](./automation-secure-asset-encryption.md#use-of-customer-managed-keys-for-an-automation-account)
 
@@ -1160,7 +1160,7 @@ Kaynak denetimi deponuzdaki betiklerle Otomasyon hesabınızda runbook 'larını
 
 * [Azure Otomasyonu 'na giriş](./automation-intro.md)
 
-* [Azure 'da Anahtar Kasası anahtarlarını yedekleme](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
+* [Azure 'da Anahtar Kasası anahtarlarını yedekleme](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey)
 
 * [Otomasyon hesabı için müşteri tarafından yönetilen anahtarların kullanımı](./automation-secure-asset-encryption.md#use-of-customer-managed-keys-for-an-automation-account)
 
@@ -1176,7 +1176,7 @@ Kaynak denetimi deponuzdaki betiklerle Otomasyon hesabınızda runbook 'larını
 
 * [ARM şablonları ve Azure portal kaynak dağıtma](../azure-resource-manager/templates/deploy-portal.md)
 
-* [Azure 'da Anahtar Kasası anahtarlarını geri yükleme](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
+* [Azure 'da Anahtar Kasası anahtarlarını geri yükleme](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey)
 
 * [Otomasyon hesabı için müşteri tarafından yönetilen anahtarların kullanımı](./automation-secure-asset-encryption.md#use-of-customer-managed-keys-for-an-automation-account)
 
@@ -1190,7 +1190,7 @@ Kaynak denetimi deponuzdaki betiklerle Otomasyon hesabınızda runbook 'larını
 
 Kaynak denetimi deponuzdaki betiklerle Otomasyon hesabınızda runbook 'larınızı güncel tutmak için kaynak denetimi tümleştirme özelliğini kullanın.
 
-* [Azure DevOps 'da kod depolama](/azure/devops/repos/git/gitworkflow?view=azure-devops)
+* [Azure DevOps 'da kod depolama](/azure/devops/repos/git/gitworkflow)
 
 * [Azure DevOps 'da izinler ve gruplar hakkında](/azure/devops/organizations/security/about-permissions)
 

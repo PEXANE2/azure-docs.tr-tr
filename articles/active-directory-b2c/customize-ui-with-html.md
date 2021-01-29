@@ -1,33 +1,33 @@
 ---
-title: Kullanıcı arabirimini özelleştirme
+title: HTML şablonlarıyla Kullanıcı arabirimini özelleştirme
 titleSuffix: Azure AD B2C
-description: Azure Active Directory B2C kullanan uygulamalarınız için Kullanıcı arabirimini özelleştirmeyi öğrenin.
+description: Azure Active Directory B2C kullanan uygulamalarınız için Kullanıcı arabirimini HTML şablonlarıyla özelleştirmeyi öğrenin.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/10/2020
+ms.date: 01/28/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 4a789574b736eb22bd8d13fcf1a9facec5e241c9
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: 78ad2540029d78084485ae2004194f9f7c2d6052
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98058676"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99050558"
 ---
-# <a name="customize-the-user-interface-in-azure-active-directory-b2c"></a>Azure Active Directory B2C Kullanıcı arabirimini özelleştirme
+# <a name="customize-the-user-interface-with-html-templates-in-azure-active-directory-b2c"></a>Kullanıcı arabirimini Azure Active Directory B2C HTML şablonlarıyla özelleştirme
 
 [!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
 
 Azure Active Directory B2C (Azure AD B2C) müşterileriniz tarafından görüntülenen kullanıcı arabirimini markalamayı ve özelleştirmeyi, uygulamanızda sorunsuz bir kullanıcı deneyimi sağlamaya yardımcı olur. Bu deneyimlere kaydolma, oturum açma, profil düzenlemesi ve parola sıfırlama dahildir. Bu makale, Kullanıcı arabirimi (UI) özelleştirmesi yöntemlerini tanıtır. 
 
 > [!TIP]
-> Kullanıcı akış sayfalarınızın yalnızca başlık logosunu, arka plan resmini ve arka plan rengini değiştirmek istiyorsanız, [Şirket markası](company-branding.md) özelliğini deneyebilirsiniz.
+> Kullanıcı akış sayfalarınızın yalnızca başlık logosunu, arka plan resmini ve arka plan rengini değiştirmek istiyorsanız, [Şirket markası](customize-ui.md) özelliğini deneyebilirsiniz.
 
 ## <a name="custom-html-and-css-overview"></a>Özel HTML ve CSS 'ye Genel Bakış
 
@@ -59,7 +59,7 @@ Azure AD B2C, [çıkış noktaları arası kaynak paylaşımı (CORS)](https://w
 
 Aşağıdaki tabloda, Azure AD B2C tarafından sunulan varsayılan sayfa içeriği listelenmektedir. Dosyaları indirin ve kendi özel sayfalarınızı oluşturmak için bir başlangıç noktası olarak kullanın.
 
-| Varsayılan sayfa | Açıklama | İçerik tanımı KIMLIĞI<br/>(yalnızca özel ilke) |
+| Varsayılan sayfa | Description | İçerik tanımı KIMLIĞI<br/>(yalnızca özel ilke) |
 |:-----------------------|:--------|-------------|
 | [exception.html](https://login.microsoftonline.com/static/tenant/default/exception.cshtml) | **Hata sayfası**. Bu sayfa bir özel durum veya hata ile karşılaşıldığında görüntülenir. | *api. Error* |
 | [selfasserted.html](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) |  **Otomatik olarak onaylanan sayfa**. Bu dosyayı bir sosyal hesap kaydolma sayfası, yerel hesap kaydolma sayfası, yerel hesap oturum açma sayfası, parola sıfırlama ve daha fazlası için özel bir sayfa içeriği olarak kullanın. Form, metin girişi kutusu, parola girişi kutusu, radyo düğmesi, tek seçim açılan kutuları ve çoklu seçim onay kutuları gibi çeşitli giriş denetimleri içerebilir. | *api. localaccountsignın*, *api. localaccountsignup*, *API. localaccountpasswordreset*, *API. selfasted* |
@@ -175,7 +175,7 @@ Bu makalede, içeriğimizi barındırmak için Azure Blob depolamayı kullanır�
 
 Blob depolamada HTML içeriğinizi barındırmak için aşağıdaki adımları gerçekleştirin:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. **Hub** menüsünde, **Yeni**  >  **depolama**  >  **depolama hesabı**' nı seçin.
 1. Depolama hesabınız için bir **abonelik** seçin.
 1. Bir **kaynak grubu** oluşturun veya var olan bir grubu seçin.
@@ -387,7 +387,15 @@ Bu proje aşağıdaki şablonları içerir:
 1. Şimdi, daha önce belirtildiği gibi, HTML dosyanıza işaret eden ilkeyi değiştirin.
 1. Eksik yazı tiplerini, görüntüleri veya CSS 'yi görürseniz, uzantılar ilkesinde ve. html dosyalarında başvurularınızı kontrol edin \* .
 
+## <a name="use-company-branding-assets-in-custom-html"></a>Özel HTML 'de Şirket marka varlıklarını kullanma
+
+[Şirket marka](customize-ui.md#configure-company-branding) varlıklarını özel bir HTML içinde kullanmak için, etiketin dışına aşağıdaki etiketleri ekleyin `<div id="api">` . Görüntü kaynağı arka plan resminin ve başlık logosunun yerine konur.
+
+```HTML
+<img data-tenant-branding-background="true" />
+<img data-tenant-branding-logo="true" alt="Company Logo" />
+```
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
 [İstemci tarafı JavaScript kodunu](javascript-and-page-layout.md)etkinleştirmeyi öğrenin.
-

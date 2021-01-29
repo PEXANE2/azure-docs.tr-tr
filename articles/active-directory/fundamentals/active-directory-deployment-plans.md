@@ -12,12 +12,12 @@ ms.date: 12/01/2020
 ms.author: baselden
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0ca2ade1775d7224ce55ee1c51dfdd2ae417151e
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 4185ffd644d54c419f42c78326ca10bf100443c3
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97672390"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99051439"
 ---
 # <a name="azure-active-directory-deployment-plans"></a>Azure Active Directory dağıtım planları
 Azure Active Directory (Azure AD) yeteneklerini dağıtmaya yönelik uçtan uca yönergeler mi arıyorsunuz? Azure AD dağıtım planları, yaygın Azure AD yeteneklerini başarıyla dağıtmak için gereken iş değeri, planlama konuları ve işlem yordamları boyunca size yol gösterir.
@@ -39,7 +39,7 @@ Herhangi bir plan sayfasında, belgelerin güncel çevrimdışı bir sürümün�
 | Özellik | Açıklama|
 | -| - |
 | [Çoklu oturum açma](../manage-apps/plan-sso-deployment.md)| Çoklu oturum açma, kullanıcılarınızın yalnızca bir kez oturum açarken iş yapması gereken uygulamalara ve kaynaklara erişmesine yardımcı olur. Oturum açtıktan sonra, kimlik bilgilerini ikinci bir kez girmek zorunda kalmadan iç uygulamalara Microsoft Office, SalesForce 'a kadar gidebilirler. |
-| [Erişim paneli](../manage-apps/access-panel-deployment-plan.md)| Kullanıcılarınıza tüm uygulamalarını keşfetmek ve bunlara erişmek için basit bir hub sunun. Uygulamalar ve gruplar için erişim isteğinde bulunma veya diğerleri adına kaynaklara erişimi yönetme gibi self servis özellikleri ile daha üretken olmalarını sağlayın. |
+| [Uygulamalarım](../manage-apps/my-apps-deployment-plan.md)| Kullanıcılarınıza tüm uygulamalarını keşfetmek ve bunlara erişmek için basit bir hub sunun. Uygulamalar ve gruplar için erişim isteğinde bulunma veya diğerleri adına kaynaklara erişimi yönetme gibi self servis özellikleri ile daha üretken olmalarını sağlayın. |
 | [Cihazlar](../devices/plan-device-deployment.md) | Bu makale, cihazınızı Azure AD ile tümleştirme yöntemlerini değerlendirmenize yardımcı olur, uygulama planını seçebilir ve desteklenen cihaz yönetim araçlarına yönelik anahtar bağlantıları sağlar. |
 
 

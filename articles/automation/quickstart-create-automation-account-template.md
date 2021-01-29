@@ -3,22 +3,18 @@ title: 'Hızlı başlangıç: Otomasyon hesabı oluşturma-Azure şablonu'
 titleSuffix: Azure Automation
 description: Bu hızlı başlangıçta, Azure Resource Manager şablonu kullanılarak bir Otomasyon hesabının nasıl oluşturulacağı gösterilmektedir.
 services: automation
-documentationcenter: na
-author: mgoedtel
 Customer intent: I want to create an Automation account by using an Azure Resource Manager template so that I can automate processes with runbooks.
-ms.service: automation
-ms.devlang: na
 ms.topic: quickstart
 ms.workload: infrastructure-services
-ms.date: 07/23/2020
+ms.date: 01/07/2021
 ms.author: magoedte
 ms.custom: mvc,subject-armqs
-ms.openlocfilehash: 9315b898e290dc758c300f9b74006b4b08888e9e
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: d0582876a08b433a10106b97179ab603d4ec5762
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078961"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99050677"
 ---
 # <a name="quickstart-create-an-automation-account-by-using-arm-template"></a>Hızlı başlangıç: ARM şablonunu kullanarak Otomasyon hesabı oluşturma
 
@@ -44,7 +40,7 @@ Bu örnek şablon şunları gerçekleştirir:
 * Hesaba örnek Automation runbook 'ları ekler.
 
 >[!NOTE]
->Bir ARM şablonu kullanırken Otomasyon farklı çalıştır hesabının oluşturulması desteklenmez. Portaldan veya PowerShell ile el ile bir farklı çalıştır hesabı oluşturmak için bkz. [Farklı Çalıştır hesaplarını yönetme](manage-runas-account.md).
+>Bir ARM şablonu kullanırken Otomasyon farklı çalıştır hesabının oluşturulması desteklenmez. Portaldan veya PowerShell ile el ile bir farklı çalıştır hesabı oluşturmak için bkz. [Farklı Çalıştır hesabı oluşturma](create-run-as-account.md).
 
 Bu adımları tamamladıktan sonra, bağlı Log Analytics çalışma alanına runbook iş durumu ve iş akışları göndermek üzere otomasyon hesabınız için [tanılama ayarlarını yapılandırmanız](automation-manage-send-joblogs-log-analytics.md) gerekir.
 
@@ -77,7 +73,7 @@ JSON parametreleri şablonu şunları belirtmeniz için yapılandırılır:
 * *Dataretention* varsayılan değer 30 gündür.
 
 >[!WARNING]
->Nisan 2018 fiyatlandırma modelini kabul eden bir abonelikte Log Analytics çalışma alanı oluşturmak veya yapılandırmak istiyorsanız, geçerli Log Analytics fiyatlandırma katmanı yalnızca *PerGB2018*olur.
+>Nisan 2018 fiyatlandırma modelini kabul eden bir abonelikte Log Analytics çalışma alanı oluşturmak veya yapılandırmak istiyorsanız, geçerli Log Analytics fiyatlandırma katmanı yalnızca *PerGB2018* olur.
 >
 
 JSON şablonu, ortamınızda standart bir yapılandırma olarak kullanılacak diğer parametreler için varsayılan bir değer belirtir. Şablonu kuruluşunuzda paylaşılan erişim için bir Azure depolama hesabında saklayabilirsiniz. Şablonlarla çalışma hakkında daha fazla bilgi için bkz. [ARM şablonları ve Azure CLI ile kaynak dağıtma](../azure-resource-manager/templates/deploy-cli.md).
@@ -104,7 +100,7 @@ Azure Otomasyonu ve Azure Izleyici 'de yeni başladıysanız aşağıdaki yapıl
 
 ## <a name="review-deployed-resources"></a>Dağıtılan kaynakları gözden geçirme
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 
 2. Azure portal, az önce oluşturduğunuz Otomasyon hesabını açın. 
 

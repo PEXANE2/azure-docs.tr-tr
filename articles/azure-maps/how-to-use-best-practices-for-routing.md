@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 743710ea0d40eb31375236d4e59b0b138a217518
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 8174529def5e3924086e49f36c225f07a4da2648
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895554"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99051660"
 ---
 # <a name="best-practices-for-azure-maps-route-service"></a>Azure Maps Route hizmeti için en iyi yöntemler
 
@@ -59,10 +59,10 @@ Yol yönlerinin ve matris API 'Lerinin bazı özelliklerini göstermek için bir
 
 | Azure Haritalar API 'SI | İstekteki en fazla sorgu sayısı | Alanlardan kaçının | Kamyonu ve elektrik araç yönlendirmesi | Waypoints ve seyahat Salesman iyileştirmesi | Destekleyici noktaları |
 | :--------------: |  :--------------: |  :--------------: | :--------------: | :--------------: | :--------------: |
-| Rota yönlerini al | 1 | | X | X | |
-| Rota gönderme yönleri | 1 | X | X | X | X |
-| Rota yönlendirme sonrası Batch | 700 | | X | X | |
-| Rota sonrası matrisi | 700 | | X | | |
+| Rota yönlerini al | 1 | | ✔ | ✔ | |
+| Rota gönderme yönleri | 1 | ✔ | ✔ | ✔ | ✔ |
+| Rota yönlendirme sonrası Batch | 700 | | ✔ | ✔ | |
+| Rota sonrası matrisi | 700 | | ✔ | | |
 
 Elektrik araç yönlendirme özellikleri hakkında daha fazla bilgi edinmek için bkz. [Python ile Azure Notebooks kullanarak elektrik taşıtlara](tutorial-ev-routing.md)yönlendirme hakkında öğreticimize bakın.
 
@@ -113,7 +113,7 @@ Aşağıdaki ikinci örnekte, gerçek zamanlı bir yönlendirme isteği sunuyoru
 https://atlas.microsoft.com/route/directions/json?subscription-key=<Your-Azure-Maps-Primary-Subscription-Key>&api-version=1.0&query=47.6422356,-122.1389797:47.6641142,-122.3011268&travelMode=car&traffic=true&computeTravelTimeFor=all
 ```
 
-Yanıt aşağıda gösterildiği gibi bir Özet içerir. Congesler nedeniyle, **trafficDelaysInSeconds** değeri sıfırdan büyük. Ayrıca, **historicTrafficTravelTimeInSeconds** ' den büyük.
+Yanıt aşağıda gösterildiği gibi bir Özet içerir. Congesler nedeniyle, **trafficDelaysInSeconds** değeri sıfırdan büyük. Ayrıca, **historicTrafficTravelTimeInSeconds**' den büyük.
 
 ```json
 "summary": {

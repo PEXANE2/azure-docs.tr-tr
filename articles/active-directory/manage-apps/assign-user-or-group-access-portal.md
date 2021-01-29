@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 02/21/2020
 ms.author: kenwith
 ms.reviewer: luleon
-ms.openlocfilehash: 22acfc5095b1ffcad382fa2b665a86d382645e7a
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 59c69e88fb64cbb00063534be9fd41b86dce0b62
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96861686"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99053389"
 ---
 # <a name="manage-user-assignment-for-an-app-in-azure-active-directory"></a>Azure Active Directory’de uygulama için kullanıcı atamasını yönetme
 
@@ -148,7 +148,7 @@ Bu örnek, PowerShell kullanarak [Microsoft çalışma alanı analizi](https://p
 ## <a name="related-articles"></a>İlgili makaleler:
 
 - [Uygulamalara son kullanıcı erişimi hakkında daha fazla bilgi edinin](end-user-experiences.md)
-- [Azure AD My Apps dağıtımını planlayın](access-panel-deployment-plan.md)
+- [Azure AD My Apps dağıtımını planlayın](my-apps-deployment-plan.md)
 - [Uygulamalara erişimi yönetme](what-is-access-management.md)
  
 ## <a name="next-steps"></a>Sonraki adımlar

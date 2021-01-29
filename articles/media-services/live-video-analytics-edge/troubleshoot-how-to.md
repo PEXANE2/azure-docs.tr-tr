@@ -5,12 +5,12 @@ author: IngridAtMicrosoft
 ms.topic: how-to
 ms.author: inhenkel
 ms.date: 12/04/2020
-ms.openlocfilehash: d519193d55c9535dc71206d2d9f72661d7a40d71
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: ee5ae7ca8b52d44f21c35df23ef92f61d38fc3c3
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98954421"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99051304"
 ---
 # <a name="troubleshoot-live-video-analytics-on-iot-edge"></a>IoT Edge 'da canlı video analizi sorunlarını giderme
 
@@ -107,7 +107,8 @@ Canlı video analizi, IoT Edge cihazında bir IoT Edge modülü olarak dağıtı
 * Kurulum betiği, hizmet sorumlusu ve/veya Azure kaynakları oluşturamaz.
     * Bu sorunu daha fazla almak için lütfen aboneliğinizin ve Azure kiracınızın en yüksek hizmet sınırlarına ulaşmadığını kontrol edin. [Azure ad hizmeti sınırları ve kısıtlamaları](https://docs.microsoft.com/azure/active-directory/enterprise-users/directory-service-limits-restrictions) ile [Azure aboneliği ve hizmet limitleri, Kotalar ve kısıtlamalar](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits) hakkında daha fazla bilgi edinin.
 
-
+> [!TIP]
+> Yardım etmeniz gerekebilecek ek sorunlar varsa, lütfen **[günlükleri toplayın ve bir destek bileti gönderebilirsiniz](#collect-logs-for-submitting-a-support-ticket)**. Bize e-posta göndererek bize de ulaşabilirsiniz **[amshelp@microsoft.com](mailto:amshelp@microsoft.com)** .
 ### <a name="live-video-analytics-working-with-external-modules"></a>Canlı video analizi dış modüllerle çalışıyor
 
 Medya grafiği uzantısı işlemcileri ile canlı video analizi, medya grafiğinin HTTP veya gRPC protokollerini kullanarak diğer IoT Edge modüllerden veri göndermesini ve almasını sağlayabilir. Belirli bir [örnek](https://github.com/Azure/live-video-analytics/tree/master/MediaGraph/topologies/httpExtension)olarak, bu medya grafiği, video çerçevelerini Yolo v3 gibi bir dış çıkarım MODÜLÜNE ve http protokolünü kullanarak JSON tabanlı analiz sonuçları almaya gönderebilir. Böyle bir topolojide, olayların hedefi çoğunlukla IoT Hub 'idir. Hub 'da çıkarım olaylarını görmeme durumlarında, aşağıdakileri denetleyin:

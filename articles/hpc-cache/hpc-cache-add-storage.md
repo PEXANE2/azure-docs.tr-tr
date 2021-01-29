@@ -4,14 +4,14 @@ description: Azure HPC önbelleğinizin, uzun süreli dosya depolaması için ş
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 09/30/2020
+ms.date: 01/28/2021
 ms.author: v-erkel
-ms.openlocfilehash: b2497a49703ab675bde50c7845995c92de32f376
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: b4df5863cc746490f13685a8d412232217af3bc8
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94657185"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054374"
 ---
 # <a name="add-storage-targets"></a>Depolama hedefleri ekleme
 
@@ -165,19 +165,21 @@ Bir NFS depolama hedefi, bir BLOB depolama hedefinden farklı ayarlara sahiptir.
 
 Bir NFS depolama sistemine işaret eden bir depolama hedefi oluşturduğunuzda, bu hedefin kullanım modelini seçmeniz gerekir. Bu model, verilerinizin nasıl önbelleğe alınacağını belirler.
 
+Yerleşik kullanım modelleri, eski verileri alma riskiyle hızlı yanıt dengelemeye olanak tanır. Dosya okuma hızını iyileştirmek istiyorsanız, önbellekteki dosyaların arka uç dosyalarına karşı kontrol edilip edilmeyeceğini önemsemeyebilirsiniz. Diğer taraftan, her zaman uzak depolama ile dosyalarınızın güncel olduğundan emin olmak istiyorsanız, sık denetleyen bir model seçin.
+
 Üç seçenek vardır:
 
 * **Ağır, seyrek erişimli yazmaları okuma** -statik veya nadiren değiştirilen dosyalara okuma erişimini hızlandırmak istiyorsanız bu seçeneği kullanın.
 
-  Bu seçenek, istemcilerin okuyan dosyaları önbelleğe alır, ancak yazma işlemlerini hemen arka uç depolamaya geçirir. Önbellekte depolanan dosyalar hiçbir şekilde NFS depolama birimindeki dosyalarla karşılaştırılmaz.
+  Bu seçenek, istemcilerin okuyan dosyaları önbelleğe alır, ancak yazma işlemlerini hemen arka uç depolamaya geçirir. Önbellekte depolanan dosyalar, NFS depolama birimindeki dosyalarla otomatik olarak karşılaştırılmaz. (Daha fazla bilgi edinmek için arka uç doğrulama hakkında aşağıdaki nota göz okuyun.)
 
-  Bir dosyanın doğrudan depolama sisteminde önbellekte yazılmadan değiştirilebilmesi için bir risk varsa bu seçeneği kullanmayın. Bu durumda, dosyanın önbelleğe alınmış sürümü arka uçtaki değişikliklerle hiçbir şekilde güncellenmez ve veri kümesi tutarsız hale gelebilir.
+  Bir dosyanın doğrudan depolama sisteminde önbellekte yazılmadan değiştirilebilmesi için bir risk varsa bu seçeneği kullanmayın. Bu durumda, dosyanın önbelleğe alınmış sürümü arka uç dosyasıyla eşitlenmemiş olur.
 
 * **%15 ' ten fazla yazma** -Bu seçenek hem okuma hem de yazma performansını hızlandırır. Bu seçeneği kullanırken, tüm istemcilerin arka uç depolamayı doğrudan bağlamak yerine Azure HPC Cache aracılığıyla dosyalara erişmesi gerekir. Önbelleğe alınan dosyalar arka uçta depolanmayan son değişikliklere sahip olur.
 
-  Bu kullanım modelinde, önbellekteki dosyalar arka uç depolamadaki dosyalara karşı denetlenmez. Dosyanın önbelleğe alınan sürümünün daha güncel olduğu varsayılır. Önbellekte değiştirilen bir dosya, önbellekte olduktan sonra, ek değişiklik yapmadan bir saat için arka uç depolama sistemine yazılır.
+  Bu kullanım modelinde, önbellekteki dosyalar yalnızca her sekiz saatte bir arka uç depolamada bulunan dosyalara karşı denetlenir. Dosyanın önbelleğe alınan sürümünün daha güncel olduğu varsayılır. Önbellekte değiştirilen bir dosya, önbellekte olduktan sonra, ek değişiklik yapmadan bir saat için arka uç depolama sistemine yazılır.
 
-* **İstemciler, önbelleği ATLAYARAK NFS hedefine yazar** -iş akışdaki herhangi bir istemci, önce önbelleğe yazmadan verileri doğrudan depolama sistemine yazardıysanız bu seçeneği belirleyin. İstemcilerin istediği dosyalar önbelleğe alınır, ancak istemciden bu dosyalardaki tüm değişiklikler arka uç depolama sistemine hemen geçirilir.
+* **İstemciler, önbelleği ATLAYARAK NFS hedefine yazar** -iş akışlarınızdan herhangi bir istemci, önce önbelleğe yazmadan veya veri tutarlılığını iyileştirmek istiyorsanız bu seçeneği belirleyin. İstemcilerin istediği dosyalar önbelleğe alınır, ancak istemciden bu dosyalardaki tüm değişiklikler arka uç depolama sistemine hemen geçirilir.
 
   Bu kullanım modeliyle, önbellekteki dosyalar güncelleştirmeler için arka uç sürümlerine göre sıklıkla denetlenir. Bu doğrulama, verilerin tutarlılığın korunmasında önbelleğin dışında değiştirilmesine izin verir.
 
@@ -186,8 +188,11 @@ Bu tablo, kullanım modeli farklarını özetler:
 | Kullanım modeli                   | Önbelleğe alma modu | Arka uç doğrulaması | En fazla geri yazma gecikmesi |
 |-------------------------------|--------------|-----------------------|--------------------------|
 | Yoğun, seyrek okunan yazma işlemleri | Okuma         | Asla                 | Yok                     |
-| %15 yazma boyutundan büyük       | Okuma/yazma   | Asla                 | 1 saat                   |
+| %15 yazma boyutundan büyük       | Okuma/yazma   | 8 saat               | 1 saat                   |
 | İstemcileri önbelleği atlar      | Okuma         | 30 saniye            | Yok                     |
+
+> [!NOTE]
+> **Arka uç doğrulama** değeri, önbelleğin, dosyalarını uzak depolamadaki kaynak dosyalarla otomatik olarak karşılaştırdığı zamanı gösterir. Ancak, bir readdirplus isteği içeren bir dizin işlemi gerçekleştirerek Azure HPC önbelleğini dosyaları karşılaştırmaya zorlayabilirsiniz. Readdirplus, dizin meta verileri döndüren standart bir NFS API 'sidir (genişletilmiş okuma olarak da bilinir). Bu, önbelleğin dosyaları karşılaştırmasına ve güncelleştirmesine neden olur.
 
 ### <a name="create-an-nfs-storage-target"></a>NFS depolama hedefi oluşturma
 

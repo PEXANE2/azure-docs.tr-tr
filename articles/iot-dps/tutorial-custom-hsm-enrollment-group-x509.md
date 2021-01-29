@@ -3,23 +3,25 @@ title: Öğretici-özel bir donanım güvenlik modülü (HSM) kullanarak Azure I
 description: Bu öğreticide kayıt grupları kullanılmaktadır. Bu öğreticide, özel bir donanım güvenlik modülü (HSM) ve Azure IoT Hub cihaz sağlama hizmeti (DPS) için C cihaz SDK 'sını kullanarak X. 509.440 cihazları sağlamayı öğreneceksiniz.
 author: wesmc7777
 ms.author: wesmc
-ms.date: 11/18/2020
+ms.date: 01/28/2021
 ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 566563dde26d2dd36f4358bc8c6dcdcfb5ba8465
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: b178aa4a524cb7fcc85c7fc68ac5f772747787a3
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98954876"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99052372"
 ---
 # <a name="tutorial-provision-multiple-x509-devices-using-enrollment-groups"></a>Öğretici: kayıt grupları kullanarak birden çok X. 509.440 cihazı sağlama
 
-Bu öğreticide, kimlik doğrulaması için X. 509.440 sertifikalarını kullanan IoT cihazları gruplarını sağlamayı öğreneceksiniz. [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) 'sindeki örnek kod, geliştirme makinenizi IoT cihazı olarak sağlamak için kullanılacaktır. 
+Bu öğreticide, kimlik doğrulaması için X. 509.440 sertifikalarını kullanan IoT cihazları gruplarını sağlamayı öğreneceksiniz. [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) 'sindeki örnek cihaz kodu, X. 509.440 cihazlarının sağlanması benzetimini yapmak için geliştirme makinenizde yürütülür. Gerçek cihazlarda, cihaz kodu IoT cihazdan dağıtılır ve çalıştırılır.
 
-Azure IoT Cihaz Sağlama Hizmeti iki tür kaydı destekler:
+Bu öğreticiye devam etmeden önce [Azure Portal cihaz sağlama hizmeti IoT Hub](quick-setup-auto-provision.md) kurulum adımlarını en az tamamladığınızdan emin olun. Ayrıca, oto sağlama işlemini bilmiyorsanız, [sağlamaya](about-iot-dps.md#provisioning-process) genel bakış konusunu gözden geçirin. 
+
+Azure IoT cihaz sağlama hizmeti, cihazları sağlamak için iki tür kaydı destekler:
 
 * [Kayıt grupları](concepts-service.md#enrollment-group): Birden fazla ilgili cihazı kaydetmek için kullanılır.
 * [Bireysel kayıtlar](concepts-service.md#individual-enrollment): Tek bir cihazı kaydetmek için kullanılır.
@@ -27,8 +29,6 @@ Azure IoT Cihaz Sağlama Hizmeti iki tür kaydı destekler:
 Bu öğretici, kayıt gruplarının cihaz kümelerini sağlamak için nasıl kullanılacağını gösteren önceki öğreticilere benzer. Ancak, X. 509.440 sertifikaları simetrik anahtarlar yerine bu öğreticide kullanılacaktır. [Simetrik anahtarlar](./concepts-symmetric-key-attestation.md)kullanarak basit bir yaklaşım için bu bölümdeki önceki öğreticileri gözden geçirin.
 
 Bu öğreticide, donanım tabanlı güvenli depolama ile arabirim oluşturma için bir saplama uygulama sağlayan [özel HSM örneği](https://github.com/Azure/azure-iot-sdk-c/tree/master/provisioning_client/samples/custom_hsm_example) gösterilmektedir. [Donanım güvenlik modülü (HSM)](./concepts-service.md#hardware-security-module) , cihaz gizliliklerin güvenli, donanım tabanlı depolaması için kullanılır. Gizli dizileri için güvenli depolama sağlamak üzere simetrik anahtar, X. 509.440 sertifikası veya TPM kanıtlama ile HSM kullanılabilir. Cihaz gizliliklerine yönelik donanım tabanlı depolama alanı gerekli değildir, ancak cihaz sertifikanızın özel anahtarı gibi hassas bilgilerin korunmasına yardımcı olmak için önemle önerilir.
-
-Oto sağlama işlemini bilmiyorsanız, [sağlamaya](about-iot-dps.md#provisioning-process) genel bakış konusunu gözden geçirin. Ayrıca, Bu öğreticiye devam etmeden önce [Azure portal IoT Hub cihaz sağlama hizmetini ayarlama](quick-setup-auto-provision.md) bölümündeki adımları tamamladığınızdan emin olun. 
 
 
 Bu öğreticide, aşağıdaki hedefleri tamamlayacaksınız:
@@ -44,9 +44,11 @@ Bu öğreticide, aşağıdaki hedefleri tamamlayacaksınız:
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Aşağıdaki Önkoşullar bir Windows geliştirme ortamı içindir. Linux veya macOS için SDK belgelerinde [geliştirme ortamınızı hazırlama](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md) konusunun ilgili bölümüne bakın.
+Aşağıdaki Önkoşullar, cihazların benzetimini yapmak için kullanılan bir Windows geliştirme ortamı içindir. Linux veya macOS için SDK belgelerinde [geliştirme ortamınızı hazırlama](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md) konusunun ilgili bölümüne bakın.
 
-* [' C++ Ile masaüstü geliştirme '](/cpp/ide/using-the-visual-studio-ide-for-cpp-desktop-development) iş yükünün etkin olduğu [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019. Visual Studio 2015 ve Visual Studio 2017 de desteklenir.
+* [' C++ Ile masaüstü geliştirme '](/cpp/ide/using-the-visual-studio-ide-for-cpp-desktop-development) iş yükünün etkin olduğu [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019. Visual Studio 2015 ve Visual Studio 2017 de desteklenir. 
+
+    Visual Studio bu makalede IoT cihazlarına dağıtılacak cihaz örnek kodunu oluşturmak için kullanılır.  Bu, Visual Studio 'Nun cihazın kendisinde gerekli olduğunu göstermez.
 
 * [Git](https://git-scm.com/download/)'in en son sürümünün yüklemesi.
 
@@ -106,7 +108,7 @@ Bu bölümde, [Azure IoT C SDK'sını](https://github.com/Azure/azure-iot-sdk-c)
 
 ## <a name="create-an-x509-certificate-chain"></a>X. 509.440 sertifika zinciri oluşturma
 
-Bu bölümde, bu öğreticiyle test etmek için üç sertifika içeren bir X. 509.440 sertifika zinciri oluşturacaksınız. Sertifikalar aşağıdaki hiyerarşiye sahip olacaktır.
+Bu bölümde, her bir cihazı bu öğreticiyle test etmek için üç sertifika içeren bir X. 509.440 sertifika zinciri oluşturacaksınız. Sertifikalar aşağıdaki hiyerarşiye sahip olacaktır.
 
 ![Öğretici cihaz sertifika zinciri](./media/tutorial-custom-hsm-enrollment-group-x509/example-device-cert-chain.png#lightbox)
 
@@ -114,15 +116,17 @@ Bu bölümde, bu öğreticiyle test etmek için üç sertifika içeren bir X. 50
 
 [Ara Sertifika](concepts-x509-attestation.md#intermediate-certificate): cihazları ürün hatları, şirket bölümleri veya diğer ölçütlere göre mantıksal olarak gruplamak için ara sertifikaların kullanılması yaygındır. Bu öğretici, bir ara sertifikadan oluşan bir sertifika zinciri kullanacaktır. Ara sertifika, kök sertifika tarafından imzalanacaktır. Bu sertifika, bir cihaz kümesini mantıksal olarak gruplamak için DPS içinde oluşturulan kayıt grubunda da kullanılacaktır. Bu yapılandırma, aynı ara sertifika tarafından imzalanmış cihaz sertifikalarına sahip tüm cihaz gruplarını yönetmeyi sağlar. Bir cihaz grubunu etkinleştirmek veya devre dışı bırakmak için kayıt grupları oluşturabilirsiniz. Bir cihaz grubunu devre dışı bırakma hakkında daha fazla bilgi için bkz [. bir kayıt grubu kullanarak X. 509.952 ara veya kök CA sertifikasına Izin verme](how-to-revoke-device-access-portal.md#disallow-an-x509-intermediate-or-root-ca-certificate-by-using-an-enrollment-group)
 
-[Cihaz sertifikası](concepts-x509-attestation.md#end-entity-leaf-certificate): cihaz (yaprak) sertifikası ara sertifika tarafından imzalanacaktır ve özel anahtarıyla birlikte cihaza depolanır. Cihaz, sağlama denemesi sırasında sertifika zinciriyle birlikte bu sertifikayı ve özel anahtarı da sunacaktır. 
+[Cihaz sertifikaları](concepts-x509-attestation.md#end-entity-leaf-certificate): cihaz (yaprak) sertifikaları ara sertifika tarafından imzalanacaktır ve özel anahtarıyla birlikte cihaza depolanır. İdeal olarak, bu hassas öğeler bir HSM ile güvenli bir şekilde depolanır. Sağlama denemesi sırasında her bir cihaz kendi sertifikasını ve özel anahtarını, sertifika zinciriyle birlikte sunacaktır. 
 
-Sertifika zincirini oluşturmak için:
+#### <a name="create-root-and-intermediate-certificates"></a>Kök ve ara sertifikalar oluşturma
+
+Sertifika zincirinin kökünü ve ara bölümlerini oluşturmak için:
 
 1. Git Bash komut istemi açın. [Örnekler ve öğreticiler için test CA sertifikalarını yönetme](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md#managing-test-ca-certificates-for-samples-and-tutorials)bölümünde bulunan bash kabuğu yönergelerini kullanarak 1 ve 2. adımları uygulayın.
 
-    Bu adım, sertifika betikleri için bir çalışma dizini oluşturur ve OpenSSL kullanarak sertifika zinciri için örnek kök ve ara sertifika oluşturur. 
-
-    Çıktıda otomatik olarak imzalanan kök sertifikanın konumunu gösteren uyarı. Bu sertifika, sahipliği daha sonra doğrulamaya yönelik [kanıtları](how-to-verify-certificates.md) üzerinden geçer.
+    Bu, sertifika betikleri için çalışma dizini oluşturur ve OpenSSL kullanarak sertifika zinciri için örnek kök ve ara sertifika oluşturur. 
+    
+2. Çıktıda otomatik olarak imzalanan kök sertifikanın konumunu gösteren uyarı. Bu sertifika, sahipliği daha sonra doğrulamaya yönelik [kanıtları](how-to-verify-certificates.md) üzerinden geçer.
 
     ```output
     Creating the Root CA Certificate
@@ -142,8 +146,8 @@ Sertifika zincirini oluşturmak için:
                 Not After : Nov 22 21:30:30 2020 GMT
             Subject: CN=Azure IoT Hub CA Cert Test Only
     ```        
-
-    Çıktıda, kök sertifika tarafından imzalanmış/verilen ara sertifikanın konumunu gösteren bildirimde bulunulduğuna dikkat edin. Bu sertifika, daha sonra oluşturacağınız kayıt grubuyla birlikte kullanılacaktır.
+    
+3. Çıktıda, kök sertifika tarafından imzalanmış/verilen ara sertifikanın konumunu gösteren bildirimde bulunulduğuna dikkat edin. Bu sertifika, daha sonra oluşturacağınız kayıt grubuyla birlikte kullanılacaktır.
 
     ```output
     Intermediate CA Certificate Generated At:
@@ -161,8 +165,12 @@ Sertifika zincirini oluşturmak için:
                 Not After : Nov 22 21:30:33 2020 GMT
             Subject: CN=Azure IoT Hub Intermediate Cert Test Only
     ```    
+    
+#### <a name="create-device-certificates"></a>Cihaz sertifikaları oluşturma
 
-2. Ardından, bir parametre olarak verdiğiniz konu adına sahip yeni bir cihaz/yaprak sertifikası oluşturmak için aşağıdaki komutu çalıştırın. Bu öğretici için verilen örnek konu adını kullanın, `custom-hsm-device-01` . Bu konu adı, IoT cihazınızın cihaz KIMLIĞI olacaktır. 
+Zincirdeki ara sertifika tarafından imzalanan cihaz sertifikalarını oluşturmak için:
+
+1. Parametre olarak verdiğiniz konu adına sahip yeni bir cihaz/yaprak sertifikası oluşturmak için aşağıdaki komutu çalıştırın. Bu öğretici için verilen örnek konu adını kullanın, `custom-hsm-device-01` . Bu konu adı, IoT cihazınızın cihaz KIMLIĞI olacaktır. 
 
     > [!WARNING]
     > İçinde boşluk olan bir konu adı kullanmayın. Bu konu adı, sağlanmakta olan IoT cihazının cihaz KIMLIĞIDIR. Cihaz KIMLIĞI için kurallara uymalıdır. Daha fazla bilgi için bkz. [cihaz kimliği özellikleri](../iot-hub/iot-hub-devguide-identity-registry.md#device-identity-properties).
@@ -192,13 +200,13 @@ Sertifika zincirini oluşturmak için:
             Subject: CN=custom-hsm-device-01
     ```    
     
-3. Yeni cihaz sertifikasını içeren tam bir sertifika zinciri. ped dosyası oluşturmak için aşağıdaki komutu çalıştırın.
+2. İçin yeni cihaz sertifikasını içeren tam bir sertifika zinciri. ped dosyası oluşturmak için aşağıdaki komutu çalıştırın `custom-hsm-device-01` .
 
     ```Bash
-    cd ./certs && cat new-device.cert.pem azure-iot-test-only.intermediate.cert.pem azure-iot-test-only.root.ca.cert.pem > new-device-full-chain.cert.pem && cd ..
+    cd ./certs && cat new-device.cert.pem azure-iot-test-only.intermediate.cert.pem azure-iot-test-only.root.ca.cert.pem > new-device-01-full-chain.cert.pem && cd ..
     ```
 
-    Bir metin düzenleyicisi kullanın ve sertifika zinciri dosyası olan *./certs/New-Device-Full-Chain.cert.pem* açın. Sertifika zinciri metni, üç sertifikanın tümünün tam zincirini içerir. Bu öğreticiyi, bu öğreticide daha sonra özel HSM koduna sahip sertifika zinciri olarak kullanacaksınız.
+    Bir metin düzenleyicisi kullanın ve sertifika zinciri dosyası olan *./certs/New-Device-01-Full-Chain.cert.pem* açın. Sertifika zinciri metni, üç sertifikanın tümünün tam zincirini içerir. Bu metni, için Bu öğreticinin ilerleyen kısımlarında yer aldığı özel HSM cihaz kodunda sertifika zinciri olarak kullanacaksınız `custom-hsm-device-01` .
 
     Tam zincir metni aşağıdaki biçimdedir:
  
@@ -214,115 +222,25 @@ Sertifika zincirini oluşturmak için:
     -----END CERTIFICATE-----
     ```
 
-5. Yeni cihaz sertifikasının özel anahtarının *./Private/New-Device.Key.pem* olarak yazıldığını unutmayın. Bu anahtar için metin, sağlama sırasında cihaz için gerekli olacaktır. Bu metin daha sonra özel HSM örneğine eklenecektir.
+3. Yeni cihaz sertifikasının özel anahtarının *./Private/New-Device.Key.pem* olarak yazıldığını unutmayın. Cihaz için bu Key File *./Private/New-Device-01.Key.pem* olarak yeniden adlandırın `custom-hsm-device-01` . Bu anahtar için metin, sağlama sırasında cihaz için gerekli olacaktır. Bu metin daha sonra özel HSM örneğine eklenecektir.
+
+    ```bash
+    $ mv private/new-device.key.pem private/new-device-01.key.pem
+    ```
 
     > [!WARNING]
     > Sertifikaların metni yalnızca ortak anahtar bilgilerini içerir. 
     >
     > Bununla birlikte, cihazın cihaz sertifikası için özel anahtara da erişimi olması gerekir. Bu gereklidir çünkü cihazın sağlama sırasında çalışma zamanında bu anahtarı kullanarak doğrulama gerçekleştirmesi gerekir. Bu anahtarın duyarlılığı, özel anahtarların güvenli hale getirilmesine yardımcı olmak için gerçek bir HSM 'de donanım tabanlı depolamayı kullanmanın önerilmesinin temel nedenlerinden biridir.
 
+4. Cihaz KIMLIĞI olan ikinci bir cihaz için 1-3 adımlarını yineleyin `custom-hsm-device-02` . Bu cihaz için aşağıdaki değerleri kullanın:
 
-
-## <a name="configure-the-custom-hsm-stub-code"></a>Özel HSM saplama kodunu yapılandırma
-
-Gerçek güvenli donanım tabanlı depolamayla etkileşim kurma özellikleri, donanıma bağlı olarak değişiklik gösterir. Sonuç olarak, bu öğreticide cihaz tarafından kullanılan sertifika zinciri özel HSM saplama kodunda sabit olarak kodlanır. Gerçek dünyada bir senaryoda, önemli bilgiler için daha iyi güvenlik sağlamak üzere sertifika zinciri gerçek HSM donanımında depolanır. Bu örnekte gösterilen saplama yöntemlerine benzer yöntemler, donanım tabanlı depolama alanındaki gizli dizileri okumak için de uygulanır. 
-
-HSM donanımı gerekli olmasa da, sertifikanın özel anahtarı gibi, kaynak koda denetlenen gizli bilgilerin olması önerilmez. Bu, kodu görüntüleyebilen herkese anahtarı gösterir. Bu yalnızca öğreniminde yardımcı olmak için bu makalede yapılır.
-
-Bu öğreticinin özel HSM saplama kodunu güncelleştirmek için:
-
-1. Visual Studio 'Yu başlatın ve `cmake` Azure-IoT-SDK-c git deposunun kökünde oluşturduğunuz dizinde oluşturulan yeni çözüm dosyasını açın. Çözüm dosyası olarak adlandırılır `azure_iot_sdks.sln` .
-
-2. Visual Studio için Çözüm Gezgini **Provisioning_Samples > custom_hsm_example > kaynak dosyalarına** gidin ve *custom_hsm_example. c* dosyasını açın.
-
-3. `COMMON_NAME`Cihaz sertifikasını oluştururken kullandığınız ortak adı kullanarak dize sabitinin dize değerini güncelleştirin.
-
-    ```c
-    static const char* const COMMON_NAME = "custom-hsm-device-01";
-    ```
-
-4. Aynı dosyada, `CERTIFICATE` sertifikalarınızı oluşturduktan sonra *./certs/New-Device-Full-Chain.cert.pem* içinde kaydettiğiniz sertifika zinciri metninizi kullanarak sabit dizenin dize değerini güncelleştirmeniz gerekir.
-
-    Sertifika metninin sözdizimi, Visual Studio tarafından hiçbir ek boşluk veya ayrıştırma işlemi olmadan aşağıdaki kalıbı izlemelidir.
-
-    ```c
-    // <Device/leaf cert>
-    // <intermediates>
-    // <root>
-    static const char* const CERTIFICATE = "-----BEGIN CERTIFICATE-----\n"
-    "MIIFOjCCAyKgAwIBAgIJAPzMa6s7mj7+MA0GCSqGSIb3DQEBCwUAMCoxKDAmBgNV\n"
-        ...
-    "MDMwWhcNMjAxMTIyMjEzMDMwWjAqMSgwJgYDVQQDDB9BenVyZSBJb1QgSHViIENB\n"
-    "-----END CERTIFICATE-----\n"
-    "-----BEGIN CERTIFICATE-----\n"
-    "MIIFPDCCAySgAwIBAgIBATANBgkqhkiG9w0BAQsFADAqMSgwJgYDVQQDDB9BenVy\n"
-        ...
-    "MTEyMjIxMzAzM1owNDEyMDAGA1UEAwwpQXp1cmUgSW9UIEh1YiBJbnRlcm1lZGlh\n"
-    "-----END CERTIFICATE-----\n"
-    "-----BEGIN CERTIFICATE-----\n"
-    "MIIFOjCCAyKgAwIBAgIJAPzMa6s7mj7+MA0GCSqGSIb3DQEBCwUAMCoxKDAmBgNV\n"
-        ...
-    "MDMwWhcNMjAxMTIyMjEzMDMwWjAqMSgwJgYDVQQDDB9BenVyZSBJb1QgSHViIENB\n"
-    "-----END CERTIFICATE-----";        
-    ```
-
-    Bu adımda bu dize değerinin doğru güncelleştirilmesi çok sıkıcı ve hataya tabi olabilir. Git Bash isteminizdeki uygun sözdizimini oluşturmak için aşağıdaki bash kabuğu komutlarını kopyalayın ve git Bash komut istemine yapıştırın ve **ENTER** tuşuna basın. Bu komutlar dize sabiti değeri için sözdizimi oluşturur `CERTIFICATE` .
-
-    ```Bash
-    input="./certs/new-device-full-chain.cert.pem"
-    bContinue=true
-    prev=
-    while $bContinue; do
-        if read -r next; then
-          if [ -n "$prev" ]; then   
-            echo "\"$prev\\n\""
-          fi
-          prev=$next  
-        else
-          echo "\"$prev\";"
-          bContinue=false
-        fi  
-    done < "$input"
-    ```
-
-    Yeni sabit değer için çıkış sertifikası metnini kopyalayıp yapıştırın. 
-
-
-5. Aynı dosyada, `PRIVATE_KEY` sabitin dize değeri de cihaz sertifikanızın özel anahtarıyla birlikte güncelleştirilmeleri gerekir.
-
-    Özel anahtar metninin sözdizimi, Visual Studio tarafından hiçbir ek boşluk veya ayrıştırma işlemi olmadan aşağıdaki kalıbı izlemelidir.
-
-    ```c
-    static const char* const PRIVATE_KEY = "-----BEGIN RSA PRIVATE KEY-----\n"
-    "MIIJJwIBAAKCAgEAtjvKQjIhp0EE1PoADL1rfF/W6v4vlAzOSifKSQsaPeebqg8U\n"
-        ...
-    "X7fi9OZ26QpnkS5QjjPTYI/wwn0J9YAwNfKSlNeXTJDfJ+KpjXBcvaLxeBQbQhij\n"
-    "-----END RSA PRIVATE KEY-----";
-    ```
-
-    Bu adımda bu dize değerinin doğru güncelleştirilmesi çok sıkıcı ve hataya tabi olabilir. Git Bash isteminizdeki uygun sözdizimini oluşturmak için aşağıdaki bash kabuğu komutlarını kopyalayıp yapıştırın ve **ENTER** tuşuna basın. Bu komutlar dize sabiti değeri için sözdizimi oluşturur `PRIVATE_KEY` .
-
-    ```Bash
-    input="./private/new-device.key.pem"
-    bContinue=true
-    prev=
-    while $bContinue; do
-        if read -r next; then
-          if [ -n "$prev" ]; then   
-            echo "\"$prev\\n\""
-          fi
-          prev=$next  
-        else
-          echo "\"$prev\";"
-          bContinue=false
-        fi  
-    done < "$input"
-    ```
-
-    Yeni sabit değer için çıkış özel anahtar metnini kopyalayıp yapıştırın. 
-
-6. *Custom_hsm_example. c*'yi kaydedin.
-
+    |   Description                 |  Değer  |
+    | :---------------------------- | :--------- |
+    | Konu Adı                  | `custom-hsm-device-02` |
+    | Tam sertifika zinciri dosyası   | *./certs/new-device-02-full-chain.cert.pem* |
+    | Özel anahtar dosya adı          | *Private/New-Device-02. Key. ped* |
+    
 
 ## <a name="verify-ownership-of-the-root-certificate"></a>Kök sertifikanın sahipliğini doğrulama
 
@@ -411,21 +329,23 @@ Windows tabanlı cihazlarda sertifika deposuna imzalama sertifikaları eklemek i
 
 ## <a name="configure-the-provisioning-device-code"></a>Sağlama cihazı kodunu yapılandırma
 
-Bu bölümde, cihazı cihaz sağlama hizmeti örneğinizi sağlayacak örnek kodu güncelleştirin. Cihazın kimliği doğrulandıysa, cihaz sağlama hizmeti örneğine bağlı bir IoT Hub 'ına atanır.
+Bu bölümde, örnek kodu cihaz sağlama hizmeti örnek bilgileriniz ile güncelleştirmelisiniz. Bir cihazın kimliği doğrulandıysa, bu bölümde yapılandırılan cihaz sağlama hizmeti örneğine bağlı bir IoT Hub 'ına atanır.
 
 1. Azure portal, cihaz sağlama hizmetiniz için **genel bakış** sekmesini seçin ve **_kimlik kapsamı_** değerini aklınızda yapın.
 
     ![Portal dikey penceresinden Cihaz Sağlama Hizmeti uç noktası bilgilerini ayıklama](./media/quick-create-simulated-device-x509/extract-dps-endpoints.png) 
 
-2. Visual Studio için Çözüm Gezgini **Provisioning_Samples > prov_dev_client_sample > kaynak dosyalarına** gidin ve *prov_dev_client_sample. c* dosyasını açın.
+2. Visual Studio 'Yu başlatın ve `cmake` Azure-IoT-SDK-c git deposunun kökünde oluşturduğunuz dizinde oluşturulan yeni çözüm dosyasını açın. Çözüm dosyası olarak adlandırılır `azure_iot_sdks.sln` .
 
-3. `id_scope` sabitini bulun ve değeri daha önce kopyalamış olduğunuz **Kimlik Kapsamı** değerinizle değiştirin. 
+3. Visual Studio için Çözüm Gezgini **Provisioning_Samples > prov_dev_client_sample > kaynak dosyalarına** gidin ve *prov_dev_client_sample. c* dosyasını açın.
+
+4. `id_scope` sabitini bulun ve değeri daha önce kopyalamış olduğunuz **Kimlik Kapsamı** değerinizle değiştirin. 
 
     ```c
     static const char* id_scope = "0ne00000A0A";
     ```
 
-4. Aynı dosyada `main()` işlevinin tanımını bulun. `hsm_type`Değişkenin aşağıda gösterildiği gibi ayarlandığından emin olun `SECURE_DEVICE_TYPE_X509` .
+5. Aynı dosyada `main()` işlevinin tanımını bulun. `hsm_type`Değişkenin aşağıda gösterildiği gibi ayarlandığından emin olun `SECURE_DEVICE_TYPE_X509` .
 
     ```c
     SECURE_DEVICE_TYPE hsm_type;
@@ -434,11 +354,110 @@ Bu bölümde, cihazı cihaz sağlama hizmeti örneğinizi sağlayacak örnek kod
     //hsm_type = SECURE_DEVICE_TYPE_SYMMETRIC_KEY;
     ```
 
-5. **prov\_dev\_client\_sample** projesine sağ tıklayın ve **Başlangıç Projesi Olarak Ayarla**’yı seçin.
+6. **prov\_dev\_client\_sample** projesine sağ tıklayın ve **Başlangıç Projesi Olarak Ayarla**’yı seçin.
+
+
+## <a name="configure-the-custom-hsm-stub-code"></a>Özel HSM saplama kodunu yapılandırma
+
+Gerçek güvenli donanım tabanlı depolamayla etkileşim kurma özellikleri, donanıma bağlı olarak değişiklik gösterir. Sonuç olarak, bu öğreticideki sanal cihazlar tarafından kullanılan sertifika zincirlerinin özel HSM saplama kodunda kodlanması gerekir. Gerçek dünyada bir senaryoda, önemli bilgiler için daha iyi güvenlik sağlamak üzere sertifika zinciri gerçek HSM donanımında depolanır. Bu örnekte kullanılan saplama yöntemlerine benzer yöntemler, donanım tabanlı depolamadan gizli dizileri okumak için de uygulanır. 
+
+HSM donanımı gerekli olmasa da, sertifikanın özel anahtarı gibi hassas bilgileri korumanız önerilir. Örnek tarafından gerçek bir HSM çağrıldıysa, özel anahtar kaynak kodunda mevcut olmaz. Anahtarın kaynak kodda olması, kodu görüntüleyebilen herkese anahtarı gösterir. Bu yalnızca öğreniminde yardımcı olmak için bu makalede yapılır.
+
+Özel HSM saplama kodunu, KIMLIĞI olan cihazın kimliğini taklit etmek üzere güncelleştirmek için `custom-hsm-device-01` aşağıdaki adımları uygulayın:
+
+1. Visual Studio için Çözüm Gezgini **Provisioning_Samples > custom_hsm_example > kaynak dosyalarına** gidin ve *custom_hsm_example. c* dosyasını açın.
+
+2. `COMMON_NAME`Cihaz sertifikasını oluştururken kullandığınız ortak adı kullanarak dize sabitinin dize değerini güncelleştirin.
+
+    ```c
+    static const char* const COMMON_NAME = "custom-hsm-device-01";
+    ```
+
+3. Aynı dosyada, `CERTIFICATE` sertifikalarınızı oluşturduktan sonra *./certs/New-Device-01-Full-Chain.cert.pem* içinde kaydettiğiniz sertifika zinciri metninizi kullanarak sabit dizenin dize değerini güncelleştirmeniz gerekir.
+
+    Sertifika metninin sözdizimi, Visual Studio tarafından hiçbir ek boşluk veya ayrıştırma işlemi olmadan aşağıdaki kalıbı izlemelidir.
+
+    ```c
+    // <Device/leaf cert>
+    // <intermediates>
+    // <root>
+    static const char* const CERTIFICATE = "-----BEGIN CERTIFICATE-----\n"
+    "MIIFOjCCAyKgAwIBAgIJAPzMa6s7mj7+MA0GCSqGSIb3DQEBCwUAMCoxKDAmBgNV\n"
+        ...
+    "MDMwWhcNMjAxMTIyMjEzMDMwWjAqMSgwJgYDVQQDDB9BenVyZSBJb1QgSHViIENB\n"
+    "-----END CERTIFICATE-----\n"
+    "-----BEGIN CERTIFICATE-----\n"
+    "MIIFPDCCAySgAwIBAgIBATANBgkqhkiG9w0BAQsFADAqMSgwJgYDVQQDDB9BenVy\n"
+        ...
+    "MTEyMjIxMzAzM1owNDEyMDAGA1UEAwwpQXp1cmUgSW9UIEh1YiBJbnRlcm1lZGlh\n"
+    "-----END CERTIFICATE-----\n"
+    "-----BEGIN CERTIFICATE-----\n"
+    "MIIFOjCCAyKgAwIBAgIJAPzMa6s7mj7+MA0GCSqGSIb3DQEBCwUAMCoxKDAmBgNV\n"
+        ...
+    "MDMwWhcNMjAxMTIyMjEzMDMwWjAqMSgwJgYDVQQDDB9BenVyZSBJb1QgSHViIENB\n"
+    "-----END CERTIFICATE-----";        
+    ```
+
+    Bu adımda bu dize değerinin doğru güncelleştirilmesi çok sıkıcı ve hataya tabi olabilir. Git Bash isteminizdeki uygun sözdizimini oluşturmak için aşağıdaki bash kabuğu komutlarını kopyalayın ve git Bash komut istemine yapıştırın ve **ENTER** tuşuna basın. Bu komutlar dize sabiti değeri için sözdizimi oluşturur `CERTIFICATE` .
+
+    ```Bash
+    input="./certs/new-device-01-full-chain.cert.pem"
+    bContinue=true
+    prev=
+    while $bContinue; do
+        if read -r next; then
+          if [ -n "$prev" ]; then   
+            echo "\"$prev\\n\""
+          fi
+          prev=$next  
+        else
+          echo "\"$prev\";"
+          bContinue=false
+        fi  
+    done < "$input"
+    ```
+
+    Yeni sabit değer için çıkış sertifikası metnini kopyalayıp yapıştırın. 
+
+
+4. Aynı dosyada, `PRIVATE_KEY` sabitin dize değeri de cihaz sertifikanızın özel anahtarıyla birlikte güncelleştirilmeleri gerekir.
+
+    Özel anahtar metninin sözdizimi, Visual Studio tarafından hiçbir ek boşluk veya ayrıştırma işlemi olmadan aşağıdaki kalıbı izlemelidir.
+
+    ```c
+    static const char* const PRIVATE_KEY = "-----BEGIN RSA PRIVATE KEY-----\n"
+    "MIIJJwIBAAKCAgEAtjvKQjIhp0EE1PoADL1rfF/W6v4vlAzOSifKSQsaPeebqg8U\n"
+        ...
+    "X7fi9OZ26QpnkS5QjjPTYI/wwn0J9YAwNfKSlNeXTJDfJ+KpjXBcvaLxeBQbQhij\n"
+    "-----END RSA PRIVATE KEY-----";
+    ```
+
+    Bu adımda bu dize değerinin doğru güncelleştirilmesi çok sıkıcı ve hataya tabi olabilir. Git Bash isteminizdeki uygun sözdizimini oluşturmak için aşağıdaki bash kabuğu komutlarını kopyalayıp yapıştırın ve **ENTER** tuşuna basın. Bu komutlar dize sabiti değeri için sözdizimi oluşturur `PRIVATE_KEY` .
+
+    ```Bash
+    input="./private/new-device-01.key.pem"
+    bContinue=true
+    prev=
+    while $bContinue; do
+        if read -r next; then
+          if [ -n "$prev" ]; then   
+            echo "\"$prev\\n\""
+          fi
+          prev=$next  
+        else
+          echo "\"$prev\";"
+          bContinue=false
+        fi  
+    done < "$input"
+    ```
+
+    Yeni sabit değer için çıkış özel anahtar metnini kopyalayıp yapıştırın. 
+
+5. *Custom_hsm_example. c*'yi kaydedin.
 
 6. Çözümü çalıştırmak için Visual Studio menüsünde Hata **ayıklama**  >  **olmadan Başlat** ' ı seçin. Projeyi yeniden oluşturmanız istendiğinde, çalıştırmadan önce projeyi yeniden derlemek için **Evet** ' i seçin.
 
-    Aşağıdaki çıktı, sağlama cihazı istemci örneğinin başarıyla önyüklenmesi ve sağlama hizmetine bağlanması örneğidir. Cihaz bir IoT Hub 'ına atandı ve kaydedildi:
+    Aşağıdaki çıktı, sanal bir cihaza `custom-hsm-device-01` başarıyla önyükleme ve sağlama hizmetine bağlanma gibi bir örnektir. Cihaz bir IoT Hub 'ına atandı ve kaydedildi:
 
     ```cmd
     Provisioning API Version: 1.3.9
@@ -455,6 +474,29 @@ Bu bölümde, cihazı cihaz sağlama hizmeti örneğinizi sağlayacak örnek kod
 7. Portalda, sağlama hizmetinize bağlı olan IoT Hub 'ına gidin ve **IoT cihazları** sekmesini seçin. X. 509.952 cihazının hub 'a başarıyla sağlanması sırasında cihaz KIMLIĞI **IoT cihazları** dikey penceresinde, *durumu* **etkinleştirilmiş** olarak görünür. Üstteki **Yenile** düğmesine basmanız gerekebilir. 
 
     ![Özel HSM cihazı IoT Hub 'ına kaydedilir](./media/tutorial-custom-hsm-enrollment-group-x509/hub-provisioned-custom-hsm-x509-device.png) 
+
+8. Cihaz KIMLIĞI olan ikinci bir cihaz için 1-7 adımlarını yineleyin `custom-hsm-device-02` . Bu cihaz için aşağıdaki değerleri kullanın:
+
+    |   Description                 |  Değer  |
+    | :---------------------------- | :--------- |
+    | `COMMON_NAME`                 | `"custom-hsm-device-02"` |
+    | Tam sertifika zinciri        | Şunu kullanarak metin oluştur `input="./certs/new-device-02-full-chain.cert.pem"` |
+    | Özel anahtar                   | Şunu kullanarak metin oluştur `input="./private/new-device-02.key.pem"` |
+
+    Aşağıdaki çıktı, sanal bir cihaza `custom-hsm-device-02` başarıyla önyükleme ve sağlama hizmetine bağlanma gibi bir örnektir. Cihaz bir IoT Hub 'ına atandı ve kaydedildi:
+
+    ```cmd
+    Provisioning API Version: 1.3.9
+    
+    Registering Device
+    
+    Provisioning Status: PROV_DEVICE_REG_STATUS_CONNECTED
+    Provisioning Status: PROV_DEVICE_REG_STATUS_ASSIGNING
+    
+    Registration Information received from service: test-docs-hub.azure-devices.net, deviceId: custom-hsm-device-02
+    Press enter key to exit:
+    ```
+
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

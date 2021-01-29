@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.custom: contperf-fy21q1
 ms.date: 10/13/2020
 ms.author: allensu
-ms.openlocfilehash: f3c147b292ab21bd4e568f9e52acef07396acc28
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: d1632c66791dd5e697b95a2c5aaaddea81629abf
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98878231"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99052831"
 ---
 # <a name="using-snat-for-outbound-connections"></a>Giden bağlantılar için SNAT kullanma
 
@@ -80,7 +80,7 @@ Aşağıdaki [Senaryo 2](#scenario2) yapılandırıldığında, her arka uç ör
 
  | İçermektedir | Yöntem | IP protokolleri |
  | ------------ | ------ | ------------ |
- | Genel yük dengeleyici | [SNAT](#snat)için yük dengeleyici ön uç IP 'leri kullanımı.| TCP </br> UDP |
+ | Standart genel yük dengeleyici | [SNAT](#snat)için yük dengeleyici ön uç IP 'leri kullanımı.| TCP </br> UDP |
 
 
  #### <a name="description"></a>Description
@@ -103,8 +103,18 @@ Aşağıdaki [Senaryo 2](#scenario2) yapılandırıldığında, her arka uç ör
 
  Bu bağlamda, SNAT için kullanılan kısa ömürlü bağlantı noktaları SNAT bağlantı noktaları olarak adlandırılır. [Giden bir kuralın](./outbound-rules.md) açıkça yapılandırılması kesinlikle önerilir. Varsayılan SNAT 'yi bir yük dengeleme kuralı aracılığıyla kullanıyorsanız, SNAT bağlantı noktaları [varsayılan SNAT bağlantı noktaları ayırma tablosunda](#snatporttable)açıklandığı şekilde önceden ayrılır.
 
+ ### <a name="scenario-3-virtual-machine-without-public-ip-and-behind-standard-internal-load-balancer"></a><a name="scenario3"></a>Senaryo 3: genel IP 'siz ve standart iç Load Balancer arkasında sanal makine
 
- ### <a name="scenario-3-virtual-machine-without-public-ip-and-behind-basic-load-balancer"></a><a name="scenario3"></a>Senaryo 3: genel IP ve temel Load Balancer arka plan olmadan sanal makine
+
+ | İçermektedir | Yöntem | IP protokolleri |
+ | ------------ | ------ | ------------ |
+ | Standart iç yük dengeleyici | İnternet bağlantısı yok.| Yok |
+
+ #### <a name="description"></a>Description
+ 
+Standart bir iç yük dengeleyici kullanırken, SNAT için kısa ömürlü IP adresleri kullanılamaz. Bu, varsayılan olarak güvenliği destekleyerek, kaynak tarafından kullanılan tüm IP adreslerinin yapılandırılabilir ve ayrılmış olduğundan emin olur. Standart bir iç yük dengeleyici kullanırken internet 'e giden bağlantı sağlamak için, (Senaryo 1) [#scenario1] içindeki davranışı izlemek üzere bir örnek düzeyi genel IP adresi yapılandırın veya arka uç örneklerini bir standart genel yük dengeleyicisine ekleyerek (Senaryo 2) [#scenario2] içindeki davranışı izlemek üzere iç yük dengeleyiciye, iç yük dengeleyicisine bir bağlantı kuralı ekleyin. 
+
+ ### <a name="scenario-4-virtual-machine-without-public-ip-and-behind-basic-load-balancer"></a><a name="scenario4"></a>Senaryo 4: genel IP ve temel Load Balancer arka plan olmadan sanal makine
 
 
  | İçermektedir | Yöntem | IP protokolleri |
@@ -126,7 +136,6 @@ Aşağıdaki [Senaryo 2](#scenario2) yapılandırıldığında, her arka uç ör
 
 
  Bir izin verilenler listesine IP eklemek için bu senaryoyu kullanmayın. Açık olarak giden davranışı bildirdiğiniz Senaryo 1 veya 2 ' i kullanın. [SNAT](#snat) bağlantı noktaları [varsayılan SNAT bağlantı noktaları ayırma tablosunda](#snatporttable)açıklandığı şekilde önceden ayrılır.
-
 
 ## <a name="exhausting-ports"></a><a name="scenarios"></a> Bağlantı noktaları tüketilme
 

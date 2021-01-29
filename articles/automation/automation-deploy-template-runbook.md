@@ -6,12 +6,12 @@ ms.subservice: process-automation
 ms.date: 09/22/2020
 ms.topic: conceptual
 keywords: PowerShell, runbook, JSON, Azure Otomasyonu
-ms.openlocfilehash: 18f1d4ced2a80f9adb5da2c209987fc1997a3f22
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d9b443d1840840d3d6202140da235589c73453cc
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91304160"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99051405"
 ---
 # <a name="deploy-an-azure-resource-manager-template-in-a-powershell-runbook"></a>PowerShell runbook 'unda Azure Resource Manager şablonu dağıtma
 
@@ -19,10 +19,10 @@ Azure Kaynak [yönetimi şablonu](../azure-resource-manager/templates/quickstart
 
 Bu makalede, yeni bir Azure depolama hesabı dağıtmak için [Azure Storage](../storage/common/storage-introduction.md) 'da depolanan kaynak yöneticisi şablonunu kullanan bir PowerShell runbook 'u oluşturacağız.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği. Henüz bir aboneliğiniz yoksa [MSDN abone avantajlarınızı etkinleştirebilir](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) ya da [ücretsiz hesap için kaydolabilirsiniz](https://azure.microsoft.com/free/).
-* Runbook’u tutacak ve Azure kaynaklarında kimlik doğrulamasını yapacak bir [Automation hesabı](./manage-runas-account.md). Bu hesabın sanal makineyi başlatma ve durdurma izni olmalıdır.
+* Runbook’u tutacak ve Azure kaynaklarında kimlik doğrulamasını yapacak bir [Automation hesabı](./automation-security-overview.md). Bu hesabın sanal makineyi başlatma ve durdurma izni olmalıdır.
 * Kaynak Yöneticisi şablonunun kaydedileceği [Azure depolama hesabı](../storage/common/storage-account-create.md) .
 * Azure PowerShell yerel bir makineye yüklendi. Azure PowerShell alma hakkında bilgi için bkz. [Azure PowerShell modülünü yüklemek](/powershell/azure/install-az-ps) .
 
@@ -84,7 +84,7 @@ Bir metin düzenleyicisinde, aşağıdaki metni kopyalayın:
 }
 ```
 
-Dosyayı **TemplateTest.js**olarak yerel olarak kaydedin.
+Dosyayı **TemplateTest.js** olarak yerel olarak kaydedin.
 
 ## <a name="save-the-resource-manager-template-in-azure-storage"></a>Kaynak Yöneticisi şablonunu Azure Storage 'a kaydetme
 
@@ -160,7 +160,7 @@ $TemplateFile = Join-Path -Path 'C:\Temp' -ChildPath $StorageFileName
 New-AzResourceGroupDeployment -ResourceGroupName $ResourceGroupName -TemplateFile $TemplateFile -TemplateParameterObject $Parameters 
 ```
 
-Dosyayı **DeployTemplate.ps1**olarak yerel olarak kaydedin.
+Dosyayı **DeployTemplate.ps1** olarak yerel olarak kaydedin.
 
 ## <a name="import-and-publish-the-runbook-into-your-azure-automation-account"></a>Runbook 'u içeri aktarın ve Azure Otomasyonu hesabınıza yayımlayın
 

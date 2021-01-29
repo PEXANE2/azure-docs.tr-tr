@@ -3,12 +3,12 @@ title: Kayıt defteri ile ağ sorunlarını giderme
 description: Bir sanal ağda veya bir güvenlik duvarının arkasındaki bir Azure Container Registry 'ye erişirken oluşan belirtiler, nedenler ve çözümler
 ms.topic: article
 ms.date: 10/01/2020
-ms.openlocfilehash: 95b32b839d1b3b804a2035b797e1146a09d5236a
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 2f15eb8a830ce93ecf942663fc8a44b9df86d6d6
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96351802"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99052170"
 ---
 # <a name="troubleshoot-network-issues-with-registry"></a>Kayıt defteri ile ağ sorunlarını giderme
 
@@ -40,6 +40,8 @@ Aşağıdakilerden birini veya daha fazlasını içerebilir:
 Kayıt defteri ortamının sistem durumu ve isteğe bağlı olarak bir hedef kayıt defterine erişim hakkında daha fazla bilgi almak için [az ACR Check-Health](/cli/azure/acr#az-acr-check-health) komutunu çalıştırın. Örneğin, belirli ağ bağlantısını veya yapılandırma sorunlarını tanılayın. 
 
 Bkz. komut örnekleri için [Azure Container Registry 'nin sistem durumunu denetleme](container-registry-check-health.md) . Hatalar raporlandıysanız, önerilen çözümler için [hata başvurusunu](container-registry-health-error-reference.md) ve aşağıdaki bölümleri gözden geçirin.
+
+Wih Azure Kubernetes hizmetini kullanarak sorun yaşıyorsanız, kayıt defterinin AKS kümesinden erişilebilir olduğunu doğrulamak için [az aks Check-ACR](/cli/azure/aks#az_aks_check_acr) komutunu çalıştırın.
 
 > [!NOTE]
 > Bazı ağ bağlantı belirtileri, kayıt defteri kimlik doğrulamasıyla veya yetkilendirmeyle ilgili sorunlar olduğunda da gerçekleşebilir. Bkz. [kayıt defteri oturum açma sorunlarını giderme](container-registry-troubleshoot-login.md).
@@ -136,7 +138,7 @@ Sorununuzu burada çözemezseniz, aşağıdaki seçeneklere bakın.
 
 * Diğer kayıt defteri sorunlarını giderme konuları şunları içerir:
   * [Kayıt defteri oturum açma sorunlarını giderme](container-registry-troubleshoot-login.md) 
-  * [Kayıt defteri performansı sorunlarını giderme](container-registry-troubleshoot-performance.md)
+  * [Kayıt defteri performansının sorunlarını giderme](container-registry-troubleshoot-performance.md)
 * [Topluluk desteği](https://azure.microsoft.com/support/community/) seçenekleri
 * [Microsoft Soru-Cevap](/answers/products/)
 * [Destek bileti açma](https://azure.microsoft.com/support/create-ticket/)

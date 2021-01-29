@@ -12,12 +12,12 @@ ms.date: 10/29/2019
 ms.author: kenwith
 ms.reviewer: luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7fc688ca0981024e5e08c9fb20ecb6704efbd7f2
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 9552d1a0c7bdb73dbcf739144a3ab9f746705664
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95997503"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99053372"
 ---
 # <a name="configure-the-admin-consent-workflow-preview"></a>Yönetici onayı iş akışını yapılandırma (Önizleme)
 
@@ -49,7 +49,7 @@ Yönetici onayı iş akışını etkinleştirmek ve gözden geçirenler ' i seç
    * **Seçili kullanıcılar, istek süre sonu anımsatıcıları alır**. İstek sona ermek üzereyken gözden geçirenlere anımsatıcı e-posta bildirimlerini etkinleştirin veya devre dışı bırakın.  
    * **Onay isteğinin süresi (gün)**. İsteklerin ne kadar süreyle geçerli kalacağını belirtin.
 
-7. **Kaydet**'i seçin. Özelliğin etkin hale gelmesi bir saate kadar sürebilir.
+7. **Kaydet**’i seçin. Özelliğin etkin hale gelmesi bir saate kadar sürebilir.
 
 > [!NOTE]
 > **Yönetici onay istekleri gözden geçirenler listesini seçerek** bu iş akışı için gözden geçirenler ekleyebilir veya kaldırabilirsiniz. Bu özelliğin geçerli sınırlaması, gözden geçirenlerin gözden geçiren olarak belirlenirken yapılan istekleri gözden geçirebilme özelliğini gerçekleştirebileceğini unutmayın.
@@ -159,4 +159,4 @@ Uygulamalara yönelik yarışmaya yönelik daha fazla bilgi için bkz. [Azure Ac
 
 [Microsoft Identity platformunda izinler ve onay](../develop/v2-permissions-and-consent.md)
 
-[StackOverflow üzerinde Azure AD](https://stackoverflow.com/questions/tagged/azure-active-directory)
+[Microsoft Q&A 'da Azure AD](https://docs.microsoft.com/answers/topics/azure-active-directory.html)

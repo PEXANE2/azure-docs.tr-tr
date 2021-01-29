@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: ripohane
-ms.openlocfilehash: 04eca391fd02e18d4faed5e4f435e44e5675c4bd
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 70178a955fe4afcfc0c695d34e3c1466773d802d
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95912289"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054085"
 ---
 # <a name="azure-blob-storage-reference"></a>Azure Blob depolama başvurusu
 
@@ -25,7 +25,7 @@ Aşağıdaki tabloda, Azure Blob Storage .NET API 'Leri için başvuru ve örnek
 
 |  Sürüm  | Başvuru belgeleri | Paket | Hızlı Başlangıç |
 | :-------: | ----------------------- | ------- | ---------- |
-| 12. x | [.NET için Azure Blob depolama istemci kitaplığı](/dotnet/api/overview/azure/storage.blobs-readme) | [Paket (NuGet)](https://www.nuget.org/packages/Azure.Storage.Blobs/) | [Hızlı Başlangıç: .NET için Azure Blob depolama istemci kitaplığı v12](./storage-quickstart-blobs-dotnet.md) |
+| 12. x | [.NET için Azure Blob depolama istemci kitaplığı](/dotnet/api/overview/azure/storage.blobs-readme) | [Paket (NuGet)](https://www.nuget.org/packages/Azure.Storage.Blobs/) | [Hızlı başlangıç: .NET için Azure Blob depolama istemci kitaplığı V12](./storage-quickstart-blobs-dotnet.md) |
 | 11. x | [Microsoft. Azure. Storage. blob ad alanı](/dotnet/api/microsoft.azure.storage.blob) | [Paket (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/) | [Hızlı başlangıç: .NET için Azure Blob depolama istemci kitaplığı v11](./storage-quickstart-blobs-dotnet-legacy.md) |
 
 ### <a name="storage-management"></a>Depolama yönetimi

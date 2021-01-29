@@ -957,8 +957,6 @@
               href: ./linux/cloudinit-configure-swapfile.md
             - name: Mevcut bash betiğini çalıştırma
               href: ./linux/cloudinit-bash-script.md
-            - name: Mevcut VM’yi cloud-init için hazırlama
-              href: ./linux/cloudinit-prepare-custom-image.md
         - name: Sağlama Aracısı olmadan Linux görüntüleri oluşturma
           href: ./linux/no-agent.md
         - name: Linux Aracısı sağlamasını devre dışı bırakma
@@ -1070,6 +1068,10 @@
               href: ./windows/image-builder.md
         - name: PowerShell
           href: ./windows/image-builder-powershell.md
+        - name: Güvenlik
+          items:
+            - name: Azure İlkesi’ne göre güvenlik denetimleri
+              href: ./security-controls-policy-image-builder.md
         - name: Sanal ağ kullanma
           items:
             - name: CLI
@@ -1508,7 +1510,6 @@
               href: ../bastion/create-host-cli.md
             - name: Bastion SSH bağlantısı
               href: ../bastion/bastion-connect-vm-ssh.md
-              items: null
             - name: Bastion RDP bağlantısı
               href: ../bastion/bastion-connect-vm-rdp.md
         - name: Erişim denetimleri kullanma

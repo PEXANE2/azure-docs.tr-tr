@@ -143,6 +143,8 @@
           href: batch-sig-images.md
         - name: Yönetilen görüntü kaynağıyla havuz oluşturma
           href: batch-custom-images.md
+        - name: Kullanılabilirlik Alanları arasında havuz oluşturma
+          href: create-pool-availability-zones.md
         - name: Disk şifrelemesi etkinleştirilmiş havuz oluşturma
           href: disk-encryption.md
         - name: Sanal ağ içinde havuz oluşturma

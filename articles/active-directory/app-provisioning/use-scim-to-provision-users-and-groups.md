@@ -13,12 +13,12 @@ ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: contperf-fy21q2
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 44e14bed3158fac1f8bed15f913dc8b7eddbbb96
-ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
+ms.openlocfilehash: 6250aef5ec69c65dcdfe457a56d4e077b31af4d1
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98985963"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99051677"
 ---
 # <a name="tutorial-develop-and-plan-provisioning-for-a-scim-endpoint"></a>Öğretici: SCıM uç noktası için geliştirme ve plan sağlama
 
@@ -56,7 +56,7 @@ Her uygulama, Kullanıcı veya grup oluşturmak için farklı öznitelikler gere
 |--|--|--|
 |loginName|userName|userPrincipalName|
 |firstName|name.givenName|givenName|
-|lastName|Name. lastName|lastName|
+|lastName|name.familyName|Soyadı|
 |Iş posta|e-postalar [tür EQ "iş"]. değer|Posta|
 |manager|manager|manager|
 |etiket|urn: IETF: params: Scim: schemas: Extension: 2.0: Customexgerilim: Tag|extensionAttribute1|

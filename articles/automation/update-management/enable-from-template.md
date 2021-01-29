@@ -1,18 +1,16 @@
 ---
-title: Azure Resource Manager şablonu kullanarak Güncelleştirme Yönetimi etkinleştirme | Microsoft Docs
+title: Azure Resource Manager şablonu kullanarak Güncelleştirme Yönetimi’ni etkinleştirme
 description: Bu makalede, Güncelleştirme Yönetimi etkinleştirmek için bir Azure Resource Manager şablonunun nasıl kullanılacağı açıklanır.
-ms.service: automation
+services: automation
 ms.subservice: update-management
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
 ms.date: 09/18/2020
-ms.openlocfilehash: e2ebdd3d0f4a4461521ee5f412d5b4c4f872b8a0
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 47c982bff45838617b9a55f9129d4dc55d58b0d2
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98183243"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99050340"
 ---
 # <a name="enable-update-management-using-azure-resource-manager-template"></a>Azure Resource Manager şablonu kullanarak Güncelleştirme Yönetimi’ni etkinleştirme
 
@@ -29,7 +27,7 @@ Kaynak grubunuzda Azure Otomasyonu Güncelleştirme Yönetimi özelliğini etkin
 Aboneliğinizde desteklenen bir bölgede dağıtılmış bir Log Analytics çalışma alanı ve Otomasyon hesabı zaten varsa, bunlar bağlanmaz. Bu şablonu kullanmak bağlantıyı başarıyla oluşturur ve Güncelleştirme Yönetimi dağıtır.
 
 >[!NOTE]
->Bir ARM şablonu kullanırken Otomasyon farklı çalıştır hesabının oluşturulması desteklenmez. Portaldan veya PowerShell ile el ile bir farklı çalıştır hesabı oluşturmak için bkz. [Farklı Çalıştır hesaplarını yönetme](../manage-runas-account.md).
+>Bir ARM şablonu kullanırken Otomasyon farklı çalıştır hesabının oluşturulması desteklenmez. Portaldan veya PowerShell ile el ile bir farklı çalıştır hesabı oluşturmak için bkz. [Farklı Çalıştır hesabı oluşturma](../create-run-as-account.md).
 
 Bu adımları tamamladıktan sonra, bağlı Log Analytics çalışma alanına runbook iş durumu ve iş akışları göndermek üzere otomasyon hesabınız için [tanılama ayarlarını yapılandırmanız](../automation-manage-send-joblogs-log-analytics.md) gerekir.
 

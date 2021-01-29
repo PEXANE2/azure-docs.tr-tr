@@ -10,19 +10,19 @@ ms.topic: troubleshooting
 ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: asteen
-ms.openlocfilehash: d122cedbad41d6984614a0edccb2fd98269710f2
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 84aec5031dd8d19f8f2ad0aa32185002add378b1
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96618085"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99053988"
 ---
 # <a name="troubleshoot-password-based-single-sign-on-in-azure-ad"></a>Azure AD’de parola tabanlı çoklu oturum açma sorunlarını giderme
 
 Uygulamamda parola tabanlı çoklu oturum açma (SSO) kullanmak için tarayıcı uzantısının yüklenmesi gerekir. Parola tabanlı SSO için yapılandırılmış bir uygulama seçtiğinizde uzantı otomatik olarak indirilir. Son Kullanıcı perspektifinden uygulamalarımı kullanma hakkında bilgi edinmek için bkz. [Apps Portal yardımı](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="my-apps-browser-extension-not-installed"></a>Uygulamalarım tarayıcı uzantısı yüklü değil
-Tarayıcı uzantısının yüklü olduğundan emin olun. Daha fazla bilgi edinmek için bkz. [Azure Active Directory Apps dağıtımıyla plan oluşturma](access-panel-deployment-plan.md). 
+Tarayıcı uzantısının yüklü olduğundan emin olun. Daha fazla bilgi edinmek için bkz. [Azure Active Directory Apps dağıtımıyla plan oluşturma](my-apps-deployment-plan.md). 
 
 ## <a name="single-sign-on-not-configured"></a>Çoklu oturum açma yapılandırılmadı
 Parola tabanlı çoklu oturum açma 'nın yapılandırıldığından emin olun. Daha fazla bilgi için bkz. [parola tabanlı çoklu oturum açmayı yapılandırma](configure-password-single-sign-on-non-gallery-applications.md).
@@ -247,4 +247,4 @@ Aşağıdaki bilgiler, her bildirim öğesinin ne anlama geldiğini açıklar ve
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Uygulama yönetiminde hızlı başlangıç serisi](view-applications-portal.md)
-* [Uygulamalarım dağıtımı planlama](access-panel-deployment-plan.md)
+* [Uygulamalarım dağıtımı planlama](my-apps-deployment-plan.md)

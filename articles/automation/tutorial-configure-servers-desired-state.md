@@ -5,12 +5,12 @@ services: automation
 ms.subservice: dsc
 ms.topic: conceptual
 ms.date: 08/08/2018
-ms.openlocfilehash: 2e09607dde118ce25e5d2e5311e7614f2f18a590
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: f16db3f55ebd0f09e4d7b75750fa319daf03977e
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98890739"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99053576"
 ---
 # <a name="configure-machines-to-a-desired-state"></a>Makineleri istenen duruma yapılandırma
 
@@ -27,7 +27,7 @@ Bu öğreticide, IIS 'nin VM 'de yüklü olmasını sağlayan basit bir [DSC yap
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-- Azure Otomasyonu hesabı. Bir Azure Otomasyonu Garklı Çalıştır hesabı oluşturma yönergeleri için bkz. [Azure Farklı Çalıştır Hesabı](./manage-runas-account.md).
+- Azure Otomasyonu hesabı. Otomasyon hesabı ve gereksinimleri hakkında daha fazla bilgi edinmek için bkz. [Otomasyon hesabı kimlik doğrulamasına genel bakış](./automation-security-overview.md).
 - Windows Server 2008 R2 veya üstünü çalıştıran bir Azure Resource Manager VM (klasik değil). VM oluşturma yönergeleri için [Azure Portal Ilk Windows sanal makinenizi oluşturma](../virtual-machines/windows/quick-create-portal.md)bölümüne bakın.
 - Azure PowerShell modülü 3,6 veya sonraki bir sürümü. Sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/azurerm/install-azurerm-ps).
 - Istenen durum yapılandırması (DSC) ile benzerlik. DSC hakkında daha fazla bilgi için bkz. [Windows PowerShell Istenen durum yapılandırmasına genel bakış](/powershell/scripting/dsc/overview/overview).
@@ -49,7 +49,6 @@ Connect-AzAccount
 ```
 
 ## <a name="create-and-upload-a-configuration-to-azure-automation"></a>Azure Otomasyonu 'na bir yapılandırma oluşturma ve yükleme
-
 
 Bir metin düzenleyicisinde aşağıdakini yazın ve **TestConfig.ps1** olarak yerel olarak kaydedin.
 

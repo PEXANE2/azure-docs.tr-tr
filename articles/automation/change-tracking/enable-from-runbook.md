@@ -5,12 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: 842b0a92ba4a2cb6b3ceb54675ef95f9c8275311
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 9f7a37fa2101e4a386c9c6f2338f185b3ecdc986
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92210425"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99052626"
 ---
 # <a name="enable-change-tracking-and-inventory-from-a-runbook"></a>Runbook’tan Değişiklik İzleme ve Stok özelliğini etkinleştirme
 
@@ -44,7 +44,7 @@ Bu yöntem iki Runbook kullanır:
 
 1. Azure portal **Otomasyon hesapları**' na gidin. **Otomasyon hesapları** sayfasında, listeden hesabınızı seçin.
 
-1. Otomasyon hesabınızda, **Envanter** veya **yapılandırma yönetimi**altında **değişiklik izleme** ' yi seçin.
+1. Otomasyon hesabınızda, **Envanter** veya **yapılandırma yönetimi** altında **değişiklik izleme** ' yi seçin.
 
 1. Log Analytics çalışma alanını seçin ve **Etkinleştir**' e tıklayın. Envanter veya Değişiklik İzleme etkinleştirilirken bir başlık gösterilir.
 
@@ -54,7 +54,7 @@ Bu yöntem iki Runbook kullanır:
 
 En son Azure modüllerine güncelleştirmek ve daha [az. Operationalınsights](/powershell/module/az.operationalinsights) modülünü içeri aktarmak için Runbook ile sanal makinelerinize yönelik güncelleştirme yönetimi başarıyla etkinleştirmeniz gerekir.
 
-1. Otomasyon hesabınızda, **paylaşılan kaynaklar**altında **modüller** ' i seçin.
+1. Otomasyon hesabınızda, **paylaşılan kaynaklar** altında **modüller** ' i seçin.
 
 2. Azure modüllerini en son sürüme güncelleştirmek için **Azure Modüllerini Güncelleştir** seçeneğini belirleyin.
 
@@ -62,7 +62,7 @@ En son Azure modüllerine güncelleştirmek ve daha [az. Operationalınsights](/
 
     ![Modülleri güncelleştirme](media/enable-from-runbook/update-modules.png)
 
-4. **Paylaşılan kaynaklar**altındaki **modüllere** geri dönün.
+4. **Paylaşılan kaynaklar** altındaki **modüllere** geri dönün.
 
 5. Modül galerisini açmak için **tarayıcı galerisine gidin** ' i seçin.
 
@@ -74,7 +74,7 @@ En son Azure modüllerine güncelleştirmek ve daha [az. Operationalınsights](/
 
 Değişiklik İzleme ve envanter etkinleştirildiğinde, özelliği tarafından yönetim için bir Azure VM ekleyebilirsiniz.
 
-1. Otomasyon hesabınızdan, **yapılandırma yönetimi**altında **değişiklik izleme** veya **Stok** ' ı seçin.
+1. Otomasyon hesabınızdan, **yapılandırma yönetimi** altında **değişiklik izleme** veya **Stok** ' ı seçin.
 
 2. VM 'nizi eklemek için **Azure VM 'Leri Ekle** ' ye tıklayın.
 
@@ -87,11 +87,11 @@ Değişiklik İzleme ve envanter etkinleştirildiğinde, özelliği tarafından 
 
 ## <a name="import-a-runbook-to-enable-change-tracking-and-inventory"></a>Değişiklik İzleme ve envanteri etkinleştirmek için Runbook 'u içeri aktarma
 
-1. Otomasyon hesabınızda, **Işlem Otomasyonu**altında **runbook 'lar** ' ı seçin.
+1. Otomasyon hesabınızda, **Işlem Otomasyonu** altında **runbook 'lar** ' ı seçin.
 
 2. **Galeriye gözat** seçeneğini belirleyin.
 
-3. **Güncelleştirme ve değişiklik izleme**için arama yapın.
+3. **Güncelleştirme ve değişiklik izleme** için arama yapın.
 
 4. Runbook 'u seçin ve **kaynak görüntüleme** sayfasında **içeri aktar** ' a tıklayın.
 
@@ -118,7 +118,7 @@ Bu runbook 'u başlatmak için bir Azure VM için Değişiklik İzleme ve envant
    * **SubscriptionID** -etkinleştirilecek yeni sanal makınenın abonelik kimliği. Çalışma alanının aboneliğini kullanmak için bu alanı boş bırakın. Farklı bir abonelik KIMLIĞI kullandığınızda, Otomasyon hesabınızın farklı çalıştır hesabını abonelik için katkıda bulunan olarak ekleyin.
    * **Alreadyonboardedvd** -güncelleştirmeler için zaten etkinleştirilmiş olan sanal makinenin adı.
    * **Alreadyonboardedvmresourcegroup** -VM 'nin ait olduğu kaynak grubunun adı.
-   * **Solutiontype** - **ChangeTracking**girin.
+   * **Solutiontype** - **ChangeTracking** girin.
 
    ![Enable-MultipleSolution runbook parametreleri](media/enable-from-runbook/runbook-parameters.png)
 

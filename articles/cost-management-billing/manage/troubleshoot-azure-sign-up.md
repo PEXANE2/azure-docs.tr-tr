@@ -8,14 +8,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: troubleshooting
-ms.date: 08/20/2020
+ms.date: 01/28/2021
 ms.author: v-miegge
-ms.openlocfilehash: 85f6e64cb20a14b9cd03776d138872d6a4191535
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
-ms.translationtype: HT
+ms.openlocfilehash: 015e6058236190a04df152573621f0e57030d23b
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96344496"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054170"
 ---
 # <a name="troubleshoot-issues-when-you-sign-up-for-a-new-account-in-azure-portal-or-azure-account-center"></a>Azure portalında veya Azure hesap merkezinde yeni bir hesap için kaydolduğunuzda oluşan sorunları giderme
 
@@ -139,19 +139,18 @@ Sözleşmeyi tamamlayın.
 
 ## <a name="other-issues"></a>Diğer sorunlar
 
-### <a name="cant-activate-azure-benefit-plan-like-msdn-bizspark-bizsparkplus-or-mpn"></a>MSDN, BizSpark, BizSparkPlus veya MPN gibi Azure avantaj planı etkinleştirilemiyor
+### <a name="cant-activate-azure-benefit-plan-like-visual-studio-bizspark-bizsparkplus-or-mpn"></a>Visual Studio, BizSpark, Bizmini Plus veya MPN gibi Azure avantaj planı etkinleştirilemiyor
 
 Doğru oturum açma kimlik bilgilerini kullanıp kullanmadığınızı kontrol edin. Ardından, uygun olduğunuzu doğrulamak için avantaj programını kontrol edin.
-- MSDN
-  - [MSDN hesabı sayfanızda](https://msdn.microsoft.com/subscriptions/manage/default.aspx) uygunluk durumunuzu doğrulayın.
-  - Durumunuzu doğrulayamıyorsanız [MSDN Abonelikleri Müşteri Hizmetleri Merkezleri](/previous-versions/mappoint/aa493452(v=msdn.10)) ile iletişim kurun.
+- Visual Studio
+  - [Visual Studio hesabınızın sayfasında](https://my.visualstudio.com/Benefits)uygunluk durumunuzu doğrulayın.
+  - Durumunuzu doğrulayamıyorum, [Visual Studio abonelik desteği](https://visualstudio.microsoft.com/subscriptions/support/)ile iletişime geçin.
 - Startup’lar için Microsoft
   - Startup’lar için Microsoft’a ilişkin uygunluk durumunuzu doğrulamak için [Startup’lar için Microsoft portalına](https://startups.microsoft.com/#start-two) kaydolun.
   - Durumunuzu doğrulayamazsanız, [Startup’lar için Microsoft forumlarından](https://www.microsoftpartnercommunity.com/t5/Microsoft-for-Startups/ct-p/Microsoft_Startups) yardım alabilirsiniz.
 - MPN
   - Uygunluk durumunuzu doğrulamak için [MPN portalında](https://mspartner.microsoft.com/Pages/Locale.aspx) oturum açın. Uygun [Bulut Platformu Yetkinliklerine](https://mspartner.microsoft.com/pages/membership/cloud-platform-competency.aspx) sahipseniz, ek avantajlar için uygun olabilirsiniz.
   - Durumunuzu doğrulayamazsanız [MPN Desteği](https://mspartner.microsoft.com/Pages/Support/Premium/contact-support.aspx)’ne başvurun.
-
 
 ### <a name="cant-activate-new-azure-in-open-subscription"></a>Yeni Open ile Azure aboneliği etkinleştirilemiyor
 

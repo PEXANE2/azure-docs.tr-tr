@@ -50,7 +50,7 @@
         - name: Galeride listelenmeyen uygulamaları planlama
           href: non-gallery-apps.md
         - name: Uygulamalarım dağıtımı planlama
-          href: access-panel-deployment-plan.md
+          href: my-apps-deployment-plan.md
     - name: Çoklu oturum açma
       items:
         - name: Çoklu oturum açma dağıtımını planlama

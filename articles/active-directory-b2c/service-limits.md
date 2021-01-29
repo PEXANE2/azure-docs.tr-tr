@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 01/29/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b980624ebf55c3666bcc7dd1d60f681d788c95ae
-ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
+ms.openlocfilehash: 866af8b992374492286f47357f108a01f35e560b
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98987066"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99051050"
 ---
 # <a name="azure-active-directory-b2c-service-limits-and-restrictions"></a>Hizmet sınırlarını ve kısıtlamalarını Azure Active Directory B2C
 
@@ -40,17 +40,15 @@ Aşağıdaki tabloda Azure AD B2C hizmetindeki yönetim yapılandırma sınırla
 |Kategori  |Sınır  |
 |---------|---------|
 |Azure AD B2C kiracı başına uygulama sayısı   |250           |
-|Azure AD B2C kiracı başına ilke sayısı       |200          |
-|En fazla ilke dosyası boyutu      |400 KB          |
 |Uygulama başına kapsam sayısı        |1000          |
-|Kullanıcı başına özel özniteliklerin sayısı <sup>1</sup>       |100         |
+|Kullanıcı başına [özel özniteliklerin](user-profile-attributes.md#extension-attributes)sayısı   <sup>1</sup>       |100         |
 |Uygulama başına yeniden yönlendirme URL sayısı       |100         |
 |Uygulama başına oturum kapatma URL 'Lerinin sayısı        |1          |
 |Öznitelik başına dize sınırı      |250 karakter          |
 |Abonelik başına B2C kiracılarının sayısı      |20         |
 |Özel ilkelerdeki [Devralma](custom-policy-overview.md#inheritance-model) düzeyleri     |10         |
-|Azure AD B2C kiracı başına ilke sayısı      |200         |
-|En fazla ilke dosyası boyutu      |400 KB         |
+|Azure AD B2C kiracı başına ilke sayısı      |200          |
+|En fazla ilke dosyası boyutu      |400 KB          |
 
 <sup>1</sup> Ayrıca bkz. [Azure AD hizmet limitleri ve kısıtlamaları](../active-directory/enterprise-users/directory-service-limits-restrictions.md).
 

@@ -9,12 +9,12 @@ ms.subservice: common
 ms.topic: reference
 ms.date: 01/26/2021
 ms.author: banders
-ms.openlocfilehash: 40eb6bbb952596e015be7c1ed29dbefb3fb6016d
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 12c13b8a65296fb0ee74e0ee0449b604facf2f48
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98897722"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99051270"
 ---
 # <a name="automation-scenarios-for-billing-and-cost-management"></a>Faturalama ve maliyet yönetimi için otomasyon senaryoları
 
@@ -49,8 +49,8 @@ Maliyetle ilgili ve kullanımla ilgili soru ları yanıtlamak için faturalama v
 | Kullanım Ayrıntıları               |             X             |         X        |           X          |         X        |          X         |     X     |
 | Fatura Dönemleri             |             X             |         X        |           X          |         X        |                    |           |
 | Faturalar                    |             X             |         X        |           X          |         X        |                    |           |
-| RateCard                    |             X             |                  |           X          |         X        |          X         |           |
-| Derecelendirilmemiş Kullanım               |             X             |                  |           X          |                  |          X         |           |
+| Azure perakende fiyatları                    |             X             |                  |           X          |         X        |                    |           |
+
 
 > [!NOTE]
 > Senaryo-API eşlemesi Kurumsal Tüketim API'leri içermez. Mümkün olduğunca yeni geliştirme senaryoları için genel Tüketim API'lerini kullanın.
@@ -74,9 +74,7 @@ Web Direct ve Enterprise müşterileri tersi belirtilmediği sürece aşağıdak
 
 -    [Kullanım Ayrıntıları API'si](/rest/api/consumption/usagedetails): Microsoft'un sağladığı tüm Azure kaynaklarıyla ilgili ücret ve kullanım bilgilerini alın. Bilgiler şu anda ölçüm başına günde bir kez gösterilen kullanım ayrıntısı kayıtları biçimindedir. Bilgileri kullanarak tüm kaynakların maliyetlerini toplayabilir veya belirli kaynakların maliyet/kullanım durumunu araştırabilirsiniz.
 
--    [RateCard API'si](/previous-versions/azure/reference/mt219005(v=azure.100)): Web Direct müşterisiyseniz ölçüm ücretlerini alın. Ardından döndürülen bilgileri kaynak kullanım bilgilerinizle birlikte kullanarak beklenen faturayı el ile hesaplayabilirsiniz.
-
--    [Derecelendirilmemiş Kullanım API'si](/previous-versions/azure/reference/mt219003(v=azure.100)): Azure herhangi bir ölçüm/ücretlendirme yapmadan önce ham kullanım bilgilerini alın.
+-    [Azure perakende fiyatları](/rest/api/cost-management/retail-prices/azure-retail-prices): Kullandıkça Öde fiyatlandırmasıyla ölçüm ücretleri alın. Ardından döndürülen bilgileri kaynak kullanım bilgilerinizle birlikte kullanarak beklenen faturayı el ile hesaplayabilirsiniz.
 
 ### <a name="billing"></a>Faturalandırma
 -    [Fatura Dönemleri API'si](/rest/api/billing/enterprise/billing-enterprise-api-billing-periods): Analiz edilecek faturalama dönemini ve bu döneme ait fatura kimliklerini belirleyin. Fatura kimliklerini Faturalar API'siyle kullanabilirsiniz.
@@ -107,16 +105,6 @@ Bu API'lerin benzer bir işlev kümesi vardır ve faturalama ve maliyet yönetim
 
 - Tüketim API'leri birkaç özel durum dışında tüm müşteriler tarafından kullanılabilir. Daha fazla bilgi için bkz. [Azure tüketim API'sine genel bakış](consumption-api-overview.md) ve [Azure Tüketim API'si başvurusu](/rest/api/consumption/). En son geliştirme senaryolarına çözüm olarak sağlanan API'lerin kullanılmasını öneririz.
 
-### <a name="whats-the-difference-between-the-usage-details-api-and-the-usage-api"></a>Kullanım Ayrıntıları API'siyle Kullanım API'si arasında ne fark vardır?
-Bu API'ler temelde farklı veriler sağlar:
-
-- [Kullanım Ayrıntıları API'si](/rest/api/consumption/usagedetails) ölçüm örneği başına Azure kullanım ve maliyet bilgilerini sağlar. Sağlanan veriler Azure'da maliyet ölçüm sisteminden zaten geçirilmiştir ve bunlara diğer olası değişikliklerle birlikte maliyet de uygulanmıştır:
-
-   - Önceden ödenmiş Azure Ön Ödemesi için hesapta yapılan değişiklikler
-   - Azure tarafından bulunan kullanım tutarsızlıkları için hesapta yapılan değişiklikler
-
-- [Kullanım API'si](/previous-versions/azure/reference/mt219003(v=azure.100)) Azure'da maliyet ölçüm sisteminden geçirilmeden önceki ham Azure kullanım bilgilerini sağlar. Bu verilerin, Azure ücret ölçüm sisteminden sonra görülen kullanım ve ücret miktarıyla hiçbir bağıntısı olmayabilir.
-
 ### <a name="whats-the-difference-between-the-invoice-api-and-the-usage-details-api"></a>Fatura API'siyle Kullanım Ayrıntıları API'si arasında ne fark vardır?
 Bu API'ler aynı verilerin farklı görünümünü sağlar:
 
@@ -129,7 +117,7 @@ Bu API'ler benzer veri kümeleri sağlar ama hedef kitleleri farklıdır:
 
 - [Fiyat Listesi API'si](/rest/api/consumption/pricesheet) Enterprise müşterisi için üzerinde anlaşmaya varılmış özel fiyatlandırmayı sağlar.
 
-- [RateCard API'si](/previous-versions/azure/reference/mt219005(v=azure.100)) Web Direct müşterilerine uygulanan herkese açık fiyatlandırmayı sağlar.
+- [Azure perakende fiyatları API 'si](/rest/api/cost-management/retail-prices/azure-retail-prices) , Web Direct müşterileri için geçerli olan, herkese açık Kullandıkça Öde fiyatlandırması sağlar.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

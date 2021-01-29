@@ -4,17 +4,17 @@ description: Azure Maliyet Yönetimi + Faturalama özelliklerini kullanarak fatu
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 10/26/2020
+ms.date: 01/28/2021
 ms.topic: overview
 ms.service: cost-management-billing
 ms.subservice: common
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 34034a99641d75e44783cb5b87af8948b4db1628
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
-ms.translationtype: HT
+ms.openlocfilehash: a070b2329777accab6f62b767f74dbc28e5d2623
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97029949"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99051102"
 ---
 # <a name="what-is-azure-cost-management--billing"></a>Azure Maliyet Yönetimi + Faturalama nedir?
 
@@ -43,11 +43,11 @@ Azure’ı kullanmak için kaydolduğunuzda bir ödeme hesabı oluşturulur. Fat
 
 Azure portalı şu anda aşağıdaki ödeme hesapları türünü destekler:
 
-- **Microsoft Online Services Programı**: Azure web sitesi üzerinden Azure’a kaydolduğunuzda, Microsoft Online Services Programı için ayrı bir ödeme hesabı oluşturulur. Örneğin, bir Ücretsiz Azure Hesabına, kullandıkça öde fiyatlarına tabi hesaba veya Visual Studio abonesi olarak kaydolduğunuzda.
+- **Microsoft Online Services Programı**: Azure web sitesi üzerinden Azure’a kaydolduğunuzda, Microsoft Online Services Programı için ayrı bir ödeme hesabı oluşturulur. Örneğin, [ücretsiz bir Azure hesabı](./manage/create-free-services.md)için kaydolduğunuzda, Kullandıkça Öde tarifesine veya Visual Studio abonesi olarak hesaba kaydolabilirsiniz.
 
 - **Kurumsal Anlaşma**: Kuruluşunuz Azure’ı kullanmak için bir Kurumsal Anlaşma (EA) imzaladığında Kurumsal Anlaşma için bir ödeme hesabı oluşturulur.
 
-- **Microsoft Müşteri Sözleşmesi**: Kuruluşunuz bir Microsoft Müşteri Sözleşmesi imzalamak için Microsoft temsilcisiyle çalıştığında Microsoft Müşteri Sözleşmesi için bir ödeme hesabı oluşturulur. Azure web sitesinden kullandıkça öde fiyatlarına tabi hesaba kaydolan veya Ücretsiz Azure Hesabını yükselten, belirli bölgelerdeki bazı müşterilerin Microsoft Müşteri Sözleşmesi için ödeme hesabı da olabilir.
+- **Microsoft Müşteri Sözleşmesi**: Kuruluşunuz bir Microsoft Müşteri Sözleşmesi imzalamak için Microsoft temsilcisiyle çalıştığında Microsoft Müşteri Sözleşmesi için bir ödeme hesabı oluşturulur. Azure web sitesinden kullandıkça öde fiyatlarına tabi hesaba kaydolan veya [Ücretsiz Azure Hesabını](./manage/create-free-services.md) yükselten, belirli bölgelerdeki bazı müşterilerin Microsoft Müşteri Sözleşmesi için ödeme hesabı da olabilir.
 
 ### <a name="scopes-for-billing-accounts"></a>Ödeme hesapları için kapsamlar
 Kapsam, faturalamayı görüntülemek ve yönetmek için kullandığınız ödeme hesabı içindeki bir düğümdür. Bu kapsam dahilinde faturalama verilerini, ödemeleri, faturaları yönetir ve genel hesap yönetimi gerçekleştirirsiniz.

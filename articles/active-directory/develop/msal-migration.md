@@ -13,12 +13,12 @@ ms.date: 08/07/2020
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 3a1428f05d1a5f7563b2715a9142cf73dc5063a9
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 3280952636a915cca4bade40d3e56b795050c321
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98063663"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99053474"
 ---
 # <a name="migrate-applications-to-the-microsoft-authentication-library-msal"></a>Uygulamaları Microsoft kimlik doğrulama kitaplığı 'na geçirme (MSAL)
 
@@ -73,7 +73,7 @@ __S: MSAL nasıl çalışır? AD FS?__
 Y: MSAL.NET AD FS 2019 ' de kimlik doğrulaması yapmak için belirli senaryoları destekler. Uygulamanızın AD FS daha önceki bir sürümünden belirteç edinmesi gerekiyorsa, ADAL üzerinde kalabilmelisiniz. [Daha fazla bilgi edinin](msal-net-adfs-support.md).
 
 __S: uygulamamı geçirirken yardım almak Nasıl yaparım??__  
-A: Bu makalenin [Geçiş Kılavuzu](#migration-guidance) bölümüne bakın. Uygulamanızın platformu için kılavuzu okuduktan sonra ek sorularınız varsa, etiketle birlikte Stack Overflow gönderebilir `[adal-deprecation]` veya kitaplığın GitHub deposunda bir sorun açabilirsiniz. Her kitaplığın deposunun bağlantıları için MSAL genel bakış makalesinin [Diller ve çerçeveler](msal-overview.md#languages-and-frameworks) bölümüne bakın.
+A: Bu makalenin [Geçiş Kılavuzu](#migration-guidance) bölümüne bakın. Uygulamanızın platformu için kılavuzu okuduktan sonra ek sorularınız varsa, Microsoft Q&A 'dan etiketiyle `[azure-ad-adal-deprecation]` veya kitaplığın GitHub deposunda bir sorun açabilirsiniz. Her kitaplığın deposunun bağlantıları için MSAL genel bakış makalesinin [Diller ve çerçeveler](msal-overview.md#languages-and-frameworks) bölümüne bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

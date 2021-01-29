@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 01/22/2020
+ms.date: 01/28/2020
 ms.author: b-juche
-ms.openlocfilehash: 47aefecce846f58128335768018ba59d3520bd87
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 70b42fb5522b31b5e7e15b5715717f0d010d56dc
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98726689"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99052422"
 ---
 # <a name="create-a-dual-protocol-nfsv3-and-smb-volume-for-azure-netapp-files"></a>Azure NetApp Files için bir çift protokol (NFSv3 ve SMB) birimi oluşturun
 
@@ -51,6 +51,7 @@ Azure NetApp Files, NFS (NFSv3 ve NFSv 4.1), SMB3 veya Dual Protocol kullanarak 
     | `Unix`    | NFS   | NFSv3 modu bitleri   | UNIX  | NFS ve Windows   |
     | `Ntfs`    | Windows   | NTFS ACL 'Leri     | NTFS  |NFS ve Windows|
 * NFS kullanarak NTFS güvenlik stili birimini bağlama UNIX kullanıcıları, `root` UNIX Için Windows kullanıcısı `root` ve `pcuser` diğer tüm kullanıcılar için doğrulanır. Bu Kullanıcı hesaplarının, NFS kullanırken birimi bağlamadan önce Active Directory bulunduğundan emin olun. 
+* Büyük topolojiniz varsa ve `Unix` güvenlik stilini bir çift protokol birimiyle veya genişletilmiş gruplar Ile LDAP ile kullanıyorsanız, topolojinizdeki tüm sunuculara erişemeyebilirsiniz Azure NetApp Files.  Bu durum oluşursa, yardım için hesap ekibinize başvurun.  <!-- NFSAAS-15123 --> 
 * Çift protokol birimi oluşturmak için sunucu kök CA sertifikasına ihtiyacınız yoktur. Yalnızca TLS üzerinden LDAP etkinleştirildiğinde gereklidir.
 
 

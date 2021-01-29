@@ -8,12 +8,12 @@ ms.date: 04/15/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
-ms.openlocfilehash: 56f98d41fc73cdd2be0923de66a5af09c875a050
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 31910e92ba4d5cbb1f133eaff6880fafb809b772
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92013602"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054102"
 ---
 # <a name="manage-database-roles-and-users"></a>Veritabanı rollerini ve kullanıcılarını yönetme
 
@@ -28,7 +28,9 @@ Rol izinleri şunları içerir:
 
 Tablosal model projesi oluştururken, Visual Studio 'da Analysis Services projelerle rol Yöneticisi kullanarak roller oluşturur ve bu rollere kullanıcı veya grup ekleyebilirsiniz. Bir sunucuya dağıtıldığında, rol ve Kullanıcı üyeleri eklemek veya kaldırmak için SQL Server Management Studio (SSMS), [Analysis Services PowerShell cmdlet 'leri](/analysis-services/powershell/analysis-services-powershell-reference)veya [tablo modeli komut dosyası dili](/analysis-services/tmsl/tabular-model-scripting-language-tmsl-reference) (tmsl) kullanın.
 
-Bir **güvenlik grubu**eklerken kullanın `obj:groupid@tenantid` .
+Bir **güvenlik grubu** eklerken kullanın `obj:groupid@tenantid` .
+
+**Hizmet sorumlusu** kullanımı eklenirken `app:appid@tenantid` .
 
 ## <a name="to-add-or-manage-roles-and-users-in-visual-studio"></a>Visual Studio 'da rol ve Kullanıcı ekleme veya yönetme  
   
@@ -42,7 +44,7 @@ Bir **güvenlik grubu**eklerken kullanın `obj:groupid@tenantid` .
   
 4.  Aşağıdaki izinlerden birini seçin:  
   
-    |İzin|Açıklama|  
+    |İzin|Description|  
     |----------------|-----------------|  
     |**Hiçbiri**|Üyeler model şemasını okuyamıyor veya değiştiremezler ve verileri sorgulayamaz.|  
     |**Okuyamaz**|Üyeler veri sorgulayabilir (satır filtrelerine göre), ancak model şemasını değiştiremezler.|  
@@ -71,7 +73,7 @@ Dağıtılan bir model veritabanına roller ve kullanıcılar eklemek için sunu
 
 3. Bir izin seçin.
 
-   |İzin|Açıklama|  
+   |İzin|Description|  
    |----------------|-----------------|  
    |**Tam denetim (yönetici)**|Üyeler model şemasını değiştirebilir, işleyebilir ve tüm verileri sorgulayabilir.| 
    |**İşlem veritabanı**|Üyeler, Işlem çalıştırabilir ve tüm işlemleri Işleyebilir. Model şeması değiştirilemiyor ve veri sorgulanamıyor.|  

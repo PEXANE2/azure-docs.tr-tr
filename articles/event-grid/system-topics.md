@@ -3,15 +3,15 @@ title: Azure Event Grid sistem konuları
 description: Azure Event Grid içindeki Sistem konularını açıklar.
 ms.topic: conceptual
 ms.date: 09/24/2020
-ms.openlocfilehash: b3a6e7528da2a11c2f91007425ab8beecaf920c3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b1fbecb1e372602f9c252d43d2a1f93524ef1846
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91297292"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99052974"
 ---
 # <a name="system-topics-in-azure-event-grid"></a>Azure Event Grid sistem konuları
-Event Grid bir sistem konusu, Azure depolama ve Azure Event Hubs gibi Azure hizmetleri tarafından yayınlanan bir veya daha fazla olayı temsil eder. Örneğin, bir sistem konusu **tüm blob olaylarını** veya yalnızca **BLOB oluşturulmuş** ve **belirli bir depolama hesabı**için yayımlanan **BLOB silinen** olayları temsil edebilir. Bu örnekte, bir BLOB depolama hesabına yüklendiğinde Azure Storage hizmeti, Event Grid ' deki Sistem konusuna **BLOB tarafından oluşturulan** bir olay yayımlar, daha sonra olayı alan ve işleyen [abonelere](event-handlers.md) iletir. 
+Event Grid bir sistem konusu, Azure depolama ve Azure Event Hubs gibi Azure hizmetleri tarafından yayınlanan bir veya daha fazla olayı temsil eder. Örneğin, bir sistem konusu **tüm blob olaylarını** veya yalnızca **BLOB oluşturulmuş** ve **belirli bir depolama hesabı** için yayımlanan **BLOB silinen** olayları temsil edebilir. Bu örnekte, bir BLOB depolama hesabına yüklendiğinde Azure Storage hizmeti, Event Grid ' deki Sistem konusuna **BLOB tarafından oluşturulan** bir olay yayımlar, daha sonra olayı alan ve işleyen [abonelere](event-handlers.md) iletir. 
 
 > [!NOTE] 
 > Yalnızca Azure Hizmetleri, olayları sistem konularına yayımlayabilir. Bu nedenle, özel konular veya etki alanları için yaptığınız gibi olayları yayımlamak için kullanabileceğiniz bir uç nokta veya erişim anahtarları edinmezsiniz.
@@ -34,6 +34,7 @@ Bunlar üzerinde sistem konuları oluşturmayı destekleyen Azure hizmetlerinin 
 - [Azure Service Bus](event-schema-service-bus.md)
 - [Azure SignalR](event-schema-azure-signalr.md)
 - [Azure abonelikleri](event-schema-subscriptions.md)
+- [Redis için Azure Önbelleği](event-schema-azure-cache.md)
 
 ## <a name="system-topics-as-azure-resources"></a>Azure kaynakları olarak sistem konuları
 Geçmişte, bir sistem konusu örtük ve kolaylık sağlaması için açık değildi. Sistem konuları artık Azure kaynakları olarak görünür ve aşağıdaki özellikleri sağlar:

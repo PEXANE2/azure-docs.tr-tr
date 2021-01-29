@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: 03f24bf4cf379504479e554b129f34d94ca423cd
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 03814766d7bc873855df261a50a40b8d342fa69b
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98896368"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054255"
 ---
 # <a name="use-an-alert-to-trigger-an-azure-automation-runbook"></a>Bir Azure Otomasyonu runbook 'unu tetiklemek için uyarı kullanma
 
@@ -45,7 +45,7 @@ Yukarıdaki bölümde açıklandığı gibi, her uyarı türünün farklı bir �
 
 Bu örnek, bir VM 'den bir uyarı kullanır. Yük kaynağından VM verilerini alır ve ardından bu bilgileri kullanarak VM 'yi durdurur. Bağlantı, runbook 'un çalıştırıldığı Otomasyon hesabında ayarlanmalıdır. Runbook 'ları tetiklemek için uyarıları kullanırken, tetiklenen runbook 'ta uyarı durumunun denetlenmesi önemlidir. Uyarı her değişiklik durumunda runbook tetiklenir. Uyarıların en yaygın olarak etkinleştirilme ve çözümlenmesi için birden çok durumu vardır. Runbook 'un birden çok kez çalıştırılmadığından emin olmak için Runbook mantığınızdaki durumu denetleyin. Bu makaledeki örnekte yalnızca durum etkinleştirilmiş olan uyarıların nasıl aranacağı gösterilmektedir.
 
-Runbook, `AzureRunAsConnection` VM 'ye karşı yönetim eylemini gerçekleştirmek üzere Azure ile kimlik doğrulaması yapmak için bağlantı varlığı [Farklı Çalıştır hesabını](./manage-runas-account.md) kullanır.
+Runbook, `AzureRunAsConnection` VM 'ye karşı yönetim eylemini gerçekleştirmek üzere Azure ile kimlik doğrulaması yapmak için bağlantı varlığı [Farklı Çalıştır hesabını](./automation-security-overview.md) kullanır.
 
 **Stop-AzureVmInResponsetoVMAlert** adlı bir runbook oluşturmak için bu örneği kullanın. PowerShell betiğini değiştirebilir ve birçok farklı kaynakla kullanabilirsiniz.
 
