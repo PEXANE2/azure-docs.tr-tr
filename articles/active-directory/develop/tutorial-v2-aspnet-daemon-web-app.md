@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/10/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: bc7893746cbb98a2d4adc4dabb39e22d015ab2c8
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: d4f8ab190d0418fbb25dad2cd7af231eabfe0f02
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99050405"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99090263"
 ---
 # <a name="tutorial-build-a-multi-tenant-daemon-that-uses-the-microsoft-identity-platform"></a>Öğretici: Microsoft Identity platformunu kullanan çok kiracılı bir Daemon oluşturma
 
@@ -45,7 +45,7 @@ Uygulama, bir ASP.NET MVC uygulaması olarak oluşturulmuştur. Kullanıcıları
 
 Bu örnekteki "Daemon" bileşeni bir API denetleyicisidir `SyncController.cs` . Denetleyici çağrıldığında, Microsoft Graph tarafından müşterinin Azure Active Directory (Azure AD) kiracısındaki kullanıcıların listesini alır. `SyncController.cs` Web uygulamasındaki bir AJAX çağrısıyla tetiklenir. Microsoft Graph için bir erişim belirteci almak üzere [.net Için Microsoft kimlik doğrulama kitaplığı 'nı (msal)](msal-overview.md) kullanır.
 
-Uygulama, Microsoft iş müşterilerine yönelik çok kiracılı bir uygulama olduğundan, müşterilerin uygulamayı şirket verilerine "kaydolmalarına" veya "bağlanmasına" olanak sağlaması gerekir. Bağlantı akışı sırasında, şirket yöneticisi öncelikle uygulamaya doğrudan uygulama *izinleri* verir, böylece oturum açmış bir Kullanıcı mevcut olmadan şirket verilerine etkileşimli olmayan bir biçimde erişebilir. Bu örnekteki mantığın çoğunluğunda, kimlik platformunun [Yönetici onay](v2-permissions-and-consent.md#using-the-admin-consent-endpoint) uç noktası kullanılarak bu bağlantı akışının nasıl elde edilebileceği gösterilmektedir.
+Uygulama, Microsoft iş müşterilerine yönelik çok kiracılı bir uygulama olduğundan, müşterilerin uygulamayı şirket verilerine "kaydolmalarına" veya "bağlanmasına" olanak sağlaması gerekir. Bağlantı akışı sırasında, genel yönetici önce uygulamaya doğrudan uygulama *izinleri* verir, böylece oturum açmış bir Kullanıcı mevcut olmadan şirket verilerine etkileşimli olmayan bir biçimde erişebilir. Bu örnekteki mantığın çoğunluğunda, kimlik platformunun [Yönetici onay](v2-permissions-and-consent.md#using-the-admin-consent-endpoint) uç noktası kullanılarak bu bağlantı akışının nasıl elde edilebileceği gösterilmektedir.
 
 ![Diyagram, başlangıç noktası kimlik doğrulaması ile Azure 'a bağlanmak için bir belirteç almak üzere Azure A, AccountController 'ın Azure a 'ya bağlanmasına yönelik yönetici onayı alma ve Microsoft Graph bağlanmak üzere kullanıcıyı okuma ile eşitleme için bir belirteç alma ile UserSync uygulamasını gösterir.](./media/tutorial-v2-aspnet-daemon-webapp/topology.png)
 

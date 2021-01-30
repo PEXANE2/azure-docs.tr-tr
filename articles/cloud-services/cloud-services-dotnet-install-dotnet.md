@@ -8,12 +8,12 @@ ms.author: tagore
 author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 18665fabad079a8759f26be8834b2fe029ab5f49
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: aa05fc9f02c26192762ed34db54b60b4760bf3bf
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98742786"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99061860"
 ---
 # <a name="install-net-on-azure-cloud-services-classic-roles"></a>Azure Cloud Services (klasik) rollerine .NET 'i yükler
 
@@ -32,7 +32,7 @@ Web ve çalışan rolleriniz üzerinde .NET yüklemek için, bulut hizmeti proje
 ## <a name="add-the-net-installer-to-your-project"></a>Projenize .NET yükleyicisi ekleyin
 .NET Framework web yükleyicisini indirmek için, yüklemek istediğiniz sürümü seçin:
 
-* [.NET Framework 4,8 Web Yükleyicisi](https://dotnet.microsoft.com/download/thank-you/net48)
+* [.NET Framework 4,8 Web Yükleyicisi](https://go.microsoft.com/fwlink/?LinkId=2150985)
 * [.NET Framework 4.7.2 Web Yükleyicisi](https://go.microsoft.com/fwlink/?LinkId=863262)
 * [.NET Framework 4.6.2 Web Yükleyicisi](https://www.microsoft.com/download/details.aspx?id=53345)
 

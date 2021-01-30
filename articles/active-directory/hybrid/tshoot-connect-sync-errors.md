@@ -15,12 +15,12 @@ ms.date: 10/29/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a668fa9bf0ef4fd3b5451ff4c815b676fe237e51
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 88fda4ec810d0b410dcd75ac9c6be69bd54b16d9
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94410632"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99092659"
 ---
 # <a name="troubleshooting-errors-during-synchronization"></a>Eşitleme sırasında karşılaşılan Hataları giderme
 Kimlik verileri, Windows Server Active Directory (AD DS) Azure Active Directory (Azure AD) ile eşitlendiğinde hatalar oluşabilir. Bu makalede, farklı eşitleme hatası türlerine genel bir bakış sağlanır. bu hatalara neden olan olası senaryoların bazıları ve hataları gidermeye yönelik olası yollar sunulmaktadır. Bu makale, ortak hata türlerini içerir ve olası tüm hataları kapsamayabilir.
@@ -34,14 +34,14 @@ Azure AD Connect \( ağustos 2016 veya üzeri en son sürümü ile eşitleme \) 
 Azure AD Connect eşitlemede devam eden dizinlerden üç tür işlem gerçekleştirir: Içeri aktar, Eşitle ve dışarı aktar. Hatalar tüm işlemlerde meydana getirebilir. Bu makale, genellikle Azure AD 'ye aktarma sırasında oluşan hatalara odaklanır.
 
 ## <a name="errors-during-export-to-azure-ad"></a>Azure AD 'ye aktarma sırasında hatalar
-Aşağıdaki bölümde Azure AD bağlayıcısı kullanılarak Azure AD 'ye dışarı aktarma işlemi sırasında oluşabilecek farklı eşitleme hatası türleri açıklanmaktadır. Bu bağlayıcı ad biçimi "contoso" ile tanımlanabilir. *onmicrosoft.com* ".
+Aşağıdaki bölümde Azure AD bağlayıcısı kullanılarak Azure AD 'ye dışarı aktarma işlemi sırasında oluşabilecek farklı eşitleme hatası türleri açıklanmaktadır. Bu bağlayıcı ad biçimi "contoso" ile tanımlanabilir. *onmicrosoft.com*".
 Azure AD 'ye dışarı aktarma sırasında oluşan hatalar, \( \) \( Azure Active Directory Azure AD Connect eşitleme altyapısı tarafından başarısız olan ekleme, güncelleştirme, silme vs. işlemi \) başarısız olduğunu gösterir.
 
 ![Dışarı aktarma hataları genel bakış](./media/tshoot-connect-sync-errors/Export_Errors_Overview_01.png)
 
 ## <a name="data-mismatch-errors"></a>Veri uyumsuzluğu hataları
 ### <a name="invalidsoftmatch"></a>InvalidSoftMatch
-#### <a name="description"></a>Açıklama
+#### <a name="description"></a>Description
 * Azure AD Connect \( Sync Engine \) , nesneleri eklemek veya güncelleştirmek için Azure Active Directory bildirir; Azure AD, Azure AD 'Deki nesnelerin **ImmutableID** özniteliğiyle **sourcetutturucu** özniteliğini kullanarak gelen nesneyle eşleşir. Bu eşleştirmeye **sabit eşleşme** denir.
 * Azure AD, **ImmutableID** **özniteliğiyle eşleşen** herhangi bir nesne **bulmazsa** , yeni bir nesne sağlamadan önce, bir eşleşme bulmak için proxyAddresses ve userPrincipalName özniteliklerini kullanmaya geri döner. Bu eşleştirmeye, **yumuşak eşleşme** denir. Hafif eşleşme, şirket içinde aynı varlığı (kullanıcılar, gruplar) temsil eden eşitleme sırasında eklenen/güncellenen yeni nesneler ile Azure AD 'de zaten mevcut olan (Azure AD 'de bulunan) nesneleri eşleştirmek için tasarlanmıştır.
 * Sabit eşleşme eşleşen bir nesne bulamazsa **ve** yumuşak eşleşme eşleşen bir nesne bulduğunda **InvalidSoftMatch** hatası oluşur, ancak bu nesnenin gelen nesnenin *Sourcetutturucu* öğesinden farklı bir *ImmutableID* değeri varsa, eşleşen nesnenin şirket içi Active Directory başka bir nesneyle eşitlenmiş olması önerilir.
@@ -78,7 +78,7 @@ Azure Active Directory şeması iki veya daha fazla nesnenin aşağıdaki öznit
    * SMTP bobs@contoso.com
    * SMTP bob.smith@contoso.com
    * **SMTP: Bob \@ contoso.com**
-5. Yeni bir kullanıcı olan **Bob Taylor** , şirket içi Active Directory eklenir.
+5. Yeni bir kullanıcı olan **Bob Taylor**, şirket içi Active Directory eklenir.
 6. Bob Taylor **userPrincipalName** , **bobt \@ contoso.com** olarak ayarlanmıştır.
 7. **"abcdefghijkl0123456789 = =" "** , Azure AD Connect tarafından, şirket içi Active Directory 'ın Bob Taylor **Objectguıd** 'ı kullanılarak hesaplanan **sourcetutturucu** . Bob Taylor nesnesi henüz Azure Active Directory ile eşitlenmedi.
 8. Bob Taylor proxyAddresses özniteliği için aşağıdaki değerlere sahiptir
@@ -109,7 +109,7 @@ Eşitleme için Azure AD Connect Health içindeki eşitleme hata raporları her 
 * [Yinelenen veya geçersiz öznitelikler Microsoft 365 dizin eşitlemesini engelliyor](https://support.microsoft.com/kb/2647098)
 
 ### <a name="objecttypemismatch"></a>Objecttypeuyuşmazlık
-#### <a name="description"></a>Açıklama
+#### <a name="description"></a>Description
 Azure AD, iki nesneyle hafif bir şekilde eşleşmek istediğinde, farklı "nesne türü" (örneğin, Kullanıcı, Grup, kişi vb.) iki nesnesinin, yumuşak eşleşme gerçekleştirmek için kullanılan öznitelikler için aynı değerlere sahip olması mümkündür. Azure AD 'de bu özniteliklerin çoğaltılmasına izin verilmemesine neden olarak, işlem "Objecttypeuyuşmazlıkla" eşitleme hatasına neden olabilir.
 
 #### <a name="example-scenarios-for-objecttypemismatch-error"></a>Objecttypeuyuşmazlık hatası için örnek senaryolar
@@ -130,7 +130,7 @@ Objecttypeuyuşmazlık hatasının en yaygın nedeni, farklı türde (Kullanıc�
 
 ## <a name="duplicate-attributes"></a>Yinelenen öznitelikler
 ### <a name="attributevaluemustbeunique"></a>AttributeValueMustBeUnique
-#### <a name="description"></a>Açıklama
+#### <a name="description"></a>Description
 Azure Active Directory şeması iki veya daha fazla nesnenin aşağıdaki özniteliklerle aynı değere sahip olmasını sağlamıyor. Bu, Azure AD 'deki her bir nesne belirli bir örnekte bu özniteliklerin benzersiz bir değerine sahip olmaya zorlanır.
 
 * ProxyAddresses
@@ -148,7 +148,7 @@ Azure AD Connect yeni bir nesne eklemeye veya var olan bir nesneyi, Azure Active
    * SMTP bobs@contoso.com
    * SMTP bob.smith@contoso.com
    * **SMTP: Bob \@ contoso.com**
-4. Yeni bir kullanıcı olan **Bob Taylor** , şirket içi Active Directory eklenir.
+4. Yeni bir kullanıcı olan **Bob Taylor**, şirket içi Active Directory eklenir.
 5. Bob Taylor **userPrincipalName** , **bobt \@ contoso.com** olarak ayarlanmıştır.
 6. **Bob Taylor** , **proxyAddresses** özniteliği ı için aşağıdaki değerlere sahiptir. SMTP: bobt@contoso.com II. SMTP bob.taylor@contoso.com
 7. Bob Taylor nesnesi Azure AD ile başarıyla eşitlendi.
@@ -168,7 +168,7 @@ AttributeValueMustBeUnique hatasının en yaygın nedeni, farklı Sourcebağlay�
 
 ## <a name="data-validation-failures"></a>Veri doğrulama sorunları
 ### <a name="identitydatavalidationfailed"></a>Identitydatavalidationfailed
-#### <a name="description"></a>Açıklama
+#### <a name="description"></a>Description
 Azure Active Directory, verilerin dizine yazılmasına izin vermeden önce verilerin kendisinde çeşitli kısıtlamalar uygular. Bu kısıtlamalar, son kullanıcıların bu verilere bağlı uygulamaları kullanırken olası en iyi deneyimleri almasını sağlamaktır.
 
 #### <a name="scenarios"></a>Senaryolar
@@ -182,7 +182,7 @@ a. UserPrincipalName özniteliğinde desteklenen karakterlerin ve gerekli biçim
 * [Microsoft 365 için Dizin eşitleme yoluyla Kullanıcı sağlamaya hazırlanma](https://support.office.com/article/Prepare-to-provision-users-through-directory-synchronization-to-Office-365-01920974-9e6f-4331-a370-13aea4e82b3e)
 
 ### <a name="federateddomainchangeerror"></a>FederatedDomainChangeError
-#### <a name="description"></a>Açıklama
+#### <a name="description"></a>Description
 Bu durum, bir kullanıcının UserPrincipalName öğesinin soneki bir Federasyon etki alanından başka bir Federasyon etki alanına değiştirildiğinde **"Federateddomainchangeerror"** eşitleme hatası ile sonuçlanır.
 
 #### <a name="scenarios"></a>Senaryolar
@@ -195,16 +195,16 @@ Eşitlenmiş bir kullanıcı için, UserPrincipalName soneki bir Federasyon etki
 4. Bob 'un userPrincipalName 'i güncelleştirilmemiş ve "FederatedDomainChangeError" eşitleme hatası ile sonuçlanıyor.
 
 #### <a name="how-to-fix"></a>Nasıl düzeltilir
-Bir kullanıcının UserPrincipalName soneki bob@ **contoso.com** 'den Bob \@ **fabrikam.com** 'e güncelleştirilirse, her ikisi de **contoso.com** ve **fabrikam.com** **federe etki alanlarındaysa** , eşitleme hatasını onarmak için bu adımları izleyin
+Bir kullanıcının UserPrincipalName soneki bob@**contoso.com** 'den Bob \@ **fabrikam.com**'e güncelleştirilirse, her ikisi de **contoso.com** ve **fabrikam.com** **federe etki alanlarındaysa**, eşitleme hatasını onarmak için bu adımları izleyin
 
 1. Azure AD 'de kullanıcının UserPrincipalName değerini bob@contoso.com olarak güncelleştirin bob@contoso.onmicrosoft.com . Azure AD PowerShell modülü ile aşağıdaki PowerShell komutunu kullanabilirsiniz: `Set-MsolUserPrincipalName -UserPrincipalName bob@contoso.com -NewUserPrincipalName bob@contoso.onmicrosoft.com`
 2. Eşitlemeyi denemek için bir sonraki eşitleme döngüsüne izin verin. Bu zaman eşitleme başarılı olur ve Bob 'un UserPrincipalName değerini bob@fabrikam.com beklenen şekilde güncelleştirir.
 
 #### <a name="related-articles"></a>İlgili Makaleler
-* [Kullanıcı hesabının UPN 'sini farklı bir Federasyon etki alanı kullanacak şekilde değiştirdikten sonra değişiklikler Azure Active Directory eşitleme aracı tarafından eşitlenmedi](https://support.microsoft.com/help/2669550/changes-aren-t-synced-by-the-azure-active-directory-sync-tool-after-you-change-the-upn-of-a-user-account-to-use-a-different-federated-domain)
+* [Kullanıcı hesabının UPN 'sini farklı bir Federasyon etki alanı kullanacak şekilde değiştirdikten sonra değişiklikler Azure Active Directory eşitleme aracı tarafından eşitlenmedi](/azure/active-directory/hybrid/howto-troubleshoot-upn-changes)
 
 ## <a name="largeobject"></a>LargeObject
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 Bir öznitelik izin verilen boyut sınırını, uzunluk sınırını veya Azure Active Directory şeması tarafından ayarlanan sayı sınırını aştığında, eşitleme işlemi **LargeObject** veya **Exceededallodilimlength** eşitleme hatası ile sonuçlanır. Bu hata, genellikle aşağıdaki öznitelikler için oluşur
 
 * userCertificate
@@ -223,7 +223,7 @@ Bir öznitelik izin verilen boyut sınırını, uzunluk sınırını veya Azure 
 
 ## <a name="existing-admin-role-conflict"></a>Var olan yönetici rolü çakışması
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 Kullanıcı nesnesi şu olduğunda, eşitleme sırasında bir kullanıcı nesnesi üzerinde **var olan bir yönetici rolü çakışması** oluşur:
 
 - yönetim izinleri ve

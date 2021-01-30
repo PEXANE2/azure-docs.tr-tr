@@ -2,13 +2,13 @@
 title: Sık sorulan sorular
 description: Azure VMware çözümüyle ilgili bazı yaygın soruların yanıtlarını sağlar.
 ms.topic: conceptual
-ms.date: 1/14/2021
-ms.openlocfilehash: 090b29b1e013ffbceb9296250fed99a04d15a82c
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.date: 1/27/2021
+ms.openlocfilehash: 3ef3d1b9e6fc76b5f09acf8c300dbea901b4aef2
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 01/29/2021
-ms.locfileid: "99062096"
+ms.locfileid: "99072277"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution"></a>Azure VMware çözümü hakkında sık sorulan sorular
 
@@ -79,6 +79,12 @@ Hayır. Azure Load Balancer iç-yalnızca Azure IaaS VM 'lerini destekler. Azure
 
 ### <a name="can-an-existing-expressroute-gateway-be-used-to-connect-to-azure-vmware-solution"></a>Azure VMware çözümüne bağlanmak için mevcut bir ExpressRoute ağ geçidi kullanılabilir mi?
 Evet. Sanal ağ başına dört ExpressRoute bağlantı hattı sınırını aşmadığı sürece Azure VMware çözümüne bağlanmak için mevcut bir ExpressRoute ağ geçidini kullanın. Azure VMware çözümüne ExpressRoute aracılığıyla Şirket içinden erişmek için ExpressRoute ağ geçidi, bağlı olan devreler arasında geçişli yönlendirme sağlamadığından ExpressRoute Global Reach sahip olmalısınız.
+
+### <a name="why-does-azure-vmware-solution-use-a-public-4-byte-autonomous-system-number-asn"></a>Azure VMware çözümü neden ortak bir 4 baytlık otonom sistem numarası (ASN) kullanıyor?
+Azure VMware çözümü, müşterinin Azure VMware çözümüne yönelik yönlendirme yolundaki özel ASNs 'lerin şirket içi kullanımıyla ilgili hiç bir çakışma olmadığından emin olmak için resmi olarak kaydedilen ortak 4 baytlık ASNs 'yi kullanır.
+ 
+### <a name="how-can-i-use-expressroute-to-connect-to-azure-vmware-solution-if-the-on-premises-expressroute-carrier-partnersisps-dont-support-4-byte-asn"></a>Şirket içi ExpressRoute-taşıyıcı iş ortakları/ISS 'Ler 4 baytlık ASN 'yi desteklemiyorsa Azure VMware çözümüne bağlanmak için ExpressRoute 'u nasıl kullanabilirim?
+Azure VMware çözümüne ExpressRoute üzerinden bağlanmak için tek yol, ortamınız için ve şirket içi ExpressRoute-taşıyıcı iş ortakları/ISS 'Ler 4 baytlık ASN 'yi destekler veya BGP ön eki ASN yol tanıtımında 4 bayttan 2 baytlık ASN 'ye geri uyumluluk sağlar.
 
 ## <a name="compute-network-storage-and-backup"></a>İşlem, ağ, depolama ve yedekleme
 

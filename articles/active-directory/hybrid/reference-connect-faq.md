@@ -15,12 +15,12 @@ ms.date: 08/23/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff2651d2fed9c307bbb90623572b4a74d750d3a4
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 1fa195fd8d40c6b67a9c446f0b2320fe47d75259
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94836079"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99092675"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Azure Active Directory Connect SSS
 
@@ -162,8 +162,8 @@ Eşitlenen kullanıcılar şirket içinde yazılabilir veya ana kopyalı olabili
 **S: Azure AD 'deki userPrincipalName (UPN) özniteliği şirket içi UPN ile neden eşleşmiyor?**  
 Daha fazla bilgi için şu makalelere bakın:
 
-* [Microsoft 365, Azure veya Intune 'daki Kullanıcı adları şirket içi UPN veya alternatif oturum açma KIMLIĞIYLE eşleşmez](https://support.microsoft.com/kb/2523192)
-* [Kullanıcı hesabının UPN 'sini farklı bir Federasyon etki alanı kullanacak şekilde değiştirdikten sonra değişiklikler Azure Active Directory eşitleme aracı tarafından eşitlenmedi](https://support.microsoft.com/kb/2669550)
+* [Microsoft 365, Azure veya Intune 'daki Kullanıcı adları şirket içi UPN veya alternatif oturum açma KIMLIĞIYLE eşleşmez](https://mskb.pkisolutions.com/kb/2523192)
+* [Kullanıcı hesabının UPN 'sini farklı bir Federasyon etki alanı kullanacak şekilde değiştirdikten sonra değişiklikler Azure Active Directory eşitleme aracı tarafından eşitlenmedi](https://mskb.pkisolutions.com/kb/2669550)
 
 Azure AD 'yi, eşitleme altyapısının [Azure AD Connect eşitleme hizmeti özellikleri](how-to-connect-syncservice-features.md)bölümünde açıklandığı gıbı, UPN 'yi güncelleştirmesine izin verecek şekilde de yapılandırabilirsiniz.
 
@@ -218,7 +218,7 @@ Evet, hala sürüm 1.1.750.0 veya sonraki sürüme yükseltmeniz gerekir. PowerS
 Azure AD Connect yükseltmek için başlangıçta kullanılan Kullanıcı adını ve parolayı bilmeniz gerekmez. Genel yönetici rolüne sahip herhangi bir Azure AD hesabını kullanın.
 
 **S: hangi Azure AD Connect sürümünü kullandığım hakkında nasıl öğrenebilirim?**  
-Sunucunuza hangi Azure AD Connect sürümünün yüklendiğini doğrulamak için, Denetim Masası ' na gidin ve **Programs**  >  aşağıda gösterildiği gibi programlar **Programlar ve Özellikler**' i seçerek Microsoft Azure AD Connect ' in yüklü sürümünü bulun:
+Sunucunuza hangi Azure AD Connect sürümünün yüklendiğini doğrulamak için, Denetim Masası ' na gidin ve   >  aşağıda gösterildiği gibi programlar **Programlar ve Özellikler**' i seçerek Microsoft Azure AD Connect ' in yüklü sürümünü bulun:
 
 ![Denetim Masası 'nda Azure AD Connect sürümü](./media/reference-connect-faq/faq1.png)
 

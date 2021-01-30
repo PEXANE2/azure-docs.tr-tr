@@ -57,6 +57,14 @@
           href: security-baseline.md
 - name: Nasıl yapılır kılavuzları
   items:
+    - name: Azure Logic Apps Önizleme
+      items:
+        - name: Azure Logic Apps Önizleme sürümüne genel bakış
+          href: logic-apps-overview-preview.md
+        - name: Durum bilgisi olan ve olmayan iş akışları oluşturma - Azure portal
+          href: create-stateful-stateless-workflows-azure-portal.md
+        - name: Durum bilgisi olan ve olmayan iş akışları oluşturma - Visual Studio Code
+          href: create-stateful-stateless-workflows-visual-studio-code.md
     - name: Geliştirme
       items:
         - name: Önceden oluşturulmuş şablonlardan oluşturma
@@ -67,14 +75,6 @@
           href: logic-apps-move-from-mabs.md
         - name: Akışları Power Automate'ten dışarı aktarma ve Azure Logic Apps’e dağıtma
           href: export-from-microsoft-flow-logic-app-template.md
-        - name: Azure Logic Apps Önizleme
-          items:
-            - name: Azure Logic Apps Önizleme sürümüne genel bakış
-              href: logic-apps-overview-preview.md
-            - name: Durum bilgisi olan ve olmayan iş akışları oluşturma - Azure portal
-              href: create-stateful-stateless-workflows-azure-portal.md
-            - name: Durum bilgisi olan ve olmayan iş akışları oluşturma - Visual Studio Code
-              href: create-stateful-stateless-workflows-visual-studio-code.md
         - name: Power Automate ve Power Apps’ten mantıksal uygulama çağırma
           href: call-from-power-automate-power-apps.md
         - name: İş akışı yürütmeyi denetleme
@@ -330,6 +330,8 @@
           href: logic-apps-enterprise-integration-create-integration-account.md
         - name: Tümleştirme hizmeti ortamlarını yönetme
           href: ise-manage-integration-service-environment.md
+        - name: Maliyetleri planlama ve yönetme
+          href: plan-manage-costs.md
         - name: Mantıksal uygulama kaynaklarını taşıma
           href: move-logic-app-resources.md
         - name: En son şemaya geçiş

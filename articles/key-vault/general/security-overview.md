@@ -9,22 +9,21 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 01/05/2021
 ms.author: mbaldwin
-ms.openlocfilehash: c4e9f0cd6a7421f5be29200816bb00a56b141367
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: c7635fdc2012ab404709733d8f5849465c2ee82f
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97937799"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99071587"
 ---
-# <a name="azure-key-vault-security-overview"></a>Azure Key Vault güvenliğe genel bakış
+# <a name="azure-key-vault-security"></a>Azure Key Vault güvenliği
 
 Bulutta sertifikalar, bağlantı dizeleri ve parolalar gibi şifreleme anahtarlarını ve gizli dizileri korumak için Azure Key Vault kullanırsınız. Gizli ve iş açısından kritik verileri depolarken, kasalarınızın ve bunlarda depolanan verilerin güvenliğini en üst düzeye çıkarmak için adımları uygulamanız gerekir.
 
-Bu makalede, Azure Key Vault yönelik güvenlik özelliklerine ve en iyi yöntemlere genel bakış sunulmaktadır. [Azure Güvenlik kıyaslaması](../../security/benchmarks/introduction.md)temelinde önerilerin kapsamlı bir listesi için bkz. [Azure Key Vault için güvenlik temeli](security-baseline.md).
+Bu makalede, Azure Key Vault yönelik güvenlik özelliklerine ve en iyi yöntemlere genel bakış sunulmaktadır. 
 
-## <a name="general-guidance"></a>Genel kılavuz
-
-Önerimiz, ortam başına uygulama başına (geliştirme, ön üretim ve üretim) bir kasa kullanmaktır. Bu, ortamlar genelinde gizli dizileri paylaşmanıza ve ayrıca bir ihlal durumunda tehdidi azaltmanıza yardımcı olur.
+> [!NOTE]
+> Azure Key Vault güvenlik önerilerinin kapsamlı bir listesi için [Azure Key Vault güvenlik taban çizgisine](security-baseline.md)bakın.
 
 ## <a name="network-security"></a>Ağ güvenliği
 
@@ -109,20 +108,9 @@ Azure Key Vault geçici silme ve Temizleme koruması, silinen kasaların ve kasa
 
 Ayrıca, bir kasadaki nesnelerin güncelleştirilmesi/silinmesi/oluşturulması sırasında kasanızın düzenli olarak yeniden yedeklenmesini gerçekleştirmeniz gerekir.  
 
-Azure PowerShell yedekleme komutları:
-
-* [Yedekleme sertifikası](/powershell/module/azurerm.keyvault/Backup-AzureKeyVaultCertificate)
-* [Yedekleme anahtarı](/powershell/module/azurerm.keyvault/Backup-AzureKeyVaultKey)
-* [Yedekleme gizli dizisi](/powershell/module/azurerm.keyvault/Backup-AzureKeyVaultSecret)
-
-Azure CLı yedekleme komutları
-
-* [Yedekleme sertifikası](/cli/azure/keyvault/certificate#az-keyvault-certificate-backup)
-* [Yedekleme anahtarı](/cli/azure/keyvault/key#az-keyvault-key-backup)
-* [Yedekleme gizli dizisi](/cli/azure/keyvault/secret#az-keyvault-secret-backup)
-
-
 ## <a name="next-steps"></a>Sonraki Adımlar
 
-- [Azure Key Vault için sanal ağ hizmeti uç noktaları](overview-vnet-service-endpoints.md)
+- [Azure Key Vault güvenlik temeli](security-baseline.md)
+- [En iyi Azure Key Vault uygulamalar](security-baseline.md)
+- [Azure Key Vault için sanal ağ hizmet uç noktaları](overview-vnet-service-endpoints.md)
 - [Azure RBAC: yerleşik roller](../../role-based-access-control/built-in-roles.md)

@@ -1,27 +1,27 @@
 ---
-title: Azure geçişi ile geçiş projelerini ölçekli olarak yönetme
+title: Azure Use projelerini Azure açık Thouse ile ölçeklendirin
 description: Atanan müşteri kaynakları için Azure geçişi 'ni etkin bir şekilde kullanmayı öğrenin.
-ms.date: 12/4/2020
+ms.date: 01/29/2021
 ms.topic: how-to
-ms.openlocfilehash: 53f7c390d9f16dcbccbb1d09f46e63fec13eee2d
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 8e8ba21881ea5dad36ae640632b6307cd9a22a73
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98788952"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99093617"
 ---
-# <a name="manage-migration-projects-at-scale-with-azure-migrate"></a>Azure geçişi ile geçiş projelerini ölçekli olarak yönetme
+# <a name="manage-azure-migrate-projects-at-scale-with-azure-lighthouse"></a>Azure Use projelerini Azure açık Thouse ile ölçeklendirin
 
-Hizmet sağlayıcı olarak, [Azure açık Thouse](../overview.md)için birden fazla müşteri kiracısından eklendi olabilirsiniz. Azure Mathouse, hizmet sağlayıcılarının birden çok Azure Active Directory (Azure AD) kiracılarının aynı anda, yönetim görevlerini daha verimli hale getiren işlemleri gerçekleştirmesine olanak tanır.
+Bu konu başlığı altında, [Azure](../overview.md) 'un nasıl kullanılacağına ilişkin bir genel bakış sunulmaktadır. Azure [geçişi](../../migrate/migrate-services-overview.md) , birden çok Azure Active Directory (Azure AD) kiracılarında ölçeklenebilir bir şekilde kullanmanıza yardımcı olabilir.
 
-[Azure geçişi](../../migrate/migrate-services-overview.md) , Azure şirket içi sunucuları, altyapısı, uygulamaları ve verileri değerlendirmek ve bu uygulamalara geçiş yapmak için merkezi bir merkez sağlar. Genellikle, birden çok müşteriye yönelik ölçekte değerlendirme ve geçiş gerçekleştiren iş ortakları, [CSP (bulut çözümü sağlayıcısı) abonelik modelini](/partner-center/customers-revoke-admin-privileges) kullanarak veya [Müşteri kiracısında bir Konuk Kullanıcı oluşturarak](../../active-directory/external-identities/what-is-b2b.md)her bir müşteri aboneliğine tek tek erişmelidir.
+Azure Mathouse, hizmet sağlayıcılarının aynı anda birkaç kiracıda bir ölçekte işlem gerçekleştirmesine olanak sağlayarak yönetim görevlerini daha verimli hale getirir.
+
+Azure geçişi, Azure şirket içi sunucuları, altyapısı, uygulamaları ve verileri değerlendirmek ve bu uygulamalara geçiş yapmak için merkezi bir merkez sağlar. Genellikle, birden çok müşteriye yönelik ölçekte değerlendirme ve geçiş gerçekleştiren iş ortakları, [CSP (bulut çözümü sağlayıcısı) abonelik modelini](/partner-center/customers-revoke-admin-privileges) kullanarak veya [Müşteri kiracısında bir Konuk Kullanıcı oluşturarak](../../active-directory/external-identities/what-is-b2b.md)her bir müşteri aboneliğine tek tek erişmelidir.
 
 Azure Sthouse Azure geçişi ile tümleştirme, hizmet sağlayıcılarının iş yüklerini farklı müşterilere uygun ölçekte bulmasına, değerlendirmesine ve geçirmeye izin verirken, müşterilerin ortamlarının tam görünürlük ve denetim sahibi olmasını sağlar. Azure Temsilcili kaynak yönetimi sayesinde, hizmet sağlayıcılarının birden çok müşteri kiracısından yönettikleri tüm Azure geçiş projelerini tek bir görünümü vardır.
 
 > [!NOTE]
 > Azure Athouse aracılığıyla iş ortakları, şirket içi VMware VM 'Leri, Hyper-V VM 'Leri, fiziksel sunucular ve AWS/GCP örnekleri için bulma, değerlendirme ve geçiş işlemleri gerçekleştirebilir. [VMware VM geçişi](../../migrate/server-migrate-overview.md)için iki seçenek vardır. Şu anda, temsilci bir müşteri aboneliğinde geçiş projesi üzerinde çalışırken yalnızca aracı tabanlı geçiş yöntemi kullanılabilir; Aracısız çoğaltma kullanılarak geçiş, müşterinin kapsamına temsilci erişimi aracılığıyla şu anda desteklenmemektedir.
-
-Bu konuda, [Azure geçişi](../../migrate/migrate-services-overview.md) 'nin ölçeklenebilir bir şekilde nasıl kullanılacağına ilişkin bir genel bakış sunulmaktadır.
 
 > [!TIP]
 > Bu konudaki hizmet sağlayıcılarına ve müşterilere başvurduğumuz halde, bu kılavuz [birden çok kiracıyı yönetmek Için Azure açık Thouse kullanan kuruluşlar](../concepts/enterprise.md)için de geçerlidir.
@@ -72,11 +72,11 @@ NOTE: dağıtım yapmadan önce, parametre dosyasını ortamınızı yansıtacak
 
 ## <a name="partner-recognition-for-customer-migrations"></a>Müşteri geçişleri için iş ortağı tanıma
 
-[Microsoft iş ortağı ağı](https://partner.microsoft.com)bir üyesi olarak, Iş ortağı kimliğinizi, temsilcili müşteri kaynaklarını yönetmek için kullanılan kimlik bilgileriyle bağlantılandırabilirsiniz. Iş ortağı yönetici bağlantısı (PAL) aracılığıyla, Microsoft, geçiş projeleri de dahil olmak üzere, müşteriler için gerçekleştirdiğiniz görevlere bağlı olarak, kuruluşunuza ve Azure tarafından tüketilen gelir üzerinde özellik etkileyebilir.
+[Microsoft iş ortağı ağı](https://partner.microsoft.com)bir üyesi olarak, Iş ortağı kimliğinizi, temsilcili müşteri kaynaklarını yönetmek için kullanılan kimlik bilgileriyle bağlantılandırabilirsiniz. Bu, Microsoft 'un, geçiş projeleri de dahil olmak üzere, müşteriler için gerçekleştirdiğiniz görevlere bağlı olarak, Microsoft 'un kuruluşunuza ve Azure tarafından tüketilen gelirle çalışmasına izin verir
 
 Daha fazla bilgi için bkz. [İş ortağı kimliğinizi, temsilci atanan kaynaklardaki etkinizi izleyecek şekilde bağlama](partner-earned-credit.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure geçişi](../../migrate/migrate-services-overview.md)hakkında bilgi edinin.
-- [Çapraz kiracı yönetim deneyimleri](../concepts/cross-tenant-management-experience.md)hakkında bilgi edinin.
+- [Azure geçişi](../../migrate/migrate-services-overview.md)hakkında daha fazla bilgi edinin.
+- Azure açık Thouse tarafından desteklenen diğer [çapraz kiracı yönetim deneyimleri](../concepts/cross-tenant-management-experience.md) hakkında bilgi edinin.

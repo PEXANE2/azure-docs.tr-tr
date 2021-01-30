@@ -14,12 +14,12 @@ ms.subservice: roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e38ca27606ecf04b08bd29867894ba269148260c
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 6ae8dbf6ffd2d827bbcd0fd723f63255d71d47a5
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99055255"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99090799"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Azure AD'de karma ve bulut dağıtımları için ayrıcalıklı erişim güvenliğini sağlama
 
@@ -40,7 +40,7 @@ Ayrıcalıklı erişimin güvenliğini sağlamak için değişiklikler yapmanız
 Önem verdiğiniz Microsoft hizmetlerinde yönetilen ve bildirilen bir şekilde ayrıcalıklı erişiminizi güvenli hale getirin. Şirket içi yönetici hesaplarınız varsa, [ayrıcalıklı erişimin güvenliğini sağlamaya](/windows-server/identity/securing-privileged-access/securing-privileged-access)yönelik Active Directory ' de şirket içi ve karma ayrıcalıklı erişim Kılavuzu ' na bakın.
 
 > [!NOTE]
-> Bu makaledeki kılavuz, birincil olarak Azure Active Directory Premium planlarına P1 ve P2 'a eklenen Azure Active Directory özelliklerine başvurur. Azure Active Directory Premium P2, EMS E5 Suite ve Microsoft 365 E5 Suite 'e dahildir. Bu kılavuzda, kuruluşunuzda kullanıcılarınız için satın alınan Azure AD Premium P2 lisansları zaten var. Bu lisanslarınız yoksa, bazı kılavuzlardan biri kuruluşunuza uygulanmayabilir. Ayrıca, bu makale boyunca genel yönetici (veya genel yönetici) terimi, "Şirket Yöneticisi" veya "Kiracı Yöneticisi" ile aynı şeyi gösterir.
+> Bu makaledeki kılavuz, birincil olarak Azure Active Directory Premium planlarına P1 ve P2 'a eklenen Azure Active Directory özelliklerine başvurur. Azure Active Directory Premium P2, EMS E5 Suite ve Microsoft 365 E5 Suite 'e dahildir. Bu kılavuzda, kuruluşunuzda kullanıcılarınız için satın alınan Azure AD Premium P2 lisansları zaten var. Bu lisanslarınız yoksa, bazı kılavuzlardan biri kuruluşunuza uygulanmayabilir. Ayrıca, bu makale boyunca genel yönetici terimi "Şirket Yöneticisi" veya "Kiracı Yöneticisi" ile aynı şeyi ifade ederler.
 
 ## <a name="develop-a-roadmap"></a>Yol haritası geliştirme
 
@@ -148,7 +148,7 @@ Yol haritası 'nın 2. aşaması, kimlik bilgilerinin hırsızlık ve kötüye k
 Kişisel e-posta hesapları, kişisel e-posta adreslerini genel yönetici hesapları için kabul edilemez hale getiren bir risk olan siber saldırganlar tarafından düzenli olarak çok fazla İnternet risklerini yönetici ayrıcalıklarından ayırmaya yardımcı olmak için, her kullanıcı için yönetici ayrıcalıklarına sahip adanmış hesaplar oluşturun.
 
 * Kullanıcıların genel yönetici görevlerini yapması için ayrı hesaplar oluşturmayı unutmayın.
-* Genel yöneticilerinizin e-postaları yanlışlıkla açmasını veya yönetici hesaplarıyla programları çalıştırmasını sağlayın.
+* Genel Yöneticilerinizdeki e-postaları yanlışlıkla açmadığından veya programları yönetici hesaplarıyla çalıştırmadığından emin olun.
 * Bu hesapların e-postalarını çalışan bir posta kutusuna iletdiğinden emin olun.
 * Genel yönetici (ve diğer ayrıcalıklı gruplar) hesapları, şirket içi Active Directory bağlı olmayan salt bulut hesapları olmalıdır.
 
@@ -230,7 +230,7 @@ Azure Etkinlik Günlüğü, Azure'da abonelik düzeyindeki olayların geçmişin
 
 #### <a name="complete-an-access-review-of-users-in-administrator-roles"></a>Yönetici rollerindeki kullanıcıların erişim incelemesini tamamlar
 
-Daha fazla şirket kullanıcısı bulut hizmetleri aracılığıyla ayrıcalıklı erişim elde edebilir ve bu, yönetilmeyen erişime yol açabilir. Günümüzde kullanıcılar Microsoft 365, Azure aboneliği yöneticileri veya sanal makinelere ya da SaaS uygulamaları aracılığıyla yönetici erişimine sahip olmak için genel Yöneticiler haline gelebilir.
+Daha fazla şirket kullanıcısı bulut hizmetleri aracılığıyla ayrıcalıklı erişim elde edebilir ve bu, yönetilmeyen erişime yol açabilir. Günümüzde kullanıcılar Microsoft 365, Azure aboneliği yöneticileri için küresel yöneticilere veya sanal makinelere veya SaaS uygulamalarına yönetici erişimine sahip olabilir.
 
 Kuruluşunuz, tüm çalışanların olağan iş işlemlerini ayrıcalıksız kullanıcılar olarak işlemesini ve sonra yalnızca gerektiğinde yönetici hakları vermesini sağlamalıdır. Yönetici ayrıcalıklarını etkinleştirmeye uygun olan kullanıcıları tanımlamak ve onaylamak için erişim gözden geçirmeleri tamamlanmıştır.
 

@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 09/03/2020
 ms.author: ceespino
 ms.reviewer: daperlov
-ms.openlocfilehash: 0bd0421a74679ff0c9498540d722a74ebf3d58af
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 8bb4ff3198764a35bebc124ee1ce99a93428693d
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92632576"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99095964"
 ---
 # <a name="troubleshoot-azure-data-factory-ux-issues"></a>Azure Data Factory UX sorunlarını giderme
 
@@ -28,7 +28,7 @@ Bu makalede Azure Data Factory UX için genel sorun giderme yöntemleri incelenm
 
 ### <a name="third-party-cookies-blocked"></a>Üçüncü taraf tanımlama bilgileri engellendi
 
-ADF UX Kullanıcı oturumunu kalıcı hale getirmek ve etkileşimli geliştirme ve izleme deneyimlerini etkinleştirmek için tarayıcı tanımlama bilgilerini kullanır. Bir ınbilito oturumu kullandığınız veya bir ad engelleyicisinin etkinleştirildiğinden, tarayıcınız üçüncü taraf tanımlama bilgilerini engelliyor olabilir. Üçüncü taraf tanımlama bilgilerinin engellenmesi, Portal yüklenirken, boş bir sayfaya yönlendirilmek https://adf.azure.com/accesstoken.html ya da üçüncü taraf tanımlama bilgilerinin engellendiğini bildiren bir uyarı mesajı almak gibi sorunlara yol açabilir. Bu sorunu çözmek için, aşağıdaki adımları kullanarak tarayıcınızda üçüncü taraf tanımlama bilgileri seçeneklerini etkinleştirin:
+ADF UX Kullanıcı oturumunu kalıcı hale getirmek ve etkileşimli geliştirme ve izleme deneyimlerini etkinleştirmek için tarayıcı tanımlama bilgilerini kullanır. Bir ınbilito oturumu kullandığınız veya bir ad engelleyicisinin etkinleştirildiğinden, tarayıcınız üçüncü taraf tanımlama bilgilerini engelliyor olabilir. Üçüncü taraf tanımlama bilgilerinin engellenmesi, Portal yüklenirken, boş bir sayfaya ' ' yönlendirilmekte https://adf.azure.com/accesstoken.html veya üçüncü taraf tanımlama bilgilerinin engellendiğini bildiren bir uyarı iletisi almaya çalışırken soruna neden olabilir. Bu sorunu çözmek için, aşağıdaki adımları kullanarak tarayıcınızda üçüncü taraf tanımlama bilgileri seçeneklerini etkinleştirin:
 
 ### <a name="google-chrome"></a>Google Chrome
 
@@ -71,17 +71,17 @@ Tüm tanımlama bilgilerine izin vermek istemiyorsanız, isteğe bağlı olarak 
 
 ## <a name="connection-failed-on-adf-ux"></a>ADF UX üzerinde bağlantı başarısız oldu
 
-Bazen, **bağlantı sınama** , **Önizleme** , vb. tıkladıktan sonra AŞAĞıDAKI ekran görüntüsüne benzer ADF UX üzerinde "bağlantı başarısız oldu" hataları görürsünüz.
+Bazen, **bağlantı sınama**, **Önizleme**, vb. tıkladıktan sonra AŞAĞıDAKI ekran görüntüsüne benzer ADF UX üzerinde "bağlantı başarısız oldu" hataları görürsünüz.
 
 ![Bağlantı başarısız oldu](media/data-factory-ux-troubleshoot-guide/connection-failed.png)
 
 Bu durumda, önce tarayıcınızda InPrivate Gözatma moduyla aynı işlemi deneyebilirsiniz.
 
-Hala çalışmıyorsa, tarayıcıda **Geliştirici Araçları** açmak için F12 tuşuna basın. **Ağ** sekmesine gidin, **önbelleği devre dışı bırak** ' ı işaretleyin, başarısız olan işlemi yeniden deneyin ve başarısız isteği bulun (kırmızı).
+Hala çalışmıyorsa, tarayıcıda **Geliştirici Araçları** açmak için F12 tuşuna basın. **Ağ** sekmesine gidin, **önbelleği devre dışı bırak**' ı işaretleyin, başarısız olan işlemi yeniden deneyin ve başarısız isteği bulun (kırmızı).
 
 ![Başarısız istek](media/data-factory-ux-troubleshoot-guide/failed-request.png)
 
-Ardından, başarısız isteğin **Istek URL** 'sinden **ana bilgisayar adını** (Bu örnekte **dpnortheurope.svc.DataFactory.Azure.com** ) bulun.
+Ardından, başarısız isteğin **Istek URL** 'sinden **ana bilgisayar adını** (Bu örnekte **dpnortheurope.svc.DataFactory.Azure.com**) bulun.
 
 Tarayıcınızın adres çubuğuna doğrudan **ana bilgisayar adını** yazın. Tarayıcıda 404 görürseniz, bu genellikle istemci tarafın Tamam olduğu ve sorun ADF hizmeti tarafında olduğu anlamına gelir. ADF UX hata iletisindeki **etkınlık kimliği** ile bir destek bileti dosyası.
 

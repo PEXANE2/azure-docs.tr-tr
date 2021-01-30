@@ -86,6 +86,8 @@
       items:
         - name: Güvenlik temeli
           href: security-baseline.md
+        - name: Azure İlkesi’ne göre güvenlik denetimleri
+          href: ./security-controls-policy.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Ölçek

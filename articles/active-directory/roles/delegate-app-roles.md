@@ -14,18 +14,18 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e36a29048d97798c2e1621fbdc957bde51b5a383
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: b5cb7e1521c649be4abc155d9f28a49b43a11e6d
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98740610"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99071281"
 ---
 # <a name="delegate-app-registration-permissions-in-azure-active-directory"></a>Azure Active Directory 'de uygulama kayıt izinleri verme
 
 Bu makalede, uygulama yönetimi ihtiyaçlarınızı karşılamak üzere Azure Active Directory (Azure AD) içinde özel roller tarafından verilen izinlerin nasıl kullanılacağı açıklanır. Azure AD 'de, uygulama oluşturma ve yönetim izinlerinin aşağıdaki yollarla temsilciliğini sağlayabilirsiniz:
 
-- [Kimlerin uygulama oluşturup oluşturdukları uygulamaları yönetebileceğini sınırlandırma](#restrict-who-can-create-applications) . Azure AD 'de varsayılan olarak, tüm kullanıcılar uygulama kayıtlarını kaydedebilir ve oluşturdukları uygulamaların tüm yönlerini yönetebilir. Bu, yalnızca izin verilen kullanıcılara izin vermek için kısıtlanabilir.
+- [Kimlerin uygulama oluşturup oluşturdukları uygulamaları yönetebileceğini sınırlandırma](#restrict-who-can-create-applications) . Azure AD 'de varsayılan olarak, tüm kullanıcılar uygulamaları kaydedebilir ve oluşturdukları uygulamaların tüm yönlerini yönetebilir. Bu, yalnızca izin verilen kullanıcılara izin vermek için kısıtlanabilir.
 - Bir [uygulamaya bir veya daha fazla sahip atama](#assign-application-owners). Bu, birine belirli bir uygulama için Azure AD yapılandırmasının tüm yönlerini yönetme olanağı sağlamanın basit bir yoludur.
 - Tüm uygulamalar için Azure AD 'de yapılandırmayı yönetme erişimi veren [yerleşik bir yönetim rolü atama](#assign-built-in-application-admin-roles) . Bu, BT uzmanlarına, Azure AD 'nin uygulama yapılandırmasıyla ilgili olmayan diğer kısımlarını yönetmek için erişim izni vermeden, geniş uygulama yapılandırma izinlerini yönetmek üzere erişim vermek için önerilen yoldur.
 - [Özel bir rol oluşturmak](#create-and-assign-a-custom-role-preview) ve bunu, tek bir uygulamanın sınırlı bir sahip olarak veya dizin kapsamında (tüm uygulamalar) sınırlı yönetici olarak bir kişiye atamak.
@@ -34,7 +34,7 @@ Yukarıdaki yöntemlerden birini kullanarak iki nedenden dolayı erişim vermek 
 
 ## <a name="restrict-who-can-create-applications"></a>Kimlerin uygulama oluşturacağını kısıtla
 
-Azure AD 'de varsayılan olarak, tüm kullanıcılar uygulama kayıtlarını kaydedebilir ve oluşturdukları uygulamaların tüm yönlerini yönetebilir. Herkes Ayrıca şirket verilerine kendi adına erişen uygulamalar için izin verebilir. Genel anahtarları ' Hayır ' olarak ayarlayarak ve seçilen kullanıcıları uygulama geliştirici rolüne ekleyerek, bu izinleri seçmeli olarak vermeyi tercih edebilirsiniz.
+Azure AD 'de varsayılan olarak, tüm kullanıcılar uygulamaları kaydedebilir ve oluşturdukları uygulamaların tüm yönlerini yönetebilir. Herkes Ayrıca şirket verilerine kendi adına erişen uygulamalar için izin verebilir. Genel anahtarları ' Hayır ' olarak ayarlayarak ve seçilen kullanıcıları uygulama geliştirici rolüne ekleyerek, bu izinleri seçmeli olarak vermeyi tercih edebilirsiniz.
 
 ### <a name="to-disable-the-default-ability-to-create-application-registrations-or-consent-to-applications"></a>Uygulama kayıtları veya uygulamalara onay oluşturma için varsayılan özelliği devre dışı bırakmak için
 

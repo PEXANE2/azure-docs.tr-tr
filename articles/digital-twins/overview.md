@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: overview
 ms.service: digital-twins
-ms.openlocfilehash: 91915f204a68d59a603b8bdea383b497a5b33d34
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: c0bc245a4be1ab7c326fa27cc1422878aca6331d
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98664036"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99071690"
 ---
 # <a name="what-is-azure-digital-twins"></a>Azure Digital Twins nedir?
 
@@ -94,10 +94,10 @@ Aşağıdaki diyagramda Azure Digital TWINS 'in daha büyük bir Azure IoT çöz
 
 ## <a name="service-limits"></a>Hizmet sınırlamaları
 
-Azure dijital TWINS sınırları listesi için bkz. [*Başvuru: hizmet limitleri*](reference-service-limits.md).
+Azure dijital TWINS sınırları listesi için bkz. [*Azure Digital TWINS hizmet limitleri*](reference-service-limits.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure dijital TWINS 'in (Ekim 2018) ilk önizleme sürümüyle çalıştıysanız, nelerin değiştiğini öğrenin: [*genel bakış: ilk sürümden farklar*](overview-differences.md).
+* Hızlı başlangıç: [*hızlı başlangıç: örnek bir senaryoyu araştırmak*](quickstart-adt-explorer.md)Için Azure dijital TWINS ile çalışmaya göz atın.
 
-Bunun yanı sıra, hızlı başlangıç: [*hızlı başlangıç: örnek senaryo*](quickstart-adt-explorer.md)hakkında daha fazla bilgi edinmek Için Azure dijital ikgörüleri ile çalışmaya devam edin.
+* Ya da Azure dijital TWINS kavramlarını şu [*kavramlarla okumayı başlatın: özel modeller*](concepts-models.md).

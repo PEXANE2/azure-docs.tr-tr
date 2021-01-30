@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 09/09/2020
+ms.date: 01/28/2021
 ms.author: alkohli
-ms.openlocfilehash: 64d028892298a70e7588863bf9a3f4fc6f4ca609
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a2c46e8a7cae9ddba9606abf75ac022e804fde9c
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91760068"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99062515"
 ---
 # <a name="deploy-a-gpu-enabled-iot-module-from-azure-marketplace-on-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU cihazında Azure Marketi 'nden GPU özellikli bir IoT modülü dağıtma
 
@@ -28,11 +28,11 @@ Bu makalede şunları öğreneceksiniz:
 
 Bu makaledeki GPU örnek modülü,, GPU 'ya karşı CPU için örnek kodu PyTorch ve TensorFlow benchişaretlemesini içerir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce aşağıdakilere sahip olduğunuzdan emin olun:
 
-- GPU etkin 1 düğümlü Azure Stack Edge cihazına erişirsiniz. Bu cihaz Azure 'da bir kaynakla etkinleştirildi. 
+- GPU etkin 1 düğümlü Azure Stack Edge cihazına erişirsiniz. Bu cihaz, Azure'da bir kaynakla birlikte etkinleştirilir. 
 - Bu cihazda işlem yapılandırdınız. Öğreticideki adımları izleyin [: Azure Stack Edge cihazınızda Işlem yapılandırma](azure-stack-edge-gpu-deploy-configure-compute.md).
 - Bir Windows istemcisinde aşağıdaki geliştirme kaynakları:
     - [Visual Studio Code](https://code.visualstudio.com/)  
@@ -53,7 +53,7 @@ Başlamadan önce aşağıdakilere sahip olduğunuzdan emin olun:
 
     ![Örnek modül al](media/azure-stack-edge-gpu-deploy-sample-module-marketplace/get-sample-module-1.png)
 
-4. Sağlayıcının kullanım koşullarını ve gizlilik ilkesini onaylamak için **devam** ' ı seçin. 
+4. Sağlayıcının kullanım koşullarını ve gizlilik ilkesini onaylamak için **devam** ' ı seçin. 
 
     ![Örnek modül 2 al](media/azure-stack-edge-gpu-deploy-sample-module-marketplace/terms-of-use-1.png)
 
@@ -63,13 +63,11 @@ Başlamadan önce aşağıdakilere sahip olduğunuzdan emin olun:
 
 6. Azure Stack Edge Pro cihazınızı yapılandırdığınızda oluşturduğunuz IoT Hub hizmetinin adını girin. Bu IoT Hub hizmet adını bulmak için Azure portal cihazındaki aygıtınızla ilişkili Azure Stack Edge kaynağına gidin. 
 
-    1. Sol bölmedeki menü seçeneklerinde, **uç işlem >** başlayın ' a gidin. 
-
-    1. **Uç Işlem yapılandırma** kutucuğunda yapılandırma **görüntüle**' yi seçin. 
+    1. Sol bölmedeki menü seçeneklerinde, **Edge hizmetleri > IoT Edge** gidin. 
 
         ![İşlem yapılandırmasını görüntüle](media/azure-stack-edge-gpu-deploy-sample-module-marketplace/view-config-1.png)
 
-    1. **Edge işlem yapılandırması** dikey penceresinde:
+    1. **Özellikler**' e gidin. 
 
         1. Azure Stack Edge Pro cihazınızda işlem yapılandırdığınızda oluşturulan IoT Hub hizmetini bir yere göz önüne alın.
         2. İşlem yapılandırdığınızda oluşturulan IoT Edge cihazının adını unutmayın. Sonraki adımda bu adı kullanacaksınız.
@@ -78,16 +76,16 @@ Başlamadan önce aşağıdakilere sahip olduğunuzdan emin olun:
 
 10. **Cihaza dağıt**' ı seçin.
 
-11. IoT Edge cihazının adını girin veya hub 'a kayıtlı cihazlar arasında gezinmek için **Cihazı bul**' u seçin   .
+11. IoT Edge cihazının adını girin veya hub 'a kayıtlı cihazlar arasında gezinmek için **Cihazı bul** ' u seçin.
 
     ![Cihaz bul](media/azure-stack-edge-gpu-deploy-sample-module-marketplace/find-device-1.png)
 
-12. İsterseniz **Create**   , başka modüller ekleme dahil olmak üzere bir dağıtım bildirimini yapılandırmaya yönelik standart işleme devam etmek için Oluştur ' u seçin. Görüntü URI 'SI, oluşturma seçenekleri ve istenen özellikler gibi yeni modülün ayrıntıları önceden tanımlanmıştır ancak değiştirilebilir.
+12. İsterseniz, başka modüller ekleme dahil olmak üzere bir dağıtım bildirimini yapılandırmaya yönelik standart işleme devam etmek için **Oluştur** ' u seçin. Görüntü URI 'SI, oluşturma seçenekleri ve istenen özellikler gibi yeni modülün ayrıntıları önceden tanımlanmıştır ancak değiştirilebilir.
 
     ![Oluştur’u seçin](media/azure-stack-edge-gpu-deploy-sample-module-marketplace/target-devices-iot-edge-module-1.png)
 
 
-13. Modülün Azure portal IoT Hub dağıtıldığını doğrulayın. Cihazınızı seçin, **modülleri ayarla**' yı seçin   ve modülün **IoT Edge modüller**   bölümünde listelenmesi gerekir.
+13. Modülün Azure portal IoT Hub dağıtıldığını doğrulayın. Cihazınızı seçin, **modülleri ayarla** ' yı seçin ve modülün **IoT Edge modüller** bölümünde listelenmesi gerekir.
 
     ![2 oluştur seçeneğini belirleyin](media/azure-stack-edge-gpu-deploy-sample-module-marketplace/running-module-iotres-1.png)
 

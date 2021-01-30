@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: c0426c5359e4d82d0316613586b9298596d82605
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 74d06d3d4aaa0d76b80257d2148fb62f71c3fdb0
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87009773"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99093204"
 ---
 # <a name="disable-the-guest-os-firewall-in-azure-vm"></a>Azure VM'de konuk işletim sistemi Güvenlik Duvarını devre dışı bırakma
 
@@ -47,7 +47,7 @@ VM çevrimiçiyse ve aynı sanal ağdaki başka bir VM üzerinden erişilebiliyo
 >   ```
 > * Güvenlik Duvarı bir Active Directory ilkesi aracılığıyla ayarlandıysa, geçici erişim için aşağıdaki betiği Çalıştır ' ı kullanabilirsiniz. 
 >   ```
->   Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile' -name "EnableFirewall" -Value 0
+>   Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile' -name "EnableFirewall" -Value 0
 >   Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile' -name "EnableFirewall" -Value 0
 >   Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\WindowsFirewall\StandardProfile' -name "EnableFirewall" -Value 0
 >   Restart-Service -Name mpssvc
@@ -88,7 +88,7 @@ VM çevrimiçiyse ve aynı sanal ağdaki başka bir VM üzerinden erişilebiliyo
 
 #### <a name="mitigation-4-remote-registry"></a>Hafifletme 4: uzak kayıt defteri 
 
-[Uzak kayıt defteri](https://support.microsoft.com/help/314837/how-to-manage-remote-access-to-the-registry)kullanmak için bu adımları izleyin.
+[Uzak kayıt defteri](https://www.betaarchive.com/wiki/index.php?title=Microsoft_KB_Archive/314837)kullanmak için bu adımları izleyin.
 
 1.  Sorun giderme sanal makinesinde, kayıt defteri düzenleyicisini başlatın ve ardından **Dosya**  >  **Connect ağ kayıt defteri**' ne gidin.
 
@@ -102,7 +102,7 @@ VM çevrimiçiyse ve aynı sanal ağdaki başka bir VM üzerinden erişilebiliyo
 
 3.  Hizmeti yeniden başlatın. Uzak kayıt defteri 'ni kullanarak bunu yapamadığından, uzak hizmet konsolu 'Nu kullanmanız gerekir.
 
-4.  **Services. msc**örneğini açın.
+4.  **Services. msc** örneğini açın.
 
 5.  **Hizmetler (yerel)** seçeneğine tıklayın.
 
@@ -126,7 +126,7 @@ Herhangi bir yöntemle sanal makineye ulaşamamanıza yönelik bir durumunuz var
 
 4.  Değişiklik yapmadan önce, değişikliklerin geri alınması gerekli olduğunda \Windows\System32\Config klasörünün bir kopyasını oluşturun.
 
-5.  Sorun giderme sanal makinesinde, kayıt defteri düzenleyicisini başlatın (regedit.exe). 
+5.  Sorun giderme sanal makinesinde, kayıt defteri düzenleyicisini başlatın (regedit.exe). 
 
 6.  Bu sorun giderme yordamı için, kovanları BROKENSYSTEM ve BROKENSOFTWARE olarak takıyoruz.
 

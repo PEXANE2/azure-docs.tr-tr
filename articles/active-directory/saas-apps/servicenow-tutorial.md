@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/09/2020
 ms.author: jeedes
-ms.openlocfilehash: 7a15248300150c9b79c4678701f81fac923d56a3
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: c90234249f3cf7eb6ed4793110d61e1f8190ed60
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353621"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99092641"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-servicenow"></a>Öğretici: ServiceNow ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -36,7 +36,7 @@ Başlamak için aşağıdaki öğeler gereklidir:
 * Bir ServiceNow çoklu oturum açma (SSO) aboneliği etkin.
 * ServiceNow için ServiceNow örneği veya kiracısı Calgary, Kingston, Londra, Madrid, New York, Orlando ve Paris sürümlerini veya üstünü destekler.
 * ServiceNow Express için ServiceNow Express, Helsinki sürümü veya üzeri bir örnek.
-* ServiceNow kiracısında [birden çok sağlayıcı çoklu oturum açma eklentisi](https://wiki.servicenow.com/index.php?title=Multiple_Provider_Single_Sign-On#gsc.tab=0) etkin olmalıdır.
+* ServiceNow kiracısında [birden çok sağlayıcı çoklu oturum açma eklentisi](https://old.wiki/index.php/Multiple_Provider_Single_Sign-On#gsc.tab=0) etkin olmalıdır.
 * Otomatik yapılandırma için ServiceNow için Multi-Provider eklentisini etkinleştirin.
 * ServiceNow Classic (mobil) uygulamasını yüklemek için uygun mağazaya gidin ve ServiceNow klasik uygulamasını arayın. Ardından indirin.
 
@@ -127,7 +127,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 Bu bölümde, Azure portal olarak B. Simon adlı bir test kullanıcısı oluşturacaksınız.
 
-1. Azure Portal sol bölmeden, kullanıcılar **Azure Active Directory**  >  **Users**  >  **tüm kullanıcılar**' ı seçin.
+1. Azure Portal sol bölmeden, kullanıcılar **Azure Active Directory**  >    >  **tüm kullanıcılar**' ı seçin.
 1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** için girin `B.Simon` .  
@@ -320,7 +320,7 @@ Bu bölümde, ServiceNow 'a erişim vererek Azure çoklu oturum açma özelliği
 
         1. Azure portal kopyaladığınız **uygulama Federasyon meta veri URL 'sini** girin.
 
-        1. **İçeri Aktar**'ı seçin.
+        1. **İçeri aktar**'ı seçin.
 
     1. IDP meta veri URL 'sini okur ve tüm alan bilgilerini doldurur.
 

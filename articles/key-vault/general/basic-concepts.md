@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 01/18/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 6c1da45115303bb0a67d6ff796a40ef47c24224a
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: cc00a4f1c1551932b4a30a8ef9b27cb1d4082667
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93287435"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99071605"
 ---
 # <a name="azure-key-vault-basic-concepts"></a>Azure Key Vault temel kavramlar
 
@@ -23,37 +23,35 @@ Azure Key Vault, gizli dizileri güvenli bir şekilde depolamak ve bunlara eriş
 
 Diğer önemli terimler şunlardır:
 
-- **Kiracı** : Kiracı, Microsoft bulut hizmetlerinin belirli bir örneğine sahip olan ve onu yöneten kuruluştur. Genellikle bir kuruluşun Azure ve Microsoft 365 hizmetleri kümesine başvurmak için kullanılır.
+- **Kiracı**: Kiracı, Microsoft bulut hizmetlerinin belirli bir örneğine sahip olan ve onu yöneten kuruluştur. Genellikle bir kuruluşun Azure ve Microsoft 365 hizmetleri kümesine başvurmak için kullanılır.
 
-- **Kasa sahibi** : Kasa sahibi, anahtar kasası oluşturabilir ve anahtar kasası üzerinde tam erişime ve denetime sahip olabilir. Kasa sahibi, gizli dizilere ve anahtarlara kimlerin eriştiğini günlüğe kaydetmek için belirli denetim özellikleri de ayarlayabilir. Yöneticiler anahtarların yaşam döngüsünü kontrol edebilir. Anahtarı yeni sürüme geçirebilir, yedekleyebilir ve ilgili görevleri gerçekleştirebilirler.
+- **Kasa sahibi**: Kasa sahibi, anahtar kasası oluşturabilir ve anahtar kasası üzerinde tam erişime ve denetime sahip olabilir. Kasa sahibi, gizli dizilere ve anahtarlara kimlerin eriştiğini günlüğe kaydetmek için belirli denetim özellikleri de ayarlayabilir. Yöneticiler anahtarların yaşam döngüsünü kontrol edebilir. Anahtarı yeni sürüme geçirebilir, yedekleyebilir ve ilgili görevleri gerçekleştirebilirler.
 
-- **Kasa tüketicisi** : Kasa tüketicisi, kasa sahibi tarafından tüketici erişimi sağlandığında, anahtar kasasındaki varlıklar üzerinde belirli eylemler gerçekleştirebilir. Kullanılabilen eylemler verilen izinlere bağlıdır.
+- **Kasa tüketicisi**: Kasa tüketicisi, kasa sahibi tarafından tüketici erişimi sağlandığında, anahtar kasasındaki varlıklar üzerinde belirli eylemler gerçekleştirebilir. Kullanılabilen eylemler verilen izinlere bağlıdır.
 
-- **YÖNETILEN HSM yöneticileri** : yönetici rolüne atanan kullanıcıların, YÖNETILEN bir HSM havuzu üzerinde tamamen denetimi vardır. Diğer kullanıcılara denetimli erişim vermek için daha fazla rol ataması oluşturabilirler.
+- **YÖNETILEN HSM yöneticileri**: yönetici rolüne atanan kullanıcıların, YÖNETILEN bir HSM havuzu üzerinde tamamen denetimi vardır. Diğer kullanıcılara denetimli erişim vermek için daha fazla rol ataması oluşturabilirler.
 
-- **YÖNETILEN HSM şifre Müdürü/Kullanıcı** : yönetilen HSM 'deki anahtarları kullanarak şifreleme işlemleri gerçekleştirecek kullanıcılara veya hizmet sorumlularına genellikle atanan yerleşik roller. Şifrelenmiş Kullanıcı yeni anahtarlar oluşturabilir, ancak anahtarları silemez.
+- **YÖNETILEN HSM şifre Müdürü/Kullanıcı**: yönetilen HSM 'deki anahtarları kullanarak şifreleme işlemleri gerçekleştirecek kullanıcılara veya hizmet sorumlularına genellikle atanan yerleşik roller. Şifrelenmiş Kullanıcı yeni anahtarlar oluşturabilir, ancak anahtarları silemez.
 
-- **YÖNETILEN HSM şifre hizmeti şifrelemesi** : müşterinin yönettiği anahtarla bekleyen verilerin şifrelenmesi için genellikle bir hizmet hesabı yönetilen hizmet kimliğine (örn. depolama hesabı) atanan yerleşik rol.
+- **YÖNETILEN HSM şifre hizmeti şifrelemesi**: müşterinin yönettiği anahtarla bekleyen verilerin şifrelenmesi için genellikle bir hizmet hesabı yönetilen hizmet kimliğine (örn. depolama hesabı) atanan yerleşik rol.
 
-- **Kaynak** : Azure aracılığıyla kullanılan, yönetilebilir bir öğedir. Sanal makine, depolama hesabı, Web uygulaması, veritabanı ve sanal ağ örnekleri yaygın olarak verilebilir. Birçok daha vardır.
+- **Kaynak**: Azure aracılığıyla kullanılan, yönetilebilir bir öğedir. Sanal makine, depolama hesabı, Web uygulaması, veritabanı ve sanal ağ örnekleri yaygın olarak verilebilir. Birçok daha vardır.
 
-- **Kaynak grubu** : Kaynak grubu, Azure çözümleri için ilgili kaynakları bir arada tutan kapsayıcılardır. Kaynak grubu bir çözümün tüm kaynaklarını veya yalnızca grup olarak yönetmek istediğiniz kaynakları içerebilir. Kuruluş için önemli olan faktörleri temel alarak kaynakları kaynak gruplarına nasıl ayıracağınıza siz karar verirsiniz.
+- **Kaynak grubu**: Kaynak grubu, Azure çözümleri için ilgili kaynakları bir arada tutan kapsayıcılardır. Kaynak grubu bir çözümün tüm kaynaklarını veya yalnızca grup olarak yönetmek istediğiniz kaynakları içerebilir. Kuruluş için önemli olan faktörleri temel alarak kaynakları kaynak gruplarına nasıl ayıracağınıza siz karar verirsiniz.
 
-- **Güvenlik sorumlusu** : Azure Güvenlik sorumlusu, Kullanıcı tarafından oluşturulan uygulamaların, hizmetlerin ve otomasyon araçlarının belirli Azure kaynaklarına erişmek için kullandığı bir güvenlik kimliğidir. Bunu belirli bir role sahip "Kullanıcı kimliği" (Kullanıcı adı ve parola veya sertifika) olarak düşünebilirsiniz ve sıkı denetimli izinlere sahip olmanız gerekir. Bir güvenlik sorumlusu, genel Kullanıcı kimliğinden farklı olarak yalnızca belirli şeyler yapması gerekir. Yalnızca, yönetim görevlerini gerçekleştirmesi için ihtiyacı olan en düşük izin düzeyini verirseniz güvenliği geliştirir. Bir uygulama veya hizmetle kullanılan güvenlik sorumlusu özellikle **hizmet sorumlusu** olarak adlandırılır.
+- **Güvenlik sorumlusu**: Azure Güvenlik sorumlusu, Kullanıcı tarafından oluşturulan uygulamaların, hizmetlerin ve otomasyon araçlarının belirli Azure kaynaklarına erişmek için kullandığı bir güvenlik kimliğidir. Bunu belirli bir role sahip "Kullanıcı kimliği" (Kullanıcı adı ve parola veya sertifika) olarak düşünebilirsiniz ve sıkı denetimli izinlere sahip olmanız gerekir. Bir güvenlik sorumlusu, genel Kullanıcı kimliğinden farklı olarak yalnızca belirli şeyler yapması gerekir. Yalnızca, yönetim görevlerini gerçekleştirmesi için ihtiyacı olan en düşük izin düzeyini verirseniz güvenliği geliştirir. Bir uygulama veya hizmetle kullanılan güvenlik sorumlusu özellikle **hizmet sorumlusu** olarak adlandırılır.
 
 - [Azure Active Directory (Azure AD)](../../active-directory/fundamentals/active-directory-whatis.md): Azure AD, bir kiracıya ilişkin Active Directory hizmetidir. Her dizinde bir veya daha fazla etki alanı vardır. Dizinde birden fazla abonelik bulunabilir ancak tek bir kiracı olur.
 
-- **Azure kiracı kimliği** : Kiracı kimliği, bir Azure aboneliğinde Azure AD örneğini tanımlamanın benzersiz bir yoludur.
+- **Azure kiracı kimliği**: Kiracı kimliği, bir Azure aboneliğinde Azure AD örneğini tanımlamanın benzersiz bir yoludur.
 
-- **Yönetilen kimlikler** : Azure Key Vault kimlik bilgilerini ve diğer anahtarları ve gizli dizileri güvenli bir şekilde depolamanıza olanak tanır, ancak kodunuzun bunları almak için Key Vault kimlik doğrulaması gerekir. Yönetilen bir kimlik kullanmak, Azure hizmetlerine Azure AD 'de otomatik olarak yönetilen bir kimlik vererek bu sorunu daha kolay bir şekilde çözmesini sağlar. Bu kimliği kullanarak, Key Vault veya Azure AD kimlik doğrulamasını destekleyen tüm hizmetler için kodunuzda kimlik bilgileri bulunmasına gerek kalmadan kimlik doğrulaması yapabilirsiniz. Daha fazla bilgi için, aşağıdaki görüntüye ve [Azure kaynakları için yönetilen kimliklere genel bakış](../../active-directory/managed-identities-azure-resources/overview.md)bölümüne bakın.
-
-    ![Azure kaynakları için yönetilen kimliklerin nasıl çalıştığı diyagramı](../media/key-vault-whatis/msi.png)
+- **Yönetilen kimlikler**: Azure Key Vault kimlik bilgilerini ve diğer anahtarları ve gizli dizileri güvenli bir şekilde depolamanıza olanak tanır, ancak kodunuzun bunları almak için Key Vault kimlik doğrulaması gerekir. Yönetilen bir kimlik kullanmak, Azure hizmetlerine Azure AD 'de otomatik olarak yönetilen bir kimlik vererek bu sorunu daha kolay bir şekilde çözmesini sağlar. Bu kimliği kullanarak, Key Vault veya Azure AD kimlik doğrulamasını destekleyen tüm hizmetler için kodunuzda kimlik bilgileri bulunmasına gerek kalmadan kimlik doğrulaması yapabilirsiniz. Daha fazla bilgi için, aşağıdaki görüntüye ve [Azure kaynakları için yönetilen kimliklere genel bakış](../../active-directory/managed-identities-azure-resources/overview.md)bölümüne bakın.
 
 ## <a name="authentication"></a>Kimlik Doğrulaması
 Key Vault tüm işlemleri yapmak için önce bu kimlik doğrulaması yapmanız gerekir. Key Vault doğrulamak için üç yol vardır:
 
 - [Azure kaynakları Için Yönetilen kimlikler](../../active-directory/managed-identities-azure-resources/overview.md): Azure 'da bir sanal makinede uygulama dağıtırken, Key Vault erişimi olan sanal makinenize bir kimlik atayabilirsiniz. Ayrıca, [diğer Azure kaynaklarına](../../active-directory/managed-identities-azure-resources/overview.md)kimlik de atayabilirsiniz. Bu yaklaşımın avantajı, uygulamanın veya hizmetin ilk gizli dizi dönüşünü yönetmediğinde. Azure, kimliği otomatik olarak döndürür. En iyi uygulama olarak bu yaklaşımı öneririz. 
-- **Hizmet sorumlusu ve sertifikası** : bir hizmet sorumlusu ve Key Vault erişimi olan ilişkili bir sertifika kullanabilirsiniz. Uygulama sahibi veya geliştiricinin sertifikayı döndürmelerinden dolayı bu yaklaşımı önermiyoruz.
+- **Hizmet sorumlusu ve sertifikası**: bir hizmet sorumlusu ve Key Vault erişimi olan ilişkili bir sertifika kullanabilirsiniz. Uygulama sahibi veya geliştiricinin sertifikayı döndürmelerinden dolayı bu yaklaşımı önermiyoruz.
 - **Hizmet sorumlusu ve gizli** dizi: Key Vault kimlik doğrulaması yapmak için bir hizmet sorumlusu ve gizli dizi kullanabilseniz de, bunu önermiyoruz. Key Vault için kimlik doğrulaması yapmak üzere kullanılan önyükleme gizliliğini otomatik olarak döndürmek zordur.
 
 

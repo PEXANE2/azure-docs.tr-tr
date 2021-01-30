@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: Azure IoT Edge iş yüklerini dağıtma
 keywords: Kubernetes, yay, Azure, K8s, kapsayıcılar
-ms.openlocfilehash: bfaa43a03ddd98616b22fc3fc7b4dccb4c38f44c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 88c480f93bfe28a424441a1c5857c623efb4e1d3
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86103985"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99091657"
 ---
 # <a name="deploy-azure-iot-edge-workloads-preview"></a>Azure IoT Edge iş yüklerini dağıtma (Önizleme)
 
@@ -29,7 +29,7 @@ Azure Arc ve Azure IoT Edge birbirlerinin yeteneklerini çok iyi tamamlayalım. 
 
 * [Kubernetes için IoT Edge](https://aka.ms/edgek8sdoc) , Azure Arc Flox operatörü aracılığıyla dağıtmak için desteğini kullanın.
 
-* IoT Edge Held grafiği için [**values. YAML**](https://github.com/Azure/iotedge/blob/master/kubernetes/charts/edge-kubernetes/values.yaml) dosyasını indirin ve dosyanın sonundaki **deviceconnectionstring** yer tutucusunu, 1. adımda belirtilen kodla değiştirin. Desteklenen herhangi bir grafik yükleme seçeneğini gerekli şekilde ayarlayabilirsiniz. IoT Edge iş yükü için bir ad alanı oluşturun ve içinde bir gizli dizi oluşturun:
+* IoT Edge Held grafiği için [**values. YAML**](https://github.com/Azure/iotedge/blob/preview/iiot/kubernetes/charts/edge-kubernetes/values.yaml) dosyasını indirin ve dosyanın sonundaki **deviceconnectionstring** yer tutucusunu, 1. adımda belirtilen kodla değiştirin. Desteklenen herhangi bir grafik yükleme seçeneğini gerekli şekilde ayarlayabilirsiniz. IoT Edge iş yükü için bir ad alanı oluşturun ve içinde bir gizli dizi oluşturun:
 
     ```
     $ kubectl create ns iotedge

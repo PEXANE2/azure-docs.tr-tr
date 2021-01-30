@@ -4,16 +4,16 @@ description: Azure Depolama hesabından büyük miktarda rastgele verileri indir
 author: roygara
 ms.service: storage
 ms.topic: tutorial
-ms.date: 02/20/2018
+ms.date: 01/26/2021
 ms.author: rogarana
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 466a61fd27fd9eeb32d004af1ab6bb43503e6233
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: acfaed10cf627e87691a3068ad0b8cffe9d3b2ee
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89020737"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99096296"
 ---
 # <a name="download-large-amounts-of-random-data-from-azure-storage"></a>Azure Depolama’dan büyük miktarda rastgele verileri indirme
 
@@ -34,7 +34,7 @@ Bu öğreticiyi tamamlamak için önceki şu Depolama öğreticisini tamamlamı�
 
  Sanal makine ile bir uzak masaüstü oturumu oluşturmak için yerel makinenizde aşağıdaki komutu kullanın. IP adresini, sanal makinenizin publicIPAddress değeriyle değiştirin. İstendiğinde, sanal makine oluşturulurken kullanılan kimlik bilgilerini girin.
 
-```
+```console
 mstsc /v:<publicIpAddress>
 ```
 
@@ -46,8 +46,10 @@ mstsc /v:<publicIpAddress>
 public static void Main(string[] args)
 {
     Console.WriteLine("Azure Blob storage performance and scalability sample");
-    // Set threading and default connection limit to 100 to ensure multiple threads and connections can be opened.
-    // This is in addition to parallelism with the storage client library that is defined in the functions below.
+    // Set threading and default connection limit to 100 to 
+    // ensure multiple threads and connections can be opened.
+    // This is in addition to parallelism with the storage 
+    // client library that is defined in the functions below.
     ThreadPool.SetMinThreads(100, 4);
     ServicePointManager.DefaultConnectionLimit = 100; // (Or More)
 
@@ -55,11 +57,12 @@ public static void Main(string[] args)
     try
     {
         // Call the UploadFilesAsync function.
-        UploadFilesAsync().GetAwaiter().GetResult();
+        // await UploadFilesAsync();
 
-        // Uncomment the following line to enable downloading of files from the storage account.  This is commented out
-        // initially to support the tutorial at https://docs.microsoft.com/azure/storage/blobs/storage-blob-scalable-app-download-files.
-        // DownloadFilesAsync().GetAwaiter().GetResult();
+        // Uncomment the following line to enable downloading of files from the storage account.
+        // This is commented out initially to support the tutorial at 
+        // https://docs.microsoft.com/azure/storage/blobs/storage-blob-scalable-app-download-files
+        await DownloadFilesAsync();
     }
     catch (Exception ex)
     {
@@ -68,11 +71,13 @@ public static void Main(string[] args)
     }
     finally
     {
-        // The following function will delete the container and all files contained in them.  This is commented out initially
-        // As the tutorial at https://docs.microsoft.com/azure/storage/blobs/storage-blob-scalable-app-download-files has you upload only for one tutorial and download for the other. 
+        // The following function will delete the container and all files contained in them.
+        // This is commented out initially as the tutorial at 
+        // https://docs.microsoft.com/azure/storage/blobs/storage-blob-scalable-app-download-files
+        // has you upload only for one tutorial and download for the other.
         if (!exception)
         {
-            // DeleteExistingContainersAsync().GetAwaiter().GetResult();
+            // await DeleteExistingContainersAsync();
         }
         Console.WriteLine("Press any key to exit the application");
         Console.ReadKey();
@@ -82,7 +87,7 @@ public static void Main(string[] args)
 
 Uygulama güncelleştirildikten sonra uygulamayı tekrar derlemeniz gerekir. Bir `Command Prompt` açın ve `D:\git\storage-dotnet-perf-scale-app` dizinine gidin. Aşağıdaki örnekte görüldüğü gibi `dotnet build` çalıştırarak uygulamayı yeniden derleyin:
 
-```
+```console
 dotnet build
 ```
 
@@ -92,33 +97,44 @@ dotnet build
 
 Uygulamayı çalıştırmak için `dotnet run` yazın.
 
-```
+```console
 dotnet run
 ```
 
-Uygulama, **storageconnectionstring** içinde belirtilen depolama hesabında bulunan kapsayıcıları okur. Kapsayıcılarda [ListBlobsSegmented](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer) yöntemini kullanarak aynı anda 10 blobda gezinir ve [DownloadToFileAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.downloadtofileasync) yöntemini kullanarak bunları yerel makineye indirir.
-Aşağıdaki tabloda, indirilen her blob için tanımlanan [BlobRequestOptions](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions) gösterilir.
+Aşağıdaki örnekte `DownloadFilesAsync` görevi gösterilmektedir:
+
+# <a name="net-v12"></a>[.NET V12](#tab/dotnet)
+
+Uygulama, **storageconnectionstring** içinde belirtilen depolama hesabında bulunan kapsayıcıları okur. [Getbloblar](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobs) metodunu kullanarak bloblarda dolaşır ve [downloadtoasync](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.downloadtoasync) yöntemini kullanarak bunları yerel makineye indirir.
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Scalable.cs" id="Snippet_DownloadFilesAsync":::
+
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+
+Uygulama, **storageconnectionstring** içinde belirtilen depolama hesabında bulunan kapsayıcıları okur. Kapsayıcılarda [ListBlobsSegmentedAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient.listblobssegmentedasync) yöntemini kullanarak Blobları 10 ' da yineler ve [Downloadtofileasync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.downloadtofileasync) yöntemini kullanarak yerel makineye indirir.
+
+Aşağıdaki tabloda, indirilen her blob için tanımlanan [Blobrequestoptions](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions) gösterilmektedir.
 
 |Özellik|Değer|Açıklama|
 |---|---|---|
 |[DisableContentMD5Validation](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.disablecontentmd5validation)| true| Bu özellik, karşıya yüklenen içeriğin MD5 karmasının denetimini devre dışı bırakır. MD5 doğrulaması devre dışı bırakıldığında daha hızlı bir aktarım üretilir. Ancak aktarılan dosyaların geçerliliği veya bütünlüğü onaylanmaz. |
 |[StoreBlobContentMD5](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.storeblobcontentmd5)| yanlış| Bu özellik, bir MD5 karmasının hesaplanıp hesaplanmayacağını ve depolanıp depolanmayacağını belirler.   |
 
-Aşağıdaki örnekte `DownloadFilesAsync` görevi gösterilmektedir:
-
 ```csharp
 private static async Task DownloadFilesAsync()
 {
     CloudBlobClient blobClient = GetCloudBlobClient();
 
-    // Define the BlobRequestOptions on the download, including disabling MD5 hash validation for this example, this improves the download speed.
+    // Define the BlobRequestOptions on the download, including disabling MD5 
+    // hash validation for this example, this improves the download speed.
     BlobRequestOptions options = new BlobRequestOptions
     {
         DisableContentMD5Validation = true,
         StoreBlobContentMD5 = false
     };
 
-    // Retrieve the list of containers in the storage account.  Create a directory and configure variables for use later.
+    // Retrieve the list of containers in the storage account.
+    // Create a directory and configure variables for use later.
     BlobContinuationToken continuationToken = null;
     List<CloudBlobContainer> containers = new List<CloudBlobContainer>();
     do
@@ -140,7 +156,8 @@ private static async Task DownloadFilesAsync()
         int max_outstanding = 100;
         int completed_count = 0;
 
-        // Create a new instance of the SemaphoreSlim class to define the number of threads to use in the application.
+        // Create a new instance of the SemaphoreSlim class to
+        // define the number of threads to use in the application.
         SemaphoreSlim sem = new SemaphoreSlim(max_outstanding, max_outstanding);
 
         // Iterate through the containers
@@ -148,7 +165,7 @@ private static async Task DownloadFilesAsync()
         {
             do
             {
-                // Return the blobs from the container lazily 10 at a time.
+                // Return the blobs from the container, 10 at a time.
                 resultSegment = await container.ListBlobsSegmentedAsync(null, true, BlobListingDetails.All, 10, continuationToken, null, null);
                 continuationToken = resultSegment.ContinuationToken;
                 {
@@ -188,11 +205,13 @@ private static async Task DownloadFilesAsync()
 }
 ```
 
+---
+
 ### <a name="validate-the-connections"></a>Bağlantıları doğrulama
 
-Dosyalar indirilirken, depolama hesabınıza yönelik eş zamanlı bağlantı sayısını doğrulayabilirsiniz. Bir `Command Prompt` açın ve `netstat -a | find /c "blob:https"` yazın. Bu komut şu anda `netstat` kullanılarak açılan bağlantı sayısını gösterir. Aşağıdaki örnek, öğreticiyi kendiniz çalıştırırken gördüğünüze benzer bir çıktıyı gösterir. Örnekte görebileceğiniz gibi, depolama hesabından rastgele dosyalar indirilirken 280’den fazla bağlantı açıktı.
+Dosyalar indirilirken, depolama hesabınıza yönelik eş zamanlı bağlantı sayısını doğrulayabilirsiniz. Bir konsol penceresi açın ve yazın `netstat -a | find /c "blob:https"` . Bu komut şu anda açık olan bağlantı sayısını gösterir. Aşağıdaki örnekte görebileceğiniz gibi, depolama hesabından dosya indirilirken 280 ' den fazla bağlantı açıktır.
 
-```
+```console
 C:\>netstat -a | find /c "blob:https"
 289
 
@@ -201,13 +220,13 @@ C:\>
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Serinin üçüncü kısmında, aşağıda örnekleri verilen eylemlerle birlikte bir depolama hesabından büyük miktarlarda rastgele verilerin indirilmesiyle ilgili bilgi edindiniz:
+Serinin üçüncü kısmında, bir depolama hesabından büyük miktarlarda veri indirmeyi öğrendiniz ve aşağıdakiler de dahil olmak üzere:
 
 > [!div class="checklist"]
 > * Uygulamayı çalıştırma
 > * Bağlantı sayısını doğrulama
 
-Portalda aktarım hızı ve gecikme süresi ölçümlerini doğrulamak için serinin dördüncü kısmına ilerleyin.
+Portalda üretilen iş ve gecikme süresi ölçümlerini doğrulamak için serinin dördüncü kısmına gidin.
 
 > [!div class="nextstepaction"]
 > [Portalda aktarım hızı ve gecikme süresi ölçümlerini doğrulama](storage-blob-scalable-app-verify-metrics.md)

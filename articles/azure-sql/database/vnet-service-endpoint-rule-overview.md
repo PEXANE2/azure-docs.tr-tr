@@ -11,18 +11,18 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 11/14/2019
-ms.openlocfilehash: d480239c0eb99ed48c13ec2fdb5b052574acc318
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 0dcffe6731c177d1d45c569361fcb200f23af86c
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97092508"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99095367"
 ---
-# <a name="use-virtual-network-service-endpoints-and-rules-for-servers-in-azure-sql-database"></a>Azure SQL veritabanı 'ndaki sunucular için sanal ağ hizmet uç noktalarını ve kurallarını kullanma
+# <a name="use-virtual-network-service-endpoints-and-rules-for-servers-in-azure-sql-database"></a>Azure SQL Veritabanı'nda sunucular için sanal ağ hizmet uç noktalarını ve kuralları kullanma
 
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
-*Sanal ağ kuralları* , Azure [SQL veritabanı](sql-database-paas-overview.md) veya [Azure SYNAPSE Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) 'teki veritabanlarınız için sunucunun, sanal ağlardaki belirli alt ağlardan gönderilen iletişimleri kabul edip etmediğini denetleyen bir güvenlik duvarı güvenlik özelliğidir. Bu makalede, sanal ağ kurallarının neden bazen SQL veritabanı ve Azure SYNAPSE Analytics 'te veritabanınıza yönelik iletişime güvenli bir şekilde izin vermek için en iyi seçenektir.
+*Sanal ağ kuralları* Azure [SQL veritabanı](sql-database-paas-overview.md) 'nda veritabanlarınızı ve elastik havuzlarınızın ve [Azure SYNAPSE Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) 'teki ADANMıŞ SQL Havuzu (eski adıyla SQL DW) veritabanları için sanal ağlardaki belirli alt ağlardan gönderilen iletişimleri kabul edip etmediğini denetleyen bir güvenlik duvarı güvenlik özelliğidir. Bu makalede, sanal ağ kurallarının neden bazen SQL veritabanı ve Azure SYNAPSE Analytics 'te veritabanınıza yönelik iletişime güvenli bir şekilde izin vermek için en iyi seçenektir.
 
 > [!NOTE]
 > Bu makale hem SQL veritabanı hem de Azure SYNAPSE Analytics için geçerlidir. Kolaylık sağlaması için, *VERITABANı* SQL veritabanı ve Azure SYNAPSE Analytics 'te her iki veritabanına da başvurur. Benzer şekilde, *sunucu* başvuruları SQL veritabanı ve Azure SYNAPSE Analytics 'i BARıNDıRAN [mantıksal SQL Server](logical-servers.md) 'a başvurur.
@@ -244,7 +244,7 @@ SQL veritabanı ile ilgili belirli bir sanal ağ hizmet uç noktası *türü ad�
 
 ## <a name="azure-portal-steps"></a>Azure portal adımları
 
-1. [Azure Portal][http-azure-portal-link-ref-477t] oturum açın.
+1. [Azure portalında][http-azure-portal-link-ref-477t] oturum açın.
 
 1. **SQL sunucuları**' nı arayıp seçin ve ardından sunucunuzu seçin. **Güvenlik altında güvenlik** **duvarları ve sanal ağlar**' ı seçin.
 

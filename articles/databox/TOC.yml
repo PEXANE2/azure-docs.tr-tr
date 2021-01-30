@@ -76,6 +76,8 @@
               items:
                 - name: Güvenlik temeli
                   href: security-baseline.md
+                - name: Azure İlkesi’ne göre güvenlik denetimleri
+                  href: ./security-controls-policy.md
                 - name: Güvenliği gözden geçirme
                   href: data-box-security.md
             - name: ACL ve meta verileri aktarma
@@ -235,7 +237,7 @@
                   href: ../storage/blobs/data-lake-storage-migrate-on-premises-hdfs-cluster.md?toc=/azure/databox/toc.json&bc=/azure/databox/breadcrumb/toc.json
     - name: Başvuru
       items:
-        - name: Azure CLI
+        - name: Azure CLI’si
           href: /cli/azure/ext/databox/databox
         - name: Azure PowerShell
           href: /powershell/module/az.databox

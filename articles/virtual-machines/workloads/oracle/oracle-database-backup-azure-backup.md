@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/28/2021
 ms.author: cholse
 ms.reviewer: dbakevlar
-ms.openlocfilehash: d623d7b7ec25c096ebf54c030cf302e0a72e7fb2
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.openlocfilehash: 3122b1c5d7ac8b9dca0e244a4b7e73a57c4c5fca
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 01/29/2021
-ms.locfileid: "99064260"
+ms.locfileid: "99072413"
 ---
 # <a name="back-up-and-recover-an-oracle-database-19c-database-on-an-azure-linux-vm-using-azure-backup"></a>Azure Backup kullanarak bir Azure Linux sanal makinesinde Oracle Database 19c veritabanını yedekleme ve kurtarma
 
@@ -39,19 +39,19 @@ Ortamı hazırlamak için şu adımları izleyin:
 
 ### <a name="connect-to-the-vm"></a>VM’ye bağlanma
 
-VM ile Secure Shell (SSH) oturumu oluşturmak için aşağıdaki komutu kullanın. IP adresini ve ana bilgisayar adı birleşimini, `<publicIpAddress>` sanal makinenizin değeriyle değiştirin.
+1. VM ile Secure Shell (SSH) oturumu oluşturmak için aşağıdaki komutu kullanın. IP adresini ve ana bilgisayar adı birleşimini, `<publicIpAddress>` sanal makinenizin değeriyle değiştirin.
     
    ```bash
    ssh azureuser@<publicIpAddress>
    ```
    
-*Kök* kullanıcıya geç:
+1. *Kök* kullanıcıya geç:
 
    ```bash
    sudo su -
    ```
     
-Oracle kullanıcısını */etc/sudoers* dosyasına ekleyin:
+1. Oracle kullanıcısını */etc/sudoers* dosyasına ekleyin:
 
    ```bash
    echo "oracle   ALL=(ALL)      NOPASSWD: ALL" >> /etc/sudoers
@@ -59,9 +59,9 @@ Oracle kullanıcısını */etc/sudoers* dosyasına ekleyin:
 
 ### <a name="prepare-the-database"></a>Veritabanını hazırlama
 
-1. Bu adım, *vmoracle19c* ADLı bir VM üzerinde çalışan bir Oracle örneğine (*Test*) sahip olduğunuzu varsayar.
+Bu adım, *vmoracle19c* ADLı bir VM üzerinde çalışan bir Oracle örneğine (*Test*) sahip olduğunuzu varsayar.
 
-   Kullanıcıyı *Oracle* kullanıcısına geçir:
+1. Kullanıcıyı *Oracle* kullanıcısına geçir:
  
    ```bash
     sudo su - oracle
@@ -131,7 +131,7 @@ Oracle kullanıcısını */etc/sudoers* dosyasına ekleyin:
     SQL> sqlplus / as sysdba
     ```
 
-6.  Zaten çalışmıyorsa veritabanını başlatın:
+6.  Zaten çalışmıyorsa veritabanını Başlat:
 
     ```bash
     SQL> startup
@@ -156,7 +156,7 @@ Oracle kullanıcısını */etc/sudoers* dosyasına ekleyin:
     NOARCHIVELOG
     ```
 
-    NOARCHIVELOG modunda aşağıdaki komutları çalıştırın:
+    NOARCHIVELOG modundaysa aşağıdaki komutları çalıştırın:
 
     ```bash
     SQL> SHUTDOWN IMMEDIATE;
@@ -205,19 +205,19 @@ Azure Backup hizmeti, Microsoft Azure bulutundaki verilerinizi yedekleyip kurtar
 
 Azure Backup hizmeti, Oracle, MySQL, Mongo DB, SAP HANA ve PostGreSQL gibi çeşitli uygulamalar için Windows ve Linux VM 'Leri yedeklemeleri sırasında uygulama tutarlılığı elde etmek için bir [çerçeve](../../../backup/backup-azure-linux-app-consistent.md) sağlar. Bu, disklerin anlık görüntüsünü almadan önce bir ön komut dosyası (uygulamaları sessiz duruma getirmek için) ve anlık görüntü tamamlandıktan sonra, uygulamaları normal moda döndürmek için betik sonrası (uygulamaları çözmek için komutlar) çağırmasını içerir. Örnek ön betikler ve son betikler, GitHub 'da sağlandığında, Bu betiklerin oluşturulması ve bakımı sizin sorumluluğunuzdadır. 
 
-Artık Azure Backup, Azure Backup hizmetin seçili uygulamalar için paketlenmiş betikler ve son betikler sağladığını sağlayan gelişmiş bir ön betik ve son betik çerçevesi sağlıyor. Azure Backup kullanıcıların uygulamayı yalnızca adı olması gerekir ve Azure VM yedeklemesi ilgili ön Post komut dosyalarını otomatik olarak çağırır. Paketlenmiş betikler ve son betikler Azure Backup ekibi tarafından korunur ve böylece kullanıcılar Bu betiklerin destek, sahiplik ve geçerliliğini garanti edebilir. Şu anda, gelişmiş çerçeve için desteklenen uygulamalar, gelecekte daha fazla uygulama türüyle beklenen ***Oracle ve MySQL** _.
+Artık Azure Backup, Azure Backup hizmetin seçili uygulamalar için paketlenmiş betikler ve son betikler sağladığını sağlayan gelişmiş bir ön betik ve son betik çerçevesi sağlıyor. Azure Backup kullanıcıların uygulamayı yalnızca adı olması gerekir ve Azure VM yedeklemesi ilgili ön Post komut dosyalarını otomatik olarak çağırır. Paketlenmiş betikler ve son betikler Azure Backup ekibi tarafından korunur ve böylece kullanıcılar Bu betiklerin destek, sahiplik ve geçerliliğini garanti edebilir. Şu anda, geliştirilmiş Framework için desteklenen uygulamalar *Oracle* ve *MySQL*' dir.
 
-Bu bölümde, çalışan VM 'niz ve Oracle veritabanınızın uygulamayla tutarlı anlık görüntülerini almak için Azure Backup gelişmiş çatı kullanacaksınız. Veritabanı, Azure Backup VM disklerinin anlık görüntüsünü alırken işlemsel olarak tutarlı çevrimiçi yedeklemenin oluşmasına izin vererek yedekleme moduna alınacaktır. Anlık görüntü, depolama alanının tam bir kopyası olur ve yazma anlık görüntüsüne artımlı veya kopya değil, veritabanınızı geri yüklemek için etkili bir ortamdır. Azure Backup uygulamayla tutarlı anlık görüntüler kullanmanın avantajı, veritabanınızın ne kadar büyük olduğu ve geri yükleme işlemleri için bir anlık görüntünün, kurtarma hizmetleri kasasına aktarılmasını beklemek zorunda kalmadan son derece hızlı bir şekilde kullanılabileceği avantajlardır.
+Bu bölümde, çalışan VM 'niz ve Oracle veritabanınızın uygulamayla tutarlı anlık görüntülerini almak için Azure Backup gelişmiş çatı kullanacaksınız. Veritabanı, Azure Backup VM disklerinin anlık görüntüsünü alırken işlemsel olarak tutarlı çevrimiçi yedeklemenin oluşmasına izin vererek yedekleme moduna alınacaktır. Anlık görüntü, depolama alanının tam bir kopyası olur ve yazma anlık görüntüsüne artımlı veya kopya değil, veritabanınızı geri yüklemek için etkili bir ortamdır. Uygulamayla tutarlı anlık görüntüler Azure Backup kullanmanın avantajı, veritabanınızın ne kadar büyük olduğuna ve geri yükleme işlemleri için bir anlık görüntünün, kurtarma hizmetleri kasasına aktarılmasını beklemek zorunda kalmadan çok daha hızlı bir şekilde kullanılabileceği avantajlardır.
 
 Veritabanını yedeklemek için Azure Backup kullanmak için şu adımları izleyin:
 
-1. Uygulamaya tutarlı yedekleme için ortamı hazırlayın.
+1. Ortamı uygulamayla tutarlı bir yedekleme için hazırlayın.
 1. Uygulamayla tutarlı yedeklemeler ayarlayın.
-1. VM 'nin uygulamayla tutarlı yedeklemesini Tetikle
+1. VM 'nin uygulamayla tutarlı bir yedeklemesini tetikleyin.
 
-### <a name="prepare-the-environment-for-application-consistent-backup"></a>Uygulamaya tutarlı yedekleme için ortamı hazırlama
+### <a name="prepare-the-environment-for-an-application-consistent-backup"></a>Uygulamayı uygulamayla tutarlı bir yedekleme için hazırlama
 
-1. _ *Root** kullanıcısına geç:
+1. *Kök* kullanıcıya geç:
 
    ```bash
    sudo su -
@@ -229,7 +229,7 @@ Veritabanını yedeklemek için Azure Backup kullanmak için şu adımları izle
    useradd -G backupdba azbackup
    ```
    
-2. Yedekleme Kullanıcı ortamını ayarla:
+2. Yedekleme Kullanıcı ortamını ayarlama:
 
    ```bash
    echo "export ORACLE_SID=test" >> ~azbackup/.bashrc
@@ -237,16 +237,15 @@ Veritabanını yedeklemek için Azure Backup kullanmak için şu adımları izle
    echo export PATH='$ORACLE_HOME'/bin:'$PATH' >> ~azbackup/.bashrc
    ```
    
-3. Yeni yedekleme kullanıcısı için dış kimlik doğrulamasını ayarlayın. 
-   Yedekleme kullanıcısının, dış kimlik doğrulaması kullanarak veritabanına erişebilmesi gerekir, bu nedenle bir parola ile bu şekilde bir parola ile karşı
+3. Yeni yedekleme kullanıcısı için dış kimlik doğrulamasını ayarlayın. Yedekleme kullanıcısının, dış kimlik doğrulaması kullanarak veritabanına erişebilmesi gerekir, bu nedenle bir parola ile bu şekilde bir parola ile karşı
 
-   İlk olarak **Oracle** kullanıcısına geri dönün:
+   İlk olarak, *Oracle* kullanıcısına geri dönün:
 
    ```bash
    su - oracle
    ```
 
-   SQLplus kullanarak veritabanında oturum açın ve dış kimlik doğrulama için varsayılan ayarları denetleyin
+   SQLplus kullanarak veritabanında oturum açın ve dış kimlik doğrulama için varsayılan ayarları denetleyin:
    
    ```bash
    sqlplus / as sysdba
@@ -254,7 +253,7 @@ Veritabanını yedeklemek için Azure Backup kullanmak için şu adımları izle
    SQL> show parameter remote_os_authent
    ```
    
-   Çıktının gösterilmesi gerekir 
+   Çıktı aşağıdaki örnekteki gibi görünmelidir: 
 
    ```output
    NAME                                 TYPE        VALUE
@@ -263,23 +262,30 @@ Veritabanını yedeklemek için Azure Backup kullanmak için şu adımları izle
    remote_os_authent                    boolean     FALSE
    ```
 
-   Şimdi bir veritabanı kullanıcısı azbackup kimliği doğrulandı ve sysbackup ayrıcalığı ver:
+   Şimdi, kimliği doğrulanmış bir veritabanı kullanıcısı oluşturun ve *sysbackup ayrıcalığı* verin:
    
    ```bash
    SQL> CREATE USER ops$azbackup IDENTIFIED EXTERNALLY;
    SQL> GRANT CREATE SESSION, ALTER SESSION, SYSBACKUP TO ops$azbackup;
    ```
 
-   >[!IMPORTANT] 
-   >"ORA-46953: parola dosyası 12,2 biçiminde değil" hatasını alırsanız.  Yukarıdaki GRANT deyiminizi çalıştırdığınızda, lütfen ORAPWD dosyasını 12,2 biçimine geçirmek için şu adımları izleyin:
+   > [!IMPORTANT] 
+   > İfadesini çalıştırdığınızda hata alırsanız `ORA-46953: The password file is not in the 12.2 format.` `GRANT` , ORAPWD dosyasını 12,2 biçimine geçirmek için şu adımları izleyin:
    >
-   >SQLplus 'den çıkın, parola dosyasını eski biçimle yeni bir adla taşıyın, parola dosyasını geçirin ve ardından eski dosyayı kaldırın. Aşağıdaki komutları çalıştırdıktan sonra, SQLplus ' de yukarıdaki verme işlemini yeniden çalıştırın.
-   
-   ```bash
-   mv $ORACLE_HOME/dbs/orapwtest $ORACLE_HOME/dbs/orapwtest.tmp
-   orapwd file=$ORACLE_HOME/dbs/orapwtest input_file=$ORACLE_HOME/dbs/orapwtest.tmp
-   rm $ORACLE_HOME/dbs/orapwtest.tmp
-   ```
+   > 1. SQLplus 'den çık.
+   > 1. Parola dosyasını eski biçime yeni bir adla taşıyın.
+   > 1. Parola dosyasını geçirin.
+   > 1. Eski dosyayı kaldırın.
+   > 1. Şu komutu çalıştırın:
+   >
+   >    ```bash
+   >    mv $ORACLE_HOME/dbs/orapwtest $ORACLE_HOME/dbs/orapwtest.tmp
+   >    orapwd file=$ORACLE_HOME/dbs/orapwtest input_file=$ORACLE_HOME/dbs/orapwtest.tmp
+   >    rm $ORACLE_HOME/dbs/orapwtest.tmp
+   >    ```
+   >
+   > 1. `GRANT`İşlemi SQLplus içinde yeniden çalıştırın.
+   >
    
 4. Yedekleme iletilerini veritabanı uyarı günlüğüne kaydetmek için bir saklı yordam oluşturun:
 
@@ -302,18 +308,22 @@ Veritabanını yedeklemek için Azure Backup kullanmak için şu adımları izle
    
 ### <a name="set-up-application-consistent-backups"></a>Uygulamayla tutarlı yedeklemeler ayarlama  
 
-1. Kök kullanıcıya geç 
+1. *Kök* kullanıcıya geç:
+
    ```bash
    sudo su -
    ```
 
-2. Uygulamayla tutarlı yedekleme çalışma dizinini oluşturma
+2. Uygulamayla tutarlı yedekleme çalışma dizinini oluşturma:
+
    ```bash
    if [ ! -d "/etc/azure" ]; then
       sudo mkdir /etc/azure
    fi
    ```
-3. Makinelerdeki/etc/Azure dizininde **iş yükü. conf** adlı, ile başlaması gereken aşağıdaki içeriklerle bir dosya oluşturun `[workload]` . Aşağıdaki komut dosyayı oluşturacak ve içeriğini dolduracaktır:
+
+3. *Makinelerdeki/etc/Azure* dizininde, *iş yükü. conf* adlı, ile başlaması gereken aşağıdaki içeriklerle bir dosya oluşturun `[workload]` . Aşağıdaki komut dosyayı oluşturacak ve içeriğini dolduracaktır:
+
    ```bash
    echo "[workload]
    workload_name = oracle
@@ -321,14 +331,16 @@ Veritabanını yedeklemek için Azure Backup kullanmak için şu adımları izle
    timeout = 90
    linux_user = azbackup" > /etc/azure/workload.conf
    ```
-1. [GitHub deposundan](https://github.com/Azure/azure-linux-extensions/tree/master/VMBackup/main/workloadPatch/DefaultScripts) preoraclemaster. SQL ve postoraclemaster. SQL komut dosyalarını indirin ve makinelerdeki/etc/Azure dizinine kopyalayın
 
-4. Dosya izinlerini değiştirme
-   ```bash
+4. [GitHub deposundan](https://github.com/Azure/azure-linux-extensions/tree/master/VMBackup/main/workloadPatch/DefaultScripts) preoraclemaster. SQL ve postoraclemaster. SQL komut dosyalarını indirin ve *makinelerdeki/etc/Azure* dizinine kopyalayın.
+
+5. Dosya izinlerini değiştirme
+
+```bash
    chmod 744 workload.conf preOracleMaster.sql postOracleMaster.sql 
    ```
 
-### <a name="trigger-application-consistent-backup-of-the-vm"></a>VM 'nin uygulamayla tutarlı yedeklemesini Tetikle
+### <a name="trigger-an-application-consistent-backup-of-the-vm"></a>VM 'nin uygulamayla tutarlı bir yedeklemesini tetikleyin
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -375,7 +387,8 @@ Veritabanını yedeklemek için Azure Backup kullanmak için şu adımları izle
    ```azurecli
    az backup vault create --location eastus --name myVault --resource-group rg-oracle
    ```
-2. VM için yedekleme korumasını etkinleştirme
+
+2. VM için yedekleme korumasını etkinleştirin:
 
    ```azurecli
    az backup protection enable-for-vm \
@@ -384,7 +397,8 @@ Veritabanını yedeklemek için Azure Backup kullanmak için şu adımları izle
       --vm vmoracle19c \
       --policy-name DefaultPolicy
    ```
-3. Yedeklemenin varsayılan zamanlamaya göre tetiklenmesi için beklemek yerine bir yedeklemeyi şimdi çalışacak şekilde tetikleyin (5:00:00 UTC). 
+
+3. Yedeklemenin varsayılan zamanlamaya göre tetiklenmesi için beklemek yerine bir yedeklemeyi şimdi çalışacak şekilde tetikleyin (5 saat UTC): 
 
    ```azurecli
    az backup protection backup-now \
@@ -394,7 +408,8 @@ Veritabanını yedeklemek için Azure Backup kullanmak için şu adımları izle
       --container-name vmoracle19c \
       --item-name vmoracle19c 
    ```
-   Ve kullanarak yedekleme işinin ilerlemesini izleyebilirsiniz `az backup job list``az backup job show`
+
+   Ve kullanarak yedekleme işinin ilerlemesini izleyebilirsiniz `az backup job list` `az backup job show` .
 
 ---
 
@@ -433,15 +448,15 @@ Bu makalenin ilerleyen kısımlarında, kurtarma sürecini test etme hakkında b
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-1. Azure portal, *Mykasa* kurtarma hizmetleri kasaları öğesini arayın ve üzerine tıklayın.
+1. Azure portal, *Mykasa* kurtarma hizmetleri kasaları öğesini arayın ve seçin.
 
     ![Kurtarma Hizmetleri kasaları Mykasa yedekleme öğeleri](./media/oracle-backup-recovery/recovery-service-06.png)
 
-2. **Genel bakış** dikey penceresinde, **yedekleme öğeleri** ' ni ve Select **_Azure Virtual Machine_* _ ' i seçerek Anon sıfır yedekleme öğesi sayısı listelenmiş olmalıdır.
+2. **Genel bakış** dikey penceresinde, **yedekleme öğeleri** ve **Azure sanal makinesi** seçin ' i seçin. Bu, Anon sıfır yedekleme öğesi sayısı listelenmiş olmalıdır.
 
     ![Kurtarma Hizmetleri kasaları Azure sanal makine yedekleme öğesi sayısı](./media/oracle-backup-recovery/recovery-service-07.png)
 
-3. Yedekler öğeleri (Azure sanal makineler) sayfasında VM _ *vmoracle19c** 'niz listelenir. Sağ taraftaki üç nokta simgesine tıklayarak menüyü açın ve **dosya kurtarma**' yı seçin.
+3. Yedekler öğeleri (Azure sanal makineler) sayfasında, sanal makine **vmoracle19c** listelenir. Sağ taraftaki üç nokta simgesine tıklayarak menüyü açın ve **dosya kurtarma**' yı seçin.
 
     ![Kurtarma Hizmetleri Kasası dosya kurtarma sayfasının ekran görüntüsü](./media/oracle-backup-recovery/recovery-service-08.png)
 
@@ -455,6 +470,7 @@ Bu makalenin ilerleyen kısımlarında, kurtarma sürecini test etme hakkında b
 
     > [!IMPORTANT]
     > Aşağıdaki örnekte, IP adresi ve klasör değerlerini güncelleştirdiğinizden emin olun. Değerlerin, dosyanın kaydedildiği klasöre eşlenmesi gerekir.
+    >
 
     ```bash
     $ scp vmoracle19c_xxxxxx_xxxxxx_xxxxxx.py azureuser@<publicIpAddress>:/tmp
@@ -500,6 +516,7 @@ Aşağıdaki örnek, dosyayı VM 'ye taşımak için güvenli kopya (SCP) komutu
 
 > [!IMPORTANT]
 > Aşağıdaki örnekte, IP adresi ve klasör değerlerini güncelleştirdiğinizden emin olun. Değerlerin, dosyanın kaydedildiği klasöre eşlenmesi gerekir.
+>
 
 ```bash
 $ scp vmoracle19c_xxxxxx_xxxxxx_xxxxxx.py azureuser@<publicIpAddress>:/tmp
@@ -510,7 +527,7 @@ $ scp vmoracle19c_xxxxxx_xxxxxx_xxxxxx.py azureuser@<publicIpAddress>:/tmp
 
 1. Bir geri yükleme bağlama noktası oluşturun ve betiği buna kopyalayın.
 
-    Aşağıdaki örnekte, öğesinin bağlanması için bir **_/restore_* _ dizini oluşturun, dosyayı dizine taşıyın ve dosyayı kök kullanıcıya ait olacak şekilde değiştirin ve çalıştırılabilir hale gelir.
+    Aşağıdaki örnekte, bir anlık görüntünün bağlanması için bir */restore* dizini oluşturun, dosyayı dizine taşıyın ve dosyayı kök kullanıcıya ait olacak şekilde değiştirin ve çalıştırılabilir hale gelir.
 
     ```bash 
     ssh azureuser@<publicIpAddress>
@@ -528,7 +545,7 @@ $ scp vmoracle19c_xxxxxx_xxxxxx_xxxxxx.py azureuser@<publicIpAddress>:/tmp
     ./vmoracle19c_xxxxxx_xxxxxx_xxxxxx.py
     ```
 
-    Aşağıdaki örnek, önceki betiği çalıştırdıktan sonra neleri görmeniz gerektiğini gösterir. Devam etmek isteyip istemediğiniz sorulduğunda _ * Y * * girin.
+    Aşağıdaki örnek, önceki betiği çalıştırdıktan sonra neleri görmeniz gerektiğini gösterir. Devam etmek isteyip istemediğiniz sorulduğunda **Y** girin.
 
     ```output
     Microsoft Azure VM Backup - File Recovery
@@ -676,30 +693,28 @@ Tüm VM 'yi geri yüklemek için şu adımları izleyin:
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-1. Hazırlama için bir depolama hesabı oluşturun:
-   
-   Azure portal dosya depolamayı yapılandırma
+1. Azure portal hazırlama için bir depolama hesabı oluşturun.
 
-   Azure portal, **_+ kaynak oluştur_* _ ' u seçin ve _*_depolama hesabı_*_ ' nı arayıp seçin
+   1. Azure portal **+ kaynak oluştur** ' u seçin ve **depolama hesabı**' nı arayıp seçin.
     
-   ![Depolama hesabı ekleme sayfası](./media/oracle-backup-recovery/storage-1.png)
+      ![Depolama hesabı ekleme sayfası](./media/oracle-backup-recovery/storage-1.png)
     
     
-   Depolama hesabı oluştur sayfasında, mevcut kaynak grubunuzu _*_RG-Oracle_*_' ı seçin, depolama hesabınızı _*_oracrestore_*_ olarak adlandırın ve hesap türü için _*_depolama v2 'yi (generalamaç v2)_*_ seçin. Çoğaltmayı _*_yerel olarak yedekli depolama (LRS)_*_ olarak değiştirin ve performansı _*_Standart_*_ olarak ayarlayın. Konumun kaynak grubundaki diğer kaynaklarınızla aynı bölgeye ayarlandığından emin olun. 
+   1. Depolama hesabı oluştur sayfasında, mevcut kaynak grubunuzu **RG-Oracle**' ı seçin, depolama hesabınızı **oracrestore** olarak adlandırın ve hesap türü için **depolama v2 'yi (generalamaç v2)** seçin. Çoğaltmayı **yerel olarak yedekli depolama (LRS)** olarak değiştirin ve performansı **Standart** olarak ayarlayın. Konumun kaynak grubundaki diğer kaynaklarınızla aynı bölgeye ayarlandığından emin olun. 
     
-   ![Depolama hesabı ekleme sayfası](./media/oracle-backup-recovery/recovery-storage-1.png)
+      ![Depolama hesabı ekleme sayfası](./media/oracle-backup-recovery/recovery-storage-1.png)
    
-   Gözden geçir + oluştur ' a ve ardından Oluştur ' a tıklayın.
+   1. Gözden geçir + oluştur ' a ve ardından Oluştur ' a tıklayın.
 
-2. Azure portal, _myVault * kurtarma hizmetleri kasaları öğesini arayın ve üzerine tıklayın.
+2. Azure portal, *Mykasa* kurtarma hizmetleri kasaları öğesini arayın ve üzerine tıklayın.
 
     ![Kurtarma Hizmetleri kasaları Mykasa yedekleme öğeleri](./media/oracle-backup-recovery/recovery-service-06.png)
     
-3.  **Genel bakış** dikey penceresinde, **yedekleme öğeleri** ' ni ve Select **_Azure Virtual Machine_* _ ' i seçerek Anon sıfır yedekleme öğesi sayısı listelenmiş olmalıdır.
+3.  **Genel bakış** dikey penceresinde, **yedekleme öğeleri** ve **Azure sanal makinesi** seçin ' i seçin. Bu, Anon sıfır yedekleme öğesi sayısı listelenmiş olmalıdır.
 
     ![Kurtarma Hizmetleri kasaları Azure sanal makine yedekleme öğesi sayısı](./media/oracle-backup-recovery/recovery-service-07.png)
 
-4.  Yedekler öğeleri (Azure sanal makineler) üzerinde, VM _ *vmoracle19c** ' in bulunduğu sayfa listelenir. VM adına tıklayın.
+4.  Yedekler öğeleri (Azure sanal makineler) üzerinde, sanal makinenizin **vmoracle19c** bulunduğu sayfa listelenir. VM adına tıklayın.
 
     ![Kurtarma VM 'si sayfası](./media/oracle-backup-recovery/recover-vm-02.png)
 
@@ -723,7 +738,7 @@ Tüm VM 'yi geri yüklemek için şu adımları izleyin:
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Depolama hesabınızı ve dosya paylaşımınızı ayarlamak için Azure CLı 'de aşağıdaki komutları çalıştırın.
+Depolama hesabınızı ve dosya paylaşımınızı ayarlamak için, Azure CLı 'de aşağıdaki komutları çalıştırın.
 
 1. Depolama hesabını VM 'niz ile aynı kaynak grubunda ve konumda oluşturun:
 
@@ -916,11 +931,11 @@ VM geri yüklendikten sonra özgün IP adresini yeni VM 'ye yeniden atamalısın
 
 ### <a name="connect-to-the-vm"></a>VM’ye bağlanma
 
-* SANAL makineye bağlanmak için aşağıdaki betiği kullanın:
+SANAL makineye bağlanmak için aşağıdaki betiği kullanın:
 
-    ```azurecli
-    ssh <publicIpAddress>
-    ```
+```azurecli
+ssh <publicIpAddress>
+```
 
 ### <a name="start-the-database-to-mount-stage-and-perform-recovery"></a>Aşamayı bağlama ve kurtarma işlemi gerçekleştirmek için veritabanını başlatma
 

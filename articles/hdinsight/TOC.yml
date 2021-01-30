@@ -278,6 +278,8 @@
           href: /rest/api/hdinsightspark/
         - name: Resource Manager şablonu
           href: /azure/templates/microsoft.hdinsight/allversions
+        - name: Azure İlkesi yerleşik ilkeler
+          href: ./policy-reference.md
     - name: Kaynaklar
       items:
         - name: Yayınlar

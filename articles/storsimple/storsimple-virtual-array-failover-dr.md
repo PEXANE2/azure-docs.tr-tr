@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 509a3ac383cebd91821e9c4b872c253ab3b0a947
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 6a321b2eb79ea01bbf94e1a413c189ac7f4614ad
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96005869"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99096432"
 ---
 # <a name="disaster-recovery-and-device-failover-for-your-storsimple-virtual-array-via-azure-portal"></a>Azure portalı aracılığıyla StorSimple Sanal Diziniz için olağanüstü durum kurtarma ve cihaz yükü devretme
 
@@ -40,7 +40,7 @@ DR, ısı haritası tabanlı katmanlama ve izleme kullanılarak tam bir cihaz ge
 > 
 > 
 
-Olağanüstü durum kurtarma cihaz yük devretme özelliği aracılığıyla düzenlenir ve **cihazlar** dikey penceresinden başlatılır. Bu dikey pencere, StorSimple Aygıt Yöneticisi hizmetinize bağlı olan tüm StorSimple cihazlarını tablo halinde depolar. Her cihaz için kolay adı, durumu, sağlanan ve en yüksek kapasiteyi, türü ve modeli görebilirsiniz.
+Olağanüstü durum kurtarma cihaz yük devretme özelliği aracılığıyla düzenlenir ve **cihazlar** dikey penceresinden başlatılır. Bu dikey pencere, StorSimple Device Manager hizmetinize bağlı olan tüm StorSimple cihazlarını tablo halinde depolar. Her cihaz için kolay adı, durumu, sağlanan ve en yüksek kapasiteyi, türü ve modeli görebilirsiniz.
 
 ## <a name="prerequisites-for-device-failover"></a>Cihaz yük devretme önkoşulları
 
@@ -92,7 +92,7 @@ DR başarıyla tamamlandıktan sonra, kaynak cihazdaki bulut verilerinin sahipli
 
 ## <a name="fail-over-to-a-virtual-array"></a>Sanal diziye yük devretme
 
-Bu yordamı çalıştırmadan önce, StorSimple Aygıt Yöneticisi hizmetinize başka bir StorSimple Sanal dizisi sağlamanızı, yapılandırmanızı ve kaydetmenizi öneririz.
+Bu yordamı çalıştırmadan önce, StorSimple Device Manager hizmetinize başka bir StorSimple Sanal dizisi sağlamanızı, yapılandırmanızı ve kaydetmenizi öneririz.
 
 > [!IMPORTANT]
 > 
@@ -102,7 +102,7 @@ Bu yordamı çalıştırmadan önce, StorSimple Aygıt Yöneticisi hizmetinize b
 
 Bir hedef StorSimple Sanal cihazına cihaz geri yüklemek için aşağıdaki adımları gerçekleştirin.
 
-1. [Cihaz yük devretmesi için önkoşulları](#prerequisites)karşılayan bir hedef cihaz sağlayın ve yapılandırın. Yerel Web Kullanıcı arabirimi aracılığıyla cihaz yapılandırmasını tamamlayıp StorSimple Aygıt Yöneticisi hizmetinize kaydedin. Bir dosya sunucusu oluşturuyorsanız, [dosya sunucusu olarak ayarlanan](storsimple-virtual-array-deploy3-fs-setup.md#step-1-complete-the-local-web-ui-setup-and-register-your-device)1. adıma gidin. Bir Iscsı sunucusu oluşturuyorsanız, [iSCSI sunucusu olarak ayarlanan](storsimple-virtual-array-deploy3-iscsi-setup.md#step-1-complete-the-local-web-ui-setup-and-register-your-device)1. adıma gidin.
+1. [Cihaz yük devretmesi için önkoşulları](#prerequisites)karşılayan bir hedef cihaz sağlayın ve yapılandırın. Yerel Web Kullanıcı arabirimi aracılığıyla cihaz yapılandırmasını tamamlayıp StorSimple Device Manager hizmetinize kaydedin. Bir dosya sunucusu oluşturuyorsanız, [dosya sunucusu olarak ayarlanan](storsimple-virtual-array-deploy3-fs-setup.md#step-1-complete-the-local-web-ui-setup-and-register-your-device)1. adıma gidin. Bir Iscsı sunucusu oluşturuyorsanız, [iSCSI sunucusu olarak ayarlanan](storsimple-virtual-array-deploy3-iscsi-setup.md#step-1-complete-the-local-web-ui-setup-and-register-your-device)1. adıma gidin.
 
 2. Konakta birimleri/paylaşımları çevrimdışı duruma getirin. Birimleri/paylaşımları çevrimdışına almak için, ana bilgisayar için işletim sistemine özgü yönergelere bakın. Zaten çevrimdışı değilse, aşağıdakileri yaparak cihazdaki tüm birimleri/paylaşımları çevrimdışı duruma getirmeniz gerekir.
    
@@ -116,7 +116,7 @@ Bir hedef StorSimple Sanal cihazına cihaz geri yüklemek için aşağıdaki ad�
    
     5. **Çevrimdışına Al**' a tıklayın.
 
-3. StorSimple Aygıt Yöneticisi hizmetinizde **yönetim > cihazlar**' a gidin. **Cihazlar** dikey penceresinde, kaynak cihazınızı seçin ve tıklayın.
+3. StorSimple Device Manager hizmetinizde **yönetim > cihazlar**' a gidin. **Cihazlar** dikey penceresinde, kaynak cihazınızı seçin ve tıklayın.
 
 4. **Cihaz panosu** dikey penceresinde **devre dışı bırak**' a tıklayın.
 
@@ -156,7 +156,7 @@ Bir hedef StorSimple Sanal cihazına cihaz geri yüklemek için aşağıdaki ad�
     1. Yük devretme işlemi için hedef cihaz olarak kullanılan StorSimple cihazını seçin ve tıklayın.
     2. **Ayarlar > yönetim > paylaşımlar** (veya iSCSI sunucusu varsa **birimler** ) bölümüne gidin. **Paylaşımlar** dikey penceresinde, eski cihazdan tüm paylaşımları (birimler) görüntüleyebilirsiniz.
         ![Cihazlar dikey penceresinin ekran görüntüsü. Hedef cihaz çevrimiçi durumuyla listelendi.](./media/storsimple-virtual-array-failover-dr/failover9.png)
-14. Bağlanmaya çalışan tüm uygulamaların yeni cihaza yeniden yönlendirilmesi için [BIR DNS diğer adı oluşturmanız](https://support.microsoft.com/kb/168322) gerekecektir.
+14. Bağlanmaya çalışan tüm uygulamaların yeni cihaza yeniden yönlendirilmesi için [BIR DNS diğer adı oluşturmanız](https://web.archive.org/web/20150307000707/http://support.microsoft.com:80/kb/168322) gerekecektir.
 
 ## <a name="errors-during-dr"></a>DR sırasında hatalar
 
@@ -174,7 +174,7 @@ Kullanılabilir hedef cihazlarda yeterli alan yoksa, uyumlu hedef cihaz bulunmad
 
 ## <a name="business-continuity-disaster-recovery-bcdr"></a>İş sürekliliği olağanüstü durum kurtarma (BCDR)
 
-Azure veri merkezinin tamamı çalışmayı durdurduğu zaman bir iş sürekliliği olağanüstü durum kurtarma (BCDR) senaryosu oluşur. Bu, StorSimple Aygıt Yöneticisi hizmetinizi ve ilişkili StorSimple cihazlarını etkileyebilir.
+Azure veri merkezinin tamamı çalışmayı durdurduğu zaman bir iş sürekliliği olağanüstü durum kurtarma (BCDR) senaryosu oluşur. Bu, StorSimple Device Manager hizmetinizi ve ilişkili StorSimple cihazlarını etkileyebilir.
 
 Yalnızca bir olağanüstü durum yaşanmadan önce kayıtlı olan StorSimple cihazları varsa, bu StorSimple cihazlarının silinmesi gerekebilir. Olağanüstü durum sonrasında bu cihazları yeniden oluşturabilir ve yapılandırabilirsiniz.
 

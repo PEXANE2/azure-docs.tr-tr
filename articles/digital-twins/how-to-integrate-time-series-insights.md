@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 1/19/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 97f1f5d0f1f351164e05d18b9f80c7f26450f31b
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 951c52cdba191aa291061259e1c15b9190513770
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98661611"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99092729"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-time-series-insights"></a>Azure dijital TWINS 'i Azure Time Series Insights ile tümleştirme
 
@@ -120,7 +120,7 @@ Daha sonra, bu işlevin kendi olay hub 'larınız ile bağlantı kurmak için ku
 3. Gönderme ve alma izinleriyle bir [Yetkilendirme kuralı](/cli/azure/eventhubs/eventhub/authorization-rule?view=azure-cli-latest&preserve-view=true#az-eventhubs-eventhub-authorization-rule-create) oluşturun. Kural için bir ad belirtin.
 
     ```azurecli-interactive
-        az eventhubs eventhub authorization-rule create --rights Listen Send --resource-group <resource group name> --namespace-name <Event Hubs namespace from earlier> --eventhub-name <TSI event hub name from above> --name <name for your TSI auth rule>
+    az eventhubs eventhub authorization-rule create --rights Listen Send --resource-group <resource group name> --namespace-name <Event Hubs namespace from earlier> --eventhub-name <TSI event hub name from above> --name <name for your TSI auth rule>
     ```
 
 ## <a name="configure-your-function"></a>İşlevinizi yapılandırma
@@ -149,7 +149,7 @@ Daha sonra, oluşturduğunuz Olay Hub 'ları için bağlantı dizelerini içeren
     az eventhubs eventhub authorization-rule keys list --resource-group <resource group name> --namespace-name <Event Hubs namespace> --eventhub-name <TSI event hub name> --name <TSI auth rule>
     ```
 
-2. İşlev uygulamanızda bağlantı dizenizi içeren bir uygulama ayarı oluşturun:
+2. İşlev uygulamanızda, Bağlantı dizenizi içeren bir uygulama ayarı oluşturmak için sonuçtan *Primaryconnectionstring* değerini kullanın:
 
     ```azurecli-interactive
     az functionapp config appsettings set --settings "EventHubAppSetting-TSI=<TSI event hub connection string>" -g <resource group> -n <your App Service (function app) name>
@@ -163,7 +163,9 @@ Sonra, ikinci (TSI) Olay Hub 'ından verileri almak için bir Time Series Insigh
     1. **Gen2 (L1)** fiyatlandırma katmanını seçin.
     2. Bu ortam için bir **zaman SERISI kimliği** seçmeniz gerekir. Zaman serisi KIMLIĞINIZ, Time Series Insights verilerinizi aramak için kullanacağınız üç değerden fazla olabilir. Bu öğretici için **$dtId** kullanabilirsiniz. [*Bir zaman SERISI kimliği seçmek Için en iyi yöntemler*](../time-series-insights/how-to-select-tsid.md)bölümünde kimlik değeri seçme hakkında daha fazla bilgi edinin.
     
-        :::image type="content" source="media/how-to-integrate-time-series-insights/create-twin-id.png" alt-text="Time Series Insights ortamı için oluşturma portalı UX. Gen2 (L1) Fiyatlandırma Katmanı seçilidir ve zaman serisi KIMLIĞI Özellik adı $dtId" lightbox="media/how-to-integrate-time-series-insights/create-twin-id.png":::
+        :::image type="content" source="media/how-to-integrate-time-series-insights/create-time-series-insights-environment-1.png" alt-text="Time Series Insights ortamı için oluşturma portalı UX. Aboneliğiniz, kaynak grubunuz ve ilgili açılan kutudan konumunuzu seçin ve ortamınız için bir ad seçin." lightbox="media/how-to-integrate-time-series-insights/create-time-series-insights-environment-1.png":::
+        
+        :::image type="content" source="media/how-to-integrate-time-series-insights/create-time-series-insights-environment-2.png" alt-text="Time Series Insights ortamı için oluşturma portalı UX. Gen2 (L1) Fiyatlandırma Katmanı seçilidir ve zaman serisi KIMLIĞI Özellik adı $dtId" lightbox="media/how-to-integrate-time-series-insights/create-time-series-insights-environment-2.png":::
 
 2. **İleri: olay kaynağı** ' nı seçin ve daha önce, daha önce gelen TSI Olay Hub 'ınızı seçin Ayrıca, yeni bir Event Hubs Tüketici grubu oluşturmanız gerekir.
     

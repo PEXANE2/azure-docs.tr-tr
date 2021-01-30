@@ -9,12 +9,12 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/27/2020
 ms.custom: data4ml
-ms.openlocfilehash: eb8c69a6bf009543e104a472469c243638726f60
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: 5ba399418d8f93204b168c1058be20ffc775ef70
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98060376"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99096974"
 ---
 # <a name="tag-images-in-a-labeling-project"></a>Etiketleme projesindeki resimleri etiketleme 
 
@@ -63,11 +63,7 @@ Sayfadaki tüm görüntüleri etiketlediyseniz Azure, **Gönder** düğmesine iz
 
 Bir yandan veriler için Etiketler gönderdikten sonra, Azure sayfayı iş kuyruğundan yeni bir görüntü kümesiyle yeniler.
 
-### <a name="assisted-machine-learning-preview"></a>Yardımlı makine öğrenimi (Önizleme) 
-
-> [!IMPORTANT]
-> Yardımlı makine öğrenimi Şu anda genel önizlemededir.
-> Önizleme sürümü, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+### <a name="assisted-machine-learning"></a>Yardımlı makine öğrenimi
 
 Makine öğrenimi algoritmaları tetiklenebilir. Bu algoritmalar projenizde etkinleştirilirse, aşağıdakileri görebilirsiniz:
 
@@ -75,7 +71,14 @@ Makine öğrenimi algoritmaları tetiklenebilir. Bu algoritmalar projenizde etki
 
 * Daha sonraki bir noktada, proje adının yanında **önceden etiketlenmiş görevler** görebilirsiniz.  Daha sonra görüntüler, bir makine öğrenimi sınıflandırma modelinden gelen önerilen bir etiketle birlikte görüntülenir. Makine öğrenimi modelinde %100 doğruluk yok. Yalnızca modelin kendine ait olduğu görüntüleri kullandığımızda, bu görüntüler hala hatalı olarak önceden etiketlenmiş olabilir.  Bu etiketleri gördüğünüzde, sayfayı göndermeden önce yanlış etiketleri düzeltin.  
 
-* Nesne algılama modelleri için, sınırlayıcı kutular ve Etiketler zaten mevcut olabilir.  Sayfayı göndermeden önce yanlış olan hataları düzeltin.
+* Nesne tanımlama modelleri için, sınırlayıcı kutular ve Etiketler zaten mevcut olabilir.  Sayfayı göndermeden önce yanlış olan hataları düzeltin.
+
+* Segmentasyon modelleri için, çokgenler ve Etiketler zaten mevcut olabilir.  Sayfayı göndermeden önce yanlış olan hataları düzeltin. 
+
+    > [!IMPORTANT]
+    > (Önizleme) ile listelenen özellikler genel önizlemededir.   
+    > Önizleme sürümü, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
 
 Özellikle etiketleme projesinde daha önce, makine öğrenimi modeli yalnızca küçük bir resim alt kümesini etiketlemek için yeterince doğru olabilir. Bu görüntülerin etiketlenmesi halinde etiketleme projesi, model eğitiminin bir sonraki turunda daha fazla veri toplamak için el ile etiketlemeye geri döner. Zamanla, model daha yüksek bir görüntü oranında daha emin olur ve daha sonra projede daha sonra daha fazla etiket görevi elde eder.
 

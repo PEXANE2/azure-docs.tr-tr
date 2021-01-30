@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/25/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: b750d4cc911dc72b60974171dd884b373921fad5
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 3e123ab6d5b9d801908112239cf3e9cb72b4abbb
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98734605"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99093974"
 ---
 # <a name="azure-security-baseline-for-azure-signalr-service"></a>Azure SignalR hizmeti için Azure Güvenlik temeli
 
@@ -220,7 +220,7 @@ Azure Gelişmiş Tehdit Koruması (ATP) gelişmiş tehditleri, risk altındaki k
 
 **Rehberlik**: en kritik yerleşik roller şunlardır: Azure Active Directory (Azure AD), bu iki role atanan kullanıcılar yönetici rollerini temsilciliğini sağlamak Için genel yönetici ve ayrıcalıklı rol yöneticisidir.
 
-- Genel yönetici/Şirket Yöneticisi: Bu role sahip olan kullanıcılar, Azure AD 'deki tüm yönetim özelliklerine, ayrıca Azure AD kimliklerini kullanan hizmetlere erişebilir.
+- Genel yönetici: Bu role sahip olan kullanıcılar, Azure AD 'deki tüm yönetim özelliklerine, ayrıca Azure AD kimlikleri kullanan hizmetlere erişebilir.
 
 - Ayrıcalıklı rol yöneticisi: Bu role sahip kullanıcılar, Azure Active Directory (Azure AD) ve Azure AD Privileged Identity Management (PıM) içinde rol atamalarını yönetebilir. Ayrıca, bu rol, PıM ve yönetim birimlerinin tüm yönlerinin yönetimine izin verir.
 

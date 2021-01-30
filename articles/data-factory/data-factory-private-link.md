@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/01/2020
-ms.openlocfilehash: 6fb460c65d37723b03c1dfd4fba2c353c19455bd
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: a1b5ba56d30124bea7a814c2ffcf0cfff28903aa
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98944582"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99062197"
 ---
 # <a name="azure-private-link-for-azure-data-factory"></a>Azure Data Factory için Azure Özel Bağlantı
 
@@ -48,7 +48,7 @@ Azure Data Factory için özel bağlantı desteğiyle şunları yapabilirsiniz:
 * Sanal ağınızda özel bir uç nokta oluşturun.
 * Belirli bir Data Factory örneğine özel bağlantıyı etkinleştirin. 
 
-Azure Data Factory hizmetine yönelik iletişimler özel bağlantı üzerinden gidip güvenli özel bağlantı sağlanmasına yardımcı olur. Kaynaklarınızı korumanın daha güvenli bir yolunu sağlamak için bir sanal ağ veya şirket güvenlik duvarındaki yukarıdaki etki alanını ve bağlantı noktasını yapılandırmanız gerekmez.  
+Azure Data Factory hizmetine yönelik iletişimler özel bağlantı üzerinden gidip güvenli özel bağlantı sağlanmasına yardımcı olur. 
 
 ![Azure Data Factory mimarisine yönelik özel bağlantı diyagramı.](./media/data-factory-private-link/private-link-architecture.png)
 
@@ -62,6 +62,9 @@ Azure Data Factory hizmetine yönelik iletişimler özel bağlantı üzerinden g
 
    > [!NOTE]
    > Şu anda desteklenmeyen işlevler için, sanal ağda veya şirket güvenlik duvarında daha önce bahsedilen etki alanını ve bağlantı noktasını yapılandırmanız gerekir. 
+
+   > [!NOTE]
+   > Özel uç nokta aracılığıyla Azure Data Factory bağlantı yalnızca Data Factory 'de şirket içinde barındırılan tümleştirme çalışma zamanı için geçerlidir. SYNAPSE içinde desteklenmez.
 
 > [!WARNING]
 > Bağlı bir hizmet oluşturduğunuzda, kimlik bilgilerinizin bir Azure Anahtar Kasası 'nda depolandığından emin olun. Aksi takdirde, Azure Data Factory özel bağlantıyı etkinleştirdiğinizde kimlik bilgileri çalışmayacaktır.

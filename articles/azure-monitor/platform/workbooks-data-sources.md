@@ -8,12 +8,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 06/29/2020
-ms.openlocfilehash: d41629dd9a56272af89a06cb55e9bd88b604baee
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 3d94aca51d3d305b70c8c555e2b41e3d0ab857b3
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92927915"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99061963"
 ---
 # <a name="azure-monitor-workbooks-data-sources"></a>Azure Izleyici çalışma kitapları veri kaynakları
 
@@ -59,7 +59,7 @@ Bir sorgu denetiminin bu veri kaynağını kullanmasını sağlamak için, Azure
 
 ## <a name="azure-data-explorer"></a>Azure Veri Gezgini
 
-Artık çalışma kitapları, güçlü [kusto](/azure/kusto/query/index) sorgu diliyle [Azure Veri Gezgini](/azure/data-explorer/) kümelerinden sorgulama desteğine sahiptir.   
+Artık çalışma kitapları, güçlü [kusto](/azure/kusto/query/index) sorgu diliyle [Azure Veri Gezgini](/azure/data-explorer/) kümelerinden sorgulama desteğine sahiptir.
 
 ![Kusto sorgu penceresinin ekran görüntüsü](./media/workbooks-overview/data-explorer.png)
 
@@ -79,9 +79,43 @@ Bir sorgu denetiminin bu veri kaynağını kullanmasını sağlamak için **sorg
 
 ![Durum filtre listelerini gösteren uyarı sorgusunun ekran görüntüsü.](./media/workbooks-overview/resource-health.png)
 
+## <a name="change-analysis-preview"></a>Değişiklik Analizi (Önizleme)
+
+Veri kaynağı olarak [Uygulama değişikliği analizini](../app/change-analysis.md) kullanarak bir sorgu denetimi yapmak Için, *veri kaynağı* açılan listesini kullanın ve *değişiklik Analizi (Önizleme)* öğesini seçin ve tek bir kaynak seçin. Son 14 güne kadar olan değişiklikler görüntülenebilir. *Düzey* açılan listesi, "önemli", "normal" ve "gürültülü" değişiklikler arasında filtreleme yapmak için kullanılabilir ve bu açılan [liste açılan çalışma](workbooks-dropdowns.md)kitabı parametrelerini destekler.
+
+> [!div class="mx-imgBorder"]
+> ![Değişiklik analizini içeren çalışma kitabının ekran görüntüsü](./media/workbooks-data-sources/change-analysis-data-source.png)
+
+## <a name="merge-data-from-different-sources"></a>Farklı kaynaklardaki verileri birleştirme
+
+Öngörüler deneyimini geliştiren farklı kaynaklardaki verileri bir araya getirmek genellikle gereklidir. Bir örnek, ilgili ölçüm verileriyle etkin uyarı bilgilerini genişleterek bir örnektir. Bu, kullanıcıların yalnızca efekti (etkin bir uyarı) değil, olası nedenleri (örneğin, yüksek CPU kullanımı) görmesini sağlar. İzleme etki alanında, önceliklendirme ve Diagnostic iş akışı için genellikle kritik olan çok sayıda benzer veri kaynağı vardır.
+
+Çalışma kitapları yalnızca farklı veri kaynaklarının sorgulanmasına izin vermez, ancak zengin Öngörüler sağlamak üzere verileri birleştirmenizi veya birleştirmeyi sağlayan basit denetimler de sağlar. `merge`Denetim, bunu başarmanın yoludur.
+
+Aşağıdaki örnek, Log Analytics VM performans verileriyle birlikte uyarı verilerini birleştirerek zengin Öngörüler Kılavuzu elde edin.
+
+> [!div class="mx-imgBorder"]
+> ![Uyarı ve Log Analytics verilerini birleştiren bir birleştirme denetimiyle çalışma kitabının ekran görüntüsü](./media/workbooks-data-sources/merge-control.png)
+
+Çalışma kitapları çeşitli birleştirmeleri destekler:
+
+* İç benzersiz birleşim
+* Tam iç birleşim
+* Tam dış birleştirme
+* Sol dış birleştirme
+* Sağ dış birleştirme
+* Sol yarı ekleme
+* Sağ yarı ekleme
+* Sol katılımı önleme
+* Sağ Anti-ayrılma
+* Birleşim
+* Yinelenen tablo
+
 ## <a name="json"></a>JSON
 
 JSON sağlayıcısı, statik JSON içeriğinden bir sorgu sonucu oluşturmanıza olanak sağlar. Statik değerlerin açılan menü parametreleri oluşturmak için parametrelerde en yaygın olarak kullanılır. Basit JSON dizileri veya nesneleri otomatik olarak kılavuz satırlarına ve sütunlara dönüştürülür.  Daha özel davranışlar için, sütunları yapılandırmak için sonuçlar sekmesini ve JSONPath ayarlarını kullanabilirsiniz.
+
+Bu sağlayıcı [Jsonpath](workbooks-jsonpath.md)'i destekliyor.
 
 ## <a name="alerts-preview"></a>Uyarılar (önizleme)
 
@@ -100,12 +134,14 @@ Bir sorgu denetiminin bu veri kaynağını kullanmasını sağlamak için, _veri
 
 Çalışma kitapları, herhangi bir dış kaynaktan veri almayı destekler. Verileriniz Azure dışında yaşar, bu veri kaynağı türünü kullanarak çalışma kitaplarına taşıyabilirsiniz.
 
-Bir sorgu denetiminin bu veri kaynağını kullanmasını sağlamak için, _veri kaynağı_ açılır listesini kullanarak _Özel uç nokta_ ' ı seçin. ,, `Http method` `url` `headers` , `url parameters` Ve/ `body` gibi uygun parametreleri sağlayın. Veri kaynağınızın [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) 'yi desteklediğinden emin olun, aksi takdirde istek başarısız olur.
+Bir sorgu denetiminin bu veri kaynağını kullanmasını sağlamak için, _veri kaynağı_ açılır listesini kullanarak _Özel uç nokta_' ı seçin. ,, `Http method` `url` `headers` , `url parameters` Ve/ `body` gibi uygun parametreleri sağlayın. Veri kaynağınızın [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) 'yi desteklediğinden emin olun, aksi takdirde istek başarısız olur.
 
-Şablonları kullanırken güvenilmeyen konaklara otomatik olarak çağrı yapmayı önlemek için, kullanıcının kullanılan konakları güvenilir olarak işaretlemesi gerekir. Bu işlem, _güvenilir değil Ekle_ düğmesine tıklayarak veya çalışma kitabı ayarları 'nda güvenilir bir ana bilgisayar olarak eklenerek yapılabilir. Bu ayarlar, Web çalışanları ile ındexdb 'yi destekleyen tarayıcılara kaydedilir, burada daha fazla bilgi [bulabilirsiniz](https://caniuse.com/#feat=indexeddb).
+Şablonları kullanırken güvenilmeyen konaklara otomatik olarak çağrı yapmayı önlemek için, kullanıcının kullanılan konakları güvenilir olarak işaretlemesi gerekir. Bu işlem, _güvenilir değil Ekle_ düğmesine tıklayarak veya çalışma kitabı ayarları 'nda güvenilir bir ana bilgisayar olarak eklenerek yapılabilir. Bu ayarlar, [Web çalışanları Ile ındexdb 'yi destekleyen tarayıcılara](https://caniuse.com/#feat=indexeddb)kaydedilir.
 
 > [!NOTE]
 > `headers` `parameters` `body` `url` Tüm çalışma kitabı kullanıcıları tarafından görülebilmesi için alanlardan herhangi bir gizli dizi (,,,) eklemeyin.
+
+Bu sağlayıcı [Jsonpath](workbooks-jsonpath.md)'i destekliyor.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

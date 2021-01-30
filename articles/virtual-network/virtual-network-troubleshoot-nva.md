@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/26/2018
 ms.author: genli
-ms.openlocfilehash: 18f2128b6869b4047cc6f35e1638aca81233a014
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: fe4c17b74cd786d03bd19257dea190a21ecaa9f5
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98219292"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99095667"
 ---
 # <a name="network-virtual-appliance-issues-in-azure"></a>Azure 'da ağ sanal gereç sorunları
 
@@ -30,7 +30,7 @@ Microsoft Azure içinde üçüncü taraf ağ sanal gereci (NVA) kullanırken VM 
 Üçüncü taraf NVA 'lar için teknik destek ve Azure platformuyla tümleştirme, NVA satıcısı tarafından sağlanır.
 
 > [!NOTE]
-> Bir NVA içeren bir bağlantı veya yönlendirme sorununuz varsa, doğrudan [NVA satıcısına başvurmanız](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines) gerekir.
+> Bir NVA içeren bir bağlantı veya yönlendirme sorununuz varsa, doğrudan [NVA satıcısına başvurmanız](https://mskb.pkisolutions.com/kb/2984655) gerekir.
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
@@ -52,7 +52,7 @@ Microsoft Azure içinde üçüncü taraf ağ sanal gereci (NVA) kullanırken VM 
 
 ## <a name="check-the-minimum-configuration-requirements-for-nvas-on-azure"></a>Azure 'da NVA 'lar için en düşük yapılandırma gereksinimlerini denetleyin
 
-Her NVA, Azure 'da doğru şekilde çalışması için temel yapılandırma gereksinimlerine sahiptir. Aşağıdaki bölümde, bu temel yapılandırmaların doğrulanması için gereken adımlar sağlanmaktadır. Daha fazla bilgi için, [NVA satıcısına başvurun](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines).
+Her NVA, Azure 'da doğru şekilde çalışması için temel yapılandırma gereksinimlerine sahiptir. Aşağıdaki bölümde, bu temel yapılandırmaların doğrulanması için gereken adımlar sağlanmaktadır. Daha fazla bilgi için, [NVA satıcısına başvurun](https://mskb.pkisolutions.com/kb/2984655).
 
 **NVA 'da IP iletmenin etkinleştirilip etkinleştirilmediğini denetleyin**
 
@@ -112,17 +112,17 @@ PowerShell kullanma
     ```console
    netstat -an | grep -i listen
     ```
-2. Sonuçlarda listelenen NVA yazılımı tarafından kullanılan TCP bağlantı noktasını görmüyorsanız, bu bağlantı noktalarına ulaşan trafiği dinlemek ve yanıtlamak için NVA ve VM 'de uygulamayı yapılandırmanız gerekir. [Gerektiğinde yardım almak için NVA satıcısına başvurun](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines).
+2. Sonuçlarda listelenen NVA yazılımı tarafından kullanılan TCP bağlantı noktasını görmüyorsanız, bu bağlantı noktalarına ulaşan trafiği dinlemek ve yanıtlamak için NVA ve VM 'de uygulamayı yapılandırmanız gerekir. [Gerektiğinde yardım almak için NVA satıcısına başvurun](https://mskb.pkisolutions.com/kb/2984655).
 
 ## <a name="check-nva-performance"></a>NVA performansını denetle
 
 ### <a name="validate-vm-cpu"></a>VM CPU 'sunu doğrulama
 
-CPU kullanımı yüzde 100 ' e yakınsa, ağ paketi düşünü etkileyen sorunlarla karşılaşabilirsiniz. VM 'niz Azure portal belirli bir zaman aralığı için Ortalama CPU bildiriyor. CPU ani bir işlem sırasında, Konuk VM 'deki hangi işlemin yüksek CPU 'ya neden olduğunu araştırın ve mümkünse bu işlemi azaltabilirsiniz. Ayrıca, VM 'yi daha büyük bir SKU boyutu veya sanal makine ölçek kümesi için yeniden boyutlandırmanız, örnek sayısını artırmanız veya CPU kullanımında Otomatik ölçeklendirmeye ayarlamanız gerekebilir. Bu sorunlardan biri için gerektiğinde [Yardım için NVA satıcısına başvurun](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines).
+CPU kullanımı yüzde 100 ' e yakınsa, ağ paketi düşünü etkileyen sorunlarla karşılaşabilirsiniz. VM 'niz Azure portal belirli bir zaman aralığı için Ortalama CPU bildiriyor. CPU ani bir işlem sırasında, Konuk VM 'deki hangi işlemin yüksek CPU 'ya neden olduğunu araştırın ve mümkünse bu işlemi azaltabilirsiniz. Ayrıca, VM 'yi daha büyük bir SKU boyutu veya sanal makine ölçek kümesi için yeniden boyutlandırmanız, örnek sayısını artırmanız veya CPU kullanımında Otomatik ölçeklendirmeye ayarlamanız gerekebilir. Bu sorunlardan biri için gerektiğinde [Yardım için NVA satıcısına başvurun](https://mskb.pkisolutions.com/kb/2984655).
 
 ### <a name="validate-vm-network-statistics"></a>VM ağ istatistiklerini doğrulama
 
-VM ağı artışlar kullanıyorsa veya yüksek kullanım dönemlerini gösteriyorsa, daha yüksek aktarım hızı özellikleri elde etmek için VM 'nin SKU boyutunu artırmanız de gerekebilir. Ayrıca, hızlandırılmış ağ özelliğinin etkin olmasını sağlayarak VM 'yi yeniden dağıtabilirsiniz. NVA 'nın hızlandırılmış ağ özelliğini destekleyip desteklemediğini doğrulamak için, gerektiğinde [Yardım IÇIN NVA satıcısına başvurun](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines).
+VM ağı artışlar kullanıyorsa veya yüksek kullanım dönemlerini gösteriyorsa, daha yüksek aktarım hızı özellikleri elde etmek için VM 'nin SKU boyutunu artırmanız de gerekebilir. Ayrıca, hızlandırılmış ağ özelliğinin etkin olmasını sağlayarak VM 'yi yeniden dağıtabilirsiniz. NVA 'nın hızlandırılmış ağ özelliğini destekleyip desteklemediğini doğrulamak için, gerektiğinde [Yardım IÇIN NVA satıcısına başvurun](https://mskb.pkisolutions.com/kb/2984655).
 
 ## <a name="advanced-network-administrator-troubleshooting"></a>Gelişmiş Ağ Yöneticisi sorun giderme
 
@@ -146,4 +146,4 @@ VM ağı artışlar kullanıyorsa veya yüksek kullanım dönemlerini gösteriyo
 
 Arka uç VM izlemesine gelen paketleri görmüyorsanız, büyük olasılıkla bir NSG veya UDR engelliyor olabilir ya da NVA yönlendirme tabloları yanlış olur.
 
-Gelen paketleri görüyorsanız ancak yanıt yoksa, VM uygulaması veya güvenlik duvarı sorununu çözmeniz gerekebilir. Bu sorunlardan biri için [gerektiğinde yardım almak üzere NVA satıcısına başvurun](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines).
+Gelen paketleri görüyorsanız ancak yanıt yoksa, VM uygulaması veya güvenlik duvarı sorununu çözmeniz gerekebilir. Bu sorunlardan biri için [gerektiğinde yardım almak üzere NVA satıcısına başvurun](https://mskb.pkisolutions.com/kb/2984655).

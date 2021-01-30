@@ -8,16 +8,16 @@ ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
 ms.custom: references_regions
-ms.openlocfilehash: 0d1b2bd039f3e110c83d7ad4bf32f1e53e4c7a79
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: a2b26ae8debf1c52693018ce9a758bfa9b029fa2
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98610157"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99093385"
 ---
-# <a name="microsoft-azure-attestation-preview"></a>Microsoft Azure Doğrulama (önizleme)
+# <a name="microsoft-azure-attestation"></a>Microsoft Azure Doğrulama 
 
-Microsoft Azure kanıtlama (Önizleme), içinde çalışan ikililerin bir platformun ve bütünlüğünün güvenilirliğini uzaktan doğrulamaya yönelik Birleşik bir çözümdür. Hizmet, güvenilir platform modülleri (TPMs) tarafından desteklenen, [ıntel® Software Guard uzantıları](https://www.intel.com/content/www/us/en/architecture-and-technology/software-guard-extensions.html) (SGX) şifreleme ve [sanallaştırma tabanlı güvenlik](/windows-hardware/design/device-experiences/oem-vbs) (VBS) kuşları gibi güvenilir yürütme ortamlarının (TEEs) durumunu kanıtlamayı sağlama yeteneğinin yanı sıra, Güvenilen Platform modülleri tarafından desteklenen platformların kanıtlamasını destekler. 
+Microsoft Azure kanıtlama, bir platformun güvenilirliğini ve içinde çalışan ikililerin bütünlüğünü uzaktan doğrulamaya yönelik Birleşik bir çözümdür. Hizmet, güvenilir platform modülleri (TPMs) tarafından desteklenen, [ıntel® Software Guard uzantıları](https://www.intel.com/content/www/us/en/architecture-and-technology/software-guard-extensions.html) (SGX) şifreleme ve [sanallaştırma tabanlı güvenlik](/windows-hardware/design/device-experiences/oem-vbs) (VBS) kuşları gibi güvenilir yürütme ortamlarının (TEEs) durumunu kanıtlamayı sağlama yeteneğinin yanı sıra, Güvenilen Platform modülleri tarafından desteklenen platformların kanıtlamasını destekler. 
 
 Kanıtlama, yazılım ikililerinin güvenilir bir platformda düzgün bir şekilde örneğinin oluşturulmasını gösteren bir işlemdir. Uzak bağlı olan taraflar daha sonra yalnızca, güvenilen donanımlarda yalnızca ilgili yazılımın çalıştığını güvenle elde edebilir. Azure kanıtlama, kanıtlama için birleştirilmiş bir müşteriye yönelik hizmet ve çerçevedir.
 

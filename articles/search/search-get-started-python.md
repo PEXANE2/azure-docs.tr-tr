@@ -1,32 +1,32 @@
 ---
 title: "Hızlı başlangıç: Python 'da arama dizini oluşturma"
 titleSuffix: Azure Cognitive Search
-description: Dizin oluşturmayı, verileri yüklemeyi ve Python, not defterlerini ve Azure.Documtaları kullanarak sorguları çalıştırmayı açıklar. Kitaplık ara.
+description: Bir arama dizini oluşturmayı, verileri yüklemeyi ve Python, Jupyter Notebook ve Azure.Documtaları kullanarak sorguları çalıştırmayı öğrenin. Python için istemci kitaplığını ara.
 author: HeidiSteen
 manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 11/19/2020
+ms.date: 01/29/2021
 ms.custom: devx-track-python
-ms.openlocfilehash: 126fc69678148d4d478c96ff8d05f194c7e3d1b3
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: eb5de33fd41d3a454f4d0b8d44325ed30f9c5d47
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96861876"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99071639"
 ---
-# <a name="quickstart-create-an-azure-cognitive-search-index-in-python-using-jupyter-notebooks"></a>Hızlı başlangıç: Jupyter not defterlerini kullanarak Python 'da Azure Bilişsel Arama dizini oluşturma
+# <a name="quickstart-create-an-azure-cognitive-search-index-in-python-using-jupyter-notebook"></a>Hızlı başlangıç: Jupyter Notebook kullanarak Python 'da Azure Bilişsel Arama dizini oluşturma
 
 > [!div class="op_single_selector"]
 > * [Python](search-get-started-python.md)
-> * [PowerShell (REST)](./search-get-started-powershell.md)
-> * [C#](./search-get-started-dotnet.md)
+> * [PowerShell (REST)](search-get-started-powershell.md)
+> * [C#](search-get-started-dotnet.md)
 > * [REST](search-get-started-rest.md)
 > * [Portal](search-get-started-portal.md)
 >
 
-Python kullanarak bir Azure Bilişsel Arama dizini oluşturan, yükleyen ve sorgulayan bir Jupyter Notebook oluşturun ve Python için Azure SDK 'daki [Azure-Search-Belgeler kitaplığını](/python/api/overview/azure/search-documents-readme) kullanın. Bu makalede, adım adım bir not defteri adım oluşturma açıklanır. Alternatif olarak, [tamamlanmış bir Jupyter Python Not defteri indirebilir ve çalıştırabilirsiniz](https://github.com/Azure-Samples/azure-search-python-samples).
+Python ile Azure Bilişsel Arama dizini oluşturan, yükleyen ve sorgulayan bir not defteri oluşturun ve Python için Azure SDK 'daki [Azure-Search-Belgeler kitaplığını](/python/api/overview/azure/search-documents-readme) kullanın. Bu makalede, adım adım bir not defteri adım oluşturma açıklanır. Alternatif olarak, [tamamlanmış bir Jupyter Python Not defteri indirebilir ve çalıştırabilirsiniz](https://github.com/Azure-Samples/azure-search-python-samples).
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
@@ -38,7 +38,7 @@ Bu hızlı başlangıç için aşağıdaki hizmetler ve araçlar gereklidir.
 
 * [Azure-Search-Belgeler paketi](https://pypi.org/project/azure-search-documents/)
 
-* Geçerli aboneliğinizde [bir Azure bilişsel arama hizmeti oluşturun](search-create-service-portal.md) veya [var olan bir hizmeti bulun](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) . Bu hızlı başlangıç için ücretsiz katmanı kullanabilirsiniz. 
+* Geçerli aboneliğinizde [bir arama hizmeti oluşturun](search-create-service-portal.md) veya [var olan bir hizmeti bulun](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) . Bu hızlı başlangıç için ücretsiz katmanı kullanabilirsiniz. 
 
 ## <a name="copy-a-key-and-url"></a>Anahtar ve URL 'YI kopyalama
 
@@ -48,13 +48,13 @@ REST çağrıları için her istekte hizmet URL'sinin ve bir erişim anahtarın�
 
 1. **Ayarlar**  >  **anahtarlar**' da, hizmette tam haklar için bir yönetici anahtarı alın. Üzerinde bir tane almanız gereken iş sürekliliği için iki adet değiştirilebilir yönetici anahtarı vardır. Nesneleri eklemek, değiştirmek ve silmek için isteklerde birincil veya ikincil anahtarı kullanabilirsiniz.
 
-![HTTP uç noktası ve erişim anahtarı al](media/search-get-started-rest/get-url-key.png "HTTP uç noktası ve erişim anahtarı al")
+   ![HTTP uç noktası ve erişim anahtarı al](media/search-get-started-rest/get-url-key.png "HTTP uç noktası ve erişim anahtarı al")
 
 Tüm istekler hizmetinize gönderilen her istekte bir API anahtarı gerektirir. İstek başına geçerli bir anahtara sahip olmak, isteği gönderen uygulama ve bunu işleyen hizmet arasında güven oluşturur.
 
 ## <a name="connect-to-azure-cognitive-search"></a>Azure Bilişsel Arama bağlanma
 
-Bu görevde bir Jupyter Notebook başlatın ve Azure Bilişsel Arama bağlanabildiğinizi doğrulayın. Bunu, hizmetinizdeki dizinlerin bir listesini isteyerek gerçekleştirirsiniz. Anaconda3 ile Windows 'da Anaconda gezginini kullanarak bir not defteri başlatabilirsiniz.
+Bu görevde Jupyter Notebook başlatın ve Azure Bilişsel Arama bağlanabildiğinizi doğrulayın. Bunu, hizmetinizdeki dizinlerin bir listesini isteyerek gerçekleştirirsiniz. Anaconda3 ile Windows 'da Anaconda gezginini kullanarak bir not defteri başlatabilirsiniz.
 
 1. Yeni bir Python3 Not defteri oluşturun.
 
@@ -63,7 +63,7 @@ Bu görevde bir Jupyter Notebook başlatın ve Azure Bilişsel Arama bağlanabil
    ```python
     !pip install azure-search-documents --pre
     !pip show azure-search-documents
-
+    
     import os
     from azure.core.credentials import AzureKeyCredential
     from azure.search.documents.indexes import SearchIndexClient 
@@ -82,17 +82,17 @@ Bu görevde bir Jupyter Notebook başlatın ve Azure Bilişsel Arama bağlanabil
 1. İkinci hücrede, her istekte sabitler olacak istek öğelerini girin. Önceki bir adımda kopyaladığınız arama hizmeti adınızı, yönetici API anahtarınızı ve sorgu API anahtarınızı girin. Bu hücre Ayrıca belirli işlemler için kullanacağınız istemcileri ayarlar: bir dizin oluşturmak için [Searchındexclient](/python/api/azure-search-documents/azure.search.documents.indexes.searchindexclient) ve bir dizini sorgulamak Için [searchclient](/python/api/azure-search-documents/azure.search.documents.searchclient) .
 
    ```python
-    service_name = ["SEARCH_ENDPOINT - do not include search.windows.net"]
-    admin_key = ["Cognitive Search Admin API Key"]
-
+    service_name = "YOUR-SEARCH-SERIVCE-NAME"
+    admin_key = "YOUR-SEARCH-SERVICE-ADMIN-API-KEY"
+    
     index_name = "hotels-quickstart"
-
+    
     # Create an SDK client
     endpoint = "https://{}.search.windows.net/".format(service_name)
     admin_client = SearchIndexClient(endpoint=endpoint,
                           index_name=index_name,
                           credential=AzureKeyCredential(admin_key))
-
+    
     search_client = SearchClient(endpoint=endpoint,
                           index_name=index_name,
                           credential=AzureKeyCredential(admin_key))
@@ -121,6 +121,7 @@ Bu dizin "oteller-QuickStart" olarak adlandırılmıştır ve aşağıda gördü
 1. Sonraki hücrede, şemayı sağlamak için aşağıdaki örneği bir hücreye yapıştırın.
 
     ```python
+    # Specify the index schema
     name = index_name
     fields = [
             SimpleField(name="HotelId", type=SearchFieldDataType.String, key=True),
@@ -128,13 +129,13 @@ Bu dizin "oteller-QuickStart" olarak adlandırılmıştır ve aşağıda gördü
             SearchableField(name="Description", type=SearchFieldDataType.String, analyzer_name="en.lucene"),
             SearchableField(name="Description_fr", type=SearchFieldDataType.String, analyzer_name="fr.lucene"),
             SearchableField(name="Category", type=SearchFieldDataType.String, facetable=True, filterable=True, sortable=True),
-
+        
             SearchableField(name="Tags", collection=True, type=SearchFieldDataType.String, facetable=True, filterable=True),
-
+    
             SimpleField(name="ParkingIncluded", type=SearchFieldDataType.Boolean, facetable=True, filterable=True, sortable=True),
             SimpleField(name="LastRenovationDate", type=SearchFieldDataType.DateTimeOffset, facetable=True, filterable=True, sortable=True),
             SimpleField(name="Rating", type=SearchFieldDataType.Double, facetable=True, filterable=True, sortable=True),
-
+    
             ComplexField(name="Address", fields=[
                 SearchableField(name="StreetAddress", type=SearchFieldDataType.String),
                 SearchableField(name="City", type=SearchFieldDataType.String, facetable=True, filterable=True, sortable=True),
@@ -150,20 +151,20 @@ Bu dizin "oteller-QuickStart" olarak adlandırılmıştır ve aşağıda gördü
 
 1. Başka bir hücrede, isteği formüle yazın. Bu create_index isteği, arama hizmetinizin dizinler koleksiyonunu hedefler ve önceki hücrede belirttiğiniz dizin şemasını temel alan bir [Searchındex](/python/api/azure-search-documents/azure.search.documents.indexes.models.searchindex) oluşturur.
 
-   ```python
+    ```python
     index = SearchIndex(
         name=name,
         fields=fields,
         scoring_profiles=scoring_profiles,
         suggesters = suggester,
         cors_options=cors_options)
-
+    
     try:
         result = admin_client.create_index(index)
         print ('Index', result.name, 'created')
     except Exception as ex:
         print (ex)
-   ```
+    ```
 
 1. Her adımı çalıştırın.
 
@@ -176,8 +177,7 @@ Belge yüklemek için, işlem türü için bir [Dizin eylemi](/python/api/azure-
 1. Yeni bir hücrede, dizin şemasına uygun dört belge sağlayın. Her belge için bir karşıya yükleme eylemi belirtin.
 
     ```python
-    documents = {
-        "value": [
+    documents = [
         {
         "@search.action": "upload",
         "HotelId": "1",
@@ -255,98 +255,96 @@ Belge yüklemek için, işlem türü için bir [Dizin eylemi](/python/api/azure-
             }
         }
     ]
-    }
     ```  
 
 1. Başka bir hücrede, isteği formüle yazın. Bu upload_documents isteği, oteller-Hızlı Başlangıç dizininin docs koleksiyonunu hedefler ve önceki adımda belirtilen belgeleri Bilişsel Arama dizinine iter.
 
-
-   ```python
+    ```python
     try:
         result = search_client.upload_documents(documents=documents)
         print("Upload of new document succeeded: {}".format(result[0].succeeded))
     except Exception as ex:
         print (ex.message)
-   ```
+    ```
 
 1. Belgeleri arama hizmetinizde bir dizine göndermek için her adımı çalıştırın.
 
 ## <a name="3---search-an-index"></a>3 - Dizin arama
 
-Bu adımda, [arama belgelerini](/rest/api/searchservice/search-documents)kullanarak bir dizinin nasıl sorgulankullanılacağı gösterilmektedir REST API.
+Bu adımda, [arama belgelerini (REST)](/rest/api/searchservice/search-documents)kullanarak bir dizinin nasıl sorgulanyapılacağı gösterilmektedir.
 
 1. Bu işlem için search_client kullanın. Bu sorgu `search=*` , rastgele belgelerin dereceli olmayan bir listesini (arama puanı = 1,0) döndürerek boş bir arama () yürütür. Hiçbir ölçüt olmadığından, tüm belgeler sonuçlara dahildir. Bu sorgu her belgedeki alanların yalnızca ikisini yazdırır. Ayrıca `include_total_count=True` , sonuçlarda tüm belgelerin (4) sayısını almak için de ekler.
 
-   ```python
+    ```python
     results =  search_client.search(search_text="*", include_total_count=True)
-
+    
     print ('Total Documents Matching Query:', results.get_count())
     for result in results:
         print("{}: {}".format(result["HotelId"], result["HotelName"]))
-   ```
+    ```
 
 1. Sonraki sorgu, arama ifadesine ("WiFi") tüm terimleri ekler. Bu sorgu, sonuçların yalnızca deyimdeki alanları içerdiğini belirtir `select` . Geri gelen alanları sınırlamak, kablo üzerinden geri gönderilen veri miktarını en aza indirir ve arama gecikmesini azaltır.
 
-   ```python
+    ```python
     results =  search_client.search(search_text="wifi", include_total_count=True, select='HotelId,HotelName,Tags')
-
+    
     print ('Total Documents Matching Query:', results.get_count())
     for result in results:
         print("{}: {}: {}".format(result["HotelId"], result["HotelName"], result["Tags"]))
-   ```
+    ```
 
 1. Ardından, bir filtre ifadesi uygulayarak yalnızca 4 ' ten büyük bir derecelendirme olan oteller azalan düzende sıralanır.
 
-   ```python
+    ```python
     results =  search_client.search(search_text="hotels", select='HotelId,HotelName,Rating', filter='Rating gt 4', order_by='Rating desc')
-
+    
     for result in results:
         print("{}: {} - {} rating".format(result["HotelId"], result["HotelName"], result["Rating"]))
-   ```
+    ```
 
 1. `search_fields`Tek bir alanla eşleşen kapsam sorgusuna ekleyin.
 
-   ```python
+    ```python
     results =  search_client.search(search_text="sublime", search_fields='HotelName', select='HotelId,HotelName')
-
+    
     for result in results:
         print("{}: {}".format(result["HotelId"], result["HotelName"]))
-   ```
+    ```
 
 1. Modeller, model gezinti yapısını oluşturmak için kullanılabilecek etiketlerdir. Bu sorgu, kategori için modelleri ve sayıları döndürür.
 
-   ```python
+    ```python
     results =  search_client.search(search_text="*", facets=["Category"])
-
+    
     facets = results.get_facets()
-
+    
     for facet in facets["Category"]:
         print("    {}".format(facet))
-   ```
+    ```
 
 1. Bu örnekte, belirli bir belgeyi anahtarını temel alarak arayabilirsiniz. Genellikle bir Kullanıcı arama sonucunda bir belgeyi tıklattığında bir belge döndürmek istersiniz.
 
-   ```python
+    ```python
     result = search_client.get_document(key="3")
-
+    
     print("Details for hotel '3' are:")
-    print("        Name: {}".format(result["HotelName"]))
-    print("      Rating: {}".format(result["Rating"]))
-    print("    Category: {}".format(result["Category"]))
-   ```
+    print("Name: {}".format(result["HotelName"]))
+    print("Rating: {}".format(result["Rating"]))
+    print("Category: {}".format(result["Category"]))
+    ```
 
 1. Bu örnekte, AutoComplete işlevini kullanacağız. Bu, genellikle arama kutusuna kullanıcı yazarken olası eşleşmelerin otomatik olarak tamamlanmasını sağlamak için bir arama kutusunda kullanılır.
 
    Dizin oluşturulduğunda, isteğin bir parçası olarak "SG" adlı bir öneri aracı de oluşturulmuştur. Öneri aracı tanımı, öneri aracı istekleriyle olabilecek olası eşleşmeleri bulmak için hangi alanların kullanılabileceğini belirtir. Bu örnekte, bu alanlar ' Etiketler ', ' Adres/Şehir ', ' adres/ülke '. Otomatik tamamlamayı benzetmek için, "sa" harflerini kısmi bir dize olarak geçirin. [Searchclient](/python/api/azure-search-documents/azure.search.documents.searchclient) 'ın AutoComplete yöntemi, geri dönüş olasılığı ile eşleşen geri gönderilir.
 
-   ```python
+    ```python
     search_suggestion = 'sa'
     results = search_client.autocomplete(search_text=search_suggestion, suggester_name="sg", mode='twoTerms')
-
+    
     print("Autocomplete for:", search_suggestion)
     for result in results:
         print (result['text'])
-   ```
+    ```
 
 ## <a name="clean-up"></a>Temizleme
 
