@@ -5,102 +5,70 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 01/11/2019
+ms.date: 01/29/2021
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 358e92d8e43473c168e24be9f4af504e6ffcc37a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 25404837d5bc66ff415be8d8670eb6650475c30f
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96025645"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99094671"
 ---
-*Önbelleği hazırlama*  
-ReadOnly konak önbelleğe alma ile disk, disk sınırından daha yüksek ıOPS verebilir. Ana bilgisayar önbelleğinden bu en büyük okuma performansını almak için öncelikle bu diskin önbelleğini ısınma yapmanız gerekir. Bu, sınama aracının, benchereads birimini önbelleğe almasını sağlar ve aslında diski doğrudan değil, önbelleğe alır. Önbellek İsabetleri, tek önbellek etkin diskten ek ıOPS ile sonuçlanır.
+## <a name="warm-up-the-cache"></a>Önbelleği ısınma
+
+ReadOnly konak önbelleğe alma ile disk, disk sınırından daha yüksek ıOPS verebilir. Ana bilgisayar önbelleğinden bu en büyük okuma performansını almak için öncelikle bu diskin önbelleğini ısınma yapmanız gerekir. Bu, sınama aracının, benchereads birimini önbelleğe almasını sağlar ve aslında diski doğrudan değil, önbelleğe alır. Önbellek İsabetleri, tek önbellek etkin diskten daha fazla ıOPS ile sonuçlanır.
 
 > [!IMPORTANT]
-> Sanal makine her yeniden başlatıldığında, benchişaretlemesini çalıştırmadan önce önbelleği yeniden ısınma yapmanız gerekir.
+> VM 'nin her yeniden başlatıldığı zaman kıyaslamaları çalıştırmadan önce önbelleği ısınma yapmanız gerekir.
 
-## <a name="iometer"></a>İometer
+## <a name="diskspd"></a>DISKSPD
 
-SANAL makinede [Iometer aracını indirin](http://sourceforge.net/projects/iometer/files/iometer-stable/1.1.0/iometer-1.1.0-win64.x86_64-bin.zip/download) .
+[DISKSP ARACıNı](https://github.com/Microsoft/diskspd) sanal makineye indirin. DISKSPD, kendi yapay iş yüklerinizi oluşturmak için özelleştirebileceğiniz bir araçtır. Sınama testleri çalıştırmak için yukarıda açıklanan kurulumu kullanacağız. Farklı iş yüklerini test etmek için belirtimleri değiştirebilirsiniz.
 
-### <a name="test-file"></a>Test dosyası
+Bu örnekte, aşağıdaki temel Parametreler kümesini kullanırız:
 
-İometer, sınama testi çalıştırdığınız birimde depolanan bir test dosyası kullanır. BT sürücüleri, disk ıOPS ve aktarım hızını ölçmek için bu test dosyasını okur ve yazar. Iometer, bir tane sağlamadıysanız bu test dosyasını oluşturur. CacheReads ve Nocacheyazmaları birimlerinde ıobw. tst adlı bir 200 GB test dosyası oluşturun.
+- -c200G: testte kullanılan örnek dosyayı oluşturur (veya yeniden oluşturur). Bayt, KiB, MIB, GiB veya bloklar halinde ayarlanabilir. Bu durumda, bellek önbelleğe alma işlemini en aza indirmek için 200-GiB hedef dosyası büyük bir dosyası kullanılır.
+- -W100: yazma istekleri olan işlemlerin yüzdesini belirtir (-W0, %100 ile eşdeğerdir).
+- -b4K: blok boyutunu bayt, KiB, MIB veya GiB olarak gösterir. Bu durumda, bir rastgele g/ç testinin benzetimini yapmak için 4K blok boyutu kullanılır.
+- -F4: toplam dört iş parçacığı ayarlar.
+- -r: rastgele g/ç testini belirtir (-s parametresini geçersiz kılar).
+- -o128: her iş parçacığı için hedef başına bekleyen g/ç isteklerinin sayısını gösterir. Bu, sıra derinliği olarak da bilinir. Bu durumda, CPU 'YU vurgulamak için 128 kullanılır.
+- -W7200: ölçümler başlamadan önce ısınma zamanının süresini belirtir.
+- -D30: ısınma dahil değil testin süresini belirtir.
+- -Sh: yazılım ve donanım yazma önbelleğini devre dışı bırak (-suw ile eşdeğerdir).
 
-### <a name="access-specifications"></a>Erişim belirtimleri
+Parametrelerin tüm listesi için bkz. [GitHub deposu](https://github.com/Microsoft/diskspd/wiki/Command-line-and-parameters).
 
-Özellikler, istek GÇ boyutu,% okuma/yazma,% rastgele/sıralı, Iometer içindeki "erişim belirtimleri" sekmesi kullanılarak yapılandırılır. Aşağıda açıklanan senaryoların her biri için bir erişim belirtimi oluşturun. Erişim belirtimlerini oluşturun ve – Rasgeleyazmaları \_ 8k, rastgele okuma 8k gibi uygun bir adla "Kaydet" i oluşturun \_ . Test senaryosunu çalıştırırken ilgili belirtimi seçin.
+### <a name="maximum-write-iops"></a>Maksimum yazma ıOPS 'si
+Büyük sıra derinliğini 128, küçük bir blok boyutu 8 KB ve yazma işlemlerini yönlendiren dört çalışan iş parçacığı kullanıyoruz. Yazma çalışanları "none" olarak ayarlanmış üç diske sahip olan "Nocachewrite" birimine trafik yönlendirmiştir.
 
-En büyük yazma ıOPS senaryosuna yönelik erişim belirtimlerine bir örnek aşağıda verilmiştir.  
-    ![Maksimum yazma ıOPS için erişim belirtimleri örneği](../articles/virtual-machines/linux/media/premium-storage-performance/image8.png)
+30 saniyelik ısınma ve 30 saniyelik ölçüm için aşağıdaki komutu çalıştırın:
 
-### <a name="maximum-iops-test-specifications"></a>Maksimum ıOPS test belirtimleri
+`diskspd -c200G -w100 -b8K -F4 -r -o128 -W30 -d30 -Sh testfile.dat`
 
-Maksimum IOPS 'yi göstermek için, daha küçük bir istek boyutu kullanın. 8K istek boyutunu kullanın ve rastgele yazma ve okuma için belirtim oluşturun.
+Sonuçlar, Standard_D8ds_v4 VM 'nin 12.800 olan en büyük yazma ıOPS sınırını dağıtmakta olduğunu gösterir.
 
-| Erişim belirtimi | İstek boyutu | Fi | Okuyamaz |
-| --- | --- | --- | --- |
-| Rastgele yazma \_ 8k |8K |100 |0 |
-| Rastgele okuma \_ 8k |8K |100 |100 |
+:::image type="content" source="../articles/virtual-machines/linux/media/premium-storage-performance/disks-benchmarks-diskspd-max-write-io-per-second.png" alt-text="3208642560 toplam bayt için toplam/sn ve saniye başına toplam 13052,65 g/ç değeri 101,97 ile 391680 en fazla.":::
 
-### <a name="maximum-throughput-test-specifications"></a>En yüksek işleme testi belirtimleri
+### <a name="maximum-read-iops"></a>Maksimum okuma ıOPS 'si
 
-En yüksek aktarım hızını göstermek için daha büyük istek boyutunu kullanın. 64 K istek boyutunu kullanın ve rastgele yazma ve okuma için belirtim oluşturun.
+Yüksek sıra derinliğini 128, küçük bir blok boyutu dört KB ve okuma işlemlerini yapmak için dört çalışan iş parçacığı kullanıyoruz. Okuma çalışanları, önbelleği "ReadOnly" olarak ayarlanmış bir diski olan "CacheReads" biriminde trafiği yönlendirmiştir.
 
-| Erişim belirtimi | İstek boyutu | Fi | Okuyamaz |
-| --- | --- | --- | --- |
-| Rastgele yazar \_ 64K |64 K |100 |0 |
-| Rastgele okuma \_ 64K |64 K |100 |100 |
+İki saatlik ısınma ve 30 saniyelik ölçüm için aşağıdaki komutu çalıştırın:
 
-### <a name="run-the-iometer-test"></a>Iometer testini çalıştırma
+`diskspd -c200G -b4K -F4 -r -o128 -W7200 -d30 -Sh testfile.dat`
 
-Önbelleği ısınma için aşağıdaki adımları gerçekleştirin
+Sonuçlar, Standard_D8ds_v4 VM 'nin 77.000 olan en yüksek okuma ıOPS sınırını dağıtmakta olduğunu gösterir.
 
-1. Aşağıda gösterilen değerlerle iki erişim belirtimleri oluşturun,
+:::image type="content" source="../articles/virtual-machines/linux/media/premium-storage-performance/disks-benchmarks-diskspd-max-read-io-per-second.png" alt-text="Toplam 9652785152 bayt için, Toplam 306,72 saat MIB/sn ve saniye başına toplam 78521,23 ı/OS 2356637 toplam/Işletim sistemi vardı.":::
 
-   | Name | İstek boyutu | Fi | Okuyamaz |
-   | --- | --- | --- | --- |
-   | Rastgele yazar \_ 1 MB |1 MB |100 |0 |
-   | Rastgele okunan \_ 1MB |1 MB |100 |100 |
-1. Önbellek diskini başlatmak için aşağıdaki parametrelerle birlikte Iometer testini çalıştırın. Hedef birim ve 128 sıra derinliği için üç çalışan iş parçacığı kullanın. "Test kurulumu" sekmesinde testin "çalışma süresi" süresini 2 saat olarak ayarlayın.
+### <a name="maximum-throughput"></a>Aktarım hızı üst sınırı
 
-   | Senaryo | Hedef birim | Name | Süre |
-   | --- | --- | --- | --- |
-   | Önbellek diskini Başlat |CacheReads |Rastgele yazar \_ 1 MB |2 saat |
-1. Önbellek diskini aşağıdaki parametrelerle birlikte hazırlama için Iometer testini çalıştırın. Hedef birim ve 128 sıra derinliği için üç çalışan iş parçacığı kullanın. "Test kurulumu" sekmesinde testin "çalışma süresi" süresini 2 saat olarak ayarlayın.
-
-   | Senaryo | Hedef birim | Name | Süre |
-   | --- | --- | --- | --- |
-   | Önbellek diskini ısınma |CacheReads |Rastgele okunan \_ 1MB |2 saat |
-
-Önbellek diski çarpdıktan sonra, aşağıda listelenen test senaryolarına devam edin. Iometer testini çalıştırmak için, **her** bir hedef birim için en az üç çalışan iş parçacığı kullanın. Her çalışan iş parçacığı için, hedef birimi seçin, sıra derinliğini ayarlayın ve ilgili test senaryosunu çalıştırmak için aşağıdaki tabloda gösterildiği gibi kaydedilmiş test belirtimlerinden birini seçin. Tabloda Ayrıca bu testler çalıştırılırken ıOPS ve aktarım hızı için beklenen sonuçlar gösterilmektedir. Tüm senaryolarda, 8 KB küçük GÇ boyutu ve 128 yüksek bir sıra derinliği kullanılır.
-
-| Test Senaryosu | Hedef birim | Name | Sonuç |
-| --- | --- | --- | --- |
-| En çok, IOPS 'yi oku |CacheReads |Rastgele yazma \_ 8k |50.000 ıOPS |
-| En çok, IOPS yaz |Nocacheyazmaları |Rastgele okuma \_ 8k |64.000 ıOPS |
-| En çok, Birleşik ıOPS |CacheReads |Rastgele yazma \_ 8k |100.000 ıOPS |
-| Nocacheyazmaları |Rastgele okuma \_ 8k | &nbsp; | &nbsp; |
-| En çok, Okunan MB/sn |CacheReads |Rastgele yazar \_ 64K |524 MB/sn |
-| En çok, Yazma MB/sn |Nocacheyazmaları |Rastgele okuma \_ 64K |524 MB/sn |
-| Birleşik MB/sn |CacheReads |Rastgele yazar \_ 64K |1000 MB/sn |
-| Nocacheyazmaları |Rastgele okuma \_ 64K | &nbsp; | &nbsp; |
-
-Aşağıda Birleşik ıOPS ve aktarım hızı senaryoları için Iometer test sonuçlarının ekran görüntüleri verilmiştir.
-
-### <a name="combined-reads-and-writes-maximum-iops"></a>Birleşik okuma ve yazma maksimum ıOPS
-
-![Birleşik okuma ve yazma maksimum ıOPS](../articles/virtual-machines/linux/media/premium-storage-performance/image9.png)
-
-### <a name="combined-reads-and-writes-maximum-throughput"></a>Birleşik okuma ve yazma en fazla aktarım hızı
-
-![Birleşik okuma ve yazma en fazla aktarım hızı](../articles/virtual-machines/linux/media/premium-storage-performance/image10.png)
-
+Okuma ve yazma aktarım hızını en fazla almak için, 64 KB 'lik daha büyük bir blok boyutuna geçiş yapabilirsiniz.
 ## <a name="fio"></a>FIO
 
-FIO, Linux VM 'lerinde kıyaslama depolaması için popüler bir araçtır. Farklı GÇ boyutları, sıralı veya rastgele okuma ve yazma esnekliği vardır. Belirtilen g/ç işlemlerini gerçekleştirmek için çalışan iş parçacıklarını veya işlemlerini işler. Her çalışan iş parçacığının iş dosyalarını kullanarak gerçekleştirmesi gereken g/ç işlemlerinin türünü belirtebilirsiniz. Aşağıdaki örneklerde gösterildiği her senaryo için bir iş dosyası oluşturduk. Bu iş dosyalarındaki belirtimleri, Premium depolamada çalışan farklı iş yükleriyle Kıyaslanılacak şekilde değiştirebilirsiniz. Örneklerde, **Ubuntu** çalıştıran standart bir DS 14 VM kullanılmaktadır. Benchişaretleme bölümünün başlangıcında açıklanan kurulum 'u kullanın ve sınama testlerini çalıştırmadan önce önbelleğin düzeyini ayarlayın.
+FIO, Linux VM 'lerinde kıyaslama depolaması için popüler bir araçtır. Farklı GÇ boyutları, sıralı veya rastgele okuma ve yazma esnekliği vardır. Belirtilen g/ç işlemlerini gerçekleştirmek için çalışan iş parçacıklarını veya işlemlerini işler. Her çalışan iş parçacığının iş dosyalarını kullanarak gerçekleştirmesi gereken g/ç işlemlerinin türünü belirtebilirsiniz. Aşağıdaki örneklerde gösterildiği her senaryo için bir iş dosyası oluşturduk. Bu iş dosyalarındaki belirtimleri, Premium depolamada çalışan farklı iş yükleriyle Kıyaslanılacak şekilde değiştirebilirsiniz. Örneklerde, **Ubuntu** çalıştıran bir Standard_D8ds_v4 kullanılmaktadır. Kıyaslama bölümünün başlangıcında açıklanan kurulum 'u kullanın ve kıyaslama testlerini çalıştırmadan önce önbelleği sıcak yapın.
 
 Başlamadan önce, [FIO 'u indirin](https://github.com/axboe/fio) ve sanal makinenize yükleyin.
 
@@ -110,7 +78,7 @@ Ubuntu için aşağıdaki komutu çalıştırın,
 apt-get install fio
 ```
 
-Disklerde okuma işlemlerini yapmak için yazma işlemlerini ve dört çalışan iş parçacığını yönlendiren dört çalışan iş parçacığı kullanıyoruz. Yazma çalışanları "none" olarak ayarlanmış 10 disk olan "NoCache" biriminde trafiği yönlendirmiştir. Okuma çalışanları, "ReadOnly" olarak ayarlanmış bir disk olan "readcache" biriminde trafiği yönlendirmiştir.
+Disklerde okuma işlemlerini yapmak için yazma işlemlerini ve dört çalışan iş parçacığını yönlendiren dört çalışan iş parçacığı kullanıyoruz. Yazma çalışanları, önbellek "none" olarak ayarlanmış üç diske sahip olan "NoCache" biriminde trafiği yönlendirmiştir. Okuma çalışanları, "ReadOnly" olarak ayarlanmış bir disk olan "readcache" biriminde trafiği yönlendirmiştir.
 
 ### <a name="maximum-write-iops"></a>Maksimum yazma ıOPS 'si
 
@@ -122,7 +90,7 @@ size=30g
 direct=1
 iodepth=256
 ioengine=libaio
-bs=8k
+bs=4k
 numjobs=4
 
 [writer1]
@@ -133,7 +101,7 @@ directory=/mnt/nocache
 Önceki bölümlerde ele alınan tasarım yönergeleriyle birlikte aşağıdaki önemli noktalara dikkat edin. Bu belirtimler, maksimum ıOPS 'yi sürücü için gereklidir,  
 
 * 256 yüksek sıra derinliği.  
-* 8 KB 'lık küçük bir blok boyutu.  
+* 4 KB 'lık küçük bir blok boyutu.  
 * Rastgele yazma işlemleri gerçekleştiren birden çok iş parçacığı.
 
 FIO testini 30 saniye boyunca çalıştırmak için aşağıdaki komutu çalıştırın.  
@@ -142,8 +110,8 @@ FIO testini 30 saniye boyunca çalıştırmak için aşağıdaki komutu çalış
 sudo fio --runtime 30 fiowrite.ini
 ```
 
-Test çalışırken, VM ve Premium disklerin teslim aldığı yazma ıOPS sayısını görebilirsiniz. Aşağıdaki örnekte gösterildiği gibi, DS14 VM, 50.000 ıOPS 'nin en büyük yazma ıOPS sınırını dağıtmakta.  
-    ![Yazma ıOPS VM 'si ve Premium diskler teslim edilir.](../articles/virtual-machines/linux/media/premium-storage-performance/image11.png)
+Test çalışırken, VM ve Premium disklerin teslim aldığı yazma ıOPS sayısını görebilirsiniz. Aşağıdaki örnekte gösterildiği gibi, Standard_D8ds_v4 VM, 12.800 ıOPS 'nin en büyük yazma ıOPS sınırını teslim ediyor.  
+    :::image type="content" source="../articles/virtual-machines/linux/media/premium-storage-performance/fio-uncached-writes-1.jpg" alt-text="Yazma ıOPS VM 'si ve Premium SSD 'ler teslim edilirken, yazmaların 13.1 k ıOPS olduğunu gösterir.":::
 
 ### <a name="maximum-read-iops"></a>Maksimum okuma ıOPS 'si
 
@@ -155,7 +123,7 @@ size=30g
 direct=1
 iodepth=256
 ioengine=libaio
-bs=8k
+bs=4k
 numjobs=4
 
 [reader1]
@@ -166,7 +134,7 @@ directory=/mnt/readcache
 Önceki bölümlerde ele alınan tasarım yönergeleriyle birlikte aşağıdaki önemli noktalara dikkat edin. Bu belirtimler, maksimum ıOPS 'yi sürücü için gereklidir,
 
 * 256 yüksek sıra derinliği.  
-* 8 KB 'lık küçük bir blok boyutu.  
+* 4 KB 'lık küçük bir blok boyutu.  
 * Rastgele yazma işlemleri gerçekleştiren birden çok iş parçacığı.
 
 FIO testini 30 saniye boyunca çalıştırmak için aşağıdaki komutu çalıştırın.
@@ -175,8 +143,8 @@ FIO testini 30 saniye boyunca çalıştırmak için aşağıdaki komutu çalış
 sudo fio --runtime 30 fioread.ini
 ```
 
-Test çalışırken, VM ve Premium disklerin teslim aldığı okuma ıOPS sayısını görebilirsiniz. Aşağıdaki örnekte gösterildiği gibi, DS14 sanal makinesi 64.000 'den fazla okuma ıOPS 'yi teslim ediyor. Bu, diskin ve önbellek performansının bir birleşimidir.  
-    ![Yazma ıOPS sanal makinesi ve Premium disklerinin sayısını teslim eden ekran görüntüsü.](../articles/virtual-machines/linux/media/premium-storage-performance/image12.png)
+Test çalışırken, VM ve Premium disklerin teslim aldığı okuma ıOPS sayısını görebilirsiniz. Aşağıdaki örnekte gösterildiği gibi, Standard_D8ds_v4 VM 77.000 'den fazla okuma ıOPS 'si teslim ediyor. Bu, diskin ve önbellek performansının bir birleşimidir.  
+    :::image type="content" source="../articles/virtual-machines/linux/media/premium-storage-performance/fio-cached-reads-1.jpg" alt-text="Yazma ıOPS sanal makinesinin ve Premium SSDs 'nin gösterdiği ekran görüntüsü, okumaların 78.6 k olduğunu gösterir.":::
 
 ### <a name="maximum-read-and-write-iops"></a>Maksimum okuma ve yazma ıOPS 'si
 
@@ -198,7 +166,7 @@ directory=/mnt/readcache
 [writer1]
 rw=randwrite
 directory=/mnt/nocache
-rate_iops=12500
+rate_iops=3200
 ```
 
 Önceki bölümlerde ele alınan tasarım yönergeleriyle birlikte aşağıdaki önemli noktalara dikkat edin. Bu belirtimler, maksimum ıOPS 'yi sürücü için gereklidir,
@@ -213,8 +181,8 @@ FIO testini 30 saniye boyunca çalıştırmak için aşağıdaki komutu çalış
 sudo fio --runtime 30 fioreadwrite.ini
 ```
 
-Test çalışırken, sanal makine ve Premium disklerin teslim edilen birleştirilmiş okuma ve yazma ıOPS sayısını görebilirsiniz. Aşağıdaki örnekte gösterildiği gibi, DS14 sanal makinesi 100.000 ' den fazla birleştirilmiş okuma ve yazma ıOPS 'yi teslim ediyor. Bu, diskin ve önbellek performansının bir birleşimidir.  
-    ![Birleşik okuma ve yazma ıOPS](../articles/virtual-machines/linux/media/premium-storage-performance/image13.png)
+Test çalışırken, sanal makine ve Premium disklerin teslim edilen birleştirilmiş okuma ve yazma ıOPS sayısını görebilirsiniz. Aşağıdaki örnekte gösterildiği gibi, Standard_D8ds_v4 VM 90.000 ' den fazla Birleşik okuma ve yazma ıOPS 'yi teslim ediyor. Bu, diskin ve önbellek performansının bir birleşimidir.  
+    :::image type="content" source="../articles/virtual-machines/linux/media/premium-storage-performance/fio-both-1.jpg" alt-text="Birleşik okuma ve yazma ıOPS, okumaların 78.3 k olduğunu ve yazmaları 12,6 k ıOPS olduğunu gösterir.":::
 
 ### <a name="maximum-combined-throughput"></a>En yüksek Birleşik verimlilik
 

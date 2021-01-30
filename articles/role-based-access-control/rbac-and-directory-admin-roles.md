@@ -15,12 +15,12 @@ ms.date: 01/04/2021
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro;
-ms.openlocfilehash: 3c320b8faf5ccb0b1aec521909b152dff171cbd7
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: 0b43f30c25767a135b98b756d61ed2535e1fbd22
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97862600"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99092209"
 ---
 # <a name="classic-subscription-administrator-roles-azure-roles-and-azure-ad-roles"></a>Klasik abonelik yöneticisi rolleri, Azure rolleri ve Azure AD rolleri
 
@@ -99,7 +99,7 @@ Azure AD rolleri, Kullanıcı oluşturma veya düzenleme, diğer kullanıcılara
 
 | Azure AD rolü | İzinler | Notlar |
 | --- | --- | --- |
-| [Genel Yönetici](../active-directory/roles/permissions-reference.md#company-administrator-permissions) | <ul><li>Azure Active Directory'deki tüm yönetim özelliklerine ve Azure Active Directory'yi federasyona ekleyen hizmetlere erişimi yönetme</li><li>Diğer kullanıcılara yönetici rolü atama</li><li>Tüm kullanıcıların ve diğer yöneticilerin parolasını sıfırlama</li></ul> | Azure Active Directory'ye kaydolan kullanıcı, Genel Yönetici olur. |
+| [Genel Yönetici](../active-directory/roles/permissions-reference.md#global-administrator-permissions) | <ul><li>Azure Active Directory'deki tüm yönetim özelliklerine ve Azure Active Directory'yi federasyona ekleyen hizmetlere erişimi yönetme</li><li>Diğer kullanıcılara yönetici rolü atama</li><li>Tüm kullanıcıların ve diğer yöneticilerin parolasını sıfırlama</li></ul> | Azure Active Directory'ye kaydolan kullanıcı, Genel Yönetici olur. |
 | [Kullanıcı Yöneticisi](../active-directory/roles/permissions-reference.md#user-administrator) | <ul><li>Kullanıcı ve grup oluşturma ve bunların tüm özelliklerini yönetme</li><li>Destek biletlerini yönetme</li><li>Hizmet durumunu izleme</li><li>Kullanıcıların, Yardım Masası yöneticilerinin ve Kullanıcı Yöneticilerinin parolalarını değiştirme</li></ul> |  |
 | [Faturalama yöneticisi](../active-directory/roles/permissions-reference.md#billing-administrator) | <ul><li>Satın alma gerçekleştirme</li><li>Abonelikleri yönetme</li><li>Destek biletlerini yönetme</li><li>Hizmet durumunu izleme</li></ul> |  |
 
@@ -107,7 +107,7 @@ Azure portal, Azure AD rollerinin listesini **Roller ve yöneticiler** dikey pen
 
 ![Azure portal Azure AD rolleri](./media/rbac-and-directory-admin-roles/directory-admin-roles.png)
 
-## <a name="differences-between-azure-roles-and-azure-ad-roles"></a>Azure rolleri ve Azure AD rolleri arasındaki farklar
+## <a name="differences-between-azure-roles-and-azure-ad-roles"></a>Azure rolleri ile Azure AD rolleri arasındaki farklar
 
 Azure rolleri, yüksek düzeyde Azure kaynakları 'nı yönetmek için izinleri kontrol ederken Azure AD rolleri Azure Active Directory kaynaklarını yönetme izinlerini denetler. Farkların bazıları aşağıdaki tabloda karşılaştırılmıştır.
 
@@ -129,5 +129,5 @@ Azure AD ve Microsoft 365 yayılmış genel yönetici ve Kullanıcı Yöneticisi
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure rol tabanlı erişim denetimi (Azure RBAC) nedir?](overview.md)
-- [Azure Active Directory'deki yönetici rolü izinleri](../active-directory/roles/permissions-reference.md)
+- [Azure Active Directory'de yönetici rolü izinleri](../active-directory/roles/permissions-reference.md)
 - [Azure klasik abonelik yöneticileri](classic-administrators.md)

@@ -3,12 +3,12 @@ title: Service Bus üzerinde veri işlemleri gerçekleştirmek için Azure Servi
 description: Bu makalede, Azure Service Bus verilerine erişmek için portal tabanlı Azure Service Bus Gezginini kullanma hakkında bilgi sağlanır.
 ms.topic: conceptual
 ms.date: 01/20/2020
-ms.openlocfilehash: eb6610945ba4b09543308ab351d3a36ec7e587dd
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 06bc2ffffc6b467aa730e16599099bc95117dac9
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98684850"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99092226"
 ---
 # <a name="use-service-bus-explorer-to-perform-data-operations-on-service-bus-preview"></a>Service Bus üzerinde veri işlemleri gerçekleştirmek için Service Bus Gezginini Kullanma (Önizleme)
 
@@ -37,9 +37,9 @@ Service Bus Explorer aracını kullanmak için aşağıdaki görevleri gerçekle
     - [Hızlı başlangıç-kuyruklar oluşturma](service-bus-quickstart-portal.md)
     - [Hızlı başlangıç-konu oluşturma](service-bus-quickstart-topics-subscriptions-portal.md)
 - Ad alanındaki bu rollerden birinin üyesi olduğunuzdan emin olun: 
-    - [Service Bus veri sahibi](../role-based-access-control/built-in-roles.md#azure-service-bus-data-owner) 
-    - [Katkıda Bulunan](../role-based-access-control/built-in-roles.md#contributor) 
-    - [Sahibi](/role-based-access-control/built-in-roles.md#owner)
+    - [Service Bus veri sahibi](/azure/role-based-access-control/built-in-roles#azure-service-bus-data-owner) 
+    - [Katkıda Bulunan](/azure/role-based-access-control/built-in-roles#contributor) 
+    - [Sahibi](/azure/role-based-access-control/built-in-roles#owner)
 
 
 ## <a name="using-the-service-bus-explorer"></a>Service Bus Gezginini Kullanma

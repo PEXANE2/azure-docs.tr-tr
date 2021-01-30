@@ -3,17 +3,17 @@ title: Windows sanal masaüstündeki yenilikler nelerdir? - Azure
 description: Windows sanal masaüstü için yeni özellikler ve ürün güncelleştirmeleri.
 author: Heidilohr
 ms.topic: overview
-ms.date: 01/06/2021
+ms.date: 01/29/2021
 ms.author: helohr
 ms.reviewer: thhickli; darank
 manager: lizross
 ms.custom: references_regions
-ms.openlocfilehash: 2f49ec0fef5aa79c602e561746eb0f6dba16cb33
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 56013a51937915cc240e2bd0ec26342c24c79807
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98876606"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99095915"
 ---
 # <a name="whats-new-in-windows-virtual-desktop"></a>Windows sanal masaüstündeki yenilikler nelerdir?
 
@@ -25,6 +25,61 @@ Windows sanal masaüstü güncelleştirmeleri düzenli aralıklarla yapılır. B
 - Hata düzeltmeleri
 
 Bu makale aylık olarak güncelleştirilir. Yeni güncelleştirmeleri kullanmaya devam etmek için bu adımları en sık kontrol ettiğinizden emin olun.
+
+## <a name="client-updates"></a>İstemci güncelleştirmeleri
+
+Windows sanal masaüstü ve Uzak Masaüstü Hizmetleri istemcilerimize yönelik güncelleştirmeler hakkında bilgi edinmek için şu makalelere göz atın:
+
+- [Windows](/windows-server/remote/remote-desktop-services/clients/windowsdesktop-whatsnew)
+- [macOS](/windows-server/remote/remote-desktop-services/clients/mac-whatsnew)
+- [iOS](/windows-server/remote/remote-desktop-services/clients/ios-whatsnew)
+- [Android](/windows-server/remote/remote-desktop-services/clients/android-whatsnew)
+- [Web](/windows-server/remote/remote-desktop-services/clients/web-client-whatsnew)
+
+## <a name="fslogix-updates"></a>FSLogix güncelleştirmeleri
+
+FSLogix için en son güncelleştirmeler mi merak ediyorsunuz? [FSLogix](/fslogix/whats-new.md)'teki yenilikleri inceleyin.
+
+## <a name="january-2021"></a>Ocak 2021
+
+Ocak 2021 ' de değiştirilen özellikler:
+
+### <a name="new-windows-virtual-desktop-offer"></a>Yeni Windows sanal masaüstü teklifi
+
+Yeni müşteriler, yerel Microsoft çözümünü kullanırken 90 güne kadar, D serisi ve BS serisi sanal makineler için Windows sanal masaüstü işlem maliyetlerinde yüzde 30 tasarruf kazanın. Bu teklifi 31 Mart 2021 ' den önce Azure portal kullanabilirsiniz. [Windows sanal masaüstü teklifi sayfamız](https://azure.microsoft.com/services/virtual-desktop/offer/)hakkında daha fazla bilgi edinin.
+
+### <a name="networksecuritygrouprules-value-change"></a>networkSecurityGroupRules değer değişikliği 
+
+Azure Resource Manager iç içe olan şablonda, networkSecurityGroupRules için varsayılan değeri bir nesneden bir diziye değiştirdik. Bu, networkSecurityGroupRules için bir değer belirtmeden managedDisks-customimagevm.jskullandığınızda hataları engeller. Bu bir son değişiklik değildi ve geriye dönük olarak uyumludur.
+
+### <a name="fslogix-hotfix-update"></a>FSLogix düzeltme güncelleştirmesi
+
+Önceki sürümdeki sorunları çözmek için FSLogix, sürüm 2009 HF_01 (2.9.7654.46150) yayımladık (2.9.7621.30127). Önceki sürümü kullanmayı durdurmanızı ve FSLogix ' i mümkün olan en kısa sürede güncelleştirmeniz önerilir.
+
+Daha fazla bilgi için bkz. [FSLogix 'teki](/fslogix/whats-new.md#fslogix-apps-2009-hf_01-29765446150)yenilikler içindeki sürüm notları.
+
+### <a name="azure-portal-experience-improvements"></a>Azure portal deneyim iyileştirmeleri
+
+Azure portal deneyiminde aşağıdaki iyileştirmeleri yaptık:
+
+- Artık, Active Directory etki alanına ekleme hesabı kimlik bilgileriyle oluşturulmuş bir yerel hesap eklemek yerine doğrudan yerel VM Yöneticisi kimlik bilgilerini ekleyebilirsiniz.
+- Kullanıcılar artık bireysel kullanıcılar ve gruplar için ayrı sekmelerde hem bireysel hem de grup atamalarını listeleyebilir.
+- Windows sanal masaüstü aracısının sürüm numarası artık konak havuzları için sanal makineye genel bakış bölümünde görülebilir.
+- Konak havuzları ve uygulama grupları için toplu silme eklendi.
+- Artık bir konak havuzundaki birden çok oturum ana bilgisayarı için boşaltma modunu etkinleştirebilir veya devre dışı bırakabilirsiniz.
+- Ortak IP alanı, VM ayrıntıları sayfasından kaldırıldı.
+
+### <a name="windows-virtual-desktop-agent-troubleshooting"></a>Windows sanal masaüstü Aracısı sorunlarını giderme
+
+Kısa süre önce, yaygın sorunlarla karşılaşan müşterilere yardımcı olmak için [Windows sanal masaüstü Aracısı sorun giderme kılavuzunu](troubleshoot-agent.md) ayarladık.
+
+### <a name="microsoft-defender-for-endpoint-integration"></a>Uç nokta tümleştirmesi için Microsoft Defender
+
+Uç nokta tümleştirmesi için Microsoft Defender genel kullanıma sunuldu. Bu özellik, Windows Sanal Masaüstü sanal makinelerinizi yerel bir Windows 10 makinesiyle aynı araştırma deneyimini sağlar. Windows 10 Enterprise çoklu oturum kullanıyorsanız, uç nokta için Microsoft Defender, en fazla 50 eşzamanlı kullanıcı bağlantısı destekleyecektir. bu sayede, Windows 10 Enterprise çoklu oturum 'nın maliyet tasarrufları ve uç nokta için Microsoft Defender 'ın güvenilirliği sağlarsınız. Daha fazla bilgi için [blog gönderimize](https://techcommunity.microsoft.com/t5/microsoft-defender-for-endpoint/windows-virtual-desktop-support-is-now-generally-available/ba-p/2103712)göz atın.
+
+### <a name="azure-security-baseline-for-windows-virtual-desktop"></a>Windows sanal masaüstü için Azure Güvenlik temeli
+
+Yakın zamanda ilgilenmeniz gereken Windows sanal masaüstü için [Azure Güvenlik temeli hakkında bir makale](security-baseline.md) yayımladık. Bu yönergeler, Azure Güvenlik kıyaslaması, sürüm 2,0 ' nin Windows sanal masaüstüne nasıl uygulanacağı hakkında bilgi içerir. Azure Güvenlik kıyaslaması, Azure 'da bulut çözümlerinizin güvenliğini sağlamak için kullanmanızı önerdiğimiz ayarları ve uygulamaları açıklar.
 
 ## <a name="december-2020"></a>Aralık 2020
 
@@ -257,16 +312,6 @@ Bağlantı gecikmesini azaltmak için Güney Afrika 'ya yeni bir ağ geçidi kü
 Windows sanal masaüstü için Microsoft ekiplerinde bazı geliştirmeler yaptık. En önemlisi Windows sanal masaüstü artık çağrılar için ses ve görsel yeniden yönlendirmeyi desteklemektedir. Yeniden yönlendirme, kullanıcılar ses veya video kullanarak çağrı yaparken doğrudan yollar oluşturarak gecikme süresini geliştirir. Daha az mesafe daha az sıçrama anlamına gelir, bu da aramaların daha yumuşak görünmesini sağlar.
 
 Daha fazla bilgi edinmek için [blog gönderimize](https://azure.microsoft.com/updates/windows-virtual-desktop-media-optimization-for-microsoft-teams-is-now-available-in-public-preview/)bakın.
-
-## <a name="client-updates"></a>İstemci güncelleştirmeleri
-
-Windows sanal masaüstü ve Uzak Masaüstü Hizmetleri istemcilerimize yönelik güncelleştirmeler hakkında bilgi edinmek için şu makalelere göz atın:
-
-- [Windows](/windows-server/remote/remote-desktop-services/clients/windowsdesktop-whatsnew)
-- [macOS](/windows-server/remote/remote-desktop-services/clients/mac-whatsnew)
-- [iOS](/windows-server/remote/remote-desktop-services/clients/ios-whatsnew)
-- [Android](/windows-server/remote/remote-desktop-services/clients/android-whatsnew)
-- [Web](/windows-server/remote/remote-desktop-services/clients/web-client-whatsnew)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

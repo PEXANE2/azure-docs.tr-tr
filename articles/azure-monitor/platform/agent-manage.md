@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/14/2019
-ms.openlocfilehash: 4d0ceacd37748e9761903d02fd7e052d70b10e15
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 15d01a8ac21264bf57ee7e65147e3989cd631b15
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96011889"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99095565"
 ---
 # <a name="managing-and-maintaining-the-log-analytics-agent-for-windows-and-linux"></a>Windows ve Linux için Log Analytics aracısını yönetme ve bakımını yapma
 
@@ -243,7 +243,7 @@ Aracının indirilen dosyası, IExpress ile oluşturulan, kendi içinde bulunan 
 
 1. Yönetici haklarına sahip bir hesapla bilgisayarda oturum açın.
 
-2. Aracı yükleme dosyalarını ayıklamak için, yükseltilmiş bir komut isteminden çalıştırın `extract MMASetup-<platform>.exe` ve dosyaları ayıklama yolunu sorar. Alternatif olarak, bağımsız değişkenleri geçirerek yolu belirtebilirsiniz `extract MMASetup-<platform>.exe /c:<Path> /t:<Path>` . IExpress tarafından desteklenen komut satırı anahtarları hakkında daha fazla bilgi için bkz. [IExpress Için komut satırı anahtarları](https://support.microsoft.com/help/197147/command-line-switches-for-iexpress-software-update-packages) ve bu örneği gereksinimlerinize uyacak şekilde güncelleştirin.
+2. Aracı yükleme dosyalarını ayıklamak için, yükseltilmiş bir komut isteminden çalıştırın `extract MMASetup-<platform>.exe` ve dosyaları ayıklama yolunu sorar. Alternatif olarak, bağımsız değişkenleri geçirerek yolu belirtebilirsiniz `extract MMASetup-<platform>.exe /c:<Path> /t:<Path>` . IExpress tarafından desteklenen komut satırı anahtarları hakkında daha fazla bilgi için bkz. [IExpress Için komut satırı anahtarları](https://www.betaarchive.com/wiki/index.php?title=Microsoft_KB_Archive/197147) ve bu örneği gereksinimlerinize uyacak şekilde güncelleştirin.
 
 3. İstemine yazın `%WinDir%\System32\msiexec.exe /x <Path>:\MOMAgent.msi /qb` .
 

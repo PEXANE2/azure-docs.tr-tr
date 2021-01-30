@@ -5,12 +5,12 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/12/2020
-ms.openlocfilehash: 76bf9376d3eb33153584f74c9d0d9196706428ae
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 88e2161cfddf95f7f250b8b76c067d045f1529da
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98932099"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99092243"
 ---
 # <a name="azure-hdinsight-release-notes"></a>Azure HDInsight sürüm notları
 
@@ -50,6 +50,9 @@ HDInsight, ölçeklendirme işlemiyle ağ güvenlik grupları (NSG 'ler) ve Kull
 ## <a name="upcoming-changes"></a>Yaklaşan değişiklikler
 Gelecek sürümlerde aşağıdaki değişiklikler olur.
 
+### <a name="breaking-change-for-net-for-apache-spark-100"></a>Apache Spark 1.0.0 için .NET için son değişiklik
+HDInsight, sonraki sürümde Apache Spark için .NET 'in ilk büyük resmi sürümünü ortaya çıkaracak. Spark 2.4. x ve Spark 3.0. x için diğer özelliklerle birlikte DataFrame API 'SI için bir tam sayı sağlar. Bu ana sürüm için son değişiklikler olacaktır, kodunuzu ve işlem hatlarınızı güncelleştirmek için gereken adımları anlamak için [Bu geçiş GUID](https://github.com/dotnet/spark/blob/master/docs/migration-guide.md#upgrading-from-microsoftspark-0x-to-10) 'sine bakın. [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/hdinsight/spark/spark-dotnet-version-update#using-net-for-apache-spark-v10-in-hdinsight).
+
 ### <a name="default-cluster-vm-size-will-be-changed-to-ev3-family"></a>Varsayılan küme VM boyutu Ev3 Family olarak değiştirilecek
 Sonraki sürümden (Ocak sonunda) başlayarak, varsayılan küme VM boyutları D ailesinden iken Ev3 Family olarak değiştirilecektir. Bu değişiklik, baş düğümler ve çalışan düğümleri için geçerlidir. Bu değişikliği önlemek için ARM şablonunda kullanmak istediğiniz VM boyutlarını belirtin.
 
@@ -57,7 +60,7 @@ Sonraki sürümden (Ocak sonunda) başlayarak, varsayılan küme VM boyutları D
 2021 Şubat tarihinden itibaren, HDInsight kümesinin varsayılan sürümü 3,6 ' den 4,0 ' ye değiştirilecek. Kullanılabilir sürümler hakkında daha fazla bilgi için bkz. [kullanılabilir sürümler](./hdinsight-component-versioning.md#available-versions). [Hdınsight 4,0](./hdinsight-version-release.md) ' deki yenilikler hakkında daha fazla bilgi edinin
 
 ### <a name="os-version-upgrade"></a>İşletim sistemi sürümü yükseltme
-HDInsight, işletim sistemi sürümünü 16,04 ' den 18,04 ' e yükseltiyor. Yükseltme, Nisan 2021 tarihinden önce tamamlanır.
+HDInsight, işletim sistemi sürümünü 16,04 ' den 18,04 ' e yükseltiyor. Yükseltme, 2021 Nisan 'dan önce tamamlanır.
 
 ### <a name="hdinsight-36-end-of-support-on-june-30-2021"></a>HDInsight 3,6 30 2021 Haziran 'da destek bitişi
 HDInsight 3,6, destek sonu olacaktır. Form Haziran 30 2021 ' den itibaren, müşteriler yeni HDInsight 3,6 kümeleri oluşturamaz. Mevcut kümeler, Microsoft desteği olmadan olduğu gibi çalışır. Olası sistem/destek kesintilerini önlemek için HDInsight 4,0 ' ye geçmeyi düşünün.

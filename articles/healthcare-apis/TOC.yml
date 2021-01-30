@@ -127,6 +127,10 @@
           href: iot-data-flow.md
         - name: FHIR için Azure IoT Bağlayıcısı’nın (önizleme) eşleme şablonları
           href: iot-mapping-templates.md
+    - name: Güvenlik
+      items:
+        - name: Azure İlkesi’ne göre güvenlik denetimleri
+          href: ./security-controls-policy.md
 - name: Kaynaklar
   items:
     - name: SSS

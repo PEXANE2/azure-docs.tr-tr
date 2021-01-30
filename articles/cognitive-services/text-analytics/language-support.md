@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 12/17/2020
 ms.author: aahi
-ms.openlocfilehash: a0cd968c90a27d6f1ae79d08fb2bd027169233db
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: af7c3f85a75cfb425003b0da2af268fbba1d1d10
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98133795"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99092593"
 ---
 # <a name="text-analytics-api-v3-language-support"></a>Metin Analizi API'si v3 dil desteği 
 
@@ -55,34 +55,33 @@ ms.locfileid: "98133795"
 #### <a name="named-entity-recognition-ner"></a>[Adlandırılmış varlık tanıma (NER)](#tab/named-entity-recognition)
 
 > [!NOTE]
-> * NER v3 Şu anda yalnızca Ingilizce ve Ispanyolca dilleri desteklemektedir. NER v3 'i farklı bir dille çağırırsanız, dil sürüm 2,1 ' de desteklendiğinden, API v 2.1 sonuçları döndürür.
-> * v 2.1 Yalnızca Ingilizce, Çince-Basitleştirilmiş, Fransızca, Almanca ve Ispanyolca dilleri için kullanılabilir varlıkların tam kümesini döndürür.  Desteklenen diğer diller için "kişi", "konum" ve "kuruluş" varlıkları döndürülür.
+> * * İle işaretlenmiş diller için yalnızca "kişi", "konum" ve "kuruluş" varlıkları döndürülür.
 
-| Dil               | Dil kodu | v 2.1 desteği | v3 desteği | V3 modeli sürümünden itibaren: |       Notlar        |
-|:-----------------------|:-------------:|:----------:|:----------:|:-------------------------------:|:------------------:|
-| Arapça                |     `ar`      |     ✓      |            |                                 |                    |
-| Basitleştirilmiş Çince     |   `zh-hans`   |     ✓      |            |                                 | `zh` Ayrıca kabul edildi |
-| Geleneksel Çince   |   `zh-hant`   |     ✓      |            |                                 |                    |
-| Çekçe                 |     `cs`      |     ✓      |            |                                 |                    |
-| Danca                |     `da`      |     ✓      |            |                                 |                    |
-| Felemenkçe                 |     `nl`      |     ✓      |            |                                 |                    |
-| İngilizce                |     `en`      |     ✓      |     ✓      |           2019-10-01            |                    |
-| Fince               |     `fi`      |     ✓      |            |                                 |                    |
-| Fransızca                 |     `fr`      |     ✓      |            |                                 |                    |
-| Almanca                 |     `de`      |     ✓      |            |                                 |                    |
-| İbranice                |     `he`      |     ✓      |            |                                 |                    |
-| Macarca             |     `hu`      |     ✓      |            |                                 |                    |
-| İtalyanca               |     `it`      |     ✓      |            |                                 |                    |
-| Japonca              |     `ja`      |     ✓      |            |                                 |                    |
-| Korece                |     `ko`      |     ✓      |            |                                 |                    |
-| Norveççe (Bokmål)   |     `no`      |     ✓      |            |                                 | `nb` Ayrıca kabul edildi |
-| Lehçe                |     `pl`      |     ✓      |            |                                 |                    |
-| Portekizce (Brezilya)   |    `pt-BR`    |     ✓      |            |                                 |                    |
-| Portekizce (Portekiz) |    `pt-PT`    |     ✓      |            |                                 | `pt` Ayrıca kabul edildi |
-| Rusça              |     `ru`      |     ✓      |            |                                 |                    |
-| İspanyolca               |     `es`      |     ✓      |     ✓       |              2020-04-01                   |                    |
-| İsveççe               |     `sv`      |     ✓      |            |                                 |                    |
-| Türkçe               |     `tr`      |     ✓      |            |                                 |                    |
+| Dil               | Dil kodu | v3 desteği | V3 modeli sürümünden itibaren: |       Notlar        |
+|:-----------------------|:-------------:|:----------:|:-------------------------------:|:------------------:|
+| Arapça                 |     `ar`      |      ✓*    |               2019-10-01        |                    |
+| Basitleştirilmiş Çince     |   `zh-hans`   |     ✓      |               2021-01-15        | `zh` Ayrıca kabul edildi |
+| Geleneksel Çince   |   `zh-hant`   |     ✓*      |               2019-10-01        |                    |
+| Çekçe                 |     `cs`      |     ✓*      |               2019-10-01        |                    |
+| Danca                |     `da`      |     ✓*      |               2019-10-01        |                    |
+| Felemenkçe                 |     `nl`      |     ✓*      |               2019-10-01        |                    |
+| İngilizce                |     `en`      |     ✓      |               2019-10-01        |                    |
+| Fince               |     `fi`      |     ✓*      |               2019-10-01        |                    |
+| Fransızca                 |     `fr`      |     ✓      |               2021-01-15        |                    |
+| Almanca                 |     `de`      |     ✓      |               2021-01-15        |                    |
+| İbranice                |     `he`      |     ✓*      |               2019-10-01        |                    |
+| Macarca             |     `hu`      |     ✓*      |               2019-10-01        |                    |
+| İtalyanca               |     `it`      |     ✓       |               2021-01-15        |                    |
+| Japonca              |     `ja`      |     ✓       |               2021-01-15        |                    |
+| Korece                |     `ko`      |     ✓       |               2021-01-15        |                    |
+| Norveççe (Bokmål)   |     `no`      |     ✓*      |               2019-10-01        | `nb` Ayrıca kabul edildi |
+| Lehçe                |     `pl`      |     ✓*      |               2019-10-01        |                    |
+| Portekizce (Brezilya)   |    `pt-BR`    |     ✓       |               2021-01-15        |                    |
+| Portekizce (Portekiz) |    `pt-PT`    |     ✓       |               2021-01-15        | `pt` Ayrıca kabul edildi |
+| Rusça              |     `ru`      |     ✓*       |               2019-10-01        |                    |
+| İspanyolca               |     `es`      |     ✓       |               2020-04-01        |                    |
+| İsveççe               |     `sv`      |     ✓*      |               2019-10-01        |                    |
+| Türkçe               |     `tr`      |     ✓*      |               2019-10-01        |                    |
 
 #### <a name="key-phrase-extraction"></a>[Anahtar tümceciği ayıklama](#tab/key-phrase-extraction)
 
@@ -97,7 +96,7 @@ ms.locfileid: "98133795"
 | İtalyanca               |     `it`      |     ✓      |     ✓      |                2019-10-01                 |                    |
 | Japonca              |     `ja`      |     ✓      |     ✓      |                2019-10-01                 |                    |
 | Korece                |     `ko`      |     ✓      |     ✓      |                2019-10-01                 |                    |
-| Norveççe (Bokmål)   |     `no`      |     ✓      |     ✓      |                2019-10-01                 | `nb` Ayrıca kabul edildi |
+| Norveççe (Bokmål)   |     `no`      |     ✓      |     ✓      |                2020-07-01                 | `nb` Ayrıca kabul edildi |
 | Lehçe                |     `pl`      |     ✓      |     ✓      |                2019-10-01                 |                    |
 | Portekizce (Brezilya)   |    `pt-BR`    |     ✓      |     ✓      |                2019-10-01                 |                    |
 | Portekizce (Portekiz) |    `pt-PT`    |     ✓      |     ✓      |                2019-10-01                 | `pt` Ayrıca kabul edildi |
@@ -120,98 +119,113 @@ Daha az sıklıkta kullanılan bir dilde ifade ettiğiniz bir içeriğiniz varsa
 
 | Dil | Dil Kodu | v3 desteği | V3 model sürümü ile başlayarak kullanılabilir: |
 |:-|:-:|:-:|:-:|
-| Afrikaner | `af` | ✓ |  |
-| Arnavutça | `sq` | ✓ |  |
-| Arapça | `ar` | ✓ |  |
-| Ermenice | `hy` | ✓ |  |
-| Baskça | `eu` | ✓ |  |
-| Beyaz Rusça | `be` | ✓ |  |
-| Bengali | `bn` | ✓ |  |
-| Boşnakça | `bs` | ✓ | 2020-09-01 |
-| Bulgarca | `bg` | ✓ |  |
-| Birman dili | `my` | ✓ |  |
-| Katalanca, Alcian | `ca` | ✓ |  |
-| Orta Khmer Dili | `km` | ✓ |  |
-| Çince | `zh` | ✓ |  |
-| Basitleştirilmiş Çince | `zh_chs` | ✓ |  |
-| Geleneksel Çince | `zh_cht` | ✓ |  |
-| Hırvatça | `hr` | ✓ |  |
-| Çekçe | `cs` | ✓ |  |
-| Danca | `da` | ✓ |  |
-| Dili | `prs` | ✓ | 2020-09-01 |
-| Divehi, Dhivehi, Maldivian | `dv` | ✓ |  |
-| Felemenkçe, Flemish | `nl` | ✓ |  |
-| İngilizce | `en` | ✓ |  |
-| Esperanto | `eo` | ✓ |  |
-| Estonya Dili | `et` | ✓ |  |
-| Fiji Adaları dili | `fj` | ✓ | 2020-09-01 |
-| Fince | `fi` | ✓ |  |
-| Fransızca | `fr` | ✓ |  |
-| Galiçya Dili | `gl` | ✓ |  |
-| Gürcüce | `ka` | ✓ |  |
-| Almanca | `de` | ✓ |  |
-| Yunanca | `el` | ✓ |  |
-| Gucerat dili | `gu` | ✓ |  |
-| Haitia, Haian Creole | `ht` | ✓ |  |
-| İbranice | `he` | ✓ |  |
-| Hintçe | `hi` | ✓ |  |
-| Hmong DAW | `mww` | ✓ | 2020-09-01 |
-| Macarca | `hu` | ✓ |  |
-| İzlandaca | `is` | ✓ |  |
-| Endonezce | `id` | ✓ |  |
-| Dili | `iu` | ✓ |  |
-| İrlandaca | `ga` | ✓ |  |
-| İtalyanca | `it` | ✓ |  |
-| Japonca | `ja` | ✓ |  |
-| Kannada dili | `kn` | ✓ |  |
-| Kazakça | `kk` | ✓ | 2020-09-01 |
-| Korece | `ko` | ✓ |  |
-| Kürtçe | `ku` | ✓ |  |
-| Laos | `lo` | ✓ |  |
-| Tin | `la` | ✓ |  |
-| Letonca | `lv` | ✓ |  |
-| Litvanca | `lt` | ✓ |  |
-| CA | `mk` | ✓ |  |
-| Malgaşça | `mg` | ✓ | 2020-09-01 |
-| Malayca | `ms` | ✓ |  |
-| Malayalam dili | `ml` | ✓ |  |
-| Maltaca | `mt` | ✓ |  |
-| Maori dili | `mi` | ✓ | 2020-09-01 |
-| Marathi | `mr` | ✓ | 2020-09-01 |
-| Norveççe | `no` | ✓ |  |
-| Norveççe Nynorsk | `nn` | ✓ |  |
-| Oriya | `or` | ✓ |  |
-| Pashto, Pushto | `ps` | ✓ |  |
-| Farsça | `fa` | ✓ |  |
-| Lehçe | `pl` | ✓ |  |
-| Portekizce | `pt` | ✓ |  |
-| Pencap dili, Panjabi | `pa` | ✓ |  |
-| Queretaro Otomi | `otq` | ✓ | 2020-09-01 |
-| Rumence, Moldavian, Moldovan | `ro` | ✓ |  |
-| Rusça | `ru` | ✓ |  |
-| Samoan | `sm` | ✓ | 2020-09-01 |
-| Sırpça | `sr` | ✓ |  |
-| Sinhali dili, Sinhalet | `si` | ✓ |  |
-| Slovakça | `sk` | ✓ |  |
-| Slovence | `sl` | ✓ |  |
-| Dili | `so` | ✓ |  |
-| İspanyolca, CAStilian | `es` | ✓ |  |
-| Svahili dili | `sw` | ✓ |  |
-| İsveççe | `sv` | ✓ |  |
-| Tagalog | `tl` | ✓ |  |
-| Tahiti dili | `ty` | ✓ | 2020-09-01 |
-| Tamil dili | `ta` | ✓ |  |
-| Telugu dili | `te` | ✓ |  |
-| Tayca | `th` | ✓ |  |
-| Tonga dili | `to` | ✓ | 2020-09-01 |
-| Türkçe | `tr` | ✓ |  |
-| Ukraynaca | `uk` | ✓ |  |
-| Urduca | `ur` | ✓ |  |
-| Özbekçe | `uz` | ✓ |  |
-| Vietnamca | `vi` | ✓ |  |
-| Galce | `cy` | ✓ |  |
-| Yidiş | `yi` | ✓ |  |
-| Yucatec Maya | `yua` | ✓ |  |
+|Afrikaner|`af`|✓|    |
+|Arnavutça|`sq`|✓|    |
+|Amhara Dili|`am`|✓|2021-01-05|
+|Arapça|`ar`|✓|    |
+|Ermenice|`hy`|✓|    |
+|Assam|`as`|✓|2021-01-05|
+|Dili|`az`|✓|2021-01-05|
+|Baskça|`eu`|✓|    |
+|Beyaz Rusça|`be`|✓|    |
+|Bengali|`bn`|✓|    |
+|Boşnakça|`bs`|✓|2020-09-01|
+|Bulgarca|`bg`|✓|    |
+|Birman dili|`my`|✓|    |
+|Katalanca|`ca`|✓|    |
+|Orta Khmer Dili|`km`|✓|    |
+|Çince|`zh`|✓|    |
+|Basitleştirilmiş Çince|`zh_chs`|✓|    |
+|Geleneksel Çince|`zh_cht`|✓|    |
+|Korsika dili|`co`|✓|2021-01-05|
+|Hırvatça|`hr`|✓|    |
+|Çekçe|`cs`|✓|    |
+|Danca|`da`|✓|    |
+|Dili|`prs`|✓|2020-09-01|
+|Divehi|`dv`|✓|    |
+|Felemenkçe|`nl`|✓|    |
+|İngilizce|`en`|✓|    |
+|Esperanto|`eo`|✓|    |
+|Estonya Dili|`et`|✓|    |
+|Fiji Adaları dili|`fj`|✓|2020-09-01|
+|Fince|`fi`|✓|    |
+|Fransızca|`fr`|✓|    |
+|Galiçya Dili|`gl`|✓|    |
+|Gürcüce|`ka`|✓|    |
+|Almanca|`de`|✓|    |
+|Yunanca|`el`|✓|    |
+|Gucerat dili|`gu`|✓|    |
+|Haiti|`ht`|✓|    |
+|Hausa Dili|`ha`|✓|2021-01-05|
+|İbranice|`he`|✓|    |
+|Hintçe|`hi`|✓|    |
+|Hmong DAW|`mww`|✓|2020-09-01|
+|Macarca|`hu`|✓|    |
+|İzlandaca|`is`|✓|    |
+|İgbo Dili|`ig`|✓|2021-01-05|
+|Endonezce|`id`|✓|    |
+|Dili|`iu`|✓|    |
+|İrlandaca|`ga`|✓|    |
+|İtalyanca|`it`|✓|    |
+|Japonca|`ja`|✓|    |
+|Cava Dili|`jv`|✓|2021-01-05|
+|Kannada dili|`kn`|✓|    |
+|Kazakça|`kk`|✓|2020-09-01|
+|Kinyarvanda dili|`rw`|✓|2021-01-05|
+|Kirghiz|`ky`|✓|2021-01-05|
+|Korece|`ko`|✓|    |
+|Kürtçe|`ku`|✓|    |
+|Laos|`lo`|✓|    |
+|Tin|`la`|✓|    |
+|Letonca|`lv`|✓|    |
+|Litvanca|`lt`|✓|    |
+|Lüksemburgca|`lb`|✓|2021-01-05|
+|CA|`mk`|✓|    |
+|Malgaşça|`mg`|✓|2020-09-01|
+|Malayca|`ms`|✓|    |
+|Malayalam dili|`ml`|✓|    |
+|Maltaca|`mt`|✓|    |
+|Maori dili|`mi`|✓|2020-09-01|
+|Marathi|`mr`|✓|2020-09-01|
+|Moğolca|`mn`|✓|2021-01-05|
+|Nepal Dili|`ne`|✓|2021-01-05|
+|Norveççe|`no`|✓|    |
+|Norveççe Nynorsk|`nn`|✓|    |
+|Oriya|`or`|✓|    |
+|Pasht|`ps`|✓|    |
+|Farsça|`fa`|✓|    |
+|Lehçe|`pl`|✓|    |
+|Portekizce|`pt`|✓|    |
+|Pencap dili|`pa`|✓|    |
+|Queretaro Otomi|`otq`|✓|2020-09-01|
+|Rumence|`ro`|✓|    |
+|Rusça|`ru`|✓|    |
+|Samoan|`sm`|✓|2020-09-01|
+|Sırpça|`sr`|✓|    |
+|Shona dili|`sn`|✓|2021-01-05|
+|Di|`sd`|✓|2021-01-05|
+|Sinhali|`si`|✓|    |
+|Slovakça|`sk`|✓|    |
+|Slovence|`sl`|✓|    |
+|Dili|`so`|✓|    |
+|İspanyolca|`es`|✓|    |
+|Sunda|`su`|✓|2021-01-05|
+|Svahili dili|`sw`|✓|    |
+|İsveççe|`sv`|✓|    |
+|Tagalog|`tl`|✓|    |
+|Tahiti dili|`ty`|✓|2020-09-01|
+|İK|`tg`|✓|2021-01-05|
+|Tamil dili|`ta`|✓|    |
+|Tatarca|`tt`|✓|2021-01-05|
+|Telugu dili|`te`|✓|    |
+|Tayca|`th`|✓|    |
+|Dili|`bo`|✓|2021-01-05|
+|Tigrinya dili|`ti`|✓|2021-01-05|
+|Tonga dili|`to`|✓|2020-09-01|
+|Türkmence|`tk`|✓|2021-01-05|
+|Zosa dili|`xh`|✓|2021-01-05|
+|Dili|`yo`|✓|2021-01-05|
+|Zulu dili|`zu`|✓|2021-01-05|
 
 ---
 

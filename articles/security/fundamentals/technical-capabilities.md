@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2020
 ms.author: terrylan
-ms.openlocfilehash: 575486a89cd078325b76fa684ff9bd3d59a619c9
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 353b1708a1c6014f9108ad2be62f22c1e0b0604c
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844276"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99092777"
 ---
 # <a name="azure-security-technical-capabilities"></a>Azure güvenliğe yönelik teknik özellikler
 Bu makalede, Azure 'da verilerinizi, kaynaklarınızı ve uygulamalarınızı korumanıza ve işletmenizin güvenlik ihtiyaçlarını karşılamanıza yardımcı olan güvenlik hizmetlerine giriş sunulmaktadır.
@@ -181,7 +181,7 @@ Yoldaki verilerin korunması, veri koruma stratejinizin önemli bir parçası ol
 
 Şirket içinde bulunan bir iş istasyonundan Azure 'a erişimi güvenli hale getirmelerine gerek duyulan kuruluşlar için [noktadan sıteye VPN](../../vpn-gateway/vpn-gateway-howto-point-to-site-classic-azure-portal.md)kullanın.
 
-Daha büyük veri kümeleri, [ExpressRoute](https://azure.microsoft.com/services/expressroute/)gibi adanmış bir yüksek hızlı WAN bağlantısı üzerinden taşınabilir. ExpressRoute kullanmayı seçerseniz, verileri uygulama düzeyinde [SSL/TLS](https://support.microsoft.com/kb/257591) veya ek koruma için diğer protokolleri kullanarak da şifreleyebilirsiniz.
+Daha büyük veri kümeleri, [ExpressRoute](https://azure.microsoft.com/services/expressroute/)gibi adanmış bir yüksek hızlı WAN bağlantısı üzerinden taşınabilir. ExpressRoute kullanmayı seçerseniz, verileri uygulama düzeyinde [SSL/TLS](https://web.archive.org/web/20150221085231/http://support.microsoft.com:80/kb/257591) veya ek koruma için diğer protokolleri kullanarak da şifreleyebilirsiniz.
 
 Azure portalını kullanarak Azure depolama ile etkileşim ediyorsanız, tüm işlemler HTTPS üzerinden gerçekleşir. [Azure depolama](https://azure.microsoft.com/services/storage/) ve [Azure SQL veritabanı](https://azure.microsoft.com/services/sql-database/)Ile etkileşim kurmak için https üzerinden [depolama REST API](/rest/api/storageservices/) de kullanılabilir.
 
@@ -339,7 +339,7 @@ Bu yöntem, çeşitli kaynaklardan gelen verileri birleştirerek Azure hizmetini
 
 Güvenlik Merkezi, olası güvenlik açıklarını tanımlamak için Azure kaynaklarınızın güvenlik durumunu inceler. Gerekli denetimlerin yapılandırılması işlemi boyunca bir öneri listesi size rehberlik eder.
 
-Örneklere şunlar dahildir:
+Örnekler arasında şunlar yer almaktadır:
 
 - Kötü amaçlı yazılımı tanımlama ve kaldırmada yardım etmesi için kötü amaçlı yazılımdan koruma yazılımı hazırlama
 

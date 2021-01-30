@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/15/2020
 ms.author: v-demjoh
-ms.openlocfilehash: 87af99d5136a8bed93854e9396895cddeb22549a
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 68362b61aa0d919bd0e95f3cebb1cf1189f9f0f3
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98540463"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99095196"
 ---
 ## <a name="download-and-install"></a>İndirme ve yükleme
 
@@ -19,9 +19,15 @@ ms.locfileid: "98540463"
 Windows 'a konuşma CLı 'Yı yüklemek için aşağıdaki adımları izleyin:
 
 1. Windows 'ta, platformunuz için [Visual Studio 2019 Için yeniden dağıtılabilir Microsoft Visual C++](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) gerekir. Bunu ilk kez yüklemek için yeniden başlatma gerekebilir.
-2. Konuşma CLı [ZIP arşivini](https://aka.ms/speech/spx-zips.zip)indirip ayıklayın.
-3. Ayıkladığınız dizine gidin `spx-zips` . Bu klasör çeşitli platformlarda konuşma CLı için program dosyalarını içerir. 
-4. Platformunuzun dosyalarını ( `spx-net471` `spx-netcore-win-x64` BIR x64 CPU üzerinde .NET Framework 4,7 veya .net Core 3,0 için) ayıklayın. Bu dizinden çalıştıracağınızı aklınızda bulundurun `spx` .
+1. [.NET Core 3,1](/dotnet/core/install/linux.md)'yi yükler.
+2. Şu komutu girerek NuGet kullanarak konuşma CLı 'Yı yüklersiniz:
+
+    `dotnet tool install --global Microsoft.CognitiveServices.Speech.CLI --version 1.15.0`
+
+`spx`Konuşma CLI yardımını görmek için yazın.
+
+> [!NOTE]
+> NuGet 'e alternatif olarak, konuşma CLı [ZIP arşivini](https://aka.ms/speech/spx-zips.zip)indirip ayıklayabilir, platformunuzu dizinden bulabilir ve ayıklayabilir `spx-zips` ve `spx` yolu sistem **yolu** Değişkeninizle ekleyebilirsiniz.
 
 ### <a name="run-the-speech-cli"></a>Konuşma CLı 'sını çalıştırma
 
@@ -43,15 +49,16 @@ Bir dosyaya çıkış yaparsanız, Not defteri veya Microsoft Edge gibi bir Web 
 
 Linux 'ta konuşma CLı 'Yı x64 CPU 'ya yüklemek için şu adımları izleyin:
 
-1. [.NET Core 3,0](https://dotnet.microsoft.com/download/dotnet-core/3.0)'yi yükler.
-2. Konuşma CLı [ZIP arşivini](https://aka.ms/speech/spx-zips.zip)indirip ayıklayın.
-3. `spx-zips`İndirmenin ayıklanacağı kök dizine gidin ve `spx-netcore-30-linux-x64` Yeni bir `~/spx` dizine ayıklayın.
-4. Bir terminalde şu komutları yazın:
-   1. `cd ~/spx`
-   2. `sudo chmod +r+x spx`
-   3. `PATH=~/spx:$PATH`
+1. [.NET Core 3,1](/dotnet/core/install/linux.md)'yi yükler.
+2. Şu komutu girerek NuGet kullanarak konuşma CLı 'Yı yüklersiniz:
+
+    `dotnet tool install --global Microsoft.CognitiveServices.Speech.CLI --version 1.15.0`
 
 `spx`Konuşma CLI yardımını görmek için yazın.
+
+> [!NOTE]
+> NuGet 'e alternatif olarak, ikili dosyaları [zip arşivine](https://aka.ms/speech/spx-zips.zip)indirebilir, `spx-netcore-30-linux-x64` Yeni bir dizine ayıklayabilir, `~/spx` `sudo chmod +r+x spx` ikiliye yazabilir ve yolu `~/spx` yol sistem Değişkeninizle ekleyebilirsiniz.
+
 
 #### <a name="docker-install-windows-linux-macos"></a>[Docker yüklemesi (Windows, Linux, macOS)](#tab/dockerinstall)
 

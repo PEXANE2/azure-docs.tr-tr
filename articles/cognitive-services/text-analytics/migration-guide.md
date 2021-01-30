@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 12/17/2020
+ms.date: 01/22/2021
 ms.author: aahi
-ms.openlocfilehash: 6a71bcbfb8341098711e330cebf8545e1fd2751c
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 0faa7a6f5a3d2efc8bbef11308b308e3305a00d5
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97656963"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99096330"
 ---
 # <a name="migrate-to-version-3x-of-the-text-analytics-api"></a>Metin Analizi API'si sürüm 3. x ' e geçirin
 
@@ -46,9 +46,6 @@ JSON yanıtının örnekleri için başvuru belgelerine bakın.
 
 ### <a name="feature-changes"></a>Özellik değişiklikleri
 
-> [!NOTE] 
-> Şu anda [v3 varlık kategorileri](named-entity-types.md) yalnızca Ingilizce ve İspanyolca metin üzerinde döndürülür. API, sürüm 2,1 ' de desteklendiklerinden, diğer dillerdeki istekler için sürüm 2,1 sonuçları döndürür.
-
 Sürüm 2,1 ' de Metin Analizi API'si, adlandırılmış varlık tanıma (NER) ve varlık bağlama için bir uç nokta kullanır. Sürüm 3, genişletilmiş adlandırılmış varlık algılaması sağlar ve NER ve varlık bağlama istekleri için ayrı uç noktalar kullanır. V 3.1-Preview. 1 ' den başlayarak, NER kişisel `pii` ve sistem durumu bilgilerini de algılayabilir `phi` . 
 
 ### <a name="steps-to-migrate"></a>Geçiş adımları
@@ -74,6 +71,35 @@ JSON yanıtının örnekleri için başvuru belgelerine bakın.
 
 [!INCLUDE [Client library migration information](includes/client-library-migration-section.md)]
 
+#### <a name="version-21-entity-categories"></a>Sürüm 2,1 varlık kategorileri
+
+Aşağıdaki tabloda, NER v 2.1 için döndürülen varlık kategorileri listelenmektedir.
+
+| Kategori   | Açıklama                          |
+|------------|--------------------------------------|
+| Kişi   |   Kişilerin adları.  |
+|Konum    | Doğal ve insan tarafından oluşturulan yer işaretleri, yapılar, coğrafi özellikler ve geopolitik varlıklar |
+|Kuruluş | Şirketler, siyatik gruplar, müzik bantları, spor sinek, kamu gövdeleri ve kamu kuruluşları. Bu varlık türünde ülke almallikleri ve dini dahil değildir. |
+| PhoneNumber | Telefon numaraları (yalnızca ABD ve AB telefon numaraları). |
+| E-posta | E-posta adresleri. |
+| URL | Web sitelerinin URL 'Leri. |
+| IP | Ağ IP adresleri. |
+| DateTime | Günün tarihleri ve saatleri.| 
+| Tarih | Takvim tarihleri. |
+| Saat | Günün saati |
+| DateRange | Tarih aralıkları. |
+| TimeRange | Zaman aralıkları. |
+| Süre | Sürelerde. |
+| Ayarla | Ayarlama, yinelenme süreleri. |
+| Miktar | Sayılar ve sayısal miktarlar. |
+| Sayı | Sayılarının. |
+| Yüzde | Değerleri.|
+| Sıralı | Sıra sayıları. |
+| Yaş | Geçirir. |
+| Para Birimi | Ayarlarsanız. |
+| Boyut | Boyutlar ve ölçümler. |
+| Sıcaklık | Sıcak. |
+
 ## <a name="language-detection"></a>[Dil algılama](#tab/language-detection)
 
 ### <a name="feature-changes"></a>Özellik değişiklikleri 
@@ -95,7 +121,7 @@ JSON yanıtının örnekleri için başvuru belgelerine bakın.
 
 [!INCLUDE [Client library migration information](includes/client-library-migration-section.md)]
 
-## <a name="key-phrase-extraction"></a>[Anahtar ifade ayıklama](#tab/key-phrase-extraction)
+## <a name="key-phrase-extraction"></a>[Anahtar tümceciği ayıklama](#tab/key-phrase-extraction)
 
 ### <a name="feature-changes"></a>Özellik değişiklikleri 
 

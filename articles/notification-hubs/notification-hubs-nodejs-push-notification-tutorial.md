@@ -18,12 +18,12 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.custom: devx-track-js
-ms.openlocfilehash: 34962686ae36764a6dc16b164e91004be9ef038d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a7ef6ef85ea9d256303852e4b281071da455ebb0
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91250428"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99097682"
 ---
 # <a name="sending-push-notifications-with-azure-notification-hubs-and-nodejs"></a>Azure Notification Hubs ve Node.js anında iletme bildirimleri gönderme
 
@@ -109,7 +109,7 @@ var notificationHubService = azure.createNotificationHubService('hubname','conne
 - **Yük** -iletinin JSON veya ham dize yükü.
 - **Geri arama** -geri çağırma işlevi.
 
-Yük biçimi hakkında daha fazla bilgi için bkz. [Yük belgeleri](https://distriqt.github.io/ANE-PushNotifications/m.FCM-GCM%20Payload).
+Yük biçimi hakkında daha fazla bilgi için bkz. [Yük belgeleri](https://payload.readthedocs.io/en/latest/).
 
 Aşağıdaki kod `GcmService` , `NotificationHubService` Tüm kayıtlı istemcilere anında iletme bildirimi göndermek için tarafından sunulan örneğini kullanır.
 
@@ -155,7 +155,7 @@ notificationHubService.apns.send(null, payload, function(error){
 
 - **Etiketler** -etiket tanımlayıcısı. Hiçbir etiket sağlanmazsa, bildirim tüm istemcilere gönderilir.
 - **Yük** -iletinin XML yükü.
-- **TargetName**  -  TargetName `toast` bildirim için. `token` kutucuk bildirimleri için.
+-   -  TargetName `toast` bildirim için. `token` kutucuk bildirimleri için.
 - **Notificationclass** -bildirimin önceliği. Geçerli değerler için [bir sunucu belgesinden anında iletme bildirimlerinin](/previous-versions/windows/xna/bb200104(v=xnagamestudio.41)) **http üst bilgi öğeleri** bölümüne bakın.
 - **Seçenekler** -isteğe bağlı istek üst bilgileri.
 - **Geri arama** -geri çağırma işlevi.
@@ -233,4 +233,4 @@ Yukarıdaki örnek kod parçacıkları, çok çeşitli cihazlara anında iletme 
 [webmatrix]: /aspnet/web-pages/videos/introduction/create-a-website-using-webmatrix
 [Node.js Cloud Service with Storage]: /develop/nodejs/tutorials/web-app-with-storage/
 [Node.js Web Application with Storage]: /develop/nodejs/tutorials/web-site-with-storage/
-[Azure Portal]: https://portal.azure.com
+[Azure Portalı]: https://portal.azure.com

@@ -1,26 +1,26 @@
 ---
-title: Uygulamanızı Azure Disk Depolama üzerinde değerlendirme
+title: Azure Disk Depolama uygulamanızı kıyaslama
 description: Uygulamanızı Azure 'da değerlendirme süreci hakkında bilgi edinin.
 author: roygara
 ms.author: rogarana
-ms.date: 01/11/2019
+ms.date: 01/29/2021
 ms.topic: how-to
 ms.service: virtual-machines
 ms.subservice: disks
-ms.openlocfilehash: 0d1fb4d51aa08ce1c4889e82d7284da05a68aa17
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: bfda14acc2e50005e25faafa3037805af871c1df
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98540864"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99094651"
 ---
-# <a name="benchmarking-a-disk"></a>Diski sınama
+# <a name="benchmark-a-disk"></a>Disk kıyaslama
 
-Sınama, uygulamanızdaki farklı iş yüklerini taklit etme ve her iş yükü için uygulama performansını ölçme işlemidir. [Yüksek performans için tasarlama makalesinde](premium-storage-performance.md)açıklanan adımları kullanarak, uygulama performansı gereksinimlerini toplamıştır. Uygulamayı barındıran VM 'lerde benchişaretleme araçları 'nı çalıştırarak, uygulamanızın Premium depolamayla elde edilebileceği performans düzeylerini belirleyebilirsiniz. Bu makalede, Azure Premium Depolama disklerinde sağlanan standart bir DS14 VM 'yi sınama örnekleri sunuyoruz.
+Sınama, uygulamanızdaki farklı iş yüklerini taklit etme ve her iş yükü için uygulama performansını ölçme işlemidir. [Yüksek performans için tasarlama makalesinde](premium-storage-performance.md)açıklanan adımları kullanarak, uygulama performansı gereksinimlerini toplamıştır. Uygulamayı barındıran VM 'lerde benchişaretleme araçları 'nı çalıştırarak, uygulamanızın Premium SSD 'Ler ile elde edilebileceği performans düzeylerini belirleyebilirsiniz. Bu makalede, Azure Premium SSD 'Ler ile sağlanan bir Standard_D8ds_v4 sanal makinesini sınama örnekleri sağlıyoruz.
 
-Windows ve Linux için sırasıyla ortak bir benchişaretleme araçları Iometer ve FIO 'u kullandık. Bu araçlar, iş yükü gibi bir üretimi taklit eden birden çok iş parçacığı oluşturup sistem performansını ölçer. Araçları kullanarak, genellikle bir uygulama için değiştiremediğiniz blok boyutu ve sıra derinliği gibi parametreleri de yapılandırabilirsiniz. Bu sayede, farklı uygulama iş yükleri türleri için Premium disklerle sağlanan yüksek ölçekli bir VM 'de maksimum performansı elde etmenizi sağlayan daha fazla esneklik sağlanır. Her bir sınama aracı hakkında daha fazla bilgi edinmek için [Iometer](http://www.iometer.org/) ve [Fio](http://freecode.com/projects/fio)'ı ziyaret edin.
+Windows ve Linux için sırasıyla ortak bir benchişaretleme araçları DiskSpd ve FIO 'u kullandık. Bu araçlar, iş yükü gibi bir üretimi taklit eden birden çok iş parçacığı oluşturup sistem performansını ölçer. Araçları kullanarak, genellikle bir uygulama için değiştiremediğiniz blok boyutu ve sıra derinliği gibi parametreleri de yapılandırabilirsiniz. Bu sayede, farklı türlerde uygulama iş yükleri için Premium SSD 'Ler ile sağlanan yüksek ölçekli bir VM 'de maksimum performansı elde etmeniz daha fazla esneklik sağlar. Her bir benchişaretleme aracı hakkında daha fazla bilgi edinmek için [DiskSpd](https://github.com/Microsoft/diskspd/wiki/) ve [Fio](http://freecode.com/projects/fio)ziyaret edin.
 
-Aşağıdaki örnekleri izlemek için standart bir DS14 VM oluşturun ve VM 'ye 11 Premium Depolama diski ekleyin. 11 disk, ana bilgisayar önbelleğe alma ile 10 disk yapılandırın ve bunları Nocacheyazmaları adlı bir birime ayırır. Ana bilgisayar önbelleğe almayı kalan diskte "ReadOnly" olarak yapılandırın ve bu diskle CacheReads adlı bir birim oluşturun. Bu kurulumu kullanarak, standart bir DS14 VM 'den en fazla okuma ve yazma performansını görebilirsiniz. Premium SSD 'Ler içeren bir DS14 VM oluşturma hakkında ayrıntılı adımlar için, [yüksek performans Için tasarlama](premium-storage-performance.md)bölümüne gidin.
+Aşağıdaki örnekleri izlemek için bir Standard_D8ds_v4 oluşturun ve VM 'ye dört Premium SSD ekleyin. Dört diskte, ana bilgisayar önbelleğe alma ile üç tane yapılandırın ve bunları Nocacheyazmaları adlı bir birime ayırın. Ana bilgisayar önbelleğe almayı kalan diskte "ReadOnly" olarak yapılandırın ve bu diskle CacheReads adlı bir birim oluşturun. Bu kurulumu kullanarak, Standard_D8ds_v4 VM 'den en fazla okuma ve yazma performansını görebilirsiniz. Premium SSD 'Ler ile Standard_D8ds_v4 oluşturma hakkında ayrıntılı adımlar için bkz. [yüksek performans Için tasarlama](premium-storage-performance.md).
 
 [!INCLUDE [virtual-machines-disks-benchmarking](../../includes/virtual-machines-managed-disks-benchmarking.md)]
 

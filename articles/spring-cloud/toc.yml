@@ -45,8 +45,12 @@
       href: spring-cloud-concept-metrics.md
     - name: Azure Spring Boot Actuator
       href: spring-cloud-concept-manage-monitor-app-spring-boot-actuator.md
-    - name: Güvenlik denetimleri
-      href: spring-cloud-concept-security-controls.md
+    - name: Güvenlik
+      items:
+        - name: Güvenlik denetimleri
+          href: spring-cloud-concept-security-controls.md
+        - name: Azure İlkesi’ne göre güvenlik denetimleri
+          href: ./security-controls-policy.md
     - name: Uygulama durumunu anlama
       href: spring-cloud-concept-app-status.md
     - name: Olağanüstü durum kurtarma için planlama

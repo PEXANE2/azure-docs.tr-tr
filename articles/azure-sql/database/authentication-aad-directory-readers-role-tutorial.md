@@ -9,12 +9,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 08/14/2020
-ms.openlocfilehash: 88483b29c8951f8e3f38f7cdc5bbdfb80eeca2b1
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: bc809cf02b827b7498890cb7d929c44bd360ab53
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370143"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99094750"
 ---
 # <a name="tutorial-assign-directory-readers-role-to-an-azure-ad-group-and-manage-role-assignments"></a>Öğretici: Azure AD grubuna Dizin okuyucuları rolü atama ve rol atamalarını yönetme
 
@@ -23,13 +23,13 @@ ms.locfileid: "92370143"
 > [!NOTE]
 > Bu makaledeki bir gruba **Dizin okuyucuları** rolü ataması **genel önizlemede**. 
 
-Bu makale, Azure Active Directory (Azure AD) içinde bir grup oluşturma ve bu gruba [**Dizin okuyucuları**](../../active-directory/roles/permissions-reference.md#directory-readers) rolü atama konusunda size rehberlik eder. Dizin okuyucuları izinleri grup sahiplerinin, gruba, [Azure SQL veritabanı](sql-database-paas-overview.md), [Azure SQL yönetilen örneği](../managed-instance/sql-managed-instance-paas-overview.md)ve [Azure SYNAPSE Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)'in [yönetilen kimliği](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) gibi ek Üyeler eklemesine izin verir. Bu, Kiracıdaki her bir Azure SQL mantıksal sunucu kimliği için Dizin okuyucuları rolünü doğrudan atamak üzere [genel yönetici](../../active-directory/roles/permissions-reference.md#global-administrator--company-administrator) veya [ayrıcalıklı rol yöneticisinin](../../active-directory/roles/permissions-reference.md#privileged-role-administrator) gereksinimini atlar.
+Bu makale, Azure Active Directory (Azure AD) içinde bir grup oluşturma ve bu gruba [**Dizin okuyucuları**](../../active-directory/roles/permissions-reference.md#directory-readers) rolü atama konusunda size rehberlik eder. Dizin okuyucuları izinleri grup sahiplerinin, gruba, [Azure SQL veritabanı](sql-database-paas-overview.md), [Azure SQL yönetilen örneği](../managed-instance/sql-managed-instance-paas-overview.md)ve [Azure SYNAPSE Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)'in [yönetilen kimliği](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) gibi ek Üyeler eklemesine izin verir. Bu, Kiracıdaki her bir Azure SQL mantıksal sunucu kimliği için Dizin okuyucuları rolünü doğrudan atamak üzere [genel yönetici](../../active-directory/roles/permissions-reference.md#global-administrator) veya [ayrıcalıklı rol yöneticisinin](../../active-directory/roles/permissions-reference.md#privileged-role-administrator) gereksinimini atlar.
 
 Bu öğretici, [Azure Active Directory (Önizleme) içinde rol atamalarını yönetmek için bulut gruplarını kullanma](../../active-directory/roles/groups-concept.md)bölümünde sunulan özelliği kullanır. 
 
 Azure SQL için bir Azure AD grubuna Dizin okuyucuları rolünü atamanın avantajları hakkında daha fazla bilgi için bkz. [Azure SQL için Azure Active Directory Directory okuyucuları rolü](authentication-aad-directory-readers-role.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Bir Azure AD örneği. Daha fazla bilgi için bkz. Azure [SQL Ile Azure AD kimlik doğrulamasını yapılandırma ve yönetme](authentication-aad-configure.md).
 - Bir SQL veritabanı, SQL yönetilen örneği veya Azure SYNAPSE.
@@ -38,9 +38,9 @@ Azure SQL için bir Azure AD grubuna Dizin okuyucuları rolünü atamanın avant
 
 ### <a name="create-a-new-group-and-assign-owners-and-role"></a>Yeni bir grup oluştur ve sahipleri ve rolü ata
 
-1. Bu ilk kurulum için [genel yönetici](../../active-directory/roles/permissions-reference.md#global-administrator--company-administrator) veya [ayrıcalıklı rol yöneticisi](../../active-directory/roles/permissions-reference.md#privileged-role-administrator) izinlerine sahip bir kullanıcı gereklidir.
+1. Bu ilk kurulum için [genel yönetici](../../active-directory/roles/permissions-reference.md#global-administrator) veya [ayrıcalıklı rol yöneticisi](../../active-directory/roles/permissions-reference.md#privileged-role-administrator) izinlerine sahip bir kullanıcı gereklidir.
 1. Ayrıcalıklı kullanıcının [Azure Portal](https://portal.azure.com)oturum açmasını sağlayabilirsiniz.
-1. **Azure Active Directory** kaynağına gidin. **Yönetilen**altında **gruplar**' a gidin. Yeni grup oluşturmak için yeni **Grup** ' u seçin.
+1. **Azure Active Directory** kaynağına gidin. **Yönetilen** altında **gruplar**' a gidin. Yeni grup oluşturmak için yeni **Grup** ' u seçin.
 1. Grup türü olarak **güvenlik** ' i seçin ve alanları geri kalanını girin. **Azure AD rollerinin, gruba atanabileceği (Önizleme)** ayarının **Evet**'e geçdiğinizden emin olun. Ardından Azure AD **Dizin okuyucuları** rolünü gruba atayın.
 1. Azure AD kullanıcılarını oluşturulan gruba sahip olarak atayın. Bir grup sahibi, herhangi bir Azure AD Yönetim rolü atanmadan normal bir AD kullanıcısı olabilir. Sahip, SQL veritabanınızı, SQL yönetilen örneğinizi veya Azure SYNAPSE 'yi yöneten bir kullanıcı olmalıdır.
 
@@ -51,11 +51,11 @@ Azure SQL için bir Azure AD grubuna Dizin okuyucuları rolünü atamanın avant
 ### <a name="checking-the-group-that-was-created"></a>Oluşturulan grup denetleniyor
 
 > [!NOTE]
-> **Grup türünün** **güvenlik**olduğundan emin olun. *Microsoft 365* gruplar Azure SQL için desteklenmez.
+> **Grup türünün** **güvenlik** olduğundan emin olun. *Microsoft 365* gruplar Azure SQL için desteklenmez.
 
 Oluşturulan grubu denetlemek ve yönetmek için, Azure portal **gruplar** bölmesine dönün ve grup adınızı arayın. Grubu seçtikten sonra, ayarları **Yönet** ' in **sahipler** ve **Üyeler** menüsünün altına ek sahipler ve Üyeler eklenebilir. Ayrıca grup için **atanan rolleri** gözden geçirebilirsiniz.
 
-:::image type="content" source="media/authentication-aad-directory-readers-role/azure-ad-group-created.png" alt-text="aad-yeni-Grup":::
+:::image type="content" source="media/authentication-aad-directory-readers-role/azure-ad-group-created.png" alt-text="Üyeler, sahipler ve atanan roller (Önizleme) için ayarlar menülerini açan bağlantıları içeren bir grup bölmesinin ekran görüntüsü.":::
 
 ### <a name="add-azure-sql-managed-identity-to-the-group"></a>Gruba Azure SQL yönetilen kimliği ekleme
 
@@ -68,17 +68,17 @@ Sonraki adımlar için, genel yönetici veya ayrıcalıklı rol yöneticisi kull
 
 1. Azure portal **SQL yönetilen örnek** kaynağınızın adını bulun.
 
-   :::image type="content" source="media/authentication-aad-directory-readers-role/azure-ad-managed-instance.png" alt-text="aad-yeni-Grup":::
+   :::image type="content" source="media/authentication-aad-directory-readers-role/azure-ad-managed-instance.png" alt-text="SQL yönetilen örnekler ekranının SQL örnek adı ssomtest ve subnet Name ManagedInstance vurgulanmış ekran görüntüsü.":::
 
    SQL yönetilen örneğinizin oluşturulması sırasında örneğiniz için bir Azure kimliği oluşturulmuştur. Oluşturulan kimlik, SQL yönetilen örnek adınızın ön ekiyle aynı ada sahip. Aşağıdaki adımları izleyerek, bir Azure AD uygulaması olarak oluşturulan SQL yönetilen örnek Kimliğiniz için hizmet sorumlusu ' nı bulabilirsiniz:
 
     - **Azure Active Directory** kaynağına gidin. **Yönet** ayarı altında **Kurumsal uygulamalar**' ı seçin. **Nesne kimliği** , örneğin kimliğidir.
     
-    :::image type="content" source="media/authentication-aad-directory-readers-role/azure-ad-managed-instance-service-principal.png" alt-text="aad-yeni-Grup":::
+    :::image type="content" source="media/authentication-aad-directory-readers-role/azure-ad-managed-instance-service-principal.png" alt-text="SQL yönetilen örneğinin nesne KIMLIĞINE sahip bir Azure Active Directory kaynağa yönelik kurumsal uygulamalar sayfasının ekran görüntüsü.":::
 
-1. **Azure Active Directory** kaynağına gidin. **Yönetilen**altında **gruplar**' a gidin. Oluşturduğunuz grubu seçin. Grubunuzun **yönetilen** ayarı altında **Üyeler**' i seçin. Yukarıda bulunan adı arayarak **üye Ekle** ' yi SEÇIN ve SQL yönetilen örnek hizmeti sorumlunuzu grubun bir üyesi olarak ekleyin.
+1. **Azure Active Directory** kaynağına gidin. **Yönetilen** altında **gruplar**' a gidin. Oluşturduğunuz grubu seçin. Grubunuzun **yönetilen** ayarı altında **Üyeler**' i seçin. Yukarıda bulunan adı arayarak **üye Ekle** ' yi SEÇIN ve SQL yönetilen örnek hizmeti sorumlunuzu grubun bir üyesi olarak ekleyin.
 
-   :::image type="content" source="media/authentication-aad-directory-readers-role/azure-ad-add-managed-instance-service-principal.png" alt-text="aad-yeni-Grup":::
+   :::image type="content" source="media/authentication-aad-directory-readers-role/azure-ad-add-managed-instance-service-principal.png" alt-text="Yeni üye olarak bir SQL yönetilen örneği eklemek için vurgulanmış seçeneklere sahip bir Azure Active Directory kaynağı için Üyeler sayfasının ekran görüntüsü.":::
 
 > [!NOTE]
 > Hizmet sorumlusu izinlerinin Azure sistemi aracılığıyla yayılması ve Azure AD Graph API erişimine izin vermek birkaç dakika sürebilir. SQL yönetilen örneği için bir Azure AD yöneticisi sağlamadan önce birkaç dakika beklemeniz gerekebilir.
@@ -94,7 +94,7 @@ Mantıksal sunucu için bir Azure AD yöneticisi ayarlanırken SQL veritabanı v
 ## <a name="directory-readers-role-assignment-using-powershell"></a>PowerShell kullanarak Dizin okuyucuları rol ataması
 
 > [!IMPORTANT]
-> [Genel yönetici](../../active-directory/roles/permissions-reference.md#global-administrator--company-administrator) veya [ayrıcalıklı rol yöneticisinin](../../active-directory/roles/permissions-reference.md#privileged-role-administrator) bu ilk adımları çalıştırması gerekir. PowerShell 'e ek olarak Azure AD, [Azure AD 'de rol atanabilir bir grup oluşturmak](../../active-directory/roles/groups-create-eligible.md#using-microsoft-graph-api)IÇIN Microsoft Graph API sunar.
+> [Genel yönetici](../../active-directory/roles/permissions-reference.md#global-administrator) veya [ayrıcalıklı rol yöneticisinin](../../active-directory/roles/permissions-reference.md#privileged-role-administrator) bu ilk adımları çalıştırması gerekir. PowerShell 'e ek olarak Azure AD, [Azure AD 'de rol atanabilir bir grup oluşturmak](../../active-directory/roles/groups-create-eligible.md#using-microsoft-graph-api)IÇIN Microsoft Graph API sunar.
 
 1. Aşağıdaki komutları kullanarak Azure AD Preview PowerShell modülünü indirin. PowerShell 'i yönetici olarak çalıştırmanız gerekebilir.
 

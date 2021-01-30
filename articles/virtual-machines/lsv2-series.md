@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: a08b5db19aab19402aa3c93cfa23ce7b39a0a838
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 2416c0b4002f560e272393c95a86c543cb5f1009
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98918697"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99097851"
 ---
 # <a name="lsv2-series"></a>Lsv2 serisi
 
@@ -33,6 +33,7 @@ Lsv2-Series, yüksek performans, düşük gecikme süresi ve [AMD EPIC<sup>TM</s
 [VM oluşturma desteği](generation-2.md): 1. ve 2. nesil<br>
 Burdımı: destekleniyor<br>
 [Hızlandırılmış ağ](../virtual-network/create-vm-accelerated-networking-cli.md): desteklenir<br>
+[Kısa ömürlü işletim sistemi diskleri](ephemeral-os-disks.md): desteklenmez <br>
 <br>
 
 | Boyut | Sanal işlemci | Bellek (GiB) | Geçici disk<sup>1</sup> (gib) | NVMe diskleri<sup>2</sup> | NVMe disk işleme<sup>3</sup> (Okuma IOPS/Mbps) | Önbelleğe alınmamış veri diski verimlilik (IOPS/MBps)<sup>4</sup> | Önbelleğe alınmamış veri diski performansı üst sınırı (IOPS/MBps)<sup>5</sup>| En fazla veri diski | En fazla NIC | Beklenen ağ bant genişliği (MB/sn) |

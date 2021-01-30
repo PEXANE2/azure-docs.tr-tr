@@ -5,12 +5,12 @@ ms.service: data-lake-analytics
 ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 06/29/2018
-ms.openlocfilehash: afa21e6aae769e69e8bc83b9fa0d4f9b76396f7e
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 2f56fc285ed263b4b58985b5df620740a33cb3f5
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92220321"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99092360"
 ---
 # <a name="manage-azure-data-lake-analytics-using-azure-powershell"></a>Azure Data Lake Analytics'i Azure PowerShell'i kullanarak yönetme
 
@@ -298,7 +298,7 @@ Wait-AdlJob -Account $adla -JobId $job.JobId
 
 ## <a name="analyzing-job-history"></a>İş geçmişi çözümleniyor
 
-Data Lake Analytics 'te çalıştırılan işlerin geçmişini çözümlemek için Azure PowerShell kullanmak güçlü bir tekniktir. Kullanım ve maliyetle ilgili Öngörüler elde etmek için bunu kullanabilirsiniz. [Iş geçmişi Analizi örnek deposu](https://github.com/Azure-Samples/data-lake-analytics-powershell-job-history-analysis) ' na bakarak daha fazla bilgi edinebilirsiniz  
+Data Lake Analytics 'te çalıştırılan işlerin geçmişini çözümlemek için Azure PowerShell kullanmak güçlü bir tekniktir. Kullanım ve maliyetle ilgili Öngörüler elde etmek için bunu kullanabilirsiniz. [Iş geçmişi Analizi örnek deposu](https://github.com/jpalbright31/data-lake-analytics-powershell-job-history-analysis) ' na bakarak daha fazla bilgi edinebilirsiniz  
 
 ## <a name="list-job-pipelines-and-recurrences"></a>İş işlem hatlarını ve tekrarları listeleme
 
@@ -551,5 +551,5 @@ Aşağıdaki örneği kullanarak bir Azure Kaynak grubu şablonu da kullanabilir
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Microsoft Azure Data Lake Analytics'e genel bakış](data-lake-analytics-overview.md)
-* [Azure portal](data-lake-analytics-get-started-portal.md)  |  [Azure PowerShell](data-lake-analytics-get-started-powershell.md)  |  [Azure CLI](data-lake-analytics-get-started-cli.md) Azure PowerShell Azure Portal kullanarak Data Lake Analytics kullanmaya başlama
+* [](data-lake-analytics-get-started-portal.md)  |  [](data-lake-analytics-get-started-powershell.md)  |  [Azure CLI](data-lake-analytics-get-started-cli.md) Azure PowerShell Azure Portal kullanarak Data Lake Analytics kullanmaya başlama
 * Azure Data Lake Analytics [Azure Portal](data-lake-analytics-manage-use-portal.md)  |  [Azure PowerShell](data-lake-analytics-manage-use-powershell.md)  |  [CLI](data-lake-analytics-manage-use-cli.md) kullanarak yönetme

@@ -1,27 +1,27 @@
 ---
-title: Konuşma CLı temelleri
+title: Konuşma CLı hızlı başlangıç-konuşma hizmeti
 titleSuffix: Azure Cognitive Services
-description: Konuşma CLı komut aracını, kod olmadan ve en düşük kurulum ile konuşma hizmetiyle çalışmak için kullanmayı öğrenin.
+description: Azure konuşma CLı ile çalışmaya başlayın. Konuşma gibi konuşma hizmetleriyle metin, metin okuma ve konuşma çevirisi ile kod yazmadan etkileşim kurabilirsiniz.
 services: cognitive-services
 author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 04/04/2020
+ms.date: 01/13/2021
 ms.author: trbye
-ms.openlocfilehash: 57f23f1fc0441ac50487cb3008c0b0f84f4b4e78
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: 4a6c7b36665c7a38534ce8e470bc8b327c274d95
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98209585"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "99095195"
 ---
-# <a name="learn-the-basics-of-the-speech-cli"></a>Konuşma CLı 'nın temellerini öğrenin
+# <a name="get-started-with-the-azure-speech-cli"></a>Azure konuşma CLı ile çalışmaya başlama
 
-Bu makalede, konuşma hizmetini kod yazmadan kullanmak için bir komut satırı aracı olan konuşma CLı 'nın temel kullanım düzenlerini öğrenirsiniz. Kullanım durumlarınızın yeterince karşılanıp karşılanmadığını görmek için, geliştirme ortamları oluşturmadan veya herhangi bir kod yazmaya gerek kalmadan, konuşma hizmetinin ana özelliklerini hızlıca test edebilirsiniz. Konuşma CLı, üretime hazırlanıyor ve konuşma hizmetindeki basit iş akışlarını otomatikleştirmek için `.bat` veya kabuk betikleri kullanılarak kullanılabilir.
+Bu makalede, konuşma ve metin yazma, metin okuma ve konuşma çevirisi gibi konuşma hizmetlerine kod yazmadan erişmek için bir komut satırı arabirimi olan konuşma CLı 'yı nasıl kullanacağınızı öğreneceksiniz. Konuşma CLı, üretime hazırlanıyor ve konuşma hizmetindeki basit iş akışlarını otomatikleştirmek için `.bat` veya kabuk betikleri kullanılarak kullanılabilir.
 
-Bu makalede, komut istemi, Terminal veya PowerShell ile ilgili bilgi sahibi olduğunuz varsayılır.
+Bu makalede komut istemi, Terminal veya PowerShell ile ilgili bilgi sahibi olduğunuz varsayılır.
 
 [!INCLUDE [](includes/spx-setup.md)]
 
@@ -29,188 +29,114 @@ Bu makalede, komut istemi, Terminal veya PowerShell ile ilgili bilgi sahibi oldu
 
 Bu bölümde, genellikle ilk kez test ve deneme için yararlı olan birkaç temel SPX komutu gösterilmektedir. Aşağıdaki komutu çalıştırarak araca yerleşik yardımı görüntüleyerek başlayın.
 
-```shell
+```console
 spx
 ```
 
-Dikkat: komut parametrelerinin sağında listelenen yardım konuları **bölümüne bakın** . Alt komutlar hakkında ayrıntılı yardım almak için bu komutları girebilirsiniz.
-
 Yardım konularını anahtar sözcüğe göre arayabilirsiniz. Örneğin, konuşma CLı kullanım örneklerinin bir listesini görmek için aşağıdaki komutu girin:
 
-```shell
+```console
 spx help find --topics "examples"
 ```
 
 Recognize komutuna yönelik seçenekleri görmek için aşağıdaki komutu girin:
 
-```shell
+```console
 spx help recognize
 ```
 
-Şimdi sisteminizin varsayılan mikrofonunu kullanarak konuşma tanımayı gerçekleştirmek için konuşma CLı 'sını kullanalım. 
+Sağ sütunda listelenen ek yardım komutları. Alt komutlar hakkında ayrıntılı yardım almak için bu komutları girebilirsiniz.
 
->[!WARNING]
-> Docker kapsayıcısı kullanıyorsanız, bu komut çalışmaz.
+## <a name="speech-to-text-speech-recognition"></a>Konuşmayı metne dönüştürme (konuşma tanıma)
+
+Sisteminizin varsayılan mikrofonunu kullanarak konuşmayı metne (konuşma tanıma) dönüştürmek için konuşma CLı 'sını kullanalım. Komutu girdikten sonra, SPX geçerli etkin giriş cihazında ses dinlemeye başlar ve **ENTER** tuşuna bastığınızda durur. Kaydedilen konuşma daha sonra tanınır ve konsol çıkışında metne dönüştürülür.
+
+>[!IMPORTANT]
+> Docker kapsayıcısı kullanıyorsanız, `--microphone` çalışmaz.
 
 Şu komutu çalıştırın:
 
-```shell
+```console
 spx recognize --microphone
 ```
 
 Konuşma CLı 'sı sayesinde konuşmayı bir ses dosyasından de tanıyabilirsiniz.
 
-```shell
+```console
 spx recognize --file /path/to/file.wav
 ```
+
 > [!TIP]
 > Bir Docker kapsayıcısında konuşmayı bir ses dosyasından tanıyor ve ses dosyasının önceki adımda bağladığınız dizinde bulunduğundan emin olun.
 
-Komutu girdikten sonra, SPX geçerli etkin giriş cihazında sesi dinlemeye başlayacaktır ve ' ı bastıktan sonra durur `ENTER` . Kaydedilen konuşma daha sonra tanınır ve konsol çıkışında metne dönüştürülür. Metinden konuşmaya birleştirme özelliği, konuşma CLı 'yi kullanmayı da kolaylaştırır. 
+Unutmayın, konuşma CLı 'nın tanıma seçenekleri hakkında daha fazla bilgi edinmek istiyorsanız şunu yazın:
 
-Aşağıdaki komutun çalıştırılması girilen metni girdi olarak alır ve birleştirilmiş konuşmayı geçerli etkin çıkış cihazına çıktı olarak alır.
+```console
+spx help recognize
+```
 
-```shell
+## <a name="text-to-speech-speech-synthesis"></a>Metinden konuşmaya (konuşma senşi)
+
+Aşağıdaki komutun çalıştırılması metin girişi olarak ele alınır ve birleştirilmiş konuşmayı geçerli etkin çıkış cihazına (örneğin, bilgisayarınızın hoparlörleri) çıktı olarak alır.
+
+```console
 spx synthesize --text "Testing synthesis using the Speech CLI" --speakers
 ```
 
-Konuşma tanıma ve birleştirme özelliğine ek olarak konuşma CLı ile konuşma çevirisi de yapabilirsiniz. Yukarıdaki konuşma tanıma komutuna benzer şekilde, varsayılan mikrofonunuzdan ses yakalamak ve hedef dilde metne çeviri gerçekleştirmek için aşağıdaki komutu çalıştırın.
+Ayrıca, sentezlenmiş çıktıyı dosyasına kaydedebilirsiniz. Bu örnekte, dizinde komutun çalıştırıldığı adlı bir dosya oluşturacağız `my-sample.wav` .
 
-```shell
-spx translate --microphone --source en-US --target ru-RU --output file C:\some\file\path\russian_translation.txt
+```console
+spx synthesize --text "We hope that you enjoy using the Speech CLI." --audio output my-sample.wav
 ```
 
-Bu komutta, hem kaynak **(çevrilecek** dil) hem de hedef (çevrilecek **dil) dillerini** belirtirsiniz. `--microphone`Bağımsız değişkeninin kullanılması, geçerli etkin giriş cihazında ses dinlemek ve ' a bastıktan sonra duracaktır `ENTER` . Çıktı, bir metin dosyasına yazılan hedef dile bir metin dönüştürmesidir.
+Bu örnekler, Ingilizce 'de test olduğunuzu kabul ediyor. Ancak, çok sayıda dilde konuşma birleştirmemiz destekliyoruz. Bu komutla birlikte seslerin tam listesini çekerek veya [dil desteği sayfasını](./language-support.md)ziyaret edebilirsiniz.
+
+```console
+spx synthesize --voices
+```
+
+Bulduğunuz sesden birini nasıl kullanacağınızı aşağıda bulabilirsiniz.
+
+```console
+spx synthesize --text "Bienvenue chez moi." --voice fr-CA-Caroline --speakers
+```
+
+Unutmayın, konuşma CLı 'nın senlim seçenekleri hakkında daha fazla bilgi edinmek istiyorsanız şunu yazın:
+
+```console
+spx help synthesize
+```
+
+## <a name="speech-to-text-translation"></a>Konuşmayı metne dönüştürme
+
+Konuşma CLı ile konuşma 'yı metin çevirisi de yapabilirsiniz. Varsayılan mikrofonunuzdan ses yakalamak ve çeviriyi metin olarak çıktısını almak için bu komutu çalıştırın. Komutuyla ve dilini sağlamanız gerektiğini aklınızda bulundurun `source` `target` `translate` .
+
+```console
+spx translate --microphone --source en-US --target ru-RU
+```
+
+Birden çok dile çevrilirken, dil kodlarını ile ayırın `;` .
+
+```console
+spx translate --microphone --source en-US --target ru-RU;fr-FR;es-ES
+```
+
+Çeviriniz çıkışını kaydetmek istiyorsanız `--output` bayrağını kullanın. Bu örnekte, bir dosyadan de okuyacaksınız.
+
+```console
+spx translate --file /some/file/path/input.wav --source en-US --target ru-RU --output file /some/file/path/russian_translation.txt
+```
 
 > [!NOTE]
 > Tüm desteklenen dillerin bir listesi için ilgili yerel ayar kodlarıyla birlikte [dil ve yerel ayar makalesine](language-support.md) bakın.
 
-### <a name="configuration-files-in-the-datastore"></a>Veri deposundaki yapılandırma dosyaları
+Unutmayın, konuşma CLı 'nın çeviri seçenekleri hakkında daha fazla bilgi edinmek istiyorsanız şunu yazın:
 
-Konuşma CLı 'nın davranışı, yapılandırma dosyalarındaki ayarlara bağlı olabilir. Bu, bir sembol kullanarak konuşma CLı çağrıları içinde ifade edebilirsiniz \@ .
-Konuşma CLı, yeni bir ayarı `./spx/data` geçerli çalışma dizininde oluşturduğu yeni bir alt dizine kaydeder.
-Bir yapılandırma değeri ararken, konuşma CLı geçerli çalışma dizininizi, ardından üzerindeki veri deposunda `./spx/data` ve daha sonra diğer veri depolarında, ikili dosyada son salt okuma veri deposu da dahil olmak üzere `spx` .
-Daha önce, ve değerlerini kaydetmek için veri deposunu `@key` kullandınız `@region` , bu nedenle bunları her bir komut satırı çağrısıyla belirtmeniz gerekmez.
-Yapılandırma dosyalarını kendi yapılandırma ayarlarınızı depolamak için de kullanabilir veya çalışma zamanında oluşturulan URL 'Leri ya da diğer dinamik içeriği geçirmek için kullanabilirsiniz.
-
-Bu bölümde, kullanarak komut ayarlarını depolamak ve getirmek için yerel veri deposundaki bir yapılandırma dosyasının kullanımı `spx config` ve seçeneğini kullanarak konuşma CLI 'dan çıktı depolaması gösterilmektedir `--output` .
-
-Aşağıdaki örnek, `@my.defaults` yapılandırma dosyasını temizler, dosyadaki **anahtar** ve **bölge** için anahtar-değer çiftleri ekler ve ' a yapılan çağrıda yapılandırmayı kullanır `spx recognize` .
-
-```shell
-spx config @my.defaults --clear
-spx config @my.defaults --add key 000072626F6E20697320636F6F6C0000
-spx config @my.defaults --add region westus
-
-spx config @my.defaults
-
-spx recognize --nodefaults @my.defaults --file hello.wav
-```
-
-Ayrıca, bir yapılandırma dosyasına dinamik içerik yazabilirsiniz. Örneğin, aşağıdaki komut özel bir konuşma modeli oluşturur ve yeni modelin URL 'sini bir yapılandırma dosyasında depolar. Sonraki komut, söz konusu URL 'deki modelin döndürülmeden önce kullanıma hazırlanana kadar bekler.
-
-```shell
-spx csr model create --name "Example 4" --datasets @my.datasets.txt --output url @my.model.txt
-spx csr model status --model @my.model.txt --wait
-```
-
-Aşağıdaki örnek yapılandırma dosyasına iki URL yazar `@my.datasets.txt` .
-Bu senaryoda, `--output` bir yapılandırma dosyası oluşturmak veya mevcut bir dosyaya eklemek için isteğe bağlı bir **Add** anahtar sözcüğü içerebilir.
-
-
-```shell
-spx csr dataset create --name "LM" --kind Language --content https://crbn.us/data.txt --output url @my.datasets.txt
-spx csr dataset create --name "AM" --kind Acoustic --content https://crbn.us/audio.zip --output add url @my.datasets.txt
-
-spx config @my.datasets.txt
-```
-
-Varsayılan yapılandırma dosyalarının kullanımı ( `@spx.default` , `@default.config` ve `@*.default.config` komutuna özgü varsayılan ayarlar için) dahil olmak üzere veri deposu dosyaları hakkında daha fazla bilgi için şu komutu girin:
-
-```shell
-spx help advanced setup
-```
-
-## <a name="batch-operations"></a>Toplu işlemler
-
-Önceki bölümdeki komutlar, konuşma hizmetinin nasıl çalıştığını hızlı bir şekilde görmek için harika bir yöntemdir. Ancak, kullanım durumlarının karşılanıp karşılanamayacağını değerlendirmek için büyük olasılıkla zaten sahip olduğunuz bir giriş aralığına karşı toplu işlemler gerçekleştirmeniz gerekir, bu da hizmetin çeşitli senaryoları nasıl işlediğini görmenizi sağlar. Bu bölümde nasıl yapılacağı gösterilmektedir:
-
-* Toplu konuşma tanımayı bir ses dosyaları dizininde Çalıştır
-* Bir dosya üzerinden yineleme yapın `.tsv` ve toplu iş metin okuma senşü çalıştırın
-
-## <a name="batch-speech-recognition"></a>Toplu konuşma tanıma
-
-Bir ses dosyası dizininiz varsa, toplu konuşma tanımayı hızlı bir şekilde çalıştırmak için konuşma CLı 'yı kolayca kullanabilirsiniz. Aşağıdaki komutu çalıştırarak dizininizle birlikte `--files` komutunu çalıştırın. Bu örnekte, `\*.wav` dizinde bulunan tüm dosyaları tanımak için dizine eklenir `.wav` . Ayrıca, `--threads` tanımayı 10 paralel iş parçacığında çalıştırmak için bağımsız değişkenini belirtin.
-
-> [!NOTE]
-> `--threads`Bağımsız değişken, komutlar için sonraki bölümde de kullanılabilir `spx synthesize` ve kullanılabilir Iş parçacıkları CPU 'ya ve geçerli yük yüzdesine göre değişir.
-
-```shell
-spx recognize --files C:\your_wav_file_dir\*.wav --output file C:\output_dir\speech_output.tsv --threads 10
-```
-
-Tanınan konuşma çıktısı `speech_output.tsv` `--output file` bağımsız değişkenini kullanarak yazılır. Aşağıda çıkış dosyası yapısına bir örnek verilmiştir.
-
-```output
-audio.input.id    recognizer.session.started.sessionid    recognizer.recognized.result.text
-sample_1    07baa2f8d9fd4fbcb9faea451ce05475    A sample wave file.
-sample_2    8f9b378f6d0b42f99522f1173492f013    Sample text synthesized.
-```
-
-## <a name="synthesize-speech-to-a-file"></a>Konuşmayı bir dosyaya sentezleştirme
-
-Konuşmacının çıkışını bir dosyaya değiştirmek için aşağıdaki komutu çalıştırın `.wav` .
-
-```bash
-spx synthesize --text "The speech synthesizer greets you!" --audio output greetings.wav
-```
-
-Konuşma CLı, Ses dosyasında Ingilizce olarak doğal dil oluşturacak `greetings.wav` .
-Windows 'da, ses dosyasını girerek oynatabilirsiniz `start greetings.wav` .
-
-
-## <a name="batch-text-to-speech-synthesis"></a>Batch metin okuma senşü
-
-Batch metin okuma 'yı çalıştırmanın en kolay yolu, yeni bir `.tsv` (sekmeyle ayrılmış-değer) dosyası oluşturmak ve `--foreach` konuşma CLI 'de komuttan faydalanır. Aşağıdaki dosyayı göz önünde bulundurun `text_synthesis.tsv` :
-
-<!-- The following example contains tabs. Don't accidentally convert these into spaces. -->
-
-```input
-audio.output    text
-C:\batch_wav_output\wav_1.wav   Sample text to synthesize.
-C:\batch_wav_output\wav_2.wav   Using the Speech CLI to run batch-synthesis.
-C:\batch_wav_output\wav_3.wav   Some more text to test capabilities.
-```
-
- Ardından, öğesini işaret etmek için bir komut çalıştırırsınız `text_synthesis.tsv` , her bir alanda sen, `text` ve sonuç olarak karşılık gelen `audio.output` yola bir dosya olarak yazar `.wav` . 
-
-```shell
-spx synthesize --foreach in @C:\your\path\to\text_synthesis.tsv
-```
-
-Bu komut, `spx synthesize --text Sample text to synthesize --audio output C:\batch_wav_output\wav_1.wav` dosyadaki **her kayıt için** çalıştırmanın eşdeğeridir `.tsv` . Dikkat edilmesi gereken birkaç şey:
-
-* Sütun başlıkları, `audio.output` ve `text` sırasıyla komut satırı bağımsız değişkenlerine karşılık gelir `--audio output` `--text` . Gibi çok parçalı komut satırı bağımsız değişkenleri `--audio output` , boşluk olmadan dosyada, önde gelen tireler olmadan ve dizeleri ayıran noktalarla biçimlendirilmelidir. Örneğin, `audio.output` . Diğer mevcut komut satırı bağımsız değişkenleri, bu model kullanılarak ek sütunlar olarak dosyaya eklenebilir.
-* Dosya bu şekilde biçimlendirildiğinde, başka bir bağımsız değişken geçirilmesi gerekmez `--foreach` .
-* İçindeki her değeri bir sekmeyle ayırtığınızdan emin olun `.tsv` . 
-
-Ancak, `.tsv` Aşağıdaki örnekte olduğu gibi bir dosyanız varsa, komut satırı bağımsız değişkenleriyle **eşleşmeyen** sütun başlıkları vardır:
-
-<!-- The following example contains tabs. Don't accidentally convert these into spaces. -->
-
-```input
-wav_path    str_text
-C:\batch_wav_output\wav_1.wav   Sample text to synthesize.
-C:\batch_wav_output\wav_2.wav   Using the Speech CLI to run batch-synthesis.
-C:\batch_wav_output\wav_3.wav   Some more text to test capabilities.
-```
-
-Bu alan adlarını, çağrıda aşağıdaki sözdizimini kullanarak doğru bağımsız değişkenlere geçersiz kılabilirsiniz `--foreach` . Bu, yukarıdaki çağrıdır.
-
-```shell
-spx synthesize --foreach audio.output;text in @C:\your\path\to\text_synthesis.tsv
+```console
+spx help translate
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Konuşma [tanıma özelliğini](get-started-speech-to-text.md?pivots=programmer-tool-spx) kullanarak konuşma tanımayı veya konuşma [sentiğimiz](get-started-text-to-speech.md?pivots=programmer-tool-spx) hızlı başlangıçlarını doldurun.
+* [Konuşma CLI’sini yapılandırma seçenekleri](./spx-data-store-configuration.md)
+* [Konuşma CLı ile Batch işlemleri](./spx-batch-operations.md)

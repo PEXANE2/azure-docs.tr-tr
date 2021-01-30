@@ -1,17 +1,17 @@
 ---
 title: MySQL için Azure veritabanı esnek sunucusu ile bölge yedekli yüksek kullanılabilirliğe genel bakış
 description: MySQL için Azure veritabanı esnek sunucusu ile bölge yedekli yüksek kullanılabilirlik kavramlarını öğrenin
-author: mksuni
-ms.author: sumuth
+author: ambhatna
+ms.author: ambhatna
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 09/21/2020
-ms.openlocfilehash: cd7be998c49a710ee7652cf18c35bed743606ffd
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.date: 01/29/2021
+ms.openlocfilehash: f01a0869f7786ee6197835610456f4bb1cbd6b03
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93241193"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99097126"
 ---
 # <a name="high-availability-concepts-in-azure-database-for-mysql-flexible-server-preview"></a>MySQL için Azure veritabanı esnek sunucusu 'nda yüksek kullanılabilirlik kavramları (Önizleme)
 
@@ -48,7 +48,7 @@ Bölge artıklığı HA özelliğini kullanmanın bazı avantajları aşağıda 
 -   Bekleme çoğaltması, sanal çekirdekler, depolama alanı, ağ ayarları (VNET, güvenlik duvarı) vb. gibi tam bir VM yapılandırmasında dağıtılır.
 -   Yüksek kullanılabilirliği devre dışı bırakarak bekleme çoğaltmasını kaldırma özelliği.
 -   Otomatik yedeklemeler, birincil veritabanı sunucusundan gerçekleştirilen ve bölgesel olarak yedekli depolamada saklanan anlık görüntü tabanlıdır.
--   Bir yük devretme olayı varsa, özgün birincil kullanılabilirlik bölgesinde yeni bir bekleme çoğaltması sağlanır.
+-   Yük devretme durumunda, MySQL için Azure veritabanı esnek sunucu, yüksek kullanılabilirlik etkinse bekleme çoğaltmaya otomatik olarak yük devretmeye çalışır. Yüksek kullanılabilirlik kurulumu birincil sunucuyu izleyip yeniden çevrimiçi duruma getirir.
 -   İstemciler her zaman birincil veritabanı sunucusuna bağlanır.
 -   Bir veritabanı kilitlenmesi veya düğüm arızası varsa, yeniden başlatma ilk olarak aynı düğüm üzerinde denenir. Başarısız olursa, otomatik yük devretme tetiklenir.
 -   Herhangi bir statik sunucu parametresi değişikliğini seçmek için sunucuyu yeniden başlatma özelliği.

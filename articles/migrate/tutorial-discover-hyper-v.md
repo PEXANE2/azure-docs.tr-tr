@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: mvc
-ms.openlocfilehash: 7c3bca9e5ad87c681fc38a5c618331a3f7a97ae1
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 8b46d08da87565d133962c23e8281b221544d9ca
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98897518"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99092525"
 ---
 # <a name="tutorial-discover-hyper-v-vms-with-server-assessment"></a>Öğretici: Sunucu değerlendirmesi ile Hyper-V VM 'lerini bulma
 
@@ -87,7 +87,7 @@ Konak gereksinimlerini doğrulama | Konağın desteklenen bir Hyper-V sürümü 
 PowerShell sürümünü doğrula | Betiği desteklenen bir PowerShell sürümünde çalıştırıp çalıştırdığınızı denetler. | Hyper-V konağında PowerShell sürüm 4,0 veya üstünü kullandığınızı denetleyin.
 Hesap oluşturma | Hyper-V konağı üzerinde doğru izinlere sahip olduğunuzu doğrular.<br/><br/> Doğru izinlerle yerel bir kullanıcı hesabı oluşturmanıza olanak sağlar. | Seçenek 1: Hyper-V konak makinesine yönetici erişimi olan bir hesap hazırlayın.<br/><br/> 2. seçenek: bir yerel yönetici hesabı veya etki alanı yönetici hesabı hazırlayın ve hesabı şu gruplara ekleyin: uzak yönetim kullanıcıları, Hyper-V yöneticileri ve performans Izleyicisi kullanıcıları.
 PowerShell uzaktan iletişimini etkinleştir | Azure geçişi gerecinin bir WinRM bağlantısı üzerinden konakta PowerShell komutları çalıştırabilmeleri için konakta PowerShell uzaktan iletişimini mümkün bir şekilde sunar. | Ayarlamak için, her bir konakta, yönetici olarak bir PowerShell konsolu açın ve şu komutu çalıştırın: ``` powershell Enable-PSRemoting -force ```
-Hyper-V tümleştirme hizmetlerini ayarlama | Hyper-V tümleştirme hizmetlerinin konak tarafından yönetilen tüm VM 'lerde etkin olduğunu denetler. | Her VM 'de [Hyper-V tümleştirme hizmetlerini etkinleştirin](/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services.md) .<br/><br/> Windows Server 2003 çalıştırıyorsanız, [Bu yönergeleri izleyin](prepare-windows-server-2003-migration.md).
+Hyper-V tümleştirme hizmetlerini ayarlama | Hyper-V tümleştirme hizmetlerinin konak tarafından yönetilen tüm VM 'lerde etkin olduğunu denetler. | Her VM 'de [Hyper-V tümleştirme hizmetlerini etkinleştirin](/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services) .<br/><br/> Windows Server 2003 çalıştırıyorsanız, [Bu yönergeleri izleyin](prepare-windows-server-2003-migration.md).
 VM diskleri uzak SMB paylaşımlarında bulunuyorsa kimlik bilgilerini devretmek | Temsilci kimlik bilgileri | CredSSP 'yi SMB paylaşımlarında diskler içeren Hyper-V VM 'Leri çalıştıran konaklarda kimlik bilgileri temsilcisine devretmek için bu komutu çalıştırın: ```powershell Enable-WSManCredSSP -Role Server -Force ```<br/><br/> Bu komutu, tüm Hyper-V konaklarında uzaktan çalıştırabilirsiniz.<br/><br/> Kümeye yeni konak düğümleri eklerseniz, bulma için otomatik olarak eklenir, ancak CredSSP 'yi el ile etkinleştirmeniz gerekir.<br/><br/> Gereci ayarlarken, [Bu uygulamayı gereç üzerinde etkinleştirerek](#delegate-credentials-for-smb-vhds)CredSSP ayarlamayı tamamlayacağız. 
 
 ### <a name="run-the-script"></a>Betiği çalıştırın

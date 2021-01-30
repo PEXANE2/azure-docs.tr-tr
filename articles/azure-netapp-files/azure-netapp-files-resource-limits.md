@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/01/2020
+ms.date: 01/29/2021
 ms.author: b-juche
-ms.openlocfilehash: aaffc63690894f43329763064ae89a105274953c
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: c82e834c0af3737c1e5ef19c7aa789b94d87f6d8
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96511942"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99095400"
 ---
 # <a name="resource-limits-for-azure-netapp-files"></a>Azure NetApp Files için kaynak sınırları
 
@@ -29,12 +29,12 @@ Azure NetApp Files için kaynak sınırlarını anlamak, birimlerinizi yönetmen
 
 Aşağıdaki tabloda Azure NetApp Files için kaynak sınırları açıklanmaktadır:
 
-|  Resource  |  Varsayılan limit  |  Destek isteği aracılığıyla ayarlanabilir  |
+|  Kaynak  |  Varsayılan limit  |  Destek isteği aracılığıyla ayarlanabilir  |
 |----------------|---------------------|--------------------------------------|
-|  Abonelik başına Azure bölgesi başına NetApp hesabı sayısı  |  10    |  Evet   |
-|  NetApp hesabı başına kapasite havuzlarının sayısı   |    25     |   Evet   |
-|  Abonelik başına birim sayısı   |    500     |   Evet   |
-|  Kapasite havuzu başına birim sayısı     |    500   |    Evet     |
+|  Abonelik başına Azure bölgesi başına NetApp hesabı sayısı  |  10    |  Yes   |
+|  NetApp hesabı başına kapasite havuzlarının sayısı   |    25     |   Yes   |
+|  Abonelik başına birim sayısı   |    500     |   Yes   |
+|  Kapasite havuzu başına birim sayısı     |    500   |    Yes     |
 |  Birim başına anlık görüntü sayısı       |    255     |    Hayır        |
 |  Azure sanal ağı başına Azure NetApp Files (Microsoft. NetApp/birimler) için temsilci seçilen alt ağ sayısı    |   1   |    Hayır    |
 |  Bir VNet 'te kullanılan IP sayısı (anında eşlenen sanal ağlar dahil) Azure NetApp Files   |    1000   |    Hayır   |
@@ -44,10 +44,12 @@ Aşağıdaki tabloda Azure NetApp Files için kaynak sınırları açıklanmakta
 |  Tek bir birimin en büyük boyutu     |    100 TiB    |    Hayır    |
 |  Tek bir dosyanın en büyük boyutu     |    16 TiB    |    Hayır    |    
 |  Tek bir dizindeki dizin meta verilerinin en büyük boyutu      |    320 MB    |    Hayır    |    
-|  Birim başına en fazla dosya sayısı ([maxfiles](#maxfiles))     |    100.000.000    |    Evet    |    
+|  Birim başına en fazla dosya sayısı ([maxfiles](#maxfiles))     |    100.000.000    |    Yes    |    
 |  El ile QoS birimi için atanan en düşük aktarım hızı     |    1 MIB/sn   |    Hayır    |    
 |  El ile QoS birimi için atanan en yüksek aktarım hızı     |    4.500 MIB/sn    |    Hayır    |    
-|  Çapraz bölge çoğaltma verileri koruma birimlerinin sayısı (hedef birimler)     |    5    |    Evet    |     
+|  Çapraz bölge çoğaltma verileri koruma birimlerinin sayısı (hedef birimler)     |    5    |    Yes    |     
+
+Dizin meta verileri (320 MB) için en büyük boyut sınırına yaklaşıp yaklaşmadığını görmek için, [bir dizinin sınır boyutuna yaklaşıp yaklaşmadığını belirleme nasıl yaparım?](azure-netapp-files-faqs.md#how-do-i-determine-if-a-directory-is-approaching-the-limit-size)bakın.   
 
 Daha fazla bilgi için bkz. [Kapasite Yönetimi SSS](azure-netapp-files-faqs.md#capacity-management-faqs).
 
@@ -83,7 +85,7 @@ Azure portal gezinti düzleminden:
 4. Ayrıntılar sekmesinde:
     1. Açıklama kutusunda, ilgili kaynak türü için aşağıdaki bilgileri sağlayın:
 
-        |  Resource  |    Üst kaynaklar      |    İstenen yeni sınırlar     |    Kota artışının nedeni       |
+        |  Kaynak  |    Üst kaynaklar      |    İstenen yeni sınırlar     |    Kota artışının nedeni       |
         |----------------|------------------------------|---------------------------------|------------------------------------------|
         |  Hesap |  *Abonelik kimliği*   |  *İstenen yeni en büyük **Hesap** numarası*    |  *İstekte hangi senaryo veya kullanım örneği istendi?*  |
         |  Havuz    |  *Abonelik KIMLIĞI, NetApp hesap URI 'SI*  |  *İstenen yeni en büyük **Havuz** numarası*   |  *İstekte hangi senaryo veya kullanım örneği istendi?*  |

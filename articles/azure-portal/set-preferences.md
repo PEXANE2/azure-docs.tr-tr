@@ -4,12 +4,12 @@ description: Kendi tercihlerinizi karşılamak için Azure portal varsayılan ay
 keywords: ayarlar, zaman aşımı, dil, bölgesel
 ms.date: 08/05/2020
 ms.topic: how-to
-ms.openlocfilehash: 07dd3eb5cb132adf87852f29d867be772294d189
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 5a108f1cd3b5af6655b592e7283192d4d54498ac
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96745647"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99094119"
 ---
 # <a name="manage-azure-portal-settings-and-preferences"></a>Azure portal ayarlarını ve tercihlerini yönetme
 
@@ -91,7 +91,7 @@ Yöneticiniz, etkin olmayan bir zaman aşımı ilkesini etkinleştirmişse, Dizi
 
 ### <a name="change-the-directory-timeout-setting-admin"></a>Dizin zaman aşımı ayarını değiştirme (yönetici)
 
-[Genel yönetici rolündeki](../active-directory/roles/permissions-reference.md#global-administrator--company-administrator) Yöneticiler, oturum kapatmadan önce en fazla boş süreyi uygulayabilir. Etkin olmama zaman aşımı ayarı dizin düzeyinde geçerlidir. Bu ayar yeni oturumlar için geçerli olur. Zaten oturum açmış olan kullanıcılar için hemen uygulanmaz. Dizinler hakkında daha fazla bilgi için bkz. [Active Directory Domain Services genel bakış](/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview).
+[Genel yönetici rolündeki](../active-directory/roles/permissions-reference.md#global-administrator) Yöneticiler, oturum kapatmadan önce en fazla boş süreyi uygulayabilir. Etkin olmama zaman aşımı ayarı dizin düzeyinde geçerlidir. Bu ayar yeni oturumlar için geçerli olur. Zaten oturum açmış olan kullanıcılar için hemen uygulanmaz. Dizinler hakkında daha fazla bilgi için bkz. [Active Directory Domain Services genel bakış](/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview).
 
 Genel yöneticiyseniz ve Azure portal tüm kullanıcıları için boşta kalma zaman aşımı ayarını zorlamak istiyorsanız aşağıdaki adımları izleyin:
 

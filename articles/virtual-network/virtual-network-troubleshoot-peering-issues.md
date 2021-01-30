@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2019
 ms.author: kaushika
-ms.openlocfilehash: 75b62eb00b1a1a534be01f9f118b4d5066e44a37
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: cb5ce421b6a38edcb8d92866f749a544eff927d6
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222896"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99096398"
 ---
 # <a name="troubleshoot-virtual-network-peering-issues"></a>Sanal ağ eşleme sorunlarını giderme
 
@@ -87,7 +87,7 @@ Farklı aboneliklerdeki veya Active Directory kiracılardaki sanal ağların san
 Daha fazla bilgi için bkz. [hizmet zincirleme](./virtual-network-peering-overview.md#service-chaining).
 
 > [!Note]
-> Bir NVA ayarlamak için yardıma ihtiyacınız varsa [NVA satıcısına başvurun](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines).
+> Bir NVA ayarlamak için yardıma ihtiyacınız varsa [NVA satıcısına başvurun](https://mskb.pkisolutions.com/kb/2984655).
 
 NVA cihaz kurulumu ve yönlendirme sorunlarını gidermeye yönelik yardım için bkz. [Azure 'Da ağ sanal gereç sorunları](./virtual-network-troubleshoot-nva.md).
 
@@ -190,7 +190,7 @@ Noktadan siteye bağlantılar için:
 
 Hub ağı bir NVA içermelidir. Bir sonraki atlama olarak ayarlanan bir NVA 'ya sahip olan ve hub sanal ağında **iletilen trafiğe Izin ver** ' i etkinleştirerek udrs 'yi yapılandırın.
 
-Daha fazla bilgi için bkz. [hizmet zincirleme](./virtual-network-peering-overview.md#service-chaining)ve bu gereksinimleri tercih ettiğiniz [NVA satıcısı](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines) ile tartışın.
+Daha fazla bilgi için bkz. [hizmet zincirleme](./virtual-network-peering-overview.md#service-chaining)ve bu gereksinimleri tercih ettiğiniz [NVA satıcısı](https://mskb.pkisolutions.com/kb/2984655) ile tartışın.
 
 ## <a name="troubleshoot-a-hub-spoke-network-connectivity-issue-between-spoke-virtual-networks-in-different-regions"></a>Farklı bölgelerde bağlı olan sanal ağlar arasında hub-bağlı ağ bağlantısı sorununu giderme
 

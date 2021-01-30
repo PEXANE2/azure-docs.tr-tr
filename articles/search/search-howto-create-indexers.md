@@ -8,26 +8,26 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/28/2021
-ms.openlocfilehash: 0483030312493dde9a50ab9000fbe29f19bfaff4
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.openlocfilehash: c26529f48d03b8cd038ce4fea8164a305dfc17f3
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99064289"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99097649"
 ---
 # <a name="create-a-search-indexer"></a>Arama Dizin Oluşturucusu oluşturma
 
-Arama Dizin Oluşturucusu, bir dış veri kaynağından belge ve içerik aktarmaya yönelik otomatik bir iş akışını, arama hizmetinizde bir arama dizinine sağlar. Başlangıçta tasarlandığı gibi, Azure veri kaynaklarından metin ve meta verileri ayıklar, belgeleri JSON 'a serileştirir ve sonuç belgelerini dizin oluşturma için bir arama altyapısına geçirir. Bu, derin içerik işleme için [AI zenginleştirme](cognitive-search-concept-intro.md) desteği sağlamak üzere genişletilmiştir. 
+Arama Dizin Oluşturucusu, bir dış veri kaynağından belge ve içerik aktarmaya yönelik otomatik bir iş akışını, arama hizmetinizde bir arama dizinine sağlar. Başlangıçta tasarlandığı gibi, bir Azure veri kaynağından metin ve meta verileri ayıklar, belgeleri JSON 'a serileştirir ve sonuç belgelerini dizin oluşturma için bir arama altyapısına geçirir. Bu, derin içerik işleme için [AI zenginleştirme](cognitive-search-concept-intro.md) desteği sağlamak üzere genişletilmiştir. 
 
-Dizin oluşturucular kullanmak, yazmanız gereken kodun miktarını ve karmaşıklığını önemli ölçüde azaltır. Bu makale, kaynak özel dizin oluşturucularının ve [becerileri](cognitive-search-working-with-skillsets.md)araştırmadan önce bir temeli yerleştirerek, Dizin oluşturucuların mekanizması ve yapısına odaklanır.
+Dizin oluşturucular kullanmak, yazmanız gereken kodun miktarını ve karmaşıklığını önemli ölçüde azaltır. Bu makalede, kaynak özel Dizin oluşturucular ve [becerileri](cognitive-search-working-with-skillsets.md)ile daha gelişmiş çalışma için hazırlık olarak bir Dizin Oluşturucu oluşturma mekanizması ele alınmaktadır.
 
 ## <a name="whats-an-indexer-definition"></a>Dizin Oluşturucu tanımı nedir?
 
-Dizin oluşturucular, kaynak alanlardan dizin alanlarına metin çeken metin tabanlı dizin oluşturma veya yapı için değişmeyen metni çözümleyen ya da metin ve bilgilerin görüntülerini analiz eden AI tabanlı işleme için kullanılır. Aşağıdaki dizin tanımları, her iki senaryo için de oluşturabileceğiniz şeydir.
+Dizin oluşturucular, kaynak alanlardan dizin alanlarına alfasayısal içerik çeken metin tabanlı dizin oluşturma veya yapı için değişmeyen metni çözümleyen ya da metin ve bilgilerin görüntülerini analiz eden ve bu içeriği bir dizine ekleyen AI tabanlı işleme için kullanılır. Aşağıdaki dizin tanımları, her iki senaryo için de oluşturabileceğiniz şeydir.
 
 ### <a name="indexers-for-text-content"></a>Metin içeriği için Dizin oluşturucular
 
-Bir dizin oluşturucunun özgün amacı, bir veri kaynağındaki alanlardan metin ve sayısal içerik bağlama ve okuma, bu içeriği JSON belgeleri olarak serileştirme ve bu belgeleri dizin oluşturma için arama altyapısına bırakma için bir mekanizma sağlayarak bir dizin yükleme işleminin karmaşık bir sürecini basitleştirmektir. Bu hala birincil bir kullanım durumu ve bu işlem için, bu bölümde tanımlanan özelliklerle bir dizin oluşturucu oluşturmanız gerekir.
+Bir dizin oluşturucunun özgün amacı, bir veri kaynağındaki alanlardan metin ve sayısal içerik bağlama ve okuma, bu içeriği JSON belgeleri olarak serileştirme ve bu belgeleri dizin oluşturma için arama altyapısına bırakma için bir mekanizma sağlayarak bir dizin yükleme işleminin karmaşık bir sürecini basitleştirmektir. Bu hala birincil bir kullanım örneğidir ve bu işlem için aşağıdaki örnekte tanımlanan özelliklerle bir dizin oluşturucu oluşturmanız gerekir.
 
 ```json
 {
@@ -42,17 +42,18 @@ Bir dizin oluşturucunun özgün amacı, bir veri kaynağındaki alanlardan meti
   "fieldMappings": [ optional unless there are field discrepancies that need resolution]
 }
 ```
-**`name`**, **`dataSourceName`** , Ve **`targetIndexName`** özellikleri gereklidir, Dizin oluşturucuyu çalıştırmadan önce hem veri kaynağı hem de dizin zaten var olmalıdır. 
 
-**`parameters`** Özelliği, tüm işin başarısız olması için kaç hatanın kabul edileceği gibi çalışma süresi davranışlarına bildirir. Parametreler, kaynağa özgü davranışları da belirtmektir. Örneğin, kaynak BLOB depolama ise, dosya uzantılarına filtre uygulayan bir parametre ayarlayabilirsiniz: `"parameters" : { "configuration" : { "indexedFileNameExtensions" : ".pdf,.docx" } }` .
+**`name`**, **`dataSourceName`** , Ve **`targetIndexName`** özellikleri gereklidir ve Dizin oluşturucuyu çalıştırmadan önce, hem veri kaynağı hem de dizin zaten hizmette var olmalıdır. 
 
-**`field mappings`** Özelliği, bu alanlar ada veya türe göre farklıysa, kaynak-hedefe alanları açıkça eşlemek için kullanılır. Diğer Özellikler (gösterilmez), bir zamanlama belirtmek, Dizin oluşturucuyu devre dışı durumda oluşturmak veya bekleyen verilerin ek şifrelenmesi için bir şifreleme anahtarı belirtmek için kullanılır.
+**`parameters`** Özelliği, tüm işin başarısız olması için kaç hatanın kabul edileceği gibi çalışma zamanı davranışlarını değiştirir. Parametreler, kaynağa özgü davranışları da belirtmektir. Örneğin, kaynak BLOB depolama ise, dosya uzantılarına filtre uygulayan bir parametre ayarlayabilirsiniz: `"parameters" : { "configuration" : { "indexedFileNameExtensions" : ".pdf,.docx" } }` .
+
+**`field mappings`** Özelliği, bu alanlar ada veya türe göre farklıysa, kaynak-hedefe alanları açıkça eşlemek için kullanılır. Diğer Özellikler (gösterilmez), [bir zamanlama belirtmek](search-howto-schedule-indexers.md), Dizin oluşturucuyu devre dışı durumda oluşturmak veya bekleyen verilerin ek şifrelenmesi için bir [şifreleme anahtarı](search-security-manage-encryption-keys.md) belirtmek için kullanılır.
 
 ### <a name="indexers-for-ai-indexing"></a>AI dizin oluşturma için Dizin oluşturucular
 
-Dizin oluşturucular bir arama hizmetinin giden istek yaptığı mekanizmaya sahip olduğundan, Dizin oluşturucular AI zenginleştirmelerinin desteklenmesi, bu kullanım örneği için gerekli adımları ve nesneleri eklemek için genişletilmiştir.
+Dizin oluşturucular bir arama hizmetinin giden istek yaptığı mekanizmaya sahip olduğundan, Dizin oluşturucular AI zenginleştirmelerinin desteklenmesi, bu kullanım örneğini uygulamak için altyapı ve nesne ekleme için genişletilmiştir.
 
-Yukarıdaki özellikler ve parametrelerin tümü, AI zenginleştirme ' ye özgü üç özellik eklenmesiyle, AI zenginleştirmesi gerçekleştiren Dizin oluşturucular için geçerlidir: **`skillSets`** , **`outputFieldMappings`** , **`cache`** (yalnızca önizleme ve REST). 
+Yukarıdaki özelliklerin ve parametrelerin tümü, AI zenginleştirme işlemini gerçekleştiren Dizin oluşturucular için geçerlidir. Aşağıdaki özellikler AI zenginleştirme için özeldir: **`skillSets`** , **`outputFieldMappings`** , **`cache`** (yalnızca önizleme ve REST). 
 
 ```json
 {
@@ -74,7 +75,7 @@ Yukarıdaki özellikler ve parametrelerin tümü, AI zenginleştirme ' ye özgü
 }
 ```
 
-AI zenginleştirme, bu makalenin kapsamı dışındadır. Daha fazla bilgi için [Azure bilişsel arama 'de becerileri](cognitive-search-working-with-skillsets.md) ile başlatın veya [Beceri (REST) oluşturun](/rest/api/searchservice/create-skillset).
+AI zenginleştirme, bu makalenin kapsamı dışındadır. Daha fazla bilgi için şu makalelerle başlayın: [AI zenginleştirme](cognitive-search-concept-intro.md), [Azure bilişsel arama 'de becerileri](cognitive-search-working-with-skillsets.md)ve [Beceri (REST)](/rest/api/searchservice/create-skillset).
 
 ## <a name="choose-an-indexer-client-and-create-the-indexer"></a>Bir Dizin Oluşturucu istemcisi seçin ve Dizin oluşturucuyu oluşturun
 
@@ -90,7 +91,7 @@ Tüm [hizmet katmanları](search-limits-quotas-capacity.md#indexer-limits) , olu
 
 ### <a name="use-azure-portal-to-create-an-indexer"></a>Dizin Oluşturucu oluşturmak için Azure portal kullanma
 
-Portal, bir dizin oluşturucu oluşturmak için iki seçenek sağlar: [**Içeri aktarma verileri**](search-import-data-portal.md) ve Dizin Oluşturucu tanımı belirtmek için alanlar sağlayan **Yeni Dizin Oluşturucu** . Sihirbaz, gerekli tüm öğeleri oluşturduğundan benzersizdir. Diğer yaklaşımlar, önceden tanımlanmış bir veri kaynağı ve Dizin gerektirir.
+Portal, Dizin Oluşturucu tanımını belirtmek için alanlar sağlayan bir Dizin Oluşturucu: [**veri Içeri aktarma Sihirbazı**](search-import-data-portal.md) ve **Yeni Dizin Oluşturucu** oluşturmak için iki seçenek sunar. Sihirbaz, gerekli tüm öğeleri oluşturduğundan benzersizdir. Diğer yaklaşımlar, önceden tanımlanmış bir veri kaynağı ve Dizin gerektirir.
 
 Aşağıdaki ekran görüntüsünde bu özellikleri portalda nerede bulabileceğiniz gösterilmektedir. 
 
@@ -120,11 +121,20 @@ Bilişsel Arama için Azure SDK 'Ları, genel olarak kullanılabilen özellikler
 
 ## <a name="run-the-indexer"></a>Dizin oluşturucuyu çalıştırma
 
-Bir Dizin Oluşturucu, hizmette Dizin oluşturucuyu oluşturduğunuzda otomatik olarak çalışır. Bu, veri kaynağı bağlantı hataları, alan eşleme sorunları veya beceri sorunları olup olmadığını bulmak için gereken gerçeği. [Create Indexer](/rest/api/searchservice/create-indexer) veya [Update Indexer](/rest/api/searchservice/update-indexer) için etkileşimli bir http isteği, bir Dizin Oluşturucu çalıştırır. SearchIndexerClient yöntemlerini çağıran bir programı çalıştırmak, bir Dizin Oluşturucu da çalıştırır.
+Bir Dizin Oluşturucu, hizmette Dizin oluşturucuyu oluşturduğunuzda otomatik olarak çalışır. Bu, veri kaynağı bağlantı hataları, alan eşleme sorunları veya beceri sorunları olup olmadığını bulmak için gereken gerçeği. 
 
-Oluşturma sonrasında bir dizin oluşturucuyu hemen çalıştırmayı önlemek için **`disabled=true`** Dizin Oluşturucu tanımına dahil edin.
+Dizin oluşturucuyu çalıştırmanın birkaç yolu vardır:
 
-Bir Dizin Oluşturucu oluşturulduktan sonra, [çalıştırma Dizin oluşturucuyu (REST)](/rest/api/searchservice/run-indexer) veya eşdeğer bir SDK yöntemini kullanarak isteğe bağlı olarak çalıştırabilirsiniz. Veya, Dizin oluşturucuyu düzenli aralıklarla işlemeyi çağırmak için [bir zamanlamaya](search-howto-schedule-indexers.md) koyun. 
++ Tanımı eklemek veya değiştirmek için [Create Indexer](/rest/api/searchservice/create-indexer) veya [Update Indexer](/rest/api/searchservice/update-indexer) için bir http isteği gönderin ve Dizin oluşturucuyu çalıştırın.
+
++ Bir Dizin Oluşturucu için, tanımda değişiklik yapmadan bir Dizin Oluşturucu [çalıştırmak](/rest/api/searchservice/run-indexer) IÇIN bir http isteği gönderin.
+
++ Oluşturma, güncelleştirme veya çalıştırma için SearchIndexerClient yöntemlerini çağıran bir program çalıştırın.
+
+> [!NOTE]
+> Oluşturma sonrasında bir dizin oluşturucuyu hemen çalıştırmayı önlemek için **`disabled=true`** Dizin Oluşturucu tanımına dahil edin.
+
+Alternatif olarak, Dizin oluşturucuyu düzenli aralıklarla işlemeyi çağırmak için [bir zamanlamaya](search-howto-schedule-indexers.md) koyun. 
 
 Zamanlanan işleme genellikle Değiştirilen içeriğin artımlı dizin oluşturma gereksinimi ile saatle çakışan. Değişiklik algılama mantığı, kaynak platformlarda yerleşik olarak bulunan bir özelliktir. Blob kapsayıcısındaki değişiklikler Dizin Oluşturucu tarafından otomatik olarak algılanır. Diğer veri kaynaklarında değişiklik algılamayı kullanma hakkında rehberlik için, belirli veri kaynakları için Dizin Oluşturucu belgelerine bakın:
 
@@ -135,9 +145,9 @@ Zamanlanan işleme genellikle Değiştirilen içeriğin artımlı dizin oluştur
 
 ## <a name="know-your-data"></a>Verilerinizi öğrenin
 
-Dizin oluşturucular, her satırın dizinde tam veya kısmi arama belgesi haline geldiği tablolu bir satır kümesi bekler. Genellikle, bir satır ve sonuçta elde edilen arama belgesi arasında tam bir adet tek bir yazışmalar vardır. Ancak, dizin oluşturmak için birden çok Dizin Oluşturucu veya yaklaşım kullanıyorsanız, örneğin, bir belgenin yalnızca bir kısmını oluşturmak için Dizin oluşturucular kullanabilirsiniz. 
+Dizin oluşturucular, her satırın dizinde tam veya kısmi arama belgesi haline geldiği tablolu bir satır kümesi bekler. Genellikle, satır ve sonuçta elde edilen arama belgesi arasında bire bir yazışmalar vardır; burada satır kümesindeki tüm alanlar her belgeyi tamamen doldurur. Ancak, dizin oluşturmak için birden çok Dizin Oluşturucu veya yaklaşım kullanıyorsanız, örneğin, bir belgenin yalnızca bir kısmını oluşturmak için Dizin oluşturucular kullanabilirsiniz. 
 
-İlişkisel verileri bir satır kümesine düzleştirmek için, bir SQL görünümü oluşturmanız veya üst ve alt kayıtları aynı satırda döndüren bir sorgu oluşturmanız gerekebilir. Örneğin, yerleşik oteller örnek veri kümesi, ilişkili bir tablodaki Oda kayıtlarına bağlı olan 50 kayda (her otel için bir tane) sahip bir SQL veritabanıdır. Ortak verileri bir satır kümesine düzleyen sorgu, her otel kaydındaki tüm oda bilgilerini JSON belgelerindeki tüm oda bilgilerini gömer. Katıştırılmış Oda bilgileri, **for JSON Auto** yan tümcesini kullanan bir sorgu tarafından oluşturulur. Bu teknik hakkında daha fazla bilgi için [gömülü JSON döndüren bir sorgu tanımlayın](index-sql-relational-data.md#define-a-query-that-returns-embedded-json). Bu yalnızca bir örnektir; aynı etkiyi oluşturacak diğer yaklaşımları de bulabilirsiniz.
+İlişkisel verileri bir satır kümesine düzleştirmek için, bir SQL görünümü oluşturmanız veya üst ve alt kayıtları aynı satırda döndüren bir sorgu oluşturmanız gerekir. Örneğin, yerleşik oteller örnek veri kümesi, ilişkili bir tablodaki Oda kayıtlarına bağlı olan 50 kayda (her otel için bir tane) sahip bir SQL veritabanıdır. Ortak verileri bir satır kümesine düzleyen sorgu, her otel kaydındaki tüm oda bilgilerini JSON belgelerindeki tüm oda bilgilerini gömer. Katıştırılmış Oda bilgileri, **for JSON Auto** yan tümcesini kullanan bir sorgu tarafından oluşturulur. Bu teknik hakkında daha fazla bilgi için [gömülü JSON döndüren bir sorgu tanımlayın](index-sql-relational-data.md#define-a-query-that-returns-embedded-json). Bu yalnızca bir örnektir; aynı etkiyi oluşturacak diğer yaklaşımları de bulabilirsiniz.
 
 Düzleştirilmiş verilere ek olarak, yalnızca aranabilir verileri çekmek önemlidir. Aranabilir veriler alfasayısal. Bilişsel Arama, tüm biçimdeki ikili verileri arayamıyor, ancak aranabilir içerik oluşturmak için görüntü dosyalarının metin açıklamalarını ayıklayabilir ve çıkarsmasına (bkz. [AI zenginleştirme](cognitive-search-concept-intro.md)) izin verebilir. Benzer şekilde, AI zenginleştirme kullanarak büyük metin, yapıyı veya ilgili bilgileri bulmak için doğal dil modelleriyle analiz edilebilir ve bu da bir arama belgesine ekleyebileceğiniz yeni içerik oluşturabilir.
 
@@ -147,7 +157,7 @@ Dizin oluşturucular veri sorunlarını gidermezse, diğer veri temizleme veya i
 
 Dizin oluşturucuların, arama belgelerini dizin oluşturma için arama motoruna geçiri hatırlayın. Dizinleyicilerin yürütme davranışını tespit eden özellikleri olduğu gibi, dizin şemasının dizelerin dizine nasıl dizinlendirildiğinden emin olan özellikler vardır (yalnızca dizeler çözümlenir ve simgeleştirilir). Çözümleyici atamalarına bağlı olarak, dizinli dizeler, geçirilen verilerden farklı olabilir. Çözümleyicileri [metin (REST) kullanarak çözümleyicilerin](/rest/api/searchservice/test-analyzer)etkilerini değerlendirebilirsiniz. Çözümleyiciler hakkında daha fazla bilgi için bkz. [metin işleme Için çözümleyiciler](search-analyzers.md).
 
-Dizin oluşturucular yalnızca alan adlarını ve türlerini denetler. Dizindeki ilgili arama alanı için gelen içeriğin doğru olmasını sağlayan bir doğrulama adımı yoktur. Doğrulama adımı olarak, tüm belgeleri veya seçili alanları döndüren doldurulmuş dizin üzerinde sorgular çalıştırabilirsiniz. Bir dizinin içeriğini sorgulama hakkında daha fazla bilgi için bkz. [temel sorgu oluşturma](search-query-create.md).
+Dizin oluşturucularının bir dizinle nasıl etkileşime gireceğini gösteren bir Dizin Oluşturucu yalnızca alan adlarını ve türlerini denetler. Dizindeki ilgili arama alanı için gelen içeriğin doğru olmasını sağlayan bir doğrulama adımı yoktur. Doğrulama adımı olarak, tüm belgeleri veya seçili alanları döndüren doldurulmuş dizin üzerinde sorgular çalıştırabilirsiniz. Bir dizinin içeriğini sorgulama hakkında daha fazla bilgi için bkz. [temel sorgu oluşturma](search-query-create.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
