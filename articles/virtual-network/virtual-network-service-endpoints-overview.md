@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 11/08/2019
 ms.author: sumi
 ms.custom: ''
-ms.openlocfilehash: 93feaef01b234eeb7ac363c18d8e9d8f52b009de
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 5e97a35a272684a99e1ca21cbec9c8f3edef253c
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98216538"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99097431"
 ---
 # <a name="virtual-network-service-endpoints"></a>Sanal Ağ hizmet uç noktaları
 
@@ -30,7 +30,7 @@ Bu özellik aşağıdaki Azure hizmetleri ve bölgeleri için kullanılabilir. *
 
 - **[Azure depolama](../storage/common/storage-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network)** (*Microsoft. Storage*): tüm Azure bölgelerinde genel kullanıma sunulmuştur.
 - **[Azure SQL veritabanı](../azure-sql/database/vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*Microsoft. SQL*): tüm Azure bölgelerinde genel kullanıma sunulmuştur.
-- **[Azure SYNAPSE Analytics](../azure-sql/database/vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*Microsoft. SQL*): tüm Azure bölgelerinde genel kullanıma sunulmuştur.
+- **[Azure SYNAPSE Analytics](../azure-sql/database/vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*Microsoft. SQL*): adanmış SQL HAVUZLARı (eskiden SQL DW) Için tüm Azure bölgelerinde genel kullanıma sunulmuştur.
 - **[PostgreSQL Için Azure veritabanı sunucusu](../postgresql/howto-manage-vnet-using-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*Microsoft. SQL*): veritabanı hizmetinin kullanılabildiği Azure bölgelerinde genel kullanıma sunulmuştur.
 - **[MySQL Için Azure veritabanı sunucusu](../mysql/howto-manage-vnet-using-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*Microsoft. SQL*): veritabanı hizmetinin kullanılabildiği Azure bölgelerinde genel kullanıma sunulmuştur.
 - **[MariaDB Için Azure veritabanı](../mariadb/concepts-data-access-security-vnet.md)** (*Microsoft. SQL*): veritabanı hizmetinin kullanılabildiği Azure bölgelerinde genel kullanıma sunulmuştur.

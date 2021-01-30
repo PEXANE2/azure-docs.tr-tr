@@ -9,12 +9,12 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/27/2020
 ms.custom: data4ml
-ms.openlocfilehash: 854504347409efb4f0eafff0d776db23ca9fda07
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: 4b2777bfd9905a1caa8b69b78ff892b661e4dc4b
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98059849"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99097548"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>Veri etiketleme projesi ve dışarı aktarma etiketleri oluşturma 
 
@@ -24,7 +24,7 @@ Azure Machine Learning verileri etiketlemek için veri etiketleme projeleri olu�
 ## <a name="data-labeling-capabilities"></a>Veri etiketleme özellikleri
 
 > [!Important]
-> Şu anda yalnızca görüntü sınıflandırması ve nesne kimliği etiketleme projeleri desteklenir. Ayrıca, veri görüntülerinin bir Azure blob veri deposunda bulunması gerekir. (Mevcut bir veri deposu yoksa, proje oluşturma sırasında görüntüleri karşıya yükleyebilirsiniz.)
+> Veri görüntülerinin bir Azure blob veri deposunda bulunması gerekir. (Mevcut bir veri deposu yoksa, proje oluşturma sırasında görüntüleri karşıya yükleyebilirsiniz.)
 
 Azure Machine Learning veri etiketleme, etiketleme projelerini oluşturmak, yönetmek ve izlemek için merkezi bir yerdir:
  - Etiketleme görevlerini verimli bir şekilde yönetmek için verileri, etiketleri ve ekip üyelerini koordine edin. 
@@ -53,6 +53,11 @@ Proje oluşturmak için **Proje Ekle**' yi seçin. Projeye uygun bir ad verin ve
 * Bir etiket kümesinden bir resme yalnızca *tek bir etiket* uygulamak istediğinizde, projeler Için **görüntü sınıflandırması çoklu sınıfı** ' nı seçin.
 * Bir etiket kümesinden bir resme bir *veya daha fazla* etiket uygulamak istediğinizde, projeler Için **görüntü sınıflandırması çoklu etiketi** ' ni seçin. Örneğin, bir köpek fotoğrafı hem *köpek* hem de *Daytime* ile etiketlenebilir.
 * Bir resim içindeki her nesneye bir etiket ve bir sınırlayıcı kutu atamak istediğinizde, projeler için **nesne tanımlama (sınırlama kutusu)** seçeneğini belirleyin.
+* Bir etiket atamak ve bir görüntünün içindeki her nesnenin etrafında bir çokgen çizmek istediğinizde projeler için **örnek segmentleme (çokgen) (Önizleme)** seçeneğini belirleyin.
+
+> [!IMPORTANT]
+> Örnek kesimlemesi (çokgen) genel önizlemede.
+> Önizleme sürümü, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Devam etmeye hazırsanız **İleri ' yi** seçin.
 
@@ -141,6 +146,7 @@ Sınırlayıcı kutular için, önemli sorular şunlardır:
 
 **Ml yardımlı etiketleme** sayfası etiketleme görevini hızlandırmak için otomatik makine öğrenimi modellerini tetiklemenizi sağlar. Etiketleme projenizin başlangıcında, görüntüler potansiyel bir farkı azaltmak için rastgele bir sıraya bölünür. Ancak, veri kümesinde bulunan herhangi bir sapmaları eğitilen modele yansıtılır. Örneğin, görüntülerinizin %80 ' u tek bir sınıfta ise, modeli eğitmek için kullanılan verilerin yaklaşık %80 ' i o sınıfa ait olacaktır. Bu eğitim, etkin öğrenimi içermez.
 
+
 *Ml yardımlı etiketlemeyi etkinleştir* ' i seçin ve iki aşamadan oluşan yardımlı etiketlemeyi etkinleştirmek IÇIN bir GPU belirtin:
 * Kümeleme
 * Önceden etiketleme
@@ -150,7 +156,7 @@ Yardımlı etiketleme başlatmak için gereken etiketli görüntülerin tam say�
 Son Etiketler etiketleyici 'den girişe hala dayandığından, bu teknoloji bazen *döngü* etiketlenmesi olarak adlandırılır.
 
 > [!NOTE]
-> ML yardımlı veri etiketlemeyi, bir [sanal ağın](how-to-network-security-overview.md)arkasında güvenliği sağlanmış varsayılan depolama hesaplarını desteklemez. ML yardımlı veri etiketlemeyi için varsayılan olmayan bir depolama hesabı kullanmanız gerekir. Varsayılan olmayan depolama hesabı, sanal ağın arkasında güvenli hale getirilmiş olabilir. 
+> ML yardımlı veri etiketlemeyi, bir [sanal ağın](how-to-network-security-overview.md)arkasında güvenliği sağlanmış varsayılan depolama hesaplarını desteklemez. ML yardımlı veri etiketlemeyi için varsayılan olmayan bir depolama hesabı kullanmanız gerekir. Varsayılan olmayan depolama hesabı, sanal ağın arkasında güvenli hale getirilmiş olabilir.
 
 ### <a name="clustering"></a>Kümeleme
 
