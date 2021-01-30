@@ -4,12 +4,12 @@ description: Azure Application Insights verileri görmüyor musunuz? Buradan den
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 05/21/2020
-ms.openlocfilehash: 26ba586715c7b76ff8972c6574c3c29b837713a1
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: e41b0a9ce1ff86bc6010e12fdf5d3320f303fd87
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96904474"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99092460"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-netnet-core"></a>.NET/.NET Core için veri Application Insights sorunlarını giderme
 
@@ -188,7 +188,7 @@ Durum İzleyicisi 'ni ve [Azure Cloud Services](./app-insights-overview.md)'yi y
 * Tüm Microsoft 'un gerçekten kopyalamadığını denetleyin. Microsoft.Diagnostics.Instrumentation.Extensions.Intercept.dll ile birlikte sunucuda ApplicationInsights dll 'Leri
 * Güvenlik duvarınızdaki [bazı TCP bağlantı noktalarını açmanız](./ip-addresses.md)gerekebilir.
 * Şirket ağınızı göndermek için bir proxy kullanmanız gerekiyorsa, Web.config [defaultProxy](/previous-versions/dotnet/netframework-1.1/aa903360(v=vs.71)) 'yi ayarlayın
-* Windows Server 2008: şu güncelleştirmeleri yüklediğinizden emin olun: [KB2468871](https://support.microsoft.com/kb/2468871), [KB2533523](https://support.microsoft.com/kb/2533523), [KB2600217](https://support.microsoft.com/kb/2600217).
+* Windows Server 2008: şu güncelleştirmeleri yüklediğinizden emin olun: [KB2468871](https://support.microsoft.com/kb/2468871), [KB2533523](https://support.microsoft.com/kb/2533523), [KB2600217](https://web.archive.org/web/20150129090641/http://support.microsoft.com/kb/2600217).
 
 ## <a name="i-used-to-see-data-but-it-has-stopped"></a>Verileri görmek için kullandım, ancak durdu
 * Aylık veri noktaları kotasına ulaştınız misiniz? Bulmak için ayarları/kotayı ve fiyatlandırmayı açın. Bu durumda, planınızı yükseltebilir veya ek kapasite için ödeme yapabilirsiniz. [Fiyatlandırma şemasına](https://azure.microsoft.com/pricing/details/application-insights/)bakın.
