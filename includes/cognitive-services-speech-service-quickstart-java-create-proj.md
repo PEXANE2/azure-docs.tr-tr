@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 10/15/2020
 ms.author: erhopf
-ms.openlocfilehash: ee88a7cc187644c89aca5656df9ab9ae48a5a056
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 68e83ca0fc92247a31e840e76fc8019736b71dd9
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187770"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99214511"
 ---
 1. Eclipse’i başlatın.
 
@@ -25,13 +25,13 @@ ms.locfileid: "96187770"
 
    ![Java Projesi vurgulanmış şekilde, Yeni Proje iletişim kutusunun ekran görüntüsü](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-jre-02-select-wizard.png)
 
-1. **Yeni Java proje** Sihirbazı başlatılır. **Proje adı** alanına **hızlı başlangıç** yazın ve yürütme ortamı olarak **JavaSE-1.8** seçeneğini belirleyin. **Son**’u seçin.
+1. **Yeni Java proje** Sihirbazı başlatılır. **Proje adı** alanına **hızlı başlangıç** yazın ve yürütme ortamı olarak **JavaSE-1.8** seçeneğini belirleyin. **Son**'u seçin.
 
    ![Yeni Java Projesi sihirbazının ekran görüntüsü](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-jre-03-create-java-project.png)
 
 1. **İlişkili Perspektif Açılsın mı?** penceresi görüntülenirse **Perspektifi Aç**’ı seçin.
 
-1. **Paket gezgini**’nde **hızlı başlangıç** projesine sağ tıklayın. **Configure**  >  Bağlam menüsünden **Maven projesine dönüştürmeyi** Yapılandır ' ı seçin.
+1. **Paket gezgini**’nde **hızlı başlangıç** projesine sağ tıklayın.   >  Bağlam menüsünden **Maven projesine dönüştürmeyi** Yapılandır ' ı seçin.
 
    ![Paket gezgininin ekran görüntüsü](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-jre-04-convert-to-maven-project.png)
 
@@ -45,7 +45,7 @@ ms.locfileid: "96187770"
 
      [!code-xml[POM Repositories](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-microphone/pom.xml#repositories)]
 
-   * Ayrıca, bir `dependencies` bağımlılık olarak konuşma SDK sürümü 1.13.0 ile bir öğesi ekleyin:
+   * Ayrıca, bir `dependencies` bağımlılık olarak konuşma SDK sürümü 1.15.0 ile bir öğesi ekleyin:
 
      [!code-xml[POM Dependencies](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-microphone/pom.xml#dependencies)]
 

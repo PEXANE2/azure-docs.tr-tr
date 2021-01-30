@@ -5,12 +5,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 02/20/2020
 ms.author: trbye
-ms.openlocfilehash: c341ba20ece26e15255faf086e5bd2904fbaa797
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 3b473d82eb879955a6cbdce58ba66176f5c6d6f5
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95097662"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99215436"
 ---
 Bu hızlı başlangıçta, konuşma özellikli bir ürün oluşturmak veya bir konuşma [dökümü](../conversation-transcription.md) cihazı olarak kullanmak için Android Için konuşma cihazları SDK 'sını nasıl kullanacağınızı öğreneceksiniz.
 
@@ -96,7 +96,7 @@ Geliştirme Seti kurulumunuzu doğrulamak için örnek uygulamayı derleyin ve k
     Bu satırı bağımlılıklar bölümüne ekleyerek **Build. Gradle (Module: App)** öğesini güncelleştirin. 
     
     ```xml
-    implementation'com.microsoft.cognitiveservices.speech:client-sdk:1.14.0'
+    implementation'com.microsoft.cognitiveservices.speech:client-sdk:1.15.0'
     ```
     
 1. Konuşma abonelik anahtarınızı kaynak koda ekleyin. Amaç tanımayı denemek istiyorsanız, [Language Understanding hizmeti](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) abonelik anahtarınızı ve uygulama kimliğinizi da ekleyin.

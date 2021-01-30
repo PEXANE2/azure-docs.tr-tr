@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 09/15/2020
 ms.author: trbye
-ms.openlocfilehash: 7603a5aa138e719d7ffe3db7a4c4484466efc1e3
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: bced384e8ba88fb83499e78c4e0d60e811ae32df
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98147670"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99213811"
 ---
 Konuşma hizmetinin temel özelliklerinden biri de insan konuşmanızı tanıyabilme ve (genellikle konuşma-metin olarak adlandırılır). Bu hızlı başlangıçta, uygulama ve ürünlerinize yönelik konuşma SDK 'sını kullanarak yüksek kaliteli bir konuşmayı metne dönüştürme işlemini nasıl gerçekleştireceğinizi öğreneceksiniz.
 
@@ -17,7 +17,7 @@ Konuşma hizmetinin temel özelliklerinden biri de insan konuşmanızı tanıyab
 
 Örnek koda doğrudan atlamak istiyorsanız, GitHub 'daki [Go hızlı başlangıç örneklerine](https://github.com/microsoft/cognitive-services-speech-sdk-go/tree/master/samples/recognizer) bakın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makalede bir Azure hesabınız ve konuşma hizmeti aboneliğiniz olduğunu varsaymaktadır. Hesabınız ve aboneliğiniz yoksa [konuşma hizmetini ücretsiz deneyin](../../../overview.md#try-the-speech-service-for-free).
 
@@ -113,7 +113,7 @@ go build
 go run quickstart
 ```
 
-Ve sınıfları hakkında ayrıntılı bilgi için başvuru belgelerine bakın [`SpeechConfig`](https://pkg.go.dev/github.com/Microsoft/cognitive-services-speech-sdk-go@v1.14.0/speech#SpeechConfig) [`SpeechRecognizer`](https://pkg.go.dev/github.com/Microsoft/cognitive-services-speech-sdk-go@v1.14.0/speech#SpeechRecognizer) .
+Ve sınıfları hakkında ayrıntılı bilgi için başvuru belgelerine bakın [`SpeechConfig`](https://pkg.go.dev/github.com/Microsoft/cognitive-services-speech-sdk-go@v1.15.0/speech#SpeechConfig) [`SpeechRecognizer`](https://pkg.go.dev/github.com/Microsoft/cognitive-services-speech-sdk-go@v1.15.0/speech#SpeechRecognizer) .
 
 ## <a name="speech-to-text-from-audio-file"></a>Ses dosyasından konuşmayı metne dönüştürme
 
@@ -193,4 +193,4 @@ go build
 go run quickstart
 ```
 
-Ve sınıfları hakkında ayrıntılı bilgi için başvuru belgelerine bakın [`SpeechConfig`](https://pkg.go.dev/github.com/Microsoft/cognitive-services-speech-sdk-go@v1.14.0/speech#SpeechConfig) [`SpeechRecognizer`](https://pkg.go.dev/github.com/Microsoft/cognitive-services-speech-sdk-go@v1.14.0/speech#SpeechRecognizer) .
+Ve sınıfları hakkında ayrıntılı bilgi için başvuru belgelerine bakın [`SpeechConfig`](https://pkg.go.dev/github.com/Microsoft/cognitive-services-speech-sdk-go@v1.15.0/speech#SpeechConfig) [`SpeechRecognizer`](https://pkg.go.dev/github.com/Microsoft/cognitive-services-speech-sdk-go@v1.15.0/speech#SpeechRecognizer) .

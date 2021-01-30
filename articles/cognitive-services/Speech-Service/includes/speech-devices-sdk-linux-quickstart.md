@@ -5,12 +5,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 02/20/2020
 ms.author: trbye
-ms.openlocfilehash: 3c093539301f3f4e3309094f0b53a1f0e8393150
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 39cead8306ece6638f85813efc318dd41a6faf8c
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95095422"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99215348"
 ---
 Bu hızlı başlangıçta, konuşma özellikli bir ürün oluşturmak veya bir konuşma [dökümü](../conversation-transcription.md) cihazı olarak kullanmak için Linux Için konuşma cihazları SDK 'sını nasıl kullanacağınızı öğreneceksiniz. Şu anda yalnızca [Azure Kinect dk](https://azure.microsoft.com/services/kinect-dk/) destekleniyor.
 
@@ -76,11 +76,11 @@ Hedefleri kullanmayı planlıyorsanız, bir [Language Understanding hizmeti (LUA
 
 1. Çakışan Küreler menü çubuğunda **Dosya**  >  **Yeni**  >  **Java projesi**' ni seçerek yeni bir proje oluşturun. Kullanılabilir değilse **Proje** ' yi ve ardından **Java projesi**' ni seçin.
 
-1. **Yeni Java proje** Sihirbazı başlatılır. Örnek projenin konumuna **gözatın** . **Son**’u seçin.
+1. **Yeni Java proje** Sihirbazı başlatılır. Örnek projenin konumuna **gözatın** . **Son**'u seçin.
 
    ![Yeni Java Projesi sihirbazının ekran görüntüsü](../media/speech-devices-sdk/eclipse-new-java-project-linux.png)
 
-1. **Paket Gezgini**' nde projenize sağ tıklayın. **Configure**  >  Bağlam menüsünden **Maven projesine dönüştürmeyi** Yapılandır ' ı seçin. **Son**’u seçin.
+1. **Paket Gezgini**' nde projenize sağ tıklayın.   >  Bağlam menüsünden **Maven projesine dönüştürmeyi** Yapılandır ' ı seçin. **Son**'u seçin.
 
    ![Paket gezgininin ekran görüntüsü](../media/speech-devices-sdk/eclipse-convert-to-maven.png)
 
@@ -100,7 +100,7 @@ Hedefleri kullanmayı planlıyorsanız, bir [Language Understanding hizmeti (LUA
         <dependency>
              <groupId>com.microsoft.cognitiveservices.speech</groupId>
              <artifactId>client-sdk</artifactId>
-             <version>1.14.0</version>
+             <version>1.15.0</version>
         </dependency>
     </dependencies>
    ```
@@ -157,13 +157,13 @@ Hedefleri kullanmayı planlıyorsanız, bir [Language Understanding hizmeti (LUA
 
 ## <a name="run-the-sample-application-from-eclipse"></a>Örnek uygulamayı tutulma 'dan çalıştırma
 
-1. Çakışan Küreler menü çubuğundan **Run**  >  **Çalıştır** ' ı çalıştırın 
+1. Çakışan Küreler menü çubuğundan   >  **Çalıştır** ' ı çalıştırın 
 
 1. Konuşma cihazları SDK örnek uygulaması başlatılır ve aşağıdaki seçenekleri görüntüler:
 
    ![Bir konuşma cihazları SDK örnek uygulaması ve seçenekleri gösteren ekran görüntüsü.](../media/speech-devices-sdk/java-sample-app-linux.png)
 
-1. Yeni **konuşma dökümü** tanıtımı ' nı deneyin. **Oturum** başlatma ile bir başlangıç yapın  >  **Start**. Varsayılan olarak, herkes bir konudır. Ancak, katılımcının ses imzaları varsa `participants.properties` Proje klasörü **hedefi/sınıfları** içine yerleştirilebilir. Ses imzasını oluşturmak için, [konuşmalar (SDK)](../how-to-use-conversation-transcription.md)konusuna bakın.
+1. Yeni **konuşma dökümü** tanıtımı ' nı deneyin. **Oturum** başlatma ile bir başlangıç yapın  >  . Varsayılan olarak, herkes bir konudır. Ancak, katılımcının ses imzaları varsa `participants.properties` Proje klasörü **hedefi/sınıfları** içine yerleştirilebilir. Ses imzasını oluşturmak için, [konuşmalar (SDK)](../how-to-use-conversation-transcription.md)konusuna bakın.
 
    ![Tanıtım konuşması dökümü uygulamasını gösteren ekran görüntüsü.](../media/speech-devices-sdk/cts-sample-app-linux.png)
 

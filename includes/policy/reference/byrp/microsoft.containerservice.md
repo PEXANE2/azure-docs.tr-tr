@@ -2,20 +2,20 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 01/25/2021
+ms.date: 01/29/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: a8499b2695f32917619c94defc06738de925db04
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: 58789b0e132a850165b67789aef95340ec3dcc7f
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98805506"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99215487"
 ---
 |Name<br /><sub>(Azure portal)</sub> |Description |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[Yetkili IP aralıkları, Kubernetes hizmetlerinde tanımlanmalıdır](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0e246bcf-5f6f-4f87-bc6f-775d4712c7ea) |Yalnızca belirli aralıklardaki IP adreslerine API erişimi vererek Kubernetes Hizmet Yönetim API'si erişimi kısıtlayın. Yalnızca izin verilen ağların içindeki uygulamaların kümeye erişebildiğinden emin olmak için yetkilendirilmiş IP aralıklarına erişimi sınırlandırmamak önerilir. |Denetim, devre dışı |[2.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_EnableIpRanges_KubernetesService_Audit.json) |
-|[Kubernetes hizmeti (AKS) için Azure Ilke eklentisi, kümelerinizde yüklü ve etkin olmalıdır](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0a15ec92-a229-4763-bb14-0ea34a568f8d) |Kubernetes hizmeti (AKS) için Azure Ilke eklentisi, açık Ilke Aracısı (OPA) için bir giriş denetleyicisi Web kancası olan v3 'i genişleterek, kümelerinizde merkezi ve tutarlı bir şekilde ölçeklenebilir ve koruma uygulamalarını uygular. |Denetim, devre dışı |[1.0.1-Önizleme](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/AKS_AzurePolicyAddOn_Audit.json) |
+|[Kubernetes hizmeti (AKS) için Azure Ilke eklentisi, kümelerinizde yüklü ve etkin olmalıdır](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0a15ec92-a229-4763-bb14-0ea34a568f8d) |Kubernetes hizmeti (AKS) için Azure Ilke eklentisi, açık Ilke Aracısı (OPA) için bir giriş denetleyicisi Web kancası olan v3 'i genişleterek, kümelerinizde merkezi ve tutarlı bir şekilde ölçeklenebilir ve koruma uygulamalarını uygular. |Denetim, devre dışı |[1.0.2](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/AKS_AzurePolicyAddOn_Audit.json) |
 |[Azure Kubernetes hizmet kümelerindeki her iki işletim sistemi ve veri diski, müşteri tarafından yönetilen anahtarlarla şifrelenmelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7d7be79c-23ba-4033-84dd-45e2a5ccdd67) |Müşteri tarafından yönetilen anahtarları kullanarak işletim sistemi ve veri disklerini şifrelemek, anahtar yönetiminde daha fazla denetim ve esneklik sağlar. Bu, birçok mevzuata ve sektör uyumluluk standartlarında yaygın bir gereksinimdir. |Denetim, reddetme, devre dışı |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/AKS_CMK_Deny.json) |
 |[Azure Kubernetes hizmet kümelerine Azure Ilkesi eklentisi dağıtma](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa8eff44f-8c92-45c3-a3fb-9880802d67a7) |Azure Kubernetes Service (AKS) kümelerinizin uyumluluk durumunu yönetmek ve raporlamak için Azure Ilke eklentisi ' ni kullanın. Daha fazla bilgi için bkz. [https://aka.ms/akspolicydoc](https://aka.ms/akspolicydoc). |deployIfNotExists |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/AKS_AzurePolicyAddOn_Deploy.json) |
 |[Kubernetes kümesine giler dağıtma](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1d61c4d2-aef2-432b-87fc-7f96b019b7e1) |Bu ilke, kümelerin tanımlanan git deposundan Truth kaynaklarını almasını sağlamak için Kubernetes kümelerine bir ' sourceControlConfiguration ' dağıtır. Bu ilkeyi kullanma hakkında yönergeler için, adresini ziyaret edin [https://aka.ms/K8sGitOpsPolicy](https://aka.ms/K8sGitOpsPolicy) . |DeployIfNotExists |[1.0.0-Önizleme](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/Deploy-GitOps-to-Kubernetes-cluster_DINE.json) |

@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 10/15/2020
 ms.author: travisw
-ms.openlocfilehash: 2efe17bdf597b7e3ba7d0277f06d4b24e9b51db3
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: b987f98281c298da2d634c686d740faf3dda3502
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187767"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99214438"
 ---
 1. Android Studio başlatın ve **hoş geldiniz** penceresinde **Yeni bir Android Studio projesi Başlat** ' ı seçin.
 
@@ -27,12 +27,12 @@ Android Studio’nun yeni Android projenizi hazırlaması biraz zaman alır. Dah
 
 [!INCLUDE [License notice](cognitive-services-speech-service-license-notice.md)]
 
-Bilişsel hizmetler konuşma SDK 'sının geçerli sürümü 1.13.0.
+Bilişsel hizmetler konuşma SDK 'sının geçerli sürümü 1.15.0.
 
 Android için konuşma SDK 'Sı, gerekli kitaplıkları ve gerekli Android izinlerini içeren bir [AAR (Android kitaplığı)](https://developer.android.com/studio/projects/android-library)olarak paketlenmiştir.
 Bu, https:/csspeechstorage.blob.core.windows.net/maven/konumundaki bir Maven deposunda barındırılır \/ .
 
-Konuşma SDK’sını kullanmak için projenizi ayarlayın. Android Studio menü çubuğundan **Dosya** proje yapısı ' nı seçerek **proje yapısı** penceresini açın  >  **Project Structure** . **Proje yapısı** penceresinde, aşağıdaki değişiklikleri yapın:
+Konuşma SDK’sını kullanmak için projenizi ayarlayın. Android Studio menü çubuğundan **Dosya** proje yapısı ' nı seçerek **proje yapısı** penceresini açın  >   . **Proje yapısı** penceresinde, aşağıdaki değişiklikleri yapın:
 
 1. Pencerenin sol tarafındaki listede **Proje**’yi seçin. **Varsayılan kitaplık deposu** ayarlarını, tek tırnak işareti içine alınmış bir virgül ve Maven depo URL 'si ekleyerek düzenleyin: ' https: \/ /csspeechstorage.blob.Core.Windows.net/Maven/'
 
@@ -42,7 +42,7 @@ Konuşma SDK’sını kullanmak için projenizi ayarlayın. Android Studio menü
 
    ![Kitaplık bağımlılığının ekran görüntüsü](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-android-07-add-module-dependency.png)
 
-1. Görüntülenen pencerede, Android için konuşma SDK 'sının adını ve sürümünü girin, *com. Microsoft. biliveservices. Speech: Client-SDK: 1.13.0*. Ardından **Tamam**’ı seçin.
+1. Görüntülenen pencerede, Android için konuşma SDK 'sının adını ve sürümünü girin, *com. Microsoft. biliveservices. Speech: Client-SDK: 1.15.0*. Ardından **Tamam**’ı seçin.
    Konuşma SDK 'Sı şu şekilde gösterildiği gibi bağımlılıklar listesine eklenmelidir:
 
    ![Bağımlılıklar listesinde konuşma SDK 'sının ekran görüntüsü](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-android-08-dependency-added-1.0.0.png)

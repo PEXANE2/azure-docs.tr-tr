@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 01/25/2021
+ms.date: 01/29/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: bb2c308dfd7a369abf4863e903293dcdab4732c4
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: 4c1e5acbe944d0ee76a5113ca0ca288b876c46d9
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98802707"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99214143"
 ---
 |Name<br /><sub>(Azure portal)</sub> |Description |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
 |---|---|---|---|
@@ -19,4 +19,5 @@ ms.locfileid: "98802707"
 |[Olay Hub 'ı Olay Hub 'ına tanılama ayarlarını dağıtma](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fef7b61ef-b8e4-4c91-8e78-6946c6b0023f) |Bu tanılama ayarlarının eksik olduğu herhangi bir olay hub 'ı olduğunda, Olay Hub 'ının tanılama ayarlarını bir bölgesel Olay Hub 'ına akışa dağıtır. |DeployIfNotExists, devre dışı |[2.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/EventHub_DeployDiagnosticLog_Deploy_EventHub.json) |
 |[Log Analytics çalışma alanına Olay Hub 'ı için tanılama ayarlarını dağıtma](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1f6e93e8-6b31-41b1-83f6-36e449a42579) |Bu tanılama ayarlarının eksik olduğu herhangi bir olay hub 'ı oluşturulduğunda veya güncelleştirilirse, Olay Hub 'ının tanılama ayarlarını bir bölgesel Log Analytics çalışma alanına akışa dağıtır. |DeployIfNotExists, devre dışı |[1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/EventHub_DeployDiagnosticLog_Deploy_LogAnalytics.json) |
 |[Olay Hub 'ındaki tanılama günlükleri etkinleştirilmelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F83a214f7-d01a-484b-91a9-ed54470c9a6a) |Tanılama günlüklerini etkinleştirme denetimi. Bu, araştırma amacıyla kullanılacak etkinlik izlerini yeniden oluşturmayı sağlar; bir güvenlik olayı gerçekleştiğinde veya ağınız tehlikede olduğunda |Auditınotexists, devre dışı |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Event%20Hub/EventHub_AuditDiagnosticLog_Audit.json) |
+|[Olay Hub 'ı ad alanları, şifreleme için müşteri tarafından yönetilen bir anahtar kullanmalıdır](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa1ad735a-e96f-45d2-a7b2-9a4932cab7ec) |Azure Event Hubs, bekleyen verileri Microsoft tarafından yönetilen anahtarlar (varsayılan) veya müşteri tarafından yönetilen anahtarlarla şifreleme seçeneğini destekler. Müşteri tarafından yönetilen anahtarları kullanarak verileri şifrelemeyi seçmek, Olay Hub 'ının ad uzayındaki verileri şifrelemek için kullanacağı anahtarlara erişimi atamanızı, döndürmenizi, devre dışı bırakmayı ve iptal etmenizi sağlar. Olay Hub 'ının yalnızca adanmış kümelerdeki ad alanları için müşteri tarafından yönetilen anahtarlarla şifrelemeyi desteklediğini unutmayın. |Denetim, devre dışı |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Event%20Hub/EventHub_CustomerManagedKeyEnabled_Audit.json) |
 |[Olay Hub 'ı bir sanal ağ hizmeti uç noktası kullanmalıdır](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fd63edb4a-c612-454d-b47d-191a724fcbf0) |Bu ilke, bir sanal ağ hizmeti uç noktası kullanacak şekilde yapılandırılmamış tüm olay hub 'ını denetler. |Auditınotexists, devre dışı |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/VirtualNetworkServiceEndpoint_EventHub_AuditIfNotExists.json) |

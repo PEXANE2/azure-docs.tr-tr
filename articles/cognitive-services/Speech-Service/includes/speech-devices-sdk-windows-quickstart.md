@@ -5,12 +5,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 02/20/2020
 ms.author: trbye
-ms.openlocfilehash: c9ed54f11cade20af67a1c9bfe948b03e9d7b0d3
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 7ff53a700ab1b158d94af84907940f56afa74eb5
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95097771"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99214517"
 ---
 Bu hızlı başlangıçta, konuşma özellikli bir ürün oluşturmak veya bir konuşma [dökümü](../conversation-transcription.md) cihazı olarak kullanmak için Windows Için konuşma cihazları SDK 'sını nasıl kullanacağınızı öğreneceksiniz. Konuşma için yalnızca [Azure Kinect dk](https://azure.microsoft.com/services/kinect-dk/) desteklenir. Diğer konuşma için, bir Microphone dizi geometrisi sağlayan doğrusal mik dizileri kullanın.
 
@@ -50,11 +50,11 @@ Hedefleri kullanmayı planlıyorsanız, bir [Language Understanding hizmeti (LUA
 
 1. Çakışan Küreler menü çubuğunda **Dosya**  >  **Yeni**  >  **Java projesi**' ni seçerek yeni bir proje oluşturun. Kullanılabilir değilse **Proje** ' yi ve ardından **Java projesi**' ni seçin.
 
-1. **Yeni Java proje** Sihirbazı başlatılır. Örnek projenin konumuna **gözatın** . **Son**’u seçin.
+1. **Yeni Java proje** Sihirbazı başlatılır. Örnek projenin konumuna **gözatın** . **Son**'u seçin.
 
    ![Yeni Java proje Sihirbazı 'nı gösteren ekran görüntüsü.](../media/speech-devices-sdk/eclipse-new-java-project.png)
 
-1. **Paket Gezgini**' nde projenize sağ tıklayın. **Configure**  >  Bağlam menüsünden **Maven projesine dönüştürmeyi** Yapılandır ' ı seçin. **Son**’u seçin.
+1. **Paket Gezgini**' nde projenize sağ tıklayın.   >  Bağlam menüsünden **Maven projesine dönüştürmeyi** Yapılandır ' ı seçin. **Son**'u seçin.
 
    ![Paket gezgininin ekran görüntüsü](../media/speech-devices-sdk/eclipse-convert-to-maven.png)
 
@@ -74,7 +74,7 @@ Hedefleri kullanmayı planlıyorsanız, bir [Language Understanding hizmeti (LUA
         <dependency>
              <groupId>com.microsoft.cognitiveservices.speech</groupId>
              <artifactId>client-sdk</artifactId>
-             <version>1.14.0</version>
+             <version>1.15.0</version>
         </dependency>
     </dependencies>
    ```
@@ -121,7 +121,7 @@ Hedefleri kullanmayı planlıyorsanız, bir [Language Understanding hizmeti (LUA
 
 ## <a name="run-the-sample-application-from-eclipse"></a>Örnek uygulamayı tutulma 'dan çalıştırma
 
-1. Çakışan Küreler menü çubuğundan **Run**  >  **Çalıştır**  >  **Java uygulaması**' nı çalıştırın. Sonra **Functionslist** ve **Tamam**' ı seçin.
+1. Çakışan Küreler menü çubuğundan   >  **Çalıştır**  >  **Java uygulaması**' nı çalıştırın. Sonra **Functionslist** ve **Tamam**' ı seçin.
 
    ![Java uygulaması Seç ekranının ekran görüntüsü](../media/speech-devices-sdk/eclipse-run-sample.png)
 
@@ -129,7 +129,7 @@ Hedefleri kullanmayı planlıyorsanız, bir [Language Understanding hizmeti (LUA
 
    ![Örnek bir konuşma cihazları SDK uygulaması ve seçeneklerinin ekran görüntüsü.](../media/speech-devices-sdk/java-sample-app-windows.png)
 
-1. Yeni **konuşma dökümü** tanıtımı ' nı deneyin. **Oturum** başlatma ile bir başlangıç yapın  >  **Start**. Varsayılan olarak, herkes bir konudır. Ancak, katılımcının ses imzaları varsa `participants.properties` Proje klasörü **hedefi/sınıflarında** bir dosyaya yerleştirilebilir. Ses imzasını oluşturmak için, [konuşmalar (SDK)](../how-to-use-conversation-transcription.md)konusuna bakın.
+1. Yeni **konuşma dökümü** tanıtımı ' nı deneyin. **Oturum** başlatma ile bir başlangıç yapın  >  . Varsayılan olarak, herkes bir konudır. Ancak, katılımcının ses imzaları varsa `participants.properties` Proje klasörü **hedefi/sınıflarında** bir dosyaya yerleştirilebilir. Ses imzasını oluşturmak için, [konuşmalar (SDK)](../how-to-use-conversation-transcription.md)konusuna bakın.
 
    ![Tanıtım konuşması dökümü uygulamasının ekran görüntüsü.](../media/speech-devices-sdk/cts-sample-app-windows.png)
 

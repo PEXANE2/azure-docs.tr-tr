@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: c5c1fd202b52c8708ab067ca802481f4d4bb4e27
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 744343fe99b276da0264f9a7e40442f754b01169
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 01/28/2021
-ms.locfileid: "98956380"
+ms.locfileid: "99213615"
 ---
 Bu öğreticide aşağıdaki Azure kaynakları gereklidir:
 
@@ -15,7 +15,7 @@ Bu öğreticide aşağıdaki Azure kaynakları gereklidir:
 
 Bu hızlı başlangıç için, Azure aboneliğinizde gerekli kaynakları dağıtmak üzere [canlı video analizi kaynakları kurulum betiğini](https://github.com/Azure/live-video-analytics/tree/master/edge/setup) kullanmanızı öneririz. Bunu yapmak için aşağıdaki adımları izleyin:
 
-1. [Azure Cloud Shell](https://shell.azure.com)’i açın.
+1. [Azure Cloud Shell](https://ms.portal.azure.com/#cloudshell/)’i açın.
 1. İlk kez Cloud Shell kullanıyorsanız, bir depolama hesabı ve bir Microsoft Azure dosya paylaşımının oluşturulması için bir abonelik seçmeniz istenir. Cloud Shell oturum bilgileriniz için bir depolama hesabı oluşturmak üzere **depolama oluştur** ' u seçin. Bu depolama hesabı, komut dosyasının Azure Media Services hesabınızla kullanılmak üzere oluşturulacağı hesaptan ayrıdır.
 1. Cloud Shell penceresinin sol tarafındaki açılan menüde, ortamınız olarak **Bash** ' i seçin.
 

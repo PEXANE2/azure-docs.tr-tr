@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/27/2020
 ms.author: trbye
-ms.openlocfilehash: 963405f0874e23553a118081b080a0f30e1942eb
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: e7714dcc3e14e3659ca1943507d55d20dfb28fa6
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93135504"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99214434"
 ---
 MacOS için geliştirme yaparken, kullanılabilir üç konuşma SDK 'Sı vardır.
 
@@ -20,7 +20,7 @@ MacOS için geliştirme yaparken, kullanılabilir üç konuşma SDK 'Sı vardır
 > [!TIP]
 > Swift ile amaç-C konuşma SDK 'sını kullanan Ayrıntılar için bkz. <a href="https://developer.apple.com/documentation/swift/imported_c_and_objective-c_apis/importing_objective-c_into_swift" target="_blank">hedefi Swift <span class="docon docon-navigate-external x-hidden-focus"></span> 'a alma-c </a>.
 
-### <a name="system-requirements"></a>Sistem gereksinimleri
+### <a name="system-requirements"></a>Sistem Gereksinimleri
 
 - MacOS sürüm 10,13 veya üzeri
 
@@ -43,7 +43,7 @@ platform :ios, '9.3'
 use_frameworks!
 
 target 'MyApp' do
-  pod 'MicrosoftCognitiveServicesSpeech', '~> 1.14.0'
+  pod 'MicrosoftCognitiveServicesSpeech', '~> 1.15.0'
 end
 ```
 

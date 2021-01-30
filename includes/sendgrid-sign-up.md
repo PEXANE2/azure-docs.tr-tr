@@ -4,15 +4,13 @@ ms.service: multiple
 ms.topic: include
 ms.date: 11/25/2018
 ms.author: gwallace
-ms.openlocfilehash: 3590b8fdb67b25e0d4389e814aefcc4d18b1193c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 5bc00f4de95d22eec71f9b1b2504b00f506232dc
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96015442"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99214640"
 ---
-Azure müşterileri her ay 25.000 ücretsiz e-postanın kilidini açabilir. Bu 25.000 ücretsiz aylık e-postalar, gelişmiş raporlama ve analiz ve [tüm API 'ler][all APIs] (Web, SMTP, olay, ayrıştırma ve daha fazlası) için size erişmenizi sağlayacaktır. SendGrid tarafından sağlanan ek hizmetler hakkında bilgi için [SendGrid Solutions][SendGrid Solutions] sayfasını ziyaret edin.
-
 ### <a name="to-sign-up-for-a-sendgrid-account"></a>SendGrid hesabı açmak için
 1. [Azure portalında][Azure portal] oturum açın.
 2. Azure portal menüsünde veya giriş sayfasında, **kaynak oluştur**' u seçin.
@@ -30,7 +28,7 @@ Azure müşterileri her ay 25.000 ücretsiz e-postanın kilidini açabilir. Bu 2
 8. Yeni bir **Kaynak grubu** oluşturun veya var olanlardan birini kullanın.
 9. **Fiyatlandırma katmanı** bölümünde kaydolmak istediğiniz SendGrid planını seçin.
 
-    ![Fiyatlandırma katmanınızı Seç bölümünün açık olduğu ve ücretsiz fiyatlandırma katmanının seçili olduğu yeni bir SendGrid hesabı oluştur iletişim kutusunun ekran görüntüsü.][sendgrid-pricing]
+    ![Fiyatlandırma katmanınızı seçme bölümünün açık olduğu yeni bir SendGrid hesabı oluştur iletişim kutusunun ekran görüntüsü][sendgrid-pricing]
 10. Varsa **Promosyon Kodu** girin.
 11. **Iletişim bilgilerinizi** girin.
 12. **Yasal koşulları** gözden geçirin ve kabul edin.
