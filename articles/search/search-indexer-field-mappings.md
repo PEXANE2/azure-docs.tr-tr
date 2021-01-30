@@ -3,19 +3,17 @@ title: Dizin oluşturucularda alan eşlemeleri
 titleSuffix: Azure Cognitive Search
 description: Dizin oluşturucudaki alan eşlemelerini, alan adlarında ve veri gösterimlerinde farklılıklar için bir hesaba göre yapılandırın.
 manager: nitinme
-author: mattmsft
-ms.author: magottei
-ms.devlang: rest-api
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/11/2020
-ms.custom: devx-track-csharp
-ms.openlocfilehash: 579d0e334b4e60815b3a5efc877833ab75a3375d
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.date: 01/28/2021
+ms.openlocfilehash: efee1e1cda7767620931ef81825708d94a1925c3
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358941"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063188"
 ---
 # <a name="field-mappings-and-transformations-using-azure-cognitive-search-indexers"></a>Azure Bilişsel Arama Dizinleyicileri kullanarak alan eşlemeleri ve dönüştürmeler
 
@@ -46,7 +44,7 @@ Alan eşlemeleri `fieldMappings` , Dizin Oluşturucu tanımının dizisine eklen
 > [!NOTE]
 > Hiçbir alan eşlemesi eklendiyse, Dizin oluşturucular veri kaynağı alanlarının aynı ada sahip dizin alanlarıyla eşlenmesi gerektiğini varsayar. Alan eşlemesi eklemek, kaynak ve hedef alan için bu varsayılan alan eşlemelerini kaldırır. [BLOB depolama Dizin Oluşturucu](search-howto-indexing-azure-blob-storage.md)gibi bazı Dizin oluşturucular, dizin anahtarı alanı için varsayılan alan eşlemelerini ekler.
 
-## <a name="map-fields-using-the-rest-api"></a>REST API kullanarak alanları eşleme
+## <a name="map-fields-using-rest"></a>REST kullanarak alanları eşleme
 
 [Create Indexer](/rest/api/searchservice/create-Indexer) API isteği kullanarak yeni bir Dizin Oluşturucu oluştururken alan eşlemeleri ekleyebilirsiniz. Var olan bir dizin oluşturucunun alan eşlemelerini [güncelleştirme Dizin Oluşturucu](/rest/api/searchservice/update-indexer) API isteği kullanarak yönetebilirsiniz.
 
@@ -77,11 +75,10 @@ Kaynak alana, birden çok alan eşlemesinde başvurulabilir. Aşağıdaki örnek
 > [!NOTE]
 > Azure Bilişsel Arama, alan eşlemelerinde alan ve işlev adlarını çözümlemek için büyük/küçük harfe duyarsız karşılaştırma kullanır. Bu kullanışlı bir durumdur (tüm büyük küçük harfe sahip olmanız gerekmez), ancak veri kaynağınız veya dizininizin yalnızca büyük/küçük harfe göre farklı alanlar olamayacağı anlamına gelir.  
 >
->
 
-## <a name="map-fields-using-the-net-sdk"></a>.NET SDK kullanarak alanları eşleme
+## <a name="map-fields-using-net"></a>.NET kullanarak alanları eşleme
 
-.NET SDK 'da, özelliklere [FieldMapping](/dotnet/api/azure.search.documents.indexes.models.fieldmapping) `SourceFieldName` ve `TargetFieldName` isteğe bağlı bir başvuruya sahip FieldMapping sınıfını kullanarak alan eşlemelerini tanımlarsınız `MappingFunction` .
+.NET SDK 'da, özelliklere [](/dotnet/api/azure.search.documents.indexes.models.fieldmapping) `SourceFieldName` ve `TargetFieldName` isteğe bağlı bir başvuruya sahip FieldMapping sınıfını kullanarak alan eşlemelerini tanımlarsınız `MappingFunction` .
 
 Özelliği doğrudan ayarlayarak Dizin Oluşturucuyu veya daha yenisini oluştururken alan eşlemelerini belirtebilirsiniz `Indexer.FieldMappings` .
 

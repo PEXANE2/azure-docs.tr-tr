@@ -3,18 +3,18 @@ title: Azure VMware Çözüm VM 'lerinin yaşam döngüsü yönetimi
 description: Azure VMware Çözüm sanal makinelerinizin yaşam döngüsünün tüm yönlerini Microsoft Azure yerel araçlarla yönetmeyi öğrenin.
 ms.topic: conceptual
 ms.date: 09/11/2020
-ms.openlocfilehash: ff1032900fa936895f3adfcb0d8a872f24948aca
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 5bba9cbbc8783cc285ff09f790ee1b35b20ba358
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96326820"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99062905"
 ---
 # <a name="lifecycle-management-of-azure-vmware-solution-vms"></a>Azure VMware Çözüm VM 'lerinin yaşam döngüsü yönetimi
 
 Microsoft Azure yerel araçlar, sanal makinelerinizi (VM) Azure ortamında izlemenize ve yönetmenize olanak tanır. Henüz Azure VMware çözümünde ve şirket içi sanal makinelerinizdeki VM 'lerinizi izlemenizi ve yönetmenizi de sağlar. Bu genel bakışta, Azure 'un sunduğu tümleşik izleme mimarisine ve kendi yaşam döngüsü boyunca Azure VMware Çözüm sanal makinelerinizi yönetmek için yerel araçlarını nasıl kullanabileceğinizi inceleyeceğiz.
 
-## <a name="benefits"></a>Yararları
+## <a name="benefits"></a>Avantajlar
 
 - Azure yerel hizmetleri, sanal makinelerinizi bir karma ortamda (Azure, Azure VMware çözümü ve şirket içi) yönetmek için kullanılabilir.
 - Azure, Azure VMware çözümünüz ve şirket içi VM 'lerinizi tümleşik izleme ve görünürlük.
@@ -81,13 +81,13 @@ Azure Güvenlik Merkezi dağıtım gerektirmez. Daha fazla bilgi için bkz. [san
 
 Azure Arc, Azure Yönetim 'i Azure VMware çözümü, şirket içi veya diğer bulut platformları dahil olmak üzere herhangi bir altyapıya genişletir.
 
-- Bkz. birden çok Windows veya Linux VM için Azure Arc etkin sunucularını etkinleştirmek üzere [karma makineleri Azure 'A bağlama](../azure-arc/servers/onboard-service-principal.md) .
+- Birden çok Windows veya Linux VM için Azure Arc etkin sunucularını etkinleştirme hakkında daha fazla bilgi için bkz. [ölçekli karma makineleri Azure 'A bağlama](../azure-arc/servers/onboard-service-principal.md).
 
 ### <a name="onboard-hybrid-kubernetes-clusters-with-arc-enabled-kubernetes"></a>Arc etkin Kubernetes ile karma Kubernetes kümeleri ekleme
 
 Azure Arc etkin Kubernetes kullanarak Azure VMware Çözüm ortamınızda barındırılan bir Kubernetes kümesi ekleyebilirsiniz. 
 
-- Bkz. [Azure yay özellikli bir ekleme hizmeti sorumlusu oluşturma](../azure-arc/kubernetes/create-onboarding-service-principal.md).
+- Daha fazla bilgi için bkz. [Azure yay özellikli bir ekleme hizmeti sorumlusu oluşturma](../azure-arc/kubernetes/create-onboarding-service-principal.md).
 
 ### <a name="deploy-the-log-analytics-agent"></a>Log Analytics aracısını dağıtma
 

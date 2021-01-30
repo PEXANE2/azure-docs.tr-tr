@@ -3,16 +3,16 @@ title: Ortak satış iş ortağı katılımı-Microsoft ticari Market
 description: İş ortakları için Microsoft Iş Ortağı Merkezi ortak satış programı, büyük bir müşteri tabanına ulaşmanıza ve yeni satış oluşturmanıza yardımcı olabilir.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
+ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
-ms.date: 12/2/2020
-ms.openlocfilehash: 7969f5ffd3064a5af97a101185b6229c81c7613d
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.date: 1/29/2021
+ms.openlocfilehash: 84d37def6aa519eabf26a72ded7b0ab70994c430
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880296"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063088"
 ---
 # <a name="co-sell-partner-engagement"></a>Ortak satış iş ortağı etkileşimi
 
@@ -22,7 +22,7 @@ Ortak satış programı, **fikri mülkiyet (IP) ile birlikte,** **Microsoft Tech
 
 - **Ortak satış** için sunulan teklifler, Microsoft alan satıcıları ' ne sunulur. Ortak satış programı, Microsoft satıcılarıyla çalışırken, işletmenizin büyümesini hızlandıran satış fırsatlarıyla işbirliği yapmak için Microsoft tarafından yönetilen müşterilerin büyük bir topluluğuna ulaşmanıza yardımcı olur.
 
-    ![Satış müşteri adayları paylaşıldığında, kabul edildiğinde ve Microsoft tarafından yönetilen müşterilere karşı kazanıldığında ortak satışın nasıl olacağını gösteren diyagram.](./media/marketplace-publishers-guide/marketplace-co-sell-v2.png)
+    :::image type="content" source="./media/marketplace-publishers-guide/marketplace-co-sell-v2.png" alt-text="Satış müşteri adayları paylaşıldığında, kabul edildiğinde ve Microsoft tarafından yönetilen müşterilere karşı kazanıldığında ortak satışın nasıl olacağını gösteren diyagram.":::
 
 - **Ortak satış incentivized** IP teklifleri, aşağıda listelenen Market avantajlarına ek olarak Microsoft satış ekipleriyle işbirliği halinde satılan Microsoft alanı satıcıları için teşvikleri kazanılabilir.</li></ul>
 
@@ -63,7 +63,7 @@ Ortak satış yolculuğunu aşağıdaki adımları izleyerek doğrudan Iş Orta�
 
 1. Soldaki menüde, **Microsoft Ile ortak satış** seçeneğini belirleyin.
 
-    :::image type="content" source="media/co-sell/co-sell-with-microsoft-tab.png" alt-text="Bu görüntü, Microsoft ile ortak satışın konumunu gösterir.":::
+    [![Bu görüntü, Microsoft ile ortak satışın konumunu gösterir.](media/co-sell/co-sell-with-microsoft-tab.png)](media/co-sell/co-sell-with-microsoft-tab.png#lightbox)
 
 1. Microsoft satıcılarına, **liste** bölümünde teklifinizin hızla sıralanmasını ve bulmasına yardımcı olacak temel liste ayrıntılarını sağlayın. (*Gerekli: tüm alanlar.*)
 
@@ -71,29 +71,20 @@ Ortak satış yolculuğunu aşağıdaki adımları izleyerek doğrudan Iş Orta�
 
 1. Teklifinizle ilgili ayrıntıları sağlayın ve **Belgeler** bölümündeki yardımcı malzemeleri yükleyin. Microsoft satıcıları, bu bilgileri teklifinizi önermek ve satmak için kullanacaktır. *(Gerekli: çözüm/teklif tek sayfalayıcı ve çözüm/teklif sıklık destesi. Azure IP ortak satışı incentivized durumu: başvuru mimarisi diyagramına ulaşmak için gereklidir.)*
 
-    :::image type="content" source="media/co-sell/co-sell-documents-section.png" alt-text="Bu görüntüde ortak satış sekmesindeki belgeler bölümü gösterilmektedir.":::
+    [![Bu görüntüde ortak satış sekmesindeki belgeler bölümü gösterilmektedir.](media/co-sell/co-sell-documents-section.png)](media/co-sell/co-sell-documents-section.png#lightbox)
 
 1. **Kişiler** bölümüne satış iletişim bilgilerini yükleyin. Microsoft satıcıları, teklifiniz hakkında ek bilgiler istemek için bu kişilere ulaşabilir. (*Gerekli: teklifinizin kullanılabilir hale getirilme her coğrafya için bir kişi.*)
 
-    :::image type="content" source="media/co-sell/co-sell-contacts-section.png" alt-text="Bu görüntüde ortak satış sekmesindeki kişiler bölümü gösterilir.":::
+    [![Bu görüntüde ortak satış sekmesindeki kişiler bölümü gösterilir.](media/co-sell/co-sell-contacts-section.png)](media/co-sell/co-sell-contacts-section.png#lightbox)
 
 1. Devam etmeden önce taslağı kaydedin.
 1. Teklifin tüm gerekli bölümlerini tamamladıktan sonra, bunu İnceleme ve yayınlama için gönderebilirsiniz. Sağ üst köşedeki **gözden geçir ve Yayımla**' yı seçin. Teklif ayrıntılarını gözden geçirin ve **Yayımla**' yı seçin.
-1. İstediğiniz [ortak satış durumu ölçütlerini](#co-sell-publishing-steps-and-requirements)karşıladıktan sonra, ortak satış için teklifinizi aday olarak değerlendirmek üzere aşağıdaki yönergeleri izleyin:
-    1. **Bir Microsoft Iş ortağı Yöneticisi (ör. PDM) varsa:** yardım Için Iş ortağı yöneticinize ulaşın. Ortak satış için hazırlık süreci ve Azure IP ortak satışı veya Business Applications ortak satış incentivized (varsa) için aday işlem sürecinde size kılavuzluk eder.
-
-    1. **Bir Microsoft Iş ortağı Yöneticisi (ör. PDM) yoksa,** [bulut ETKINLEŞTIRME masası (Ced) aracılığıyla kendi kendine aday](https://aka.ms/cednominate)olun. "Istenilen GELIŞMIŞ hizmetler" açılan menüsünde "ortak satış için hazırlanma" seçeneğini belirleyin:
-
-        :::image type="content" source="media/co-sell/co-sell-request-review.png" alt-text="Bu görüntüde, bir ortak satış incelemesi istemek için CED açılan menüsü gösterilmektedir.":::
-
-    Bu işlem, işlemi gerçekleştirmek için sizi size ulaşacak.
 
 ## <a name="see-your-offers-co-sell-status"></a>Teklifinizin ortak satış durumunu görün
 
 [Ticari Market 'Teki ortak satış](commercial-marketplace-co-sell.md)olan teklifler için, teklifin Genel Bakış sayfasında teklifinizin geçerli ortak satış durumunu görebilirsiniz:
 
- :::image type="content" source="media/co-sell/co-sell-status.png" alt-text="Bu görüntüde, tekliflerin geçerli ortak satış durumu gösterilmektedir.":::
-
+[![Bu görüntüde, tekliflerin geçerli ortak satış durumu gösterilmektedir.](media/co-sell/co-sell-status.png)](media/co-sell/co-sell-status.png#lightbox)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -7,33 +7,45 @@ manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/06/2020
-ms.openlocfilehash: 80c3f9aa02680097276f966ce6aea02acf1e40fb
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.date: 01/28/2021
+ms.openlocfilehash: dfd8526a035d4eef4d07539e541e37c88023b500
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358805"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063222"
 ---
 # <a name="how-to-schedule-indexers-in-azure-cognitive-search"></a>Azure Bilişsel Arama Dizinleyicileri zamanlama
 
-Dizin Oluşturucu normalde, oluşturulduktan hemen sonra bir kez çalışır. Portalı, REST API veya .NET SDK kullanarak isteğe bağlı olarak yeniden çalıştırabilirsiniz. Bir dizin Oluşturucuyu bir zamanlamaya göre düzenli aralıklarla çalışacak şekilde de yapılandırabilirsiniz.
+Dizin Oluşturucu normalde, oluşturulduktan hemen sonra bir kez çalışır. Daha sonra, Azure portal, [Dizin Oluşturucu (REST)](/rest/api/searchservice/run-indexer)veya BIR Azure SDK kullanarak isteğe bağlı olarak yeniden çalıştırabilirsiniz. Alternatif olarak, bir dizin Oluşturucuyu bir zamanlamaya göre çalışacak şekilde de yapılandırabilirsiniz. Dizin Oluşturucu çizelgelemenin yararlı olduğu bazı durumlar şunlardır:
 
-Dizin Oluşturucu çizelgelemenin yararlı olduğu bazı durumlar:
-
-* Kaynak veriler zamanla değişecektir ve Azure Bilişsel Arama dizin oluşturucularının değiştirilen verileri otomatik olarak işlemesini istiyorsunuz.
-* Dizin birden çok veri kaynağından doldurulacak ve oluşturucuların çakışmaları azaltmak için farklı zamanlarda çalıştığından emin olmak istiyorsunuz.
+* Kaynak veriler zamanla değişecektir ve arama dizin oluşturucunun Delta otomatik olarak işlemesini istiyorsunuz.
 * Kaynak veriler çok büyükse ve Dizin Oluşturucu işlemesini zaman içinde yaymak istiyorsunuz. Büyük hacimteki verileri dizinleme hakkında daha fazla bilgi için bkz. [Azure bilişsel arama büyük veri kümelerini Dizin](search-howto-large-index.md)oluşturma.
+* Bir arama dizini birden fazla veri kaynağından doldurulacak ve dizin oluşturucularının çakışmaları azaltmak için farklı zamanlarda çalıştırılmasını istiyorsunuz.
 
-Zamanlayıcı, Azure Bilişsel Arama 'ın yerleşik bir özelliğidir. Arama dizin oluşturucularının denetlemek için bir dış Zamanlayıcı kullanamazsınız.
+Görsel olarak, bir zamanlama aşağıdaki gibi görünebilir: 1 Ocak 'tan başlayıp 50 dakikada bir çalışıyor.
 
-## <a name="define-schedule-properties"></a>Zamanlama özelliklerini tanımla
+```json
+{
+    "dataSourceName" : "myazuresqldatasource",
+    "targetIndexName" : "target index name",
+    "schedule" : { "interval" : "PT50M", "startTime" : "2021-01-01T00:00:00Z" }
+}
+```
 
-Dizin Oluşturucu zamanlamasının iki özelliği vardır:
-* Zaman **aralığı** , zamanlanan Dizin Oluşturucu yürütmelerinin arasındaki süreyi tanımlar. İzin verilen en küçük Aralık 5 dakikadır ve en büyük değer 24 saattir.
-* **Başlangıç saati (UTC)** , dizin oluşturucunun ilk kez çalıştırılması gereken zamanı gösterir.
+> [!NOTE]
+> Zamanlayıcı, Azure Bilişsel Arama 'ın yerleşik bir özelliğidir. Dış zamanlayıcılar desteği yoktur.
 
-İlk dizin oluşturucuyu oluştururken veya dizin oluşturucunun özelliklerini daha sonra güncelleştirerek bir zamanlama belirtebilirsiniz. Dizin Oluşturucu zamanlamaları, [Portal](#portal), [REST API](#restApi)veya [.NET SDK](#dotNetSdk)kullanılarak ayarlanabilir.
+## <a name="schedule-property"></a>Zamanlama özelliği
+
+Zamanlama, Dizin Oluşturucu tanımının bir parçasıdır. **Schedule** özelliği atlanırsa, Dizin Oluşturucu, oluşturulduktan hemen sonra bir kez çalışır. Bir **zamanlama** özelliği eklerseniz, iki bölüm belirtirsiniz.
+
+| Özellik | Açıklama |
+|----------|-------------|
+|**Aralık** | istenir Art arda iki Dizin Oluşturucu yürütme başlangıcı arasındaki zaman miktarı. İzin verilen en küçük Aralık 5 dakikadır ve en uzun süre 1440 dakikadır (24 saat). XSD "dayTimeDuration" değeri ( [ıso 8601 Duration](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration) değerinin kısıtlı bir alt kümesi) olarak biçimlendirilmelidir. Bunun için olan model: `P(nD)(T(nH)(nM))` . <br/><br/>Örnekler: her `PT15M` `PT2H` 2 saat için 15 dakikada bir.|
+| **Başlangıç saati (UTC)** | seçim Zamanlanan yürütmelerin ne zaman başlaması gerektiğini gösterir. Atlanırsa, geçerli UTC saati kullanılır. Bu süre geçmişte olabilir, bu durumda ilk yürütme, dizin oluşturucunun özgün **başlangıçzamanından** bu yana sürekli olarak çalışıp çalışmadığını olarak zamanlanır.<br/><br/>Örnekler: `2021-01-01T00:00:00Z` 1 ocak 10:28 ' de başlayan gece yarısından itibaren `2021-01-05T22:28:00Z` p.m. 5 Ocak 'ta.|
+
+## <a name="scheduling-behavior"></a>Zamanlama davranışı
 
 Bir dizin oluşturucunun tek seferde yalnızca bir yürütmesi çalıştırılabilir. Bir Dizin Oluşturucu bir sonraki yürütmesi zamanlandığında zaten çalışıyorsa, bu yürütme zamanlanan bir sonraki saate kadar ertelenir.
 
@@ -44,29 +56,11 @@ Daha somut hale getirmek için bir örnek ele alalım. Bir Dizin Oluşturucu zam
 * Üçüncü yürütme 10:00: UTC olarak başlayacak şekilde zamanlanır, ancak bu süre içinde önceki yürütme çalışmaya devam etmektedir. Bu zamanlanmış yürütme daha sonra atlanır. Dizin oluşturucunun sonraki yürütülmesi 11:00. UTC tarihine kadar başlamaz.
 
 > [!NOTE]
-> Bir Dizin Oluşturucu belirli bir zamanlamaya göre ayarlanırsa ancak her çalıştırıldığında aynı belgede tekrar tekrar bir kez başarısız olursa, Dizin Oluşturucu, yeniden ilerleme yapana kadar daha az sıklıkta (en fazla 24 saatte bir) çalışmaya başlar.  Dizin oluşturucunun belirli bir noktada takılmasına neden olan sorunu düzelttiğini düşünüyorsanız, dizin oluşturucunun isteğe bağlı olarak çalıştırılmasını gerçekleştirebilir ve başarıyla ilerleme yapıyorsa, Dizin Oluşturucu ayarlanan zamanlama aralığına yeniden döner.
+> Bir Dizin Oluşturucu belirli bir zamanlamaya göre ayarlandıysa, ancak her seferinde aynı belgede sürekli olarak başarısız olursa, Dizin Oluşturucu bir daha az sıklıkta yeniden ilerleme yapana kadar daha az sıklıkta (24 saatte bir en fazla zaman aralığına kadar) çalışmaya başlayacaktır. Temel alınan sorunun ne olduğuna inanıyorsanız, Dizin oluşturucuyu el ile çalıştırabilir ve dizin oluşturma işlemi başarılı olursa Dizin Oluşturucu düzenli zamanlamaya geri döner.
 
-<a name="portal"></a>
+## <a name="schedule-using-rest"></a>REST kullanmayı zamanla
 
-## <a name="schedule-in-the-portal"></a>Portalda zamanla
-
-Portalda veri Içeri aktarma Sihirbazı, oluşturma zamanında bir dizin oluşturucunun zamanlamasını tanımlamanızı sağlar. Varsayılan zamanlama ayarı **her saat ' tir.** bu, dizin oluşturucunun oluşturulduktan sonra bir kez çalıştırıldığı ve sonrasında her saat sonra yeniden çalıştırıldığı anlamına gelir.
-
-Dizin oluşturucunun yeniden otomatik olarak çalışmasını istemiyorsanız **veya günde bir** kez çalıştırmak Istemiyorsanız, zamanlama ayarını **bir kez** daha değiştirebilirsiniz. Farklı bir Aralık veya belirli bir başlangıç saati belirtmek istiyorsanız, bunu **özel** olarak ayarlayın.
-
-Zamanlamayı **özel** olarak ayarladığınızda, alanlar, **aralığı** ve **başlangıç saatini (UTC)** belirtmenize izin verecek şekilde görünür. İzin verilen en kısa zaman aralığı 5 dakikadır ve en uzun süre 1440 dakikadır (24 saat).
-
-   ![Veri alma Sihirbazı 'nda Dizin Oluşturucu zamanlamasını ayarlama](media/search-howto-schedule-indexers/schedule-import-data.png "Veri alma Sihirbazı 'nda Dizin Oluşturucu zamanlamasını ayarlama")
-
-Bir Dizin Oluşturucu oluşturulduktan sonra, dizin oluşturucunun düzenleme panelini kullanarak zamanlama ayarlarını değiştirebilirsiniz. Zamanlama alanları, verileri Içeri aktarma Sihirbazı ile aynıdır.
-
-   ![Dizin Oluşturucu düzenleme panelinde zamanlamayı ayarlama](media/search-howto-schedule-indexers/schedule-edit.png "Dizin Oluşturucu düzenleme panelinde zamanlamayı ayarlama")
-
-<a name="restApi"></a>
-
-## <a name="schedule-using-rest-apis"></a>REST API 'Lerini kullanmayı zamanla
-
-REST API kullanarak bir dizin oluşturucunun zamanlamasını tanımlayabilirsiniz. Bunu yapmak için, Dizin oluşturucuyu oluştururken veya güncelleştirirken **Schedule** özelliğini ekleyin. Aşağıdaki örnekte, var olan bir dizin oluşturucuyu güncelleştirmek için bir PUT isteği gösterilmektedir:
+Dizin oluşturucuyu oluştururken veya güncelleştirirken **Schedule** özelliğini belirtin.
 
 ```http
     PUT https://myservice.search.windows.net/indexers/myindexer?api-version=2020-06-30
@@ -76,23 +70,13 @@ REST API kullanarak bir dizin oluşturucunun zamanlamasını tanımlayabilirsini
     {
         "dataSourceName" : "myazuresqldatasource",
         "targetIndexName" : "target index name",
-        "schedule" : { "interval" : "PT10M", "startTime" : "2015-01-01T00:00:00Z" }
+        "schedule" : { "interval" : "PT10M", "startTime" : "2021-01-01T00:00:00Z" }
     }
 ```
 
-**Interval** parametresi gereklidir. Aralık, arka arkaya iki Dizin Oluşturucu yürütmelerinin başlangıcı arasındaki süreyi ifade eder. İzin verilen en küçük Aralık 5 dakikadır; en uzun değer bir gündür. XSD "dayTimeDuration" değeri ( [ıso 8601 Duration](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration) değerinin kısıtlı bir alt kümesi) olarak biçimlendirilmelidir. Bunun için olan model: `P(nD)(T(nH)(nM))` . Örnekler: her `PT15M` `PT2H` 2 saat için 15 dakikada bir.
+## <a name="schedule-using-net"></a>.NET kullanarak zamanla
 
-İsteğe bağlı **StartTime** , zamanlanan yürütmelerin ne zaman başlaması gerektiğini gösterir. Atlanırsa, geçerli UTC saati kullanılır. Bu süre geçmişte olabilir, bu durumda ilk yürütme, dizin oluşturucunun özgün **başlangıçzamanından** bu yana sürekli olarak çalışıp çalışmadığını olarak zamanlanır.
-
-Ayrıca, Dizin oluşturucuyu Çalıştır çağrısını kullanarak istediğiniz zaman bir Dizin Oluşturucu çalıştırabilirsiniz. Dizin oluşturucular çalıştırma ve Dizin Oluşturucu zamanlamalarını ayarlama hakkında daha fazla bilgi için, REST API başvurusunda [Dizin oluşturucuyu çalıştırma](/rest/api/searchservice/run-indexer), [Dizin](/rest/api/searchservice/get-indexer)Oluşturucu ve [güncelleştirme dizin oluşturucuyu](/rest/api/searchservice/update-indexer) inceleyin.
-
-<a name="dotNetSdk"></a>
-
-## <a name="schedule-using-the-net-sdk"></a>.NET SDK kullanarak zamanlama
-
-Bir dizin oluşturucunun zamanlamasını Azure Bilişsel Arama .NET SDK kullanarak tanımlayabilirsiniz. Bunu yapmak için, bir Dizin Oluşturucu oluştururken veya güncelleştirirken **Schedule** özelliğini ekleyin.
-
-Aşağıdaki C# örneği, önceden tanımlanmış bir veri kaynağı ve dizini kullanarak bir Azure SQL veritabanı Dizin Oluşturucu oluşturur ve zamanlamasını her gün şu anda çalışacak şekilde ayarlar:
+Aşağıdaki C# örneği, önceden tanımlanmış bir veri kaynağı ve dizini kullanarak bir Azure SQL veritabanı Dizin Oluşturucu oluşturur ve zamanlamasını her gün bir kez çalışacak şekilde ayarlar, şimdi başlatılıyor:
 
 ```csharp
 var schedule = new IndexingSchedule(TimeSpan.FromDays(1))
@@ -109,15 +93,11 @@ var indexer = new SearchIndexer("hotels-sql-idxr", dataSource.Name, searchIndex.
 await indexerClient.CreateOrUpdateIndexerAsync(indexer);
 ```
 
+Zamanlama, [SearchIndexerClient](/dotnet/api/azure.search.documents.indexes.searchindexerclient)kullanarak bir Dizin Oluşturucu oluşturduğunuzda veya güncelleştirdiğinizde [ındexingschedule](/dotnet/api/azure.search.documents.indexes.models.indexingschedule) sınıfı kullanılarak tanımlanır. **Indexingschedule** Oluşturucusu, **TimeSpan** nesnesi kullanılarak belirtilen bir **Interval** parametresi gerektiriyor. Daha önce belirtildiği gibi, izin verilen en küçük Aralık değeri 5 dakikadır ve en büyük değer 24 saattir. **DateTimeOffset** nesnesi olarak belirtilen ikinci **StartTime** parametresi isteğe bağlıdır.
 
-**Schedule** özelliği atlanırsa, Dizin Oluşturucu, oluşturulduktan hemen sonra bir kez çalışır.
+## <a name="next-steps"></a>Sonraki adımlar
 
-**StartTime** parametresi geçmişteki bir zamana ayarlanabilir. Bu durumda, ilk yürütme, dizin oluşturucunun verilen **StartTime** bu yana sürekli olarak çalışıyor olması halinde zamanlanır.
+Bir zamanlamaya göre çalışan Dizin oluşturucular için, arama hizmetinden durumu alarak işlemleri izleyebilir veya tanılama günlüğünü etkinleştirerek ayrıntılı bilgiler edinebilirsiniz.
 
-Zamanlama, [ındexingschedule](/dotnet/api/azure.search.documents.indexes.models.indexingschedule) sınıfı kullanılarak tanımlanır. **Indexingschedule** Oluşturucusu, **TimeSpan** nesnesi kullanılarak belirtilen bir **Interval** parametresi gerektiriyor. İzin verilen en küçük Aralık değeri 5 dakikadır ve en büyük değer 24 saattir. **DateTimeOffset** nesnesi olarak belirtilen ikinci **StartTime** parametresi isteğe bağlıdır.
-
-.NET SDK, [SearchIndexerClient](/dotnet/api/azure.search.documents.indexes.searchindexerclient)kullanarak Dizin Oluşturucu işlemlerini denetlemenizi sağlar. 
-
-Bir dizin oluşturucuyu, [runındexer](/dotnet/api/azure.search.documents.indexes.searchindexerclient.runindexer) veya [Runındexsilinebilir eşitleme](/dotnet/api/azure.search.documents.indexes.searchindexerclient.runindexerasync) yöntemlerinden birini kullanarak dilediğiniz zaman bir şekilde çalıştırabilirsiniz.
-
-Dizin oluşturucular oluşturma, güncelleştirme ve çalıştırma hakkında daha fazla bilgi için bkz. [SearchIndexerClient](/dotnet/api/azure.search.documents.indexes.searchindexerclient).
+* [Arama Dizin Oluşturucu durumunu izleme](search-howto-monitor-indexers.md)
+* [Günlük verilerini toplayın ve çözümleyin](search-monitor-logs.md)

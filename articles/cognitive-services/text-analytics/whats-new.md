@@ -8,19 +8,27 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 12/02/2020
+ms.date: 01/27/2021
 ms.author: aahi
 ms.custom: references_regions
-ms.openlocfilehash: 625fe5f53318ebc641d102e679ef7fd0607ef683
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 3f403308c77e5ee0dfc066ec3dc53100e520d274
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97652865"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99090680"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>Metin Analizi API’sindeki yenilikler
 
 Metin Analizi API'si, sürekli olarak güncelleştirilir. Son geliştirmelerin güncel kalması için, bu makalede yeni yayınlar ve özellikler hakkında bilgi verilmektedir.
+
+## <a name="january-2021"></a>Ocak 2021
+
+* `2021-01-15`Sağlayan, [adlandırılmış varlık tanıma](how-tos/text-analytics-how-to-entity-linking.md) v3. x için model sürümü 
+  * [Birkaç genel varlık kategorisi](named-entity-types.md)için genişletilmiş dil desteği. 
+  * Desteklenen tüm v3 dilleri için genel varlık kategorilerinin Geliştirilmiş AI kalitesi. 
+
+* `2021-01-05` [Dil algılama](how-tos/text-analytics-how-to-language-detection.md)için model sürümü, ek [dil desteği](language-support.md?tabs=language-detection)sağlar.
 
 ## <a name="december-2020"></a>Aralık 2020
 
@@ -66,7 +74,7 @@ Metin Analizi API'si, sürekli olarak güncelleştirilir. Son geliştirmelerin g
 ### <a name="text-analytics-for-health-container-updates"></a>Sistem durumu kapsayıcısı güncelleştirmeleri için Metin Analizi
 
 Aşağıdaki güncelleştirmeler, yalnızca sistem durumu kapsayıcısı için Metin Analizi Eylül sürümüne özgüdür.
-* `1.1.013530001-amd64-preview`Containerpreview deposuna yeni model sürümü olan etiketli yeni bir kapsayıcı görüntüsü `2020-09-03` yayımlandı. 
+* `1.1.013530001-amd64-preview`Kapsayıcı önizleme deposuna yeni model sürümü olan etiketli yeni bir kapsayıcı görüntüsü `2020-09-03` yayımlandı. 
 * Bu model sürümü, varlık tanıma, kısaltma algılama ve gecikme süresi geliştirmeleriyle ilgili iyileştirmeler sağlar.
 
 > [!div class="nextstepaction"]
@@ -242,4 +250,4 @@ Varlık bağlama, Ingilizce ve Ispanyolca 'yi destekler. NER dil desteği varlı
 * [Yaklaşım Analizi](how-tos/text-analytics-how-to-sentiment-analysis.md)
 * [Dil algılama](how-tos/text-analytics-how-to-language-detection.md)
 * [Varlık tanıma](how-tos/text-analytics-how-to-entity-linking.md)
-* [Anahtar ifade ayıklama](how-tos/text-analytics-how-to-keyword-extraction.md)
+* [Anahtar tümceciği ayıklama](how-tos/text-analytics-how-to-keyword-extraction.md)

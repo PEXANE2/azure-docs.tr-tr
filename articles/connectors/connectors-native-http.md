@@ -7,12 +7,12 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 09/14/2020
 tags: connectors
-ms.openlocfilehash: f005bdfa5643ea187fb2973cac065563c4cc2ee6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f2835bda8ac7242b7a3ea4ea63401f26b9c8e426
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91292464"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063004"
 ---
 # <a name="call-service-endpoints-over-http-or-https-from-azure-logic-apps"></a>Azure Logic Apps'ten HTTP veya HTTPS üzerinden hizmet uç noktalarını çağırma
 
@@ -28,7 +28,7 @@ Bu makalede, mantıksal uygulamanızın diğer hizmetlere ve sistemlere giden ç
 
 Mantıksal uygulamanızdan, [Aktarım Katmanı Güvenliği (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security), önceden imzalanmış sertifikalar veya [Azure Active Directory açık kimlik doğrulama (Azure AD OAuth)](../active-directory/develop/index.yml)gibi güvenli yuva katmanı bilinen giden çağrılar için şifreleme, güvenlik ve yetkilendirme hakkında bilgi için bkz. [diğer hizmet ve sistemlere giden çağrılar Için güvenli erişim ve veri erişimi](../logic-apps/logic-apps-securing-a-logic-app.md#secure-outbound-requests).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Bir Azure hesabı ve aboneliği Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 
@@ -48,7 +48,7 @@ Bu yerleşik tetikleyici, bir uç nokta için belirtilen URL 'ye HTTP çağrıs�
 
 1. Tasarımcı 'nın arama kutusunda **yerleşik**' i seçin. Arama kutusuna `http` filtreniz olarak yazın. **Tetikleyiciler** listesinden **http** tetikleyicisi ' ni seçin.
 
-   ![HTTP tetikleyicisi'ni seçin](./media/connectors-native-http/select-http-trigger.png)
+   ![HTTP tetikleyicisi seçin](./media/connectors-native-http/select-http-trigger.png)
 
    Bu örnek, adımın daha açıklayıcı bir ada sahip olması için tetikleyiciyi "HTTP tetikleyicisi" olarak yeniden adlandırır. Ayrıca, örnek daha sonra bir HTTP eylemi ekler ve her iki ad de benzersiz olmalıdır.
 
@@ -56,7 +56,7 @@ Bu yerleşik tetikleyici, bir uç nokta için belirtilen URL 'ye HTTP çağrıs�
 
    ![HTTP tetikleyici parametrelerini girin](./media/connectors-native-http/http-trigger-parameters.png)
 
-   **Hiçbiri**dışında bir kimlik doğrulama türü seçerseniz, kimlik doğrulama ayarları seçiminize göre farklılık gösterir. HTTP için kullanılabilir kimlik doğrulama türleri hakkında daha fazla bilgi için şu konulara bakın:
+   **Hiçbiri** dışında bir kimlik doğrulama türü seçerseniz, kimlik doğrulama ayarları seçiminize göre farklılık gösterir. HTTP için kullanılabilir kimlik doğrulama türleri hakkında daha fazla bilgi için şu konulara bakın:
 
    * [Giden çağrılara kimlik doğrulama ekleme](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)
    * [Yönetilen kimlikler ile kaynaklara erişimin kimliğini doğrulama](../logic-apps/create-managed-service-identity.md)
@@ -81,7 +81,7 @@ Bu yerleşik eylem, bir uç nokta için belirtilen URL 'ye HTTP çağrısı yapa
 
    Adımlar arasında bir eylem eklemek için, işaretçinizi adımlar arasındaki oka taşıyın. Görüntülenen artı işaretini ( **+** ) seçin ve ardından **Eylem Ekle**' yi seçin.
 
-1. **Eylem seçin**altında, **yerleşik**' i seçin. Arama kutusuna `http` filtreniz olarak yazın. **Eylemler** listesinden **http** eylemini seçin.
+1. **Eylem seçin** altında, **yerleşik**' i seçin. Arama kutusuna `http` filtreniz olarak yazın. **Eylemler** listesinden **http** eylemini seçin.
 
    ![HTTP eylemi seçin](./media/connectors-native-http/select-http-action.png)
 
@@ -91,7 +91,7 @@ Bu yerleşik eylem, bir uç nokta için belirtilen URL 'ye HTTP çağrısı yapa
 
    ![HTTP eylem parametrelerini girin](./media/connectors-native-http/http-action-parameters.png)
 
-   **Hiçbiri**dışında bir kimlik doğrulama türü seçerseniz, kimlik doğrulama ayarları seçiminize göre farklılık gösterir. HTTP için kullanılabilir kimlik doğrulama türleri hakkında daha fazla bilgi için şu konulara bakın:
+   **Hiçbiri** dışında bir kimlik doğrulama türü seçerseniz, kimlik doğrulama ayarları seçiminize göre farklılık gösterir. HTTP için kullanılabilir kimlik doğrulama türleri hakkında daha fazla bilgi için şu konulara bakın:
 
    * [Giden çağrılara kimlik doğrulama ekleme](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)
    * [Yönetilen kimlikler ile kaynaklara erişimin kimliğini doğrulama](../logic-apps/create-managed-service-identity.md)
@@ -104,7 +104,7 @@ Bu yerleşik eylem, bir uç nokta için belirtilen URL 'ye HTTP çağrısı yapa
 
 Bu bilgileri döndüren bir HTTP tetikleyicisinden veya eylemden çıktılar hakkında daha fazla bilgi bulabilirsiniz:
 
-| Özellik | Tür | Açıklama |
+| Özellik | Tür | Description |
 |----------|------|-------------|
 | `headers` | JSON nesnesi | İstekten gelen üstbilgiler |
 | `body` | JSON nesnesi | İstekten gelen gövde içeriğine sahip nesne |
@@ -249,7 +249,7 @@ Bir HTTP tetikleyicisi veya eylemi bu üstbilgileri içeriyorsa Logic Apps, bu �
 
 * `Accept-*` dışındaki üstbilgiler `Accept-version`
 * `Allow`
-* `Content-*` Bu özel durumlarla birlikte: `Content-Disposition` , `Content-Encoding` ve `Content-Type`
+* `Content-*``Content-Disposition`,, `Content-Encoding` , ve için `Content-Type` post ve put işlemlerini KULLANıRKEN, ancak get işlemlerine dahil olmayan üstbilgiler
 * `Cookie`
 * `Expires`
 * `Host`

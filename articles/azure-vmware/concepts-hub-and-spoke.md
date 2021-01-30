@@ -3,12 +3,12 @@ title: Kavram-bir hub ve bağlı bileşen mimarisinde bir Azure VMware çözüm 
 description: Azure 'da bir hub ve bağlı bileşen mimarisinde Azure VMware çözüm dağıtımını tümleştirme hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 10/26/2020
-ms.openlocfilehash: 0d511c8d6a96ffb6fa666bcb7c989764f398bdc9
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: bfc442e569572349b1323500fbd0b2f912ebbc62
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97901394"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99062754"
 ---
 # <a name="integrate-azure-vmware-solution-in-a-hub-and-spoke-architecture"></a>Azure VMware çözümünü bir hub ve bağlı bileşen mimarisinde tümleştirme
 
@@ -76,7 +76,7 @@ ExpressRoute ağ geçidi, bağlı devreleri arasında geçişli yönlendirme sa�
   :::image type="content" source="./media/hub-spoke/azure-vmware-solution-hub-vnet-traffic-flow.png" alt-text="Azure VMware çözümünü hub sanal ağ trafiği akışına" border="false" lightbox="./media/hub-spoke/azure-vmware-solution-hub-vnet-traffic-flow.png":::
 
 
-Azure VMware Çözüm ağı ve bağlantı kavramları hakkında daha fazla ayrıntıyı [Azure VMware çözüm ürün belgelerinde](./concepts-networking.md)bulabilirsiniz.
+Azure VMware Çözüm ağı ve bağlantı kavramları hakkında daha fazla bilgi için bkz. [Azure VMware Çözüm Ürün belgeleri](./concepts-networking.md).
 
 ### <a name="traffic-segmentation"></a>Trafik kesimlemesi
 
@@ -103,7 +103,7 @@ Daha ayrıntılı bir trafik ilkesi oluşturmak için, tekerlek ve hub içindeki
 
 Azure Application Gateway v1 ve v2, Azure VMware Çözüm VM 'lerinde arka uç havuzu olarak çalışan Web Apps ile test edilmiştir. Application Gateway Şu anda Azure VMware Çözüm VM 'lerinde çalışan Web uygulamalarını internet 'e sunmak için desteklenen tek yöntemdir. Ayrıca, uygulamaları iç kullanıcılara güvenli bir şekilde kullanıma sunabilir.
 
-Ayrıntılar ve gereksinimler için [Application Gateway](./protect-azure-vmware-solution-with-application-gateway.md) Azure VMware çözümüne özgü makaleyi gözden geçirin.
+Daha fazla bilgi için [Application Gateway](./protect-azure-vmware-solution-with-application-gateway.md)Azure VMware çözümüne özgü makaleye bakın.
 
 :::image type="content" source="media/hub-spoke/azure-vmware-solution-second-level-traffic-segmentation.png" alt-text="Ağ güvenlik grupları kullanılarak ikinci trafik segmentinin düzeyi" border="false":::
 

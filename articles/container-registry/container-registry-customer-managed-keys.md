@@ -4,12 +4,12 @@ description: Azure Container Registry 'nizin geri kalanı hakkında bilgi edinin
 ms.topic: article
 ms.date: 12/03/2020
 ms.custom: ''
-ms.openlocfilehash: 708a42a4f965f484060d42d89ea4f535c4365a10
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: fb30610457e539250c33d7d9726fe10f9c0f8c5a
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96620469"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99062737"
 ---
 # <a name="encrypt-registry-using-a-customer-managed-key"></a>Müşteri tarafından yönetilen anahtar kullanarak kayıt defterini şifreleme
 
@@ -288,7 +288,7 @@ Alternatif olarak, anahtar kasasına erişmek için kimliğe izinler atamak üze
 
 ### <a name="create-azure-container-registry"></a>Azure kapsayıcı kayıt defteri oluşturma
 
-1. Container Registry **kaynak kapsayıcıları oluştur**' u seçin  >  **Containers**  >  **Container Registry**.
+1. Container Registry **kaynak kapsayıcıları oluştur**' u seçin  >    >  .
 1. **Temel bilgiler** sekmesinde, bir kaynak grubu seçin veya oluşturun ve bir kayıt defteri adı girin. **SKU**'da **Premium**' u seçin.
 1. **Şifreleme** sekmesinde, **müşteri tarafından yönetilen anahtar**' ın **etkin**' i seçin.
 1. **Kimlik**' te, oluşturduğunuz yönetilen kimliği seçin.
@@ -454,7 +454,7 @@ Bir anahtar döndürürken, genellikle kayıt defteri oluştururken kullanılan 
 
 Yaygın bir senaryo, müşteri tarafından yönetilen anahtar olarak kullanılan anahtarın sürümünü güncelleştirmedir. Kayıt defteri şifrelemesinin nasıl yapılandırıldığına bağlı olarak, Azure Container Registry içindeki müşteri tarafından yönetilen anahtar otomatik olarak güncelleştirilir veya el ile güncelleştirilmeleri gerekir.
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure CLI’si
 
 Anahtar Kasası Anahtarlarınızı oluşturmak veya yönetmek için [az keykasakey][az-keyvault-key] komutları kullanın. Yeni bir anahtar sürümü oluşturmak için [az keykasa Key Create][az-keyvault-key-create] komutunu çalıştırın:
 
@@ -566,21 +566,31 @@ Yukarıdaki adımları tamamladıktan sonra anahtarı güvenlik duvarının arka
 
 ## <a name="troubleshoot"></a>Sorun giderme
 
-### <a name="removing-user-assigned-identity"></a>Kullanıcı tarafından atanan kimlik kaldırılıyor
+### <a name="removing-managed-identity"></a>Yönetilen kimlik kaldırılıyor
 
-Şifreleme için kullanılan bir kayıt defterinden Kullanıcı tarafından atanan bir kimliği kaldırmaya çalışırsanız şuna benzer bir hata iletisi görebilirsiniz:
+
+Şifrelemeyi yapılandırmak için kullanılan bir kayıt defterinden Kullanıcı tarafından atanan veya sistem tarafından atanan bir yönetilen kimliği kaldırmaya çalışırsanız şuna benzer bir hata iletisi görebilirsiniz:
  
 ```
 Azure resource '/subscriptions/xxxx/resourcegroups/myGroup/providers/Microsoft.ContainerRegistry/registries/myRegistry' does not have access to identity 'xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx' Try forcibly adding the identity to the registry <registry name>. For more information on bring your own key, please visit 'https://aka.ms/acr/cmk'.
 ```
  
-Şifreleme anahtarını da değiştiremeyecektir (döndüremezsiniz). Bu sorun oluşursa, önce hata iletisinde görünen GUID 'YI kullanarak kimliği yeniden atayın. Örnek:
+Şifreleme anahtarını da değiştiremeyecektir (döndüremezsiniz). Çözümleme adımları, şifreleme için kullanılan kimlik türüne bağlıdır.
+
+**Kullanıcı tarafından atanan kimlik**
+
+Bu sorun Kullanıcı tarafından atanan bir kimlikle oluşursa, önce hata iletisinde görünen GUID 'yi kullanarak kimliği yeniden atayın. Örneğin:
 
 ```azurecli
 az acr identity assign -n myRegistry --identities xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx
 ```
         
 Ardından, anahtarı değiştirdikten ve farklı bir kimlik atadıktan sonra, Kullanıcı tarafından atanan özgün kimliği kaldırabilirsiniz.
+
+**Sistem tarafından atanan kimlik**
+
+Bu sorun sistem tarafından atanan bir kimlikle oluşursa, kimlik geri yükleme konusunda yardım için lütfen [bir Azure destek bileti oluşturun](https://azure.microsoft.com/support/create-ticket/) .
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

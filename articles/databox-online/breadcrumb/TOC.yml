@@ -1,0 +1,7 @@
+- name: Azure
+  tocHref: /azure/
+  topicHref: /azure/index
+  items:
+    - name: Depolama/Data Box çevrimiçi aktarım
+      tocHref: /azure/databox-gateway/
+      topicHref: /azure/databox-online/index

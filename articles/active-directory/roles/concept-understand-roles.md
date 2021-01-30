@@ -13,12 +13,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8b46262e34f57b3ff9aeb6bd4ea671ec611b99df
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 3101cf3650fcfb7f9313b13c1c07a03dd734e9dd
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98740355"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99089233"
 ---
 # <a name="understand-roles-in-azure-active-directory"></a>Azure Active Directory rolleri anlama
 
@@ -61,7 +61,7 @@ Aşağıdaki tablo, bu rol kategorilerini anlamak için bir yardım olarak sunul
 Kategori | Rol
 ---- | ----
 Azure AD 'ye özgü roller | Uygulama Yöneticisi<br>Uygulama Geliştirici<br>Kimlik doğrulama Yöneticisi<br>B2C ıEF anahtar kümesi Yöneticisi<br>B2C ıEF Ilke Yöneticisi<br>Bulut Uygulaması Yöneticisi<br>Bulut Cihaz Yöneticisi<br>Koşullu Erişim Yöneticisi<br>Cihaz Yöneticileri<br>Dizin okuyucuları<br>Dizin eşitleme hesapları<br>Dizin yazarları<br>Dış KIMLIK Kullanıcı akış Yöneticisi<br>Dış KIMLIK Kullanıcı akışı öznitelik Yöneticisi<br>Dış kimlik sağlayıcısı Yöneticisi<br>Grup Yöneticisi<br>Konuk davetci<br>Yardım Masası Yöneticisi<br>Karma kimlik yöneticisi<br>Lisans Yöneticisi<br>Partner Katman1 desteği<br>Partner Katman2 desteği<br>Parola Yöneticisi<br>Ayrıcalıklı kimlik doğrulama Yöneticisi<br>Ayrıcalıklı rol yöneticisi<br>Rapor okuyucu<br>Kullanıcı hesabı Yöneticisi
-Çapraz hizmet rolleri | Şirket Yöneticisi<br>Uyumluluk Yöneticisi<br>Uyumluluk verileri Yöneticisi<br>Genel okuyucu<br>Güvenlik Yöneticisi<br>Güvenlik operatörü<br>Güvenlik Okuyucusu<br>Hizmet desteği Yöneticisi
+Çapraz hizmet rolleri | Genel Yönetici<br>Uyumluluk Yöneticisi<br>Uyumluluk verileri Yöneticisi<br>Genel okuyucu<br>Güvenlik Yöneticisi<br>Güvenlik operatörü<br>Güvenlik Okuyucusu<br>Hizmet desteği Yöneticisi
 Hizmete özgü roller | Azure DevOps Yöneticisi<br>Azure Information Protection Yöneticisi<br>Faturalama Yöneticisi<br>CRM hizmet Yöneticisi<br>Müşteri Kasası erişim onaylayıcısı<br>Masaüstü Analizi Yöneticisi<br>Exchange hizmeti Yöneticisi<br>Öngörüler Yöneticisi<br>Öngörüler Iş lideri<br>Intune Hizmet Yöneticisi<br>Kaizala Yöneticisi<br>Lync Hizmet Yöneticisi<br>İleti Merkezi Gizlilik okuyucusu<br>İleti Merkezi okuyucusu<br>Modern ticari Kullanıcı<br>Ağ Yöneticisi<br>Office uygulamaları Yöneticisi<br>Power BI Hizmet Yöneticisi<br>Power Platform Yöneticisi<br>Yazıcı Yöneticisi<br>Yazıcı teknisyeni<br>Yönetici ara<br>Arama Düzenleyicisi<br>SharePoint Hizmet Yöneticisi<br>Takımlar Iletişim Yöneticisi<br>Takımlar Iletişimleri Destek Mühendisi<br>Takımlar Iletişimleri destek uzmanı<br>Takımlar cihazları Yöneticisi<br>Takımlar Hizmet Yöneticisi
 
 ## <a name="next-steps"></a>Sonraki adımlar

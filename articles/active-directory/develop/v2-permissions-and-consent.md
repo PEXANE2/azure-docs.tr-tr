@@ -12,12 +12,12 @@ ms.date: 09/23/2020
 ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur, marsma
 ms.custom: aaddev, fasttrack-edit, contperf-fy21q1, identityplatformtop40
-ms.openlocfilehash: aa8c00d1ee2a0dc3d019cc75b4e411ede984e74a
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 570314bcaedb86cc593846ffc1d6846d1d2fe335
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98756062"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99090196"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform"></a>Microsoft Identity platformunda izinler ve onay
 
@@ -164,7 +164,7 @@ Uygulama, uygulama izinlerini isterse ve bir yönetici bu izinleri yönetici ona
 
 Yönetici onayı vermek için yönetici onay uç noktasını kullandıktan sonra işiniz tamamlanmıştır. Kullanıcıların başka bir işlem yapması gerekmez. Yönetici izni verildiğinde, kullanıcılar tipik bir kimlik doğrulama akışı aracılığıyla erişim belirteci alabilir. Elde edilen erişim belirtecinin, onaylanan izinleri vardır.
 
-Bir şirket yöneticisi uygulamanızı kullandığında ve yetkilendirme uç noktasına yönlendirildiğine göre, Microsoft Identity platformu kullanıcının rolünü algılar. Şirket yöneticisinin istediğiniz izinler için tüm kiracının adına onay vermesini isteyip istemediğini sorar. Bunun yerine, bir yöneticinin tüm kiracı adına izin vermesini sağlamak için bir özel yönetici onay uç noktası kullanabilirsiniz. Bu uç nokta, uygulama izinleri istemek için de gereklidir. Uygulama izinleri yetkilendirme uç noktası kullanılarak istenemez.
+Genel yönetici uygulamanızı kullandığında ve yetkilendirme uç noktasına yönlendirildiğine göre, Microsoft Identity platformu kullanıcının rolünü algılar. Genel yöneticinin istediğiniz izinler için tüm kiracının adına onay vermesini isteyip istemediğini sorar. Bunun yerine, bir yöneticinin tüm kiracı adına izin vermesini sağlamak için bir özel yönetici onay uç noktası kullanabilirsiniz. Bu uç nokta, uygulama izinleri istemek için de gereklidir. Uygulama izinleri yetkilendirme uç noktası kullanılarak istenemez.
 
 Bu adımları izlerseniz, uygulamanız, yönetici tarafından kısıtlanmış kapsamlar dahil olmak üzere bir Kiracıdaki tüm kullanıcılar için izinler isteyebilir. Bu işlem yüksek ayrıcalıkdır. İşlemi yalnızca senaryonuz için gerekliyse kullanın.
 

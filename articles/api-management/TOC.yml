@@ -64,6 +64,8 @@
           href: api-management-error-handling-policies.md
     - name: Güvenlik
       items:
+        - name: Azure İlkesi’ne göre güvenlik denetimleri
+          href: ./security-controls-policy.md
         - name: Güvenlik temeli
           href: security-baseline.md
     - name: Abonelikler
@@ -274,7 +276,7 @@
               href: ../service-fabric/service-fabric-tutorial-deploy-api-management.md
 - name: Başvuru
   items:
-    - name: Azure CLI
+    - name: Azure CLI’si
       href: /cli/azure/apim
     - name: Azure PowerShell
       href: /powershell/module/az.apimanagement/

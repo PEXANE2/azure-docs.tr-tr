@@ -7,24 +7,24 @@ ms.author: baanders
 ms.date: 7/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 083d868f2d2652be9480227c29dfb289564056d6
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 0f705aa61f1fe627dc0c8227242538e01ffce1d5
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94533795"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99070854"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-portal"></a>Azure dijital TWINS 'te uç noktaları ve yolları yönetme (portal)
 
 [!INCLUDE [digital-twins-route-selector.md](../../includes/digital-twins-route-selector.md)]
 
-Azure dijital TWINS 'de, [olay bildirimlerini](how-to-interpret-event-data.md) aşağı akış hizmetlerine veya bağlı işlem kaynaklarına yönlendirebilirsiniz. Bu, önce olayları alabilen **uç noktalar** ayarlanarak yapılır. Daha sonra, Azure dijital TWINS tarafından oluşturulan olayların hangi uç noktalara teslim edildiğini belirten [**olay yolları**](concepts-route-events.md) oluşturabilirsiniz.
+Azure dijital TWINS 'de, [olay bildirimlerini](how-to-interpret-event-data.md) aşağı akış hizmetlerine veya bağlı işlem kaynaklarına yönlendirebilirsiniz. Bunu yapmak için öncelikle olayları alabilecek **uç noktaları** ayarlamanız gerekir. Daha sonra, Azure dijital TWINS tarafından oluşturulan olayların hangi uç noktalara teslim edildiğini belirten [**olay yolları**](concepts-route-events.md) oluşturabilirsiniz.
 
 Bu makalede, [Azure Portal](https://portal.azure.com)kullanarak uç noktalar ve rotalar oluşturma işlemi adım adım açıklanmaktadır.
 
 Alternatif olarak, uç noktaları ve yolları [olay rotaları API 'leri](/rest/api/digital-twins/dataplane/eventroutes), [SDK](how-to-use-apis-sdks.md#overview-data-plane-apis)'Lar veya [Azure dijital TWINS CLI](how-to-use-cli.md)ile de yönetebilirsiniz. Bu makalenin Portal yerine bu mekanizmaların kullanıldığı bir sürümü için bkz. [*nasıl yapılır: uç noktaları ve yolları yönetme (API 'ler ve CLI)*](how-to-manage-routes-apis-cli.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Bir **Azure hesabınızın** olması gerekir ( [buradan](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)birini ücretsiz olarak ayarlayabilirsiniz)
 * Azure aboneliğinizde bir **Azure dijital TWINS örneği** gerekir. Zaten bir örneğiniz yoksa, [*nasıl yapılır: örnek ve kimlik doğrulaması ayarlama*](how-to-set-up-instance-portal.md)bölümündeki adımları kullanarak bir tane oluşturabilirsiniz. Bu makalede daha sonra kullanmak için kurulum 'un aşağıdaki değerlerini kullanın:
@@ -33,11 +33,11 @@ Alternatif olarak, uç noktaları ve yolları [olay rotaları API 'leri](/rest/a
 
 Bu ayrıntıları, örneğinizi ayarladıktan sonra [Azure Portal](https://portal.azure.com) bulabilirsiniz. Portalda oturum açın ve Portal arama çubuğunda örneğinizin adını arayın.
  
-:::image type="content" source="media/how-to-manage-routes-portal/search-field-portal.png" alt-text="Azure portal arama çubuğunun ekran görüntüsü.":::
+:::image type="content" source="media/how-to-manage-routes-portal/search-field-portal.png" alt-text="Azure portal arama çubuğunun ekran görüntüsü." lightbox="media/how-to-manage-routes-portal/search-field-portal.png":::
 
-Örneğinizin Ayrıntılar sayfasını görmek için sonuçlardan örneğinizi seçin:
+Bu ayrıntıları örneğiniz için genel bakışta görmek üzere sonuçlardan örneğinizi seçin:
 
-:::image type="content" source="media/how-to-manage-routes-portal/instance-details.png" alt-text="ADT örnek ayrıntılarının ekran görüntüsü." border="false":::
+:::image type="content" source="media/how-to-manage-routes-portal/instance-details.png" alt-text="Bir Azure dijital TWINS örneği için genel bakış sayfasının ekran görüntüsü. Ad ve kaynak grubu vurgulanır.":::
 
 ## <a name="create-an-endpoint-for-azure-digital-twins"></a>Azure dijital TWINS için uç nokta oluşturma
 
@@ -48,89 +48,65 @@ Bunlar, örneğiniz için oluşturabileceğiniz desteklenen uç nokta türleridi
 
 Farklı uç nokta türleri hakkında daha fazla bilgi için bkz. [*Azure mesajlaşma hizmetleri arasında seçim yapın*](../event-grid/compare-messaging-services.md).
 
-Bir uç noktayı Azure dijital TWINS 'e bağlamak için, uç nokta için kullanmakta olduğunuz olay Kılavuzu konusu, Olay Hub 'ı veya Service Bus zaten mevcut olması gerekir. 
+Bu bölümde [Azure Portal](https://portal.azure.com)bu uç noktalardan birinin nasıl oluşturulacağı açıklanmaktadır.
 
-### <a name="create-an-event-grid-endpoint"></a>Event Grid uç noktası oluşturma
+[!INCLUDE [digital-twins-endpoint-resources.md](../../includes/digital-twins-endpoint-resources.md)]
 
-**Önkoşul** : *özel olay* hızlı başlangıcı Event Grid [ *özel konu oluşturma* bölümündeki](../event-grid/custom-event-quickstart-portal.md#create-a-custom-topic) adımları izleyerek bir olay Kılavuzu konusu oluşturun.
+### <a name="create-the-endpoint"></a>Uç noktayı oluşturma 
 
-Konuyu oluşturduktan sonra, Azure Digital TWINS örneğinizin [Azure Portal](https://portal.azure.com) sayfasından Azure dijital TWINS 'e bağlayabilirsiniz (örneğin adını Portal arama çubuğuna girerek örneği bulabilirsiniz).
+Uç nokta kaynaklarını oluşturduktan sonra bunları bir Azure dijital TWINS uç noktası için kullanabilirsiniz. Yeni bir uç nokta oluşturmak için, [Azure Portal](https://portal.azure.com) örneğinizin sayfasına gidin (örneğin adını Portal arama çubuğuna girerek örneği bulabilirsiniz).
 
-Örnek menüsünde _uç noktalar_ ' ı seçin. Ardından, izleyen uç *noktalar* sayfasından *+ uç nokta oluştur* ' u seçin. 
+1. Örnek menüsünde _uç noktalar_' ı seçin. Ardından, izleyen uç *noktalar* sayfasından *+ uç nokta oluştur*' u seçin. Bu işlem, aşağıdaki adımlarda yer alan alanları dolduracakları *bir uç nokta oluştur* sayfasını açar.
 
-Açılan *bir uç nokta oluştur* sayfasında, ilgili radyo düğmesini seçerek _Event Grid_ türünde bir uç nokta oluşturabilirsiniz. Diğer ayrıntıları doldurun: _ad_ alanına uç noktanız için bir ad girin, açılan listeden _aboneliğinizi_ seçin ve üçüncü açılan listeden önceden oluşturduğunuz  _Event Grid konu başlığını_ seçin.
+    :::image type="content" source="media/how-to-manage-routes-portal/create-endpoint-event-grid.png" alt-text="Event Grid türünde bir uç nokta oluşturma ekran görüntüsü." lightbox="media/how-to-manage-routes-portal/create-endpoint-event-grid.png":::
 
-Sonra, _Kaydet_ ' i vurarak uç noktanızı oluşturun.
+1. Uç noktanız için bir **ad** girin ve **uç nokta türünü** seçin.
 
-:::image type="content" source="media/how-to-manage-routes-portal/create-endpoint-event-grid.png" alt-text="Event Grid türünde bir uç nokta oluşturma ekran görüntüsü.":::
+1. Aboneliğiniz ve [yukarıda](#prerequisite-create-endpoint-resources)açıklanan uç nokta kaynakları dahil olmak üzere uç nokta türü için gereken diğer ayrıntıları doldurun.
+    1. Yalnızca Olay Hub 'ı ve Service Bus uç noktaları için, bir **kimlik doğrulama türü** seçmeniz gerekir. Azure dijital TWINS örneğiniz için [yönetilen bir kimlikle](concepts-security.md#managed-identity-for-accessing-other-resources-preview) uç noktayı kullanacaksanız, önceden oluşturulmuş yetkilendirme kuralıyla anahtar tabanlı kimlik doğrulaması veya kimlik tabanlı kimlik doğrulaması kullanabilirsiniz. 
 
-Üstteki Azure portal çubuğundaki bildirim simgesini denetleyerek uç noktanın başarıyla oluşturulduğunu doğrulayabilirsiniz: 
+    :::row:::
+        :::column:::
+            :::image type="content" source="media/how-to-manage-routes-portal/create-endpoint-event-hub-authentication.png" alt-text="Olay Hub 'ı türünde bir uç nokta oluşturma ekran görüntüsü." lightbox="media/how-to-manage-routes-portal/create-endpoint-event-hub-authentication.png":::
+        :::column-end:::
+        :::column:::
+        :::column-end:::
+    :::row-end:::
 
-:::image type="content" source="media/how-to-manage-routes-portal/create-endpoint-notifications.png" alt-text="Uç nokta oluşturulmasını doğrulama bildiriminin ekran görüntüsü." border="false":::
+1. _Kaydet_' i seçerek uç noktanızı oluşturmayı tamamlayın.
+
+>[!IMPORTANT]
+> Uç noktanız için kimlik tabanlı kimlik doğrulamasını başarılı bir şekilde kullanabilmek için, [*nasıl yapılır: yönlendirme olayları için yönetilen kimliği etkinleştirme (Önizleme)*](how-to-enable-managed-identities.md)bölümündeki adımları izleyerek örneğiniz için bir yönetilen kimlik oluşturmanız gerekir.
+
+Uç noktanızı oluşturduktan sonra, üstteki Azure portal çubuğundaki bildirim simgesini denetleyerek uç noktanın başarıyla oluşturulduğunu doğrulayabilirsiniz: 
+
+:::row:::
+    :::column:::
+        :::image type="content" source="media/how-to-manage-routes-portal/create-endpoint-notifications.png" alt-text="Uç nokta oluşturulmasını doğrulama bildiriminin ekran görüntüsü. Portalın üst çubuğundan çan şeklindeki simgenin seçildiği ve ' Endpoint ADT-Eh-Endpoint başarıyla oluşturuldu ' uyarısı var.":::
+    :::column-end:::
+    :::column:::
+    :::column-end:::
+:::row-end:::
+
+Uç nokta oluşturma işlemi başarısız olursa, hata iletisini gözlemleyin ve birkaç dakika sonra yeniden deneyin.
 
 Ayrıca, Azure dijital TWINS örneğiniz için *uç noktalar* sayfasında, geri oluşturulan uç noktayı görüntüleyebilirsiniz.
 
-Uç nokta oluşturma işlemi başarısız olursa, hata iletisini gözlemleyin ve birkaç dakika sonra yeniden deneyin.
-
-Şimdi, olay Kılavuzu konusu, Azure dijital TWINS 'in içindeki bir uç nokta olarak, _ad_ alanında belirtilen ad altında kullanılabilir. Genellikle bu adı, [Bu makalede daha sonra](#create-an-event-route)oluşturacağınız bir **olay yolunun** hedefi olarak kullanacaksınız.
-
-### <a name="create-an-event-hubs-endpoint"></a>Event Hubs uç noktası oluşturma
-
-**Önkoşullar** : 
-* Bir _Event Hubs ad alanı_ ve bir _Olay Hub 'ı_ gerekir. [*Bir olay hub 'ı oluşturma*](../event-hubs/event-hubs-create.md) hızlı başlangıcı Event Hubs adımları izleyerek bunların her ikisini de oluşturun.
-* Bir _yetkilendirme kuralına_ ihtiyacınız olacak. Bunu oluşturmak için, [*paylaşılan erişim imzalarını kullanarak Event Hubs kaynaklarına erişimi yetkilendirmek*](../event-hubs/authorize-access-shared-access-signature.md) Event Hubs başvurun.
-
-[Azure Portal](https://portal.azure.com) Azure dijital TWINS örneğinizin ayrıntılar sayfasına gidin (adını Portal arama çubuğuna girerek bulabilirsiniz).
-
-Örnek menüsünde _uç noktalar_ ' ı seçin. Ardından, izleyen uç *noktalar* sayfasından *+ uç nokta oluştur* ' u seçin. 
-
-Açılan *bir uç nokta oluştur* sayfasında, ilgili radyo düğmesini seçerek _Olay Hub_ 'ı türünde bir uç nokta oluşturabilirsiniz. _Ad_ alanına uç noktanız için bir ad girin. Ardından _aboneliğinizi_ ve ilgili açılan kutudan önceden oluşturduğunuz _Olay Hub 'ı ad_ alanınızı, _Olay Hub 'ını_ ve _Yetkilendirme kuralını_ seçin.
-
-Sonra, _Kaydet_ ' i vurarak uç noktanızı oluşturun.
-
-:::image type="content" source="media/how-to-manage-routes-portal/create-endpoint-event-hub.png" alt-text="Event Hubs türünde bir uç nokta oluşturma ekran görüntüsü.":::
-
-Üstteki Azure portal çubuğundaki bildirim simgesini denetleyerek uç noktanın başarıyla oluşturulduğunu doğrulayabilirsiniz. 
-
-Uç nokta oluşturma işlemi başarısız olursa, hata iletisini gözlemleyin ve birkaç dakika sonra yeniden deneyin.
-
-Şimdi, Olay Hub 'ı Azure dijital TWINS 'in içindeki bir uç nokta olarak, _ad_ alanında belirtilen ad altında kullanılabilir. Genellikle bu adı, [Bu makalede daha sonra](#create-an-event-route)oluşturacağınız bir **olay yolunun** hedefi olarak kullanacaksınız.
-
-### <a name="create-a-service-bus-endpoint"></a>Service Bus uç noktası oluşturma
-
-**Önkoşullar** : 
-* Bir _Service Bus ad alanına_ ve _Service Bus konuya_ ihtiyacınız vardır. [*Konular ve abonelikler oluşturma*](../service-bus-messaging/service-bus-quickstart-topics-subscriptions-portal.md) hızlı başlangıç Service Bus adımları izleyerek bunların her ikisini de oluşturun. [*Konuya abonelik oluşturma*](../service-bus-messaging/service-bus-quickstart-topics-subscriptions-portal.md#create-subscriptions-to-the-topic) bölümünü doldurmanız gerekmez.
-* Bir _yetkilendirme kuralına_ ihtiyacınız olacak. Bunu oluşturmak için Service Bus [*kimlik doğrulaması ve yetkilendirme*](../service-bus-messaging/service-bus-authentication-and-authorization.md#shared-access-signature) makalesine başvurun.
-
-[Azure Portal](https://portal.azure.com) Azure dijital TWINS örneğinizin ayrıntılar sayfasına gidin (adını Portal arama çubuğuna girerek bulabilirsiniz).
-
-Örnek menüsünde _uç noktalar_ ' ı seçin. Ardından, izleyen uç *noktalar* sayfasından *+ uç nokta oluştur* ' u seçin. 
-
-Açılan *bir uç nokta oluştur* sayfasında, ilgili radyo düğmesini seçerek _Service Bus_ türünde bir uç nokta oluşturabilirsiniz. _Ad_ alanına uç noktanız için bir ad girin. Ardından _aboneliğinizi_ ve önceden oluşturduğunuz _Service Bus ad_ alanınızı, _Service Bus konu başlığını_ ve _Yetkilendirme kuralını_ ilgili açılan kutudan seçin.
-
-Sonra, _Kaydet_ ' i vurarak uç noktanızı oluşturun.
-
-:::image type="content" source="media/how-to-manage-routes-portal/create-endpoint-service-bus.png" alt-text="Service Bus türünde bir uç nokta oluşturma ekran görüntüsü.":::
-
-Üstteki Azure portal çubuğundaki bildirim simgesini denetleyerek uç noktanın başarıyla oluşturulduğunu doğrulayabilirsiniz. 
-
-Uç nokta oluşturma işlemi başarısız olursa, hata iletisini gözlemleyin ve birkaç dakika sonra yeniden deneyin.
-
-Artık Service Bus konu başlığı altında, _ad_ alanında belirtilen ad altında Azure dijital TWINS 'in içinde bir uç nokta olarak sunulmaktadır. Genellikle bu adı, [Bu makalede daha sonra](#create-an-event-route)oluşturacağınız bir **olay yolunun** hedefi olarak kullanacaksınız.
+Artık olay Kılavuzu, Olay Hub 'ı veya Service Bus konusu, uç nokta için seçtiğiniz ad altında Azure dijital TWINS 'in içindeki bir uç nokta olarak sunulmaktadır. Genellikle bu adı, [Bu makalede daha sonra](#create-an-event-route)oluşturacağınız bir **olay yolunun** hedefi olarak kullanacaksınız.
 
 ### <a name="create-an-endpoint-with-dead-lettering"></a>Etkin olmayan bir uç nokta oluşturma
 
 Bir uç nokta belirli bir süre içinde bir olayı teslim edimezse veya olayı belirli bir sayıda sunmaya çalıştıktan sonra, teslim edilmemiş olayı bir depolama hesabına gönderebilir. Bu işlem, **atılacak** olarak bilinir.
 
-Etkin olmayan bir uç nokta oluşturmak için, Azure portal yerine uç noktanızı oluşturmak için [ARM API 'lerini](/rest/api/digital-twins/controlplane/endpoints/digitaltwinsendpoint_createorupdate) kullanmanız gerekir.
+Etkin olmayan bir uç nokta oluşturmak için, Azure portal yerine uç noktanızı oluşturmak için [CLI komutlarını](how-to-use-cli.md) veya [Denetim düzlemi API 'lerini](/rest/api/digital-twins/controlplane/endpoints/digitaltwinsendpoint_createorupdate) kullanmanız gerekir.
 
-Bunu API 'lerle nasıl yapacağınız hakkında yönergeler için, bu makalenin [*API 'leri ve CLI*](how-to-manage-routes-apis-cli.md#create-an-endpoint-with-dead-lettering) sürümüne bakın.
+Bu araçların nasıl yapılacağı hakkında yönergeler için, bu makalenin [*API 'leri ve CLI*](how-to-manage-routes-apis-cli.md#create-an-endpoint-with-dead-lettering) sürümüne bakın.
 
 ## <a name="create-an-event-route"></a>Olay yolu oluşturma
 
 Azure dijital TWINS 'den bir uç noktaya gerçek veri göndermek için bir **olay yolu** tanımlamanız gerekir. Bu yollar, geliştiricilerin sistem genelinde ve aşağı akış hizmetlerinde olay akışını üzerinde bağlantı almasına imkan tanır. Kavramlar bölümünde olay yolları hakkında daha fazla bilgi edinin [*: Azure dijital TWINS olaylarını yönlendirme*](concepts-route-events.md).
 
-**Önkoşul** : bir yol oluşturmak için geçiş yapabilmeniz için önce Bu makalenin önceki kısımlarında açıklandığı gibi uç noktalar oluşturmanız gerekir. Uç noktalarınız kurulum tamamlandıktan sonra bir olay rotası oluşturmaya devam edebilirsiniz.
+**Önkoşul**: bir yol oluşturmak için geçiş yapabilmeniz için önce Bu makalenin önceki kısımlarında açıklandığı gibi uç noktalar oluşturmanız gerekir. Uç noktalarınız kurulum tamamlandıktan sonra bir olay rotası oluşturmaya devam edebilirsiniz.
 
 >[!NOTE]
 >Son noktalarınızı dağıttıysanız, yeni bir olay yolu için kullanmayı denemeden **önce** bunların dağıtımını tamamladığınızı doğrulayın. Uç noktalar hazırlanmadığından yolu ayarlayamıyoruz, birkaç dakika bekleyip yeniden deneyin.
@@ -140,7 +116,7 @@ Azure dijital TWINS 'den bir uç noktaya gerçek veri göndermek için bir **ola
 Bir olay yolu tanımı şu öğeleri içerir:
 * Kullanmak istediğiniz yol adı
 * Kullanmak istediğiniz uç noktanın adı
-* Uç noktaya hangi olayların gönderileceğini tanımlayan bir filtre
+* Uç noktaya gönderilen olayları tanımlayan filtre
     - Bir olayın gönderilmemesi için yolu devre dışı bırakmak için bir filtre değeri kullanın `false`
     - Belirli bir filtreleme özelliği olmayan bir yolu etkinleştirmek için, bir filtre değeri kullanın `true`
     - Diğer filtre türleri hakkında daha fazla bilgi için aşağıdaki [*Olayları Filtrele*](#filter-events) bölümüne bakın.
@@ -149,7 +125,7 @@ Tek bir yol, birden fazla bildirim ve olay türünün seçili olmasını sağlay
 
 Bir olay yolu oluşturmak için [Azure Portal](https://portal.azure.com) Azure dijital TWINS örneğinizin ayrıntılar sayfasına gidin (örneğin adını Portal arama çubuğuna girerek örneği bulabilirsiniz).
 
-Örnek menüsünden _olay yolları_ ' nı seçin. Ardından, aşağıdaki *olay yolları* sayfasından *+ bir olay yolu oluştur* ' u seçin. 
+Örnek menüsünden _olay yolları_' nı seçin. Ardından, aşağıdaki *olay yolları* sayfasından *+ bir olay yolu oluştur*' u seçin. 
 
 Açılan *bir olay yolu oluştur* sayfasında en az ' ı seçin:
 * _Ad_ alanına yönlendirmenize ilişkin bir ad

@@ -3,25 +3,25 @@ title: Power BI uygulamasıyla Azure maliyetlerini analiz etme
 description: Bu makalede Azure Maliyet Yönetimi Power BI uygulamasını yükleme ve kullanma adımları gösterilmektedir.
 author: bandersmsft
 ms.author: banders
-ms.date: 11/09/2020
+ms.date: 1/29/2021
 ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: benshy
-ms.openlocfilehash: 1c5adf58f670f3cadcedbe710568551004b77b78
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
-ms.translationtype: HT
+ms.openlocfilehash: d3439f5a86c445898d95191a32496b5f0c86be0b
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94413250"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99070166"
 ---
 # <a name="analyze-cost-with-the-azure-cost-management-power-bi-app-for-enterprise-agreements-ea"></a>Kurumsal Anlaşmalar (EA) için Azure Maliyet Yönetimi Power BI uygulamasıyla maliyet analizi
 
 Bu makalede Azure Maliyet Yönetimi Power BI uygulamasını yükleme ve kullanma adımları gösterilmektedir. Uygulama, Azure maliyetlerinizi Power BI'da analiz etmenize ve yönetmenize yardımcı olur. Uygulamayı kullanarak maliyetleri ve kullanım eğilimlerini izleyebilir, maliyet iyileştirme seçeneklerini belirleyerek harcamalarınızı azaltabilirsiniz.
 
-Uygulamayı olduğu gibi kullanabilir veya değiştirerek varsayılan filtreleri, görünümleri ve görselleştirmeleri ihtiyaçlarınıza göre özelleştirebilirsiniz. Ardından bunları ek verilerle birleştirebilir ve işletme maliyetinizin genel görünümünü elde etmek için özelleştirilmiş raporlar oluşturabilirsiniz.
+Azure maliyet yönetimi Power BI uygulaması şu anda yalnızca bir [Kurumsal Anlaşma](https://azure.microsoft.com/pricing/enterprise-agreement/)sahip müşterileri desteklemektedir.
 
-Azure Maliyet Yönetimi Power BI uygulaması şu anda yalnızca [Kurumsal Anlaşma](https://azure.microsoft.com/pricing/enterprise-agreement/) sahibi müşteriler tarafından kullanılabilir.
+Uygulama özelleştirme sınırlandırır. Gereksinimlerinize göre özelleştirmek üzere varsayılan filtreleri, görünümleri ve görselleştirmeleri değiştirmek ve genişletmek istiyorsanız, bunun yerine [Power BI Desktop ' de Azure maliyet yönetimi bağlayıcısını](/power-bi/connect-data/desktop-connect-azure-cost-management) kullanın. Azure maliyet yönetimi Bağlayıcısı sayesinde, genel iş maliyetinizi bütünsel görünümlerini almak üzere özelleştirilmiş raporlar oluşturmak için diğer kaynaklardan ek verilere katılabiliyor olabilirsiniz. Bağlayıcı ayrıca Microsoft Müşteri sözleşmelerini destekler.
 
 > [!NOTE]
 > Power BI şablon uygulamaları, PBIX dosyasının indirilmesini desteklemez.
@@ -36,19 +36,19 @@ Azure Maliyet Yönetimi Power BI uygulaması şu anda yalnızca [Kurumsal Anlaş
 Uygulamayı yüklemek için:
 
 1. [Azure Maliyet Yönetimi Power BI uygulamasını](https://aka.ms/costmgmt/ACMApp) açın.
-2. Power BI AppSource sayfasında **Şimdi edinin** 'i seçin.
-3. Kullanım koşullarını ve gizlilik ilkesini kabul etmek için **Devam** 'ı seçin.
-4. **Bu Power BI uygulamasını yükle** kutusunda **Yükle** 'yi seçin.
-5. Gerekirse bir çalışma alanı oluşturun ve **Devam** 'ı seçin.
+2. Power BI AppSource sayfasında **Şimdi edinin**'i seçin.
+3. Kullanım koşullarını ve gizlilik ilkesini kabul etmek için **Devam**'ı seçin.
+4. **Bu Power BI uygulamasını yükle** kutusunda **Yükle**'yi seçin.
+5. Gerekirse bir çalışma alanı oluşturun ve **Devam**'ı seçin.
 6. Yükleme tamamlandıktan sonra yeni uygulamanızın hazır olduğunu belirten bildirim görüntülenir.
-7. **Uygulamaya gidin** 'i seçin.
-8. **Yeni uygulamanızı kullanmaya başlayın** sayfasının **Verilerinizi bağlayın** bölümünde **Bağlan** 'ı seçin.  
+7. **Uygulamaya gidin**'i seçin.
+8. **Yeni uygulamanızı kullanmaya başlayın** sayfasının **Verilerinizi bağlayın** bölümünde **Bağlan**'ı seçin.  
   ![Yeni uygulamanızı kullanmaya başlayın - Bağlan](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/connect-data2.png)
-9. Açılan iletişim kutusunda **BillingProfileIdOrEnrollmentNumber** yerine EA kayıt numaranızı girin. Kaç aylık verileri almak istediğinizi belirtin. **Kapsam** için varsayılan **Kayıt Numarası** değerini bırakın ve **İleri** 'yi seçin.  
+9. Açılan iletişim kutusunda **BillingProfileIdOrEnrollmentNumber** yerine EA kayıt numaranızı girin. Kaç aylık verileri almak istediğinizi belirtin. **Kapsam** için varsayılan **Kayıt Numarası** değerini bırakın ve **İleri**'yi seçin.  
   ![EA kayıt bilgilerini girme](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-number.png)  
-10. Bir sonraki iletişim kutusu Azure'a bağlanır ve ayrılmış örnek önerileri için gereken verileri alır. *Varsayılan değerleri değiştirmeden bırakın* ve **Oturum aç** ’ı seçin.  
+10. Bir sonraki iletişim kutusu Azure'a bağlanır ve ayrılmış örnek önerileri için gereken verileri alır. *Varsayılan değerleri değiştirmeden bırakın* ve **Oturum aç**’ı seçin.  
   ![Ekran görüntüsü varsayılan değerlerle Azure Maliyet Yönetimi Uygulamasına Bağlan iletişim kutusunu gösterir.](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/autofit.png)  
-11. Son yükleme adımında EA kaydınızla bağlantı kurulur ve bunun için bir [Kuruluş Yöneticisi](../manage/understand-ea-roles.md) hesabı gerekir. EA kaydı kimliğinizi doğrulamak için **Oturum aç** 'ı seçin. Bu adım ayrıca Power BI'da veri yenileme eylemi de başlatır.  
+11. Son yükleme adımında EA kaydınızla bağlantı kurulur ve bunun için bir [Kuruluş Yöneticisi](../manage/understand-ea-roles.md) hesabı gerekir. EA kaydı kimliğinizi doğrulamak için **Oturum aç**'ı seçin. Bu adım ayrıca Power BI'da veri yenileme eylemi de başlatır.  
   ![EA kaydına bağlanma](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-auth.png)  
     > [!NOTE]
     > Veri yenileme işleminin tamamlanması biraz zaman alabilir. Süre, belirtilen ay sayısına ve eşitlenmesi gereken veri miktarına göre değişir.
@@ -61,22 +61,22 @@ Veri yenileme işlemi tamamlandıktan sonra, önceden oluşturulmuş raporları 
 
 Uygulamada aşağıdaki raporlar mevcuttur.
 
-**Kullanmaya Başlama** : Faydalı olabilecek belgelerin bağlantılarını ve geri bildirimlerinizi paylaşabileceğiniz bağlantıları sunar.
+**Kullanmaya Başlama**: Faydalı olabilecek belgelerin bağlantılarını ve geri bildirimlerinizi paylaşabileceğiniz bağlantıları sunar.
 
-**Hesaba genel bakış** : Raporda aşağıdakiler dahil olmak üzere aylık bilgilerin bir özeti gösterilir:
+**Hesaba genel bakış**: Raporda aşağıdakiler dahil olmak üzere aylık bilgilerin bir özeti gösterilir:
 
 - Alacaklara karşı ücretler
 - Yeni satın almalar
 - Azure Market ücretleri
 - Fazla kullanımlar ve toplam ücretler
 
-**Aboneliklere ve Kaynak Gruplarına Göre Kullanım** : Aboneliklere ve kaynak grubuna göre maliyeti gösteren zaman içindeki maliyet görünümünü ve grafikleri sağlar.
+**Aboneliklere ve Kaynak Gruplarına Göre Kullanım**: Aboneliklere ve kaynak grubuna göre maliyeti gösteren zaman içindeki maliyet görünümünü ve grafikleri sağlar.
 
-**Hizmetlere Göre Kullanım** : MeterCategory ölçütüne göre zaman içindeki kullanımı gösterir. Kullanım artışlarını veya düşüşlerini anlamak için kullanım verilerinizi izleyebilir ve tüm anomalilerin ayrıntılarına gidebilirsiniz.
+**Hizmetlere Göre Kullanım**: MeterCategory ölçütüne göre zaman içindeki kullanımı gösterir. Kullanım artışlarını veya düşüşlerini anlamak için kullanım verilerinizi izleyebilir ve tüm anomalilerin ayrıntılarına gidebilirsiniz.
 
-**Kullanımı En Çok Etkileyen 5 Etmen** : Bu rapor, ilk 5 MeterCategory ölçütüne ve MeterName bilgisine göre filtrelenmiş maliyet özeti gösterir.
+**Kullanımı En Çok Etkileyen 5 Etmen**: Bu rapor, ilk 5 MeterCategory ölçütüne ve MeterName bilgisine göre filtrelenmiş maliyet özeti gösterir.
 
-**Windows Server AHB Kullanımı** : Bu rapor, Azure Hibrit Avantajı'nın etkinleştirilmiş olduğu sanal makine sayısını gösterir. Ayrıca sanal makineler tarafından kullanılan çekirdek/vCPU sayısını da gösterir.
+**Windows Server AHB Kullanımı**: Bu rapor, Azure Hibrit Avantajı'nın etkinleştirilmiş olduğu sanal makine sayısını gösterir. Ayrıca sanal makineler tarafından kullanılan çekirdek/vCPU sayısını da gösterir.
 
 ![Azure Hibrit Avantajları tam raporu](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ahb-report-full.png)
 
@@ -84,13 +84,13 @@ Bu rapor ayrıca Hibrit Avantajı'nın **etkin** durumda olduğu ancak vCPU say�
 
 ![Azure Hibrit Avantajları - 8'den az vCPU ve vCPU'lar etkin değil](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ahb-report.png)
 
-**RI Ücreti Yansıtma** : Bu rapor bölge, abonelik, kaynak grubu veya kaynak düzeyinde ayrılmış örnek (RI) avantajının ne kadar ve nerede uygulandığını öğrenmenize yardımcı olur. Bu rapor, görünümü oluşturmak için amorti edilmiş kullanım verilerini kullanır.
+**RI Ücreti Yansıtma**: Bu rapor bölge, abonelik, kaynak grubu veya kaynak düzeyinde ayrılmış örnek (RI) avantajının ne kadar ve nerede uygulandığını öğrenmenize yardımcı olur. Bu rapor, görünümü oluşturmak için amorti edilmiş kullanım verilerini kullanır.
 
 RI kullanımı az olan verileri görüntülemek için _chargetype_ ölçütüne göre filtre uygulayabilirsiniz.
 
 Amorti edilmiş veriler hakkında daha fazla bilgi için bkz. [Kurumsal Anlaşma rezervasyon maliyetleri ve kullanım bilgilerini alma](../reservations/understand-reserved-instance-usage-ea.md).
 
-**RI Tasarrufu** : Bu rapor abonelik, kaynak grubu ve kaynak düzeyinde rezervasyonlar tarafından tahakkuk edilen tasarrufları gösterir. Şunları görüntüler:
+**RI Tasarrufu**: Bu rapor abonelik, kaynak grubu ve kaynak düzeyinde rezervasyonlar tarafından tahakkuk edilen tasarrufları gösterir. Şunları görüntüler:
 
 - Rezervasyon ile elde edilen maliyet
 - Rezervasyonun kullanıma uygulanmadığı durumlarda tahmini isteğe bağlı kullanım ücreti
@@ -124,9 +124,9 @@ _Normalleştirilmiş Boyut_ ve _Normalleştirilmiş Önerilen Miktar_ değerleri
 
 Raporun nasıl kullanılacağına ilişkin ayrıntılı bilgi için [VM RI Kapsamı (paylaşılan öneri)](#shared-recommendation) bölümüne bakın.
 
-**RI satın alma işlemleri** : Bu rapor belirli bir dönem içindeki RI satın alma işlemlerini gösterir.
+**RI satın alma işlemleri**: Bu rapor belirli bir dönem içindeki RI satın alma işlemlerini gösterir.
 
-**Fiyat listesi** : Bu rapor, bir Ödeme hesabına veya EA kaydına özgü fiyatların ayrıntılı listesini gösterir.
+**Fiyat listesi**: Bu rapor, bir Ödeme hesabına veya EA kaydına özgü fiyatların ayrıntılı listesini gösterir.
 
 ## <a name="troubleshoot-problems"></a>Sorunları giderme
 

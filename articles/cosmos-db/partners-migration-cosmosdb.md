@@ -6,12 +6,12 @@ ms.author: sngun
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
-ms.openlocfilehash: a105df6b27be943b14a29bb25fd048bfd294c867
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 7fe0817abfac3070f77303bb0d2d662d18010862
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097439"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99090512"
 ---
 # <a name="azure-cosmos-db-nosql-migration-and-application-development-partners"></a>Azure Cosmos DB NoSQL geçişi ve uygulama geliştirme iş ortakları
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -31,7 +31,7 @@ NoSQL geçişinden uygulama geliştirmeye kadar, Azure Cosmos DB çözümleriniz
 | [Capgemini](https://www.capgemini.com/) | Perakende (Inventory), IoT, operasyonel analiz (Spark), uygulama geliştirme | ABD, Fransa, UK, Hollanda, Finlandiya  |
 | [Cognizant](https://www.cognizant.com/) | IoT, kişiselleştirme, perakende (envanter), operasyonel analiz (Spark), uygulama geliştirme |ABD, Kanada, UK, Danimarka, Hollanda, Isviçre, Avustralya, Japonya |
 |[Bilgi sys](https://www.infosys.com/)     | Uygulama geliştirme      |    ABD    |  
-| [Lagash sistemleri](https://www.lagash.com/) | IoT, sunucusuz mimari, uygulama geliştirme | Arjantin, Şili, Kolombiya, Meksika|
+| [Lagash sistemleri](https://www.devex.com/organizations/lagash-systems-131346) | IoT, sunucusuz mimari, uygulama geliştirme | Arjantin, Şili, Kolombiya, Meksika|
 | [Lambda3 Me](https://www.lambda3.com.br/) | Gerçek zamanlı kişiselleştirme, perakende envanteri, uygulama geliştirme | Brezilya|
 |[Neal Analizi](https://www.nealanalytics.com/)    |     Kişiselleştirme, perakende (envanter), operasyonel analiz (Spark), uygulama geliştirme  |    ABD     |  
 |[Kolay çalışmalar Software Inc](https://www.pragmaticworks.com/)    |   NoSQL geçişi      |   ABD      |

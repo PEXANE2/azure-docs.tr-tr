@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 99fd79fb6c51f577d9b62d15ac006b068a685bcf
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 04ee4ccc3b0553d6532869d6403000fdedd93b5f
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98756537"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99062720"
 ---
 # <a name="daemon-app-that-calls-web-apis---move-to-production"></a>Web API 'Lerini çağıran Daemon uygulaması-üretime taşı
 
@@ -32,20 +32,17 @@ Birkaç kiracıda çalışabilen bir arka plan programı uygulaması oluşturuyo
 
 Müşterilerinize bu işlemleri gerçekleştirme hakkında açıklayabilmeniz gerekir. Daha fazla bilgi için, bkz. [Tüm kiracı için Izin isteme](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant).
 
-[!INCLUDE [Move to production common steps](../../../includes/active-directory-develop-scenarios-production.md)]
+[!INCLUDE [Common steps to move to production](../../../includes/active-directory-develop-scenarios-production.md)]
 
-## <a name="next-steps"></a>Sonraki adımlar
-
-Daha fazla bilgi edinmenize yardımcı olacak birkaç bağlantı aşağıda verilmiştir:
+## <a name="code-samples"></a>Kod örnekleri
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
-- Hızlı başlangıç: [bir belirteç alın ve uygulama kimliğini kullanarak bir konsol uygulamasından Microsoft Graph API 'si çağırın](./quickstart-v2-netcore-daemon.md).
 - İçin başvuru belgeleri:
   - [ConfidentialClientApplication](/dotnet/api/microsoft.identity.client.confidentialclientapplicationbuilder)örneği oluşturuluyor.
   - [Acquiretokenforclient](/dotnet/api/microsoft.identity.client.acquiretokenforclientparameterbuilder)çağrılıyor.
 - Diğer örnekler/Öğreticiler:
-  - [Microsoft-Identity-platform-Console-Daemon](https://github.com/Azure-Samples/microsoft-identity-platform-console-daemon) , bir kiracı Microsoft Graph sorgulayan kullanıcıları görüntüleyen basit bir .NET Core Daemon konsol uygulamasıdır.
+  - [Microsoft-Identity-platform-Console-Daemon](https://github.com/Azure-Samples/microsoft-identity-platform-console-daemon) , bir kiracı tarafından Microsoft Graph sorgulayan kullanıcıları görüntüleyen küçük bir .NET Core Daemon konsol uygulamasına sahiptir.
 
     ![Örnek Daemon uygulama topolojisi](media/scenario-daemon-app/daemon-app-sample.svg)
 
@@ -57,12 +54,18 @@ Daha fazla bilgi edinmenize yardımcı olacak birkaç bağlantı aşağıda veri
 
     ![topology](media/scenario-daemon-app/damon-app-sample-web.svg)
 
+---
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+Daha fazla bilgi edinmenize yardımcı olacak birkaç bağlantı aşağıda verilmiştir:
+
 # <a name="python"></a>[Python](#tab/python)
 
 Hızlı Başlangıç ['ı bir belirteç alma ve uygulama kimliğini kullanarak bir Python konsol uygulamasından MICROSOFT Graph API çağrısı](./quickstart-v2-python-daemon.md)yapın.
 
 # <a name="java"></a>[Java](#tab/java)
 
-MSAL Java Şu anda genel önizlemededir. Daha fazla bilgi için bkz. [msal Java dev Samples](https://github.com/AzureAD/microsoft-authentication-library-for-java/tree/dev/src/samples).
+Hızlı Başlangıç ['ı bir belirteç alma ve uygulama kimliğini kullanarak bir Java konsol uygulamasından MICROSOFT Graph API çağrısı](./quickstart-v2-java-daemon.md)yapın.
 
 ---

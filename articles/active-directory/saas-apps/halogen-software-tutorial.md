@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/20/2020
+ms.date: 01/22/2021
 ms.author: jeedes
-ms.openlocfilehash: f928df7b2e2da59b716950d4e7757cc508cb8936
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 6da04bda9e9d1a00ff10cc94d3dcef557a3f2802
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92446370"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99062970"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-saba-talentspace"></a>Öğretici: Saba TalentSpace ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -26,9 +26,7 @@ Bu öğreticide, Saba TalentSpace 'i Azure Active Directory (Azure AD) ile tüml
 * Kullanıcılarınızın Azure AD hesaplarıyla Saba TalentSpace 'e otomatik olarak oturum açmalarına olanak sağlayın.
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
-
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -40,24 +38,23 @@ Başlamak için aşağıdaki öğeler gereklidir:
 Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz.
 
 * Saba TalentSpace **SP** tarafından başlatılan SSO 'yu destekler
-* Saba TalentSpace 'i yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve korunmasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletilir. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](/cloud-app-security/proxy-deployment-any-app).
 
-## <a name="adding-saba-talentspace-from-the-gallery"></a>Galeriden Saba TalentSpace ekleme
+## <a name="add-saba-talentspace-from-the-gallery"></a>Galeriden Saba TalentSpace ekleme
 
 Saba TalentSpace 'in Azure AD ile tümleştirilmesini yapılandırmak için, Galeriden Saba TalentSpace 'i yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
 
-1. [Azure Portal](https://portal.azure.com) iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
+1. Azure portal iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
 1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
 1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
 1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
 1. **Galeriden Ekle** bölümünde, arama kutusuna **Saba TalentSpace** yazın.
 1. Sonuçlar panelinden **Saba TalentSpace** ' i seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-saba-talentspace"></a>Saba TalentSpace için Azure AD çoklu oturum açmayı yapılandırma ve test etme
+## <a name="configure-and-test-azure-ad-sso-for-saba-talentspace"></a>Saba TalentSpace için Azure AD SSO 'yu yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak, Saba TalentSpace Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, Saba TalentSpace 'teki bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak, Saba TalentSpace Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, Saba TalentSpace 'teki bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
-Azure AD SSO 'yu Saba TalentSpace ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
+Azure AD SSO 'yu Saba TalentSpace ile yapılandırmak ve test etmek için aşağıdaki adımları gerçekleştirin:
 
 1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
     * Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
@@ -70,19 +67,19 @@ Azure AD SSO 'yu Saba TalentSpace ile yapılandırmak ve test etmek için aşağ
 
 Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-1. [Azure Portal](https://portal.azure.com/), **Saba TalentSpace** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
+1. Azure portal, **Saba TalentSpace** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
 1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
-1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
+1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** kalem simgesine tıklayın.
 
    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
 1. **Temel SAML yapılandırması** bölümünde aşağıdaki adımları gerçekleştirin:
 
-    a. **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://global.hgncloud.com/[companyname]/saml/login`
+    a. **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak URL 'yi yazın:`https://global.hgncloud.com/[companyname]/saml/login`
 
-    b. **Tanımlayıcı (VARLıK kimliği)** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://global.hgncloud.com/[companyname]/saml/metadata`
+    b. **Tanımlayıcı (VARLıK kimliği)** metin kutusunda, aşağıdaki kalıbı kullanarak URL 'yi yazın:`https://global.hgncloud.com/[companyname]/saml/metadata`
 
-    c. **Yanıt URL 'si (onaylama tüketici hizmeti URL 'si)** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:`https://global.hgncloud.com/[companyname]/saml/SSO`
+    c. **Yanıt URL 'si (onaylama tüketici hizmeti URL 'si)** metin kutusuna aşağıdaki kalıbı kullanarak URL 'yi yazın:`https://global.hgncloud.com/[companyname]/saml/SSO`
 
     > [!NOTE]
     > Bu değerler gerçek değildir. Bu değerleri, gerçek oturum açma URL 'SI ve tanımlayıcısı ile güncelleştirin. Bu değerleri almak için [Saba TalentSpace istemci destek ekibine](https://support.saba.com/) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
@@ -114,15 +111,9 @@ Bu bölümde, Saba TalentSpace erişimi vererek Azure çoklu oturum açma özell
 1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
 1. Uygulamalar listesinde, **Saba TalentSpace**' i seçin.
 1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
-
-   !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
-
 1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
-
-    ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
-
 1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. Kullanıcılara bir rolün atanmasını bekliyorsanız, **Rol Seç** açılır listesinden bunu seçebilirsiniz. Bu uygulama için ayarlanmış bir rol yoksa, "varsayılan erişim" rolü seçili olduğunu görürsünüz.
 1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
 ## <a name="configure-saba-talentspace-sso"></a>Saba TalentSpace SSO 'yu yapılandırma
@@ -141,11 +132,11 @@ Bu bölümde, Saba TalentSpace erişimi vererek Azure çoklu oturum açma özell
 
     !["Ayarlar" seçeneklerinin vurgulandığı "S A M L yapılandırma" sayfasını gösteren ekran görüntüsü.](./media/halogen-software-tutorial/tutorial-halogen-14.png)
 
-    a. **Benzersiz tanımlayıcı**olarak, **NameID**' yi seçin.
+    a. **Benzersiz tanımlayıcı** olarak, **NameID**' yi seçin.
 
     b. **Benzersiz tanımlayıcı Ile eşleniyorsa** **Kullanıcı adı**' nı seçin.
   
-    c. İndirilen meta veri dosyanızı karşıya yüklemek için, dosya ' ya ve ardından **dosyayı karşıya yüklemek**Için, **Araştır** ' a tıklayın.
+    c. İndirilen meta veri dosyanızı karşıya yüklemek için, dosya ' ya ve ardından **dosyayı karşıya yüklemek** Için, **Araştır** ' a tıklayın.
 
     d. Yapılandırmayı test etmek için **Test Çalıştır**' a tıklayın.
 
@@ -172,11 +163,11 @@ Bu bölümün amacı, Saba TalentSpace 'te Britta Simon adlı bir Kullanıcı ol
 
     ![Azure AD Connect nedir?](./media/halogen-software-tutorial/tutorial-halogen-301.png)
 
-    a. **Ilk ad** metin kutusuna **B**gibi kullanıcının adını yazın.
+    a. **Ilk ad** metin kutusuna **B** gibi kullanıcının adını yazın.
 
-    b. **Soyadı** metin kutusunda, **Simon**adlı kullanıcının soyadını yazın.
+    b. **Soyadı** metin kutusunda, **Simon** adlı kullanıcının soyadını yazın.
 
-    c. **Kullanıcı adı metin kutusuna** **B. simon**yazın ve Azure Portal.
+    c. **Kullanıcı adı metin kutusuna** **B. simon** yazın ve Azure Portal.
 
     d. **Parola** metin kutusuna B. Simon için bir parola yazın.
 
@@ -184,18 +175,14 @@ Bu bölümün amacı, Saba TalentSpace 'te Britta Simon adlı bir Kullanıcı ol
 
 ## <a name="test-sso"></a>Test SSO 'SU
 
-Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açma yapılandırmanızı aşağıdaki seçeneklerle test edersiniz. 
 
-Erişim panelinde Saba TalentSpace kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Saba TalentSpace 'te otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](../user-help/my-apps-portal-end-user-access.md).
+* Azure portal içinde **Bu uygulamayı test et** ' e tıklayın. Bu, oturum açma akışını başlatabileceğiniz Saba TalentSpace oturum açma URL 'sine yeniden yönlendirilir. 
 
-## <a name="additional-resources"></a>Ek kaynaklar
+* Saba TalentSpace oturum açma URL 'sine doğrudan gidin ve oturum akışını buradan başlatın.
 
-- [ SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi ](./tutorial-list.md)
+* Microsoft My Apps ' i kullanabilirsiniz. Uygulamalarım içindeki Saba TalentSpace kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Saba TalentSpace 'te otomatik olarak oturum açmış olmanız gerekir. Uygulamalarım hakkında daha fazla bilgi için bkz. [uygulamalarıma giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir? ](../manage-apps/what-is-single-sign-on.md)
+## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Active Directory'de koşullu erişim nedir?](../conditional-access/overview.md)
-
-- [Azure AD ile Saba TalentSpace 'i deneyin](https://aad.portal.azure.com/)
-
-- [Microsoft Cloud App Security oturum denetimi nedir?](/cloud-app-security/proxy-intro-aad)
+ Saba TalentSpace yapılandırıldıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).

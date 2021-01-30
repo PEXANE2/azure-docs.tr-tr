@@ -5,360 +5,106 @@ author: msftradford
 manager: MehranAzimi-msft
 services: azure-spatial-anchors
 ms.author: parkerra
-ms.date: 11/20/2020
+ms.date: 01/28/2021
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4a65b2ca4ba9f1912adeaf60df123bcd3c8833bd
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: fc04242e61c748d7ae52e61e40206ba338a1b6aa
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95496911"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99071148"
 ---
 # <a name="coarse-relocalization"></a>Kaba yeniden yerelleştirme
 
-Kaba yeniden yerelleştirme, soruya bir başlangıç yanıtı sağlayan bir özelliktir: *cihazım Şu anda nerede, ne kadar hangi içerikleri gözlemliyim?* Yanıt kesin değil, ancak bunun yerine şu biçimdedir: *Bu Tutturucuların yakınına yakınız; bunlardan birini konumlandırmayı deneyin*.
+Kaba yeniden yerelleştirme, soruya yaklaşık olarak kısa bir yanıt sağlayarak büyük ölçekli yerelleştirmeyi sağlayan bir özelliktir: *cihazım şimdi, ne kadar hangi içerikleri gözlemlerim?* Yanıt kesin değil, ancak bunun yerine şu biçimdedir: *Bu Tutturucuların yakınına yakınız; bunlardan birini konumlandırmayı deneyin*.
 
-Farklı cihaz algılayıcı okumaları, hem oluşturma hem de Tutturucuların sorgulanması ile ilişkilendirerek etkili bir şekilde yeniden yerelleştirme çalışmaktadır. Açık Hava senaryolarında, algılayıcı verileri genellikle cihazın GPS (Global Konumlandırma Sistemi) konumudur. GPS kullanılabilir olmadığında veya güvenilir olmadığında (ınkapılar gibi), algılayıcı verileri WiFi erişim noktalarından ve aralıktaki Bluetooth işaretleriyle oluşur. Tüm toplanan algılayıcı verileri, bir uzamsal dizinin sürdürülmesi için katkıda bulunur bu, cihazınızın yaklaşık 100 ölçümlerinde bulunan bağlantıları hızlı bir şekilde tespit etmek için Azure uzamsal bağlantıları tarafından kullanılır.
+Kaba yeniden yerelleştirme, bağlantıları daha sonra hızlı sorgulama için kullanılan çeşitli cihaz algılayıcı okumaları ile etiketleyerek işe yarar. Açık Hava senaryolarında, algılayıcı verileri genellikle cihazın GPS (Global Konumlandırma Sistemi) konumudur. GPS kullanılabilir olmadığında veya güvenilir olmadığında (ınkapılar gibi), algılayıcı verileri WiFi erişim noktalarından ve aralıktaki Bluetooth işaretleriyle oluşur. Toplanan algılayıcı verileri, cihazlarınızın hangi bağlayıcıların yakınına hızlı bir şekilde belirlenmesi için Azure uzamsal bağlantıları tarafından kullanılan bir uzamsal dizinin sürdürülmesi için katkıda bulunur.
 
-Kaba reyerelleştirme tarafından etkinleştirilen bağlantıları hızlı bir şekilde aramak, dünya ölçeğinde (yani milyonlarca coğrafi olarak dağıtılmış) Tutturucuların desteklenen uygulamalarının geliştirilmesini basitleştirir. Bağlantı yönetiminin karmaşıklığı tamamen gizlenir ve bu da başar uygulama mantığınıza daha fazla odaklanmanızı sağlar. Tüm çapa noktası ağır kaldırma işlemi, arka planda Azure uzamsal bağlantılarına göre yapılır.
+## <a name="when-to-use-coarse-relocalization"></a>Ne zaman kaba yeniden yerelleştirme kullanılacağı
 
-## <a name="collected-sensor-data"></a>Toplanan algılayıcı verileri
+Tenis mahkemesinin daha büyük bir alanında 35 ' den fazla uzamsal tutturulmaya planlandıysanız, büyük olasılıkla daha fazla yerelleştirme, uzamsal dizin oluşturma avantajlarından yararlanabilirsiniz.
 
-Bağlantı hizmetine gönderebilmeniz için sensör verileri aşağıdakilerden biridir:
+Kaba reyerelleştirme tarafından etkinleştirilen bağlayıcıların hızlı bakış özelliği, dünya ölçeğinde (yani milyonlarca coğrafi olarak dağıtılmış) bağlayıcı koleksiyonları tarafından desteklenen uygulamaların geliştirilmesini basitleştirmek üzere tasarlanmıştır. Uzamsal dizin oluşturmanın karmaşıklığı tamamen gizlenir ve uygulama mantığınıza odaklanmanızı sağlar. Tüm çapa noktası ağır kaldırma işlemi, arka planda Azure uzamsal bağlantılarına göre yapılır.
+
+## <a name="using-coarse-relocalization"></a>Kaba yeniden yerelleştirme kullanma
+
+Azure uzamsal çıpası oluşturma ve sorgulama için tipik iş akışı, kaba yeniden yerelleştirme:
+1.  Seçtiğiniz algılayıcı verilerini toplamak için bir algılayıcı parmak izi sağlayıcısı oluşturun ve yapılandırın.
+2.  Bir Azure uzamsal bağlantı oturumu başlatın ve bağlayıcı oluşturun. Algılayıcı parmak izi etkin olduğundan, bağlantılar kaba bir yeniden yerelleştirme tarafından dağınık şekilde dizinlenir.
+3.  Azure uzamsal bağlantı oturumunda adanmış arama ölçütlerini kullanarak kaba yeniden yerelleştirme kullanarak çevreleyen bağlantıları sorgulayın.
+
+Uygulamanızda daha kaba bir yeniden yerelleştirme ayarlamak için aşağıdaki öğreticiye başvurabilirsiniz:
+* [Unity 'de kaba yeniden yerelleştirme](../how-tos/set-up-coarse-reloc-unity.md)
+* [Amaç için kaba yeniden yerelleştirme-C](../how-tos/set-up-coarse-reloc-objc.md)
+* [Swift 'ta kaba yeniden yerelleştirme](../how-tos/set-up-coarse-reloc-swift.md)
+* [Java 'da kaba yeniden yerelleştirme](../how-tos/set-up-coarse-reloc-java.md)
+* [C++ ' da kaba yeniden yerelleştirme/NDK](../how-tos/set-up-coarse-reloc-cpp-ndk.md)
+* [C++/Wınrt 'de kaba yeniden yerelleştirme](../how-tos/set-up-coarse-reloc-cpp-winrt.md)
+
+## <a name="sensors-and-platforms"></a>Algılayıcılar ve platformlar
+
+### <a name="platform-availability"></a>Platform kullanılabilirliği
+
+Bağlantı hizmetine gönderebilmeniz gereken algılayıcı verisi türleri şunlardır:
 
 * GPS konumu: enlem, Boylam, yükseklik.
 * Aralıktaki WiFi erişim noktalarının sinyal gücü.
 * Aralıktaki Bluetooth işaretlerinin sinyal gücü.
 
-Genel olarak, uygulamanızın GPS, WiFi veya BLE verilerine erişmek için cihaza özgü izinleri edinmeniz gerekir. Ayrıca, yukarıdaki bazı algılayıcı verileri belirli platformlarda tasarlanarak kullanılamaz. Bu durumları hesaba eklemek için, algılayıcı verisi koleksiyonu isteğe bağlıdır ve varsayılan olarak kapalıdır.
+Aşağıdaki tabloda, desteklenen platformlarda algılayıcı verilerinin kullanılabilirliği ve platforma özgü tüm uyarılar özetlenmektedir:
 
-## <a name="set-up-the-sensor-data-collection"></a>Algılayıcı veri toplamayı ayarlama
+|                 | HoloLens | Android | iOS |
+|-----------------|----------|---------|-----|
+| **YUVASı**         | <sup>1</sup> yok  | Evet<sup>2</sup> | Evet<sup>3</sup> |
+| **WiFi**        | Evet<sup>4</sup> | Evet<sup>5</sup> | NO  |
+| **BLO işaretleri** | Evet<sup>6</sup> | Evet<sup>6</sup> | Evet<sup>6</sup>|
 
-Bir algılayıcı parmak izi sağlayıcısı oluşturup oturum bunu fark ederek başlayalım:
 
-# <a name="c"></a>[C#](#tab/csharp)
+<sup>1</sup> BIR dış GPS cihazı, Hololens ile ilişkilendirilebilir. Bir GPS izleyici ile HoloLens kullanmak istiyorsanız [desteğimize](../spatial-anchor-support.md) başvurun.<br/>
+<sup>2</sup> [LocationManager][3] API 'LERI (GPS ve ağ) aracılığıyla desteklenir<br/>
+<sup>3</sup> [cllocationmanager][4] API 'leri aracılığıyla desteklenir<br/>
+<sup>4</sup> her 3 saniyede bir taramanın yaklaşık bir hızda desteklenir <br/>
+<sup>5</sup> API düzeyi 28 ile başlayarak, WiFi taramaları 2 dakikada bir olacak şekilde 4 çağrı yapılır. Android 10 ' dan azaltma, Geliştirici ayarları menüsünden devre dışı bırakılabilir. Daha fazla bilgi için bkz. [Android belgeleri][5].<br/>
+<sup>6</sup> Ile [Eddystone][1] ve [ıişaret][2] ile sınırlı
 
-```csharp
-// Create the sensor fingerprint provider
-sensorProvider = new PlatformLocationProvider();
+### <a name="which-sensor-to-enable"></a>Etkinleştirilecek algılayıcı
 
-// Create and configure the session
-cloudSpatialAnchorSession = new CloudSpatialAnchorSession();
+Algılayıcı seçimi, geliştirmekte olduğunuz uygulamaya ve platforma özgüdür.
+Aşağıdaki diyagramda, yerelleştirme senaryosuna bağlı olarak sensörlerin birleşiminin etkinleştiribileceği bir başlangıç noktası verilmiştir:
 
-// Inform the session it can access sensor data from your provider
-cloudSpatialAnchorSession.LocationProvider = sensorProvider;
-```
+![Etkin sensör seçiminin diyagramı](media/coarse-relocalization-enabling-sensors.png)
 
-# <a name="objc"></a>[ObjC](#tab/objc)
+Aşağıdaki bölümlerde, her algılayıcı türü için avantaj ve sınırlamalar hakkında daha fazla öngörü verilmektedir.
 
-```objc
-// Create the sensor fingerprint provider
-ASAPlatformLocationProvider *sensorProvider;
-sensorProvider = [[ASAPlatformLocationProvider alloc] init];
+### <a name="gps"></a>YUVASı
 
-// Create and configure the session
-cloudSpatialAnchorSession = [[ASACloudSpatialAnchorSession alloc] init];
-
-// Inform the session it can access sensor data from your provider
-cloudSpatialAnchorSession.locationProvider = sensorProvider;
-```
-
-# <a name="swift"></a>[Swift](#tab/swift)
-
-```swift
-// Create the sensor fingerprint provider
-var sensorProvider: ASAPlatformLocationProvider?
-sensorProvider = ASAPlatformLocationProvider()
-
-// Create and configure the session
-cloudSpatialAnchorSession = ASACloudSpatialAnchorSession()
-
-// Inform the session it can access sensor data from your provider
-cloudSpatialAnchorSession!.locationProvider = sensorProvider
-```
-
-# <a name="java"></a>[Java](#tab/java)
-
-```java
-// Create the sensor fingerprint provider
-PlatformLocationProvider sensorProvider = new PlatformLocationProvider();
-
-// Create and configure the session
-cloudSpatialAnchorSession = new CloudSpatialAnchorSession();
-
-// Inform the session it can access sensor data from your provider
-cloudSpatialAnchorSession.setLocationProvider(sensorProvider);
-```
-
-# <a name="c-ndk"></a>[C++ NDK](#tab/cpp)
-
-```cpp
-// Create the sensor fingerprint provider
-std::shared_ptr<PlatformLocationProvider> sensorProvider;
-sensorProvider = std::make_shared<PlatformLocationProvider>();
-
-// Create and configure the session
-cloudSpatialAnchorSession = std::make_shared<CloudSpatialAnchorSession>();
-
-// Inform the session it can access sensor data from your provider
-cloudSpatialAnchorSession->LocationProvider(sensorProvider);
-```
-
-# <a name="c-winrt"></a>[C++ WinRT](#tab/cppwinrt)
-```cpp
-// Create the sensor fingerprint provider
-PlatformLocationProvider sensorProvider = PlatformLocationProvider();
-
-// Create and configure the session
-cloudSpatialAnchorSession = CloudSpatialAnchorSession();
-
-// Inform the session it can access sensor data from your provider
-cloudSpatialAnchorSession.LocationProvider(sensorProvider);
-```
----
-
-Daha sonra, ne kadar kaba yeniden yerelleştirme için kullanmak istediğiniz sensöre karar vermeniz gerekir. Bu karar, geliştirmekte olduğunuz uygulamaya özeldir, ancak aşağıdaki tablodaki önerilerin size iyi bir başlangıç noktası vermesi gerekir:
-
-|                 | Inkapıların | Dış kapılar |
-|-----------------|---------|----------|
-| **YUVASı**         | Kapalı | Açık |
-| **WiFi**        | Açık | Açık (isteğe bağlı) |
-| **BLO işaretleri** | Açık (uyarılar ile isteğe bağlı olarak aşağıya bakın) | Kapalı |
-
-### <a name="enabling-gps"></a>GPS etkinleştiriliyor
-
-Uygulamanızın cihazın GPS konumuna erişim izni olduğu varsayılırsa, Azure uzamsal bağlayıcılarını kullanmak için yapılandırabilirsiniz:
-
-# <a name="c"></a>[C#](#tab/csharp)
-
-```csharp
-sensorProvider.Sensors.GeoLocationEnabled = true;
-```
-
-# <a name="objc"></a>[ObjC](#tab/objc)
-
-```objc
-ASASensorCapabilities *sensors = locationProvider.sensors;
-sensors.geoLocationEnabled = true;
-```
-
-# <a name="swift"></a>[Swift](#tab/swift)
-
-```swift
-let sensors = locationProvider?.sensors
-sensors.geoLocationEnabled = true
-```
-
-# <a name="java"></a>[Java](#tab/java)
-
-```java
-SensorCapabilities sensors = sensorProvider.getSensors();
-sensors.setGeoLocationEnabled(true);
-```
-
-# <a name="c-ndk"></a>[C++ NDK](#tab/cpp)
-
-```cpp
-const std::shared_ptr<SensorCapabilities>& sensors = sensorProvider->Sensors();
-sensors->GeoLocationEnabled(true);
-```
-
-# <a name="c-winrt"></a>[C++ WinRT](#tab/cppwinrt)
-
-```cpp
-SensorCapabilities sensors = sensorProvider.Sensors()
-sensors.GeoLocationEnabled(true);
-```
-
----
-
+GPS, dış mekan senaryolar için go seçeneğidir.
 Uygulamanızda GPS kullanırken, donanım tarafından sunulan okumalar tipik olarak şunları göz önünde bulundurun:
 
 * zaman uyumsuz ve düşük sıklık (1 Hz 'den az).
 * güvenilir olmayan/gürültülü (ortalama 7-b standart sapması).
 
-Genel olarak, hem cihaz işletim sistemi hem de Azure uzamsal bağlantıları, bu sorunları azaltmak için ham GPS sinyalinde bazı filtreleme ve tahmin işlemi yapar. Bu ek işleme yakınsama için ek zaman gerektirir, bu nedenle en iyi sonuçlar için şunu deneyin:
+Genel olarak, hem cihaz işletim sistemi hem de Azure uzamsal bağlantıları, bu sorunları azaltmak için ham GPS sinyalinde bazı filtreleme ve tahmin işlemi yapar. Bu ek işleme yakınsama için zaman gerektirir, bu nedenle en iyi sonuçlar için şunu deneyin:
 
 * uygulamanızda olabildiğince erken bir algılayıcı parmak izi sağlayıcısı oluşturun
 * algılayıcı parmak izi sağlayıcısını birden çok oturum arasında canlı tutun
 * algılayıcı parmak izi sağlayıcısını birden çok oturum arasında paylaşma
 
-Algılayıcı parmak izi sağlayıcısını bir bağlantı oturumu dışında kullanmayı planlıyorsanız, algılayıcı tahminleri yapmadan önce bu hizmeti başlattığınızdan emin olun. Örneğin, aşağıdaki kod, cihazınızın haritadaki konumunu gerçek zamanlı olarak güncelleştirmekte olacaktır:
+Tüketici sınıfı GPS cihazları genellikle kesin olarak kullanılır. [Zandenbergen ve Barbeau][6] tarafından yapılan bir inceleme (2011), destekli cep telefonlarını (A-GPS) 7 ölçümle (oldukça büyük bir değer yok sayılır) bir şekilde raporlar. Bu ölçüm hatalarına yönelik hesaba geçmek için hizmet, bağlantıları GPS alanında olasılık dağıtımları olarak değerlendirir. Bu nedenle, bir tutturucu, büyük olasılıkla en olası alan bölgesidir (yani %95 ' ten fazla güven), gerçek, bilinmeyen GPS konumunu içerir.
 
-# <a name="c"></a>[C#](#tab/csharp)
+GPS ile sorgulama yapılırken aynı düşünme uygulanır. Cihaz, doğru, bilinmeyen GPS konumu etrafında başka bir uzamsal güven bölgesi olarak temsil edilir. Yakın olan Tutturucuların bulunması, aşağıdaki görüntüde gösterildiği gibi, güvenilir bölgelere sahip olan bağlantıları cihazın güven bölgesine *yeterince yakın* bir şekilde bulmak için çeviri yapar:
 
-```csharp
-// Game about to start, start tracking the sensors
-sensorProvider.Start();
+![GPS ile bağlayıcı adayları seçimi](media/coarse-reloc-gps-separation-distance.png)
 
-// Game loop
-while (m_isRunning)
-{
-    // Get the GPS estimate
-    GeoLocation geoPose = sensorProvider.GetLocationEstimate();
+### <a name="wifi"></a>WiFi
 
-    // Paint it on the map
-    drawCircle(
-        x: geoPose.Longitude,
-        y: geoPose.Latitude,
-        radius: geoPose.HorizontalError);
-}
+HoloLens ve Android 'de, WiFi sinyal gücü, yoğun bir şekilde yeniden yerelleştirme sağlamak için iyi bir seçenek olabilir.
+Bunun avantajı, WiFi erişim noktalarının (örneğin, ofis alanları veya alışveriş mallarından ortak olarak), ek bir kurulum gerekmeden mümkün olan en hızlı şekilde kullanılabilmelidir.
 
-// Game ended, no need to track the sensors anymore
-sensorProvider.Stop();
-```
-
-# <a name="objc"></a>[ObjC](#tab/objc)
-
-```objc
-// Game about to start, start tracking the sensors
-[sensorProvider start];
-
-// Game loop
-while (m_isRunning)
-{
-    // Get the GPS estimate
-    ASAGeoLocation *geoPose = [sensorProvider getLocationEstimate];
-
-    // Paint it on the map
-    drawCircle(geoPose.longitude, geoPose.latitude, geoPose.horizontalError);
-}
-
-// Game ended, no need to track the sensors anymore
-[sensorProvider stop];
-```
-
-# <a name="swift"></a>[Swift](#tab/swift)
-
-```swift
-// Game about to start, start tracking the sensors
-sensorProvider?.start()
-
-// Game loop
-while m_isRunning
-{
-    // Get the GPS estimate
-    var geoPose: ASAGeoLocation?
-    geoPose = sensorProvider?.getLocationEstimate()
-
-    // Paint it on the map
-    drawCircle(geoPose.longitude, geoPose.latitude, geoPose.horizontalError)
-}
-
-// Game ended, no need to track the sensors anymore
-sensorProvider?.stop()
-```
-
-# <a name="java"></a>[Java](#tab/java)
-
-```java
-// Game about to start, start tracking the sensors
-sensorProvider.start();
-
-// Game loop
-while (m_isRunning)
-{
-    // Get the GPS estimate
-    GeoLocation geoPose = sensorProvider.getLocationEstimate();
-
-    // Paint it on the map
-    drawCircle(geoPose.getLongitude(), geoPose.getLatitude(), geoPose.getHorizontalError());
-}
-
-// Game ended, no need to track the sensors anymore
-sensorProvider.stop();
-```
-
-# <a name="c-ndk"></a>[C++ NDK](#tab/cpp)
-
-```cpp
-// Game about to start, start tracking the sensors
-sensorProvider->Start();
-
-// Game loop
-while (m_isRunning)
-{
-    // Get the GPS estimate
-    std::shared_ptr<GeoLocation> geoPose = sensorProvider->GetLocationEstimate();
-
-    // Paint it on the map
-    drawCircle(geoPose->Longitude(), geoPose->Latitude(), geoPose->HorizontalError());
-}
-
-// Game ended, no need to track the sensors anymore
-sensorProvider->Stop();
-```
-
-# <a name="c-winrt"></a>[C++ WinRT](#tab/cppwinrt)
-
-```cpp
-// Game about to start, start tracking the sensors
-sensorProvider.Start();
-
-// Game loop
-while (m_isRunning)
-{
-    // Get the GPS estimate
-    GeoLocation geoPose = sensorProvider.GetLocationEstimate();
-
-    // Paint it on the map
-    drawCircle(geoPose.Longitude(), geoPose.Latitude(), geoPose.HorizontalError());
-}
-
-// Game ended, no need to track the sensors anymore
-sensorProvider.Stop();
-```
-
----
-
-### <a name="enabling-wifi"></a>WiFi etkinleştiriliyor
-
-Uygulamanızın cihazın WiFi durumuna erişim izni olduğu varsayılırsa, Azure uzamsal bağlayıcılarını kullanmak için yapılandırabilirsiniz:
-
-# <a name="c"></a>[C#](#tab/csharp)
-
-```csharp
-sensorProvider.Sensors.WifiEnabled = true;
-```
-
-# <a name="objc"></a>[ObjC](#tab/objc)
-
-```objc
-ASASensorCapabilities *sensors = locationProvider.sensors;
-sensors.wifiEnabled = true;
-```
-
-# <a name="swift"></a>[Swift](#tab/swift)
-
-```swift
-let sensors = locationProvider?.sensors
-sensors.wifiEnabled = true
-```
-
-# <a name="java"></a>[Java](#tab/java)
-
-```java
-SensorCapabilities sensors = sensorProvider.getSensors();
-sensors.setWifiEnabled(true);
-```
-
-# <a name="c-ndk"></a>[C++ NDK](#tab/cpp)
-
-```cpp
-const std::shared_ptr<SensorCapabilities>& sensors = sensorProvider->Sensors();
-sensors->WifiEnabled(true);
-```
-
-# <a name="c-winrt"></a>[C++ WinRT](#tab/cppwinrt)
-
-```cpp
-SensorCapabilities sensors = sensorProvider.Sensors()
-sensors.WifiEnabled(true);
-```
-
----
+> [!NOTE]
+> iOS, WiFi sinyali gücünü okumak için herhangi bir API sağlamaz ve bu nedenle, WiFi etkin kaba yeniden yerelleştirme için kullanılamaz.
 
 Uygulamanızda WiFi kullanırken, donanım tarafından sunulan okumalar genellikle şunları göz önünde bulundurun:
 
@@ -371,280 +117,29 @@ Azure uzamsal bağlantıları, bu sorunları azaltmak için bir oturum sırasın
 * ilk tutturucu yerleştirmekten önce oturum iyi oluşturun.
 * oturumu mümkün olduğunca uzun tutun (yani, tüm tutturucuları ve tek bir oturumda sorgu oluşturun).
 
-### <a name="enabling-bluetooth-beacons"></a>Bluetooth işaretlerini etkinleştirme
+### <a name="bluetooth-beacons"></a>Bluetooth işaretleri
+<a name="beaconsDetails"></a>
 
-Uygulamanızın cihazın Bluetooth durumuna erişim izni olduğu varsayılırsa, Azure uzamsal bağlayıcılarını kullanmak için yapılandırabilirsiniz:
+Bluetooth işaretlerini dikkatle dağıtmak, GPS 'nin eksik veya yanlış olduğu büyük ölçekli, daha iyi yerelleştirme senaryolarına yönelik iyi bir çözümdür. Ayrıca, üç platformda da desteklenen tek ınkapıdır yöntemidir.
 
-# <a name="c"></a>[C#](#tab/csharp)
-
-```csharp
-sensorProvider.Sensors.BluetoothEnabled = true;
-```
-
-# <a name="objc"></a>[ObjC](#tab/objc)
-
-```objc
-ASASensorCapabilities *sensors = locationProvider.sensors;
-sensors.bluetoothEnabled = true;
-```
-
-# <a name="swift"></a>[Swift](#tab/swift)
-
-```swift
-let sensors = locationProvider?.sensors
-sensors.bluetoothEnabled = true
-```
-
-# <a name="java"></a>[Java](#tab/java)
-
-```java
-SensorCapabilities sensors = sensorProvider.getSensors();
-sensors.setBluetoothEnabled(true);
-```
-
-# <a name="c-ndk"></a>[C++ NDK](#tab/cpp)
-
-```cpp
-const std::shared_ptr<SensorCapabilities>& sensors = sensorProvider->Sensors();
-sensors->BluetoothEnabled(true);
-```
-
-# <a name="c-winrt"></a>[C++ WinRT](#tab/cppwinrt)
-
-```cpp
-SensorCapabilities sensors = sensorProvider.Sensors();
-sensors.BluetoothEnabled(true);
-```
-
----
-
-İşaretlerin genellikle, UUID 'ler ve MAC adresleri gibi her şeyin yapılandırılabileceği çok yönlü cihazlardır. Bu esneklik, UUID 'ler tarafından benzersiz şekilde tanımlanması için işaretleri dikkate alarak Azure uzamsal bağlayıcılarına yönelik sorunlu olabilir. Bu benzersizlik, büyük olasılıkla uzamsal solucan delikleri oluşmasına neden olabilir. En iyi sonuçlar için şunları yapmanız gerekir:
+İşaretlerin genellikle, UUID 'ler ve MAC adresleri gibi her şeyin yapılandırılabileceği çok yönlü cihazlardır. Azure uzamsal bağlantıları, işaretlerinin UUID 'ler tarafından benzersiz şekilde tanımlanmasını bekler. Bu benzersizlik, büyük olasılıkla hatalı sonuçlara neden olabilir. En iyi sonuçlar için şunları yapmanız gerekir:
 
 * işaretlerine benzersiz UUID 'ler atayın.
-* Bunları, genellikle kılavuz gibi normal bir düzende dağıtın.
-* benzersiz işaret UUID 'ler listesini algılayıcı parmak izi sağlayıcısına geçirin:
+* Bunları, alanınızı bir arada ele alan bir şekilde dağıtın ve bir boşluk olan herhangi bir noktadan en az 3 işaret erişilebilir.
+* benzersiz işaret UUID 'ler listesini algılayıcı parmak izi sağlayıcısına geçirin
 
-# <a name="c"></a>[C#](#tab/csharp)
+Bluetooth gibi radyo sinyalleri belirlenen engelleri aşmak 'den etkilenir ve diğer radyo sinyalleriyle karışabilir. Bu nedenlerden dolayı, alanın tek bir yere eklenip eklenmeyeceğini tahmin etmek zor olabilir. Daha iyi bir müşteri deneyimini güvence altına almak için, işaretlerinin kapsamını el ile test etmenizi öneririz. Bu işlem, aday cihazlarıyla alanınızda gezinerek ve Bluetooth 'un aralıklı olarak gösterildiği bir uygulamayla gerçekleştirilebilir. Kapsamı test ederken, alanınızda yer alan herhangi bir stratejik konumdan en az 3 işaretlerine ulaşabildiğinizden emin olun. Çok fazla sayıda işareti ayarlama bunlar arasında daha fazla girişim oluşmasına neden olabilir ve bu da kaba yeniden yerelleştirme doğruluğunu iyileştirmez.
 
-```csharp
-sensorProvider.Sensors.KnownBeaconProximityUuids = new[]
-{
-    "22e38f1a-c1b3-452b-b5ce-fdb0f39535c1",
-    "a63819b9-8b7b-436d-88ec-ea5d8db2acb0",
-    . . .
-};
-```
+Alanda hiçbir obstaci yoksa Bluetooth işaretlerinin genellikle 80 ölçüm kapsamı vardır.
+Bu, büyük obgrafik içermeyen bir alan için, bir ızgara düzeninde her 40 ölçümle işaretleri dağıtabilecek anlamına gelir.
 
-# <a name="objc"></a>[ObjC](#tab/objc)
+Pille çalışan bir işaret, sonuçları olumsuz yönde etkiler. bu nedenle, dağıtımınızı düşük veya kapalı pil için düzenli aralıklarla izlediğinizden emin olun.
 
-```objc
-NSArray *uuids = @[@"22e38f1a-c1b3-452b-b5ce-fdb0f39535c1", @"a63819b9-8b7b-436d-88ec-ea5d8db2acb0"];
+Azure uzamsal bağlantıları yalnızca bilinen işaret yakınlık UUID 'ler listesindeki Bluetooth işaretlerini izler. Allow-listelenmiş UUID 'ler olarak programlanmış kötü amaçlı işaretleri, hizmetin kalitesini olumsuz yönde etkileyebilir. Bu nedenle, dağıtımını denetleyebileceğiniz, seçkin boşlukların en iyi sonucunu elde edersiniz.
 
-ASASensorCapabilities *sensors = locationProvider.sensors;
-sensors.knownBeaconProximityUuids = uuids;
-```
-
-# <a name="swift"></a>[Swift](#tab/swift)
-
-```swift
-let uuids = [String]()
-uuids.append("22e38f1a-c1b3-452b-b5ce-fdb0f39535c1")
-uuids.append("a63819b9-8b7b-436d-88ec-ea5d8db2acb0")
-
-let sensors = locationProvider?.sensors
-sensors.knownBeaconProximityUuids = uuids
-```
-
-# <a name="java"></a>[Java](#tab/java)
-
-```java
-String uuids[] = new String[2];
-uuids[0] = "22e38f1a-c1b3-452b-b5ce-fdb0f39535c1";
-uuids[1] = "a63819b9-8b7b-436d-88ec-ea5d8db2acb0";
-
-SensorCapabilities sensors = sensorProvider.getSensors();
-sensors.setKnownBeaconProximityUuids(uuids);
-```
-
-# <a name="c-ndk"></a>[C++ NDK](#tab/cpp)
-
-```cpp
-std::vector<std::string> uuids;
-uuids.push_back("22e38f1a-c1b3-452b-b5ce-fdb0f39535c1");
-uuids.push_back("a63819b9-8b7b-436d-88ec-ea5d8db2acb0");
-
-const std::shared_ptr<SensorCapabilities>& sensors = sensorProvider->Sensors();
-sensors->KnownBeaconProximityUuids(uuids);
-```
-
-# <a name="c-winrt"></a>[C++ WinRT](#tab/cppwinrt)
-
-```cpp
-std::vector<winrt::hstring> uuids;
-uuids.emplace_back("22e38f1a-c1b3-452b-b5ce-fdb0f39535c1");
-uuids.emplace_back("a63819b9-8b7b-436d-88ec-ea5d8db2acb0");
-
-SensorCapabilities sensors = sensorProvider.Sensors();
-sensors.KnownBeaconProximityUuids(uuids);
-```
-
----
-
-Azure uzamsal bağlantıları yalnızca bilinen işaret yakınlık UUID 'ler listesindeki Bluetooth işaretlerini izler. Allow-listelenmiş UUID 'ler olarak programlanmış kötü amaçlı işaretleri hizmetin kalitesini de olumsuz yönde etkileyebilir. Bu nedenle, işaretlerini yalnızca, dağıtımını denetleyebileceğiniz, yalnızca seçkin alanlarda kullanmanız gerekir.
-
-## <a name="querying-with-sensor-data"></a>Algılayıcı verileriyle sorgulama
-
-İlişkili algılayıcı verileriyle bağlayıcı oluşturduktan sonra, cihazınızın bildirdiği algılayıcı ayarlarını kullanarak bunları almaya başlayabilirsiniz. Artık, bulmayı beklediğiniz bilinen Tutturucuların bir listesini sağlamanız gerekmez. bunun yerine, yalnızca hizmetin, kendi ekleme algılayıcılarının bildirdiği şekilde cihazınızın konumunu bilmesini sağlayabilirsiniz. Daha sonra Azure uzamsal bağlantıları, cihazınıza yakın olan bağlayıcı kümesini anlayabilir ve bunlarla görsel olarak eşleştirmeye çalışır.
-
-Sorguların algılayıcı verilerini kullanması için, "neredeyse cihaz" ölçütlerini oluşturarak başlayın:
-
-# <a name="c"></a>[C#](#tab/csharp)
-
-```csharp
-NearDeviceCriteria nearDeviceCriteria = new NearDeviceCriteria();
-
-// Choose a maximum exploration distance between your device and the returned anchors
-nearDeviceCriteria.DistanceInMeters = 5;
-
-// Cap the number of anchors returned
-nearDeviceCriteria.MaxResultCount = 25;
-
-anchorLocateCriteria = new AnchorLocateCriteria();
-anchorLocateCriteria.NearDevice = nearDeviceCriteria;
-```
-
-# <a name="objc"></a>[ObjC](#tab/objc)
-
-```objc
-ASANearDeviceCriteria *nearDeviceCriteria = [[ASANearDeviceCriteria alloc] init];
-
-// Choose a maximum exploration distance between your device and the returned anchors
-nearDeviceCriteria.distanceInMeters = 5.0f;
-
-// Cap the number of anchors returned
-nearDeviceCriteria.maxResultCount = 25;
-
-ASAAnchorLocateCriteria *anchorLocateCriteria = [[ASAAnchorLocateCriteria alloc] init];
-anchorLocateCriteria.nearDevice = nearDeviceCriteria;
-```
-
-# <a name="swift"></a>[Swift](#tab/swift)
-
-```swift
-let nearDeviceCriteria = ASANearDeviceCriteria()!
-
-// Choose a maximum exploration distance between your device and the returned anchors
-nearDeviceCriteria.distanceInMeters = 5.0
-
-// Cap the number of anchors returned
-nearDeviceCriteria.maxResultCount = 25
-
-let anchorLocateCriteria = ASAAnchorLocateCriteria()!
-anchorLocateCriteria.nearDevice = nearDeviceCriteria
-```
-
-# <a name="java"></a>[Java](#tab/java)
-
-```java
-NearDeviceCriteria nearDeviceCriteria = new NearDeviceCriteria();
-
-// Choose a maximum exploration distance between your device and the returned anchors
-nearDeviceCriteria.setDistanceInMeters(5.0f);
-
-// Cap the number of anchors returned
-nearDeviceCriteria.setMaxResultCount(25);
-
-AnchorLocateCriteria anchorLocateCriteria = new AnchorLocateCriteria();
-anchorLocateCriteria.setNearDevice(nearDeviceCriteria);
-```
-
-# <a name="c-ndk"></a>[C++ NDK](#tab/cpp)
-
-```cpp
-auto nearDeviceCriteria = std::make_shared<NearDeviceCriteria>();
-
-// Choose a maximum exploration distance between your device and the returned anchors
-nearDeviceCriteria->DistanceInMeters(5.0f);
-
-// Cap the number of anchors returned
-nearDeviceCriteria->MaxResultCount(25);
-
-auto anchorLocateCriteria = std::make_shared<AnchorLocateCriteria>();
-anchorLocateCriteria->NearDevice(nearDeviceCriteria);
-```
-
-# <a name="c-winrt"></a>[C++ WinRT](#tab/cppwinrt)
-
-```cpp
-NearDeviceCriteria nearDeviceCriteria = NearDeviceCriteria();
-
-// Choose a maximum exploration distance between your device and the returned anchors
-nearDeviceCriteria.DistanceInMeters(5.0f);
-
-// Cap the number of anchors returned
-nearDeviceCriteria.MaxResultCount(25);
-
-// Set the session's locate criteria
-anchorLocateCriteria = AnchorLocateCriteria();
-anchorLocateCriteria.NearDevice(nearDeviceCriteria);
-```
-
----
-
-`DistanceInMeters`Parametresi, içerik almak için tutturucu grafiği ne kadar keşfetmeye yönelik olduğunu denetler. Her ölçünün 2. sabitinde yer alan bağlayıcılarla bir boşluk doldurmuş olduğunuz örneği varsayalım. Ayrıca, cihazınızdaki kamera tek bir tutturucu gözlemleyerek hizmet tarafından başarıyla bulunur. En büyük olasılıkla, şu anda gözlemlediğiniz tek yer yerine, yerleştirdiğiniz tüm Tutturucuların alınması çok büyük olabilir. Yerleştirdiğiniz Tutturucuların bir grafiğe bağlı olduğu varsayıldığında, hizmet grafikteki kenarları izleyerek sizin için tüm yakın bağlantıları alabilir. Gerçekleştirilen grafik geçişi miktarı tarafından kontrol edilir `DistanceInMeters` ; Bu, bulduğunuz birine bağlı olan tüm Tutturucuların, daha yakın olduğunu size vermiş olacaksınız `DistanceInMeters` .
-
-İçin büyük değerlerin `MaxResultCount` performansı olumsuz yönde etkileyebileceğini aklınızda bulundurun. Uygulamanız için bir senable değere ayarlayın.
-
-Son olarak, oturuma algılayıcı tabanlı arama 'yı kullanmayı söylemeniz gerekir:
-
-# <a name="c"></a>[C#](#tab/csharp)
-
-```csharp
-cloudSpatialAnchorSession.CreateWatcher(anchorLocateCriteria);
-```
-
-# <a name="objc"></a>[ObjC](#tab/objc)
-
-```objc
-[cloudSpatialAnchorSession createWatcher:anchorLocateCriteria];
-```
-
-# <a name="swift"></a>[Swift](#tab/swift)
-
-```swift
-cloudSpatialAnchorSession!.createWatcher(anchorLocateCriteria)
-```
-
-# <a name="java"></a>[Java](#tab/java)
-
-```java
-cloudSpatialAnchorSession.createWatcher(anchorLocateCriteria);
-```
-
-# <a name="c-ndk"></a>[C++ NDK](#tab/cpp)
-
-```cpp
-cloudSpatialAnchorSession->CreateWatcher(anchorLocateCriteria);
-```
-
-# <a name="c-winrt"></a>[C++ WinRT](#tab/cppwinrt)
-
-```cpp
-cloudSpatialAnchorSession.CreateWatcher(anchorLocateCriteria);
-```
-
----
-
-## <a name="expected-results"></a>Beklenen sonuçlar
-
-Tüketici sınıfı GPS cihazları genellikle oldukça kesin. [Zandenbergen ve Barbeau][6] tarafından yapılan bir inceleme (2011), destekli cep telefonlarını (A-GPS) 7 ölçümle (oldukça büyük bir değer yok sayılır) bir şekilde raporlar. Bu ölçüm hatalarına yönelik hesaba geçmek için hizmet, bağlantıları GPS alanında olasılık dağıtımları olarak değerlendirir. Bu nedenle, bir tutturucu, büyük olasılıkla en olası alan bölgesidir (yani %95 ' ten fazla güven), gerçek, bilinmeyen GPS konumunu içerir.
-
-GPS ile sorgulama yapılırken aynı düşünme uygulanır. Cihaz, doğru, bilinmeyen GPS konumu etrafında başka bir uzamsal güven bölgesi olarak temsil edilir. Yakın olan Tutturucuların bulunması, aşağıdaki görüntüde gösterildiği gibi, güvenilir bölgelere sahip olan bağlantıları cihazın güven bölgesine *yeterince yakın* bir şekilde bulmak için çeviri yapar:
-
-![GPS ile bağlayıcı adayları seçimi](media/coarse-reloc-gps-separation-distance.png)
+### <a name="sensors-accuracy"></a>Sensör doğruluğu
 
 Her ikisi de, hem bağlayıcı oluşturma hem de sorgular sırasında, döndürülen bağlantı kümesi üzerinde büyük bir etkisi olan GPS sinyalinin doğruluğu. Buna karşılık, WiFi/işaret tabanlı sorgular, sorguyla ortak olarak en az bir erişim noktası/işaret olan tüm bağlantıları kabul eder. Bu anlamda, WiFi/işaretlerine dayalı bir sorgunun sonucu genellikle erişim noktalarının/işaretlerinin ve çevre engellerin fiziksel aralığına göre belirlenir.
-
 Aşağıdaki tabloda her algılayıcı türü için beklenen arama alanı tahmin edilecek:
 
 | Algılayıcısı      | Arama alanı yarıçapı (yaklaşık) | Ayrıntılar |
@@ -652,38 +147,6 @@ Aşağıdaki tabloda her algılayıcı türü için beklenen arama alanı tahmin
 | YUVASı         | 20 milyon-30 milyon | Diğer faktörler arasındaki GPS tarafından belirlenir. Raporlanan sayılar, bu 7 ölçüm olan,-GPS ile cep telefonlarına ait ortanca GPS doğruluğu için tahmin edilir. |
 | WiFi        | 50 milyon-100 milyon | Kablosuz erişim noktalarının aralığına göre belirlenir. Sıklık, verici kuvveti, fiziksel engelleri, girişim vb. bağlıdır. |
 | BLO işaretleri |  70 milyon | İşaret aralığına göre belirlenir. Sıklık, iletim gücüne, fiziksel engelleri, girişim vb. bağlıdır. |
-
-## <a name="per-platform-support"></a>Platform başına destek
-
-Aşağıdaki tabloda, desteklenen her platformda toplanan algılayıcı verileri, platforma özel uyarılarla birlikte özetlenmektedir:
-
-|                 | HoloLens | Android | iOS |
-|-----------------|----------|---------|-----|
-| **YUVASı**         | YOK | [LocationManager][3] API 'LERI (GPS ve ağ) aracılığıyla desteklenir | [Cllocationmanager][4] API 'leri aracılığıyla desteklenir |
-| **WiFi**        | Her 3 saniyede bir taramanın yaklaşık bir hızda desteklenir | Destekleniyor. WiFi taramaları, API düzeyi 28 ile başlayarak 2 dakikada bir 4 çağrı ile kısıtlanır. Android 10 ' dan azaltma, Geliştirici ayarları menüsünden devre dışı bırakılabilir. Daha fazla bilgi için bkz. [Android belgeleri][5]. | Yok-ortak API yok |
-| **BLO işaretleri** | [Eddystone][1] ve [ıişaret][2] ile sınırlı | [Eddystone][1] ve [ıişaret][2] ile sınırlı | [Eddystone][1] ve [ıişaret][2] ile sınırlı |
-
-## <a name="next-steps"></a>Sonraki adımlar
-
-Bir uygulamada kaba yeniden yerelleştirme kullanın.
-
-> [!div class="nextstepaction"]
-> [Unity](../how-tos/set-up-coarse-reloc-unity.md)
-
-> [!div class="nextstepaction"]
-> [Objective-C](../how-tos/set-up-coarse-reloc-objc.md)
-
-> [!div class="nextstepaction"]
-> [Swift](../how-tos/set-up-coarse-reloc-swift.md)
-
-> [!div class="nextstepaction"]
-> [Java](../how-tos/set-up-coarse-reloc-java.md)
-
-> [!div class="nextstepaction"]
-> [C++/NDK](../how-tos/set-up-coarse-reloc-cpp-ndk.md)
-
-> [!div class="nextstepaction"]
-> [C++/WinRT](../how-tos/set-up-coarse-reloc-cpp-winrt.md)
 
 <!-- Reference links in article -->
 [1]: https://developers.google.com/beacons/eddystone

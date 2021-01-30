@@ -4,12 +4,12 @@ description: İzleme için işlev uygulamanızı Application Insights bağlama v
 ms.date: 8/31/2020
 ms.topic: how-to
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 73ed679288d9d03b81a0b01670aa0f574a14839f
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: e24f2b1a61d77dafd7a23b04d225d0301f82ca59
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98684717"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99070149"
 ---
 # <a name="how-to-configure-monitoring-for-azure-functions"></a>Azure Işlevleri için izlemeyi yapılandırma
 
@@ -246,7 +246,7 @@ Oluşturulan Application Insights kaynağını gözden geçirmek için, **Applic
 <a id="manually-connect-an-app-insights-resource"></a>
 ### <a name="add-to-an-existing-function-app"></a>Mevcut bir işlev uygulamasına ekleme 
 
-İşlev uygulamanızla bir Application Insights kaynakları oluşturulmadıysa, kaynağı oluşturmak için aşağıdaki adımları kullanın. Daha sonra bu kaynaktaki izleme anahtarını, işlev uygulamanızda bir [uygulama ayarı](functions-how-to-use-azure-function-app-settings.md#settings) olarak ekleyebilirsiniz.
+İşlev uygulamanızla bir Application Insights kaynağı oluşturulmadıysa, kaynağı oluşturmak için aşağıdaki adımları kullanın. Daha sonra bu kaynaktaki izleme anahtarını, işlev uygulamanızda bir [uygulama ayarı](functions-how-to-use-azure-function-app-settings.md#settings) olarak ekleyebilirsiniz.
 
 1. [Azure Portal](https://portal.azure.com), **işlev uygulamasını** arayıp seçin, sonra işlev uygulamanızı seçin. 
 
@@ -271,6 +271,30 @@ Oluşturulan Application Insights kaynağını gözden geçirmek için, **Applic
 
 > [!NOTE]
 > Işlevlerin erken sürümleri, artık önerilmeyen yerleşik izleme kullanır. Böyle bir işlev uygulaması için Application Insights tümleştirmesinin etkinleştirilmesinde, [yerleşik günlüğü de devre dışı bırakmanız](#disable-built-in-logging)gerekir.  
+
+## <a name="query-scale-controller-logs"></a>Sorgu ölçek denetleyicisi günlükleri
+
+Hem ölçek denetleyicisi günlüğünü hem de Application Insights tümleştirmeyi etkinleştirdikten sonra, Application Insights günlük aramasını, yayılan ölçek denetleyicisi günlüklerini sorgulamak için kullanabilirsiniz. Ölçek denetleyicisi günlükleri, `traces` koleksiyonda **scalecontrollerlogs** kategorisi altında kaydedilir.
+
+Aşağıdaki sorgu, geçerli işlev uygulaması için belirtilen süre içinde tüm ölçek denetleyicisi günlüklerini aramak için kullanılabilir:
+
+```kusto
+traces 
+| extend CustomDimensions = todynamic(tostring(customDimensions))
+| where CustomDimensions.Category == "ScaleControllerLogs"
+```
+
+Aşağıdaki sorgu, yalnızca ölçekteki bir değişikliği gösteren günlüklerin nasıl alınacağını göstermek için önceki sorgu üzerinde genişler:
+
+```kusto
+traces 
+| extend CustomDimensions = todynamic(tostring(customDimensions))
+| where CustomDimensions.Category == "ScaleControllerLogs"
+| where message == "Instance count changed"
+| extend Reason = CustomDimensions.Reason
+| extend PreviousInstanceCount = CustomDimensions.PreviousInstanceCount
+| extend NewInstanceCount = CustomDimensions.CurrentInstanceCount
+```
 
 ## <a name="disable-built-in-logging"></a>Yerleşik günlüğe kaydetmeyi devre dışı bırakma
 

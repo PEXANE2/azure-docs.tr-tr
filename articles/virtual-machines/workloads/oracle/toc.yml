@@ -30,6 +30,12 @@
       href: oracle-reference-architecture.md
     - name: Oracle DB mimarisi hazırlama
       href: oracle-design.md
+    - name: Oracle Database yedekleme stratejileri
+      href: oracle-database-backup-strategies.md
+    - name: Azure Storage kullanarak yedekleme Oracle Database
+      href: oracle-database-backup-azure-storage.md
+    - name: Azure Backup kullanarak yedekleme Oracle Database
+      href: oracle-database-backup-azure-backup.md
     - name: Oracle olağanüstü durum kurtarma seçenekleri
       href: oracle-disaster-recovery.md
 - name: Nasıl yapılır kılavuzları

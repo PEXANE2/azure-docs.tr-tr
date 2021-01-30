@@ -7,12 +7,12 @@ ms.author: allensu
 ms.service: private-link
 ms.topic: tutorial
 ms.date: 9/25/2020
-ms.openlocfilehash: 477856bd5772cdc0a9ec00d81adf9c50847afdd0
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 3a7e75641f6bb84b490231fcd06e04c3cbad06d3
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97631959"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063475"
 ---
 # <a name="tutorial-connect-to-an-azure-cosmos-account-using-an-azure-private-endpoint"></a>Öğretici: Azure özel uç noktası kullanarak bir Azure Cosmos hesabına bağlanma
 
@@ -218,19 +218,19 @@ Bu bölümde, önceki adımda oluşturduğunuz sanal makineyi kullanarak özel u
 
 1. Sol taraftaki Gezinti bölmesinde **kaynak grupları** ' nı seçin.
 
-2. **myResourceGroup** öğesini seçin.
+1. **myResourceGroup** öğesini seçin.
 
-3. **Myvm**' yi seçin.
+1. **Myvm**' yi seçin.
 
-4. **Myvm** için genel bakış sayfasında **Bağlan** ' ı **seçin.**
+1. **Myvm** için genel bakış sayfasında **Bağlan** ' ı **seçin.**
 
-5. Mavi **kullanımı** savunma düğmesini seçin.
+1. Mavi **kullanımı** savunma düğmesini seçin.
 
-6. Sanal makine oluşturma sırasında girdiğiniz kullanıcı adını ve parolayı girin.
+1. Sanal makine oluşturma sırasında girdiğiniz kullanıcı adını ve parolayı girin.
 
-7. Bağlandıktan sonra sunucuda Windows PowerShell 'i açın.
+1. Bağlandıktan sonra sunucuda Windows PowerShell 'i açın.
 
-8. `nslookup <cosmosdb-account-name>.documents.azure.com` yazın. **\<cosmosdb-account-name>** Önceki adımlarda oluşturduğunuz Cosmos DB hesabının adıyla değiştirin. 
+1. `nslookup <cosmosdb-account-name>.documents.azure.com`Ad çözümlemesini girin ve doğrulayın. **\<cosmosdb-account-name>** Önceki adımlarda oluşturduğunuz Cosmos DB hesabının adıyla değiştirin. 
 
     ```powershell
     Server:  UnKnown
@@ -241,28 +241,31 @@ Bu bölümde, önceki adımda oluşturduğunuz sanal makineyi kullanarak özel u
     Address:  10.1.0.5
     Aliases:  mycosmosdb8675.documents.azure.com
     ```
-
     Cosmos DB hesap adı için **10.1.0.5** özel IP adresi döndürülür.  Bu adres, daha önce oluşturduğunuz sanal ağın alt ağıdır.
+    
+1. Portaldan Azure Cosmos DB birincil Bağlantı dizenizi alın. Geçerli bir bağlantı dizesi şu biçimdedir:
+   
+   SQL API hesapları için: `https://<accountName>.documents.azure.com:443/;AccountKey=<accountKey>;` MongoDB için Azure Cosmos DB API 'si için: `mongodb://<accountName>:<accountKey>@cdbmongo36.mongo.cosmos.azure.com:10255/?ssl=true&replicaSet=globaldb&retrywrites=false`
 
-9. [Microsoft Azure Depolama Gezgini](../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows&toc=%2fazure%2fstorage%2fblobs%2ftoc.json) sanal makineye yükler.
+1. [Microsoft Azure Depolama Gezgini](../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows&toc=%2fazure%2fstorage%2fblobs%2ftoc.json) sanal makineye yükler.
 
-10. **Microsoft Azure Depolama Gezgini** yüklendikten sonra **son** ' u seçin.  Uygulamayı açmak için kutuyu işaretli bırakın.
+1. **Microsoft Azure Depolama Gezgini** yüklendikten sonra **son** ' u seçin.  Uygulamayı açmak için kutuyu işaretli bırakın.
 
-11. **Azure depolama 'Ya Bağlan** ekranında **iptal**' i seçin.
+1. **Azure depolama 'Ya Bağlan** ekranında **iptal**' i seçin.
 
-12. Depolama Gezgini **Cosmos DB hesaplar** ' da sağ fare düğmesini seçin ve **Cosmos DB Bağlan**' ı seçin.
+1. Depolama Gezgini **Cosmos DB hesaplar** ' da sağ fare düğmesini seçin ve **Cosmos DB Bağlan**' ı seçin.
 
-13. Varsayılan **SQL** ' **i Select API** altında bırakın.
+1. Varsayılan **SQL** ' **i Select API** altında bırakın.
 
-14. **Bağlantı dizesi** altındaki kutuya, bağlantı dizesini önceki adımlarda kopyaladığınız Cosmos DB hesabından yapıştırın.
+1. **Bağlantı dizesi** altındaki kutuya, bağlantı dizesini önceki adımlarda kopyaladığınız Cosmos DB hesabından yapıştırın.
 
-15. **İleri**’yi seçin.
+1. **İleri**’yi seçin.
 
-16. **Bağlantı özetinde** ayarların doğru olduğundan emin olun.  
+1. **Bağlantı özetinde** ayarların doğru olduğundan emin olun.  
 
-17. **Bağlan**’ı seçin.
+1. **Bağlan**’ı seçin.
 
-18. **Myvm** bağlantısını kapatın.
+1. **Myvm** bağlantısını kapatın.
 
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme

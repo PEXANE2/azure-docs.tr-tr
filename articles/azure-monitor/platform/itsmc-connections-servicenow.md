@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 12/21/2020
-ms.openlocfilehash: 3cc38fad6f26bf6f382b4a275638c450c8333a04
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 221678da819d32539d0078b72a87c61851ed3e8f
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98955741"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99089267"
 ---
 # <a name="connect-servicenow-with-it-service-management-connector"></a>ServiceNow 'ı BT Hizmet Yönetimi Bağlayıcısı bağlama
 
@@ -125,7 +125,7 @@ Bir ServiceNow bağlantısı oluşturmak için aşağıdaki yordamı kullanın.
    | **Sunucu URL'si**   | ISMC 'a bağlamak istediğiniz ServiceNow örneğinin URL 'sini girin. URL, suffix *. ServiceNow.com* ile desteklenen bir SaaS sürümüne işaret etmelidir (örneğin, https://XXXXX.service-now.com/) .|
    | **Kullanıcı adı**   | ISMC bağlantısını desteklemek için ServiceNow uygulamasında oluşturduğunuz tümleştirme Kullanıcı adı ' nı girin.|
    | **Parola**   | Bu kullanıcı adıyla ilişkili parolayı girin. **Note**: Kullanıcı adı ve parola yalnızca kimlik doğrulama belirteçleri oluşturmak için kullanılır. Bunlar, ıSMC hizmetinin içinde herhangi bir yerde depolanmaz.  |
-   | **İstemci kimliği**   | Daha önce oluşturduğunuz OAuth2 kimlik doğrulaması için kullanmak istediğiniz istemci KIMLIĞINI girin. İstemci KIMLIĞI ve gizli anahtar oluşturma hakkında daha fazla bilgi için bkz. [OAuth ayarlama](https://wiki.servicenow.com/index.php?title=OAuth_Setup). |
+   | **İstemci kimliği**   | Daha önce oluşturduğunuz OAuth2 kimlik doğrulaması için kullanmak istediğiniz istemci KIMLIĞINI girin. İstemci KIMLIĞI ve gizli anahtar oluşturma hakkında daha fazla bilgi için bkz. [OAuth ayarlama](https://old.wiki/index.php/OAuth_Setup). |
    | **İstemci parolası**   | Bu KIMLIK için oluşturulan istemci gizli anahtarını girin.   |
    | **Veri eşitleme kapsamı (gün)** | Verilerin içinden istediğiniz geçmiş gün sayısını girin. Sınır 120 gündür. |
    | **Eşitlenecek çalışma öğeleri**   | ISMC aracılığıyla Azure Log Analytics eşitlemek istediğiniz ServiceNow iş öğelerini seçin. Seçilen değerler Log Analytics içine aktarılır. Seçenekler olaylar ve değişiklik isteklerdir.|

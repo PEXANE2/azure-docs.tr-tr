@@ -16,12 +16,12 @@ ms.custom:
 ms.date: 02/22/2019
 ms.topic: tutorial
 ms.service: iot-hub
-ms.openlocfilehash: 060ed8bfc424fcb9dab8fc12faf5e3822fa86a31
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: d9ca9dd345be7fb8f1a2b613386bdca7bdcd835a
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98621452"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99070396"
 ---
 # <a name="tutorial-use-a-simulated-device-to-test-connectivity-with-your-iot-hub"></a>Öğretici: IoT hub’ınızla bağlantıyı test etmek için bir simülasyon cihazı kullanma
 
@@ -29,7 +29,7 @@ Bu öğreticide, cihaz bağlantısını test etmek için Azure IOT Hub'ı portal
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!div class="checklist"]
 > * Cihazın kimlik doğrulamasını denetleme
 > * Cihazın bulut bağlantısını denetleme
@@ -176,7 +176,7 @@ Bir cihaz bağlandıktan sonra genellikle IoT hub'ınıza telemetri göndermeye 
 İlk olarak, aşağıdaki komutu kullanarak sanal cihazınız için geçerli bağlantı dizesini alın:
 
 ```azurecli-interactive
-az iot hub device-identity show-connection-string --device-id MyTestDevice --output table --hub-name {YourIoTHubName}
+az iot hub device-identity connection-string show --device-id MyTestDevice --output table --hub-name {YourIoTHubName}
 ```
 
 İleti gönderen bir sanal cihazı çalıştırmak için, indirdiğiniz koddaki **iot-hub\Tutorials\ConnectivityTests** klasörüne gidin.

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 08/13/2020
 keywords: geçiş, Aro, OpenShift, Red Hat
-ms.openlocfilehash: 322c0cf5ece2a9c950e71b947e2aa6088a165cb8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f9bfc924581d5dbe33c7c2683a0f6083cb2abc23
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89469754"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99071044"
 ---
 # <a name="migrate-from-azure-red-hat-openshift-311-to-azure-red-hat-openshift-4"></a>Azure Red Hat Openshıft 3,11 ' den Azure Red Hat OpenShift 4 ' e geçiş yapın
 
@@ -75,11 +75,11 @@ az aro create \
 
 Kullanıcıların Azure Red Hat OpenShift ile etkileşime geçmesini sağlamak için öncelikle kümeye kimlik doğrulaması yapılmalıdır. Kimlik doğrulama katmanı, isteklerle ilişkili kullanıcıyı Azure Red Hat OpenShift API 'sine göre tanımlar. Yetkilendirme katmanı daha sonra isteğin izin verilip verilmeyeceğini belirlemede istekte bulunan kullanıcı hakkındaki bilgileri kullanır.
 
-Bir Azure Red Hat OpenShift 4 kümesi oluşturulduğunda, geçici bir yönetici kullanıcı oluşturulur. [Kümenize bağlanın](tutorial-connect-cluster.md), kullanıcılar ve gruplar ekleyin ve her ikisi için [uygun izinleri yapılandırın](https://docs.openshift.com/aro/4/authentication/understanding-authentication.html) .
+Bir Azure Red Hat OpenShift 4 kümesi oluşturulduğunda, geçici bir yönetici kullanıcı oluşturulur. [Kümenize bağlanın](tutorial-connect-cluster.md), kullanıcılar ve gruplar ekleyin ve her ikisi için [uygun izinleri yapılandırın](https://docs.openshift.com/container-platform/4.6/authentication/understanding-authentication.html) .
 
 ### <a name="networking"></a>Ağ
 
-Azure Red Hat Openshıft 4 kümenizdeki ağı kurmak için birkaç farklı işleç kullanır: [küme ağı işleci](https://docs.openshift.com/aro/4/networking/cluster-network-operator.html#nw-cluster-network-operator_cluster-network-operator), [DNS operatörü](https://docs.openshift.com/aro/4/networking/dns-operator.html)ve giriş [işleci](https://docs.openshift.com/aro/4/networking/ingress-operator.html). Bir Azure Red Hat OpenShift 4 kümesinde ağ ayarlama hakkında daha fazla bilgi için [Ağ Diyagramı](concepts-networking.md) ' na bakın ve [ağ](https://docs.openshift.com/aro/4/networking/understanding-networking.html)' ı anlayın.
+Azure Red Hat Openshıft 4 kümenizdeki ağı kurmak için birkaç farklı işleç kullanır: [küme ağı işleci](https://docs.openshift.com/container-platform/4.6/networking/cluster-network-operator.html#nw-cluster-network-operator_cluster-network-operator), [DNS operatörü](https://docs.openshift.com/container-platform/4.6/networking/dns-operator.html)ve giriş [işleci](https://docs.openshift.com/container-platform/4.6/networking/ingress-operator.html). Bir Azure Red Hat OpenShift 4 kümesinde ağ ayarlama hakkında daha fazla bilgi için [Ağ Diyagramı](concepts-networking.md) ' na bakın ve [ağ](https://docs.openshift.com/container-platform/4.6/networking/understanding-networking.html)' ı anlayın.
 
 ### <a name="storage"></a>Depolama
 Azure Red Hat OpenShift 4 aşağıdaki PersistentVolume eklentilerini destekler:
@@ -98,13 +98,13 @@ Bu depolama türlerini yapılandırma hakkında daha fazla bilgi için bkz. [kal
 
 ### <a name="registry"></a>Kayıt Defteri
 
-Azure Red Hat OpenShift 4, kaynak kodınızdan görüntü oluşturabilir, bunları dağıtabilir ve yaşam döngüsünü yönetebilir. Bunu etkinleştirmek için Azure Red Hat Openshıft, görüntüleri yerel olarak yönetmek için Azure Red Hat OpenShift ortamınızda dağıtılabilen 4 [dahili ve tümleşik bir kapsayıcı görüntüsü kayıt defteri](https://docs.openshift.com/aro/4/registry/registry-options.html) sağlar.
+Azure Red Hat OpenShift 4, kaynak kodınızdan görüntü oluşturabilir, bunları dağıtabilir ve yaşam döngüsünü yönetebilir. Bunu etkinleştirmek için Azure Red Hat Openshıft, görüntüleri yerel olarak yönetmek için Azure Red Hat OpenShift ortamınızda dağıtılabilen 4 [dahili ve tümleşik bir kapsayıcı görüntüsü kayıt defteri](https://docs.openshift.com/container-platform/4.6/registry/registry-options.html) sağlar.
 
-[Azure Container Registry](../container-registry/index.yml), [Red Hat Quay kayıt defterleri](https://docs.openshift.com/aro/4/registry/registry-options.html#registry-quay-overview_registry-options)veya bir [kimlik doğrulaması etkin Red hat kayıt defteri](https://docs.openshift.com/aro/4/registry/registry-options.html#registry-authentication-enabled-registry-overview_registry-options)gibi dış kayıt defterleri kullanıyorsanız, kümenin depolara erişmesine izin vermek için kümeye kimlik bilgileri sağlamak için adımları izleyin.
+[Azure Container Registry](../container-registry/index.yml), [Red Hat Quay kayıt defterleri](ttps://docs.openshift.com/container-platform/4.6/registry/registry-options.html#registry-quay-overview_registry-options)veya bir [kimlik doğrulaması etkin Red hat kayıt defteri](https://docs.openshift.com/container-platform/4.6/registry/registry-options.html#registry-authentication-enabled-registry-overview_registry-options)gibi dış kayıt defterleri kullanıyorsanız, kümenin depolara erişmesine izin vermek için kümeye kimlik bilgileri sağlamak için adımları izleyin.
 
 ### <a name="monitoring"></a>İzleme
 
-Azure Red Hat OpenShift, Prometheus açık kaynak projesine ve daha geniş ekonomik sisteme dayalı, önceden yapılandırılmış, önceden yüklenmiş ve kendi kendini güncelleştiren bir izleme yığını içerir. Küme bileşenlerinin izlenmesini sağlar ve küme yöneticisine her türlü sorun ve bir Grafana Pano kümesi hakkında anında bildirim gönderir. Küme izleme yığını yalnızca Azure Red Hat OpenShift kümelerini izlemek için desteklenir. Daha fazla bilgi için bkz. [Azure Red Hat OpenShift Için küme izleme](https://docs.openshift.com/aro/4/monitoring/cluster_monitoring/about-cluster-monitoring.html).
+Azure Red Hat OpenShift, Prometheus açık kaynak projesine ve daha geniş ekonomik sisteme dayalı, önceden yapılandırılmış, önceden yüklenmiş ve kendi kendini güncelleştiren bir izleme yığını içerir. Küme bileşenlerinin izlenmesini sağlar ve küme yöneticisine her türlü sorun ve bir Grafana Pano kümesi hakkında anında bildirim gönderir. Küme izleme yığını yalnızca Azure Red Hat OpenShift kümelerini izlemek için desteklenir. Daha fazla bilgi için bkz. [Azure Red Hat OpenShift Için küme izleme](https://docs.openshift.com/container-platform/4.6/monitoring/understanding-the-monitoring-stack.html).
 
 Azure [Red Hat openshift 3,11 Için kapsayıcılar Için Azure izleyici](../azure-monitor/insights/container-insights-azure-redhat-setup.md)'yi kullandıysanız, [Azure Red Hat OpenShift 4 kümelerinin](../azure-monitor/insights/container-insights-azure-redhat4-setup.md) kapsayıcıları için Azure izleyicisini da etkinleştirebilir ve aynı Log Analytics çalışma alanını kullanmaya devam edebilirsiniz.
 
@@ -127,4 +127,4 @@ az openshift delete --name $CLUSTER_NAME
                     [--yes]
 ```
 ## <a name="next-steps"></a>Sonraki adımlar
-Red Hat tarafından sunulan Azure Red Hat OpenShift belgelerine göz atın [.](https://docs.openshift.com/aro/4/welcome/index.html)
+Red Hat OpenShift belgelerine [buradan](https://docs.openshift.com/container-platform/4.6/welcome/index.html)göz atın.

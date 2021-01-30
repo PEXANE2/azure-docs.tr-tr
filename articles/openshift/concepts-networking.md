@@ -6,16 +6,16 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 11/23/2020
-ms.openlocfilehash: 9cfe8c7e7d2484649bf458524032365b692c9243
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 07b0dd38b616525728c264bd315c5cb8ddcaa79a
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97093528"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99072060"
 ---
 # <a name="network-concepts-for-azure-red-hat-openshift-aro"></a>Azure Red Hat OpenShift (ARO) için ağ kavramları
 
-Bu kılavuzda, OpenShift 4 kümelerinde Azure Red Hat OpenShift 'teki ağa genel bakış ve bir diyagram ve önemli uç noktaların listesi ele alınmaktadır. Core OpenShift ağ kavramları hakkında daha fazla bilgi için bkz. [Azure Red Hat OpenShift 4 ağ belgeleri](https://docs.openshift.com/aro/4/networking/understanding-networking.html).
+Bu kılavuzda, OpenShift 4 kümelerinde Azure Red Hat OpenShift 'teki ağa genel bakış ve bir diyagram ve önemli uç noktaların listesi ele alınmaktadır. Core OpenShift ağ kavramları hakkında daha fazla bilgi için bkz. [Azure Red Hat OpenShift 4 ağ belgeleri](https://docs.openshift.com/container-platform/4.6/networking/understanding-networking.html).
 
 ![Azure Red Hat OpenShift 4 ağ diyagramı](./media/concepts-networking/aro4-networking-diagram.png)
 
@@ -64,19 +64,22 @@ Aşağıdaki listede, bir Azure Red Hat OpenShift kümesindeki önemli ağ bile�
 
 ## <a name="networking-basics-in-openshift"></a>OpenShift 'te Ağ temelleri
 
-OpenShift yazılım tanımlı ağ [(SDN)](https://docs.openshift.com/container-platform/4.5/networking/openshift_sdn/about-openshift-sdn.html) , kapsayıcı ağ arabirimi (CNI) belirtimine dayalı bir OpenFlow uygulamasının açık VSwitch [(OVS)](https://www.openvswitch.org/)kullanılarak bir yer paylaşımı ağını yapılandırmak için kullanılır. SDN farklı eklentileri destekler--ağ Ilkesi, OpenShift 4 üzerinde Azure Red Hat 'te kullanılan eklentidir. Tüm ağ iletişimleri SDN tarafından yönetiliyor, bu yüzden Pod 'e Pod iletişimine ulaşmak için sanal ağlarınızda ek bir yol gerekli değildir.
+OpenShift yazılım tanımlı ağ [(SDN)](https://docs.openshift.com/container-platform/4.6/networking/openshift_sdn/about-openshift-sdn.html) , kapsayıcı ağ arabirimi (CNI) belirtimine dayalı bir OpenFlow uygulamasının açık VSwitch [(OVS)](https://www.openvswitch.org/)kullanılarak bir yer paylaşımı ağını yapılandırmak için kullanılır. SDN farklı eklentileri destekler--ağ Ilkesi, OpenShift 4 üzerinde Azure Red Hat 'te kullanılan eklentidir. Tüm ağ iletişimleri SDN tarafından yönetiliyor, bu yüzden Pod 'e Pod iletişimine ulaşmak için sanal ağlarınızda ek bir yol gerekli değildir.
 
 ## <a name="networking--for-azure-red-hat-openshift"></a>Azure Red Hat OpenShift için ağ oluşturma
 
-Aşağıdaki ağ özellikleri Azure Red Hat OpenShift 'e özgüdür:
+Aşağıdaki ağ özellikleri Azure Red Hat OpenShift 'e özgüdür:  
 * Kullanıcılar, Aro kümesini var olan bir sanal ağda oluşturabilir veya bir sanal ağı, ARO kümesini oluştururken oluşturabilir.
 * Pod ve hizmet ağı Cıdrs yapılandırılabilir.
 * Düğümler ve ana bilgisayarlar farklı alt ağlardır.
 * Düğümler ve ana sanal ağ alt ağları en az/27 olmalıdır.
-* Pod CıDR değeri minimum/18 boyutunda olmalıdır (pod ağı yönlendirilemeyen IP 'Ler ve yalnızca OpenShift SDN içinde kullanılır).
+* Varsayılan Pod CıDR, 10.128.0.0/14 ' dir.
+* Varsayılan hizmet CıDR, 172.30.0.0/16 ' dır.
+* Pod ve hizmet ağı Cıdrs, ağınızda kullanılan diğer adres aralıklarıyla çakışmamalıdır ve kümenizin sanal ağ IP adresi aralığında olmaması gerekir.
+* Pod CıDR değeri en az/18 boyutunda olmalıdır. (Pod ağı yönlendirilemeyen IP 'Ler ve yalnızca OpenShift SDN içinde kullanılır.)
 * Her düğüm, IP 'Leri için ayrılan/23 alt ağı (512 IP). Bu değer değiştirilemez.
 * Birden çok ağa Pod ekleyemezsiniz.
-* Çıkış statik IP 'yi yapılandıramazsınız. (Bu bir OpenShift özelliğidir. Bilgi için bkz. [Çıkış IP 'lerini yapılandırma](https://docs.openshift.com/container-platform/4.5/networking/openshift_sdn/assigning-egress-ips.html)).
+* Çıkış statik IP 'yi yapılandıramazsınız. (Bu bir OpenShift özelliğidir. Bilgi için bkz. [Çıkış IP 'lerini yapılandırma](https://docs.openshift.com/container-platform/4.6/networking/openshift_sdn/assigning-egress-ips.html)).
 
 ## <a name="network-settings"></a>Ağ ayarları
 
@@ -95,7 +98,7 @@ Ağ güvenlik grupları, düğümün, kullanıcılara kilitlenen kaynak grubunda
 Herkese açık bir API sunucusu ile ağ güvenlik grupları oluşturamaz ve bunları NIC 'lere atayamazsınız.
 
 ## <a name="domain-forwarding"></a>Etki alanı iletme
-Azure Red Hat Openshıft, CoreDNS kullanır. Etki alanı iletme yapılandırılabilir. Kendi DNS 'nizi sanal ağlarınıza getiremezsiniz. Daha fazla bilgi için bkz. [DNS iletmeyi kullanma](https://docs.openshift.com/aro/4/networking/dns-operator.html#nw-dns-forward_dns-operator)hakkındaki belgeler.
+Azure Red Hat Openshıft, CoreDNS kullanır. Etki alanı iletme yapılandırılabilir. Kendi DNS 'nizi sanal ağlarınıza getiremezsiniz. Daha fazla bilgi için bkz. [DNS iletmeyi kullanma](https://docs.openshift.com/container-platform/4.6/networking/dns-operator.html#nw-dns-forward_dns-operator)hakkındaki belgeler.
 
 ## <a name="whats-new-in-openshift-45"></a>OpenShift 4,5 ' deki yenilikler
 

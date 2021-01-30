@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/08/2019
 ms.author: jeedes
-ms.openlocfilehash: c3221063469315b2324c5039a46db622109826aa
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 0b337225c5909563ef4aeb49cf0754e11075a6fb
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97673639"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99090061"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bridge"></a>Öğretici: köprü ile Azure Active Directory tümleştirme
 
@@ -106,7 +106,7 @@ Azure AD çoklu oturum açmayı köprü ile yapılandırmak için aşağıdaki a
     b. **Tanımlayıcı (VARLıK kimliği)** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<company name>.bridgeapp.com`
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerleri, gerçek oturum açma URL 'SI ve tanımlayıcısı ile güncelleştirin. Bu değerleri almak için [köprü istemcisi destek ekibine](https://community.bridgeapp.com/community/help) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
+    > Bu değerler gerçek değildir. Bu değerleri, gerçek oturum açma URL 'SI ve tanımlayıcısı ile güncelleştirin. Bu değerleri almak için [köprü istemcisi destek ekibine](https://community.bridgeapp.com/hc/en-us/community/topics) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
 5. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (ham)** ' i gereksiniminize göre ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
@@ -124,7 +124,7 @@ Azure AD çoklu oturum açmayı köprü ile yapılandırmak için aşağıdaki a
 
 ### <a name="configure-bridge-single-sign-on"></a>Tek Sign-On Köprüsü yapılandırma
 
-**Köprü** tarafında çoklu oturum açma 'yı yapılandırmak için, indirilen **sertifikayı (ham)** ve uygun kopyalanmış URL 'Leri Azure Portal ' den [köprü desteği ekibine](https://community.bridgeapp.com/community/help)göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
+**Köprü** tarafında çoklu oturum açma 'yı yapılandırmak için, indirilen **sertifikayı (ham)** ve uygun kopyalanmış URL 'Leri Azure Portal ' den [köprü desteği ekibine](https://community.bridgeapp.com/hc/en-us/community/topics)göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma 
 
@@ -179,7 +179,7 @@ Bu bölümde, köprü erişimine izin vererek Azure çoklu oturum açma özelli�
 
 ### <a name="create-bridge-test-user"></a>Köprü testi kullanıcısı oluştur
 
-Bu bölümde, Bridge 'de Britta Simon adlı bir Kullanıcı oluşturacaksınız. Bridge platformunda kullanıcıları eklemek için [Bridge destek ekibi](https://community.bridgeapp.com/community/help) ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
+Bu bölümde, Bridge 'de Britta Simon adlı bir Kullanıcı oluşturacaksınız. Bridge platformunda kullanıcıları eklemek için [Bridge destek ekibi](https://community.bridgeapp.com/hc/en-us/community/topics) ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi
 

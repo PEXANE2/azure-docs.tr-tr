@@ -50,19 +50,21 @@
         - name: Sorun giderme
           href: data-box-gateway-troubleshoot.md
         - name: Microsoft Desteği’ne başvurma
-          href: ../databox-online/azure-stack-edge-contact-microsoft-support.md?toc=/azure/databox-online/toc.json&bc=/azure/databox-gateway/breadcrumb/toc.json
-- name: Sürüm notları
-  items:
-    - name: 2007 - Geçerli
-      href: data-box-gateway-2007-release-notes.md
-    - name: 1911
-      href: data-box-gateway-1911-release-notes.md
-    - name: 1906
-      href: data-box-gateway-1906-release-notes.md
-    - name: 1905
-      href: data-box-gateway-1905-release-notes.md
-    - name: Genel kullanılabilirlik (GA)
-      href: data-box-gateway-release-notes.md
+          href: ../databox-online/azure-stack-edge-contact-microsoft-support.md
+    - name: Sürüm notları
+      items:
+        - name: 2101-geçerli
+          href: data-box-gateway-2101-release-notes.md
+        - name: 2007
+          href: data-box-gateway-2007-release-notes.md
+        - name: 1911
+          href: data-box-gateway-1911-release-notes.md
+        - name: 1906
+          href: data-box-gateway-1906-release-notes.md
+        - name: 1905
+          href: data-box-gateway-1905-release-notes.md
+        - name: Genel kullanılabilirlik (GA)
+          href: data-box-gateway-release-notes.md
 - name: Kaynaklar
   items:
     - name: Fiyatlandırma

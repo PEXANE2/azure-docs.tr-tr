@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 1/17/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 2ab1b5ae87cee6265c965c45b706c7fbf10dfe3f
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: c8a5666d373852da5ff79490f435b2d66d5cc6e0
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98702965"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99090375"
 ---
 # <a name="tutorial-configure-keyless-with-azure-active-directory-b2c"></a>Öğretici: Azure Active Directory B2C ile Keyless yapılandırma
 
@@ -50,7 +50,7 @@ Aşağıdaki mimari diyagram uygulamayı gösterir.
 
 ![Görüntüde Keyless mimari diyagramı gösteriliyor](./media/partner-keyless/keyless-architecture-diagram.png)
 
-|Adım | Açıklama |
+|Adım | Description |
 |:-----| :-----------|
 | 1. | Kullanıcı bir oturum açma sayfasına ulaştı. Kullanıcılar oturum açma/kaydolma seçer ve Kullanıcı adını girer
 | 2. | Uygulama, kimlik doğrulaması için Kullanıcı özniteliklerini Azure AD B2C gönderir.
@@ -86,7 +86,7 @@ Bir kimlik sağlayıcısını yapılandırmak için aşağıdaki adımları izle
    |Özellik | Değer |
    |:-----| :-----------|
    | Ad   | Anahtarsız |
-   | Meta veri URL 'SI | Barındırılan Keyless kimlik doğrulama uygulamasının URI 'sini, ardından da gibi belirli bir yolu ekleyin https://keyless.auth/.well-known/openid-configuration |
+   | Meta veri URL 'SI | Barındırılan Keyless kimlik doğrulama uygulamasının URI 'sini, ardından ' ' gibi belirli bir yolu ekleyin https://keyless.auth/.well-known/openid-configuration |
    | İstemci Gizli Anahtarı | Keyless kimlik doğrulama örneğiyle ilişkili gizli dizi, daha önce yapılandırılmış bir ile aynı değildir. İstediğiniz karmaşık bir dize ekleyin. Bu gizli anahtar daha sonra Keyless kapsayıcı yapılandırmasında kullanılacaktır.|
    | İstemci Kimliği | İstemcinin KIMLIĞI. Bu KIMLIK daha sonra Keyless kapsayıcı yapılandırmasında kullanılacaktır.|
    | Kapsam | OpenID |

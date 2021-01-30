@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 794c4e1a0859fc8a36b0abf4fcc9d5243c8bd308
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: b1c0e91b08fff80c0308c0ead5fabce903421adc
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94649577"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99090129"
 ---
 # <a name="security-considerations-for-accessing-apps-remotely-with-azure-ad-application-proxy"></a>Azure AD Uygulama Ara Sunucusu ile uygulamalara uzaktan erişmenin güvenlik konuları
 
@@ -108,7 +108,7 @@ Bağlayıcı, neredeyse tüm çağrılar için uygulama ara sunucusu hizmetinde 
 Bağlayıcı ilk ayarlandığında aşağıdaki akış olayları gerçekleşir:
 
 1. Hizmete Bağlayıcı kaydı, bağlayıcının yüklenmesinin bir parçası olarak gerçekleşir. Kullanıcılardan Azure AD yönetici kimlik bilgilerini girmesi istenir. Bu kimlik doğrulamasından alınan belirteç daha sonra Azure AD Uygulama Ara Sunucusu hizmetine sunulur.
-2. Uygulama Proxy Hizmeti belirteci değerlendirir. Kullanıcının kiracının Şirket Yöneticisi olup olmadığını denetler. Kullanıcı bir yönetici değilse, işlem sonlandırılır.
+2. Uygulama Proxy Hizmeti belirteci değerlendirir. Kullanıcının kiracıda genel yönetici olup olmadığını denetler. Kullanıcı bir yönetici değilse, işlem sonlandırılır.
 3. Bağlayıcı bir istemci sertifikası isteği oluşturur ve belirteç ile birlikte uygulama ara sunucusu hizmetine geçirir. ' Deki hizmet belirteci doğrular ve istemci sertifika isteğini imzalar.
 4. Bağlayıcı, uygulama proxy 'Si hizmetiyle gelecekte iletişim kurmak için istemci sertifikasını kullanır.
 5. Bağlayıcı, istemci sertifikasını kullanarak hizmetten sistem yapılandırma verilerinin ilk çekmesini gerçekleştirir ve artık istekleri almaya hazırdır.
@@ -163,7 +163,7 @@ Bağlayıcılar, giden bir bağlantıyı uygulama proxy 'Si hizmetine açık tut
 
 İsteğe bağlı olarak, uygulama proxy 'Si aşağıdaki eylemlerden birini gerçekleştirir:
 
-* İstek basit bir işlem ise (örneğin, bir Restdeal isteği olan gövde içinde veri yoksa), bağlayıcı hedef iç kaynağa *GET* bir bağlantı yapar ve ardından bir yanıt bekler.
+* İstek basit bir işlem ise (örneğin, bir Restdeal isteği olan gövde içinde veri yoksa), bağlayıcı hedef iç kaynağa  bir bağlantı yapar ve ardından bir yanıt bekler.
 
 * İstekte, gövdede kendisiyle ilişkili veriler varsa (örneğin, bir RESTAN *Post* işlemi), bağlayıcı Istemci sertifikasını uygulama proxy 'si örneğine kullanarak giden bir bağlantı yapar. Bu bağlantıyı, verileri istemek ve iç kaynağa bir bağlantı açmak için yapar. Bağlayıcının isteği aldıktan sonra, uygulama proxy hizmeti kullanıcıdan içerik kabul etmeye başlar ve verileri bağlayıcıya iletir. Bağlayıcı, sırasıyla verileri iç kaynağa iletir.
 

@@ -6,12 +6,12 @@ ms.author: jzim
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 07/31/2020
-ms.openlocfilehash: 3a474228776c689dbbd6f15ddd926f29383400ce
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 69417945bcd5234a0e5e8d2d6aee42859bc95c20
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94964720"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99071061"
 ---
 # <a name="azure-red-hat-openshift-faq"></a>Azure Red Hat OpenShift SSS
 
@@ -81,7 +81,7 @@ Düğümler bir yükseltmenin parçası olarak yeniden başlatılır.
 
 ### <a name="can-i-use-prometheus-to-monitor-my-applications"></a>Uygulamalarımı izlemek için Prometheus kullanabilir miyim?
 
-Prometheus, Azure Red Hat OpenShift 4. x kümeleri için önceden yüklenmiş ve yapılandırılmış olarak sunulur. [Küme izleme](https://docs.openshift.com/container-platform/3.11/install_config/prometheus_cluster_monitoring.html)hakkında daha fazla bilgi edinin.
+Prometheus, Azure Red Hat OpenShift 4. x kümeleri için önceden yüklenmiş ve yapılandırılmış olarak sunulur. [Küme izleme](https://docs.openshift.com/container-platform/4.6/operators/operator_sdk/osdk-monitoring-prometheus.html)hakkında daha fazla bilgi edinin.
 
 Azure Red Hat OpenShift 3,11 kümelerinde, ad alanınız içinde Prometheus 'ları dağıtabilir ve ad uzayındaki uygulamaları izleyebilirsiniz. Daha fazla bilgi için bkz. [Azure Red Hat OpenShift kümesinde Prometheus örneğini dağıtma](howto-deploy-prometheus.md).
 
@@ -97,7 +97,7 @@ Temel VM 'lerdeki Günlükler yönetilen hizmet tarafından işlenir ve müşter
 
 ### <a name="how-can-a-customer-get-access-to-metrics-like-cpumemory-at-the-node-level-to-take-action-to-scale-debug-issues-etc-i-cannot-seem-to-run-kubectl-top-on-an-azure-red-hat-openshift-cluster"></a>Bir müşteri, düğüm düzeyindeki CPU/bellek gibi ölçümlere nasıl erişim alabilir, bu da ölçeklendirme, hata ayıklama sorunları vb. için işlem gerçekleştirebilir? Azure Red Hat OpenShift kümesinde kubectl üst öğesini çalıştıramıyorum.
 
-Azure Red Hat OpenShift 4. x kümelerinde, OpenShift Web Konsolu düğüm düzeyindeki tüm ölçümleri içerir. Daha fazla bilgi için bkz. [küme bilgilerini görüntülemek](https://docs.openshift.com/aro/4/web_console/using-dashboard-to-get-cluster-information.html)Için Red Hat belgeleri.
+Azure Red Hat OpenShift 4. x kümelerinde, OpenShift Web Konsolu düğüm düzeyindeki tüm ölçümleri içerir. Daha fazla bilgi için bkz. [küme bilgilerini görüntülemek](https://docs.openshift.com/container-platform/4.6/web_console/using-dashboard-to-get-cluster-information.html)Için Red Hat belgeleri.
 
 Müşteriler, Azure Red Hat OpenShift 3,11 kümelerinde, komutunu kullanarak `oc adm top nodes` veya `kubectl top nodes` Müşteri-yönetici kümesi rolüyle, düğüm düzeyindeki CPU/bellek ölçümlerine erişebilirler. Müşteriler, veya komutuyla ilgili CPU/bellek ölçümlerine de erişebilir `pods` `oc adm top pods` `kubectl top pods` .
 
@@ -116,14 +116,14 @@ Belirli Etiketler kullanılırken dikkatli olunmalıdır:
 - Ana bilgisayar adı kullanılmamalıdır. Ana bilgisayar adı yükseltmeler ve güncelleştirmeler ile sık döndürülür ve değişiklik garanti edilir.
 - Müşterinin belirli Etiketler veya bir dağıtım stratejisi için bir isteği varsa, bu gerçekleştirilebilir ancak mühendislik çabalarına ihtiyaç duyar ve bugün desteklenmez.
 
-Daha fazla bilgi için bkz. [Pod yerleşimini denetleme](https://docs.openshift.com/aro/4/nodes/scheduling/nodes-scheduler-about.html).
+Daha fazla bilgi için bkz. [Pod yerleşimini denetleme](https://docs.openshift.com/container-platform/4.6/nodes/scheduling/nodes-scheduler-about.html).
 
 ### <a name="is-the-image-registry-available-externally-so-i-can-use-tools-such-as-jenkins"></a>Görüntü kayıt defteri dışarıdan kullanılabilir, bu nedenle Jenkins gibi araçları kullanabilir miyim?
 
 4. x kümelerinde, güvenli bir kayıt defteri oluşturmanız ve kimlik doğrulamasının yapılandırılması gerekir. Daha fazla bilgi için aşağıdaki Red Hat belgelerine bakın:
 
-- [Kayıt defteri gösterme](https://docs.openshift.com/aro/4/registry/securing-exposing-registry.html)
-- [Kayıt defterine erişme](https://docs.openshift.com/aro/4/registry/accessing-the-registry.html)
+- [Kayıt defteri gösterme](https://docs.openshift.com/container-platform/4.6/registry/securing-exposing-registry.html)
+- [Kayıt defterine erişme](https://docs.openshift.com/container-platform/4.6/registry/accessing-the-registry.html)
 
 3,11 kümesi için Docker görüntü kayıt defteri kullanılabilir. Docker kayıt defteri ' nden kullanılabilir `https://docker-registry.apps.<clustername>.<region>.azmosa.io/` . Azure Container Registry de kullanabilirsiniz.
 
@@ -181,24 +181,24 @@ oc adm policy \
 
 Daha fazla bilgi için bkz. küme sürümünüz için kendi kendine sağlamayı devre dışı bırakma hakkında OpenShift belgeleri:
 
-- [4,3 kümelerinde kendi kendine sağlamayı devre dışı bırakma](https://docs.openshift.com/aro/4/applications/projects/configuring-project-creation.html#disabling-project-self-provisioning_configuring-project-creation)
+- [4,6 kümelerinde kendi kendine sağlamayı devre dışı bırakma](https://docs.openshift.com/container-platform/4.6/applications/projects/configuring-project-creation.html#disabling-project-self-provisioning_configuring-project-creation)
 - [3,11 kümelerinde kendi kendine sağlamayı devre dışı bırakma](https://docs.openshift.com/container-platform/3.11/admin_guide/managing_projects.html#disabling-self-provisioning)
 
 ### <a name="which-unix-rights-in-iaas-are-available-for-mastersinfraapp-nodes"></a>Ana uygulamalar/Infra/uygulama düğümleri için hangi UNIX hakları (IaaS 'de) kullanılabilir?
 
-4. x kümelerinde, düğüm erişimi, küme yönetici rolü aracılığıyla kullanılabilir. Daha fazla bilgi için bkz. [Kubernetes RBAC 'e genel bakış](https://docs.openshift.com/container-platform/4.3/authentication/using-rbac.html).
+4. x kümelerinde, düğüm erişimi, küme yönetici rolü aracılığıyla kullanılabilir. Daha fazla bilgi için bkz. [Kubernetes RBAC 'e genel bakış](https://docs.openshift.com/container-platform/4.6/authentication/using-rbac.html).
 
 3,11 kümelerinde, düğüm erişimi yasaktır.
 
 ### <a name="which-ocp-rights-do-we-have-cluster-admin-project-admin"></a>Hangi OCP haklarına sahip olduğumuz? Küme Yöneticisi? Proje-yönetici?
 
-4. x kümelerinde, küme yönetici rolü kullanılabilir. Daha fazla bilgi için bkz. [Kubernetes RBAC 'e genel bakış](https://docs.openshift.com/container-platform/4.3/authentication/using-rbac.html).
+4. x kümelerinde, küme yönetici rolü kullanılabilir. Daha fazla bilgi için bkz. [Kubernetes RBAC 'e genel bakış](https://docs.openshift.com/container-platform/4.6/authentication/using-rbac.html).
 
 3,11 kümelerinde daha fazla ayrıntı için bkz. [küme yönetimine genel bakış](https://docs.openshift.com/aro/admin_guide/index.html) .
 
 ### <a name="which-identity-providers-are-available"></a>Hangi kimlik sağlayıcıları kullanılabilir?
 
-4. x kümelerinde kendi kimlik sağlayıcınızı yapılandırırsınız. Daha fazla bilgi için bkz. [kimlik yapılandırmalarını yapılandırma](https://docs.openshift.com/aro/4/authentication/identity_providers/configuring-ldap-identity-provider.html)hakkında Red Hat belgeleri.
+4. x kümelerinde kendi kimlik sağlayıcınızı yapılandırırsınız. Daha fazla bilgi için bkz. [kimlik sağlayıcılarını yapılandırma](https://docs.openshift.com/container-platform/4.6/authentication/identity_providers/configuring-ldap-identity-provider.html)hakkında Red Hat belgeleri.
 
 3,11 kümesi için Azure AD tümleştirmesini kullanabilirsiniz. 
 
@@ -210,13 +210,13 @@ Varsayılan olarak, veriler Rest 'de şifrelenir. Azure Storage platformu, veril
 
 ### <a name="is-data-stored-in-etcd-encrypted-on-azure-red-hat-openshift"></a>Azure Red Hat OpenShift 'te şifrelenen, etcd 'de depolanan veriler mi?
 
-Azure Red Hat OpenShift 4 kümelerinde, veriler varsayılan olarak şifrelenmez, ancak şifrelemeyi etkinleştirme seçeneğiniz vardır. Daha fazla bilgi için, bkz. [BCD şifreleme](https://docs.openshift.com/container-platform/4.3/authentication/encrypting-etcd.html)Kılavuzu.
+Azure Red Hat OpenShift 4 kümelerinde, veriler varsayılan olarak şifrelenmez, ancak şifrelemeyi etkinleştirme seçeneğiniz vardır. Daha fazla bilgi için, bkz. [BCD şifreleme](https://docs.openshift.com/container-platform/4.6/security/encrypting-etcd.html)Kılavuzu.
 
 3,11 kümesi için, veriler etcd düzeyinde şifrelenmez. Şifrelemeyi açma seçeneği şu anda desteklenmiyor. Openshıft bu özelliği destekler, ancak mühendislik çabalarının yol eşlemesinde olması gerekir. Veriler disk düzeyinde şifrelenir. Daha fazla bilgi için [veri deposu katmanındaki verileri şifreleme](https://docs.openshift.com/container-platform/3.11/admin_guide/encrypting_data.html) bölümüne bakın.
 
 ### <a name="can-we-choose-any-persistent-storage-solution-like-ocs"></a>OCS gibi kalıcı depolama çözümlerini seçebilir miyim? 
 
-4. x kümelerinde, Azure disk (Premium_LRS) varsayılan depolama sınıfı olarak yapılandırılır. Ek depolama sağlayıcıları ve yapılandırma ayrıntıları için (Azure dosyası dahil), [kalıcı depolamada](https://docs.openshift.com/aro/4/storage/understanding-persistent-storage.html)Red Hat belgelerine bakın.
+4. x kümelerinde, Azure disk (Premium_LRS) varsayılan depolama sınıfı olarak yapılandırılır. Ek depolama sağlayıcıları ve yapılandırma ayrıntıları için (Azure dosyası dahil), [kalıcı depolamada](https://docs.openshift.com/container-platform/4.6/storage/understanding-persistent-storage.html)Red Hat belgelerine bakın.
 
 3,11 kümesi için, varsayılan olarak iki depolama sınıfı sağlanır: bir Azure disk (Premium_LRS) ve bir Azure dosyası için.
 

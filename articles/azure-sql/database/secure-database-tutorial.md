@@ -10,12 +10,12 @@ ms.author: vanto
 ms.reviewer: ''
 ms.date: 09/21/2020
 ms.custom: seoapril2019 sqldbrb=1
-ms.openlocfilehash: 77ed71d74e75abfdf7f84aee9b116f1d9d2ccc9d
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: f42db48e0fa0e85d919d6894e5476b7ef5380698
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94985867"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99089300"
 ---
 # <a name="tutorial-secure-a-database-in-azure-sql-database"></a>Öğretici: Azure SQL veritabanında bir veritabanını güvenli hale getirme
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -124,7 +124,7 @@ Azure AD yöneticisi 'ni ayarlamak için:
     ![active directory seçme](./media/secure-database-tutorial/admin-settings.png)  
 
     > [!IMPORTANT]
-    > Bu görevi gerçekleştirmek için "Şirket Yöneticisi" veya "genel yönetici" olmanız gerekir.
+    > Bu görevi gerçekleştirmek için "genel yönetici" olmanız gerekir.
 
 1. **Yönetici Ekle** SAYFASıNDA, ad kullanıcısını veya grubunu arayıp seçin ve **Seç**' i seçin. Active Directory tüm Üyeler ve gruplar listelenir ve gri renkte olan girişler Azure AD yöneticileri olarak desteklenmez. Bkz. [Azure AD özellikleri ve sınırlamaları](authentication-aad-overview.md#azure-ad-features-and-limitations).
 

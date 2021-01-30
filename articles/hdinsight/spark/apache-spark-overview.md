@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.custom: contperf-fy21q1
 ms.topic: overview
 ms.date: 09/21/2020
-ms.openlocfilehash: 9f5121feebbb516e148b0476d6c8280d461237bc
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: fdc3a94c081d8a02725f145fc6b20ace4c1731ce
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98929993"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99090562"
 ---
 # <a name="what-is-apache-spark-in-azure-hdinsight"></a>Azure HDInsight’ta Apache Spark nedir?
 
@@ -50,7 +50,7 @@ HDInsight 'ta Apache Spark kümeleri varsayılan olarak kümelerde kullanılabil
 * [Jupyter Notebook](https://jupyter.org)
 * [Apache Zeppelin Not defteri](http://zeppelin-project.org/)
 
-HDInsight Spark kümeleri, Microsoft Power BI gibi bı araçlarından bağlantı için bir [ODBC sürücüsü](https://go.microsoft.com/fwlink/?LinkId=616229) .
+HDInsight Spark kümeleri, Microsoft Power BI gibi bı araçlarından bağlantı için bir [ODBC sürücüsü](/sql/connect/odbc/download-odbc-driver-for-sql-server?view=sql-server-ver15) .
 
 ## <a name="spark-cluster-architecture"></a>Spark kümesi mimarisi
 

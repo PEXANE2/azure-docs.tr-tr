@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 10/26/2020
-ms.openlocfilehash: 7b0aead6ada87ca259c838f3f56e68f1030302a2
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 909385b4f670d084a9357b6ac2840a9458604667
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675712"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063037"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-4-cluster"></a>Öğretici: Azure Red Hat OpenShift 4 kümesi oluşturma
 
@@ -92,7 +92,7 @@ Kümeniz için özel bir etki alanı sağlarsanız aşağıdaki noktaları dikka
 
 ### <a name="create-a-virtual-network-containing-two-empty-subnets"></a>İki boş alt ağ içeren bir sanal ağ oluşturun
 
-Ardından, iki boş alt ağ içeren bir sanal ağ oluşturacaksınız.
+Ardından, iki boş alt ağ içeren bir sanal ağ oluşturacaksınız. Gereksinimlerinizi karşılayan mevcut bir sanal ağınız varsa, bu adımı atlayabilirsiniz.
 
 1. **Komut yürütmek istediğiniz kabuk ortamında aşağıdaki değişkenleri ayarlayın `az` .**
 
@@ -131,7 +131,7 @@ Ardından, iki boş alt ağ içeren bir sanal ağ oluşturacaksınız.
 
 2. **Bir sanal ağ oluşturun.**
 
-   OpenShift 4 çalıştıran Azure Red Hat OpenShift kümeleri, ana ve çalışan düğümleri için iki boş alt ağa sahip bir sanal ağ gerektirir.
+   OpenShift 4 çalıştıran Azure Red Hat OpenShift kümeleri, ana ve çalışan düğümleri için iki boş alt ağa sahip bir sanal ağ gerektirir. Bunun için yeni bir sanal ağ oluşturabilir ya da var olan bir sanal ağı kullanabilirsiniz.
 
    Daha önce oluşturduğunuz kaynak grubunda yeni bir sanal ağ oluşturun:
 
