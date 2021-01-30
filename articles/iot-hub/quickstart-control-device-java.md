@@ -16,12 +16,12 @@ ms.custom:
 - devx-track-java
 - devx-track-azurecli
 ms.date: 06/21/2019
-ms.openlocfilehash: 25ed259fa1f2858c0c818eafbdc7b35226067bc4
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 04a685969097af5c6930fecafb1afad9666250de
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843078"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99070708"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-azure-iot-hub-with-java"></a>Hızlı başlangıç: Java ile Azure IoT Hub 'ına bağlı bir cihazı denetleme
 
@@ -29,7 +29,7 @@ ms.locfileid: "94843078"
 
 Bu hızlı başlangıçta, bir Java uygulamasıyla Azure IoT Hub bağlı olan sanal cihazı denetlemek için doğrudan bir yöntem kullanırsınız. IoT Hub, IoT cihazlarınızı buluttan yönetmenize ve depolama ya da işleme için yüksek hacimli cihaz telemetrisine sahip olan bir Azure hizmetidir. IoT hub’ınıza bağlı bir cihazın davranışını uzaktan değiştirmek için doğrudan yöntemler kullanabilirsiniz. Bu hızlı başlangıçta iki Java uygulaması kullanılmaktadır: arka uç uygulamasından çağrılan doğrudan yöntemlere ve sanal cihazdaki doğrudan yöntemini çağıran bir hizmet uygulamasına yanıt veren bir sanal cihaz uygulaması.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Etkin aboneliği olan bir Azure hesabı. [Ücretsiz bir tane oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
@@ -85,7 +85,7 @@ Bir cihazın bağlanabilmesi için IoT hub’ınıza kaydedilmesi gerekir. Bu h�
    **Youriothubname**: Bu yer tutucuyu, IoT Hub 'ınız için seçtiğiniz adla değiştirin.
 
     ```azurecli-interactive
-    az iot hub device-identity show-connection-string \
+    az iot hub device-identity connection-string show\
       --hub-name {YourIoTHubName} \
       --device-id MyJavaDevice \
       --output table
@@ -104,7 +104,7 @@ Arka uç uygulamasının IoT hub’ınıza bağlanmasına ve iletileri almasına
 **Youriothubname**: aşağıdaki yer tutucuyu IoT Hub 'ınız için seçtiğiniz adla değiştirin.
 
 ```azurecli-interactive
-az iot hub show-connection-string --policy-name service --name {YourIoTHubName} --output table
+az iot hub connection-string show --policy-name service --name {YourIoTHubName} --output table
 ```
 
 Şu ifadeye benzer şekilde görünen hizmet bağlantı dizesini not edin:

@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı başlangıç: & görünümü Azure Key Vault sertifikaları ayarlama – Azure PowerShell'
+title: Hızlı başlangıç-Azure PowerShell & görüntüleme Azure Key Vault sertifikaları ayarlama
 description: Azure PowerShell kullanarak Azure Key Vault bir sertifikanın nasıl ayarlanacağını ve alınacağını gösteren hızlı başlangıç
 services: key-vault
 author: msmbaldwin
@@ -9,14 +9,14 @@ ms.service: key-vault
 ms.subservice: certificates
 ms.topic: quickstart
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
-ms.date: 09/03/2019
+ms.date: 01/27/2021
 ms.author: mbaldwin
-ms.openlocfilehash: ae53ebac1c2a943a2b1ca98b222a8dbab210bdb5
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 587815cf9628df35f1e1efdbc6a7a3c89a27ed55
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97935130"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99071926"
 ---
 # <a name="quickstart-set-and-retrieve-a-certificate-from-azure-key-vault-using-azure-powershell"></a>Hızlı başlangıç: Azure PowerShell kullanarak Azure Key Vault bir sertifikayı ayarlama ve alma
 
@@ -35,32 +35,11 @@ Login-AzAccount
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
-[New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)Ile bir Azure Kaynak grubu oluşturun. Kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır. 
-
-```azurepowershell-interactive
-New-AzResourceGroup -Name ContosoResourceGroup -Location EastUS
-```
+[!INCLUDE [Create a resource group](../../../includes/key-vault-powershell-rg-creation.md)]
 
 ## <a name="create-a-key-vault"></a>Anahtar kasası oluşturma
 
-Ardından bir Key Vault oluşturacaksınız. Bu adımı uygularken bazı bilgiler gereklidir:
-
-Bu hızlı başlangıç boyunca Key Vault adı olarak "contoso KeyVault2" kullanıyoruz, ancak benzersiz bir ad kullanmanız gerekir.
-
-- **Kasa adı** Contoso-Vault2.
-- **Kaynak grubu adı** ContosoResourceGroup.
-- **Konum** Doğu ABD.
-
-```azurepowershell-interactive
-New-AzKeyVault -Name 'Contoso-Vault2' -ResourceGroupName 'ContosoResourceGroup' -Location 'East US'
-```
-
-Bu cmdlet’in çıktısı, yeni oluşturulan anahtar kasasının özelliklerini gösterir. Aşağıda listelenen iki özelliği not edin:
-
-* **Kasa Adı**: Örnekte bu değer **Contoso-Vault2** şeklindedir. Bu adı diğer Anahtar Kasası cmdlet'leri için kullanacaksınız.
-* **Kasa URI’si**: Örnekte bu değer https://Contoso-Vault2.vault.azure.net/ şeklindedir. REST API'si aracılığıyla kasanızı kullanan uygulamaların bu URI'yi kullanması gerekir.
-
-Kasa oluşturma sonrasında Azure hesabınız bu yeni kasa üzerinde herhangi bir işlem yapmasına izin verilen tek hesaptır.
+[!INCLUDE [Create a key vault](../../../includes/key-vault-powershell-kv-creation.md)]
 
 ## <a name="add-a-certificate-to-key-vault"></a>Key Vault bir sertifika ekleyin
 
@@ -70,27 +49,23 @@ Kasaya bir sertifika eklemek için, birkaç ek adım yapmanız yeterlidir. Bu se
 
 ```azurepowershell-interactive
 $Policy = New-AzKeyVaultCertificatePolicy -SecretContentType "application/x-pkcs12" -SubjectName "CN=contoso.com" -IssuerName "Self" -ValidityInMonths 6 -ReuseKeyOnRenewal
-Add-AzKeyVaultCertificate -VaultName "Contoso-Vault2" -Name "ExampleCertificate" -CertificatePolicy $Policy
+
+Add-AzKeyVaultCertificate -VaultName "<your-unique-keyvault-name>" -Name "ExampleCertificate" -CertificatePolicy $Policy
 ```
 
-Artık Azure Key Vault ' a eklediğiniz sertifikaya, URI 'sini kullanarak başvurabilirsiniz. Geçerli sürümü almak için **' https://Contoso-Vault2.vault.azure.net/certificates/ExampleCertificate '** kullanın. 
+Artık Azure Key Vault ' a eklediğiniz sertifikaya, URI 'sini kullanarak başvurabilirsiniz. Geçerli sürümü almak için **"https://<-Unique-keykasa-adı>. Vault.Azure.net/Certificates/ExampleCertificate"** kullanın. 
 
 Daha önce depolanan sertifikayı görüntülemek için:
 
 ```azurepowershell-interactive
-Get-AzKeyVaultCertificate -VaultName "Contoso-Vault2" -Name "ExampleCertificate"
+Get-AzKeyVaultCertificate -VaultName "<your-unique-keyvault-name>" -Name "ExampleCertificate"
 ```
 
 Şimdi bir Key Vault oluşturdunuz, bir sertifikayı depolamıştır ve geri almıştır.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Bu koleksiyondaki diğer hızlı başlangıçlar ve öğreticiler bu hızlı başlangıcı temel alır. Sonraki hızlı başlangıç ve öğreticilerle çalışmaya devam etmeyi planlıyorsanız, bu kaynakları yerinde bırakmanız yararlı olabilir.
-Artık gerekli değilse, [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) komutunu kullanarak kaynak grubunu ve tüm ilgili kaynakları kaldırabilirsiniz. Kaynakları aşağıda gösterildiği gibi silebilirsiniz:
-
-```azurepowershell-interactive
-Remove-AzResourceGroup -Name ContosoResourceGroup
-```
+[!INCLUDE [Create a key vault](../../../includes/key-vault-powershell-delete-resources.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

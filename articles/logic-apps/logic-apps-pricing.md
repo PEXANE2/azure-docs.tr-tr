@@ -1,180 +1,152 @@
 ---
-title: Fiyatlandırma & faturalandırma modeli
-description: Fiyatlandırma ve faturalandırma Azure Logic Apps nasıl çalıştığı hakkında genel bakış
+title: Faturalandırma & fiyatlandırma modelleri
+description: Fiyatlandırma ve faturalama modellerinin nasıl çalıştığı hakkında genel bakış Azure Logic Apps
 services: logic-apps
 ms.suite: integration
-author: jonfancey
-ms.author: jonfan
-ms.reviewer: estfan, logicappspm
+ms.reviewer: estfan, logicappspm, azla
 ms.topic: conceptual
-ms.date: 12/07/2020
-ms.openlocfilehash: 9243d089b4a000066ec03dbeeccd046db374f558
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.date: 01/29/2021
+ms.openlocfilehash: 0de0c5d53bd3195a24f75f4a2e65c19602e2a2b3
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97673119"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99088930"
 ---
-# <a name="pricing-model-for-azure-logic-apps"></a>Azure Logic Apps için fiyatlandırma modeli
+# <a name="pricing-and-billing-models-for-azure-logic-apps"></a>Azure Logic Apps için fiyatlandırma ve faturalandırma modelleri
 
-[Azure Logic Apps](../logic-apps/logic-apps-overview.md) , bulutta ölçeklenebilen otomatikleştirilmiş Tümleştirme iş akışları oluşturmanıza ve çalıştırmanıza yardımcı olur. Bu makalede, faturalandırma ve fiyatlandırmanın Azure Logic Apps nasıl çalıştığı açıklanır. Fiyatlandırma fiyatları için bkz. [Logic Apps fiyatlandırması](https://azure.microsoft.com/pricing/details/logic-apps).
+[Azure Logic Apps](../logic-apps/logic-apps-overview.md) , bulutta ölçeklenebilen otomatikleştirilmiş Tümleştirme iş akışları oluşturmanıza ve çalıştırmanıza yardımcı olur. Bu makalede, Logic Apps hizmeti ve ilgili kaynaklar için faturalandırma ve fiyatlandırma modellerinin nasıl çalıştığı açıklanır. Belirli fiyatlandırma ücretleri için bkz. [Logic Apps fiyatlandırması](https://azure.microsoft.com/pricing/details/logic-apps). Maliyetleri nasıl planlayabileceğinizi, yönetebileceğinizi ve izleyeceğinizi öğrenmek için bkz. [Azure Logic Apps maliyetlerini planlayın ve yönetin](plan-manage-costs.md).
 
 <a name="consumption-pricing"></a>
 
-## <a name="consumption-pricing-model"></a>Tüketim fiyatlandırma modeli
+## <a name="multi-tenant-pricing"></a>Çok kiracılı fiyatlandırma
 
-Ortak, "genel", çok kiracılı Azure Logic Apps hizmetinde çalışan yeni mantıksal uygulamalar için yalnızca kullandığınız kadar ödersiniz. Bu mantıksal uygulamalar, tüketim tabanlı bir plan ve fiyatlandırma modeli kullanır. Mantıksal uygulamanızda, her adım bir eylemdir ve mantıksal uygulamanızda çalışan tüm eylemlere Azure Logic Apps.
+Kullanım için ödeme tüketimi fiyatlandırma modeli, genel, "genel", çok kiracılı Logic Apps hizmetinde çalışan Logic Apps için geçerlidir. Tüm başarılı ve başarısız çalıştırmalar tarifeli ve faturalandırılır.
 
-Örneğin, eylemler şunları içerir:
+Örneğin, bir yoklama tetikleyicisinin yaptığı bir istek, bu tetikleyici atlandığı ve mantıksal uygulama iş akışı örneği oluşturulmasa bile yürütme olarak ölçülmektedir.
 
-* Özel eylemler olan [Tetikleyiciler](#triggers). Tüm mantıksal uygulamalar ilk adım olarak bir tetikleyici gerektirir.
+| Öğeler | Description |
+|-------|-------------|
+| [Yerleşik](../connectors/apis-list.md#built-in) Tetikleyiciler ve eylemler | Logic Apps hizmetinde yerel olarak çalıştırın ve [ **eylem** fiyatı](https://azure.microsoft.com/pricing/details/logic-apps/)kullanılarak Ücretlendirilebilir. <p><p>Örneğin, HTTP tetikleyicisi ve Istek tetikleyicisi yerleşik tetiklerdir, ancak HTTP eylemi ve yanıt eylemi yerleşik eylemlerdir. Veri işlemleri, toplu işlemler, değişken işlemleri ve döngüler, koşullar, anahtar, paralel dallar vb. gibi [iş akışı denetim eylemleri](../connectors/apis-list.md#control-workflow)de yerleşik eylemlerdir. |
+| [Standart bağlayıcı](../connectors/apis-list.md#managed-connectors) Tetikleyicileri ve eylemleri <p><p>[Özel bağlayıcı](../connectors/apis-list.md#custom) Tetikleyicileri ve eylemleri | [Standart bağlayıcı fiyatı](https://azure.microsoft.com/pricing/details/logic-apps/)kullanılarak Ücretlendirilebilir. |
+| [Kurumsal bağlayıcı](../connectors/apis-list.md#managed-connectors) Tetikleyicileri ve eylemleri | [Kurumsal bağlayıcı fiyatı](https://azure.microsoft.com/pricing/details/logic-apps/)kullanılarak Ücretlendirilebilir. Ancak, genel önizleme sırasında kurumsal bağlayıcılar [ *Standart* bağlayıcı fiyatı](https://azure.microsoft.com/pricing/details/logic-apps/)kullanılarak ölçümdedir. |
+| [Döngüler](logic-apps-control-flow-loops.md) içindeki eylemler | Bir döngüde çalışan her eylem, çalıştıran her döngü döngüsü için ölçülme yapılır. <p><p>Örneğin, bir listeyi işleyen eylemleri içeren bir "for each" döngüsüne sahip olduğunuzu varsayalım. Logic Apps hizmeti, liste öğelerinin sayısını döngüdeki eylem sayısıyla çarparak bu döngüde çalışan her eylemi ölçümler ve döngüyü başlatan eylemi ekler. Bu nedenle, 10 öğe listesi için hesaplama, 11 işlem yürütmelerinin sonucu olan (10 * 1) + 1 ' dir. |
+| Yeniden deneme sayısı | En basit özel durumları ve hataları işlemek için, Tetikleyiciler ve eylemler üzerinde desteklenmiş bir [yeniden deneme ilkesi](logic-apps-exception-handling.md#retry-policies) ayarlayabilirsiniz. Özgün istek ile birlikte bu yeniden denemeler, tetikleyicinin veya eylemin yerleşik, standart ya da kurumsal türe sahip olup olmadığına bağlı olarak ücretlendirilir. Örneğin, 2 yeniden deneme ile yürütülen bir eylem 3 eylem yürütmeleri için ücretlendirilir. |
+| [Veri saklama ve depolama tüketimi](#data-retention) | Fiyatlandırma ayrıntıları tablosu altında [Logic Apps fiyatlandırma sayfasında](https://azure.microsoft.com/pricing/details/logic-apps/)bulabileceğiniz veri saklama fiyatı kullanılarak **Ücretlendirilebilir** . |
+|||
 
-* ["Yerleşik" veya http gibi yerel eylemler](../connectors/apis-list.md#built-in) , Azure işlevlerine yapılan çağrılar ve API Management vb.)
+Daha fazla bilgi için, aşağıdakilere bakın:
 
-* Outlook 365, Dropbox vb. gibi [yönetilen bağlayıcılar](../connectors/apis-list.md#managed-connectors) için çağrılar
+* [Yürütmeler ve depolama tüketimi için ölçümleri görüntüleme](plan-manage-costs.md#monitor-billing-metrics)
+* [Azure Logic Apps sınırları](logic-apps-limits-and-config.md)
 
-* Döngüler, koşullu deyimler vb. gibi [iş akışı eylemlerini denetleme](../connectors/apis-list.md#control-workflow)
+### <a name="not-metered"></a>Tarifeli değil
 
-Standart [Bağlayıcılar](../connectors/apis-list.md#managed-connectors) [standart bağlayıcı fiyatı](https://azure.microsoft.com/pricing/details/logic-apps)üzerinden ücretlendirilir. Genel kullanıma sunulan [Kurumsal bağlayıcılar](../connectors/apis-list.md#managed-connectors) [Kurumsal bağlayıcı fiyatı](https://azure.microsoft.com/pricing/details/logic-apps)üzerinden ücretlendirilir, ancak genel önizleme kurumsal bağlayıcıları [standart bağlayıcı fiyatı](https://azure.microsoft.com/pricing/details/logic-apps)üzerinden ücretlendirilir.
+* Karşılanmayan koşullar nedeniyle atlanan Tetikleyiciler
+* Mantıksal uygulama bitmeden önce durdurulduğundan çalıştırılmamış eylemler
+* [Devre dışı mantıksal uygulamalar](#disabled-apps)
 
-Faturalandırma ve [eylem](#actions) düzeylerinde nasıl çalıştığı hakkında daha [](#triggers) fazla bilgi edinin. Ya da sınırlar hakkında bilgi için bkz. [Azure Logic Apps Için sınırlara ve yapılandırma](logic-apps-limits-and-config.md).
+### <a name="other-related-resources"></a>Diğer ilgili kaynaklar
+
+Logic Apps, tümleştirme hesapları, şirket içi veri ağ geçitleri ve tümleştirme hizmeti ortamları (sesleri) gibi diğer ilgili kaynaklarla çalışır. Bu kaynakların fiyatlandırması hakkında bilgi edinmek için bu konunun ilerleyen kısımlarında bu bölümleri inceleyin:
+
+* [On-premises data gateway (Şirket içi veri ağ geçidi)](#data-gateway)
+* [Tümleştirme hesabı fiyatlandırma modeli](#integration-accounts)
+* [ISE fiyatlandırma modeli](#fixed-pricing)
+
+### <a name="tips-for-estimating-consumption-costs"></a>Tüketim maliyetlerini tahmin etmeye yönelik ipuçları
+
+Daha doğru tüketim maliyetlerini tahmin etmenize yardımcı olmak için şu ipuçlarını gözden geçirin:
+
+* Yalnızca yoklama aralığındaki hesaplamalarınızı temel maktansa, belirli bir güne ulaşacak olabilecek ileti veya olay sayısını göz önünde bulundurun.
+
+* Bir olay veya ileti tetikleyici ölçütlerini karşıladığında, birçok tetikleyici tüm diğer bekleyen olayları ve ölçütlere uyan iletileri okumayı hemen dener. Bu davranış, daha uzun bir yoklama aralığı seçtiğinizde bile tetikleyici, iş akışlarını başlatmak için uygun olan bekleme olay veya ileti sayısına göre ateşlenir. Bu davranışı izleyen Tetikleyiciler Azure Service Bus ve Azure Olay Hub 'ı içerir.
+
+  Örneğin, her gün bir uç noktayı denetleyen tetikleyiciyi ayarladığınızı varsayalım. Tetikleyici, uç noktayı denetlediğinde ve ölçütlere uyan 15 olay bulduğunda, tetikleyici ateşlenir ve ilgili iş akışını 15 kez çalıştırır. Logic Apps hizmeti, tetikleyici istekleri dahil olmak üzere, bu 15 iş akışlarının gerçekleştirdiği tüm eylemleri ölçümler.
 
 <a name="fixed-pricing"></a>
 
-## <a name="fixed-pricing-model"></a>Sabit fiyatlandırma modeli
+## <a name="ise-pricing"></a>ISE fiyatlandırması
 
-Bir [ *tümleştirme hizmeti ortamı* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) , bir Azure sanal ağındaki kaynaklara erişebilen Logic Apps oluşturmanız ve çalıştırmanız için yalıtılmış bir yol sağlar. ISE 'de çalışan Logic Apps veri bekletme maliyetlerine tabi değildir. Bir ıSE oluşturduğunuzda ve yalnızca oluşturma sırasında, farklı [fiyatlandırma oranlarına](https://azure.microsoft.com/pricing/details/logic-apps)sahip bir [Ise DÜZEYI veya "SKU"](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)seçebilirsiniz:
+Sabit bir fiyatlandırma modeli, bir [ *tümleştirme hizmeti ortamında* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)çalışan Logic Apps için geçerlidir. ISE, oluşturduğunuz [Ise düzeyine veya *SKU*](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) 'ya bağlı olarak [tümleştirme hizmeti ortamı fiyatı](https://azure.microsoft.com/pricing/details/logic-apps)kullanılarak faturalandırılır. Bu fiyatlandırma, ayrılan kapasite ve adanmış kaynaklar için ödeme yaptığınız gibi çok kiracılı fiyatlandırmadan farklıdır.
 
-* **Premium** ISE: Bu SKU 'nun temel birimi sabit kapasiteye sahip, ancak daha fazla işleme ihtiyacınız varsa, ıSE oluşturma sırasında veya [daha sonra daha fazla ölçek birimi ekleyebilirsiniz](../logic-apps/ise-manage-integration-service-environment.md#add-capacity) . ISE sınırları için bkz. [Azure Logic Apps Için sınırlar ve yapılandırma](logic-apps-limits-and-config.md#integration-service-environment-ise).
+| ıSE SKU 'SU | Description |
+|---------|-------------|
+| **Premium** | Temel birim sabit kapasiteye sahiptir ve [Premium SKU 'su için saatlik bir ücret üzerinden faturalandırılır](https://azure.microsoft.com/pricing/details/logic-apps). Daha fazla işleme ihtiyacınız varsa, ıSE veya daha sonra oluşturduğunuz zaman [daha fazla ölçek birimi ekleyebilirsiniz](../logic-apps/ise-manage-integration-service-environment.md#add-capacity) . Her ölçek birimi, [temel birim oranının kabaca yarısı olan saatlik bir ücret](https://azure.microsoft.com/pricing/details/logic-apps)üzerinden faturalandırılır. <p><p>Sınır bilgileri için [Azure Logic Apps Içindeki Ise sınırları](logic-apps-limits-and-config.md#integration-service-environment-ise)bölümüne bakın. |
+| **Geliştirici** | Temel birim sabit kapasiteye sahiptir ve [Geliştirici SKU 'su için saatlik bir ücret üzerinden faturalandırılır](https://azure.microsoft.com/pricing/details/logic-apps). Bu SKU, ölçek artırma özelliğine, hizmet düzeyi sözleşmesine (SLA) veya yayımlanmış sınırlara sahip değildir. Bu SKU 'yu yalnızca araştırma, denemeleri, geliştirme ve test için kullanın, üretim veya performans testi değil. |
+|||
 
-* **Geliştirici** ISE: Bu SKU, ölçek artırma, hizmet düzeyi sözleşmesi (SLA) ve yayımlanmış sınır olmadan hiçbir özelliğe sahip değildir. Bu SKU 'YU yalnızca deneme, geliştirme ve test için kullanın, üretim veya performans testi yapın.
+### <a name="included-at-no-extra-cost"></a>Ek ücret ödemeden dahil değildir
 
-Bir ıSE içinde oluşturup çalıştırdığınız Logic Apps için, bu yetenekler için sabit bir [Fiyat](https://azure.microsoft.com/pricing/details/logic-apps) (kullanım başına ödeme) ödeyin:
+| Öğeler | Description |
+|-------|-------------|
+| [Yerleşik](../connectors/apis-list.md#built-in) Tetikleyiciler ve eylemler | **Çekirdek** etiketi görüntüleyin ve Logic Apps ile aynı Ise 'de çalıştırın. |
+| [Standart bağlayıcılar](../connectors/apis-list.md#managed-connectors) <p><p>[Kurumsal bağlayıcılar](../connectors/apis-list.md#enterprise-connectors) | - **Ise** etiketini görüntüleyen yönetilen bağlayıcılar, şirket içi veri ağ geçidi olmadan çalışacak şekilde özel olarak tasarlanmıştır ve Logic Apps ile aynı çalışma alanında çalışır. ISE fiyatlandırması, istediğiniz kadar kurumsal bağlantı içerir. <p><p>-ISE etiketini görüntülememe dışı bağlayıcılar çok kiracılı Logic Apps hizmetinde çalışır. Ancak, ıSE fiyatlandırması bir ıSE 'de çalışan Logic Apps için bu yürütmeleri içerir. |
+| [Döngüler](logic-apps-control-flow-loops.md) içindeki eylemler | ISE fiyatlandırması, çalıştıran her döngü döngüsü için bir döngüde çalışan her eylemi içerir. <p><p>Örneğin, bir listeyi işleyen eylemleri içeren bir "for each" döngüsüne sahip olduğunuzu varsayalım. Toplam eylem yürütmelerinin sayısını almak için, liste öğelerinin sayısını döngüdeki eylem sayısıyla çarpın ve döngüyü başlatan eylemi ekleyin. Bu nedenle, 10 öğe listesi için hesaplama, 11 işlem yürütmelerinin sonucu olan (10 * 1) + 1 ' dir. |
+| Yeniden deneme sayısı | En basit özel durumları ve hataları işlemek için, Tetikleyiciler ve eylemler üzerinde desteklenmiş bir [yeniden deneme ilkesi](logic-apps-exception-handling.md#retry-policies) ayarlayabilirsiniz. ISE fiyatlandırması, özgün istekle birlikte yeniden denemeler içerir. |
+| [Veri saklama ve depolama tüketimi](#data-retention) | Bir ıSE 'de Logic Apps, bekletme ve depolama maliyetlerine tabi değildir. |
+| [Tümleştirme hesaplarına genel bakış](#integration-accounts) | Ek maliyet olmadan ıSE SKU 'SU temelinde tek bir tümleştirme hesabı katmanının kullanımını içerir. |
+|||
 
-* [Yerleşik](../connectors/apis-list.md#built-in) Tetikleyiciler ve eylemler
-
-  Bir ıSE 'de, yerleşik Tetikleyiciler ve eylemler **temel** etiketi görüntüler ve Logic Apps ile aynı Ise 'de çalışır.
-
-* İstediğiniz kadar kurumsal bağlantınız olmasına olanak sağlayan [Standart](../connectors/apis-list.md#managed-connectors) bağlayıcılar ve [Kurumsal](../connectors/apis-list.md#enterprise-connectors) bağlayıcılar
-
-   **Ise** etiketini görüntüleyen standart ve kurumsal bağlayıcılar, Logic Apps ile aynı çalışma alanında çalışır. ISE etiketini görüntülememe dışı bağlayıcılar ortak, "genel", çok kiracılı Logic Apps hizmetinde çalışır. Sabit fiyatlandırma Ayrıca, bunları bir ıSE 'de çalışan Logic Apps ile kullandığınızda çok kiracılı hizmette çalışan bağlayıcılar için de geçerlidir.
-
-* [Ise SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)'nuzu temel alarak, ek ücret ödemeden [tümleştirme hesabı](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) kullanımı:
-
-  * **Premium** ISE SKU 'SU: tek bir [Standart katman](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits) tümleştirme hesabı
-
-  * **Geliştirici** ISE SKU 'SU: tek bir [ücretsiz katman](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits) tümleştirme hesabı
-
-  Ek bir maliyet için, [Toplam sınıra kadar](logic-apps-limits-and-config.md#integration-account-limits), o kadar çok tümleştirme hesabı oluşturabilirsiniz. 
-
-  * **Premium** ISE SKU 'SU: en fazla 19 daha standart hesap. Ücretsiz veya temel hesaba izin verilmez.
-
-  * **Geliştirici** ISE SKU 'SU: ücretsiz hesabınız varsa en fazla 19 daha standart hesap veya ücretsiz bir hesabınız yoksa 20 Toplam standart hesap. Temel hesaplara izin verilmez.
-
-  Tümleştirme hesabı limitleri hakkında daha fazla bilgi için bkz. [Limit ve Configuration for Azure Logic Apps](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits). Bu konunun ilerleyen kısımlarında [tümleştirme hesabı katmanları ve fiyatlandırma modelleri](#integration-accounts) hakkında daha fazla bilgi edinebilirsiniz.
-
-<a name="connectors"></a>
-
-## <a name="connectors"></a>Bağlayıcılar
-
-Azure Logic Apps bağlayıcılar, mantıksal uygulamanızın, [Tetikleyiciler](#triggers), [Eylemler](#actions)veya her ikisini de sağlayarak bulutta veya şirket içinde uygulamalara, hizmetlere ve sistemlere erişmesine yardımcı olur. Bağlayıcılar, standart ya da kurumsal olarak sınıflandırılır. Bu bağlayıcılar hakkında genel bilgi için bkz. [bağlayıcılar Azure Logic Apps](../connectors/apis-list.md). Logic Apps 'te kullanmak istediğiniz REST API 'Leri için önceden oluşturulmuş bağlayıcılar yoksa, bu REST API 'Leri etrafında yalnızca sarmalayıcılar olan [özel bağlayıcılar](/connectors/custom-connectors)oluşturabilirsiniz. Özel Bağlayıcılar standart bağlayıcı olarak faturalandırılır. Aşağıdaki bölümlerde, tetikleyicilerinin ve eylemlerin nasıl çalıştığı hakkında daha fazla bilgi sağlanmaktadır.
-
-<a name="triggers"></a>
-
-## <a name="triggers"></a>Tetikleyiciler
-
-Bir tetikleyici, mantıksal uygulama iş akışındaki her zaman ilk adımdır ve belirli ölçütler karşılandığında veya belirli bir olay gerçekleştiğinde mantıksal uygulama örneği oluşturan ve çalıştıran özel bir işlemdir. Tetikler, mantıksal uygulamanın nasıl ölçüldiğini etkileyen farklı yollarla çalışır. Azure Logic Apps var olan çeşitli tetikleyici türleri şunlardır:
-
-* **Yinelenme tetikleyicisi**: herhangi bir hizmet veya sisteme özgü olmayan bu genel tetikleyiciyi, herhangi bir mantıksal uygulama iş akışını başlatmak ve tetikleyicide ayarladığınız yinelenme aralığına göre çalışan bir mantıksal uygulama örneği oluşturmak için kullanabilirsiniz. Örneğin, her üç günde bir veya daha karmaşık bir zamanlamaya göre çalışan bir yinelenme tetikleyicisi ayarlayabilirsiniz.
-
-* **Yoklama tetikleyicisi**: Bu daha özelleştirilmiş yinelenme tetikleyicisini, genellikle belirli bir hizmet veya sistem için yönetilen bağlayıcıyla ilişkili olan, tetikleyicide ayarladığınız yinelenme aralığına göre mantıksal uygulama örneği oluşturma ve çalıştırma ölçütlerine uyan olayları denetlemek için, bu daha özelleştirilmiş yineleme tetikleyicisini kullanabilirsiniz. Mantıksal uygulama örneği oluşturulmasa bile, örneğin Tetikleyiciler atlandığında, Logic Apps hizmeti her yoklama isteğini bir yürütme olarak ölçümler. Yoklama aralığını belirtmek için, mantıksal uygulama Tasarımcısı aracılığıyla tetikleyiciyi ayarlayın.
-
-  [!INCLUDE [logic-apps-polling-trigger-non-standard-metering](../../includes/logic-apps-polling-trigger-non-standard-metering.md)]
-
-* **Web kancası tetikleyicisi**: bir yoklama tetikleyicisi kullanmak yerine, istemcinin belirli bir uç nokta URL 'sindeki mantıksal uygulamanıza istek göndermesini beklemek için bir Web kancası tetikleyicisi kullanabilirsiniz. Web kancası uç noktasına gönderilen her istek bir eylem yürütmesi olarak sayılır. Örneğin, Istek ve HTTP Web kancası tetikleyicisi genel Web kancası tetikleyicilerine sahiptir. Hizmetler veya sistemler için bazı bağlayıcıların Web kancası Tetikleyicileri de vardır.
-
-<a name="actions"></a>
-
-## <a name="actions"></a>Eylemler
-
-Yerel eylemler olarak HTTP gibi "yerleşik" eylemleri Azure Logic Apps. Örneğin, yerleşik Eylemler HTTP çağrılarını, Azure Işlevlerinden veya API Management çağrıları ve koşullar, döngüler ve Switch deyimleri gibi denetim akışı adımlarını içerir. Her eylemin kendi eylem türü vardır. Örneğin, [bağlayıcıları](/connectors) çağıran eylemler "ApiConnection" türüne sahiptir. Bu bağlayıcılar, kendi [fiyatlandırmasına](https://azure.microsoft.com/pricing/details/logic-apps)göre ölçülen standart veya kurumsal bağlayıcılar olarak sınıflandırılır. *Önizlemede* kurumsal bağlayıcılar standart bağlayıcı olarak ücretlendirilir.
-
-Tüm başarılı ve başarısız eylemleri yürütmeler olarak Azure Logic Apps. Ancak Logic Apps bu eylemleri ölçer:
-
-* Karşılanmayan koşullar nedeniyle atlanan eylemler
-* Mantıksal uygulama bitmeden önce durdurulduğundan çalıştırmayan eylemler
-
-Döngülerde çalışan eylemler için Azure Logic Apps döngüdeki her döngü için her bir eylemi sayar. Örneğin, bir listeyi işleyen bir "for each" döngüsüne sahip olduğunuzu varsayalım. , Liste öğelerinin sayısını döngüdeki eylem sayısıyla çarparak ve döngüyü başlatan eylemi eklediğinden, bu döngüde bir eyleme Logic Apps. Bu nedenle, 10 öğe listesi için hesaplama, 11 işlem yürütmelerinin sonucu olan (10 * 1) + 1 ' dir.
-
-## <a name="disabled-logic-apps"></a>Devre dışı mantıksal uygulamalar
-
-Devre dışı bırakıldıklarında yeni örnekler oluşturamadığı için devre dışı bırakılan Logic Apps ücretlendirilmez. Mantıksal uygulamayı devre dışı bıraktıktan sonra, çalışmakta olan tüm örnekler tamamen durmadan önce biraz zaman alabilir.
+Sınır bilgileri için [Azure Logic Apps Içindeki Ise sınırları](logic-apps-limits-and-config.md#integration-service-environment-ise)bölümüne bakın.
 
 <a name="integration-accounts"></a>
 
 ## <a name="integration-accounts"></a>Tümleştirme hesapları
 
-[Sabit bir fiyatlandırma modeli](https://azure.microsoft.com/pricing/details/logic-apps) , Azure Logic Apps [B2B ve EDI](logic-apps-enterprise-integration-b2b.md) ve [XML işleme](logic-apps-enterprise-integration-xml.md) özelliklerini hiçbir ek ücret ödemeden keşfedebileceğiniz, geliştirebileceğiniz ve test ettiğiniz [tümleştirme hesapları](logic-apps-enterprise-integration-create-integration-account.md) için geçerlidir. Her Azure aboneliğinin [belirli bir tümleştirme hesabı sınırı](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits)olabilir. Her tümleştirme hesabı, ticari iş ortakları, anlaşmalar, Haritalar, şemalar, derlemeler, sertifikalar, toplu iş yapılandırması vb. dahil olmak üzere belirli bir [yapıt sınırına](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits)kadar depolama sağlayabilir.
+[Tümleştirme hesabı](../logic-apps/logic-apps-pricing.md#integration-accounts) , [EDI](logic-apps-enterprise-integration-b2b.md) ve [XML işleme](logic-apps-enterprise-integration-xml.md) özelliklerini kullanan B2B tümleştirme çözümlerini araştırabilmeniz, derlemenize ve test edebilmeniz için mantıksal uygulamaları oluşturduğunuz ve bu uygulamalara bağlanan ayrı bir kaynaktır. Azure Logic Apps Bu tümleştirme hesabı düzeylerini veya katmanlarını sunar:
 
-Azure Logic Apps, ücretsiz, temel ve standart tümleştirme hesapları sunmaktadır. Temel ve Standart katmanlar Logic Apps hizmet düzeyi sözleşmesi (SLA) tarafından desteklenir, ancak ücretsiz katman bir SLA tarafından desteklenmez ve bölge kullanılabilirliği, verimlilik ve kullanımı için sınırlara sahiptir. Ücretsiz katman tümleştirme hesapları haricinde, her bir Azure bölgesinde birden fazla tümleştirme hesabına sahip olabilirsiniz. Fiyatlandırma fiyatları için bkz. [Logic Apps fiyatlandırması](https://azure.microsoft.com/pricing/details/logic-apps/).
+| Katman | Description |
+|------|-------------|
+| **Temel** | Yalnızca ileti işlemenin veya daha büyük bir iş varlığıyla ticari iş ortağı ilişkisine sahip küçük bir iş ortağı olarak hareket etmesini istediğiniz senaryolar için. <p><p>Logic Apps SLA tarafından desteklenir. |
+| **Standart** | Daha karmaşık B2B ilişkilerinizin olduğu ve yönetmeniz gereken varlıkların sayısı olan senaryolar için. <p><p>Logic Apps SLA tarafından desteklenir. |
+| **Ücretsiz** | Araştırmacı senaryolar için, üretim senaryolarından değil. Bu katmanın bölge kullanılabilirliği, üretilen iş ve kullanım sınırları vardır. Örneğin ücretsiz katman yalnızca Azure 'daki genel bölgeler için kullanılabilir (örneğin, Batı ABD veya Güneydoğu Asya), ancak [Azure Çin 21Vianet](/azure/china/overview-operations) veya [Azure Kamu](../azure-government/documentation-government-welcome.md)için değildir. <p><p>**Not**: Logic Apps SLA tarafından desteklenmez. |
+|||
 
-Bir [ *tümleştirme hizmeti ortamınız* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)varsa, Ise, ek ücret ödemeden tek bir tümleştirme hesabı kullanabilir, ancak dahil edilen hesap türü [Ise SKU 'suna](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)göre değişir. Ek bir [Maliyet](#fixed-pricing)için, [tümleştirme hesaplarının toplam sınırına](logic-apps-limits-and-config.md#integration-account-limits)kadar o kadar çok tümleştirme hesabı oluşturabilirsiniz. Sabit fiyatlandırma modelinin bir ıSE için nasıl çalıştığını öğrenmek için, bu konunun önceki [sabit fiyatlandırma modeli](#fixed-pricing) bölümüne bakın. Fiyatlandırma fiyatları için bkz. [Logic Apps fiyatlandırması](https://azure.microsoft.com/pricing/details/logic-apps).
+Tümleştirme hesabı limitleri hakkında daha fazla bilgi için bkz. [Azure Logic Apps Için sınırlar ve yapılandırma](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits):
 
-Ücretsiz, temel veya standart tümleştirme hesabı arasından seçim yapmak için bu kullanım örneği açıklamalarını gözden geçirin:
+* [Azure aboneliği başına tümleştirme hesabı sınırları](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits)
 
-* **Ücretsiz**: bir üretim senaryosu değil keşif senaryoları denemek istediğiniz zaman. Bu katman yalnızca Azure 'daki genel bölgeler için kullanılabilir (örneğin, Batı ABD veya Güneydoğu Asya), ancak [Azure Çin 21Vianet](/azure/china/overview-operations) veya [Azure Kamu](../azure-government/documentation-government-welcome.md)için değil.
+* [Tümleştirme hesabı başına çeşitli yapıtların sınırları](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits). Yapıtlar, ticari iş ortakları, sözleşmeler, Haritalar, şemalar, derlemeler, sertifikalar, toplu iş yapılandırması vb. içerir.
 
-* **Temel**: yalnızca ileti işleme yapmak veya daha büyük bir iş varlığıyla bir ticari iş ortağı ilişkisine sahip küçük bir iş ortağı olarak hareket etmek istediğinizde
+### <a name="integration-accounts-for-consumption-based-logic-apps"></a>Tüketim tabanlı Logic Apps için tümleştirme hesapları
 
-* **Standart**: daha karmaşık B2B ilişkilerine sahip olduğunuzda ve yönetmeniz gereken varlıkların sayısı arttıkça
+Tümleştirme hesapları, kullandığınız hesap katmanını temel alan sabit bir [tümleştirme hesabı fiyatı](https://azure.microsoft.com/pricing/details/logic-apps/) kullanılarak faturalandırılır.
+
+### <a name="ise-based-logic-apps"></a>ISE tabanlı mantıksal uygulamalar
+
+Ek bir ücret ödemeden ıSE, Ise SKU 'nuzu temel alan tek bir tümleştirme hesabı içerir. Ek bir maliyet için, [Toplam Ise sınırına](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits)kadar kullanmak üzere Ise için daha fazla tümleştirme hesabı oluşturabilirsiniz. Bu konunun önceki kısımlarında yer aldığı [Ise fiyatlandırma modeli](#fixed-pricing) hakkında daha fazla bilgi edinin.
+
+| ıSE SKU 'SU | Dahil edilen tümleştirme hesabı | Ek maliyet |
+|---------|------------------------------|-----------------|
+| **Premium** | Tek bir [Standart](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits) tümleştirme hesabı | En fazla 19 daha standart hesap. Ücretsiz veya temel hesaba izin verilmez. |
+| **Geliştirici** | Tek bir [ücretsiz](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits) tümleştirme hesabı | Ücretsiz hesabınız varsa, en fazla 19 daha standart hesap veya ücretsiz bir hesabınız yoksa 20 Toplam standart hesap. Temel hesaplara izin verilmez. |
+||||
 
 <a name="data-retention"></a>
 
-## <a name="data-retention"></a>Veri saklama
+## <a name="data-retention-and-storage-consumption"></a>Veri saklama ve depolama tüketimi
 
-Bir tümleştirme hizmeti ortamında (ıSE) çalışan Logic Apps dışında, mantıksal uygulamanızın çalışma geçmişinde saklanan tüm giriş ve çıkışlar, mantıksal uygulamanın [çalışma bekletme dönemine](logic-apps-limits-and-config.md#run-duration-retention-limits)göre faturalandırılır. ISE 'de çalışan Logic Apps veri bekletme maliyetlerine tabi değildir. Fiyatlandırma fiyatları için bkz. [Logic Apps fiyatlandırması](https://azure.microsoft.com/pricing/details/logic-apps).
+Mantıksal uygulamanızın çalışma geçmişinde tüm giriş ve çıkış, bu uygulamanın [çalışma süresi ve geçmiş saklama süresi](logic-apps-limits-and-config.md#run-duration-retention-limits)temel alınarak depolanır ve ölçülecektir.
 
-Mantıksal uygulamanızın depolama tüketimini izlemenize yardımcı olması için şunları yapabilirsiniz:
+* Çok kiracılı Logic Apps hizmetindeki Logic Apps için, depolama tüketimi, **fiyatlandırma ayrıntıları** tablosu altında [Logic Apps fiyatlandırma sayfasında](https://azure.microsoft.com/pricing/details/logic-apps)bulabileceğiniz sabit bir fiyatla faturalandırılır.
 
-* Mantıksal uygulamanızın aylık kullandığı GB cinsinden depolama birimi sayısını görüntüleyin.
+* Bir mantıksal uygulamalar için, depolama tüketimi veri saklama maliyetlerine tabi değildir.
 
-* Mantıksal uygulamanızın çalıştırma geçmişinde belirli bir eylemin giriş ve çıkışları için boyutları görüntüleyin.
+Depolama tüketimi kullanımını izlemek için bkz. [yürütmeler ve depolama alanı tüketimi için ölçümleri görüntüleme](plan-manage-costs.md#monitor-billing-metrics).
 
-<a name="storage-consumption"></a>
+<a name="data-gateway"></a>
 
-### <a name="view-logic-app-storage-consumption"></a>Mantıksal uygulama depolama tüketimini görüntüleme
+## <a name="on-premises-data-gateway"></a>Şirket içi veri ağ geçidi
 
-1. Azure portal, mantıksal uygulamanızı bulun ve açın.
+Şirket [içi veri ağ geçidi](../logic-apps/logic-apps-gateway-install.md) , mantıksal uygulamalarınızın belirli ağ geçidi ile desteklenen bağlayıcıları kullanarak şirket içi verilere erişebilmeleri için oluşturduğunuz ayrı bir kaynaktır. Ağ Geçidi üzerinden çalışan bağlayıcılar ücretlendirilir, ancak ağ geçidinin kendisi ücret ödemez.
 
-1. Mantıksal uygulamanızın menüsünde, **izleme** altında **ölçümler**' i seçin.
+<a name="disabled-apps"></a>
 
-1. Sağ bölmedeki **grafik başlığı** altında, **ölçüm** listesinden, **depolama tüketimi yürütmeleri için faturalandırma kullanımı**' nı seçin.
+## <a name="disabled-logic-apps"></a>Devre dışı mantıksal uygulamalar
 
-   Bu ölçüm, faturalandırılan ayda GB cinsinden depolama tüketim birimi sayısını sağlar.
-
-   > [!NOTE]
-   > Depolama alanında 500 MB 'tan az kullanan çalıştırmalar izleme görünümünde görünmeyebilir, ancak yine de faturalandırılır.
-
-<a name="input-output-sizes"></a>
-
-### <a name="view-action-input-and-output-sizes"></a>Eylem giriş ve çıkış boyutlarını görüntüleme
-
-1. Azure portal, mantıksal uygulamanızı bulun ve açın.
-
-1. Mantıksal uygulamanızın menüsünde **genel bakış**' ı seçin.
-
-1. Sağ bölmede, çalışma **geçmişi** altında, denetlemek istediğiniz girişleri ve çıkışları içeren çalıştırmayı seçin.
-
-1. **Mantıksal uygulama çalıştırma** altında, **Çalıştır ayrıntıları**' nı seçin.
-
-1. **Mantıksal uygulama çalıştırma ayrıntıları** bölmesinde, eylemler tablosunda, her eylemin durumunu ve süresini listeleyen, görüntülemek istediğiniz eylemi seçin.
-
-1. **Mantıksal uygulama eylemi** bölmesinde, bu eylemin giriş ve çıkışları için boyutları bulun. **Girişler bağlantı** ve **çıkış bağlantısı** altında, bu giriş ve çıkışların bağlantılarını bulun.
-
-   > [!NOTE]
-   > Döngüler için, yalnızca üst düzey eylemler, giriş ve çıkışları için boyutları gösterir. İç içe döngüler, girişler ve çıkışlar içindeki eylemler için sıfır boyut ve bağlantı yok gösterilmektedir.
+Devre dışı bırakıldıklarında yeni örnekler oluşturamadığı için devre dışı bırakılan Logic Apps ücretlendirilmez. Mantıksal uygulamayı devre dışı bıraktıktan sonra, çalışmakta olan tüm örnekler tamamen durmadan önce biraz zaman alabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Logic Apps hakkında daha fazla bilgi edinin](logic-apps-overview.md)
-* [İlk mantıksal uygulamanızı oluşturma](quickstart-create-first-logic-app-workflow.md)
+* [Azure Logic Apps maliyetlerini planlayın ve yönetin](plan-manage-costs.md)

@@ -11,12 +11,12 @@ ms.subservice: msi
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: references_regions
-ms.openlocfilehash: 0f7c97e5d84b3ee2d40c714625d0158fe60f2c95
-ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
+ms.openlocfilehash: 520d572478074a86c9b5cececacd34d7cd41539d
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98986082"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99071622"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Azure kaynakları için yönetilen kimlikleri destekleyen hizmetler
 
@@ -402,6 +402,15 @@ Azure Resource Manager erişimi yapılandırmak için aşağıdaki listeye bakı
 | Azure Kamu | `https://database.usgovcloudapi.net/` | ![Kullanılabileceğini][check] |
 | Azure Almanya | `https://database.cloudapi.de/` | ![Kullanılabileceğini][check] |
 | Azure China 21Vianet | `https://database.chinacloudapi.cn/` | ![Kullanılabileceğini][check] |
+
+### <a name="azure-data-explorer"></a>Azure Veri Gezgini
+
+| Bulut | Kaynak kimliği | Durum |
+|--------|------------|:-:|
+| Azure genel | `https://<account>.<region>.kusto.windows.net` | ![Kullanılabileceğini][check] |
+| Azure Kamu | `https://<account>.<region>.kusto.usgovcloudapi.net` | ![Kullanılabileceğini][check] |
+| Azure Almanya | `https://<account>.<region>.kusto.cloudapi.de` | ![Kullanılabileceğini][check] |
+| Azure China 21Vianet | `https://<account>.<region>.kusto.chinacloudapi.cn` | ![Kullanılabileceğini][check] |
 
 ### <a name="azure-event-hubs"></a>Azure Event Hubs
 

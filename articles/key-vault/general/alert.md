@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 04/06/2020
 ms.author: sudbalas
 Customer intent: As a key vault administrator, I want to learn the options available to monitor the health of my vaults
-ms.openlocfilehash: 5946a5d6d1adb5f609f497b4c2194582f624fe24
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 1b447e907bca3f8d21f522d888632aa687fd0f91
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97934603"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99070670"
 ---
 # <a name="monitoring-and-alerting-for-azure-key-vault"></a>Azure Key Vault için izleme ve uyarma
 
@@ -203,12 +203,13 @@ Lütfen aşağıdaki yapılandırma parametrelerine bakın.
 
 7. Uyarı oluşturma 
 
+### <a name="example-email-alert"></a>Örnek e-posta uyarısı 
+
+> [!div class="mx-imgBorder"]
+> ![Bir e-posta uyarısını yapılandırmak için gereken bilgileri vurgulayan ekran görüntüsü.](../media/alert-20.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Tebrikler, artık bir izleme panosunu başarıyla oluşturdunuz ve anahtar kasanıza yönelik uyarıları yapılandırdınız! Yukarıdaki adımların tamamını tamamladıktan sonra, anahtar kasanızın yapılandırdığınız uyarı ölçütlerini karşılaması durumunda e-posta uyarıları almalısınız. Aşağıda bir örnek gösterilmiştir. Anahtar kasalarınızın sistem durumunu etkin bir şekilde izlemek için bu makalede ayarladığınız araçları kullanın. 
 
-### <a name="example-email-alert"></a>Örnek e-posta uyarısı 
 
-> [!div class="mx-imgBorder"]
-> ![Bir e-posta uyarısını yapılandırmak için gereken bilgileri vurgulayan ekran görüntüsü.](../media/alert-20.png)

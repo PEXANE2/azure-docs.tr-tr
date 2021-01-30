@@ -3,12 +3,12 @@ title: Windows için Konuk Yapılandırma ilkeleri oluşturma
 description: Windows için Azure Ilke Konuk yapılandırma ilkesi oluşturmayı öğrenin.
 ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: 85ffda54d58db0544858ca8ab61335b61f18299e
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: ae9af51ad3b2eb237f8655c996a1345140a8a635
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97881795"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99070653"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-windows"></a>Windows için Konuk Yapılandırma ilkeleri oluşturma
 
@@ -261,6 +261,16 @@ New-GuestConfigurationPackage -Name AuditBitlocker -Configuration ./Config/Audit
 ```
 
 Sonraki adım, dosyayı Azure Blob depolama alanına yayımlamaktır. Komut `Publish-GuestConfigurationPackage` `Az.Storage` modülü gerektiriyor.
+
+`Publish-GuestConfigurationPackage`Cmdlet parametreleri:
+
+- **Yol**: yayımlanacak paketin konumu
+- **Resourcegroupname**: depolama hesabının bulunduğu kaynak grubunun adı
+- **StorageAccountName**: paketin yayımlanması gereken depolama hesabının adı
+- **Storagecontainername**: (varsayılan: *guestconfiguration*) depolama hesabındaki depolama kapsayıcısının adı
+- **Zorla**: aynı ada sahip depolama hesabındaki mevcut paketin üzerine yaz
+
+Aşağıdaki örnek, paketi ' guestconfiguration ' depolama kapsayıcısı adına yayımlar.
 
 ```azurepowershell-interactive
 Publish-GuestConfigurationPackage -Path ./AuditBitlocker.zip -ResourceGroupName myResourceGroupName -StorageAccountName myStorageAccountName

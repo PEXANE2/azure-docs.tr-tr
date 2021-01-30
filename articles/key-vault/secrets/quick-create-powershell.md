@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı başlangıç: PowerShell kullanarak Key Vault bir gizli anahtar alma & ayarlama'
+title: Hızlı başlangıç-PowerShell kullanarak Key Vault gizli dizi alma & ayarlama
 description: Bu hızlı başlangıçta, Azure PowerShell kullanarak Azure Key Vault gizli dizileri oluşturmayı, almayı ve silmeyi öğrenin.
 services: key-vault
 author: msmbaldwin
@@ -8,14 +8,14 @@ ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
 ms.custom: mvc, devx-track-azurepowershell
-ms.date: 09/30/2020
+ms.date: 01/27/2021
 ms.author: mbaldwin
-ms.openlocfilehash: d1fa63da035cba35538d13ffe4c3897458364a65
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: f3b770a5790d5e9554c7bf5d7d24f1eeccff7662
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936660"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99072228"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-powershell"></a>Hızlı başlangıç: PowerShell kullanarak Azure Key Vault'tan gizli dizi ayarlama ve alma
 
@@ -33,38 +33,18 @@ Connect-AzAccount
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
-[New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)Ile bir Azure Kaynak grubu oluşturun. Kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır.
-
-```azurepowershell-interactive
-New-AzResourceGroup -Name ContosoResourceGroup -Location EastUS
-```
+[!INCLUDE [Create a resource group](../../../includes/key-vault-powershell-rg-creation.md)]
 
 ## <a name="create-a-key-vault"></a>Anahtar kasası oluşturma
 
-Ardından bir Key Vault oluşturacaksınız. Bu adımı uygularken bazı bilgiler gereklidir:
-
-Bu hızlı başlangıç boyunca Key Vault adı olarak "contoso KeyVault2" kullanıyoruz, ancak benzersiz bir ad kullanmanız gerekir.
-
-- **Kasa adı** Contoso-Vault2.
-- **Kaynak grubu adı** ContosoResourceGroup.
-- **Konum** Doğu ABD.
-
-```azurepowershell-interactive
-New-AzKeyVault -Name 'Contoso-Vault2' -ResourceGroupName 'ContosoResourceGroup' -Location 'East US'
-```
-
-Bu cmdlet’in çıktısı, yeni oluşturulan anahtar kasasının özelliklerini gösterir. Aşağıda listelenen iki özelliği not edin:
-
-* **Kasa Adı**: Örnekte bu değer **Contoso-Vault2** şeklindedir. Bu adı diğer Anahtar Kasası cmdlet'leri için kullanacaksınız.
-* **Kasa URI’si**: Örnekte bu değer https://Contoso-Vault2.vault.azure.net/ şeklindedir. REST API'si aracılığıyla kasanızı kullanan uygulamaların bu URI'yi kullanması gerekir.
-
-Kasa oluşturma sonrasında Azure hesabınız bu yeni kasa üzerinde herhangi bir işlem yapmasına izin verilen tek hesaptır.
+[!INCLUDE [Create a key vault](../../../includes/key-vault-powershell-kv-creation.md)]
 
 ## <a name="give-your-user-account-permissions-to-manage-secrets-in-key-vault"></a>Key Vault içinde gizli dizileri yönetmek için Kullanıcı hesabınıza izin verin
 
 Key Vault erişim ilkesini güncelleştirmek ve Kullanıcı hesabınıza gizli izinler vermek için Azure PowerShell Set-AzKeyVaultAccessPolicy cmdlet 'ini kullanın.
+
 ```azurepowershell-interactive
-Set-AzKeyVaultAccessPolicy -VaultName 'Contoso-Vault2' -UserPrincipalName 'user@domain.com' -PermissionsToSecrets get,set,delete
+Set-AzKeyVaultAccessPolicy -VaultName "<your-unique-keyvault-name>" -UserPrincipalName "user@domain.com" -PermissionsToSecrets get,set,delete
 ```
 
 ## <a name="adding-a-secret-to-key-vault"></a>Key Vault’a gizli dizi ekleme
@@ -74,14 +54,14 @@ Kasaya bir gizli dizi eklemek için birkaç adım uygulamanız gerekir. Bu örne
 Önce şunu yazarak **hVFkk965BuUv** değerini güvenli bir dizeye dönüştürün:
 
 ```azurepowershell-interactive
-$secretvalue = ConvertTo-SecureString 'hVFkk965BuUv' -AsPlainText -Force
+$secretvalue = ConvertTo-SecureString "hVFkk965BuUv" -AsPlainText -Force
 ```
 
 Daha sonra, **hVFkk965BuUv** değeriyle **examplepassword** adlı Key Vault bir gizli dizi oluşturmak için aşağıdaki PowerShell komutlarını yazın:
 
 
 ```azurepowershell-interactive
-$secret = Set-AzKeyVaultSecret -VaultName 'Contoso-Vault2' -Name 'ExamplePassword' -SecretValue $secretvalue
+$secret = Set-AzKeyVaultSecret -VaultName "<your-unique-keyvault-name>" -Name "ExamplePassword" -SecretValue $secretvalue
 ```
 
 ## <a name="retrieve-a-secret-from-key-vault"></a>Key Vault bir gizli dizi alma
@@ -89,7 +69,7 @@ $secret = Set-AzKeyVaultSecret -VaultName 'Contoso-Vault2' -Name 'ExamplePasswor
 Gizli dizi içindeki değeri düz metin olarak görüntülemek için:
 
 ```azurepowershell-interactive
-$secret = Get-AzKeyVaultSecret -VaultName 'Contoso-Vault2' -Name 'ExamplePassword'
+$secret = Get-AzKeyVaultSecret -VaultName "<your-unique-keyvault-name>" -Name "ExamplePassword"
 $ssPtr = [System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($secret.SecretValue)
 try {
    $secretValueText = [System.Runtime.InteropServices.Marshal]::PtrToStringBSTR($ssPtr)

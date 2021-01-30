@@ -10,12 +10,12 @@ ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 09/25/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 2ab87dfdeb18f97265c3bb2f34616c942a345c1e
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 8c688b1ba80050c49b9e2a36696ed7a2fb863e3f
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94698956"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99089402"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-java-using-rest-apis"></a>Hızlı başlangıç: REST API 'Leri kullanarak Java 'da Azure Bilişsel Arama dizini oluşturma
 > [!div class="op_single_selector"]
@@ -27,7 +27,7 @@ ms.locfileid: "94698956"
 > * [Python](search-get-started-python.md)
 > * [REST](search-get-started-rest.md)
 
-[IntelliJ](https://www.jetbrains.com/idea/), [Java 11 SDK](/java/azure/jdk/)ve [Azure bilişsel arama REST API](/rest/api/searchservice/)kullanarak bir arama dizini oluşturan, yükleyen ve sorgulayan bir Java konsol uygulaması oluşturun. Bu makalede, uygulama oluşturmaya yönelik adım adım yönergeler sağlanmaktadır. Alternatif olarak, [tüm uygulamayı indirebilir ve çalıştırabilirsiniz](/samples/azure-samples/azure-search-java-samples/java-sample-quickstart/).
+[IntelliJ](https://www.jetbrains.com/idea/), [Java 11 SDK](/java/azure/jdk/)ve [Azure bilişsel arama REST API](/rest/api/searchservice/)kullanarak bir arama dizini oluşturan, yükleyen ve sorgulayan bir Java konsol uygulaması oluşturun. Bu makalede, uygulama oluşturmaya yönelik adım adım yönergeler sağlanmaktadır. Alternatif olarak, [tüm uygulamayı indirebilir ve çalıştırabilirsiniz](https://developers.google.com/sheets/api/quickstart/java).
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
@@ -35,7 +35,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 Bu hızlı başlangıcı derlemek ve test etmek için aşağıdaki yazılım ve Hizmetleri kullandık:
 
-+ [IntelliJ fıkrı](https://www.jetbrains.com/idea/)
++ [IntelliJ IDEA](https://www.jetbrains.com/idea/)
 
 + [Java 11 SDK](/java/azure/jdk/)
 

@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 08/26/2020
 ms.author: thomasge
-ms.openlocfilehash: f229075d0bad4f9522e02e30bdabc1d42bb086cf
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 534c355961bb87a816f5ba50a3cc2d397e544a15
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94684194"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99072363"
 ---
 # <a name="aks-managed-azure-active-directory-integration"></a>AKS tarafından yönetilen Azure Active Directory tümleştirme
 
@@ -28,11 +28,11 @@ Küme yöneticileri, Kubernetes rol tabanlı erişim denetimini (Kubernetes RBAC
 * AKS tarafından yönetilen Azure AD tümleştirmesi için Kubernetes tabanlı olmayan kümeler desteklenmez
 * AKS tarafından yönetilen Azure AD tümleştirmesi ile ilişkili Azure AD kiracısı 'nin değiştirilmesi desteklenmiyor
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure CLı sürüm 2.11.0 veya üzeri
 * En düşük [1.18.1](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.18.md#v1181) veya [kubelogin](https://github.com/Azure/kubelogin) sürümü ile kubectl
-* Held, en [helm](https://github.com/helm/helm)düşük held 3,3 sürümünü kullanıyorsanız.
+* Held, en [](https://github.com/helm/helm)düşük held 3,3 sürümünü kullanıyorsanız.
 
 > [!Important]
 > Kubectl 'yi minimum 1.18.1 veya kubelogin sürümü ile kullanmanız gerekir. Doğru sürümü kullanmıyorsanız, kimlik doğrulama sorunları olduğunu fark edeceksiniz.
@@ -46,7 +46,6 @@ kubelogin --version
 ```
 
 Diğer işletim sistemleri için [Bu yönergeleri](https://kubernetes.io/docs/tasks/tools/install-kubectl/) kullanın.
-
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
@@ -188,6 +187,50 @@ Kümeye erişmek istiyorsanız [buradaki][access-cluster]adımları izleyin.
 
 Şu anda kubectl ile kullanılamayan sürekli tümleştirme işlem hatları gibi etkileşimli olmayan bazı senaryolar vardır. [`kubelogin`](https://github.com/Azure/kubelogin)Etkileşimli olmayan hizmet sorumlusu oturum açma ile kümeye erişmek için kullanabilirsiniz.
 
+## <a name="use-conditional-access-with-azure-ad-and-aks"></a>Azure AD ve AKS ile koşullu erişim kullanma
+
+Azure AD 'yi AKS kümeniz ile tümleştirdiğinizde, kümenize erişimi denetlemek için [koşullu erişimi][aad-conditional-access] de kullanabilirsiniz.
+
+> [!NOTE]
+> Azure AD koşullu erişim Azure AD Premium bir yetenektir.
+
+AKS ile kullanılacak örnek bir koşullu erişim ilkesi oluşturmak için aşağıdaki adımları izleyin:
+
+1. Azure portal en üstünde Azure Active Directory ' i arayıp seçin.
+1. Sol taraftaki Azure Active Directory menüsünde *Kurumsal uygulamalar*' ı seçin.
+1. Sol taraftaki kurumsal uygulamalar menüsünde *koşullu erişim*' i seçin.
+1. Sol taraftaki koşullu erişim menüsünde *ilkeler* ' i ve ardından *Yeni ilke*' yi seçin.
+    :::image type="content" source="./media/managed-aad/conditional-access-new-policy.png" alt-text="Koşullu erişim ilkesi ekleme":::
+1. İlke için *aks-Policy* gibi bir ad girin.
+1. *Kullanıcılar ve gruplar*' ı seçin ve ardından *Ekle* ' nin altında *Kullanıcı ve Grup Seç*' i İlkeyi uygulamak istediğiniz kullanıcıları ve grupları seçin. Bu örnekte, kümenize yönetici erişimi olan aynı Azure AD grubunu seçin.
+    :::image type="content" source="./media/managed-aad/conditional-access-users-groups.png" alt-text="Koşullu erişim ilkesini uygulamak için kullanıcıları veya grupları seçme":::
+1. *Bulut uygulamaları veya eylemler*' i seçin, sonra da *Ekle* ' nin altında *uygulamaları seçin*' *Azure Kubernetes hizmetini* arayın ve *Azure KUBERNETES hizmeti AAD sunucusu*' nu seçin.
+    :::image type="content" source="./media/managed-aad/conditional-access-apps.png" alt-text="Koşullu erişim ilkesini uygulamak için Azure Kubernetes hizmet AD sunucusu seçiliyor":::
+1. *Erişim denetimleri* altında *Ver*’i seçin. *Erişim ver* ' i seçin ve *cihazın uyumlu olarak işaretlenmesini gerektir*' i seçin.
+    :::image type="content" source="./media/managed-aad/conditional-access-grant-compliant.png" alt-text="Koşullu erişim ilkesi için yalnızca uyumlu cihazlara izin vermeyi seçme":::
+1. *Ilkeyi etkinleştir* altında, sonra da *Oluştur*' *u seçin.*
+    :::image type="content" source="./media/managed-aad/conditional-access-enable-policy.png" alt-text="Koşullu erişim ilkesini etkinleştirme":::
+
+Kümeye erişmek için Kullanıcı kimlik bilgilerini alın, örneğin:
+
+```azurecli-interactive
+ az aks get-credentials --resource-group myResourceGroup --name myManagedCluster
+```
+
+Oturum açmak için yönergeleri izleyin.
+
+`kubectl get nodes`Kümedeki düğümleri görüntülemek için komutunu kullanın:
+
+```azurecli-interactive
+kubectl get nodes
+```
+
+Yeniden oturum açmak için yönergeleri izleyin. Başarılı bir şekilde oturum açtığınızı belirten bir hata iletisi olduğuna dikkat edin, ancak yöneticinizin kaynağa erişmek için Azure AD 'niz tarafından yönetilmek üzere cihazın erişim isteğinde bulunmasını istiyor.
+
+Azure portal Azure Active Directory gidin, *Kurumsal uygulamalar* ' ı seçin, ardından *etkinlik* ' in altında *oturum açma* işlemleri ' ni seçin. En üstte, *durumu* *başarısız* ve *koşullu erişim* olan bir *girdi olduğunu fark edin.* Girdiyi seçin ve ardından ayrıntılı *koşullu erişim* ' i seçin. Koşullu erişim ilkenizin listelendiğine dikkat edin.
+
+:::image type="content" source="./media/managed-aad/conditional-access-sign-in-activity.png" alt-text="Koşullu erişim ilkesi nedeniyle oturum açma girişi başarısız oldu":::
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Kubernetes yetkilendirmesi Için Azure RBAC tümleştirmesi][azure-rbac-integration] hakkında bilgi edinin
@@ -202,6 +245,7 @@ Kümeye erişmek istiyorsanız [buradaki][access-cluster]adımları izleyin.
 [aks-arm-template]: /azure/templates/microsoft.containerservice/managedclusters
 
 <!-- LINKS - Internal -->
+[aad-conditional-access]: ../active-directory/conditional-access/overview.md
 [azure-rbac-integration]: manage-azure-rbac.md
 [aks-concepts-identity]: concepts-identity.md
 [azure-ad-rbac]: azure-ad-rbac.md

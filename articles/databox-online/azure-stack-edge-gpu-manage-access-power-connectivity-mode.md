@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 11/04/2020
+ms.date: 01/28/2021
 ms.author: alkohli
-ms.openlocfilehash: 38dcb32b2993838f8c3f13334e0bc44e9146f113
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: b1b5c236c147f060ca1c05e8ed9de12e7e88cf68
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96448555"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99061822"
 ---
 # <a name="manage-access-power-and-connectivity-mode-for-your-azure-stack-edge-pro-gpu"></a>Azure Stack Edge Pro GPU 'SU için erişimi, güç ve bağlantı modunu yönetme
 
@@ -54,7 +54,7 @@ Sıfırlama iş akışı, kullanıcının eski parolayı geri çekemesini gerekt
 
 1. Azure portal, **genel bakış > yönetici parolasını sıfırla**' ya gidin.
 
-    ![Ekran görüntüsü cihaz parolasını sıfırla seçiliyken cihazı gösterir.](media/azure-stack-edge-manage-access-power-connectivity-mode/reset-password-1.png)
+    ![Ekran görüntüsü cihaz parolasını sıfırla seçiliyken cihazı gösterir.](media/azure-stack-edge-gpu-manage-access-power-connectivity-mode/reset-password-1.png)
 
 
 2. Yeni parolayı girip onaylayın. Sağlanan parola 8 ile 16 karakter arasında olmalıdır. Parola şu karakterlerden 3 ' i içermelidir: büyük harf, küçük harf, sayısal ve özel karakterler. **Sıfırla**’yı seçin.

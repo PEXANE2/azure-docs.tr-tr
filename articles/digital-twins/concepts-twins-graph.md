@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: a4875c2c75b133f0ab4046266d6aac36d5478fe4
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 105128af60b90324e93bcad1bd9900a55461378f
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98664053"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99071724"
 ---
 # <a name="understand-digital-twins-and-their-twin-graph"></a>Dijital TWINS ve ikizi graflarını anlayın
 
-Bir Azure dijital TWINS çözümünde ortamınızdaki varlıklar Azure **dijital TWINS** tarafından temsil edilir. Dijital ikizi, özel olarak tanımlanan [modellerden](concepts-models.md)birinin bir örneğidir. Diğer dijital TWINS 'e, **ikizi grafiği** oluşturmak için **ilişkiler** aracılığıyla bağlanabilir: Bu ikizi Graph, ortamınızın tamamının gösterimidir.
+Bir Azure dijital TWINS çözümünde ortamınızdaki varlıklar **dijital TWINS** tarafından temsil edilir. Dijital ikizi, özel olarak tanımlanan [modellerden](concepts-models.md)birinin bir örneğidir. Diğer dijital TWINS 'e, **ikizi grafiği** oluşturmak için **ilişkiler** aracılığıyla bağlanabilir: Bu ikizi Graph, ortamınızın tamamının gösterimidir.
 
 > [!TIP]
 > "Azure dijital TWINS", bu Azure hizmetine bir bütün olarak başvurur. "Digital ikizi (s)" veya yalnızca "ikizi (s)", hizmet örneğinizin içindeki bireysel ikizi düğümlerine başvurur.

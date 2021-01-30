@@ -4,12 +4,12 @@ description: Linux için Azure Ilkesi Konuk yapılandırma ilkesi oluşturmayı 
 ms.date: 08/17/2020
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 705c12cff5f4377249674ef9db155d1ed321ce42
-ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
+ms.openlocfilehash: 38579bb43f012cac2b373bbbbb6ad757604f4c07
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97755880"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99070698"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-linux"></a>Linux için Konuk Yapılandırma ilkelerini oluşturma
 
@@ -204,7 +204,17 @@ Cmdlet 'i PowerShell ardışık düzeninde girişi de destekler. Cmdlet 'inin ç
 New-GuestConfigurationPackage -Name AuditFilePathExists -Configuration ./Config/AuditFilePathExists.mof -ChefInspecProfilePath './' | Test-GuestConfigurationPackage
 ```
 
-Sonraki adım, dosyayı Azure Blob depolama alanına yayımlamaktır.  Komut `Publish-GuestConfigurationPackage` `Az.Storage` modülü gerektiriyor.
+Sonraki adım, dosyayı Azure Blob depolama alanına yayımlamaktır. Komut `Publish-GuestConfigurationPackage` `Az.Storage` modülü gerektiriyor.
+
+`Publish-GuestConfigurationPackage`Cmdlet parametreleri:
+
+- **Yol**: yayımlanacak paketin konumu
+- **Resourcegroupname**: depolama hesabının bulunduğu kaynak grubunun adı
+- **StorageAccountName**: paketin yayımlanması gereken depolama hesabının adı
+- **Storagecontainername**: (varsayılan: *guestconfiguration*) depolama hesabındaki depolama kapsayıcısının adı
+- **Zorla**: aynı ada sahip depolama hesabındaki mevcut paketin üzerine yaz
+
+Aşağıdaki örnek, paketi ' guestconfiguration ' depolama kapsayıcısı adına yayımlar.
 
 ```azurepowershell-interactive
 Publish-GuestConfigurationPackage -Path ./AuditBitlocker.zip -ResourceGroupName myResourceGroupName -StorageAccountName myStorageAccountName

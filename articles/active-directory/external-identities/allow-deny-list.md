@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: sasubram
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b87650f364f8ccfd3a531d710bfbdc4715f0ac5a
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 0cc336781e9a55bbcb6c51677b01bfc402126f4a
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92442193"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99071909"
 ---
 # <a name="allow-or-block-invitations-to-b2b-users-from-specific-organizations"></a>Belirli kuruluşlardan B2B kullanıcılarına gönderilen davetlere izin verme veya engelleme
 
@@ -43,9 +43,9 @@ Reddetme listesi eklemek için:
 
 1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. **Azure Active Directory**  >  **kullanıcıları**  >  **Kullanıcı ayarları**' nı seçin.
-3. **Dış kullanıcılar**altında, **dış işbirliği ayarlarını yönet**' i seçin.
+3. **Dış kullanıcılar** altında, **dış işbirliği ayarlarını yönet**' i seçin.
 4. **İşbirliği kısıtlamaları**' nın altında, **belirtilen etki alanlarına davetleri Reddet**' i seçin.
-5. **Hedef etkı alanları**altında, engellemek istediğiniz etki alanlarından birinin adını girin. Birden çok etki alanı için, her etki alanını yeni bir satıra girin. Örneğin:
+5. **Hedef etkı alanları** altında, engellemek istediğiniz etki alanlarından birinin adını girin. Birden çok etki alanı için, her etki alanını yeni bir satıra girin. Örneğin:
 
    ![Eklenen etki alanları ile reddetme seçeneğini gösterir](./media/allow-deny-list/DenyListSettings.png)
  
@@ -64,9 +64,9 @@ Bir izin verilenler listesi eklemek için:
 
 1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. **Azure Active Directory**  >  **kullanıcıları**  >  **Kullanıcı ayarları**' nı seçin.
-3. **Dış kullanıcılar**altında, **dış işbirliği ayarlarını yönet**' i seçin.
+3. **Dış kullanıcılar** altında, **dış işbirliği ayarlarını yönet**' i seçin.
 4. **İşbirliği kısıtlamaları**' nın altında **yalnızca belirtilen etki alanlarına (en kısıtlayıcı) davetlere izin ver**' i seçin.
-5. **Hedef etkı alanları**altında, izin vermek istediğiniz etki alanlarından birinin adını girin. Birden çok etki alanı için, her etki alanını yeni bir satıra girin. Örneğin:
+5. **Hedef etkı alanları** altında, izin vermek istediğiniz etki alanlarından birinin adını girin. Birden çok etki alanı için, her etki alanını yeni bir satıra girin. Örneğin:
 
    ![Eklenmiş etki alanları ile izin ver seçeneğini gösterir](./media/allow-deny-list/AllowListSettings.png)
  
@@ -126,7 +126,7 @@ Modül yüklü değilse veya gerekli bir sürüme sahip değilseniz, aşağıdak
 
 ### <a name="use-the-azureadpolicy-cmdlets-to-configure-the-policy"></a>İlkeyi yapılandırmak için AzureADPolicy cmdlet 'lerini kullanın
 
-Bir izin verme veya reddetme listesi oluşturmak için [New-AzureADPolicy](/powershell/module/azuread/new-azureadpolicy?view=azureadps-2.0-preview) cmdlet 'ini kullanın. Aşağıdaki örnekte, "live.com" etki alanını engelleyen bir reddetme listesinin nasıl ayarlanacağı gösterilmektedir.
+Bir izin verme veya reddetme listesi oluşturmak için [New-AzureADPolicy](/powershell/module/azuread/new-azureadpolicy?view=azureadps-2.0-preview&preserve-view=true) cmdlet 'ini kullanın. Aşağıdaki örnekte, "live.com" etki alanını engelleyen bir reddetme listesinin nasıl ayarlanacağı gösterilmektedir.
 
 ```powershell 
 $policyValue = @("{`"B2BManagementPolicy`":{`"InvitationsAllowedAndBlockedDomainsPolicy`":{`"AllowedDomains`": [],`"BlockedDomains`": [`"live.com`"]}}}")
@@ -140,19 +140,19 @@ Aşağıdaki örnek, ilke tanımıyla birlikte satır içi olarak aynı örneği
 New-AzureADPolicy -Definition @("{`"B2BManagementPolicy`":{`"InvitationsAllowedAndBlockedDomainsPolicy`":{`"AllowedDomains`": [],`"BlockedDomains`": [`"live.com`"]}}}") -DisplayName B2BManagementPolicy -Type B2BManagementPolicy -IsOrganizationDefault $true 
 ```
 
-İzin verme veya reddetme listesi ilkesini ayarlamak için, [set-AzureADPolicy](/powershell/module/azuread/set-azureadpolicy?view=azureadps-2.0-preview) cmdlet 'ini kullanın. Örneğin:
+İzin verme veya reddetme listesi ilkesini ayarlamak için, [set-AzureADPolicy](/powershell/module/azuread/set-azureadpolicy?view=azureadps-2.0-preview&preserve-view=true) cmdlet 'ini kullanın. Örneğin:
 
 ```powershell   
 Set-AzureADPolicy -Definition $policyValue -Id $currentpolicy.Id 
 ```
 
-İlkeyi almak için [Get-AzureADPolicy](/powershell/module/azuread/get-azureadpolicy?view=azureadps-2.0-preview) cmdlet 'ini kullanın. Örneğin:
+İlkeyi almak için [Get-AzureADPolicy](/powershell/module/azuread/get-azureadpolicy?view=azureadps-2.0-preview&preserve-view=true) cmdlet 'ini kullanın. Örneğin:
 
 ```powershell
-$currentpolicy = Get-AzureADPolicy | ?{$_.Type -eq 'B2BManagementPolicy'} | select -First 1 
+$currentpolicy = Get-AzureADPolicy -All $true | ?{$_.Type -eq 'B2BManagementPolicy'} | select -First 1 
 ```
 
-İlkeyi kaldırmak için [Remove-AzureADPolicy](/powershell/module/azuread/remove-azureadpolicy?view=azureadps-2.0-preview) cmdlet 'ini kullanın. Örneğin:
+İlkeyi kaldırmak için [Remove-AzureADPolicy](/powershell/module/azuread/remove-azureadpolicy?view=azureadps-2.0-preview&preserve-view=true) cmdlet 'ini kullanın. Örneğin:
 
 ```powershell
 Remove-AzureADPolicy -Id $currentpolicy.Id 

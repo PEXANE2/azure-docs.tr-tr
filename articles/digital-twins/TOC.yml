@@ -4,8 +4,6 @@
   items:
     - name: Azure Digital Twins Hakkında
       href: overview.md
-    - name: Önceki sürüme göre farklılıklar
-      href: overview-differences.md
 - name: Hızlı Başlangıçlar
   expanded: true
   items:
@@ -169,6 +167,8 @@
           href: 'https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins'
     - name: Müşteri verisi istekleri
       href: resources-customer-data-requests.md
+    - name: Özgün sürümden farklılıklar
+      href: resources-compare-original-release.md
     - name: API’ler ve SDK’lar
       items:
         - name: Kontrol düzlemi

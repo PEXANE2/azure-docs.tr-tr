@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) kullanırken karşılaşılan yaygı
 services: container-service
 ms.topic: troubleshooting
 ms.date: 06/20/2020
-ms.openlocfilehash: 02ff1581bafe62a092be87d16df51c7ca8c020b4
-ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
+ms.openlocfilehash: 7dfb9e34daeb92d57a61c570055695867c4a8107
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97830947"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99071876"
 ---
 # <a name="aks-troubleshooting"></a>AKS sorunlarını giderme
 
@@ -20,11 +20,11 @@ Azure Kubernetes hizmeti (AKS) kümeleri oluştururken veya yönetirken, zaman i
 [Kubernetes kümelerinde sorun gidermeye yönelik resmi kılavuzunu](https://kubernetes.io/docs/tasks/debug-application-cluster/troubleshooting/)deneyin.
 Ayrıca, pods, düğümler, kümeler ve diğer özelliklerle ilgili sorunları gidermeye yönelik bir Microsoft mühendis tarafından yayımlanan bir [sorun giderme kılavuzu](https://github.com/feiskyer/kubernetes-handbook/blob/master/en/troubleshooting/index.md)vardır.
 
-## <a name="im-getting-a-quota-exceeded-error-during-creation-or-upgrade-what-should-i-do"></a>Oluşturma veya yükseltme sırasında "Kota aşıldı" hatası alıyorum. Ne yapmalıyım? 
+## <a name="im-getting-a-quota-exceeded-error-during-creation-or-upgrade-what-should-i-do"></a>`quota exceeded`Oluşturma veya yükseltme sırasında hata alıyorum. Ne yapmalıyım? 
 
  [Daha fazla çekirdek isteyin](../azure-portal/supportability/resource-manager-core-quotas-request.md).
 
-## <a name="im-getting-an-insufficientsubnetsize-error-while-deploying-an-aks-cluster-with-advanced-networking-what-should-i-do"></a>Gelişmiş ağlarla AKS kümesi dağıtma sırasında insufficientSubnetSize hatası alıyorum. Ne yapmalıyım?
+## <a name="im-getting-an-insufficientsubnetsize-error-while-deploying-an-aks-cluster-with-advanced-networking-what-should-i-do"></a>`insufficientSubnetSize`Gelişmiş ağlarla BIR AKS kümesi dağıtma sırasında hata alıyorum. Ne yapmalıyım?
 
 Bu hata, bir küme için kullanımda olan bir alt ağın, başarılı bir kaynak ataması için CıDR içindeki IP 'Leri artık kullanmadığını gösterir. Kubenet kümeleri için, gereksinim kümedeki her düğüm için yeterli bir IP alanıdır. Azure CNı kümeleri için, gereksinim her düğüm ve kümedeki pod için yeterli IP alanı olur.
 [Azure CNI tasarımı](configure-azure-cni.md#plan-ip-addressing-for-your-cluster)hakkında daha fazla bilgi edinmek için IP 'lere IP atama.
@@ -248,7 +248,7 @@ spec:
   >[!NOTE]
   > GID ve uid, varsayılan olarak kök veya 0 olarak bağlandığından. GID veya Uid, kök olmayan olarak ayarlandıysa, örneğin 1000, Kubernetes `chown` Bu disk altındaki tüm dizinleri ve dosyaları değiştirmek için kullanılır. Bu işlem zaman alabilir ve diski bağlama işlemi çok yavaş olabilir.
 
-* `chown`Ve ayarlamak Için initContainers içinde `GID` kullanın `UID` . Örnek:
+* `chown`Ve ayarlamak Için initContainers içinde `GID` kullanın `UID` . Örneğin:
 
 ```yaml
 initContainers:
@@ -407,13 +407,13 @@ Depolama hesabı anahtarınız değiştiyse Azure dosyaları bağlama hatalarıy
 
 `azurestorageaccountkey`Base64 ile kodlanmış depolama hesabı anahtarınızla Azure dosya gizli anahtarındaki alanı el ile güncelleştirerek azaltabilirsiniz.
 
-Depolama hesabı anahtarınızı Base64 olarak kodlamak için kullanabilirsiniz `base64` . Örnek:
+Depolama hesabı anahtarınızı Base64 olarak kodlamak için kullanabilirsiniz `base64` . Örneğin:
 
 ```console
 echo X+ALAAUgMhWHL7QmQ87E1kSfIqLKfgC03Guy7/xk9MyIg2w4Jzqeu60CVw2r/dm6v6E0DWHTnJUEJGVQAoPaBc== | base64
 ```
 
-Azure gizli dosyanızı güncelleştirmek için kullanın `kubectl edit secret` . Örnek:
+Azure gizli dosyanızı güncelleştirmek için kullanın `kubectl edit secret` . Örneğin:
 
 ```console
 kubectl edit secret azure-storage-account-{storage-account-name}-secret

@@ -83,6 +83,8 @@
           href: how-tos/set-up-coarse-reloc-cpp-ndk.md
         - name: C++/WinRT üzerinde
           href: how-tos/set-up-coarse-reloc-cpp-winrt.md
+    - name: Bir bağlantı oturumu olmadan kaba reyerelleştirme kullanma
+      href: how-tos/use-coarse-relocalization-without-anchor-session.md
     - name: Proje ayarları
       items:
         - name: C++/WinRT

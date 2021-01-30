@@ -9,12 +9,12 @@ ms.date: 01/27/2021
 ms.author: normesta
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 5a1ad898b745bbb49421c1bc0b5a9b2e5c8ec0f6
-ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
+ms.openlocfilehash: c8807f0200f96dc12a3b3d43fa50a91bec85ed38
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98986014"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99071192"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Azure Depolama güvenlik duvarlarını ve sanal ağları yapılandırma
 
@@ -590,8 +590,8 @@ Aşağıdaki tabloda, bu hizmetlerin kaynak örneklerine uygun izin verilirse, d
 | Azure IoT Hub                  | Microsoft. Devices/IotHubs              | IoT Hub 'ından gelen verilerin blob depolamaya yazılmasına izin verir. [Daha fazla bilgi edinin](../../iot-hub/virtual-network-support.md#egress-connectivity-to-storage-account-endpoints-for-routing) |
 | Azure Logic Apps               | Microsoft. Logic/iş akışları              | Mantıksal uygulamaların depolama hesaplarına erişmesini sağlar. [Daha fazla bilgi edinin](../../logic-apps/create-managed-service-identity.md#authenticate-access-with-managed-identity). |
 | Azure Machine Learning Hizmeti | Microsoft.MachineLearningServices      | Yetkili Azure Machine Learning çalışma alanları BLOB depolama alanına deneme çıkış, model ve Günlükler yazar ve verileri okur. [Daha fazla bilgi edinin](../../machine-learning/how-to-network-security-overview.md#secure-the-workspace-and-associated-resources). | 
-| Azure Synapse Analytics       | Microsoft.Sql                          | COPY ifadesini veya PolyBase 'i kullanarak belirli SQL veritabanlarından verilerin içeri ve dışarı aktarılmasını sağlar. [Daha fazla bilgi edinin](../../azure-sql/database/vnet-service-endpoint-rule-overview.md). |
-| Azure SQL Veritabanı       | Microsoft.Sql                          | Depolama hesaplarından verilerin [içeri aktarılması](/sql/t-sql/statements/bulk-insert-transact-sql#f-importing-data-from-a-file-in-azure-blob-storage) ve denetim verilerinin güvenlik duvarının arkasındaki depolama hesaplarına [yazılmasına](../../azure-sql/database/audit-write-storage-account-behind-vnet-firewall.md) izin verir. |
+| Azure Synapse Analytics       | Microsoft.Sql                          | COPY ifadesini veya PolyBase 'i (adanmış havuzda) veya `openrowset` sunucusuz havuzdaki işlev ve dış tabloları kullanarak belırlı SQL veritabanlarından verilerin içeri ve dışarı aktarılmasını sağlar. [Daha fazla bilgi edinin](../../azure-sql/database/vnet-service-endpoint-rule-overview.md). |
+| Azure SQL Veritabanı       | Microsoft.Sql                          | Güvenlik duvarının arkasındaki depolama hesaplarına denetim verileri [yazılmasına](../../azure-sql/database/audit-write-storage-account-behind-vnet-firewall.md) izin verir. |
 | Azure Stream Analytics         | Microsoft. StreamAnalytics             | Akış işindeki verilerin blob depolamaya yazılmasına izin verir. [Daha fazla bilgi edinin](../../stream-analytics/blob-output-managed-identity.md). |
 | Azure Synapse Analytics        | Microsoft. SYNAPSE/çalışma alanları          | Azure SYNAPSE Analytics 'ten Azure Storage verilerine erişim sağlar. |
 

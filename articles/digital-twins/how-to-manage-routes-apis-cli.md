@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 11/18/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: e2623ebf929f6a24cfc977896acea514634ffb23
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: d25a429873ccf8b546c0919456c97e64445f184c
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 01/29/2021
-ms.locfileid: "99054523"
+ms.locfileid: "99071707"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-apis-and-cli"></a>Azure dijital TWINS 'te uç noktaları ve yolları yönetme (API 'Ler ve CLı)
 
@@ -48,7 +48,7 @@ Bu bölümde, Azure CLı kullanılarak bu uç noktaların nasıl oluşturulduğu
 
 ### <a name="create-the-endpoint"></a>Uç noktayı oluşturma
 
-Uç nokta kaynaklarını oluşturduktan sonra bunları bir Azure dijital TWINS uç noktası için kullanabilirsiniz. Aşağıdaki örneklerde, `az dt endpoint create` [Azure Digital TWıNS CLI](how-to-use-cli.md)için komutunu kullanarak uç noktaların nasıl oluşturulacağı gösterilmektedir. Komutlardaki yer tutucuları kendi kaynaklarınızın ayrıntıları ile değiştirin.
+Uç nokta kaynaklarını oluşturduktan sonra bunları bir Azure dijital TWINS uç noktası için kullanabilirsiniz. Aşağıdaki örneklerde, [Azure Digital TWINS CLI](how-to-use-cli.md)için [az DT Endpoint Create](/cli/azure/ext/azure-iot/dt/endpoint/create?view=azure-cli-latest&preserve-view=true) komutunu kullanarak uç noktaların nasıl oluşturulacağı gösterilmektedir. Komutlardaki yer tutucuları kendi kaynaklarınızın ayrıntıları ile değiştirin.
 
 Event Grid uç noktası oluşturmak için:
 
@@ -56,21 +56,39 @@ Event Grid uç noktası oluşturmak için:
 az dt endpoint create eventgrid --endpoint-name <Event-Grid-endpoint-name> --eventgrid-resource-group <Event-Grid-resource-group-name> --eventgrid-topic <your-Event-Grid-topic-name> -n <your-Azure-Digital-Twins-instance-name>
 ```
 
-Event Hubs uç noktası oluşturmak için:
+Event Hubs uç noktası oluşturmak için (anahtar tabanlı kimlik doğrulaması):
 ```azurecli-interactive
 az dt endpoint create eventhub --endpoint-name <Event-Hub-endpoint-name> --eventhub-resource-group <Event-Hub-resource-group> --eventhub-namespace <Event-Hub-namespace> --eventhub <Event-Hub-name> --eventhub-policy <Event-Hub-policy> -n <your-Azure-Digital-Twins-instance-name>
 ```
 
-Service Bus konu uç noktası oluşturmak için:
+Service Bus konu uç noktası oluşturmak için (anahtar tabanlı kimlik doğrulaması):
 ```azurecli-interactive 
 az dt endpoint create servicebus --endpoint-name <Service-Bus-endpoint-name> --servicebus-resource-group <Service-Bus-resource-group-name> --servicebus-namespace <Service-Bus-namespace> --servicebus-topic <Service-Bus-topic-name> --servicebus-policy <Service-Bus-topic-policy> -n <your-Azure-Digital-Twins-instance-name>
 ```
 
 Bu komutları başarıyla çalıştırdıktan sonra, olay Kılavuzu, Olay Hub 'ı veya Service Bus konusu, Azure dijital TWINS 'in içindeki bir uç nokta olarak, bağımsız değişkenle sağladığınız ad ile birlikte kullanılabilir `--endpoint-name` . Genellikle bu adı, [Bu makalede daha sonra](#create-an-event-route)oluşturacağınız bir **olay yolunun** hedefi olarak kullanacaksınız.
 
+#### <a name="create-an-endpoint-with-identity-based-authentication"></a>Kimlik tabanlı kimlik doğrulaması ile bir uç nokta oluşturma
+
+Ayrıca, uç noktayı [yönetilen bir kimlikle](concepts-security.md#managed-identity-for-accessing-other-resources-preview)kullanmak için kimlik tabanlı kimlik doğrulamasına sahip bir uç nokta oluşturabilirsiniz. Bu seçenek yalnızca Olay Hub 'ı ve Service Bus türü uç noktaları için kullanılabilir (Event Grid için desteklenmez).
+
+Bu uç nokta türünü oluşturmak için CLı komutu aşağıda verilmiştir. Komutta yer tutucuları eklemek için aşağıdaki değerlere ihtiyacınız olacaktır:
+* Azure dijital TWINS örneğinizin Azure Kaynak KIMLIĞI
+* bir uç nokta adı
+* bir uç nokta türü
+* uç nokta kaynağının ad alanı
+* Olay Hub 'ının veya Service Bus konusunun adı
+* Azure dijital TWINS örneğinizin konumu
+
+```azurecli-interactive
+az resource create --id <Azure-Digital-Twins-instance-Azure-resource-ID>/endpoints/<endpoint-name> --properties '{\"properties\": { \"endpointType\": \"<endpoint-type>\", \"authenticationType\": \"IdentityBased\", \"endpointUri\": \"sb://<endpoint-namespace>.servicebus.windows.net\", \"entityPath\": \"<name-of-event-hub-or-Service-Bus-topic>\"}, \"location\":\"<instance-location>\" }' --is-full-object
+```
+
 ### <a name="create-an-endpoint-with-dead-lettering"></a>Etkin olmayan bir uç nokta oluşturma
 
 Bir uç nokta belirli bir süre içinde bir olayı teslim edimezse veya olayı belirli bir sayıda sunmaya çalıştıktan sonra, teslim edilmemiş olayı bir depolama hesabına gönderebilir. Bu işlem, **atılacak** olarak bilinir.
+
+Etkin olmayan etkin noktalar, Azure Digital TWINS [CLI](how-to-use-cli.md) veya [Denetim düzlemi API 'leri](how-to-use-apis-sdks.md#overview-control-plane-apis)ile ayarlanabilir.
 
 Atılacak alma hakkında daha fazla bilgi edinmek için bkz. [*Kavramlar: olay yolları*](concepts-route-events.md#dead-letter-events). Bir uç noktanın etkin olmayan bir şekilde nasıl ayarlanacağı hakkında yönergeler için, bu bölümün geri kalanında devam edin.
 
@@ -78,7 +96,7 @@ Atılacak alma hakkında daha fazla bilgi edinmek için bkz. [*Kavramlar: olay y
 
 Atılacak mektup konumunu ayarlamadan önce, Azure hesabınızda ayarlanmış bir [kapsayıcı](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container) içeren bir [depolama hesabınız](../storage/common/storage-account-create.md?tabs=azure-portal) olmalıdır. 
 
-Uç noktayı daha sonra oluştururken bu kapsayıcının URL 'sini sağlarsınız. Atılacak harf konumu, uç noktaya bir [SAS belirtecine](../storage/common/storage-sas-overview.md)sahip kapsayıcı URL 'si olarak sunulacaktır. Bu belirteç `write` , depolama hesabındaki hedef kapsayıcı için izin istiyor. Tamamen oluşturulmuş URL şu biçimde olacaktır: `https://<storageAccountname>.blob.core.windows.net/<containerName>?<SASToken>` .
+Uç noktayı daha sonra oluştururken bu kapsayıcının URI 'sini sağlarsınız. Atılacak ileti konumu, uç noktaya bir [SAS belirtecine](../storage/common/storage-sas-overview.md)sahip bir kapsayıcı URI 'si olarak sunulacaktır. Bu belirteç `write` , depolama hesabındaki hedef kapsayıcı için izin istiyor. Tamamen oluşturulmuş **SAHIPSIZ SAS URI 'si** şu biçimde olacaktır: `https://<storage-account-name>.blob.core.windows.net/<container-name>?<SAS-token>` .
 
 Sonraki bölümde uç nokta bağlantısını ayarlamaya hazırlanmak için Azure hesabınızda bu depolama kaynaklarını ayarlamak üzere aşağıdaki adımları izleyin.
 
@@ -99,25 +117,44 @@ Sonraki bölümde uç nokta bağlantısını ayarlamaya hazırlanmak için Azure
 
     :::image type="content" source="./media/how-to-manage-routes-apis-cli/copy-sas-token.png" alt-text="Kullanılmayan harf gizli dosyasında kullanmak için SAS belirtecini kopyalayın." lightbox="./media/how-to-manage-routes-apis-cli/copy-sas-token.png":::
     
-#### <a name="configure-the-endpoint"></a>Uç noktayı yapılandırma
+#### <a name="create-the-dead-letter-endpoint"></a>Atılacak mektup uç noktasını oluşturma
 
-Etkin olmayan bir uç nokta oluşturmak için Azure Resource Manager API 'Lerini kullanarak uç nokta oluşturabilirsiniz. 
+Etkin olmayan bir uç nokta oluşturmak için, [Azure Digital TWINS CLI](how-to-use-cli.md)için [az DT Endpoint Create](/cli/azure/ext/azure-iot/dt/endpoint/create?view=azure-cli-latest&preserve-view=true) komutuna aşağıdaki atılacak mektup parametresini ekleyin.
 
-1. İlk olarak, bir uç nokta oluşturma isteği ayarlamak için [Azure Resource Manager API 'leri belgelerini](/rest/api/digital-twins/controlplane/endpoints/digitaltwinsendpoint_createorupdate) kullanın ve gerekli istek parametrelerini girin. 
+Parametresi için değer, [önceki bölümde](#set-up-storage-resources)topladığınız depolama hesabı adı, kapsayıcı adı ve SAS belirtecinden oluşan **sahipsiz bir SAS URI 'sidir** . Bu parametre, anahtar tabanlı kimlik doğrulaması ile uç noktası oluşturur.
 
-2. Sonra, `deadLetterSecret` istek **gövdesinde** Özellikler nesnesine bir alan ekleyin. Bu değeri aşağıdaki şablona göre ayarlayın, bu, [önceki bölümde](#set-up-storage-resources)topladığınız depolama hesabı adı, kapsayıcı adı ve SAS belirteci DEĞERINDEN bir URL öğelerini.
-      
-  :::code language="json" source="~/digital-twins-docs-samples/api-requests/deadLetterEndpoint.json":::
+```azurecli
+--deadletter-sas-uri https://<storage-account-name>.blob.core.windows.net/<container-name>?<SAS-token>
+```
 
-3. Uç noktayı oluşturmak için isteği gönderin.
+Bu parametreyi, uç nokta oluşturma komutlarının sonuna, istenen türden etkin olmayan bir uç nokta oluşturmak için, daha önce son nokta [*oluşturma bölümünün sonuna*](#create-the-endpoint) ekleyin.
 
-Bu isteği yapılandırma hakkında daha fazla bilgi için bkz. Azure Digital TWINS REST API belgeleri: [uç noktalar-DigitalTwinsEndpoint CreateOrUpdate](/rest/api/digital-twins/controlplane/endpoints/digitaltwinsendpoint_createorupdate).
+Alternatif olarak, CLı yerine [Azure dijital TWINS denetim düzlemi API 'lerini](how-to-use-apis-sdks.md#overview-control-plane-apis) kullanarak atılacak mektup uç noktaları oluşturabilirsiniz. Bunu yapmak için, isteği nasıl yapılandıracağınıza ve atılacak mektup parametrelerini nasıl ekleneceğini görmek için [Digitaltwınsendpoint belgelerini](/rest/api/digital-twins/controlplane/endpoints/digitaltwinsendpoint_createorupdate) görüntüleyin.
 
-### <a name="message-storage-schema"></a>İleti depolama şeması
+#### <a name="create-a-dead-letter-endpoint-with-identity-based-authentication"></a>Kimlik tabanlı kimlik doğrulaması ile atılacak bir uç nokta oluşturma
+
+Ayrıca, uç noktayı [yönetilen bir kimlikle](concepts-security.md#managed-identity-for-accessing-other-resources-preview)kullanmak için kimlik tabanlı kimlik doğrulamasına sahip bir ölü uç noktası oluşturabilirsiniz. Bu seçenek yalnızca Olay Hub 'ı ve Service Bus türü uç noktaları için kullanılabilir (Event Grid için desteklenmez).
+
+Bu uç nokta türünü oluşturmak için, [kimlik tabanlı kimlik doğrulaması ile bir uç nokta oluşturmak](#create-an-endpoint-with-identity-based-authentication)için, BIR için JSON yükünde fazladan bir alan içeren bir uç nokta oluşturmak üzere daha önce kullandığınız CLI komutunu kullanın `deadLetterUri` .
+
+Komutta yer tutucuları eklemek için gereken değerler şunlardır:
+* Azure dijital TWINS örneğinizin Azure Kaynak KIMLIĞI
+* bir uç nokta adı
+* bir uç nokta türü
+* uç nokta kaynağının ad alanı
+* Olay Hub 'ının veya Service Bus konusunun adı
+* **SAHIPSIZ SAS URI 'si** ayrıntıları: depolama hesabı adı, kapsayıcı adı
+* Azure dijital TWINS örneğinizin konumu
+
+```azurecli-interactive
+az resource create --id <Azure-Digital-Twins-instance-Azure-resource-ID>/endpoints/<endpoint-name> --properties '{\"properties\": { \"endpointType\": \"<endpoint-type>\", \"authenticationType\": \"IdentityBased\", \"endpointUri\": \"sb://<endpoint-namespace>.servicebus.windows.net\", \"entityPath\": \"<name-of-event-hub-or-Service-Bus-topic>\", \"deadLetterUri\": \"https://<storage-account-name>.blob.core.windows.net/<container-name>\"}, \"location\":\"<instance-location>\" }' --is-full-object
+```
+
+#### <a name="message-storage-schema"></a>İleti depolama şeması
 
 Etkin olmayan uç nokta ayarlandıktan sonra, kullanılmayan iletiler depolama hesabınızda aşağıdaki biçimde depolanır:
 
-`{container}/{endpointName}/{year}/{month}/{day}/{hour}/{eventId}.json`
+`{container}/{endpoint-name}/{year}/{month}/{day}/{hour}/{event-ID}.json`
 
 Kullanılmayan iletiler, özgün uç noktanıza teslim edilmesi amaçlanan özgün olayın şemasıyla eşleşir.
 
@@ -128,7 +165,7 @@ Aşağıda, bir [ikizi Create bildirimi](how-to-interpret-event-data.md#digital-
   "specversion": "1.0",
   "id": "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxxxxx",
   "type": "Microsoft.DigitalTwins.Twin.Create",
-  "source": "<yourInstance>.api.<yourregion>.da.azuredigitaltwins-test.net",
+  "source": "<your-instance>.api.<your-region>.da.azuredigitaltwins-test.net",
   "data": {
     "$dtId": "<yourInstance>xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxxxxx",
     "$etag": "W/\"xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxxxxx\"",

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 11/04/2020
+ms.date: 01/28/2021
 ms.author: alkohli
-ms.openlocfilehash: 34165071238ca3edf78ab9cca43639c23ce5ed2a
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 2d079f2fa3e67f1ec915a02de3e195ccac538209
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96448711"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063325"
 ---
 # <a name="kubernetes-storage-management-on-your-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU cihazınızda Kubernetes depolama yönetimi
 
@@ -79,11 +79,11 @@ Aşağıdaki adımlar oluşur:
 
 Azure Stack Edge Pro cihazında, statik olarak sağlanan `PersistentVolumes` cihaz depolama özellikleri kullanılarak oluşturulur. Bir paylaşma sağladığınızda ve **kenar işlem ile paylaşma** seçeneği etkinken bu eylem, Kubernetes kümesinde otomatik olarak bir BD kaynağı oluşturur.
 
-![Statik sağlama için Azure portal yerel paylaşma oluşturma](./media/azure-stack-edge-gpu-kubernetes-storage/static-provisioning-azure-portal-2.png)
+![Statik sağlama için Azure portal yerel paylaşma oluşturma](./media/azure-stack-edge-gpu-kubernetes-storage/static-provisioning-azure-portal-1.png)
 
 Bulut katmanlaması kullanmak için, Edge işlem ile paylaşma seçeneğinin etkin olduğu bir uç bulut paylaşma oluşturabilirsiniz. Bu paylaşımda otomatik olarak bir BD oluşturulur. Edge paylaşımında yazdığınız herhangi bir uygulama verisi, buluta katmanlıdır. 
 
-![Statik sağlama için Azure portal bulut paylaşımının oluşturulması](./media/azure-stack-edge-gpu-kubernetes-storage/static-provisioning-azure-portal-1.png)
+![Statik sağlama için Azure portal bulut paylaşımının oluşturulması](./media/azure-stack-edge-gpu-kubernetes-storage/static-provisioning-azure-portal-2.png)
 
 PVs 'yi Azure Stack Edge Pro cihazını statik olarak sağlamak için hem SMB hem de NFS paylaşımları oluşturabilirsiniz. BD sağlandıktan sonra, bu depolama alanını talep etmek için bir PVC gönderilir. Aşağıda, `yaml` depolamayı talep eden ve sağladığınız paylaşımları kullanan BIR PVC dağıtımına örnek verilmiştir.
 

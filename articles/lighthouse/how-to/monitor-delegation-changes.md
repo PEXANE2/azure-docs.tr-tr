@@ -1,14 +1,14 @@
 ---
 title: Yönettiğiniz kiracınızdaki yetkilendirme değişikliklerini izleme
 description: Müşteri kiracılarından yönetilen kiracınıza olan yetkilendirme etkinliğini izlemeyi öğrenin.
-ms.date: 12/11/2020
+ms.date: 01/27/2021
 ms.topic: how-to
-ms.openlocfilehash: f65ffda642e67ec6e2c7694a823c2ba6845a7af4
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 9fdf47df4ac37fec44cf53b565b7fe1411540793
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936116"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99089432"
 ---
 # <a name="monitor-delegation-changes-in-your-managing-tenant"></a>Yönettiğiniz kiracınızdaki yetkilendirme değişikliklerini izleme
 
@@ -16,10 +16,12 @@ Hizmet sağlayıcı olarak, müşteri abonelikleri veya kaynak grupları, kirac�
 
 Yönetim kiracısında [Azure etkinlik günlüğü](../../azure-monitor/platform/platform-logs-overview.md) , yetkilendirme etkinliğini kiracı düzeyinde izler. Günlüğe kaydedilen bu etkinlik, tüm müşteri kiracılarından eklenen veya kaldırılan temsilcileri içerir.
 
-Bu konuda, kiracınıza (tüm müşterileriniz genelinde) ve bunu yapmak için en iyi uygulamalara yönelik olan temsilciyi izlemek için gereken izinler açıklanmaktadır. Ayrıca, bu verileri sorgulamak ve raporlamak için bir yöntem gösteren bir örnek komut dosyası da içerir.
+Bu konuda, kiracınıza (tüm müşterileriniz genelinde), yetkilendirme etkinliğini izlemek için gereken izinler açıklanmaktadır. Ayrıca, bu verileri sorgulamak ve raporlamak için bir yöntem gösteren bir örnek komut dosyası da içerir.
 
 > [!IMPORTANT]
 > Bu adımların tümü, tüm müşteri kiracılarında değil, kuruluşunuzda yönetim kiracınızda gerçekleştirilmelidir.
+>
+> Bu konudaki hizmet sağlayıcılarına ve müşterilere başvurduğumuz halde, [birden çok kiracıyı yöneten kuruluşlar](../concepts/enterprise.md) aynı işlemlerin aynısını kullanabilir.
 
 ## <a name="enable-access-to-tenant-level-data"></a>Kiracı düzeyindeki verilere erişimi etkinleştir
 
@@ -33,33 +35,21 @@ Yükseltme ekleme ve kaldırma hakkında ayrıntılı yönergeler için, bkz. [t
 
 Erişiminizi yükselttikten sonra hesabınız, Azure 'da kök kapsamdaki Kullanıcı erişimi Yöneticisi rolüne sahip olacaktır. Bu rol ataması, tüm kaynakları görüntülemenize ve dizindeki herhangi bir abonelikte veya yönetim grubunda erişim atamanıza ve ayrıca kök kapsamda rol atamaları yapmanıza olanak sağlar.
 
-### <a name="create-a-new-service-principal-account-to-access-tenant-level-data"></a>Kiracı düzeyindeki verilere erişmek için yeni bir hizmet sorumlusu hesabı oluşturun
+### <a name="assign-the-monitoring-reader-role-at-root-scope"></a>Kök kapsamda Izleme okuyucusu rolünü atama
 
 Erişiminizi yükselttikten sonra, kiracı düzeyindeki etkinlik günlüğü verilerini sorgulayabilmesi için ilgili izinleri hesaba atayabilirsiniz. Bu hesabın, yönetim kiracınızın kök kapsamında, [Izleme okuyucusu](../../role-based-access-control/built-in-roles.md#monitoring-reader) Azure yerleşik rolü atanmış olması gerekir.
 
 > [!IMPORTANT]
-> Kök kapsamda rol ataması verilmesi, Kiracıdaki her kaynak için aynı izinlerin uygulanacağı anlamına gelir.
+> Kök kapsamda rol ataması verilmesi, Kiracıdaki her kaynak için aynı izinlerin uygulanacağı anlamına gelir. Bu çok geniş bir erişim düzeyi olduğundan, [Bu rolü bir hizmet sorumlusu hesabına atamak ve bu hesabı kullanarak verileri sorgulamak](#use-a-service-principal-account-to-query-the-activity-log)isteyebilirsiniz. Ayrıca [, yetkilendirme bilgilerini doğrudan Azure Portal görüntüleyebilmek](#view-delegation-changes-in-the-azure-portal)için, kök kapsamdaki izleme okuyucusu rolünü ayrı kullanıcılara veya Kullanıcı gruplarına atayabilirsiniz. Bunu yaparsanız, mümkün olan en az sayıda kullanıcıyla sınırlı olması gereken geniş bir erişim düzeyi olduğunu unutmayın.
 
-Bu çok geniş bir erişim düzeyi olduğundan, bu rolü tek bir kullanıcı veya gruba göre değil, bir hizmet sorumlusu hesabına atamanızı öneririz.
-
- Ayrıca, aşağıdaki en iyi yöntemleri öneririz:
-
-- Bu rolü, diğer otomasyon için kullanılan mevcut bir hizmet sorumlusuna atamak yerine yalnızca bu işlev için kullanılacak [Yeni bir hizmet sorumlusu hesabı oluşturun](../../active-directory/develop/howto-create-service-principal-portal.md) .
-- Bu hizmet sorumlusunun, temsilcili müşteri kaynaklarına erişimi olmadığından emin olun.
-- Azure Key Vault kimlik doğrulaması yapmak ve güvenli bir şekilde [depolamak](../../key-vault/general/security-overview.md) [Için bir sertifika kullanın](../../active-directory/develop/howto-create-service-principal-portal.md#authentication-two-options) .
-- Erişimi olan kullanıcıları hizmet sorumlusu adına hareket etmek için sınırlayın.
-
-> [!NOTE]
-> Ayrıca, kök kapsamdaki Izleme okuyucusu Azure yerleşik rolünü bireysel kullanıcılara veya Kullanıcı gruplarına atayabilirsiniz. Bu, bir kullanıcının [Azure Portal doğrudan yetkilendirme bilgilerini görüntüleyebilmesini](#view-delegation-changes-in-the-azure-portal)istiyorsanız yararlı olabilir. Bunu yaparsanız, mümkün olan en az sayıda kullanıcıyla sınırlı olması gereken geniş bir erişim düzeyi olduğunu unutmayın.
-
-Kök kapsam atamalarını yapmak için aşağıdaki yöntemlerden birini kullanın.
+Kök kapsam atamasını yapmak için aşağıdaki yöntemlerden birini kullanın.
 
 #### <a name="powershell"></a>PowerShell
 
 ```azurepowershell-interactive
 # Log in first with Connect-AzAccount if you're not using Cloud Shell
 
-New-AzRoleAssignment -SignInName <yourLoginName> -Scope "/" -RoleDefinitionName "Monitoring Reader"  -ApplicationId $servicePrincipal.ApplicationId 
+New-AzRoleAssignment -SignInName <yourLoginName> -Scope "/" -RoleDefinitionName "Monitoring Reader"  -ObjectId <objectId> 
 ```
 
 #### <a name="azure-cli"></a>Azure CLI
@@ -72,9 +62,32 @@ az role assignment create --assignee 00000000-0000-0000-0000-000000000000 --role
 
 ### <a name="remove-elevated-access-for-the-global-administrator-account"></a>Genel yönetici hesabı için yükseltilmiş erişimi kaldırın
 
-Hizmet sorumlusu hesabınızı oluşturduktan ve kök kapsamda Izleme okuyucusu rolünü atadıktan sonra, bu erişim düzeyi artık gerekli olmayacak olduğundan genel yönetici hesabına yönelik [yükseltilmiş erişimi](../../role-based-access-control/elevate-access-global-admin.md#remove-elevated-access) kaldırdığınızdan emin olun.
+İstenen hesaba kök kapsamda Izleme okuyucusu rolünü atadıktan sonra, bu erişim düzeyi artık gerekli olmayacak olduğundan, genel yönetici hesabı için [yükseltilmiş erişimi](../../role-based-access-control/elevate-access-global-admin.md#remove-elevated-access) kaldırdığınızdan emin olun.
 
-## <a name="query-the-activity-log"></a>Etkinlik günlüğünü sorgulama
+## <a name="view-delegation-changes-in-the-azure-portal"></a>Azure portal temsili değişikliklerini görüntüle
+
+Kök kapsamda Izleme okuyucusu rolüne atanan kullanıcılar, doğrudan Azure portal, yetkilendirme değişikliklerini görüntüleyebilir.
+
+1. **Müşterilerimiz** sayfasına gidin ve ardından sol taraftaki gezinti menüsünde **etkinlik günlüğü** ' nü seçin.
+1. Ekranın üst kısmındaki filtrede **Dizin etkinliğinin** seçildiğinden emin olun.
+
+Temsili değişikliklerinin bir listesi görüntülenir. **Durum**, **olay kategorisi**, **saat**, **zaman damgası**, **abonelik**, **olay tarafından başlatılan olay**, kaynak **grubu**, **kaynak türü** ve **kaynak** değerlerini göstermek veya gizlemek için **Sütunları Düzenle** seçeneğini belirleyebilirsiniz.
+
+:::image type="content" source="../media/delegation-activity-portal.jpg" alt-text="Azure portal temsili değişikliklerinin ekran görüntüsü.":::
+
+## <a name="use-a-service-principal-account-to-query-the-activity-log"></a>Etkinlik günlüğünü sorgulamak için bir hizmet sorumlusu hesabı kullanma
+
+Kök kapsamdaki Izleme okuyucusu rolü çok geniş bir erişim düzeyi olduğundan, rolü bir hizmet sorumlusu hesabına atamak ve aşağıdaki betiği kullanarak verileri sorgulamak için bu hesabı kullanmak isteyebilirsiniz.
+
+> [!IMPORTANT]
+> Şu anda, bu verileri sorgularken büyük miktarda temsili olan kiracılar hatalara çalışabilir.
+
+Etkinlik günlüğünü sorgulamak için bir hizmet sorumlusu hesabı kullanırken aşağıdaki en iyi yöntemleri öneririz:
+
+- Bu rolü, diğer otomasyon için kullanılan mevcut bir hizmet sorumlusuna atamak yerine yalnızca bu işlev için kullanılacak [Yeni bir hizmet sorumlusu hesabı oluşturun](../../active-directory/develop/howto-create-service-principal-portal.md) .
+- Bu hizmet sorumlusunun, temsilcili müşteri kaynaklarına erişimi olmadığından emin olun.
+- Azure Key Vault kimlik doğrulaması yapmak ve güvenli bir şekilde [depolamak](../../key-vault/general/security-overview.md) [Için bir sertifika kullanın](../../active-directory/develop/howto-create-service-principal-portal.md#authentication-two-options) .
+- Erişimi olan kullanıcıları hizmet sorumlusu adına hareket etmek için sınırlayın.
 
 Yönetim kiracınızın kök kapsamına yönelik Izleme okuyucusu erişimi ile yeni bir hizmet sorumlusu hesabı oluşturduktan sonra, kiracınızdaki yetkilendirme etkinliğini sorgulamak ve raporlamak için kullanabilirsiniz.
 
@@ -164,18 +177,6 @@ else {
     Write-Output "No new delegation events for tenant: $($currentContext.Tenant.TenantId)"
 }
 ```
-
-> [!TIP]
-> Bu konudaki hizmet sağlayıcılarına ve müşterilere başvurduğumuz halde, [birden çok kiracıyı yöneten kuruluşlar](../concepts/enterprise.md) aynı işlemlerin aynısını kullanabilir.
-
-## <a name="view-delegation-changes-in-the-azure-portal"></a>Azure portal temsili değişikliklerini görüntüle
-
-Izleme okuyucusu Azure yerleşik rolü kök kapsamda atanmış olan kullanıcılar, doğrudan Azure portal, yetkilendirme değişikliklerini görüntüleyebilir.
-
-1. **Müşterilerimiz** sayfasına gidin ve ardından sol taraftaki gezinti menüsünde **etkinlik günlüğü** ' nü seçin.
-1. Ekranın üst kısmındaki filtrede **Dizin etkinliğinin** seçildiğinden emin olun.
-
-Temsili değişikliklerinin bir listesi görüntülenir. **Durum**, **olay kategorisi**, **saat**, **zaman damgası**, **abonelik**, **olay tarafından başlatılan olay**, kaynak **grubu**, **kaynak türü** ve **kaynak** değerlerini göstermek veya gizlemek için **Sütunları Düzenle** seçeneğini belirleyebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

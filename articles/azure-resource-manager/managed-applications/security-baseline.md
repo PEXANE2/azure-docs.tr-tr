@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 3422c8eff847ed699fb75854a5ae52b4e8a08a24
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: c1bcde3f2b1f61fd241143e308a508d5f19e7b0c
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737108"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99090579"
 ---
 # <a name="azure-security-baseline-for-azure-managed-applications"></a>Azure yönetilen uygulamalar için Azure Güvenlik temeli
 
@@ -161,7 +161,7 @@ Azure Gelişmiş Tehdit Koruması (ATP) gelişmiş tehditleri, risk altındaki k
 ### <a name="pa-1-protect-and-limit-highly-privileged-users"></a>PA-1: Yüksek ayrıcalıklı kullanıcıları koruyun ve sınırlayın
 
 **Kılavuz**: Azure yönetilen uygulamalar kimlik ve erişim için Azure Active Directory (Azure AD) kullanır. En kritik yerleşik roller şunlardır: Azure AD Genel yönetici ve ayrıcalıklı rol yöneticisi, bu iki role atanmış olan kullanıcılar yönetici rollerini temsil edebilir:
-- Genel yönetici/Şirket Yöneticisi: Bu role sahip olan kullanıcılar, Azure AD 'deki tüm yönetim özelliklerine, ayrıca Azure AD kimliklerini kullanan hizmetlere erişebilir.
+- Genel yönetici: Bu role sahip olan kullanıcılar, Azure AD 'deki tüm yönetim özelliklerine, ayrıca Azure AD kimlikleri kullanan hizmetlere erişebilir.
 - Ayrıcalıklı rol yöneticisi: Bu role sahip olan kullanıcılar, Azure AD 'de rol atamalarını ve Azure AD Privileged Identity Management (PıM) içinde yönetebilir. Ayrıca, bu rol, PıM ve yönetim birimlerinin tüm yönlerinin yönetimine izin verir.
 
 Note: özel rolleri atanmış belirli ayrıcalıklı izinlerle kullanıyorsanız, yönetilmelidir başka kritik rolleriniz olabilir. Ayrıca, önemli iş varlıklarının yönetici hesabına de benzer denetimler uygulamak isteyebilirsiniz.

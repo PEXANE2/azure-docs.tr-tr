@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/01/2017
+ms.date: 01/29/2021
 ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 08fe856fd43baad4189d81f7743396a71cd5de48
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 61e83bd27c9434c4222e0161e3b643b183d1aa84
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89266332"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99090969"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-for-sign-in"></a>Azure VM 'de oturum açma için Azure kaynakları için Yönetilen kimlikler kullanma 
 
@@ -30,7 +30,7 @@ Bu makalede, Azure kaynakları hizmet sorumlusu için yönetilen kimlikleri kull
 
 [!INCLUDE [az-powershell-update](../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
 
@@ -49,7 +49,7 @@ Azure kaynakları için Yönetilen kimlikler, VM 'deki [Azure kaynakları için 
 
 Azure kaynakları için Yönetilen kimlikler sayesinde, komut dosyası istemciniz artık Azure kaynakları hizmet sorumlusu için Yönetilen kimlikler altında oturum açabilse de bunu yapması gerekmez. 
 
-## <a name="azure-cli"></a>Azure CLI
+## <a name="azure-cli"></a>Azure CLI’si
 
 Aşağıdaki betik, aşağıdakilerin nasıl yapılacağını göstermektedir:
 
@@ -90,12 +90,7 @@ Aşağıdakiler gibi yanıtlar, sanal makinenin Azure kaynakları için yönetil
 - PowerShell: *Invoke-WebRequest: uzak sunucuya bağlanılamıyor*
 - CLı: *MSI: `http://localhost:50342/oauth2/token` ' HTTPConnectionPool (Host = ' localhost ', bağlantı noktası = 50342) hatasından bir belirteç alınamadı* 
 
-Bu hatalardan birini alırsanız, [Azure Portal](https://portal.azure.com) Azure VM 'ye geri dönün ve:
-
-- **Kimlik** sayfasına gidin ve **sistem atanın** "Evet" olarak ayarlandığından emin olun.
-- **Uzantılar** sayfasına gidin ve Azure kaynakları uzantısı için yönetilen kimliklerin **(Ocak 2019 ' de kullanımdan kaldırma için planlanmış)** başarıyla dağıtıldığından emin olun.
-
-Bunlardan biri yanlışsa, kaynak üzerinde Azure kaynakları için yönetilen kimlikleri yeniden dağıtmanız veya dağıtım başarısızlığının sorunlarını gidermeniz gerekebilir. VM yapılandırması için yardıma ihtiyacınız varsa [Azure Portal kullanarak VM 'de Azure kaynakları Için yönetilen kimlikleri yapılandırma](qs-configure-portal-windows-vm.md) konusuna bakın.
+Bu hatalardan birini alırsanız, [Azure Portal](https://portal.azure.com) Azure sanal makinesine dönün ve **kimlik** sayfasına gidin ve **sistem atanın** "Evet" olarak ayarlandığından emin olun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
