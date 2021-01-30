@@ -2,17 +2,19 @@
 title: Kayıt defteri sistem durumu denetimleri için hata başvurusu
 description: Azure Container Registry ' de az ACR Check-Health Diagnostic komutu çalıştırılarak bulunan sorunlara yönelik olası çözümler ve hata kodları
 ms.topic: article
-ms.date: 07/02/2019
-ms.openlocfilehash: 9136d41097207bfb17776071e958308f36a9aadd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 01/25/2021
+ms.openlocfilehash: 05ae5a7ac19bb7748d5313ccb4974b639ab52d9c
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91565607"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99061877"
 ---
 # <a name="health-check-error-reference"></a>Sistem durumu denetimi hata başvurusu
 
 [Az ACR Check-Health][az-acr-check-health] komutu tarafından döndürülen hata kodlarıyla ilgili ayrıntılar aşağıda verilmiştir. Her hata için olası çözümler listelenir.
+
+Çalışma hakkında daha fazla bilgi için `az acr check-healh` bkz. [Azure Container Registry 'nin sistem durumunu denetleme](container-registry-check-health.md).
 
 ## <a name="docker_command_error"></a>DOCKER_COMMAND_ERROR
 
@@ -49,6 +51,12 @@ Bu hata, diğer HELI işlemlerini daha fazla kullanan CLı tarafından, Helu ist
 Bu hata, CLı 'nin yüklü Held sürümünü belirleyemediği anlamına gelir. Bu durum, kullanılmakta olan Azure CLı sürümü (veya Held sürümü) kullanılmıyorsa oluşabilir.
 
 *Olası çözümler*: en son Azure CLI sürümüne veya önerilen Held sürümüne güncelleştirin; komutu el ile çalıştırın ve hata iletisini araştırın.
+
+## <a name="cmk_error"></a>CMK_ERROR
+
+Bu hata, kayıt defterinin, müşteri tarafından yönetilen bir anahtarla kayıt defteri şifrelemesini yapılandırmak için kullanılan Kullanıcı tarafından atanan veya Sysem tarafından atanan yönetilen kimliğe erişemeyeceği anlamına gelir. Yönetilen kimlik silinmiş olabilir.  
+
+*Olası çözüm*: sorunu çözmek ve farklı bir yönetilen kimlik kullanarak anahtarı döndürmek için, bkz. [Kullanıcı tarafından atanan kimlik](container-registry-customer-managed-keys.md#troubleshoot)sorunlarını giderme adımları.
 
 ## <a name="connectivity_dns_error"></a>CONNECTIVITY_DNS_ERROR
 

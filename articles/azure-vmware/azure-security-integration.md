@@ -3,12 +3,12 @@ title: Azure Güvenlik Merkezi tümleştirmesiyle Azure VMware Çözüm sanal ma
 description: Azure Güvenlik Merkezi 'nde tek bir panodan Azure VMware Çözüm sanal makinelerinizi Azure 'un yerel güvenlik araçlarıyla nasıl koruyacağınızı öğrenin.
 ms.topic: how-to
 ms.date: 11/06/2020
-ms.openlocfilehash: e461e7e49619f7063c0583975f36a2e3dfe5a724
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 66270c5abef48f9d9f30ed1b262a6b4f2f8144c8
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96937347"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99061473"
 ---
 # <a name="protect-your-azure-vmware-solution-vms-with-azure-security-center-integration"></a>Azure Güvenlik Merkezi tümleştirmesiyle Azure VMware Çözüm sanal makinelerinizi koruyun
 
@@ -32,7 +32,7 @@ Günlükler Log Analytics çalışma alanı tarafından toplandıktan sonra, Log
 
 Uyarı algılama, tehdit görünürlüğü, proaktif arama ve tehdit yanıtı için Log Analytics çalışma alanını Azure Sentinel ile yapılandırabilirsiniz. Yukarıdaki diyagramda Azure Güvenlik Merkezi, Azure Güvenlik Merkezi bağlayıcısı kullanılarak Azure Sentinel 'e bağlanır. Azure Güvenlik Merkezi, bir olay oluşturmak ve diğer tehditlere eşlemek için ortam güvenlik açığını Azure Sentinel 'e iletir. Ayrıca, istenmeyen etkinlikleri algılamak ve olaylara dönüştürmek için zamanlanmış kurallar sorgusunu da oluşturabilirsiniz.
 
-## <a name="benefits"></a>Yararları
+## <a name="benefits"></a>Avantajlar
 
 - Azure yerel hizmetleri, Azure 'da, Azure VMware çözümünde ve şirket içi hizmetlerde karma ortam güvenliği için kullanılabilir.
 - Log Analytics çalışma alanı kullanarak, verileri veya günlükleri tek bir noktaya toplayabilir ve aynı verileri farklı Azure yerel hizmetlerine sunabilirsiniz.
@@ -45,7 +45,7 @@ Uyarı algılama, tehdit görünürlüğü, proaktif arama ve tehdit yanıtı i�
 
 ## <a name="create-a-log-analytics-workspace"></a>Log Analytics çalışma alanı oluşturma
 
-Çeşitli kaynaklardan veri toplamak için bir Log Analytics çalışma alanına ihtiyacınız olacaktır. [Azure portal Log Analytics çalışma alanı oluşturma](../azure-monitor/learn/quick-create-workspace.md)bölümündeki adımlara bakın. 
+Çeşitli kaynaklardan veri toplamak için bir Log Analytics çalışma alanına ihtiyacınız olacaktır. Daha fazla bilgi için [Azure portal Log Analytics çalışma alanı oluşturma](../azure-monitor/learn/quick-create-workspace.md)bölümüne bakın. 
 
 ## <a name="deploy-security-center-and-configure-azure-vmware-solution-vms"></a>Güvenlik Merkezi 'Ni dağıtma ve Azure VMware Çözüm VM 'lerini yapılandırma
 
@@ -156,7 +156,7 @@ Veri kaynaklarını Azure Sentinel 'e bağladıktan sonra, algılanan tehditlere
 
     - Ad
     - Açıklama
-    - Taktiklerini
+    - Taktikler
     - Önem derecesi
     - Durum
 
@@ -229,7 +229,7 @@ Ortamınızdaki tehditleri belirlemek için sorgular oluşturabilir veya Azure S
     - Açıklama
     - Özel sorgu
     - Eşleme girin
-    - Taktiklerini
+    - Taktikler
     
 3. **Oluştur**’u seçin. Sonra oluşturulan sorguyu seçebilir, **sorgu çalıştırabilir** ve **sonuçları görüntüleyebilirsiniz**.
 

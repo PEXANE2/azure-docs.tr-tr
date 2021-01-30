@@ -3,12 +3,12 @@ title: Sık sorulan sorular
 description: Azure VMware çözümüyle ilgili bazı yaygın soruların yanıtlarını sağlar.
 ms.topic: conceptual
 ms.date: 1/14/2021
-ms.openlocfilehash: 8245cd8da983ce48ba88d7faef76ab9b7ceb8c26
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 090b29b1e013ffbceb9296250fed99a04d15a82c
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98218595"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99062096"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution"></a>Azure VMware çözümü hakkında sık sorulan sorular
 
@@ -258,7 +258,7 @@ VMware HCX Enterprise, *Önizleme* işlevi/hizmeti olarak Azure VMware çözüm�
 
 ### <a name="how-do-i-request-a-host-quota-increase-for-azure-vmware-solution"></a>Nasıl yaparım? Azure VMware çözümü için bir konak kotası artışı ister misiniz?
 
-CSP ile yönetilen abonelikler için müşterinin isteği iş ortağına göndermesi gerekir. Daha sonra iş ortağı ekibi, abonelik için artan kota artışı sağlamak üzere Microsoft ile ilgilenir. Ayrıntılar için bkz. [Azure VMware Çözüm kaynağını etkinleştirme makalesi](enable-azure-vmware-solution.md) . 
+CSP ile yönetilen abonelikler için müşterinin isteği iş ortağına göndermesi gerekir. Daha sonra iş ortağı ekibi, abonelik için artan kota artışı sağlamak üzere Microsoft ile ilgilenir. Daha fazla bilgi için bkz. [Azure VMware Çözüm kaynağını etkinleştirme](enable-azure-vmware-solution.md). 
 
 EA abonelikleri için aşağıdaki yordamı kullanın. Öncelikle şunları yapmanız gerekir:
 

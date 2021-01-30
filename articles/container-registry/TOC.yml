@@ -157,6 +157,7 @@
               href: container-registry-troubleshoot-performance.md
             - name: Yaygın sorunları algılama
               href: container-registry-check-health.md
+              displayName: 'check, health'
             - name: SSS
               href: container-registry-faq.md
 - name: Görevler

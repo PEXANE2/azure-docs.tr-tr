@@ -698,10 +698,12 @@
           href: how-to-create-tumbling-window-trigger.md
         - name: Atlayan pencere tetikleyici bağımlılığı oluşturma
           href: tumbling-window-trigger-dependency.md
-    - name: Köken
+    - name: Veri Kataloğu ve İdare
       items:
         - name: Azure Purview’a bir Data Factory bağlama
           href: connect-data-factory-to-azure-purview.md
+        - name: Purview kullanarak ADF 'de veri bulma ve keşfetme
+          href: how-to-discover-explore-purview-data.md
     - name: Senaryolar
       items:
         - name: Veri gölü ve EDW için veri geçişi
@@ -796,10 +798,6 @@
       href: /python/api/overview/azure/datafactory
 - name: Kaynaklar
   items:
-    - name: Veri akışı ayrılmış kapasitesine genel bakış
-      href: data-flow-reserved-capacity-overview.md
-    - name: 'Veri akışı, rezervasyon ücretlerini anlama'
-      href: data-flow-understand-reservation-charges.md
     - name: Teknik incelemeler
       href: whitepapers.md
     - name: SSS

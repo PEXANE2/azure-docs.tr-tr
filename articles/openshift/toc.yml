@@ -16,6 +16,10 @@
       href: tutorial-delete-cluster.md
 - name: Nasıl yapılır kılavuzları
   items:
+    - name: Küm işlemleri
+      items:
+        - name: Bir ARO kümesini yükseltme
+          href: howto-upgrade.md
     - name: Ağ
       items:
         - name: Özel bir ARO kümesi oluşturma
@@ -28,6 +32,8 @@
           href: howto-create-a-storageclass.md
         - name: Yerleşik kapsayıcı kayıt defterini kullanma
           href: built-in-container-registry.md
+        - name: Azure Container Registry 'yi kullanma
+          href: howto-use-acr-with-aro.md
     - name: Güvenlik ve kimlik doğrulaması
       items:
         - name: Azure Active Directory kimlik doğrulamasını yapılandırma (CLI)

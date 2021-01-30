@@ -1,8 +1,8 @@
 ---
 title: Azure IoT Central cihaz bağlantısı | Microsoft Docs
 description: Bu makalede, Azure IoT Central cihaz bağlantısıyla ilgili temel kavramlar tanıtılmaktadır
-author: TheJasonAndrew
-ms.author: v-anjaso
+author: dominicbetts
+ms.author: dobett
 ms.date: 1/15/2020
 ms.topic: conceptual
 ms.service: iot-central
@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 - device-developer
-ms.openlocfilehash: c633b488fab521947e4f34abb95ada2342dc2eb3
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 028088087b16ded182042aadec4be08a4b8a9589
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98789779"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99062687"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>Azure IoT Central'a bağlanma
 
@@ -234,11 +234,8 @@ Azure cihaz SDK 'Ları, cihaz kodunuzu uygulamanız için en kolay yolu sunar. A
 IoT Hub ile tüm cihaz iletişimi aşağıdaki IoT Hub bağlantı seçeneklerini kullanır:
 
 - [Cihazdan buluta mesajlaşma](../../iot-hub/iot-hub-devguide-messages-d2c.md)
-- [Buluttan cihaza mesajlaşma](../../iot-hub/iot-hub-csharp-csharp-c2d.md)
+- [Buluttan cihaza mesajlaşma](../../iot-hub/iot-hub-devguide-messages-c2d.md)
 - [Cihaz ikikesi](../../iot-hub/iot-hub-devguide-device-twins.md)
-
-> [!NOTE]
-> Azure şimdi şunları destekliyor
 
 Aşağıdaki tabloda Azure IoT Central cihaz özelliklerinin IoT Hub özellikleriyle nasıl eşleme yapılacağı özetlenmektedir:
 

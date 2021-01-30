@@ -4,16 +4,16 @@ description: Market 'te tercih edilen çözümler ve bunların nasıl seçildiğ
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-author: vikrambmsft
-ms.author: vikramb
+author: cpercy737
+ms.author: camper
 ms.date: 06/27/2018
-ms.openlocfilehash: 954068e2fc60321f8594aa7fdd8f4cf9a3327ebd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 300278edebdb489c39e8a3faca192de1788667dd
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88607181"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99062265"
 ---
 # <a name="preferred-solutions-in-microsoft-appsource-and-azure-marketplace"></a>Microsoft AppSource ve Azure Market 'te tercih edilen çözümler
 
-Microsoft 'un tercih ettiği bir çözüm, kalitesi, performansı ve belirli bir sektör dikey veya çözüm alanında müşteri ihtiyaçlarını ele alma yeteneği için seçilen bir bulut uygulamasıdır. Microsoft uzmanlarından oluşan bir ekip, belirli kanıtlanmış yeteneklere ve yeteneklere sahip iş ortaklarının çözümlerini doğrular. Bu çözümler, ticari Market çevrimiçi mağazalarımızda, Azure Marketi 'nde ve AppSource 'ta da Azure portal. AppSource 'ta tercih edilen çözümler sektör verticilerine göre keşfedilebilir. Azure Marketi 'nde tercih edilen çözümler ve Azure portal yatay çözüm kategorileri arasında bulunabilir.
+Microsoft 'un tercih ettiği bir çözüm, kalitesi, performansı ve belirli bir sektör dikey veya çözüm alanında müşteri ihtiyaçlarını ele alma yeteneği için seçilen bir bulut uygulamasıdır. Microsoft uzmanlarından oluşan bir ekip, belirli kanıtlanmış yeteneklere ve yeteneklere sahip iş ortaklarının çözümlerini doğrular. Bu çözümler, ticari Market çevrimiçi mağazalarımızda, Azure Marketi 'nde ve AppSource 'da ve Azure portal ' de öne çıkanlar. AppSource 'ta tercih edilen çözümler sektör verticilerine göre keşfedilebilir. Azure Marketi 'nde tercih edilen çözümler ve Azure portal yatay çözüm kategorileri arasında bulunabilir.

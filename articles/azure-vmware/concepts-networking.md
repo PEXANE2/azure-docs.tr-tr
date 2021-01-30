@@ -3,12 +3,12 @@ title: Kavramlar-ağ bağlantısı
 description: Azure VMware çözümünde önemli yönleri ve ağ ve bağlantı durumlarını kullanma hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: f8e9ed143d53afe2f7a24c832c69390c6ffcb36b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9369c0fff31de4c6575d8e4903420cfa01461bf4
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91575767"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99062129"
 ---
 # <a name="azure-vmware-solution-networking-and-interconnectivity-concepts"></a>Azure VMware Çözüm ağı ve karşılıklı bağlantı kavramları
 
@@ -53,11 +53,9 @@ Aşağıdaki diyagramda, şirket içi ile özel bulut bağlantısı, aşağıdak
 * Etkin/soğuk çapraz vCenter vMotion
 * Şirket Içinden Azure VMware çözümüne özel bulut yönetimi erişimi
 
-:::image type="content" source="media/concepts/adjacency-overview-drawing-double.png" alt-text="Temel sanal ağdan özel bulut bağlantısına" border="false":::
+:::image type="content" source="media/concepts/adjacency-overview-drawing-double.png" alt-text="Sanal ağ ve şirket içi tam özel bulut bağlantısı" border="false":::
 
-Özel bulutunuzun tam bağlantısı için, ExpressRoute Global Reach etkinleştirin ve sonra Azure portal Global Reach için bir yetkilendirme anahtarı ve özel eşleme KIMLIĞI isteyin. Yetkilendirme anahtarı ve eşleme KIMLIĞI, aboneliğinizdeki bir ExpressRoute bağlantı hattı ile yeni özel bulutunuz için ExpressRoute bağlantı hattı arasında Global Reach oluşturmak için kullanılır. Bağlantı kurulduktan sonra, iki ExpressRoute devre dışı, şirket içi ortamlarınızla özel bulutunuz arasında ağ trafiğini yönlendirir.  Yetkilendirme anahtarını ve eşleme KIMLIĞINI isteme ve kullanma yordamlarına yönelik bir [özel buluta eşleme Global Reach için bir ExpressRoute oluşturma öğreticisine](tutorial-expressroute-global-reach-private-cloud.md) bakın.
-
-
+Özel bulutunuzun tam bağlantısı için, ExpressRoute Global Reach etkinleştirin ve sonra Azure portal Global Reach için bir yetkilendirme anahtarı ve özel eşleme KIMLIĞI isteyin. Yetkilendirme anahtarı ve eşleme KIMLIĞI, aboneliğinizdeki bir ExpressRoute bağlantı hattı ile yeni özel bulutunuz için ExpressRoute bağlantı hattı arasında Global Reach oluşturmak için kullanılır. Bağlantı kurulduktan sonra, iki ExpressRoute devre dışı, şirket içi ortamlarınızla özel bulutunuz arasında ağ trafiğini yönlendirir.  Yetkilendirme anahtarını ve eşleme KIMLIĞINI isteme ve kullanma yordamları hakkında daha fazla bilgi için, bir [özel buluta eşleme Global Reach ExpressRoute oluşturma öğreticisine](tutorial-expressroute-global-reach-private-cloud.md)bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar 
 [Özel bulut depolama kavramları](concepts-storage.md)hakkında bilgi edinin.
