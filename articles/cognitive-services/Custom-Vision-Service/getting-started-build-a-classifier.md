@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 09/29/2020
+ms.date: 01/29/2021
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: görüntü tanıma, görüntü tanıma uygulaması, Özel Vizyon
-ms.openlocfilehash: d644c323cb60e5ef9a89670cd9b828e3e9676299
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: d25b226f5dfff34aa572b40d1e4de142cf8e0b7b
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98131704"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99221253"
 ---
 # <a name="quickstart-build-a-classifier-with-the-custom-vision-website"></a>Hızlı başlangıç: Özel Görüntü İşleme Web sitesiyle bir sınıflandırıcı oluşturma
 
@@ -71,7 +71,7 @@ Web tarayıcınızda [özel görüntü işleme Web sayfasına](https://customvis
 
 Bu bölümde, sınıflandırıcının eğmesini sağlamaya yardımcı olmak için görüntüleri karşıya yükleyip el ile etiketleyerek. 
 
-1. Görüntü eklemek için __Görüntü ekle__ düğmesine tıklayın ve ardından __yerel dosyalara gözatamazsınız__' ı seçin. Etiketlemeyle gezinmek için __Aç__ ' ı seçin. Etiket seçiminiz, karşıya yüklemek üzere seçtiğiniz tüm görüntü grubuna uygulanır, bu nedenle görüntüleri istedikleri etiketlere göre ayrı gruplara yüklemek daha kolay olur. Ayrıca, her bir görüntünün etiketlerini karşıya yükledikten sonra değiştirebilirsiniz.
+1. Görüntü eklemek için __Görüntü ekle__ ' yi seçin ve ardından __yerel dosyalara gözatamazsınız__' ı seçin. Etiketlemeyle gezinmek için __Aç__ ' ı seçin. Etiket seçiminiz, karşıya yüklemek üzere seçtiğiniz tüm görüntü grubuna uygulanır, bu nedenle görüntüleri uygulanan etiketlerine göre ayrı gruplar halinde karşıya yüklemek daha kolay olur. Ayrıca, tek tek görüntülerin karşıya yüklendiklerinde etiketlerini de değiştirebilirsiniz.
 
     ![Resim ekle denetimi, sol üst köşede ve alt ortadaki bir düğme olarak gösterilir.](./media/getting-started-build-a-classifier/add-images01.png)
 

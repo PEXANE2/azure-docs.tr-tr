@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: tutorial
-ms.date: 10/05/2020
+ms.date: 01/29/2021
 ms.author: pafarley
-ms.openlocfilehash: e930e5d125a8f1ee90448e293e2e0ca2c5c28465
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: f3b43ed6a86276b308599f9091d581423b0f363c
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913679"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99220999"
 ---
 # <a name="tutorial-moderate-facebook-posts-and-commands-with-azure-content-moderator"></a>Öğretici: Azure Content Moderator ile orta Facebook gönderileri ve komutları
 
@@ -66,7 +66,7 @@ Daha sonra [tanımlama, test et ve iş akışlarını kullanma](review-tool-user
 
 1. [Azure İşlevleri](../../azure-functions/functions-create-function-app-portal.md) sayfasında gösterildiği gibi bir Azure İşlev Uygulaması oluşturun.
 1. Yeni oluşturulan İşlev Uygulaması gidin.
-1. Uygulama içinde **platform özellikleri** sekmesine gidin ve **yapılandırma** ' yı seçin. Aşağıdaki anahtar/değer çiftlerini eklemek için sonraki sayfanın **uygulama ayarları** bölümünde **Yeni uygulama ayarı** ' nı seçin:
+1. Uygulama içinde **platform özellikleri** sekmesine gidin ve **yapılandırma**' yı seçin. Aşağıdaki anahtar/değer çiftlerini eklemek için sonraki sayfanın **uygulama ayarları** bölümünde **Yeni uygulama ayarı** ' nı seçin:
     
     | Uygulama ayarı adı | değer   | 
     | -------------------- |-------------|
@@ -87,7 +87,7 @@ Daha sonra [tanımlama, test et ve iş akışlarını kullanma](review-tool-user
 
     1. **Http tetikleyicisini** belirten kutucuğa tıklayın.
     1. **FBListener** adını girin. **Yetkilendirme Düzeyi** alanı **İşlev** olarak ayarlanmalıdır.
-    1. **Oluştur** 'a tıklayın.
+    1. **Oluştur**’a tıklayın.
     1. **Run. CSX** Içeriğini **fblistener/Run. CSX** içeriğiyle değiştirin
 
     [!code-csharp[FBListener: csx file](~/samples-fbPageModeration/FbListener/run.csx?range=1-154)]
@@ -105,14 +105,14 @@ Daha sonra [tanımlama, test et ve iş akışlarını kullanma](review-tool-user
     ![Facebook Geliştirici sayfası](images/facebook-developer-app.png)
 
     1. [Facebook geliştirici sitesine](https://developers.facebook.com/) gidin
-    1. **My Apps** (Uygulamalarım) öğesine tıklayın.
+    1. **Uygulamalarım**'a gidin.
     1. Yeni Uygulama ekleyin.
-    1. Bunu bir ad olarak adlandırın
+    1. Bir ad belirtin
     1. **Web kancaları-> ayarla** ' yı seçin
     1. Açılır menüden **sayfa** ' yı seçin ve **Bu nesneye abone ol ' u** seçin
     1. Geri Arama URL'si olarak **FBListener Url'sini** sağlayın ve **İşlevi Uygulaması Ayarları** altında yapılandırdığınız **Belirteci Doğrulayın**
     1. Abone olduktan sonra, akışı aşağı kaydırıp **subscribe** (abone ol) öğesini seçin.
-    1. FBListener Azure işlevinizi test iletisi göndermek için **akış** satırının **Test** düğmesine tıklayın ve sonra **sunucuma gönder** düğmesine basın. İsteğin FBListener üzerinde alındığını görmeniz gerekir.
+    1. FBListener Azure işlevinizi test iletisi göndermek için **akış** satırının **Test** düğmesini seçin, sonra **sunucuma gönder** düğmesine basın. İsteğin FBListener üzerinde alındığını görmeniz gerekir.
 
 1. Facebook Sayfası oluşturun.
 
@@ -122,9 +122,9 @@ Daha sonra [tanımlama, test et ve iş akışlarını kullanma](review-tool-user
     1. [Facebook](https://www.facebook.com/bookmarks/pages)'a gidin ve **yeni bir Facebook Sayfası** oluşturun.
     1. Şu adımları izleyerek Facebook Uygulamasının bu sayfaya erişmesine izin verin:
         1. [Graph API Explorer](https://developers.facebook.com/tools/explorer/)'a gidin.
-        1. **Uygulama** 'yı seçin.
-        1. **Sayfa Erişim Belirteci** 'ni seçin. Bir **Get** isteği gönderin.
-        1. Yanıtta **Sayfa Kimliği** 'ne tıklayın.
+        1. **Uygulama**'yı seçin.
+        1. **Sayfa Erişim Belirteci**'ni seçin. Bir **Get** isteği gönderin.
+        1. Yanıttaki **sayfa kimliğini** seçin.
         1. Şimdi **/subscribed_apps** bölümünü URL'ye ekleyin ve bir **Get** (boş yanıt) isteği gönderin.
         1. **Post** isteği gönderin. **success: true** gibi bir yanıt alırsınız.
 
@@ -138,7 +138,7 @@ Daha sonra [tanımlama, test et ve iş akışlarını kullanma](review-tool-user
 
 4. Önümüzdeki birkaç adımda Postman kullanıyoruz.
 
-    1. **Postman** 'ı açın (veya [buradan](https://www.getpostman.com/) alın).
+    1. **Postman**'ı açın (veya [buradan](https://www.getpostman.com/) alın).
     2. Şu iki dosyayı içeri aktarın:
         1. [Postman Collection](https://github.com/MicrosoftContentModerator/samples-fbPageModeration/blob/master/Facebook%20Permanant%20Page%20Access%20Token.postman_collection.json)
         2. [Postman Environment](https://github.com/MicrosoftContentModerator/samples-fbPageModeration/blob/master/FB%20Page%20Access%20Token%20Environment.postman_environment.json)       
@@ -150,16 +150,16 @@ Daha sonra [tanımlama, test et ve iş akışlarını kullanma](review-tool-user
         | appSecret | Buraya Facebook Uygulamanızın gizli dizisini ekleyin | 
         | short_lived_token | Önceki adımda oluşturduğunuz kısa ömürlü kullanıcı erişim belirtecini ekleyin |
     4. Şimdi koleksiyonda listelenen 3 API'yi çalıştırın: 
-        1. **Uzun Ömürlü Erişim Belirteci Oluştur** 'u seçin ve **Gönder** 'e tıklayın.
-        2. **Kullanıcı Kimliğini Al** 'ı seçin ve **Gönder** 'e tıklayın.
-        3. **Kalıcı Sayfa Erişim Belirtecini Al** 'ı seçin ve **Gönder** 'e tıklayın.
+        1. **Uzun Ömürlü Erişim Belirteci Oluştur**'u seçin ve **Gönder**'e tıklayın.
+        2. **Kullanıcı Kimliğini Al**'ı seçin ve **Gönder**'e tıklayın.
+        3. **Kalıcı Sayfa Erişim Belirtecini Al**'ı seçin ve **Gönder**'e tıklayın.
     5. Yanıttan **access_token** değerini kopyalayın ve bunu **fb:PageAccessToken** Uygulama ayarına atayın.
 
 Çözüm, Facebook sayfanıza gönderilen tüm resimleri ve metinleri Content Moderator'a gönderir. Daha önce yapılandırdığınız iş akışları çağrılır. İş akışlarında tanımlı kriterlerinizi geçirmez, gözden geçirme aracının içindeki incelemelere geçirilir. İçeriğin geri kalanı otomatik olarak yayımlanır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, ürün türlerine göre etiketlenmesi ve bir gözden geçirme ekibinin içerik denetlemesi hakkında bilinçli kararlar almasına izin vermek amacıyla ürün görüntülerini analiz etmek için bir program ayarlarsınız. Ardından, görüntü denetleme ayrıntıları hakkında daha fazla bilgi edinin.
+Bu öğreticide, ürün görüntülerini analiz etmek, ürün türüne göre etiketlemek ve bir gözden geçirme ekibine içerik denetlemesi hakkında bilinçli kararlar vermek için bir program ayarlarsınız. Ardından, görüntü denetleme ayrıntıları hakkında daha fazla bilgi edinin.
 
 > [!div class="nextstepaction"]
 > [Görüntü denetimi](./image-moderation-api.md)

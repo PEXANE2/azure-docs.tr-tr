@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 09/30/2020
+ms.date: 01/29/2021
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: görüntü tanıma, görüntü tanıma uygulaması, Özel Vizyon
-ms.openlocfilehash: b27864fc1fd1f94f99fccacd90a66120e6d044c4
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 5ecd5fee565a8d31e0ff05f3b234771446242d02
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98132588"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99221304"
 ---
 # <a name="quickstart-build-an-object-detector-with-the-custom-vision-website"></a>Hızlı başlangıç: Özel Görüntü İşleme Web sitesiyle bir nesne algılayıcısı oluşturma
 
@@ -70,7 +70,7 @@ Web tarayıcınızda [özel görüntü işleme Web sayfasına](https://customvis
 
 Bu bölümde, algılayıcısının eğitilmesi için görüntüleri karşıya yükleyecek ve el ile etiketlemelisiniz. 
 
-1. Görüntü eklemek için __Görüntü ekle__ düğmesine tıklayın ve ardından __yerel dosyalara gözatamazsınız__' ı seçin. Görüntüleri karşıya yüklemek için __Aç__ ' ı seçin.
+1. Görüntü eklemek için __Görüntü ekle__ ' yi seçin ve ardından __yerel dosyalara gözatamazsınız__' ı seçin. Görüntüleri karşıya yüklemek için __Aç__ ' ı seçin.
 
     ![Resim ekle denetimi, sol üst köşede ve alt ortadaki bir düğme olarak gösterilir.](./media/get-started-build-detector/add-images.png)
 
@@ -78,7 +78,7 @@ Bu bölümde, algılayıcısının eğitilmesi için görüntüleri karşıya y�
 
     ![Karşıya yüklenen görüntüler, etiketlenmemiş bölüm](./media/get-started-build-detector/images-untagged.png)
 
-1. Görüntinizdeki nesnenin etrafına bir dikdörtgeni tıklatın ve sürükleyin. Ardından, düğme ile yeni bir etiket adı girin **+** veya açılan listeden varolan bir etiketi seçin. Algılayıcı, eğitiminde negatif bir örnek olarak etiketlenmemiş arka plan alanını kullandığından, algılamak istediğiniz nesnelerin her örneğini etiketlemek çok önemlidir. Etiketlerinizi tamamladığınızda, sağ taraftaki oka tıklayarak etiketlerinizi kaydedin ve sonraki görüntüde geçiş yapın.
+1. Görüntinizdeki nesnenin etrafına bir dikdörtgeni tıklatın ve sürükleyin. Ardından, düğme ile yeni bir etiket adı girin **+** veya açılan listeden varolan bir etiketi seçin. Algılayıcı, eğitiminde negatif bir örnek olarak etiketlenmemiş arka plan alanını kullandığından, algılamak istediğiniz nesnelerin her örneğinin etiketedilmesi önemlidir. Etiketlerinizi tamamladığınızda, sağ taraftaki oka tıklayarak etiketlerinizi kaydedin ve sonraki görüntüde geçiş yapın.
 
     ![Bir nesneyi dikdörtgen seçim ile etiketleme](./media/get-started-build-detector/image-tagging.png)
 

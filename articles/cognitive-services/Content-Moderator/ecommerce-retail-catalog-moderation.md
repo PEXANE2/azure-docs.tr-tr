@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: tutorial
-ms.date: 10/23/2020
+ms.date: 01/29/2021
 ms.author: pafarley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6d105528404c99f7273687fcdea6972b4212fcf1
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 211f58e26ec89c393bf9f91cc3a05044c6b1e802
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913696"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99221287"
 ---
 # <a name="tutorial-moderate-e-commerce-product-images-with-azure-content-moderator"></a>Öğretici: Azure Content Moderator ile orta e-ticaret ürün görüntüleri
 
@@ -48,14 +48,14 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 ## <a name="create-custom-moderation-tags"></a>Özel denetleme etiketleri oluşturma
 
-Ardından, gözden geçirme aracında özel etiketler oluşturun (Bu işlemle ilgili yardıma ihtiyacınız varsa [Etiketler](./review-tool-user-guide/configure.md#tags) makalesine bakın). Bu durumda, şu etiketleri ekleyeceğiz: **ünlüylik** , **ABD** , **bayrak** , **oyuncak** ve **kalem** . Etiketlerin tümünün Görüntü İşleme ( **ünlüm** gibi) üzerinde algılanamaz Kategoriler olması gerekmez; Özel Görüntü İşleme sınıflandırıcısını daha sonra tespit etmek üzere eğitemiş olduğunuz sürece kendi özel etiketlerinizi ekleyebilirsiniz.
+Ardından, gözden geçirme aracında özel etiketler oluşturun (Bu işlemle ilgili yardıma ihtiyacınız varsa [Etiketler](./review-tool-user-guide/configure.md#tags) makalesine bakın). Bu durumda, şu etiketleri ekleyeceğiz: **ünlüylik**, **ABD**, **bayrak**, **oyuncak** ve **kalem**. Etiketlerin tümünün Görüntü İşleme ( **ünlüm** gibi) üzerinde algılanamaz Kategoriler olması gerekmez; Özel Görüntü İşleme sınıflandırıcısını daha sonra tespit etmek üzere eğitemiş olduğunuz sürece kendi özel etiketlerinizi ekleyebilirsiniz.
 
 ![Özel etiketleri yapılandırma](images/tutorial-ecommerce-tags2.PNG)
 
 ## <a name="create-visual-studio-project"></a>Visual Studio projesi oluşturma
 
-1. Visual Studio 'da yeni proje iletişim kutusunu açın. **Yüklü** , sonra **Visual C#** ve **konsol uygulaması (.NET Framework)** öğesini seçin.
-1. Uygulamayı **EcommerceModeration** olarak adlandırın ve ardından **Tamam** ' a tıklayın.
+1. Visual Studio 'da yeni proje iletişim kutusunu açın. **Yüklü**, sonra **Visual C#** ve **konsol uygulaması (.NET Framework)** öğesini seçin.
+1. Uygulamayı **EcommerceModeration** olarak adlandırın ve ardından **Tamam**' ı seçin.
 1. Bu projeyi mevcut bir çözüme ekliyorsanız, tek bir başlangıç projesi olarak bu projeyi seçin.
 
 Bu öğretici, projenin merkezi olan kodunu vurgular, ancak her kod satırını kapsamaz. Örnek projeden (örnek [eCommerce Katalog denetlemesi](https://github.com/MicrosoftContentModerator/samples-eCommerceCatalogModeration)) _program.cs_ öğesinin tam içeriğini yeni projenizin _program.cs_ dosyasına kopyalayın. Daha sonra, projenin nasıl çalıştığı ve nasıl kullanılacağı hakkında bilgi edinmek için aşağıdaki bölümlerde adım adım ilerleyin.
@@ -78,7 +78,7 @@ Bu öğretici üç bilişsel hizmet kullanır; Bu nedenle, üç ilgili anahtar v
 
 ## <a name="evaluateadultracy-method"></a>EvaluateAdultRacy yöntemi
 
-**Program** sınıfında **EvaluateAdultRacy** yöntemine bakın. Bu yöntem, bir görüntü URL 'SI ve anahtar-değer çiftleri dizisini parametre olarak alır. Görüntünün yetişkinlere yönelik ve yoğun puanlarını almak için Content Moderator Image API 'sini (REST kullanarak) çağırır. Her birinin puanı 0,4 ' den büyükse (Aralık 0 ile 1 arasındadır), bu, **Gözden** **True**
+**Program** sınıfında **EvaluateAdultRacy** yöntemine bakın. Bu yöntem, bir görüntü URL 'SI ve anahtar-değer çiftleri dizisini parametre olarak alır. Görüntünün yetişkinlere yönelik ve yoğun puanlarını almak için Content Moderator Image API 'sini (REST kullanarak) çağırır. Her birinin puanı 0,4 ' den büyükse (Aralık 0 ile 1 arasındadır), bu, **Gözden** 
 
 [!code-csharp[define EvaluateAdultRacy method](~/samples-eCommerceCatalogModeration/Fusion/Program.cs?range=73-113)]
 
@@ -90,7 +90,7 @@ Sonraki yöntem, bir görüntü URL 'sini ve Görüntü İşleme abonelik bilgil
 
 ## <a name="evaluatecustomvisiontags-method"></a>EvaluateCustomVisionTags yöntemi
 
-Ardından, **EvaluateCustomVisionTags** &mdash; Bu Case Flags, toys ve kalemlerdeki gerçek ürünleri sınıflandırın EvaluateCustomVisionTags yöntemine bakın. Kendi özel görüntü sınıflandırıcınızı oluşturmak ve görüntülerde, oyunlarınızı ve kalemleri (veya özel etiketleriniz olarak seçtiğiniz herhangi bir şeyi) anlamak için [nasıl sınıflandırıcı oluşturma](../custom-vision-service/getting-started-build-a-classifier.md) Kılavuzu ' nda bulunan yönergeleri izleyin. Bu örnekteki kategorilerden bazılarını hızlıca eğitebilmeniz için [GitHub deposunun](https://github.com/MicrosoftContentModerator/samples-eCommerceCatalogModeration) **örnek görüntüler** klasöründeki görüntüleri kullanabilirsiniz.
+Ardından,  &mdash; Bu Case Flags, toys ve kalemlerdeki gerçek ürünleri sınıflandırın EvaluateCustomVisionTags yöntemine bakın. Kendi özel görüntü sınıflandırıcınızı oluşturmak ve görüntülerde, oyunlarınızı ve kalemleri (veya özel etiketleriniz olarak seçtiğiniz herhangi bir şeyi) anlamak için [nasıl sınıflandırıcı oluşturma](../custom-vision-service/getting-started-build-a-classifier.md) Kılavuzu ' nda bulunan yönergeleri izleyin. Bu örnekteki kategorilerden bazılarını hızlıca eğitebilmeniz için [GitHub deposunun](https://github.com/MicrosoftContentModerator/samples-eCommerceCatalogModeration) **örnek görüntüler** klasöründeki görüntüleri kullanabilirsiniz.
 
 ![Kalemlerin, oyunların ve bayrakların eğitim görüntüleriyle Web sayfası Özel Görüntü İşleme](images/tutorial-ecommerce-custom-vision.PNG)
 

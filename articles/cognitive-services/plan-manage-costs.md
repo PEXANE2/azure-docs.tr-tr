@@ -7,18 +7,18 @@ ms.custom: subject-cost-optimization
 ms.service: cognitive-services
 ms.topic: how-to
 ms.date: 12/15/2020
-ms.openlocfilehash: 61eb7d06773428074940d153b01d23b13468795d
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 661af89ad223978abbefd71dd8008577475c5875
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98788833"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99221395"
 ---
 # <a name="plan-and-manage-costs-for-azure-cognitive-services"></a>Azure bilişsel hizmetler için maliyetleri planlayın ve yönetin
 
 Bu makalede, Azure bilişsel hizmetler için maliyetleri nasıl planlayabileceğinizi ve yönetebileceğiniz açıklanır. İlk olarak, maliyetleri tahmin etmek üzere hizmet için herhangi bir kaynak eklemeden önce bilişsel hizmetler maliyetlerini planlamaya yardımcı olmak üzere Azure Fiyatlandırma hesaplayıcısı ' nı kullanırsınız. Daha sonra, Azure kaynaklarını eklerken Tahmini maliyetleri gözden geçirin. Bilişsel hizmetler kaynaklarını (örneğin, konuşma, Görüntü İşleme, Lua, Metin Analizi, Translator, vb.) kullanmaya başladıktan sonra, bütçe ve izleme maliyetlerini ayarlamak için maliyet yönetimi özelliklerini kullanın. Ayrıca Tahmini maliyetleri gözden geçirebilir ve hareket etmek isteyebileceğiniz yerleri belirlemek için harcama eğilimlerini belirleyebilirsiniz. Bilişsel hizmetler için maliyetler yalnızca Azure faturanızda bulunan Aylık maliyetlerin bir parçasıdır. Bu makalede bilişsel hizmetler için maliyetlerin nasıl planlanacağı ve yönetileceği açıklanmakta olsa da, üçüncü taraf hizmetler de dahil olmak üzere Azure aboneliğinizde kullanılan tüm Azure hizmetleri ve kaynakları için faturalandırılırsınız.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Maliyet yönetimi 'nde maliyet analizi, çoğu Azure hesap türünü destekler, ancak bunların tümünü kullanmaz. Desteklenen hesap türlerinin tam listesini görüntülemek için, bkz. [Maliyet Yönetimi verilerini anlama](../cost-management-billing/costs/understand-cost-mgt-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn). Maliyet verilerini görüntülemek için bir Azure hesabı için en azından okuma erişiminizin olması gerekir. Azure Maliyet Yönetimi verilerine erişim atama hakkında daha fazla bilgi için bkz. [Verilere erişim atama](../cost-management-billing/costs/assign-access-acm-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).
 
@@ -64,6 +64,32 @@ Soru-Cevap Oluşturma kaynaklarını sildikten sonra, aşağıdaki kaynaklar mev
 
 Bilişsel hizmetler ücretlendirmesinin Azure ön ödeme (daha önce parasal taahhüt olarak adlandırılır) kredisi ile ödeme yapabilirsiniz. Ancak Azure ön ödeme kredisi, Azure Marketi 'nden dahil olan üçüncü taraf ürün ve hizmetlerine yönelik ücretler için ödeme yapmak üzere kullanamazsınız.
 
+## <a name="monitor-costs"></a>Maliyetleri izleme
+
+<!-- Note to Azure service writer: Modify the following as needed for your service. Replace example screenshots with ones taken for your service. If you need assistance capturing screenshots, ask banders for help. -->
+
+Bilişsel hizmetler ile Azure kaynaklarını kullanırken maliyetleriniz vardır. Azure Kaynak kullanımı birim maliyetleri zaman aralıklarına (saniye, dakika, saat ve gün) veya birim kullanımı (bayt, megabayt vb.) göre değişir. Bilişsel hizmet hizmeti (veya bilişsel hizmetler) başladığında maliyetler ücretlendirilir ve [Maliyet analizinde](../cost-management/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)maliyetleri görebilirsiniz.
+
+Maliyet analizini kullandığınızda, farklı zaman aralıkları için grafiklerde ve tablolarda bilişsel hizmetler maliyetlerini görüntüleyebilirsiniz. Bazı örnekler güne, geçerli ve önceki aya ve yıla göre yapılır. Ayrıca bütçeleri ve tahmin edilen maliyetleri de görüntüleyebilirsiniz. Zamana göre daha uzun görünümlere geçiş yapmak harcama eğilimlerini belirlemenize yardımcı olabilir. Ve fazla harcama oluşmuş olabileceğini görürsünüz. Bütçeleri oluşturduysanız, nerede aşıldığınızı da kolayca görebilirsiniz.
+
+Bilişsel hizmetler maliyetlerini maliyet analizi 'nde görüntülemek için:
+
+1. Azure Portal’da oturum açın.
+2. Azure portal kapsamı açın ve menüden **Maliyet Analizi** ' ni seçin. Örneğin, **abonelikler**' e gidin, listeden bir abonelik seçin ve ardından menüde  **Maliyet Analizi** ' ni seçin. Maliyet analizinde farklı bir kapsama geçiş yapmak için **kapsam** ' ı seçin.
+3. Varsayılan olarak, hizmetlerin maliyeti ilk halka grafiğinde gösterilir. Bilişsel hizmetler etiketli grafikteki alanı seçin.
+
+Maliyet analizini ilk kez açtığınızda gerçek aylık maliyetler gösterilir. İşte tüm aylık kullanım maliyetlerini gösteren bir örnek.
+
+:::image type="content" source="./media/cost-management/all-costs.png" alt-text="Bir aboneliğin birikmiş maliyetlerini gösteren örnek":::
+
+- Bilişsel hizmetler gibi tek bir hizmetin maliyetlerini daraltmak için **Filtre Ekle** ' yi ve ardından **hizmet adı**' nı seçin. Ardından bilişsel **Hizmetler**' i seçin.
+
+Yalnızca bilişsel hizmetler için maliyetleri gösteren bir örnek aşağıda verilmiştir.
+
+:::image type="content" source="./media/cost-management/cognitive-services-costs.png" alt-text="Bilişsel hizmetler için birikmiş maliyetleri gösteren örnek":::
+
+Önceki örnekte, hizmet için geçerli maliyeti görürsünüz. Kaynak grubuna göre Azure bölgeleri (konumlar) ve bilişsel hizmetler maliyetlerine göre maliyetler de gösterilir. Buradan, maliyetlerinizi kendiniz inceleyebilirsiniz.
+
 ## <a name="create-budgets"></a>Bütçe oluşturma
 
 Maliyetleri yönetmek için [bütçeler](../cost-management-billing/costs/tutorial-acm-create-budgets.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) oluşturabilir ve paydaşları harcama anormallikleri ve fazla harcama riskleri ile ilgili otomatik olarak bilgilendiren [uyarılar](../cost-management-billing/costs/cost-mgt-alerts-monitor-usage-spending.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) oluşturabilirsiniz. Uyarılar, bütçe ve maliyet eşiklerine kıyasla harcamaya göre belirlenir. Bütçeler ve uyarılar Azure abonelikleri ve kaynak grupları için oluşturulur, bu nedenle genel maliyet izleme stratejisinin bir parçası olarak faydalıdır. 
@@ -73,13 +99,6 @@ Maliyetleri yönetmek için [bütçeler](../cost-management-billing/costs/tutori
 ## <a name="export-cost-data"></a>Maliyet verilerini dışarı aktarma
 
 Ayrıca, maliyet verilerinizi bir depolama hesabına [dışarı aktarabilirsiniz](../cost-management-billing/costs/tutorial-export-acm-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) . Bu, maliyetler için ek veri analizi yapmanız gerektiğinde veya başkalarının yararlı olması durumunda faydalıdır. Örneğin, finans ekipleri Excel veya Power BI kullanarak verileri analiz edebilir. Maliyetlerinizi günlük, haftalık veya aylık bir zamanlamaya göre dışa aktarabilir ve özel bir tarih aralığı ayarlayabilirsiniz. Maliyet verilerini dışarı aktarmak, maliyet veri kümelerini almak için önerilen yoldur.
-
-<!--
-## Other ways to manage and reduce costs for Cognitive Services
-
-Work with Dean to complete this section in 2021.
-
--->
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

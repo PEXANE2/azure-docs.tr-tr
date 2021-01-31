@@ -4,26 +4,28 @@ description: Azure depolama 'da Depolama Analizi ölçümlerini nasıl kullanaca
 author: normesta
 ms.service: storage
 ms.topic: conceptual
-ms.date: 03/11/2019
+ms.date: 01/29/2021
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: f1ab2be598a24a2448fed44742733633a8e0fc8f
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 8f698aadc24d0dc0691743f1d8dd54c5d5fd287e
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92787610"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99220965"
 ---
 # <a name="azure-storage-analytics-metrics-classic"></a>Azure Depolama Analizi ölçümleri (klasik)
+
+**31 ağustos 2023** ' de, *Klasik ölçümler* olarak da bilinen depolama Analizi ölçümler kullanımdan kaldırılacak. Daha fazla bilgi için [resmi duyuruya](https://azure.microsoft.com/updates/azure-storage-classic-metrics-will-be-retired-on-31-august-2023/) bakın. Klasik ölçümleri kullanıyorsanız, söz konusu tarihten önce Azure İzleyici'deki ölçümlere geçin. Bu makale geçişi yapmanıza yardımcı olur. 
 
 Azure depolama, bir depolama hizmetine yapılan isteklerle ilgili toplanan işlem istatistiklerini ve kapasite verilerini içeren ölçümleri depolamak için Depolama Analizi çözümünü kullanır. İşlemler API işlem düzeyinde ve depolama hizmeti düzeyinde raporlanır. Kapasite, depolama hizmeti düzeyinde raporlanır. Ölçüm verileri şu şekilde kullanılabilir:
 - Depolama hizmeti kullanımını çözümleyin.
 - Depolama hizmetinde yapılan isteklerle ilgili sorunları tanılayın.
 - Hizmet kullanan uygulamaların performansını geliştirir.
 
- Depolama Analizi ölçümler, varsayılan olarak yeni depolama hesapları için etkinleştirilmiştir. [Azure Portal](https://portal.azure.com/)ölçümleri yapılandırabilirsiniz. Daha fazla bilgi için, [Azure Portal depolama hesabını izleme](./storage-monitor-storage-account.md)bölümüne bakın. Ayrıca, REST API veya istemci kitaplığı aracılığıyla Depolama Analizi programlı bir şekilde etkinleştirebilirsiniz. Her hizmet için Depolama Analizi etkinleştirmek üzere hizmet özelliklerini ayarlama işlemlerini kullanın.  
+ Depolama Analizi ölçümler, varsayılan olarak yeni depolama hesapları için etkinleştirilmiştir. [Azure Portal](https://portal.azure.com/)ölçümleri PowerShell kullanarak veya Azure CLI kullanarak yapılandırabilirsiniz. Adım adım yönergeler için bkz. [Azure Storage analitik ölçümlerini etkinleştirme ve yönetme (klasik)](./storage-monitor-storage-account.md). Ayrıca, REST API veya istemci kitaplığı aracılığıyla Depolama Analizi programlı bir şekilde etkinleştirebilirsiniz. Her hizmet için Depolama Analizi etkinleştirmek üzere hizmet özelliklerini ayarlama işlemlerini kullanın.  
 
 > [!NOTE]
 > Depolama Analizi ölçümler Azure Blob depolama, Azure kuyruk depolama, Azure Tablo depolama ve Azure dosyaları için kullanılabilir.
@@ -45,9 +47,9 @@ Azure depolama, bir depolama hizmetine yapılan isteklerle ilgili toplanan işle
 
  Bir depolama hesabının blob hizmeti için kapasite verileri günlük olarak kaydedilir ve iki tablo varlığı yazılır. Bir varlık Kullanıcı verileri için istatistikler sağlar ve diğeri `$logs` depolama Analizi tarafından kullanılan blob kapsayıcısı hakkında istatistikler sağlar. *$MetricsCapacityBlob* tablosu aşağıdaki istatistikleri içerir:  
 
-- **Kapasite** : depolama hesabının blob hizmeti tarafından bayt cinsinden kullanılan depolama miktarı.  
-- **Containercount** : depolama hesabının blob hizmetindeki blob kapsayıcıları sayısı.  
-- **ObjectCount** : depolama hesabının blob hizmetindeki işlenen ve kaydedilmemiş blok veya sayfa Blobları sayısı.  
+- **Kapasite**: depolama hesabının blob hizmeti tarafından bayt cinsinden kullanılan depolama miktarı.  
+- **Containercount**: depolama hesabının blob hizmetindeki blob kapsayıcıları sayısı.  
+- **ObjectCount**: depolama hesabının blob hizmetindeki işlenen ve kaydedilmemiş blok veya sayfa Blobları sayısı.  
 
   Kapasite ölçümleri hakkında daha fazla bilgi için bkz. [ölçüm tablosu şeması depolama Analizi](/rest/api/storageservices/storage-analytics-metrics-table-schema).  
 
@@ -66,162 +68,14 @@ Azure depolama, bir depolama hizmetine yapılan isteklerle ilgili toplanan işle
 
  Bu tablolar, bir depolama hizmeti uç noktası için Depolama Analizi etkinleştirildiğinde otomatik olarak oluşturulur. Bunlar, depolama hesabının ad alanı aracılığıyla erişilir. Örneğin, `https://<accountname>.table.core.windows.net/Tables("$MetricsTransactionsBlob")` . Ölçüm tabloları bir listeleme işleminde görünmez ve doğrudan tablo adı ile erişilmelidir.
 
-## <a name="enable-metrics-by-using-the-azure-portal"></a>Azure portal kullanarak ölçümleri etkinleştirin
-[Azure Portal](https://portal.azure.com)ölçümleri etkinleştirmek için şu adımları izleyin:
-
-1. Depolama hesabınıza gidin.
-1. Menü bölmesinde **Tanılama Ayarları ' nı (klasik)** seçin.
-1. **Durumun** **Açık** olarak ayarlandığından emin olun.
-1. İzlemek istediğiniz hizmetler için ölçümleri seçin.
-1. Ölçüm ve günlük verilerinin ne kadar süreyle saklanacağını göstermek için bir bekletme ilkesi belirtin.
-1. **Kaydet** ’i seçin.
-
-[Azure Portal](https://portal.azure.com) Şu anda depolama hesabınızda dakika ölçümlerini yapılandırmanıza izin vermez. PowerShell veya program aracılığıyla dakika ölçümlerini etkinleştirmeniz gerekir.
-
-## <a name="enable-storage-metrics-by-using-powershell"></a>PowerShell kullanarak depolama ölçümlerini etkinleştirme  
-Geçerli ayarları almak için **Get-AzStorageServiceMetricsProperty** Azure PowerShell cmdlet 'ini kullanarak Depolama hesabınızdaki depolama ölçümlerini yapılandırmak için yerel makinenizde PowerShell kullanabilirsiniz. Geçerli ayarları değiştirmek için **set-AzStorageServiceMetricsProperty** cmdlet 'ini kullanın.  
-
-Depolama ölçümlerini denetleyen cmdlet 'ler şu parametreleri kullanır:  
-
-* **ServiceType** : olası değerler **BLOB** , **kuyruk** , **tablo** ve **dosyadır** .
-* **Metricstype** : olası değerler **saat** ve **dakikadır** .  
-* **Metricslevel** : olası değerler şunlardır:
-   * **Hiçbiri** : izlemeyi kapatır.
-   * **Hizmet** : blob, kuyruk, tablo ve dosya hizmetleri için toplanan giriş ve çıkış, kullanılabilirlik, gecikme süresi ve başarı yüzdeleri gibi ölçümleri toplar.
-   * **ServiceAndApi** : hizmet ölçümlerine ek olarak, Azure depolama hizmeti API 'sindeki her depolama işlemi için aynı ölçüm kümesini toplar.
-
-Örneğin, aşağıdaki komut, Depolama hesabınızdaki blob hizmeti için dakika ölçümlerinde, bekletme dönemi beş güne ayarlanmış olarak geçer: 
-
-> [!NOTE]
-> Bu komut, komutunu kullanarak Azure aboneliğinizde oturum açmış olduğunuzu varsayar `Connect-AzAccount` .
-
-```powershell
-$storageAccount = Get-AzStorageAccount -ResourceGroupName "<resource-group-name>" -AccountName "<storage-account-name>"
-
-Set-AzStorageServiceMetricsProperty -MetricsType Minute -ServiceType Blob -MetricsLevel ServiceAndApi  -RetentionDays 5 -Context $storageAccount.Context
-```  
-
-* `<resource-group-name>`Yer tutucu değerini kaynak grubunuzun adıyla değiştirin.      
-* `<storage-account-name>`Yer tutucu değerini depolama hesabınızın adıyla değiştirin.
-
-
-
-Aşağıdaki komut, varsayılan depolama hesabınızdaki blob hizmeti için geçerli saatlik ölçüm düzeyini ve bekletme günlerini alır:  
-
-```powershell
-Get-AzStorageServiceMetricsProperty -MetricsType Hour -ServiceType Blob -Context $storagecontext.Context
-```  
-
-Azure PowerShell cmdlet 'lerinin Azure aboneliğinizle çalışacak şekilde nasıl yapılandırılacağı ve kullanılacak varsayılan depolama hesabının nasıl ayarlanacağı hakkında bilgi için, bkz. [Azure PowerShell 'Yi yükleyip yapılandırma](/powershell/azure/).  
-
-## <a name="enable-storage-metrics-programmatically"></a>Depolama ölçümlerini programlı olarak etkinleştir  
-Depolama ölçümlerini denetlemek için Azure portal veya Azure PowerShell cmdlet 'lerini kullanmanın yanı sıra Azure Storage API 'Lerinden birini de kullanabilirsiniz. Örneğin, bir .NET dili kullanıyorsanız Azure Storage istemci kitaplığını kullanabilirsiniz.  
-
-**Cloudblobclient** , **cloudqueueclient** , **Cloudtableclient** ve **Cloudfileclient** sınıflarının hepsi, bir **serviceproperties** nesnesini parametre olarak alan **setserviceproperties** ve **SetServicePropertiesAsync** gibi yöntemlere sahiptir. Depolama ölçümlerini yapılandırmak için **Serviceproperties** nesnesini kullanabilirsiniz. Örneğin, aşağıdaki C# kod parçacığında saatlik sıra ölçümleri için ölçüm düzeyinin ve bekletme günlerinin nasıl değiştirileceği gösterilmektedir:  
-
-```csharp
-var storageAccount = CloudStorageAccount.Parse(connStr);  
-var queueClient = storageAccount.CreateCloudQueueClient();  
-var serviceProperties = queueClient.GetServiceProperties();  
-
-serviceProperties.HourMetrics.MetricsLevel = MetricsLevel.Service;  
-serviceProperties.HourMetrics.RetentionDays = 10;  
-
-queueClient.SetServiceProperties(serviceProperties);  
-```  
-
-Depolama ölçümlerini yapılandırmak için .NET dili kullanma hakkında daha fazla bilgi için bkz. [.net Için Azure Storage istemci kitaplıkları](/dotnet/api/overview/azure/storage).  
-
-REST API kullanarak depolama ölçümlerini yapılandırma hakkında genel bilgi için bkz. [depolama Analizi etkinleştirme ve yapılandırma](/rest/api/storageservices/Enabling-and-Configuring-Storage-Analytics).  
-
-##  <a name="view-storage-metrics"></a>Depolama ölçümlerini görüntüleme  
-Depolama hesabınızı izlemek için Depolama Analizi ölçümleri yapılandırdıktan sonra, Depolama Analizi ölçümleri Depolama hesabınızdaki bir dizi iyi bilinen tabloya kaydeder. [Azure Portal](https://portal.azure.com)saatlik ölçümleri görüntülemek için grafikleri yapılandırabilirsiniz:
-
-1. [Azure Portal](https://portal.azure.com)depolama hesabınıza gidin.
-1. Ölçümlerini görüntülemek istediğiniz hizmetin menü bölmesinde **ölçümler (klasik)** öğesini seçin.
-1. Yapılandırmak istediğiniz grafiği seçin.
-1. **Grafik Düzenle** bölmesinde **zaman aralığını** , **grafik türünü** ve grafikte görüntülenmesini istediğiniz ölçümleri seçin.
-
-Azure portal depolama hesabınızın menü bölmesinin **izleme (klasik)** bölümünde [Uyarı kurallarını](#metrics-alerts)yapılandırabilirsiniz. Örneğin, belirli bir ölçüm belirli bir değere ulaştığında size bildirimde bulunmak için e-posta uyarıları gönderebilirsiniz.
-
-Daha uzun vadeli depolama için ölçümleri indirmek veya yerel olarak analiz etmek istiyorsanız, bir araç kullanmanız veya tabloları okumak için kod yazmanız gerekir. Analiz için dakika ölçümlerini indirmeniz gerekir. Depolama hesabınızdaki tüm tabloları listeleyerek tablolar görünmez, ancak bunlara doğrudan ad ile erişebilirsiniz. Birçok depolama tarama aracı bu tabloları algılar ve bunları doğrudan görüntülemenizi sağlar. Kullanılabilir araçların listesi için bkz. [Azure Storage istemci araçları](./storage-explorers.md).
-
-|Ölçümler|Tablo adları|Notlar| 
-|-|-|-|  
-|Saatlik ölçümler|$MetricsHourPrimaryTransactionsBlob<br /><br /> $MetricsHourPrimaryTransactionsTable<br /><br /> $MetricsHourPrimaryTransactionsQueue<br /><br /> $MetricsHourPrimaryTransactionsFile|15 Ağustos 2013 ' den önceki sürümlerde bu tablolar şu şekilde bilinmektedir:<br /><br /> $MetricsTransactionsBlob<br /><br /> $MetricsTransactionsTable<br /><br /> $MetricsTransactionsQueue<br /><br /> Dosya hizmeti ölçümleri 5 Nisan 2015 sürümünden itibaren kullanılabilir.|  
-|Dakikalık ölçümler|$MetricsMinutePrimaryTransactionsBlob<br /><br /> $MetricsMinutePrimaryTransactionsTable<br /><br /> $MetricsMinutePrimaryTransactionsQueue<br /><br /> $MetricsMinutePrimaryTransactionsFile|Yalnızca PowerShell veya programlı programlama kullanılarak etkinleştirilebilir.<br /><br /> Dosya hizmeti ölçümleri 5 Nisan 2015 sürümünden itibaren kullanılabilir.|  
-|Kapasite|$MetricsCapacityBlob|Yalnızca blob hizmeti.|  
-
-Bu tablolara yönelik şemaların tam ayrıntıları için bkz. [ölçüm tablosu şeması depolama Analizi](/rest/api/storageservices/storage-analytics-metrics-table-schema). Aşağıdaki örnek satırlar yalnızca kullanılabilir sütunların bir alt kümesini gösterir, ancak depolama ölçümlerinin bu ölçümleri kaydetme yolunun bazı önemli özelliklerini gösterir:  
-
-|PartitionKey|RowKey|Zaman damgası|TotalRequests|TotalBillableRequests|TotalIngress|TotalEgress|Kullanılabilirlik|AverageE2ELatency|AverageServerLatency|PercentSuccess| 
-|-|-|-|-|-|-|-|-|-|-|-|  
-|20140522T1100|kullanıcısını Bütün|2014-05-22T11:01:16.7650250 Z|7|7|4003|46801|100|104,4286|6,857143|100|  
-|20140522T1100|kullanıcısını Queryenlikler|2014-05-22T11:01:16.7640250 Z|5|5|2694|45951|100|143,8|7.8|100|  
-|20140522T1100|kullanıcısını QueryEntity|2014-05-22T11:01:16.7650250 Z|1|1|538|633|100|3|3|100|  
-|20140522T1100|kullanıcısını UpdateEntity|2014-05-22T11:01:16.7650250 Z|1|1|771|217|100|9|6|100|  
-
-Bu dakikalık ölçüm verileri örneğinde, bölüm anahtarı dakika çözünürlüğündeki zamanı kullanır. Satır anahtarı, satırda depolanan bilgi türünü tanımlar. Bilgiler, erişim türünden ve istek türünden oluşur:  
-
--   Erişim türü **Kullanıcı veya** **sistemdir** ; burada **Kullanıcı** , depolama hizmetine yönelik tüm Kullanıcı isteklerini ifade eder ve **sistem** , depolama Analizi tarafından yapılan isteklere başvurur.  
--   İstek türü **Tümü** , bu durumda bir Özet satırdır veya **Queryentity** veya **updateentity** gibi belirli API 'yi tanımlar.  
-
-Bu örnek veri, tek bir dakikalık (11 ' den başlayarak) tüm kayıtları gösterir. bu nedenle, **Queryentities** isteklerinin sayısı artı **Queryentity** Isteklerinin sayısı artı **updateentity** isteklerinin sayısı yedi ' a kadar bir değer ekler. Bu toplam, **Kullanıcı: ALL** satırında gösterilir. Benzer şekilde, Kullanıcı üzerindeki ortalama uçtan uca gecikme 104,4286 ' u türetebilirsiniz **:** ((143,8 * 5) + 3 + 9)/7.  
-
 ## <a name="metrics-alerts"></a>Ölçüm uyarıları
-[Azure Portal](https://portal.azure.com) uyarı ayarlamayı düşünün, böylece depolama hizmetlerinizin davranışındaki önemli değişiklikler konusunda otomatik olarak bilgilendirilirsiniz. Bu ölçüm verilerini ayrılmış bir biçimde indirmek için bir Depolama Gezgini aracı kullanırsanız, verileri çözümlemek için Microsoft Excel 'i kullanabilirsiniz. Kullanılabilir Depolama Gezgini araçlarının bir listesi için bkz. [Azure Storage istemci araçları](./storage-explorers.md). **Uyarı (klasik)** bölmesinde, depolama hesabı menü bölmesinde **izleme (klasik)** bölümünde erişilebilen uyarıları yapılandırabilirsiniz.
+[Azure Portal](https://portal.azure.com) uyarı ayarlamayı düşünün, böylece depolama hizmetlerinizin davranışındaki önemli değişiklikler konusunda otomatik olarak bilgilendirilirsiniz. Adım adım yönergeler için bkz. [ölçüm uyarıları oluşturma](storage-monitor-storage-account.md#create-metric-alerts).
+
+Bu ölçüm verilerini ayrılmış bir biçimde indirmek için bir Depolama Gezgini aracı kullanırsanız, verileri çözümlemek için Microsoft Excel 'i kullanabilirsiniz. Kullanılabilir Depolama Gezgini araçlarının bir listesi için bkz. [Azure Storage istemci araçları](./storage-explorers.md).
 
 > [!IMPORTANT]
 > Bir depolama olayı ile buna karşılık gelen saatlik veya dakikalık ölçüm verileri kaydedilirken bir gecikme olabilir. Dakikalık ölçümler söz konusu olduğunda, birkaç dakikalık veriler aynı anda yazılabilir. Bu sorun, geçerli dakikalık işlem için daha önceki dakikadan elde edilen işlemlere neden olabilir. Bu sorun oluştuğunda, uyarı hizmeti yapılandırılan uyarı aralığı için kullanılabilir tüm ölçüm verilerine sahip olmayabilir, bu da uyarıların beklenmedik şekilde tetiklerine neden olabilir.
 >
-
-## <a name="access-metrics-data-programmatically"></a>Ölçüm verilerine programlama yoluyla erişin  
-Aşağıdaki listede, bir dizi dakika için dakikalık ölçümlere erişen örnek C# kodu gösterilmektedir ve sonuçlar bir konsol penceresinde görüntülenir. Kod örneği, depolamada ölçüm tablolarına erişimi kolaylaştıran **CloudAnalyticsClient** sınıfını Içeren Azure Storage istemci kitaplığı sürüm 4. x veya üstünü kullanır. 
-
-> [!NOTE]
-> **CloudAnalyticsClient** sınıfı, .net Için Azure Blob depolama istemci kitaplığı V12 ' na dahil değildir. **31 ağustos 2023** ' de, *Klasik ölçümler* olarak da bilinen depolama Analizi ölçümler kullanımdan kaldırılacak. Daha fazla bilgi için [resmi duyuruya](https://azure.microsoft.com/updates/azure-storage-classic-metrics-will-be-retired-on-31-august-2023/) bakın. Klasik ölçümler kullanıyorsanız, bu tarihten önce Azure Izleyici 'de ölçümlere geçiş yapmanızı öneririz. 
-
-```csharp
-private static void PrintMinuteMetrics(CloudAnalyticsClient analyticsClient, DateTimeOffset startDateTime, DateTimeOffset endDateTime)  
-{  
- // Convert the dates to the format used in the PartitionKey.  
- var start = startDateTime.ToUniversalTime().ToString("yyyyMMdd'T'HHmm");  
- var end = endDateTime.ToUniversalTime().ToString("yyyyMMdd'T'HHmm");  
-
- var services = Enum.GetValues(typeof(StorageService));  
- foreach (StorageService service in services)  
- {  
-     Console.WriteLine("Minute Metrics for Service {0} from {1} to {2} UTC", service, start, end);  
-     var metricsQuery = analyticsClient.CreateMinuteMetricsQuery(service, StorageLocation.Primary);  
-     var t = analyticsClient.GetMinuteMetricsTable(service);  
-     var opContext = new OperationContext();  
-     var query =  
-             from entity in metricsQuery  
-             // Note, you can't filter using the entity properties Time, AccessType, or TransactionType  
-             // because they are calculated fields in the MetricsEntity class.  
-             // The PartitionKey identifies the DataTime of the metrics.  
-             where entity.PartitionKey.CompareTo(start) >= 0 && entity.PartitionKey.CompareTo(end) <= 0   
-             select entity;  
-
-     // Filter on "user" transactions after fetching the metrics from Azure Table storage.  
-     // (StartsWith is not supported using LINQ with Azure Table storage.)  
-     var results = query.ToList().Where(m => m.RowKey.StartsWith("user"));  
-     var resultString = results.Aggregate(new StringBuilder(), (builder, metrics) => builder.AppendLine(MetricsString(metrics, opContext))).ToString();  
-     Console.WriteLine(resultString);  
- }  
-}  
-
-private static string MetricsString(MetricsEntity entity, OperationContext opContext)  
-{  
- var entityProperties = entity.WriteEntity(opContext);  
- var entityString =  
-         string.Format("Time: {0}, ", entity.Time) +  
-         string.Format("AccessType: {0}, ", entity.AccessType) +  
-         string.Format("TransactionType: {0}, ", entity.TransactionType) +  
-         string.Join(",", entityProperties.Select(e => new KeyValuePair<string, string>(e.Key.ToString(), e.Value.PropertyAsObject.ToString())));  
- return entityString;  
-}  
-```  
 
 ## <a name="billing-on-storage-metrics"></a>Depolama ölçümlerinde faturalandırma
 Ölçümler için tablo varlıkları oluşturmak için yazma istekleri, tüm Azure depolama işlemleri için geçerli olan standart ücretler üzerinden ücretlendirilir.  

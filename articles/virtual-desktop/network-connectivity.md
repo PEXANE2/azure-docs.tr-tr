@@ -6,12 +6,12 @@ author: gundarev
 ms.topic: conceptual
 ms.date: 11/16/2020
 ms.author: denisgun
-ms.openlocfilehash: 4c0017a36d84973a4d99c49a5ea33faeb189b35f
-ms.sourcegitcommit: 18046170f21fa1e569a3be75267e791ca9eb67d0
+ms.openlocfilehash: e4149864e16196b695d38a8c46ab5af835453412
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/16/2020
-ms.locfileid: "94639414"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99221219"
 ---
 # <a name="understanding-windows-virtual-desktop-network-connectivity"></a>Windows Sanal Masaüstü Ağ bağlantısını anlama
 
@@ -50,7 +50,7 @@ Windows sanal masaüstü oturumu ana bilgisayarı başlatıldığında, uzak mas
 
 ## <a name="connection-security"></a>Bağlantı güvenliği
 
-TLS 1,2, istemcilerden ve oturum konaklarından başlatılan tüm bağlantılar için Windows sanal masaüstü altyapısı bileşenlerine kullanılır.
+TLS 1,2, istemcilerden ve oturum konaklarından başlatılan tüm bağlantılar için Windows sanal masaüstü altyapısı bileşenlerine kullanılır. Windows sanal masaüstü, [Azure ön kapısının](../frontdoor/front-door-faq.md#what-are-the-current-cipher-suites-supported-by-azure-front-door)kullandığı TLS 1,2 şifrelemeleri kullanır. Hem istemci bilgisayarlarının hem de oturum ana bilgisayarlarının bu şifrelemeleri kullanabilmesini sağlamak önemlidir.
 Ters bağlantı taşıması için hem istemci hem de oturum ana bilgisayarı Windows sanal masaüstü ağ geçidine bağlanır. TCP bağlantısı kurulduktan sonra, istemci veya oturum ana bilgisayarı Windows Sanal Masaüstü Ağ geçidinin sertifikasını doğrular.
 Temel taşıma kurulduktan sonra, RDP, oturum ana bilgisayarı sertifikalarını kullanarak istemci ile oturum ana bilgisayarı arasında iç içe geçmiş bir TLS bağlantısı kurar. Varsayılan olarak, RDP şifrelemesi için kullanılan sertifika, dağıtım sırasında işletim sistemi tarafından kendi kendine oluşturulmuştur. İsterseniz, müşteriler kuruluş sertifika yetkilisi tarafından verilen merkezi olarak yönetilen sertifikalar dağıtabilir. Sertifikaları yapılandırma hakkında daha fazla bilgi için bkz. [Windows Server belgeleri](/troubleshoot/windows-server/remote/remote-desktop-listener-certificate-configurations).
 

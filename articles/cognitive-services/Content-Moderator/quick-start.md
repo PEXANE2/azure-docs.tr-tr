@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: quickstart
-ms.date: 09/29/2020
+ms.date: 01/29/2021
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: İçerik Aracı, içerik denetleme
-ms.openlocfilehash: c026c42fe3c7a7f3f0d6b80e3123904077c104cf
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: f8ad9c135fea4e582e6ba47764d0401936f8c295
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905222"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99221185"
 ---
 # <a name="quickstart-try-content-moderator-on-the-web"></a>Hızlı başlangıç: Web üzerinde Content Moderator deneyin
 
@@ -88,6 +88,6 @@ Veya kodunuzda denetleme API 'Lerini kullanmaya başlamak için sonraki adımlar
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Kendi uygulamanızda denetleme API 'Lerinin nasıl kullanılacağını öğrenin.
-- Görüntü denetlemeyi uygulayın. Resimleri taramak ve Etiketler, güvenirlik puanları ve diğer ayıklanan bilgileri kullanarak görüntüleri taramak ve olası yetişkin ve akıllı içerikleri algılamak için [API konsolunu](try-image-api.md) veya bir [istemci kitaplığını veya REST API hızlı](client-libraries.md) başlangıcı izleyin.
-- Metin denetlemeyi uygulayın. Olası küfür, makine destekli istenmeyen metin sınıflandırması (Önizleme) ve kişisel veriler için metin içeriğini taramak üzere [API konsolunu](try-text-api.md) veya bir [istemci kitaplığını veya REST API hızlı](client-libraries.md) başlangıcı ' nı kullanın.
+- Görüntü denetlemeyi uygulayın. Etiketler, güven puanları ve diğer ayıklanan bilgileri kullanarak görüntüleri taramak ve olası yetişkinlere yönelik içeriği algılamak için [API konsolunu](try-image-api.md) kullanın veya bir [hızlı](client-libraries.md) başlangıcı izleyin.
+- Metin denetlemeyi uygulayın. Olası küfür, kişisel veriler ve diğer istenmeyen metinler için metin içeriğini taramak üzere [API konsolunu](try-text-api.md) kullanın veya bir [hızlı](client-libraries.md) başlangıcı izleyin.
 - Video denetlemeyi uygulayın. Videoları taramak ve olası yetişkinlere ve kcy içeriğini algılamak için [C# için video denetleme nasıl yapılır kılavuzunu](video-moderation-api.md) izleyin. 

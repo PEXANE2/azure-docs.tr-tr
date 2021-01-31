@@ -10,12 +10,12 @@ ms.service: storage
 ms.subservice: common
 services: storage
 tags: ''
-ms.openlocfilehash: 5f04a20b347e2672d9699551885f5dd16ceaa99c
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 1e6033f9a8f4cecd2429eca67a3d58e54d7ae1f6
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92785604"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99221117"
 ---
 # <a name="troubleshoot-latency-using-storage-analytics-logs"></a>Depolama Analizi günlüklerini kullanarak gecikme sorunlarını giderme
 
@@ -27,7 +27,7 @@ Aşağıdaki adımlarda, Azure Storage analitik günlüklerini kullanarak gecikm
 
 ## <a name="recommended-steps"></a>Önerilen adımlar
 
-1. [Depolama Analizi günlüklerini](./storage-analytics-logging.md#download-storage-logging-log-data)indirin.
+1. [Depolama Analizi günlüklerini](./manage-storage-analytics-logs.md#download-storage-logging-log-data)indirin.
 
 2. Ham biçim günlüklerini tablo biçimine dönüştürmek için aşağıdaki PowerShell betiğini kullanın:
 
@@ -99,10 +99,10 @@ Aşağıdaki adımlarda, Azure Storage analitik günlüklerini kullanarak gecikm
 
    | Blob türü |RequestStatus =<br>Başarılı|RequestStatus =<br>'LARıNıN NetworkError|Öneri|
    |---|---|---|---|
-   |GetBlob|Evet|Hayır|[**GetBlob işlemi:** RequestStatus = başarılı](#getblob-operation-requeststatus--success)|
-   |GetBlob|Hayır|Evet|[**GetBlob işlemi:** RequestStatus = (SAS) NetworkError](#getblob-operation-requeststatus--sasnetworkerror)|
-   |PutBlob|Evet|Hayır|[**PUT işlemi:** RequestStatus = başarılı](#put-operation-requeststatus--success)|
-   |PutBlob|Hayır|Evet|[**PUT işlemi:** RequestStatus = (SAS) NetworkError](#put-operation-requeststatus--sasnetworkerror)|
+   |GetBlob|Yes|Hayır|[**GetBlob işlemi:** RequestStatus = başarılı](#getblob-operation-requeststatus--success)|
+   |GetBlob|Hayır|Yes|[**GetBlob işlemi:** RequestStatus = (SAS) NetworkError](#getblob-operation-requeststatus--sasnetworkerror)|
+   |PutBlob|Yes|Hayır|[**PUT işlemi:** RequestStatus = başarılı](#put-operation-requeststatus--success)|
+   |PutBlob|Hayır|Yes|[**PUT işlemi:** RequestStatus = (SAS) NetworkError](#put-operation-requeststatus--sasnetworkerror)|
 
 ## <a name="status-results"></a>Durum sonuçları
 

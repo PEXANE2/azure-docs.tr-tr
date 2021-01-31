@@ -7,16 +7,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: quickstart
-ms.date: 09/30/2020
+ms.date: 01/29/2021
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: Belge işleme
-ms.openlocfilehash: a1cf919e17e22cb6280dce27faceb7cd034a6962
-ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
+ms.openlocfilehash: 813f5a06915ca7f5dfc0f4cc9a3f9b3e232ca31a
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/01/2021
-ms.locfileid: "97845535"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99221100"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>Örnek etiketleme aracını kullanarak form tanıyıcı modelini etiketlerle eğitme
 
@@ -202,7 +202,7 @@ Ardından, Etiketler (Etiketler) oluşturacak ve bunları modelin tanımasını 
    1. **+** Yeni bir etiket oluşturmak için tıklayın.
    1. Etiket adını girin.
    1. Etiketi kaydetmek için ENTER tuşuna basın.
-1. Ana düzenleyicide, vurgulanan metin öğelerinden sözcükler seçmek için tıklayın. _V 2.1 önizlemesinde. 2_ Ayrıca radyo düğmeleri ve onay kutuları gibi _seçim işaretlerini_ anahtar değer çiftleri olarak seçmek için de tıklayabilirsiniz. Form tanıyıcı, değer olarak seçim işaretinin "seçili" veya "seçilmemiş" olup olmadığını belirler.
+1. Ana düzenleyicide, vurgulanan metin öğelerinden sözcükler seçmek için tıklayın. _V 2.1 Preview. 2_ API 'sinde, anahtar değer çiftleri olarak radyo düğmeleri ve onay kutuları gibi _seçim işaretlerini_ seçmek için de tıklayabilirsiniz. Form tanıyıcı, değer olarak seçim işaretinin "seçili" veya "seçilmemiş" olup olmadığını belirler.
 1. Uygulamak istediğiniz etikete tıklayın veya ilgili klavye tuşuna basın. Sayı tuşları ilk 10 etiketi için kısayol tuşu olarak atanır. Etiket Düzenleyicisi bölmesindeki yukarı ve aşağı ok simgelerini kullanarak etiketlerinizi yeniden düzenleyebilirsiniz.
     > [!Tip]
     > Formlarınızı etiketleyerek aşağıdaki ipuçlarını göz önünde bulundurun.
@@ -246,7 +246,7 @@ Aşağıdaki değer türleri ve Çeşitlemeler Şu anda destekleniyor:
 > 
 > `dmy` `mdy` Tarih biçimlendirme çalışması için bir biçim (,,) belirtmeniz gerekir `ymd` .
 >
-> Aşağıdaki karakterler Tarih sınırlayıcıları olarak kullanılabilir: `, - / . \` . Boşluk, sınırlayıcı olarak kullanılamaz. Örnek:
+> Aşağıdaki karakterler Tarih sınırlayıcıları olarak kullanılabilir: `, - / . \` . Boşluk, sınırlayıcı olarak kullanılamaz. Örneğin:
 > * 01, 01, 2020
 > * 01-01-2020
 > * 01/01/2020
@@ -290,7 +290,7 @@ Bu özellik şu anda v 2.1 sürümünde kullanılabilir. Önizleme.
 
 Model Oluşturma özelliği sayesinde tek bir model kimliği altında 100 adede kadar model oluşturabilirsiniz. Oluşturduğunuz model kimliğiyle analiz gerçekleştirdiğinizde Form Tanıma hizmeti öncelikle gönderdiğiniz formu sınıflandırır, en uygun modelle eşleştirir ve ardından modele ait sonuçları döndürür. Bu, gelen formların birden çok şablondan birine ait olabileceği durumlarda faydalıdır.
 
-Örnek etiketleme aracında modeller oluşturmak için sol taraftaki model oluşturma (birleştirme oku) simgesine tıklayın. Sol tarafta, birlikte oluşturmak istediğiniz modelleri seçin. Oklar simgesi olan modeller zaten oluşturulmuş modellerdir. "Oluştur" düğmesine tıklayın. Açılan pencerede yeni oluşturulan modelinizi adlandırın ve "Oluştur" a tıklayın. İşlem tamamlandığında, yeni oluşturulan modeliniz listede görünmelidir. 
+Örnek etiketleme aracında modeller oluşturmak için sol taraftaki model oluşturma (birleştirme oku) simgesine tıklayın. Sol tarafta, birlikte oluşturmak istediğiniz modelleri seçin. Oklar simgesi olan modeller zaten oluşturulmuş modellerdir. "Oluştur" düğmesine tıklayın. Açılır pencerede yeni oluşturulan modelinizi adlandırın ve "Oluştur" a tıklayın. İşlem tamamlandığında, yeni oluşturulan modeliniz listede görünmelidir. 
 
 :::image type="content" source="../media/label-tool/model-compose.png" alt-text="Model oluşturma UX görünümü.":::
 

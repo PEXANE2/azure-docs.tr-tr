@@ -1,14 +1,14 @@
 ---
 title: 'Öğretici: uyumluluğu zorlamak için ilke oluşturma'
 description: Bu öğreticide, standartları zorlamak, maliyetleri denetlemek, güvenliği korumak ve kurumsal çapta tasarım ilkelerini uygulamak için ilkeleri kullanırsınız.
-ms.date: 10/05/2020
+ms.date: 01/29/2021
 ms.topic: tutorial
-ms.openlocfilehash: bf3da82abcdcada1fc38df29efc988a1805c3020
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: a643e7ccede4966719972694ea29eeb77789595e
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96005444"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99221202"
 ---
 # <a name="tutorial-create-and-manage-policies-to-enforce-compliance"></a>Öğretici: uyumluluğu zorlamak için ilke oluşturma ve yönetme
 
@@ -72,6 +72,10 @@ Azure İlkesi ile uyumluluğu zorlamanın ilk adımı bir ilke tanımı atamakt�
 
 1. Bu ilke tanımı [değiştirme](../concepts/effects.md#modify) efektini kullandığından, **yönetilen kimlik oluşturma** otomatik olarak denetlenir. **İzinler** , ilke tanımına göre otomatik olarak _katkı_ olarak ayarlanır. Daha fazla bilgi için [yönetilen kimlikler](../../../active-directory/managed-identities-azure-resources/overview.md) ve [düzeltme güvenliğinin işleyişi](../how-to/remediate-resources.md#how-remediation-security-works) bölümlerine bakın.
 
+1. Sihirbazın üst kısmındaki **uyumsuz iletiler** sekmesini seçin.
+
+1. **Uyumsuzluk Iletisini** _Bu kaynak için gerekli etikete sahip değil_ olarak ayarlayın. Bu özel ileti, düzenli değerlendirme sırasında bir kaynak reddedildiğinde veya uyumlu olmayan kaynaklar için görüntülenir.
+
 1. Sihirbazın üst kısmındaki **gözden geçir + oluştur** sekmesini seçin.
 
 1. Seçimlerinizi gözden geçirin ve ardından sayfanın alt kısmındaki **Oluştur** ' u seçin.
@@ -128,7 +132,7 @@ Artık bir yerleşik ilke tanımı atadığınıza göre, Azure İlkesi'yle daha
 
    Daha fazla Azure Ilke örneği görüntülemek için bkz. [Azure ilke örnekleri](../samples/index.md).
 
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.
 
 ## <a name="create-a-policy-definition-with-rest-api"></a>REST API ile ilke tanımı oluşturma
 

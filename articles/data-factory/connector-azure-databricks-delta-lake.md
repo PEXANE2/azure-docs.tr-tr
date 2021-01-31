@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/24/2020
-ms.openlocfilehash: c7e8f96e7917173aaec308b8ae5218684a722483
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: e32b93c669bffd382b1eb648111f9b8931b07eac
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97507481"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99221168"
 ---
 # <a name="copy-data-to-and-from-azure-databricks-delta-lake-by-using-azure-data-factory"></a>Azure Databricks Delta Gölü 'a ve Azure Data Factory kullanarak veri kopyalama
 
@@ -41,8 +41,8 @@ Genel olarak, Azure Data Factory çeşitli ihtiyaçlarınızı karşılamak içi
 
 Bu Azure Databricks Delta Lake bağlayıcısını kullanmak için, Azure Databricks bir küme ayarlamanız gerekir.
 
-- Delta Gölü verileri kopyalamak için kopyalama etkinliği, özgün kaynağınız veya bir hazırlama Data Factory alanı olan bir Azure depolama alanındaki verileri okumak için Azure Databricks kümesini çağırır. Bu, kaynak verileri yerleşik hazırlanmış kopya aracılığıyla yazar. [Kaynak olarak Delta](#delta-lake-as-source)Gölü hakkında daha fazla bilgi edinin.
-- Benzer şekilde, Delta Gölü verileri kopyalamak için kopyalama etkinliği, özgün havuzunuzu ya da Data Factory yerleşik olarak hazırlanan kopya aracılığıyla son havuza veri yazmaya devam ettiği bir hazırlama alanı olan bir Azure depolama birimine veri yazmak için Azure Databricks kümesini çağırır. [Kanal olarak Delta Lake](#delta-lake-as-sink)'ten daha fazla bilgi edinin.
+- Delta Gölü verileri kopyalamak için kopyalama etkinliği, özgün kaynağınız veya bir hazırlama Data Factory alanı olan bir Azure depolama alanındaki verileri okumak için Azure Databricks kümesini çağırır. Bu, kaynak verileri yerleşik hazırlanmış kopya aracılığıyla yazar. [Kanal olarak Delta Lake](#delta-lake-as-sink)'ten daha fazla bilgi edinin.
+- Benzer şekilde, Delta Gölü verileri kopyalamak için kopyalama etkinliği, özgün havuzunuzu ya da Data Factory yerleşik olarak hazırlanan kopya aracılığıyla son havuza veri yazmaya devam ettiği bir hazırlama alanı olan bir Azure depolama birimine veri yazmak için Azure Databricks kümesini çağırır. [Kaynak olarak Delta](#delta-lake-as-source)Gölü hakkında daha fazla bilgi edinin.
 
 Databricks kümesinin, kaynak/havuz/hazırlama için kullanılan depolama kapsayıcısı/dosya sistemi ve Delta Gölü tabloları yazmak istediğiniz kapsayıcı/dosya sistemi için Azure Blob veya Azure Data Lake Storage 2. hesabına erişimi olması gerekir.
 
@@ -69,7 +69,7 @@ Kopyalama etkinliği yürütülürken, yapılandırdığınız küme sonlandır�
 
 Küme yapılandırma ayrıntıları için bkz. [kümeleri yapılandırma](/azure/databricks/clusters/configure).
 
-## <a name="get-started"></a>Kullanmaya başlayın
+## <a name="get-started"></a>başlarken
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -116,7 +116,7 @@ Aşağıdaki özellikler Azure Databricks Delta Lake veri kümesi için destekle
 | :-------- | :----------------------------------------------------------- | :-------------------------- |
 | tür      | Veri kümesinin Type özelliği **AzureDatabricksDeltaLakeDataset** olarak ayarlanmalıdır. | Yes                         |
 | database | Veritabanının adı. |Kaynak için Hayır, havuz için Evet  |
-| table | Delta tablosunun adı. |Kaynak için Hayır, havuz için Evet  |
+| tablo | Delta tablosunun adı. |Kaynak için Hayır, havuz için Evet  |
 
 **Örnek:**
 

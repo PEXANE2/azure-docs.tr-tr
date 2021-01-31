@@ -483,8 +483,10 @@
           href: ../common/storage-account-move.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: İzleme (klasik)
           items:
-            - name: Azure portalında izleme (klasik)
-              href: ../common/storage-monitor-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Ölçümleri etkinleştirme ve yönetme (klasik)
+              href: ../common/manage-storage-analytics-metrics.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Günlükleri etkinleştirme ve yönetme (klasik)
+              href: ../common/manage-storage-analytics-logs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Sorun giderme
           items:
             - name: Gecikme sorunları

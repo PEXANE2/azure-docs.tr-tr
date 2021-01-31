@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/18/2021
 ms.author: jeedes
-ms.openlocfilehash: 3628cb6dbb397b561ff91ba6b6747293a39fd602
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 1d66396b2d97a7f33158f91025f5735c7714cd65
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98632791"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99221065"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-github-ae"></a>Öğretici: GitHub AE ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -71,7 +71,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. Azure portal, **GITHUB AE** uygulama tümleştirmesi sayfasında **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
 1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
-1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
+1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** kalem simgesine tıklayın.
 
    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -93,11 +93,19 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     ![image](common/default-attributes.png)
 
-1. GitHub AE uygulaması, yukarıdakine ek olarak aşağıda gösterilen SAML yanıtına daha fazla öznitelik geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
-    
-    | Name |  Kaynak özniteliği|
-    | ----------- | --------- |
-    | yönetici | true |
+1. **Talep & Kullanıcı özniteliklerini** düzenleyin.
+
+1. **Yeni talep Ekle** ' ye tıklayın ve metin kutusuna **yönetici** olarak adı girin.
+
+1. **Talep koşullarını** genişletin ve **Kullanıcı türünden** **Üyeler** ' i seçin.
+
+1. **Grupları seçin** ' e tıklayın ve bu talebi eklemek istediğiniz **grubu** ARAYıN; burada üyelerinin GHAE için Yöneticiler olması gerekir.
+
+1. **Kaynak** için **özniteliği** seçin ve **değer** için **true** girin. 
+
+10. **Kaydet**’e tıklayın.
+
+    ![talebi Yönet](./media/github-ae-tutorial/administrator.png)
 
     > [!NOTE]
     > Talep ekleme yönergelerini öğrenmek için lütfen [bağlantıyı](https://docs.github.com/en/github-ae@latest/admin/authentication/configuring-authentication-and-provisioning-for-your-enterprise-using-azure-ad)izleyin.
