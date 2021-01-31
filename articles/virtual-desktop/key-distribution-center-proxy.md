@@ -3,19 +3,24 @@ title: Kerberos Anahtar Dağıtım Merkezi proxy Windows sanal masaüstü 'Nü a
 description: Bir Windows sanal masaüstü konak havuzunu Kerberos Anahtar Dağıtım Merkezi proxy kullanacak şekilde ayarlama.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 01/26/2021
+ms.date: 01/30/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: f123659941eaeb3b8ceeb6a999abf836eb9cf5ea
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: 102ddc1c8937c66a92416ddb6d5f2d25f2a3c349
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98798479"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99219664"
 ---
-# <a name="configure-a-kerberos-key-distribution-center-proxy"></a>Kerberos Anahtar Dağıtım Merkezi proxy yapılandırma
+# <a name="configure-a-kerberos-key-distribution-center-proxy-preview"></a>Kerberos Anahtar Dağıtım Merkezi ara sunucusunu yapılandırma (Önizleme)
 
-Bu makalede, konak havuzunuz için bir Kerberos Key Distribiution Center (KDC) proxy 'sinin nasıl yapılandırılacağı gösterilir. Bu proxy, kuruluşların Kurumsal sınırlarının dışında Kerberos ile kimlik doğrulamasını sağlar. Örneğin, KDC proxy 'yi dış istemciler için akıllı kart kimlik doğrulamasını etkinleştirmek üzere kullanabilirsiniz.
+> [!IMPORTANT]
+> Bu özellik şu anda genel önizleme aşamasındadır.
+> Bu önizleme sürümü, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve bunu üretim iş yükleri için kullanmanızı önermiyoruz. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir.
+> Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+Bu makalede, konak havuzunuz için Kerberos Anahtar Dağıtım Merkezi (KDC) proxy 'sinin (Önizleme) nasıl yapılandırılacağı gösterilir. Bu proxy, kuruluşların Kurumsal sınırlarının dışında Kerberos ile kimlik doğrulamasını sağlar. Örneğin, KDC proxy 'yi dış istemciler için akıllı kart kimlik doğrulamasını etkinleştirmek üzere kullanabilirsiniz.
 
 ## <a name="how-to-configure-the-kdc-proxy"></a>KDC proxy 'yi yapılandırma
 

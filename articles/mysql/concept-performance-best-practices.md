@@ -1,21 +1,21 @@
 ---
 title: En iyi performans uygulamaları-MySQL için Azure veritabanı
-description: Bu makalede, MySQL için Azure veritabanı 'nın performansını izlemeye ve ayarlamaya yönelik en iyi uygulamalar açıklanmaktadır.
-author: mksuni
-ms.author: sumuth
+description: Bu makalede MySQL için Azure veritabanınızın performansını izlemeye ve ayarlamaya yönelik bazı öneriler açıklanmaktadır.
+author: Bashar-MSFT
+ms.author: bahusse
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 11/23/2020
-ms.openlocfilehash: 30176e2df850e6d2794ab9c1542bcb6a89d8f89f
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.date: 1/28/2021
+ms.openlocfilehash: 46c7952247babd528b230dfa0e70b0eb47878912
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880415"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99217763"
 ---
 # <a name="best-practices-for-optimal-performance-of-your-azure-database-for-mysql---single-server"></a>MySQL için Azure veritabanınızın en iyi performansı için en iyi uygulamalar-tek sunucu
 
-MySQL için Azure veritabanı-tek sunucu ile çalışırken en iyi performansı elde etmek için en iyi uygulamalar hakkında bilgi edinin. Platforma yeni yetenekler eklediğimiz için, bu bölümde ayrıntılı olarak açıklanan en iyi uygulamaları geliştirmeye devam edeceğiz.
+MySQL için Azure veritabanı-tek sunucu ile çalışırken en iyi performansı nasıl alabileceğinizi öğrenin. Platforma yeni yetenekler eklediğimiz için, bu bölümdeki önerilerimizi iyileştirmemiz için devam edeceğiz.
 
 ## <a name="physical-proximity"></a>Fiziksel yakınlık
 
@@ -23,7 +23,7 @@ MySQL için Azure veritabanı-tek sunucu ile çalışırken en iyi performansı 
 
 ## <a name="accelerated-networking"></a>Hızlandırılmış Ağ
 
-Azure sanal makinesi, Azure Kubernetes veya App Services kullanıyorsanız, uygulama sunucusu için hızlandırılmış ağ kullanın. Hızlandırılmış ağ, bir VM 'ye tek köklü g/ç Sanallaştırması (SR-ıOV) sağlar ve ağ performansını büyük ölçüde geliştirir. Bu yüksek performanslı yol, desteklenen VM türlerinde en zorlu ağ iş yükleri ile kullanım için, gecikme süresi, değişim ve CPU kullanımını azaltan ana bilgisayarı veri yolundan atlar.
+Azure sanal makinesi, Azure Kubernetes veya uygulama Hizmetleri kullanıyorsanız, uygulama sunucusu için hızlandırılmış ağ kullanın. Hızlandırılmış ağ, bir VM 'ye tek köklü g/ç Sanallaştırması (SR-ıOV) sağlar ve ağ performansını büyük ölçüde geliştirir. Bu yüksek performanslı yol, desteklenen VM türlerinde en zorlu ağ iş yükleri ile kullanım için, gecikme süresi, değişim ve CPU kullanımını azaltan ana bilgisayarı veri yolundan atlar.
 
 ## <a name="connection-efficiency"></a>Bağlantı verimliliği
 
@@ -47,8 +47,25 @@ Yeni bir bağlantı kurmak her zaman pahalı ve zaman alıcı bir görevdir. Bir
 MySQL için Azure veritabanı performansı en iyi uygulaması, çalışma kümesi neredeyse tamamen bellekte yer alacak şekilde yeterli miktarda RAM ayırmaya yöneliktir. 
 
 - [MySQL sunucusunun ölçümlerini](./concepts-monitoring.md)kullanarak [sınırlara](./concepts-pricing-tiers.md) ulaşılması halinde kullanılan bellek yüzdesinin olup olmadığını denetleyin. 
-- Sunucuların sınırlara ulaştığı şekilde bu tür uyarılar için uyarı ayarlayın. Tanımlanan sınırlara bağlı olarak, veritabanı SKU 'sunun ölçeğini, daha yüksek işlem boyutuna veya daha iyi bir fiyatlandırma katmanına göre ölçeklendirerek, performansı önemli ölçüde artarak elde edin. 
+- Sunucuların sınırlara ulaştığı şekilde bu tür uyarılar için uyarı ayarlayın. Tanımlanan sınırlara bağlı olarak, veritabanı SKU 'sunun ölçeğini, daha yüksek işlem boyutuna veya daha iyi bir fiyatlandırma katmanına göre ölçeklendirerek, performansa göre önemli bir artış elde edin. 
 - Ölçek işleminden sonra performans numaralarınızı önemli ölçüde düşene kadar ölçeği ölçeklendirin. Bir VERITABANı örneğinin ölçümlerini izleme hakkında bilgi için bkz. [MySQL db ölçümleri](./concepts-monitoring.md#metrics).
+ 
+## <a name="use-innodb-buffer-pool-warmup"></a>InnoDB arabellek havuzu Warmup kullanın
+
+MySQL sunucusu için Azure veritabanı 'nı yeniden başlattıktan sonra, tablolar sorgulandığı için, depolamada bulunan veri sayfaları yüklenir ve bu, sorguların ilk yürütülmesi için gecikme süresini arttığı ve performansı düşürür. Bu, gecikme süresine duyarlı iş yükleri için kabul edilebilir olmayabilir. 
+
+InnoDB arabellek havuzunun kullanıldığı ısınma, bir süre önce arabellek havuzunda bulunan disk sayfalarını DML veya belirli satırlara erişmek için işlem işlemleri yerine yeniden başlatmadan önce yeniden başlatarak ısınma süresini kısaltır.
+
+MySQL için Azure veritabanı sunucunuzu yeniden başlattıktan sonra ısınma süresini azaltabilirsiniz. Bu, [InnoDB arabellek havuzu sunucu parametrelerini](https://dev.mysql.com/doc/refman/8.0/en/innodb-preload-buffer-pool.html)yapılandırarak bir performans avantajı sunar. InnoDB, sunucu kapatılmadan her bir arabellek havuzu için en son kullanılan sayfaların yüzdesini kaydeder ve bu sayfaları sunucu başlangıcında geri yükler.
+
+Ayrıca, gelişmiş performansın sunucu için daha uzun başlangıç zamanı harcamasıyla birlikte geldiğini unutmayın. Bu parametre etkinleştirildiğinde sunucu başlatma ve yeniden başlatma zamanının, sunucuda sağlanan ıOPS 'ye bağlı olarak artması beklenir. 
+
+Bu süre boyunca sunucu kullanılamadığından başlatma/yeniden başlatma performansının kabul edilebilir olmasını sağlamak için test etmeyi ve yeniden başlatma süresini izlemenizi öneririz. Bu parametrenin 1000 'den az sağlanan ıOPS (veya başka bir deyişle, sağlanan depolama alanı 335 GB 'den az olduğunda) kullanılması önerilmez.
+
+Sunucu kapatılırken arabellek havuzunun durumunu kaydetmek için sunucu parametresini `innodb_buffer_pool_dump_at_shutdown` olarak ayarlayın `ON` . Benzer şekilde, sunucu `innodb_buffer_pool_load_at_startup` `ON` başlatma sırasında arabellek havuzu durumunu geri yüklemek için sunucu parametresini olarak ayarlayın. Sunucu parametresinin değerini indirerek ve ince ayar yaparak başlangıç/yeniden başlatma sırasında etkiyi denetleyebilirsiniz `innodb_buffer_pool_dump_pct` . Varsayılan olarak, bu parametre olarak ayarlanır `25` .
+
+> [!Note]
+> InnoDB arabellek havuzu ısınma parametreleri yalnızca 16 TB 'a kadar depolama alanı bulunan genel amaçlı depolama sunucularında desteklenir. [MySQL Için Azure veritabanı depolama seçenekleri](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers#storage)hakkında daha fazla bilgi edinin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

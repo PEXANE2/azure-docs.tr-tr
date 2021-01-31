@@ -2,13 +2,13 @@
 title: İletileri, yükleri ve Serileştirmeyi Azure Service Bus | Microsoft Docs
 description: Bu makalede, Azure Service Bus iletiler, yük, ileti yönlendirme ve serileştirme hakkında genel bir bakış sunulmaktadır.
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: d426489776dff652cbf72d640f3e74b1bc8e30d4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 01/29/2021
+ms.openlocfilehash: db1989004e60c305341e54e62e42f31e40e47487
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85341681"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99219188"
 ---
 # <a name="messages-payloads-and-serialization"></a>İletiler, yükler ve serileştirme
 
@@ -22,7 +22,7 @@ Service Bus ileti, Service Bus hiçbir biçimde hizmet tarafında hiçbir şekil
  
 AMQP protokol düzeyinde kullanılan eşdeğer adlar parantez içinde listelenmiştir. 
 
-| Özellik Adı                         | Açıklama                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| Özellik Adı                         | Description                                                                                                                                                                                                                                                                                                                                                                                                                               |
 |---------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |  [ContentType](/dotnet/api/microsoft.azure.servicebus.message.contenttype) (içerik türü)           | İsteğe bağlı olarak, RFC2045 biçimini izleyen bir tanımlayıcı ile ileti yükünü açıklar, Bölüm 5; Örneğin, `application/json` .                                                                                                                                                                                                                                                                                             |
 |  [CorrelationId](/dotnet/api/microsoft.azure.servicebus.message.correlationid#Microsoft_Azure_ServiceBus_Message_CorrelationId) (bağıntı kimliği)       | Bir uygulamanın, bağıntı amaçları doğrultusunda ileti için bir bağlam belirtmesini sağlar; Örneğin, yanıtmakta olan bir iletinin **MessageID** ' i yansıtmaktadır.                                                                                                                                                                                                                                                                  |
@@ -57,7 +57,7 @@ Daha önce [, özel olarak](/dotnet/api/microsoft.azure.servicebus.message.to), 
 - **Basit istek/yanıt**: Yayımcı bir kuyruğa ileti gönderir ve ileti tüketicisini bir yanıt bekler. Yanıt almak için yayımcı, yanıtların teslim edilmesini beklediği bir kuyruğa sahip olur. Bu kuyruğun adresi giden iletinin **ReplyTo** özelliğinde ifade edilir. Tüketici yanıt verdiğinde, işlenen iletinin **MessageID** özelliğini yanıt Iletisinin **CorrelationId** özelliğine kopyalar ve iletiyi **ReplyTo** özelliği tarafından belirtilen hedefe gönderir. Bir ileti, uygulama bağlamına bağlı olarak birden çok yanıt verebilir.
 - **Çok noktaya yayın isteği/yanıtı**: önceki düzenin bir çeşitlemesi olarak, yayımcı iletiyi bir konuya gönderir ve birden çok abone iletiyi kullanmak için uygun hale gelir. Abonelerin her biri, daha önce açıklanan biçimde yanıt verebilir. Bu model bulma veya toplama çağrı senaryolarında kullanılır ve yanıtlayan genellikle kendisini bir Kullanıcı özelliği veya yük içinde tanımlar. **ReplyTo** bir konuya işaret ediyorsa, bu tür bir bulma yanıtı kümesi bir hedef kitleye dağıtılabilir.
 - **Çoğullama**: Bu oturum özelliği, ilgili iletilerin her oturumunda (veya grubunun), eşleşen **SessionID** değerleriyle tanımlanan her bir oturuma (veya gruba) belirli bir alıcıya yönlendirilerek, alıcı kilit altında oturum tuttuğunda, ilişkili ileti akışlarının tek bir kuyruk veya abonelik üzerinden çoğullaştırmayı sağlar. [Buradaki](message-sessions.md)oturumların ayrıntıları hakkında daha fazla bilgi edinin.
-- **Çoğullanmış istek/yanıt**: Bu oturum özelliği, birden çok yayımcıların bir yanıt kuyruğu paylaşmasına izin veren Multiplexed yanıtlarını sağlar. **Replytosessionıd**ayarlanarak, yayımcı bu değeri yanıt iletisinin **SessionID** özelliğine kopyalamak için tüketiciye yol açabilir. Yayımlama sırasının veya konusunun oturum-Aware olması gerekmez. İleti gönderilirken, yayımcı daha sonra bir oturum alıcısını koşullu kabul ederek belirli bir **SessionID** 'nin sırada bir oturum açmaya başlamasını sağlayabilir. 
+- **Çoğullanmış istek/yanıt**: Bu oturum özelliği, birden çok yayımcıların bir yanıt kuyruğu paylaşmasına izin veren Multiplexed yanıtlarını sağlar. **Replytosessionıd** ayarlanarak, yayımcı bu değeri yanıt iletisinin **SessionID** özelliğine kopyalamak için tüketiciye yol açabilir. Yayımlama sırasının veya konusunun oturum-Aware olması gerekmez. İleti gönderilirken, yayımcı daha sonra bir oturum alıcısını koşullu kabul ederek belirli bir **SessionID** 'nin sırada bir oturum açmaya başlamasını sağlayabilir. 
 
 Bir Service Bus ad alanının içinde yönlendirme, otomatik iletme zincirleme ve konu abonelik kuralları kullanılarak gerçekleştirilebilir. Ad alanları genelinde yönlendirme [Azure LogicApps kullanılarak](https://azure.microsoft.com/services/logic-apps/)gerçekleştirilebilir. Önceki listede gösterildiği gibi, **to** özelliği daha sonra kullanılmak üzere ayrılmıştır ve sonuç olarak, özel olarak etkinleştirilmiş bir özelliği olan aracı tarafından yorumlanabilecek. Yönlendirmeyi uygulamak isteyen uygulamalar, bu özelliği, **to** özelliğine göre değil, Kullanıcı özelliklerine göre gerçekleştirmelidir. Ancak, bunun yapılması uyumluluk sorunlarına neden olmaz.
 
@@ -70,8 +70,6 @@ Java veya .NET Standard türevlerinden farklı olarak, Service Bus API 'sinin .N
 Eski SBMP protokolünü kullanırken, bu nesneler varsayılan ikili seri hale getirici ile veya dışarıdan sağlanan seri hale getirici ile serileştirilir. AMQP protokolünü kullanırken, nesne bir AMQP nesnesine serileştirilir. Alıcı, bu nesneleri [GetBody \<T> ()](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1) yöntemiyle alabilir ve beklenen türü sağlayabilir. AMQP ile, nesneler **ArrayList** ve **IDictionary<dize, nesne>** nesneleri ve herhangi bir AMQP istemcisi tarafından kodu çözebilen bir AMQP grafiğine serileştirilir. 
 
 Bu gizli serileştirme Magic uygun olsa da, uygulamalar nesne serileştirmesi için açık denetim almalıdır ve nesne grafiklerini bir iletiye dahil etmeden önce akışlara çevirip, alıcı tarafında da ters bir değer alır. Bu, birlikte çalışabilen sonuçlar verir. Ayrıca AMQP güçlü bir ikili kodlama modeline sahip olsa da, AMQP mesajlaşma ekosistemine bağlı olduğundan ve HTTP istemcilerinin bu tür yükleri çözmede sorun yaşaymasına dikkat edilmelidir. 
-
-Genellikle JSON ve Apache avro, yapılandırılmış veriler için yük biçimleri olarak önerilir.
 
 .NET Standard ve Java API 'Sı çeşitleri yalnızca Byte dizilerini kabul eder, bu da uygulamanın nesne serileştirme denetimini işlemesi gerektiği anlamına gelir. 
 

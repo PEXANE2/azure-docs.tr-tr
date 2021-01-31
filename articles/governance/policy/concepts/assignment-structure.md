@@ -1,14 +1,14 @@
 ---
 title: İlke atama yapısının ayrıntıları
 description: Değerlendirme için kaynaklarla ilke tanımlarını ve parametreleri ilişkilendirmek üzere Azure Ilkesi tarafından kullanılan ilke atama tanımını açıklar.
-ms.date: 09/22/2020
+ms.date: 01/29/2021
 ms.topic: conceptual
-ms.openlocfilehash: e930e9ddcc04846a35c8db7784a349007c71580b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 12acbe368c9ccd6fa5654d3394e0fecb286984bf
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90904078"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99219575"
 ---
 # <a name="azure-policy-assignment-structure"></a>Azure İlkesi atama yapısı
 
@@ -22,6 +22,7 @@ Bir ilke ataması oluşturmak için JSON kullanırsınız. İlke ataması için 
 - zorlama modu
 - Dışlanan kapsamlar
 - ilke tanımı
+- uyumsuzluk iletileri
 - parameters
 
 Örneğin, aşağıdaki JSON, _Donotenzorlama_ modunda dinamik parametrelerle bir ilke atamasını göstermektedir:
@@ -37,6 +38,11 @@ Bir ilke ataması oluşturmak için JSON kullanırsınız. İlke ataması için 
         "enforcementMode": "DoNotEnforce",
         "notScopes": [],
         "policyDefinitionId": "/subscriptions/{mySubscriptionID}/providers/Microsoft.Authorization/policyDefinitions/ResourceNaming",
+        "nonComplianceMessages": [
+            {
+                "message": "Resource names must start with 'DeptA' and end with '-LC'."
+            }
+        ],
         "parameters": {
             "prefix": {
                 "value": "DeptA"
@@ -61,16 +67,16 @@ Tüm Azure Ilke örnekleri [Azure ilke örneklerimizle](../samples/index.md).
 
 Bu özellik aşağıdaki değerlere sahiptir:
 
-|Mod |JSON değeri |Tür |El ile düzelt |Etkinlik günlüğü girişi |Açıklama |
+|Mod |JSON değeri |Tür |El ile düzelt |Etkinlik günlüğü girişi |Description |
 |-|-|-|-|-|-|
-|Etkin |Varsayılan |string |Evet |Evet |İlke etkisi, kaynak oluşturma veya güncelleştirme sırasında zorlanır. |
-|Devre dışı |Donotenzorlamalı |string |Evet |Hayır | İlke etkisi, kaynak oluşturma veya güncelleştirme sırasında zorlanmaz. |
+|Etkin |Varsayılan |string |Yes |Yes |İlke etkisi, kaynak oluşturma veya güncelleştirme sırasında zorlanır. |
+|Devre dışı |Donotenzorlamalı |string |Yes |Hayır | İlke etkisi, kaynak oluşturma veya güncelleştirme sırasında zorlanmaz. |
 
-İlke veya girişim tanımında **Enforcementmode** belirtilmemişse, _varsayılan_ değer kullanılır. **Enforcementmode** , _Donotenzorlamalı_olarak ayarlandığında bile, dağıtım [görevleri](../how-to/remediate-resources.md) [deployifnotexists](./effects.md#deployifnotexists) ilkeleri için başlatılabilir.
+İlke veya girişim tanımında **Enforcementmode** belirtilmemişse, _varsayılan_ değer kullanılır. **Enforcementmode** , _Donotenzorlamalı_ olarak ayarlandığında bile, dağıtım [görevleri](../how-to/remediate-resources.md) [deployifnotexists](./effects.md#deployifnotexists) ilkeleri için başlatılabilir.
 
 ## <a name="excluded-scopes"></a>Dışlanan kapsamlar
 
-Atamanın **kapsamı** tüm alt kaynak kapsayıcılarını ve alt kaynakları içerir. Bir alt kaynak kapsayıcısına veya alt kaynağa tanım uygulanmazsa, **Notscopes**ayarları ayarlanarak her biri değerlendirmeden _dışlanabilirler_ . Bu özellik bir veya daha fazla kaynak kapsayıcısının veya kaynağın değerlendirmesinden DIŞLANMASINI sağlamak için bir dizidir. **Notscopes** , ilk atama oluşturulduktan sonra eklenebilir veya güncelleştirilir.
+Atamanın **kapsamı** tüm alt kaynak kapsayıcılarını ve alt kaynakları içerir. Bir alt kaynak kapsayıcısına veya alt kaynağa tanım uygulanmazsa, **Notscopes** ayarları ayarlanarak her biri değerlendirmeden _dışlanabilirler_ . Bu özellik bir veya daha fazla kaynak kapsayıcısının veya kaynağın değerlendirmesinden DIŞLANMASINI sağlamak için bir dizidir. **Notscopes** , ilk atama oluşturulduktan sonra eklenebilir veya güncelleştirilir.
 
 > [!NOTE]
 > _Dışlanan_ bir kaynak, _muaf tutulan_ bir kaynaktan farklıdır. Daha fazla bilgi için bkz. [Azure ilkesinde kapsamı anlama](./scope.md).
@@ -79,6 +85,32 @@ Atamanın **kapsamı** tüm alt kaynak kapsayıcılarını ve alt kaynakları i�
 
 Bu alan, bir ilke tanımının ya da bir girişim tanımının tam yol adı olmalıdır.
 `policyDefinitionId` dizi değil bir dizedir. Bunun yerine bir [girişim](./initiative-definition-structure.md) kullanmak için birden çok ilke genellikle birlikte atanırsa, bu önerilir.
+
+## <a name="non-compliance-messages"></a>Uyumsuzluk iletileri
+
+Bir kaynağın neden ilke veya girişim tanımıyla uyumsuz olduğunu tanımlayan özel bir ileti ayarlamak için `nonComplianceMessages` atama tanımında ayarlayın. Bu düğüm, girdilerden oluşan bir dizidir `message` . Bu özel ileti, uyumsuz olmayan ve isteğe bağlı olarak varsayılan hata iletisine ek niteliğindedir.
+
+```json
+"nonComplianceMessages": [
+    {
+        "message": "Default message"
+    }
+]
+```
+
+Atama bir girişim için ise, girişim içindeki her ilke tanımı için farklı iletiler yapılandırılabilirler. İletiler, `policyDefinitionReferenceId` girişim tanımında yapılandırılan değeri kullanır. Ayrıntılar için bkz. [özellik tanımları özellikleri](./initiative-definition-structure.md#policy-definition-properties).
+
+```json
+"nonComplianceMessages": [
+    {
+        "message": "Default message"
+    },
+    {
+        "message": "Message for just this policy definition by reference ID",
+        "policyDefinitionReferenceId": "10420126870854049575"
+    }
+]
+```
 
 ## <a name="parameters"></a>Parametreler
 
@@ -95,7 +127,7 @@ Bu alan, bir ilke tanımının ya da bir girişim tanımının tam yol adı olma
 }
 ```
 
-Bu örnekte, daha önce ilke tanımında tanımlanan parametreler ve ' dir `prefix` `suffix` . Bu ilke ataması `prefix` , **depta** ve `suffix` to **-LC**olarak ayarlanır. Aynı ilke tanımı farklı bir departman için farklı bir parametre kümesiyle yeniden kullanılabilir, ancak esneklik sağlarken ilke tanımlarının çoğaltılmasını ve karmaşıklığını azaltır.
+Bu örnekte, daha önce ilke tanımında tanımlanan parametreler ve ' dir `prefix` `suffix` . Bu ilke ataması `prefix` , **depta** ve `suffix` to **-LC** olarak ayarlanır. Aynı ilke tanımı farklı bir departman için farklı bir parametre kümesiyle yeniden kullanılabilir, ancak esneklik sağlarken ilke tanımlarının çoğaltılmasını ve karmaşıklığını azaltır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

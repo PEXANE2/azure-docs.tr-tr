@@ -5,13 +5,13 @@ author: sr-msft
 ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 02/25/2020
-ms.openlocfilehash: c712af41fdc191cab4fd08c9d8175a849d4f286a
-ms.sourcegitcommit: 0830e02635d2f240aae2667b947487db01f5fdef
+ms.date: 01/29/2021
+ms.openlocfilehash: e74c96e0c03d75f34a16d95d0bed642c1900f558
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/21/2020
-ms.locfileid: "97706779"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99219732"
 ---
 # <a name="backup-and-restore-in-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure veritabanı 'nda yedekleme ve geri yükleme-tek sunucu
 
@@ -82,6 +82,16 @@ Bir noktadan noktaya geri yükleme, birden çok senaryoda faydalıdır. Örneği
 
 Son beş dakika içinde zaman içindeki bir noktaya geri yükleyebilmeniz için bir sonraki işlem günlüğü yedeklemesinin tamamlanmasını beklemeniz gerekebilir.
 
+Bırakılan bir tabloyu geri yüklemek istiyorsanız, 
+1. Kaynak sunucuyu, zaman içinde nokta yöntemini kullanarak geri yükleyin.
+2. Geri yüklenen sunucudan kullanarak tablonun dökümünü alın `pg_dump` .
+3. Özgün sunucudaki kaynak tabloyu yeniden adlandır.
+4. Özgün sunucudaki psql komut satırını kullanarak tablo içeri aktarın.
+5. Geri yüklenen sunucuyu isteğe bağlı olarak silebilirsiniz.
+
+>[!Note]
+> Aynı sunucu için aynı anda birden fazla geri yükleme oluşturmanız önerilir. 
+
 ### <a name="geo-restore"></a>Coğrafi geri yükleme
 
 Sunucunuzu coğrafi olarak yedekli yedeklemeler için yapılandırdıysanız, hizmeti hizmetin kullanılabildiği başka bir Azure bölgesine geri yükleyebilirsiniz. 4 TB 'a kadar depolamayı destekleyen sunucular, coğrafi olarak eşleştirilmiş bölgeye veya 16 TB 'a kadar depolamayı destekleyen herhangi bir bölgeye geri yüklenebilir. 16 TB 'a kadar depolamayı destekleyen sunucular için coğrafi yedeklemeler, 16 TB sunucu destekleyen her bölgede geri yüklenebilir. Desteklenen bölgelerin listesi için [PostgreSQL Için Azure veritabanı fiyatlandırma katmanlarını](concepts-pricing-tiers.md) gözden geçirin.
@@ -97,7 +107,7 @@ Coğrafi geri yükleme sırasında, değiştirilebilecek sunucu yapılandırmas�
 
 Kurtarma mekanizmasından geri yükleme yapıldıktan sonra, kullanıcılarınızın ve uygulamalarınızın yedeklenmesi ve çalışması için aşağıdaki görevleri gerçekleştirmeniz gerekir:
 
-- Yeni sunucu özgün sunucunun yerini alacak şekilde, istemcileri ve istemci uygulamalarını yeni sunucuya yeniden yönlendirin
+- Yeni sunucu özgün sunucunun yerini alacak şekilde, istemcileri ve istemci uygulamalarını yeni sunucuya yeniden yönlendirin. Ayrıca, Kullanıcı adını da olarak değiştirin `username@new-restored-server-name` .
 - Kullanıcıların bağlanabilmesi için uygun sunucu düzeyi güvenlik duvarı ve VNet kurallarının bulunduğundan emin olun. Bu kurallar, özgün sunucudan üzerine kopyalanmaz.
 - Uygun oturum açma ve veritabanı düzeyi izinlerinin yerinde olduğundan emin olun
 - Uyarıları uygun şekilde yapılandırma

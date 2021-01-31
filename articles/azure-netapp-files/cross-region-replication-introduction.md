@@ -12,14 +12,15 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/21/2021
+ms.date: 01/29/2021
 ms.author: b-juche
-ms.openlocfilehash: e51297e8fe5c3dccf43318a066ac5da4a7d24cb2
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.custom: references_regions
+ms.openlocfilehash: fd3e8295820cd9388bd7999d3008b4c583dbf295
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98696100"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99220913"
 ---
 # <a name="cross-region-replication-of-azure-netapp-files-volumes"></a>Azure NetApp Files birimlerinin çapraz bölge çoğaltması
 
@@ -28,26 +29,31 @@ Azure NetApp Files çoğaltma işlevselliği, çapraz bölge birimi çoğaltmas�
 > [!IMPORTANT]
 > Bölgeler arası çoğaltma özelliği şu anda genel önizlemededir. [Azure NetApp Files çapraz bölge çoğaltma eklenebileceğinizi gönderimi sayfası](https://aka.ms/anfcrrpreviewsignup)aracılığıyla özelliğe erişmek için bir eklenebileceğinizi isteği göndermeniz gerekir. Bölgeler arası çoğaltma özelliğini kullanmadan önce Azure NetApp Files ekibinden bir resmi onay e-postası bekleyin.
 
-## <a name="supported-region-pairs"></a>Desteklenen bölge çiftleri
+## <a name="supported-cross-region-replication-pairs"></a><a name="supported-region-pairs"></a>Desteklenen çapraz bölge çoğaltma çiftleri
 
-Azure NetApp Files birim çoğaltması Şu anda aşağıdaki sabit bölge çiftlerinde kullanılabilir:  
+Azure NetApp Files birim çoğaltma, çeşitli [Azure bölgesel çiftleri](/azure/best-practices-availability-paired-regions#azure-regional-pairs) ve çiftler dışında desteklenir. Azure NetApp Files birim çoğaltması Şu anda aşağıdaki bölgeler arasında kullanılabilir:  
 
-* ABD Batı ve ABD Doğu
-* ABD Batı 2 ve ABD Doğu 
-* ABD Orta Güney ve ABD Orta 
-* ABD Orta Güney ve ABD Doğu
-* ABD Orta Güney ve ABD Doğu 2 
-* ABD Doğu ve ABD Doğu 2  
-* ABD Doğu 2 ve ABD Orta 
+### <a name="azure-regional-pairs"></a>Azure bölgesel çiftleri
+
+* Doğu ABD ve Batı ABD
+* Doğu ABD 2 ve Orta ABD
 * Avustralya Doğu ve Avustralya Güneydoğu
 * Kanada Orta ve Kanada Doğu
-* Orta Hindistan ve Güney Hindistan
+* Güney Hindistan ve Orta Hindistan 
 * Almanya Orta Batı ve Almanya Kuzey
 * Japonya Doğu ve Japonya Batı
 * Kuzey Avrupa ve Batı Avrupa
-* Güneydoğu Asya ve Avustralya Doğu
-* UK Güney ve Almanya Orta Batı
 * UK Güney ve UK Batı
+
+### <a name="azure-regional-non-pairs"></a>Azure bölgesel olmayan çiftler
+
+*   Batı ABD 2 ve Doğu ABD
+*   Orta Güney ABD ve Orta ABD
+*   Orta Güney ABD ve Doğu ABD
+*   Orta Güney ABD ve Doğu ABD 2
+*   Doğu ABD ve Doğu ABD 2
+*   Avustralya Doğu ve Güneydoğu Asya 
+*   Almanya Orta Batı ve UK Güney
 
 ## <a name="service-level-objectives"></a>Hizmet düzeyi hedefleri
 

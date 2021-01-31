@@ -9,12 +9,12 @@ ms.date: 01/27/2021
 ms.author: normesta
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: c8807f0200f96dc12a3b3d43fa50a91bec85ed38
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.openlocfilehash: 8172abb5e220f28061c7826af24a5d9a2043f4ad
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99071192"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99219918"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Azure Depolama güvenlik duvarlarını ve sanal ağları yapılandırma
 
@@ -538,11 +538,11 @@ az storage account network-rule list \
 <a id="exceptions"></a>
 <a id="trusted-microsoft-services"></a>
 
-## <a name="grant-access-to-azure-services"></a>Azure hizmetlerine erişim izni verme 
+## <a name="grant-access-to-trusted-azure-services"></a>Güvenilen Azure hizmetlerine erişim izni verme 
 
-Bazı Azure Hizmetleri, ağ kurallarınıza dahil olmayan ağlardan çalışır. Diğer uygulamalar için ağ kurallarını koruyarak, bu tür güvenilir Azure hizmetlerinin depolama hesabına erişimine izin verebilirsiniz. Bu güvenilen hizmetler, depolama hesabınıza güvenli bir şekilde bağlanmak için güçlü kimlik doğrulama kullanır. 
+Bazı Azure Hizmetleri, ağ kurallarınıza dahil olmayan ağlardan çalışır. Diğer uygulamalar için ağ kurallarını koruyarak, bu tür güvenilir Azure hizmetlerinin depolama hesabına erişimine izin verebilirsiniz. Bu güvenilen hizmetler, depolama hesabınıza güvenli bir şekilde bağlanmak için güçlü kimlik doğrulama kullanır.
 
-Ağ kuralı özel durumu oluşturarak güvenilir Azure hizmetlerine erişim izni verebilirsiniz. Adım adım yönergeler için, bu makalenin [özel durumları yönetme](#manage-exceptions) bölümüne bakın. 
+Ağ kuralı özel durumu oluşturarak güvenilir Azure hizmetlerine erişim izni verebilirsiniz. Adım adım yönergeler için, bu makalenin [özel durumları yönetme](#manage-exceptions) bölümüne bakın.
 
 Güvenilen Azure hizmetlerine erişim izni verdiğinizde, aşağıdaki erişim türlerini verirsiniz:
 
@@ -583,17 +583,23 @@ Aşağıdaki tabloda, bu hizmetlerin kaynak örneklerine uygun izin verilirse, d
 | :----------------------------- | :------------------------------------- | :----------------- |
 | Azure API Management           | Microsoft.ApiManagement/service        | İlkeler kullanılarak güvenlik duvarının arkasındaki depolama hesaplarına API Yönetimi hizmeti erişimi sağlar. [Daha fazla bilgi edinin](../../api-management/api-management-authentication-policies.md#use-managed-identity-in-send-request-policy). |
 | Azure Bilişsel Arama         | Microsoft. Search/searchServices        | Bilişsel Arama hizmetlerinin dizin oluşturma, işleme ve sorgulama için depolama hesaplarına erişmesine olanak sağlar. |
-| Azure Bilişsel Hizmetler       | Microsoft. Biliveservıce             | Bilişsel hizmetler 'in depolama hesaplarına erişmesine olanak sağlar. |
+| Azure Bilişsel Hizmetler       | Microsoft. Biliveservıce/hesapları    | Bilişsel hizmetler 'in depolama hesaplarına erişmesine olanak sağlar. |
 | Azure Container Registry Görevleri | Microsoft. ContainerRegistry/kayıt defterleri | ACR görevleri, kapsayıcı görüntüleri oluştururken depolama hesaplarına erişebilir. |
 | Azure Data Factory             | Microsoft. DataFactory/Factory        | ADF çalışma zamanı aracılığıyla depolama hesaplarına erişime izin verir. |
 | Azure Veri Paylaşımı               | Microsoft. DataShare/hesapları           | Veri paylaşımından depolama hesaplarına erişime izin verir. |
+| Azure DevTest Labs             | Microsoft. DevTestLab/Labs              | DevTest Labs aracılığıyla depolama hesaplarına erişime izin verir. |
 | Azure IoT Hub                  | Microsoft. Devices/IotHubs              | IoT Hub 'ından gelen verilerin blob depolamaya yazılmasına izin verir. [Daha fazla bilgi edinin](../../iot-hub/virtual-network-support.md#egress-connectivity-to-storage-account-endpoints-for-routing) |
 | Azure Logic Apps               | Microsoft. Logic/iş akışları              | Mantıksal uygulamaların depolama hesaplarına erişmesini sağlar. [Daha fazla bilgi edinin](../../logic-apps/create-managed-service-identity.md#authenticate-access-with-managed-identity). |
-| Azure Machine Learning Hizmeti | Microsoft.MachineLearningServices      | Yetkili Azure Machine Learning çalışma alanları BLOB depolama alanına deneme çıkış, model ve Günlükler yazar ve verileri okur. [Daha fazla bilgi edinin](../../machine-learning/how-to-network-security-overview.md#secure-the-workspace-and-associated-resources). | 
-| Azure Synapse Analytics       | Microsoft.Sql                          | COPY ifadesini veya PolyBase 'i (adanmış havuzda) veya `openrowset` sunucusuz havuzdaki işlev ve dış tabloları kullanarak belırlı SQL veritabanlarından verilerin içeri ve dışarı aktarılmasını sağlar. [Daha fazla bilgi edinin](../../azure-sql/database/vnet-service-endpoint-rule-overview.md). |
-| Azure SQL Veritabanı       | Microsoft.Sql                          | Güvenlik duvarının arkasındaki depolama hesaplarına denetim verileri [yazılmasına](../../azure-sql/database/audit-write-storage-account-behind-vnet-firewall.md) izin verir. |
-| Azure Stream Analytics         | Microsoft. StreamAnalytics             | Akış işindeki verilerin blob depolamaya yazılmasına izin verir. [Daha fazla bilgi edinin](../../stream-analytics/blob-output-managed-identity.md). |
-| Azure Synapse Analytics        | Microsoft. SYNAPSE/çalışma alanları          | Azure SYNAPSE Analytics 'ten Azure Storage verilerine erişim sağlar. |
+| Azure Machine Learning Hizmeti | Microsoft.MachineLearningServices      | Yetkili Azure Machine Learning çalışma alanları BLOB depolama alanına deneme çıkış, model ve Günlükler yazar ve verileri okur. [Daha fazla bilgi edinin](../../machine-learning/how-to-network-security-overview.md#secure-the-workspace-and-associated-resources). |
+| Azure Media Services           | Microsoft. Media/mediaservices          | Media Services aracılığıyla depolama hesaplarına erişime izin verir. |
+| Azure Geçişi                  | Microsoft. Migrate/migrateprojects      | Azure geçişi aracılığıyla depolama hesaplarına erişime izin verir. |
+| Azure Purview                  | Microsoft. purview/hesapları             | Takiview 'ın depolama hesaplarına erişmesine izin verir. |
+| Azure Remote Rendering         | Microsoft. MixedReality/remoteRenderingAccounts | Uzaktan Işleme aracılığıyla depolama hesaplarına erişime izin verir. |
+| Azure Site Recovery            | Microsoft. RecoveryServices/kasa      | Site Recovery aracılığıyla depolama hesaplarına erişime izin verir. |
+| Azure SQL Veritabanı             | Microsoft.Sql                          | Güvenlik duvarının arkasındaki depolama hesaplarına denetim verileri [yazılmasına](../../azure-sql/database/audit-write-storage-account-behind-vnet-firewall.md) izin verir. |
+| Azure Synapse Analytics        | Microsoft.Sql                          | COPY ifadesini veya PolyBase 'i (adanmış havuzda) veya `openrowset` sunucusuz havuzdaki işlev ve dış tabloları kullanarak belırlı SQL veritabanlarından verilerin içeri ve dışarı aktarılmasını sağlar. [Daha fazla bilgi edinin](../../azure-sql/database/vnet-service-endpoint-rule-overview.md). |
+| Azure Stream Analytics         | Microsoft. StreamAnalytics              | Akış işindeki verilerin blob depolamaya yazılmasına izin verir. [Daha fazla bilgi edinin](../../stream-analytics/blob-output-managed-identity.md). |
+| Azure Synapse Analytics        | Microsoft. SYNAPSE/çalışma alanları           | Azure SYNAPSE Analytics 'ten Azure Storage verilerine erişim sağlar. |
 
 ## <a name="grant-access-to-storage-analytics"></a>Depolama analizlere erişim izni verme
 

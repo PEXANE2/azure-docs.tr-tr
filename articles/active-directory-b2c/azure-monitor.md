@@ -10,13 +10,13 @@ ms.workload: identity
 ms.topic: how-to
 ms.author: mimart
 ms.subservice: B2C
-ms.date: 11/12/2020
-ms.openlocfilehash: 6d40eab12c9726459543d0b69e27b73178eba99f
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.date: 01/29/2021
+ms.openlocfilehash: e44a029c61db5a22513387772c2b0d7a3e4d1a40
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96170627"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99219239"
 ---
 # <a name="monitor-azure-ad-b2c-with-azure-monitor"></a>Azure Izleyici ile Azure AD B2C izleme
 
@@ -31,6 +31,10 @@ Günlük olaylarını şu şekilde yönlendirebilirsiniz:
 ![Azure İzleyici](./media/azure-monitor/azure-monitor-flow.png)
 
 Bu makalede, günlüklerin bir Azure Log Analytics çalışma alanına nasıl aktarılacağı öğrenirsiniz. Daha sonra bir pano oluşturabilir veya Azure AD B2C kullanıcıların etkinliklerini temel alan uyarılar oluşturabilirsiniz.
+
+> [!IMPORTANT]
+> Azure AD B2C günlüklerini farklı izleme çözümlerine veya depoya aktarmayı planlarken, aşağıdakileri göz önünde bulundurun. Azure AD B2C Günlükler kişisel verileri içerir. Bu tür veriler, uygun teknik veya kuruluş ölçüleri kullanılarak yetkisiz veya ayrıcalıklı işleme karşı koruma dahil olmak üzere kişisel verilerin uygun güvenliğine izin veren bir şekilde işlenmelidir.
+
 
 ## <a name="deployment-overview"></a>Dağıtıma genel bakış
 
@@ -48,7 +52,7 @@ Bu dağıtım sırasında, hem Azure AD B2C kiracınızı hem de Azure AD kirac�
 
 İlk olarak, Azure AD B2C verileri alacak hedef Log Analytics çalışma alanını içeren bir kaynak grubu oluşturun veya seçin. Azure Resource Manager şablonunu dağıtırken kaynak grubu adını belirtirsiniz.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Portal araç çubuğunda **Dizin + abonelik** simgesini seçin ve ardından **Azure AD kiracınızı** içeren dizini seçin.
 1. [Bir kaynak grubu oluşturun](../azure-resource-manager/management/manage-resource-groups-portal.md#create-resource-groups) veya var olan bir grubu seçin. Bu örnek, *Azure-AD-B2C-Monitor* adlı bir kaynak grubu kullanır.
 
@@ -56,7 +60,7 @@ Bu dağıtım sırasında, hem Azure AD B2C kiracınızı hem de Azure AD kirac�
 
 **Log Analytics çalışma alanı** , Azure izleyici günlük verileri için benzersiz bir ortamdır. Bu Log Analytics çalışma alanını Azure AD B2C [Denetim günlüklerinden](view-audit-logs.md)veri toplamak ve sonra sorgular ve çalışma kitapları ile görselleştirmek ya da uyarı oluşturmak için kullanacaksınız.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Portal araç çubuğunda **Dizin + abonelik** simgesini seçin ve ardından **Azure AD kiracınızı** içeren dizini seçin.
 1. [Log Analytics çalışma alanı oluşturun](../azure-monitor/learn/quick-create-workspace.md). Bu örnekte, *Azure-AD-B2C-Monitor* adlı bir kaynak grubunda *AzureAdB2C* adlı bir Log Analytics çalışma alanı kullanılmaktadır.
 
@@ -68,7 +72,7 @@ Bu adımda, **hizmet sağlayıcısı** olarak Azure AD B2C kiracınızı seçers
 
 İlk olarak, Azure AD B2C dizininizin **KIRACı kimliğini** (dizin kimliği olarak da bilinir) alın.
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 1. Portal araç çubuğunda **Dizin + abonelik** simgesini seçin ve ardından **Azure AD B2C** kiracınızı içeren dizini seçin.
 1. **Azure Active Directory** seçin, **genel bakış**' ı seçin.
 1. **KIRACı kimliğini** kaydedin.
@@ -89,7 +93,7 @@ Yönetimi kolaylaştırmak için, her rol için Azure AD Kullanıcı *grupları*
 
 Daha sonra, daha önce oluşturduğunuz Azure AD kaynak grubuna Azure AD B2C erişimi veren bir Azure Resource Manager şablonu oluşturacaksınız (örneğin, *Azure-AD-B2C-Monitor*). Azure portal açan ve şablonu doğrudan portalda yapılandırmanıza ve dağıtmanıza olanak tanıyan **Azure 'A dağıt** düğmesini kullanarak şablonu GitHub örneğinden dağıtın. Bu adımlar için, Azure AD kiracınızda (Azure AD B2C kiracısında değil) oturum açtığınızdan emin olun.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. Portal araç çubuğunda **Dizin + abonelik** simgesini seçin ve ardından **Azure AD** kiracınızı içeren dizini seçin.
 3. Azure portal açmak ve şablonu doğrudan portalda dağıtmak için **Azure 'A dağıt** düğmesini kullanın. Daha fazla bilgi için bkz. [Azure Resource Manager şablonu oluşturma](../lighthouse/how-to/onboard-customer.md#create-an-azure-resource-manager-template).
 
@@ -100,7 +104,7 @@ Daha sonra, daha önce oluşturduğunuz Azure AD kaynak grubuna Azure AD B2C eri
    | Alan   | Tanım |
    |---------|------------|
    | Abonelik |  *Azure-AD-B2C-Monitor* kaynak grubunun oluşturulduğu Azure aboneliğini içeren dizini seçin. |
-   | Region| Kaynağın dağıtılacağı bölgeyi seçin.  | 
+   | Bölge| Kaynağın dağıtılacağı bölgeyi seçin.  | 
    | Msp teklif adı| Bu tanımı açıklayan bir ad. Örneğin, *izleme Azure AD B2C*.  |
    | Msp teklif açıklaması| Teklifinizin kısa bir açıklaması. Örneğin, *Azure AD B2C 'de Azure Izleyicisini etkinleştirilir*.|
    | Kiracı kimliğiyle yönetiliyor| Azure AD B2C kiracınızın **KIRACı kimliği** (dizin kimliği olarak da bilinir). |

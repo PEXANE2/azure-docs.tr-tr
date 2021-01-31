@@ -12,12 +12,12 @@ ms.date: 05/19/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 68e282f192b87b9f2217e0727753e7d37ff1aeb1
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: 18a3216855516156792524dc577ecef725d3119d
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97516105"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99218783"
 ---
 # <a name="developer-notes-for-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C özel ilkeler için geliştirici notları
 
@@ -29,7 +29,7 @@ Kullanılabilir özel ilke seçeneklerinin büyük bir kısmında genel kullanı
 ## <a name="features-that-are-generally-available"></a>Genel kullanıma açık olan özellikler
 
 - Özel ilkeler kullanarak özel kimlik doğrulama Kullanıcı yolculukları yazın ve karşıya yükleyin.
-    - Talep sağlayıcıları arasındaki değişimleri adım adım kabul eden kullanıcı hakkındaki adımları açıklama.
+    - Talep sağlayıcılar arasında değişim olarak Kullanıcı yolculukları adımını açıkla.
     - Kullanıcı yolculukları 'nda koşullu dallanma tanımlayın.
 - Özel kimlik doğrulama Kullanıcı yolculukları 'nda REST API özellikli hizmetlerle birlikte çalışır.
 - Openıdconnect protokolüyle uyumlu kimlik sağlayıcılarıyla federasyona bağlayın.
@@ -37,14 +37,14 @@ Kullanılabilir özel ilke seçeneklerinin büyük bir kısmında genel kullanı
 
 ## <a name="responsibilities-of-custom-policy-feature-set-developers"></a>Özel ilke özelliğinin sorumlulukları-geliştiricilerin set
 
-El ile ilke yapılandırması, Azure AD B2C temel alınan platforma alt düzey erişim sağlar ve benzersiz bir güven çerçevesinin oluşturulmasına neden olur. Özel kimlik sağlayıcılarının, güven ilişkilerinin, dış hizmetlerle tümleştirmelerin yanı sıra adım adım iş akışlarının tasarımı ve yapılandırması için methodical yaklaşımı olması gerekir.
+El ile ilke yapılandırması, Azure AD B2C temel alınan platforma alt düzey erişim sağlar ve benzersiz bir güven çerçevesinin oluşturulmasına neden olur. Özel kimlik sağlayıcılarının, güven ilişkilerinin, dış hizmetlerle tümleştirmelerin ve adım adım iş akışlarının birçok olası permütasyon, tasarım ve yapılandırma için methodical bir yaklaşım gerektirir.
 
 Özel ilke özelliği kümesini kullanan geliştiriciler aşağıdaki yönergelere uymalıdır:
 
 - Özel ilkelerin ve anahtar/gizli dizi yönetiminin yapılandırma dili hakkında bilgi sahibi olun. Daha fazla bilgi için bkz. [TrustFrameworkPolicy](trustframeworkpolicy.md).
 - Senaryoların ve özel tümleştirmelerin sahipliğini alın. Çalışmanızı belgeleyin ve canlı site kuruluşunuza bildirin.
 - Methodical senaryo testi gerçekleştirin.
-- En az bir geliştirme ve test ortamı ve bir üretim ortamı ile yazılım geliştirme ve hazırlama en iyi uygulamalarını izleyin.
+- Yazılım geliştirme ve en iyi hazırlama uygulamalarını izleyin. En az bir geliştirme ve test ortamı önerilir.
 - İle tümleştirdiğinizde, kimlik sağlayıcılarının ve hizmetlerin yeni geliştirmeleri hakkında bilgi sahibi olun. Örneğin, gizli değişiklikler ve hizmette zamanlanan ve zamanlanmamış değişiklikler üzerinde değişiklik takip edin.
 - Etkin izlemeyi ayarlayın ve üretim ortamlarının yanıt hızını izleyin. Application Insights ile tümleştirme hakkında daha fazla bilgi için bkz. [Azure Active Directory B2C: günlükleri toplama](analytics-with-application-insights.md).
 - İletişim e-posta adreslerini Azure aboneliğinde güncel tutun ve Microsoft canlı site ekibi e-postalarına yanıt vermeye devam edin.
@@ -58,12 +58,12 @@ El ile ilke yapılandırması, Azure AD B2C temel alınan platforma alt düzey e
 
 ## <a name="features-by-stage-and-known-issues"></a>Aşamalara ve bilinen sorunlara göre Özellikler
 
-Özel ilke/kimlik deneyimi çerçevesi özellikleri sabit ve hızlı geliştirme aşamasındadır. Aşağıdaki tablo, özelliklerin ve bileşen kullanılabilirliğinin bir dizinidir.
+Özel ilke özellikleri, sabit geliştirme aşamasındadır. Aşağıdaki tablo, özelliklerin ve bileşen kullanılabilirliğinin bir dizinidir.
 
 
 ### <a name="protocols-and-authorization-flows"></a>Protokoller ve yetkilendirme akışları
 
-| Özellik | Geliştirme | Önizleme | GA | Notlar |
+| Öne çıkan özelliği | Geliştirme | Önizleme | GA | Notlar |
 |-------- | :-----------: | :-------: | :--: | ----- |
 | [OAuth2 yetkilendirme kodu](authorization-code-flow.md) |  |  | X |  |
 | OAuth2 yetkilendirme kodu, PKI CE |  |  | X | [Ortak istemciler ve tek sayfalı uygulamalar](authorization-code-flow.md)  |
@@ -76,7 +76,7 @@ El ile ilke yapılandırması, Azure AD B2C temel alınan platforma alt düzey e
 
 ### <a name="identify-providers-federation"></a>Sağlayıcıları federasyonunu tanımla 
 
-| Özellik | Geliştirme | Önizleme | GA | Notlar |
+| Öne çıkan özelliği | Geliştirme | Önizleme | GA | Notlar |
 |-------- | :-----------: | :-------: | :--: | ----- |
 | [OpenID Connect](openid-connect-technical-profile.md) |  |  | X | Örneğin, Google +.  |
 | [OAuth2](oauth2-technical-profile.md) |  |  | X | Örneğin, Facebook.  |
@@ -87,7 +87,7 @@ El ile ilke yapılandırması, Azure AD B2C temel alınan platforma alt düzey e
 
 ### <a name="rest-api-integration"></a>REST API tümleştirme
 
-| Özellik | Geliştirme | Önizleme | GA | Notlar |
+| Öne çıkan özelliği | Geliştirme | Önizleme | GA | Notlar |
 |-------- | :-----------: | :-------: | :--: | ----- |
 | [Temel kimlik doğrulaması ile REST API](secure-rest-api.md#http-basic-authentication) |  |  | X |  |
 | [İstemci sertifikası kimlik doğrulaması ile REST API](secure-rest-api.md#https-client-certificate-authentication) |  |  | X |  |
@@ -95,7 +95,7 @@ El ile ilke yapılandırması, Azure AD B2C temel alınan platforma alt düzey e
 
 ### <a name="component-support"></a>Bileşen desteği
 
-| Özellik | Geliştirme | Önizleme | GA | Notlar |
+| Öne çıkan özelliği | Geliştirme | Önizleme | GA | Notlar |
 | ------- | :-----------: | :-------: | :--: | ----- |
 | [Telefon faktörü kimlik doğrulaması](phone-factor-technical-profile.md) |  |  | X |  |
 | [Azure AD MFA kimlik doğrulaması](multi-factor-auth-technical-profile.md) |  | X |  |  |
@@ -110,7 +110,7 @@ El ile ilke yapılandırması, Azure AD B2C temel alınan platforma alt düzey e
 
 ### <a name="app-ief-integration"></a>App-ıEF tümleştirmesi
 
-| Özellik | Geliştirme | Önizleme | GA | Notlar |
+| Öne çıkan özelliği | Geliştirme | Önizleme | GA | Notlar |
 | ------- | :-----------: | :-------: | :--: | ----- |
 | Sorgu dizesi parametresi `domain_hint` |  |  | X | Talep olarak kullanılabilir, ıDP 'ye geçirilebilir. |
 | Sorgu dizesi parametresi `login_hint` |  |  | X | Talep olarak kullanılabilir, ıDP 'ye geçirilebilir. |
@@ -121,7 +121,7 @@ El ile ilke yapılandırması, Azure AD B2C temel alınan platforma alt düzey e
 
 ### <a name="session-management"></a>Oturum yönetimi
 
-| Özellik | Geliştirme | Önizleme | GA | Notlar |
+| Öne çıkan özelliği | Geliştirme | Önizleme | GA | Notlar |
 | ------- | :-----------: | :-------: | :--: | ----- |
 | [Varsayılan SSO oturum sağlayıcısı](custom-policy-reference-sso.md#defaultssosessionprovider) |  |  | X |  |
 | [Dış oturum açma oturumu sağlayıcısı](custom-policy-reference-sso.md#externalloginssosessionprovider) |  |  | X |  |
@@ -131,7 +131,7 @@ El ile ilke yapılandırması, Azure AD B2C temel alınan platforma alt düzey e
 
 ### <a name="security"></a>Güvenlik
 
-| Özellik | Geliştirme | Önizleme | GA | Notlar |
+| Öne çıkan özelliği | Geliştirme | Önizleme | GA | Notlar |
 |-------- | :-----------: | :-------: | :--: | ----- |
 | İlke anahtarları-oluştur, El Ile, karşıya yükle |  |  | X |  |
 | İlke anahtarları-RSA/CERT, gizlilikler |  |  | X |  |
@@ -139,12 +139,12 @@ El ile ilke yapılandırması, Azure AD B2C temel alınan platforma alt düzey e
 
 ### <a name="developer-interface"></a>Geliştirici arabirimi
 
-| Özellik | Geliştirme | Önizleme | GA | Notlar |
+| Öne çıkan özelliği | Geliştirme | Önizleme | GA | Notlar |
 | ------- | :-----------: | :-------: | :--: | ----- |
 | Azure portalı-ıEF UX |  |  | X |  |
 | İlke karşıya yükleme |  |  | X |  |
 | [Application Insights Kullanıcı yolculuğu günlükleri](troubleshoot-with-application-insights.md) |  | X |  | Geliştirme sırasında sorun giderme için kullanılır.  |
-| [Olay günlüklerini Application Insights](application-insights-technical-profile.md) |  | X |  | Üretimde Kullanıcı akışlarını izlemek için kullanılır. |
+| [Olay günlüklerini Application Insights](analytics-with-application-insights.md) |  | X |  | Üretimde Kullanıcı akışlarını izlemek için kullanılır. |
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

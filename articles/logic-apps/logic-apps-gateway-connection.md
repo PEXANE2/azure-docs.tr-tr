@@ -3,15 +3,15 @@ title: Şirket içindeki veri kaynaklarına erişin
 description: Azure 'da bir veri ağ geçidi kaynağı oluşturarak Azure Logic Apps şirket içi veri kaynaklarına bağlanma
 services: logic-apps
 ms.suite: integration
-ms.reviewer: arthii, divswa, logicappspm
+ms.reviewer: arthii, logicappspm
 ms.topic: article
-ms.date: 08/18/2020
-ms.openlocfilehash: 2dd086ccc45458299cf6b8a7ad83d023055c96ae
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.date: 01/20/2021
+ms.openlocfilehash: 356e63bb0a749ad0f41d886e75971e9b05c7f9dc
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96009270"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99219003"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>Azure Logic Apps'ten şirket içi veri kaynaklarına bağlanma
 
@@ -48,7 +48,7 @@ Azure Logic Apps, şirket içi veri ağ geçidi, bu veri kaynakları için şirk
 * SQL Server
 * Teradata
 
-REST veya SOAP kullanarak, HTTP veya HTTPS üzerinden veri kaynaklarına bağlanan [özel bağlayıcılar](../logic-apps/custom-connector-overview.md) da oluşturabilirsiniz. Ağ geçidinin kendisi ek maliyet gerçekleştirmese de, [Logic Apps fiyatlandırma modeli](../logic-apps/logic-apps-pricing.md) bu bağlayıcılar ve Azure Logic Apps diğer işlemler için geçerlidir.
+REST veya SOAP kullanarak, HTTP veya HTTPS üzerinden veri kaynaklarına bağlanan [özel bağlayıcılar](../logic-apps/custom-connector-overview.md) da oluşturabilirsiniz. Ağ geçidinin kendisi ek maliyet uygulamaz, ancak [Logic Apps fiyatlandırma modeli](../logic-apps/logic-apps-pricing.md) bu bağlayıcılar ve Azure Logic Apps diğer işlemler için geçerlidir.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -57,8 +57,11 @@ REST veya SOAP kullanarak, HTTP veya HTTPS üzerinden veri kaynaklarına bağlan
 * Ağ Geçidi yüklemeniz için kullandığınız [Azure hesabı ve aboneliğiniz](../logic-apps/logic-apps-gateway-install.md#requirements) vardır. Bu Azure hesabı yalnızca tek bir [Azure Active Directory (Azure AD) kiracısına veya dizine](../active-directory/fundamentals/active-directory-whatis.md#terminology)ait olmalıdır. Yalnızca ağ geçidi Yöneticisi Azure 'da ağ geçidi kaynağını oluşturabileceğinden, Azure 'da ağ geçidi kaynağınızı oluşturmak için aynı Azure hesabı ve aboneliğini kullanmanız gerekir. Hizmet sorumluları Şu anda desteklenmiyor.
 
   * Azure 'da bir ağ geçidi kaynağı oluşturduğunuzda, ağ geçidi kaynağı ve yalnızca bu ağ geçidi kaynağı ile bağlantı için bir ağ geçidi yüklemesi seçersiniz. Her ağ geçidi kaynağı yalnızca bir ağ geçidi yüklemesine bağlanabilir. Zaten başka bir ağ geçidi kaynağıyla ilişkilendirilmiş bir ağ geçidi yüklemesi seçemezsiniz.
-  
-  * Mantıksal uygulamanız ve ağ geçidi kaynağınızın aynı Azure aboneliğinde mevcut olması gerekmez. Abonelik erişiminiz varsa, Tetikleyiciler ve şirket içi veri kaynaklarına erişebilen eylemlerde, ağ geçidi kaynaklarına sahip diğer Azure aboneliklerini seçebilirsiniz.
+
+  * Mantıksal uygulamanız ve ağ geçidi kaynağınızın aynı Azure aboneliğinde mevcut olması gerekmez. Ağ Geçidi kaynağını kullanabileceğiniz Tetikleyiciler ve Eylemler ' de, ağ geçidi kaynağına sahip farklı bir Azure aboneliği seçebilirsiniz, ancak yalnızca bu abonelik, mantıksal uygulamanızla aynı Azure AD kiracısında veya dizinde bulunuyorsa olabilir. Diğer bir yöneticinin sizin için ayarlayabileceği ağ geçidinde yönetici izinlerine de sahip olmanız gerekir. Daha fazla bilgi için bkz. [Data Gateway: Automation with PowerShell-Part 1](https://community.powerbi.com/t5/Community-Blog/Data-Gateway-Automation-using-PowerShell-Part-1/ba-p/1117330) ve [PowerShell: Data Gateway-Add-DataGatewayClusterUser](/powershell/module/datagateway/add-datagatewayclusteruser).
+
+    > [!NOTE]
+    > Şu anda birden çok abonelik arasında bir ağ geçidi kaynağı veya yüklemesi paylaşamazsınız. Ürün geri bildirimi göndermek için [Microsoft Azure geri bildirim Forumu](https://feedback.azure.com/forums/34192--general-feedback)' na bakın.
 
 <a name="create-gateway-resource"></a>
 
@@ -103,10 +106,10 @@ Ağ Geçidi kaynağınızı oluşturduktan ve Azure aboneliğinizi bu kaynakla i
 
 1. Şirket **içi veri ağ geçidi üzerinden Bağlan '** ı seçin.
 
-1. **Ağ geçitleri** altında, **abonelikler** listesinden istediğiniz ağ geçidi kaynağına sahip Azure aboneliğinizi seçin.
+1. **Ağ geçidi** altında, **abonelik** listesinden istediğiniz ağ geçidi kaynağına sahip Azure aboneliğinizi seçin.
 
-   Abonelik erişiminiz varsa, farklı bir ağ geçidi kaynağıyla ilişkili farklı Azure aboneliklerinden seçim yapabilirsiniz. Mantıksal uygulamanız ve ağ geçidi kaynağınızın aynı Azure aboneliğinde mevcut olması gerekmez.
-
+   Mantıksal uygulamanız ve ağ geçidi kaynağınızın aynı Azure aboneliğinde mevcut olması gerekmez. Her birinde bir ağ geçidi kaynağına sahip olan diğer Azure aboneliklerinden seçim yapabilirsiniz, ancak bu abonelikler yalnızca mantıksal uygulamanızla aynı Azure AD kiracısında veya dizinde bulunuyorsa ve ağ geçidinde yönetici izinleriniz varsa, başka bir yöneticinin sizin için ayarlayabileceği anlamına gelir. Daha fazla bilgi için bkz. [Data Gateway: Automation with PowerShell-Part 1](https://community.powerbi.com/t5/Community-Blog/Data-Gateway-Automation-using-PowerShell-Part-1/ba-p/1117330) ve [PowerShell: Data Gateway-Add-DataGatewayClusterUser](/powershell/module/datagateway/add-datagatewayclusteruser).
+  
 1. Seçili aboneliğinizdeki kullanılabilir ağ geçidi kaynaklarını gösteren **bağlantı ağ geçidi** listesinden istediğiniz ağ geçidi kaynağını seçin. Her ağ geçidi kaynağı, tek bir ağ geçidi yüklemesine bağlanır.
 
    > [!NOTE]
@@ -152,7 +155,7 @@ Farklı bir ağ geçidi kaynağı oluşturmak, ağ geçidi yüklemenizi farklı 
 
 1. Henüz seçili değilse, ağ geçidi kaynak menüsünde Şirket **Içi veri ağ geçidi**' ni seçin. Ağ Geçidi kaynağı araç çubuğunda **Sil**' i seçin.
 
-   Örnek:
+   Örneğin:
 
    ![Azure 'da ağ geçidi kaynağını silme](./media/logic-apps-gateway-connection/delete-on-premises-data-gateway.png)
 

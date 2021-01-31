@@ -3,19 +3,24 @@ title: RD Ağ Geçidi rolünü dağıtma Windows sanal masaüstü-Azure
 description: Windows sanal masaüstü 'nde RD Ağ Geçidi rolünü dağıtma.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 01/26/2021
+ms.date: 01/30/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ca3c36f339d5cbca6d5b5990415fba180ae42a13
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: 71bd7d38727d99c05a15c54e5141c613960d9050
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98798486"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99220828"
 ---
-# <a name="deploy-the-rd-gateway-role-in-windows-virtual-desktop"></a>Windows sanal masaüstü 'nde RD Ağ Geçidi rolünü dağıtma
+# <a name="deploy-the-rd-gateway-role-in-windows-virtual-desktop-preview"></a>Windows sanal masaüstü 'nde RD Ağ Geçidi rolünü dağıtma (Önizleme)
 
-Bu makalede, ortamınızdaki Uzak Masaüstü Ağ Geçidi sunucularının nasıl dağıtılacağı açıklanır. Sunucu rollerini, şirket içi, bulut tabanlı ya da karma ortam oluşturup oluşturmadığınıza bağlı olarak fiziksel makinelere veya sanal makinelere yükleyebilirsiniz.
+> [!IMPORTANT]
+> Bu özellik şu anda genel önizleme aşamasındadır.
+> Bu önizleme sürümü, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve bunu üretim iş yükleri için kullanmanızı önermiyoruz. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir.
+> Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+Bu makalede, ortamınızdaki Uzak Masaüstü Ağ Geçidi sunucuları dağıtmak için RD Ağ Geçidi rolün (Önizleme) nasıl kullanılacağı açıklanır. Şirket içi, bulut tabanlı ya da karma ortam oluşturma yönteminize bağlı olarak, sunucu rollerini fiziksel makinelere veya sanal makinelere yükleyebilirsiniz.
 
 ## <a name="install-the-rd-gateway-role"></a>RD Ağ Geçidi rolünü yükler
 

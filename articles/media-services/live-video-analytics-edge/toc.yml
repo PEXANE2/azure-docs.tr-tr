@@ -128,3 +128,9 @@
       href: production-readiness.md
     - name: Saydamlık ve sorumlu yapay zeka ilkeleri
       href: 'https://azure.microsoft.com/resources/transparency-note-live-video-analytics-lva/'
+- name: Kaynaklar
+  items:
+    - name: Azure yol haritası
+      href: 'https://azure.microsoft.com/updates/?category=media'
+    - name: Fiyatlandırma
+      href: 'https://azure.microsoft.com/pricing/details/media-services/'

@@ -1,18 +1,18 @@
 ---
 title: Azure SignalR için yerleşik ilke tanımları
 description: Azure SignalR için Azure Ilkesi yerleşik ilke tanımlarını listeler. Bu yerleşik ilke tanımları, Azure kaynaklarınızı yönetmek için yaygın yaklaşımlar sağlar.
-ms.date: 01/25/2021
+ms.date: 01/29/2021
 author: sffamily
 ms.author: zhshang
 ms.service: signalr
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 2fbdf3a82b7523f39f4c7822bfbb6df9f7b8aa36
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: 94c8969d194044da20f86d4da1cf69fa05196ac6
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98805916"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99220743"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-signalr"></a>Azure SignalR için Azure Ilkesi yerleşik tanımları
 

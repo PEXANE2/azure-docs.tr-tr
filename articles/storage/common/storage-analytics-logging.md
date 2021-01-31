@@ -5,22 +5,32 @@ author: normesta
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
-ms.date: 07/23/2020
+ms.date: 01/29/2021
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: f0f9832a8128a447970535f18cceca3cd4dccc69
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 217a804b0155d7886a068283f8669ace0bc81856
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880262"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99218528"
 ---
 # <a name="azure-storage-analytics-logging"></a>Azure Depolama analizini günlüğe kaydetme
 
 Depolama Analizi, bir depolama cihazına gönderilen başarılı ve başarısız isteklerle ilgili ayrıntılı bilgileri günlüğe kaydeder. Bu bilgileri kullanarak istekleri ayrı ayrı izleyebilir ve depolama hizmetiyle ilgili sorunları tanılayabilirsiniz. İstekler en iyi çaba temelinde günlüğe kaydedilir.
 
- Depolama Analizi günlüğe kaydetme özelliği depolama hesabınızda varsayılan olarak etkin değildir. Bunu [Azure Portal](https://portal.azure.com/)etkinleştirebilirsiniz; Ayrıntılar için bkz. [Azure Portal bir depolama hesabını izleme](./storage-monitor-storage-account.md). Ayrıca, REST API veya istemci kitaplığı aracılığıyla Depolama Analizi programlı bir şekilde etkinleştirebilirsiniz. Her hizmet için Depolama Analizi etkinleştirmek üzere [BLOB hizmeti özelliklerini al](/rest/api/storageservices/Blob-Service-REST-API), [kuyruk hizmeti özelliklerini al](/rest/api/storageservices/Get-Queue-Service-Properties)ve [Tablo hizmeti özelliklerini](/rest/api/storageservices/Get-Table-Service-Properties) Al işlemlerini kullanın.
+> [!NOTE]
+> Azure depolama günlüklerini Depolama Analizi günlükleri yerine Azure Izleyici 'de kullanmanızı öneririz. Azure Izleyici 'de Azure depolama günlükleri genel önizleme aşamasındadır ve tüm genel bulut bölgelerinde önizleme testi için kullanılabilir. Bu önizleme, Bloblar (Azure Data Lake Storage 2.), dosyalar, kuyruklar ve tablolar için Günlükler sunar. Daha fazla bilgi edinmek için aşağıdaki makalelerden birine bakın:
+>
+> - [Azure Blob depolamayı izleme](../blobs/monitor-blob-storage.md)
+> - [Azure dosyalarını izleme](../files/storage-files-monitoring.md)
+> - [Azure kuyruk depolamayı izleme](../queues/monitor-queue-storage.md)
+> - [Azure Tablo depolamayı izleme](../tables/monitor-table-storage.md)
+
+ Depolama Analizi günlüğe kaydetme özelliği depolama hesabınızda varsayılan olarak etkin değildir. Bunu [Azure Portal](https://portal.azure.com/) etkinleştirebilir veya PowerShell veya Azure CLI kullanarak yapabilirsiniz. Adım adım yönergeler için bkz. [Azure depolama Analizi günlüklerini etkinleştirme ve yönetme (klasik)](manage-storage-analytics-logs.md). 
+
+Ayrıca, REST API veya istemci kitaplığı aracılığıyla Depolama Analizi günlüklerini programlı bir şekilde etkinleştirebilirsiniz. Her hizmet için Depolama Analizi etkinleştirmek üzere [BLOB hizmeti özelliklerini al](/rest/api/storageservices/Blob-Service-REST-API), [kuyruk hizmeti özelliklerini al](/rest/api/storageservices/Get-Queue-Service-Properties)ve [Tablo hizmeti özelliklerini](/rest/api/storageservices/Get-Table-Service-Properties) Al işlemlerini kullanın. .NET kullanarak Depolama Analizi günlüklerini etkinleştiren bir örnek görmek için bkz. [günlükleri etkinleştirme](manage-storage-analytics-logs.md)
 
  Günlük girişleri yalnızca hizmet uç noktasında yapılan istekler varsa oluşturulur. Örneğin, bir depolama hesabının kendi BLOB uç noktasında etkinliği varsa ancak tablo veya sıra uç noktalarında etkinlik varsa, yalnızca blob hizmetiyle ilgili günlükler oluşturulur.
 
@@ -125,91 +135,10 @@ Blob 'ları program aracılığıyla listeleme hakkında bilgi için bkz. blob [
 -   `EndTime=2011-07-31T18:22:09Z`
 -   `LogVersion=1.0`
 
-## <a name="enable-storage-logging"></a>Depolama günlük kaydını etkinleştir
-
-Azure portal, PowerShell ve depolama SDK 'Ları ile depolama günlük kaydını etkinleştirebilirsiniz.
-
-### <a name="enable-storage-logging-using-the-azure-portal"></a>Azure portal kullanarak depolama günlüğünü etkinleştirme  
-
-Azure portal, depolama hesabının **menü dikey** penceresinin **izleme (klasik)** bölümünde erişilebilen depolama günlüğünü denetlemek için **Tanılama ayarları (klasik)** dikey penceresini kullanın.
-
-Günlüğe kaydetmek istediğiniz depolama hizmetlerini ve günlüğe kaydedilen veriler için bekletme süresini (gün cinsinden) belirtebilirsiniz.  
-
-### <a name="enable-storage-logging-using-powershell"></a>PowerShell kullanarak depolama günlüğünü etkinleştirme  
-
- Geçerli ayarları almak için **Get-AzStorageServiceLoggingProperty** cmdlet 'ini ve geçerli ayarları değiştirmek için **set-AzStorageServiceLoggingProperty** cmdlet 'ini Azure PowerShell kullanarak depolama hesabınızda depolama günlüğü yapılandırmak için yerel makinenizde PowerShell kullanabilirsiniz.  
-
- Depolama günlüğünü denetleyen cmdlet 'ler, günlüğe kaydedilecek istek türleri için virgülle ayrılmış bir liste içeren bir **Loggingoperations** parametresi kullanır. Olası üç istek türü **okuma**, **yazma** ve **silme**. Günlüğe kaydetmeyi devre dışı bırakmak için, **Loggingoperations** parametresi için **none** değerini kullanın.  
-
- Aşağıdaki komut, bekletme için beş güne ayarlanmış varsayılan depolama hesabınızdaki Kuyruk hizmeti okuma, yazma ve silme istekleri için günlüğe kaydetme yapar:  
-
-```powershell
-Set-AzStorageServiceLoggingProperty -ServiceType Queue -LoggingOperations read,write,delete -RetentionDays 5  
-```  
-
- Aşağıdaki komut, varsayılan depolama hesabınızda tablo hizmeti için günlüğe kaydetmeyi kapatır:  
-
-```powershell
-Set-AzStorageServiceLoggingProperty -ServiceType Table -LoggingOperations none  
-```  
-
- Azure PowerShell cmdlet 'lerinin Azure aboneliğinizle çalışacak şekilde nasıl yapılandırılacağı ve kullanılacak varsayılan depolama hesabını nasıl seçeceksiniz hakkında bilgi için bkz.: [Azure PowerShell nasıl yüklenir ve yapılandırılır](/powershell/azure/).  
-
-### <a name="enable-storage-logging-programmatically"></a>Depolama günlüğünü programlı olarak etkinleştir  
-
- Depolama günlüğünü denetlemek için Azure portal veya Azure PowerShell cmdlet 'lerini kullanmanın yanı sıra Azure Storage API 'Lerinden birini de kullanabilirsiniz. Örneğin, bir .NET dili kullanıyorsanız, depolama Istemci kitaplığını kullanabilirsiniz.  
-
-# <a name="net-v12-sdk"></a>[\.NET V12 SDK](#tab/dotnet)
-
-:::code language="csharp" source="~/azure-storage-snippets/queues/howto/dotnet/dotnet-v12/Monitoring.cs" id="snippet_EnableDiagnosticLogs":::
-
-# <a name="net-v11-sdk"></a>[\.NET v11 SDK](#tab/dotnet11)
-
-```csharp
-var storageAccount = CloudStorageAccount.Parse(connStr);  
-var queueClient = storageAccount.CreateCloudQueueClient();  
-var serviceProperties = queueClient.GetServiceProperties();  
-
-serviceProperties.Logging.LoggingOperations = LoggingOperations.All;  
-serviceProperties.Logging.RetentionDays = 2;  
-
-queueClient.SetServiceProperties(serviceProperties);  
-```  
-
----
-
-
- Depolama günlüğünü yapılandırmak üzere .NET dili kullanma hakkında daha fazla bilgi için bkz. [depolama Istemci kitaplığı başvurusu](/previous-versions/azure/dn261237(v=azure.100)).  
-
- REST API kullanarak depolama günlüğünü yapılandırma hakkında genel bilgi için, bkz. [depolama Analizi etkinleştirme ve yapılandırma](/rest/api/storageservices/Enabling-and-Configuring-Storage-Analytics).  
-
-## <a name="download-storage-logging-log-data"></a>Depolama günlüğü günlük verilerini indirin
-
- Günlük verilerinizi görüntülemek ve analiz etmek için ilgilendiğiniz günlük verilerini içeren Blobları yerel bir makineye indirmeniz gerekir. Birçok depolama Tarama Aracı, depolama hesabınızdan blob 'ları indirmelerini sağlar; Günlük verilerinizi indirmek için Azure depolama ekibi tarafından sunulan komut satırı Azure kopyalama aracı [AzCopy](storage-use-azcopy-v10.md) ' i de kullanabilirsiniz.  
- 
->[!NOTE]
-> `$logs`Kapsayıcı Event Grid tümleştirmemişse, günlük dosyaları yazıldığında bildirim almazsınız. 
-
- İlgilendiğiniz günlük verilerini indirdiğinizden ve aynı günlük verilerinin birden çok kez indirilmesinden kaçınmak için:  
-
--   Aynı verileri birden çok kez yeniden indirmeyi önlemek için, analiz için zaten indirdiğiniz blob 'ları izlemek üzere günlük verilerini içeren Blobların tarih ve saat adlandırma kuralını kullanın.  
-
--   Blob 'un, indirme için gereken tam blobu tanımlamak üzere günlük verilerini tuttuğu belirli bir dönemi belirlemek için günlük verilerini içeren bloblarda bulunan meta verileri kullanın.  
-
-AzCopy kullanmaya başlamak için bkz. [AzCopy ile çalışmaya başlama](storage-use-azcopy-v10.md) 
-
-Aşağıdaki örnek, 15 Mayıs, 10:00 ve 11 Mayıs 2014 Mayıs 'ta başlayan saat için kuyruk hizmeti günlük verilerini nasıl indirebileceğiniz gösterilmektedir.
-
-```
-azcopy copy 'https://mystorageaccount.blob.core.windows.net/$logs/queue' 'C:\Logs\Storage' --include-path '2014/05/20/09;2014/05/20/10;2014/05/20/11' --recursive
-```
-
-Belirli dosyaları indirme hakkında daha fazla bilgi edinmek için bkz. [belirli dosyaları indirme](./storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#transfer-data).
-
-Günlük verilerinizi indirdiyseniz, dosyalardaki günlük girişlerini görüntüleyebilirsiniz. Bu günlük dosyaları, çok sayıda günlük okuma aracının ayrıştırabildiği sınırlı bir metin biçimi kullanır (daha fazla bilgi için bkz. kılavuz [izleme, tanılama ve sorun giderme Microsoft Azure depolama](storage-monitoring-diagnosing-troubleshooting.md)). Farklı araçların, günlük dosyalarınızın içeriğini biçimlendirmek, filtrelemek, sıralamak ve ad aramak için farklı özellikleri vardır. Depolama günlüğü günlük dosyası biçimi ve içeriği hakkında daha fazla bilgi için bkz. [depolama Analizi günlük biçimi](/rest/api/storageservices/storage-analytics-log-format) ve [depolama Analizi günlüğe kaydedilmiş Işlemler ve durum iletileri](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
+* [Azure Depolama Analizi günlüklerini etkinleştirme ve yönetme (klasik)](manage-storage-analytics-logs.md)
 * [Depolama Analizi günlük biçimi](/rest/api/storageservices/storage-analytics-log-format)
 * [Günlüğe kaydedilen Işlemleri ve durum Iletilerini Depolama Analizi](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)
 * [Depolama Analizi ölçümleri (klasik)](storage-analytics-metrics.md)

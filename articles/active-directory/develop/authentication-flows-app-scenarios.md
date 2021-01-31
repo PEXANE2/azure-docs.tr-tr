@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 03/03/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: c441d8e9fa5a3375b1ec4cd3e68d92e92738261d
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: c302e10a169a190d11f016620ec048cc58e3ac28
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98755784"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99220173"
 ---
 # <a name="authentication-flows-and-application-scenarios"></a>Kimlik doğrulama akışları ve uygulama senaryoları
 
@@ -42,8 +42,8 @@ Aşağıdaki bölümlerde uygulama kategorileri açıklanır.
 
 Kimlik doğrulama senaryoları iki etkinlik içerir:
 
-- **Korumalı bir Web API 'si için güvenlik belirteçleri alınıyor**: belirteçleri almak için [Microsoft tarafından desteklenen istemci kitaplıklarını](reference-v2-libraries.md#microsoft-supported-client-libraries) kullanmanızı öneririz. Özellikle, Microsoft kimlik doğrulama kitaplığı (MSAL) ailesini öneririz.
-- **Bir Web API 'sini veya bir Web uygulamasını koruma**: bu kaynakları korumanın bir testi güvenlik belirtecini doğruluyor. Bazı platformlarda Microsoft, [Ara yazılım kitaplıkları](reference-v2-libraries.md#microsoft-supported-server-middleware-libraries)sunmaktadır.
+- **Korumalı bir Web API 'si için güvenlik belirteçleri alınıyor**: Microsoft tarafından geliştirilen ve desteklenen [Microsoft kimlik doğrulama KITAPLıĞı 'nı (msal)](reference-v2-libraries.md)kullanmanızı öneririz.
+- **Bir Web API 'sini veya bir Web uygulamasını koruma**: bu kaynakları korumanın bir testi güvenlik belirtecini doğruluyor. Bazı platformlarda Microsoft, [Ara yazılım kitaplıkları](reference-v2-libraries.md)sunmaktadır.
 
 ### <a name="with-users-or-without-users"></a>Kullanıcılar veya kullanıcılar olmadan
 
@@ -65,7 +65,7 @@ Güvenlik belirteçleri birden çok tür uygulama tarafından alınabilir. Bu uy
   - Oturum açmış kullanıcılar adına Web API 'Lerini çağıran masaüstü uygulamaları
   - Mobil uygulamalar
   - IoT üzerinde çalışan cihazlar gibi tarayıcıya sahip olmayan cihazlarda çalışan uygulamalar
-  
+
 - **Gizli istemci uygulamaları**: Bu kategorideki uygulamalar şunlardır:
   - Web API 'sini çağıran Web uygulamaları
   - Web API 'sini çağıran Web API 'Leri
@@ -95,7 +95,7 @@ Uygulamalar, kullanıcıları oturum açmak ve korunan API 'Leri çağırmak iç
 
 Birçok modern web uygulaması, istemci tarafı tek sayfalı uygulamalar olarak oluşturulmuştur. Bu uygulamalar JavaScript veya angular, Vue ve tepki verme gibi bir çatı kullanır. Bu uygulamalar bir Web tarayıcısında çalışır.
 
-Tek sayfalı uygulamalar, kimlik doğrulama özellikleri bakımından geleneksel sunucu tarafı Web uygulamalarından farklıdır. Tek sayfalı uygulamalar, Microsoft Identity platformunu kullanarak kullanıcıların oturumunu açabilir ve arka uç hizmetlerine veya Web API 'Lerine erişim belirteçleri alabilir. Microsoft Identity platformu, JavaScript uygulamaları için iki verme türü sunar: 
+Tek sayfalı uygulamalar, kimlik doğrulama özellikleri bakımından geleneksel sunucu tarafı Web uygulamalarından farklıdır. Tek sayfalı uygulamalar, Microsoft Identity platformunu kullanarak kullanıcıların oturumunu açabilir ve arka uç hizmetlerine veya Web API 'Lerine erişim belirteçleri alabilir. Microsoft Identity platformu, JavaScript uygulamaları için iki verme türü sunar:
 
 | MSAL.js (2. x) | MSAL.js (1. x) |
 |---|---|
@@ -160,7 +160,7 @@ Daha fazla bilgi için bkz. [Web API 'lerini çağıran mobil uygulama](scenario
 
 ### <a name="protected-web-api"></a>Korumalı web API’si
 
-Uygulamanızın yeniden Web API 'SI gibi Web hizmetlerini güvenli hale getirmek için Microsoft Identity platformunu kullanabilirsiniz. Korumalı bir Web API 'SI, erişim belirteci aracılığıyla çağrılır. Belirteç, API 'nin verilerinin güvenliğini sağlar ve gelen isteklerin kimliğini doğrular. Bir Web API 'SI çağıran, bir HTTP isteğinin yetkilendirme üstbilgisine bir erişim belirteci ekler.
+Uygulamanızın yeniden Web API 'SI gibi Web hizmetlerini güvenli hale getirmek için Microsoft Identity platform uç noktasını kullanabilirsiniz. Korumalı bir Web API 'SI, erişim belirteci aracılığıyla çağrılır. Belirteç, API 'nin verilerinin güvenliğini sağlar ve gelen isteklerin kimliğini doğrular. Bir Web API 'SI çağıran, bir HTTP isteğinin yetkilendirme üstbilgisine bir erişim belirteci ekler.
 
 ASP.NET veya ASP.NET Core Web API 'nizi korumak istiyorsanız, erişim belirtecini doğrulamanız gerekir. Bu doğrulama için ASP.NET JWT ara yazılımını kullanırsınız. Doğrulama, MSAL.NET tarafından değil [.NET kitaplığı Için IdentityModel uzantıları](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/wiki) tarafından yapılır.
 
@@ -309,7 +309,7 @@ Aşağıdaki tablonun Windows sütununda, .NET Core her bahsedildiğinde .NET Fr
 | [Daemon uygulaması](scenario-daemon-overview.md) <br/> [![Daemon uygulaması](media/scenarios/daemon-app.svg)](scenario-daemon-overview.md) | ![.NET Core](media/sample-v2-code/small_logo_NETcore.png)MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>MSAL Java<br/>![MSAL Python](media/sample-v2-code/small_logo_python.png)<br/>MSAL Python| ![.NET Core](media/sample-v2-code/small_logo_NETcore.png) MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>MSAL Java<br/>![MSAL Python](media/sample-v2-code/small_logo_python.png)<br/>MSAL Python| ![.NET Core](media/sample-v2-code/small_logo_NETcore.png)MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>MSAL Java<br/>![MSAL Python](media/sample-v2-code/small_logo_python.png)<br/>MSAL Python
 | [Web API'lerini çağıran web API'si](scenario-web-api-call-api-overview.md) <br/><br/> [![Web API'lerini çağıran web API'si](media/scenarios/web-api.svg)](scenario-web-api-call-api-overview.md) | ![ASP.NET Core](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Core + MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>MSAL Java<br/>![MSAL Python](media/sample-v2-code/small_logo_python.png)<br/>MSAL Python| ![.NET Core](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Core + MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>MSAL Java<br/>![MSAL Python](media/sample-v2-code/small_logo_python.png)<br/>MSAL Python| ![.NET Core](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Core + MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>MSAL Java<br/>![MSAL Python](media/sample-v2-code/small_logo_python.png)<br/>MSAL Python
 
-Daha fazla bilgi için bkz. [OS/Language tarafından desteklenen Microsoft kitaplıkları](reference-v2-libraries.md#microsoft-supported-libraries-by-os--language).
+Daha fazla bilgi için bkz. [Microsoft Identity platform kimlik doğrulama kitaplıkları](reference-v2-libraries.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

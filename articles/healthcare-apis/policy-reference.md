@@ -1,19 +1,19 @@
 ---
 title: FHıR için Azure API için yerleşik ilke tanımları
 description: FHIR için Azure API 'SI için Azure Ilkesi yerleşik ilke tanımlarını listeler. Bu yerleşik ilke tanımları, Azure kaynaklarınızı yönetmek için yaygın yaklaşımlar sağlar.
-ms.date: 01/25/2021
+ms.date: 01/29/2021
 author: matjazl
 ms.author: matjazl
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 331d6aaa9776da37568af5edc505140371910a29
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: 6f22cc72f82ad2c80923b81223e3dea5bd5344c0
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98808094"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99219205"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-api-for-fhir"></a>FHAR Azure API 'SI için Azure Ilkesi yerleşik tanımları
 

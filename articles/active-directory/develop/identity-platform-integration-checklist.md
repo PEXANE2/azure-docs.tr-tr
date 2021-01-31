@@ -12,12 +12,12 @@ ms.date: 05/08/2020
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, jesakowi
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: cefcf6b1bcd7ac5f81fa4e872b30660183a46a82
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: a6a7bf24571660d8e728c1acba29af2504539a18
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98755260"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99219969"
 ---
 # <a name="microsoft-identity-platform-best-practices-and-recommendations"></a>Microsoft Identity platform en iyi uygulamaları ve önerileri
 
@@ -68,7 +68,7 @@ Uygulamanızın [Microsoft Identity platformu](./index.yml)ile etkin bir şekild
 
 ![onay kutusu ](./media/active-directory-integration-checklist/checkbox-two.svg) kullanıcıların güvenli oturum açmasını sağlamak için modern kimlik doğrulama çözümlerini (OAuth 2,0, [OpenID Connect](v2-protocols-oidc.md)) kullanın.
 
-![onay kutusu ](./media/active-directory-integration-checklist/checkbox-two.svg) , OAuth 2,0 ve açık kimlik gibi protokollere doğrudan programmayın. Bunun yerine, [Microsoft kimlik doğrulama kitaplığı 'ndan (msal)](msal-overview.md)yararlanın. MSAL kitaplıkları, güvenlik protokollerini kullanımı kolay bir kitaplıkta güvenli bir şekilde sarmalıdır ve [koşullu erişim](../conditional-access/overview.md) senaryoları, cihaz genelinde [Çoklu oturum açma (SSO)](../manage-apps/what-is-single-sign-on.md)ve yerleşik belirteç önbelleğe alma desteği için yerleşik destek alabilirsiniz. Daha fazla bilgi için bkz. Microsoft tarafından desteklenen [istemci kitaplıkları](reference-v2-libraries.md#microsoft-supported-client-libraries) ve [Ara yazılım kitaplıkları](reference-v2-libraries.md#microsoft-supported-server-middleware-libraries) ve [uyumlu üçüncü taraf istemci kitaplıkları](reference-v2-libraries.md#compatible-client-libraries)listesi.<br/><br/>Kimlik doğrulama protokolleri için kod oluşturmanız gerekiyorsa, [MICROSOFT SDL](https://www.microsoft.com/sdl/default.aspx)gibi bir metodolojiyi izlemelisiniz. Her protokol için standartlar belirtimlerinde güvenlik açısından dikkat edilmesi gereken noktaları ödeyin.
+![onay kutusu ](./media/active-directory-integration-checklist/checkbox-two.svg) , OAuth 2,0 ve açık kimlik gibi protokollere doğrudan programmayın. Bunun yerine, [Microsoft kimlik doğrulama kitaplığı 'ndan (msal)](msal-overview.md)yararlanın. MSAL kitaplıkları, güvenlik protokollerini kullanımı kolay bir kitaplıkta güvenli bir şekilde sarmalıdır ve [koşullu erişim](../conditional-access/overview.md) senaryoları, cihaz genelinde [Çoklu oturum açma (SSO)](../manage-apps/what-is-single-sign-on.md)ve yerleşik belirteç önbelleğe alma desteği için yerleşik destek alabilirsiniz. Daha fazla bilgi için bkz. Microsoft tarafından desteklenen [istemci kitaplıkları](reference-v2-libraries.md)listesi. Kimlik doğrulama protokolleri için de kod oluşturmanız gerekiyorsa, [MICROSOFT SDL](https://www.microsoft.com/sdl/default.aspx) veya benzer geliştirme metodolojisini izlemelisiniz. Her protokol için standartlar belirtimlerinde güvenlik açısından dikkat edilmesi gereken noktaları ödeyin.
 
 ![onay kutusu ](./media/active-directory-integration-checklist/checkbox-two.svg) mevcut uygulamaları [Azure Active Directory kimlik doğrulama KITAPLıĞıNDAN (ADAL)](../azuread-dev/active-directory-authentication-libraries.md) [Microsoft kimlik doğrulama kitaplığı](msal-overview.md)'na geçirme. MSAL, Microsoft 'un en son kimlik platformu çözümüdür ve ADAL için tercih edilir. .NET, JavaScript, Android, iOS, macOS ve ayrıca Python ve Java için genel önizlemede bulunur. [Adal.net](msal-net-migration.md), [ADAL.js](msal-compare-msal-js-and-adal-js.md)ve [adal.net ve iOS Broker](msal-net-migration-ios-broker.md) uygulamalarını geçirme hakkında daha fazla bilgi edinin.
 

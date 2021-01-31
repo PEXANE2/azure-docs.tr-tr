@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 02/22/2019
 tags: ''
 keywords: ''
-ms.openlocfilehash: dcd354b906b4d6c92d8b3186fc8e09c94a31ca55
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: c76768fa94b524763ac8ad94c9c3f5bb3a73dddb
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94968409"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99219447"
 ---
 # <a name="set-up-an-application-developers-controlled-distribution-adcd-in-ibm-zdt-v1"></a>IBM zD&T v1 'de uygulama geliştiricileri denetimli dağıtımı (ADCD) ayarlama
 
@@ -57,7 +57,7 @@ ADCD medyası için erişim gereklidir. Aşağıdaki adımlarda, bir IBM müşte
 
 4. Bölüm açıklamasını veya parça numarasını girin ve **Bulucu**' ye tıklayın.
 
-5. İsteğe bağlı olarak, ürünü adına göre görüntülemek ve görüntülemek için alfabetik sıra listesine tıklayın.
+5. İsteğe bağlı olarak, ürün adına göre görüntülemek ve görüntülemek için alfabetik sıra listesine tıklayın.
 
 6. **İşletim sistemi alanındaki** **Tüm Işletim sistemlerini** ve **Diller alanındaki** **tüm dilleri** seçin. Ardından **Git**' e tıklayın.
 
@@ -187,10 +187,10 @@ Görüntünüz artık dağıtabilir ve bir 3270 Terminal öykünücüsü tarafı
 
 Tebrikler! Artık Azure 'da bir IBM ana bilgisayar ortamı çalıştırıyorsunuz.
 
-## <a name="learn-more"></a>Daha fazla bilgi edinin
+## <a name="learn-more"></a>Daha fazlasını öğrenin
 
 - [Ana bilgisayar geçişi: Myon ve olgular](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/myths-and-facts)
-- [Azure 'da IBM DB2 pureScale](../../../linux/ibm-db2-purescale-azure.md)
+- [Azure 'da IBM DB2 pureScale](ibm-db2-purescale-azure.md)
 - [Sorun giderme](../../../troubleshooting/index.yml)
 - [Azure geçişine Demystifying ana bilgisayar](https://azure.microsoft.com/resources/demystifying-mainframe-to-azure-migration/)
 

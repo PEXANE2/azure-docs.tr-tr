@@ -2,13 +2,13 @@
 title: Azure Service Bus mesajlaşmasına genel bakış | Microsoft Belgeleri
 description: Bu makalede, tam olarak yönetilen bir kurumsal tümleştirme ileti Aracısı olan Azure Service Bus üst düzey bir genel bakış sunulmaktadır.
 ms.topic: overview
-ms.date: 11/20/2020
-ms.openlocfilehash: 7453e8dd300ad754fb58489f059670af209314ab
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.date: 01/28/2021
+ms.openlocfilehash: 232f25ca94e9426a20755940caf284426502cfb3
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881610"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99219171"
 ---
 # <a name="what-is-azure-service-bus"></a>Azure Service Bus nedir?
 Microsoft Azure Service Bus, ileti kuyrukları ve yayımlama-abone ol konuları ile tam olarak yönetilen bir kurumsal ileti aracısıdır. Service Bus, uygulamaları ve hizmetleri birbirinden ayırmak için kullanılır ve aşağıdaki avantajları sağlar:
@@ -152,12 +152,12 @@ Tam olarak desteklenen Service Bus istemci kitaplıkları Azure SDK ile kullanı
 
 Service Bus, birçok Microsoft ve Azure hizmeti ile tam olarak tümleştirilir, örneğin:
 
-* [Event Grid](https://azure.microsoft.com/services/event-grid/)
-* [Logic Apps](https://azure.microsoft.com/services/logic-apps/)
-* [Azure İşlevleri](https://azure.microsoft.com/services/functions/)
-* [Power Platform](https://powerplatform.microsoft.com/)
-* [Dynamics 365](https://dynamics.microsoft.com)
-* [Azure Akış Analizi](https://azure.microsoft.com/services/stream-analytics/)
+* [Event Grid](service-bus-to-event-grid-integration-example.md)
+* [Logic Apps](../connectors/connectors-create-api-servicebus.md)
+* [Azure İşlevleri](../azure-functions/functions-bindings-service-bus.md)
+* [Power Platform](../connectors/connectors-create-api-servicebus.md)
+* [Dynamics 365](/dynamics365/fin-ops-core/dev-itpro/business-events/how-to/how-to-servicebus)
+* [Azure Akış Analizi](../stream-analytics/stream-analytics-define-outputs.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

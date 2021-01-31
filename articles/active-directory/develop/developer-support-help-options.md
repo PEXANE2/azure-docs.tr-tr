@@ -12,12 +12,12 @@ ms.date: 05/23/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 1d50e0ed6ac67ed1595b289d27bd08a089840308
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: bce9479d063d091eb4fa68d2452d8a4218d45db9
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99051915"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99219952"
 ---
 # <a name="support-and-help-options-for-developers"></a>Geliştiriciler için destek ve yardım seçenekleri
 
@@ -36,7 +36,7 @@ Geliştirmeyle ilgili bir sorunuz varsa, yanıtı belgeler, [GitHub örnekleri](
 
 ### <a name="scoped-search"></a>Kapsamlı arama
 
-Daha hızlı sonuçlar için aramanızı Microsoft Q&A, belgeleri ve kod örneklerini en sevdiğiniz arama altyapısında aşağıdaki sorguyu kullanarak yapın:
+Daha hızlı sonuçlar için aramanızı [Microsoft Q 'a&bir](https://docs.microsoft.com/answers/products/)belge ve kod örnekleri kullanarak en sevdiğiniz arama motorunda aşağıdaki sorguyu kullanın:
 
 ```
 {Your Search Terms} (site:http://www.docs.microsoft.com/answers/products/ OR site:docs.microsoft.com OR site:github.com/azure-samples OR site:cloudidentity.com OR site:developer.microsoft.com/graph)
@@ -53,9 +53,9 @@ Daha hızlı sonuçlar için aramanızı Microsoft Q&A, belgeleri ve kod örnekl
 
 ## <a name="post-a-question-to-microsoft-qa"></a>Microsoft Q&bir soru gönderin
 
-Microsoft Q&A, geliştirmeyle ilgili sorular için tercih edilen kanaldır. Burada, geliştirici topluluğu ve Microsoft takım üyelerinin üyeleri, sorunlarınızı çözmenize yardımcı olmak için doğrudan ilgilidir.
+[Microsoft Q&A](https://docs.microsoft.com/answers/products/) , geliştirmeyle ilgili sorular için tercih edilen kanaldır. Burada, geliştirici topluluğu ve Microsoft takım üyelerinin üyeleri, sorunlarınızı çözmenize yardımcı olmak için doğrudan ilgilidir.
 
-Arama ile sorunuz için bir yanıt bulamazsanız, Microsoft Q&A 'ya yeni bir soru gönderin. Topluluğun sorunuzu daha hızlı belirlemesine ve yanıt vermesi için soru sorarken aşağıdaki etiketlerden birini kullanın:
+Arama ile sorunuz için bir yanıt bulamazsanız, [Microsoft Q&a](https://docs.microsoft.com/answers/products/) 'ya yeni bir soru gönderin. Topluluğun sorunuzu daha hızlı belirlemesine ve yanıt vermesi için soru sorarken aşağıdaki etiketlerden birini kullanın:
 
 |Bileşen/alan  | Etiketler |
 |---------|---------|
@@ -65,9 +65,9 @@ Arama ile sorunuz için bir yanıt bulamazsanız, Microsoft Q&A 'ya yeni bir sor
 | [Azure B2B](../external-identities/what-is-b2b.md)  | [[Azure-AD-B2B]](https://docs.microsoft.com/answers/topics/azure-ad-b2b.html) |
 | [Azure B2C](https://azure.microsoft.com/services/active-directory-b2c/)  | [[Azure-AD-B2C]](https://docs.microsoft.com/answers/topics/azure-ad-b2c.html) |
 | [Microsoft Graph API](https://developer.microsoft.com/graph/) | [[Azure-AD-grafik]](https://docs.microsoft.com/answers/topics/azure-ad-graph.html) |
-| Kimlik doğrulama veya yetkilendirme konularıyla ilgili başka bir alan | [[Azure-Active-Directory]](https://docs.microsoft.com/answers/topics/azure-ad-graph.html) |
+| Kimlik doğrulama veya yetkilendirme konularıyla ilgili başka bir alan | [[Azure-Active-Directory]](https://docs.microsoft.com/answers/topics/azure-active-directory.html) |
 
-Microsoft Q&'e ait aşağıdaki gönderiler, soru sorma ve kaynak kodu ekleme hakkında ipuçları içerir. Topluluk üyelerinin sorunuzu hızlı bir şekilde değerlendirmesine ve yanıt verebilmesini artırmak için bu yönergeleri izleyin:
+[Microsoft Q&](https://docs.microsoft.com/answers/products/) 'e ait aşağıdaki gönderiler, soru sorma ve kaynak kodu ekleme hakkında ipuçları içerir. Topluluk üyelerinin sorunuzu hızlı bir şekilde değerlendirmesine ve yanıt verebilmesini artırmak için bu yönergeleri izleyin:
 
 * [Nasıl yaparım? iyi bir soru sorun](https://docs.microsoft.com/answers/articles/24951/how-to-write-a-quality-question.html)
 * [En az, tamamlanmış ve doğrulanabilir örnek oluşturma](https://docs.microsoft.com/answers/articles/24907/how-to-write-a-quality-answer.html)

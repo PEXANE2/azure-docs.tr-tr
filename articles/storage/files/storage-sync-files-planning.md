@@ -4,16 +4,16 @@ description: Şirket içi Windows Server veya bulut VM 'de bir dizi Azure dosya 
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 01/15/2020
+ms.date: 01/29/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 28b7419dfc889d1149765b884f1a5990a1e28f03
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 65293df5fae523bff36240273afb93c4dd8485df
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98898113"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99219485"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Azure Dosya Eşitleme dağıtımı planlama
 
@@ -302,48 +302,16 @@ Aktarım sırasında şifreleme hakkında daha fazla bilgi için bkz. [Azure dep
 [!INCLUDE [storage-files-tiers-large-file-share-availability](../../../includes/storage-files-tiers-large-file-share-availability.md)]
 
 ## <a name="azure-file-sync-region-availability"></a>Azure dosya eşitleme bölgesi kullanılabilirliği
-Azure Dosya Eşitleme, aşağıdaki bölgelerde kullanılabilir:
 
-| Azure bulut | Coğrafi bölge | Azure bölgesi | Bölge kodu |
-|-------------|-------------------|--------------|-------------|
-| Genel | Asya | Doğu Asya | `eastasia` |
-| Genel | Asya | Güneydoğu Asya | `southeastasia` |
-| Genel | Avustralya | Doğu Avustralya | `australiaeast` |
-| Genel | Avustralya | Güneydoğu Avustralya | `australiasoutheast` |
-| Genel | Brezilya | Güney Brezilya | `brazilsouth` |
-| Genel | Kanada | Orta Kanada | `canadacentral` |
-| Genel | Kanada | Doğu Kanada | `canadaeast` |
-| Genel | Avrupa | Kuzey Avrupa | `northeurope` |
-| Genel | Avrupa | West Europe | `westeurope` |
-| Genel | Fransa | Orta Fransa | `francecentral` |
-| Genel | Fransa | Fransa Güney * | `francesouth` |
-| Genel | Hindistan | Orta Hindistan | `centralindia` |
-| Genel | Hindistan | Güney Hindistan | `southindia` |
-| Genel | Japonya | Doğu Japonya | `japaneast` |
-| Genel | Japonya | Batı Japonya | `japanwest` |
-| Genel | Güney Kore | Güney Kore - Orta | `koreacentral` |
-| Genel | Güney Kore | Güney Kore - Güney | `koreasouth` |
-| Genel | Güney Afrika | Güney Afrika - Kuzey | `southafricanorth` |
-| Genel | Güney Afrika | Güney Afrika Batı * | `southafricawest` |
-| Genel | BAE | BAE Orta * | `uaecentral` |
-| Genel | BAE | BAE Kuzey | `uaenorth` |
-| Genel | Birleşik Krallık | Güney Birleşik Krallık | `uksouth` |
-| Genel | Birleşik Krallık | Batı Birleşik Krallık | `ukwest` |
-| Genel | ABD | Central US | `centralus` |
-| Genel | ABD | Doğu ABD | `eastus` |
-| Genel | ABD | Doğu ABD 2 | `eastus2` |
-| Genel | ABD | Orta Kuzey ABD | `northcentralus` |
-| Genel | ABD | Orta Güney ABD | `southcentralus` |
-| Genel | ABD | Orta Batı ABD | `westcentralus` |
-| Genel | ABD | Batı ABD | `westus` |
-| Genel | ABD | Batı ABD 2 | `westus2` |
-| US Gov | ABD | US Gov Arizona | `usgovarizona` |
-| US Gov | ABD | US Gov Texas | `usgovtexas` |
-| US Gov | ABD | US Gov Virginia | `usgovvirginia` |
+Bölgesel kullanılabilirlik için bkz. [bölgelere göre kullanılabilir ürünler](https://azure.microsoft.com/global-infrastructure/services/?products=storage).
 
-Azure Dosya Eşitleme, yalnızca depolama eşitleme hizmeti ile aynı bölgedeki bir Azure dosya paylaşımıyla eşitlemeyi destekler.
+Aşağıdaki bölgeler Azure Dosya Eşitleme kullanabilmeniz için Azure Storage 'a erişim istemeniz gerekir:
 
-Yıldız işaretleri ile işaretlenmiş bölgeler için, bu bölgelerde Azure depolama 'ya erişim istemek üzere Azure desteği 'ne başvurmanız gerekir. İşlem [Bu belgede](https://azure.microsoft.com/global-infrastructure/geographies/)özetlenmiştir.
+- Güney Fransa
+- Güney Afrika - Batı
+- BAE Orta
+
+Bu bölgeler için erişim istemek üzere [Bu belgedeki](https://azure.microsoft.com/global-infrastructure/geographies/)işlemi izleyin.
 
 ## <a name="redundancy"></a>Yedeklilik
 [!INCLUDE [storage-files-redundancy-overview](../../../includes/storage-files-redundancy-overview.md)]

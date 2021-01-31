@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/22/2019
 ms.author: apimpm
-ms.openlocfilehash: ab83344f779f93107b59ca28348da3a66f1efc1a
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: aec1967f0652e18c4a24ca258c14a103355b22af
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92076870"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99219324"
 ---
 # <a name="api-management-policy-expressions"></a>API Management İlkesi ifadeleri
 Bu makalede C# 7 ' de ilke ifadeleri sözdizimi anlatılmaktadır. Her bir ifadenin örtük olarak sağlanmış [bağlam](api-management-policy-expressions.md#ContextVariables) değişkenine ve .NET Framework türlerin izin verilen bir [alt kümesine](api-management-policy-expressions.md#CLRTypes) erişimi vardır.
@@ -220,7 +220,7 @@ Adlı bir değişken `context` , her ilke [ifadesinde](api-management-policy-exp
 |<a id="ref-context-request-headers"></a>dize bağlamı. Request. Headers. GetValueOrDefault (headerName: String, defaultValue: String)|headerName: dize<br /><br /> defaultValue: dize<br /><br /> Virgülle ayrılmış istek üst bilgisi değerlerini döndürür veya `defaultValue` üst bilgi bulunamadı.|
 |<a id="ref-context-response"></a>bağlam. Yanıtıyla|Gövde: [ımessagebody](#ref-imessagebody)<br /><br /> [Üstbilgiler](#ref-context-response-headers): IReadOnlyDictionary<dize, dize [] ><br /><br /> StatusCode: int<br /><br /> StatusReason: dize|
 |<a id="ref-context-response-headers"></a>dize bağlamı. Response. Headers. GetValueOrDefault (headerName: String, defaultValue: String)|headerName: dize<br /><br /> defaultValue: dize<br /><br /> Virgülle ayrılmış yanıt üst bilgisi değerlerini döndürür veya `defaultValue` üst bilgi bulunamadı.|
-|<a id="ref-context-subscription"></a>bağlam. Aboneliğiniz|CreatedTime: DateTime<br /><br /> EndDate: DateTime<br /><br /> Kimlik: dize<br /><br /> Anahtar: dize<br /><br /> Ad: dize<br /><br /> PrimaryKey: String<br /><br /> SecondaryKey: dize<br /><br /> StartDate: TarihSaat?|
+|<a id="ref-context-subscription"></a>bağlam. Aboneliğiniz|CreatedDate: DateTime<br /><br /> EndDate: DateTime<br /><br /> Kimlik: dize<br /><br /> Anahtar: dize<br /><br /> Ad: dize<br /><br /> PrimaryKey: String<br /><br /> SecondaryKey: dize<br /><br /> StartDate: TarihSaat?|
 |<a id="ref-context-user"></a>bağlam. Kullanıcısını|E-posta: dize<br /><br /> FirstName: dize<br /><br /> Gruplar: IEnumerable<[Igroup](#ref-igroup)\><br /><br /> Kimlik: dize<br /><br /> Kimlikler: IEnumerable<[ıuserıdentity](#ref-iuseridentity)\><br /><br /> LastName: dize<br /><br /> Note: dize<br /><br /> RegistrationDate: DateTime|
 |<a id="ref-iapi"></a>Iapi|Kimlik: dize<br /><br /> Ad: dize<br /><br /> Yol: dize<br /><br /> Protokoller: IEnumerable<dizesi\><br /><br /> ServiceUrl: [Iurl](#ref-iurl)<br /><br /> SubscriptionKeyParameterNames: [ISubscriptionKeyParameterNames](#ref-isubscriptionkeyparameternames)|
 |<a id="ref-igroup"></a>Igroup|Kimlik: dize<br /><br /> Ad: dize|

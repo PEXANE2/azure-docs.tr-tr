@@ -2,13 +2,13 @@
 title: Kaynak adlandırma kısıtlamaları
 description: Azure kaynaklarını adlandırmayla ilgili kuralları ve kısıtlamaları gösterir.
 ms.topic: conceptual
-ms.date: 01/26/2021
-ms.openlocfilehash: d298688dbd13cc32c9cca078b5e20e6a5f054450
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.date: 01/27/2021
+ms.openlocfilehash: dbe19dae4509e1dd6aa95763e4d034c339bb0531
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98806889"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99220862"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Azure kaynaklarına yönelik adlandırma kuralları ve kısıtlamaları
 
@@ -92,7 +92,7 @@ Aşağıdaki tablolarda, alfasayısal terimi şu şekilde ifade eder:
 > [!div class="mx-tableFixed"]
 > | Varlık | Kapsam | Uzunluk | Geçersiz Karakterler |
 > | --- | --- | --- | --- |
-> | automationAccounts | kaynak grubu | 6-50 | Alfasayısal karakterler ve kısa çizgiler.<br><br>Mektupla başlayın ve alfasayısal ile bitemez. |
+> | automationAccounts | kaynak grubu & bölgesi <br>(Aşağıdaki nota bakın) | 6-50 | Alfasayısal karakterler ve kısa çizgiler.<br><br>Mektupla başlayın ve alfasayısal ile bitemez. |
 > | automationAccounts/Certificates | Otomasyon hesabı | 1-128 | Şu kullanılamıyor:<br> `<>*%&:\?.+/` <br><br>Boşluk ile bitemez.  |
 > | automationAccounts/Connections | Otomasyon hesabı | 1-128 | Şu kullanılamıyor:<br> `<>*%&:\?.+/` <br><br>Boşluk ile bitemez. |
 > | automationAccounts/kimlik bilgileri | Otomasyon hesabı | 1-128 | Şu kullanılamıyor:<br> `<>*%&:\?.+/` <br><br>Boşluk ile bitemez. |
@@ -101,6 +101,9 @@ Aşağıdaki tablolarda, alfasayısal terimi şu şekilde ifade eder:
 > | automationAccounts/değişkenleri | Otomasyon hesabı | 1-128 | Şu kullanılamıyor:<br> `<>*%&:\?.+/` <br><br>Boşluk ile bitemez. |
 > | automationAccounts/izleyicileri | Otomasyon hesabı | 1-63 |  Alfasayısal, alt çizgi ve kısa çizgi.<br><br>Mektup ile başlayın. |
 > | automationAccounts/Web kancaları | Otomasyon hesabı | 1-128 | Şu kullanılamıyor:<br> `<>*%&:\?.+/` <br><br>Boşluk ile bitemez. |
+
+> [!NOTE]
+> Otomasyon hesabı adları, bölge ve kaynak grubu başına benzersizdir. Silinen Otomasyon hesaplarının adları hemen kullanılamayabilir.
 
 ## <a name="microsoftbatch"></a>Microsoft.Batch
 

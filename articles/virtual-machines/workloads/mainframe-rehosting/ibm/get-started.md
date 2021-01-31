@@ -13,18 +13,18 @@ ms.topic: conceptual
 ms.date: 02/22/2019
 tags: ''
 keywords: ''
-ms.openlocfilehash: efc4f6293623278314df3ac55b2fecae2e28f7d8
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: a2b5350e1aebeff3cc9dc3996f7e0a92c424ecf3
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94968358"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99220003"
 ---
 # <a name="ibm-workloads-on-azure"></a>Azure 'da IBM iş yükleri
 
 Z/OS tabanlı pek çok IBM anabilgisayar iş yükü, hiçbir işlevsellik kaybı olmadan ve kullanıcıların temel sistemlerindeki değişikliklere yaşıyorsanız olmadan Azure 'da çoğaltılabilir. Azure 'da uygulamaların yeniden barındırılması, ihtiyacınız olan ana bilgisayar benzeri özellikleri ve bulutun potansiyeli, kullanılabilirliği ve potansiyel maliyet tasarrufunu sağlar.
 
-Azure, mevcut IBM ana bilgisayar ortamları ile tümleştirmeyi destekler, bu sayede anlamlı olan applicates geçirmenize, gerektiğinde karma çözümler çalıştırmanıza ve zaman içinde geçiş yapmaya olanak tanır. Mevcut ana bilgisayar tabanlı programları Azure için tamamen yeniden yazabilirsiniz, ancak bunları yeniden barındırmak daha yaygındır. Yeniden yazma, geçiş projelerine maliyet, karmaşıklık ve zaman ekler. Yeniden barındırma ile şunları yapabilirsiniz:
+Azure mevcut IBM anabilgisayar ortamları ile tümleştirmeyi destekler, bu sayede anlamlı olan uygulamaları geçirebilir, gerektiğinde karma çözümler çalıştırabilir ve zaman içinde geçiş yapabilirsiniz. Mevcut ana bilgisayar tabanlı programları Azure için tamamen yeniden yazabilirsiniz, ancak bunları yeniden barındırmak daha yaygındır. Yeniden yazma, geçiş projelerine maliyet, karmaşıklık ve zaman ekler. Yeniden barındırma ile şunları yapabilirsiniz:
 
 - Uygulamaları bulut tabanlı bir öykünücüye taşıyın.
 
@@ -41,4 +41,4 @@ IBM ana bilgisayar sistemlerini Azure 'a geçirmenize yardımcı olacak kapsaml�
 - [Ana bilgisayar geçişi: Myon ve olgular](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/myths-and-facts)
 - [Azure 'da IBM zD&T geliştirme ve test ortamı 'nı yükler](./install-ibm-z-environment.md)
 - [IBM zD&T v1 'de uygulama geliştiricileri denetimli dağıtımı (ADCD) ayarlama](./demo.md)
-- [Azure 'da IBM DB2 pureScale](../../../linux/ibm-db2-purescale-azure.md)
+- [Azure 'da IBM DB2 pureScale](ibm-db2-purescale-azure.md)
