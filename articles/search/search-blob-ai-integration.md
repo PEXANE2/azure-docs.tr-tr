@@ -1,5 +1,5 @@
 ---
-title: BLOB depolama verilerini anlamak için AI kullanma
+title: Blob içeriğini zenginleştirmek için AI kullanma
 titleSuffix: Azure Cognitive Search
 description: Azure Bilişsel Arama 'de doğal dil ve görüntü analizi özellikleri ve bu işlemlerin Azure Blob 'larında depolanan içeriklere nasıl uygulandığı hakkında bilgi edinin.
 manager: nitinme
@@ -7,17 +7,17 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 09/23/2020
-ms.openlocfilehash: a0d32f00bd3c7f8daa2984bdc7c9b9dfb5add218
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 02/02/2021
+ms.openlocfilehash: 3d427d80e502eed0825165e640acc0755515c5b0
+ms.sourcegitcommit: 983eb1131d59664c594dcb2829eb6d49c4af1560
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91362806"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99222057"
 ---
-# <a name="use-ai-to-understand-blob-storage-data"></a>BLOB depolama verilerini anlamak için AI kullanma
+# <a name="use-ai-to-process-and-analyze-blob-content-in-azure-cognitive-search"></a>Azure Bilişsel Arama blob içeriğini işlemek ve analiz etmek için AI kullanma
 
-Azure Blob depolamada bulunan veriler genellikle görüntüler, uzun metin, PDF 'Ler ve Office belgeleri gibi yapılandırılmamış içerik olan çok çeşitli içeriktir. Azure Bilişsel Arama 'de AI özelliklerini kullanarak, çeşitli yollarla bloblardan değerli bilgileri anlayabilir ve ayıklayabilirsiniz. Blob içeriğine AI uygulama örnekleri şunlardır:
+Resimlerin veya uzun bir şekilde değişmeyen metinden oluşan Azure Blob depolamada bulunan içerikler, aşağı akış uygulamaları için faydalı bilgileri açığa çıkarmak ve ayıklamak üzere derin öğrenme analizinden geçebilir. [AI zenginleştirme](cognitive-search-concept-intro.md)kullanarak şunları yapabilirsiniz:
 
 + Optik karakter tanıma özelliğini kullanarak görüntülerden metin ayıklama (OCR)
 + Fotoğraftan bir sahne açıklaması veya etiketleri üretme
@@ -26,23 +26,23 @@ Azure Blob depolamada bulunan veriler genellikle görüntüler, uzun metin, PDF 
 
 Bu AI özelliklerinden yalnızca birine ihtiyacınız olabilir, ancak birden çok aynı işlem hattına (örneğin, taranmış bir görüntüden metin ayıklanarak ve bu konumda başvurulan tüm tarihleri ve yerleri buluyor) daha yaygın olarak vardır. Ayrıca, önde gelen kenar harici paketleri veya verilerinize ve gereksinimlerinize uygun şirket içi modellere göre özel AI veya makine öğrenimi işlemesini dahil etmek de yaygındır.
 
-AI zenginleştirme, metin olarak yakalanan ve alanlarda depolanan yeni bilgiler oluşturur. Son zenginleştirme, bu bilgilere tam metin araması aracılığıyla bir arama dizininden erişebilirsiniz veya bulma veya analiz senaryoları için verileri araştırmayı kapsayan yeni uygulama deneyimlerine Power Storage 'a zenginleştirilmiş belgeler gönderebilirsiniz. 
+Bir arama Dizin Oluşturucu tarafından desteklenen herhangi bir veri kaynağına AI zenginleştirme uygulayabilseniz de, Bloblar bir enzenginleştirme ardışık düzeninde en sık kullanılan yapılardır. Sonuçlar, tam metin araması için bir arama dizinine çekilir veya bulma veya analiz senaryoları için verileri araştırmayı içeren yeni uygulama deneyimlerine Power Storage 'a yeniden yönlendirilir. 
 
 Bu makalede, Bloblar içindeki ham verileri bir arama dizininde veya bilgi deposunda sorgulanabilir bilgilere dönüştürmek için, tüm süreci hızlı bir şekilde bir lens aracılığıyla bir çok lens aracılığıyla inceleyeceğiz.
 
 ## <a name="what-it-means-to-enrich-blob-data-with-ai"></a>AI ile "zenginleştirme" blobu verilerinin ne anlama geldiğini
 
-*AI zenginleştirme* , Microsoft 'un veya SAĞLADıĞıNıZ özel AI 'nın yerleşik AI 'Ni tümleştiren Azure bilişsel arama 'in dizin oluşturma mimarisinin bir parçasıdır. Blob 'ları (varsa veya güncelleştirdikleri gibi mevcut olanları ve yeni olanları) işlemek için tüm dosya biçimlerini açmak, çeşitli AI yeteneklerini kullanarak istenen bilgileri ayıklamak ve hızlı arama, alma ve keşfetme için bir arama dizininde dizin oluşturmanız gereken uçtan uca senaryolar uygulamanıza yardımcı olur. 
+*AI zenginleştirme* , Microsoft 'tan veya sağladığınız özel öğrenme modellerinden makine öğrenimi modellerini tümleştiren Azure bilişsel arama 'in dizin oluşturma mimarisinin bir parçasıdır. Blob 'ları (varsa veya güncelleştirdikleri gibi mevcut olanları ve yeni olanları) işlemek için tüm dosya biçimlerini açmak, çeşitli AI yeteneklerini kullanarak istenen bilgileri ayıklamak ve hızlı arama, alma ve keşfetme için bir arama dizininde dizin oluşturmanız gereken uçtan uca senaryolar uygulamanıza yardımcı olur. 
 
 Azure Blob depolama alanında, tek bir kapsayıcıda bulunan bloblarınızın girdileri vardır. Blob 'lar neredeyse her türlü metin veya resim verisi olabilir. 
 
 Çıktı, istemci uygulamalarında hızlı metin arama, alma ve araştırma için kullanılan her zaman bir arama dizinidir. Ayrıca, çıktı Ayrıca, belgeleri Azure Blob 'larına veya Power BI ya da veri bilimi iş yükleri gibi araçlarla aşağı akış analizi için Azure tablolarına zenginleştiren bir [*bilgi deposu*](knowledge-store-concept-intro.md) da olabilir.
 
-Between, ardışık düzen mimarisinin kendisidir. İşlem hattı, AI sağlayan bir veya daha fazla *beceriden* oluşan bir *beceri*atayabileceğiniz *Dizin Oluşturucu* özelliğini temel alır. İşlem hattının amacı, ham içerik olarak girebileceğiniz ancak ardışık düzen boyunca geçiş yaparken ek yapıyı, bağlamı ve bilgileri alan, *zenginleştirilmiş belgeler* oluşturmak için kullanılır. Zenginleştirilmiş belgeler, tam metin aramasında veya araştırmayla ve analizte kullanılan ters dizinler ve diğer yapılar oluşturmak için dizin oluşturma sırasında tüketilecektir.
+Between, ardışık düzen mimarisinin kendisidir. İşlem hattı, AI sağlayan bir veya daha fazla *becerilerden* oluşan bir [*beceri*](cognitive-search-working-with-skillsets.md)atayabileceğiniz [*Dizin oluşturuculara*](search-indexer-overview.md)dayalıdır. İşlem hattının amacı, ardışık düzeni ham içerik olarak girebileceğiniz ancak ardışık düzen boyunca geçiş yaparken ek yapıyı, bağlamı ve bilgileri alan, *zenginleştirilmiş belgeler* oluşturmak için kullanılır. Zenginleştirilmiş belgeler, tam metin aramasında veya araştırmayla ve analizte kullanılan ters dizinler ve diğer yapılar oluşturmak için dizin oluşturma sırasında tüketilecektir.
 
 ## <a name="required-resources"></a>Gerekli kaynaklar
 
-Azure Blob depolama, Azure Bilişsel Arama ve AI sağlayan üçüncü bir hizmet ya da mekanizmaya ihtiyacınız vardır:
+Azure Blob depolama ve Azure Bilişsel Arama 'nin yanı sıra AI sağlayan üçüncü bir hizmet veya mekanizmaya ihtiyacınız vardır:
 
 + Yerleşik AI için Bilişsel Arama Azure bilişsel hizmetler Vision ve doğal dil işleme API 'Leri ile tümleşir. Optik karakter tanıma (OCR), görüntü analizi veya doğal dil işleme (dil algılama, metin çevirisi, varlık tanıma, anahtar tümceciği ayıklama) eklemek için bilişsel [Hizmetler kaynağı](cognitive-search-attach-cognitive-services.md) ekleyebilirsiniz. 
 
@@ -58,7 +58,7 @@ Aşağıdaki bölümler bileşenlere ve iş akışına daha yakından göz atal�
 
 ## <a name="use-a-blob-indexer"></a>Blob Dizin Oluşturucu kullanma
 
-AI zenginleştirme, dizin oluşturma işlem hattının bir eklentisi ve Azure Bilişsel Arama, bu işlem hatları bir *dizin oluşturucunun*üzerine kurulmuştur. Dizin Oluşturucu, verileri örnekleme, meta veri verileri okuma, verileri alma ve yerel biçimlerdeki verileri, sonraki içeri aktarma için JSON belgelerine serileştirmede iç mantığa sahip olan veri kaynağı kullanan bir alt hizmettir. Dizin oluşturucular genellikle AI tarafından içeri aktarma için kullanılır, ancak bir AI zenginleştirme işlem hattı oluşturmak istiyorsanız, bir Dizin Oluşturucu ve bir beceri ile birlikte çalışmak için bir gerekir. Bu bölüm, Dizin oluşturucuyu vurgular; sonraki bölüm becerileri 'e odaklanır.
+AI zenginleştirme, dizin oluşturma işlem hattının bir eklentisi ve Azure Bilişsel Arama, bu işlem hatları bir *dizin oluşturucunun* üzerine kurulmuştur. Dizin Oluşturucu, verileri örnekleme, meta veri verileri okuma, verileri alma ve yerel biçimlerdeki verileri, sonraki içeri aktarma için JSON belgelerine serileştirmede iç mantığa sahip olan veri kaynağı kullanan bir alt hizmettir. Dizin oluşturucular genellikle AI tarafından içeri aktarma için kullanılır, ancak bir AI zenginleştirme işlem hattı oluşturmak istiyorsanız, bir Dizin Oluşturucu ve bir beceri ile birlikte çalışmak için bir gerekir. Bu bölüm, Dizin oluşturucuyu vurgular; sonraki bölüm becerileri 'e odaklanır.
 
 Azure depolama 'daki Bloblar, [BLOB Dizin Oluşturucu](search-howto-indexing-azure-blob-storage.md)kullanılarak dizine alınır. Bu dizin oluşturucuyu, **verileri Içeri aktarma** Sihirbazı 'nı, bir REST API veya bir SDK 'yı kullanarak çağırabilirsiniz. Dizin Oluşturucu tarafından kullanılan veri kaynağı bir Azure Blob kapsayıcısıdır blob Indexer çağrılır. Bir sanal dizin oluşturarak bloblarınızın bir alt kümesini dizinleyerek bir parametre olarak geçirebilmeniz veya bir dosya türü uzantısı üzerinde filtreleyerek.
 

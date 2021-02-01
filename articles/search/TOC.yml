@@ -230,7 +230,7 @@
           items:
             - name: Bloblarda arama
               href: search-blob-storage-integration.md
-            - name: AI ile blobları anlama
+            - name: Blob 'lar üzerinde AI zenginleştirme
               href: search-blob-ai-integration.md
             - name: Blob dizin oluşturucu yapılandırma
               href: search-howto-indexing-azure-blob-storage.md

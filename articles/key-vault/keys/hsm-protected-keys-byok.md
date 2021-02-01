@@ -8,14 +8,14 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: keys
 ms.topic: tutorial
-ms.date: 05/29/2020
+ms.date: 02/01/2021
 ms.author: ambapat
-ms.openlocfilehash: a1c6b054a9caac8ba223bc81e164e7ebf34bd267
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 98da8057fb09cf43a59b921694386cbf3fa8ca21
+ms.sourcegitcommit: 983eb1131d59664c594dcb2829eb6d49c4af1560
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94413335"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99222226"
 ---
 # <a name="import-hsm-protected-keys-to-key-vault-byok"></a>HSM korumalı anahtarları Key Vault içeri aktar (BYOK)
 
@@ -65,12 +65,13 @@ Aşağıdaki tabloda Azure Key Vault BYOK kullanımına yönelik önkoşullar li
 |Cryptomathic|ISV (Kurumsal anahtar yönetim sistemi)|Birden çok HSM markalarını ve modellerini kapsayan<ul><li>nCipher</li><li>Thales</li><li>Utıco</li></ul>[Ayrıntılar için bkz. Cryptomathic sitesi](https://www.cryptomathic.com/azurebyok)|[Cryptomathic BYOK aracı ve belgeleri](https://www.cryptomathic.com/azurebyok)|
 |Securosys SA|Üretici, hizmet olarak HSM|Primus HSM ailesi, Securosys bulutları HSM|[Primus BYOK aracı ve belgeleri](https://www.securosys.com/primus-azure-byok)|
 |StorMagic|ISV (Kurumsal anahtar yönetim sistemi)|Birden çok HSM markalarını ve modellerini kapsayan<ul><li>Utıco</li><li>Thales</li><li>nCipher</li></ul>[Ayrıntılar için bkz. Stormagic sitesi](https://stormagic.com/doc/svkms/Content/Integrations/Azure_KeyVault_BYOK.htm)|[SvKMS ve Azure Key Vault BYOK](https://stormagic.com/doc/svkms/Content/Integrations/Azure_KeyVault_BYOK.htm)|
+|IBM|Üretici|IBM 476x, CryptoExpress|[IBM Kurumsal anahtar yönetim altyapısı](https://www.ibm.com/security/key-management/ekmf-bring-your-own-key-azure)|
 ||||
 
 
 ## <a name="supported-key-types"></a>Desteklenen anahtar türleri
 
-|Anahtar adı|Anahtar türü|Anahtar boyutu|Kaynak|Açıklama|
+|Anahtar adı|Anahtar türü|Anahtar boyutu|Kaynak|Description|
 |---|---|---|---|---|
 |Anahtar değişim anahtarı (KEK)|RSA| 2.048 bit<br />3.072 bit<br />4.096 bit|Azure Key Vault HSM|Azure Key Vault içinde oluşturulan HSM ile desteklenen bir RSA anahtar çifti|
 |Hedef anahtar|RSA|2.048 bit<br />3.072 bit<br />4.096 bit|Satıcı HSM|Azure Key Vault HSM 'ye aktarılacak anahtar|
@@ -114,14 +115,14 @@ KEKforBYOK. PublicKey. ped dosyasını çevrimdışı bilgisayarınıza aktarın
 
 ### <a name="step-3-generate-and-prepare-your-key-for-transfer"></a>3. Adım: anahtarınızı aktarım için oluşturma ve hazırlama
 
-BYOK aracını indirip yüklemek için HSM satıcınızın belgelerine bakın. Bir hedef anahtar oluşturmak için HSM satıcınızdan gelen yönergeleri izleyin ve ardından bir anahtar aktarım paketi (BYOK dosyası) oluşturun. BYOK Aracı, `kid` BIR bYok dosyasında [Step 1](#step-1-generate-a-kek) şifreli hedef anahtar oluşturmak için [Adım 2](#step-2-download-the-kek-public-key) ' de Indirdiğiniz kekforbyok. PublicKey. ped dosyasını kullanır.
+BYOK aracını indirip yüklemek için HSM satıcınızın belgelerine bakın. Bir hedef anahtar oluşturmak için HSM satıcınızdan gelen yönergeleri izleyin ve ardından bir anahtar aktarım paketi (BYOK dosyası) oluşturun. BYOK Aracı, `kid` BIR bYok dosyasında [](#step-1-generate-a-kek) şifreli hedef anahtar oluşturmak için [Adım 2](#step-2-download-the-kek-public-key) ' de Indirdiğiniz kekforbyok. PublicKey. ped dosyasını kullanır.
 
 BYOK dosyasını bağlı bilgisayarınıza aktarın.
 
 > [!NOTE] 
 > RSA 1.024 bit anahtarlarının içe aktarılması desteklenmez. Şu anda, eliptik eğri (EC) anahtarının içe aktarılması desteklenmez.
 > 
-> **Bilinen sorun** : bir RSA 4k hedef anahtarının yalnızca bir bellenim 7.4.0 veya daha yeni sürümü ile içeri aktarılması desteklenir.
+> **Bilinen sorun**: bir RSA 4k hedef anahtarının yalnızca bir bellenim 7.4.0 veya daha yeni sürümü ile içeri aktarılması desteklenir.
 
 ### <a name="step-4-transfer-your-key-to-azure-key-vault"></a>4. Adım: anahtarınızı Azure Key Vault aktarma
 

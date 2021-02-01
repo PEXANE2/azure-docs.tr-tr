@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/10/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: d4f8ab190d0418fbb25dad2cd7af231eabfe0f02
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: a85ae227d45c8de6c3d04e4a058ebf9715421ca2
+ms.sourcegitcommit: 983eb1131d59664c594dcb2829eb6d49c4af1560
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99090263"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99222073"
 ---
 # <a name="tutorial-build-a-multi-tenant-daemon-that-uses-the-microsoft-identity-platform"></a>Öğretici: Microsoft Identity platformunu kullanan çok kiracılı bir Daemon oluşturma
 
@@ -237,8 +237,8 @@ Artık gerekli değilse, [Uygulamanızı kaydetme](#register-your-application) a
 
 ## <a name="get-help"></a>Yardım alın
 
-Topluluktan destek almak için [Microsoft Q&A](https://docs.microsoft.com/answers/topics/azure-ad-msal.html) kullanın.
-İlk olarak Microsoft Q&sorularınızı sorun ve bir kişinin sorunuzu isteyip istemediğini öğrenmek için mevcut sorunları inceleyin.
+Topluluktan destek almak için [Microsoft Q&A](https://docs.microsoft.com/answers/products/) kullanın.
+İlk olarak [Microsoft Q&](https://docs.microsoft.com/answers/products/) sorularınızı sorun ve bir kişinin sorunuzu isteyip istemediğini öğrenmek için mevcut sorunları inceleyin.
 Sorularınıza veya yorumlarınızın "Azure-AD-adal-kullanımdan kaldırma", "Azure-AD-msal" ve "DotNet-Standard" ile etiketlendiğinden emin olun.
 
 Örnekte bir hata bulursanız, lütfen [GitHub sorunlarında](https://github.com/Azure-Samples/ms-identity-aspnet-daemon-webapp/issues)sorunu yükseltin.

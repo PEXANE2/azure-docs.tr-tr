@@ -8,14 +8,14 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: keys
 ms.topic: tutorial
-ms.date: 05/29/2020
+ms.date: 02/01/2021
 ms.author: ambapat
-ms.openlocfilehash: 7fa8590b4fb148b2a8969c4f474f6627cea263df
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 17ef0cb7efcd2a76b46a6bb0dbc82268895dae00
+ms.sourcegitcommit: 983eb1131d59664c594dcb2829eb6d49c4af1560
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97935334"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99222209"
 ---
 # <a name="import-hsm-protected-keys-to-key-vault"></a>HSM korumalı anahtarları Key Vault’a içeri aktarma
 
@@ -40,6 +40,7 @@ HSM korumalı anahtarların Key Vault aktarmak, kullandığınız HSMs 'ye bağl
 |Cryptomathic|ISV (Kurumsal anahtar yönetim sistemi)|Birden çok HSM markalarını ve modellerini kapsayan<ul><li>nCipher</li><li>Thales</li><li>Utıco</li></ul>[Ayrıntılar için bkz. Cryptomathic sitesi](https://www.cryptomathic.com/azurebyok)|[Yeni BYOK yöntemi kullan](hsm-protected-keys-byok.md)|
 |Securosys SA|Üretici, hizmet olarak HSM|Primus HSM ailesi, Securosys bulutları HSM|[Yeni BYOK yöntemi kullan](hsm-protected-keys-byok.md)|
 |StorMagic|ISV (Kurumsal anahtar yönetim sistemi)|Birden çok HSM markalarını ve modellerini kapsayan<ul><li>Utıco</li><li>Thales</li><li>nCipher</li></ul>[Ayrıntılar için bkz. Stormagic sitesi](https://stormagic.com/doc/svkms/Content/Integrations/Azure_KeyVault_BYOK.htm)|[Yeni BYOK yöntemi kullan](hsm-protected-keys-byok.md)|
+|IBM|Üretici|IBM 476x, CryptoExpress|Yeni BYOK yöntemi kullan] (HSM korumalı anahtarlar-byok.md)|
 |||||
 
 ## <a name="next-steps"></a>Sonraki adımlar

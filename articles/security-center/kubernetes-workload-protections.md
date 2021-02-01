@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 09/12/2020
 ms.author: memildin
-ms.openlocfilehash: dfa562be4561e8aaec66d4bff51aadeba77cf35f
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: ce0808bc53ae663b80da793bf33b5b371d881961
+ms.sourcegitcommit: 983eb1131d59664c594dcb2829eb6d49c4af1560
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98131347"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99222192"
 ---
 # <a name="protect-your-kubernetes-workloads"></a>Kubernetes iş yüklerinizi koruma
 
@@ -39,7 +39,7 @@ Güvenlik Merkezi, Azure Defender 'ı etkinleştirirseniz daha fazla kapsayıcı
 |Fiyat|Ücretsiz|
 |Gerekli roller ve izinler:|Bir atamayı düzenlemek için **sahip** veya **Güvenlik Yöneticisi**<br>Önerileri görüntülemek için **okuyucu**|
 |Desteklenen kümeler:|Kubernetes v 1.14 (veya üzeri) gereklidir<br>Kümelerde Pod SecurityPolicy kaynağı (eski PSP modeli) yok<br>Windows düğümleri desteklenmez|
-|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![No](./media/icons/no-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
+|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Hayır](./media/icons/no-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
 |||
 
 
@@ -62,7 +62,7 @@ Azure Güvenlik Merkezi, **Kubernetes Için Azure ilke eklentisini** yüklediği
         > [!TIP]
         > Öneri beş farklı güvenlik denetimine dahildir ve bu, bir sonraki adımda nerede seçim yapmanız gerektiğini fark etmez.
 
-    1. Güvenlik denetimlerinden herhangi birinden, üzerinde eklentiyi yükleyebileceğiniz kaynakları görmek için öneriyi seçin.
+    1. Güvenlik denetimlerinden herhangi birinden, eklentiyi yükleyebileceğiniz kaynakları görmek için öneriyi seçin.
     1. İlgili kümeyi seçin ve **düzeltin**.
 
         :::image type="content" source="./media/defender-for-kubernetes-usage/recommendation-to-install-policy-add-on-for-kubernetes-details.png" alt-text="* * Kubernetes için Azure Ilke eklentisi için öneri ayrıntıları sayfası, kümelerinizde yüklü ve etkin olmalıdır * *":::
@@ -78,12 +78,12 @@ Azure Güvenlik Merkezi, **Kubernetes Için Azure ilke eklentisini** yüklediği
 
     | Öneri adı                                                         | Güvenlik denetimi                         | Yapılandırma gerekli |
     |-----------------------------------------------------------------------------|------------------------------------------|------------------------|
-    | Kapsayıcı CPU ve bellek sınırları zorunlu kılınmalıdır                          | DDoS saldırılarına karşı uygulamaları koruma | No                     |
-    | Ayrıcalıklı kapsayıcılar kaçınılmalıdır                                     | Erişimi ve izinleri yönetme            | No                     |
-    | Kapsayıcılar için sabit (salt okunurdur) kök dosya sistemi zorunlu kılınmalıdır     | Erişimi ve izinleri yönetme            | No                     |
-    | Ayrıcalık yükseltme ile kapsayıcının önlenebilir olması gerekir                       | Erişimi ve izinleri yönetme            | No                     |
-    | Kök kullanıcı olarak çalışan kapsayıcılar önlenebilir olmalıdır                           | Erişimi ve izinleri yönetme            | No                     |
-    | Gizli ana bilgisayar ad alanlarını paylaşan kapsayıcıların önlenebilir olması gerekir              | Erişimi ve izinleri yönetme            | No                     |
+    | Kapsayıcı CPU ve bellek sınırları zorunlu kılınmalıdır                          | DDoS saldırılarına karşı uygulamaları koruma | Hayır                     |
+    | Ayrıcalıklı kapsayıcılar kaçınılmalıdır                                     | Erişimi ve izinleri yönetme            | Hayır                     |
+    | Kapsayıcılar için sabit (salt okunurdur) kök dosya sistemi zorunlu kılınmalıdır     | Erişimi ve izinleri yönetme            | Hayır                     |
+    | Ayrıcalık yükseltme ile kapsayıcının önlenebilir olması gerekir                       | Erişimi ve izinleri yönetme            | Hayır                     |
+    | Kök kullanıcı olarak çalışan kapsayıcılar önlenebilir olmalıdır                           | Erişimi ve izinleri yönetme            | Hayır                     |
+    | Gizli ana bilgisayar ad alanlarını paylaşan kapsayıcıların önlenebilir olması gerekir              | Erişimi ve izinleri yönetme            | Hayır                     |
     | Kapsayıcılar için en az ayrıcalıklı Linux özellikleri zorlanmalıdır       | Erişimi ve izinleri yönetme            | **Evet**                |
     | Pod HostPath birimi takmaları kullanımı bilinen bir listeyle sınırlandırılmalıdır    | Erişimi ve izinleri yönetme            | **Evet**                |
     | Kapsayıcılar yalnızca izin verilen bağlantı noktalarında dinleme yapılmalıdır                              | Yetkisiz ağ erişimini kısıtla     | **Evet**                |

@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/14/2020
 ms.topic: reference
 ms.service: azure
-ms.openlocfilehash: 44ea6e8343203a9cb18947f31f45aa0b023178b0
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 73c5d1f31d9e0651ee710593aa4e1b68fe972560
+ms.sourcegitcommit: 983eb1131d59664c594dcb2829eb6d49c4af1560
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98624583"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99222133"
 ---
 # <a name="defender-for-iot-sensor-and-management-console-apis"></a>IoT algılayıcısı ve Yönetim Konsolu API 'Leri için Defender
 
@@ -20,7 +20,7 @@ Sensörler ve yönetim konsolları tarafından bulunan verilere erişmek ve bu v
 
 Bağlantılar SSL üzerinden güvenli hale getirilir.
 
-## <a name="getting-started"></a>Başlarken
+## <a name="getting-started"></a>Kullanmaya başlama
 
 Genel olarak, IoT algılayıcısı veya şirket içi yönetim konsolu için Azure Defender 'da bir dış API kullanırken, bir erişim belirteci oluşturmanız gerekir. Algılayıcı ve şirket içi yönetim konsolunda kullandığınız kimlik doğrulama API 'Leri için belirteçler gerekli değildir.
 
@@ -56,33 +56,31 @@ Belirteç oluşturmak için:
 
 Bu bölümde aşağıdaki algılayıcı API 'Leri açıklanmaktadır:
 
-- /api/v1/Devices
+- [Cihaz bilgilerini alma-/api/v1/Devices](#retrieve-device-information---apiv1devices)
 
-- /api/v1/Devices/Connections
+- [Cihaz bağlantı bilgilerini alma-/api/v1/Devices/Connections](#retrieve-device-connection-information---apiv1devicesconnections)
 
-- /api/v1/Devices/cven
+- [Cven 'ler-/api/v1/Devices/cven hakkında bilgi alın](#retrieve-information-on-cves---apiv1devicescves)
 
-- /api/v1/Alerts
+- [Uyarı bilgilerini al-/api/v1/Alerts](#retrieve-alert-information---apiv1alerts)
 
-- /api/v1/Events
+- [Zaman çizelgesi olaylarını alma-/api/v1/Events](#retrieve-timeline-events---apiv1events)
 
-- /api/v1/reports/vulnerabilities/devices
+- [Güvenlik açığı bilgilerini alma-/api/v1/Reports/vulnerabilities/Devices](#retrieve-vulnerability-information---apiv1reportsvulnerabilitiesdevices)
 
-- /api/v1/reports/vulnerabilities/security
+- [Güvenlik açıklarını alma-/api/v1/Reports/vulnerabilities/Security](#retrieve-security-vulnerabilities---apiv1reportsvulnerabilitiessecurity)
 
-- /api/v1/reports/vulnerabilities/operational
+- [İşlemsel güvenlik açıklarını alma-/api/v1/Reports/vulnerabilities/Operational](#retrieve-operational-vulnerabilities---apiv1reportsvulnerabilitiesoperational)
 
-- /api/External/Authentication/Validation
+- [Kullanıcı kimlik bilgilerini doğrulama-/api/External/Authentication/Validation](#validate-user-credentials---apiexternalauthenticationvalidation)
 
-- /External/Authentication/set_password
+- [Parolayı Değiştir-/External/Authentication/set_password](#change-password---externalauthenticationset_password)
 
-- /External/Authentication/set_password_by_admin
+- [Sistem Yöneticisi tarafından Kullanıcı parolası güncelleştirmesi-/External/Authentication/set_password_by_admin](#user-password-update-by-system-admin---externalauthenticationset_password_by_admin)
 
-### <a name="retrieve-device-information"></a>Cihaz bilgilerini al
+### <a name="retrieve-device-information---apiv1devices"></a>Cihaz bilgilerini alma-/api/v1/Devices
 
 Bir bir Defender for IoT algılayıcısı algıladığı tüm cihazların bir listesini istemek için bu API 'yi kullanın.
-
-#### <a name="apiv1devices"></a>/api/v1/Devices
 
 #### <a name="method"></a>Yöntem
 
@@ -112,15 +110,15 @@ Cihazları temsil eden JSON nesneleri dizisi.
 
 | Ad | Tür | Null Atanabilir | Değer listesi |
 |--|--|--|--|
-| **id** | Sayısal | No | - |
+| **id** | Sayısal | Hayır | - |
 | **IpAdresleri** | JSON dizisi | Yes | IP adresleri (Internet adresleri veya ikili NIC 'ler içeren bir cihaz olması durumunda birden fazla adres olabilir) |
-| **name** | Dize | No | - |
-| **türüyle** | Dize | No | Bilinmiyor, mühendislik Istasyonu, PLC, HMı, Historia, etki alanı denetleyicisi, DB sunucusu, kablosuz erişim noktası, yönlendirici, anahtar, sunucu, Iş Istasyonu, IP kamera, yazıcı, güvenlik duvarı, Terminal İstasyonu, VPN Gateway, Internet veya çok noktaya yayın ve yayın |
+| **name** | Dize | Hayır | - |
+| **türüyle** | Dize | Hayır | Bilinmiyor, mühendislik Istasyonu, PLC, HMı, Historia, etki alanı denetleyicisi, DB sunucusu, kablosuz erişim noktası, yönlendirici, anahtar, sunucu, Iş Istasyonu, IP kamera, yazıcı, güvenlik duvarı, Terminal İstasyonu, VPN Gateway, Internet veya çok noktaya yayın ve yayın |
 | **macAddresses** | JSON dizisi | Yes | MAC adresleri (çift NIC içeren bir cihaz olması durumunda birden fazla adres olabilir) |
 | **operatingSystem** | Dize | Yes | - |
-| **engineeringStation** | Boole | No | True veya false |
-| **Tarayıcınız** | Boole | No | True veya false |
-| **yetkisi** | Boole | No | True veya false |
+| **engineeringStation** | Boole | Hayır | True veya false |
+| **Tarayıcınız** | Boole | Hayır | True veya false |
+| **yetkisi** | Boole | Hayır | True veya false |
 | **satıcınıza** | Dize | Yes | - |
 | **ekledikten** | JSON dizisi | Yes | Protokol nesnesi |
 | **yazılımında** | JSON dizisi | Yes | Bellenim nesnesi |
@@ -129,21 +127,21 @@ Cihazları temsil eden JSON nesneleri dizisi.
 
 | Ad | Tür | Null Atanabilir | Değer listesi |
 |--|--|--|--|
-| **Ad** | Dize | No |  |
+| **Ad** | Dize | Hayır |  |
 | **Adresler** | JSON dizisi | Yes | Ana veya sayısal değerler |
 
 #### <a name="firmware-fields"></a>Bellenim alanları
 
 | Ad | Tür | Null Atanabilir | Değer listesi |
 |--|--|--|--|
-| **ardışık** | Dize | No | Yok veya gerçek değer |
-| **modelinizi** | Dize | No | Yok veya gerçek değer |
-| **firmwareVersion** | Çift | No | Yok veya gerçek değer |
-| **additionalData** | Dize | No | Yok veya gerçek değer |
-| **moduleAddress** | Dize | No | Yok veya gerçek değer |
-| **rafı** | Dize | No | Yok veya gerçek değer |
-| **kumar** | Dize | No | Yok veya gerçek değer |
-| **adrestir** | Dize | No | Yok veya gerçek değer |
+| **ardışık** | Dize | Hayır | Yok veya gerçek değer |
+| **modelinizi** | Dize | Hayır | Yok veya gerçek değer |
+| **firmwareVersion** | Çift | Hayır | Yok veya gerçek değer |
+| **additionalData** | Dize | Hayır | Yok veya gerçek değer |
+| **moduleAddress** | Dize | Hayır | Yok veya gerçek değer |
+| **rafı** | Dize | Hayır | Yok veya gerçek değer |
+| **kumar** | Dize | Hayır | Yok veya gerçek değer |
+| **adrestir** | Dize | Hayır | Yok veya gerçek değer |
 
 #### <a name="response-example"></a>Yanıt örneği
 
@@ -279,11 +277,15 @@ Cihazları temsil eden JSON nesneleri dizisi.
 ]
 ```
 
-### <a name="retrieve-device-connection-information"></a>Cihaz bağlantı bilgilerini al
+#### <a name="curl-command"></a>Curl komutu
+
+| Tür | API'ler | Örnek |
+|--|--|--|
+| GET | kıvrımlı-k-H "yetkilendirme: <AUTH_TOKEN>" https://<IP_ADDRESS>/api/v1/Devices | kıvrımlı-k-H "Authorization: 1234b734a9244d54ab8d40aedddcabcd" https: <span> //127 <span> . 0.0.1/API/v1/Devices? yetkilendirilmiş = true |
+
+### <a name="retrieve-device-connection-information---apiv1devicesconnections"></a>Cihaz bağlantı bilgilerini alma-/api/v1/Devices/Connections
 
 Cihaz başına tüm bağlantıların bir listesini istemek için bu API 'YI kullanın.
-
-#### <a name="apiv1devicesconnections"></a>/api/v1/Devices/Connections
 
 #### <a name="method"></a>Yöntem
 
@@ -333,19 +335,19 @@ Cihaz bağlantılarını temsil eden JSON nesneleri dizisi.
 
 | Ad | Tür | Null Atanabilir | Değer listesi |
 |--|--|--|--|
-| **Firstdeviceıd** | Sayısal | No | - |
-| **Seconddeviceıd** | Sayısal | No | - |
-| **Lastgörüldü** | Sayısal | No | Dönem (UTC) |
-| **tespit** | Sayısal | No | Dönem (UTC) |
-| **adet** | Sayı dizisi | No | - |
-| **ekledikten** | JSON dizisi | No | Protokol alanı |
+| **Firstdeviceıd** | Sayısal | Hayır | - |
+| **Seconddeviceıd** | Sayısal | Hayır | - |
+| **Lastgörüldü** | Sayısal | Hayır | Dönem (UTC) |
+| **tespit** | Sayısal | Hayır | Dönem (UTC) |
+| **adet** | Sayı dizisi | Hayır | - |
+| **ekledikten** | JSON dizisi | Hayır | Protokol alanı |
 
 #### <a name="protocol-field"></a>Protokol alanı
 
 | Ad | Tür | Null Atanabilir | Değer listesi |
 |--|--|--|--|
-| **name** | Dize | No | - |
-| **komut** | Dize dizisi | No | - |
+| **name** | Dize | Hayır | - |
+| **komut** | Dize dizisi | Hayır | - |
 
 #### <a name="response-example"></a>Yanıt örneği
 
@@ -447,11 +449,17 @@ Cihaz bağlantılarını temsil eden JSON nesneleri dizisi.
 ]
 ```
 
-### <a name="retrieve-information-on-cves"></a>CVEs hakkında bilgi alma
+#### <a name="curl-command"></a>Curl komutu
+
+> [!div class="mx-tdBreakAll"]
+> | Tür | API'ler | Örnek |
+> |--|--|--|
+> | GET | kıvrımlı-k-H "yetkilendirme: <AUTH_TOKEN>" https://<IP_ADDRESS>/api/v1/Devices/Connections | kıvrımlı-k-H "Authorization: 1234b734a9244d54ab8d40aedddcabcd" https:/ <span> /127.0.0.1/api/v1/Devices/Connections |
+> | GET | kıvrımlı-k-H "Authorization: <AUTH_TOKEN>" ' https://<IP_ADDRESS>/api/v1/Devices/ <deviceId> /Connections? Lastactiveınminutes =&discoveredBefore =&Bulveredafter = ' | kıvrımlı-k-H "Authorization: 1234b734a9244d54ab8d40aedddcabcd" ' https:/ <span> /127.0.0.1/api/v1/Devices/2/Connections? Lastactiveınminutes = 20&discoveredBefore = 1594550986000&Bulveredadfter = 1594550986000 ' |
+
+### <a name="retrieve-information-on-cves---apiv1devicescves"></a>Cven 'ler-/api/v1/Devices/cven hakkında bilgi alın
 
 Ağdaki cihazlarda bulunan tüm bilinen yolların bir listesini istemek için bu API 'yi kullanın.
-
-#### <a name="apiv1devicescves"></a>/api/v1/Devices/cven
 
 #### <a name="method"></a>Yöntem
 
@@ -491,11 +499,11 @@ IP adreslerinde tanımlanan Cvileri temsil eden JSON nesneleri dizisi.
 
 | Ad | Tür | Null Atanabilir | Değer listesi |
 |--|--|--|--|
-| **Cveıd** | Dize | No | - |
-| **Belirlenemiyor** | Dize | No | IP Adresi |
-| **ınızı** | Dize | No | 0,0-10,0 |
-| **Saldırıda Kvector** | Dize | No | Ağ, bitişik ağ, yerel veya fiziksel |
-| **açıklaması** | Dize | No | - |
+| **Cveıd** | Dize | Hayır | - |
+| **Belirlenemiyor** | Dize | Hayır | IP Adresi |
+| **ınızı** | Dize | Hayır | 0,0-10,0 |
+| **Saldırıda Kvector** | Dize | Hayır | Ağ, bitişik ağ, yerel veya fiziksel |
+| **açıklaması** | Dize | Hayır | - |
 
 #### <a name="response-example"></a>Yanıt örneği
 
@@ -557,11 +565,16 @@ IP adreslerinde tanımlanan Cvileri temsil eden JSON nesneleri dizisi.
 ]
 ```
 
-### <a name="retrieve-alert-information"></a>Uyarı bilgilerini al
+#### <a name="curl-command"></a>Curl komutu
+
+| Tür | API'ler | Örnek |
+|--|--|--|
+| GET | kıvrımlı-k-H "yetkilendirme: <AUTH_TOKEN>" https://<IP_ADDRESS>/api/v1/Devices/CFER | kıvrımlı-k-H "Authorization: 1234b734a9244d54ab8d40aedddcabcd" https:/ <span> /127.0.0.1/api/v1/Devices/cves |
+| GET | kıvrımlı-k-H "Authorization: <AUTH_TOKEN>" https://<IP_ADDRESS>/api/v1/Devices/ <deviceIpAddress> /CFER? top = | kıvrımlı-k-H "Authorization: 1234b734a9244d54ab8d40aedddcabcd" https:/ <span> /127.0.0.1/api/v1/Devices/10.10.10.15/cves? top = 50 |
+
+### <a name="retrieve-alert-information---apiv1alerts"></a>Uyarı bilgilerini al-/api/v1/Alerts
 
 Bu API 'yi, IoT algılayıcısı için Defender 'ın algıladığı tüm uyarıların bir listesini istemek üzere kullanın.
-
-#### <a name="apiv1alerts"></a>/api/v1/Alerts
 
 #### <a name="method"></a>Yöntem
 
@@ -605,12 +618,12 @@ Uyarıları temsil eden JSON nesneleri dizisi.
 
 | Ad | Tür | Null Atanabilir | Değer listesi |
 |--|--|--|--|
-| **ID** | Sayısal | No | - |
-| **ışınızda** | Sayısal | No | Dönem (UTC) |
-| **başlık** | Dize | No | - |
-| **İleti** | Dize | No | - |
-| **inin** | Dize | No | Uyarı, Ikincil, büyük veya kritik |
-| **altyapısına** | Dize | No | Protokol Ihlali, Ilke Ihlali, kötü amaçlı yazılım, anomali veya operasyonel |
+| **ID** | Sayısal | Hayır | - |
+| **ışınızda** | Sayısal | Hayır | Dönem (UTC) |
+| **başlık** | Dize | Hayır | - |
+| **İleti** | Dize | Hayır | - |
+| **inin** | Dize | Hayır | Uyarı, Ikincil, büyük veya kritik |
+| **altyapısına** | Dize | Hayır | Protokol Ihlali, Ilke Ihlali, kötü amaçlı yazılım, anomali veya operasyonel |
 | **sourceDevice** | Sayısal | Yes | Cihaz Kimliği |
 | **Hedef cihaz** | Sayısal | Yes | Cihaz Kimliği |
 | **AdditionalInformation** | Ek bilgi nesnesi | Yes | - |
@@ -619,7 +632,7 @@ Uyarıları temsil eden JSON nesneleri dizisi.
 
 | Ad | Tür | Null Atanabilir | Değer listesi |
 |--|--|--|--|
-| **açıklaması** | Dize | No | - |
+| **açıklaması** | Dize | Hayır | - |
 | **bilgi** | JSON dizisi | Hayır | Dize |
 
 #### <a name="response-example"></a>Yanıt örneği
@@ -685,11 +698,16 @@ Uyarıları temsil eden JSON nesneleri dizisi.
 
 ```
 
-### <a name="retrieve-timeline-events"></a>Zaman çizelgesi olaylarını alma
+#### <a name="curl-command"></a>Curl komutu
+
+> [!div class="mx-tdBreakAll"]
+> | Tür | API'ler | Örnek |
+> |--|--|--|
+> | GET | kıvrımlı-k-H "yetkilendirme: <AUTH_TOKEN>" ' https://<IP_ADDRESS>/api/v1/Alerts? State =&fromTime =&toTime =&Type = ' | kıvrımlı-k-H "yetkilendirmesi: 1234b734a9244d54ab8d40aedddcabcd" ' https:/ <span> /127.0.0.1/api/v1/Alerts? State = işlenmemiş&fromTime = 1594550986000&toTime = 1594550986001&Type = disconnections ' |
+
+### <a name="retrieve-timeline-events---apiv1events"></a>Zaman çizelgesi olaylarını alma-/api/v1/Events
 
 Olay zaman çizelgesine bildirilen olayların bir listesini istemek için bu API 'yi kullanın.
-
-#### <a name="apiv1events"></a>/api/v1/Events
 
 #### <a name="method"></a>Yöntem
 
@@ -723,11 +741,11 @@ Uyarıları temsil eden JSON nesneleri dizisi.
 
 | Ad | Tür | Null Atanabilir | Değer listesi |
 |--|--|--|--|--|
-| **ilişkin** | Sayısal | No | Dönem (UTC) |
-| **başlık** | Dize | No | - |
-| **inin** | Dize | No | BILGI, BILDIRIM veya uyarı |
+| **ilişkin** | Sayısal | Hayır | Dönem (UTC) |
+| **başlık** | Dize | Hayır | - |
+| **inin** | Dize | Hayır | BILGI, BILDIRIM veya uyarı |
 | **inde** | Dize | Yes | Olay el ile oluşturulduysa, bu alan olayı oluşturan kullanıcı adını içerir |
-| **içerik** | Dize | No | - |
+| **içerik** | Dize | Hayır | - |
 
 #### <a name="response-example"></a>Yanıt örneği
 
@@ -802,11 +820,15 @@ Uyarıları temsil eden JSON nesneleri dizisi.
 
 ```
 
-### <a name="retrieve-vulnerability-information"></a>Güvenlik açığı bilgilerini alma
+#### <a name="curl-command"></a>Curl komutu
+
+| Tür | API'ler | Örnek |
+|--|--|--|
+| GET | kıvrımlı-k-H "yetkilendirme: <AUTH_TOKEN>" ' https://<IP_ADDRESS>/api/v1/Events? Minutesmeframe =&Type = ' | kıvrımlı-k-H "Authorization: 1234b734a9244d54ab8d40aedddcabcd" ' https:/ <span> /127.0.0.1/api/v1/Events? Minutesmeframe = 20&Type = DEVICE_CONNECTION_CREATED ' |
+
+### <a name="retrieve-vulnerability-information---apiv1reportsvulnerabilitiesdevices"></a>Güvenlik açığı bilgilerini alma-/api/v1/Reports/vulnerabilities/Devices
 
 Her cihaz için güvenlik açığı değerlendirme sonuçları istemek üzere bu API 'yi kullanın.
-
-#### <a name="apiv1reportsvulnerabilitiesdevices"></a>/api/v1/reports/vulnerabilities/devices
 
 #### <a name="method"></a>Yöntem
 
@@ -832,13 +854,13 @@ Cihaz nesnesi şunları içerir:
 
 | Ad | Tür | Null Atanabilir | Değer listesi |
 |--|--|--|--|
-| **name** | Dize | No | - |
-| **IpAdresleri** | JSON dizisi | No | - |
-| **securityScore** | Sayısal | No | - |
+| **name** | Dize | Hayır | - |
+| **IpAdresleri** | JSON dizisi | Hayır | - |
+| **securityScore** | Sayısal | Hayır | - |
 | **satıcınıza** | Dize | Yes |  |
 | **firmwareVersion** | Dize | Yes | - |
 | **modelinizi** | Dize | Yes | - |
-| **ıbılessaccesspoint** | Boole | No | True veya false |
+| **ıbılessaccesspoint** | Boole | Hayır | True veya false |
 | **operatingSystem** | İşletim sistemi nesnesi | Yes | - |
 | **'teki** | Güvenlik açıkları nesnesi | Yes | - |
 
@@ -858,48 +880,48 @@ Cihaz nesnesi şunları içerir:
 | **Antivirüsler** | JSON dizisi | Yes | Virüsten koruma adları |
 | **Plaintextparolalar** | JSON dizisi | Yes | Parola nesneleri |
 | **remoteAccess** | JSON dizisi | Yes | Uzaktan erişim nesneleri |
-| **isBackupServer** | Boole | No | True veya false |
+| **isBackupServer** | Boole | Hayır | True veya false |
 | **Openedport 'lar** | JSON dizisi | Yes | Açık bağlantı noktası nesneleri |
-| **isEngineeringStation** | Boole | No | True veya false |
-| **isKnownScanner** | Boole | No | True veya false |
+| **isEngineeringStation** | Boole | Hayır | True veya false |
+| **isKnownScanner** | Boole | Hayır | True veya false |
 | **cdirme** | JSON dizisi | Yes | CVE nesneleri |
-| **Isyetkilendirilmemiş** | Boole | No | True veya false |
-| **Malwareındicationsalgılanan** | Boole | No | True veya false |
+| **Isyetkilendirilmemiş** | Boole | Hayır | True veya false |
+| **Malwareındicationsalgılanan** | Boole | Hayır | True veya false |
 | **Dalgalı bir uthenticAtion** | JSON dizisi | Yes | Zayıf kimlik doğrulaması kullanan uygulamalar algılandı |
 
 #### <a name="password-fields"></a>Parola alanları
 
 | Ad | Tür | Null Atanabilir | Değer listesi |
 |--|--|--|--|
-| **parola** | Dize | No | - |
-| **Protocol** | Dize | No | - |
-| **gücüyle** | Dize | No | Çok zayıf, zayıf, orta veya güçlü |
+| **parola** | Dize | Hayır | - |
+| **Protocol** | Dize | Hayır | - |
+| **gücüyle** | Dize | Hayır | Çok zayıf, zayıf, orta veya güçlü |
 
 #### <a name="remote-access-fields"></a>Uzaktan erişim alanları
 
 | Ad | Tür | Null Atanabilir | Değer listesi |
 |--|--|--|--|
-| **bağ** | Sayısal | No | - |
-| **Aktarım** | Dize | No | TCP veya UDP |
-| **istemcilerinin** | Dize | No | IP Adresi |
-| **clientSoftware** | Dize | No | SSH, VNC, uzak masaüstü veya takım Görüntüleyicisi |
+| **bağ** | Sayısal | Hayır | - |
+| **Aktarım** | Dize | Hayır | TCP veya UDP |
+| **istemcilerinin** | Dize | Hayır | IP Adresi |
+| **clientSoftware** | Dize | Hayır | SSH, VNC, uzak masaüstü veya takım Görüntüleyicisi |
 
 #### <a name="open-port-fields"></a>Bağlantı noktası alanlarını aç
 
 | Ad | Tür | Null Atanabilir | Değer listesi |
 |--|--|--|--|
-| **bağ** | Sayısal | No | - |
-| **Aktarım** | Dize | No | TCP veya UDP |
+| **bağ** | Sayısal | Hayır | - |
+| **Aktarım** | Dize | Hayır | TCP veya UDP |
 | **Protocol** | Dize | Yes | - |
-| **isConflictingWithFirewall** | Boole | No | True veya false |
+| **isConflictingWithFirewall** | Boole | Hayır | True veya false |
 
 #### <a name="cve-fields"></a>CVE alanları
 
 | Ad | Tür | Null Atanabilir | Değer listesi |
 |--|--|--|--|
-| **ID** | Dize | No | - |
-| **ınızı** | Sayısal | No | Çift |
-| **açıklaması** | Dize | No | - |
+| **ID** | Dize | Hayır | - |
+| **ınızı** | Sayısal | Hayır | Çift |
+| **açıklaması** | Dize | Hayır | - |
 
 #### <a name="response-example"></a>Yanıt örneği
 
@@ -1052,13 +1074,17 @@ Cihaz nesnesi şunları içerir:
 
 ```
 
-### <a name="retrieve-security-vulnerabilities"></a>Güvenlik açıklarını alma
+#### <a name="curl-command"></a>Curl komutu
+
+| Tür | API'ler | Örnek |
+|--|--|--|
+| GET | kıvrımlı-k-H "yetkilendirme: <AUTH_TOKEN>" https://<IP_ADDRESS>/api/v1/Reports/vulnerabilities/Devices | kıvrımlı-k-H "Authorization: 1234b734a9244d54ab8d40aedddcabcd" https:/ <span> /127.0.0.1/api/v1/Reports/vulnerabilities/Devices |
+
+### <a name="retrieve-security-vulnerabilities---apiv1reportsvulnerabilitiessecurity"></a>Güvenlik açıklarını alma-/api/v1/Reports/vulnerabilities/Security
 
 Genel bir güvenlik açığı değerlendirmesinin sonuçlarını istemek için bu API 'YI kullanın. Bu değerlendirme, sisteminizin güvenlik düzeyi hakkında öngörüler sağlar.
 
 Bu değerlendirme, belirli bir cihaz değerlendirmesi üzerine değil, genel ağ ve sistem bilgilerini temel alır.
-
-#### <a name="apiv1reportsvulnerabilitiessecurity"></a>/api/v1/reports/vulnerabilities/security
 
 #### <a name="method"></a>Yöntem
 
@@ -1295,11 +1321,15 @@ Değerlendirilen sonuçları temsil eden JSON nesnesi. Her anahtar null olabilir
 
 ```
 
-### <a name="retrieve-operational-vulnerabilities"></a>İşlemsel güvenlik açıklarını alma
+#### <a name="curl-command"></a>Curl komutu
+
+| Tür | API'ler | Örnek |
+|--|--|--|
+| GET | kıvrımlı-k-H "yetkilendirme: <AUTH_TOKEN>" https://<IP_ADDRESS>/api/v1/Reports/vulnerabilities/Security | kıvrımlı-k-H "Authorization: 1234b734a9244d54ab8d40aedddcabcd" https:/ <span> /127.0.0.1/api/v1/Reports/vulnerabilities/Security |
+
+### <a name="retrieve-operational-vulnerabilities---apiv1reportsvulnerabilitiesoperational"></a>İşlemsel güvenlik açıklarını alma-/api/v1/Reports/vulnerabilities/Operational
 
 Genel bir güvenlik açığı değerlendirmesinin sonuçlarını istemek için bu API 'YI kullanın. Bu değerlendirme ağınızın işletimsel durumuna ilişkin öngörüler sağlar. Bu, belirli bir cihaz değerlendirmesi üzerine değil, genel ağ ve sistem bilgilerini temel alır.
-
-#### <a name="apiv1reportsvulnerabilitiesoperational"></a>/api/v1/reports/vulnerabilities/operational
 
 #### <a name="method"></a>Yöntem
 
@@ -1333,7 +1363,7 @@ Değerlendirilen sonuçları temsil eden JSON nesnesi. Her anahtar, bir JSON son
 | Alan adı | Tür | Değer listesi |
 |--|--|--|
 | **adresler** | Sayısal | - |
-| **Network** | Dize | IP Adresi |
+| **network** | Dize | IP Adresi |
 | **maske** | Dize | Alt ağ maskesi |
 
 **Protocolsorunlar**
@@ -1488,13 +1518,17 @@ Değerlendirilen sonuçları temsil eden JSON nesnesi. Her anahtar, bir JSON son
 
 ```
 
-### <a name="validate-user-credentials"></a>Kullanıcı kimlik bilgilerini doğrulama
+#### <a name="curl-command"></a>Curl komutu
+
+| Tür | API'ler | Örnek |
+|--|--|--|
+| GET | kıvrımlı-k-H "yetkilendirme: <AUTH_TOKEN>" https://<IP_ADDRESS>/api/v1/Reports/vulnerabilities/Operational | kıvrımlı-k-H "Authorization: 1234b734a9244d54ab8d40aedddcabcd" https:/ <span> /127.0.0.1/api/v1/Reports/vulnerabilities/Operational |
+
+### <a name="validate-user-credentials---apiexternalauthenticationvalidation"></a>Kullanıcı kimlik bilgilerini doğrulama-/api/External/Authentication/Validation
 
 Bir Defender 'ı IoT Kullanıcı adı ve parolası için doğrulamak üzere bu API 'yi kullanın. IoT Kullanıcı rolleri için tüm Defender, API ile çalışabilir.
 
 Bu API 'yi kullanmak için IoT erişim belirtecinin bir Defender 'a ihtiyacınız yoktur.
-
-#### <a name="apiexternalauthenticationvalidation"></a>/api/External/Authentication/Validation
 
 #### <a name="method"></a>Yöntem
 
@@ -1508,8 +1542,8 @@ Bu API 'yi kullanmak için IoT erişim belirtecinin bir Defender 'a ihtiyacını
 
 | **Ad** | **Tür** | **Yapılamaz** |
 |--|--|--|
-| **nitelen** | Dize | No |
-| **parola** | Dize | No |
+| **nitelen** | Dize | Hayır |
+| **parola** | Dize | Hayır |
 
 #### <a name="request-example"></a>İstek örneği
 
@@ -1551,11 +1585,15 @@ response:
 
 ```
 
-### <a name="change-password"></a>Parolayı değiştir
+#### <a name="curl-command"></a>Curl komutu
+
+| Tür | API'ler | Örnek |
+|--|--|--|
+| GET | kıvrımlı-k-H "yetkilendirme: <AUTH_TOKEN>" https://<IP_ADDRESS>/api/External/Authentication/Validation | kıvrımlı-k-H "Authorization: 1234b734a9244d54ab8d40aedddcabcd" https:/ <span> /127.0.0.1/api/External/Authentication/Validation |
+
+### <a name="change-password---externalauthenticationset_password"></a>Parolayı Değiştir-/External/Authentication/set_password
 
 Kullanıcıların kendi parolalarını değiştirmesine izin vermek için bu API 'yi kullanın. IoT Kullanıcı rolleri için tüm Defender, API ile çalışabilir. Bu API 'yi kullanmak için IoT erişim belirtecinin bir Defender 'a ihtiyacınız yoktur.
-
-#### <a name="externalauthenticationset_password"></a>/External/Authentication/set_password
 
 #### <a name="method"></a>Yöntem
 
@@ -1617,15 +1655,19 @@ response:
 
 | **Ad** | **Tür** | **Yapılamaz** |
 |--|--|--|
-| **nitelen** | Dize | No |
-| **parola** | Dize | No |
-| **new_password** | Dize | No |
+| **nitelen** | Dize | Hayır |
+| **parola** | Dize | Hayır |
+| **new_password** | Dize | Hayır |
 
-### <a name="user-password-update-by-system-admin"></a>Sistem Yöneticisi tarafından Kullanıcı parolası güncelleştirmesi
+#### <a name="curl-command"></a>Curl komutu
+
+| Tür | API'ler | Örnek |
+|--|--|--|
+| POST | kıvrımlı-k-d ' {"kullanıcıadı": "<USER_NAME>", "parola": "<CURRENT_PASSWORD>", "new_password": "<NEW_PASSWORD>"} '-H ' Content-Type: Application/JSON ' https://<IP_address>/api/External/Authentication/set_password | kıvrımlı-k-d ' {"kullanıcıadı": "myUser", "Password": " 1234@abcd ", "new_password": " abcd@1234 "} '-H ' Content-Type: Application/JSON ' https:/ <span> /127.0.0.1/api/External/Authentication/set_password |
+
+### <a name="user-password-update-by-system-admin---externalauthenticationset_password_by_admin"></a>Sistem Yöneticisi tarafından Kullanıcı parolası güncelleştirmesi-/External/Authentication/set_password_by_admin
 
 Sistem yöneticilerinin belirtilen kullanıcıların parolalarını değiştirmesine izin vermek için bu API 'yi kullanın. IoT Yönetici Kullanıcı rolleri için Defender, API ile çalışabilir. Bu API 'yi kullanmak için IoT erişim belirtecinin bir Defender 'a ihtiyacınız yoktur.
-
-#### <a name="externalauthenticationset_password_by_admin"></a>/External/Authentication/set_password_by_admin
 
 #### <a name="method"></a>Yöntem
 
@@ -1692,10 +1734,17 @@ response:
 
 | **Ad** | **Tür** | **Yapılamaz** |
 |--|--|--|
-| **admin_username** | Dize | No |
-| **admin_password** | Dize | No |
-| **nitelen** | Dize | No |
-| **new_password** | Dize | No |
+| **admin_username** | Dize | Hayır |
+| **admin_password** | Dize | Hayır |
+| **nitelen** | Dize | Hayır |
+| **new_password** | Dize | Hayır |
+
+#### <a name="curl-command"></a>Curl komutu
+
+> [!div class="mx-tdBreakAll"]
+> | Tür | API'ler | Örnek |
+> |--|--|--|
+> | POST | kıvrımlı-k-d ' {"admin_username": "<ADMIN_USERNAME>", "admin_password": "<ADMIN_PASSWORD>", "kullanıcıadı": "<user_name>", "new_password": "<NEW_PASSWORD>"} '-H ' Content-Type: Application/JSON ' https://<IP_address>/api/External/Authentication/set_password_by_admin | kıvrımlı-k-d ' {"admin_user": "adminUser", "admin_password": " 1234@abcd ", "kullanıcıadı": "myUser", "new_password": " abcd@1234 "} '-H ' Content-Type: Application/JSON ' https:/ <span> /127.0.0.1/api/External/Authentication/set_password_by_admin |
 
 ## <a name="on-premises-management-console-api-specifications"></a>Şirket içi yönetim konsolu API 'SI belirtimleri
 
@@ -1726,23 +1775,17 @@ Burada tanımladığınız API 'Ler, şirket içi yönetim konsolunun **Uyarı d
 
 ```
 
-#### <a name="change-password"></a>Parolayı değiştir
+#### <a name="change-password---externalauthenticationset_password"></a>Parolayı Değiştir-/External/Authentication/set_password
 
 Kullanıcıların kendi parolalarını değiştirmesine izin vermek için bu API 'yi kullanın. IoT Kullanıcı rolleri için tüm Defender, API ile çalışabilir. Bu API 'yi kullanmak için IoT erişim belirtecinin bir Defender 'a ihtiyacınız yoktur.
 
-- **/External/Authentication/set_password**
-
-#### <a name="user-password-update-by-system-admin"></a>Sistem Yöneticisi tarafından Kullanıcı parolası güncelleştirmesi
+#### <a name="user-password-update-by-system-admin---externalauthenticationset_password_by_admin"></a>Sistem Yöneticisi tarafından Kullanıcı parolası güncelleştirmesi-/External/Authentication/set_password_by_admin
 
 Sistem yöneticilerinin belirli kullanıcılar için parolaları değiştirmesine izin vermek için bu API 'yi kullanın. IoT Yönetici Kullanıcı rolleri için Defender, API ile çalışabilir. Bu API 'yi kullanmak için IoT erişim belirtecinin bir Defender 'a ihtiyacınız yoktur.
 
-- **/External/Authentication/set_password_by_admin**
-
-### <a name="retrieve-device-information"></a>Cihaz bilgilerini al
+### <a name="retrieve-device-information---externalv1devices"></a>Cihaz bilgilerini alma-/External/v1/Devices
 
 Bu API, bir şirket içi yönetim konsoluna bağlı olan IoT algılayıcılarının Defender tarafından algılanan tüm cihazların bir listesini ister.
-
-- **/External/v1/Devices**
 
 #### <a name="method"></a>Yöntem
 
@@ -1784,17 +1827,17 @@ Cihazları temsil eden JSON nesneleri dizisi.
 
 | Ad | Tür | Null Atanabilir | Değer listesi |
 |--|--|--|--|
-| **Sensorıd** | Sayısal | No | - |
+| **Sensorıd** | Sayısal | Hayır | - |
 | **Bölge kimliği** | Sayısal | Yes | - |
 | **SiteId** | Sayısal | Yes | - |
 | **IpAdresleri** | JSON dizisi | Yes | IP adresleri (Internet adresleri veya ikili NIC 'ler içeren bir cihaz olması durumunda birden fazla adres olabilir) |
-| **name** | Dize | No | - |
-| **türüyle** | Dize | No | Bilinmiyor, mühendislik Istasyonu, PLC, HMı, Historia, etki alanı denetleyicisi, DB sunucusu, kablosuz erişim noktası, yönlendirici, anahtar, sunucu, Iş Istasyonu, IP kamera, yazıcı, güvenlik duvarı, Terminal İstasyonu, VPN Gateway, Internet veya çok noktaya yayın ve yayın |
+| **name** | Dize | Hayır | - |
+| **türüyle** | Dize | Hayır | Bilinmiyor, mühendislik Istasyonu, PLC, HMı, Historia, etki alanı denetleyicisi, DB sunucusu, kablosuz erişim noktası, yönlendirici, anahtar, sunucu, Iş Istasyonu, IP kamera, yazıcı, güvenlik duvarı, Terminal İstasyonu, VPN Gateway, Internet veya çok noktaya yayın ve yayın |
 | **macAddresses** | JSON dizisi | Yes | MAC adresleri (çift NIC içeren bir cihaz olması durumunda birden fazla adres olabilir) |
 | **operatingSystem** | Dize | Yes | - |
-| **engineeringStation** | Boole | No | True veya false |
-| **Tarayıcınız** | Boole | No | True veya false |
-| **yetkisi** | Boole | No | True veya false |
+| **engineeringStation** | Boole | Hayır | True veya false |
+| **Tarayıcınız** | Boole | Hayır | True veya false |
+| **yetkisi** | Boole | Hayır | True veya false |
 | **satıcınıza** | Dize | Yes | - |
 | **Protokoller** | JSON dizisi | Yes | Protokol nesnesi |
 | **yazılımında** | JSON dizisi | Yes | Bellenim nesnesi |
@@ -1803,21 +1846,21 @@ Cihazları temsil eden JSON nesneleri dizisi.
 
 | Ad | Tür | Null Atanabilir | Değer listesi |
 |--|--|--|--|
-| Name | Dize | No | - |
+| Name | Dize | Hayır | - |
 | Adresler | JSON dizisi | Yes | Ana veya sayısal değerler |
 
 #### <a name="firmware-fields"></a>Bellenim alanları
 
 | Ad | Tür | Null Atanabilir | Değer listesi |
 |--|--|--|--|
-| **ardışık** | Dize | No | Yok veya gerçek değer |
-| **modelinizi** | Dize | No | Yok veya gerçek değer |
-| **firmwareVersion** | Çift | No | Yok veya gerçek değer |
-| **additionalData** | Dize | No | Yok veya gerçek değer |
-| **moduleAddress** | Dize | No | Yok veya gerçek değer |
-| **rafı** | Dize | No | Yok veya gerçek değer |
-| **kumar** | Dize | No | Yok veya gerçek değer |
-| **adrestir** | Dize | No | Yok veya gerçek değer |
+| **ardışık** | Dize | Hayır | Yok veya gerçek değer |
+| **modelinizi** | Dize | Hayır | Yok veya gerçek değer |
+| **firmwareVersion** | Çift | Hayır | Yok veya gerçek değer |
+| **additionalData** | Dize | Hayır | Yok veya gerçek değer |
+| **moduleAddress** | Dize | Hayır | Yok veya gerçek değer |
+| **rafı** | Dize | Hayır | Yok veya gerçek değer |
+| **kumar** | Dize | Hayır | Yok veya gerçek değer |
+| **adrestir** | Dize | Hayır | Yok veya gerçek değer |
 
 #### <a name="response-example"></a>Yanıt örneği
 
@@ -1959,11 +2002,15 @@ Cihazları temsil eden JSON nesneleri dizisi.
 ]
 ```
 
-### <a name="retrieve-alert-information"></a>Uyarı bilgilerini al
+#### <a name="curl-command"></a>Curl komutu
+
+| Tür | API'ler | Örnek |
+|--|--|--|
+| GET | kıvrımlı-k-H "yetkilendirme: <AUTH_TOKEN>" ' https://<>IP_ADDRESS>/External/v1/Devices? siteID =&ZoneId =&Sensorıd =&yetkilendirilmiş = ' | kıvrımlı-k-H "Authorization: 1234b734a9244d54ab8d40aedddcabcd" ' https:/ <span> /127.0.0.1/External/v1/Devices? siteID = 1&bölge kimliği = 2&Sensorıd = 5&yetkilendirilmiş = true ' |
+
+### <a name="retrieve-alert-information---externalv1alerts"></a>Uyarı bilgilerini al-/External/v1/Alerts
 
 Şirket içi yönetim konsolundan tüm veya filtrelenmiş uyarıları almak için bu API 'yi kullanın.
-
-#### <a name="externalv1alerts"></a>/External/v1/Alerts
 
 #### <a name="method"></a>Yöntem
 
@@ -2001,12 +2048,12 @@ Cihazları temsil eden JSON nesneleri dizisi.
 
 | Ad | Tür | Null Atanabilir | Değer listesi |
 |--|--|--|--|
-| **ID** | Sayısal | No | - |
-| **ışınızda** | Sayısal | No | Dönem (UTC) |
-| **başlık** | Dize | No | - |
-| **İleti** | Dize | No | - |
-| **inin** | Dize | No | Uyarı, Ikincil, büyük veya kritik |
-| **altyapısına** | Dize | No | Protokol Ihlali, Ilke Ihlali, kötü amaçlı yazılım, anomali veya operasyonel |
+| **ID** | Sayısal | Hayır | - |
+| **ışınızda** | Sayısal | Hayır | Dönem (UTC) |
+| **başlık** | Dize | Hayır | - |
+| **İleti** | Dize | Hayır | - |
+| **inin** | Dize | Hayır | Uyarı, Ikincil, büyük veya kritik |
+| **altyapısına** | Dize | Hayır | Protokol Ihlali, Ilke Ihlali, kötü amaçlı yazılım, anomali veya operasyonel |
 | **sourceDevice** | Sayısal | Yes | Cihaz Kimliği |
 | **Hedef cihaz** | Sayısal | Yes | Cihaz Kimliği |
 | **AdditionalInformation** | Ek bilgi nesnesi | Yes | - |
@@ -2015,7 +2062,7 @@ Cihazları temsil eden JSON nesneleri dizisi.
 
 | Ad | Tür | Null Atanabilir | Değer listesi |
 |--|--|--|--|
-| **açıklaması** | Dize | No | - |
+| **açıklaması** | Dize | Hayır | - |
 | **bilgi** | JSON dizisi | Hayır | Dize |
 
 #### <a name="response-example"></a>Yanıt örneği
@@ -2116,6 +2163,13 @@ Cihazları temsil eden JSON nesneleri dizisi.
 ]
 ```
 
+#### <a name="curl-command"></a>Curl komutu
+
+> [!div class="mx-tdBreakAll"]
+> | Tür | API'ler | Örnek |
+> |--|--|--|
+> | GET | kıvrımlı-k-H "yetkilendirme: <AUTH_TOKEN>" ' https://<>IP_ADDRESS>/External/v1/Alerts? State =&ZoneId =&fromTime =&toTime =&siteID =&algılayıcı = ' | kıvrımlı-k-H "Authorization: 1234b734a9244d54ab8d40aedddcabcd" ' https:/ <span> /127.0.0.1/External/v1/Alerts? durum = işlenmemiş&bölge kimliği = 1&fromTime = 0&toTime = 1594551777000&siteID = 1&algılayıcı = 1 ' |
+
 ### <a name="qradar-alerts"></a>QRadar uyarıları
 
 IoT için Defender ile QRadar tümleştirmesi, IoT için Defender tarafından oluşturulan uyarıları tanımlamanızı ve bu uyarılarla ilgili eylemler gerçekleştirmenizi sağlar. QRadar, IoT için Defender 'daki verileri alır ve ardından genel API şirket içi yönetim konsolu bileşeniyle iletişim kurar.
@@ -2156,7 +2210,7 @@ UUID 'yi içeren uyarı üzerinde gerçekleştirilecek eylemi temsil eden JSON n
 
 | Ad | Tür | Null Atanabilir | Değer listesi |
 |--|--|--|--|
-| **ön** | Dize | No | tanıtıcı veya Handleandöğren |
+| **ön** | Dize | Hayır | tanıtıcı veya Handleandöğren |
 
 #### <a name="request-example"></a>İstek örneği
 
@@ -2180,7 +2234,7 @@ Cihazları temsil eden JSON nesneleri dizisi.
 
 | Ad | Tür | Null Atanabilir | Description |
 |--|--|--|--|
-| **içerik/hata** | Dize | No | İstek başarılı olursa içerik özelliği görüntülenir. Aksi halde, Error özelliği görüntülenir. |
+| **içerik/hata** | Dize | Hayır | İstek başarılı olursa içerik özelliği görüntülenir. Aksi halde, Error özelliği görüntülenir. |
 
 #### <a name="possible-content-values"></a>Olası içerik değerleri
 
@@ -2213,15 +2267,19 @@ Cihazları temsil eden JSON nesneleri dizisi.
 }
 ```
 
-### <a name="alert-exclusions-maintenance-window"></a>Uyarı dışlamaları (bakım penceresi)
+#### <a name="curl-command"></a>Curl komutu
+
+| Tür | API'ler | Örnek |
+|--|--|--|
+| PUT | kıvrımlı-k-X PUT-d ' {"Action": " <ACTION> "} '-H "Authorization: <AUTH_TOKEN>" https://<IP_ADDRESS>/External/v1/Alerts/<UUID> | kıvrık-k-X PUT-d ' {"Action": "tanıtıcı"} '-H "yetkilendirme: 1234b734a9244d54ab8d40aedddcabcd" https:/ <span> /127.0.0.1/External/v1/Alerts/1-1594550943000 |
+
+### <a name="alert-exclusions-maintenance-window---externalv1maintenancewindow"></a>Uyarı dışlamaları (bakım penceresi)-/external/v1/maintenanceWindow
 
 Uyarıların gönderileceği koşulları tanımlayın. Örneğin, durdurma ve başlangıç zamanlarını, uyarıları tetiklerken dışlanmayacak cihazları veya alt ağları ve dışlanmalıdır IoT motorları için Defender 'ı tanımlayın ve güncelleştirin. Örneğin, bakım penceresi sırasında, kritik cihazlarda kötü amaçlı yazılım uyarıları hariç olmak üzere tüm uyarıların uyarı teslimini durdurmak isteyebilirsiniz.
 
 Burada tanımladığınız API 'Ler, şirket içi yönetim konsolunun **Uyarı dışlamaları** penceresinde, salt okuma dışında tutma kuralı olarak görüntülenir.
 
 :::image type="content" source="media/references-work-with-defender-for-iot-apis/alert-exclusion-window.png" alt-text="Tüm dışlama kurallarının bir listesini gösteren uyarı dışlamaları penceresi. ":::
-
-#### <a name="externalv1maintenancewindow"></a>/external/v1/maintenanceWindow
 
 #### <a name="method---post"></a>Yöntem-GÖNDERI
 
@@ -2364,14 +2422,21 @@ Bakım penceresi işlemlerini temsil eden JSON nesneleri dizisi.
 | **yapılarının** | Dize dizisi | - | evet |
 | **Sensorıds** | Dize dizisi | - | evet |
 | **ağlarda** | Dize dizisi | - | evet |
-| **ttl** | Sayısal | - | evet |
+| **Toplam** | Sayısal | - | evet |
 | **operationType** | Dize | Değerler şunlardır "Aç", "GÜNCELLEŞTIR" ve "Kapat" | hayır |
 
-### <a name="authenticate-user-credentials"></a>Kullanıcı kimlik bilgileri kimlik doğrulaması
+#### <a name="curl-command"></a>Curl komutu
+
+| Tür | API'ler | Örnek |
+|--|--|--|
+| POST | kıvrımlı-k-X-d ' {"Ticketıd": "<TICKET_ID>", TTL ": <TIME_TO_LIVE>," motorları ": [<ENGINE1, ENGINE2... ENGINEn>], "Sensorıds": [<SENSOR_ID1, SENSOR_ID2... SENSOR_IDn>], "alt ağlar": [<SUBNET1, SUBNET2.... SUBNETn>]} '-H "yetkilendirme: <AUTH_TOKEN>" https:/ <span> /127.0.0.1/External/v1/maintenanceWindow | kıvrımlı-k-X-d ' {"Ticketıd": "a5fe99c-d914-4bda-9332-307384fe40bf", "TTL": "20", "Engines": ["ANOMALI"], "Sensorıds": ["5", "3"], "alt ağlar": ["10.0.0.3"]} '-H "Authorization: 1234b734a9244d54ab8d40aedddcabcd" https:/ <span> /127.0.0.1/External/v1/maintenanceWindow |
+| PUT | kıvrımlı-k-X PUT-d ' {"Ticketıd": "<TICKET_ID>", TTL ":" <TIME_TO_LIVE> "} '-H" Authorization: <AUTH_TOKEN> "https:/ <span> /127.0.0.1/External/v1/maintenanceWindow | kıvrımlı-k-X PUT-d ' {"Ticketıd": "a5fe99c-d914-4bda-9332-307384fe40bf", "TTL": "20"} '-H "Authorization: 1234b734a9244d54ab8d40aedddcabcd" https:/ <span> /127.0.0.1/External/v1/maintenanceWindow |
+| DELETE | kıvrımlı-k-X DELETE-d ' {"Ticketıd": "<TICKET_ID>"} '-H "yetkilendirme: <AUTH_TOKEN>" https:/ <span> /127.0.0.1/External/v1/maintenanceWindow | kıvrımlı-k-X DELETE-d ' {"Ticketıd": "a5fe99c-d914-4bda-9332-307384fe40bf"} '-H "Authorization: 1234b734a9244d54ab8d40aedddcabcd" https:/ <span> /127.0.0.1/External/v1/maintenanceWindow |
+| GET | kıvrımlı-k-H "yetkilendirme: <AUTH_TOKEN>" ' https://<IP_ADDRESS>/external/v1/maintenanceWindow? fromDate =&toDate =&Ticketıd =&tokenName = ' | kıvrımlı-k-H "Authorization: 1234b734a4b4d54ab8d40aedddcabcd" ' https:/ <span> /127.0.0.1/External/v1/maintenanceWindow? fromDate = 2020-01-01&toDate = 2020-07-14&Ticketıd = a5fe99c-d914-4bda-9332-307384fe40bf&tokenName = a ' |
+
+### <a name="authenticate-user-credentials---externalauthenticationvalidation"></a>Kullanıcı kimlik bilgilerini doğrulama-/External/Authentication/Validation
 
 Kullanıcı kimlik bilgilerini doğrulamak için bu API 'YI kullanın. IoT Kullanıcı rolleri için tüm Defender, API ile çalışabilir. Bu API 'yi kullanmak için IoT erişim belirtecinin bir Defender 'a ihtiyacınız yoktur.
-
-#### <a name="externalauthenticationvalidation"></a>/External/Authentication/Validation
 
 #### <a name="method"></a>Yöntem
 
@@ -2411,8 +2476,8 @@ request:
 
 | **Ad** | **Tür** | **Yapılamaz** |
 |--|--|--|
-| **nitelen** | Dize | No |
-| **parola** | Dize | No |
+| **nitelen** | Dize | Hayır |
+| **parola** | Dize | Hayır |
 
 #### <a name="response-example"></a>Yanıt örneği
 
@@ -2426,11 +2491,15 @@ response:
 }
 ```
 
-### <a name="change-password"></a>Parolayı değiştir
+#### <a name="curl-command"></a>Curl komutu
+
+| Tür | API'ler | Örnek |
+|--|--|--|
+| POST | kıvrımlı-k-d ' {"kullanıcıadı": "<USER_NAME>", "Password": "PASSWORD"} ' ' https://<IP_ADDRESS>/External/Authentication/Validation ' | kıvrımlı-k-d ' {"kullanıcıadı": "myUser", "Password": " 1234@abcd "} ' ' https:/ <span> /127.0.0.1/External/Authentication/Validation ' |
+
+### <a name="change-password---externalauthenticationset_password"></a>Parolayı Değiştir-/External/Authentication/set_password
 
 Kullanıcıların kendi parolalarını değiştirmesine izin vermek için bu API 'yi kullanın. IoT Kullanıcı rolleri için tüm Defender, API ile çalışabilir. Bu API 'yi kullanmak için IoT erişim belirtecinin bir Defender 'a ihtiyacınız yoktur.
-
-#### <a name="externalauthenticationset_password"></a>/External/Authentication/set_password
 
 #### <a name="method"></a>Yöntem
 
@@ -2492,15 +2561,19 @@ response:
 
 | **Ad** | **Tür** | **Yapılamaz** |
 |--|--|--|
-| **nitelen** | Dize | No |
-| **parola** | Dize | No |
-| **new_password** | Dize | No |
+| **nitelen** | Dize | Hayır |
+| **parola** | Dize | Hayır |
+| **new_password** | Dize | Hayır |
 
-### <a name="user-password-update-by-system-admin"></a>Sistem Yöneticisi tarafından Kullanıcı parolası güncelleştirmesi
+#### <a name="curl-command"></a>Curl komutu
+
+| Tür | API'ler | Örnek |
+|--|--|--|
+| POST | kıvrımlı-k-d ' {"kullanıcıadı": "<USER_NAME>", "parola": "<CURRENT_PASSWORD>", "new_password": "<NEW_PASSWORD>"} '-H ' Content-Type: Application/JSON ' https://<IP_address>/External/Authentication/set_password | kıvrımlı-k-d ' {"kullanıcıadı": "myUser", "Password": " 1234@abcd ", "new_password": " abcd@1234 "} '-H ' Content-Type: Application/JSON ' https:/ <span> /127.0.0.1/External/Authentication/set_password |
+
+### <a name="user-password-update-by-system-admin---externalauthenticationset_password_by_admin"></a>Sistem Yöneticisi tarafından Kullanıcı parolası güncelleştirmesi-/External/Authentication/set_password_by_admin
 
 Sistem yöneticilerinin belirtilen kullanıcıların parolalarını değiştirmesine izin vermek için bu API 'yi kullanın. IoT Yönetici Kullanıcı rolleri için Defender, API ile çalışabilir. Bu API 'yi kullanmak için IoT erişim belirtecinin bir Defender 'a ihtiyacınız yoktur.
-
-#### <a name="externalauthenticationset_password_by_admin"></a>/External/Authentication/set_password_by_admin
 
 #### <a name="method"></a>Yöntem
 
@@ -2567,11 +2640,20 @@ response:
 
 | **Ad** | **Tür** | **Yapılamaz** |
 |--|--|--|
-| **admin_username** | Dize | No |
-| **admin_password** | Dize | No |
-| **nitelen** | Dize | No |
-| **new_password** | Dize | No |
+| **admin_username** | Dize | Hayır |
+| **admin_password** | Dize | Hayır |
+| **nitelen** | Dize | Hayır |
+| **new_password** | Dize | Hayır |
 
-## <a name="see-also"></a>Ayrıca bkz.
-[Bir cihaz envanterinde](how-to-investigate-sensor-detections-in-a-device-inventory.md) 
- algılayıcı algılamalarını araştırın [Bir cihaz envanterinde tüm kurumsal algılayıcı algılamalarını araştırın](how-to-investigate-all-enterprise-sensor-detections-in-a-device-inventory.md)
+#### <a name="curl-command"></a>Curl komutu
+
+> [!div class="mx-tdBreakAll"]
+> | Tür | API'ler | Örnek |
+> |--|--|--|
+> | POST | kıvrımlı-k-d ' {"admin_username": "<ADMIN_USERNAME>", "admin_password": "<ADMIN_PASSWORD>", "kullanıcıadı": "<user_name>", "new_password": "<NEW_PASSWORD>"} '-H ' Content-Type: Application/JSON ' https://<IP_address>/External/Authentication/set_password_by_admin | kıvrımlı-k-d ' {"admin_user": "adminUser", "admin_password": " 1234@abcd ", "kullanıcıadı": "myUser", "new_password": " abcd@1234 "} '-H ' Content-Type: Application/JSON ' https:/ <span> /127.0.0.1/External/Authentication/set_password_by_admin |
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+- [Bir cihaz envanterinde algılayıcı algılamalarını araştırma](how-to-investigate-sensor-detections-in-a-device-inventory.md)
+
+- [Bir cihaz envanterinde tüm kurumsal algılayıcı algılamalarını araştırma](how-to-investigate-all-enterprise-sensor-detections-in-a-device-inventory.md)
