@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 12/21/2020
-ms.openlocfilehash: 221678da819d32539d0078b72a87c61851ed3e8f
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: cc4f961c399e9ac5e853085106924584eb3935d0
+ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99089267"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99223398"
 ---
 # <a name="connect-servicenow-with-it-service-management-connector"></a>ServiceNow 'ı BT Hizmet Yönetimi Bağlayıcısı bağlama
 
@@ -29,10 +29,11 @@ ISMC yükleme hakkında bilgi için bkz. [BT hizmet yönetimi Bağlayıcısı ç
 
 ### <a name="oauth-setup"></a>OAuth kurulumu
 
-ServiceNow desteklenen sürümler Orlando, New York, Madrid, Londra, Kingston, Jakarta, Istanbul, Helsinki ve Genfiliz içerir.
+ServiceNow desteklenen sürümler, Paris, Orlando, New York, Madrid, Londra, Kingston, Jakarta, Istanbul, Helsinki ve Genfiliz içerir.
 
 ServiceNow yöneticileri, ServiceNow örneği için bir istemci KIMLIĞI ve istemci parolası üretmelidir. Aşağıdaki bilgileri gerekli şekilde görüntüleyin:
 
+- [Paris için OAuth ayarlama](https://docs.servicenow.com/bundle/paris-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
 - [Orlando için OAuth ayarla](https://docs.servicenow.com/bundle/orlando-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
 - [New York için OAuth ayarlama](https://docs.servicenow.com/bundle/newyork-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
 - [Madrid için OAuth ayarlama](https://docs.servicenow.com/bundle/madrid-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)

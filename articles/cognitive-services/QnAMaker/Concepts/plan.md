@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: 048b53186aa0be388d9d801cd6590d4295a4faa7
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: e523b35afca33213a40060819a1293e94d413b00
+ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353179"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99222874"
 ---
 # <a name="plan-your-qna-maker-app"></a>Soru-Cevap Oluşturma Uygulamanızı planlayın
 
@@ -94,13 +94,13 @@ Artık aynı Soru-Cevap Oluşturma kaynağı dahilinde farklı dillerde bilgi es
 
 ### <a name="ingest-data-sources"></a>Alma veri kaynakları
 
-Bilgi Bankası oluşturmak için aşağıdaki [veri kaynaklarından](../index.yml) birini kullanabilirsiniz:
+Bilgi Bankası oluşturmak için aşağıdaki [veri kaynaklarından](../Concepts/data-sources-and-content.md) birini kullanabilirsiniz:
 
 * Genel URL
 * Özel SharePoint URL 'SI
 * Dosya
 
-Alma işlemi, [desteklenen içerik türlerini](../index.yml) markaşağı dönüştürür. *Yanıtın* daha fazla düzenlemesi markın ile yapılır. Bilgi Bankası oluşturduktan sonra, Soru-Cevap Oluşturma portalında [QNA çiftlerini](question-answer-set.md) [zengin metin yazma](../how-to/edit-knowledge-base.md#rich-text-editing-for-answer)ile düzenleyebilirsiniz.
+Alma işlemi, [desteklenen içerik türlerini](../reference-document-format-guidelines.md) markaşağı dönüştürür. *Yanıtın* daha fazla düzenlemesi markın ile yapılır. Bilgi Bankası oluşturduktan sonra, Soru-Cevap Oluşturma portalında [QNA çiftlerini](question-answer-set.md) [zengin metin yazma](../how-to/edit-knowledge-base.md#rich-text-editing-for-answer)ile düzenleyebilirsiniz.
 
 ### <a name="data-format-considerations"></a>Veri biçimi konuları
 
@@ -124,7 +124,7 @@ Bir kullanıcının botunuzu nasıl kullanacağınızı bilmesi ve konuşmada bo
 
 Ortak çalışanlar, Bilgi Bankası uygulamasının tam geliştirme yığınını paylaşan diğer geliştiriciler olabilir veya yalnızca Bilgi Bankası yazma ile sınırlı olabilir.
 
-Bilgi Bankası yazma, ortak çalışan becerileri kapsamını sınırlandırmak için Azure portal uyguladığınız çeşitli [rol tabanlı erişim izinlerini](../index.yml) destekler.
+Bilgi Bankası yazma, ortak çalışan becerileri kapsamını sınırlandırmak için Azure portal uyguladığınız çeşitli [rol tabanlı erişim izinlerini](../reference-role-based-access-control.md) destekler.
 
 ## <a name="integration-with-client-applications"></a>İstemci uygulamalarıyla tümleştirme
 

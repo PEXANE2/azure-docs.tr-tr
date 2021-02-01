@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 09/01/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: edbcabfe4d0b633a784163562f52b303120916ca
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 1c9ac872587804adbd9e62a3dc3ef3daed9e0c25
+ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98685080"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99223060"
 ---
 # <a name="creating-generalized-images-without-a-provisioning-agent"></a>Sağlama Aracısı olmadan Genelleştirilmiş görüntüler oluşturma
 
@@ -154,7 +154,7 @@ wireserver_conn.close()
 
 SANAL makinenizde Python yüklü değilse veya kullanılabilir değilse, aşağıdaki adımlarla bu Yukarıdaki betik mantığını programlı bir şekilde yeniden oluşturabilirsiniz:
 
-1. `ContainerId` `InstanceId` Kablolu sunucudan gelen yanıtı ayrıştırarak ve alın: `curl -X GET -H 'x-ms-version: 2012-11-30' http://$168.63.129.16/machine?comp=goalstate` .
+1. `ContainerId` `InstanceId` Kablolu sunucudan gelen yanıtı ayrıştırarak ve alın: `curl -X GET -H 'x-ms-version: 2012-11-30' http://168.63.129.16/machine?comp=goalstate` .
 
 2. Aşağıdaki XML verilerini oluşturun, ayrıştırılmış `ContainerId` ve `InstanceId` Yukarıdaki adımdan ekleme:
    ```xml

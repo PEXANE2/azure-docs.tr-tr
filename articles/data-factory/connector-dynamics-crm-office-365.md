@@ -11,13 +11,13 @@ author: linda33wj
 manager: shwang
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
-ms.date: 09/23/2020
-ms.openlocfilehash: 204399186ae229324f9dc478e0ef58a173060013
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.date: 02/01/2021
+ms.openlocfilehash: d11125ed00491f87844c7b0b344473825ad52a99
+ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92638185"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99223483"
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>Ve Azure Data Factory kullanarak Dynamics 365 (Common Data Service) veya Dynamics CRM 'den veri kopyalama
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -56,12 +56,12 @@ Dynamics 365 özel olarak, aşağıdaki uygulama türleri desteklenir:
 
 Bu bağlayıcı, finans, Işlemler ve Tatatçiler gibi diğer uygulama türlerini desteklemez.
 
-Bu Dynamics Connector, [Dynamics XRM araçları](/dynamics365/customer-engagement/developer/build-windows-client-applications-xrm-tools)'nın üzerine kurulmuştur.
-
 >[!TIP]
 >Dynamics 365 finans ve Işlemlerinden veri kopyalamak için [DYNAMICS AX bağlayıcısını](connector-dynamics-ax.md)kullanabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+Bu Dynamics Connector, [Dynamics XRM araçları](/dynamics365/customer-engagement/developer/build-windows-client-applications-xrm-tools)'nın üzerine kurulmuştur.
+
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu bağlayıcıyı Azure AD hizmet sorumlusu kimlik doğrulaması ile birlikte kullanmak için Common Data Service veya Dynamics 'te sunucu-sunucu (S2S) kimlik doğrulamasını ayarlamanız gerekir. Ayrıntılı adımlar için [Bu makaleye](/powerapps/developer/common-data-service/build-web-applications-server-server-s2s-authentication) bakın.
 
@@ -79,10 +79,10 @@ Dynamics bağlantılı hizmeti için aşağıdaki özellikler desteklenir.
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Type özelliği "Dynamics", "DynamicsCrm" veya "CommonDataServiceForApps" olarak ayarlanmalıdır. | Evet |
-| deploymentType | Dynamics örneğinin dağıtım türü. Dynamics Online için değer "çevrimiçi" olmalıdır. | Evet |
-| serviceUri | Aynı tarayıcıdan eriş, Dynamics örneğinizin hizmet URL 'SI. Örnek olarak "https:// \<organization-name> . CRM [x]. Dynamics. com" bulunur. | Evet |
-| authenticationType | Bir Dynamics sunucusuna bağlanmak için kimlik doğrulaması türü. Geçerli değerler şunlardır "AADServicePrincipal" ve "Office365". | Evet |
+| tür | Type özelliği "Dynamics", "DynamicsCrm" veya "CommonDataServiceForApps" olarak ayarlanmalıdır. | Yes |
+| deploymentType | Dynamics örneğinin dağıtım türü. Dynamics Online için değer "çevrimiçi" olmalıdır. | Yes |
+| serviceUri | Aynı tarayıcıdan eriş, Dynamics örneğinizin hizmet URL 'SI. Örnek olarak "https:// \<organization-name> . CRM [x]. Dynamics. com" bulunur. | Yes |
+| authenticationType | Bir Dynamics sunucusuna bağlanmak için kimlik doğrulaması türü. Geçerli değerler şunlardır "AADServicePrincipal" ve "Office365". | Yes |
 | Serviceprincipalıd | Azure AD uygulamasının istemci KIMLIĞI. | Kimlik doğrulaması "AADServicePrincipal" olduğunda Evet |
 | servicePrincipalCredentialType | Hizmet sorumlusu kimlik doğrulaması için kullanılacak kimlik bilgisi türü. Geçerli değerler şunlardır "ServicePrincipalKey" ve "ServicePrincipalCert". | Kimlik doğrulaması "AADServicePrincipal" olduğunda Evet |
 | servicePrincipalCredential | Hizmet sorumlusu kimlik bilgileri. <br/><br/>Kimlik bilgisi türü olarak "ServicePrincipalKey" kullandığınızda, `servicePrincipalCredential` bağlantılı hizmet dağıtımı üzerinde Azure Data Factory şifreler bir dize olabilir. Veya Azure Key Vault bir gizli dizi başvurusu olabilir. <br/><br/>Kimlik bilgisi olarak "ServicePrincipalCert" kullandığınızda, `servicePrincipalCredential` Azure Key Vault bir sertifikaya başvuru olmalıdır. | Kimlik doğrulaması "AADServicePrincipal" olduğunda Evet |
@@ -172,7 +172,7 @@ Dynamics bağlantılı hizmeti için aşağıdaki özellikler desteklenir.
 
 ### <a name="dynamics-365-and-dynamics-crm-on-premises-with-ifd"></a>Dynamics 365 ve şirket içi Dynamics CRM 'yi ıFD ile
 
-Dynamics Online ile karşılaştırılan ek özellikler **konak adı** ve **bağlantı noktasıdır** .
+Dynamics Online ile karşılaştırılan ek özellikler **konak adı** ve **bağlantı noktasıdır**.
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
@@ -222,7 +222,7 @@ Ve Dynamics verilerini Dynamics 'ten kopyalamak için aşağıdaki özellikler d
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | DataSet 'in Type özelliği "DynamicsEntity", "DynamicsCrmEntity" veya "CommonDataServiceForAppsEntity" olarak ayarlanmalıdır. |Evet |
+| tür | DataSet 'in Type özelliği "DynamicsEntity", "DynamicsCrmEntity" veya "CommonDataServiceForAppsEntity" olarak ayarlanmalıdır. |Yes |
 | entityName | Alınacak varlığın mantıksal adı. | Etkinlik kaynağı "sorgu" ve havuz için Evet olarak belirtilmişse kaynak için Hayır |
 
 #### <a name="example"></a>Örnek
@@ -254,7 +254,7 @@ Verileri Dynamics 'ten kopyalamak için, kopyalama etkinliği **kaynağı** böl
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Kopyalama etkinliği kaynağının Type özelliği "DynamicsSource", "DynamicsCrmSource" veya "CommonDataServiceForAppsSource" olarak ayarlanmalıdır. | Evet |
+| tür | Kopyalama etkinliği kaynağının Type özelliği "DynamicsSource", "DynamicsCrmSource" veya "CommonDataServiceForAppsSource" olarak ayarlanmalıdır. | Yes |
 | sorgu | FetchXML, Dynamics Online 'da ve şirket içinde kullanılan özel bir sorgu dilidir. Aşağıdaki örneğe bakın. Daha fazla bilgi için bkz. [FetchXML Ile derleme sorguları](/previous-versions/dynamicscrm-2016/developers-guide/gg328332(v=crm.8)). | `entityName`Veri kümesi belirtilmemişse Hayır |
 
 >[!NOTE]
@@ -323,10 +323,10 @@ Verileri Dynamics 'e kopyalamak için kopyalama etkinliği **havuzu** bölümü 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
 | tür | Kopyalama etkinliği havuzunun Type özelliği "DynamicsSink", "DynamicsCrmSink" veya "CommonDataServiceForAppsSink" olarak ayarlanmalıdır. | Evet. |
-| writeBehavior | İşlemin yazma davranışı. Değerin "upsert" olması gerekir. | Evet |
+| writeBehavior | İşlemin yazma davranışı. Değerin "upsert" olması gerekir. | Yes |
 | alternateKeyName | Daha büyük bir çıkış yapmak için varlığınızda tanımlanan alternatif anahtar adı. | Hayır. |
 | writeBatchSize | Her toplu işte Dynamics 'e yazılan verilerin satır sayısı. | Hayır. Varsayılan değer 10'dur. |
-| ıgnorenullvalues | Bir yazma işlemi sırasında anahtar alanları dışındaki giriş verilerinden null değerlerin yoksayılıp yoksayılmayacağı.<br/><br/>Geçerli değerler **true** ve **false** şeklindedir:<ul><li>**Doğru** : bir yukarı veya güncelleştirme işlemi gerçekleştirdiğinizde verileri hedef nesnede değiştirmeden bırakın. Ekleme işlemi yaparken tanımlanmış bir varsayılan değer ekleyin.</li><li>**Yanlış** : bir yukarı veya güncelleştirme işlemi gerçekleştirdiğinizde, hedef nesnedeki verileri null bir değere güncelleştirin. Ekleme işlemi yaparken null değer ekleyin.</li></ul> | Hayır. Varsayılan değer **false** 'dur. |
+| ıgnorenullvalues | Bir yazma işlemi sırasında anahtar alanları dışındaki giriş verilerinden null değerlerin yoksayılıp yoksayılmayacağı.<br/><br/>Geçerli değerler **true** ve **false** şeklindedir:<ul><li>**Doğru**: bir yukarı veya güncelleştirme işlemi gerçekleştirdiğinizde verileri hedef nesnede değiştirmeden bırakın. Ekleme işlemi yaparken tanımlanmış bir varsayılan değer ekleyin.</li><li>**Yanlış**: bir yukarı veya güncelleştirme işlemi gerçekleştirdiğinizde, hedef nesnedeki verileri null bir değere güncelleştirin. Ekleme işlemi yaparken null değer ekleyin.</li></ul> | Hayır. Varsayılan değer **false**'dur. |
 
 >[!NOTE]
 >Hem havuz **Writebatchsize** hem de kopyalama etkinliği **[Parallelcopy](copy-activity-performance-features.md#parallel-copy)** for the Dynamics Sink için varsayılan değer 10 ' dur. Bu nedenle, 100 kayıt aynı anda varsayılan olarak Dynamics 'e gönderilir.
@@ -397,7 +397,7 @@ Aşağıdaki eşleme tablosunu kullanarak kaynak Dynamics veri türüne dayalı 
 | AttributeType. Status | Int32 | ✓ | ✓ |
 
 > [!NOTE]
-> **AttributeType. CalendarRules** , **attributeType. multiselectseçim listesi** ve **attributeType. partylist** Dynamics veri türleri desteklenmez.
+> **AttributeType. CalendarRules**, **attributeType. multiselectseçim listesi** ve **attributeType. partylist** Dynamics veri türleri desteklenmez.
 
 ## <a name="writing-data-to-a-lookup-field"></a>Arama alanına veri yazma
 
@@ -420,8 +420,8 @@ Ayrıca, bu tür verileri **Müşteri** türünde bir Sink Dynamics varlık alan
 
 Kopyalama etkinliği sütun eşlemesi ' nde, iki sütunu aşağıdaki gibi eşleyin:
 
-- **Customerfield** 'ı **customerfield** . Bu eşleme, normal alan eşlemedir.
-- **Müşteri alanı \@ EntityReference** 'a **hedefleyin** . Havuz sütunu, varlık başvurusunu temsil eden bir sanal sütundur. Şemaların içeri aktarılmasıyla gösterilmeyeceği şekilde, bir eşlemede bu tür alan adlarını girin.
+- **Customerfield** 'ı **customerfield**. Bu eşleme, normal alan eşlemedir.
+- **Müşteri alanı \@ EntityReference**'a **hedefleyin** . Havuz sütunu, varlık başvurusunu temsil eden bir sanal sütundur. Şemaların içeri aktarılmasıyla gösterilmeyeceği şekilde, bir eşlemede bu tür alan adlarını girin.
 
 ![Dynamics arama alanı sütun eşleme](./media/connector-dynamics-crm-office-365/connector-dynamics-lookup-field-column-mapping.png)
 

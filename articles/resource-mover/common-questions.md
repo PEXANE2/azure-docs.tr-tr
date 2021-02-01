@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: evansma
 ms.service: resource-move
 ms.topic: conceptual
-ms.date: 09/14/2020
+ms.date: 02/01/2021
 ms.author: raynew
-ms.openlocfilehash: 68e5f937b8ad8367abf488598bda311a39d462c6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bb8cfa3e1aa874f807ce46b254a22f3003c2f600
+ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90600662"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99222824"
 ---
 # <a name="common-questions"></a>Sık sorulan sorular
 
@@ -62,7 +62,7 @@ Evet, hem aktarım hem de bekleyen.
 
 ### <a name="how-is-managed-identity-used-in-resource-mover"></a>Kaynak taşıyıcısı içinde yönetilen kimlik nasıl kullanılır?
 
-[Yönetilen kimlik](../active-directory/managed-identities-azure-resources/overview.md) (eski adıyla YÖNETILEN HIZMET KIMLIĞI (MIS)), Azure hizmetleri 'NI Azure AD 'de otomatik olarak yönetilen bir kimlikle sağlar.
+[Yönetilen kimlik](../active-directory/managed-identities-azure-resources/overview.md) (eski adıyla YÖNETILEN HIZMET KIMLIĞI (MSI)), Azure hizmetleri 'NI Azure AD 'de otomatik olarak yönetilen bir kimlikle sağlar.
 - Kaynak taşıyıcısı, kaynakları bölgeler arasında taşımak için Azure aboneliklerine erişebilmek üzere yönetilen kimlik kullanır.
 - Taşıma koleksiyonu, taşıdığınız kaynakları içeren aboneliğe erişimi olan sistem tarafından atanan bir kimliğe ihtiyaç duyuyor.
 
@@ -74,7 +74,7 @@ Evet, hem aktarım hem de bekleyen.
 Azure Kaynak Taşıyıcı yönetilen kimliğinin en azından şu izinlere sahip olması gerekir: 
 
 - Kullanıcı aboneliğine kaynak yazma/oluşturma izni, *katkıda* bulunan rolüyle kullanılabilir. 
-- Rol ataması oluşturma izni. Genellikle *sahip* veya *Kullanıcı erişimi yönetici* rolleriyle veya *Microsoft. Authorization/role atama/yazma izni* atanmış özel bir rolle kullanılabilir. Veri paylaşımının yönetilen kimliği zaten Azure veri deposuna erişim izni verildiyse bu izin gerekli değildir. 
+- Rol ataması oluşturma izni. Genellikle *sahip* veya *Kullanıcı erişimi yönetici* rolleriyle veya *Microsoft. Authorization/role atama/yazma izni* atanmış özel bir rolle kullanılabilir. Veri paylaşımı kaynağının yönetilen kimliğine zaten Azure veri deposuna erişim izni verildiyse, bu izin gerekli değildir. 
  
 Portaldaki Kaynak Taşıyıcı hub'ında kaynak eklediğinizde kullanıcı yukarıda belirtilen izinlere sahip olduğu sürece izinler otomatik olarak işlenir. PowerShell 'e kaynak eklerseniz, izinleri el ile atarsınız.
 
@@ -87,7 +87,7 @@ Portaldaki Kaynak Taşıyıcı hub'ında kaynak eklediğinizde kullanıcı yukar
 --- | ---
 İlk kez bir kaynak eklediğinizde *katkıda bulunan* ve *Kullanıcı erişimi Yöneticisi* (veya *sahibi*) değilsiniz. | Abonelik için *katkıda* bulunan ve *Kullanıcı erişimi Yöneticisi* (veya *sahibi*) izinleri olan bir hesap kullanın.
 Kaynak taşıyıcısı tarafından yönetilen kimliğin gerekli rolü yok. | ' Katkıda bulunan ' ve ' Kullanıcı erişimi Yöneticisi ' rollerini ekleyin.
-Kaynak taşıyıcısı yönetilen kimliği *none*olarak sıfırlandı. | Taşıma koleksiyonunda sistem tarafından atanan bir kimliği yeniden etkinleştirin > **kimliği**. Alternatif olarak, kaynağı Ekle ' ye aynı şeyi sağlayan **kaynakları**yeniden ekleyin.  
+Kaynak taşıyıcısı yönetilen kimliği *none* olarak sıfırlandı. | Taşıma koleksiyonunda sistem tarafından atanan bir kimliği yeniden etkinleştirin > **kimliği**. Alternatif olarak, kaynağı Ekle ' ye aynı şeyi sağlayan **kaynakları** yeniden ekleyin.  
 Abonelik farklı bir kiracıya taşındı. | Taşıma koleksiyonu için yönetilen kimliği devre dışı bırakıp etkinleştirin.
 
 ### <a name="how-can-i-do-multiple-moves-together"></a>Birden çok daha fazla hareketi nasıl yapabilirim?

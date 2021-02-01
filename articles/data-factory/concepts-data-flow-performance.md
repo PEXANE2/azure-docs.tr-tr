@@ -6,13 +6,13 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
-ms.date: 12/18/2020
-ms.openlocfilehash: 9706bee07f028c36b4d03311a7abbb969a1be685
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.date: 01/29/2021
+ms.openlocfilehash: 01c448165e6d1f4d6103c61387298f2d9eb40254
+ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98944995"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99222958"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Veri akışlarını eşleme performansı ve ayarlama Kılavuzu
 
@@ -244,7 +244,7 @@ Bir sütun, verileri nasıl çıktısını almak istediğinizi içeriyorsa **sü
 
 CosmosDB 'ye yazarken, veri akışı yürütmesi sırasında aktarım hızını ve toplu iş boyutunu değiştirme performansı iyileştirebilir. Bu değişiklikler yalnızca veri akışı etkinliği çalıştırıldığında etkili olur ve sonuç olarak orijinal koleksiyon ayarlarına geri döner. 
 
-**Toplu iş boyutu:** Verilerinizin kaba satır boyutunu hesaplayın ve satır boyutu * toplu işlem boyutunun 2.000.000 ' den küçük olduğundan emin olun. Varsa, daha iyi aktarım hızı sağlamak için toplu iş boyutunu artırın
+**Toplu iş boyutu:** Genellikle, varsayılan toplu iş boyutundan itibaren yeterlidir. Bu değeri daha fazla ayarlamak için verilerinizin kaba nesne boyutunu hesaplayın ve nesne boyutu * toplu iş boyutu 2 MB 'tan küçük olduğundan emin olun. Varsa, daha iyi işleme sağlamak için toplu iş boyutunu artırabilirsiniz.
 
 **Aktarım hızı:** Belgelerin CosmosDB 'ye daha hızlı yazmasını sağlamak için burada daha yüksek bir üretilen iş ayarı ayarlayın. Yüksek bir verimlilik ayarına göre daha yüksek RU maliyetlerine göz önünde bulundurun.
 

@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: how-to
 ms.date: 10/11/2020
 ms.author: raynew
-ms.openlocfilehash: 00b220e07dc3fa7580100d6d36108c14fe598d40
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.openlocfilehash: fa0017b0633d856906609818dd56b5971b1879a7
+ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98572196"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99222807"
 ---
 # <a name="support-for-moving-azure-vms-between-azure-regions"></a>Azure bölgeleri arasında Azure VM 'Leri taşıma desteği
 
@@ -154,7 +154,7 @@ Premium P20 veya P30 veya P40 veya P50 disk | 16 KB veya daha büyük |20 MB/sn 
 --- | --- | ---
 NIC | Desteklenir | Hedef bölgede var olan bir kaynağı belirtin veya hazırlama işlemi sırasında yeni bir kaynak oluşturun. 
 İç yük dengeleyici | Desteklenir | Hedef bölgede var olan bir kaynağı belirtin veya hazırlama işlemi sırasında yeni bir kaynak oluşturun.  
-Genel yük dengeleyici | Şu anda desteklenmiyor | Hedef bölgede var olan bir kaynağı belirtin veya hazırlama işlemi sırasında yeni bir kaynak oluşturun.  
+Genel yük dengeleyici | Desteklenir | Hedef bölgede var olan bir kaynağı belirtin veya hazırlama işlemi sırasında yeni bir kaynak oluşturun.  
 Genel IP adresi | Desteklenir | Hedef bölgede var olan bir kaynağı belirtin veya hazırlama işlemi sırasında yeni bir kaynak oluşturun.<br/><br/> Genel IP adresi bölgeye özeldir ve taşıma işleminden sonra hedef bölgede korunmaz. Hedef konumdaki ağ ayarlarını (Yük Dengeleme kuralları dahil) değiştirirken bunu aklınızda bulundurun.
 Ağ güvenlik grubu | Desteklenir | Hedef bölgede var olan bir kaynağı belirtin veya hazırlama işlemi sırasında yeni bir kaynak oluşturun.  
 Ayrılmış (statik) IP adresi | Desteklenir | Bunu şu anda yapılandıramazsınız. Değer varsayılan olarak kaynak değeridir. <br/><br/> Kaynak VM üzerindeki NIC 'nin statik bir IP adresi varsa ve hedef alt ağda aynı IP adresi varsa, hedef VM 'ye atanır.<br/><br/> Hedef alt ağda aynı IP adresi yoksa, sanal makine için taşıma işlemi başarısız olur.

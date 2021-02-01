@@ -329,6 +329,8 @@
               href: platform/data-sources-linux-applications.md
             - name: IIS günlükleri
               href: platform/data-sources-iis-logs.md
+            - name: Windows verileri için olay Izleme
+              href: platform/data-sources-event-tracing-windows.md
             - name: Özel günlükler
               href: platform/data-sources-custom-logs.md
             - name: Özel alanlar
