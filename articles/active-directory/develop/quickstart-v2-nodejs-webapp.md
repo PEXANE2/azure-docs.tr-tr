@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET, devx-track-js
-ms.openlocfilehash: ab3677ede2805fc8ecb076e8a40da605c038b54b
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: fec130ff02d9796fb9a6cea7a831bbdcb25cb1ed
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98937922"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99225639"
 ---
 # <a name="quickstart-add-sign-in-using-openid-connect-to-a-nodejs-web-app"></a>Hızlı başlangıç: Node.js Web uygulamasına OpenID Connect ile oturum açma ekleme
 
@@ -45,7 +45,7 @@ Bu hızlı başlangıçta, Express ile Node.js kullanılarak oluşturulmuş bir 
 1. **Platform Web ekle**' yi seçin  >  . 
 1. **Yeniden yönlendirme URI 'leri** bölümünde, girin `http://localhost:3000/auth/openid/return` .
 1. **Ön kanal oturum kapatma URL 'si** girin `https://localhost:3000` .
-1. Örtük izin bölümünde, **kimlik belirteçlerini** denetleyin. Bu örnek, kullanıcının oturum açması için [örtük verme akışının](./v2-oauth2-implicit-grant-flow.md) etkinleştirilmesini gerektirir.
+1. **Örtük verme ve karma akışlar** bölümünde **Kimlik belirteçleri** ' ni seçin. Bu örnek, kullanıcının oturum açması için [örtük verme akışının](./v2-oauth2-implicit-grant-flow.md) etkinleştirilmesini gerektirir.
 1. **Yapılandır**'ı seçin.
 1. **Yönet**' in altında **Sertifikalar & gizli**  >  **anahtar istemci parolası**' nı seçin.
 1. Bir anahtar açıklaması girin (örneğin, uygulama gizli anahtarı).

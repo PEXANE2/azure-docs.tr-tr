@@ -12,12 +12,12 @@ ms.topic: end-user-help
 ms.date: 01/28/2021
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: 369ec11050fa7dbc09159d88793685ad5fbdb3e5
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: f4640bbd445b27942d757cc4e09aa7e673550ebc
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99053969"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99226531"
 ---
 # <a name="frequently-asked-questions-faq-about-the-microsoft-authenticator-app"></a>Microsoft Authenticator uygulaması hakkında sık sorulan sorular (SSS)
 
@@ -238,7 +238,7 @@ Y **: şu adımları izleyin:**
    - İOS 'ta **Ayarlar** altında, varsayılan otomatik doldurma sağlayıcısı olarak kimlik doğrulamasını nasıl ayarlayacağınızı öğrenmek Için otomatik doldurma ayarları bölümünde **otomatik doldurma özelliğini açma** ' yı seçin.
    - Android 'de **Ayarlar** altında otomatik doldurma ayarları bölümünde **otomatik doldurma sağlayıcısı olarak ayarla** ' yı seçin.
 
-**S**: ayarlar bölümünde benim Için **otomatik doldurma** anahtarı yoksa ne olur?
+**S**: ayarlarda **otomatik doldurma** kullanılamıyor mu?
 
 Y: **bir** otomatik doldurma, kimlik doğrulayıcıda sizin için kullanılabilir değilse, bunun nedeni kuruluşunuz veya hesap türü için otomatik doldurmaya izin verilmiyor olabilir. Bu özelliği, iş veya okul hesabınızın eklendiği bir cihazda kullanabilirsiniz. Kuruluşunuz için otomatik doldurmaya izin verme hakkında daha fazla bilgi edinmek için bkz. [IT yöneticileri Için otomatik doldurma](#autofill-for-it-admins).
 

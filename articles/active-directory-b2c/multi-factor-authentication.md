@@ -12,18 +12,18 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 5d656a27017f3c7ec97362efc6207917ffcd1a56
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 8449c5437bad6d0036d332ca5c35709b5d571cfa
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97111405"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99225167"
 ---
-# <a name="enable-multi-factor-authentication-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 'de Multi-Factor Authentication 'ı etkinleştirme
+# <a name="enable-multi-factor-authentication-in-azure-active-directory-b2c"></a>Azure Active Directory B2C'de çok faktörlü kimlik doğrulamasını etkinleştirme
 
 [!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
 
-Azure Active Directory B2C (Azure AD B2C), uygulamalarınızda kayıt ve oturum açma deneyimlerine ikinci bir güvenlik katmanı ekleyebilmeniz için doğrudan [Azure AD Multi-Factor Authentication](../active-directory/authentication/concept-mfa-howitworks.md) ile tümleşir. Multi-Factor Authentication 'ı tek bir kod satırı yazmadan etkinleştirirsiniz. Zaten kaydolma ve oturum açma Kullanıcı akışları oluşturduysanız, çok faktörlü kimlik doğrulamasını yine de etkinleştirebilirsiniz.
+Azure Active Directory B2C (Azure AD B2C), uygulamalarınızda kayıt ve oturum açma deneyimlerine ikinci bir güvenlik katmanı ekleyebilmeniz için doğrudan [Azure AD Multi-Factor Authentication](../active-directory/authentication/concept-mfa-howitworks.md) ile tümleşir. Tek bir satır bile kod yazmadan çok faktörlü kimlik doğrulamasını etkinleştirirsiniz. Zaten kaydolma ve oturum açma Kullanıcı akışları oluşturduysanız, çok faktörlü kimlik doğrulamasını yine de etkinleştirebilirsiniz.
 
 Bu özellik, uygulamaların aşağıdaki gibi senaryoları işlemesine yardımcı olur:
 
@@ -40,7 +40,9 @@ Bu özellik, uygulamaların aşağıdaki gibi senaryoları işlemesine yardımc�
 1. **Kullanıcı akışları ' nı** seçin.
 1. MFA 'yı etkinleştirmek istediğiniz kullanıcı akışını seçin. Örneğin, *B2C_1_signinsignup*.
 1. **Özellikler**’i seçin.
-1. **Çok faktörlü kimlik doğrulaması** bölümünde, istenen **MFA yöntemini** seçin ve ardından **MFA zorlaması** altında **her zaman açık** veya **[koşullu](conditional-access-user-flow.md) (önerilen)** seçeneğini belirleyin. Koşullu [erişim ilkesi](conditional-access-identity-protection-setup.md) ilkesi oluşturun ve ilkenin uygulanmasını istediğiniz uygulamaları belirtin. 
+1. **Çok faktörlü kimlik doğrulaması** bölümünde, istenen **MFA yöntemini** seçin ve ardından **MFA zorlaması** altında **her zaman açık** veya **koşullu (önerilen)** seçeneğini belirleyin.
+  > [!NOTE]
+  > **Koşullu (önerilen)** seçeneğini belirlerseniz, [koşullu erişim ilkesi eklemeniz](conditional-access-identity-protection-setup.md#add-a-conditional-access-policy) ve ilkenin uygulanmasını istediğiniz uygulamaları belirtmeniz gerekir.
 1. Kaydet’i seçin. MFA artık bu kullanıcı akışı için etkinleştirilmiştir.
 
 Deneyimi doğrulamak için **Kullanıcı akışını Çalıştır** ' i kullanabilirsiniz. Aşağıdaki senaryoyu onaylayın:

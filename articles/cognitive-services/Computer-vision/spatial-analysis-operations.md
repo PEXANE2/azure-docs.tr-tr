@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: fe54c4495e589459fe734f315138cafa8d7cd033
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 4e389114dc873d067a32389b288e1bb98d497850
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98934741"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99226076"
 ---
 # <a name="spatial-analysis-operations"></a>Uzamsal analiz işlemleri
 
@@ -23,7 +23,7 @@ Uzamsal analiz kamera cihazlarından gelen gerçek zamanlı akış videosunun an
 
 Uzamsal analiz kapsayıcısı aşağıdaki işlemleri uygular:
 
-| İşlem tanımlayıcısı| Description|
+| İşlem tanımlayıcısı| Açıklama|
 |---------|---------|
 | biliveservices. Vision. spatialanalysis-PersonCount | Kameranın görünüm alanındaki belirli bir bölgedeki kişileri sayar. PersonCount 'un doğru toplamı kaydedebilmesi için bölgenin tek bir kamera tarafından tam olarak kapsanmış olması gerekir. <br> Sayı değiştiğinde ilk bir _personcountevent_ olayını ve sonra da _personcountevent_ olaylarını yayar.  |
 | biliveservices. Vision. spatialanalysis-personcrossingline | Bir kişinin, kameranın görünüm alanındaki belirli bir satırı ne zaman kesişdiğini izler. <br>Kişi çizgiyi kesen ve yön bilgisi sağlayan bir _Personlineevent_ olayı yayar. 
@@ -32,7 +32,7 @@ Uzamsal analiz kapsayıcısı aşağıdaki işlemleri uygular:
 
 Tüm yukarıdaki işlemler, `.debug` işlenmekte oldukları gibi video çerçevelerini görselleştirme özelliğine sahip olan sürümde de mevcuttur. `xhost +`Video çerçevelerinin ve olaylarının görselleştirilmesini sağlamak için ana bilgisayarda çalıştırmanız gerekir.
 
-| İşlem tanımlayıcısı| Description|
+| İşlem tanımlayıcısı| Açıklama|
 |---------|---------|
 | biliveservices. Vision. spatialanalysis-PersonCount. Debug | Kameranın görünüm alanındaki belirli bir bölgedeki kişileri sayar. <br> Sayı değiştiğinde ilk bir _personcountevent_ olayını ve sonra da _personcountevent_ olaylarını yayar.  |
 | biliveservices. Vision. spatialanalysis-personcrossingline. Debug | Bir kişinin, kameranın görünüm alanındaki belirli bir satırı ne zaman kesişdiğini izler. <br>Kişi çizgiyi kesen ve yön bilgisi sağlayan bir _Personlineevent_ olayı yayar. 
@@ -43,7 +43,7 @@ Uzamsal analiz, video AI modülü olarak [canlı video analizi](../../media-serv
 
 <!--more details on the setup can be found in the [LVA Setup page](LVA-Setup.md). Below is the list of the operations supported with Live Video Analytics. -->
 
-| İşlem tanımlayıcısı| Description|
+| İşlem tanımlayıcısı| Açıklama|
 |---------|---------|
 | biliveservices. Vision. spatialanalysis-PersonCount. livevideoanalytics | Kameranın görünüm alanındaki belirli bir bölgedeki kişileri sayar. <br> Sayı değiştiğinde ilk bir _personcountevent_ olayını ve sonra da _personcountevent_ olaylarını yayar.  |
 | biliveservices. Vision. spatialanalysis-personcrossingline. livevideoanalytics | Bir kişinin, kameranın görünüm alanındaki belirli bir satırı ne zaman kesişdiğini izler. <br>Kişi çizgiyi kesen ve yön bilgisi sağlayan bir _Personlineevent_ olayı yayar. 
@@ -57,7 +57,7 @@ Canlı video analizi işlemleri de `.debug` (örneğin, biliveservices. Vision. 
 
 Bunlar, bu uzamsal analiz işlemlerinin her biri için gereken parametrelerdir.
 
-| İşlem parametreleri| Description|
+| İşlem parametreleri| Açıklama|
 |---------|---------|
 | İşlem KIMLIĞI | Yukarıdaki tablodan Işlem tanımlayıcısı.|
 | enabled | Boolean: true veya false|
@@ -122,7 +122,7 @@ Bu, tüm uzamsal analiz işlemleri için DETECTOR_NODE_CONFIG parametrelerine bi
 }
 ```
 
-| Ad | Tür| Description|
+| Ad | Tür| Açıklama|
 |---------|---------|---------|
 | `zones` | list| Bölgelerin listesi. |
 | `name` | string| Bu bölge için kolay ad.|
@@ -130,7 +130,7 @@ Bu, tüm uzamsal analiz işlemleri için DETECTOR_NODE_CONFIG parametrelerine bi
 | `threshold` | float| AI modellerinin güvenilirliği bu değere eşit veya ondan fazlaysa, olaylar yumurallardır. |
 | `type` | string| **Biliveservices. Vision. spatialanalysis-PersonCount** için bu olmalıdır `count` .|
 | `trigger` | string| Olay gönderme tetikleyicisinin türü. Desteklenen değerler, sayımdan `event` bağımsız olarak değişiklik yapılıp yapılmayacağını fark edildiğinde, sayı değiştiğinde ya da `interval` olayların düzenli aralıklarla gönderilmesi için olay göndermeye yöneliktir.
-| `interval` | string| Bir olay tetiklenmadan önce kişi sayısının toplanması için gereken saniye cinsinden süre. İşlem, sahneyi sabit bir hızda çözümlemeye devam eder ve bu aralığa en sık kullanılan sayıyı döndürür. Toplama aralığı hem hem de için geçerlidir `event` `interval` .|
+| `output_frequency` | int | Olayların yumurdaki oranı. `output_frequency`= X olduğunda, her X olayı ise, EX olur. `output_frequency` = 2, diğer tüm olayların çıkış olduğu anlamına gelir. , `output_frequency` Ve için geçerlidir `event` `interval` . |
 | `focus` | string| Olayları hesaplamak için kullanılan öğenin sınırlayıcı kutusundaki nokta konumu. Odağın değeri `footprint` (kişinin parmak izi), (kişinin sınırlayıcı `bottom_center` kutusunun alt Merkezi), `center` (kişinin sınırlayıcı kutusunun merkezi) olabilir.|
 
 ### <a name="line-configuration-for-cognitiveservicesvisionspatialanalysis-personcrossingline"></a>Biliveservices. Vision. spatialanalysis-personcrossingline için satır yapılandırması
@@ -167,7 +167,7 @@ Bu, bir satırı yapılandıran SPACEANALYTICS_CONFIG parametresi için bir JSON
 }
 ```
 
-| Ad | Tür| Description|
+| Ad | Tür| Açıklama|
 |---------|---------|---------|
 | `lines` | list| Satır listesi.|
 | `name` | string| Bu satır için kolay ad.|
@@ -213,7 +213,7 @@ Bu, bir bölgeyi yapılandıran SPACEANALYTICS_CONFIG parametresine yönelik JSO
 }
 ```
 
-| Ad | Tür| Description|
+| Ad | Tür| Açıklama|
 |---------|---------|---------|
 | `zones` | list| Bölgelerin listesi. |
 | `name` | string| Bu bölge için kolay ad.|
@@ -247,7 +247,7 @@ Bu, **biliveservices. Vision. spatialanalysis-persondistance** için bir bölgey
 }
 ```
 
-| Ad | Tür| Description|
+| Ad | Tür| Açıklama|
 |---------|---------|---------|
 | `zones` | list| Bölgelerin listesi. |
 | `name` | string| Bu bölge için kolay ad.|
@@ -255,8 +255,7 @@ Bu, **biliveservices. Vision. spatialanalysis-persondistance** için bir bölgey
 | `threshold` | float| AI modellerinin güvenilirliği bu değere eşit veya ondan fazlaysa, olaylar yumurallardır. |
 | `type` | string| **Biliveservices. Vision. spatialanalysis-persondistance** için olmalıdır `people_distance` .|
 | `trigger` | string| Olay gönderme tetikleyicisinin türü. Desteklenen değerler, sayımdan `event` bağımsız olarak değişiklik yapılıp yapılmayacağını fark edildiğinde, sayı değiştiğinde ya da `interval` olayların düzenli aralıklarla gönderilmesi için olay göndermeye yöneliktir.
-| `interval` | string | Bir olay tetiklenmadan önce ihlallerin toplanması için gereken saniye cinsinden süre. Toplama aralığı hem hem de için geçerlidir `event` `interval` .|
-| `output_frequency` | int | Olayların yumurdaki oranı. `output_frequency`= X olduğunda, her X olayı ise, EX olur. `output_frequency` = 2, diğer tüm olayların çıkış olduğu anlamına gelir. Output_frequency hem hem de için geçerlidir `event` `interval` .|
+| `output_frequency` | int | Olayların yumurdaki oranı. `output_frequency`= X olduğunda, her X olayı ise, EX olur. `output_frequency` = 2, diğer tüm olayların çıkış olduğu anlamına gelir. , `output_frequency` Ve için geçerlidir `event` `interval` .|
 | `minimum_distance_threshold` | float| İnsanlar bu uzaklığa göre daha az olduğunda "Toockaybetme" olayını tetikleyen bir uzaklık.|
 | `maximum_distance_threshold` | float| İnsanlar bu uzaklıktan daha büyük olduğunda bir "TooFar" olayı tetikleyen bir uzaklık.|
 | `focus` | string| Olayları hesaplamak için kullanılan öğenin sınırlayıcı kutusundaki nokta konumu. Odağın değeri `footprint` (kişinin parmak izi), (kişinin sınırlayıcı `bottom_center` kutusunun alt Merkezi), `center` (kişinin sınırlayıcı kutusunun merkezi) olabilir.|
@@ -964,7 +963,7 @@ GPU 'ların en iyi performansını ve kullanımını sağlamak için, grafik ör
       }
   }
   ```
-| Ad | Tür| Description|
+| Ad | Tür| Açıklama|
 |---------|---------|---------|
 | `batch_size` | int | İşlemde kullanılacak kameraları sayısını belirtir. |
 

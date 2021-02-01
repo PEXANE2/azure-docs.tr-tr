@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 05/19/2020
 ms.author: hahamil
 ms.custom: aaddev
-ms.openlocfilehash: d4189e466d5e9b41247723165ce2a5c14c4a8dfa
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 39a675ff4947e7eca64298e1e68160cd6149f081
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98756415"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99226347"
 ---
 # <a name="single-page-application-app-registration"></a>Tek sayfalı uygulama: uygulama kaydı
 
@@ -47,7 +47,7 @@ MSAL.js 2,0 veya sonraki bir sürümü kullanan bir uygulama için yeniden yönl
 1. Azure portal, [uygulama kaydını oluşturma](#create-the-app-registration)bölümünde daha önce oluşturduğunuz uygulama kaydını seçin.
 1. **Yönet** altında **kimlik doğrulama**  >  **Platform ekleme**' yi seçin.
 1. **Web uygulamaları** altında, **tek sayfalı uygulama** kutucuğunu seçin.
-1. **Yeniden yönlendirme URI 'leri** altında bir [yeniden yönlendirme URI 'si](reply-url.md)girin. **Örtük izin** altında onay **kutusunu seçmeyin.**
+1. **Yeniden yönlendirme URI 'leri** altında bir [yeniden yönlendirme URI 'si](reply-url.md)girin. **Örtük verme ve karma akışlar** altında onay **kutusunu seçmeyin.**
 1. Yeniden yönlendirme URI 'sini eklemeyi bitirmeden **Yapılandır** ' ı seçin.
 
 Artık tek sayfalı uygulamanızın (SPA) kaydını tamamladınız ve istemcinin yeniden yönlendirileceği ve herhangi bir güvenlik belirtecinin gönderileceği bir yeniden yönlendirme URI 'SI yapılandırdınız. **Platform Ekle** bölmesindeki **tek sayfalı uygulama** kutucuğunu kullanarak yeniden yönlendirme URI 'sini yapılandırarak, uygulama kaydınız, PKI CE ve CORS ile yetkilendirme kodu akışını destekleyecek şekilde yapılandırılır.
@@ -62,7 +62,7 @@ MSAL.js 1,3 veya önceki bir sürümü ve örtük izin akışını kullanan tek 
 1. **Yönet** altında **kimlik doğrulama**  >  **Platform ekleme**' yi seçin.
 1. **Web uygulamaları** altında, **tek sayfalı uygulama** Kutucuğu ' nı seçin.
 1. **Yeniden yönlendirme URI 'leri** altında bir [yeniden yönlendirme URI 'si](reply-url.md)girin.
-1. **Örtük akışı** etkinleştirin:
+1. **Örtük verme ve karma akışları** etkinleştirin:
     - Uygulamanız kullanıcıların oturumunu açarsa, **Kimlik belirteçleri**' ni seçin.
     - Uygulamanızın de korumalı bir Web API 'SI çağırması gerekiyorsa, **erişim belirteçleri**' ni seçin. Bu belirteç türleri hakkında daha fazla bilgi için bkz. [Kimlik belirteçleri](id-tokens.md) ve [erişim belirteçleri](access-tokens.md).
 1. Yeniden yönlendirme URI 'sini eklemeyi bitirmeden **Yapılandır** ' ı seçin.

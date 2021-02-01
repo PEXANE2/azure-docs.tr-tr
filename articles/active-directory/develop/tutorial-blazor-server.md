@@ -8,12 +8,12 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.date: 09/15/2020
-ms.openlocfilehash: b67d75ac99f247659723ac0b5a90fd32ebf627e3
-ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
+ms.openlocfilehash: 5a631d9ae7a7d1792e3c4e4a2cbf8281e1168283
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98569887"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99226025"
 ---
 # <a name="tutorial-create-a-blazor-server-app-that-uses-the-microsoft-identity-platform-for-authentication"></a>Öğretici: kimlik doğrulaması için Microsoft Identity platformunu kullanan bir Blazor Server uygulaması oluşturma
 
@@ -28,7 +28,7 @@ Bu öğreticide:
 > * Microsoft. Identity. Web kullanarak hem kimlik doğrulamasını hem de yetkilendirmeyi işleme
 > * Korumalı bir Web API 'sinden veri alma, Microsoft Graph
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - [.NET Core 3,1 SDK](https://dotnet.microsoft.com/download/dotnet-core/3.1)
 - Bir uygulamayı kaydedebileceğiniz bir Azure AD kiracısı. Bir Azure AD kiracısına erişiminiz yoksa, [Microsoft 365 Geliştirici programına](https://developer.microsoft.com/microsoft-365/dev-program) kaydolarak veya [ücretsiz Azure hesabı](https://azure.microsoft.com/free)oluşturarak bir tane edinebilirsiniz.
@@ -40,7 +40,7 @@ Kimlik doğrulaması için Azure Active Directory (Azure AD) kullanan her uygula
 - **Desteklenen hesap türleri** için **yalnızca bu kuruluş dizinindeki hesaplar**' ı seçin.
 - **Yeniden yönlendirme URI 'si** açılan öğesini **Web** olarak ayarlayın ve girin `https://localhost:5001/signin-oidc` . Kestrel üzerinde çalışan bir uygulamanın varsayılan bağlantı noktası 5001 ' dir. Uygulama farklı bir bağlantı noktasında kullanılabiliyorsa, yerine bu bağlantı noktası numarasını belirtin `5001` .
 
-**Kimlik doğrulama**  >  **örtük izni**' nda, **erişim belirteçleri** ve **Kimlik belirteçleri** onay kutularını işaretleyin ve ardından **Kaydet** düğmesini seçin.
+**Yönet**' in altında **kimlik doğrulama**  >  **örtük verme ve karma akışlar**' ı seçin. **Erişim belirteçleri** ve **Kimlik belirteçleri**' ni seçin ve ardından **Kaydet**' i seçin.
 
 Son olarak, uygulama korumalı bir API 'yi çağırdığı için (Bu durumda Microsoft Graph), bu API 'yi çağırmak için bir erişim belirteci istediğinde kimliğini doğrulamak için bir istemci parolası gerekir.
 

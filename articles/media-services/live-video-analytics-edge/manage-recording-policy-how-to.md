@@ -3,18 +3,18 @@ title: Kayıt ilkesini yönetme-Azure
 description: Bu konuda, kayıt ilkesinin nasıl yönetileceği açıklanmaktadır.
 ms.topic: how-to
 ms.date: 04/27/2020
-ms.openlocfilehash: d3a1be915dc1cc8714e49cc7b2fe68bbe9cad161
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ec72f28496c1392b9d95134c343e1892998a0c28
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87011490"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99224998"
 ---
 # <a name="manage-recording-policy"></a>Kayıt ilkesini yönetme
 
 [Sürekli video kaydı](continuous-video-recording-concept.md)için IoT Edge, canlı video analizi 'ni kullanarak haftalık veya aylık bir videoyu buluta kaydedebilirsiniz. Azure depolama 'da yerleşik olan [yaşam döngüsü yönetimi araçlarını](../../storage/blobs/storage-lifecycle-management-concepts.md?tabs=azure-portal) kullanarak bu Bulut arşivinin uzunluğunu (gün cinsinden) yönetebilirsiniz.  
 
-Medya hizmeti hesabınız bir Azure depolama hesabına bağlı ve buluta video kaydettiğinizde içerik bir medya hizmeti varlığına [yazılır.](../latest/assets-concept.md) Her varlık, depolama hesabındaki bir kapsayıcıya eşlenir. yaşam döngüsü yönetimi, aşağıdaki gibi bir [kural](../../storage/blobs/storage-lifecycle-management-concepts.md?tabs=azure-portal#rules) belirtebileceğiniz bir depolama hesabı için bir [ilke](../../storage/blobs/storage-lifecycle-management-concepts.md?tabs=azure-portal#policy) tanımlamanızı sağlar.
+Medya hizmeti hesabınız bir Azure depolama hesabına bağlı ve buluta video kaydettiğinizde içerik bir medya hizmeti varlığına [yazılır.](../latest/assets-concept.md) Her varlık, depolama hesabındaki bir kapsayıcıya eşlenir. Yaşam döngüsü yönetimi, aşağıdaki gibi bir [kural](../../storage/blobs/storage-lifecycle-management-concepts.md?tabs=azure-portal#rules) belirtebileceğiniz bir depolama hesabı için bir [ilke](../../storage/blobs/storage-lifecycle-management-concepts.md?tabs=azure-portal#policy) tanımlamanızı sağlar.
 
 ```
 {
@@ -45,7 +45,7 @@ Yukarıdaki kural:
 * Blobların 30 günden fazla olduğu durumlarda [sık erişimli erişim katmanından seyrek erişimli 'e](../../storage/blobs/storage-blob-storage-tiers.md?tabs=azure-portal)taşındığını belirtir.
 * Blob 90 günden daha fazla yaşlandıklarında bunlar silinir.
 
-Canlı video analizi, videonuzu belirtilen süre içinde arşivlemediğinden, varlığınız her segment için bir blob, bir blob serisi içerecektir. Yaşam döngüsü yönetim ilkesi, eski Blobları içinde açılır ve bunları sildiğinde, medya hizmeti API 'Leri aracılığıyla kalan bloblara erişebilmeye ve bunları kayıttan yürütmeye devam edersiniz. Daha fazla bilgi için bkz. [kayıtları kayıttan yürütme](playback-recordings-how-to.md). 
+Bir varlığa kayıt yapmak için canlı video analizi kullandığınızda, `segmentLength` modüle, buluta yazılmadan önce en az bir video (saniye cinsinden) süresini toplamasını söyleyen bir özellik belirtirsiniz. Varlığınız, her biri öncekinden daha yeni olan bir oluşturma zaman damgasına sahip bir dizi segment içerir `segmentLength` . Yaşam döngüsü yönetimi ilkesi, belirtilen eşikten daha eski segmentleri siler. Ancak, medya hizmeti API 'Leri aracılığıyla kalan kesimleri çalıştırmaya ve kayıttan yürütmeye devam edersiniz. Daha fazla bilgi için bkz. [kayıtları kayıttan yürütme](playback-recordings-how-to.md). 
 
 ## <a name="limitations"></a>Sınırlamalar
 

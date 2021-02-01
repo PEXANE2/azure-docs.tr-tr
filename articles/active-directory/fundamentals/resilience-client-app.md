@@ -11,12 +11,12 @@ author: knicholasa
 ms.author: nichola
 manager: martinco
 ms.date: 11/23/2020
-ms.openlocfilehash: b32f9dd10d9bd03a7e446616d9941e7bd1a9c3ed
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: bc3b041e44fad66a4edc6ff34c0e534dc423de86
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98724917"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99226599"
 ---
 # <a name="increase-the-resilience-of-authentication-and-authorization-in-client-applications-you-develop"></a>Geliştirdiğiniz istemci uygulamalarında kimlik doğrulama ve yetkilendirme esnekliği artırma
 
@@ -97,7 +97,7 @@ Genel olarak, modern kimlik doğrulaması kullanan bir uygulama, kullanıcının
 
 ### <a name="cache-tokens"></a>Önbellek belirteçleri
 
-Uygulamalar Microsoft kimliğinden alınan belirteçleri düzgün bir şekilde önbelleğe almalıdır. Uygulamanız belirteçleri aldığında, belirteçleri içeren HTTP yanıtı, uygulamayı ne kadar süreyle önbelleğe alacağını ve belirteci yeniden kullanmayı söyleyen bir "expires_in" özelliği de içerir. Bu uygulamada, uygulamanın, belirtecin kullanım süresini belirleyebilmek için "expires_in" özelliğini kullanması önemlidir. Uygulamanın bir API erişim belirtecinin kodunu çözme girişimi hiçbir şekilde denenmelidir.
+Uygulamalar Microsoft kimliğinden alınan belirteçleri düzgün bir şekilde önbelleğe almalıdır. Uygulamanız belirteçleri aldığında, belirteçleri içeren HTTP yanıtı, uygulamayı ne kadar süreyle önbelleğe alacağını ve belirteci yeniden kullanmayı söyleyen bir "expires_in" özelliği de içerir. Uygulamaların, belirtecin kullanım süresini belirleyebilmek için "expires_in" özelliğini kullanması önemlidir. Uygulamanın bir API erişim belirtecinin kodunu çözme girişimi hiçbir şekilde denenmelidir.
 
 ![Microsoft Identity çağrısı yapan bir uygulama, ancak çağrı, uygulamayı çalıştıran cihazdaki bir belirteç önbelleğinden geçer](media/resilience-client-app/token-cache.png)
 

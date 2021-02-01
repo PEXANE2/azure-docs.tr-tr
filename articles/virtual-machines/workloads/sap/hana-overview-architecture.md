@@ -14,21 +14,21 @@ ms.workload: infrastructure
 ms.date: 01/04/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5ec3500c124d3e4f8cb1b46445c28c6a64c93526
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: d941bd9735149d08bfbd63ec97337dd7a3bac43b
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98195458"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99226667"
 ---
 #  <a name="what-is-sap-hana-on-azure-large-instances"></a>Azure üzerinde SAP HANA (Büyük Örnekler) nedir?
 
-Azure 'da SAP HANA (büyük örnekler), Azure için benzersiz bir çözümdür. Azure, SAP HANA dağıtmak ve çalıştırmak için sanal makineler sağlamaya ek olarak size adanmış çıplak sunucularda SAP HANA çalıştırma ve dağıtma olanağı sunar. Azure 'da SAP HANA (büyük örnekler) çözüm, size atanan paylaşılmayan konak/sunucu çıplak donanımlarında oluşturulur. Sunucu donanımı, işlem/sunucu, ağ ve depolama altyapısını içeren daha büyük damgalara katıştırılır. Buna bir bileşim olarak, HANA 'ya özel veri merkezi tümleştirmesi (TDı) sertifikalandırilmiştir. Azure 'daki SAP HANA (büyük örnekler) farklı sunucu SKU 'Ları veya boyutları sunar. Birimlerde 36 Intel CPU çekirdeği ve 768 GB bellek bulunabilir ve en fazla 480 Intel CPU çekirdeği ve 24 TB 'a kadar bellek bulunan birimlere gidebilirsiniz.
+Azure 'da SAP HANA (büyük örnekler), Azure için benzersiz bir çözümdür. Azure, SAP HANA dağıtmak ve çalıştırmak için sanal makineler sağlamaya ek olarak size adanmış çıplak sunucularda SAP HANA çalıştırma ve dağıtma olanağı sunar. Azure 'da SAP HANA (büyük örnekler) çözüm, size atanan paylaşılmayan konak/sunucu çıplak donanımlarında oluşturulur. Sunucu donanımı, işlem/sunucu, ağ ve depolama altyapısını içeren daha büyük damgalara katıştırılır. Azure 'daki SAP HANA (büyük örnekler) farklı sunucu SKU 'Ları veya boyutları sunar. Birimlerde 36 Intel CPU çekirdeği ve 768 GB bellek bulunabilir ve en fazla 480 Intel CPU çekirdeği ve 24 TB 'a kadar bellek bulunan birimlere gidebilirsiniz.
 
 Altyapı damgası içindeki müşteri yalıtımı, kiracılar içinde gerçekleştirilir ve şöyle görünür:
 
 - **Ağ iletişimi**: müşteri tarafından atanan kiracı başına sanal ağlar aracılığıyla altyapı yığını dahilinde müşterilerin yalıtımı. Tek bir müşteriye bir kiracı atanır. Müşterinin birden çok kiracının olması olabilir. Kiracıların ağ yalıtımı, kiracılar aynı müşteriye ait olsa bile, altyapı damgası düzeyindeki kiracılar arasındaki ağ iletişimini yasaklar.
-- **Depolama bileşenleri**: depolama birimleri atanmış depolama sanal makineler aracılığıyla yalıtım. Depolama birimleri, yalnızca bir depolama sanal makinesine atanabilir. Bir depolama sanal makinesi, SAP HANA TDı sertifikalı altyapı yığınında yalnızca tek bir kiracıya atanır. Sonuç olarak, bir depolama sanal makinesine atanan depolama birimlerine yalnızca belirli bir ve ilgili kiracıdan erişilebilir. Bunlar farklı dağıtılan kiracılar arasında görünür değildir.
+- **Depolama bileşenleri**: depolama birimleri atanmış depolama sanal makineler aracılığıyla yalıtım. Depolama birimleri, yalnızca bir depolama sanal makinesine atanabilir. Bir depolama sanal makinesi, altyapı yığınındaki tek bir kiracıya özel olarak atanır. Sonuç olarak, bir depolama sanal makinesine atanan depolama birimlerine yalnızca belirli bir ve ilgili kiracıdan erişilebilir. Bunlar farklı dağıtılan kiracılar arasında görünür değildir.
 - **Sunucu veya konak**: bir sunucu veya konak birimi, müşteriler veya kiracılar arasında paylaşılmaz. Bir müşteriye dağıtılan bir sunucu veya konak, tek bir kiracıya atanan atomik çıplak bir işlem birimidir. Bir konak veya sunucuyu başka bir müşteriyle paylaştırmanıza neden olabilecek *bir donanım bölümlendirme* veya yumuşak bölümlendirme kullanılmaz. Belirli bir kiracının depolama sanal makinesine atanan depolama birimleri böyle bir sunucuya bağlanır. Bir kiracı, özel olarak atanmış farklı SKU 'Lara ait bir veya birden çok sunucu birimine sahip olabilir.
 - Azure 'daki bir SAP HANA (büyük örnekler) altyapı damgasında, ağ, depolama ve işlem düzeyindeki kiracı kavramları aracılığıyla birçok farklı kiracı dağıtılır ve birbirlerine karşı yalıtılır. 
 

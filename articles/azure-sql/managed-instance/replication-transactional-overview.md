@@ -12,12 +12,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein
 ms.date: 04/20/2020
-ms.openlocfilehash: 76bb4ffb4ebeb01baf8236d6be84c900b23ffbc0
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 3e4b4fc3d4a6c9529c7c0ac0daef8a28173e0bf3
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790823"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99225352"
 ---
 # <a name="transactional-replication-with-azure-sql-managed-instance-preview"></a>Azure SQL yönetilen örneği (Önizleme) ile işlemsel çoğaltma
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -39,16 +39,16 @@ Azure SQL yönetilen örneğinde yapılan değişiklikleri şu şekilde gönderm
 
 ### <a name="components"></a>Bileşenler
 
-Aşağıdaki resimde gösterildiği gibi, işlemsel çoğaltma 'daki anahtar bileşenleri **Yayımcı** , **dağıtıcı** ve **abone** ' dir:  
+Aşağıdaki resimde gösterildiği gibi, işlemsel çoğaltma 'daki anahtar bileşenleri **Yayımcı**, **dağıtıcı** ve **abone**' dir:  
 
 ![SQL veritabanı ile çoğaltma](./media/replication-transactional-overview/replication-to-sql-database.png)
 
 | Rol | Azure SQL Veritabanı | Azure SQL Yönetilen Örnek |
 | :----| :------------- | :--------------- |
-| **Publisher** | Hayır | Evet |
-| **Dağıtım** | Hayır | Evet|
-| **Çekme abonesi** | Hayır | Evet|
-| **İtme abonesi**| Evet | Evet|
+| **Publisher** | Hayır | Yes |
+| **Dağıtım** | Hayır | Yes|
+| **Çekme abonesi** | Hayır | Yes|
+| **İtme abonesi**| Yes | Yes|
 | &nbsp; | &nbsp; | &nbsp; |
 
 **Yayımcı** , güncelleştirmeleri dağıtıcıya göndererek bazı tablolarda (makaleler) yapılan değişiklikleri yayımlar. Yayımcı bir Azure SQL yönetilen örneği veya bir SQL Server örneği olabilir.
@@ -74,11 +74,11 @@ Farklı [çoğaltma türleri](/sql/relational-databases/replication/types-of-rep
 
 | Çoğaltma | Azure SQL Veritabanı | Azure SQL Yönetilen Örnek |
 | :----| :------------- | :--------------- |
-| [**Standart Işlem**](/sql/relational-databases/replication/transactional/transactional-replication) | Evet (yalnızca abone olarak) | Evet |
-| [**Anlık Görüntü**](/sql/relational-databases/replication/snapshot-replication) | Evet (yalnızca abone olarak) | Evet|
+| [**Standart Işlem**](/sql/relational-databases/replication/transactional/transactional-replication) | Evet (yalnızca abone olarak) | Yes |
+| [**Görüntüye**](/sql/relational-databases/replication/snapshot-replication) | Evet (yalnızca abone olarak) | Yes|
 | [**Birleştirme çoğaltması**](/sql/relational-databases/replication/merge/merge-replication) | Hayır | Hayır|
 | [**Eşler arası**](/sql/relational-databases/replication/transactional/peer-to-peer-transactional-replication) | Hayır | Hayır|
-| [**Çift yönlü**](/sql/relational-databases/replication/transactional/bidirectional-transactional-replication) | Hayır | Evet|
+| [**Çift yönlü**](/sql/relational-databases/replication/transactional/bidirectional-transactional-replication) | Hayır | Yes|
 | [**Güncelleştirilebilir abonelikler**](/sql/relational-databases/replication/transactional/updatable-subscriptions-for-transactional-replication) | Hayır | Hayır|
 | &nbsp; | &nbsp; | &nbsp; |
 
@@ -109,7 +109,7 @@ Farklı [çoğaltma türleri](/sql/relational-databases/replication/types-of-rep
 | Kategori | Data Sync | İşlem Çoğaltması |
 |---|---|---|
 | Avantajlar | -Etkin-etkin destek<br/>-Şirket içi ve Azure SQL veritabanı arasında çift yönlü | -Düşük gecikme süresi<br/>-İşlemsel tutarlılık<br/>-Geçişten sonra var olan topolojiyi yeniden kullan |
-| Dezavantajlar | -5 dk veya daha fazla gecikme<br/>-İşlem tutarlılığı yok<br/>-Daha yüksek performans etkisi | -Azure SQL veritabanından yayımlanamıyor <br/>-Yüksek bakım maliyeti |
+| Dezavantajlar | -İşlem tutarlılığı yok<br/>-Daha yüksek performans etkisi | -Azure SQL veritabanından yayımlanamıyor <br/>-Yüksek bakım maliyeti |
 
 ## <a name="common-configurations"></a>Ortak yapılandırma
 
@@ -197,7 +197,7 @@ Bir yük devretme grubundaki bir **abone** örneğinde coğrafi çoğaltma etkin
 - [SQL yönetilen örnek yayımcısı ve abonesi arasında çoğaltmayı yapılandırma](../managed-instance/replication-between-two-instances-configure-tutorial.md)
 - [SQL yönetilen örnek yayımcısı, SQL yönetilen örnek dağıtıcısı ve SQL Server abonesi arasında çoğaltmayı yapılandırma](../managed-instance/replication-two-instances-and-sql-server-configure-tutorial.md)
 - [Bir yayın oluşturun](/sql/relational-databases/replication/publish/create-a-publication).
-- [Create a push subscription](/sql/relational-databases/replication/create-a-push-subscription) Abone olarak sunucu adını (örneğin `N'azuresqldbdns.database.windows.net` , hedef VERITABANı olarak Azure SQL veritabanı adı (örneğin **AdventureWorks** ) kullanarak bir anında iletme aboneliği oluşturun. )
+- [](/sql/relational-databases/replication/create-a-push-subscription) Abone olarak sunucu adını (örneğin `N'azuresqldbdns.database.windows.net` , hedef VERITABANı olarak Azure SQL veritabanı adı (örneğin **AdventureWorks**) kullanarak bir anında iletme aboneliği oluşturun. )
 
 ## <a name="see-also"></a>Ayrıca bkz.  
 

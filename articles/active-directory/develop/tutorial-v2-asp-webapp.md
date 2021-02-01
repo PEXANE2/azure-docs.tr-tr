@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 08/28/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40
-ms.openlocfilehash: 8b12df62a7080e57e47b52cb79ed8a67e12bd526
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 17cff66d3f8c816099bcc61322a1d331bfe58872
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98753092"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99226313"
 ---
 # <a name="tutorial-add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>Öğretici: Microsoft 'a bir ASP.NET Web uygulamasına oturum açma ekleme
 
@@ -34,7 +34,7 @@ Bu öğreticide:
 > * Uygulamayı Azure portal kaydetme
 > * Uygulamayı test etme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * **ASP.net ve Web geliştirme** iş yükü yüklü [Visual Studio 2019](https://visualstudio.microsoft.com/vs/)
 
@@ -383,7 +383,7 @@ Uygulamanızı kaydetmek ve uygulama kayıt bilgilerinizi çözümünüze el ile
 1. Visual Studio 'dan kopyaladığınız SSL URL 'sini adım 1 ' de (örneğin, `https://localhost:44368/` ) **YENIDEN yönlendirme URI**'sindeki ekleyin.
 1. **Kaydet**’i seçin.
 1. **Yönet** altında **kimlik doğrulaması**' nı seçin.
-1. **Örtük izin** bölümünde **Kimlik belirteçleri**' ni seçin ve ardından **Kaydet**' i seçin.
+1. **Örtük verme ve karma akışlar** bölümünde **Kimlik belirteçleri**' ni seçin ve ardından **Kaydet**' i seçin.
 1. Aşağıdaki, bölümündeki kök klasörde bulunan web.config dosyasına aşağıdakileri ekleyin `configuration\appSettings` :
 
     ```xml

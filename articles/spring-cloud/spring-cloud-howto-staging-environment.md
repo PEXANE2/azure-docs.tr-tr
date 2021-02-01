@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/14/2021
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 8cae73e03fee0b59be0c7596f0783570ac14f6ee
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 991a335207fc29cef7b243d7e520dd5f62ff691f
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99053118"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99226126"
 ---
 # <a name="set-up-a-staging-environment-in-azure-spring-cloud"></a>Azure yay bulutu 'nda hazırlama ortamı ayarlama
 
@@ -22,6 +22,7 @@ Bu makalede, Azure Spring Cloud 'daki mavi yeşil dağıtım modelini kullanarak
 
 ## <a name="prerequisites"></a>Önkoşullar
 
+* *Standart* **fiyatlandırma katmanıyla** Azure yay bulutu örneği.
 * Çalışan bir uygulama.  Bkz. [hızlı başlangıç: Ilk Azure Spring Cloud uygulamanızı dağıtma](spring-cloud-quickstart.md).
 * Azure CLı [ASC uzantısı](https://docs.microsoft.com/cli/azure/azure-cli-extensions-overview)
 
@@ -78,7 +79,7 @@ Aşağıdaki yordamları kullanarak dağıtılan uygulamaları görüntüleyin.
 1. Azure CLı 'de yeni bir dağıtım oluşturun ve bunu hazırlama dağıtım adı "yeşil" olarak verin.
 
     ```azurecli
-    az spring-cloud app deployment create -g <resource-group-name> -s <service-instance-name> --app default -n green --jar-path gateway/target/gateway.jar
+    az spring-cloud app deployment create -g <resource-group-name> -s <service-instance-name> --app <appName> -n green --jar-path gateway/target/gateway.jar
     ```
 
 1. CLı dağıtımı başarıyla tamamlandıktan sonra **uygulama panosundan** uygulama sayfasına erişin ve sol taraftaki **dağıtımlar** sekmesinde tüm örneklerinizi görüntüleyin.
@@ -113,11 +114,11 @@ Yeşil hazırlama geliştirmenin çalıştığını doğrulamak için:
 
    [![Dağıtımlar hazırlama dağıtımını ayarladı](media/spring-cloud-blue-green-staging/set-staging-deployment.png)](media/spring-cloud-blue-green-staging/set-staging-deployment.png)
 
-1. **Dağıtım yönetimi** sayfasına dönün.  `green`Dağıtım dağıtım durumunuz gösterilmesi gerekir.  Bu artık çalışan üretim yapıdır.
+1. **Dağıtım yönetimi** sayfasına dönün. `green`Dağıtımını olarak ayarlayın `production` . Ayar tamamlandığında `green` dağıtım durumlarınızın gösterilmesi gerekir.  Bu artık çalışan üretim yapıdır.
 
    [![Dağıtımlar hazırlama dağıtım sonucunu ayarla](media/spring-cloud-blue-green-staging/set-staging-deployment-result.png)](media/spring-cloud-blue-green-staging/set-staging-deployment-result.png)
 
-1. URL 'YI kopyalayıp yeni bir tarayıcı penceresine yapıştırın ve yeni uygulama sayfası değişikliklerinizle birlikte görüntülenmelidir.
+1. Uygulamanın URL 'SI değişikliklerinizi görüntülemelidir.
 
 >[!NOTE]
 > Yeşil dağıtımı üretim ortamı olarak ayarladıktan sonra, önceki dağıtım hazırlama dağıtımı olur.

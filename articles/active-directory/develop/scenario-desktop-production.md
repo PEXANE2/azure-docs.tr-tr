@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 05b93848bff66adc49d2855ee98fff6c9b7a2d3d
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: ddd676a1e0b3d8f554b007974b62eb8c0c2ca9c1
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98756507"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99226364"
 ---
 # <a name="desktop-app-that-calls-web-apis-move-to-production"></a>Web API 'Lerini çağıran masaüstü uygulaması: üretime taşı
 
@@ -39,7 +39,7 @@ Microsoft Identity platformu ile aynı anda birkaç kaynak için bir belirteç a
 - `https://mytenant.onmicrosoft.com/customerapi` kapsamları `customer.read` ve `customer.write`
 - `https://mytenant.onmicrosoft.com/vendorapi` kapsamları `vendor.read` ve `vendor.write`
 
-Bu örnekte, `.WithAdditionalPromptToConsent` parametresine sahip olan değiştiriciyi kullanın `extraScopesToConsent` .
+Bu örnekte, `.WithExtraScopesToConsent` parametresine sahip olan değiştiriciyi kullanın `extraScopesToConsent` .
 
 Örneğin:
 
@@ -106,6 +106,11 @@ AcquireTokenSilent(scopesForVendorApi, accounts.FirstOrDefault()).ExecuteAsync()
 
 Microsoft kişisel hesap kullanıcıları için, yetkilendirmede her bir yerel istemcide (masaüstü veya mobil uygulama) onay için yeniden sorma, amaçlanan davranıştır. Yerel istemci kimliği, gizli istemci uygulama kimliğinin aksine, doğal olarak güvenli değildir. Gizli istemci uygulamaları, kimlik kanıtlamaları için Microsoft Identity platformu ile gizli dizi değişimi. Microsoft Identity platformu, uygulamanın her yetkilendirildiği her seferinde kullanıcıdan izin vermesini isteyerek tüketici hizmetleri için bu ingüvenliğin azaltılmasına karar verebilir.
 
+[!INCLUDE [Common steps to move to production](../../../includes/active-directory-develop-scenarios-production.md)]
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[!INCLUDE [Move to production common steps](../../../includes/active-directory-develop-scenarios-production.md)]
+Ek örnekler denemek için bkz. [Masaüstü ve mobil ortak istemci uygulamaları](sample-v2-code.md#desktop-and-mobile-public-client-apps).
+
+
+

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/25/2021
 ms.author: memildin
-ms.openlocfilehash: 99dadea37a519289120fcf30e394df1e0f7af5e7
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 83c1d8ac316703d9d22d0716c86c5731c3db7133
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98757720"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99226480"
 ---
 # <a name="important-upcoming-changes-to-azure-security-center"></a>Azure Güvenlik Merkezi 'Nde yapılan önemli değişiklikler
 
@@ -83,7 +83,7 @@ Bu önerilerin bunlara dahil edilip edilmeyeceğini görmek için sürekli dış
 
 **Değişikliğin tahmini tarihi:** S2 2021
 
-**SQL veritabanlarınızdaki önerinin hassas verilerinin** geçerli sürümü, **veri sınıflandırması Uygula** güvenlik denetimi kullanım dışı kalacak ve Microsoft 'un veri sınıflandırması stratejisiyle daha iyi hizalanmış yeni bir sürümle değiştirilmelidir. Sonuç olarak:
+**SQL veritabanlarınızdaki önerinin hassas verilerinin** geçerli sürümü, **veri sınıflandırması Uygula** güvenlik denetimi ' nde, Microsoft 'un veri sınıflandırması stratejisiyle daha iyi hizalanmış yeni bir sürümle değiştirilmelidir. Sonuç olarak:
 
 - Öneri artık güvenli puanınızı etkilemeyecek
 - Güvenlik denetimi ("veri sınıflandırmasını Uygula") artık güvenli puanınızı etkilemeyecek

@@ -1,5 +1,5 @@
 ---
-title: SYNAPSE RBAC rolleri
+title: Synapse RBAC rolleri
 description: Bu makalede yerleşik SYNAPSE RBAC rolleri açıklanmaktadır
 author: billgib
 ms.service: synapse-analytics
@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 12/1/2020
 ms.author: billgib
 ms.reviewer: jrasnick
-ms.openlocfilehash: a978113265e5e61c0fc09ef0daeb1da9826f294d
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 1ffbb5579ea19d7d608dd9c9d600342cd89d371c
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96572805"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99225083"
 ---
 # <a name="synapse-rbac-roles"></a>SYNAPSE RBAC rolleri
 
@@ -37,9 +37,9 @@ Aşağıdaki tabloda, yerleşik roller ve kullanılabilecekleri kapsamlar açık
 >[!Note]
 > Herhangi bir kapsamda SYNAPSE RBAC rolüne sahip kullanıcılar, çalışma alanı kapsamında SYNAPSE Kullanıcı rolüne otomatik olarak sahiptir. 
 
-|Role |İzinler|Kapsamlar|
+|Rol |İzinler|Kapsamlar|
 |---|---|-----|
-|SYNAPSE Yöneticisi  |Sunucusuz SQL havuzlarına, Apache Spark havuzlarına ve tümleştirme çalışma zamanları için tam SYNAPSE erişimi.  Tüm yayımlanmış kod yapıtlarına oluşturma, okuma, güncelleştirme ve silme erişimi içerir.  Çalışma alanı sistem kimliği kimlik bilgilerinde Işlem operatörü, bağlantılı Veri Yöneticisi ve kimlik bilgileri Kullanıcı izinleri içerir.  SYNAPSE RBAC rollerinin atanmasını içerir.  İşlem kaynaklarını oluşturmak, silmek ve yönetmek için Azure izinleri gereklidir. </br></br>_Yapıtlar okuma ve yazma, </br> Spark etkinliklerinde tüm eylemleri gerçekleştirebilir. </br> Spark havuz günlüklerini görüntüleyebilir </br> kaydedilen Not defteri ve işlem hattı çıkışı </br> , bağlı hizmetler tarafından depolanan gizli dizileri kullanabilir veya kimlik bilgileri, </br> SQL sunucusuz uç noktalara SQL `db_datareader` ,,, `db_datawriter` `connect` ve izinleri atayabilir ve bu,,, ve `grant` İzinler </br> geçerli kapsamda SYNAPSE RBAC rolleri atayabilir ve iptal edebilir_|Çalışma alanı </br> Spark havuzu<br/>Tümleştirme çalışma zamanı </br>Bağlı hizmet</br>Kimlik Bilgisi |
+|SYNAPSE Yöneticisi  |Sunucusuz SQL havuzlarına, Apache Spark havuzlarına ve tümleştirme çalışma zamanları için tam SYNAPSE erişimi.  Tüm yayımlanmış kod yapıtlarına oluşturma, okuma, güncelleştirme ve silme erişimi içerir.  Çalışma alanı sistem kimliği kimlik bilgilerinde Işlem operatörü, bağlantılı Veri Yöneticisi ve kimlik bilgileri Kullanıcı izinleri içerir.  SYNAPSE RBAC rollerinin atanmasını içerir. SYNAPSE Yöneticisi 'ne ek olarak, Azure sahipleri SYNAPSE RBAC rolleri de atayabilir. İşlem kaynaklarını oluşturmak, silmek ve yönetmek için Azure izinleri gereklidir. </br></br>_Yapıtlar okuma ve yazma, </br> Spark etkinliklerinde tüm eylemleri gerçekleştirebilir. </br> Spark havuz günlüklerini görüntüleyebilir </br> kaydedilen Not defteri ve işlem hattı çıkışı </br> , bağlı hizmetler tarafından depolanan gizli dizileri kullanabilir veya kimlik bilgileri, </br> SQL sunucusuz uç noktalara SQL `db_datareader` ,,, `db_datawriter` `connect` ve izinleri atayabilir ve bu,,, ve `grant` İzinler </br> geçerli kapsamda SYNAPSE RBAC rolleri atayabilir ve iptal edebilir_|Çalışma alanı </br> Spark havuzu<br/>Tümleştirme çalışma zamanı </br>Bağlı hizmet</br>Kimlik Bilgisi |
 |SYNAPSE Apache Spark Yöneticisi</br>|Apache Spark havuzlara tam SYNAPSE erişimi.  Yayımlanmış Spark iş tanımları, Not defterleri ve çıkışları, kitaplıklar, bağlı hizmetler ve kimlik bilgileri için oluşturma, okuma, güncelleştirme ve silme erişimi.  Diğer tüm yayımlanmış kod yapıtlarına okuma erişimi içerir. Kimlik bilgilerini kullanma ve işlem hatlarını çalıştırma izni içermez. Erişim verme içermez. </br></br>_Spark yapıtları üzerinde tüm eylemlerin, </br> Spark etkinlikleri üzerinde tüm eylemleri gerçekleştirebilir_|Çalışma alanı</br>Spark havuzu|
 |SYNAPSE SQL Yöneticisi|Sunucusuz SQL havuzlarına tam SYNAPSE erişimi.  Yayınlanan SQL betikleri, kimlik bilgileri ve bağlı hizmetlere erişimi oluşturun, okuyun, güncelleştirin ve silin.  Diğer tüm yayımlanmış kod yapıtlarına okuma erişimi içerir.  Kimlik bilgilerini kullanma ve işlem hatlarını çalıştırma izni içermez. Erişim verme içermez. </br></br>*SQL betiklerinde tüm eylemlerin SQL <br/> `db_datareader` , `db_datawriter` , `connect` , ve `grant` izinleriyle SQL sunucusuz uç noktalarına bağlanabilmesi için kullanılabilir*|Çalışma alanı|
 |SYNAPSE Katılımcısı|Sunucusuz SQL havuzlarına, Apache Spark havuzlara, tümleştirme çalışma zamanları 'na tam SYNAPSE erişim.  , Kimlik bilgileri ve bağlı hizmetler de dahil olmak üzere tüm yayınlanan kod yapıtları ve çıkışları için oluşturma, okuma, güncelleştirme ve silme erişimi içerir.  İşlem işletmeni izinleri içerir. Kimlik bilgilerini kullanma ve işlem hatlarını çalıştırma izni içermez. Erişim verme içermez. </br></br>_Okuma ve yazma yapıtları, </br> kaydedilen Not defteri ve işlem hattı çıkışının, </br> Spark etkinliklerindeki tüm eylemlerin </br> Spark havuz günlüklerini görüntüleyebileceği_|Çalışma alanı </br> Spark havuzu<br/> Tümleştirme çalışma zamanı|
@@ -58,7 +58,7 @@ Aşağıdaki tabloda, yerleşik roller ve kullanılabilecekleri kapsamlar açık
 
 Aşağıdaki tabloda, yerleşik roller ve her biri tarafından desteklenen eylemler/izinler listelenmektedir.
 
-Role|Eylemler
+Rol|Eylemler
 --|--
 SYNAPSE Yöneticisi|çalışma alanları/okuma</br>çalışma alanları/rol atamaları/yazma, silme</br>çalışma alanları/managedPrivateEndpoint/yazma, silme</br>çalışma alanları/bigDataPools/useCompute/Action</br>çalışma alanları/bigDataPools/viewLogs/Action</br>çalışma alanları/tümleştirme çalışma zamanları/useCompute/Action</br>çalışma alanları/yapıtlar/okuma</br>çalışma alanları/Not defterleri/yazma, silme</br>çalışma alanları/mini iş tanımları/yazma, silme</br>çalışma alanları/sqlScripts/Write, Sil</br>çalışma alanları/veri akışları/yazma, silme</br>çalışma alanları/işlem hatları/yazma, silme</br>çalışma alanları/Tetikleyiciler/yazma, silme</br>çalışma alanları/veri kümeleri/yazma, silme</br>çalışma alanları/kitaplıklar/yazma, silme</br>çalışma alanları/linkedServices/Write, Sil</br>çalışma alanları/kimlik bilgileri/yazma, silme</br>çalışma alanları/Not defterleri/görünüm çıktıları/eylem</br>çalışma alanları/işlem hatları/Viewçıktılar/eylem</br>çalışma alanları/linkedServices/useSecret/eylem</br>çalışma alanları/kimlik bilgileri/useSecret/eylem|
 |SYNAPSE Apache Spark Yöneticisi|çalışma alanları/okuma</br>çalışma alanları/bigDataPools/useCompute/Action</br>çalışma alanları/bigDataPools/viewLogs/Action</br>çalışma alanları/Not defterleri/görünüm çıktıları/eylem</br>çalışma alanları/yapıtlar/okuma</br>çalışma alanları/Not defterleri/yazma, silme</br>çalışma alanları/mini iş tanımları/yazma, silme</br>çalışma alanları/kitaplıklar/yazma, silme</br>çalışma alanları/linkedServices/Write, Sil</br>çalışma alanları/kimlik bilgileri/yazma, silme|
@@ -75,7 +75,7 @@ SYNAPSE Yöneticisi|çalışma alanları/okuma</br>çalışma alanları/rol atam
 
 Aşağıdaki tabloda, bu eylemlere izin veren SYNAPSE eylemleri ve yerleşik roller listelenmektedir:
 
-Eylem|Role
+Eylem|Rol
 --|--
 çalışma alanları/okuma|SYNAPSE Yöneticisi</br>SYNAPSE Apache Spark Yöneticisi</br>SYNAPSE SQL Yöneticisi</br>SYNAPSE Katılımcısı</br>SYNAPSE yapıt yayımcısı</br>SYNAPSE yapıt kullanıcısı</br>SYNAPSE Işlem Işleci </br>SYNAPSE kimlik bilgisi kullanıcısı</br>SYNAPSE bağlı Veri Yöneticisi</br>SYNAPSE kullanıcısı 
 çalışma alanları/rol atamaları/yazma, silme|SYNAPSE Yöneticisi

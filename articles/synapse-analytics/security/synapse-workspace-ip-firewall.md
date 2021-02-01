@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 12966503bfa17030fc4ebcb4d790a2f4655142a2
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: b937dad6c3c8f5a5773ca7779493b41c905307b1
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98116543"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99226514"
 ---
 # <a name="azure-synapse-analytics-ip-firewall-rules"></a>Azure SYNAPSE Analytics IP güvenlik duvarı kuralları
 
@@ -43,7 +43,10 @@ Ağınızdaki ve yerel bilgisayarınızdaki güvenlik duvarının SYNAPSE Studio
 
 Ayrıca, SYNAPSE Studio için UDP bağlantı noktası 53 ' de giden iletişime izin vermeniz gerekir. SSMS ve Power BI gibi araçları kullanarak bağlanmak için TCP bağlantı noktası 1433 ' de giden iletişime izin vermeniz gerekir.
 
-Varsayılan yeniden yönlendirme bağlantısı ilke ayarını kullanıyorsanız, ek bağlantı noktalarında giden iletişime izin vermeniz gerekebilir. [Burada](../../azure-sql/database/connectivity-architecture.md#connection-policy)bağlantı ilkeleri hakkında daha fazla bilgi edinebilirsiniz.
+SQL bağlantı ilkesi, çalışma alanı için *varsayılan* olarak ayarlanır. İstemcilerin giden iletişime izin [vermek IÇIN IP](../../azure-sql/database/connectivity-architecture.md#connection-policy)adresleri ve bağlantı noktaları hakkında daha fazla bilgi edinebilirsiniz.
+
+
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

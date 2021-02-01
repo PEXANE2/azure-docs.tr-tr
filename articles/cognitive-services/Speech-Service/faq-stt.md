@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 02/01/2021
 ms.author: panosper
-ms.openlocfilehash: a6f75a80fd73844c975b332db8a0e8919cde9f0d
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: 61768991fc4e72b44568bd92278427e6af398d52
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98072182"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99226565"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>Konuşmayı metne sık sorulan sorular
 
@@ -83,7 +83,7 @@ Y **: özel bir modeli** başka bir bölgeye veya aboneliğe kopyalamak için [R
 
 **S: isteklerim günlüğe kaydediliyor mi?**
 
-**A**: varsayılan olarak istekler günlüğe kaydedilmez (ses veya döküm değil). Gerekirse, [özel bir uç nokta oluşturduğunuzda](./how-to-custom-speech-train-model.md) *Bu uç nokta seçeneğinde günlük içeriği* ' ni seçebilirsiniz. Ayrıca, özel bir uç nokta oluşturmadan, [konuşma SDK 'sında](speech-sdk.md) istek başına temelinde ses günlüğünü de etkinleştirebilirsiniz. Her iki durumda da isteklerin ses ve tanıma sonuçları, güvenli depolama alanında depolanır. Microsoft 'a ait depolama kullanan abonelikler için, bunlar 30 gün boyunca kullanılabilir olacaktır.
+**A**: varsayılan olarak istekler günlüğe kaydedilmez (ses veya döküm değil). Gerekirse, [özel bir uç nokta oluşturduğunuzda](how-to-custom-speech-train-model.md#deploy-a-custom-model) *Bu uç nokta seçeneğinde günlük içeriği* ' ni seçebilirsiniz. Ayrıca, özel bir uç nokta oluşturmadan, [konuşma SDK 'sında](how-to-use-logging.md) istek başına temelinde ses günlüğünü de etkinleştirebilirsiniz. Her iki durumda da isteklerin ses ve tanıma sonuçları, güvenli depolama alanında depolanır. Microsoft 'a ait depolama kullanan abonelikler için, bunlar 30 gün boyunca kullanılabilir olacaktır.
 
 *Bu uç noktanın etkin olan günlük içeriğiyle* özel bir uç nokta kullanırsanız, konuşma Studio 'daki dağıtım sayfasında günlüğe kaydedilen dosyaları dışarı aktarabilirsiniz. Ses günlüğü 'nün SDK aracılığıyla etkinleştirilmesi durumunda dosyalara erişmek için [API](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetBaseModelLogs) 'yi çağırın.
 

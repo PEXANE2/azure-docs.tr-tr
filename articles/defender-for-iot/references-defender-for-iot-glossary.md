@@ -7,35 +7,37 @@ ms.author: shhazam
 ms.date: 12/09/2020
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: 62d1f3e195247682dab96ec258d1b97695b20103
-ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
+ms.openlocfilehash: 8007f11cb37063cef46ac7f3ac51e23bdfaae11a
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98986997"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99226463"
 ---
 # <a name="defender-for-iot-glossary"></a>IoT için Defender sözlüğü
 
 Bu sözlük, IoT Platformu için Azure Defender 'a yönelik önemli hüküm ve kavramların kısa bir açıklamasını sağlar. Sözlükteki ilgili koşullara gitmek için **daha fazla bilgi edinin** bağlantısını seçin. Bu, ürün araçlarını daha hızlı öğrenmenize ve kullanmanıza yardımcı olur.
+
+<a name="glossary-a"></a>
 
 ## <a name="a"></a>A
 
 | Süre | Açıklama | Daha fazlasını öğrenin |
 |--|--|--|
 | **Erişim grubu** | Erişim grubu kuralları oluşturarak büyük kuruluşlar için Kullanıcı erişim gereksinimlerini destekleme.<br /><br />Kurallar, ilgili iş birimleri, bölgeler, siteler ve bölgelerdeki belirli kullanıcı rolleri için bkz. IoT şirket içi yönetim konsolu için Defender 'a görüntüleme ve yapılandırma erişimini denetlemenize olanak tanır.<br /><br />Örneğin, bir Active Directory grubundan Güvenlik analistlerinin Batı Avrupa 'daki verilere erişmesine izin verin, ancak Afrika 'daki verilere erişimi engelleyin. | **[Şirket içi yönetim konsolu](#o)** <br /><br />**[İş birimi](#b)** |
-| **Erişim belirteçleri** | IoT REST API için Defender 'a erişmek üzere erişim belirteçleri oluşturun. | **[API](#a)** |
-| **Uyarı olayını Onayla** | Algılanan olay için Defender 'ı IoT 'ye, uyarıyı bir kez gizlemesini söyleyin. Olay tekrar algılanırsa uyarı tekrar tetiklenir. | **[](#a) <br /> Uyarı <br /> [Uyarı olayını öğrenin](#l) <br /> <br /> [Uyarı olayını sustur](#m)** |
+| **Erişim belirteçleri** | IoT REST API için Defender 'a erişmek üzere erişim belirteçleri oluşturun. | **[API](#glossary-a)** |
+| **Uyarı olayını Onayla** | Algılanan olay için Defender 'ı IoT 'ye, uyarıyı bir kez gizlemesini söyleyin. Olay tekrar algılanırsa uyarı tekrar tetiklenir. | **[](#glossary-a) <br /> Uyarı <br /> [Uyarı olayını öğrenin](#l) <br /> <br /> [Uyarı olayını sustur](#m)** |
 | **Uyarı** | IoT altyapısının bir Defender 'ın yetkili ağ davranışı, ağ bozuklukları veya şüpheli ağ etkinliği ve trafiğinden sapmalarla ilgili olarak tetiklediği bir ileti. | **[İletme kuralı](#f) <br /> <br /> [Dışlama kuralı](#e) <br /> <br /> [Sistem bildirimleri](#s)** |
-| **Uyarı açıklaması** | Güvenlik analistlerinin ve yöneticilerinin uyarı iletilerinde yapabelirten yorumlar. Örneğin, bir uyarı yorumu gerçekleştirilecek risk azaltma eylemleri veya olayla ilgili iletişim kurulacak kişilerin adları hakkında yönergeler verebilir.<br /><br />Uyarıları gözden geçiren kullanıcılar, olay durumunu en iyi şekilde yansıtan yorumu veya açıklamaları ya da uyarıyı araştırmak için yapılan adımları seçebilir. | **[Uyarı](#a)** |
+| **Uyarı açıklaması** | Güvenlik analistlerinin ve yöneticilerinin uyarı iletilerinde yapabelirten yorumlar. Örneğin, bir uyarı yorumu gerçekleştirilecek risk azaltma eylemleri veya olayla ilgili iletişim kurulacak kişilerin adları hakkında yönergeler verebilir.<br /><br />Uyarıları gözden geçiren kullanıcılar, olay durumunu en iyi şekilde yansıtan yorumu veya açıklamaları ya da uyarıyı araştırmak için yapılan adımları seçebilir. | **[Uyarı](#glossary-a)** |
 | **Anomali altyapısı** | Olağandışı makineden makineye ('U M2M) iletişimi ve davranışını algılayan IoT altyapısı için bir Defender. Örneğin, altyapı aşırı sayıda SMB oturum açma denemesini algılayabilir. Anomali uyarıları, bu olaylar algılandığında tetiklenir. | **[IoT motorları için Defender](#d)** |
-| **API** | Dış sistemlerin, IoT için bulunan ve SSL bağlantıları üzerinden dış REST API kullanarak eylemler gerçekleştirdiği verilere erişmesine izin verir. | **[Erişim belirteçleri](#a)** |
+| **API** | Dış sistemlerin, IoT için bulunan ve SSL bağlantıları üzerinden dış REST API kullanarak eylemler gerçekleştirdiği verilere erişmesine izin verir. | **[Erişim belirteçleri](#glossary-a)** |
 | **Saldırı vektörü raporu** | Açıktan yararlanma uç noktaları için güvenlik açığı zincirlerinin gerçek zamanlı grafik gösterimi.<br /><br />Raporlar, saldırı sırasındaki risk azaltma etkinliklerinin etkisini değerlendirmenize olanak tanır. Örneğin, bir sistem yükseltmesinin saldırı zincirini bozarak veya alternatif bir saldırı yolunun kalıp kalmadığını değerlendirebilmenizi sağlayabilirsiniz. Bu, düzeltme ve azaltma etkinliklerini önceliklendirir. | **[Risk değerlendirmesi raporu](#r)** |
 
 ## <a name="b"></a>B
 
 | Süre | Açıklama | Daha fazlasını öğrenin |
 |--|--|--|
-| **İş birimi** | Belirli sektörlere göre işletmenizin mantıksal organizasyonu.<br /><br />Örneğin, cam fabrikaları ve Plastik fabrikaları içeren küresel bir şirket iki farklı iş birimi olarak yönetilebilir. Belirli iş birimlerine IoT kullanıcıları için Defender erişimini denetleyebilirsiniz. | **[Şirket içi yönetim konsolu](#o) <br /> <br /> [Erişim grubu](#o) <br /> <br /> [](#s) <br /> Site <br /> [Bölge](#z)** |
+| **İş birimi** | Belirli sektörlere göre işletmenizin mantıksal organizasyonu.<br /><br />Örneğin, cam fabrikaları ve Plastik fabrikaları içeren küresel bir şirket iki farklı iş birimi olarak yönetilebilir. Belirli iş birimlerine IoT kullanıcıları için Defender erişimini denetleyebilirsiniz. | **[Şirket içi yönetim konsolu](#o) <br /> <br /> [Erişim grubu](#glossary-a) <br /> <br /> [](#s) <br /> Site <br /> [Bölge](#z)** |
 | **Taban çizgisi** | Onaylanan ağ trafiği, protokoller, komutlar ve cihazlar. IoT için Defender, ağ temeliyle sapmaları tanımlar. Veri araştırma raporları oluşturarak onaylanan temel trafiği görüntüleyin. | **[Veri araştırma](#d) <br /> <br /> [Öğrenme modu](#l)** |
 
 ## <a name="c"></a>C
@@ -50,7 +52,7 @@ Bu sözlük, IoT Platformu için Azure Defender 'a yönelik önemli hüküm ve k
 | Süre | Açıklama | Daha fazlasını öğrenin |
 |--|--|--|
 | **Veri araştırma** | Ağ cihazlarınızla ilgili kapsamlı ve ayrıntılı raporlar oluşturun:<br /><br />- **SOC olay yanıtı**: anında olay yanıtıyla başa çıkmak için gerçek zamanlı raporlar. Örneğin, bir rapor düzeltme eki ihtiyacı olabilecek cihazları listeleyebilir.<br /><br />- **Forensics**: araştırma raporlarının geçmiş verilerini temel alan raporlar.<br /><br />- **BT ağ bütünlüğü**: genel ağ güvenliğinin artırılmasına yardımcı olan raporlar. Örneğin, bir rapor zayıf kimlik doğrulama kimlik bilgileri olan cihazları listeleyebilir.<br /><br />- **görünürlük**: ağınızın tüm temel parametrelerini görüntülemek için tüm sorgu öğelerini kapsayan raporlar.<br /><br />Salt okuma kullanıcılarına görüntülemek için veri araştırma raporlarını kaydedin. | **[Taban çizgisi](#b) <br /> <br /> [Raporlar](#r)** |
-| **IoT motorları için Defender** | IoT için Defender 'daki kendi kendine öğrenme Analizi motorları, imzaları güncelleştirme veya kuralları tanımlama ihtiyacını ortadan kaldırır. Altyapılar, kötü amaçlı yazılım, işlemsel sorunlar, protokol ihlalleri ve temel ağ etkinliğinden sapmaları için OT ağ trafiğini sürekli olarak analiz etmek üzere ICS 'ye özgü davranış analizini ve veri bilimi kullanır.<br /><br />Bir altyapı bir sapma algıladığında, bir uyarı tetiklenir. Uyarılar, **Uyarılar** ekranından veya SIEM 'den görüntülenebilir ve yönetilebilir. | **[Uyarı](#a)** |
+| **IoT motorları için Defender** | IoT için Defender 'daki kendi kendine öğrenme Analizi motorları, imzaları güncelleştirme veya kuralları tanımlama ihtiyacını ortadan kaldırır. Altyapılar, kötü amaçlı yazılım, işlemsel sorunlar, protokol ihlalleri ve temel ağ etkinliğinden sapmaları için OT ağ trafiğini sürekli olarak analiz etmek üzere ICS 'ye özgü davranış analizini ve veri bilimi kullanır.<br /><br />Bir altyapı bir sapma algıladığında, bir uyarı tetiklenir. Uyarılar, **Uyarılar** ekranından veya SIEM 'den görüntülenebilir ve yönetilebilir. | **[Uyarı](#glossary-a)** |
 | **IoT Platformu için Defender** | IoT algılayıcı ve şirket içi yönetim konsolu için Defender 'da yüklü IoT çözümü için Defender. | **[](#s) <br /> Algılayıcı <br /> [Şirket içi yönetim konsolu](#o)** |
 | **Cihaz Haritası** | IoT için Defender tarafından algılanan ağ cihazlarının grafik gösterimi. Her cihazla ilgili cihazlar ve bilgiler arasındaki bağlantıları gösterir. Haritayı kullanarak şunları yapın:<br /><br />-Kritik cihaz bilgilerini alın ve denetleyin.<br /><br />-Ağ dilimlerini analiz edin.<br /><br />-Cihaz ayrıntılarını ve özetlerini dışarı aktarın. | **[Takip eden katman grubu](#p)** |
 | **Cihaz envanteri-algılayıcı** | Cihaz envanteri, bir IoT için Defender tarafından algılanan kapsamlı bir cihaz öznitelikleri yelpazesi görüntüler. Seçenekler kullanılabilir:<br /><br />-Filtre görüntülenmiş bilgiler.<br /><br />-Bu bilgileri bir CSV dosyasına dışarı aktarın.<br /><br />-Windows kayıt defteri ayrıntılarını içeri aktarın. | **[Grup](#g)** <br /><br />**[Cihaz envanteri-şirket içi yönetim konsolu](#d)** |
@@ -63,13 +65,13 @@ Bu sözlük, IoT Platformu için Azure Defender 'a yönelik önemli hüküm ve k
 |--|--|--|
 | **Kurumsal Görünüm** | IoT sensörlerine yönelik Savunların yüklendiği iş birimleri, siteler ve bölgeler sunan genel harita. Kötü amaçlı uyarıların, işlemsel uyarıların ve daha fazlalığının coğrafi konumlarını görüntüleyin. | **[İş birimi](#b) <br /> <br /> [](#s) <br /> Site <br /> [Bölge](#z)** |
 | **Olay zaman çizelgesi** | Ağınızda algılanan ve aşağıdakiler dahil olmak üzere bir etkinlik zaman çizelgesi:<br /><br />-Uyarılar tetiklendi.<br /><br />-Ağ olayları (bilgilendirici).<br /><br />-Oturum açma, Kullanıcı silme ve Kullanıcı oluşturma gibi kullanıcı işlemleri ve sessiz, öğrenme ve bildirim gibi uyarı yönetimi işlemleri. Algılayıcı konsollarında kullanılabilir. | - |
-| **Dışlama kuralı** | Defender 'ın IoT için, zaman dilimine, cihaz adresine ve uyarı adına veya belirli bir sensöre göre uyarı tetikleyicilerini yoksaymasını söyleyin.<br /><br />Örneğin, belirli bir algılayıcı tarafından izlenen tüm OT cihazlarının sabah 6:30 ve 10:15 arasında bir bakım prosedürü üzerinden gidebileceğini biliyorsanız, bu sensörin önceden tanımlanmış dönemde hiç uyarı gönderemeyeceğini belirten bir dışlama kuralı ayarlayabilirsiniz. | **[](#a) <br /> Uyarı <br /> [Uyarı olayını sustur](#m)** |
+| **Dışlama kuralı** | Defender 'ın IoT için, zaman dilimine, cihaz adresine ve uyarı adına veya belirli bir sensöre göre uyarı tetikleyicilerini yoksaymasını söyleyin.<br /><br />Örneğin, belirli bir algılayıcı tarafından izlenen tüm OT cihazlarının sabah 6:30 ve 10:15 arasında bir bakım prosedürü üzerinden gidebileceğini biliyorsanız, bu sensörin önceden tanımlanmış dönemde hiç uyarı gönderemeyeceğini belirten bir dışlama kuralı ayarlayabilirsiniz. | **[](#glossary-a) <br /> Uyarı <br /> [Uyarı olayını sustur](#m)** |
 
 ## <a name="f"></a>F
 
 | Süre | Açıklama | Daha fazlasını öğrenin |
 |--|--|--|
-| **İletme kuralı** | İletme kuralları, IoT için Defender 'a, iş ortağı satıcılarına veya sistemlerine uyarı bilgileri göndermek için yönlendirir.<br /><br />Örneğin, bir splunk sunucusuna veya Syslog sunucusuna uyarı bilgileri gönderin. | **[Uyarı](#a)** |
+| **İletme kuralı** | İletme kuralları, IoT için Defender 'a, iş ortağı satıcılarına veya sistemlerine uyarı bilgileri göndermek için yönlendirir.<br /><br />Örneğin, bir splunk sunucusuna veya Syslog sunucusuna uyarı bilgileri gönderin. | **[Uyarı](#glossary-a)** |
 
 ## <a name="g"></a>G
 
@@ -95,7 +97,7 @@ Bu sözlük, IoT Platformu için Azure Defender 'a yönelik önemli hüküm ve k
 
 | Süre | Açıklama | Daha fazlasını öğrenin |
 |--|--|--|
-| **Uyarı olayını öğrenin** | Bir uyarı olayında algılanan trafiği yetkilendirmek için Defender for IoT 'e bildirin. | **[](#a) <br /> Uyarı <br /> [Uyarı olayını Onayla](#a) <br /> <br /> [Uyarı olayını sustur](#m)** |
+| **Uyarı olayını öğrenin** | Bir uyarı olayında algılanan trafiği yetkilendirmek için Defender for IoT 'e bildirin. | **[](#glossary-a) <br /> Uyarı <br /> [Uyarı olayını Onayla](#glossary-a) <br /> <br /> [Uyarı olayını sustur](#m)** |
 | **Öğrenme modu** | IoT için Defender, ağ etkinliğinizi öğrendiğinde kullanılan mod. Bu etkinlik, ağ temelinizi olur. IoT için Defender, yüklemeden sonra önceden tanımlanmış bir süre için modda kalır. Bu dönemden sonra öğrenilmiş etkinlikten sapmadan oluşan etkinlik, Defender 'ı IoT uyarıları için tetikler. | **[Akıllı BT öğrenimi](#s) <br /> <br /> [Taban çizgisi](#b)** |
 | **Yerelleştirme** | Ufuk tarafından geliştirilen dissektör eklentileri için uyarıları, olayları ve protokol parametrelerini yerelleştirin. | **[Ufku açık geliştirme ortamı](#h)** |
 
@@ -103,20 +105,20 @@ Bu sözlük, IoT Platformu için Azure Defender 'a yönelik önemli hüküm ve k
 
 | Süre | Açıklama | Daha fazlasını öğrenin |
 |--|--|--|
-| **Uyarı olayını sustur** | Aynı cihazlarla ve karşılaştırılabilir trafikle etkinlikleri sürekli olarak yoksayması için Defender 'a söyleyin. | **[](#a) <br /> Uyarı <br /> [Dışlama kuralı](#e) <br /> <br /> [Uyarı olayını Onayla](#a) <br /> <br /> [Uyarı olayını öğrenin](#l)** |
+| **Uyarı olayını sustur** | Aynı cihazlarla ve karşılaştırılabilir trafikle etkinlikleri sürekli olarak yoksayması için Defender 'a söyleyin. | **[](#glossary-a) <br /> Uyarı <br /> [Dışlama kuralı](#e) <br /> <br /> [Uyarı olayını Onayla](#glossary-a) <br /> <br /> [Uyarı olayını öğrenin](#l)** |
 
 ## <a name="n"></a>N
 
 | Süre | Açıklama | Daha fazlasını öğrenin |
 |--|--|--|
-| **Bildirimler** | Ağ değişiklikleri veya çözümlenmemiş cihaz özellikleri hakkında bilgi. Cihaz ve ağ bilgilerini, algılanan yeni verilerle güncelleştirmek için seçenekler kullanılabilir. Bildirimlere yanıt vermek cihaz envanterini, eşlemeyi ve çeşitli raporları zenginleştirir. Algılayıcı konsollarında kullanılabilir. | **[](#a) <br /> Uyarı <br /> [Sistem bildirimleri](#s)** |
+| **Bildirimler** | Ağ değişiklikleri veya çözümlenmemiş cihaz özellikleri hakkında bilgi. Cihaz ve ağ bilgilerini, algılanan yeni verilerle güncelleştirmek için seçenekler kullanılabilir. Bildirimlere yanıt vermek cihaz envanterini, eşlemeyi ve çeşitli raporları zenginleştirir. Algılayıcı konsollarında kullanılabilir. | **[](#glossary-a) <br /> Uyarı <br /> [Sistem bildirimleri](#s)** |
 
 ## <a name="o"></a>O
 
 | Süre | Açıklama | Daha fazlasını öğrenin |
 |--|--|--|
 | **Şirket içi yönetim konsolu** | Şirket içi yönetim konsolu, kuruluşunuzda IoT algılayıcı dağıtımlarını algılayan cihazların ve tehditlerin merkezi bir görünümünü ve yönetimini sağlar. | **[IoT Platformu](#d) <br /> <br /> için Defender [Algılayıcı](#s)** |
-| **İşlemsel uyarı** | Ağ bağlantısının kesilmesi şüpheli bir cihaz gibi işlemsel ağ sorunlarıyla ilgilenen uyarılar. | **[](#a) <br /> Uyarı <br /> [Güvenlik uyarısı](#s)** |
+| **İşlemsel uyarı** | Ağ bağlantısının kesilmesi şüpheli bir cihaz gibi işlemsel ağ sorunlarıyla ilgilenen uyarılar. | **[](#glossary-a) <br /> Uyarı <br /> [Güvenlik uyarısı](#s)** |
 
 ## <a name="p"></a>P
 
@@ -129,7 +131,7 @@ Bu sözlük, IoT Platformu için Azure Defender 'a yönelik önemli hüküm ve k
 
 | Süre | Açıklama | Daha fazlasını öğrenin |
 |--|--|--|
-| **Bölge** | Küresel bir kuruluşun mantıksal bölümü coğrafi bölgelere. Örnekler şunlardır Kuzey Amerika, Batı Avrupa ve Doğu Avrupa.<br /><br />Kuzey Amerika çeşitli iş birimlerinden fabrikaları olabilir. | **[Erişim grubu](#a) <br /> <br /> [İş birimi](#b) <br /> <br /> [Şirket içi yönetim konsolu](#o) <br /> <br /> [](#s) <br /> Site <br /> [Bölge](#z)** |
+| **Bölge** | Küresel bir kuruluşun mantıksal bölümü coğrafi bölgelere. Örnekler şunlardır Kuzey Amerika, Batı Avrupa ve Doğu Avrupa.<br /><br />Kuzey Amerika çeşitli iş birimlerinden fabrikaları olabilir. | **[Erişim grubu](#glossary-a) <br /> <br /> [İş birimi](#b) <br /> <br /> [Şirket içi yönetim konsolu](#o) <br /> <br /> [](#s) <br /> Site <br /> [Bölge](#z)** |
 | **Raporlar** | Raporlar, veri madenciliği sorgu sonuçları tarafından oluşturulan bilgileri yansıtır. Bu, **raporlar** görünümünde kullanılabilen varsayılan veri araştırma sonuçlarını içerir. Yöneticiler ve Güvenlik analistleri Ayrıca özel veri araştırma sorguları oluşturabilir ve bunları rapor olarak kaydedebilir. Bu raporlar, salt okuma kullanıcıları için de kullanılabilir. | **[Veri araştırma](#d)** |
 | **Risk değerlendirmesi raporu** | Risk değerlendirmesi raporlaması, her ağ aygıtı için bir güvenlik puanı oluşturmanıza olanak sağlar ve bu da genel bir ağ güvenlik puanına sahip olursunuz. Genel puan yüzde 100 güvenlik yüzdesini temsil eder. Rapor, geçerli güvenlik puanınızı iyileştirmenize yardımcı olacak risk azaltma önerileri sağlar. | - |
 
@@ -137,14 +139,14 @@ Bu sözlük, IoT Platformu için Azure Defender 'a yönelik önemli hüküm ve k
 
 | Süre | Açıklama | Daha fazlasını öğrenin |
 |--|--|--|
-| **Güvenlik Uyarısı** | Aşırı SMB oturum açma girişimleri veya kötü amaçlı yazılım algılamaları gibi güvenlik sorunlarıyla ilgilenen uyarılar. | **[](#a) <br /> Uyarı <br /> [İşlemsel uyarı](#o)** |
+| **Güvenlik Uyarısı** | Aşırı SMB oturum açma girişimleri veya kötü amaçlı yazılım algılamaları gibi güvenlik sorunlarıyla ilgilenen uyarılar. | **[](#glossary-a) <br /> Uyarı <br /> [İşlemsel uyarı](#o)** |
 | **Seçmeli yoklama** | IoT için Defender, BT ve OT trafiğini büyük ölçüde inceler ve cihazlar, öznitelikleri, davranışları ve daha fazlası için ilgili bilgileri algılar. Bazı durumlarda, bazı bilgiler pasif ağ analizlerinde görünmeyebilir.<br /><br />Bu durumda, daha önce erişilemeyen cihazlarda önemli bilgileri keşfedebilmeniz için, IoT için Defender 'daki güvenli ve ayrıntılı araştırma araçlarını kullanabilirsiniz. | - |
 | **Algılayıcısı** | IoT Platformu için Defender 'ın yüklü olduğu fiziksel veya sanal makine. | **[Şirket içi yönetim konsolu](#o)** |
 | **Site** | Bir fabrika ya da başka bir varlığa ait bir konum. Site, bir algılayıcısı veya bir algılayıcı 'un yüklü olduğu birkaç bölgeyi içermelidir. | **[Bölge](#z)** |
 | **Site yönetimi** | Kurumsal algılayıcıları yönetmenize olanak sağlayan şirket içi yönetim konsolu seçeneği. | - |
 | **Akıllı BT öğrenimi** | Öğrenme süresi tamamlandıktan ve öğrenme modu devre dışı bırakıldıktan sonra IoT için Defender, DNS ve HTTP istekleri gibi normal BT etkinliğinin sonucu olan olağandışı yüksek düzeyde temel bir değişikliği algılayabilir. Bu trafik, gereksiz ilke ihlali uyarılarını ve sistem bildirimlerini tetikleyebilir. Bu uyarıları ve bildirimleri azaltmak için akıllı BT öğrenimini etkinleştirebilirsiniz. | **[Öğrenme modu](#l) <br /> <br /> [Taban çizgisi](#b)** |
 | **Alt ağlar** | OT cihazlarda odaklanmayı etkinleştirmek için, BT cihazları otomatik olarak cihaz eşlemesindeki alt ağ tarafından toplanır. Her alt ağ, bir BT alt ağına ve geri odaklanmak için etkileşimli daraltma veya genişletme özelliği de dahil olmak üzere haritada tek bir varlık olarak sunulur. | **[Cihaz Haritası](#d)** |
-| **Sistem bildirimleri** | Şirket içi yönetim konsolundan ilgili bildirimler:<br /><br />-Algılayıcı bağlantı durumu.<br /><br />-Uzak yedekleme sorunları. | **[](#n) <br /> Bildirimler <br /> [Uyarı](#a)** |
+| **Sistem bildirimleri** | Şirket içi yönetim konsolundan ilgili bildirimler:<br /><br />-Algılayıcı bağlantı durumu.<br /><br />-Uzak yedekleme sorunları. | **[](#n) <br /> Bildirimler <br /> [Uyarı](#glossary-a)** |
 
 ## <a name="z"></a>Z
 

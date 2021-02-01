@@ -8,12 +8,12 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.date: 10/16/2020
-ms.openlocfilehash: 4d6401c53071235784a5371a4a6315e4e25a438f
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 30b7f1054f7bfee8dc58638791f0b8a424de92a4
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98680273"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99226430"
 ---
 # <a name="tutorial-sign-in-users-and-call-a-protected-api-from-a-blazor-webassembly-app"></a>Öğretici: kullanıcılarda oturum açın ve Blazor WebAssembly uygulamasından korunan API 'yi çağırın
 
@@ -42,7 +42,7 @@ Kimlik doğrulaması için Azure Active Directory (Azure AD) kullanan her uygula
 - **Desteklenen hesap türleri** için **yalnızca bu kuruluş dizinindeki hesaplar**' ı seçin.
 - **Yeniden yönlendirme URI 'si** açılan öğesini **Web** olarak ayarlayın ve girin `https://localhost:5001/authentication/login-callback` . Kestrel üzerinde çalışan bir uygulamanın varsayılan bağlantı noktası 5001 ' dir. Uygulama farklı bir bağlantı noktasında kullanılabiliyorsa, yerine bu bağlantı noktası numarasını belirtin `5001` .
 
-Kaydolduktan sonra, **kimlik doğrulama**  >  **örtük izni**' nda, **erişim belirteçleri** ve **Kimlik belirteçleri** onay kutularını işaretleyin ve ardından **Kaydet** düğmesini seçin.
+Kaydolduktan sonra, **Yönet** altında **kimlik doğrulama**  >  **örtük verme ve karma akışlar**' ı seçin. **Erişim belirteçleri** ve **Kimlik belirteçleri**' ni seçin ve ardından **Kaydet**' i seçin.
 
 ## <a name="create-the-app-using-the-net-core-cli"></a>.NET Core CLI kullanarak uygulamayı oluşturun
 
@@ -80,7 +80,7 @@ Bu şablonun Microsoft Identity platformunu kullanarak Azure AD ile oturum açma
 
 [Microsoft Graph](/graph/overview) , kullanıcılarınız için Microsoft 365 verilere erişim sağlayan API 'leri Içerir ve Microsoft Identity platformu tarafından verilen belirteçleri destekler, bu da bir örnek olarak kullanılmak üzere iyi BIR korumalı API sağlar. Bu bölümde, Microsoft Graph çağırmak ve kullanıcının e-postalarını uygulamanın "verileri getirme" sayfasında göstermek için kod eklersiniz.
 
-Bu bölüm, adlandırılmış bir istemci kullanarak korunan API 'yi çağırmak için ortak bir yaklaşım kullanılarak yazılmıştır. Aynı yöntem, çağırmak istediğiniz diğer korumalı API 'Ler için de kullanılabilir. Ancak, uygulamanızdan Microsoft Graph çağırmayı planlıyorsanız, demirbaş 'ı azaltmak için Graf SDK 'sını kullanabilirsiniz. .NET belgeleri, [Graph SDK 'nın nasıl kullanılacağına](/aspnet/core/blazor/security/webassembly/graph-api?view=aspnetcore-5.0)ilişkin yönergeler içerir.
+Bu bölüm, adlandırılmış bir istemci kullanarak korunan API 'yi çağırmak için ortak bir yaklaşım kullanılarak yazılmıştır. Aynı yöntem, çağırmak istediğiniz diğer korumalı API 'Ler için de kullanılabilir. Ancak, uygulamanızdan Microsoft Graph çağırmayı planlıyorsanız, demirbaş 'ı azaltmak için Graf SDK 'sını kullanabilirsiniz. .NET belgeleri, [Graph SDK 'nın nasıl kullanılacağına](/aspnet/core/blazor/security/webassembly/graph-api?view=aspnetcore-5.0&preserve-view=true)ilişkin yönergeler içerir.
 
 Başlamadan önce, gerekli izinlerde değişiklikler yaptığınız için uygulamanızı oturumunuzu kapatıp geçerli belirteciniz çalışmayacak. Henüz yapmadıysanız, aşağıdaki kodu güncelleştirmeden önce uygulamanızı yeniden çalıştırın ve **Oturumu Kapat** ' ı seçin.
 

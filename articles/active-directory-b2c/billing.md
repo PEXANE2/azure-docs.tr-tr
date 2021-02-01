@@ -7,23 +7,23 @@ manager: celestedg
 ms.service: active-directory
 ms.topic: reference
 ms.workload: identity
-ms.date: 09/01/2020
+ms.date: 02/01/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: edff5354d0565bd32cd0332b4aa0f215c2980d73
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: a54ed9dc6557d9b613485bf28e74af0c59fc9e5e
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94949794"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99225217"
 ---
 # <a name="billing-model-for-azure-active-directory-b2c"></a>Azure Active Directory B2C için faturalandırma modeli
 
 Azure Active Directory B2C (Azure AD B2C) fiyatlandırması, aylık etkin kullanıcıları (MAU) temel alır. Bu, bir takvim ayı içinde kimlik doğrulama etkinliği olan benzersiz kullanıcıların sayısıdır. Bu Faturalandırma modeli hem Azure AD B2C kiracılar hem de [Azure AD Konuk Kullanıcı işbirliği (B2B)](../active-directory/external-identities/external-identities-pricing.md)için geçerlidir. MAU faturalandırma, ücretsiz bir katman ve esnek ve öngörülebilir bir fiyatlandırma sunarak maliyetleri düşürmenize yardımcı olur. Bu makalede, MAU faturalandırma hakkında bilgi edinin, Azure AD B2C Kiracılarınızı bir aboneliğe bağlama ve fiyatlandırma katmanınızı değiştirme.
 
 > [!IMPORTANT]
-> Bu makale fiyatlandırma ayrıntıları içermez. Kullanım faturalaması ve fiyatlandırmayla ilgili en son bilgiler için bkz. [Azure Active Directory B2C fiyatlandırması](https://azure.microsoft.com/pricing/details/active-directory-b2c/).
+> Bu makale fiyatlandırma ayrıntıları içermez. Kullanım faturalaması ve fiyatlandırmayla ilgili en son bilgiler için bkz. [Azure Active Directory B2C fiyatlandırması](https://azure.microsoft.com/pricing/details/active-directory-b2c/). Ayrıca, Azure AD B2C hizmetinin kullanılabildiği ve Kullanıcı verilerinin depolandığı konum hakkında daha fazla bilgi için bkz. [Azure AD B2C bölge kullanılabilirliği ve veri](data-residency.md) yerleşimi.
 
 ## <a name="what-do-i-need-to-do"></a>Neler yapmam gerekir?
 
@@ -49,7 +49,7 @@ Azure Active Directory B2C (Azure AD B2C) için kullanım ücretleri bir Azure a
 
 Azure AD B2C kiracıya bağlı bir abonelik, ek Azure AD B2C kaynakları da dahil olmak üzere Azure AD B2C kullanım veya diğer Azure kaynaklarının faturalandırılması için kullanılabilir. Azure AD B2C kiracının içindeki diğer Azure lisans tabanlı Hizmetleri veya Office 365 lisanslarını eklemek için kullanılamaz.
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 * [Azure aboneliği](https://azure.microsoft.com/free/)
 * Aboneliğe bağlamak istediğiniz [Azure AD B2C kiracı](tutorial-create-tenant.md)
@@ -78,7 +78,7 @@ Kiracı, Azure AD B2C kiracınızla birlikte kullanmak istediğiniz özelliklere
 
 Fiyatlandırma katmanınızı değiştirmek için aşağıdaki adımları izleyin.
 
-1. Azure portalında oturum açın.
+1. Azure Portal’da oturum açın.
 
 2. Üst menüden **Dizin + abonelik** filtresi ' ni seçin ve ardından Azure B2C kiracınızın bağlandığı Azure aboneliğini içeren dizini seçin (Azure AD B2C kiracının *kendisini seçmeyin)* .
 
@@ -125,7 +125,7 @@ Mevcut bir Azure AD B2C kaynağı için MAU faturalandırmaya geçiş yapmak iç
 
 MAU tabanlı ölçüm, siz, abonelik/kaynak sahibi, değişikliği onaylamak için etkin duruma gelir. Aylık faturanızda, değişiklik yapılıncaya kadar faturalandırılan kimlik doğrulaması birimleri ve değişiklik ile başlayan yeni MAU birimleri yansıtılacaktır.
 
-Kullanıcılar geçiş ayı sırasında çift sayılmaz. Değişiklikten önce kimlik doğrulayan benzersiz etkin kullanıcılar, bir takvim ayında kimlik doğrulama ücreti başına ücretlendirilir. Aynı kullanıcılar, aboneliğin fatura döngüsünün geri kalanı için MAU hesaplamasına dahil değildir. Örnek:
+Kullanıcılar geçiş ayı sırasında çift sayılmaz. Değişiklikten önce kimlik doğrulayan benzersiz etkin kullanıcılar, bir takvim ayında kimlik doğrulama ücreti başına ücretlendirilir. Aynı kullanıcılar, aboneliğin fatura döngüsünün geri kalanı için MAU hesaplamasına dahil değildir. Örneğin:
 
 * Contoso B2C kiracısında 1.000 kullanıcısı vardır. 250 Kullanıcı belirli bir ayda etkindir. Abonelik Yöneticisi, ayın 10 ' da, kimlik doğrulamasından bağımsız olarak aylık etkin kullanıcılara (MAU) göre değişir.
 * 1.10 ' un faturalandırılması, kimlik doğrulama modeli kullanılarak faturalandırılır.

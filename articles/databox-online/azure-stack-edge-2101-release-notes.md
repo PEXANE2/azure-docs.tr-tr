@@ -6,18 +6,18 @@ author: v-dalc
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 01/29/2021
+ms.date: 02/01/2021
 ms.author: alkohli
-ms.openlocfilehash: 025694dc020bb18ce66574bac476f34034353721
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.openlocfilehash: 7c1f78f405a67687168457448f62d46a39da165f
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99072667"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99225133"
 ---
 # <a name="azure-stack-edge-pro-with-fpga-2101-release-notes"></a>Azure Stack Edge Pro, FPGA 2101 sürüm notları
 
-Aşağıdaki sürüm notları, yerleşik bir alan programlanabilir bir geçit dizisi (FPGA) ile birlikte Azure Stack Edge Pro 'nun 2101 sürümü için kritik açık sorunları ve çözülmüş sorunları belirler.
+Aşağıdaki sürüm notları, yerleşik bir alan programlanabilir bir geçit dizisi (FPGA) ile Azure Stack Edge Pro 'nun 2101 sürümü için kritik açık sorunları ve çözülmüş sorunları belirler.
 
 Sürüm notları sürekli olarak güncelleştirilir. Geçici bir çözüm gerektiren kritik sorunlar söz konusu olduğunda, bunlar eklenir. Azure Stack Edge cihazınızı dağıtmadan önce, sürüm notlarındaki bilgileri dikkatle gözden geçirin.  
 
@@ -38,7 +38,6 @@ Bu sürüm ayrıca aşağıdaki güncelleştirmeleri içerir:
 
 - Tüm toplu Windows güncelleştirmeleri ve .NET Framework güncelleştirmeleri 2020 Ekim 'e göre yayınlandı.
 - Temel kart yönetim denetleyicisi (BMC) bellenim sürümü, fabrika yüklemesi sırasında, daha yeni Dell güç kaynağı birimleri ile uyumsuzluk sağlamak için 3.32.32.32 'ten 3.36.36.36 'e yükseltilir.
-- Azure Data Box Gateway statik IP adresi yazılım güncelleştirmeleri arasında tutulur.
 - Bu sürüm Azure Stack Edge cihazlarında IoT Edge 1.0.9.3 destekler.
 
 ## <a name="known-issues-in-this-release"></a>Bu sürümdeki bilinen sorunlar

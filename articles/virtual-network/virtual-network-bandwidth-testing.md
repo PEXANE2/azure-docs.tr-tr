@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/06/2020
 ms.author: steveesp
-ms.openlocfilehash: 7a2f6750a4d0a48c6971f60241976fb55410b65c
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 27cc55978582468c759603571bd8b0e69f29db5d
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98221451"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99226582"
 ---
 # <a name="bandwidththroughput-testing-ntttcp"></a>Bant genişliği/Işleme testi (NTTTCP)
 
@@ -52,9 +52,9 @@ Gönderen parametreleri: NTttcp-s 10.27.33.7-t 10-n 1-P 1
 
 #### <a name="get-ntttcp-onto-the-vms"></a>VM 'lere NTTTCP 'yi alın.
 
-En son sürümü indirin: <https://gallery.technet.microsoft.com/NTttcp-Version-528-Now-f8b12769>
+En son sürümü indirin: https://github.com/microsoft/ntttcp/releases/download/v5.35/NTttcp.exe
 
-Ya da, taşındıysanız arama yapın: <https://www.bing.com/search?q=ntttcp+download> \< --ilk isabet edilmelidir
+Veya üst düzey GitHub sayfasını görüntüleyin: <https://github.com/microsoft/ntttcp>\
 
 NTTTCP 'yi c: araçları gibi ayrı bir klasöre yerleştirmeyi düşünün \\
 

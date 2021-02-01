@@ -1,18 +1,18 @@
 ---
 title: Özel ayarları yapılandırma
 description: Tüm Azure App Service ortamı için uygulanan ayarları yapılandırın. Azure Resource Manager şablonlarıyla nasıl yapılacağını öğrenin.
-author: stefsch
+author: ccompy
 ms.assetid: 1d1d85f3-6cc6-4d57-ae1a-5b37c642d812
 ms.topic: tutorial
-ms.date: 10/03/2020
-ms.author: stefsch
+ms.date: 01/29/2021
+ms.author: ccompy
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 88163c07d570df5e0ff343776c17c463010ce368
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5c1e81d02aa35a40a296f04e456be09eeed10331
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91713284"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99226397"
 ---
 # <a name="custom-configuration-settings-for-app-service-environments"></a>App Service ortamları için özel yapılandırma ayarları
 ## <a name="overview"></a>Genel Bakış
@@ -61,7 +61,7 @@ Ancak değişikliği gönderdiğinizde, değişikliğin etkili olması için App
 
 ## <a name="enable-internal-encryption"></a>Iç şifrelemeyi etkinleştir
 
-App Service Ortamı, iç bileşenleri veya sistem içindeki iletişimi görgeçirebileceğiniz bir siyah kutu sistemi olarak çalışır. Daha yüksek işleme sağlamak için, şifreleme, iç bileşenler arasında varsayılan olarak etkinleştirilmemiştir. Trafiğin izlenmesi veya erişilmesi için tamamen erişilemez olduğu için sistem güvenlidir. Veri yolunun uçtan uca tamamen şifrelenmesini gerektiren bir uyumluluk gereksinimseniz, bunu bir clusterSetting ile etkinleştirmenin bir yolu vardır.  
+App Service Ortamı, iç bileşenleri veya sistem içindeki iletişimi görgeçirebileceğiniz bir siyah kutu sistemi olarak çalışır. Daha yüksek işleme sağlamak için, şifreleme, iç bileşenler arasında varsayılan olarak etkinleştirilmemiştir. Trafiğe izlenmekte veya erişilmek üzere erişilemediğinden, sistem güvenlidir. Veri yolunun uçtan uca tamamen şifrelenmesini gerektiren bir uyumluluk gereksinimine sahipseniz, bir clusterSetting ile tüm veri yolunun şifrelenmesini olanaklı hale getirmenin bir yolu vardır.  
 
 ```json
 "clusterSettings": [
@@ -71,10 +71,10 @@ App Service Ortamı, iç bileşenleri veya sistem içindeki iletişimi görgeçi
     }
 ],
 ```
-Bu, Ao 'da ön uçlar ve çalışanlar arasında iç ağ trafiğini şifreler, disk belleği şifreleyin ve ayrıca çalışan disklerini şifreler. InternalEncryption clusterSetting etkinleştirildikten sonra, sistem Performanslarınızın bir etkisi olabilir. InternalEncryption 'i etkinleştirmek için değişiklik yaptığınızda, Ao 'niz değişiklik tamamen yayılana kadar kararsız bir durumda olacaktır. Ao 'da kaç örneğe sahip olduğunuza bağlı olarak, değişikliğin tamamının yayılması birkaç saat sürebilir. Bu işlemi kullanırken bir AO 'da etkinleştirememeniz önemle tavsiye ederiz. Bunu etkin bir şekilde kullanılan bir AO 'da etkinleştirmeniz gerekiyorsa, işlem tamamlanana kadar trafiği bir yedekleme ortamına eklemeniz önemle tavsiye ederiz. 
+InternalEncryption değerini true olarak ayarlamak, ASE 'de ön uçlar ve çalışanlar arasında iç ağ trafiğini şifreler, disk belleği şifreler ve ayrıca çalışan disklerini şifreler. InternalEncryption clusterSetting etkinleştirildikten sonra, sistem Performanslarınızın bir etkisi olabilir. InternalEncryption 'i etkinleştirmek için değişiklik yaptığınızda, Ao 'niz değişiklik tamamen yayılana kadar kararsız bir durumda olacaktır. Ao 'da kaç örneğe sahip olduğunuza bağlı olarak, değişikliğin tamamının yayılması birkaç saat sürebilir. Kullanımda iken bir AO 'da InternalEncryption ' i etkinleştirmemeniz önemle tavsiye ederiz. Etkin bir şekilde kullanılan bir AO 'da InternalEncryption etkinleştirmeniz gerekiyorsa, işlem tamamlanana kadar trafiği bir yedekleme ortamına eklemeniz önemle tavsiye ederiz. 
 
 
-## <a name="disable-tls-10-and-tls-11"></a>TLS 1,0 ve TLS 1,1 'yi devre dışı bırakın
+## <a name="disable-tls-10-and-tls-11"></a>TLS 1.0 ve TLS 1.1'i devre dışı bırakma
 
 Uygulama temelinde bir uygulamadaki TLS ayarlarını yönetmek istiyorsanız, [TLS ayarlarını zorla](../configure-ssl-bindings.md#enforce-tls-versions) belgeleriyle verilen Kılavuzu kullanabilirsiniz. 
 
@@ -92,13 +92,13 @@ Ao 'daki tüm uygulamalar için tüm gelen TLS 1,0 ve TLS 1,1 trafiğini devre d
 Ayarın adı 1,0 diyor ancak yapılandırıldığında, hem TLS 1,0 hem de TLS 1,1 'yi devre dışı bırakır.
 
 ## <a name="change-tls-cipher-suite-order"></a>TLS şifre paketi sırasını değiştirme
-Müşterilerden başka bir soru, sunucusu tarafından anlaşmalı şifre listesini değiştirebilir ve bu, aşağıda gösterildiği gibi **Clustersettings** değiştirilerek elde edilebilir. Kullanılabilir şifre paketlerinin listesi [Bu MSDN makalesinden](https://msdn.microsoft.com/library/windows/desktop/aa374757\(v=vs.85\).aspx)alınabilir.
+ASE, şifre paketinin varsayılan olarak değiştirilmesini destekler. Varsayılan şifrelemeler kümesi, çok kiracılı hizmette kullanılan aynı kümesidir. Şifre paketlerinin değiştirilmesi tüm App Service dağıtımını etkiler ve yalnızca tek kiracılı Ao 'da mümkün hale getirir. Ao için gereken iki şifre paketi vardır; TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 ve TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256. ASE 'nizi en güçlü ve en düşük şifreleme paketi kümesiyle çalıştırmak istiyorsanız, yalnızca iki gerekli şifre düzeyini kullanın. ATıCı 'nizi yalnızca gerektirdiği şifrelemeleri kullanacak şekilde yapılandırmak için, aşağıdaki gibi **kümesel ayarları** değiştirin. 
 
 ```json
 "clusterSettings": [
     {
         "name": "FrontEndSSLCipherSuiteOrder",
-        "value": "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384_P256,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256_P256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P256,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA_P256,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA_P256"
+        "value": "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256"
     }
 ],
 ```

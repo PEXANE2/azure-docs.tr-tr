@@ -4,20 +4,42 @@ description: Azure dosya paylaşımları için sağlanan ve kullandıkça öde f
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/20/2021
+ms.date: 01/27/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 19ecbea70d9cb6b8cc31c72ed3c1294cd137ce93
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 6bb608492327baae958c32be05d8f2a1bb4dbfbf
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98632487"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99226650"
 ---
-# <a name="understanding-azure-files-billing"></a>Azure dosyalarının faturalandırmasını anlama
+# <a name="understand-azure-files-billing"></a>Azure dosyalarının faturalandırmasını anlama
 Azure dosyaları iki ayrı faturalandırma modeli sağlar: sağlanan ve kullandıkça öde. Sağlanan model yalnızca, **FileStorage** depolama hesabı türü içinde dağıtılan dosya paylaşımları olan Premium dosya paylaşımları için kullanılabilir. Kullandıkça Öde modeli, yalnızca **genel amaçlı sürüm 2 (GPv2)** depolama hesabı türünde dağıtılan dosya paylaşımları olan standart dosya paylaşımları için kullanılabilir. Bu makalede, her iki modelin de aylık Azure dosyaları faturanızı anlamanıza yardımcı olmak için nasıl çalıştığı açıklanır.
 
-Azure dosyaları için geçerli fiyatlandırma, [Azure dosyaları fiyatlandırma sayfasında](https://azure.microsoft.com/pricing/details/storage/files/)bulunabilir.
+Azure dosyaları fiyatlandırma bilgileri için bkz. [Azure dosyaları fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/storage/files/).
+
+## <a name="storage-units"></a>Depolama birimleri    
+Azure dosyaları, PB, MIB, GiB ve TiB depolama kapasitesini temsil etmek için temel 2 ölçü birimlerini kullanır. İşletim sisteminiz aynı ölçü birimini veya sayım sistemini kullanabilir ya da içermeyebilir.
+
+### <a name="windows"></a>Windows
+
+Hem Windows işletim sistemi hem de Azure dosyaları, temel 2 sayma sistemini kullanarak depolama kapasitesini ölçer, ancak birimleri etiketlemenin bir farkı vardır. Azure dosyaları, Windows 'un, 10 tabanında ölçüm birimlerindeki depolama kapasitesini etiketlediği sürece, depolama kapasitesini temel 2 ölçü birimiyle Etiketler. Depolama kapasitesini raporlarken Windows, depolama kapasitesini temel 2 ' den Base-10 ' a dönüştürmez.
+
+|Kısaltması  |Tanım  |Birim  |Windows şöyle görüntülenir  |
+|---------|---------|---------|---------|
+|KiB     |1.024 bayt         |kibibyte         |KB (kilobayt)         |
+|MIB     |1.024 KiB (1.048.576 bayt)         |mebibyte         |MB (megabayt)         |
+|GiB     |1024 MIB (1.073.741.824 bayt)         |gibibayt         |GB (gigabayt)         |
+|TiB     |1024 GiB (1.099.511.627.776 bayt)         |tebibyte         |TB (terabayt)         |
+
+### <a name="macos"></a>Mac OS
+
+Hangi sayım sisteminin kullanıldığını öğrenmek için [iOS ve macOS 'un Apple Web sitesinde depolama kapasitesini nasıl rapor](https://support.apple.com/HT201402) edin bölümüne bakın.
+
+### <a name="linux"></a>Linux
+
+Farklı bir sayma sistemi, her bir işletim sistemi veya tek bir yazılım parçası tarafından kullanılabilir. Depolama kapasitesini nasıl raporlamalarını öğrenmek için belgelerine bakın.
 
 ## <a name="provisioned-model"></a>Sağlanan model
 Azure dosyaları Premium dosya paylaşımları için sağlanan modeli kullanır. Sağlanan bir iş modelinde, Azure dosyaları hizmetini, kullandığınız işe göre faturalandırılması yerine, depolama gereksinimlerinizin ne olduğunu önceden belirlersiniz. Bu, belirli bir depolama alanı ile bir Azure dosya paylaşımının sağlanması halinde Şirket içi satın alma ile benzerdir, ancak alan kullanmaya başladığınızda, şirket içi fiziksel medya maliyetlerini ödemekten bağımsız olarak bu depolama alanı için ödeme yapmayı başlamadınız. Şirket içi fiziksel medya satın alma işleminden farklı olarak, sağlanan dosya paylaşımları depolama ve GÇ performansı özelliklerine göre dinamik olarak ölçeklendirilebilir veya azaltılabilir.
