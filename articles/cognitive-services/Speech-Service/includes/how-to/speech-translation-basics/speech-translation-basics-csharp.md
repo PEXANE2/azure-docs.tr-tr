@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 04/13/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c8392770d7edb18f776f7664657c6985b9f7fb63
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 0db21032d8bd31bce2407ddf1c647d75cef86696
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94424715"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99244932"
 ---
 Konuşma hizmetinin temel özelliklerinden biri de insan konuşmanızı algılayabilir ve diğer dillere çevirebilir. Bu hızlı başlangıçta, uygulama ve ürünlarınızdaki konuşma SDK 'sını kullanarak yüksek kaliteli konuşma çevirisi gerçekleştirme hakkında bilgi edinebilirsiniz. Bu hızlı başlangıçta aşağıdakiler dahil konular ele alınmaktadır:
 
@@ -28,7 +28,7 @@ Bu makalede bir Azure hesabınız ve konuşma hizmeti aboneliğiniz olduğunu va
 
 ## <a name="install-the-speech-sdk"></a>Konuşma SDK 'sını yükler
 
-Herhangi bir şey yapabilmeniz için önce konuşma SDK 'sını yüklemeniz gerekir. Platformunuza bağlı olarak, _konuşma SDK 'Sı hakkında_ konusunun <a href="https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/speech-sdk#get-the-speech-sdk" target="_blank">konuşma SDK <span class="docon docon-navigate-external x-hidden-focus"></span> 'sını al</a> bölümünde yer alan yönergeleri izleyin.
+Herhangi bir şey yapabilmeniz için önce konuşma SDK 'sını yüklemeniz gerekir. Platformunuza bağlı olarak, _konuşma SDK 'Sı hakkında_ konusunun <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk#get-the-speech-sdk" target="_blank">konuşma SDK <span class="docon docon-navigate-external x-hidden-focus"></span> 'sını al</a> bölümünde yer alan yönergeleri izleyin.
 
 ## <a name="import-dependencies"></a>Bağımlılıkları içeri aktar
 
