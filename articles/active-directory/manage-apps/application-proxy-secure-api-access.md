@@ -3,7 +3,7 @@ title: Azure AD Uygulama Ara Sunucusu ile şirket içi API 'Lere erişme
 description: Azure Active Directory uygulama proxy 'Si, yerel uygulamaların şirket içinde veya bulut VM 'Lerinde barındırmanıza olanak sağlayan API 'Lere ve iş mantığına güvenli bir şekilde erişmesini sağlar.
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 02/12/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: eaa4a8f92809dcf44969958573231ad37d908daa
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 9341646f32f6a2e05397b072d3f63186964fbd88
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94835707"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258991"
 ---
 # <a name="secure-access-to-on-premises-apis-with-azure-ad-application-proxy"></a>Azure AD Uygulama Ara Sunucusu ile şirket içi API 'lere güvenli erişim
 
@@ -38,7 +38,7 @@ Azure AD Uygulama Ara Sunucusu, API erişimi için genel bir uç nokta olarak ç
 
 Azure AD Uygulama Ara Sunucusu kimlik doğrulaması ve yetkilendirme, Azure AD 'de oluşturulduğundan, yalnızca güvenilen cihazların uygulama proxy 'Si aracılığıyla yayınlanan API 'Lere erişebildiğinden emin olmak için Azure AD koşullu erişim 'i kullanabilirsiniz. Azure AD JOIN veya masaüstleri için Azure AD hibrit ve cihazlar için Intune ile yönetilen ' i kullanın. Ayrıca Azure AD Multi-Factor Authentication gibi Azure Active Directory Premium özelliklerden ve [Azure kimlik koruması](../identity-protection/overview-identity-protection.md)'nın makine öğrenimi ile desteklenen güvenliğinin avantajlarından yararlanabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu yönergeyi izlemek için şunlar gerekir:
 

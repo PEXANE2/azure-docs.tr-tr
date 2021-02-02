@@ -14,14 +14,14 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 01/05/2021
+ms.date: 02/01/2021
 ms.author: radeltch
-ms.openlocfilehash: 8dfbdb338416511de403733ce61b7b2472190963
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 544847a06917d9cbe1413c678f471f51a10a9c58
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97916278"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99259008"
 ---
 # <a name="deploy-a-sap-hana-scale-out-system-with-standby-node-on-azure-vms-by-using-azure-netapp-files-on-red-hat-enterprise-linux"></a>Red Hat Enterprise Linux Azure NetApp Files kullanarak Azure VM 'lerinde bekleme düğümüne sahip bir SAP HANA genişleme sistemi dağıtma 
 
@@ -92,7 +92,7 @@ Başlamadan önce, aşağıdaki SAP notları ve incelemeleri inceleyin:
 * Azure 'a özgü RHEL belgeleri:
   * [Microsoft Azure kullanım için Red Hat Enterprise Linux SAP HANA yüklemesi](https://access.redhat.com/public-cloud/microsoft-azure)
 * [Microsoft Azure Azure NetApp Files kullanarak NetApp SAP uygulamaları][anf-sap-applications-azure]
-
+* [SAP HANA için Azure NetApp Files üzerinde NFS v4.1 birimleri](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-netapp)
 
 ## <a name="overview"></a>Genel Bakış
 
@@ -935,4 +935,5 @@ Bu örnekte, Azure ile bekleme moduna sahip genişleme yapılandırmasında SAP 
 * [SAP için Azure sanal makineleri planlama ve uygulama][planning-guide]
 * [SAP için Azure sanal makineleri dağıtımı][deployment-guide]
 * [SAP için Azure sanal makineleri DBMS dağıtımı][dbms-guide]
+* [SAP HANA için Azure NetApp Files üzerinde NFS v4.1 birimleri](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-netapp)
 * Azure VM 'lerinde SAP HANA olağanüstü durum kurtarma için yüksek kullanılabilirlik ve plan oluşturma hakkında bilgi edinmek için bkz. [Azure sanal makinelerinde (VM) SAP HANA yüksek kullanılabilirliği][sap-hana-ha].

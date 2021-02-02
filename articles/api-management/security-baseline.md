@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 1825767d8140421d4f0e22f9ebfde42f8262da5e
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 8a572221ca8899c5e4f4cf76e4b89c995952a2f3
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201085"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258566"
 ---
 # <a name="azure-security-baseline-for-api-management"></a>API Management için Azure Güvenlik temeli
 
@@ -90,15 +90,11 @@ Note: Bu özellik, API Management Premium ve geliştirici katmanlarında kullan�
 
 Note: Bu özellik, API Management Premium ve geliştirici katmanlarında kullanılabilir.
 
-Dağıtılmış hizmet reddi (DDoS) saldırılarını korumak için API Management dağıtımınız ile ilişkili VNET 'te Azure DDoS koruma standardını etkinleştirin.
-
 Bilinen kötü amaçlı veya kullanılmayan Internet IP adresleriyle iletişimleri reddetmek için Azure Güvenlik Merkezi tümleşik tehdit zekasını kullanın.
 
 * [Application Gateway ile iç VNET 'te API Management tümleştirme](./api-management-howto-integrate-internal-vnet-appgateway.md)
 
 * [Azure Application Gateway anlama](../application-gateway/index.yml)
-
-* [Azure DDoS koruma standardını yapılandırma](../ddos-protection/manage-ddos-protection.md)
 
 * [Azure Güvenlik Merkezi tümleşik tehdit zekasını anlama](../security-center/azure-defender.md)
 
@@ -184,8 +180,7 @@ Dikkat: API Management alt ağında bir NSG yapılandırılırken, açık olmas�
 
 ### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1,9: ağ cihazları için standart güvenlik yapılandırmalarının bakımını yapma
 
-**Rehberlik**: Azure API Management dağıtımlarınızla ilgili ağ ayarları için standart güvenlik yapılandırması tanımlayın ve uygulayın. Azure API Management dağıtımlarınızın ve ilgili kaynaklarınızın ağ yapılandırmasını denetlemek veya zorlamak üzere özel ilkeler oluşturmak için "Microsoft. Apimanave" Microsoft. Network "ad alanlarında Azure Ilke diğer adlarını kullanın. Azure sanal ağları için yerleşik ilke tanımlarından da yararlanabilirsiniz, örneğin:
-- DDoS koruma standardı etkinleştirilmelidir
+**Rehberlik**: Azure API Management dağıtımlarınızla ilgili ağ ayarları için standart güvenlik yapılandırması tanımlayın ve uygulayın. Azure API Management dağıtımlarınızın ve ilgili kaynaklarınızın ağ yapılandırmasını denetlemek veya zorlamak üzere özel ilkeler oluşturmak için "Microsoft. Apimanave" Microsoft. Network "ad alanlarında Azure Ilke diğer adlarını kullanın. 
 
 Ayrıca, Azure Resource Manager şablonları, Azure rol tabanlı erişim denetimi (Azure RBAC) ve tek bir şema tanımında ilkeler gibi anahtar ortam yapıtlarını paketleyerek büyük ölçekli Azure dağıtımlarını basitleştirmek için Azure şemaları 'nı kullanabilirsiniz. Yeni aboneliklere, ortamlara kolayca şema uygulayabilir ve sürüm oluşturma aracılığıyla denetim ve yönetime yönetim sağlayabilirsiniz.
 

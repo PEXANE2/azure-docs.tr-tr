@@ -8,22 +8,23 @@ ms.topic: tutorial
 ms.reviewer: dseven
 ms.author: matjazl
 author: matjazl
-ms.date: 02/07/2019
-ms.openlocfilehash: b0acfbf9636c2ad1df7df3197a0a1a83ec91b5c3
-ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
+ms.date: 02/01/2021
+ms.openlocfilehash: 5771f95da7b63c6c16bb581b84cc28c4b838ec27
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98747348"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99259025"
 ---
 # <a name="access-azure-api-for-fhir-with-postman"></a>Postman ile FHıR için Azure API 'sine erişme
 
 İstemci uygulaması bir [REST API](https://www.hl7.org/fhir/http.html)aracılığıyla bir FHıR API 'sine erişir. Ayrıca, uygulamalar oluştururken, örneğin hata ayıklama amacıyla, FHıR sunucusuyla doğrudan etkileşim kurmak isteyebilirsiniz. Bu öğreticide, bir FHıR sunucusuna erişmek için [Postman](https://www.getpostman.com/) 'ı kullanmak için gereken adımları adım adım göstereceğiz. Postman, API 'Lere erişen uygulamalar oluştururken genellikle hata ayıklama için kullanılan bir araçtır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure 'da bir FHıR uç noktası. Azure için, FHıR için yönetilen Azure API 'sini veya açık kaynaklı FHıR sunucusunu kullanarak bu ayarı yapabilirsiniz. [Azure Portal](fhir-paas-portal-quickstart.md), [POWERSHELL](fhir-paas-powershell-quickstart.md)veya [Azure CLI](fhir-paas-cli-quickstart.md)kullanarak FHıR için yönetilen Azure API 'sini ayarlayın.
-- FHıR hizmetine erişmek için kullanacağınız bir [istemci uygulaması](register-confidential-azure-ad-client-app.md)
+- FHıR hizmetine erişmek için kullanacağınız bir  [istemci uygulaması](register-confidential-azure-ad-client-app.md) .
+- İstemci uygulamasına FHıR hizmetine erişmek için "FHıR veri katılımcısı" gibi izinleri vermiş olursunuz. Daha fazla bilgi [Için Azure RBAC 'YI FHıR 'ye yapılandırma](https://docs.microsoft.com/azure/healthcare-apis/configure-azure-rbac)
 - Postman yüklendi. Buradan edinebilirsiniz [https://www.getpostman.com](https://www.getpostman.com)
 
 ## <a name="fhir-server-and-authentication-details"></a>FHıR sunucusu ve kimlik doğrulaması ayrıntıları

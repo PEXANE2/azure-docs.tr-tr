@@ -118,9 +118,8 @@
         - name: Batch Yönetimi ile Azure AD
           href: batch-aad-auth-management.md
         - name: Batch ile Key Vault’a güvenli erişim
+          displayName: 'credential, certificate'
           href: credential-access-key-vault.md
-        - name: Batch ile sertifikaları kullanma
-          href: batch-certificates.md
     - name: Dosyaları ve uygulamaları havuz düğümlerine kopyalama
       items:
         - name: Uygulama ve verileri havuz düğümlerine kopyalama

@@ -3,12 +3,12 @@ title: Rehberlik ve en iyi deneyimler
 description: Buluta ve şirket içi iş yükünü buluta yedeklemeye yönelik en iyi yöntemleri ve Kılavuzu bulun
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: 522f7d2502a49b912f34f392c52e5046eba8d01f
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 7b65556d8dd9b5b12e8da25055f6e39732c83afd
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92092316"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258770"
 ---
 # <a name="backup-cloud-and-on-premises-workloads-to-cloud"></a>Buluta ve şirket içi iş yüklerini buluta yedekleyin
 
@@ -71,11 +71,11 @@ Yedeklemenizi düzenlemek ve yönetmek için tek bir kasa veya birden çok kasa 
 * İş yüklerinizin tümü tek bir abonelik ve tek bir kaynak tarafından yönetiliyorsa, yedeklemenizi izlemek ve yönetmek için tek bir kasa kullanabilirsiniz.
 
 * İş yükleriniz abonelikler arasında yayıldığında, abonelik başına bir veya daha fazla çoklu kasa oluşturabilirsiniz.
-  * Yedekleme merkezi, yedeklemeyle ilgili tüm görevleri yönetmek için tek bir cam bölmenizi sağlar. [Daha fazla bilgi edinin]().
-  * Çalışma kitabı şablonlarıyla görünümlerinizi özelleştirebilirsiniz. Yedekleme Gezgini, Azure VM 'Leri için bu tür bir şablondur. [Daha fazla bilgi edinin](monitor-azure-backup-with-backup-explorer.md).
-  * Kasaların tamamında tutarlı ilke gerekiyorsa, yedekleme ilkesini birden çok kasa genelinde yaymak için Azure ilkesini kullanabilirsiniz. Bir yedekleme ilkesini birden çok kasa genelinde yaymak için [' deployifnotexists '](../governance/policy/concepts/effects.md#deployifnotexists) efektini kullanan özel bir [Azure ilke tanımı](../governance/policy/concepts/definition-structure.md) yazabilirsiniz. Bu Azure Ilke tanımını belirli bir kapsama (abonelik veya RG) [atayabilir](../governance/policy/assign-policy-portal.md) , böylece Azure ilke atamasının kapsamındaki tüm kurtarma hizmetleri kasalarına bir ' yedekleme İlkesi ' kaynağı dağıtılır. Yedekleme ilkesinin ayarları (örneğin, yedekleme sıklığı, bekletme vb.), Kullanıcı tarafından Azure Ilke atamasında parametre olarak belirtilmelidir.
+  * Yedekleme merkezi, yedeklemeyle ilgili tüm görevleri yönetmek için tek bir cam bölmenizi sağlar. [Burada daha fazla bilgi edinebilirsiniz]().
+  * Çalışma kitabı şablonlarıyla görünümlerinizi özelleştirebilirsiniz. Yedekleme Gezgini, Azure VM 'Leri için bu tür bir şablondur. [Burada daha fazla bilgi edinebilirsiniz](monitor-azure-backup-with-backup-explorer.md).
+  * Kasaların tamamında tutarlı ilke gerekiyorsa, yedekleme ilkesini birden çok kasa genelinde yaymak için Azure ilkesini kullanabilirsiniz. Bir yedekleme ilkesini birden çok kasa genelinde yaymak için [' deployifnotexists '](../governance/policy/concepts/effects.md#deployifnotexists) efektini kullanan özel bir [Azure ilke tanımı](../governance/policy/concepts/definition-structure.md) yazabilirsiniz. Ayrıca, bu Azure Ilke tanımını belirli bir kapsama (abonelik veya RG) [atayabilir](../governance/policy/assign-policy-portal.md) , böylece Azure ilke atamasının kapsamındaki tüm kurtarma hizmetleri kasalarına ' yedekleme İlkesi ' kaynağı dağıtılır. Yedekleme ilkesinin ayarları (örneğin, yedekleme sıklığı, bekletme vb.), Kullanıcı tarafından Azure Ilke atamasında parametre olarak belirtilmelidir.
 
-* Kurumsal parmak izi büyüdükçe, aşağıdaki nedenlerden dolayı iş yüklerini abonelikler arasında taşımak isteyebilirsiniz: yedekleme ilkesine göre hizalayın, kasaları birleştirin, düşük yedekliliğe kadar tasarruf edin (GRS 'den LRS 'ye geçiş yapın).  Azure Backup, kurtarma hizmetleri kasasının Azure aboneliklerine veya aynı abonelik içindeki başka bir kaynak grubuna taşınmasını destekler. [Daha fazla bilgi edinin](backup-azure-move-recovery-services-vault.md).
+* Kurumsal parmak izi büyüdükçe, aşağıdaki nedenlerden dolayı iş yüklerini abonelikler arasında taşımak isteyebilirsiniz: yedekleme ilkesine göre hizalayın, kasaları birleştirin, düşük yedekliliğe kadar tasarruf edin (GRS 'den LRS 'ye geçiş yapın).  Azure Backup, kurtarma hizmetleri kasasının Azure aboneliklerine veya aynı abonelik içindeki başka bir kaynak grubuna taşınmasını destekler. [Burada daha fazla bilgi edinebilirsiniz](backup-azure-move-recovery-services-vault.md).
 
 ### <a name="review-default-settings"></a>Varsayılan ayarları gözden geçir
 
@@ -85,13 +85,13 @@ Kasadaki yedeklemeleri yapılandırmadan önce gereksinimlerinizi karşılayacak
 
 * Varsayılan olarak *geçici silme* , yeni oluşturulan kasaların yanlışlıkla veya kötü amaçlı silmelerden yedekleme verilerini korumak için etkinleştirilir. Ayarları gözden geçirmek ve değiştirmek için [aşağıdaki](backup-azure-security-feature-cloud.md#enabling-and-disabling-soft-delete) adımları izleyin.
 
-* *Çapraz bölge geri yükleme* , Azure sanal makinelerini Azure eşlenmiş bölgesi olan ikincil bir bölgeye geri yüklemenize olanak tanır. Bu seçenek, denetim ve uyumluluk gereksinimlerini karşılamak üzere detayların yanı sıra birincil bölgede bir olağanüstü durum olması durumunda VM 'yi veya diskini geri yüklemeyi sağlar. CRR, herhangi bir GRS Kasası için bir katılım özelliğidir. [Daha fazla bilgi edinin](backup-create-rs-vault.md#set-cross-region-restore).
+* *Çapraz bölge geri yükleme* , Azure sanal makinelerini Azure eşlenmiş bölgesi olan ikincil bir bölgeye geri yüklemenize olanak tanır. Bu seçenek, denetim ve uyumluluk gereksinimlerini karşılamak üzere detayların yanı sıra birincil bölgede bir olağanüstü durum olması durumunda VM 'yi veya diskini geri yüklemeyi sağlar. CRR, herhangi bir GRS Kasası için bir katılım özelliğidir. [Burada daha fazla bilgi edinebilirsiniz](backup-create-rs-vault.md#set-cross-region-restore).
 
 * Kasa tasarımınızı kesinleştirmeden önce, tasarım seçimlerinizi etkileyebilecek veya sınırlayabilecek faktörleri anlamak için [kasa desteği matrisler](backup-support-matrix.md#vault-support) ' nı gözden geçirin.
 
 ## <a name="backup-policy-considerations"></a>Yedekleme Ilkesi konuları
 
-Azure Backup Ilkesinin iki bileşeni vardır: *zamanlama* (yedekleme ne zaman) ve *bekletme* (yedeklemenin tutulacağı süre). İlkeyi yedeklenen verilerin türüne, RTO/RPO gereksinimlerine, işlemsel veya mevzuat uyumluluk ihtiyaçlarına ve iş yükü türüne (örneğin, VM, veritabanı, dosyalar) göre tanımlayabilirsiniz. [Daha fazla bilgi edinin](backup-architecture.md#backup-policy-essentials).
+Azure Backup Ilkesinin iki bileşeni vardır: *zamanlama* (yedekleme ne zaman) ve *bekletme* (yedeklemenin tutulacağı süre). İlkeyi yedeklenen verilerin türüne, RTO/RPO gereksinimlerine, işlemsel veya mevzuat uyumluluk ihtiyaçlarına ve iş yükü türüne (örneğin, VM, veritabanı, dosyalar) göre tanımlayabilirsiniz. [Burada daha fazla bilgi edinebilirsiniz](backup-architecture.md#backup-policy-essentials).
 
 Yedekleme Ilkesi oluştururken aşağıdaki yönergeleri göz önünde bulundurun:
 
@@ -120,7 +120,7 @@ Yedekleme Ilkesi oluştururken aşağıdaki yönergeleri göz önünde bulunduru
   * Bekletme azaltıldığında, kurtarma noktaları sonraki temizleme işinde ayıklanmayı işaretlenir ve sonra silinir.
   * En son saklama kuralları tüm bekletme noktaları için geçerlidir (isteğe bağlı saklama noktaları hariç). Bu nedenle, bekletme süresi genişletilmişse (örneğin, 100 gün), yedekleme tamamlandığında (örneğin, 100 günden yedi güne kadar), tüm yedekleme verileri belirtilen son bekletme dönemine (yani 7 gün) göre korunur.
 
-* Azure Backup, *yedeklemelerinizi korumayı ve yönetmeyi durdurma*esnekliği sağlar:
+* Azure Backup, *yedeklemelerinizi korumayı ve yönetmeyi durdurma* esnekliği sağlar:
   * *Korumayı durdurun ve yedekleme verilerini koruyun*. Veri kaynağınızı devre dışı bırakırsanız veya kullanımdan çıkardıysanız (VM, uygulama), ancak denetim veya uyumluluk amaçlarıyla verileri tutmanız gerekiyorsa, gelecekteki tüm yedekleme işlerinin veri kaynağınızı korumasını ve yedeklenen kurtarma noktalarını korumasını durdurmak için bu seçeneği kullanabilirsiniz. Daha sonra VM korumasını geri yükleyebilir veya sürdürebilirsiniz.
   * *Korumayı durdurun ve yedekleme verilerini silin*. Bu seçenek, gelecekteki tüm yedekleme işlerinin VM 'nizi korumasını durdurur ve tüm kurtarma noktalarını siler. VM 'yi geri yükleyemeyeceksiniz ve yedeklemeyi yeniden yükle seçeneğini kullanamazsınız.
 
@@ -130,7 +130,7 @@ Yedekleme Ilkesi oluştururken aşağıdaki yönergeleri göz önünde bulunduru
   * Yedekleme ilkesi bir kasadan kapsamlandırılır.
   * İlke başına öğe sayısı için bir sınır vardır (örneğin, 100 VM). Ölçeklemek için, aynı veya farklı zamanlamalarla yinelenen ilkeler oluşturabilirsiniz.
   * Belirli kurtarma noktalarını seçmeli olarak silemezsiniz.
-  * Zamanlanmış yedeklemeyi tamamen devre dışı bırakıp veri kaynağını korumalı bir durumda tutabilirsiniz. İlkeyle yapılandırabileceğiniz en az sıklıkta, haftalık olarak zamanlanmış bir yedekleme yapmanız gerekir. Bir alternatif, yedekleme gerçekleştirmek istediğiniz her seferinde verileri koruma ve korumayı etkinleştirme ile korumayı durdurmak, isteğe bağlı bir yedekleme yapmak ve ardından korumayı kapatmak, ancak yedekleme verilerini korur. [Daha fazla bilgi edinin](backup-azure-manage-vms.md#stop-protecting-a-vm).
+  * Zamanlanmış yedeklemeyi tamamen devre dışı bırakıp veri kaynağını korumalı bir durumda tutabilirsiniz. İlkeyle yapılandırabileceğiniz en az sıklıkta, haftalık olarak zamanlanmış bir yedekleme yapmanız gerekir. Bir alternatif, yedekleme gerçekleştirmek istediğiniz her seferinde verileri koruma ve korumayı etkinleştirme ile korumayı durdurmak, isteğe bağlı bir yedekleme yapmak ve ardından korumayı kapatmak, ancak yedekleme verilerini korur. [Burada daha fazla bilgi edinebilirsiniz](backup-azure-manage-vms.md#stop-protecting-a-vm).
 
 ## <a name="security-considerations"></a>Güvenlik konuları
 
@@ -138,9 +138,9 @@ Yedekleme verilerinizi korumanıza ve işinizin güvenlik ihtiyaçlarını karş
 
 ### <a name="authentication-and-authorization"></a>Kimlik doğrulaması ve yetkilendirme
 
-* Azure rol tabanlı erişim denetimi (Azure RBAC), takımınızda görev ayırma ve yalnızca işlerini gerçekleştirmek için gereken kullanıcılara erişim miktarı verme konusunda ayrıntılı erişim yönetimi sağlar. [Daha fazla bilgi edinin](backup-rbac-rs-vault.md).
+* Azure rol tabanlı erişim denetimi (Azure RBAC), takımınızda görev ayırma ve yalnızca işlerini gerçekleştirmek için gereken kullanıcılara erişim miktarı verme konusunda ayrıntılı erişim yönetimi sağlar. [Burada daha fazla bilgi edinebilirsiniz](backup-rbac-rs-vault.md).
 
-* Azure Backup, yedekleme yönetim işlemlerini denetlemek için üç yerleşik rol sağlar: yedek katkıda bulunanlar, işleçler ve okuyucular. [Daha fazla bilgi edinin](backup-rbac-rs-vault.md#mapping-backup-built-in-roles-to-backup-management-actions).
+* Azure Backup, yedekleme yönetim işlemlerini denetlemek için üç yerleşik rol sağlar: yedek katkıda bulunanlar, işleçler ve okuyucular. [Burada daha fazla bilgi edinebilirsiniz](backup-rbac-rs-vault.md#mapping-backup-built-in-roles-to-backup-management-actions).
 
 * Azure Backup, güvenlik açıklarını engellemek, algılamak ve yanıtlamak için hizmette yerleşik olarak bulunan çeşitli güvenlik denetimlerine sahiptir (daha fazla bilgi edinin)
 
@@ -154,19 +154,19 @@ Yedekleme verilerinizi korumanıza ve işinizin güvenlik ihtiyaçlarını karş
 
 * Yedekleme verileri Microsoft tarafından yönetilen anahtarlar kullanılarak otomatik olarak şifrelenir. Alternatif olarak, [müşteri tarafından yönetilen anahtarlar](encryption-at-rest-with-cmk.md)olarak da bilinen kendi anahtarlarınızı de kullanabilirsiniz.
 
-* Azure Backup, işletim sistemi/veri disklerinin Azure disk şifrelemesi (ADE) ile şifrelenmiş olduğu Azure VM 'lerinin yedeklenmesini ve geri yüklenmesini destekler. [Daha fazla bilgi edinin](backup-azure-vms-encryption.md).
+* Azure Backup, işletim sistemi/veri disklerinin Azure disk şifrelemesi (ADE) ile şifrelenmiş olduğu Azure VM 'lerinin yedeklenmesini ve geri yüklenmesini destekler. [Burada daha fazla bilgi edinebilirsiniz](backup-azure-vms-encryption.md).
 
 ### <a name="protection-of-backup-data-from-unintentional-deletes"></a>İstemeden silme işleminden yedekleme verilerinin korunması
 
-Azure Backup, silme işleminden sonra bile yedekleme verilerini korumaya yardımcı olmak için güvenlik özellikleri sağlar. Geçici silme sayesinde, bir Kullanıcı yedeklemeyi (bir VM, SQL Server veritabanı, Azure dosya paylaşımından SAP HANA veritabanı) silerse, yedekleme verileri 14 ek gün boyunca tutulur ve bu yedekleme öğesinin veri kaybı olmadan kurtarılmasını sağlar. "Geçici silme" durumundaki yedekleme verilerinin ek 14 gün tutulması size herhangi bir ücret vermez. [Daha fazla bilgi edinin](backup-azure-security-feature-cloud.md).
+Azure Backup, silme işleminden sonra bile yedekleme verilerini korumaya yardımcı olmak için güvenlik özellikleri sağlar. Geçici silme sayesinde, bir Kullanıcı yedeklemeyi (bir VM, SQL Server veritabanı, Azure dosya paylaşımından SAP HANA veritabanı) silerse, yedekleme verileri 14 ek gün boyunca tutulur ve bu yedekleme öğesinin veri kaybı olmadan kurtarılmasını sağlar. "Geçici silme" durumundaki yedekleme verilerinin ek 14 gün tutulması size herhangi bir ücret vermez. [Burada daha fazla bilgi edinebilirsiniz](backup-azure-security-feature-cloud.md).
 
 ### <a name="monitoring-and-alerts-of-suspicious-activity"></a>Şüpheli etkinliğin izlenmesi ve uyarıları
 
-Azure Backup, Azure Backup ilgili olaylara yönelik eylemleri görüntülemek ve yapılandırmak için yerleşik izleme ve uyarı özellikleri sağlar. [Daha fazla bilgi edinin](security-overview.md#monitoring-and-alerts-of-suspicious-activity).
+Azure Backup, Azure Backup ilgili olaylara yönelik eylemleri görüntülemek ve yapılandırmak için yerleşik izleme ve uyarı özellikleri sağlar. [Burada daha fazla bilgi edinebilirsiniz](security-overview.md#monitoring-and-alerts-of-suspicious-activity).
 
 ### <a name="security-features-to-help-protect-hybrid-backups"></a>Karma yedeklemeleri korumaya yardımcı olan güvenlik özellikleri
 
-Azure Backup hizmeti, dosyaları, klasörleri ve birim ya da sistem durumunu şirket içi bir bilgisayardan Azure 'a yedeklemek ve geri yüklemek için Microsoft Azure Kurtarma Hizmetleri (MARS) Aracısı 'nı kullanır. MARS artık güvenlik özellikleri sağlıyor: Azure Backup 'den indirdikten sonra karşıya yükleme ve şifre çözme işleminden önce şifrelenecek bir parola, silinen yedekleme verileri, silme tarihinden sonra ek 14 gün boyunca tutulur ve kritik işlem (örn. bir parolayı değiştirme) yalnızca geçerli Azure kimlik bilgilerine sahip kullanıcılar tarafından gerçekleştirilebilir. [Daha fazla bilgi edinin](backup-azure-security-feature.md).
+Azure Backup hizmeti, dosyaları, klasörleri ve birim ya da sistem durumunu şirket içi bir bilgisayardan Azure 'a yedeklemek ve geri yüklemek için Microsoft Azure Kurtarma Hizmetleri (MARS) Aracısı 'nı kullanır. MARS artık güvenlik özellikleri sağlıyor: Azure Backup 'den indirdikten sonra karşıya yükleme ve şifre çözme işleminden önce şifrelenecek bir parola, silinen yedekleme verileri, silme tarihinden sonra ek 14 gün boyunca tutulur ve kritik işlem (örn. bir parolayı değiştirme) yalnızca geçerli Azure kimlik bilgilerine sahip kullanıcılar tarafından gerçekleştirilebilir. [Burada daha fazla bilgi edinebilirsiniz](backup-azure-security-feature.md).
 
 ## <a name="network-considerations"></a>Ağ konuları
 
@@ -184,7 +184,7 @@ Azure Backup, iş yükünüze ait verilerin kurtarma hizmetleri kasasına taşı
 
 Azure [Özel uç noktası](../private-link/private-endpoint-overview.md) , Azure özel bağlantısı tarafından desteklenen bir hizmete özel ve güvenli bir şekilde bağlanan bir ağ arabirimidir. Azure Backup, Özel uç noktaları kullanarak kurtarma hizmetleri Kasalarınızın verilerinizi güvenli bir şekilde yedekleyeve geri yüklemenize olanak tanır.
 
-* Kasa için özel uç noktaları etkinleştirdiğinizde, bunlar yalnızca Azure VM ve MARS Aracısı yedeklemelerindeki SQL ve SAP HANA iş yüklerinin yedeklenmesi ve geri yüklenmesi için kullanılır.  Diğer iş yüklerinin yedeklenmesi için kasayı da kullanabilirsiniz (ancak özel uç noktalar gerektirmez). MARS Aracısı kullanılarak SQL ve SAP HANA iş yükleri ve yedekleme 'nin yedeğinin yanı sıra, Azure VM yedeklemesi durumunda dosya kurtarma gerçekleştirmek için de özel uç noktalar kullanılır. [Daha fazla bilgi edinin](private-endpoints.md#recommended-and-supported-scenarios).
+* Kasa için özel uç noktaları etkinleştirdiğinizde, bunlar yalnızca Azure VM ve MARS Aracısı yedeklemelerindeki SQL ve SAP HANA iş yüklerinin yedeklenmesi ve geri yüklenmesi için kullanılır.  Diğer iş yüklerinin yedeklenmesi için kasayı da kullanabilirsiniz (ancak özel uç noktalar gerektirmez). MARS Aracısı kullanılarak SQL ve SAP HANA iş yükleri ve yedekleme 'nin yedeğinin yanı sıra, Azure VM yedeklemesi durumunda dosya kurtarma gerçekleştirmek için de özel uç noktalar kullanılır. [Burada daha fazla bilgi edinebilirsiniz](private-endpoints.md#recommended-and-supported-scenarios).
 
 * Azure Active Directory şu anda özel uç noktaları desteklemez. Bu nedenle, Azure Active Directory için gereken IP 'Ler ve FQDN 'ler, Azure VM 'lerinde veritabanlarının yedeklenmesi sırasında ve MARS Aracısı kullanılarak yedeklendiğinden güvenli ağdan giden erişime izin verilmesi gerekir. Ayrıca, geçerli olduğu şekilde Azure AD 'ye erişim izni vermek için NSG etiketlerini ve Azure Güvenlik Duvarı etiketlerini de kullanabilirsiniz. [Önkoşullar](./private-endpoints.md#before-you-start)hakkında daha fazla bilgi edinin.
 
@@ -194,9 +194,9 @@ Azure 'da idare, birincil olarak [Azure ilkesi](../governance/policy/overview.md
 
 ### <a name="azure-backup-support-two-key-scenarios-via-built-in-azure-policy"></a>Azure Backup yerleşik Azure Ilkesi aracılığıyla iki temel senaryoyu destekler
 
-* Yeni oluşturulan iş açısından kritik makinelerin doğru bekletme ayarları ile otomatik olarak yedeklendiğinden emin olun. Azure Backup, bir abonelik veya kaynak grubu içindeki belirli bir konumdaki tüm Azure VM 'lerine atanabilecek yerleşik bir ilke (Azure Ilkesi kullanarak) sağlar. Bu ilke belirli bir kapsama atandığında, bu kapsamda oluşturulan tüm yeni VM 'Ler, aynı konum ve abonelik içindeki mevcut bir kasaya yedekleme için otomatik olarak yapılandırılır. Kullanıcı, yedeklenen sanal makinelerin ilişkilendirilmesi gereken kasayı ve bekletme ilkesini belirtebilir. [Daha fazla bilgi edinin](backup-azure-auto-enable-backup.md).
+* Yeni oluşturulan iş açısından kritik makinelerin doğru bekletme ayarları ile otomatik olarak yedeklendiğinden emin olun. Azure Backup, bir abonelik veya kaynak grubu içindeki belirli bir konumdaki tüm Azure VM 'lerine atanabilecek yerleşik bir ilke (Azure Ilkesi kullanarak) sağlar. Bu ilke belirli bir kapsama atandığında, bu kapsamda oluşturulan tüm yeni VM 'Ler, aynı konum ve abonelik içindeki mevcut bir kasaya yedekleme için otomatik olarak yapılandırılır. Kullanıcı, yedeklenen sanal makinelerin ilişkilendirilmesi gereken kasayı ve bekletme ilkesini belirtebilir. [Burada daha fazla bilgi edinebilirsiniz](backup-azure-auto-enable-backup.md).
 
-* Yeni oluşturulan kasaların raporları desteklemek için etkinleştirilmiş tanılamayı içerdiğinden emin olun. Genellikle, kasa başına el ile bir tanılama ayarı eklemek çok bir görev olabilir. Ayrıca, bu kasaya ait raporları görüntüleyebilmeniz için oluşturulan yeni kasaların tanılama ayarlarının etkin olması gerekir. Tanılama ayarlarının ölçeğe göre (hedef olarak Log Analytics ile) oluşturulmasını basitleştirmek için, Azure Backup yerleşik bir Azure Ilkesi sağlar. Bu ilke, her abonelik veya kaynak grubundaki tüm kasaları için bir LA tanılama ayarı ekler. Aşağıdaki bölümler, bu ilkenin nasıl kullanılacağına ilişkin yönergeler sağlar. [Daha fazla bilgi edinin](azure-policy-configure-diagnostics.md).
+* Yeni oluşturulan kasaların raporları desteklemek için etkinleştirilmiş tanılamayı içerdiğinden emin olun. Genellikle, kasa başına el ile bir tanılama ayarı eklemek çok bir görev olabilir. Ayrıca, bu kasaya ait raporları görüntüleyebilmeniz için oluşturulan yeni kasaların tanılama ayarlarının etkin olması gerekir. Tanılama ayarlarının ölçeğe göre (hedef olarak Log Analytics ile) oluşturulmasını basitleştirmek için, Azure Backup yerleşik bir Azure Ilkesi sağlar. Bu ilke, her abonelik veya kaynak grubundaki tüm kasaları için bir LA tanılama ayarı ekler. Aşağıdaki bölümler, bu ilkenin nasıl kullanılacağına ilişkin yönergeler sağlar. [Burada daha fazla bilgi edinebilirsiniz](azure-policy-configure-diagnostics.md).
 
 ### <a name="azure-backup-cost-considerations"></a>Azure Backup maliyet konuları
 
@@ -213,7 +213,7 @@ Azure Backup hizmetin özellikleri, maliyetlerinizi etkin bir şekilde yönetme 
 
 * Seçmeli yedekleme diskleri: diski çıkar (Önizleme özelliği), kritik verileri seçmeli olarak yedeklemek için verimli ve uygun maliyetli bir seçenek sağlar. Örneğin, bir VM 'ye bağlı olan disklerin geri kalanını yedeklemek istemediğinizde yalnızca bir diski yedekleyin. Bu, birden çok yedekleme çözümünden de yararlanabilirsiniz. Örneğin, veritabanlarınızı veya verilerinizi bir iş yükü yedekleme çözümüyle (Azure VM yedeklemesi 'nde SQL Server veritabanı) yedeklemenizin yanı sıra Seçili diskler için Azure VM düzeyi yedeklemesi kullanmak istediğinizde.
 
-* Azure Backup, Azure VM 'lerinin anlık görüntülerini alır ve bunları kurtarma noktası oluşturmayı artırmak ve geri yükleme işlemlerini hızlandırmak için disklerle birlikte depolar. Bu, anında geri yükleme olarak adlandırılır. Varsayılan olarak, anlık geri yükleme anlık görüntüleri iki gün boyunca tutulur. Bu özellik geri yükleme sürelerini kesip bu anlık görüntülerden geri yükleme işlemine izin verir. Verileri kasadan geri dönüştürmek ve kopyalamak için gereken süreyi azaltır. Sonuç olarak, bu süre boyunca alınan anlık görüntülere karşılık gelen depolama maliyetlerini görürsünüz. [Daha fazla bilgi edinin](backup-instant-restore-capability.md#configure-snapshot-retention).
+* Azure Backup, Azure VM 'lerinin anlık görüntülerini alır ve bunları kurtarma noktası oluşturmayı artırmak ve geri yükleme işlemlerini hızlandırmak için disklerle birlikte depolar. Bu, anında geri yükleme olarak adlandırılır. Varsayılan olarak, anlık geri yükleme anlık görüntüleri iki gün boyunca tutulur. Bu özellik geri yükleme sürelerini kesip bu anlık görüntülerden geri yükleme işlemine izin verir. Verileri kasadan geri dönüştürmek ve kopyalamak için gereken süreyi azaltır. Sonuç olarak, bu süre boyunca alınan anlık görüntülere karşılık gelen depolama maliyetlerini görürsünüz. [Burada daha fazla bilgi edinebilirsiniz](backup-instant-restore-capability.md#configure-snapshot-retention).
 
 * Azure Backup kasasının depolama çoğaltma türü, varsayılan olarak coğrafi olarak yedekli (GRS) olarak ayarlanmıştır. Öğeler korunduktan sonra bu seçenek değiştirilemez. Coğrafi olarak yedekli depolama (GRS), yerel olarak yedekli depolama (LRS) düzeyinden daha yüksek düzeyde veri dayanıklılığı sağlar ve çapraz bölge geri yükleme ve maliyetlerin daha fazlasını kullanmasına izin verir. Düşük maliyetler ve daha yüksek veri dayanıklılığı arasındaki ücretleri gözden geçirin ve senaryonuza en uygun şeyleri belirleyin. [Daha fazla bilgi edinin](backup-create-rs-vault.md#set-storage-redundancy)
 
@@ -225,21 +225,21 @@ Bir yedekleme kullanıcısı veya Yöneticisi olarak, tüm yedekleme çözümler
 
 ### <a name="monitoring"></a>İzleme
 
-* Azure Backup, yedekleme, yedekleme, geri yükleme, yedeklemeyi silme gibi işlemler için **yerleşik iş izleme** sağlar. Bu, kasasının kapsamına alınır ve tek bir kasayı izlemek için idealdir. [Daha fazla bilgi edinin](backup-azure-monitoring-built-in-monitor.md#backup-jobs-in-recovery-services-vault).
+* Azure Backup, yedekleme, yedekleme, geri yükleme, yedeklemeyi silme gibi işlemler için **yerleşik iş izleme** sağlar. Bu, kasasının kapsamına alınır ve tek bir kasayı izlemek için idealdir. [Burada daha fazla bilgi edinebilirsiniz](backup-azure-monitoring-built-in-monitor.md#backup-jobs-in-recovery-services-vault).
 
-* İşlemsel etkinlikleri ölçeklendirmeniz gerekiyorsa, **yedekleme Gezgini** tüm yedeklemelerinizin toplanmış bir görünümünü sağlar ve ayrıntılı ayrıntıya gitme analizini ve sorun gidermeyi etkinleştirir. Bu, Azure 'da, kapsayıcı kiracılar, konumlar, abonelikler, kaynak grupları ve kasaların bulunduğu tüm yedekleme genelinde işletimsel etkinlikleri izlemenize yardımcı olacak tek ve merkezi bir konum sunan yerleşik bir Azure Izleyici çalışma kitabıdır. [Daha fazla bilgi edinin](monitor-azure-backup-with-backup-explorer.md).
+* İşlemsel etkinlikleri ölçeklendirmeniz gerekiyorsa, **yedekleme Gezgini** tüm yedeklemelerinizin toplanmış bir görünümünü sağlar ve ayrıntılı ayrıntıya gitme analizini ve sorun gidermeyi etkinleştirir. Bu, Azure 'da, kapsayıcı kiracılar, konumlar, abonelikler, kaynak grupları ve kasaların bulunduğu tüm yedekleme genelinde işletimsel etkinlikleri izlemenize yardımcı olacak tek ve merkezi bir konum sunan yerleşik bir Azure Izleyici çalışma kitabıdır. [Burada daha fazla bilgi edinebilirsiniz](monitor-azure-backup-with-backup-explorer.md).
   * Yedekleme için yapılandırılmamış kaynakları belirlemek için kullanın ve büyümekte olan önemli verileri korumayı hiç kaçırmadığınızdan emin olun.
   * Pano, son yedi gün (en fazla) için işlemsel etkinlikler sağlar. Bu verileri saklamanız gerekiyorsa, Excel dosyası olarak dışarı aktarabilir ve koruyabilirsiniz.
   * Azure ışıklı bir Kullanıcı kullanıyorsanız, birden fazla kiracıda daha fazla bilgi görüntüleyerek sınır azaltma izlemeyi etkinleştirebilirsiniz.
 
-* Uzun süreli işlem etkinliklerini korumanız ve görüntülemeniz gerekiyorsa, **raporları**kullanın. Yedekleme yöneticileri için ortak bir gereksinim, uzun bir süre yayılan verilere göre yedeklemeler hakkında öngörüler elde etmek içindir. Böyle bir çözüm için kullanım örnekleri şunları içerir:
+* Uzun süreli işlem etkinliklerini korumanız ve görüntülemeniz gerekiyorsa, **raporları** kullanın. Yedekleme yöneticileri için ortak bir gereksinim, uzun bir süre yayılan verilere göre yedeklemeler hakkında öngörüler elde etmek içindir. Böyle bir çözüm için kullanım örnekleri şunları içerir:
   * Tüketilen bulut depolamasını ayırma ve tahmin etme.
   * Yedeklemeler ve geri yüklemeler denetimi.
   * Farklı ayrıntı düzeyi düzeylerinde önemli eğilimleri tanımlama.
 
 * Ayrıca
-  * **Log Analytics** çalışma alanına veri (örneğin, işler, ilkeler vb.) gönderebilirsiniz. Bu işlem, Azure izleyici tarafından toplanan diğer izleme verileriyle veri bağıntısını etkinleştirmek için Azure Izleyici günlüklerinin özelliklerini etkinleştirir, birden çok Azure aboneliği ve kiracısından günlük girişlerini analiz için tek bir konumda birleştirir, karmaşık analiz gerçekleştirmek ve günlük girişleri hakkında derin Öngörüler elde etmek için günlük sorgularını kullanın. [Daha fazla bilgi edinin](../azure-monitor/platform/activity-log.md#send-to-log-analytics-workspace).
-  * Olayları Azure dışında, örneğin bir üçüncü taraf SıEM (güvenlik bilgileri ve olay yönetimi) veya diğer Log Analytics çözümüne göndermek için Olay Hub 'ına veri gönderebilirsiniz. [Daha fazla bilgi edinin](../azure-monitor/platform/activity-log.md#send-to-azure-event-hubs).
+  * **Log Analytics** çalışma alanına veri (örneğin, işler, ilkeler vb.) gönderebilirsiniz. Bu işlem, Azure izleyici tarafından toplanan diğer izleme verileriyle veri bağıntısını etkinleştirmek için Azure Izleyici günlüklerinin özelliklerini etkinleştirir, birden çok Azure aboneliği ve kiracısından günlük girişlerini analiz için tek bir konumda birleştirir, karmaşık analiz gerçekleştirmek ve günlük girişleri hakkında derin Öngörüler elde etmek için günlük sorgularını kullanın. [Burada daha fazla bilgi edinebilirsiniz](../azure-monitor/platform/activity-log.md#send-to-log-analytics-workspace).
+  * Olayları Azure dışında, örneğin bir üçüncü taraf SıEM (güvenlik bilgileri ve olay yönetimi) veya diğer Log Analytics çözümüne göndermek için Olay Hub 'ına veri gönderebilirsiniz. [Burada daha fazla bilgi edinebilirsiniz](../azure-monitor/platform/activity-log.md#send-to-azure-event-hubs).
   * Günlük verilerinizi denetim, statik analiz veya yedekleme için 90 günden daha uzun bir süre içinde bekletmek istiyorsanız, Azure depolama hesabına veri gönderebilirsiniz. Olaylarınızı yalnızca 90 gün veya daha az süreyle tutmanız gerekiyorsa, etkinlik günlüğü olayları 90 gün boyunca Azure platformunda tutulduğundan bir depolama hesabına arşiv ayarlamanız gerekmez. [Daha fazla bilgi edinin](../azure-monitor/platform/activity-log.md#send-to--azure-storage).
 
 ### <a name="alerting"></a>Uyarı
@@ -247,14 +247,14 @@ Bir yedekleme kullanıcısı veya Yöneticisi olarak, tüm yedekleme çözümler
 * Uyarılar öncelikle ilgili eylemi gerçekleştirmek için bildirim almanın bir yoludur. Yedekleme uyarıları bölümü Azure Backup hizmeti tarafından oluşturulan uyarıları gösterir.
 
 * Azure Backup, e-posta yoluyla hatalara, uyarılara ve kritik işlemlere yönelik **olarak yerleşik bir uyarı** bildirim mekanizması sağlar. Bir uyarı oluşturulduğunda bildirilecek tek e-posta adreslerini veya dağıtım listelerini belirtebilirsiniz. Ayrıca, her bir uyarı için bildirim almayı veya saatlik bir özette grupları seçip bildirim almayı seçebilirsiniz.
-  * Bu uyarılar, hizmet tarafından tanımlanır ve sınırlı senaryolar için destek sağlar. yedekleme/geri yükleme hatalarıyla, verileri koruma ve verileri silme ile korumayı durdurma ve bu şekilde devam eder. [Daha fazla bilgi edinin](backup-azure-monitoring-built-in-monitor.md#alert-scenarios).
+  * Bu uyarılar, hizmet tarafından tanımlanır ve sınırlı senaryolar için destek sağlar. yedekleme/geri yükleme hatalarıyla, verileri koruma ve verileri silme ile korumayı durdurma ve bu şekilde devam eder. [Burada daha fazla bilgi edinebilirsiniz](backup-azure-monitoring-built-in-monitor.md#alert-scenarios).
   * Verileri silme ile korumayı durdur gibi bir bozucu işlem gerçekleştirilirse, kurtarma hizmetleri Kasası için **Bildirimler yapılandırılmadığı halde** bir uyarı oluşturulur ve abonelik sahiplerine, yöneticilerine ve ortak yöneticilere e-posta gönderilir.
-  * Belirli iş yükleri yüksek sıklıkta başarısız olabilir (örneğin, her 15 dakikada bir SQL Server). Her bir başarısızlık durumunda oluşan uyarılarla başa çıkılamamasını engellemek için uyarılar birleştirilir. [Daha fazla bilgi edinin](backup-azure-monitoring-built-in-monitor.md#consolidated-alerts).
+  * Belirli iş yükleri yüksek sıklıkta başarısız olabilir (örneğin, her 15 dakikada bir SQL Server). Her bir başarısızlık durumunda oluşan uyarılarla başa çıkılamamasını engellemek için uyarılar birleştirilir. [Burada daha fazla bilgi edinebilirsiniz](backup-azure-monitoring-built-in-monitor.md#consolidated-alerts).
   * Yerleşik uyarılar özelleştirilemiyor ve Azure portal tanımlanan e-postalarda kısıtlanıyor.
 
 * **Özel uyarılar** (örneğin, başarılı işlerin uyarıları) oluşturmanız gerekiyorsa Log Analytics kullanın. Azure Izleyici 'de, bir Log Analytics çalışma alanında kendi uyarılarınızı oluşturabilirsiniz. Hibrit iş yükleri (DPM/MABS) Ayrıca, LA 'ya veri gönderebilir ve Azure Backup tarafından desteklenen iş yükleri arasında ortak uyarılar sağlamak için LA 'yı kullanabilir.
 
-* Ayrıca, yerleşik kurtarma hizmetleri Kasası **etkinlik günlükleri**aracılığıyla da bildirim alabilirsiniz. Ancak, sınırlı senaryoları destekler ve zamanlanan yedekleme gibi işlemler için uygun değildir ve bu da, etkinlik günlükleriyle daha iyi olan kaynak günlükleriyle daha iyi bir şekilde hizalanır. Bu sınırlamalar hakkında daha fazla bilgi edinmek ve Azure Backup tarafından korunan tüm iş yüklerinizin ölçeğini izlemek ve uyarmak üzere Log Analytics çalışma alanını nasıl kullanabileceğinizi öğrenmek için bu [makaleye](backup-azure-monitoring-use-azuremonitor.md#using-log-analytics-to-monitor-at-scale)bakın.
+* Ayrıca, yerleşik kurtarma hizmetleri Kasası **etkinlik günlükleri** aracılığıyla da bildirim alabilirsiniz. Ancak, sınırlı senaryoları destekler ve zamanlanan yedekleme gibi işlemler için uygun değildir ve bu da, etkinlik günlükleriyle daha iyi olan kaynak günlükleriyle daha iyi bir şekilde hizalanır. Bu sınırlamalar hakkında daha fazla bilgi edinmek ve Azure Backup tarafından korunan tüm iş yüklerinizin ölçeğini izlemek ve uyarmak üzere Log Analytics çalışma alanını nasıl kullanabileceğinizi öğrenmek için bu [makaleye](backup-azure-monitoring-use-azuremonitor.md#using-log-analytics-to-monitor-at-scale)bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

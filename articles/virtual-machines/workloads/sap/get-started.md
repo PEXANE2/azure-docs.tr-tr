@@ -14,15 +14,15 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 01/23/2021
+ms.date: 02/01/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 992115a65ec015ca04990135975e0d4020764184
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 61adb72d043821dfaedca5e5da0b2f880d56811e
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98873782"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258931"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>SAP iş yükü senaryolarını barındırmak ve çalıştırmak için Azure kullanın
 
@@ -84,6 +84,7 @@ Bu bölümde, Microsoft Power BI tümleştirme hakkındaki belgeleri SAP veri ka
 
 ## <a name="change-log"></a>Değişiklik Günlüğü
 
+- 02/01/2021: SAP HANA ha 'de değiştirin ve [RHEL üzerinde ANF ile ölçeği büyütme](./sap-hana-high-availability-netapp-files-red-hat.md), [RHEL üzerindeki Azure VM 'lerinde genişleme ile](./sap-hana-high-availability-scale-out-hsr-rhel.md)azure vm 'lerinde genişleme SAP HANA [, SLES üzerinde ANF ile](./sap-hana-scale-out-standby-netapp-files-suse.md) azure vm 'lerinde yer alan ve [Azure VM](./hana-vm-operations-netapp.md) 'lerinde bir SAP HANA bağlantı eklemek için RHEL [üzerinde bir ve](./sap-hana-scale-out-standby-netapp-files-rhel.md) daha fazla SAP HANA Azure NetApp Files SAP HANA
 - 01/23/2021: [Azure sanal makine depolama yapılandırması](./hana-vm-operations-storage.md) ve [NFS v 4.1 birimleri](./hana-vm-operations-netapp.md) SAP HANA makalelerinde bir disk birimi Yöneticisi kullanmadan, farklı Azure disklerinde veya NFS paylaşımlarında bir disk birimi Yöneticisi kullanmadan, Hana veri birimi bölümlendirme işlevlerini işlevsellik olarak ekleyin SAP HANA Azure NetApp Files
 - 01/18/2021: Azure sanal makineler 'de Oracle için Azure net Apps dosya tabanlı NFS desteği eklendi, [SAP iş yükü Için Oracle DBMS dağıtımı](./dbms_guide_oracle.md) ve [SAP HANA Için Azure NetApp Files belge NFS v 4.1 birimlerindeki](./hana-vm-operations-netapp.md) tabloda Ondalıklar ayarlanıyor
 - 01/11/2021: [RHEL for SAP Applications üzerinde Azure sanal](./high-availability-guide-rhel.md)makinelerinde SAP NW için ha 'da küçük değişiklikler, RHEL [çok düzeyli](./high-availability-guide-rhel-multi-sid.md) Azure VM ['lerinde RHEL](./high-availability-guide-rhel-netapp-files.md) 'de SAP NW IÇIN ve RHEL8 ve RHEL7, ENSA1 ve ENSA2 için çalışır.

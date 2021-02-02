@@ -3,7 +3,7 @@ title: Azure Active Directory Uygulama Ara Sunucusu ve Tableau | Microsoft Docs
 description: Tableau dağıtımınız için uzaktan erişim sağlamak üzere Azure Active Directory (Azure AD) uygulama proxy 'Sini nasıl kullanacağınızı öğrenin.
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -13,12 +13,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6df0a0bf21f4be824738d86ac6bdb3c75c9c3564
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6720a5ad963bc73e11ef7b46150e946521928c01
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84764511"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258634"
 ---
 # <a name="azure-active-directory-application-proxy-and-tableau"></a>Azure Active Directory Uygulama Ara Sunucusu ve Tableau 
 
@@ -52,7 +52,7 @@ Tableau yayımlamak için, Azure portalında bir uygulama yayımlamanız gerekir
 
 1. [Azure Portal](https://portal.azure.com) bir uygulama Yöneticisi olarak oturum açın. 
 
-2. **Kurumsal uygulamalar > Azure Active Directory**seçin. 
+2. **Kurumsal uygulamalar > Azure Active Directory** seçin. 
 
 3. Dikey pencerenin üst kısmında **Ekle** ' yi seçin. 
 
@@ -74,7 +74,7 @@ Tableau yayımlamak için, Azure portalında bir uygulama yayımlamanız gerekir
 
  
 
-## <a name="testing"></a>Test Etme 
+## <a name="testing"></a>Sınama 
 
 Uygulamanız şimdi test etmeye hazırdır. Tableau yayımlamak için kullandığınız dış URL 'ye erişin ve her iki uygulamaya atanmış bir kullanıcı olarak oturum açın.
 

@@ -14,12 +14,12 @@ ms.custom:
 - seo-dt-2019
 ms.topic: troubleshooting
 ms.date: 02/20/2020
-ms.openlocfilehash: 8c3c1d28a7fbb3e3c9c449feb03a75d48178b718
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: fdefcabdda64402610f115832976ec9f7af81b80
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97609046"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258838"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-from-postgresql-to-azure-db-for-postgresql"></a>PostgreSQL ile PostgreSQL için Azure DB 'ye çevrimiçi geçişlerle ilgili bilinen sorunlar/geçiş sınırlamaları
 
@@ -123,3 +123,4 @@ AWS RDS PostgreSQL 'ten PostgreSQL için Azure veritabanı 'na çevrimiçi geçi
 - Aynı ada sahip, ancak farklı bir Case (örn. Table1, TABLE1 ve Table1) birden çok tablo geçişi öngörülemeyen davranışlara neden olabilir ve bu nedenle desteklenmez.
 - [Oluştur | işlemini değiştirme DEĞIŞTIR | BıRAK | TRUNCATE] tablo DDLs desteklenmiyor.
 - Azure veritabanı geçiş hizmeti 'nde tek bir geçiş etkinliği yalnızca en fazla dört veritabanı içerebilir.
+- Pg_largeobject tablosunun geçirilmesi desteklenmez. 

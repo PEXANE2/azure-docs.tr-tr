@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 4cab1765a387bbae61c9c242a8e7a1ca881ea1f5
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 42098786bb92e98b89b1dbfba01a2e071398f460
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94966675"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258549"
 ---
 # <a name="tutorial-use-custom-allocation-policies-with-device-provisioning-service-dps"></a>Öğretici: cihaz sağlama hizmeti (DPS) ile özel ayırma ilkeleri kullanma
 
@@ -40,7 +40,7 @@ Bu öğreticide şunları yapmanız gerekir:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Bu makalede IoT Hub ve DPS örneğinizi oluşturmak için [Azure Portal cihaz sağlama hizmeti IoT Hub ayarlama](./quick-setup-auto-provision.md) adımlarını tamamladığınız varsayılmaktadır.
 
@@ -347,7 +347,7 @@ Bu örnek kod, cihaz sağlama hizmeti örneğinize sağlama isteği gönderen bi
     hsm_type = SECURE_DEVICE_TYPE_SYMMETRIC_KEY;
     ```
 
-6. `main()`İşlevinde, çağrısını bulun `Prov_Device_Register_Device()` . Bu çağrıdan hemen önce, [`Prov_Device_Set_Provisioning_Payload()`](/azure/iot-hub/iot-c-sdk-ref/prov-device-client-h/prov-device-set-provisioning-payload) sağlama sırasında Özel BIR JSON yükünü geçirmek için kullanan aşağıdaki kod satırlarını ekleyin. Bu, özel ayırma işlevleriniz hakkında daha fazla bilgi sağlamak için kullanılabilir. Bu, kayıt KIMLIĞINI incelemek yerine cihaz türünü iletmek için de kullanılabilir.
+6. `main()`İşlevinde, çağrısını bulun `Prov_Device_Register_Device()` . Bu çağrıdan hemen önce, [`Prov_Device_Set_Provisioning_Payload()`](/azure/iot-hub/iot-c-sdk-ref/prov-device-client-h/prov-device-set-provisioning-payload) sağlama sırasında Özel BIR JSON yükünü geçirmek için kullanan aşağıdaki kod satırlarını ekleyin. Bu, özel ayırma işlevleriniz hakkında daha fazla bilgi sağlamak için kullanılabilir. Bu, kayıt KIMLIĞINI incelemek yerine cihaz türünü iletmek için de kullanılabilir. Özel veri yüklerini DPS ile gönderme ve alma hakkında daha fazla bilgi için bkz. [cihazlar ve DPS arasında yükleri aktarma](how-to-send-additional-data.md).
 
     ```c
     // An example custom payload

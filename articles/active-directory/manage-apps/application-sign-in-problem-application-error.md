@@ -4,7 +4,7 @@ description: Uygulama bir hata iletisi döndürdüğünde Azure AD oturum açma 
 services: active-directory
 documentationcenter: ''
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -16,14 +16,14 @@ ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 779286a43f8b20ce9a9a528e14eaa930763d82b4
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: c96209f33491645510d8592997c418472d4f227c
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94651592"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258821"
 ---
-# <a name="an-app-page-shows-an-error-message-after-the-user-signs-in"></a>Bir uygulama sayfası, Kullanıcı oturum açtıktan sonra bir hata iletisi gösterir
+# <a name="an-app-page-shows-an-error-message-after-the-user-signs-in"></a>Kullanıcı oturum açtıktan sonra bir uygulama sayfası hata iletisi gösteriyor
 
 Bu senaryoda, Azure Active Directory (Azure AD) kullanıcıyı ' de imzalar. Ancak uygulama bir hata iletisi görüntüler ve kullanıcının oturum açma akışını bitirmesini izin vermez. Bu sorun, uygulamanın Azure AD 'nin verdiği yanıtı kabul etmiyordu.
 

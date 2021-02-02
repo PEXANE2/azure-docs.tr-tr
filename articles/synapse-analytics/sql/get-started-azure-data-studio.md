@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: cfd0476d3462fc902acb7238fcc1947c85af041f
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: f82a1279a69bf91f37400d5614e8f7b121e72f47
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98676188"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258906"
 ---
 # <a name="connect-to-synapse-sql-with-azure-data-studio"></a>Azure Data Studio ile SYNAPSE SQL 'e bağlanma
 
@@ -26,7 +26,7 @@ ms.locfileid: "98676188"
 > * [sqlcmd](get-started-connect-sqlcmd.md)
 > * [SSMS](get-started-ssms.md)
 
-Azure SYNAPSE Analytics 'te SYNAPSE SQL 'e bağlanmak ve sorgu eklemek için [Azure Data Studio)](/sql/azure-data-studio/download-azure-data-studio?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) kullanabilirsiniz. 
+Azure SYNAPSE Analytics 'te SYNAPSE SQL 'e bağlanmak ve sorgu eklemek için [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) kullanabilirsiniz. 
 
 ## <a name="connect"></a>Bağlan
 

@@ -1,24 +1,51 @@
 ---
 title: Azure Active Directory uygulama yönetiminde yenilikler
 description: Azure Active Directory Uygulama yönetimi için yeni ve güncelleştirilmiş belgeler.
-ms.date: 12/15/2020
+ms.date: 02/01/2021
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: reference
 ms.workload: identity
 ms.author: kenwith
 author: kenwith
-manager: CelesteDG
-ms.openlocfilehash: ea2e08db91d23e9523b7bc95e01b7adc9c93b3cc
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+manager: daveba
+ms.openlocfilehash: 53339623ee435362d248b794776681972000173e
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99054830"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258583"
 ---
 # <a name="azure-active-directory-application-management-whats-new"></a>Uygulama yönetimi Azure Active Directory: yenilikler
 
 Azure Active Directory Uygulama yönetimi belgelerindeki yenilikler ' e hoş geldiniz. Bu makalede, eklenen ve son üç ay içinde önemli güncelleştirmeleri olan yeni belgeler listelenir. Uygulama yönetimi hizmeti yenilikleri hakkında bilgi edinmek için bkz. [Azure Active Directory](../fundamentals/whats-new.md)yenilikleri.
+
+## <a name="january-2021"></a>Ocak 2021
+
+### <a name="new-articles"></a>Yeni makaleler
+- [Azure Active Directory Apps yapılandırması 'nı planla](my-apps-deployment-plan.md)
+
+### <a name="updated-articles"></a>Güncelleştirilmiş makaleler
+- [Uygulama Ara Sunucusu Aracı Bağlayıcısı’nı yüklerken sorun oluşuyor](application-proxy-connector-installation-problem.md)
+- [Azure AD’de parola tabanlı çoklu oturum açma sorunlarını giderme](troubleshoot-password-based-sso.md)
+- [Uygulama yönetimi en iyi uygulamaları](application-management-fundamentals.md)
+- [Azure Active Directory uygulamalar ile tümleştirme kılavuzunu kullanmaya başlama](plan-an-application-integration.md)
+- [Uygulama yönetimi nedir?](what-is-application-management.md)
+- [Active Directory (Azure AD) uygulama proxy 'Si hakkında sık sorulan sorular](application-proxy-faq.md)
+- [Öğretici: Azure Active Directory içindeki uygulama proxy 'Si aracılığıyla uzaktan erişim için şirket içi uygulama ekleme](application-proxy-add-on-premises-application.md)
+- [Mevcut şirket içi proxy sunucularıyla çalışma](application-proxy-configure-connectors-with-proxy-servers.md)
+- [Azure Active Directory için iş kolu uygulamaları geliştirin](developer-guidance-for-integrating-applications.md)
+- [Azure AD Uygulama Ara Sunucusu bağlayıcılarını anlama](application-proxy-connectors.md)
+- [Bağlantılı oturum açmayı anlama](configure-linked-sign-on.md)
+- [Parola tabanlı çoklu oturum açmayı anlama](configure-password-single-sign-on-non-gallery-applications.md)
+- [SAML tabanlı çoklu oturum açmayı anlama](configure-saml-single-sign-on.md)
+- [Azure Active Directory bir uygulamayı ekleme veya kaldırma hakkında yaygın sorun giderme](troubleshoot-adding-apps.md)
+- [Kimlik yönetimi için Azure AD kiracınızı kullanarak uygulamaları görüntüleme](application-types.md)
+- [Kullanıcıların Azure Active Directory ' de uygulamalara nasıl atandığını anlayın](ways-users-get-assigned-to-applications.md)
+- [Hızlı başlangıç: Azure Active Directory (Azure AD) kiracınızdan bir uygulamayı silme](delete-application-portal.md)
+- [Azure Active Directory Uygulama Ara Sunucusu ile Uzak Masaüstünü yayımlama](application-proxy-integrate-with-remote-desktop-services.md)
+- [Azure Active Directory fazla ayrıcalıklı veya şüpheli uygulamalarda işlem yapın](manage-application-permissions.md)
+
 
 ## <a name="december-2020"></a>Aralık 2020
 
