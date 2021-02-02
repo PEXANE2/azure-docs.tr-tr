@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: jingwang
-ms.openlocfilehash: f560a01c4ec00649157a9c43aedf0ed6cfc2e050
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 440dd561beddc9696ec703142fe82655b69fbb48
+ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83871927"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99474956"
 ---
 # <a name="copy-data-from-sharepoint-online-list-by-using-azure-data-factory"></a>Azure Data Factory kullanarak SharePoint Online listesinden veri kopyalama
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -81,11 +81,11 @@ Aşağıdaki özellikler bir SharePoint Online listesi bağlı hizmeti için des
 
 | **Özellik**        | **Açıklama**                                              | **Gerekli** |
 | ------------------- | ------------------------------------------------------------ | ------------ |
-| tür                | Type özelliği: **Sharepointonlinelist**olarak ayarlanmalıdır.  | Evet          |
-| siteUrl             | SharePoint Online site URL 'si, `https://contoso.sharepoint.com/sites/siteName` ör. | Evet          |
-| Serviceprincipalıd  | Azure Active Directory kayıtlı uygulamanın uygulama (istemci) KIMLIĞI. | Evet          |
-| Servicesprincipalkey | Uygulamanın anahtarı. Data Factory güvenli bir şekilde depolamak için bu alanı **SecureString** olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | Evet          |
-| Değerine            | Uygulamanızın bulunduğu kiracı KIMLIĞI.          | Evet          |
+| tür                | Type özelliği: **Sharepointonlinelist** olarak ayarlanmalıdır.  | Yes          |
+| siteUrl             | SharePoint Online site URL 'si, `https://contoso.sharepoint.com/sites/siteName` ör. | Yes          |
+| Serviceprincipalıd  | Azure Active Directory kayıtlı uygulamanın uygulama (istemci) KIMLIĞI. | Yes          |
+| Servicesprincipalkey | Uygulamanın anahtarı. Data Factory güvenli bir şekilde depolamak için bu alanı **SecureString** olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | Yes          |
+| Değerine            | Uygulamanızın bulunduğu kiracı KIMLIĞI.          | Yes          |
 | connectVia          | Veri deposuna bağlanmak için kullanılacak [Integration Runtime](concepts-integration-runtime.md) . Bu makalenin önceki kısımlarında yer alarak [önkoşulları](#prerequisites)öğrenin. Belirtilmemişse, varsayılan Azure Integration Runtime kullanılır. | Hayır           |
 
 **Örnek:**
@@ -114,8 +114,8 @@ Veri kümelerini tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Veri kümesinin **Type** özelliği, **Sharepointonlinelresource**olarak ayarlanmalıdır. | Evet |
-| tanımlamalıdır | SharePoint Online listesinin adı. | Evet |
+| tür | Veri kümesinin **Type** özelliği, **Sharepointonlinelresource** olarak ayarlanmalıdır. | Yes |
+| tanımlamalıdır | SharePoint Online listesinin adı. | Yes |
 
 **Örnek**
 
@@ -147,7 +147,7 @@ SharePoint Online listesinden veri kopyalamak için, etkinlik **kaynağını** k
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Kopyalama etkinliği kaynağının **Type** özelliği, **Sharepointonlinelistsource**olarak ayarlanmalıdır. | Evet |
+| tür | Kopyalama etkinliği kaynağının **Type** özelliği, **Sharepointonlinelistsource** olarak ayarlanmalıdır. | Yes |
 | sorgu | Verileri filtrelemek için özel OData sorgu seçenekleri. Örnek: `"$top=10&$select=Title,Number"`. | Hayır |
 | httpRequestTimeout | HTTP isteğinin yanıt alması için zaman aşımı (saniye olarak). Varsayılan değer 300 ' dir (5 dakikadır). | Hayır |
 
@@ -183,6 +183,9 @@ SharePoint Online listesinden veri kopyalamak için, etkinlik **kaynağını** k
 ]
 ```
 
+> [!NOTE]
+> Azure Data Factory, bir SharePoint Online listesi kaynağı için birden fazla *seçim* veri türü seçemezsiniz.
+
 ## <a name="data-type-mapping-for-sharepoint-online-list"></a>SharePoint Online listesi için veri türü eşlemesi
 
 SharePoint Online listesinden veri kopyaladığınızda, SharePoint Online listesi veri türleri ve Azure Data Factory geçici veri türleri arasında aşağıdaki eşlemeler kullanılır. 
@@ -207,7 +210,7 @@ SharePoint Online listesinden veri kopyaladığınızda, SharePoint Online liste
 
 ## <a name="copy-file-from-sharepoint-online"></a>SharePoint Online 'dan Dosya Kopyala
 
-**Web etkinliğini** kullanarak SharePoint Online 'dan dosya KOPYALAYABILIR ve spo adresinden erişim belirteci alabilir ve ardından **http bağlayıcısıyla kaynak olarak**veri kopyalamak için sonraki **kopyalama etkinliğine** geçiş yapabilirsiniz.
+**Web etkinliğini** kullanarak SharePoint Online 'dan dosya KOPYALAYABILIR ve spo adresinden erişim belirteci alabilir ve ardından **http bağlayıcısıyla kaynak olarak** veri kopyalamak için sonraki **kopyalama etkinliğine** geçiş yapabilirsiniz.
 
 ![SharePoint kopya dosya akışı](media/connector-sharepoint-online-list/sharepoint-online-copy-file-flow.png)
 

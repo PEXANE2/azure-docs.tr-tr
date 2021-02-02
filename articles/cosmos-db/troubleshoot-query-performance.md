@@ -4,16 +4,16 @@ description: Azure Cosmos DB SQL sorgu sorunlarını belirlemeyi, tanılamayı v
 author: timsander1
 ms.service: cosmos-db
 ms.topic: troubleshooting
-ms.date: 10/12/2020
+ms.date: 02/02/2021
 ms.author: tisande
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: 42f01b140a44d7aa6d75dece9a4398fd7b41bf5a
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: d50893fc3bf5d890efbdc1f5b59cf52f35d91a15
+ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905120"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99475735"
 ---
 # <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>Azure Cosmos DB kullanırken karşılaşılan sorgu sorunlarını giderme
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -62,6 +62,8 @@ Senaryonuza yönelik ilgili sorgu iyileştirmelerini anlamak için aşağıdaki 
 - [Gerekli yolları dizin oluşturma ilkesine ekleyin.](#include-necessary-paths-in-the-indexing-policy)
 
 - [Hangi sistem işlevlerinin dizinini kullandığını anlayın.](#understand-which-system-functions-use-the-index)
+
+- [Dize sistemi işlev yürütmeyi geliştirir.](#improve-string-system-function-execution)
 
 - [Hangi toplu sorguların Dizin kullandığını anlayın.](#understand-which-aggregate-queries-use-the-index)
 
@@ -198,10 +200,11 @@ Herhangi bir zamanda, yazma veya okuma kullanılabilirliği üzerinde hiçbir et
 
 Çoğu sistem işlevi dizinleri kullanır. Dizinler kullanan bazı yaygın dize işlevlerinin listesi aşağıda verilmiştir:
 
-- STARTSWITH (str_expr1, str_expr2, bool_expr)  
-- IÇERIR (str_expr, str_expr, bool_expr)
-- LEFT(str_expr, num_expr) = str_expr
-- Alt DIZE (str_expr, num_expr, num_expr) = str_expr, ancak yalnızca ilk num_expr 0 ise
+- StartsWith
+- Contains
+- RegexMatch
+- Sol
+- Alt dize-ancak yalnızca ilk num_expr 0 ise
 
 Aşağıda, dizini kullanmayan ve her bir belgeyi yüklemesi gereken bazı yaygın sistem işlevleri verilmiştir:
 
@@ -210,11 +213,21 @@ Aşağıda, dizini kullanmayan ve her bir belgeyi yüklemesi gereken bazı yayg�
 | ÜST/ALT                             | Karşılaştırma sırasında verileri normalleştirmek için sistem işlevini kullanmak yerine, ekleme sırasında büyük/küçük harfleri normalleştirin. Gibi bir sorgu ```SELECT * FROM c WHERE UPPER(c.name) = 'BOB'``` olur ```SELECT * FROM c WHERE c.name = 'BOB'``` . |
 | Matematik işlevleri (toplamasız olmayan) | Sorgunuzda sık bir değeri hesaplamanız gerekiyorsa, değeri JSON belgenizde bir özellik olarak depolamayı düşünün. |
 
-------
+### <a name="improve-string-system-function-execution"></a>Dize sistemi işlev yürütmeyi geliştirme
 
-Bir sistem işlevi dizinler kullanıyorsa ve yine de yüksek RU ücretine sahipse, sorguya eklemeyi deneyebilirsiniz `ORDER BY` . Bazı durumlarda ekleme, `ORDER BY` özellikle sorgu uzun süre çalışıyorsa veya birden çok sayfaya yayıldığında, sistem işlev dizini kullanımını iyileştirebilir.
+Dizinler kullanan bazı sistem işlevleri için sorguya bir yan tümce ekleyerek sorgu yürütmeyi geliştirebilirsiniz `ORDER BY` . 
 
-Örneğin, aşağıdaki sorguyu ile değerlendirin `CONTAINS` . `CONTAINS` bir dizin kullanmalıdır, ancak ilgili dizin eklendikten sonra, aşağıdaki sorguyu çalıştırırken hala çok yüksek RU ücretine gözlemleyeceksiniz:
+Daha belirgin bir şekilde, özelliğin önem düzeyi arttıkça,, özelliğin önemliliği arttığında, sorgudaki herhangi bir sistem işlevi, sorguda olmasının avantajını artırabilir `ORDER BY` . Bu sorgular bir dizin taraması yapar, bu nedenle sorgu sonuçlarının sıralanmasını sağlamak sorguyu daha verimli hale getirir.
+
+Bu iyileştirme, aşağıdaki sistem işlevleri için yürütmeyi iyileştirebilirler:
+
+- StartsWith (büyük/küçük harf duyarsız = doğru)
+- Strıngequals (büyük/küçük harf duyarsız = doğru)
+- Contains
+- RegexMatch
+- EndsWith
+
+Örneğin, aşağıdaki sorguyu ile değerlendirin `CONTAINS` . `CONTAINS` dizinleri kullanır, ancak bazen ilgili dizin eklendikten sonra bile aşağıdaki sorguyu çalıştırırken çok yüksek bir RU ücretine de devam edebilirsiniz.
 
 Özgün sorgu:
 
@@ -224,13 +237,32 @@ FROM c
 WHERE CONTAINS(c.town, "Sea")
 ```
 
-Sorgu şu ile güncelleştirildi `ORDER BY` :
+Sorgu yürütmeyi şunları ekleyerek geliştirebilirsiniz `ORDER BY` :
 
 ```sql
 SELECT *
 FROM c
 WHERE CONTAINS(c.town, "Sea")
 ORDER BY c.town
+```
+
+Aynı iyileştirme, ek filtrelerle sorgularda yardımcı olabilir. Bu durumda, yan tümcesine eşitlik filtreleriyle özellikler de eklemek en iyisidir `ORDER BY` .
+
+Özgün sorgu:
+
+```sql
+SELECT *
+FROM c
+WHERE c.name = "Samer" AND CONTAINS(c.town, "Sea")
+```
+
+`ORDER BY`(C.Name, c. Town) için [bir bileşik dizin](index-policy.md#composite-indexes) ekleyerek sorgu yürütmeyi geliştirebilirsiniz:
+
+```sql
+SELECT *
+FROM c
+WHERE c.name = "Samer" AND CONTAINS(c.town, "Sea")
+ORDER BY c.name, c.town
 ```
 
 ### <a name="understand-which-aggregate-queries-use-the-index"></a>Hangi toplu sorguların Dizin kullandığını anlayın

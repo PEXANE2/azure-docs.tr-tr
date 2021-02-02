@@ -10,12 +10,12 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: abd30c22aa2b4df20cdb795013768cd175cfef4c
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 69f7ec5114ad650f33eae740a54a3821b76ef2ac
+ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96780748"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99475548"
 ---
 # <a name="retrieve-logs-from-iot-edge-deployments"></a>IoT Edge dağıtımlarından günlükleri alma
 
@@ -51,8 +51,8 @@ Bu yöntem, aşağıdaki şemaya sahip bir JSON yükünü kabul eder:
              "id": "regex string",
              "filter": {
                 "tail": "int",
-                "since": "int",
-                "until": "int",
+                "since": "string",
+                "until": "string",
                 "loglevel": "int",
                 "regex": "regex string"
              }
@@ -70,8 +70,8 @@ Bu yöntem, aşağıdaki şemaya sahip bir JSON yükünü kabul eder:
 | ID | string | Modül adını sağlayan bir normal ifade. Bir Edge cihazında birden çok modülle eşleşir. [.Net normal ifade](/dotnet/standard/base-types/regular-expressions) biçimi bekleniyor. |
 | filtre | JSON bölümü | Kayıt düzeninde normal ifadeyle eşleşen modüller için uygulanacak günlük filtreleri `id` . |
 | Connect | tamsayı | En son 'den başlayarak almak için geçmişte bulunan günlük satırı sayısı. Seçim. |
-| getirildikten | tamsayı | Yalnızca bu kez bir süre (1 d, 90 m, 2 gün 3 saat 2 dakika), rfc3339 zaman damgası veya UNIX zaman damgası olarak günlükleri geri döndürür.  `tail`Ve `since` belirtilirse, Günlükler `since` önce değeri kullanılarak alınır. Sonra `tail` değer sonuca uygulanır ve nihai sonuç döndürülür. Seçim. |
-| Until | tamsayı | Yalnızca bir rfc3339 zaman damgası, UNIX zaman damgası veya süre (1 d, 90 m, 2 gün 3 saat 2 dakika) olarak belirtilen süreden önceki günlükleri döndürür. Seçim. |
+| getirildikten | string | Yalnızca bu kez bir süre (1 d, 90 m, 2 gün 3 saat 2 dakika), rfc3339 zaman damgası veya UNIX zaman damgası olarak günlükleri geri döndürür.  `tail`Ve `since` belirtilirse, Günlükler `since` önce değeri kullanılarak alınır. Sonra `tail` değer sonuca uygulanır ve nihai sonuç döndürülür. Seçim. |
+| Until | string | Yalnızca bir rfc3339 zaman damgası, UNIX zaman damgası veya süre (1 d, 90 m, 2 gün 3 saat 2 dakika) olarak belirtilen süreden önceki günlükleri döndürür. Seçim. |
 | günlük düzeyi | tamsayı | Günlük satırlarını belirtilen günlük düzeyinden küçük veya buna eşit olarak filtreleyin. Günlük satırları önerilen günlük biçimini izlemelidir ve [Syslog önem düzeyi](https://en.wikipedia.org/wiki/Syslog#Severity_level) standardını kullanmalıdır. Seçim. |
 | Regex | string | [.Net normal ifadeler](/dotnet/standard/base-types/regular-expressions) biçimini kullanarak belirtilen normal ifadeyle eşleşen içeriğe sahip olan günlük satırlarını filtreleyin. Seçim. |
 | encoding | string | `gzip` veya `none`. `none` varsayılan değerdir. |
@@ -82,7 +82,7 @@ Bu yöntem, aşağıdaki şemaya sahip bir JSON yükünü kabul eder:
 
 Günlüklerin başarılı bir şekilde alınması bir **"Status": 200** ve ardından, isteğiniz içinde belirttiğiniz ayarlara göre filtrelenmiş, modülünden alınan günlükleri içeren bir yük izler.
 
-Örnek:
+Örneğin:
 
 ```azurecli
 az iot hub invoke-module-method --method-name 'GetModuleLogs' -n <hub name> -d <device id> -m '$edgeAgent' --method-payload \
@@ -123,7 +123,7 @@ Azure portal Yöntem adı `GetModuleLogs` ve AŞAĞıDAKI JSON yüküyle yöntem
 
 ![Azure portal ' GetModuleLogs ' doğrudan metodunu çağır](./media/how-to-retrieve-iot-edge-logs/invoke-get-module-logs.png)
 
-Ayrıca, sıkıştırılmış bir yanıtı işlemek için, CLı çıkışını [gzip](https://en.wikipedia.org/wiki/Gzip)gibi Linux yardımcı programlarına de kanal oluşturarak yapabilirsiniz. Örnek:
+Ayrıca, sıkıştırılmış bir yanıtı işlemek için, CLı çıkışını [gzip](https://en.wikipedia.org/wiki/Gzip)gibi Linux yardımcı programlarına de kanal oluşturarak yapabilirsiniz. Örneğin:
 
 ```azurecli
 az iot hub invoke-module-method \
@@ -160,8 +160,8 @@ Bu yöntem, "sasUrl" anahtarının eklenmesiyle **GetModuleLogs** ile benzer bir
              "id": "regex string",
              "filter": {
                 "tail": "int",
-                "since": "int",
-                "until": "int",
+                "since": "string",
+                "until": "string",
                 "loglevel": "int",
                 "regex": "regex string"
              }
@@ -192,7 +192,7 @@ Günlükleri karşıya yükleme başarılı bir isteği, **"durum": 200** ve ard
 | message | string | Hata olduğunda ileti, aksi halde boş dize. |
 | correlationId | string   | Karşıya yükleme isteğinin durumunu sorgulama KIMLIĞI. |
 
-Örnek:
+Örneğin:
 
 Aşağıdaki çağrı, sıkıştırılmış JSON biçiminde tüm modüllerden son 100 günlük satırını karşıya yükler:
 
@@ -293,8 +293,8 @@ Bu yöntem, aşağıdaki şemaya sahip bir JSON yükünü kabul eder:
 |-|-|-|
 | schemaVersion | string | Ayarla `1.0` |
 | sasURL | dize (URI) | [Azure Blob depolama kapsayıcısına yazma erişimi olan paylaşılan erişim Imzası URL 'SI](/archive/blogs/jpsanders/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer) |
-| getirildikten | tamsayı | Yalnızca bu kez bir süre (1 d, 90 m, 2 gün 3 saat 2 dakika), rfc3339 zaman damgası veya UNIX zaman damgası olarak günlükleri geri döndürür. Seçim. |
-| Until | tamsayı | Yalnızca bir rfc3339 zaman damgası, UNIX zaman damgası veya süre (1 d, 90 m, 2 gün 3 saat 2 dakika) olarak belirtilen süreden önceki günlükleri döndürür. Seçim. |
+| getirildikten | string | Yalnızca bu kez bir süre (1 d, 90 m, 2 gün 3 saat 2 dakika), rfc3339 zaman damgası veya UNIX zaman damgası olarak günlükleri geri döndürür. Seçim. |
+| Until | string | Yalnızca bir rfc3339 zaman damgası, UNIX zaman damgası veya süre (1 d, 90 m, 2 gün 3 saat 2 dakika) olarak belirtilen süreden önceki günlükleri döndürür. Seçim. |
 | edgeRuntimeOnly | boolean | True ise yalnızca Edge aracısından, Edge hub 'ından ve Edge güvenlik arka plan programından günlükleri geri döndürür. Varsayılan: false.  Seçim. |
 
 > [!IMPORTANT]
@@ -316,7 +316,7 @@ Günlükleri karşıya yükleme başarılı olan bir istek, **"durum": 200** ve 
 | message | string | Hata olduğunda ileti, aksi halde boş dize. |
 | correlationId | string   | Karşıya yükleme isteğinin durumunu sorgulama KIMLIĞI. |
 
-Örnek:
+Örneğin:
 
 ```azurecli
 az iot hub invoke-module-method --method-name 'UploadSupportBundle' -n <hub name> -d <device id> -m '$edgeAgent' --method-payload \
@@ -374,7 +374,7 @@ Günlükleri karşıya yükleme başarılı olan bir istek, **"durum": 200** ve 
 | message | string | Hata olduğunda ileti, aksi halde boş dize. |
 | correlationId | string   | Karşıya yükleme isteğinin durumunu sorgulama KIMLIĞI. |
 
-Örnek:
+Örneğin:
 
 ```azurecli
 az iot hub invoke-module-method --method-name 'GetTaskStatus' -n <hub name> -d <device id> -m '$edgeAgent' --method-payload \

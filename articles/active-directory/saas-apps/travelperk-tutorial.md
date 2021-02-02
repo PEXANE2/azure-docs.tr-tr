@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/23/2020
 ms.author: jeedes
-ms.openlocfilehash: 23a741e96807acdb7b162b65597c651a2a6c3235
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: eefc47e1308dc5b59d8b57d7481a5250a7d2af93
+ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92509259"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99475751"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-travelperk"></a>Öğretici: Gezperk ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -31,7 +31,7 @@ Bu öğreticide, seyahat perk 'ı Azure Active Directory (Azure AD) ile tümleş
 Başlamak için aşağıdaki öğeler gereklidir:
 
 * Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
-* Seyahat perk çoklu oturum açma (SSO) etkin abonelik.
+* Premium aboneliği olan bir seyahat perk hesabı.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
@@ -55,7 +55,7 @@ Seyahatperk 'ın Azure AD 'ye tümleştirmesini yapılandırmak için, Galerinde
 
 ## <a name="configure-and-test-azure-ad-sso-for-travelperk"></a>Seyahatperk için Azure AD SSO 'yu yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak seyahat perk Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ile seyahat perk içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak seyahat perk Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ile seyahat perk içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu gezi perk ile yapılandırmak ve test etmek için aşağıdaki adımları gerçekleştirin:
 
@@ -85,9 +85,9 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
     c. **Yanıt URL 'si** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:`https://<COMPANY>.travelperk.com/accounts/saml2/callback/<APPLICATION_ID>/?acs`
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerleri gerçek oturum açma URL 'SI, yanıt URL 'SI ve tanımlayıcı ile güncelleştirin. Bu değerleri almak için [gezik istemci destek ekibine](mailto:trex@travelperk.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
+    > Bu değerler gerçek değildir. Bu değerleri gerçek oturum açma URL 'SI, yanıt URL 'SI ve tanımlayıcı ile güncelleştirin. Değerler seyahatperk hesabınızın içinde bulunabilir: **Şirket ayarları**  >  **tümleştirmelerine** git  >  **Çoklu oturum açma**. Yardım için [Seyahatperk HelpCenter](https://support.travelperk.com/hc/en-us/articles/360052450271-How-can-I-setup-SSO-for-Azure-SAML-)' ı ziyaret edin.
 
-1. Seyahat perk uygulamanız, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekliyor. Aşağıdaki ekran görüntüsünde, **emaposta/** **Kullanıcı. Mail**ile eşlendiği varsayılan özniteliklerin listesi gösterilmektedir. Seyahat perk uygulaması **Emae-postabağlantısının** **User. UserPrincipalName**ile eşlenmesini bekliyor, bu nedenle, **Düzenle** simgesine tıklayarak ve öznitelik eşlemesini değiştirerek öznitelik eşlemesini düzenlemeniz gerekir.
+1. Seyahat perk uygulamanız, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekliyor. Aşağıdaki ekran görüntüsünde varsayılan özniteliklerin listesi gösterilmektedir. Varsayılan eşlemede, **emadresi** **User. Mail** ile eşlenir. Ancak, Seyahatperk uygulaması **Emae-Postabağlantısının** **User. UserPrincipalName** ile eşlenmesini bekliyor. Seyahat perk için öznitelik eşlemesini düzenlemeniz gerekir: **Düzenle** simgesine tıklayın ve ardından öznitelik eşlemesini değiştirin. Bir özniteliği düzenlemek için, düzenleme modunu açmak üzere özniteliğe tıklamanız yeterlidir.
 
     ![image](common/default-attributes.png)
 

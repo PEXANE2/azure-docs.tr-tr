@@ -5,14 +5,14 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 01/21/2021
+ms.date: 02/02/2021
 ms.author: tisande
-ms.openlocfilehash: 4d2ad9cf6b47d8307d9652419b82de8ffcbcb099
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 79791bf2db888912d5c1f016f4bf357e76bddcba
+ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98681659"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99475109"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Azure Cosmos DB'de dizin oluşturma ilkeleri
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -42,10 +42,7 @@ Azure Cosmos DB, tüketilen toplam depolama alanı, hem veri boyutu hem de dizin
 
 * Dizin boyutu dizin oluşturma ilkesine bağlıdır. Tüm özellikler dizine alınmışsa, dizin boyutu veri boyutundan daha büyük olabilir.
 * Veriler silindiğinde, dizinler neredeyse sürekli olarak sıkıştırılır. Ancak, küçük veri silme işlemleri için Dizin boyutundaki azalmayı hemen gözlemleyebilirsiniz.
-* Dizin boyutu aşağıdaki durumlarda büyüyebilir:
-
-  * Bölüm bölme süresi-bölüm bölme işlemi tamamlandıktan sonra Dizin alanı serbest bırakılır.
-  * Bölüm bölündüğünde, Bölüm bölme sırasında dizin alanı geçici olarak artar. 
+* Fiziksel bölümler bölündüğünde Dizin boyutu geçici olarak genişleyebilir. Bölüm bölme işlemi tamamlandıktan sonra Dizin alanı serbest bırakılır.
 
 ## <a name="including-and-excluding-property-paths"></a><a id="include-exclude-paths"></a>Özellik yollarını dahil etme ve hariç tutma
 
@@ -186,33 +183,35 @@ Tüm gerekli sorgulara hizmeti sağlamak için dizin oluşturma ilkenizi özelle
 
 Bir sorgu iki veya daha fazla özelliğe filtre içeriyorsa, bu özellikler için bileşik bir dizin oluşturmak yararlı olabilir.
 
-Örneğin, iki özellik üzerinde bir eşitlik filtresi bulunan aşağıdaki sorguyu göz önünde bulundurun:
+Örneğin, hem eşitlik hem de Aralık filtresi içeren aşağıdaki sorguyu göz önünde bulundurun:
 
 ```sql
-SELECT * FROM c WHERE c.name = "John" AND c.age = 18
+SELECT *
+FROM c
+WHERE c.name = "John" AND c.age > 18
 ```
 
-Bu sorgu daha verimli olacaktır, daha az zaman alır ve bir bileşik dizinden yararlanıyorsa daha az RU (ad ASC, Age ASC).
+Bu sorgu daha verimli olacaktır, daha az zaman alır ve üzerinde bileşik bir dizinden yararlanıyorsa daha az RU `(name ASC, age ASC)` .
 
-Aralık filtreleri içeren sorgular da bileşik bir dizinle iyileştirilebilir. Ancak, sorgu yalnızca tek bir Aralık filtresine sahip olabilir. Aralık filtreleri,,, `>` `<` ve içerir `<=` `>=` `!=` . Aralık filtresi, en son bileşik dizinde tanımlanmalıdır.
+Birden çok Aralık filtresi içeren sorgular, bileşik bir dizinle da iyileştirilebilir. Ancak, her bir bileşik dizin yalnızca tek bir Aralık filtresini iyileştirebilirler. Aralık filtreleri,,, `>` `<` ve içerir `<=` `>=` `!=` . Aralık filtresi, en son bileşik dizinde tanımlanmalıdır.
 
-Aşağıdaki sorguyu hem eşitlik hem de Aralık filtreleriyle göz önünde bulundurun:
+Aşağıdaki sorguyu bir eşitlik filtresi ve iki Aralık filtresi ile birlikte düşünün:
 
 ```sql
-SELECT * FROM c WHERE c.name = "John" AND c.age > 18
+SELECT *
+FROM c
+WHERE c.name = "John" AND c.age > 18 AND c._ts > 1612212188
 ```
 
-Bu sorgu, üzerinde bileşik bir dizin ile daha verimli olacaktır (ad ASC, Age ASC). Ancak, sorgu (Age ASC, ad ASC) üzerinde bir bileşik dizin kullanmaz, çünkü eşitlik filtreleri ilk olarak bileşik dizinde tanımlanmalıdır.
+Bu sorgu, ve üzerindeki bileşik bir dizinle daha etkili olacaktır `(name ASC, age ASC)` `(name ASC, _ts ASC)` . Ancak, sorgu üzerinde bir bileşik dizin kullanılmaz, `(age ASC, name ASC)` çünkü eşitlik filtreleriyle özellikler ilk olarak bileşik dizinde tanımlanmalıdır. `(name ASC, age ASC, _ts ASC)`Her bileşik dizin yalnızca tek bir Aralık filtresini iyileştirebileceğinizden, üzerinde tek bir bileşik dizin yerine iki ayrı bileşik dizin gereklidir.
 
 Birden çok özelliklerde filtre içeren sorgular için Bileşik dizinler oluşturulurken aşağıdaki noktalar kullanılır
 
+- Filtre ifadeleri birden çok bileşik dizin kullanabilir.
 - Sorgunun filtresindeki özellikler, bileşik dizinindekilerle eşleşmelidir. Bir özellik bileşik dizindaysa, ancak sorguya filtre olarak eklenmemelidir, sorgu bileşik dizinden yararlanmaz.
 - Bir sorguda, bir bileşik dizinde tanımlanmayan ek özellikler varsa, sorguyu değerlendirmek için bileşik ve Aralık dizinlerinin bir birleşimi kullanılır. Bu, Aralık dizinleri kullanılarak özel olarak daha az RU gerektirir.
-- Bir özelliğin Aralık filtresi varsa (,, `>` , `<` `<=` `>=` veya `!=` ), bu özellik bileşik dizinde son olarak tanımlanmalıdır. Bir sorguda birden fazla Aralık filtresi varsa, bileşik dizinden yararlanmaz.
+- Bir özelliğin Aralık filtresi varsa (,, `>` , `<` `<=` `>=` veya `!=` ), bu özellik bileşik dizinde son olarak tanımlanmalıdır. Bir sorguda birden fazla Aralık filtresi varsa, bu birden çok bileşik dizinlerden yararlanabilir.
 - Birden çok filtre içeren sorguları iyileştirmek için bir bileşik dizin oluştururken, `ORDER` bileşik dizinin sonuçları üzerinde hiçbir etkisi olmayacaktır. Bu özellik isteğe bağlıdır.
-- Birden çok özelliklerde filtre içeren bir sorgu için bileşik dizin tanımlamadıysanız sorgu yine de başarılı olur. Ancak, sorgunun RU maliyeti bir bileşik dizinle azaltılabilir.
-- Toplamaların her ikisi de (örneğin, sayı veya toplam) ve filtreler bileşik dizinlerden de faydalanır.
-- Filtre ifadeleri birden çok bileşik dizin kullanabilir.
 
 Bir bileşik dizinin özellikler adı, yaşı ve zaman damgasında tanımlandığı aşağıdaki örnekleri göz önünde bulundurun:
 
@@ -227,43 +226,76 @@ Bir bileşik dizinin özellikler adı, yaşı ve zaman damgasında tanımlandı�
 | ```(name ASC, age ASC, timestamp ASC)``` | ```SELECT * FROM c WHERE c.name = "John" AND c.age < 18 AND c.timestamp = 123049923``` | ```No```            |
 | ```(name ASC, age ASC) and (name ASC, timestamp ASC)``` | ```SELECT * FROM c WHERE c.name = "John" AND c.age < 18 AND c.timestamp > 123049923``` | ```Yes```            |
 
-### <a name="queries-with-a-filter-as-well-as-an-order-by-clause"></a>Filtresi ve ORDER BY yan tümcesi olan sorgular
+### <a name="queries-with-a-filter-and-order-by"></a>Filtre ve SıRALAMA ölçütü olan sorgular
 
 Bir sorgu bir veya daha fazla özellik üzerinde filtreleyip ORDER BY yan tümcesinde farklı özelliklere sahipse, filtrenin içindeki özellikleri yan tümcesine eklemek yararlı olabilir `ORDER BY` .
 
-Örneğin, filtreye ORDER BY yan tümcesine eklenen özellikleri ekleyerek, bir bileşik dizinden yararlanmak için aşağıdaki sorgu yeniden yazılabilir:
+Örneğin, bir filtre içindeki özellikleri `ORDER BY` yan tümcesine ekleyerek, bir bileşik dizinden yararlanmak için aşağıdaki sorgu yeniden yazılabilir:
 
 Aralık dizinini kullanan sorgu:
 
 ```sql
-SELECT * FROM c WHERE c.name = "John" ORDER BY c.timestamp
+SELECT *
+FROM c 
+WHERE c.name = "John" 
+ORDER BY c.timestamp
 ```
 
 Bileşik dizin kullanarak sorgula:
 
 ```sql
-SELECT * FROM c WHERE c.name = "John" ORDER BY c.name, c.timestamp
+SELECT * 
+FROM c 
+WHERE c.name = "John"
+ORDER BY c.name, c.timestamp
 ```
 
-Aynı model ve sorgu iyileştirmeleri, birden çok eşitlik filtresi içeren sorgular için genelleştirilerek bulunabilir:
+Aynı sorgu iyileştirmeleri, filtre içeren herhangi bir sorgu için genelleştirilemez `ORDER BY` , tek tek bileşik dizinlerin yalnızca en çok bir Aralık filtresini destekleyebileceğini aklınızda bulundurun.
 
 Aralık dizinini kullanan sorgu:
 
 ```sql
-SELECT * FROM c WHERE c.name = "John", c.age = 18 ORDER BY c.timestamp
+SELECT * 
+FROM c 
+WHERE c.name = "John" AND c.age = 18 AND c.timestamp > 1611947901 
+ORDER BY c.timestamp
 ```
 
 Bileşik dizin kullanarak sorgula:
 
 ```sql
-SELECT * FROM c WHERE c.name = "John", c.age = 18 ORDER BY c.name, c.age, c.timestamp
+SELECT * 
+FROM c 
+WHERE c.name = "John" AND c.age = 18 AND c.timestamp > 1611947901 
+ORDER BY c.name, c.age, c.timestamp
+```
+
+Bunlara ek olarak, sistem işlevleriyle ve SıRASıYLA yapılan sorguları iyileştirmek için bileşik dizinleri kullanabilirsiniz:
+
+Aralık dizinini kullanan sorgu:
+
+```sql
+SELECT * 
+FROM c 
+WHERE c.firstName = "John" AND Contains(c.lastName, "Smith", true) 
+ORDER BY c.lastName
+```
+
+Bileşik dizin kullanarak sorgula:
+
+```sql
+SELECT * 
+FROM c 
+WHERE c.firstName = "John" AND Contains(c.lastName, "Smith", true) 
+ORDER BY c.firstName, c.lastName
 ```
 
 Bir sorguyu bir filtre ve yan tümcesiyle iyileştirmek için Bileşik dizinler oluşturulurken aşağıdaki noktalar kullanılır `ORDER BY` :
 
-* Sorgu, özelliklere filtre uygular, bu, ilk olarak `ORDER BY` yan tümcesine eklenmelidir.
-* Sorgu birden çok özelliğe filtre uygular, eşitlik filtreleri `ORDER BY` yan tümcedeki ilk Özellikler olmalıdır
 * Bir özellikte filtre içeren bir sorgu üzerinde bir bileşik dizin tanımlamadıysanız ve `ORDER BY` farklı bir özellik kullanarak ayrı bir yan tümce kullanırsanız, sorgu yine de başarılı olur. Ancak, özellikle `ORDER BY` yan tümcesindeki özelliğin yüksek bir kardinalite özelliği varsa, SORGUNUN ru maliyeti bileşik bir dizinle azaltılabilir.
+* Sorgu, özelliklere filtre uygular, bu, ilk olarak `ORDER BY` yan tümcesine eklenmelidir.
+* Sorgu birden çok özelliğe filtre uygular, eşitlik filtreleri yan tümcesindeki ilk Özellikler olmalıdır `ORDER BY` .
+* Sorgu birden çok özellik üzerinde filtreleyip, bileşik dizin başına en fazla bir Aralık filtresi veya sistem işleviniz olabilir. Aralık filtresinde veya sistem işlevinde kullanılan özellik, en son bileşik dizinde tanımlanmalıdır.
 * Birden çok özelliği olan sorgular için Bileşik dizinler oluşturmaya yönelik tüm hususlar ve `ORDER BY` birden çok özelliklerde filtre içeren sorgular hala geçerlidir.
 
 
@@ -276,6 +308,7 @@ Bir sorguyu bir filtre ve yan tümcesiyle iyileştirmek için Bileşik dizinler 
 | ```(name ASC, timestamp ASC)```          | ```SELECT * FROM c WHERE c.name = "John" ORDER BY c.timestamp ASC``` | ```No```   |
 | ```(age ASC, name ASC, timestamp ASC)``` | ```SELECT * FROM c WHERE c.age = 18 and c.name = "John" ORDER BY c.age ASC, c.name ASC,c.timestamp ASC``` | `Yes` |
 | ```(age ASC, name ASC, timestamp ASC)``` | ```SELECT * FROM c WHERE c.age = 18 and c.name = "John" ORDER BY c.timestamp ASC``` | `No` |
+
 
 ## <a name="modifying-the-indexing-policy"></a>Dizin oluşturma ilkesini değiştirme
 

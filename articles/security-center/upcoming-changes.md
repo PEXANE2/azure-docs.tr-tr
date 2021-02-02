@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/25/2021
 ms.author: memildin
-ms.openlocfilehash: 83c1d8ac316703d9d22d0716c86c5731c3db7133
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.openlocfilehash: d5de16c8156762a229d6c707080bc197dc206a7c
+ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99226480"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99475599"
 ---
 # <a name="important-upcoming-changes-to-azure-security-center"></a>Azure Güvenlik Merkezi 'Nde yapılan önemli değişiklikler
 
@@ -38,7 +38,7 @@ En son sürüm notlarını arıyorsanız, bunları [Azure Güvenlik Merkezi 'nde
 
 ### <a name="kubernetes-workload-protection-recommendations-will-soon-be-released-for-general-availability-ga"></a>Kubernetes iş yükü koruma önerileri yakında genel kullanılabilirlik (GA) için kullanıma sunulacaktır
 
-**Değişikliğin tahmini tarihi:** Ocak 2021
+**Değişikliğin tahmini tarihi:** Şubat 2021
 
 [Kubernetes iş yüklerinizi koruma](kubernetes-workload-protections.md) bölümünde açıklanan Kubernetes iş yükü koruma önerileri şu anda önizleme aşamasındadır. Bir öneri önizlemede olduğunda, bir kaynağı sağlıksız olarak işlemez ve güvenli puanınızın hesaplamalarına dahil değildir.
 

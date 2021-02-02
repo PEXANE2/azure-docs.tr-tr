@@ -246,6 +246,8 @@
               href: search-howto-index-json-blobs.md
             - name: Şifrelenmiş blobları dizine ekleme
               href: search-howto-index-encrypted-blobs.md
+            - name: Blob içeriği için meta veri özellikleri
+              href: search-blob-metadata-properties.md
         - name: Azure Tabloları
           href: search-howto-indexing-azure-tables.md
         - name: Azure Cosmos DB

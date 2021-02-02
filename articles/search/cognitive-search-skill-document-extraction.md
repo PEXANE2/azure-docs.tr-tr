@@ -8,12 +8,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.author: chalton
-ms.openlocfilehash: 5098d897d84ff6af31d430c0ddd2e26d8d6b08a7
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: d6dd2b891cb3bf9ebb5442f541021c20a34ce1a1
+ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97814304"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99474855"
 ---
 # <a name="document-extraction-cognitive-skill"></a>Belge ayıklama bilişsel yeteneği
 
@@ -37,7 +37,7 @@ Parametreler büyük/küçük harfe duyarlıdır.
 | Girişler | İzin Verilen Değerler | Açıklama |
 |-----------------|----------------|-------------|
 | `parsingMode`   | `default` <br/> `text` <br/> `json`  | `default`Saf metin veya JSON olmayan dosyalardan belge ayıklama için olarak ayarlayın. `text`Düz metin dosyalarındaki performansı artırmak için olarak ayarlayın. `json`JSON dosyalarından yapılandırılmış içeriği ayıklamak için olarak ayarlayın. `parsingMode`Açıkça tanımlanmamışsa, olarak ayarlanır `default` . |
-| `dataToExtract` | `contentAndMetadata` <br/> `allMetadata` | Her bir `contentAndMetadata` dosyanın tüm meta verilerini ve metin içeriğini ayıklamak için olarak ayarlayın. `allMetadata`Yalnızca [içerik türü belirli meta verileri](search-howto-indexing-azure-blob-storage.md#ContentSpecificMetadata) ayıklamak için olarak ayarlanır (örneğin, yalnızca. png dosyalarına özgü meta veriler). `dataToExtract`Açıkça tanımlanmamışsa, olarak ayarlanır `contentAndMetadata` . |
+| `dataToExtract` | `contentAndMetadata` <br/> `allMetadata` | Her bir `contentAndMetadata` dosyanın tüm meta verilerini ve metin içeriğini ayıklamak için olarak ayarlayın. `allMetadata` [İçerik türü için yalnızca meta veri özelliklerini](search-blob-metadata-properties.md) ayıklamak üzere olarak ayarlanır (örneğin, yalnızca. png dosyalarına özgü meta veriler). `dataToExtract`Açıkça tanımlanmamışsa, olarak ayarlanır `contentAndMetadata` . |
 | `configuration` | Aşağıya bakın. | Belge ayıklamanın nasıl gerçekleştirileceğini belirten isteğe bağlı parametrelerin bir sözlüğü. Desteklenen yapılandırma özelliklerinin açıklamaları için aşağıdaki tabloya bakın. |
 
 | Yapılandırma parametresi   | İzin Verilen Değerler | Açıklama |

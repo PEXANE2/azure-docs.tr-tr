@@ -4,12 +4,12 @@ description: Azure Kubernetes Service’te bir küme için Azure Active Director
 services: container-service
 ms.topic: conceptual
 ms.date: 06/16/2020
-ms.openlocfilehash: c6f50b152174cee1ee2cc37baa22432957107d2c
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: b7f8060666612049026f2602ab7c8511aea22757
+ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97614804"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99475446"
 ---
 # <a name="service-principals-with-azure-kubernetes-service-aks"></a>Azure Kubernetes Hizmeti (AKS) ile hizmet sorumluları
 
@@ -128,7 +128,7 @@ AKS ve Azure AD hizmet sorumlularını kullanılırken aşağıdaki noktalara di
 - Ek AKS CLı komutlarına özel olarak bir hizmet sorumlusu geçirmezseniz, adresinde bulunan varsayılan hizmet sorumlusu `~/.azure/aksServicePrincipal.json` kullanılır.  
 - Ayrıca, isteğe bağlı olarak dosyadaki aksServicePrincipal.jskaldırabilirsiniz ve AKS 'ler yeni bir hizmet sorumlusu oluşturur.
 - [az aks create][az-aks-create] komutu tarafından oluşturulan bir AKS kümesini sildiğinizde, otomatik olarak oluşturulan hizmet sorumlusu silinmez.
-    - Hizmet sorumlusunu silmek için, kümenizin *Serviceprincipalprofile. ClientID* ' yi sorgulayın ve [az ad App Delete][az-ad-app-delete]ile silin. Aşağıdaki kaynak grubunu ve küme adlarını kendi değerlerinizle değiştirin:
+    - Hizmet sorumlusunu silmek için, kümenizin *Serviceprincipalprofile. ClientID* sorgusuna yönelik sorguyu yapın ve [az ad SP Delete] [az-ad-SP-Delete] ile silin. Aşağıdaki kaynak grubunu ve küme adlarını kendi değerlerinizle değiştirin:
 
         ```azurecli
         az ad sp delete --id $(az aks show -g myResourceGroup -n myAKSCluster --query servicePrincipalProfile.clientId -o tsv)

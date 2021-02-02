@@ -3,18 +3,20 @@ title: Azure VM 'lerde performansı izleme-Azure Application Insights
 description: Azure VM ve Azure sanal makine ölçek kümeleri için uygulama performansı izleme. Grafik yükleme ve yanıt süresi, bağımlılık bilgileri ve performans üzerinde Uyarılar ayarlama.
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.openlocfilehash: 0ea005427348e5265867a9e7ee805b0e6aa202f2
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 01583cf5ecb85e4f66538afaba6984bff455ea99
+ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98933909"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99475463"
 ---
 # <a name="deploy-the-azure-monitor-application-insights-agent-on-azure-virtual-machines-and-azure-virtual-machine-scale-sets"></a>Azure sanal makineler ve Azure sanal makine ölçek kümelerinde Azure Izleyici Application Insights aracısını dağıtma
 
-[Azure sanal makinelerinde](https://azure.microsoft.com/services/virtual-machines/) ve [Azure sanal makine ölçek kümelerinde](../../virtual-machine-scale-sets/index.yml) çalışan .NET tabanlı Web uygulamalarınızda izlemenin etkinleştirilmesi artık hiç olmadığı kadar kolay. Kodunuzda değişiklik yapmadan Application Insights kullanmanın avantajlarından yararlanın.
+[Azure sanal makinelerinde](https://azure.microsoft.com/services/virtual-machines/) ve [Azure sanal makine ölçek kümelerinde](../../virtual-machine-scale-sets/index.yml) çalışan .NET veya Java tabanlı Web uygulamalarınız için izlemeyi etkinleştirmek artık hiç olmadığı kadar kolay. Kodunuzda değişiklik yapmadan Application Insights kullanmanın avantajlarından yararlanın.
 
 Bu makale, Application Insights Aracısı kullanarak Application Insights izlemeyi etkinleştirme konusunda size kılavuzluk eder ve büyük ölçekli dağıtımlar için işlemi otomatikleştirmek üzere ön kılavuz sağlar.
+> [!IMPORTANT]
+> Azure VM 'lerde ve VMSS üzerinde çalışan **Java** tabanlı uygulamalar, genel kullanıma sunulan **[Application Insights Java 3,0 aracısıyla](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)** izlenir.
 
 > [!IMPORTANT]
 > **Azure VM 'lerinde ve VMSS** 'de çalışan ASP.NET uygulamaları için Azure Application Insights Aracısı Şu anda genel önizlemededir. **Şirket içinde** çalışan ASP.NET uygulamalarınızı izlemek için, genel olarak kullanılabilen ve tam olarak desteklenen [Şirket Içi sunucular Için Azure Application Insights aracısını](./status-monitor-v2-overview.md)kullanın.
@@ -25,23 +27,47 @@ Bu makale, Application Insights Aracısı kullanarak Application Insights izleme
 
 Azure sanal makineleri ve Azure sanal makine ölçek kümeleri barındırılan uygulamalar için uygulama izlemeyi etkinleştirmenin iki yolu vardır:
 
-* Application Insights Aracısı aracılığıyla **codeless**
-    * Bu yöntem etkinleştirilmesi en kolayıdır ve gelişmiş yapılandırma gerekmez. Genellikle "çalışma zamanı" izleme olarak adlandırılır.
+### <a name="auto-inctrumentation-via-application-insights-agent"></a>Application Insights Aracısı aracılığıyla otomatik inctrumentation
 
-    * Azure sanal makineleri ve Azure sanal makine ölçek kümeleri için, bu izleme düzeyini en az etkinleştirmenize önerilir. Bu tarihten sonra, özel senaryonuza bağlı olarak, el ile izleme gerekip gerekmediğini değerlendirebilirsiniz.
+* Bu yöntem etkinleştirilmesi en kolayıdır ve gelişmiş yapılandırma gerekmez. Genellikle "çalışma zamanı" izleme olarak adlandırılır.
 
-    * Application Insights Aracısı .NET SDK 'Sı ile aynı bağımlılık sinyallerini otomatik olarak toplar. Daha fazla bilgi için bkz. [bağımlılık otomatik koleksiyonu](./auto-collect-dependencies.md#net) .
-        > [!NOTE]
-        > Şu anda yalnızca .NET IIS tarafından barındırılan uygulamalar desteklenir. Bir Azure sanal makinelerinde ve sanal makine ölçek kümelerinde barındırılan ASP.NET Core, Java ve Node.js uygulamalarını işaretlemek için bir SDK kullanın.
-
-* SDK aracılığıyla **kod tabanlı**
-
-    * Bu yaklaşım çok daha özelleştirilebilir, ancak [APPLICATION INSIGHTS SDK NuGet paketlerine bağımlılık eklemeyi](./asp-net.md)gerektirir. Bu yöntem, ayrıca paketlerin en son sürümüne yönelik güncelleştirmeleri yönetmeniz anlamına gelir.
-
-    * Aracı tabanlı izleme ile varsayılan olarak yakalanmayan olayları/bağımlılıkları izlemek için özel API çağrıları yapmanız gerekiyorsa, bu yöntemi kullanmanız gerekir. Daha fazla bilgi edinmek için [özel olaylar ve ölçümler makalesine yönelik API](./api-custom-events-metrics.md) 'ye göz atın.
+* Azure sanal makineleri ve Azure sanal makine ölçek kümeleri için, bu izleme düzeyini en az etkinleştirmenize önerilir. Bu tarihten sonra, özel senaryonuza bağlı olarak, el ile izleme gerekip gerekmediğini değerlendirebilirsiniz.
 
 > [!NOTE]
-> Hem aracı tabanlı izleme hem de el ile SDK tabanlı izleme algılanırsa yalnızca el ile izleme ayarları kabul edilir. Bu, yinelenen verilerin gönderilmesini önlemektir. Bu konuda daha fazla bilgi edinmek için aşağıdaki [sorun giderme bölümüne](#troubleshooting) bakın.
+> Otomatik izleme şu anda yalnızca .NET IIS tarafından barındırılan uygulamalar ve Java için kullanılabilir. Bir Azure sanal makinelerinde ve sanal makine ölçek kümelerinde barındırılan ASP.NET Core, Node.js ve Python uygulamalarını işaretlemek için bir SDK kullanın.
+
+
+#### <a name="net"></a>.NET
+
+  * Application Insights Aracısı .NET SDK 'Sı ile aynı bağımlılık sinyallerini otomatik olarak toplar. Daha fazla bilgi için bkz. [bağımlılık otomatik koleksiyonu](./auto-collect-dependencies.md#net) .
+        
+#### <a name="java"></a>Java
+  * Java için **[Application Insights java 3,0 Aracısı](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)** önerilen yaklaşımdır. En popüler kitaplıklar ve çerçeveler ve Günlükler ve bağımlılıklar, çok sayıda [ek yapılandırma](https://docs.microsoft.com/azure/azure-monitor/app/java-standalone-config) ile [otomatik olarak toplanır](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent#auto-collected-requests-dependencies-logs-and-metrics)
+
+### <a name="code-based-via-sdk"></a>SDK aracılığıyla kod tabanlı
+    
+#### <a name="net"></a>.NET
+  * .NET uygulamaları için bu yaklaşım çok daha özelleştirilebilirdir, ancak [APPLICATION INSIGHTS SDK NuGet paketlerine bağımlılık eklemeyi](./asp-net.md)gerektirir. Bu yöntem, ayrıca paketlerin en son sürümüne yönelik güncelleştirmeleri yönetmeniz anlamına gelir.
+
+  * Aracı tabanlı izleme ile varsayılan olarak yakalanmayan olayları/bağımlılıkları izlemek için özel API çağrıları yapmanız gerekiyorsa, bu yöntemi kullanmanız gerekir. Daha fazla bilgi edinmek için [özel olaylar ve ölçümler makalesine yönelik API](./api-custom-events-metrics.md) 'ye göz atın.
+
+    > [!NOTE]
+    > Yalnızca .NET uygulamaları için-hem aracı tabanlı izleme hem de el ile SDK tabanlı izleme algılanırsa yalnızca el ile izleme ayarları kabul edilir. Bu, yinelenen verilerin gönderilmesini önlemektir. Bu konuda daha fazla bilgi edinmek için aşağıdaki [sorun giderme bölümüne](#troubleshooting) bakın.
+
+#### <a name="net-core"></a>.NET Core
+.NET Core uygulamalarını izlemek için [SDK](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) 'yı kullanın 
+
+#### <a name="java"></a>Java 
+
+Java uygulamaları için ek özel telemetri gerekiyorsa, bkz. [kullanılabilir](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent#send-custom-telemetry-from-your-application), [Özel boyutlar](https://docs.microsoft.com/azure/azure-monitor/app/java-standalone-config#custom-dimensions)ekleme veya [telemetri işlemcileri](https://docs.microsoft.com/azure/azure-monitor/app/java-standalone-telemetry-processors)kullanma. 
+
+#### <a name="nodejs"></a>Node.js
+
+Node.js uygulamanızı işaretlemek için [SDK 'yı](https://docs.microsoft.com/azure/azure-monitor/app/nodejs)kullanın.
+
+#### <a name="python"></a>Python
+
+Python uygulamalarını izlemek için [SDK](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python)'yı kullanın.
 
 ## <a name="manage-application-insights-agent-for-net-applications-on-azure-virtual-machines-using-powershell"></a>PowerShell kullanarak Azure sanal makinelerinde .NET uygulamaları için Application Insights aracısını yönetme
 
@@ -168,7 +194,7 @@ Get-AzResource -ResourceId /subscriptions/<mySubscriptionId>/resourceGroups/<myR
 Azure sanal makinelerinde ve sanal makine ölçek kümelerinde çalışan .NET uygulamaları için Application Insights Izleme Aracısı uzantısı için sorun giderme ipuçları bulabilirsiniz.
 
 > [!NOTE]
-> .NET Core, Java ve Node.js uygulamaları, el ile SDK tabanlı araçlar aracılığıyla yalnızca Azure sanal makinelerinde ve Azure sanal makine ölçek kümelerinde desteklenir ve bu nedenle aşağıdaki adımlar bu senaryolara uygulanmaz.
+> .NET Core, Node.js ve Python uygulamaları, el ile SDK tabanlı araçlar aracılığıyla yalnızca Azure sanal makinelerinde ve Azure sanal makine ölçek kümelerinde desteklenir ve bu nedenle aşağıdaki adımlar bu senaryolara uygulanmaz.
 
 Uzantı yürütme çıktısı, aşağıdaki dizinlerde bulunan dosyalara kaydedilir:
 ```Windows

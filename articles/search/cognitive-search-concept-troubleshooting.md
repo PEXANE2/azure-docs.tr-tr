@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 1ab366cddbabf7e6d574189892e779ab49f6fad8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5882cc949d88e8c2a4102362cf5d2a3613e1d714
+ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91403390"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99475497"
 ---
 # <a name="tips-for-ai-enrichment-in-azure-cognitive-search"></a>Azure Bilişsel Arama AI zenginleştirme ipuçları
 
@@ -100,7 +100,7 @@ Görüntü analizi, hatta basit durumlar için hesaplama açısından yoğun old
 
 Maksimum çalışma süresi katmana göre farklılık gösterir: Ücretsiz katmanda birkaç dakika, faturalandırılabilir katmanda 24 saat dizin oluşturma. İstek üzerine işlenmek üzere 24 saatlik bir dönemde işlem tamamlanamazsa, dizin oluşturucunun, kaldığınız yerden işlemeyi sağlamak için bir zamanlamaya geçin. 
 
-Zamanlanan Dizin oluşturucular için, dizin oluşturma en son bilinen iyi belgede zamanlamaya devam eder. Yinelenen bir zamanlama kullanarak, Dizin Oluşturucu, tüm işlenmemiş görüntüler işlenene kadar bir saat veya gün boyunca görüntü biriktirme listesi aracılığıyla kendi yolunu kullanabilir. Zamanlama sözdizimi hakkında daha fazla bilgi için bkz. [3. Adım: Create-a-Indexer](search-howto-indexing-azure-blob-storage.md#step-3-create-an-indexer) veya bkz. [Azure bilişsel arama için Dizin oluşturucuyu zamanlama](search-howto-schedule-indexers.md).
+Zamanlanan Dizin oluşturucular için, dizin oluşturma en son bilinen iyi belgede zamanlamaya devam eder. Yinelenen bir zamanlama kullanarak, Dizin Oluşturucu, tüm işlenmemiş görüntüler işlenene kadar bir saat veya gün boyunca görüntü biriktirme listesi aracılığıyla kendi yolunu kullanabilir. Zamanlama sözdizimi hakkında daha fazla bilgi için bkz. [Dizin Oluşturucu zamanlama](search-howto-schedule-indexers.md).
 
 > [!NOTE]
 > Bir Dizin Oluşturucu belirli bir zamanlamaya göre ayarlanırsa ancak her çalıştırıldığında aynı belgede tekrar tekrar bir kez başarısız olursa, Dizin Oluşturucu, yeniden ilerleme yapana kadar daha az sıklıkta (en fazla 24 saatte bir) çalışmaya başlar.  Dizin oluşturucunun belirli bir noktada takılmasına neden olan sorunu düzelttiğini düşünüyorsanız, dizin oluşturucunun isteğe bağlı olarak çalıştırılmasını gerçekleştirebilir ve başarıyla ilerleme yapıyorsa, Dizin Oluşturucu ayarlanan zamanlama aralığına yeniden döner.
@@ -115,6 +115,6 @@ Portal tabanlı dizin oluşturma için (hızlı başlangıç bölümünde açık
 
 + [Hızlı başlangıç: portalda bir AI zenginleştirme işlem hattı oluşturma](cognitive-search-quickstart-blob.md)
 + [Öğretici: AI zenginleştirme REST API 'Lerini öğrenin](cognitive-search-tutorial-blob.md)
-+ [Veri kaynağı kimlik bilgilerini belirtme](search-howto-indexing-azure-blob-storage.md#how-to-specify-credentials)
++ [Blob Dizinleyicileri yapılandırma](search-howto-indexing-azure-blob-storage.md)
 + [Beceri tanımlama](cognitive-search-defining-skillset.md)
 + [Zenginleştirilmiş alanları bir dizinle eşleme](cognitive-search-output-field-mapping.md)

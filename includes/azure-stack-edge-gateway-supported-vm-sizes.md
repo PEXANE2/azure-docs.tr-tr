@@ -4,16 +4,16 @@ ms.service: databox
 ms.topic: include
 ms.date: 12/09/2020
 ms.author: alkohli
-ms.openlocfilehash: 9ea5fb26a52c967c5296f1a83976e748c86c9e18
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: ae7cb05aeda296ffb3aa9d7f6e2c88fe59364975
+ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97763884"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99475057"
 ---
-VM boyutu, sanal makine için kullanılabilir hale getirilen CPU, GPU ve bellek gibi işlem kaynaklarının miktarını belirler. Sanal makinelerin iş yükü için uygun bir VM boyutu kullanılarak oluşturulması gerekir. Tüm makineler aynı donanımda çalışmaya rağmen, makine boyutları disk erişimi için farklı sınırlara sahiptir ve bu, VM 'leriniz genelinde genel disk erişimini yönetmenize yardımcı olabilir. İş yükü artarsa, mevcut sanal makine de yeniden boyutlandırılabilir.
+VM boyutu, sanal makine için kullanılabilir hale getirilen işlem kaynaklarının (CPU, GPU ve bellek gibi) miktarını belirler. İş yükü için uygun bir VM boyutu kullanarak sanal makineler oluşturmalısınız. Tüm makineler aynı donanımda çalışmaya rağmen, makine boyutları disk erişimi için farklı sınırlara sahip olur. Bu, VM 'leriniz genelinde genel disk erişimini yönetmenize yardımcı olabilir. Bir iş yükü arttıkça, var olan bir sanal makineyi de yeniden boyutlandırabilirsiniz.
 
-Aşağıdaki VM 'Ler Azure Stack Edge cihazında oluşturma için desteklenir.
+Aşağıdaki VM 'Ler Azure Stack Edge cihazınızda oluşturma için desteklenir.
 
 ### <a name="dv2-series"></a>Dv2 Serisi
 |Boyut     |Sanal işlemci     |Bellek (GiB) | Kaynak disk boyutu (GiB)  | İşletim sistemi disk boyutu (GiB) | Maksimum veri diskleri | En fazla NIC |
@@ -40,7 +40,7 @@ Aşağıdaki VM 'Ler Azure Stack Edge cihazında oluşturma için desteklenir.
 |**Standard_DS13_v2**|8   |56  |112|32000 |1000 |16 |8 |
 
 
-Daha fazla bilgi için [genel AMAÇLı VM boyutlarında Dv2 serisi](../articles/virtual-machines/dv2-dsv2-series.md#dv2-series)' ne gidin.
+Daha fazla bilgi için bkz. [dv2 and DSv2-Series](../articles/virtual-machines/dv2-dsv2-series.md#dv2-series).
 
 ### <a name="ncast4_v3-series-preview"></a>NCasT4_v3 serisi (Önizleme)
 
@@ -51,7 +51,7 @@ Bu boyutlar, cihazınızdaki GPU VM 'Leri için desteklenir ve yoğun işlem yo�
 |**Standard_NC4as_T4_v3** |4   |28  |180   |1000|1 |16   |4 |
 |**Standard_NC8as_T4_v3** |8   |56  |360   |1000|1 |16  |8 |
 
-Daha fazla bilgi için GPU için [IYILEŞTIRILMIŞ VM boyutlarında NCasT4_v3 serisi](../articles/virtual-machines/nct4-v3-series.md)' ne gidin.
+Daha fazla bilgi için bkz. [NCasT4_v3 serisi](../articles/virtual-machines/nct4-v3-series.md).
 
 ### <a name="f-series"></a>F Serisi
 
@@ -70,5 +70,5 @@ Bu seriler hesaplama iş yükleri için iyileştirilmiştir ve Intel Xeon işlem
 | Standard_F8s | 8 | 16 |32 |1000| 32 |  8 |
 | Standard_F16s | 16 | 32 |64 |1000| 64 |  8 |
 
-Daha fazla bilgi için, [işlem için IYILEŞTIRILMIŞ VM boyutlarında Fsv2 serisi](../articles/virtual-machines/fsv2-series.md)' ne gidin.
+Daha fazla bilgi için bkz. [Fsv2-Series](../articles/virtual-machines/fsv2-series.md).
 

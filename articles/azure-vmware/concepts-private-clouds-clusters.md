@@ -3,12 +3,12 @@ title: Kavramlar-özel bulutlar ve kümeler
 description: Azure VMware çözümü yazılım tanımlı veri merkezlerinin ve vSphere kümelerinin temel özellikleri hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 10/27/2020
-ms.openlocfilehash: 7f8508abed3446c58a683454bc49ec7dbb49d051
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.openlocfilehash: 234e705ad3b39a575c6f8c475bede4b81efa4b96
+ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97825080"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99474922"
 ---
 #  <a name="azure-vmware-solution-private-cloud-and-cluster-concepts"></a>Azure VMware çözümü özel bulutu ve küme kavramları
 
@@ -66,7 +66,10 @@ Microsoft, NSX-T Manager ve NSX-T Edge gibi NSX-T gereçlerinin yaşam döngüs�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bir sonraki adım, [Ağ ve karşılıklı bağlantı kavramlarını](concepts-networking.md)öğrenirsiniz.
+Bu Azure VMware çözümü özel bulut kavramlarını kapsadığınıza göre, şunları öğrenmek isteyebilirsiniz: 
+
+- [Azure VMware Çözüm ağı ve karşılıklı bağlantı kavramları](concepts-networking.md).
+- [Azure VMware Çözüm depolama kavramları](concepts-storage.md).
 
 <!-- LINKS - internal -->
 

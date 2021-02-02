@@ -412,6 +412,10 @@
       items:
         - name: Esnek Sunucu nedir?
           href: flexible-server/overview.md
+        - name: Desteklenen sürümler
+          href: flexible-server/concepts-supported-versions.md
+        - name: İşlem ve depolama
+          href: flexible-server/concepts-compute-storage.md
     - name: Hızlı Başlangıçlar
       expanded: true
       items:
@@ -437,93 +441,8 @@
               href: flexible-server/connect-java.md
             - name: .NET
               href: flexible-server/connect-csharp.md
-    - name: Öğreticiler
-      items:
-        - name: Azure Kubernetes’te WordPress
-          href: flexible-server/tutorial-deploy-wordpress-on-aks.md
-        - name: Veritabanı ile PHP (Laravel) uygulaması oluşturma
-          href: flexible-server/tutorial-php-database-app.md
-        - name: Özel web uygulamasıyla bağlanma
-          href: flexible-server/tutorial-webapp-server-vnet.md
-    - name: Kavramlar
-      items:
-        - name: Sunucular
-          href: flexible-server/concept-servers.md
-        - name: Desteklenen sürümler
-          href: flexible-server/concepts-supported-versions.md
-        - name: Sınırlamalar
-          href: flexible-server/concepts-limitations.md
-        - name: İşlem ve depolama
-          href: flexible-server/concepts-compute-storage.md
-        - name: Ağ
-          href: flexible-server/concepts-networking.md
-          displayName: 'virtual network, IP address, public access'
-        - name: Bakım
-          href: flexible-server/concepts-maintenance.md
-        - name: İş sürekliliği
-          items:
-            - name: İş sürekliliğine genel bakış
-              href: flexible-server/concepts-business-continuity.md
-            - name: Yedekleme ve geri yükleme
-              href: flexible-server/concepts-backup-restore.md
-            - name: Yüksek kullanılabilirlik
-              href: flexible-server/concepts-high-availability.md
-        - name: İzleme ve Günlükler
-          items:
-            - name: Sunucu parametreleri
-              href: flexible-server/concepts-server-parameters.md
-            - name: Yavaş sorgu günlükleri
-              href: flexible-server/concepts-slow-query-logs.md
-            - name: Denetim günlükleri
-              href: flexible-server/concepts-audit-logs.md
-            - name: Ölçümler
-              href: flexible-server/concepts-monitoring.md
-        - name: Çoğaltma
-          items:
-            - name: Okuma amaçlı çoğaltmalar
-              href: flexible-server/concepts-read-replicas.md
-    - name: Nasıl yapılır kılavuzları
-      items:
-        - name: Sunucu yönetme
-          items:
-            - name: Azure portal
-              href: flexible-server/how-to-manage-server-portal.md
-            - name: Azure CLI
-              href: flexible-server/how-to-manage-server-cli.md
-        - name: Bakım
-          items:
-            - name: Azure portal
-              href: flexible-server/how-to-maintenance-portal.md
-        - name: Sunucuyu başlatma/durdurma
-          items:
-            - name: Azure portal
-              href: flexible-server/how-to-stop-start-server-portal.md
-        - name: Sunucuyu geri yükleme
-          items:
-            - name: Azure portal
-              href: flexible-server/how-to-restore-server-portal.md
-        - name: Yüksek Kullanılabilirlik
-          items:
-            - name: Azure portal
-              href: flexible-server/how-to-configure-high-availability.md
-        - name: Ağ
-          items:
-            - name: Özel erişim (Sanal Ağ Tümleştirmesi)
-              items:
-                - name: Azure portal
-                  href: flexible-server/how-to-manage-virtual-network-portal.md
-                - name: Azure CLI
-                  href: flexible-server/how-to-manage-virtual-network-cli.md
-            - name: Genel erişim (izin verilen IP adresleri)
-              items:
-                - name: Azure portal
-                  href: flexible-server/how-to-manage-firewall-portal.md
-                - name: Azure CLI
-                  href: flexible-server/how-to-manage-firewall-cli.md
-            - name: TLS/SSL
-              items:
-                - name: TLS/SSL kullanarak bağlantı kurma
-                  href: flexible-server/how-to-connect-tls-ssl.md
+        - name: TLS/SSL kullanarak bağlantı kurma
+          href: flexible-server/how-to-connect-tls-ssl.md
         - name: Sunucu parametrelerini yapılandırma
           items:
             - name: Azure portal
@@ -532,32 +451,104 @@
             - name: Azure CLI’si
               href: flexible-server/how-to-configure-server-parameters-cli.md
               displayName: 'server parameters, cli'
-        - name: İzleme ve Günlükler
-          items:
-            - name: Ölçümler üzerinde uyarı oluşturma
-              href: flexible-server/how-to-alert-on-metric.md
-            - name: Yavaş sorgu günlükleri
-              items:
-                - name: Azure portal
-                  href: flexible-server/how-to-configure-slow-query-logs-portal.md
-            - name: Denetim günlükleri
-              items:
-                - name: Azure portal
-                  href: flexible-server/how-to-configure-audit-logs-portal.md
-        - name: Sunucuyu yeniden başlatma
+        - name: Veritabanları ve kullanıcılar oluşturma
+          href: howto-create-users.md
+          displayName: users
+        - name: İzleme sunucusu
+          href: flexible-server/how-to-alert-on-metric.md
+    - name: Uygulama Geliştirme
+      items:
+        - name: Azure Kubernetes’te WordPress
+          href: flexible-server/tutorial-deploy-wordpress-on-aks.md
+        - name: Veritabanı ile PHP (Laravel) uygulaması oluşturma
+          href: flexible-server/tutorial-php-database-app.md
+        - name: Özel web uygulamasıyla bağlanma
+          href: flexible-server/tutorial-webapp-server-vnet.md
+    - name: Sunucu Yönetimi
+      items:
+        - name: Kavramlar
+          href: flexible-server/concept-servers.md
+        - name: Sunucu parametreleri
+          href: flexible-server/concepts-server-parameters.md
+        - name: Sınırlamalar
+          href: flexible-server/concepts-limitations.md
+        - name: Sunucu yönetme
           items:
             - name: Azure portal
-              href: flexible-server/how-to-restart-server-portal.md
-        - name: Çoğaltma
+              href: flexible-server/how-to-manage-server-portal.md
+            - name: Azure CLI’si
+              href: flexible-server/how-to-manage-server-cli.md
+        - name: Azure portal kullanarak sunucuyu Durdur/Başlat
+          href: flexible-server/how-to-stop-start-server-portal.md
+        - name: Azure portal kullanarak sunucuyu yeniden Başlat
+          href: flexible-server/how-to-restart-server-portal.md
+    - name: Ağ
+      items:
+        - name: Kavramlar
+          href: flexible-server/concepts-networking.md
+          displayName: 'virtual network, IP address, public access'
+        - name: Özel erişim (Sanal Ağ Tümleştirmesi)
           items:
-            - name: Azure portalda okuma amaçlı çoğaltma oluşturma
+            - name: Azure portal kullanarak özel erişimi yapılandırma
+              href: flexible-server/how-to-manage-virtual-network-portal.md
+            - name: Azure CLı kullanarak özel erişimi yapılandırma
+              href: flexible-server/how-to-manage-virtual-network-cli.md
+        - name: Genel erişim (izin verilen IP adresleri)
+          items:
+            - name: Azure portal kullanarak genel erişimi yapılandırma
+              href: flexible-server/how-to-manage-firewall-portal.md
+            - name: Azure CLı kullanarak genel erişimi yapılandırma
+              href: flexible-server/how-to-manage-firewall-cli.md
+    - name: Hizmet bakımı
+      items:
+        - name: Zamanlanan Bakım
+          href: flexible-server/concepts-maintenance.md
+        - name: Azure portal kullanarak zamanlanmış bakım yapılandırma
+          href: flexible-server/how-to-maintenance-portal.md
+    - name: Yüksek Kullanılabilirlik
+      items:
+        - name: İş sürekliliğine genel bakış
+          href: flexible-server/concepts-business-continuity.md
+        - name: Yüksek kullanılabilirlik
+          href: flexible-server/concepts-high-availability.md
+        - name: Azure portal kullanarak yüksek kullanılabilirliği yapılandırma
+          href: flexible-server/how-to-configure-high-availability.md
+    - name: İzleme ve Günlükler
+      items:
+        - name: Kavramlar
+          href: flexible-server/concepts-monitoring.md
+        - name: Yavaş sorgu günlükleri
+          items:
+            - name: Kavramlar
+              href: flexible-server/concepts-slow-query-logs.md
+            - name: Azure portal kullanarak yavaş sorgu günlüklerini yapılandırma
+              href: flexible-server/how-to-configure-slow-query-logs-portal.md
+        - name: Denetim günlükleri
+          items:
+            - name: Kavramlar
+              href: flexible-server/concepts-audit-logs.md
+            - name: Denetim günlüklerini yapılandırma
+              href: flexible-server/how-to-configure-audit-logs-portal.md
+    - name: Çoğaltma
+      items:
+        - name: Okuma amaçlı çoğaltmalar
+          href: flexible-server/concepts-read-replicas.md
+        - name: Okuma çoğaltmaları oluşturma
+          items:
+            - name: Azure portal kullanarak okuma çoğaltmaları oluşturma
               href: flexible-server/how-to-read-replicas-portal.md
-            - name: Azure CLI'de okuma amaçlı çoğaltma oluşturma
+            - name: Azure CLı kullanarak okuma çoğaltmaları oluşturma
               href: flexible-server/how-to-read-replicas-cli.md
-        - name: Sorun giderme
-          items:
-            - name: Bağlantı hataları
-              href: flexible-server/how-to-troubleshoot-common-connection-issues.md
+    - name: Yedekleme & geri yükleme
+      items:
+        - name: Kavramlar
+          href: flexible-server/concepts-backup-restore.md
+        - name: Azure portalı kullanarak sunucuyu geri yükleme
+          href: flexible-server/how-to-restore-server-portal.md
+    - name: Sorun giderme
+      items:
+        - name: Bağlantı hatalarını giderme
+          href: flexible-server/how-to-troubleshoot-common-connection-issues.md
 - name: Geçiş
   items:
     - name: mysqldump veya phpmyadmin ile verileri geçirme
