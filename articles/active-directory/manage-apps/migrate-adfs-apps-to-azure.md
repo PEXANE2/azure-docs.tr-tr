@@ -3,7 +3,7 @@ title: AD FS uygulama kimlik doğrulamasını Azure Active Directory olarak taş
 description: Bu makale, kuruluşların Federasyon SaaS uygulamalarına odaklanarak uygulamaların Azure AD 'ye nasıl taşınacağını anlamalarına yardımcı olmak için tasarlanmıştır.
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: how-to
@@ -14,12 +14,12 @@ ms.date: 04/01/2020
 ms.author: kenwith
 ms.reviewer: baselden
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e15009dd935d91971ce4212ff44b67a1ca6fa363
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: b27ccf5a861295ae83b5ddc021e77de75962de48
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96745392"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258397"
 ---
 # <a name="moving-application-authentication-from-active-directory-federation-services-to-azure-active-directory"></a>Uygulama kimlik doğrulamasını Active Directory Federasyon Hizmetleri’nden Azure Active Directory’ye taşıma
 
@@ -446,9 +446,9 @@ Bu makalede ayrıntılı olarak açıklanan geçiş sürecini izleyin.
 Ardından, geçişin başarılı olup olmadığını test etmek için [Azure Portal](https://aad.portal.azure.com/) gidin. Aşağıdaki yönergeleri izleyin:
 1. **Kurumsal uygulamalar**  >  **tüm uygulamalar** ' ı seçin ve listeden uygulamanızı bulun.
 
-1. **Manage**  >  Uygulamaya en az bir kullanıcı veya grup atamak için **kullanıcıları ve grupları yönet '** i seçin.
+1.   >  Uygulamaya en az bir kullanıcı veya grup atamak için **kullanıcıları ve grupları yönet '** i seçin.
 
-1. **Manage**  >  **Koşullu erişimi** Yönet ' i seçin. İlke listenizi gözden geçirin ve [koşullu erişim ilkesiyle](../conditional-access/overview.md)uygulamaya erişimi engellemediğinizden emin olun.
+1.   >  **Koşullu erişimi** Yönet ' i seçin. İlke listenizi gözden geçirin ve [koşullu erişim ilkesiyle](../conditional-access/overview.md)uygulamaya erişimi engellemediğinizden emin olun.
 
 Uygulamanızı nasıl yapılandırdığınıza bağlı olarak, SSO 'nun düzgün çalıştığını doğrulayın.
 

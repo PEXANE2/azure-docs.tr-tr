@@ -1,45 +1,40 @@
 ---
-title: Yönetilen kimlikler ve güvenilen depolama
-description: Media Services, güvenilen depolamayı etkinleştirmek için yönetilen kimliklerle birlikte kullanılabilir.
+title: Yönetilen kimlikler
+description: Media Services, Azure yönetilen kimlikleri ile kullanılabilir.
+keywords: ''
 services: media-services
 author: IngridAtMicrosoft
 manager: femila
 ms.service: media-services
 ms.topic: conceptual
-ms.date: 11/04/2020
+ms.date: 1/29/2020
 ms.author: inhenkel
-ms.openlocfilehash: 291508a6beaa687b3a10f55df4591ce601ab51a0
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 71a2b8f0734de80f71dbb2372f8600b464d6c606
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98956183"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258448"
 ---
-# <a name="managed-identities-and-trusted-storage-with-media-services"></a>Media Services ile yönetilen kimlikler ve güvenilen depolama
+# <a name="managed-identities"></a>Yönetilen kimlikler
 
-Media Services, güvenilen depolamayı etkinleştirmek için [yönetilen kimliklerle](../../active-directory/managed-identities-azure-resources/overview.md) birlikte kullanılabilir. Media Services bir hesap oluşturduğunuzda, bunu bir depolama hesabıyla ilişkilendirmeniz gerekir. Media Services, sistem kimlik doğrulamasını kullanarak bu depolama hesabına erişebilir. Media Services, Media Services hesabının ve depolama hesabının aynı abonelikte olduğunu doğrular ve ilişkilendirmeyi ekleyen kullanıcının depolama hesabına Azure Resource Manager RBAC ile erişebileceğini doğrular.
+Geliştiriciler için yaygın bir zorluk, farklı hizmetler arasındaki iletişimin güvenliğini sağlamak için gizli dizileri ve kimlik bilgilerini yönetiledir. Azure 'da Yönetilen kimlikler, Azure AD 'de Azure kaynağı için bir kimlik sağlayarak ve Azure Active Directory (Azure AD) belirteçleri elde etmek üzere kullanarak kimlik bilgilerini yönetmek zorunda olan geliştiricilerin gereksinimini ortadan kaldırır.
 
-## <a name="trusted-storage"></a>Güvenilen depolama
-
-Ancak, depolama hesabınızın güvenliğini sağlamak için bir güvenlik duvarı kullanmak istiyorsanız, yönetilen kimlik kimlik doğrulamasını kullanmanız gerekir. Media Services, güvenilen depolama erişimi aracılığıyla bir güvenlik duvarı veya VNet kısıtlaması ile yapılandırılmış depolama hesabına erişmesini sağlar.  Güvenilen Microsoft hizmetleri hakkında daha fazla bilgi için bkz. [Azure Storage güvenlik duvarlarını ve sanal ağları yapılandırma](../../storage/common/storage-network-security.md#trusted-microsoft-services).
-
-## <a name="media-services-managed-identity-scenarios"></a>Media Services yönetilen kimlik senaryoları
-
-Şu anda yönetilen kimliğin Media Services birlikte kullanılabileceği iki senaryo vardır:
+Şu anda yönetilen kimliklerin Media Services birlikte kullanılabileceği iki senaryo vardır:
 
 - Depolama hesaplarına erişmek için Media Services hesabının yönetilen kimliğini kullanın.
 
 - Müşteri anahtarlarına erişmek için Key Vault erişmek üzere Media Services hesabının yönetilen kimliğini kullanın.
 
-Sonraki iki bölümde iki senaryodaki farklar açıklanır.
+Sonraki iki bölümde iki senaryonun adımları açıklanır.
 
-### <a name="use-the-managed-identity-of-the-media-services-account-to-access-storage-accounts"></a>Depolama hesaplarına erişmek için Media Services hesabının yönetilen kimliğini kullanın
+## <a name="use-the-managed-identity-of-the-media-services-account-to-access-storage-accounts"></a>Depolama hesaplarına erişmek için Media Services hesabının yönetilen kimliğini kullanın
 
 1. Yönetilen kimliğe sahip bir Media Services hesabı oluşturun.
 1. Yönetilen kimlik sorumlusu erişimini sahip olduğunuz bir depolama hesabına verin.
 1. Media Services, yönetilen kimliği kullanarak sizin adınıza depolama hesabına erişebilir.
 
-### <a name="use-the-managed-identity-of-the-media-services-account-to-access-key-vault-to-access-customer-keys"></a>Müşteri anahtarlarına erişmek için Key Vault erişmek üzere Media Services hesabının yönetilen kimliğini kullanın
+## <a name="use-the-managed-identity-of-the-media-services-account-to-access-key-vault-to-access-customer-keys"></a>Müşteri anahtarlarına erişmek için Key Vault erişmek üzere Media Services hesabının yönetilen kimliğini kullanın
 
 1. Yönetilen kimliğe sahip bir Media Services hesabı oluşturun.
 1. Yönetilen kimlik sorumlusuna sahip olduğunuz bir Key Vault için erişim izni verin.

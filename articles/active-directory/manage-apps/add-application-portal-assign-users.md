@@ -3,19 +3,19 @@ title: 'Hızlı başlangıç: bir kimlik sağlayıcısı olarak Azure Active Dir
 description: Bu hızlı başlangıçta, kullanıcıların Azure AD 'yi kimlik sağlayıcısı olarak kullanmak üzere ayarlamış olduğunuz bir uygulamayı kullanmasına izin verme işlemi gösterilmektedir.
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: quickstart
 ms.workload: identity
 ms.date: 09/01/2020
 ms.author: kenwith
-ms.openlocfilehash: 889ad3b74a2f7c0baa006a0c45e3f14664d6cd0c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 53dd2d15565149c3a9888ba063a6194ae033d8e0
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91325887"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258380"
 ---
 # <a name="quickstart-assign-users-to-an-app-that-is-using-azure-ad-as-an-identity-provider"></a>Hızlı başlangıç: Azure AD 'yi kimlik sağlayıcısı olarak kullanan bir uygulamaya Kullanıcı atama
 
@@ -41,7 +41,7 @@ Kullanıcıları Azure AD kiracınıza eklediğiniz bir uygulamaya atamak için 
    > Microsoft 365 uygulamalardan bazıları PowerShell kullanımını gerektirir. 
 3. **Kullanıcı Ekle** düğmesini seçin.
 4. **Atama Ekle** bölmesinde **Kullanıcılar ve gruplar**' ı seçin.
-5. Uygulamaya atamak istediğiniz kullanıcıyı veya grubu seçin. Ayrıca arama kutusuna kullanıcı veya grup adını yazmaya başlayabilirsiniz. Birden çok kullanıcı ve grup seçebilirsiniz ve seçimleriniz **Seçili öğeler**altında görünür.
+5. Uygulamaya atamak istediğiniz kullanıcıyı veya grubu seçin. Ayrıca arama kutusuna kullanıcı veya grup adını yazmaya başlayabilirsiniz. Birden çok kullanıcı ve grup seçebilirsiniz ve seçimleriniz **Seçili öğeler** altında görünür.
     > [!IMPORTANT]
     > Bir uygulamaya bir grup atadığınızda, yalnızca gruptaki kullanıcıların erişimi olur. Atama, iç içe gruplar olarak basamaklanmıyor.
 
