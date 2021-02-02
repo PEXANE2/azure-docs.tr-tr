@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 12/10/2020
 ms.author: apimpm
 ms.custom: references_regions
-ms.openlocfilehash: d0d5434de747b48464df1c07f8c7b6a7e785c858
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: c63b71ad00a5621babe07597720a1e9ea87f1e4a
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98070992"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99260257"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Sanal ağlar ile Azure API Management’ı kullanma
 Azure Sanal Ağları (VNET’ler) Azure kaynaklarınızdan herhangi birini, erişimini denetlediğiniz İnternet tabanlı olmayan ve yönlendirilebilir bir ağa yerleştirmenizi sağlar. Bu ağlar daha sonra, çeşitli VPN teknolojileri kullanılarak şirket içi ağlarınıza bağlanabilir. Azure sanal ağları hakkında daha fazla bilgi edinmek için buradaki bilgilerle başlayın: [Azure sanal ağına genel bakış](../virtual-network/virtual-networks-overview.md).
@@ -117,7 +117,7 @@ Aşağıda, API Management hizmeti bir sanal ağa dağıttığınızda oluşabil
 | */443                  | Giden           | TCP                | VIRTUAL_NETWORK/depolama             | **Azure Storage bağımlılığı**                             | Dış & Iç  |
 | */443                  | Giden           | TCP                | VIRTUAL_NETWORK/AzureActiveDirectory | [Azure Active Directory](api-management-howto-aad.md) ve Azure keykasası bağımlılığı                  | Dış & Iç  |
 | */1433                     | Giden           | TCP                | VIRTUAL_NETWORK/SQL                 | **Azure SQL uç noktalarına erişim**                           | Dış & Iç  |
-| */433                     | Giden           | TCP                | VIRTUAL_NETWORK/AzureKeyVault                 | **Azure Keykasasına erişim**                           | Dış & Iç  |
+| */443                     | Giden           | TCP                | VIRTUAL_NETWORK/AzureKeyVault                 | **Azure Keykasasına erişim**                           | Dış & Iç  |
 | */5671, 5672, 443          | Giden           | TCP                | VIRTUAL_NETWORK/EventHub            | [Olay Hub 'ı ilkesine](api-management-howto-log-event-hubs.md) ve Izleme aracısına günlük bağımlılığı | Dış & Iç  |
 | */445                      | Giden           | TCP                | VIRTUAL_NETWORK/depolama             | [GIT](api-management-configuration-repository-git.md) Için Azure dosya paylaşımında bağımlılık                      | Dış & Iç  |
 | */443, 12000                     | Giden           | TCP                | VIRTUAL_NETWORK/Azurecyüksek            | Durum ve Izleme uzantısı         | Dış & Iç  |
@@ -236,7 +236,7 @@ IP adresleri **Azure ortamı** tarafından bölünür. Gelen isteklere izin veri
 | Azure Genel| Orta Fransa| 40.66.60.111|
 | Azure Genel| Doğu Kanada| 52.139.80.117|
 | Azure Genel| BAE Kuzey| 20.46.144.85|
-| Azure Genel| Brezilya Güney| 191.233.24.179|
+| Azure Genel| Güney Brezilya| 191.233.24.179|
 | Azure Genel| Brezilya Güneydoğu| 191.232.18.181|
 | Azure Genel| Güneydoğu Asya| 40.90.185.46|
 | Azure Genel| Güney Afrika - Kuzey| 102.133.130.197|
@@ -244,7 +244,7 @@ IP adresleri **Azure ortamı** tarafından bölünür. Gelen isteklere izin veri
 | Azure Genel| Güney Kore - Güney| 40.80.232.185|
 | Azure Genel| Orta Hindistan| 13.71.49.1|
 | Azure Genel| Batı ABD| 13.64.39.16|
-| Azure Genel| Avustralya Güneydoğu| 20.40.160.107|
+| Azure Genel| Güneydoğu Avustralya| 20.40.160.107|
 | Azure Genel| Orta Avustralya| 20.37.52.67|
 | Azure Genel| Güney Hindistan| 20.44.33.246|
 | Azure Genel| Central US| 13.86.102.66|

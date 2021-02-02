@@ -1472,30 +1472,11 @@
     - name: Özel veriler
       href: custom-data.md
     - name: Ansible
-      items:
-        - name: Yükleme ve yapılandırma
-          href: /azure/developer/ansible/install-on-linux-vm
-        - name: Linux VM oluşturma
-          href: /azure/developer/ansible/vm-configure
-        - name: Linux VM yönetme
-          href: /azure/developer/ansible/vm-manage
+      href: 'https://docs.microsoft.com/azure/developer/ansible/'
     - name: Terraform
-      items:
-        - name: Yükleme ve yapılandırma
-          href: /azure/developer/terraform/install-configure
-        - name: Tam VM oluşturma
-          href: /azure/developer/terraform/create-linux-virtual-machine-with-infrastructure
+      href: 'https://docs.microsoft.com/azure/developer/terraform/'
     - name: Jenkins
-      href: /azure/developer/jenkins/overview
-      items:
-        - name: Jenkins sunucusu oluşturma
-          href: /azure/developer/jenkins/configure-on-linux-vm
-        - name: VM aracılarıyla ölçeklendirme
-          href: /azure/developer/jenkins/scale-deployments-using-vm-agents
-        - name: Yapıtları Depolama alanında yayımlama
-          href: /azure/developer/jenkins/azure-storage-blobs-as-build-artifact-repository
-        - name: Jenkins güvenliğini sağlama
-          href: 'https://jenkins.io/blog/2017/04/20/secure-jenkins-on-azure/'
+      href: 'https://docs.microsoft.com/en-us/azure/developer/jenkins/'
     - name: Azure DevOps
       href: ./linux/tutorial-azure-devops-blue-green-strategy.md
 - name: Sorun giderme

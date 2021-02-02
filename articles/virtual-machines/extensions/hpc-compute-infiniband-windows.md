@@ -11,14 +11,14 @@ ms.subservice: extensions
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 07/20/2020
+ms.date: 02/01/2021
 ms.author: amverma
-ms.openlocfilehash: c0ec18ae4a7d6020299660adbeba6f993cd4eeca
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 767d6da7701261836b367ccad121bf3569b43b72
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94966029"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99260172"
 ---
 # <a name="infiniband-driver-extension-for-windows"></a>Windows için InfiniBand sürücü uzantısı
 
@@ -26,19 +26,19 @@ Bu uzantı, InfiniBand ND sürücülerini (SR-ıOV etkin olmayan) ve Ed sürüc�
 
 [Linux VM 'ler](hpc-compute-infiniband-linux.md)için InfiniBand sürücülerini yüklemek için de bir uzantı kullanılabilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 ### <a name="operating-system"></a>İşletim sistemi
 
-Bu uzantı, belirli işletim sistemi sürümü için sürücü desteğine bağlı olarak aşağıdaki işletim sistemi destekleri 'nı destekler.
+Bu uzantı, belirli işletim sistemi sürümü için sürücü desteğine bağlı olarak aşağıdaki işletim sistemi destekleri 'nı destekler. H ve N serisi sanal makine boyutları için uygun InfiniBand NIC ' i aklınızda edin.
 
-| Dağıtım | Sürüm |
+| Dağıtım | InfiniBand NIC sürücüleri |
 |---|---|
-| Windows 10 | Çekirdek |
-| Windows Server 2019 | Çekirdek |
-| Windows Server 2016 | Çekirdek |
-| Windows Server 2012 R2 | Çekirdek |
-| Windows Server 2012 | Çekirdek |
+| Windows 10 | CX5, CX6 |
+| Windows Server 2019 | CX5, CX6 |
+| Windows Server 2016 | CX3-Pro, CX5, CX6 |
+| Windows Server 2012 R2 | CX3-Pro, CX5, CX6 |
+| Windows Server 2012 | CX3-Pro, CX5, CX6 |
 
 ### <a name="internet-connectivity"></a>İnternet bağlantısı
 
@@ -72,7 +72,7 @@ Aşağıdaki JSON uzantı için şemayı gösterir.
 
 | Name | Değer/örnek | Veri Türü |
 | ---- | ---- | ---- |
-| apiVersion | 2015-06-15 | tarih |
+| apiVersion | 2015-06-15 | date |
 | yayımcı | Microsoft. HpcCompute | string |
 | tür | Infinibanddriverwindows | string |
 | typeHandlerVersion | 1.2 | int |

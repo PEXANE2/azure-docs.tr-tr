@@ -2,7 +2,7 @@
 title: Cloud App Security-Azure AD ile şirket içi uygulamaları tümleştirme
 description: Azure Active Directory Microsoft Cloud App Security (MCAS) ile çalışmak için bir şirket içi uygulama yapılandırın. , Koşullu erişim ilkelerine bağlı olarak oturumları gerçek zamanlı izlemek ve denetlemek için MCAS Koşullu Erişim Uygulama Denetimi kullanın. Bu ilkeleri, Azure Active Directory (Azure AD) içinde uygulama proxy 'Si kullanan şirket içi uygulamalara uygulayabilirsiniz.
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.date: 12/19/2018
 ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 889168782acabaafa4200a8ebd097e431a68ede3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 139f347a3d1bce7a8f841cd1c39cd250b9a2182d
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84764579"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99259364"
 ---
 # <a name="configure-real-time-application-access-monitoring-with-microsoft-cloud-app-security-and-azure-active-directory"></a>Microsoft Cloud App Security ve Azure Active Directory ile gerçek zamanlı uygulama erişimi izlemeyi yapılandırma
 Azure Active Directory (Azure AD) içindeki şirket içi bir uygulamayı gerçek zamanlı izleme için Microsoft Cloud App Security (MCAS) kullanacak şekilde yapılandırın. MCAS, koşullu erişim ilkelerine bağlı olarak oturumları gerçek zamanlı olarak izlemek ve denetlemek için Koşullu Erişim Uygulama Denetimi kullanır. Bu ilkeleri, Azure Active Directory (Azure AD) içinde uygulama proxy 'Si kullanan şirket içi uygulamalara uygulayabilirsiniz.
@@ -49,7 +49,7 @@ Uygulama proxy 'Sini Yapılandır:
 
 Azure AD 'ye şirket içi bir uygulama ekleyin. Hızlı başlangıç için bkz. [Azure AD 'ye şirket içi uygulama ekleme](application-proxy-add-on-premises-application.md#add-an-on-premises-app-to-azure-ad). Uygulamayı eklerken, Şirket **içi uygulamanızı ekleme** dikey penceresinde aşağıdaki iki ayarı ayarladığınızdan emin olun:
 
-- **Ön kimlik doğrulaması**: **Azure Active Directory**girin.
+- **Ön kimlik doğrulaması**: **Azure Active Directory** girin.
 - **Uygulama gövdesinde URL 'Leri çevir**: **Evet**' i seçin.
 
 Uygulamanın MCAS ile çalışması için bu iki ayar gereklidir.

@@ -43,6 +43,8 @@
   items:
     - name: Azure İşlevleri’ni kullanarak güvenilir bir kimlik doğrulama hizmeti oluşturma
       href: tutorials/trusted-service-tutorial.md
+    - name: Bir Web uygulamasını Iletişim Hizmetleri için hazırlama (Node.js)
+      href: tutorials/building-app-start.md
 - name: Kavramlar
   expanded: false
   items:

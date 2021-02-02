@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 08/09/2019
+ms.date: 01/20/2021
 ms.author: jeedes
-ms.openlocfilehash: 82f3a2dc7f43bd484d6a81efaa8d07f13b746d9e
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: a8a33290c7fa904fc16b728a6e2411bd5b42683f
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97671111"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99259675"
 ---
 # <a name="tutorial-integrate-aha-with-azure-active-directory"></a>Öğretici: Aha tümleştirin! Azure Active Directory ile
 
@@ -25,8 +25,6 @@ Bu öğreticide, aha tümleştirmeyi öğreneceksiniz! Azure Active Directory (A
 * Azure AD 'de, aha 'ye erişimi olan denetim!.
 * Kullanıcılarınızın, aha 'ye otomatik olarak oturum açabilmesi için etkinleştirin! Azure AD hesaplarıyla.
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
-
-Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -45,22 +43,22 @@ Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test eders
 * Aha! **SP** tarafından başlatılan SSO 'yu destekler
 * Aha! **tam zamanında** Kullanıcı sağlamayı destekler
 
-## <a name="adding-aha-from-the-gallery"></a>Aha ekleniyor! Galeriden
+## <a name="add-aha-from-the-gallery"></a>Aha ekleyin! Galeriden
 
 Aha tümleştirmesini yapılandırmak için! Azure AD 'de, aha eklemeniz gerekir! Galeriden, yönetilen SaaS uygulamaları listenize gidin.
 
-1. [Azure Portal](https://portal.azure.com) iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
+1. Azure portal iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
 1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
 1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
 1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
 1. **Galeriden Ekle** bölümünde, **aha yazın!** yazın.
 1. **Aha seçin!** sonuçlar panelinden ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-aha"></a>Aha için Azure AD çoklu oturum açmayı yapılandırın ve test edin!
+## <a name="configure-and-test-azure-ad-sso-for-aha"></a>Aha için Azure AD SSO 'yu yapılandırın ve test edin!
 
 Azure AD SSO 'yu aha ile yapılandırın ve test edin! **B. Simon** adlı bir test kullanıcısı kullanılıyor. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve bu kullanıcı ile ilgili Kullanıcı arasında bir bağlantı ilişkisi kurmanız gerekir!.
 
-Azure AD SSO 'yu aha ile yapılandırmak ve test etmek için, aşağıdaki yapı taşlarını doldurun:
+Azure AD SSO 'yu aha ile yapılandırmak ve test etmek için, aşağıdaki adımları uygulayın:
 
 1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
     1. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
@@ -73,9 +71,9 @@ Azure AD SSO 'yu aha ile yapılandırmak ve test etmek için, aşağıdaki yapı
 
 Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-1. [Azure Portal](https://portal.azure.com/), **aha üzerinde!** Uygulama Tümleştirme sayfasında **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
+1. Azure portal, **aha üzerinde!** Uygulama Tümleştirme sayfasında **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
 1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
-1. **SAML Ile tek Sign-On ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
+1. **SAML Ile tek Sign-On ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** kalem simgesine tıklayın.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -115,15 +113,9 @@ Bu bölümde, B. Simon 'u, aha 'ye erişim izni vererek Azure çoklu oturum açm
 1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
 1. Uygulamalar listesinde, **aha!** öğesini seçin.
 1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
-
-    !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
-
 1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
-
-    ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
-
 1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. Kullanıcılara bir rolün atanmasını bekliyorsanız, **Rol Seç** açılır listesinden bunu seçebilirsiniz. Bu uygulama için ayarlanmış bir rol yoksa, "varsayılan erişim" rolü seçili olduğunu görürsünüz.
 1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
 ## <a name="configure-aha-sso"></a>Aha 'yi yapılandırma! SSO
@@ -140,23 +132,23 @@ Bu bölümde, B. Simon 'u, aha 'ye erişim izni vererek Azure çoklu oturum açm
 
 4. Üstteki menüde, **Ayarlar**' a tıklayın.
 
-    ![Ayarlar](./media/aha-tutorial/IC798950.png "Ayarlar")
+    ![Ayarlar](./media/aha-tutorial/setting.png "Ayarlar")
 
 5. **Hesap**' a tıklayın.
 
-    ![Profil](./media/aha-tutorial/IC798951.png "Profil")
+    ![Profil](./media/aha-tutorial/account.png "Profil")
 
 6. **Güvenlik ve çoklu oturum açma**' ya tıklayın.
 
-    ![Güvenlik ve çoklu oturum açma menü seçeneğini vurgulayan ekran görüntüsü.](./media/aha-tutorial/IC798952.png "Güvenlik ve çoklu oturum açma")
+    ![Güvenlik ve çoklu oturum açma menü seçeneğini vurgulayan ekran görüntüsü.](./media/aha-tutorial/security.png "Güvenlik ve çoklu oturum açma")
 
 7. **Çoklu oturum açma** bölümünde, **kimlik sağlayıcısı** olarak **SAML 2.0**' ı seçin.
 
-    ![Güvenlik ve çoklu oturum açma](./media/aha-tutorial/IC798953.png "Güvenlik ve çoklu oturum açma")
+    ![Güvenlik ve çoklu oturum açma](./media/aha-tutorial/saml.png "Güvenlik ve çoklu oturum açma")
 
 8. **Çoklu oturum açma** yapılandırması sayfasında, aşağıdaki adımları uygulayın:
 
-    ![Çoklu oturum açma](./media/aha-tutorial/IC798954.png "Çoklu Oturum Açma")
+    ![Çoklu oturum açma](./media/aha-tutorial/sso.png "Çoklu Oturum Açma")
 
     a. **Ad** metin kutusuna yapılandırmanız için bir ad yazın.
 
@@ -172,14 +164,14 @@ Bu bölümde, B. Simon adlı bir Kullanıcı, aha! içinde oluşturulmuştur. Ah
 
 ## <a name="test-sso"></a>Test SSO 'SU 
 
-Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açma yapılandırmanızı aşağıdaki seçeneklerle test edersiniz. 
 
-Aha tıkladığınızda! kutucukta, erişim panelinde, bu, aha içinde otomatik olarak oturum açmış olmanız gerekir! için SSO 'yu ayarlama. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](../user-help/my-apps-portal-end-user-access.md).
+* Azure portal içinde **Bu uygulamayı test et** ' e tıklayın. Bu, aha 'a yönlendirilir! Oturum açma akışını başlatabileceğiniz oturum açma URL 'SI. 
 
-## <a name="additional-resources"></a>Ek Kaynaklar
+* Aha 'ye gidin! Doğrudan oturum açma URL 'SI ve oturum açma akışını buradan başlatın.
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](./tutorial-list.md)
+* Microsoft My Apps ' i kullanabilirsiniz. Aha tıkladığınızda! Uygulamamda bulunan kutucuk, bu, aha 'ye yönlendirecektir! Oturum açma URL'si. Uygulamalarım hakkında daha fazla bilgi için bkz. [uygulamalarıma giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
+## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Active Directory'de koşullu erişim nedir?](../conditional-access/overview.md)
+Aha 'yi yapılandırdıktan sonra! Kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).

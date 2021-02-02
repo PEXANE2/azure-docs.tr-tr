@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/15/2020
 ms.author: v-demjoh
-ms.openlocfilehash: 68362b61aa0d919bd0e95f3cebb1cf1189f9f0f3
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: d6ae9585ce5b5a6f666a96ae8c5e7e9e3c5e248a
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99095196"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99427202"
 ---
 ## <a name="download-and-install"></a>İndirme ve yükleme
 
@@ -29,14 +29,6 @@ Windows 'a konuşma CLı 'Yı yüklemek için aşağıdaki adımları izleyin:
 > [!NOTE]
 > NuGet 'e alternatif olarak, konuşma CLı [ZIP arşivini](https://aka.ms/speech/spx-zips.zip)indirip ayıklayabilir, platformunuzu dizinden bulabilir ve ayıklayabilir `spx-zips` ve `spx` yolu sistem **yolu** Değişkeninizle ekleyebilirsiniz.
 
-### <a name="run-the-speech-cli"></a>Konuşma CLı 'sını çalıştırma
-
-1. Komut istemi veya PowerShell ' i açın, ardından konuşma CLı 'yı ayıkladığınız dizine gidin.  
-2. `spx`Konuşma CLI için yardım komutlarını görmek için yazın.
-
-> [!NOTE]
-> PowerShell, bir komut ararken yerel dizini denetlemez. PowerShell 'de Dizin ' i konum olarak değiştirin `spx` ve girerek aracı çağırın `.\spx` .
-> Bu dizini yolunuza eklerseniz, PowerShell ve Windows komut istemi, `spx` ön eki dahil etmeden herhangi bir dizinden bulacaktır `.\` .
 
 ### <a name="font-limitations"></a>Yazı tipi sınırlamaları
 

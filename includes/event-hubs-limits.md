@@ -5,15 +5,15 @@ services: event-hubs
 author: spelluru
 ms.service: event-hubs
 ms.topic: include
-ms.date: 09/10/2020
+ms.date: 02/01/2021
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 262783e83bdb846a3ea7e3015212c01048a00125
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: 45cc5120072f2a8c7742f79cfb79161042345505
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96152705"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99427364"
 ---
 Aşağıdaki tablolarda [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)'a özgü kotalar ve sınırlamalar sağlanmaktadır. Event Hubs fiyatlandırması hakkında daha fazla bilgi için bkz. [Event Hubs fiyatlandırması](https://azure.microsoft.com/pricing/details/event-hubs/).
 
@@ -30,7 +30,8 @@ Aşağıdaki sınırlar tüm katmanlarda ortaktır.
 | Tüketici grubu başına dönem olmayan alıcıların sayısı |- |5 |
 | Ad alanı başına yetkilendirme kuralı sayısı | Yetkilendirme kuralı oluşturma için sonraki istekler reddedilir.|12 |
 | GetRuntimeInformation metoduna yapılan çağrıların sayısı |  - | saniyede 50 | 
-| Sanal ağ (VNet) ve IP yapılandırma kuralları sayısı | - | 128 | 
+| Sanal ağ sayısı (VNet) | - | 128 | 
+| IP yapılandırma kuralları sayısı | - | 128 | 
 
 
 ### <a name="basic-vs-standard-tiers"></a>Temel ve Standart katmanlar
@@ -49,7 +50,7 @@ Event Hubs Ayrılmış teklif, en az 4 saatlik kullanım ile sabit bir aylık fi
 
 Azure portal kullanarak adanmış Event Hubs kümesi oluşturma hakkında bu [belgeye](../articles/event-hubs/event-hubs-dedicated-cluster-create-portal.md) başvurun.
 
-| Özellik | Standart | Ayrılmış |
+| Öne çıkan özelliği | Standart | Ayrılmış |
 | --- |:---|:---|
 | Bant genişliği | 20 s (40 'e kadar) | 20 cu düzeyinde kapsanır |
 | Ad alanları |  1 | CU başına 50 |

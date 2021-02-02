@@ -4,19 +4,19 @@ description: Azure Active Directory içindeki uygulamalarda SAML tabanlı çoklu
 services: active-directory
 ms.author: kenwith
 author: kenwith
-manager: CelesteDG
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: troubleshooting
 ms.workload: identity
 ms.date: 02/18/2019
 ms.reviewer: luleon, hirsin, paulgarn
-ms.openlocfilehash: f8eb00a2a88c6e26dd5361097f17990469caa8f3
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 4a5fbef3380db8c9b357c83b4cb8240a41a0012c
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92326096"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99259296"
 ---
 # <a name="debug-saml-based-single-sign-on-to-applications-in-azure-active-directory"></a>Azure Active Directory'de SAML tabanlı çoklu oturum açma uygulamaları için hata ayıklama
 
@@ -38,7 +38,7 @@ Azure AD ile hedef uygulama arasında SAML tabanlı çoklu oturum açmayı test 
 
 1. [Azure Portal](https://portal.azure.com) bir genel yönetici veya uygulamaları yönetme yetkisine sahip başka bir yönetici olarak oturum açın.
 1. Sol dikey pencerede **Azure Active Directory**' yi seçin ve ardından **Kurumsal uygulamalar**' ı seçin. 
-1. Kurumsal uygulamalar listesinden, çoklu oturum açmayı test etmek istediğiniz uygulamayı seçin ve ardından sol taraftaki seçeneklerden **Çoklu oturum açma**seçeneğini belirleyin.
+1. Kurumsal uygulamalar listesinden, çoklu oturum açmayı test etmek istediğiniz uygulamayı seçin ve ardından sol taraftaki seçeneklerden **Çoklu oturum açma** seçeneğini belirleyin.
 1. SAML tabanlı çoklu oturum açma testi deneyimini açmak için, **Çoklu oturum açma** (5. adım) sayfasına gidin. **Test** düğmesi gri Ise, **temel SAML yapılandırması** bölümünde önce gerekli öznitelikleri doldurmanız ve kaydetmeniz gerekir.
 1. **Çoklu oturum açma** dikey penceresinde, hedef uygulamada oturum açmak için şirket kimlik bilgilerinizi kullanın. Geçerli Kullanıcı olarak veya farklı bir kullanıcı olarak oturum açabilirsiniz. Farklı bir kullanıcı olarak oturum açarsanız, bir istem sizden kimlik doğrulaması isteyeceğiz.
 

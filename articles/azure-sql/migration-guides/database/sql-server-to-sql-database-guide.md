@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: f4f54aa02fb56ba5bf5ae9fcec2dae07c7dc0a27
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: a2ab63febbb4439e50ef0f7bcc0f9797dc50c62c
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97358988"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99260037"
 ---
 # <a name="migration-guide-sql-server-to-sql-database"></a>Geçiş Kılavuzu: SQL veritabanı 'na SQL Server
 [!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]
@@ -149,6 +149,18 @@ Verilerin hem kaynak hem de hedefte aynı olduğunu doğruladıktan sonra kaynak
 
 > [!IMPORTANT]
 > DMS kullanarak geçişler kapsamında bir tam geçişi gerçekleştirme ile ilişkili belirli adımlarla ilgili ayrıntılı bilgi için bkz. [geçiş tam geçişi gerçekleştirme](../../../dms/tutorial-sql-server-azure-sql-online.md#perform-migration-cutover).
+
+## <a name="migration-recommendations"></a>Geçiş önerileri
+
+Azure SQL veritabanı 'na geçişi hızlandırmak için aşağıdaki önerileri göz önünde bulundurmanız gerekir:
+
+|  | Kaynak çakışması | Öneri |
+|--|--|--|
+| **Kaynak (genellikle şirket içi)** |Kaynakta geçiş sırasında birincil performans sorunu, dikkatle izlenmesi gereken veri dosyasında VERI g/ç ve gecikme süresine sahiptir.  |VERI GÇ ve VERI dosyası gecikmesini temel alarak, bir sanal makine veya fiziksel sunucu olmasına bağlı olarak, Depolama Yöneticisi 'ne ihtiyacınız ve performans sorunlarını hafifletmek için seçenekleri araştırmanıza gerek vardır. |
+|**Hedef (Azure SQL veritabanı)**|En büyük sınırlandırma faktörü günlük oluşturma oranı ve günlük dosyasında gecikme süresi olur. Azure SQL veritabanı ile en fazla 96 MB/sn günlük oluşturma oranı edinebilirsiniz. | Geçiş hızını hızlandırmak için, hedef SQL DB İş Açısından Kritik 'yi, 96 MB/sn 'lik maksimum günlük oluşturma oranını elde etmek üzere 5. nesil 8 sanal Core ' a ölçeklendirin ve günlük dosyası için düşük gecikme süresine ulaşın. [Hiper ölçek](https://docs.microsoft.com/azure/azure-sql/database/service-tier-hyperscale) hizmet katmanı, seçilen hizmet düzeyinden bağımsız olarak 100 MB/sn günlük hızı sağlar |
+|**Ağ** |Gereken ağ bant genişliği, en fazla günlük alma oranı 96 MB/s (768 MB/s) değerine eşit |Şirket içi veri merkezinizden Azure 'a ağ bağlantısına bağlı olarak, en fazla günlük alma hızına uyum sağlamak için ağ bant genişliğinizi (genellikle [Azure ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction#bandwidth-options)) kontrol edin. |
+|**Data Migration Yardımcısı için kullanılan sanal makine (DMA)** |CPU, DMA çalıştıran sanal makine için birincil darboğazdır |Kullanarak veri geçişini hızlandırmak için göz önünde bulundurmanız gerekenler </br>-Azure işlem yoğunluklu VM 'Ler </br>-DMA çalıştırmak için en az F8s_v2 (8 sanal çekirdek) VM kullanın </br>-VM 'nin hedefle aynı Azure bölgesinde çalıştığından emin olun |
+|**Azure Veritabanı Geçiş Hizmeti (DMS)** |DMS için işlem kaynağı çekişmesi ve veritabanı nesneleri dikkate alınması |Premium 4 sanal çekirdek kullanın. DMS, yabancı anahtarlar, Tetikleyiciler, kısıtlamalar ve kümelenmemiş dizinler gibi veritabanı nesneleri için otomatik olarak işlem gerçekleştirir ve el ile müdahale gerektirmez.  |
 
 
 ## <a name="post-migration"></a>Geçiş sonrası

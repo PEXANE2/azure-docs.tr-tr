@@ -3,19 +3,19 @@ title: 'Hızlı başlangıç: Azure Active Directory (Azure AD) kiracınızdan b
 description: Bu hızlı başlangıç, Azure Active Directory (Azure AD) kiracınızdan bir uygulamayı silmek için Azure portal kullanır.
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: quickstart
 ms.workload: identity
 ms.date: 1/5/2021
 ms.author: kenwith
-ms.openlocfilehash: a3468b6f74519018f73f6bf32df74bd6cbb458f6
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 187f4a1d524e0343130808aa4b4c18222fa982c3
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97916703"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99259279"
 ---
 # <a name="quickstart-delete-an-application-from-your-azure-active-directory-azure-ad-tenant"></a>Hızlı başlangıç: Azure Active Directory (Azure AD) kiracınızdan bir uygulamayı silme
 
@@ -23,7 +23,7 @@ Bu hızlı başlangıç, Azure Active Directory (Azure AD) kiracınıza eklenmi�
 
 SSO ve Azure hakkında daha fazla bilgi için bkz. [tek Sign-On nedir (SSO)](what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD kiracınızdan bir uygulamayı silmek için şunlar gerekir:
 

@@ -3,7 +3,7 @@ title: Uygulamalar için son kullanıcı deneyimleri-Azure Active Directory
 description: Azure Active Directory (Azure AD), kuruluşunuzdaki son kullanıcılara uygulama dağıtmak için çeşitli özelleştirilebilir yollar sunar.
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/27/2019
 ms.author: kenwith
 ms.reviewer: arvindh
-ms.openlocfilehash: 9bcf45cdfbadbf16f48f8f2ac3bd0c6320a2803f
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 0d3f1cab0637c7409cbc45f4f5a5374b2b5b6a77
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94649237"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99259262"
 ---
 # <a name="end-user-experiences-for-applications-in-azure-active-directory"></a>Azure Active Directory uygulamalar için son kullanıcı deneyimleri
 
@@ -53,7 +53,7 @@ SAML 2,0, WS-Federation veya OpenID Connect 'i destekleyen çoğu Federasyon uyg
 
 Azure AD Ayrıca, parola tabanlı çoklu oturum açma, bağlantılı çoklu oturum açma ve herhangi bir Federasyon çoklu oturum açma biçimini destekleyen tek tek uygulamalara doğrudan çoklu oturum açma bağlantılarını destekler.
 
-Bu bağlantılar, kullanıcının Azure AD My Apps veya Microsoft 365 tarafından başlatılmasını gerektirmeden belirli bir uygulama için Azure AD oturum açma işlemi aracılığıyla bir Kullanıcı gönderen özel olarak hazırlanmış URL 'lardır. Bu **Kullanıcı erişimi URL 'leri** , kullanılabilir kurumsal uygulamaların özellikleri altında bulunabilir. Azure Portal **Azure Active Directory**  >  **Kurumsal uygulamalar** Azure Active Directory ' i seçin. Uygulamayı seçin ve ardından **Özellikler**' i seçin.
+Bu bağlantılar, kullanıcının Azure AD My Apps veya Microsoft 365 tarafından başlatılmasını gerektirmeden belirli bir uygulama için Azure AD oturum açma işlemi aracılığıyla bir Kullanıcı gönderen özel olarak hazırlanmış URL 'lardır. Bu **Kullanıcı erişimi URL 'leri** , kullanılabilir kurumsal uygulamaların özellikleri altında bulunabilir. Azure Portal   >  **Kurumsal uygulamalar** Azure Active Directory ' i seçin. Uygulamayı seçin ve ardından **Özellikler**' i seçin.
 
 ![Twitter özelliklerindeki Kullanıcı erişimi URL 'SI örneği](media/end-user-experiences/direct-sign-on-link.png)
 

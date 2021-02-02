@@ -1,17 +1,17 @@
 ---
-title: Batch ile Key Vault’a güvenli erişim
+title: Batch ile Azure Key Vault sertifikaları ve güvenli şekilde erişimi kullanın
 description: Azure Batch kullanarak Key Vault kimlik bilgilerinizin programlama yoluyla nasıl erişebileceğini öğrenin.
 ms.topic: how-to
 ms.date: 10/28/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: b8b3d2655e79862c068aa48c29c7e89b7df85482
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: eaaeaa05caca7897eb649b56504b643038f08d53
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350696"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99260138"
 ---
-# <a name="securely-access-key-vault-with-batch"></a>Batch ile Key Vault’a güvenli erişim
+# <a name="use-certificates-and-securely-access-azure-key-vault-with-batch"></a>Batch ile Azure Key Vault sertifikaları ve güvenli şekilde erişimi kullanın
 
 Bu makalede, [Azure Key Vault](../key-vault/general/overview.md)' de depolanan kimlik bilgilerine güvenli bir şekilde erişmek için Batch düğümlerini ayarlamayı öğreneceksiniz. Key Vault ' de yönetici kimlik bilgilerinizi yerleştirmekten ve sonra bir betikten Key Vault erişmek için kimlik bilgilerini sabit kodlamasına yönelik bir nokta yoktur. Çözüm, toplu Iş düğümlerinizin Key Vault erişimine izin veren bir sertifika kullanmaktır.
 
@@ -38,7 +38,7 @@ Ardından, `makecert` ve adlı otomatik olarak imzalanan sertifika dosyaları ol
 makecert -sv batchcertificate.pvk -n "cn=batch.cert.mydomain.org" batchcertificate.cer -b 09/23/2019 -e 09/23/2019 -r -pe -a sha256 -len 2048
 ```
 
-Batch bir `.pfx` Dosya gerektiriyor. [pvk2pfx](/windows-hardware/drivers/devtest/pvk2pfx) `.cer` `.pvk` Tarafından oluşturulan ve dosyalarını `makecert` tek bir dosyaya dönüştürmek için Pvk2pfx aracını kullanın `.pfx` .
+Batch bir `.pfx` Dosya gerektiriyor. [](/windows-hardware/drivers/devtest/pvk2pfx) `.cer` `.pvk` Tarafından oluşturulan ve dosyalarını `makecert` tek bir dosyaya dönüştürmek için Pvk2pfx aracını kullanın `.pfx` .
 
 ```console
 pvk2pfx -pvk batchcertificate.pvk -spc batchcertificate.cer -pfx batchcertificate.pfx -po
