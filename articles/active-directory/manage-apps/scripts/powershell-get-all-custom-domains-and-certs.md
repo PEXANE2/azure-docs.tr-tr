@@ -3,7 +3,7 @@ title: PowerShell örneği-özel etki alanları kullanan uygulama proxy uygulama
 description: Özel etki alanları ve sertifika bilgilerini kullanan tüm Azure Active Directory (Azure AD) uygulama proxy uygulamalarını listeleyen PowerShell örneği.
 services: active-directory
 author: kenwith
-manager: CelesteDG
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 12/05/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: e2cf5aa5ba84bea90779d2a4a0c4d5da84707716
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: b7936ca64b01b400ba9a019a6d138ca11dcccc77
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96859292"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99253060"
 ---
 # <a name="get-all-application-proxy-apps-using-custom-domains-and-certificate-information"></a>Özel etki alanları ve sertifika bilgilerini kullanarak tüm uygulama proxy uygulamalarını alın
 

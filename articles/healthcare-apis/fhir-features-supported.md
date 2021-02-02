@@ -6,14 +6,14 @@ author: caitlinv39
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: reference
-ms.date: 1/21/2021
+ms.date: 1/30/2021
 ms.author: cavoeg
-ms.openlocfilehash: 28c01e99c0e8708750341b445b4a31f6eaeab3ce
-ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
+ms.openlocfilehash: 0ee32d37ca8e3a32ba603fd84cee81890ddac98b
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98747534"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99252126"
 ---
 # <a name="features"></a>Özellikler
 
@@ -41,15 +41,15 @@ Desteklenen en son sürüm: `4.0.1`
 | oluşturmaya                         | Yes       | Yes       | Yes       | Her iki GÖNDERI/PUT desteği                               |
 | oluştur (koşullu)           | Yes       | Yes       | Yes       | Sorun [#1382](https://github.com/microsoft/fhir-server/issues/1382) |
 | search                         | Kısmi   | Kısmi   | Kısmi   | Aşağıya bakın                                           |
-| zincirleme arama                 | Hayır        | Yes       | Hayır        |                                           |
-| ters zincirleme arama         | Hayır        | Hayır        | Hayır        |                                            |
+| zincirleme arama                 | Hayır        | Yes       | Hayır        |                                                     |
+| ters zincirleme arama         | Hayır        | Yes       | Hayır        |                                                     |
 | özellikler                   | Yes       | Yes       | Yes       |                                                     |
 | toplu iş                          | Yes       | Yes       | Yes       |                                                     |
 | işlem                    | Hayır        | Yes       | Hayır        |                                                     |
 | Sayfalamayı                         | Kısmi   | Kısmi   | Kısmi   | `self` ve `next` desteklenir                     |
 | aracıların                 | Hayır        | Hayır        | Hayır        |                                                     |
 
-## <a name="search"></a>Arama
+## <a name="search"></a>Arayın
 
 Tüm arama parametresi türleri desteklenir. 
 
@@ -72,39 +72,39 @@ Tüm arama parametresi türleri desteklenir.
 |`:exact`               | Yes       | Yes       | Yes       |         |
 |`:contains`            | Yes       | Yes       | Yes       |         |
 |`:text`                | Yes       | Yes       | Yes       |         |
+|`:[type]` başvurunun  | Yes       | Yes       | Yes       |         |
+|`:not`                 | Yes       | Yes       | Yes       |         |
+|`:below` kullanılmamışsa         | Yes       | Yes       | Yes       |         |
+|`:above` kullanılmamışsa         | Hayır        | Hayır        | Hayır        | Sorun [#158](https://github.com/Microsoft/fhir-server/issues/158) |
 |`:in` simgesinde          | Hayır        | Hayır        | Hayır        |         |
 |`:below` simgesinde       | Hayır        | Hayır        | Hayır        |         |
 |`:above` simgesinde       | Hayır        | Hayır        | Hayır        |         |
 |`:not-in` simgesinde      | Hayır        | Hayır        | Hayır        |         |
-|`:[type]` başvurunun  | Hayır        | Hayır        | Hayır        |         |
-|`:below` kullanılmamışsa         | Yes       | Yes       | Yes       |         |
-|`:not`                 | Hayır        | Hayır        | Hayır        |         |
-|`:above` kullanılmamışsa         | Hayır        | Hayır        | Hayır        | Sorun [#158](https://github.com/Microsoft/fhir-server/issues/158) |
 
 | Ortak arama parametresi | Desteklenen-PaaS | Desteklenen-OSS (SQL) | Desteklenen-OSS (Cosmos DB) | Yorum |
 |-------------------------| ----------| ----------| ----------|---------|
 | `_id`                   | Yes       | Yes       | Yes       |         |
 | `_lastUpdated`          | Yes       | Yes       | Yes       |         |
 | `_tag`                  | Yes       | Yes       | Yes       |         |
-| `_profile`              | Kısmi   | Kısmi   | Kısmi   | Yalnızca STU3 sürümünde desteklenir, R4 'de destek yoktur |
+| `_list`                 | Yes       | Yes       | Yes       |         |
+| `_type`                 | Yes       | Yes       | Yes       | Sorun [#1562](https://github.com/microsoft/fhir-server/issues/1562)        |
 | `_security`             | Yes       | Yes       | Yes       |         |
+| `_profile`              | Kısmi   | Kısmi   | Kısmi   | Yalnızca STU3 sürümünde desteklenir, R4 'de destek yoktur |
 | `_text`                 | Hayır        | Hayır        | Hayır        |         |
 | `_content`              | Hayır        | Hayır        | Hayır        |         |
-| `_list`                 | Yes       | Yes       | Yes       |         |
 | `_has`                  | Hayır        | Hayır        | Hayır        |         |
-| `_type`                 | Yes       | Yes       | Yes       |         |
 | `_query`                | Hayır        | Hayır        | Hayır        |         |
 | `_filter`               | Hayır        | Hayır        | Hayır        |         |
 
 | Arama sonucu parametreleri | Desteklenen-PaaS | Desteklenen-OSS (SQL) | Desteklenen-OSS (Cosmos DB) | Yorum |
 |-------------------------|-----------|-----------|-----------|---------|
-| `_sort`                 | Kısmi        | Kısmi   | Kısmi        |   `_sort=_lastUpdated` desteklenir       |
+| `_elements`             | Yes       | Yes       | Yes       | Sorun [#1256](https://github.com/microsoft/fhir-server/issues/1256)        |
 | `_count`                | Yes       | Yes       | Yes       | `_count` 100 karakterle sınırlıdır. 100 'den yüksek olarak ayarlandıysa, yalnızca 100 döndürülür ve pakete bir uyarı döndürülür. |
 | `_include`              | Yes       | Yes       | Yes       |Dahil edilen öğeler 100 ile sınırlıdır. PaaS ve OSS 'e dahil et Cosmos DB şunları içermez: yineleme desteği.|
-| `_revinclude`           | Yes       | Yes       | Yes       | Dahil edilen öğeler 100 ile sınırlıdır. PaaS ve OSS 'e dahil et Cosmos DB şunları içermez: yineleme desteği.|
+| `_revinclude`           | Yes       | Yes       | Yes       | Dahil edilen öğeler 100 ile sınırlıdır. PaaS ve OSS 'e dahil et Cosmos DB şunları [içermez: yineleme desteği](https://github.com/microsoft/fhir-server/issues/1313). Sorun [#1319](https://github.com/microsoft/fhir-server/issues/1319)|
 | `_summary`              | Kısmi   | Kısmi   | Kısmi   | `_summary=count` desteklenir |
-| `_total`                | Kısmi   | Kısmi   | Kısmi   | _total = ve _total = doğru      |
-| `_elements`             | Yes       | Yes       | Yes       |         |
+| `_total`                | Kısmi   | Kısmi   | Kısmi   | `_total=none` ve `_total=accurate`      |
+| `_sort`                 | Kısmi   | Kısmi   | Kısmi   |   `_sort=_lastUpdated` desteklenir       |
 | `_contained`            | Hayır        | Hayır        | Hayır        |         |
 | `containedType`         | Hayır        | Hayır        | Hayır        |         |
 | `_score`                | Hayır        | Hayır        | Hayır        |         |

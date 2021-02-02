@@ -4,7 +4,7 @@ description: Azure portal Azure AD Uygulama Ara Sunucusu ile yayınlanmış şir
 services: active-directory
 documentationcenter: ''
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -14,12 +14,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 00b25f1b506228d2d80aecae3845467759a4bc4f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c0cb2830c019635e9020a4b586bdc370450fddb0
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88165048"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99254011"
 ---
 # <a name="password-vaulting-for-single-sign-on-with-application-proxy"></a>Uygulama proxy 'Si ile çoklu oturum açma için parola oluşturma
 
@@ -34,9 +34,9 @@ Uygulamanızı zaten uygulama proxy 'Si ile yayımlamış ve test etmeniz gereki
 1. [Azure Portal](https://portal.azure.com)’da yönetici olarak oturum açın.
 1. **Azure Active Directory**  >  **Kurumsal uygulamalar**  >  **tüm uygulamalar**' ı seçin.
 1. Listeden, SSO ile ayarlamak istediğiniz uygulamayı seçin.  
-1. **Uygulama proxy 'si**seçin. 
+1. **Uygulama proxy 'si** seçin. 
 1. **Ön kimlik doğrulaması türünü** **PASSTHROUGH** olarak değiştirin ve **Kaydet**' i seçin. Daha sonra yeniden **Azure Active Directory** türüne dönebilirsiniz! 
-1. **Çoklu oturum açma**seçeneğini belirleyin.
+1. **Çoklu oturum açma** seçeneğini belirleyin.
 
    ![Uygulamanın genel bakış sayfasından çoklu oturum açma seçeneğini belirleyin](./media/application-proxy-configure-single-sign-on-password-vaulting/select-sso.png)
 
@@ -46,14 +46,14 @@ Uygulamanızı zaten uygulama proxy 'Si ile yayımlamış ve test etmeniz gereki
    ![Parola tabanlı oturum açma seçin ve URL 'nizi girin](./media/application-proxy-configure-single-sign-on-password-vaulting/password-sso.png)
 
 1. **Kaydet**’i seçin.
-1. **Uygulama proxy 'si**seçin. 
+1. **Uygulama proxy 'si** seçin. 
 1. **Ön kimlik doğrulama türünü** **Azure Active Directory** olarak değiştirin ve **Kaydet**' i seçin. 
-1. **Kullanıcılar ve gruplar ' ı**seçin.
-1. Kullanıcıları **Kullanıcı Ekle**seçeneğini belirleyerek uygulamaya atayın. 
+1. **Kullanıcılar ve gruplar ' ı** seçin.
+1. Kullanıcıları **Kullanıcı Ekle** seçeneğini belirleyerek uygulamaya atayın. 
 1. Bir kullanıcı için kimlik bilgilerini önceden tanımlamak istiyorsanız, Kullanıcı adının önünü işaretleyin ve **kimlik bilgilerini güncelleştir**' i seçin.
-1. **Azure Active Directory**  >  **App registrations**  >  **Tüm uygulamalar**uygulama kayıtları Azure Active Directory seçin.
+1.   >    >  **Tüm uygulamalar** uygulama kayıtları Azure Active Directory seçin.
 1. Listeden parola SSO ile yapılandırdığınız uygulamayı seçin.
-1. **Marka**seçin. 
+1. **Marka** seçin. 
 1. **Giriş sayfası URL 'Sini** parola SSO sayfasında **oturum açma URL 'si** ile güncelleştirin ve **Kaydet**' i seçin.  
 
 

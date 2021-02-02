@@ -11,12 +11,12 @@ ms.date: 11/13/2020
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 9b2fc61054c40f52f7e638117109ec556cc63a78
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: de6c7e47af3019d034d457f43334aad1aeafabdc
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98678466"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99254283"
 ---
 # <a name="troubleshooting-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te adanmış SQL Havuzu (eski adıyla SQL DW) sorunlarını giderme
 
@@ -76,6 +76,7 @@ Bu makalede, Azure SYNAPSE Analytics 'te adanmış SQL havuzunda (eski adıyla S
 | Desteklenmeyen SQL veritabanı veri türleri   | [Desteklenmeyen veri türlerine](sql-data-warehouse-tables-data-types.md#identify-unsupported-data-types)bakın.        |
 | Saklı yordam sınırlamaları          | Saklı yordamların bazı sınırlamalarını anlamak için [saklı yordam sınırlamaları](sql-data-warehouse-develop-stored-procedures.md#limitations) bölümüne bakın. |
 | UDF 'ler SELECT deyimlerini desteklemez | Bu, UDF 'lerimizin geçerli bir sınırlamasıdır.  Destekliyoruz sözdizimi için bkz. [oluşturma işlevi](/sql/t-sql/statements/create-function-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) . |
+| sütunlar için sp_rename (Önizleme), *dbo* dışında şemalar üzerinde çalışmıyor | Bu, SYNAPSE [sp_rename (Önizleme) sütunlarının](/sql/relational-databases/system-stored-procedures/sp-rename-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)geçerli bir sınırlamasıdır.  *Dbo* şemasının bir parçası olmayan nesnelerdeki sütunlar, BIR CTAS aracılığıyla yeni bir tabloya yeniden adlandırılabilir. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

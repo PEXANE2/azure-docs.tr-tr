@@ -5,13 +5,13 @@ author: IngridAtMicrosoft
 ms.author: inhenkel
 ms.service: media-services
 ms.topic: conceptual
-ms.date: 10/14/2020
-ms.openlocfilehash: c11bb0e369075c3024824d65290e8aecfa68e6f4
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.date: 1/28/2020
+ms.openlocfilehash: 7e58daf72522071eb7d0031d4ea236a21c6d8bfb
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98956149"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99252330"
 ---
 # <a name="bring-your-own-key-customer-managed-keys-with-media-services"></a>Media Services ile kendi anahtarınızı getirin (müşteri tarafından yönetilen anahtarlar)
 
@@ -36,6 +36,12 @@ Anahtar adı ve anahtar sürümü ya da yalnızca anahtar adı belirtebilirsiniz
 
 > [!WARNING]
 > Media Services müşteri anahtarına erişimi izler. Müşteri anahtarı erişilemez hale gelirse (örneğin, anahtar silinmişse veya Key Vault silinmişse veya erişim izni kaldırılmışsa), Media Services hesabı müşteri anahtarına erişilemez duruma geçirecek (hesabı etkin bir şekilde devre dışı bırakır). Ancak, hesap bu durumda silinebilir. Yalnızca hesap al, LISTELE ve SIL işlemleri desteklenir; Hesap anahtarına erişim geri yüklenene kadar diğer tüm istekler (kodlama, akış vb.) başarısız olur.
+
+## <a name="double-encryption"></a>Çift şifreleme
+
+Media Services, Çift şifrelemeyi destekler.  Çift şifreleme hakkında daha fazla bilgi edinmek için bkz. [Azure Çift şifreleme](../../security/fundamentals/double-encryption.md).
+
+Media Services hesapta Çift şifreleme otomatik olarak etkinleştirilir. Ancak, müşteri tarafından yönetilen anahtarı ve depolama hesabınızda çift şifrelemeyi ayrı olarak yapılandırmanız gerekir.
 
 ## <a name="tutorials"></a>Öğreticiler
 

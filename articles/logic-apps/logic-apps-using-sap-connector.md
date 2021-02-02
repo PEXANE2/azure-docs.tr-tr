@@ -7,14 +7,14 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: estfan, daviburg, logicappspm
 ms.topic: article
-ms.date: 01/25/2021
+ms.date: 02/01/2021
 tags: connectors
-ms.openlocfilehash: 93e705eea39443ffc15fbdd079e1376ec46cb51c
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: edf4ce188c9239e697e2148d4fff51966d91f85a
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98786699"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99252619"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Azure Logic Apps’ten SAP sistemlerine bağlanma
 
@@ -528,6 +528,18 @@ SAP bağlayıcısını kullanarak mantıksal uygulamanız için zaman uyumsuz bi
 Tam hata iletileri için SAP bağdaştırıcınızın genişletilmiş günlüklerine bakın. Ayrıca [, SAP Bağlayıcısı için bir Genişletilmiş günlük dosyasını etkinleştirebilirsiniz](#extended-sap-logging-in-on-premises-data-gateway).
 
 Haziran 2020 ve üzeri şirket içi veri ağ geçidi sürümleri için, [uygulama ayarlarında ağ geçidi günlüklerini etkinleştirebilirsiniz](/data-integration/gateway/service-gateway-tshoot#collect-logs-from-the-on-premises-data-gateway-app). 
+
+* Varsayılan günlük kaydı düzeyi **uyarıdır**.
+
+* Şirket içi veri ağ geçidi uygulamasının **Tanılama** ayarlarında **ek günlüğe yazmayı** etkinleştirirseniz, günlüğe kaydetme düzeyi **bilgilendirme** düzeyine yükseltilir.
+
+* Günlüğe kaydetme düzeyini **ayrıntılı** olarak artırmak için yapılandırma dosyanızda aşağıdaki ayarı güncelleştirin. Genellikle, yapılandırma dosyası konumunda bulunur `C:\Program Files\On-premises data gateway\Microsoft.PowerBI.DataMovement.Pipeline.GatewayCore.dll.config` .
+
+```json
+<setting name="SapTraceLevel" serializeAs="String">
+   <value>Verbose</value>
+</setting>
+```
 
 2020 Nisan 'dan ve önceki sürümlerde bulunan şirket içi veri ağ geçidi sürümleri için Günlükler varsayılan olarak devre dışıdır.
 

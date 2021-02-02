@@ -3,7 +3,7 @@ title: SAML tabanlı çoklu oturum açma ile yapılandırılmış uygulamalarda 
 description: Azure Active Directory ile SAML tabanlı federe çoklu oturum açma için yapılandırdığınız bir uygulamada oturum açarken oluşan belirli hatalara yönelik kılavuz
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,12 +12,12 @@ ms.date: 02/18/2019
 ms.author: kenwith
 ms.reviewer: luleon, asteen
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 62b828a23805c6d3ab544dd2b9f78b45a3327cde
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: feeed07021e31dfee44fa9372927e45b53131d1e
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99053406"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99254062"
 ---
 # <a name="problems-signing-in-to-saml-based-single-sign-on-configured-apps"></a>SAML tabanlı çoklu oturum açma ile yapılandırılmış uygulamalarda oturum açma sorunları
 Aşağıdaki oturum açma sorunlarını gidermek için, çözümü daha iyi tanılayıp otomatik hale getirmek için aşağıdaki işlemleri yapmanızı öneririz:

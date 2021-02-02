@@ -3,7 +3,7 @@ title: SaaS uygulamalarına erişimi yönetmek için kiracı kısıtlamalarını
 description: Hangi kullanıcıların Azure AD kiracısına bağlı olarak uygulamalara erişebileceğini yönetmek için kiracı kısıtlamalarını kullanma.
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,12 +12,12 @@ ms.date: 10/26/2020
 ms.author: kenwith
 ms.reviewer: hpsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d69755c36bf37dd591e81bea7983e25905798d4d
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: f605b2bb48855d70ea305dcda194b26da71ee9ec
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93286203"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99252483"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>SaaS bulut uygulamalarına erişimi yönetmek için kiracı kısıtlamalarını kullanın
 
@@ -33,13 +33,13 @@ Bu makale Microsoft 365 için kiracı kısıtlamalarına odaklanır, ancak bu ö
 
 Genel çözüm aşağıdaki bileşenleri içerir:
 
-1. **Azure AD** : `Restrict-Access-To-Tenants: <permitted tenant list>` üst bilgi varsa, Azure AD izin verilen kiracılar için yalnızca güvenlik belirteçleri verir.
+1. **Azure AD**: `Restrict-Access-To-Tenants: <permitted tenant list>` üst bilgi varsa, Azure AD izin verilen kiracılar için yalnızca güvenlik belirteçleri verir.
 
-2. **Şirket içi proxy sunucu altyapısı** : Bu altyapı, aktarım katmanı GÜVENLIĞI (TLS) denetimi yapabilen bir ara sunucu aygıtıdır. Azure AD 'ye yönelik trafiğe izin verilen kiracılar listesini içeren üstbilgiyi eklemek için proxy 'yi yapılandırmanız gerekir.
+2. **Şirket içi proxy sunucu altyapısı**: Bu altyapı, aktarım katmanı GÜVENLIĞI (TLS) denetimi yapabilen bir ara sunucu aygıtıdır. Azure AD 'ye yönelik trafiğe izin verilen kiracılar listesini içeren üstbilgiyi eklemek için proxy 'yi yapılandırmanız gerekir.
 
-3. **İstemci yazılımı** : kiracı kısıtlamalarını desteklemek için, istemci yazılımlarının belirteçleri doğrudan Azure AD 'den istemesi gerekir, bu sayede proxy altyapısının trafiği ele geçirebilir. Tarayıcı tabanlı Microsoft 365 uygulamalar, modern kimlik doğrulaması kullanan Office istemcileri gibi (OAuth 2,0 gibi), şu anda kiracı kısıtlamalarını desteklemektedir.
+3. **İstemci yazılımı**: kiracı kısıtlamalarını desteklemek için, istemci yazılımlarının belirteçleri doğrudan Azure AD 'den istemesi gerekir, bu sayede proxy altyapısının trafiği ele geçirebilir. Tarayıcı tabanlı Microsoft 365 uygulamalar, modern kimlik doğrulaması kullanan Office istemcileri gibi (OAuth 2,0 gibi), şu anda kiracı kısıtlamalarını desteklemektedir.
 
-4. **Modern kimlik doğrulaması** : bulut Hizmetleri, kiracı kısıtlamalarını kullanmak ve izin verilmeyen tüm kiracılara erişimi engellemek için modern kimlik doğrulaması kullanmalıdır. Microsoft 365 bulut hizmetlerini, varsayılan olarak modern kimlik doğrulama protokollerini kullanacak şekilde yapılandırmanız gerekir. Modern kimlik doğrulaması için Microsoft 365 destek hakkında en son bilgiler için, [Güncelleştirilmiş Office 365 modern kimlik doğrulamasını](https://www.microsoft.com/en-us/microsoft-365/blog/2015/03/23/office-2013-modern-authentication-public-preview-announced/)okuyun.
+4. **Modern kimlik doğrulaması**: bulut Hizmetleri, kiracı kısıtlamalarını kullanmak ve izin verilmeyen tüm kiracılara erişimi engellemek için modern kimlik doğrulaması kullanmalıdır. Microsoft 365 bulut hizmetlerini, varsayılan olarak modern kimlik doğrulama protokollerini kullanacak şekilde yapılandırmanız gerekir. Modern kimlik doğrulaması için Microsoft 365 destek hakkında en son bilgiler için, [Güncelleştirilmiş Office 365 modern kimlik doğrulamasını](https://www.microsoft.com/en-us/microsoft-365/blog/2015/03/23/office-2013-modern-authentication-public-preview-announced/)okuyun.
 
 Aşağıdaki diyagramda, üst düzey trafik akışı gösterilmektedir. Kiracı kısıtlamaları, Microsoft 365 bulut hizmetlerine değil, yalnızca Azure AD trafiği için TLS incelemesi gerektirir. Azure AD kimlik doğrulaması için trafik hacmi, Exchange Online ve SharePoint Online gibi SaaS uygulamalarına Trafik biriminden çok daha düşük olduğundan bu ayrım önemlidir.
 
@@ -81,7 +81,7 @@ Login.microsoftonline.com, login.microsoft.com ve login.windows.net için gelen 
 - *Restrict-Access-Context* için, kiracı kısıtlamalarını hangi kiracının ayarlamasında olduğunu bildirmek üzere tek BIR dizin kimliği değeri kullanın. Örneğin, contoso 'yu kiracı kısıtlamaları ilkesini belirten kiracı olarak bildirmek için ad/değer çifti şöyle görünür: `Restrict-Access-Context: 456ff232-35l2-5h23-b3b3-3236w0826f3d` .  Bu nokta içinde kendi dizin KIMLIĞINIZI kullanmanız **gerekir** .
 
 > [!TIP]
-> Dizin KIMLIĞINIZI [Azure Active Directory portalında](https://aad.portal.azure.com/)bulabilirsiniz. Yönetici olarak oturum açın, **Azure Active Directory** ' yi seçin ve ardından **Özellikler** ' i seçin. 
+> Dizin KIMLIĞINIZI [Azure Active Directory portalında](https://aad.portal.azure.com/)bulabilirsiniz. Yönetici olarak oturum açın, **Azure Active Directory**' yi seçin ve ardından **Özellikler**' i seçin. 
 >
 > Bir dizin KIMLIĞI veya etki alanı adının aynı kiracıya başvurmasını doğrulamak için, bu URL 'nin yerine bu KIMLIĞI veya etki alanını kullanın <tenant> : `https://login.microsoftonline.com/<tenant>/v2.0/.well-known/openid-configuration` .  Etki alanı ve KIMLIĞI aynı olan sonuçlar aynıysa, aynı kiracıya başvururlar. 
 
@@ -106,9 +106,9 @@ Bu bölümde hem son kullanıcılar hem de Yöneticiler için deneyim açıklanm
 
 1. [Azure Active Directory portalında](https://aad.portal.azure.com/)oturum açın. **Azure Active Directory Yönetim Merkezi** panosu görüntülenir.
 
-2. Sol bölmede **Azure Active Directory** ’yi seçin. Azure Active Directory genel bakış sayfası görüntülenir.
+2. Sol bölmede **Azure Active Directory**’yi seçin. Azure Active Directory genel bakış sayfası görüntülenir.
 
-3. Genel Bakış sayfasında, **kiracı kısıtlamaları** ' nı seçin.
+3. Genel Bakış sayfasında, **kiracı kısıtlamaları**' nı seçin.
 
 Kısıtlanmış erişim bağlamı kiracısı olarak belirtilen kiracının Yöneticisi, kullanılan kimlik ve hedef dizin KIMLIĞI de dahil olmak üzere kiracı kısıtlama ilkesi nedeniyle engellenen oturum açma işlemlerini görmek için bu raporu kullanabilir. Kısıtlamanın kiracı ayarı, oturum açma işlemi için Kullanıcı kiracısı veya kaynak kiracısı ise, oturum açma işlemleri dahil edilir.
 
@@ -125,7 +125,7 @@ Azure portal diğer raporlar gibi, raporunuzun kapsamını belirtmek için filtr
 - **MFA auth yöntemi** (çok faktörlü kimlik doğrulama yöntemi)
 - **MFA auth ayrıntısı** (çok faktörlü kimlik doğrulama ayrıntısı)
 - **MFA sonucu**
-- **IP adresi**
+- **IP Adresi**
 - **İstemci**
 - **Kullanıcı adı**
 - **Konum**
@@ -182,7 +182,7 @@ Fiddler, http üst bilgilerini ekleme de dahil olmak üzere HTTP/HTTPS trafiğin
 
 4. CustomRules dosyasını kaydedin ve kapatın.
 
-Fiddler 'ı yapılandırdıktan sonra, **Dosya** menüsüne gidip **trafiği yakala** ' yı seçerek trafiği yakalayabilirsiniz.
+Fiddler 'ı yapılandırdıktan sonra, **Dosya** menüsüne gidip **trafiği yakala**' yı seçerek trafiği yakalayabilirsiniz.
 
 ### <a name="staged-rollout-of-proxy-settings"></a>Proxy ayarlarının aşamalı dağıtımı
 

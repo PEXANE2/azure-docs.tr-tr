@@ -4,7 +4,7 @@ description: Azure AD Uygulama Ara Sunucusu bağlayıcıları hakkında temel bi
 services: active-directory
 documentationcenter: ''
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 155a91ded6c814e2d868e8edd4572459460d006f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ebef93455414c114fb60df9af8ebc629769a33e6
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88642070"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99254437"
 ---
 # <a name="set-a-custom-home-page-for-published-apps-by-using-azure-ad-application-proxy"></a>Azure AD Uygulama Ara Sunucusu kullanarak yayımlanan uygulamalar için özel bir giriş sayfası ayarlama
 
@@ -58,7 +58,7 @@ Azure AD portalı aracılığıyla uygulamanızın giriş sayfası URL 'sini de�
 1. [Azure Portal](https://portal.azure.com/)’da yönetici olarak oturum açın.
 1. **Azure Active Directory**' yi seçin ve ardından **uygulama kayıtları**. Kayıtlı uygulamaların listesi görüntülenir.
 1. Listeden uygulamanızı seçin. Kayıtlı uygulamanın ayrıntılarını gösteren bir sayfa görüntülenir.
-1. **Yönet**altında **marka**' i seçin.
+1. **Yönet** altında **marka**' i seçin.
 1. **Giriş sayfası URL 'sini** yeni yolunuza göre güncelleştirin.
 
    ![Giriş sayfası URL 'SI alanını gösteren kayıtlı bir uygulama için marka sayfası](media/application-proxy-configure-custom-home-page/app-proxy-app-branding.png)
@@ -75,7 +75,7 @@ PowerShell kullanarak bir uygulamanın giriş sayfasını yapılandırmak için 
 
 ### <a name="install-the-azure-ad-powershell-module"></a>Azure AD PowerShell modülünü yükler
 
-PowerShell kullanarak özel bir giriş sayfası URL 'SI yapılandırmadan önce Azure AD PowerShell modülünü yükleyebilirsiniz.Paketi, Graph API uç noktasını kullanan [PowerShell Galerisi](https://www.powershellgallery.com/packages/AzureAD/2.0.2.16)indirebilirsiniz.
+PowerShell kullanarak özel bir giriş sayfası URL 'SI yapılandırmadan önce Azure AD PowerShell modülünü yükleyebilirsiniz. Paketi, Graph API uç noktasını kullanan [PowerShell Galerisi](https://www.powershellgallery.com/packages/AzureAD/2.0.2.16)indirebilirsiniz.
 
 Paketi yüklemek için şu adımları izleyin:
 
@@ -115,8 +115,8 @@ Uygulamayı görünen adına veya giriş sayfasına göre arayarak uygulamanın 
 
    ```console
    DisplayName : SharePoint
-   Homepage    : https://sharepoint-iddemo.msappproxy.net/
-   ObjectId    : 8af89bfa-eac6-40b0-8a13-c2c4e3ee22a4
+   Homepage    : https://sharepoint-iddemo.msappproxy.net/
+   ObjectId    : 8af89bfa-eac6-40b0-8a13-c2c4e3ee22a4
    ```
 
    Alternatif olarak, yalnızca tüm uygulamaların listesini çekebilir, belirli bir görünen ad veya giriş sayfası ile uygulamayı listede arayabilir ve uygulama bulunduğunda uygulamanın ObjectID 'yi kopyalayabilirsiniz.
@@ -169,8 +169,8 @@ Giriş sayfası URL 'sini oluşturun ve uygulamanızı bu değerle güncelleşti
 
    ```console
    DisplayName : SharePoint
-   Homepage    : https://sharepoint-iddemo.msappproxy.net/hybrid/
-   ObjectId    : 8af89bfa-eac6-40b0-8a13-c2c4e3ee22a4
+   Homepage    : https://sharepoint-iddemo.msappproxy.net/hybrid/
+   ObjectId    : 8af89bfa-eac6-40b0-8a13-c2c4e3ee22a4
    ```
 
 1. Giriş sayfasının beklendiği gibi ilk ekran olarak göründüğünü onaylamak için uygulamayı yeniden başlatın.

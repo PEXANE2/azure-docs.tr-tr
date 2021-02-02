@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: how-to
 ms.date: 07/20/2020
 ms.author: sebansal
-ms.openlocfilehash: d7d34b61e584b63c517b6c0f8af4cb4adcc7fefe
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: e75786c42b54882c249b5ed7100ebd12f3f78e78
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289501"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99254368"
 ---
 # <a name="importing-azure-key-vault-certificates-faq"></a>Azure Key Vault sertifikaları içeri aktarma hakkında SSS
 
@@ -62,6 +62,10 @@ Daha fazla bilgi için bkz. [sertifika silme işlemi](/rest/api/keyvault/getdele
 Bu hata iki nedenden kaynaklanabilir:    
 * Sertifika konu adı 200 karakterle sınırlıdır.
 * Sertifika parolası 200 karakterle sınırlıdır.
+
+
+### <a name="error-the-specified-pem-x509-certificate-content-is-in-an-unexpected-format-please-check-if-certificate-is-in-valid-pem-format"></a>Hata "belirtilen pek X. 509.440 sertifika içeriği beklenmeyen bir biçimde. Lütfen sertifikanın geçerli pek biçiminde olup olmadığını denetleyin. "
+Lütfen ped dosyasındaki içeriğin UNIX stili çizgi ayırıcıları kullandığını doğrulayın `(\n)`
 
 ### <a name="can-i-import-an-expired-certificate-to-azure-key-vault"></a>Azure Key Vault, zaman aşımına uğradı bir sertifikayı içeri aktarabilir miyim?
     

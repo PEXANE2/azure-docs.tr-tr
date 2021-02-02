@@ -3,7 +3,7 @@ title: Azure AD 'de çoklu oturum açma seçenekleri
 description: Azure Active Directory içinde çoklu oturum açma (SSO) için kullanılabilen seçenekler hakkında bilgi edinin.
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: kenwith
 ms.reviewer: arvindh, japere
-ms.openlocfilehash: f7ec8a913634322be5a1eb854972cfa2a0217381
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 2bf84a22a384e6079c2d85c833b34ba37eecaa46
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94651932"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99252364"
 ---
 # <a name="single-sign-on-options-in-azure-ad"></a>Azure AD 'de çoklu oturum açma seçenekleri
 
@@ -55,9 +55,9 @@ Aşağıdaki tablo, çoklu oturum açma yöntemlerini özetler ve daha fazla ayr
 
 Yeni uygulamalar geliştirirken, birden çok cihaz platformunda uygulamanız için en iyi çoklu oturum açma deneyimi elde etmek için OpenID Connect ve OAuth gibi modern protokolleri kullanın. OAuth, kullanıcıların veya yöneticilerin [Microsoft Graph](/graph/overview)gibi korumalı kaynaklara [izin vermesini](configure-user-consent.md) sağlar. Uygulamanız için [SDK 'ları](../develop/reference-v2-libraries.md) benimsemeyi ve ayrıca uygulamanız [Microsoft Graph](/graph/overview)kullanmaya hazırız.
 
-Daha fazla bilgi için bkz:
+Daha fazla bilgi için bkz.
 
-- [OAuth 2.0](../develop/v2-oauth2-auth-code-flow.md)
+- [OAuth 2,0](../develop/v2-oauth2-auth-code-flow.md)
 - [OpenID Connect 1.0](../develop/v2-protocols-oidc.md)
 - [Microsoft Identity platform Geliştirici Kılavuzu](../develop/index.yml).
 
