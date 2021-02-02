@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 09/01/2020
-ms.openlocfilehash: 4505deaa4cc11c00c7283ef686827d6893c2742a
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.date: 02/01/2021
+ms.openlocfilehash: b796b9eb065a221904fe4487c900efa2db1955af
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93280429"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99429585"
 ---
 # <a name="copy-data-from-an-sap-table-by-using-azure-data-factory"></a>Azure Data Factory kullanarak SAP tablosundan veri kopyalama
 
@@ -84,25 +84,25 @@ Aşağıdaki özellikler SAP BW açık hub bağlı hizmeti için desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| `type` | `type`Özelliğin olarak ayarlanması gerekir `SapTable` . | Evet |
-| `server` | SAP örneğinin bulunduğu sunucunun adı.<br/>SAP uygulama sunucusuna bağlanmak için kullanın. | No |
-| `systemNumber` | SAP sisteminin sistem numarası.<br/>SAP uygulama sunucusuna bağlanmak için kullanın.<br/>İzin verilen değer: dize olarak temsil edilen iki basamaklı ondalık sayı. | No |
-| `messageServer` | SAP ileti sunucusunun ana bilgisayar adı.<br/>Bir SAP ileti sunucusuna bağlanmak için kullanın. | No |
-| `messageServerService` | İleti sunucusunun hizmet adı veya bağlantı noktası numarası.<br/>Bir SAP ileti sunucusuna bağlanmak için kullanın. | No |
-| `systemId` | Tablonun bulunduğu SAP sisteminin KIMLIĞI.<br/>Bir SAP ileti sunucusuna bağlanmak için kullanın. | No |
-| `logonGroup` | SAP sistemi için oturum açma grubu.<br/>Bir SAP ileti sunucusuna bağlanmak için kullanın. | No |
-| `clientId` | SAP sistemindeki istemcinin KIMLIĞI.<br/>İzin verilen değer: dize olarak temsil edilen üç basamaklı ondalık sayı. | Evet |
-| `language` | SAP sisteminin kullandığı dil.<br/>Varsayılan değer `EN` olarak belirlenmiştir.| No |
-| `userName` | SAP sunucusuna erişimi olan kullanıcının adı. | Evet |
-| `password` | Kullanıcının parolası. Bu alanı, `SecureString` Data Factory güvenli bir şekilde depolamak için yazın veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)için işaretleyin. | Evet |
-| `sncMode` | Tablonun bulunduğu SAP sunucusuna erişmek için SNC etkinleştirme göstergesi.<br/>SAP sunucusuna bağlanmak için SNC kullanmak istiyorsanız kullanın.<br/>İzin verilen değerler `0` (kapalı, varsayılan) veya `1` (açık). | No |
-| `sncMyName` | Tablonun bulunduğu SAP sunucusuna erişmek için başlatıcının SNC adı.<br/>Açık olduğunda geçerlidir `sncMode` . | No |
-| `sncPartnerName` | Tablonun bulunduğu SAP sunucusuna erişmek için iletişim ortağının SNC adı.<br/>Açık olduğunda geçerlidir `sncMode` . | No |
-| `sncLibraryPath` | Tablonun bulunduğu SAP sunucusuna erişmek için dış güvenlik ürününün kitaplığı.<br/>Açık olduğunda geçerlidir `sncMode` . | No |
-| `sncQop` | Uygulanacak SNC koruma düzeyi kalitesi.<br/>Açık olduğunda geçerlidir `sncMode` . <br/>İzin verilen değerler `1` (kimlik doğrulaması), `2` (bütünlük), `3` (Gizlilik), `8` (varsayılan), `9` (en fazla). | No |
-| `connectVia` | Veri deposuna bağlanmak için kullanılacak [tümleştirme çalışma zamanı](concepts-integration-runtime.md) . [Önkoşullardan](#prerequisites)daha önce belirtildiği gibi, şirket içinde barındırılan bir tümleştirme çalışma zamanı gereklidir. |Evet |
+| `type` | `type`Özelliğin olarak ayarlanması gerekir `SapTable` . | Yes |
+| `server` | SAP örneğinin bulunduğu sunucunun adı.<br/>SAP uygulama sunucusuna bağlanmak için kullanın. | Hayır |
+| `systemNumber` | SAP sisteminin sistem numarası.<br/>SAP uygulama sunucusuna bağlanmak için kullanın.<br/>İzin verilen değer: dize olarak temsil edilen iki basamaklı ondalık sayı. | Hayır |
+| `messageServer` | SAP ileti sunucusunun ana bilgisayar adı.<br/>Bir SAP ileti sunucusuna bağlanmak için kullanın. | Hayır |
+| `messageServerService` | İleti sunucusunun hizmet adı veya bağlantı noktası numarası.<br/>Bir SAP ileti sunucusuna bağlanmak için kullanın. | Hayır |
+| `systemId` | Tablonun bulunduğu SAP sisteminin KIMLIĞI.<br/>Bir SAP ileti sunucusuna bağlanmak için kullanın. | Hayır |
+| `logonGroup` | SAP sistemi için oturum açma grubu.<br/>Bir SAP ileti sunucusuna bağlanmak için kullanın. | Hayır |
+| `clientId` | SAP sistemindeki istemcinin KIMLIĞI.<br/>İzin verilen değer: dize olarak temsil edilen üç basamaklı ondalık sayı. | Yes |
+| `language` | SAP sisteminin kullandığı dil.<br/>Varsayılan değer `EN` olarak belirlenmiştir.| Hayır |
+| `userName` | SAP sunucusuna erişimi olan kullanıcının adı. | Yes |
+| `password` | Kullanıcının parolası. Bu alanı, `SecureString` Data Factory güvenli bir şekilde depolamak için yazın veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)için işaretleyin. | Yes |
+| `sncMode` | Tablonun bulunduğu SAP sunucusuna erişmek için SNC etkinleştirme göstergesi.<br/>SAP sunucusuna bağlanmak için SNC kullanmak istiyorsanız kullanın.<br/>İzin verilen değerler `0` (kapalı, varsayılan) veya `1` (açık). | Hayır |
+| `sncMyName` | Tablonun bulunduğu SAP sunucusuna erişmek için başlatıcının SNC adı.<br/>Açık olduğunda geçerlidir `sncMode` . | Hayır |
+| `sncPartnerName` | Tablonun bulunduğu SAP sunucusuna erişmek için iletişim ortağının SNC adı.<br/>Açık olduğunda geçerlidir `sncMode` . | Hayır |
+| `sncLibraryPath` | Tablonun bulunduğu SAP sunucusuna erişmek için dış güvenlik ürününün kitaplığı.<br/>Açık olduğunda geçerlidir `sncMode` . | Hayır |
+| `sncQop` | Uygulanacak SNC koruma düzeyi kalitesi.<br/>Açık olduğunda geçerlidir `sncMode` . <br/>İzin verilen değerler `1` (kimlik doğrulaması), `2` (bütünlük), `3` (Gizlilik), `8` (varsayılan), `9` (en fazla). | Hayır |
+| `connectVia` | Veri deposuna bağlanmak için kullanılacak [tümleştirme çalışma zamanı](concepts-integration-runtime.md) . [Önkoşullardan](#prerequisites)daha önce belirtildiği gibi, şirket içinde barındırılan bir tümleştirme çalışma zamanı gereklidir. |Yes |
 
-**Örnek 1: SAP uygulama sunucusuna bağlanma**
+### <a name="example-1-connect-to-an-sap-application-server"></a>Örnek 1: SAP uygulama sunucusuna bağlanma
 
 ```json
 {
@@ -192,8 +192,8 @@ Ve SAP BW açık hub bağlantılı hizmetine veri kopyalamak için aşağıdaki 
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| `type` | `type`Özelliğin olarak ayarlanması gerekir `SapTableResource` . | Evet |
-| `tableName` | Verilerin kopyalanacağı SAP tablosunun adı. | Evet |
+| `type` | `type`Özelliğin olarak ayarlanması gerekir `SapTableResource` . | Yes |
+| `tableName` | Verilerin kopyalanacağı SAP tablosunun adı. | Yes |
 
 ### <a name="example"></a>Örnek
 
@@ -224,17 +224,17 @@ Bir SAP tablosundan veri kopyalamak için aşağıdaki özellikler desteklenir:
 
 | Özellik                         | Açıklama                                                  | Gerekli |
 | :------------------------------- | :----------------------------------------------------------- | :------- |
-| `type`                             | `type`Özelliğin olarak ayarlanması gerekir `SapTableSource` .         | Evet      |
-| `rowCount`                         | Alınacak satır sayısı.                              | No       |
-| `rfcTableFields`                 | SAP tablosundan kopyalanacak alanlar (sütunlar). Örneğin, `column0, column1`. | No       |
-| `rfcTableOptions`                | SAP tablosundaki satırları filtrelemeye yönelik seçenekler. Örneğin, `COLUMN0 EQ 'SOMEVALUE'`. Bu makalenin ilerleyen kısımlarında Ayrıca bkz. SAP Query operator tablosu. | No       |
-| `customRfcReadTableFunctionModule` | Bir SAP tablosundan veri okumak için kullanılabilen özel bir RFC işlev modülü.<br>Verilerin SAP sisteminizden nasıl alındığını tanımlamak ve Data Factory ' a geri dönmek için özel bir RFC işlevi modülü kullanabilirsiniz. Özel işlev modülünün `/SAPDS/RFC_READ_TABLE2` , Data Factory tarafından kullanılan varsayılan arabirim olan öğesine benzer bir arabirimi (içeri aktarma, dışarı aktarma, tablolar) uygulanmış olması gerekir.<br>Data Factory | No       |
-| `partitionOption`                  | Bir SAP tablosundan okunacak bölüm mekanizması. Desteklenen seçenekler şunlardır: <ul><li>`None`</li><li>`PartitionOnInt` (gibi, sol tarafta sıfır dolgusu olan normal tamsayı veya tamsayı değerleri `0000012345` )</li><li>`PartitionOnCalendarYear` ("YYYY" biçiminde 4 basamak)</li><li>`PartitionOnCalendarMonth` ("YYYYMM" biçiminde 6 basamak)</li><li>`PartitionOnCalendarDate` ("YYYYMMDD" biçiminde 8 basamak)</li><li>`PartitionOntime` (örneğin, "HHMMSS" biçiminde 6 basamak `235959` )</li></ul> | No       |
-| `partitionColumnName`              | Verileri bölümlemek için kullanılan sütunun adı.                | No       |
-| `partitionUpperBound`              | Bölümlendirmeye devam etmek için, içinde belirtilen sütunun en büyük değeri `partitionColumnName` . | No       |
-| `partitionLowerBound`              | Bölümlendirmeye devam etmek için, içinde belirtilen sütunun en küçük değeri `partitionColumnName` . (Note: `partitionLowerBound` bölüm seçeneği olduğunda "0" olamaz `PartitionOnInt` ) | No       |
-| `maxPartitionsNumber`              | Verilerin bölüneceği en fazla bölüm sayısı.     | No       |
-| `sapDataColumnDelimiter` | Çıktı verilerini ayırmak için SAP RFC 'ye geçirilen sınırlayıcı olarak kullanılan tek karakter. | No |
+| `type`                             | `type`Özelliğin olarak ayarlanması gerekir `SapTableSource` .         | Yes      |
+| `rowCount`                         | Alınacak satır sayısı.                              | Hayır       |
+| `rfcTableFields`                 | SAP tablosundan kopyalanacak alanlar (sütunlar). Örneğin, `column0, column1`. | Hayır       |
+| `rfcTableOptions`                | SAP tablosundaki satırları filtrelemeye yönelik seçenekler. Örneğin, `COLUMN0 EQ 'SOMEVALUE'`. Bu makalenin ilerleyen kısımlarında Ayrıca bkz. SAP Query operator tablosu. | Hayır       |
+| `customRfcReadTableFunctionModule` | Bir SAP tablosundan veri okumak için kullanılabilen özel bir RFC işlev modülü.<br>Verilerin SAP sisteminizden nasıl alındığını tanımlamak ve Data Factory ' a geri dönmek için özel bir RFC işlevi modülü kullanabilirsiniz. Özel işlev modülünün `/SAPDS/RFC_READ_TABLE2` , Data Factory tarafından kullanılan varsayılan arabirim olan öğesine benzer bir arabirimi (içeri aktarma, dışarı aktarma, tablolar) uygulanmış olması gerekir.<br>Data Factory | Hayır       |
+| `partitionOption`                  | Bir SAP tablosundan okunacak bölüm mekanizması. Desteklenen seçenekler şunlardır: <ul><li>`None`</li><li>`PartitionOnInt` (gibi, sol tarafta sıfır dolgusu olan normal tamsayı veya tamsayı değerleri `0000012345` )</li><li>`PartitionOnCalendarYear` ("YYYY" biçiminde 4 basamak)</li><li>`PartitionOnCalendarMonth` ("YYYYMM" biçiminde 6 basamak)</li><li>`PartitionOnCalendarDate` ("YYYYMMDD" biçiminde 8 basamak)</li><li>`PartitionOntime` (örneğin, "HHMMSS" biçiminde 6 basamak `235959` )</li></ul> | Hayır       |
+| `partitionColumnName`              | Verileri bölümlemek için kullanılan sütunun adı.                | Hayır       |
+| `partitionUpperBound`              | Bölümlendirmeye devam etmek için, içinde belirtilen sütunun en büyük değeri `partitionColumnName` . | Hayır       |
+| `partitionLowerBound`              | Bölümlendirmeye devam etmek için, içinde belirtilen sütunun en küçük değeri `partitionColumnName` . (Note: `partitionLowerBound` bölüm seçeneği olduğunda "0" olamaz `PartitionOnInt` ) | Hayır       |
+| `maxPartitionsNumber`              | Verilerin bölüneceği en fazla bölüm sayısı.     | Hayır       |
+| `sapDataColumnDelimiter` | Çıktı verilerini ayırmak için SAP RFC 'ye geçirilen sınırlayıcı olarak kullanılan tek karakter. | Hayır |
 
 >[!TIP]
 >SAP tablonuzda birkaç milyar satır gibi büyük miktarda veri varsa, `partitionOption` `partitionSetting` verileri daha küçük bölümlere bölmek için ve kullanın. Bu durumda, veriler bölüm başına okunurdur ve her bir veri bölümü, tek bir RFC çağrısıyla SAP sunucusundan alınır.<br/>
@@ -294,6 +294,60 @@ Bir SAP tablosundan veri kopyalamak için aşağıdaki özellikler desteklenir:
     }
 ]
 ```
+
+## <a name="join-sap-tables"></a>SAP tablolarına katılarak
+
+Şu anda SAP tablo Bağlayıcısı Varsayılan işlev modülünün bulunduğu tek bir tabloyu destekler. Birden çok tablonun birleştirilmiş verilerini almak için aşağıdaki adımları izleyerek SAP tablo Bağlayıcısı 'ndaki [Customrfcreadtablefunctionmodule](#copy-activity-properties) özelliğinden yararlanabilirsiniz:
+
+- Bir sorgu SEÇENEĞI olarak bir sorgu alabilir ve verileri almak için kendi mantığınızı uygulayabilen [özel bir işlev modülü yazın](#create-custom-function-module).
+- "Özel işlev modülü" için, özel işlev modülünüzün adını girin.
+- "RFC tablo seçenekleri" için, işlev modülünüzü " `<TABLE1>` Iç BIRLEŞIM COLUMN0" gıbı seçenekler olarak akışa almak için tablo JOIN ifadesini belirtin `<TABLE2>` .
+
+Aşağıda bir örnek verilmiştir:
+
+![SAP tablosuna katılması](./media/connector-sap-table/sap-table-join.png) 
+
+>[!TIP]
+>Ayrıca, Birleşik verileri SAP tablo Bağlayıcısı tarafından desteklenen görünümde toplanmış olmaya da göz önüne alabilirsiniz.
+>Ayrıca ilgili tabloları Azure 'a (ör. Azure depolama, Azure SQL veritabanı) eklemek için çıkarmayı ve daha sonra veri akışını kullanarak daha fazla JOIN veya Filter ile devam edebilirsiniz.
+
+## <a name="create-custom-function-module"></a>Özel işlev modülü oluştur
+
+SAP tablosu için şu anda kopyalama kaynağında [Customrfcreadtablefunctionmodule](#copy-activity-properties) özelliğini destekliyoruz, bu da kendi mantığınızı ve işlem verilerinizi kullanmanıza olanak sağlar.
+
+Hızlı bir kılavuz olarak, "özel işlev modülü" ile çalışmaya başlamak için bazı gereksinimler aşağıda verilmiştir:
+
+- Tanım:
+
+    ![Tanım](./media/connector-sap-table/custom-function-module-definition.png) 
+
+- Verileri aşağıdaki tablolardan birine dışarı aktarın:
+
+    ![Tablo 1 dışarı aktarma](./media/connector-sap-table/export-table-1.png) 
+
+    ![Dışarı aktarma tablosu 2](./media/connector-sap-table/export-table-2.png)
+ 
+Aşağıda, SAP tablo bağlayıcısının özel işlev modülüyle nasıl çalıştığı gösterilmektedir:
+
+1. SAP NCO aracılığıyla SAP sunucusuyla bağlantı oluşturun.
+
+1. Aşağıdaki şekilde ayarlanan parametrelerle birlikte "özel işlev modülü" çağırın:
+
+    - QUERY_TABLE: ADF SAP tablosu veri kümesinde ayarladığınız tablo adı; 
+    - Sınırlayıcı: ADF SAP tablo kaynağında ayarladığınız sınırlayıcı; 
+    - ROWCOUNT/seçenek/alanlar: ADF tablo kaynağında ayarladığınız satır sayısı/toplanmış seçenek/alanlar.
+
+1. Sonucu alın ve verileri aşağıdaki yollarla ayrıştırın:
+
+    1. Şemaları almak için Fields tablosundaki değeri ayrıştırın.
+
+        ![Alanlardaki değerleri Ayrıştır](./media/connector-sap-table/parse-values.png)
+
+    1. Hangi tablonun bu değerleri içerdiğini görmek için çıkış tablosunun değerlerini alın.
+
+        ![Çıkış tablosundaki değerleri Al](./media/connector-sap-table/get-values.png)
+
+    1. OUT_TABLE değerleri alın, verileri ayrıştırın ve sonra havuza yazın.
 
 ## <a name="data-type-mappings-for-an-sap-table"></a>SAP tablosu için veri türü eşlemeleri
 

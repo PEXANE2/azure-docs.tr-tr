@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: cherylmc
-ms.openlocfilehash: 59e60dadda7c0de37cfabadbc36ca53bc3c2b336
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: cfb75b6383d8ca449b4bc54b9d21cb16b3a4ad40
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94563741"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99428192"
 ---
 # <a name="global-transit-network-architecture-and-virtual-wan"></a>Küresel aktarım ağı mimarisi ve sanal WAN
 
@@ -133,9 +133,6 @@ Azure sanal WAN hub 'ları karma ağ genelinde tüm ağ uç noktalarını birbir
 
 **Şekil 5: Azure Güvenlik Duvarı ile güvenli sanal hub**
 
-> [!NOTE]
-> Güvenlik Duvarı ile Inter-hub Şu anda desteklenmiyor. Hub 'lar arasındaki trafik, her hub 'da doğrudan Azure Güvenlik duvarını atlayarak hareket eder.
-
 Sanal WAN ile Azure Güvenlik Duvarı, aşağıdaki genel güvenli geçiş bağlantı yollarını destekler. Parantez içindeki harfler Şekil 5 ' e eşlenir.
 
 * VNet-VNet güvenli aktarım (e)
@@ -152,6 +149,23 @@ VNet 'Ten Internet 'e sanal WAN hub 'ındaki Azure Güvenlik Duvarı üzerinden 
 
 ### <a name="branch-to-internet-or-third-party-security-service-j"></a>Daldan Internet veya üçüncü taraf güvenlik hizmeti (j)
 Daldan Internet 'e, dalların sanal WAN hub 'ındaki Azure Güvenlik Duvarı üzerinden İnternet 'e bağlanmasını sağlar. Desteklenen üçüncü taraf güvenlik hizmetleri aracılığıyla internet 'e giden trafik, Azure güvenlik duvarından geçmez. Azure Güvenlik Duvarı Yöneticisi 'Ni kullanarak, desteklenen üçüncü taraf güvenlik hizmeti aracılığıyla Dalla Internet yolunu yapılandırabilirsiniz. 
+
+### <a name="branch-to-branch-secured-transit-cross-region-f"></a>Daldan dala güvenli geçiş çapraz bölgesi (f)
+
+Dallar, ExpressRoute devreleri ve/veya siteden siteye VPN bağlantıları kullanarak Azure Güvenlik Duvarı ile güvenli bir sanal hub 'a bağlanabilir. Dalları dala en yakın bölgede bulunan sanal WAN hub 'ına bağlayabilirsiniz.
+
+Bu seçenek, kuruluşların şubelerle bağlantı kurmak için Azure omurgasına yararlanmasını sağlar. Ancak, bu özellik kullanılabilir olsa bile, dalları Azure sanal WAN üzerinden bağlama avantajlarına ve özel bir WAN kullanmaya yönelik avantajlardan yararlanabilirsiniz.  
+
+> [!NOTE]
+> Trafiğin güvenlik duvarı aracılığıyla hub arası işlenmesi Şu anda desteklenmiyor. Hub 'lar arasındaki trafik, güvenli sanal hub içindeki doğru dala yönlendirilir, ancak trafik her bir hub 'da Azure Güvenlik duvarını atlar.
+
+### <a name="branch-to-vnet-secured-transit-g"></a>Daldan VNet 'e güvenli geçiş (g)
+
+Daldan VNet 'ten güvenli geçiş, dalların sanal WAN hub ile aynı bölgedeki sanal ağlarla iletişim kurmasına ve başka bir bölgedeki başka bir sanal WAN hub 'ına bağlı başka bir sanal ağa bağlanmasını sağlar.
+
+> [!NOTE]
+> Güvenlik Duvarı ile Inter-hub Şu anda desteklenmiyor. Hub 'lar arasındaki trafik, her hub 'da doğrudan Azure Güvenlik duvarını atlayarak hareket eder.  Aynı bölgedeki bir sanal ağa giden bağlantı aracılığıyla gelen trafik, güvenli hub 'daki Azure Güvenlik Duvarı tarafından işlenir.
+
 
 ### <a name="how-do-i-enable-default-route-00000-in-a-secured-virtual-hub"></a>Güvenli bir sanal hub 'da varsayılan yolu (0.0.0.0/0) etkinleştirmek Nasıl yaparım?
 

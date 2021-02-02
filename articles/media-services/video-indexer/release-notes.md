@@ -10,14 +10,14 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.workload: na
 ms.topic: article
-ms.date: 01/06/2021
+ms.date: 02/01/2021
 ms.author: juliako
-ms.openlocfilehash: b6e18e077b717da65ca8d70b9bda6a133dba1f5c
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: c0d332c00635444ab4d694e46486a498b43137f2
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98120096"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99427675"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Azure Media Services Video Indexer sürüm notları
 
@@ -30,7 +30,23 @@ En son gelişmelerden haberdar olmak için, bu makalede hakkında bilgi verilmek
 * Hata düzeltmeleri
 * Kullanım dışı işlevsellik
 
-##  <a name="december-2020"></a>Aralık 2020
+## <a name="january-2021"></a>Ocak 2021
+
+### <a name="video-indexer-is-deployed-on-us-government-cloud"></a>Video Indexer ABD kamu bulutunda dağıtılır 
+
+Artık Virginia ve Arizona bölgelerinde ABD kamu bulutunda ücretli Video Indexer bir hesap oluşturabilirsiniz. Video Indexer ücretsiz deneme teklifi, belirtilen bölgede kullanılamıyor. Daha fazla bilgi için Video Indexer belgelerine gidin. 
+
+### <a name="video-indexer-deployed-in-the-india-central-region"></a>Hindistan Orta bölgesinde dağıtılan Video Indexer 
+
+Artık Hindistan Orta bölgesinde Video Indexer ücretli bir hesap oluşturabilirsiniz. 
+
+### <a name="new-dark-mode-for-the-video-indexer-website-experience"></a>Video Indexer Web sitesi deneyimi için yeni koyu mod
+
+Video Indexer Web sitesi deneyimleri artık koyu modda kullanılabilir. Koyu modu etkinleştirmek için ayarlar panelini açın ve **koyu mod** seçeneğinde geçiş yapın. 
+
+:::image type="content" source="./media/release-notes/dark-mode.png" alt-text="Koyu mod ayarı":::
+
+## <a name="december-2020"></a>Aralık 2020
 
 ### <a name="video-indexer-deployed-in-the-switzerland-west-and-switzerland-north"></a>İsviçre Batı ve İsviçre Kuzey Video Indexer dağıtılır
 
@@ -325,4 +341,4 @@ Zaten desteklenen (SRT, VTT ve TTML) kapalı açıklamalı alt yazı biçiminin 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Genel bakış](video-indexer-overview.md)
+[Genel Bakış](video-indexer-overview.md)

@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 01/04/2021
+ms.date: 02/01/2021
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40, content-perf, FY21Q1, contperf-fy21q1
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: f4ae26a489b823e2347841cf72690d6cd8462611
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 1bd60a60aa5f6fffcc459f0e14d550740e48496d
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98755315"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99428158"
 ---
 # <a name="configurable-token-lifetimes-in-the-microsoft-identity-platform-preview"></a>Microsoft Identity platformunda yapılandırılabilir belirteç yaşam süreleri (Önizleme)
 
@@ -77,16 +77,14 @@ Bir örnek için bkz. [Web oturumu için Ilke oluşturma](configure-token-lifeti
 
 ## <a name="token-lifetime-policies-for-refresh-tokens-and-session-tokens"></a>Belirteçleri ve oturum belirteçlerini yenileme için belirteç ömür ilkeleri
 
-Belirteçleri ve oturum belirteçlerini yenileme belirteçleri için belirteç ömür ilkeleri ayarlayabilirsiniz.
+Yenileme belirteçleri ve oturum belirteçleri için belirteç ömür ilkeleri ayarlayamazsınız.
 
 > [!IMPORTANT]
-> Mayıs 2020 itibariyle yeni kiracılar yenileme ve oturum belirteci yaşam sürelerini yapılandıramaz.  Mevcut yapılandırmaya sahip kiracılar, 30 Ocak 2021 ' ye kadar yenileme ve oturum belirteci ilkelerini değiştirebilir.   Azure Active Directory, 30 Ocak 2021 ' den sonra ilkelerde bulunan mevcut yenileme ve oturum belirteci yapılandırmasını durdurur. Kullanımdan sonra erişimi, SAML ve KIMLIK belirteci yaşam sürelerini yapılandırabilirsiniz.
->
-> Bir kullanıcının yeniden oturum açması istenmeden önce geçen süreyi tanımlamaya devam etmeniz gerekiyorsa, koşullu erişimde oturum açma sıklığını yapılandırın. Koşullu erişim hakkında daha fazla bilgi edinmek için [koşullu erişimle kimlik doğrulama oturumu yönetimini yapılandırma](../conditional-access/howto-conditional-access-session-lifetime.md)makalesini okuyun.
->
-> Kullanımdan kaldırma tarihinden sonra koşullu erişim kullanmak istemiyorsanız, yenileme ve oturum belirteçleriniz bu tarih için [varsayılan yapılandırmaya](#configurable-token-lifetime-properties-after-the-retirement) ayarlanır ve artık yaşam sürelerini değiştiremeyeceksiniz.
+> 30 Ocak 2021 itibariyle yenileme ve oturum belirteci yaşam sürelerini yapılandıramazsınız. Azure Active Directory var olan ilkelerde artık yenileme ve oturum belirteci yapılandırması yok.  Mevcut belirteçlerin süre dolduktan sonra verilen yeni belirteçler [varsayılan yapılandırma](#configurable-token-lifetime-properties-after-the-retirement)olarak ayarlanır. Yenileme ve oturum belirteci yapılandırması kullanımdan kaldırıldıktan sonra erişimi, SAML ve KIMLIK belirteci yaşam sürelerini yapılandırmaya devam edebilirsiniz.
 >
 > Mevcut belirtecin ömrü değiştirilmeyecektir. Süreleri dolduktan sonra, varsayılan değere göre yeni bir belirteç verilir.
+>
+> Bir kullanıcının yeniden oturum açması istenmeden önce geçen süreyi tanımlamaya devam etmeniz gerekiyorsa, koşullu erişimde oturum açma sıklığını yapılandırın. Koşullu erişim hakkında daha fazla bilgi edinmek için [koşullu erişimle kimlik doğrulama oturumu yönetimini yapılandırma](../conditional-access/howto-conditional-access-session-lifetime.md)makalesini okuyun.
 
 :::image type="content" source="./media/active-directory-configurable-token-lifetimes/roadmap.svg" alt-text="Kullanımdan kaldırma bilgileri":::
 

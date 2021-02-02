@@ -7,12 +7,13 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: c6c09dc771692cb2fc2f36840e729874cfaf2d09
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.custom: references_regions
+ms.openlocfilehash: 3cd7d2541cb980fc5ca6a1a9c42a430eac1ecb1b
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98572825"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99429288"
 ---
 # <a name="basic-concepts"></a>Temel Kavramlar
 
@@ -30,11 +31,11 @@ Microsoft Azure kanıtlama ile ilgili bazı temel kavramlar aşağıda verilmiş
 
 Kanıtlama sağlayıcısı, Microsoft. kanıtlama adlı Azure kaynak sağlayıcısına aittir. Kaynak sağlayıcı, Azure kanıtlama REST sözleşmesi sağlayan ve [Azure Resource Manager](../azure-resource-manager/management/overview.md)kullanılarak dağıtılan bir hizmet uç noktasıdır. Her kanıtlama sağlayıcısı, belirli, keşfedilebilir bir ilkeyi kabul eder. Kanıtlama sağlayıcıları her bir kanıtlama türü için varsayılan ilkeyle oluşturulur (VBS kuşatma 'un varsayılan ilkesi olmadığını unutmayın). SGX için varsayılan ilke hakkında daha fazla bilgi için bkz. [kanıtlama ilkesi örnekleri](policy-examples.md) .
 
-### <a name="regional-default-provider"></a>Bölgesel varsayılan sağlayıcı
+### <a name="regional-shared-provider"></a>Bölgesel paylaşılan sağlayıcı
 
-Azure kanıtlama, her bölgede varsayılan bir sağlayıcı sağlar. Müşteriler, kanıtlama için varsayılan sağlayıcıyı kullanmayı veya özel ilkelerle kendi sağlayıcılarını oluşturmayı tercih edebilir. Varsayılan sağlayıcılara herhangi bir Azure AD kullanıcısı tarafından erişilebilir ve varsayılan bir sağlayıcıyla ilişkili ilke değiştirilemez.
+Azure kanıtlama, kullanılabilir her bölgede bölgesel bir paylaşılan sağlayıcı sağlar. Müşteriler, kanıtlama için bölgesel paylaşılan sağlayıcıyı kullanmayı veya özel ilkelerle kendi sağlayıcılarını oluşturmayı seçebilirler. Paylaşılan sağlayıcılara herhangi bir Azure AD kullanıcısı tarafından erişilebilir ve bununla ilişkili ilke değiştirilemez.
 
-| Bölge | Attest Uri 'Si | 
+| Region | Attest Uri 'Si | 
 |--|--|
 | Doğu ABD | `https://sharedeus.eus.attest.azure.net` | 
 | Batı ABD | `https://sharedwus.wus.attest.azure.net` | 

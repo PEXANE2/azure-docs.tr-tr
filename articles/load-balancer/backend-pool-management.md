@@ -8,12 +8,12 @@ ms.service: load-balancer
 ms.topic: how-to
 ms.date: 07/07/2020
 ms.author: allensu
-ms.openlocfilehash: 8887474f07928462afe7863ffe2b3667ece536dc
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: e5efbf695b85f474e5d7c84c86809acb2f5a1035
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96575308"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99429611"
 ---
 # <a name="backend-pool-management"></a>Arka uç havuzu yönetimi
 Arka uç havuzu, yük dengeleyicinin kritik bir bileşenidir. Arka uç havuzu, belirli bir yük dengeleme kuralı için trafik sunacak kaynak grubunu tanımlar.
@@ -25,6 +25,8 @@ Arka uç havuzunu yapılandırmanın iki yolu vardır:
 Mevcut sanal makineleri ve sanal makine ölçek kümelerini kullanırken arka uç havuzunuzu NIC ile yapılandırın. Bu yöntem, kaynağınız ile arka uç havuzu arasındaki en doğrudan bağlantıyı oluşturur. 
 
 Arka uç havuzunuzu daha sonra sanal makineler ve sanal makine ölçek kümeleri oluşturmayı planladığınız bir IP adresi aralığıyla önceden ayırırken, arka uç havuzunuzu IP adresine ve VNET KIMLIĞI birleşimine göre yapılandırın.
+
+Aynı yük dengeleyici için IP tabanlı ve NIC tabanlı arka uç havuzlarını yapılandırabilirsiniz, ancak NIC ve IP adresleri için aynı havuzda hedeflenen desteklenen adresler içeren tek bir arka uç havuzu oluşturamazsınız.
 
 Bu makalenin yapılandırma bölümleri şu şekilde odaklanacaktır:
 

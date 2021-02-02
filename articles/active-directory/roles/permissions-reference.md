@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: reference
-ms.date: 01/29/2020
+ms.date: 02/01/2020
 ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5f0c8d237e270177ef38c60c523364054bae15af
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: da85c80dd6450fd4427f83586e75cf1e9d62a605
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99090867"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99428783"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory'de yönetici rolü izinleri
 
@@ -69,13 +69,7 @@ Bu roldeki kullanıcılar, "kullanıcılar uygulamaları kaydedebilirler" ayarı
 
 ### <a name="authentication-administrator"></a>[Kimlik doğrulama Yöneticisi](#authentication-administrator-permissions)
 
-Bu role sahip kullanıcılar, bazı kullanıcılar için parola olmayan kimlik bilgilerini ayarlayabilir veya sıfırlayabilir ve tüm kullanıcılar için parolaları güncelleştirebilir. Kimlik doğrulama yöneticileri, var olan parola olmayan kimlik bilgilerine (örneğin, MFA veya FIDO) göre yeniden kaydolmak için yönetici olmayan veya bazı rollere atanmayan kullanıcıların, bir sonraki oturum açma üzerinde MFA 'yı isteyen **CIHAZDA MFA 'yı hatırlayabilmesini** gerektirebilir. Bu eylemler yalnızca yönetici olmayan veya aşağıdaki rollerden birini veya daha fazlasını atayan kullanıcılar için geçerlidir:
-
-* Kimlik doğrulama Yöneticisi
-* Dizin okuyucuları
-* Konuk davetci
-* İleti Merkezi okuyucusu
-* Rapor okuyucu
+Bu role sahip kullanıcılar, bazı kullanıcılar için parola olmayan kimlik bilgilerini ayarlayabilir veya sıfırlayabilir ve tüm kullanıcılar için parolaları güncelleştirebilir. Kimlik doğrulama yöneticileri, var olan parola olmayan kimlik bilgilerine (örneğin, MFA veya FIDO) göre yeniden kaydolmak için yönetici olmayan veya bazı rollere atanmayan kullanıcıların, bir sonraki oturum açma üzerinde MFA 'yı isteyen **CIHAZDA MFA 'yı hatırlayabilmesini** gerektirebilir. Bir kimlik doğrulama yöneticisinin bir kullanıcının parolasını sıfırlayıp sıfırlayamayacağı, kullanıcının atandığı role bağlıdır. Bir kimlik doğrulama yöneticisinin parolalarını sıfırlayaacağı rollerin listesi için, bkz. [parola sıfırlama izinleri](#password-reset-permissions).
 
 [Ayrıcalıklı kimlik doğrulama Yöneticisi](#privileged-authentication-administrator) rolü, tüm kullanıcılar için yeniden kayıt ve Multi-Factor Authentication 'ı zorunlu hale verebilir.
 
@@ -253,14 +247,7 @@ Bu roldeki kullanıcılar, adlandırma ve süre sonu ilkeleri gibi grupları ve 
 
 ### <a name="helpdesk-administrator"></a>[Yardım Masası Yöneticisi](#helpdesk-administrator-permissions)
 
-Bu role sahip kullanıcılar parolaları değiştirebilir, yenileme belirteçlerini geçersiz kılabilir, hizmet isteklerini yönetebilir ve hizmet durumunu izleyebilir. Yenileme belirtecinin geçersiz kılınması, kullanıcının yeniden oturum açmasını zorlar. Yardım Masası yöneticileri parolaları sıfırlayabilir ve yönetici olmayan veya yalnızca şu rolleri atayan diğer kullanıcıların yenileme belirteçlerini geçersiz kılabilir:
-
-* Dizin okuyucuları
-* Konuk davetci
-* Yardım Masası Yöneticisi
-* İleti Merkezi okuyucusu
-* Parola Yöneticisi
-* Rapor okuyucu
+Bu role sahip kullanıcılar parolaları değiştirebilir, yenileme belirteçlerini geçersiz kılabilir, hizmet isteklerini yönetebilir ve hizmet durumunu izleyebilir. Yenileme belirtecinin geçersiz kılınması, kullanıcının yeniden oturum açmasını zorlar. Bir yardım masası yöneticisinin bir kullanıcının parolasını sıfırlayıp sıfırlayamayacağı ve yenileme belirteçlerini geçersiz kılabileceği, kullanıcının atandığı role göre değişir. Bir yardım masası yöneticisinin parolalarını sıfırlayıp yenileme belirteçlerini geçersiz kılabileceği rollerin listesi için bkz. [parola sıfırlama izinleri](#password-reset-permissions).
 
 > [!IMPORTANT]
 > Bu role sahip kullanıcılar, Azure Active Directory ' nin içindeki ve dışındaki gizli veya özel bilgilere veya kritik yapılandırmaya erişimi olabilecek kişilerin parolalarını değiştirebilir. Bir kullanıcının parolasını değiştirmek, kullanıcının kimliğini ve izinlerini kabul etme imkanını ifade edebilir. Örneğin:
@@ -271,7 +258,7 @@ Bu role sahip kullanıcılar parolaları değiştirebilir, yenileme belirteçler
 >- Exchange Online, Office Security ve Uyumluluk Merkezi ve insan kaynakları sistemleri gibi Azure AD dışında diğer hizmetlerde bulunan yöneticiler.
 >- Gizli veya özel bilgilere erişebilen Yöneticiler, yasal Counsel ve insan kaynakları çalışanları gibi yönetici olmayanlar.
 
-Kullanıcıların alt kümeleri üzerinde yönetim izinlerinin yetkisini verme ve Kullanıcı alt kümesine ilke uygulama, [yönetim birimleri (şimdi genel önizlemede)](administrative-units.md)olabilir.
+Kullanıcıların alt kümeleri üzerinde yönetim izinlerinin yetkisini verme ve ilkeleri bir kullanıcı alt kümesine uygulama, [yönetim birimleriyle](administrative-units.md)mümkündür.
 
 Bu rol daha önce [Azure Portal](https://portal.azure.com/)"parola Yöneticisi" olarak adlandırılmıştı. Azure AD 'deki "Yardım Masası Yöneticisi" adı artık Azure AD PowerShell 'deki adıyla ve Microsoft Graph API 'siyle eşleşiyor.
 
@@ -344,11 +331,7 @@ Kullanmayın. Bu rol kullanımdan kaldırılmıştır ve gelecekte Azure AD 'den
 
 ### <a name="password-administrator"></a>[Parola Yöneticisi](#password-administrator-permissions)
 
-Bu role sahip olan kullanıcılar, parolaları yönetme yeteneğine sahiptir. Bu rol, hizmet isteklerini yönetme veya hizmet durumunu izleme özelliği vermez. Parola yöneticileri yönetici olmayan veya yalnızca aşağıdaki rollerin üyesi olan diğer kullanıcıların parolalarını sıfırlayabilir:
-
-* Dizin okuyucuları
-* Konuk davetci
-* Parola Yöneticisi
+Bu role sahip olan kullanıcılar, parolaları yönetme yeteneğine sahiptir. Bu rol, hizmet isteklerini yönetme veya hizmet durumunu izleme özelliği vermez. Parola yöneticisinin bir kullanıcının parolasını sıfırlayıp sıfırlayamayacağı, kullanıcının atandığı role bağlıdır. Parola yöneticisinin parolalarını sıfırlayaacağı rollerin listesi için bkz. [parola sıfırlama izinleri](#password-reset-permissions).
 
 ### <a name="power-bi-administrator"></a>[Power BI Yöneticisi](#power-bi-service-administrator-permissions)
 
@@ -371,13 +354,7 @@ Bu role sahip kullanıcılar Microsoft Evrensel Yazdırma çözümünde yazıcı
 
 ### <a name="privileged-authentication-administrator"></a>[Ayrıcalıklı kimlik doğrulama Yöneticisi](#privileged-authentication-administrator-permissions)
 
-Bu role sahip kullanıcılar, genel yöneticiler dahil olmak üzere tüm kullanıcılar için parola olmayan kimlik bilgilerini ayarlayabilir veya sıfırlayabilir ve tüm kullanıcılar için parolaları güncelleştirebilirler. Ayrıcalıklı kimlik doğrulama yöneticileri, kullanıcıların mevcut parola olmayan kimlik bilgilerine (MFA veya FIDO gibi) yeniden kaydolmasını ve ' cihazda MFA 'yı hatırlamaları için, tüm kullanıcıların bir sonraki oturum açma aşamasında MFA istemini sormasını sağlayabilir. [Kimlik doğrulama Yöneticisi](#authentication-administrator) rolü, yalnızca AŞAĞıDAKI Azure AD rollerine atanan yönetici olmayan ve kullanıcılar için yeniden kayıt ve MFA zorlaması yapabilir:
-
-* Kimlik doğrulama Yöneticisi
-* Dizin okuyucuları
-* Konuk davetci
-* İleti Merkezi okuyucusu
-* Rapor okuyucu
+Bu role sahip kullanıcılar, genel yöneticiler dahil olmak üzere tüm kullanıcılar için parola olmayan kimlik bilgilerini ayarlayabilir veya sıfırlayabilir ve tüm kullanıcılar için parolaları güncelleştirebilirler. Ayrıcalıklı kimlik doğrulama yöneticileri, kullanıcıların mevcut parola olmayan kimlik bilgilerine (MFA veya FIDO gibi) yeniden kaydolmasını ve ' cihazda MFA 'yı hatırlamaları için, tüm kullanıcıların bir sonraki oturum açma aşamasında MFA istemini sormasını sağlayabilir.
 
 ### <a name="privileged-role-administrator"></a>[Ayrıcalıklı rol yöneticisi](#privileged-role-administrator-permissions)
 
@@ -500,11 +477,12 @@ Bu role sahip kullanıcılar, kullanım ve üretkenlik puanı için Microsoft 36
 
 Bu role sahip kullanıcılar Kullanıcı oluşturabilir ve bazı kısıtlamalara sahip kullanıcıların tüm yönlerini yönetebilir (tabloya bakın) ve parola süre sonu ilkelerini güncelleştirebilir. Ayrıca, bu role sahip kullanıcılar tüm grupları oluşturabilir ve yönetebilir. Bu rol Ayrıca Kullanıcı görünümleri oluşturma ve yönetme, destek biletlerini yönetme ve hizmet durumunu izleme özelliğini de içerir. Kullanıcı yöneticilerinin çoğu yönetici rolünde kullanıcılar için bazı kullanıcı özelliklerini yönetme izni yoktur. Bu role sahip olan kullanıcının MFA 'yı yönetme izni yok. Bu kısıtlamanın özel durumları olan roller aşağıdaki tabloda listelenmiştir.
 
-| **İzin** | **Yapılabilir** |
+| Kullanıcı Yöneticisi izni | Notlar |
 | --- | --- |
-|Genel izinler|<p>Kullanıcı ve grup oluşturma</p><p>Kullanıcı görünümleri oluşturma ve yönetme</p><p>Office destek biletlerini yönetme<p>Parola süre sonu ilkelerini Güncelleştir|
-| <p>Tüm kullanıcılar (tüm yöneticiler dahil)</p>|<p>Lisansları yönetme</p><p>Kullanıcı asıl adı dışındaki tüm kullanıcı özelliklerini yönet</p>
-| Yalnızca yönetici olmayan veya aşağıdaki sınırlı Yönetici rollerinin hiçbirinde olan kullanıcılar için:<ul><li>Dizin okuyucuları<li>Grup Yöneticisi<li>Konuk davetci<li>Yardım Masası Yöneticisi<li>İleti Merkezi okuyucusu<li>Parola Yöneticisi<li>Rapor okuyucu<li>Kullanıcı Yöneticisi|<p>Sil ve geri yükle</p><p>Devre dışı bırak ve Etkinleştir</p><p>Yenileme belirteçlerini geçersiz kıl</p><p>Kullanıcı asıl adı dahil tüm kullanıcı özelliklerini yönet</p><p>Parola sıfırlama</p><p>Güncelleştirme (FIDO) cihaz anahtarları</p>|
+| Kullanıcı ve grup oluşturma<br/>Kullanıcı görünümleri oluşturma ve yönetme<br/>Office destek biletlerini yönetme<br/>Parola süre sonu ilkelerini Güncelleştir |  |
+| Lisansları yönetme<br/>Kullanıcı asıl adı dışındaki tüm kullanıcı özelliklerini yönet | Tüm yöneticiler dahil tüm kullanıcılar için geçerlidir |
+| Sil ve geri yükle<br/>Devre dışı bırak ve Etkinleştir<br/>Kullanıcı asıl adı dahil tüm kullanıcı özelliklerini yönet<br/>Güncelleştirme (FIDO) cihaz anahtarları | Yönetici olmayan veya aşağıdaki rollerden hiçbirinde olan kullanıcılar için geçerlidir:<ul><li>Yardım Masası Yöneticisi</li><li>Rolü olmayan Kullanıcı</li><li>Kullanıcı Yöneticisi</li></ul> |
+| Yenileme belirteçlerini geçersiz kıl<br/>Parola sıfırlama | Bir Kullanıcı yöneticisinin parola sıfırlayıp yenileme belirteçlerini geçersiz kılabileceği rollerin listesi için bkz. [parola sıfırlama izinleri](#password-reset-permissions). |
 
 > [!IMPORTANT]
 > Bu role sahip kullanıcılar, Azure Active Directory ' nin içindeki ve dışındaki gizli veya özel bilgilere veya kritik yapılandırmaya erişimi olabilecek kişilerin parolalarını değiştirebilir. Bir kullanıcının parolasını değiştirmek, kullanıcının kimliğini ve izinlerini kabul etme imkanını ifade edebilir. Örneğin:
@@ -515,7 +493,7 @@ Bu role sahip kullanıcılar Kullanıcı oluşturabilir ve bazı kısıtlamalara
 >- Exchange Online, Office Security ve Uyumluluk Merkezi ve insan kaynakları sistemleri gibi Azure AD dışında diğer hizmetlerde bulunan yöneticiler.
 >- Gizli veya özel bilgilere erişebilen Yöneticiler, yasal Counsel ve insan kaynakları çalışanları gibi yönetici olmayanlar.
 
-## <a name="role-permissions"></a>Rol Izinleri
+## <a name="role-permissions"></a>Rol izinleri
 
 Aşağıdaki tablolarda, her role verilen Azure Active Directory belirli izinler açıklanır. Bazı rollerin, Microsoft hizmetlerinde Azure Active Directory dışında ek izinleri olabilir.
 
@@ -572,6 +550,7 @@ Aşağıdaki tablolarda, her role verilen Azure Active Directory belirli izinler
 | Microsoft. Azure. Supportbilet/allEntities/allTasks | Azure destek biletleri oluşturun ve yönetin. |
 | Microsoft. office365. serviceHealth/allEntities/allTasks | Microsoft 365 hizmeti durumunu okuyun ve yapılandırın. |
 | Microsoft. office365. Supportbilet/allEntities/allTasks | Office 365 destek biletleri oluşturun ve yönetin. |
+| Microsoft. office365. webPortal/allEntities/standart/okuma | Microsoft. office365. webPortal 'daki tüm kaynaklarda temel özellikleri okuyun. |
 
 ### <a name="application-developer-permissions"></a>Uygulama geliştirici izinleri
 
@@ -647,6 +626,7 @@ Azure Information Protection hizmetinin tüm yönlerini yönetebilir.
 | Microsoft. Azure. Supportbilet/allEntities/allTasks | Azure destek biletleri oluşturun ve yönetin. |
 | Microsoft. office365. serviceHealth/allEntities/allTasks | Microsoft 365 hizmeti durumunu okuyun ve yapılandırın. |
 | Microsoft. office365. Supportbilet/allEntities/allTasks | Office 365 destek biletleri oluşturun ve yönetin. |
+| Microsoft. office365. webPortal/allEntities/standart/okuma | Microsoft. office365. webPortal 'daki tüm kaynaklarda temel özellikleri okuyun. |
 
 ### <a name="b2c-ief-keyset-administrator-permissions"></a>B2C ıEF anahtar kümesi yönetici izinleri
 
@@ -725,6 +705,7 @@ Uygulama kayıtları ve kurumsal uygulamaların uygulama proxy 'Si hariç tüm y
 | Microsoft. Azure. Supportbilet/allEntities/allTasks | Azure destek biletleri oluşturun ve yönetin. |
 | Microsoft. office365. serviceHealth/allEntities/allTasks | Microsoft 365 hizmeti durumunu okuyun ve yapılandırın. |
 | Microsoft. office365. Supportbilet/allEntities/allTasks | Office 365 destek biletleri oluşturun ve yönetin. |
+| Microsoft. office365. webPortal/allEntities/standart/okuma | Microsoft. office365. webPortal 'daki tüm kaynaklarda temel özellikleri okuyun. |
 
 ### <a name="cloud-device-administrator-permissions"></a>Bulut aygıtı yönetici izinleri
 
@@ -2064,6 +2045,31 @@ Konuk Kullanıcı | Kullanılmadığından gösterilmez  | NA
 Kısıtlı Konuk Kullanıcı | Kullanılmadığından gösterilmez | NA
 Kullanıcı | Kullanılmadığından gösterilmez | NA
 Çalışma alanına cihaz katılımı | Kullanım Dışı | [Kullanım dışı roller belgeleri](permissions-reference.md#deprecated-roles)
+
+## <a name="password-reset-permissions"></a>Parola sıfırlama izinleri
+
+Sütun başlıkları, parolaları sıfırlayabilirler rollerini temsil eder. Tablo satırlarında, parolasının sıfırlayabileceği roller bulunur.
+
+Parola sıfırlanabilir | Kimlik doğrulama Yöneticisi | Yardım Masası Yöneticisi | Parola Yöneticisi | Kullanıcı Yöneticisi | Ayrıcalıklı kimlik doğrulama Yöneticisi | Genel Yönetici
+------ | ------ | ------ | ------ | ------ | ------ | ------
+Kimlik doğrulama Yöneticisi | :heavy_check_mark: | &nbsp; | &nbsp; | &nbsp; | :heavy_check_mark: | :heavy_check_mark:
+Dizin okuyucuları | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
+Genel Yönetici | &nbsp; | &nbsp; | &nbsp; | &nbsp; | :heavy_check_mark: | :heavy_check_mark:\*
+Gruplar Yöneticisi | &nbsp; | &nbsp; | &nbsp; | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
+Konuk | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
+Konuk davetci | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
+Yardım Masası Yöneticisi | &nbsp; | :heavy_check_mark: | &nbsp; | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
+İleti Merkezi okuyucusu | :heavy_check_mark: | :heavy_check_mark: | &nbsp; | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
+Parola Yöneticisi | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
+Ayrıcalıklı kimlik doğrulama Yöneticisi | &nbsp; | &nbsp; | &nbsp; | &nbsp; | :heavy_check_mark: | :heavy_check_mark:
+Ayrıcalıklı rol yöneticisi | &nbsp; | &nbsp; | &nbsp; | &nbsp; | :heavy_check_mark: | :heavy_check_mark:
+Rapor okuyucu | :heavy_check_mark: | :heavy_check_mark: | &nbsp; | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
+Kısıtlı Konuk | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
+Kullanıcı (yönetici rolü yok) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
+Kullanıcı Yöneticisi | &nbsp; | &nbsp; | &nbsp; | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
+Kullanım Özeti raporları okuyucusu | :heavy_check_mark: | :heavy_check_mark: | &nbsp; | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
+
+\* Genel yönetici kendi genel yönetici atamasını kaldıramıyor. Bu, bir kuruluşun 0 genel yöneticisi olan bir durumu önlemektir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

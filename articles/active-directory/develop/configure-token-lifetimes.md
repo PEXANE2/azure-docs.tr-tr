@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/04/2021
+ms.date: 02/01/2021
 ms.author: ryanwi
 ms.custom: aaddev, content-perf, FY21Q1
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: 19330af5e4c0e4962993d0ed89ec9bcd4a50514a
-ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
+ms.openlocfilehash: 3ec94543a53e3e5b7709801de8f4cf1dde3fc3d9
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98986422"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99428124"
 ---
 # <a name="configure-token-lifetime-policies-preview"></a>Belirteç ömür ilkelerini yapılandırma (Önizleme)
 Microsoft Identity platform tarafından verilen erişim, SAML veya KIMLIK belirtecinin ömrünü belirtebilirsiniz. Kuruluşunuzdaki tüm uygulamalar, çok kiracılı (çok kuruluşlu) bir uygulama veya belirli bir hizmet sorumlusu için belirteç ömrünü ayarlayabilirsiniz. Daha fazla bilgi için, [yapılandırılabilir belirteç yaşam sürelerini](active-directory-configurable-token-lifetimes.md)okuyun.
@@ -85,11 +85,11 @@ Bu örnekte, kullanıcıların Web uygulamanızda daha sık kimlik doğrulaması
 
 ## <a name="create-token-lifetime-policies-for-refresh-and-session-tokens"></a>Yenileme ve oturum belirteçleri için belirteç ömür ilkeleri oluşturma
 > [!IMPORTANT]
-> Mayıs 2020 itibariyle yeni kiracılar yenileme ve oturum belirteci yaşam sürelerini yapılandıramıyor.  Mevcut yapılandırmaya sahip kiracılar, 30 Ocak 2021 ' ye kadar yenileme ve oturum belirteci ilkelerini değiştirebilir.  Azure Active Directory, 30 Ocak 2021 ' den sonra ilkelerde bulunan mevcut yenileme ve oturum belirteci yapılandırmasını durdurur. Kullanımdan sonra erişimi, SAML ve KIMLIK belirteci yaşam sürelerini yapılandırabilirsiniz.
+> 30 Ocak 2021 itibariyle yenileme ve oturum belirteci yaşam sürelerini yapılandıramazsınız. Azure Active Directory var olan ilkelerde artık yenileme ve oturum belirteci yapılandırması yok.  Mevcut belirteçlerin süre dolduktan sonra verilen yeni belirteçler [varsayılan yapılandırma](active-directory-configurable-token-lifetimes.md#configurable-token-lifetime-properties-after-the-retirement)olarak ayarlanır. Yenileme ve oturum belirteci yapılandırması kullanımdan kaldırıldıktan sonra erişimi, SAML ve KIMLIK belirteci yaşam sürelerini yapılandırmaya devam edebilirsiniz.
+>
+> Mevcut belirtecin ömrü değiştirilmeyecektir. Süreleri dolduktan sonra, varsayılan değere göre yeni bir belirteç verilir.
 >
 > Bir kullanıcının yeniden oturum açması istenmeden önce geçen süreyi tanımlamaya devam etmeniz gerekiyorsa, koşullu erişimde oturum açma sıklığını yapılandırın. Koşullu erişim hakkında daha fazla bilgi edinmek için [koşullu erişimle kimlik doğrulama oturumu yönetimini yapılandırma](../conditional-access/howto-conditional-access-session-lifetime.md)makalesini okuyun.
->
-> Kullanımdan kaldırma tarihinden sonra koşullu erişim kullanmak istemiyorsanız, yenileme ve oturum belirteçleriniz bu tarih için [varsayılan yapılandırmaya](active-directory-configurable-token-lifetimes.md#configurable-token-lifetime-properties-after-the-retirement) ayarlanır ve artık yaşam sürelerini değiştiremeyeceksiniz.
 
 ### <a name="manage-an-organizations-default-policy"></a>Kuruluşun varsayılan ilkesini yönetme
 Bu örnekte, kullanıcılarınızın kuruluşunuzun tamamında daha az sıklıkta oturum açmasını sağlayan bir ilke oluşturacaksınız. Bunu yapmak için, kuruluşunuz genelinde uygulanan tek faktörlü yenileme belirteçleri için bir belirteç ömür ilkesi oluşturun. İlke, kuruluşunuzdaki her uygulamaya ve zaten bir ilke kümesi olmayan her bir hizmet sorumlusuna uygulanır.

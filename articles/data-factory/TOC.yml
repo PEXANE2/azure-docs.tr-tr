@@ -223,6 +223,8 @@
           href: source-control.md
         - name: Sürekli tümleştirme ve teslim
           href: continuous-integration-deployment.md
+        - name: Otomatik yayımlama
+          href: continuous-integration-deployment-improvements.md
     - name: Bağlayıcılar
       items:
         - name: Bağlayıcıya genel bakış

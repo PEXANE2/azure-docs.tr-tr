@@ -8,13 +8,13 @@ ms.topic: conceptual
 author: dcstwh
 ms.author: weetok
 manager: anandsub
-ms.date: 06/02/2020
-ms.openlocfilehash: aa1246a65dc6971107abe35f4a418b0bbb05641b
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.date: 02/01/2021
+ms.openlocfilehash: c3366b7ba0eb0b49d4d5b89481b7bed843e52c8e
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96486140"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99429031"
 ---
 # <a name="management-hub-in-azure-data-factory"></a>Azure Data Factory 'de Yönetim Merkezi
 
@@ -40,7 +40,11 @@ Tümleştirme çalışma zamanı, farklı ağ ortamlarında veri tümleştirme �
 
 ### <a name="git-configuration"></a>Git yapılandırması
 
-Yönetim hub 'ında yapılandırılmış git deposu ayarlarınızı görüntüleyin ve düzenleyin. Daha fazla bilgi için [Azure Data Factory içindeki kaynak denetimi](source-control.md)hakkında bilgi edinin.
+Git yapılandırma ayarları altındaki git ile ilgili tüm bilgileri yönetim hub 'ında görüntüleyebilir/düzenleyebilirsiniz. 
+
+Son yayımlanan kayıt bilgileri de listelenir ve ortamlar genelinde en son yayımlanan/dağıtılan kesin yürütmeyi anlamanıza yardımcı olabilir. Üretimde sık düzeltmeler yapılırken da yararlı olabilir.
+
+Daha fazla bilgi için [Azure Data Factory içindeki kaynak denetimi](source-control.md)hakkında bilgi edinin.
 
 ![Git deposunu yönetme](media/author-management-hub/management-hub-git.png)
 

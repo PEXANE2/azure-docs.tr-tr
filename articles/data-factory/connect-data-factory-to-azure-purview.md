@@ -13,20 +13,41 @@ ms.custom:
 - seo-lt-2019
 - references_regions
 ms.date: 12/3/2020
-ms.openlocfilehash: d1a07a3733bddc1516a4d2e19f3cac31a7702954
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: ce37e26730fbef9e5e40fd95190727062f9044ac
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98944934"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99428948"
 ---
 # <a name="connect-data-factory-to-azure-purview-preview"></a>Data Factory Azure purview 'a bağlanma (Önizleme)
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Bu makale, Data Factory 'yi Azure purview 'e bağlamayı ve ADF etkinliklerinin veri kökenini, veri akışını ve SSIS paketini yürütmeyi nasıl bildirebileceğini açıklar.
+Bu makalede Data Factory Azure purview 'a nasıl bağlanabileceğiniz ve Azure Data Factory etkinliklerin veri kopyalama, veri akışı ve SSIS paketi yürütme kökenini etkinliklerinin nasıl raporlanmasının açıklanmaktadır.
 
-## <a name="connect-data-factory-to-azure-purview"></a>Data Factory 'yi Azure purview 'a bağlama
-Azure purview, veri kullanıcılarının bulut ve şirket içi ortamları kapsayan verileri genelinde veri yönetimini merkezi olarak yönetmesine yönelik yeni bir bulut hizmetidir. Veri fabrikanızı Azure Mağazası 'na bağlayabilirsiniz ve bağlantı, kopyalama, veri akışı ve SSIS paketi yürütme kökenini verilerini yakalamak için Azure takip görünümü 'nden yararlanmanızı sağlar. Azure purview 'da Data Factory 'yi kaydetme hakkında bilgi için bkz. [bağlanma Azure Data Factory ve Azure purview](../purview/how-to-link-azure-data-factory.md). 
+
+## <a name="connect-data-factory-to-azure-purview"></a>Azure purview 'e Data Factory bağlama
+Azure purview, veri kullanıcılarının bulut ve şirket içi ortamları kapsayan verileri genelinde veri yönetimini merkezi olarak yönetmesine yönelik yeni bir bulut hizmetidir. Data Factory Azure Mağazası 'na bağlayabilirsiniz ve bağlantı, kopyalama, veri akışı ve SSIS paketi yürütme kökenini verilerini yakalamak için Azure purview 'ı kullanmanıza olanak sağlar. Data Factory 'yi Azure purview 'a bağlamak için iki yol vardır:
+### <a name="register-azure-purview-account-to-data-factory"></a>Azure purview hesabını Data Factory kaydetme
+1. ADF portalında,   ->  **Azure purview**'ı Yönet ' e gidin. **Bir purview hesabına Bağlan**' ı seçin. 
+
+:::image type="content" source="./media/data-factory-purview/register-purview-account.png" alt-text="Bir purview hesabı kaydetme ekran görüntüsü.":::
+2. **Azure aboneliği** arasından seçim yapabilir veya **el ile girebilirsiniz**. **Azure aboneliğinden** erişiminiz olan hesabı seçebilirsiniz. 
+3. Bağlandıktan sonra, **purview hesabı**' nda yer alarak purview hesabının adını görmeniz gerekir. 
+4. Veri aramak için Azure Data Factory portalının en üst merkezinde bulunan arama çubuğunu kullanabilirsiniz. 
+
+Azure purview hesabını Data Factory 'a kaydettikten sonra Azure Data Factory portalında uyarı görürseniz, sorunu onarmak için aşağıdaki adımları izleyin:
+
+:::image type="content" source="./media/data-factory-purview/register-purview-account-warning.png" alt-text="Bir purview hesabının kaydedilmesinin uyarısı için ekran görüntüsü.":::
+
+1. Azure portal gidin ve veri fabrikanızı bulun. Bölüm "Etiketler" i seçin ve **catalogUri** adlı bir etiket olup olmadığını görün. Aksi takdirde, lütfen ADF portalında Azure purview hesabının bağlantısını kesip yeniden bağlayın.
+
+:::image type="content" source="./media/data-factory-purview/register-purview-account-tag.png" alt-text="Bir purview hesabı kaydetme etiketlerinin ekran görüntüsü.":::
+
+2. Data Factory bir Azure purview hesabı kaydetmeye izin verilip verilmediğini denetleyin. Bkz. [bağlanma Azure Data Factory ve Azure purview](https://docs.microsoft.com/azure/purview/how-to-link-azure-data-factory#create-new-data-factory-connection)
+
+### <a name="register-data-factory-in-azure-purview"></a>Azure purview 'da Data Factory kaydetme
+Data Factory Azure purview ' de nasıl kaydedeceğinizi öğrenmek için bkz. [bağlanma Azure Data Factory ve Azure purview](https://docs.microsoft.com/azure/purview/how-to-link-azure-data-factory). 
 
 ## <a name="report-lineage-data-to-azure-purview"></a>Kökenini verilerini Azure purview 'a raporla
 Müşteriler Azure Data Factory ' de kopyalama, veri akışı veya SSIS paketi yürütme etkinliğini çalıştırdığınızda, müşteriler bağımlılık ilişkisini alabilir ve veri kaynakları ve hedef arasındaki tüm iş akışı işlemine ilişkin üst düzey bir genel bakışa sahip olabilir.

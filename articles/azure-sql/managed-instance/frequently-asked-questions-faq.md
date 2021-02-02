@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 09/21/2020
-ms.openlocfilehash: d3f859590b30aaeeaebaed7b1f2f85e1a86a92c9
-ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
+ms.openlocfilehash: f58811411a447eae4ff9a5c0fd2a9888b4a39a34
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99223415"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99428682"
 ---
 # <a name="azure-sql-managed-instance-frequently-asked-questions-faq"></a>Azure SQL Yönetilen Örneği hakkında sık sorulan sorular (SSS)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -364,13 +364,6 @@ Evet. Bkz. [Azure SQL yönetilen örneği Için özel DNS yapılandırma](./cust
 **DNS yenileme yapabilir miyim?**
 
 Evet. Bkz. [SQL yönetilen örnek sanal kümesindeki sanal ağ DNS sunucularını Synchronize ayarı](./synchronize-vnet-dns-servers-setting-on-virtual-cluster.md).
-
-DNS yapılandırması sonunda yenilenir:
-
-- DHCP kira süresi dolar.
-- Platform yükseltmesi üzerinde.
-
-Geçici bir çözüm olarak, SQL yönetilen örneği 4 sanal çekirdeğe indirgekten sonra yeniden yükseltin. Bunun, DNS yapılandırmasını yenilemeyi yan etkisi vardır.
 
 ## <a name="change-time-zone"></a>Saat dilimini değiştirme
 

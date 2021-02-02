@@ -3,12 +3,12 @@ title: SQL Server veritabanı yedeklemesi sorunlarını giderme
 description: Azure Backup ile Azure VM 'lerde çalışan SQL Server veritabanlarının yedeklenmesi için sorun giderme bilgileri.
 ms.topic: troubleshooting
 ms.date: 06/18/2019
-ms.openlocfilehash: d702959be70716f0c2bc85920bdb7aa3e061aff1
-ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
+ms.openlocfilehash: d502a4188b4f9f383188804f86abbb9a6d05d146
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97733952"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99429475"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>Azure Backup kullanarak SQL Server veritabanı yedeklemesi sorunlarını giderme
 
@@ -217,7 +217,7 @@ Yeniden kaydetme işlemini tetiklemeniz için aşağıdaki belirtilerden bir vey
 
   - VM 'de yedeklemeyle ilgili işlemler gerçekleştirme izninin bulunmaması.
   - Sanal makineyi kapatıp yedeklemeler gerçekleşmiyor.
-  - Ağ sorunları.
+  - [Ağ sorunları](#usererrorvminternetconnectivityissue)
 
    ![VM 'yi yeniden kaydetme](./media/backup-azure-sql-database/re-register-vm.png)
 
@@ -250,7 +250,7 @@ SELECT mf.name AS LogicalName, Physical_Name AS Location FROM sys.master_files m
 [{"path":"<Location>","logicalName":"<LogicalName>","isDir":false},{"path":"<Location>","logicalName":"<LogicalName>","isDir":false}]}
 ```
 
-İşte bir örnek:
+Aşağıda bir örnek verilmiştir:
 
 ```json
 [{"path":"F:\\Data\\TestDB12.mdf","logicalName":"TestDB12","isDir":false},{"path":"F:\\Log\\TestDB12_log.ldf","logicalName":"TestDB12_log","isDir":false}]}
@@ -279,7 +279,7 @@ Dosyanın içeriği şu biçimde olmalıdır:
 ]
 ```
 
-İşte bir örnek:
+Aşağıda bir örnek verilmiştir:
 
 ```json
 [

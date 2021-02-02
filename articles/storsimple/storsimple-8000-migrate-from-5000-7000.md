@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/25/2020
 ms.author: alkohli
-ms.openlocfilehash: f6fffadd3c53f67af2e4c833a6a1d442c18efa0b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 58b7b67842e9ba385b34ea4d8fdbcac190076218
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91398195"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99428175"
 ---
 # <a name="migrate-data-from-storsimple-5000-7000-series-to-8000-series-device"></a>StorSimple 5000-7000 serisinden verileri 8000 serisi cihaza geçirme
 
@@ -137,9 +137,9 @@ Bilgisayarınıza StorSimple geçiş aracı 'nı yüklemek için aşağıdaki ad
 2. Anahtarlara karşılık gelen değerleri düzenleyin ve ile değiştirin:
 
     * `UserName` – Azure portal oturum açmak için Kullanıcı adı.
-    * `SubscriptionName and SubscriptionId` – Azure aboneliğinizin adı ve KIMLIĞI. StorSimple Aygıt Yöneticisi hizmet giriş sayfanızda, **genel**altında **Özellikler**' e tıklayın. Hizmet ile ilişkili abonelik adı ve abonelik KIMLIĞINI kopyalayın.
-    * `ResourceName` – StorSimple Aygıt Yöneticisi hizmetinizin adı Azure portal. Hizmet özellikleri altında de gösterilir.
-    * `ResourceGroup` – Azure portal StorSimple Aygıt Yöneticisi hizmetinize ilişkin kaynak grubunun adı. Hizmet özellikleri altında de gösterilir.
+    * `SubscriptionName and SubscriptionId` – Azure aboneliğinizin adı ve KIMLIĞI. StorSimple Device Manager hizmet giriş sayfanızda, **genel** altında **Özellikler**' e tıklayın. Hizmet ile ilişkili abonelik adı ve abonelik KIMLIĞINI kopyalayın.
+    * `ResourceName` – StorSimple Device Manager hizmetinizin adı Azure portal. Hizmet özellikleri altında de gösterilir.
+    * `ResourceGroup` – Azure portal StorSimple Device Manager hizmetinize ilişkin kaynak grubunun adı. Hizmet özellikleri altında de gösterilir.
     ![Hedef cihaz için hizmet özelliklerini denetle](media/storsimple-8000-migrate-from-5000-7000/check-service-properties1.png)
     * `TenantId` – Azure portal Azure Active Directory kiracı KIMLIĞI. Microsoft Azure 'da yönetici olarak oturum açın. Microsoft Azure portal **Azure Active Directory**' ye tıklayın. **Yönet**'in altında **Özellikler**’e tıklayın. Kiracı KIMLIĞI, **DIZIN kimliği** kutusunda gösterilir.
     ![Azure Active Directory için kiracı KIMLIĞINI denetle](media/storsimple-8000-migrate-from-5000-7000/check-tenantid-aad.png)
@@ -150,4 +150,4 @@ Bilgisayarınıza StorSimple geçiş aracı 'nı yüklemek için aşağıdaki ad
   
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[StorSimple 5000-7000 serisinden bir 8000 serisi cihaza veri geçirme](https://gallery.technet.microsoft.com/Azure-StorSimple-50007000-c1a0460b)hakkında adım adım yönergeleri indirin.
+[StorSimple 5000-7000 serisinden bir 8000 serisi cihaza veri geçirme](https://databoxbuilds.blob.core.windows.net/storsimpledocs/MicrosoftAzureStorSimple_Migration_Guide_20171115.pdf)hakkında adım adım yönergeleri indirin.

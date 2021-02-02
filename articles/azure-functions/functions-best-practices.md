@@ -5,12 +5,12 @@ ms.assetid: 9058fb2f-8a93-4036-a921-97a0772f503c
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f05afb3c23fc720bb0100a751a6943d7bb03453f
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 89ff49b3ea5abae7ced046f714d34943a58c64a6
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98954792"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99428309"
 ---
 # <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>Azure İşlevleri’nin performansını ve güvenilirliğini iyileştirme
 
@@ -63,6 +63,31 @@ Sisteminizin ne kadar karmaşıkdığına bağlı olarak, bu durum, hatalı, ağ
 Bir kuyruk öğesi zaten işlendiyse, işlevinizin işlem dışı çalışmasına izin verin.
 
 Azure Işlevleri platformunda kullandığınız bileşenler için zaten sağlanmış olan savunma ölçülerinin avantajlarından yararlanın. Örneğin, bkz. [Azure depolama kuyruğu Tetikleyicileri ve bağlamaları](functions-bindings-storage-queue-trigger.md#poison-messages)belgelerinde **Poison Queue iletilerini işleme** . 
+
+## <a name="function-organization-best-practices"></a>İşlev organizasyonu en iyi uygulamaları
+
+Çözümünüzün bir parçası olarak, birden çok işlev geliştirebilir ve yayımlayabilirsiniz. Bu işlevler genellikle tek bir işlev uygulamasında birleştirilir, ancak aynı zamanda ayrı işlev uygulamalarında da çalışabilir. Premium ve adanmış (App Service) barındırma planlarında, birden çok işlev uygulaması aynı kaynakları aynı planda çalıştırarak da paylaşabilir. İşlevlerinizi ve işlev uygulamalarınızı nasıl gruplandırdığı, genel çözümünüzün performansını, ölçeklendirilmesini, yapılandırmasını, dağıtımını ve güvenliğini etkileyebilir. Her senaryo için uygulanan kurallar yok, bu nedenle işlevlerinizi planlarken ve geliştirirken bu bölümdeki bilgileri göz önünde bulundurun.
+
+### <a name="organize-functions-for-performance-and-scaling"></a>Performans ve ölçeklendirme işlevlerini düzenleme
+
+Oluşturduğunuz her işlevin bir bellek ayak izi vardır. Bu ayak izi genellikle küçük olsa da, bir işlev uygulaması içinde çok fazla işlev olması, uygulamanızın yeni örneklerde daha yavaş başlatılmasını sağlayabilir. Ayrıca, işlev uygulamanızın genel bellek kullanımının daha yüksek olabileceği anlamına gelir. Çok sayıda işlevin tek bir uygulamada olması gerektiğini söylemek zordur ve bu, belirli iş yüküne bağlıdır. Ancak, işleviniz bellekte çok fazla veri depoluyorsa, tek bir uygulamada daha az işlev olmasını düşünün.
+
+Birden çok işlev uygulamalarını tek bir Premium planda veya adanmış (App Service) planda çalıştırırsanız, bu uygulamaların hepsi birlikte ölçeklendirilir. Diğerlerinden çok daha yüksek bellek gereksinimlerine sahip bir işlev uygulamanız varsa, uygulamanın dağıtıldığı her örnek üzerinde orantısız miktarda bellek kaynağı kullanır. Bu, her örnekteki diğer uygulamalar için daha az bellek bırakılamadığından, kendi ayrı barındırma planında bunun gibi yüksek bellekli bir işlev uygulaması çalıştırmak isteyebilirsiniz.
+
+> [!NOTE]
+> [Tüketim planını](./functions-scale.md)kullanırken, uygulamalar yine de bağımsız olarak ölçeklendirildiğinden her uygulamayı her zaman kendi planına yerleştirmeniz önerilir.
+
+İşlevleri farklı yük profilleriyle gruplandırmak isteyip istemediğinizi göz önünde bulundurun. Örneğin, çok sayıda sıra iletisini işleyen bir işleviniz varsa ve yalnızca zaman içinde çağrılan ancak yüksek bellek gereksinimlerine sahip olan başka bir işleviniz varsa, bunları ayrı işlev uygulamalarında dağıtmak isteyebilirsiniz, bu sayede kendi kaynak kümelerini alırlar ve bunların birbirinden bağımsız olarak ölçeklendirilmesini sağlayabilirsiniz.
+
+### <a name="organize-functions-for-configuration-and-deployment"></a>Yapılandırma ve dağıtım için işlevleri düzenleme
+
+İşlev uygulamalarının bir `host.json` dosyası vardır ve bu, işlev Tetikleyicileri ve Azure işlevleri çalışma zamanının gelişmiş davranışlarını yapılandırmak için kullanılır. `host.json`Dosyadaki değişiklikler uygulama içindeki tüm işlevlere uygulanır. Özel yapılandırmalara ihtiyacı olan bazı işlevleriniz varsa, bunları kendi işlev uygulamasına taşımayı göz önünde bulundurun.
+
+Yerel projenizdeki tüm işlevler, Azure 'daki işlev uygulamanıza bir dosya kümesi olarak birlikte dağıtılır. Bağımsız işlevleri ayrı ayrı dağıtmanız veya bazı işlevler için [dağıtım yuvaları](./functions-deployment-slots.md) gibi özellikleri kullanmanız gerekebilir. Böyle durumlarda, bu işlevleri (ayrı kod projelerinde) farklı işlev uygulamalarına dağıtmanız gerekir.
+
+### <a name="organize-functions-by-privilege"></a>İşlevleri ayrıcalığa göre düzenleme 
+
+Uygulama ayarlarında depolanan bağlantı dizeleri ve diğer kimlik bilgileri, işlev uygulamasındaki tüm işlevleri ilişkili kaynakta aynı izin kümesi sağlar. Bu kimlik bilgilerini kullanmayan işlevleri ayrı bir işlev uygulamasına taşıyarak belirli kimlik bilgilerine erişimi olan işlev sayısını en aza indirgemeniz önerilir. Farklı işlev uygulamalarındaki işlevler arasında veri geçirmek için her zaman [işlev zinciri](/learn/modules/chain-azure-functions-data-using-bindings/) gibi teknikler kullanabilirsiniz.  
 
 ## <a name="scalability-best-practices"></a>Ölçeklenebilirlik en iyi uygulamaları
 

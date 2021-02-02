@@ -3,13 +3,13 @@ title: Azure HDInsight 'ta Apache HBase 'i Apache ambarı ile iyileştirme
 description: Apache HBase 'i yapılandırmak ve iyileştirmek için Apache ambarı Web Kullanıcı arabirimini kullanın.
 ms.service: hdinsight
 ms.topic: how-to
-ms.date: 05/04/2020
-ms.openlocfilehash: 307e9decad35c20885fbe550cc1f7de58c9386c0
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.date: 02/01/2021
+ms.openlocfilehash: 60c9916bc7d7b3b380a332f41924ee744002fd66
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98942585"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99428209"
 ---
 # <a name="optimize-apache-hbase-with-apache-ambari-in-azure-hdinsight"></a>Azure HDInsight 'ta Apache HBase 'i Apache ambarı ile iyileştirme
 
@@ -18,6 +18,9 @@ Apache ambarı, HDInsight kümelerini yönetmek ve izlemek için bir Web arabiri
 Apache HBase yapılandırması **HBase configs** sekmesinden değiştirilir. Aşağıdaki bölümlerde, HBase performansını etkileyen bazı önemli yapılandırma ayarları açıklanır.
 
 ## <a name="set-hbase_heapsize"></a>HBASE_HEAPSIZE ayarla
+
+> [!NOTE]
+> Bu makale, Microsoft 'un artık kullanmadığını belirten bir terim olan *ana* terim başvurularını içerir. Terim yazılımlardan kaldırıldığında, bu makaleden kaldıracağız.
 
 HBase yığın boyutu, *bölgeye* ve *ana* sunuculara göre megabayt cinsinden kullanılacak maksimum yığın miktarını belirtir. Varsayılan değer 1.000 MB 'tır. Bu değerin küme iş yükü için ayarlanmış olması gerekir.
 

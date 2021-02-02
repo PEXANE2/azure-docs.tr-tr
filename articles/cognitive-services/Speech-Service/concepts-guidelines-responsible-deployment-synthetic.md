@@ -10,21 +10,33 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/11/2019
 ms.author: benoah
-ms.openlocfilehash: 7d80ffb575c6aa15695279584b58288cbc16be43
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 715c09ef65358b21e78cfde204b4819db0c7875d
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024985"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99428428"
 ---
 # <a name="guidelines-for-responsible-deployment-of-synthetic-voice-technology"></a>Yapay sesli teknolojinin sorumlu dağıtımına ilişkin yönergeler
+
+## <a name="general-considerations-to-keep-in-mind-when-implementing-ai-systems"></a>AI sistemlerini uygularken göz önünde bulundurmanız gereken genel noktalar 
+
+Bu makalede, yapay konuşma ve özel sinir sesi hakkında bilgi edindiğimiz ve bu teknolojinin kullanımı konusunda önemli noktalar ele alınacak. Bununla birlikte, genel olarak, AI destekli ürünlerin ve özelliklerin nasıl kullanılacağına ve uygulamaya karar verirken dikkatle göz önünde bulundurmanız gereken birkaç nokta vardır: 
+
+* Bu ürün veya özellik senaryomda iyi bir şekilde çalışacak mı? Senaryonuza AI dağıtmaya başlamadan önce, gerçek yaşam verilerini kullanarak nasıl gerçekleştiğini test edin ve ihtiyacınız olan doğruluğu sunabildiğinden emin olun. 
+* Hataları tanımlamak ve yanıtlamak mı istiyorsunuz? AI destekli ürünler ve özellikler her zaman %100 doğru değildir, bu nedenle oluşabilecek hataları nasıl tanımlayacağınızı ve yanıtlayacağınızı düşünün. 
+
+## <a name="general-guidelines-for-using-synthetic-voice-technology"></a>Yapay ses teknolojisini kullanmaya yönelik genel yönergeler 
 Yapay ses teknolojisini kullanmaya yönelik Microsoft 'un genel tasarım yönergeleri aşağıda verilmiştir. Bunlar, Microsoft 'un sesli tatathı, tüketicilerle ve yapay sesten sorumlu geliştirmeye kılavuzluk etmek için konuşma içermeyen kişilerin geliştirdiği çalışmalar üzerinde geliştirilmiştir.
 
-## <a name="general-considerations"></a>Dikkat edilmesi gereken temel noktalar
 Yapay konuşma teknolojisinin dağıtımı için, çoğu senaryo genelinde aşağıdaki yönergeler geçerlidir.
 
 ### <a name="disclose-when-the-voice-is-synthetic"></a>Ses yapay olduğunda açıklayadır
 Bir sesin oluşturulduğu bir sesin, yalnızca zararlı sonuçlar riskini en aza indirir, ancak aynı zamanda sesi teslim eden kuruluştaki güveni de artırır. [Nasıl açıklayacağınızı](concepts-disclosure-guidelines.md)öğrenin.
+
+Microsoft, müşterilerinin kendi kullanıcılarına özel sinir Voice yapay yapısını açıklatabini gerektirir. 
+* Özellikle de bilinen kişilerin sesini kullanırken, hedef kitlelere uygun bir açıklama sağladığınızdan emin olun, ancak BT consciously veya unconsciously yapıp yapmayacağı gibi, BT, BT 'yi teslim eden kişiye göre daha fazla bilgi elde edin.  Örneğin, açıklama oluşturma bir yayının başlangıcında ifade edilebilir. Daha fazla bilgi için [Açıklama düzenlerini](concepts-disclosure-patterns.md)ziyaret edin.   
+* Sömürmeyi amaçlama ve alt öğeler için tasarlanan kullanım durumları olan ebeveynler veya diğer taraflara doğru bir şekilde göz önünde bulundurun. kullanım durumlarınız, sömürmeyi amaçlama veya alt öğeler için tasarlanıyorsa, ebeveynler veya yasal koruyucuların yapay medya kullanımı hakkındaki bilgileri anlayabilmesini ve bu deneyimin kullanılıp kullanılmayacağını en iyi şekilde kararlamasını sağlamak için gerekir. 
 
 ### <a name="select-appropriate-voice-types-for-your-scenario"></a>Senaryonuz için uygun ses türlerini seçin
 Kullanım bağlamını ve yapay seslendirme ile ilişkili potansiyel güvenliğini aşmanızı 'yi dikkatle değerlendirin. Örneğin, yüksek kaliteli yapay sesler, kişisel mesajlaşma, mali işlemler veya insan uyumluluk veya emplik gerektiren karmaşık durumlar gibi yüksek riskli senaryolar için uygun olmayabilir. Kullanıcılar ses türleri için farklı beklentiler de içerebilir. Örneğin, hassas haberleri yapay bir ses tarafından okunmayı dinlerken, bazı kullanıcılar haberleri daha empathetic ve insan benzeri bir şekilde okumayı tercih ederken, diğerleri daha çok monoton, taraflı olmayan sesi tercih eder. Kullanıcı tercihlerini daha iyi anlamak için uygulamanızı test etmeyi düşünün.
@@ -39,8 +51,9 @@ Belirsiz, işlem senaryolarında (örneğin, bir çağrı Destek Merkezi), kulla
 Ses aktörleri gibi Sesli aktörler ile çalışırken, yapay sesler oluşturmak için aşağıdaki kılavuz geçerlidir.
 
 ### <a name="obtain-meaningful-consent-from-voice-talent"></a>Sesli tatatdan anlamlı onay alın
-Ses tatatzı, ses yazı tipi (nasıl ve nerede kullanılır) üzerinde denetim sahibi olmak için kullanılır ve her zaman dengelenebilir. Bu nedenle, sistem sahipleri, sesli tastasyondan açık yazılı bir izin almalıdır ve kullanım örnekleri, kullanım süresi, kullanım süresi ve benzerlerini açık şekilde sözleşmeli belirtimlere sahip olmalıdır. Bazı ses tastası, teknolojinin olası kötü amaçlı kullanımlarıyla uyumlu değildir ve teknolojinin özellikleri hakkında sistem sahipleri tarafından eğitilmeli. Ses taçanız ve onayı hakkında daha fazla bilgi edinmek için [sesli tatatyi](/legal/cognitive-services/speech-service/disclosure-voice-talent)okuyun.
+Sesli talenler, kendi ses modelleri üzerinde denetime sahip olmalıdır (nasıl ve nerede kullanılır) ve kullanımı için telafi edilir. Microsoft, özel sesli müşterilerin sesli tafets ile bir yapay ses ve bu süre boyunca sesli yeteneklerini Contemplate 'e sahip anlaşmasıyla birlikte açık yazılı izin almasını gerektirir.  İyi bilinen bir kişinin yapay bir sesini oluşturuyorsanız, sesin içeriğini düzenleme veya onaylama konusunda bir yol sağlamanız gerekir.
 
+Bazı ses tatları, teknolojinin olası kötü amaçlı kullanımlarıyla uyumlu değildir ve teknolojinin özellikleri hakkında sistem sahipleri tarafından eğitilmeli. Microsoft, müşterilerin, Microsoft 'un sesli tatatsyon sayesinde doğrudan veya ses tatatası temsilcisinden, yapay seslerin nasıl geliştirildiğini ve konuşma Hizmetleri ile birlikte nasıl çalıştığını açıklayan yetkili temsilcisi aracılığıyla Microsoft 'un [açıklanmasını](/legal/cognitive-services/speech-service/disclosure-voice-talent) gerektirir.
 
 ## <a name="considerations-for-those-with-speech-disorders"></a>Konuşma yemekleriyle ilgili konular
 Konuşma olmayan kişilerle çalışırken yapay sesli teknoloji oluşturmak veya dağıtmak için aşağıdaki yönergeler geçerlidir.
