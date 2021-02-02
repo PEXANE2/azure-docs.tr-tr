@@ -10,12 +10,12 @@ ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: calui
-ms.openlocfilehash: 0ca5f6a853852acbb4ef97adfce2364592bae270
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 4e39d7f15e3ca3c6e241c767a5f881d7170c6379
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97559849"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99255976"
 ---
 # <a name="sign-in-to-azure-active-directory-using-email-as-an-alternate-login-id-preview"></a>Alternatif oturum açma KIMLIĞI (Önizleme) olarak e-posta kullanarak Azure Active Directory için oturum açın
 
@@ -113,7 +113,7 @@ Daha fazla bilgi için bkz. [Azure AD karma kimlik çözümünüz için doğru k
 1. *Homerealmdiscoverypolicy* ilkesinin aşağıdaki gibi [Get-azureadpolicy][Get-AzureADPolicy] cmdlet 'ini kullanarak kiracınızda zaten mevcut olup olmadığını denetleyin:
 
     ```powershell
-    Get-AzureADPolicy | where-object {$_.Type -eq "HomeRealmDiscoveryPolicy"} | fl *
+    Get-AzureADPolicy | Where-Object Type -eq "HomeRealmDiscoveryPolicy" | Format-List *
     ```
 
 1. Şu anda yapılandırılmış ilke yoksa, komut hiçbir şey döndürmez. Bir ilke döndürülürse, bu adımı atlayın ve mevcut bir ilkeyi güncelleştirmek için sonraki adıma geçin.
@@ -121,10 +121,22 @@ Daha fazla bilgi için bkz. [Azure AD karma kimlik çözümünüz için doğru k
     *Barındırmerealmdiscoverypolicy* ilkesini kiracıya eklemek Için, [New-azureadpolicy][New-AzureADPolicy] cmdlet 'Ini kullanın ve *alternateıdlogin* özniteliğini aşağıdaki örnekte gösterildiği gibi *"Enabled"* olarak ayarlayın:
 
     ```powershell
-    New-AzureADPolicy -Definition @('{"HomeRealmDiscoveryPolicy" :{"AlternateIdLogin":{"Enabled": true}}}') `
-        -DisplayName "BasicAutoAccelerationPolicy" `
-        -IsOrganizationDefault $true `
-        -Type "HomeRealmDiscoveryPolicy"
+    $AzureADPolicyDefinition = @(
+      @{
+         "HomeRealmDiscoveryPolicy" = @{
+            "AlternateIdLogin" = @{
+               "Enabled" = $true
+            }
+         }
+      } | ConvertTo-JSON -Compress
+    )
+    $AzureADPolicyParameters = @{
+      Definition            = $AzureADPolicyDefinition
+      DisplayName           = "BasicAutoAccelerationPolicy"
+      IsOrganizationDefault = $true
+      Type                  = "HomeRealmDiscoveryPolicy"
+    }
+    New-AzureADPolicy @AzureADPolicyParameters
     ```
 
     İlke başarıyla oluşturulduğunda, komut aşağıdaki örnek çıktıda gösterildiği gibi ilke KIMLIĞINI döndürür:
@@ -156,17 +168,31 @@ Daha fazla bilgi için bkz. [Azure AD karma kimlik çözümünüz için doğru k
     Aşağıdaki örnek, *Alternateıdlogin* özniteliğini ekler ve önceden ayarlanmış olabilecek *Allowcloudpasswordvalidation* özniteliğini korur:
 
     ```powershell
-    Set-AzureADPolicy -id b581c39c-8fe3-4bb5-b53d-ea3de05abb4b `
-        -Definition @('{"HomeRealmDiscoveryPolicy" :{"AllowCloudPasswordValidation":true,"AlternateIdLogin":{"Enabled": true}}}') `
-        -DisplayName "BasicAutoAccelerationPolicy" `
-        -IsOrganizationDefault $true `
-        -Type "HomeRealmDiscoveryPolicy"
+    $AzureADPolicyDefinition = @(
+      @{
+         "HomeRealmDiscoveryPolicy" = @{
+            "AllowCloudPasswordValidation" = $true
+            "AlternateIdLogin" = @{
+               "Enabled" = $true
+            }
+         }
+      } | ConvertTo-JSON -Compress
+    )
+    $AzureADPolicyParameters = @{
+      ID                    = "b581c39c-8fe3-4bb5-b53d-ea3de05abb4b"
+      Definition            = $AzureADPolicyDefinition
+      DisplayName           = "BasicAutoAccelerationPolicy"
+      IsOrganizationDefault = $true
+      Type                  = "HomeRealmDiscoveryPolicy"
+    }
+    
+    Set-AzureADPolicy @AzureADPolicyParameters
     ```
 
     Güncelleştirilmiş ilkenin değişikliklerinizi gösterdiğini ve *Alternateıdlogin* özniteliğinin artık etkin olduğunu doğrulayın:
 
     ```powershell
-    Get-AzureADPolicy | where-object {$_.Type -eq "HomeRealmDiscoveryPolicy"} | fl *
+    Get-AzureADPolicy | Where-Object Type -eq "HomeRealmDiscoveryPolicy" | Format-List *
     ```
 
 İlke uygulandığında, yayılır ve kullanıcıların alternatif oturum açma KIMLIĞINI kullanarak oturum açabiliyor.
@@ -207,7 +233,12 @@ Aşağıdaki adımları tamamlayabilmeniz için *Kiracı Yöneticisi* izinlerine
 4. Bu özellik için mevcut bir hazırlanmış dağıtım ilkesi yoksa, yeni bir aşamalı dağıtım ilkesi oluşturun ve ilke KIMLIĞINI aklınızda yapın:
 
    ```powershell
-   New-AzureADMSFeatureRolloutPolicy -Feature EmailAsAlternateId -DisplayName "EmailAsAlternateId Rollout Policy" -IsEnabled $true
+   $AzureADMSFeatureRolloutPolicy = @{
+      Feature    = "EmailAsAlternateId"
+      DisplayName = "EmailAsAlternateId Rollout Policy"
+      IsEnabled   = $true
+   }
+   New-AzureADMSFeatureRolloutPolicy @AzureADMSFeatureRolloutPolicy
    ```
 
 5. Hazırlanan dağıtım ilkesine eklenecek grubun directoryObject KIMLIĞINI bulun. Bir sonraki adımda kullanılacak olduğundan, *ID* parametresi için döndürülen değeri aklınızda olun.
@@ -250,7 +281,7 @@ Kullanıcılar, e-posta adreslerini kullanarak oturum açma olaylarıyla ilgili 
 1. Azure AD *Homerealmdiscoverypolicy* Ilkesinin *alternateıdlogin* özniteliği *"Enabled"* olarak ayarlanmış olduğunu doğrulayın: doğru:
 
     ```powershell
-    Get-AzureADPolicy | where-object {$_.Type -eq "HomeRealmDiscoveryPolicy"} | fl *
+    Get-AzureADPolicy | Where-Object Type -eq "HomeRealmDiscoveryPolicy" | Format-List *
     ```
 
 ## <a name="next-steps"></a>Sonraki adımlar

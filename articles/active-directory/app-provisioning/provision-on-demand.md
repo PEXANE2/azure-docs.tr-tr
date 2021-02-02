@@ -3,7 +3,7 @@ title: Azure Active Directory kullanarak talep üzerine Kullanıcı sağlama
 description: Eşitlemeyi zorla
 services: active-directory
 author: msmimart
-manager: CelesteDG
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 10/01/2020
 ms.author: mimart
 ms.reviewer: arvinh
-ms.openlocfilehash: f7cbe9e9f81b3b71ee7da2feac2908c36f1777e5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: be03a149f34c16621905081a2f9bb663d85bc53c
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91629021"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99255670"
 ---
 # <a name="on-demand-provisioning"></a>İsteğe bağlı sağlama
 Bir kullanıcıyı bir uygulamaya Saniyeler içinde sağlamak için isteğe bağlı sağlama kullanın. Diğer şeyler arasında bu özelliği kullanarak şunları yapabilirsiniz:
@@ -28,10 +28,10 @@ Bir kullanıcıyı bir uygulamaya Saniyeler içinde sağlamak için isteğe bağ
 ## <a name="how-to-use-on-demand-provisioning"></a>İsteğe bağlı sağlama kullanma
 
 1. **Azure portalında** oturum açın.
-1. **Tüm hizmetler**  >  **kurumsal uygulamalarına**gidin.
+1. **Tüm hizmetler**  >  **kurumsal uygulamalarına** gidin.
 1. Uygulamanızı seçin ve ardından sağlama yapılandırma sayfasına gidin.
 1. Yönetici kimlik bilgilerinizi sağlayarak sağlamayı yapılandırın.
-1. **İsteğe bağlı sağlama**seçeneğini belirleyin.
+1. **İsteğe bağlı sağlama** seçeneğini belirleyin.
 1. Kullanıcıyı ad, soyadı, görünen ad, Kullanıcı asıl adı veya e-posta adresi ile arayın.
    > [!NOTE]
    > Cloud HR sağlama uygulaması için (AD/Azure AD 'ye yönelik Workday/başarılı faktörleri), giriş değeri farklıdır. Workday senaryosu için lütfen Workday 'de kullanıcının "WıD" adını belirtin. Başarılı bir senaryo için lütfen kullanıcının "Personıdexternal" adını başarılı bir şekilde belirtin. 
@@ -82,7 +82,7 @@ Ardından, sağlama hizmeti kullanıcıyı kaynak sistemden alır. Hizmetin ald�
 Ardından, sağlama hizmeti kullanıcının sağlama [kapsamında](./how-provisioning-works.md#scoping) olup olmadığını belirler. Hizmet şöyle dikkate alır:
 
 * Kullanıcının uygulamaya atanıp atanmayacağı.
-* Kapsamın **atandı** veya **Tümünü Eşitle**olarak ayarlanmış olup olmadığı.
+* Kapsamın **atandı** veya **Tümünü Eşitle** olarak ayarlanmış olup olmadığı.
 * Sağlama yapılandırmanızda tanımlanan kapsam filtreleri.  
 
 #### <a name="view-details"></a>Ayrıntıları görüntüle
@@ -124,7 +124,7 @@ Son olarak, sağlama hizmeti kullanıcı oluşturma, güncelleştirme, silme vey
 
 Bir kullanıcının başarılı bir şekilde sağlanmasından sonra neleri görebileceğinize ilişkin bir örnek aşağıda verilmiştir:
 
-:::image type="content" source="media/provision-on-demand/success-on-demand-provision.jpg" alt-text="İsteğe bağlı bir kullanıcı sağlamak için Azure portal Kullanıcı ARABIRIMINI gösteren ekran görüntüsü.":::
+:::image type="content" source="media/provision-on-demand/success-on-demand-provision.jpg" alt-text="Bir kullanıcının başarılı istek üzerine sağlamasını gösteren ekran görüntüsü.":::
 
 #### <a name="view-details"></a>Ayrıntıları görüntüle
 

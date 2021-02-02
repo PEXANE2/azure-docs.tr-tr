@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-mongo
 ms.topic: troubleshooting
 ms.date: 07/15/2020
 ms.author: chrande
-ms.openlocfilehash: 26097408d0b83b043f4a25183146c892fc4b48ad
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: f4ed242dced4798f5f416dae90ef2d6b6bde0e06
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98538553"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258193"
 ---
 # <a name="troubleshoot-common-issues-in-azure-cosmos-dbs-api-for-mongodb"></a>MongoDB için Azure Cosmos DB API 'sindeki yaygın sorunları giderme
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -30,7 +30,7 @@ Aşağıdaki makalede, MongoDB için Azure Cosmos DB API kullanılarak gerçekle
 | 13 | Yetkisiz | İsteğin tamamlanma izinleri eksik. | Veritabanınız ve koleksiyonunuz için uygun izinleri oluşturduğunuzdan emin olun.  |
 | 16 | Invalidlength | Belirtilen isteğin uzunluğu geçersiz. | Açıkla () işlevini kullanıyorsanız, yalnızca bir işlem sağladığınızdan emin olun. |
 | 26 | NamespaceNotFound | Sorguda başvurulmakta olan veritabanı veya koleksiyon bulunamıyor. | Veritabanınızın/koleksiyon adınızın sorgunuzun adıyla tam olarak eşleştiğinden emin olun.|
-| 50 | ExceededTimeLimit | İstek 60 saniyelik yürütme zaman aşımı süresini aştı. |  Bu hatanın pek çok nedeni olabilir. Bu nedenlerin biri, şu anda ayrılmış olan istek birimleri kapasitesinin isteği tamamlaması için yeterli olmadığı durumlarda oluşur. Bu durum söz konusu koleksiyonun veya veritabanının istek birimlerini artırarak çözülebilir. Diğer durumlarda bu hata, büyük bir isteği daha küçük olanlara bölerek de çalıştırılabilir. Bu hatayı almış bir yazma işlemini yeniden denemek yinelenen bir yazmaya neden olabilir.|
+| 50 | ExceededTimeLimit | İstek 60 saniyelik yürütme zaman aşımı süresini aştı. |  Bu hatanın pek çok nedeni olabilir. Bu nedenlerin biri, şu anda ayrılmış olan istek birimleri kapasitesinin isteği tamamlaması için yeterli olmadığı durumlarda oluşur. Bu durum söz konusu koleksiyonun veya veritabanının istek birimlerini artırarak çözülebilir. Diğer durumlarda bu hata, büyük bir isteği daha küçük olanlara bölerek de çalıştırılabilir. Bu hatayı almış bir yazma işlemini yeniden denemek yinelenen bir yazmaya neden olabilir. <br><br>Ru 'ları etkilemeden büyük miktarlarda veri silmeye çalışıyorsanız: <br>-TTL 'yi (zaman damgasına göre) kullanmayı düşünün: [MongoDB için Azure Cosmos DB API 'si ile veri süresi sonu](https://docs.microsoft.com/azure/cosmos-db/mongodb-time-to-live) <br>-Silme işlemini gerçekleştirmek için Imleci/toplu Iş boyutunu kullanın. Tek seferde tek bir belge getirip bir döngü aracılığıyla bunu silebilirsiniz. Bu, üretim uygulamanızı etkilemeden verileri yavaş bir şekilde silmeye yardımcı olur.|
 | 61 | ShardKeyNotFound | Talebinizdeki belge koleksiyonun parça anahtarını (Azure Cosmos DB bölüm anahtarı) içermiyordu. | Koleksiyonda koleksiyonun parça anahtarının kullanıldığından emin olun.|
 | 66 | Immutablefield | İstek, sabit bir alanı değiştirmeye çalışıyor | "kimlik" alanları sabittir. İsteğiniz bu alanı güncelleştirmeye çalışmadığından emin olun. |
 | 67 | Cannotcreateındex | Dizin oluşturma isteği tamamlanamıyor. | Kapsayıcıda en fazla 500 tek alan dizini oluşturulabilir. Bileşik dizine kadar en fazla sekiz alan bulunabilir (Birleşik dizinler 3.6 + sürümünde desteklenir). |
@@ -39,8 +39,8 @@ Aşağıdaki makalede, MongoDB için Azure Cosmos DB API kullanılarak gerçekle
 | 16500 | TooManyRequests  | Kullanılan toplam istek birimi sayısı, koleksiyon için sağlanan istek birimi hızından fazla ve kısıtlanmış. | Azure portaldan bir kapsayıcıya veya kapsayıcı kümesine atanan aktarım hızını ölçeklendirmeyi göz önünde bulundurabilir veya işlemi yeniden deneyebilirsiniz. [SSR](prevent-rate-limiting-errors.md) 'yi (sunucu tarafı yeniden deneme) etkinleştirirseniz Azure Cosmos DB, bu hata nedeniyle başarısız olan istekleri otomatik olarak yeniden dener. |
 | 16501 | ExceededMemoryLimit | Çok kiracılı bir hizmet olarak, işlem istemcinin bellek işlem biriminden çıktı. | Daha kısıtlayıcı sorgu ölçütleri aracılığıyla işlemin kapsamını azaltın veya [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)destek ekibiyle iletişime geçin. Örnek: `db.getCollection('users').aggregate([{$match: {name: "Andy"}}, {$sort: {age: -1}}]))` |
 | 40324 | Tanınmayan ardışık düzen aşaması adı. | Toplama işlem hattı talebinizdeki aşama adı tanınmadı. | Tüm toplama işlem hattı adlarının isteğiniz içinde geçerli olduğundan emin olun. |
-| - | MongoDB kablo sürümü sorunları | MongoDB sürücülerinin eski sürümleri, bağlantı dizelerindeki Azure Cosmos hesabının adını algılayamaz. | The MongoDB bağlantı dizesi için Cosmos DB API 'sinin sonunda *appname = @**AccountName** @* ekleyin; burada ***AccountName*** , Cosmos DB hesabınızın adıdır. |
-| - | MongoDB istemci ağ sorunları (yuva veya endOfStream özel durumları gibi)| Ağ isteği başarısız oldu. Bu, genellikle MongoDB istemcisinin kullanmaya çalışan etkin olmayan bir TCP bağlantısı nedeniyle oluşur. MongoDB sürücüleri genellikle bağlantı havuzlamayı kullanır ve bu, bir istek için kullanılan havuzdan seçilen rastgele bir bağlantıyla sonuçlanır. Etkin olmayan bağlantılar genellikle Azure Cosmos DB dört dakika sonra sona zaman aşımı. | Uygulama kodunuzda bu başarısız istekleri yeniden deneyebilir, MongoDB istemci (sürücü) ayarlarınızı dört dakikalık zaman aşımı penceresinden önce etkin olmayan TCP bağlantılarına değiştirebilir veya etkin bir durumda olan TCP bağlantılarını sürdürmek üzere işletim sistemi KeepAlive ayarlarınızı yapılandırabilirsiniz. |
+| - | MongoDB kablo sürümü sorunları | MongoDB sürücülerinin eski sürümleri, bağlantı dizelerindeki Azure Cosmos hesabının adını algılayamaz. | MongoDB bağlantı dizesi için Cosmos DB} sonunda *appname = @**AccountName** @* ekleyin; burada ***AccountName** _, Cosmos DB hesabınızın adıdır. |
+| - | MongoDB istemci ağ sorunları (yuva veya endOfStream özel durumları gibi)| Ağ isteği başarısız oldu. Bu, genellikle MongoDB istemcisinin kullanmaya çalışan etkin olmayan bir TCP bağlantısı nedeniyle oluşur. MongoDB sürücüleri genellikle bağlantı havuzlamayı kullanır ve bu, bir istek için kullanılan havuzdan seçilen rastgele bir bağlantıyla sonuçlanır. Etkin olmayan bağlantılar genellikle Azure Cosmos DB dört dakika sonra sona zaman aşımı. | Uygulama kodunuzda bu başarısız istekleri yeniden deneyebilir, MongoDB istemci (sürücü) ayarlarınızı dört dakikalık zaman aşımı penceresinden önce etkin olmayan TCP bağlantılarına değiştirebilir veya etkin bir durumda olan TCP bağlantılarını sürdürmek üzere işletim sistemi KeepAlive ayarlarınızı yapılandırabilirsiniz.<br><br>Bağlantı iletilerini önlemek için, bağlantı dizesini değiştirip maxConnectionIdleTime değerini 1-2 dakika olarak ayarlamayı isteyebilirsiniz.<br>-Mongo sürücüsü: Configure _maxIdleTimeMS = 120000 * <br>-Node.JS: *Sockettimeoutms = 120000*, *oto reconnect* = true, *KeepAlive* = true, *keepaliveınitialdelay* = 3 dakika yapılandırın
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

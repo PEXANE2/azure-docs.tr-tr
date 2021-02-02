@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to create a Network Virtual Appliance (NVA) in my Virtual WAN hub.
-ms.openlocfilehash: 7a52d3971e4ec0cb8ec104a57ba7fb4057c23b72
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: 1f80da4014d4b6b27155db17d32800e54b51f40d
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97964652"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258074"
 ---
 # <a name="how-to-create-a-network-virtual-appliance-in-an-azure-virtual-wan-hub-preview"></a>Azure sanal WAN hub 'ında ağ sanal gereci oluşturma (Önizleme)
 
@@ -21,10 +21,9 @@ Bu makalede, Azure 'daki bir **ağ sanal** gereci (NVA) aracılığıyla Azure '
 
 Bu makaledeki adımlar, sanal WAN hub 'ında bir **Barbcuda CloudGen WAN** ağ sanal gereci oluşturmanıza yardımcı olur. Bu alıştırmayı tamamlayabilmeniz için, başlamadan önce hub 'a dağıttığınız bir barbcuda bulut şirket Içi aygıtı (CPE) ve bir Barrampaya da CloudGen WAN gereci lisansına sahip olmanız gerekir.
 
-Azure sanal WAN içinde **CISCO SD-WAN** 'ın dağıtım belgeleri için lütfen bkz. [Multi-Cloud Için Cisco Cloud onrampa](https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/cloudonramp/ios-xe-17/cloud-onramp-book-xe/cloud-onramp-multi-cloud.html#Cisco_Concept.dita_c61e0e7a-fff8-4080-afee-47b81e8df701). Hesabınızı kaydetmek ve gerekli Cisco SD-WAN lisanslarını almak için aşağıdaki e-posta adresinden Cisco 'ya e-posta gönderin: vwan_public_preview@external.cisco.com
+Azure sanal WAN içinde **CISCO SD-WAN** 'ın dağıtım belgeleri için lütfen bkz. [Multi-Cloud Için Cisco Cloud onrampa](https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/cloudonramp/ios-xe-17/cloud-onramp-book-xe/cloud-onramp-multi-cloud.html#Cisco_Concept.dita_c61e0e7a-fff8-4080-afee-47b81e8df701). 
 
-
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Yapılandırmanıza başlamadan önce aşağıdaki ölçütleri karşıladığınızı doğrulayın:
 
@@ -55,7 +54,7 @@ Hub, siteden siteye, ExpressRoute, Noktadan siteye veya ağ sanal gereç işlevl
    **Proje ayrıntıları**
 
    * Bölge (daha önce konum olarak adlandırılır)
-   * Ad
+   * Name
    * Hub özel adres alanı. En küçük adres alanı bir hub oluşturmak için/24 ' tir. Bu,/25 ile/32 arasında herhangi bir aralığın oluşturulması sırasında bir hata üretecektir. Microsoft tarafından yönetilen bir hizmet olan Azure sanal WAN, farklı ağ geçitleri/hizmetler için sanal hub 'da uygun alt ağları oluşturur. (Örneğin: ağ sanal cihazları, VPN ağ geçitleri, ExpressRoute ağ geçitleri, kullanıcı VPN/Noktadan siteye ağ geçitleri, güvenlik duvarı, yönlendirme vb.). Microsoft bunu hizmetin bir parçası olarak yaptığından, kullanıcının sanal hub 'daki hizmetler için alt ağ adres alanını açıkça planlaması gerekmez.
 1. Doğrulamak için **gözden geçir + oluştur** ' u seçin.
 1. Hub 'ı oluşturmak için **Oluştur** ' u seçin.

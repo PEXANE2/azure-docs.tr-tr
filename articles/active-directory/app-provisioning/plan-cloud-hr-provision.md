@@ -3,7 +3,7 @@ title: Kullanıcı sağlamayı Azure Active Directory için bulut HR uygulaması
 description: Bu makalede, Azure Active Directory ile Workday ve başarılı etkenler gibi bulut HR sistemlerini tümleştirme dağıtım süreci açıklanmaktadır. Azure AD 'yi bulut HR sistemiyle tümleştirmek, bir kimlik yaşam döngüsü yönetim sistemiyle sonuçlanır.
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: conceptual
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 11/22/2019
 ms.author: kenwith
 ms.reviewer: arvindha, celested
-ms.openlocfilehash: 64418a727ecb9a300912a4766a9ea2066328ad31
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 9c896d4cccf898b8818b4c363c5bc891a8734ca5
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96174909"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99256720"
 ---
 # <a name="plan-cloud-hr-application-to-azure-active-directory-user-provisioning"></a>Kullanıcı sağlamayı Azure Active Directory için bulut HR uygulaması planlayın
 
@@ -79,7 +79,7 @@ Bulut HR uygulamasını Azure AD Kullanıcı sağlama tümleştirmesi olarak yap
 
 Ayrıca, bulut HR uygulamasından kaynaklayacağı ve Active Directory ya da Azure AD 'ye sağlanan her kullanıcı için geçerli Azure AD Premium P1 veya daha yüksek bir abonelik lisansı gerekir. Bulut HR uygulamasına ait hatalı sayıda lisans, Kullanıcı sağlama sırasında hatalara yol açabilir.
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 - Azure AD Connect sağlama aracısını yapılandırmak için Azure AD [karma kimlik yöneticisi](../roles/permissions-reference.md#hybrid-identity-administrator)  .
 - Azure portal sağlama uygulamasını yapılandırmak için Azure AD [Uygulama Yöneticisi](../roles/permissions-reference.md#application-administrator) rolü

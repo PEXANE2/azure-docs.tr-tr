@@ -1,5 +1,5 @@
 ---
-title: Yüz hizmetindeki yenilikler nelerdir?
+title: Yüz Tanıma hizmetindeki yenilikler
 titleSuffix: Azure Cognitive Services
 description: Yüz hizmeti için sürüm notları, çeşitli sürümler için sürüm değişikliklerinin geçmişini içerir.
 services: cognitive-services
@@ -10,19 +10,31 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 12/11/2020
 ms.author: pafarley
-ms.openlocfilehash: 8a409d66065a7ccd2b34365bd565202f207ac0e8
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 5e537166352f242d54819477a4dc0051aad684b0
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97560755"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258091"
 ---
-# <a name="whats-new-in-face-service"></a>Yüz hizmetindeki yenilikler nelerdir?
+# <a name="whats-new-in-face-service"></a>Yüz Tanıma hizmetindeki yenilikler
 
 Azure yüz hizmeti, sürekli olarak güncelleştirilir. Özellik geliştirmeleri, düzeltmeler ve belge güncelleştirmeleriyle güncel kalmak için bu makaleyi kullanın.
 
+## <a name="january-2021"></a>Ocak 2021
+* Yüz Tanıma API'si kullanırken gecikme süresini azaltın: yüz ekibi, hizmet ve olası risk azaltma stratejilerini kullanırken oluşabilecek gecikme süresini ayrıntılarıyla açıklayan yeni bir makale yayımladı. [Yüz hizmetini kullanırken gecikme süresini azaltmaya](https://docs.microsoft.com/azure/cognitive-services/face/face-api-how-to-topics/how-to-mitigate-latency)bakın.
+
+## <a name="december-2020"></a>Aralık 2020
+* Yüz KIMLIĞI depolaması için müşteri yapılandırması: yüz hizmeti müşteri görüntülerini depolarken, ayıklanan yüz özellikleri sunucuda depolanır. Yüz [kimliği, yüz](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239)özelliğinin bir tanıtıcısıdır ve benzer şekilde, yüz tanıma, [yüz-doğrulama](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a)ve [yüz-bulma](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237)gibi görünür. Depolanan yüz özelliklerinin süresi dolacak ve özgün algılama çağrısından sonra 24 saat silinmelidir. Müşteriler artık bu yüz kimliklerinin önbelleğe alınma süresini tespit edebilir. En büyük değer 24 saate kadar sürer, ancak en az 60 saniyelik bir değer ayarlanabilir. Önbelleğe alınan yüz kimlikleri için yeni zaman aralıkları, 60 saniye ile 24 saat arasında herhangi bir değerdir. Daha fazla ayrıntı, [yüz algılama](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) API başvurusunda ( *Faceidtimetolive* parametresi) bulunabilir.
+
 ## <a name="november-2020"></a>Kasım 2020
-* Anlamlı bir izin oluşturmak ve yüksek kaliteli kayıt işlemleri aracılığıyla yüksek doğruluk düzeyi tanıma sistemleri oluşturmak için en iyi uygulamaları göstermek üzere örnek bir yüz kayıt uygulaması yayınlandı. Açık kaynak örneği, [kayıt uygulaması oluşturma](build-enrollment-app.md) kılavuzunda ve [GitHub](https://github.com/Azure-Samples/cognitive-services-FaceAPIEnrollmentSample)'da, geliştiricilerin dağıtması veya özelleştirmesi için hazırlanma bölümünde bulunabilir.  
+* Anlamlı bir izin oluşturmak ve yüksek kaliteli kayıtlar aracılığıyla yüksek doğruluk düzeyi tanıma sistemleri oluşturmak için en iyi uygulamaları göstermek üzere örnek bir yüz kayıt uygulaması yayınlandı. Açık kaynaklı örnek, [kayıt uygulama](build-enrollment-app.md) kılavuzunda ve [GitHub](https://github.com/Azure-Samples/cognitive-services-FaceAPIEnrollmentSample)'da, geliştiricilerin dağıtması veya özelleştirmesi için hazırlanma bölümünde bulunabilir. 
+
+## <a name="august-2020"></a>Ağustos 2020
+* Müşteri tarafından yönetilen veriler, bekleyen veri şifrelemesi: yüz hizmeti, buluta kalıcı hale geldiğinde verilerinizi otomatik olarak şifreler. Yüz hizmeti şifrelemesi, kurumsal güvenlik ve uyumluluk taahhütlerinizi karşılamanıza yardımcı olmak için verilerinizi korur. Aboneliğiniz varsayılan olarak Microsoft tarafından yönetilen şifreleme anahtarlarını kullanır. Aboneliğinizi, müşteri tarafından yönetilen anahtarlar (CMK) adlı kendi anahtarlarınız ile yönetmeye yönelik yeni bir seçenek de vardır. Daha fazla ayrıntı, [müşteri tarafından yönetilen anahtarlarda](https://docs.microsoft.com/azure/cognitive-services/face/face-encryption-of-data-at-rest)bulunabilir.
+
+## <a name="april-2020"></a>Nisan 2020
+* Yeni Yüz Tanıma API'si tanıma modeli: yeni tanıma 03 modeli, şu anda kullanılabilir en doğru modeldir. Yeni bir müşteriyseniz, bu modeli kullanmanızı öneririz. Tanınma 03 hem benzerlik karşılaştırmaları hem de kişi ile eşleşen karşılaştırmalar için geliştirilmiş doğruluk sağlar. Daha fazla ayrıntı için [bir yüz tanıma modeli belirtin](https://docs.microsoft.com/azure/cognitive-services/face/face-api-how-to-topics/specify-recognition-model).
 
 ## <a name="june-2019"></a>Haziran 2019
 

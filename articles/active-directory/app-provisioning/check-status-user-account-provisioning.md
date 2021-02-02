@@ -3,7 +3,7 @@ title: SaaS uygulamalarına otomatik Kullanıcı hesabı sağlamayı bildir
 description: Otomatik Kullanıcı hesabı sağlama işlerinin durumunu denetlemeyi ve bireysel kullanıcıların sağlanması hakkında nasıl sorun gidermeyi öğrenin.
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 09/09/2018
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 3dcbb2567b9a92ea7d806acedb5d1cc6a31a966e
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: e6839026c83a10a4acebd7b7a6ab55b210e7ef14
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92069815"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99256686"
 ---
 # <a name="tutorial-reporting-on-automatic-user-account-provisioning"></a>Öğretici: otomatik Kullanıcı hesabı sağlama üzerinde raporlama
 
@@ -40,7 +40,7 @@ Bu makale aşağıda tanımlanan aşağıdaki terimleri kullanır:
 
 ## <a name="getting-provisioning-reports-from-the-azure-portal"></a>Azure portal sağlama raporlarının alınması
 
-Belirli bir uygulama için sağlama raporu bilgilerini almak için, etkinlik bölümündeki [Azure Portal](https://portal.azure.com) ve **Azure Active Directory** &gt; **Kurumsal uygulamalar** &gt; **sağlama günlükleri (Önizleme)** **Activity** Azure Active Directory başlatarak başlayın. Ayrıca, sağlama yapılandırılan kurumsal uygulamaya de gidebilirsiniz. Örneğin, kullanıcıları LinkedIn 'e sağlıyorsanız, uygulama ayrıntılarının gezinti yolu şu şekilde olur:
+Belirli bir uygulama için sağlama raporu bilgilerini almak için, etkinlik bölümündeki [Azure Portal](https://portal.azure.com) ve  &gt; **Kurumsal uygulamalar** &gt; **sağlama günlükleri (Önizleme)**  Azure Active Directory başlatarak başlayın. Ayrıca, sağlama yapılandırılan kurumsal uygulamaya de gidebilirsiniz. Örneğin, kullanıcıları LinkedIn 'e sağlıyorsanız, uygulama ayrıntılarının gezinti yolu şu şekilde olur:
 
 **Azure Active Directory tüm uygulamalar > > kurumsal uygulamalar > LinkedIn yükselt**
 
@@ -48,7 +48,7 @@ Buradan, sağlama ilerleme çubuğuna ve sağlama günlüklerine, aşağıda aç
 
 ## <a name="provisioning-progress-bar"></a>Sağlama ilerleme çubuğu
 
-[Sağlama ilerleme çubuğu](application-provisioning-when-will-provisioning-finish-specific-user.md#view-the-provisioning-progress-bar) , verilen uygulamanın **sağlama** sekmesinde görünür. **Ayarlar**altındaki **geçerli durum** bölümünde bulunur ve geçerli başlangıç veya artımlı döngüsünün durumunu gösterir. Bu bölümde ayrıca şunları da gösterilmektedir:
+[Sağlama ilerleme çubuğu](application-provisioning-when-will-provisioning-finish-specific-user.md#view-the-provisioning-progress-bar) , verilen uygulamanın **sağlama** sekmesinde görünür. **Ayarlar** altındaki **geçerli durum** bölümünde bulunur ve geçerli başlangıç veya artımlı döngüsünün durumunu gösterir. Bu bölümde ayrıca şunları da gösterilmektedir:
 
 * Eşitlenmiş ve kaynak sistem ile hedef sistem arasında sağlama için kapsamda bulunan ve şu anda kapsamdaki Toplam Kullanıcı ve/grup sayısı.
 * Eşitlemenin son çalıştırıldığı zaman. Eşitlemeler genellikle [ilk bir döngüden](../app-provisioning/how-provisioning-works.md#provisioning-cycles-initial-and-incremental) sonra her 20-40 dakikada bir gerçekleşir.
@@ -57,11 +57,11 @@ Buradan, sağlama ilerleme çubuğuna ve sağlama günlüklerine, aşağıda aç
 
 **Geçerli durum** , yöneticinin sağlama işinin işletimsel sistem durumunu kontrol etmek için arayacağı ilk alan olmalıdır.
 
- ![Özet raporu](./media/check-status-user-account-provisioning/provisioning-progress-bar-section.png)
+ ![Özet raporu](./media/check-status-user-account-provisioning/provisioning-progress-bar-section.png)
 
 ## <a name="provisioning-logs-preview"></a>Sağlama günlükleri (Önizleme)
 
-Sağlama hizmeti tarafından gerçekleştirilen tüm etkinlikler Azure AD [sağlama günlüklerine](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context)kaydedilir. **Azure Active Directory** &gt; Etkinlik bölümünde **Kurumsal uygulamalar** &gt; **sağlama günlükleri (Önizleme)** **Activity** Azure Active Directory ' ni seçerek Azure Portal sağlama günlüklerine erişebilirsiniz. Sağlama verilerini kullanıcı adına veya kaynak sistemde ya da hedef sistemde tanımlayıcı temelinde arayabilirsiniz. Ayrıntılar için bkz. [sağlama günlükleri (Önizleme)](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context). Günlüğe kaydedilen etkinlik olay türleri şunları içerir:
+Sağlama hizmeti tarafından gerçekleştirilen tüm etkinlikler Azure AD [sağlama günlüklerine](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context)kaydedilir.  &gt; Etkinlik bölümünde **Kurumsal uygulamalar** &gt; **sağlama günlükleri (Önizleme)**  Azure Active Directory ' ni seçerek Azure Portal sağlama günlüklerine erişebilirsiniz. Sağlama verilerini kullanıcı adına veya kaynak sistemde ya da hedef sistemde tanımlayıcı temelinde arayabilirsiniz. Ayrıntılar için bkz. [sağlama günlükleri (Önizleme)](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context). Günlüğe kaydedilen etkinlik olay türleri şunları içerir:
 
 ## <a name="troubleshooting"></a>Sorun giderme
 

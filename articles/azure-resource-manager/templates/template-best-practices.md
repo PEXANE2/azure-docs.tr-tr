@@ -3,12 +3,12 @@ title: Şablonlar için en iyi uygulamalar
 description: Azure Resource Manager şablonları (ARM şablonları) yazmak için önerilen yaklaşımları açıklar. Şablonları kullanırken yaygın sorunlardan kaçınmak için öneriler sunar.
 ms.topic: conceptual
 ms.date: 12/01/2020
-ms.openlocfilehash: c0b26c300a9474cc5db0b1a7b732c4416a9e6f5f
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: 583a113df9cdb1951daf1002dd69531f050cfb54
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98696355"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258006"
 ---
 # <a name="arm-template-best-practices"></a>ARM şablonu en iyi uygulamaları
 
@@ -276,6 +276,8 @@ Ayarlanacak [bağımlılıklara](define-resource-dependency.md) karar verirken a
 
    > [!NOTE]
    > VM 'Ler ve uzantılara parametre olarak geçirildiğinde gizli dizi şifrelendiğinden emin olmak için `protectedSettings` ilgili uzantıların özelliğini kullanın.
+
+* Zaman içinde değişebilir varsayılan değerlere sahip özellikler için açık değerler belirtin. Örneğin, bir AKS kümesi dağıtıyorsanız, özelliği belirtebilir ya da atlayabilirsiniz `kubernetesVersion` . Bunu belirtmezseniz, [küme varsayılan olarak N-1 alt sürüm ve en son düzeltme eki olarak ayarlanır](../../aks/supported-kubernetes-versions.md#azure-portal-and-cli-versions). Bir ARM şablonu kullanarak kümeyi dağıttığınızda, bu varsayılan davranış beklediğiniz gibi olmayabilir. Şablonunuzun yeniden dağıtılması, kümenin yeni bir Kubernetes sürümüne beklenmedik bir şekilde yükseltilmesinden kaynaklanabilir. Bunun yerine, bir açık sürüm numarası belirtmeyi ve sonra kümenizi yükseltmeye hazırsanız el ile değiştirmeyi düşünün.
 
 ## <a name="use-test-toolkit"></a>Test araç setini kullanma
 

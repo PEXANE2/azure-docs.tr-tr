@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1dfe99a2ed57ecc953c69d1bad89e2b2c8816ca3
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: a58fbf874339bf287ce1af62e1edb39ec6227d99
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96741465"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99257111"
 ---
 # <a name="frequently-asked-questions-about-azure-ad-multi-factor-authentication"></a>Azure AD Multi-Factor Authentication hakkında sık sorulan sorular
 
@@ -124,7 +124,7 @@ MFA sağlayıcınız bir Azure AD kiracısına bağlı *değilse* veya yeni MFA 
 
 Bazı örneklerde, evet.
 
-Dizininizde *Kullanıcı başına* Azure Multi-Factor Authentication sağlayıcısı varsa MFA lisansları ekleyebilirsiniz. Lisansları olan kullanıcılar, Kullanıcı başına tüketim tabanlı faturalandırma tarafından sayılmaz. Lisansları olmayan kullanıcılar MFA sağlayıcısı aracılığıyla MFA için de etkinleştirilebilir. Multi-Factor Authentication kullanmak üzere yapılandırılmış tüm kullanıcılarınız için lisans satın alıp atarsanız, Azure Multi-Factor Authentication sağlayıcısını silebilirsiniz. Gelecekte lisanslarından daha fazla kullanıcınız varsa, her zaman bir Kullanıcı başına MFA sağlayıcısı oluşturabilirsiniz.
+Dizininizde *Kullanıcı başına* Azure Multi-Factor Authentication sağlayıcısı varsa MFA lisansları ekleyebilirsiniz. Lisansa sahip kullanıcılar, Kullanıcı başına tüketim tabanlı faturalandırma tarafından sayılmaz. Lisansları olmayan kullanıcılar MFA sağlayıcısı aracılığıyla MFA için de etkinleştirilebilir. Multi-Factor Authentication kullanmak üzere yapılandırılmış tüm kullanıcılarınız için lisans satın alıp atarsanız, Azure Multi-Factor Authentication sağlayıcısını silebilirsiniz. Gelecekte lisanslarından daha fazla kullanıcınız varsa, her zaman bir Kullanıcı başına MFA sağlayıcısı oluşturabilirsiniz.
 
 Dizininizde bir *kimlik doğrulaması başına* Azure Multi-Factor Authentication sağlayıcısı varsa, MFA sağlayıcısı aboneliğinize bağlı olduğu sürece her bir kimlik doğrulaması için her zaman faturalandırılırsınız. Kullanıcılara MFA lisansları atayabilirsiniz, ancak her iki adımlı doğrulama isteği için faturalandırılırsınız ve bu, bir MFA lisansı atanmış birisinden gelir.
 

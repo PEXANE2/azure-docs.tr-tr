@@ -3,7 +3,7 @@ title: Azure AD Uygulama Ara Sunucusu için PingAccess ile üst bilgi tabanlı k
 description: Üst bilgi tabanlı kimlik doğrulamasını desteklemek için, PingAccess ve uygulama proxy 'Si ile uygulama yayımlayın.
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 10/24/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: e09bb0b07112a962b709c380c48f2a656c16097b
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 128e053016faf3ed2a9c53ad21f35a13f3ac1265
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94663916"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258176"
 ---
 # <a name="header-based-authentication-for-single-sign-on-with-application-proxy-and-pingaccess"></a>Uygulama Ara Sunucusu ve PingAccess ile çoklu oturum açmak için üst bilgi tabanlı kimlik doğrulaması
 
@@ -91,7 +91,7 @@ Kendi şirket içi uygulamanızı yayımlamak için:
    > [!NOTE]
    > İlk uygulamanız bu ise, bağlantı noktası 3000 ' u kullanarak başlangıç yapın ve PingAccess yapılandırmanızı değiştirirseniz bu ayarı güncelleştirmek için geri dönün. Sonraki uygulamalarda, bağlantı noktasının PingAccess 'te yapılandırdığınız dinleyiciyle eşleşmesi gerekir. [PingAccess 'teki dinleyiciler](https://support.pingidentity.com/s/document-item?bundleId=pingaccess-52&topicId=reference/ui/pa_c_Listeners.html)hakkında daha fazla bilgi edinin.
 
-1. **Ekle**'yi seçin. Yeni uygulama için genel bakış sayfası görüntülenir.
+1. **Ekle**’yi seçin. Yeni uygulama için genel bakış sayfası görüntülenir.
 
 Şimdi uygulama testi için bir Kullanıcı atayın ve üst bilgi tabanlı çoklu oturum açma seçeneğini belirleyin:
 
@@ -124,7 +124,7 @@ Dış URL 'nin yanı sıra, dış URL üzerindeki Azure Active Directory yetkile
 
 Son olarak, kullanıcıların okuma erişiminin olması ve diğer uygulamaların okuma/yazma erişimine sahip olması için şirket içi uygulamanızı ayarlayın:
 
-1. Uygulamanızın **uygulama kayıtları** kenar çubuğundan **API izinleri**  >  **Add a permission**  >  **Microsoft API 'leri**  >  **Microsoft Graph** izin Ekle ' yi seçin. Windows Azure Active Directory için API 'Leri içeren **Microsoft Graph** için **istek API 'si izinleri** sayfası görüntülenir.
+1. Uygulamanızın **uygulama kayıtları** kenar çubuğundan **API izinleri**  >    >  **Microsoft API 'leri**  >  **Microsoft Graph** izin Ekle ' yi seçin. Windows Azure Active Directory için API 'Leri içeren **Microsoft Graph** için **istek API 'si izinleri** sayfası görüntülenir.
 
    ![API izinleri ıste sayfasını gösterir](./media/application-proxy-configure-single-sign-on-with-ping-access/required-permissions.png)
 
@@ -139,7 +139,7 @@ Uygulamanızı PingAccess ile ayarlamak için bu üç bilgi parçasını (tüm G
 
 | Azure AD alanının adı | PingAccess alanının adı | Veri biçimi |
 | --- | --- | --- |
-| **Uygulama (istemci) kimliği** | **İstemci KIMLIĞI** | GUID |
+| **Uygulama (istemci) kimliği** | **İstemci Kimliği** | GUID |
 | **Dizin (kiracı) kimliği** | **Veren** | GUID |
 | `PingAccess key` | **İstemci parolası** | Rastgele dize |
 
@@ -158,7 +158,7 @@ Bu bilgileri toplamak için:
 
 1. **Açıklama**' da yazın `PingAccess key` .
 1. **Süre sonu** altında, pingaccess tuşunun nasıl ayarlanacağını seçin: **1 yılda**, **2 yıl içinde** veya **hiçbir zaman**.
-1. **Ekle**'yi seçin. PingAccess tuşu, istemci gizli dizileri tablosunda, **değer** alanı ' nı tekrar dolduran rastgele bir dize ile görünür.
+1. **Ekle**’yi seçin. PingAccess tuşu, istemci gizli dizileri tablosunda, **değer** alanı ' nı tekrar dolduran rastgele bir dize ile görünür.
 1. PingAccess tuşunun **değer** alanının yanındaki **Panoya Kopyala** simgesini seçin, sonra kopyalayıp kaydedin. Bu değeri daha sonra PingAccess 'in istemci gizli anahtarı olarak belirtirsiniz.
 
 **Alanı güncelleştirin `acceptMappedClaims` :**

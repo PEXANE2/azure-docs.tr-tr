@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/27/2021
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: 1c9c07d3770d2b71bee8f8e789022be6f831cc8f
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 4393607d6714bc4c1b10ac89d5ac69c173f8fef4
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99092877"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99257330"
 ---
 # <a name="speech-service-release-notes"></a>Konuşma hizmeti sürüm notları
 
@@ -26,7 +26,7 @@ ms.locfileid: "99092877"
 
 **Vurgular Özeti**
 - Daha az bellek ve disk kaplama, SDK 'Yı daha verimli hale getirir.
-- Geliştirilmiş özel ses kalitesi ve kullanım kolaylığı. 
+- Özel sinir ses özel önizlemesi için daha yüksek doğruluk çıkış biçimleri mevcuttur.
 - Amaç tanıyıcı artık en üst amacından daha fazla dönüş alabilir ve müşterinizin amacı hakkında ayrı bir değerlendirme yapma olanağı sunar.
 - Sesli yardımcınızın veya bot 'ın daha kolay bir şekilde ayarlanması daha kolay hale gelir ve anında dinlemeyi durdurabilir ve hatalara nasıl yanıt vereceğini daha fazla kontrol edebilirsiniz.
 - Sıkıştırmayı isteğe bağlı hale getirerek cihaz performansı geliştirildi.
@@ -43,7 +43,7 @@ ms.locfileid: "99092877"
   - Android kitaplıkları% 3-5 daha küçüktür.
 
 **Yeni özellikler**
-- **Tümü**: özel ses kalitesi daha iyi sürer. Özel TTS sesleri için 48kHz biçimi eklendi, yerel çıkış örnek ücretleri 24kHz 'den yüksek olan özel seslerin ses kalitesini geliştirir.
+- **Tümü**: TTS konuşma SENSıS API 'si aracılığıyla özel sinir sesinizin özel önizlemesi için kullanılabilen yeni 48kHz çıkış biçimleri: Audio48Khz192KBitRateMonoMp3, Audio-48kHz-192kbıbit-mono-MP3, Audio48Khz96KBitRateMonoMp3, Audio-48kHz-96kbit-mono-MP3, Raw48Khz16BitMonoPcm, ham-48kHz-16bit-mono-PCM, Riff48Khz16BitMonoPcm, Riff-48kHz-16bit-mono-PCM.
 - **Tümü**: özel sesin kullanımı da daha kolay. `EndpointId`([C++](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig#setendpointid), [C#](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.endpointid?view=azure-dotnet#Microsoft_CognitiveServices_Speech_SpeechConfig_EndpointId), [Java](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig.setendpointid?view=azure-java-stable#com_microsoft_cognitiveservices_speech_SpeechConfig_setEndpointId_String_), [JavaScript](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest#endpointId), [Amaç-C](https://docs.microsoft.com/objectivec/cognitive-services/speech/spxspeechconfiguration#endpointid), [Python](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python#endpoint-id)) aracılığıyla özel ses ayarlama desteği eklendi. Bu değişiklikten önce, özel sesli kullanıcıların uç nokta URL 'sini yöntemi aracılığıyla ayarlaması gerekir `FromEndpoint` . Artık müşteriler `FromSubscription` yalnızca genel sesler gibi yöntemi kullanabilir ve sonra dağıtım kimliğini ayarla olarak sağlayabilir `EndpointId` . Bu, özel seslerin ayarlanmasını basitleştirir. 
 - **C++/c #/Java/Objective-C/Python**: en üstteki amacından daha fazla bilgi alın `IntentRecognizer` . Artık, `LanguageUnderstandingModel FromEndpoint` URI parametresini kullanarak yalnızca en üstteki Puanlama amacını değil, tüm hedefleri IÇEREN JSON sonuçlarının yapılandırılmasını desteklemektedir `verbose=true` . Bu, [GitHub sorununun #880](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/880)adresleridir. Güncelleştirilmiş [belgelere bakın](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/intent-recognition/#add-a-languageunderstandingmodel-and-intents).
 - **C++/c #/Java**: sesli yardımcınızı veya bot 'un dinlemeyi durdurmasını immediatedly. `DialogServiceConnector` ([C++](https://docs.microsoft.com/cpp/cognitive-services/speech/dialog-dialogserviceconnector), [C#](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.dialog.dialogserviceconnector?view=azure-dotnet), [Java](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.dialog.dialogserviceconnector?view=azure-java-stable)) artık eşlik eden bir `StopListeningAsync()` yönteme sahiptir `ListenOnceAsync()` . Bu işlem, ses yakalamayı hemen durdurur ve bir sonuç için düzgün şekilde bekleyip "Şimdi durdur" düğmesine basarak kullanımı kusursuz hale getirir.

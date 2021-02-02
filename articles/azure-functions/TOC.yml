@@ -281,9 +281,10 @@
               href: functions-create-storage-queue-triggered-function.md
             - name: Zamanlayıcı tetikleyicisi
               href: functions-create-scheduled-function.md
-        - name: Bağlama ekleme
+        - name: Hizmetlere bağlanma
           items:
-            - name: Bağlama ekleme
+            - name: Hizmetlere bağlanma
+              displayName: 'bindings,integrate'
               href: add-bindings-existing-function.md
             - name: Azure Cosmos DB - portal
               href: functions-integrate-store-unstructured-data-cosmosdb.md
@@ -395,7 +396,7 @@
           href: configure-encrypt-at-rest-using-cmk.md
     - name: Tümleştirme
       items:
-        - name: Bağlama ekleme
+        - name: Hizmetlere bağlanma
           items:
             - name: Azure Cosmos DB - portal
               href: functions-integrate-store-unstructured-data-cosmosdb.md

@@ -10,12 +10,12 @@ ms.author: mhopkins
 ms.reviewer: yzheng
 ms.subservice: blobs
 ms.custom: references_regions
-ms.openlocfilehash: 86ded3dea819702631b1fa04dbc56f727566fc98
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: a41966c2b3ba73d7b68399b1b99d14313e220833
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602691"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99257820"
 ---
 # <a name="use-azure-storage-blob-inventory-to-manage-blob-data-preview"></a>Blob verilerini yönetmek için Azure Storage blob envanterini kullanma (Önizleme)
 
@@ -32,6 +32,8 @@ Blob envanter önizlemesi, depolama hesaplarında aşağıdaki bölgelerde kulla
 - Orta Fransa
 - Orta Kanada
 - Doğu Kanada
+- Doğu ABD
+- Doğu ABD 2
 
 ### <a name="pricing-and-billing"></a>Fiyatlandırma ve Faturalama
 
@@ -57,7 +59,7 @@ Depolama hesabınıza bir ilke ekleyerek blob envanter raporlarını etkinleşti
 Envanter ilkeleri okundu veya tam olarak yazılmıştır. Kısmi güncelleştirmeler desteklenmiyor.
 
 > [!IMPORTANT]
-> Depolama hesabınız için güvenlik duvarı kurallarını etkinleştirirseniz, envanter istekleri engellenebilir. Güvenilen Microsoft Hizmetleri için özel durumlar sağlayarak bu isteklerin engellemesini kaldırabilirsiniz. Daha fazla bilgi için bkz. [güvenlik duvarlarını ve sanal ağları yapılandırma](../common/storage-network-security.md#exceptions)Içindeki özel durumlar bölümü.
+> Depolama hesabınızda güvenlik duvarı kurallarını etkinleştirirseniz envanter istekleri engellenebilir. Güvenilen Microsoft hizmetleri için özel durumlar sağlayarak bu isteklerin engellemesini kaldırabilirsiniz. Daha fazla bilgi için bkz. [güvenlik duvarlarını ve sanal ağları yapılandırma](../common/storage-network-security.md#exceptions)Içindeki özel durumlar bölümü.
 
 Blob stoku çalıştırması her gün otomatik olarak zamanlanır. Bir envanter çalıştırmasının tamamlanması 24 saate kadar sürebilir. Bir envanter raporu, bir veya daha fazla kuralla bir envanter ilkesi eklenerek yapılandırılır.
 
@@ -87,9 +89,9 @@ Azure portal **BLOB stoğu** bölümünde **kod görünümü** sekmesini seçere
 
 | Parametre adı | Parametre türü        | Notlar | Gerekli mi? |
 |----------------|-----------------------|-------|-----------|
-| hedef    | Dize                | Tüm envanter dosyalarının üretilebileceği hedef kapsayıcı. Hedef kapsayıcının zaten mevcut olması gerekir. | Evet |
-| enabled        | Boole               | Tüm ilkeyi devre dışı bırakmak için kullanılır. **True** olarak ayarlandığında, kural düzeyi etkinleştirilmiş alan bu parametreyi geçersiz kılar. Devre dışı bırakıldığında, tüm kurallar için stok devre dışı bırakılır. | Evet |
-| rules          | Kural nesneleri dizisi | İlkede en az bir kural gereklidir. En fazla 10 kural desteklenir. | Evet |
+| hedef    | Dize                | Tüm envanter dosyalarının üretilebileceği hedef kapsayıcı. Hedef kapsayıcının zaten mevcut olması gerekir. | Yes |
+| enabled        | Boole               | Tüm ilkeyi devre dışı bırakmak için kullanılır. **True** olarak ayarlandığında, kural düzeyi etkinleştirilmiş alan bu parametreyi geçersiz kılar. Devre dışı bırakıldığında, tüm kurallar için stok devre dışı bırakılır. | Yes |
+| rules          | Kural nesneleri dizisi | İlkede en az bir kural gereklidir. En fazla 10 kural desteklenir. | Yes |
 
 ## <a name="inventory-rules"></a>Envanter kuralları
 
@@ -99,9 +101,9 @@ Bir kural, bir envanter raporu oluşturmak için filtreleme koşullarını ve ç
 
 | Parametre adı | Parametre türü                 | Notlar | Gerekli mi? |
 |----------------|--------------------------------|-------|-----------|
-| name           | Dize                         | Bir kural adı en fazla 256 büyük harfe duyarlı alfasayısal karakter içerebilir. Ad, ilke içinde benzersiz olmalıdır. | Evet |
-| enabled        | Boole                        | Kuralın etkinleştirilmesini veya devre dışı bırakılacağını veren bir bayrak. Varsayılan değer **true**'dur. | Evet |
-| tanım     | JSON envanter kuralı tanımı | Her tanım bir kural filtresi kümesinden oluşur. | Evet |
+| name           | Dize                         | Bir kural adı en fazla 256 büyük harfe duyarlı alfasayısal karakter içerebilir. Ad, ilke içinde benzersiz olmalıdır. | Yes |
+| enabled        | Boole                        | Kuralın etkinleştirilmesini veya devre dışı bırakılacağını veren bir bayrak. Varsayılan değer **true**'dur. | Yes |
+| tanım     | JSON envanter kuralı tanımı | Her tanım bir kural filtresi kümesinden oluşur. | Yes |
 
 Genel **BLOB stoğu etkin** bayrağı, bir kuraldaki *etkin* parametreye göre önceliklidir.
 
@@ -111,7 +113,7 @@ Blob envanter raporunu özelleştirmek için çeşitli filtreler mevcuttur:
 
 | Filtre adı         | Filtre türü                     | Notlar | Gerekli mi? |
 |---------------------|---------------------------------|-------|-----------|
-| blobTypes           | Öntanımlı Enum değerlerinin dizisi | Geçerli değerler `blockBlob` ve `appendBlob` hiyerarşik ad alanı etkin hesaplar için ve `blockBlob` , `appendBlob` ve `pageBlob` diğer hesaplar için. | Evet |
+| blobTypes           | Öntanımlı Enum değerlerinin dizisi | Geçerli değerler `blockBlob` ve `appendBlob` hiyerarşik ad alanı etkin hesaplar için ve `blockBlob` , `appendBlob` ve `pageBlob` diğer hesaplar için. | Yes |
 | prefixMatch         | Öneklerin eşleşmesi için 10 ' a kadar dize dizisi. Ön ek bir kapsayıcı adıyla başlamalıdır, örneğin "kapsayıcı1/foo" | *PrefixMatch* tanımlayamazsınız veya boş bir ön ek sağlamazsanız, kural depolama hesabındaki tüm Bloblar için geçerlidir. | Hayır |
 | ıncludesnapshots    | Boole                         | Envanterin anlık görüntüleri içerip içermediğini belirtir. Varsayılan değer **false**'dur. | Hayır |
 | ıncludeblobversions | Boole                         | Envanterin blob sürümlerini içerip içermediğini belirtir. Varsayılan değer **false**'dur. | Hayır |

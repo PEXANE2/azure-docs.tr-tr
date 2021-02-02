@@ -3,7 +3,7 @@ title: Azure AD Galeri uygulamasına kullanıcı sağlamayı yapılandırma soru
 description: Azure AD uygulama galerisinde zaten listelenen bir uygulamaya Kullanıcı sağlamayı yapılandırırken karşılaştığı yaygın sorunları giderme
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.topic: troubleshooting
 ms.date: 09/03/2019
 ms.author: kenwith
 ms.reviewer: asteen
-ms.openlocfilehash: 306c3771c0392bbc97260a726e153cfd385cebcd
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 651bc199a43881add7faa00a9d1cf78000de6944
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95994800"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99256281"
 ---
 # <a name="problem-configuring-user-provisioning-to-an-azure-ad-gallery-application"></a>Azure AD Galeri uygulamasına kullanıcı sağlamayı yapılandırma sorunu
 
@@ -28,7 +28,7 @@ Uygulamanız için sağlamayı ayarlamaya özgü kurulum öğreticisini bularak 
 
 Hizmet yapılandırıldıktan sonra, hizmetin çalışması ile ilgili birçok öngörü iki konumdan çizilebilirler:
 
--   **Sağlama günlükleri (Önizleme)** – sağlama [günlüğü](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context) , sağlama kapsamında olan ATANMıŞ kullanıcılar için Azure AD sorgulama da dahil olmak üzere, sağlama hizmeti tarafından gerçekleştirilen tüm işlemleri kaydeder. Bu kullanıcıların varlığı için hedef uygulamayı sorgulayın ve sistem arasındaki kullanıcı nesnelerini karşılaştırır. Ardından, karşılaştırma temelinde hedef sistemde Kullanıcı hesabını ekleyin, güncelleştirin veya devre dışı bırakın. **Azure Active Directory** &gt; Etkinlik bölümünde **Kurumsal uygulamalar** &gt; **sağlama günlükleri (Önizleme)** **Activity** Azure Active Directory ' ni seçerek Azure Portal sağlama günlüklerine erişebilirsiniz.
+-   **Sağlama günlükleri (Önizleme)** – sağlama [günlüğü](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context) , sağlama kapsamında olan ATANMıŞ kullanıcılar için Azure AD sorgulama da dahil olmak üzere, sağlama hizmeti tarafından gerçekleştirilen tüm işlemleri kaydeder. Bu kullanıcıların varlığı için hedef uygulamayı sorgulayın ve sistem arasındaki kullanıcı nesnelerini karşılaştırır. Ardından, karşılaştırma temelinde hedef sistemde Kullanıcı hesabını ekleyin, güncelleştirin veya devre dışı bırakın.  &gt; Etkinlik bölümünde **Kurumsal uygulamalar** &gt; **sağlama günlükleri (Önizleme)**  Azure Active Directory ' ni seçerek Azure Portal sağlama günlüklerine erişebilirsiniz.
 
 -   **Geçerli durum –** Belirli bir uygulama için son sağlama çalıştırmasının Özeti, ekranın alt kısmındaki **Azure Active Directory &gt; Kurumsal uygulamalar &gt; \[ uygulama adı \] &gt; sağlama** bölümünde görülebilir. Geçerli durum bölümü, bir sağlama döngüsünün Kullanıcı hesapları sağlamaya başlayıp başlamadığına ilişkin gösterir. Döngüsünün ilerlemesini izleyebilir, kaç Kullanıcı ve grup sağlandığını görebilir ve kaç rolün oluşturulduğunu görebilirsiniz. Herhangi bir hata oluşursa, [sağlama günlükleri (.. /Reports-Monitoring/Concept-provisioning-logs.MD? Context = Azure/Active-Directory/Manage-Apps/Context/Manage-Apps-context).
 

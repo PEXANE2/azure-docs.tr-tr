@@ -7,12 +7,12 @@ ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: alkemper
-ms.openlocfilehash: 4e19574e5848d1ee86d13aa02a9cf583b92eff02
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 39ad20bd57e3da6345c63d4601f34b19e640c1d6
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96929574"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99256484"
 ---
 # <a name="azure-app-configuration-faq"></a>Azure uygulama yapılandırma hakkında SSS
 
@@ -105,7 +105,7 @@ Standart katmandan bir depoyu ücretsiz katmana indirgeyemezsiniz. Ücretsiz kat
 
 ## <a name="are-there-any-limits-on-the-number-of-requests-made-to-app-configuration"></a>Uygulama yapılandırmasına yapılan istek sayısına yönelik herhangi bir sınırlama var mı?
 
-Ücretsiz katmandaki yapılandırma depoları, günde 1.000 istek ile sınırlıdır. Standart katmandaki yapılandırma depoları, istek oranı saat başına 20.000 isteği aştığında geçici azaltmasına karşılaşabilir.
+Uygulama Yapılandırması ' nda, anahtar değerlerini okurken, veriler sayfalandırılır ve her bir istek en fazla 100 anahtar değeri okuyabilir. Anahtar değerlerini yazarken, her istek bir anahtar-değer oluşturabilir veya güncelleştirebilir. Bu, REST API, uygulama yapılandırması SDK 'Ları ve yapılandırma sağlayıcıları aracılığıyla desteklenir. Ücretsiz katmandaki yapılandırma depoları, günde 1.000 istek ile sınırlıdır. Standart katmandaki yapılandırma depoları, istek oranı saat başına 20.000 isteği aştığında geçici azaltmasına karşılaşabilir.
 
 Bir depo sınıra ulaştığında, zaman aralığı sona erene kadar yapılan tüm istekler için 429 HTTP durum kodunu döndürür. `retry-after-ms`Yanıttaki üst bilgi, isteği yeniden denemeden önce önerilen bir bekleme süresi (milisaniye cinsinden) verir.
 

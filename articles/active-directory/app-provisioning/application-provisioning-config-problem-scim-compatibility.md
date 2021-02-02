@@ -3,7 +3,7 @@ title: Etki alanları arası kimlik yönetimi (SCıM) 2,0 protokol uyumluluğu i
 description: Azure AD 'de SCıM 2,0 ' i destekleyen Galeri dışı bir uygulama eklenirken karşılaşılan yaygın protokol uyumluluk sorunlarını çözme
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 08/05/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 7f400d6959a40361ea3beff8bd21c2fa9ef2996a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d13629b4cb05995b9652e862f769a0ffcae30a8c
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90052639"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99256907"
 ---
 # <a name="known-issues-and-resolutions-with-scim-20-protocol-compliance-of-the-azure-ad-user-provisioning-service"></a>Azure AD Kullanıcı sağlama hizmeti 'nin SCıM 2,0 protokol uyumluluğuyla ilgili bilinen sorunlar ve çözümleri
 
@@ -39,16 +39,16 @@ Aşağıdaki tabloda, sabit olarak işaretlenen herhangi bir öğe, SCıM işind
 
 | **SCıM 2,0 uyumluluk sorunu** |  **Düzenle?** | **Onarma tarihi**  |  **Geriye dönük uyumluluk** |
 |---|---|---|
-| Azure AD, uygulamanın SCıM uç nokta URL 'sinin kökünde olması için "/Scim" gerektirir  | Evet  |  18 Aralık 2018 | customappSSO sürümüne düşürme |
-| Uzantı öznitelikleri, ":" gösterimi yerine öznitelik adlarından önce nokta "." gösterimini kullanır |  Evet  | 18 Aralık 2018  | customappSSO sürümüne düşürme |
-| Çok değerli öznitelikler için düzeltme eki istekleri geçersiz yol filtresi sözdizimi içeriyor | Evet  |  18 Aralık 2018  | customappSSO sürümüne düşürme |
-| Grup oluşturma istekleri geçersiz bir şema URI 'SI içeriyor | Evet  |  18 Aralık 2018  |  customappSSO sürümüne düşürme |
+| Azure AD, uygulamanın SCıM uç nokta URL 'sinin kökünde olması için "/Scim" gerektirir  | Yes  |  18 Aralık 2018 | customappSSO sürümüne düşürme |
+| Uzantı öznitelikleri, ":" gösterimi yerine öznitelik adlarından önce nokta "." gösterimini kullanır |  Yes  | 18 Aralık 2018  | customappSSO sürümüne düşürme |
+| Çok değerli öznitelikler için düzeltme eki istekleri geçersiz yol filtresi sözdizimi içeriyor | Yes  |  18 Aralık 2018  | customappSSO sürümüne düşürme |
+| Grup oluşturma istekleri geçersiz bir şema URI 'SI içeriyor | Yes  |  18 Aralık 2018  |  customappSSO sürümüne düşürme |
 | Uyumluluk sağlamak için düzeltme eki davranışlarını güncelleştirme (örn. Boolean ve uygun Grup üyeliği kaldırma işlemleri) | Hayır | TBD| Önizleme bayrağını kullan |
 
 ## <a name="flags-to-alter-the-scim-behavior"></a>SCıM davranışını değiştirecek bayraklar
 Varsayılan SCıM istemci davranışını değiştirmek için uygulamanızın kiracı URL 'sinde aşağıdaki bayrakları kullanın.
 
-:::image type="content" source="media/application-provisioning-config-problem-scim-compatibility/scim-flags.jpg" alt-text="Daha sonraki davranışa yönelik SCıM bayrakları.&quot;:::
+:::image type="content" source="media/application-provisioning-config-problem-scim-compatibility/scim-flags.jpg" alt-text="Daha sonraki davranışa yönelik SCıM bayrakları.":::
 
 * Düzeltme Eki davranışlarını güncelleştirmek ve SCıM uyumluluğunu sağlamak için aşağıdaki URL 'YI kullanın (örneğin, Boolean olarak etkin ve uygun Grup üyeliği kaldırma işlemleri). Bu davranış Şu anda yalnızca bayrak kullanılırken kullanılabilir, ancak önümüzdeki birkaç ay içinde varsayılan davranış olur. Not Bu önizleme bayrağının Şu anda isteğe bağlı sağlama ile çalışmadığına bakın. 
   * **URL (SCıM uyumlu):** AzureAdScimPatch062020
@@ -58,29 +58,29 @@ Varsayılan SCıM istemci davranışını değiştirmek için uygulamanızın ki
   ```json
    PATCH https://[...]/Groups/ac56b4e5-e079-46d0-810e-85ddbd223b09
    {
-    &quot;schemas&quot;: [
-        &quot;urn:ietf:params:scim:api:messages:2.0:PatchOp&quot;
+    "schemas": [
+        "urn:ietf:params:scim:api:messages:2.0:PatchOp"
     ],
-    &quot;Operations&quot;: [
+    "Operations": [
         {
-            &quot;op&quot;: &quot;remove&quot;,
-            &quot;path&quot;: &quot;members[value eq \&quot;16b083c0-f1e8-4544-b6ee-27a28dc98761\&quot;]&quot;
+            "op": "remove",
+            "path": "members[value eq \"16b083c0-f1e8-4544-b6ee-27a28dc98761\"]"
         }
     ]
    }
 
     PATCH https://[...]/Groups/ac56b4e5-e079-46d0-810e-85ddbd223b09
     {
-    &quot;schemas&quot;: [
-        &quot;urn:ietf:params:scim:api:messages:2.0:PatchOp&quot;
+    "schemas": [
+        "urn:ietf:params:scim:api:messages:2.0:PatchOp"
     ],
-    &quot;Operations&quot;: [
+    "Operations": [
         {
-            &quot;op&quot;: &quot;add&quot;,
-            &quot;path&quot;: &quot;members&quot;,
-            &quot;value&quot;: [
+            "op": "add",
+            "path": "members",
+            "value": [
                 {
-                    &quot;value&quot;: &quot;10263a6910a84ef9a581dd9b8dcc0eae&quot;
+                    "value": "10263a6910a84ef9a581dd9b8dcc0eae"
                 }
             ]
         }
@@ -89,25 +89,25 @@ Varsayılan SCıM istemci davranışını değiştirmek için uygulamanızın ki
 
     PATCH https://[...]/Users/ac56b4e5-e079-46d0-810e-85ddbd223b09
     {
-    &quot;schemas&quot;: [
-        &quot;urn:ietf:params:scim:api:messages:2.0:PatchOp&quot;
+    "schemas": [
+        "urn:ietf:params:scim:api:messages:2.0:PatchOp"
     ],
-    &quot;Operations&quot;: [
+    "Operations": [
         {
-            &quot;op&quot;: &quot;replace&quot;,
-            &quot;path&quot;: &quot;emails[type eq \&quot;work\&quot;].value&quot;,
-            &quot;value&quot;: &quot;someone@contoso.com&quot;
+            "op": "replace",
+            "path": "emails[type eq \"work\"].value",
+            "value": "someone@contoso.com"
         },
         {
-            &quot;op&quot;: &quot;replace&quot;,
-            &quot;path&quot;: &quot;emails[type eq \&quot;work\&quot;].primary&quot;,
-            &quot;value&quot;: true
+            "op": "replace",
+            "path": "emails[type eq \"work\"].primary",
+            "value": true
         },
         {
-            &quot;op&quot;: &quot;replace&quot;,
-            &quot;value&quot;: {
-                &quot;active&quot;: false,
-                &quot;userName&quot;: &quot;someone&quot;
+            "op": "replace",
+            "value": {
+                "active": false,
+                "userName": "someone"
             }
         }
     ]
@@ -115,28 +115,28 @@ Varsayılan SCıM istemci davranışını değiştirmek için uygulamanızın ki
 
     PATCH https://[...]/Users/ac56b4e5-e079-46d0-810e-85ddbd223b09
     {
-    &quot;schemas&quot;: [
-        &quot;urn:ietf:params:scim:api:messages:2.0:PatchOp&quot;
+    "schemas": [
+        "urn:ietf:params:scim:api:messages:2.0:PatchOp"
     ],
-    &quot;Operations&quot;: [
+    "Operations": [
         {
-            &quot;op&quot;: &quot;replace&quot;,
-            &quot;path&quot;: &quot;active&quot;,
-            &quot;value&quot;: false
+            "op": "replace",
+            "path": "active",
+            "value": false
         }
     ]
     }
 
     PATCH https://[...]/Users/ac56b4e5-e079-46d0-810e-85ddbd223b09
     {
-    &quot;schemas&quot;: [
-        &quot;urn:ietf:params:scim:api:messages:2.0:PatchOp&quot;
+    "schemas": [
+        "urn:ietf:params:scim:api:messages:2.0:PatchOp"
     ],
-    &quot;Operations&quot;: [
+    "Operations": [
         {
-            &quot;op&quot;: &quot;add&quot;,
-            &quot;path&quot;: &quot;urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:department&quot;,
-            &quot;value&quot;: &quot;Tech Infrastructure"
+            "op": "add",
+            "path": "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:department",
+            "value": "Tech Infrastructure"
         }
     ]
     }
@@ -152,7 +152,7 @@ Aşağıdaki adımları takip etmek, mevcut customappsso işinizi silecek ve yen
  
 1. Azure portal ' de oturum açın https://portal.azure.com .
 2. Azure portal **Azure Active Directory > Enterprise Applications** bölümünde, mevcut SCIM uygulamanızı bulun ve seçin.
-3. Mevcut SCıM uygulamanızın **Özellikler** bölümünde, **nesne kimliğini**kopyalayın.
+3. Mevcut SCıM uygulamanızın **Özellikler** bölümünde, **nesne kimliğini** kopyalayın.
 4. Yeni bir Web tarayıcısı penceresinde, ' a gidin https://developer.microsoft.com/graph/graph-explorer ve uygulamanızın eklendiği Azure AD kiracısı için yönetici olarak oturum açın.
 5. Graph Explorer 'da, sağlama işinizin KIMLIĞINI bulmak için aşağıdaki komutu çalıştırın. "[Nesne-kimliği]" değerini üçüncü adımdan kopyalanmış hizmet sorumlusu KIMLIĞI (nesne KIMLIĞI) ile değiştirin.
  
@@ -191,7 +191,7 @@ Aşağıdaki adımları takip etmek, mevcut customappsso işinizi silecek ve yen
 
 1. Azure portal ' de oturum açın https://portal.azure.com .
 2. **Azure Active Directory > kurumsal uygulamalar > uygulama oluştur** Azure Portal bölümünde, **Galeri olmayan** yeni bir uygulama oluşturun.
-3. Yeni özel uygulamanızın **Özellikler** bölümünde, **nesne kimliğini**kopyalayın.
+3. Yeni özel uygulamanızın **Özellikler** bölümünde, **nesne kimliğini** kopyalayın.
 4. Yeni bir Web tarayıcısı penceresinde, ' a gidin https://developer.microsoft.com/graph/graph-explorer ve uygulamanızın eklendiği Azure AD kiracısı için yönetici olarak oturum açın.
 5. Graph Explorer 'da, uygulamanız için sağlama yapılandırmasını başlatmak üzere aşağıdaki komutu çalıştırın.
    "[Nesne-kimliği]" değerini üçüncü adımdan kopyalanmış hizmet sorumlusu KIMLIĞI (nesne KIMLIĞI) ile değiştirin.

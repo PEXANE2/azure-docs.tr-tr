@@ -3,7 +3,7 @@ title: Azure AD 'de Self Servis uygulama erişimini kullanma
 description: Kullanıcıların Azure AD 'de uygulama bulabilmesi için Self-Service 'i etkinleştirin
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: japere,asteen
-ms.openlocfilehash: d99f0021ee53e972dacfdadb3e488498a3fc4ad0
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 13f91fdd9e2d9501fba426bd6facbf9824a39285
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92372472"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99257026"
 ---
 # <a name="how-to-use-self-service-application-access"></a>Self Servis uygulama erişimini kullanma
 
@@ -43,8 +43,8 @@ Bir uygulamaya Self Servis uygulama erişimini etkinleştirmek için aşağıdak
 1. [**Azure Portal**](https://portal.azure.com/) açın ve **genel yönetici** olarak oturum açın.
 2. Ana sol taraftaki Gezinti menüsünün en üstündeki **tüm hizmetler** ' i seçerek **Azure Active Directory uzantısını** açın.
 3. Filtre arama kutusuna **"Azure Active Directory**" yazın ve **Azure Active Directory** öğesini seçin.
-4. Azure Active Directory sol taraftaki gezinti menüsünden **Kurumsal uygulamalar** ' ı seçin.
-5. Tüm uygulamalarınızın listesini görüntülemek için **tüm uygulamalar** ' ı seçin.
+4. Azure Active Directory sol gezinti menüsünde **Kurumsal Uygulamalar**’ı seçin.
+5. Tüm uygulamalarınızın listesini görüntülemek için **Tüm Uygulamalar**'ı seçin.
    * Burada görünmesini istediğiniz uygulamayı görmüyorsanız, **tüm uygulamalar listesinin** en üstündeki **filtre** denetimini kullanın ve **göster** seçeneğini **tüm uygulamalar** olarak ayarlayın.
 6. Self servis erişimini listeden etkinleştirmek istediğiniz uygulamayı seçin.
 7. Uygulama yüklendikten sonra, uygulamanın sol taraftaki gezinti menüsünden **Self-Service** ' i seçin.

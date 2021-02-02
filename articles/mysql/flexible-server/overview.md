@@ -7,12 +7,12 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 8/21/2020
-ms.openlocfilehash: cdf029e0dd9ae126310842b8919c818f4721218e
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 7841affc7a8988cb113af3b728ae117093000011
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99054746"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99257466"
 ---
 # <a name="azure-database-for-mysql---flexible-server-preview"></a>MySQL için Azure veritabanı-esnek sunucu (Önizleme)
 
@@ -132,20 +132,20 @@ Hizmet MySQL 'in topluluk sürümünü çalıştırır. Bu, tam uygulama uyumlul
 
 Azure 'da iş yükünüzü çalıştırmanın avantajlarından biri küresel erişime sahip. MySQL için Azure veritabanı esnek sunucusu şu Azure bölgelerinde bugün kullanılabilir:
 
-| Bölge | Yüksek Kullanılabilirlik | 
-| --- | --- |
-| West Europe | :heavy_check_mark: | 
-| Kuzey Avrupa | :heavy_check_mark: | 
-| Güney Birleşik Krallık | sayı | 
-| Doğu ABD 2 | :heavy_check_mark: | 
-| Batı ABD 2 | :heavy_check_mark: | 
-| Central US | sayı | 
-| Doğu ABD | :heavy_check_mark: | 
-| Orta Kanada | sayı | 
-| Güneydoğu Asya | :heavy_check_mark: | 
-| Güney Kore - Orta | sayı | 
-| Doğu Japonya | sayı | 
-| Doğu Avustralya | :heavy_check_mark: |
+| Region | Kullanılabilirlik | Bölge yedekli HA | 
+| --- | --- | --- |
+| West Europe | :heavy_check_mark: | :heavy_check_mark: |
+| Kuzey Avrupa | :heavy_check_mark: | :heavy_check_mark: |
+| Güney Birleşik Krallık | :heavy_check_mark: | sayı | 
+| Doğu ABD 2 | :heavy_check_mark: | :heavy_check_mark: |
+| Batı ABD 2 | :heavy_check_mark: | :heavy_check_mark: |
+| Central US | :heavy_check_mark: | sayı | 
+| Doğu ABD | :heavy_check_mark: | :heavy_check_mark: |
+| Orta Kanada | :heavy_check_mark: | sayı | 
+| Güneydoğu Asya | :heavy_check_mark: | :heavy_check_mark: |
+| Güney Kore - Orta | :heavy_check_mark: | sayı | 
+| Doğu Japonya | :heavy_check_mark: | sayı | 
+| Doğu Avustralya | :heavy_check_mark: | :heavy_check_mark: |
 
 Yakında yeni bölgeler eklemek için çalışıyoruz.
 

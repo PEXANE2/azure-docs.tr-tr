@@ -15,12 +15,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9be6efeba101dc922a1045042b64ac64bc6cd093
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e339e88bb62e81b1f873e8cf7e855f4dff8daade
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89322543"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99257415"
 ---
 # <a name="find-help-and-open-a-support-ticket-for-azure-active-directory"></a>Yardım bulun ve Azure Active Directory için bir destek bileti açın
 Microsoft, Azure Active Directory (Azure AD) için genel teknik, satış öncesi, faturalandırma ve abonelik desteği sağlar. Destek, Microsoft Azure ücretli ve deneme abonelikleri için hem çevrimiçi hem de telefonla kullanılabilir. Telefon desteği ve çevrimiçi faturalandırma desteği, ek dillerde mevcuttur. 
@@ -41,22 +41,22 @@ Kendi kendine yardım kaynaklarını kullanarak yanıt bulamazsanız, çevrimiç
 ### <a name="how-to-open-a-support-ticket-for-azure-ad-in-the-azure-portal"></a>Azure portal Azure AD için destek bileti açma
 
 > [!NOTE]
-> Faturalandırma veya abonelik sorunları için [Microsoft 365 Yönetim merkezini](https://admin.microsoft.com)kullanmanız gerekir.
-> 
+> * Faturalandırma veya abonelik sorunları için [Microsoft 365 Yönetim merkezini](https://admin.microsoft.com)kullanmanız gerekir.  
+> * Azure AD B2C kullanıyorsanız, öncelikle onunla ilişkili bir Azure aboneliğine sahip bir Azure AD kiracısına geçerek bir destek bileti açın. Genellikle, bu, çalışan kiracınız veya bir Azure aboneliğine kaydolup sizin için oluşturulan varsayılan kiracının sizin için oluşturulmuş olması. Daha fazla bilgi edinmek için bkz. [Azure aboneliğinin Azure AD ile ilişkisi](active-directory-how-subscriptions-associated-directory.md).
 
-1. [Azure Portal](https://portal.azure.com) oturum açın ve **Azure Active Directory**açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın ve **Azure Active Directory** açın.
    
-1. **Sorun giderme + Destek** ' e gidin ve **Yeni destek isteği ' ni**seçin.
+1. **Sorun giderme + Destek** ' e gidin ve **Yeni destek isteği ' ni** seçin.
    
-1. **Temel bilgiler** dikey penceresinde, **sorun türü**için **Teknik**' i seçin.
+1. **Temel bilgiler** dikey penceresinde, **sorun türü** için **Teknik**' i seçin.
 
-1. **Aboneliğinizi**seçin.
+1. **Aboneliğinizi** seçin.
 
-1. **Hizmet**için **Azure Active Directory**' yi seçin.
+1. **Hizmet** için **Azure Active Directory**' yi seçin.
 
 1. İstek için bir **Özet** oluşturun. Özet 140 karakter altında olmalıdır.
   
-1. Bir **sorun türü**seçin ve ardından bu tür için bir kategori seçin. Bu noktada, sorun kategorili için kendi kendine yardım bilgileri de sunulur.
+1. Bir **sorun türü** seçin ve ardından bu tür için bir kategori seçin. Bu noktada, sorun kategorili için kendi kendine yardım bilgileri de sunulur.
   
 1. Sorun bilgilerinizin geri kalanını ekleyin ve **İleri**' ye tıklayın. 
 
@@ -66,7 +66,7 @@ Kendi kendine yardım kaynaklarını kullanarak yanıt bulamazsanız, çevrimiç
  
     ![image](https://user-images.githubusercontent.com/13383753/76565580-1c284900-6468-11ea-8c0f-85af98097b6f.png)
  
-1. İletişim bilgilerinizi girip **İleri ' yi**seçin. 
+1. İletişim bilgilerinizi girip **İleri ' yi** seçin. 
 
 1. İletişim bilgilerinizi girip **Oluştur**' u seçin.
   ![Sorun kategorisi kendi kendine yardım ekran görüntüsü](./media/active-directory-troubleshooting-support-howto/open-support-ticket.png)
@@ -74,7 +74,7 @@ Kendi kendine yardım kaynaklarını kullanarak yanıt bulamazsanız, çevrimiç
 ### <a name="how-to-open-a-support-ticket-for-azure-ad-in-the-microsoft-365-admin-center"></a>Microsoft 365 Yönetim merkezinde Azure AD için destek bileti açma
 
 > [!NOTE]
-> [Microsoft 365 Yönetim merkezinde](https://admin.microsoft.com) Azure AD desteği yalnızca Yöneticiler için sunulmaktadır. 
+> [Microsoft 365 Yönetim merkezinde](https://admin.microsoft.com) Azure AD desteği yalnızca Yöneticiler için sunulmaktadır.
 
 1. [Microsoft 365 Yönetim merkezinde](https://admin.microsoft.com) ENTERPRISE MOBILITY + SECURITY (EMS) lisansı olan bir hesapla oturum açın.
 
@@ -82,9 +82,9 @@ Kendi kendine yardım kaynaklarını kullanarak yanıt bulamazsanız, çevrimiç
 
 1. **Desteğe genel bakış** sayfasında **kimlik yönetimi** veya **Kullanıcı ve etki alanı yönetimi**' ni seçin:
 
-1. **Özellik**için, desteklemek ISTEDIĞINIZ Azure ad özelliğini seçin.
+1. **Özellik** için, desteklemek ISTEDIĞINIZ Azure ad özelliğini seçin.
 
-1. **Belirti**için uygun bir belirti seçin, sorununuzu özetleyin ve ilgili ayrıntıları sağlayın ve ardından **İleri**' yi seçin.
+1. **Belirti** için uygun bir belirti seçin, sorununuzu özetleyin ve ilgili ayrıntıları sağlayın ve ardından **İleri**' yi seçin.
 
 1. Sunulan kendi kendine yardım kaynaklarından birini seçin veya **Evet, devam et** veya **Hayır, isteği iptal et**' i seçin.
 

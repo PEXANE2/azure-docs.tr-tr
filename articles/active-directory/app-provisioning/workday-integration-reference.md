@@ -3,19 +3,19 @@ title: Azure Active Directory ve Workday tümleştirme başvurusu
 description: İş Workday 'e yönelik teknik kapsamlı bakış-HR odaklı sağlama
 services: active-directory
 author: cmmdesai
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: reference
 ms.workload: identity
 ms.date: 01/18/2021
 ms.author: chmutali
-ms.openlocfilehash: 38a93d5db6f8331da6e7afdef3e91b2764537459
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: f260bca196839a091ae7d12be6d5f85912bf92db
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98954030"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99255993"
 ---
 # <a name="how-azure-active-directory-provisioning-integrates-with-workday"></a>Azure Active Directory sağlama Workday ile nasıl tümleştirilir
 
@@ -379,7 +379,7 @@ Aşağıdaki tablo, belirli bir veri kümesini almak için kullanmak üzere eşl
 | 21 | Ödeme grubu                            | Hayır                  | ' ödeme \_ grubu '                                                                  |
 | 22 | Programlar                             | Hayır                  | PROGRAMLARıNıZ                                                                    |
 | 23 | Program hiyerarşisi                    | Hayır                  | ' PROGRAM \_ hiyerarşisi '                                                          |
-| 24 | Bölge                               | Hayır                  | ' bölge \_ hiyerarşisi '                                                           |
+| 24 | Region                               | Hayır                  | ' bölge \_ hiyerarşisi '                                                           |
 | 25 | Konum hiyerarşisi                   | Hayır                  | ' konum \_ hiyerarşisi '                                                         |
 | 26 | Hesap sağlama verileri            | Hayır                  | WD: Worker \_ Data/WD: hesap \_ sağlama \_ verileri                                |
 | 27 | Arka planda denetim verileri                | Hayır                  | WD: Worker \_ Data/WD: arka planda \_ Denetim \_ verileri                                    |

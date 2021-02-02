@@ -4,7 +4,7 @@ description: Azure AD Uygulama Ara Sunucusu, uygulamanız için bir bağlayıcı
 services: active-directory
 documentationcenter: ''
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -16,12 +16,12 @@ ms.date: 05/21/2018
 ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1a9b43660889a318b2085f3aa8c1060daebe0244
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cec028dec2bf2e6295f59aae9c2e243da2209827
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84764749"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99257043"
 ---
 # <a name="no-working-connector-group-found-for-an-application-proxy-application"></a>Uygulama ara sunucusu uygulaması için çalışan bağlayıcı grubu bulunamadı
 
@@ -46,7 +46,7 @@ Sorunu anlamak için uygulamanızdaki "uygulama proxy 'Si" menüsünü açın ve
 
    ![Azure portal bağlayıcı grubu seçimi](./media/application-proxy-connectivity-no-working-connector/no-active-connector.png)
 
-Bu seçeneklerin her biri hakkında ayrıntılı bilgi için aşağıdaki ilgili bölüme bakın. Yönergeler bağlayıcı Yönetim sayfasından başlattığınızı varsayar. Yukarıdaki hata iletisine bakıyorsanız, uyarı iletisine tıklayarak bu sayfaya gidebilirsiniz. Ayrıca, **Azure Active Directory**gidip **Kurumsal uygulamalar**' a ve ardından **uygulama proxy 'si** ' ne tıklayarak da sayfaya ulaşabilirsiniz.
+Bu seçeneklerin her biri hakkında ayrıntılı bilgi için aşağıdaki ilgili bölüme bakın. Yönergeler bağlayıcı Yönetim sayfasından başlattığınızı varsayar. Yukarıdaki hata iletisine bakıyorsanız, uyarı iletisine tıklayarak bu sayfaya gidebilirsiniz. Ayrıca, **Azure Active Directory** gidip **Kurumsal uygulamalar**' a ve ardından **uygulama proxy 'si** ' ne tıklayarak da sayfaya ulaşabilirsiniz.
 
    ![Azure portal 'de bağlayıcı grubu yönetimi](./media/application-proxy-connectivity-no-working-connector/app-proxy.png)
 

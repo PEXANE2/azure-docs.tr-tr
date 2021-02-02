@@ -4,7 +4,7 @@ description: Microsoft Forefront veya Unified Access Gateway 'ten yükseltiyorsa
 services: active-directory
 documentationcenter: ''
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cccabaf069a3027e615892e36e218f865a6c983a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a7d089d8f57bf8ef1278d262129cc8ddfc81d581
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90706660"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99257752"
 ---
 # <a name="compare-remote-access-solutions"></a>Uzaktan erişim çözümlerini karşılaştırın
 
@@ -32,23 +32,23 @@ Azure Active Directory Uygulama Ara Sunucusu, Microsoft 'un sunduğu iki uzaktan
 
 Tehdit yönetimi ağ geçidi (TMG), Birleşik erişim ağ geçidi (UAG), Web uygulaması ara sunucusu (WAP) ve Azure AD Uygulama Ara Sunucusu (AP) birbirleriyle nasıl karşılaştırılacağını anlamak için bu tabloyu kullanın.
 
-| Özellik | TMG | UAG | WAP | AP |
+| Öne çıkan özelliği | TMG | UAG | WAP | AP |
 | ------- | --- | --- | --- | --- |
-| Sertifika kimlik doğrulaması | Evet | Evet | - | - |
-| Tarayıcı uygulamalarını seçmeli olarak yayınla | Evet | Evet | Evet | Evet |
-| Ön kimlik doğrulaması ve çoklu oturum açma | Evet | Evet | Evet | Evet | 
-| Katman 2/3 güvenlik duvarı | Evet | Evet | - | - |
-| İletme Proxy özellikleri | Evet | - | - | - |
-| VPN özellikleri | Evet | Evet | - | - |
-| Zengin protokol desteği | - | Evet | Evet, HTTP üzerinden çalışıyorsa | Evet, HTTP üzerinden veya Uzak Masaüstü Ağ Geçidi aracılığıyla çalışıyorsa |
-| ADFS proxy sunucusu işlevi görür | - | Evet | Evet | - |
-| Uygulama erişimi için bir portal | - | Evet | - | Evet |
-| Yanıt gövdesi bağlantı çevirisi | Evet | Evet | - | Evet | 
-| Üst bilgiyle kimlik doğrulama | - | Evet | - | Evet, PingAccess ile | 
-| Bulut ölçeğinde güvenlik | - | - | - | Evet | 
-| Koşullu Erişim | - | Evet | - | Evet |
-| Sivilleştirilmiş bölgede bileşen yok (DMZ) | - | - | - | Evet |
-| Gelen bağlantı yok | - | - | - | Evet |
+| Sertifika kimlik doğrulaması | Yes | Yes | - | - |
+| Tarayıcı uygulamalarını seçmeli olarak yayınla | Yes | Yes | Yes | Yes |
+| Ön kimlik doğrulaması ve çoklu oturum açma | Yes | Yes | Yes | Yes | 
+| Katman 2/3 güvenlik duvarı | Yes | Yes | - | - |
+| İletme Proxy özellikleri | Yes | - | - | - |
+| VPN özellikleri | Yes | Yes | - | - |
+| Zengin protokol desteği | - | Yes | Evet, HTTP üzerinden çalışıyorsa | Evet, HTTP üzerinden veya Uzak Masaüstü Ağ Geçidi aracılığıyla çalışıyorsa |
+| ADFS proxy sunucusu işlevi görür | - | Yes | Yes | - |
+| Uygulama erişimi için bir portal | - | Yes | - | Yes |
+| Yanıt gövdesi bağlantı çevirisi | Yes | Yes | - | Yes | 
+| Üst bilgiyle kimlik doğrulama | - | Yes | - | Evet, PingAccess ile | 
+| Bulut ölçeğinde güvenlik | - | - | - | Yes | 
+| Koşullu Erişim | - | Yes | - | Yes |
+| Sivilleştirilmiş bölgede bileşen yok (DMZ) | - | - | - | Yes |
+| Gelen bağlantı yok | - | - | - | Yes |
 
 Çoğu senaryoda, modern çözüm olarak Azure AD Uygulama Ara Sunucusu önerilir. Web uygulaması ara sunucusu yalnızca AD FS için bir proxy sunucu gerektiren senaryolarda tercih edilir ve Azure Active Directory özel etki alanlarını kullanamazsınız. 
 

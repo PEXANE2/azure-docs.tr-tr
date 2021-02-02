@@ -3,19 +3,19 @@ title: Sağlama yapılandırmasını dışarı aktarın ve olağanüstü durum k
 description: Sağlama yapılandırmanızı dışarı aktarmayı ve olağanüstü durum kurtarma için bilinen iyi duruma geri almayı öğrenin.
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: how-to
 ms.workload: identity
 ms.date: 03/19/2020
 ms.author: kenwith
-ms.openlocfilehash: e34656d6ce515cabe955c101f7b52ac0f2ade8db
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: c6af42c78bda66c4b397cbb99b26af7d6a5c7f07
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95994817"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99256382"
 ---
 # <a name="how-to-export-provisioning-configuration-and-roll-back-to-a-known-good-state"></a>Nasıl yapılır: sağlama yapılandırmasını dışarı aktarma ve bilinen iyi bir duruma geri alma
 

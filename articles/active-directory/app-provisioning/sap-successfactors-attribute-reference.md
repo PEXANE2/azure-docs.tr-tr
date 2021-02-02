@@ -3,7 +3,7 @@ title: SAP başarılı etmenleri öznitelik başvurusu
 description: Başarılı bir şekilde hangi özniteliklerin desteklendiğini
 services: active-directory
 author: cmmdesai
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: reference
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 08/05/2020
 ms.author: chmutali
 ms.reviewer: celested
-ms.openlocfilehash: ef2da377c7720cfb7b431d1ce0fed56656a2b8c7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0d1a25f67d3550e79b2339ee060d37acaea0c1c4
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87808516"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99255551"
 ---
 # <a name="sap-successfactors-attribute-reference"></a>SAP başarılı etmenleri öznitelik başvurusu
 
@@ -34,7 +34,7 @@ Aşağıdaki tabloda, varsayılan olarak aşağıdaki iki sağlama uygulamasınd
 
 Ek özniteliklerin şemasını genişletmek için lütfen [SAP başarılı faktörleri tümleştirme başvurusuna](./sap-successfactors-integration-reference.md#retrieving-additional-attributes) bakın. 
 
-| \# | Başarılı etken varlığı                  | Başarılı etken özniteliği     | İşlem türü |
+| \# | Başarılı etken varlığı                  | Başarılı etken özniteliği     | İşlem Türü |
 |----|----------------------------------------|------------------------------|----------------|
 | 1  | PerPerson                              | Personıdexternal             | Okuma           |
 | 2  | PerPerson                              | PersonID                     | Okuma           |

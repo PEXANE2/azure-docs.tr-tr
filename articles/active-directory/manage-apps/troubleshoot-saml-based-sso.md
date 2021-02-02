@@ -1,23 +1,23 @@
 ---
-title: Azure Active Directory 'de SAML tabanlı çoklu oturum açma sorunlarını giderme
+title: Azure Active Directory'de SAML tabanlı çoklu oturum açma sorunlarını giderme
 description: SAML tabanlı çoklu oturum açma için yapılandırılmış bir Azure AD uygulamasıyla ilgili sorunları giderin.
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 07/11/2017
 ms.author: kenwith
-ms.openlocfilehash: 2e8508d4fceb1e7fb580350c726dd70eeaea31c6
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: b169616042892c379196dd1d38c2343704aa1030
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658885"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99257535"
 ---
-# <a name="troubleshoot-saml-based-single-sign-on-in-azure-active-directory"></a>Azure Active Directory 'de SAML tabanlı çoklu oturum açma sorunlarını giderme
+# <a name="troubleshoot-saml-based-single-sign-on-in-azure-active-directory"></a>Azure Active Directory'de SAML tabanlı çoklu oturum açma sorunlarını giderme
 Bir uygulamayı yapılandırırken sorunla karşılaşırsanız. Uygulamanın öğreticisindeki tüm adımları izlemediğinizi doğrulayın. Uygulamanın yapılandırmasında, uygulamanın nasıl yapılandırılacağı üzerine satır içi belgeleriniz vardır. Ayrıca, ayrıntılı adım adım yönergeler için [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğretici listesine](../saas-apps/tutorial-list.md) erişebilirsiniz.
 
 ## <a name="cant-add-another-instance-of-the-application"></a>Uygulamanın başka bir örneği eklenemiyor
@@ -46,7 +46,7 @@ Uygulama için önceden yapılandırılmış desenleri bildirmek için:
     * desenler desteklenmiyorsa, metin kutusuna değer girmeye çalıştığınızda kırmızı bir ünlem işareti görürsünüz. Farenizi kırmızı ünlem işaretinin üzerine getirdiğinizde desteklenen desenleri görürsünüz.
     * Uygulamanın öğreticisinde, Desteklenen desenler hakkında da bilgi edinebilirsiniz. **Azure AD çoklu oturum açma yapılandırma** bölümünün altında. **Etki alanı ve URL 'ler** bölümünde değerleri yapılandırmak için adıma gidin.
 
-Değerler, Azure AD 'de önceden yapılandırılmış desenlerle eşleşmezse. Şunları yapabilirsiniz:
+Değerler, Azure AD 'de önceden yapılandırılmış desenlerle eşleşmezse. Seçenekleriniz şunlardır:
 -   Azure AD 'de önceden yapılandırılmış olan desenli eşleşen değerleri almak için uygulama satıcısıyla birlikte çalışın
 -   Ya da, <aadapprequest@microsoft.com> uygulama için desteklenen desenlerin güncelleştirilmesini istemek Için Azure AD ekibine başvurabilirsiniz veya öğreticide bir yorum bırakabilirsiniz
 
@@ -69,7 +69,7 @@ Azure AD 'den uygulama meta verilerini veya sertifikasını indirmek için şu a
 
 Azure AD meta verileri almak için bir URL sağlamıyor. Meta veriler yalnızca bir XML dosyası olarak alınabilir.
 
-## <a name="customize-saml-claims-sent-to-an-application"></a>Bir uygulamaya gönderilen SAML taleplerini özelleştirme
+## <a name="customize-saml-claims-sent-to-an-application"></a>Uygulamaya gönderilen SAML taleplerini özelleştirme
 Uygulamanıza gönderilen SAML öznitelik taleplerini özelleştirmeyi öğrenmek için, daha fazla bilgi için [Azure Active Directory 'Da talep eşleme](../develop/active-directory-claims-mapping.md) konusuna bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar

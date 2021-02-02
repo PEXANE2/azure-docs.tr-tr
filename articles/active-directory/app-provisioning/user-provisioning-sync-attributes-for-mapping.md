@@ -3,19 +3,19 @@ title: Eşleme için öznitelikleri Azure AD 'ye eşitler
 description: Şirket içi Active Directory özniteliklerini Azure AD 'ye eşitlemeyi öğrenin. SaaS uygulamalarına Kullanıcı sağlamayı yapılandırırken, varsayılan olarak eşitlenmemiş kaynak özniteliklerini eklemek için dizin uzantısı özelliğini kullanın.
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 05/13/2019
 ms.author: kenwith
-ms.openlocfilehash: cecdda27139aa1dd0733b50898db9db70aa34dc3
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 62d035b85850f8ac455a85fd93e4d081bbd386e1
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93040981"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99256094"
 ---
 # <a name="sync-an-attribute-from-your-on-premises-active-directory-to-azure-ad-for-provisioning-to-an-application"></a>Bir uygulamaya sağlamak için şirket içi Active Directory bir özniteliği Azure AD 'ye eşitleyin
 
@@ -27,13 +27,13 @@ Sağlama için ihtiyaç duyduğunuz veriler Active Directory, ancak yukarıda a�
  
 ## <a name="sync-an-attribute"></a>Bir özniteliği eşitleme 
 
-1. Azure AD Connect Sihirbazı 'nı açın, görevler ' i ve ardından **eşitleme seçeneklerini Özelleştir** ' i seçin.
+1. Azure AD Connect Sihirbazı 'nı açın, görevler ' i ve ardından **eşitleme seçeneklerini Özelleştir**' i seçin.
 
    ![Azure Active Directory Connect Sihirbazı ek görevler sayfası](./media/user-provisioning-sync-attributes-for-mapping/active-directory-connect-customize.png)
  
 2. Azure AD Genel Yöneticisi olarak oturum açın. 
 
-3. **Isteğe bağlı özellikler** sayfasında, **dizin uzantısı öznitelik eşitleme** ' yi seçin.
+3. **Isteğe bağlı özellikler** sayfasında, **dizin uzantısı öznitelik eşitleme**' yi seçin.
  
    ![Azure Active Directory Connect sihirbaz Isteğe bağlı özellikler sayfası](./media/user-provisioning-sync-attributes-for-mapping/active-directory-connect-directory-extension-attribute-sync.png)
 

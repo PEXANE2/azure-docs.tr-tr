@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/06/2020
 ms.author: justinha
-ms.openlocfilehash: d5dbb7b71e2d67ed5b3f624c93c3c143d6c98e5d
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 6da1d285440daa5d1d5a230905a77057728d4ae6
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96618544"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99256550"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>Öğretici: Azure Active Directory Domain Services yönetilen bir etki alanı için Güvenli LDAP yapılandırma
 
@@ -213,6 +213,12 @@ Yönetilen etki alanınız için Güvenli LDAP 'nin etkinleştirilmesi birkaç d
 
 Hata için bazı yaygın nedenler, etki alanı adının hatalı olması, sertifika için şifreleme algoritmasının *üç aylık* olmaması veya sertifikanın süresi yakında sona ermesinin süresinin dolması veya zaten süresinin dolması olabilir. Sertifikayı geçerli parametrelerle yeniden oluşturabilir ve ardından bu güncelleştirilmiş sertifikayı kullanarak Güvenli LDAP 'yi etkinleştirebilirsiniz.
 
+## <a name="change-an-expiring-certificate"></a>Süresi dolan bir sertifikayı değiştirme
+
+1. [GÜVENLI LDAP için sertifika oluşturma](#create-a-certificate-for-secure-ldap)adımlarını izleyerek yeni BIR Güvenli LDAP sertifikası oluşturun.
+1. Yerine konacak sertifikayı Azure AD DS uygulamak için, Azure portal Azure AD DS sol menüsünde **Güvenli LDAP**' i seçin ve **Sertifikayı Değiştir**' i seçin.
+1. Sertifikayı, Güvenli LDAP kullanarak bağlanan istemcilere dağıtın. 
+
 ## <a name="lock-down-secure-ldap-access-over-the-internet"></a>İnternet üzerinden güvenli LDAP erişimini kilitleme
 
 Yönetilen etki alanınızı Internet üzerinden güvenli LDAP erişimini etkinleştirdiğinizde, bir güvenlik tehdidi oluşturur. Yönetilen etki alanına TCP bağlantı noktası 636 ' deki internet üzerinden erişilebilir. Yönetilen etki alanına erişimi, ortamınız için belirli bilinen IP adresleriyle kısıtlamanız önerilir. Azure ağ güvenlik grubu kuralı, erişimi Güvenli LDAP ile sınırlamak için kullanılabilir.
@@ -234,7 +240,7 @@ Belirli bir IP adresi kümesinden TCP bağlantı noktası 636 üzerinden gelen g
     | Protokol                          | TCP          |
     | Eylem                            | İzin Ver        |
     | Öncelik                          | 401          |
-    | Ad                              | AllowLDAPS   |
+    | Name                              | AllowLDAPS   |
 
 1. Hazırsanız, kuralı kaydetmek ve uygulamak için **Ekle** ' yi seçin.
 

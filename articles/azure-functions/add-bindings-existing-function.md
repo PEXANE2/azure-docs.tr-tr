@@ -1,16 +1,16 @@
 ---
-title: Azure Işlevlerinde var olan bir işleve bağlama ekleme
-description: Azure Işlevleri projenizdeki mevcut bir işleve bağlama eklemeyi öğrenin.
+title: İşlevleri diğer Azure hizmetlerine bağlama
+description: Diğer Azure hizmetlerine bağlanan bağlamaları Azure Işlevleri projenizdeki mevcut bir işleve eklemeyi öğrenin.
 ms.topic: how-to
 ms.date: 04/29/2020
-ms.openlocfilehash: 23b7b05f9a9f9da5a48511ee555e3b6184a74179
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d1c6f5bb8ca5fcf995b8a8d326abbec96f1d2e35
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91654218"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258210"
 ---
-# <a name="add-bindings-to-an-existing-function-in-azure-functions"></a>Azure Işlevlerinde var olan bir işleve bağlama ekleme
+# <a name="connect-functions-to-azure-services-using-bindings"></a>Bağlamaları kullanarak işlevleri Azure hizmetlerine bağlama
 
 Bir işlev oluşturduğunuzda, bir tetikleyici şablonları kümesinden dile özgü tetikleyici kodu projenize eklenir. Giriş veya çıkış bağlamalarını kullanarak işlevinizi diğer hizmetlere bağlamak istiyorsanız, işlevinizdeki belirli bağlama tanımlarını eklemeniz gerekir. Bağlamalar hakkında daha fazla bilgi edinmek için bkz. [Azure işlevleri Tetikleyicileri ve bağlamaları kavramları](functions-triggers-bindings.md).
 
@@ -30,7 +30,7 @@ Mevcut bir işlevi güncelleştirmede size rehberlik etmek için kullanabileceğ
 
 [!INCLUDE [functions-bindings-code-example-chooser](../../includes/functions-bindings-code-example-chooser.md)]
 
-## <a name="azure-portal"></a>Azure portal
+## <a name="azure-portal"></a>Azure portalı
 
 [Azure Portal](https://portal.azure.com)işlevlerinizi geliştirirken, belirli bir Işlev için **tümleştir** sekmesine giriş ve çıkış bağlamaları eklersiniz. Yeni bağlamalar, dilinize bağlı olarak dosyasına function.jsya da Yöntem özniteliklerine eklenir. Aşağıdaki makalelerde, portalda var olan bir işleve bağlama ekleme örnekleri gösterilmektedir:
 
