@@ -10,15 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 01/11/2021
-ms.openlocfilehash: 755346c1da38f66c0c0fef6144d34eea62735273
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.date: 02/02/2021
+ms.openlocfilehash: 91ab6ca1350a1c6964daeae401bf7b08c6b1cd91
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98072097"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99430773"
 ---
 # <a name="copy-data-from-and-to-salesforce-service-cloud-by-using-azure-data-factory"></a>Azure Data Factory kullanarak verileri Salesforce hizmeti bulutlarından kopyalama
+
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Bu makalede, verileri Salesforce hizmeti bulutlarından kopyalamak için Azure Data Factory kopyalama etkinliğinin nasıl kullanılacağı özetlenmektedir. Kopyalama etkinliğine genel bir bakış sunan [kopyalama etkinliğine genel bakış](copy-activity-overview.md) makalesinde oluşturulur.
@@ -64,16 +65,13 @@ Salesforce bağlantılı hizmeti için aşağıdaki özellikler desteklenir.
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür |Type özelliği **SalesforceServiceCloud** olarak ayarlanmalıdır. |Evet |
+| tür |Type özelliği **SalesforceServiceCloud** olarak ayarlanmalıdır. |Yes |
 | environmentUrl | Salesforce hizmeti bulut örneğinin URL 'sini belirtin. <br> -Varsayılan değer `"https://login.salesforce.com"` . <br> -Korumalı verileri veri kopyalamak için belirtin `"https://test.salesforce.com"` . <br> -Özel etki alanından veri kopyalamak için, örneğin, `"https://[domain].my.salesforce.com"` . |Hayır |
-| username |Kullanıcı hesabı için bir Kullanıcı adı belirtin. |Evet |
-| password |Kullanıcı hesabı için bir parola belirtin.<br/><br/>Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. |Evet |
+| username |Kullanıcı hesabı için bir Kullanıcı adı belirtin. |Yes |
+| password |Kullanıcı hesabı için bir parola belirtin.<br/><br/>Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. |Yes |
 | Belirtilmedi |Kullanıcı hesabı için bir güvenlik belirteci belirtin. <br/><br/>Genel olarak güvenlik belirteçleri hakkında daha fazla bilgi edinmek için bkz. [güvenlik ve API](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm). Güvenlik belirteci yalnızca Integration Runtime IP 'sini Salesforce üzerindeki [GÜVENILIR IP adresi listesine](https://developer.salesforce.com/docs/atlas.en-us.securityImplGuide.meta/securityImplGuide/security_networkaccess.htm) eklediğinizde atlanabilir. Azure IR kullanırken [Azure INTEGRATION RUNTIME IP adresleri](azure-integration-runtime-ip-addresses.md)' ne bakın.<br/><br/>Güvenlik belirtecini alma ve sıfırlamaya ilişkin yönergeler için bkz. [güvenlik belirteci alma](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm). Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. |Hayır |
 | apiVersion | Kullanılacak Salesforce REST/toplu API sürümünü belirtin, `48.0` ör. Varsayılan olarak, bağlayıcı Salesforce 'tan veri kopyalamak için [V45](https://developer.salesforce.com/docs/atlas.en-us.218.0.api_rest.meta/api_rest/dome_versions.htm) kullanır ve verileri Salesforce 'a kopyalamak için [V40](https://developer.salesforce.com/docs/atlas.en-us.208.0.api_asynch.meta/api_asynch/asynch_api_intro.htm) kullanır. | Hayır |
-| connectVia | Veri deposuna bağlanmak için kullanılacak [tümleştirme çalışma zamanı](concepts-integration-runtime.md) . Belirtilmemişse, varsayılan Azure Integration Runtime kullanır. | Kaynak için Hayır, kaynak bağlı hizmette tümleştirme çalışma zamanı yoksa, havuz için Evet |
-
->[!IMPORTANT]
->Verileri Salesforce hizmeti bulutuna kopyaladığınızda, varsayılan Azure Integration Runtime kopyayı yürütmek için kullanılamaz. Diğer bir deyişle, kaynak bağlı hizmetinizin belirtilen bir tümleştirme çalışma zamanı yoksa Salesforce hizmeti bulut örneğinizin yakınında bir konum ile açık [bir Azure Integration Runtime oluşturun](create-azure-integration-runtime.md#create-azure-ir) . Salesforce hizmeti bulutu bağlı hizmetini aşağıdaki örnekte olduğu gibi ilişkilendirin.
+| connectVia | Veri deposuna bağlanmak için kullanılacak [tümleştirme çalışma zamanı](concepts-integration-runtime.md) . Belirtilmemişse, varsayılan Azure Integration Runtime kullanır. | Hayır |
 
 **Örnek: Data Factory kimlik bilgilerini depolama**
 
@@ -143,7 +141,7 @@ Ve Salesforce hizmeti bulutuna veri kopyalamak için aşağıdaki özellikler de
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Type özelliği **SalesforceServiceCloudObject** olarak ayarlanmalıdır.  | Evet |
+| tür | Type özelliği **SalesforceServiceCloudObject** olarak ayarlanmalıdır.  | Yes |
 | objectApiName | Verilerin alınması için Salesforce nesne adı. | Kaynak için Hayır, havuz için Evet |
 
 > [!IMPORTANT]
@@ -172,7 +170,7 @@ Ve Salesforce hizmeti bulutuna veri kopyalamak için aşağıdaki özellikler de
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Veri kümesinin Type özelliği **Relationaltable** olarak ayarlanmalıdır. | Evet |
+| tür | Veri kümesinin Type özelliği **Relationaltable** olarak ayarlanmalıdır. | Yes |
 | tableName | Salesforce hizmeti bulutundaki tablonun adı. | Hayır (etkinlik kaynağında "sorgu" belirtilmişse) |
 
 ## <a name="copy-activity-properties"></a>Kopyalama etkinliğinin özellikleri
@@ -185,7 +183,7 @@ Salesforce hizmeti bulutundaki verileri kopyalamak için, etkinlik **kaynağın�
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Kopyalama etkinliği kaynağının Type özelliği **SalesforceServiceCloudSource** olarak ayarlanmalıdır. | Evet |
+| tür | Kopyalama etkinliği kaynağının Type özelliği **SalesforceServiceCloudSource** olarak ayarlanmalıdır. | Yes |
 | sorgu |Verileri okumak için özel sorguyu kullanın. [Salesforce nesne sorgu dili (SOQL)](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm) SORGUSUNU veya SQL-92 sorgusunu kullanabilirsiniz. [Sorgu ipuçları](#query-tips) bölümünde daha fazla ipucu görüntüleyin. Sorgu belirtilmemişse, veri kümesindeki "objectApiName" içinde belirtilen Salesforce hizmeti bulut nesnesinin tüm verileri alınır. | Hayır (veri kümesindeki "objectApiName" belirtilmişse) |
 | readBehavior | Mevcut kayıtların sorgulanıp sorgulanmayacağını veya silinen kayıtlar dahil olmak üzere tüm kayıtları sorganıp sorgulanmayacağını gösterir. Belirtilmemişse, varsayılan davranış eski ' dir. <br>İzin verilen değerler: **sorgu** (varsayılan), **queryall**.  | Hayır |
 
@@ -232,7 +230,7 @@ Verileri Salesforce hizmeti bulutuna kopyalamak için, kopyalama etkinliği **ha
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Kopyalama etkinliği havuzunun Type özelliği **SalesforceServiceCloudSink** olarak ayarlanmalıdır. | Evet |
+| tür | Kopyalama etkinliği havuzunun Type özelliği **SalesforceServiceCloudSink** olarak ayarlanmalıdır. | Yes |
 | writeBehavior | İşlem için yazma davranışı.<br/>İzin verilen değerler **Insert** ve **upsert**. | Hayır (varsayılan değer ekler) |
 | externalIdFieldName | Upsert işlem için dış KIMLIK alanının adı. Belirtilen alanın Salesforce hizmeti bulut nesnesinde "dış KIMLIK alanı" olarak tanımlanması gerekir. Karşılık gelen giriş verilerinde NULL değer bulunamaz. | "Upsert" için Evet |
 | writeBatchSize | Her toplu işte Salesforce hizmeti bulutuna yazılan verilerin satır sayısı. | Hayır (varsayılan değer 5.000) |
@@ -315,7 +313,7 @@ Salesforce hizmeti bulutlarından verileri kopyaladığınızda, veri türleri D
 |:--- |:--- |
 | Otomatik sayı |Dize |
 | Onay kutusu |Boole |
-| Para birimi |Ondalık |
+| Para Birimi |Ondalık |
 | Tarih |DateTime |
 | Tarih/Saat |DateTime |
 | E-posta |Dize |

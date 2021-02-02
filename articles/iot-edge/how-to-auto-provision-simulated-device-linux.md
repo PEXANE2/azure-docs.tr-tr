@@ -8,12 +8,12 @@ ms.date: 6/30/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: c69e919c76c0aecb6cf8a3ee5e9b7e5d286c168a
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: fccd1bd6f808fad11946c6f0b0dff1f453b61d66
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92046052"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99430637"
 ---
 # <a name="create-and-provision-an-iot-edge-device-with-a-tpm-on-linux"></a>Linux 'ta TPM ile IoT Edge cihaz oluşturma ve sağlama
 
@@ -53,7 +53,7 @@ Sanal bir anahtar, sanal makinenizin bir fiziksel ağa bağlanmasını sağlar.
 
 3. Bir **dış** sanal anahtar seçin, sonra **sanal anahtar oluştur**' u seçin.
 
-4. Yeni sanal anahtarınızda bir ad verin, örneğin **EdgeSwitch**. Bağlantı türünün **dış ağ**olarak ayarlandığından emin olun ve ardından **Tamam**' ı seçin.
+4. Yeni sanal anahtarınızda bir ad verin, örneğin **EdgeSwitch**. Bağlantı türünün **dış ağ** olarak ayarlandığından emin olun ve ardından **Tamam**' ı seçin.
 
 5. Bir açılır pencere, ağ bağlantısının kesintiye uğrayabileceği konusunda sizi uyarır. Devam etmek için **Evet**’i seçin.
 
@@ -63,11 +63,11 @@ Yeni sanal anahtarı oluştururken hata görürseniz, başka hiçbir anahtarın 
 
 1. Sanal makineniz için kullanmak üzere bir disk görüntüsü dosyası indirin ve yerel olarak kaydedin. Örneğin, [Ubuntu server 18,04](http://releases.ubuntu.com/18.04/). IoT Edge cihazlar için desteklenen işletim sistemleri hakkında bilgi için bkz. [Azure IoT Edge desteklenen sistemler](support.md).
 
-2. Hyper-V Yöneticisi 'nde, **Action**  >  **New**  >  **Eylemler** menüsünde Yeni**sanal makine** eylem ' i seçin.
+2. Hyper-V Yöneticisi 'nde,   >    >  **Eylemler** menüsünde Yeni **sanal makine** eylem ' i seçin.
 
 3. Aşağıdaki belirli yapılandırmalara sahip **Yeni sanal makine Sihirbazı 'nı** doldurun:
 
-   1. **Üretimi belirtin**: **2. nesil**seçeneğini belirleyin. 2. nesil sanal makinelerde, bir sanal makinede IoT Edge çalıştırmak için gereken iç içe sanallaştırma etkinleştirilmiş.
+   1. **Üretimi belirtin**: **2. nesil** seçeneğini belirleyin. 2. nesil sanal makinelerde, bir sanal makinede IoT Edge çalıştırmak için gereken iç içe sanallaştırma etkinleştirilmiş.
    2. **Ağı yapılandırma**: önceki bölümde oluşturduğunuz sanal anahtarla **bağlantı** değerini ayarlayın.
    3. **Yükleme seçenekleri**: **önyüklenebilir bir görüntü dosyasından işletim sistemi yükleme ' yi** seçin ve yerel olarak kaydettiğiniz disk görüntü dosyasına gidin.
 
@@ -83,7 +83,7 @@ VM 'niz oluşturulduktan sonra, cihazı otomatik olarak sağlamanıza olanak tan
 
 2. **Güvenlik**' e gidin.
 
-3. **Güvenli önyüklemeyi etkinleştir**seçeneğinin işaretini kaldırın.
+3. **Güvenli önyüklemeyi etkinleştir** seçeneğinin işaretini kaldırın.
 
 4. **Güvenilir Platform Modülü etkinleştir**' i işaretleyin.
 
@@ -91,7 +91,7 @@ VM 'niz oluşturulduktan sonra, cihazı otomatik olarak sağlamanıza olanak tan
 
 ### <a name="start-the-virtual-machine-and-collect-tpm-data"></a>Sanal makineyi başlatın ve TPM verilerini toplayın
 
-Sanal makinede, cihazın **kayıt kimliği** ve **onay anahtarını**almak için kullanabileceğiniz bir araç oluşturun.
+Sanal makinede, cihazın **kayıt kimliği** ve **onay anahtarını** almak için kullanabileceğiniz bir araç oluşturun.
 
 1. Hyper-V Yöneticisi 'nde VM 'nizi başlatın ve bu sunucuya bağlanın.
 
@@ -112,7 +112,7 @@ Sanal makinede, cihazın **kayıt kimliği** ve **onay anahtarını**almak için
    sudo ./tpm_device_provision
    ```
 
-1. Çıkış penceresinde cihazın **kayıt kimliği** ve **onay anahtarı**görüntülenir. Cihazınız için bireysel bir kayıt oluştururken bu değerleri daha sonra kullanmak üzere kopyalayın.
+1. Çıkış penceresinde cihazın **kayıt kimliği** ve **onay anahtarı** görüntülenir. Cihazınız için bireysel bir kayıt oluştururken bu değerleri daha sonra kullanmak üzere kopyalayın.
 
 Kayıt KIMLIĞINIZ ve onay anahtarınız olduktan sonra, [IoT Hub cihaz sağlama hizmetini ayarlama](#set-up-the-iot-hub-device-provisioning-service) bölümüne ilerleyin.
 
@@ -132,7 +132,7 @@ VM yerine bir fiziksel IoT Edge cihaz kullanıyorsanız, cihazın sağlama bilgi
    sudo ./tpm_device_provision
    ```
 
-1. **Kayıt kimliği** ve **onay anahtarı**değerlerini kopyalayın. Bu değerleri,, DPS 'de cihazınız için tek bir kayıt oluşturmak için kullanırsınız.
+1. **Kayıt kimliği** ve **onay anahtarı** değerlerini kopyalayın. Bu değerleri,, DPS 'de cihazınız için tek bir kayıt oluşturmak için kullanırsınız.
 
 ## <a name="set-up-the-iot-hub-device-provisioning-service"></a>IoT Hub cihaz sağlama hizmetini ayarlama
 
@@ -144,23 +144,23 @@ Cihaz sağlama hizmetini çalıştırdıktan sonra, genel bakış sayfasından *
 
 Sanal makinenizden sağlama bilgilerini alın ve cihaz sağlama hizmeti 'nde tek bir kayıt oluşturmak için bunu kullanın.
 
-DPS 'de bir kayıt oluşturduğunuzda, bir **Ilk cihaz Ikizi durumu**bildirme fırsatına sahip olursunuz. Device ikizi 'da, bir cihaz için gereken bölge, ortam, konum veya cihaz türü gibi herhangi bir ölçüme cihazları gruplamak için Etiketler ayarlayabilirsiniz. Bu Etiketler [otomatik dağıtımlar](how-to-deploy-at-scale.md)oluşturmak için kullanılır.
+DPS 'de bir kayıt oluşturduğunuzda, bir **Ilk cihaz Ikizi durumu** bildirme fırsatına sahip olursunuz. Device ikizi 'da, bir cihaz için gereken bölge, ortam, konum veya cihaz türü gibi herhangi bir ölçüme cihazları gruplamak için Etiketler ayarlayabilirsiniz. Bu Etiketler [otomatik dağıtımlar](how-to-deploy-at-scale.md)oluşturmak için kullanılır.
 
 > [!TIP]
 > Azure CLı 'da bir [kayıt](/cli/azure/ext/azure-iot/iot/dps/enrollment) oluşturabilir ve **kenar özellikli** bayrağını kullanarak bir cihazın IoT Edge cihaz olduğunu belirtebilirsiniz.
 
 1. [Azure Portal](https://portal.azure.com), IoT Hub cihaz sağlama hizmeti örneğinize gidin.
 
-2. **Ayarlar**altında kayıtları **Yönet**' i seçin.
+2. **Ayarlar** altında kayıtları **Yönet**' i seçin.
 
 3. **Bireysel kayıt Ekle** ' yi seçin, ardından kaydı yapılandırmak için aşağıdaki adımları izleyin:  
 
-   1. **Mekanizma**için **TPM**' yi seçin.
+   1. **Mekanizma** için **TPM**' yi seçin.
 
    2. Sanal makinenizden kopyaladığınız **onay anahtarını** ve **kayıt kimliğini** sağlayın.
 
       > [!TIP]
-      > Fiziksel bir TPM cihazı kullanıyorsanız, her TPM yongası için benzersiz olan ve kendisiyle ilişkili TPM yonga üreticisinden elde edilen **onay anahtarını**belirlemeniz gerekir. TPM cihazınız için benzersiz bir **kayıt kimliği** türetebilirsiniz; Örneğin, onay anahtarının SHA-256 karmasını oluşturma.
+      > Fiziksel bir TPM cihazı kullanıyorsanız, her TPM yongası için benzersiz olan ve kendisiyle ilişkili TPM yonga üreticisinden elde edilen **onay anahtarını** belirlemeniz gerekir. TPM cihazınız için benzersiz bir **kayıt kimliği** türetebilirsiniz; Örneğin, onay anahtarının SHA-256 karmasını oluşturma.
 
    3. İsterseniz cihazınız için bir KIMLIK sağlayın. Bir cihaz KIMLIĞI sağlamazsanız, kayıt KIMLIĞI kullanılır.
 
@@ -170,7 +170,7 @@ DPS 'de bir kayıt oluşturduğunuzda, bir **Ilk cihaz Ikizi durumu**bildirme f�
 
    6. İsterseniz **Ilk cihaz Ikizi durumuna** bir etiket değeri ekleyin. Modül dağıtımı için cihaz gruplarını hedeflemek üzere etiketleri kullanabilirsiniz. Daha fazla bilgi için bkz. [IoT Edge modüllerini ölçekli olarak dağıtma](how-to-deploy-at-scale.md).
 
-   7. **Kaydet**'i seçin.
+   7. **Kaydet**’i seçin.
 
 Bu cihaz için bir kayıt mevcut olduğuna göre, IoT Edge çalışma zamanı cihazı yükleme sırasında otomatik olarak sağlayabilir.
 
@@ -205,7 +205,11 @@ IoT Edge çalışma zamanı tüm IoT Edge cihazlarına dağıtılır. Bileşenle
      attestation:
        method: "tpm"
        registration_id: "<REGISTRATION_ID>"
+   # always_reprovision_on_startup: true
+   # dynamic_reprovisioning: false
    ```
+
+   İsteğe bağlı olarak, `always_reprovision_on_startup` `dynamic_reprovisioning` cihazınızın yeniden sağlama davranışını yapılandırmak için veya satırını kullanın. Bir cihaz başlangıçta yeniden sağlamak üzere ayarlandıysa, her zaman önce DPS ile sağlamayı dener ve ardından bu başarısız olursa sağlama yedeklemesine geri dönecektir. Bir cihaz kendisini dinamik olarak yeniden sağlamak üzere ayarlandıysa, yeniden sağlama olayı algılandığında IoT Edge yeniden başlatılır ve yeniden hazırlar. Daha fazla bilgi için bkz. [cihaz yeniden sağlama kavramlarını IoT Hub](../iot-dps/concepts-device-reprovision.md).
 
 1. Ve değerlerini, `scope_id` `registration_id` DPS ve cihaz bilgileriniz ile güncelleştirin.
 

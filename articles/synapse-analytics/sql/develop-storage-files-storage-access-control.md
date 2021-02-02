@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: e884ceab652136c505ce7032f0e78588fb20be89
-ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
+ms.openlocfilehash: b493ee7d77fc45018dbf8d2bac748b03e3d74b8a
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98986963"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99430218"
 ---
 # <a name="control-storage-account-access-for-serverless-sql-pool-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te sunucusuz SQL havuzu için depolama hesabı erişimini denetleme
 
@@ -93,6 +93,9 @@ Aşağıdaki yetkilendirme ve Azure Depolama türleri birleşimlerini kullanabil
 ### <a name="querying-firewall-protected-storage"></a>Güvenlik duvarı korumalı depolamayı sorgulama
 
 Güvenlik duvarıyla korunan depolamaya erişirken **Kullanıcı kimliğini** veya **yönetilen kimlik**' i kullanabilirsiniz.
+
+> [!NOTE]
+> Depolama üzerindeki güvenlik duvarı özelliği genel önizlemeye sunuldu ve tüm genel bulut bölgelerinde kullanılabilir. 
 
 #### <a name="user-identity"></a>Kullanıcı kimliği
 

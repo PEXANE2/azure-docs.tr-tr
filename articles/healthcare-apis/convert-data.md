@@ -8,14 +8,17 @@ ms.subservice: fhir
 ms.topic: overview
 ms.date: 01/19/2021
 ms.author: ranku
-ms.openlocfilehash: c794af26fdfe2d3706d8d8d266d0756eff391b50
-ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
+ms.openlocfilehash: 7518f5e2984029c087eec1e6697f3237410bda4b
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98747708"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99430285"
 ---
-# <a name="how-to-convert-data-to-fhir"></a>Verileri FHıR 'ye dönüştürme
+# <a name="how-to-convert-data-to-fhir-preview"></a>Verileri FHıR 'ye dönüştürme (Önizleme)
+
+> [!IMPORTANT]
+> Bu özellik genel önizleme aşamasındadır, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 FHıR için Azure API 'sindeki $convert-Data özel uç noktası, farklı biçimlerdeki FHıR 'ye veri dönüştürme için tasarlanmıştır. Bu, varsayılan şablonlar olarak [Fhır dönüştürücü](https://github.com/microsoft/FHIR-Converter) projesindeki likit şablon altyapısını ve şablonları kullanır. Bu dönüştürme şablonlarını gerektiği şekilde özelleştirebilirsiniz. Şu anda HL7v2 to FHıR dönüşümünü destekler.
 

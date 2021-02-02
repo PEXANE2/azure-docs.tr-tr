@@ -9,35 +9,29 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/26/2019
+ms.date: 01/25/2021
 ms.author: jeedes
-ms.openlocfilehash: 4fb117b7f7b9a0c7a6a67e2714380a01cd53a4e0
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 4cd767736d6349199f4c82b00cb0b35db36cdb44
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92515653"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99430196"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pega-systems"></a>Öğretici: pega sistemleriyle tümleştirme Azure Active Directory
 
-Bu öğreticide, pega sistemlerini Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz.
+Bu öğreticide, pega sistemlerini Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz. Pega sistemlerini Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
 
-Bu tümleştirme bu avantajları sağlar:
-
-* Pega sistemlerine kimlerin erişebileceğini denetlemek için Azure AD kullanabilirsiniz.
-* Kullanıcılarınızın Azure AD hesaplarıyla pega sistemlerine (çoklu oturum açma) otomatik olarak oturum açmasını sağlayabilirsiniz.
-* Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz: Azure portal.
-
-Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory uygulamalarda çoklu oturum açma](../manage-apps/what-is-single-sign-on.md).
-
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
+* Azure AD 'de pega sistemlerine erişimi olan denetim.
+* Kullanıcılarınızın Azure AD hesaplarıyla pega sistemlerine otomatik olarak oturum açmalarına olanak sağlayın.
+* Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Azure AD tümleştirmesini pega sistemleriyle yapılandırmak için şunları yapmanız gerekir:
+Başlamak için aşağıdaki öğeler gereklidir:
 
-* Bir Azure AD aboneliği. Bir Azure AD ortamınız yoksa, bir [aylık deneme](https://azure.microsoft.com/pricing/free-trial/)için kaydolabilirsiniz.
-* Çoklu oturum açma özelliği etkinleştirilmiş bir pega sistemleri aboneliği.
+* Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
+* Pega Systems çoklu oturum açma (SSO) etkin aboneliği.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
@@ -47,55 +41,37 @@ Bu öğreticide, Azure AD çoklu oturum açmayı bir test ortamında yapılandı
 
 ## <a name="add-pega-systems-from-the-gallery"></a>Galeriden pega sistemleri ekleme
 
-Pega sistemlerinin Azure AD 'ye tümleştirmesini ayarlamak için galerideki pega sistemlerini yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
+Pega sistemlerinin Azure AD ile tümleştirilmesini yapılandırmak için galerideki pega sistemlerini yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
 
-1. [Azure Portal](https://portal.azure.com)sol bölmede **Azure Active Directory**' i seçin:
+1. Azure portal iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
+1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
+1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
+1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
+1. **Galeriden Ekle** bölümünde, arama kutusuna **pega Systems** yazın.
+1. Sonuçlar panelinden **pega sistemleri** ' ni seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-    ![Azure Active Directory'yi seçin](common/select-azuread.png)
+## <a name="configure-and-test-azure-ad-sso-for-pega-systems"></a>Pega sistemleri için Azure AD SSO 'yu yapılandırma ve test etme
 
-2. **Kurumsal uygulamalar**  >  **tüm uygulamalar**' a gidin.
+**B. Simon** adlı bir test kullanıcısı kullanarak, pega SISTEMLERIYLE Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, pega sistemlerinde bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+Azure AD SSO 'yu pega sistemleriyle yapılandırmak ve test etmek için aşağıdaki adımları gerçekleştirin:
 
-3. Bir uygulama eklemek için pencerenin üst kısmındaki **Yeni uygulama** ' yı seçin:
+1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
+    1. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
+    1. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
+1. **[Pega Systems SSO 'Yu yapılandırma](#configure-pega-systems-sso)** -uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
+    1. Kullanıcının Azure AD gösterimine bağlı olan pega sistemlerinde B. Simon 'un bir karşılığı olacak şekilde **[pega sistemleri test kullanıcısı oluşturun](#create-pega-systems-test-user)** .
+1. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
-    ![Yeni uygulama seçin](common/add-new-app.png)
+### <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma
 
-4. Arama kutusuna **pega Systems**yazın. Arama sonuçlarında **pega sistemleri** ' ni seçin ve ardından **Ekle**' yi seçin.
+Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-     ![Arama sonuçları](common/search-new-app.png)
+1. Azure portal, **pega Systems** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
+1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
+1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** kalem simgesine tıklayın.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
-
-Bu bölümde, Britta Simon adlı bir test kullanıcısı kullanarak pega sistemleriyle Azure AD çoklu oturum açmayı yapılandırıp test edeceksiniz.
-Çoklu oturum açmayı etkinleştirmek için, bir Azure AD kullanıcısı ve pega sistemlerinde buna karşılık gelen kullanıcı arasında bir ilişki kurmanız gerekir.
-
-Azure AD çoklu oturum açma 'yı pega sistemleriyle yapılandırmak ve test etmek için aşağıdaki adımları gerçekleştirmeniz gerekir:
-
-1. Kullanıcılarınıza yönelik özelliği etkinleştirmek için **[Azure AD çoklu oturum açmayı yapılandırın](#configure-azure-ad-single-sign-on)** .
-2. **[Pega sistemlerini uygulama tarafında çoklu oturum açmayı yapılandırın](#configure-pega-systems-single-sign-on)** .
-3. Azure AD çoklu oturum açma sınamasını test etmek için **[bir Azure AD test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** .
-4. Kullanıcı için Azure AD çoklu oturum açma özelliğini etkinleştirmek için **[Azure AD test kullanıcısını atayın](#assign-the-azure-ad-test-user)** .
-5. Kullanıcının Azure AD gösterimine bağlı **[bir pega sistemleri test kullanıcısı oluşturun](#create-a-pega-systems-test-user)** .
-6. Yapılandırmanın çalıştığını doğrulamak için **[Çoklu oturum açmayı test](#test-single-sign-on)** edin.
-
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma
-
-Bu bölümde, Azure portal Azure AD çoklu oturum açmayı etkinleştireceksiniz.
-
-Azure AD çoklu oturum açmayı pega sistemleriyle birlikte yapılandırmak için şu adımları uygulayın:
-
-1. [Azure Portal](https://portal.azure.com/), **pega Systems** uygulama tümleştirmesi sayfasında, **Çoklu oturum açma**' yı seçin:
-
-    ![Çoklu oturum açma seçin](common/select-sso.png)
-
-2. Çoklu oturum **açma yöntemi seç** iletişim kutusunda, çoklu oturum açmayı etkinleştirmek için **SAML/WS-Besme** modunu seçin:
-
-    ![Çoklu oturum açma yöntemi seçin](common/select-saml-option.png)
-
-3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesini seçin:
-
-    ![Düzenle simgesi](common/edit-urls.png)
+   ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
 4. **Temel SAML yapılandırması** iletişim kutusunda, uygulamayı IDP tarafından başlatılan modda yapılandırmak istiyorsanız aşağıdaki adımları izleyin.
 
@@ -150,7 +126,7 @@ Azure AD çoklu oturum açmayı pega sistemleriyle birlikte yapılandırmak içi
 
     1. **Ad alanı** kutusunu boş bırakın.
 
-    1. **Kaynak**için **öznitelik**' i seçin.
+    1. **Kaynak** için **öznitelik**' i seçin.
 
     1. **Kaynak özniteliği** listesinde, bu satır için gösterilen öznitelik değerini seçin.
 
@@ -166,23 +142,41 @@ Azure AD çoklu oturum açmayı pega sistemleriyle birlikte yapılandırmak içi
 
     ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
 
-    1. **Oturum açma URL 'si**.
+### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
-    1. **Azure AD tanımlayıcısı**.
+Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
 
-    1. **Oturum kapatma URL 'si**.
+1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
+1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
+1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
+   1. **Ad** alanına `B.Simon` girin.  
+   1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
+   1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
+   1. **Oluştur**’a tıklayın.
 
-### <a name="configure-pega-systems-single-sign-on"></a>Pega sistemlerini çoklu oturum açmayı yapılandırma
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
+
+Bu bölümde, pega sistemlerine erişim vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
+
+1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. Uygulamalar listesinde **pega Systems**' ı seçin.
+1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
+1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
+1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. Kullanıcılara bir rolün atanmasını bekliyorsanız, **Rol Seç** açılır listesinden bunu seçebilirsiniz. Bu uygulama için ayarlanmış bir rol yoksa, "varsayılan erişim" rolü seçili olduğunu görürsünüz.
+1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
+
+### <a name="configure-pega-systems-sso"></a>Pega Systems SSO 'yu yapılandırma
 
 1. **Pega sistemleri** tarafında çoklu oturum açmayı yapılandırmak için, başka bir tarayıcı penceresinde yönetici hesabıyla pega portalında oturum açın.
 
-2. **Create**  >  **Sysadmin**  >  **kimlik doğrulama hizmeti**oluştur ' u seçin:
+2.   >  **Sysadmin**  >  **kimlik doğrulama hizmeti** oluştur ' u seçin:
 
-    ![Kimlik doğrulama hizmeti seçin](./media/pegasystems-tutorial/tutorial_pegasystems_admin.png)
+    ![Kimlik doğrulama hizmeti seçin](./media/pegasystems-tutorial/admin.png)
     
 3. **Kimlik doğrulama hizmeti oluştur** ekranında aşağıdaki adımları izleyin.
 
-    ![Kimlik doğrulama hizmeti ekranı oluştur](./media/pegasystems-tutorial/tutorial_pegasystems_admin1.png)
+    ![Kimlik doğrulama hizmeti ekranı oluştur](./media/pegasystems-tutorial/admin1.png)
 
     1. **Tür** listesinde **SAML 2,0**' yi seçin.
 
@@ -190,19 +184,19 @@ Azure AD çoklu oturum açmayı pega sistemleriyle birlikte yapılandırmak içi
 
     1. **Kısa açıklama** kutusuna bir açıklama girin.  
 
-    1. **Oluştur ve Aç ' ı**seçin.
+    1. **Oluştur ve Aç ' ı** seçin.
     
 4. **Kimlik sağlayıcısı (IDP) bilgileri** bölümünde **IDP meta verilerini içeri aktar** ' ı seçin ve Azure Portal indirdiğiniz meta veri dosyasına gidin. Meta verileri yüklemek için **Gönder** ' e tıklayın:
 
-    ![Kimlik sağlayıcısı (IDP) bilgi bölümü](./media/pegasystems-tutorial/tutorial_pegasystems_admin2.png)
+    ![Kimlik sağlayıcısı (IDP) bilgi bölümü](./media/pegasystems-tutorial/admin2.png)
     
     İçeri aktarma, IDP verilerini burada gösterildiği gibi dolduracaktır:
 
-    ![IOP verileri içeri aktarıldı](./media/pegasystems-tutorial/tutorial_pegasystems_admin3.png)
+    ![IOP verileri içeri aktarıldı](./media/pegasystems-tutorial/idp.png)
     
 6. **Hizmet sağlayıcısı (SP) ayarları** bölümünde aşağıdaki adımları uygulayın.
 
-    ![Hizmet sağlayıcı ayarları](./media/pegasystems-tutorial/tutorial_pegasystems_admin4.png)
+    ![Hizmet sağlayıcı ayarları](./media/pegasystems-tutorial/sp.png)
 
     1. **Varlık tanımlama** değerini kopyalayın ve Azure Portal **temel SAML yapılandırması** bölümündeki **tanımlayıcı** kutusuna yapıştırın.
 
@@ -212,70 +206,26 @@ Azure AD çoklu oturum açmayı pega sistemleriyle birlikte yapılandırmak içi
 
 7. **Kaydet**’i seçin.
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
-
-Bu bölümde, Azure portal Britta Simon adlı bir test kullanıcısı oluşturacaksınız.
-
-1. Azure portal sol bölmedeki **Azure Active Directory** ' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin:
-
-    ![Tüm kullanıcılar'ı seçin](common/users.png)
-
-2. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin:
-
-    ![Yeni Kullanıcı Seç](common/new-user.png)
-
-3. **Kullanıcı** iletişim kutusunda aşağıdaki adımları izleyin.
-
-    ![Kullanıcı iletişim kutusu](common/user-properties.png)
-
-    a. **Ad** kutusuna **Brittasıon**yazın.
-  
-    b. **Kullanıcı adı** kutusuna **brittasimon@ girin \<yourcompanydomain> . \<extension> ** (Örneğin, BrittaSimon@contoso.com .)
-
-    c. **Parolayı göster**' i seçin ve ardından **parola** kutusunda değer ' i yazın.
-
-    d. **Oluştur**’u seçin.
-
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
-
-Bu bölümde, pega sistemlerine erişimi vererek Azure çoklu oturum açma özelliğini kullanmak için Britta Simon 'u etkinleştireceksiniz.
-
-1. Azure portal **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' ı seçin ve ardından **pega sistemleri**' ni seçin.
-
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
-
-2. Uygulamalar listesinde **pega Systems**' ı seçin.
-
-    ![Uygulama listesi](common/all-applications.png)
-
-3. Sol bölmede **Kullanıcılar ve gruplar**' ı seçin:
-
-    ![Kullanıcı ve gruplar'ı seçin](common/users-groups-blade.png)
-
-4. **Kullanıcı Ekle**' yi seçin ve sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
-
-    ![Kullanıcı ekle seçeneğini belirleme](common/add-assign-user.png)
-
-5. **Kullanıcılar ve gruplar** iletişim kutusunda kullanıcılar listesinden **Britta Simon** ' ı seçin ve ardından ekranın altındaki **Seç** düğmesine tıklayın.
-
-6. SAML assertion 'da bir rol değeri bekleliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin. Ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-
-7. **Atama Ekle** Iletişim kutusunda **ata**' yı seçin.
-
-### <a name="create-a-pega-systems-test-user"></a>Pega sistemleri test kullanıcısı oluşturma
+### <a name="create-pega-systems-test-user"></a>Pega sistemleri test kullanıcısı oluşturma
 
 Ardından, pega sistemlerinde Britta Simon adlı bir kullanıcı oluşturmanız gerekir. Kullanıcı oluşturmak için [pega Systems destek](https://www.pega.com/contact-us) ekibiyle çalışın.
 
-### <a name="test-single-sign-on"></a>Çoklu oturum açma testi
+### <a name="test-sso"></a>Test SSO 'SU
 
-Şimdi, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test etmeniz gerekir.
+Bu bölümde, Azure AD çoklu oturum açma yapılandırmanızı aşağıdaki seçeneklerle test edersiniz. 
 
-Erişim panelinde pega sistemleri kutucuğunu seçtiğinizde, SSO 'yu ayarladığınız pega sistemleri örneğine otomatik olarak oturum açmış olmanız gerekir. Daha fazla bilgi için bkz. [uygulamalarım portalındaki uygulamalara erişme ve bunları kullanma](../user-help/my-apps-portal-end-user-access.md).
+#### <a name="sp-initiated"></a>SP başlatıldı:
 
-## <a name="additional-resources"></a>Ek kaynaklar
+* Azure portal içinde **Bu uygulamayı test et** ' e tıklayın. Bu, oturum açma akışını başlatabileceğiniz pega Systems oturum açma URL 'sine yeniden yönlendirilir.  
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme öğreticileri](./tutorial-list.md)
+* Pega Systems oturum açma URL 'sine doğrudan gidin ve oturum akışını buradan başlatın.
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
+#### <a name="idp-initiated"></a>IDP başlatıldı:
 
-- [Azure Active Directory Koşullu erişim nedir?](../conditional-access/overview.md)
+* Azure portal **Bu uygulamayı test et** ' e tıklayın ve SSO 'Yu ayarladığınız pega sistemlerinde otomatik olarak oturum açmış olmanız gerekir. 
+
+Uygulamayı dilediğiniz modda test etmek için Microsoft My Apps ' i de kullanabilirsiniz. Uygulamalarım içindeki pega sistemleri kutucuğuna tıkladığınızda, SP modunda yapılandırıldıysa oturum açma akışını başlatmak için uygulama oturum açma sayfasına yönlendirilirsiniz ve ıDP modunda yapılandırıldıysa, SSO 'yu ayarladığınız pega sistemlerinde otomatik olarak oturum açmış olmanız gerekir. Uygulamalarım hakkında daha fazla bilgi için bkz. [uygulamalarıma giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+Pega sistemlerini yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).

@@ -3,44 +3,58 @@ title: Düz metin Blobları üzerinde arama
 titleSuffix: Azure Cognitive Search
 description: Azure Bilişsel Arama 'de tam metin araması için Azure Bloblarından düz metin ayıklamak üzere bir arama Dizin Oluşturucu yapılandırın.
 manager: nitinme
-author: mgottein
-ms.author: magottei
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 09/25/2020
-ms.openlocfilehash: 417bdacc3ce8b619d5ec9618e6060ac071882471
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 02/01/2021
+ms.openlocfilehash: 422346430e32ccb8745d5a5d829c5d61089a99c6
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91533934"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99430437"
 ---
 # <a name="how-to-index-plain-text-blobs-in-azure-cognitive-search"></a>Azure Bilişsel Arama düz metin bloblarını dizin oluşturma
 
-Tam metin arama için aranabilir metin ayıklamak üzere bir [BLOB Dizin Oluşturucu](search-howto-indexing-azure-blob-storage.md) kullanırken, daha iyi dizin oluşturma sonuçları elde etmek için çeşitli ayrıştırma modlarını çağırabilirsiniz. Varsayılan olarak, Dizin Oluşturucu ayrılmış metin bloblarını tek bir metin öbeği olarak ayrıştırır. Ancak, bloblarınız aynı kodlamada düz metin içeriyorsa, **metin ayrıştırma modunu**kullanarak dizin oluşturma performansını önemli ölçüde artırabilirsiniz.
+Tam metin arama için aranabilir metin ayıklamak üzere bir [BLOB Dizin Oluşturucu](search-howto-indexing-azure-blob-storage.md) kullanırken, daha iyi dizin oluşturma sonuçları elde etmek için çeşitli ayrıştırma modlarını çağırabilirsiniz. Varsayılan olarak, Dizin Oluşturucu blob içeriğini tek bir metin öbeği olarak ayrıştırır. Ancak, tüm Bloblar aynı kodlamada düz metin içeriyorsa, ayrıştırma modunu kullanarak dizin oluşturma performansını önemli ölçüde geliştirebilirsiniz `text` .
+
+`text`Ayrıştırma modunu şu durumlarda kullanmanız gerekir:
+
++ Dosya türü. txt
++ Dosyalar herhangi bir türdür, ancak içerik metindir (örneğin, program kaynak kodu, HTML, XML vs.). Bir işaretleme dilindeki dosyalar için, herhangi bir sözdizimi karakteri statik metin olarak gönderilir.
+
+Dizin oluşturucularının JSON 'a serileştirilme olduğunu hatırlayın. Tüm metin dosyasının içeriği, tek bir büyük alan içinde olarak dizinlenir `"content": "<file-contents>"` . Yeni satır ve dönüş yönergeleri olarak ifade edilir `\r\n\` .
+
+Daha ayrıntılı bir sonuç istiyorsanız aşağıdaki çözümleri göz önünde bulundurun:
+
++ [`delimitedText`](search-howto-index-csv-blobs.md) Kaynak CSV ise ayrıştırma modu
++ [ `jsonArray` ya `jsonLines` ](search-howto-index-json-blobs.md)da kaynak JSON ise
+
+Birden çok bölümden oluşan içeriği bölmek için üçüncü bir seçenek de [AI zenginleştirme](cognitive-search-concept-intro.md)formunda gelişmiş özellikler gerektirir. Dosya öbeklerini tanımlayan ve farklı arama alanlarına atayan analizler ekler. [Yerleşik yetenekler](cognitive-search-predefined-skills.md)aracılığıyla tam veya kısmi bir çözüm bulabilirsiniz, ancak daha olası bir çözüm, içeriğinizi anlayan ve özel bir [beceriye](cognitive-search-custom-skill-interface.md)kaydırılmış olan özel öğrenme modelinde, içeriğinizi anlayan bir model öğreniyor olabilir.
 
 ## <a name="set-up-plain-text-indexing"></a>Düz metin dizinlemeyi ayarlama
 
-Düz metin bloblarını dizine eklemek için, bir dizin `parsingMode` oluşturma isteğinde yapılandırma özelliği ile bir Dizin Oluşturucu tanımı oluşturun veya güncelleştirin `text` : [Create Indexer](/rest/api/searchservice/create-indexer)
+Düz metin bloblarını dizine eklemek için, bir dizin `parsingMode` oluşturma isteğinde yapılandırma özelliği ile bir Dizin Oluşturucu tanımı oluşturun veya güncelleştirin `text` : [](/rest/api/searchservice/create-indexer)
 
 ```http
-    PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2020-06-30
-    Content-Type: application/json
-    api-key: [admin key]
+PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2020-06-30
+Content-Type: application/json
+api-key: [admin key]
 
-    {
-      ... other parts of indexer definition
-      "parameters" : { "configuration" : { "parsingMode" : "text" } }
-    }
+{
+  ... other parts of indexer definition
+  "parameters" : { "configuration" : { "parsingMode" : "text" } }
+}
 ```
 
 Varsayılan olarak, `UTF-8` kodlama varsayılır. Farklı bir kodlama belirtmek için `encoding` yapılandırma özelliğini kullanın: 
 
 ```http
-    {
-      ... other parts of indexer definition
-      "parameters" : { "configuration" : { "parsingMode" : "text", "encoding" : "windows-1252" } }
-    }
+{
+  ... other parts of indexer definition
+  "parameters" : { "configuration" : { "parsingMode" : "text", "encoding" : "windows-1252" } }
+}
 ```
 
 ## <a name="request-example"></a>İstek örneği
@@ -48,24 +62,20 @@ Varsayılan olarak, `UTF-8` kodlama varsayılır. Farklı bir kodlama belirtmek 
 Ayrıştırma modları, Dizin Oluşturucu tanımında belirtilmiştir.
 
 ```http
-    POST https://[service name].search.windows.net/indexers?api-version=2020-06-30
-    Content-Type: application/json
-    api-key: [admin key]
+POST https://[service name].search.windows.net/indexers?api-version=2020-06-30
+Content-Type: application/json
+api-key: [admin key]
 
-    {
-      "name" : "my-plaintext-indexer",
-      "dataSourceName" : "my-blob-datasource",
-      "targetIndexName" : "my-target-index",
-      "parameters" : { "configuration" : { "parsingMode" : "delimitedText", "delimitedTextHeaders" : "id,datePublished,tags" } }
-    }
+{
+  "name" : "my-plaintext-indexer",
+  "dataSourceName" : "my-blob-datasource",
+  "targetIndexName" : "my-target-index",
+  "parameters" : { "configuration" : { "parsingMode" : "delimitedText", "delimitedTextHeaders" : "id,datePublished,tags" } }
+}
 ```
-
-## <a name="help-us-make-azure-cognitive-search-better"></a>Azure Bilişsel Arama daha iyi hale getirmemize yardımcı olun
-
-Geliştirmeler için özellik istekleriniz veya fikirler varsa, bu girişi [UserVoice](https://feedback.azure.com/forums/263029-azure-search/)üzerinde belirtin. Mevcut özelliği kullanarak yardıma ihtiyacınız varsa sorunuzu [Stack Overflow](https://stackoverflow.microsoft.com/questions/tagged/18870)gönderin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Bilişsel Arama'daki Dizin Oluşturucular](search-indexer-overview.md)
-* [Blob Dizin oluşturucuyu yapılandırma](search-howto-indexing-azure-blob-storage.md)
-* [Blob dizinlemeye genel bakış](search-blob-storage-integration.md)
++ [Azure Bilişsel Arama'daki Dizin Oluşturucular](search-indexer-overview.md)
++ [Blob Dizin oluşturucuyu yapılandırma](search-howto-indexing-azure-blob-storage.md)
++ [Blob dizinlemeye genel bakış](search-blob-storage-integration.md)

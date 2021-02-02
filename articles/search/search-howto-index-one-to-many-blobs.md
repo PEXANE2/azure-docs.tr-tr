@@ -5,34 +5,38 @@ description: Her Blobun bir veya daha fazla arama dizini belgesi sağlayabildiğ
 manager: nitinme
 author: arv100kri
 ms.author: arjagann
-ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 07/11/2020
-ms.openlocfilehash: e5a69525c4bd0717c0561bc61ee3c52aa68e1c9d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 02/01/2021
+ms.openlocfilehash: ea22b3cff8a0303c4e6698db4090df0f5ed2153a
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91533970"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99430989"
 ---
 # <a name="indexing-blobs-to-produce-multiple-search-documents"></a>Birden çok arama belgesi üretmek için Blobları dizinleme
-Varsayılan olarak, bir blob Dizin Oluşturucu bir Blobun içeriğini tek bir arama belgesi olarak değerlendirir. Belirli **Parsingmode** değerleri, tek bir Blobun birden çok arama belgesi ile sonuçlanabileceğinden senaryolar destekler. Bir dizin oluşturucunun bir Blobun birden fazla arama belgesi ayıklamasına izin veren farklı türde **Parsingmode** 'lar şunlardır:
-+ `delimitedText`
-+ `jsonArray`
-+ `jsonLines`
+
+Varsayılan olarak, bir blob Dizin Oluşturucu bir Blobun içeriğini tek bir arama belgesi olarak değerlendirir. Bir arama dizininde Blobun daha ayrıntılı bir gösterimini isterseniz, bir bloba birden çok arama belgesi oluşturmak için **Parsingmode** değerlerini ayarlayabilirsiniz. Birçok arama belgesi ile sonuçlanan **Parsingmode** değerleri `delimitedText` , ( [CSV](search-howto-index-csv-blobs.md)Için) ve `jsonArray` veya `jsonLines` ( [JSON](search-howto-index-json-blobs.md)için) içerir.
+
+Bu ayrıştırma modlarından birini kullandığınızda, ortaya çıktı olan yeni arama belgelerinin benzersiz belge anahtarları olması ve bu değerin nereden geldiğini belirlemede bir sorun ortaya çıkar. Üst blob, biçiminde en az bir benzersiz değere sahiptir `metadata_storage_path property` , ancak bu değere birden fazla arama belgesine katkıda bulunursa, anahtar artık dizinde benzersiz değildir.
+
+Bu sorunu gidermek için, blob Indexer `AzureSearch_DocumentKey` tek blob üst öğesinden oluşturulan her bir alt arama belgesini benzersiz bir şekilde tanımlayan bir oluşturur. Bu makalede, bu özelliğin nasıl çalıştığı açıklanır.
 
 ## <a name="one-to-many-document-key"></a>Bire çok belge anahtarı
+
 Bir Azure Bilişsel Arama dizininde görüntülenen her belge, bir belge anahtarı tarafından benzersiz şekilde tanımlanır. 
 
-Hiçbir ayrıştırma modu belirtilmediğinde ve Azure Bilişsel Arama dizindeki anahtar alanı için açık eşleme yoksa, özelliği otomatik olarak [maps](search-indexer-field-mappings.md) `metadata_storage_path` anahtar olarak eşler. Bu eşleme, her Blobun ayrı bir arama belgesi olarak görünmesini sağlar.
+Hiçbir ayrıştırma modu belirtilmediğinde ve arama belgesi anahtarı için Dizin Oluşturucu tanımında [Açık alan eşlemesi](search-indexer-field-mappings.md) yoksa, blob Indexer otomatik olarak `metadata_storage_path property` belge anahtarı olarak eşler. Bu eşleme, her Blobun ayrı bir arama belgesi olarak görünmesini sağlar ve bu alan eşlemesini kendiniz oluşturmak zorunda kalmanızı sağlar (normalde, yalnızca özdeş adlara ve türlerine sahip alanlar otomatik olarak eşleştirilir).
 
-Yukarıda listelenen ayrıştırma modlarından herhangi birini kullanırken, bir blob "birçok" arama belgesiyle eşlenir ve bir belge anahtarı yalnızca blob meta verilerini uygun olmayan şekilde temel alır. Azure Bilişsel Arama, bu kısıtlamayı aşmak için bir bloba ayıklanan her bir varlık için "bire çok" belge anahtarı oluşturma yeteneğine sahiptir. Bu özellik adlandırılır `AzureSearch_DocumentKey` ve bloba ayıklanan her bir varlığa eklenir. Bu özelliğin değeri, _Bloblar genelinde_ her bir varlık için benzersiz olarak garanti edilir ve varlıklar ayrı arama belgeleri olarak görünür.
+Yukarıda listelenen ayrıştırma modlarından herhangi birini kullanırken, bir blob "birçok" arama belgesiyle eşlenir ve bir belge anahtarı yalnızca blob meta verilerini uygun olmayan şekilde temel alır. Azure Bilişsel Arama, bu kısıtlamayı aşmak için bir bloba ayıklanan her bir varlık için "bire çok" belge anahtarı oluşturma yeteneğine sahiptir. Bu özellik AzureSearch_DocumentKey olarak adlandırılır ve bloba ayıklanan her bir varlığa eklenir. Bu özelliğin değeri, Bloblar genelinde her bir varlık için benzersiz olarak garanti edilir ve varlıklar ayrı arama belgeleri olarak görünür.
 
 Varsayılan olarak, anahtar dizin alanı için hiçbir açık alan eşlemesi belirtilmediğinde, `AzureSearch_DocumentKey` `base64Encode` alan eşleme işlevi kullanılarak onunla eşleştirilir.
 
 ## <a name="example"></a>Örnek
+
 Aşağıdaki alanlarla bir dizin tanımı olduğunu varsayalım:
+
 + `id`
 + `temperature`
 + `pressure`
@@ -40,77 +44,74 @@ Aşağıdaki alanlarla bir dizin tanımı olduğunu varsayalım:
 
 Blob kabınızda aşağıdaki yapıyla blob 'lar vardır:
 
-_ ÜzerindeBlob1.js_
+_ÜzerindeBlob1.js_
 
 ```json
-    { "temperature": 100, "pressure": 100, "timestamp": "2019-02-13T00:00:00Z" }
-    { "temperature" : 33, "pressure" : 30, "timestamp": "2019-02-14T00:00:00Z" }
+{ "temperature": 100, "pressure": 100, "timestamp": "2020-02-13T00:00:00Z" }
+{ "temperature" : 33, "pressure" : 30, "timestamp": "2020-02-14T00:00:00Z" }
 ```
 
-_ ÜzerindeBlob2.js_
+_ÜzerindeBlob2.js_
 
 ```json
-    { "temperature": 1, "pressure": 1, "timestamp": "2018-01-12T00:00:00Z" }
-    { "temperature" : 120, "pressure" : 3, "timestamp": "2013-05-11T00:00:00Z" }
+{ "temperature": 1, "pressure": 1, "timestamp": "2019-01-12T00:00:00Z" }
+{ "temperature" : 120, "pressure" : 3, "timestamp": "2017-05-11T00:00:00Z" }
 ```
 
-Bir Dizin Oluşturucu oluşturup, **parsingMode** `jsonLines` anahtar alanı için herhangi bir açık alan eşlemesi belirtmeden parsingmode 'u olarak ayarlarsanız, aşağıdaki eşleme örtük olarak uygulanır
+Bir Dizin Oluşturucu oluşturup,  `jsonLines` anahtar alanı için herhangi bir açık alan eşlemesi belirtmeden parsingmode 'u olarak ayarlarsanız, aşağıdaki eşleme örtük olarak uygulanır.
 
 ```http
-    {
-        "sourceFieldName" : "AzureSearch_DocumentKey",
-        "targetFieldName": "id",
-        "mappingFunction": { "name" : "base64Encode" }
-    }
+{
+    "sourceFieldName" : "AzureSearch_DocumentKey",
+    "targetFieldName": "id",
+    "mappingFunction": { "name" : "base64Encode" }
+}
 ```
 
-Bu kurulum, aşağıdaki bilgileri içeren Azure Bilişsel Arama dizinine neden olur (breçekimi için Base64 kodlamalı KIMLIK kısaltıldı)
+Bu kurulum, aşağıdaki çizime benzer şekilde, önceden Kesinleştirme belge anahtarlarına neden olur (örneğin, Base64 kodlamalı KIMLIK breçekimi için kısaltıldı).
 
 | ID | sıcaklık | basınç | timestamp |
 |----|-------------|----------|-----------|
-| aHR0 ... Yıljeuannvbjsx | 100 | 100 | 2019-02-13T00:00:00Z |
-| aHR0 ... Yıljeuannvbjsy | 33 | 30 | 2019-02-14T00:00:00Z |
-| aHR0 ... Yıljluayla Annvbjsx | 1 | 1 | 2018-01-12T00:00:00Z |
-| aHR0 ... Yıljluayla Annvbjsy | 120 | 3 | 2013-05-11T00:00:00Z |
+| aHR0 ... Yıljeuannvbjsx | 100 | 100 | 2020-02-13T00:00:00Z |
+| aHR0 ... Yıljeuannvbjsy | 33 | 30 | 2020-02-14T00:00:00Z |
+| aHR0 ... Yıljluayla Annvbjsx | 1 | 1 | 2019-01-12T00:00:00Z |
+| aHR0 ... Yıljluayla Annvbjsy | 120 | 3 | 2017-05-11T00:00:00Z |
 
 ## <a name="custom-field-mapping-for-index-key-field"></a>Dizin anahtarı alanı için özel alan eşleme
 
-Önceki örnekle aynı dizin tanımının olduğunu varsayarsak, blob kapsayıcınızda aşağıdaki yapıya sahip Bloblar olduğunu varsayalım:
+Önceki örnekle aynı dizin tanımının olduğunu varsayarsak, blob kabınızın blob 'ları Şu yapıya sahip olduğunu varsayalım:
 
-_ ÜzerindeBlob1.js_
-
-```json
-    recordid, temperature, pressure, timestamp
-    1, 100, 100,"2019-02-13T00:00:00Z" 
-    2, 33, 30,"2019-02-14T00:00:00Z" 
-```
-
-_ ÜzerindeBlob2.js_
+_ÜzerindeBlob1.js_
 
 ```json
-    recordid, temperature, pressure, timestamp
-    1, 1, 1,"2018-01-12T00:00:00Z" 
-    2, 120, 3,"2013-05-11T00:00:00Z" 
+recordid, temperature, pressure, timestamp
+1, 100, 100,"2019-02-13T00:00:00Z" 
+2, 33, 30,"2019-02-14T00:00:00Z" 
 ```
 
-`delimitedText` **Parsingmode**ile bir Dizin Oluşturucu oluşturduğunuzda, anahtar alanına aşağıdaki şekilde bir alan eşleme işlevi ayarlamak doğal olabilir:
+_ÜzerindeBlob2.js_
+
+```json
+recordid, temperature, pressure, timestamp
+1, 1, 1,"2018-01-12T00:00:00Z" 
+2, 120, 3,"2013-05-11T00:00:00Z" 
+```
+
+`delimitedText` **Parsingmode** ile bir Dizin Oluşturucu oluşturduğunuzda, anahtar alanına aşağıdaki şekilde bir alan eşleme işlevi ayarlamak doğal olabilir:
 
 ```http
-    {
-        "sourceFieldName" : "recordid",
-        "targetFieldName": "id"
-    }
+{
+    "sourceFieldName" : "recordid",
+    "targetFieldName": "id"
+}
 ```
 
-Ancak, bu eşleme, _not_ Dizin `recordid` _Bloblar genelinde_benzersiz olmadığından, dizinde gösterilen 4 belge ile sonuçlanmaz. Bu nedenle, `AzureSearch_DocumentKey` özellikten "bire çok" ayrıştırma modları için anahtar Dizin alanına uygulanan örtük alan eşlemesini kullanmanızı öneririz.
+Ancak, bu eşleme,  Dizin `recordid` _Bloblar genelinde_ benzersiz olmadığından, dizinde gösterilen 4 belge ile sonuçlanmaz. Bu nedenle, `AzureSearch_DocumentKey` özellikten "bire çok" ayrıştırma modları için anahtar Dizin alanına uygulanan örtük alan eşlemesini kullanmanızı öneririz.
 
-Açık alan eşlemesi ayarlamak istiyorsanız, _SourceField_ 'ın **Tüm Bloblar genelinde**her bir varlık için benzersiz olduğundan emin olun.
+Açık alan eşlemesi ayarlamak istiyorsanız, _SourceField_ 'ın **Tüm Bloblar genelinde** her bir varlık için benzersiz olduğundan emin olun.
 
 > [!NOTE]
 > `AzureSearch_DocumentKey`Ayıklanan varlık başına benzersizlik sağlamak için kullanılan yaklaşım değişikliğe tabidir ve bu nedenle uygulamanızın gereksinimlerine göre bu değere dayanmamalıdır.
-
-## <a name="help-us-make-azure-cognitive-search-better"></a>Azure Bilişsel Arama daha iyi hale getirmemize yardımcı olun
-Geliştirmeler için özellik istekleriniz veya fikirler varsa, bu girişi [UserVoice](https://feedback.azure.com/forums/263029-azure-search/)üzerinde belirtin. Mevcut özelliği kullanarak yardıma ihtiyacınız varsa sorunuzu [Stack Overflow](https://stackoverflow.microsoft.com/questions/tagged/18870)gönderin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/29/2021
-ms.openlocfilehash: ceeaad64734099f8669590d39f1629b9f4173e19
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: df393f54e7dfa83c8fc0feab3dbf42a156b296b7
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99097160"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99430471"
 ---
 # <a name="indexers-in-azure-cognitive-search"></a>Azure Bilişsel Arama'daki Dizin Oluşturucular
 
@@ -47,6 +47,8 @@ Dizin oluşturucular Azure 'da veri depolarında gezinme.
 + [Azure SQL Veritabanı](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
 + [SQL Yönetilen Örnek](search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md)
 + [Azure Sanal Makineler'de SQL Server](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)
+
+İstemci uygulamaları için Azure sanal ağlarını kullandığınızda, uzak veri kaynaklarına yönelik Dizin Oluşturucu bağlantıları standart Internet bağlantıları (genel) veya şifrelenmiş özel bağlantılar kullanılarak yapılabilir. Ayrıca, güvenilen bir hizmet kimliği kullanarak kimlik doğrulaması için bağlantılar da ayarlayabilirsiniz. Güvenli bağlantılar hakkında daha fazla bilgi için bkz. [Özel uç noktalar aracılığıyla erişim verme](search-indexer-securing-resources.md#granting-access-via-private-endpoints) ve [yönetilen kimlik kullanarak bir veri kaynağına bağlanma](search-howto-managed-identities-data-sources.md).
 
 ## <a name="stages-of-indexing"></a>Dizin oluşturma aşamaları
 

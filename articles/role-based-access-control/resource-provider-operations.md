@@ -9,12 +9,12 @@ author: rolyon
 ms.author: rolyon
 ms.date: 01/15/2021
 ms.custom: generated
-ms.openlocfilehash: a521623447f4415e35a06c5c60e3723a69b4aa15
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 72735dad6a52fffd6e6e94ad4fb0fb7a9558b4c4
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98700610"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99430088"
 ---
 # <a name="azure-resource-provider-operations"></a>Azure Kaynak sağlayıcısı işlemleri
 
@@ -82,6 +82,7 @@ Bu bölümde, yerleşik rollerde kullanılan Azure Kaynak sağlayıcılarının 
 | [Microsoft. Powerbiadanmış](#microsoftpowerbidedicated) |
 | [Microsoft. purview](#microsoftpurview) |
 | [Microsoft. StreamAnalytics](#microsoftstreamanalytics) |
+| [Microsoft. SYNAPSE](#microsoftsynapse) |
 | **Blok Zinciri** |
 | [Microsoft. Blockzinciri](#microsoftblockchain) |
 | **Yapay zeka + makine öğrenmesi** |
@@ -94,7 +95,7 @@ Bu bölümde, yerleşik rollerde kullanılan Azure Kaynak sağlayıcılarının 
 | [Microsoft. ıotcentral](#microsoftiotcentral) |
 | [Microsoft. Notificationhub 'Lar](#microsoftnotificationhubs) |
 | [Microsoft. Timeseriesınsights](#microsofttimeseriesinsights) |
-| **Karma gerçeklik** |
+| **Karma Gerçeklik** |
 | [Microsoft. ıotspaces](#microsoftiotspaces) |
 | [Microsoft. MixedReality](#microsoftmixedreality) |
 | **Tümleştirme** |
@@ -4766,6 +4767,169 @@ Azure hizmeti: [Stream Analytics](../stream-analytics/index.yml)
 > | Microsoft. StreamAnalytics/streamingjobs/dönüşümler/okuma | Stream Analytics Işi dönüşümünü oku |
 > | Microsoft. StreamAnalytics/streamingjobs/dönüşümler/yazma | Stream Analytics Işi dönüşümünü yaz |
 
+### <a name="microsoftsynapse"></a>Microsoft. SYNAPSE
+
+Azure hizmeti: [SYNAPSE Analytics](../synapse-analytics/index.yml)
+
+> [!div class="mx-tableFixed"]
+> | Eylem | Açıklama |
+> | --- | --- |
+> | Microsoft. SYNAPSE/Checknameavaılabılıty/Action | Çalışma alanı adının kullanılabilirliğini denetler. |
+> | Microsoft. SYNAPSE/Register/ACTION | Azure SYNAPSE Analytics (çalışma alanları) kaynak sağlayıcısını kaydeder ve çalışma alanlarının oluşturulmasını etkinleştirilir. |
+> | Microsoft. SYNAPSE/Unregister/eylem | Azure SYNAPSE Analytics (çalışma alanları) kaynak sağlayıcısının kaydını siler ve çalışma alanlarının oluşturulmasını devre dışı bırakır. |
+> | Microsoft. SYNAPSE/çalışma alanları/tümleştirme çalışma zamanları/okuma | Integration Runtime alın. |
+> | Microsoft. SYNAPSE/çalışma alanları/tümleştirme çalışma zamanları/yazma | Tümleştirme çalışma zamanları oluşturun veya güncelleştirin. |
+> | Microsoft. SYNAPSE/çalışma alanları/tümleştirme çalışma zamanları/silme | Integration Runtime silme |
+> | Microsoft. SYNAPSE/Workspaces/ıntegrationçalışmazamanları/getStatus/eylem | Integration Runtime durumunu al |
+> | Microsoft. SYNAPSE/Workspaces/ıntegrationçalışmazamanları/createExpressSHIRInstallLink/eylem | Integration Runtime Install bağlantısı oluşturma |
+> | Microsoft. SYNAPSE/Workspaces/ıntegrationçalışmalarım/Başlat/eylem | Integration Runtime Başlat |
+> | Microsoft. SYNAPSE/Workspaces/ıntegrationçalışmazamanları/durdur/eylem | Integration Runtime durdur |
+> | Microsoft. SYNAPSE/Workspaces/ıntegrationworkspaces/Getconnectionınfo/Action | Integration Runtime bağlantı bilgilerini al |
+> | Microsoft. SYNAPSE/Workspaces/ıntegrationçalışmazamanları/regenerateAuthKey/Action | Tüm Integration Runtime kimlik doğrulama anahtarını yeniden üret |
+> | Microsoft. SYNAPSE/Workspaces/ıntegrationçalışmazamanları/listAuthKeys/ACTION | Herhangi bir Integration Runtime için kimlik doğrulama anahtarlarını listeleyin |
+> | Microsoft. SYNAPSE/Workspaces/ıntegrationworkspaces/Removencode/Action | Tüm Integration Runtime düğümlerini kaldır |
+> | Microsoft. SYNAPSE/Workspaces/ıntegrationçalışmazamanları/monitoringData/Action | Integration Runtime tüm izleme verilerini alın |
+> | Microsoft. SYNAPSE/Workspaces/ıntegrationçalışmalarım/syncCredentials/Action | Integration Runtime kimlik bilgilerini dilediğiniz zaman eşitleyin |
+> | Microsoft. SYNAPSE/çalışma alanları/tümleştirme çalışma zamanları/yükseltme/eylem | Integration Runtime yükseltme |
+> | Microsoft. SYNAPSE/Workspaces/ıntegrationworkspaces/Removelmürekkepler/eylem | Tüm Integration Runtime bağlantılarını kaldır |
+> | Microsoft. SYNAPSE/Workspaces/ıntegrationçalışmazamanları/Enableınteractivequery/Action | Dilediğiniz Integration Runtime etkileşimli sorguyu etkinleştir |
+> | Microsoft. SYNAPSE/Workspaces/ıntegrationçalışmazamanları/Disableınteractivequery/Action | Dilediğiniz Integration Runtime etkileşimli sorguyu devre dışı bırak |
+> | Microsoft. SYNAPSE/Workspaces/ıntegrationçalışmazamanları/refreshObjectMetadata/eylem | Herhangi bir ınterbir ınterıntegration çalışma zamanında nesne meta verilerini yenileme |
+> | Microsoft. SYNAPSE/Workspaces/ıntegrationçalışmazamanları/getObjectMetadata/eylem | Herhangi bir karşılıklı çalışma zamanında nesne meta verilerini al |
+> | Microsoft. SYNAPSE/Workspaces/Managedıdentitysqlcontrolsettings/Write | Çalışma alanında yönetilen kimlik SQL denetimi ayarlarını Güncelleştir |
+> | Microsoft. SYNAPSE/Workspaces/Managedıdentitysqlcontrolsettings/Read | Yönetilen kimlik SQL denetimi ayarlarını al |
+> | Microsoft. SYNAPSE/Workspaces/Scopehavuzlar/Write | Tüm kapsam havuzlarını oluşturun veya güncelleştirin. |
+> | Microsoft. SYNAPSE/Workspaces/Scopehavuzlar/Read | Tüm kapsam havuzlarını okuyun. |
+> | Microsoft. SYNAPSE/Workspaces/Scopehavuzlar/Delete | Tüm kapsam havuzlarını silin. |
+> | Microsoft. SYNAPSE/işlemler/okuma | Azure SYNAPSE Analytics kaynak sağlayıcısından kullanılabilir Işlemleri okuyun. |
+> | Microsoft. SYNAPSE/Workspaces/ıntegrationçalışmazamanları/düğümleri/okuma | Tüm Integration Runtime düğümlerini alın. |
+> | Microsoft. SYNAPSE/çalışma alanları/tümleştirme çalışma zamanları/düğümleri/silme | Integration Runtime düğümünü silin. |
+> | Microsoft. SYNAPSE/çalışma alanları/tümleştirme çalışma zamanları/düğümleri/yazma | Tüm Integration Runtime düğümlerini düzeltme. |
+> | Microsoft. SYNAPSE/Workspaces/ıntegrationçalışmazamanları/düğümleri/IPAddress/Action | Integration Runtime IP adresini al |
+> | Microsoft. SYNAPSE/Workspaces/firewallRules/Write | Herhangi bir IP güvenlik duvarı kuralı oluşturun veya güncelleştirin. |
+> | Microsoft. SYNAPSE/Workspaces/firewallRules/Read | IP güvenlik duvarı kuralını oku |
+> | Microsoft. SYNAPSE/Workspaces/firewallRules/Delete | Herhangi bir IP güvenlik duvarı kuralını silin. |
+> | Microsoft. SYNAPSE/Workspaces/Replacetalpfirewallrules/Action | Çalışma alanının tüm IP güvenlik duvarı kurallarını değiştirir. |
+> | Microsoft. SYNAPSE/Workspaces/Write | Herhangi bir çalışma alanı oluşturun veya güncelleştirin. |
+> | Microsoft. SYNAPSE/Workspaces/Read | Tüm çalışma alanlarını okuyun. |
+> | Microsoft. SYNAPSE/Workspaces/Delete | Tüm çalışma alanlarını silin. |
+> | Microsoft. SYNAPSE/Workspaces/checkDefaultStorageAccountStatus/Action | Varsayılan depolama hesabı durumunu denetler. |
+> | Microsoft. SYNAPSE/Workspaces/Sqlhavuzlar/Write | Herhangi bir SQL Analytics havuzu oluşturun veya güncelleştirin. |
+> | Microsoft. SYNAPSE/Workspaces/Sqlhavuzlar/Read | Herhangi bir SQL Analytics havuzunu okuyun. |
+> | Microsoft. SYNAPSE/Workspaces/Sqlhavuzlar/Delete | Herhangi bir SQL Analytics havuzunu silin. |
+> | Microsoft. SYNAPSE/Workspaces/Sqlhavuzlar/Pause/Action | Herhangi bir SQL Analytics havuzunu duraklatın. |
+> | Microsoft. SYNAPSE/Workspaces/Sqlhavuzlar/özgeçmişi/Action | Tüm SQL Analytics havuzlarını sürdürür. |
+> | Microsoft. SYNAPSE/Workspaces/Sqlhavuzlar/restorePoints/ACTION | SQL Analytics havuzu geri yükleme noktası oluşturun. |
+> | Microsoft. SYNAPSE/Workspaces/Sqlhavuzlar/Move/Action | Herhangi bir SQL Analytics havuzunu yeniden adlandırın. |
+> | Microsoft. SYNAPSE/Workspaces/Sqlhavuzlar/dataWarehouseQueries/Read | Herhangi bir SQL Analytics havuzu sorgularını okuyun. |
+> | Microsoft. SYNAPSE/Workspaces/Sqlhavuzlar/geoBackupPolicies/Read | Herhangi bir SQL Analytics havuz coğrafi yedekleme Ilkesini okuyun. |
+> | Microsoft. SYNAPSE/Workspaces/Sqlhavuzlar/dataWarehouseUserActivities/Read | Tüm SQL Analytics havuzu Kullanıcı etkinliklerini okuyun. |
+> | Microsoft. SYNAPSE/Workspaces/Sqlhavuzlar/restorePoints/Read | Herhangi bir SQL Analytics havuz geri yükleme noktasını okuyun. |
+> | Microsoft. SYNAPSE/Workspaces/Sqlhavuzlar/restorePoints/Delete | Geri yükleme noktasını siler. |
+> | Microsoft. SYNAPSE/Workspaces/Sqlhavuzlar/dataWarehouseQueries/dataWarehouseQuerySteps/Read | Herhangi bir SQL Analytics havuzu sorgu adımını okuyun. |
+> | Microsoft. SYNAPSE/Workspaces/Sqlhavuzlar/maintenanceWindows/Read | Herhangi bir SQL Analytics havuz bakım pencerelerini okuyun. |
+> | Microsoft. SYNAPSE/Workspaces/Sqlhavuzlar/maintenanceWindows/Write | Herhangi bir SQL Analytics havuz bakım pencerelerini okuyun. |
+> | Microsoft. SYNAPSE/Workspaces/Sqlhavuzlar/maintenanceWindowOptions/Read | Tüm SQL Analytics havuzu bakım penceresi seçeneklerini okuyun. |
+> | Microsoft. SYNAPSE/Workspaces/Sqlhavuzlar/replicationLinks/Read | Herhangi bir SQL Analytics havuz çoğaltma bağlantısını okuyun. |
+> | Microsoft. SYNAPSE/Workspaces/Sqlhavuzlar/transparentDataEncryption/Read | Yapılandırma Saydam Veri Şifrelemesi herhangi bir SQL Analytics havuzunu okuyun. |
+> | Microsoft. SYNAPSE/Workspaces/Sqlhavuzlar/transparentDataEncryption/Write | Yapılandırma Saydam Veri Şifrelemesi herhangi bir SQL Analytics havuzu oluşturun veya güncelleştirin. |
+> | Microsoft. SYNAPSE/Workspaces/Sqlhavuzlar/transparentDataEncryption/operationResults/Read | Yapılandırma Işlemi sonuçlarının Saydam Veri Şifrelemesi herhangi bir SQL Analytics havuzunu okuyun. |
+> | Microsoft. SYNAPSE/Workspaces/Sqlhavuzlar/auditingSettings/Read | Tüm SQL Analytics havuzu denetim ayarlarını okuyun. |
+> | Microsoft. SYNAPSE/Workspaces/Sqlhavuzlar/auditingSettings/Write | Herhangi bir SQL Analytics havuz denetim ayarı oluşturun veya güncelleştirin. |
+> | Microsoft. SYNAPSE/Workspaces/Sqlhavuzlar/işlemler/okuma | Herhangi bir SQL Analytics havuzu Işlemini okuyun. |
+> | Microsoft. SYNAPSE/Workspaces/Sqlhavuzlar/kullanımlar/Read | Herhangi bir SQL Analytics havuzu kullanımlarını okuyun. |
+> | Microsoft. SYNAPSE/Workspaces/Sqlhavuzlar/currentSensitivityLabels/Read | Herhangi bir SQL Analytics havuzu geçerli duyarlılık etiketini okuyun. |
+> | Microsoft. SYNAPSE/Workspaces/Sqlhavuzlar/currentSensitivityLabels/Write | Toplu güncelleştirme geçerli duyarlılık etiketleri |
+> | Microsoft. SYNAPSE/Workspaces/Sqlhavuzlar/recommendedSensitivityLabels/Read | Önerilen herhangi bir SQL Analytics havuzu duyarlık etiketini okuyun. |
+> | Microsoft. SYNAPSE/Workspaces/Sqlhavuzlar/recommendedSensitivityLabels/Write | Toplu güncelleştirme önerilen duyarlılık etiketleri |
+> | Microsoft. SYNAPSE/Workspaces/Sqlhavuzlar/schemas/Read | Herhangi bir SQL Analytics havuz şemalarını okuyun. |
+> | Microsoft. SYNAPSE/Workspaces/Sqlhavuzlar/şemalar/tablolar/okuma | Herhangi bir SQL Analytics havuz şeması tablosunu okuyun. |
+> | Microsoft. SYNAPSE/Workspaces/Sqlhavuzlar/şemalar/tablolar/sütunlar/okuma | Herhangi bir SQL Analytics havuz şeması tablo sütununu okuyun. |
+> | Microsoft. SYNAPSE/Workspaces/Sqlhavuzlar/connectionPolicies/Read | Herhangi bir SQL Analytics havuz bağlantı Ilkesini okuyun. |
+> | Microsoft. SYNAPSE/Workspaces/Sqlhavuzlar/IBU, | Herhangi bir SQL Analytics havuzu güvenlik açığı değerlendirmesini okuyun. |
+> | Microsoft. SYNAPSE/Workspaces/Sqlhavuzlar/ | SQL havuzu güvenlik açığı değerlendirmesini oluşturur veya güncelleştirir |
+> | Microsoft. SYNAPSE/Workspaces/Sqlhavuzlar/ | Tüm SQL Analytics havuzu güvenlik açığı değerlendirmesini silin. |
+> | Microsoft. SYNAPSE/Workspaces/Sqlhavuzlar/ | SQL Analytics havuzu güvenlik açığı değerlendirmesi tarama kayıtlarını okuyun. |
+> | Microsoft. SYNAPSE/Workspaces/Sqlhavuzlar/, bu, tarama/tarama/başlatma | Herhangi bir SQL Analytics havuzu güvenlik açığı değerlendirmesi tarama kaydı başlatın. |
+> | Microsoft. SYNAPSE/Workspaces/Sqlhavuzlar/, bu, tarama/dışarı aktarma/eylem | Tüm SQL Analytics havuzu güvenlik açığı değerlendirme taraması kayıtlarını dışarı aktarın. |
+> | Microsoft. SYNAPSE/Workspaces/Sqlhavuzlar/Securityalcertpolicies/Read | Herhangi bir SQL Analytics havuzu tehdit algılama Ilkesini okuyun. |
+> | Microsoft. SYNAPSE/Workspaces/Sqlhavuzlar/Securityalcertpolicies/Write | Herhangi bir SQL Analytics havuzu tehdit algılama Ilkesi oluşturun veya güncelleştirin. |
+> | Microsoft. SYNAPSE/Workspaces/Sqlhavuzlar/şemalar/tablolar/sütunlar/sensitivityLabels/Read | Belirli bir sütunun duyarlılık etiketini alır. |
+> | Microsoft. SYNAPSE/Workspaces/Sqlhavuzları/şemalar/tablolar/sütunlar/sensitivityLabels/etkinleştir/eylem | Herhangi bir SQL Analytics havuz duyarlılık etiketini etkinleştirin. |
+> | Microsoft. SYNAPSE/Workspaces/Sqlhavuzları/şemalar/tablolar/sütunlar/sensitivityLabels/devre dışı/eylem | Tüm SQL Analytics havuzu duyarlılık etiketlerini devre dışı bırakın. |
+> | Microsoft. SYNAPSE/Workspaces/Sqlhavuzlar/şemalar/tablolar/sütunlar/sensitivityLabels/Write | Herhangi bir SQL Analytics havuz duyarlılığı etiketi oluşturun veya güncelleştirin. |
+> | Microsoft. SYNAPSE/Workspaces/Sqlhavuzları/şemalar/tablolar/sütunlar/sensitivityLabels/Sil | Herhangi bir SQL Analytics havuz duyarlılık etiketini silin. |
+> | Microsoft. SYNAPSE/Workspaces/Sqlhavuzlar/, bu, kurallar/temeller/Read | SQL Analytics havuzu güvenlik açığı değerlendirme kuralı temeli alın. |
+> | Microsoft. SYNAPSE/Workspaces/Sqlhavuzlar/, bu, kurallar/temeller/Write | Herhangi bir SQL Analytics havuzu güvenlik açığı değerlendirme kuralı temeli oluşturun veya güncelleştirin. |
+> | Microsoft. SYNAPSE/Workspaces/Sqlhavuzlar/, bu, kurallar/temeller/Delete | Herhangi bir SQL Analytics havuzu güvenlik açığı değerlendirme kuralı temelini silin. |
+> | Microsoft. SYNAPSE/Workspaces/Operationdurumlarının/Read | Herhangi bir zaman uyumsuz Işlem durumunu okuyun. |
+> | Microsoft. SYNAPSE/Workspaces/operationResults/Read | Herhangi bir zaman uyumsuz Işlem sonucunu okuyun. |
+> | Microsoft. SYNAPSE/Workspaces/Sqlhavuzlar/operationResults/Read | Herhangi bir zaman uyumsuz Işlem sonucunu okuyun. |
+> | Microsoft. SYNAPSE/Workspaces/Bigdatahavuzlar/Write | Spark havuzları oluşturun veya güncelleştirin. |
+> | Microsoft. SYNAPSE/Workspaces/Bigdatahavuzlar/Read | Spark havuzlarını okuyun. |
+> | Microsoft. SYNAPSE/Workspaces/Bigdatahavuzlar/Delete | Spark havuzlarını silin. |
+> | Microsoft. SYNAPSE/Workspaces/Sqlhavuzlar/metadataSync/Write | SQL Analytics havuzu meta verileri eşitleme yapılandırması oluştur veya güncelleştir |
+> | Microsoft. SYNAPSE/Workspaces/Sqlhavuzlar/metadataSync/Read | SQL Analytics havuzu meta veri eşitleme yapılandırmasını oku |
+> | Microsoft. SYNAPSE/Workspaces/Recoverablesqlhavuzlar/Read | SQL Analytics havuzlarının coğrafi yedeklemelerini temsil eden kaynaklar olan kurtarılabilir SQL Analytics havuzlarını alır |
+> | Microsoft. SYNAPSE/Workspaces/Administrators/Write | Çalışma alanında Active Directory yöneticisi ayarla |
+> | Microsoft. SYNAPSE/Workspaces/Administrators/Read | Yönetici Active Directory çalışma alanını al |
+> | Microsoft. SYNAPSE/Workspaces/Administrators/Delete | Yönetici Active Directory çalışma alanını sil |
+> | Microsoft. SYNAPSE/Workspaces/privateEndpointConnections/Write | Özel uç nokta bağlantısı oluştur veya güncelleştir |
+> | Microsoft. SYNAPSE/Workspaces/privateEndpointConnections/Read | Herhangi bir özel uç nokta bağlantısını okuyun |
+> | Microsoft. SYNAPSE/Workspaces/privateEndpointConnections/Delete | Özel uç nokta bağlantısını sil |
+> | Microsoft. SYNAPSE/Workspaces/privateLinkResources/Read | Özel bağlantı kaynaklarının bir listesini alın |
+> | Microsoft. SYNAPSE/Workspaces/Sqlhavuzlar/Extensions/Read | SQL Analytics havuz uzantısını al |
+> | Microsoft. SYNAPSE/Workspaces/Sqlhavuzlar/Extensions/Write | Belirli bir SQL Analytics havuzu için uzantıyı değiştirme |
+> | Microsoft. SYNAPSE/Privatelinkhub 'Ları/yazma | Herhangi bir Privatelinkhub oluşturun. |
+> | Microsoft. SYNAPSE/Privatelinkhub 'Ları/okuma | Tüm Privatelinkhub 'Larını okuyun. |
+> | Microsoft. SYNAPSE/Privatelinkhub 'Ları/silme | Privatelinkhub 'Larını silin. |
+> | Microsoft. SYNAPSE/Locations/Operationdurumlarının/Read | Herhangi bir zaman uyumsuz Işlem durumunu okuyun. |
+> | Microsoft. SYNAPSE/konumlar/operationResults/Read | Herhangi bir zaman uyumsuz Işlem sonucunu okuyun. |
+> | Microsoft. SYNAPSE/Privatelinkhub 'ları/privateLinkResources/okuma | Özel bağlantı kaynaklarının bir listesini alın |
+> | Microsoft. SYNAPSE/Privatelinkhub 'Ları/privateEndpointConnections/Write | PrivateLinkHub için özel uç nokta bağlantısı oluştur veya güncelleştir |
+> | Microsoft. SYNAPSE/Privatelinkhub 'Ları/privateEndpointConnections/Read | PrivateLinkHub için herhangi bir özel uç nokta bağlantısını okuyun |
+> | Microsoft. SYNAPSE/Privatelinkhub 'Ları/privateEndpointConnections/Delete | PrivateLinkHub için özel uç nokta bağlantısını sil |
+> | Microsoft. SYNAPSE/Workspaces/Sqlhavuzlar/Operationdurumlarının/Read | Herhangi bir zaman uyumsuz Işlem sonucunu okuyun. |
+> | Microsoft. SYNAPSE/Workspaces/anahtarlar/Write | Çalışma alanı anahtarları oluştur veya güncelleştir |
+> | Microsoft. SYNAPSE/çalışma alanları/anahtarlar/okuma | Herhangi bir çalışma alanı anahtar tanımını okuyun. |
+> | Microsoft. SYNAPSE/Workspaces/anahtarlar/Sil | Herhangi bir çalışma alanı anahtarını silin. |
+> | Microsoft. SYNAPSE/Workspaces/kitaplıklar/okuma | Kitaplık yapılarını okuma |
+> | Microsoft. SYNAPSE/Workspaces/Sqlhavuzlar/workloadGroups/Read | Seçili bir SQL havuzu için iş yükü gruplarını listeler. |
+> | Microsoft. SYNAPSE/Workspaces/Sqlhavuzlar/workloadGroups/Write | Belirli bir iş yükü grubunun özelliklerini ayarlar. |
+> | Microsoft. SYNAPSE/Workspaces/Sqlhavuzlar/workloadGroups/Delete | Belirli bir iş yükü grubunu bırakır. |
+> | Microsoft. SYNAPSE/Workspaces/Sqlhavuzlar/workloadGroups/Workloadsınıflandırıcılar/okuma | Seçili bir SQL Analytics havuzu için iş yükü sınıflandırıcıları listeler. |
+> | Microsoft. SYNAPSE/Workspaces/Sqlhavuzlar/workloadGroups/Workloadsınıflandırıcılar/yazma | Belirli bir iş yükü sınıflandırıcının özelliklerini ayarlar. |
+> | Microsoft. SYNAPSE/Workspaces/Sqlhavuzlar/workloadGroups/Workloadsınıflandırıcılar/Delete | Belirli bir iş yükü sınıflandırıcısını bırakır. |
+> | Microsoft. SYNAPSE/Workspaces/Sqlhavuzlar/extendedAuditingSettings/Read | Herhangi bir SQL Analytics havuzu genişletilmiş denetim ayarlarını okuyun. |
+> | Microsoft. SYNAPSE/Workspaces/Sqlhavuzlar/extendedAuditingSettings/Write | Herhangi bir SQL Analytics havuzu genişletilmiş denetim ayarı oluşturun veya güncelleştirin. |
+> | Microsoft. SYNAPSE/Workspaces/Sqlhavuzlar/dataMaskingPolicies/Read | SQL Analytics havuzu veri maskeleme ilkelerinin listesini döndürün. |
+> | Microsoft. SYNAPSE/Workspaces/Sqlhavuzlar/dataMaskingPolicies/Write | Bir SQL Analytics havuzu veri maskeleme ilkesi oluşturur veya güncelleştirir |
+> | Microsoft. SYNAPSE/Workspaces/Sqlhavuzlar/dataMaskingPolicies/Rules/Read | SQL Analytics havuzu veri maskeleme kurallarının bir listesini alır. |
+> | Microsoft. SYNAPSE/Workspaces/Sqlhavuzlar/dataMaskingPolicies/Rules/Write | Bir SQL Analytics havuzu veri maskeleme kuralı oluşturur veya güncelleştirir. |
+> | Microsoft. SYNAPSE/Workspaces/Sqlhavuzlar/Columns/Read | SQL Analytics havuzu için sütun listesi döndürme |
+> | Microsoft. SYNAPSE/Workspaces/Sqlhavuzlar/sensitivityLabels/Read | Belirli bir sütunun duyarlılık etiketini alır. |
+> | Microsoft. SYNAPSE/Workspaces/Sqlhavuzlar/auditRecords/Read | SQL havuzu blobu denetim kayıtlarını al |
+> | Microsoft. SYNAPSE/resourceGroups/Operationdurumlarının/Read | Herhangi bir zaman uyumsuz Işlem durumunu okuyun. |
+> | Microsoft. SYNAPSE/Workspaces/extendedAuditingSettings/Write | SQL Server genişletilmiş denetim ayarlarını oluşturun veya güncelleştirin. |
+> | Microsoft. SYNAPSE/Workspaces/extendedAuditingSettings/Read | Varsayılan SQL Server genişletilmiş denetim ayarlarını okuyun. |
+> | Microsoft. SYNAPSE/Workspaces/auditingSettings/Write | SQL Server denetim ayarlarını oluşturun veya güncelleştirin. |
+> | Microsoft. SYNAPSE/Workspaces/auditingSettings/Read | Varsayılan SQL Server denetim ayarlarını okuyun. |
+> | Microsoft. SYNAPSE/Workspaces/Securityalcertpolicies/Write | SQL Server güvenlik uyarısı ilkeleri oluşturun veya güncelleştirin. |
+> | Microsoft. SYNAPSE/Workspaces/Securityalcertpolicies/Read | Varsayılan SQL Server güvenlik uyarısı ilkelerini okuyun. |
+> | Microsoft. SYNAPSE/Workspaces/ | SQL Server güvenlik açığı assement raporu oluşturun veya güncelleştirin. |
+> | Microsoft. SYNAPSE/Workspaces/ | Varsayılan SQL Server güvenlik açığı assement raporunu okuyun. |
+> | Microsoft. SYNAPSE/Workspaces/ | SQL Server güvenlik açığı assement raporunu silin. |
+> | Microsoft. SYNAPSE/Workspaces/Restokbledroppedsqlhavuzlar/Read | Geri yüklenebilecek silinmiş bir SQL havuzunu alır |
+> | Microsoft. SYNAPSE/Workspaces/Sqlhavuzlar/dataWarehouseQueries/Steps/Read | Herhangi bir SQL Analytics havuzu sorgu adımını okuyun. |
+> | Microsoft. SYNAPSE/Workspaces/Sqlhavuzlar/workloadGroups/Operationdurumlarının/Read | SQL Analytics havuzu iş yükü grubu işlem durumu |
+> | Microsoft. SYNAPSE/Workspaces/Sqlhavuzlar/workloadGroups/Workloadsınıflandırıcılar/Operationdurumlarının/Read | SQL Analytics havuzu iş yükü sınıflandırıcı işlem durumu |
+> | Microsoft. SYNAPSE/Workspaces/Sqlhavuzlar/workloadGroups/Workloadsınıflandırıcılar/operationResults/Read | SQL Analytics havuzu iş yükü sınıflandırıcı işlemi sonucu |
+> | Microsoft. SYNAPSE/Workspaces/Sqlusyaşlar/okuma | SQL Analytics havuzları için kullanılabilir kullanım sınırlarını alır |
+> | Microsoft. SYNAPSE/Workspaces/auditingSettings/operationResults/Read | Denetim ayarlarını SQL Server |
+> | Microsoft. SYNAPSE/Workspaces/sqlAdministrators/Write | Çalışma alanında Active Directory yöneticisi ayarla |
+> | Microsoft. SYNAPSE/Workspaces/sqlAdministrators/Read | Yönetici Active Directory çalışma alanını al |
+> | Microsoft. SYNAPSE/Workspaces/sqlAdministrators/Delete | Yönetici Active Directory çalışma alanını sil |
+
 ## <a name="blockchain"></a>Blok Zinciri
 
 ### <a name="microsoftblockchain"></a>Microsoft. Blockzinciri
@@ -7730,7 +7894,7 @@ Azure hizmeti: [Azure geçişi](../migrate/migrate-services-overview.md)
 > | Microsoft. OffAzure/VMwareSites/vcenters/Read | VMware vCenter özelliklerini alır |
 > | Microsoft. OffAzure/VMwareSites/vcenters/Write | VMware vCenter 'ı oluşturur veya güncelleştirir |
 
-## <a name="monitor"></a>İzleme
+## <a name="monitor"></a>İzleyici
 
 ### <a name="microsoftalertsmanagement"></a>Microsoft. AlertsManagement
 

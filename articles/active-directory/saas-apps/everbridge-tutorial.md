@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 04/18/2019
+ms.date: 01/27/2021
 ms.author: jeedes
-ms.openlocfilehash: 732362ef7099e93697320d8e47180c1207e8cb32
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 37a59d6da6fdc844b0b3647c029d716429b50ef6
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95995905"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99430855"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-everbridge"></a>Öğretici: her yaprak Köprüsü ile Azure Active Directory tümleştirme
 
@@ -26,8 +26,6 @@ Her bir Azure AD ile bir yaprak Köprüsü tümleştirdiğinizde şunları yapab
 * Azure AD 'de her bir yaprak köprüye erişimi olan denetim.
 * Kullanıcılarınızın Azure AD hesaplarıyla bir yaprak 'ta otomatik olarak oturum açmaya izin verin. Bu erişim denetimine çoklu oturum açma (SSO) adı verilir.
 * Azure portal kullanarak hesaplarınızı tek bir merkezi konumda yönetin.
-Azure AD ile hizmet olarak yazılım (SaaS) uygulama tümleştirmesi hakkında daha fazla bilgi için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -42,60 +40,39 @@ Bu öğreticide, Azure AD çoklu oturum açmayı bir test ortamında yapılandı
 
 * Yaprak Köprüsü ıDP tarafından başlatılan SSO 'yu destekler.
 
-## <a name="add-everbridge-from-the-azure-marketplace"></a>Azure Marketi 'nden yaprak Köprüsü ekleme
+## <a name="add-everbridge-from-the-gallery"></a>Galeriden yaprak Köprüsü ekleme
 
-Her yaprak Köprüsü 'nün Azure AD ile tümleştirilmesini yapılandırmak için, Azure Marketi 'nden yönetilen SaaS uygulamaları listenize yaprak Köprüsü ekleyin.
+Her yaprak Köprüsü 'nün Azure AD ile tümleştirilmesini yapılandırmak için Galeriden yönetilen SaaS uygulamaları listenize yaprak Köprüsü eklemeniz gerekir.
 
-Azure Marketi 'nden bir yaprak Köprüsü eklemek için aşağıdaki adımları izleyin.
+1. Azure portal iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
+1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
+1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
+1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
+1. **Galeriden Ekle** bölümünde, arama kutusuna **yaprak Köprüsü** yazın.
+1. Sonuçlar panelinden her bir **yaprak Köprüsü** seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-1. [Azure Portal](https://portal.azure.com), sol gezinti bölmesinde **Azure Active Directory**' i seçin.
+## <a name="configure-and-test-azure-ad-sso-for-everbridge"></a>Yaprak Köprüsü için Azure AD SSO 'yu yapılandırma ve test etme
 
-    ![Azure Active Directory düğmesi](common/select-azuread.png)
+**B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'yu her bir yaprak Köprüsü ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve her yaprak Köprüsü içinde ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
-2. **Kurumsal uygulamalar**' a gidin ve **tüm uygulamalar**' ı seçin.
+Azure AD SSO 'yu her bir yaprak Köprüsü ile yapılandırmak ve test etmek için aşağıdaki adımları gerçekleştirin:
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
+    1. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
+    1. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
+1. Tek **[köprü SSO 'Yu yapılandırma](#configure-everbridge-sso)** -uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
+    1. Kullanıcı Azure AD gösterimine bağlı olan her bir yaprak için B. Simon 'a sahip olmak için, her bir **[yaprak Köprüsü test kullanıcısı oluşturun](#create-everbridge-test-user)** .
+1. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
-3. Yeni bir uygulama eklemek için iletişim kutusunun üst kısmındaki **Yeni uygulama** ' yı seçin.
+### <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma
 
-    ![Yeni uygulama düğmesi](common/add-new-app.png)
+Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-4. Arama kutusuna, **yaprak Köprüsü** girin. Sonuç panelinden her bir **yaprak Köprüsü** seçin ve **Ekle**' yi seçin.
+1. Azure portal, tek **köprü** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
+1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
+1. **SAML Ile tek Sign-On ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** kalem simgesine tıklayın.
 
-     ![Sonuçlar listesinde yaprak Köprüsü](common/search-new-app.png)
-
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
-
-Bu bölümde, Azure AD çoklu oturum açmayı, bu Kullanıcı test kullanıcısına göre her ne kadar bas.
-Çoklu oturum açma için, tek Köprü ' de bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bağlantı ilişkisi oluşturun.
-
-Azure AD çoklu oturum açmayı tek köprü ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
-
-- Kullanıcılarınızın bu özelliği kullanmasını sağlamak için [Azure AD çoklu oturum açmayı yapılandırın](#configure-azure-ad-single-sign-on) .
-- Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için her bir [yaprak köprü Yöneticisi portalı çoklu oturum açma olarak tek köprü yapılandırın](#configure-everbridge-as-everbridge-manager-portal-single-sign-on) .
-- Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için her bir [yaprak Köprüsü üye portalı çoklu oturum açma olarak yapılandırın](#configure-everbridge-as-everbridge-member-portal-single-sign-on) .
-- Britta Simon ile Azure AD çoklu oturum açma sınamasını test etmek için [bir Azure AD test kullanıcısı oluşturun](#create-an-azure-ad-test-user) .
-- Azure AD 'de çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirmek için [Azure AD test kullanıcısını atayın](#assign-the-azure-ad-test-user) .
-- Kullanıcının Azure AD gösterimine bağlı olan her bir yaprak Köprüsü içinde Britta Simon 'a sahip olmak için bir [yaprak Köprüsü test kullanıcısı oluşturun](#create-an-everbridge-test-user) .
-- Yapılandırmanın çalışıp çalışmadığını doğrulamak için [Çoklu oturum açmayı test](#test-single-sign-on) edin.
-
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma
-
-Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleştirirsiniz.
-
-Azure AD çoklu oturum açma 'yı tek köprü ile yapılandırmak için aşağıdaki adımları izleyin.
-
-1. [Azure Portal](https://portal.azure.com/), tek **köprü** uygulama tümleştirmesi sayfasında, **Çoklu oturum açma**' yı seçin.
-
-    ![Çoklu oturum açma bağlantısını yapılandırma](common/select-sso.png)
-
-2. **Çoklu oturum açma yöntemi seç** iletişim kutusunda, çoklu oturum açmayı etkinleştirmek için **SAML/WS-Besme** modunu seçin.
-
-    ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
-
-3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** ' yi seçin.
-
-    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
+   ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
     >[!NOTE]
     >Uygulamayı Yönetici portalı olarak *veya* hem Azure Portal hem de tek tek köprü portalında üye portalı olarak yapılandırın.
@@ -104,9 +81,11 @@ Azure AD çoklu oturum açma 'yı tek köprü ile yapılandırmak için aşağı
 
     ![Yaprak Köprüsü etki alanı ve URL çoklu oturum açma bilgileri](common/idp-intiated.png)
 
-    a. **Tanımlayıcı** kutusunda, kalıbı IZLEYEN bir URL girin`https://sso.everbridge.net/<API_Name>`
+    a. **Tanımlayıcı** kutusunda, kalıbı IZLEYEN bir URL girin.
+    `https://sso.everbridge.net/<API_Name>`
 
-    b. **Yanıt URL 'si** kutusuna, kalıbı IZLEYEN bir URL girin`https://manager.everbridge.net/saml/SSO/<API_Name>/alias/defaultAlias`
+    b. **Yanıt URL 'si** kutusuna, kalıbı IZLEYEN bir URL girin.
+    `https://manager.everbridge.net/saml/SSO/<API_Name>/alias/defaultAlias`
 
     > [!NOTE]
     > Bu değerler gerçek değildir. Bu değerleri gerçek tanımlayıcı ve yanıt URL 'SI değerleriyle güncelleştirin. Bu değerleri almak için, [yaprak Köprüsü destek ekibine](mailto:support@everbridge.com)başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de bakabilirsiniz.
@@ -138,11 +117,31 @@ Azure AD çoklu oturum açma 'yı tek köprü ile yapılandırmak için aşağı
 
     ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
 
-    - Oturum Açma URL’si
-    - Azure AD tanımlayıcısı
-    - Oturum kapatma URL 'SI
+### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma 
 
-### <a name="configure-everbridge-as-everbridge-manager-portal-single-sign-on"></a>Her bir yaprak için tek köprü Yönetici portalı çoklu oturum açma olarak yapılandırma
+Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
+
+1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
+1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
+1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
+   1. **Ad** alanına `B.Simon` girin.  
+   1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
+   1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
+   1. **Oluştur**’a tıklayın.
+
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
+
+Bu bölümde, her bir yaprak Köprüsü için erişim izni vererek B. Simon 'u Azure çoklu oturum açma özelliğini kullanacak şekilde etkinleştireceksiniz.
+
+1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. Uygulamalar listesinde, **yaprak Köprüsü**' nü seçin.
+1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
+1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
+1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. Kullanıcılara bir rolün atanmasını bekliyorsanız, **Rol Seç** açılır listesinden bunu seçebilirsiniz. Bu uygulama için ayarlanmış bir rol yoksa, "varsayılan erişim" rolü seçili olduğunu görürsünüz.
+1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
+
+### <a name="configure-everbridge-sso"></a>Yaprak Köprüsü SSO 'yu yapılandırma
 
 Her bir **yaprak ÜZERINDE SSO** 'Yu bir **yaprak Köprüsü Yöneticisi Portal** uygulaması olarak yapılandırmak için aşağıdaki adımları izleyin.
  
@@ -150,7 +149,7 @@ Her bir **yaprak ÜZERINDE SSO** 'Yu bir **yaprak Köprüsü Yöneticisi Portal*
 
 1. Üstteki menüde **Ayarlar** sekmesini seçin. **Güvenlik** bölümünde **Çoklu oturum açma** seçeneğini belirleyin.
    
-     ![Çoklu oturum açmayı yapılandırma](./media/everbridge-tutorial/tutorial_everbridge_002.png)
+     ![Çoklu oturum açmayı yapılandırma](./media/everbridge-tutorial/sso.png)
    
      a. **Ad** kutusuna, tanımlayıcı sağlayıcının adını girin. Şirketinizin adı bir örnektir.
    
@@ -164,74 +163,24 @@ Her bir **yaprak ÜZERINDE SSO** 'Yu bir **yaprak Köprüsü Yöneticisi Portal*
    
      f. **Hizmet sağlayıcı tarafından başlatılan Istek bağlama** Için **http yeniden yönlendirme**' yi seçin.
 
-     örneğin: **Kaydet**'i seçin.
+     örneğin: **Kaydet**’i seçin.
 
-### <a name="configure-everbridge-as-everbridge-member-portal-single-sign-on"></a>Her bir yaprak Köprüsü üye portalı çoklu oturum açma olarak yapılandırma
+### <a name="configure-everbridge-as-everbridge-member-portal-sso"></a>Her bir yaprak Köprüsü üye portalı SSO 'SU olarak Yapılandır
 
 Her **bir yaprak Köprüsü** **üye portalı** olarak tek tek oturum açma 'yı yapılandırmak Için, INDIRILEN **Federasyon meta verileri XML** 'i tek [köprü desteği ekibine](mailto:support@everbridge.com)gönderin. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma 
-
-Azure portal test kullanıcısını, için bu adımları izleyin.
-
-1. Azure Portal sol bölmedeki **Azure Active Directory**  >  **Kullanıcılar**  >  **tüm kullanıcılar**' ı seçin.
-
-    ![Kullanıcılar ve tüm kullanıcılar bağlantıları](common/users.png)
-
-2. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
-
-    ![Yeni Kullanıcı düğmesi](common/new-user.png)
-
-3. **Kullanıcı** iletişim kutusunda, aşağıdaki adımları izleyin.
-
-    ![Kullanıcı iletişim kutusu](common/user-properties.png)
-
-    a. **Ad** kutusuna **Brittasıon** yazın.
-  
-    b. **Kullanıcı adı** kutusuna `brittasimon@yourcompanydomain.extension` girin. BrittaSimon@contoso.com bunun bir örneğidir.
-
-    c. **Parolayı göster** onay kutusunu seçin. **Parola** kutusunda görüntülenen değeri yazın.
-
-    d. **Oluştur**’u seçin.
-
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
-
-Her bir yaprak köprüye erişim vererek Azure çoklu oturum açma özelliğini kullanmak için Britta Simon 'u etkinleştirin.
-
-1. Azure Portal **Kurumsal uygulamalar**  >  **tüm uygulamalar tek**  > **köprü**' i seçin.
-
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
-
-2. Uygulamalar listesinde, **yaprak Köprüsü**' nü seçin.
-
-    ![Uygulamalar listesinde yaprak köprüsü bağlantısı](common/all-applications.png)
-
-3. Soldaki menüde **Kullanıcılar ve gruplar**' ı seçin.
-
-    ![Kullanıcılar ve gruplar bağlantısı](common/users-groups-blade.png)
-
-4. **Kullanıcı ekle**'yi seçin. **Atama Ekle** Iletişim kutusunda **Kullanıcılar ve gruplar**' ı seçin.
-
-    ![Atama Ekle iletişim kutusu](common/add-assign-user.png)
-
-5. **Kullanıcılar ve gruplar** iletişim kutusunda kullanıcılar listesinde **Britta Simon** ' u seçin. Ekranın alt kısmında **Seç ' i** seçin.
-
-6. SAML onaylama 'da herhangi bir rol değeri bekleliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin. Ekranın alt kısmında **Seç ' i** seçin.
-
-7. **Atama Ekle** Iletişim kutusunda **ata**' yı seçin.
-
-### <a name="create-an-everbridge-test-user"></a>Bir yaprak Köprüsü test kullanıcısı oluşturma
+### <a name="create-everbridge-test-user"></a>Yaprak Köprüsü test kullanıcısı oluştur
 
 Bu bölümde, her bir yaprak için Kullanıcı, Britta Simon ' u oluşturun. Her yaprak Köprüsü platformunda Kullanıcı eklemek için, her bir [yaprak Köprüsü destek ekibi](mailto:support@everbridge.com)ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların tek köprü içinde oluşturulması ve etkinleştirilmesi gerekir. 
 
-### <a name="test-single-sign-on"></a>Çoklu oturum açma testi 
+### <a name="test-sso"></a>Test SSO 'SU
 
-Erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edin.
+Bu bölümde, Azure AD çoklu oturum açma yapılandırmanızı aşağıdaki seçeneklerle test edersiniz.
 
-Erişim panelinde her bir yaprak Köprüsü kutucuğunu seçtiğinizde, SSO 'yu ayarladığınız yaprak Köprüsü hesabında otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](../user-help/my-apps-portal-end-user-access.md).
+* Azure portal bu uygulamayı test et ' e tıklayın ve SSO 'yu ayarladığınız her bir yaprak Köprüsü için otomatik olarak oturum açmış olmanız gerekir.
 
-## <a name="additional-resources"></a>Ek kaynaklar
+* Microsoft My Apps ' i kullanabilirsiniz. Uygulamalarım içindeki yaprak Köprüsü kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız her bir yaprak Köprüsü için otomatik olarak oturum açmış olmanız gerekir. Uygulamalarım hakkında daha fazla bilgi için bkz. [uygulamalarıma giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](./tutorial-list.md)
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
-- [Azure Active Directory Koşullu erişim nedir?](../conditional-access/overview.md)
+## <a name="next-steps"></a>Sonraki adımlar
+
+Tek tek köprüyü yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).

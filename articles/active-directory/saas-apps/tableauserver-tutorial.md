@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/27/2020
+ms.date: 01/25/2021
 ms.author: jeedes
-ms.openlocfilehash: 3c9d79ef4fd73adbe3ba376f1723693ea8e85197
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 7ee22121fd023f3942eed64bd605bf87b961d893
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98736515"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99429847"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-tableau-server"></a>Öğretici: Tableau Server ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -27,7 +27,7 @@ Bu öğreticide, Tableau Server 'ı Azure Active Directory (Azure AD) ile tümle
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -40,7 +40,7 @@ Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test eders
 
 * Tableau sunucusu **SP** tarafından başlatılan SSO 'yu destekler
 
-## <a name="adding-tableau-server-from-the-gallery"></a>Galeriden Tableau Server ekleme
+## <a name="add-tableau-server-from-the-gallery"></a>Galeriden Tableau sunucusu ekleme
 
 Tableau Server tümleştirmesini Azure AD ile yapılandırmak için, Galeri 'den yönetilen SaaS uygulamaları listenize Tableau sunucusu eklemeniz gerekir.
 
@@ -83,7 +83,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
     c. **Yanıt URL 'si** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:`https://azure.<domain name>.link/wg/saml/SSO/index.html`
 
     > [!NOTE]
-    > Yukarıdaki değerler gerçek değer değildir. Değerleri, Öğreticinin ilerleyen kısımlarında açıklanan Tableau sunucu yapılandırma sayfasından gerçek URL ve tanımlayıcıyla güncelleştirin.
+    > Yukarıdaki değerler gerçek değer değildir. Değerleri, Öğreticinin ilerleyen kısımlarında açıklanan Tableau Server yapılandırma sayfasından gerçek oturum açma URL 'SI, tanımlayıcı ve yanıt URL 'SI ile güncelleştirin.
 
 1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **Federasyon meta verileri XML** 'i bulun ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 
@@ -123,27 +123,27 @@ Bu bölümde, Tableau sunucusuna erişim vererek Azure çoklu oturum açma özel
 
 2. **Yapılandırma** sekmesinde, **Kullanıcı kimliği & erişim**' i seçin ve ardından **kimlik doğrulama** yöntemi sekmesini seçin.
 
-    ![Ekran görüntüsü Kullanıcı kimliği & erişimi ' nden seçilen kimlik doğrulamasını gösterir.](./media/tableauserver-tutorial/tutorial-tableauserver-auth.png)
+    ![Ekran görüntüsü Kullanıcı kimliği & erişimi ' nden seçilen kimlik doğrulamasını gösterir.](./media/tableauserver-tutorial/auth.png)
 
 3. **Yapılandırma** sayfasında, aşağıdaki adımları uygulayın:
 
-    ![Ekran görüntüsü, açıklanan değerleri girebileceğiniz yapılandırma sayfasını gösterir.](./media/tableauserver-tutorial/tutorial-tableauserver-config.png)
+    ![Ekran görüntüsü, açıklanan değerleri girebileceğiniz yapılandırma sayfasını gösterir.](./media/tableauserver-tutorial/config.png)
 
     a. **Kimlik doğrulama yöntemi** için SAML ' yi seçin.
 
     b. **Sunucu IÇIN SAML kimlik doğrulamasını etkinleştir** onay kutusunu seçin.
 
-    c. Tableau sunucusu dönüş URL 'SI — gibi Tableau Server kullanıcılarına erişim verilecek URL `http://tableau_server` . Kullanılması `http://localhost` önerilmez. Sondaki eğik çizgiyle (örneğin,) bir URL kullanılması `http://tableau_server/` desteklenmez. **Tableau sunucusu geri dönüş URL 'sini** kopyalayın ve Azure Portal **temel SAML yapılandırması** bölümünde URL metin kutusunu **oturum** açmak için yapıştırın
+    c. Tableau sunucusu dönüş URL 'SI — gibi Tableau Server kullanıcılarına erişim verilecek URL `http://tableau_server` . Kullanılması `http://localhost` önerilmez. Sondaki eğik çizgiyle (örneğin,) bir URL kullanılması `http://tableau_server/` desteklenmez. **Tableau sunucusu geri dönüş URL 'sini** kopyalayın ve Azure Portal **temel SAML yapılandırması** bölümünde URL metin kutusunu **oturum** açmak için yapıştırın.
 
-    d. SAML varlık KIMLIĞI — varlık KIMLIĞI, Tableau sunucu yüklemenizi IDP 'ye benzersiz şekilde tanımlar. İsterseniz Tableau sunucu URL 'nizi buraya girebilirsiniz, ancak Tableau Server URL 'niz olması gerekmez. **SAML VARLıK kimliğini** kopyalayın ve Azure Portal **temel SAML yapılandırması** bölümünde **tanımlayıcı** metin kutusuna yapıştırın
+    d. SAML varlık KIMLIĞI — varlık KIMLIĞI, Tableau sunucu yüklemenizi IDP 'ye benzersiz şekilde tanımlar. İsterseniz Tableau sunucu URL 'nizi buraya girebilirsiniz, ancak Tableau Server URL 'niz olması gerekmez. **SAML VARLıK kimliğini** kopyalayın ve Azure Portal **temel SAML yapılandırması** bölümünde **tanımlayıcı** metin kutusuna yapıştırın.
 
-    e. **XML meta verilerini Indir dosyasına** tıklayın ve metin düzenleyici uygulamasında açın. Onaylama tüketici hizmeti URL 'sini http post ve Index 0 ile bulun ve URL 'YI kopyalayın. Şimdi bunu, Azure portal **temel SAML yapılandırması** bölümünde **yanıt URL** metin kutusuna yapıştırın
+    e. **XML meta verilerini Indir dosyasına** tıklayın ve metin düzenleyici uygulamasında açın. Onaylama tüketici hizmeti URL 'sini http post ve Index 0 ile bulun ve URL 'YI kopyalayın. Şimdi de Azure portal **temel SAML yapılandırması** BÖLÜMÜNDEKI **yanıt URL** metin kutusuna yapıştırın.
 
     f. Azure portal 'ten indirilen Federasyon meta veri dosyanızı bulun ve **SAML IDP meta veri dosyasına** yükleyin.
 
     örneğin: IDP 'nin Kullanıcı adlarını, görünen adları ve e-posta adreslerini tutmak için kullandığı özniteliklerin adlarını girin.
 
-    h. **Kaydet**’e tıklayın
+    h. **Kaydet**’e tıklayın.
 
     > [!NOTE]
     > Müşterinin bir. CRT uzantılı bir pek kodlu x509 sertifika dosyasını ve. Key uzantısına sahip bir RSA veya DSA özel anahtar dosyasını sertifika anahtarı dosyası olarak yüklemesi gerekir. Sertifika dosyası ve sertifika anahtar dosyası hakkında daha fazla bilgi için lütfen [Bu](https://help.tableau.com/current/server/en-us/saml_requ.htm) belgeye başvurun. Tableau sunucusunda SAML yapılandırması için yardıma ihtiyacınız varsa lütfen [sunucu GENELINDEKI SAML 'Yi yapılandırma](https://help.tableau.com/current/server/en-us/config_saml.htm)makalesine başvurun.
@@ -165,9 +165,8 @@ Bu bölümde, Azure AD çoklu oturum açma yapılandırmanızı aşağıdaki se�
 
 * Doğrudan Tableau Server oturum açma URL 'sine gidin ve oturum açma akışını buradan başlatın.
 
-* Microsoft My Apps ' i kullanabilirsiniz. Uygulamalarım içindeki Tableau Server kutucuğuna tıkladığınızda bu, Tableau Server oturum açma URL 'sine yeniden yönlendirilir. Uygulamalarım hakkında daha fazla bilgi için bkz. [uygulamalarıma giriş](../user-help/my-apps-portal-end-user-access.md).
-
+* Microsoft My Apps ' i kullanabilirsiniz. Uygulamalarım içindeki Tableau Server kutucuğuna tıkladığınızda bu, Tableau Server oturum açma URL 'sine yeniden yönlendirilir. Uygulamalarım hakkında daha fazla bilgi için bkz. [uygulamalarıma giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Tableau sunucusunu yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimlerini uygulayabilirsiniz. Oturum denetimleri koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](/cloud-app-security/proxy-deployment-aad)
+Tableau Server 'ı yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).

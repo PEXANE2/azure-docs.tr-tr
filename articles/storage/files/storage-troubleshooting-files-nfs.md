@@ -8,12 +8,12 @@ ms.date: 09/15/2020
 ms.author: jeffpatt
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: ed86cc76984388618c177590b3f6358421f09f65
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: f684aff58f441fb0642779e54de39dff941e818c
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98878502"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99430671"
 ---
 # <a name="troubleshoot-azure-nfs-file-shares"></a>Azure NFS dosya paylaşımlarında sorun giderme
 
@@ -67,7 +67,6 @@ NFS yalnızca aşağıdaki yapılandırmaya sahip depolama hesaplarında kullan�
 
 - Katman-Premium
 - Hesap türü-dosya depolaması
-- Artıklık-LRS
 - Bölgeler- [desteklenen bölgelerin listesi](./storage-files-how-to-create-nfs-shares.md?tabs=azure-portal#regional-availability)
 
 #### <a name="solution"></a>Çözüm
@@ -150,6 +149,17 @@ NFS protokolü, bağlantı noktası 2049 üzerinden sunucusuyla iletişim kurar,
 #### <a name="solution"></a>Çözüm
 
 Aşağıdaki komutu çalıştırarak 2049 numaralı bağlantı noktasının istemcisinde açık olduğunu doğrulayın: `telnet <storageaccountnamehere>.file.core.windows.net 2049` . Bağlantı noktası açık değilse, açın.
+
+## <a name="ls-list-files-shows-incorrectinconsistent-results"></a>ls (liste dosyaları) hatalı/tutarsız sonuçları gösterir
+
+### <a name="cause-inconsistency-between-cached-values-and-server-file-metadata-values-when-the-file-handle-is-open"></a>Neden: dosya tanıtıcısı açıkken, önbelleğe alınmış değerler ve sunucu dosyası meta verileri değerleri arasında tutarsızlık
+Bazen "liste dosyaları" komutu, beklenen şekilde sıfır olmayan bir boyut görüntüler ve çok sonraki liste dosyaları komutunda, boyut 0 veya çok eski bir zaman damgası gösterilir. Dosya açıkken dosya meta verileri değerlerinin tutarsız şekilde önbelleğe alınması nedeniyle bu bilinen bir sorundur. Bu sorunu çözmek için aşağıdaki geçici çözümlerden birini kullanabilirsiniz:
+
+#### <a name="workaround-1-for-fetching-file-size-use-wc--c-instead-of-ls--l"></a>Geçici çözüm 1: dosya boyutunu getirmek Için ls-l yerine WC-c kullanın
+WC-c kullanmak her zaman sunucudan en son değeri getirecek ve herhangi bir tutarsızlık olmayacaktır.
+
+#### <a name="workaround-2-use-noac-mount-flag"></a>Geçici çözüm 2: "NOAC" bağlama bayrağını kullanın
+Mount komutunuz ile "NOAC" bayrağını kullanarak dosya sistemini uzaktan bağlayın. Bu, her zaman tüm meta veri değerlerini sunucudan getirir. Bu geçici çözüm kullanılırsa tüm meta veri işlemleri için bazı küçük performans yükü olabilir.
 
 ## <a name="need-help-contact-support"></a>Yardıma mı ihtiyacınız var? Desteğe başvurun.
 Hala yardıma ihtiyacınız varsa, sorununuzun hızla çözülmesini sağlamak için [desteğe başvurun](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) .

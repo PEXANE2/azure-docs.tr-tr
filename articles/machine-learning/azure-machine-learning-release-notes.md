@@ -9,17 +9,32 @@ ms.topic: reference
 ms.author: larryfr
 author: BlackMist
 ms.date: 09/10/2020
-ms.openlocfilehash: 6e92fb39845944898bebf6446c35f0932e13b5b8
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: a01aab13b87398b7d27af02fa84dd7fadf7b8345
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98788884"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99431006"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning sürüm notları
 
 Bu makalede Azure Machine Learning sürümleri hakkında bilgi edinin.  Tam SDK başvuru içeriği için Azure Machine Learning [**Python başvurusu için ana SDK**](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) sayfasına gidin.
 
+ ## <a name="2021-01-31"></a>2021-01-31
+### <a name="azure-machine-learning-studio-notebooks-experience-january-update"></a>Azure Machine Learning Studio Not defteri deneyimi (Ocak güncelleştirmesi)
++ **Yeni özellikler**
+  + AzureML 'da yerel Markaşağı düzenleyici. Kullanıcılar artık, AzureML ' de markın dosyalarını yerel olarak işleyebilir ve düzenleyebilir.
+  + [Betikler Için Çalıştır düğmesi (. Kopyala,. R ve. sh)](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#run-a-notebook-or-python-script). Kullanıcılar artık AzureML 'da Python, R ve Bash betiğini kolayca çalıştırabilirler
+  + [Değişken Gezgini](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#explore-variables-in-the-notebook). Bir açılır paneldeki değişkenlerin ve veri çerçevelerinin içeriğini araştırma. Kullanıcılar veri türünü, boyutunu ve içeriğini kolayca denetleyebilir.
+  + [Içerik tablosu](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#navigate-with-a-toc). Not defterinizin, Markaşağı üst bilgileriyle belirtilen bölümlerine gidin.
+  + Not defterinizi Latex/HTML/Kopyala olarak dışarı aktarın. LaTex, HTML veya. ter 'a aktararak kolay paylaşılan not defteri dosyaları oluşturun
+  + Intellicode. ML destekli sonuçlar, gelişmiş bir [Akıllı otomatik tamamlama deneyimi](https://docs.microsoft.com/visualstudio/intellicode/overview)sağlar.
+
++ **Hata düzeltmeleri ve geliştirmeleri**
+  + Geliştirilmiş sayfa yükleme süreleri
+  + Geliştirilmiş performans 
+  + Gelişmiş hız ve çekirdek güvenilirliği
+  
  ## <a name="2021-01-25"></a>2021-01-25
 
 ### <a name="azure-machine-learning-sdk-for-python-v1210"></a>Python v 1.21.0 için SDK Azure Machine Learning

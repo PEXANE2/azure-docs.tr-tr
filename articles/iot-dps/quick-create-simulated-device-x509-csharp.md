@@ -3,18 +3,18 @@ title: 'Hızlı başlangıç-C kullanarak sanal bir X. 509.440 cihazını Azure 
 description: Hızlı başlangıç-Azure IoT Hub cihaz sağlama hizmeti (DPS) için C# cihaz SDK 'sını kullanarak sanal bir X. 509.440 cihazı oluşturun ve sağlayın. Bu hızlı başlangıçta bireysel kayıtlar kullanılmaktadır.
 author: wesmc7777
 ms.author: wesmc
-ms.date: 11/08/2018
+ms.date: 02/01/2021
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.devlang: csharp
 ms.custom: mvc
-ms.openlocfilehash: 27bb1c97fa082f15642ab9eff6b0bdba357068a2
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a6e859a39cbcf867e3c0a21bb59c6154cbd47412
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91323983"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99430602"
 ---
 # <a name="quickstart-create-and-provision-a-simulated-x509-device-using-c-device-sdk-for-iot-hub-device-provisioning-service"></a>Hızlı başlangıç: IoT Hub cihaz sağlama hizmeti için C# cihaz SDK 'sını kullanarak sanal bir X. 509.952 cihazı oluşturma ve sağlama
 
@@ -35,48 +35,75 @@ Bu makalede bireysel kayıtlar gösterilmektedir.
 <a id="setupdevbox"></a>
 ## <a name="prepare-the-development-environment"></a>Geliştirme ortamını hazırlama 
 
-1. Makinenizde [.NET Core 2,1 SDK veya sonraki bir sürümünün](https://www.microsoft.com/net/download/windows) yüklü olduğundan emin olun. 
-
 1. `git` uygulamasının makinenizde yüklü olduğundan ve komut penceresinden erişilebilir ortam değişkenlerine eklendiğinden emin olun. Yüklenecek `git` araçlarının son sürümleri için [Software Freedom Conservancy’nin Git istemci araçlarına](https://git-scm.com/download/) bakın. Bunlara yerel Git deponuzla etkileşim kurmak için kullanabileceğiniz bir komut satırı uygulaması olan **Git Bash** dahildir. 
 
 1. Bir komut istemi veya Git Bash’i açın. C# GitHub deposu için Azure IoT örneklerini kopyalayın:
     
-    ```cmd
+    ```bash
     git clone https://github.com/Azure-Samples/azure-iot-samples-csharp.git
     ```
 
-## <a name="create-a-self-signed-x509-device-certificate-and-individual-enrollment-entry"></a>Otomatik olarak imzalanan X.509 cihazı sertifikası ve bireysel kayıt girişi oluşturma
+1. Makinenizde [.NET Core 3.0.0 SDK 'sının veya daha yeni bir sürümünün](https://www.microsoft.com/net/download/windows) yüklü olduğundan emin olun. Sürümünüzü denetlemek için aşağıdaki komutu kullanabilirsiniz.
 
-Bu bölümde, otomatik olarak imzalanan X.509 sertifikası kullanacaksınız. Aşağıdaki konuları göz önünde bulundurmak önemlidir:
+    ```bash
+    dotnet --info
+    ```
+
+
+
+## <a name="create-a-self-signed-x509-device-certificate"></a>Otomatik olarak imzalanan X.509 sertifikası oluşturma
+
+Bu bölümde, `iothubx509device1` Konu ortak adı olarak kullanarak otomatik olarak imzalanan bir X. 509.440 test sertifikası oluşturacaksınız. Aşağıdakileri göz önünde bulundurmanız önemlidir:
 
 * Otomatik olarak imzalanan sertifikalar yalnızca test amaçlıdır ve üretimde kullanılmamalıdır.
 * Otomatik olarak imzalanan sertifikanın varsayılan sona erme tarihi bir yıldır.
+* IoT cihazının cihaz KIMLIĞI, sertifikadaki Konu ortak adı olacaktır. [CIHAZ kimliği dize gereksinimleriyle](../iot-hub/iot-hub-devguide-identity-registry.md#device-identity-properties)uyumlu bir konu adı kullandığınızdan emin olun.
 
 Sanal cihaz için bireysel kayıt girişiyle kullanılacak sertifikayı oluşturmak için, [aygıt Istemcisi örneği-X. 509.440 kanıtlama sağlayan](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/provisioning/Samples/device/X509Sample) örnek kodu kullanacaksınız.
 
 
-1. Komut isteminde dizini X.509 cihaz sağlama örneğinin proje dizini olacak şekilde değiştirin.
+1. Bir PowerShell isteminde dizinleri X. 509.952 cihaz sağlama örneği için proje dizini olarak değiştirin.
 
-    ```cmd
+    ```powershell
     cd .\azure-iot-samples-csharp\provisioning\Samples\device\X509Sample
     ```
 
-2. Örnek kod parola korumalı PKCS12 biçimindeki bir dosya (certificate.pfx) içinde depolanan X.509 sertifikalarını kullanacak şekilde ayarlanmıştır. Ayrıca, bu hızlı başlangıçta tek bir kayıt oluşturmak için ortak anahtar sertifika dosyası (Certificate. cer) gerekir. Otomatik olarak imzalanan sertifika ile ona bağlı .cer ve .pfx dosyalarını oluşturmak için aşağıdaki komutu çalıştırın:
+2. Örnek kod parola korumalı PKCS12 biçimindeki bir dosya (certificate.pfx) içinde depolanan X.509 sertifikalarını kullanacak şekilde ayarlanmıştır. Ayrıca, bu hızlı başlangıçta tek bir kayıt oluşturmak için ortak anahtar sertifika dosyası (Certificate. cer) gerekir. Otomatik olarak imzalanan sertifikayı ve ilişkili. cer ve. pfx dosyalarını oluşturmak için aşağıdaki komutu çalıştırın:
 
-    ```cmd
-    powershell .\GenerateTestCertificate.ps1
+    ```powershell
+    PS D:\azure-iot-samples-csharp\provisioning\Samples\device\X509Sample> .\GenerateTestCertificate.ps1 iothubx509device1
     ```
 
-3. Bu betik sizden PFX parolası ister. Örneği çalıştırdığında kullanmanız gerekeceğinden bu parolayı unutmayın.
+3. Bu betik sizden PFX parolası ister. Bu parolayı hatırlayın, örneği çalıştırdığınızda daha sonra tekrar kullanmanız gerekir. `certutil`' İ çalıştırarak sertifikanın dökümünü yapabilir ve konu adını doğrulayabilirsiniz.
 
-    ![ PFX parolasını girme](./media/quick-create-simulated-device-x509-csharp/generate-certificate.png)  
+    ```powershell
+    PS D:\azure-iot-samples-csharp\provisioning\Samples\device\X509Sample> certutil .\certificate.pfx
+    Enter PFX password:
+    ================ Certificate 0 ================
+    ================ Begin Nesting Level 1 ================
+    Element 0:
+    Serial Number: 7b4a0e2af6f40eae4d91b3b7ff05a4ce
+    Issuer: CN=iothubx509device1, O=TEST, C=US
+     NotBefore: 2/1/2021 6:18 PM
+     NotAfter: 2/1/2022 6:28 PM
+    Subject: CN=iothubx509device1, O=TEST, C=US
+    Signature matches Public Key
+    Root Certificate: Subject matches Issuer
+    Cert Hash(sha1): e3eb7b7cc1e2b601486bf8a733887a54cdab8ed6
+    ----------------  End Nesting Level 1  ----------------
+      Provider = Microsoft Strong Cryptographic Provider
+    Signature test passed
+    CertUtil: -dump command completed successfully.    
+    ```
+
+ ## <a name="create-an-individual-enrollment-entry-for-the-device"></a>Cihaz için bireysel kayıt girişi oluşturma
 
 
-4. Azure portal oturum açın, sol taraftaki menüden **tüm kaynaklar** düğmesini seçin ve sağlama hizmetinizi açın.
+1. Azure portal oturum açın, sol taraftaki menüden **tüm kaynaklar** düğmesini seçin ve sağlama hizmetinizi açın.
 
-5. Cihaz sağlama hizmeti menüsünden kayıtları **Yönet**' i seçin. **Bireysel** kayıtlar sekmesini seçin ve üst kısımdaki **tek kayıt Ekle** düğmesini seçin. 
+2. Cihaz sağlama hizmeti menüsünden kayıtları **Yönet**' i seçin. **Bireysel** kayıtlar sekmesini seçin ve üst kısımdaki **tek kayıt Ekle** düğmesini seçin. 
 
-6. **Kayıt Ekle** panelinde, aşağıdaki bilgileri girin:
+3. **Kayıt Ekle** panelinde, aşağıdaki bilgileri girin:
    - Kimlik onay *Mekanizması* olarak **X.509**'u seçin.
    - *Birincil sertifika. pek veya. cer dosyası*' nın altında, önceki adımlarda oluşturulan sertifika **. cer** sertifika dosyasını seçmek için *Dosya Seç* ' i seçin.
    - **Cihaz Kimliği** alanını boş bırakın. Cihazınız, cihaz kimliği X.509 sertifikasındaki ortak ad (CN) olan **iothubx509device1** olacak şekilde sağlanır. Bu değer aynı zamanda bireysel kayıt girişi için kayıt kimliği olarak kullanılır. 
@@ -89,6 +116,8 @@ Sanal cihaz için bireysel kayıt girişiyle kullanılacak sertifikayı oluştur
     
    Kayıt başarıyla tamamlandığında, X.509 kayıt girişiniz cihazınız *Bireysel Kayıtlar* sekmesindeki *Kayıt Kimliği* sütununun altında **iothubx509device1** olarak gösterilir. 
 
+
+
 ## <a name="provision-the-simulated-device"></a>Sanal cihazı sağlama
 
 1. Sağlama hizmetinizin **genel bakış** dikey penceresinden, **_kimlik kapsamı_** değerini aklınızda olun.
@@ -98,13 +127,35 @@ Sanal cihaz için bireysel kayıt girişiyle kullanılacak sertifikayı oluştur
 
 2. X.509 cihaz sağlama örneğini derlemek ve çalıştırmak için aşağıdaki komutu yazın. `<IDScope>` değerinin yerine sağlama hizmetinizin Kimlik Kapsamını girin. 
 
-    ```cmd
-    dotnet run <IDScope>
+    Sertifika dosyası varsayılan olarak *./Certificate.exe* olur ve. pfx parolasını ister.  
+
+    ```powershell
+    dotnet run -- -s <IDScope>
     ```
 
-3. İstendiğinde önceden oluşturduğunuz PFX dosyasının parolasını girin. IoT hub bilgilerinizi almak için cihaz önyüklemesi ve Cihaz Sağlama Hizmetine bağlanma benzetimi gerçekleştiren iletilere dikkat edin. 
+    Her şeyi parametre olarak geçirmek istiyorsanız aşağıdaki örnek biçimi kullanabilirsiniz.
 
-    ![Örnek cihaz çıktısı](./media/quick-create-simulated-device-x509-csharp/sample-output.png) 
+    ```powershell
+    dotnet run -- -s 0ne00000A0A -c certificate.pfx -p 1234
+    ```
+
+
+3. Cihaz, DPS 'e bağlanır ve bir IoT Hub atanır. Cihaza Ayrıca hub 'a bir telemetri iletisi gönderilir.
+
+    ```output
+    Loading the certificate...
+    Found certificate: 10952E59D13A3E388F88E534444484F52CD3D9E4 CN=iothubx509device1, O=TEST, C=US; PrivateKey: True
+    Using certificate 10952E59D13A3E388F88E534444484F52CD3D9E4 CN=iothubx509device1, O=TEST, C=US
+    Initializing the device provisioning client...
+    Initialized for registration Id iothubx509device1.
+    Registering with the device provisioning service...
+    Registration status: Assigned.
+    Device iothubx509device2 registered to sample-iot-hub1.azure-devices.net.
+    Creating X509 authentication for IoT Hub...
+    Testing the provisioned device with IoT Hub...
+    Sending a telemetry message...
+    Finished.
+    ```
 
 4. Cihazın sağlandığını doğrulayın. Sanal cihazın, sağlama hizmetinize bağlı olan IoT Hub 'ına başarıyla sağlanması sırasında, cihaz KIMLIĞI hub 'ın **IoT cihazları** dikey penceresinde görünür. 
 

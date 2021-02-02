@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/28/2021
-ms.openlocfilehash: c26529f48d03b8cd038ce4fea8164a305dfc17f3
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: ade5880a6b06f448df23eb77d81201a521f1d240
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99097649"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99430054"
 ---
 # <a name="create-a-search-indexer"></a>Arama Dizin Oluşturucusu oluşturma
 
@@ -155,7 +155,7 @@ Dizin oluşturucular veri sorunlarını gidermezse, diğer veri temizleme veya i
 
 ## <a name="know-your-index"></a>Dizininizi öğrenin
 
-Dizin oluşturucuların, arama belgelerini dizin oluşturma için arama motoruna geçiri hatırlayın. Dizinleyicilerin yürütme davranışını tespit eden özellikleri olduğu gibi, dizin şemasının dizelerin dizine nasıl dizinlendirildiğinden emin olan özellikler vardır (yalnızca dizeler çözümlenir ve simgeleştirilir). Çözümleyici atamalarına bağlı olarak, dizinli dizeler, geçirilen verilerden farklı olabilir. Çözümleyicileri [metin (REST) kullanarak çözümleyicilerin](/rest/api/searchservice/test-analyzer)etkilerini değerlendirebilirsiniz. Çözümleyiciler hakkında daha fazla bilgi için bkz. [metin işleme Için çözümleyiciler](search-analyzers.md).
+Dizin oluşturucuların, arama belgelerini dizin oluşturma için arama motoruna geçiri hatırlayın. Dizinleyicilerin yürütme davranışını tespit eden özellikleri olduğu gibi, dizin şemasının dizelerin dizine eklenmesini sağlayan özellikler vardır (yalnızca dizeler çözümlenir ve simgeleştirilir). Çözümleyici atamalarına bağlı olarak, dizinli dizeler, geçirilen verilerden farklı olabilir. Çözümleyicileri [metin (REST) kullanarak çözümleyicilerin](/rest/api/searchservice/test-analyzer)etkilerini değerlendirebilirsiniz. Çözümleyiciler hakkında daha fazla bilgi için bkz. [metin işleme Için çözümleyiciler](search-analyzers.md).
 
 Dizin oluşturucularının bir dizinle nasıl etkileşime gireceğini gösteren bir Dizin Oluşturucu yalnızca alan adlarını ve türlerini denetler. Dizindeki ilgili arama alanı için gelen içeriğin doğru olmasını sağlayan bir doğrulama adımı yoktur. Doğrulama adımı olarak, tüm belgeleri veya seçili alanları döndüren doldurulmuş dizin üzerinde sorgular çalıştırabilirsiniz. Bir dizinin içeriğini sorgulama hakkında daha fazla bilgi için bkz. [temel sorgu oluşturma](search-query-create.md).
 

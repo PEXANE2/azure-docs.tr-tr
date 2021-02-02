@@ -6,12 +6,12 @@ ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 11/17/2020
-ms.openlocfilehash: 4983e4b7f76c627cb3cb3081bc12e27111b2b521
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: bff13c24e0b5818b352e76df1d8ecd8251a5f12c
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98951470"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99430234"
 ---
 # <a name="resource-manager-template-samples-for-data-collection-rules-in-azure-monitor"></a>Azure Izleyici 'de veri toplama kuralları için Kaynak Yöneticisi şablonu örnekleri
 Bu makalede, Azure Izleyici 'de sanal makineler için [Log Analytics aracısını](../platform/log-analytics-agent.md) ve [Tanılama uzantısını](../platform/diagnostics-extension-overview.md) dağıtmak ve yapılandırmak üzere örnek [Azure Resource Manager şablonlar](../../azure-resource-manager/templates/template-syntax.md) bulunur. Her örnek, şablona sağlanacak örnek değerleri içeren bir şablon dosyası ve bir parametre dosyası içerir.
@@ -21,7 +21,7 @@ Bu makalede, Azure Izleyici 'de sanal makineler için [Log Analytics aracısın�
 
 ## <a name="create-association-with-azure-vm"></a>Azure VM ile ilişki oluşturma
 
-Aşağıdaki örnek Azure Izleyici aracısını bir Windows Azure sanal makinesine yüklemektedir. Bir Azure sanal makinesi ve bir veri toplama kuralı arasında bir ilişki oluşturulur.
+Aşağıdaki örnek, bir Azure sanal makinesi ve bir veri toplama kuralı arasında bir ilişki oluşturur.
 
 ### <a name="template-file"></a>Şablon dosyası
 

@@ -2,24 +2,23 @@
 title: Bir model için hyperparameter ayarlama
 titleSuffix: Azure Machine Learning
 description: Azure Machine Learning kullanarak, derin öğrenme ve makine öğrenimi modelleri için hiper parametre ayarlamayı otomatikleştirin.
-ms.author: swatig
-author: swatig007
+ms.author: anumamah
+author: Aniththa
 ms.reviewer: sgilley
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.date: 03/30/2020
+ms.date: 01/29/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q1
-ms.openlocfilehash: e9f9f73a8e0dbc851efdba07bf1e103f58ae9e75
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: a4be95561c097191803f2faa271c5d6bba875869
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98133870"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99430360"
 ---
 # <a name="hyperparameter-tuning-a-model-with-azure-machine-learning"></a>Azure Machine Learning olan bir modeli hiper parametre olarak ayarlama
-
 
 Azure Machine Learning [Hyperdrive paketini](/python/api/azureml-train-core/azureml.train.hyperdrive?preserve-view=true&view=azure-ml-py)kullanarak verimli hiper parametre ayarlamayı otomatikleştirin. [Azure MACHINE LEARNING SDK](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py)ile hiper parametreleri ayarlamak için gereken adımları tamamlamayı öğrenin:
 
@@ -382,6 +381,30 @@ hd_config = HyperDriveConfig(run_config=src,
 
 ## <a name="visualize-hyperparameter-tuning-runs"></a>Hyperparameter ayarlama çalıştırmalarını görselleştirin
 
+Azure Machine Learning Studio 'da hyperparameter ayarlama çalıştırmalarını görselleştirebilir veya bir not defteri pencere öğesi kullanabilirsiniz.
+
+### <a name="studio"></a>Studio
+
+[Azure Machine Learning Studio](https://ml.azure.com)'da tüm hyperparameter ayarlama çalışmalarınızı görselleştirebilirsiniz. Portalda bir denemeyi görüntüleme hakkında daha fazla bilgi için bkz. [Studio 'da çalıştırma kayıtlarını görüntüleme](how-to-monitor-view-training-logs.md#view-the-experiment-in-the-web-portal).
+
+- **Ölçüm grafiği**: Bu görselleştirme, hiper parametre ayarlama süresince her bir Hyperdrive alt öğesi için günlüğe kaydedilen ölçümleri izler. Her satır bir alt çalışmayı temsil eder ve her bir nokta, çalışma zamanının o yinelemesinde birincil ölçüm değerini ölçer.  
+
+    :::image type="content" source="media/how-to-tune-hyperparameters/hyperparameter-tuning-metrics.png" alt-text="Hiper parametre ayarlama ölçümleri grafiği":::
+
+- **Paralel koordinatlar grafiği**: Bu görselleştirme, birincil ölçüm performansı ile tekil hiper parametre değerleri arasındaki bağıntıyı gösterir. Grafik, eksenlerin hareketi aracılığıyla etkileşimlidir (eksen etiketine tıklayarak ve sürükleyin) ve tek bir eksen genelinde değerleri vurgulayarak (istenen değerlerin bir aralığını vurgulamak için tek bir eksende dikey ' e tıklayıp sürükleyin).
+
+    :::image type="content" source="media/how-to-tune-hyperparameters/hyperparameter-tuning-parallel-coordinates.png" alt-text="Hiper parametre ayarlama paralel koordinatlar grafiği":::
+
+- **2 boyutlu dağılım grafiği**: Bu görselleştirme, ilişkili birincil ölçüm değeriyle birlikte her iki ayrı hiper parametre arasındaki bağıntıyı gösterir.
+
+    :::image type="content" source="media/how-to-tune-hyperparameters/hyperparameter-tuning-2-dimensional-scatter.png" alt-text="Hyparameter ayarlama 2 boyutlu dağılım grafiği":::
+
+- **3 boyutlu dağılım grafiği**: Bu görselleştirme, 2B ile aynıdır, ancak birincil ölçüm değeri ile üç hiper parametre boyutunun bağıntı almasına izin verir. Ayrıca, 3B alanda farklı bağıntıları görüntülemek için grafiği yeniden yönlendirmek üzere tıklayıp sürükleyebilirsiniz.
+
+    :::image type="content" source="media/how-to-tune-hyperparameters/hyperparameter-tuning-3-dimensional-scatter.png" alt-text="Hyparameter ayarlama 3 boyutlu dağılım grafiği":::
+
+### <a name="notebook-widget"></a>Not defteri pencere öğesi
+
 Eğitim çalışmalarınızın ilerlemesini görselleştirmek için [Not defteri pencere öğesini](/python/api/azureml-widgets/azureml.widgets.rundetails?preserve-view=true&view=azure-ml-py) kullanın. Aşağıdaki kod parçacığı, bir Jupyter not defterinde tek bir yerde çalışan tüm hiperparameter ayarlamayı görselleştirir:
 
 ```Python
@@ -391,17 +414,9 @@ RunDetails(hyperdrive_run).show()
 
 Bu kod, hiper parametre yapılandırmalarının her biri için eğitim çalıştırmaları hakkındaki ayrıntıları içeren bir tablo görüntüler.
 
-![Hiper parametre ayarlama tablosu](./media/how-to-tune-hyperparameters/hyperparameter-tuning-table.png)
+:::image type="content" source="media/how-to-tune-hyperparameters/hyperparameter-tuning-table.png" alt-text="Hiper parametre ayarlama tablosu":::
 
-Her çalıştırmaların performansını eğitim ilerledikçe da görselleştirebilirsiniz. 
-
-![Hiper parametre ayarlama çizimi](./media/how-to-tune-hyperparameters/hyperparameter-tuning-plot.png)
-
-Bir paralel koordinat çizimi kullanarak ayrı ayrı hiper parametrelerin performansı ve değerleri arasındaki bağıntıyı görsel olarak belirleyebilirsiniz. 
-
-[![Hiper parametre ayarlama paralel koordinatları](./media/how-to-tune-hyperparameters/hyperparameter-tuning-parallel-coordinates.png)](media/how-to-tune-hyperparameters/hyperparameter-tuning-parallel-coordinates-expanded.png)
-
-Azure Web portalındaki tüm hiperparametre ayarlama çalışmalarınızı da görselleştirebilirsiniz. Portalda bir deneme görüntüleme hakkında daha fazla bilgi için bkz. [denemeleri Track](how-to-monitor-view-training-logs.md#view-the-experiment-in-the-web-portal).
+Her çalıştırmaların performansını eğitim ilerledikçe da görselleştirebilirsiniz.
 
 ## <a name="find-the-best-model"></a>En iyi modeli bulun
 

@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 1/30/2021
 ms.author: cavoeg
-ms.openlocfilehash: 0ee32d37ca8e3a32ba603fd84cee81890ddac98b
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: e75cf8d6660bf6f2630b83e0c2c812fa7cf59057
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 02/02/2021
-ms.locfileid: "99252126"
+ms.locfileid: "99430251"
 ---
 # <a name="features"></a>Özellikler
 
@@ -118,6 +118,8 @@ Yeniden gerçekleştirilen API 'YI genişleten desteklenen tüm işlemler.
 | $export (tüm sistem) | Yes       | Yes       | Yes       |         |
 | Hasta/$export        | Yes       | Yes       | Yes       |         |
 | Grup/$export          | Yes       | Yes       | Yes       |         |
+| $convert-veri          | Yes       | Yes       | Yes       |         |
+
 
 ## <a name="persistence"></a>Kalıcılığı
 

@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
-ms.date: 01/22/2021
-ms.openlocfilehash: a4d1543c5c4ce7a44825a879b838e7829b8c84fd
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.date: 02/01/2021
+ms.openlocfilehash: 5db0214e9b985df5c5aedb1dbe9878e484af2a55
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98760625"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99430806"
 ---
 # <a name="overview-azure-logic-apps-preview"></a>Genel Bakış: Azure Logic Apps Önizleme
 
@@ -168,6 +168,8 @@ Bu yeni kaynak türüne uygulanan fiyatlandırma modelleri hakkında daha fazla 
 ## <a name="changed-limited-unavailable-or-unsupported-capabilities"></a>Değiştirilmiş, sınırlı, kullanılamayan veya desteklenmeyen yetenekler
 
 Azure Logic Apps önizlemede, bu yetenekler değiştirilmiştir veya şu anda sınırlı, kullanılamaz veya desteklenmez:
+
+* **Işletim sistemi desteği**: şu anda Visual Studio Code TASARıMCı Linux işletim sisteminde çalışmıyor, ancak yine de Linux tabanlı sanal makinelere Logic Apps Preview çalışma zamanını kullanan Logic Apps dağıtımı yapabilirsiniz. Şimdilik, Logic Apps 'i Windows veya macOS üzerinde Visual Studio Code oluşturabilir ve ardından Linux tabanlı bir sanal makineye dağıtabilirsiniz.
 
 * **Tetikleyiciler ve eylemler**: kayan pencere ve toplu iş gibi bazı yerleşik Tetikleyiciler kullanılamaz. İş akışınızı başlatmak için [yerleşik yinelenme, istek, http, http Web kancası, Event Hubs veya Service Bus tetikleyicisini](../connectors/apis-list.md)kullanın. Yerleşik Tetikleyiciler ve eylemler Azure Logic Apps Önizleme çalışma zamanında yerel olarak çalışır, ancak yönetilen bağlayıcılar Azure 'da dağıtılır. Tasarımcıda yerleşik Tetikleyiciler ve eylemler **yerleşik** sekmesinde görünür, ancak yönetilen bağlayıcı Tetikleyicileri ve eylemler **Azure** sekmesinin altında görüntülenir.
 
