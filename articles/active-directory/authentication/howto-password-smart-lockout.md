@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b8a57e77ea572f899bf540714e8ac9968988f028
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: a5f501c19da3c2ddc06ad89fe5649789477af7ec
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96741737"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99255382"
 ---
 # <a name="protect-user-accounts-from-attacks-with-azure-active-directory-smart-lockout"></a>Kullanıcı hesaplarını Azure Active Directory akıllı kilitleme saldırılarına karşı koruma
 
@@ -89,6 +89,8 @@ Kuruluşunuzun akıllı kilitleme değerlerini denetlemek veya değiştirmek iç
 Akıllı kilitleme eşiği tetiklendiğinde, hesap kilitliyken şu iletiyi alırsınız:
 
 *Hesabınız yetkisiz kullanımı engellemek için geçici olarak kilitlidir. Daha sonra tekrar deneyin ve sorun yaşamaya devam ediyorsanız yöneticinizle iletişime geçin.*
+
+Akıllı kilitlemeyi test ettiğinizde, Azure AD kimlik doğrulama hizmeti 'nin coğrafi olarak dağıtılan ve yük dengeli olmasından dolayı oturum açma istekleriniz farklı veri merkezleri tarafından işlenebilir. Bu senaryoda, her Azure AD veri merkezi kilitlemeyi bağımsız olarak izlediği için, bu, bir kilitlenmeye neden olan, tanımlı kilitleme eşiği sayısından daha fazla zaman alabilir. Kullanıcı bir kilitleme gerçekleşmeden önce her bir veri merkezini ziyaret ediyorsa, kullanıcının (*threshold_limit * datacenter_count*) hatalı girişim sayısı vardır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

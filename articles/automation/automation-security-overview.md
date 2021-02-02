@@ -4,14 +4,14 @@ description: Bu makalede, Azure Otomasyonu hesabı kimlik doğrulamasına genel 
 keywords: otomasyon güvenliği, güvenli otomasyon; otomasyon kimlik doğrulaması
 services: automation
 ms.subservice: process-automation
-ms.date: 01/21/2021
+ms.date: 02/01/2021
 ms.topic: conceptual
-ms.openlocfilehash: e08a8bf3b06ca976cb10249af25099c7652e1b49
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: e3ed14a0845d90a1b9b951dd5175acf6233f8718
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99053840"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99255008"
 ---
 # <a name="automation-account-authentication-overview"></a>Otomasyon hesabı kimlik doğrulamasına genel bakış
 
@@ -35,7 +35,7 @@ Azure Automation 'daki Azure Resource Manager ve PowerShell cmdlet 'lerini kulla
 
 Azure Otomasyonu 'nda farklı çalıştır hesapları, klasik dağıtım modelinde dağıtılan Azure Resource Manager kaynaklarını veya kaynaklarını yönetmek için kimlik doğrulaması sağlar. Azure Otomasyonu 'nda iki farklı çalıştır hesabı türü vardır:
 
-* Azure farklı çalıştır hesabı: Azure için Azure Resource Manager dağıtım ve Yönetim hizmetine göre Azure kaynaklarını yönetmenizi sağlar.
+* Azure farklı çalıştır hesabı: Azure kaynaklarını Azure için Azure Resource Manager dağıtım ve Yönetim hizmetine göre yönetmenizi sağlar.
 * Azure klasik farklı çalıştır hesabı: klasik dağıtım modeline göre klasik Azure kaynaklarını yönetmenizi sağlar.
 
 Azure Resource Manager ve klasik dağıtım modelleri hakkında daha fazla bilgi edinmek için, bkz. [Kaynak Yöneticisi ve klasik dağıtım](../azure-resource-manager/management/deployment-models.md).

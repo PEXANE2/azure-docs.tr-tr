@@ -4,7 +4,7 @@ description: Son kullanıcılarınıza yönelik daha basit uygulamalar için uyg
 services: active-directory
 documentationcenter: ''
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -14,12 +14,12 @@ ms.date: 02/10/2020
 ms.author: kenwith
 ms.reviewer: kasimpso
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 967ac34ddb736f58f66639181cdf10e4aaa8ffab
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 7743a1af54b01f848c4ac6f0cb1d4526d66f8132
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94656794"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99254991"
 ---
 # <a name="create-collections-on-the-my-apps-portal"></a>Uygulamalarım portalında koleksiyonlar oluşturma
 
@@ -69,7 +69,7 @@ Bir koleksiyon oluşturmak için bir Azure AD Premium P1 veya P2 lisansına sahi
 
    ![Kullanıcı ve Grup Ekle](media/acces-panel-collections/add-users-and-groups.png)
 
-11. **Gözden geçir + oluştur**' u seçin. Yeni koleksiyonun özellikleri görüntülenir.
+11. **Gözden geçir + Oluştur**’u seçin. Yeni koleksiyonun özellikleri görüntülenir.
 
 
 ## <a name="view-audit-logs"></a>Denetim günlüklerini görüntüleme
@@ -83,15 +83,15 @@ Denetim günlükleri, koleksiyon oluşturma Son Kullanıcı eylemleri de dahil o
 * Self Servis uygulama ekleme (Son Kullanıcı)
 * Self Servis uygulama silme (Son Kullanıcı)
 
-[Azure portal](https://portal.azure.com) Etkinlik bölümündeki **Azure Active Directory**  >  **Kurumsal uygulamalar**  >  **Denetim günlükleri** ' ni seçerek Azure Portal denetim günlüklerine erişebilirsiniz. **Hizmet** Için **uygulamalarım**' ı seçin.
+[](https://portal.azure.com) Etkinlik bölümündeki **Azure Active Directory**  >  **Kurumsal uygulamalar**  >  **Denetim günlükleri** ' ni seçerek Azure Portal denetim günlüklerine erişebilirsiniz. **Hizmet** Için **uygulamalarım**' ı seçin.
 
 ## <a name="get-support-for-my-account-pages"></a>Hesap Sayfalarım için destek alın
 
-Uygulamalarım sayfasında, bir Kullanıcı hesap ayarlarını açmak için **Hesabım görünümmi seçip Hesabım** seçeneğini belirleyebilir  >  **View my account** . Azure **ad Hesabım** sayfasında, kullanıcılar güvenlik bilgilerini, cihazlarını, parolalarını ve daha fazlasını yönetebilir. Office hesap ayarlarına de erişebilirler.
+Uygulamalarım sayfasında, bir Kullanıcı hesap ayarlarını açmak için **Hesabım görünümmi seçip Hesabım** seçeneğini belirleyebilir  >   . Azure **ad Hesabım** sayfasında, kullanıcılar güvenlik bilgilerini, cihazlarını, parolalarını ve daha fazlasını yönetebilir. Office hesap ayarlarına de erişebilirler.
 
 Azure AD hesabı sayfası veya Office hesabı sayfasında bir sorun için destek isteği göndermeniz gerekiyorsa, isteğiniz doğru şekilde yönlendirilmek için aşağıdaki adımları izleyin: 
 
-* **Azure AD "Hesabım"** sayfasındaki sorunlar için Azure Portal içinden bir destek isteği açın. **Azure portal**  >  **Azure Active Directory**  >  **Yeni destek isteği** Azure Active Directory Azure Portal gidin.
+* **Azure AD "Hesabım"** sayfasındaki sorunlar için Azure Portal içinden bir destek isteği açın.   >    >  **Yeni destek isteği** Azure Active Directory Azure Portal gidin.
 
 * **Office "Hesabım"** sayfasındaki sorunlar için Microsoft 365 Yönetim Merkezi içinden bir destek isteği açın. **Microsoft 365 Yönetim Merkezi**  >  **desteği**' ne gidin. 
 
