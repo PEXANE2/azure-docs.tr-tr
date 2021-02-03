@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 11/05/2020
+ms.date: 02/02/2021
 ms.author: alkohli
-ms.openlocfilehash: 3485c6ca5c2672fa48b6118a78600b9745994ce1
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 171b4dbfb2a5852e270c483a28cad31f97dcb42b
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96466984"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493921"
 ---
 # <a name="enable-azure-monitor-on-your-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU cihazınızda Azure Izleyicisini etkinleştirme
 
@@ -30,7 +30,7 @@ Başlamadan önce şunları yapmanız gerekir:
 - Öğreticiye göre **işlem adımını yapılandırmayı** tamamladınız: cihazınızda [Azure Stack Edge Pro cihazınızda işlem yapılandırma](azure-stack-edge-gpu-deploy-configure-compute.md) . Cihazınızın ilişkili bir IoT Hub kaynağına, IoT cihazına ve bir IoT Edge cihazına sahip olması gerekir.
 
 
-## <a name="create-log-analytics-workspace"></a>Log Analytics çalışma alanı oluşturun.
+## <a name="create-log-analytics-workspace"></a>Log Analytics çalışma alanı oluşturma
 
 Bir Log Analytics çalışma alanı oluşturmak için aşağıdaki adımları uygulayın. Log Analytics çalışma alanı, günlük verilerinin toplandığı ve depolandığı bir mantıksal depolama birimidir.
 
@@ -118,8 +118,8 @@ Daha fazla bilgi için [Azure Portal aracılığıyla Log Analytics çalışma a
 
 1. Kaynak KIMLIĞINI ve konumunu alın. `Your Log Analytics workspace > General > Properties` öğesine gidin. Aşağıdaki bilgileri kopyalayın:
 
-    - Azure Log Analytics çalışma alanının tam Azure Kaynak KIMLIĞI olan **kaynak kimliği** . 
-    - Azure bölgesi olan **konum** .
+    - Azure Log Analytics çalışma alanının tam Azure Kaynak KIMLIĞI olan **kaynak kimliği**. 
+    - Azure bölgesi olan **konum**.
 
     ![Log Analytics çalışma alanının özellikleri](media/azure-stack-edge-gpu-enable-azure-monitor/log-analytics-workspace-properties-1.png) 
 
@@ -241,3 +241,4 @@ Daha fazla bilgi için [Azure Portal aracılığıyla Log Analytics çalışma a
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Kubernetes çalışma yüklerini Kubernetes panosu aracılığıyla nasıl izleyeceğinizi](azure-stack-edge-gpu-monitor-kubernetes-dashboard.md)öğrenin.
+- [Cihaz olay uyarı bildirimlerini yönetmeyi](azure-stack-edge-gpu-manage-device-event-alert-notifications.md)öğrenin. 

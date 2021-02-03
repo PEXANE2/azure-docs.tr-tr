@@ -4,20 +4,20 @@ ms.service: databox
 ms.topic: include
 ms.date: 08/03/2020
 ms.author: alkohli
-ms.openlocfilehash: caa17a02305c9e9fcba30cf8c39c4288d83d3da9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 92688051cf591470246094dd0d8ea1d436a8efb1
+ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89419425"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99500066"
 ---
-VM oluşturma sırasında geçirilen özel IP 'yi kullanarak VM 'ye bağlanın.
+Sanal makineye bağlanmak için makineyi oluştururken belirttiğiniz özel IP adresini kullanın.
 
 IP adresiyle bağlantı kurmak için bir SSH oturumu açın.
 
 `ssh -l <username> <ip address>`
 
-İstendiğinde, VM oluştururken kullandığınız parolayı belirtin.
+İstendiğinde, sanal makineyi oluştururken kullandığınız parolayı girin.
 
 SSH anahtarını sağlamanız gerekiyorsa, bu komutu kullanın.
 
@@ -70,4 +70,4 @@ VM oluşturma sırasında genel bir IP adresi kullandıysanız, bu IP 'yi sanal 
 ```powershell
 $publicIp = Get-AzureRmPublicIpAddress -Name <Public IP> -ResourceGroupName <Resource group name>
 ```
-Bu durumda genel IP, sanal ağ arabirimi oluşturma sırasında geçirilen özel IP ile aynı olacaktır.
+Bu durumda genel IP, sanal ağ arabiriminin oluşturulması sırasında geçirilen özel IP ile aynı olacaktır.

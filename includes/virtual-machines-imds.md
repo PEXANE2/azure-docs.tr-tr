@@ -8,12 +8,12 @@ ms.date: 01/04/2021
 ms.author: chhenk
 ms.reviewer: azmetadatadev
 ms.custom: references_regions
-ms.openlocfilehash: ceb560a3f0c56a13b9f8da6c867f513b2b08e59b
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: 0b04ebd9672990738d77bc5ae09d7f7fae4ffb9d
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97962235"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99500156"
 ---
 # <a name="azure-instance-metadata-service-imds"></a>Azure Instance Metadata Service (ıMDS)
 
@@ -78,7 +78,7 @@ Bu gereksinimlerin **her ikisini de** karşılamayan her türlü istek hizmet ta
 IDS 'lerin bir proxy arkasında kullanılması **amaçlanmamaktadır** ve bunun yapılması desteklenmez. Çoğu HTTP istemcisi isteklerinizin proxy 'lerini devre dışı bırakabilmeniz için bir seçenek sağlar ve bu işlevsellik, ıMDS ile iletişim kurulurken kullanılmalıdır. Ayrıntılar için istemcinizin belgelerine bakın.
 
 > [!IMPORTANT]
-> Ortamınızdaki herhangi bir ara sunucu yapılandırmasından haberdar olmasanız bile, **varsayılan istemci ara sunucu ayarlarını geçersiz kılmanız gerekir**. Ara sunucu yapılandırmaları otomatik olarak bulunabilir ve bu tür yapılandırmaları atlamaması, makinenin yapılandırması gelecekte değiştirilmeli riskleri açığa çıkarır.
+> Ortamınızdaki herhangi bir ara sunucu yapılandırmasından haberdar olmasanız bile, **varsayılan istemci ara sunucu ayarlarını geçersiz kılmanız gerekir**. Proxy yapılandırmaları otomatik olarak bulunabilir ve bu tür yapılandırmaları atlamaması, makinenin yapılandırmasının gelecekte değiştirilmesi durumunda riskleri kesintiye karşı kesintiye neden olur.
 
 ## <a name="rate-limiting"></a>Hız sınırlaması
 
@@ -106,7 +106,7 @@ http://169.254.169.254/metadata/instance/compute?api-version=2019-06-04&format=j
 
 Parametreleri belirtir:
 
-| Ad | Değer |
+| Name | Değer |
 |------|-------|
 | `api-version` | `2019-06-04`
 | `format` | `json`
@@ -209,7 +209,7 @@ curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance?ap
 
 JSON yanıtlarında tüm temel öğeler türündedir `string` ve eksik ya da geçersiz değerler her zaman dahil edilir, ancak boş bir dizeye ayarlanır.
 
-### <a name="versioning"></a>Sürüm oluşturma
+### <a name="versioning"></a>Sürüm Oluşturma
 
 IDS 'nin sürümü oluşturulmuş ve HTTP isteğindeki API sürümünün belirtilmesi zorunludur. Bu gereksinimin tek istisnası, kullanılabilir API sürümlerini dinamik olarak almak için kullanılabilecek [sürümler](#versions) uç noktasıdır.
 
@@ -317,7 +317,7 @@ GET /metadata/instance
 
 #### <a name="parameters"></a>Parametreler
 
-| Ad | Gerekli/İsteğe Bağlı | Açıklama |
+| Name | Gerekli/İsteğe Bağlı | Açıklama |
 |------|-------------------|-------------|
 | `api-version` | Gerekli | İsteğe hizmet vermek için kullanılan sürüm.
 | `format` | Seçim | Yanıtın biçimi ( `json` veya `text` ). * Note: istek parametreleri kullanılırken gerekebilir
@@ -721,7 +721,7 @@ GET /metadata/attested/document
 
 #### <a name="parameters"></a>Parametreler
 
-| Ad | Gerekli/İsteğe Bağlı | Açıklama |
+| Name | Gerekli/İsteğe Bağlı | Açıklama |
 |------|-------------------|-------------|
 | `api-version` | Gerekli | İsteğe hizmet vermek için kullanılan sürüm.
 | `nonce` | İsteğe Bağlı | Şifreleme nonce görevi gören 10 basamaklı bir dize. Değer sağlanmazsa, ıDS geçerli UTC zaman damgasını kullanır.

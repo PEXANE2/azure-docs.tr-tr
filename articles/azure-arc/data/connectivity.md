@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: c7bff21a17af3c908caeed6a1e60de8e2fe4efc9
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: d148509af45b93dce8dbd99b9afc674276b149b6
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93287581"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493981"
 ---
 # <a name="connectivity-modes-and-requirements"></a>Bağlantı modları ve gereksinimler
 
@@ -37,12 +37,10 @@ Ayrıca, Azure Active Directory ve Azure Role-Based Access Control, bu işlevsel
 
 Azure 'a bağlı bazı hizmetler yalnızca Azure Defender güvenlik hizmetleri, kapsayıcı öngörüleri ve BLOB depolamaya Azure Backup gibi doğrudan ulaşılabilecekleri durumlarda kullanılabilir.
 
-Şu anda önizlemede yalnızca dolaylı olarak bağlı mod desteklenir. 
-
 ||**Dolaylı olarak bağlı**|**Doğrudan bağlı**|**Hiç bağlanmadı**|
 |---|---|---|---|
 |**Açıklama**|Dolaylı olarak bağlı modu, yönetim hizmetlerinin çoğunu ortamınızda yerel olarak Azure 'a doğrudan bağlantı olmadan sunar.  _Yalnızca_ envanter ve Faturalama amacıyla Azure 'a en az miktarda veri gönderilmesi gerekir. Bir dosyaya aktarılmışsa ve ayda en az bir kez Azure 'a yüklenir.  Azure 'a doğrudan veya sürekli bağlantı gerekmez.  Azure bağlantısı gerektiren bazı özellikler ve hizmetler kullanılabilir olmayacaktır.|Doğrudan bağlı modu, Azure ile doğrudan bir bağlantı kurulamazsa tüm kullanılabilir hizmetleri sunar. Bağlantılar her zaman _ortamınızdan Azure 'a başlatılır ve_ https/443 gibi standart bağlantı noktalarını ve protokolleri kullanır.|Herhangi bir şekilde Azure 'a veya Azure 'dan veri gönderilemez.|
-|**Geçerli kullanılabilirlik**| Önizlemede kullanılabilir.|Daha sonra Önizleme için planlandı.|Şu anda desteklenmiyor.|
+|**Geçerli kullanılabilirlik**| Önizlemede kullanılabilir.|Önizlemede kullanılabilir.|Şu anda desteklenmiyor.|
 |**Tipik kullanım örnekleri**|Şirket içi veri merkezleri iş veya mevzuata uygunluk ilkeleri veya dış saldırılardan ya da veri taşmalarına yönelik bir sorun nedeniyle veri merkezinin veri bölgesi içinde veya dışında bağlantı kurulmasına izin vermez.  Tipik örnekler: finans kurumları, Sağlık Hizmetleri, kamu. <br/><br/>Sınır sitesinin genellikle Internet bağlantısı olmayan sınır sitesi konumları.  Tipik örnekler: yağ/gaz veya askeri alan uygulamaları.  <br/><br/>Uzun süreli kesintilerle aralıklı bağlantı içeren uç site konumları.  Tipik örnekler: Stadiums, CRUISE. | Ortak bulutlar kullanan kuruluşlar.  Tipik örnekler: Azure, AWS veya Google bulutu.<br/><br/>Internet bağlantısının genellikle bulunduğu ve izin verilen uç site konumları.  Tipik örnekler: perakende mağaza, üretim.<br/><br/>Şirket veri merkezleri, veri merkezin veri bölgelerine/verilerine Internet 'e bağlantı için daha fazla izin veren ilkeler sağlar.  Tipik örnekler: düzenlenmiş olmayan işletmeler, küçük/orta ölçekli işletmeler|Gerçek anlamda "AIR-gapped" ortamları, herhangi bir koşulda veri ortamına ulaşmaz veya veri ortamından gidebilirler. Tipik örnekler: popüler gizli kamu olanakları.|
 |**Azure 'a veri gönderme**|Faturalama ve envanter verilerinin Azure 'a nasıl gönderilebir konusunda üç seçenek vardır:<br><br> 1) veriler, hem güvenli veri bölgesi hem de Azure bağlantısı olan otomatik bir işlem tarafından veri bölgesinden dışarı aktarılabilir.<br><br>2) veriler veri bölgesi içindeki otomatik bir işlem tarafından veri bölgesinden dışarı aktarıldığından, otomatik olarak daha az güvenli bir bölgeye kopyalanır ve daha az güvenli bölgedeki otomatik bir işlem verileri Azure 'a yükler.<br><br>3) veriler güvenli bölge içindeki bir kullanıcı tarafından el ile dışarı aktarılmışsa, güvenli bölgenin el ile kullanıma sunulmasıdır ve Azure 'a el ile yüklenir. <br><br>İlk iki seçenek, sık çalıştırılmak üzere zamanlanabilen otomatik bir sürekli işlemdir. bu sayede, verilerin Azure 'a yalnızca Azure 'a yönelik bağlantı ile aktarılması konusunda en az gecikme vardır.|Veriler otomatik olarak ve sürekli olarak Azure 'a gönderilir.|Veriler hiçbir şekilde Azure 'a gönderilmez.|
 
@@ -70,16 +68,16 @@ Azure 'a bağlı bazı hizmetler yalnızca Azure Defender güvenlik hizmetleri, 
 
 |**Veri türü**|**Yön**|**Gerekli/İsteğe Bağlı**|**Ek maliyetler**|**Mod gerekli**|**Notlar**|
 |---|---|---|---|---|---|
-|**Kapsayıcı görüntüleri**|Microsoft Container Registry-> müşteri|Gerekli|No|Dolaylı veya doğrudan|Kapsayıcı görüntüleri, yazılım dağıtma yöntemidir.  Internet üzerinden Microsoft Container Registry (MCR) ile bağlanabilecek bir ortamda, kapsayıcı görüntüleri doğrudan MCR 'den çeklenebilir.  Dağıtım ortamının doğrudan bağlantısı olmaması durumunda, görüntüleri MCR konumundan çekerek dağıtım ortamındaki özel bir kapsayıcı kayıt defterine gönderebilirsiniz.  Oluşturma sırasında, oluşturma işlemini MCR yerine özel kapsayıcı kayıt defterinden çekmek üzere yapılandırabilirsiniz. Bu, otomatik güncelleştirmeler için de geçerlidir.|
-|**Kaynak envanteri**|Müşteri ortamı-Azure >|Gerekli|No|Dolaylı veya doğrudan|Veri denetleyicileri, veritabanı örnekleri (PostgreSQL ve SQL) envanterinin faturalandırılması amacıyla Azure 'da ve aynı zamanda Azure Arc veri Hizmetleri ile birden fazla ortamınız olduğunda yararlı olan tek bir yerde tüm veri denetleyicileri ve veritabanı örneklerinin envanterini oluşturma amacıyla Azure 'da tutulur.  Örneklerin sağlanması, kullanıma sunulmasının, ölçeklendirilmesi ve ölçeği azaltıldığı için, envanterin ölçeği Azure 'da güncelleştirilir.|
-|**Faturalandırma telemetri verileri**|Müşteri ortamı-Azure >|Gerekli|No|Dolaylı veya doğrudan|Faturalama amacıyla veritabanı örneklerinin kullanımının Azure 'a gönderilmesi gerekir.  Önizleme döneminde Azure Arc etkin veri Hizmetleri için maliyet yoktur.|
+|**Kapsayıcı görüntüleri**|Microsoft Container Registry-> müşteri|Gerekli|Hayır|Dolaylı veya doğrudan|Kapsayıcı görüntüleri, yazılım dağıtma yöntemidir.  Internet üzerinden Microsoft Container Registry (MCR) ile bağlanabilecek bir ortamda, kapsayıcı görüntüleri doğrudan MCR 'den çeklenebilir.  Dağıtım ortamının doğrudan bağlantısı olmaması durumunda, görüntüleri MCR konumundan çekerek dağıtım ortamındaki özel bir kapsayıcı kayıt defterine gönderebilirsiniz.  Oluşturma sırasında, oluşturma işlemini MCR yerine özel kapsayıcı kayıt defterinden çekmek üzere yapılandırabilirsiniz. Bu, otomatik güncelleştirmeler için de geçerlidir.|
+|**Kaynak envanteri**|Müşteri ortamı-Azure >|Gerekli|Hayır|Dolaylı veya doğrudan|Veri denetleyicileri, veritabanı örnekleri (PostgreSQL ve SQL) envanterinin faturalandırılması amacıyla Azure 'da ve aynı zamanda Azure Arc veri Hizmetleri ile birden fazla ortamınız olduğunda yararlı olan tek bir yerde tüm veri denetleyicileri ve veritabanı örneklerinin envanterini oluşturma amacıyla Azure 'da tutulur.  Örneklerin sağlanması, kullanıma sunulmasının, ölçeklendirilmesi ve ölçeği azaltıldığı için, envanterin ölçeği Azure 'da güncelleştirilir.|
+|**Faturalandırma telemetri verileri**|Müşteri ortamı-Azure >|Gerekli|Hayır|Dolaylı veya doğrudan|Faturalama amacıyla veritabanı örneklerinin kullanımının Azure 'a gönderilmesi gerekir.  Önizleme döneminde Azure Arc etkin veri Hizmetleri için maliyet yoktur.|
 |**Verileri ve günlükleri izleme**|Müşteri ortamı-Azure >|İsteğe Bağlı|Veri hacmine bağlı olabilir (bkz. [Azure izleyici fiyatlandırması](https://azure.microsoft.com/en-us/pricing/details/monitor/))|Dolaylı veya doğrudan|Birden çok ortamda verileri tek bir yerde toplamak ve ayrıca Azure Machine Learning, vb. ' deki verileri kullanarak uyarılar gibi Azure Izleyici hizmetlerini kullanmak için, yerel olarak toplanan izleme verilerini ve günlükleri Azure Izleyici 'ye göndermek isteyebilirsiniz.|
-|**Azure rol tabanlı Access Control (Azure RBAC)**|Müşteri ortamı-> Azure > müşteri ortamı|İsteğe Bağlı|No|Yalnızca doğrudan|Azure RBAC kullanmak istiyorsanız, her zaman Azure ile bağlantı kurulması gerekir.  Azure RBAC kullanmak istemiyorsanız, yerel Kubernetes RBAC kullanılabilir.  **Doğrudan bağlantı modunun bekleyen kullanılabilirliği**|
+|**Azure rol tabanlı Access Control (Azure RBAC)**|Müşteri ortamı-> Azure > müşteri ortamı|İsteğe Bağlı|Hayır|Yalnızca doğrudan|Azure RBAC kullanmak istiyorsanız, her zaman Azure ile bağlantı kurulması gerekir.  Azure RBAC kullanmak istemiyorsanız, yerel Kubernetes RBAC kullanılabilir.  **Doğrudan bağlantı modunun bekleyen kullanılabilirliği**|
 |**Azure Active Directory (AD)**|Müşteri ortamı-> Azure > müşteri ortamı|İsteğe Bağlı|Belki de zaten Azure AD için ödeme yapabilirsiniz|Yalnızca doğrudan|Kimlik doğrulaması için Azure AD 'yi kullanmak istiyorsanız, her zaman Azure ile bağlantı kurulması gerekir. Kimlik doğrulaması için Azure AD 'yi kullanmak istemiyorsanız, Active Directory üzerinden ABD Active Directory Federasyon Hizmetleri (AD FS) (ADFS) kullanabilirsiniz. **Doğrudan bağlantı modunun bekleyen kullanılabilirliği**|
-|**Yedekleme ve geri yükleme**|Müşteri ortamı-> müşteri ortamı|Gerekli|No|Doğrudan veya dolaylı|Yedekleme ve geri yükleme hizmeti yerel depolama sınıflarına işaret etmek üzere yapılandırılabilir. |
+|**Yedekleme ve geri yükleme**|Müşteri ortamı-> müşteri ortamı|Gerekli|Hayır|Doğrudan veya dolaylı|Yedekleme ve geri yükleme hizmeti yerel depolama sınıflarına işaret etmek üzere yapılandırılabilir. |
 |**Azure Backup-uzun süreli saklama**| Müşteri ortamı-Azure > | İsteğe Bağlı| Azure depolama için Evet | Yalnızca doğrudan |Yedeklemeleri uzun süreli, site dışı bekletmede Azure Backup için yerel olarak alınmış yedeklemeler göndermek ve geri yükleme için bunları yerel ortama geri getirmek isteyebilirsiniz. **Doğrudan bağlantı modunun bekleyen kullanılabilirliği**|
-|**Azure Defender güvenlik hizmetleri**|Müşteri ortamı-> Azure > müşteri ortamı|İsteğe Bağlı|Evet|Yalnızca doğrudan|**Doğrudan bağlantı modunun bekleyen kullanılabilirliği**|
-|**Azure portal sağlama ve yapılandırma değişiklikleri**|Müşteri ortamı-> Azure > müşteri ortamı|İsteğe Bağlı|No|Yalnızca doğrudan|Sağlama ve yapılandırma değişiklikleri, Azure Data Studio veya kullanılarak yerel olarak yapılabilir [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] .  Doğrudan bağlı modda, Azure portal de yapılandırma değişiklikleri sağlayabileceksiniz. **Doğrudan bağlantı modunun bekleyen kullanılabilirliği**|
+|**Azure Defender güvenlik hizmetleri**|Müşteri ortamı-> Azure > müşteri ortamı|İsteğe Bağlı|Yes|Yalnızca doğrudan|**Doğrudan bağlantı modunun bekleyen kullanılabilirliği**|
+|**Azure portal sağlama ve yapılandırma değişiklikleri**|Müşteri ortamı-> Azure > müşteri ortamı|İsteğe Bağlı|Hayır|Yalnızca doğrudan|Sağlama ve yapılandırma değişiklikleri, Azure Data Studio veya kullanılarak yerel olarak yapılabilir [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] .  Doğrudan bağlı modda, Azure portal de yapılandırma değişiklikleri sağlayabileceksiniz. **Doğrudan bağlantı modunun bekleyen kullanılabilirliği**|
 
 
 ## <a name="details-on-internet-addresses-ports-encryption-and-proxy-server-support"></a>Internet adresleri, bağlantı noktaları, şifreleme ve proxy sunucusu desteğiyle ilgili ayrıntılar
@@ -87,7 +85,7 @@ Azure 'a bağlı bazı hizmetler yalnızca Azure Defender güvenlik hizmetleri, 
 Şu anda önizleme aşamasında yalnızca dolaylı olarak bağlı mod desteklenir. Bu modda, Internet 'te kullanılabilir hizmetler için yalnızca üç bağlantı gerekir. Bu bağlantılar aşağıdakileri içerir:
 
 - [Microsoft Container Registry (MCR)](#microsoft-container-registry-mcr)
-- [Azure Resource Manager API 'Leri](#azure-resource-manager-apis)
+- [Azure Resource Manager API'leri](#azure-resource-manager-apis)
 - [Azure İzleyici API 'Leri](#azure-monitor-apis)
 
 Azure ve Microsoft Container Registry tüm HTTPS bağlantıları, resmi olarak imzalanan ve doğrulanabilen sertifikalar kullanılarak SSL/TLS kullanılarak şifrelenir.
@@ -116,13 +114,13 @@ HTTPS
 
 #### <a name="can-use-proxy"></a>Proxy kullanabilir
 
-Evet
+Yes
 
 #### <a name="authentication"></a>Kimlik Doğrulaması
 
 Yok
 
-### <a name="azure-resource-manager-apis"></a>Azure Resource Manager API 'Leri
+### <a name="azure-resource-manager-apis"></a>Azure Resource Manager API'leri
 Azure Data Studio [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] ve Azure CLI, bazı özellikler Için Azure 'a veya Azure 'dan veri göndermek ve almak üzere Azure Resource Manager API 'lerine bağlanır.
 
 #### <a name="connection-source"></a>Bağlantı kaynağı
@@ -156,7 +154,7 @@ HTTPS
 
 #### <a name="can-use-proxy"></a>Proxy kullanabilir
 
-Evet
+Yes
 
 #### <a name="authentication"></a>Kimlik Doğrulaması 
 
@@ -188,7 +186,7 @@ HTTPS
 
 #### <a name="can-use-proxy"></a>Proxy kullanabilir
 
-Evet
+Yes
 
 #### <a name="authentication"></a>Kimlik Doğrulaması 
 

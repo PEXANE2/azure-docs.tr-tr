@@ -9,12 +9,12 @@ ms.subservice: text-analytics
 ms.topic: include
 ms.date: 01/15/2021
 ms.author: aahi
-ms.openlocfilehash: 43864d3593fda986031cf9b59251b920672476bb
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: c1ff099dd6dffe06e9707ff23fffd57ae753ab64
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99097296"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99500225"
 ---
 Metin Analizi NER özelliği, aşağıdaki genel (tanımlayıcı olmayan) varlık kategorilerini döndürür. Örneğin, `/entities/recognition/general` uç noktaya istek gönderirken.
 
@@ -34,6 +34,7 @@ Metin Analizi NER özelliği, aşağıdaki genel (tanımlayıcı olmayan) varlı
 | [URL](#category-url) | Web sitelerinin URL 'Leri. |
 | [IP](#category-ip) | Ağ IP adresleri. |
 | [Tarih Saat](#category-datetime) | Günün tarihleri ve saatleri. |
+| [Miktar](#category-quantity) | Sayısal ölçümler ve birimler. |
 
 
 ### <a name="category-person"></a>Kategori: kişi

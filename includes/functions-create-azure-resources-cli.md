@@ -4,19 +4,19 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 10/18/2020
 ms.author: glenga
-ms.openlocfilehash: 29a31948c5bfc9b5fd3a31f39144d186dbfe4885
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 99ae35aca485ac928f7c5ef9f98295eed4bc1245
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96026473"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99500075"
 ---
 ## <a name="create-supporting-azure-resources-for-your-function"></a>İşleviniz için destekleyici Azure kaynakları oluşturma
 
 İşlev kodunuzu Azure 'a dağıtabilmeniz için önce üç kaynak oluşturmanız gerekir:
 
-- İlgili kaynaklar için mantıksal kapsayıcı olan bir kaynak grubu.
-- Projelerinizle ilgili durumu ve diğer bilgileri tutan bir depolama hesabı.
+- İlgili kaynaklar için mantıksal kapsayıcı olan bir [kaynak grubu](../articles/azure-resource-manager/management/overview.md).
+- İşlevleriniz hakkında durum ve diğer bilgileri korumak için kullanılan bir [depolama hesabı](../articles/storage/common/storage-account-create.md).
 - İşlev kodunuzu yürütmek için ortam sağlayan bir işlev uygulaması. Bir işlev uygulaması yerel işlev projenize eşlenir ve kaynakların daha kolay yönetilmesi, dağıtılması ve paylaşılması için işlevleri bir mantıksal birim olarak gruplandırmanızı sağlar.
 
 Bu öğeleri oluşturmak için aşağıdaki komutları kullanın. Hem Azure CLı hem de PowerShell desteklenir.

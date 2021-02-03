@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/02/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: af0082ef04416d6b3700bbcd96995a154614e0d6
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: b451e2509ee618ac0996fd91191a7d59dcfd9fc9
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98798569"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99500264"
 ---
 ### <a name="is-azure-virtual-wan-in-ga"></a>Azure sanal WAN, GA 'de mi?
 
@@ -140,6 +140,10 @@ Sanal hub başına en fazla 1.000 bağlantı desteklenir. Her bağlantı dört b
 ### <a name="what-is-a-branch-connection-to-azure-virtual-wan"></a>Azure sanal WAN ile dal bağlantısı nedir?
 
 Bir daldan veya VPN cihazından Azure sanal WAN 'a bağlantı hiçbir şey değildir ancak sanal bir hub 'da neredeyse VPN sitesini ve Azure VPN Gateway bağlayan bir VPN bağlantısıdır.
+
+### <a name="what-happens-if-the-on-premise-vpn-device-only-has-1-tunnel-to-a-azure-virtual-wan-vpn-gateway"></a>Şirket içi VPN cihazının yalnızca bir Azure sanal WAN VPN Gateway 'e 1 tüneli varsa ne olur?
+
+Bir Azure sanal WAN bağlantısı 2 tünelden oluşur. Sanal bir WAN VPN Gateway, sanal hub 'da etkin-etkin modda dağıtılır ve bu, şirket içi cihazlardan ayrı olarak oluşan ayrı tünellerin ayrı olarak sonlandırılabileceği anlamına gelir. Bu, tüm kullanıcılar için önerisdir. Ancak, Kullanıcı herhangi bir nedenden dolayı (bakım, yayama vb.) yalnızca sanal WAN VPN Gateway örneklerinden birine 1 tünele sahip olmasını seçerse  Ağ Geçidi örneği çevrimdışı duruma getirildiğinde, tünel ikincil etkin örneğe taşınır ve Kullanıcı bir yeniden bağlantı yaşayabilir. Ayrıca, BGP oturumunun örneklere geçmeyeceğini göz önünde bulundurmanız gerekir.
 
 ### <a name="can-the-on-premises-vpn-device-connect-to-multiple-hubs"></a>Şirket içi VPN cihazı birden çok Hub’a bağlanabilir mi?
 

@@ -3,7 +3,7 @@ title: 'Öğretici: Postgres ile Python Docgo uygulaması dağıtma'
 description: PostgreSQL veritabanı ile bir Python web uygulaması oluşturun ve Azure 'a dağıtın. Öğretici Docgo çerçevesini kullanır ve uygulama Linux üzerinde Azure App Service barındırılır.
 ms.devlang: python
 ms.topic: tutorial
-ms.date: 01/04/2021
+ms.date: 02/02/2021
 ms.custom:
 - mvc
 - seodec18
@@ -11,12 +11,12 @@ ms.custom:
 - cli-validate
 - devx-track-python
 - devx-track-azurecli
-ms.openlocfilehash: ffde74a0567661d6b9f77e45a80bfd585e5c7212
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: 05bdbd6c9d5dc3862c3191e4564a79e7a44bc0b8
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97898598"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99494064"
 ---
 # <a name="tutorial-deploy-a-django-web-app-with-postgresql-in-azure-app-service"></a>Öğretici: Azure App Service içindeki PostgreSQL ile Docgo Web uygulaması dağıtma
 
@@ -39,7 +39,7 @@ Bu öğreticide, Azure CLı kullanarak aşağıdaki görevleri tamamlayabilirsin
 
 1. Etkin aboneliği olan bir Azure hesabına sahip olmanız gerekir. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 1. <a href="https://www.python.org/downloads/" target="_blank">Python 3,6 veya üstünü</a>yükler.
-1. Azure <a href="/cli/azure/install-azure-cli" target="_blank">CLI</a> 2.0.80 veya üstünü yükleyerek Azure kaynaklarını temin etmek ve yapılandırmak için herhangi bir kabukta komut çalıştırırsınız.
+1. Azure <a href="/cli/azure/install-azure-cli" target="_blank">CLI</a> 2.18.0 veya üstünü yükleyerek Azure kaynaklarını temin etmek ve yapılandırmak için herhangi bir kabukta komut çalıştırırsınız.
 
 Bir Terminal penceresi açın ve Python sürümünüzün 3,6 veya üzeri olduğunu denetleyin:
 
@@ -63,11 +63,13 @@ py -3 --version
 
 ---
 
-Azure CLı sürümünüzün 2.0.80 veya üzeri olduğunu kontrol edin:
+Azure CLı sürümünüzün 2.18.0 veya üzeri olduğunu kontrol edin:
 
 ```azurecli
 az --version
 ```
+
+Yükseltmeniz gerekiyorsa, `az upgrade` komutu deneyin (sürüm 2.11 + gerektirir) veya bkz. <a href="/cli/azure/install-azure-cli" target="_blank">Azure CLI 'yı yüklemek</a>.
 
 Daha sonra CLı aracılığıyla Azure 'da oturum açın:
 
@@ -229,7 +231,7 @@ Docgo veritabanı geçişleri, Azure veritabanı 'ndaki PostgreSQL içindeki şe
 
     `<app-name>`Komutta daha önce kullanılan adla değiştirin `az webapp up` .
 
-    MacOS ve Linux 'ta, komutuyla bir SSH oturumuna alternatif olarak bağlanabilirsiniz [`az webapp ssh`](/cli/azure/webapp?view=azure-cli-latest&preserve-view=true#az_webapp_ssh) .
+    Alternatif olarak, komutuyla bir SSH oturumuna bağlanabilirsiniz [`az webapp ssh`](/cli/azure/webapp?view=azure-cli-latest&preserve-view=true#az_webapp_ssh) . Bu komut, Windows 'ta Azure CLı 2.18.0 veya üstünü gerektirir.
 
     SSH oturumuna bağlanamıyorsanız, uygulamanın kendisi başlatılamadı. Ayrıntılar için [Tanılama günlüklerine bakın](#6-stream-diagnostic-logs) . Örneğin, önceki bölümde gerekli uygulama ayarlarını oluşturmadıysanız Günlükler gösterilir `KeyError: 'DBNAME'` .
 
@@ -239,8 +241,11 @@ Docgo veritabanı geçişleri, Azure veritabanı 'ndaki PostgreSQL içindeki şe
     # Change to the app folder
     cd $APP_PATH
     
-    # Activate the venv (requirements.txt is installed automatically)
+    # Activate the venv
     source /antenv/bin/activate
+
+    # Install requirements
+    pip install -r requirements.txt
 
     # Run database migrations
     python manage.py migrate
@@ -398,6 +403,7 @@ Veri modelinde değişiklikler yaptığınız için, App Service veritabanı ge�
 ```
 cd $APP_PATH
 source /antenv/bin/activate
+pip instal -r requirements.txt
 python manage.py migrate
 ```
 

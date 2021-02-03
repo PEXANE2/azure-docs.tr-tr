@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/05/2021
 ms.author: jeedes
-ms.openlocfilehash: 512436c9d72e0318ec14bf7551a2fde76c6ef3d8
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 520eb25bcb138c96b24166816d3374255fb7c3b2
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98735921"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493997"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-notion"></a>Öğretici: kavram ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -26,7 +26,7 @@ Bu öğreticide, kavramı Azure Active Directory (Azure AD) ile tümleştirmeyi 
 * Kullanıcılarınızın Azure AD hesaplarıyla kavram halinde otomatik olarak oturum açmalarına olanak tanıyın.
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -40,7 +40,7 @@ Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test eders
 * Kavram **, SP ve ıDP** tarafından başlatılan SSO 'yu destekler
 * Kavram **, tam zamanında** Kullanıcı sağlamayı destekler
 > [!NOTE]
-> Bu uygulamanın tanımlayıcısı, tek bir kiracıda yalnızca bir örneğin yapılandırılabilmesini sağlamak için sabit bir dize değeridir.
+> Bu uygulamanın tanımlayıcısı sabit bir dize değeridir, bu nedenle tek bir kavram çalışma alanının tek bir kiracıda yapılandırılabilmesini sağlayabilirsiniz.
 
 
 ## <a name="adding-notion-from-the-gallery"></a>Galeriden kavram ekleme
@@ -80,14 +80,14 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. **Temel SAML yapılandırması** bölümünde, **IDP** tarafından başlatılan modda uygulamayı yapılandırmak istiyorsanız aşağıdaki alanlar için değerleri girin:
 
-    **Yanıt URL 'si** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:`https://www.notion.so/sso/saml/<CUSTOM_ID>`
+    **Yanıt URL** 'si metin kutusuna, kavram çalışma alanı **ayarlarınızı & Üyeler** > **güvenlik & kimliği** > **Çoklu oturum açma URL**'si:`https://www.notion.so/sso/saml/<CUSTOM_ID>`
 
 1. Uygulamayı **SP** tarafından başlatılan modda yapılandırmak Istiyorsanız **ek URL 'ler ayarla** ' ya tıklayın ve aşağıdaki adımı gerçekleştirin:
 
-    **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://www.notion.so/sso/saml/<CUSTOM_ID>`
+    **Oturum açma URL 'si** metin kutusuna aşağıdaki URL 'yi girin:`https://www.notion.so/login`
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerleri gerçek yanıt URL 'si ve Sign-On URL 'siyle güncelleştirin. Bu değerleri almak için [kavram istemci desteği ekibine](mailto:team@makenotion.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
+    > Bu değerler gerçek değildir. Bu değerleri gerçek yanıt URL 'si ve Sign-On URL 'siyle güncelleştirin. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
 1. Kavram uygulama, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekler. Aşağıdaki ekran görüntüsünde varsayılan özniteliklerin listesi gösterilmektedir.
 
@@ -102,7 +102,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
     | lastName | User. soyadı |
 
 
-1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **uygulama Federasyon meta verileri URL 'sini** kopyalamak ve bilgisayarınıza kaydetmek için Kopyala düğmesine tıklayın.
+1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **uygulama Federasyon meta verileri URL 'sini** kopyalamak için Kopyala düğmesine tıklayın. **Üyeler** güvenlik & Identity & **kavram** çalışma alanı ayarlarınıza gidin  >  ve kopyaladığınız değeri **IDP meta veri URL 'si** alanına yapıştırın.
 
     ![Sertifika indirme bağlantısı](common/copy-metadataurl.png)
 
@@ -132,7 +132,13 @@ Bu bölümde, kavram erişimine erişim vererek Azure çoklu oturum açma özell
 
 ## <a name="configure-notion-sso"></a>Kavram SSO 'yu Yapılandır
 
-**Kavram** temelinde çoklu oturum açmayı yapılandırmak Için, **uygulama Federasyon meta verileri URL 'sini** [kavram desteği ekibine](mailto:team@makenotion.com)göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
+**Üyeler** güvenlik & Identity & **kavram** çalışma alanı ayarlarınıza gidin  >  ve **IDP meta** veri URL 'si alanına kopyaladığınız **uygulama Federasyon meta verileri URL 'sini** yapıştırın.
+
+Aynı ayarlar sayfasında, **e-posta etki alanları** altında, kuruluşunuzun e-posta etki alanlarını eklemek Için **desteğe başvurun** ' e tıklayın.
+
+E-posta etki alanlarınız onaylandıktan ve eklendikten sonra **SAML etkinleştirme** ÖZELLIĞINI kullanarak SAML SSO 'yu etkinleştirin.
+
+Başarılı sınamadan sonra SAML SSO 'yu **zorla** geçiş 'yi kullanarak da zorlayabilirsiniz. Lütfen kavram çalışma alanı yönetimlerinin, e-posta ile oturum açma yeteneğini korudığına, ancak diğer tüm üyelerin kavram halinde oturum açmak için SAML SSO 'yu kullanması gerekecektir.
 
 ### <a name="create-notion-test-user"></a>Kavram testi kullanıcısı oluştur
 

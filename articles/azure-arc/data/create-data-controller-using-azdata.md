@@ -9,18 +9,18 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 3d2652d2f6c1bb56dd009a9e4de375c42786986d
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 50ab5a0d47292e36216a565a5bd39fbe7e850131
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98735008"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99494031"
 ---
 # <a name="create-azure-arc-data-controller-using-the-azure-data-cli-azdata"></a>Azure Arc veri denetleyicisi 'ni kullanarak oluşturma [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Genel bakış bilgileri için [Azure Arc veri denetleyicisi oluşturma](create-data-controller.md) konusunu gözden geçirin.
 
@@ -269,6 +269,8 @@ Komutu çalıştırdığınızda, [oluşturma durumunu izlemek](#monitoring-the-
 Azure Red Hat OpenShift bir güvenlik bağlamı kısıtlaması gerektirir.
 
 #### <a name="apply-the-security-context"></a>Güvenlik bağlamını uygulama
+
+Azure Red Hat OpenShift üzerinde veri denetleyicisi oluşturmadan önce, belirli güvenlik bağlamı kısıtlamalarını (SCC) uygulamanız gerekir. Önizleme sürümü için bu, güvenlik kısıtlamalarını daha rahat hale getiren. Gelecekteki yayınlar, güncelleştirilmiş SCC sağlayacak.
 
 [!INCLUDE [apply-security-context-constraint](includes/apply-security-context-constraint.md)]
 

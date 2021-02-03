@@ -278,6 +278,8 @@
           items:
             - name: Ölçüm grafiklerini kullanma
               href: azure-stack-edge-monitor.md
+            - name: Cihaz olay uyarılarını yönetme
+              href: azure-stack-edge-gpu-manage-device-event-alert-notifications.md
             - name: Kubernetes panosunu kullanma
               href: azure-stack-edge-gpu-monitor-kubernetes-dashboard.md
             - name: Azure İzleyici’yi kullanma
