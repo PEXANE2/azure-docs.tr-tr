@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: security-center
 ms.custom: references_regions
 manager: rkarlin
-ms.openlocfilehash: 81ae46a7b6c19557eeadd2d5b28ad2fa46e77115
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 28ec6659430cfdbc81533f05863ccb0ddc560e32
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881376"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99508041"
 ---
 # <a name="introduction-to-azure-defender-for-sql"></a>SQL için Azure Defender 'a giriş
 
@@ -72,7 +72,6 @@ Uyarılar, bunları tetikleyen olayın ayrıntılarını ve tehditleri İnceleme
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, SQL için Azure Defender hakkında bilgi edindiniz.
+Bu makalede, SQL için Azure Defender hakkında bilgi edindiniz. Açıklanan hizmetleri kullanmak için:
 
-> [!div class="nextstepaction"]
-> [Azure Defender ile SQL Server 'larınızı güvenlik açıklarına karşı tarayın](defender-for-sql-usage.md)
+- [SQL sunucularınızı güvenlik açıkları için taramak](defender-for-sql-usage.md) üzere makinelerde SQL Server 'Lar Için Azure Defender 'ı kullanma

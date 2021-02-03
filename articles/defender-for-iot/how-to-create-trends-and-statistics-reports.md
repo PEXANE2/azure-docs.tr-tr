@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 01/24/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 8bfbacc77843c7978bcb1d364bd93f5e09381144
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: 20b47204ea8f64bc430f436a9bcf1b2311409aa6
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98811730"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99509495"
 ---
 # <a name="sensor-trends-and-statistics-reports"></a>Algılayıcı eğilimleri ve istatistik raporları
 
@@ -26,19 +26,29 @@ Ağ eğilimleri ve istatistikleriyle ilgili bilgi edinmek için pencere öğesi 
 Pano, aşağıdaki bilgi türlerini grafiksel olarak tanımlayan pencere öğeleri içerir:
 
 - Bağlantı noktasına göre trafik
+- Bağlantı noktasına göre popüler trafik
 - Kanal bant genişliği
 - Toplam bant genişliği
 - Etkin TCP bağlantısı
+- VLAN tarafından en yüksek bant genişliği
 - Cihazlarınız
   - Yeni cihazlar
   - Meşgul cihazlar
   - Satıcıya göre cihazlar
   - İşletim sistemine göre cihazlar
+  - VLAN başına cihaz sayısı
   - Bağlantısı kesilen cihazlar
-- Saate göre bağlantı bırakma
+- Saatlere göre bağlantı düşme
 - Türe göre olay uyarıları
 - Veritabanı tablosu erişimi
 - Protokol açıklaması pencere öğeleri
+- DELTAV
+  - DeltaV Roc işlemleri dağıtımı
+  - DeltaV Roc olayları ada göre
+  - Zamana göre DeltaV olayları
+- AMS
+  - Sunucu bağlantı noktasına göre AMS trafiği
+  - Komutuna göre AMS trafiği
 - Ethernet ve IP adresi:
   - CıP hizmetine göre Ethernet ve IP adresi trafiği
   - CıP sınıfına göre Ethernet ve IP adresi trafiği
@@ -49,6 +59,15 @@ Pano, aşağıdaki bilgi türlerini grafiksel olarak tanımlayan pencere öğele
 - Siemens S7:
   - Denetim işlevine göre S7 trafiği
   - Alt işleve göre S7 trafiği
+- VLAN
+  - VLAN başına cihaz sayısı
+  - VLAN tarafından en yüksek bant genişliği
+- 60870-5-104
+  - IEC-ASDU 'e göre 60870 trafiği
+- BACNET
+  - BACnet Hizmetleri
+- DNP3
+  - İşleve göre DNP3 trafiği
 - SRTP:
   - Hizmet koduna göre SRTP trafiği
   - Güne göre SRTP hataları

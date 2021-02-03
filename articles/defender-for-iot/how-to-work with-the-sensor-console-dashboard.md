@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 11/03/2020
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: 735b1ce4391598d05a1bf0b4486503092f4de37d
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: c9afc22cd123a782c9ee0247952c78c72ee916c0
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97842921"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99509091"
 ---
 # <a name="the-dashboard"></a>Pano
 
@@ -28,7 +28,7 @@ Pano, ağınızın güvenlik durumunu hızlı bir şekilde görüntülemenizi sa
 
 - Uyarılar
 
-- Sayfanın merkezindeki iki ölçü, saniye başına paketleri (PPS) ve kabul edilmemiş uyarıları (UA) gösterir. **PPS** , saniye başına sistem tarafından onaylanan paketlerin sayısıdır. **UA** henüz onaylanmamış uyarı sayısıdır.
+- Sayfanın merkezindeki iki gösterge, saniye başına paketleri (PPS) ve kabul edilmemiş uyarıları (UA) gösterir. **PPS** , saniye başına sistem tarafından onaylanan paketlerin sayısıdır. **UA** henüz onaylanmamış uyarı sayısıdır.
 
 - Açıklamalarıyla birlikte bildirilmemiş uyarıların listesi.
 
@@ -78,23 +78,23 @@ Uyarı kutusunun altındaki aşağı ok **V** ' yi seçerek uyarı girişini ve 
 
 :::image type="content" source="media/how-to-work with-the-sensor-console-dashboard/extended-alert-screen.png" alt-text="Uyarı girdisi ve cihaz bilgileri":::
 
-- Fiziksel mod haritasını görüntülemek için cihazı seçin veya **cihazları görüntüleyin** . Tabi cihazlar vurgulanır.
+- Fiziksel mod eşlemesini görüntüleyecek aygıtı seçin. Tabi cihazlar vurgulanır.
+
+- Uyarıyla ilgili ek ayrıntıları göstermek için uyarı kutusunda herhangi bir yere tıklayın. Bir açılan pencere aşağıdakine benzer şekilde görüntülenir
 
 - Uyarı hakkında bir CSV dosyasını dışarı aktarmak için :::image type="content" source="media/how-to-work with-the-sensor-console-dashboard/excel-icon.png" alt-text="Excel"::: ' i seçin.
 
 - Yalnızca Yöneticiler ve Güvenlik analistleri — tüm ilişkili uyarıları **bildirmek** Için :::image type="content" source="media/how-to-work with-the-sensor-console-dashboard/approve-all-icon.png" alt-text="Tümünü Onayla"::: ' yı seçin.
 
-- Uyarının türünü ve açıklamasını görüntülemek için uyarı girişini seçin:
-
 - Bir uyarı raporunu PDF dosyası olarak indirmek için :::image type="content" source="media/how-to-work with-the-sensor-console-dashboard/pdf-icon.png" alt-text="PDF 'yi":::seçin.
 
-- Sabitlemek için :::image type="content" source="media/how-to-work with-the-sensor-console-dashboard/pin-icon.png" alt-text="sabitle ' yi":::seçin veya uyarıyı kaldırın.
+- Sabitlemek için :::image type="content" source="media/how-to-work with-the-sensor-console-dashboard/pin-icon.png" alt-text="sabitle ' yi":::seçin veya uyarıyı kaldırın. Sabitlemeyi seçmek, **uyarıları uyarı** ekranındaki **sabitlenmiş uyarılar** penceresine ekler.
 
-- Ağ Protokol Analizi içeren PCAP dosyasını indirerek uyarıyı araştırmak için :::image type="content" source="media/how-to-work with-the-sensor-console-dashboard/download-icon.png" alt-text="İndir"::: ' i seçin.
+- Ağ protokol analizini içeren ilgili PCAP dosyasını indirerek uyarıyı araştırmak için :::image type="content" source="media/how-to-work with-the-sensor-console-dashboard/download-icon.png" alt-text="İndir"::: ' i seçin.
 
-- Yalnızca uyarı ile ilgili paketleri içeren filtrelenmiş bir PCAP dosyasını indirmek için :::image type="content" source="media/how-to-work with-the-sensor-console-dashboard/cloud-download-icon.png" alt-text="bulut"::: ' u seçin, böylece çıkış dosyası boyutunu azaltır ve daha odaklanmış bir analize izin verilir. [Wireshark](https://www.wireshark.org/)kullanarak görüntüleyebilirsiniz.
+- Yalnızca uyarı ile ilgili paketleri içeren ilişkili filtrelenmiş bir PCAP dosyasını indirmek için :::image type="content" source="media/how-to-work with-the-sensor-console-dashboard/cloud-download-icon.png" alt-text="bulut"::: ' u seçin, böylece çıkış dosyası boyutunu azaltır ve daha odaklanmış bir analize izin verilir. [Wireshark](https://www.wireshark.org/)kullanarak görüntüleyebilirsiniz.
 
-- İstenen uyarının sırasında olay zaman çizelgesine gitmek için :::image type="content" source="media/how-to-work with-the-sensor-console-dashboard/navigate-icon.png" alt-text="Gezinti"::: ' yi seçin.
+- İstenen uyarının sırasında olay zaman çizelgesine gitmek için :::image type="content" source="media/how-to-work with-the-sensor-console-dashboard/navigate-icon.png" alt-text="Gezinti"::: ' yi seçin. Bu, belirli bir uyarı etrafında oluşabilecek diğer olayları değerlendirmenizi sağlar.
 
 - Yalnızca Yöneticiler ve Güvenlik analistleri-uyarının durumunu kabul edilmemiş olarak kabul edildi olarak değiştirir. Algılanan etkinliği onaylamak için öğren ' i seçin.
 

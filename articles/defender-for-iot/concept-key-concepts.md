@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/13/2020
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: 419e32a127947cde1d3761507f0df7a889528ff2
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: cb984ca1a74d8b3838b857f2f5679264d1445187
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98621937"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99508617"
 ---
 # <a name="basic-concepts"></a>Temel kavramlar 
 
@@ -20,9 +20,9 @@ Bu makalede IoT için Azure Defender 'ın temel avantajları açıklanmaktadır.
 
 ## <a name="rapid-non-invasive-deployment-and-passive-monitoring"></a>Hızlı bir şekilde sahip olmayan dağıtım ve pasif izleme
 
-IoT sensörleri için Defender, bir SPAN bağlantı noktasına veya ağa dokunmaya bağlanır ve doğrudan pasif (aracısız) izleme aracılığıyla ICS ağ trafiğini toplamaya başlar. Derin paket incelemesi (DPı), hem seri hem de Ethernet denetim ağı cihazından gelen trafiği dissect için kullanılır. IoT için Defender, veri yoluna yerleştirilmediğinden ve cihaz etkin bir şekilde taramadığı için OT ağları üzerinde sıfır etkiye sahiptir. 
+IoT sensörleri için Defender, anahtar yayma (yansıtma) bağlantı noktalarına ve ağ dokunmasına bağlanır ve doğrudan pasif (aracısız) izleme aracılığıyla ICS ağ trafiğini toplamaya başlar. Derin paket incelemesi (DPı), hem seri hem de Ethernet denetim ağı cihazından gelen trafiği dissect için kullanılır. IoT için Defender, veri yoluna yerleştirilmediğinden ve cihaz etkin bir şekilde taramadığı için OT ağları üzerinde sıfır etkiye sahiptir. 
 
-Ayrıntılı cihaz bilgilerinin anlık anlık görüntülerini teslim etmek için, IoT algılayıcısı için Defender, isteğe bağlı bir etkin bileşenle pasif izlemeyi tamamlar. Bu bileşen, cihaz ayrıntıları için hem Windows hem de denetleyici cihazlarını istediğiniz sıklıkta sorgulamak için güvenli, satıcının onayladığı komutları kullanır.
+Ayrıntılı Windows cihaz bilgilerinin anlık anlık görüntülerini teslim etmek için, IoT algılayıcısı için Defender, isteğe bağlı bir etkin bileşenle pasif izlemeyi tamamlayacak şekilde yapılandırılabilir. Bu bileşen, Windows cihazlarını cihaz ayrıntılarına göre sorgulamak için güvenli, satıcının onayladığı komutları kullanır.
 
 ## <a name="embedded-knowledge-of-ics-protocols-devices-and-applications"></a>ICS protokolleri, cihazları ve uygulamaları için gömülü bilgi
 
@@ -83,7 +83,7 @@ IoT için Defender, birden çok dağıtımın etkili yönetimini ve ağın kapsa
 
 İş ortağı sistemleriyle hem cihaz hem de uyarı bilgilerini paylaşarak IoT için Defender 'ın yeteneklerini genişletebilirsiniz. Tümleştirmeler, kuruluşların cihaz görünürlüğünü ve tehdit bilgilerini önemli ölçüde geliştirmek için daha önce yığılıyor güvenlik çözümlerini köprüleyin. Tümleştirmeler, kuruluşların sistem genelinde yanıtları hızlandırmasına yardımcı olur ve riskleri daha hızlı azaltır. 
 
-Tümleştirmeler karmaşıklığı azaltır ve var olan SOC iş akışlarınızla ve güvenlik yığınınıza tümleştirerek bu ve OT ortadan kaldırır. Örnek:
+Tümleştirmeler karmaşıklığı azaltır ve var olan SOC iş akışlarınızla ve güvenlik yığınınıza tümleştirerek bu ve OT ortadan kaldırır. Örneğin:
 
 - IBM QRadar, splunk, Arcgözetimi, LogRhythm ve RSA Nettanık gibi Sıems
 

@@ -8,30 +8,30 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/01/2021
-ms.openlocfilehash: 422346430e32ccb8745d5a5d829c5d61089a99c6
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: b8881d3fa7ade08da103c5af4b828a12e74cc355
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99430437"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99509461"
 ---
 # <a name="how-to-index-plain-text-blobs-in-azure-cognitive-search"></a>Azure Bilişsel Arama düz metin bloblarını dizin oluşturma
 
-Tam metin arama için aranabilir metin ayıklamak üzere bir [BLOB Dizin Oluşturucu](search-howto-indexing-azure-blob-storage.md) kullanırken, daha iyi dizin oluşturma sonuçları elde etmek için çeşitli ayrıştırma modlarını çağırabilirsiniz. Varsayılan olarak, Dizin Oluşturucu blob içeriğini tek bir metin öbeği olarak ayrıştırır. Ancak, tüm Bloblar aynı kodlamada düz metin içeriyorsa, ayrıştırma modunu kullanarak dizin oluşturma performansını önemli ölçüde geliştirebilirsiniz `text` .
+Tam metin arama için aranabilir blob metnini ayıklamak üzere bir [BLOB Dizin Oluşturucu](search-howto-indexing-azure-blob-storage.md) kullanırken, daha iyi dizin oluşturma sonuçları elde etmek için bir ayrıştırma modu atayabilirsiniz. Varsayılan olarak, Dizin Oluşturucu blob içeriğini tek bir metin öbeği olarak ayrıştırır. Ancak, tüm Bloblar aynı kodlamada düz metin içeriyorsa, ayrıştırma modunu kullanarak dizin oluşturma performansını önemli ölçüde geliştirebilirsiniz `text` .
 
-`text`Ayrıştırma modunu şu durumlarda kullanmanız gerekir:
+Kullanım ayrıştırması için öneriler `text` şunları içerir:
 
 + Dosya türü. txt
 + Dosyalar herhangi bir türdür, ancak içerik metindir (örneğin, program kaynak kodu, HTML, XML vs.). Bir işaretleme dilindeki dosyalar için, herhangi bir sözdizimi karakteri statik metin olarak gönderilir.
 
-Dizin oluşturucularının JSON 'a serileştirilme olduğunu hatırlayın. Tüm metin dosyasının içeriği, tek bir büyük alan içinde olarak dizinlenir `"content": "<file-contents>"` . Yeni satır ve dönüş yönergeleri olarak ifade edilir `\r\n\` .
+Tüm dizin oluşturucularının JSON 'a serileştirilme olduğunu hatırlayın. Varsayılan olarak, tüm metin dosyasının içeriği bir büyük alan içinde olarak dizinlenir `"content": "<file-contents>"` . Yeni satır ve dönüş yönergeleri içerik alanına katıştırılır ve olarak ifade edilir `\r\n\` .
 
-Daha ayrıntılı bir sonuç istiyorsanız aşağıdaki çözümleri göz önünde bulundurun:
+Daha ayrıntılı bir sonuç istiyorsanız ve dosya türü uyumluysa, aşağıdaki çözümleri göz önünde bulundurun:
 
 + [`delimitedText`](search-howto-index-csv-blobs.md) Kaynak CSV ise ayrıştırma modu
 + [ `jsonArray` ya `jsonLines` ](search-howto-index-json-blobs.md)da kaynak JSON ise
 
-Birden çok bölümden oluşan içeriği bölmek için üçüncü bir seçenek de [AI zenginleştirme](cognitive-search-concept-intro.md)formunda gelişmiş özellikler gerektirir. Dosya öbeklerini tanımlayan ve farklı arama alanlarına atayan analizler ekler. [Yerleşik yetenekler](cognitive-search-predefined-skills.md)aracılığıyla tam veya kısmi bir çözüm bulabilirsiniz, ancak daha olası bir çözüm, içeriğinizi anlayan ve özel bir [beceriye](cognitive-search-custom-skill-interface.md)kaydırılmış olan özel öğrenme modelinde, içeriğinizi anlayan bir model öğreniyor olabilir.
+İçeriği birden çok parçaya bölmek için üçüncü bir seçenek de [AI zenginleştirme](cognitive-search-concept-intro.md)formunda gelişmiş özellikler gerektirir. Dosya öbeklerini tanımlayan ve farklı arama alanlarına atayan analizler ekler. [Yerleşik yetenekler](cognitive-search-predefined-skills.md)aracılığıyla tam veya kısmi bir çözüm bulabilirsiniz, ancak daha olası bir çözüm, içeriğinizi anlayan ve özel bir [beceriye](cognitive-search-custom-skill-interface.md)kaydırılmış olan özel öğrenme modelinde, içeriğinizi anlayan bir model öğreniyor olabilir.
 
 ## <a name="set-up-plain-text-indexing"></a>Düz metin dizinlemeyi ayarlama
 

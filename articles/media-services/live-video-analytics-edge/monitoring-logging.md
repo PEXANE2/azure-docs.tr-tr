@@ -3,12 +3,12 @@ title: İzleme ve günlüğe kaydetme-Azure
 description: Bu makalede, IoT Edge üzerindeki canlı video analizlerinde izleme ve günlüğe kaydetme konusunda genel bir bakış sunulmaktadır.
 ms.topic: reference
 ms.date: 04/27/2020
-ms.openlocfilehash: 6dc0a6d499d06c95bdccbc9e386d7f9288971ee8
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: a77ca6cf9dc66d1efda5741266f1a2eecc2599c0
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98878113"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99507831"
 ---
 # <a name="monitoring-and-logging"></a>İzleme ve günlüğe kaydetme
 
@@ -208,7 +208,7 @@ Olay türleri, bu şemaya göre bir ad alanına atanır:
 
 #### <a name="event-classes"></a>Olay sınıfları
 
-|Sınıf adı|Description|
+|Sınıf adı|Açıklama|
 |---|---|
 |Analiz  |İçerik analizinin bir parçası olarak oluşturulan olaylar.|
 |Tanılama    |Sorunların ve performansın tanılanmasına yardımcı olan olaylar.|
@@ -230,7 +230,7 @@ Olay saati bir ISO 8601 dizesinde biçimlendirilir. Olayın gerçekleştiği sü
 
 Bu ölçümler IoT Edge modülündeki canlı video analizinden raporlanır:  
 
-|Ölçüm adı|Tür|Etiketle|Description|
+|Ölçüm adı|Tür|Etiketle|Açıklama|
 |-----------|----|-----|-----------|
 |lva_active_graph_instances|Ölçer|ıothub, edge_device, module_name graph_topology|Topoloji başına toplam etkin grafik sayısı.|
 |lva_received_bytes_total|Sayaç|ıothub, edge_device, module_name, graph_topology, graph_instance, graph_node|Bir düğüm tarafından alınan toplam bayt sayısı. Yalnızca RTSP kaynakları için desteklenir.|
@@ -254,14 +254,14 @@ IoT Edge modülündeki canlı video analizinden ölçüm toplamayı etkinleştir
       urls = ["http://edgeHub:9600/metrics", "http://edgeAgent:9600/metrics", "http://{LVA_EDGE_MODULE_NAME}:9600/metrics"]
 
     [[outputs.azure_monitor]]
-      namespace_prefix = ""
+      namespace_prefix = "lvaEdge"
       region = "westus"
       resource_id = "/subscriptions/{SUBSCRIPTON_ID}/resourceGroups/{RESOURCE_GROUP}/providers/Microsoft.Devices/IotHubs/{IOT_HUB_NAME}"
     ```
     > [!IMPORTANT]
     > . TOML dosyasındaki değişkenleri değiştirdiğinizden emin olun. Değişkenler kaşlı ayraç () ile gösterilir `{}` .
 
-1. Aynı klasörde `.dockerfile` aşağıdaki komutları içeren bir oluşturun:
+1. Aynı klasörde aşağıdaki komutları içeren bir Dockerfile oluşturun:
     ```
         FROM telegraf:1.15.3-alpine
         COPY telegraf.toml /etc/telegraf/telegraf.conf
@@ -305,12 +305,27 @@ IoT Edge modülündeki canlı video analizinden ölçüm toplamayı etkinleştir
      `AZURE_CLIENT_SECRET`: Kullanılacak uygulama gizli dizesini belirtir.  
      
      >[!TIP]
-     > Hizmet sorumlusu ' **nı Izleme ölçümleri yayımcısı** rolüne verebilirsiniz.
+     > Hizmet sorumlusu ' **nı Izleme ölçümleri yayımcısı** rolüne verebilirsiniz. Hizmet sorumlusu oluşturmak ve rolü atamak için **[hizmet sorumlusu oluşturma](https://docs.microsoft.com/azure/azure-arc/data/upload-metrics-and-logs-to-azure-monitor?pivots=client-operating-system-macos-and-linux#create-service-principal)** bölümündeki adımları izleyin.
 
 1. Modüller dağıtıldıktan sonra, ölçümler tek bir ad alanı altında Azure Izleyici 'de görüntülenir. Ölçüm adları, Prometheus tarafından yayıldıklarınızla eşleşir. 
 
    Bu durumda, Azure portal IoT Hub 'ına gidin ve sol bölmedeki **ölçümler** ' i seçin. Ölçümleri burada görmeniz gerekir.
 
+[Log Analytics](https://docs.microsoft.com/azure/azure-monitor/log-query/log-analytics-tutorial)Ile Prometheus 'ı kullanarak, kullanım yüzdesi, MemoryUsedPercent vb. gibi ölçümleri oluşturabilir ve [izleyebilirsiniz](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported) . Kusto sorgu dilini kullanarak sorguları aşağıda gösterildiği gibi yazabilir ve IoT Edge modülleri tarafından kullanılan CPU yüzdesini edinebilirsiniz.
+```kusto
+let cpu_metrics = promMetrics_CL
+| where Name_s == "edgeAgent_used_cpu_percent"
+| extend dimensions = parse_json(Tags_s)
+| extend module_name = tostring(dimensions.module_name)
+| where module_name in ("lvaEdge","yolov3","tinyyolov3")
+| summarize cpu_percent = avg(Value_d) by bin(TimeGenerated, 5s), module_name;
+cpu_metrics
+| summarize cpu_percent = sum(cpu_percent) by TimeGenerated
+| extend module_name = "Total"
+| union cpu_metrics
+```
+
+[![Kusto sorgusu kullanan ölçümleri gösteren diyagram.](./media/telemetry-schema/metrics.png)](./media/telemetry-schema/metrics.png#lightbox)
 ## <a name="logging"></a>Günlüğe Kaydetme
 
 Diğer IoT Edge modüllerinde olduğu gibi, uç cihazdaki [kapsayıcı günlüklerini de inceleyebilirsiniz](../../iot-edge/troubleshoot.md#check-container-logs-for-issues) . Günlüklere yazılan bilgileri [aşağıdaki Module ikizi](module-twin-configuration-schema.md) özelliklerini kullanarak yapılandırabilirsiniz:

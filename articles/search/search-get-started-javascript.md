@@ -8,14 +8,14 @@ ms.author: delegenz
 ms.devlang: javascript
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 10/26/2020
+ms.date: 02/02/2021
 ms.custom: devx-track-js
-ms.openlocfilehash: 69cef4c17fd17219f0221c509775ad3fd6a80a27
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 7d31201f9d1a4519538aba3ac57ddfd340d936d1
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498991"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99509410"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-using-the-javascript-sdk"></a>Hızlı başlangıç: JavaScript SDK 'sını kullanarak Azure Bilişsel Arama dizini oluşturma
 > [!div class="op_single_selector"]
@@ -169,7 +169,7 @@ Bu şekilde, bir dizin oluşturmaya hazırız.
 
 ## <a name="1---create-index"></a>1-Dizin oluşturma 
 
-Üzerinde bir dosya **hotels_quickstart_index.js** oluşturun.  Bu dosya, Azure Bilişsel Arama 'nin bir sonraki adımda yüklediğiniz belgelerle nasıl çalıştığını tanımlar. Her bir alan ile tanımlanır `name` ve belirtilmiş olur `type` . Her alan Ayrıca, Azure Bilişsel Arama alan üzerinde arama, filtreleme, sıralama ve model kullanıp kullanamayacağını belirten bir dizi dizin özniteliklerine sahiptir. Alanların çoğu basit veri türleridir, ancak bazıları `AddressType` dizininiz içinde zengin veri yapıları oluşturmanıza imkan tanıyan karmaşık türlerdir.  [Desteklenen veri türleri](/rest/api/searchservice/supported-data-types) ve [dizin öznitelikleri](./search-what-is-an-index.md#index-attributes)hakkında daha fazla bilgi edinebilirsiniz. 
+Üzerinde bir dosya **hotels_quickstart_index.js** oluşturun.  Bu dosya, Azure Bilişsel Arama 'nin bir sonraki adımda yüklediğiniz belgelerle nasıl çalıştığını tanımlar. Her bir alan ile tanımlanır `name` ve belirtilmiş olur `type` . Her alan Ayrıca, Azure Bilişsel Arama alan üzerinde arama, filtreleme, sıralama ve model kullanıp kullanamayacağını belirten bir dizi dizin özniteliklerine sahiptir. Alanların çoğu basit veri türleridir, ancak bazıları `AddressType` dizininiz içinde zengin veri yapıları oluşturmanıza imkan tanıyan karmaşık türlerdir.  [Desteklenen veri türleri](/rest/api/searchservice/supported-data-types) ve Dizin [oluşturma (REST)](/rest/api/searchservice/create-index)bölümünde açıklanan dizin öznitelikleri hakkında daha fazla bilgi edinebilirsiniz. 
 
 **hotels_quickstart_index.js** için aşağıdakini ekleyin veya [dosyayı indirin](https://github.com/Azure-Samples/azure-search-javascript-samples/blob/master/quickstart/v11/hotels_quickstart_index.json). 
 

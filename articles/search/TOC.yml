@@ -302,10 +302,10 @@
               href: knowledge-store-projections-examples.md
     - name: Sorgular
       items:
-        - name: Sorgu türleri ve oluşturma
-          href: search-query-overview.md
         - name: Temel bir sorgu oluşturma
           href: search-query-create.md
+        - name: Sorgu türleri ve oluşturma
+          href: search-query-overview.md
         - name: Basit söz dizimi kullanma (örnekler)
           href: search-query-simple-examples.md
         - name: Tam Lucene kullanma (örnekler)

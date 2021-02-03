@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/07/2020
 ms.service: azure
 ms.topic: how-to
-ms.openlocfilehash: ad09bcb1ea4aa32bdd04af47d3503f74c850a10b
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: c0670f37da0cead5e3bd05a1d69e17191e8c0ccf
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98803513"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99508752"
 ---
 # <a name="manage-alert-events"></a>Uyarı olaylarını yönetme
 
@@ -45,7 +45,7 @@ Belirli durumlarda, bir sensör algılanan bir olayı öğrenmek istemiyor ya da
 
 Azaltma veya araştırma gerçekleştirdikten sonra, sensör ' ı seçerek uyarıyı gizleyebileceğini **söyleyebilirsiniz.** Olay tekrar algılanırsa, uyarı retriggered olacaktır.
 
-Uyarıyı gizlemek için:
+Uyarıyı temizlemek için:
 
   - **Onayla**' yı seçin.
 
@@ -70,9 +70,9 @@ Bu durumlarda öğrenimi yoktur. Öğrenme gerçekleştirilemiyor ve riskleri ve
 
 ### <a name="what-traffic-is-muted"></a>Hangi trafik kapalı?
 
-Bir kapalı senaryo, bir olay için algılanan ağ cihazlarını ve trafiği içerir. Uyarı başlığı, kapalı olan trafiği açıklar.
+Kapalı bir senaryo, ağ cihazlarını ve bir olay için algılanan trafiği içerir. Uyarı başlığı, kapalı olan trafiği açıklar.
 
-Kapalı durumda olan cihaz veya cihazlar, uyarıda bir görüntü olarak görüntülenir. İki cihaz gösterilirse, aralarındaki trafik kapalı olur.
+Kapalı durumda olan cihaz veya cihazlar, uyarıda bir görüntü olarak görüntülenir. İki cihaz gösterilirse, aralarında uyarı verilen belirli trafik kapalı olur.
 
 **Örnek 1**
 

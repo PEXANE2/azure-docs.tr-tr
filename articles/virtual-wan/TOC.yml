@@ -4,6 +4,15 @@
   items:
     - name: Sanal WAN nedir?
       href: virtual-wan-about.md
+- name: Hızlı Başlangıçlar
+  expanded: true
+  items:
+    - name: ARM şablonları
+      expanded: true
+      items:
+        - name: Herhangi bir-herhangi bir yönlendirme
+          displayName: Resource Manager Any-to-any routing
+          href: quickstart-any-to-any-template.md
 - name: Öğreticiler
   expanded: true
   items:

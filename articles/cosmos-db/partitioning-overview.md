@@ -6,12 +6,12 @@ ms.author: dech
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/12/2020
-ms.openlocfilehash: 7c05ca6462d49d1d41791e5b93b7723ac681d448
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: a70cfc7ab01dabd3d740d878acb453b4d1e76b5f
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93080841"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99507427"
 ---
 # <a name="partitioning-and-horizontal-scaling-in-azure-cosmos-db"></a>Azure Cosmos DB'de bölümleme ve yatay ölçeklendirme
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -36,10 +36,13 @@ Kapsayıcıınızda mantıksal bölüm sayısı için bir sınır yoktur. Her ma
 
 Bir kapsayıcı, verileri ve aktarım hızını fiziksel bölümler arasında dağıtarak ölçeklendirilir. Dahili olarak, bir veya daha fazla mantıksal bölüm tek bir fiziksel bölüme eşlenir. Genellikle daha küçük kapsayıcılar birçok mantıksal bölüme sahiptir ancak yalnızca tek bir fiziksel bölüm gerektirir. Mantıksal bölümlerin aksine, fiziksel bölümler sistemin dahili bir uygulamasıdır ve tamamen Azure Cosmos DB tarafından yönetilir.
 
-Kapsayıcıdaki fiziksel bölüm sayısı aşağıdaki yapılandırmaya bağlıdır:
+Kapsayıcılarınızın fiziksel bölümlerinin sayısı aşağıdakilere bağlıdır:
 
 * Sağlanan aktarım hızı sayısı (her bir fiziksel bölüm, saniyede en fazla 10.000 istek birimi sağlar).
 * Toplam veri depolama alanı (her bir fiziksel Bölüm 50 GB 'a kadar veri saklayabilir).
+
+> [!NOTE]
+> Fiziksel bölümler sistemin dahili bir uygulamasıdır ve tamamen Azure Cosmos DB tarafından yönetilir. Çözümlerinizi geliştirirken fiziksel bölümlere odaklanmayın, bunun yerine bölüm Anahtarlarınıza odaklanırsınız. Mantıksal bölümlerde üretilen iş tüketimini eşit bir şekilde dağıtan bir bölüm anahtarı seçerseniz, fiziksel bölümlerde üretilen iş tüketiminin dengelenmesi güvence altına alınır.
 
 Kapsayıcıınızda bulunan toplam fiziksel bölüm sayısı için bir sınır yoktur. Sağlanan aktarım hızı veya veri boyutunuz büyüdükçe, Azure Cosmos DB var olanları bölerek otomatik olarak yeni fiziksel bölümler oluşturacak. Fiziksel bölüm bölmelerini uygulamanızın kullanılabilirliğini etkilemez. Fiziksel bölüm ayrıldıktan sonra, tek bir mantıksal bölüm içindeki tüm veriler aynı fiziksel bölümde saklanmaya devam eder. Fiziksel bölüm ayırma, mantıksal bölümlerin fiziksel bölümlere yeni bir eşlemesini oluşturur.
 
@@ -49,12 +52,9 @@ Kapsayıcının fiziksel bölümlerinin Azure portal **ölçüm dikey** penceres
 
 :::image type="content" source="./media/partitioning-overview/view-partitions-zoomed-out.png" alt-text="Fiziksel bölüm sayısını görüntüleme" lightbox="./media/partitioning-overview/view-partitions-zoomed-in.png" ::: 
 
-Yukarıdaki ekran görüntüsünde bir kapsayıcı `/foodGroup` bölüm anahtarı olarak bulunur. Grafikteki üç çubuk bir fiziksel bölümü temsil eder. Görüntüde, **bölüm anahtar aralığı** fiziksel bir bölümle aynıdır. Seçilen fiziksel bölüm üç mantıksal bölüm içerir: `Beef Products` , `Vegetable and Vegetable Products` , ve `Soups, Sauces, and Gravies` .
+Yukarıdaki ekran görüntüsünde bir kapsayıcı `/foodGroup` bölüm anahtarı olarak bulunur. Grafikteki üç çubuk bir fiziksel bölümü temsil eder. Görüntüde, **bölüm anahtar aralığı** fiziksel bir bölümle aynıdır. Seçilen fiziksel bölüm en çok önemli 3 boyutlu mantıksal bölümleri içerir: `Beef Products` , `Vegetable and Vegetable Products` ve `Soups, Sauces, and Gravies` .
 
 Saniyede 18.000 istek birimi (RU/sn) üretilen işi sağlarsanız, üç fiziksel bölümün her biri, sağlanan toplam üretilen iş üretiminin 1/3 ' i kullanabilir. Seçilen fiziksel bölümde, mantıksal bölüm anahtarları `Beef Products` `Vegetable and Vegetable Products` ve `Soups, Sauces, and Gravies` toplu olarak, fiziksel bölümün 6.000 tarafından sağlanan ru/s 'yi kullanabilir. Sağlanan aktarım hızı kapsayıcının fiziksel bölümlerine eşit olarak bölündüğü için [doğru mantıksal bölüm anahtarını seçerek](#choose-partitionkey)işleme tüketimini eşit bir şekilde dağıtan bir bölüm anahtarı seçmeniz önemlidir. 
-
-> [!NOTE]
-> Mantıksal bölümlerde üretilen iş tüketimini eşit bir şekilde dağıtan bir bölüm anahtarı seçerseniz, fiziksel bölümlerde üretilen iş tüketiminin dengelenmesi güvence altına alınır.
 
 ## <a name="managing-logical-partitions"></a>Mantıksal bölümleri yönetme
 
@@ -74,11 +74,11 @@ Genellikle daha küçük kapsayıcılar yalnızca tek bir fiziksel bölüm gerek
 
 Aşağıdaki görüntüde, mantıksal bölümlerin küresel olarak dağıtılan fiziksel bölümlerle nasıl eşlendiği gösterilmektedir:
 
-:::image type="content" source="./media/partitioning-overview/logical-partitions.png" alt-text="Fiziksel bölüm sayısını görüntüleme" border="false":::
+:::image type="content" source="./media/partitioning-overview/logical-partitions.png" alt-text="Azure Cosmos DB bölümleme gösteren bir görüntü" border="false":::
 
 ## <a name="choosing-a-partition-key"></a><a id="choose-partitionkey"></a>Bölüm anahtarını seçme
 
-Bölüm anahtarında iki bileşen vardır: **bölüm anahtar yolu** ve **bölüm anahtarı değeri** . Örneğin, {"UserID" öğesini düşünün: "Andrew", "worksFor": "Microsoft"} bölüm anahtarı olarak "UserID" seçeneğini belirlerseniz, iki bölüm anahtarı bileşeni aşağıda verilmiştir:
+Bölüm anahtarında iki bileşen vardır: **bölüm anahtar yolu** ve **bölüm anahtarı değeri**. Örneğin, {"UserID" öğesini düşünün: "Andrew", "worksFor": "Microsoft"} bölüm anahtarı olarak "UserID" seçeneğini belirlerseniz, iki bölüm anahtarı bileşeni aşağıda verilmiştir:
 
 * Bölüm anahtarı yolu (örneğin: "/UserID"). Bölüm anahtarı yolu alfasayısal ve alt çizgi (_) karakterlerini kabul eder. Ayrıca, standart yol gösterimini (/) kullanarak iç içe geçmiş nesneleri de kullanabilirsiniz.
 
@@ -114,7 +114,7 @@ Kapsayıcınız birkaç fiziksel bölümden daha fazla büyümeye devam ediyorsa
 
 ## <a name="using-item-id-as-the-partition-key"></a>Bölüm anahtarı olarak öğe KIMLIĞI kullanma
 
-Kapsayıcının çok sayıda olası değeri olan bir özelliği varsa, büyük olasılıkla büyük bir bölüm anahtarı seçimidir. Bu tür bir özelliğin olası bir örneği *öğe kimliğidir* . Küçük okuma ağır kapsayıcılar veya herhangi bir büyüklükte yazma ağır kapsayıcılar için, *öğe kimliği* doğal olarak bölüm anahtarı için harika bir seçimdir.
+Kapsayıcının çok sayıda olası değeri olan bir özelliği varsa, büyük olasılıkla büyük bir bölüm anahtarı seçimidir. Bu tür bir özelliğin olası bir örneği *öğe kimliğidir*. Küçük okuma ağır kapsayıcılar veya herhangi bir büyüklükte yazma ağır kapsayıcılar için, *öğe kimliği* doğal olarak bölüm anahtarı için harika bir seçimdir.
 
 Kapsayıcıdaki her öğede sistem özelliği *öğe kimliği* var. Öğe için bir mantıksal KIMLIĞI temsil eden diğer özelliklere sahip olabilirsiniz. Çoğu durumda bunlar Ayrıca, *öğe kimliği* ile aynı nedenlerden dolayı büyük bölüm anahtarı seçimleridir.
 

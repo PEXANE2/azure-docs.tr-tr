@@ -1,55 +1,66 @@
 ---
-title: 'Öğretici: beceri kodunuzda yapılan değişiklikleri tanılamak, gidermek ve işlemek için hata ayıklama oturumlarını kullanma'
+title: 'Öğretici: becerileri gidermek için hata ayıklama oturumlarını kullanma'
 titleSuffix: Azure Cognitive Search
-description: Hata ayıklama oturumları (Önizleme) becerileri bilgisayarınızdaki sorunları/hataları değerlendirmek ve onarmak için portal tabanlı bir arabirim sağlar
+description: Hata ayıklama oturumları (Önizleme) bir beceri içinde sorunları bulmak, tanılamak ve onarmak için kullanılan bir Azure portal aracıdır.
 author: HeidiSteen
 ms.author: heidist
 manager: nitinme
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 09/25/2020
-ms.openlocfilehash: 8ec39c4616f5a34f8326b56d4f0ba6e15cdad91c
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.date: 02/02/2021
+ms.openlocfilehash: ed988baec46152d55cf63aec09fce7a298157212
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94699126"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99509158"
 ---
-# <a name="tutorial-diagnose-repair-and-commit-changes-to-your-skillset"></a>Öğretici: beceri kodunuzda tanılama, onarma ve değişiklikleri yapma
+# <a name="tutorial-debug-a-skillset-using-debug-sessions"></a>Öğretici: hata ayıklama oturumlarını kullanarak bir beceri hata ayıklayın
 
-Bu makalede, belirtilen beceri sorunlarını gidermek için hata ayıklama oturumlarına erişmek üzere Azure portal kullanacaksınız. Beceri, giderilmesi gereken bazı hatalara sahiptir. Bu öğretici, yetenek girişleri ve çıkışları sorunlarını belirlemek ve çözmek için bir hata ayıklama oturumunda size kılavuzluk eder.
+Becerileri içeriği çözümleyen veya dönüştüren bir dizi eylemi koordine eder. Bu, bir yeteneğin çıktısının başka bir giriş haline geldiği yerdir. Girişler çıkışlara bağımlıysa, Beceri tanımlarındaki ve alan ilişkilendirmelerinin hataları kaçırılmış işlem ve verilere neden olabilir.
+
+Azure portal **hata ayıklama oturumları** , bir beceri bütünsel görselleştirmesini sağlar. Bu aracı kullanarak, bir eylemin nerede olabileceğini kolayca görmek için belirli adımlara gidebilirsiniz.
+
+Bu makalede, **hata ayıklama oturumlarını** , 1) eksik bir giriş ve 2) çıkış alanı eşlemelerini bulmak ve gidermek için kullanacaksınız. Öğretici hepsi dahil değildir. Dizin oluşturma (klinik deneme verileri), nesneleri oluşturan bir Postman koleksiyonu ve beceri 'de sorunları bulmak ve gidermek için **hata ayıklama oturumlarını** kullanma yönergeleri için veri sağlar.
 
 > [!Important]
 > Hata ayıklama oturumları, bir hizmet düzeyi sözleşmesi olmadan sunulan bir önizleme özelliğidir ve üretim iş yükleri için önerilmez. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 >
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
-
 ## <a name="prerequisites"></a>Önkoşullar
 
-> [!div class="checklist"]
-> * Azure aboneliği. Ücretsiz bir [Hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun veya geçerli aboneliğinizi kullanın
-> * Azure Bilişsel Arama hizmet örneği
-> * Bir Azure depolama hesabı
-> * [Postman masaüstü uygulaması](https://www.getpostman.com/)
+Başlamadan önce, aşağıdaki önkoşulları yerine getirin:
 
-## <a name="create-services-and-load-data"></a>Hizmet oluşturma ve veri yükleme
++ Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/).
 
-Bu öğretici Azure Bilişsel Arama ve Azure depolama hizmetlerini kullanır.
++ Bir Azure Bilişsel Arama hizmeti. Geçerli aboneliğiniz kapsamında [bir hizmet oluşturun](search-create-service-portal.md) veya [var olan bir hizmeti bulun](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) . Bu hızlı başlangıç için ücretsiz bir hizmet kullanabilirsiniz. 
 
-* 19 dosyadan oluşan [örnek verileri indirin](https://github.com/Azure-Samples/azure-search-sample-data/tree/master/clinical-trials-pdf-19) .
++ Örnek verileri barındırmak için ve bir hata ayıklama oturumu sırasında oluşturulan kalıcı geçici veriler için kullanılan [BLOB depolama alanına](../storage/blobs/index.yml)sahip bir Azure depolama hesabı.
 
-* [Bir Azure depolama hesabı oluşturun](../storage/common/storage-account-create.md?tabs=azure-portal) veya [var olan bir hesabı bulun](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/). 
++ REST API 'Leri kullanarak nesne oluşturmaya yönelik [Postman masaüstü uygulaması](https://www.getpostman.com/) ve bir [Postman koleksiyonu](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/Debug-sessions) .
 
-   Bant genişliği ücretlerinden kaçınmak için Azure Bilişsel Arama ile aynı bölgeyi seçin.
-   
-   StorageV2 (genel amaçlı v2) hesap türünü seçin.
++ [Örnek veriler (klinik denemeler)](https://github.com/Azure-Samples/azure-search-sample-data/tree/master/clinical-trials-pdf-19).
 
-* Depolama Hizmetleri sayfalarını açın ve bir kapsayıcı oluşturun. En iyi yöntem, "özel" erişim düzeyini belirtmektir. Kapsayıcınızı adlandırın `clinicaltrialdataset` .
+> [!NOTE]
+> Bu hızlı başlangıç Ayrıca AI için Azure bilişsel [Hizmetler](https://azure.microsoft.com/services/cognitive-services/) 'i de kullanır. İş yükü çok küçük olduğu için bilişsel hizmetler, en fazla 20 işlem için ücretsiz işleme için arka planda dokunduğunda. Bu, ek bir bilişsel hizmetler kaynağı oluşturmak zorunda kalmadan bu Alıştırmayı tamamlayabilmeniz anlamına gelir.
 
-* Kapsayıcıda, ilk adımda indirdiğiniz ve daraltılmış örnek dosyaları karşıya yüklemek için **Yükle** ' ye tıklayın.
+## <a name="set-up-your-data"></a>Verilerinizi kurma
 
-* [Bir Azure bilişsel arama hizmeti oluşturun](search-create-service-portal.md) veya [var olan bir hizmeti bulun](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices). Bu hızlı başlangıç için ücretsiz bir hizmet kullanabilirsiniz.
+Bu bölüm, dizin oluşturucunun ve beceri birlikte çalışmak üzere içeriğe sahip olması için Azure Blob depolamada örnek veri kümesini oluşturur.
+
+1. 19 dosyadan oluşan [örnek verileri (klinik-denemeler-PDF-19) indirin](https://github.com/Azure-Samples/azure-search-sample-data/tree/master/clinical-trials-pdf-19).
+
+1. [Bir Azure depolama hesabı oluşturun](../storage/common/storage-account-create.md?tabs=azure-portal) veya [var olan bir hesabı bulun](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/). 
+
+   + Bant genişliği ücretlerinden kaçınmak için Azure Bilişsel Arama ile aynı bölgeyi seçin.
+
+   + StorageV2 (genel amaçlı v2) hesap türünü seçin.
+
+1. Portalda Azure Storage Services sayfalarına gidin ve bir blob kapsayıcısı oluşturun. En iyi yöntem, "özel" erişim düzeyini belirtmektir. Kapsayıcınızı adlandırın `clinicaltrialdataset` .
+
+1. Kapsayıcıda, ilk adımda indirdiğiniz ve daraltılmış örnek dosyaları karşıya yüklemek için **Yükle** ' ye tıklayın.
+
+1. Portalda, Azure depolama için bağlantı dizesini alın ve kapatın. Bu, verileri dizine alan REST API çağrısı için gerekir. Bağlantı dizesini portalda **Ayarlar**  >  **erişim tuşlarından** alabilirsiniz.
 
 ## <a name="get-a-key-and-url"></a>Anahtar ve URL al
 
@@ -59,88 +70,111 @@ REST çağrıları için her istekte hizmet URL'sinin ve bir erişim anahtarın�
 
 1. **Ayarlar**  >  **anahtarlar**' da, hizmette tam haklar için bir yönetici anahtarı alın. Üzerinde bir tane almanız gereken iş sürekliliği için iki adet değiştirilebilir yönetici anahtarı vardır. Nesneleri eklemek, değiştirmek ve silmek için isteklerde birincil veya ikincil anahtarı kullanabilirsiniz.
 
-:::image type="content" source="media/search-get-started-rest/get-url-key.png" alt-text="HTTP uç noktası ve erişim anahtarı al" border="false":::
+   :::image type="content" source="media/search-get-started-rest/get-url-key.png" alt-text="HTTP uç noktası ve erişim anahtarı al" border="false":::
 
 Tüm istekler hizmetinize gönderilen her istekte bir API anahtarı gerektirir. İstek başına geçerli bir anahtara sahip olmak, isteği gönderen uygulama ve bunu işleyen hizmet arasında güven oluşturur.
 
 ## <a name="create-data-source-skillset-index-and-indexer"></a>Veri kaynağı, Beceri, dizin ve Dizin Oluşturucu oluşturma
 
-Bu bölümde, arama hizmetinin veri kaynağını, Beceri, dizinini ve Dizin oluşturucuyu oluşturmak için Postman ve sağlanmış bir koleksiyon kullanılır.
+Bu bölümde, Postman ve sağlanmış bir koleksiyon Bilişsel Arama veri kaynağı, Beceri, dizin ve Dizin Oluşturucu oluşturmak için kullanılır. Postman hakkında bilginiz varsa, [Bu hızlı başlangıç](search-get-started-rest.md)bölümüne bakın.
 
-1. Postman yoksa [Postman Desktop uygulamasını buradan indirebilirsiniz](https://www.getpostman.com/).
-1. [Hata ayıklama oturumları Postman koleksiyonunu indirin](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/Debug-sessions)
-1. Postman Başlat
-1. Yeni **dosyalar** altında  >  **New**, içeri aktarılacak koleksiyonu seçin.
+Bu görevi gerçekleştirmek için bu öğreticide [Postman koleksiyonunun](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/Debug-sessions) oluşturulması gerekir. 
+
+1. Postman 'ı başlatın ve koleksiyonu içeri aktarın. Yeni **dosyalar** altında  >  , içeri aktarılacak koleksiyonu seçin.
 1. Koleksiyon alındıktan sonra, eylemler listesini (...) genişletin.
 1. **Düzenle**’ye tıklayın.
-1. SearchService 'nizin adını girin (örneğin, uç nokta ise, `https://mydemo.search.windows.net` hizmet adı " `mydemo` ").
-1. Ara hizmetinizin birincil veya ikincil anahtarıyla apiKey değerini girin.
-1. Azure depolama hesabınızın anahtarlar sayfasından storageConnectionString öğesini girin.
-1. Depolama hesabında oluşturduğunuz kapsayıcının Kapsayıcıadı ' nı girin.
+1. Geçerli değer altında, adını girin `searchService` (örneğin, uç nokta ise, `https://mydemo.search.windows.net` hizmet adı " `mydemo` ").
+1. `apiKey`Arama hizmetinizin birincil veya ikincil anahtarıyla birlikte girin.
+1. `storageConnectionString`Azure depolama hesabınızın anahtarlar sayfasından yazın.
+1. `containerName`Depolama hesabında oluşturduğunuz kapsayıcı için yazın ve ardından **Güncelleştir**' e tıklayın.
 
-> :::image type="content" source="media/cognitive-search-debug/postman-enter-variables.png" alt-text="Postman 'da değişkenleri Düzenle":::
+   :::image type="content" source="media/cognitive-search-debug/postman-enter-variables.png" alt-text="Postman 'da değişkenleri Düzenle":::
 
-Koleksiyon, bu bölümü gerçekleştirmek için kullanılan dört farklı REST çağrısı içerir.
+Koleksiyonda, bu öğreticide kullanılan nesneleri oluşturmak için kullanılan dört farklı REST çağrısı bulunur.
 
-İlk çağrı veri kaynağını oluşturur. `clinical-trials-ds`. İkinci çağrı, Beceri oluşturur `clinical-trials-ss` . Üçüncü çağrı dizinini oluşturur `clinical-trials` . Dördüncü ve son çağrı Dizin oluşturucuyu oluşturur `clinical-trials-idxr` . Koleksiyondaki tüm çağrılar tamamlandıktan sonra Postman ' ı kapatıp Azure portal döndürün.
+İlk çağrı veri kaynağını oluşturur. `clinical-trials-ds`. İkinci çağrı, Beceri oluşturur `clinical-trials-ss` . Üçüncü çağrı dizinini oluşturur `clinical-trials` . Dördüncü ve son çağrı Dizin oluşturucuyu oluşturur `clinical-trials-idxr` .
 
-> :::image type="content" source="media/cognitive-search-debug/postman-create-data-source.png" alt-text="veri kaynağı oluşturmak için Postman kullanma":::
++ Her isteği sırayla açın ve her isteği arama hizmetine göndermek için **Gönder** ' e tıklayın. 
 
-## <a name="check-the-results"></a>Sonuçları denetleme
+Koleksiyondaki tüm çağrılar tamamlandıktan sonra Postman ' ı kapatıp Azure portal döndürün.
 
-Beceri, yaygın olarak karşılaşılan birkaç hata içerir. Bu bölümde, tüm belgeleri döndürmek için boş bir sorgu çalıştırıldığında birden çok hata görüntülenir. Sonraki adımlarda, sorunlar bir hata ayıklama oturumu kullanılarak çözümlenir.
+## <a name="check-results-in-the-portal"></a>Portalda sonuçları denetleme
 
-1. Azure portal arama hizmetinize gidin. 
-1. **Dizinler** sekmesini seçin. 
-1. Dizini seçin `clinical-trials`
-1. Boş bir sorgu çalıştırmak için **Ara** ' ya tıklayın. 
+Örnek kod, Beceri yürütme sırasında oluşan sorunların sonucu olarak kasıtlı olmayan bir dizin oluşturur. Sorunun verileri eksik. 
 
-Arama tamamlandıktan sonra, veri listelenmesiz iki alan; "kuruluşlar" ve "konumlar" pencerede listelenmiştir. Beceri tarafından üretilen tüm sorunları bulmaya yönelik adımları izleyin.
+1. Azure portal 'de, arama hizmeti genel bakış sayfasında **dizinler** sekmesini seçin. 
+1. Dizini seçin `clinical-trials` .
+1. Bu sorgu dizesini girin: `$select=metadata_storage_path, organizations, locations&$count=true` belirli belgeler için alanları döndürmek için (benzersiz alan tarafından tanımlanır `metadata_storage_path` ).
+1. Sorguyu çalıştırmak için **Ara** ' ya tıklayın, tüm 19 belge, "kuruluşlar" ve "konumlar" için boş değerler gösteriliyor.
 
-1. Arama hizmeti genel bakış sayfasına dönün.
-1. **Dizin oluşturucular** sekmesini seçin. 
-1. Tıklayın `clinical-trials-idxr` ve uyarılar bildirimini seçin. 
+Bu alanlar, blob 'un içeriğinde herhangi bir yerde bulunan kuruluşları ve konumları bulmak için kullanılan beceri [varlık tanıma özelliği](cognitive-search-skill-entity-recognition.md)aracılığıyla doldurulmuş olmalıdır. Bir sonraki alıştırmada, neyin yanlış gittiğini belirlemek için hata ayıklama oturumu kullanacaksınız.
 
-Bir veya daha fazla yetenek girişi geçersiz olduğundan, yansıtma çıktı alanı eşlemelerinde ve üçüncü sayfada üç sorun vardır.
+Hataları ve uyarıları araştırmaya yönelik başka bir yol da Azure portal.
 
-Arama hizmeti genel bakış ekranına dönün.
+1. **Dizin oluşturucular** sekmesini açın ve öğesini seçin `clinical-trials-idxr` .
+1. Dizin Oluşturucu iş başarılı olduğunda 57 uyarı olduğunu fark edersiniz.
+1. Uyarıları görüntülemek için **başarılı** ' e tıklayın (genellikle hatalar varsa, ayrıntı bağlantısı **başarısız** olur). Dizin Oluşturucu tarafından yayılan her uyarının uzun bir listesini görürsünüz.
+
+   :::image type="content" source="media/cognitive-search-debug/portal-indexer-errors-warnings.png" alt-text="Uyarıları görüntüle":::
 
 ## <a name="start-your-debug-session"></a>Hata ayıklama oturumunuzu başlatın
 
-> :::image type="content" source="media/cognitive-search-debug/new-debug-session-screen-required.png" alt-text="Yeni bir hata ayıklama oturumu başlatın":::
+:::image type="content" source="media/cognitive-search-debug/new-debug-session-screen-required.png" alt-text="Yeni bir hata ayıklama oturumu başlatın":::
 
-1. Hata ayıklama oturumları (Önizleme) sekmesine tıklayın.
-1. + NewDebugSession seçin
+1. Genel Bakış sayfasında, **hata ayıklama oturumları** sekmesine tıklayın.
+1. **+ Yeni hata ayıklama oturumu** seçin.
 1. Oturuma bir ad verin. 
 1. Oturumu depolama hesabınıza bağlayın. 
-1. Dizin Oluşturucu adını sağlayın. Dizin oluşturucunun veri kaynağına, beceri ve dizine başvuruları vardır.
+1. Dizin Oluşturucu şablonunda, Dizin Oluşturucu adını sağlayın. Dizin oluşturucunun veri kaynağına, beceri ve dizine başvuruları vardır.
 1. Koleksiyondaki ilk belge için varsayılan belge seçimini kabul edin. 
 1. Oturumu **kaydedin** . Oturumun kaydedilmesi, beceri tarafından tanımlanan AI zenginleştirme işlem hattını başlatabilir.
 
 > [!Important]
-> Bir hata ayıklama oturumu yalnızca tek bir belge ile kullanılabilir. Veri kümesindeki belirli bir belge > seçilebilir veya oturum, varsayılan olarak ilk belgeye ayarlanır.
+> Bir hata ayıklama oturumu yalnızca tek bir belge ile kullanılabilir. Hangi belgenin hata ayıklayabileceği seçebilirsiniz veya yalnızca ilkini kullanmanız yeterlidir.
 
-> :::image type="content" source="media/cognitive-search-debug/debug-execution-complete1.png" alt-text="Yeni hata ayıklama oturumu başlatıldı":::
+<!-- > :::image type="content" source="media/cognitive-search-debug/debug-execution-complete1.png" alt-text="New debug session started"::: -->
 
-Hata ayıklama oturumunun yürütülmesi tamamlandığında, oturum varsayılan olarak, Yetenek grafiğini vurgulayarak AI zenginleştirme sekmesine göre yapılır.
+Hata ayıklama oturumunun başlatılması tamamlandığında, oturum varsayılan olarak, **Yetenek grafiğini** vurgulayan **AI zenginleştirme** sekmesine göre yapılır. Beceri grafiği, Beceri görsel bir hiyerarşisini ve yürütme sırasını ardışık olarak ve paralel olarak sağlar.
 
-+ Beceri grafiği, Beceri görsel hiyerarşisini ve en üstten en alta yürütme sırasını sağlar. Grafikte yan yana olan yetenekler paralel olarak yürütülür. Grafikteki yeteneklerin renk kodlaması, Beceri içinde yürütülen yetenek türlerini gösterir. Örnekte yeşil yetenekler metin ve kırmızı beceri vizyonu. Grafikteki tek bir yeteneğe tıkladığınızda, oturum penceresinin sağ bölmesinde beceri örneğinin ayrıntıları görüntülenir. Beceri ayarları, bir JSON Düzenleyicisi, yürütme ayrıntıları ve hataların/uyarıların tümü İnceleme ve düzenleme için kullanılabilir.
-+ Zenginleştirilmiş veri yapısı, kaynak belgenin içeriğinden yetenekler tarafından oluşturulan zenginleştirme ağacındaki düğümlerin ayrıntılarını oluşturur.
+## <a name="find-issues-with-the-skillset"></a>Beceri ile ilgili sorunları bulma
 
-Hatalar/Uyarılar sekmesi, daha önce görüntülenenden daha küçük bir liste sağlar, çünkü bu liste yalnızca tek bir belge için hataları ayrıntılendirilir. Dizin Oluşturucu tarafından gösterildiği gibi, bir uyarı iletisine tıklayabilir ve bu uyarının ayrıntılarına bakabilirsiniz.
+Dizin oluşturucunun bildirdiği tüm sorunlar bitişik **hatalar/uyarılar** sekmesinde bulunabilir. 
+
+Bu liste yalnızca tek bir belge için hataları ayrıntılacağından, **hatalar/uyarılar** sekmesinin daha önce görüntülenenden çok daha küçük bir liste sunduğuna dikkat edin. Dizin Oluşturucu tarafından gösterildiği gibi, bir uyarı iletisine tıklayabilir ve bu uyarının ayrıntılarına bakabilirsiniz.
+
+Bildirimleri gözden geçirmek için **hataları/uyarıları** seçin. Üç tane görmeniz gerekir:
+
+   + "' Locations ' Çıkış alanı arama dizinine eşlenemiyor. Dizin oluşturucunun ' outputFieldMappings ' özelliğini denetleyin.
+'/Document/merged_content/Locations ' değeri eksik. "
+
+   + "' Kuruluşlar ' Çıkış alanı arama dizinine eşlenemiyor. Dizin oluşturucunun ' outputFieldMappings ' özelliğini denetleyin.
+'/Document/merged_content/kuruluşlar ' değeri eksik. "
+
+   + "Bir veya daha fazla yetenek girişi geçersiz olduğundan, yetenek yürütüldü ancak beklenmeyen sonuçlara neden olabilir.
+İsteğe bağlı yetenek girişi eksik. Ad: ' languageCode ', kaynak: '/document/languageCode '. İfade dili ayrıştırma sorunları: '/document/languageCode ' değeri eksik. "
+
+   Birçok beceri ' languageCode ' parametresine sahiptir. İşlemi inceleyerek, bu dil kodu girişinin `Enrichment.NerSkillV2.#1` ' konum ' ve ' kuruluşlar ' çıkışıyla ilgili sorun yaşayan varlık tanıma yeteneği olan ' de eksik olduğunu görebilirsiniz. 
+
+Üç bildirimin tümü bu yetenek hakkında olduğundan, bir sonraki adımınız bu yeteneğin hata ayıklamada olur. Mümkünse, outputFieldMapping sorunlarına geçmeden önce giriş sorunlarını çözerek başlayın.
+
+ :::image type="content" source="media/cognitive-search-debug/debug-session-errors-warnings.png" alt-text="Yeni hata ayıklama oturumu başlatıldı":::
+
+<!-- + The Skill Graph provides a visual hierarchy of the skillset and its order of execution from top to bottom. Skills that are side by side in the graph are executed in parallel. Color coding of skills in the graph indicate the types of skills that are being executed in the skillset. In the example, the green skills are text and the red skill is vision. Clicking on an individual skill in the graph will display the details of that instance of the skill in the right pane of the session window. The skill settings, a JSON editor, execution details, and errors/warnings are all available for review and editing.
+
++ The Enriched Data Structure details the nodes in the enrichment tree generated by the skills from the source document's contents. -->
 
 ## <a name="fix-missing-skill-input-value"></a>Eksik yetenek girişi değerini düzeltir
 
-Hatalar/uyarılar sekmesinde, etiketli bir işlem için hata vardır `Enrichment.NerSkillV2.#1` . Bu hatanın ayrıntıları, '/document/languageCode ' yetenek girişi değeriyle ilgili bir sorun olduğunu açıklamaktadır. 
+**Hatalar/uyarılar** sekmesinde, etiketli bir işlem için hata vardır `Enrichment.NerSkillV2.#1` . Bu hatanın ayrıntıları, '/document/languageCode ' yetenek girişi değeriyle ilgili bir sorun olduğunu açıklamaktadır. 
 
-1. AI zenginleştirme sekmesine dönün.
+1. **AI zenginleştirme** sekmesine dönün.
 1. **Beceri grafiğine** tıklayın.
-1. Ayrıntılarını sağ bölmede göstermek için #1 etiketli yeteneğe tıklayın.
+1. Ayrıntılarını sağ bölmede göstermek için **#1** etiketli yeteneğe tıklayın.
 1. "LanguageCode" girdisini bulun.
 1. **</>** Satırın başındaki simgeyi seçin ve Ifade değerlendirici ' ni açın.
 1. Bu ifadenin bir hataya neden olduğunu onaylamak için **değerlendir** düğmesine tıklayın. "LanguageCode" özelliğinin geçerli bir giriş olduğunu doğrulayacaktır.
 
-> :::image type="content" source="media/cognitive-search-debug/expression-evaluator-language.png" alt-text="İfade Değerlendirici":::
+   :::image type="content" source="media/cognitive-search-debug/expression-evaluator-language.png" alt-text="İfade Değerlendirici":::
 
 Oturumda bu hatayı araştırmak için iki yol vardır. İlk olarak, girişin nereden geldiğini, hiyerarşideki hangi becerinin bu sonucu üretmesi gerektiğini bakmamız gerekir mi? Yetenek ayrıntıları bölmesindeki yürütmeler sekmesi girişin kaynağını görüntülemelidir. Kaynak yoksa, bu bir alan eşleme hatası olduğunu gösterir.
 
@@ -148,9 +182,9 @@ Oturumda bu hatayı araştırmak için iki yol vardır. İlk olarak, girişin ne
 1. Girişlere bakın ve "languageCode" öğesini bulun. Bu giriş için listelenen kaynak yok. 
 1. Zenginleştirilmiş veri yapısını göstermek için sol bölmeyi değiştirin. "LanguageCode" öğesine karşılık gelen eşlenmiş yol yok.
 
-> :::image type="content" source="media/cognitive-search-debug/enriched-data-structure-language.png" alt-text="Zenginleştirilmiş veri yapısı":::
+   :::image type="content" source="media/cognitive-search-debug/enriched-data-structure-language.png" alt-text="Zenginleştirilmiş veri yapısı":::
 
-"Language" için eşlenmiş bir yol var. Bu nedenle, Beceri ayarlarında bir yazım hatası vardır. Bu ifadeyi onarmak için, '/Document/Language ' ifadesiyle #1 beceriyle birlikte güncelleştirilmeleri gerekir.
+"Language" için eşlenmiş bir yol var. Bu nedenle, Beceri ayarlarında bir yazım hatası vardır. #1 Bu ifadeyi onarmak için, '/Document/Language ' ifadesiyle ilgili yeteneğin güncellenmesi gerekecektir.
 
 1. **</>**"Language" yolu Için Ifade değerlendirici ' ni açın.
 1. İfadeyi kopyalayın. Pencereyi kapatın.
@@ -164,11 +198,11 @@ Hata ayıklama oturumu yürütmesi tamamlandığında, hatalar/uyarılar sekmesi
 
 ## <a name="fix-missing-skill-output-values"></a>Eksik yetenek çıkış değerlerini düzeltir
 
-> :::image type="content" source="media/cognitive-search-debug/warnings-missing-value-locations-organizations.png" alt-text="Hatalar ve uyarılar":::
+:::image type="content" source="media/cognitive-search-debug/warnings-missing-value-locations-organizations.png" alt-text="Hatalar ve uyarılar":::
 
 Bir yeteneğin eksik çıkış değerleri var. Beceriyle ilgili hatayı belirlemek için zenginleştirilmiş veri yapısına gidin, değer adını bulun ve kaynak kaynağına bakın. Eksik kuruluşlar ve konumlar değerleri söz konusu olduğunda, Beceri #1 çıktılardır. Her yol için </> Ifade Değerlendiricisi açmak, sırasıyla '/Document/Content/organizasyonlar ' ve '/Document/Content/Locations ' olarak listelenen ifadeleri görüntüler.
 
-> :::image type="content" source="media/cognitive-search-debug/expression-eval-missing-value-locations-organizations.png" alt-text="İfade değerlendirici kuruluşlar varlığı":::
+:::image type="content" source="media/cognitive-search-debug/expression-eval-missing-value-locations-organizations.png" alt-text="İfade değerlendirici kuruluşlar varlığı":::
 
 Bu varlıkların çıktısı boş ve boş olmamalıdır. Bu sonucu üreten girişler nelerdir?
 
@@ -176,14 +210,14 @@ Bu varlıkların çıktısı boş ve boş olmamalıdır. Bu sonucu üreten giri�
 1. Doğru yetenek ayrıntıları bölmesinde **yürütmeler** sekmesini seçin.
 1. **</>**"Metin" girişi Için Ifade değerlendirici ' ni açın.
 
-> :::image type="content" source="media/cognitive-search-debug/input-skill-missing-value-locations-organizations.png" alt-text="Metin beceriye giriş":::
+   :::image type="content" source="media/cognitive-search-debug/input-skill-missing-value-locations-organizations.png" alt-text="Metin beceriye giriş":::
 
 Bu giriş için görüntülenmiş sonuç metin girişi gibi görünmüyor. Yeni satırlarla çevrelenen bir görüntü gibi görünüyor. Metnin bulunmaması, hiçbir varlık tanımlanmayacağı anlamına gelir. Beceri hiyerarşisine bakarak içeriğin ilk olarak #6 (OCR) yetenek tarafından işlendiğini ve sonra da #5 (birleştirme) beceriye geçtiğini gösterir. 
 
 1. **Yetenek grafiğinde**#5 (birleştirme) yeteneği seçin.
 1. Doğru beceri ayrıntıları bölmesinde **yürütmeler** sekmesini seçin ve **</>** "BIRLEŞTIRIMETIN" çıktıları için ifade değerlendirici ' ni açın.
 
-> :::image type="content" source="media/cognitive-search-debug/merge-output-detail-missing-value-locations-organizations.png" alt-text="Birleştirme yeteneği için çıkış":::
+   :::image type="content" source="media/cognitive-search-debug/merge-output-detail-missing-value-locations-organizations.png" alt-text="Birleştirme yeteneği için çıkış":::
 
 Burada metin görüntüyle eşleştirilmiş. '/Document/merged_content ' ifadesine bakarak #1 beceriye yönelik "kuruluşlar" ve "konumlar" yollarında hata görünür. '/Document/Content ' kullanmak yerine "metin" girişleri için '/Document/merged_content ' kullanması gerekir.
 
@@ -203,7 +237,7 @@ Dizin oluşturucunun çalışmayı bitirdikten sonra hatalar hala orada kalır. 
 1. "Çıktılar" bulmak için **yetenek ayarları** ' na gidin.
 1. **</>**"Kuruluşlar" varlığı Için Ifade değerlendirici ' ni açın.
 
-> :::image type="content" source="media/cognitive-search-debug/skill-output-detail-missing-value-locations-organizations.png" alt-text="Kuruluşlar varlığı için çıkış":::
+   :::image type="content" source="media/cognitive-search-debug/skill-output-detail-missing-value-locations-organizations.png" alt-text="Kuruluşlar varlığı için çıkış":::
 
 İfadenin sonucunu değerlendirmek, doğru sonucu verir. Yetenek, "kuruluşlar" varlığı için doğru değeri belirlemek üzere çalışmaktadır. Ancak, varlığın yolundaki çıkış eşlemesi hala bir hata üretiliyor. Becerinizdeki çıkış yolunu hatada çıkış yolu ile karşılaştıran, çıkışları, kuruluşları ve/Document/Content düğümü altındaki konumları ele alan beceri. Çıkış alanı eşlemesi, sonuçların/Document/merged_content düğümü altında ana öğe olmasını bekliyor. Önceki adımda, giriş '/Document/Content ' iken '/Document/merged_content ' olarak değiştirildi. Çıkışın doğru içerikle oluşturulduğundan emin olmak için, yetenek ayarlarındaki bağlamın değiştirilmesi gerekir.
 
@@ -214,13 +248,15 @@ Dizin oluşturucunun çalışmayı bitirdikten sonra hatalar hala orada kalır. 
 1. Sağ, yetenek ayrıntıları bölmesinde **Kaydet** ' e tıklayın.
 1. Oturumlar penceresi menüsünde **Çalıştır** ' a tıklayın. Bu, belgeyi kullanarak beceri 'in başka bir yürütmesini de başlatabilir.
 
-> :::image type="content" source="media/cognitive-search-debug/skill-setting-context-correction-missing-value-locations-organizations.png" alt-text="Yetenek ayarında bağlam düzeltmesi":::
+   :::image type="content" source="media/cognitive-search-debug/skill-setting-context-correction-missing-value-locations-organizations.png" alt-text="Yetenek ayarında bağlam düzeltmesi":::
 
 Tüm hatalar çözüldü.
 
 ## <a name="commit-changes-to-the-skillset"></a>Değişiklikleri beceri 'e Kaydet
 
-Hata ayıklama oturumu başlatıldığında, arama hizmeti beceri bir kopyasını oluşturmuştur. Bu, yapılan değişiklikler üretim sisteminin etkilenmemesi için yapılmıştır. Beceri hata ayıklamayı bitirdiğiniz için, düzeltmeler üretim sistemine (orijinal beceri üzerine yazabilir) uygulanabilir. Üretim sistemini etkilemeden beceri üzerinde değişiklik yapmaya devam etmek istiyorsanız, hata ayıklama oturumu daha sonra kaydedebilir ve yeniden açılabilir.
+Hata ayıklama oturumu başlatıldığında, arama hizmeti beceri bir kopyasını oluşturmuştur. Bu, arama hizmetinizde orijinal beceri korumak için gerçekleştirildi. Beceri hata ayıklamayı bitirdiğiniz için, düzeltmeler uygulanabilir (özgün beceri üzerine yazılır). 
+
+Alternatif olarak, değişiklikleri kaydetmeye hazırsanız, hata ayıklama oturumunu kaydedebilir ve daha sonra yeniden açabilirsiniz.
 
 1. Ana hata ayıklama oturumları menüsünde **değişiklikleri Yürüt** ' e tıklayın.
 1. Beceri hesabınızı güncelleştirmek istediğinizi onaylamak için **Tamam** ' ı tıklatın.
@@ -229,11 +265,13 @@ Hata ayıklama oturumu başlatıldığında, arama hizmeti beceri bir kopyasın�
 1. **Sıfırla**' ya tıklayın.
 1. **Çalıştır**'a tıklayın. Onaylamak için **Tamam** ' ı tıklatın.
 
-Dizin Oluşturucu çalışmayı bitirdiğinde, yürütme geçmişi sekmesinde en son çalıştırma için zaman damgasının yanında yeşil onay işareti ve başarı sözcüğü gerekir. Değişikliklerin uygulandığından emin olmak için:
+Dizin Oluşturucu çalışmayı bitirdiğinde, **yürütme geçmişi** sekmesinde en son çalıştırma için zaman damgasının yanında yeşil onay Işareti ve başarı sözcüğü gerekir. Değişikliklerin uygulandığından emin olmak için:
 
-1. **Dizin oluşturucudan** çıkın ve **Dizin** sekmesini seçin.
-1. ' Klinik-denemeler ' dizinini açın ve arama Gezgini sekmesinde **Ara**' ya tıklayın.
-1. Sonuç penceresi, kuruluşların ve konumların varlıklarının artık beklenen değerlerle doldurulduğunu göstermelidir.
+1. Genel Bakış sayfasında, **Dizin** sekmesini seçin.
+1. ' Klinik-denemeler ' dizinini açın ve arama Gezgini sekmesinde, `$select=metadata_storage_path, organizations, locations&$count=true` belirli belgelerin alanlarını (benzersiz alan tarafından tanımlanır) döndürmek için şu sorgu dizesini girin: `metadata_storage_path`
+1. **Ara**’ya tıklayın.
+
+Sonuçlar, kuruluşların ve konumların artık beklenen değerlerle doldurulduğunu göstermelidir.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
@@ -245,6 +283,10 @@ Sol gezinti bölmesindeki **tüm kaynaklar** veya **kaynak grupları** bağlant�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-> [!div class="nextstepaction"]
-> Becerileri hakkında daha [fazla bilgi edinin](./cognitive-search-working-with-skillsets.md) 
->  [Artımlı zenginleştirme ve önbelleğe alma hakkında daha fazla bilgi edinin](./cognitive-search-incremental-indexing-conceptual.md)
+Bu öğretici, Beceri tanımının ve işlemenin çeşitli yönlerine dokunmaz. Kavramlar ve iş akışları hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
+
++ [Beceri çıkış alanlarını bir arama dizinindeki alanlarla eşleme](cognitive-search-output-field-mapping.md)
+
++ [Azure Bilişsel Arama 'de becerileri](cognitive-search-working-with-skillsets.md)
+
++ [Artımlı zenginleştirme için önbelleğe almayı yapılandırma](cognitive-search-incremental-indexing-conceptual.md)

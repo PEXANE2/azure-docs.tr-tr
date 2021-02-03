@@ -3,12 +3,12 @@ title: Bulut öğreticiden buluta sürekli video kaydı ve kayıttan yürütme �
 description: Bu öğreticide, Azure IoT Edge üzerinde Azure Live video analizi 'ni kullanarak buluta sürekli olarak video kaydetme ve Azure Media Services kullanarak bu videonun herhangi bir bölümünü akışa alma hakkında bilgi edineceksiniz.
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: 2db59b9c2b2893cad9a613257b4b7c1bafe3e333
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 898e7a07007d50d848f78c32b8763bf727e4cdcb
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 02/03/2021
-ms.locfileid: "99491613"
+ms.locfileid: "99508311"
 ---
 # <a name="tutorial-continuous-video-recording-to-the-cloud-and-playback-from-the-cloud"></a>Öğretici: buluta sürekli video kaydetme ve buluttan kayıttan yürütme
 
@@ -183,7 +183,7 @@ Canlı video akışını kaydetmek için IoT Edge modülünde canlı video anali
 1. Src/buluttan cihaza-Console-App/operations.js' a gidin.
 1. **Graphtopologyset** düğümü altında aşağıdakileri düzenleyin:
 
-    `"topologyUrl" : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/cvr-asset/topology.json" `
+    `"topologyUrl" : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/cvr-asset/2.0/topology.json" `
 1. Ardından, **Graphınstanceset** ve **Graphtopologydelete** düğümlerinin altında, **topologyname** değerinin önceki grafik topolojisinde **Name** özelliğinin değeriyle eşleştiğinden emin olun:
 
     `"topologyName" : "CVRToAMSAsset"`  

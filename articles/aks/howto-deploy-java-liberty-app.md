@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/01/2021
 keywords: Java, jakartaee, JavaEE, mikro profil, açık-Liberty, WebSphere-Liberty, aks, Kubernetes
-ms.openlocfilehash: 93ffa3ded4d0771438c5d6a2dc23e6e184f04fe2
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.openlocfilehash: 4d6e335cd4b522593091094ac6251acc97873208
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99227639"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99508086"
 ---
 # <a name="deploy-a-java-application-with-open-liberty-or-websphere-liberty-on-an-azure-kubernetes-service-aks-cluster"></a>Azure Kubernetes Service (AKS) kümesi üzerinde açık özgürlük veya WebSphere özgürlük ile Java uygulaması dağıtma
 
@@ -213,7 +213,7 @@ javaee-app-simple-cluster   LoadBalancer   10.0.251.169   52.152.189.57   9080:3
 
 Uygulama giriş sayfasını görmek için, dış IP adresine ve hizmetinizin bağlantı noktasına ( `52.152.189.57:9080` Yukarıdaki örnek için) bir Web tarayıcısı açın. Sayfanın sol tarafında görünen uygulama çoğaltmalarınızın Pod adını görmeniz gerekir. Birkaç dakika bekleyin ve sayfayı yenileyin, AKS kümesi tarafından sağlanacak Yük Dengeleme nedeniyle büyük olasılıkla farklı bir pod adı görürsünüz.
 
-:::image type="content" source="./media/howto-deploy-java-liberty-app/java-liberty-app-aks-deployed-success.png" alt-text="Java Liberty uygulaması AKS 'de başarıyla dağıtıldı":::
+:::image type="content" source="./media/howto-deploy-java-liberty-app/deploy-succeeded.png" alt-text="Java Liberty uygulaması AKS 'de başarıyla dağıtıldı":::
 
 >[!NOTE]
 > - Şu anda uygulama HTTPS kullanmıyor. [Kendi sertifikalarınız Ile TLS etkinleştirilmesi](ingress-own-tls.md)önerilir.

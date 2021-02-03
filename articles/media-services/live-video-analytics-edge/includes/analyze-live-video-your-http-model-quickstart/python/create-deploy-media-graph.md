@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 1b5dd2fb4ef8cb3f6fd169477d9ee82e912c146e
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 7cbb9a09a6f8eae6a9325f060664d50c5725e09f
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98956386"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99508521"
 ---
 ### <a name="examine-and-edit-the-sample-files"></a>Örnek dosyaları İnceleme ve düzenleme
 
@@ -16,16 +16,13 @@ ms.locfileid: "98956386"
 
 1. *Src/buluttan cihaza-Console-App* klasörüne gidin. Burada dosya ve diğer birkaç dosya *appsettings.js* görürsünüz:
 
-    * ***C2D-Console-App. csproj** _-Visual Studio Code için proje dosyası.
-    _ ***operations.json** _-programın çalıştırmasını istediğiniz işlemlerin listesi.
-    _ ***Program.cs** _-örnek program kodu. Bu kod:
+    * operations.js, programın çalıştırmasını istediğiniz işlemlerin bir listesi.
+    * main.py-örnek program kodu. Bu kod:
 
-        _ Uygulama ayarlarını yükler.
-        * IoT Edge modülündeki canlı video analizinin sunduğu doğrudan yöntemleri çağırır. [Doğrudan yöntemlerini](../../../direct-methods.md)çağırarak canlı video akışlarını çözümlemek için modülünü kullanabilirsiniz.
+        * Uygulama ayarlarını yükler.
+        * IoT Edge modülündeki canlı video analizinin sunduğu doğrudan yöntemleri çağırır. Doğrudan yöntemlerini çağırarak canlı video akışlarını çözümlemek için modülünü kullanabilirsiniz.
         * Program çıkışını **TERMINAL** penceresinde Incelemenize ve **Çıkış** penceresinde modül tarafından oluşturulan olayları incelemenize olanak tanıyan duraklar.
-        * Kaynakları temizlemek için doğrudan yöntemleri çağırır.
-
-
+        * Kaynakları temizlemek için doğrudan yöntemleri çağırır.  
 1. Dosyadaki *operations.js* düzenleyin:
     * Grafik topolojisine olan bağlantıyı değiştirin:
 

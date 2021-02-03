@@ -1,5 +1,5 @@
 ---
-title: Algılayıcı etkinliğini izle
+title: Algılayıcı etkinliğini izleme
 description: Olay zaman çizelgesi, ağınızda algılanan etkinlikleri, uyarılar ve uyarı Yönetim eylemleri, ağ olayları ve Kullanıcı oturum açma ve Kullanıcı silme gibi kullanıcı işlemleri dahil olmak üzere bir zaman çizelgesi gösterir.
 author: shhazam-ms
 manager: rkarlin
@@ -7,18 +7,18 @@ ms.author: shhazam
 ms.date: 12/10/2020
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: 3895e01b1fbfcde79ff91bd1eade8d902c33b852
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 6dbe15da85a85303742ef28c7ca609755193f25e
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97843032"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99509108"
 ---
-# <a name="track-sensor-activity"></a>Algılayıcı etkinliğini izle
+# <a name="track-sensor-activity"></a>Algılayıcı etkinliğini izleme
 
 ## <a name="event-timeline"></a>Olay zaman çizelgesi
 
-Olay zaman çizelgesi, sensörize algıladığı etkinliğin bir zaman çizelgesini gösterir. Örnek:
+Olay zaman çizelgesi, sensörize algıladığı etkinliğin bir zaman çizelgesini gösterir. Örneğin:
 
   - Uyarılar ve uyarı yönetimi eylemleri
 
@@ -59,15 +59,15 @@ Zaman çizelgesini filtrelemek için:
 
 2. Olay filtrelerini aşağıdaki gibi ayarlayın:
 
-   - **Dahil etme adresi**: belirli olay cihazlarını görüntüleme.
+   - **Dahil etme adresi**: belirli cihazlara yönelik olayları görüntüleme.
 
-   - **Dışlama adresi**: belirli olay cihazlarını gizleyin.
+   - **Dışlama adresi**: belirli cihazların olaylarını gizleyin.
 
    - **Olay türlerini dahil et**: belirli olay türlerini görüntüle.
 
    - **Olay türlerini hariç tut**: belirli olay türlerini gizleyin.
 
-   - Cihaz **grubu**: cihaz eşlemesinde tanımlandığı gibi bir cihaz grubu seçin. Yalnızca bu grubun olayları sunulur.
+   - Cihaz **grubu**: cihaz eşlemesinde tanımlandığı gibi bir cihaz grubu seçin. Yalnızca bu gruptaki olaylar sunulur.
 
 3. Seçili tüm filtreleri temizlemek için **Tümünü Temizle** ' yi seçin.
 
@@ -87,7 +87,7 @@ Zaman çizelgesini filtrelemek için:
 
     - Tüm ağın belirli bir zamanda bir paket yakalamalarını içeren PCAP dosyasını (varsa) indirmek için **PCAP dosyası** ' nı seçin. 
     
-      PCAP dosyası, mühendislerin tam olarak olayın nerede olduğunu ve neler olduğunu belirlemesine yardımcı olabilecek teknik bilgiler içerir. PCAP dosyasını, ücretsiz bir uygulama olan Wireshark gibi bir ağ protokolü Çözümleyicisi ile çözümleyebilirsiniz.
+      PCAP dosyası, ağ mühendislerinin tam olay parametrelerini belirlemesine yardımcı olabilecek teknik bilgiler içerir. PCAP dosyasını, açık kaynaklı bir uygulama olan Wireshark gibi bir ağ protokolü Çözümleyicisi ile çözümleyebilirsiniz.
 
 ## <a name="see-also"></a>Ayrıca bkz.
 

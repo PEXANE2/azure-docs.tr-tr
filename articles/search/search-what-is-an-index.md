@@ -1,5 +1,5 @@
 ---
-title: Arama dizini oluşturma
+title: Dizin oluşturma
 titleSuffix: Azure Cognitive Search
 description: ", Şema tanımları ve fiziksel veri yapısı dahil olmak üzere Azure Bilişsel Arama 'de dizin oluşturma kavramlarını ve araçları sunar."
 manager: nitinme
@@ -7,80 +7,27 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 07/15/2020
-ms.openlocfilehash: 3d5663177bb087e936a49dd7289659b684d85860
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.date: 02/03/2021
+ms.openlocfilehash: d9f4ba48a7dc6cdcf6d60e4e9da5f68fcc6b1f28
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98116203"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99509342"
 ---
-# <a name="create-a-basic-search-index-in-azure-cognitive-search"></a>Azure Bilişsel Arama temel arama dizini oluşturma
+# <a name="creating-search-indexes-in-azure-cognitive-search"></a>Azure Bilişsel Arama 'de arama dizinleri oluşturma
 
-Azure Bilişsel Arama 'de, *arama dizini* tam metin ve filtrelenmiş sorgular için kullanılan aranabilir içeriği depolar. Bir dizin, bir şema tarafından tanımlanır ve ikinci bir adım olarak verileri içeri aktarma ile hizmete kaydedilir. 
+Arama dizini, tam metin ve filtrelenmiş sorgular için kullanılan aranabilir içeriği depolar. Bir dizin, bir şema tarafından tanımlanır ve ikinci bir adım olarak verileri içeri aktarma ile hizmete kaydedilir. 
 
 Dizinler *belgeleri* içerir. Kavramsal olarak, bir belge, dizininizdeki aranabilir verilerin tek bir birimidir. Bir perakendeciden her ürün için bir belge, bir haber kuruluşunda her bir makale için bir belge olabilir ve bu şekilde devam eder. Bu kavramları daha tanıdık veritabanı eşdeğerlerine eşleme: bir *arama dizini* bir *tabloya* karşılık gelir ve *Belgeler* bir tablodaki *satırlara* kabaca eşdeğerdir.
 
-Bir dizinin fiziksel yapısı, şema tarafından belirlenir ve "aranabilir" olarak işaretlenen alanlar, bu alan için oluşturulan ters bir dizin ile sonuçlanır. 
+## <a name="whats-an-index-schema"></a>Dizin şeması nedir?
 
-Aşağıdaki araçlar ve API 'lerle bir dizin oluşturabilirsiniz:
-
-* Azure portal, **dizin ekleme** veya **veri alma** Sihirbazı 'nı kullanma
-* [Create INDEX (REST API)](/rest/api/searchservice/create-index) kullanma
-* [.NET SDK 'yı](./search-get-started-dotnet.md) kullanma
-
-Portal aracıyla daha kolay bir şekilde öğrenirsiniz. Portal, sayısal alanlarda tam metin arama özelliklerine izin vermeme gibi belirli veri türleri için gereksinimleri ve şema kurallarını uygular. Bir dizin oluşturma işleminden sonra, [Dizin Al (REST API)](/rest/api/searchservice/get-index) kullanarak hizmetten JSON tanımını alarak ve çözümünüze ekleyerek koda geçiş yapabilirsiniz.
-
-## <a name="recommended-workflow"></a>Önerilen iş akışı
-
-Son dizin tasarımına ulaşan yinelemeli bir işlemdir. İlk dizini oluşturmak için Portal ile başlamak ve sonra dizine kaynak denetimi altına yerleştirmek için koda geçmek yaygındır.
-
-1. [**Içeri aktarma verilerini**](search-import-data-portal.md)kullanıp kullanmayacağınızı saptayın. Sihirbaz, kaynak veriler [Azure 'daki desteklenen bir veri kaynağı türünden](search-indexer-overview.md#supported-data-sources)ise, hepsi bir arada Dizin Oluşturucu tabanlı dizin oluşturma işlemi gerçekleştirir.
-
-1. **Verileri Içeri aktar**' ı kullanmanızın ardından şemayı tanımlamak Için **Dizin Ekle** ile başlayın.
-
-   ![Dizin komutu Ekle](media/search-what-is-an-index/add-index.png "Dizin komutu Ekle")
-
-1. Dizindeki her bir arama belgesini benzersiz bir şekilde tanımlamak için kullanılan bir ad ve anahtar belirtin. Anahtar zorunludur ve Edm. String türünde olmalıdır. İçeri aktarma sırasında, kaynak verilerde bulunan benzersiz bir alanı bu alana eşlemeyi planlamanız gerekir. 
-
-   Portal size `id` anahtar için bir alan sağlar. Varsayılanı geçersiz kılmak için `id` Yeni bir alan (örneğin, adlı yeni bir alan tanımı `HotelId` ) oluşturun ve sonra **anahtar** içinde seçin.
-
-   ![Gerekli özellikleri doldur](media/search-what-is-an-index//field-attributes.png "Gerekli özellikleri doldur")
-
-1. Daha fazla alan ekleyin. Portal, farklı veri türleri için hangi [alan özniteliklerinin](#index-attributes) kullanılabilir olduğunu gösterir. Dizin tasarımına yeni başladıysanız, bu yararlı olur.
-
-   Gelen veriler doğası halinde hiyerarşik ise, iç içe yapıları temsil etmek için [karmaşık tür](search-howto-complex-data-types.md) veri türünü atayın. Yerleşik örnek veri kümesi olan oteller, her bir otelle bire bir ilişkiye sahip olan ve her bir otel ile birden çok oda ilişkilendirildiği bir oda karmaşık koleksiyonu olan bir adres (birden çok alt alan içerir) kullanan karmaşık türleri gösterir. 
-
-1. Dizin oluşturulmadan önce dize alanlarına [çözümleyiciler](#analyzers) atayın. Belirli alanlarda otomatik tamamlamayı etkinleştirmek istiyorsanız, [Öneri araçları](#suggesters) için aynısını yapın.
-
-1. Arama hizmetinizde fiziksel yapılar oluşturmak için **Oluştur** ' a tıklayın.
-
-1. Bir dizin oluşturulduktan sonra, tanımları gözden geçirmek veya daha fazla öğe eklemek için ek komutlar kullanın.
-
-   ![Öznitelikleri veri türüne göre gösteren Dizin sayfası ekle](media/search-what-is-an-index//field-definitions.png "Öznitelikleri veri türüne göre gösteren Dizin sayfası ekle")
-
-1. [Get Index (REST API)](/rest/api/searchservice/get-index) ve [Postman](search-get-started-rest.md)gibi bir Web testi aracı kullanarak Dizin şemasını indirin. Artık, kod için uyarlayabileceğiniz dizinin bir JSON gösterimine sahipsiniz.
-
-1. [Dizininizi verilerle yükleyin](search-what-is-data-import.md). Azure Bilişsel Arama JSON belgelerini kabul eder. Verilerinizi programlı bir şekilde yüklemek için, istek yükünde JSON belgeleriyle Postman kullanabilirsiniz. Verileriniz JSON olarak kolayca ifade edideğilse, bu adım en yoğun işgücü olacaktır. 
-
-    Bir dizin verilerle yüklendikten sonra, mevcut alanlara yapılan çoğu düzenleme bir dizini bırakıp yeniden oluşturmanızı gerektirir.
-
-1. İstediğiniz sonuçları görene kadar dizininizin dizinini sorgulayın, sonuçları inceleyin ve dizin şemasında daha fazla yineleme yapın. Dizininizi sorgulamak için [**Arama Gezgini**](search-explorer.md) 'Ni veya Postman 'ı kullanabilirsiniz.
-
-Geliştirme sırasında, sık sık yeniden deryi planlayın. Hizmette fiziksel yapılar oluşturulduğundan, var olan bir alan tanımında çoğu değişiklik için [dizinleri bırakma ve](search-howto-reindex.md) yeniden oluşturma gereklidir. Yeniden oluşturma işlemini daha hızlı hale getirmek için verilerinizin bir alt kümesiyle çalışmayı düşünebilirsiniz. 
-
-> [!Tip]
-> Portal yaklaşımı yerine kod, dizin tasarımı ve veri içeri aktarma ile aynı anda çalışmak için önerilir. Alternatif olarak, [Postman](search-get-started-rest.md) veya [Visual Studio Code](search-get-started-vs-code.md) gibi araçlar, geliştirme projeleri hala erken aşamalarındayken kavram kanıtı testi için yararlıdır. Bir istek gövdesinde Dizin tanımında artımlı değişiklikler yapabilir ve sonra güncelleştirilmiş bir şemayı kullanarak bir dizini yeniden oluşturmak için isteği hizmetinize gönderebilirsiniz.
-
-## <a name="index-schema"></a>Dizin şeması
-
-Alanlar koleksiyonunda bir ad ve belirlenmiş anahtar alanı (EDM. String) olması için bir dizin gereklidir. [*Alanlar koleksiyonu*](#fields-collection) genellikle bir dizinin en büyük bölümüdür; burada her bir alan adlandırılmış, yazılır ve nasıl kullanılacağını belirleyecek izin verilen davranışlar ile adlandırılır. 
-
-Diğer öğeler, dil kuralları ve çözümleyici tarafından desteklenen diğer özelliklere göre belirteçlerde dizeleri işlemek için kullanılan [Öneri araçları](#suggesters), [Puanlama profilleri](#scoringprofiles), [çözümleyiciler](#analyzers) ve [çapraz kaynak uzaktan betik (CORS)](#corsoptions) ayarları içerir.
+Bir dizinin fiziksel yapısı, şema tarafından belirlenir. ' Fields ' koleksiyonu genellikle bir dizinin en büyük bölümüdür; burada her alan adlandırılır, bir [veri türü](/rest/api/searchservice/Supported-data-types)atanır ve nasıl kullanıldığını belirten izin verilen davranışlar ile belirlenir.
 
 ```json
 {
-  "name": (optional on PUT; required on POST) "name_of_index",
+  "name": "name_of_index, unique across the service",
   "fields": [
     {
       "name": "name_of_field",
@@ -97,90 +44,75 @@ Diğer öğeler, dil kuralları ve çözümleyici tarafından desteklenen diğer
       "synonymMaps": [ "name_of_synonym_map" ] (optional, only one synonym map per field is currently supported)
     }
   ],
-  "suggesters": [
-    {
-      "name": "name of suggester",
-      "searchMode": "analyzingInfixMatching",
-      "sourceFields": ["field1", "field2", ...]
-    }
-  ],
-  "scoringProfiles": [
-    {
-      "name": "name of scoring profile",
-      "text": (optional, only applies to searchable fields) {
-        "weights": {
-          "searchable_field_name": relative_weight_value (positive #'s),
-          ...
-        }
-      },
-      "functions": (optional) [
-        {
-          "type": "magnitude | freshness | distance | tag",
-          "boost": # (positive number used as multiplier for raw score != 1),
-          "fieldName": "...",
-          "interpolation": "constant | linear (default) | quadratic | logarithmic",
-          "magnitude": {
-            "boostingRangeStart": #,
-            "boostingRangeEnd": #,
-            "constantBoostBeyondRange": true | false (default)
-          },
-          "freshness": {
-            "boostingDuration": "..." (value representing timespan leading to now over which boosting occurs)
-          },
-          "distance": {
-            "referencePointParameter": "...", (parameter to be passed in queries to use as reference location)
-            "boostingDistance": # (the distance in kilometers from the reference location where the boosting range ends)
-          },
-          "tag": {
-            "tagsParameter": "..." (parameter to be passed in queries to specify a list of tags to compare against target fields)
-          }
-        }
-      ],
-      "functionAggregation": (optional, applies only when functions are specified) 
-        "sum (default) | average | minimum | maximum | firstMatching"
-    }
-  ],
+  "suggesters": [ ],
+  "scoringProfiles": [ ],
   "analyzers":(optional)[ ... ],
   "charFilters":(optional)[ ... ],
   "tokenizers":(optional)[ ... ],
   "tokenFilters":(optional)[ ... ],
   "defaultScoringProfile": (optional) "...",
-  "corsOptions": (optional) {
-    "allowedOrigins": ["*"] | ["origin_1", "origin_2", ...],
-    "maxAgeInSeconds": (optional) max_age_in_seconds (non-negative integer)
-  },
-  "encryptionKey":(optional){
-    "keyVaultUri": "azure_key_vault_uri",
-    "keyVaultKeyName": "name_of_azure_key_vault_key",
-    "keyVaultKeyVersion": "version_of_azure_key_vault_key",
-    "accessCredentials":(optional){
-      "applicationId": "azure_active_directory_application_id",
-      "applicationSecret": "azure_active_directory_application_authentication_key"
-    }
+  "corsOptions": (optional) { },
+  "encryptionKey":(optional){ }
   }
 }
 ```
 
-<a name="fields-collection"></a>
+Diğer öğeler, kısaltma için daraltılır, ancak aşağıdaki bağlantılar, dil kurallarına veya çözümleyici tarafından desteklenen diğer özelliklere ve [çapraz kaynak uzaktan betik (CORS)](#corsoptions) ayarlarına göre belirteçlerde dizeleri işlemek için kullanılan ayrıntıları sağlar: [Öneri araçları](index-add-suggesters.md), [Puanlama profilleri](index-add-scoring-profiles.md), [çözümleyiciler](search-analyzers.md) .
 
-## <a name="fields-collection-and-field-attributes"></a>Alanlar koleksiyonu ve alan öznitelikleri
+## <a name="choose-a-client"></a>İstemci seçin
 
-Alanlar bir ada, depolanan verileri sınıflandıran bir türe ve alanın nasıl kullanıldığını belirten özniteliklere sahiptir.
+Arama dizini oluşturmak için çeşitli yöntemler vardır. Erken geliştirme ve kavram kanıtı testi için Azure portal veya REST API 'Leri öneririz.
 
-### <a name="data-types"></a>Veri türleri
+Geliştirme sırasında, sık sık yeniden deryi planlayın. Hizmette fiziksel yapılar oluşturulduğundan, var olan bir alan tanımında çoğu değişiklik için [dizinleri bırakma ve](search-howto-reindex.md) yeniden oluşturma gereklidir. Yeniden oluşturma işlemini daha hızlı hale getirmek için verilerinizin bir alt kümesiyle çalışmayı düşünebilirsiniz.
 
-| Tür | Description |
-|------|-------------|
-| Edm.String |İsteğe bağlı olarak tam metin araması için simgeleştirilmiş olabilecek metin (sözcük ayırma, sözcük kökü oluşturma vb.). |
-| Collection(Edm.String) |Tam metin araması için isteğe bağlı olarak belirteç haline getirilebilen dize listesi. Bir koleksiyondaki öğelerin sayısında teorik bir üst sınır yoktur ancak yük boyutundaki 16 MB'lık üst sınır, koleksiyonlar için geçerlidir. |
-| Edm.Boolean |True/false değerlerini içerir. |
-| Edm.Int32 |32 bit tamsayı değerleri. |
-| Edm.Int64 |64 bit tamsayı değerleri. |
-| Edm.Double |Çift duyarlıklı sayısal veriler. |
-| Edm.DateTimeOffset |OData v4 biçiminde temsil edilen tarih saat değerleri (örneğin, `yyyy-MM-ddTHH:mm:ss.fffZ` veya `yyyy-MM-ddTHH:mm:ss.fff[+/-]HH:mm` ). |
-| Edm.GeographyPoint |Dünya üzerindeki bir coğrafi konumu temsil eden bir nokta. |
+### <a name="permissions"></a>İzinler
 
-Daha fazla bilgi için bkz. [desteklenen veri türleri](/rest/api/searchservice/Supported-data-types).
+GET istekleri de dahil olmak üzere bir arama diziniyle ilgili tüm işlemler, istekte bir [yönetici API anahtarı](search-security-api-keys.md) gerektirir.
+
+### <a name="limits"></a>Sınırlar
+
+Tüm [hizmet katmanları](search-limits-quotas-capacity.md#index-limits) , oluşturabileceğiniz nesne sayısını sınırlar. Ücretsiz katman üzerinde denemeler yapıyorsanız, belirli bir zamanda yalnızca 3 dizin olabilir.
+
+### <a name="use-azure-portal-to-create-a-search-index"></a>Arama dizini oluşturmak için Azure portal kullanma
+
+Portal, arama dizini oluşturmak için iki seçenek sunar: [**veri alma Sihirbazı**](search-import-data-portal.md) ve Dizin şeması belirtmek için alanlar sağlayan **dizin ekleme** . Sihirbaz, ayrıca bir Dizin Oluşturucu, veri kaynağı ve yükleme verileri oluşturarak ek işlemlerde de paket oluşturur. İstediğiniz kadar fazla ise, yalnızca **Add Index** veya başka bir yaklaşım kullanmanız gerekir.
+
+Aşağıdaki ekran görüntüsünde, portalda **Dizin Ekle** ' nin nerede bulunacağı gösterilmektedir. **Içeri aktarma verileri** , sonraki kapıdır.
+
+  :::image type="content" source="media/search-what-is-an-index/add-index.png" alt-text="Dizin komutu Ekle" border="true":::
+
+> [!Tip]
+> Portal üzerinden dizin tasarımı, sayısal alanlarda tam metin arama özelliklerine izin vermeme gibi belirli veri türleri için gereksinimleri ve şema kurallarını zorunlu kılar. Yeniden kullanılabilir bir dizininizden sonra, JSON 'u portaldan kopyalayabilir ve çözümünüze ekleyebilirsiniz.
+
+### <a name="use-a-rest-client"></a>REST istemcisi kullanma
+
+Hem Postman hem de Visual Studio Code (Azure Bilişsel Arama Uzantısı ile), arama dizini istemcisi olarak çalışabilir. İki aracı kullanarak, arama hizmetinize bağlanabilir ve [Dizin oluşturma (REST)](/rest/api/searchservice/create-index) istekleri gönderebilirsiniz. Nesneleri oluşturmak için REST istemcilerini gösteren çok sayıda öğretici ve örnek vardır. 
+
+Her istemci hakkında bilgi edinmek için şu makalelerden birini başlatın:
+
++ [REST ve Postman kullanarak arama dizini oluşturma](search-get-started-rest.md)
++ [Visual Studio Code ve Azure Bilişsel Arama kullanmaya başlama](search-get-started-vs-code.md)
+
+Dizin isteklerinin formüllenmesini sağlamaya yönelik yardım için [Dizin işlemlerine (REST)](/rest/api/searchservice/index-operations) bakın.
+
+### <a name="use-an-sdk"></a>SDK kullanma
+
+Bilişsel Arama için Azure SDK 'Ları, genel olarak kullanılabilen özellikleri uygular. Bu nedenle, bir arama dizini oluşturmak için SDK 'Lardan birini kullanabilirsiniz. Bunların hepsi, dizin oluşturma ve güncelleştirme yöntemlerine sahip bir **Searchındexclient** sağlar.
+
+| Azure SDK | İstemci | Örnekler |
+|-----------|--------|----------|
+| .NET | [SearchIndexClient](/dotnet/api/azure.search.documents.indexes.searchindexclient) | [Azure-Search-DotNet-Samples/QuickStart/v11/](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/quickstart/v11) |
+| Java | [SearchIndexClient](/java/api/com.azure.search.documents.indexes.searchindexclient) | [Createındexexample. Java](https://github.com/Azure/azure-sdk-for-java/blob/azure-search-documents_11.1.3/sdk/search/azure-search-documents/src/samples/java/com/azure/search/documents/indexes/CreateIndexExample.java) |
+| JavaScript | [SearchIndexClient](/javascript/api/@azure/search-documents/searchindexclient) | [Dizinler](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/search/search-documents/samples/javascript/src/indexes) |
+| Python | [SearchIndexClient](/python/api/azure-search-documents/azure.search.documents.indexes.searchindexclient) | [sample_index_crud_operations. Kopyala](https://github.com/Azure/azure-sdk-for-python/blob/7cd31ac01fed9c790cec71de438af9c45cb45821/sdk/search/azure-search-documents/samples/sample_index_crud_operations.py) |
+
+## <a name="defining-fields"></a>Alanları tanımlama
+
+EDM. String türünde bir alanın belge anahtarı olarak belirlenmesi gerekir. Her bir arama belgesini benzersiz bir şekilde tanımlamak için kullanılır. Ayrıntılar sayfasını doldurmak için bir belgeyi anahtarına göre alabilirsiniz.  
+
+Gelen veriler doğası halinde hiyerarşik ise, iç içe yapıları temsil etmek için [karmaşık tür](search-howto-complex-data-types.md) veri türünü atayın. Yerleşik örnek veri kümesi olan oteller, her bir otelle bire bir ilişkiye sahip olan ve her bir otel ile birden çok oda ilişkilendirildiği bir oda karmaşık koleksiyonu olan bir adres (birden çok alt alan içerir) kullanan karmaşık türleri gösterir. 
+
+Dizin oluşturulmadan önce dize alanlarına çözümleyiciler atayın. Belirli alanlarda otomatik tamamlamayı etkinleştirmek istiyorsanız, öneri araçları için aynısını yapın.
 
 <a name="index-attributes"></a>
 
@@ -204,34 +136,6 @@ Dize alanları genellikle "aranabilir" ve "alınabilir" olarak işaretlenir. Ara
 > [!NOTE]
 > Bir dizin oluşturmak için kullandığınız API 'Ler, farklı varsayılan davranışlara sahiptir. [REST API 'leri](/rest/api/searchservice/Create-Index)için çoğu öznitelik varsayılan olarak etkindir (örneğin, "aranabilir" ve "alınabilir" dize alanları için geçerlidir) ve genellikle bunları kapatmak istiyorsanız ayarlamanız gerekir. .NET SDK için, tersi doğrudur. Açıkça ayarlamadığınız herhangi bir özellikte, özel olarak etkinleştirmediğiniz takdirde, karşılık gelen arama davranışının devre dışı bırakılması varsayılan olur.
 
-## `analyzers`
-
-Çözümleyiciler öğesi, alan için kullanılacak dil Çözümleyicisi adını ayarlar. Kullanabileceğiniz çözümleyiciler aralığı hakkında daha fazla bilgi için bkz. [Azure bilişsel arama dizinine çözümleyiciler ekleme](search-analyzers.md). Çözümleyiciler yalnızca aranabilir alanlarla kullanılabilir. Çözümleyici bir alana atandıktan sonra, dizini yeniden oluşturmadığınız takdirde değiştirilemez.
-
-## `suggesters`
-
-Bir öneri aracı, aramalardaki otomatik tamamlamayı veya tür ön sorguları desteklemek için bir dizindeki hangi alanların kullanıldığını tanımlayan şemanın bir bölümüdür. Genellikle kısmi arama dizeleri, Kullanıcı bir arama sorgusu yazarken [(REST API) önerilere](/rest/api/searchservice/suggestions) GÖNDERILIR ve API, önerilen bir belge veya tümcecik kümesi döndürür. 
-
-Bir öneri aracı eklenen alanlar, tür öncelikli arama terimleri oluşturmak için kullanılır. Tüm arama terimleri dizin oluşturma sırasında oluşturulur ve ayrı olarak depolanır. Öneri aracı yapısı oluşturma hakkında daha fazla bilgi için bkz. [Add öneri araçları](index-add-suggesters.md).
-
-## `corsOptions`
-
-Tarayıcı tüm çapraz kaynak isteklerini önleyediğinden, istemci tarafı JavaScript varsayılan olarak herhangi bir API 'yi çağıramaz. Dizininizdeki çapraz kaynak sorgularına izin vermek için **Corsoptions** ÖZNITELIĞINI ayarlayarak CORS 'yi etkinleştirin (çıkış noktaları arası kaynak paylaşımı). Güvenlik nedenleriyle, yalnızca sorgu API 'Leri CORS 'yi destekler. 
-
-CORS için aşağıdaki seçenekler ayarlanabilir:
-
-+ **allowederlerin** (gerekli): Bu, dizininiz için erişim verilecek olan kaynakları içeren bir listesidir. Bu, bu kaynaklardan sunulan tüm JavaScript kodunun dizininizi sorgulayabileceği anlamına gelir (doğru api anahtarını sağladığını varsayarak). Her kaynak genellikle form olur, `protocol://<fully-qualified-domain-name>:<port>` ancak `<port>` genellikle atlanacaktır. Daha fazla ayrıntı için bkz. [çıkış noktaları arası kaynak paylaşımı (Vikipedi)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) .
-
-  Tüm kaynaklardan erişime izin vermek istiyorsanız, `*` **allowedkaynakları** dizisine tek bir öğe olarak dahil edin. *Bu, üretim arama hizmetleri için önerilen bir uygulamadır,* ancak geliştirme ve hata ayıklama için genellikle yararlıdır.
-
-+ **Maxageınseconds** (isteğe bağlı): TARAYıCıLAR, CORS ön denetim yanıtlarını önbelleğe almak için süreyi (saniye cinsinden) belirlemede bu değeri kullanır. Bu negatif olmayan bir tamsayı olmalıdır. Bu değer arttıkça, daha iyi performans olacaktır, ancak CORS ilke değişikliklerinin etkili olması için daha uzun sürer. Ayarlanmamışsa, varsayılan 5 dakikalık bir süre kullanılacaktır.
-
-## `scoringProfiles`
-
-[Puanlama profili](index-add-scoring-profiles.md) , arama sonuçlarında hangi öğelerin göründüğünü etkileyen özel Puanlama davranışlarını tanımlayan şemanın bir bölümüdür. Puanlama profilleri alan ağırlıklarının ve işlevlerden oluşur. Bunları kullanmak için sorgu dizesinde ada göre bir profil belirtirsiniz.
-
-Varsayılan bir Puanlama profili, bir sonuç kümesindeki her öğe için bir arama puanı hesaplamak üzere arka planda çalışır. Dahili, adlandırılmamış Puanlama profilini kullanabilirsiniz. Alternatif olarak, sorgu dizesinde özel bir profil belirtilmediğinde çağrılan varsayılan olarak özel bir profil kullanmak için **defaultScoringProfile** ayarlayın.
-
 <a name="index-size"></a>
 
 ## <a name="attributes-and-index-size-storage-implications"></a>Öznitelikler ve dizin boyutu (depolama etkileri)
@@ -249,13 +153,26 @@ Filtre ve sıralamayı destekleyen dizinler, yalnızca tam metin aramasını des
 > [!Note]
 > Depolama mimarisi Azure Bilişsel Arama uygulama ayrıntısı olarak değerlendirilir ve bildirimde bulunulmadan değiştirilebilir. Geçerli davranışın gelecekte devam edeceğini garanti vermez.
 
+<a name="corsoptions"></a>
+
+## <a name="about-corsoptions"></a>Bilgi `corsOptions`
+
+Dizin şemaları, ayar için bir bölüm içerir `corsOptions` . Tarayıcı tüm çapraz kaynak isteklerini önleyediğinden, istemci tarafı JavaScript varsayılan olarak herhangi bir API 'yi çağıramaz. Dizininizdeki çapraz kaynak sorgularına izin vermek için **Corsoptions** ÖZNITELIĞINI ayarlayarak CORS 'yi etkinleştirin (çıkış noktaları arası kaynak paylaşımı). Güvenlik nedenleriyle, yalnızca sorgu API 'Leri CORS 'yi destekler. 
+
+CORS için aşağıdaki seçenekler ayarlanabilir:
+
++ **allowederlerin** (gerekli): Bu, dizininiz için erişim verilecek olan kaynakları içeren bir listesidir. Bu, bu kaynaklardan sunulan tüm JavaScript kodunun dizininizi sorgulayabileceği anlamına gelir (doğru api anahtarını sağladığını varsayarak). Her kaynak genellikle form olur, `protocol://<fully-qualified-domain-name>:<port>` ancak `<port>` genellikle atlanacaktır. Daha fazla ayrıntı için bkz. [çıkış noktaları arası kaynak paylaşımı (Vikipedi)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) .
+
+  Tüm kaynaklardan erişime izin vermek istiyorsanız, `*` **allowedkaynakları** dizisine tek bir öğe olarak dahil edin. *Bu, üretim arama hizmetleri için önerilen bir uygulamadır,* ancak geliştirme ve hata ayıklama için genellikle yararlıdır.
+
++ **Maxageınseconds** (isteğe bağlı): TARAYıCıLAR, CORS ön denetim yanıtlarını önbelleğe almak için süreyi (saniye cinsinden) belirlemede bu değeri kullanır. Bu negatif olmayan bir tamsayı olmalıdır. Bu değer arttıkça, daha iyi performans olacaktır, ancak CORS ilke değişikliklerinin etkili olması için daha uzun sürer. Ayarlanmamışsa, varsayılan 5 dakikalık bir süre kullanılacaktır.
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Dizin kompozisyonunun anlaşılmasından sonra, ilk dizininizi oluşturmak için portalda devam edebilirsiniz. *Reatastate-US-Sample* veya *oteller-Sample* barındırılan veri kaynakları ' nı seçerek **veri alma** Sihirbazı ' nı kullanmaya başlamasını öneririz.
+Bilişsel Arama için neredeyse her örnek veya İzlenecek yol kullanarak bir dizin oluşturma deneyimlerine ulaşabilirsiniz. Başlamak için içerik tablosundan hızlı başlangıçlardan herhangi birini seçebilirsiniz.
 
-> [!div class="nextstepaction"]
-> [Veri alma Sihirbazı (portal)](search-get-started-portal.md)
+Ayrıca, verileri içeren bir dizin yüklemek için yöntemler hakkında bilgi sahibi olmak isteyeceksiniz. Dizin tanımı ve popülasyonu birlikte gerçekleştirilir. Aşağıdaki makalelerde daha fazla bilgi sağlanmaktadır.
 
-Her iki veri kümesi için de sihirbaz bir dizin şemasını çıkarabilir, verileri içeri aktarabilir ve arama Gezgini 'ni kullanarak sorgulayabilmeniz için aranabilir bir dizinin çıktısını alabilir. Veri **alma** Sihirbazı ' nın **verilerinize bağlanın** sayfasında bu veri kaynaklarını bulun.
++ [Verileri içeri aktarmaya genel bakış](search-what-is-data-import.md)
 
-   ![Örnek dizin oluşturma](media/search-what-is-an-index//import-wizard-sample-data.png "Örnek dizin oluşturma")
++ [Belge ekleme, güncelleştirme veya silme (REST)](/rest/api/searchservice/addupdate-or-delete-documents) 

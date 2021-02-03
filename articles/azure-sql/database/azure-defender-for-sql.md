@@ -10,22 +10,20 @@ ms.topic: conceptual
 ms.author: memildin
 manager: rkarlin
 author: memildin
-ms.reviewer: vanto
-ms.date: 12/01/2020
-ms.openlocfilehash: 4bb7f2fd5823a9d8ebf4234f3bb41d955574b838
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.date: 02/02/2021
+ms.openlocfilehash: 48df96373554f6e474c3835bf81e38a9aea5450c
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96451519"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99508820"
 ---
 # <a name="azure-defender-for-sql"></a>SQL için Azure Defender
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-
 SQL için Azure Defender, gelişmiş SQL güvenlik özelliklerine yönelik Birleşik bir pakettir. Azure Defender, Azure SQL veritabanı, Azure SQL yönetilen örneği ve Azure SYNAPSE Analytics için kullanılabilir. Hassas verileri keşfedip sınıflandırma, veritabanındaki olası güvenlik açıklarını belirleme ve yol açabileceği sorunları azaltma ve veritabanınıza ilişkin bir tehdit belirtisi olabilecek anormal etkinlikleri algılamaya yönelik işlevsellik sağlar. Bu özellikler tek bir konumdan etkinleştirilebilir ve yönetilebilir.
 
-## <a name="overview"></a>Genel Bakış
+## <a name="what-are-the-benefits-of-azure-defender-for-sql"></a>SQL için Azure Defender 'ın avantajları nelerdir?
 
 Azure Defender, SQL güvenlik açığı değerlendirmesi ve Gelişmiş tehdit koruması dahil olmak üzere bir dizi gelişmiş SQL güvenlik özelliği sağlar.
 - [Güvenlik açığı değerlendirmesi](sql-vulnerability-assessment.md) , olası veritabanı güvenlik açıklarını düzeltebileceğiniz, izleyebileceğiniz ve bu sorunları gidermenize yardımcı olabilecek, kolay yapılandırmalı bir hizmettir. Güvenlik durumlarınızın görünürlüğünü sağlar ve güvenlik sorunlarını çözmek ve veritabanınızın Fortifications artırılmasına yönelik eylem yapılabilir adımları içerir.
@@ -34,10 +32,6 @@ Azure Defender, SQL güvenlik açığı değerlendirmesi ve Gelişmiş tehdit ko
 SQL için Azure Defender'ı bir kez etkinleştirdiğinizde dahil edilen tüm bu özellikleri de etkinleştirirsiniz. Tek tıklamayla Azure Defender ' ı [sunucunuzdaki](logical-servers.md) tüm veritabanları için Azure 'DA veya SQL yönetilen Örneğinizde etkinleştirebilirsiniz. Azure Defender ayarlarının etkinleştirilmesi veya yönetilmesi, [SQL Güvenlik Yöneticisi](../../role-based-access-control/built-in-roles.md#sql-security-manager) rolüne veya veritabanı ya da Sunucu Yöneticisi rollerinden birine ait olmalıdır.
 
 SQL fiyatlandırması için Azure Defender hakkında daha fazla bilgi için [Azure Güvenlik Merkezi fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/security-center/)bakın.
-
-## <a name="getting-started-with-azure-defender"></a>Azure Defender 'ı kullanmaya başlama
-
-Aşağıdaki adımlar, Azure Defender ile çalışmaya başlamanızı ister.
 
 ## <a name="enable-azure-defender"></a>Azure Defender’ı etkinleştirme
 
@@ -48,27 +42,28 @@ Azure Defender [Azure Portal](https://portal.azure.com)aracılığıyla erişile
 >
 > Azure Defender 'ın maliyeti düğüm başına Azure Güvenlik Merkezi Standart katman fiyatlandırmasıyla hizalanır; burada düğüm tüm sunucu veya yönetilen örnek olur. Bu nedenle, sunucuda veya yönetilen örnekteki tüm veritabanlarını Azure Defender ile korumak için yalnızca bir kez ödeme yaparsınız. Azure Defender 'ı başlangıçta ücretsiz bir deneme ile deneyebilirsiniz.
 
-:::image type="content" source="media/azure-defender-for-sql/enable-azure-defender.png" alt-text="Azure Defender 'ı etkinleştir":::
+:::image type="content" source="media/azure-defender-for-sql/enable-azure-defender.png" alt-text="Azure SQL veritabanları içinden SQL için Azure Defender 'ı etkinleştirme":::
 
-## <a name="start-tracking-vulnerabilities-and-investigating-threat-alerts"></a>Güvenlik açıklarını izlemeye başlayın ve tehdit uyarılarını araştırın
+## <a name="track-vulnerabilities-and-investigate-threat-alerts"></a>Güvenlik açıklarını izleyin ve tehdit uyarılarını araştırın
 
 Güvenlik açığı taramaları ve raporlarını görüntülemek ve yönetmek ve güvenlik hazırkenizi izlemek için **güvenlik açığı değerlendirme** kartına tıklayın. Güvenlik uyarıları alınmışsa, uyarıların ayrıntılarını görüntülemek ve Azure Güvenlik Merkezi güvenlik uyarıları sayfası aracılığıyla Azure aboneliğinizdeki tüm uyarılarda birleştirilmiş bir raporu görmek için **Gelişmiş tehdit koruması** kartına tıklayın.
 
 ## <a name="manage-azure-defender-settings"></a>Azure Defender ayarlarını yönetme
 
-Azure Defender ayarlarını görüntülemek ve yönetmek için sunucunuzun veya yönetilen örneğin **güvenlik** başlığının altındaki **Güvenlik Merkezi** ' ne gidin. Bu sayfada, Azure Defender 'ı etkinleştirebilir veya devre dışı bırakabilir ve tüm sunucu veya yönetilen örnek için güvenlik açığı değerlendirmesini ve Gelişmiş tehdit koruması ayarlarını değiştirebilirsiniz.
+Azure Defender ayarlarını görüntülemek ve yönetmek için:
 
-:::image type="content" source="media/azure-defender-for-sql/security-server-settings.png" alt-text="güvenlik sunucusu ayarları":::
+1. Sunucunuzun veya yönetilen örneğin **güvenlik** alanından **Güvenlik Merkezi**' ni seçin.
 
-## <a name="manage-azure-defender-settings-for-a-database"></a>Bir veritabanı için Azure Defender ayarlarını yönetme
+    Bu sayfada, SQL için Azure Defender durumunu görürsünüz:
 
-Belirli bir veritabanı için Azure Defender ayarlarını geçersiz kılmak üzere, veritabanı **Güvenlik Merkezi** ayarlarınızda **veritabanı düzeyinde SQL Için Azure Defender 'ı etkinleştir** onay kutusunu işaretleyin. Bu seçeneği yalnızca tek veritabanına yönelik ayrı Gelişmiş tehdit koruması uyarıları veya güvenlik açığı değerlendirme sonuçlarını veya sunucu ya da yönetilen örnekteki tüm veritabanları için alınan uyarıların ve sonuçların yanı sıra ayrı bir veritabanı için güvenlik açığı değerlendirmesi sonuçları almak için kullanın.
+    :::image type="content" source="media/azure-defender-for-sql/status-of-defender-for-sql.png" alt-text="Azure SQL veritabanları içindeki SQL için Azure Defender 'ın durumu denetleniyor":::
 
-Onay kutusu seçildikten sonra bu veritabanı için ilgili ayarları yapılandırabilirsiniz.
+1. SQL için Azure Defender etkinse, önceki grafikte gösterildiği gibi bir **yapılandırma** bağlantısı görürsünüz. SQL için Azure Defender ayarlarını düzenlemek için **Yapılandır**' ı seçin.
 
-:::image type="content" source="media/azure-defender-for-sql/enable-for-database-level.png" alt-text="veritabanı düzeyinde Azure Defender 'ı etkinleştirin":::
+    :::image type="content" source="media/azure-defender-for-sql/security-server-settings.png" alt-text="güvenlik sunucusu ayarları":::
 
-Sunucunuzun veya yönetilen örneğinizin SQL ayarlarına yönelik Azure Defender, Azure Defender veritabanı bölmesinden de erişilebilir. Ana güvenlik merkezi bölmesinde **Ayarlar** ' a ve ardından **SQL Server için Azure Defender ayarları**' nı görüntüle ' ye tıklayın.
+1. Gerekli değişiklikleri yapıp **Kaydet**' i seçin.
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

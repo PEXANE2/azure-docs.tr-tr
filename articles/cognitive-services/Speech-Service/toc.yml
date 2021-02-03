@@ -14,8 +14,6 @@
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/'
     - name: Kotalar ve sınırlar
       href: speech-services-quotas-and-limits.md
-    - name: Docs’taki yenilikler?
-      href: whats-new.md
 - name: Konuşmayı metne dönüştürme
   items:
     - name: Konuşmayı metne dönüştürme belgeleri
@@ -113,22 +111,10 @@
           href: long-audio-api.md
     - name: Özelleştirme
       items:
-        - name: Sorumlu dağıtım
-          items:
-            - name: Özel Ses geçişi
-              href: concepts-gating-overview.md
-            - name: Sentetik teknoloji dağıtımı
-              href: concepts-guidelines-responsible-deployment-synthetic.md
-            - name: Seslendiren kişinin açıklaması
-              href: /legal/cognitive-services/speech-service/disclosure-voice-talent
-            - name: Tasarım yönergelerini açıklama
-              href: concepts-disclosure-guidelines.md
-            - name: Tasarım desenlerini açıklama
-              href: concepts-disclosure-patterns.md
-            - name: Kullanım kuralları
-              href: /legal/cognitive-services/speech-service/tts-code-of-conduct
         - name: Özel Ses portalı
           items:
+            - name: Özel sinir sesi nedir?
+              href: custom-neural-voice.md
             - name: Özel Ses’i kullanmaya başlama
               displayName: 'custom voice, neural voice'
               href: how-to-custom-voice.md
@@ -142,6 +128,32 @@
           items:
             - name: Ses İçeriği Oluşturma
               href: how-to-audio-content-creation.md
+    - name: Yapay zekanın sorumluluk sahibi bir biçimde kullanılması
+      items:
+        - name: Özel sinir sesi
+          items:
+            - name: Saydamlık Notu
+              items:
+                - name: Özel sinir sesi için kullanım örnekleri
+                  href: /legal/cognitive-services/speech-service/custom-neural-voice/transparency-note-custom-neural-voice?context=/azure/cognitive-services/speech-service/context/context
+                - name: Özellikler ve sınırlamalar
+                  href: /legal/cognitive-services/speech-service/custom-neural-voice/characteristics-and-limitations-custom-neural-voice?context=/azure/cognitive-services/speech-service/context/context
+            - name: Tümleştirme ve sorumlu kullanım
+              items:
+                - name: Sınırlı erişim
+                  href: /legal/cognitive-services/speech-service/custom-neural-voice/limited-access-custom-neural-voice?context=/azure/cognitive-services/speech-service/context/context
+                - name: Yapay konuşmanın sorumlu dağıtımı
+                  href: concepts-guidelines-responsible-deployment-synthetic.md
+                - name: Seslendiren kişinin açıklaması
+                  href: /legal/cognitive-services/speech-service/disclosure-voice-talent?context=/azure/cognitive-services/speech-service/context/context
+                - name: Tasarım yönergelerini açıklama
+                  href: concepts-disclosure-guidelines.md
+                - name: Tasarım desenlerini açıklama
+                  href: concepts-disclosure-patterns.md
+                - name: Kullanım kuralları
+                  href: /legal/cognitive-services/speech-service/tts-code-of-conduct?context=/azure/cognitive-services/speech-service/context/context
+            - name: 'Veri, gizlilik ve güvenlik'
+              href: /legal/cognitive-services/speech-service/custom-neural-voice/data-privacy-security-custom-neural-voice?context=/azure/cognitive-services/speech-service/context/context
     - name: Başvuru
       items:
         - name: C++

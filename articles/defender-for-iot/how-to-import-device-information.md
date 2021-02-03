@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/06/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 7cb805f60ba9feb0ae2d1483b2ab2df4e03639d8
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 333ffbf4107dfd005ba7e7fae6a079a618e0c645
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98625423"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99509444"
 ---
 # <a name="import-device-information-to-a-sensor"></a>Cihaz bilgilerini bir sensöre aktar
 
@@ -160,7 +160,7 @@ IP adresi, işletim sistemi ve düzeltme eki düzeyini içeri aktarmak için:
 
    - **Işletim sistemi**: açılan listeden seçim yapın.
 
-   - **Son güncelleştirme**: yyyy-aa-gg biçimini kullanın.
+   - **Son güncelleştirme tarihi**: yyyy-aa-gg biçimini kullanın.
 
     :::image type="content" source="media/how-to-import-device-information/last-update-screen.png" alt-text="Ekrandaki içerik.":::
 
@@ -172,7 +172,7 @@ IP adresi, işletim sistemi ve düzeltme eki düzeyini içeri aktarmak için:
 
 Yetkilendirme durumunu içeri aktarmak için:
 
-1. IoT yardım merkezi için Defender 'dan [authorized_devices.csv](https://cyberx-labs.zendesk.com/hc/en-us/articles/360008658272-How-To-Import-Data) dosyasını indirip kaydedin. Dosyayı bir CSV olarak kaydettiğinizden emin olun.
+1. IoT yardım merkezi için Defender 'dan [authorized_devices-examples.csv](https://cyberx-labs.zendesk.com/hc/en-us/articles/360008658272-How-To-Import-Data) dosyasını indirip kaydedin. Dosyayı bir CSV olarak kaydettiğinizden emin olun.
 
 2. Bilgileri şu şekilde girin:
 

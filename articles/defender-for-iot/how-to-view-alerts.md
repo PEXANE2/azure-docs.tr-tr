@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/02/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 4803691a82a97cd2be5fa3beafd4419010e7a9c9
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: bce83e11a0d4567d37e78388445c108385ca9a61
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97842982"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99509088"
 ---
 # <a name="view-alerts"></a>Uyarıları görüntüleme
 
@@ -84,7 +84,7 @@ Seçeneklerden hiçbiri seçili olmadığında tüm uyarılar görüntülenir.
 
 :::image type="content" source="media/how-to-work-with-alerts-sensor/alerts-security.png" alt-text="Uyarılar ekranında Güvenlik.":::
 
-## <a name="alert-window-options"></a>Uyarı penceresi seçenekleri
+## <a name="alert-page-options"></a>Uyarı sayfası seçenekleri
 
 Uyarı iletileri aşağıdaki eylemleri sağlar:
 
@@ -101,6 +101,8 @@ Uyarı iletileri aşağıdaki eylemleri sağlar:
 - :::image type="icon" source="media/how-to-work-with-alerts-sensor/learn-and-acknowledge-all-alerts.png" border="false":::Tüm uyarıları öğrenmek ve onaylamak için seçin.
 
 - :::image type="icon" source="media/how-to-work-with-alerts-sensor/export-to-csv.png" border="false":::Uyarı listesini BIR CSV dosyasına aktarmak ve dışarı aktar seçeneğini belirlemek için seçin. Normal dışa aktarma-CSV seçeneği için **Uyarı dışarı aktarma** ' yı seçin. Ya da CSV dosyasındaki bir uyarıyla ilgili ek bilgiler için ayrı satırlar ekleme olasılığa yönelik **genişletilmiş uyarı dışarı aktarma** ' yı seçin.
+
+## <a name="alert-pop-up-window-options"></a>Uyarı açılır penceresi seçenekleri
 
 - Bir :::image type="icon" source="media/how-to-work-with-alerts-sensor/export-to-pdf.png" border="false"::: Uyarı raporunu PDF dosyası olarak indirmek için simgeyi seçin.
 

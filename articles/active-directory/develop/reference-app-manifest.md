@@ -13,12 +13,12 @@ ms.date: 02/02/2021
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: sureshja
-ms.openlocfilehash: cb7acb2ab74cc3f1304e5278524918865185463f
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: d544d884a82a7532bf343f38049102dfccae342f
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 02/03/2021
-ms.locfileid: "99491308"
+ms.locfileid: "99507290"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Azure Active Directory uygulama bildirimi
 
@@ -173,7 +173,8 @@ Desteklenmez.
 - `"None"`
 - `"SecurityGroup"` (güvenlik grupları ve Azure AD rolleri için)
 - `"ApplicationGroup"` (Bu seçenek yalnızca uygulamaya atanan grupları içerir)
-- `"All"` (Bu, oturum açan kullanıcının üyesi olduğu tüm güvenlik gruplarını, dağıtım gruplarını ve Azure AD dizin rollerini alır.
+- `"DirectoryRole"` (kullanıcının üyesi olduğu Azure AD dizin rollerini alır)
+- `"All"` (Bu, oturum açan kullanıcının üyesi olduğu tüm güvenlik gruplarını, dağıtım gruplarını ve Azure AD dizin rollerini alır).
 
 Örnek:
 

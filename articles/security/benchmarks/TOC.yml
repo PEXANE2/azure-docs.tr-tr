@@ -231,3 +231,7 @@
       href: ../../vpn-gateway/security-baseline.md
     - name: Windows sanal masaüstü güvenlik temeli
       href: ../../virtual-desktop/security-baseline.md
+- name: Kaynaklar
+  items:
+    - name: ASB ve CIS kıyaslaması arasında eşleme
+      href: v2-cis-benchmark.md

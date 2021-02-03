@@ -1,29 +1,29 @@
 ---
-title: "Hızlı başlangıç: REST API 'Leri kullanarak Java 'da arama dizini oluşturma"
+title: "Hızlı başlangıç: Javas 'de arama dizini oluşturma"
 titleSuffix: Azure Cognitive Search
-description: Bu Java hızlı başlangıçta, Azure Bilişsel Arama REST API 'Lerini kullanarak dizin oluşturmayı, verileri yüklemeyi ve sorguları çalıştırmayı öğrenin.
+description: Bu Java hızlı başlangıçta, Java için Azure Bilişsel Arama istemci kitaplığı 'nı kullanarak dizin oluşturmayı, verileri yüklemeyi ve sorguları çalıştırmayı öğrenin.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.devlang: java
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 09/25/2020
+ms.date: 01/25/2021
 ms.custom: devx-track-java
-ms.openlocfilehash: 8c688b1ba80050c49b9e2a36696ed7a2fb863e3f
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 9e05e41ca0c293e31a29dc25a7b4ec7b87734246
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99089402"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99509427"
 ---
-# <a name="quickstart-create-an-azure-cognitive-search-index-in-java-using-rest-apis"></a>Hızlı başlangıç: REST API 'Leri kullanarak Java 'da Azure Bilişsel Arama dizini oluşturma
+# <a name="quickstart-create-an-azure-cognitive-search-index-in-java"></a>Hızlı başlangıç: Java 'da Azure Bilişsel Arama dizini oluşturma
 > [!div class="op_single_selector"]
+> * [Java](search-get-started-java.md)
 > * [JavaScript](search-get-started-javascript.md)
 > * [C#](search-get-started-dotnet.md)
-> * [Java](search-get-started-java.md)
 > * [Portal](search-get-started-portal.md)
-> * [PowerShell](./search-get-started-powershell.md)
+> * [PowerShell](search-get-started-powershell.md)
 > * [Python](search-get-started-python.md)
 > * [REST](search-get-started-rest.md)
 
@@ -49,11 +49,9 @@ Hizmete yapılan çağrılar, her istekte bir URL uç noktası ve erişim anahta
 
 1. [Azure Portal oturum açın](https://portal.azure.com/)ve arama hizmetine **genel bakış** sayfasında URL 'yi alın. Örnek uç nokta `https://mydemo.search.windows.net` şeklinde görünebilir.
 
-2. **Ayarlar**  >  **anahtarlar**' da, hizmette tam haklar için bir yönetici anahtarı alın. Üzerinde bir tane almanız gereken iş sürekliliği için iki adet değiştirilebilir yönetici anahtarı vardır. Nesneleri eklemek, değiştirmek ve silmek için isteklerde birincil veya ikincil anahtarı kullanabilirsiniz.
+1. **Ayarlar**  >  **anahtarlar**' da, hizmette tam haklar için bir yönetici anahtarı alın. Üzerinde bir tane almanız gereken iş sürekliliği için iki adet değiştirilebilir yönetici anahtarı vardır. Nesneleri eklemek, değiştirmek ve silmek için isteklerde birincil veya ikincil anahtarı kullanabilirsiniz.
 
-   Bir sorgu anahtarı oluşturun. Salt okuma erişimiyle sorgu istekleri vermek en iyi uygulamadır.
-
-:::image type="content" source="media/search-get-started-javascript/service-name-and-keys.png" alt-text="Hizmet adı ve yönetici ve sorgu anahtarlarını alın" border="false":::
+   :::image type="content" source="media/search-get-started-rest/get-url-key.png" alt-text="Hizmet adı ve yönetici ve sorgu anahtarlarını alın" border="false":::
 
 Hizmetinize gönderilen her istek bir API anahtarı gerektirir. İstek başına geçerli bir anahtara sahip olmak, isteği gönderen uygulama ve bunu işleyen hizmet arasında güven oluşturur.
 
@@ -88,21 +86,72 @@ IntelliJ FIKRINI açıp yeni bir proje ayarlayarak başlayın.
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
         <modelVersion>4.0.0</modelVersion>
-    
         <groupId>AzureSearchQuickstart</groupId>
         <artifactId>AzureSearchQuickstart</artifactId>
+        <packaging>jar</packaging>
         <version>1.0-SNAPSHOT</version>
+        <properties>
+            <jackson.version>2.12.1</jackson.version>
+            <auto-value.version>1.6.2</auto-value.version>
+            <junit.version>5.4.2</junit.version>
+            <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        </properties>
+        <name>azuresearch-console</name>
+        <url>http://maven.apache.org</url>
+        <dependencies>
+            <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core -->
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-core</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.datatype</groupId>
+                <artifactId>jackson-datatype-jdk8</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.auto.value</groupId>
+                <artifactId>auto-value-annotations</artifactId>
+                <version>${auto-value.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.auto.value</groupId>
+                <artifactId>auto-value</artifactId>
+                <version>${auto-value.version}</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.azure</groupId>
+                <artifactId>azure-search-documents</artifactId>
+                <version>11.1.3</version>
+            </dependency>
+        </dependencies>
+    
         <build>
-            <sourceDirectory>src</sourceDirectory>
             <plugins>
+                <!--put generated source files to generated-sources-->
                 <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
-                    <version>3.1</version>
+                    <version>3.8.0</version>
                     <configuration>
                         <source>11</source>
                         <target>11</target>
                     </configuration>
                 </plugin>
+                <!-- For JUnit -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>2.22.1</version>
+                </plugin>
+                <!-- Add exec plugin to run demo program -->
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>exec-maven-plugin</artifactId>
@@ -115,27 +164,21 @@ IntelliJ FIKRINI açıp yeni bir proje ayarlayarak başlayın.
                         </execution>
                     </executions>
                     <configuration>
-                        <mainClass>main.java.app.App</mainClass>
+                        <mainClass>com.microsoft.azure.search.samples.demo.App</mainClass>
                         <cleanupDaemonThreads>false</cleanupDaemonThreads>
                     </configuration>
                 </plugin>
             </plugins>
         </build>
-        <dependencies>
-            <dependency>
-                <groupId>org.glassfish</groupId>
-                <artifactId>javax.json</artifactId>
-                <version>1.0.2</version>
-            </dependency>
-        </dependencies>   
     </project>
     ```
 
+<!-- STOPPED HERE -- SENT EMAIL TO TONG XU ASKING FOR INFO -->
 ### <a name="set-up-the-project-structure"></a>Proje yapısını ayarlama
 
 1. **Dosya**  >  **projesi yapısı ' nı** seçin.
 1. **Modüller**' i seçin ve kaynak ağacı ' nı genişleterek klasörün içeriklerine erişin `src`  >   `main` .
-1. `src`  >   `main`  >  `java` Klasöründe, `app` ve `service` klasörlerini ekleyin. Bunu yapmak için `java` klasörü seçin, alt + Ekle tuşlarına basın ve ardından klasör adını girin.
+1. Klasöründe,,,,,,,,,, `src`  >   `main`  >  `java` için klasörler ekleyin `com` `microsoft` `azure` `search` `samples` `demo` . Bunu yapmak için `java` klasörü seçin, alt + Ekle tuşlarına basın ve ardından klasör adını girin.
 1. `src`  >   `main`  > `resources` Klasöründe, `app` ve `service` klasörlerini ekleyin.
 
     İşiniz bittiğinde, proje ağacının aşağıdaki resim gibi görünmesi gerekir.
@@ -511,7 +554,7 @@ Oteller Dizin tanımı basit alanlar ve bir karmaşık alan içerir. Basit bir a
     }
     ```
 
-    Dizin adı "oteller-hızlı başlangıç" olacaktır. Dizin alanlarındaki öznitelikler, dizine alınmış verilerin bir uygulamada nasıl arandığını tespit edebilir. Örneğin, `IsSearchable` özniteliğin tam metin aramasına dahil olması gereken her alana atanması gerekir. Öznitelikler hakkında daha fazla bilgi için bkz. [alanlar koleksiyonu ve alan öznitelikleri](search-what-is-an-index.md#fields-collection).
+    Dizin adı "oteller-hızlı başlangıç" olacaktır. Dizin alanlarındaki öznitelikler, dizine alınmış verilerin bir uygulamada nasıl arandığını tespit edebilir. Örneğin, `IsSearchable` özniteliğin tam metin aramasına dahil olması gereken her alana atanması gerekir. Öznitelikler hakkında daha fazla bilgi için bkz. [Dizin oluşturma (REST)](/rest/api/searchservice/create-index).
     
     `Description`Bu dizindeki alan, `analyzer` varsayılan Lucene dil çözümleyicisini geçersiz kılmak için isteğe bağlı özelliği kullanır. `Description_fr`Alan, Fransızca metin depoladığı Için Fransızca Lucene Çözümleyicisi 'ni kullanıyor `fr.lucene` . , `Description` İsteğe bağlı Microsoft dil Çözümleyicisi en. Lucene ' i kullanıyor. Çözümleyiciler hakkında daha fazla bilgi edinmek için bkz. [Azure bilişsel arama 'de metin işleme Için çözümleyiciler](search-analyzers.md).
 

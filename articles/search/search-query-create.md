@@ -1,5 +1,5 @@
 ---
-title: Temel bir sorgu oluşturma
+title: Sorgu oluşturma
 titleSuffix: Azure Cognitive Search
 description: Bilişsel Arama, test ve kod için kullanılacak araçlar ve API 'Leri ve sorgu kararlarının Dizin tasarımıyla nasıl başlatılacağını öğrenin.
 manager: nitinme
@@ -7,74 +7,80 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 12/14/2020
-ms.openlocfilehash: 9bee391ddb0fa6c270c6d833fb7e81d5f4880497
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.date: 02/03/2021
+ms.openlocfilehash: 9419e5f419a358be50fbb3b8478d62dfe6e3dff0
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98118651"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99509359"
 ---
-# <a name="create-a-query-in-azure-cognitive-search"></a>Azure Bilişsel Arama bir sorgu oluşturma
+# <a name="creating-queries-in-azure-cognitive-search"></a>Azure Bilişsel Arama sorgu oluşturma
 
-İlk kez bir sorgu oluşturuyorsanız, bu makalede ihtiyacınız olacak araçlar ve API 'Ler, bir sorgu oluşturmak için kullanılan yöntemler ve dizin yapısı ile içeriğinin sorgu sonuçlarını nasıl etkileyebileceği açıklanmaktadır. Sorgu isteğinin neye benzediklerine giriş için [sorgu türleri ve kompozisyonlarla](search-query-overview.md)başlayın.
+İlk kez bir sorgu oluşturuyorsanız, bu makalede sorguları ayarlamaya yönelik yaklaşımlar ve yöntemler açıklanmaktadır. Ayrıca, bir sorgu isteği de sunar ve alan özniteliklerinin ve dil Çözümleyicileri 'nin sorgu sonuçlarını nasıl etkileyebileceğini açıklar.
 
-## <a name="choose-tools-and-apis"></a>Araçlar ve API 'Ler seçin
+## <a name="whats-a-query-request"></a>Sorgu isteği nedir?
 
-Sorgu oluşturmak için bir araç veya API gerekir. Aşağıdaki önerilerden herhangi biri, test ve üretim iş yükleri için yararlıdır.
+Sorgu, tek bir arama dizininin docs koleksiyonuna yönelik salt okunurdur. ' Search ' parametresi olsa da bir ' queryType ' ve bir sorgu ifadesi belirtiyor. Sorgu ifadesi arama koşullarına, tırnak içine alınmış bir ifadeye ve işleçlere sahip olabilir.
 
-| Yöntem | Description |
-|-------------|-------------|
-| Portal| [Arama Gezgini (portal)](search-explorer.md) , temel arama hizmetindeki dizinlerde sorgular çalıştıran Azure Portal bir sorgu arabirimidir. Portal, arka plan, öneri veya belge [arama işlemleri için](/rest/api/searchservice/search-documents) arka planda REST API çağrısı yapar.<br/><br/> Önizleme dahil olmak üzere herhangi bir dizini ve REST API sürümünü seçebilirsiniz. Sorgu dizesi, tüm sorgu parametreleri (filtre, seçme, searchFields vb.) desteğiyle basit veya tam sözdizimini kullanabilir. Portalda, bir dizini açtığınızda, alan özniteliklerine kolay erişim için yan yana sekmelerde JSON tanımının yanı sıra arama Gezgini ile çalışabilirsiniz. Sorguları test ederken hangi alanların aranabilir, sıralanabilir, filtrelenebilir ve çok yönlü tablo olduğunu denetleyin. <br/>Erken araştırma, test ve doğrulama için önerilir. [Daha fazla bilgi edinin.](search-explorer.md) |
-| Web testi araçları| [Postman](search-get-started-rest.md) veya [Visual Studio Code](search-get-started-vs-code.md) , bir arama belgesi isteğini ve DIĞER tüm istekleri, bekleyen bir şekilde [formülleyen](/rest/api/searchservice/search-documents) güçlü seçimlerdir. REST API 'Leri, Azure Bilişsel Arama 'daki olası her bir programlı işlemi destekler ve Postman veya Visual Studio Code gibi bir araç kullandığınızda, özelliğin kod içinde yatırım yapmadan önce nasıl çalıştığını anlamak için istekleri etkileşimli bir şekilde verebilirsiniz. Azure portal bir Web testi aracı, katkıda bulunan veya yönetici haklarına sahip olmadığınız durumlarda iyi bir seçenektir. Bir arama URL 'SI ve sorgu API 'SI anahtarınız olduğu sürece, mevcut bir dizine yönelik sorguları çalıştırmak için araçları kullanabilirsiniz. |
-| Azure SDK | Kod yazmaya hazırsanız, .NET, Python, JavaScript veya Java için Azure SDK 'larında Azure.Search.Document istemci kitaplıklarını kullanabilirsiniz. Her SDK kendi yayın zamanlamasında bulunur, ancak bunların tümünde dizinler oluşturabilir ve sorgulayabilirsiniz. <br/><br/>[Searchclient (.net)](/dotnet/api/azure.search.documents.searchclient) , C# içindeki bir arama dizinini sorgulamak Için kullanılabilir.  [Daha fazla bilgi edinin.](search-howto-dotnet-sdk.md)<br/><br/>[Searchclient (Python)](/dotnet/api/azure.search.documents.searchclient) , Python 'da bir arama dizinini sorgulamak için kullanılabilir. [Daha fazla bilgi edinin.](search-get-started-python.md)<br/><br/>[Searchclient (JavaScript)](/dotnet/api/azure.search.documents.searchclient) , JavaScript 'te bir arama dizinini sorgulamak için kullanılabilir. [Daha fazla bilgi edinin.](search-get-started-javascript.md) |
-
-## <a name="set-up-a-search-client"></a>Arama İstemcisi ayarlama
-
-Arama İstemcisi arama hizmetinde kimlik doğrular, istek gönderir ve yanıtları işler. Kullandığınız araç veya API 'yi ne olursa olsun, bir arama istemcisinde aşağıdakiler olmalıdır:
-
-| Özellikler | Description |
-|------------|-------------|
-| Uç Nokta | Bir arama hizmeti şu biçimde bir URL adreslenebilir: `https://[service-name].search.windows.net` . |
-| API erişim anahtarı (yönetici veya sorgu) | Arama hizmetine yönelik isteğin kimliğini doğrular. |
-| Dizin adı | Sorgular her zaman tek bir dizinin belgeler koleksiyonuna yönlendirilir. Bir sorgu hedefi olarak dizinlere katılamaz veya özel veya geçici veri yapıları oluşturamazsınız. |
-| API sürümü | REST çağrıları `api-version` istek üzerinde açıkça gerektirir. Buna karşılık, Azure SDK 'sindeki istemci kitaplıkları belirli bir REST API sürümüne karşı sürümlüdür. SDK 'lar için `api-version` örtük bir. |
-
-### <a name="in-the-portal"></a>Portalda
-
-Arama Gezgini ve diğer portal araçları, Portal sayfalarından doğrudan erişimli dizinler ve diğer nesnelerle birlikte yerleşik bir istemci bağlantısına sahiptir. Araçlar, sihirbazlar ve nesneler erişimi, hizmette katkıda bulunan rolünde veya üzerinde üyelik gerektirir. 
-
-### <a name="using-rest"></a>REST kullanma
-
-REST çağrıları için, bir [Arama belgesi](/rest/api/searchservice/search-documents) isteği belirtmek Için [Postman veya benzer araçları](search-get-started-rest.md) istemci olarak kullanabilirsiniz. Her istek tek başına yapılır, bu nedenle her istekte uç nokta, dizin adı ve API sürümü sağlamanız gerekir. Diğer özellikler, Içerik türü ve API anahtarı istek üstbilgisine geçirilir. 
-
-Bir dizini sorgulamak için POST veya GET kullanabilirsiniz. İstek gövdesinde belirtilen parametrelerin bulunduğu POST ile çalışmak daha kolay. POST kullanırsanız, URL 'ye dahil ettiğinizden emin olun `docs/search` :
+Bir sorgu, dizinde bulunan eşleşmelerin sayısını döndürmek için ' Count ' öğesine de sahip olabilir, arama sonucunda hangi alanların döndürüleceğini seçmek için ' Seç ' ve sonuçları sıralamak için ' OrderBy '. Aşağıdaki örneklerde, kullanılabilir parametrelerin alt kümesiyle bir sorgu isteği gösterilmektedir. Sorgu kompozisyonu hakkında daha fazla bilgi için bkz. [sorgu türleri ve kompozisyon](search-query-overview.md) ve [arama belgeleri (REST)](/rest/api/searchservice/search-documents).
 
 ```http
-POST https://myservice.search.windows.net/indexes/hotels-sample-index/docs/search?api-version=2020-06-30
+POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/search?api-version=2020-06-30
 {
-    "count": true,
-    "queryType": "simple",
-    "search": "*"
+    "queryType": "simple"
+    "search": "`New York` +restaurant",
+    "select": "HotelId, HotelName, Description, Rating, Address/City, Tags",
+    "count": "true",
+    "orderby": "Rating desc"
 }
 ```
 
-### <a name="using-azure-sdks"></a>Azure SDK 'larını kullanma
+## <a name="choose-a-client"></a>İstemci seçin
 
-Bir Azure SDK kullanıyorsanız, istemcisini kodda oluşturacaksınız. Tüm SDK 'lar, yeniden bağlantı sağlamak için durumu kalıcı hale getirebileceği arama istemcilerine olanak sağlar. Sorgu işlemleri için bir oluşturur **`SearchClient`** ve şu özellikler için değerler verirsiniz: uç nokta, anahtar, dizin. Sonra **`Search method`** sorgu dizesinde geçirilecek öğesini çağırabilirsiniz. 
+Azure portal veya Postman gibi bir sorgu oluşturmak için bir araç veya API veya bir sorgu istemcisini örnekleyen kod gerekir. Erken geliştirme ve kavram kanıtı testi için Azure portal veya REST API 'Leri öneririz.
 
-| Dil | İstemci | Örnek |
-|----------|--------|---------|
-| C# ve .NET | [SearchClient](/dotnet/api/azure.search.documents.searchclient) | [İlk arama sorgunuzu C 'de gönderin #](/dotnet/api/overview/azure/search.documents-readme#send-your-first-search-query) |
-| Python      | [SearchClient](/python/api/azure-search-documents/azure.search.documents.searchclient) | [Python 'da ilk arama sorgunuzu gönderin](/python/api/overview/azure/search-documents-readme#send-your-first-search-request) |
-| Java        | [SearchClient](/java/api/com.azure.search.documents.searchclient) | [Java 'da ilk arama sorgunuzu gönderin](/java/api/overview/azure/search-documents-readme#send-your-first-search-query)  |
-| JavaScript  | [SearchClient](/javascript/api/@azure/search-documents/searchclient) | [JavaScript 'te ilk arama sorgunuzu gönderin](/javascript/api/overview/azure/search-documents-readme#send-your-first-search-query)  |
+### <a name="permissions"></a>İzinler
 
-## <a name="choose-a-parser-simple--full"></a>Ayrıştırıcı seçin: basit | tümünü
+Sorgu istekleri dahil olmak üzere herhangi bir işlem, bir [yönetıcı API anahtarı](search-security-api-keys.md)altında çalışır, ancak sorgu istekleri isteğe bağlı olarak BIR [sorgu API anahtarı](search-security-api-keys.md#create-query-keys)kullanabilir. Sorgu API 'SI anahtarları kesinlikle önerilir. Hizmet başına en fazla 50 oluşturabilir ve farklı uygulamalara farklı anahtarlar atayabilirsiniz.
 
-Sorgunuz tam metin arama ise, arama parametresinin içeriğini işlemek için bir Ayrıştırıcı kullanılır. Azure Bilişsel Arama iki sorgu ayrıştırıcıları sunmaktadır. Basit ayrıştırıcı [basit sorgu söz dizimini](query-simple-syntax.md)anlamıştır. Bu ayrıştırıcı, ücretsiz form metin sorgularındaki hız ve verimlilik için varsayılan olarak seçilmiştir. Söz dizimi, terim ve tümcecik aramaları için ortak arama işleçlerini (ve veya, DEĞIL) ve ön ek ( `*` ) araması (Seattle ve mevsimin için "Sea *" içinde olduğu gibi) destekler. Genel bir öneri öncelikle basit ayrıştırıcı yapmayı denemenize ve uygulama gereksinimleri daha güçlü sorgular için çağrı yaparsanız tam ayrıştırıcıya geçiş yapmak.
+Azure portal, Araçlar, sihirbazlar ve nesneler erişimi, hizmette katkıda bulunan rolünde veya üzerinde üyelik gerektirir. 
 
-İsteğe eklediğinizde etkinleştirilen [tam Lucene sorgu söz dizimi](query-Lucene-syntax.md#bkmk_syntax), `queryType=full` [Apache Lucene ayrıştırıcısına](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html)dayalıdır.
+### <a name="use-azure-portal-to-query-an-index"></a>Bir dizini sorgulamak için Azure portal kullanma
+
+[Arama Gezgini (portal)](search-explorer.md) , temel arama hizmetindeki dizinlerde sorgular çalıştıran Azure Portal bir sorgu arabirimidir. Dahili olarak, portal [arama belgelerinin](/rest/api/searchservice/search-documents) isteklerini yapar, ancak otomatik tamamlama, öneriler veya belge aramasını çağıramıyor. 
+
+Önizleme dahil olmak üzere herhangi bir dizini ve REST API sürümünü seçebilirsiniz. Sorgu dizesi, tüm sorgu parametreleri (filtre, seçme, searchFields vb.) desteğiyle basit veya tam sözdizimini kullanabilir. Portalda, bir dizini açtığınızda, alan özniteliklerine kolay erişim için yan yana sekmelerde JSON tanımının yanı sıra arama Gezgini ile çalışabilirsiniz. Sorguları test ederken hangi alanların aranabilir, sıralanabilir, filtrelenebilir ve çok yönlü tablo olduğunu denetleyin.
+
+### <a name="use-a-rest-client"></a>REST istemcisi kullanma
+
+Hem Postman hem de Visual Studio Code (Azure Bilişsel Arama Uzantısı ile) sorgu istemcisi olarak çalışabilir. İki aracı kullanarak, arama hizmetinize bağlanabilir ve [arama belgeleri (REST)](/rest/api/searchservice/search-documents) isteklerini gönderebilirsiniz. Çok sayıda öğretici ve örnek, dizin oluşturmayı sorgulamak için REST istemcilerini gösterir. 
+
+Her istemci hakkında bilgi edinmek için Bu makalelerden birini başlatın (her ikisi de sorgular için yönergeler içerir):
+
++ [REST ve Postman kullanarak arama dizini oluşturma](search-get-started-rest.md)
++ [Visual Studio Code ve Azure Bilişsel Arama kullanmaya başlama](search-get-started-vs-code.md)
+
+Her istek tek başına yapılır, bu nedenle her istekte uç nokta, dizin adı ve API sürümü sağlamanız gerekir. Diğer özellikler, Içerik türü ve API anahtarı istek üstbilgisine geçirilir. Daha fazla bilgi için bkz. sorgu isteklerini [Formülleyen yardım Için belgeleri arama (REST)](/rest/api/searchservice/search-documents) .
+
+### <a name="use-an-sdk"></a>SDK kullanma
+
+Bilişsel Arama için Azure SDK 'Ları, genel olarak kullanılabilen özellikleri uygular. Bu nedenle, bir dizini sorgulamak için SDK 'Lardan herhangi birini kullanabilirsiniz. Bunların hepsi, sorgu isteklerini formüllemek için bir dizin ile, arama belgeleriyle bir dizin yüklemeden, bir dizinle etkileşim kurma yöntemlerine sahip bir **Searchclient** sağlar.
+
+| Azure SDK | İstemci | Örnekler |
+|-----------|--------|----------|
+| .NET | [SearchClient](/dotnet/api/azure.search.documents.searchclient) | [DotNetHowTo](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo) |
+| Java | [SearchClient](/java/api/com.azure.search.documents.searchclient) | [Searchfordynamicdocumentsexörnek. Java](https://github.com/Azure/azure-sdk-for-java/blob/azure-search-documents_11.1.3/sdk/search/azure-search-documents/src/samples/java/com/azure/search/documents/SearchForDynamicDocumentsExample.java) |
+| JavaScript | [SearchClient](/javascript/api/@azure/search-documents/searchclient) | [readonlyQuery.js](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/search/search-documents/samples/javascript/src/readonlyQuery.js) |
+| Python | [SearchClient](/python/api/azure-search-documents/azure.search.documents.searchclient) | [sample_simple_query. Kopyala ](https://github.com/Azure/azure-sdk-for-python/blob/7cd31ac01fed9c790cec71de438af9c45cb45821/sdk/search/azure-search-documents/samples/sample_simple_query.py) |
+
+## <a name="choose-a-query-type-simple--full"></a>Bir sorgu türü seçin: basit | tümünü
+
+Sorgunuz tam metin arama ise, arama terimleri ve tümceleri olarak geçirilen metinleri işlemek için bir sorgu ayrıştırıcısı kullanılacaktır. Azure Bilişsel Arama iki sorgu ayrıştırıcıları sunmaktadır. 
+
++ Basit ayrıştırıcı [basit sorgu söz dizimini](query-simple-syntax.md)anlamıştır. Bu ayrıştırıcı, ücretsiz form metin sorgularındaki hız ve verimlilik için varsayılan olarak seçilmiştir. Söz dizimi, terim ve tümcecik aramaları için ortak arama işleçlerini (ve veya, DEĞIL) ve ön ek ( `*` ) araması (Seattle ve mevsimin için "Sea *" içinde olduğu gibi) destekler. Genel bir öneri öncelikle basit ayrıştırıcı yapmayı denemenize ve uygulama gereksinimleri daha güçlü sorgular için çağrı yaparsanız tam ayrıştırıcıya geçiş yapmak.
+
++ İsteğe eklediğinizde etkinleştirilen [tam Lucene sorgu söz dizimi](query-Lucene-syntax.md#bkmk_syntax), `queryType=full` [Apache Lucene ayrıştırıcısına](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html)dayalıdır.
 
 Tam sözdizimi ve basit sözdizimi, her ikisi de aynı öneki ve Boole işlemlerini destekledikleri, ancak tam sözdizimi daha fazla işleç sağladığı ölçüde çakışıyor. Tam olarak, Boolean ifadelerine yönelik daha fazla işleç ve benzer arama, joker karakter arama, yakınlık araması ve normal ifadeler gibi gelişmiş sorgular için daha fazla işleç vardır.
 
@@ -92,7 +98,7 @@ Arama, hüküm veya deyimlerin bir arama kutusundan toplandığı ya da bir sayf
 
 ## <a name="know-your-field-attributes"></a>Alan öznitelerinizi öğrenin
 
-Daha önce [bir sorgu isteğinin temellerini](search-query-overview.md)gözden geçirdiyseniz, sorgu isteğindeki parametrelerin, alanların bir dizinde nasıl ilişkilendirilebilmesine bağlı olduğunu unutmayın. Örneğin, bir sorgu, filtre veya sıralama düzeninde kullanılmak üzere, bir alan *aranabilir*, *filtrelenebilir* ve *sıralanabilir* olmalıdır. Benzer şekilde, sonuçlarda yalnızca *alınabilir* olarak işaretlenen alanlar görünebilir. `search` `filter` Talebinizdeki, ve parametrelerini belirtmeye başladığınızda `orderby` , beklenmedik sonuçlara engel olmak için öznitelikleri giderek kontrol ettiğinizden emin olun.
+Daha önce [sorgu türlerini ve oluşturmayı](search-query-overview.md)gözden geçirdiyseniz, sorgu isteğindeki parametrelerin, alanların bir dizinde nasıl ilişkilendirilebilmesine bağlı olduğunu unutmayın. Örneğin, bir sorgu, filtre veya sıralama düzeninde kullanılmak üzere, bir alan *aranabilir*, *filtrelenebilir* ve *sıralanabilir* olmalıdır. Benzer şekilde, sonuçlarda yalnızca *alınabilir* olarak işaretlenen alanlar görünebilir. `search` `filter` Talebinizdeki, ve parametrelerini belirtmeye başladığınızda `orderby` , beklenmedik sonuçlara engel olmak için öznitelikleri giderek kontrol ettiğinizden emin olun.
 
 [Oteller örnek dizininin](search-get-started-portal.md)altındaki Portal ekran görüntüsünde, yalnızca son Iki "LastRenovationDate" ve "derecelendirme" alanları `"$orderby"` tek bir yan tümcesinde kullanılabilir.
 
@@ -102,13 +108,21 @@ Alan özniteliklerinin açıklaması için bkz. [Dizin oluşturma (REST API)](/r
 
 ## <a name="know-your-tokens"></a>Belirteçlerinizi öğrenin
 
-Sorgu altyapısı, dizin oluşturma sırasında, dizelerde metin analizi gerçekleştirmek için bir çözümleyici kullanır ve sorgu sırasında eşleşme potansiyelini en üst düzeye çıkarır. En azından, dizeler daha düşük düzeylerdir, ancak aynı zamanda bir yandan da daha fazla hareket edebilir ve Word kaldırma işlemini durdurabilir. Daha büyük dizeler veya bileşik sözcükler genellikle boşluk, kısa çizgi veya tire ile ayrılır ve ayrı belirteçler olarak dizinlenir. 
+Dizin oluşturma sırasında, arama motoru dizelerde metin analizi gerçekleştirmek için bir çözümleyici kullanır ve sorgu sırasında eşleşme potansiyelini en üst düzeye çıkarır. En azından, dizeler daha düşük düzeylerdir, ancak aynı zamanda bir yandan da daha fazla hareket edebilir ve Word kaldırma işlemini durdurabilir. Daha büyük dizeler veya bileşik sözcükler genellikle boşluk, kısa çizgi veya tire ile ayrılır ve ayrı belirteçler olarak dizinlenir. 
 
 Burada ele almanız gereken nokta, dizininizin neleri içerdiğini düşündüğünüzden farklı olabilir. Sorgular beklenen sonuçları döndürmezse, çözümleyici tarafından oluşturulan belirteçleri [Çözümle metni (REST API)](/rest/api/searchservice/test-analyzer)aracılığıyla inceleyebilirsiniz. Simgeleştirme ve sorgulara etkisi hakkında daha fazla bilgi için, bkz. [kısmi terim arama ve özel karakterlerle desenler](search-query-partial-matching.md).
 
+## <a name="about-queries-per-second-qps"></a>Saniye başına sorgu (QPS) hakkında
+
+Sorgu performansına eklenen çok sayıda etken nedeniyle, Microsoft beklenen QPS numaralarını yayımlamaz. QPS tahminleri, uygulamanız için geçerli olan hizmet katmanı, yapılandırma, dizin ve sorgu yapılarını kullanarak her müşteri tarafından bağımsız olarak geliştirilmelidir. Dizin boyutu ve karmaşıklık, sorgu boyutu ve karmaşıklık ve trafik miktarı, QPS 'nin birinciline sahiptir. Bu faktörler bilinmiyorsa anlamlı tahminler sunmanın bir yolu yoktur.
+
+Tahminler, adanmış kaynaklar üzerinde (temel ve standart Katmanlar) çalışan hizmetler üzerinde hesaplandığında daha öngörülebilir hale ayarlanır. Daha fazla parametre üzerinde denetiminiz olduğundan QPS 'yi daha yakından tahmin edebilirsiniz. Tahmine yaklaşıma ilişkin yönergeler için bkz. [Azure bilişsel arama performansı ve iyileştirmesi](search-performance-optimization.md).
+
+Depolama için Iyileştirilmiş Katmanlar (L1 ve L2) için, standart katmanlardan daha düşük bir sorgu üretilen işi ve daha yüksek gecikme süresi beklemelisiniz.
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bir sorgu isteğinin nasıl oluşturulduğunu daha iyi kavradığınıza göre, uygulamalı deneyim için aşağıdaki hızlı başlangıçlara deneyin.
+Sorgu isteklerinin nasıl çalıştığını daha iyi kavradığınıza göre, uygulamalı deneyim için aşağıdaki hızlı başlangıçlara ihtiyacınız vardır.
 
 + [Arama Gezgini](search-explorer.md)
 + [REST 'te sorgulama](search-get-started-rest.md)

@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 01/20/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 56751adedfc01b3927acc65f47910c3b1281f09c
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: edeb383317d4bdc0e7beef1f8390ddabd350f002
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98811734"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99507579"
 ---
 # <a name="sensor-data-mining-queries"></a>Algılayıcı veri araştırma sorguları
 
@@ -55,11 +55,11 @@ Oluşturduğunuz veri araştırma sorguları, her açışınızda dinamik olarak
 
 Çeşitli güvenlik ekiplerine yönelik kapsamlı güvenlik ihtiyaçlarını karşılamak için sorguları kullanabilirsiniz:
 
-- **SOC olay yanıtı**: anında olay yanıtıyla başa çıkmak için bir raporu gerçek zamanlı olarak oluşturun. Örneğin, düzeltme eki gerektirebilecek cihazların listesi için bir rapor oluşturun.
+- **SOC olay yanıtı**: anında olay yanıtıyla başa çıkmak için bir raporu gerçek zamanlı olarak oluşturun. Örneğin, veri madenciliği, düzeltme eki gerektirebilecek cihazların bir listesi için rapor oluşturabilir.
 
 - **Forensics**: araştırma raporlarının geçmiş verilerini temel alan bir rapor oluşturun.
 
-- **BT ağ bütünlüğü**: genel ağ güvenliğinin artırılmasına yardımcı olan bir rapor oluşturun. Örneğin, zayıf kimlik doğrulama kimlik bilgileri olan cihazları listeleyen bir rapor oluşturun.
+- **BT ağ bütünlüğü**: genel ağ güvenliğinin artırılmasına yardımcı olan bir rapor oluşturun. Örneğin, zayıf kimlik doğrulama kimlik bilgileri olan cihazları listeleyen bir rapor oluşturabilirsiniz.
 
 - **Görünürlük**: ağınızın tüm temel parametrelerini görüntülemek için tüm sorgu öğelerini içeren bir rapor oluşturun.
 
@@ -138,7 +138,7 @@ Veri araştırma raporu oluşturmak için:
 
 Aşağıdaki tabloda veri madenciliği için yönetim seçenekleri açıklanmaktadır:
 
-| Simge görüntüsü | Description |
+| Simge görüntüsü | Açıklama |
 |--|--|
 | :::image type="icon" source="media/how-to-generate-reports/edit-a-simulation-icon.png" border="false"::: | Rapor parametrelerini düzenleyin. |
 | :::image type="icon" source="media/how-to-generate-reports/export-as-pdf-icon.png" border="false"::: | PDF olarak dışa aktar. |

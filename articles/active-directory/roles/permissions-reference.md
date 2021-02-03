@@ -14,12 +14,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: da85c80dd6450fd4427f83586e75cf1e9d62a605
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: 849c159f31a14441ef9c6aa19b8704b286727bd7
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99428783"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99507190"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory'de yönetici rolü izinleri
 
@@ -2050,24 +2050,24 @@ Kullanıcı | Kullanılmadığından gösterilmez | NA
 
 Sütun başlıkları, parolaları sıfırlayabilirler rollerini temsil eder. Tablo satırlarında, parolasının sıfırlayabileceği roller bulunur.
 
-Parola sıfırlanabilir | Kimlik doğrulama Yöneticisi | Yardım Masası Yöneticisi | Parola Yöneticisi | Kullanıcı Yöneticisi | Ayrıcalıklı kimlik doğrulama Yöneticisi | Genel Yönetici
+Parola sıfırlanabilir | Parola Yöneticisi | Yardım Masası Yöneticisi | Kimlik doğrulama Yöneticisi | Kullanıcı Yöneticisi | Ayrıcalıklı kimlik doğrulama Yöneticisi | Genel Yönetici
 ------ | ------ | ------ | ------ | ------ | ------ | ------
-Kimlik doğrulama Yöneticisi | :heavy_check_mark: | &nbsp; | &nbsp; | &nbsp; | :heavy_check_mark: | :heavy_check_mark:
+Kimlik doğrulama Yöneticisi | &nbsp; | &nbsp; | :heavy_check_mark: | &nbsp; | :heavy_check_mark: | :heavy_check_mark:
 Dizin okuyucuları | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
 Genel Yönetici | &nbsp; | &nbsp; | &nbsp; | &nbsp; | :heavy_check_mark: | :heavy_check_mark:\*
 Gruplar Yöneticisi | &nbsp; | &nbsp; | &nbsp; | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
 Konuk | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
 Konuk davetci | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
 Yardım Masası Yöneticisi | &nbsp; | :heavy_check_mark: | &nbsp; | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
-İleti Merkezi okuyucusu | :heavy_check_mark: | :heavy_check_mark: | &nbsp; | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
+İleti Merkezi okuyucusu | &nbsp; | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
 Parola Yöneticisi | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
 Ayrıcalıklı kimlik doğrulama Yöneticisi | &nbsp; | &nbsp; | &nbsp; | &nbsp; | :heavy_check_mark: | :heavy_check_mark:
 Ayrıcalıklı rol yöneticisi | &nbsp; | &nbsp; | &nbsp; | &nbsp; | :heavy_check_mark: | :heavy_check_mark:
-Rapor okuyucu | :heavy_check_mark: | :heavy_check_mark: | &nbsp; | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
+Rapor okuyucu | &nbsp; | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
 Kısıtlı Konuk | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
 Kullanıcı (yönetici rolü yok) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
 Kullanıcı Yöneticisi | &nbsp; | &nbsp; | &nbsp; | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
-Kullanım Özeti raporları okuyucusu | :heavy_check_mark: | :heavy_check_mark: | &nbsp; | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
+Kullanım Özeti raporları okuyucusu | &nbsp; | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
 
 \* Genel yönetici kendi genel yönetici atamasını kaldıramıyor. Bu, bir kuruluşun 0 genel yöneticisi olan bir durumu önlemektir.
 

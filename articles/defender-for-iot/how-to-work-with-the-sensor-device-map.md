@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 1/7/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: fd1721060bdc4b18f324a94f7c367bacde6ed4e8
-ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
+ms.openlocfilehash: edd1438a665e4917d5dd4cdcfba08d9cee01d3bb
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97976767"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99509057"
 ---
 # <a name="investigate-sensor-detections-in-the-device-map"></a>Cihaz eşlemesindeki algılayıcı algılamalarını araştırın
 
@@ -63,7 +63,7 @@ Aşağıdaki şekilde, 27 BT ağ öğeleriyle daraltılmış bir BT alt ağı g�
 
 BT ağlarını daraltma özelliğini etkinleştirmek için:
 
-- Sistem ayarı penceresinde, BT ağları özelliğinin etkinleştirildiğinden emin olun.
+- **Sistem ayarları** PENCERESINDE, BT ağlarını gruplama özelliğinin etkinleştirildiğinden emin olun.
 
 :::image type="content" source="media/how-to-work-with-maps/shrunk-it-subnet-v2.png" alt-text="Sistem ayar penceresi":::
 
@@ -76,7 +76,7 @@ Bir BT alt ağını genişletmek için:
 
    :::image type="content" source="media/how-to-work-with-maps/subnet-list.png" alt-text="Alt ağlar yapılandırması":::
 
-2. Alt ağları yapılandırmayı Düzenle penceresinde, bir BT alt ağı olarak tanımlamak istediğiniz her alt ağ için ICS alt ağını temizleyin. BT alt ağları, BT ağlarındaki Controller veya PLC gibi ICS cihazlarıyla birlikte cihaz eşlemesinde daraltılmış olarak görünür.
+2. Alt ağ **yapılandırmasını düzenle** penceresinde, bir BT alt ağı olarak tanımlamak istediğiniz her alt ağ Için **ICS alt ağ** onay kutusunu temizleyin. BT alt ağları, BT ağlarındaki Controller veya PLC gibi ICS cihazlarıyla birlikte cihaz eşlemesinde daraltılmış olarak görünür.
 
    :::image type="content" source="media/how-to-work-with-maps/edit-config.png" alt-text="Alt ağ yapılandırmasını düzenle":::
 
@@ -106,13 +106,13 @@ Daraltma simgesi, güncelleştirilmiş genişletilmiş BT alt ağlarının sayı
 
 ## <a name="view-or-highlight-device-groups"></a>Cihaz gruplarını görüntüleme veya vurgulama
 
-Harita görüntüsünü cihaz gruplarına göre özelleştirebilirsiniz. Örneğin, belirli bir VLAN veya alt ağ ile İlişkili cihazların grupları. Önceden tanımlanmış gruplar kullanılabilir ve özel gruplar oluşturulabilir.
+Harita görüntüsünü cihaz gruplarına göre özelleştirebilirsiniz. Örneğin, belirli bir OT protokolü, VLAN veya alt ağ ile ilişkili cihaz grupları. Önceden tanımlanmış gruplar kullanılabilir ve özel gruplar oluşturulabilir.
 
 Grupları şu şekilde görüntüle:
 
   - **Vurgulama:** Belirli bir gruba ait olan cihazları mavi olarak vurgulayın.
 
-  - **Filtreleme:** Yalnızca haritadaki cihazları yalnızca belirli bir gruba ait olan görüntüler.
+  - **Filtreleme:** Yalnızca belirli bir gruba ait olan cihazları görüntüler.
 
 :::image type="content" source="media/how-to-work-with-maps/port-standard.png" alt-text="Bağlantı noktanızın standart görünümü":::
 
@@ -120,17 +120,18 @@ Aşağıdaki önceden tanımlanmış gruplar kullanılabilir:
 
 | Grup adı | Açıklama |
 |--|--|
-| **Bilinen uygulamalar veya standart olmayan bağlantı noktaları (varsayılan)** | TCP gibi ayrılmış bağlantı noktaları kullanan cihazlar. Standart olmayan bağlantı noktaları veya bir diğer ad atanmamış bağlantı noktaları kullanan cihazlar. |
-| **OT protokolleri (varsayılan)** | OT trafiğini işleyen cihazlar. |
-| **Yetkilendirme (varsayılan)** | Öğrenme işlemi sırasında ağda bulunan veya resmi olarak ağa eklenen cihazlar |
+| **Bilinen uygulamalar** | TCP gibi ayrılmış bağlantı noktaları kullanan cihazlar.  |
+| **Standart olmayan bağlantı noktaları (varsayılan)** | Standart olmayan bağlantı noktaları veya bir diğer ad atanmamış bağlantı noktaları kullanan cihazlar. |
+| **OT protokolleri (varsayılan)** | Bilinen OT trafiğini işleyen cihazlar. |
+| **Yetkilendirme (varsayılan)** | Öğrenme işlemi sırasında ağda bulunan veya ağda bir şekilde yetkilendirilmiş olan cihazlar. |
 | **Cihaz envanteri filtreleri** | Cihazlar, filtre ölçütüne göre gruplandırılan cihaz envanter tablosuna kaydedilir. |
 | **Yoklama aralıkları** | Yoklama aralıklarına göre gruplandırılan cihazlar. Yoklama aralıkları, döngüsel kanallara veya dönemlere göre otomatik olarak oluşturulur. Örneğin, 15,0 saniye, 3,0 saniye, 1,5 saniye veya herhangi bir Aralık. Bu bilgilerin incelenmesi, sistemlerin çok hızlı veya yavaş bir şekilde yoklanmasını öğrenmenize yardımcı olur. |
-| **Program** | Mühendislik istasyonları ve programlanmış denetleyiciler |
+| **Program** | Mühendislik istasyonları ve programlama makineleri. |
 | **Alt ağlar** | Belirli bir alt ağa ait olan cihazlar. |
 | **VLAN** | Belirli bir VLAN KIMLIĞIYLE ilişkili cihazlar. |
-| **Alt ağlar arasında bağlantı** | Çapraz alt ağ bağlantısıyla ilişkili cihazlar. |
+| **Çapraz alt ağ bağlantıları** | Bir alt ağdan başka bir alt ağa iletişim kuran cihazlar. |
 | **Sabitlenmiş uyarılar** | Kullanıcının bir uyarıyı sabitlediği cihazlar. |
-| **Saldırı vektörü benzetimleri** | Saldırı vektörü raporlarında güvenlik açığı bulunan cihazlar algılandı. Bu cihazları haritada görüntülemek için, saldırı vektörünü oluştururken **cihaz eşlemesinde görüntüle** onay kutusunu seçin. :::image type="content" source="media/how-to-work-with-maps/add-attack-v2.png" alt-text="Saldırı vektörü benzetimleri ekleme"::: |
+| **Saldırı vektörü benzetimleri** | Saldırı vektörü raporlarında güvenlik açığı bulunan cihazlar algılandı. Bu cihazları haritada görüntülemek için, saldırı vektörünü oluştururken **cihaz eşlemesinde görüntüle** onay kutusunu seçin. :::image type="content" source="media/how-to-work-with-maps/add-attack-v2.png" alt-text="Saldırı vektörü benzetimleri ekleyin":::. |
 | **Son görülme** | Son görtikleri zaman dilimine göre gruplandırılan cihazlar, örneğin: bir saat, altı saat, bir gün, yedi gün. |
 | **Active Directory değil** | Active Directory ile iletişim kurmayan tüm PLC olmayan cihazlar. |
 
@@ -142,7 +143,7 @@ Cihazları vurgulamak veya filtrelemek için:
 
 3. Gruplar bölmesinden, cihazları vurgulamak veya filtrelemek istediğiniz grubu seçin.
 
-4. **Vurgula** veya **filtre**' yi seçin.
+4. **Vurgula** veya **filtre**' yi seçin. Vurgulamayı kaldırmak için aynı seçimi değiştirin veya filtre uygulayın.
 
 ## <a name="define-custom-groups"></a>Özel grupları tanımlama
 
@@ -155,20 +156,20 @@ Bir grup oluşturmak için:
 
 1. Yan menüdeki **cihazlar** ' ı seçin. Cihaz haritası görüntülenir.
 
-2. Gruplar ayarlarını göstermek için :::image type="content" source="media/how-to-work-with-maps/menu-icon.png" alt-text="Grup ayarı"::: ' nı seçin.
+1. Gruplar ayarlarını göstermek için :::image type="content" source="media/how-to-work-with-maps/menu-icon.png" alt-text="Grup ayarı"::: ' nı seçin.
 
-3. Yeni bir özel grup oluşturmak için :::image type="content" source="media/how-to-work-with-maps/create-group-v2.png" alt-text="gruplar"::: ' ı seçin.
+1. Yeni bir özel grup oluşturmak için :::image type="content" source="media/how-to-work-with-maps/create-group-v2.png" alt-text="gruplar"::: ' ı seçin.
 
 :::image type="content" source="media/how-to-work-with-maps/custom-group-v2.png" alt-text="Özel grup ekranı oluşturma":::
 
-4. Grubun adını ekleyin, en fazla 30 karakter kullanın.
+1. Grubun adını ekleyin, en fazla 30 karakter kullanın.
 
-5. İlgili cihazları aşağıdaki gibi seçin:
+1. İlgili cihazları aşağıdaki gibi seçin:
 
    - Bu menüden cihazları listeden seçerek ekleyin (ok düğmesini seçin),<br /> Veya <br /> 
    - Bu menüden cihazları seçilen bir gruptan kopyalayarak ekleyin (ok düğmesini seçin)
 
-6. **Grup Ekle**' yi seçin.
+1. Varolan grupları özel gruplara eklemek için **Grup Ekle** ' yi seçin.
 
 ### <a name="add-devices-to-a-custom-group"></a>Özel bir gruba cihaz ekleme
 
@@ -176,13 +177,13 @@ Bir grup oluşturmak için:
 
 1. Haritadaki bir cihaza sağ tıklayın.
 
-2. **Gruba ekle**' yi seçin.
+1. **Gruba ekle**' yi seçin.
 
-3. Grup alanına bir grup adı girin ve + seçeneğini belirleyin. Yeni Grup görüntülenir. Grup zaten varsa, var olan özel gruba eklenir.
+1. Grup alanına bir grup adı girin ve + seçeneğini belirleyin. Yeni Grup görüntülenir. Grup zaten varsa, var olan özel gruba eklenir.
 
    :::image type="content" source="media/how-to-work-with-maps/groups-section-v2.png" alt-text="Grup adı":::
 
-4. 1-3 adımlarını yineleyerek bir gruba cihaz ekleyin.
+1. 1-3 adımlarını yineleyerek bir gruba cihaz ekleyin.
 
 ## <a name="map-zoom-views"></a>Harita yakınlaştırma görünümleri
 
@@ -317,14 +318,14 @@ Aşağıdaki bilgiler el ile güncelleştirilebilen olabilir. El ile girilen bil
 | Öğe | Açıklama |
 |--|--|
 | Temel Bilgiler | Gerekli temel bilgiler. |
-| Ad | Cihaz adı. <br /> Varsayılan olarak, algılayıcı, ağ içinde tanımlanan cihaz adını bulur. Örneğin, DNS sunucusunda tanımlı bir ad. <br /> Böyle bir ad tanımlanmamışsa, bu alanda cihaz IP adresi görüntülenir. <br /> Bir cihaz adını el ile değiştirebilirsiniz. Cihazlarınıza işlevlerini yansıtan anlamlı adlar verin. |
+| Name | Cihaz adı. <br /> Varsayılan olarak, algılayıcı, ağ içinde tanımlanan cihaz adını bulur. Örneğin, DNS sunucusunda tanımlı bir ad. <br /> Böyle bir ad tanımlanmamışsa, bu alanda cihaz IP adresi görüntülenir. <br /> Bir cihaz adını el ile değiştirebilirsiniz. Cihazlarınıza işlevlerini yansıtan anlamlı adlar verin. |
 | Tür | Algılayıcı tarafından algılanan cihaz türü. <br /> Daha fazla bilgi için bkz. [cihaz türlerini görüntüleme](#view-device-types). |
-| Satıcı | Cihaz satıcısı. |
-| Operating System | Cihaz işletim sistemi. |
+| Satıcı | Cihaz satıcısı. Bu, cihaz MAC adresinin baştaki karakterleriyle belirlenir. Bu alan salt okunur durumdadır. |
+| Operating System | Algılayıcı tarafından algılanan cihaz işletim sistemi. |
 | Takip tarihi katmanı | Bu cihaz için algılayıcı tarafından tanımlanan, bu cihaz için gereken, aşağıdaki gibi bir katman: <br /> -Otomatik <br /> -İşlem denetimi <br /> -Supervizör <br /> - Enterprise |
 | Açıklama | Ücretsiz metin alanı. <br /> Cihaz hakkında daha fazla bilgi ekleyin. |
 | Öznitelikler | Öğrenme döneminde cihaz hakkında keşfedilen ve diğer kategorilere ait olmayan ek bilgiler, Öznitelikler bölümünde görünür. <br /> Bilgi RO. |
-| Ayarlar | Hatalı pozitif durumları engellemek için cihaz ayarlarını el ile değiştirebilirsiniz: <br /> - **Yetkili cihaz**: öğrenme döneminde, ağda bulunan tüm cihazlar yetkili cihaz olarak tanımlanır. Bir cihaz öğrenme süresinden sonra bulunduğunda, varsayılan olarak yetkisiz bir cihaz olarak görünür. Bu tanımı el ile değiştirebilirsiniz. <br /> - **Tarayıcı olarak bilinen**: Bu cihazın tarayıcı olarak bilinmediğini ve sorun hakkında sizi uyarmak gerekmediğini biliyorsanız bu seçeneği etkinleştirin. <br /> - **Programlama aygıtı**: Bu cihazın bir programlama cihazı olarak bilinmediğini ve bu aygıtın sizi uyarmak gerekmediğini biliyorsanız, bu seçeneği etkinleştirin. |
+| Ayarlar | Hatalı pozitif durumları engellemek için cihaz ayarlarını el ile değiştirebilirsiniz: <br /> - **Yetkili cihaz**: öğrenme döneminde, ağda bulunan tüm cihazlar yetkili cihaz olarak tanımlanır. Bir cihaz öğrenme süresinden sonra bulunduğunda, varsayılan olarak yetkisiz bir cihaz olarak görünür. Bu tanımı el ile değiştirebilirsiniz. <br /> - **Tarayıcı olarak bilinen**: Bu cihazın tarayıcı olarak bilinmediğini ve sorun hakkında sizi uyarmak gerekmediğini biliyorsanız bu seçeneği etkinleştirin. <br /> - **Programlama aygıtı**: Bu cihazın bir programlama aygıtı olarak bilinmediğini ve programlama değişiklikleri yapmak için kullanıldığını biliyorsanız bu seçeneği etkinleştirin. Bunu bir programlama cihazı olarak tanımlamak, bu varlıktan kaynaklanan değişikliklerin programlanması uyarılarını engeller. |
 | Özel gruplar | Bu cihazın katıldığı cihaz eşlemesindeki özel gruplar. |
 | Durum | Cihazın güvenliği ve yetkilendirme durumu: <br /> -Durum, uyarı olmadığında olur `Secured` <br /> -Cihaz hakkında uyarılar olduğunda, uyarı sayısı görüntülenir <br /> -Durum, `Unauthorized` öğrenme süresinden sonra ağa eklenen cihazlar için görüntülenir. Cihazı ayarlarda el ile tanımlayabilirsiniz `Authorized Device` <br /> -Bu cihazın adresinin dinamik bir adres olarak tanımlanması durumunda `DHCP` duruma eklenir. |
 
@@ -337,7 +338,7 @@ Aşağıdaki bilgiler el ile güncelleştirilebilen olabilir. El ile girilen bil
 | Adres | Cihazın IP adresi. |
 | Ardışık | Cihaz seri numarası. |
 | Modül adresi | Cihaz modeli ve yuva numarası veya KIMLIĞI. |
-| Model | Cihaz modeli numarası. |
+| Modelleme | Cihaz modeli numarası. |
 | Üretici Yazılımı Sürümü | Üretici yazılımı sürüm numarası. |
 
 Cihaz bilgilerini görüntülemek için:
@@ -369,7 +370,7 @@ Cihaz bilgilerini görüntülemek için:
 
 2. Bir cihaza sağ tıklayın ve **özellikleri görüntüle**' yi seçin. Cihaz Özellikler penceresi görüntülenir.
 
-3. Bu cihazdaki uyarılarla ilgili ayrıntılı bilgileri görüntülemek için bu pencerenin altındaki gerekli uyarıyı seçin.
+3. Bu cihazdaki uyarılarla ilgili ayrıntılı bilgileri görüntülemek için gerekli uyarıyı seçin.
 
 ### <a name="backplane-properties"></a>Arka düzlem özellikleri
 
@@ -429,7 +430,7 @@ Ağ cihazlarınızda yürütülen programlama olaylarını görüntüleyerek ve 
 
 Programlanmış bir cihaz görüntüleyebilir ve diğer cihazlar tarafından gerçekleştirilen çeşitli programlama değişikliklerinden gezinebilirsiniz.
 
-Programlama cihazı tarafından eklenen, değiştirilen, kaldırılan veya değişmeyen kodu görüntüleyin. Dosya türlerine, tarihlere veya ilgilendiğiniz saatlere göre değişiklikleri programlama araması yapın.
+Programlama aygıtı tarafından eklenen, değiştirilen, kaldırılan veya yeniden yüklenen kodu görüntüleyin. Dosya türlerine, tarihlere veya ilgilendiğiniz saatlere göre değişiklikleri programlama araması yapın.
 
 ### <a name="when-to-review-programming-activity"></a>Programlama etkinliğinin ne zaman incelenmesi 
 
@@ -443,7 +444,7 @@ Programlama etkinliğini gözden geçirmeniz gerekebilir:
 
 :::image type="content" source="media/how-to-work-with-maps/differences.png" alt-text="Değişiklik günlüğü 'Nü programlama":::
 
-Ek seçenekler şunları yapmanızı sağlar:
+Diğer seçenekler şunları yapmanızı sağlar:
 
   - Bir yıldız ile ilgilendiğiniz olayları işaretleyin.
 
@@ -476,7 +477,7 @@ Yetkisiz programlama cihazları programlama etkinliklerini yaparken uyarılar te
 :::image type="content" source="media/how-to-work-with-maps/unauthorized.png" alt-text="Yetkisiz programlama uyarıları":::
 
 > [!NOTE]
-> Ayrıca, temel programlama bilgilerini cihaz Özellikler penceresi ve cihaz envanterinde görüntüleyebilirsiniz. Bkz. [cihaz programlama bilgileri: Ayrıntılar Için ek konumlar](#device-programming-information-additional-locations) .
+> Ayrıca, temel programlama bilgilerini cihaz Özellikler penceresi ve cihaz envanterinde görüntüleyebilirsiniz.
 
 ### <a name="working-in-the-programming-timeline-window"></a>Programlama zaman çizelgesi penceresinde çalışma
 
@@ -539,7 +540,7 @@ Karşılaştırmak için:
 
 5. Son olaylar/dosyalar bölmesinden seçilen dosya her zaman sağ tarafta görüntülenir.
 
-### <a name="device-programming-information-additional-locations"></a>Cihaz programlama bilgileri: ek konumlar
+### <a name="device-programming-information-other-locations"></a>Cihaz programlama bilgileri: diğer konumlar
 
 Programlama zaman çizelgesindeki ayrıntıları gözden geçirmeye ek olarak, cihaz Özellikler penceresi ve cihaz envanterindeki programlama bilgilerine de erişebilirsiniz.
 
@@ -556,7 +557,7 @@ Algılayıcı, cihazları doğrudan ağda güncelleştirmez veya etkilemez. Bura
 
 Öğrenilmiş bilgiler ilgili değilse bir cihazı silmek isteyebilirsiniz. Örneğin,
 
-  - Mühendislik iş istasyonundaki iş ortağı yüklenicisi, yapılandırma güncelleştirmelerini gerçekleştirmek üzere bağlanır. Görev tamamlandıktan sonra cihaz artık izlenmemelidir.
+  - Mühendislik iş istasyonundaki iş ortağı yüklenicisi, yapılandırma güncelleştirmelerini gerçekleştirmek için geçici olarak bağlanır. Görev tamamlandıktan sonra cihaz kaldırılır.
 
   - Ağdaki değişiklikler nedeniyle, bazı cihazlar artık bağlı değil.
 
@@ -566,7 +567,7 @@ Başka bir cihaz erişmeye çalışırsa cihazın yanıt vermemesine işaret ede
 
 Cihaz, cihaz eşlemesinden, cihaz envanterinden ve veri araştırma raporlarından kaldırılır. Diğer bilgiler, örneğin: pencere öğelerinde depolanan bilgiler korunur.
 
-Cihazın silinmesi için en az 10 dakika etkin olmalıdır.
+Cihazın silinmesi en az 10 dakika boyunca etkin değil olmalıdır.
 
 Cihaz eşlemesinden bir cihazı silmek için:
 
@@ -576,15 +577,17 @@ Cihaz eşlemesinden bir cihazı silmek için:
 
 ### <a name="merge-devices"></a>Cihazları birleştirme
 
-Belirli koşullarda cihazları birleştirmeniz gerekebilir. Algılayıcı, benzersiz bir cihaz olan ayrı ağ varlıkları tespit edildiğinde bu gerekli olabilir. Örneğin,
+Belirli koşullarda cihazları birleştirmeniz gerekebilir. Algılayıcı, tek bir benzersiz cihazla ilişkili ayrı ağ varlıkları tespit edildiğinde bu gerekli olabilir. Örneğin,
 
-  - Dört ağ kartına sahip bir PLC
+  - Dört ağ kartına sahip bir PLC.
 
-  - WIFI ve fiziksel kart içeren bir dizüstü bilgisayar
+  - WIFI ve fiziksel kart içeren bir dizüstü bilgisayar.
+  
+  - İki veya daha fazla ağ kartına sahip bir Iş Istasyonu.
 
 Birleştirme sırasında, sensöre iki cihazın cihaz özelliklerini tek tek birleştirmek için talimat alırsınız. Bunu yaptığınızda cihaz Özellikler penceresi ve algılayıcı raporları yeni cihaz özelliği ayrıntıları ile güncelleştirilir.
 
-Örneğin, iki cihazı bir IP adresiyle birleştirirseniz, her iki IP adresi de cihaz Özellikler penceresi ayrı arabirimler olarak görünür. Yalnızca yetkili cihazları birleştirebilirsiniz.
+Örneğin, her biri bir IP adresi olan iki cihazı birleştirirseniz, her iki IP adresi de cihaz Özellikler penceresi ayrı arabirimler olarak görünür. Yalnızca yetkili cihazları birleştirebilirsiniz.
 
 :::image type="content" source="media/how-to-work-with-maps/device-properties-v2.png" alt-text="Cihaz Özellikler penceresi":::
 
@@ -596,7 +599,7 @@ Bir cihaz birleştirme işlemini geri alamazsınız. Yanlışlıkla iki cihaz bi
 
 Cihazları birleştirmek için:
 
-1. İki cihaz seçin ve bunlardan birine sağ tıklayın.
+1. İki cihaz seçin (Shift tuşuna basın) ve sonra bunlardan birine sağ tıklayın.
 
 2. Cihazları birleştirmek için **Birleştir** ' i seçin. Birleştirme işleminin tamamlanması 2 dakikaya kadar sürebilir.
 
@@ -622,7 +625,7 @@ Bir cihazı haritada taşırsanız veya cihaz özelliklerini el ile değiştirir
 
 #### <a name="unauthorized-devices---attack-vectors-and-risk-assessment-reports"></a>Yetkisiz cihazlar-saldırı vektörleri ve risk değerlendirmesi raporları
 
-Yetkisiz cihazlar, risk değerlendirmesi raporlarına ve saldırı vektörleri raporlarına dahil edilir.
+Yetkisiz cihazlar, risk değerlendirmesi raporlarına ve saldırı vektörleri raporlarına dahildir.
 
 - **Saldırı vektörü raporları:** Yetkisiz olarak işaretlenen cihazlar, ağ için tehdit olabilecek yanlış bir cihaz olduğundan şüphelenildiği için saldırı vektörü içinde çözümlenir.
 

@@ -1,14 +1,14 @@
 ---
 title: Temsil edilen kaynakları ölçeklendirmeye göre izleme
 description: Azure Izleyici günlüklerini, yönettiğiniz müşteri kiracılarında ölçeklenebilir bir şekilde nasıl verimli bir şekilde kullanacağınızı öğrenin.
-ms.date: 01/07/2021
+ms.date: 02/01/2021
 ms.topic: how-to
-ms.openlocfilehash: 797a6159d310f85c35c7eb550f05ff152526b3e8
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: b214f63fba9a5d13aac0f4bf86ce0810f16f0c9c
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98131160"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99509478"
 ---
 # <a name="monitor-delegated-resources-at-scale"></a>Temsil edilen kaynakları ölçeklendirmeye göre izleme
 
@@ -49,7 +49,7 @@ Hangi ilkelerin dağıtılacağını belirledikten sonra, [bunları uygun ölçe
 
 Yönettiğiniz müşteri kiracılarında Temsilcili abonelikler için [Uyarı](../../azure-monitor/platform/alerts-overview.md) görüntüleyebilirsiniz.
 
-Uyarıları birden fazla müşteri genelinde otomatik olarak yenilemek IÇIN, uyarıları filtrelemek üzere bir [Azure Kaynak Grafiği](../../governance/resource-graph/overview.md) sorgusu kullanın. Sorguyu panonuza sabitleyebilir ve tüm uygun müşterileri ve abonelikleri seçebilirsiniz.
+Uyarıları birden fazla müşteri genelinde otomatik olarak yenilemek için, uyarıları filtrelemek üzere bir [Azure Kaynak Grafiği](../../governance/resource-graph/overview.md) sorgusu kullanın. Sorguyu panonuza sabitleyebilir ve tüm uygun müşterileri ve abonelikleri seçebilirsiniz.
 
 Aşağıdaki örnek sorgu önem derecesi 0 ve 1 uyarıları görüntüleyecektir, her 60 dakikada bir yenileme yapılır.
 

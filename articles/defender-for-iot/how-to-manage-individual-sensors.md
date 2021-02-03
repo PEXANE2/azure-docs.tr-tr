@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 1/12/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 16031c3d67b075e962c73fbb38ada36c7efeddad
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: b35851bae8db39392d10a302d5f1059ba3ace696
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98621223"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99508769"
 ---
 # <a name="manage-individual-sensors"></a>Algılayıcıları ayrı ayrı yönetme
 
@@ -282,7 +282,7 @@ CLı komutunu kullanırken:
 
 Aşağıdaki komutlarla sertifikalarınızı yönetin:
 
-| Description | CLı komutu |
+| Açıklama | CLı komutu |
 |--|--|
 | Yeni bir özel anahtar ve sertifika Imzalama Isteği oluştur | `openssl req -out CSR.csr -new -newkey rsa:2048 -nodes -keyout privateKey.key` |
 | Otomatik olarak imzalanan bir sertifika oluşturma | `openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -keyout privateKey.key -out certificate.crt` |
@@ -292,7 +292,7 @@ Aşağıdaki komutlarla sertifikalarınızı yönetin:
 
 Bir sertifika, CSR veya özel anahtar içindeki bilgileri denetlemeniz gerekiyorsa, bu komutları kullanın;
 
-| Description | CLı komutu |
+| Açıklama | CLı komutu |
 |--|--|
 | Sertifika Imzalama Isteği 'ni (CSR) denetleme | `openssl req -text -noout -verify -in CSR.csr` |
 | Özel anahtarı denetleme | `openssl rsa -in privateKey.key -check` |
@@ -300,13 +300,13 @@ Bir sertifika, CSR veya özel anahtar içindeki bilgileri denetlemeniz gerekiyor
 
 Özel anahtarın sertifikayla eşleşmemesi veya bir siteye yüklediğiniz bir sertifikanın güvenilir olmadığını belirten bir hata alırsanız, hatayı onarmak için bu komutları kullanın;
 
-| Description | CLı komutu |
+| Açıklama | CLı komutu |
 |--|--|
 | Bir CSR veya özel anahtardaki ile eşleştiğinden emin olmak için ortak anahtarın MD5 karmasını denetleyin | 1. `openssl x509 -noout -modulus -in certificate.crt | openssl md5` <br /> iki. `openssl rsa -noout -modulus -in privateKey.key | openssl md5` <br /> 03. `openssl req -noout -modulus -in CSR.csr | openssl md5 ` |
 
 Sertifikaları ve anahtarları, belirli sunucu türleri veya yazılımlar ile uyumlu hale getirmek üzere farklı biçimlere dönüştürmek için, bu komutları kullanın;
 
-| Description | CLı komutu |
+| Açıklama | CLı komutu |
 |--|--|
 | DER dosyasını (. CRT. cer. der) ped 'ye Dönüştür  | `openssl x509 -inform der -in certificate.cer -out certificate.pem`  |
 | PED dosyasını DER öğesine Dönüştür | `openssl x509 -outform der -in certificate.pem -out certificate.der`  |
@@ -367,9 +367,9 @@ Adı değiştirmek için:
 
 1. Algılayıcıyı **algılayıcı yönetimi** penceresinden silin.
 
-1. Yeni adla kaydolun.
+1. Yeni adla yeniden kaydolun.
 
-1. Yükleme ve yeni etkinleştirme dosyası.
+1. Yeni etkinleştirme dosyasını indirin.
 
 1. Sensörde oturum açın ve yeni etkinleştirme dosyasını karşıya yükleyin.
 
@@ -504,7 +504,7 @@ Konsol geri yükleme başarısızlıklarını görüntüler.
 
 Aşağıdaki yordamda, algılayıcı konsolunu kullanarak tek başına bir algılayıcıyı güncelleştirme işlemi açıklanmaktadır. Güncelleştirme işlemi yaklaşık 30 dakika sürer.
 
-1. [Azure portalına](https://portal.azure.com/) gidin.
+1. [Azure Portal](https://portal.azure.com/) gidin.
 
 2. IoT için Defender 'a gidin.
 

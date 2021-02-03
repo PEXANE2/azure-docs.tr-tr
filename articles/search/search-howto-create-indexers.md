@@ -8,14 +8,14 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/28/2021
-ms.openlocfilehash: ade5880a6b06f448df23eb77d81201a521f1d240
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: 5fc47599d09e5be60311dbda15868d87de4d91d2
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99430054"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99509393"
 ---
-# <a name="create-a-search-indexer"></a>Arama Dizin Oluşturucusu oluşturma
+# <a name="creating-indexers-in-azure-cognitive-search"></a>Azure Bilişsel Arama Dizin oluşturucular oluşturma
 
 Arama Dizin Oluşturucusu, bir dış veri kaynağından belge ve içerik aktarmaya yönelik otomatik bir iş akışını, arama hizmetinizde bir arama dizinine sağlar. Başlangıçta tasarlandığı gibi, bir Azure veri kaynağından metin ve meta verileri ayıklar, belgeleri JSON 'a serileştirir ve sonuç belgelerini dizin oluşturma için bir arama altyapısına geçirir. Bu, derin içerik işleme için [AI zenginleştirme](cognitive-search-concept-intro.md) desteği sağlamak üzere genişletilmiştir. 
 
@@ -99,7 +99,7 @@ Aşağıdaki ekran görüntüsünde bu özellikleri portalda nerede bulabileceğ
 
 ### <a name="use-a-rest-client"></a>REST istemcisi kullanma
 
-Hem Postman hem de Visual Studio Code (Azure Bilişsel Arama Uzantısı ile) Dizin Oluşturucu istemcisi olarak çalışabilir. İki aracı kullanarak, arama hizmetinize bağlanabilir ve Dizin oluşturucular ve diğer nesneler oluşturan istekler gönderebilirsiniz. Nesneleri oluşturmak için REST istemcilerini gösteren çok sayıda öğretici ve örnek vardır. 
+Hem Postman hem de Visual Studio Code (Azure Bilişsel Arama Uzantısı ile) Dizin Oluşturucu istemcisi olarak çalışabilir. İki aracı kullanarak, arama hizmetinize bağlanabilir ve [Dizin oluşturma (REST)](/rest/api/searchservice/create-indexer) istekleri gönderebilirsiniz. Nesneleri oluşturmak için REST istemcilerini gösteren çok sayıda öğretici ve örnek vardır. 
 
 Her istemci hakkında bilgi edinmek için şu makalelerden birini başlatın:
 
@@ -110,7 +110,7 @@ Dizin Oluşturucu isteklerini formüllemekte yardımcı olması için [Dizin Olu
 
 ### <a name="use-an-sdk"></a>SDK kullanma
 
-Bilişsel Arama için Azure SDK 'Ları, genel olarak kullanılabilen özellikleri uygular. Bu nedenle, Dizin oluşturucudan ilişkili nesneler oluşturmak için SDK 'Lardan herhangi birini kullanabilirsiniz. Tüm bunlar, becerileri dahil olmak üzere Dizin oluşturucular ve ilgili nesneler oluşturmak için yöntemler sağlayan bir **SearchIndexerClient** uygular.
+Bilişsel Arama için Azure SDK 'Ları, genel olarak kullanılabilen özellikleri uygular. Bu nedenle, Dizin oluşturucudan ilişkili nesneler oluşturmak için SDK 'Lardan herhangi birini kullanabilirsiniz. Hepsi, becerileri dahil olmak üzere Dizin oluşturucular ve ilgili nesneler oluşturma yöntemlerine sahip bir **SearchIndexerClient** sağlar.
 
 | Azure SDK | İstemci | Örnekler |
 |-----------|--------|----------|

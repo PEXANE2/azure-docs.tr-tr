@@ -8,14 +8,14 @@ ms.topic: conceptual
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 11/08/2020
+ms.date: 02/03/2021
 ms.custom: azure-synapse, sqldbrb=1
-ms.openlocfilehash: b09eb03994098f8cb68033f3c42309a77e15f91c
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: e96aa32c6b67290fc4b4ee62ae98c4e72399fd4b
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96621000"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99509596"
 ---
 # <a name="auditing-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL veritabanı ve Azure SYNAPSE Analytics için denetim
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -94,7 +94,7 @@ Aşağıdaki bölümde Azure portal kullanılarak denetim yapılandırması aç�
   > [!NOTE]
   > Duraklatılmış bir adanmış SQL havuzunda denetim etkinleştirilmesi mümkün değildir. Denetimi etkinleştirmek için adanmış SQL havuzunun duraklamasını kaldırın. [ADANMıŞ SQL havuzu](../..//synapse-analytics/sql/best-practices-sql-pool.md)hakkında daha fazla bilgi edinin.
 
-1. [Azure portalına](https://portal.azure.com) gidin.
+1. [Azure Portal](https://portal.azure.com) gidin.
 2. **SQL veritabanınızda** veya **SQL Server** bölmesindeki güvenlik başlığı altında bulunan **denetime** gidin.
 3. Sunucu denetim ilkesi ayarlamayı tercih ediyorsanız, veritabanı denetimi sayfasında **sunucu ayarlarını görüntüle** bağlantısını seçebilirsiniz. Daha sonra sunucu denetimi ayarlarını görüntüleyebilir veya değiştirebilirsiniz. Sunucu denetim ilkeleri, bu sunucudaki tüm mevcut ve yeni oluşturulan veritabanları için geçerlidir.
 
@@ -273,6 +273,11 @@ Ek filtreleme için WHERE yan tümcesi desteğiyle genişletilmiş ilke:
 - [Sunucu *genişletilmiş* Denetim İlkesi Oluştur veya güncelleştir](/rest/api/sql/server%20auditing%20settings/createorupdate)
 - [Veritabanı *genişletilmiş* denetim ilkesini al](/rest/api/sql/database%20extended%20auditing%20settings/get)
 - [Sunucu *genişletilmiş* denetim ilkesini al](/rest/api/sql/server%20auditing%20settings/get)
+
+### <a name="using-azure-cli"></a>Azure CLI’yı kullanma
+
+- [Sunucunun Denetim ilkesini yönetme](/cli/azure/sql/server/audit-policy?view=azure-cli-latest)
+- [Veritabanının denetim ilkesini yönetme](/cli/azure/sql/db/audit-policy?view=azure-cli-latest)
 
 ### <a name="using-azure-resource-manager-templates"></a>Azure Resource Manager şablonlarını kullanma
 

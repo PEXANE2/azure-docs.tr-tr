@@ -3,14 +3,14 @@ title: Uygun maliyetli düşük öncelikli VM 'Lerde iş yüklerini çalıştır
 description: Azure Batch iş yüklerinin maliyetini azaltmak için düşük öncelikli VM 'Ler sağlamayı öğrenin.
 author: mscurrell
 ms.topic: how-to
-ms.date: 09/08/2020
+ms.date: 02/02/2021
 ms.custom: seodec18
-ms.openlocfilehash: bd5b73cf55110985a2e7eecbc161c77ca6d645cb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9214ef83ec9b8bef4fb7bc7489aa0ab388f67c0d
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89568464"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99507291"
 ---
 # <a name="use-low-priority-vms-with-batch"></a>Batch ile düşük öncelikli VM’ler kullanma
 
@@ -18,78 +18,58 @@ Azure Batch, toplu iş yüklerinin maliyetini azaltmak için düşük öncelikli
 
 Düşük öncelikli VM 'Ler, Azure 'daki fazlalık kapasiteden yararlanır. Havuzlarınızda düşük öncelikli VM 'Ler belirttiğinizde Azure Batch bu fazlalığı kullanılabilir olduğunda kullanabilir.
 
-Düşük öncelikli VM 'Lerin kullanılması için zorunluluğunu getirir, bu VM 'Lerin her zaman ayrılamaz veya kullanılabilir kapasiteye bağlı olarak herhangi bir zamanda yok edilebilir hale gelebilir. Bu nedenle, düşük öncelikli VM 'Ler, belirli iş yükü türleri için en uygundur. İş tamamlama süresinin esnek olduğu ve çalışmanın birçok VM 'ye dağıtıldığı, toplu iş ve zaman uyumsuz işleme iş yükleri için düşük öncelikli VM 'Ler kullanın.
+Düşük öncelikli VM 'Lerin kullanılması için zorunluluğunu getirir, bu VM 'Lerin her zaman ayrılamaz veya kullanılabilir kapasiteye bağlı olarak herhangi bir zamanda yok edilebilir hale gelebilir. Bu nedenle, düşük öncelikli VM 'Ler, iş tamamlanma süresinin esnek olduğu ve çalışmanın birçok VM 'ye dağıtıldığı, toplu işlem ve zaman uyumsuz işleme iş yükleri için uygundur.
 
 Düşük öncelikli VM 'Ler, ayrılmış VM 'lerle karşılaştırıldığında önemli ölçüde azaltılan bir fiyatla sunulur. Fiyatlandırma ayrıntıları için bkz. [Batch fiyatlandırması](https://azure.microsoft.com/pricing/details/batch/).
 
 > [!NOTE]
 > Artık [tek örnekli VM 'ler](../virtual-machines/spot-vms.md) ve [VM Ölçek Kümeleri](../virtual-machine-scale-sets/use-spot.md)için [spot VM 'ler](https://azure.microsoft.com/pricing/spot/) kullanılabilir. Spot VM 'ler düşük öncelikli VM 'lerin bir gelişmesidir, ancak bu fiyatlandırmayla farklılık gösterebilir ve spot VM 'Ler ayrılırken isteğe bağlı bir en yüksek fiyat ayarlanabilir.
 >
-> Azure Batch havuzları, [toplu API 'lerin ve araçların](./batch-apis-tools.md)yeni sürümleriyle birlikte genel kullanıma sunulmakta olan birkaç ay Içinde spot VM 'leri desteklemeye başlar. Spot VM desteği kullanılabilir olduğunda, düşük öncelikli VM 'Ler kullanım dışı olacaktır, ancak sanal makinelere geçiş için yeterli zamana izin vermek üzere en az 12 ay boyunca geçerli API 'Ler ve araç sürümleri kullanılarak desteklenmeye devam edecektir. 
+> Azure Batch havuzları, [toplu API 'lerin ve araçların](./batch-apis-tools.md)yeni sürümleriyle birlikte genel kullanıma sunulmakta olan birkaç ay Içinde spot VM 'leri desteklemeye başlar. Spot VM desteği kullanılabilir olduğunda, düşük öncelikli VM 'Ler kullanım dışı olacaktır, ancak sanal makinelere geçiş için yeterli zamana izin vermek üzere en az 12 ay boyunca geçerli API 'Ler ve araç sürümleri kullanılarak desteklenmeye devam edecektir.
 >
 > [Bulut hizmeti yapılandırma](/rest/api/batchservice/pool/add#cloudserviceconfiguration) havuzları Için Spot VM 'ler desteklenmez. Spot VM 'Leri kullanmak için, bulut hizmeti havuzlarının [sanal makine yapılandırma](/rest/api/batchservice/pool/add#virtualmachineconfiguration) havuzlarına geçirilmesi gerekir.
-
-## <a name="use-cases-for-low-priority-vms"></a>Düşük öncelikli VM 'Ler için kullanım örnekleri
-
-Düşük öncelikli VM 'lerin özellikleri verilsin, hangi iş yükleri bunları kullanamaz? Genel olarak, işler birçok paralel göreve bölündüğü veya çok sayıda sanal makineye yayılmış ve dağıtılan çok sayıda iş olduğu için toplu işleme iş yükleri iyi bir uyum.
-
--   Azure 'da daha fazla kapasite kullanımını en üst düzeye çıkarmak için uygun işlerin ölçeğini değiştirebilirsiniz.
-
--   Kimi zaman VM 'Ler kullanılamayabilir veya geçersiz hale gelebilir, bu da işler için kapasiteyi düşürür ve görev kesintiye uğramasına ve yeniden yürütülmesine neden olabilir. Bu nedenle, işlerin çalıştırılacağı sürede esnek olması gerekir.
-
--   Daha uzun görevlere sahip işler, kesintiye uğradığında daha fazla etkilenebilir. Uzun süre çalışan görevler yürütülürken ilerlemeye işaret eden bir işaret uygular, kesintiye uğramadan etkisi azalır. Daha kısa bir yürütme süresi olan görevler düşük öncelikli VM 'Ler ile en iyi şekilde çalışır, çünkü kesintiye uğralanma etkisi oldukça düşüktür.
-
--   Birden çok VM kullanan uzun süre çalışan MPı işleri, düşük öncelikli VM 'Leri kullanmak için uygun değildir, çünkü bir geçersiz bir VM, her zaman yeniden çalıştırmak zorunda olmasına neden olabilir.
-
-Toplu işleme kullanım örneklerinin bazı örnekleri düşük öncelikli VM 'Leri kullanmak için uygundur:
-
--   **Geliştirme ve test**: özellikle büyük ölçekli çözümler geliştiriliyorsa, önemli tasarruflar gerçekleştirilebilir. Tüm test türleri avantaj sağlayabilir, ancak büyük ölçekli yük testi ve gerileme testi harika kullanımlardır.
-
--   **İsteğe bağlı kapasite**ekleme: düşük öncelikli sanal makineler, kullanılabilir olduğunda, iş miktarı ölçeklendirebilir ve bu nedenle daha hızlı maliyet için daha hızlı tamamlanır; kullanılabilir olmadığında, adanmış VM 'lerin taban çizgisi kullanılabilir kalır.
-
--   **Esnek iş yürütme süresi**: işlerin tamamlanmaları durumunda esneklik varsa, kapasite süresi toleranslı olabilir; Bununla birlikte, düşük öncelikli VM 'Lerin eklenmesi genellikle daha hızlı ve daha düşük bir maliyetle çalışır.
-
-Batch havuzları, iş yürütme süresi esnekliğine bağlı olarak birkaç şekilde düşük öncelikli VM 'Leri kullanacak şekilde yapılandırılabilir:
-
--   Düşük öncelikli VM 'Ler, yalnızca bir havuzda kullanılabilir. Bu durumda toplu Işlem, kullanılabilir olduğunda, tüm açık kapasiteyi kurtarır. Bu yapılandırma, yalnızca düşük öncelikli VM 'Ler kullanıldığı için işleri yürütmeye yönelik en uygun yoldur.
-
--   Düşük öncelikli VM 'Ler, ayrılmış VM 'lerin sabit bir taban çizgisiyle birlikte kullanılabilir. Ayrılmış VM 'lerin sabit sayısı, bir işin devam etmesini sağlamak için her zaman bir kapasite olmasını sağlar.
-
--   Uygun ve düşük öncelikli VM 'lerin dinamik karışımı olabilir, böylece, en düşük öncelikli VM 'Ler kullanılabilir olduğunda yalnızca kullanılır, ancak tam fiyatlı ayrılmış VM 'ler gerektiğinde ölçeği artırılır. Bu yapılandırma işlerin devam etmesini sağlamak için kullanılabilen minimum kapasite miktarını korur.
 
 ## <a name="batch-support-for-low-priority-vms"></a>Düşük öncelikli VM 'Ler için Batch desteği
 
 Azure Batch, düşük öncelikli VM 'Lerin kullanımını ve avantajlarından faydalanmayı kolaylaştıran çeşitli yetenekler sağlar:
 
--   Batch havuzları, hem adanmış VM 'ler hem de düşük öncelikli VM 'Ler içerebilir. Her bir sanal makine türünün sayısı, bir havuz oluşturulduğunda veya mevcut bir havuz için herhangi bir zamanda, açık yeniden boyutlandırma işlemi kullanılarak veya otomatik ölçeklendirmeli şekilde değiştirildiğinde belirtilebilir. İş ve görev gönderimi, havuzdaki VM türlerinden bağımsız olarak değişmeden kalabilir. Ayrıca, işleri mümkün olduğunca farklı bir şekilde çalıştırmak için düşük öncelikli VM 'Leri kullanmak için bir havuz yapılandırabilir, ancak işleri çalışır durumda tutmak için kapasite minimum eşiğin altına düşerse adanmış VM 'leri de çalıştırabilirsiniz.
-
--   Toplu iş havuzları, düşük öncelikli VM 'lerin hedef sayısını otomatik olarak arar. VM 'Ler önayarlanırsa, toplu Işlem kayıp kapasitesini değiştirmeye çalışır ve hedefe geri döner.
-
--   Görevler kesintiye uğradığında, Batch tarafından yeniden çalıştırılacak görevler algılanır ve otomatik olarak requeues.
-
--   Düşük öncelikli VM 'Ler, ayrılmış VM 'lerden farklı olan ayrı bir vCPU kotasına sahiptir. 
-    Düşük öncelikli VM 'lere yönelik kota, düşük öncelikli VM 'Lerin maliyeti daha düşük olduğundan adanmış VM 'lerin kotasından daha yüksektir. Daha fazla bilgi için bkz. [Batch hizmeti kotaları ve limitleri](batch-quota-limit.md#resource-quotas).    
+- Batch havuzları, hem adanmış VM 'ler hem de düşük öncelikli VM 'Ler içerebilir. Her bir sanal makine türünün sayısı, bir havuz oluşturulduğunda veya mevcut bir havuz için herhangi bir zamanda, açık yeniden boyutlandırma işlemi kullanılarak veya otomatik ölçeklendirmeli şekilde değiştirildiğinde belirtilebilir. İş ve görev gönderimi, havuzdaki VM türlerinden bağımsız olarak değişmeden kalabilir. Ayrıca, işleri mümkün olduğunca farklı bir şekilde çalıştırmak için düşük öncelikli VM 'Leri kullanmak için bir havuz yapılandırabilir, ancak işleri çalışır durumda tutmak için kapasite minimum eşiğin altına düşerse adanmış VM 'leri de çalıştırabilirsiniz.
+- Toplu iş havuzları, düşük öncelikli VM 'lerin hedef sayısını otomatik olarak arar. VM 'Ler devre dışı veya kullanılamaz durumdaysa, yığın kayıp kapasiteyi değiştirmeyi ve hedefe geri döndürmeyi dener.
+- Görevler kesintiye uğradığında, Batch tarafından yeniden çalıştırılacak görevler algılanır ve otomatik olarak requeues.
+- Düşük öncelikli VM 'Ler, ayrılmış VM 'lerden farklı olan ayrı bir vCPU kotasına sahiptir. Düşük öncelikli VM 'lere yönelik kota, düşük öncelikli VM 'Lerin maliyeti daha düşük olduğundan adanmış VM 'lerin kotasından daha yüksektir. Daha fazla bilgi için bkz. [Batch hizmeti kotaları ve limitleri](batch-quota-limit.md#resource-quotas).
 
 > [!NOTE]
 > Düşük öncelikli VM 'Ler, [Kullanıcı aboneliği modunda](accounts.md)oluşturulan Batch hesapları için şu anda desteklenmiyor.
 
-## <a name="create-and-update-pools"></a>Havuz oluşturma ve güncelleştirme
+## <a name="considerations-and-use-cases"></a>Hususlar ve kullanım örnekleri
+
+Çok sayıda Batch iş yükü düşük öncelikli VM 'Ler için uygun bir uygulamadır. İşleri birçok paralel göreve kesildiğinde veya çok sayıda sanal makineye yayılmış ve dağıtılan çok sayıda iş olduğunda kullanmayı düşünün.
+
+Toplu işleme kullanım örneklerinin bazı örnekleri düşük öncelikli VM 'Leri kullanmak için uygundur:
+
+- **Geliştirme ve test**: özellikle büyük ölçekli çözümler geliştiriliyorsa, önemli tasarruflar gerçekleştirilebilir. Tüm test türleri avantaj sağlayabilir, ancak büyük ölçekli yük testi ve gerileme testi harika kullanımlardır.
+- **İsteğe bağlı kapasite** ekleme: düşük öncelikli VM 'ler, normal adanmış VM 'leri desteklemek için kullanılabilir. Kullanılabilir olduğunda, işler ölçeklendirebilir ve bu nedenle daha düşük maliyetli daha hızlı tamamlanır; kullanılabilir olmadığında, adanmış VM 'lerin taban çizgisi kullanılabilir kalır.
+- **Esnek iş yürütme süresi**: işlerin tamamlanmaları durumunda esneklik varsa, kapasite süresi toleranslı olabilir; Bununla birlikte, düşük öncelikli VM 'Lerin eklenmesi genellikle daha hızlı ve daha düşük bir maliyetle çalışır.
+
+Toplu iş havuzları, düşük öncelikli VM 'Leri birkaç şekilde kullanacak şekilde yapılandırılabilir:
+
+- Bir havuz yalnızca düşük öncelikli VM 'Leri kullanabilir. Bu durumda toplu Işlem, kullanılabilir olduğunda, tüm açık kapasiteyi kurtarır. Bu yapılandırma işleri yürütme yöntemidir.
+- Düşük öncelikli VM 'Ler, ayrılmış VM 'lerin sabit bir taban çizgisiyle birlikte kullanılabilir. Ayrılmış VM 'lerin sabit sayısı, bir işin devam etmesini sağlamak için her zaman bir kapasite olmasını sağlar.
+- Bir havuz adanmış ve düşük öncelikli VM 'lerin dinamik bir karışımını kullanabilir, böylece, en düşük öncelikli VM 'Ler kullanılabilir olduğunda yalnızca kullanılır, ancak tam fiyatlı ayrılmış VM 'ler gerektiğinde ölçeği artırılır. Bu yapılandırma işlerin devam etmesini sağlamak için kullanılabilen minimum kapasite miktarını korur.
+
+Düşük öncelikli VM 'lerin kullanımını planlarken aşağıdakileri göz önünde bulundurun:
+
+- Azure 'da daha fazla kapasite kullanımını en üst düzeye çıkarmak için uygun işlerin ölçeğini değiştirebilirsiniz.
+- Kimi zaman VM 'Ler kullanılamayabilir veya geçersiz hale gelebilir, bu da işler için kapasiteyi düşürür ve görev kesintiye uğramasına ve yeniden yürütülmesine neden olabilir.
+- Daha kısa yürütme sürelerine sahip görevler, düşük öncelikli VM 'Ler ile en iyi şekilde çalışmaya eğilimlidir. Daha uzun görevlere sahip işler, kesintiye uğradığında daha fazla etkilenebilir. Uzun süre çalışan görevler yürütülürken ilerlemeye işaret eden denetim uygular, bu etki azalabilir. 
+- Birden çok VM kullanan uzun süre çalışan MPı işleri, düşük öncelikli VM 'Leri kullanmak için uygun değildir, çünkü bir geçersiz bir VM, her zaman yeniden çalıştırmak zorunda olmasına neden olabilir.
+- [Ağ güvenlik grubu (NSG) kuralları](batch-virtual-network.md#network-security-groups-specifying-subnet-level-rules) yanlış yapılandırılmışsa düşük öncelikli düğümler kullanılamaz olarak işaretlenebilir.
+
+## <a name="create-and-manage-pools-with-low-priority-vms"></a>Düşük öncelikli VM 'lerle havuzlar oluşturun ve yönetin
 
 Bir Batch havuzu hem adanmış hem de düşük öncelikli VM 'Leri içerebilir (işlem düğümleri olarak da adlandırılır). Hem ayrılmış hem de düşük öncelikli VM 'Ler için işlem düğümlerinin hedef sayısını ayarlayabilirsiniz. Hedef düğüm sayısı, havuzda olmasını istediğiniz sanal makinelerin sayısını belirtir.
 
-Örneğin, 5 ayrılmış VM ile Azure bulut hizmeti VM 'lerini ve 20 düşük öncelikli VM 'yi kullanarak bir havuz oluşturmak için:
-
-```csharp
-CloudPool pool = batchClient.PoolOperations.CreatePool(
-    poolId: "cspool",
-    targetDedicatedComputeNodes: 5,
-    targetLowPriorityComputeNodes: 20,
-    virtualMachineSize: "Standard_D2_v2",
-    cloudServiceConfiguration: new CloudServiceConfiguration(osFamily: "5") // WS 2016
-);
-```
-
-5 ayrılmış VM ve 20 düşük öncelikli VM 'nin hedefi olan Azure sanal makinelerini (Bu durumda Linux VM 'lerde) kullanarak bir havuz oluşturmak için:
+Örneğin, Azure sanal makinelerini kullanarak (Bu durumda Linux VM 'lerde) 5 ayrılmış VM ve 20 düşük öncelikli VM 'Ler içeren bir havuz oluşturmak için:
 
 ```csharp
 ImageReference imageRef = new ImageReference(
@@ -123,13 +103,21 @@ Havuz düğümlerinin, düğümün adanmış veya düşük öncelikli bir VM olu
 bool? isNodeDedicated = poolNode.IsDedicated;
 ```
 
-Sanal makine yapılandırma havuzları için, bir veya daha fazla düğüm önayarlandığında, havuzdaki bir liste düğümleri işlemi yine de bu düğümleri döndürür. Geçerli düşük öncelikli düğümlerin sayısı değişmeden kalır, ancak söz konusu **düğümlerin durumları, yok edilmiş duruma ayarlanır** . Toplu iş VM 'Leri bulmaya çalışır ve başarılı olursa düğümler, yeni düğümler gibi, görev yürütmesi için kullanılabilir hale gelmeden önce durumlar **oluşturarak** ve sonra da **başlatılıyor** .
+VM 'Ler zaman zaman değiştirilebilir. Bu durumda, önceden bırakılan düğüm VM 'lerinde çalışan görevler yeniden kuyruğa ve yeniden çalıştırılır.
 
-## <a name="scale-a-pool-containing-low-priority-vms"></a>Düşük öncelikli VM 'Ler içeren bir havuzu ölçeklendirme
+Sanal makine yapılandırma havuzları için Batch Ayrıca şunları da yapar:
+
+- Üzerinde olan VM 'Lerin durumları, yok edilmiş **olarak güncelleştirilir**. 
+- VM, sanal makinede yerel olarak depolanan verilerin kaybedilmesi için etkin şekilde silinir.
+- Havuzdaki bir liste düğümleri işlemi, yine de yok edilir düğümleri döndürür.
+- Havuz, kullanılabilir düşük öncelikli düğümlerin hedef sayısına sürekli ulaşmaya çalışır. Değiştirme kapasitesi bulunduğunda düğümler kimliklerini tutar, ancak görev zamanlama için kullanılabilir olmadan **önce durumlar** **oluşturularak** başlatılır.
+- Önalım sayıları Azure portal bir ölçüm olarak kullanılabilir.
+
+## <a name="scale-pools-containing-low-priority-vms"></a>Düşük öncelikli VM 'Ler içeren ölçek havuzları
 
 Yalnızca ayrılmış VM 'lerden oluşan havuzlarda olduğu gibi, yeniden boyutlandırma yöntemini çağırarak veya otomatik ölçeklendirme kullanarak düşük öncelikli VM 'Ler içeren bir havuzu ölçeklendirmek mümkündür.
 
-Havuz yeniden boyutlandırma işlemi, **Targetlowprioritynodes**değerini güncelleştiren ikinci bir isteğe bağlı parametre alır:
+Havuz yeniden boyutlandırma işlemi, **Targetlowprioritynodes** değerini güncelleştiren ikinci bir isteğe bağlı parametre alır:
 
 ```csharp
 pool.Resize(targetDedicatedComputeNodes: 0, targetLowPriorityComputeNodes: 25);
@@ -137,34 +125,18 @@ pool.Resize(targetDedicatedComputeNodes: 0, targetLowPriorityComputeNodes: 25);
 
 Havuz otomatik ölçeklendirme formülü, düşük öncelikli VM 'Leri aşağıdaki gibi destekler:
 
--   **$TargetLowPriorityNodes**hizmet tanımlı değişkenin değerini alabilir veya ayarlayabilirsiniz.
+- **$TargetLowPriorityNodes** hizmet tanımlı değişkenin değerini alabilir veya ayarlayabilirsiniz.
+- **$CurrentLowPriorityNodes** hizmet tanımlı değişkenin değerini alabilirsiniz.
+- **$PreemptedNodeCount** hizmet tanımlı değişkenin değerini alabilirsiniz. Bu değişken, yok edilen durumdaki düğüm sayısını döndürür ve kullanılmayan düğüm sayısına bağlı olarak, ayrılmış düğümlerin sayısını büyütme veya azaltma olanağı sağlar.
 
--   **$CurrentLowPriorityNodes**hizmet tanımlı değişkenin değerini alabilirsiniz.
+## <a name="configure-jobs-and-tasks"></a>İşleri ve görevleri yapılandırma
 
--   **$PreemptedNodeCount**hizmet tanımlı değişkenin değerini alabilirsiniz. 
-    Bu değişken, yok edilen durumdaki düğüm sayısını döndürür ve kullanılmayan düğüm sayısına bağlı olarak, ayrılmış düğümlerin sayısını büyütme veya azaltma olanağı sağlar.
+İşler ve görevler düşük öncelikli düğümler için çok daha fazla yapılandırma gerektirir. Aşağıdakileri göz önünde bulundurun:
 
-## <a name="jobs-and-tasks"></a>İşler ve görevler
+- Bir işin JobManagerTask özelliği bir **Allowlowprioritynode** özelliğine sahiptir. Bu özellik true olduğunda, İş Yöneticisi görevi adanmış veya düşük öncelikli bir düğümde zamanlanabilir. Yanlış ise, İş Yöneticisi görevi yalnızca ayrılmış bir düğüm için zamanlanır.
+- AZ_BATCH_NODE_IS_DEDICATED [ortam değişkeni](batch-compute-node-environment-variables.md) , bir görev uygulaması tarafından, düşük öncelikli veya ayrılmış bir düğümde çalışıp çalışmadığını belirleyebilmesi için kullanılabilir.
 
-İşler ve görevler düşük öncelikli düğümler için çok daha fazla yapılandırma gerektirir; tek destek aşağıdaki gibidir:
-
--   Bir işin JobManagerTask özelliği, **Allowlowprioritynode**adlı yeni bir özelliğe sahiptir. 
-    Bu özellik true olduğunda, İş Yöneticisi görevi adanmış veya düşük öncelikli bir düğümde zamanlanabilir. Bu özellik false ise, İş Yöneticisi görevi yalnızca ayrılmış bir düğüm için zamanlanır.
-
--   Bir [ortam değişkeni](batch-compute-node-environment-variables.md) , bir görev uygulaması tarafından, düşük öncelikli veya ayrılmış bir düğümde çalışıp çalışmadığını belirleyebilmesi için kullanılabilir. Ortam değişkeni AZ_BATCH_NODE_IS_DEDICATED.
-
-## <a name="handling-preemption"></a>Önalım işleme
-
-VM 'Ler zaman zaman değiştirilebilir. Bu durumda, önceden bırakılan düğüm VM 'lerinde çalışan görevler yeniden kuyruğa ve yeniden çalıştırılır.
-
-Sanal makine yapılandırma havuzları için Batch Ayrıca şunları da yapar:
-
--   Üzerinde olan VM 'Lerin durumları, yok edilmiş **olarak güncelleştirilir**.
--   VM, sanal makinede yerel olarak depolanan verilerin kaybedilmesi için etkin şekilde silinir.
--   Havuz, kullanılabilir düşük öncelikli düğümlerin hedef sayısına sürekli ulaşmaya çalışır. Değiştirme kapasitesi bulunduğunda düğümler kimliklerini tutar, ancak görev zamanlama için kullanılabilir olmadan **önce durumlar** **oluşturularak** başlatılır.
--   Önalım sayıları Azure portal bir ölçüm olarak kullanılabilir.
-
-## <a name="metrics"></a>Ölçümler
+## <a name="view-metrics-for-low-priority-vms"></a>Düşük öncelikli VM 'Ler için ölçümleri görüntüleme
 
 Yeni ölçümler, düşük öncelikli düğümler için [Azure Portal](https://portal.azure.com) kullanılabilir. Bu ölçümler şunlardır:
 
@@ -172,16 +144,14 @@ Yeni ölçümler, düşük öncelikli düğümler için [Azure Portal](https://p
 - Low-Priority çekirdek sayısı
 - Önden düğüm sayısı
 
-Azure portal ölçümleri görüntülemek için:
+Azure portal bu ölçümleri görüntülemek için
 
-1. Portalda Batch hesabınıza gidin ve Batch hesabınızın ayarlarını görüntüleyin.
+1. Azure portalında Batch hesabınıza gidin.
 2. **İzleme** bölümünden **ölçümler** ' i seçin.
-3. **Kullanılabilir ölçümler** listesinden istediğiniz ölçümleri seçin.
-
-![Düşük öncelikli düğümler için ölçüm seçimini gösteren ekran görüntüsü.](media/batch-low-pri-vms/low-pri-metrics.png)
+3. **Ölçüm** listesinden istediğiniz ölçümleri seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Batch hizmeti iş akışı ve](batch-service-workflow-features.md) havuzlar, düğümler, işler ve görevler gibi birincil kaynaklar hakkında bilgi edinin.
 - Batch çözümleri oluşturmak için kullanılabilen [Batch API’leri ve araçları](batch-apis-tools.md) hakkında bilgi alın.
-- Düşük öncelikli VM 'lerden sanal makinelere kadar geçiş yapmak için başlatın. **Bulut hizmeti yapılandırma** havuzlarıyla düşük öncelikli VM 'ler kullanıyorsanız, **sanal makine yapılandırma** havuzlarına taşımayı planlayın.
+- Düşük öncelikli VM 'lerden sanal makinelere kadar geçiş yapmak için başlatın. **Bulut hizmeti yapılandırma** havuzlarıyla düşük öncelikli VM 'ler kullanıyorsanız bunun yerine [ **sanal makine yapılandırma** havuzlarına](nodes-and-pools.md#configurations) geçiş yapın.

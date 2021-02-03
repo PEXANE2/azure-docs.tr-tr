@@ -6,12 +6,12 @@ ms.author: bahusse
 ms.service: mysql
 ms.topic: how-to
 ms.date: 1/28/2021
-ms.openlocfilehash: 62faaed3672f721b26587d1bca3ddb0947f733e7
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: ea2dc877c7bc6db387985e7b5cd1153e195ab4f1
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99220845"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99509579"
 ---
 # <a name="major-version-upgrade-in-azure-database-for-mysql-single-server"></a>MySQL için Azure veritabanı tek sunucu 'da ana sürüm yükseltmesi
 
@@ -121,15 +121,7 @@ Bu özelliğin GA 'i MySQL v 5.6 kullanımdan kaldırmadan önce planlanmaktadı
 
 ### <a name="will-this-cause-downtime-of-the-server-and-if-so-how-long"></a>Bu, sunucu kapalı kalma süresine neden olur, ne kadar süreyle?
 
-Evet, yükseltme işlemi sırasında sunucu kullanılamıyor olacaktır, bu sayede planlı bakım pencerenizde bu işlemi gerçekleştirmenizi öneririz. Tahmini kapalı kalma süresi, veritabanı boyutuna, sağlanan depolama boyutuna (IOPS 'nin sağlandığı) ve veritabanındaki tablo sayısına bağlıdır. Yükseltme süresi, sunucudaki tablo sayısıyla doğrudan orantılıdır. Temel SKU sunucularının yükseltmeleri, standart depolama platformunda olduğu için daha uzun sürme beklenmektedir. Sunucu ortamınız için kapalı kalma süresini tahmin etmek için, önce sunucunun geri yüklenen kopyasında yükseltmeyi gerçekleştirmenizi öneririz.  
-
-### <a name="it-is-noted-that-it-is-not-supported-on-replica-server-yet-what-does-that-mean-concrete"></a>Henüz Çoğaltma sunucusunda desteklenmediğini not edin. Bu durum somut anlamı nedir?
-
-Şu anda, birincil sürüm yükseltmesi çoğaltma sunucusu için desteklenmez. Bu, Çoğaltma sunucusunda (kaynak veya çoğaltma sunucusu) yer alan sunucular için çalıştırılmamalısınız. Yükseltme özelliği için çoğaltma desteğini eklemeden önce çoğaltmaya dahil olan sunucuların yükseltmesini test etmek isterseniz, aşağıdaki adımları öneriyoruz:
-
-1. Planlı bakım sırasında, ad ve tüm yapılandırma bilgileri (kaynak sunucudan farklıysa sunucu parametre yapılandırması) yakalandıktan sonra [çoğaltmayı durdurun ve çoğaltma sunucusunu silin](howto-read-replicas-portal.md) .
-2. Kaynak sunucunun yükseltmesini gerçekleştirin.
-3. Adım 1 ' de yakalanan aynı ad ve yapılandırma ayarlarına sahip yeni bir okuma çoğaltması sunucusu sağlayın. Kaynak sunucu v 5.7 sürümüne yükseltildikten sonra yeni çoğaltma sunucusu v 5.7 'de otomatik olarak olacaktır.
+Evet, yükseltme işlemi sırasında sunucu kullanılamıyor olacaktır, bu sayede planlı bakım pencerenizde bu işlemi gerçekleştirmenizi öneririz. Tahmini kapalı kalma süresi, veritabanı boyutuna, sağlanan depolama boyutuna (IOPS 'nin sağlandığı) ve veritabanındaki tablo sayısına bağlıdır. Yükseltme süresi, sunucudaki tablo sayısıyla doğrudan orantılıdır. Temel SKU sunucularının yükseltmeleri, standart depolama platformunda olduğu için daha uzun sürme beklenmektedir. Sunucu ortamınız için kapalı kalma süresini tahmin etmek için, önce sunucunun geri yüklenen kopyasında yükseltmeyi gerçekleştirmenizi öneririz. [Okuma çoğaltması kullanarak mysql 5,6 ' den mysql 5,7 ' e en düşük kapalı kalma sürümü yükseltmesi](#perform-minimal-downtime-major-version-upgrade-from-mysql-56-to-mysql-57-using-read-replicas) yapmayı düşünün.
 
 ### <a name="what-will-happen-if-we-do-not-choose-to-upgrade-our-mysql-v56-server-before-february-5-2021"></a>MySQL v 5.6 sunucusunu 5 Şubat 2021 tarihinden önce yükseltmeyi seçemiz olduğunda ne olur?
 

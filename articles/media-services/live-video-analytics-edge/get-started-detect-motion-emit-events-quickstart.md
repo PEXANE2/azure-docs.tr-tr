@@ -3,12 +3,12 @@ title: IoT Edge Azure 'da canlı video analiziyle çalışmaya başlama
 description: Bu hızlı başlangıçta IoT Edge 'da canlı video analiziyle çalışmaya başlama gösterilmektedir. Canlı video akışında hareket algılamayı öğrenin.
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: fde82dde7df3fa9756c145940178f35ed255ce37
-ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
+ms.openlocfilehash: 93eb2ab4df77afd3c2a55a04db2d39591a46e726
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98986556"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99507797"
 ---
 # <a name="quickstart-get-started---live-video-analytics-on-iot-edge"></a>Hızlı başlangıç: IoT Edge kullanmaya başlama-canlı video analizi
 
@@ -48,6 +48,8 @@ Bu öğreticide aşağıdaki Azure kaynakları gereklidir:
 Bu hızlı başlangıç için, Azure aboneliğinizde gerekli kaynakları dağıtmak üzere [canlı video analizi kaynakları kurulum betiğini](https://github.com/Azure/live-video-analytics/tree/master/edge/setup) kullanmanızı öneririz. Bunu yapmak için aşağıdaki adımları izleyin:
 
 1. [Azure Portal](https://portal.azure.com) gidin ve Cloud Shell simgesini seçin.
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/quickstarts/cloud-shell.png" alt-text="Cloud Shell":::
 1. İlk kez Cloud Shell kullanıyorsanız, bir depolama hesabı ve bir Microsoft Azure dosya paylaşımının oluşturulması için bir abonelik seçmeniz istenir. Cloud Shell oturum bilgileriniz için bir depolama hesabı oluşturmak üzere **depolama oluştur** ' u seçin. Bu depolama hesabı, komut dosyasının Azure Media Services hesabınızla kullanılmak üzere oluşturulacağı hesaptan farklıdır.
 1. Cloud Shell penceresinin sol tarafındaki açılan menüde, ortamınız olarak **Bash** ' i seçin.
 
@@ -76,10 +78,10 @@ Bu hızlı başlangıç için, Azure aboneliğinizde gerekli kaynakları dağıt
 Betik çıktısında, kaynak tablosu IoT Hub adını listeler. Kaynak türünü bulun **`Microsoft.Devices/IotHubs`** ve adı aklınızda yazın. Sonraki adımda bu ada ihtiyacınız olacaktır.  
 
 > [!NOTE]
-> Betik Ayrıca **_~/CloudDrive/LVA-Sample/_* _ dizininde birkaç yapılandırma dosyası oluşturur. Bu dosyalar hızlı başlangıçta daha sonra gerekecektir.
+> Betik, ***~/CloudDrive/LVA-Sample/*** dizininde birkaç yapılandırma dosyası da oluşturur. Bu dosyalar hızlı başlangıçta daha sonra gerekecektir.
 
 > [!TIP]
-> Oluşturulan Azure kaynaklarıyla ilgili sorunlar yaşıyorsanız, bazı sık karşılaşılan sorunları çözmek için lütfen _ *[sorun giderme kılavuzumuzu](troubleshoot-how-to.md#common-error-resolutions)* görüntüleyin.
+> Oluşturulan Azure kaynaklarıyla ilgili sorunlar yaşıyorsanız, bazı sık karşılaşılan sorunları çözmek için lütfen **[sorun giderme kılavuzumuzu](troubleshoot-how-to.md#common-error-resolutions)** görüntüleyin.
 
 ## <a name="deploy-modules-on-your-edge-device"></a>Sınır cihazınızda modüller dağıtma
 

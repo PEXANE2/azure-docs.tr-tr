@@ -3,12 +3,12 @@ title: Kavramlar-ağ bağlantısı
 description: Azure VMware çözümünde önemli yönleri ve ağ ve bağlantı durumlarını kullanma hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: eb701a7fca2be08d70e603734b9c4d8e266959cd
-ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
+ms.openlocfilehash: 49261f34f879c68f21b57f9256a58a9b0a44d637
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99475429"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99509291"
 ---
 # <a name="azure-vmware-solution-networking-and-interconnectivity-concepts"></a>Azure VMware Çözüm ağı ve karşılıklı bağlantı kavramları
 
@@ -59,10 +59,11 @@ Aşağıdaki diyagramda, şirket içi ile özel bulut bağlantısı, aşağıdak
 
 ## <a name="next-steps"></a>Sonraki adımlar 
 
-Bu ağ ve karşılıklı bağlantı kavramlarını kapsadığınıza göre, şunları öğrenmek isteyebilirsiniz:
+Azure VMware Çözüm ağı ve ınterbağlantı kavramlarını kapsadığınıza göre, şunları öğrenmek isteyebilirsiniz:
 
 - [Azure VMware Çözüm depolama kavramları](concepts-storage.md).
-- [Azure VMware Çözüm kimliği kavramları](concepts-identity.md)
+- [Azure VMware Çözüm kimliği kavramları](concepts-identity.md).
+- [Azure VMware Çözüm kaynağını etkinleştirme](enable-azure-vmware-solution.md).
 
 <!-- LINKS - external -->
 [enable Global Reach]: ../expressroute/expressroute-howto-set-global-reach.md

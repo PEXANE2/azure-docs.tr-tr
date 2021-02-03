@@ -5,12 +5,12 @@ keywords: Hadoop yüksek kullanılabilirlik
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/08/2020
-ms.openlocfilehash: 0616694d05e3fc9d2255ad97647ebe3bce545a93
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 6b995e2ab5ba663f6e33b009062859eb32928cc1
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98945367"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99508600"
 ---
 # <a name="azure-hdinsight-highly-available-solution-architecture-case-study"></a>Azure HDInsight yüksek oranda kullanılabilir çözüm mimarisi örnek olay incelemesi
 
@@ -71,7 +71,7 @@ Aşağıdaki görüntüde contoso perakende yüksek kullanılabilirlik olağanü
 
 **Hive ve Spark,** normal saatlerde [etkin birincil – isteğe bağlı ikincil](hdinsight-business-continuity-architecture.md#apache-spark) çoğaltma modelleri kullanır. Hive çoğaltma işlemi düzenli aralıklarla çalışır ve Hive Azure SQL meta veri deposu ve Hive depolama hesabı çoğaltmasını eşlik eden bir işlemdir. Spark Storage hesabı, ADF DistCP kullanılarak düzenli aralıklarla çoğaltılır. Bu kümelerin geçici doğası maliyetleri iyileştirmenize yardımcı olur. Çoğaltmalar, beş saatlik gereksinimin içinde iyi bir RPO 'ya ulaşmak için her 4 saatte bir zamanlanır.
 
-**HBase** çoğaltma, verilerin bölgeden bağımsız olarak her zaman sunulmasını sağlamak için [öncü – izleyici](hdinsight-business-continuity-architecture.md#apache-hbase) modelini normal zamanlarda kullanır ve RPO sıfır olur.
+**HBase** çoğaltma, verilerin bölgeden bağımsız olarak her zaman sunulmasını sağlamak için [öncü – izleyici](hdinsight-business-continuity-architecture.md#apache-hbase) modelini normal zamanlarda kullanır ve RPO çok düşüktür.
 
 Birincil bölgede bölgesel bir hata varsa, Web sayfası ve arka uç içeriği, bir miktar derecesi ile 5 saat boyunca ikincil bölgeden sunulur. Azure hizmet durumu panosu, beş saatlik pencerede bir kurtarma ETA belirtmezse, contoso perakende, ikincil bölgede Hive ve Spark dönüştürme katmanını oluşturur ve ardından tüm yukarı akış veri kaynaklarını ikincil bölgeye işaret eder. İkincil bölgenin yazılabilir olması, çoğaltmayı birincil olarak geri çalıştıran bir yeniden çalışma işlemine neden olur.
 

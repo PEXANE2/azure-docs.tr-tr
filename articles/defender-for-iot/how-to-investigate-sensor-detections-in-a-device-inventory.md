@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/06/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 9c868685ad943c1ab9ab263a164111e46294c042
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: c15dc62cad796f5f74f2316d148e217052dc9678
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98625440"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99508871"
 ---
 # <a name="investigate-sensor-detections-in-a-device-inventory"></a>Bir cihaz envanterinde algılayıcı algılamalarını araştırma
 
@@ -32,18 +32,18 @@ Aşağıdaki öznitelikler cihaz envanter tablosunda görünür.
 
 | Parametre | Açıklama |
 |--|--|
-| Ad | Algılayıcı tarafından keşfedilen cihaz adı. |
-| Tür | Cihaz türü. |
+| Ad | Algılayıcısı bulduğu veya Kullanıcı tarafından girildiği haliyle cihazın adı. |
+| Tür | Algılayıcı tarafından belirlendiği veya Kullanıcı tarafından girilen cihaz türü. |
 | Satıcı | MAC adresinde tanımlandığı şekilde cihazın satıcısının adı. |
-| Operating System | Cihazın işletim sistemi. |
-| Üretici yazılımı | Cihazın üretici yazılımı. |
-| IP Adresi | Cihazın IP adresi. |
+| Operating System | Algılanan cihaz işletim sistemi. |
+| Üretici yazılımı sürümü | Algılanan cihaz üretici yazılımı. |
+| IP Adresi | Tanımlanan cihazın IP adresi. |
 | VLAN | Cihazın VLAN 'ı. VLAN 'Ları bulma algılayıcısı hakkında daha fazla bilgi için bkz. [VLAN adlarını tanımlama](how-to-manage-the-on-premises-management-console.md#define-vlan-names). (nasıl yapılır-tanımlama-yönetim-konsol-ağ-ayarları. MD # define-VLAN-Names). |
 | MAC Adresi | Cihazın MAC adresi. |
 | Protokoller | Cihazın kullandığı protokoller. |
 | Kabul edilmemiş uyarılar | Bu cihazla ilişkili kabul edilmemiş uyarı sayısı. |
 | Yetkilendirildi | Kullanıcı tarafından tanımlanan yetkilendirme durumu:<br />- **Doğru**: cihaz yetkilendirildi.<br />- **Yanlış**: cihaz yetkilendirilmedi. |
-| Tarayıcı olarak bilinir | Kullanıcı tarafından tarama cihazı olarak tanımlanır. |
+| Tarayıcı olarak bilinir | Kullanıcı tarafından bir ağ tarama cihazı olarak tanımlanır. |
 | Programlama aygıtı | Kullanıcı tarafından yetkilendirilmiş bir programlama cihazı olarak tanımlanır. <br />- **Doğru**: cihaz, mühendislik istasyonlarıyla Ilgili olan PLCs, DTU 'lar ve denetleyiciler için programlama etkinlikleri gerçekleştirir. <br />- **Yanlış**: cihaz bir programlama aygıtı değildir. |
 | Gruplar | Bu cihazın katıldığı gruplar. |
 | Son etkinlik | Cihazın gerçekleştirdiği son etkinlik. |
@@ -111,7 +111,7 @@ Harita görünümüne geçtiğinizde filtrelenmiş cihazlar vurgulanır ve filtr
 
 ## <a name="learn-windows-registry-details"></a>Windows kayıt defteri ayrıntılarını öğrenin
 
-Cihazların öğrenimine ek olarak, Microsoft Windows iş istasyonları ve sunucuları dahil BT cihazlarını bulabilirsiniz. Bu cihazlar Ayrıca cihaz envanterinde de görüntülenir. Cihazları öğrendikten sonra, cihaz envanterini ayrıntılı Windows bilgileriyle zenginleştirebilirsiniz, örneğin:
+Cihazların öğrenimine ek olarak, Microsoft Windows iş istasyonlarını ve sunucularını bulabilirsiniz. Bu cihazlar Ayrıca cihaz envanterinde de görüntülenir. Cihazları öğrendikten sonra, cihaz envanterini ayrıntılı Windows bilgileriyle zenginleştirebilirsiniz, örneğin:
 
 - Windows sürümü yüklendi
 
@@ -217,7 +217,7 @@ Dosya adlarını güncelleştirmeyin.
 
 ## <a name="export-device-inventory-information"></a>Cihaz envanter bilgilerini dışarı aktar
 
-Cihaz envanter bilgilerini bir Excel dosyasına dışarı aktarabilirsiniz. İçeri aktarılan bilgiler geçerli bilgilerin üzerine yazar.
+Cihaz envanter bilgilerini bir Excel dosyasına dışarı aktarabilirsiniz.
 
 Bir CSV dosyasını dışarı aktarmak için:
 

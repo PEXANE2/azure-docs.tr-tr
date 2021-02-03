@@ -7,12 +7,12 @@ ms.topic: article
 author: parthpandyaMSFT
 ms.author: parthp
 ms.date: 11/19/2020
-ms.openlocfilehash: 2d58ed26a4d2c03c8d0261426a410fcb11c09ee5
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.openlocfilehash: ce9927a66da64d64e83f10e3dfd906005635e5ed
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99063054"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99507545"
 ---
 # <a name="microsoft-business-applications-independent-software-vendor-isv-connect-program-onboarding-guide"></a>Microsoft Business Applications Bağımsız Yazılım Satıcısı (ISV) Connect Programı katılım kılavuzu
 
@@ -79,6 +79,6 @@ Hesabınız hakkında yardım almak için hesap yöneticinize danışın veya [M
 
 - [ISV 'ler için Business Applications](https://partner.microsoft.com/solutions/business-applications/isv-overview) (çevrimiçi makale)
 - [Business Applications ISV 'ler Için yeni programa genel bakış](https://aka.ms/BizAppsISVProgram) (PDF)
+- [BUSINESS APPLICATIONS ISV Connect program hakkında SSS](https://assetsprod.microsoft.com/faq-using-partner-center-isv-connect.pdf) (PDF)
 - [Business Applications ISV 'ler Için yaklaşan program](https://cloudblogs.microsoft.com/dynamics365/bdm/2019/04/17/upcoming-program-for-business-applications-isvs/) (blog gönderisi)
 - [ISV Connect program ilkeleri](https://aka.ms/bizappsisvpolicies) (PDF)
-<!-- - [Business Applications ISV Connect Program FAQ](https://assetsprod.microsoft.com/business-applications-partner-faq.pdf) (PDF) AWAITING NEW LINK; MAKE 3rd BULLET-->

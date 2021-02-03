@@ -176,6 +176,8 @@
               href: azure-stack-edge-gpu-deploy-sample-module.md
             - name: Market aracılığıyla GPU modülü
               href: azure-stack-edge-gpu-deploy-sample-module-marketplace.md
+            - name: Azure portal aracılığıyla modül
+              href: azure-stack-edge-gpu-deploy-compute-module-simple.md
         - name: Kubernetes iş yüklerini dağıtma
           items:
             - name: kubectl yoluyla

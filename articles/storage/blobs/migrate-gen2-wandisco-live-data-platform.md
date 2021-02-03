@@ -5,16 +5,16 @@ author: normesta
 ms.topic: how-to
 ms.author: normesta
 ms.reviewer: b-pauls
-ms.date: 11/06/2020
+ms.date: 11/17/2020
 ms.service: storage
 ms.custom: references_regions
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: db95f22a17c3776d84f12249693fb23b3d2d94e6
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: a0d02530ba2b8758b467b77ff639437675e4cc81
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95914448"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99508938"
 ---
 # <a name="meet-demanding-migration-requirements-with-wandisco-livedata-platform-for-azure-preview"></a>Azure için WANdisco LiveData platform ile yoğun geçiş gereksinimlerini karşılayın (Önizleme)
 
@@ -34,7 +34,9 @@ Her iki hizmeti de Azure portal ve Azure CLı 'yi kullanarak yönetebilir ve her
 
 ## <a name="key-features-of-wandisco-livedata-platform-for-azure"></a>Azure için WANdisco LiveData platformunun temel özellikleri
 
-[Azure Için WANdisco LiveData platformu](https://docs.wandisco.com/live-data-platform/docs/landing/) , veri tutarlılığı elde etmek ve veriler çoğaltma altındaki verileri değiştirmeye devam edebildiği sırada veri çoğaltma yapmak için benzersiz, geniş ölçekli bir ağ uyumlu uyumluluk altyapısı kullanır.  
+[Azure Için WANdisco LiveData platformu](https://docs.wandisco.com/live-data-platform/docs/landing/) , veri tutarlılığı elde etmek ve veriler çoğaltma altındaki verileri değiştirmeye devam edebildiği sırada veri çoğaltma yapmak için benzersiz, geniş ölçekli bir ağ uyumlu uyumluluk altyapısı kullanır. <br><br>
+
+>[!VIDEO https://www.youtube.com/embed/KRrmcYPxEho] 
 
 Platformun temel özellikleri şunları içerir:
 
@@ -86,7 +88,9 @@ Azure CLı ve Azure portal dahil olmak üzere standart Azure araçları aracıl�
 İlk geçişten sonra verilerinizi Azure için LiveData düzlemi ile şirket içi Hadoop kümelerinde ve Azure depolama alanı genelinde tutarlı tutun:
 
 1. Azure portal başlayarak şirket içi ve Azure 'da Azure için LiveData düzlemi sağlayın. Uygulama değişikliği gerekli değildir.
+
 2. Tutarlı tutmak istediğiniz veri konumlarını kapsayan çoğaltma kurallarını yapılandırın, örneğin: `/user/contoso/sales/region/WA` .
+
 3. Her iki konumdaki verileri, gerek duyduğunuz bir Hadoop uyumlu dosya sistemi olarak erişen ve değiştiren uygulamalar çalıştırın.
 
 Azure için LiveData düzlemi, küme işleminin veya uygulama performansının önemli bir yükünü ortadan kaldırmadan verilerinizin tutarlılığını korur. Tüm değişiklikler tutarlı bir şekilde çoğaltılırsa verileri değiştirin veya alın.

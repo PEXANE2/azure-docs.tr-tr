@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/12/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: d113805322bd45584987460d57ad6bdba241ec10
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: cac8d609272be1d9f34b7e0d6404e0a0ea524df7
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97842831"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99509040"
 ---
 # <a name="work-with-device-notifications"></a>Cihaz bildirimleri ile çalışma
 
@@ -60,17 +60,17 @@ Aşağıdaki tabloda, aldığınız bildirim olay türleri ve bunları işleme s
 
 | Bildirim olayı türleri | Açıklama | Yanıtlar |
 |--|--|--|
-| Yeni IP adresleri | Yeni bir IP adresi cihazla ilişkili. Beş senaryo algılanmayabilir: <br /><br /> Bir cihazla ek bir IP adresi ilişkilendirildi. Bu cihaz, var olan bir MAC adresiyle de ilişkilendirilir.<br /><br /> Var olan bir MAC adresini kullanan bir cihaz için yeni bir IP adresi algılandı. Şu anda cihaz bir IP adresi kullanarak iletişim kurmamaktadır.<br /> <br /> NetBIOS adı kullanan bir cihaz için yeni bir IP adresi algılandı. <br /><br /> Bir MAC adresiyle ilişkili bir cihaz için yönetim arabirimi olarak bir IP adresi algılandı. <br /><br /> Sanal IP adresi kullanan bir cihaz için yeni bir IP adresi algılandı. | **Cihaza ek IP ayarlama** (cihazları birleştirme) <br /> <br />**Mevcut IP 'yi Değiştir** <br /> <br /> **At**<br /> Bildirimi kaldırın. |
+| Yeni IP algılandı | Yeni bir IP adresi cihazla ilişkili. Beş senaryo algılanmayabilir: <br /><br /> Bir cihazla ek bir IP adresi ilişkilendirildi. Bu cihaz, var olan bir MAC adresiyle de ilişkilendirilir.<br /><br /> Var olan bir MAC adresini kullanan bir cihaz için yeni bir IP adresi algılandı. Şu anda cihaz bir IP adresi kullanarak iletişim kurmamaktadır.<br /> <br /> NetBIOS adı kullanan bir cihaz için yeni bir IP adresi algılandı. <br /><br /> Bir MAC adresiyle ilişkili bir cihaz için yönetim arabirimi olarak bir IP adresi algılandı. <br /><br /> Sanal IP adresi kullanan bir cihaz için yeni bir IP adresi algılandı. | **Cihaza ek IP ayarlama** (cihazları birleştirme) <br /> <br />**Mevcut IP 'yi Değiştir** <br /> <br /> **At**<br /> Bildirimi kaldırın. |
 | Etkin olmayan cihazlar | Cihazda 60 günden daha uzun bir süre için trafik algılanmadı. | **Silme** <br /> Bu cihaz ağınızın bir parçası değilse, kaldırın. <br /><br />**At** <br /> Cihaz ağınızın bir parçasıysa bildirimi kaldırın. Cihaz etkin değilse (örneğin, ağdan yanlışlıkla bağlantısı kesildiğinde), bildirimi kapatın ve cihazı yeniden bağlayın. |
-| Yeni OT cihazı | Bir alt ağ, bir ICS alt ağında tanımlanmayan bir OT cihazı içerir. <br /><br /> En az bir OT cihazı içeren her alt ağ, bir ICS alt ağı olarak tanımlanabilir. Bu, haritadaki OT ve BT cihazlarının birbirinden ayırt edilmesine yardımcı olur. | **ICS alt ağı olarak ayarla** <br /> <br /> **At** <br />Cihaz alt ağın parçası değilse bildirimi kaldırın. |
+| Yeni OT cihazları | Bir alt ağ, bir ICS alt ağında tanımlanmayan bir OT cihazı içerir. <br /><br /> En az bir OT cihazı içeren her alt ağ, bir ICS alt ağı olarak tanımlanabilir. Bu, haritadaki OT ve BT cihazlarının birbirinden ayırt edilmesine yardımcı olur. | **ICS alt ağı olarak ayarla** <br /> <br /> **At** <br />Cihaz alt ağın parçası değilse bildirimi kaldırın. |
 | Hiçbir alt ağ yapılandırılmadı | Ağınızda Şu anda yapılandırılmış alt ağ yok. <br /><br /> Haritada daha iyi temsil için alt ağları ve aynı şekilde, OT ve BT cihazlarını ayırt etme özelliğini yapılandırın. | **Alt ağlar yapılandırmasını açın** ve alt ağları yapılandırın. <br /><br />**At** <br /> Bildirimi kaldırın. |
 | İşletim sistemi değişiklikleri | Cihazla bir veya daha fazla yeni işletim sistemi ilişkilendirilmiş. | Cihazla ilişkilendirmek istediğiniz yeni işletim sisteminin adını seçin.<br /><br /> **At** <br /> Bildirimi kaldırın. |
-| Alt ağlar algılandı | Yeni alt ağlar bulundu. | **Learn**<br />Alt ağı otomatik olarak ekleyin.<br />**Alt ağ yapılandırmasını aç**<br />Tüm eksik alt ağ bilgilerini ekleyin.<br />**At**<br />Bildirimi kaldırın. |
-| Cihaz türü değişikliği algılandı | Cihazla yeni bir cihaz türü ilişkilendirildi. | **{...} Olarak ayarla**<br />Yeni türü cihazla ilişkilendirin.<br />**At**<br />Bildirimi kaldırın. |
+| Yeni alt ağlar | Yeni alt ağlar bulundu. | **Learn**<br />Alt ağı otomatik olarak ekleyin.<br />**Alt ağ yapılandırmasını aç**<br />Tüm eksik alt ağ bilgilerini ekleyin.<br />**At**<br />Bildirimi kaldırın. |
+| Cihaz türü değişiklikleri | Cihazla yeni bir cihaz türü ilişkilendirildi. | **{...} Olarak ayarla**<br />Yeni türü cihazla ilişkilendirin.<br />**At**<br />Bildirimi kaldırın. |
 
 ## <a name="respond-to-many-notifications-simultaneously"></a>Aynı anda birçok bildirimi yanıtla
 
-Aynı anda birkaç bildirimi işlemeniz gerekebilir. Örnek:
+Aynı anda birkaç bildirimi işlemeniz gerekebilir. Örneğin:
 
 - Büyük bir ağ sunucuları kümesine bir işletim sistemi yükseltmesi olduysa, tüm yükseltilen sunucular için yeni sunucu sürümlerini öğrenmek üzere sensöre talimat verebilirsiniz. 
 

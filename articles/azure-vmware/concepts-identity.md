@@ -3,12 +3,12 @@ title: Kavramlar-kimlik ve erişim
 description: Azure VMware çözümünün kimlik ve erişim kavramları hakkında bilgi edinin
 ms.topic: conceptual
 ms.date: 11/11/2020
-ms.openlocfilehash: e9c0d62968d94e2b018186f67072b6ae7078db02
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: bd1b4cd918ce977cf57d641908b127f7a2d1b0cc
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94536107"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99509308"
 ---
 # <a name="azure-vmware-solution-identity-concepts"></a>Azure VMware Çözüm kimliği kavramları
 
@@ -33,7 +33,7 @@ Tabloda **CloudAdmin** ve **CloudGlobalAdmin** ayrıcalıkları gösterilmektedi
 |  ESX Aracısı Yöneticisi       |  --  |         --       |  Microsoft tüm işlemleri yapar.  |
 |  Klasör                  |  Bir CloudAdmin kullanıcısının tüm klasör ayrıcalıkları vardır.     |  --  |  --  |
 |  Genel                  |  Global. CancelTask, Global. GlobalTag, Global. Health, Global. LogEvent, Global. ManageCustomFields, Global. Serviceyöneticileri, Global. SetCustomField, Global.SysTıtemtag         |                  |    |
-|  Yönetici                    |  Host. HBR. HbrManagement      |        --          |  Microsoft, diğer tüm konak işlemlerini yapar.  |
+|  Ana bilgisayar                    |  Host. HBR. HbrManagement      |        --          |  Microsoft, diğer tüm konak işlemlerini yapar.  |
 |  InventoryService        |  InventoryService. etiketleme      |        --          |  --  |
 |  Ağ                 |  Network. assign    |                  |  Microsoft, diğer tüm ağ işlemlerini yapar.  |
 |  İzinler             |  --  |        --       |  Microsoft tüm Izin işlemlerini yapar.  |
@@ -53,7 +53,11 @@ NSX-T Yöneticisi 'ne erişmek için "Yönetici" hesabını kullanın. Tam ayrı
   
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bir sonraki adım, [özel bulut yükseltmesi kavramları][concepts-upgrades]hakkında bilgi almak için kullanılır.
+Azure VMware Çözüm erişimi ve kimlik kavramlarını kapsadığınıza göre, şunları öğrenmek isteyebilirsiniz:
+
+- [Özel bulut yükseltmesi kavramları](concepts-upgrades.md).
+- [Azure VMware çözümü Için vSphere rol tabanlı erişim denetimi](concepts-role-based-access-control.md).
+- [Azure VMware Çözüm kaynağını etkinleştirme](enable-azure-vmware-solution.md).
 
 <!-- LINKS - external -->
 

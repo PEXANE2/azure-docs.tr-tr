@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 1/12/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 908460bd0a034e21524b6ea6d3042f362cc810d4
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 7d045ad104f8e2055ae85b74f4aae8f4d3fd61a4
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98623598"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99509528"
 ---
 # <a name="activate-and-set-up-your-sensor"></a>Algılayıcınızı etkinleştirme ve ayarlama
 
@@ -44,7 +44,7 @@ Algılayıcı konsolunda oturum açmadan önce yönetici kullanıcıların eriş
 
 Sensörizin belirli bir yönetim modunda IoT için Azure Defender eklendi:
 
-| Mod türü | Description |
+| Mod türü | Açıklama |
 |--|--|
 | **Buluta bağlı mod** | Algılayıcıyı algılayan bilgiler algılayıcı konsolunda görüntülenir. Uyarı bilgileri de IoT Hub 'ı aracılığıyla dağıtılır ve Azure Sentinel gibi diğer Azure hizmetleriyle paylaşılabilir. |
 | **Yerel olarak bağlı mod** | Algılayıcıyı algılayan bilgiler algılayıcı konsolunda görüntülenir. Algılama bilgileri, algılayıcı kendisine bağlıysa şirket içi yönetim konsolu ile de paylaşılır. |
@@ -81,7 +81,7 @@ Oturum açmak ve etkinleştirmek için:
 
     :::image type="content" source="media/how-to-activate-and-set-up-your-sensor/azure-defender-for-iot-sensor-log-in-screen.png" alt-text="IoT algılayıcısı için Azure Defender.":::
 
-1. Algılayıcı yüklemesi sırasında tanımlanan kimlik bilgilerini girin. Bir okla önceden yapılandırılmış bir algılayıcı satın aldıysanız, önce bir parola oluşturun. Parola kurtarma hakkında daha fazla bilgi için bkz. [ilk oturum açma sırasında parola hatasını araştırın](how-to-troubleshoot-the-sensor-and-on-premises-management-console.md#investigate-password-failure-at-initial-sign-in).
+1. Algılayıcı yüklemesi sırasında tanımlanan kimlik bilgilerini girin veya **parola kurtarma** seçeneğini belirleyin. Bir okla önceden yapılandırılmış bir algılayıcı satın aldıysanız, önce bir parola oluşturun. Parola kurtarma hakkında daha fazla bilgi için bkz. [ilk oturum açma sırasında parola hatasını araştırın](how-to-troubleshoot-the-sensor-and-on-premises-management-console.md#investigate-password-failure-at-initial-sign-in).
 
 1. Oturum açtıktan sonra, **etkinleştirme** iletişim kutusu açılır. **Karşıya yükle** ' yi seçin ve algılayıcı ekleme sırasında indirdiğiniz etkinleştirme dosyasına gidin.
 
@@ -142,7 +142,7 @@ Başlangıçta bu etkinlik öğrenme modunda yürütülür, bu da sensörize ağ
 
 Sensörin optimum olarak algılanması ve uyarı verecek şekilde yapılandırıldığından emin olmak için sensör sistem ayarlarını gözden geçirin.
 
-Algılayıcının sistem ayarlarını tanımlayın. Örnek:
+Algılayıcının sistem ayarlarını tanımlayın. Örneğin:
 
 - ICS (veya IoT) ve ayrılmış alt ağları tanımlayın.
 
@@ -152,7 +152,7 @@ Algılayıcının sistem ayarlarını tanımlayın. Örnek:
 
 - DHCP kullanılıyorsa, meşru DHCP aralıklarını tanımlayın.
 
-- Active Directory ve posta sunucularıyla tümleştirmeyi tanımlayın.
+- Active Directory ve posta sunucusu ile tümleştirmeyi uygun şekilde tanımlayın.
 
 ### <a name="disable-learning-mode"></a>Öğrenme modunu devre dışı bırak
 
@@ -177,40 +177,40 @@ Konsol araçlarına taraftaki menüden erişin.
 
 **Gezinti** 
 
-| Pencere | Simge | Description |
+| Pencere | Simge | Açıklama |
 | -----------|--|--|
 | Pano | :::image type="icon" source="media/concept-sensor-console-overview/dashboard-icon-azure.png" border="false"::: | Ağın güvenlik durumunun sezgisel bir anlık görüntüsünü görüntüleyin. |
 | Cihaz Haritası | :::image type="icon" source="media/concept-sensor-console-overview/asset-map-icon-azure.png" border="false"::: | Bir haritadaki ağ cihazlarını, cihaz bağlantılarını ve cihaz özelliklerini görüntüleyin. Ağınızı göstermek için çeşitli yakınlaştırmaları, vurgu ve filtreleme seçenekleri mevcuttur. |
-| Cihaz envanteri | :::image type="icon" source="media/concept-sensor-console-overview/asset-inventory-icon-azure.png" border="false":::  | Cihaz envanteri, bu sensör tarafından algılanan çok sayıda cihaz özniteliğini görüntüler. Seçenekler kullanılabilir: <br /> -Bilgileri tablo alanlarına göre filtreleyin ve filtrelenmiş bilgilerin görüntülendiğini görün. <br /> -Bilgileri bir CSV dosyasına dışarı aktarın. <br /> -Windows kayıt defteri ayrıntılarını içeri aktarın.|
+| Cihaz envanteri | :::image type="icon" source="media/concept-sensor-console-overview/asset-inventory-icon-azure.png" border="false":::  | Cihaz envanteri, bu sensörin algıladığı cihaz özniteliklerinin bir listesini görüntüler. Seçenekler kullanılabilir: <br /> -Tablo alanlarına göre bilgileri sıralayın veya filtreleyin ve filtrelenmiş bilgilerin görüntülendiğini görün. <br /> -Bilgileri bir CSV dosyasına dışarı aktarın. <br /> -Windows kayıt defteri ayrıntılarını içeri aktarın.|
 | Uyarılar | :::image type="icon" source="media/concept-sensor-console-overview/alerts-icon-azure.png" border="false"::: | İlke ihlalleri oluştuğunda uyarı görüntüle, taban çizgisi davranışından sapmalar oluşur veya ağdaki herhangi bir şüpheli etkinlik türü algılanır. |
 | Raporlar | :::image type="icon" source="media/concept-sensor-console-overview/reports-icon-azure.png" border="false"::: | Veri madenciliği sorgularını temel alan raporları görüntüleyin. |
 
 **Çözümlemeleri**
 
-| Pencere| Simge | Description |
+| Pencere| Simge | Açıklama |
 |---|---|---|
 | Olay zaman çizelgesi | :::image type="icon" source="media/concept-sensor-console-overview/event-timeline-icon-azure.png" border="false"::: | Uyarılar, ağ olayları (bilgilendirici) ve Kullanıcı oturumu açma ve Kullanıcı silmeleri gibi kullanıcı işlemleri hakkında bilgi içeren bir zaman çizelgesi görüntüleyin.|
 
 **Gezinti**
 
-| Pencere | Simge | Description |
+| Pencere | Simge | Açıklama |
 |---|---|---|
 | Veri araştırma | :::image type="icon" source="media/concept-sensor-console-overview/data-mining-icon-azure.png" border="false"::: | Çeşitli katmanlarda ağınızın cihazları hakkında kapsamlı ve ayrıntılı bilgiler oluşturun. |
-| Eğilimler ve istatistikler | :::image type="icon" source="media/concept-sensor-console-overview/trends-and-statistics-icon-azure.jpg" border="false"::: | Eğilimleri ve istatistikleri geniş bir pencere öğesi aralığında görüntüleyin. |
+| Araştırma | :::image type="icon" source="media/concept-sensor-console-overview/trends-and-statistics-icon-azure.jpg" border="false"::: | Eğilimleri ve istatistikleri geniş bir pencere öğesi aralığında görüntüleyin. |
 | Risk değerlendirmesi | :::image type="icon" source="media/concept-sensor-console-overview/vulnerabilities-icon-azure.png" border="false"::: | **Güvenlik açıkları** penceresini görüntüleyin. |
 
 **Yönetici**
 
-| Pencere | Simge | Description |
+| Pencere | Simge | Açıklama |
 |---|---|---|
 | Kullanıcılar | :::image type="icon" source="media/concept-sensor-console-overview/users-icon-azure.png" border="false"::: | Farklı erişim düzeylerine sahip kullanıcıları ve rolleri tanımlayın. |
-| İletildiğinde | :::image type="icon" source="media/concept-sensor-console-overview/forwarding-icon-azure.png" border="false"::: | IoT için Defender, e-posta adresleri, Web kancası sunucuları ve daha fazlasını içeren iş ortakları için uyarı bilgilerini iletin. <br /> Ayrıntılar için bkz. [uyarı bilgilerini ilet](how-to-forward-alert-information-to-partners.md) . |
+| İletildiğinde | :::image type="icon" source="media/concept-sensor-console-overview/forwarding-icon-azure.png" border="false"::: | IoT için Defender ile tümleştirme, e-posta adresleri, Web kancası sunucuları ve daha fazlası için, uyarı bilgilerini iş ortaklarına ve iç kaynaklara (örneğin, Sentinel) iletin. <br /> Ayrıntılar için bkz. [uyarı bilgilerini ilet](how-to-forward-alert-information-to-partners.md) . |
 | Sistem ayarları | :::image type="icon" source="media/concept-sensor-console-overview/system-settings-icon-azure.png" border="false"::: | Sistem ayarlarını yapılandırın. Örneğin, DHCP ayarlarını tanımlayın, posta sunucusu ayrıntılarını sağlayın veya bağlantı noktası diğer adları oluşturun. |
 | İçeri aktarma ayarları | :::image type="icon" source="media/concept-sensor-console-overview/import-settings-icon-azure.png" border="false"::: | **Içeri aktarma ayarları** penceresini görüntüleyin. Bir cihaz bilgilerinde el ile değişiklikler yapabilirsiniz.<br /> Ayrıntılar için bkz. [cihaz bilgilerini Içeri aktarma](how-to-import-device-information.md) . |
 
 **Destek**
 
-| Pencere| Simge | Description |
+| Pencere| Simge | Açıklama |
 |----|---|---|
 | Destek | :::image type="icon" source="media/concept-sensor-console-overview/support-icon-azure.png" border="false"::: | Yardım için [Microsoft desteği](https://support.microsoft.com/) başvurun. |
 
