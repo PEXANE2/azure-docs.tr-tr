@@ -8,12 +8,12 @@ ms.date: 02/02/2021
 ms.author: tisande
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: d50893fc3bf5d890efbdc1f5b59cf52f35d91a15
-ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
+ms.openlocfilehash: 6875fc53a651b89fcfe88d3217ff86bd21204f6c
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99475735"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99524338"
 ---
 # <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>Azure Cosmos DB kullanırken karşılaşılan sorgu sorunlarını giderme
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -206,12 +206,15 @@ Herhangi bir zamanda, yazma veya okuma kullanılabilirliği üzerinde hiçbir et
 - Sol
 - Alt dize-ancak yalnızca ilk num_expr 0 ise
 
-Aşağıda, dizini kullanmayan ve her bir belgeyi yüklemesi gereken bazı yaygın sistem işlevleri verilmiştir:
+Aşağıda, dizini kullanmayan ve bir yan tümcesinde kullanıldığında her belgeyi yüklemesi gereken bazı yaygın sistem işlevleri verilmiştir `WHERE` :
 
 | **Sistem işlevi**                     | **İyileştirme için fikirler**             |
 | --------------------------------------- |------------------------------------------------------------ |
-| ÜST/ALT                             | Karşılaştırma sırasında verileri normalleştirmek için sistem işlevini kullanmak yerine, ekleme sırasında büyük/küçük harfleri normalleştirin. Gibi bir sorgu ```SELECT * FROM c WHERE UPPER(c.name) = 'BOB'``` olur ```SELECT * FROM c WHERE c.name = 'BOB'``` . |
+| Üst/alt                         | Karşılaştırma sırasında verileri normalleştirmek için sistem işlevini kullanmak yerine, ekleme sırasında büyük/küçük harfleri normalleştirin. Gibi bir sorgu ```SELECT * FROM c WHERE UPPER(c.name) = 'BOB'``` olur ```SELECT * FROM c WHERE c.name = 'BOB'``` . |
+| GetCurrentDateTime/GetCurrentTimestamp/GetCurrentTicks | Sorgu yürütmeden önce geçerli zamanı hesaplayın ve yan tümcesinde bu dize değerini kullanın `WHERE` . |
 | Matematik işlevleri (toplamasız olmayan) | Sorgunuzda sık bir değeri hesaplamanız gerekiyorsa, değeri JSON belgenizde bir özellik olarak depolamayı düşünün. |
+
+`SELECT`Yan tümcesinde kullanıldığında, verimsiz sistem işlevleri sorguların dizinleri nasıl kullanabileceğinizi etkilemez.
 
 ### <a name="improve-string-system-function-execution"></a>Dize sistemi işlev yürütmeyi geliştirme
 

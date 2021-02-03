@@ -1,19 +1,19 @@
 ---
 title: Azure Cosmos DB sorgu dilinde GetCurrentTimestamp
 description: Azure Cosmos DB 'de SQL sistem işlevi GetCurrentTimestamp hakkında bilgi edinin.
-author: ginamr
+author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 08/19/2020
-ms.author: girobins
+ms.date: 02/03/2021
+ms.author: tisande
 ms.custom: query-reference
-ms.openlocfilehash: 6720b0e5d13f2baaaf063fef2244b0c1f1863571
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: fa7d1ec2af12065fb7d761073cd982a561cf53c1
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93341935"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99524278"
 ---
 # <a name="getcurrenttimestamp-azure-cosmos-db"></a>GetCurrentTimestamp (Azure Cosmos DB)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -34,7 +34,8 @@ GetCurrentTimestamp ()
 
 GetCurrentTimestamp () belirleyici olmayan bir işlevdir. Döndürülen sonuç UTC 'dir (Eşgüdümlü Evrensel Saat).
 
-Bu sistem işlevi dizinden yararlanmayacak.
+> [!NOTE]
+> Bu sistem işlevi dizinden yararlanmayacak. Değerleri geçerli saate göre karşılaştırmak gerekirse, sorgu yürütmeden önce geçerli zamanı alın ve yan tümcesinde bu sabit dize değerini kullanın `WHERE` .
 
 ## <a name="examples"></a>Örnekler
   

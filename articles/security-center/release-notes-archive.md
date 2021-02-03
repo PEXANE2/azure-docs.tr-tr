@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/07/2020
+ms.date: 02/02/2020
 ms.author: memildin
-ms.openlocfilehash: 751ee19225e7e550f368fff2415cd07f25b02d25
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: b7cb6edf825519bb3048de7a8c5326842f2db097
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98539931"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99524302"
 ---
 # <a name="archive-for-whats-new-in-azure-security-center"></a>Azure Güvenlik Merkezi 'ndeki yenilikler için Arşiv mi var?
 
@@ -28,6 +28,116 @@ Bu sayfa hakkında bilgi sağlar:
 - Yeni özellikler
 - Hata düzeltmeleri
 - Kullanım dışı işlevsellik
+
+
+## <a name="august-2020"></a>Ağustos 2020
+
+Ağustos ayında güncelleştirmeler şunlardır:
+
+- [Varlık envanteri-varlıklarınızın güvenlik sonrası yeni görünümü](#asset-inventory---powerful-new-view-of-the-security-posture-of-your-assets)
+- [Azure Active Directory güvenlik varsayılanları için destek eklendi (Multi-Factor Authentication için)](#added-support-for-azure-active-directory-security-defaults-for-multi-factor-authentication)
+- [Hizmet sorumlusu önerisi eklendi](#service-principals-recommendation-added)
+- [VM 'lerde güvenlik açığı değerlendirmesi-birleştirilmiş öneriler ve ilkeler](#vulnerability-assessment-on-vms---recommendations-and-policies-consolidated)
+- [ASC_default Initiative 'e eklenen yeni AKS güvenlik ilkeleri – yalnızca özel önizleme müşterileri tarafından kullanılmak üzere](#new-aks-security-policies-added-to-asc_default-initiative--for-use-by-private-preview-customers-only)
+
+
+### <a name="asset-inventory---powerful-new-view-of-the-security-posture-of-your-assets"></a>Varlık envanteri-varlıklarınızın güvenlik sonrası yeni görünümü
+
+Güvenlik Merkezi 'nin varlık Envanteri (Şu anda önizleme aşamasındadır), güvenlik merkezi 'ne bağladığınız kaynakların güvenlik duruşunu görüntülemek için bir yol sağlar.
+
+Güvenlik Merkezi, olası güvenlik açıklarını belirlemek için Azure kaynaklarınızın güvenlik durumunu düzenli olarak analiz eder. Daha sonra bu güvenlik açıklarını nasıl düzeltebileceğiniz konusunda öneriler sağlar. Herhangi bir kaynakta bekleyen öneriler olduğunda, bu değişiklikler envanterde görüntülenir.
+
+Güvenlik sonrası verilerinizi araştırmak ve bulgularınızı temel alarak daha fazla eylem gerçekleştirmek için görünümü ve filtrelerini kullanabilirsiniz.
+
+[Varlık envanteri](asset-inventory.md)hakkında daha fazla bilgi edinin.
+
+
+### <a name="added-support-for-azure-active-directory-security-defaults-for-multi-factor-authentication"></a>Azure Active Directory güvenlik varsayılanları için destek eklendi (Multi-Factor Authentication için)
+
+Güvenlik Merkezi, Microsoft 'un ücretsiz kimlik güvenlik korumalarının [güvenlik Varsayılanları](../active-directory/fundamentals/concept-fundamentals-security-defaults.md)için tam destek ekledi.
+
+Güvenlik Varsayılanları, kuruluşunuzun kimlik ile ilgili ortak saldırılardan savunmak için önceden yapılandırılmış kimlik güvenlik ayarlarını sağlar. Güvenlik Varsayılanları, genel olarak 5.000.000 taneden fazla kiracı koruuyor; 50.000 kiracılar da Güvenlik Merkezi tarafından korunur.
+
+Güvenlik Merkezi artık güvenlik Varsayılanları etkinleştirilmeden bir Azure aboneliğini her belirlediğinde bir güvenlik önerisi sunmaktadır. Bu aşamada, Güvenlik Merkezi, Azure Active Directory (AD) Premium lisansının bir parçası olan koşullu erişimi kullanarak Multi-Factor Authentication 'ı etkinleştirmeyi öneririz. Azure AD Ücretsiz kullanan müşteriler için artık güvenlik varsayılanlarını etkinleştirmenizi öneririz. 
+
+Amacınız, daha fazla müşteriyi MFA ile bulut ortamlarını güvenli hale getirmeye teşvik etmek ve ayrıca, [güvenli puanınızın](secure-score-security-controls.md)en yüksek risklerinden birini hafifletmektir.
+
+[Güvenlik Varsayılanları](../active-directory/fundamentals/concept-fundamentals-security-defaults.md)hakkında daha fazla bilgi edinin.
+
+
+### <a name="service-principals-recommendation-added"></a>Hizmet sorumlusu önerisi eklendi
+
+Güvenlik Merkezi müşterilerinin aboneliklerini yönetmek için yönetim sertifikaları kullanmalarını sağlamak üzere yeni bir öneri eklenmiştir.
+
+Kullanım önerisi, **yönetim sertifikaları yerine aboneliklerinizi korumak Için hizmet sorumlularını** , aboneliklerinizi daha güvenli bir şekilde yönetmek Için hizmet sorumlularını veya Azure Resource Manager kullanmanızı önerir. 
+
+[Azure Active Directory Içindeki uygulama ve hizmet sorumlusu nesneleri](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object)hakkında daha fazla bilgi edinin.
+
+
+### <a name="vulnerability-assessment-on-vms---recommendations-and-policies-consolidated"></a>VM 'lerde güvenlik açığı değerlendirmesi-birleştirilmiş öneriler ve ilkeler
+
+Güvenlik Merkezi, bir güvenlik açığı değerlendirme çözümü çalıştırıp çalıştırmadığını belirlemek için sanal makinelerinizi inceler. Bir güvenlik açığı değerlendirme çözümü bulunmazsa, güvenlik merkezi dağıtımı basitleştirmeye yönelik bir öneri sunar.
+
+Güvenlik açıkları bulunduğunda Güvenlik Merkezi, gerektiğinde araştırmanız ve düzeltilmesi için bulguları özetlemeye yönelik bir öneri sunar.
+
+Kullandıkları tarayıcı türünden bağımsız olarak tüm kullanıcılar için tutarlı bir deneyim sağlamak amacıyla, aşağıdaki iki öneriyle dört öneri sunuyoruz:
+
+|Birleşik öneri|Açıklamayı Değiştir|
+|----|:----|
+|**Sanal makinelerinizde bir güvenlik açığı değerlendirme çözümünün etkinleştirilmesi gerekir**|Aşağıdaki iki öneriyi değiştirir:<br> **•** Sanal makinelerde yerleşik güvenlik açığı değerlendirme çözümünü etkinleştirin (Qualys (artık kullanım dışı) ile desteklenir (Standart katmana dahildir)<br> **•** Güvenlik açığı değerlendirme çözümünün sanal makinelerinizde yüklü olması gerekir (artık kullanım dışı) (Standart ve ücretsiz Katmanlar)|
+|**Sanal makinelerinizdeki güvenlik açıkları düzeltilmelidir**|Aşağıdaki iki öneriyi değiştirir:<br>**•** Sanal makinelerinizde bulunan güvenlik açıklarını düzeltin (Qualys tarafından desteklenir) (artık kullanım dışı)<br>**•** Güvenlik açıkları bir güvenlik açığı değerlendirme çözümü tarafından düzeltilmelidir (artık kullanım dışı)|
+|||
+
+Artık güvenlik merkezi 'nin güvenlik açığı değerlendirmesi uzantısını veya özel olarak lisanslı bir çözümü ("KLG") Qualys veya Rapid7 gibi bir ortaktan dağıtmak için aynı öneriyi kullanacaksınız.
+
+Ayrıca, güvenlik açıkları bulunduğunda ve Güvenlik Merkezi 'ne bildirildiğine göre tek bir öneri, bunları tanımlayan güvenlik açığı değerlendirme çözümüne bakılmaksızın sizi bulgulara bildirir.
+
+#### <a name="updating-dependencies"></a>Bağımlılıklar güncelleştiriliyor
+
+Önceki önerilere veya ilke anahtarlarına/adlara başvuruda bulunan komut dosyalarınız, sorgular veya otomatiklamalar varsa, başvuruları güncelleştirmek için aşağıdaki tabloları kullanın:
+
+##### <a name="before-august-2020"></a>Ağustos 2020 öncesi
+
+|Öneri|Kapsam|
+|----|:----|
+|**Sanal makinelerde yerleşik güvenlik açığı değerlendirme çözümünü etkinleştirin (Qualys tarafından desteklenir)**<br>Anahtar: 550e890b-e652-4d22-8274-60b3bdb24c63|Yerleşik|
+|**Sanal makinelerinizde bulunan güvenlik açıklarını düzeltin (Qualys tarafından desteklenir)**<br>Anahtar: 1195aff-c881-495E-9bc5-1486211ae03f|Yerleşik|
+|**Güvenlik açığı değerlendirme çözümünün sanal makinelerinizde yüklü olması gerekir**<br>Anahtar: 01b1ed4c-B733-4FEE-b145-f23236e70cf3|KLG|
+|**Güvenlik açıkları bir güvenlik açığı değerlendirme çözümü tarafından düzeltilmelidir**<br>Anahtar: 71992a2a-d168-42e0-b10e-6b45fa2ecddb|KLG|
+||||
+
+
+|İlke|Kapsam|
+|----|:----|
+|**Güvenlik açığı değerlendirmesi sanal makinelerde etkinleştirilmelidir**<br>İlke KIMLIĞI: 501541f7-f7e7-4cd6-868C-4190fdad3ac9|Yerleşik|
+|**Güvenlik açıkları bir güvenlik açığı değerlendirme çözümü tarafından düzeltilmelidir**<br>İlke KIMLIĞI: 760a85ff-6162-42b3-8d70-698e268f648c|KLG|
+||||
+
+
+##### <a name="from-august-2020"></a>Ağustos 2020 ' den
+
+|Öneri|Kapsam|
+|----|:----|
+|**Sanal makinelerinizde bir güvenlik açığı değerlendirme çözümünün etkinleştirilmesi gerekir**<br>Anahtar: ffff0522-1e88-47fc-8382-2a80ba848f5d|Yerleşik + KLG|
+|**Sanal makinelerinizdeki güvenlik açıkları düzeltilmelidir**<br>Anahtar: 1195aff-c881-495E-9bc5-1486211ae03f|Yerleşik + KLG|
+||||
+
+|İlke|Kapsam|
+|----|:----|
+|[**Güvenlik açığı değerlendirmesi sanal makinelerde etkinleştirilmelidir**](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f501541f7-f7e7-4cd6-868c-4190fdad3ac9)<br>İlke KIMLIĞI: 501541f7-f7e7-4cd6-868C-4190fdad3ac9 |Yerleşik + KLG|
+||||
+
+
+### <a name="new-aks-security-policies-added-to-asc_default-initiative--for-use-by-private-preview-customers-only"></a>ASC_default Initiative 'e eklenen yeni AKS güvenlik ilkeleri – yalnızca özel önizleme müşterileri tarafından kullanılmak üzere
+
+Kubernetes iş yüklerinin varsayılan olarak güvenli olduğundan emin olmak için, güvenlik merkezi Kubernetes, Kubernetes giriş denetimiyle zorlama seçenekleri de dahil olmak üzere Kubernetes düzey ilkelerini ve sağlamlaştırma
+
+Bu projenin erken aşaması, özel bir önizleme ve ASC_default girişiminin yeni (varsayılan olarak devre dışı) ilkelerinin eklenmesini içerir.
+
+Bu ilkeleri güvenle yoksayabilirsiniz, ortamınızda hiçbir etkisi olmaz. Bunları etkinleştirmek istiyorsanız, önizleme için kaydolun https://aka.ms/SecurityPrP ve aşağıdaki seçeneklerden seçim yapın:
+
+1. **Tek önizleme** – yalnızca bu özel önizlemeye katılacak şekilde. Birleştirmek istediğiniz önizleme olarak "ASC sürekli tarama" yı kesin olarak belirtmeyi unutmayın.
+1. **Devam eden program** – bu ve gelecekteki özel önizlemelere eklenmek üzere. Bir profil ve gizlilik sözleşmesini doldurmanız gerekir.
 
 
 ## <a name="july-2020"></a>Temmuz 2020
