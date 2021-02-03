@@ -3,12 +3,12 @@ title: Visual Studio Code-Azure Işlevleri kullanarak bir TypeScript işlevi olu
 description: TypeScript işlevi oluşturmayı öğrenin ve ardından Visual Studio Code Azure Işlevleri uzantısını kullanarak Azure Işlevleri 'nde sunucusuz barındırma için yerel Node.js projesini yayımlayın.
 ms.topic: quickstart
 ms.date: 11/04/2020
-ms.openlocfilehash: 48295aab80b8a15a313ce7fa7acf94606357930b
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 4470741c8c7f2f6c9832ea73aa9c6207764bc903
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93425225"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493547"
 ---
 # <a name="quickstart-create-a-function-in-azure-with-typescript-using-visual-studio-code"></a>Hızlı başlangıç: Visual Studio Code kullanarak Azure 'da TypeScript ile bir işlev oluşturma
 
@@ -28,34 +28,34 @@ Başlamadan önce, aşağıdaki gereksinimlerin yerinde olduğundan emin olun:
 
 + [Node.js](https://nodejs.org/), ETKIN LTS ve bakım LTS sürümleri (10.14.1 önerilir). `node --version`Sürümünüzü denetlemek için komutunu kullanın.  
 
-+ [Desteklenen platformlardan](https://code.visualstudio.com/docs/supporting/requirements#_platforms)birine [Visual Studio Code](https://code.visualstudio.com/) .
++ [Desteklenen platformlardan](https://code.visualstudio.com/docs/supporting/requirements#_platforms) birinde çalışan [Visual Studio Code](https://code.visualstudio.com/).
 
-+ Visual Studio Code için [Azure işlevleri uzantısı](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) .
++ Visual Studio Code için [Azure İşlevleri uzantısı](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions).
 
 ## <a name="create-your-local-project"></a><a name="create-an-azure-functions-project"></a>Yerel projenizi oluşturma
 
-Bu bölümde, TypeScript 'te yerel bir Azure Işlevleri projesi oluşturmak için Visual Studio Code kullanırsınız. Bu makalenin ilerleyen kısımlarında, işlev kodunuzu Azure 'a yayımlayacaksınız. 
+Bu bölümde, TypeScript 'te yerel bir Azure Işlevleri projesi oluşturmak için Visual Studio Code kullanırsınız. Bu makalenin ilerleyen bölümlerinde işlev kodunu Azure'da yayımlayacaksınız. 
 
-1. Etkinlik çubuğunda Azure simgesini seçin, sonra **Azure: işlevler** alanında **Yeni proje oluştur...** simgesini seçin.
+1. Etkinlik çubuğundan Azure simgesini seçtikten sonra **Azure: İşlevler** alanında **Yeni proje oluştur...** simgesini seçin.
 
-    ![Yeni proje oluştur seçeneğini belirleyin](media/functions-create-first-function-vs-code/create-new-project.png)
+    ![Yeni proje oluştur'u seçin](media/functions-create-first-function-vs-code/create-new-project.png)
 
-1. Proje çalışma alanınız için bir dizin konumu seçin ve **Seç** ' i seçin.
+1. Projenizin çalışma alanı için bir dizin konumu seçtikten sonra **Seç**'i belirleyin.
 
     > [!NOTE]
     > Bu adımlar, bir çalışma alanının dışında tamamlanacak şekilde tasarlandı. Bu örnekte, bir çalışma alanının parçası olan bir proje klasörünü seçmeyin.
 
-1. İstemlere aşağıdaki bilgileri sağlayın:
+1. İstemlerde aşağıdaki bilgileri sağlayın:
 
-    + **İşlev projeniz için bir dil seçin** : seçin `TypeScript` .
+    + **İşlev projeniz için bir dil seçin**: `TypeScript` öğesini seçin.
 
-    + **Projenizin ilk işlevi için bir şablon seçin** : seçin `HTTP trigger` .
+    + **Projenizin ilk işlevi için bir şablon seçin**: `HTTP trigger` öğesini seçin.
 
-    + **Bir işlev adı girin** : tür `HttpExample` .
+    + **Bir işlev adı sağlayın**: `HttpExample` yazın.
 
-    + **Yetkilendirme düzeyi** : `Anonymous` herhangi bir kişinin işlev uç noktanızı çağırmasını sağlayan öğesini seçin. Yetkilendirme düzeyi hakkında bilgi edinmek için bkz. [Yetkilendirme anahtarları](functions-bindings-http-webhook-trigger.md#authorization-keys).
+    + **Yetkilendirme düzeyi**: `Anonymous` herhangi bir kişinin işlev uç noktanızı çağırmasını sağlayan öğesini seçin. Yetkilendirme düzeyi hakkında bilgi edinmek için bkz. [Yetkilendirme anahtarları](functions-bindings-http-webhook-trigger.md#authorization-keys).
 
-    + **Projenizi nasıl açmak Istediğinizi seçin** : seçin `Add to workspace` .
+    + **Projenizi nasıl açmak istediğinizi seçin**: `Add to workspace` öğesini seçin.
 
 1. Bu bilgileri kullanarak, Visual Studio Code HTTP tetikleyicisiyle bir Azure Işlevleri projesi oluşturur. Yerel proje dosyalarını Gezgin içinde görüntüleyebilirsiniz. Oluşturulan dosyalar hakkında daha fazla bilgi edinmek için bkz. [oluşturulan proje dosyaları](functions-develop-vs-code.md#generated-project-files). 
 
@@ -74,33 +74,35 @@ Bu bölümde, Azure aboneliğinizde bir işlev uygulaması ve ilgili kaynaklar o
 
 1. Etkinlik çubuğunda Azure simgesini seçin, sonra **Azure: işlevler** alanında, **işlev uygulamasına dağıt uygulama...** düğmesini seçin.
 
-    ![Projenizi Azure 'da yayımlayın](media/functions-create-first-function-vs-code/function-app-publish-project.png)
+    ![Projenizi Azure'da yayımlama](../../includes/media/functions-publish-project-vscode/function-app-publish-project.png)
 
-1. İstemlere aşağıdaki bilgileri sağlayın:
+1. İstemlerde aşağıdaki bilgileri sağlayın:
 
-    + **Klasör seçin** : çalışma alanınızdan bir klasör seçin veya işlev uygulamanızı içeren bir klasöre gidin. Zaten açılmış geçerli bir işlev uygulamanız varsa bunu göremezsiniz.
+    + **Klasör seçin**: çalışma alanınızdan bir klasör seçin veya işlev uygulamanızı içeren bir klasöre gidin. Zaten açılmış geçerli bir işlev uygulamanız varsa bunu göremezsiniz.
 
-    + **Abonelik seçin** : kullanılacak aboneliği seçin. Yalnızca bir aboneliğiniz varsa bunu göremezsiniz.
+    + **Abonelik seçin**: kullanılacak aboneliği seçin. Yalnızca bir aboneliğiniz varsa bunu göremezsiniz.
 
-    + **Azure 'da işlev uygulaması seçin** : Seç `+ Create new Function App` . ( `Advanced` Bu makalede kapsanmayan seçeneğini seçmeyin.)
+    + **Azure'daki işlev uygulamasını seçin**: `+ Create new Function App` öğesini seçin. ( `Advanced` Bu makalede kapsanmayan seçeneğini seçmeyin.)
 
-    + **İşlev uygulaması için genel olarak benzersiz bir ad girin** : URL yolunda geçerli olan bir ad yazın. Yazdığınız ad, Azure Işlevlerinde benzersiz olduğundan emin olmak için onaylanır. 
+    + **İşlev uygulaması için genel olarak benzersiz bir ad girin**: URL yolunda geçerli olan bir ad yazın. Yazdığınız ad, Azure Işlevlerinde benzersiz olduğundan emin olmak için onaylanır. 
 
-    + **Çalışma zamanı seçin** : yerel olarak çalıştırdığınız Node.js sürümünü seçin. `node --version`Sürümünüzü denetlemek için komutunu kullanabilirsiniz.
+    + **Çalışma zamanı seçin**: yerel olarak çalıştırdığınız Node.js sürümünü seçin. `node --version`Sürümünüzü denetlemek için komutunu kullanabilirsiniz.
 
-    + **Yeni kaynaklar için bir konum seçin** : daha iyi performans için, size yakın bir [bölge](https://azure.microsoft.com/regions/) seçin.
+    + **Yeni kaynaklar için bir konum seçin**: daha iyi performans için, size yakın bir [bölge](https://azure.microsoft.com/regions/) seçin.
+
+    Uzantı, bildirim alanında Azure 'da oluşturulmakta olan ayrı kaynakların durumunu gösterir.
+
+    :::image type="content" source="../../includes/media/functions-publish-project-vscode/resource-notification.png" alt-text="Azure kaynak oluşturma bildirimi":::
 
 1. Tamamlandığında, aşağıdaki Azure kaynakları, işlev uygulamanızın adına göre adlar kullanılarak aboneliğinizde oluşturulur:
 
-    + İlgili kaynaklar için mantıksal kapsayıcı olan bir kaynak grubu.
-    + Projeleriniz hakkında durum ve diğer bilgileri tutan standart bir Azure depolama hesabı.
-    + Sunucusuz işlev uygulamanız için temel Konağı tanımlayan bir tüketim planı. 
-    + İşlev kodunuzu yürütmek için ortam sağlayan bir işlev uygulaması. İşlev uygulaması, aynı barındırma planı içindeki kaynakların daha kolay yönetilmesi, dağıtılması ve paylaşılması için işlevleri bir mantıksal birim olarak gruplandırmanıza olanak tanır.
-    + Sunucusuz işlevinizin kullanımını izleyen işlev uygulamasına bağlı bir Application Insights örneği.
+    [!INCLUDE [functions-vs-code-created-resources](../../includes/functions-vs-code-created-resources.md)]
 
     İşlev uygulamanız oluşturulduktan sonra bir bildirim görüntülenir ve dağıtım paketi uygulanır. 
 
-1. Oluşturduğunuz Azure kaynakları dahil olmak üzere oluşturma ve dağıtım sonuçlarını görüntülemek için bu bildirimde **çıktıyı görüntüle** ' yi seçin. Bildirimi kaçırırsanız, sağ alt köşedeki zil simgesini seçerek tekrar görüntüleyin.
+    [!INCLUDE [functions-vs-code-create-tip](../../includes/functions-vs-code-create-tip.md)]
+
+4. Oluşturduğunuz Azure kaynakları dahil olmak üzere oluşturma ve dağıtım sonuçlarını görüntülemek için bu bildirimde **çıktıyı görüntüle** ' yi seçin. Bildirimi kaçırırsanız, sağ alt köşedeki zil simgesini seçerek tekrar görüntüleyin.
 
     ![Tüm bildirimi oluştur](./media/functions-create-first-function-vs-code/function-create-notifications.png)
 
@@ -110,7 +112,7 @@ Bu bölümde, Azure aboneliğinizde bir işlev uygulaması ve ilgili kaynaklar o
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-HTTP ile tetiklenen basit bir işlevi kullanarak bir işlev uygulaması oluşturmak için Visual Studio Code’u kullandınız. Sonraki makalede, bir çıkış bağlaması ekleyerek bu işlevi genişletmelisiniz. Bu bağlama, HTTP isteğinden dizeyi bir Azure kuyruk depolama kuyruğundaki bir iletiye yazar. 
+Basit bir HTTP ile tetiklenen işlevi olan bir işlev uygulaması oluşturmak için [Visual Studio Code](functions-develop-vs-code.md?tabs=javascript) kullandınız. Sonraki makalede, Azure depolama 'ya bağlanarak bu işlevi genişletmelisiniz. Diğer Azure hizmetlerine bağlanma hakkında daha fazla bilgi edinmek için bkz. [Azure işlevleri 'nde var olan bir işleve bağlama ekleme](add-bindings-existing-function.md?tabs=typescript).   
 
 > [!div class="nextstepaction"]
 > [Azure depolama kuyruğuna bağlanma](functions-add-output-binding-storage-queue-vs-code.md?pivots=programming-language-typescript)

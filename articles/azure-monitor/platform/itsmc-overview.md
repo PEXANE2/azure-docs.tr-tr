@@ -7,12 +7,12 @@ author: nolavime
 ms.author: v-jysur
 ms.date: 12/16/2020
 ms.custom: references_regions
-ms.openlocfilehash: 6d9ad775f91778f95380a19fbe253e2cbbebd3fc
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: ed13837eabadc38cee50efac3b9340c973c8ea70
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98736465"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99492442"
 ---
 # <a name="it-service-management-connector-overview"></a>BT Hizmet Yönetimi Bağlayıcısı genel bakış
 
@@ -46,7 +46,7 @@ Aşağıdaki adımları tamamlayarak ıSMC kullanmaya başlayabilirsiniz:
 1. [Azure 'dan gelen uyarıları kabul etmek için ıTSM ortamınızı ayarlayın.](./itsmc-connections.md)
 1. [Azure ıTSSM çözümünü yapılandırma](./itsmc-definition.md#add-it-service-management-connector)
 1. [ITSSM ortamınız için Azure ıTSM bağlayıcısını yapılandırın.](./itsmc-definition.md#create-an-itsm-connection)
-1. [ITSM bağlayıcısından yararlanmak için eylem grubunu yapılandırın.](./itsmc-definition.md#use-itsmc)
+1. [ITSM bağlayıcısından yararlanmak için eylem grubunu yapılandırın.](./itsmc-definition.md#define-a-template)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

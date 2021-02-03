@@ -3,12 +3,12 @@ title: Kaynakları yönetim grubuna dağıtma
 description: Azure Resource Manager şablonundaki yönetim grubu kapsamındaki kaynakların nasıl dağıtılacağını açıklar.
 ms.topic: conceptual
 ms.date: 01/13/2021
-ms.openlocfilehash: d6c6b925ad1533fc1f3bf490a9b996280164bd57
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: a203dd2c52bdc889452a6755fb025c7ed5721a59
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98184025"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99491614"
 ---
 # <a name="management-group-deployments-with-arm-templates"></a>ARM şablonlarıyla yönetim grubu dağıtımları
 
@@ -112,7 +112,7 @@ ARM şablonları dağıtmaya yönelik dağıtım komutları ve seçenekleri hakk
 
 Yönetim grubu düzeyinde dağıtımlar için, dağıtım için bir konum sağlamanız gerekir. Dağıtımın konumu, dağıttığınız kaynakların konumundan ayrıdır. Dağıtım konumu, dağıtım verilerinin depolanacağı konumu belirtir. [Abonelik](deploy-to-subscription.md) ve [kiracı](deploy-to-tenant.md) dağıtımları da bir konum gerektirir. [Kaynak](deploy-to-resource-group.md) grubu dağıtımları için, kaynak grubunun konumu dağıtım verilerini depolamak için kullanılır.
 
-Dağıtım için bir ad verebilir veya varsayılan dağıtım adını kullanabilirsiniz. Varsayılan ad şablon dosyasının adıdır. Örneğin, **üzerindeazuredeploy.js** adlı bir şablon dağıtmak, **azuredeploy** varsayılan dağıtım adını oluşturur.
+Dağıtım için bir ad verebilir veya varsayılan dağıtım adını kullanabilirsiniz. Varsayılan ad şablon dosyasının adıdır. Örneğin, _üzerindeazuredeploy.js_ adlı bir şablon dağıtmak, **azuredeploy** varsayılan dağıtım adını oluşturur.
 
 Her dağıtım adı için konum sabittir. Farklı bir konumda aynı ada sahip mevcut bir dağıtım olduğunda tek bir konumda dağıtım oluşturamazsınız. Örneğin, **deployment1** adında bir yönetim grubu dağıtımı **oluşturursanız, daha** sonra adı **deployment1** ancak **westus** olan başka bir dağıtım oluşturamazsınız. Hata kodunu alırsanız `InvalidDeploymentLocation` , bu ad için önceki dağıtımla farklı bir ad veya aynı konumu kullanın.
 
@@ -164,9 +164,9 @@ Bir abonelikte kaynak grubu oluşturmaya ve bu kaynak grubuna bir depolama hesab
 
 ### <a name="scope-to-tenant"></a>Kapsam-kiracı
 
-Kümesini olarak ayarlayarak kiracıya kaynak oluşturabilirsiniz `scope` `/` . Şablonu dağıtan kullanıcının [kiracıya dağıtmak için gerekli erişimi](deploy-to-tenant.md#required-access)olmalıdır.
+Kiracıda kaynak oluşturmak için öğesini `scope` olarak ayarlayın `/` . Şablonu dağıtan kullanıcının [kiracıya dağıtmak için gerekli erişimi](deploy-to-tenant.md#required-access)olmalıdır.
 
-Ve kümesi ile iç içe bir dağıtım `scope` kullanabilirsiniz `location` .
+İç içe bir dağıtım kullanmak için `scope` ve ayarlayın `location` .
 
 :::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/management-group-to-tenant.json" highlight="9,10,14":::
 
@@ -222,7 +222,7 @@ Sonraki örnek, üst öğe olarak belirtilen yönetim grubunda yeni bir yönetim
 
 ## <a name="azure-policy"></a>Azure İlkesi
 
-Yönetim grubuna dağıtılan özel ilke tanımları, yönetim grubunun uzantılarıdır. Özel bir ilke tanımının KIMLIĞINI almak için [Extensionresourceıd ()](template-functions-resource.md#extensionresourceid) işlevini kullanın. Yerleşik ilke tanımları, kiracı düzeyi kaynaklarıdır. Yerleşik bir ilke tanımının KIMLIĞINI almak için, [Tenantresourceıd](template-functions-resource.md#tenantresourceid) işlevini kullanın.
+Yönetim grubuna dağıtılan özel ilke tanımları, yönetim grubunun uzantılarıdır. Özel bir ilke tanımının KIMLIĞINI almak için [Extensionresourceıd ()](template-functions-resource.md#extensionresourceid) işlevini kullanın. Yerleşik ilke tanımları, kiracı düzeyi kaynaklarıdır. Yerleşik bir ilke tanımının KIMLIĞINI almak için, [Tenantresourceıd ()](template-functions-resource.md#tenantresourceid) işlevini kullanın.
 
 Aşağıdaki örnek, yönetim grubu düzeyinde bir ilkenin nasıl [tanımlanacağını](../../governance/policy/concepts/definition-structure.md) gösterir ve bunu atar.
 

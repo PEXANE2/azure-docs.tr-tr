@@ -3,12 +3,12 @@ title: Uzantı kaynak türlerindeki kapsam
 description: Uzantı kaynak türleri dağıtımında kapsam özelliğinin nasıl kullanılacağını açıklar.
 ms.topic: conceptual
 ms.date: 01/13/2021
-ms.openlocfilehash: 75c2c8b8409cc9f8e7a8e71965589ece6660607a
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: ce08ca951e24c1c0a5450052cf814a68888837c2
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98179988"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99492170"
 ---
 # <a name="setting-scope-for-extension-resources-in-arm-templates"></a>ARM şablonlarındaki uzantı kaynakları için kapsam ayarlama
 
@@ -85,6 +85,6 @@ Aşağıdaki örnek bir depolama hesabı oluşturur ve buna bir rol uygular.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Şablonunuzda parametrelerin nasıl tanımlanacağını anlamak için bkz. [Azure Resource Manager şablonlarının yapısını ve sözdizimini anlayın](template-syntax.md).
+* Şablonunuzda parametrelerin nasıl tanımlanacağını anlamak için bkz. [ARM şablonlarının yapısını ve sözdizimini anlayın](template-syntax.md).
 * Yaygın dağıtım hatalarını çözümlemeye yönelik ipuçları için bkz. [Azure Resource Manager ile yaygın Azure dağıtım hatalarını giderme](common-deployment-errors.md).
-* SAS belirteci gerektiren bir şablonu dağıtma hakkında daha fazla bilgi için bkz. [özel şablonu SAS belirteci Ile dağıtma](secure-template-with-sas-token.md).
+* SAS belirteci gerektiren bir şablonu dağıtma hakkında daha fazla bilgi için bkz. [özel ARM ŞABLONUNU SAS belirteci Ile dağıtma](secure-template-with-sas-token.md).

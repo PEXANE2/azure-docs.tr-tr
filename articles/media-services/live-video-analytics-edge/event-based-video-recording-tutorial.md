@@ -3,12 +3,12 @@ title: Bulut öğreticiden buluta ve kayıttan yürütmeye yönelik olay tabanl�
 description: Bu öğreticide, bulutta olay tabanlı bir video kaydı kaydetmek ve buluttan kayıttan yürütmek için Azure Live video analizinin Azure IoT Edge nasıl kullanılacağını öğreneceksiniz.
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: 7f99eef626e2152e8acb01f0ade88b3b67aebcea
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 497c512c4d3874959e26b7a11c312abdda475b4e
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99052220"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99491866"
 ---
 # <a name="tutorial-event-based-video-recording-to-the-cloud-and-playback-from-the-cloud"></a>Öğretici: buluta yönelik olay tabanlı video kaydı ve buluttan kayıttan yürütme
 

@@ -3,12 +3,12 @@ title: Kapsamlı dağıtımlarda şablon işlevleri
 description: Şablon işlevlerinin kapsamlı dağıtımlarda nasıl çözümlendiğini açıklar. Kapsam bir kiracı, yönetim grubu, abonelik ve kaynak grupları olabilir.
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: cb02a3dc808604a80fd9943138c1cd0d8648904e
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: f128448380612bc9b8d9114226e8a3036feeead8
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92681705"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99492102"
 ---
 # <a name="arm-template-functions-in-deployment-scopes"></a>Dağıtım kapsamlarında ARM şablon işlevleri
 
@@ -40,15 +40,15 @@ Farklı kapsamlara dağıtım yaparken bazı önemli noktalar vardır:
 * Yönetim grubunun uzantıları olarak uygulanan kaynaklar için [Extensionresourceıd ()](template-functions-resource.md#extensionresourceid) işlevini kullanın. Yönetim grubuna dağıtılan özel ilke tanımları, yönetim grubunun uzantılarıdır.
 
   Yönetim grubu düzeyinde özel bir ilke tanımının kaynak KIMLIĞINI almak için şunu kullanın:
-  
+
   ```json
   "policyDefinitionId": "[extensionResourceId(variables('mgScope'), 'Microsoft.Authorization/policyDefinitions', parameters('policyDefinitionID'))]"
   ```
 
-* Kiracıda dağıtılan bir kaynağın KIMLIĞINI almak için [Tenantresourceıd](template-functions-resource.md#tenantresourceid) işlevini kullanın. Yerleşik ilke tanımları, kiracı düzeyi kaynaklarıdır. Yönetim grubu düzeyinde yerleşik bir ilke atarken, Tenantresourceıd işlevini kullanın.
+* Kiracıda dağıtılan bir kaynağın KIMLIĞINI almak için [Tenantresourceıd ()](template-functions-resource.md#tenantresourceid) işlevini kullanın. Yerleşik ilke tanımları, kiracı düzeyi kaynaklarıdır. Yönetim grubu düzeyinde yerleşik bir ilke atarken, Tenantresourceıd işlevini kullanın.
 
   Yerleşik bir ilke tanımının kaynak KIMLIĞINI almak için şunu kullanın:
-  
+
   ```json
   "policyDefinitionId": "[tenantResourceId('Microsoft.Authorization/policyDefinitions', parameters('policyDefinitionID'))]"
   ```
@@ -138,6 +138,6 @@ Yukarıdaki örnekteki çıktı:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Şablonunuzda parametrelerin nasıl tanımlanacağını anlamak için bkz. [Azure Resource Manager şablonlarının yapısını ve sözdizimini anlayın](template-syntax.md).
+* Şablonunuzda parametrelerin nasıl tanımlanacağını anlamak için bkz. [ARM şablonlarının yapısını ve sözdizimini anlayın](template-syntax.md).
 * Yaygın dağıtım hatalarını çözümlemeye yönelik ipuçları için bkz. [Azure Resource Manager ile yaygın Azure dağıtım hatalarını giderme](common-deployment-errors.md).
-* SAS belirteci gerektiren bir şablonu dağıtma hakkında daha fazla bilgi için bkz. [özel şablonu SAS belirteci Ile dağıtma](secure-template-with-sas-token.md).
+* SAS belirteci gerektiren bir şablonu dağıtma hakkında daha fazla bilgi için bkz. [özel ARM ŞABLONUNU SAS belirteci Ile dağıtma](secure-template-with-sas-token.md).

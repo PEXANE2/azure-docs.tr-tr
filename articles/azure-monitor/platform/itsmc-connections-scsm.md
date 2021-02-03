@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 12/21/2020
-ms.openlocfilehash: 79706b66dba46253843b1f53a26481170d6ff723
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 907a78b15cca4718308f79bc6be2e6258bc04d19
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97729726"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99492680"
 ---
 # <a name="connect-system-center-service-manager-with-it-service-management-connector"></a>BT Hizmet Yönetimi Bağlayıcısı ile System Center Service Manager bağlama
 
@@ -32,7 +32,7 @@ Aşağıdaki önkoşulların karşılandığından emin olun:
 
 > [!NOTE]
 > - ITSM Bağlayıcısı, yalnızca bulut tabanlı ServiceNow örneklerine bağlanabilir. Şirket içi ServiceNow örnekleri şu anda desteklenmiyor.
-> - Eylemlerin bir parçası olarak özel [Şablonlar](./itsmc-definition.md#template-definitions) kullanmak IÇIN, SCSM şablonundaki "projectiontype" parametresi "IncidentManagement!" ile eşlenmelidir. System. WorkItem. Incident. ProjectionType "
+> - Eylemlerin bir parçası olarak özel [Şablonlar](./itsmc-definition.md#define-a-template) kullanmak IÇIN, SCSM şablonundaki "projectiontype" parametresi "IncidentManagement!" ile eşlenmelidir. System. WorkItem. Incident. ProjectionType "
 
 ## <a name="connection-procedure"></a>Bağlantı yordamı
 
@@ -165,6 +165,6 @@ Aşağıdaki örnek görüntüde başarılı bir bağlantının ayrıntıları g
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [ITSM Bağlayıcısı genel bakış](itsmc-overview.md)
+* [ITSM Bağlayıcısına Genel Bakış](itsmc-overview.md)
 * [Azure uyarılarından ıTSM iş öğeleri oluşturma](./itsmc-definition.md#create-itsm-work-items-from-azure-alerts)
 * [ITSM Bağlayıcısındaki sorunları giderme](./itsmc-resync-servicenow.md)

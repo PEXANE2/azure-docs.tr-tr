@@ -11,14 +11,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 06/12/2020
+ms.date: 01/27/2021
 ms.author: apimpm
-ms.openlocfilehash: 44ebd2d3084ab8df63f2c941e6e924e6f2a86d65
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 22d2960801cac2222f868c384a55b4bf436bc75b
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92071294"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99492612"
 ---
 # <a name="api-management-authentication-policies"></a>API Management kimlik doğrulaması ilkeleri
 Bu konu, aşağıdaki API Management ilkelerine yönelik bir başvuru sağlar. İlke ekleme ve yapılandırma hakkında daha fazla bilgi için bkz. [API Management ilkeleri](./api-management-policies.md).
@@ -56,8 +56,8 @@ Bu konu, aşağıdaki API Management ilkelerine yönelik bir başvuru sağlar. �
 
 |Ad|Açıklama|Gerekli|Varsayılan|
 |----------|-----------------|--------------|-------------|
-|username|Temel kimlik bilgisinin Kullanıcı adını belirtir.|Yes|YOK|
-|password|Temel kimlik bilgisinin parolasını belirtir.|Yes|YOK|
+|username|Temel kimlik bilgisinin Kullanıcı adını belirtir.|Yes|Yok|
+|password|Temel kimlik bilgisinin parolasını belirtir.|Yes|Yok|
 
 ### <a name="usage"></a>Kullanım
  Bu ilke, aşağıdaki ilke [bölümlerinde](./api-management-howto-policies.md#sections) ve [kapsamlarda](./api-management-howto-policies.md#scopes)kullanılabilir.
@@ -67,7 +67,10 @@ Bu konu, aşağıdaki API Management ilkelerine yönelik bir başvuru sağlar. �
 -   **İlke kapsamları:** tüm kapsamlar
 
 ##  <a name="authenticate-with-client-certificate"></a><a name="ClientCertificate"></a> İstemci sertifikası ile kimlik doğrulama
- `authentication-certificate`İstemci sertifikası kullanarak bir arka uç hizmetiyle kimlik doğrulaması yapmak için ilkeyi kullanın. Sertifikanın öncelikle [API Management](./api-management-howto-mutual-certificates.md) ve parmak izi ile tanımlanması gerekir.
+ `authentication-certificate`Bir istemci sertifikası kullanarak arka uç hizmetiyle kimlik doğrulaması yapmak için ilkeyi kullanın. Sertifikanın öncelikle [API Management](./api-management-howto-mutual-certificates.md) ve parmak izi veya sertifika kimliği (kaynak adı) ile tanımlanması gerekir. 
+
+> [!CAUTION]
+> Sertifika, Azure Key Vault depolanan bir sertifikaya başvuruyorsa, sertifika kimliğini kullanarak kimliği ayırt edin. Bir Anahtar Kasası sertifikası döndürüldüğünde, API Management içindeki parmak izi değişir ve bu, parmak izi tarafından tanımlanmışsa ilke yeni sertifikayı çözmeyecektir.
 
 ### <a name="policy-statement"></a>İlke ekstresi
 
@@ -77,18 +80,17 @@ Bu konu, aşağıdaki API Management ilkelerine yönelik bir başvuru sağlar. �
 
 ### <a name="examples"></a>Örnekler
 
-Bu örnekte istemci sertifikası parmak izi tarafından tanımlanır:
-
-```xml
-<authentication-certificate thumbprint="CA06F56B258B7A0D4F2B05470939478651151984" />
-```
-
-Bu örnekte, istemci sertifikası kaynak adı tarafından tanımlanır:
+Bu örnekte istemci sertifikası, sertifika KIMLIĞI tarafından tanımlanır:
 
 ```xml  
 <authentication-certificate certificate-id="544fe9ddf3b8f30fb490d90f" />  
 ``` 
 
+Bu örnekte istemci sertifikası parmak izi tarafından tanımlanır:
+
+```xml
+<authentication-certificate thumbprint="CA06F56B258B7A0D4F2B05470939478651151984" />
+```
 Bu örnekte, istemci sertifikası yerleşik sertifika deposundan alınmaktansa ilke içinde ayarlanır:
 
 ```xml
@@ -105,10 +107,10 @@ Bu örnekte, istemci sertifikası yerleşik sertifika deposundan alınmaktansa i
   
 |Ad|Açıklama|Gerekli|Varsayılan|  
 |----------|-----------------|--------------|-------------|  
-|#c0|İstemci sertifikası için parmak izi.|`thumbprint`Ya da `certificate-id` mevcut olmalıdır.|YOK|
-|sertifika kimliği|Sertifika kaynağı adı.|`thumbprint`Ya da `certificate-id` mevcut olmalıdır.|YOK|
-|body|Bir bayt dizisi olarak istemci sertifikası.|No|YOK|
-|password|İstemci sertifikası için parola.|' De belirtilen sertifika `body` parola korumalı ise kullanılır.|YOK|
+|#c0|İstemci sertifikası için parmak izi.|`thumbprint`Ya da `certificate-id` mevcut olmalıdır.|Yok|
+|sertifika kimliği|Sertifika kaynağı adı.|`thumbprint`Ya da `certificate-id` mevcut olmalıdır.|Yok|
+|body|Bir bayt dizisi olarak istemci sertifikası.|Hayır|Yok|
+|password|İstemci sertifikası için parola.|' De belirtilen sertifika `body` parola korumalı ise kullanılır.|Yok|
   
 ### <a name="usage"></a>Kullanım  
  Bu ilke, aşağıdaki ilke [bölümlerinde](./api-management-howto-policies.md#sections) ve [kapsamlarda](./api-management-howto-policies.md#scopes)kullanılabilir.  
@@ -182,10 +184,10 @@ Sistem tarafından atanan kimlik ve birden çok kullanıcı tarafından atanan k
   
 |Ad|Açıklama|Gerekli|Varsayılan|  
 |----------|-----------------|--------------|-------------|  
-|kaynak|Dize. Azure Active Directory içindeki hedef Web API 'sinin (güvenli kaynak) uygulama KIMLIĞI.|Yes|YOK|
-|istemci kimliği|Dize. Azure Active Directory içindeki kullanıcı tarafından atanan kimliğin uygulama KIMLIĞI.|No|sistem tarafından atanan kimlik|
-|çıkış-belirteç-değişken-adı|Dize. Bir nesne türü olarak belirteç değeri alacak bağlam değişkeninin adı `string` . |No|YOK|  
-|yoksayma-hata|Boolean. Olarak ayarlanırsa `true` , bir erişim belirteci alınmasa bile ilke ardışık düzeni yürütülmeye devam eder.|No|yanlış|  
+|kaynak|Dize. Azure Active Directory içindeki hedef Web API 'sinin (güvenli kaynak) uygulama KIMLIĞI.|Yes|Yok|
+|istemci kimliği|Dize. Azure Active Directory içindeki kullanıcı tarafından atanan kimliğin uygulama KIMLIĞI.|Hayır|sistem tarafından atanan kimlik|
+|çıkış-belirteç-değişken-adı|Dize. Bir nesne türü olarak belirteç değeri alacak bağlam değişkeninin adı `string` . |Hayır|Yok|  
+|yoksayma-hata|Boolean. Olarak ayarlanırsa `true` , bir erişim belirteci alınmasa bile ilke ardışık düzeni yürütülmeye devam eder.|Hayır|yanlış|  
   
 ### <a name="usage"></a>Kullanım  
  Bu ilke, aşağıdaki ilke [bölümlerinde](./api-management-howto-policies.md#sections) ve [kapsamlarda](./api-management-howto-policies.md#scopes)kullanılabilir.  

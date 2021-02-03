@@ -3,12 +3,12 @@ title: Çok günlük kayıtların kayıttan yürütülmesi-Azure
 description: Bu öğreticide, Azure Media Service API 'Lerini kullanarak çok günlü bir sürekli video kaydını kayıttan yürütmeyi öğreneceksiniz.
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: 1ec9260be7241057478b06446ac2aa53c14bcb47
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 81a778b40649c1318b3738a289f0db37fd35376a
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91803441"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99492797"
 ---
 # <a name="tutorial-playback-of-multi-day-recordings"></a>Öğretici: çok günlük kayıtları kayıttan yürütme  
 
@@ -57,7 +57,7 @@ Aşağıdaki belge sayfalarını okumanız önerilir:
 }
 ```
 
-Ardından, Visual Studio Code 'da src/AMS-varlık-Player ' ı açın. Bu klasör, bu öğretici için gerekli dosyaları içerir. appsettings.jsdosya üzerinde açın ve içeriğini yeni bir dosyaya kopyalayın, appsettings.development.js. İkinci dosyada aşağıdaki düzenlemeleri yapın:
+Ardından, Visual Studio Code 'da src/AMS-varlık-Player ' ı açın. Bu klasör, bu öğretici için gerekli dosyaları içerir. appsettings.jsdosya üzerinde açın ve içeriğini yeni bir dosyaya kopyalayın, appsettings.development.js. Üzerinde yeni oluşturulan appsettings.development.jsaşağıdaki düzenlemeleri yapın:
 
 ```
   "AMS" : {
@@ -74,12 +74,26 @@ Ardından, Visual Studio Code 'da src/AMS-varlık-Player ' ı açın. Bu klasör
 1. Sağ tıklayıp **uzantı ayarları**' nı seçin.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="Uzantı ayarları&quot;:::
-1. &quot;Ayrıntılı Iletiyi göster" i arayın ve etkinleştirin.
+    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="Uzantı ayarları":::
+1. "Ayrıntılı Iletiyi göster" i arayın ve etkinleştirin.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="Uzantı ayarları&quot;:::
-1. &quot;Ayrıntılı Iletiyi göster" düğmesinin nasıl seçili olduğunu aklınızda bulabilirsiniz.
+    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="Ayrıntılı Iletiyi göster":::
+1. <!--In Visual Studio Code, you can click-->Çalıştırılacak kullanılabilir uygulamaları görüntülemek için sol taraftaki Çalıştır simgesine (veya CTRL + SHIFT + D) tıklayın:
+
+    ![Ekran görüntüsü, seçili Çalıştır öğesiyle birlikte Visual Studio Code bir menü gösterir.](./media/playback-multi-day-recordings-tutorial/run.png)
+1. Aşağıda gösterildiği gibi açılan kutudan AMS varlık oynatıcı uygulamasını seçin ve hata ayıklamaya başlamak için F5 'e basın.
+
+    ![Ekran görüntüsü, AMS varlık yürütücüsü seçiliyken Visual Studio Code bir menü gösterir.](./media/playback-multi-day-recordings-tutorial/debug.png)
+
+Örnek uygulama, varsayılan tarayıcı uygulamanızı derleyip başlatacaktır ve AMS varlık oynatıcı sayfasını açar.
+
+> [!NOTE]
+> Tarayıcınızdaki güvenlik ayarlarına bağlı olarak, bir uyarı iletisi görebilirsiniz. Web sayfası yerel olarak çalıştığından, uyarıyı yok saymayı seçebilirsiniz.
+
+AMS varlık yürütücüsü, bir medya hizmeti varlığının adını girmenizi ister. Öğreticide video kaydetmek için kullandığınız varlığın adını kullanmanız gerekir [: sürekli video kaydı](continuous-video-recording-tutorial.md).
+
+Varlık adını yazdıktan ve Gönder ' i gönderdikten sonra, oynatıcı kodu akış URL 'sini yükler. Daha fazla bilgi için bkz. [nasıl yapılır Kılavuzu: kayıtları kayıttan yürütme](playback-recordings-how-to.md). Bu durumda, hala varlığına kayıt yapıyorsanız, Player bunu algılar ve kaydedilen videonun en son bölümüne kayıttan yürütmeyi işaret etmeye çalışır. Oynatıcının sol üst kısmındaki zaman damgasını (UTC olarak) görebilirsiniz. Aşağıdaki ekran görüntüsünde, "canlı" düğmesinin nasıl seçili olduğunu aklınızda bulabilirsiniz.
 
 ![Akış](./media/playback-multi-day-recordings-tutorial/assetplayer1.png)
  

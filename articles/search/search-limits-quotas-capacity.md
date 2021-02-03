@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 12/15/2020
-ms.openlocfilehash: 5d265fe02d801cf0d2d66be37a8dc2a220e19b34
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.date: 02/02/2021
+ms.openlocfilehash: 9e43521e26a6292141e1bbae7b39db3656df962c
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97591353"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493050"
 ---
 # <a name="service-limits-in-azure-cognitive-search"></a>Azure Bilişsel Arama'daki hizmet sınırları
 
@@ -139,7 +139,7 @@ Depolama için Iyileştirilmiş Katmanlar (L1 ve L2) için, standart katmanlarda
 
 ## <a name="throttling-limits"></a>Azaltma sınırları
 
-Sistem yoğun kapasiteye yaklaşırsa, arama sorgusu ve dizin oluşturma istekleri azaltılır. Kısıtlama, farklı API 'Ler için farklı davranır. Sorgu API 'Leri (arama/önerme/otomatik tamamlama) ve dizin oluşturma API 'Leri, hizmet üzerindeki yüke göre dinamik olarak azaldı. Dizin API 'Leri statik istek hızı sınırlarına sahiptir. 
+Sistem en yüksek kapasiteye yaklaşırsa, API istekleri kısıtlanıyor. Kısıtlama, farklı API 'Ler için farklı davranır. Sorgu API 'Leri (arama/önerme/otomatik tamamlama) ve dizin oluşturma API 'Leri, hizmet üzerindeki yüke göre dinamik olarak azaldı. Dizin API 'Leri ve hizmet işlemleri API 'SI statik istek hızı sınırlarına sahiptir. 
 
 Bir dizinle ilgili işlemler için statik hız isteği sınırları:
 
@@ -148,6 +148,10 @@ Bir dizinle ilgili işlemler için statik hız isteği sınırları:
 + Dizin Oluştur (POST/Indexes): arama birimi başına dakika başına 12
 + Dizin Oluştur veya güncelleştir (PUT/Indexes/MyIndex): arama birimi başına saniyede 6
 + Dizini Sil (DELETE/Indexes/MyIndex): arama birimi başına dakika başına 12 
+
+Bir hizmetle ilgili işlemler için statik hız isteği sınırları:
+
++ Hizmet Istatistikleri (GET/servicestats): her arama birimi için saniyede 4
 
 ## <a name="api-request-limits"></a>API isteği sınırları
 * <sup>1</sup> . istek başına en fazla 16 MB

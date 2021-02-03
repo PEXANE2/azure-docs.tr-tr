@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: overview
 ms.date: 10/13/2020
 ms.author: cherylmc
-ms.openlocfilehash: f4aa1ef29ffb27efb29d969e48af4cf5288e08ae
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 18672d76c262f8919489ccf132532c117666abe4
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183921"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99492187"
 ---
 # <a name="what-is-azure-bastion"></a>Azure Bastion nedir?
 
@@ -30,7 +30,7 @@ RDP ve SSH, Azure 'da çalışan iş yüklerinize bağlanmak için kullanabilece
 
 Bu şekilde, bir Azure savunma dağıtımının mimarisi gösterilmektedir. Bu diyagramda:
 
-* Savunma ana bilgisayarı sanal ağda dağıtılır.
+* Savunma ana bilgisayarı, en az/27 ön eki olan AzureBastionSubnet alt ağını içeren sanal ağda dağıtılır.
 * Kullanıcı herhangi bir HTML5 tarayıcısı kullanarak Azure portal bağlanır.
 * Kullanıcı, bağlanılacak sanal makineyi seçer.
 * Tek bir tıklama ile, RDP/SSH oturumu tarayıcıda açılır.

@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: reference
 ms.workload: identity
-ms.date: 04/15/2020
+ms.date: 02/02/2021
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: sureshja
-ms.openlocfilehash: d855e124c84dee8554073d05fa04fe078b92ddaa
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: cb7acb2ab74cc3f1304e5278524918865185463f
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98208898"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99491308"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Azure Active Directory uygulama bildirimi
 
@@ -450,7 +450,7 @@ Uygulama için doğrulanmış yayımcı etki alanı. Salt okunur.
 Örnek:
 
 ```json
-    "publisherDomain": "https://www.contoso.com",
+    "publisherDomain": "{tenant}.onmicrosoft.com",
 ```
 
 ### <a name="replyurlswithtype-attribute"></a>replyUrlsWithType özniteliği
@@ -555,7 +555,7 @@ Geçerli uygulama için hangi Microsoft hesaplarının desteklendiğini belirtir
 
 | Anahtar | Değer türü |
 | :--- | :--- |
-| tags | Dize dizisi  |
+| etiketler | Dize dizisi  |
 
 Uygulamayı kategorilere ayırmak ve tanımlamak için kullanılabilen özel dizeler.
 

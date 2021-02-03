@@ -3,12 +3,12 @@ title: Azure VM 'lerde performansı izleme-Azure Application Insights
 description: Azure VM ve Azure sanal makine ölçek kümeleri için uygulama performansı izleme. Grafik yükleme ve yanıt süresi, bağımlılık bilgileri ve performans üzerinde Uyarılar ayarlama.
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.openlocfilehash: 01583cf5ecb85e4f66538afaba6984bff455ea99
-ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
+ms.openlocfilehash: 48441711c8c6209b25974108fd91d1023fd6e6be
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99475463"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493745"
 ---
 # <a name="deploy-the-azure-monitor-application-insights-agent-on-azure-virtual-machines-and-azure-virtual-machine-scale-sets"></a>Azure sanal makineler ve Azure sanal makine ölçek kümelerinde Azure Izleyici Application Insights aracısını dağıtma
 
@@ -27,7 +27,7 @@ Bu makale, Application Insights Aracısı kullanarak Application Insights izleme
 
 Azure sanal makineleri ve Azure sanal makine ölçek kümeleri barındırılan uygulamalar için uygulama izlemeyi etkinleştirmenin iki yolu vardır:
 
-### <a name="auto-inctrumentation-via-application-insights-agent"></a>Application Insights Aracısı aracılığıyla otomatik inctrumentation
+### <a name="auto-instrumentation-via-application-insights-agent"></a>Application Insights Aracısı aracılığıyla otomatik izleme
 
 * Bu yöntem etkinleştirilmesi en kolayıdır ve gelişmiş yapılandırma gerekmez. Genellikle "çalışma zamanı" izleme olarak adlandırılır.
 

@@ -4,12 +4,12 @@ description: Visual Studio Code ' deki Azure Işlevleri uzantısını kullanarak
 ms.topic: quickstart
 ms.date: 11/04/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 0d7b98c44b85e17d084994bbcaa285c55c7a5e4d
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: e022843f95e5d5b52a15eaab2d28b6b9eb923006
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880853"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493575"
 ---
 # <a name="quickstart-create-a-function-in-azure-with-python-using-visual-studio-code"></a>Hızlı başlangıç: Visual Studio Code kullanarak Azure 'da Python ile bir işlev oluşturma
 
@@ -54,7 +54,8 @@ Bu bölümde, Python 'da yerel bir Azure Işlevleri projesi oluşturmak için Vi
 
     + **İşlev projeniz için bir dil seçin**: `Python` öğesini seçin.
 
-    + **Sanal ortam oluşturmak için bir Python diğer adı seçin**: Python yorumlayıcının konumunu seçin. Konum gösterilmemişse, Python ikilisinin tam yolunu yazın.  
+    + **Sanal ortam oluşturmak için bir Python diğer adı seçin**: Python yorumlayıcının konumunu seçin.  
+    Konum gösterilmemişse, Python ikilisinin tam yolunu yazın.  
 
     + **Projenizin ilk işlevi için bir şablon seçin**: `HTTP trigger` öğesini seçin.
 
@@ -81,15 +82,18 @@ Bu bölümde, Azure aboneliğinizde bir işlev uygulaması ve ilgili kaynaklar o
 
 1. Etkinlik çubuğunda Azure simgesini seçin, sonra **Azure: işlevler** alanında, **işlev uygulamasına dağıt uygulama...** düğmesini seçin.
 
-    ![Projenizi Azure'da yayımlama](./media/functions-create-first-function-vs-code/function-app-publish-project.png)
+    ![Projenizi Azure'da yayımlama](../../includes/media/functions-publish-project-vscode/function-app-publish-project.png)
 
 1. İstemlerde aşağıdaki bilgileri sağlayın:
 
-    + **Klasör seçin**: çalışma alanınızdan bir klasör seçin veya işlev uygulamanızı içeren bir klasöre gidin. Zaten açılmış geçerli bir işlev uygulamanız varsa bunu göremezsiniz.
+    + **Klasör seçin**: çalışma alanınızdan bir klasör seçin veya işlev uygulamanızı içeren bir klasöre gidin.   
+    Zaten açılmış geçerli bir işlev uygulamanız varsa bunu göremezsiniz.
 
-    + **Abonelik seçin**: kullanılacak aboneliği seçin. Yalnızca bir aboneliğiniz varsa bunu göremezsiniz.
+    + **Abonelik seçin**: kullanılacak aboneliği seçin.  
+    Yalnızca bir aboneliğiniz varsa bunu göremezsiniz.
 
-    + **Azure'daki işlev uygulamasını seçin**: `+ Create new Function App` öğesini seçin. ( `Advanced` Bu makalede kapsanmayan seçeneğini seçmeyin.)
+    + **Azure'daki işlev uygulamasını seçin**: `+ Create new Function App` öğesini seçin.  
+    ( `Advanced` Bu makalede kapsanmayan seçeneğini seçmeyin.)
 
     + **İşlev uygulaması için genel olarak benzersiz bir ad girin**: URL yolunda geçerli olan bir ad yazın. Yazdığınız ad, Azure Işlevlerinde benzersiz olduğundan emin olmak için onaylanır. 
 
@@ -97,17 +101,19 @@ Bu bölümde, Azure aboneliğinizde bir işlev uygulaması ve ilgili kaynaklar o
 
     + **Yeni kaynaklar için bir konum seçin**: daha iyi performans için, size yakın bir [bölge](https://azure.microsoft.com/regions/) seçin.
 
+    Uzantı, bildirim alanında Azure 'da oluşturulmakta olan ayrı kaynakların durumunu gösterir.
+
+    :::image type="content" source="../../includes/media/functions-publish-project-vscode/resource-notification.png" alt-text="Azure kaynak oluşturma bildirimi":::
+
 1. Tamamlandığında, aşağıdaki Azure kaynakları, işlev uygulamanızın adına göre adlar kullanılarak aboneliğinizde oluşturulur:
 
-    + İlgili kaynaklar için mantıksal kapsayıcı olan bir kaynak grubu.
-    + Projeleriniz hakkında durum ve diğer bilgileri tutan standart bir Azure depolama hesabı.
-    + Sunucusuz işlev uygulamanız için temel Konağı tanımlayan bir tüketim planı. 
-    + İşlev kodunuzu yürütmek için ortam sağlayan bir işlev uygulaması. İşlev uygulaması, aynı barındırma planı içindeki kaynakların daha kolay yönetilmesi, dağıtılması ve paylaşılması için işlevleri bir mantıksal birim olarak gruplandırmanıza olanak tanır.
-    + Sunucusuz işlevinizin kullanımını izleyen işlev uygulamasına bağlı bir Application Insights örneği.
+    [!INCLUDE [functions-vs-code-created-resources](../../includes/functions-vs-code-created-resources.md)]
 
     İşlev uygulamanız oluşturulduktan sonra bir bildirim görüntülenir ve dağıtım paketi uygulanır. 
 
-1. Oluşturduğunuz Azure kaynakları dahil olmak üzere oluşturma ve dağıtım sonuçlarını görüntülemek için bu bildirimde **çıktıyı görüntüle** ' yi seçin. Bildirimi kaçırırsanız, sağ alt köşedeki zil simgesini seçerek tekrar görüntüleyin.
+    [!INCLUDE [functions-vs-code-create-tip](../../includes/functions-vs-code-create-tip.md)]
+
+4. Oluşturduğunuz Azure kaynakları dahil olmak üzere oluşturma ve dağıtım sonuçlarını görüntülemek için bu bildirimde **çıktıyı görüntüle** ' yi seçin. Bildirimi kaçırırsanız, sağ alt köşedeki zil simgesini seçerek tekrar görüntüleyin.
 
     ![Tüm bildirimi oluştur](./media/functions-create-first-function-vs-code/function-create-notifications.png)
 
@@ -117,7 +123,7 @@ Bu bölümde, Azure aboneliğinizde bir işlev uygulaması ve ilgili kaynaklar o
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-HTTP ile tetiklenen basit bir işlevi kullanarak bir işlev uygulaması oluşturmak için Visual Studio Code’u kullandınız. Sonraki makalede, bir çıkış bağlaması ekleyerek bu işlevi genişletmelisiniz. Bu bağlama, HTTP isteğinden dizeyi bir Azure kuyruk depolama kuyruğundaki bir iletiye yazar. 
+Basit bir HTTP ile tetiklenen işlevi olan bir işlev uygulaması oluşturmak için [Visual Studio Code](functions-develop-vs-code.md?tabs=python) kullandınız. Sonraki makalede, Azure depolama 'ya bağlanarak bu işlevi genişletmelisiniz. Diğer Azure hizmetlerine bağlanma hakkında daha fazla bilgi edinmek için bkz. [Azure işlevleri 'nde var olan bir işleve bağlama ekleme](add-bindings-existing-function.md?tabs=python). 
 
 > [!div class="nextstepaction"]
 > [Azure depolama kuyruğuna bağlanma](functions-add-output-binding-storage-queue-vs-code.md?pivots=programming-language-python)

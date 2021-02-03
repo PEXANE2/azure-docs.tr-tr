@@ -1,6 +1,6 @@
 ---
 title: 'Hızlı başlangıç-C kullanarak sanal bir X. 509.440 cihazını Azure IoT Hub sağlama #'
-description: Hızlı başlangıç-Azure IoT Hub cihaz sağlama hizmeti (DPS) için C# cihaz SDK 'sını kullanarak sanal bir X. 509.440 cihazı oluşturun ve sağlayın. Bu hızlı başlangıçta bireysel kayıtlar kullanılmaktadır.
+description: Hızlı başlangıç-Azure IoT Hub cihaz sağlama hizmeti (DPS) için C# cihaz SDK 'sını kullanarak bir X. 509.440 cihazı oluşturun ve sağlayın. Bu hızlı başlangıçta bireysel kayıtlar kullanılmaktadır.
 author: wesmc7777
 ms.author: wesmc
 ms.date: 02/01/2021
@@ -9,18 +9,18 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: csharp
 ms.custom: mvc
-ms.openlocfilehash: a6e859a39cbcf867e3c0a21bb59c6154cbd47412
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: 06f1d34e7d8da9a3ece206fc1ff804accf9454ff
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99430602"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493863"
 ---
-# <a name="quickstart-create-and-provision-a-simulated-x509-device-using-c-device-sdk-for-iot-hub-device-provisioning-service"></a>Hızlı başlangıç: IoT Hub cihaz sağlama hizmeti için C# cihaz SDK 'sını kullanarak sanal bir X. 509.952 cihazı oluşturma ve sağlama
+# <a name="quickstart-create-and-provision-an-x509-device-using-c-device-sdk-for-iot-hub-device-provisioning-service"></a>Hızlı başlangıç: IoT Hub cihaz sağlama hizmeti için C# cihaz SDK 'sını kullanarak bir X. 509.440 cihazı oluşturma ve sağlama
 
 [!INCLUDE [iot-dps-selector-quick-create-simulated-device-x509](../../includes/iot-dps-selector-quick-create-simulated-device-x509.md)]
 
-Bu adımlar, Windows işletim sistemini çalıştıran bir geliştirme makinesinde bir X. 509.440 cihazının benzetimini yapmak için [C# için Azure IoT örnekleri](https://github.com/Azure-Samples/azure-iot-samples-csharp) 'ni nasıl kullanacağınızı gösterir. Örnek ayrıca, cihaz sağlama hizmeti 'ni kullanarak sanal cihazı bir IoT Hub da bağlar.
+Bu adımlarda, bir X. 509.440 cihazını sağlamak için [C# için Azure IoT örneklerinden](https://github.com/Azure-Samples/azure-iot-samples-csharp) cihaz kodunun nasıl kullanılacağı gösterilmektedir. Bu makalede, cihaz sağlama hizmeti 'ni kullanarak bir IoT Hub bağlanmak için geliştirme makinenizde cihaz örnek kodunu çalıştıracaksınız.
 
 Oto sağlama işlemini bilmiyorsanız, [sağlamaya](about-iot-dps.md#provisioning-process) genel bakış konusunu gözden geçirin. Ayrıca devam etmeden önce [IoT Hub Cihazı Sağlama Hizmetini Azure portalıyla ayarlama](./quick-setup-auto-provision.md) bölümünde bulunan adımları tamamladığınızdan emin olun. 
 
@@ -53,13 +53,13 @@ Bu makalede bireysel kayıtlar gösterilmektedir.
 
 ## <a name="create-a-self-signed-x509-device-certificate"></a>Otomatik olarak imzalanan X.509 sertifikası oluşturma
 
-Bu bölümde, `iothubx509device1` Konu ortak adı olarak kullanarak otomatik olarak imzalanan bir X. 509.440 test sertifikası oluşturacaksınız. Aşağıdakileri göz önünde bulundurmanız önemlidir:
+Bu bölümde, `iothubx509device1` Konu ortak adı olarak kullanarak otomatik olarak imzalanan bir X. 509.440 test sertifikası oluşturacaksınız. Aşağıdaki noktaları göz önünde bulundurmanız önemlidir:
 
 * Otomatik olarak imzalanan sertifikalar yalnızca test amaçlıdır ve üretimde kullanılmamalıdır.
 * Otomatik olarak imzalanan sertifikanın varsayılan sona erme tarihi bir yıldır.
 * IoT cihazının cihaz KIMLIĞI, sertifikadaki Konu ortak adı olacaktır. [CIHAZ kimliği dize gereksinimleriyle](../iot-hub/iot-hub-devguide-identity-registry.md#device-identity-properties)uyumlu bir konu adı kullandığınızdan emin olun.
 
-Sanal cihaz için bireysel kayıt girişiyle kullanılacak sertifikayı oluşturmak için, [aygıt Istemcisi örneği-X. 509.440 kanıtlama sağlayan](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/provisioning/Samples/device/X509Sample) örnek kodu kullanacaksınız.
+Cihaza yönelik bireysel kayıt girişiyle kullanılacak sertifikayı oluşturmak için [X509Sample](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/provisioning/Samples/device/X509Sample) 'deki örnek kodu kullanacaksınız.
 
 
 1. Bir PowerShell isteminde dizinleri X. 509.952 cihaz sağlama örneği için proje dizini olarak değiştirin.
@@ -106,7 +106,7 @@ Sanal cihaz için bireysel kayıt girişiyle kullanılacak sertifikayı oluştur
 3. **Kayıt Ekle** panelinde, aşağıdaki bilgileri girin:
    - Kimlik onay *Mekanizması* olarak **X.509**'u seçin.
    - *Birincil sertifika. pek veya. cer dosyası*' nın altında, önceki adımlarda oluşturulan sertifika **. cer** sertifika dosyasını seçmek için *Dosya Seç* ' i seçin.
-   - **Cihaz Kimliği** alanını boş bırakın. Cihazınız, cihaz kimliği X.509 sertifikasındaki ortak ad (CN) olan **iothubx509device1** olacak şekilde sağlanır. Bu değer aynı zamanda bireysel kayıt girişi için kayıt kimliği olarak kullanılır. 
+   - **Cihaz Kimliği** alanını boş bırakın. Cihazınız, cihaz kimliği X.509 sertifikasındaki ortak ad (CN) olan **iothubx509device1** olacak şekilde sağlanır. Bu ortak ad aynı zamanda tek kayıt girişinin kayıt KIMLIĞI için kullanılan ad olacaktır. 
    - İsteğe bağlı olarak, aşağıdaki bilgileri sağlayabilirsiniz:
        - Sağlama hizmetinizle bağlanacak IoT hub'ını seçin.
        - **Başlangıç cihaz ikizi durumu** alanını cihaz için istenen başlangıç yapılandırmasına göre güncelleştirin.
@@ -118,7 +118,7 @@ Sanal cihaz için bireysel kayıt girişiyle kullanılacak sertifikayı oluştur
 
 
 
-## <a name="provision-the-simulated-device"></a>Sanal cihazı sağlama
+## <a name="provision-the-device"></a>Cihazı sağlama
 
 1. Sağlama hizmetinizin **genel bakış** dikey penceresinden, **_kimlik kapsamı_** değerini aklınızda olun.
 
@@ -157,7 +157,7 @@ Sanal cihaz için bireysel kayıt girişiyle kullanılacak sertifikayı oluştur
     Finished.
     ```
 
-4. Cihazın sağlandığını doğrulayın. Sanal cihazın, sağlama hizmetinize bağlı olan IoT Hub 'ına başarıyla sağlanması sırasında, cihaz KIMLIĞI hub 'ın **IoT cihazları** dikey penceresinde görünür. 
+4. Cihazın sağlandığını doğrulayın. Cihazın, sağlama hizmetinize bağlı olan IoT Hub 'ına başarıyla sağlanması sırasında, cihazın **IoT cihazları** dikey PENCERESINDE cihaz kimliği görüntülenir. 
 
     ![Cihaz IOT hub'da kayıtlı](./media/quick-create-simulated-device-x509-csharp/registration.png) 
 
@@ -175,7 +175,7 @@ Cihaz istemci örneğini üzerinde çalışmaya ve keşfetmeye devam etmeyi plan
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, Windows makinenizde sanal bir X. 509.952 cihazı oluşturdunuz ve portaldaki Azure IoT Hub cihaz sağlama hizmetini kullanarak IoT Hub 'ınıza sağladınız. X. 509.952 cihazınızı programlı bir şekilde kaydetmeyi öğrenmek için, X. 509.440 cihazlarının programlı kaydı için hızlı başlangıç 'a geçin. 
+Bu hızlı başlangıçta, Azure IoT Hub cihaz sağlama hizmeti 'ni kullanarak IoT Hub 'ınıza bir X. 509.952 cihazı sağlamış olursunuz. X. 509.952 cihazınızı programlı bir şekilde kaydetmeyi öğrenmek için, X. 509.440 cihazlarının programlı kaydı için hızlı başlangıç 'a geçin. 
 
 > [!div class="nextstepaction"]
 > [Azure hızlı başlangıç-X. 509.440 cihazlarını Azure IoT Hub cihaz sağlama hizmeti 'ne kaydetme](quick-enroll-device-x509-csharp.md)

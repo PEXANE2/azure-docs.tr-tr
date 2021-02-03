@@ -103,6 +103,8 @@
       href: How-To/change-default-answer.md
     - name: Hizmet yapılandırması
       href: reference-app-service.md
+    - name: İçerik biçimi yönergeleri
+      href: reference-document-format-guidelines.md
     - name: İçerik ve veri biçimleri
       items:
         - name: İçerik biçimi yönergeleri

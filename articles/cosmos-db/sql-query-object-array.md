@@ -5,19 +5,43 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 01/07/2021
+ms.date: 02/02/2021
 ms.author: tisande
-ms.openlocfilehash: f959e4e230c1d9f89ad5141713b6a17a8cbb17a2
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 1dccb8e51fbc578f8f218fe1582f95f7bcaf42d7
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98018930"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493801"
 ---
 # <a name="working-with-arrays-and-objects-in-azure-cosmos-db"></a>Azure Cosmos DB diziler ve nesnelerle çalışma
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-Azure Cosmos DB SQL API 'sinin temel bir özelliği dizi ve nesne oluşturma 'dır.
+Azure Cosmos DB SQL API 'sinin temel bir özelliği dizi ve nesne oluşturma 'dır. Bu belge, [Aile veri kümesi](sql-query-getting-started.md#upload-sample-data)kullanılarak yeniden oluşturulabilen örnekleri kullanır.
+
+Bu veri kümesindeki örnek bir öğe aşağıda verilmiştir:
+
+```json
+{
+  "id": "AndersenFamily",
+  "lastName": "Andersen",
+  "parents": [
+     { "firstName": "Thomas" },
+     { "firstName": "Mary Kay"}
+  ],
+  "children": [
+     {
+         "firstName": "Henriette Thaulow",
+         "gender": "female",
+         "grade": 5,
+         "pets": [{ "givenName": "Fluffy" }]
+     }
+  ],
+  "address": { "state": "WA", "county": "King", "city": "Seattle" },
+  "creationDate": 1431620472,
+  "isRegistered": true
+}
+```
 
 ## <a name="arrays"></a>Diziler
 
@@ -72,7 +96,7 @@ Sonuçlar:
 ]
 ```
 
-## <a name="iteration"></a><a id="Iteration"></a>Mesinde
+## <a name="iteration"></a><a id="Iteration"></a>Yineleme
 
 SQL API 'si, FROM kaynağında [ın anahtar sözcüğüyle](sql-query-keywords.md#in) birlikte JSON dizileri üzerinde yineleme desteği sağlar. Aşağıdaki örnekte:
 
@@ -177,6 +201,8 @@ Sonuçlar:
 
 > [!NOTE]
 > Yineleme için ın anahtar sözcüğünü kullanırken, dizi dışında herhangi bir özelliği filtrelemez veya projenizle. Bunun yerine [birleştirmeleri](sql-query-join.md)kullanmanız gerekir.
+
+Ek örnekler için [Azure Cosmos DB diziler ile çalışırken blog gönderimizi](https://devblogs.microsoft.com/cosmosdb/understanding-how-to-query-arrays-in-azure-cosmos-db/)okuyun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

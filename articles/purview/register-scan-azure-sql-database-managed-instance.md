@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 12/01/2020
-ms.openlocfilehash: 2391a36c02e0bdfe0ea98be7f19fc64f1fbb676f
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: f9791fa8932792398efdea39fe0d39a967420596
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879940"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99491731"
 ---
 # <a name="register-and-scan-an-azure-sql-database-managed-instance"></a>Azure SQL veritabanı yönetilen örneğini kaydetme ve tarama
 
@@ -104,20 +104,6 @@ Hizmet sorumlusunun uygulama KIMLIĞI ve gizli anahtarı almak için gereklidir:
 1. Tamamlanacak **Oluştur** ' u seçin
 1. Anahtar Kasanızda purview 'a bağlı değilse, [Yeni bir Anahtar Kasası bağlantısı oluşturmanız](manage-credentials.md#create-azure-key-vaults-connections-in-your-azure-purview-account) gerekir
 1. Son olarak, taramanızı ayarlamak için hizmet sorumlusunu kullanarak [Yeni bir kimlik bilgisi oluşturun](manage-credentials.md#create-a-new-credential)
-
-### <a name="firewall-settings"></a>Güvenlik duvarı ayarları
-
-Veritabanı sunucunuz Azure bağlantılarının etkinleştirilmesini sağlamalıdır. Bu, Azure purview 'ın sunucuya ulaşmasını ve sunucuya bağlanmasını sağlar. [Azure 'ın Içinden bağlantılar](../azure-sql/database/firewall-configure.md#connections-from-inside-azure)Için nasıl yapılır kılavuzunu izleyebilirsiniz.
-
-1. Veritabanı hesabınıza gidin
-1. **Genel bakış** sayfasında sunucu adını seçin
-1. **Güvenlik > güvenlik duvarları ve sanal ağlar 'ı** seçin
-1. **Azure hizmetlerinin ve kaynaklarının bu sunucuya erişmesine Izin ver** için **Evet** ' i seçin
-
-    :::image type="content" source="media/register-scan-azure-sql-database/sql-firewall.png" alt-text="kaynakları kaydetme seçenekleri" border="true":::
-    
-> [!Note]
-> Şu anda Azure purview, VNET yapılandırmasını desteklemez. Bu nedenle, IP tabanlı güvenlik duvarı ayarları yapılamaz.
 
 ## <a name="register-an-azure-sql-database-managed-instance-data-source"></a>Azure SQL veritabanı yönetilen örnek veri kaynağını kaydetme
 

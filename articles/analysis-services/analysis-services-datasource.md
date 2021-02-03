@@ -4,15 +4,15 @@ description: Azure Analysis Services tablo 1200 ve daha yüksek veri modelleri i
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 01/21/2021
+ms.date: 02/02/2021
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: b778cf55ea485d7b3b4d3730d3659750f27b2697
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 6e558962ad8a84b5f44abe21bc7c0ab67a4861ba
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98685604"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493829"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Azure Analysis Services’ta desteklenen veri kaynakları
 
@@ -128,7 +128,9 @@ Provider=MSOLEDBSQL;Data Source=[server];Initial Catalog=[database];Authenticati
 
 ## <a name="oauth-credentials"></a>OAuth kimlik bilgileri
 
-Bellek içi modu, Azure SQL veritabanı, Azure SYNAPSE, Dynamics 365 ve SharePoint listesi ile 1400 ve daha yüksek uyumluluk düzeyinde tablolu modeller için OAuth kimlik bilgilerini destekler. Azure Analysis Services uzun süre çalışan yenileme işlemleri için zaman aşımlarını önlemek üzere OAuth veri kaynakları için belirteç yenilemeyi yönetir. Geçerli belirteçler oluşturmak için Power Query kullanarak kimlik bilgilerini ayarlayın.
+*Bellek içi* modu, Azure SQL veritabanı, Azure SYNAPSE, Dynamics 365 ve SharePoint listesi ile 1400 ve daha yüksek uyumluluk düzeyinde tablolu modeller için OAuth kimlik bilgilerini destekler. Geçerli belirteçler oluşturmak için Power Query kullanarak kimlik bilgilerini ayarlayın. Azure Analysis Services uzun süre çalışan yenileme işlemleri için zaman aşımlarını önlemek üzere OAuth veri kaynakları için belirteç yenilemeyi yönetir. 
+> [!NOTE]
+> Yönetilen belirteç yenilemesi, bir ağ geçidiyle erişilen veri kaynakları için desteklenmez. Örneğin, bir veya daha fazla karma sorgu veri kaynağına bir ağ geçidiyle erişilir ve/veya [Aspaas\alwaysusegateway](analysis-services-vnet-gateway.md) özelliği **true** olarak ayarlanır. 
 
 OAuth kimlik bilgileriyle doğrudan sorgu modu desteklenmez.
 

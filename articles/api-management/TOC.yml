@@ -68,6 +68,8 @@
           href: ./security-controls-policy.md
         - name: Güvenlik temeli
           href: security-baseline.md
+    - name: Arka Uçlar
+      href: backends.md
     - name: Abonelikler
       href: api-management-subscriptions.md
     - name: Sürümler
@@ -104,10 +106,10 @@
           href: import-function-app-as-api.md
         - name: Mantıksal Uygulamayı içeri aktarma
           href: import-logic-app-as-api.md
-        - name: Service Fabric uygulamasını içeri aktarma
-          href: ../service-fabric/service-fabric-tutorial-deploy-api-management.md
         - name: API’yi düzenleme
           href: edit-api.md
+        - name: Service Fabric arka ucunu yapılandırma
+          href: how-to-configure-service-fabric-backend.md
     - name: Sağlama ve ölçeklendirme
       items:
         - name: Kapasite ölçümü

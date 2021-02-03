@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 478ae6146caeb8a27cdaf13b7f33e421b8121afc
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: fa2d910c017d3cc626f737bdab50315aef8d1e77
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96741499"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99491394"
 ---
 # <a name="enable-azure-active-directory-self-service-password-reset-at-the-windows-sign-in-screen"></a>Windows oturum açma ekranında self servis parola sıfırlamayı Azure Active Directory etkinleştirme
 
@@ -40,7 +40,7 @@ Windows oturum açma ekranından SSPR kullanımı için aşağıdaki sınırlama
 - Hibrit Azure AD 'ye katılmış makineler, yeni parolayı kullanmak ve önbelleğe alınmış kimlik bilgilerini güncelleştirmek için bir etki alanı denetleyicisine görüşün ağ bağlantısı hattına sahip olmalıdır. Bu, cihazların kuruluşun iç ağı üzerinde veya şirket içi etki alanı denetleyicisine ağ erişimi olan bir VPN üzerinde olması gerektiği anlamına gelir.
 - Bir görüntü kullanıyorsanız, Sysprep 'i çalıştırmadan önce, CopyProfile adımını gerçekleştirmeden önce yerleşik yönetici için Web önbelleğinin temizlendiğinden emin olun. Bu adım hakkında daha fazla bilgi, [özel varsayılan kullanıcı profili kullanılırken destek makalesinde performans düşüklede](https://support.microsoft.com/help/4056823/performance-issue-with-custom-default-user-profile)bulunabilir.
 - Aşağıdaki ayarlar Windows 10 cihazlarında parola kullanma ve sıfırlama özelliğini kesintiye uğratabilecek şekilde bilinmektedir:
-    - V1909 öncesi Windows 10 sürümlerindeki ilke için Ctrl + Alt + Del gerekliyse, **parola sıfırlama** işlemi çalışmaz.
+    - Windows 10 ' daki ilke için Ctrl + Alt + Del gerekliyse **parola sıfırlama** işlemi çalışmaz.
     - Kilit ekranı bildirimleri kapalıysa, **parola sıfırlama** çalışmaz.
     - *Hidefastuseranahtarlama* etkin veya 1 olarak ayarlandı
     - *DontDisplayLastUserName* , etkin veya 1 olarak ayarlandı
@@ -51,6 +51,10 @@ Windows oturum açma ekranından SSPR kullanımı için aşağıdaki sınırlama
     - Etkileşimli oturum açma: CTRL + ALT + DEL = devre dışı isteme
     - *Disablelockscreenappnotifications* = 1 veya etkin
     - Windows SKU 'SU Home veya Professional sürümü değil
+
+> [!NOTE]
+> Bu sınırlamalar Ayrıca cihaz kilit ekranından Iş için Windows Hello PIN sıfırlaması için de geçerlidir.
+>
 
 ## <a name="windows-10-password-reset"></a>Windows 10 parola sıfırlama
 
@@ -101,7 +105,7 @@ Intune kullanarak oturum açma ekranından SSPR 'yi etkinleştirmek için yapıl
 Kayıt defteri anahtarını kullanarak SSPR 'yi oturum açma ekranında etkinleştirmek için aşağıdaki adımları izleyin:
 
 1. Yönetici kimlik bilgilerini kullanarak Windows BILGISAYARıNDA oturum açın.
-1. **Windows**  +  *Çalıştır* iletişim kutusunu açmak için Windows **R** tuşuna basın, ardından **Regedit** komutunu yönetici olarak çalıştırın
+1.   +  *Çalıştır* iletişim kutusunu açmak için Windows **R** tuşuna basın, ardından **Regedit** komutunu yönetici olarak çalıştırın
 1. Aşağıdaki kayıt defteri anahtarını ayarlayın:
 
     ```cmd

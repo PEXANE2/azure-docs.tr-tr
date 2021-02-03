@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c169847c96d10d1c9fb47b210bc85a15e0690e32
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 6117b1ac78faf84d73f5a78202709aec7a1f84d9
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98183124"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99492595"
 ---
 # <a name="frequently-asked-questions-identity-protection-in-azure-active-directory"></a>Azure Active Directory 'de sık sorulan sorular kimlik koruması
 
@@ -37,7 +37,7 @@ Azure AD Kimlik Koruması müşteriyseniz, [riskli kullanıcılar](howto-identit
 
 ### <a name="why-was-my-sign-in-blocked-but-identity-protection-didnt-generate-a-risk-detection"></a>Oturum açma, neden engelleniyor, ancak kimlik koruması risk algılama işlemi oluşturmaz mi?
 Oturum açma işlemleri, çeşitli nedenlerle engellenebilir. Kimlik koruması, kimlik doğrulama isteğinde doğru kimlik bilgileri kullanıldığında yalnızca risk algılamalarını ürettiğine dikkat edin. Bir Kullanıcı yanlış kimlik bilgilerini kullanıyorsa, kötü bir aktör doğru kimlik bilgilerini kullanmadığı takdirde kimlik bilgilerinin güvenliğinin olmaması nedeniyle kimlik koruması tarafından işaretlenmeyecektir. Bir kullanıcının bir kimlik koruması algılaması üretmeyecek bir şekilde imzalanmasına neden olabilecek bazı nedenler şunlardır:
-* IP adresinden gelen kötü amaçlı etkinlik nedeniyle **IP engelleniyor olabilir** . IP engellenen ileti, kimlik bilgilerinin doğru olup olmadığını ayırt etmez. IP engellenirse ve kimlik bilgileri doğru değilse, Kimlik Koruması Algılama işlemi oluşturmaz
+* IP adresinden gelen kötü amaçlı etkinlik nedeniyle **IP engelleniyor** olabilir. IP engellenen ileti, kimlik bilgilerinin doğru olup olmadığını ayırt etmez. IP engellenirse ve kimlik bilgileri doğru değilse, Kimlik Koruması Algılama işlemi oluşturmaz
 * **[Akıllı kilitleme](../authentication/howto-password-smart-lockout.md)** , birden çok başarısız girişimden sonra hesabın oturum açmasını engelleyebilir
 * Bir kimlik doğrulama isteğini engellemek için risk düzeyinden farklı koşulları kullanan **koşullu erişim ilkesi** zorlanabilir
 

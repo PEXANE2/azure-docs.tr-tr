@@ -4,23 +4,20 @@ description: Bu konuda, şirket içinde barındırılan Azure API Management Gat
 services: api-management
 documentationcenter: ''
 author: vladvino
-manager: gwallace
-editor: ''
 ms.service: api-management
-ms.workload: integration
 ms.topic: article
 ms.date: 03/31/2020
 ms.author: apimpm
-ms.openlocfilehash: 0894203be4867e305c8e15467a2a867b9bfdc727
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d52bf87b74ae9b1770ed5092738fd05eb9f54fde
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86506817"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99491041"
 ---
-# <a name="configure-a-custom-domain-name"></a>Özel bir etki alanı adı yapılandırma
+# <a name="configure-a-custom-domain-name-for-a-self-hosted-gateway"></a>Şirket içinde barındırılan ağ geçidi için özel etki alanı adı yapılandırma
 
-Şirket içinde barındırılan bir [Azure API Management Gateway](self-hosted-gateway-overview.md) sağladığınızda konak adı ATANMAZ ve IP adresi tarafından başvurulmalıdır. Bu makalede, şirket içinde barındırılan bir ağ geçidinin mevcut bir özel DNS adını (konak adı olarak da bilinir) nasıl eşleyebileceğiniz gösterilmektedir.
+Şirket içinde barındırılan bir [Azure API Management Gateway](self-hosted-gateway-overview.md)sağladığınızda, bir ana bilgisayar adı ATANMAZ ve IP adresi tarafından başvurulmalıdır. Bu makalede, mevcut bir özel DNS adının (ana bilgisayar adı olarak da bilinir) şirket içinde barındırılan bir ağ geçidine nasıl eşleneceğini gösterir.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -34,24 +31,22 @@ Bu makalede açıklanan adımları gerçekleştirmek için şunları yapmanız g
 - Şirket içinde barındırılan ağ geçidi. Daha fazla bilgi için bkz. [Şirket içinde barındırılan ağ geçidini sağlama](api-management-howto-provision-self-hosted-gateway.md)
 -   Siz veya kuruluşunuzun sahip olduğu özel bir etki alanı adı. Bu konu, özel bir etki alanı adını nasıl temin etmek için yönergeler sağlamaz.
 -   Özel etki alanı adını kendi kendine barındırılan ağ geçidinin IP adresine eşleyen bir DNS sunucusunda barındırılan bir DNS kaydı. Bu konu, bir DNS kaydını barındırmak için yönergeler sağlamaz.
--   Ortak ve özel anahtarı olan geçerli bir sertifikanız olmalıdır (. PFX). Konu veya konu diğer adı (SAN), etki alanı adıyla eşleşmelidir (Bu API Management örneğinin, TLS üzerinden URL 'Leri güvenli bir şekilde kullanıma sunmasına olanak sağlar).
+-   Ortak ve özel anahtarı olan geçerli bir sertifikanız olmalıdır (. PFX). Konu veya konu diğer adı (SAN), etki alanı adıyla eşleşmelidir (Bu, API Management örneğinin, TLS üzerinden URL 'Leri güvenli bir şekilde kullanıma sunmasına olanak sağlar).
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
 ## <a name="add-custom-domain-certificate-to-your-api-management-service"></a>API Management hizmetinize özel etki alanı sertifikası ekleme
 
-1. **Güvenlik**altında **Sertifikalar** ' ı seçin.
-2. **+ Ekle**'yi seçin.
-3. Sertifika için **kimlik** alanına bir kaynak adı girin.
-4. Sertifikayı içeren dosyayı seçin (. PFX) **sertifika** alanını veya yanındaki klasör simgesini seçerek.
-5. **Parola** alanına sertifika parolasını girin.
-6. Sertifikayı API Management hizmetinize eklemek için **Oluştur** ' u seçin.
+Özel bir etki alanı sertifikası (. PFX) dosyası API Management örneğine veya Azure Key Vault depolanan bir sertifikaya başvuru. [Azure API Management 'de istemci sertifikası kimlik doğrulamasını kullanarak güvenli arka uç hizmetlerindeki](api-management-howto-mutual-certificates.md)adımları izleyin.
+
+> [!NOTE]
+> Şirket içinde barındırılan ağ geçidi etki alanı için bir Anahtar Kasası sertifikası kullanmanızı öneririz.
 
 ## <a name="use-the-azure-portal-to-set-a-custom-domain-name-for-your-self-hosted-gateway"></a>Şirket içinde barındırılan ağ geçidiniz için özel bir etki alanı adı ayarlamak üzere Azure portal kullanın
 
-1. **Dağıtım ve altyapı**altında **ağ geçitlerini** seçin.
+1. **Dağıtım ve altyapı** altında **ağ geçitlerini** seçin.
 2. Etki alanı adını yapılandırmak istediğiniz şirket içinde barındırılan ağ geçidini seçin.
-3. **Ayarlar**altında **ana bilgisayar adları** ' nı seçin.
+3. **Ayarlar** altında **ana bilgisayar adları** ' nı seçin.
 4. **+ Ekle** ' yi seçin
 5. **Ad** alanına ana bilgisayar adının kaynak adını girin.
 6. **Ana bilgisayar** adı alanına etki alanı adını girin.

@@ -3,12 +3,12 @@ title: İlke tanımı yapısının ayrıntıları
 description: Kuruluşunuzda Azure kaynakları için kural oluşturmak üzere ilke tanımlarının nasıl kullanıldığını açıklar.
 ms.date: 10/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 6e04551a2ef2f890844693fec71d2d3232a456f2
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 607d1d85dbb370305d0337cc311433c37e36c4c0
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98220822"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493320"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure İlkesi tanım yapısı
 
@@ -116,7 +116,7 @@ Aşağıdaki kaynak sağlayıcısı modları Şu anda **Önizleme** olarak deste
 > [!NOTE]
 > Kaynak sağlayıcısı modları yalnızca yerleşik ilke tanımlarını destekler ve [muafiyetleri](./exemption-structure.md)desteklemez.
 
-## <a name="metadata"></a>Meta Veriler
+## <a name="metadata"></a>Meta veri
 
 İsteğe bağlı `metadata` özelliği, ilke tanımıyla ilgili bilgileri depolar. Müşteriler, ' de kuruluşları için yararlı olan özellikleri ve değerleri tanımlayabilir `metadata` . Ancak, Azure Ilkesi tarafından ve yerleşik olarak kullanılan bazı _ortak_ özellikler vardır.
 
@@ -348,7 +348,7 @@ Aşağıdaki örnekte, `concat` **TagName** parametresinin değeri adlı etiket 
                 "value": "[resourcegroup().tags[parameters('tagName')]]"
             }],
             "roleDefinitionIds": [
-                "/providers/microsoft.authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c"
+                "/providers/microsoft.authorization/roleDefinitions/4a9ae827-6dc8-4573-8ac7-8239d42aa03f"
             ]
         }
     }
@@ -884,7 +884,7 @@ Diğer adların listesi her zaman büyüyordur. Şu anda Azure Ilkesi tarafında
   > Get-AzPolicyAlias | Select-Object -ExpandProperty 'Aliases' | Where-Object { $_.DefaultMetadata.Attributes -eq 'Modifiable' }
   > ```
 
-- Azure CLI
+- Azure CLI’si
 
   ```azurecli-interactive
   # Login first with az login if not using Cloud Shell

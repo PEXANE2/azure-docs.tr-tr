@@ -11,18 +11,21 @@ ms.topic: reference
 ms.date: 08/24/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 4237aba81a01423a3356a30879fbd27450c876bd
-ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
+ms.openlocfilehash: 491549933817a127a92180b0e4b455e461e4d3a2
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97976512"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99492255"
 ---
 # <a name="page-layout-versions"></a>Sayfa düzeni sürümleri
 
 Sayfa düzeni paketleri, sayfa öğelerinde düzeltmeler ve iyileştirmeler içerecek şekilde düzenli olarak güncelleştirilir. Aşağıdaki değişiklik günlüğü her sürümde tanıtılan değişiklikleri belirtir.
 
 ## <a name="self-asserted-page-selfasserted"></a>Otomatik olarak onaylanan sayfa (selfasted)
+
+**2.1.2**
+- Ispanyolca ve Fransızca gibi diller için yerelleştirme kodlama sorunu düzeltildi.
 
 **2.1.1**
 
@@ -71,6 +74,10 @@ Sayfa düzeni paketleri, sayfa öğelerinde düzeltmeler ve iyileştirmeler içe
 
 ## <a name="unified-sign-in-sign-up-page-with-password-reset-link-unifiedssp"></a>Parola sıfırlama bağlantısı ile Birleşik oturum açma sayfası (unifiedssp)
 
+**2.1.2**
+- Ispanyolca ve Fransızca gibi diller için yerelleştirme kodlama sorunu düzeltildi.
+- "Parolayı unuttum" bağlantısının, sosyal ıDP gibi talep değişim olarak kullanımına izin veriliyor.
+
 **2.1.1**
 - `heading` `intro` Sayfada başlık olarak görüntülenmek için öğesine ek olarak bir uxstring eklendi. Bu, varsayılan olarak gizlidir.
 - Düzeni seçmek için ilkeyi veya QueryString parametresini kullanma desteği eklendi `pageFlavor` (klasik, oceanBlue veya slateGray).
@@ -112,7 +119,7 @@ Sayfa düzeni paketleri, sayfa öğelerinde düzeltmeler ve iyileştirmeler içe
 - `heading` `intro` Sayfada başlık olarak görüntülenmek için öğesine ek olarak bir uxstring eklendi. Bu, varsayılan olarak gizlidir.  
 - Düzeni seçmek için ilkeyi veya QueryString parametresini kullanma desteği eklendi `pageFlavor` (klasik, oceanBlue veya slateGray).
 
-**1.2.1'i**
+**1.2.1**
 
 - Varsayılan şablonlarda erişilebilirlik düzeltmeleri
 

@@ -11,12 +11,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 07/16/2020
 ms.custom: contperf-fy20q4, tracking-python, contperf-fy21q1
-ms.openlocfilehash: 131feaf6ff01659b7d126604a5d081275e64508f
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 9ef339fb0ccd14314a65d03b59e501069446c870
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97029575"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493846"
 ---
 # <a name="secure-an-azure-machine-learning-training-environment-with-virtual-networks"></a>Sanal ağlarla Azure Machine Learning eğitim ortamının güvenliğini sağlama
 
@@ -62,16 +62,19 @@ Bir sanal ağda [yönetilen Azure Machine Learning __işlem hedefi__](concept-co
 > * Çalışma alanı için Azure depolama hesabı bir sanal ağda da güvenlik altına alınırsa, Azure Machine Learning işlem örneğiyle veya kümeyle aynı sanal ağda olmaları gerekir. 
 > * İşlem örneği jupi işlevinin çalışması için, Web yuva iletişiminin devre dışı bırakılmadığından emin olun. Lütfen ağınızın *. instances.azureml.net ve *. instances.azureml.ms öğesine WebSocket bağlantılarına izin verdiğinden emin olun. 
 > * İşlem örneği bir özel bağlantı çalışma alanında dağıtıldığında, yalnızca sanal ağ içinden erişilebilir. Özel DNS veya hosts dosyası kullanıyorsanız, lütfen `<instance-name>.<region>.instances.azureml.ms` çalışma alanı özel uç noktasının özel IP adresi ile için bir giriş ekleyin. Daha fazla bilgi için bkz. [özel DNS](./how-to-custom-dns.md) makalesi.
+> * İşlem kümesi/örneği dağıtmak için kullanılan alt ağ, ACI gibi başka bir hizmete devredilemez olmalıdır
+> * Sanal ağ hizmeti uç noktası ilkeleri işlem kümesi/örnek sistem depolama hesapları için çalışmıyor
+
     
 > [!TIP]
 > Machine Learning işlem örneği veya kümesi, __sanal ağı içeren kaynak grubunda__ ek ağ kaynaklarını otomatik olarak ayırır. Her işlem örneği veya kümesi için hizmet aşağıdaki kaynakları ayırır:
 > 
 > * Bir ağ güvenlik grubu
-> * Bir genel IP adresi
+> * Tek bir genel IP adresi. Azure ilkeniz genel IP oluşturmayı yasakladıysanız, küme/örnek dağıtımı başarısız olur
 > * Bir yük dengeleyici
 > 
 > Kümeler söz konusu olduğunda, küme 0 düğümlere her ölçeklendirilirken bu kaynaklar silinir (ve yeniden oluşturulur), ancak örnek için kaynaklar tamamen silinene kadar (durduruluyor, kaynakları kaldırmaz). 
-> Bu kaynaklar, aboneliğin [kaynak kotalarıyla](../azure-resource-manager/management/azure-subscription-service-limits.md) sınırlıdır.
+> Bu kaynaklar, aboneliğin [kaynak kotalarıyla](../azure-resource-manager/management/azure-subscription-service-limits.md) sınırlıdır. Sanal ağ kaynak grubu kilitliyse, işlem kümesini/örneğini silme işlemi başarısız olur. İşlem kümesi/örnek silinene kadar yük dengeleyici silinemez.
 
 
 ### <a name="required-ports"></a><a id="mlcports"></a> Gerekli bağlantı noktaları

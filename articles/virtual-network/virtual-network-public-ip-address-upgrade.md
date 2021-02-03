@@ -16,19 +16,19 @@ ms.workload: infrastructure-services
 ms.date: 12/08/2020
 ms.author: blehr
 ms.custom: references_regions
-ms.openlocfilehash: d6e8c4f4b6646254aeea12cf587f47047e661e3f
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 93d5d422709fad3d4f732b3b232f67d60d79b507
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222879"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493728"
 ---
 # <a name="upgrade-public-ip-addresses"></a>Genel IP adreslerini yükseltme
 
-Azure genel IP adresleri, işlevlerinin yönlerini (ayırma yöntemi, kullanılabilirlik alanları genelinde kullanım ve bunlarla ilişkilendirilebilen kaynakları dahil) belirleyen bir SKU 'SU (temel veya standart) ile oluşturulur. 
+Azure genel IP adresleri, işlevlerinin yönlerini (ayırma yöntemi, özellik desteği ve ilişkilendirilebilen kaynaklar dahil olmak üzere) belirleyen bir SKU 'SU (temel veya standart) ile oluşturulur. 
 
 Bu makalede aşağıdaki senaryolar incelenmelidir:
-* Temel SKU genel IP 'sini standart SKU genel IP 'ye yükseltme (portal, PowerShell veya CLı kullanarak)
+* Temel SKU genel IP 'sini standart SKU genel IP 'ye yükseltme (PowerShell veya CLı kullanarak)
 * Klasik bir Azure Ayrılmış IP Azure Resource Manager temel SKU genel IP 'ye geçirme
 
 ## <a name="upgrade-public-ip-address-from-basic-to-standard-sku"></a>Genel IP adresini temel sunucudan standart SKU 'ya yükseltme

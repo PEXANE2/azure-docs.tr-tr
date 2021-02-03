@@ -2,15 +2,15 @@
 title: Linux Python uygulamalarını yapılandırma
 description: Hem Azure portal hem de Azure CLı kullanarak Web uygulamalarının çalıştırıldığı Python kapsayıcısını nasıl yapılandıracağınızı öğrenin.
 ms.topic: quickstart
-ms.date: 11/16/2020
+ms.date: 02/01/2021
 ms.reviewer: astay; kraigb
 ms.custom: mvc, seodec18, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 7589b5c66bf4fa86db243574f551ec585ccccea1
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 83c49eea8bda10d665c0a08666276e905c60c584
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96855065"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493711"
 ---
 # <a name="configure-a-linux-python-app-for-azure-app-service"></a>Azure App Service için bir Linux Python uygulaması yapılandırma
 
@@ -22,7 +22,7 @@ Bu kılavuz, App Service içinde yerleşik bir Linux kapsayıcısı kullanan Pyt
 
 Yapılandırma için [Azure Portal](https://portal.azure.com) ya da Azure CLI 'yi kullanabilirsiniz:
 
-- **Azure Portal**, **Settings**  >  [Azure Portal App Service uygulama yapılandırma](configure-common.md)sayfasında açıklandığı şekilde uygulamanın Ayarlar **yapılandırma** sayfasını kullanın.
+- **Azure Portal**,   >  [Azure Portal App Service uygulama yapılandırma](configure-common.md)sayfasında açıklandığı şekilde uygulamanın Ayarlar **yapılandırma** sayfasını kullanın.
 
 - **Azure CLI**: iki seçeneğiniz vardır.
 
@@ -67,10 +67,13 @@ Bunun yerine kendi kapsayıcı görüntünüzü oluşturarak desteklenmeyen bir 
 
 App Service, Oryx olarak adlandırılan yapı sistemi, git veya ZIP paketleri kullanarak uygulamanızı dağıtırken aşağıdaki adımları gerçekleştirir:
 
-1. Bu ayar tarafından belirtilmişse özel bir ön derleme betiği çalıştırın `PRE_BUILD_COMMAND` .
+1. Bu ayar tarafından belirtilmişse özel bir ön derleme betiği çalıştırın `PRE_BUILD_COMMAND` . (Komut dosyası, diğer Python ve Node.js betikleri, PI ve NPM komutlarını ve Yarn gibi düğüm tabanlı araçları ve örneğin, `yarn install` ve `yarn build` .) çalıştırabilir.
+
 1. Şu komutu çalıştırın: `pip install -r requirements.txt`. *requirements.txt* dosya projenin kök klasöründe bulunmalıdır. Aksi takdirde, yapı işlemi şu hatayı raporlar: "setup.py bulunamadı veya requirements.txt; Pınstall çalışmıyor. "
+
 1. Depo kökünde *Manage.py* bulunursa (bir Docgo uygulaması olduğunu), *Manage.py collectstatic* komutunu çalıştırın. Ancak, `DISABLE_COLLECTSTATIC` ayar ise, `true` Bu adım atlanır.
-1. Ayar tarafından belirtilmişse özel derleme sonrası betiği çalıştırın `POST_BUILD_COMMAND` .
+
+1. Ayar tarafından belirtilmişse özel derleme sonrası betiği çalıştırın `POST_BUILD_COMMAND` . (Yine de betik, diğer Python ve Node.js betikleri, PIP ve NPM komutları ve düğüm tabanlı araçları çalıştırabilir.)
 
 Varsayılan olarak,, `PRE_BUILD_COMMAND` `POST_BUILD_COMMAND` ve `DISABLE_COLLECTSTATIC` ayarları boştur. 
 
@@ -131,6 +134,52 @@ Aşağıdaki tabloda, Azure ile ilgili üretim ayarları açıklanmaktadır. Bu 
 | `ALLOWED_HOSTS` | Üretimde, Docgo, uygulamanın URL 'sini `ALLOWED_HOSTS` *Settings.py* dizisine dahil etmeniz gerekir. Bu URL 'YI çalışma zamanında bu kodla elde edebilirsiniz `os.environ['WEBSITE_HOSTNAME']` . App Service, `WEBSITE_HOSTNAME` ortam değişkenini otomatik olarak uygulamanın URL 'si olarak ayarlar. |
 | `DATABASES` | Veritabanı bağlantısı için App Service ayarları tanımlayın ve sözlüğü doldurmak için ortam değişkenleri olarak yükleyin [`DATABASES`](https://docs.djangoproject.com/en/3.1/ref/settings/#std:setting-DATABASES) . Değerleri (özellikle Kullanıcı adı ve parola) [gizli Azure Key Vault](../key-vault/secrets/quick-create-python.md)olarak saklayabilirsiniz. |
 
+## <a name="serve-static-files-for-django-apps"></a>Docgo uygulamaları için statik dosyaları sunma
+
+Docgo Web uygulamanız statik ön uç dosyaları içeriyorsa, önce Docgo belgelerindeki [statik dosyaları yönetme](https://docs.djangoproject.com/en/3.1/howto/static-files/) yönergelerini izleyin.
+
+App Service için aşağıdaki değişiklikleri yapın:
+
+1. Docgo ve değişkenlerini dinamik olarak ayarlamak için ortam değişkenlerini (yerel geliştirme için) ve uygulama ayarlarını (buluta dağıtıldığında) kullanmayı düşünün `STATIC_URL` `STATIC_ROOT` . Örneğin:    
+
+    ```python
+    STATIC_URL = os.environ.get("DJANGO_STATIC_URL", "/static/")
+    STATIC_ROOT = os.environ.get("DJANGO_STATIC_ROOT", "./static/")    
+    ```
+
+    `DJANGO_STATIC_URL` ve, `DJANGO_STATIC_ROOT` yerel ve bulut ortamlarınız için gerektiği şekilde değiştirilebilir. Örneğin, statik dosyalarınız için yapı işlemi bunları adlı bir klasöre yerleştirse `django-static` , `DJANGO_STATIC_URL` varsayılan değer kullanmaktan kaçınmak için olarak ' i ayarlayabilirsiniz `/django-static/` .
+
+1. Farklı bir klasörde statik dosyalar üreten bir ön derleme `STATICFILES_DIRS` betiğiniz varsa, docgo değişkeninin bu klasörü, DIGO 'un `collectstatic` işlemesini bulduğu şekilde ekleyin. Örneğin, `yarn build` ön uç klasörünüzde çalıştırırsanız ve Yarn `build/static` statik dosyalar içeren bir klasör oluşturursa, bu klasörü şu şekilde ekleyin:
+
+    ```python
+    FRONTEND_DIR = "path-to-frontend-folder" 
+    STATICFILES_DIRS = [os.path.join(FRONTEND_DIR, 'build', 'static')]    
+    ```
+
+    Burada, `FRONTEND_DIR` Yarn gibi bir yapı aracının çalıştırıldığı bir yol oluşturmak için. Bir ortam değişkenini ve uygulama ayarını istediğiniz gibi kullanabilirsiniz.
+
+1. `whitenoise` *requirements.txt* dosyanıza ekleyin. [Whitenoıse](http://whitenoise.evans.io/en/stable/) (whitenoise.Evans.io), bir üretim Docgo uygulamasının kendi statik dosyalarını kullanmasını kolaylaştıran bir Python paketidir. Whitenoıse, Docgo değişkeni tarafından belirtilen klasörde bulunan dosyaları özellikle sunar `STATIC_ROOT` .
+
+1. *Settings.py* dosyanıza şu satırı ekleyin:
+
+    ```python
+    STATICFILES_STORAGE = ('whitenoise.storage.CompressedManifestStaticFilesStorage')
+    ```
+
+1. Ayrıca, `MIDDLEWARE` ve `INSTALLED_APPS` listelerini de içerecek şekilde değiştirin:
+
+    ```python
+    MIDDLEWARE = [
+        "whitenoise.middleware.WhiteNoiseMiddleware",
+        # Other values follow
+    ]
+
+    INSTALLED_APPS = [
+        "whitenoise.runserver_nostatic",
+        # Other values follow
+    ]
+    ```
+
 ## <a name="container-characteristics"></a>Kapsayıcı özellikleri
 
 App Service 'ye dağıtıldığında, Python uygulamaları [App Service Python GitHub deposunda](https://github.com/Azure-App-Service/python)tanımlanan bir Linux Docker kapsayıcısı içinde çalışır. Görüntü yapılandırmasını sürüme özgü dizinler içinde bulabilirsiniz.
@@ -150,6 +199,8 @@ Bu kapsayıcı aşağıdaki özelliklere sahiptir:
 
 - App Service `WEBSITE_HOSTNAME` , Web uygulamasının URL 'si ile adlı bir ortam değişkenini otomatik olarak tanımlar, örneğin `msdocs-hello-world.azurewebsites.net` . Ayrıca `WEBSITE_SITE_NAME` , uygulamanızın adıyla da tanımlar `msdocs-hello-world` . 
    
+- NPM ve Node.js kapsayıcıda yüklüdür, böylece Yarn gibi düğüm tabanlı derleme araçlarını çalıştırabilirsiniz.
+
 ## <a name="container-startup-process"></a>Kapsayıcı başlangıç işlemi
 
 Başlatma sırasında Linux'ta App Service kapsayıcısı şu adımları çalıştırır:
@@ -270,7 +321,7 @@ Uygulama ayarları, uygulama [ayarlarını yapılandırma](configure-common.md#c
 ```python
 db_server = os.environ['DATABASE_SERVER']
 ```
-    
+
 ## <a name="detect-https-session"></a>HTTPS oturumunu Algıla
 
 App Service, [SSL sonlandırma](https://wikipedia.org/wiki/TLS_termination_proxy) (wikipedia.org) ağ yükü dengeleyicilerde meydana gelir. bu nedenle, tüm https istekleri UYGULAMANıZA şifrelenmemiş HTTP istekleri olarak ulaşacak. Uygulama mantığınızın kullanıcı isteklerinin şifrelenip şifrelenmediğini denetlemesi gerekiyorsa, `X-Forwarded-Proto` üstbilgiyi inceleyin.
@@ -286,7 +337,7 @@ Popüler Web çerçeveleri `X-Forwarded-*` Standart uygulama hiyerarşinizdeki b
 
 [!INCLUDE [Access diagnostic logs](../../includes/app-service-web-logs-access-linux-no-h.md)]
 
-Günlüklere Azure Portal erişmek için, **Monitoring**  >  uygulamanızın sol taraftaki menüsünde izleme **günlüğü akışı** ' nı seçin.
+Günlüklere Azure Portal erişmek için,   >  uygulamanızın sol taraftaki menüsünde izleme **günlüğü akışı** ' nı seçin.
 
 ## <a name="access-deployment-logs"></a>Dağıtım günlüklerine erişim
 

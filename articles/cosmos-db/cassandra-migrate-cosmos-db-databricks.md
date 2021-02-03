@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/16/2020
 ms.author: thvankra
 ms.reviewer: thvankra
-ms.openlocfilehash: 74088d749279ab72851e714a50b558dc2adbc0d7
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: 3cbcb7eb3695e6f57daef741d4cd4b15577d8f58
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97516545"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493286"
 ---
 # <a name="migrate-data-from-cassandra-to-azure-cosmos-db-cassandra-api-account-using-azure-databricks"></a>Cassandra 'dan verileri Azure Cosmos DB Cassandra API hesabına Azure Databricks kullanarak geçirin
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -114,7 +114,28 @@ DFfromNativeCassandra
 ```
 
 > [!NOTE]
-> `spark.cassandra.output.concurrent.writes`Ve `connections_per_executor_max` konfigürasyonları, Cosmos DB istekleri sağlanan aktarım hızını ([İstek birimleri](./request-units.md)) aştığında gerçekleşen [hız sınırlamasını](/samples/azure-samples/azure-cosmos-cassandra-java-retry-sample/azure-cosmos-db-cassandra-java-retry-sample/)önleme için önemlidir. Bu ayarları Spark kümesindeki yürüticilere sayısına ve hedef tablolara yazılmakta olan her kaydın boyutunu (ve dolayısıyla RU maliyeti) bağlı olarak ayarlamanız gerekebilir.
+> `spark.cassandra.output.batch.size.rows`, `spark.cassandra.output.concurrent.writes` Ve konfigürasyonları, `connections_per_executor_max` Azure Cosmos DB istekleri sağlanan aktarım hızını/([İstek birimleri](./request-units.md)) aştığında gerçekleşen [hız sınırlamasını](/samples/azure-samples/azure-cosmos-cassandra-java-retry-sample/azure-cosmos-db-cassandra-java-retry-sample/)önlemek için önemlidir. Bu ayarları Spark kümesindeki yürüticilere sayısına ve hedef tablolara yazılmakta olan her kaydın boyutunu (ve dolayısıyla RU maliyeti) bağlı olarak ayarlamanız gerekebilir.
+
+## <a name="troubleshooting"></a>Sorun giderme
+
+### <a name="rate-limiting-429-error"></a>Hız sınırlaması (429 hata)
+`request rate is large`Yukarıdaki ayarları minimum değerlerine küçültirken 429 veya hata metninin hata kodunu görebilirsiniz. Bazı senaryolar aşağıda verilmiştir:
+
+- **Tabloya ayrılan üretilen iş, 6000 [istek biriminden](./request-units.md)daha azdır**. En düşük ayarlarda bile Spark, 6000 istek birimi veya daha fazla bir hızda yazma işlemleri yürütebilecektir. Sağlanan paylaşılan aktarım hızı ile bir anahtar alanı içinde bir tablo sağladıysanız, bu tabloda çalışma zamanında 6000 ru 'dan az kullanılabilir. Geçirmekte olduğunuz tablonun geçiş çalıştırılırken en az 6000 ru tarafından kullanılabilir olduğundan ve gerekirse adanmış istek birimlerini bu tabloya ayırdığından emin olun. 
+- **Büyük veri hacimiyle aşırı veri eğriliği**. Belirli bir tabloya geçiş yapmak için büyük miktarda veriniz (tablo satırları) varsa, ancak veride önemli bir çarpıklık varsa (yani aynı bölüm anahtarı değeri için yazılmakta olan çok sayıda kayıt), tablonuzda sağlanan büyük miktarda [istek birimseniz](./request-units.md) bile ücret sınırlandırmaya devam edebilirsiniz. Bunun nedeni, istek birimlerinin fiziksel bölümler arasında eşit olarak bölünmesinin yanı sıra ağır veri eğriliği, tek bir bölüme yönelik isteklerin performans sorunlarına neden olabilir ve bu da hız sınırlaması sağlar. Bu senaryoda, hız sınırlamasını önlemek ve geçişin yavaş çalışmasına zorlamak için Spark 'ta minimum işleme ayarlarına azaltmanız önerilir. Bu senaryo, erişimin daha sık olduğu ancak eğriliği yüksek olabilecek başvuru veya denetim tabloları geçirilirken daha yaygın olabilir. Ancak, başka bir tablo türünde önemli bir eğme varsa, düzenli durum işlemleri sırasında iş yükünüzün sık erişimli bölüm sorunlarından kaçınmak için veri modelinizi gözden geçirmeniz önerilir. 
+- **Büyük tablo üzerinde sayı alınamıyor**. Çalışma `select count(*) from table` Şu anda büyük tablolar için desteklenmiyor. Azure portal ( [sorun giderme makalemize](cassandra-troubleshoot.md)bakın) ölçümlerinden gelen sayıyı alabilirsiniz, ancak bir Spark işi bağlamı içinden büyük bir tablonun sayısını belirlemeniz gerekiyorsa, verileri geçici bir tabloya kopyalayabilir ve sonra sayıyı almak IÇIN Spark SQL 'i kullanabilirsiniz (örneğin, `<primary key>` sonuçta elde edilen geçici tablodaki bazı alanlar ile değiştirin).
+
+  ```scala
+  val ReadFromCosmosCassandra = sqlContext
+    .read
+    .format("org.apache.spark.sql.cassandra")
+    .options(cosmosCassandra)
+    .load
+
+  ReadFromCosmosCassandra.createOrReplaceTempView("CosmosCassandraResult")
+  %sql
+  select count(<primary key>) from CosmosCassandraResult
+  ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

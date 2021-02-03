@@ -4,12 +4,12 @@ description: Azure API Management ile hızlı bir şekilde çalışmaya başlama
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: b89204e2df5c8e79200b780de38d06b1a93c1fa3
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: f1ae658ac4944f8d39dc11769669d32958fd14f4
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97702200"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99491291"
 ---
 # <a name="integrate-api-management-with-service-fabric-in-azure"></a>Azure 'da Service Fabric API Management tümleştirme
 
@@ -30,7 +30,7 @@ Bu makalede, trafiği Service Fabric bir arka uç hizmetine yönlendirmek için 
 Başlamadan önce:
 
 * Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun
-* [Azure PowerShell](/powershell/azure/install-az-ps) veya [Azure CLI](/cli/azure/install-azure-cli)'yı yükler.
+* [Azure PowerShell](/powershell/azure/install-az-ps) veya [Azure CLI](/cli/azure/install-azure-cli)'yi yükler.
 * Bir ağ güvenlik grubunda güvenli bir [Windows kümesi](service-fabric-tutorial-create-vnet-and-windows-cluster.md) oluşturun.
 * Windows kümesi dağıtıyorsanız, bir Windows dağıtım ortamı ayarlayın. [Visual Studio 2019](https://www.visualstudio.com) ve **Azure geliştirme**, **ASP.net ve Web geliştirme** ve **.NET Core platformlar arası geliştirme** iş yüklerini yükler.  Ardından bir [.NET dağıtım ortamı](service-fabric-get-started.md) ayarlayın.
 
@@ -293,6 +293,8 @@ az group delete --name $ResourceGroupName
 
 [API Management](../api-management/import-and-publish.md)kullanma hakkında daha fazla bilgi edinin.
 
+Ayrıca, API Management için Service Fabric arka uçları oluşturmak ve yönetmek üzere [Azure Portal](../api-management/how-to-configure-service-fabric-backend.md) de kullanabilirsiniz.
+
 [azure-powershell]: /powershell/azure/
 
 [apim-arm]:https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/templates/service-integration/apim.json
@@ -303,7 +305,6 @@ az group delete --name $ResourceGroupName
 
 <!-- pics -->
 [sf-apim-topology-overview]: ./media/service-fabric-tutorial-deploy-api-management/sf-apim-topology-overview.png
-tam doku-betikler-ve-Templates/blob/Master/Templates/Service-Integration/network-apim.parameters.jsonn
 
 <!-- pics -->
 [sf-apim-topology-overview]: ./media/service-fabric-tutorial-deploy-api-management/sf-apim-topology-overview.png

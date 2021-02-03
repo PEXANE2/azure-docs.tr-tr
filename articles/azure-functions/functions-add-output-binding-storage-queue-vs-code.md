@@ -5,12 +5,12 @@ ms.date: 02/07/2020
 ms.topic: quickstart
 ms.custom: devx-track-python, devx-track-js
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: e280fddbe83da2a7ee89185046883f6c2c77167a
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 96384d2c50e7d5b4b5b6e652d01c4a89cd519573
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97739830"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493417"
 ---
 # <a name="connect-azure-functions-to-azure-storage-using-visual-studio-code"></a>Azure Işlevlerini Visual Studio Code kullanarak Azure depolama 'ya bağlama
 
@@ -96,7 +96,7 @@ dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage
 
 Işlevlerde, her bağlama türü `direction` , `type` `name` dosyasında function.jstanımlanması için bir, ve benzersiz gerektirir. Bu öznitelikleri tanımlama yöntemi, işlev uygulamanızın diline bağlıdır.
 
-::: zone pivot="programming-language-javascript,programming-language-typescript,programming-language-python,programming-language-powershell,programming-language-java"
+::: zone pivot="programming-language-javascript,programming-language-typescript,programming-language-python,programming-language-powershell"
 
 [!INCLUDE [functions-add-output-binding-json](../../includes/functions-add-output-binding-json.md)]
 
@@ -148,35 +148,25 @@ Bağlama tanımlandıktan sonra, `name` işlev imzasında bir öznitelik olarak 
 
 [!INCLUDE [functions-add-storage-binding-java-code](../../includes/functions-add-storage-binding-java-code.md)]
 
-## <a name="update-the-test-set"></a>Test kümesini güncelleştirme
+## <a name="update-the-tests"></a>Testleri güncelleştirme
 
 [!INCLUDE [functions-add-output-binding-java-test](../../includes/functions-add-output-binding-java-test.md)]
 
 ::: zone-end  
 
-<!--- Local testing section --->
+## <a name="run-the-function-locally"></a>İşlevi yerel olarak çalıştırma
 
-::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-python"
+1. Önceki makalede olduğu gibi, uygulama projesi ve çekirdek araçları işlevine başlamak için <kbd>F5</kbd> ' e basın. 
 
-[!INCLUDE [functions-run-function-test-local-vs-code](../../includes/functions-run-function-test-local-vs-code.md)]
+1. Temel araçlar çalışırken **Azure: Functions** alanına gidin. **İşlevler** altında **Yerel proje**  >  **işlevleri**' ni genişletin. İşlevi sağ tıklatın (Mac üzerinde CTRL + tıklama) `HttpExample` ve **Şimdi işlevi Çalıştır...** seçeneğini belirleyin.
 
-::: zone-end
+    :::image type="content" source="../../includes/media/functions-run-function-test-local-vs-code/execute-function-now.png" alt-text="İşlevi şimdi Visual Studio Code Çalıştır":::
 
-::: zone pivot="programming-language-powershell"
+1. **İstek gövdesi gir** bölümünde istek iletisi gövdesi değerini görürsünüz `{ "name": "Azure" }` . Bu istek iletisini işlevinizde göndermek için ENTER tuşuna basın.  
+ 
+1. Bir yanıt döndürüldüğünde, temel araçları durdurmak için <kbd>CTRL + C</kbd> tuşlarına basın.
 
-[!INCLUDE [functions-run-function-test-local-vs-code-ps](../../includes/functions-run-function-test-local-vs-code-ps.md)]
-
-::: zone-end
-
-Çıkış bağlaması ilk kullanıldığında, depolama hesabınızda Işlevler çalışma zamanına göre **outqueue** adlı yeni bir kuyruk oluşturulur. Depolama Gezgini, sıranın yeni iletiyle birlikte oluşturulduğunu doğrulamak için kullanacaksınız.
-
-::: zone pivot="programming-language-java"  
-
-## <a name="update-the-tests"></a>Testleri güncelleştirme
-
-[!INCLUDE [functions-add-output-binding-java-test](../../includes/functions-add-output-binding-java-test.md)]
-
-::: zone-end
+Depolama bağlantı dizesi kullandığınızdan, işleviniz yerel olarak çalışırken Azure Storage hesabına bağlanır. Çıkış bağlaması ilk kullanıldığında, depolama hesabınızda Işlevler çalışma zamanına göre **outqueue** adlı yeni bir kuyruk oluşturulur. Depolama Gezgini, sıranın yeni iletiyle birlikte oluşturulduğunu doğrulamak için kullanacaksınız.
 
 ### <a name="connect-storage-explorer-to-your-account"></a>Depolama Gezgini’ni hesabınıza bağlama
 
@@ -212,11 +202,7 @@ Hesabınızda başarıyla oturum açtıktan sonra hesabınızla ilişkili tüm A
 
 1. İlk makalede oluşturduğunuz işlev uygulamasını seçin. Projenizi aynı uygulamaya yeniden **dağıtmakta** olduğunuzdan, dosyaların üzerine yazma uyarısını kapatmak için Dağıt ' ı seçin.
 
-1. Dağıtım tamamlandıktan sonra yeniden dağıtılan işlevi test etmek için kıvrımlı veya bir tarayıcı kullanabilirsiniz. Daha önce olduğu gibi, `&name=<yourname>` Aşağıdaki örnekte olduğu gibi sorgu DIZESINI URL 'ye ekleyin:
-
-    ```bash
-    curl https://myfunctionapp.azurewebsites.net/api/httptrigger?code=cCr8sAxfBiow548FBDLS1....&name=<yourname>
-    ```
+1. Dağıtım tamamlandıktan sonra, işlevi Azure 'da tetiklemek için **Şimdi Çalıştır...** özelliğini kullanabilirsiniz.
 
 1. Çıktı bağlamasının sırada yeni bir ileti oluşturmadığını doğrulamak için, [depolama sırasındaki iletiyi yeniden görüntüleyin](#examine-the-output-queue) .
 

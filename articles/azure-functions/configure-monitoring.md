@@ -4,12 +4,12 @@ description: İzleme için işlev uygulamanızı Application Insights bağlama v
 ms.date: 8/31/2020
 ms.topic: how-to
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: e24f2b1a61d77dafd7a23b04d225d0301f82ca59
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.openlocfilehash: 5007009d9aabf9a1c1c6e1d5c2f286c0ba25b340
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99070149"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493762"
 ---
 # <a name="how-to-configure-monitoring-for-azure-functions"></a>Azure Işlevleri için izlemeyi yapılandırma
 
@@ -229,6 +229,8 @@ az functionapp config appsettings delete --name <FUNCTION_APP_NAME> \
 --setting-names SCALE_CONTROLLER_LOGGING_ENABLED
 ```
 
+Ölçek denetleyicisi günlüğü etkinken, artık [Ölçek denetleyicisi günlüklerinizi sorgulayabilirsiniz](analyze-telemetry-data.md#query-scale-controller-logs). 
+
 ## <a name="enable-application-insights-integration"></a>Application Insights tümleştirmesini etkinleştirme
 
 Bir işlev uygulamasının Application Insights verileri gönderebilmesi için, bir Application Insights kaynağının izleme anahtarını bilmeleri gerekir. Anahtar, **APPINSIGHTS_INSTRUMENTATIONKEY** adlı bir uygulama ayarında olmalıdır.
@@ -271,30 +273,6 @@ Oluşturulan Application Insights kaynağını gözden geçirmek için, **Applic
 
 > [!NOTE]
 > Işlevlerin erken sürümleri, artık önerilmeyen yerleşik izleme kullanır. Böyle bir işlev uygulaması için Application Insights tümleştirmesinin etkinleştirilmesinde, [yerleşik günlüğü de devre dışı bırakmanız](#disable-built-in-logging)gerekir.  
-
-## <a name="query-scale-controller-logs"></a>Sorgu ölçek denetleyicisi günlükleri
-
-Hem ölçek denetleyicisi günlüğünü hem de Application Insights tümleştirmeyi etkinleştirdikten sonra, Application Insights günlük aramasını, yayılan ölçek denetleyicisi günlüklerini sorgulamak için kullanabilirsiniz. Ölçek denetleyicisi günlükleri, `traces` koleksiyonda **scalecontrollerlogs** kategorisi altında kaydedilir.
-
-Aşağıdaki sorgu, geçerli işlev uygulaması için belirtilen süre içinde tüm ölçek denetleyicisi günlüklerini aramak için kullanılabilir:
-
-```kusto
-traces 
-| extend CustomDimensions = todynamic(tostring(customDimensions))
-| where CustomDimensions.Category == "ScaleControllerLogs"
-```
-
-Aşağıdaki sorgu, yalnızca ölçekteki bir değişikliği gösteren günlüklerin nasıl alınacağını göstermek için önceki sorgu üzerinde genişler:
-
-```kusto
-traces 
-| extend CustomDimensions = todynamic(tostring(customDimensions))
-| where CustomDimensions.Category == "ScaleControllerLogs"
-| where message == "Instance count changed"
-| extend Reason = CustomDimensions.Reason
-| extend PreviousInstanceCount = CustomDimensions.PreviousInstanceCount
-| extend NewInstanceCount = CustomDimensions.CurrentInstanceCount
-```
 
 ## <a name="disable-built-in-logging"></a>Yerleşik günlüğe kaydetmeyi devre dışı bırakma
 

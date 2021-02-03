@@ -6,12 +6,12 @@ author: vineetvikram
 ms.author: vivikram
 ms.manager: abhemraj
 ms.date: 09/15/2020
-ms.openlocfilehash: 1f198d47191e7893e74b072ae8fd10546e3a6ee7
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 378a85ed77a6eedeb928dee541046db1909da553
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96752218"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99492000"
 ---
 # <a name="dependency-analysis"></a>Bağımlılık Analizi
 
@@ -77,7 +77,7 @@ Aracısız görselleştirme ve aracı tabanlı görselleştirme arasındaki fark
 **Gereksinim** | **Aracısız** | **Aracı tabanlı**
 --- | --- | ---
 **Destek** | Yalnızca VMware VM 'Leri için önizleme aşamasındadır. Desteklenen işletim sistemlerini [gözden geçirin](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless) . | Genel kullanılabilirlik (GA).
-**Aracı** | Çözümlemek istediğiniz makinelerde aracı gerekmez. | Çözümlemek istediğiniz her şirket içi makinede aracılar gereklidir.
+**Aracısı** | Çözümlemek istediğiniz makinelerde aracı gerekmez. | Çözümlemek istediğiniz her şirket içi makinede aracılar gereklidir.
 **Log Analytics** | Gerekli değildir. | Azure geçişi, bağımlılık analizi için [Azure izleyici günlüklerinde](../azure-monitor/log-query/log-query-overview.md) [hizmet eşlemesi](../azure-monitor/insights/service-map.md) çözümünü kullanır.<br/><br/> Bir Log Analytics çalışma alanını Azure geçişi projesiyle ilişkilendirirsiniz. Çalışma alanı Doğu ABD, Güneydoğu Asya veya Batı Avrupa bölgelerinde bulunmalıdır. Çalışma alanının [hizmet eşlemesi desteklendiği](../azure-monitor/insights/vminsights-configure-workspace.md#supported-regions)bir bölgede olması gerekir.
 **İşleme** | TCP bağlantı verilerini yakalar. Bulmadan sonra, verileri beş dakikalık aralıklarla toplar. | Bir makineye yüklenen Hizmet Eşlemesi aracılar, her bir işlem için TCP işlemleri ve gelen/giden bağlantılar hakkında veri toplar.
 **Veriler** | Kaynak makine sunucu adı, işlem, uygulama adı.<br/><br/> Hedef makine sunucu adı, işlem, uygulama adı ve bağlantı noktası. | Kaynak makine sunucu adı, işlem, uygulama adı.<br/><br/> Hedef makine sunucu adı, işlem, uygulama adı ve bağlantı noktası.<br/><br/> Bağlantı sayısı, gecikme süresi ve veri aktarımı bilgilerinin toplanması ve Log Analytics sorguları için kullanılabilir olması. 

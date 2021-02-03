@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 01/13/2021
 ms.author: pafarley
-ms.openlocfilehash: d59826ba0e53c4b4146c13b354a85a124ac29b23
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: f10319de67a105b4b5e4641c4171ccd0a6e63440
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98738110"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99490886"
 ---
 # <a name="whats-new-in-computer-vision"></a>Görüntü İşleme yenilikleri
 
@@ -30,6 +30,12 @@ Yeni bir özellik kümesiyle, [uzamsal analiz kapsayıcısının](spatial-analys
 * [Uzamsal analiz işlemleri](spatial-analysis-operations.md) , bir kişinin maske gibi bir koruyucu yüzeyi takmakta olup olmadığını algılamak için yapılandırılabilir. 
     * `personcount` `personcrossingline` `personcrossingpolygon` Parametresi yapılandırılarak, ve işlemleri için bir maske Sınıflandırıcısı etkinleştirilebilir `ENABLE_FACE_MASK_CLASSIFIER` .
     * Bu öznitelikler `face_mask` ve `face_noMask` video akışında algılanan her bir kişi için güvenirlik puanı olan meta veriler olarak döndürülecek
+* *Personcrossingçokgen* işlemi, bir kişinin bir bölgede harcadığı süre sayısının hesaplanmasına izin verecek şekilde genişletildi. `type`İşlem Için bölge yapılandırmasındaki parametreyi `zonedwelltime` ve *Personzonedwelltimeevent* türünde yeni bir olay, `durationMs` kişinin bölgede harcadığı milisaniye sayısıyla doldurulmuş alanı içerir.
+* **Son değişiklik**: *personzoneevent* olayı, *Personzoneenterexitevent* olarak yeniden adlandırıldı. Bu olay, bir kişi bölgeden girdiğinde ya da çıktığında ve çapraz bölgenin numaralı tarafıyla açıklamalı bilgi sağlayan, *personcrossingçokgen* işlemi tarafından tetiklenir.
+* Video URL 'SI, tüm işlemlerde "özel parametre/karıştırılmış" olarak belirtilebilir. Gizleme şimdi isteğe bağlıdır ve yalnızca `KEY` ve `IV` ortam değişkenleri olarak sağlanmışsa çalışır.
+* Ayar, tüm işlemler için varsayılan olarak etkindir. Öğesini `do_calibration: false` devre dışı bırakmak için ayarlayın.
+* Parametresi aracılığıyla otomatik düzeltme (varsayılan olarak devre dışı) için destek eklendi `enable_recalibration` , Ayrıntılar için lütfen [uzamsal analiz işlemlerine](https://docs.microsoft.com/azure/cognitive-services/computer-vision/spatial-analysis-operations) bakın
+* İçin kamera ayarlama parametreleri `DETECTOR_NODE_CONFIG` . Ayrıntılar için [uzamsal analiz işlemlerine](https://docs.microsoft.com/azure/cognitive-services/computer-vision/spatial-analysis-operations) bakın.
 
 
 ## <a name="october-2020"></a>Ekim 2020

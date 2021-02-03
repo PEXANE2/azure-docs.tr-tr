@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/28/2020
 ms.author: jeedes
-ms.openlocfilehash: f635a4c4c6e0b1dcb4d4842d3cddb337d2b26407
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 74009c7e7f2ad28655c9c5322a063a17da96e0c5
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98735173"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493930"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-meraki-dashboard"></a>Öğretici: Meraki panosu ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -26,7 +26,7 @@ Bu öğreticide, Meraki panosunu Azure Active Directory (Azure AD) ile tümleşt
 * Kullanıcılarınızın Azure AD hesaplarıyla Meraki panosuna otomatik olarak oturum açmalarına olanak sağlayın.
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -103,7 +103,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     ![SAML Imzalama sertifikasını Düzenle](common/edit-certificate.png)
 
-1. **SAML Imzalama sertifikası** bölümünde, **parmak izi değerini** kopyalayın ve bilgisayarınıza kaydedin.
+1. **SAML Imzalama sertifikası** bölümünde, **parmak izi değerini** kopyalayın ve bilgisayarınıza kaydedin. Bu değerin, Meraki panosunun onu anlayabilmesi için iki nokta üst üste içerecek şekilde dönüştürülmesi gerekir. Örneğin, Azure 'dan parmak izinin, `C2569F50A4AAEDBB8E` `C2:56:9F:50:A4:AA:ED:BB:8E` daha sonra Meraki panosunda kullanmak için olarak değiştirilmesi gerekir.
 
     ![Parmak Izi değerini Kopyala](common/copy-thumbprint.png)
 
@@ -165,7 +165,7 @@ Bu bölümde, Meraki panosuna erişim vererek Azure çoklu oturum açma özelli�
 
     ![Meraki panosu SAML IDP ekleme](./media/meraki-dashboard-tutorial/configure-3.png)
 
-1. Azure portal **X. 590 CERT SHA1 parmak izi** metin kutusuna kopyaladığınız **parmak izi** değerini yapıştırın. Daha sonra **Kaydet**'e tıklayın. Kaydettikten sonra tüketici URL 'SI görünür. Tüketici URL 'SI değerini kopyalayın ve Azure portal **temel SAML yapılandırması bölümünde** bunu **yanıt URL 'si** metin kutusuna yapıştırın.
+1. Azure portal kopyaladığınız ve belirtilen biçimde, önceki bölümde adım 9 ' da **X. 590 CERT SHA1 parmak izi** metin kutusunda belirtildiği gibi, dönüştürülen **parmak izi** değerini yapıştırın. Daha sonra **Kaydet**'e tıklayın. Kaydettikten sonra tüketici URL 'SI görünür. Tüketici URL 'SI değerini kopyalayın ve Azure portal **temel SAML yapılandırması bölümünde** bunu **yanıt URL 'si** metin kutusuna yapıştırın.
 
     ![Meraki Pano yapılandırması](./media/meraki-dashboard-tutorial/configure-4.png)
 

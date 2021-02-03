@@ -2,25 +2,34 @@
 title: Başarılı dağıtım için hatayı geri alma
 description: Başarısız bir dağıtımın başarılı bir dağıtıma geri dönmesi gerektiğini belirtin.
 ms.topic: conceptual
-ms.date: 10/04/2019
-ms.openlocfilehash: 206c794996f58a4c5b6982c551ae50128ed4f5eb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 02/02/2021
+ms.openlocfilehash: 742a8f16a2dce3204b48085759091540586a4522
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79460152"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99492221"
 ---
 # <a name="rollback-on-error-to-successful-deployment"></a>Başarılı dağıtımda hata durumunda geri al
 
-Bir dağıtım başarısız olduğunda, dağıtım geçmişinizden daha önceki ve başarılı bir dağıtımı otomatik olarak yeniden dağıtabilirsiniz. Bu işlevsellik, altyapı dağıtımınız için bilinen iyi bir durumanız varsa ve bu duruma dönmek istiyorsanız yararlıdır. Çeşitli uyarılar ve kısıtlamalar vardır:
+Bir dağıtım başarısız olduğunda, dağıtım geçmişinizden daha önceki ve başarılı bir dağıtımı otomatik olarak yeniden dağıtabilirsiniz. Bu işlevsellik, altyapı dağıtımınız için bilinen iyi bir durumanız varsa ve bu duruma dönmek istiyorsanız yararlıdır. Belirli bir önceki dağıtımı veya son başarılı dağıtımı belirtebilirsiniz.
 
+> [!IMPORTANT]
+> Bu özellik önceki bir dağıtımı yeniden dağıtarak başarısız bir dağıtımı geri yedekler. Bu sonuç, başarısız dağıtımı geri alma işlemini beklediğiniz miktardan farklı olabilir. Önceki dağıtımın yeniden nasıl dağıtıldığını anladığınızdan emin olun.
+
+## <a name="considerations-for-redeploying"></a>Yeniden dağıtım konuları
+
+Bu özelliği kullanmadan önce, yeniden dağıtım işlemlerinin nasıl işlendiği hakkındaki ayrıntıları göz önünde bulundurun:
+
+- Önceki dağıtım sırasında [artımlı modu](./deployment-modes.md#incremental-mode) kullanmış olsanız bile, önceki dağıtım, [Tüm modu](./deployment-modes.md#complete-mode)kullanılarak çalıştırılır. Daha önceki dağıtım artımlı olarak kullanıldığında, tamamlanmış modda yeniden dağıtım beklenmedik sonuçlara neden olabilir. Tamamlanma modu, önceki dağıtımda bulunmayan tüm kaynakların silindiği anlamına gelir. Kaynak grubunda mevcut olmasını istediğiniz tüm kaynakları ve durumlarını temsil eden önceki bir dağıtım belirtin. Daha fazla bilgi için bkz. [Dağıtım modları](./deployment-modes.md).
 - Yeniden dağıtım, daha önce aynı parametrelerle çalıştırıldığı için tam olarak çalıştırılır. Parametreleri değiştiremezsiniz.
-- Önceki dağıtım, [Tüm modu](./deployment-modes.md#complete-mode)kullanılarak çalıştırılır. Önceki dağıtıma dahil olmayan tüm kaynaklar silinir ve tüm kaynak konfigürasyonları önceki durumlarına ayarlanır. [Dağıtım modlarını](./deployment-modes.md)tam olarak anladığınızdan emin olun.
 - Yeniden dağıtım yalnızca kaynakları etkiler, tüm veri değişiklikleri etkilenmez.
-- Bu özelliği yalnızca kaynak grubu dağıtımları ile, abonelik veya yönetim grubu düzeyi dağıtımlarıyla birlikte kullanabilirsiniz. Abonelik düzeyi dağıtımı hakkında daha fazla bilgi için bkz. [abonelik düzeyinde kaynak grupları ve kaynaklar oluşturma](./deploy-to-subscription.md).
+- Bu özelliği yalnızca kaynak grubu dağıtımları ile kullanabilirsiniz. Abonelik, yönetim grubu veya kiracı düzeyi dağıtımlarını desteklemez. Abonelik düzeyi dağıtımı hakkında daha fazla bilgi için bkz. [abonelik düzeyinde kaynak grupları ve kaynaklar oluşturma](./deploy-to-subscription.md).
 - Bu seçeneği yalnızca kök düzeyinde dağıtımlar ile kullanabilirsiniz. İç içe geçmiş bir şablondan dağıtımlar yeniden dağıtım için kullanılamaz.
 
-Bu seçeneği kullanmak için, dağıtımlarınızın geçmişte tanımlanabilmeleri için benzersiz adlara sahip olması gerekir. Benzersiz adlarınız yoksa geçerli başarısız dağıtım, geçmişte daha önce başarılı olan dağıtımın üzerine yazabilir.
+Bu seçeneği kullanmak için, dağıtımlarınızın dağıtım geçmişinde benzersiz adlara sahip olması gerekir. Yalnızca belirli bir dağıtımın tanımlanabilecek benzersiz adlara sahiptir. Benzersiz adlarınız yoksa, başarısız bir dağıtım, geçmişteki bir dağıtımın üzerine yazabilir.
+
+Dağıtım geçmişinde mevcut olmayan önceki bir dağıtımı belirtirseniz geri alma işlemi bir hata döndürür.
 
 ## <a name="powershell"></a>PowerShell
 
@@ -42,7 +51,7 @@ New-AzResourceGroupDeployment -Name ExampleDeployment02 `
   -RollBackDeploymentName ExampleDeployment01
 ```
 
-## <a name="azure-cli"></a>Azure CLI
+## <a name="azure-cli"></a>Azure CLI’si
 
 Son başarılı dağıtımı yeniden dağıtmak için `--rollback-on-error` parametreyi bir bayrak olarak ekleyin.
 
@@ -115,7 +124,5 @@ Belirtilen dağıtım başarılı olmalıdır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Hizmetinizi birden fazla bölgeye güvenle kullanıma almak için bkz. [Azure dağıtım Yöneticisi](deployment-manager-overview.md).
-- Kaynak grubunda var olan, ancak şablonda tanımlanmamış kaynakların nasıl işleneceğini belirtmek için bkz. [Azure Resource Manager Dağıtım modları](deployment-modes.md).
+- Tüm ve artımlı modlarını anlamak için bkz. [Azure Resource Manager Dağıtım modları](deployment-modes.md).
 - Şablonunuzda parametrelerin nasıl tanımlanacağını anlamak için bkz. [Azure Resource Manager şablonlarının yapısını ve sözdizimini anlayın](template-syntax.md).
-- SAS belirteci gerektiren bir şablonu dağıtma hakkında daha fazla bilgi için bkz. [özel şablonu SAS belirteci Ile dağıtma](secure-template-with-sas-token.md).

@@ -8,12 +8,12 @@ ms.service: api-management
 ms.topic: article
 ms.date: 12/14/2020
 ms.author: apimpm
-ms.openlocfilehash: 4cde4dadee33ec1c3f91ab4770dbfe697289cef3
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 344500d5635f591b34a45130c7dd6b63659ad84d
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97504741"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99491030"
 ---
 # <a name="use-named-values-in-azure-api-management-policies"></a>Azure API Management ilkelerinde adlandırılmış değerleri kullanın
 
@@ -25,7 +25,7 @@ ms.locfileid: "97504741"
 
 ## <a name="value-types"></a>Değer türleri
 
-|Tür  |Description  |
+|Tür  |Açıklama  |
 |---------|---------|
 |Düz     |  Sabit dize veya ilke ifadesi     |
 |Gizli dizi     |   API Management tarafından şifrelenen sabit dize veya ilke ifadesi      |
@@ -43,7 +43,7 @@ Anahtar Kasası gizliliklerin kullanılması önerilir API Management güvenliğ
 
 * Anahtar kasalarında depolanan gizli dizileri, hizmetler arasında yeniden kullanılabilir
 * Ayrıntılı [erişim ilkeleri](../key-vault/general/secure-your-key-vault.md#data-plane-and-access-policies) gizli anahtarlara uygulanabilir
-* Anahtar kasasında güncellenen gizli diziler API Management otomatik olarak döndürülür. Anahtar kasasındaki güncelleştirmeden sonra, API Management bir adlandırılmış değer 4 saat içinde güncelleştirilir. 
+* Anahtar kasasında güncellenen gizli diziler API Management otomatik olarak döndürülür. Anahtar kasasındaki güncelleştirmeden sonra, API Management bir adlandırılmış değer 4 saat içinde güncelleştirilir. Ayrıca, Azure portal kullanarak veya yönetim REST API aracılığıyla gizli dizi el ile yenileyebilirsiniz.
 
 ### <a name="prerequisites-for-key-vault-integration"></a>Anahtar Kasası tümleştirmesi için Önkoşullar
 
@@ -58,25 +58,16 @@ Anahtar Kasası gizliliklerin kullanılması önerilir API Management güvenliğ
 
 Anahtar Kasası gizliliğini kullanmak için, [adlandırılmış bir değer ekleyin veya düzenleyin](#add-or-edit-a-named-value)ve **Anahtar Kasası** türünü belirtin. Anahtar kasasından gizli dizi seçin.
 
-> [!CAUTION]
-> API Management bir Anahtar Kasası gizli dizisi kullanırken, anahtar kasasına erişmek için kullanılan gizli anahtarı, anahtar kasasını veya yönetilen kimliği silmemeye dikkat edin.
-
-Anahtar Kasanızda [Key Vault güvenlik duvarı](../key-vault/general/network-security.md) etkinse, Anahtar Kasası gizli dizileri kullanmak için ek gereksinimler aşağıda verilmiştir:
-
-* Anahtar kasasına erişmek için API Management örneğinin **sistem tarafından atanan** yönetilen kimliğini kullanmanız gerekir.
-* Güvenlik Duvarı Key Vault, **Güvenilen Microsoft hizmetlerinin bu güvenlik duvarını atlamasına Izin ver** seçeneğini etkinleştirin.
-
-API Management örneği bir sanal ağda dağıtılmışsa, aşağıdaki ağ ayarlarını da yapılandırın:
-* API Management alt ağında Azure Key Vault için bir [hizmet uç noktası](../key-vault/general/overview-vnet-service-endpoints.md) etkinleştirin.
-* AzureKeyVault ve AzureActiveDirectory [hizmet etiketlerine](../virtual-network/service-tags-overview.md)giden trafiğe izin vermek için bir ağ güvenlik grubu (NSG) kuralı yapılandırın. 
-
-Ayrıntılar için bkz. [sanal ağa bağlanma](api-management-using-with-vnet.md#-common-network-configuration-issues)içindeki ağ yapılandırması ayrıntıları.
+[!INCLUDE [api-management-key-vault-network](../../includes/api-management-key-vault-network.md)]
 
 ## <a name="add-or-edit-a-named-value"></a>Adlandırılmış değer ekleme veya düzenleme
 
 ### <a name="add-a-key-vault-secret"></a>Anahtar Kasası gizli anahtarı ekleme
 
 Bkz. [Anahtar Kasası tümleştirmesi Için Önkoşullar](#prerequisites-for-key-vault-integration).
+
+> [!CAUTION]
+> API Management bir Anahtar Kasası gizli dizisi kullanırken, anahtar kasasına erişmek için kullanılan gizli anahtarı, anahtar kasasını veya yönetilen kimliği silmemeye dikkat edin.
 
 1. [Azure portal](https://portal.azure.com)API Management örneğinize gidin.
 1. **API 'ler** altında, **adlandırılmış değerler**  >  **+ Ekle**' yi seçin.

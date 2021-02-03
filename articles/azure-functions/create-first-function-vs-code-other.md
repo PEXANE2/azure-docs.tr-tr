@@ -3,12 +3,12 @@ title: Visual Studio Code-Azure Işlevleri kullanarak Go veya Rust 'da işlev ol
 description: Azure Işlevleri özel işleyicisi olarak go işlevi oluşturmayı öğrenin ve ardından Visual Studio Code içindeki Azure Işlevleri uzantısını kullanarak yerel projeyi Azure Işlevleri 'nde sunucusuz barındırma olarak yayımlayın.
 ms.topic: quickstart
 ms.date: 12/4/2020
-ms.openlocfilehash: 911e2ed263271cff41562f383f231d3ca8181854
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.openlocfilehash: 4f2e0b30c4bf5e6c4629fc63f3125e5ddda70ad2
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98567619"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493676"
 ---
 # <a name="quickstart-create-a-go-or-rust-function-in-azure-using-visual-studio-code"></a>Hızlı başlangıç: Visual Studio Code kullanarak Azure 'da Go veya Rust işlevi oluşturma
 
@@ -226,7 +226,7 @@ Bu projeyi, Azure 'da yayımlamadan önce yerel geliştirme bilgisayarınızda �
 
 1. Bir tarayıcıda aşağıdaki gibi görünen bir yanıt döndürülür:
 
-    ![Tarayıcı-localhost örnek çıktısı](../../includes/media/functions-run-function-test-local-vs-code/functions-test-local-browser.png)
+    ![Tarayıcı-localhost örnek çıktısı](./media/create-first-function-vs-code-other/functions-test-local-browser.png)
 
 1. İstek hakkındaki bilgiler, **Terminal** panelinde gösterilir.
 
@@ -308,7 +308,7 @@ Bu bölümde, Azure aboneliğinizde bir işlev uygulaması ve ilgili kaynaklar o
 
 1. Etkinlik çubuğunda Azure simgesini seçin, sonra **Azure: işlevler** alanında, **işlev uygulamasına dağıt uygulama...** düğmesini seçin.
 
-    ![Projenizi Azure'da yayımlama](./media/functions-create-first-function-vs-code/function-app-publish-project.png)
+    ![Projenizi Azure'da yayımlama](../../includes/media/functions-publish-project-vscode/function-app-publish-project.png)
 
 1. İstemlerde aşağıdaki bilgileri sağlayın:
 
@@ -337,19 +337,17 @@ Bu bölümde, Azure aboneliğinizde bir işlev uygulaması ve ilgili kaynaklar o
 
     + **Bir Application Insights kaynağı seçin**: seçin `+ Create Application Insights resource` . Bu ad, Azure 'da genel olarak benzersiz olmalıdır. İstem içinde önerilen adı kullanabilirsiniz.
 
-    + **Yeni kaynaklar için bir konum seçin**: daha iyi performans için, size yakın bir [bölge](https://azure.microsoft.com/regions/) seçin. 
+    + **Yeni kaynaklar için bir konum seçin**: daha iyi performans için, size yakın bir [bölge](https://azure.microsoft.com/regions/) seçin. Uzantı, bildirim alanında Azure 'da oluşturulmakta olan ayrı kaynakların durumunu gösterir.
 
-1. Tamamlandığında, aşağıdaki Azure kaynakları, işlev uygulamanızın adına göre adlar kullanılarak aboneliğinizde oluşturulur:
+    :::image type="content" source="../../includes/media/functions-publish-project-vscode/resource-notification.png" alt-text="Azure kaynak oluşturma bildirimi":::
 
-    + İlgili kaynaklar için mantıksal kapsayıcı olan bir kaynak grubu.
-    + Projeleriniz hakkında durum ve diğer bilgileri tutan standart bir Azure depolama hesabı.
-    + Sunucusuz işlev uygulamanız için temel Konağı tanımlayan bir tüketim planı. 
-    + İşlev kodunuzu yürütmek için ortam sağlayan bir işlev uygulaması. İşlev uygulaması, aynı barındırma planı içindeki kaynakların daha kolay yönetilmesi, dağıtılması ve paylaşılması için işlevleri bir mantıksal birim olarak gruplandırmanıza olanak tanır.
-    + Sunucusuz işlevinizin kullanımını izleyen işlev uygulamasına bağlı bir Application Insights örneği.
+1. Tamamlandığında, aboneliğinizde aşağıdaki Azure kaynakları oluşturulur:
+
+    [!INCLUDE [functions-vs-code-created-resources](../../includes/functions-vs-code-created-resources.md)]
 
     İşlev uygulamanız oluşturulduktan sonra bir bildirim görüntülenir ve dağıtım paketi uygulanır. 
 
-1. Oluşturduğunuz Azure kaynakları dahil olmak üzere oluşturma ve dağıtım sonuçlarını görüntülemek için bu bildirimde **çıktıyı görüntüle** ' yi seçin. Bildirimi kaçırırsanız, sağ alt köşedeki zil simgesini seçerek tekrar görüntüleyin.
+4. Oluşturduğunuz Azure kaynakları dahil olmak üzere oluşturma ve dağıtım sonuçlarını görüntülemek için bu bildirimde **çıktıyı görüntüle** ' yi seçin. Bildirimi kaçırırsanız, sağ alt köşedeki zil simgesini seçerek tekrar görüntüleyin.
 
     ![Tüm bildirimi oluştur](./media/functions-create-first-function-vs-code/function-create-notifications.png)
 

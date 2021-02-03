@@ -1,15 +1,15 @@
 ---
 title: 'Hızlı başlangıç: depolama kuyruğuna özel olayları gönderme-Event Grid, Azure CLı'
 description: 'Hızlı başlangıç: bir konu yayımlamak ve bu olaya abone olmak için Azure Event Grid ve Azure CLı kullanın. Uç nokta için bir depolama kuyruğu kullanılır.'
-ms.date: 07/07/2020
+ms.date: 02/02/2021
 ms.topic: quickstart
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 4de7aa1c111b5b21a27b155474ae10f78feba083
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 00808e7eca13824833673ef820d39b70bf618dd2
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94566325"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493283"
 ---
 # <a name="quickstart-route-custom-events-to-azure-queue-storage-with-azure-cli-and-event-grid"></a>Hızlı başlangıç: Azure CLı ve Event Grid ile Azure kuyruk depolama 'ya özel olayları yönlendirme
 
@@ -116,6 +116,11 @@ done
 Portalda Kuyruk depolamaya gidin ve Event Grid’in bu üç olayı kuyruğa gönderdiğine dikkat edin.
 
 ![İletileri gösterme](./media/custom-event-to-queue-storage/messages.png)
+
+> [!NOTE]
+> Event Grid iletileri alan bir sıra için Azure [işlevleri Için Azure kuyruk depolama tetikleyicisi](../azure-functions/functions-bindings-storage-queue-trigger.md) kullanıyorsanız, işlev yürütmesinde aşağıdaki hata iletisini görebilirsiniz: `The input is not a valid Base-64 string as it contains a non-base 64 character, more than two padding characters, or an illegal character among the padding characters.`
+> 
+> Bunun nedeni, [Azure kuyruk depolama tetikleyicisi](../azure-functions/functions-bindings-storage-queue-trigger.md)kullandığınızda Azure işlevleri bir **Base64 kodlamalı dize** bekler, ancak Event Grid iletileri bir depolama kuyruğuna düz metin biçiminde gönderir. Şu anda, Azure Işlevleri için sıra tetikleyicisi 'nin düz metin kabul etmesini yapılandırmak mümkün değildir. 
 
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme

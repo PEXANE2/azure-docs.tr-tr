@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: justinha
-ms.openlocfilehash: e4e7a64b9f9d7283de728216934854f4ef8f8fd1
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 89671d0e69d4e526e30c80619b57d698d5a5acc5
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96619742"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99491174"
 ---
 # <a name="frequently-asked-questions-faqs-about-azure-active-directory-ad-domain-services"></a>Azure Active Directory (AD) etki alanı Hizmetleri hakkında sık sorulan sorular (SSS)
 
@@ -106,7 +106,7 @@ Yönetilen etki alanının parçası olan herhangi bir kullanıcı hesabı bir V
 Hayır. Yönetilen etki alanında yönetim ayrıcalıkları verilmemiş. Etki alanı *Yöneticisi* ve *Kurumsal Yönetici* ayrıcalıkları, etki alanı içinde kullanabilmeniz için kullanılamaz. Şirket içi Active Directory etki alanı yöneticisinin veya kurumsal yönetici gruplarının üyelerine, yönetilen etki alanında etki alanı/kuruluş yöneticisi ayrıcalıkları de verilmez.
 
 ### <a name="can-i-modify-group-memberships-using-ldap-or-other-ad-administrative-tools-on-managed-domains"></a>Yönetilen etki alanlarında LDAP veya diğer AD Yönetim araçlarını kullanarak grup üyeliklerini değiştirebilir miyim?
-Azure AD Domain Services Azure Active Directory 'ten eşitlenen kullanıcılar ve gruplar, kaynak kaynağı Azure Active Directory değiştirilemiyor. Yönetilen etki alanında kaynak olan herhangi bir kullanıcı veya grup değiştirilebilir.
+Azure AD Domain Services Azure Active Directory 'ten eşitlenen kullanıcılar ve gruplar, kaynak kaynağı Azure Active Directory değiştirilemiyor. Bu, kullanıcıları veya grupları AADDC kullanıcıları tarafından yönetilen kuruluş biriminden Özel bir kuruluş birimine taşımayı içerir. Yönetilen etki alanında kaynak olan herhangi bir kullanıcı veya grup değiştirilebilir.  
 
 ### <a name="how-long-does-it-take-for-changes-i-make-to-my-azure-ad-directory-to-be-visible-in-my-managed-domain"></a>Azure AD dizinimde, yönetilen etki alanım 'da görünür hale gelen değişiklikler için ne kadar sürer?
 Azure AD Kullanıcı arabirimi veya PowerShell kullanılarak Azure AD dizininizde yapılan değişiklikler, yönetilen etki alanınız ile otomatik olarak eşitlenir. Bu eşitleme işlemi arka planda çalışır. Bu eşitlemenin tüm nesne değişikliklerini tamamlaması için tanımlı bir zaman aralığı yok.

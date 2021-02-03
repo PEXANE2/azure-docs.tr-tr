@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 09/13/2017
 ms.author: mimckitt
-ms.openlocfilehash: 23f14e14bea665f838919ae357d11db32bddfa7f
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: ced29c3222b7f4f5d7cf5f9e472c420c47341786
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94579428"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493252"
 ---
 # <a name="introduction-to-freebsd-on-azure"></a>Azure üzerinde FreeBSD’ye giriş
 Bu makalede, Azure 'da FreeBSD sanal makinesini çalıştırmaya ilişkin bir genel bakış sunulmaktadır.
@@ -119,4 +119,4 @@ $ sudo <COMMAND>
 [Azure VM Konuk Aracısı](https://github.com/Azure/WALinuxAgent/) sürümü 2.2.2, Azure üzerinde FreeBSD VM 'si için sağlama hatasına neden olan [bilinen bir sorunla](https://github.com/Azure/WALinuxAgent/pull/517) karşılaştı. Bu çözüm, [Azure VM Konuk Aracısı](https://github.com/Azure/WALinuxAgent/) sürüm 2.2.3 ve sonraki sürümleri tarafından yakalanmıştı. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* FreeBSD VM oluşturmak için [Azure Marketi](https://azuremarketplace.microsoft.com/marketplace/apps/thefreebsdfoundation.freebsd-12_1?tab=Overview) ' ne gidin.
+* FreeBSD VM oluşturmak için [Azure Marketi](https://azuremarketplace.microsoft.com/marketplace/apps/thefreebsdfoundation.freebsd-12_2?tab=Overview) ' ne gidin.

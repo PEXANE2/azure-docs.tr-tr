@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 10/02/2020
-ms.openlocfilehash: 6400d3f3c721619551ba3989a2e5799b72ff9f38
-ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
+ms.openlocfilehash: e485c2f0a7deeffe68c932688658ef099fec510e
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97831933"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99492764"
 ---
 # <a name="create-and-attach-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes hizmet kümesi oluşturma ve iliştirme
 
@@ -70,7 +70,9 @@ Azure Machine Learning, eğitilen makine öğrenimi modellerini Azure Kubernetes
     - [AKS kümesindeki düğüm sayısını el ile ölçeklendirme](../aks/scale-cluster.md)
     - [AKS 'de küme otomatik Scaler 'ı ayarlama](../aks/cluster-autoscaler.md)
 
-## <a name="azure-kubernetes-service-version"></a>Azure Kubernetes hizmet sürümü
+- __YAML yapılandırmasını kullanarak kümeyi doğrudan güncelleştirmeyin__. Azure Kubernetes Hizmetleri, YAML yapılandırması aracılığıyla güncelleştirmeleri desteklese de Azure Machine Learning dağıtımlar yaptığınız değişiklikleri geçersiz kılar. Geçersiz kılınmayacak iki YAML alanı, __istek limitleri__ ve __CPU ve bellek__.
+
+## <a name="azure-kubernetes-service-version"></a>Azure Kubernetes Service sürümü
 
 Azure Kubernetes hizmeti, çeşitli Kubernetes sürümlerini kullanarak bir küme oluşturmanıza olanak sağlar. Kullanılabilir sürümler hakkında daha fazla bilgi için bkz. [Azure Kubernetes hizmetinde desteklenen Kubernetes sürümleri](../aks/supported-kubernetes-versions.md).
 
@@ -381,7 +383,6 @@ Azure Machine Learning Studio 'da __işlem__, __çıkarım kümeleri__ ve kaldı
 ---
 
 ## <a name="troubleshooting"></a>Sorun giderme
-
 ### <a name="update-the-cluster"></a>Kümeyi güncelleştirme
 
 Azure Kubernetes hizmet kümesinde yüklü Azure Machine Learning bileşenlere yapılan güncelleştirmeler el ile uygulanmalıdır. 

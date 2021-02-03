@@ -1,14 +1,14 @@
 ---
 title: Azure Resource Manager şablonu kullanarak VM uzantısını etkinleştirme
 description: Bu makalede, karma bulut ortamlarında çalışan Azure Arc etkin sunucularına bir Azure Resource Manager şablonu kullanılarak sanal makine uzantılarının nasıl dağıtılacağı açıklanır.
-ms.date: 11/06/2020
+ms.date: 02/03/2021
 ms.topic: conceptual
-ms.openlocfilehash: d5c7f5055f3e41a91fa00e1e3ad08e7686145b9e
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: cfba14ac30553178bd509d0b0e7ba9c60332d299
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94353875"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493337"
 ---
 # <a name="enable-azure-vm-extensions-by-using-arm-template"></a>ARM şablonunu kullanarak Azure VM uzantılarını etkinleştirme
 
@@ -698,6 +698,90 @@ Aşağıdaki JSON Key Vault VM uzantısının (Önizleme) şemasını gösterir.
 
 ```powershell
 New-AzResourceGroupDeployment -ResourceGroupName "ContosoEngineering" -TemplateFile "D:\Azure\Templates\KeyVaultExtension.json"
+```
+
+## <a name="deploy-the-azure-defender-integrated-scanner"></a>Azure Defender tümleşik tarayıcısını dağıtma
+
+Azure Defender tümleşik tarayıcı uzantısını kullanmak için, Windows ve Linux 'ta çalışmak üzere aşağıdaki örnek verilmiştir. Tümleşik tarayıcı hakkında bilginiz varsa bkz. Azure Defender 'ın karma makineler için [güvenlik açığı değerlendirmesi çözümüne genel bakış](../../security-center/deploy-vulnerability-assessment-vm.md) .
+
+### <a name="template-file-for-windows"></a>Windows için şablon dosyası
+
+```json
+{
+  "properties": {
+    "mode": "Incremental",
+    "template": {
+      "contentVersion": "1.0.0.0",
+      "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+      "parameters": {
+        "vmName": {
+          "type": "string"
+        },
+        "apiVersionByEnv": {
+          "type": "string"
+        }
+      },
+      "resources": [
+        {
+          "type": "resourceType/providers/WindowsAgent.AzureSecurityCenter",
+          "name": "[concat(parameters('vmName'), '/Microsoft.Security/default')]",
+          "apiVersion": "[parameters('apiVersionByEnv')]"
+        }
+      ]
+    },
+    "parameters": {
+      "vmName": {
+        "value": "resourceName"
+      },
+      "apiVersionByEnv": {
+        "value": "2015-06-01-preview"
+      }
+    }
+  }
+}
+```
+
+### <a name="template-file-for-linux"></a>Linux için şablon dosyası
+
+```json
+{
+  "properties": {
+    "mode": "Incremental",
+    "template": {
+      "contentVersion": "1.0.0.0",
+      "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+      "parameters": {
+        "vmName": {
+          "type": "string"
+        },
+        "apiVersionByEnv": {
+          "type": "string"
+        }
+      },
+      "resources": [
+        {
+          "type": "resourceType/providers/LinuxAgent.AzureSecurityCenter",
+          "name": "[concat(parameters('vmName'), '/Microsoft.Security/default')]",
+          "apiVersion": "[parameters('apiVersionByEnv')]"
+        }
+      ]
+    },
+    "parameters": {
+      "vmName": {
+        "value": "resourceName"
+      },
+      "apiVersionByEnv": {
+        "value": "2015-06-01-preview"
+      }
+    }
+  }
+}
+```
+
+Şablon dosyasını diske kaydedin. Daha sonra uzantıyı aşağıdaki komutla bir kaynak grubu içindeki tüm bağlı makinelere yükleyebilirsiniz.
+
+```powershell
+New-AzResourceGroupDeployment -ResourceGroupName "ContosoEngineering" -TemplateFile "D:\Azure\Templates\AzureDefenderScanner.json"
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar

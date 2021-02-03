@@ -1,75 +1,89 @@
 ---
-title: Sık karşılaşılan hatalar
-description: Bu belge, panoda bulunan yaygın hatalar hakkında bilgi içerir
+title: ISMC panosundaki bağlayıcı durumu hataları
+description: BT Hizmet Yönetimi Bağlayıcısı panosunda bulunan yaygın hatalar hakkında bilgi edinin.
 ms.subservice: alerts
 ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 01/18/2021
-ms.openlocfilehash: be6d47d8f40746bfb2154ddb62cf2e9ce93e74aa
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: d1ba698cd95a074c021aa351a98eb12fc8ae0fc3
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98955692"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99492527"
 ---
-# <a name="errors-in-the-connector-status-section"></a>Bağlayıcı durumu bölümündeki hatalar
+# <a name="connector-status-errors-in-the-itsmc-dashboard"></a>ISMC panosundaki bağlayıcı durumu hataları
 
-Panodaki bağlayıcı durumu listesi bölümünde, ıTSM bağlayıcıınızın sorunlarını gidermenize yardımcı olabilecek hatalar bulabilirsiniz.
+BT Hizmet Yönetimi Bağlayıcısı (ıSMC) panosunda, bağlayıcıdaki sorunları gidermenize yardımcı olabilecek hatalar sunulmaktadır.
 
-## <a name="status-common-errors"></a>Durum yaygın hataları
+Aşağıdaki bölümlerde, panonun bağlayıcı durumu bölümünde görünen yaygın hatalar ve bunları nasıl çözekullanabileceğiniz açıklanır.
 
-Bu bölümde, bağlayıcı durumu bölümünde sunulan yaygın hataları ve bunları nasıl çözebileceğinizi bulabilirsiniz:
+## <a name="unexpected-response"></a>Beklenmeyen yanıt
 
-* **Hata**: "ServiceNow 'dan beklenmeyen yanıt durum kodu ile birlikte. Yanıt: {"import_set": "{import_set_id}", "staging_table": "x_mioms_microsoft_oms_incident", "sonuç": [{"transform_map": "OMS olayı", "Table": "olay", "durum": "hata", "error_message": "{hedef kayıt bulunamadı | Geçersiz tablo | "}" Hazırlama tablosu geçersiz
+**Hata**: "ServiceNow 'dan beklenmeyen yanıt durum kodu ile birlikte. Yanıt: {"import_set": "{import_set_id}", "staging_table": "x_mioms_microsoft_oms_incident", "sonuç": [{"transform_map": "OMS olayı", "Table": "olay", "durum": "hata", "error_message": "{hedef kayıt bulunamadı | Geçersiz tablo | "}" Hazırlama tablosu geçersiz
 
-    **Neden**: Bu tür bir hata şu durumlarda ServiceNow 'dan döndürülür:
-  * ServiceNow örneğinde dağıtılan özel bir betik olayların yoksayılmasına neden olur.
-  * "OMS tümleştirici uygulaması" kodu ServiceNow tarafında değiştirilmiştir, örneğin, onBefore betiği.
+**Neden**: ServiceNow şu durumlarda bu hatayı döndürür:
 
-  **Çözüm**: tüm özel betikleri veya kod değişikliklerini devre dışı bırakın.
+* ServiceNow örneğinde dağıtılan özel bir betik olayların yoksayılmasına neden olur.
+* ServiceNow tarafında "OMS tümleştirici uygulaması" kodu değiştirilmiştir (örneğin, `onBefore` komut dosyası aracılığıyla).
 
-* **Hata**: "{" Error ": {" Message ":" Işlem başarısız oldu "," ayrıntı ":" güvenlik KıSıTLAMALARı nedeniyle ACL özel durum güncelleştirmesi başarısız oldu "}"
+**Çözüm**: tüm özel betikleri veya kod değişikliklerini devre dışı bırakın.
 
-    **Neden**: ServiceNow izinleri yanlış yapılandırma
+## <a name="exception-update-failure"></a>Özel durum güncelleştirme hatası
 
-    **Çözüm**: tüm rollerin [belirtilen](itsmc-connections-servicenow.md#install-the-user-app-and-create-the-user-role)şekilde doğru şekilde atandığını denetleyin.
+**Hata**: "{" Error ": {" Message ":" Işlem başarısız oldu "," ayrıntı ":" güvenlik KıSıTLAMALARı nedeniyle ACL özel durum güncelleştirmesi başarısız oldu "}"
 
-* **Hata**: "Istek gönderilirken bir hata oluştu."
+**Neden**: ServiceNow izinleri yanlış yapılandırılmış.
 
-    **Neden**: "ServiceNow örneği kullanılamıyor"
+**Çözüm**: tüm rollerin [belirtilen](itsmc-connections-servicenow.md#install-the-user-app-and-create-the-user-role)şekilde doğru şekilde atandığını denetleyin.
 
-    **Çözüm**: ServiceNow 'da örneğinizi kontrol edin veya kullanılamıyor olabilir.
+## <a name="problem-sending-a-request"></a>İstek gönderilirken sorun oluştu
 
-* **Hata**: "Servicedeskhttpbadrequestexception: StatusCode = 429"
+**Hata**: "Istek gönderilirken bir hata oluştu."
 
-    **Neden**: ServiceNow hız sınırları çok yüksek/düşük.
+**Neden**: ServiceNow örneği kullanılamıyor.
 
-    **Çözüm**: [burada](https://docs.servicenow.com/bundle/london-application-development/page/integrate/inbound-rest/task/investigate-rate-limit-violations.html)açıklandığı gibi ServiceNow örneğindeki hız sınırlarını artırın veya iptal edin.
+**Çözüm**: ServiceNow içindeki örneğinizi denetleyin. Silinmiş veya kullanılamıyor olabilir.
 
-* **Hata**: "accesstoken ve refreshtoken geçersiz. Kullanıcının yeniden kimlik doğrulaması yapması gerekiyor. "
+## <a name="servicenow-rate-problem"></a>ServiceNow oranı sorunu
 
-    **Neden**: yenileme belirtecinin zaman aşımına uğradı.
+**Hata**: "Servicedeskhttpbadrequestexception: StatusCode = 429"
 
-    **Çözüm**: ITSM Bağlayıcısı, [burada](./itsmc-resync-servicenow.md)açıklandığı gibi yeni bir yenileme belirteci oluşturacak şekilde eşitleyin.
+**Neden**: ServiceNow hız limitleri çok yüksek veya çok düşük.
 
-* **Hata**: "{alertname} uyarısı için iş öğesi oluşturulamadı/güncelleştirilemedi. {Connectionıdentifier} ITSM Bağlayıcısı yok veya silindi. "
+**Çözüm**: [ServiceNow belgelerinde](https://docs.servicenow.com/bundle/london-application-development/page/integrate/inbound-rest/task/investigate-rate-limit-violations.html)açıklandığı şekilde ServiceNow örneğindeki hız sınırlarını artırın veya iptal edin.
 
-    **Neden**: ITSM Bağlayıcısı silindi.
+## <a name="invalid-refresh-token"></a>Geçersiz yenileme belirteci
 
-    **Çözüm**: ITSM Bağlayıcısı silinmiş, ancak onunla ilişkili hala ıtssm eylem grupları var. Bu sorunu gidermek için 2 seçenek vardır:
-  * Bu tür eylem gruplarını bul ve devre dışı bırak veya Sil
-  * [Eylem grubunu](./itsmc-definition.md#create-itsm-work-items-from-azure-alerts) mevcut bir ITSM Bağlayıcısı kullanacak şekilde yeniden yapılandırın.
-  * [Yeni BIR ITSM Bağlayıcısı oluşturun](./itsmc-definition.md#create-an-itsm-connection) ve [Eylem grubunu kullanmak için yeniden yapılandırın](itsmc-definition.md#create-itsm-work-items-from-azure-alerts).
+**Hata**: "accesstoken ve refreshtoken geçersiz. Kullanıcının yeniden kimlik doğrulaması yapması gerekiyor. "
 
-## <a name="ui-common-errors"></a>UI ortak hataları
+**Neden**: yenileme belirtecinin zaman aşımına uğradı.
 
-* **Hata**: "bir sorun oluştu. Bağlantı ayrıntıları alınamadı. " Bu hata, müşteri ıTSM eylem grubunu tanımladığında sunulur.
+**Çözüm**: [eşitleme sorunlarını el ile çözme](./itsmc-resync-servicenow.md)bölümünde açıklandığı gibi, yeni bir yenileme belirteci oluşturmak için ısmc ' ı eşitleyin.
 
-    **Neden**: Bu hata şu durumlarda görüntülenir:
-    * Yeni oluşturulan ITSM Bağlayıcısı ilk eşitlemeyi henüz bitiremedi.
-    * Bağlayıcı doğru tanımlanmadı
+## <a name="missing-connector"></a>Eksik bağlayıcı
 
-    **Çözüm**: 
-    * Yeni bir ıTSM Bağlayıcısı oluşturulduğunda ITSM Bağlayıcısı, çalışma öğesi şablonları ve iş öğeleri gibi ıTSM sisteminden bilgi eşitlemeye başlar. [Burada](./itsmc-resync-servicenow.md)açıklandığı gibi yeni bir yenileme belirteci oluşturmak için ITSM Bağlayıcısı eşitleyin.
-    * ITSM bağlayıcısında yer alan bağlantı ayrıntılarınızı [burada](./itsmc-connections-servicenow.md#create-a-connection) açıklandığı gibi gözden GEÇIRIN ve ITSM bağlayıcısının başarıyla [eşitlenebilir](./itsmc-resync-servicenow.md)olup olmadığını kontrol edin.
+**Hata**: "{alertname} uyarısı için iş öğesi oluşturulamadı/güncelleştirilemedi. {Connectionıdentifier} ITSM Bağlayıcısı yok veya silindi. "
+
+**Neden**: ısmc silindi.
+
+**Çözüm**: ısmc silindi, ancak tanımlı BT hizmeti yönetimi (ISM) eylem grupları hala onunla ilişkili. Bu sorunu çözmek için üç seçenek vardır:
+
+* Bu tür eylem gruplarını bulun ve devre dışı bırakın veya silin.
+* Mevcut bir ıSMC örneğini kullanmak için [eylem gruplarını yeniden yapılandırın](./itsmc-definition.md#create-itsm-work-items-from-azure-alerts) .
+* [Yeni BIR ıSMC örneği oluşturun](./itsmc-definition.md#create-an-itsm-connection) ve [eylem gruplarını kullanmak üzere yeniden yapılandırın](itsmc-definition.md#create-itsm-work-items-from-azure-alerts).
+
+## <a name="lack-of-connection-details"></a>Bağlantı olmaması ayrıntıları
+
+**Hata**: "bir sorun oluştu. Bağlantı ayrıntıları alınamadı. " Bir ıTSM eylem grubunu tanımladığınızda bu hata görüntülenir.
+
+**Neden**: böyle bir hata, bu durumlardan birinde görünür:
+
+* Yeni oluşturulan bir ITSM Bağlayıcısı örneği, ilk eşitlemeyi henüz bitiremedi.
+* Bağlayıcı doğru tanımlanmadı.
+
+**Çözüm**: 
+
+* Yeni bir ıSMC örneği oluşturulduğunda, çalışma öğesi şablonları ve iş öğeleri gibi ıTSM sisteminden bilgi eşitlemeye başlar. [Yeni bir yenileme belirteci oluşturmak IÇIN ITSMC eşitlemesini](./itsmc-resync-servicenow.md)yapın.
+* [Ismc 'daki bağlantı ayrıntılarınızı gözden geçirin](./itsmc-connections-servicenow.md#create-a-connection) ve ısmc 'ın başarıyla [eşitleme](./itsmc-resync-servicenow.md)yapabilir olup olmadığını denetleyin.

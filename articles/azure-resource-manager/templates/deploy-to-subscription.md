@@ -3,12 +3,12 @@ title: Kaynakları aboneliğe dağıtma
 description: Azure Resource Manager şablonunda bir kaynak grubu oluşturmayı açıklar. Ayrıca Azure abonelik kapsamındaki kaynakların nasıl dağıtılacağını gösterir.
 ms.topic: conceptual
 ms.date: 01/13/2021
-ms.openlocfilehash: 1daf95945f619d0e904880d8a8a778810a685d9a
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: b5c99e5dc21c2b93f1c9da3977302a2dd311277f
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98183991"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99491512"
 ---
 # <a name="subscription-deployments-with-arm-templates"></a>ARM şablonlarıyla abonelik dağıtımları
 
@@ -104,7 +104,7 @@ az deployment sub create \
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-PowerShell dağıtım komutu için [New-AzDeployment](/powershell/module/az.resources/new-azdeployment) veya **New-azsubscriptiondeployment** kullanın. Aşağıdaki örnek, bir kaynak grubu oluşturmak için bir şablon dağıtır:
+PowerShell dağıtım komutu için [New-AzDeployment](/powershell/module/az.resources/new-azdeployment) veya diğer adını kullanın `New-AzSubscriptionDeployment` . Aşağıdaki örnek, bir kaynak grubu oluşturmak için bir şablon dağıtır:
 
 ```azurepowershell-interactive
 New-AzSubscriptionDeployment `
@@ -130,7 +130,7 @@ ARM şablonları dağıtmaya yönelik dağıtım komutları ve seçenekleri hakk
 
 Abonelik düzeyindeki dağıtımlar için, dağıtım için bir konum sağlamanız gerekir. Dağıtımın konumu, dağıttığınız kaynakların konumundan ayrıdır. Dağıtım konumu, dağıtım verilerinin depolanacağı konumu belirtir. [Yönetim grubu](deploy-to-management-group.md) ve [kiracı](deploy-to-tenant.md) dağıtımları da bir konum gerektirir. [Kaynak](deploy-to-resource-group.md) grubu dağıtımları için, kaynak grubunun konumu dağıtım verilerini depolamak için kullanılır.
 
-Dağıtım için bir ad verebilir veya varsayılan dağıtım adını kullanabilirsiniz. Varsayılan ad şablon dosyasının adıdır. Örneğin, **üzerindeazuredeploy.js** adlı bir şablon dağıtmak, **azuredeploy** varsayılan dağıtım adını oluşturur.
+Dağıtım için bir ad verebilir veya varsayılan dağıtım adını kullanabilirsiniz. Varsayılan ad şablon dosyasının adıdır. Örneğin, _üzerindeazuredeploy.js_ adlı bir şablon dağıtmak, **azuredeploy** varsayılan dağıtım adını oluşturur.
 
 Her dağıtım adı için konum sabittir. Farklı bir konumda aynı ada sahip mevcut bir dağıtım olduğunda tek bir konumda dağıtım oluşturamazsınız. Örneğin, **deployment1** adında bir abonelik dağıtımı **oluşturursanız, daha** sonra adı **deployment1** ancak **westus** olan başka bir dağıtım oluşturamazsınız. Hata kodunu alırsanız `InvalidDeploymentLocation` , bu ad için önceki dağıtımla farklı bir ad veya aynı konumu kullanın.
 
@@ -173,9 +173,9 @@ Kaynak grubuna dağıtım örneği için bkz. [kaynak grubu ve kaynakları oluş
 
 ### <a name="scope-to-tenant"></a>Kapsam-kiracı
 
-Kümesini olarak ayarlayarak kiracıya kaynak oluşturabilirsiniz `scope` `/` . Şablonu dağıtan kullanıcının [kiracıya dağıtmak için gerekli erişimi](deploy-to-tenant.md#required-access)olmalıdır.
+Kiracıda kaynak oluşturmak için öğesini `scope` olarak ayarlayın `/` . Şablonu dağıtan kullanıcının [kiracıya dağıtmak için gerekli erişimi](deploy-to-tenant.md#required-access)olmalıdır.
 
-Ve kümesi ile iç içe bir dağıtım `scope` kullanabilirsiniz `location` .
+İç içe bir dağıtım kullanmak için `scope` ve ayarlayın `location` .
 
 :::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/subscription-to-tenant.json" highlight="9,10,14":::
 
@@ -254,7 +254,7 @@ Birden fazla kaynak grubu oluşturmak için kaynak gruplarıyla [Kopyala öğesi
 }
 ```
 
-Kaynak yinelemesi hakkında daha fazla bilgi için bkz. [Azure Resource Manager şablonlarda bir kaynağın birden fazla örneğini dağıtma](./copy-resources.md)ve [öğretici: Kaynak Yöneticisi şablonlarla birden fazla kaynak örneği oluşturma](./template-tutorial-create-multiple-instances.md).
+Kaynak yinelemesi hakkında daha fazla bilgi için bkz. [ARM şablonlarındaki kaynak yinelemesi](./copy-resources.md)ve [öğretici: ARM şablonlarıyla birden çok kaynak örneği oluşturma](./template-tutorial-create-multiple-instances.md).
 
 ### <a name="create-resource-group-and-resources"></a>Kaynak grubu ve kaynakları oluşturma
 

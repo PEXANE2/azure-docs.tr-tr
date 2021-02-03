@@ -2,6 +2,8 @@
   href: index.yml
 - name: Genel Bakış
   href: overview.md
+- name: Azure Sentinel 'deki yenilikler nelerdir?
+  href: whats-new.md
 - name: Hızlı Başlangıçlar
   expanded: true
   items:

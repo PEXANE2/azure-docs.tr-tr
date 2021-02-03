@@ -3,12 +3,12 @@ title: Kayıtları kayıttan yürütme-Azure
 description: Sürekli video kaydı için IoT Edge, canlı video analizi 'ni kullanarak haftalık veya aylık bir videoyu buluta kaydedebilirsiniz. Ayrıca kaydınızı, olay tabanlı kayıt aracılığıyla ilgilendiğiniz kliplerle sınırlayabilirsiniz. Bu makalede kayıtları kayıttan yürütme hakkında bilgi gösterilmektedir.
 ms.topic: how-to
 ms.date: 04/27/2020
-ms.openlocfilehash: 6222d2c05b2fe05945d4bcbef6dbb0d64bd4726a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0351f10d9fac3ad7e3b4fdd5fd549eb7c0023694
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84261082"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99490911"
 ---
 # <a name="playback-of-recordings"></a>Kayıtların kayıttan yürütülmesi 
 
@@ -52,7 +52,7 @@ Duyarlık değeri şunlardan biri olabilir: Year, month, Day veya Full (aşağı
 |---|---|---|---|---|
 |Sorgu|`/availableMedia?precision=year&startTime=2018&endTime=2019`|`/availableMedia?precision=month& startTime=2018-01& endTime=2019-02`|`/availableMedia?precision=day& startTime=2018-01-15& endTime=2019-02-02`|`/availableMedia?precision=full& startTime=2018-01-15T10:08:11.123& endTime=2019-01-015T12:00:01.123`|
 |Yanıt|`{  "timeRanges":[{ "start":"2018", "end":"2019" }]}`|`{  "timeRanges":[{ "start":"2018-03", "end":"2019-01" }]}`|`{  "timeRanges":[    { "start":"2018-03-01", "end":"2018-03-07" },    { "start":"2018-03-09", "end":"2018-03-31" }  ]}`|Tam uygunluk yanıtı. Hiç boşluk yoksa, başlangıç startTime olur ve son olarak bitebileceğiniz olur.|
-|Kısıtlar|&#x2022;startTime <= bitişsaati<br/>&#x2022;her Ikisi de YYYY biçiminde olmalıdır; Aksi takdirde hata döndürür.<br/>&#x2022;değerler herhangi bir sayıda yıl olabilir.<br/>&#x2022;değerler dahil değildir.|&#x2022;startTime <= bitişsaati<br/>&#x2022;her Ikisi de YYYY-MM biçiminde olmalı, aksi takdirde hata döndürülür.<br/>&#x2022;değerler en fazla 12 ay olabilir.<br/>&#x2022;değerler dahil değildir.|&#x2022;startTime <= bitişsaati<br/>&#x2022;her Ikisi de YYYY-AA-GG biçiminde olmalı, aksi takdirde hata döndürülür.<br/>&#x2022;değerler en fazla 31 gün olabilir.<br/>Değerler dahildir.|&#x2022;startTime < bitişsaati<br/>&#x2022;değerler en fazla 25 saat ayrı olabilir.<br/>&#x2022;değerler dahil değildir.|
+|Kısıtlamalar|&#x2022;startTime <= bitişsaati<br/>&#x2022;her Ikisi de YYYY biçiminde olmalıdır; Aksi takdirde hata döndürür.<br/>&#x2022;değerler herhangi bir sayıda yıl olabilir.<br/>&#x2022;değerler dahil değildir.|&#x2022;startTime <= bitişsaati<br/>&#x2022;her Ikisi de YYYY-MM biçiminde olmalı, aksi takdirde hata döndürülür.<br/>&#x2022;değerler en fazla 12 ay olabilir.<br/>&#x2022;değerler dahil değildir.|&#x2022;startTime <= bitişsaati<br/>&#x2022;her Ikisi de YYYY-AA-GG biçiminde olmalı, aksi takdirde hata döndürülür.<br/>&#x2022;değerler en fazla 31 gün olabilir.<br/>Değerler dahildir.|&#x2022;startTime < bitişsaati<br/>&#x2022;değerler en fazla 25 saat ayrı olabilir.<br/>&#x2022;değerler dahil değildir.|
 
 #### <a name="additional-request-format-considerations"></a>Ek istek biçimi konuları
 

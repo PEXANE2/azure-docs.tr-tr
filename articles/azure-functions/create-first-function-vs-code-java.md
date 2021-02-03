@@ -3,12 +3,12 @@ title: Visual Studio Code-Azure Işlevleri kullanarak bir Java işlevi oluşturm
 description: Java işlevi oluşturmayı öğrenin ve ardından Visual Studio Code içindeki Azure Işlevleri uzantısını kullanarak yerel projeyi Azure Işlevleri 'nde sunucusuz barındırma için yayımlayın.
 ms.topic: quickstart
 ms.date: 11/03/2020
-ms.openlocfilehash: daaa578b2842a6314706b3578f4c9e44d46aa6ce
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 36516abd8b50c0b0b7d72e6bae0b67701509ca65
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93425136"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493643"
 ---
 # <a name="quickstart-create-a-java-function-in-azure-using-visual-studio-code"></a>Hızlı başlangıç: Visual Studio Code kullanarak Azure 'da Java işlevi oluşturma
 
@@ -31,44 +31,44 @@ Başlamadan önce, aşağıdaki gereksinimlerin yerinde olduğundan emin olun:
 
 + [Apache Maven](https://maven.apache.org), sürüm 3,0 veya üzeri.
 
-+ [Desteklenen platformlardan](https://code.visualstudio.com/docs/supporting/requirements#_platforms)birine [Visual Studio Code](https://code.visualstudio.com/) .
++ [Desteklenen platformlardan](https://code.visualstudio.com/docs/supporting/requirements#_platforms) birinde çalışan [Visual Studio Code](https://code.visualstudio.com/).
 
 + [Java Uzantı paketi](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack)  
 
-+ Visual Studio Code için [Azure işlevleri uzantısı](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) . 
++ Visual Studio Code için [Azure İşlevleri uzantısı](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions). 
 
 ## <a name="create-your-local-project"></a><a name="create-an-azure-functions-project"></a>Yerel projenizi oluşturma
 
-Bu bölümde, Java 'da yerel bir Azure Işlevleri projesi oluşturmak için Visual Studio Code kullanırsınız. Bu makalenin ilerleyen kısımlarında, işlev kodunuzu Azure 'a yayımlayacaksınız. 
+Bu bölümde, Java 'da yerel bir Azure Işlevleri projesi oluşturmak için Visual Studio Code kullanırsınız. Bu makalenin ilerleyen bölümlerinde işlev kodunu Azure'da yayımlayacaksınız. 
 
-1. Etkinlik çubuğunda Azure simgesini seçin, sonra **Azure: işlevler** alanında **Yeni proje oluştur...** simgesini seçin.
+1. Etkinlik çubuğundan Azure simgesini seçtikten sonra **Azure: İşlevler** alanında **Yeni proje oluştur...** simgesini seçin.
 
-    ![Yeni proje oluştur seçeneğini belirleyin](./media/functions-create-first-function-vs-code/create-new-project.png)
+    ![Yeni proje oluştur'u seçin](./media/functions-create-first-function-vs-code/create-new-project.png)
 
-1. Proje çalışma alanınız için bir dizin konumu seçin ve **Seç** ' i seçin.
+1. Projenizin çalışma alanı için bir dizin konumu seçtikten sonra **Seç**'i belirleyin.
 
     > [!NOTE]
     > Bu adımlar, bir çalışma alanının dışında tamamlanacak şekilde tasarlandı. Bu örnekte, bir çalışma alanının parçası olan bir proje klasörünü seçmeyin.
 
-1. İstemlere aşağıdaki bilgileri sağlayın:
+1. İstemlerde aşağıdaki bilgileri sağlayın:
 
-    + **İşlev projeniz için bir dil seçin** : seçin `Java` .
+    + **İşlev projeniz için bir dil seçin**: `Java` öğesini seçin.
 
-    + **Java sürümü seçin** : `Java 8` `Java 11` Işlevlerinizin Azure 'da çalıştığı Java sürümünü seçin veya seçin. Yerel olarak doğruladığınızı bir Java sürümü seçin.
+    + **Java sürümü seçin**: `Java 8` `Java 11` Işlevlerinizin Azure 'da çalıştığı Java sürümünü seçin veya seçin. Yerel olarak doğruladığınızı bir Java sürümü seçin.
 
-    + **Bir grup kimliği sağlayın** : Seç `com.function` .
+    + **Bir grup kimliği sağlayın**: Seç `com.function` .
 
-    + **YAPıT kimliği sağlayın** : seçin `myFunction` .
+    + **YAPıT kimliği sağlayın**: seçin `myFunction` .
 
-    + **Bir sürüm belirtin** : Seç `1.0-SNAPSHOT` .
+    + **Bir sürüm belirtin**: Seç `1.0-SNAPSHOT` .
 
-    + **Bir paket adı belirtin** : Seç `com.function` .
+    + **Bir paket adı belirtin**: Seç `com.function` .
 
-    + **Bir uygulama adı belirtin** : Seç `myFunction-12345` .
+    + **Bir uygulama adı belirtin**: Seç `myFunction-12345` .
 
-    + **Yetkilendirme düzeyi** : `Anonymous` herhangi bir kişinin işlev uç noktanızı çağırmasını sağlayan öğesini seçin. Yetkilendirme düzeyi hakkında bilgi edinmek için bkz. [Yetkilendirme anahtarları](functions-bindings-http-webhook-trigger.md#authorization-keys).
+    + **Yetkilendirme düzeyi**: `Anonymous` herhangi bir kişinin işlev uç noktanızı çağırmasını sağlayan öğesini seçin. Yetkilendirme düzeyi hakkında bilgi edinmek için bkz. [Yetkilendirme anahtarları](functions-bindings-http-webhook-trigger.md#authorization-keys).
 
-    + **Projenizi nasıl açmak Istediğinizi seçin** : seçin `Add to workspace` .
+    + **Projenizi nasıl açmak istediğinizi seçin**: `Add to workspace` öğesini seçin.
 
 1. Bu bilgileri kullanarak, Visual Studio Code HTTP tetikleyicisiyle bir Azure Işlevleri projesi oluşturur. Yerel proje dosyalarını Gezgin içinde görüntüleyebilirsiniz. Oluşturulan dosyalar hakkında daha fazla bilgi edinmek için bkz. [oluşturulan proje dosyaları](functions-develop-vs-code.md#generated-project-files). 
 
@@ -86,7 +86,7 @@ Bu bölümde, Java 'da yerel bir Azure Işlevleri projesi oluşturmak için Visu
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-HTTP ile tetiklenen basit bir işlevi kullanarak bir işlev uygulaması oluşturmak için Visual Studio Code’u kullandınız. Sonraki makalede, bir çıkış bağlaması ekleyerek bu işlevi genişletmelisiniz. Bu bağlama, HTTP isteğinden dizeyi bir Azure kuyruk depolama kuyruğundaki bir iletiye yazar. 
+Basit bir HTTP ile tetiklenen işlevi olan bir işlev uygulaması oluşturmak için [Visual Studio Code](functions-develop-vs-code.md?tabs=java) kullandınız. Sonraki makalede, Azure depolama 'ya bağlanarak bu işlevi genişletmelisiniz. Diğer Azure hizmetlerine bağlanma hakkında daha fazla bilgi edinmek için bkz. [Azure işlevleri 'nde var olan bir işleve bağlama ekleme](add-bindings-existing-function.md?tabs=java). 
 
 > [!div class="nextstepaction"]
 > [Azure depolama kuyruğuna bağlanma](functions-add-output-binding-storage-queue-vs-code.md?pivots=programming-language-java)

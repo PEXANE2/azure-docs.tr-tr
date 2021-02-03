@@ -3,12 +3,12 @@ title: Kaynakları kaynak gruplarına dağıtma
 description: Azure Resource Manager şablonunda kaynakların nasıl dağıtılacağını açıklar. Birden fazla kaynak grubunun nasıl hedeflenecek gösterilmektedir.
 ms.topic: conceptual
 ms.date: 01/13/2021
-ms.openlocfilehash: 9eb70e5ce69a2c7bc7ac9b8c9a7a558d09ecbef0
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: c3401346f31d34d92da1f52ca79f691e94e7eb78
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98186235"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99491563"
 ---
 # <a name="resource-group-deployments-with-arm-templates"></a>ARM şablonlarıyla kaynak grubu dağıtımları
 
@@ -128,9 +128,9 @@ Bir aboneliğe kaynak dağıtmak için, iç içe geçmiş bir dağıtım ekleyin
 
 ### <a name="scope-to-tenant"></a>Kapsam-kiracı
 
-Kümesini olarak ayarlayarak kiracıya kaynak oluşturabilirsiniz `scope` `/` . Şablonu dağıtan kullanıcının [kiracıya dağıtmak için gerekli erişimi](deploy-to-tenant.md#required-access)olmalıdır.
+Kiracıda kaynak oluşturmak için öğesini `scope` olarak ayarlayın `/` . Şablonu dağıtan kullanıcının [kiracıya dağıtmak için gerekli erişimi](deploy-to-tenant.md#required-access)olmalıdır.
 
-Ve kümesi ile iç içe bir dağıtım `scope` kullanabilirsiniz `location` .
+İç içe bir dağıtım kullanmak için `scope` ve ayarlayın `location` .
 
 :::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/resource-group-to-tenant.json" highlight="9,10,14":::
 
@@ -142,7 +142,7 @@ Daha fazla bilgi için bkz. [Yönetim grubu](deploy-to-management-group.md#manag
 
 ## <a name="deploy-to-target-resource-group"></a>Hedef kaynak grubuna dağıt
 
-Hedef kaynak grubunda kaynakları dağıtmak için, bu kaynakları şablonun **kaynaklar** bölümünde tanımlayın. Aşağıdaki şablon, dağıtım işleminde belirtilen kaynak grubunda bir depolama hesabı oluşturur.
+Hedef kaynak grubunda kaynakları dağıtmak için, bu kaynakları `resources` şablonun bölümünde tanımlayın. Aşağıdaki şablon, dağıtım işleminde belirtilen kaynak grubunda bir depolama hesabı oluşturur.
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-outputs/azuredeploy.json":::
 

@@ -4,12 +4,12 @@ description: Tarafından toplanan ve Azure Application Insights 'de depolanan Az
 ms.topic: how-to
 ms.date: 10/14/2020
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 14b6ed3964900e3395ca335c301dfd0285da46e7
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 2a991157962b0588e3d49510e8a82a9abcfb9aed
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97937306"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493779"
 ---
 # <a name="analyze-azure-functions-telemetry-in-application-insights"></a>Application Insights 'de Azure Işlevleri telemetrisini çözümleyin 
 
@@ -60,7 +60,7 @@ Application Insights kullanma hakkında daha fazla bilgi için [Application Insi
 
 Aşağıdaki Application Insights, işlevinizdeki davranış, performans ve hataları değerlendirirken yararlı olabilir:
 
-| Araştır | Description |
+| Araştır | Açıklama |
 | ---- | ----------- |
 | **[Hatalar](../azure-monitor/app/asp-net-exceptions.md)** |  İşlev hatalarıyla ve sunucu özel durumlarına göre grafikler ve uyarılar oluşturun. **Işlem adı** işlev adıdır. Bağımlılıklar için özel telemetri uygulamadığınız takdirde Bağımlılıklardaki arızalar gösterilmez. |
 | **[Performans](../azure-monitor/app/performance-counters.md)** | **Bulut rol örnekleri** başına kaynak kullanımını ve aktarım hızını görüntüleyerek performans sorunlarını analiz edin. Bu performans verileri, işlevlerin temeldeki kaynaklarınızın gerisinde olduğu durumlarda hata ayıklama senaryolarında yararlı olabilir. |
@@ -77,18 +77,18 @@ Günlüğe kaydedilen olayları incelemek veya sorgulamak için **günlükleri**
 
 Son 30 dakika içinde çalışan başına isteklerin dağılımını gösteren bir sorgu örneği aşağıda verilmiştir.
 
-<pre>
+```kusto
 requests
 | where timestamp > ago(30m) 
 | summarize count() by cloud_RoleInstance, bin(timestamp, 1m)
 | render timechart
-</pre>
+```
 
 Kullanılabilir tablolar, sol taraftaki **şema** sekmesinde gösterilir. İşlev etkinleştirmeleri tarafından oluşturulan verileri aşağıdaki tablolarda bulabilirsiniz:
 
 | Tablo | Açıklama |
 | ----- | ----------- |
-| **lerin** | Çalışma zamanı ve izleme tarafından işlev kodınızdan oluşturulan Günlükler. |
+| **lerin** | Çalışma zamanı, ölçek denetleyicisi ve izleme tarafından işlev kodunuzda oluşturulan Günlükler. |
 | **istekler** | Her işlev çağrısı için bir istek. |
 | **larý** | Çalışma zamanı tarafından oluşturulan özel durumlar. |
 | **customMetrics** | Başarılı ve başarısız çağırma sayısı, başarı oranı ve süre. |
@@ -99,12 +99,38 @@ Diğer tablolar, kullanılabilirlik testleri, istemci ve tarayıcı telemetri i�
 
 Her tablo içinde IŞLEVLERE özgü verilerden bazıları bir `customDimensions` alandır.  Örneğin, aşağıdaki sorgu günlük düzeyine sahip tüm izlemeleri alır `Error` .
 
-<pre>
+```kusto
 traces 
 | where customDimensions.LogLevel == "Error"
-</pre>
+```
 
 Çalışma zamanı `customDimensions.LogLevel` ve alanlarını sağlar `customDimensions.Category` . İşlev kodunuzda yazdığınız günlüklerde ek alanlar sağlayabilirsiniz. C# ' deki bir örnek için bkz. .NET sınıf kitaplığı geliştirici kılavuzunda [yapılandırılmış günlüğe kaydetme](functions-dotnet-class-library.md#structured-logging) .
+
+## <a name="query-scale-controller-logs"></a>Sorgu ölçek denetleyicisi günlükleri
+
+_Bu özellik önizleme aşamasındadır._
+
+Hem [Ölçek denetleyicisi günlüğünü](configure-monitoring.md#configure-scale-controller-logs) hem de [Application Insights tümleştirmeyi](configure-monitoring.md#enable-application-insights-integration)etkinleştirdikten sonra, Application Insights günlük aramasını, yayılan ölçek denetleyicisi günlüklerini sorgulamak için kullanabilirsiniz. Ölçek denetleyicisi günlükleri, `traces` koleksiyonda **scalecontrollerlogs** kategorisi altında kaydedilir.
+
+Aşağıdaki sorgu, geçerli işlev uygulaması için belirtilen süre içinde tüm ölçek denetleyicisi günlüklerini aramak için kullanılabilir:
+
+```kusto
+traces 
+| extend CustomDimensions = todynamic(tostring(customDimensions))
+| where CustomDimensions.Category == "ScaleControllerLogs"
+```
+
+Aşağıdaki sorgu, yalnızca ölçekteki bir değişikliği gösteren günlüklerin nasıl alınacağını göstermek için önceki sorgu üzerinde genişler:
+
+```kusto
+traces 
+| extend CustomDimensions = todynamic(tostring(customDimensions))
+| where CustomDimensions.Category == "ScaleControllerLogs"
+| where message == "Instance count changed"
+| extend Reason = CustomDimensions.Reason
+| extend PreviousInstanceCount = CustomDimensions.PreviousInstanceCount
+| extend NewInstanceCount = CustomDimensions.CurrentInstanceCount
+```
 
 ## <a name="consumption-plan-specific-metrics"></a>Tüketim planına özgü ölçümler
 

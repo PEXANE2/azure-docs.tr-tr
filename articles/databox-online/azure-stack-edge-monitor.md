@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 04/15/2019
+ms.date: 02/02/2021
 ms.author: alkohli
-ms.openlocfilehash: cd75eb0f7de602979f2233a873c01ef742471e37
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 388be1b13f89a50bed003731c01c6ab6287faaf9
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90904399"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99491073"
 ---
 # <a name="monitor-your-azure-stack-edge-pro"></a>Azure Stack Edge Pro 'Yu izleyin
 
@@ -26,7 +26,6 @@ Bu makalede şunları öğreneceksiniz:
 > * Cihaz olaylarını ve ilgili uyarıları görüntüleme
 > * Cihaz bileşenlerinin donanım durumunu görüntüleme
 > * Cihazınız için kapasite ve işlem ölçümlerini görüntüleme
-> * Uyarıları yapılandırma ve yönetme
 
 ## <a name="view-device-events"></a>Cihaz olaylarını görüntüle
 
@@ -59,29 +58,26 @@ Bu bölümde, cihazınızdaki izleme ölçümleri açıklanmaktadır. Ölçümle
 
 |Kapasite ölçümleri                     |Açıklama  |
 |-------------------------------------|-------------|
-|**Kullanılabilir kapasite**               | Cihaza yazılabilen verilerin boyutunu ifade eder. Diğer bir deyişle, bu, cihazda kullanılabilir hale getirilebilir kapasitedir. <br></br>Hem cihazda hem de bulutta bir kopyası olan dosyaların yerel kopyasını silerek cihaz kapasitesini serbest bırakabilirsiniz.        |
-|**Toplam kapasite**                   | Verilerin yazılacağı cihazdaki toplam bayt sayısını ifade eder. Bu, yerel önbelleğin toplam boyutu olarak da adlandırılır. <br></br> Artık bir veri diski ekleyerek var olan bir sanal cihazın kapasitesini artırabilirsiniz. VM için hiper yönetici yönetimi aracılığıyla bir veri diski ekleyin ve ardından sanal makineyi yeniden başlatın. Ağ Geçidi cihazının yerel depolama havuzu, yeni eklenen veri diskine uyum sağlayacak şekilde genişletilir. <br></br>Daha fazla bilgi için, [Hyper-V sanal makinesi için sabit sürücü ekleme](https://www.youtube.com/watch?v=EWdqUw9tTe4)bölümüne gidin. |
+|**Kullanılabilir kapasite**               | Cihaza yazılabilen verilerin boyutunu ifade eder. Diğer bir deyişle, bu ölçüm cihazda kullanılabilir hale getirilebilir kapasitedir. <br></br>Hem cihaz hem de bulutta bir kopyası olan dosyaların yerel kopyasını silerek cihaz kapasitesini serbest bırakabilirsiniz.        |
+|**Toplam kapasite**                   | , Yerel önbelleğin toplam boyutu olarak da adlandırılan, verileri yazmak için aygıttaki toplam bayt sayısını ifade eder. <br></br> Artık bir veri diski ekleyerek var olan bir sanal cihazın kapasitesini artırabilirsiniz. VM için hiper yönetici yönetimi aracılığıyla bir veri diski ekleyin ve ardından sanal makineyi yeniden başlatın. Ağ Geçidi cihazının yerel depolama havuzu, yeni eklenen veri diskine uyum sağlayacak şekilde genişletilir. <br></br>Daha fazla bilgi için, [Hyper-V sanal makinesi için sabit sürücü ekleme](https://www.youtube.com/watch?v=EWdqUw9tTe4)bölümüne gidin. |
 
 |İşlem ölçümleri              | Açıklama         |
 |-------------------------------------|---------|
 |**Karşıya yüklenen bulut baytları (cihaz)**    | Cihazınızdaki tüm paylaşımlar genelinde karşıya yüklenen tüm baytların toplamı        |
-|**Karşıya yüklenen bulut baytları (paylaşma)**     | Her bir paylaşılan bayt karşıya yüklendi. Bu yük şunlardan biri olabilir: <br></br> Ort, (paylaşım başına karşıya yüklenen baytların toplamı/paylaşım sayısı),  <br></br>En fazla, bir paylaşımdan karşıya yüklenen en fazla bayt sayısıdır <br></br>En az, bir paylaşımdan karşıya yüklenen bayt sayısı alt sınırı      |
-|**Bulut indirme verimlilik (paylaşma)**| Her bir paylaşıma indirilen bayt. Bu yük şunlardan biri olabilir: <br></br> Ortalama, (okuma veya bir paylaşıma/paylaşım sayısına indirilen tüm baytların toplamı) <br></br> En fazla, bir paylaşımdan indirilen en fazla bayt sayısıdır<br></br> ve bir paylaşımdan indirilen en az bayt sayısı olan dk  |
+|**Karşıya yüklenen bulut baytları (paylaşma)**     | Her bir paylaşılan bayt karşıya yüklendi. Bu ölçüm şu olabilir: <br></br> Ort, (paylaşım başına karşıya yüklenen baytların toplamı/paylaşım sayısı),  <br></br>En fazla, bir paylaşımdan karşıya yüklenen en fazla bayt sayısıdır <br></br>En az, bir paylaşımdan karşıya yüklenen bayt sayısı alt sınırı      |
+|**Bulut indirme verimlilik (paylaşma)**| Her bir paylaşıma indirilen bayt. Bu ölçüm şu olabilir: <br></br> Ortalama, (okuma veya bir paylaşıma/paylaşım sayısına indirilen tüm baytların toplamı) <br></br> En fazla, bir paylaşımdan indirilen en fazla bayt sayısıdır<br></br> ve bir paylaşımdan indirilen en az bayt sayısı olan dk  |
 |**Bulut okuma performansı**            | Cihazınızdaki tüm paylaşımlar genelinde buluttan okunan tüm baytların toplamı     |
 |**Bulut karşıya yükleme performansı**          | Cihazınızdaki tüm paylaşımlar genelinde buluta yazılan tüm baytların toplamı     |
 |**Bulut karşıya yükleme üretilen işi (paylaşma)**  | Bir paylaşımdan buluta yazılan tüm baytların toplamı, paylaşım başına ortalama, en fazla ve en az      |
-|**Okuma performansı (ağ)**           | Buluttan okunan tüm baytlar için sistem ağı aktarım hızını içerir. Bu görünüm, paylaşımlarla sınırlı olmayan verileri içerebilir. <br></br>Bölmek, cihazdaki tüm ağ bağdaştırıcılarının trafiğini gösterir. Bu, bağlı veya etkin olmayan bağdaştırıcılar içerir.      |
-|**Yazma işleme (ağ)**       | Buluta yazılan tüm baytlar için sistem ağı aktarım hızını içerir. Bu görünüm, paylaşımlarla sınırlı olmayan verileri içerebilir. <br></br>Bölmek, cihazdaki tüm ağ bağdaştırıcılarının trafiğini gösterir. Bu, bağlı veya etkin olmayan bağdaştırıcılar içerir.          |
+|**Okuma performansı (ağ)**           | Buluttan okunan tüm baytlar için sistem ağı aktarım hızını içerir. Bu görünüm, paylaşımlarla sınırlı olmayan verileri içerebilir. <br></br>Bölmek, bağlı olmayan veya etkin bağdaştırıcılar dahil olmak üzere cihazdaki tüm ağ bağdaştırıcılarının trafiğini gösterir.      |
+|**Yazma işleme (ağ)**       | Buluta yazılan tüm baytlar için sistem ağı aktarım hızını içerir. Bu görünüm, paylaşımlarla sınırlı olmayan verileri içerebilir. <br></br>Bölmek, bağlı olmayan veya etkin bağdaştırıcılar dahil olmak üzere cihazdaki tüm ağ bağdaştırıcılarının trafiğini gösterir.          |
 
 | Edge işlem ölçümleri              | Açıklama         |
 |-------------------------------------|---------|
 |**Edge işlem-bellek kullanımı**      |           |
 |**Edge hesaplama-CPU yüzdesi**    |         |
 
-## <a name="manage-alerts"></a>Uyarıları yönetme
-
-[!INCLUDE [Supported OS for clients connected to device](../../includes/data-box-edge-gateway-manage-alerts.md)]
-
 ## <a name="next-steps"></a>Sonraki adımlar
 
 [Bant genişliğini yönetmeyi](azure-stack-edge-manage-bandwidth-schedules.md) öğrenin.
+[Cihaz olay uyarı bildirimlerini yönetmeyi](azure-stack-edge-gpu-manage-device-event-alert-notifications.md)öğrenin.
