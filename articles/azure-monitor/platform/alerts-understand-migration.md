@@ -6,16 +6,16 @@ ms.date: 07/10/2019
 ms.author: yalavi
 author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: 6509425f11b09a2fa5229f9dd68a508241391925
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: e57b3dd31455db245103469874c517fe54479110
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91875929"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526916"
 ---
 # <a name="understand-migration-options-to-newer-alerts"></a>Geçiş seçeneklerini daha yeni uyarılara anlayın
 
-Klasik uyarılar [kullanımdan](./monitoring-classic-retirement.md)kalkmakta, ancak henüz yeni uyarıları desteklemeyen kaynaklar için hala sınırlı kullanımda. Kalan uyarılar geçişi, [Azure Kamu Bulutu](../../azure-government/documentation-government-welcome.md)ve [Azure Çin 21Vianet](https://docs.azure.cn/)için yakında yeni bir tarih duyurulacaktır.
+Klasik uyarılar, genel bulut kullanıcıları için [devre](./monitoring-classic-retirement.md) dışı bırakılsa da, henüz yeni uyarıları desteklemeyen kaynaklar için sınırlı kullanımda olabilir. Kalan uyarılar geçişi, [Azure Kamu Bulutu](../../azure-government/documentation-government-welcome.md)ve [Azure Çin 21Vianet](https://docs.azure.cn/)için yakında yeni bir tarih duyurulacaktır.
 
 Bu makalede, el ile geçiş ve gönüllü geçiş aracının nasıl çalıştığı ve kalan uyarı kurallarının geçirilmesi için kullanılacağı açıklanmaktadır. Ayrıca, bazı yaygın sorunlara yönelik düzeltmeler de açıklanmaktadır.
 
@@ -193,7 +193,7 @@ Cosmos DB için, eşdeğer ölçümler aşağıda gösterildiği gibidir:
 | Klasik uyarılarda ölçüm | Yeni uyarılardaki eşdeğer ölçüm | Yorumlar|
 |--------------------------|---------------------------------|---------|
 | AvailableStorage     |AvailableStorage|   |
-| Veri boyutu | Veri kullanımı| |
+| Veri Boyutu | Veri kullanımı| |
 | Belge sayısı | DocumentCount||
 | Dizin boyutu | Indexusage||
 | Mongo sayımı Istek ücreti| "CommandName" = "Count" boyutuyla Mongorequestücret||

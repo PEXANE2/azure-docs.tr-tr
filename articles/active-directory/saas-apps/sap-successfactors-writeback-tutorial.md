@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.workload: identity
 ms.date: 10/14/2020
 ms.author: chmutali
-ms.openlocfilehash: d39e00a80ab167936a749c73867b4343e6ed9d76
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 3260787dec4ae26cd6ef7cc3bd562f39db8e3655
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96006447"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526984"
 ---
 # <a name="tutorial-configure-attribute-write-back-from-azure-ad-to-sap-successfactors"></a>Öğretici: Azure AD 'den SAP 'ye geri yazma özelliği yapılandırma başarılı
 Bu öğreticinin amacı, Azure AD 'den SAP 'nin başarıyla, çalışan Merkezi ' ne kadar geri yazma adımlarını gösterir. 
@@ -282,9 +282,9 @@ Bu bölümde, Kullanıcı verilerinin başarıyla Active Directory olarak nasıl
    | 3 | 8448 | emailType | Bu sabit değer, iş e-postalarla ilişkili olan başarılı etken KIMLIK değeridir. Bu değeri, başarılı etmenler ortamınızla eşleşecek şekilde güncelleştirin. Bu değeri ayarlama adımları için [emailType için sabit değer alma](#retrieve-constant-value-for-emailtype) bölümüne bakın. |
    | 4 | true | Emailisprımary | Bu özniteliği, iş e-postasını başarılı faktörlerdeki birincil olarak ayarlamak için kullanın. İş e-postası birincil değilse, bu bayrağı false olarak ayarlayın. |
    | 5 | userPrincipalName | [custom01 – custom15] | **Yeni eşleme Ekle**'yi kullanarak, isteğe bağlı olarak, başarılı bir şekilde userPrincipalName veya herhangi BIR Azure AD özniteliğini, başarılı bir Kullanıcı nesnesinde bulunan özel bir özniteliğe yazabilirsiniz.  |
-   | 6 | Şirket içi-samAccountName | username | **Yeni eşleme Ekle**'yi kullanarak, isteğe bağlı olarak, şirket içi sAMAccountName öğesini başarılı bir Kullanıcı adı özniteliğine eşleyebilirsiniz. |
+   | 6 | Şirket içi SamAccountName | username | **Yeni eşleme Ekle**'yi kullanarak, isteğe bağlı olarak, şirket içi sAMAccountName öğesini başarılı bir Kullanıcı adı özniteliğine eşleyebilirsiniz. SamAccountName 'i Azure AD 'ye eşitlemek için [Azure AD Connect Sync: Directory Extensions](../hybrid/how-to-connect-sync-feature-directory-extensions.md) kullanın. Kaynak açılan kutusunda *extension_yourTenantGUID_samAccountName* olarak görünür |
    | 7 | SSO | loginMethod | Kiracı, [kısmı SSO](https://apps.support.sap.com/sap/support/knowledge/en/2320766)için ayarlandıysa, daha sonra yeni eşleme Ekle ' yi kullanarak, isteğe bağlı olarak loginmethod 'U "SSO" veya "PWD" sabit değerine ayarlayabilirsiniz. |
-   | 8 | telephoneNumber 'dır | businessPhoneNumber | *TelephoneNumber* 'ı Azure AD 'den başarılı bir şekilde iş/iş telefonu numarasına akıtmak için bu eşlemeyi kullanın. |
+   | 8 | telephoneNumber | businessPhoneNumber | *TelephoneNumber* 'ı Azure AD 'den başarılı bir şekilde iş/iş telefonu numarasına akıtmak için bu eşlemeyi kullanın. |
    | 9 | 10605 | businessPhoneType | Bu sabit değer, iş telefonuyla ilişkili olan başarılı etken KIMLIK değeridir. Bu değeri, başarılı etmenler ortamınızla eşleşecek şekilde güncelleştirin. Bu değeri ayarlama adımları için [phoneType için sabit değer alma](#retrieve-constant-value-for-phonetype) bölümüne bakın. |
    | 10 | true | Businessphoneisprımary | İş telefonu numarası için birincil bayrağı ayarlamak üzere bu özniteliği kullanın. Geçerli değerler true veya false şeklindedir. |
    | 11 | mobil | cellPhoneNumber | *TelephoneNumber* 'ı Azure AD 'den başarılı bir şekilde iş/iş telefonu numarasına akıtmak için bu eşlemeyi kullanın. |
@@ -326,7 +326,7 @@ Uygulama yapılandırmalarının sağlanması başarılı bir şekilde tamamland
 
 1. **Kapsam** seçin. Aşağıdaki seçeneklerden birini seçebilirsiniz: 
    * **Tüm kullanıcıları ve grupları Eşitle**: Azure AD 'den başarılı etkenlere, **eşleme**  ->  **kaynak nesne kapsamı** altında tanımlanan kapsam kurallarına tabi olan tüm kullanıcıların yeniden eşlenmiş özniteliklerini yazmayı planlıyorsanız bu seçeneği belirleyin. 
-   * **Yalnızca atanmış kullanıcıları ve grupları Eşitle**: yalnızca **uygulama**  ->  **Manage**  ->  **kullanıcıları ve grupları** Yönet menü seçeneğinde bu uygulamaya atadığınız kullanıcıların geri eşlenmiş özniteliklerini yazmayı planlıyorsanız bu seçeneği belirleyin. Bu kullanıcılar ayrıca, **eşlemeler**  ->  **kaynak nesne kapsamı** altında tanımlanan kapsam kurallarına tabidir.
+   * **Yalnızca atanmış kullanıcıları ve grupları Eşitle**: yalnızca **uygulama**  ->    ->  **kullanıcıları ve grupları** Yönet menü seçeneğinde bu uygulamaya atadığınız kullanıcıların geri eşlenmiş özniteliklerini yazmayı planlıyorsanız bu seçeneği belirleyin. Bu kullanıcılar ayrıca, **eşlemeler**  ->  **kaynak nesne kapsamı** altında tanımlanan kapsam kurallarına tabidir.
 
    > [!div class="mx-imgBorder"]
    > ![Geri yazma kapsamını Seç](./media/sap-successfactors-inbound-provisioning/select-writeback-scope.png)

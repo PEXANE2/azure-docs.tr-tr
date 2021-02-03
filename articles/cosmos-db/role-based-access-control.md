@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.author: mjbrown
-ms.openlocfilehash: 2a5ec03bcd7d5002f85d32ed63614d277e95cfa0
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: db6721754802a3eeda387339498dadb9d25b3685
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98943750"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526950"
 ---
 # <a name="azure-role-based-access-control-in-azure-cosmos-db"></a>Azure Cosmos DB 'de Azure rol tabanlı erişim denetimi
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -26,7 +26,8 @@ Azure Cosmos DB tarafından desteklenen yerleşik roller aşağıda verilmiştir
 |---------|---------|
 |[DocumentDB hesabı Katılımcısı](../role-based-access-control/built-in-roles.md#documentdb-account-contributor)|, Azure Cosmos DB hesaplarını yönetebilir.|
 |[Cosmos DB hesabı okuyucusu](../role-based-access-control/built-in-roles.md#cosmos-db-account-reader-role)|Azure Cosmos DB hesabı verilerini okuyabilir.|
-|[Cosmos yedekleme Işletmeni](../role-based-access-control/built-in-roles.md#cosmosbackupoperator)|, Bir Azure Cosmos veritabanı veya kapsayıcısı için geri yükleme isteği gönderebilir. Herhangi bir veriye erişemez veya Veri Gezgini kullanamazsınız.|
+|[Cosmos yedekleme Işletmeni](../role-based-access-control/built-in-roles.md#cosmosbackupoperator)| , Düzenli aralıklarla yedekleme özellikli bir veritabanı veya kapsayıcı için Azure portal geri yükleme isteği gönderebilir. Azure portal yedekleme aralığını ve bekletmeyi değiştirebilir. Herhangi bir veriye erişemez veya Veri Gezgini kullanamazsınız.  |
+| [CosmosRestoreOperator](../role-based-access-control/built-in-roles.md) | Sürekli yedekleme moduyla Azure Cosmos DB hesabı için geri yükleme eylemi gerçekleştirebilir.|
 |[Cosmos DB Işleci](../role-based-access-control/built-in-roles.md#cosmos-db-operator)|Azure Cosmos hesapları, veritabanları ve kapsayıcıları sağlayabilir. Herhangi bir veriye erişemez veya Veri Gezgini kullanamazsınız.|
 
 > [!IMPORTANT]
@@ -36,7 +37,7 @@ Azure Cosmos DB tarafından desteklenen yerleşik roller aşağıda verilmiştir
 
 Azure portal **erişim denetimi (IAM)** bölmesi Azure Cosmos kaynaklarında Azure rol tabanlı erişim denetimini yapılandırmak için kullanılır. Roller, kullanıcılar, gruplar, hizmet sorumluları ve Active Directory içindeki yönetilen kimliklere uygulanır. Bireyler ve gruplar için yerleşik roller veya özel roller kullanabilirsiniz. Aşağıdaki ekran görüntüsünde, Azure portal erişim denetimi (ıAM) kullanan Active Directory tümleştirme (Azure RBAC) gösterilmektedir:
 
-:::image type="content" source="./media/role-based-access-control/database-security-identity-access-management-rbac.png" alt-text="Azure portal gösteren veritabanı güvenliğine erişim denetimi (ıAM)":::
+:::image type="content" source="./media/role-based-access-control/database-security-identity-access-management-rbac.png" alt-text="Azure portal gösteren veritabanı güvenliğine erişim denetimi (ıAM).":::
 
 ## <a name="custom-roles"></a>Özel roller
 
