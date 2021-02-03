@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/01/2020
 ms.author: trbye
-ms.openlocfilehash: 9e230ff4e84eba7b61846540fef2915765fa4f77
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: baa48ede04b9de98bd69de69753c97b5fcee7329
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 02/03/2021
-ms.locfileid: "99509718"
+ms.locfileid: "99525271"
 ---
 # <a name="what-is-custom-neural-voice"></a>Özel sinir sesi nedir?
 
@@ -51,7 +51,7 @@ Sinir TTS ses modelleri, insan seslerine ait kayıt örneklerine göre derin sin
 
 ## <a name="responsible-use-of-ai"></a>Yapay zekanın sorumluluk sahibi bir biçimde kullanılması
 
-Özel sinir Voice 'ın nasıl kullanılacağını öğrenmek için bkz. [asetat notunun](https://docs.microsoft.com/legal/cognitive-services/speech-service/custom-neural-voice/transparency-note-custom-neural-voice). Microsoft 'un saydamlık notları, AI teknolojimizin nasıl çalıştığını anlamanıza yardımcı olmak üzere tasarlanmıştır. sistem sahipleri, bu durum sistem performansını ve davranışını etkilemesinin yanı sıra teknoloji, kişiler ve ortam dahil olmak üzere tüm sistem hakkında düşünmesinin önemini de kolaylaştırabilir.
+Özel sinir Voice 'ın nasıl kullanılacağını öğrenmek için bkz. [asetat notunun](/legal/cognitive-services/speech-service/custom-neural-voice/transparency-note-custom-neural-voice?context=/azure/cognitive-services/speech-service/context/context). Microsoft 'un saydamlık notları, AI teknolojimizin nasıl çalıştığını anlamanıza yardımcı olmak üzere tasarlanmıştır. sistem sahipleri, bu durum sistem performansını ve davranışını etkilemesinin yanı sıra teknoloji, kişiler ve ortam dahil olmak üzere tüm sistem hakkında düşünmesinin önemini de kolaylaştırabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

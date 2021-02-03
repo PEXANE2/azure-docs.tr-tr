@@ -8,12 +8,12 @@ ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.date: 02/02/2021
-ms.openlocfilehash: 8154e1adff8d8c2bdfe7fedc9309f95e5c5880bd
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 0eb3b8feda09d931654d1781ea37737d68a1b377
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 02/03/2021
-ms.locfileid: "99500727"
+ms.locfileid: "99526645"
 ---
 # <a name="whats-new-in-azure-sentinel"></a>Azure Sentinel 'deki yenilikler
 
@@ -46,7 +46,7 @@ Azure Sentinel artık yeni [az. Securityınsights](https://www.powershellgallery
 
 **Az. Securityınsights** modülü, vs es, önem derecesi, sahip vb. değişiklik yapmak, olaylara yorum ve Etiketler eklemek ve yer işaretleri oluşturmak için olaylarla etkileşme gibi yaygın Azure Sentinel kullanım durumlarını destekler.
 
-CI/CD işlem hattınız için [Azure Resource Manager (ARM)](/azure/azure-resource-manager/templates/) şablonları kullanmanızı öneririz ancak, **az. securityınsights** modülü dağıtım sonrası görevler için YARARLıDıR ve özel olarak SOC otomasyonu için hedeflenir.  Örneğin, SOC otomasyonunda veri bağlayıcıları yapılandırma, analiz kuralları oluşturma veya analiz kurallarına Otomasyon eylemleri ekleme adımları bulunabilir.
+CI/CD işlem hattınız için [Azure Resource Manager (ARM)](/azure/azure-resource-manager/templates/) şablonları kullanmanızı öneririz ancak, **az. securityınsights** modülü dağıtım sonrası görevler için yararlıdır ve SOC otomasyonu için hedeflenmelidir.  Örneğin, SOC otomasyonunda veri bağlayıcıları yapılandırma, analiz kuralları oluşturma veya analiz kurallarına Otomasyon eylemleri ekleme adımları bulunabilir.
 
 Kullanılabilir cmdlet 'ler, parametre açıklamaları ve örneklerin tam listesi ve açıklaması dahil olmak üzere daha fazla bilgi için, [az. Securityınsights PowerShell belgelerine](/powershell/module/az.securityinsights/)bakın.
 
@@ -123,7 +123,7 @@ Azure Sentinel için bu güncelleştirme, MITRE ATT&CK çerçevesi matrisinde ka
 
 Eklenen arama sorguları, ortamınızda şüpheli etkinlik bulmanıza yardımcı olmak için tasarlanmıştır. Meşru etkinlikler ve potansiyel olarak kötü amaçlı etkinlikler döndürebilirler, ancak bu kişiler, avınız tahmin etmek için yararlı olabilir. 
 
-Bu sorguları çalıştırdıktan sonra sonuçlarla karşılaşırsanız, bunları analiz kurallarına dönüştürmek veya var olan veya yeni olaylara arama sonuçları eklemek isteyebilirsiniz.
+Bu sorguları çalıştırdıktan sonra sonuçlarla emin olursunuz, bunları analiz kurallarına dönüştürmek veya var olan veya yeni olaylara arama sonuçları eklemek isteyebilirsiniz.
 
 Tüm eklenen sorgular, Azure Sentinel arama sayfası aracılığıyla kullanılabilir. Daha fazla bilgi için bkz. [Azure Sentinel ile tehditler Için Hunt](hunting.md).
 

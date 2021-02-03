@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2021
 ms.author: memildin
-ms.openlocfilehash: dbda0aecdadd81da0f7681a5fc9b140157d5e8f3
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 3b2f111f83dbd731b69671e58d4bf9dc648a596f
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98756811"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526533"
 ---
 # <a name="security-recommendations-in-azure-security-center"></a>Azure Güvenlik Merkezi'nde güvenlik önerileri 
 
@@ -39,11 +39,19 @@ Her öneri şunları sağlar:
 
 ## <a name="how-does-microsoft-decide-what-needs-securing-and-hardening"></a>Microsoft 'un neyi güvenli hale getirme ve sağlamlaştırma hakkında nasıl karar veriyor?
 
-Güvenlik Merkezi 'nin önerileri, Azure Güvenlik kıyaslaması temel alınarak hesaplanır. 
+Güvenlik Merkezi 'nin önerileri, Azure Güvenlik kıyaslaması temel alınarak hesaplanır. Neredeyse her öneri, kıyaslama gereksiniminden türetilen temel bir ilkeye sahiptir.
 
-Azure Güvenlik kıyaslaması, yaygın uyumluluk çerçevelerine göre güvenlik ve uyum en iyi uygulamaları için Microsoft tarafından yazılan, Azure 'a özgü bir dizi kılavuzlardır. Bu, yaygın olarak kullanılan kıyaslama, [Internet güvenliği (CIS) Için merkezden](https://www.cisecurity.org/benchmark/azure/) ve [ulusal standartlar ve teknolojı Enstitüsü (NIST)](https://www.nist.gov/) ile bulut merkezli güvenliğe odaklanarak yapılar oluşturur.
+Azure Güvenlik kıyaslaması, yaygın uyumluluk çerçevelerine göre güvenlik ve uyum en iyi uygulamaları için Microsoft tarafından yazılan, Azure 'a özgü bir dizi kılavuzlardır. Bu, yaygın olarak kullanılan kıyaslama, [Internet güvenliği (CIS) Için merkezden](https://www.cisecurity.org/benchmark/azure/) ve [ulusal standartlar ve teknolojı Enstitüsü (NIST)](https://www.nist.gov/) ile bulut merkezli güvenliğe odaklanarak yapılar oluşturur. [Azure Güvenlik Karşılaştırması](../security/benchmarks/introduction.md) hakkında daha fazla bilgi edinin.
 
-[Azure Güvenlik Karşılaştırması](../security/benchmarks/introduction.md) hakkında daha fazla bilgi edinin.
+Bir önerinin ayrıntılarını gözden geçirirken genellikle temel alınan ilkeyi görmeniz yararlı olur. Bir ilke tarafından desteklenen her öneri için, öneri ayrıntıları sayfasındaki **ilke tanımını görüntüle** bağlantısını kullanarak doğrudan Ilgili Ilkenin Azure ilke girişine gidebilirsiniz:
+
+:::image type="content" source="media/release-notes/view-policy-definition.png" alt-text="Öneriyi destekleyen belirli bir ilke için Azure Ilke sayfasına bağlantı":::
+
+İlke tanımını görüntülemek ve değerlendirme mantığını gözden geçirmek için bu bağlantıyı kullanın. 
+
+[Güvenlik önerileri başvuru kılavuzumuzdaki](recommendations-reference.md)önerilerin listesini gözden geçiriyorsunuz, ayrıca ilke tanımı sayfalarına bağlantılar da görürsünüz:
+
+:::image type="content" source="media/release-notes/view-policy-definition-from-documentation.png" alt-text="Belirli bir ilke için Azure Ilke sayfasına doğrudan Azure Güvenlik Merkezi öneriler başvuru sayfasından erişme":::
 
 ## <a name="monitor-recommendations"></a>İzleme önerileri <a name="monitor-recommendations"></a>
 
@@ -63,9 +71,12 @@ Güvenlik Merkezi, olası güvenlik açıklarını belirlemek için kaynakların
 
     Sayfa şunları içerir:
 
-    1. Desteklenen önerilerden düğmeleri **zorla** ve **Reddet** (bkz. [zorla/reddetme önerilerini kullanarak yapılandırmaları önleme](prevent-misconfigurations.md))
+    1. Desteklenen öneriler için, üstteki araç çubuğunda aşağıdaki düğmelerin herhangi biri veya tümü gösterilir:
+        - **Zorla** ve **Reddet** (bkz. [zorlama/reddetme önerilerini kullanarak yapılandırmaları önleme](prevent-misconfigurations.md))
+        - **İlke tanımını** , temel alınan ilke Için doğrudan Azure ilke girişine gidecek şekilde görüntüle
     1. **Önem derecesi göstergesi**
-    1. **Yenilik aralığı**  (ilgili yerlerde) 
+    1. **Yenilik aralığı** (ilgili yerlerde)
+    1. **Muaf tutulan kaynak sayısı** bu öneri için muafiyet varsa, bu, muaf tutulan kaynak sayısını gösterir
     1. **Açıklama** -sorunun kısa bir açıklaması
     1. **Düzeltme adımları** -etkilenen kaynaklardaki güvenlik sorununu düzeltmek için gereken el ile adımların bir açıklaması. ' Hızlı düzeltme ' ile ilgili öneriler için, kaynaklarınıza önerilen düzeltmeyi uygulamadan önce **Düzeltme mantığını görüntüle** ' yi seçebilirsiniz. 
     1. **Etkilenen kaynaklar** -kaynaklarınız sekmeler halinde gruplandırılır:

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/01/2021
 keywords: Java, jakartaee, JavaEE, mikro profil, açık-Liberty, WebSphere-Liberty, aks, Kubernetes
-ms.openlocfilehash: 4d6e335cd4b522593091094ac6251acc97873208
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: 2e025c706512b6ab3945118da996b11a5a8a9585
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 02/03/2021
-ms.locfileid: "99508086"
+ms.locfileid: "99526899"
 ---
 # <a name="deploy-a-java-application-with-open-liberty-or-websphere-liberty-on-an-azure-kubernetes-service-aks-cluster"></a>Azure Kubernetes Service (AKS) kümesi üzerinde açık özgürlük veya WebSphere özgürlük ile Java uygulaması dağıtma
 
@@ -31,7 +31,7 @@ Bu kılavuzda, Open Liberty veya WebSphere Liberty çalışma zamanı üzerinde 
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
-Azure kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği mantıksal bir gruptur. *Eastus* konumundaki [az Group Create](/cli/azure/group?view=azure-cli-latest&preserve-view=true#az_group_create) komutunu kullanarak *Java-Liberty-Project* kaynak grubu oluşturun. Azure Container Registry (ACR) örneği ve AKS kümesini daha sonra oluşturmak için kullanılır. 
+Azure kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği mantıksal bir gruptur. *Eastus* konumundaki [az Group Create](/cli/azure/group#az_group_create) komutunu kullanarak *Java-Liberty-Project* kaynak grubu oluşturun. Azure Container Registry (ACR) örneği ve AKS kümesini daha sonra oluşturmak için kullanılır. 
 
 ```azurecli-interactive
 az group create --name java-liberty-project --location eastus
@@ -39,7 +39,7 @@ az group create --name java-liberty-project --location eastus
 
 ## <a name="create-an-acr-instance"></a>ACR örneği oluşturma
 
-ACR örneğini oluşturmak için [az ACR Create](/cli/azure/acr?view=azure-cli-latest&preserve-view=true#az_acr_create) komutunu kullanın. Aşağıdaki örnek, *youruniqueacrname* adlı bir ACR örneği oluşturur. *Youruniqueacrname* 'in Azure içinde benzersiz olduğundan emin olun.
+ACR örneğini oluşturmak için [az ACR Create](/cli/azure/acr#az_acr_create) komutunu kullanın. Aşağıdaki örnek, *youruniqueacrname* adlı bir ACR örneği oluşturur. *Youruniqueacrname* 'in Azure içinde benzersiz olduğundan emin olun.
 
 ```azurecli-interactive
 az acr create --resource-group java-liberty-project --name youruniqueacrname --sku Basic --admin-enabled
@@ -70,7 +70,7 @@ docker login $LOGIN_SERVER -u $USER_NAME -p $PASSWORD
 
 ## <a name="create-an-aks-cluster"></a>AKS kümesi oluşturma
 
-AKS kümesi oluşturmak için [az aks create](/cli/azure/aks?view=azure-cli-latest&preserve-view=true#az_aks_create) komutunu kullanın. Aşağıdaki örnekte, bir düğüm ile *myAKSCluster* adlı bir küme oluşturulmuştur. Bu işlem birkaç dakika sürer.
+AKS kümesi oluşturmak için [az aks create](/cli/azure/aks#az_aks_create) komutunu kullanın. Aşağıdaki örnekte, bir düğüm ile *myAKSCluster* adlı bir küme oluşturulmuştur. Bu işlem birkaç dakika sürer.
 
 ```azurecli-interactive
 az aks create --resource-group java-liberty-project --name myAKSCluster --node-count 1 --generate-ssh-keys --enable-managed-identity
@@ -87,13 +87,13 @@ Birkaç dakika sonra komut tamamlanır ve aşağıdakiler dahil olmak üzere kü
 
 ### <a name="connect-to-the-aks-cluster"></a>AKS kümesine bağlanma
 
-Kubernetes kümesini yönetmek için Kubernetes komut satırı istemcisi olan [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/)'yi kullanırsınız. Azure Cloud Shell kullanıyorsanız, `kubectl` zaten yüklüdür. `kubectl`Yerel olarak yüklemek için [az aks install-cli](/cli/azure/aks?view=azure-cli-latest&preserve-view=true#az_aks_install_cli) komutunu kullanın:
+Kubernetes kümesini yönetmek için Kubernetes komut satırı istemcisi olan [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/)'yi kullanırsınız. Azure Cloud Shell kullanıyorsanız, `kubectl` zaten yüklüdür. `kubectl`Yerel olarak yüklemek için [az aks install-cli](/cli/azure/aks#az_aks_install_cli) komutunu kullanın:
 
 ```azurecli-interactive
 az aks install-cli
 ```
 
-`kubectl` istemcisini Kubernetes kümenize bağlanacak şekilde yapılandırmak için [az aks get-credentials](/cli/azure/aks?view=azure-cli-latest&preserve-view=true#az_aks_get_credentials) komutunu kullanın. Bu komut, kimlik bilgilerini indirir ve Kubernetes CLı 'yi bunları kullanacak şekilde yapılandırır.
+`kubectl` istemcisini Kubernetes kümenize bağlanacak şekilde yapılandırmak için [az aks get-credentials](/cli/azure/aks#az_aks_get_credentials) komutunu kullanın. Bu komut, kimlik bilgilerini indirir ve Kubernetes CLı 'yi bunları kullanacak şekilde yapılandırır.
 
 ```azurecli-interactive
 az aks get-credentials --resource-group java-liberty-project --name myAKSCluster --overwrite-existing
@@ -220,7 +220,7 @@ Uygulama giriş sayfasını görmek için, dış IP adresine ve hizmetinizin ba�
 
 ## <a name="clean-up-the-resources"></a>Kaynakları temizleme
 
-Azure ücretlerinden kaçınmak için gereksiz kaynakları temizlemeniz gerekir.  Küme artık gerekli olmadığında, [az Group Delete](/cli/azure/group?view=azure-cli-latest&preserve-view=true#az_group_delete) komutunu kullanarak kaynak grubunu, kapsayıcı hizmetini, kapsayıcı kayıt defterini ve tüm ilgili kaynakları kaldırın.
+Azure ücretlerinden kaçınmak için gereksiz kaynakları temizlemeniz gerekir.  Küme artık gerekli olmadığında, [az Group Delete](/cli/azure/group#az_group_delete) komutunu kullanarak kaynak grubunu, kapsayıcı hizmetini, kapsayıcı kayıt defterini ve tüm ilgili kaynakları kaldırın.
 
 ```azurecli-interactive
 az group delete --name java-liberty-project --yes --no-wait

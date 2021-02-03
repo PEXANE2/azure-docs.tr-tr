@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 09/29/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python,contperf-fy21q1, automl
-ms.openlocfilehash: 6971d67204beb39ff0afa6c68dbecf278d86b299
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 8ac69e6961af4991b250320b7af7cf5a345d3efb
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98954724"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526475"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Python’da otomatik ML denemelerini yapılandırma
 
@@ -420,7 +420,7 @@ Model açıklamalarının ve özelliklerinin önem derecesine ilişkin genel bil
   * Öznitelik hataları: ex. `AttributeError: 'SimpleImputer' object has no attribute 'add_indicator`
   
   Bu sorunu geçici olarak çözmek için SDK Eğitim sürümüne bağlı olarak aşağıdaki iki adımdan birini gerçekleştirin `AutoML` :
-    * `AutoML`SDK eğitim sürümünüz 1.13.0 büyükse, `pandas == 0.25.1` ve gereklidir `sckit-learn==0.22.1` . Sürüm uyuşmazlığı varsa, aşağıda gösterildiği gibi aşağıdaki sürüme yükselterek scikit-bilgi edinin ve/veya Pandas 'ı yükseltin:
+    * `AutoML`SDK eğitim sürümünüz 1.13.0 büyükse, `pandas == 0.25.1` ve gereklidir `scikit-learn==0.22.1` . Sürüm uyuşmazlığı varsa, aşağıda gösterildiği gibi aşağıdaki sürüme yükselterek scikit-bilgi edinin ve/veya Pandas 'ı yükseltin:
       
       ```bash
          pip install --upgrade pandas==0.25.1

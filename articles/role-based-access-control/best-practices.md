@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 12/16/2020
 ms.author: rolyon
-ms.openlocfilehash: 00fd00112dad9efc31cea83f69bb458a8e1ca935
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 1444ee3643222ceebc67298bdb580955b1432104
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97617383"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526424"
 ---
 # <a name="best-practices-for-azure-rbac"></a>Azure RBAC için en iyi uygulamalar
 
@@ -41,6 +41,10 @@ Güvenliği aşılmış bir sahibe göre ihlal olasılığını azaltmak için e
 Ayrıcalıklı hesapları kötü niyetli Cyber saldırılarına karşı korumak için Azure Active Directory Privileged Identity Management (PıM) kullanarak ayrıcalıkların etkilenme süresini azaltır ve raporlar ve uyarılar aracılığıyla kullanım için görünürlüğünüzü artırabilirsiniz. PıM, Azure AD ve Azure kaynaklarına tam zamanında ayrıcalıklı erişim sağlayarak ayrıcalıklı hesapların korunmasına yardımcı olur. Erişim, otomatik olarak iptal edilen ayrıcalıkların zaman sınırı olabilir. 
 
 Daha fazla bilgi için bkz. [Azure AD Privileged Identity Management nedir?](../active-directory/privileged-identity-management/pim-configure.md).
+
+## <a name="assign-roles-to-groups-not-users"></a>Kullanıcılara değil gruplara roller atama
+
+Rol atamalarını daha yönetilebilir hale getirmek için, rolleri doğrudan kullanıcılara atamaktan kaçının. Bunun yerine, gruplara roller atayın. Kullanıcılar yerine gruplara rol atama, [her abonelik için 2.000 rol ataması sınırlaması](troubleshooting.md#azure-role-assignments-limit)olan rol atamalarının sayısını en aza indirmenize de yardımcı olur. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

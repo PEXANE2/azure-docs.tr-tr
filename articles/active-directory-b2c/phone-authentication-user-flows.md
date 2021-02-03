@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 10/29/2020
+ms.date: 02/01/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 0ce9b60ead9aff792bf2e4e98841469d58620ccd
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 1ed0ca069f29413083356a3147d4b97f1b6ed981
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96754686"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99525204"
 ---
 # <a name="set-up-phone-sign-up-and-sign-in-for-user-flows-preview"></a>Kullanıcı akışları için telefon kaydı ve oturum açma ayarlama (Önizleme)
 
@@ -39,7 +39,7 @@ Telefon kaydı ile bir Kullanıcı akışı yapılandırdığınızda, Multi-Fac
 
 E-posta kaydı, varsayılan olarak yerel hesap kimliği sağlayıcısı ayarlarınızda etkindir. E-posta kaydı, Kullanıcı adı veya telefon numarası seçerek veya seçimini kaldırarak kiracınızda destekleyeceği kimlik türlerini değiştirebilirsiniz.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 
 2. Üst menüdeki **Dizin + abonelik** filtresini seçerek ve Azure AD kiracınızı içeren dizini seçerek Azure AD B2C kiracınızı içeren dizini kullandığınızdan emin olun.
 
@@ -59,11 +59,11 @@ E-posta kaydı, varsayılan olarak yerel hesap kimliği sağlayıcısı ayarlar�
 
 ## <a name="add-phone-sign-up-to-a-user-flow"></a>Kullanıcı akışına telefon kaydı ekleme
 
-Yerel hesaplar için kimlik seçeneği olarak telefon kaydı ekledikten sonra, **Önerilen** en son kullanıcı akış sürümleri oldukları sürece bu hesabı Kullanıcı akışlarına ekleyebilirsiniz. Aşağıda, Yeni Kullanıcı akışlarına telefon kaydı eklemeyi gösteren bir örnek verilmiştir. Ancak, önerilen mevcut sürüm Kullanıcı akışlarına telefon kaydı da ekleyebilirsiniz ( **User Flows**  >  *Kullanıcı akış adı*  >  **kimlik sağlayıcıları**  >  **yerel hesap telefonu kaydolma** Kullanıcı akışları seçin. 
+Yerel hesaplar için kimlik seçeneği olarak telefon kaydı ekledikten sonra, **Önerilen** en son kullanıcı akış sürümleri oldukları sürece bu hesabı Kullanıcı akışlarına ekleyebilirsiniz. Aşağıda, Yeni Kullanıcı akışlarına telefon kaydı eklemeyi gösteren bir örnek verilmiştir. Ancak, önerilen mevcut sürüm Kullanıcı akışlarına telefon kaydı da ekleyebilirsiniz (   >  *Kullanıcı akış adı*  >  **kimlik sağlayıcıları**  >  **yerel hesap telefonu kaydolma** Kullanıcı akışları seçin. 
 
 Telefon kaydolma 'nın yeni bir Kullanıcı akışına nasıl ekleneceğini gösteren bir örnek aşağıda verilmiştir.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. Portal araç çubuğunda **Dizin + abonelik** simgesini seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
 
     ![B2C kiracısı, dizin ve abonelik bölmesi, Azure portal](./media/phone-authentication-user-flows/directory-subscription-pane.png)
@@ -89,7 +89,7 @@ Telefon kaydolma 'nın yeni bir Kullanıcı akışına nasıl ekleneceğini gös
 9. **Sosyal kimlik sağlayıcıları**' nın altında, bu kullanıcı akışı için izin vermek istediğiniz diğer kimlik sağlayıcılarını seçin.
 
    > [!NOTE]
-   > Multi-Factor Authentication (MFA) varsayılan olarak devre dışıdır. Bir telefon kayıt Kullanıcı akışı için MFA 'yı etkinleştirebilirsiniz, ancak bir telefon numarası birincil tanımlayıcı olarak kullanıldığından, ikinci kimlik doğrulama faktörü için tek seferlik bir geçiş kodu kullanılabilir tek seçenektir.
+   > Multi-Factor Authentication (MFA), kaydolma Kullanıcı akışları için varsayılan olarak devre dışıdır. Bir telefon kayıt Kullanıcı akışı için MFA 'yı etkinleştirebilirsiniz, ancak bir telefon numarası birincil tanımlayıcı olarak kullanıldığından, ikinci kimlik doğrulama faktörü için tek seferlik bir geçiş kodu kullanılabilir tek seçenektir.
 
 1. **Kullanıcı öznitelikleri ve belirteç talepleri** bölümünde, kayıt sırasında kullanıcıdan toplamak ve göndermek istediğiniz talepleri ve öznitelikleri seçin. Örneğin, **daha fazla göster**' i seçin ve ardından **ülke/bölge**, **görünen ad** ve **posta kodu** için öznitelikler ve talepler ' i seçin. **Tamam**’ı seçin.
 
@@ -110,7 +110,7 @@ Kullanıcı akış özelliklerindeki kurtarma e-posta İstemi ' ni etkinleştire
 
 ### <a name="to-enable-the-recovery-email-prompt"></a>Kurtarma e-posta istemi 'ni etkinleştirmek için
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. Portal araç çubuğunda **Dizin + abonelik** simgesini seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
 3. Azure portal, araması yapın ve **Azure AD B2C** seçin.
 4. Azure AD B2C, **ilkeler** altında **Kullanıcı akışları**' nı seçin.

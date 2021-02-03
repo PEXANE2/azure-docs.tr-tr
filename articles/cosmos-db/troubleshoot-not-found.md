@@ -8,12 +8,12 @@ ms.date: 07/13/2020
 ms.author: jawilley
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 2df401f7871d631ba317fb670783cad086b9a351
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 7b112cc80984a761e780f134731476f9dff4f687
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "96017568"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99525780"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-not-found-exceptions"></a>Azure Cosmos DB bulunamadı özel durumları tanılama ve sorun giderme
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -102,7 +102,7 @@ Dizin oluşturmanın, dizin oluşturma ilkesini yakalamak veya değiştirmek iç
 İçinde öğenin bulunduğu veritabanı veya kapsayıcı silinmiş.
 
 #### <a name="solution"></a>Çözüm:
-1. Üst kaynağı [geri yükleyin](./online-backup-and-restore.md#request-data-restore-from-a-backup) veya kaynakları yeniden oluşturun.
+1. Üst kaynağı [geri yükleyin](./configure-periodic-backup-restore.md#request-restore) veya kaynakları yeniden oluşturun.
 1. Silinen kaynağı değiştirmek için yeni bir kaynak oluşturun.
 
 ### <a name="7-containercollection-names-are-case-sensitive"></a>7. kapsayıcı/koleksiyon adları büyük/küçük harfe duyarlıdır

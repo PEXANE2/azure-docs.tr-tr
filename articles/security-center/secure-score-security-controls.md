@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/05/2021
+ms.date: 02/03/2021
 ms.author: memildin
-ms.openlocfilehash: e881c61d16cd167ace78abb96dca7e714436cfc0
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: bd64ca877f0bfd81597e091ef8ef000ad1b76992
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98752210"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526441"
 ---
 # <a name="secure-score-in-azure-security-center"></a>Azure Güvenlik Merkezi'nde güvenlik puanı
 
@@ -244,8 +244,8 @@ Güvenlik Merkezi 'nin varsayılan güvenlik girişimi sektörde en iyi uygulama
     <td class="tg-lboi"; width=55%>- Uyarlamalı uygulama denetimleri sanal makinelerde etkinleştirilmelidir<br>- İzleme Aracısı sanal makinelerinizde yüklü olmalıdır<br>- İzleme Aracısı makinelerinizde yüklü olmalıdır<br>- Log Analytics Aracısı Windows tabanlı Azure Arc makinelerinizde yüklü olmalıdır (Önizleme)<br>- Log Analytics Aracısı, Linux tabanlı Azure yay makinelerinizde yüklü olmalıdır (Önizleme)<br>- İzleme Aracısı sistem durumu sorunları makinelerinizde çözümlenmelidir</td>
   </tr>
   <tr>
-    <td class="tg-lboi"><strong><p style="font-size: 16px">Veri sınıflandırması Uygula (maks. puan 2)</p></strong>Kuruluşunuzun verilerini duyarlığa göre sınıflandırın ve iş etkisi, verilere değer belirlemenize ve bu verileri atamanıza olanak tanır ve idare için strateji ve temel sağlar.<br><a href="/azure/information-protection/what-is-information-protection">Azure Information Protection</a> , veri sınıflandırmasına yardımcı olabilir. Verileri korumak ve veri erişimini kısıtlamak için şifreleme, kimlik ve yetkilendirme ilkelerini kullanır. Microsoft tarafından kullanılan bazı sınıflandırmalar iş dışı, genel, genel, gizli ve çok gizli.</td>
-    <td class="tg-lboi"; width=55%>- SQL veritabanlarınızdaki hassas verilerin sınıflandırılmış olması gerekir (Önizleme)</td>
+    <td class="tg-lboi"><strong><p style="font-size: 16px">Veri sınıflandırması Uygula (en fazla puan 0)</p></strong>Kuruluşunuzun verilerini duyarlığa göre sınıflandırın ve iş etkisi, verilere değer belirlemenize ve bu verileri atamanıza olanak tanır ve idare için strateji ve temel sağlar.<br><a href="/azure/information-protection/what-is-information-protection">Azure Information Protection</a> , veri sınıflandırmasına yardımcı olabilir. Verileri korumak ve veri erişimini kısıtlamak için şifreleme, kimlik ve yetkilendirme ilkelerini kullanır. Microsoft tarafından kullanılan bazı sınıflandırmalar iş dışı, genel, genel, gizli ve çok gizli.</td>
+    <td class="tg-lboi"; width=55%>- SQL veritabanlarınızdaki hassas verilerin sınıflandırılmış olması gerekir</td>
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">Uygulamaları DDoS saldırılarına karşı koruma (maks. puan 2)</p></strong>Dağıtılmış hizmet reddi (DDoS) saldırıları, kaynakları ve işleme uygulamalarını kullanılamaz hale getirir. <a href="/azure/virtual-network/ddos-protection-overview">Azure DDoS koruma standardı</a> 'nı kullanarak kuruluşunuzu üç ana DDoS saldırısı türünden savunabilirsiniz:<br>- <strong>Volumetric saldırıları</strong> , ağı yasal trafikle taşacak. DDoS koruma standardı, bu saldırıları bir bütün olarak veya otomatik olarak temizleyerek bu saldırıları azaltır.<br>- <strong>Protokol saldırıları</strong> , katman 3 ve katman 4 protokol yığınındaki zayıf yanları kötüye vererek bir hedefi işlemez. DDoS koruması standardı, kötü amaçlı trafiği engelleyerek bu saldırıları azaltır.<br>- <strong>Kaynak (uygulama) katmanı saldırıları</strong> Web uygulaması paketlerini hedef. Web uygulaması güvenlik duvarı ve DDoS koruma standardı ile bu türe karşı savunın.</td>

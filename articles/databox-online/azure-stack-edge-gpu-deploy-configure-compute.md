@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 01/05/2021
+ms.date: 01/07/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge Pro so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: c884ad6850b8f94baa7c658d685651c3241be33f
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: eb71db05a61a0e32f3f092f37a4da72bc04e581d
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97935695"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99525763"
 ---
 # <a name="tutorial-configure-compute-on-azure-stack-edge-pro-gpu-device"></a>Öğretici: Azure Stack Edge Pro GPU cihazında işlem yapılandırma
 
@@ -32,7 +32,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Kubernetes uç noktalarını al
 
  
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure Stack Edge Pro cihazınızda bir işlem rolü ayarlamadan önce şunları yaptığınızdan emin olun:
 
@@ -43,40 +43,7 @@ Azure Stack Edge Pro cihazınızda bir işlem rolü ayarlamadan önce şunları 
 
 ## <a name="configure-compute"></a>İşlem yapılandırma
 
-Azure Stack Edge Pro ortamınızda işlem yapılandırmak için Azure portal aracılığıyla bir IoT Hub kaynağı oluşturacaksınız.
-
-1. Azure Stack Edge kaynağınızın Azure portal, **Genel Bakış ' a** gidin ve **IoT Edge**' yı seçin.
-
-   ![İşlem ile çalışmaya başlama](./media/azure-stack-edge-gpu-deploy-configure-compute/configure-compute-1.png)
-
-2. **IoT Edge hizmeti 'Ni etkinleştir** bölümünde **Ekle**' yi seçin.
-
-   ![İşlem yapılandırma](./media/azure-stack-edge-gpu-deploy-configure-compute/configure-compute-2.png)
-
-3. **Uç Işlem yapılandırma** dikey penceresinde aşağıdaki bilgileri girin:
-   
-   |Alan  |Değer  |
-   |---------|---------|
-   |IoT Hub     | **Yeni** veya **mevcut** seçeneklerinden birini belirleyin. <br> Varsayılan olarak IoT kaynağı oluşturulurken Standart katmanı (S1) kullanılır. Bir ücretsiz katman IoT kaynağı kullanmak için kaynağı oluşturun ve sonra da mevcut kaynağı seçin. <br> Her durumda IoT Hub kaynak, Azure Stack Edge kaynağı tarafından kullanılan aynı abonelik ve kaynak grubunu kullanır.     |
-   |Ad     |IoT Hub kaynağınız için bir ad girin.         |
-
-   ![İşlem 2 ile çalışmaya başlama](./media/azure-stack-edge-gpu-deploy-configure-compute/configure-compute-3.png)
-
-4. Ayarları tamamladığınızda, **gözden geçir + oluştur**' u seçin. IoT Hub kaynağınız için ayarları gözden geçirin ve **Oluştur**' u seçin.
-
-   Bir IoT Hub kaynağı için kaynak oluşturma birkaç dakika sürer. Kaynak oluşturulduktan sonra **genel bakış** IoT Edge hizmetin çalıştığını gösterir.
-
-   ![İşlem 3 ' ü kullanmaya başlama](./media/azure-stack-edge-gpu-deploy-configure-compute/configure-compute-4.png)
-
-5. Uç işlem rolünün yapılandırıldığını onaylamak için **Özellikler**' i seçin.
-
-   ![İşlem 4 ' ü kullanmaya başlama](./media/azure-stack-edge-gpu-deploy-configure-compute/configure-compute-5.png)
-
-   Edge cihazında Edge hesaplama rolü ayarlandığında, iki cihaz oluşturur: bir IoT cihazı ve bir IoT Edge cihaz. Her iki cihaz de IoT Hub kaynağında görüntülenebilir. Bu IoT Edge cihazında aynı zamanda bir IoT Edge çalışma zamanı çalışıyor. Bu noktada, IoT Edge cihazınız için yalnızca Linux platformu kullanılabilir.
-
-Arka planda, sanal makinelerin ve Kubernetes kümesinin oluşturulduğu için işlem yapılandırması 20-30 dakika sürebilir.
-
-Azure portal işlem başarıyla yapılandırıldıktan sonra, bir Kubernetes kümesi ve IoT ad alanıyla ilişkili bir varsayılan kullanıcı (Azure Stack Edge Pro tarafından denetlenen bir sistem ad alanı) mevcuttur.
+[!INCLUDE [configure-compute](../../includes/azure-stack-edge-gateway-configure-compute.md)]
 
 ## <a name="get-kubernetes-endpoints"></a>Kubernetes uç noktalarını al
 

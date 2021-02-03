@@ -4,12 +4,12 @@ description: Çapraz bölge geri yükleme özelliği de dahil olmak üzere Azure
 ms.reviewer: geg
 ms.topic: conceptual
 ms.date: 08/02/2020
-ms.openlocfilehash: 56bd41aaa607a3bc0f319f46ce5d0c3f8c78d27a
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 4575aedff425fc80f2974be21604be52ccb9525d
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98919618"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526204"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>Azure portal Azure VM verilerini geri yükleme
 
@@ -25,7 +25,6 @@ Azure Backup, sanal makineleri geri yüklemek için bir dizi yöntem sunar.
 **Diski geri yükle** | Yeni bir VM oluşturmak üzere kullanılabilecek bir VM diskini geri yükler.<br/><br/> Azure Backup, VM oluşturmanıza ve özelleştirmenize yardımcı olacak bir şablon sağlar. <br/><br> Geri yükleme işi, özel VM ayarlarını belirtmek ve bir VM oluşturmak için indirebileceğiniz ve kullanabileceğiniz bir şablon oluşturur.<br/><br/> Diskler belirttiğiniz kaynak grubuna kopyalanır.<br/><br/> Alternatif olarak, diski mevcut bir sanal makineye iliştirebilir veya PowerShell kullanarak yeni bir VM oluşturabilirsiniz.<br/><br/> Bu seçenek VM'yi özelleştirmek, yedekleme sırasında mevcut olmayan yapılandırma ayarlarını eklemek veya şablon veya PowerShell kullanılarak yapılandırılması gereken ayarlar eklemek istediğinizde faydalı olur.
 **Mevcut olanı değiştir** | Bir diski geri yükleyebilir ve mevcut VM 'deki bir diski değiştirmek için kullanabilirsiniz.<br/><br/> Geçerli VM'nin mevcut olması gerekir. Silinmesi durumunda bu seçenek kullanılamaz.<br/><br/> Azure Backup, diski değiştirmeden önce var olan sanal makinenin anlık görüntüsünü alır ve bunu belirttiğiniz hazırlama konumunda depolar. VM'ye bağlı olan mevcut diskler seçilen geri yükleme noktasıyla değiştirilir.<br/><br/> Anlık görüntü kasaya kopyalanır ve bekletme ilkesine göre saklanır. <br/><br/> Disk değiştirme işleminden sonra, özgün disk kaynak grubunda tutulur. Gerekli değilse, özgün diskleri el ile silmeyi tercih edebilirsiniz. <br/><br/>[Özel görüntüler kullanılarak oluşturulan](https://azure.microsoft.com/resources/videos/create-a-custom-virtual-machine-image-in-azure-resource-manager-with-powershell/)VM 'ler dahil olmak üzere, var olanı Değiştir, şifrelenmemiş yönetilen sanal makineler için desteklenir. Klasik VM 'Ler için desteklenmez.<br/><br/> Geri yükleme noktası geçerli VM 'den daha fazla veya daha az disk içeriyorsa, geri yükleme noktasındaki disk sayısı yalnızca VM yapılandırmasını yansıtacaktır.<br><br> Aynı zamanda, [Kullanıcı tarafından atanan yönetilen kimlik](../active-directory/managed-identities-azure-resources/overview.md) veya [Key Vault](../key-vault/general/overview.md)gibi bağlantılı kaynaklarla VM 'lerde de desteklenir.
 **Bölgeler Arası (ikincil bölge)** | Çapraz bölge geri yükleme, Azure [eşlenmiş bölgesi](../best-practices-availability-paired-regions.md#what-are-paired-regions)olan Ikincil bölgedeki Azure VM 'lerini geri yüklemek için kullanılabilir.<br><br> Yedekleme ikincil bölgede yapıldığında, seçilen kurtarma noktası için tüm Azure VM 'lerini geri yükleyebilirsiniz.<br><br> Yedekleme sırasında, anlık görüntüler ikincil bölgeye çoğaltılmaz. Yalnızca kasada depolanan veriler çoğaltılır. Bu nedenle ikincil bölge geri yüklemeleri yalnızca [kasa katmanı](about-azure-vm-restore.md#concepts) geri yükleme amaçlıdır. İkincil bölgenin geri yükleme süresi, birincil bölgenin kasa katmanı geri yükleme süresi ile neredeyse aynı olacaktır.  <br><br> Bu özellik aşağıdaki seçenekler için kullanılabilir:<br> <li> [VM oluştur](#create-a-vm) <br> <li> [Diskleri geri yükle](#restore-disks) <br><br> [Mevcut diskleri Değiştir](#replace-existing-disks) seçeneğini şu anda desteklemiyoruz.<br><br> İzinler<br> İkincil bölgedeki geri yükleme işlemi, Backup Admins ve App Admins tarafından gerçekleştirilebilir.
-**Çapraz geri yükleme** | Çapraz boyut geri yüklemesi, aynı bölgedeki tüm [kullanılabilirlik bölgelerinde](https://docs.microsoft.com/azure/availability-zones/az-overview) [Azure bölge sabitlenmiş VM 'leri](https://docs.microsoft.com/azure/virtual-machines/windows/create-portal-availability-zone) geri yüklemek için kullanılabilir. <br> <br> Bu özelliğin yayımlanmasından sonra yedeklenen seçili kurtarma noktası için tüm Azure bölge sabitlenmiş sanal makinelerini seçtiğiniz bölgeye geri yükleyebilirsiniz. Varsayılan olarak, yedeklenen bölgeyle aynı bölgeye geri yüklenir. <br> <br> Bu, VM 'nin sabitlenmiş bölgesi kullanılamaz hale gelirse olağanüstü durum kurtarma senaryolarında kullanılabilir.
 
 > [!NOTE]
 > Ayrıca, bir Azure VM 'de belirli dosya ve klasörleri kurtarabilirsiniz. [Daha fazla bilgi edinin](backup-azure-restore-files-from-vm.md).
@@ -180,11 +179,9 @@ CRR etkinse, yedekleme öğelerini ikincil bölgede görüntüleyebilirsiniz.
 >- Çapraz bölge geri yükleme özelliği, bir CMK etkin kurtarma hizmetleri kasasında yedeklenmeyen ve ikincil bölgedeki CMK özellikli VM 'Ler olarak yedeklenen CMK (müşteri tarafından yönetilen anahtarlar) etkin Azure VM 'lerini geri yükler.
 >- İkincil bölgeye geri yüklemek için gereken Azure rolleri, birincil bölgeyle aynı olanlardır.
 
-## <a name="cross-zonal-restore"></a>Çapraz geri yükleme
+[Azure Zone sabitlenmiş VM 'ler](https://docs.microsoft.com/azure/virtual-machines/windows/create-portal-availability-zone) , aynı bölgenin tüm [kullanılabilirlik bölgelerinde](https://docs.microsoft.com/azure/availability-zones/az-overview) geri yüklenebilir.
 
-Çapraz boyut geri yüklemesi, aynı bölgedeki tüm [kullanılabilirlik bölgelerinde](https://docs.microsoft.com/azure/availability-zones/az-overview) [Azure bölge sabitlenmiş VM 'leri](https://docs.microsoft.com/azure/virtual-machines/windows/create-portal-availability-zone) geri yüklemek için kullanılabilir.
-
-Geri yükleme sürecinde, seçenek **kullanılabilirlik bölgesi** ' ni görürsünüz. Önce varsayılan bölgeyi görürsünüz. Farklı bir bölge seçmek için istediğiniz bölgenin numarasını seçin. Bir kesinti nedeniyle varsayılan kullanılabilirlik bölgesi yoksa farklı bir bölge seçin ya da farklı bir bölgede geri yüklemeyi tercih ettiğiniz başka bir nedenle, farklı bir bölge seçin.
+Geri yükleme sürecinde, seçenek **kullanılabilirlik bölgesi** ' ni görürsünüz. Önce varsayılan bölgeyi görürsünüz. Farklı bir bölge seçmek için istediğiniz bölgenin numarasını seçin. Sabitlenmiş bölge kullanılamaz durumdaysa, yedeklenen veriler bölge dışı olarak çoğaltılmadığı için verileri başka bir bölgeye geri yükleyemezsiniz.
 
 ![Kullanılabilirlik alanı seç](./media/backup-azure-arm-restore-vms/cross-zonal-restore.png)
 

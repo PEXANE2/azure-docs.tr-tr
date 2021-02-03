@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/25/2021
 ms.author: memildin
-ms.openlocfilehash: d5de16c8156762a229d6c707080bc197dc206a7c
-ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
+ms.openlocfilehash: 8ef0fedcbf7ce06063db22fb345a0711acddcb4d
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99475599"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526390"
 ---
 # <a name="important-upcoming-changes-to-azure-security-center"></a>Azure Güvenlik Merkezi 'Nde yapılan önemli değişiklikler
 
@@ -31,39 +31,8 @@ En son sürüm notlarını arıyorsanız, bunları [Azure Güvenlik Merkezi 'nde
 
 ## <a name="planned-changes"></a>Planlanan değişiklikler
 
-- [Kubernetes iş yükü koruma önerileri yakında genel kullanılabilirlik (GA) için kullanıma sunulacaktır](#kubernetes-workload-protection-recommendations-will-soon-be-released-for-general-availability-ga)
 - ["Sistem güncelleştirmelerini Uygula" güvenlik denetiminin kullanım dışı olmasının iki önerisi](#two-recommendations-from-apply-system-updates-security-control-being-deprecated)
 - [SQL veri sınıflandırması önerisine yönelik geliştirmeler](#enhancements-to-sql-data-classification-recommendation)
-
-
-### <a name="kubernetes-workload-protection-recommendations-will-soon-be-released-for-general-availability-ga"></a>Kubernetes iş yükü koruma önerileri yakında genel kullanılabilirlik (GA) için kullanıma sunulacaktır
-
-**Değişikliğin tahmini tarihi:** Şubat 2021
-
-[Kubernetes iş yüklerinizi koruma](kubernetes-workload-protections.md) bölümünde açıklanan Kubernetes iş yükü koruma önerileri şu anda önizleme aşamasındadır. Bir öneri önizlemede olduğunda, bir kaynağı sağlıksız olarak işlemez ve güvenli puanınızın hesaplamalarına dahil değildir.
-
-Bu öneriler yakında genel kullanıma sunulacaktır (GA) ve *Bu nedenle puan hesaplamasına dahil edilir.* Zaten düzeltilmediyse, bu durum güvenli puanınızda küçük bir etkiye neden olur.
-
-Mümkün olan yerlerde düzeltin ( [Azure Güvenlik Merkezi 'nde önerileri](security-center-remediate-recommendations.md)düzeltme hakkında bilgi edinin).
-
-Kubernetes iş yükü koruma önerileri şunlardır:
-
-- Kubernetes için Azure Ilke eklentisi, kümelerinizde yüklü ve etkin olmalıdır
-- Kapsayıcı CPU ve bellek sınırları zorunlu kılınmalıdır
-- Ayrıcalıklı kapsayıcılar kaçınılmalıdır
-- Kapsayıcılar için sabit (salt okunurdur) kök dosya sistemi zorunlu kılınmalıdır
-- Ayrıcalık yükseltme ile kapsayıcının önlenebilir olması gerekir
-- Kök kullanıcı olarak çalışan kapsayıcılar önlenebilir olmalıdır
-- Gizli ana bilgisayar ad alanlarını paylaşan kapsayıcıların önlenebilir olması gerekir
-- Kapsayıcılar için en az ayrıcalıklı Linux özellikleri zorlanmalıdır
-- Pod HostPath birimi takmaları kullanımı bilinen bir listeyle sınırlandırılmalıdır
-- Kapsayıcılar yalnızca izin verilen bağlantı noktalarında dinleme yapılmalıdır
-- Hizmetlerin yalnızca izin verilen bağlantı noktalarını dinlemesi gerekir
-- Konak ağ ve bağlantı noktalarının kullanımı sınırlandırılmalıdır
-- Kapsayıcılar AppArmor profilinin geçersiz kılınması veya devre dışı bırakılması kısıtlanıyor
-- Kapsayıcı görüntüleri yalnızca güvenilen kayıt defterlerinden dağıtılmalıdır             
-
-[Kubernetes iş yüklerinizi korumak](kubernetes-workload-protections.md)için bu öneriler hakkında daha fazla bilgi edinin.
 
 ### <a name="two-recommendations-from-apply-system-updates-security-control-being-deprecated"></a>"Sistem güncelleştirmelerini Uygula" güvenlik denetiminin kullanım dışı olmasının iki önerisi 
 
@@ -83,11 +52,7 @@ Bu önerilerin bunlara dahil edilip edilmeyeceğini görmek için sürekli dış
 
 **Değişikliğin tahmini tarihi:** S2 2021
 
-**SQL veritabanlarınızdaki önerinin hassas verilerinin** geçerli sürümü, **veri sınıflandırması Uygula** güvenlik denetimi ' nde, Microsoft 'un veri sınıflandırması stratejisiyle daha iyi hizalanmış yeni bir sürümle değiştirilmelidir. Sonuç olarak:
-
-- Öneri artık güvenli puanınızı etkilemeyecek
-- Güvenlik denetimi ("veri sınıflandırmasını Uygula") artık güvenli puanınızı etkilemeyecek
-- Önerinin KIMLIĞI de değişecektir (Şu anda b0df6f56-862D-4730-8597-38c0fd4ebd59)
+**SQL veritabanlarınızdaki önerinin önemli verileri** , **veri sınıflandırması Uygula** güvenlik denetiminde sınıflandırılmalıdır ve Microsoft 'un veri sınıflandırması stratejisiyle daha iyi hizalanmış yeni bir sürümle değiştirilmelidir. Sonuç olarak, önerinin KIMLIĞI de değişecektir (Şu anda b0df6f56-862D-4730-8597-38c0fd4ebd59).
 
 
 

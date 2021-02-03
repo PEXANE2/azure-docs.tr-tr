@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 09/12/2020
 ms.author: memildin
-ms.openlocfilehash: ce0808bc53ae663b80da793bf33b5b371d881961
-ms.sourcegitcommit: 983eb1131d59664c594dcb2829eb6d49c4af1560
+ms.openlocfilehash: 99e217c6d8065d19f7b03419306f4992735cb587
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99222192"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526745"
 ---
 # <a name="protect-your-kubernetes-workloads"></a>Kubernetes iş yüklerinizi koruma
 
@@ -35,11 +35,11 @@ Güvenlik Merkezi, Azure Defender 'ı etkinleştirirseniz daha fazla kapsayıcı
 
 |Görünüş|Ayrıntılar|
 |----|:----|
-|Yayın durumu:|Önizleme<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)] |
+|Yayın durumu:|Genel kullanılabilirlik (GA)|
 |Fiyat|Ücretsiz|
 |Gerekli roller ve izinler:|Bir atamayı düzenlemek için **sahip** veya **Güvenlik Yöneticisi**<br>Önerileri görüntülemek için **okuyucu**|
-|Desteklenen kümeler:|Kubernetes v 1.14 (veya üzeri) gereklidir<br>Kümelerde Pod SecurityPolicy kaynağı (eski PSP modeli) yok<br>Windows düğümleri desteklenmez|
-|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Hayır](./media/icons/no-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
+|Ortam gereksinimleri:|Kubernetes v 1.14 (veya üzeri) gereklidir<br>Kümelerde Pod SecurityPolicy kaynağı (eski PSP modeli) yok<br>Windows düğümleri desteklenmez|
+|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![No](./media/icons/no-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
 |||
 
 
@@ -52,6 +52,8 @@ Azure Güvenlik Merkezi, **Kubernetes Için Azure ilke eklentisini** yüklediği
 Önerileri yapılandırmak için,  **Kubernetes Için Azure İlkesi eklentisi**' ni yükler. 
 
 - Bu eklentiyi, [uzantıların otomatik sağlanmasını etkinleştir](security-center-enable-data-collection.md#enable-auto-provisioning-of-extensions)bölümünde açıklandığı gibi otomatik olarak dağıtabilirsiniz. Eklenti için otomatik sağlama "açık" olarak ayarlandığında, uzantı tüm mevcut ve gelecekteki kümelerde (eklenti yükleme gereksinimlerini karşılayan) varsayılan olarak etkinleştirilir.
+
+    :::image type="content" source="media/defender-for-kubernetes-usage/policy-add-on-auto-provision.png" alt-text="Kubernetes için ilke eklentisini yüklemek üzere güvenlik merkezi 'nin otomatik sağlama aracı 'nı kullanma":::
 
 - Eklentiyi el ile dağıtmak için:
 
@@ -78,12 +80,12 @@ Azure Güvenlik Merkezi, **Kubernetes Için Azure ilke eklentisini** yüklediği
 
     | Öneri adı                                                         | Güvenlik denetimi                         | Yapılandırma gerekli |
     |-----------------------------------------------------------------------------|------------------------------------------|------------------------|
-    | Kapsayıcı CPU ve bellek sınırları zorunlu kılınmalıdır                          | DDoS saldırılarına karşı uygulamaları koruma | Hayır                     |
-    | Ayrıcalıklı kapsayıcılar kaçınılmalıdır                                     | Erişimi ve izinleri yönetme            | Hayır                     |
-    | Kapsayıcılar için sabit (salt okunurdur) kök dosya sistemi zorunlu kılınmalıdır     | Erişimi ve izinleri yönetme            | Hayır                     |
-    | Ayrıcalık yükseltme ile kapsayıcının önlenebilir olması gerekir                       | Erişimi ve izinleri yönetme            | Hayır                     |
-    | Kök kullanıcı olarak çalışan kapsayıcılar önlenebilir olmalıdır                           | Erişimi ve izinleri yönetme            | Hayır                     |
-    | Gizli ana bilgisayar ad alanlarını paylaşan kapsayıcıların önlenebilir olması gerekir              | Erişimi ve izinleri yönetme            | Hayır                     |
+    | Kapsayıcı CPU ve bellek sınırları zorunlu kılınmalıdır                          | DDoS saldırılarına karşı uygulamaları koruma | No                     |
+    | Ayrıcalıklı kapsayıcılar kaçınılmalıdır                                     | Erişimi ve izinleri yönetme            | No                     |
+    | Kapsayıcılar için sabit (salt okunurdur) kök dosya sistemi zorunlu kılınmalıdır     | Erişimi ve izinleri yönetme            | No                     |
+    | Ayrıcalık yükseltme ile kapsayıcının önlenebilir olması gerekir                       | Erişimi ve izinleri yönetme            | No                     |
+    | Kök kullanıcı olarak çalışan kapsayıcılar önlenebilir olmalıdır                           | Erişimi ve izinleri yönetme            | No                     |
+    | Gizli ana bilgisayar ad alanlarını paylaşan kapsayıcıların önlenebilir olması gerekir              | Erişimi ve izinleri yönetme            | No                     |
     | Kapsayıcılar için en az ayrıcalıklı Linux özellikleri zorlanmalıdır       | Erişimi ve izinleri yönetme            | **Evet**                |
     | Pod HostPath birimi takmaları kullanımı bilinen bir listeyle sınırlandırılmalıdır    | Erişimi ve izinleri yönetme            | **Evet**                |
     | Kapsayıcılar yalnızca izin verilen bağlantı noktalarında dinleme yapılmalıdır                              | Yetkisiz ağ erişimini kısıtla     | **Evet**                |

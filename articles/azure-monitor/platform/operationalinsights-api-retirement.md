@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/29/2020
-ms.openlocfilehash: e2b12d7a2206ab369328563af438c6ef1ea39327
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: d094e1760db1ddfcff520b0022a232735d21d355
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96184119"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99525831"
 ---
 # <a name="operationalinsights-api-version-retirement"></a>Operationalınsights API sürümü kullanımdan kaldırma
 Microsoft, daha yeni/desteklenen bir sürüme geçişi düzgünleştirmek için API 'YI devre dışı bırakma konusunda en az 12 ay önceden bildirim sağlar. **Operationalınsights** kaynak sağlayıcısı API 'leri için yeni bir sürüm (2020-08-01) yayımladık ve 29 Şubat 2024 TARIHINDE önceki API sürümlerini devre dışı bırakacağız.
@@ -66,6 +66,15 @@ Kullandığınız yapılandırma yöntemine bağlı olarak, **rest** isteklerind
     }
     ```
 
+
+### <a name="more-information"></a>Daha fazla bilgi
+Sorularınız varsa, [teknik topluluk uzmanlarımızın]( https://techcommunity.microsoft.com/t5/azure-monitor/bd-p/AzureMonitor)yanıtlarını alın. Destek planınız varsa ve teknik yardıma ihtiyacınız varsa, bir [destek isteği]( https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)oluşturun: 
+1.  *Sorun türü* altında **Teknik**' i seçin. 
+2.  *Abonelik* bölümünde aboneliğinizi seçin. 
+3.  *Hizmet* altında **Hizmetlerim**' i seçin ve ardından **Log Analytics**' yi seçin. 
+4.  *Özet* altında, sorununuzun açıklamasını yazın. 
+5.  *Sorun türü* altında **Log Analytics çalışma alanı yönetimi**' ni seçin.  
+6.  *Sorun alt türü*' nün altında **ARM şablonları, PowerShell ve CLI**' yi seçin. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

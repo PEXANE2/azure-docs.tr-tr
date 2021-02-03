@@ -4,12 +4,12 @@ description: Bu makalede, yedeklemeleri ve kurtarma noktalarını depolayan kurt
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.custom: references_regions
-ms.openlocfilehash: 51d095ab68bc9277cb610bd226039ffbde8d7ddf
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 4022838575ca53608a802a6be95e150778db6ac7
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98915735"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99525983"
 ---
 # <a name="create-and-configure-a-recovery-services-vault"></a>Kurtarma Hizmetleri Kasası oluşturma ve yapılandırma
 
@@ -71,6 +71,7 @@ Bu işlem depolama düzeyinde olduğundan, [fiyatlandırma etkileri](https://azu
 >- Bu işlem yapıldıktan sonra, yedekleme öğelerinin ikincil bölgelerde kullanılabilmesi 48 saat kadar sürebilir.
 >- Azure VM 'Leri için şu anda CRR yalnızca Azure Resource Manager Azure VM 'Leri için desteklenir. Klasik Azure VM 'Leri desteklenmez.  Ek yönetim türleri CRR 'yi desteklediklerinde, bunlar **otomatik olarak** kaydedilir.
 >- Koruma ilk kez başlatıldığında çapraz bölge geri yüklemesi şu anda GRS veya LRS 'ye **geri döndürülemez** .
+>- Şu anda, [Okuma Erişimli Coğrafi olarak yedekli depolama (RA-GRS)](https://docs.microsoft.com/azure/storage/common/storage-redundancy#redundancy-in-a-secondary-region) çoğaltması 15 dakika olsa da, Ikincil bölge [RPO 'su](azure-backup-glossary.md#rpo-recovery-point-objective) birincil bölgeden 12 saate kadar sürer.
 
 ### <a name="configure-cross-region-restore"></a>Çapraz bölge geri yüklemeyi yapılandırma
 

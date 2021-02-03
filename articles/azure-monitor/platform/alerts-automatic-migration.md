@@ -4,16 +4,16 @@ description: Otomatik geçiş işleminin nasıl çalıştığını öğrenin.
 ms.topic: conceptual
 ms.date: 08/19/2019
 ms.subservice: alerts
-ms.openlocfilehash: 6a2d032c6aa33b72fe422638df45ca48bf8b1036
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9ce3550dcef174a4d970917fabfda3c4fd2a8df4
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87847292"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526560"
 ---
 # <a name="understand-the-automatic-migration-process-for-your-classic-alert-rules"></a>Klasik uyarı kurallarınız için otomatik geçiş işlemini anlayın
 
-[Daha önce duyurulduğu](monitoring-classic-retirement.md)gibi, Azure izleyici 'deki klasik uyarılar kullanımdan kalkmakta, ancak henüz yeni uyarıları desteklemeyen kaynaklar için hala sınırlı kullanımda. Kullanımdan kaldırma işleminin bir parçası olarak, müşterilerin geçişi tetikleyebilmesi için Azure portal [bir geçiş aracı](alerts-using-migration-tool.md) vardır.
+[Daha önce duyurulduğu](monitoring-classic-retirement.md)gibi, Azure izleyici 'deki klasik uyarılar, genel bulut kullanıcıları için devre dışı bırakılmakta, ancak henüz yeni uyarıları desteklemeyen kaynaklar için sınırlı kullanımda. Kullanımdan kaldırma işleminin bir parçası olarak, müşterilerin geçişi tetikleyebilmesi için Azure portal [bir geçiş aracı](alerts-using-migration-tool.md) vardır.
 Bu makale, otomatik geçiş sürecinde size yol gösterir ve karşılaşabileceğiniz tüm sorunları çözmenize yardımcı olur.
 
   > [!NOTE]

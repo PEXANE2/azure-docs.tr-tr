@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 189ff3bbfdb3b8533defcedb77e15fef433598b5
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 2ec166c1df9727052d4980f5d5758ece8c499880
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95023097"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526611"
 ---
 # <a name="storage-options-for-fslogix-profile-containers-in-windows-virtual-desktop"></a>Windows sanal masaüstündeki FSLogix profil kapsayıcıları için depolama seçenekleri
 
@@ -28,11 +28,11 @@ Aşağıdaki tablolar, Windows sanal masaüstü FSLogix profil kapsayıcısı Ku
 |Kullanım örneği|Genel amaçlı|Şirket içi NetApp 'ten ultra performans veya geçiş|Platformlar arası|
 |Platform hizmeti|Evet, Azure-Native çözümü|Evet, Azure-Native çözümü|Hayır, otomatik olarak yönetilen|
 |Bölgesel kullanılabilirlik|Tüm bölgeler|[Bölge seçin](https://azure.microsoft.com/global-infrastructure/services/?products=netapp&regions=all)|Tüm bölgeler|
-|Yedeklilik|Yerel olarak yedekli/bölge-yedekli/coğrafi olarak yedekli|Yerel olarak yedekli|Yerel olarak yedekli/bölge-yedekli/coğrafi olarak yedekli|
-|Katmanlar ve performans|Standart<br>Premium<br>Paylaşma başına 5 Gbps ile, paylaşma başına en fazla 100.000 IOPS, yaklaşık 3 ms gecikme|Standart<br>Premium<br>Ultra<br>Yaklaşık 1 ms gecikme süresi içinde birim başına 4,5 GB/sn 'ye kadar 320 KB (16K) ıOPS|Standart HDD: disk başına en çok 500 ıOPS<br>Standart SSD: disk başına en fazla 4k ıOPS<br>Premium SSD: disk başına en fazla 20.000 IOPS sınırı<br>Depolama Alanları Doğrudan için Premium diskler öneriyoruz|
-|Kapasite|paylaşma başına 100 TiB|Her birim için 100 TiB, abonelik başına en fazla 12,5 PiB|Disk başına en fazla 32 TiB|
+|Yedeklilik|Yerel olarak yedekli/bölgesel-yedekli/coğrafi olarak yedekli/coğrafi bölge-yedekli|Yerel olarak yedekli|Yerel olarak yedekli/bölge-yedekli/coğrafi olarak yedekli|
+|Katmanlar ve performans| Standart (Işlem için iyileştirilmiş)<br>Premium<br>Paylaşımda en fazla 100K ıOPS, paylaşma başına 10 GBps, yaklaşık 3 ms gecikme|Standart<br>Premium<br>Ultra<br>Yaklaşık 1 ms gecikme süresi içinde birim başına 4,5 GB/sn 'ye kadar 320 KB (16K) ıOPS|Standart HDD: disk başına en çok 500 ıOPS<br>Standart SSD: disk başına en fazla 4k ıOPS<br>Premium SSD: disk başına en fazla 20.000 IOPS sınırı<br>Depolama Alanları Doğrudan için Premium diskler öneriyoruz|
+|Kapasite|Her paylaşımdan 100 TiB, genel amaçlı hesap başına 5 PiB |Her birim için 100 TiB, abonelik başına en fazla 12,5 PiB|Disk başına en fazla 32 TiB|
 |Gerekli altyapı|En az paylaşma boyutu 1 GiB|Minimum kapasite havuzu 4 TiB, minimum birim boyutu 100 GiB|Azure IaaS (+ Cloud tanık) üzerinde iki VM veya disk 'siz ve maliyeti olan en az üç VM|
-|Protokoller|SMB 2.1/3. ve REST|NFSv3, NFSv 4.1 (Önizleme), SMB 3. x/2. x|NFSv3, NFSv 4.1, SMB 3,1|
+|Protokoller|SMB 3.0/2.1, NFSv 4.1 (Önizleme), REST|NFSv3, NFSv 4.1 (Önizleme), SMB 3. x/2. x|NFSv3, NFSv 4.1, SMB 3,1|
 
 ## <a name="azure-management-details"></a>Azure yönetim ayrıntıları
 

@@ -3,12 +3,12 @@ title: Kayıt defteri ile ağ sorunlarını giderme
 description: Bir sanal ağda veya bir güvenlik duvarının arkasındaki bir Azure Container Registry 'ye erişirken oluşan belirtiler, nedenler ve çözümler
 ms.topic: article
 ms.date: 10/01/2020
-ms.openlocfilehash: 2f15eb8a830ce93ecf942663fc8a44b9df86d6d6
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: cf2f308f782ac7d6011c98afd181b194f2b3e09f
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99052170"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99525085"
 ---
 # <a name="troubleshoot-network-issues-with-registry"></a>Kayıt defteri ile ağ sorunlarını giderme
 
@@ -105,20 +105,20 @@ Ağda Azure Güvenlik Duvarı veya benzer bir çözüm yapılandırılmışsa, b
 
 ### <a name="configure-service-access"></a>Hizmet erişimini yapılandırma
 
-Şu anda Azure Güvenlik Merkezi, Özel uç noktalara, seçili alt ağlara veya IP adreslerine erişimi kısıtlayan bir kayıt defterinde [görüntü güvenlik açığı taraması](../security-center/defender-for-container-registries-introduction.md?bc=%2fazure%2fcontainer-registry%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fcontainer-registry%2ftoc.json) gerçekleştiremez. Ayrıca, aşağıdaki hizmetlerin kaynakları ağ kısıtlamalarına sahip bir kapsayıcı kayıt defterine erişemez:
+Şu anda, çeşitli Azure hizmetlerinden ağ kısıtlamalarına sahip bir kapsayıcı kayıt defterine erişime izin verilmez:
 
-* Azure DevOps Services 
-* Azure Container Instances
-* Azure Container Registry Görevleri
+* Azure Güvenlik Merkezi, Özel uç noktalara, seçili alt ağlara veya IP adreslerine erişimi kısıtlayan bir kayıt defterinde [görüntü güvenlik açığı taraması](../security-center/defender-for-container-registries-introduction.md?bc=%2fazure%2fcontainer-registry%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fcontainer-registry%2ftoc.json) gerçekleştiremez. 
+* Belirli Azure hizmetlerinin kaynakları, Azure App Service ve Azure Container Instances dahil olmak üzere ağ kısıtlamalarına sahip bir kapsayıcı kayıt defterine erişemez.
 
 Bu Azure hizmetlerinin kapsayıcı kayıt defteriyle erişimi veya tümleştirilmesi gerekiyorsa, ağ kısıtlamasını kaldırın. Örneğin, kayıt defterinin özel uç noktalarını kaldırın veya kayıt defterinin genel erişim kurallarını kaldırın veya değiştirin.
+
+2021 Ocak 'tan başlayarak, güvenilen hizmetlerden [erişime izin vermek](allow-access-trusted-services.md) için ağ kısıtlı bir kayıt defteri yapılandırabilirsiniz.
 
 İlgili bağlantılar:
 
 * [Azure Container Registry resim taramasını Güvenlik Merkezi 'Ne göre](../security-center/defender-for-container-registries-introduction.md)
 * [Geri bildirim](https://feedback.azure.com/forums/347535-azure-security-center/suggestions/41091577-enable-vulnerability-scanning-for-images-that-are) sağlayın
-* [Genel IP ağ kurallarını yapılandırma](container-registry-access-selected-networks.md)
-* [Azure özel bağlantısını kullanarak bir Azure Container Registry 'ye özel olarak bağlanma](container-registry-private-link.md)
+* [Güvenilen hizmetlerin ağ kısıtlamalı bir kapsayıcı kayıt defterine güvenli bir şekilde erişmesine izin ver](allow-access-trusted-services.md)
 
 
 ## <a name="advanced-troubleshooting"></a>Gelişmiş sorun giderme
@@ -140,5 +140,5 @@ Sorununuzu burada çözemezseniz, aşağıdaki seçeneklere bakın.
   * [Kayıt defteri oturum açma sorunlarını giderme](container-registry-troubleshoot-login.md) 
   * [Kayıt defteri performansının sorunlarını giderme](container-registry-troubleshoot-performance.md)
 * [Topluluk desteği](https://azure.microsoft.com/support/community/) seçenekleri
-* [Microsoft Soru-Cevap](/answers/products/)
+* [Microsoft Soru-Cevap](https://docs.microsoft.com/answers/products/)
 * [Destek bileti açma](https://azure.microsoft.com/support/create-ticket/)

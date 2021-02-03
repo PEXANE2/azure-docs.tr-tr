@@ -2,13 +2,13 @@
 title: Kapsayıcı görüntülerini içeri aktarma
 description: Docker komutlarını çalıştırmaya gerek kalmadan Azure API 'Lerini kullanarak kapsayıcı görüntülerini bir Azure Container Registry 'ye aktarın.
 ms.topic: article
-ms.date: 09/18/2020
-ms.openlocfilehash: 3950b9fb24b80db4d9654a615521c0eb82914499
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.date: 01/15/2021
+ms.openlocfilehash: 364c90b857d0d7d479152e2aa56db4d80041f037
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96019982"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99524507"
 ---
 # <a name="import-container-images-to-a-container-registry"></a>Kapsayıcı görüntülerini kapsayıcı kayıt defterine aktarma
 
@@ -36,6 +36,11 @@ Kapsayıcı görüntülerini içeri aktarmak için bu makale, Azure CLı 'yı Az
 > Aynı kapsayıcı görüntülerini birden çok Azure bölgesinde dağıtmanız gerekiyorsa Azure Container Registry [Coğrafi çoğaltmayı](container-registry-geo-replication.md)da destekler. Bir kayıt defteri coğrafi olarak çoğaltılırken (Premium hizmet katmanı gereklidir), tek bir kayıt defterinden aynı görüntü ve etiket adları ile birden çok bölgeye hizmet verebilirsiniz.
 >
 
+> [!IMPORTANT]
+> İki Azure Kapsayıcı kayıt defterleri arasında görüntü içeri aktarma işleminde yapılan değişiklikler 2021 Ocak 'tan itibaren sunulmuştur:
+> * Ağ kısıtlamalı bir Azure Container Registry 'ye veya bu bilgisayardan içeri aktarma, kısıtlanmış kayıt defterinin, ağı atlayıp [**Güvenilen hizmetlere erişmesine izin**](allow-access-trusted-services.md) vermek için gerekir. Varsayılan olarak, ayar etkin olur ve içeri aktarmaya izin verir. Ayar, yeni oluşturulmuş bir kayıt defterinde özel bir uç nokta veya kayıt defteri güvenlik kuralları ile etkin değilse, içeri aktarma başarısız olur. 
+> * İçeri aktarma kaynağı veya hedefi olarak kullanılan mevcut bir ağ kısıtlamalı Azure Container Registry 'de, bu ağ güvenlik özelliğinin etkinleştirilmesi isteğe bağlıdır ancak önerilir.
+
 ## <a name="prerequisites"></a>Önkoşullar
 
 Zaten bir Azure Container kayıt defteriniz yoksa bir kayıt defteri oluşturun. Adımlar için bkz. [hızlı başlangıç: Azure CLI kullanarak özel kapsayıcı kayıt defteri oluşturma](container-registry-get-started-azure-cli.md).
@@ -46,7 +51,7 @@ Bir görüntüyü Azure Container Registry 'ye aktarmak için, kimliğinizin hed
 
 ### <a name="import-from-docker-hub"></a>Docker Hub 'dan içeri aktar
 
-Örneğin, [az acr import][az-acr-import] `hello-world:latest` Docker Hub 'ından Multi-Architecture görüntüsünü *myregistry* adlı bir kayıt defterine aktarmak için az ACR Import komutunu kullanın. `hello-world`, Docker Hub 'ından resmi bir görüntü olduğundan, bu görüntü varsayılan `library` depodadır. Depo adını ve isteğe bağlı olarak Image parametresinin değerine bir etiketi ekleyin `--source` . (Bir görüntüyü, bir görüntünün belirli bir sürümünü garanti eden etiketi yerine, bildirim özetine göre belirleyebilirsiniz.)
+Örneğin, [][az-acr-import] `hello-world:latest` Docker Hub 'ından Multi-Architecture görüntüsünü *myregistry* adlı bir kayıt defterine aktarmak için az ACR Import komutunu kullanın. `hello-world`, Docker Hub 'ından resmi bir görüntü olduğundan, bu görüntü varsayılan `library` depodadır. Depo adını ve isteğe bağlı olarak Image parametresinin değerine bir etiketi ekleyin `--source` . (Bir görüntüyü, bir görüntünün belirli bir sürümünü garanti eden etiketi yerine, bildirim özetine göre belirleyebilirsiniz.)
  
 ```azurecli
 az acr import \
@@ -92,6 +97,8 @@ Tümleşik Azure Active Directory izinleri kullanarak aynı AD kiracısındaki b
 * Kayıt defteri aynı Active Directory kiracısında aynı veya farklı bir Azure aboneliğinde olabilir.
 
 * Kaynak kayıt defterine [genel erişim](container-registry-access-selected-networks.md#disable-public-network-access) devre dışı bırakılmış olabilir. Ortak erişim devre dışıysa, kaynak kayıt defterini kayıt defteri oturum açma sunucusu adı yerine kaynak KIMLIĞIYLE belirtin.
+
+* Kaynak kayıt defteri ve/veya hedef kayıt defteri için özel bir uç nokta veya kayıt defteri güvenlik kuralları uygulanmışsa, kısıtlanmış kayıt defterinin [Güvenilen hizmetlerin ağa erişmesine izin verdiğinden](allow-access-trusted-services.md) emin olun.
 
 ### <a name="import-from-a-registry-in-the-same-subscription"></a>Aynı abonelikteki bir kayıt defterinden içeri aktarma
 

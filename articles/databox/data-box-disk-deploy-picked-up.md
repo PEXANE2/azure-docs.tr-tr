@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 12/10/2020
+ms.date: 02/02/2021
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: d529c5900d851368d60099091bb5745660036dea
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
-ms.translationtype: HT
+ms.openlocfilehash: 542eed34f2be05cce3829baab2f07a5c58413ba0
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97029898"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526305"
 ---
 ::: zone target="docs"
 
@@ -30,7 +30,7 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Başlamadan önce [Öğretici: Verileri Azure Data Box Disk'e kopyalama ve doğrulama](data-box-disk-deploy-copy-data.md) kaynağını tamamladığınızdan emin olun.
+Başlamadan önce öğreticiyi tamamladığınızdan emin olun [: Azure Data Box disk verileri kopyalama ve doğrulama](data-box-disk-deploy-copy-data.md).
 
 ## <a name="ship-data-box-disk-back"></a>Data Box Disk'i geri gönderme
 
@@ -63,7 +63,7 @@ Cihazı ABD veya Kanada’da iade ediyorsanız aşağıdaki adımları uygulayı
 
     - Yerel UPS şubesini (ülkeye/bölgeye özel ücretsiz hatlar) arayın.
     - Görüşme esnasında, basılı etiketinizde gördüğünüz iade izleme numarasını bildirin.
-    - İzleme numarası bildirilmezse, teslim alma esnasında UPS’ye ek ücret ödemeniz gerekir.
+    - İzleme numarası tırnak işareti yoksa, UPS toplama sırasında ek ücret ödemeniz gerekir.
     - Teslim alma zamanlama yerine Data Box Disk’inizi en yakın teslim etme yerine bırakabilirsiniz.
 
 
@@ -83,7 +83,7 @@ Cihazı Avrupa’da veya Birleşik Krallık’ta iade ediyorsanız aşağıdaki 
 
 Avustralya’daki Azure veri merkezlerinde ek güvenlik bildirimi uygulanır. Gelen tüm sevkiyatların önceden bildirilmesi gerekir. Avustralya’da teslim alma için aşağıdaki adımları uygulayın.
 
-1. Sağlanan iade sevkiyatı etiketini kullanın ve bunun üzerinde TAU kodunun (referans numarası) bulunduğundan emin olun. Sağlanan sevkiyat etiketi eksikse veya başka bir sorununuz varsa şuraya e-posta gönderin [Data Box için Asya bölgesi İşlemleri](mailto:adbo@microsoft.com). Konu üst bilgisi olarak sipariş adını ve karşılaştığınız sorunun ayrıntılarını belirtin.
+1. Sağlanan iade sevkiyatı etiketini kullanın ve bunun üzerinde TAU kodunun (referans numarası) bulunduğundan emin olun. Sağlanan sevkiyat etiketi eksikse veya başka bir sorununuz varsa şuraya e-posta gönderin [Data Box için Asya bölgesi İşlemleri](mailto:adbo@microsoft.com). Konu üst bilgisinde sıra adını ve sorunun ayrıntılarını girin.
 2. Etiketi kutuya iliştirin.
 3. https://mydhl.express.dhl/au/en/schedule-pickup.html#/schedule-pickup#label-reference adresinde çevrimiçi olarak bir teslim alma rezervasyonu yapın.
 
@@ -119,13 +119,13 @@ Gerekirse, aşağıdaki bilgilerden Quantium Solutions Desteği (Japonca) ile il
 1. İade sevk mektubunu eklediğinizden emin olun.
 2. Sevk mektubunuz mevcutken iade istemek için:
     1. Çalışma saatleri içinde (Pazartesi’den Cuma’ya kadar saat 10.00 - 17.00 arası) 070-8231-1418 numaralı telefondan *Quantium Solutions International* bilgi hattını arayın. Teslim alma planlamak için *Microsoft Azure teslim alma hizmetini* ve hizmet isteği numarasını bildirin.  
-    2. Bilgi hattı meşgulse referans olarak *Microsoft Azure teslim alma hizmetini* ve hizmet isteği numarasını bildirerek `microsoft@rocketparcel.com` adresine e-posta gönderin.
-    3. Teslim alma için kurye gönderilmezse alternatif planlamalar için *Quantium Solutions International*’ı arayın.
+    2. Yardım hattı meşgulse, e- [microsoft@rocketparcel.com](mailto:microsoft@rocketparcel.com) posta konusu *Microsoft Azure alma* ve başvuru için hizmet isteği numarası ile e-posta.
+    3. Courier koleksiyona ulaşmazsa, diğer düzenlemeler için *Quantium çözümlerini Uluslararası* yardım hattını çağırın.
     4. Teslim alma zamanlaması için bir onay e-posta iletisi alırsınız.
-3. Bu adımı sevk mektubunun bulunmadığı durumlarda uygulayın. Teslim alma istemek için:
-    1. Çalışma saatleri içinde (Pazartesi’den Cuma’ya kadar saat 10.00 - 17.00 arası) 070-8231-1418 numaralı telefondan *Quantium Solutions International* bilgi hattını arayın. Teslim alma planlamak için *Microsoft Azure teslim alma hizmetini* ve hizmet isteği numarasını bildirin. Teslim alma için yeni bir sevk mektubuna ihtiyaç duyduğunuzu belirtin. Gönderici (müşteri), alıcı (Azure veri merkezi) bilgilerini ve referans numarasını (hizmet isteği numarası) sağlayın. 
-    2. Bilgi hattı meşgulse referans olarak *Microsoft Azure teslim alma hizmetini* ve hizmet isteği numarasını bildirerek `microsoft@rocketparcel.com` adresine e-posta gönderin.
-    3. Teslim alma için kurye gönderilmezse alternatif planlamalar için *Quantium Solutions International*’ı arayın.
+3. Bu adımı yalnızca konsinye notunun mevcut olmaması durumunda yapın. Teslim alma istemek için:
+    1. Çalışma saatleri içinde (Pazartesi’den Cuma’ya kadar saat 10.00 - 17.00 arası) 070-8231-1418 numaralı telefondan *Quantium Solutions International* bilgi hattını arayın. Teslim alma planlamak için *Microsoft Azure teslim alma hizmetini* ve hizmet isteği numarasını bildirin. Teslim alma için yeni bir sevk mektubuna ihtiyaç duyduğunuzu belirtin. Gönderici (müşteri), alıcı (Azure veri merkezi) bilgilerini ve referans numarasını (hizmet isteği numarası) sağlayın.
+    2. Yardım hattı meşgul ise, e-posta [microsoft@rocketparcel.com](mailto:microsoft@rocketparcel.com) konusu *Microsoft Azure toplama* ve hizmet isteği numarası başvuru olarak e-posta.
+    3. Courier koleksiyona ulaşmazsa, diğer düzenlemeler için *Quantium çözümlerini Uluslararası* yardım hattını çağırın.
     4. İstek telefon aracılığıyla yapıldıysa sözlü teyit alırsınız.
 
 ### <a name="singapore"></a>[Singapur](#tab/in-singapore)
@@ -152,7 +152,7 @@ Gerekirse, aşağıdaki bilgilerden Quantium Solutions Desteği (Japonca) ile il
    > * 15:00’ten önce, teslim alma sonraki iş gününde 09:00 ile 13:00 arasında gerçekleştirilir.
    > * 15:00’ten sonra, teslim alma sonraki iş gününde 14:00 ile 18:00 arasında gerçekleştirilir.
 
-   Herhangi bir sorunla karşılaşırsanız, adbo@microsoft.com üzerinden Data Box İşlemleri Asya’ya ulaşın. Konu başlığında iş adını ve karşılaşılan sorunu sağlayın.
+   Herhangi bir sorun yaşıyorsanız, Data Box Operations Asya ile görüşün [adbo@microsoft.com](mailto:adbo@microsoft.com) . Konu başlığında iş adını ve karşılaşılan sorunu sağlayın.
 
 3. Paketi kuryeye teslim edin.
 
@@ -185,7 +185,7 @@ Cihazı Güney Afrika’da iade ediyorsanız aşağıdaki adımları uygulayın.
 
     * İsterseniz paketi en yakın DHL hizmet noktasına da bırakabilirsiniz.
 
-5. Herhangi bir sorunla karşılaşırsanız [Priority.Support@dhl.com](mailto:Priority.Support@dhl.com) adresine karşılaştığınız sorunun ayrıntılarını içeren bir e-posta gönderin ve Konu: satırına irsaliye numarasını ekleyin. +27(0)119213902 numaralı telefonu da arayabilirsiniz.
+5. Herhangi bir sorunla karşılaşırsanız bununla ilgili ayrıntıları [Priority.Support@dhl.com](mailto:Priority.Support@dhl.com) adresine e-posta ile gönderin ve konşimento numarasını Konu: satırına yazın. +27(0)119213902 numaralı telefonu da arayabilirsiniz.
 
 ### <a name="china"></a>[Çin](#tab/in-china)
 
@@ -205,7 +205,7 @@ Cihazı Çin'de iade ediyorsanız aşağıdaki adımları uygulayın.
 
 3. Teslim alma rezervasyonu tamamlandıktan sonra FedEx'ten bir e-posta onayı alırsınız.  
 
-4. Herhangi bir sorunla karşılaşırsanız, [DL-DC-SHA@oe.21vianet.com](mailto:DL-DC-SHA@oe.21vianet.com) adresine bu sorunun ayrıntılarını içeren ve konu satırında sipariş adının bulunduğu bir e-posta gönderin.
+4. Herhangi bir sorunla karşılaşırsanız, sorunların ayrıntıları ile e-posta gönderin [DL-DC-SHA@oe.21vianet.com](mailto:DL-DC-SHA@oe.21vianet.com) ve sipariş adını konuya: satırına koyun.
 
 #### <a name="premier-customer-care-contact-information"></a>Premier Müşteri Hizmetleri iletişim bilgileri
 
@@ -229,20 +229,20 @@ Cihazı Çin'de iade ediyorsanız aşağıdaki adımları uygulayın.
 
 ### <a name="self-managed"></a>[Kullanıcı Yönetimli](#tab/in-selfmanaged)
 
-US Government, Japonya, Singapur, Güney Kore, Batı Avrupa, Güney Afrika veya Hindistan’da Data Box Disk kullanıyorsanız ve sipariş oluşturma sırasında otomatik gönderim seçeneğini belirlediyseniz bu yönergeleri izleyin.
+ABD Kamu, Japonya, Singapur, Kore, Birleşik Krallık, Batı Avrupa, Avustralya, Güney Afrika veya Hindistan 'da Data Box Disk kullanıyorsanız ve sipariş oluşturma sırasında kendi kendine yönetilen sevkiyat seçeneğini belirlediyseniz, bu yönergeleri izleyin.
 
 1. Azure portalında siparişinizin **Genel Bakış** dikey penceresine gidin. **Teslim almayı zamanla** seçeneğini belirlediğinizde gösterilen yönergeleri izleyin. Siparişi teslim etme sırasında kullanılacak Yetkilendirme kodunu görmeniz gerekir.
 
-2. Cihazı iade etmeye hazırsanız aşağıdaki şablonu kullanarak Azure Data Box Operasyon ekibine bir e-posta gönderin.
+2. Cihazı döndürmeye hazırsanız aşağıdaki şablonu kullanarak Azure Data Box Işlemler ekibine bir e-posta gönderin.
 
     ```
     To: adbops@microsoft.com
     Subject: Request for Azure Data Box Disk drop-off for order: 'orderName'
     Body:
      a. Order name
-     b. Contact name of the person dropping off. You will need to display a Government approved ID during the drop off.
+     b. Contact name of the person dropping off. You will need to display a Government approved ID during the drop-off.
     ```
-3. Azure Data Box Operasyon ekibi Azure Veri Merkezi’ne teslim etme planlaması yapmak üzere sizinle çalışacaktır.
+3. Azure Data Box Işlemler ekibi, Azure veri merkezinde açılan pencereyi düzenlemek için sizinle birlikte çalışır.
 
 ---
 
@@ -256,7 +256,7 @@ Bu öğreticide aşağıdaki Azure Data Box Disk konularını öğrendiniz:
 >
 > * Data Box Disk'i Microsoft'a gönderme
 
-Data Box Disk’ten Azure Depolama hesabına yapılan veri yüklemesini doğrulamayı öğrenmek için sonraki nasıl yapılır kılavuzuna geçin.
+Data Box Disk 'den Azure depolama hesabına veri yükleme işleminin nasıl doğrulanalınacağını öğrenmek için bir sonraki nasıl yapılır ile ilerleyin.
 
 > [!div class="nextstepaction"]
 > [Azure Data Box Disk’ten veri yüklemesini doğrulama](./data-box-disk-deploy-upload-verify.md)

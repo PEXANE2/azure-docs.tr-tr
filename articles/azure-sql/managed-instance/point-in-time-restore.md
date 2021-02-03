@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, mathoma
 ms.date: 08/25/2019
-ms.openlocfilehash: 31be497d017cb60de6f46d7657889c9c1fabef4a
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: d3414cb31192211c1663a84e1541f56b63674660
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92788358"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99525407"
 ---
 # <a name="restore-a-database-in-azure-sql-managed-instance-to-a-previous-point-in-time"></a>Azure SQL yönetilen örneğindeki bir veritabanını önceki bir zaman noktasına geri yükleme
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -46,9 +46,9 @@ Aşağıdaki tabloda, SQL yönetilen örneği için zaman içinde geri yükleme 
 
 |           |Mevcut VERITABANıNı SQL yönetilen örneği 'nin aynı örneğine geri yükleme| Var olan VERITABANıNı başka bir SQL yönetilen örneğine geri yükleme|Bırakılan DB 'yi aynı SQL yönetilen örneğine geri yükleme|Bırakılan VERITABANıNı başka bir SQL yönetilen örneğine geri yükleme|
 |:----------|:----------|:----------|:----------|:----------|
-|**Azure Portal**| Evet|Hayır |Evet|Hayır|
-|**Azure CLI**|Evet |Evet |Hayır|Hayır|
-|**PowerShell**| Evet|Evet |Evet|Evet|
+|**Azure portalı**| Yes|Hayır |Yes|Hayır|
+|**Azure CLI**|Yes |Yes |Hayır|Hayır|
+|**PowerShell**| Yes|Yes |Yes|Yes|
 
 ## <a name="restore-an-existing-database"></a>Var olan bir veritabanını geri yükleme
 
@@ -56,7 +56,7 @@ Azure portal, PowerShell veya Azure CLı kullanarak mevcut bir veritabanını ay
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın. 
+1. [Azure portalında](https://portal.azure.com) oturum açın. 
 2. SQL yönetilen örneğinize gidin ve geri yüklemek istediğiniz veritabanını seçin.
 3. Veritabanı sayfasında **geri yükle** ' yi seçin:
 
@@ -139,7 +139,7 @@ Silinen bir veritabanının geri yüklenmesi, PowerShell veya Azure portal kulla
 ### <a name="portal"></a>Portal 
 
 
-Azure portal kullanarak yönetilen bir veritabanını kurtarmak için SQL yönetilen örnek genel bakış sayfasını açın ve **silinen veritabanları** ' nı seçin. Geri yüklemek istediğiniz silinmiş bir veritabanını seçin ve yedeklemeden geri yüklenen verilerle oluşturulacak yeni veritabanının adını yazın.
+Azure portal kullanarak yönetilen bir veritabanını kurtarmak için SQL yönetilen örnek genel bakış sayfasını açın ve **silinen veritabanları**' nı seçin. Geri yüklemek istediğiniz silinmiş bir veritabanını seçin ve yedeklemeden geri yüklenen verilerle oluşturulacak yeni veritabanının adını yazın.
 
   ![Silinen Azure SQL örneği veritabanını geri yükleme ekran görüntüsü](./media/point-in-time-restore/restore-deleted-sql-managed-instance-annotated.png)
 
@@ -162,7 +162,7 @@ $targetDatabaseName = "<target database name>"
 $deletedDatabase = Get-AzSqlDeletedInstanceDatabaseBackup -ResourceGroupName $resourceGroupName `
 -InstanceName $managedInstanceName -DatabaseName $deletedDatabaseName
 
-Restore-AzSqlinstanceDatabase -Name $deletedDatabase.Name `
+Restore-AzSqlinstanceDatabase -FromPointInTimeBackup -Name $deletedDatabase.Name `
    -InstanceName $deletedDatabase.ManagedInstanceName `
    -ResourceGroupName $deletedDatabase.ResourceGroupName `
    -DeletionDate $deletedDatabase.DeletionDate `
@@ -176,7 +176,7 @@ Veritabanını başka bir SQL yönetilen örneğine geri yüklemek için, hedef 
 $targetResourceGroupName = "<Resource group of target SQL Managed Instance>"
 $targetInstanceName = "<Target SQL Managed Instance name>"
 
-Restore-AzSqlinstanceDatabase -Name $deletedDatabase.Name `
+Restore-AzSqlinstanceDatabase -FromPointInTimeBackup -Name $deletedDatabase.Name `
    -InstanceName $deletedDatabase.ManagedInstanceName `
    -ResourceGroupName $deletedDatabase.ResourceGroupName `
    -DeletionDate $deletedDatabase.DeletionDate `
@@ -211,7 +211,7 @@ SQL yönetilen örneğindeki veritabanınıza bağlanmak için aşağıdaki yön
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-Azure portal, SQL yönetilen örneğinden veritabanını seçin ve **Sil** ' i seçin.
+Azure portal, SQL yönetilen örneğinden veritabanını seçin ve **Sil**' i seçin.
 
    ![Azure portal kullanarak bir veritabanını silme](./media/point-in-time-restore/delete-database-from-mi.png)
 

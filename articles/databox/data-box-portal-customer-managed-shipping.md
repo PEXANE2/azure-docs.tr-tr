@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: how-to
-ms.date: 08/12/2020
+ms.date: 02/02/2021
 ms.author: alkohli
-ms.openlocfilehash: 9643e62f085888808b95698d068c5e383fb8d539
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 07529b18191c71776a9a36edbfa4cfd8ded5af4f
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94337976"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99524558"
 ---
 # <a name="use-self-managed-shipping-for-azure-data-box-in-the-azure-portal"></a>Azure portal Azure Data Box için kendi kendine yönetilen dağıtımı kullanın
 
@@ -24,30 +24,32 @@ Bu makalede, bir Azure Data Box cihazının sıralaması, çekilmesi ve kapatıl
 [Azure Data Box sipariş](data-box-deploy-ordered.md)ettiğinizde kendi kendine yönetilen sevkıyat bir seçenek olarak kullanılabilir. Otomatik olarak yönetilen kargo yalnızca aşağıdaki bölgelerde kullanılabilir:
 
 * ABD Kamu
+* Birleşik Krallık
 * Batı Avrupa
 * Japonya
 * Singapur
 * Güney Kore
 * Hindistan
 * Güney Afrika
+* Avustralya
 
 ## <a name="use-self-managed-shipping"></a>Otomatik gönderimi kullanma
 
 Data Box bir sıra yerleştirdiğinizde, kendi kendine yönetilen teslimat seçeneğini belirleyebilirsiniz.
 
-1. Azure Data Box sırasında, **kişi ayrıntıları** altında **+ Sevkiyat Adresi Ekle** ' yi seçin.
+1. Azure Data Box sırasında, **kişi ayrıntıları** altında **+ Sevkiyat Adresi Ekle**' yi seçin.
  
    ![Kendi kendine yönetilen kargo, sevkiyat adresi ekleme](media\data-box-portal-customer-managed-shipping\choose-self-managed-shipping-1.png)
 
 2. Bir sevkiyat türü seçerken, **kendi kendine yönetilen sevkiyat** seçeneğini belirleyin. Bu seçenek yalnızca, Önkoşullar bölümünde açıklandığı gibi desteklenen bir bölgedeyse kullanılabilir.
 
-3. Sevkiyat adresinizi girdikten sonra doğrulamanız ve siparişinizi doldurmanız gerekir.
+3. Sevkiyat adresinizi sağlamadıktan sonra doğrulamanız ve siparişinizi doldurmanız gerekir.
 
    ![Otomatik olarak yönetilen sevkıyat, adresi doğrulama ve ekleme](media\data-box-portal-customer-managed-shipping\choose-self-managed-shipping-2.png)
 
 4. Cihaz hazırlandıktan ve BT için bir e-posta bildirimi aldıktan sonra, bir toplama zamanlayabilirsiniz.
 
-   Azure Data Box sırada **genel bakış** ' a gidin ve ardından **çekme zamanlaması** ' nı seçin.
+   Azure Data Box sırada **genel bakış** ' a gidin ve ardından **çekme zamanlaması**' nı seçin.
 
    ![Data Box sırası, zamanlama alma seçeneği](media\data-box-portal-customer-managed-shipping\data-box-portal-schedule-pickup-01.png)
 
@@ -57,11 +59,11 @@ Data Box bir sıra yerleştirdiğinizde, kendi kendine yönetilen teslimat seçe
 
    ![Azure yönergeleri için çekme zamanlaması](media\data-box-portal-customer-managed-shipping\data-box-portal-schedule-pickup-email-01.png)
 
-6. Cihaz toplama 'yı zamanladıktan sonra, cihaz yetkilendirme kodunuzu **Azure Için zamanlama çekme planı** bölmesinde görüntüleyebilirsiniz.
+6. Cihaz piara hesabınızı zamanladıktan sonra, cihaz yetkilendirme kodunuzu **Azure Için zamanlama alma** bölmesinde görüntüleyebilirsiniz.
 
    ![Cihaz yetkilendirme kodunuzu görüntüleme](media\data-box-portal-customer-managed-shipping\data-box-portal-auth-01b.png)
 
-   Bu **Yetkilendirme kodunu** bir yere getirin. Güvenlik gereksinimlerine göre, zamanlama alma sırasında, çekme için ulaşan kişinin adının sağlanması gerekir...
+   Bu **Yetkilendirme kodunu** bir yere getirin. Her güvenlik gereksinimi için, planlama sırasında çekme sırasında, çekme için ulaşan kişinin adını sunmak gerekir.
 
    Ayrıca, toplama için veri merkezine kimlerin gönderileceğini de öğreneceksiniz. Siz veya iletişim noktası, veri merkezinde doğrulanacak bir kamu onaylı fotoğraf KIMLIĞI içermelidir.
 
@@ -73,7 +75,7 @@ Data Box bir sıra yerleştirdiğinizde, kendi kendine yönetilen teslimat seçe
 
 8. Cihaz çekildikten sonra, sitenizdeki Data Box verileri kopyalayın. Veri kopyalama işlemi tamamlandıktan sonra, Data Box göndermeye hazırlanabilirsiniz. Daha fazla bilgi için bkz. [göndermeye hazırlama](data-box-deploy-picked-up.md#prepare-to-ship).
 
-   **Göndermeye hazırlama** adımının kritik bir hata olmadan tamamlaması gerekir, aksi takdirde, gerekli düzeltmeleri yaptıktan sonra bu adımı yeniden çalıştırmanız gerekir. Gönderimi hazırlama işlemi başarıyla tamamlandıktan sonra, cihazın yerel kullanıcı arabirimindeki bırakma için yetkilendirme kodu görüntüleyebilirsiniz.
+   **Göndermeye hazırlama** adımının herhangi bir kritik hata olmadan tamamlaması gerekir. Aksi takdirde, gerekli düzeltmeleri yaptıktan sonra bu adımı yeniden çalıştırmanız gerekir. **Göndermeye hazırlama** adımı başarıyla tamamlandıktan sonra, cihaz yerel kullanıcı arabirimindeki bırakma için yetkilendirme kodunu görüntüleyebilirsiniz.
 
    > [!NOTE]
    > Yetkilendirme kodunu e-posta üzerinden paylaşmayın. Bu, yalnızca bırakma sırasında veri merkezinde doğrulanmalıdır.
@@ -82,7 +84,7 @@ Data Box bir sıra yerleştirdiğinizde, kendi kendine yönetilen teslimat seçe
 
    ![Cihaz bırakma yönergeleri](media\data-box-portal-customer-managed-shipping\data-box-portal-received-complete-02b.png)
 
-10. KIMLIĞINIZ ve yetkilendirme kodunuz doğrulandıktan ve cihazı veri merkezinde devre dışı bıraktığınız zaman, sipariş durumunun **alınması** gerekir.
+10. KIMLIĞINIZ ve yetkilendirme kodunuz doğrulandıktan ve cihazı veri merkezinde devre dışı bıraktığınız zaman, sipariş durumu **alınmalıdır**.
 
     ![Alındı durumuna sahip bir sıra](media\data-box-portal-customer-managed-shipping\data-box-portal-received-complete-01.png)
 

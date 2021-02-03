@@ -1,27 +1,27 @@
 ---
-title: Bir kapsayıcı veya blob için Kullanıcı temsili SAS oluşturmak için .NET kullanın
+title: Bir kapsayıcı, dizin veya blob için Kullanıcı temsili SAS oluşturmak için .NET kullanın
 titleSuffix: Azure Storage
 description: Azure depolama için .NET istemci kitaplığı 'nı kullanarak Azure Active Directory kimlik bilgileriyle Kullanıcı temsili SAS oluşturmayı öğrenin.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/13/2021
+ms.date: 02/03/2021
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: blobs
-ms.openlocfilehash: 512b949fceda850e968a6f97b3788ae3a602f56d
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 13491735f73cb1696f3c36f3434cc781a1e2b739
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98199266"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526814"
 ---
-# <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-net"></a>.NET ile bir kapsayıcı veya blob için Kullanıcı temsili SAS oluşturma
+# <a name="create-a-user-delegation-sas-for-a-container-directory-or-blob-with-net"></a>.NET ile bir kapsayıcı, dizin veya blob için Kullanıcı temsili SAS oluşturma
 
 [!INCLUDE [storage-auth-sas-intro-include](../../../includes/storage-auth-sas-intro-include.md)]
 
-Bu makalede, .NET için Azure depolama istemci kitaplığı ile bir kapsayıcı veya blob için Kullanıcı temsili SAS oluşturmak üzere Azure Active Directory (Azure AD) kimlik bilgilerinin nasıl kullanılacağı gösterilmektedir.
+Bu makalede, .NET için Azure depolama istemci kitaplığı ile bir kapsayıcı, dizin veya blob için Kullanıcı temsili SAS oluşturmak üzere Azure Active Directory (Azure AD) kimlik bilgilerinin nasıl kullanılacağı gösterilmektedir.
 
 [!INCLUDE [storage-auth-user-delegation-include](../../../includes/storage-auth-user-delegation-include.md)]
 
@@ -99,7 +99,7 @@ Aşağıdaki örnek, bir önceki örnekte oluşturulan kullanıcı temsili SAS '
 
 ## <a name="get-a-user-delegation-sas-for-a-directory"></a>Bir dizin için Kullanıcı temsili SAS alın
 
-Aşağıdaki kod örneği, hiyerarşik bir ad alanı etkinleştirildiğinde bir dizin için Kullanıcı temsili SAS oluşturmayı gösterir:
+Aşağıdaki kod örneğinde, depolama hesabı için hiyerarşik bir ad alanı etkinleştirildiğinde bir dizin için Kullanıcı temsili SAS oluşturma işlemi gösterilmektedir:
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Sas.cs" id="Snippet_GetUserDelegationSasDirectory":::
 

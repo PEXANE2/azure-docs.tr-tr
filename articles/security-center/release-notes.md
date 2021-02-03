@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/27/2021
+ms.date: 02/03/2021
 ms.author: memildin
-ms.openlocfilehash: 5dd58dd5f43481184b17ca4bdd694a1df76697db
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: cdc29f89307a986b2d71604ca495eac45458632b
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98916479"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526628"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure Güvenlik Merkezi 'ndeki yenilikler nelerdir?
 
@@ -29,6 +29,49 @@ Güvenlik Merkezi 'ne yakında çıkacak *planlı* değişiklikler hakkında bil
 
 > [!TIP]
 > Altı aydan eski olan öğeleri arıyorsanız, [Azure Güvenlik Merkezi 'ndeki yenilikler Için arşivde](release-notes-archive.md)bulabilirsiniz.
+
+
+## <a name="february-2021"></a>Şubat 2021
+
+Şubat 'taki güncelleştirmeler şunları içerir:
+
+- [Kubernetes iş yükü koruma önerileri genel kullanıma sunuldu (GA)](#kubernetes-workload-protection-recommendations-released-for-general-availability-ga)
+- [Öneri ayrıntıları sayfasından ilkeye doğrudan bağlantı](#direct-link-to-policy-from-recommendation-details-page)
+- [SQL veri sınıflandırması önerisi artık güvenli puanınızı etkilemiyor](#sql-data-classification-recommendation-no-longer-affect-your-secure-score)
+
+### <a name="kubernetes-workload-protection-recommendations-released-for-general-availability-ga"></a>Kubernetes iş yükü koruma önerileri genel kullanıma sunuldu (GA)
+
+Kubernetes iş yükü korumaları için öneri kümesinin genel kullanılabilirliğini (GA) duyurmaktan mutluluk duyuyoruz.
+
+Kubernetes iş yüklerinin varsayılan olarak güvenli olduğundan emin olmak için, güvenlik merkezi Kubernetes giriş denetimi ile zorlama seçenekleri dahil olmak üzere Kubernetes düzeyi sağlamlaştırma önerilerini ekledi.
+
+Kubernetes için Azure Ilke eklentisi, Azure Kubernetes Service (AKS) kümenize yüklendiğinde, Kubernetes API sunucusuna gönderilen her istek, kümede kalıcı hale gelmeden önce 13 güvenlik önerisi olarak görüntülenen, önceden tanımlanmış en iyi uygulamalar kümesine göre izlenir. Daha sonra, en iyi uygulamaları zorlamak ve gelecekteki iş yükleri için bunları zorunlu kılmak üzere yapılandırabilirsiniz.
+
+Örneğin, ayrıcalıklı kapsayıcıların oluşturulmaması ve ileride yapılacak istekleri engellenemeyeceksiniz.
+
+[Kubernetes giriş denetimini kullanan Iş yükü koruma en iyi uygulamaları](container-security.md#workload-protection-best-practices-using-kubernetes-admission-control)hakkında daha fazla bilgi edinin.
+
+> [!NOTE]
+> Öneriler önizlemede olduğundan, AKS küme kaynağını sağlıksız bir şekilde işlemedik ve güvenli puanınızın hesaplamalarına dahil etmiyordu. Bu GA duyurusu ile bunlar puan hesaplamasına dahil edilir. Zaten düzeltilmediyse, bu durum güvenli puanınızda küçük bir etkiye neden olur. [Azure Güvenlik Merkezi 'ndeki önerileri](security-center-remediate-recommendations.md)düzeltme bölümünde açıklandığı gibi, mümkün olan yerlerde bunları düzeltin.
+
+
+### <a name="direct-link-to-policy-from-recommendation-details-page"></a>Öneri ayrıntıları sayfasından ilkeye doğrudan bağlantı
+
+Bir önerinin ayrıntılarını gözden geçirirken genellikle temel alınan ilkeyi görmeniz yararlı olur. Bir ilke tarafından desteklenen her öneri için, öneri ayrıntıları sayfasından yeni bir bağlantı vardır:
+
+:::image type="content" source="media/release-notes/view-policy-definition.png" alt-text="Öneriyi destekleyen belirli bir ilke için Azure Ilke sayfasına bağlantı":::
+
+İlke tanımını görüntülemek ve değerlendirme mantığını gözden geçirmek için bu bağlantıyı kullanın. 
+
+[Güvenlik önerileri başvuru kılavuzumuzdaki](recommendations-reference.md)önerilerin listesini gözden geçiriyorsunuz, Ayrıca bu bağlantıları ilke tanımı sayfalarına da görürsünüz:
+
+:::image type="content" source="media/release-notes/view-policy-definition-from-documentation.png" alt-text="Belirli bir ilke için Azure Ilke sayfasına doğrudan Azure Güvenlik Merkezi öneriler başvuru sayfasından erişme":::
+
+
+### <a name="sql-data-classification-recommendation-no-longer-affect-your-secure-score"></a>SQL veri sınıflandırması önerisi artık güvenli puanınızı etkilemiyor
+
+**SQL veritabanlarınızdaki önerinin hassas verileri** , artık güvenli puanınızı etkilememelidir. Bu, denetim artık 0 ' ın güvenli bir puan değerine sahip olması için **veri sınıflandırması** güvenlik denetimindeki tek öneriden oluşur.
+
 
 
 ## <a name="january-2021"></a>Ocak 2021
@@ -102,9 +145,12 @@ Güvenli puan sayfası artık abonelik düzeyine ek olarak yönetim gruplarını
 
 ### <a name="secure-score-api-is-released-for-general-availability-ga"></a>Güvenli puan API 'SI genel kullanıma sunuldu (GA)
 
-Artık puanınızı [güvenli Puanlama API 'si](/rest/api/securitycenter/securescores/)aracılığıyla erişebilirsiniz. API yöntemleri, verileri sorgulama ve zaman içinde güvenli Puanlarınızın kendi raporlama mekanizmanızı oluşturma esnekliğini sağlar. Örneğin, belirli bir aboneliğin Puanını almak için **güvenli puanlar** API 'sini kullanabilirsiniz. Ayrıca, güvenlik denetimlerini ve aboneliklerinizin geçerli Puanını listelemek için **güvenli puan denetimleri** API 'sini de kullanabilirsiniz.
+Artık puanınızı [güvenli Puanlama API 'si](/rest/api/securitycenter/securescores/)aracılığıyla erişebilirsiniz. API yöntemleri, verileri sorgulama ve zaman içinde güvenli Puanlarınızın kendi raporlama mekanizmanızı oluşturma esnekliğini sağlar. Örneğin:
 
-Güvenli Puanlama API 'SI ile mümkün olan dış araçların örnekleri için [GitHub topluluğumuzın güvenli Puanlama alanına](https://github.com/Azure/Azure-Security-Center/tree/master/Secure%20Score)bakın.
+- belirli bir aboneliğin Puanını almak için **güvenli puanlar** API 'sini kullanma
+- güvenlik denetimlerini ve aboneliklerinizin geçerli Puanını listelemek için **güvenli puan denetimleri** API 'sini kullanın
+
+[GitHub Community 'nin güvenli Puanlama alanındaki](https://github.com/Azure/Azure-Security-Center/tree/master/Secure%20Score)güvenli Puanlama API 'si ile mümkün kılınan dış araçlar hakkında bilgi edinin.
 
 [Azure Güvenlik Merkezi 'nde güvenli puan ve güvenlik denetimleri](secure-score-security-controls.md)hakkında daha fazla bilgi edinin.
 
@@ -156,7 +202,7 @@ Daha fazlasını öğrenin:
 
 Tüm önerilerin dahil olduğu istisna özelliğini genişletiyoruz. Güvenlik Merkezi 'nin abonelikleriniz, yönetim grubunuz veya kaynaklarınız için yaptığı güvenlik önerilerini hassas bir şekilde ayarlamaya yönelik daha fazla seçenek sağlar.
 
-Bazen, sorunu Güvenlik Merkezi 'nin algıladığı üçüncü taraf bir araçla çözeceğinizde, bir kaynak sağlıksız olarak listelenecektir. Ya da bir öneri, ait olmadığı yerde bir kapsamda gösterilecektir. Öneri, belirli bir abonelik için uygun olmayabilir. Ya da kuruluşunuz yalnızca belirli kaynakla veya öneriyle ilgili riskleri kabul etmeye karar verdi.
+Bazen, sorunu Güvenlik Merkezi 'nin algıladığı üçüncü taraf bir araçla çözeceğinizde, bir kaynak sağlıksız olarak listelenecektir. Ya da bir öneri, ait olmadığı yerde bir kapsamda gösterilecektir. Öneri, belirli bir abonelik için uygun olmayabilir. Ya da kuruluşunuz, belirli kaynakla veya öneriyle ilgili riskleri kabul etmeye karar verdi.
 
 Bu önizleme özelliğiyle artık öneri için bir istisna oluşturabilirsiniz:
 
@@ -347,7 +393,7 @@ Azure Güvenlik Merkezi 'ndeki envanter sayfası aşağıdaki değişikliklerle 
 - Araç çubuğuna **Kılavuzlar ve geri bildirimler** eklendi. Bu, ilgili bilgi ve araçların bağlantılarını içeren bir bölme açar. 
 - Kaynaklarınız için kullanılabilen varsayılan filtrelere **Abonelik filtresi** eklendi.
 - Geçerli filtre seçeneklerini bir Azure Kaynak Grafiği sorgusu olarak **açmak için sorgu bağlantısını açın** (eski adıyla "kaynak grafik Gezgininde görünüm" olarak adlandırılır).
-- Her filtrenin **işleç seçenekleri** . Artık ' = ' dışında ek mantıksal işleçler arasından seçim yapabilirsiniz. Örneğin, başlıkları ' Encrypt ' dizesini içeren etkin önerilere sahip tüm kaynakları bulmak isteyebilirsiniz. 
+- Her filtrenin **işleç seçenekleri** . Artık ' = ' dışında daha fazla mantıksal işleç arasından seçim yapabilirsiniz. Örneğin, başlıkları ' Encrypt ' dizesini içeren etkin önerilere sahip tüm kaynakları bulmak isteyebilirsiniz. 
 
     :::image type="content" source="media/release-notes/inventory-filter-operators.png" alt-text="Varlık envanterinin filtrelerinde operatör seçeneğinin denetimleri":::
 
@@ -358,7 +404,7 @@ Envanter hakkında daha fazla bilgi edinmek için [varlık envanteriyle kaynakla
 
 "Web Apps tüm gelen istekler için bir SSL sertifikası istemelidir" önerisi güvenlik denetiminden, en **iyi güvenlik uygulamalarını** (yani, hiçbir noktaya değer olmaksızın) uygulama **erişimi ve izinleri yönetme** (en fazla 4 Pts değeri). 
 
-Web uygulamalarınızın bir sertifika istemesini sağlamak, bunları kesinlikle daha güvenli hale getirir. Ancak, herkese açık Web uygulamaları için önemli değildir. Sitenize HTTPS değil, HTTP üzerinden eriştiğinizde hiçbir istemci sertifikası almazsınız. Bu nedenle, uygulamanız için istemci sertifikaları gerekiyorsa, HTTP üzerinden uygulamanıza yönelik isteklere izin vermeniz gerekir. [Azure App Service IÇIN TLS karşılıklı kimlik doğrulamasını yapılandırma](../app-service/app-service-web-configure-tls-mutual-auth.md)bölümünde daha fazla bilgi edinin.
+Bir Web uygulamasının bir sertifikayı talep etmelerini sağlamak, bunu kesinlikle daha güvenli hale getirir. Ancak, herkese açık Web uygulamaları için önemli değildir. Sitenize HTTPS değil, HTTP üzerinden eriştiğinizde hiçbir istemci sertifikası almazsınız. Bu nedenle, uygulamanız için istemci sertifikaları gerekiyorsa, HTTP üzerinden uygulamanıza yönelik isteklere izin vermeniz gerekir. [Azure App Service IÇIN TLS karşılıklı kimlik doğrulamasını yapılandırma](../app-service/app-service-web-configure-tls-mutual-auth.md)bölümünde daha fazla bilgi edinin.
 
 Bu değişiklik ile, öneri artık puanınızı etkilemeyecek önerilen en iyi uygulamadır. 
 
@@ -371,7 +417,7 @@ Azure Güvenlik Merkezi, tüm bağlı kaynakları izler ve güvenlik önerileri 
 
 Güvenlik Merkezi, kapsamını ve özelliklerini genişletmeye devam ettiğinden, güvenlik önerilerinin listesi her ay büyüyordur. Örneğin, [Azure Güvenlik kıyaslamasının kapsamını artırmak için bkz. 29 Preview önerileri eklendi](#29-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark).
 
-Büyüyen liste ile en fazla ilgilendiğiniz önerilere filtre uygulamanız gerekir. Kasım ayında öneriler sayfasına filtreler ekledik (bkz. [öneriler listesi şimdi filtreler içeriyor](#recommendations-list-now-includes-filters)).
+Büyüyen liste ile, en fazla ilgilendiğiniz olanları bulmak için önerileri filtrelemeniz gerekir. Kasım ayında öneriler sayfasına filtreler ekledik (bkz. [öneriler listesi şimdi filtreler içeriyor](#recommendations-list-now-includes-filters)).
 
 Bu ay eklenen filtreler şunlara göre öneriler listesini iyileştirmek için seçenekler sağlar:
 
@@ -423,7 +469,7 @@ Kasım 'daki güncelleştirmeler şunlardır:
 
 ### <a name="29-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark"></a>Azure Güvenlik kıyaslamasının kapsamını artırmak için 29 önizleme önerileri eklenmiştir
 
-Azure Güvenlik kıyaslaması, yaygın uyumluluk çerçevelerine göre güvenlik ve uyum en iyi uygulamaları için Microsoft tarafından yazılan, Azure 'a özgü bir dizi kılavuzlardır. [Azure Güvenlik Karşılaştırması hakkında daha fazla bilgi edinin](../security/benchmarks/introduction.md).
+Azure Güvenlik kıyaslaması, yaygın uyumluluk çerçevelerine dayalı olarak güvenlik ve uyumluluk en iyi uygulamaları için Microsoft tarafından yazılan, Azure 'a özgü bir dizi kılavuzlardır. [Azure Güvenlik Karşılaştırması hakkında daha fazla bilgi edinin](../security/benchmarks/introduction.md).
 
 Bu kıyaslama kapsamını artırmak için Güvenlik Merkezi 'ne aşağıdaki 29 önizleme önerileri eklenmiştir.
 
@@ -475,7 +521,7 @@ Artık güvenlik önerileri listesini bir dizi ölçüte göre filtreleyebilirsi
 
 Otomatik sağlama özelliği, güvenlik merkezi 'nin korumalarının avantajlarından faydalanabilmesi için gerekli uzantıları yeni ve mevcut Azure VM 'lerine yükleyerek yönetim yükünü azaltmaya yardımcı olur. 
 
-Azure Güvenlik Merkezi arttıkça, daha fazla uzantı geliştirilmiştir ve Güvenlik Merkezi, kaynak türlerinin daha büyük bir listesini izleyebilir. Otomatik sağlama araçları artık Azure Ilkesinin yeteneklerini kullanarak ek uzantıları ve kaynak türlerini destekleyecek şekilde genişletilmiştir.
+Azure Güvenlik Merkezi arttıkça, daha fazla uzantı geliştirilmiştir ve Güvenlik Merkezi, kaynak türlerinin daha büyük bir listesini izleyebilir. Otomatik sağlama araçları artık Azure Ilkesinin yeteneklerini kullanarak diğer uzantıları ve kaynak türlerini destekleyecek şekilde genişletilmiştir.
 
 Artık otomatik sağlamayı yapılandırabilirsiniz:
 
@@ -575,7 +621,7 @@ Bu öneri ve diğer tüm güvenlik merkezi önerileri hakkında daha fazla bilgi
 
 Güvenlik Merkezi 'nin yasal uyumluluk panosu, uyumlu uyumluluk denetimleri ve gereksinimlerini nasıl karşıladığınızı temel alarak uyumlulukla ilgili öngörüler sağlar.
 
-Pano, varsayılan bir mevzuat standartları kümesi içerir. Sağlanan standartlardan herhangi biri kuruluşunuzla ilgili değilse, bu, yalnızca bir abonelik için kullanıcı arabiriminden kaldırmak üzere basit bir işlemdir. Standartlar yalnızca *abonelik* düzeyinde kaldırılabilir; Yönetim grubu kapsamı değil.
+Pano, varsayılan bir mevzuat standartları kümesi içerir. Sağlanan standartlardan herhangi biri kuruluşunuzla ilgili değilse, bir abonelik için kullanıcı arabiriminden kaldırma işlemi artık basit bir işlemdir. Standartlar yalnızca *abonelik* düzeyinde kaldırılabilir; Yönetim grubu kapsamı değil.
 
 [Panonuzdan bir standart kaldırma](update-regulatory-compliance-packages.md#removing-a-standard-from-your-dashboard)hakkında daha fazla bilgi edinin.
 
@@ -699,7 +745,7 @@ Eylül ayında güncelleştirmeler şunları içerir:
 
 ### <a name="security-center-gets-a-new-look"></a>Güvenlik Merkezi yeni bir görünüm alır!
 
-Güvenlik Merkezi 'nin portal sayfaları için yenilenmiş bir kullanıcı arabirimi yayımladık. Yeni sayfalar, güvenli puan, varlık envanteri ve Azure Defender için panoları ve yeni bir genel bakış sayfası içerir.
+Güvenlik Merkezi 'nin portal sayfaları için yenilenmiş bir kullanıcı arabirimi yayımladık. Yeni sayfalar, güvenli puan, varlık envanteri ve Azure Defender için yeni bir genel bakış sayfası ve panolar içerir.
 
 Yeniden tasarlanan genel bakış sayfasında artık güvenli puan, varlık envanteri ve Azure Defender panolarına erişim için bir kutucuk vardır. Ayrıca, mevzuat uyumluluk panosuna bağlanan bir kutucuk vardır.
 
@@ -892,114 +938,3 @@ Ayrıca, **Önizleme** önerileri bir kaynağı "sağlıksız" olarak işlemez.
 Önerilerin ayrıntılar sayfasında artık bir yeniliği aralığı göstergesi (her ne zaman geçerlidir) ve önerinin önem derecesine ilişkin net bir ekran görüntülenir.
 
 :::image type="content" source="./media/release-notes/recommendations-severity-freshness-indicators.png" alt-text="Yeniliği ve önem derecesini gösteren öneri sayfası":::
-
-
-
-## <a name="august-2020"></a>Ağustos 2020
-
-Ağustos ayında güncelleştirmeler şunlardır:
-
-- [Varlık envanteri-varlıklarınızın güvenlik sonrası yeni görünümü](#asset-inventory---powerful-new-view-of-the-security-posture-of-your-assets)
-- [Azure Active Directory güvenlik varsayılanları için destek eklendi (Multi-Factor Authentication için)](#added-support-for-azure-active-directory-security-defaults-for-multi-factor-authentication)
-- [Hizmet sorumlusu önerisi eklendi](#service-principals-recommendation-added)
-- [VM 'lerde güvenlik açığı değerlendirmesi-birleştirilmiş öneriler ve ilkeler](#vulnerability-assessment-on-vms---recommendations-and-policies-consolidated)
-- [ASC_default Initiative 'e eklenen yeni AKS güvenlik ilkeleri – yalnızca özel önizleme müşterileri tarafından kullanılmak üzere](#new-aks-security-policies-added-to-asc_default-initiative--for-use-by-private-preview-customers-only)
-
-
-### <a name="asset-inventory---powerful-new-view-of-the-security-posture-of-your-assets"></a>Varlık envanteri-varlıklarınızın güvenlik sonrası yeni görünümü
-
-Güvenlik Merkezi 'nin varlık Envanteri (Şu anda önizleme aşamasındadır), güvenlik merkezi 'ne bağladığınız kaynakların güvenlik duruşunu görüntülemek için bir yol sağlar.
-
-Güvenlik Merkezi, olası güvenlik açıklarını belirlemek için Azure kaynaklarınızın güvenlik durumunu düzenli olarak analiz eder. Daha sonra bu güvenlik açıklarını nasıl düzeltebileceğiniz konusunda öneriler sağlar. Herhangi bir kaynakta bekleyen öneriler olduğunda, bu değişiklikler envanterde görüntülenir.
-
-Güvenlik sonrası verilerinizi araştırmak ve bulgularınızı temel alarak daha fazla eylem gerçekleştirmek için görünümü ve filtrelerini kullanabilirsiniz.
-
-[Varlık envanteri](asset-inventory.md)hakkında daha fazla bilgi edinin.
-
-
-### <a name="added-support-for-azure-active-directory-security-defaults-for-multi-factor-authentication"></a>Azure Active Directory güvenlik varsayılanları için destek eklendi (Multi-Factor Authentication için)
-
-Güvenlik Merkezi, Microsoft 'un ücretsiz kimlik güvenlik korumalarının [güvenlik Varsayılanları](../active-directory/fundamentals/concept-fundamentals-security-defaults.md)için tam destek ekledi.
-
-Güvenlik Varsayılanları, kuruluşunuzun kimlik ile ilgili ortak saldırılardan savunmak için önceden yapılandırılmış kimlik güvenlik ayarlarını sağlar. Güvenlik Varsayılanları, genel olarak 5.000.000 taneden fazla kiracı koruuyor; 50.000 kiracılar da Güvenlik Merkezi tarafından korunur.
-
-Güvenlik Merkezi artık güvenlik Varsayılanları etkinleştirilmeden bir Azure aboneliğini her belirlediğinde bir güvenlik önerisi sunmaktadır. Bu aşamada, Güvenlik Merkezi, Azure Active Directory (AD) Premium lisansının bir parçası olan koşullu erişimi kullanarak Multi-Factor Authentication 'ı etkinleştirmeyi öneririz. Azure AD Ücretsiz kullanan müşteriler için artık güvenlik varsayılanlarını etkinleştirmenizi öneririz. 
-
-Amacınız, daha fazla müşteriyi MFA ile bulut ortamlarını güvenli hale getirmeye teşvik etmek ve ayrıca, [güvenli puanınızın](secure-score-security-controls.md)en yüksek risklerinden birini hafifletmektir.
-
-[Güvenlik Varsayılanları](../active-directory/fundamentals/concept-fundamentals-security-defaults.md)hakkında daha fazla bilgi edinin.
-
-
-### <a name="service-principals-recommendation-added"></a>Hizmet sorumlusu önerisi eklendi
-
-Güvenlik Merkezi müşterilerinin aboneliklerini yönetmek için yönetim sertifikaları kullanmalarını sağlamak üzere yeni bir öneri eklenmiştir.
-
-Kullanım önerisi, **yönetim sertifikaları yerine aboneliklerinizi korumak Için hizmet sorumlularını** , aboneliklerinizi daha güvenli bir şekilde yönetmek Için hizmet sorumlularını veya Azure Resource Manager kullanmanızı önerir. 
-
-[Azure Active Directory Içindeki uygulama ve hizmet sorumlusu nesneleri](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object)hakkında daha fazla bilgi edinin.
-
-
-### <a name="vulnerability-assessment-on-vms---recommendations-and-policies-consolidated"></a>VM 'lerde güvenlik açığı değerlendirmesi-birleştirilmiş öneriler ve ilkeler
-
-Güvenlik Merkezi, bir güvenlik açığı değerlendirme çözümü çalıştırıp çalıştırmadığını belirlemek için sanal makinelerinizi inceler. Bir güvenlik açığı değerlendirme çözümü bulunmazsa, güvenlik merkezi dağıtımı basitleştirmeye yönelik bir öneri sunar.
-
-Güvenlik açıkları bulunduğunda Güvenlik Merkezi, gerektiğinde araştırmanız ve düzeltilmesi için bulguları özetlemeye yönelik bir öneri sunar.
-
-Kullandıkları tarayıcı türünden bağımsız olarak tüm kullanıcılar için tutarlı bir deneyim sağlamak amacıyla, aşağıdaki iki öneriyle dört öneri sunuyoruz:
-
-|Birleşik öneri|Açıklamayı Değiştir|
-|----|:----|
-|**Sanal makinelerinizde bir güvenlik açığı değerlendirme çözümünün etkinleştirilmesi gerekir**|Aşağıdaki iki öneriyi değiştirir:<br> **•** Sanal makinelerde yerleşik güvenlik açığı değerlendirme çözümünü etkinleştirin (Qualys (artık kullanım dışı) ile desteklenir (Standart katmana dahildir)<br> **•** Güvenlik açığı değerlendirme çözümünün sanal makinelerinizde yüklü olması gerekir (artık kullanım dışı) (Standart ve ücretsiz Katmanlar)|
-|**Sanal makinelerinizdeki güvenlik açıkları düzeltilmelidir**|Aşağıdaki iki öneriyi değiştirir:<br>**•** Sanal makinelerinizde bulunan güvenlik açıklarını düzeltin (Qualys tarafından desteklenir) (artık kullanım dışı)<br>**•** Güvenlik açıkları bir güvenlik açığı değerlendirme çözümü tarafından düzeltilmelidir (artık kullanım dışı)|
-|||
-
-Artık güvenlik merkezi 'nin güvenlik açığı değerlendirmesi uzantısını veya özel olarak lisanslı bir çözümü ("KLG") Qualys veya Rapid7 gibi bir ortaktan dağıtmak için aynı öneriyi kullanacaksınız.
-
-Ayrıca, güvenlik açıkları bulunduğunda ve Güvenlik Merkezi 'ne bildirildiğine göre tek bir öneri, bunları tanımlayan güvenlik açığı değerlendirme çözümüne bakılmaksızın sizi bulgulara bildirir.
-
-#### <a name="updating-dependencies"></a>Bağımlılıklar güncelleştiriliyor
-
-Önceki önerilere veya ilke anahtarlarına/adlara başvuruda bulunan komut dosyalarınız, sorgular veya otomatiklamalar varsa, başvuruları güncelleştirmek için aşağıdaki tabloları kullanın:
-
-##### <a name="before-august-2020"></a>Ağustos 2020 öncesi
-
-|Öneri|Kapsam|
-|----|:----|
-|**Sanal makinelerde yerleşik güvenlik açığı değerlendirme çözümünü etkinleştirin (Qualys tarafından desteklenir)**<br>Anahtar: 550e890b-e652-4d22-8274-60b3bdb24c63|Yerleşik|
-|**Sanal makinelerinizde bulunan güvenlik açıklarını düzeltin (Qualys tarafından desteklenir)**<br>Anahtar: 1195aff-c881-495E-9bc5-1486211ae03f|Yerleşik|
-|**Güvenlik açığı değerlendirme çözümünün sanal makinelerinizde yüklü olması gerekir**<br>Anahtar: 01b1ed4c-B733-4FEE-b145-f23236e70cf3|KLG|
-|**Güvenlik açıkları bir güvenlik açığı değerlendirme çözümü tarafından düzeltilmelidir**<br>Anahtar: 71992a2a-d168-42e0-b10e-6b45fa2ecddb|KLG|
-||||
-
-
-|İlke|Kapsam|
-|----|:----|
-|**Güvenlik açığı değerlendirmesi sanal makinelerde etkinleştirilmelidir**<br>İlke KIMLIĞI: 501541f7-f7e7-4cd6-868C-4190fdad3ac9|Yerleşik|
-|**Güvenlik açıkları bir güvenlik açığı değerlendirme çözümü tarafından düzeltilmelidir**<br>İlke KIMLIĞI: 760a85ff-6162-42b3-8d70-698e268f648c|KLG|
-||||
-
-
-##### <a name="from-august-2020"></a>Ağustos 2020 ' den
-
-|Öneri|Kapsam|
-|----|:----|
-|**Sanal makinelerinizde bir güvenlik açığı değerlendirme çözümünün etkinleştirilmesi gerekir**<br>Anahtar: ffff0522-1e88-47fc-8382-2a80ba848f5d|Yerleşik + KLG|
-|**Sanal makinelerinizdeki güvenlik açıkları düzeltilmelidir**<br>Anahtar: 1195aff-c881-495E-9bc5-1486211ae03f|Yerleşik + KLG|
-||||
-
-|İlke|Kapsam|
-|----|:----|
-|[**Güvenlik açığı değerlendirmesi sanal makinelerde etkinleştirilmelidir**](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f501541f7-f7e7-4cd6-868c-4190fdad3ac9)<br>İlke KIMLIĞI: 501541f7-f7e7-4cd6-868C-4190fdad3ac9 |Yerleşik + KLG|
-||||
-
-
-### <a name="new-aks-security-policies-added-to-asc_default-initiative--for-use-by-private-preview-customers-only"></a>ASC_default Initiative 'e eklenen yeni AKS güvenlik ilkeleri – yalnızca özel önizleme müşterileri tarafından kullanılmak üzere
-
-Kubernetes iş yüklerinin varsayılan olarak güvenli olduğundan emin olmak için, güvenlik merkezi Kubernetes, Kubernetes giriş denetimiyle zorlama seçenekleri de dahil olmak üzere Kubernetes düzey ilkelerini ve sağlamlaştırma
-
-Bu projenin erken aşaması, özel bir önizleme ve ASC_default girişiminin yeni (varsayılan olarak devre dışı) ilkelerinin eklenmesini içerir.
-
-Bu ilkeleri güvenle yoksayabilirsiniz, ortamınızda hiçbir etkisi olmaz. Bunları etkinleştirmek istiyorsanız, önizleme için kaydolun https://aka.ms/SecurityPrP ve aşağıdaki seçeneklerden seçim yapın:
-
-1. **Tek önizleme** – yalnızca bu özel önizlemeye katılacak şekilde. Birleştirmek istediğiniz önizleme olarak "ASC sürekli tarama" yı kesin olarak belirtmeyi unutmayın.
-1. **Devam eden program** – bu ve gelecekteki özel önizlemelere eklenmek üzere. Bir profil ve gizlilik sözleşmesini doldurmanız gerekir.

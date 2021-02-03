@@ -101,6 +101,8 @@
               href: container-registry-access-selected-networks.md
             - name: Hizmet uç noktasını kullanarak erişimi kısıtlama (önizleme)
               href: container-registry-vnet.md
+            - name: Güvenilen hizmetler erişimine izin ver
+              href: allow-access-trusted-services.md
             - name: Müşteri tarafından yönetilen anahtarla şifreleme
               href: container-registry-customer-managed-keys.md
             - name: Güvenlik duvarının arkasından erişme

@@ -110,8 +110,38 @@
       href: cosmosdb-jupyter-notebooks.md
     - name: Hizmet kotaları
       href: concepts-limits.md
-    - name: Kurumsal kullanıma hazırlık - Uyumluluk
-      href: compliance.md
+    - name: Kurumsal kullanıma hazır olma
+      items:
+        - name: Yedekleme ve geri yükleme tanıtımı
+          href: online-backup-and-restore.md
+        - name: Sürekli yedekleme
+          items:
+            - name: Sürekli yedekleme-giriş
+              href: continuous-backup-restore-introduction.md
+            - name: Sürekli yedekleme-SSS
+              href: continuous-backup-restore-frequently-asked-questions.md
+            - name: Sürekli yedekleme-kaynak modeli
+              items:
+                - name: Kaynak modeline genel bakış
+                  href: continuous-backup-restore-resource-model.md
+                - name: Geri yüklenebilen hesaplar-liste
+                  href: restorable-database-accounts-list.md
+                - name: Geri yüklenebilen hesaplar-konuma göre listeleme
+                  href: restorable-database-accounts-list-by-location.md
+                - name: Geri yüklenebilen SQL kaynakları-liste
+                  href: restorable-sql-resources-list.md
+                - name: Geri yüklenebilen SQL veritabanları-liste
+                  href: restorable-sql-databases-list.md
+                - name: Geri yüklenebilen SQL kapsayıcıları-liste
+                  href: restorable-sql-containers-list.md
+                - name: Yeniden yüklenebilen MongoDB kaynakları-liste
+                  href: restorable-mongodb-resources-list.md
+                - name: Yeniden yüklenebilen MongoDB koleksiyonları-liste
+                  href: restorable-mongodb-collections-list.md
+                - name: Yeniden yüklenebilen MongoDB veritabanları-liste
+                  href: restorable-mongodb-databases-list.md
+        - name: Uyumluluk
+          href: compliance.md
     - name: Otomatik öneriler
       href: automated-recommendations.md
 - name: SQL/Core API
@@ -1365,8 +1395,20 @@
           href: how-to-setup-cmk.md
     - name: Kurumsal kullanıma hazır olma
       items:
-        - name: Çevrimiçi yedekleme ve isteğe bağlı geri yükleme
-          href: online-backup-and-restore.md
+        - name: Sürekli yedeklemeyi yönetme
+          items:
+            - name: Sürekli yedekleme-Izinler ve roller
+              href: continuous-backup-restore-permissions.md
+            - name: Sürekli yedekleme-Portal
+              href: continuous-backup-restore-portal.md
+            - name: Sürekli yedekleme-PowerShell
+              href: continuous-backup-restore-powershell.md
+            - name: Sürekli yedekleme-CLı
+              href: continuous-backup-restore-command-line.md
+            - name: Sürekli yedekleme-ARM
+              href: continuous-backup-restore-template.md
+        - name: Düzenli yedeklemeyi Yönet
+          href: configure-periodic-backup-restore.md
         - name: Kota artışı isteme
           href: create-support-request-quota-increase.md
     - name: İzleme

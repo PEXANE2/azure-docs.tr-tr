@@ -8,12 +8,12 @@ author: cpercy737
 ms.author: camper
 ms.date: 11/4/2020
 ms.custom: devx-track-terraform
-ms.openlocfilehash: 989e50ec03dae5d00961d572b70d524a56b3d64c
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.openlocfilehash: 99e1e77a37afbdc1ed54767700574316ed03fae3
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99062248"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99525254"
 ---
 # <a name="commercial-marketplace-partner-and-customer-usage-attribution"></a>Ticari Market iş ortağı ve müşteri kullanımı attributıon
 
@@ -248,10 +248,8 @@ foreach ($deployment in $deployments){
 
 }
 ```
-
 ## <a name="report"></a>Rapor
-
-Iş Ortağı Merkezi panonuzda () müşteri kullanımı atısyonu için raporu bulabilirsiniz [https://partner.microsoft.com/dashboard/partnerinsights/analytics/overview](https://partner.microsoft.com/dashboard/partnerinsights/analytics/overview) . Raporu görmek için Iş ortağı merkezi kimlik bilgilerinizi kullanarak oturum açın. Raporla veya oturum açma ile ilgili herhangi bir sorunla karşılaşırsanız, bir [destek isteği](#get-support)oluşturun.
+Müşteri kullanımı attributıon aracılığıyla izlenen Azure kullanımı için raporlama, bugün ISV iş ortakları için kullanılamaz. Iş Ortağı Merkezi 'nde ticari Market programına, müşteri kullanımı atışsını kapsayacak şekilde raporlama eklemek, 2021 'in ikinci yarısında hedeflenmelidir.
 
 ## <a name="notify-your-customers"></a>Müşterilerinize bildirme
 

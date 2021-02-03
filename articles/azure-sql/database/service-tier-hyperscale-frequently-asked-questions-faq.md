@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: ''
-ms.date: 03/03/2020
-ms.openlocfilehash: 4ea1982e7545f4ac39a5ecd15dc9e19a582ae31c
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.date: 02/03/2021
+ms.openlocfilehash: c6faa1703b0935d66d291281f33027b3a66a59d4
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96459636"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526831"
 ---
 # <a name="azure-sql-database-hyperscale-faq"></a>Azure SQL veritabanı hiper ölçek SSS
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -166,7 +166,7 @@ Veritabanı boyutunuz, daha fazla veri eklerken/alarak otomatik olarak büyür.
 
 ### <a name="what-is-the-smallest-database-size-that-hyperscale-supports-or-starts-with"></a>Hiperscale tarafından desteklenen veya başlayan en küçük veritabanı boyutu nedir?
 
-40 GB. Hiper ölçek veritabanı, 10 GB başlangıç boyutuyla oluşturulur. Daha sonra, 40 GB boyutuna ulaşana kadar 10 dakikada bir, 10 GB büyümeye başlar. Bu 10 GB chucks 'in her biri, daha fazla ıOPS ve daha yüksek g/ç paralelliğini sağlamak için farklı bir sayfa sunucusuna ayrılır. Bu iyileştirme nedeniyle, ilk veritabanı boyutunu 40 GB 'tan daha küçük bir tercih etseniz bile, veritabanı otomatik olarak en az 40 GB 'a genişlecektir.
+40 GB. Hiper ölçek veritabanı, 10 GB başlangıç boyutuyla oluşturulur. Daha sonra, 40 GB boyutuna ulaşana kadar 10 dakikada bir, 10 GB büyümeye başlar. Bu 10 GB öbeklerin her biri, daha fazla ıOPS ve daha yüksek g/ç paralelliğini sağlamak için farklı bir sayfa sunucusuna ayrılır. Bu iyileştirme nedeniyle, ilk veritabanı boyutunu 40 GB 'tan daha küçük bir tercih etseniz bile, veritabanı otomatik olarak en az 40 GB 'a genişlecektir.
 
 ### <a name="in-what-increments-does-my-database-size-grow"></a>Veritabanı boyutumun büyümesi ne kadar artar
 
@@ -233,7 +233,7 @@ Hiper ölçek, yeni/değiştirilmiş verileri 100 MB/s olarak kullanabilir, anca
 
 Bir istemci uygulamanızın Azure Storage 'dan veri okuyabilmesini ve veri yükünü bir hiper ölçekli veritabanına yüklemesini (tıpkı Azure SQL veritabanı 'ndaki diğer veritabanları gibi) sağlayabilirsiniz. PolyBase Şu anda Azure SQL veritabanı 'nda desteklenmiyor. Hızlı yük sağlamaya alternatif olarak, [Azure Data Factory](../../data-factory/index.yml)KULLANABILIR veya [SQL için spark Bağlayıcısı](spark-connector.md)ile [Azure Databricks](/azure/azure-databricks/) bir Spark işi kullanabilirsiniz. SQL 'e Spark Bağlayıcısı toplu ekleme 'yi destekler.
 
-BULK INSERT veya OPENROWSET kullanarak Azure Blob mağazasından verileri toplu olarak okumak de mümkündür: [Azure Blob depolama alanındaki verilere toplu erişim örnekleri](/sql/relational-databases/import-export/examples-of-bulk-access-to-data-in-azure-blob-storage?view=sql-server-2017#accessing-data-in-a-csv-file-referencing-an-azure-blob-storage-location).
+BULK INSERT veya OPENROWSET kullanarak Azure Blob mağazasından verileri toplu olarak okumak de mümkündür: [Azure Blob depolama alanındaki verilere toplu erişim örnekleri](/sql/relational-databases/import-export/examples-of-bulk-access-to-data-in-azure-blob-storage#accessing-data-in-a-csv-file-referencing-an-azure-blob-storage-location).
 
 Hiper ölçekte basit kurtarma veya toplu günlük modeli desteklenmez. Yüksek kullanılabilirlik ve zaman içinde kurtarma sağlamak için tam kurtarma modeli gereklidir. Ancak, hiper ölçek günlüğü mimarisi diğer Azure SQL veritabanı hizmet katmanlarına kıyasla daha iyi veri alma oranı sağlar.
 

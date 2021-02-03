@@ -6,17 +6,17 @@ ms.author: harelbr
 ms.topic: conceptual
 ms.date: 04/03/2017
 ms.subservice: alerts
-ms.openlocfilehash: 47ed723ecfc544673ac8aa6374c27ae5a7cf166b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1519dbe9439f1d56a558082f993b15b4a312ecfa
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87852115"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526882"
 ---
 # <a name="call-a-webhook-with-a-classic-metric-alert-in-azure-monitor"></a>Azure Izleyici 'de klasik ölçüm uyarısıyla bir Web kancası çağırma
 
 > [!WARNING]
-> Bu makalede, klasik eski ölçüm uyarılarının nasıl kullanılacağı açıklanır. Azure Izleyici artık [daha yeni bir neredeyse gerçek zamanlı ölçüm uyarılarını ve yeni bir uyarı deneyimini](./alerts-overview.md)desteklemektedir. Klasik uyarılar [kullanımdan](./monitoring-classic-retirement.md)kalkmakta, ancak henüz yeni uyarıları desteklemeyen kaynaklar için hala sınırlı kullanımda.
+> Bu makalede, klasik eski ölçüm uyarılarının nasıl kullanılacağı açıklanır. Azure Izleyici artık [daha yeni bir neredeyse gerçek zamanlı ölçüm uyarılarını ve yeni bir uyarı deneyimini](./alerts-overview.md)desteklemektedir. Klasik uyarılar, genel bulut kullanıcıları için [devre](./monitoring-classic-retirement.md) dışı bırakılsa da, henüz yeni uyarıları desteklemeyen kaynaklar için sınırlı kullanımda olabilir.
 >
 
 Web kancalarını kullanarak, işlem sonrası veya özel eylemler için bir Azure uyarı bildirimini diğer sistemlere yönlendirebilirsiniz. Uyarı üzerinde bir Web kancasını SMS iletileri gönderen hizmetlere yönlendirmek, hataları günlüğe kaydetmek, sohbet veya mesajlaşma hizmetleri aracılığıyla bir takıma bildirmek veya diğer çeşitli eylemler için kullanabilirsiniz. 
@@ -74,14 +74,14 @@ POST işlemi, ölçüm tabanlı tüm uyarılar için aşağıdaki JSON yükünü
 
 | Alan | Zorunlu | Düzeltilen değer kümesi | Notlar |
 |:--- |:--- |:--- |:--- |
-| durum |E |Etkinleştirildi, çözümlendi |Ayarladığınız koşullara göre uyarının durumu. |
-| bağlam |E | |Uyarı bağlamı. |
-| timestamp |E | |Uyarının tetiklendiği zaman. |
-| kimlik |E | |Her uyarı kuralının benzersiz bir KIMLIĞI vardır. |
-| name |E | |Uyarı adı. |
-| açıklama |E | |Uyarının açıklaması. |
-| ConditionType 'ı seçin |E |Ölçüm, olay |İki tür uyarı desteklenir: ölçüm ve olay. Ölçüm uyarıları bir ölçüm koşulunu temel alır. Olay uyarıları, etkinlik günlüğündeki bir olaya dayalıdır. Uyarının bir ölçüye veya bir olaya dayalı olup olmadığını denetlemek için bu değeri kullanın. |
-| koşul |E | |**ConditionType** değerine göre denetlenecek belirli alanlar. |
+| durum |Y |Etkinleştirildi, çözümlendi |Ayarladığınız koşullara göre uyarının durumu. |
+| bağlam |Y | |Uyarı bağlamı. |
+| timestamp |Y | |Uyarının tetiklendiği zaman. |
+| kimlik |Y | |Her uyarı kuralının benzersiz bir KIMLIĞI vardır. |
+| name |Y | |Uyarı adı. |
+| açıklama |Y | |Uyarının açıklaması. |
+| ConditionType 'ı seçin |Y |Ölçüm, olay |İki tür uyarı desteklenir: ölçüm ve olay. Ölçüm uyarıları bir ölçüm koşulunu temel alır. Olay uyarıları, etkinlik günlüğündeki bir olaya dayalıdır. Uyarının bir ölçüye veya bir olaya dayalı olup olmadığını denetlemek için bu değeri kullanın. |
+| koşul |Y | |**ConditionType** değerine göre denetlenecek belirli alanlar. |
 | metricName |Ölçüm uyarıları için | |Kuralın izleyicilerini tanımlayan ölçümün adı. |
 | metricUnit |Ölçüm uyarıları için |Bayt, BytesPerSecond, sayı, Sayaçpersaniye, yüzde, saniye |Ölçümde izin verilen birim. Bkz. [izin verilen değerler](/previous-versions/azure/reference/dn802430(v=azure.100)). |
 | metricValue |Ölçüm uyarıları için | |Uyarıya neden olan ölçümün gerçek değeri. |
@@ -89,13 +89,13 @@ POST işlemi, ölçüm tabanlı tüm uyarılar için aşağıdaki JSON yükünü
 | windowSize |Ölçüm uyarıları için | |Eşik temelinde uyarı etkinliğini izlemek için kullanılan süre. Değer 5 dakika ile 1 gün arasında olmalıdır. Değer ISO 8601 Duration biçiminde olmalıdır. |
 | timeAggregation |Ölçüm uyarıları için |Ortalama, son, maksimum, en az, yok, toplam |Toplanan verilerin zaman içinde birleştirilmesi gerekir. Varsayılan değer Average değeridir. Bkz. [izin verilen değerler](/previous-versions/azure/reference/dn802410(v=azure.100)). |
 | işleç |Ölçüm uyarıları için | |Geçerli ölçüm verilerini ayarlanan eşikle karşılaştırmak için kullanılan işleç. |
-| subscriptionId |E | |Azure abonelik KIMLIĞI. |
-| resourceGroupName |E | |Etkilenen kaynak için kaynak grubunun adı. |
-| resourceName |E | |Etkilenen kaynağın kaynak adı. |
-| resourceType |E | |Etkilenen kaynağın kaynak türü. |
-| resourceId |E | |Etkilenen kaynağın kaynak KIMLIĞI. |
-| resourceRegion |E | |Etkilenen kaynağın bölgesi veya konumu. |
-| Portal bağlantısı |E | |Portal kaynağı özet sayfasına doğrudan bağlantı. |
+| subscriptionId |Y | |Azure abonelik KIMLIĞI. |
+| resourceGroupName |Y | |Etkilenen kaynak için kaynak grubunun adı. |
+| resourceName |Y | |Etkilenen kaynağın kaynak adı. |
+| resourceType |Y | |Etkilenen kaynağın kaynak türü. |
+| resourceId |Y | |Etkilenen kaynağın kaynak KIMLIĞI. |
+| resourceRegion |Y | |Etkilenen kaynağın bölgesi veya konumu. |
+| Portal bağlantısı |Y | |Portal kaynağı özet sayfasına doğrudan bağlantı. |
 | properties |N |İsteğe Bağlı |Olayla ilgili ayrıntıları içeren bir anahtar/değer çiftleri kümesi. Örneğin, `Dictionary<String, String>`. Özellikler alanı isteğe bağlıdır. Özel bir kullanıcı arabirimi veya mantıksal uygulama tabanlı iş akışında, kullanıcılar yük aracılığıyla geçirilebilecek anahtar/değer çiftleri girebilir. Özel özellikleri Web kancasına geri almanın alternatif bir yolu, Web kancası URI 'sinin kendisi (sorgu parametreleri olarak) aracılığıyla yapılır. |
 
 > [!NOTE]

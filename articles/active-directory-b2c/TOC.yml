@@ -432,6 +432,9 @@
     - name: Güvenli API Management API’si
       href: secure-api-management.md
       displayName: 'apim, api management, migrate, b2clogin.com'
+    - name: Güvenli telefon tabanlı MFA
+      href: phone-based-mfa.md
+      displayName: 'multi-factor authentication, Azure Monitor, Log Analytics'
     - name: Günlükler ve izleme
       items:
         - name: Denetim günlükleri

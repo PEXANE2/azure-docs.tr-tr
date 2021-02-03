@@ -7,17 +7,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/10/2020
+ms.date: 02/01/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 8449c5437bad6d0036d332ca5c35709b5d571cfa
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.openlocfilehash: d7bc92af31eb179155fd473356c741f365a07a35
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99225167"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99525153"
 ---
 # <a name="enable-multi-factor-authentication-in-azure-active-directory-b2c"></a>Azure Active Directory B2C'de çok faktörlü kimlik doğrulamasını etkinleştirme
 
@@ -41,9 +41,12 @@ Bu özellik, uygulamaların aşağıdaki gibi senaryoları işlemesine yardımc�
 1. MFA 'yı etkinleştirmek istediğiniz kullanıcı akışını seçin. Örneğin, *B2C_1_signinsignup*.
 1. **Özellikler**’i seçin.
 1. **Çok faktörlü kimlik doğrulaması** bölümünde, istenen **MFA yöntemini** seçin ve ardından **MFA zorlaması** altında **her zaman açık** veya **koşullu (önerilen)** seçeneğini belirleyin.
-  > [!NOTE]
-  > **Koşullu (önerilen)** seçeneğini belirlerseniz, [koşullu erişim ilkesi eklemeniz](conditional-access-identity-protection-setup.md#add-a-conditional-access-policy) ve ilkenin uygulanmasını istediğiniz uygulamaları belirtmeniz gerekir.
-1. Kaydet’i seçin. MFA artık bu kullanıcı akışı için etkinleştirilmiştir.
+   > [!NOTE]
+   >
+   > - **Koşullu (önerilen)** seçeneğini belirlerseniz, [koşullu erişim ilkesi eklemeniz](conditional-access-identity-protection-setup.md#add-a-conditional-access-policy) ve ilkenin uygulanmasını istediğiniz uygulamaları belirtmeniz gerekir.
+   > - Multi-Factor Authentication (MFA), kaydolma Kullanıcı akışları için varsayılan olarak devre dışıdır. Kullanıcı akışlarında MFA 'yı telefon kayıt ile etkinleştirebilirsiniz, ancak birincil tanımlayıcı olarak bir telefon numarası kullanıldığından, tek seferlik geçiş kodu ikinci kimlik doğrulama faktörü için kullanılabilen tek seçenektir.
+
+1. **Kaydet**’i seçin. MFA artık bu kullanıcı akışı için etkinleştirilmiştir.
 
 Deneyimi doğrulamak için **Kullanıcı akışını Çalıştır** ' i kullanabilirsiniz. Aşağıdaki senaryoyu onaylayın:
 

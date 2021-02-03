@@ -1,6 +1,6 @@
 ---
 title: Azure API Management şirket içinde barındırılan ağ geçidi için yerel ölçümleri ve günlükleri yapılandırma | Microsoft Docs
-description: Azure API Management şirket içinde barındırılan ağ geçidi için yerel ölçümleri ve günlükleri nasıl yapılandıracağınızı öğrenin
+description: Azure API Management bir Kubernetes noter üzerinde şirket içinde barındırılan ağ geçidine yönelik yerel ölçümleri ve günlükleri yapılandırma hakkında bilgi edinin
 services: api-management
 documentationcenter: ''
 author: miaojiang
@@ -10,18 +10,18 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 04/30/2020
+ms.date: 02/01/2021
 ms.author: apimpm
-ms.openlocfilehash: ac147863fe54be3343eda653fc863ebd08dac54d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e34c25b2e3bfa845e258dc5d9699497d7ffcb004
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86254512"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526679"
 ---
 # <a name="configure-local-metrics-and-logs-for-azure-api-management-self-hosted-gateway"></a>Azure API Management şirket içinde barındırılan ağ geçidi için yerel ölçümleri ve günlükleri yapılandırma
 
-Bu makalede, [Şirket içinde barındırılan ağ geçidi](./self-hosted-gateway-overview.md)için yerel ölçümleri ve günlükleri yapılandırmaya ilişkin ayrıntılar sağlanmaktadır. Bulut ölçümlerini ve günlüklerini yapılandırmak için [Bu makaleye](how-to-configure-cloud-metrics-logs.md)bakın. 
+Bu makalede, bir Kubernetes kümesinde dağıtılan şirket içinde [barındırılan ağ geçidi](./self-hosted-gateway-overview.md) için yerel ölçümleri ve günlükleri yapılandırmaya ilişkin ayrıntılar sağlanmaktadır. Bulut ölçümlerini ve günlüklerini yapılandırmak için [Bu makaleye](how-to-configure-cloud-metrics-logs.md)bakın. 
 
 ## <a name="metrics"></a>Ölçümler
 Şirket içinde barındırılan ağ geçidi, ölçüm toplama ve toplama için ifkenme protokolü haline gelen [Statsd](https://github.com/statsd/statsd)'yi destekler. Bu bölümde, Kubernetes 'e StatsD dağıtma, ağ geçidini StatsD aracılığıyla ölçümleri yaymaya yönelik yapılandırma ve ölçümleri izlemek için [Prometheus](https://prometheus.io/) kullanma adımları anlatılmaktadır. 
@@ -65,7 +65,7 @@ spec:
     spec:
       containers:
       - name: sputnik-metrics-statsd
-        image: prom/statsd-exporter
+        image: mcr.microsoft.com/aks/hcp/prom/statsd-exporter
         ports:
         - name: tcp
           containerPort: 9102
@@ -80,7 +80,7 @@ spec:
           - mountPath: /tmp
             name: sputnik-metrics-config-files
       - name: sputnik-metrics-prometheus
-        image: prom/prometheus
+        image: mcr.microsoft.com/oss/prometheus/prometheus
         ports:
         - name: tcp
           containerPort: 9090
@@ -149,7 +149,7 @@ sputnik-metrics-statsd       NodePort       10.0.41.179   <none>          8125:3
 
 StatsD ve Prometheus öğelerinin her ikisi de dağıtıldığına göre, otomatik olarak barındırılan ağ geçidinin yapılandırmalarının StatsD aracılığıyla ölçümleri yayılmasına başlayabiliriz. Özellik, `telemetry.metrics.local` Şirket içinde barındırılan ağ geçidi dağıtımının ConfigMap 'teki anahtar kullanılarak, ek seçeneklerle etkinleştirilebilir veya devre dışı bırakılabilir. Kullanılabilir seçeneklerin bir dökümü aşağıda verilmiştir:
 
-| Alan  | Varsayılan | Açıklama |
+| Alan  | Varsayılan | Description |
 | ------------- | ------------- | ------------- |
 | Telemetri. ölçümler. yerel  | `none` | StatsD aracılığıyla günlüğe kaydetmeyi etkinleştirir. Değer, olabilir `none` `statsd` . |
 | Telemetri. ölçümler. Local. statsd. Endpoint  | yok | StatsD uç noktasını belirtir. |
@@ -189,7 +189,7 @@ kubectl rollout restart deployment/<deployment-name>
 
 Şirket içinde barındırılan ağ geçidiyle bazı API çağrıları yapın, her şey doğru yapılandırılmışsa, aşağıdaki ölçümleri görüntüleyebilmelisiniz:
 
-| Ölçüm  | Açıklama |
+| Metric  | Açıklama |
 | ------------- | ------------- |
 | İstekler  | Dönemdeki API isteklerinin sayısı |
 | Durationınms | Ağ geçidinin isteği aldığı andan, yanıtın tamamen gönderildiği ana kadar geçen milisaniye cinsinden süre |
@@ -208,7 +208,7 @@ kubectl logs <pod-name>
 
 Şirket içinde barındırılan ağ geçidi,, ve gibi çeşitli protokolleri de `localsyslog` destekler `rfc5424` `journal` . Aşağıdaki tabloda desteklenen tüm seçenekler özetlenmektedir. 
 
-| Alan  | Varsayılan | Açıklama |
+| Alan  | Varsayılan | Description |
 | ------------- | ------------- | ------------- |
 | Telemetri. logs. std  | `text` | Standart akışlara günlük kaydını sağlar. Değer `none` , `text` , `json` |
 | Telemetri. logs. Local  | `none` | Yerel günlüğe kaydetmeye izin vermez. Değer,, `none` , `auto` , `localsyslog` `rfc5424``journal`  |

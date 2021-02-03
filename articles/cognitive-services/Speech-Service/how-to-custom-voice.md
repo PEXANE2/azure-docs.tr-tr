@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 02/02/2021
+ms.date: 02/17/2020
 ms.author: trbye
-ms.openlocfilehash: 756c40be52f2739d3a7682752b038bfe3958d47d
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: 4e487a3eab70e7d561468a8fac2103e177d2abc5
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 02/03/2021
-ms.locfileid: "99507719"
+ms.locfileid: "99524984"
 ---
 # <a name="get-started-with-custom-voice"></a>Özel Ses’i kullanmaya başlama
 
@@ -39,7 +39,10 @@ Aşağıdaki diyagramda [özel ses portalını](https://aka.ms/customvoice)kulla
 
 ## <a name="custom-neural-voices"></a>Özel sinir sesleri
 
-Sinir ses özelleştirme özelliği şu anda seçili müşterilerle sınırlı olan genel önizlemededir. Başlamak için bu [uygulama formunu](https://go.microsoft.com/fwlink/?linkid=2108737) doldurun.
+Özel ses Şu anda hem standart hem de sinir katmanlarını desteklemektedir. Özel sinir ses, kullanıcıların daha az veri gerektirmesi sırasında daha yüksek kaliteli ses modelleri oluşturmasını ve yapay zeka dağıtmanıza yardımcı olan ölçüler sağladığını sağlar. Daha doğal konuşma arabirimleri için daha gerçekçi sesler geliştirmek ve müşterilerinizin ve son kullanıcılarınızın, en son metin okuma teknolojisinden sorumlu bir şekilde faydalanmasını sağlamak için özel sinir Voice kullanmanız önerilir. [Özel sinir sesi hakkında daha fazla bilgi edinin](https://aka.ms/CNV-Transparency-Note). 
+
+> [!NOTE]
+> Microsoft 'un sorumlu AI tasarlama taahhüdünün bir parçası olarak özel sinir Voice kullanımını sınırlandırdık. Teknolojiye yalnızca uygulamalarınız incelendikten ve sorumlu AI ilkelerimize göre hizalama olarak kullanmayı taahhüt ettikten sonra erişebilirsiniz. [Erişim sınırı](https://aka.ms/gating-overview) hakkında daha fazla bilgi edinin ve [burada uygulayın](https://aka.ms/customneural). Özel sesin standart ve sinir sürümü için desteklenen [Diller](language-support.md#customization) ve [bölgeler](regions.md#custom-voices) farklıdır. Başlamadan önce ayrıntıları denetleyin.  
 
 ## <a name="set-up-your-azure-account"></a>Azure hesabınızı ayarlama
 
@@ -53,7 +56,7 @@ Bir Azure hesabı ve bir konuşma hizmeti aboneliği oluşturduktan sonra, özel
 4. Başka bir konuşma aboneliğine geçiş yapmak isterseniz, üstteki gezinmede bulunan dişli simgesini kullanın.
 
 > [!NOTE]
-> Hizmeti kullanabilmeniz için önce Azure 'da oluşturulmuş bir F0 veya S0 anahtarınız olmalıdır.
+> Hizmeti kullanabilmeniz için önce Azure 'da oluşturulmuş bir F0 veya S0 konuşma hizmeti anahtarınız olmalıdır. Özel sinir Voice yalnızca S0 katmanını destekler. 
 
 ## <a name="how-to-create-a-project"></a>Proje oluşturma
 

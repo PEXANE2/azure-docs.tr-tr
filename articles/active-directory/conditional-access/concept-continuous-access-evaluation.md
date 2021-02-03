@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd14c7911676768a61d2b2c0e366d2c227455be8
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 562c90dcc4f802290b0ed8b4d544fce9d526fa10
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98678213"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99524677"
 ---
 # <a name="continuous-access-evaluation"></a>Sürekli erişim değerlendirmesi
 
@@ -48,7 +48,7 @@ Sürekli erişim değerlendirmesi, Exchange Online, SharePoint Online ve takıml
 - Kullanıcı parolası değiştirildi veya sıfırlandı
 - Multi-Factor Authentication Kullanıcı için etkinleştirildi
 - Yönetici, bir kullanıcı için tüm yenileme belirteçlerini açıkça iptal eder
-- Azure AD Kimlik Koruması tarafından algılanan yükseltilmiş kullanıcı riski
+- Azure AD Kimlik Koruması tarafından algılanan yüksek Kullanıcı riski
 
 Bu işlem, kullanıcıların kurumsal SharePoint Online dosyalarına, e-postaya, takvime veya görevlere ve bu kritik olaylardan biri dakika içinde Microsoft 365 istemci uygulamalarından gelen takımlara erişimi kaybettiği senaryoya olanak sağlar. 
 
@@ -146,7 +146,7 @@ CAE için, yalnızca adlandırılmış IP tabanlı adlandırılmış konumlara i
 
 ### <a name="ip-address-configuration"></a>IP adresi yapılandırması
 
-Kimlik sağlayıcınız ve kaynak sağlayıcılarınız farklı IP adresleri görebilir. Bu uyumsuzluk, kuruluşunuzdaki ağ proxy uygulamaları veya kimlik sağlayıcınız ile kaynak sağlayıcınız arasında yanlış IPv4/IPv6 yapılandırması nedeniyle oluşabilir. Örnek:
+Kimlik sağlayıcınız ve kaynak sağlayıcılarınız farklı IP adresleri görebilir. Bu uyumsuzluk, kuruluşunuzdaki ağ proxy uygulamaları veya kimlik sağlayıcınız ile kaynak sağlayıcınız arasında yanlış IPv4/IPv6 yapılandırması nedeniyle oluşabilir. Örneğin:
 
 - Kimlik sağlayıcınız istemciden bir IP adresi görür.
 - Kaynak sağlayıcınız bir proxy üzerinden geçtikten sonra istemciden farklı bir IP adresi görür.

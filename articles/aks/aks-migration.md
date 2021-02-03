@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 02/25/2020
 ms.custom: mvc
-ms.openlocfilehash: 9e73ca9e485e6926c30a73ba56b24bcd4dc9a836
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 5881d03603002cc8d5bef1680083f6b4145bc77f
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96929744"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526696"
 ---
 # <a name="migrate-to-azure-kubernetes-service-aks"></a>Azure Kubernetes Service 'e (AKS) geçiş
 
@@ -21,7 +21,7 @@ Bu belge, aşağıdaki senaryoları desteklemeye yardımcı olmak için kullanı
 * [Kullanılabilirlik kümeleri](../virtual-machines/windows/tutorial-availability-sets.md) tarafından desteklenen bir aks kümesini [sanal makine ölçek kümelerine](../virtual-machine-scale-sets/overview.md) geçirme
 * AKS kümesini [Standart SKU yük dengeleyici](./load-balancer-standard.md) kullanmak üzere geçirme
 * [Azure Container Service (ACS)-devre dışı bırakma 31 ocak 2020,](https://azure.microsoft.com/updates/azure-container-service-will-retire-on-january-31-2020/) aks 'e geçiriliyor
-* [Aks altyapısından](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908) aks 'e geçiş
+* [Aks altyapısından](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview) aks 'e geçiş
 * Azure olmayan tabanlı Kubernetes kümelerinden AKS 'e geçiş
 * Mevcut kaynakları farklı bir bölgeye taşıma
 

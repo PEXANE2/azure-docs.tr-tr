@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 12/18/2020
+ms.date: 02/02/2021
 ms.author: alkohli
-ms.openlocfilehash: 4b5bbe19ddeda7c6b313186b7e24532a294f7253
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: 9ebf95f0a9c5cfc059f38a13ad99a545dd863d21
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97680837"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99525039"
 ---
 # <a name="tutorial-return-azure-data-box"></a>Öğretici: dönüş Azure Data Box
 
@@ -174,7 +174,7 @@ Gerekirse, aşağıdaki bilgilerden Quantium Solutions Desteği (Japonca) ile il
 
 ## <a name="self-managed"></a>[Kullanıcı Yönetimli](#tab/in-selfmanaged)
 
-Data Box’ı Japonya, Singapur, Güney Kore, Hindistan, Güney Afrika veya Batı Avrupa’da kullanıyorsanız ve sipariş oluşturma sırasında kullanıcı yönetimli gönderim seçeneğini belirlediyseniz bu yönergeleri izleyin.
+Japonya, Singapur, Kore, Hindistan, Güney Afrika, Birleşik Krallık, Batı Avrupa veya Avustralya 'da Data Box kullanıyorsanız ve sipariş oluşturma sırasında kendi kendine yönetilen sevkiyat seçeneğini belirlediyseniz, bu yönergeleri izleyin.
 
 1. Bu adım başarıyla tamamlandıktan sonra Data Box yerel web kullanıcı arabiriminin Göndermeye Hazırlama sayfasında gösterilen Yetkilendirme kodunu not alın.
 2. Cihazı kapatın ve kabloları çıkarın. Cihaz ile beraber sağlanan güç kablosunu sararak emniyetli şekilde cihazın arkasına yerleştirin.
@@ -200,7 +200,7 @@ Cihaz Azure veri merkezine ulaştığında, Data Box [NıST SP 800-88 düzeltme 
 Bu öğreticide, aşağıdaki gibi konular hakkında bilgi edindiniz:
 
 > [!div class="checklist"]
-> * Ön koşullar
+> * Önkoşullar
 > * Göndermeye hazırlama
 > * Data Box'ı Microsoft'a gönderme
 > * Data Box'tan verileri silme
