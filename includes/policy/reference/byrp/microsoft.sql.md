@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 01/29/2021
+ms.date: 02/04/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 92589a0ba5f17e8a8da38b516019d832ea2b71d0
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: be5e8ee63258d058bdc8bfa21607ae11b99fce2f
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99213760"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99556845"
 ---
 |Name<br /><sub>(Azure portal)</sub> |Description |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
 |---|---|---|---|
@@ -19,6 +19,7 @@ ms.locfileid: "99213760"
 |[SQL sunucuları için bir Azure Active Directory Yöneticisi sağlanmalıdır](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1f314764-cb73-4fc9-b863-8eca98ac36e9) |Azure AD kimlik doğrulamasını etkinleştirmek için SQL sunucunuz için bir Azure Active Directory yöneticisinin sağlamasını denetleyin. Azure AD kimlik doğrulaması, veritabanı kullanıcıları ve diğer Microsoft Hizmetleri için Basitleştirilmiş izin yönetimi ve merkezi kimlik yönetimine izin verebilir |Auditınotexists, devre dışı |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SQL_DB_AuditServerADAdmins_Audit.json) |
 |[SQL Server üzerinde denetim etkinleştirilmelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa6fb4358-5bf4-4ad7-ba82-2cd2f41ce5e9) |SQL Server denetim, sunucudaki tüm veritabanları genelinde veritabanı etkinliklerini izlemek ve bir denetim günlüğüne kaydetmek için etkinleştirilmelidir. |Auditınotexists, devre dışı |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlServerAuditing_Audit.json) |
 |[Azure SQL veritabanı 'nın en düşük TLS sürümü 1,2 olmalıdır](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F32e6bbec-16b6-44c2-be37-c5b672d103cf) |Minimum TLS sürümünün 1,2 olarak ayarlanması, Azure SQL veritabanınıza yalnızca TLS 1,2 kullanan istemcilerden erişilebilmesini sağlayarak güvenliği geliştirir. 1,2 ' den küçük olan TLS sürümlerinin kullanılması iyi belgelenmiş güvenlik açıklarına sahip olduğundan önerilmez. |Denetim, devre dışı |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlServer_MiniumTLSVersion_Audit.json) |
+|[Dağıt-Log Analytics çalışma alanına SQL veritabanları için tanılama ayarlarını yapılandırın](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb79fa14e-238a-4c2d-b376-442ce508fc84) |Bu Tanılama ayarları eksik olan herhangi bir SQL veritabanı oluşturulduğu veya güncelleştirildiği zaman bir Log Analytics çalışma alanına tanılama günlüklerini akışa almak için SQL veritabanları için tanılama ayarlarını dağıtır. |DeployIfNotExists, devre dışı |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/DataConnectosSqlLogs_PolicyAssignment.json) |
 |[SQL Server 'lar üzerinde gelişmiş veri güvenliği dağıtma](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F6134c3db-786f-471e-87bc-8f479dc890f6) |Bu ilke, SQL sunucularında gelişmiş veri güvenliğine izin vermez. Bu, tehdit algılamayı ve güvenlik açığı değerlendirmesini açmayı da içerir. Tarama sonuçlarını depolamak için ' sqlva ' önekiyle birlikte aynı bölgede ve kaynak grubunda otomatik olarak bir depolama hesabı oluşturur. |DeployIfNotExists |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlServerAdvancedDataSecurity_Deploy.json) |
 |[SQL Server 'lar üzerinde denetim dağıtma](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff4c68484-132f-41f9-9b6d-3e4b1cb55036) |Bu ilke, gelişmiş güvenlik ve uyumluluk için SQL sunucularında denetimin etkinleştirilmesini sağlar. Denetim kayıtlarını depolamak için SQL Server ile aynı bölgede otomatik olarak bir depolama hesabı oluşturur. |DeployIfNotExists |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlServerAuditing_Deploy.json) |
 |[Azure SQL veritabanı için tanılama ayarlarını Olay Hub 'ına dağıtma](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F9a7c7a7d-49e5-4213-bea8-6a502b6272e0) |Azure SQL veritabanı için tanılama ayarlarını, bu Tanılama ayarları, eksik olan herhangi bir Azure SQL veritabanında bir bölgesel Olay Hub 'ına akışa dağıtır. |DeployIfNotExists |[1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlDB_DiagnosticsLog_Deploy.json) |

@@ -3,12 +3,12 @@ title: SQL Server veritabanı yedeklemesi sorunlarını giderme
 description: Azure Backup ile Azure VM 'lerde çalışan SQL Server veritabanlarının yedeklenmesi için sorun giderme bilgileri.
 ms.topic: troubleshooting
 ms.date: 06/18/2019
-ms.openlocfilehash: 1e4ee2bdcd0826b655aa71d83674ff1e0c06a8cb
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: 2cf0ed0200de9b2787f5d9f38bd343f93648bc78
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 02/04/2021
-ms.locfileid: "99549907"
+ms.locfileid: "99557746"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>Azure Backup kullanarak SQL Server veritabanı yedeklemesi sorunlarını giderme
 
@@ -206,14 +206,14 @@ Kasa, 24 saatlik bir yayılmaya izin verilen bu işlemler için maksimum sınır
 
 | Hata iletisi | Olası nedenler | Önerilen eylem |
 |---|---|---|
-AzureBackup iş yükü uzantısı işlemi başarısız oldu. | VM kapatılıyor (veya) sanal makine, internet bağlantısı sorunları nedeniyle Azure Backup hizmetine başvuramayacak.| -Lütfen VM 'nin çalışır olduğundan ve internet bağlantısına sahip olduğundan emin olun.<br>- [SQL Server VM uzantıyı yeniden kaydedin](https://docs.microsoft.com/azure/backup/manage-monitor-sql-database-backup#re-register-extension-on-the-sql-server-vm).
+AzureBackup iş yükü uzantısı işlemi başarısız oldu. | VM kapatılmış veya internet bağlantısı sorunları nedeniyle VM Azure Backup hizmetiyle iletişim kuramıyor.| <li> VM 'nin çalışır olduğundan ve internet bağlantısına sahip olduğundan emin olun.<li> [SQL Server VM uzantıyı yeniden kaydedin](manage-monitor-sql-database-backup.md#re-register-extension-on-the-sql-server-vm).
 
 
 ### <a name="usererrorvminternetconnectivityissue"></a>UserErrorVMInternetConnectivityIssue
 
 | Hata iletisi | Olası nedenler | Önerilen eylem |
 |---|---|---|
-VM, internet bağlantısı sorunları nedeniyle Azure Backup hizmetine başvuramayacak. | VM, Azure Backup hizmeti, Azure depolama veya Azure Active Directory hizmetlerine giden bağlantı gerektirir.| -Bağlantıyı kısıtlamak için NSG kullanıyorsanız, Azure Backup hizmetine giden erişime izin vermek ve Azure AD (*AzureActiveDirectory*) ve Azure depolama (*depolama*) Hizmetleri için benzer şekilde *AzureBackup* Service etiketini kullanmanız gerekir. Erişim vermek için bu [adımları](./backup-sql-server-database-azure-vms.md#nsg-tags) izleyin.<br>-DNS 'nin Azure uç noktalarını çözümlediğinden emin olun.<br>-Sanal makinenin internet erişimini engelleyen bir yük dengeleyicinin arkasında olup olmadığını denetleyin. VM 'lere ortak IP atayarak bulma işlemi çalışacaktır.<br>-Yukarıdaki üç hedef hizmete yapılan çağrıları engelleyen bir güvenlik duvarı/virüsten koruma/proxy olmadığından emin olun.
+VM, internet bağlantısı sorunları nedeniyle Azure Backup hizmetine başvuramayacak. | VM, Azure Backup hizmeti, Azure depolama veya Azure Active Directory hizmetlerine giden bağlantı gerektirir.| <li> Bağlantıyı kısıtlamak için NSG kullanıyorsanız, Azure Backup hizmetine giden erişime izin vermek ve Azure AD (*AzureActiveDirectory*) ve Azure depolama (*depolama*) Hizmetleri için benzer şekilde *AzureBackup* Service etiketini kullanmanız gerekir. Erişim vermek için bu [adımları](./backup-sql-server-database-azure-vms.md#nsg-tags) izleyin. <li> DNS 'in Azure uç noktalarını çözümlediğinden emin olun. <li> VM 'nin internet erişimini engelleyen bir yük dengeleyicinin arkasında olup olmadığını denetleyin. VM 'lere ortak IP atayarak bulma işlemi çalışacaktır. <li> Yukarıdaki üç hedef hizmete yapılan çağrıları engelleyen güvenlik duvarı/virüsten koruma/proxy bulunmadığından emin olun.
 
 ## <a name="re-registration-failures"></a>Yeniden kayıt sorunları
 

@@ -1,16 +1,16 @@
 ---
 title: Azure Kubernetes hizmeti (AKS) için Azure Ilke mevzuat uyumluluk denetimleri
 description: Azure Kubernetes hizmeti (AKS) için kullanılabilen Azure Ilke mevzuat uyumluluk denetimlerini listeler. Bu yerleşik ilke tanımları, Azure kaynaklarınızın uyumluluğunu yönetmek için yaygın yaklaşımlar sağlar.
-ms.date: 01/29/2021
+ms.date: 02/04/2021
 ms.topic: sample
 ms.service: container-service
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: d291b074791f05219ac194651b2b61bd2174d63f
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: c0085a7e9fb480fb79622d8a9df724d2d4180386
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99093234"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99557470"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-kubernetes-service-aks"></a>Azure Kubernetes hizmeti (AKS) için Azure Ilke mevzuat uyumluluk denetimleri
 

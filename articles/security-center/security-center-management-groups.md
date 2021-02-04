@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/07/2020
+ms.date: 02/04/2021
 ms.author: memildin
-ms.openlocfilehash: 5b257e45a86a7b22e9064fcfc6092b3c946ae99b
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 13cbc2e9451221fef951eb6fac4c6b2772275122
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98757656"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99556432"
 ---
 # <a name="organize-management-groups-subscriptions-and-tenant-wide-visibility"></a>Yönetim gruplarını, abonelikleri ve kiracı genelinde görünürlüğü düzenleme
 
@@ -81,12 +81,14 @@ Oluşturduğunuz yönetim grubuna abonelikler ekleyebilirsiniz.
 
 ## <a name="grant-tenant-wide-permissions-to-yourself"></a>Kendi kendinize kiracı genelinde izinler verin
 
-**Genel yönetici** Azure Active Directory rolüne sahip bir kullanıcının kiracı genelinde sorumlulukları olabilir, ancak Azure Güvenlik Merkezi 'nde kuruluş genelinde bilgileri görüntülemek için Azure izinlerinin olmaması gerekir. 
+**Genel yöneticinin** Azure ACTIVE DIRECTORY (ad) rolüne sahip bir kullanıcının kiracı genelinde sorumlulukları olabilir, ancak Azure Güvenlik Merkezi 'nde kuruluş genelinde bu bilgileri görüntülemek için Azure izinlerinin olmaması gerekir. Azure AD rol atamaları Azure kaynaklarına erişim vermediği için izin yükseltme gereklidir. 
 
 > [!TIP]
-> Kuruluşunuz [Azure AD Privileged Identity Management (PIM)](../active-directory/privileged-identity-management/pim-configure.md)veya başka bir PIM aracıyla kaynak erişimini yönetirse, bu değişiklikleri yapan kullanıcı için genel yönetici rolü etkin olmalıdır.
+> [Tüm Azure aboneliklerini ve Yönetim gruplarını yönetmek için erişimi Yükselt](../role-based-access-control/elevate-access-global-admin.md)' de genel yönetici rolü için izin yükseltme hakkında daha fazla bilgi edinin.
 
 Kendi kiracı düzeyi izinlerini atamak için:
+
+1. Kuruluşunuz [Azure AD Privileged Identity Management (PIM)](../active-directory/privileged-identity-management/pim-configure.md)veya başka bir PIM aracıyla kaynak erişimini yönetirse, aşağıdaki yordamı izleyerek Kullanıcı için genel yönetici rolü etkin olmalıdır.
 
 1. Kiracının kök yönetim grubu üzerinde atama olmadan genel yönetici kullanıcı olarak, güvenlik merkezi 'nin **genel bakış** sayfasını açın ve başlıktaki **kiracı genelinde görünürlük** bağlantısını seçin. 
 

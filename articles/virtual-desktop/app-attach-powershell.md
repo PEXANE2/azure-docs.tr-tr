@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 12/14/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 8aa6a2168bff6e90d636770804900fa93f081ced
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 1196982fedc7321805e36cceed27c90e43a6e705
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97426004"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99558331"
 ---
 # <a name="set-up-msix-app-attach-preview-using-powershell"></a>PowerShell kullanarak MSIX uygulama iliştirme (Önizleme) ayarlama
 
@@ -30,6 +30,7 @@ Azure portal ek olarak, PowerShell ile MSIX uygulama ekleme (Önizleme) de oluş
 
 - Çalışan bir Windows sanal masaüstü dağıtımı. Windows sanal masaüstü 'Nü (klasik) dağıtmayı öğrenmek için bkz. [Windows sanal masaüstü 'nde kiracı oluşturma](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md). Windows sanal masaüstü Azure Resource Manager tümleştirme ile nasıl dağıtılacağını öğrenmek için, bkz. [Azure Portal bir konak havuzu oluşturma](./create-host-pools-azure-marketplace.md).
 - En az bir etkin oturum ana bilgisayarı olan bir Windows sanal masaüstü konak Havuzu.
+- Bu konak havuzunun doğrulama ortamında olması gerekir.
 - Masaüstü uzak uygulama grubu.
 - MSIX paketleme aracı.
 - Bir dosya paylaşımında karşıya yüklenen bir MSIX görüntüde genişletilen, MSIX paketlenmiş bir uygulama.

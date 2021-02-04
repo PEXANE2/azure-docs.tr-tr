@@ -11,12 +11,12 @@ ms.subservice: msi
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: references_regions
-ms.openlocfilehash: 520d572478074a86c9b5cececacd34d7cd41539d
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.openlocfilehash: 31ca126c75d5c2e3fa7fd91f3398202fad418183
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99071622"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99555612"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Azure kaynakları için yönetilen kimlikleri destekleyen hizmetler
 
@@ -307,8 +307,8 @@ Yönetilen kimlik türü | Tüm genel kullanıma açık<br>Küresel Azure bölge
 
 |Yönetilen kimlik türü | Tüm genel kullanıma açık<br>Küresel Azure bölgeleri | Azure Kamu | Azure Almanya | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
-| Sistem tarafından atanan | ![Kullanılabileceğini][check] | ![Kullanılabileceğini][check] | Önizleme | ![Kullanılabileceğini][check] |
-| Kullanıcı tarafından atanan | ![Kullanılabileceğini][check] | ![Kullanılabileceğini][check] | Önizleme | ![Kullanılabileceğini][check] |
+| Sistem tarafından atanan | ![Kullanılabileceğini][check] | ![Kullanılabileceğini][check] | ![Kullanılabileceğini][check] | ![Kullanılabileceğini][check] |
+| Kullanıcı tarafından atanan | ![Kullanılabileceğini][check] | ![Kullanılabileceğini][check] | ![Kullanılabileceğini][check] | ![Kullanılabileceğini][check] |
 
 Azure sanal makine ölçek kümeleri (varsa) için yönetilen kimliği yapılandırmak üzere aşağıdaki listeye bakın:
 
@@ -324,8 +324,8 @@ Azure sanal makine ölçek kümeleri (varsa) için yönetilen kimliği yapıland
 
 | Yönetilen kimlik türü | Tüm genel kullanıma açık<br>Küresel Azure bölgeleri | Azure Kamu | Azure Almanya | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
-| Sistem tarafından atanan | ![Kullanılabileceğini][check] | ![Kullanılabileceğini][check] | Önizleme | ![Kullanılabileceğini][check] |
-| Kullanıcı tarafından atanan | ![Kullanılabileceğini][check] | ![Kullanılabileceğini][check] | Önizleme | ![Kullanılabileceğini][check] |
+| Sistem tarafından atanan | ![Kullanılabileceğini][check] | ![Kullanılabileceğini][check] | ![Kullanılabileceğini][check] | ![Kullanılabileceğini][check] |
+| Kullanıcı tarafından atanan | ![Kullanılabileceğini][check] | ![Kullanılabileceğini][check] | ![Kullanılabileceğini][check] | ![Kullanılabileceğini][check] |
 
 Azure sanal makineleri için yönetilen kimliği yapılandırmak üzere aşağıdaki listeye bakın (kullanılabilir yerlerde):
 

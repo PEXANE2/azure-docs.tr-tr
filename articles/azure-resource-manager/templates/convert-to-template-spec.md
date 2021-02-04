@@ -2,31 +2,21 @@
 title: Portal şablonunu şablon belirtimine Dönüştür
 description: Azure portal galerisinde varolan bir şablonun şablon özelliklerine nasıl dönüştürüleceğini açıklar.
 ms.topic: conceptual
-ms.date: 01/22/2021
+ms.date: 02/04/2021
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 8fe02f55348f2cdcabb43e05bb547819d4b51228
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: c59275fca1eb3037b48b7293fc9e507df46b7fcb
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98739142"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99555944"
 ---
 # <a name="convert-template-gallery-in-portal-to-template-specs"></a>Portaldaki şablon galerisini şablon özelliklerine Dönüştür
 
-Azure portal, hesabınızda Azure Resource Manager şablonları (ARM şablonları) depolamak için bir yol sağlar. **Bu özellik kullanımdan kaldırılmıştır.** Bu galerideki şablonları kullanmaya devam etmek için bunları [şablon özelliklerine](template-specs.md)dönüştürün.
+Azure portal, hesabınızda Azure Resource Manager şablonları (ARM şablonları) depolamak için bir yol sağlar. Ancak, [Şablon Özellikleri](template-specs.md) , şablonlarınızın kuruluşunuzdaki kullanıcılarla paylaşılmasını ve diğer şablonlarla bağlantı için daha kolay bir yol sunar. Bu makalede, şablon galerisindeki var olan şablonların şablon özelliklerine nasıl dönüştürüleceği gösterilmektedir.
 
-Bu makalede, şablon galerisindeki var olan şablonların şablon özelliklerine nasıl dönüştürüleceği gösterilmektedir.
-
-Portalda kullanım dışı olan özellik **Şablonlar (Önizleme)** olarak adlandırılır. Dönüştürülecek şablonunuz olup olmadığını görmek için [portalda şablon galerisini](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Gallery%2Fmyareas%2Fgalleryitems)görüntüleyin. Bu şablonlar kaynak türüne sahiptir `Microsoft.Gallery/myareas/galleryitems` .
-
-## <a name="deprecation-of-portal-feature"></a>Portal özelliğinin kullanımdan kaldırılması
-
-Portalda Şablon Galerisi 21 Ocak 2021 ' de kullanımdan kaldırılmıştır. 21 Şubat 'a kadar kullanmaya devam edebilirsiniz. 22 Şubat 'tan itibaren, Portal galerisinde yeni şablonlar oluşturamazsınız, ancak var olan şablonları görüntüleyebilir ve dağıtabilirsiniz.
-
-22 Haziran tarihinde Özellik portaldan kaldırılır ve tüm API işlemleri engellenir. Galeriden herhangi bir şablonu görüntüleyemeyeceksiniz veya dağıtamazsınız.
-
-22 Haziran 'dan önce, kullanmaya devam etmek istediğiniz tüm şablonları geçirmeniz gerekir. Şablonları geçirmek için bu makalede gösterilen yöntemlerden birini kullanabilirsiniz. Özellik kaldırıldıktan sonra, geçirilmemiş tüm şablonları almak için bir destek talebi açmanız gerekir.
+Dönüştürülecek şablonunuz olup olmadığını görmek için [portalda şablon galerisini](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Gallery%2Fmyareas%2Fgalleryitems)görüntüleyin. Bu şablonlar kaynak türüne sahiptir `Microsoft.Gallery/myareas/galleryitems` .
 
 ## <a name="convert-with-powershell-script"></a>PowerShell betiği ile Dönüştür
 

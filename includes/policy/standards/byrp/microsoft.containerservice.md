@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 01/29/2021
+ms.date: 02/04/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 188803a87c24dfd33bf11c801cecd52e1b4182d6
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: d9b3c65de0972c1132ce1bf865e7bfd43e9ed5f6
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99093233"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99557472"
 ---
 ## <a name="azure-security-benchmark"></a>Azure Güvenlik Karşılaştırması
 
@@ -23,7 +23,7 @@ Tüm Azure hizmetleri için kullanılabilen Azure Ilkesi 'nin Bu uyumluluk stand
 |Ağ Güvenliği |NS-1 |İç trafik için güvenliği uygulama |[Yetkili IP aralıkları, Kubernetes hizmetlerinde tanımlanmalıdır](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0e246bcf-5f6f-4f87-bc6f-775d4712c7ea) |[2.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_EnableIpRanges_KubernetesService_Audit.json) |
 |Ağ Güvenliği |NS-4 |Uygulamaları ve Hizmetleri dış ağ saldırılarına karşı koruma |[Yetkili IP aralıkları, Kubernetes hizmetlerinde tanımlanmalıdır](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0e246bcf-5f6f-4f87-bc6f-775d4712c7ea) |[2.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_EnableIpRanges_KubernetesService_Audit.json) |
 |Ayrıcalıklı Erişim |PA-7 |Yalnızca yeterli yönetim (en az ayrıcalık ilkesi) izleyin |[Rol tabanlı Access Control (RBAC), Kubernetes hizmetlerinde kullanılmalıdır](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fac4a19c2-fa67-49b4-8ae5-0b2e78c49457) |[1.0.2](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_EnableRBAC_KubernetesService_Audit.json) |
-|Veri Koruma |DP-4 |Yoldaki hassas bilgileri şifreleyin |[Kubernetes kümesinde HTTPS girişini zorla](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1a5b4dca-0b6f-4cf5-907c-56316bc1bf3d) |[5.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/IngressHttpsOnly.json) |
+|Veri Koruma |DP-4 |Yoldaki hassas bilgileri şifreleyin |[Kubernetes kümelerine yalnızca HTTPS üzerinden erişilebilir olması gerekir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1a5b4dca-0b6f-4cf5-907c-56316bc1bf3d) |[5.0.2](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/IngressHttpsOnly.json) |
 |Duruş ve Güvenlik Açığı Yönetimi |BD-2 |Azure hizmetleri için güvenli yapılandırmalara dayanmalar |[Kubernetes hizmeti (AKS) için Azure Ilke eklentisi, kümelerinizde yüklü ve etkin olmalıdır](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0a15ec92-a229-4763-bb14-0ea34a568f8d) |[1.0.2](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/AKS_AzurePolicyAddOn_Audit.json) |
 |Duruş ve Güvenlik Açığı Yönetimi |BD-2 |Azure hizmetleri için güvenli yapılandırmalara dayanmalar |[Kubernetes kümesinde ayrıcalıklı kapsayıcılara izin verme](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F95edb821-ddaf-4404-9732-666045e056b4) |[5.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/ContainerNoPrivilege.json) |
 |Duruş ve Güvenlik Açığı Yönetimi |BD-2 |Azure hizmetleri için güvenli yapılandırmalara dayanmalar |[Kapsayıcı CPU ve bellek kaynak sınırlarının Kubernetes kümesinde belirtilen sınırları aşmadığından emin ol](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe345eecc-fa47-480f-9e88-67dcc122b164) |[5.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/ContainerResourceLimits.json) |

@@ -6,16 +6,16 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 09/08/2020
+ms.date: 02/04/2021
 ms.author: memildin
-ms.openlocfilehash: 19e9a33350b6a1a67986dc35a372f737e45ab39a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a3da9cdea543894aa7aec66112e28658beac84b5
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90906394"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99558181"
 ---
-# <a name="prevent-misconfigurations-with-enforcedeny-recommendations"></a>Zorla/reddetme önerilerini kullanarak yanlış yapılandırma önleme
+# <a name="prevent-misconfigurations-with-enforcedeny-recommendations"></a>Zorlama/Reddetme önerileriyle yanlış yapılandırmaları önleme
 
 Güvenlik yapılandırması hataları, güvenlik olaylarının önemli bir nedendir. Güvenlik Merkezi artık, belirli önerilere göre yeni kaynakların yanlış yapılandırmalarını *önlemeye* yardımcı olur. 
 
@@ -41,18 +41,18 @@ Bu, seçilen güvenlik önerileri için kaynak Ayrıntıları sayfasının en ü
     > [!TIP]
     > Tek bir aboneliği değiştirmek için satırın sonundaki üç noktayı kullanabilir veya birden fazla abonelik veya Grup seçmek için onay kutularını kullanabilir, sonra da **Reddet olarak değiştir**' i seçin.
 
-    :::image type="content" source="./media/security-center-remediate-recommendations/recommendation-prevent-resource-creation.png" alt-text="Reddet düğmesinin vurgulandığı öneri sayfası":::
+    :::image type="content" source="./media/security-center-remediate-recommendations/recommendation-prevent-resource-creation.png" alt-text="Azure Ilkesi reddetme kapsamını ayarlama":::
 
 
 ## <a name="enforce-a-secure-configuration"></a>Güvenli bir yapılandırma zorla
 
 1. Yeni kaynaklar bunu karşılamadığı takdirde, bir şablon dağıtımı dağıtacağınız öneriyi açın ve sayfanın üst kısmındaki **zorla** düğmesini seçin.
 
-    :::image type="content" source="./media/security-center-remediate-recommendations/recommendation-enforce-button.png" alt-text="Reddet düğmesinin vurgulandığı öneri sayfası":::
+    :::image type="content" source="./media/security-center-remediate-recommendations/recommendation-enforce-button.png" alt-text="Zorunlu Düğme vurgulanmış öneri sayfası":::
 
     Yapılandırma bölmesi tüm ilke yapılandırma seçenekleriyle açılır. 
 
-    :::image type="content" source="./media/security-center-remediate-recommendations/recommendation-enforce-config.png" alt-text="Reddet düğmesinin vurgulandığı öneri sayfası":::
+    :::image type="content" source="./media/security-center-remediate-recommendations/recommendation-enforce-config.png" alt-text="Yapılandırma seçeneklerini zorunlu kıl":::
 
 1. Kapsam, atama adı ve diğer ilgili seçenekleri ayarlayın.
 
@@ -62,32 +62,51 @@ Bu, seçilen güvenlik önerileri için kaynak Ayrıntıları sayfasının en ü
 
 Bu öneriler, **reddetme** seçeneğiyle birlikte kullanılabilir:
 
-- Sanal makinelerin yeni Azure Resource Manager kaynaklara geçirilmesi gerekir
-- Depolama hesaplarının yeni Azure Resource Manager kaynaklarına geçirilmesi gerekir
-- RootManageSharedAccessKey hariç tüm yetkilendirme kuralları, Olay Hub 'ı ad alanından kaldırılmalıdır
-- RootManageSharedAccessKey hariç tüm yetkilendirme kuralları Service Bus ad alanından kaldırılmalıdır
-- Depolama hesaplarına güvenli aktarım etkinleştirilmelidir
+- Güvenlik Duvarı ve sanal ağ yapılandırmalarına sahip depolama hesaplarına erişim kısıtlı olmalıdır
+- Redo için Azure önbelleği bir sanal ağ içinde yer almalıdır
+- Azure Cosmos DB hesaplar, bekleyen verileri şifrelemek için müşteri tarafından yönetilen anahtarları kullanmalıdır
+- Azure Machine Learning çalışma alanları, müşteri tarafından yönetilen bir anahtarla şifrelenmelidir (CMK)
+- Azure yay bulutu, ağ ekleme kullanmalıdır
+- Bilişsel hizmetler hesapları, müşteri tarafından yönetilen bir anahtarla (CMK) veri şifrelemeyi etkinleştirmelidir
+- Kapsayıcı CPU ve bellek sınırları zorunlu kılınmalıdır
+- Kapsayıcı görüntüleri yalnızca güvenilen kayıt defterlerinden dağıtılmalıdır
+- Kapsayıcı kayıt defterleri, müşteri tarafından yönetilen bir anahtarla şifrelenmelidir (CMK)
+- Ayrıcalık yükseltme ile kapsayıcının önlenebilir olması gerekir
+- Gizli ana bilgisayar ad alanlarını paylaşan kapsayıcıların önlenebilir olması gerekir
+- Kapsayıcılar yalnızca izin verilen bağlantı noktalarında dinleme yapılmalıdır
+- Kapsayıcılar için sabit (salt okunurdur) kök dosya sistemi zorunlu kılınmalıdır
+- Key Vault anahtarların bir sona erme tarihi olmalıdır
+- Key Vault gizli dizileri için bir sona erme tarihi olmalıdır
+- Anahtar kasaları Temizleme koruması etkin olmalıdır
+- Anahtar kasaları geçici silme etkin olmalıdır
+- Kapsayıcılar için en az ayrıcalıklı Linux özellikleri zorlanmalıdır
 - Yalnızca Redis Cache güvenli bağlantılar etkinleştirilmelidir
-- Otomasyon hesabı değişkenleri şifrelenmelidir
-- Service Fabric kümeler yalnızca istemci kimlik doğrulaması için Azure Active Directory kullanmalıdır
+- Kapsayıcılar AppArmor profilinin geçersiz kılınması veya devre dışı bırakılması kısıtlanıyor
+- Ayrıcalıklı kapsayıcılar kaçınılmalıdır
+- Kök kullanıcı olarak çalışan kapsayıcılar önlenebilir olmalıdır
+- Depolama hesaplarına güvenli aktarım etkinleştirilmelidir
 - Service Fabric kümelerinde ClusterProtectionLevel özelliği EncryptAndSign olarak ayarlanmalıdır
-- Depolama hesaplarına Kısıtlanmamış ağ erişimini denetleme
-
+- Service Fabric kümeler yalnızca istemci kimlik doğrulaması için Azure Active Directory kullanmalıdır
+- Hizmetlerin yalnızca izin verilen bağlantı noktalarını dinlemesi gerekir
+- Depolama hesaplarının yeni Azure Resource Manager kaynaklarına geçirilmesi gerekir
+- Depolama hesapları, sanal ağ kurallarını kullanarak ağ erişimini kısıtlamalı
+- Konak ağ ve bağlantı noktalarının kullanımı sınırlandırılmalıdır
+- , Güvenliği aşılmış kapsayıcılardan düğüm erişimini kısıtlamak için pod HostPath birimi takiciler, bilinen bir listeyle sınırlandırılmalıdır
+- Azure Key Vault depolanan sertifikaların geçerlilik süresi 12 ayı aşmamalıdır
+- Sanal makinelerin yeni Azure Resource Manager kaynaklara geçirilmesi gerekir
+- Web uygulaması güvenlik duvarı (WAF) Application Gateway için etkinleştirilmelidir
+- Azure ön kapı hizmeti hizmeti için Web uygulaması güvenlik duvarı (WAF) etkinleştirilmelidir
 
 Bu öneriler, **zorla** seçeneğiyle birlikte kullanılabilir:
 
-- Logic Apps tanılama günlükleri etkinleştirilmelidir
-- Data Lake Analytics tanılama günlükleri etkinleştirilmelidir
-- IoT Hub tanılama günlükleri etkinleştirilmelidir
-- Batch hesaplarındaki tanılama günlükleri etkinleştirilmelidir
-- Azure Stream Analytics tanılama günlükleri etkinleştirilmelidir
-- Service Bus tanılama günlükleri etkinleştirilmelidir
-- Arama hizmetlerindeki tanılama günlükleri etkinleştirilmelidir
-- Olay Hub 'ındaki tanılama günlükleri etkinleştirilmelidir
-- Sanal makine ölçek kümelerindeki tanılama günlükleri etkinleştirilmelidir
-- Key Vault tanılama günlükleri etkinleştirilmelidir
 - SQL Server üzerinde denetim etkinleştirilmelidir
-- Gelişmiş veri güvenliği SQL sunucularınızda etkinleştirilmelidir
-
-
-
+- Sanal makineler için Azure Backup etkinleştirilmelidir
+- SQL Server 'larınızdaki SQL için Azure Defender etkinleştirilmelidir
+- Azure Stream Analytics tanılama günlükleri etkinleştirilmelidir
+- Batch hesaplarındaki tanılama günlükleri etkinleştirilmelidir
+- Data Lake Analytics tanılama günlükleri etkinleştirilmelidir
+- Olay Hub 'ındaki tanılama günlükleri etkinleştirilmelidir
+- Key Vault tanılama günlükleri etkinleştirilmelidir
+- Logic Apps tanılama günlükleri etkinleştirilmelidir
+- Arama hizmetlerindeki tanılama günlükleri etkinleştirilmelidir
+- Service Bus tanılama günlükleri etkinleştirilmelidir

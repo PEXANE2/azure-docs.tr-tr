@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: overview
 ms.date: 10/23/2020
-ms.openlocfilehash: 2dd60d1962734f7a4264587fd1b5b0d2a03c9ff0
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 37ba5fc7ce118e2e8532ea4db18634265aaacb64
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97359771"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99556856"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Azure Cosmos DB’ye hoş geldiniz
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -46,7 +46,7 @@ Açık kaynak API 'Leri, birden çok SDK, şemasız veri ve işlemsel veriler ü
 - .NET, Java, Node.js ve Python için SDK 'lar ile tercih ettiğiniz dilleri kullanarak çekirdek (SQL) API üzerinde uygulamalar oluşturun. Ya da diğer veritabanı API 'Leri için istediğiniz sürücü seçiminizi yapın.
 - Azure SYNAPSE Analytics ile Azure Cosmos DB depolanan neredeyse gerçek zamanlı işletimsel veriler üzerinde hiçbir ETL Analizi çalıştırın.
 - Değişiklik akışı, veritabanı kapsayıcılarındaki değişiklikleri izlemenizi ve yönetmeyi ve Azure Işlevleri ile tetiklenen olaylar oluşturmayı kolaylaştırır.
-- Azure Cosmos DB şema-daha az hizmeti, veri modelinden bağımsız olarak tüm verilerinizi otomatik olarak dizinleyebilir ve hızlı sorguları güçlendirme.
+- Azure Cosmos DB şema-Less hizmeti, veri modelinden bağımsız olarak tüm verilerinizi otomatik olarak dizinleyebilir ve hızlı sorgular sunar.
 
 ### <a name="mission-critical-ready"></a>Görev açısından kritik hazırlık
 

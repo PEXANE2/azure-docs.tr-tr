@@ -1,5 +1,5 @@
 ---
-title: Azure Sentinel Watchlists kullanma
+title: Azure Sentinel izleme listelerini kullanma
 description: Bu makalede, Azure Sentinel Watchlists araştırma tehditleri, iş verilerini içeri aktarma, izin verilenler listeleri oluşturma ve zengin olay verileri kullanma açıklanmaktadır.
 services: sentinel
 author: yelevin
@@ -10,14 +10,14 @@ ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.custom: mvc
 ms.date: 09/06/2020
-ms.openlocfilehash: e31128687cfcc1f4e32879328ad3227182efb9ce
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: 97509b878fb5e0cb28bddc5d1b58c21b32c34675
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98797333"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99555636"
 ---
-# <a name="use-azure-sentinel-watchlists"></a>Azure Sentinel Watchlists kullanma
+# <a name="use-azure-sentinel-watchlists"></a>Azure Sentinel izleme listelerini kullanma
 
 > [!IMPORTANT]
 > Watchlists özelliği şu anda **önizlemededir**. Beta, önizleme veya henüz genel kullanıma sunulmayan Azure özelliklerine uygulanan ek koşullar için [Microsoft Azure önizlemeleri için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) 'na bakın.
@@ -28,7 +28,7 @@ Watchlists kullanmaya yönelik yaygın senaryolar şunlardır:
 
 - IP adreslerinin, dosya karmalarının ve CSV dosyalarındaki diğer verilerin hızlı bir şekilde içeri aktarılması ile **tehditleri araştırma** ve olaylara yanıt verme. İçeri aktarıldıktan sonra, listem ad-değer çiftlerini, uyarı kuralları, tehdit arayışları, çalışma kitapları, Not defterleri ve genel sorgularda birleşimler ve filtreler için kullanabilirsiniz.
 
-- **İş verilerini** bir Watchlists olarak içeri aktarma. Örneğin, ayrıcalıklı sistem erişimi veya sonlandırılmış çalışanlar içeren kullanıcı listelerini içeri aktarın ve ardından bu kullanıcıların ağda oturum açmasını algılamak veya engellemek için kullanılan izin verme ve reddetme listeleri oluşturmak için listem kullanın.
+- **İş verilerini** bir listem olarak içeri aktarma. Örneğin, ayrıcalıklı sistem erişimi veya sonlandırılmış çalışanlar içeren kullanıcı listelerini içeri aktarın ve ardından bu kullanıcıların ağda oturum açmasını algılamak veya engellemek için kullanılan izin verme ve reddetme listeleri oluşturmak için listem kullanın.
 
 - **Uyarı durumunu azaltma**. Normalde uyarıyı tetikleyen görevleri gerçekleştiren yetkili IP adreslerinden kullanıcılar gibi kullanıcı grubundan gelen uyarıları bastırmak için izin verilenler listeleri oluşturun ve zararsız olayların uyarı haline gelmesini önler.
 

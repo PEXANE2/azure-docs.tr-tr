@@ -1,18 +1,18 @@
 ---
 title: Azure Stream Analytics için Azure Ilke mevzuat uyumluluk denetimleri
 description: Azure Stream Analytics için kullanılabilen Azure Ilke mevzuat uyumluluk denetimlerini listeler. Bu yerleşik ilke tanımları, Azure kaynaklarınızın uyumluluğunu yönetmek için yaygın yaklaşımlar sağlar.
-ms.date: 01/29/2021
+ms.date: 02/04/2021
 ms.topic: sample
 author: sidramadoss
 ms.author: sidram
 ms.service: stream-analytics
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 65bc4ac346021505db658f5e063b81f388d660d8
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 5621a3cc7b8332850f1caeb6e10b6759db8b93a9
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99093119"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99555259"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-stream-analytics"></a>Azure Stream Analytics için Azure Ilke mevzuat uyumluluk denetimleri
 

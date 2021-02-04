@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 07/16/2020
-ms.openlocfilehash: f5d7094920a21af630e10aec2aa759ce9c505050
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: 8d9f54c1fcd142c77fb73c294b81bf0f11ee083f
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 02/04/2021
-ms.locfileid: "99550593"
+ms.locfileid: "99557692"
 ---
 # <a name="edit-qna-pairs-in-your-knowledge-base"></a>Bilgi bankasındaki QnA çiftlerini düzenleme
 
@@ -38,6 +38,8 @@ Bir çiftin **isteğe bağlı** ayarları şunlardır:
 ![Bilgi temellerini Soru-Cevap Oluşturma](../media/qnamaker-concepts-knowledgebase/knowledgebase.png)
 
 ## <a name="add-an-editorial-qna-pair"></a>Bir düzenleme QnA çifti ekleyin
+
+Bilgi bankasını doldurmak için önceden mevcut içeriğiniz yoksa, Soru-Cevap Oluşturma portalına genel olarak QnA çiftleri ekleyebilirsiniz.
 
 1. Soru- [cevap portalı](https://www.qnamaker.ai/)' nda oturum açın ve ardından QNA çiftini eklemek için Bilgi Bankası ' nı seçin.
 1. Bilgi Bankası 'nın **düzenleme** sayfasında, yeni bir QNA çifti eklemek Için **QNA Pair Ekle** ' yi seçin.

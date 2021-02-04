@@ -7,12 +7,12 @@ author: DaleKoetke
 ms.author: dalek
 ms.date: 5/7/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: 69ac1e82c267dee521143c4ed5f6c2be4d32e2ea
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: 477a96f1bf66255b11b2fee36c38e55b18cddb69
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96531335"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99556126"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Application Insights için kullanımı ve maliyetleri yönetme
 
@@ -186,7 +186,7 @@ Aşağıdaki teknikler kullanılarak, göndereceğiniz verilerin hacmi yönetile
 
 * **Örnekleme**:, ölçümlerde en az deformasyon ile sunucu ve istemci uygulamalarından gönderilen telemetri miktarını azaltmak için örnekleme kullanabilirsiniz. Örnekleme, göndereceğiniz veri miktarını ayarlamak için kullanabileceğiniz birincil araçtır. [Örnekleme özellikleri](./sampling.md)hakkında daha fazla bilgi edinin.
 
-* **Ajax çağrılarını sınırlandırma**: her sayfa görünümünde [bildirilemeyen Ajax çağrısı sayısını sınırlayabilir](./javascript.md#configuration) veya Ajax raporlamayı devre dışı bırakabilirsiniz.
+* **Ajax çağrılarını sınırlandırma**: her sayfa görünümünde [bildirilemeyen Ajax çağrısı sayısını sınırlayabilir](./javascript.md#configuration) veya Ajax raporlamayı devre dışı bırakabilirsiniz. Ajax çağrılarını devre dışı bırakmanın [JavaScript bağıntısını](./javascript.md#enable-correlation)devre dışı bırakacağına unutmayın.
 
 * **Gereksiz modülleri devre dışı bırak**: ihtiyacınız olmayan koleksiyon modüllerini kapatmak için [ApplicationInsights.configdüzenleyin](./configuration-with-applicationinsights-config.md) . Örneğin, performans sayaçları veya bağımlılık verilerinin yoksayılması olduğuna karar verebilirsiniz.
 

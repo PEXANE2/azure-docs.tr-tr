@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/25/2021
 ms.author: memildin
-ms.openlocfilehash: 8ef0fedcbf7ce06063db22fb345a0711acddcb4d
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: a2c29049decc056f0d3c8083d21574456610c124
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99526390"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99555134"
 ---
 # <a name="important-upcoming-changes-to-azure-security-center"></a>Azure Güvenlik Merkezi 'Nde yapılan önemli değişiklikler
 
@@ -33,6 +33,7 @@ En son sürüm notlarını arıyorsanız, bunları [Azure Güvenlik Merkezi 'nde
 
 - ["Sistem güncelleştirmelerini Uygula" güvenlik denetiminin kullanım dışı olmasının iki önerisi](#two-recommendations-from-apply-system-updates-security-control-being-deprecated)
 - [SQL veri sınıflandırması önerisine yönelik geliştirmeler](#enhancements-to-sql-data-classification-recommendation)
+- [11 Azure Defender uyarılarının kullanımdan kaldırılması](#deprecation-of-11-azure-defender-alerts)
 
 ### <a name="two-recommendations-from-apply-system-updates-security-control-being-deprecated"></a>"Sistem güncelleştirmelerini Uygula" güvenlik denetiminin kullanım dışı olmasının iki önerisi 
 
@@ -53,6 +54,37 @@ Bu önerilerin bunlara dahil edilip edilmeyeceğini görmek için sürekli dış
 **Değişikliğin tahmini tarihi:** S2 2021
 
 **SQL veritabanlarınızdaki önerinin önemli verileri** , **veri sınıflandırması Uygula** güvenlik denetiminde sınıflandırılmalıdır ve Microsoft 'un veri sınıflandırması stratejisiyle daha iyi hizalanmış yeni bir sürümle değiştirilmelidir. Sonuç olarak, önerinin KIMLIĞI de değişecektir (Şu anda b0df6f56-862D-4730-8597-38c0fd4ebd59).
+
+
+### <a name="deprecation-of-11-azure-defender-alerts"></a>11 Azure Defender uyarılarının kullanımdan kaldırılması
+
+**Değişikliğin tahmini tarihi:** Mart 2021
+
+Sonraki ay, aşağıda listelenen on bir Azure Defender uyarısı kullanım dışı olacaktır.
+
+- Yeni uyarılar, bu iki uyarıyı değiştirecek ve daha iyi kapsam sağlayacak:
+
+    | AlertType                | AlertDisplayName                                                         |
+    |--------------------------|--------------------------------------------------------------------------|
+    | ARM_MicroBurstDomainInfo | PREVIEW-mikro patlama araç seti "Get-AzureDomainInfo" işlev çalıştırması algılandı |
+    | ARM_MicroBurstRunbook    | PREVIEW-mikro patlama araç seti "Get-AzurePasswords" işlev çalıştırması algılandı  |
+    |                          |                                                                          |
+
+- Bu dokuz uyarı, zaten kullanım dışı bırakılmış bir Azure Active Directory Kimlik Koruması Bağlayıcısı ile ilgilidir:
+
+    | AlertType           | AlertDisplayName              |
+    |---------------------|-------------------------------|
+    | UnfamiliarLocation  | Bilinmeyen oturum açma özellikleri |
+    | AnonymousLogin      | Anonim IP adresi          |
+    | Bulaşıp Teddevicelogin | Kötü amaçlı yazılım bağlı IP adresi     |
+    | Impossıbleseyahat    | Olağandışı yolculuk               |
+    | MaliciousIP         | Kötü amaçlı IP adresi          |
+    | LeakedCredentials   | Sızdırılan kimlik bilgileri            |
+    | Passwordpüskürtme       | Parola spreyi                |
+    | LeakedCredentials   | Azure AD tehdit bilgileri  |
+    | AADAı               | Azure AD AI                   |
+    |                     |                               |
+ 
 
 
 
