@@ -16,12 +16,12 @@ ms.custom:
 ms.date: 02/22/2019
 ms.topic: tutorial
 ms.service: iot-hub
-ms.openlocfilehash: d9ca9dd345be7fb8f1a2b613386bdca7bdcd835a
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.openlocfilehash: 253ec23a421415c11e4b47670dca870ebc463256
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99070396"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99538774"
 ---
 # <a name="tutorial-use-a-simulated-device-to-test-connectivity-with-your-iot-hub"></a>Öğretici: IoT hub’ınızla bağlantıyı test etmek için bir simülasyon cihazı kullanma
 
@@ -66,15 +66,15 @@ Hub ile herhangi bir veri alışverişi yapmak için cihazın hub'ınızda kimli
 
 Portalda oturum açın ve IoT Hub'ınıza gidin. Ardından **IoT cihazları** aracına gidin:
 
-![IoT cihazları aracı](media/tutorial-connectivity/iot-devices-tool.png)
+:::image type="content" source="media/tutorial-connectivity/iot-devices-tool.png" alt-text="IoT cihazları aracı":::
 
-Yeni bir cihaz kaydetmek için **+ Ekle**’ye tıklayın, **Cihaz Kimliği**’ni **MyTestDevice** olarak ayarlayın ve **Kaydet**’e tıklayın:
+Yeni bir cihaz kaydetmek için **+ Yeni**' ye tıklayın, **cihaz kimliğini** **mytestdevice** olarak ayarlayın ve **Kaydet**' e tıklayın.
 
-![Yeni cihaz ekleme](media/tutorial-connectivity/add-device.png)
+:::image type="content" source="media/tutorial-connectivity/add-device.png" alt-text="Yeni cihaz ekleme":::
 
-**MyTestDevice**’ın bağlantı dizesini almak için cihazlar listesinde ona tıklayın ve ardından **Bağlantı dizesi birincil anahtarı** değerini kopyalayın. Bağlantı dizesi cihaz için *paylaşılan erişim anahtarını* içerir.
+**Mytestdevice** için bağlantı dizesini almak için, cihaz listesinden tıklatın ve ardından **birincil bağlantı dizesi** değerini kopyalayın. Bağlantı dizesi cihaz için *paylaşılan erişim anahtarını* içerir.
 
-![Cihaz bağlantı dizesini alma](media/tutorial-connectivity/copy-connection-string.png)
+:::image type="content" source="media/tutorial-connectivity/copy-connection-string.png" alt-text="Cihaz bağlantı dizesini al}":::
 
 **MyTestDevice**’ın IoT hub'ınıza telemetri göndermesini denemek için daha önce indirdiğiniz Node.js simülasyon cihazı uygulamasını çalıştırın.
 
@@ -218,7 +218,7 @@ Doğrudan yöntem çağrısı aldığında, simülasyon cihazı konsola bir ilet
 
 ![Simülasyon cihazı doğrudan yöntem çağrısı aldığında](media/tutorial-connectivity/receive-method-call.png)
 
-Simülasyon cihazı başarıyla doğrudan yöntem çağrısı aldığında, hub'a bir onay gönderir:
+Sanal cihaz doğrudan yöntem çağrısını başarıyla aldığında, hub 'a geri bildirim gönderir:
 
 ![Doğrudan yöntem bildirimi al](media/tutorial-connectivity/method-acknowledgement.png)
 

@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 01/21/2021
+ms.date: 02/03/2021
 ms.author: aahi
 ms.custom: references_regions
-ms.openlocfilehash: d7f71afd1cf47ab1a94d984090e8fb52ee69c6b4
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: f7ba6363ec3a38d37ea3df0f76409289069638e8
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99088947"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99537805"
 ---
 # <a name="how-to-use-text-analytics-for-health-preview"></a>Nasıl yapılır: sistem durumu için Metin Analizi kullanma (Önizleme)
 
@@ -113,6 +113,9 @@ Belge boyutunun belge başına 5.120 karakter altında olması gerekir. Bir kole
 ### <a name="structure-the-api-request-for-the-hosted-asynchronous-web-api"></a>Barındırılan zaman uyumsuz Web API 'SI için API isteğini yapılandırma
 
 Hem kapsayıcı hem de barındırılan Web API 'SI için bir POST isteği oluşturmanız gerekir. İstediğiniz bölgedeki barındırılan Web API 'sine hızlı bir şekilde bir POST isteği oluşturmak ve göndermek için [sistem durumu BARıNDıRıLAN API başvurusu için metin analizi](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/operations/Health) [Postman](text-analytics-how-to-call-api.md)'ı, bir kıvrımlı komutu veya **API test konsolunu** kullanabilirsiniz. 
+
+> [!NOTE]
+> Hem zaman uyumsuz `/analyze` hem de `/health` uç noktalar yalnızca şu bölgelerde kullanılabilir: Batı ABD 2, Doğu ABD 2, Orta ABD, Kuzey Avrupa ve Batı Avrupa.  Bu uç noktalara başarılı istekler yapmak için lütfen kaynağınızın bu bölgelerden birinde oluşturulduğundan emin olun.
 
 Aşağıda, sistem sağlığı API isteğinin GÖNDERI gövdesinde Metin Analizi eklenmiş bir JSON dosyası örneği verilmiştir:
 

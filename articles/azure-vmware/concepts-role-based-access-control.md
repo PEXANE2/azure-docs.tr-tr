@@ -2,13 +2,13 @@
 title: Kavramlar-vSphere rol tabanlı erişim denetimi (vSphere RBAC)
 description: Azure VMware çözümü için vSphere rol tabanlı erişim denetimi 'nin temel özellikleri hakkında bilgi edinin
 ms.topic: conceptual
-ms.date: 10/23/2020
-ms.openlocfilehash: 6f5c30b070b010f312d038d8286be994039c56f8
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.date: 02/02/2021
+ms.openlocfilehash: 9d7c724fba194d86c2d73bb8323439de7c83c170
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99509257"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99537027"
 ---
 # <a name="vsphere-role-based-access-control-vsphere-rbac-for-azure-vmware-solution"></a>Azure VMware çözümü için vSphere rol tabanlı erişim denetimi (vSphere RBAC)
 
@@ -35,7 +35,7 @@ Azure VMware Çözüm CloudAdmin rolüne verilen ayrıcalıkları Azure VMware �
 
 Azure VMware çözümünde CloudAdmin rolü vCenter üzerinde aşağıdaki ayrıcalıklara sahiptir. Her ayrıcalık hakkında ayrıntılı bir açıklama için [VMware ürün belgelerine](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.security.doc/GUID-ED56F3C4-77D0-49E3-88B6-B99B8B437B62.html) bakın.
 
-| Privilege | Açıklama |
+| Privilege | Description |
 | --------- | ----------- |
 | **Alarmlar** | Alarmı kabul et<br />Alarm oluştur<br />Alarm eylemini devre dışı bırak<br />Uyarıyı Değiştir<br />Alarmı kaldır<br />Alarm durumunu ayarla |
 | **İzinler** | İzinleri değiştir |

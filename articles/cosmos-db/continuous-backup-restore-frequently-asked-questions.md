@@ -7,17 +7,22 @@ ms.topic: conceptual
 ms.date: 02/01/2021
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 7a41eb8bdd573ac08b0c76eb9a6c2b0724637c39
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: c0af1db12f3ade2945524f48e4539d2d2e9aa6b9
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99527964"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99539198"
 ---
-# <a name="frequently-asked-questions-on-the-azure-cosmos-db-point-in-time-restore-feature"></a>Azure Cosmos DB zaman noktası geri yükleme özelliği hakkında sık sorulan sorular
+# <a name="frequently-asked-questions-on-the-azure-cosmos-db-point-in-time-restore-feature-preview"></a>Azure Cosmos DB zaman noktası geri yükleme özelliği (Önizleme) hakkında sık sorulan sorular
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
 
-Bu makalede, sürekli yedekleme modu kullanılarak elde edilen Azure Cosmos DB zaman noktası geri yükleme işlevselliği hakkında sık sorulan sorular listelenmektedir.
+> [!IMPORTANT]
+> Azure Cosmos DB için zaman noktası geri yükleme özelliği (sürekli yedekleme modu) Şu anda genel önizlemededir.
+> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir.
+> Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+Bu makalede, sürekli yedekleme modu kullanılarak elde edilen Azure Cosmos DB zaman noktası geri yükleme işlevselliği (Önizleme) hakkında sık sorulan sorular listelenmektedir.
 
 ## <a name="how-much-time-does-it-takes-to-restore"></a>Ne kadar zaman geri yükleme sürüyor?
 Geri yükleme süresi verilerinizin boyutuna bağlıdır.

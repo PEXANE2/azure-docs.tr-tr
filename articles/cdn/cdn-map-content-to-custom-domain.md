@@ -7,15 +7,15 @@ author: asudbring
 manager: KumudD
 ms.service: azure-cdn
 ms.topic: tutorial
-ms.date: 11/06/2020
+ms.date: 02/04/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 03ed47ee97f52aca708118f202fad583753549bf
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.openlocfilehash: b0e8f2b14d506eb408660b939a7c925a33215cca
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94331226"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99537754"
 ---
 # <a name="tutorial-add-a-custom-domain-to-your-endpoint"></a>Öğretici: uç noktanıza özel etki alanı ekleme
 
@@ -79,22 +79,22 @@ Azure CDN uç noktanız için bir diğer ad kaydı eklemek için:
 
 2. Sol taraftaki menüden **tüm kaynaklar** ' ı ve ardından özel etki alanınız için Azure DNS bölgesini seçin.
 
-3. Özel etki alanınız için DNS bölgesinde **+ kayıt kümesi** ' ni seçin.
+3. Özel etki alanınız için DNS bölgesinde **+ kayıt kümesi**' ni seçin.
 
 4. **Kayıt kümesi Ekle** ' de aşağıdaki bilgileri girin veya seçin:
 
     | Ayar | Değer |
     | ------- | ----- |
     | Ad  | CDN uç noktanız için kullanmak istediğiniz diğer adı girin. Örneğin, **www**. |
-    | Tür  | **CNAME** ' i seçin. |
-    | Diğer ad kayıt kümesi | **Evet** ’i seçin. |
-    | Diğer ad türü | **Azure kaynağı** ' nı seçin. |
+    | Tür  | **CNAME**' i seçin. |
+    | Diğer ad kayıt kümesi | **Evet**’i seçin. |
+    | Diğer ad türü | **Azure kaynağı**' nı seçin. |
     | Abonelik seçin | Aboneliğinizi seçin. |
     | Azure kaynağı | Azure CDN uç noktanızı seçin. |
 
 5. Kayıt için **TTL** değerini değer olarak değiştirin.
 
-6. **Tamam** ’ı seçin.
+6. **Tamam**’ı seçin.
 
 # <a name="dns-provider"></a>[**DNS sağlayıcısı**](#tab/dns-provider)
 
@@ -163,24 +163,28 @@ Bu bölümde kalıcı özel etki alanını CDN uç noktasıyla eşlersiniz.
 
 Özel etki alanınızı kaydettikten sonra CDN uç noktanıza ekleyebilirsiniz. 
 
+
+---
+# <a name="azure-portal"></a>[**Azure portal**](#tab/azure-portal)
+
 1. [Azure portalında](https://portal.azure.com/) oturum açın ve bir özel etki alanına eşlemek istediğiniz uç noktayı içeren CDN profiline göz atın.
     
 2. **CDN profili** sayfasında, özel etki alanı ile ilişkilendirilecek CDN uç noktasını seçin.
 
     :::image type="content" source="media/cdn-map-content-to-custom-domain/cdn-endpoint-selection.png" alt-text="CDN uç noktası seçimi" border="true":::
     
-3. **+ Özel etki alanı** ' nı seçin. 
+3. **+ Özel etki alanı**' nı seçin. 
 
    :::image type="content" source="media/cdn-map-content-to-custom-domain/cdn-custom-domain-button.png" alt-text="Özel etki alanı Ekle düğmesi" border="true":::
 
-4. **Özel etki alanı Ekle** ' de, **uç nokta ana bilgisayar adı** önceden doldurulmuştur ve CDN uç nokta URL 'nizden türetilir: **\<endpoint-hostname>** . azureedge.net. Bu değer değiştirilemez.
+4. **Özel etki alanı Ekle**' de, **uç nokta ana bilgisayar adı** önceden doldurulmuştur ve CDN uç nokta URL 'nizden türetilir: **\<endpoint-hostname>** . azureedge.net. Bu değer değiştirilemez.
 
 5. **Özel ana bilgisayar adı** için, CNAME kaydınızın kaynak etki alanı olarak kullanılacak alt etki alanı dahil özel etki alanınızı girin. 
     1. Örneğin, **www.contoso.com** veya **CDN.contoso.com**. **Cdnverify alt etki alanı adını kullanmayın**.
 
     :::image type="content" source="media/cdn-map-content-to-custom-domain/cdn-add-custom-domain.png" alt-text="Özel etki alanı Ekle" border="true":::
 
-6. **Ekle** ’yi seçin.
+6. **Ekle**’yi seçin.
 
    Azure, girdiğiniz özel etki alanı adı için CNAME kaydının bulunduğunu doğrular. CNAME doğruysa, özel etki alanınız doğrulanır. 
 
@@ -189,7 +193,43 @@ Bu bölümde kalıcı özel etki alanını CDN uç noktasıyla eşlersiniz.
     - **Akamai’den Azure CDN Standart** profilleri için yayma işlemi genellikle bir dakika içinde tamamlanır. 
     - **Verizon’dan Azure CDN Standart** ve **Verizon’dan Azure CDN Premium** profilleri için yayma işlemi genellikle 10 dakika içinde tamamlanır.   
 
+# <a name="powershell"></a>[**PowerShell**](#tab/azure-powershell)
 
+1. Azure PowerShell oturum açın:
+
+```azurepowershell-interactive
+    Connect-AzAccount
+
+```
+2. Özel etki alanını CDN uç noktanızla eşlemek için [New-AzCdnCustomDomain](/powershell/module/az.cdn/new-azcdncustomdomain) komutunu kullanın. 
+
+    * **Myendpoint8675.azureedge.net** değerini Endpoint URL 'niz ile değiştirin.
+    * **Myendpoint8675** değerini CDN uç nokta adınızla değiştirin.
+    * **Www.contoso.com** değerini özel etki alanı adınızla değiştirin.
+    * **Mycdn** 'yi CDN profil adınızla değiştirin.
+    * **Myresourcegroupcdn** değerini kaynak grubu adınızla değiştirin.
+
+```azurepowershell-interactive
+    $parameters = @{
+        Hostname = 'myendpoint8675.azureedge.net'
+        EndPointName = 'myendpoint8675'
+        CustomDomainName = 'www.contoso.com'
+        ProfileName = 'myCDN'
+        ResourceGroupName = 'myResourceGroupCDN'
+    }
+    New-AzCdnCustomDomain @parameters
+```
+
+Azure, girdiğiniz özel etki alanı adı için CNAME kaydının bulunduğunu doğrular. CNAME doğruysa, özel etki alanınız doğrulanır. 
+
+   Yeni özel etki alanı ayarlarının tüm CDN kenar düğümlerine yayılması biraz sürebilir: 
+
+- **Microsoft’tan Azure CDN Standart** profilleri için yayma işlemi genellikle 10 dakikada tamamlanır. 
+- **Akamai’den Azure CDN Standart** profilleri için yayma işlemi genellikle bir dakika içinde tamamlanır. 
+- **Verizon’dan Azure CDN Standart** ve **Verizon’dan Azure CDN Premium** profilleri için yayma işlemi genellikle 10 dakika içinde tamamlanır.   
+
+
+---
 ## <a name="verify-the-custom-domain"></a>Özel etki alanını doğrulama
 
 Özel etki alanınızı kaydınızı tamamladıktan sonra, özel etki alanının CDN uç noktanıza başvurduğundan emin olun.
@@ -200,14 +240,40 @@ Bu bölümde kalıcı özel etki alanını CDN uç noktasıyla eşlersiniz.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
+---
+# <a name="azure-portal"></a>[**Azure portal**](#tab/azure-portal-cleanup)
+
 Uç noktanızı artık özel bir etki alanıyla ilişkilendirmek istemiyorsanız, aşağıdaki adımları uygulayarak özel etki alanını kaldırın:
  
 1. CDN profilinizde kaldırmak istediğiniz özel etki alanını içeren uç noktayı seçin.
 
-2. **Uç nokta** sayfasındaki Özel etki alanları altında, kaldırmak istediğiniz özel etki alanına sağ tıklayın ve sonra açılır menüden **Sil** ’i seçin. **Evet** ’i seçin.
+2. **Uç nokta** sayfasındaki Özel etki alanları altında, kaldırmak istediğiniz özel etki alanına sağ tıklayın ve sonra açılır menüden **Sil**’i seçin. **Evet**’i seçin.
 
    Özel etki alanının uç noktanızla ilişkisi silinir.
 
+# <a name="powershell"></a>[**PowerShell**](#tab/azure-powershell-cleanup)
+
+Uç noktanızı artık özel bir etki alanıyla ilişkilendirmek istemiyorsanız, aşağıdaki adımları uygulayarak özel etki alanını kaldırın:
+
+1. Özel etki alanını uç noktadan kaldırmak için [Remove-AzCdnCustomDomain](/powershell/module/az.cdn/remove-azcdncustomdomain) komutunu kullanın:
+
+    * **Myendpoint8675** değerini CDN uç nokta adınızla değiştirin.
+    * **Www.contoso.com** değerini özel etki alanı adınızla değiştirin.
+    * **Mycdn** 'yi CDN profil adınızla değiştirin.
+    * **Myresourcegroupcdn** değerini kaynak grubu adınızla değiştirin.
+
+
+```azurepowershell-interactive
+    $parameters = @{
+        CustomDomainName = 'www.contoso.com'
+        EndPointName = 'myendpoint8675'
+        ProfileName = 'myCDN'
+        ResourceGroupName = 'myResourceGroupCDN'
+    }
+    Remove-AzCdnCustomDomain @parameters
+```
+
+---
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:

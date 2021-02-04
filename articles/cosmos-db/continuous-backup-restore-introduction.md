@@ -8,17 +8,22 @@ ms.date: 02/01/2021
 ms.author: govindk
 ms.reviewer: sngun
 ms.custom: references_regions
-ms.openlocfilehash: f8ba08c6147320160e99e522536f00fc98855eb4
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 036f086c88267f6a20da51746ca875c48a248712
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99527867"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99538865"
 ---
-# <a name="continuous-backup-with-point-in-time-restore-feature-in-azure-cosmos-db"></a>Azure Cosmos DB içindeki noktadan noktaya geri yükleme özelliği ile sürekli yedekleme
+# <a name="continuous-backup-with-point-in-time-restore-preview-feature-in-azure-cosmos-db"></a>Azure Cosmos DB içindeki noktadan noktaya geri yükleme (Önizleme) özelliği ile sürekli yedekleme
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
 
-Azure Cosmos DB zaman içinde geri yükleme özelliği, aşağıdakiler gibi birden çok senaryoya yardımcı olur:
+> [!IMPORTANT]
+> Azure Cosmos DB için zaman noktası geri yükleme özelliği (sürekli yedekleme modu) Şu anda genel önizlemededir.
+> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir.
+> Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+Azure Cosmos DB zaman içinde geri yükleme özelliği (Önizleme), aşağıdakiler gibi birden çok senaryoya yardımcı olur:
 
 * Bir kapsayıcı içindeki yanlışlıkla yazma veya silme işleminden kurtarmak için.
 * Silinen bir hesabı, veritabanını veya kapsayıcıyı geri yüklemek için.
@@ -58,17 +63,17 @@ Aşağıda, zaman içinde belirli bir noktaya geri yükleme özelliği tarafınd
 
 :::image type="content" source="./media/continuous-backup-restore-introduction/restorable-account-scenario.png" alt-text="Geri yüklenebilen bir hesap için zaman damgalarına sahip ömür döngüsü olayları." lightbox="./media/continuous-backup-restore-introduction/restorable-account-scenario.png" border="false":::
 
-a. **Silinen hesabı geri yükle** -geri yüklediğiniz tüm silinen hesaplar **geri yükleme** bölmesinden görünür. Örneğin, "Account A" ı T3 zaman damgasında silinirse. Bu durumda, T3, konum, hedef hesap adı, kaynak grubu ve hedef hesap adından hemen önce gelen zaman damgası [Azure Portal](continuous-backup-restore-portal.md#restore-deleted-account), [PowerShell](continuous-backup-restore-powershell.md#trigger-restore)veya [CLI](continuous-backup-restore-command-line.md)'dan geri yüklemek için yeterlidir.  
+a. **Silinen hesabı geri yükle** -geri yüklediğiniz tüm silinen hesaplar **geri yükleme** bölmesinden görünür. Örneğin, "Account A" ı T3 zaman damgasında silinirse. Bu durumda, T3, konum, hedef hesap adı, kaynak grubu ve hedef hesap adından hemen önce gelen zaman damgası [Azure Portal](continuous-backup-restore-portal.md#restore-deleted-account), [PowerShell](continuous-backup-restore-powershell.md#trigger-restore)veya [CLI](continuous-backup-restore-command-line.md#trigger-restore)'dan geri yüklemek için yeterlidir.  
 
 :::image type="content" source="./media/continuous-backup-restore-introduction/restorable-container-database-scenario.png" alt-text="Geri yüklenebilen bir veritabanı ve kapsayıcı için zaman damgalarına sahip ömür döngüsü olayları." lightbox="./media/continuous-backup-restore-introduction/restorable-container-database-scenario.png" border="false":::
 
-b. **Belirli bir bölgedeki bir hesabın verilerini geri yükleme** -Örneğin, "Doğu ABD" ve "Batı ABD" iki bölgede "hesap a" varsa, zaman damgası: T3. "Batı ABD" içinde A hesabının bir kopyasına ihtiyacınız varsa, hedef konum olarak Batı ABD ile [Azure Portal](continuous-backup-restore-portal.md), [PowerShell](continuous-backup-restore-powershell.md)veya [CLI](continuous-backup-restore-command-line.md) 'dan bir zaman noktası geri yüklemesi yapabilirsiniz.
+b. **Belirli bir bölgedeki bir hesabın verilerini geri yükleme** -Örneğin, "Doğu ABD" ve "Batı ABD" iki bölgede "hesap a" varsa, zaman damgası: T3. "Batı ABD" içinde A hesabının bir kopyasına ihtiyacınız varsa, hedef konum olarak Batı ABD ile [Azure Portal](continuous-backup-restore-portal.md), [PowerShell](continuous-backup-restore-powershell.md#trigger-restore)veya [CLI](continuous-backup-restore-command-line.md#trigger-restore) 'dan bir zaman noktası geri yüklemesi yapabilirsiniz.
 
-c. **Bilinen bir geri yükleme zaman damgasına sahip bir kapsayıcı içindeki yanlışlıkla yazma veya silme Işleminden kurtarma** yapın; Örneğin, "veritabanı 1" Içindeki "kapsayıcı 1" öğesinin içeriğinin zaman damgası T3 ' de yanlışlıkla değiştirildiğini **biliyorsanız** . İstediğiniz kapsayıcı durumunu kurtarmak için [Azure Portal](continuous-backup-restore-portal.md), [PowerShell](continuous-backup-restore-powershell.md)veya [CLI](continuous-backup-restore-command-line.md) 'dan zaman damgası T3 ' den başka bir hesaba geri yükleme yapabilirsiniz.
+c. **Bilinen bir geri yükleme zaman damgasına sahip bir kapsayıcı içindeki yanlışlıkla yazma veya silme Işleminden kurtarma** yapın; Örneğin, "veritabanı 1" Içindeki "kapsayıcı 1" öğesinin içeriğinin zaman damgası T3 ' de yanlışlıkla değiştirildiğini **biliyorsanız** . İstediğiniz kapsayıcı durumunu kurtarmak için [Azure Portal](continuous-backup-restore-portal.md#restore-live-account), [PowerShell](continuous-backup-restore-powershell.md#trigger-restore)veya [CLI](continuous-backup-restore-command-line.md#trigger-restore) 'dan zaman damgası T3 ' den başka bir hesaba geri yükleme yapabilirsiniz.
 
-d. **Veritabanını yanlışlıkla silmeden önce bir hesabı önceki bir noktaya geri yükleme** - [Azure Portal](continuous-backup-restore-portal.md), bir veritabanının ne zaman silindiğini ve geri yükleme zamanını bulmak için olay akışı bölmesini kullanabilirsiniz. Benzer şekilde, [Azure CLI](continuous-backup-restore-command-line.md) ve [PowerShell](continuous-backup-restore-powershell.md)ile veritabanı olayları akışını numaralandırarak veritabanı silme olayını bulabilir ve ardından restore komutunu gerekli parametrelerle tetikleyebilirsiniz.
+d. **Veritabanını yanlışlıkla silmeden önce bir hesabı önceki bir noktaya geri yükleme** - [Azure Portal](continuous-backup-restore-portal.md#restore-live-account), bir veritabanının ne zaman silindiğini ve geri yükleme zamanını bulmak için olay akışı bölmesini kullanabilirsiniz. Benzer şekilde, [Azure CLI](continuous-backup-restore-command-line.md#trigger-restore) ve [PowerShell](continuous-backup-restore-powershell.md#trigger-restore)ile veritabanı olayları akışını numaralandırarak veritabanı silme olayını bulabilir ve ardından restore komutunu gerekli parametrelerle tetikleyebilirsiniz.
 
-e. **Kapsayıcı özelliklerini yanlışlıkla silme veya değiştirme işleminden önce bir hesabı önceki bir zaman noktasına geri yükleyin.** [Azure Portal](continuous-backup-restore-portal.md), geri yükleme süresini bulmak için bir kapsayıcının ne zaman oluşturulduğunu, değiştirildiğini veya silindiğini öğrenmek için olay akışı bölmesini kullanabilirsiniz. Benzer şekilde, [Azure CLI](continuous-backup-restore-command-line.md) ve [PowerShell](continuous-backup-restore-powershell.md)ile kapsayıcı olayları akışını silerek tüm kapsayıcı olaylarını bulabilir ve ardından restore komutunu gerekli parametrelerle tetikleyebilirsiniz.
+e. **Kapsayıcı özelliklerini yanlışlıkla silme veya değiştirme işleminden önce bir hesabı önceki bir zaman noktasına geri yükleyin.** [Azure Portal](continuous-backup-restore-portal.md#restore-live-account), geri yükleme süresini bulmak için bir kapsayıcının ne zaman oluşturulduğunu, değiştirildiğini veya silindiğini öğrenmek için olay akışı bölmesini kullanabilirsiniz. Benzer şekilde, [Azure CLI](continuous-backup-restore-command-line.md#trigger-restore) ve [PowerShell](continuous-backup-restore-powershell.md#trigger-restore)ile kapsayıcı olayları akışını silerek tüm kapsayıcı olaylarını bulabilir ve ardından restore komutunu gerekli parametrelerle tetikleyebilirsiniz.
 
 ## <a name="permissions"></a>İzinler
 

@@ -14,12 +14,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 849c159f31a14441ef9c6aa19b8704b286727bd7
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: 7c89bfab6c4914cee26726006e6928eeb14c0686
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99507190"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99538196"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory'de yönetici rolü izinleri
 
@@ -1046,18 +1046,19 @@ Temel dizin bilgilerini okuyabilir & yazabilir. Uygulamalara erişim vermek içi
 | --- | --- |
 | Microsoft. Azure. serviceHealth/Allentitıes/allTasks | Azure hizmet durumunu okuyun ve yapılandırın. |
 | Microsoft. Azure. Supportbilet/allEntities/allTasks | Dizin düzeyinde hizmetler için Azure destek biletleri oluşturun ve yönetin. |
-| Microsoft. Directory/Groups/Unified/Approtaatamalar/Update | Azure Active Directory groups. Unified özelliğini güncelleştirin. |
-| Microsoft. Directory/gruplar/Unified/Basic/Update | Microsoft 365 gruplarının temel özelliklerini güncelleştirin. |
-| Microsoft. Directory/gruplar/Birleşik/oluşturma | Microsoft 365 grupları oluşturun. |
-| Microsoft. Directory/gruplar/Birleşik/Delete | Microsoft 365 grupları silin. |
-| Microsoft. Directory/gruplar/Birleşik/Üyeler/güncelleştirme | Microsoft 365 gruplarının üyeliğini güncelleştirin. |
-| Microsoft. Directory/gruplar/Birleşik/sahipler/güncelleştirme | Microsoft 365 gruplarının sahipliğini güncelleştirin. |
+| Microsoft. Directory/Groups/hiddenMembers/Read | Bir grubun gizli üyelerini oku |
+| Microsoft. Directory/groups. Unified/Basic/Update | Microsoft 365 gruplarının temel özelliklerini güncelleştirin. |
+| Microsoft. Directory/groups. Unified/Create | Microsoft 365 grupları oluşturun. |
+| Microsoft. Directory/groups. Unified/Delete | Microsoft 365 grupları silin. |
+| Microsoft. Directory/groups. Unified/restore | Microsoft 365 gruplarını geri yükleme |
+| Microsoft. Directory/groups. Unified/Members/Update | Microsoft 365 gruplarının üyeliğini güncelleştirin. |
+| Microsoft. Directory/groups. Unified/Owners/Update | Microsoft 365 gruplarının sahipliğini güncelleştirin. |
 | Microsoft. office365. Exchange/allEntities/allTasks | Exchange Online 'ın tüm yönlerini yönetin. |
 | Microsoft. office365. Network/Performance/allProperties/Read | Microsoft 365 Yönetim Merkezi 'nde ağ performansı sayfalarını okuyun. |
 | Microsoft. office365. serviceHealth/allEntities/allTasks | Microsoft 365 hizmeti durumunu okuyun ve yapılandırın. |
 | Microsoft. office365. Supportbilet/allEntities/allTasks | Office 365 destek biletleri oluşturun ve yönetin. |
-| Microsoft. office365. usageReports/allEntities/okuma | Office 365 kullanım raporlarını okuyun. |
-| Microsoft. office365. webPortal/allEntities/temel/okuma | Microsoft. office365. webPortal 'daki tüm kaynaklarda temel özellikleri okuyun. |
+| Microsoft. office365. usageReports/allEntities/allProperties/Read | Office 365 kullanım raporlarını okuyun. |
+| Microsoft. office365. webPortal/allEntities/standart/okuma | Microsoft. office365. webPortal 'daki tüm kaynaklarda temel özellikleri okuyun. |
 
 ### <a name="external-id-user-flow-administrator-permissions"></a>Dış KIMLIK Kullanıcı akış Yöneticisi izinleri
 
@@ -1295,23 +1296,24 @@ Microsoft 365 Insights uygulamasında yönetim erişimine sahiptir.
 | Microsoft. Directory/Devices/extensionAttributes/Update | Azure Active Directory içindeki Devices. extensionAttributes özelliğinin tüm değerlerini güncelleştirin. |
 | Microsoft. Directory/Devices/kayıt araçları/güncelleştirme | Azure Active Directory Devices. Kaydedeteredowners özelliğini güncelleştirin. |
 | Microsoft. Directory/Devices/registeredUsers/Update | Azure Active Directory Devices. registeredUsers özelliğini güncelleştirin. |
-| Microsoft. Directory/Groups/Approtaatamalar/güncelleştirme | Azure Active Directory groups. Approtaatamalar özelliğini güncelleştirin. |
-| Microsoft. Directory/Groups/Basic/Update | Azure Active Directory gruplardaki temel özellikleri güncelleştirin. |
-| Microsoft. Directory/gruplar/oluştur | Azure Active Directory grupları oluşturun. |
-| Microsoft. Directory/Groups/createAsOwner | Azure Active Directory grupları oluşturun. Oluşturucu ilk sahip olarak eklenir ve oluşturulan nesne, oluşturucunun 250 tarafından oluşturulan nesneler kotasına göre sayılır. |
-| Microsoft. Directory/gruplar/Sil | Azure Active Directory grupları silin. |
+| Microsoft. Directory/deviceManagementPolicies/standart/okuma | Cihaz Yönetimi uygulama ilkelerindeki standart özellikleri okuyun |
+| Microsoft. Directory/deviceRegistrationPolicy/Standard/Read | Cihaz kayıt ilkelerinde standart özellikleri okuyun |
 | Microsoft. Directory/Groups/hiddenMembers/Read | Azure Active Directory gruplar. hiddenMembers özelliğini okuyun. |
-| Microsoft. Directory/gruplar/Üyeler/güncelleştirme | Azure Active Directory groups. Members özelliğini güncelleştirin. |
-| Microsoft. Directory/gruplar/Owners/Update | Azure Active Directory groups. Owners özelliğini güncelleştirin. |
-| Microsoft. Directory/Groups/restore | Azure Active Directory grupları geri yükleyin. |
-| Microsoft. Directory/Groups/Settings/Update | Azure Active Directory groups. Settings özelliğini güncelleştirin. |
-| Microsoft. Directory/Users/Approtaatamalar/güncelleştirme | Azure Active Directory Users. Approtaatamalar özelliğini güncelleştirin. |
+| Microsoft. Directory/groups. Security/Basic/Update | Azure Active Directory gruplardaki temel özellikleri güncelleştirin. |
+| Microsoft. Directory/gruplar. güvenlik/sınıflandırma/güncelleştirme | Rol atanabilir grupların dışlamasıyla güvenlik gruplarının sınıflandırma özelliğini güncelleştirme |
+| Microsoft. Directory/groups. Security/Create | Azure Active Directory grupları oluşturun. |
+| Microsoft. Directory/groups. Security/Delete | Azure Active Directory grupları silin. |
+| Microsoft. Directory/groups. Security/dynamicMembershipRule/Update | Rol atanabilir grupların dışlamasıyla birlikte güvenlik gruplarının dynamicMembershipRule özelliğini güncelleştirin |
+| Microsoft. Directory/groups. Security/groupType/Update | Rol atanabilir grupların dışlamasıyla birlikte güvenlik gruplarının Grup türü özelliğini güncelleştirme |
+| Microsoft. Directory/gruplar. güvenlik/Üyeler/güncelleştirme | Azure Active Directory groups. Members özelliğini güncelleştirin. |
+| Microsoft. Directory/gruplar. güvenlik/sahipler/güncelleştirme | Azure Active Directory groups. Owners özelliğini güncelleştirin. |
+| Microsoft. Directory/groups. Security/Visibility/Update | Rol atanabilir grupların dışlamasıyla güvenlik gruplarının görünürlük özelliğini güncelleştirme |
 | Microsoft. Directory/Users/Basic/Update | Azure Active Directory kullanıcıların temel özelliklerini güncelleştirin. |
 | Microsoft. Directory/Users/Manager/Update | Azure Active Directory içindeki Users. Manager özelliğini güncelleştirin. |
 | Microsoft. Azure. Supportbilet/allEntities/allTasks | Dizin düzeyinde hizmetler için Azure destek biletleri oluşturun ve yönetin. |
 | Microsoft. Intune/allEntities/allTasks | Intune 'un tüm yönlerini yönetin. |
 | Microsoft. office365. Supportbilet/allEntities/allTasks | Office 365 destek biletleri oluşturun ve yönetin. |
-| Microsoft. office365. webPortal/allEntities/temel/okuma | Microsoft. office365. webPortal 'daki tüm kaynaklarda temel özellikleri okuyun. |
+| Microsoft. office365. webPortal/allEntities/standart/okuma | Microsoft. office365. webPortal 'daki tüm kaynaklarda temel özellikleri okuyun. |
 
 ### <a name="kaizala-administrator-permissions"></a>Kaizala yönetici izinleri
 
@@ -1458,13 +1460,18 @@ Kullanmayın-genel kullanıma yönelik değildir.
 | Microsoft. Directory/kişiler/oluştur | Azure Active Directory kişiler oluşturun. |
 | Microsoft. Directory/Contacts/Delete | Azure Active Directory kişileri silin. |
 | Microsoft. Directory/gruplar/oluştur | Azure Active Directory grupları oluşturun. |
-| Microsoft. Directory/Groups/createAsOwner | Azure Active Directory grupları oluşturun. Oluşturucu ilk sahip olarak eklenir ve oluşturulan nesne, oluşturucunun 250 tarafından oluşturulan nesneler kotasına göre sayılır. |
+| Microsoft. Directory/gruplar/Sil | Rol atanabilir grup hariç olmak üzere grupları sil |
 | Microsoft. Directory/gruplar/Üyeler/güncelleştirme | Azure Active Directory groups. Members özelliğini güncelleştirin. |
 | Microsoft. Directory/gruplar/Owners/Update | Azure Active Directory groups. Owners özelliğini güncelleştirin. |
-| Microsoft. Directory/Users/Approtaatamalar/güncelleştirme | Azure Active Directory Users. Approtaatamalar özelliğini güncelleştirin. |
+| Microsoft. Directory/Groups/restore | Silinen grupları geri yükleme |
+| Microsoft. Directory/oAuth2PermissionGrants/allProperties/allTasks | OAuth 2,0 izin verir ve silin ve tüm özellikleri okuyun ve güncelleştirin |
+| Microsoft. Directory/Servicesorumlularını/appRoleAssignedTo/Update | Hizmet sorumlusu rol atamalarını güncelleştirme |
 | Microsoft. Directory/Users/Atamalisansı | Azure Active Directory kullanıcılar üzerinde lisansları yönetin. |
 | Microsoft. Directory/Users/Basic/Update | Azure Active Directory kullanıcıların temel özelliklerini güncelleştirin. |
+| Microsoft. Directory/kullanıcılar/oluştur | Kullanıcı ekle |
 | Microsoft. Directory/kullanıcılar/Sil | Azure Active Directory Kullanıcıları silin. |
+| Microsoft. Directory/kullanıcılar/devre dışı bırak | Kullanıcıları devre dışı bırak |
+| Microsoft. Directory/kullanıcılar/etkinleştir | Kullanıcıları etkinleştir |
 | Microsoft. Directory/Users/ınvalidateallrefreshtokens | Azure Active Directory tüm Kullanıcı yenileme belirteçlerini geçersiz kılar. |
 | Microsoft. Directory/Users/Manager/Update | Azure Active Directory içindeki Users. Manager özelliğini güncelleştirin. |
 | Microsoft. Directory/Users/Password/Update | Azure Active Directory tüm kullanıcılar için parolaları güncelleştirin. Daha ayrıntılı bilgi için çevrimiçi belgelere bakın. |
@@ -1472,9 +1479,9 @@ Kullanmayın-genel kullanıma yönelik değildir.
 | Microsoft. Directory/Users/userPrincipalName/Update | Azure Active Directory içindeki Users. userPrincipalName özelliğini güncelleştirin. |
 | Microsoft. Azure. serviceHealth/Allentitıes/allTasks | Azure hizmet durumunu okuyun ve yapılandırın. |
 | Microsoft. Azure. Supportbilet/allEntities/allTasks | Dizin düzeyinde hizmetler için Azure destek biletleri oluşturun ve yönetin. |
-| Microsoft. office365. webPortal/allEntities/temel/okuma | Microsoft. office365. webPortal 'daki tüm kaynaklarda temel özellikleri okuyun. |
 | Microsoft. office365. serviceHealth/allEntities/allTasks | Microsoft 365 hizmeti durumunu okuyun ve yapılandırın. |
 | Microsoft. office365. Supportbilet/allEntities/allTasks | Office 365 destek biletleri oluşturun ve yönetin. |
+| Microsoft. office365. webPortal/allEntities/standart/okuma | Microsoft. office365. webPortal 'daki tüm kaynaklarda temel özellikleri okuyun. |
 
 ### <a name="partner-tier2-support-permissions"></a>İş ortağı Katman2 destek izinleri
 
@@ -1498,16 +1505,25 @@ Kullanmayın-genel kullanıma yönelik değildir.
 | Microsoft. Directory/Contacts/Basic/Update | Azure Active Directory kişilerdeki temel özellikleri güncelleştirin. |
 | Microsoft. Directory/kişiler/oluştur | Azure Active Directory kişiler oluşturun. |
 | Microsoft. Directory/Contacts/Delete | Azure Active Directory kişileri silin. |
-| Microsoft. Directory/Domains/allTasks | Etki alanlarını oluşturun ve silin ve Azure Active Directory standart özellikleri okuyun ve güncelleştirin. |
+| Microsoft. Directory/Domains/Basic/allTasks | Etki alanlarını oluşturun ve silin ve Azure Active Directory standart özellikleri okuyun ve güncelleştirin. |
 | Microsoft. Directory/gruplar/oluştur | Azure Active Directory grupları oluşturun. |
 | Microsoft. Directory/gruplar/Sil | Azure Active Directory grupları silin. |
 | Microsoft. Directory/gruplar/Üyeler/güncelleştirme | Azure Active Directory groups. Members özelliğini güncelleştirin. |
+| Microsoft. Directory/gruplar/Owners/Update | Rol atanabilir gruplar hariç olmak üzere grupların sahiplerini Güncelleştir |
 | Microsoft. Directory/Groups/restore | Azure Active Directory grupları geri yükleyin. |
+| Microsoft. Directory/oAuth2PermissionGrants/allProperties/allTasks | OAuth 2,0 izin verir ve silin ve tüm özellikleri okuyun ve güncelleştirin |
 | Microsoft. Directory/kuruluş/temel/güncelleştirme | Azure Active Directory 'da kuruluştaki temel özellikleri güncelleştirin. |
-| Microsoft. Directory/Users/Approtaatamalar/güncelleştirme | Azure Active Directory Users. Approtaatamalar özelliğini güncelleştirin. |
+| Microsoft. Directory/Roleatamaları/allProperties/allTasks | Rol atamaları oluşturun ve silin ve tüm rol atama özelliklerini okuyun ve güncelleştirin |
+| Microsoft. Directory/roleDefinitions/allProperties/allTasks | Rol tanımları oluşturun ve silin ve tüm özellikleri okuyun ve güncelleştirin |
+| Microsoft. Directory/Scopedrolemembersevk/allProperties/allTasks | Scopedrolemembersevk eden oluşturun ve silin ve tüm özellikleri okuyun ve güncelleştirin |
+| Microsoft. Directory/Servicesorumlularını/appRoleAssignedTo/Update | Hizmet sorumlusu rol atamalarını güncelleştirme |
+| Microsoft. Directory/subscribedSkus/Standard/Read | Aboneliklerdeki temel özellikleri okuyun |
 | Microsoft. Directory/Users/Atamalisansı | Azure Active Directory kullanıcılar üzerinde lisansları yönetin. |
 | Microsoft. Directory/Users/Basic/Update | Azure Active Directory kullanıcıların temel özelliklerini güncelleştirin. |
+| Microsoft. Directory/kullanıcılar/oluştur | Kullanıcı ekle |
 | Microsoft. Directory/kullanıcılar/Sil | Azure Active Directory Kullanıcıları silin. |
+| Microsoft. Directory/kullanıcılar/devre dışı bırak | Kullanıcıları devre dışı bırak |
+| Microsoft. Directory/kullanıcılar/etkinleştir | Kullanıcıları etkinleştir |
 | Microsoft. Directory/Users/ınvalidateallrefreshtokens | Azure Active Directory tüm Kullanıcı yenileme belirteçlerini geçersiz kılar. |
 | Microsoft. Directory/Users/Manager/Update | Azure Active Directory içindeki Users. Manager özelliğini güncelleştirin. |
 | Microsoft. Directory/Users/Password/Update | Azure Active Directory tüm kullanıcılar için parolaları güncelleştirin. Daha ayrıntılı bilgi için çevrimiçi belgelere bakın. |
@@ -1515,9 +1531,9 @@ Kullanmayın-genel kullanıma yönelik değildir.
 | Microsoft. Directory/Users/userPrincipalName/Update | Azure Active Directory içindeki Users. userPrincipalName özelliğini güncelleştirin. |
 | Microsoft. Azure. serviceHealth/Allentitıes/allTasks | Azure hizmet durumunu okuyun ve yapılandırın. |
 | Microsoft. Azure. Supportbilet/allEntities/allTasks | Dizin düzeyinde hizmetler için Azure destek biletleri oluşturun ve yönetin. |
-| Microsoft. office365. webPortal/allEntities/temel/okuma | Microsoft. office365. webPortal 'daki tüm kaynaklarda temel özellikleri okuyun. |
 | Microsoft. office365. serviceHealth/allEntities/allTasks | Microsoft 365 hizmeti durumunu okuyun ve yapılandırın. |
 | Microsoft. office365. Supportbilet/allEntities/allTasks | Office 365 destek biletleri oluşturun ve yönetin. |
+| Microsoft. office365. webPortal/allEntities/standart/okuma | Microsoft. office365. webPortal 'daki tüm kaynaklarda temel özellikleri okuyun. |
 
 ### <a name="password-administrator-permissions"></a>Parola yönetici izinleri
 
@@ -1785,18 +1801,18 @@ Güvenlik olaylarını oluşturur ve yönetir.
 | --- | --- |
 | Microsoft. Azure. serviceHealth/Allentitıes/allTasks | Azure hizmet durumunu okuyun ve yapılandırın. |
 | Microsoft. Azure. Supportbilet/allEntities/allTasks | Dizin düzeyinde hizmetler için Azure destek biletleri oluşturun ve yönetin. |
-| Microsoft. Directory/Groups/Unified/Approtaatamalar/Update | Azure Active Directory groups. Unified özelliğini güncelleştirin. |
-| Microsoft. Directory/gruplar/Unified/Basic/Update | Microsoft 365 gruplarının temel özelliklerini güncelleştirin. |
-| Microsoft. Directory/gruplar/Birleşik/oluşturma | Microsoft 365 grupları oluşturun. |
-| Microsoft. Directory/gruplar/Birleşik/Delete | Microsoft 365 grupları silin. |
-| Microsoft. Directory/gruplar/Birleşik/Üyeler/güncelleştirme | Microsoft 365 gruplarının üyeliğini güncelleştirin. |
-| Microsoft. Directory/gruplar/Birleşik/sahipler/güncelleştirme | Microsoft 365 gruplarının sahipliğini güncelleştirin. |
+| Microsoft. Directory/groups. Unified/Basic/Update | Microsoft 365 gruplarının temel özelliklerini güncelleştirin. |
+| Microsoft. Directory/groups. Unified/Create | Microsoft 365 grupları oluşturun. |
+| Microsoft. Directory/groups. Unified/Delete | Microsoft 365 grupları silin. |
+| Microsoft. Directory/groups. Unified/Members/Update | Microsoft 365 gruplarının üyeliğini güncelleştirin. |
+| Microsoft. Directory/groups. Unified/Owners/Update | Microsoft 365 gruplarının sahipliğini güncelleştirin. |
+| Microsoft. Directory/groups. Unified/restore | Microsoft 365 gruplarını geri yükleme |
 | Microsoft. office365. Network/Performance/allProperties/Read | M365 Yönetim Merkezi 'nde ağ performansı sayfalarını okuyun. |
 | Microsoft. office365. serviceHealth/allEntities/allTasks | Microsoft 365 hizmeti durumunu okuyun ve yapılandırın. |
 | Microsoft. office365. SharePoint/allEntities/allTasks | Tüm kaynakları oluşturup silin ve Microsoft. office365. SharePoint içindeki standart özellikleri okuyun ve güncelleştirin. |
 | Microsoft. office365. Supportbilet/allEntities/allTasks | Office 365 destek biletleri oluşturun ve yönetin. |
-| Microsoft. office365. usageReports/allEntities/okuma    | Office 365 kullanım raporlarını okuyun. |
-| Microsoft. office365. webPortal/allEntities/temel/okuma | Microsoft. office365. webPortal 'daki tüm kaynaklarda temel özellikleri okuyun. |
+| Microsoft. office365. usageReports/allEntities/allProperties/Read | Office 365 kullanım raporlarını okuyun. |
+| Microsoft. office365. webPortal/allEntities/standart/okuma | Microsoft. office365. webPortal 'daki tüm kaynaklarda temel özellikleri okuyun. |
 
 ### <a name="teams-communications-administrator-permissions"></a>Takımlar Iletişimleri yönetici izinleri
 
@@ -1880,16 +1896,19 @@ Ekip sertifikalı cihazlarda yönetim ile ilgili görevler gerçekleştirebilir.
 | Microsoft. Azure. Supportbilet/allEntities/allTasks | Dizin düzeyinde hizmetler için Azure destek biletleri oluşturun ve yönetin. |
 | Microsoft. Directory/Groups/hiddenMembers/Read | Azure Active Directory gruplar. hiddenMembers özelliğini okuyun. |
 | Microsoft. Directory/Groups/Unified/Approtaatamalar/Update | Azure Active Directory groups. Unified özelliğini güncelleştirin. |
-| Microsoft. Directory/gruplar/Unified/Basic/Update | Microsoft 365 gruplarının temel özelliklerini güncelleştirin. |
-| Microsoft. Directory/gruplar/Birleşik/oluşturma | Microsoft 365 grupları oluşturun. |
-| Microsoft. Directory/gruplar/Birleşik/Delete | Microsoft 365 grupları silin. |
-| Microsoft. Directory/gruplar/Birleşik/Üyeler/güncelleştirme | Microsoft 365 gruplarının üyeliğini güncelleştirin. |
-| Microsoft. Directory/gruplar/Birleşik/sahipler/güncelleştirme | Microsoft 365 gruplarının sahipliğini güncelleştirin. |
+| Microsoft. Directory/groups. Unified/Basic/Update | Microsoft 365 gruplarının temel özelliklerini güncelleştirin. |
+| Microsoft. Directory/groups. Unified/Create | Microsoft 365 grupları oluşturun. |
+| Microsoft. Directory/groups. Unified/Delete | Microsoft 365 grupları silin. |
+| Microsoft. Directory/groups. Unified/Members/Update | Microsoft 365 gruplarının üyeliğini güncelleştirin. |
+| Microsoft. Directory/groups. Unified/Owners/Update | Microsoft 365 gruplarının sahipliğini güncelleştirin. |
+| Microsoft. Directory/groups. Unified/restore | Microsoft 365 gruplarını geri yükleme |
+| Microsoft. Directory/Servicesorumlularını/managePermissionGrantsForGroup. Microsoft-All-Application-Permissions | Grup adına temsilci izinleri için izin verme |
 | Microsoft. office365. Network/Performance/allProperties/Read | M365 Yönetim Merkezi 'nde ağ performansı sayfalarını okuyun. |
 | Microsoft. office365. serviceHealth/allEntities/allTasks | Microsoft 365 hizmeti durumunu okuyun ve yapılandırın. |
+| Microsoft. office365. Sktypeınfo/allEntities/allTasks | Skype Kurumsal Çevrimiçi 'nin tüm yönlerini yönetin |
 | Microsoft. office365. Supportbilet/allEntities/allTasks | Office 365 destek biletleri oluşturun ve yönetin. |
-| Microsoft. office365. usageReports/allEntities/okuma | Office 365 kullanım raporlarını okuyun. |
-| Microsoft. office365. webPortal/allEntities/temel/okuma | Microsoft. office365. webPortal 'daki tüm kaynaklarda temel özellikleri okuyun. |
+| Microsoft. office365. usageReports/allEntities/allProperties/Read | Office 365 kullanım raporlarını okuyun. |
+| Microsoft. office365. webPortal/allEntities/standart/okuma | Microsoft. office365. webPortal 'daki tüm kaynaklarda temel özellikleri okuyun. |
 | Microsoft. ekipler/allEntities/allProperties/allTasks | Ekipteki tüm kaynakları yönetin. |
 
 ### <a name="usage-summary-reports-reader-permissions"></a>Kullanım Özeti raporları okuyucu izinleri

@@ -103,6 +103,8 @@
       href: ./linux/tutorial-elasticsearch.md
     - name: FreeBSD Paket Filtresi
       href: ./linux/freebsd-pf-nat.md
+    - name: Ana bilgisayar yeniden barındırma
+      href: ./workloads/mainframe-rehosting/overview.md
     - name: Veritabanları
       items:
         - name: SUSE üzerinde MySQL
@@ -1448,6 +1450,8 @@
               href: ./linux/move-vm.md
             - name: PowerShell
               href: ./windows/move-vm.md
+            - name: Market VM 'Leri için aboneliği değiştirme
+              href: azure-cli-change-subscription-marketplace.md
         - name: VM'leri başka bir bölgeye taşıma
           href: ../site-recovery/azure-to-azure-tutorial-migrate.md
         - name: Kullanılabilirlik alanına taşıma

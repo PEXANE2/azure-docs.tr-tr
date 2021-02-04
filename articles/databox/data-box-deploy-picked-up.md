@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 02/02/2020
+ms.date: 02/02/2021
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 228f837a8826612bbbadf2ca8c5ef339ab248397
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 267094ea6a7295a65b93fb7700c97e4280da341d
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99525001"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99539120"
 ---
 ::: zone target="docs"
 
@@ -267,6 +267,35 @@ Veriler Azure'a yüklendikten sonra Data Box disklerindeki veriyi [NIST SP 800-8
     ```
 
 Herhangi bir sorunla karşılaşırsanız bununla ilgili ayrıntıları Data Box İşlemleri Asya [adbo@microsoft.com](mailto:adbo@microsoft.com) adresine e-posta ile gönderin ve iş adını Konu: satırına yazın.
+
+::: zone target="chromeless"
+
+## <a name="verify-data-upload-to-azure"></a>Azure'a verilerin yüklendiğini doğrulama
+
+[!INCLUDE [data-box-verify-upload](../../includes/data-box-verify-upload.md)]
+
+## <a name="erasure-of-data-from-data-box"></a>Data Box'tan verileri silme
+ 
+
+::: zone-end
+
+## <a name="united-arab-emirates"></a>[Birleşik Arap Emirlikleri](#tab/in-uae)
+
+1. Cihazı iade etmek üzere göndermek için, kullanılan orijinal kutuyu saklayın.
+2. Cihaza veri kopyalamanın tamamlandığından ve **göndermeye hazırlama** adımının başarıyla tamamlandığından emin olun.
+3. Cihaz yerel Web Kullanıcı arabiriminin **göndermeye hazırlama** sayfasındaki başvuru numarasını dikkate alın.
+4. Cihazın gücünü kapatın ve kabloları kaldırın. Cihaz ile beraber sağlanan güç kablosunu sararak emniyetli şekilde cihazın arkasına yerleştirin.
+6. İade gönderimi için cihazı orijinal kutusunda paketleyin.
+7. Veri merkezinde geri geldiğinde paketi tanımlamak için kullanılacak bir KIMLIK almak için e-posta [Azure Data Box işlemleri](mailto:adbops@microsoft.com) .
+8. Bu KIMLIĞI, açık adresin yanına doğru görünür olacak şekilde, yazdırılmış sevkiyat etiketi üzerine yazın.  
+9. [DHL Express UAE](https://mydhl.express.dhl/ae/en/home.html#/schedulePickupTab)zamanlamaya göre bir çekme planı çevrimiçi olarak kitap oluşturma  >  .
+   - Waybill Number alanındaki cihaz yerel Web Kullanıcı arabiriminin **göndermeye hazırlama** sayfasından başvuru numarasını girin.
+   - Kayıtlar, 9:00:30 ' dan (2:00 yani, FIN ve genel Tatiller hariç) 6 ' dan sonra kabul edilir.
+   - Çekme istekleri, müşterinin kapanış zamanından en az 90 dakika önce yerleştirilmelidir.
+10. DHL kayıt aracı ile ilgili herhangi bir sorun yaşıyorsanız, aşağıdaki yöntemlerden herhangi birini kullanarak DHL 'ye başvurabilirsiniz:
+    - Çağrı 04-2924545.
+    - Sorun ayrıntıları ile e-posta gönderin [ecom.ae@dhl.com](mailto:ecom.ae@dhl.com) ve Waybill numarasını Konu: satırına koyun.
+    - 600 567567 adresinden DHL müşteri desteğini çağırın.
 
 ::: zone target="chromeless"
 

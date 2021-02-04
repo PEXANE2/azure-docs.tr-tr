@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 01/07/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c5f070f59df69bb186041af450e6ca922469d960
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: df8841cb2dcac6335b09a5e7715f42c508c69e76
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98043753"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99536824"
 ---
 # <a name="upgrade-to-azure-cognitive-search-net-sdk-version-11"></a>Azure Bilişsel Arama .NET SDK sürüm 11 ' e yükseltme
 
@@ -168,8 +168,8 @@ Sürüm 11,1 şunları ekler:
 
 Aşağıdaki sürüm 10 özellikleri henüz 11. sürümde kullanılamamaktadır. Bu özelliklere ihtiyaç duyuyorsanız, desteklenene kadar geçiş üzerinde tutun.
 
-+ Jeo-uzamsal türler
 + [Bilgi deposu](knowledge-store-concept-intro.md)
++ Jeo-uzamsal türler-Jeo-uzamsal türler için birinci sınıf desteği hala devam ediyor. Şimdilik, [Microsoft. uzamsal](https://www.nuget.org/packages/Microsoft.Spatial/) paketi coğrafi işlemleri desteklemek için kullanılabilir. [System.Text.Js](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/core/Microsoft.Azure.Core.Spatial/README.md) ve üzerinde [Newtonsoft.Js](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/core/Microsoft.Azure.Core.Spatial.NewtonsoftJson/README.md)için örnekler mevcuttur.
 
 <a name="UpgradeSteps"></a>
 
@@ -249,5 +249,5 @@ Sürüm 11 ' deki kod değişikliklerinin var olan işlevlerle (ve yalnızca API
 ## <a name="next-steps"></a>Sonraki adımlar
 
 + [Azure.Search.Documtalar paketi](https://www.nuget.org/packages/Azure.Search.Documents/)
-+ [GitHub’daki örnekler](https://github.com/azure/azure-sdk-for-net/tree/Azure.Search.Documents_11.0.0/sdk/search/Azure.Search.Documents/samples)
++ [GitHub 'daki örnekler](https://github.com/azure/azure-sdk-for-net/tree/Azure.Search.Documents_11.0.0/sdk/search/Azure.Search.Documents/samples)
 + [Azure.Search.Document API başvurusu](/dotnet/api/overview/azure/search.documents-readme)

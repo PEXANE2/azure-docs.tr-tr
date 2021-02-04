@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 02/02/2021
+ms.date: 02/03/2021
 ms.author: alkohli
-ms.openlocfilehash: 9ebf95f0a9c5cfc059f38a13ad99a545dd863d21
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 6c2eed9aac614b0765582d5cf373caf50323ef7a
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99525039"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99537365"
 ---
 # <a name="tutorial-return-azure-data-box"></a>Öğretici: dönüş Azure Data Box
 
@@ -172,6 +172,24 @@ Gerekirse, aşağıdaki bilgilerden Quantium Solutions Desteği (Japonca) ile il
 
 [adbo@microsoft.com](mailto:adbo@microsoft.com)Konu başlığına ve karşılaşılan sorunla ilgili olarak iş adını sağlayan tüm sorunlar, e-posta Data Box Işlem Asya işlemleri arasında gelmeniz gerekir.
 
+## <a name="united-arab-emirates"></a>[Birleşik Arap Emirlikleri](#tab/in-uae)
+
+1. Cihazı iade etmek üzere göndermek için, kullanılan orijinal kutuyu saklayın.
+2. Cihaza veri kopyalamanın tamamlandığından ve **göndermeye hazırlama** adımının başarıyla tamamlandığından emin olun.
+3. Cihaz yerel Web Kullanıcı arabiriminin **göndermeye hazırlama** sayfasındaki başvuru numarasını dikkate alın.
+4. Cihazın gücünü kapatın ve kabloları kaldırın. Cihaz ile beraber sağlanan güç kablosunu sararak emniyetli şekilde cihazın arkasına yerleştirin.
+6. İade gönderimi için cihazı orijinal kutusunda paketleyin.
+7. Veri merkezinde geri geldiğinde paketi tanımlamak için kullanılacak bir KIMLIK almak için e-posta [Azure Data Box işlemleri](mailto:adbops@microsoft.com) .
+8. Bu KIMLIĞI, açık adresin yanına doğru görünür olacak şekilde, yazdırılmış sevkiyat etiketi üzerine yazın.  
+9. [DHL Express UAE](https://mydhl.express.dhl/ae/en/home.html#/schedulePickupTab)zamanlamaya göre bir çekme planı çevrimiçi olarak kitap oluşturma  >  .
+   - Waybill Number alanındaki cihaz yerel Web Kullanıcı arabiriminin **göndermeye hazırlama** sayfasından başvuru numarasını girin.
+   - Kayıtlar, 9:00:30 ' dan (2:00 yani, FIN ve genel Tatiller hariç) 6 ' dan sonra kabul edilir.
+   - Çekme istekleri, müşterinin kapanış zamanından en az 90 dakika önce yerleştirilmelidir.
+10. DHL kayıt aracı ile ilgili herhangi bir sorun yaşıyorsanız, aşağıdaki yöntemlerden herhangi birini kullanarak DHL 'ye başvurabilirsiniz:
+    - Çağrı 04-2924545.
+    - Sorun ayrıntıları ile e-posta gönderin [ecom.ae@dhl.com](mailto:ecom.ae@dhl.com) ve Waybill numarasını Konu: satırına koyun.
+    - 600 567567 adresinden DHL müşteri desteğini çağırın.
+
 ## <a name="self-managed"></a>[Kullanıcı Yönetimli](#tab/in-selfmanaged)
 
 Japonya, Singapur, Kore, Hindistan, Güney Afrika, Birleşik Krallık, Batı Avrupa veya Avustralya 'da Data Box kullanıyorsanız ve sipariş oluşturma sırasında kendi kendine yönetilen sevkiyat seçeneğini belirlediyseniz, bu yönergeleri izleyin.
@@ -209,5 +227,3 @@ Data Box yönetme hakkında bilgi edinmek için sonraki makaleye ilerleyin.
 
 > [!div class="nextstepaction"]
 > [Azure portal aracılığıyla Data Box yönetme](./data-box-portal-admin.md)
-
-

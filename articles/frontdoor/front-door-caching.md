@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/29/2020
 ms.author: duau
-ms.openlocfilehash: 1a8064c3ff89c0bc8b0ceb5249492b912c219ce8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d001a7a24d44c46a19bde08051e21d3ae3c5acb8
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91535840"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99538060"
 ---
 # <a name="caching-with-azure-front-door"></a>Azure ön kapılı önbelleğe alma
 Aşağıdaki belge ön kapı için önbelleğe almayı etkinleştirilen yönlendirme kurallarıyla ilgili davranışları belirtir. Ön kapı, dinamik site hızlandırma ve yük dengeleme özellikli bir modern Content Delivery Network (CDN), aynı zamanda diğer CDN gibi önbelleğe alma davranışlarını da destekler.
@@ -24,13 +24,13 @@ Aşağıdaki belge ön kapı için önbelleğe almayı etkinleştirilen yönlend
 ## <a name="delivery-of-large-files"></a>Büyük dosyaların teslimi
 Azure ön kapısı, dosya boyutu üst sınırı olmadan büyük dosyalar sunar. Ön kapı, nesne parçalama adlı bir teknik kullanır. Büyük dosya isteği gönderildiğinde Front Door dosyayı arka uçtan küçük parçalar halinde alır. Tam veya bayt aralığı dosya isteği aldıktan sonra, ön kapılı ortam dosyayı 8 MB öbeklerine arka uca ister.
 
-</br>Öbek, ön kapılı ortama ulaştıktan sonra önbelleğe alınır ve anında kullanıcıya sunulur. Ön kapı daha sonra bir sonraki öbeği paralel olarak önceden getirir. Bu ön alım, içeriğin kullanıcının önüne bir öbek kalmasını sağlar ve gecikme süresini azaltır. Bu işlem, tüm dosya indirilene (isteniyorsa) veya istemci bağlantıyı kapattığında devam eder.
+Öbek, ön kapılı ortama ulaştıktan sonra önbelleğe alınır ve anında kullanıcıya sunulur. Ön kapı daha sonra bir sonraki öbeği paralel olarak önceden getirir. Bu ön alım, içeriğin kullanıcının önüne bir öbek kalmasını sağlar ve gecikme süresini azaltır. Bu işlem, tüm dosya indirilene (isteniyorsa) veya istemci bağlantıyı kapattığında devam eder.
 
-</br>Bayt aralığı isteği hakkında daha fazla bilgi için, [RFC 7233](https://web.archive.org/web/20171009165003/http://www.rfc-base.org/rfc-7233.html)' i okuyun.
+Bayt aralığı isteği hakkında daha fazla bilgi için, [RFC 7233](https://web.archive.org/web/20171009165003/http://www.rfc-base.org/rfc-7233.html)' i okuyun.
 Ön kapı, tüm dosyaları ön kapı önbelleğinde önbelleğe alınması gerekmeyen tüm öbekleri önbellekte önbelleğe alır. Dosya veya bayt aralıkları için istekleri önbellekten sunulur. Öbeklerin hepsi önbelleğe alınmamışsa, ön alma arka uca öbekleri istemek için kullanılır. Bu iyileştirme, arka ucun bayt aralığı isteklerini destekleme özelliğine dayanır. Arka uç, bayt aralığı isteklerini desteklemiyorsa, bu iyileştirme etkili olmaz.
 
 ## <a name="file-compression"></a>Dosya sıkıştırma
-Ön kapı, kenardaki içeriği dinamik olarak sıkıştırarak istemcileriniz için daha küçük ve daha hızlı yanıt süresi elde edebilir. Tüm dosyalar sıkıştırmaya uygun. Ancak, sıkıştırma için uygun olması için bir dosyanın MIME türünde olması gerekir. Şu anda, ön kapı bu listenin değiştirilmesine izin vermez. Geçerli liste:</br>
+Ön kapı, kenardaki içeriği dinamik olarak sıkıştırarak istemcileriniz için daha küçük ve daha hızlı yanıt süresi elde edebilir. Bir dosyanın sıkıştırmaya uygun olabilmesi için, önbelleğe almanın etkinleştirilmesi ve dosyanın sıkıştırmaya uygun olması için bir MIME türünde olması gerekir. Şu anda, ön kapı bu listenin değiştirilmesine izin vermez. Geçerli liste:
 - "uygulama/duyot"
 - "uygulama/yazı tipi"
 - "Application/Font-sfnt"
@@ -93,7 +93,7 @@ Varlığın yaşam süresi (TTL) sona erene kadar ön kapı önbellekleri varlı
 
 Kullanıcılarınızın her zaman varlıklarınızın en son kopyasını elde ettiğinizden emin olmak için en iyi yöntem, varlıklarınızın her bir güncelleştirme için sürüm oluşturup yeni URL 'Ler olarak yayınlanmasına yöneliktir. Ön kapı, sonraki istemci istekleri için yeni varlıkları hemen alacak. Bazen önbelleğe alınmış içeriği tüm kenar düğümlerinden temizlemek ve bunları yeni güncelleştirilmiş varlıkları almaya zorlamak isteyebilirsiniz. Nedeni, Web uygulamanızdaki güncelleştirmelerden veya hatalı bilgiler içeren varlıkları hızlıca güncelleştirebileceksiniz.
 
-Kenar düğümlerinden temizlemek istediğiniz varlıkları seçin. Tüm varlıkları temizlemek için **Tümünü Temizle**' yi seçin. Aksi takdirde, **yol**alanına temizlemek istediğiniz her varlığın yolunu girin.
+Kenar düğümlerinden temizlemek istediğiniz varlıkları seçin. Tüm varlıkları temizlemek için **Tümünü Temizle**' yi seçin. Aksi takdirde, **yol** alanına temizlemek istediğiniz her varlığın yolunu girin.
 
 Bu biçimler, temizlenecek yolların listelerinde desteklenir:
 

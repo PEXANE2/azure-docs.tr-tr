@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/15/2020
-ms.openlocfilehash: 286d826f61a6c99396ef04af0a0855567bc4d1e4
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 7615e1dbce040002d9d1a13502637f78100965fb
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91951392"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99538916"
 ---
 # <a name="features-of-azure-cognitive-search"></a>Azure Bilişsel Arama özellikleri
 
@@ -49,7 +49,7 @@ Azure Bilişsel Arama, daha fazla metin ve yapıyı ve API 'Leri ve araçları a
 
 | Alan&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Özellikler |
 |-------------------|----------|
-| Veri şifrelemesi | [**Bekleyen Microsoft tarafından yönetilen şifreleme**](search-security-overview.md#encrypted-transmissions-and-storage) , iç depolama katmanında yerleşik olarak bulunur ve geri alınamaz. <br/><br/>Azure Key Vault içinde oluşturduğunuz ve yönettiğiniz [**müşteri tarafından yönetilen şifreleme anahtarları**](search-security-manage-encryption-keys.md) , dizinlerin ve eş anlamlı eşlemelerin ek şifrelenebilmesi için kullanılabilir. 1 2020 Ağustos 'Tan sonra oluşturulan hizmetler için, CMK şifrelemesi, dizini oluşturulmuş içeriğin tam çift şifrelemesi için geçici disklerdeki verilere genişletilir.|
+| Veri şifrelemesi | [**Bekleyen Microsoft tarafından yönetilen şifreleme**](search-security-overview.md#encryption) , iç depolama katmanında yerleşik olarak bulunur ve geri alınamaz. <br/><br/>Azure Key Vault içinde oluşturduğunuz ve yönettiğiniz [**müşteri tarafından yönetilen şifreleme anahtarları**](search-security-manage-encryption-keys.md) , dizinlerin ve eş anlamlı eşlemelerin ek şifrelenebilmesi için kullanılabilir. 1 2020 Ağustos 'Tan sonra oluşturulan hizmetler için, CMK şifrelemesi, dizini oluşturulmuş içeriğin tam çift şifrelemesi için geçici disklerdeki verilere genişletilir.|
 | Endpoint protection | [**Gelen güvenlik duvarı desteği Için IP kuralları**](service-configure-firewall.md) , arama hizmetinin istekleri kabul edeceği IP aralıklarını ayarlamanıza olanak sağlar.<br/><br/>Tüm istekleri bir sanal ağ üzerinden zorlamak için Azure özel bağlantısını kullanarak [**özel bir uç nokta oluşturun**](service-create-private-endpoint.md) . |
 | Giden güvenlik (dizin oluşturucular) | [**Özel uç noktalar aracılığıyla veri erişimi**](search-indexer-howto-access-private.md) , dizin oluşturucunun Azure özel bağlantısı aracılığıyla korunan Azure kaynaklarına bağlanmasına izin verir.<br/><br/>[**Güvenilir bir kimlik kullanılarak veri erişimi**](search-howto-managed-identities-data-sources.md) , dış veri kaynaklarına yönelik bağlantı dizelerinin Kullanıcı adlarını ve parolaları belirleyebileceği anlamına gelir. Bir dizin oluşturucu veri kaynağına bağlanırsa, arama hizmeti daha önce güvenilir bir hizmet olarak kaydedilmişse, kaynak bağlantıya izin verir. |
 

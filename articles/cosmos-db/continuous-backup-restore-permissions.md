@@ -7,17 +7,22 @@ ms.topic: how-to
 ms.date: 02/01/2021
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 3614a85a6df2e793a73a2609d6f5762e4dc873fb
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 9d30f5325162b9ea447d54aadc092dbd9aa29132
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99527866"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99538840"
 ---
 # <a name="manage-permissions-to-restore-an-azure-cosmos-db-account"></a>Azure Cosmos DB hesabı geri yüklemek için izinleri yönetme
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
 
-Azure Cosmos DB, sürekli yedekleme hesabı için geri yükleme izinlerini belirli bir role veya bir sorumluya ayırmanızı ve kısıtlayamanızı sağlar. Hesap sahibi bir geri yüklemeyi tetikleyebilir ve geri yükleme işlemini gerçekleştirmek için diğer sorumlularına bir rol atayabilir. Bu izinler, aşağıdaki görüntüde gösterildiği gibi, abonelik kapsamında veya kaynak hesap kapsamında daha ayrıntılı bir şekilde uygulanabilir:
+> [!IMPORTANT]
+> Azure Cosmos DB için zaman noktası geri yükleme özelliği (sürekli yedekleme modu) Şu anda genel önizlemededir.
+> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir.
+> Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+Azure Cosmos DB, sürekli yedekleme (Önizleme) hesabının geri yükleme izinlerini belirli bir role veya bir sorumluya ayırmanıza ve kısıtlayamanıza olanak sağlar. Hesap sahibi bir geri yüklemeyi tetikleyebilir ve geri yükleme işlemini gerçekleştirmek için diğer sorumlularına bir rol atayabilir. Bu izinler, aşağıdaki görüntüde gösterildiği gibi, abonelik kapsamında veya kaynak hesap kapsamında daha ayrıntılı bir şekilde uygulanabilir:
 
 :::image type="content" source="./media/continuous-backup-restore-permissions/restore-roles-permissions.png" alt-text="Geri yükleme işlemi gerçekleştirmek için gerekli rollerin listesi." lightbox="./media/continuous-backup-restore-permissions/restore-roles-permissions.png" border="false":::
 

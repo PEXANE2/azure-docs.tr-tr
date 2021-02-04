@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 09/18/2020
-ms.openlocfilehash: 0d282ee805ac61ba17ceb3ecc6a3d8179ea7b319
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: 26012b23a10f560158e3ba3919e12f5c15759189
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98555908"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99539324"
 ---
 # <a name="register-and-scan-an-on-premises-sql-server"></a>Şirket içi SQL Server 'ı kaydetme ve tarama
 
@@ -36,7 +36,7 @@ SQL Server şirket içi veri kaynağı şunları destekler:
 
 Azure purview, SQL Server [görünümlerinin](/sql/relational-databases/views/views) taranmasını desteklemez.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Veri kaynaklarını kaydetmeden önce bir Azure purview hesabı oluşturun. Bir purview hesabı oluşturma hakkında daha fazla bilgi için bkz. [hızlı başlangıç: Azure purview hesabı oluşturma](create-catalog-portal.md).
 
@@ -50,21 +50,17 @@ Azure purview, SQL Server [görünümlerinin](/sql/relational-databases/views/vi
 
 ### <a name="sql-authentication"></a>SQL kimlik doğrulaması
 
-SQL kimliğinin birincil veritabanına erişimi olmalıdır. Bu konum depolandığı yerdir `sys.databases` . `sys.databases`Sunucu içindeki tüm SQL DB örneklerini bulmak Için purview tarayıcısının numaralandırması gerekir.
+SQL hesabının **ana** veritabanına erişimi olmalıdır. Bunun nedeni `sys.databases` ana veritabanında olur. `sys.databases`Sunucu üzerindeki tüm SQL veritabanlarını bulmak Için purview tarayıcısının numaralandırması gerekir.
 
 #### <a name="using-an-existing-server-administrator"></a>Var olan bir sunucu yöneticisini kullanma
 
 Şirket içi SQL Server 'ı taramak için mevcut bir sunucu yöneticisi (SA) kullanıcısını kullanmayı planlıyorsanız, aşağıdakilerden emin olun:
 
-1. `sa` Windows kimlik doğrulama türü değil.
+1. `sa` bir Windows kimlik doğrulama hesabı değil.
 
-2. Kullanmayı planlayan sunucu düzeyi Kullanıcı, sunucu rollerinin ortak ve sysadmin olması gerekir. Bunu, SQL Server Management Studio (SSMS) konumuna giderek, sunucuya bağlanarak, güvenlik ' e giderek, kullanmayı planladığınız oturum açma ' yı seçerek, **Özellikler** ' i sağ tıklayıp **sunucu rolleri**' ni seçerek doğrulayabilirsiniz.
+2. Kullanmayı planladığınız sunucu düzeyinde oturum açmanın, ortak ve sysadmin sunucu rollerine sahip olması gerekir. Bunu sunucusuna bağlanarak, SQL Server Management Studio (SSMS) konumuna giderek, güvenlik ' e giderek, kullanmayı planladığınız oturum açma ' yı seçerek, **Özellikler** ' i sağ tıklayıp **sunucu rolleri**' ni seçerek doğrulayabilirsiniz.
 
    :::image type="content" source="media/register-scan-on-premises-sql-server/server-level-login.png" alt-text="Sunucu düzeyinde oturum açma.":::
-
-3. Veritabanları, her bir veritabanında en az db_datareader düzeyinde erişime sahip bir kullanıcıyla eşleştirilir.
-
-   :::image type="content" source="media/register-scan-on-premises-sql-server/user-mapping-sa.png" alt-text="SA için kullanıcı eşlemesi.":::
 
 #### <a name="creating-a-new-login-and-user"></a>Yeni bir oturum açma ve Kullanıcı oluşturma
 
@@ -74,9 +70,9 @@ SQL Server 'ı tarayabilmesi için yeni bir oturum açma ve Kullanıcı oluştur
 
    :::image type="content" source="media/register-scan-on-premises-sql-server/create-new-login-user.png" alt-text="Yeni oturum açma ve kullanıcı oluşturun.":::
 
-2. Sol gezinti bölmesinde sunucu rolleri ' ni seçin ve hem genel hem de sysadmin ' i seçin.
+2. Sol gezinti bölmesinde sunucu rolleri ' ni seçin ve genel rolün atandığından emin olun.
 
-3. Sol gezinti bölmesinde kullanıcı eşleme ' yi seçin ve haritadaki tüm veritabanları ' nı seçin.
+3. Sol gezinti çubuğunda kullanıcı eşlemesi ' ni seçin, haritadaki tüm veritabanları ' nı seçin ve veritabanı rolünü seçin: **db_datareader**.
 
    :::image type="content" source="media/register-scan-on-premises-sql-server/user-mapping.png" alt-text="Kullanıcı eşleme.":::
 
@@ -88,8 +84,7 @@ SQL Server 'ı tarayabilmesi için yeni bir oturum açma ve Kullanıcı oluştur
 
 #### <a name="storing-your-sql-login-password-in-a-key-vault-and-creating-a-credential-in-purview"></a>SQL oturum açma parolanızı anahtar kasasında depolama ve purview 'da kimlik bilgisi oluşturma
 
-1. Azure portal, anahtar kasanıza gidin
-1. **Gizli dizileri > ayarları** seçin
+1. Azure portal1 'de anahtar kasanıza gidin. **Gizli dizileri > ayarları** seçin
 1. **+ Oluştur/Içeri aktar** ' ı SEÇIN ve SQL Server oturum açınızdan *parola* olarak **ad** ve **değer** girin
 1. Tamamlanacak **Oluştur** ' u seçin
 1. Anahtar Kasanızda purview 'a bağlı değilse, [Yeni bir Anahtar Kasası bağlantısı oluşturmanız](manage-credentials.md#create-azure-key-vaults-connections-in-your-azure-purview-account) gerekir

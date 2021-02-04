@@ -2,14 +2,14 @@
 title: Uçtan uca izlemeyi ve tanılamayı Azure Service Bus | Microsoft Docs
 description: İstemci tanılama ve uçtan uca izlemeye (işleme dahil olan tüm hizmetler aracılığıyla istemci) genel Service Bus bakış.
 ms.topic: article
-ms.date: 01/17/2021
+ms.date: 02/03/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: edfd789f8803acf9fc8d76202805dec0187d220e
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 19b284aceb83fbbc2bcf662b2b58941e6a5b36f9
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98601256"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99539222"
 ---
 # <a name="distributed-tracing-and-correlation-through-service-bus-messaging"></a>Service Bus mesajlaşma aracılığıyla dağıtılmış izleme ve bağıntı
 
@@ -22,7 +22,7 @@ Microsoft Azure Service Bus mesajlaşması, üreticileri ve tüketicilerin bu t�
 Protokol, [http bağıntı protokolünü](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md)temel alır.
 
 # <a name="azuremessagingservicebus-sdk-latest"></a>[Azure. Messaging. ServiceBus SDK (en son)](#tab/net-standard-sdk-2)
-| Özellik Adı        | Açıklama                                                 |
+| Özellik Adı        | Description                                                 |
 |----------------------|-------------------------------------------------------------|
 |  Diagnostic-Id       | Bir üreticinin bir dış çağrısının sıraya özgü tanıtıcısı. [Http protokolündeki Istek kimliği](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md#request-id) , dikkat edilecek noktalar ve biçim için bkz. |
 
@@ -134,13 +134,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerF
 
 Bu örnekte, dinleyici günlük süre, sonuç, benzersiz tanımlayıcı ve her Service Bus işlemi için başlangıç zamanı.
 
-### <a name="events"></a>Olaylar
-Her işlem için, iki olay gönderilir: ' Başlat ' ve ' Durdur '. Büyük olasılıkla, yalnızca ' Durdur ' olayları ile ilgileniyorsunuz. İşlem sonucunu ve etkinlik özellikleri olarak başlangıç zamanı ve süre sağlar.
-
-Olay yükü işlemin bağlamına sahip bir dinleyici sağlar, API gelen parametrelerini ve dönüş değerini çoğaltır. ' Stop ' olay yükü, ' Start ' olay yükünün tüm özelliklerine sahiptir, bu nedenle ' Start ' olayını tamamen yoksayabilirsiniz.
-
-Her bir ' Stop ' olayının `Status` `TaskStatus` , zaman uyumsuz işlem ile tamamlandı ve bu, basitlik için aşağıdaki tabloda da atlanmıştır.
-
+### <a name="events"></a>Ekinlikler
 Tüm olaylar, açık telemetri belirtimiyle uyumlu olan aşağıdaki özelliklere sahip olacaktır: https://github.com/open-telemetry/opentelemetry-specification/blob/master/specification/trace/api.md .
 
 - `message_bus.destination` – kuyruk/konu/abonelik yolu
@@ -201,7 +195,7 @@ Aynı kaynak için birden fazla dinleyici varsa `DiagnosticSource` , olayı kabu
 
 # <a name="microsoftazureservicebus-sdk"></a>[Microsoft. Azure. ServiceBus SDK](#tab/net-standard-sdk)
 
-| Özellik Adı        | Açıklama                                                 |
+| Özellik Adı        | Description                                                 |
 |----------------------|-------------------------------------------------------------|
 |  Diagnostic-Id       | Bir üreticinin bir dış çağrısının sıraya özgü tanıtıcısı. [Http protokolündeki Istek kimliği](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md#request-id) , dikkat edilecek noktalar ve biçim için bkz. |
 |  Correlation-Context | İşlem işleme dahil olmak üzere tüm hizmetlere yayılan işlem bağlamı. Daha fazla bilgi için bkz. [http protokolünde bağıntı bağlamı](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md#correlation-context) |
@@ -316,7 +310,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerF
 
 Bu örnekte, dinleyici günlük süre, sonuç, benzersiz tanımlayıcı ve her Service Bus işlemi için başlangıç zamanı.
 
-#### <a name="events"></a>Olaylar
+#### <a name="events"></a>Ekinlikler
 
 Her işlem için, iki olay gönderilir: ' Başlat ' ve ' Durdur '. Büyük olasılıkla, yalnızca ' Durdur ' olayları ile ilgileniyorsunuz. İşlem sonucunu ve etkinlik özellikleri olarak başlangıç zamanı ve süre sağlar.
 

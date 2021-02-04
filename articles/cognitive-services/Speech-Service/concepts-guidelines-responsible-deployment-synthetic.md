@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/11/2019
 ms.author: benoah
-ms.openlocfilehash: 371ad2220b2b2b1b73e5611c5abef74454a548ad
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: 9a7a8868497433ea0de8f2f8b32f8e8fbaa497eb
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99508278"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99537193"
 ---
 # <a name="guidelines-for-responsible-deployment-of-synthetic-voice-technology"></a>Yapay sesli teknolojinin sorumlu dağıtımına ilişkin yönergeler
 
@@ -62,14 +62,8 @@ Kendi ses yazı tiplerini kaydeden konuşma olmayan kişiler için, konuşma dü
 Konuşmaya sahip kişiler, eskime seslerini yansıtmak için yapay seslerinde güncelleştirmeler yapmayı ister (örneğin, puberty 'e ulaşan bir çocuk). Bireyler, zaman içinde değişen stil tercihleri de içerebilir ve değiştirme, aksan veya diğer ses özelliklerinde değişiklik yapmak isteyebilir.
 
 
-## <a name="reference-docs"></a>Başvuru belgeleri
+## <a name="see-also"></a>Ayrıca bkz.
 
-* [Sesli Taçanın açıklanması](/legal/cognitive-services/speech-service/disclosure-voice-talent)
-* [Nasıl açığa çıkarmaz](concepts-disclosure-guidelines.md)
-* [Açıklama tasarım desenleri](concepts-disclosure-patterns.md)
-
-## <a name="next-steps"></a>Sonraki adımlar
-
-* [Sesli Taçanın açıklanması](/legal/cognitive-services/speech-service/disclosure-voice-talent)
+* [Sesli Taçanın açıklanması](https://docs.microsoft.com/legal/cognitive-services/speech-service/disclosure-voice-talent?context=/azure/cognitive-services/speech-service/context/context)
 * [Nasıl açığa çıkarmaz](concepts-disclosure-guidelines.md)
 * [Açıklama tasarım desenleri](concepts-disclosure-patterns.md)

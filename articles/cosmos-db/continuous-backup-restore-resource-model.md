@@ -7,17 +7,22 @@ ms.topic: conceptual
 ms.date: 02/01/2021
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 64033182356e66d6a69bd47c1780b7081416019e
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 91421b66af441ed2c7e9c8b66c16ee83f489b03e
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99527811"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99538519"
 ---
-# <a name="resource-model-for-the-azure-cosmos-db-point-in-time-restore-feature"></a>Azure Cosmos DB zaman noktası geri yükleme özelliği için kaynak modeli
+# <a name="resource-model-for-the-azure-cosmos-db-point-in-time-restore-feature-preview"></a>Azure Cosmos DB zaman noktası geri yükleme özelliği için kaynak modeli (Önizleme)
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
 
-Bu makalede Azure Cosmos DB zaman noktası geri yükleme özelliği için kaynak modeli açıklanmaktadır. SQL ve MongoDB hesapları için Azure Cosmos DB API 'sinde geri yüklenebileceği sürekli yedeklemeyi ve kaynakları destekleyen parametreleri açıklar.
+> [!IMPORTANT]
+> Azure Cosmos DB için zaman noktası geri yükleme özelliği (sürekli yedekleme modu) Şu anda genel önizlemededir.
+> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir.
+> Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+Bu makalede Azure Cosmos DB zaman noktası geri yükleme özelliği (Önizleme) için kaynak modeli açıklanmaktadır. SQL ve MongoDB hesapları için Azure Cosmos DB API 'sinde geri yüklenebileceği sürekli yedeklemeyi ve kaynakları destekleyen parametreleri açıklar.
 
 ## <a name="database-accounts-resource-model"></a>Veritabanı hesabının kaynak modeli
 

@@ -8,18 +8,18 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/03/2021
-ms.openlocfilehash: d9f4ba48a7dc6cdcf6d60e4e9da5f68fcc6b1f28
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: d0cc7630a3bea67a99c3cb65d2015e934e8ac2da
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99509342"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99539103"
 ---
 # <a name="creating-search-indexes-in-azure-cognitive-search"></a>Azure Bilişsel Arama 'de arama dizinleri oluşturma
 
-Arama dizini, tam metin ve filtrelenmiş sorgular için kullanılan aranabilir içeriği depolar. Bir dizin, bir şema tarafından tanımlanır ve ikinci bir adım olarak verileri içeri aktarma ile hizmete kaydedilir. 
+Bilişsel Arama, bir *arama dizininde* tam metin ve filtrelenmiş sorgular için kullanılan aranabilir içeriği depolar. Bir dizin, bir şema tarafından tanımlanır ve ikinci bir adım olarak verileri içeri aktarma ile hizmete kaydedilir. 
 
-Dizinler *belgeleri* içerir. Kavramsal olarak, bir belge, dizininizdeki aranabilir verilerin tek bir birimidir. Bir perakendeciden her ürün için bir belge, bir haber kuruluşunda her bir makale için bir belge olabilir ve bu şekilde devam eder. Bu kavramları daha tanıdık veritabanı eşdeğerlerine eşleme: bir *arama dizini* bir *tabloya* karşılık gelir ve *Belgeler* bir tablodaki *satırlara* kabaca eşdeğerdir.
+Dizinler *arama belgelerini* içerir. Kavramsal olarak, bir belge, dizininizdeki aranabilir verilerin tek bir birimidir. Bir perakendeciden her ürün için bir belge, bir haber kuruluşunda her bir makale için bir belge olabilir ve bu şekilde devam eder. Bu kavramları daha tanıdık veritabanı eşdeğerlerine eşleme: bir *arama dizini* bir *tabloya* karşılık gelir ve *Belgeler* bir tablodaki *satırlara* kabaca eşdeğerdir.
 
 ## <a name="whats-an-index-schema"></a>Dizin şeması nedir?
 
@@ -106,7 +106,9 @@ Bilişsel Arama için Azure SDK 'Ları, genel olarak kullanılabilen özellikler
 | JavaScript | [SearchIndexClient](/javascript/api/@azure/search-documents/searchindexclient) | [Dizinler](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/search/search-documents/samples/javascript/src/indexes) |
 | Python | [SearchIndexClient](/python/api/azure-search-documents/azure.search.documents.indexes.searchindexclient) | [sample_index_crud_operations. Kopyala](https://github.com/Azure/azure-sdk-for-python/blob/7cd31ac01fed9c790cec71de438af9c45cb45821/sdk/search/azure-search-documents/samples/sample_index_crud_operations.py) |
 
-## <a name="defining-fields"></a>Alanları tanımlama
+## <a name="define-fields"></a>Alanları tanımlama
+
+Bir arama belgesi, koleksiyon tarafından tanımlanır `fields` . Sorgular ve anahtarlar için alanlara ihtiyacınız olacak. Ayrıca muhtemelen filtreleri, modelleri ve sıralamayı desteklemek için alanlara ihtiyacınız olacaktır. Ayrıca, bir kullanıcının hiç görmemesi gereken veriler için alanlar da gerekebilir. Örneğin, arama sırasını değiştirmek için kullanabileceğiniz kar marjları veya pazarlama promosyonları için alanlar isteyebilirsiniz.
 
 EDM. String türünde bir alanın belge anahtarı olarak belirlenmesi gerekir. Her bir arama belgesini benzersiz bir şekilde tanımlamak için kullanılır. Ayrıntılar sayfasını doldurmak için bir belgeyi anahtarına göre alabilirsiniz.  
 
@@ -146,9 +148,11 @@ Aşağıdaki ekran görüntüsünde, çeşitli öznitelik birleşimlerinden kayn
 
 ![Öznitelik seçimine dayalı Dizin boyutu](./media/search-what-is-an-index/realestate-index-size.png "Öznitelik seçimine dayalı Dizin boyutu")
 
-Bu dizin çeşitleri yapay olsa da, özniteliklerin depolamayı nasıl etkilediği hakkında geniş karşılaştırmalar için bunlara başvurabiliyoruz. "Alınabilir" olarak ayarlandığında Dizin boyutu artar mi? Hayır. **Öneri aracı** bir dizin boyutunu artırmak için alan ekleme Evet.
+Bu dizin çeşitleri yapay olsa da, özniteliklerin depolamayı nasıl etkilediği hakkında geniş karşılaştırmalar için bunlara başvurabiliyoruz. "Alınabilir" olarak ayarlandığında Dizin boyutu artar mi? Hayır. **Öneri aracı** bir dizin boyutunu artırmak için alan ekleme Evet. 
 
-Filtre ve sıralamayı destekleyen dizinler, yalnızca tam metin aramasını destekleyen dizinlerden nispeten daha büyüktür. Bunun nedeni, filtre ve sıralama işlemlerinin tam eşleşmeler için taranması, tam metin dizelerinin varlığını gerektirmektir. Buna karşılık, tam metin sorgularını destekleyen aranabilir alanlar, tüm belgelerden daha az alan tüketen simgeleştirilmiş koşullarla doldurulmuş ters dizinler kullanır. 
+Filtrelenen veya sıralanabilir alanları, karakter sıralarının tam olarak eşleştirileceği şekilde belirteç olmadığından, filtrelenebilir veya sıralanabilir bir alan oluşturmak depolama tüketimine de eklenir.
+
+Ayrıca, yukarıdaki tabloya yansıtılmayan [çözümleyiciler, çözümleyicilerin](search-analyzers.md)etkisidir. Tam karakter dizilerini (a, AB, ABC, abcd) depolamak için edgeNgram Simgeleştirici kullanıyorsanız, dizinin boyutu standart bir çözümleyici kullandıysanız daha büyük olur.
 
 > [!Note]
 > Depolama mimarisi Azure Bilişsel Arama uygulama ayrıntısı olarak değerlendirilir ve bildirimde bulunulmadan değiştirilebilir. Geçerli davranışın gelecekte devam edeceğini garanti vermez.
@@ -169,9 +173,9 @@ CORS için aşağıdaki seçenekler ayarlanabilir:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bilişsel Arama için neredeyse her örnek veya İzlenecek yol kullanarak bir dizin oluşturma deneyimlerine ulaşabilirsiniz. Başlamak için içerik tablosundan hızlı başlangıçlardan herhangi birini seçebilirsiniz.
+Bilişsel Arama için neredeyse her örnek veya İzlenecek yol kullanarak bir dizin oluşturma deneyimlerine ulaşabilirsiniz. Başlangıçlarda, içerik tablosundan hızlı başlangıçlardan herhangi birini seçebilirsiniz.
 
-Ayrıca, verileri içeren bir dizin yüklemek için yöntemler hakkında bilgi sahibi olmak isteyeceksiniz. Dizin tanımı ve popülasyonu birlikte gerçekleştirilir. Aşağıdaki makalelerde daha fazla bilgi sağlanmaktadır.
+Ancak, verileri içeren bir dizin yüklemek için yöntemler konusunda da bilgi sahibi olmak isteyeceksiniz. Dizin tanımı ve veri içeri aktarma stratejileri art arda tanımlanmıştır. Aşağıdaki makalelerde bir dizin yükleme hakkında daha fazla bilgi sağlanmaktadır.
 
 + [Verileri içeri aktarmaya genel bakış](search-what-is-data-import.md)
 

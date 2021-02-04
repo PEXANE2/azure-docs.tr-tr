@@ -3,13 +3,13 @@ title: Kavramlar-Azure VMware Çözüm özel bulutlarını Izleme ve onarma
 description: Azure VMware çözümünün bir Azure VMware çözümü özel bulutundaki VMware ESXi sunucularını nasıl izlediğini ve onarmadığını öğrenin.
 ms.topic: conceptual
 ms.custom: contperf-fy21q2
-ms.date: 11/20/2020
-ms.openlocfilehash: 7f367a6ef9b86f235a16a698735cfb58a11f6862
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.date: 02/03/2021
+ms.openlocfilehash: 6174df429fd9b21c7f685c8ba14e6d5c0bba4c83
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033604"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99538967"
 ---
 # <a name="monitor-and-repair-azure-vmware-solution-private-clouds"></a>Azure VMware Çözüm özel bulutlarını izleme ve onarma
 
@@ -43,10 +43,7 @@ Ana bilgisayar düzeltme süreci, kümeye yeni bir sağlıklı düğüm eklenere
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Hakkında daha fazla bilgi edinmek isteyebileceğiniz bazı konular aşağıda verilmiştir:
+Azure VMware çözümünün özel bulutları nasıl izlediğini ve onardığına göre, şunları öğrenmek isteyebilirsiniz:
 
-- [Azure VMware çözümü özel bulut yükseltmeleri](concepts-upgrades.md)
-- [Azure VMware Çözüm VM 'lerinin yaşam döngüsü yönetimi](lifecycle-management-of-azure-vmware-solution-vms.md)
-- [Azure Güvenlik Merkezi tümleştirmesiyle Azure VMware Çözüm sanal makinelerinizi koruyun](azure-security-integration.md)
-- [Azure Backup Sunucusu ile Azure VMware Çözüm VM 'lerini yedekleme](backup-azure-vmware-solution-virtual-machines.md)
-- [Azure VMware çözümünü kullanarak sanal makinelerin olağanüstü durum kurtarmasını tamamlanma](disaster-recovery-for-virtual-machines.md)
+- [Azure VMware çözümü özel bulut yükseltmeleri](concepts-upgrades.md).
+- [Azure VMware Çözüm kaynağını etkinleştirme](enable-azure-vmware-solution.md).

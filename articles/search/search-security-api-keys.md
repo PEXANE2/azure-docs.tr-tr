@@ -1,55 +1,55 @@
 ---
-title: Yönetim ve sorgu API anahtarları oluşturma, yönetme ve güvenli hale getirme
+title: API anahtarı kimlik doğrulaması
 titleSuffix: Azure Cognitive Search
-description: API anahtarı, hizmet uç noktasına erişimi denetler. Yönetici anahtarları yazma erişimi verir. Salt okuma erişimi için sorgu anahtarları oluşturulabilir.
+description: Bir API anahtarı, hizmet uç noktasına gelen erişimi denetler. Yönetici anahtarları yazma erişimi verir. Salt okuma erişimi için sorgu anahtarları oluşturulabilir.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 10/22/2020
-ms.openlocfilehash: 29a314553584843ed6241b9311e9d72b42ec8705
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.date: 02/03/2021
+ms.openlocfilehash: 8b2e85744923fb2e7e474e049df1536aebc56f3c
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97516413"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99536942"
 ---
 # <a name="create-and-manage-api-keys-for-an-azure-cognitive-search-service"></a>Azure Bilişsel Arama hizmeti için API anahtarları oluşturma ve yönetme
 
-Bir arama hizmetine yönelik tüm isteklerin `api-key` , özellikle hizmetinize özel olarak oluşturulmuş bir salt okuma ihtiyacı vardır. , `api-key` Arama hizmeti uç noktanıza erişimin kimliğini doğrulamak için tek mekanizmadır ve her isteğe eklenmelidir. 
+Bir arama hizmetine yapılan tüm isteklerin, hizmetinize özel olarak oluşturulmuş salt okunurdur bir API anahtarı olması gerekir. API anahtarı, arama hizmeti uç noktanıza gelen isteklerin kimliğini doğrulamaya yönelik tek mekanizmadır ve her istekte gereklidir. 
 
-+ [Rest çözümlerinde](search-get-started-rest.md), API anahtarı genellikle bir istek üstbilgisinde belirtilir
++ [Rest çözümlerinde](search-get-started-rest.md), `api-key` genellikle bir istek üst bilgisinde belirtilir
 
 + [.Net çözümlerinde](search-howto-dotnet-sdk.md), genellikle bir anahtar yapılandırma ayarı olarak belirtilir ve sonra bir [AzureKeyCredential](/dotnet/api/azure.azurekeycredential) olarak geçirilir
 
-Anahtarlar, hizmet sağlama sırasında arama hizmetinize oluşturulur. [Azure Portal](https://portal.azure.com)anahtar değerlerini görüntüleyebilir ve elde edebilirsiniz.
+[Azure Portal](https://portal.azure.com)veya [POWERSHELL](/powershell/module/az.search), [Azure CLI](/cli/azure/search)veya [REST API](/rest/api/searchmanagement/)aracılığıyla API anahtarlarını görüntüleyebilir ve yönetebilirsiniz.
 
 :::image type="content" source="media/search-manage/azure-search-view-keys.png" alt-text="Portal sayfası, ayarları alma, anahtarlar bölümü" border="false":::
 
 ## <a name="what-is-an-api-key"></a>API anahtarı nedir?
 
-Bir API anahtarı rastgele oluşturulan rakamlardan ve harflerden oluşan bir dizedir. [Rol tabanlı izinler](search-security-rbac.md)aracılığıyla anahtarları silebilir veya okuyabilir, ancak bir anahtarı Kullanıcı tanımlı parolayla veya arama işlemlerine erişmek için birincil kimlik doğrulama yöntemi olarak Active Directory kullanamazsınız. 
+Bir API anahtarı, arama hizmetine yapılan her istekte geçirilen rastgele üretilmiş sayılardan ve harflerden oluşan benzersiz bir dizedir. Hem isteğin kendisi hem de anahtar geçerliyse, hizmet isteği kabul eder. 
 
 Arama hizmetinize erişmek için iki tür anahtar kullanılır: yönetici (okuma/yazma) ve sorgu (salt okuma).
 
 |Anahtar|Description|Sınırlar|  
 |---------|-----------------|------------|  
 |Yönetici|Hizmeti yönetme, dizinler, Dizin oluşturucular ve veri kaynakları oluşturma ve silme gibi tüm işlemlere tam haklar verir.<br /><br /> Portalda *birincil* ve *İkincil* anahtarlar olarak adlandırılan iki yönetici anahtarı, hizmet oluşturulduğunda oluşturulur ve isteğe bağlı olarak tek tek yeniden oluşturulabilir. İki anahtara sahip olmak, hizmete devam etmek için ikinci anahtarı kullanırken bir anahtarın üzerine erişmenizi sağlar.<br /><br /> Yönetici anahtarları yalnızca HTTP istek üst bilgilerinde belirtilir. Bir URL 'ye yönetici API anahtarı yerleştirebilirsiniz.|Hizmet başına en fazla 2|  
-|Sorgu|Dizinlere ve belgelere salt okuma erişimi verir ve genellikle arama istekleri veren istemci uygulamalarına dağıtılır.<br /><br /> Sorgu anahtarları isteğe bağlı olarak oluşturulur. Bunları portalda el ile veya [yönetim REST API](/rest/api/searchmanagement/)aracılığıyla oluşturabilirsiniz.<br /><br /> Sorgu anahtarları, arama, öneri veya arama işlemi için bir HTTP isteği üst bilgisinde belirtilebilir. Alternatif olarak, bir URL 'ye parametre olarak bir sorgu anahtarı geçirebilirsiniz. İstemci uygulamanızın isteği nasıl formüllamasına bağlı olarak, anahtarı bir sorgu parametresi olarak geçirmek daha kolay olabilir:<br /><br /> `GET /indexes/hotels/docs?search=*&$orderby=lastRenovationDate desc&api-version=2020-06-30&api-key=[query key]`|hizmet başına 50|  
+|Sorgu|Dizinlere ve belgelere salt okuma erişimi verir ve genellikle arama istekleri veren istemci uygulamalarına dağıtılır.<br /><br /> Sorgu anahtarları isteğe bağlı olarak oluşturulur.<br /><br /> Sorgu anahtarları, arama, öneri veya arama işlemi için bir HTTP isteği üst bilgisinde belirtilebilir. Alternatif olarak, bir URL 'ye parametre olarak bir sorgu anahtarı geçirebilirsiniz. İstemci uygulamanızın isteği nasıl formüllamasına bağlı olarak, anahtarı bir sorgu parametresi olarak geçirmek daha kolay olabilir:<br /><br /> `GET /indexes/hotels/docs?search=*&$orderby=lastRenovationDate desc&api-version=2020-06-30&api-key=[query key]`|hizmet başına 50|  
 
- Görsel olarak, bir yönetici anahtarı veya sorgu anahtarı arasında ayrım yoktur. Her iki anahtar de 32 rasgele oluşturulan alfasayısal karakterlerden oluşan dizelerdir. Uygulamanızda hangi anahtar türünün belirtilme izini kaybederseniz, [portalda anahtar değerlerini denetleyebilir](https://portal.azure.com) veya değer ve anahtar türünü döndürmek için [REST API](/rest/api/searchmanagement/) kullanabilirsiniz.  
+ Görsel olarak, bir yönetici anahtarı veya sorgu anahtarı arasında ayrım yoktur. Her iki anahtar de 32 rasgele oluşturulan alfasayısal karakterlerden oluşan dizelerdir. Uygulamanızda hangi anahtar türünün belirtilme izini kaybederseniz, [portalda anahtar değerlerini kontrol](https://portal.azure.com)edebilirsiniz.  
 
 > [!NOTE]  
->  İstek URI 'sinde bir gibi hassas verileri geçirmek için kötü bir güvenlik uygulaması olduğu kabul edilir `api-key` . Bu nedenle, Azure Bilişsel Arama sorgu dizesinde yalnızca bir sorgu anahtarını kabul eder `api-key` ve dizininizin içeriği herkese açık bir şekilde kullanılabilir olmadığı sürece bunu yapmaktan kaçınmalısınız. Genel bir kural olarak, `api-key` isteğinizi istek üst bilgisi olarak geçirmeyi öneririz.  
+> İstek URI 'sinde bir gibi hassas verileri geçirmek için kötü bir güvenlik uygulaması olduğu kabul edilir `api-key` . Bu nedenle, Azure Bilişsel Arama sorgu dizesinde yalnızca bir sorgu anahtarını kabul eder `api-key` ve dizininizin içeriği herkese açık bir şekilde kullanılabilir olmadığı sürece bunu yapmaktan kaçınmalısınız. Genel bir kural olarak, `api-key` isteğinizi istek üst bilgisi olarak geçirmeyi öneririz.  
 
 ## <a name="find-existing-keys"></a>Mevcut anahtarları bul
 
-Portalda veya [yönetim REST API](/rest/api/searchmanagement/)erişim tuşları elde edebilirsiniz. Daha fazla bilgi için bkz. [yönetici ve sorgu API-anahtarlarını yönetme](search-security-api-keys.md).
+Portal 'da veya [PowerShell](/powershell/module/az.search), [Azure CLI](/cli/azure/search)veya [REST API](/rest/api/searchmanagement/)aracılığıyla erişim tuşları elde edebilirsiniz.
 
 1. [Azure portalında](https://portal.azure.com) oturum açın.
-2. Aboneliğiniz için [arama hizmetlerini](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)  listeleyin.
-3. Hizmeti seçin ve genel bakış sayfasında,   > Yönetim ve sorgu anahtarlarını görüntülemek için ayarlar **anahtarlar** ' a tıklayın.
+1. Aboneliğiniz için [arama hizmetlerini](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) listeleyin.
+1. Hizmeti seçin ve genel bakış sayfasında,   > Yönetim ve sorgu anahtarlarını görüntülemek için ayarlar **anahtarlar** ' a tıklayın.
 
    :::image type="content" source="media/search-security-overview/settings-keys.png" alt-text="Portal sayfası, görünüm ayarları, anahtarlar bölümü" border="false":::
 
@@ -68,7 +68,7 @@ Sorgu anahtarları bir belge koleksiyonunu hedefleyen işlemler için bir dizin 
    :::image type="content" source="media/search-security-overview/create-query-key.png" alt-text="Sorgu anahtarı oluşturma veya kullanma" border="false":::
 
 > [!Note]
-> Sorgu anahtarı kullanımını gösteren bir kod örneği, [C# içindeki bir Azure bilişsel arama dizinini sorgulama](./search-get-started-dotnet.md)bölümünde bulunabilir.
+> Sorgu anahtarı kullanımını gösteren bir kod örneği, [Dotnethowto](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo)içinde bulunabilir.
 
 <a name="regenerate-admin-keys"></a>
 
@@ -83,11 +83,13 @@ Bir birincil anahtarı, iş sürekliliği için ikincil anahtarı kullanarak dö
 
 Her iki anahtarı da aynı anda yeniden oluşturmanız durumunda, bu anahtarları kullanan tüm istemci istekleri HTTP 403 yasaklanmış ile başarısız olur. Ancak içerik silinmez ve kalıcı olarak kilitlenmemiştir. 
 
-Hizmete portal veya Yönetim Katmanı ([REST API](/rest/api/searchmanagement/), [PowerShell](./search-manage-powershell.md)veya Azure Resource Manager) üzerinden erişmeye devam edebilirsiniz. Yönetim işlevleri, hizmet API anahtarı olmayan bir abonelik KIMLIĞIYLE çalışır ve bu nedenle API anahtarlarınız olmasa bile yine de kullanılabilir. 
+Hizmete Portal üzerinden veya program aracılığıyla erişmeye devam edebilirsiniz. Yönetim işlevleri, bir hizmet API anahtarı olmayan bir abonelik KIMLIĞI üzerinden çalışır ve bu nedenle API anahtarlarınız olmasa bile yine de kullanılabilir. 
 
 Portal veya yönetim katmanı aracılığıyla yeni anahtarlar oluşturduktan sonra, yeni anahtarlar ve istekler üzerinde bu anahtarlar sağladığınızda, erişim içeriğinize (dizinler, Dizin oluşturucular, veri kaynakları, eş anlamlı haritalar) geri yüklenir.
 
 ## <a name="secure-api-keys"></a>Güvenli API anahtarları
+
+[Rol tabanlı izinler](search-security-rbac.md)aracılığıyla anahtarları silebilir veya okuyabilir, ancak bir anahtarı Kullanıcı tanımlı parolayla veya arama işlemlerine erişmek için birincil kimlik doğrulama yöntemi olarak Active Directory kullanamazsınız. 
 
 Ana güvenlik, portal veya Kaynak Yöneticisi arabirimleri (PowerShell veya komut satırı arabirimi) aracılığıyla erişimi kısıtlayarak bir şekilde yapılır. Belirtildiği gibi, abonelik yöneticileri tüm API anahtarlarını görüntüleyebilir ve yeniden oluşturabilir. Bir önlem olarak, yönetici anahtarlarına kimlerin erişebileceğini anlamak için rol atamalarını gözden geçirin.
 
@@ -95,11 +97,8 @@ Ana güvenlik, portal veya Kaynak Yöneticisi arabirimleri (PowerShell veya komu
 
 Aşağıdaki rollerin üyeleri anahtarları görüntüleyebilir ve yeniden oluşturabilir: sahip, katkıda bulunan, [Arama hizmeti katkıda bulunanlar](../role-based-access-control/built-in-roles.md#search-service-contributor)
 
-> [!Note]
-> Arama sonuçları üzerinden kimlik tabanlı erişim için, sonuçları kimliğe göre kırpmak, istek sahibinin erişimi olmaması gereken belgeleri kaldırmak için güvenlik filtreleri oluşturabilirsiniz. Daha fazla bilgi için bkz. [Güvenlik filtreleri](search-security-trimming-for-azure-search.md) ve [Active Directory Ile güvenli hale getirme](search-security-trimming-for-azure-search-with-aad.md).
-
 ## <a name="see-also"></a>Ayrıca bkz.
 
++ [Azure Bilişsel Arama güvenliği](search-security-overview.md)
 + [Azure Bilişsel Arama Azure rol tabanlı erişim denetimi](search-security-rbac.md)
 + [PowerShell kullanarak yönetme](search-manage-powershell.md) 
-+ [Performans ve iyileştirme makalesi](search-performance-optimization.md)

@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 11/18/2020
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 8ffbe5debaa980385a2c6dc0078de5f1cc2e9bde
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 150e1aee38a724a0d52c83219c4d214265be9274
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98045521"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99538077"
 ---
 # <a name="use-workspace-behind-a-firewall-for-azure-machine-learning"></a>Azure Machine Learning için bir güvenlik duvarının arkasındaki çalışma alanını kullan
 
@@ -33,15 +33,22 @@ Azure Güvenlik Duvarı 'nı kullanırken, gelen trafik için NAT kuralları olu
 
 Azure Machine Learning __işlem örneği__ veya __işlem kümesi__ kullanıyorsanız, Azure Machine Learning kaynaklarını içeren alt ağ için [Kullanıcı tanımlı yollar (udrs)](../virtual-network/virtual-networks-udr-overview.md) ekleyin. Bu yol, ve kaynaklarının IP adreslerinden __gelen__ trafiği, `BatchNodeManagement` `AzureMachineLearning` işlem örneğinizin ve işlem kümenizin genel IP 'si ile zorlar.
 
-Bu UDRs, Batch hizmetinin görev zamanlama için işlem düğümleriyle iletişim kurmasını sağlar. Ayrıca, Işlem örneklerine erişim için gerekli olduğundan, kaynakların bulunduğu Azure Machine Learning hizmeti için IP adresini de ekleyin. Batch hizmetinin ve Azure Machine Learning hizmetinin IP adreslerinin bir listesini almak için aşağıdaki yöntemlerden birini kullanın:
+Bu UDRs, Batch hizmetinin görev zamanlama için işlem düğümleriyle iletişim kurmasını sağlar. Işlem örneklerine erişim için gerekli olduğundan, Azure Machine Learning hizmetinin IP adresini de ekleyin. Azure Machine Learning hizmeti için IP eklerken, IP 'yi hem __birincil hem de ikincil__ Azure bölgeleri için eklemeniz gerekir. Birincil bölge, çalışma alanınızın bulunduğu bir bölgedir.
+
+İkincil bölgeyi bulmak için [Azure eşleştirilmiş bölgeleri kullanarak olağanüstü durum kurtarma & iş sürekliliği sağlama](../best-practices-availability-paired-regions.md#azure-regional-pairs)konusuna bakın. Örneğin, Azure Machine Learning hizmetiniz Doğu ABD 2 ise, ikincil bölge Orta ABD olur. 
+
+Batch hizmetinin ve Azure Machine Learning hizmetinin IP adreslerinin bir listesini almak için aşağıdaki yöntemlerden birini kullanın:
 
 * [Azure IP aralıklarını ve hizmet etiketlerini](https://www.microsoft.com/download/details.aspx?id=56519) indirin ve dosyada `BatchNodeManagement.<region>` ve `AzureMachineLearning.<region>` Azure bölgeniz olduğu yerde arama yapın `<region>` .
 
-* Bilgileri indirmek için [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest) 'yi kullanın. Aşağıdaki örnek, IP adresi bilgilerini indirir ve Doğu ABD 2 bölgesinin bilgilerini filtreler:
+* Bilgileri indirmek için [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest) 'yi kullanın. Aşağıdaki örnek, IP adresi bilgilerini indirir ve Doğu ABD 2 bölgesi (birincil) ve Orta ABD bölgesi (ikincil) için bilgileri filtreler:
 
     ```azurecli-interactive
     az network list-service-tags -l "East US 2" --query "values[?starts_with(id, 'Batch')] | [?properties.region=='eastus2']"
+    # Get primary region IPs
     az network list-service-tags -l "East US 2" --query "values[?starts_with(id, 'AzureMachineLearning')] | [?properties.region=='eastus2']"
+    # Get secondary region IPs
+    az network list-service-tags -l "Central US" --query "values[?starts_with(id, 'AzureMachineLearning')] | [?properties.region=='centralus']"
     ```
 
     > [!TIP]
@@ -114,7 +121,7 @@ Bu bölümdeki konaklar Microsoft 'a aittir ve çalışma alanınızın düzgün
 | **Şunun için gerekli:** | **Azure genel** | **Azure Devlet Kurumları** | **Azure China 21Vianet** |
 | ----- | ----- | ----- | ----- |
 | Azure Active Directory | login.microsoftonline.com | login.microsoftonline.us | login.chinacloudapi.cn |
-| Azure portal | management.azure.com | management.azure.us | management.azure.cn |
+| Azure portalı | management.azure.com | management.azure.us | management.azure.cn |
 
 **Azure Machine Learning Konakları**
 

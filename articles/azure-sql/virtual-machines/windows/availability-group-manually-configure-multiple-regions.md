@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 60bb5ac652a80b5ae52c91f91fa0c80440e9cc82
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 6f63315c3e9b150a54e122d9a1c6948087603d51
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97359090"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99537416"
 ---
 # <a name="configure-a-sql-server-always-on-availability-group-across-different-azure-regions"></a>Farklı Azure bölgelerinde SQL Server Always on kullanılabilirlik grubu yapılandırma
 
@@ -86,6 +86,7 @@ Uzak bir veri merkezinde çoğaltma oluşturmak için aşağıdaki adımları uy
    - IP adresine özgü bir TCP bağlantı noktası araştırması kullanın.
    - Aynı bölgedeki SQL Server özel bir yük dengeleme kuralına sahip olmalıdır.  
    - Arka uç havuzundaki sanal makineler tek bir kullanılabilirlik kümesinin ya da sanal makine ölçek kümesinin bir parçası değilse, bir Standart Load Balancer olun. Daha fazla bilgi için [Azure Load Balancer standart genel bakış ' a](../../../load-balancer/load-balancer-overview.md)bakın.
+   - İki farklı bölgedeki iki sanal ağın küresel VNet eşlemesi üzerinden eşlenirse bir Standart Load Balancer olun. Daha fazla bilgi için bkz. [Azure sanal ağ hakkında sık sorulan sorular (SSS)](../../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers).
 
 1. [Yeni SQL Server Yük Devretme Kümelemesi özelliği ekleyin](availability-group-manually-configure-prerequisites-tutorial.md#add-failover-clustering-features-to-both-sql-server-vms).
 

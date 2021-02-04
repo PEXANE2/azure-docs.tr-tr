@@ -6,14 +6,19 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/03/2021
 ms.author: govindk
-ms.openlocfilehash: dbee87098dcc712669c332deac656cf5656ef4c4
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: e31423ae5afd4955ebe7acf1d456496f15f14a6b
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99527770"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99537298"
 ---
 # <a name="list-restorable-sql-api-resources-in-azure-cosmos-db-using-rest-api"></a>REST API kullanarak Azure Cosmos DB geri yüklenebilen SQL API kaynaklarını listeleme
+
+> [!IMPORTANT]
+> Azure Cosmos DB için zaman noktası geri yükleme özelliği (sürekli yedekleme modu) Şu anda genel önizlemededir.
+> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir.
+> Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Belirtilen zaman damgasında ve konumda hesapta bulunan veritabanı ve kapsayıcı Birleşik giriş listesini döndürür. Bu, verilen zaman damgasında ve konumunda hangi kaynakların mevcut olduğunu doğrulamaya yönelik senaryolara yardımcı olur. Bu API için `Microsoft.DocumentDB/locations/restorableDatabaseAccounts/*/read` izin gerekir.
 
