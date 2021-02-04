@@ -8,12 +8,12 @@ ms.date: 12/13/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 2ee4e313366bafdd2f6e3bd0e104abd9f11b7776
-ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
+ms.openlocfilehash: 6cefb60d794defcce54766b9c7f71e7fbf40fe5c
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98108679"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99539442"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge"></a>IoT Edge'de Azure Blob Depolama ile verileri kenarda depolama
 
@@ -184,6 +184,7 @@ Azure Blob depolama belgeleri, birkaç dilde hızlı başlangıç örnek kodunu 
 Aşağıdaki hızlı başlangıç örnekleri, IoT Edge tarafından da desteklenen dilleri kullanır, bu nedenle bunları BLOB depolama modülünün yanı sıra IoT Edge modüller olarak dağıtabilirsiniz:
 
 * [.NET](../storage/blobs/storage-quickstart-blobs-dotnet.md)
+  * IoT Edge modülü v 1.4.0 ve önceki sürümlerde Azure Blob depolama, WindowsAzure. Storage 9.3.3 SDK ile uyumludur ve v 1.4.1 Ayrıca Azure. Storage. blob 12.8.0 SDK 'sını destekler.
 * [Python](../storage/blobs/storage-quickstart-blobs-python.md)
   * Python SDK 'sının V 2.1 'den önceki sürümlerde, modülün blob oluşturma zamanını döndürmediği bilinen bir sorunu vardır. Bu sorun nedeniyle, liste Blobları gibi bazı yöntemler çalışmaz. Geçici bir çözüm olarak, blob istemcisinde API sürümünü açık olarak ' 2017-04-17 ' olarak ayarlayın. Örneğinde  `block_blob_service._X_MS_VERSION = '2017-04-17'`
   * [Blob örneği Ekle](https://github.com/Azure/azure-storage-python/blob/master/samples/blob/append_blob_usage.py)
@@ -292,7 +293,7 @@ IoT Edge modülündeki bu Azure Blob depolama alanı, IoT Edge Event Grid ile t�
 
 ## <a name="release-notes"></a>Sürüm Notları
 
-Bu modül için [Docker Hub 'daki sürüm notları](https://hub.docker.com/_/microsoft-azure-blob-storage) aşağıda verilmiştir
+Bu modül için [Docker Hub 'daki sürüm notları](https://hub.docker.com/_/microsoft-azure-blob-storage) aşağıda verilmiştir. Belirli bir sürümün sürüm notlarındaki hata düzeltmeleri ve düzeltme ile ilgili daha fazla bilgi bulabilirsiniz.
 
 ## <a name="suggestions"></a>Öneriler
 

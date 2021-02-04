@@ -1,36 +1,35 @@
 ---
 title: Kaynak kümelerini anlama
 description: Bu makalede, kaynak kümelerinin ne olduğu ve Azure purview 'ın bunları nasıl oluşturduğu açıklanmaktadır.
-author: yaronyg
-ms.author: yarong
+author: djpmsft
+ms.author: daperlov
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
-ms.date: 10/19/2020
-ms.openlocfilehash: 55efa9443fd59b66a7677c9c460e473715f201df
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.date: 02/03/2021
+ms.openlocfilehash: e4b48729f13ec0234a7a711032a2db34e55a8bd1
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96553983"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99539476"
 ---
 # <a name="understanding-resource-sets"></a>Kaynak kümelerini anlama
 
 Bu makale, Azure purview 'ın veri varlıklarını mantıksal kaynaklarla eşlemek için kaynak kümelerini nasıl kullandığını anlamanıza yardımcı olur.
-
 ## <a name="background-info"></a>Arka plan bilgileri
 
 Ölçekli veri işleme sistemleri genellikle birden çok dosya olarak bir diskte tek bir tabloyu depolar. Bu kavram, kaynak kümeleri kullanılarak Azure purview 'da temsil edilir. Kaynak kümesi, katalogdaki çok sayıda varlığı temsil eden katalogdaki tek bir nesnedir.
 
-Örneğin, Spark kümenizin bir veri çerçevesini ADLS 2. veri kaynağına kalıcı olduğunu varsayalım. Spark 'da tablo tek bir mantıksal kaynak gibi görünse de, her biri toplam veri çerçevesinin içeriğinin bir bölümünü temsil eden binlerce Parquet dosyası vardır. IoT verileri ve Web günlüğü verilerinde aynı zorluk vardır. Günlük dosyalarını birkaç kez veren bir sensör olduğunu düşünün. Bu tek sensörden yüzlerce binlerce günlük dosyası olana kadar uzun sürmez.
+Örneğin, Spark kümenizin bir veri çerçevesini bir Azure ıntal Lake Storage (ADLS) Gen2 veri kaynağına kalıcı olduğunu varsayalım. Spark 'da tablo tek bir mantıksal kaynak gibi görünse de, her biri toplam veri çerçevesinin içeriğinin bir bölümünü temsil eden binlerce Parquet dosyası vardır. IoT verileri ve Web günlüğü verilerinde aynı zorluk vardır. Günlük dosyalarını birkaç kez veren bir sensör olduğunu düşünün. Bu tek sensörden yüzlerce binlerce günlük dosyası olana kadar uzun sürmez.
 
 Çok sayıda veri varlığını tek bir mantıksal kaynağa eşlemenin zorluğuyla ele almak için Azure purview kaynak kümelerini kullanır.
 
 ## <a name="how-azure-purview-detects-resource-sets"></a>Azure purview 'ın kaynak kümelerini nasıl algıladığı
 
-Azure takip görünümü yalnızca Azure Bloblarında, ADLS 1. ve ADLS 2. kaynak kümelerinin algılanmasının kullanılmasını destekler.
+Azure purview, Azure Blob depolama, ADLS 1. ve ADLS 2. kaynak kümelerinin algılanmasının kullanılmasını destekler.
 
-Azure purview otomatik kaynak kümesi bulma adlı bir özellik kullanarak kaynak kümelerini otomatik olarak algılar. Bu özellik, tarama yoluyla alınan tüm verilere bakar ve bunları bir dizi tanımlı desenlerle karşılaştırır.
+Azure purview tarama sırasında kaynak kümelerini otomatik olarak algılar. Bu özellik, tarama yoluyla alınan tüm verilere bakar ve bunları bir dizi tanımlı desenlerle karşılaştırır.
 
 Örneğin, URL 'SI olan bir veri kaynağını taradığınızı varsayalım `https://myaccount.blob.core.windows.net/mycontainer/machinesets/23/foo.parquet` . Azure takip görünümü yol kesimlerine bakar ve yerleşik desenlerle eşleşip eşleşmediğine karar verir. GUID, sayı, tarih biçimleri, yerelleştirme kodları (örneğin, en-US) için yerleşik desenleri vardır. Bu durumda, sayı deseninin *23*' ü eşleştirir. Azure purview, bu dosyanın adlı bir kaynak kümesinin parçası olduğunu varsayar `https://myaccount.blob.core.windows.net/mycontainer/machinesets/{N}/foo.parquet` .
 
@@ -42,12 +41,9 @@ Azure purview, bu stratejiyi kullanarak aşağıdaki kaynakları aynı kaynak k�
 - `https://myaccount.blob.core.windows.net/mycontainer/weblogs/cy_gb/234.json`
 - `https://myaccount.blob.core.windows.net/mycontainer/weblogs/de_Ch/23434.json`
 
-> [!Note]
-> Azure Data Lake Storage 2. Nesil genel kullanıma sunuldu. Bugün kullanmaya başlamanızı öneririz. Daha fazla bilgi için bkz. [ürün sayfası](https://azure.microsoft.com/en-us/services/storage/data-lake-storage/).
-
 ## <a name="file-types-that-azure-purview-will-not-detect-as-resource-sets"></a>Azure purview 'ın kaynak kümesi olarak algılayamayacağı dosya türleri
 
-Kasıtlı olarak, Word, Excel veya PDF gibi belge dosya türlerini kaynak kümeleri olarak sınıflandırmamaya çalışın. Bu, yaygın olarak bölümlenmiş bir dosya biçimi olduğundan, CSV 'lere karşılık gelen özel durumdur.
+Kasıtlı olarak, Word, Excel veya PDF gibi çoğu belge dosya türünü kaynak kümesi olarak sınıflandırmamaya çalışır. Ortak bölümlenmiş bir dosya biçimi olduğundan özel durum CSV biçimidir.
 
 ## <a name="how-azure-purview-scans-resource-sets"></a>Azure purview kaynak kümelerini tarar
 
@@ -66,16 +62,47 @@ Tek şema ve sınıflandırmaların yanı sıra Azure purview, kaynak kümeleriy
 ## <a name="built-in-resource-set-patterns"></a>Yerleşik kaynak kümesi desenleri
 
 Azure takip görünümü aşağıdaki kaynak kümesi düzenlerini destekler. Bu desenler, bir dizinde veya dosya adının bir parçası olarak bir ad olarak görünebilir.
+### <a name="regex-based-patterns"></a>Regex tabanlı desenler
 
-| Model adı | Görünen ad | Açıklama |
+| Model adı | Görünen Ad | Açıklama |
 |--------------|--------------|-------------|
-| GUID         | 'INI       | [RFC 4122](https://tools.ietf.org/html/rfc4122)' de tanımlandığı şekilde, genel olarak benzersiz bir tanımlayıcı. |
-| Sayı       | No          | Bir veya daha fazla rakam. |
-| Tarih/saat biçimleri | No     | Azure takip görünümü farklı türlerdeki tarih/saat biçimlerini destekler, ancak tümü bir dizi {N} ' ye düşürülür. |
-| 4ByteHex     | EŞLENECEK        | Dört basamaklı onaltılık bir sayı. |
-| Yerelleştirme | ÇERÇEVE        | [BCP 47](https://tools.ietf.org/html/bcp47)' de tanımlandığı şekilde bir dil etiketi. Azure purview, tire (-) veya alt çizgi (_) içeren etiketleri destekler. Örneğin, en_ca ve en-CA. |
+| Guid         | 'INI       | [RFC 4122](https://tools.ietf.org/html/rfc4122) ' de tanımlanan genel benzersiz tanımlayıcı |
+| Sayı       | No          | Bir veya daha fazla rakam |
+| Tarih/saat biçimleri | Yıl Başından Günündeki No     | Çeşitli tarih/saat biçimlerini destekliyoruz, ancak tümü {Year} [sınırlayıcı] {month} [sınırlayıcı] {Day} veya {N} s serisi ile gösteriliyor. |
+| 4ByteHex     | EŞLENECEK        | 4 basamaklı bir ONALTıLıK sayı. |
+| Yerelleştirme | ÇERÇEVE        | [BCP 47](https://tools.ietf.org/html/bcp47)' de tanımlanan bir dil etiketi, her ikisi-ve _ ad desteklenir (örneğin, en_ca ve en-CA) |
 
-## <a name="issues-with-resource-sets"></a>Kaynak kümeleriyle ilgili sorunlar
+### <a name="complex-patterns"></a>Karmaşık desenler
+
+| Model adı | Görünen Ad | Açıklama |
+|--------------|--------------|-------------|
+| Mini yol    | {Mini bölümler} | Spark bölüm dosyası tanımlayıcısı |
+| Tarih (yyyy/aa/gg) InPath  | {Year}/{Month}/{Day} | Birden çok klasörü kapsayan yıl/ay/gün deseninin |
+
+
+## <a name="how-resource-sets-are-displayed-in-the-azure-purview-catalog"></a>Azure purview kataloğunda kaynak kümeleri nasıl görüntülenir
+
+Azure purview bir varlık grubuyla bir kaynak kümesi ile eşleştiğinde, katalogda görünen ad olarak kullanmak için en faydalı bilgileri çıkarmaya çalışır. Varsayılan adlandırma kuralına uygulanan bazı örnekler: 
+
+### <a name="example-1"></a>Örnek 1
+
+Tam ad: https://myblob.blob.core.windows.net/sample-data/name-of-spark-output/{SparkPartitions}
+
+Görünen ad: "Spark çıktısının adı"
+
+### <a name="example-2"></a>Örnek 2
+
+Tam ad: https://myblob.blob.core.windows.net/my-partitioned-data/{Year}-{Month}-{Day}/{N}-{N}-{N}-{N}/{GUID}
+
+Görünen ad: "bölümlenmiş verilerim"
+
+### <a name="example-3"></a>Örnek 3
+
+Tam ad: https://myblob.blob.core.windows.net/sample-data/data{N}.csv
+
+Görünen ad: "veri"
+
+## <a name="known-issues-with-resource-sets"></a>Kaynak kümeleriyle ilgili bilinen sorunlar
 
 Kaynak kümeleri çoğu durumda iyi çalışır, ancak Azure purview ' de aşağıdaki sorunlarla karşılaşabilirsiniz:
 
@@ -85,4 +112,4 @@ Kaynak kümeleri çoğu durumda iyi çalışır, ancak Azure purview ' de aşağ
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Veri Kataloğu 'Nu kullanmaya başlamak için bkz. [hızlı başlangıç: Azure purview hesabı oluşturma](create-catalog-portal.md).
+Azure purview kullanmaya başlamak için bkz. [hızlı başlangıç: Azure purview hesabı oluşturma](create-catalog-portal.md).

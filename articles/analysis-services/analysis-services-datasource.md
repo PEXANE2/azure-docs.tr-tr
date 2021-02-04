@@ -4,15 +4,15 @@ description: Azure Analysis Services tablo 1200 ve daha yüksek veri modelleri i
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 02/02/2021
+ms.date: 02/03/2021
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 6e558962ad8a84b5f44abe21bc7c0ab67a4861ba
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 2b4ae4aa8f6b08b273088c98d120d339db7deadb
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99493829"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99539459"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Azure Analysis Services’ta desteklenen veri kaynakları
 
@@ -36,7 +36,7 @@ Visual Studio 'da Analysis Services projelerine sahip veri veya tablo Içeri akt
 **Notlar:**
 
 yalnızca <a name="tab1400a">1</a> tablolu 1400 ve daha yüksek modeller.  
-<a name="azprovider">2</a> -tablo 1200 ve daha yüksek modellerde bir *sağlayıcı* veri kaynağı olarak belirtildiğinde, hem bellek içi hem de DirectQuery modelleri, SQL Server msoledbsql (önerilen), SQL Server Native Client 11,0 veya veri sağlayıcısı Için .NET Framework SQL Server için Microsoft OLE DB sürücüsü gerektirir.  
+<a name="azprovider">2</a> -tablo 1200 ve daha yüksek modellerde *sağlayıcı* veri kaynağı olarak belirtildiğinde, hem bellek içi hem de DirectQuery modelleri, SQL Server IÇIN SQL Server msoledbsql (önerilen) veya .NET Framework veri sağlayıcısı için Microsoft OLE DB sürücüsü gerektirir.  
 <a name="azsqlmanaged">3</a> -Azure SQL yönetilen örneği desteklenir. SQL yönetilen örneği, Azure sanal ağı 'nda özel bir IP adresiyle çalıştığı için, örnekte ortak uç noktanın etkinleştirilmesi gerekir. Etkinleştirilmemişse, Şirket [içi veri ağ geçidi](analysis-services-gateway.md) gerekir.  
 <a name="databricks">4</a> -Spark bağlayıcısını kullanan Azure Databricks Şu anda desteklenmiyor.  
 <a name="gen2">5</a> -ADLS 2. Bağlayıcısı Şu anda desteklenmiyor, ancak Azure Blob depolama bağlayıcısı bir ADLS 2. veri kaynağıyla birlikte kullanılabilir.

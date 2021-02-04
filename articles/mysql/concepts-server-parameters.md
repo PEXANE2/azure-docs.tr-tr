@@ -6,12 +6,12 @@ ms.author: bahusse
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 1/26/2021
-ms.openlocfilehash: 9485d346384344bd7c35d0577245419ca1f56574
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 1b0bcf528a16e2f75bf21235980424b5375f8824
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98951319"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99539493"
 ---
 # <a name="server-parameters-in-azure-database-for-mysql"></a>MySQL için Azure veritabanı 'nda sunucu parametreleri
 
@@ -31,7 +31,7 @@ Yaygın olarak güncellenen çeşitli sunucu parametrelerinin sınırları hakk�
 
 ### <a name="thread-pools"></a>İş parçacığı havuzları
 
-MySQL, her istemci bağlantısı için geleneksel olarak bir iş parçacığı atar. Eşzamanlı kullanıcıların sayısı arttıkça, performans içinde karşılık gelen bir bırakma vardır. Birçok etkin iş parçacığı, artan bağlam değiştirme, iş parçacığı çekişmesi ve CPU önbellekleri için bozuk konum nedeniyle performansı önemli ölçüde etkileyebilir.
+MySQL, her istemci bağlantısı için geleneksel olarak bir iş parçacığı atar. Eşzamanlı kullanıcıların sayısı arttıkça, buna karşılık gelen bir bir bırakma performansı vardır. Birçok etkin iş parçacığı, artan bağlam değiştirme, iş parçacığı çekişmesi ve CPU önbellekleri için bozuk konum nedeniyle performansı önemli ölçüde etkileyebilir.
 
 Sunucu tarafı özelliği olan ve bağlantı havuzundan farklı olan iş parçacığı havuzları, sunucuda çalışan etkin iş parçacıklarının sayısını sınırlandırmak ve iş parçacığı karmaşıklığını en aza indirmek için kullanılabilen bir dizi çalışan iş parçacığının dinamik bir havuzunu sunarak performansı en üst düzeye çıkarır. Bu, bir bağlantı patlaması sunucunun yetersiz bellek hatası ile kaynakların kaynak veya kilitlenme olmasına neden olmamasını sağlamaya yardımcı olur. İş parçacığı havuzları kısa sorgular ve CPU yoğunluklu iş yükleri için en verimli şekilde OLTP iş yükleri gibi etkindir.
 
