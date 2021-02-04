@@ -2,13 +2,13 @@
 title: Azure VMware çözümünüz özel bulutunuzda GitHub Enterprise Server 'ı ayarlama
 description: Azure VMware Çözüm özel bulutunuzda GitHub Enterprise Server 'ı ayarlamayı öğrenin.
 ms.topic: how-to
-ms.date: 09/22/2020
-ms.openlocfilehash: 00b3acf721dd7f7a1a15bcd0d24eccf3ca27ff58
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.date: 02/03/2021
+ms.openlocfilehash: 2b05e352fd8a81d6d180d4c60e67ab48465b284f
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96326922"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99549111"
 ---
 # <a name="set-up-github-enterprise-server-on-your-azure-vmware-solution-private-cloud"></a>Azure VMware çözümünüz özel bulutunuzda GitHub Enterprise Server 'ı ayarlama
 
@@ -61,7 +61,7 @@ Ayarlarınızı uygulayın.  Örnek yeniden başlatıldıktan sonra, bir sonraki
 
 Örnek yeniden başlatıldıktan sonra örnekte yeni bir yönetici hesabı oluşturun. Bu kullanıcının parolasını da bir yere göz önünde olduğunuzdan emin olun.
 
-### <a name="additional-configuration-steps"></a>Ek yapılandırma adımları
+### <a name="other-configuration-steps"></a>Diğer yapılandırma adımları
 
 Örnek üretim kullanımı için, aşağıdaki isteğe bağlı kurulum adımları önerilir:
 
@@ -182,7 +182,7 @@ Burada tüm kuruluşların kullanımına sunacağız, ancak aynı zamanda bir ku
 
 ## <a name="optional-configuring-github-connect"></a>Seçim GitHub Connect yapılandırılıyor
 
-Bu adım isteğe bağlı olsa da, GitHub.com üzerinde kullanılabilir açık kaynak eylemlerini tüketireceğiz önerilir. Bu, iş akışlarınızda bu yeniden kullanılabilir eylemlere başvurarak başkalarının çalışmasını oluşturmanıza olanak sağlar.
+Bu adım isteğe bağlı olsa da, GitHub.com 'de kullanılabilir açık kaynaklı eylemleri tüketmek için plan yapmanız önerilir. İş akışlarınızda bu yeniden kullanılabilir eylemlere başvurarak başkalarının çalışmasını derlemenize olanak tanır.
 
 GitHub Connect 'i etkinleştirmek için [GitHub Connect kullanarak GitHub.com eylemlerine otomatik erişimi etkinleştirme](https://docs.github.com/en/enterprise/admin/github-actions/enabling-automatic-access-to-githubcom-actions-using-github-connect)bölümündeki adımları izleyin.
 
@@ -223,14 +223,12 @@ Her şey başarıyla çalıştırıldıysa, deponuzda "Merhaba Dünya" adlı yen
 
 Tebrikler! Azure VMware Çözüm özel bulutunuzda çalışan GitHub Enterprise Server 'daki ilk eylemler iş akışınızı az önce tamamladınız.
 
-GitHub eylemleriyle yapabileceklerinizi yalnızca bir yüzeye ekleyeceğiz. Daha fazla bilgi almak için [GitHub Market](https://github.com/marketplace)'teki eylemlerin listesini kullanıma alın veya [kendinizinkini oluşturun](https://docs.github.com/en/actions/creating-actions).
+Bu makalede, Azure VMware çözümünüz özel bulutunuzun en üstünde GitHub.com 'in şirket içinde barındırılan eşdeğeri olan GitHub Enterprise Server 'ın yeni bir örneğini ayarladık. Bu örnek, GitHub eylemleri için destek içerir ve günlüklerin ve yapıtların sürekliliği için Azure Blob depolamayı kullanır. Ancak GitHub eylemleriyle yapabileceklerinizi yalnızca bir şekilde yeniden sunuyoruz. [GitHub Market](https://github.com/marketplace)'teki eylem listesine göz atın veya [kendinizinkini oluşturun](https://docs.github.com/en/actions/creating-actions).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, Azure VMware çözümünüz özel bulutunuzun en üstünde GitHub.com 'in şirket içinde barındırılan eşdeğeri olan GitHub Enterprise Server 'ın yeni bir örneğini ayarladık. Bu örnek, GitHub eylemleri için destek içerir ve günlüklerin ve yapıtların sürekliliği için Azure Blob depolamayı kullanır. Bu, modern, işbirliğine dayalı ve güvenli bir yazılım geliştirme deneyimi için harika bir birleşimdir. Azure VMware çözümünün sağlam bir temelini oluşturur ve bulut kaynaklarından tanıdık bir ayarda yararlanmanızı sağlar.
+Azure VMware Çözüm özel bulutunuzda GitHub Enterprise Server 'ı ayarlamayı gördüğünüze göre, şu bilgileri öğrenmek isteyebilirsiniz: 
 
-Daha fazla bilgi için aşağıdaki kaynaklara bakın:
-
-- [GitHub eylemleri ile çalışmaya başlama](https://docs.github.com/en/actions)
-- [Beta programına katılarak](https://resources.github.com/beta-signup/)
-- [GitHub Enterprise Server yönetimi hakkında daha fazla bilgi edinin](https://githubtraining.github.io/admin-training/#/00_getting_started)
+- [GitHub eylemleri ile çalışmaya](https://docs.github.com/en/actions)başlama.
+- [Beta programına katılma](https://resources.github.com/beta-signup/).
+- [GitHub Enterprise Server Yönetimi](https://githubtraining.github.io/admin-training/#/00_getting_started).

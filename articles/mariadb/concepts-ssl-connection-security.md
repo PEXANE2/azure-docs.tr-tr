@@ -3,15 +3,15 @@ title: SSL/TLS bağlantısı-MariaDB için Azure veritabanı
 description: MariaDB için Azure veritabanı 'nı ve ilişkili uygulamaları düzgün şekilde SSL bağlantıları kullanacak şekilde yapılandırma bilgileri
 author: savjani
 ms.author: pariks
-ms.service: jroth
+ms.service: mariadb
 ms.topic: conceptual
 ms.date: 07/09/2020
-ms.openlocfilehash: 7ada6f5a7b7ece9b8b36ea1bd2e52b5ad7efd12d
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 6c4ee8c6d12a6350c319e40bbe30046af4932311
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98662500"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99550649"
 ---
 # <a name="ssltls-connectivity-in-azure-database-for-mariadb"></a>MariaDB için Azure veritabanı 'nda SSL/TLS bağlantısı
 MariaDB için Azure veritabanı, veritabanı sunucunuzu Güvenli Yuva Katmanı (SSL) kullanarak istemci uygulamalarına bağlamayı destekler. Veritabanı sunucunuzla istemci uygulamalarınız arasında SSL bağlantılarının zorunlu tutulması, sunucuya uygulamanız arasındaki veri akışını şifreleyerek "bağlantıyı izinsiz izleme" saldırılarına karşı korumaya yardımcı olur.
@@ -62,7 +62,7 @@ MariaDB için Azure veritabanınız için TLS ayarını ayarlama hakkında bilgi
 
 ## <a name="cipher-support-by-azure-database-for-mariadb"></a>MariaDB için Azure veritabanı tarafından şifre desteği
 
-SSL/TLS iletişiminin bir parçası olarak, şifre paketleri onaylanır ve yalnızca şifre paketlerinin veritabanı sileyici ile iletişim kurmasına izin verilir. Şifre paketi doğrulaması, [ağ geçidi katmanında](concepts-connectivity-architecture.md#connectivity-architecture) denetlenir ve doğrudan düğümün kendisinde değildir. Şifre paketleri aşağıda listelenen paketlerden biriyle eşleşmiyorsa, gelen istemci bağlantıları reddedilir.
+SSL/TLS iletişiminin bir parçası olarak, şifre paketleri onaylanır ve veritabanı sunucusuyla iletişim kurmasına yalnızca şifre cinslarını destekler. Şifre paketi doğrulaması, [ağ geçidi katmanında](concepts-connectivity-architecture.md#connectivity-architecture) denetlenir ve doğrudan düğümün kendisinde değildir. Şifre paketleri aşağıda listelenen paketlerden biriyle eşleşmiyorsa, gelen istemci bağlantıları reddedilir.
 
 ### <a name="cipher-suite-supported"></a>Desteklenen şifre paketi
 

@@ -52,6 +52,8 @@
       href: application-development.md
 - name: Nasıl Yapılır
   items:
+    - name: Fortanix gizli bilgi Işlem yöneticisi
+      href: how-to-fortanix-confidential-computing-manager.md
     - name: Fortanix Enclave Manager
       href: how-to-fortanix-enclave-manager.md
 - name: Başvurular

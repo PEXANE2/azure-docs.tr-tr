@@ -1,5 +1,5 @@
 ---
-title: Azure Uygulama yapılandırması 'nı kullanarak bir Web uç noktasına olay gönderme
+title: Uygulama yapılandırması veri değişikliği bildirimleri için Event Grid kullanma
 description: Azure uygulama yapılandırma olay aboneliklerini kullanarak bir Web uç noktasına anahtar-değer değiştirme olayları gönderme hakkında bilgi edinin
 services: azure-app-configuration
 author: AlexandraKemperMS
@@ -10,14 +10,14 @@ ms.topic: how-to
 ms.date: 03/04/2020
 ms.author: alkemper
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 4e005d2f929fd615080d22e93a102a7cc5c1174a
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: c188a4b7fe8e9223faa1cdeb52ae01ed83b94d84
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97696113"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99549788"
 ---
-# <a name="route-azure-app-configuration-events-to-a-web-endpoint-with-azure-cli"></a>Azure CLı ile Azure uygulama yapılandırma olaylarını bir Web uç noktasına yönlendirme
+# <a name="use-event-grid-for-app-configuration-data-change-notifications"></a>Uygulama yapılandırması veri değişikliği bildirimleri için Event Grid kullanma
 
 Bu makalede, bir Web uç noktasına anahtar-değer değiştirme olayları göndermek için Azure uygulama yapılandırma olay aboneliklerinin nasıl ayarlanacağını öğreneceksiniz. Azure uygulama yapılandırma kullanıcıları, anahtar değerleri değiştirildiğinde verilmiş olaylara abone olabilir. Bu olaylar Web kancalarını, Azure Işlevlerini, Azure depolama kuyruklarını veya Azure Event Grid tarafından desteklenen herhangi bir olay işleyicisini tetikleyebilirler. Normalde olayları, olay verilerini işleyen ve eylemler gerçekleştiren bir uç noktaya gönderirsiniz. Bununla birlikte, bu makaleyi basitleştirmek için olayları iletilerin toplandığı ve görüntülendiği bir web uygulamasına gönderirsiniz.
 

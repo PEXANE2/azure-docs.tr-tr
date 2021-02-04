@@ -478,6 +478,8 @@
       href: hyper-v-vmm-powershell-resource-manager.md
     - name: Kurtarma planlarına otomasyon runbook’larını ekleme
       href: site-recovery-runbook-automation.md
+    - name: ARM Şablonları
+      href: asr-arm-templates.md
 - name: İzleme
   items:
     - name: İzleme hakkında sık sorulan sorular

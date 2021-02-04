@@ -1,10 +1,10 @@
 ---
-title: Azure Gelişmiş tehdit algılama | Microsoft Docs
-description: Azure için Azure AD Kimlik Koruması hizmeti gibi yerleşik Gelişmiş tehdit algılama işlevleri hakkında bilgi edinin.
+title: Azure tehdit koruması | Microsoft Docs
+description: Azure için Azure AD Kimlik Koruması hizmeti gibi yerleşik tehdit koruması işlevleri hakkında bilgi edinin.
 services: security
 documentationcenter: na
-author: UnifyCloud
-manager: barbkess
+author: TerryLanfear
+manager: rkarlin
 editor: TomSh
 ms.assetid: ''
 ms.service: security
@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/24/2021
-ms.author: TomSh
-ms.openlocfilehash: c8fbb2f6d858b2f654ff404bef3b415bf170ab37
-ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
+ms.date: 02/03/2021
+ms.author: terrylan
+ms.openlocfilehash: eb8332bda2105c3f83c0c1cc28fb7db4b1ca0102
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98747282"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99549958"
 ---
-# <a name="azure-advanced-threat-detection"></a>Azure gelişmiş tehdit algılama
+# <a name="azure-threat-protection"></a>Azure tehdit koruması
 
-Azure, Azure Active Directory (Azure AD), Azure Izleyici günlükleri ve Azure Güvenlik Merkezi gibi hizmetler aracılığıyla gelişmiş tehdit algılama işlevselliği sunar. Bu güvenlik hizmetleri ve özellikleri koleksiyonu, Azure dağıtımlarınızda neler olduğunu anlamak için basit ve hızlı bir yol sağlar.
+Azure, Azure Active Directory (Azure AD), Azure Izleyici günlükleri ve Azure Güvenlik Merkezi gibi hizmetler aracılığıyla yerleşik tehdit koruması işlevselliği sunar. Bu güvenlik hizmetleri ve özellikleri koleksiyonu, Azure dağıtımlarınızda neler olduğunu anlamak için basit ve hızlı bir yol sağlar.
 
 Azure, uygulama dağıtımlarınızın gereksinimlerini karşılamak için güvenliği yapılandırmak ve özelleştirmek üzere çok sayıda seçenek sunar. Bu makalede, bu gereksinimlerin nasıl karşıladığı açıklanır.
 
@@ -84,23 +84,9 @@ Azure Izleyici günlükleri, değerli hizmetleri kendi kendine sağlamaya ek ola
 
 ### <a name="holistic-security-and-compliance-posture"></a>Bütünsel güvenlik ve uyumluluk sonrası
 
-[Log Analytics güvenlik ve denetim panosu](../../security-center/security-center-introduction.md) , dikkat etmeniz gereken önemli sorunlar için yerleşik arama SORGULARıYLA kuruluşunuzun BT güvenlik duruşuna kapsamlı bir görünüm sağlar. Güvenlik ve Denetim Panosu, Azure Izleyici günlüklerinde güvenlikle ilgili her şeyin giriş ekranıdır. Bu pano, size bilgisayarlarınızın güvenlik durumuyla ilgili yüksek düzeyde öngörü sağlar. Son 24 saat, 7 gün veya başka bir özel zaman dilimi içindeki tüm olayları da görüntüleyebilirsiniz.
+[Azure Güvenlik Merkezi](../../security-center/security-center-introduction.md) , ilgilenmeniz gereken önemli sorunlar için yerleşik arama SORGULARıYLA kuruluşunuzun BT güvenlik duruşuna kapsamlı bir görünüm sağlar. Bu pano, size bilgisayarlarınızın güvenlik durumuyla ilgili yüksek düzeyde öngörü sağlar. Son 24 saat, 7 gün veya başka bir özel zaman çerçevesi içindeki tüm olayları da görüntüleyebilirsiniz.
 
 Azure Izleyici günlükleri, yazılım güncelleştirme değerlendirmesi, kötü amaçlı yazılımdan koruma değerlendirmesi ve yapılandırma temelleri de dahil olmak üzere herhangi bir ortamın genel güvenlik duruşunu hızlı ve kolay bir şekilde anlamanıza yardımcı olur. Güvenlik günlüğü verilerine, güvenlik ve uyumluluk denetim süreçlerini kolaylaştırmak için erişilebilir.
-
-![Log Analytics Güvenlik ve Denetim Panosu](./media/threat-detection/azure-threat-detection-fig3.jpg)
-
-Log Analytics Güvenlik ve Denetim Pano dört ana kategoride düzenlenmiştir:
-
--   **Güvenlik etki alanları**: zaman içinde güvenlik kayıtlarını daha fazla araştırmanızı sağlar; kötü amaçlı yazılım değerlendirmelerine erişin; güncelleştirme değerlendirmeleri; Ağ güvenliği, kimlik ve erişim bilgilerini görüntüleyin; güvenlik olaylarının bulunduğu bilgisayarları görüntüleme; ve hızlı bir şekilde Azure Güvenlik Merkezi panosuna erişin.
-
--   **Önemli sorunlar**: etkin sorunların sayısını ve sorunların önem derecesini hızlıca tanımlamanızı sağlar.
-
--   **Algılamalar (Önizleme)**: kaynaklarınızda oluşan güvenlik uyarılarını görüntüleyerek saldırı düzenlerini tanımlamanızı sağlar.
-
--   **Tehdit bilgileri**: giden kötü amaçlı IP trafiği, kötü amaçlı tehdit türü ve IP 'lerin bir haritasını içeren toplam sunucu sayısını görüntüleyerek saldırı düzenlerini tanımlamanızı sağlar.
-
--   **Ortak güvenlik sorguları**: ortamınızı izlemek için kullanabileceğiniz en yaygın güvenlik sorgularını listeler. Herhangi bir sorgu seçtiğinizde, arama bölmesi açılır ve bu sorgunun sonuçlarını görüntüler.
 
 ### <a name="insight-and-analytics"></a>Öngörüler ve analiz
 [Azure izleyici günlüklerinin](../../azure-monitor/log-query/log-query-overview.md) merkezinde Azure tarafından barındırılan depo vardır.
@@ -109,21 +95,16 @@ Log Analytics Güvenlik ve Denetim Pano dört ana kategoride düzenlenmiştir:
 
 Veri kaynaklarını yapılandırarak ve aboneliğinize çözümler ekleyerek bağlı kaynaklardan depoya veri toplayabilirsiniz.
 
-![Azure Izleyici Günlükler panosu](./media/threat-detection/azure-threat-detection-fig5.png)
-
 Veri kaynakları ve çözümleri, her biri kendi özellikler kümesiyle ayrı kayıt türleri oluşturur, ancak bunları depoya sorgularda yine de analiz edebilirsiniz. Çeşitli kaynaklarla toplanan çeşitli verilerle çalışmak için aynı araçları ve yöntemleri kullanabilirsiniz.
-
 
 Azure Izleyici günlükleri ile etkileşimlerinizin çoğu, herhangi bir tarayıcıda çalışan Azure portal ve toplanan verileri çözümlemek ve üzerinde işlem yapmak için yapılandırma ayarlarına ve birden çok araca erişmenizi sağlar. Portalından şunları kullanabilirsiniz:
 * Toplanan verileri çözümlemek için sorgular oluşturduğunuz yerde [günlük aramaları](../../azure-monitor/log-query/log-query-overview.md) .
 * En değerli aramalarınızın grafik görünümleriyle özelleştirebileceğiniz [panolar](../../azure-monitor/learn/tutorial-logs-dashboards.md).
 * Ek işlevsellik ve analiz araçları sağlayan [çözümler](../../azure-monitor/insights/solutions.md).
 
-![Analiz araçları](./media/threat-detection/azure-threat-detection-fig6.png)
-
 Çözümler Azure Izleyici günlüklerine işlevsellik ekler. Bunlar öncelikle bulutta çalışır ve Log Analytics deposunda toplanan verilerin analizini sağlar. Çözümler ayrıca, günlük aramalarıyla çözümlenebilecek yeni kayıt türlerini veya çözümün Log Analytics panosunda sağladığı ek bir kullanıcı arabirimini kullanarak da tanımlayabilir.
 
-Güvenlik ve Denetim Panosu, bu tür çözümlerin bir örneğidir.
+Güvenlik Merkezi, bu tür çözümlerin bir örneğidir.
 
 ### <a name="automation-and-control-alert-on-security-configuration-drifts"></a>Otomasyon ve denetim: güvenlik yapılandırması Drifts uyarı
 
@@ -216,7 +197,7 @@ Azure Güvenlik Merkezi, tehdit yatadaki değişiklikleri sürekli olarak izleye
 
 Bu birleştirilmiş çabalar, anında yararlanabilmeniz için yeni ve geliştirilmiş algılamalara sahiptir. Yapmanız gereken bir işlem yok.
 
-## <a name="advanced-threat-detection-features-other-azure-services"></a>Gelişmiş tehdit algılama özellikleri: diğer Azure hizmetleri
+## <a name="threat-protection-features-other-azure-services"></a>Tehdit koruması özellikleri: diğer Azure hizmetleri
 
 ### <a name="virtual-machines-microsoft-antimalware"></a>Sanal makineler: Microsoft Antimalware
 
@@ -367,7 +348,7 @@ Cloud App Security, görünürlüğünü bulutla tümleştirerek şu şekilde t�
 
 Bu kaynaklardan veri toplamada Cloud App Security, üzerinde gelişmiş analizler çalıştırır. Anormal etkinlikler hakkında derhal uyarı verir ve bulut ortamınızda derin görünürlük edinmenizi sağlar. Cloud App Security’de bir ilke yapılandırabilir ve bu ilkeyi kullanarak bulut ortamınızdaki her şeyi koruyabilirsiniz.
 
-## <a name="third-party-advanced-threat-detection-capabilities-through-the-azure-marketplace"></a>Azure Marketi aracılığıyla üçüncü taraf Gelişmiş tehdit algılama özellikleri
+## <a name="third-party-threat-protection-capabilities-through-the-azure-marketplace"></a>Azure Marketi aracılığıyla üçüncü taraf tehdit koruması özellikleri
 
 ### <a name="web-application-firewall"></a>Web Uygulaması Güvenlik Duvarı
 

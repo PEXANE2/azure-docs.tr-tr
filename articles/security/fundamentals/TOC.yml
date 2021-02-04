@@ -138,7 +138,7 @@
       href: service-fabric-best-practices.md
 - name: 'İzleme, denetim ve işlemler'
   items:
-    - name: Gelişmiş tehdit koruması
+    - name: Tehdit koruması
       href: threat-detection.md
     - name: Azure günlük kaydı ve denetim
       href: log-audit.md

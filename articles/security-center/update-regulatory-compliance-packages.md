@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/24/2021
+ms.date: 02/04/2021
 ms.author: memildin
-ms.openlocfilehash: 5f70f74accba5df439351547fda7497656e2c06e
-ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
+ms.openlocfilehash: 3fca96c6cf11e0b35cd830fe4c0d8ccac8e66bd2
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98986693"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99548873"
 ---
-# <a name="customizing-the-set-of-standards-in-your-regulatory-compliance-dashboard"></a>Yasal uyumluluk panonuzda standartlar kümesini özelleştirme
+# <a name="customize-the-set-of-standards-in-your-regulatory-compliance-dashboard"></a>Yasal uyumluluk panonuzdaki standartlar kümesini özelleştirme
 
 Azure Güvenlik Merkezi, kaynaklarınızın yapılandırmalarını endüstri standartları, yönetmelikler ve kıyaslamalar ile sürekli olarak karşılaştırır. **Mevzuat uyumluluk panosu** , uyumluluk için özel uyumluluk gereksinimlerini nasıl karşıladığınızı temel alarak öngörülerinizi açıklar.
 
@@ -123,5 +123,5 @@ Bu makalede, mevzuat ve sektör standartları ile uyumluluğunuzu izlemek için 
 İlgili malzemeler için aşağıdaki sayfalara bakın:
 
 - [Azure Güvenlik Karşılaştırması](../security/benchmarks/introduction.md)
-- [Güvenlik Merkezi mevzuata uyumluluğu panosu](security-center-compliance-dashboard.md)
+- [Güvenlik Merkezi mevzuat uyumluluk panosu](security-center-compliance-dashboard.md) -yasal uyumluluk verilerinizi güvenlik merkezi ve dış araçlarla izleme ve dışa aktarma hakkında bilgi edinin
 - [Güvenlik ilkeleriyle çalışma](tutorial-security-policy.md)

@@ -4,18 +4,29 @@ description: Bu makalede, Azure portal kullanarak Azure Backup iş yükleri içi
 ms.topic: conceptual
 ms.date: 03/05/2019
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
-ms.openlocfilehash: 978e98bc623cecd768b1f2dda0a129e0459521da
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 74669a1347fac9f61d028d9cb1f3da174bb71f96
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92174008"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99550360"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>Azure Backup iş yüklerini izleme
 
 Azure Backup, yedekleme gereksinimine ve altyapı topolojisine (Şirket içi vs Azure) göre birden çok yedekleme çözümü sağlar. Herhangi bir yedekleme kullanıcısı veya Yöneticisi, tüm çözümlerde neler olduğunu ve önemli senaryolarda bildirilmesi beklendiğini görmelidir. Bu makalede, Azure Backup hizmeti tarafından sunulan izleme ve bildirim özellikleri ayrıntılı olarak açıklanır.
 
 [!INCLUDE [backup-center.md](../../includes/backup-center.md)]
+
+## <a name="backup-items-in-recovery-services-vault"></a>Kurtarma Hizmetleri kasasındaki yedekleme öğeleri
+
+Tüm yedekleme öğelerinizi bir kurtarma hizmetleri Kasası aracılığıyla izleyebilirsiniz. Kasadaki **yedekleme öğeleri** bölümüne gidildiğinde, kasala ilişkili her iş yükü türünün yedekleme öğelerinin sayısını sağlayan bir görünüm açılır. Herhangi bir satıra tıkladığınızda, belirtilen iş yükü türünün tüm yedekleme öğelerini, her bir öğe için son yedekleme durumu, kullanılabilir en son geri yükleme noktası ve benzeri bilgilerle birlikte listeleme ayrıntılı bir görünüm açılır.
+
+![RS Kasası yedekleme öğeleri](media/backup-azure-monitoring-laworkspace/backup-items-view.png)
+
+> [!NOTE]
+> DPM kullanılarak Azure 'a yedeklenen öğeler için, listede DPM sunucusu kullanılarak korunan tüm veri kaynakları (hem disk hem de çevrimiçi) gösterilir. Yedekleme verileri tutulan veri kaynağı için koruma durdurulmuşsa, veri kaynağı portalda yine de listelenir. Kurtarma noktalarının diskte, çevrimiçi veya her ikisinde de mevcut olup olmadığını görmek için veri kaynağının ayrıntılarına gidebilirsiniz. Ayrıca, çevrimiçi korumanın durdurulduğu, ancak veriler korunduğu veri kaynakları, veriler tamamen silinene kadar, çevrimiçi kurtarma noktaları için faturalandırmaya devam eder.
+>
+> Yedekleme öğelerinin kurtarma hizmetleri Kasası portalında görünür olması için DPM sürümünün DPM 1807 (5.1.378.0) veya DPM 2019 (sürüm 10.19.58.0 veya üzeri) olması gerekir.
 
 ## <a name="backup-jobs-in-recovery-services-vault"></a>Kurtarma Hizmetleri kasasındaki yedekleme Işleri
 
@@ -105,7 +116,7 @@ Sıklık bir saatlik Özet olarak ayarlandıysa ve bir süre içinde bir uyarı 
 
 ## <a name="inactivating-alerts"></a>Uyarıları etkinleştirme
 
-Etkin bir uyarıyı devre dışı bırakmak/çözümlemek için, devre dışı bırakmak istediğiniz uyarıya karşılık gelen liste öğesini seçebilirsiniz. Bu, en üstteki **devre dışı bırak** düğmesi ile uyarı hakkında ayrıntılı bilgi görüntüleyen bir ekran açar. Bu düğme seçildiğinde, uyarının durumu **etkin değil**olarak değiştirilir. Ayrıca, bu uyarıya karşılık gelen liste öğesine sağ tıklayıp **devre dışı bırak**' ı seçerek bir uyarıyı devre dışı bırakabilirsiniz.
+Etkin bir uyarıyı devre dışı bırakmak/çözümlemek için, devre dışı bırakmak istediğiniz uyarıya karşılık gelen liste öğesini seçebilirsiniz. Bu, en üstteki **devre dışı bırak** düğmesi ile uyarı hakkında ayrıntılı bilgi görüntüleyen bir ekran açar. Bu düğme seçildiğinde, uyarının durumu **etkin değil** olarak değiştirilir. Ayrıca, bu uyarıya karşılık gelen liste öğesine sağ tıklayıp **devre dışı bırak**' ı seçerek bir uyarıyı devre dışı bırakabilirsiniz.
 
 ![RS Kasası uyarısı intivasyonu](media/backup-azure-monitoring-laworkspace/vault-alert-inactivation.png)
 

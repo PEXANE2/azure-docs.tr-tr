@@ -11,18 +11,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2020
 ms.author: blehr
-ms.openlocfilehash: 02a6e934b517cdd118b6175d9cfef73bee4c996d
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 7d0c83f1ae18d36557a7a5b0222aee2905e05cb7
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98223015"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99550244"
 ---
 # <a name="quickstart-create-a-public-ip-address-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak genel IP adresi oluşturma
 
 Bu makalede, Azure portal kullanarak genel IP adresi kaynağı oluşturma gösterilmektedir. Bu kaynakların hangi kaynaklarla ilişkilendiribileceği hakkında daha fazla bilgi için, temel ve standart SKU arasındaki fark ve diğer ilgili bilgiler için bkz. [genel IP adresleri](./public-ip-addresses.md).  Bu örnekte yalnızca IPv4 adreslerine odaklanacağız; IPv6 adresleri hakkında daha fazla bilgi için bkz. [Azure VNET Için IPv6](./ipv6-overview.md).
 
-# <a name="standard-sku---using-zones"></a>[**Standart SKU-bölgeleri kullanma**](#tab/option-create-public-ip-standard-zones)
+# <a name="standard-sku"></a>[**Standart SKU**](#tab/option-create-public-ip-standard-zones)
 
 **Mystandardzrpublicıp** adlı standart bölge-YEDEKLI genel IP adresi oluşturmak için aşağıdaki adımları kullanın.
 
@@ -44,9 +44,9 @@ Bu makalede, Azure portal kullanarak genel IP adresi kaynağı oluşturma göste
     | Abonelik            | Aboneliğinizi seçin.   |
     | Kaynak grubu          | **Yeni oluştur** ' u seçin, myresourcegroup yazın ve **Tamam** ' ı seçin. |
     | Konum                | **Doğu ABD 2** seçin      |
-    | Kullanılabilirlik Alanı       | **Bölge yedekli** seçeneğini belirleyin veya belirli bir bölgeyi seçin (aşağıdaki nota bakın) |
+    | Kullanılabilirlik Alanı       | **Bölge yedekli**, bölge yok veya belirli bir bölgeyi Seç (aşağıdaki nota bakın) |
 
-Bunların [kullanılabilirlik alanları](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#availability-zones)bölgelerde yalnızca geçerli seçimler olduğunu unutmayın.  (Bu bölgelerde belirli bir bölgeyi de seçebilirsiniz, ancak bu bölge, bir hataya dayanıklı olmayacaktır.)
+Bunların [kullanılabilirlik alanları](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#availability-zones)bölgelerde yalnızca geçerli seçimler olduğunu unutmayın.  (Bu bölgelerde belirli bir bölgeyi de seçebilirsiniz, ancak bu bölge, bir hataya dayanıklı olmayacaktır.)  Kullanılabilirlik bölgeleri hakkında daha fazla bilgi için bkz. [Kullanılabilirlik alanlarına genel bakış](https://docs.microsoft.com/azure/availability-zones/az-overview).
 
 \* = Katman, şu anda önizleme aşamasında olan [çapraz bölge Load Balancer](../load-balancer/cross-region-overview.md) işlevleriyle ilgilidir.
 

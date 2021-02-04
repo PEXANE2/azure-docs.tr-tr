@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 02/01/2021
+ms.date: 02/03/2021
 ms.author: alkohli
-ms.openlocfilehash: c23022a1a1ee7796ada32d9111855b9e3bfb7d46
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 6e9e1319b90ab859c63c022e478bc26c4b8aedeb
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 02/04/2021
-ms.locfileid: "99539630"
+ms.locfileid: "99550227"
 ---
 # <a name="run-existing-iot-edge-modules-from-azure-stack-edge-pro-fpga-devices-on-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU cihazındaki Azure Stack Edge Pro FPGA cihazlarından mevcut IoT Edge modüllerini Çalıştır
 
@@ -205,8 +205,7 @@ Bellek ve CPU kullanımını ayarlamak için, bölümündeki modüller için iş
 ```
 Bellek ve CPU belirtimi gerekli değildir ancak genellikle iyi bir uygulamadır. `requests`Belirtilmemişse, limitlerde ayarlanan değerler gereken en düşük düzeyde kullanılır. 
 
-Modüller için paylaşılan bellek kullanmak farklı bir yol da gerektirir. <!-- should we give an example-->
-
+Modüller için paylaşılan bellek kullanmak farklı bir yol da gerektirir. Örneğin, canlı video analizi ve çıkarım çözümleri arasında paylaşılan bellek erişimi için konak IPC modunu, [Azure Stack Edge üzerinde canlı video analizi dağıtma](../media-services/live-video-analytics-edge/deploy-azure-stack-edge-how-to.md#deploy-live-video-analytics-edge-module-using-azure-portal)bölümünde açıklandığı gibi kullanabilirsiniz.
 
 
 ## <a name="web-proxy"></a>Web ara sunucusu 

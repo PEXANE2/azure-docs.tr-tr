@@ -5,15 +5,15 @@ author: msftradford
 manager: MehranAzimi-msft
 services: azure-spatial-anchors
 ms.author: parkerra
-ms.date: 11/20/2020
+ms.date: 2/3/2021
 ms.topic: how-to
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 2330310b0bf4e165af71208477db128650a787cf
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: e058186d8848256bf97d99ee1b8b1ddae7d78383
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95496961"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99550632"
 ---
 # <a name="configuring-azure-spatial-anchors-in-a-unity-project"></a>Unity projesinde Azure uzamsal bağlayıcılarını yapılandırma
 
@@ -27,34 +27,15 @@ Azure uzamsal bağlayıcıları Şu anda Unity 2019,4 (LTS) ' i şu yapılandır
 
 ## <a name="configuring-a-project"></a>Proje yapılandırma
 
-### <a name="add-the-unity-package-manager-packages-to-your-project"></a>[Projenize Unity paket yöneticisi paketleri ekleyin](#tab/UPMPackage)
+### <a name="download-packages"></a>Paketleri İndir
+[!INCLUDE [Download Unity Packages](../../../includes/spatial-anchors-unity-download-packages.md)]
 
-Unity için Azure uzamsal bağlantıları şu anda Unity paket yöneticisi (UPD) paketleri kullanılarak dağıtılır. Bu paketler, [NPM kayıt defterinizde](https://bintray.com/microsoft/AzureMixedReality-NPM)bulunabilir. Unity projesinde kapsamlı paket kayıt defterleri ile çalışma hakkında daha fazla bilgi edinmek için [buradan](https://docs.unity3d.com/Manual/upm-scoped.html)resmi Unity belgelerine bakın.
+### <a name="import-packages"></a>Paketleri içeri aktarma
+[!INCLUDE [Import Unity Packages](../../../includes/spatial-anchors-unity-import-packages.md)]
 
-#### <a name="add-the-registry-to-your-unity-project"></a>Kayıt defterini Unity projenize ekleme
+### <a name="android-only-configure-the-maintemplategradle-file"></a>Yalnızca Android: mainTemplate. Gradle dosyasını yapılandırma
 
-1. Dosya Gezgini 'nde Unity projenizin `Packages` klasörüne gidin. Proje bildirim dosyasını `manifest.json` bir metin düzenleyicisinde açın.
-2. Dosyanın en üstünde, bölümüyle aynı düzeyde, `dependencies` Azure uzamsal bağlayıcı kayıt defterini projenize dahil etmek için aşağıdaki girişi ekleyin. `scopedRegistries`Giriş, Unity 'ye Azure uzamsal Tutturucuların SDK paketlerini nerede bakacağını söyler.
-
-    [!code-json[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-unity-scoped-registry-setup.md?range=9-19&highlight=2-10)]
-
-#### <a name="add-the-sdk-packages-to-your-unity-project"></a>SDK paketlerini Unity projenize ekleyin
-
-| Platform | Paket adı                                    |
-|----------|-------------------------------------------------|
-| Android  | com. Microsoft. Azure. uzamsal-Tutturucuların-SDK. Android |
-| iOS      | com. Microsoft. Azure. Spatial-Anchors-SDK. iOS     |
-| HoloLens | com. Microsoft. Azure. uzamsal-Tutturucuların-SDK. Windows |
-
-1. Projenizde desteklemek istediğiniz her platform (Android/iOS/HoloLens) için, `dependencies` Proje bildiriminizde bulunan bölümüne paket adı ve paket sürümü ile bir giriş ekleyin. Aşağıdaki örneğe bakın.
-
-    [!code-json[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-unity-scoped-registry-setup.md?range=9-22&highlight=12-14)]
-
-2. Dosyayı kaydedin ve kapatın `manifest.json` . Unity 'ye geri döndüğünüzde, Unity 'nin proje bildirimi değişikliğini otomatik olarak algılaması ve belirtilen paketleri alması gerekir. `Packages`Doğru paketlerin içeri aktarıldığını doğrulamak Için proje görünüminizdeki klasörü genişletebilirsiniz.
-
-#### <a name="android-only-configure-the-maintemplategradle-file"></a>Yalnızca Android: mainTemplate. Gradle dosyasını yapılandırma
-
-1. **Edit**  >  **Proje ayarları**  >  **oynatıcıyı** Düzenle ' ye gidin.
+1.   >  **Proje ayarları**  >  **oynatıcıyı** Düzenle ' ye gidin.
 2. **Oynatıcı ayarları** Için **Inspector panelinde** **Android** simgesini seçin.
 3. **Derleme** bölümünün altında özel **ana Gradle şablonu** onay kutusunu işaretleyerek, üzerinde özel bir Gradle şablonu oluşturun `Assets\Plugins\Android\mainTemplate.gradle` .
 4. `mainTemplate.gradle`Dosyanızı bir metin düzenleyicisinde açın.
@@ -68,16 +49,6 @@ Unity için Azure uzamsal bağlantıları şu anda Unity paket yöneticisi (UPD)
 Her şey yapıldığında, `dependencies` bölüm şuna benzer şekilde görünmelidir:
 
 [!code-gradle[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-unity-android-gradle-setup.md?range=9-13&highlight=3-4)]
-
-### <a name="import-the-asset-package"></a>[Varlık paketini içeri aktar](#tab/UnityAssetPackage)
-
-> [!WARNING]
-> Azure uzamsal bağlayıcı SDK 'sının Unity varlık paketi dağıtımı 2.5.0 sürümünde kullanımdan kaldırılmıştır ve artık 2.6.0 itibariyle kullanılabilir değildir.
-
-1. `AzureSpatialAnchors.unitypackage` [GitHub sürümlerinden](https://github.com/Azure/azure-spatial-anchors-samples/releases)hedeflemek istediğiniz sürümün dosyasını indirin.
-2. Unity varlık paketini projenize aktarmak için [buradaki](https://docs.unity3d.com/Manual/AssetPackagesImport.html) yönergeleri izleyin.
-
----
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

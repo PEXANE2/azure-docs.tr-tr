@@ -13,14 +13,14 @@ ms.workload: infrastructure-services
 ms.date: 04/23/2019
 ms.author: kumud
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 537252af6fbcdcb77043ec055ac22db1904790a2
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 9058fb4b9b92719f7abcc534632f983cafe2aae8
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98217558"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99550819"
 ---
-# <a name="configure-ipv6-endpoints-in-virtual-network-script-sample-preview"></a>Sanal ağ betiği örneğinde IPv6 uç noktalarını yapılandırma (Önizleme)
+# <a name="configure-ipv6-endpoints-in-virtual-network-script-sample"></a>Sanal ağ betiği örneğinde IPv6 uç noktalarını yapılandırma
 
 Bu makalede, çift yığın alt ağına sahip bir çift yığın sanal ağı, Çift (IPv4 + IPv6) ön uç yapılandırmalarına sahip bir yük dengeleyici, çift IP yapılandırması, çift ağ güvenlik grubu kuralları ve çift genel IP içeren NIC 'Ler içeren VM 'Ler içeren bir çift yığın (IPv4 + IPv6) uygulamasının nasıl dağıtılacağı gösterilmektedir.
 
@@ -28,7 +28,7 @@ Azure [Cloud Shell](https://shell.azure.com/bash)’den veya yerel bir Azure CLI
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Azure sanal ağ için IPv6 özelliğini kullanmak üzere aboneliğinizi aşağıdaki şekilde yalnızca bir kez yapılandırmanız gerekir:
 
 ```azurecli

@@ -14,15 +14,15 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 02/01/2021
+ms.date: 02/03/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 61adb72d043821dfaedca5e5da0b2f880d56811e
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: dfd0156907f18dcb7f38246993ddc4abcd508631
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99258931"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99549397"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>SAP iş yükü senaryolarını barındırmak ve çalıştırmak için Azure kullanın
 
@@ -84,6 +84,9 @@ Bu bölümde, Microsoft Power BI tümleştirme hakkındaki belgeleri SAP veri ka
 
 ## <a name="change-log"></a>Değişiklik Günlüğü
 
+- 02/03/2021: [Azure 'da RHEL 'de paceyapıcısı ayarlama](./high-availability-guide-rhel-pacemaker.md) , stonıth Create komutunda pcmk_host_map güncelleştirmek için değiştirin
+- 02/03/2021: stonıth Create komutunda pcmk_host_map eklemek için [Azure 'da SLES 'de paceyapıcısı ayarlama](./high-availability-guide-suse-pacemaker.md) sırasında değişiklik yapın 
+- 02/03/2021: [Azure sanal makine depolama konfigürasyonları SAP HANA](./hana-vm-operations-storage.md) makalesinde SuSE için g/ç Zamanlayıcı ayarları hakkında daha fazla bilgi
 - 02/01/2021: SAP HANA ha 'de değiştirin ve [RHEL üzerinde ANF ile ölçeği büyütme](./sap-hana-high-availability-netapp-files-red-hat.md), [RHEL üzerindeki Azure VM 'lerinde genişleme ile](./sap-hana-high-availability-scale-out-hsr-rhel.md)azure vm 'lerinde genişleme SAP HANA [, SLES üzerinde ANF ile](./sap-hana-scale-out-standby-netapp-files-suse.md) azure vm 'lerinde yer alan ve [Azure VM](./hana-vm-operations-netapp.md) 'lerinde bir SAP HANA bağlantı eklemek için RHEL [üzerinde bir ve](./sap-hana-scale-out-standby-netapp-files-rhel.md) daha fazla SAP HANA Azure NetApp Files SAP HANA
 - 01/23/2021: [Azure sanal makine depolama yapılandırması](./hana-vm-operations-storage.md) ve [NFS v 4.1 birimleri](./hana-vm-operations-netapp.md) SAP HANA makalelerinde bir disk birimi Yöneticisi kullanmadan, farklı Azure disklerinde veya NFS paylaşımlarında bir disk birimi Yöneticisi kullanmadan, Hana veri birimi bölümlendirme işlevlerini işlevsellik olarak ekleyin SAP HANA Azure NetApp Files
 - 01/18/2021: Azure sanal makineler 'de Oracle için Azure net Apps dosya tabanlı NFS desteği eklendi, [SAP iş yükü Için Oracle DBMS dağıtımı](./dbms_guide_oracle.md) ve [SAP HANA Için Azure NetApp Files belge NFS v 4.1 birimlerindeki](./hana-vm-operations-netapp.md) tabloda Ondalıklar ayarlanıyor

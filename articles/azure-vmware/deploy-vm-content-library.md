@@ -2,13 +2,13 @@
 title: Azure VMware çözümünde VM dağıtmak için bir içerik kitaplığı oluşturma
 description: Azure VMware Çözüm özel bulutu 'nda VM dağıtmak için bir içerik kitaplığı oluşturun.
 ms.topic: how-to
-ms.date: 09/21/2020
-ms.openlocfilehash: 57db8ac4da8eef826d85feb11680c9c87823ee36
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.date: 02/03/2021
+ms.openlocfilehash: 9e27529ee355ece62f12cc2e6de491dddb5d3f28
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461694"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99550547"
 ---
 # <a name="create-a-content-library-to-deploy-vms-in-azure-vmware-solution"></a>Azure VMware çözümünde VM dağıtmak için bir içerik kitaplığı oluşturma
 
@@ -16,7 +16,7 @@ ms.locfileid: "92461694"
 
 Bu makalede, içerik kitaplığı oluşturma yordamında izlenecek yol göstereceğiz.  Ardından, içerik kitaplığından bir ISO görüntüsü kullanarak bir VM 'yi dağıtmaya adım adım inceleyeceğiz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlayabilmeniz için NSX-T mantıksal anahtar segmenti ve yönetilen bir DHCP hizmeti gereklidir.  Daha fazla bilgi için [Azure VMware Çözüm MAKALESINDE DHCP 'yi yönetme](manage-dhcp.md) makalesine bakın.
 
@@ -30,11 +30,11 @@ Bu öğreticiyi tamamlayabilmeniz için NSX-T mantıksal anahtar segmenti ve yö
 
    ![Yeni bir içerik kitaplığı oluşturmak için Ekle düğmesini seçin.](./media/content-library/create-new-content-library.png)
 
-1. Bir ad belirtin ve vCenter sunucusunun IP adresini doğrulayın ve **İleri ' yi**seçin.
+1. Bir ad belirtin ve vCenter sunucusunun IP adresini doğrulayın ve **İleri ' yi** seçin.
 
    ![Seçtiğiniz bir ad ve notları belirtin ve ardından Ileri ' yi seçin.](./media/content-library/new-content-library-step1.png)
 
-1. **Yerel içerik kitaplığını** seçin ve Ileri ' **yi**seçin.
+1. **Yerel içerik kitaplığını** seçin ve Ileri ' **yi** seçin.
 
    ![Bu örnekte, bir yerel içerik kitaplığı oluşturacağız, Ileri ' yi seçeceğiz.](./media/content-library/new-content-library-step2.png)
 
@@ -85,14 +85,17 @@ Artık içerik kitaplığı oluşturulduğuna göre, bir VM 'yi özel bir bulut 
 
 1. **Mantıksal anahtarı (segmenti)** seçin ve **Tamam**' ı seçin.
 
-1. Diğer donanım ayarlarını değiştirin ve Ileri ' **yi**seçin.
+1. Diğer donanım ayarlarını değiştirin ve Ileri ' **yi** seçin.
 
 1. Ayarları doğrulayın ve **son**' u seçin.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-VM iş yüklerini özel buluta geçirmek için VMware HCX kullanmayı planlıyorsanız [VMware HCX 'ı dağıtma ve yapılandırma](tutorial-deploy-vmware-hcx.md) yordamını kullanın.
+Artık Azure VMware çözümünde VM dağıtmak için bir içerik kitaplığı oluşturmayı kapsadığınıza göre, şunları öğrenmek isteyebilirsiniz:
+
+- VM iş yüklerini özel buluta geçirmek için [VMware HCX 'ı dağıtma ve yapılandırma](tutorial-deploy-vmware-hcx.md) .
+- [Azure VMware Çözüm VM 'Lerinin yaşam döngüsü yönetimi](lifecycle-management-of-azure-vmware-solution-vms.md).
 
 <!-- LINKS - external-->
 

@@ -6,20 +6,20 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 10/27/2020
+ms.date: 02/04/2021
 ms.author: memildin
-ms.openlocfilehash: 674ba1cf03f48eb1c746b115d981740b5b938aab
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 652986c4850a0b51fc86b84133d7e93813423c9a
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98919536"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99550328"
 ---
 # <a name="automate-responses-to-security-center-triggers"></a>Güvenlik Merkezi tetikleyicilerine yönelik yanıtları otomatikleştirin
 
 Her güvenlik programı, olay yanıtı için birden çok iş akışı içerir. Bu işlemler ilgili hissedarları bildirmeyi, bir değişiklik yönetimi işlemini başlatmayı ve belirli düzeltme adımlarını uygulamayı içerebilir. Güvenlik uzmanları, yaptığınız gibi bu yordamların pek çok adımını otomatikleştirmenizi önerir. Otomasyon ek yükü azaltır. Ayrıca işlem adımlarının hızlı, tutarlı bir şekilde ve önceden tanımlanmış gereksinimlerinize göre hızla yapılmasını sağlayarak güvenliği geliştirebilir.
 
-Bu makalede, Azure Güvenlik Merkezi 'nin iş akışı Otomasyonu özelliği açıklanır. Bu özellik güvenlik uyarıları ve önerileri üzerinde Logic Apps tetiklenebilir. Örneğin, bir uyarı oluştuğunda Güvenlik Merkezi 'nin belirli bir kullanıcıyı e-posta ile e-posta olarak istemeniz gerekebilir. Ayrıca, [Azure Logic Apps](../logic-apps/logic-apps-overview.md)kullanarak Logic Apps oluşturmayı öğreneceksiniz.
+Bu makalede, Azure Güvenlik Merkezi 'nin iş akışı Otomasyonu özelliği açıklanır. Bu özellik güvenlik uyarıları, öneriler ve mevzuat uyumluluğuyla ilgili değişiklikler Logic Apps tetiklenebilir. Örneğin, bir uyarı oluştuğunda Güvenlik Merkezi 'nin belirli bir kullanıcıyı e-posta ile e-posta olarak istemeniz gerekebilir. Ayrıca, [Azure Logic Apps](../logic-apps/logic-apps-overview.md)kullanarak Logic Apps oluşturmayı öğreneceksiniz.
 
 
 ## <a name="availability"></a>Kullanılabilirlik
@@ -70,10 +70,12 @@ Bu makalede, Azure Güvenlik Merkezi 'nin iş akışı Otomasyonu özelliği aç
 
     Logic App Designer, bu güvenlik merkezi tetikleyicilerini destekler:
 
-    * **Bir Azure Güvenlik Merkezi önerisi oluşturulduğunda veya tetiklendiğinde** -mantıksal uygulamanız kullanım dışı veya değiştirilmiş bir öneriyi kullanıyorsa, Otomasyon çalışmayı durdurur ve tetikleyiciyi güncelleştirmeniz gerekir. Önerilerle ilgili değişiklikleri izlemek için bkz. [Azure Güvenlik Merkezi sürüm notları](release-notes.md).
+    - **Bir Azure Güvenlik Merkezi önerisi oluşturulduğunda veya tetiklendiğinde** -mantıksal uygulamanız kullanım dışı veya değiştirilmiş bir öneriyi kullanıyorsa, Otomasyon çalışmayı durdurur ve tetikleyiciyi güncelleştirmeniz gerekir. Önerilerle ilgili değişiklikleri izlemek için bkz. [Azure Güvenlik Merkezi sürüm notları](release-notes.md).
 
-    * **Bir Azure Güvenlik Merkezi uyarısı oluşturulduğunda veya tetiklendiğinde** , tetikleyiciyi yalnızca ilgilendiğiniz önem düzeyleri ile ilgili uyarılarla ilişkili olacak şekilde özelleştirebilirsiniz.
+    - **Bir Azure Güvenlik Merkezi uyarısı oluşturulduğunda veya tetiklendiğinde** , tetikleyiciyi yalnızca ilgilendiğiniz önem düzeyleri ile ilgili uyarılarla ilişkili olacak şekilde özelleştirebilirsiniz.
     
+    - **Bir güvenlik merkezi mevzuat uyumluluk değerlendirmesi oluşturulduğunda veya tetiklendiğinde,** mevzuat uyumluluk değerlendirmelerine yönelik güncelleştirmelere dayalı olarak otomasyon tetiklemeleri.
+
     > [!NOTE]
     > Eski tetikleyiciyi kullanıyorsanız "bir Azure Güvenlik Merkezi uyarısıyla bir yanıt tetiklendiğinde", Logic Apps Iş akışı Otomasyonu özelliği tarafından başlatılmaz. Bunun yerine, yukarıda bahsedilen tetikleyicilerden birini kullanın. 
 

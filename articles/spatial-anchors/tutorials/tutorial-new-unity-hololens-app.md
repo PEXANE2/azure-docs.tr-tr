@@ -5,15 +5,15 @@ author: msftradford
 manager: MehranAzimi-msft
 services: azure-spatial-anchors
 ms.author: parkerra
-ms.date: 11/20/2020
+ms.date: 2/3/2021
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: ee0bf9b4ce009f37dd1931d4ed030defa24e7d38
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 0233e58a404721586af0ae2fbdf78dbab6d424ed
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95996278"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99550399"
 ---
 # <a name="tutorial-step-by-step-instructions-to-create-a-new-hololens-unity-app-using-azure-spatial-anchors"></a>Öğretici: Azure uzamsal bağlayıcıları kullanarak yeni bir HoloLens Unity uygulaması oluşturmaya yönelik adım adım yönergeler
 
@@ -27,7 +27,7 @@ Bu öğreticiyi tamamlamak için şunlar sahip olduğunuzdan emin olun:
 2. Visual Studio için [C++/Wınrt Visual Studio uzantısı (VSIX)](https://aka.ms/cppwinrt/vsix) [Visual Studio Market](https://marketplace.visualstudio.com/)yüklenmelidir.
 3. [Geliştirici modu](/windows/mixed-reality/using-visual-studio) etkin bir HoloLens cihazı. Bu makalede, [Windows 10 mayıs 2020 güncelleştirmesi](/windows/mixed-reality/whats-new/release-notes-may-2020)Ile bir HoloLens cihazı gerekir. HoloLens 'te en son sürüme güncelleştirmek için **Ayarlar** uygulamasını açın, **güncelleştirme & güvenlik**' e gidin ve **Güncelleştirmeleri denetle** düğmesini seçin.
 
-## <a name="getting-started"></a>Başlarken
+## <a name="getting-started"></a>Kullanmaya başlama
 
 İlk olarak proje ve Unity sahümüzü ayarlayacağız:
 1. Unity 'yi başlatın.
@@ -43,11 +43,11 @@ Bu öğreticiyi tamamlamak için şunlar sahip olduğunuzdan emin olun:
 Şimdi geliştirme için Windows holographic SDK 'sını hedefmize yardımcı olan bazı Unity proje ayarlarını ayarlayacağız.
 
 İlk olarak, uygulamamız için kalite ayarlarını ayarlayalım.
-1. **Edit**  >  **Proje ayarlarını** Düzenle  >  **kalitesini** seçin
+1.   >  **Proje ayarlarını** Düzenle  >  **kalitesini** seçin
 2. **Windows Mağazası** logosunun altındaki sütunda, **varsayılan** satırdaki oka tıklayın ve **çok düşük**' ı seçin. **Windows Mağazası** sütununda ve **çok düşük** satırdaki kutu yeşil olduğunda ayarın doğru uygulandığını bilirsiniz.
 
 Unity uygulamamızı 2B görünüm yerine bir tam ekran görünümüyle yapılandırmamız gerekir. Windows 10 SDK 'Yı hedefleyen Unity üzerinde sanal gerçeklik desteğini etkinleştirerek bir derinlikli görünüm oluşturabiliyoruz.
-1. **Edit**  >  **Proje ayarları**  >  **oynatıcıyı** Düzenle ' ye gidin.
+1.   >  **Proje ayarları**  >  **oynatıcıyı** Düzenle ' ye gidin.
 2. **Oynatıcı ayarları** Için **Inspector panelinde** **Windows** simgesini seçin.
 3. **XR ayarları** grubunu genişletin.
 4. **Oluşturma** bölümünde, yeni bir **sanal gerçeklik SDK** listesi eklemek için **sanal gerçeklik destekleniyor** onay kutusunu işaretleyin.
@@ -57,12 +57,12 @@ Unity uygulamamızı 2B görünüm yerine bir tam ekran görünümüyle yapılan
 > Windows simgesini görmüyorsanız, yüklemeden önce Windows .NET betiği arka ucunu seçtiğinizden emin olmak için çift işaretleyin. Aksi takdirde, Unity 'yi doğru Windows yüklemesiyle yeniden yüklemeniz gerekebilir.
 
 **Komut dosyası arka uç yapılandırmasını doğrula**
-1. **Edit**  >  **Proje ayarları**  >  **oyuncusunu** Düzenle ' ye gidin (hala **Player 'ın** önceki adımdan açık olması gerekebilir).
+1.   >  **Proje ayarları**  >  **oyuncusunu** Düzenle ' ye gidin (hala **Player 'ın** önceki adımdan açık olması gerekebilir).
 2. **Oynatıcı ayarları** Için **Inspector panelinde** **Windows Mağazası** simgesini seçin.
 3. **Diğer ayarlar** yapılandırması bölümünde, **komut dosyası arka** ucunun **IL2CPP** olarak ayarlandığından emin olun.
 
 **Özellikleri ayarla**
-1. **Edit**  >  **Proje ayarları**  >  **oyuncusunu** Düzenle ' ye gidin (hala **Player 'ın** önceki adımdan açık olması gerekebilir).
+1.   >  **Proje ayarları**  >  **oyuncusunu** Düzenle ' ye gidin (hala **Player 'ın** önceki adımdan açık olması gerekebilir).
 2. **Oynatıcı ayarları** Için **Inspector panelinde** **Windows Mağazası** simgesini seçin.
 3. **Yayımlama ayarları** yapılandırması bölümünde, **ınternetclientserver** ve **spatialperception**' yı denetleyin.
 
@@ -140,36 +140,13 @@ Kuyruğa alınmış bir eylem olup olmadığını denetlemek için Update () dö
 
 ## <a name="get-the-azure-spatial-anchors-sdk"></a>Azure uzamsal çıpası SDK 'sını alın
 
-## <a name="via-unity-package-manager-upm-package"></a>[Unity paket yöneticisi (UPD) paketi aracılığıyla](#tab/UPMPackage)
+### <a name="download-packages"></a>Paketleri İndir
+[!INCLUDE [Download Unity Packages](../../../includes/spatial-anchors-unity-download-packages.md)]
 
-Bu yöntem Unity sürümleriyle uyumludur 2019.1 +.
+### <a name="import-packages"></a>Paketleri içeri aktarma
+[!INCLUDE [Import Unity Packages](../../../includes/spatial-anchors-unity-import-packages.md)]
 
-### <a name="add-the-registry-to-your-unity-project"></a>Kayıt defterini Unity projenize ekleme
-
-1. Dosya Gezgini 'nde Unity projenizin `Packages` klasörüne gidin. Proje bildirim dosyasını `manifest.json` bir metin düzenleyicisinde açın.
-2. Dosyanın en üstünde, bölümüyle aynı düzeyde, `dependencies` Azure uzamsal bağlayıcı kayıt defterini projenize dahil etmek için aşağıdaki girişi ekleyin. `scopedRegistries`Giriş, Unity 'ye Azure uzamsal Tutturucuların SDK paketlerini nerede bakacağını söyler.
-
-    [!code-json[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-unity-scoped-registry-setup.md?range=9-19&highlight=2-10)]
-
-### <a name="add-the-sdk-package-to-your-unity-project"></a>Unity projenize SDK paketini ekleme
-
-1. Azure uzamsal bağlayıcılarının Windows SDK paket adı ( `com.microsoft.azure.spatial-anchors-sdk.windows` ) ve paket sürümünü `dependencies` Proje bildiriminizde bölümüne ekleyin. Aşağıdaki örneğe bakın.
-
-    [!code-json[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-unity-scoped-registry-setup.md?range=9-20&highlight=12)]
-
-2. Dosyayı kaydedin ve kapatın `manifest.json` . Unity 'ye geri döndüğünüzde, Unity 'nin proje bildirimi değişikliğini otomatik olarak algılaması ve belirtilen paketleri alması gerekir. `Packages`Doğru paketlerin içeri aktarıldığını doğrulamak Için proje görünüminizdeki klasörü genişletebilirsiniz.
-
-## <a name="via-unity-asset-package"></a>[Unity varlık paketi aracılığıyla](#tab/UnityAssetPackage)
-
-> [!WARNING]
-> Azure uzamsal Tutturucuların SDK 'sının Unity varlık paketi dağıtımı SDK sürümü 2.5.0 sonrasında kullanımdan kalkacaktır.
-
-Azure uzamsal bağlayıcı SDK 'sını indirelim. [Azure uzamsal bağlantıları GitHub yayınları sayfasına](https://github.com/Azure/azure-spatial-anchors-samples/releases)gidin. **Varlıklar** altında **AzureSpatialAnchors. unitypackage**' ı indirin. Unity 'de **varlıklar**' a gidin, paket özel paketini **içeri aktar**  >  **..**. seçeneğini belirleyin. Pakete gidin ve **Aç**' ı seçin.
-
-Açılan yeni **Unity paketi Içeri aktar** penceresinde, **eklentilerin** seçimini kaldırın ve sağ alt köşedeki **içeri aktar** ' ı seçin.
-
----
-
+### <a name="prepare-code"></a>Kodu hazırlama
 **Visual Studio** çözümünüzde aşağıdaki içeri aktarmayı ekleyin `<ProjectName>\Assets\Scripts\AzureSpatialAnchorsScript.cs` :
 
 [!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=18-21&highlight=1)]

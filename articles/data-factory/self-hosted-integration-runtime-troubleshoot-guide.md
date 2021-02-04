@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 01/25/2021
 ms.author: lle
-ms.openlocfilehash: 8a722550d12d019e25ff39de27cc0df2c2762a01
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 3735d7b21faf62905ed4c06dbef80c9737e7329e
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98942056"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99551085"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>Şirket içinde barındırılan tümleştirme çalışma zamanı sorunlarını giderme
 
@@ -244,7 +244,7 @@ Hedef IR üzerindeki kaynak ve hedef veri depoları için sürücüleri yükler 
  
 Trafik iki veri deposu arasında ağ üzerinden geçemezse (örneğin, iki sanal ağda yapılandırılmışsa), bir etkinliğin kopyalanmasını, bu da yüklü IR ile birlikte bitiremeyebilirsiniz. Kopyalamayı tek bir etkinlikte tamamlayamıyorum, her biri bir VENT halinde iki IRS ile iki adet kopyalama etkinliği oluşturabilirsiniz: 
 * Veri deposu 1 ' den Azure Blob depolamaya bir IR kopyalama
-* Azure Blob depolama alanından başka bir IR 'yi ddatastore 2 ' ye kopyalayın. 
+* Azure Blob depolama alanındaki başka bir IR veri deposu 2 ' ye kopyalayın. 
 
 Bu çözüm, iki bağlantısı kesilen veri deposunu bağlayan bir köprü oluşturmak için IR kullanma gereksiniminin benzetimini yapar.
 
@@ -710,7 +710,7 @@ Bu bildirim aşağıdaki senaryolar için geçerlidir:
 
 Etkilenip etkilenmediğini belirleme:
 
-- [Bir güvenlik duvarı yapılandırması ayarlama ve IP adresleri listesine izin verme](data-movement-security-considerations.md#firewall-configurations-and-allow-list-setting-up-for-ip-address-of-gateway)bölümünde açıklanan yaklaşımı kullanan tam etki alanı adlarına (FQDN) göre güvenlik duvarı kuralları tanımlıyorsanız *, etkilenmezsiniz* .
+- [Bir güvenlik duvarı yapılandırması ayarlama ve IP adresleri listesine izin verme](data-movement-security-considerations.md#firewall-configurations-and-allow-list-setting-up-for-ip-addresses)bölümünde açıklanan yaklaşımı kullanan tam etki alanı adlarına (FQDN) göre güvenlik duvarı kuralları tanımlıyorsanız *, etkilenmezsiniz* .
 
 - Şirket güvenlik duvarınızdaki giden IP 'Ler için izin verilenler listesini açıkça etkinleştirirseniz *Bu sorundan etkilenmezsiniz.*
 

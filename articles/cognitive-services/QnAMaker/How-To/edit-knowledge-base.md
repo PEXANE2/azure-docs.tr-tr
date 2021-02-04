@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 07/16/2020
-ms.openlocfilehash: 9541320f65060a0b1f2b5c84a131c08e92554e9e
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: f5d7094920a21af630e10aec2aa759ce9c505050
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96351716"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99550593"
 ---
 # <a name="edit-qna-pairs-in-your-knowledge-base"></a>Bilgi bankasındaki QnA çiftlerini düzenleme
 
@@ -19,6 +19,23 @@ Soru-Cevap Oluşturma, kullanımı kolay bir düzen deneyimi sağlayarak bilgi B
 Bir dosya veya URL gibi veya bir düzenleme kaynağı olarak eklenen bir veri kaynağından QnA çiftleri eklenir. Bir düzenleme kaynağı QNA çiftinin QnA portalında el ile eklendiğini gösterir. Tüm QnA çiftleri düzenlenmek üzere kullanılabilir.
 
 <a name="add-an-editorial-qna-set"></a>
+
+## <a name="question-and-answer-pairs"></a>Soru ve yanıt çiftleri
+
+Bilgi Bankası, soru ve yanıt (QnA) çiftlerinden oluşur.  Her çiftin bir yanıtı vardır ve bir çift, bu _Yanıt_ ile ilişkili tüm bilgileri içerir. Bir yanıt, bir veritabanı satırına veya bir veri yapısı örneğine benzeyebilirler. Soru-cevap (QnA) çiftinde **gerekli** ayarlar şunlardır:
+
+* farklı bir metinle, ancak aynı Yanıt ile Kullanıcı sorusunun metniyle hizalamak için makine öğrenimine Soru-Cevap Oluşturma için kullanılan Kullanıcı sorgusunun **soru** metni.
+* **Yanıt** -çiftin yanıtı, bir Kullanıcı sorgusu ilişkili soru ile eşleştiğinde döndürülen yanıttır
+
+Her çift bir **kimlik** ile temsil edilir.
+
+Bir çiftin **isteğe bağlı** ayarları şunlardır:
+
+* **Sorunun alternatif biçimleri** -bu, soru-cevap oluşturma çok çeşitli soru açısından doğru yanıtı döndürmenize yardımcı olur
+* **Meta** veri: meta veriler bir QNA çiftiyle ilişkili etiketlerdir ve anahtar-değer çiftleri olarak temsil edilir. Meta veri etiketleri, QnA çiftlerini filtrelemek ve sorgu eşleştirmesinin gerçekleştirileceği kümeyi sınırlamak için kullanılır.
+* Çoklu çift **istemler**, çok yönlü bir konuşmaya devam etmek için kullanılır
+
+![Bilgi temellerini Soru-Cevap Oluşturma](../media/qnamaker-concepts-knowledgebase/knowledgebase.png)
 
 ## <a name="add-an-editorial-qna-pair"></a>Bir düzenleme QnA çifti ekleyin
 
@@ -60,7 +77,7 @@ Yanıt metninizi zengin metin düzenlemesi, basit bir araç çubuğundan Markin 
     |--|--|
     |Zengin metin düzenleyici ve markaşağı arasında geçiş yapın. `</>`|CTRL+M|
     |Kalın. **Kenarı**|MRK + LB|
-    |İtalik, italik ı ile gösterilir **_I_**|CTRL + ı|
+    |İtalik, italik ı ile gösterilir ****|CTRL + ı|
     |Sırasız liste||
     |Sıralı liste||
     |Paragraf stili||
@@ -129,6 +146,14 @@ Değişiklikleri kaybetmemek için düzenleme yaptıktan sonra düzenli olarak *
 Yanıtları [zengin metin düzenlemesi](#add-an-editorial-qna-set) , yazar olarak, metni hızlıca seçip biçimlendirmek için bir biçimlendirme araç çubuğu kullanmanıza olanak sağlar.
 
 Bir CI/CD [işlem](../index.yml)hattının parçası olarak içeri aktarılmak üzere bilgi tabanları oluşturmak için içerik oluşturmanız gerektiğinde [markaşağı](../reference-markdown-format.md) , daha iyi bir araçtır.
+
+## <a name="editing-your-knowledge-base-locally"></a>Bilgi bankaınızı yerel olarak Düzenle
+
+Bilgi Bankası oluşturulduktan sonra, yerel dosyalar aracılığıyla dışarı aktarmak ve yeniden içeri aktarmak yerine [soru-cevap oluşturma portalındaki](https://qnamaker.ai)Bilgi Bankası metninde düzenleme yapmanız önerilir. Ancak, bir bilgi bankasını yerel olarak düzenlemeniz gerektiği zamanlar olabilir.
+
+Bilgi Bankası 'nı **Ayarlar** sayfasından dışarı aktarın ve Bilgi Bankası 'Nı Microsoft Excel ile düzenleyin. Verdiğiniz dosyayı düzenlemek için başka bir uygulama kullanmayı seçerseniz, uygulama tam olarak uyumlu olmadığından sözdizimi hataları verebilir. Microsoft Excel 'in TSV dosyaları genellikle biçimlendirme hataları sunmaz.
+
+Düzenlemelerinizi tamamladıktan sonra, **Ayarlar** sayfasından TSV dosyasını yeniden içeri aktarın. Bu işlem, geçerli bilgi bankasını içeri aktarılan Bilgi Bankası ile tamamen değiştirir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

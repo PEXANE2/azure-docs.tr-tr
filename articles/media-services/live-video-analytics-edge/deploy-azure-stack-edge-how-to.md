@@ -3,12 +3,12 @@ title: Azure Stack Edge üzerinde canlı video analizi dağıtma
 description: Bu makalede, Azure Stack Kenarunuzda canlı video analizlerini dağıtmanıza yardımcı olacak adımlar listelenmektedir.
 ms.topic: how-to
 ms.date: 09/09/2020
-ms.openlocfilehash: f33b6fb0f0dc5c5b733a0fcb021e2792ce9c6ec6
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: cc3dcfaa96034e807d3d82e75eedc0f6a82eff08
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019605"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99551017"
 ---
 # <a name="deploy-live-video-analytics-on-azure-stack-edge"></a>Azure Stack Edge üzerinde canlı video analizi dağıtma
 
@@ -19,12 +19,12 @@ Canlı video analizi için IoT Hub aracılığıyla dağıtılacak, ancak Azure 
 > [!TIP]
 > Özel dağıtım için Kubernetes (K8s) API 'sinin kullanılması, gelişmiş bir durumdur. Müşterinin Edge modülleri oluşturması ve Kubernetes API 'sini kullanmak yerine her Azure Stack Edge kaynağına IoT Hub aracılığıyla dağıtılması önerilir. Bu makalede, IoT Hub kullanarak canlı video analizi modülünü dağıtma adımları gösterilecektir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Sahip olduğunuz ayrıcalıklara](../../role-based-access-control/built-in-roles.md#owner)sahip olduğunuz Azure aboneliği.
 * [Azure Stack Edge](../../databox-online/azure-stack-edge-gpu-deploy-prep.md) kaynağı
    
-* [Bir IoT Hub](../../iot-hub/iot-hub-create-through-portal.md)
+* [IoT Hub'ı](../../iot-hub/iot-hub-create-through-portal.md)
 * Canlı video analizi modülü için bir [hizmet sorumlusu](./create-custom-azure-resource-manager-role-how-to.md#create-service-principal) .
 
    IoT Hub kullanılabildiği şu bölgelerden birini kullanın: Doğu ABD 2, Orta ABD, Orta Kuzey ABD, Japonya Doğu, Batı ABD 2, Orta Batı ABD, Kanada Doğu, UK Güney, Fransa Orta, Fransa Güney, İsviçre Kuzey, İsviçre Batı ve Japonya Batı.
@@ -42,38 +42,7 @@ Azure Stack Edge, ağ veri aktarımı özelliklerine sahip bir hizmet olarak don
 * [Azure Stack Edge/Data Box Gateway kaynak oluşturma](../../databox-online/azure-stack-edge-deploy-prep.md)
 * [Yükleme ve kurulum](../../databox-online/azure-stack-edge-deploy-install.md)
 * [Bağlantı ve etkinleştirme](../../databox-online/azure-stack-edge-deploy-connect-setup-activate.md)
-
-### <a name="attach-an-iot-hub-to-azure-stack-edge"></a>Azure Stack Edge 'e IoT Hub iliştirme
-
-1. [Azure Portal](https://ms.portal.azure.com), Azure Stack Edge kaynağına gidin ve genel bakış ' a tıklayın. Sağ bölmede, Işlem kutucuğunda başlayın ' ı seçin.
-
-    > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/azure-stack-edge.png" alt-text="Azure Stack Edge":::
-1. Uç işlem yapılandırma kutucuğunda, işlem Yapılandır ' ı seçin.
-1. Uç işlem yapılandırma dikey penceresinde aşağıdakileri girin:
-    
-    | Alan|Değer|
-    |---|---|
-    |IoT Hub|Yeni veya mevcut seçeneklerinden birini belirleyin.<br/>Varsayılan olarak IoT kaynağı oluşturulurken Standart katmanı (S1) kullanılır. Bir ücretsiz katman IoT kaynağı kullanmak için kaynağı oluşturun ve sonra da mevcut kaynağı seçin.<br/>Her durumda IoT Hub kaynak, Azure Stack Edge kaynağı kullanılan aynı abonelik ve kaynak grubunu kullanır.|
-    |Ad|IoT Hub kaynağınız için bir ad girin.|
-
-    > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/azure-stack-edge-get-started.png" alt-text="Azure Stack Edge":::
-1. **Oluştur**’u seçin. IoT Hub kaynak oluşturma birkaç dakika sürer. IoT Hub kaynağı oluşturulduktan sonra, işlem yapılandırmasını göstermek için işlem kutucuğunu **Yapılandır** ' ı güncelleştirir. Edge işlem rolünün yapılandırıldığını doğrulamak için, **Işlem yapılandırma** kutucuğunda işlemi **görüntüle** ' yi seçin.
-
-    > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/edge-compute-config.png" alt-text="Azure Stack Edge":::
-
-    > [!NOTE]
-    > IoT Hub Azure Stack Edge kaynağıyla ilişkilendirilmeden önce Işlem Yapılandır iletişim kutusu kapatılırsa IoT Hub oluşturulur ancak işlem yapılandırmasında gösterilmez. Birkaç dakika sonra sayfayı yeniden yükleyin ve göründüğünü görüntüleyin.
-    
-    Edge cihazında Edge hesaplama rolü ayarlandığında, iki cihaz oluşturur: bir IoT cihazı ve bir IoT Edge cihaz. Her iki cihaz de IoT Hub kaynağında görüntülenebilir. Bir IoT Edge çalışma zamanı IoT Edge cihazında da çalışır. Bu noktada, IoT Edge cihazınız için yalnızca Linux platformu kullanılabilir.
-    
-    Tüm bilgiler doldurulduktan sonra Edge işlem kartını yapılandırma aşağıdakine benzer şekilde görünür:
-    
-    > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/configure-edge-compute.png" alt-text="Azure Stack Edge":::
- 
+* [Azure Stack Edge 'e IoT Hub iliştirme](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-gpu-deploy-configure-compute#configure-compute)
 ### <a name="enable-compute-prerequisites-on-the-azure-stack-edge-local-ui"></a>Azure Stack Edge Yerel Kullanıcı arabiriminde Işlem önkoşullarını etkinleştirme
 
 Devam etmeden önce şunları yaptığınızdan emin olun:
@@ -89,7 +58,7 @@ Devam etmeden önce şunları yaptığınızdan emin olun:
         * Uygula ' yı seçin-Bu işlem yaklaşık 2 dakika sürer.
         
         > [!div class="mx-imgBorder"]
-        > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/azure-stack-edge-commercial.png" alt-text="Azure Stack Edge":::
+        > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/azure-stack-edge-commercial.png" alt-text=" Azure Stack Edge Yerel Kullanıcı arabiriminde işlem önkoşulları":::
 
         * DNS, Kubernetes API 'SI ve Azure Stack Edge kaynağı için yapılandırılmamışsa, pencerenizin ana bilgisayar dosyasını güncelleştirebilirsiniz.
         
@@ -146,13 +115,14 @@ Bunun için yalnızca [IoT Hub aracılığıyla canlı video analizinden dağıt
       ```
 
       > [!NOTE]
-      > JSON 'daki "bağlamalar" bölümünün 2 girişi vardır. Sınır cihaz bağlamalarını güncelleştirmeyi ücretsiz hale getirebilirsiniz, ancak bu dizinlerin mevcut olduğundan emin olun.
+      > JSON 'daki "bağlamalar" bölümünün 2 girişi vardır. Yukarıdaki bağlama bölümünde bahsedilen dizinler LVA tarafından otomatik olarak oluşturulur.  
+        Sınır cihaz bağlamalarını güncelleştirmeyi ücretsiz olarak kullanabilirsiniz, ancak bunu yaparsanız, bu dizinlerin cihazda bulunduğundan emin olun.
     
     * "/var/lib/azudüzeltici aservices:/var/lib/azudüzeltici aservices": Bu, kalıcı uygulama yapılandırma verilerini kapsayıcıdan bağlamak ve Edge cihazında saklamak için kullanılır.
     * "/var/Media:/var/Media": Bu, uç cihazla kapsayıcı arasında medya klasörlerini bağlar. Bu, uç cihazda video kliplerin depolanmasını destekleyen bir medya grafiği topolojisi çalıştırdığınızda video kayıtlarını depolamak için kullanılır.
         
 1. Belgedeki adımlara devam edin ve modül Ikizi ayarları ' nı girin.
-1. **İleri ' yi**seçin: rotalar bölümüne devam etmek için yollar. Rotaları belirtin.
+1. **İleri ' yi** seçin: rotalar bölümüne devam etmek için yollar. Rotaları belirtin.
 
     Varsayılan yolları koruyun ve Ileri ' yi seçin: Gözden geçirme bölümüne devam etmek için, İnceleme + oluştur seçeneğini belirleyin.
 1. [Dağıtımınızı gözden geçirin ve doğrulayın](deploy-iot-edge-device.md#review-deployment)
@@ -169,13 +139,14 @@ Bu adımlar, bir ağ geçidi kullanıcısı oluşturmayı ve canlı video analiz
 1. Azure portal açın ve Azure Stack Edge kaynağına gidin.
 1. Paylaşımlara erişebilen bir **ağ geçidi kullanıcısı** oluşturun.
     
-    1. Sol gezinti bölmesinde **ağ geçidi->kullanıcıları**' na tıklayın.
-    1. Kullanıcı adını ve parolayı ayarla **+ Kullanıcı Ekle** ' ye tıklayın. (Önerilen: `lvauser` ).
+    1. Sol gezinti bölmesinde, **bulut depolama ağ geçidi**' ne tıklayın.
+    1. Sol gezinti bölmesindeki **Kullanıcılar** ' a tıklayın.
+    1. Kullanıcı adını ve parolayı ayarlamak için iyon **+ Kullanıcı Ekle** ' ye tıklayın. (Önerilen: `lvauser` ).
     1. **Ekle**'ye tıklayın.
     
 1. Canlı video analizi kalıcılığı için **yerel bir paylaşılan** oluşturun.
 
-    1. **Ağ geçidi >paylaşımları**' na tıklayın.
+    1. **Bulut depolama ağ geçidi >paylaşımları**' na tıklayın.
     1. **+ Paylaşımlar Ekle**' ye tıklayın.
     1. Bir paylaşma adı belirleyin. (Önerilen: `lva` ).
     1. Share türünü SMB olarak tutun.
@@ -185,12 +156,15 @@ Bu adımlar, bir ağ geçidi kullanıcısı oluşturmayı ve canlı video analiz
     1. **Oluştur**'a tıklayın.
         
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/local-share.png" alt-text="Azure Stack Edge":::
-    
+    > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/local-share.png" alt-text="Yerel paylaşma":::  
+
+    > [!TIP]
+    > Azure Stack ucuna bağlı Windows istemcinizi kullanarak, [Bu belgede bahsedilen](../../databox-online/azure-stack-edge-deploy-add-shares.md#connect-to-an-smb-share)ADıMLARı izleyerek SMB paylaşımlarına bağlanın.    
+
 1. Dosya eşitleme depolaması için bir uzak paylaşma oluşturun.
 
-    1. İlk olarak aynı bölgede bir BLOB depolama hesabı oluşturun.
-    1. **Ağ geçidi >paylaşımları**' na tıklayın.
+    1. Önce **bulut depolama ağ geçidi >depolama hesaplarına** tıklayarak aynı bölgede bir BLOB depolama hesabı oluşturun.
+    1. **Bulut depolama ağ geçidi >paylaşımları**' na tıklayın.
     1. **+ Paylaşımlar Ekle**' ye tıklayın.
     1. Bir paylaşma adı belirleyin. (Önerilen: medya).
     1. Share türünü SMB olarak tutun.
@@ -203,10 +177,30 @@ Bu adımlar, bir ağ geçidi kullanıcısı oluşturmayı ve canlı video analiz
     1. **Oluştur**'a tıklayın.    
     
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/remote-share.png" alt-text="Azure Stack Edge"
-            }]
-        }
-    }
+    > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/remote-share.png" alt-text="Uzak paylaşma":::
+    
+    
+1. Canlı video analizi kenar modülünün kapsayıcı oluşturma seçeneklerini (bkz. [Modül Ekle belgesinde](deploy-iot-edge-device.md#add-modules)nokta 4) kullanarak birim bağlamayı kullanın.
+
+   ```json
+      "createOptions": 
+         {
+             "HostConfig": 
+             {
+                 "Binds": 
+                 [
+                     "/var/lib/azuremediaservices:/var/lib/azuremediaservices"
+                 ],
+                 "Mounts": 
+                 [
+                     {
+                         "Target": "/var/media",
+                         "Source": "media",
+                         "Type": "volume"
+                     }
+                 ]
+             }
+         }
     ```
 
 ### <a name="verify-that-the-module-is-running"></a>Modülün çalıştığını doğrulama
@@ -219,7 +213,7 @@ Modülün çalıştığını doğrulamak için aşağıdakileri yapın:
 1. Modüller kutucuğunu seçin. Bu sizi modüller dikey penceresine götürür. Modüller listesinde, dağıttığınız modülü ayırt edin. Eklediğiniz modülün çalışma zamanı durumu çalışıyor olmalıdır.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/iot-edge-custom-module.png" alt-text="Azure Stack Edge":::
+    > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/iot-edge-custom-module.png" alt-text="Özel modül":::
 
 ### <a name="configure-the-azure-iot-tools-extension"></a>Azure IoT araçları uzantısını yapılandırma
 

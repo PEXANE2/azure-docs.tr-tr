@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: rarayudu, logicappspm
 ms.topic: conceptual
-ms.date: 12/30/2020
-ms.openlocfilehash: ee6c116d02a7be1682d9e8379037ef1b8c92bce8
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.date: 02/03/2021
+ms.openlocfilehash: d4500229800fa5d1743779b29927637777647e47
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97967047"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99550666"
 ---
 # <a name="create-an-integration-service-environment-ise-by-using-the-logic-apps-rest-api"></a>Logic Apps REST API'sini kullanarak tümleştirme hizmeti ortamı (ISE) oluşturma
 
@@ -188,17 +188,28 @@ Bu örnek istek gövdesinde örnek değerler gösterilmektedir:
 
 ## <a name="add-custom-root-certificates"></a>Özel kök sertifikaları Ekle
 
-Genellikle sanal ağınızdaki veya Şirket içindeki özel hizmetlere bağlanmak için bir ıSE kullanırsınız. Bu özel hizmetler genellikle kurumsal sertifika yetkilisi veya otomatik olarak imzalanan sertifika gibi özel kök sertifika yetkilisi tarafından verilen bir sertifika tarafından korunur. Otomatik olarak imzalanan sertifikaları kullanma hakkında daha fazla bilgi için bkz. [diğer hizmetlere ve sistemlere giden çağrılar Için güvenli erişim ve veri erişimi](../logic-apps/logic-apps-securing-a-logic-app.md#secure-outbound-requests). Bu hizmetlere Aktarım Katmanı Güvenliği (TLS) üzerinden başarıyla bağlanmak için, ıSE 'nin bu kök sertifikalara erişmesi gerekir. ISE 'nizi özel bir güvenilen kök sertifikayla güncelleştirmek için şu HTTPS isteğini yapın `PATCH` :
+Genellikle sanal ağınızdaki veya Şirket içindeki özel hizmetlere bağlanmak için bir ıSE kullanırsınız. Bu özel hizmetler genellikle kurumsal sertifika yetkilisi veya otomatik olarak imzalanan sertifika gibi özel kök sertifika yetkilisi tarafından verilen bir sertifika tarafından korunur. Otomatik olarak imzalanan sertifikaları kullanma hakkında daha fazla bilgi için bkz. [diğer hizmetlere ve sistemlere giden çağrılar Için güvenli erişim ve veri erişimi](../logic-apps/logic-apps-securing-a-logic-app.md#secure-outbound-requests). Bu hizmetlere Aktarım Katmanı Güvenliği (TLS) üzerinden başarıyla bağlanmak için, ıSE 'nin bu kök sertifikalara erişmesi gerekir.
 
-`PATCH https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationServiceEnvironments/{integrationServiceEnvironmentName}?api-version=2019-05-01`
+#### <a name="considerations-for-adding-custom-root-certificates"></a>Özel kök sertifikaları ekleme konuları
 
-Bu işlemi gerçekleştirmeden önce şu hususları gözden geçirin:
+ISE 'nizi özel bir güvenilen kök sertifika ile güncelleştirmeden önce şu hususları gözden geçirin:
 
 * Kök sertifikayı *ve* tüm ara sertifikaları karşıya yüklediğinizden emin olun. En fazla sertifika sayısı 20 ' dir.
 
 * Kök sertifikaları karşıya yüklemek, en son karşıya yükleme işleminin önceki karşıya yüklemelerinin üzerine yazmasıdır. Örneğin, bir sertifika yükleyen bir istek gönderirseniz ve başka bir sertifikayı karşıya yüklemek için başka bir istek gönderirseniz, ıSE 'niz yalnızca ikinci sertifikayı kullanır. Her iki sertifikayı da kullanmanız gerekiyorsa, bunları aynı istekte toplayın.  
 
 * Kök sertifikaları karşıya yüklemek biraz zaman alabilir bir zaman uyumsuz bir işlemdir. Durumu veya sonucu denetlemek için `GET` aynı URI 'yi kullanarak bir istek gönderebilirsiniz. Yanıt iletisi, `provisioningState` `InProgress` karşıya yükleme işlemi çalışmaya devam ettiği zaman değeri döndüren bir alana sahiptir. `provisioningState`Değer olduğunda `Succeeded` , karşıya yükleme işlemi tamamlanmıştır.
+
+#### <a name="request-syntax"></a>İstek sözdizimi
+
+ISE 'nizi özel bir güvenilen kök sertifikayla güncelleştirmek için aşağıdaki HTTPS düzeltme eki isteğini [Azure ortamınıza göre farklılık gösteren Azure Resource Manager URL](../azure-resource-manager/management/control-plane-and-data-plane.md#control-plane)'sine gönderin, örneğin:
+
+| Ortam | Azure Resource Manager URL 'SI |
+|-------------|----------------------------|
+| Azure genel (çok kiracılı) | `PATCH https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationServiceEnvironments/{integrationServiceEnvironmentName}?api-version=2019-05-01` |
+| Azure Kamu | `PATCH https://management.usgovcloudapi.net/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationServiceEnvironments/{integrationServiceEnvironmentName}?api-version=2019-05-01` |
+| Microsoft Azure Çin 21Vianet | `PATCH https://management.chinacloudapi.cn/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationServiceEnvironments/{integrationServiceEnvironmentName}?api-version=2019-05-01` |
+|||
 
 #### <a name="request-body-syntax-for-adding-custom-root-certificates"></a>Özel kök sertifikaları eklemek için istek gövdesi sözdizimi
 

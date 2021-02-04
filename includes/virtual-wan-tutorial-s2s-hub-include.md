@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/04/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 31cfb321a60e700aecfdc1288ccdd379b89658ba
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 5630eba4f1be9aead6ff1a89bc036bcc548c3646
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99531230"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99541154"
 ---
 1. Oluşturduğunuz sanal WAN 'ı bulun. Sanal WAN sayfasında, **bağlantı** bölümünde, **hub**' ı seçin.
 2. Hub 'Lar sayfasında **+ yeni hub** ' ı seçerek **sanal hub oluştur** sayfasını açın.
@@ -25,7 +25,7 @@ ms.locfileid: "99531230"
 
    * Bölge (daha önce konum olarak adlandırılır)
    * Name
-   * Hub özel adres alanı. En küçük adres alanı bir hub oluşturmak için/24 ' tir. Bu,/25 ile/32 arasında herhangi bir aralığın oluşturulması sırasında bir hata üretecektir. Ancak, sanal hub 'da dağıtılabilecek gelecek hizmetleri desteklemeye yetecek sayıda IP adresi olduğundan emin olmak için bir/23 adres alanı veya daha büyük bir alan ayırmanız önerilir. Microsoft tarafından yönetilen bir hizmet olan Azure sanal WAN, farklı ağ geçitleri/hizmetler (örneğin, VPN ağ geçitleri, ExpressRoute ağ geçitleri, kullanıcı VPN/Noktadan siteye ağ geçitleri, güvenlik duvarı, yönlendirme vb.) için sanal hub 'da uygun alt ağları oluşturur. Microsoft bunu hizmetin bir parçası olarak yaparken, kullanıcının sanal hub 'daki hizmetler için alt ağ adres alanını açıkça planlaması gerekmez.
+   * Hub özel adres alanı. En küçük adres alanı bir hub oluşturmak için/24 ' tir. Bu,/25 ile/32 arasında herhangi bir aralığın oluşturulması sırasında bir hata üretecektir. Microsoft tarafından yönetilen bir hizmet olan Azure sanal WAN, farklı ağ geçitleri/hizmetler (örneğin, VPN ağ geçitleri, ExpressRoute ağ geçitleri, kullanıcı VPN/Noktadan siteye ağ geçitleri, güvenlik duvarı, yönlendirme vb.) için sanal hub 'da uygun alt ağları oluşturur. Microsoft bunu hizmetin bir parçası olarak yaparken, kullanıcının sanal hub 'daki hizmetler için alt ağ adres alanını açıkça planlaması gerekmez.
 4. **İleri ' yi seçin: siteden siteye**.
 
     ![Ekran görüntüsü, siteye site seçiliyken sanal hub oluştur bölmesini gösterir.](./media/virtual-wan-tutorial-hub-include/site-to-site.png "Siteden siteye")

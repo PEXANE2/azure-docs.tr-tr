@@ -3,12 +3,12 @@ title: 'Öğretici: karşıya yüklenen görüntüleri yeniden boyutlandırmayı
 description: "Öğretici: Azure Event Grid Azure Storage 'daki blob karşıya yüklemelere tetiklenebilir. Bu hizmeti kullanarak, Azure Depolama’ya yüklenmiş görüntü dosyalarını, yeniden boyutlandırma ve diğer iyileştirmeler için Azure İşlevleri gibi diğer hizmetlere gönderebilirsiniz."
 ms.topic: tutorial
 ms.date: 07/07/2020
-ms.openlocfilehash: 47ac8cad6d7c2ead8d25aa3525aafdab735f9e71
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ca231fc65162fe38f4dcb8b8d5677ef42c7807bb
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91326618"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99550530"
 ---
 # <a name="tutorial-automate-resizing-uploaded-images-using-event-grid"></a>Öğretici: Event Grid kullanarak karşıya yüklenen görüntüleri yeniden boyutlandırmayı otomatikleştirme
 
@@ -43,7 +43,7 @@ Bu öğreticiyi tamamlamak için:
 
 Önceki Blob depolama öğreticisini tamamlamış olmanız gerekir: [Azure Storage ile görüntü verilerini buluta yükleme][previous-tutorial].
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+Bir [Azure aboneliğine](../guides/developer/azure-developer-guide.md#understanding-accounts-subscriptions-and-billing)ihtiyacınız vardır. Bu öğretici **ücretsiz** abonelikle birlikte çalışmaz. 
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -263,7 +263,7 @@ Olay aboneliği, belirli bir uç noktaya gönderilmesini istediğiniz, sağlayı
 
 1.  **Tümleştirme** Seç ' i seçin ve **Event Grid tetikleyiciyi** seçin ve **Event Grid aboneliği oluştur**' u seçin.
 
-    :::image type="content" source="./media/resize-images-on-storage-blob-upload-event/add-event-subscription.png" alt-text="Portalda küçük resim işlevini seçin" :::
+    :::image type="content" source="./media/resize-images-on-storage-blob-upload-event/add-event-subscription.png" alt-text="Azure portal Event Grid abonelik ekleme sayfasına gidin" :::
 
 1. Tabloda belirtilen olay aboneliği ayarlarını kullanın.
     
@@ -278,12 +278,12 @@ Olay aboneliği, belirli bir uç noktaya gönderilmesini istediğiniz, sağlayı
     | **Kaynak** | Blob depolama hesabınız | Oluşturduğunuz Blob depolama hesabını seçin. |
     | **Sistem konu adı** | ımatoragesyıstopic | Sistem konusu için bir ad belirtin. Sistem konuları hakkında bilgi edinmek için bkz. [sistem konularına genel bakış](system-topics.md). |    
     | **Olay türleri** | Oluşturulan blob | **Oluşturulan blob** dışındaki tüm türlerin işaretini kaldırın. Yalnızca `Microsoft.Storage.BlobCreated` türündeki olaylar işleve geçirilir. |
-    | **Uç nokta türü** | otomatik oluşturulmuş | **Azure işlevi**olarak önceden tanımlanmış. |
-    | **Uç Noktası** | otomatik oluşturulmuş | İşlevin adı. Bu durumda, bunun **küçük resmi**. |
+    | **Uç nokta türü** | otomatik oluşturulmuş | **Azure işlevi** olarak önceden tanımlanmış. |
+    | **Uç Nokta** | otomatik oluşturulmuş | İşlevin adı. Bu durumda, bunun **küçük resmi**. |
 
 1. **Filtreler** sekmesine geçin ve aşağıdaki işlemleri yapın:
     1. **Konu filtrelemeyi etkinleştir** seçeneğini belirleyin.
-    1. **Konu için ile başlıyorsa**, şu değeri girin: **/Blobservices/default/containers/images/Blobs/**.
+    1. **Konu için ile başlıyorsa**, şu değeri girin: **/Blobservices/default/containers/images/**.
 
         ![Olay aboneliği için filtre belirtin](./media/resize-images-on-storage-blob-upload-event/event-subscription-filter.png)
 

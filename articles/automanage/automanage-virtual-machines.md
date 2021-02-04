@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/04/2020
 ms.author: deanwe
 ms.custom: references_regions
-ms.openlocfilehash: 0d8ce501b951f3543e1baf54c8a52648b13f6e66
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: 7772d57937393da1c48fa2658818d8a1a2b28a1f
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98695679"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99550793"
 ---
 # <a name="azure-automanage-for-virtual-machines"></a>Sanal makineler için Azure oto yönetimi
 
@@ -42,7 +42,6 @@ Son olarak, deneyim inanılmaz basittir.
 Sanal makinelerinizde Azure oto yönetimi 'ni etkinleştirmeyi denemeden önce göz önünde bulundurmanız gereken birkaç önkoşul vardır.
 
 - Yalnızca Windows Server VM 'Leri
-- VM 'Ler çalışıyor olmalıdır
 - VM 'Ler desteklenen bir bölgede olmalıdır (aşağıdaki paragrafı görüntüleyin)
 - Kullanıcının doğru izinleri olması gerekir (aşağıdaki paragrafa bakın)
 - Oto yönetimi şu anda korumalı alan aboneliklerini desteklemiyor

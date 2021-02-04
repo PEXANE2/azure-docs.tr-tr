@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 09/18/2020
-ms.openlocfilehash: 26012b23a10f560158e3ba3919e12f5c15759189
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 86942f509ab067a53c47b5132c451f0585760050
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 02/04/2021
-ms.locfileid: "99539324"
+ms.locfileid: "99549652"
 ---
 # <a name="register-and-scan-an-on-premises-sql-server"></a>Şirket içi SQL Server 'ı kaydetme ve tarama
 
@@ -65,6 +65,9 @@ SQL hesabının **ana** veritabanına erişimi olmalıdır. Bunun nedeni `sys.da
 #### <a name="creating-a-new-login-and-user"></a>Yeni bir oturum açma ve Kullanıcı oluşturma
 
 SQL Server 'ı tarayabilmesi için yeni bir oturum açma ve Kullanıcı oluşturmak istiyorsanız aşağıdaki adımları izleyin:
+
+> [!Note]
+    > [Aşağıda belirtilen kod](https://github.com/Azure/Purview-Samples/blob/master/TSQL-Code-Permissions/grant-access-to-on-prem-sql-databases.sql)kullanılarak aşağıdaki adımlar uygulanabilir.
 
 1. SQL Server Management Studio (SSMS) gidin, sunucuya bağlanın, güvenlik ' e gidin, oturum aç ' a sağ tıklayın ve yeni oturum oluştur ' a tıklayın. SQL kimlik doğrulaması ' nı seçtiğinizden emin olun.
 

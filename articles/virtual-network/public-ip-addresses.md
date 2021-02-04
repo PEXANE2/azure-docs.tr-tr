@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/28/2020
 ms.author: allensu
-ms.openlocfilehash: deb9f60cd3f75eacdf0adc06f6f7470819949555
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 702ca4f4c3fc92eca70479ba02b1ddc8f6858857
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98223236"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99549669"
 ---
 # <a name="public-ip-addresses"></a>Genel IP adresleri
 
@@ -54,7 +54,7 @@ Standart SKU genel IP adresleri:
 - 4-30 dakikalık, varsayılan 4 dakikalık, geçersiz giden kaynaklı Flow zaman aşımı süresi 4 dakikadan oluşan, ayarlanabilir bir gelen akış boşta kalma zaman aşımı süresi.
 - Varsayılan olarak güvenli hale getirin ve gelen trafiğe kapalıdır. [Ağ güvenlik grubuyla](./network-security-groups-overview.md#network-security-groups)gelen trafik listesine izin ver.
 - Ağ arabirimlerine, standart genel yük dengeleyicileri veya uygulama ağ geçitlerine atanır. Standart yük dengeleyici hakkında daha fazla bilgi için bkz. [Azure Standart Load Balancer](../load-balancer/load-balancer-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
-- Bölgesel olarak yedekli (tüm 3 bölgeden reklam verebilir) ya da bölgesel (belirli bir kullanılabilirlik bölgesinde bir veya daha fazla garanti edilebilir) olabilir. Kullanılabilirlik alanları hakkında daha fazla bilgi için bkz. [Kullanılabilirlik alanlarına genel bakış](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) ve [Standart Yük Dengeleyici ve Kullanılabilirlik Alanları](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json). **Bölgesel olarak yedekli IP 'Ler, yalnızca [3 kullanılabilirlik bölgesinin canlı olduğu bölgelerde](../availability-zones/az-region.md) oluşturulabilir.** Bölgeler etkin olmadan önce oluşturulan IP 'Ler bölge yedekli olmayacaktır.
+- Bölgesel olarak yedekli (tüm 3 bölgeden reklam verebilir), bölgesel (önceden seçilmiş belirli bir kullanılabilirlik bölgesinde garantili) veya bölge olmaması (önceden seçilmiş belirli bir kullanılabilirlik bölgesi ile ilişkilendirilmemiş) olabilir. Kullanılabilirlik alanları hakkında daha fazla bilgi için bkz. [Kullanılabilirlik alanlarına genel bakış](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) ve [Standart Yük Dengeleyici ve Kullanılabilirlik Alanları](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json). **Bölgesel olarak yedekli IP 'Ler, yalnızca [3 kullanılabilirlik bölgesinin canlı olduğu bölgelerde](../availability-zones/az-region.md) oluşturulabilir.** Bölgeler etkin olmadan önce oluşturulan IP 'Ler bölge yedekli olmayacaktır.
 - [Bölgeler arası yük dengeleyiciler](../load-balancer/cross-region-overview.md) için her noktaya yayın ön uç IP 'si olarak kullanılabilir (Önizleme işlevselliği).
  
 > [!NOTE]

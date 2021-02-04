@@ -7,12 +7,12 @@ ms.author: jimmyca
 ms.date: 02/20/2020
 ms.topic: article
 ms.service: azure-app-configuration
-ms.openlocfilehash: 640be797b2653f9e6c969306b7e2b99393b99c39
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 12a62bbd06cf9adf3b5978bb061e1d014599b44c
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078213"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99550751"
 ---
 # <a name="reacting-to-azure-app-configuration-events"></a>Azure uygulama yapılandırma olaylarına yeniden davranıma
 
@@ -22,7 +22,7 @@ Azure uygulama yapılandırma olayları, zengin yeniden deneme ilkeleri ve atıl
 
 Ortak uygulama yapılandırma olay senaryoları, uygulama yapılandırmasını yenilemeyi, dağıtımları tetiklemeyi veya herhangi bir yapılandırmaya dayalı iş akışını içerir. Değişiklikler seyrek olduğunda, ancak senaryonuz anında yanıt vermeyi gerektirdiğinde, olay tabanlı mimari özellikle etkili olabilir.
 
-[Azure uygulama yapılandırma olaylarını hızlı bir örnek için özel bir Web uç noktasına yönlendir-CLI](./howto-app-configuration-event.md) bölümüne göz atın. 
+Hızlı bir örnek için [veri değişikliği bildirimleri için Event Grid kullanma](./howto-app-configuration-event.md) bölümüne göz atın. 
 
 ![Event Grid modeli](./media/event-grid-functional-model.png)
 
@@ -39,17 +39,17 @@ Azure uygulama yapılandırma olayları, verilerdeki değişikliklere yanıt ver
 
 > |Özellik|Tür|Description|
 > |-------------------|------------------------|-----------------------------------------------------------------------|
-> |konu başlığı|dize|Olayı gösteren uygulama yapılandırmasının tam Azure Resource Manager kimliği.|
-> |Konu|dize|Olayın konusu olan anahtar-değer URI 'SI.|
-> |eventTime|dize|Olayın oluşturulduğu tarih/saat, ISO 8601 biçiminde.|
-> |eventType|dize|"Microsoft. AppConfiguration. KeyValueModified" veya "Microsoft. AppConfiguration. KeyValueDeleted".|
-> |Id|dize|Bu olayın benzersiz tanımlayıcısı.|
-> |dataVersion|dize|Veri nesnesinin şema sürümü.|
-> |metadataVersion|dize|Üst düzey özelliklerin şema sürümü.|
+> |konu başlığı|string|Olayı gösteren uygulama yapılandırmasının tam Azure Resource Manager kimliği.|
+> |subject|string|Olayın konusu olan anahtar-değer URI 'SI.|
+> |eventTime|string|Olayın oluşturulduğu tarih/saat, ISO 8601 biçiminde.|
+> |eventType|string|"Microsoft. AppConfiguration. KeyValueModified" veya "Microsoft. AppConfiguration. KeyValueDeleted".|
+> |Id|string|Bu olayın benzersiz tanımlayıcısı.|
+> |dataVersion|string|Veri nesnesinin şema sürümü.|
+> |metadataVersion|string|Üst düzey özelliklerin şema sürümü.|
 > |veriler|object|Azure Uygulama yapılandırmasına özgü olay verileri koleksiyonu|
-> |Data. Key|dize|Değiştirilen veya silinen anahtar-değer anahtarı.|
-> |Data. Label|dize|Değiştirilen veya silinen anahtar-değer etiketi.|
-> |Data. ETag|dize|`KeyValueModified`Yeni anahtar-değer ETag için. `KeyValueDeleted`Silinen anahtar değerinin ETag 'i için.|
+> |Data. Key|string|Değiştirilen veya silinen anahtar-değer anahtarı.|
+> |Data. Label|string|Değiştirilen veya silinen anahtar-değer etiketi.|
+> |Data. ETag|string|`KeyValueModified`Yeni anahtar-değer ETag için. `KeyValueDeleted`Silinen anahtar değerinin ETag 'i için.|
 
 KeyValueModified olayına bir örnek aşağıda verilmiştir:
 ```json
@@ -87,4 +87,4 @@ Uygulama yapılandırma olaylarını işleyen uygulamalar aşağıdaki önerilen
 Event Grid hakkında daha fazla bilgi edinin ve Azure uygulama yapılandırma olaylarına bir deneme hakkı verin:
 
 - [Event Grid Hakkında](../event-grid/overview.md)
-- [Azure uygulama yapılandırma olaylarını özel bir Web uç noktasına yönlendirme](./howto-app-configuration-event.md)
+- [Veri değişikliği bildirimleri için Event Grid kullanma](./howto-app-configuration-event.md)

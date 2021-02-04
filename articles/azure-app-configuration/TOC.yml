@@ -122,7 +122,7 @@
       href: howto-import-export-data.md
     - name: Anahtar değerleri için JSON içerik türü kullanma
       href: howto-leverage-json-content-type.md
-    - name: Olayları özel bir uç noktaya yönlendirme
+    - name: Veri değişikliği bildirimleri için Event Grid kullanma
       href: howto-app-configuration-event.md
     - name: Yapılandırma deposunu otomatik olarak yedekleme
       href: howto-backup-config-store.md

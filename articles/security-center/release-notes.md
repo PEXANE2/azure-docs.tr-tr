@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/03/2021
+ms.date: 02/04/2021
 ms.author: memildin
-ms.openlocfilehash: cdc29f89307a986b2d71604ca495eac45458632b
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: fe031fa6de86b8059ba175fc4e1df6385ca7e796
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99526628"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99551035"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure Güvenlik Merkezi 'ndeki yenilikler nelerdir?
 
@@ -37,7 +37,8 @@ Güvenlik Merkezi 'ne yakında çıkacak *planlı* değişiklikler hakkında bil
 
 - [Kubernetes iş yükü koruma önerileri genel kullanıma sunuldu (GA)](#kubernetes-workload-protection-recommendations-released-for-general-availability-ga)
 - [Öneri ayrıntıları sayfasından ilkeye doğrudan bağlantı](#direct-link-to-policy-from-recommendation-details-page)
-- [SQL veri sınıflandırması önerisi artık güvenli puanınızı etkilemiyor](#sql-data-classification-recommendation-no-longer-affect-your-secure-score)
+- [SQL veri sınıflandırması önerisi artık güvenli puanınızı etkilemesiz](#sql-data-classification-recommendation-no-longer-affects-your-secure-score)
+- [İş akışı tahminleri, mevzuat uyumluluk değerlendirmelerinde (Önizleme) yapılan değişikliklerle tetiklenebilir](#workflow-automations-can-be-triggered-by-changes-to-regulatory-compliance-assessments-preview)
 
 ### <a name="kubernetes-workload-protection-recommendations-released-for-general-availability-ga"></a>Kubernetes iş yükü koruma önerileri genel kullanıma sunuldu (GA)
 
@@ -63,15 +64,21 @@ Bir önerinin ayrıntılarını gözden geçirirken genellikle temel alınan ilk
 
 İlke tanımını görüntülemek ve değerlendirme mantığını gözden geçirmek için bu bağlantıyı kullanın. 
 
-[Güvenlik önerileri başvuru kılavuzumuzdaki](recommendations-reference.md)önerilerin listesini gözden geçiriyorsunuz, Ayrıca bu bağlantıları ilke tanımı sayfalarına da görürsünüz:
+[Güvenlik önerileri başvuru kılavuzumuzdaki](recommendations-reference.md)önerilerin listesini gözden geçiriyorsunuz, ayrıca ilke tanımı sayfalarına bağlantılar da görürsünüz:
 
-:::image type="content" source="media/release-notes/view-policy-definition-from-documentation.png" alt-text="Belirli bir ilke için Azure Ilke sayfasına doğrudan Azure Güvenlik Merkezi öneriler başvuru sayfasından erişme":::
+:::image type="content" source="media/release-notes/view-policy-definition-from-documentation.png" alt-text="Belirli bir ilke için Azure Ilke sayfasına doğrudan Azure Güvenlik Merkezi öneriler başvuru sayfasından erişme" lightbox="media/release-notes/view-policy-definition-from-documentation.png":::
 
 
-### <a name="sql-data-classification-recommendation-no-longer-affect-your-secure-score"></a>SQL veri sınıflandırması önerisi artık güvenli puanınızı etkilemiyor
+### <a name="sql-data-classification-recommendation-no-longer-affects-your-secure-score"></a>SQL veri sınıflandırması önerisi artık güvenli puanınızı etkilemesiz
 
 **SQL veritabanlarınızdaki önerinin hassas verileri** , artık güvenli puanınızı etkilememelidir. Bu, denetim artık 0 ' ın güvenli bir puan değerine sahip olması için **veri sınıflandırması** güvenlik denetimindeki tek öneriden oluşur.
 
+
+### <a name="workflow-automations-can-be-triggered-by-changes-to-regulatory-compliance-assessments-preview"></a>İş akışı tahminleri, mevzuat uyumluluk değerlendirmelerinde (Önizleme) yapılan değişikliklerle tetiklenebilir
+
+İş akışı otomasyonuna yönelik tetikleyici seçeneklerine üçüncü bir veri türü ekledik: mevzuat uyumluluk değerlendirmelerinde yapılan değişiklikler.
+
+:::image type="content" source="media/release-notes/regulatory-compliance-triggers-workflow-automation.png" alt-text="Bir iş akışı Otomasyonu tetiklemek için mevzuat uyumluluk değerlendirmelerinde yapılan değişiklikleri kullanma" lightbox="media/release-notes/regulatory-compliance-triggers-workflow-automation.png":::
 
 
 ## <a name="january-2021"></a>Ocak 2021
@@ -111,7 +118,7 @@ Mevcut öneriler etkilenmemiştir ve kıyaslama arttıkça, değişiklikler otom
 Daha fazla bilgi edinmek için aşağıdaki sayfalara bakın:
 
 - [Azure Güvenlik kıyaslaması hakkında daha fazla bilgi](../security/benchmarks/introduction.md)
-- [Yasal uyumluluk panonuzda standartlar kümesini özelleştirme](update-regulatory-compliance-packages.md)
+- [Yasal uyumluluk panonuzdaki standartlar kümesini özelleştirme](update-regulatory-compliance-packages.md)
 
 ### <a name="vulnerability-assessment-for-on-premise-and-multi-cloud-machines-is-released-for-general-availability-ga"></a>Şirket içi ve çoklu bulut makinelerinde güvenlik açığı değerlendirmesi, genel kullanıma sunuldu (GA)
 
@@ -161,7 +168,7 @@ Alt etki alanı kuruluşları, kuruluşlar için ortak ve yüksek öneme sahip b
 
 Alt etki alanı cılar, tehdit aktörlerini bir kuruluşun etki alanı için tasarlanan trafiği kötü amaçlı etkinlik gerçekleştiren bir siteye yeniden yönlendirmek üzere etkinleştirir.
 
-App Service için Azure Defender, artık bir App Service Web sitesi kullanımdan kalkdığı zaman DNS girdilerini algılar. Bu, DNS girişinin var olmayan bir kaynağa işaret ettiği ve Web sitenizin ele alındığı bir alt etki alanıyla güvenlik açığının olduğu bir çalışmadır. Bu korumalar, etki alanlarınızın Azure DNS veya dış etki alanı kaydedicisi ile yönetilip yönetilmediği ve hem Windows hem de Linux üzerinde App Service App Service için geçerlidir.
+App Service için Azure Defender, artık bir App Service Web sitesi kullanımdan kalkdığı zaman DNS girdilerini algılar. Bu, DNS girişinin var olmayan bir kaynağa işaret ettiği veya Web sitenizin ele alındığı bir alt etki alanıyla güvenlik açığının olduğu bir çalışmadır. Bu korumalar, etki alanlarınızın Azure DNS veya dış etki alanı kaydedicisi ile yönetilip yönetilmediği ve hem Windows hem de Linux üzerinde App Service App Service için geçerlidir.
 
 Daha fazla bilgi edinin:
 

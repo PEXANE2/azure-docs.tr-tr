@@ -6,17 +6,20 @@ ms.author: viseshag
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 11/16/2020
-ms.openlocfilehash: 0d365787ea3603ef0adb8ad0b48bef9792ffb003
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.date: 02/03/2021
+ms.openlocfilehash: 72efcacf20b0d67c9d6a8255426a09f9813f17b4
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96553658"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99550507"
 ---
 # <a name="create-and-manage-a-self-hosted-integration-runtime"></a>Şirket içinde barındırılan tümleştirme çalışma zamanı oluşturma ve yönetme
 
-Bu makalede veri kaynaklarını taramak için şirket içinde barındırılan tümleştirme çalışma zamanının (SHıR) nasıl oluşturulacağı ve yönetileceği açıklanmaktadır.
+Bu makalede, Azure purview 'da veri kaynaklarını taramanızı sağlayan şirket içinde barındırılan bir tümleştirme çalışma zamanının (SHıR) nasıl oluşturulacağı ve yönetileceği açıklanmaktadır.
+
+> [!NOTE]
+> Purview Integration Runtime aynı makinede bir Azure SYNAPSE Analytics veya Azure Data Factory Integration Runtime paylaştırılamaz. Ayrılmış bir makineye yüklenmesi gerekir.
 
 ## <a name="create-a-self-hosted-integration-runtime"></a>Şirket içinde barındırılan tümleştirme çalışma zamanı oluşturma
 
@@ -24,35 +27,35 @@ Bu makalede veri kaynaklarını taramak için şirket içinde barındırılan t�
 
 2. Sol bölmedeki **kaynaklar ve tarama** ' nın altında tümleştirme çalışma **zamanları**' nı seçin ve **+ Yeni**' yi seçin.
 
-    :::image type="content" source="media/manage-integration-runtimes/select-integration-runtimes.png" alt-text="IR 'ye tıklayın.":::
+   :::image type="content" source="media/manage-integration-runtimes/select-integration-runtimes.png" alt-text="IR 'ye tıklayın.":::
 
 3. **Tümleştirme çalışma zamanı kurulumu** sayfasında, BIR Self-Hosted IR oluşturmak için **Şirket içinde barındırılan** ' i seçin ve ardından **devam**' ı seçin.
 
-    :::image type="content" source="media/manage-integration-runtimes/select-self-hosted-ir.png" alt-text="Yeni bir dolgu oluşturun.":::
+   :::image type="content" source="media/manage-integration-runtimes/select-self-hosted-ir.png" alt-text="Yeni bir dolgu oluşturun.":::
 
 4. IR 'niz için bir ad girin ve Oluştur ' u seçin.
 
 5. **Integration Runtime ayarları** sayfasında, **el ile kurulum** bölümünde yer alan adımları izleyin. Tümleştirme çalışma zamanını, yüklemeyi planladığınız bir VM 'ye veya makineye indirme sitesinden indirmeniz gerekir.
 
-    :::image type="content" source="media/manage-integration-runtimes/integration-runtime-settings.png" alt-text="Anahtar al":::
+   :::image type="content" source="media/manage-integration-runtimes/integration-runtime-settings.png" alt-text="Anahtar al":::
 
-    a. Kimlik doğrulama anahtarını kopyalayıp yapıştırın.
-        
-    b. Şirket içinde barındırılan tümleştirme çalışma zamanını yerel bir Windows makinesinde [Azure Data Factory Integration Runtime](https://www.microsoft.com/download/details.aspx?id=39717) indirin. Yükleyiciyi çalıştırın.
-        
-    c. **Kayıt Integration Runtime (Şirket içinde barındırılan)** sayfasında, daha önce kaydettiğiniz 2 anahtardan birini yapıştırın ve **Kaydet**' i seçin.
+   - Kimlik doğrulama anahtarını kopyalayıp yapıştırın.
 
-    :::image type="content" source="media/manage-integration-runtimes/register-integration-runtime.png" alt-text="giriş anahtarı.":::
+   - Şirket içinde barındırılan tümleştirme çalışma zamanını yerel bir Windows makinesinde [Azure Data Factory Integration Runtime](https://www.microsoft.com/download/details.aspx?id=39717) indirin. Yükleyiciyi çalıştırın.
 
-    d. **Yeni Integration Runtime (Şirket içinde barındırılan) düğümü** sayfasında **son**' u seçin.
+   - **Kayıt Integration Runtime (Şirket içinde barındırılan)** sayfasında, daha önce kaydettiğiniz iki anahtardan birini yapıştırın ve **Kaydet**' i seçin.
+
+     :::image type="content" source="media/manage-integration-runtimes/register-integration-runtime.png" alt-text="giriş anahtarı.":::
+
+   - **Yeni Integration Runtime (Şirket içinde barındırılan) düğümü** sayfasında **son**' u seçin.
 
 6. Şirket içinde barındırılan tümleştirme çalışma zamanı başarıyla kaydedildikten sonra aşağıdaki pencereyi görürsünüz:
 
-    :::image type="content" source="media/manage-integration-runtimes/successfully-registered.png" alt-text="başarıyla kaydedildi.":::
+   :::image type="content" source="media/manage-integration-runtimes/successfully-registered.png" alt-text="başarıyla kaydedildi.":::
 
 ## <a name="manage-a-self-hosted-integration-runtime"></a>Şirket içinde barındırılan tümleştirme çalışma zamanını yönetme
 
-Şirket içinde barındırılan tümleştirme çalışma zamanını, **yönetim merkezindeki** **tümleştirme çalışma zamanları** ' na giderek, IR ' yi seçip Düzenle ' ye tıklayarak düzenleyebilirsiniz. Artık açıklamayı güncelleştirebilir, anahtarı kopyalayabilir veya yeni anahtarları oluşturabilirsiniz.
+Şirket içinde barındırılan tümleştirme çalışma zamanını, **yönetim merkezindeki** **tümleştirme çalışma zamanları** ' na giderek, IR ' yi seçip Düzenle ' ye tıklayarak düzenleyebilirsiniz. Artık açıklamayı güncelleştirebilir, anahtarı kopyalayabilir veya yeni anahtarları yeniden oluşturabilirsiniz.
 
 :::image type="content" source="media/manage-integration-runtimes/edit-integration-runtime.png" alt-text="IR 'yi düzenleyin.":::
 
@@ -62,4 +65,4 @@ Bu makalede veri kaynaklarını taramak için şirket içinde barındırılan t�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Taramaların silinen varlıkları algılaması](concept-detect-deleted-assets.md)
+[Taramalar silinen varlıkları nasıl algılar?](concept-detect-deleted-assets.md)

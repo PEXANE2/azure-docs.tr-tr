@@ -5,18 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 04/11/2017
+ms.date: 02/03/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
-ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7cbcdb4b947e4b45a5473dc0f9f0252b5ad1d5c
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 8160859bb782ee8ffc4fef5ee03b61b6f54be1bb
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92442057"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99548670"
 ---
 # <a name="azure-active-directory-b2b-collaboration-api-and-customization"></a>Azure Active Directory B2B işbirliği API 'SI ve özelleştirmesi
 
@@ -67,6 +66,16 @@ API aşağıdaki özellikleri sunar:
     "invitedUserType": "Member"
     ```
 
+## <a name="determine-if-a-user-was-already-invited-to-your-directory"></a>Bir kullanıcının dizininize zaten davet edilip edilmadığını belirleme
+
+Kaynak kiracınızda bir kullanıcının zaten mevcut olup olmadığını anlamak için davet API 'sini kullanabilirsiniz. Bu, bir kullanıcıyı davet etmek için davet API 'sini kullanan bir uygulama geliştirirken yararlı olabilir. Kullanıcı kaynak dizininizde zaten mevcutsa, bir davet almaz, bu nedenle önce e-postanın UPN veya diğer oturum açma özelliği olarak mevcut olup olmadığını anlamak için bir sorgu çalıştırabilirsiniz.
+
+1. Kullanıcının e-posta etki alanının, kaynak kiracının doğrulanmış etki alanının parçası olmadığından emin olun.
+2. Kaynak kiracısında, {0} davet ettiğiniz e-posta adresi olan aşağıdaki Kullanıcı Al sorgusunu kullanın:
+
+   ```
+   “userPrincipalName eq '{0}' or mail eq '{0}' or proxyAddresses/any(x:x eq 'SMTP:{0}') or signInNames/any(x:x eq '{0}') or otherMails/any(x:x eq '{0}')"
+   ```
 
 ## <a name="authorization-model"></a>Yetkilendirme modeli
 
@@ -102,7 +111,7 @@ Aşağıdaki seçenekleri kullanabilirsiniz:
 
 Bir dış Kullanıcı daveti gönderdikten sonra, bunu kabul edip etmediğini görmek için **Get-AzureADUser** cmdlet 'ini kullanabilirsiniz. Bir dış kullanıcıya Davetiye gönderildiğinde Get-AzureADUser aşağıdaki özellikleri doldurulur:
 
-* **UserState** , davetin **Pendingkabulünü** veya **kabul**edilip edilmediğini belirtir.
+* **UserState** , davetin **Pendingkabulünü** veya **kabul** edilip edilmediğini belirtir.
 * **Userstatechangedon** , **userState** özelliğindeki en son değişikliğin zaman damgasını gösterir.
 
 Sonuçları **userState**'e göre filtrelemek için **filtre** seçeneğini kullanabilirsiniz. Aşağıdaki örnekte, yalnızca bekleyen bir daveti olan kullanıcıları göstermek için sonuçların nasıl filtreleneceği gösterilmektedir. Örnek, görüntülenecek özellikleri belirtmenize imkan tanıyan **Format-List** seçeneğini de gösterir. 

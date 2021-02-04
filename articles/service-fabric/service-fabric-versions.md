@@ -3,12 +3,12 @@ title: Azure Service Fabric küme sürümünüzü yükseltme
 description: Service Fabric ekibi blogundan en yeni sürümlere bağlantı dahil olmak üzere Azure Service Fabric 'deki küme sürümleri hakkında bilgi edinin.
 ms.topic: troubleshooting
 ms.date: 06/15/2020
-ms.openlocfilehash: a99b38a33a5bb83345898769b466ce0cab0a4d4d
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 5abfe83fcb68fcab7df22f1fd266cc695f2b9c80
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98918119"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99549077"
 ---
 # <a name="upgrade-your-azure-service-fabric-cluster-version"></a>Azure Service Fabric küme sürümünüzü yükseltme
 
@@ -40,7 +40,7 @@ Destek planınız varsa ve teknik yardıma ihtiyacınız varsa Azure destek kana
 Bu değişiklik ile ilgili kapalı kalma süresini veya işlevsellik kaybını engellemek için desteklenen bir Service Fabric sürümüne yükseltin. Ortamınızdaki sorunları engellemek için kümelerinizin en az aşağıdaki sürümlerde çalıştığından emin olun.
 
 > [!Note]
-> Tüm yayınlanmış 7,2 sürümleri, gerekli değişiklikleri içerir.
+> **Tüm yayınlanmış 7,2 sürümleri, gerekli değişiklikleri içerir**.
   
   | İşletim Sistemi | Kümedeki geçerli Service Fabric çalışma zamanı | CU/Patch yayını |
   | --- | --- |--- |
@@ -75,9 +75,15 @@ Kapalı kalma süresini veya işlevsellik kaybını engellemek için, kümelerin
 Tablodaki Service Fabric sürümleri, işlevsellik kaybını engellemek için gereken değişiklikleri içerir. Bu sürümlerden birini kullandığınızdan emin olun.  
 
 > [!Note]
-> 7,2 'in tüm sürüm sürümleri, gerekli değişiklikleri içerir.
+> **6,5 sürümü üzerinde çalışan Azure Service Fabric kümeleri, küme üzerinde işlevsellik kaybını önlemek için infrastucuture değişikliğinden önce aynı anda birden çok yükseltme gerçekleştirmelidir**. 
+>   -   1. 7.0.466 sürümüne yükseltin. **Windows kapsayıcıları özelliği etkinleştirilmiş Windows işletim sistemini çalıştıran kümeler bu ara sürümde olamaz. Aşağıda bir sonraki adım (ii) gerçekleştirmeleri gerekir. ör.  Hizmet kesintilerini önlemek için daha güvenli ve uyumlu bir şekilde yükseltme yapın**
+>   -   2. 7,0 * sürüm (7.0.478) veya aşağıda listelenen en yüksek sürüm sürümlerinde bulunan en son şikayet sürümlerine yükseltin.
 
-  | İşletim Sistemi | Kümedeki geçerli Service Fabric çalışma zamanı | CU/Patch yayını |
+
+> [!Note]
+> **7,2 'In tüm sürüm sürümleri, gerekli değişiklikleri içerir**.
+
+ | İşletim Sistemi | Kümedeki geçerli Service Fabric çalışma zamanı | CU/Patch yayını |
   | --- | --- |--- |
   | Windows | 7,0. * | 7.0.478.9590 |
   | Windows | 7,1. * | 7.1.503.9590 |

@@ -4,8 +4,7 @@ description: Makale, sızma testi sürecine genel bir bakış ve Azure altyapıs
 services: security
 documentationcenter: na
 author: TerryLanfear
-manager: barbkess
-editor: TomSh
+manager: rkarlin
 ms.assetid: 695d918c-a9ac-4eba-8692-af4526734ccc
 ms.service: security
 ms.subservice: security-fundamentals
@@ -13,22 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/24/2020
+ms.date: 02/03/2021
 ms.author: terrylan
-ms.openlocfilehash: 84229ce3562f9cdcc4b55704eaa4f3b891a43d75
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: 9f65133f622c71189f35a1533e278ca09ab02085
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97968951"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99550210"
 ---
 # <a name="penetration-testing"></a>Sızma testi
 
 Uygulama testi ve dağıtımı için Azure kullanmanın avantajlarından biri, oluşturulan ortamları hızlıca almanızı sağlar. Kendi şirket içi donanımlarınızı talep eden, alma ve "izleme ve yığınlama" konusunda endişelenmeniz gerekmez.
 
 Ortamları hızlı bir şekilde oluşturmak harika, ancak yine de normal güvenlik süresi ile devam ettiğinden emin olmanız gerekir. Büyük olasılıkla yapmak istediğiniz şeylerden biri, Azure 'da dağıttığınız uygulamaları test ediyor.
-
-Microsoft 'un [Azure ortamımızın sızma testi](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)gerçekleştirdiğini zaten biliyorbilirsiniz. Bu test Azure geliştirmelerini yönlendirmeye yardımcı olur.
 
 Uygulamanızı sizin için sızma testi gerçekleştirmedik, ancak kendi uygulamalarınızda test yapmanız gerektiğini ve istediğinizi anladık. Bu iyi bir şeydir çünkü uygulamalarınızın güvenliğini geliştirmenizde tüm Azure ekosisteminin daha güvenli hale getirilmesine yardımcı olursunuz.
 

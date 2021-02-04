@@ -11,12 +11,12 @@ ms.author: sacartac
 ms.reviewer: nibaccam
 ms.date: 12/21/2020
 ms.custom: automl
-ms.openlocfilehash: ff9bd328dd98fbd614a3bb63a1edddc2027d97b2
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: f0bb354bce0c4696f60e2be5c6186760518c7431
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879789"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99549194"
 ---
 # <a name="tutorial-create-a-classification-model-with-automated-ml-in-azure-machine-learning"></a>Öğretici: Azure Machine Learning otomatik ML ile sınıflandırma modeli oluşturma
 
@@ -102,8 +102,8 @@ Denemenizi yapılandırmadan önce, veri dosyanızı Azure Machine Learning veri
         Sütun başlıkları| Veri kümesinin üst bilgilerinin (varsa) nasıl değerlendirileceğini gösterir.| Tüm dosyaların aynı üst bilgileri var
         Satırları atla | Veri kümesinde kaç tane, ne varsa satırların atlandığını gösterir.| Yok
 
-    1. **Şema** formu, bu deneme için verilerinizin daha fazla yapılandırılmasını sağlar. Bu örnekte, hiçbir seçim yapmayız. **İleri**’yi seçin.
-
+    1. **Şema** formu, bu deneme için verilerinizin daha fazla yapılandırılmasını sağlar. Bu örnekte, **day_of_week** için geçiş anahtarını seçin, bu nedenle dahil edilmez. **İleri**’yi seçin.
+         ![Şema formu](./media/tutorial-first-experiment-automated-ml/schema-tab-config.gif)
     1. **Ayrıntıları Onayla** formunda, bilgilerin daha önce **temel bilgiler, veri deposu ve dosya seçimi** ve **Ayarlar ve önizleme** formlarında doldurulduğu ile eşleştiğini doğrulayın.
     
     1. Veri kümenizin oluşturulmasını gerçekleştirmek için **Oluştur** ' u seçin.
@@ -170,12 +170,6 @@ Verilerinizi yükleyip yapılandırdıktan sonra, denemenizin kurulumunu yapabil
         
         **Kaydet**’i seçin.
     
-    1. **Görünüm özelliği ayarları**' nı seçin. Bu örnekte, **day_of_week** özelliği için geçiş anahtarını seçin. bu nedenle, bu denemede uygun hale getirme için dahil edilmez.
-
-        ![Korleştirme seçimi](./media/tutorial-first-experiment-automated-ml/featurization-setting-config.gif)   
- 
-        **Kaydet**’i seçin.
-
 1. Denemeyi çalıştırmak için **son** ' u seçin. **Çalışma ayrıntısı** ekranı, deneme hazırlığı başladığında en üstteki **çalıştırma durumuyla** birlikte açılır. Deneme ilerledikçe bu durum güncellenir. Deneme larınızın durumunu bilgilendirmek için Ayrıca, Studio 'nun sağ üst köşesinde bildirimler görüntülenir.
 
 >[!IMPORTANT]

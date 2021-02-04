@@ -3,12 +3,12 @@ title: SQL Server veritabanı yedeklemesi sorunlarını giderme
 description: Azure Backup ile Azure VM 'lerde çalışan SQL Server veritabanlarının yedeklenmesi için sorun giderme bilgileri.
 ms.topic: troubleshooting
 ms.date: 06/18/2019
-ms.openlocfilehash: d502a4188b4f9f383188804f86abbb9a6d05d146
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: 1e4ee2bdcd0826b655aa71d83674ff1e0c06a8cb
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99429475"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99549907"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>Azure Backup kullanarak SQL Server veritabanı yedeklemesi sorunlarını giderme
 
@@ -202,6 +202,13 @@ Sağlıklı SQL örneklerinde geri yükleme tetiklemek isterseniz, aşağıdaki 
 |---|---|---|
 Kasa, 24 saatlik bir yayılmaya izin verilen bu işlemler için maksimum sınırına ulaştığından, işlem engellendi. | 24 saatin bir sınırında bir işlem için izin verilen en yüksek sınıra ulaştıysanız, bu hata görüntülenir. Bu hata genellikle değiştirme ilkesi veya otomatik koruma gibi ölçekli işlemler olduğunda görüntülenir. Clouddosabsolutelimitto 'ın aksine bu durumu çözmek için pek çok şey yoktur. Aslında Azure Backup hizmet, söz konusu tüm öğeler için işlemleri dahili olarak yeniden dener.<br> Örneğin: bir ilkeyle korunan çok sayıda veri kaynağı varsa ve bu ilkeyi değiştirmeye çalışırsanız, korumalı öğelerin her biri için koruma işlerini yapılandırma tetikleyecektir ve bazen bu gibi işlemler için izin verilen en yüksek sınıra ulaşabiliriz.| Azure Backup hizmeti, 24 saat sonra bu işlemi otomatik olarak yeniden deneyecek.
 
+### <a name="workloadextensionnotreachable"></a>WorkloadExtensionNotReachable
+
+| Hata iletisi | Olası nedenler | Önerilen eylem |
+|---|---|---|
+AzureBackup iş yükü uzantısı işlemi başarısız oldu. | VM kapatılıyor (veya) sanal makine, internet bağlantısı sorunları nedeniyle Azure Backup hizmetine başvuramayacak.| -Lütfen VM 'nin çalışır olduğundan ve internet bağlantısına sahip olduğundan emin olun.<br>- [SQL Server VM uzantıyı yeniden kaydedin](https://docs.microsoft.com/azure/backup/manage-monitor-sql-database-backup#re-register-extension-on-the-sql-server-vm).
+
+
 ### <a name="usererrorvminternetconnectivityissue"></a>UserErrorVMInternetConnectivityIssue
 
 | Hata iletisi | Olası nedenler | Önerilen eylem |
@@ -212,7 +219,7 @@ VM, internet bağlantısı sorunları nedeniyle Azure Backup hizmetine başvuram
 
 Yeniden kaydetme işlemini tetiklemeniz için aşağıdaki belirtilerden bir veya daha fazlasını denetleyin:
 
-- Tüm işlemler (yedekleme, geri yükleme ve yapılandırma gibi) VM 'de şu hata kodlarından biriyle başarısız oluyor: **Workloadextensionnoterişilebilen**, **usererrorworkloadextensionnotyüklü**, **workloadextensionnotsun,** **workloadextensiondidntdequeuemsg**.
+- Tüm işlemler (yedekleme, geri yükleme ve yapılandırma gibi) VM 'de şu hata kodlarından biriyle başarısız oluyor: **[Workloadextensionnoterişilebilen](#workloadextensionnotreachable)**, **usererrorworkloadextensionnotyüklü**, **workloadextensionnotsun,** **workloadextensiondidntdequeuemsg**.
 - Yedekleme öğesi için **yedekleme durum** alanı **erişilebilir değil** olarak gösteriyorsa, aynı durum oluşmasına neden olabilecek diğer tüm nedenleri inceleyin:
 
   - VM 'de yedeklemeyle ilgili işlemler gerçekleştirme izninin bulunmaması.

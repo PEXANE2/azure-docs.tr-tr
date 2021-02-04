@@ -13,15 +13,15 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 01/23/2021
+ms.date: 02/03/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 01c6a2eb53e82965dd96deaa1a09afb1e70dda24
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.openlocfilehash: 48d1c04e59d316ac19000f5b890c0cb1c96fb213
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2021
-ms.locfileid: "98746756"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99549448"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>SAP HANA Azure sanal makine depolama alanı yapılandırmaları
 
@@ -81,7 +81,13 @@ Ayrıntılar arasında okuma, bu işlevin kullanılmasıyla ilgili, birim Yönet
 
 
 ## <a name="linux-io-scheduler-mode"></a>Linux g/ç zamanlayıcı modu
-Linux 'ta birkaç farklı g/ç zamanlama modu vardır. Linux satıcıları ve SAP aracılığıyla sık görülen öneriler, disk birimleri için g/ç Zamanlayıcı modunu, **MQ-son tarih** veya **Kyber** modundayken Noop (multiqueue) **veya for (** multiqueue) moduna yeniden **yapılandırmadır** . [SAP Note #1984787](https://launchpad.support.sap.com/#/notes/1984787)ayrıntılara başvurulur. 
+Linux 'ta birkaç farklı g/ç zamanlama modu vardır. Linux satıcıları ve SAP aracılığıyla sık görülen öneriler, disk birimleri için g/ç Zamanlayıcı modunu, **MQ-son** veya **Kyber** modundan, henüz SLES sapayarla profilleri tarafından yapılmadıysa **noop** (multiqueue) veya **hiçbiri için yok** (multiqueue) moduna yeniden yapılandırmadır. Ayrıntılara şu şekilde başvurulur: 
+
+- [SAP Note #1984787](https://launchpad.support.sap.com/#/notes/1984787)
+- [SAP Note #2578899](https://launchpad.support.sap.com/#/notes/2578899) 
+- [SLES 12 SP4'TE NoOp ayarı ile ilgili sorun](https://www.suse.com/support/kb/doc/?id=000019547)
+
+Red hat üzerinde, farklı SAP uygulamaları için belirli ayar profilleri tarafından belirlenen ayarları bırakın.
 
 
 ## <a name="solutions-with-premium-storage-and-azure-write-accelerator-for-azure-m-series-virtual-machines"></a>Azure n serisi sanal makineler için Premium Depolama ve Azure Yazma Hızlandırıcısı çözümleri

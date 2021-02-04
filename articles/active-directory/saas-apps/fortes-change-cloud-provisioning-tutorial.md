@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2021
 ms.author: Zhchia
-ms.openlocfilehash: 89e64b6e8018fafb22820e8594bc2b3c888bb04a
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 43b783d9462205b01d3ac4de0c5779fdc9864470
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98732172"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99550467"
 ---
 # <a name="tutorial-configure-fortes-change-cloud-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için değişiklik bulutunu yapılandırma
 
@@ -34,7 +34,7 @@ Bu öğretici, otomatik Kullanıcı sağlamayı yapılandırmak için hem deği�
 > * Azure AD ve Ktes değişiklik bulutu arasında kullanıcı özniteliklerini eşitlenmiş olarak tut
 > * Değişiklik bulutu için [Çoklu oturum açma](fortes-change-cloud-tutorial.md) (önerilir)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
@@ -50,11 +50,11 @@ Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu
 
 ## <a name="step-2-configure-fortes-change-cloud-to-support-provisioning-with-azure-ad"></a>Adım 2. Azure AD ile sağlamayı destekleyecek şekilde bulutu değişiklik bulutunu yapılandırma
 
-1. Değişiklik bulutu 'nı sürdürmek için Yönetici hesabınızla oturum açın. **Ayarlar simgesine** tıklayın ve ardından **SCIM ayarları**' na gidin.
+1. Değişiklik bulutu 'nı sürdürmek için Yönetici hesabınızla oturum açın. **Ayarlar simgesine** tıklayın ve ardından **Kullanıcı sağlama (SCIM)** bölümüne gidin.
 
     [![Ktes değişiklik bulutu SCIM ayarı ](media/fortes-change-cloud-provisioning-tutorial/scim-settings.png)](media/fortes-change-cloud-provisioning-tutorial/scim-settings.png#lightbox)
 
-2. Yeni pencerede, **birincil belirteci** kopyalayın ve kaydedin. Bu değer, Azure portal değişiklik bulutu uygulamanızın sağlama sekmesinde bulunan gizli dizi belirteci alanına girilecektir.
+2. Yeni pencerede, **kiracı URL 'sini** ve **birincil belirteci** kopyalayın ve kaydedin. Kiracı URL 'SI, **kiracı URL 'si** * alanına, birincil belirteç Ise Azure Portal bulut uygulamanızın sağlama sekmesinde bulunan **gizli** * belirteç alanına girilir.
      
       [![Ktes değişiklik bulutu birincil belirteci](media/fortes-change-cloud-provisioning-tutorial/primary-token.png)](media/fortes-change-cloud-provisioning-tutorial/primary-token.png#lightbox)
 

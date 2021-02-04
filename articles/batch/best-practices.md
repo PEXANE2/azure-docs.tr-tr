@@ -1,14 +1,14 @@
 ---
 title: En iyi uygulamalar
 description: Azure Batch çözümlerinizi geliştirmek için en iyi uygulamaları ve yararlı ipuçlarını öğrenin.
-ms.date: 12/18/2020
+ms.date: 02/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: 95dca907f9380de29bd3c9b0e52b120c9114b5ee
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 278aae410af536a5cc41e55dabf1dd71de04151b
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98732420"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99550870"
 ---
 # <a name="azure-batch-best-practices"></a>En iyi Azure Batch uygulamalar
 
@@ -169,6 +169,8 @@ Düğüm üzerinde çalışan bir düğümün veya görevlerin davranışını i
 
 Kullanıcı aboneliği modu Batch hesaplarında, özellikle görevler uzun süre çalışıyorsa, otomatik işletim sistemi yükseltmeleri görev ilerlemesini kesintiye uğratabilir. [Idempotent görevlerinin oluşturulması](#build-durable-tasks) , bu kesintiler nedeniyle oluşan hataları azaltmaya yardımcı olabilir. Ayrıca, [görevlerin çalıştırılmamakta olması beklenmediği durumlar için işletim sistemi görüntüsü yükseltmelerini zamanlamayı](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md#manually-trigger-os-image-upgrades)öneririz.
 
+Windows havuzları için `enableAutomaticUpdates` Varsayılan olarak olarak ayarlanır `true` . Otomatik güncelleştirmelere izin verilmesi önerilir, ancak `false` bir işletim sistemi güncelleştirmesinin beklenmedik şekilde gerçekleşmediğinden emin olmanız gerekiyorsa bu değeri olarak ayarlayabilirsiniz.
+
 ## <a name="isolation-security"></a>Yalıtım güvenliği
 
 Yalıtım amaçları doğrultusunda, senaryonuz işlerin birbirinden yalıtılması gerekiyorsa, bunları ayrı havuzlarda bulundurarak bunu yapın. Havuz, toplu Işteki güvenlik yalıtımı sınırıdır ve varsayılan olarak, iki havuz görünür değildir veya birbirleriyle iletişim kuramaz. Yalıtım yöntemi olarak ayrı Batch hesapları kullanmaktan kaçının.
@@ -189,8 +191,7 @@ Batch çözümlerinizde bağlantı ile ilgili aşağıdaki kılavuzu gözden ge�
 
 ### <a name="network-security-groups-nsgs-and-user-defined-routes-udrs"></a>Ağ güvenlik grupları (NSG 'ler) ve Kullanıcı tanımlı yollar (UDRs)
 
-[Bir sanal ağda Batch havuzlarını](batch-virtual-network.md)sağlarken, `BatchNodeManagement` hizmet etiketi, bağlantı noktaları, protokoller ve kuralın kullanımıyla ilgili yönergeleri yakından takip edin.
-Hizmet etiketinin kullanımı, temel alınan Batch hizmeti IP adresleri yerine kullanılması önemle önerilir. Bunun nedeni, IP adreslerinin zaman içinde değiştirebileceğinden kaynaklanır. Batch hizmeti IP adreslerini doğrudan kullanmak, Batch havuzlarınız için kararsızlığa, kesintilere veya kesintilere neden olabilir.
+[Bir sanal ağda Batch havuzlarını](batch-virtual-network.md)sağlarken, `BatchNodeManagement` hizmet etiketi, bağlantı noktaları, protokoller ve kuralın kullanımıyla ilgili yönergeleri yakından takip edin. Hizmet etiketinin kullanımı, temel alınan Batch hizmeti IP adresleri yerine kullanılması önemle önerilir. Bunun nedeni, IP adreslerinin zaman içinde değiştirebileceğinden kaynaklanır. Batch hizmeti IP adreslerini doğrudan kullanmak, Batch havuzlarınız için kararsızlığa, kesintilere veya kesintilere neden olabilir.
 
 Kullanıcı tanımlı yollar (UDRs) için, bu adresler zaman içinde değişdiklerinden, Batch hizmeti IP adreslerini düzenli aralıklarla bir şekilde güncelleştirmek için bir işlem yapıldığından emin olun. Batch hizmeti IP adresleri listesini edinme hakkında bilgi edinmek için bkz. [Şirket Içi hizmet etiketleri](../virtual-network/service-tags-overview.md). Batch hizmeti IP adresleri, `BatchNodeManagement` hizmet etiketiyle (veya Batch hesabı bölgesiyle eşleşen bölgesel değişkenle) ilişkilendirilir.
 

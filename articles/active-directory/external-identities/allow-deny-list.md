@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 07/15/2018
+ms.date: 02/03/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: sasubram
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0cc336781e9a55bbcb6c51677b01bfc402126f4a
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.openlocfilehash: bb5a785cba4a560fc15963363d4e5f6b811af97a
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99071909"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99548840"
 ---
 # <a name="allow-or-block-invitations-to-b2b-users-from-specific-organizations"></a>Belirli kuruluşlardan B2B kullanıcılarına gönderilen davetlere izin verme veya engelleme
 
@@ -27,7 +27,7 @@ Belirli kuruluşlardan B2B kullanıcılarına izin vermek veya bu kullanıcılar
 
 - Bir izin verilenler listesi ya da reddetme listesi oluşturabilirsiniz. Her iki liste türünü de ayarlayamazsınız. Varsayılan olarak, izin verilenler listesinde olmayan etki alanları Reddedilenler listesinde bulunur ve tam tersi de geçerlidir. 
 - Her kuruluş için yalnızca bir ilke oluşturabilirsiniz. İlkeyi daha fazla etki alanı içerecek şekilde güncelleştirebilir veya yeni bir tane oluşturmak için ilkeyi silebilirsiniz. 
-- İzin verilenler listesine veya reddetme listesine ekleyebileceğiniz etki alanı sayısı yalnızca ilkenin boyutuyla sınırlıdır. Tüm ilkenin en büyük boyutu 25 KB 'tır (25.000 karakter), bu da izin verilenler listesini veya reddetme listesini ve diğer özellikler için yapılandırılmış diğer parametreleri içerir.
+- İzin verilenler listesine veya reddetme listesine ekleyebileceğiniz etki alanı sayısı yalnızca ilkenin boyutuyla sınırlıdır. Bu sınır karakter sayısı için geçerlidir, böylece daha kısa etki alanları veya daha az daha uzun etki alanı olabilir. Tüm ilkenin en büyük boyutu 25 KB 'tır (25.000 karakter), bu da izin verilenler listesini veya reddetme listesini ve diğer özellikler için yapılandırılmış diğer parametreleri içerir.
 - Bu liste OneDrive Iş ve SharePoint Online izin/engelleme listelerinden bağımsız olarak çalışmaktadır. SharePoint Online 'da bireysel dosya paylaşımını kısıtlamak istiyorsanız, OneDrive Iş ve SharePoint Online için bir izin verme veya reddetme listesi ayarlamanız gerekir. Daha fazla bilgi için bkz. [SharePoint Online ve OneDrive iş 'Te kısıtlanmış etki alanları paylaşma](https://support.office.com/article/restricted-domains-sharing-in-sharepoint-online-and-onedrive-for-business-5d7589cd-0997-4a00-a2ba-2320ec49c4e9).
 - Liste, daveti zaten kullanan dış kullanıcılara uygulanmaz. Liste kurulduktan sonra liste uygulanır. Bir Kullanıcı daveti bekleme durumundaysa ve etki alanını engelleyen bir ilke ayarlarsanız, kullanıcının daveti kullanma girişimi başarısız olur.
 

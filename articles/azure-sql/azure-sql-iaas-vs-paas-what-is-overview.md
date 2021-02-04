@@ -12,21 +12,21 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 07/27/2020
-ms.openlocfilehash: 99703acc4965a38337a39fe23cc19cafddd1531d
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 7f267b4909817e89444883403bef6662771332ad
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791129"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99550887"
 ---
 # <a name="what-is-azure-sql"></a>Azure SQL nedir? 
 [!INCLUDE[appliesto-asf](includes/appliesto-asf.md)]
 
 Azure SQL, Azure bulutundaki SQL Server veritabanı altyapısını kullanan, yönetilen, güvenli ve akıllı ürünlerin bir ailesidir.
 
-- **Azure SQL veritabanı** : sunucusuz işlem içeren, akıllı, yönetilen bir veritabanı hizmetinde modern bulut uygulamalarını destekler. 
-- **Azure SQL yönetilen örneği** : SQL Server veritabanı altyapısı ile neredeyse %100 Özellik eşliği sayesinde mevcut SQL Server uygulamalarınızı, bir hizmet olarak, akıllı tam yönetilen bir örnek olarak ölçeklendirin. Buluta birçok geçiş için en iyi seçenektir.
-- **Azure VM 'lerinde SQL Server** : SQL Server iş yüklerinizi kolayca kaldırın ve %100 uyumluluk ve işletim sistemi düzeyinde erişim SQL Server koruyun. 
+- **Azure SQL veritabanı**: sunucusuz işlem içeren, akıllı, yönetilen bir veritabanı hizmetinde modern bulut uygulamalarını destekler. 
+- **Azure SQL yönetilen örneği**: SQL Server veritabanı altyapısı ile neredeyse %100 Özellik eşliği sayesinde mevcut SQL Server uygulamalarınızı, bir hizmet olarak, akıllı tam yönetilen bir örnek olarak ölçeklendirin. Buluta birçok geçiş için en iyi seçenektir.
+- **Azure VM 'lerinde SQL Server**: SQL Server iş yüklerinizi kolayca kaldırın ve %100 uyumluluk ve işletim sistemi düzeyinde erişim SQL Server koruyun. 
  
 Azure SQL tanıdık SQL Server altyapısından oluşturulmuştur. böylece uygulamaları kolayca geçirebilir ve öğrenolduğunuz araçları, dilleri ve kaynakları kullanmaya devam edebilirsiniz. Becerileriniz ve deneyiminiz buluta aktarılmalıdır, bu sayede zaten sahip olduğunuz değişikliklerle daha da fazlasını yapabilirsiniz. 
 
@@ -53,7 +53,7 @@ Veritabanlarınızı düzeltme, güncelleştirme ve yedekleme için daha fazla z
 
 Azure, verilerinizi tehditler açısından sürekli izler. Azure SQL ile şunları yapabilirsiniz:
 
-- Akıllı [Gelişmiş tehdit algılama](../security/fundamentals/threat-detection.md#advanced-threat-detection-features-other-azure-services) ve proaktif güvenlik açığı değerlendirme uyarıları sayesinde olası tehditleri gerçek zamanlı olarak düzeltin. 
+- Akıllı [Gelişmiş tehdit algılama](../security/fundamentals/threat-detection.md#threat-protection-features-other-azure-services) ve proaktif güvenlik açığı değerlendirme uyarıları sayesinde olası tehditleri gerçek zamanlı olarak düzeltin. 
 - T-SQL, kimlik doğrulama, ağ ve anahtar yönetimi dahil [yerleşik güvenlik denetimleriyle](https://azure.microsoft.com/overview/security/) sektör lideri, çok katmanlı koruma alın. 
 - Herhangi bir bulut veritabanı hizmetinin en kapsamlı [Uyumluluk](https://azure.microsoft.com/overview/trusted-cloud/compliance/) kapsamından yararlanın. 
 
@@ -128,7 +128,7 @@ Genel olarak, SQL veritabanı ve SQL yönetilen örneği, tek bir BT veya geliş
 Şu anda, hem **SQL veritabanı** hem de **SQL yönetilen örneği** bir hizmet olarak satılır ve çeşitli seçeneklerle ve çeşitli hizmet katmanlarında kullanılabilir ve her biri, seçtiğiniz hizmet katmanına ve işlem boyutuna bağlı olarak sabit bir fiyata faturalandırılır. Desteklenen geçerli hizmet katmanları, işlem boyutları ve depolama miktarları hakkında en son bilgiler için bkz. SQL [veritabanı Için DTU tabanlı satın alma modeli](database/service-tiers-dtu.md) ve [hem SQL VERITABANı hem de SQL yönetilen örneği için sanal çekirdek tabanlı satın alma modeli](database/service-tiers-vcore.md).
 
 - SQL veritabanı ile, temel katman için 5 $/aydan itibaren çok çeşitli fiyatlarla ihtiyaçlarınıza uyan bir hizmet katmanını seçebilirsiniz ve maliyetleri azaltmak ve kullanım artışlarını karşılamak için veritabanları arasında kaynak paylaşmak üzere [elastik havuzlar](database/elastic-pool-overview.md) oluşturabilirsiniz.
-- SQL yönetilen örneği ile kendi lisansınızı da getirebilirsiniz. Kendi lisansını getir hakkında daha fazla bilgi için bkz. [Azure 'da Yazılım Güvencesiyle Lisans Taşınabilirliği](https://azure.microsoft.com/pricing/license-mobility/) veya [Azure hibrit avantajı hesaplayıcıyı](https://azure.microsoft.com/pricing/hybrid-benefit/#sql-database) kullanarak **%40** ' a nasıl tasarruf etmek gerektiğini öğrenin.
+- SQL yönetilen örneği ile kendi lisansınızı da getirebilirsiniz. Kendi lisansını getir hakkında daha fazla bilgi için bkz. [Azure 'da Yazılım Güvencesiyle Lisans Taşınabilirliği](https://azure.microsoft.com/pricing/license-mobility/) veya [Azure hibrit avantajı hesaplayıcıyı](https://azure.microsoft.com/pricing/hybrid-benefit/#sql-database) kullanarak **%40**' a nasıl tasarruf etmek gerektiğini öğrenin.
 
 Buna ek olarak, giden Internet trafiği için normal [veri aktarımı ücretleriyle](https://azure.microsoft.com/pricing/details/data-transfers/) faturalandırılırsınız. Hizmet katmanlarını ve işlem boyutlarını, uygulamanızın değişen aktarım hızı gereksinimleriyle eşleşecek şekilde dinamik olarak ayarlayabilirsiniz.
 
