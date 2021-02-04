@@ -1,12 +1,17 @@
 ---
-ms.openlocfilehash: b241bda12881edd6482e58514cfb936ee6904894
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 3196d377c09ca0cce24093710bc4be13fb21d2e3
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88682274"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99531410"
 ---
 [Olayları Izlemeye hazırlanmak](../../../detect-motion-emit-events-quickstart.md#prepare-to-monitor-events)için adımları tamamladığınızdan emin olun.
 
 ![Yerleşik olay uç noktasını Izlemeye başla](../../../media/quickstarts/start-monitoring-iothub-events.png)
 
+> [!NOTE]
+> IoT Hub için yerleşik uç nokta bilgisi sağlamanız istenebilir. Bu bilgileri almak için Azure portal ' de IoT Hub gidin ve sol gezinti bölmesindeki **yerleşik uç noktalar** seçeneğini bulun. Buraya tıklayın ve **Olay Hub** 'ı ile uyumlu uç nokta bölümünde **Olay Hub 'ı ile uyumlu uç noktası** bölümüne bakın. Kutusunda metni kopyalayın ve kullanın. Uç nokta şuna benzer şekilde görünecektir:  
+    ```
+    Endpoint=sb://iothub-ns-xxx.servicebus.windows.net/;SharedAccessKeyName=iothubowner;SharedAccessKey=XXX;EntityPath=<IoT Hub name>
+    ```

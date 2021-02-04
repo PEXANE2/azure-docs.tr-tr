@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: eff73888a449de20b2b460d519b36c0f03c4ea77
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 8bcef40dad9c67e9e2c6d6c4a051045999487027
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88691092"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99531871"
 ---
 Medya grafiğini çalıştırdığınızda, hareket algılayıcısı işlemci düğümündeki sonuçlar, IoT Hub havuz düğümünden IoT Hub 'ına geçer. Visual Studio Code **Çıkış** penceresinde gördüğünüz iletiler bir `body` bölümü ve bir `applicationProperties` bölümü içerir. Daha fazla bilgi için bkz. [IoT Hub Iletileri oluşturma ve okuma](../../../../../iot-hub/iot-hub-devguide-messages-construct.md).
 
@@ -61,21 +61,12 @@ Bu iletinin bir örneği aşağıda verilmiştir:
         }  
       }  
     ]  
-  },  
-  "applicationProperties": {  
-    "topic": "/subscriptions/{subscriptionID}/resourceGroups/{name}/providers/microsoft.media/mediaservices/hubname",  
-    "subject": "/graphInstances/GRAPHINSTANCENAME/processors/md",  
-    "eventType": "Microsoft.Media.Graph.Analytics.Inference",  
-    "eventTime": "2020-04-17T20:26:32.7010000Z",
-    "dataVersion": "1.0"  
-  }  
+  } 
 }  
 ```
 
 Bu örnekte: 
 
-* `applicationProperties`' De, `subject` iletinin oluşturulduğu medya grafiğindeki düğüme başvurur. Bu durumda, ileti hareket algılama işlemcisi düğümünden gelmektedir.
-* `applicationProperties`' De, `eventType` Bu olayın bir analiz olayı olduğunu gösterir.
 * `eventTime`Değer, olayın gerçekleştiği zaman değeridir.
 * `body`Değer, analiz olayı hakkında veri değeridir. Bu durumda, olay bir çıkarım olayıdır, bu nedenle gövde `timestamp` ve veri içerir `inferences` .
 * Veri, olduğunu `inferences` gösterir `type` `motion` . Bu olay hakkında ek verilere sahiptir `motion` .

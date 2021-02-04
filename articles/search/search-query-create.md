@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/03/2021
-ms.openlocfilehash: 9419e5f419a358be50fbb3b8478d62dfe6e3dff0
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: b013c66feefade077c85194ba3b1ff04ff4c4aa5
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99509359"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99536841"
 ---
 # <a name="creating-queries-in-azure-cognitive-search"></a>Azure Bilişsel Arama sorgu oluşturma
 
@@ -23,7 +23,7 @@ ms.locfileid: "99509359"
 
 Sorgu, tek bir arama dizininin docs koleksiyonuna yönelik salt okunurdur. ' Search ' parametresi olsa da bir ' queryType ' ve bir sorgu ifadesi belirtiyor. Sorgu ifadesi arama koşullarına, tırnak içine alınmış bir ifadeye ve işleçlere sahip olabilir.
 
-Bir sorgu, dizinde bulunan eşleşmelerin sayısını döndürmek için ' Count ' öğesine de sahip olabilir, arama sonucunda hangi alanların döndürüleceğini seçmek için ' Seç ' ve sonuçları sıralamak için ' OrderBy '. Aşağıdaki örneklerde, kullanılabilir parametrelerin alt kümesiyle bir sorgu isteği gösterilmektedir. Sorgu kompozisyonu hakkında daha fazla bilgi için bkz. [sorgu türleri ve kompozisyon](search-query-overview.md) ve [arama belgeleri (REST)](/rest/api/searchservice/search-documents).
+Bir sorgu, dizinde bulunan eşleşmelerin sayısını döndürmek için ' Count ' öğesine de sahip olabilir, arama sonucunda hangi alanların döndürüleceğini seçmek için ' Seç ' ve sonuçları sıralamak için ' OrderBy '. Aşağıdaki örnek, kullanılabilir parametrelerin bir alt kümesini göstererek bir sorgu isteğine ilişkin genel bir fikir verir. Sorgu kompozisyonu hakkında daha fazla bilgi için bkz. [sorgu türleri ve kompozisyon](search-query-overview.md) ve [arama belgeleri (REST)](/rest/api/searchservice/search-documents).
 
 ```http
 POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/search?api-version=2020-06-30
@@ -38,7 +38,7 @@ POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/
 
 ## <a name="choose-a-client"></a>İstemci seçin
 
-Azure portal veya Postman gibi bir sorgu oluşturmak için bir araç veya API veya bir sorgu istemcisini örnekleyen kod gerekir. Erken geliştirme ve kavram kanıtı testi için Azure portal veya REST API 'Leri öneririz.
+Azure portal veya Postman gibi bir araca ya da API 'Leri kullanarak bir sorgu istemcisini örnekleyen koda ihtiyacınız vardır. Erken geliştirme ve kavram kanıtı testi için Azure portal veya REST API 'Leri öneririz.
 
 ### <a name="permissions"></a>İzinler
 
@@ -111,14 +111,6 @@ Alan özniteliklerinin açıklaması için bkz. [Dizin oluşturma (REST API)](/r
 Dizin oluşturma sırasında, arama motoru dizelerde metin analizi gerçekleştirmek için bir çözümleyici kullanır ve sorgu sırasında eşleşme potansiyelini en üst düzeye çıkarır. En azından, dizeler daha düşük düzeylerdir, ancak aynı zamanda bir yandan da daha fazla hareket edebilir ve Word kaldırma işlemini durdurabilir. Daha büyük dizeler veya bileşik sözcükler genellikle boşluk, kısa çizgi veya tire ile ayrılır ve ayrı belirteçler olarak dizinlenir. 
 
 Burada ele almanız gereken nokta, dizininizin neleri içerdiğini düşündüğünüzden farklı olabilir. Sorgular beklenen sonuçları döndürmezse, çözümleyici tarafından oluşturulan belirteçleri [Çözümle metni (REST API)](/rest/api/searchservice/test-analyzer)aracılığıyla inceleyebilirsiniz. Simgeleştirme ve sorgulara etkisi hakkında daha fazla bilgi için, bkz. [kısmi terim arama ve özel karakterlerle desenler](search-query-partial-matching.md).
-
-## <a name="about-queries-per-second-qps"></a>Saniye başına sorgu (QPS) hakkında
-
-Sorgu performansına eklenen çok sayıda etken nedeniyle, Microsoft beklenen QPS numaralarını yayımlamaz. QPS tahminleri, uygulamanız için geçerli olan hizmet katmanı, yapılandırma, dizin ve sorgu yapılarını kullanarak her müşteri tarafından bağımsız olarak geliştirilmelidir. Dizin boyutu ve karmaşıklık, sorgu boyutu ve karmaşıklık ve trafik miktarı, QPS 'nin birinciline sahiptir. Bu faktörler bilinmiyorsa anlamlı tahminler sunmanın bir yolu yoktur.
-
-Tahminler, adanmış kaynaklar üzerinde (temel ve standart Katmanlar) çalışan hizmetler üzerinde hesaplandığında daha öngörülebilir hale ayarlanır. Daha fazla parametre üzerinde denetiminiz olduğundan QPS 'yi daha yakından tahmin edebilirsiniz. Tahmine yaklaşıma ilişkin yönergeler için bkz. [Azure bilişsel arama performansı ve iyileştirmesi](search-performance-optimization.md).
-
-Depolama için Iyileştirilmiş Katmanlar (L1 ve L2) için, standart katmanlardan daha düşük bir sorgu üretilen işi ve daha yüksek gecikme süresi beklemelisiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

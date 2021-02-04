@@ -1,12 +1,12 @@
 ---
-ms.openlocfilehash: f4a1cc432a50a555fe6e050ca318b4cfaf1092d4
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: dfb887004cd29b5bd9f1d9886b7dfa5f43c83dbe
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88682255"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99532319"
 ---
-MP4 dosyaları, OUTPUT_VIDEO_FOLDER_ON_DEVICE anahtarını kullanarak *. env* dosyasında yapılandırdığınız Edge cihazında bir dizine yazılır. Varsayılan değeri kullandıysanız, sonuçlar */var/Media/* klasöründe olmalıdır.
+MP4 dosyaları, VIDEO_OUTPUT_FOLDER_ON_DEVICE anahtarını kullanarak *. env* dosyasında yapılandırdığınız Edge cihazında bir dizine yazılır. Varsayılan değeri kullandıysanız, sonuçlar */var/Media/* klasöründe olmalıdır.
 
 MP4 klibini oynatmak için:
 
@@ -18,7 +18,7 @@ MP4 klibini oynatmak için:
 1. [Azure kaynaklarınızı ayarlarken](../../../detect-motion-emit-events-quickstart.md#set-up-azure-resources)oluşturulan kimlik bilgilerini kullanarak oturum açın. 
 1. Komut isteminde ilgili dizine gidin. Varsayılan konum */var/Media*' dir. MP4 dosyalarını dizinde görmeniz gerekir.
 
-    ![Çıkış](../../../media/quickstarts/samples-output.png) 
+    ![Çıktı](../../../media/quickstarts/samples-output.png) 
 
 1. Dosyaları yerel makinenize kopyalamak için [Güvenli kopya (SCP)](../../../../../virtual-machines/linux/copy-files-to-linux-vm-using-scp.md) kullanın. 
 1. [VLC medya oynatıcı](https://www.videolan.org/vlc/) veya başka bir MP4 oynatıcı kullanarak dosyaları yürütün.

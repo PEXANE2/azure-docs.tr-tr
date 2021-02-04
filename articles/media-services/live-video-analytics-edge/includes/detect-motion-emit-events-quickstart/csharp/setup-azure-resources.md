@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 67d6155d35f366429bf0210f18f052d9b6187820
-ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
+ms.openlocfilehash: 9503d93afbf14be159e6b982d9be5977717349ac
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "99214593"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99531442"
 ---
 Bu öğreticide aşağıdaki Azure kaynakları gereklidir:
 
@@ -16,6 +16,8 @@ Bu öğreticide aşağıdaki Azure kaynakları gereklidir:
 Bu hızlı başlangıç için, Azure aboneliğinizde gerekli kaynakları dağıtmak üzere [canlı video analizi kaynakları kurulum betiğini](https://github.com/Azure/live-video-analytics/tree/master/edge/setup) kullanmanızı öneririz. Bunu yapmak için aşağıdaki adımları izleyin:
 
 1. [Azure Cloud Shell](https://ms.portal.azure.com/#cloudshell/)’i açın.
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="../../../media/quickstarts/cloud-shell.png" alt-text="Cloud Shell":::
 1. İlk kez Cloud Shell kullanıyorsanız, bir depolama hesabı ve bir Microsoft Azure dosya paylaşımının oluşturulması için bir abonelik seçmeniz istenir. Cloud Shell oturum bilgileriniz için bir depolama hesabı oluşturmak üzere **depolama oluştur** ' u seçin. Bu depolama hesabı, komut dosyasının Azure Media Services hesabınızla kullanılmak üzere oluşturulacağı hesaptan ayrıdır.
 1. Cloud Shell penceresinin sol tarafındaki açılan menüde, ortamınız olarak **Bash** ' i seçin.
 
@@ -42,12 +44,12 @@ Bu hızlı başlangıç için, Azure aboneliğinizde gerekli kaynakları dağıt
 
 1. Betik tamamlandıktan sonra, klasör yapısını göstermek için süslü ayraçları seçin. *~/CloudDrive/LVA-Sample* dizininde birkaç dosya görürsünüz. Bu hızlı başlangıçta ilgilendiğiniz:
 
-     * ***~/CloudDrive/LVA-Sample/Edge-Deployment/.exe**-bu dosya Visual Studio Code bir uç cihaza modül dağıtmak için kullandığı özellikleri içerir.
-     _ ***~/CloudDrive/LVA-Sample/appsetting.json** _-Visual Studio Code, örnek kodu çalıştırmak için bu dosyayı kullanır.
+     * ***~/CloudDrive/LVA-Sample/Edge-Deployment/.exe*** -bu dosya Visual Studio Code bir uç cihaza modül dağıtmak için kullandığı özellikleri içerir.
+     * ***~/CloudDrive/LVA-Sample/appsetting.json*** -Visual Studio Code, örnek kodu çalıştırmak için bu dosyayı kullanır.
      
     Bir sonraki bölümde Visual Studio Code ' de geliştirme ortamınızı ayarlarken bu dosyalar gerekir. Bunları şimdilik yerel bir dosyaya kopyalamak isteyebilirsiniz.
     
     ![Uygulama ayarları](../../../media/quickstarts/clouddrive.png)
 
 > [!TIP]
-> Oluşturulan Azure kaynaklarıyla ilgili sorunlar yaşıyorsanız, bazı sık karşılaşılan sorunları çözmek için lütfen _ *[sorun giderme kılavuzumuzu](../../../troubleshoot-how-to.md#common-error-resolutions)* görüntüleyin.
+> Oluşturulan Azure kaynaklarıyla ilgili sorunlar yaşıyorsanız, bazı sık karşılaşılan sorunları çözmek için lütfen **[sorun giderme kılavuzumuzu](../../../troubleshoot-how-to.md#common-error-resolutions)** görüntüleyin.

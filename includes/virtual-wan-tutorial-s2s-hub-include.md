@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
@@ -8,24 +8,24 @@ ms.topic: include
 ms.date: 11/04/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 64470b42efeea49b7c778d6dffd88465b8445e36
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 31cfb321a60e700aecfdc1288ccdd379b89658ba
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90606566"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99531230"
 ---
 1. Oluşturduğunuz sanal WAN 'ı bulun. Sanal WAN sayfasında, **bağlantı** bölümünde, **hub**' ı seçin.
 2. Hub 'Lar sayfasında **+ yeni hub** ' ı seçerek **sanal hub oluştur** sayfasını açın.
 
-    ![Ekran görüntüsü, temel kavramlar sekmesi seçiliyken sanal hub oluştur bölmesini gösterir.](./media/virtual-wan-tutorial-hub-include/basics.png "Temel Bilgiler")
+    ![Ekran görüntüsü, temel kavramlar sekmesi seçiliyken sanal hub oluştur bölmesini gösterir.](./media/virtual-wan-tutorial-hub-include/basics.png "Temel bilgiler")
 3. **Sanal hub** sayfası **temel bilgileri** Oluştur sekmesinde aşağıdaki alanları doldurun:
 
     **Proje ayrıntıları**
 
    * Bölge (daha önce konum olarak adlandırılır)
    * Name
-   * Hub özel adres alanı. En küçük adres alanı bir hub oluşturmak için/24 ' tir. Bu,/25 ile/32 arasında herhangi bir aralığın oluşturulması sırasında bir hata üretecektir. Microsoft tarafından yönetilen bir hizmet olan Azure sanal WAN, farklı ağ geçitleri/hizmetler (örneğin, VPN ağ geçitleri, ExpressRoute ağ geçitleri, kullanıcı VPN/Noktadan siteye ağ geçitleri, güvenlik duvarı, yönlendirme vb.) için sanal hub 'da uygun alt ağları oluşturur. Microsoft bunu hizmetin bir parçası olarak yaparken, kullanıcının sanal hub 'daki hizmetler için alt ağ adres alanını açıkça planlaması gerekmez.
+   * Hub özel adres alanı. En küçük adres alanı bir hub oluşturmak için/24 ' tir. Bu,/25 ile/32 arasında herhangi bir aralığın oluşturulması sırasında bir hata üretecektir. Ancak, sanal hub 'da dağıtılabilecek gelecek hizmetleri desteklemeye yetecek sayıda IP adresi olduğundan emin olmak için bir/23 adres alanı veya daha büyük bir alan ayırmanız önerilir. Microsoft tarafından yönetilen bir hizmet olan Azure sanal WAN, farklı ağ geçitleri/hizmetler (örneğin, VPN ağ geçitleri, ExpressRoute ağ geçitleri, kullanıcı VPN/Noktadan siteye ağ geçitleri, güvenlik duvarı, yönlendirme vb.) için sanal hub 'da uygun alt ağları oluşturur. Microsoft bunu hizmetin bir parçası olarak yaparken, kullanıcının sanal hub 'daki hizmetler için alt ağ adres alanını açıkça planlaması gerekmez.
 4. **İleri ' yi seçin: siteden siteye**.
 
     ![Ekran görüntüsü, siteye site seçiliyken sanal hub oluştur bölmesini gösterir.](./media/virtual-wan-tutorial-hub-include/site-to-site.png "Siteden siteye")

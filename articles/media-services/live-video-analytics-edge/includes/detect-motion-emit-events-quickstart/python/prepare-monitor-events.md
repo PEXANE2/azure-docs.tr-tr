@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 98b9734bb1c31b08e7f4784558efaba3a393d0b0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 882ba60e16f770651a1d9fe3b02b61be2b4c34c8
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88691146"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99531784"
 ---
 IoT Edge modüldeki canlı video analizlerini kullanarak gelen canlı video akışındaki hareketleri algılayabilir ve olayları IoT Hub gönderebilirsiniz. Bu olayları görmek için şu adımları izleyin:
 
@@ -13,3 +13,9 @@ IoT Edge modüldeki canlı video analizlerini kullanarak gelen canlı video akı
 1. **LVA-örnek-cihaz öğesine** sağ tıklayın ve **Izlemeyi Başlat yerleşik olay uç noktası**' nı seçin.
 
     ![Yerleşik bir olay uç noktasını izlemeye başlama](../../../media/quickstarts/start-monitoring-iothub-events.png)
+
+> [!NOTE]
+> IoT Hub için yerleşik uç nokta bilgisi sağlamanız istenebilir. Bu bilgileri almak için Azure portal ' de IoT Hub gidin ve sol gezinti bölmesindeki **yerleşik uç noktalar** seçeneğini bulun. Buraya tıklayın ve **Olay Hub** 'ı ile uyumlu uç nokta bölümünde **Olay Hub 'ı ile uyumlu uç noktası** bölümüne bakın. Kutusunda metni kopyalayın ve kullanın. Uç nokta şuna benzer şekilde görünecektir:  
+    ```
+    Endpoint=sb://iothub-ns-xxx.servicebus.windows.net/;SharedAccessKeyName=iothubowner;SharedAccessKey=XXX;EntityPath=<IoT Hub name>
+    ```
