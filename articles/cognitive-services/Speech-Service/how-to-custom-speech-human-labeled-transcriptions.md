@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: eafdebc795d5bede7fa52a3562d33c806035697f
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 85f239afd1b9263440abff1f924c12cdb7eeadaa
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98704440"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99560275"
 ---
 # <a name="how-to-create-human-labeled-transcriptions"></a>İnsan etiketlendirmeleri oluşturma
 
@@ -166,6 +166,10 @@ Bu, otomatik olarak dökümde gerçekleştirilen normalleştirme örnekleri aşa
 | Frankfurter halkası | Frankfurter halkası         |
 | ¡ Eine Frage!     | Eine Frage               |
 | WIR, haben       | WIR haben                |
+
+### <a name="text-normalization-for-japanese"></a>Japonca için metin normalleştirme
+
+Japonca (ja-JP), her tümce için en fazla 90 karakter uzunluğunda olabilir. Daha uzun cümleler olan satırlar atılır. Daha uzun metin eklemek için arasına bir nokta ekleyin.
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 

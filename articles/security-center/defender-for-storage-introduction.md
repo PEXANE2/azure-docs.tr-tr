@@ -3,19 +3,18 @@ title: Depolama için Azure Defender-avantajlar ve Özellikler
 description: Depolama için Azure Defender 'ın avantajları ve özellikleri hakkında bilgi edinin.
 author: memildin
 ms.author: memildin
-ms.date: 9/22/2020
+ms.date: 02/04/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 42e8a1f4ff06f6ca6af4afd428008ca174823c5f
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: eb1635cec2b0bcf7f2c13101b2aeab25a869dc66
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98916430"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99558548"
 ---
 # <a name="introduction-to-azure-defender-for-storage"></a>Depolama için Azure Defender'a giriş
-
 
 **Depolama Için Azure Defender** , depolama hesaplarınıza yönelik olağan dışı ve potansiyel olarak zararlı girişimleri algılayan bir Azure Native Security Intelligence katmanıdır. Bağlamsal güvenlik uyarıları ve önerileri sağlamak için güvenlik AI ve [Microsoft Threat Intelligence](https://go.microsoft.com/fwlink/?linkid=2128684) 'ın gelişmiş özelliklerinden yararlanır.
 
@@ -28,7 +27,7 @@ Etkinlikte anomali oluştuğunda güvenlik uyarıları tetiklenir. Bu uyarılar 
 |Yayın durumu:|Genel kullanılabilirlik (GA)|
 |Fiyat|**Depolama Için Azure Defender** , [fiyatlandırma sayfasında](security-center-pricing.md) gösterildiği gibi faturalandırılır|
 |Korumalı Depolama türleri:|[Blob Depolama](https://azure.microsoft.com/services/storage/blobs/)<br>[Azure Dosyaları](../storage/files/storage-files-introduction.md)<br>[Azure Data Lake Storage 2. Nesil](../storage/blobs/data-lake-storage-introduction.md)|
-|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![Hayır](./media/icons/no-icon.png) Çin gov, diğer gov|
+|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![No](./media/icons/no-icon.png) Çin gov, diğer gov|
 |||
 
 
@@ -68,7 +67,40 @@ Bir dosyanın kötü amaçlı yazılım içermesi şüpheli olduğu durumlarda, 
 >
 > **Depolama Için Azure Defender 'ı** abonelik düzeyinde veya kaynak düzeyinde etkinleştirebilirsiniz.
 
+## <a name="trigger-a-test-alert-for-azure-defender-for-storage"></a>Depolama için Azure Defender için bir test uyarısı tetikleyin
 
+Ortamınızdaki depolama için Azure Defender 'daki güvenlik uyarılarını test etmek için, aşağıdaki adımlarla "bir Tor çıkış düğümünden depolama hesabına erişim" uyarısını oluşturun:
+
+1. Depolama için Azure Defender 'ı etkinleştirmek üzere bir depolama hesabı açın.
+1. Kenar çubuğundan "kapsayıcılar" ı seçin ve var olan bir kapsayıcıyı açın veya yeni bir kapsayıcı oluşturun.
+
+    :::image type="content" source="media/defender-for-storage-introduction/opening-storage-container.png" alt-text="Azure depolama hesabından bir blob kapsayıcısı açma" lightbox="media/defender-for-storage-introduction/opening-storage-container.png":::
+
+1. Bu kapsayıcıya bir dosya yükleyin.
+
+    > [!CAUTION]
+    > Gizli veriler içeren bir dosyayı karşıya yüklemeyin.
+
+1. "SAS oluştur" seçeneğini belirlemek için karşıya yüklenen dosyadaki bağlam menüsünü kullanın.
+
+    :::image type="content" source="media/defender-for-storage-introduction/generate-sas.png" alt-text="Blob kapsayıcısındaki bir dosya için SAS oluştur seçeneği":::
+
+1. Varsayılan seçenekleri bırakın ve **SAS belirteci ve URL Oluştur '** u seçin.
+
+1. Oluşturulan SAS URL 'sini kopyalayın.
+
+1. Yerel makinenizde, Tor tarayıcısını açın.
+
+    > [!TIP]
+    > Tor proje sitesinden Tor indirebilirsiniz [https://www.torproject.org/download/](https://www.torproject.org/download/) .
+
+1. Tor tarayıcısında SAS URL 'sine gidin.
+
+1. Adım 3 ' te karşıya yüklediğiniz dosyayı indirin.
+
+    İki saat içinde güvenlik merkezi 'nden aşağıdaki güvenlik uyarısını alırsınız:
+
+    :::image type="content" source="media/defender-for-storage-introduction/tor-access-alert-storage.png" alt-text="Tor çıkış düğümünden erişimle ilgili güvenlik uyarısı":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

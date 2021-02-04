@@ -11,21 +11,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/29/2020
+ms.date: 02/04/2021
 ms.author: memildin
-ms.openlocfilehash: 7c09a7f6c6a313852fc6212c6190a584ba5f67bd
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 7821d94ed032fd0fc52a756766e6a9af7c82cfde
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94409901"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99559236"
 ---
 # <a name="prevent-dangling-dns-entries-and-avoid-subdomain-takeover"></a>DNS girişlerinin tehlikini önleyin ve alt etki alanı devralmayı önleyin
 
 Bu makalede, alt etki alanının genel güvenlik tehdidi ve buna karşı hafifletmek için uygulayabileceğiniz adımlar açıklanmaktadır.
 
 
-## <a name="what-is-subdomain-takeover"></a>Alt etki alanı nedir?
+## <a name="what-is-a-subdomain-takeover"></a>Alt etki alanı nedir?
 
 Alt etki alanı kaynakları, çok sayıda kaynağı düzenli olarak oluşturan ve silen kuruluşlar için ortak, yüksek öneme sahip bir tehdittir. Sağlanabilen bir Azure kaynağına işaret eden bir [DNS kaydınız](../../dns/dns-zones-records.md#dns-records) varsa, alt etki alanı ele alma işlemi gerçekleşebilir. Bu tür DNS kayıtları, "dangze DNS" girişleri olarak da bilinir. CNAME kayıtları özellikle bu tehdide karşı savunmasız. Alt etki alanı cılar, kötü amaçlı aktörlerin bir kuruluşun etki alanı için tasarlanan trafiği kötü amaçlı etkinlik gerçekleştiren bir siteye yeniden yönlendirmesine olanak sağlar.
 
@@ -41,7 +41,7 @@ Bir alt etki alanı için ortak senaryo:
 
     1. Azure kaynağı artık gerekli olmadığında veya silinir. 
     
-        Bu noktada, CNAME kaydı `greatapp.contoso.com` *should* DNS bölgeinizden kaldırılmalıdır. CNAME kaydı kaldırılmazsa, etkin bir etki alanı olarak tanıtılıp trafiği etkin bir Azure kaynağına yönlendirmez. Bu, "Dangling" DNS kaydının tanımıdır.
+        Bu noktada, CNAME kaydı `greatapp.contoso.com`  DNS bölgeinizden kaldırılmalıdır. CNAME kaydı kaldırılmazsa, etkin bir etki alanı olarak tanıtılıp trafiği etkin bir Azure kaynağına yönlendirmez. Bu, "Dangling" DNS kaydının tanımıdır.
 
     1. Bu alt etki alanı, `greatapp.contoso.com` artık güvenlik açığından etkilenir ve başka bir Azure aboneliğinin kaynağına atanarak üzerinden alınabilir.
 
@@ -89,7 +89,7 @@ Araç, aşağıdaki tabloda listelenen Azure kaynaklarını destekler. Araç, t�
 | Hizmet                   | Tür                                        | FQDNproperty                               | Örnek                         |
 |---------------------------|---------------------------------------------|--------------------------------------------|---------------------------------|
 | Azure Front Door          | Microsoft. Network/frontkapaklı                | Properties. cName                           | `abc.azurefd.net`               |
-| Azure Blob Depolama Alanı        | Microsoft. Storage/storageaccounts           | Properties. BID. blob           | `abc. blob.core.windows.net`    |
+| Azure Blob Depolama        | Microsoft. Storage/storageaccounts           | Properties. BID. blob           | `abc. blob.core.windows.net`    |
 | Azure CDN                 | Microsoft. CDN/profiller/uç noktaları            | Properties. hostName                        | `abc.azureedge.net`             |
 | Genel IP adresleri       | Microsoft. Network/publicıpaddresses         | Properties. dnsSettings. FQDN                | `abc.EastUs.cloudapp.azure.com` |
 | Azure Traffic Manager     | Microsoft. Network/trafficmanagerprofiles    | Properties. dnsConfig. FQDN                  | `abc.trafficmanager.net`        |
@@ -144,6 +144,15 @@ Kuruluşunuzun DNS girdilerini engelleyen işlemleri gerçekleştirmesinin ve el
 
 Bazı Azure Hizmetleri, önleyici ölçüler oluşturmaya yardımcı olacak özellikler sunar ve aşağıda ayrıntılı olarak açıklanmıştır. Bu sorunu önleyen diğer yöntemler, kuruluşunuzun en iyi uygulamaları veya standart işletim yordamları aracılığıyla oluşturulmalıdır.
 
+### <a name="enable-azure-defender-for-app-service"></a>App Service için Azure Defender 'ı etkinleştirin
+
+Azure Güvenlik Merkezi 'nin tümleşik bulut iş yükü koruma platformu (CWPP), Azure Defender, Azure, hibrit ve çok bulut kaynaklarınızı ve iş yüklerinizi korumak için bir dizi plan sunar.
+
+**App Service planı Için Azure Defender** , TEHLIKEDEN DNS algılamasını içerir. Bu plan etkinken, bir App Service Web sitesinin yetkisini kaldırırsanız ancak özel etki alanını DNS kaydedicinizden kaldırmazsanız güvenlik uyarıları alırsınız.
+
+Azure Defender 'ın tehlikeden DNS koruması, etki alanlarınızın Azure DNS veya dış etki alanı kaydedicisi ile yönetilip yönetilmediği ve hem Windows hem de Linux 'ta App Service için geçerli olup olmadığı için kullanılabilir.
+
+Bu Azure Defender planının bu ve diğer avantajları hakkında daha fazla bilgi edinin [App Service Için Azure Defender 'A giriş](../../security-center/defender-for-app-service-introduction.md).
 
 ### <a name="use-azure-dns-alias-records"></a>Azure DNS diğer ad kayıtlarını kullanma
 
@@ -201,6 +210,8 @@ Genellikle, geliştiricilerin ve operasyon ekiplerinin, çok fazla DNS tehditler
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Alt etki alanı devrmasına karşı savunmak için kullanabileceğiniz ilgili hizmetler ve Azure özellikleri hakkında daha fazla bilgi edinmek için aşağıdaki sayfalara bakın.
+
+- [App Service Için Azure Defender 'ı etkinleştirin](../../security-center/defender-for-app-service-introduction.md) -DNS girişleri algılandığında uyarı almak için
 
 - [Azure DNS ile DNS kayıtlarını önleme](../../dns/dns-alias.md#prevent-dangling-dns-records)
 

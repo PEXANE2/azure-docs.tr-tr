@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 12/03/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: d60a241506dbcf3e038f79c99830ef1a81c06b88
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 589081149d08983d3cd5a4a8822873f5a6cfca0e
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98735273"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99559440"
 ---
 # <a name="customize-node-configuration-for-azure-kubernetes-service-aks-node-pools-preview"></a>Azure Kubernetes Service (AKS) düğüm havuzları (Önizleme) için düğüm yapılandırmasını özelleştirme
 
@@ -59,7 +59,7 @@ az extension update --name aks-preview
 
 Desteklenen Kubelet parametreleri ve kabul edilen değerler aşağıda listelenmiştir.
 
-| Parametre | İzin verilen değerler/Aralık | Varsayılan | Açıklama |
+| Parametre | İzin verilen değerler/Aralık | Varsayılan | Description |
 | --------- | ----------------------- | ------- | ----------- |
 | `cpuManagerPolicy` | hiçbiri, statik | yok | Statik ilke, tamsayı CPU 'SU olan [garantili](https://kubernetes.io/docs/tasks/configure-pod-container/quality-service-pod/) düğüm kapsayıcılarındaki kapsayıcılara, düğümdeki özel CPU 'lara erişim isteklerine izin verir. |
 | `cpuCfsQuota` | doğru, yanlış | true |  CPU sınırlarını belirten kapsayıcılar için CPU CFS kota zorlamayı etkinleştirin/devre dışı bırakın. | 
@@ -77,7 +77,7 @@ Desteklenen işletim sistemi ayarları ve kabul edilen değerler aşağıda list
 
 Çok sayıda trafiğe hizmet verirken, hizmet vermekte olduğunuz trafiğin çok sayıda yerel dosyadan geldiği yaygındır. Daha fazlasını işleyebilmeniz için aşağıdaki çekirdek ayarlarını ve yerleşik sınırları ince ayar, bazı sistem belleğinin maliyetinden daha fazla bilgi alabilirsiniz.
 
-| Ayar | İzin verilen değerler/Aralık | Varsayılan | Açıklama |
+| Ayar | İzin verilen değerler/Aralık | Varsayılan | Description |
 | ------- | ----------------------- | ------- | ----------- |
 | `fs.file-max` | 8192-12000500 | 709620 | Linux çekirdeğinin ayırabilecek en fazla dosya tanıtıcısı sayısı, bu değeri artırarak izin verilen en fazla açık dosya sayısını artırabilirsiniz. |
 | `fs.inotify.max_user_watches` | 781250-2097152 | 1048576 | Sistem tarafından izin verilen en fazla dosya sayısı. Her bir *izleme* , 32 bit çekirdekte yaklaşık 90 bayt ve 64-bit çekirdekte yaklaşık 160 bayttır. | 
@@ -89,7 +89,7 @@ Desteklenen işletim sistemi ayarları ve kabul edilen değerler aşağıda list
 
 Çok büyük sayıda eşzamanlı oturumu işlemesi beklenen aracı düğümleri için, düğüm havuzu başına ince ayar kullanabileceğiniz aşağıdaki TCP ve ağ seçeneklerinin alt kümesini kullanabilirsiniz. 
 
-| Ayar | İzin verilen değerler/Aralık | Varsayılan | Açıklama |
+| Ayar | İzin verilen değerler/Aralık | Varsayılan | Description |
 | ------- | ----------------------- | ------- | ----------- |
 | `net.core.somaxconn` | 4096-3240000 | 16384 | Belirli bir dinleme yuvası için sıraya alınabilen en fazla bağlantı isteği sayısı. [Listen (2)](http://man7.org/linux/man-pages/man2/listen.2.html) işlevine geçilen kapsam parametresinin değeri için üst sınır. Kapsam bağımsız değişkeni öğesinden büyükse `somaxconn` , bu sınıra sessizce kesilir.
 | `net.core.netdev_max_backlog` | 1000-3240000 | 1000 | Arabirim paketleri çekirdekten daha hızlı aldığında, GIRIŞ tarafında sıraya alınan en fazla paket sayısı. |
@@ -114,7 +114,7 @@ Desteklenen işletim sistemi ayarları ve kabul edilen değerler aşağıda list
 
 Dosya tanımlayıcısı sınırları gibi, bir işlemin oluşturabileceğiniz çalışan veya iş parçacıklarının sayısı hem çekirdek ayarı hem de Kullanıcı limitleriyle sınırlıdır. AKS üzerinde kullanıcı sınırı sınırsızdır. 
 
-| Ayar | İzin verilen değerler/Aralık | Varsayılan | Açıklama |
+| Ayar | İzin verilen değerler/Aralık | Varsayılan | Description |
 | ------- | ----------------------- | ------- | ----------- |
 | `kernel.threads-max` | 20 - 513785 | 55601 | Süreçler çalışan iş parçacıklarını açabilir. Oluşturulabilen tüm iş parçacıklarının en fazla sayısı çekirdek ayarıyla ayarlanır `kernel.threads-max` . | 
 
@@ -122,7 +122,7 @@ Dosya tanımlayıcısı sınırları gibi, bir işlemin oluşturabileceğiniz ç
 
 Aşağıdaki ayarlar, Linux çekirdeğinin sanal bellek (VM) alt sisteminin ve kirli verilerin diskteki çalışmasını ayarlamak için kullanılabilir `writeout` .
 
-| Ayar | İzin verilen değerler/Aralık | Varsayılan | Açıklama |
+| Ayar | İzin verilen değerler/Aralık | Varsayılan | Description |
 | ------- | ----------------------- | ------- | ----------- |
 | `vm.max_map_count` |  65530-262144 | 65530 | Bu dosya, bir işlemin sahip olabileceği maksimum bellek eşleme alanı sayısını içerir. Bellek eşleme alanı, `malloc` doğrudan `mmap` ,, `mprotect` ve `madvise` , ve ayrıca paylaşılan kitaplıkları yüklerken çağırmanın yan etkisi olarak kullanılır. | 
 | `vm.vfs_cache_pressure` | 1 - 500 | 100 | Bu yüzde değeri, dizinin ve ıncode nesnelerinin önbelleğe alınması için kullanılan belleği geri kazanmak için çekirdeğin kullanımını denetler. |
@@ -166,7 +166,7 @@ Aşağıdaki ayarlar, Linux çekirdeğinin sanal bellek (VM) alt sisteminin ve k
 }
 ```
 
-Önceki adımda oluşturulan JSON dosyalarını kullanarak kublet ve işletim sistemi yapılandırmasını belirten yeni bir küme oluşturun. 
+Önceki adımda oluşturulan JSON dosyalarını kullanarak kubelet ve işletim sistemi yapılandırmasını belirten yeni bir küme oluşturun. 
 
 > [!NOTE]
 > Bir küme oluşturduğunuzda kubelet yapılandırması, işletim sistemi yapılandırması veya her ikisini de belirtebilirsiniz. Bir küme oluştururken bir yapılandırma belirtirseniz, yalnızca ilk düğüm havuzundaki düğümler bu yapılandırmayı uygulamış olur. JSON dosyasında yapılandırılmamış tüm ayarlar varsayılan değeri korur.

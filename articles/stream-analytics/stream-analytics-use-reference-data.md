@@ -6,12 +6,12 @@ ms.author: jeanb
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/18/2020
-ms.openlocfilehash: d4053cd02dd11922a402971c7f3934a8b818eaa4
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: e05a4cbbc5fefbfe8a92914ef480f32bdf43ca37
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98015912"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99560213"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>Stream Analytics aramalar için başvuru verilerini kullanma
 
@@ -32,13 +32,13 @@ Stream Analytics, Azure Blob depolama ve Azure SQL veritabanını başvuru veril
 
 ## <a name="azure-blob-storage"></a>Azure Blob depolama
 
-Başvuru verileri, blob adında belirtilen tarih/saatin artan sırada bir blob dizisi (giriş yapılandırmasında tanımlanır) olarak modellenir. **Yalnızca** dizideki son blob tarafından belirtilenden **büyük** bir tarih/saat kullanarak sıranın sonuna eklenmesini destekler.
+Başvuru verileri, blob adında belirtilen tarih/saatin artan sırada bir blob dizisi (giriş yapılandırmasında tanımlanır) olarak modellenir. **Yalnızca** dizideki son blob tarafından belirtilenden **büyük** bir tarih/saat kullanarak sıranın sonuna eklenmesini destekler. Daha fazla bilgi için bkz. bir [Azure Stream Analytics işi Için blob depolamadan başvuru verilerini kullanma](data-protection.md).
 
 ### <a name="configure-blob-reference-data"></a>Blob başvuru verilerini yapılandırma
 
 Başvuru verilerinizi yapılandırmak için önce **başvuru verileri** türünde bir giriş oluşturmanız gerekir. Aşağıdaki tabloda, başvuru veri girişini açıklaması ile oluştururken sağlamanız gereken her özellik açıklanmaktadır:
 
-|**Özellik adı**  |**Açıklama**  |
+|**Özellik Adı**  |**Açıklama**  |
 |---------|---------|
 |Girdi Diğer Adı   | Bu girişe başvurmak için iş sorgusunda kullanılacak kolay bir ad.   |
 |Depolama Hesabı   | Bloblarınızın bulunduğu depolama hesabının adı. Stream Analytics Işiniz ile aynı abonelikte yer alıyorsa, açılır listeden seçim yapabilirsiniz.   |
@@ -97,7 +97,7 @@ SQL veritabanı başvuru verilerinizi yapılandırmak için önce **başvuru ver
 
 [Azure SQL yönetilen örneğini](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md) , başvuru veri girişi olarak kullanabilirsiniz. [SQL yönetilen örneği 'nde genel uç noktasını yapılandırmanız](../azure-sql/managed-instance/public-endpoint-configure.md) ve ardından Azure Stream Analytics aşağıdaki ayarları el ile yapılandırmanız gerekir. SQL Server çalıştıran bir veritabanı ile birlikte çalışan Azure sanal makinesi, aşağıdaki ayarları el ile yapılandırarak de desteklenir.
 
-|**Özellik adı**|**Açıklama**  |
+|**Özellik Adı**|**Açıklama**  |
 |---------|---------|
 |Girdi diğer adı|Bu girişe başvurmak için iş sorgusunda kullanılacak kolay bir ad.|
 |Abonelik|Aboneliğinizi seçin|

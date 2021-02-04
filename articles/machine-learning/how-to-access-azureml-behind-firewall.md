@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 11/18/2020
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 150e1aee38a724a0d52c83219c4d214265be9274
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: dc8044ee72689634a1d4ce3e0e8b1a499404c5ce
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 02/04/2021
-ms.locfileid: "99538077"
+ms.locfileid: "99560295"
 ---
 # <a name="use-workspace-behind-a-firewall-for-azure-machine-learning"></a>Azure Machine Learning için bir güvenlik duvarının arkasındaki çalışma alanını kullan
 
@@ -93,6 +93,7 @@ Daha fazla bilgi için bkz. [Sanal ağda Azure Batch havuzu oluşturma](../batch
 
     | **Konak adı** | **Amaç** |
     | ---- | ---- |
+    | **graph.windows.net** | Azure Machine Learning işlem örneği/kümesi tarafından kullanılır. |
     | **anaconda.com**</br>**\*. anaconda.com** | Varsayılan paketleri yüklemek için kullanılır. |
     | **\*. anaconda.org** | Depo verilerini almak için kullanılır. |
     | **pypi.org** | Varsa, varsayılan dizinden bağımlılıkları listelemek için kullanılır ve dizin, Kullanıcı ayarları tarafından üzerine yazılmaz. Dizinin üzerine yazılırsa, **\* . pythonhosted.org** de izin vermeniz gerekir. |
@@ -145,6 +146,7 @@ Bu bölümdeki konaklar Microsoft 'a aittir ve çalışma alanınızın düzgün
 | **Şunun için gerekli:** | **Azure genel** | **Azure Devlet Kurumları** | **Azure China 21Vianet** |
 | ----- | ----- | ----- | ----- |
 | İşlem kümesi/örnek | \*. batchai.core.windows.net | \*. batchai.core.usgovcloudapi.net |\*. batchai.ml.azure.cn |
+| İşlem kümesi/örnek | graph.windows.net |  |  |
 | İşlem örneği | \*. instances.azureml.net | \*. instances.azureml.us | \*. instances.azureml.cn |
 | İşlem örneği | \*. instances.azureml.ms |  |  |
 

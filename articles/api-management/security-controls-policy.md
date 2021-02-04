@@ -1,18 +1,18 @@
 ---
 title: Azure API Management için Azure Ilke mevzuat uyumluluk denetimleri
 description: Azure API Management için kullanılabilen Azure Ilke mevzuat uyumluluk denetimlerini listeler. Bu yerleşik ilke tanımları, Azure kaynaklarınızın uyumluluğunu yönetmek için yaygın yaklaşımlar sağlar.
-ms.date: 01/29/2021
+ms.date: 02/04/2021
 ms.topic: sample
 author: dlepow
 ms.author: apimpm
 ms.service: api-management
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 56e44a28a9fd4e3fcf030e969b4db179d69fd657
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 7c4ac005f9684e9d4eabc13b5b21995a953e6b4c
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99090298"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99560632"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-api-management"></a>Azure API Management için Azure Ilke mevzuat uyumluluk denetimleri
 

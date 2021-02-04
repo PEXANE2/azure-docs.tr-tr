@@ -72,6 +72,8 @@
       href: my-account-portal-sign-ins-page.md
     - name: Portal ayarlarınızı değiştirme
       href: my-account-portal-settings.md
+    - name: Hesap yöneticimi bulma
+      href: my-account-find-administrator.md
     - name: Kuruluş değiştirme
       href: cross-tenant-switcher.md
 - name: Güvenlik bilgileri yardımı

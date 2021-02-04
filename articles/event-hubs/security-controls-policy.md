@@ -1,18 +1,18 @@
 ---
 title: Azure Event Hubs için Azure Ilke mevzuat uyumluluk denetimleri
 description: Azure Event Hubs için kullanılabilen Azure Ilke mevzuat uyumluluk denetimlerini listeler. Bu yerleşik ilke tanımları, Azure kaynaklarınızın uyumluluğunu yönetmek için yaygın yaklaşımlar sağlar.
-ms.date: 01/29/2021
+ms.date: 02/04/2021
 ms.topic: sample
 author: spelluru
 ms.author: spelluru
 ms.service: event-hubs
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: a1c93972a1a936a4482ce06a30f29b37d8554e79
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 73fcb67d8b39899d45eccf38ca9209dd8955b632
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99094363"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99560880"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-event-hubs"></a>Azure Event Hubs için Azure Ilke mevzuat uyumluluk denetimleri
 

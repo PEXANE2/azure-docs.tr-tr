@@ -1,18 +1,18 @@
 ---
 title: Azure Cosmos DB için yerleşik ilke tanımları
 description: Azure Cosmos DB için Azure Ilkesi yerleşik ilke tanımlarını listeler. Bu yerleşik ilke tanımları, Azure kaynaklarınızı yönetmek için yaygın yaklaşımlar sağlar.
-ms.date: 01/29/2021
+ms.date: 02/04/2021
 ms.topic: reference
 author: SnehaGunda
 ms.author: sngun
 ms.service: cosmos-db
 ms.custom: subject-policy-reference
-ms.openlocfilehash: c665a9c0ff0d23500937f6366ba934483eed5185
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 34afa8b7293ee40979ce07f08bed6e2dcb5889ac
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99218766"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99559060"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-cosmos-db"></a>Azure Cosmos DB için Azure Ilkesi yerleşik tanımları
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
