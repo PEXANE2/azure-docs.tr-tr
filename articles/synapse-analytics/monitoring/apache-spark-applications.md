@@ -9,12 +9,12 @@ ms.subservice: monitoring
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: mahi
-ms.openlocfilehash: 2f9fa6e7ef9a7ee8ea7dd2a09622f26f6fd9739e
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 00407b4a55b3c074fa77d4c3664f6e218c23fe21
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98223134"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584531"
 ---
 # <a name="use-synapse-studio-to-monitor-your-apache-spark-applications"></a>Apache Spark uygulamalarınızı izlemek için SYNAPSE Studio 'Yu kullanma
 
@@ -29,7 +29,7 @@ Bu öğretici aşağıdaki görevleri kapsar:
 * İptal edilen Apache Spark uygulamasını görüntüle
 * Apache Spark uygulamada hata ayıklama başarısız oldu
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiye başlamadan önce aşağıdaki gereksinimlerin karşılandığından emin olun:
 
@@ -155,6 +155,26 @@ Tüm Apache Spark uygulamalarını **izleyici**  ->  **Apache Spark uygulamalar�
 6. Hata bilgilerini denetleyin.
 
    ![başarısız iş bilgileri](./media/how-to-monitor-spark-applications/failed-job-info.png)
+
+## <a name="compare-apache-spark-applications"></a>Apache Spark uygulamalarını karşılaştırın
+**Uygulamaları Karşılaştır** düğmesine tıklayın ve performansı karşılaştırmak için bir uygulama seçin, kullanıcılar iki uygulama arasındaki farkı görebilir.
+
+![uygulamaları karşılaştırın](./media/how-to-monitor-spark-applications/compare-applications.png)
+
+1. Fareyi kullanarak bir uygulamaya gelin ve ardından **uygulamaları Karşılaştır** simgesi görüntülenir.
+
+2. **Uygulamaları Karşılaştır** simgesine tıklayın ve uygulamaları Karşılaştır sayfası açılır.
+
+3. **Karşılaştırma uygulaması Seç** sayfasını açmak Için **Uygulama Seç** düğmesine tıklayın.
+
+4. Karşılaştırma uygulamasını seçerken, kullanıcıların uygulama URL 'sini girmesi ya da yinelenen listeden seçim yapması gerekir. Ardından **Tamam** düğmesine tıklayın. 
+
+   ![karşılaştırma uygulaması seçin](./media/how-to-monitor-spark-applications/choose-comparison-application.png)
+
+5. Karşılaştırma sonucu, uygulamaları Karşılaştır sayfasında görüntülenir.
+
+   ![karşılaştırma sonucu](./media/how-to-monitor-spark-applications/comparison-result.png)
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

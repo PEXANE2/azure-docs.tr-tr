@@ -13,12 +13,12 @@ ms.date: 05/18/2020
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: bf51f39a789b91a4cb0b88eb8bb1f2989bec7358
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 23ba50a6eca1e398b9d459153b84719909f2ecac
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88165830"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99583748"
 ---
 # <a name="using-web-browsers-msalnet"></a>Web tarayıcıları kullanma (MSAL.NET)
 
@@ -41,19 +41,19 @@ Bir belirteci etkileşimli olarak alırken, iletişim kutusunun içeriği kitapl
 
 MSAL.NET, çok katmanlı bir kitaplıktır ve bir kullanıcı arabirimi denetiminde bir tarayıcıyı barındırmak için çerçeveye özgü koda sahiptir (örneğin, .NET klasik BT 'de WinForms kullanır, Xamarin 'te yerel mobil denetimleri kullanır vb.). Bu denetim `embedded` Web Kullanıcı arabirimi olarak adlandırılır. Alternatif olarak, MSAL.NET, sistem IŞLETIM sistemi tarayıcısını de başlatabilir.
 
-Genellikle, platform varsayılanını kullanmanız önerilir ve bu genellikle sistem tarayıcısıdır. Sistem tarayıcısı, daha önce oturum açmış olan kullanıcıları hatırlama konusunda daha iyidir. Bu davranışı değiştirmeniz gerekiyorsa, şunu kullanın `WithUseEmbeddedWebView(bool)`
+Genellikle, platform varsayılanını kullanmanız önerilir ve bu genellikle sistem tarayıcısıdır. Sistem tarayıcısı, daha önce oturum açmış olan kullanıcıları hatırlama konusunda daha iyidir. Bu davranışı değiştirmek için, şunu kullanın `WithUseEmbeddedWebView(bool)`
 
 ### <a name="at-a-glance"></a>Bir bakışta
 
 | Framework        | Ekleme | Sistem | Varsayılan |
 | ------------- |-------------| -----| ----- |
-| .NET klasik     | Evet | Evet ^ | Ekleme |
-| .NET Core     | Hayır | Evet ^ | Sistem |
-| .NET Standard | Hayır | Evet ^ | Sistem |
-| UWP | Evet | Hayır | Ekleme |
-| Xamarin.Android | Evet | Evet  | Sistem |
-| Xamarin.iOS | Evet | Evet  | Sistem |
-| Xamarin.Mac| Evet | Hayır | Ekleme |
+| .NET klasik     | Yes | Evet ^ | Ekleme |
+| .NET Core     | No | Evet ^ | Sistem |
+| .NET Standard | No | Evet ^ | Sistem |
+| UWP | Yes | Hayır | Ekleme |
+| Xamarin.Android | Yes | Yes  | Sistem |
+| Xamarin.iOS | Yes | Yes  | Sistem |
+| Xamarin.Mac| Yes | Hayır | Ekleme |
 
 ^ " http://localhost " Yeniden yönlendirme URI 'si gerektirir
 
@@ -141,7 +141,7 @@ Ayrıca, Xamarin. iOS ve Xamarin. Android uygulamalarında katıştırılmış W
 
 Xamarin 'i hedefleyen MSAL.NET kullanan bir geliştirici olarak, katıştırılmış Web görünümleri veya sistem tarayıcıları kullanmayı seçebilirsiniz. Bu, hedeflemek istediğiniz kullanıcı deneyimine ve güvenlik kaygıına bağlı olarak sizin seçimidir.
 
-Şu anda MSAL.NET, Android ve iOS aracılarını henüz desteklememektedir. Bu nedenle, çoklu oturum açma (SSO) sağlamanız gerekiyorsa, Sistem tarayıcısı yine de daha iyi bir seçenek olabilir. Katıştırılmış Web tarayıcısıyla aracıları destekleme MSAL.NET kapsamınızdan bulunur.
+Şu anda MSAL.NET, Android ve iOS aracılarını henüz desteklememektedir. Bu nedenle, çoklu oturum açma (SSO) sağlamak için Sistem tarayıcısı yine de daha iyi bir seçenek olabilir. Katıştırılmış Web tarayıcısıyla aracıları destekleme MSAL.NET kapsamınızdan bulunur.
 
 ### <a name="differences-between-embedded-webview-and-system-browser"></a>Katıştırılmış WebView ve sistem tarayıcısı arasındaki farklılıklar
 MSAL.NET ' de ekli Web görünümü ve sistem tarayıcısı arasında bazı görsel farklılıklar vardır.

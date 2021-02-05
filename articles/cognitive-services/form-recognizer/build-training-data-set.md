@@ -9,20 +9,20 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: pafarley
-ms.openlocfilehash: 661b0bbf1aa389dc76567d95ad917548255a1b35
-ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
+ms.openlocfilehash: ee57ccb82e771ee8ab93b09e476a94df32278069
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/01/2021
-ms.locfileid: "97845591"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99585118"
 ---
 # <a name="build-a-training-data-set-for-a-custom-model"></a>Özel model için eğitim veri kümesi oluşturma
 
 Form tanıyıcı özel modelini kullandığınızda, modelin sektöre özgü formlarınıza eğmesi için kendi eğitim verilerinizi [özel modeli eğitme](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/TrainCustomModelAsync) işlemine sağlarsınız. Modeli verimli bir şekilde eğitme amacıyla verileri nasıl toplayacağınızı ve hazırlanacağınızı öğrenmek için bu kılavuzu izleyin.
 
-El ile etiketleriniz olmadan eğitim elde ediyorsanız, beş doldurulmuş form veya boş bir form kullanabilirsiniz ("boş" sözcüğünü dosya adı ile birlikte dahil etmeniz gerekir) ve iki doldurulmuş form oluşturabilirsiniz. Yeterli sayıda doldurulmuş formunuz olsa da, eğitim veri kümesine boş bir form eklemek, modelin doğruluğunu iyileştirebilir.
+Aynı türde en az beş doldurulmuş form olması gerekir.
 
-El ile veri etiketli eğitim verileri kullanmak istiyorsanız, aynı türde en az beş doldurulmuş form ile başlamanız gerekir. Etiketli formları ve gerekli veri kümesine ek olarak boş bir formu kullanmaya devam edebilirsiniz.
+El ile veri etiketli eğitim verileri kullanmak istiyorsanız, aynı türde en az beş doldurulmuş form ile başlamanız gerekir. Etiketli formları, gerekli veri kümesine ek olarak kullanmaya devam edebilirsiniz.
 
 ## <a name="custom-model-input-requirements"></a>Özel model giriş gereksinimleri
 

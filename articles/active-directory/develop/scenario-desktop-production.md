@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: ddd676a1e0b3d8f554b007974b62eb8c0c2ca9c1
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.openlocfilehash: 22e61ea767d781dc9da54d61143c1b2524e06e94
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99226364"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584423"
 ---
 # <a name="desktop-app-that-calls-web-apis-move-to-production"></a>Web API 'Lerini çağıran masaüstü uygulaması: üretime taşı
 
@@ -96,7 +96,7 @@ application.acquireToken(with: interactiveParameters, completionBlock: { (result
 
 Bu çağrı, ilk Web API 'SI için bir erişim belirteci alır.
 
-İkinci Web API 'sini çağırmanız gerektiğinde API 'yi çağırın `AcquireTokenSilent` .
+İkinci Web API 'sini çağırırken API 'yi çağırın `AcquireTokenSilent` .
 
 ```csharp
 AcquireTokenSilent(scopesForVendorApi, accounts.FirstOrDefault()).ExecuteAsync();

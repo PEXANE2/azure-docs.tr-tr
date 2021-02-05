@@ -13,12 +13,12 @@ ms.date: 04/30/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 5bccc39144186b23cc7f9fedf02e5b9d84ea2ee4
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: d477c419bb677a6b8f24a3aae26c403e47cc96cb
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98063561"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99583951"
 ---
 # <a name="instantiate-a-confidential-client-application-with-configuration-options-using-msalnet"></a>MSAL.NET kullanarak yapılandırma seçenekleriyle bir gizli istemci uygulaması örneği oluşturma
 
@@ -60,7 +60,7 @@ Bir ASP.NET Core uygulama yapılandırması, bir *appsettings.js* dosyasında a�
 
 MSAL.NET v3. x sürümünden başlayarak, gizli istemci uygulamanızı yapılandırma dosyasından yapılandırabilirsiniz.
 
-Uygulamanızı yapılandırmak ve örneklerinizi başlatmak istediğiniz sınıfta bir nesne bildirmeniz gerekir `ConfidentialClientApplicationOptions` .  Microsoft.Extensions.Configbir yöntemi kullanarak, kaynaktan okunan yapılandırmayı (dosyadaki appconfig.jsdosyası dahil) uygulama seçeneklerinin örneğine bağlayın `IConfigurationRoot.Bind()` [ . Ciltçi NuGet paketi](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Binder):
+Uygulamanızı yapılandırmak ve başlatmak istediğiniz sınıfta bir `ConfidentialClientApplicationOptions` nesne bildirin.  Microsoft.Extensions.Configbir yöntemi kullanarak, kaynaktan okunan yapılandırmayı (dosyadaki appconfig.jsdosyası dahil) uygulama seçeneklerinin örneğine bağlayın `IConfigurationRoot.Bind()` [ . Ciltçi NuGet paketi](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Binder):
 
 ```csharp
 using Microsoft.Identity.Client;
@@ -79,7 +79,7 @@ app = ConfidentialClientApplicationBuilder.CreateWithApplicationOptions(_applica
 ```
 
 ## <a name="add-runtime-configuration"></a>Çalışma Zamanı Yapılandırması Ekle
-Gizli bir istemci uygulamasında, genellikle Kullanıcı başına bir önbelleğiniz olur. Bu nedenle, kullanıcıyla ilişkili önbelleği almanız ve uygulamayı kullanmak istediğiniz uygulama oluşturucusunu bildirmeniz gerekecektir. Aynı şekilde, dinamik olarak hesaplanmış bir yeniden yönlendirme URI 'SI olabilir. Bu durumda, kod aşağıdaki gibi olur:
+Gizli bir istemci uygulamasında, genellikle Kullanıcı başına bir önbelleğiniz olur. Bu nedenle, kullanıcıyla ilişkili önbelleği almanız ve uygulamayı kullanmak istediğiniz uygulama oluşturucusunu bildirmeniz gerekecektir. Aynı şekilde, dinamik olarak hesaplanmış bir yeniden yönlendirme URI 'SI olabilir. Bu durumda, kod aşağıdaki gibidir:
 
 ```csharp
 IConfidentialClientApplication app;

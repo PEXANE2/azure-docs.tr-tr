@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 11/18/2020
 ms.author: pafarley
-ms.openlocfilehash: a63f910b3a939e33b8c71d8f22d15f6d610a12cc
-ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
+ms.openlocfilehash: d529e74614a4fd5ee49d7e6161c65f68e8e76fce
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/01/2021
-ms.locfileid: "97845561"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99585067"
 ---
 # <a name="form-recognizer-layout-service"></a>Form tanıyıcı düzen hizmeti
 
@@ -89,7 +89,7 @@ Düzen Ayrıca belgelerden seçim işaretlerini de ayıklar. Ayıklanan seçim i
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - Bir [Biçim tanıyıcı örnek kullanıcı arabirimini kullanarak kendi düzen ayıklayıcınızı](https://fott-preview.azurewebsites.net/) deneyin
-- Seçtiğiniz dilde düzenleri çıkarmaya başlamak için [form tanıyıcı hızlı](quickstarts/client-library.md) başlangıcını doldurun.
+- Seçtiğiniz geliştirme dilinde düzenleri çıkarmaya başlamak için [form tanıyıcı hızlı](quickstarts/client-library.md) başlangıcını doldurun.
 
 ## <a name="see-also"></a>Ayrıca bkz.
 

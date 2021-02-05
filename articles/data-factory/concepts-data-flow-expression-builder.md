@@ -6,13 +6,13 @@ ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 10/30/2020
-ms.openlocfilehash: 8257be28344ac7a03738c80a003c1229282ae305
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.date: 02/04/2021
+ms.openlocfilehash: 753f201fbde5d9e7100b6e257f8dc79e4462d7b6
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93145725"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584932"
 ---
 # <a name="build-expressions-in-mapping-data-flow"></a>Eşleme veri akışında derleme ifadeleri
 
@@ -32,7 +32,7 @@ Eşleme veri akışı ' nda birçok dönüştürme özelliği ifadeler olarak gi
 
 ![Mavi ifade kutusu](media/data-flow/expressionbox.png "Mavi ifade kutusu")
 
-Bir eşleşen veya gruplandırma koşulunda sütunlara başvuru yaptığınızda bir ifade, sütunlardaki değerleri ayıklayabilir. Bir ifade oluşturmak için, **hesaplanan sütun** ' u seçin.
+Bir eşleşen veya gruplandırma koşulunda sütunlara başvuru yaptığınızda bir ifade, sütunlardaki değerleri ayıklayabilir. Bir ifade oluşturmak için, **hesaplanan sütun**' u seçin.
 
 ![Hesaplanan sütun seçeneği](media/data-flow/computedcolumn.png "Hesaplanan sütun seçeneği")
 
@@ -106,6 +106,9 @@ Dize ilişkilendirme için bazı örnekler:
 * ```"Total cost with sales tax is {round(totalcost * 1.08,2)}"```
 
 * ```"{:playerName} is a {:playerRating} player"```
+
+> [!NOTE]
+> SQL kaynak sorgularında dize ilişkilendirme söz dizimi kullanılırken, sorgu dizesinin '/n ' olmadan tek bir satırda olması gerekir.
 
 ## <a name="commenting-expressions"></a>Açıklama ifadeleri
 

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: c3d9cd5e710eb263707e87c4afe0f08809b8d50c
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 5d93df0b6d59e013c22e138942ab4651784421ae
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98756455"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584389"
 ---
 # <a name="protected-web-api-app-registration"></a>Korumalı Web API 'SI: uygulama kaydı
 
@@ -58,7 +58,7 @@ Web API 'Lerine özgü diğer ayarlar, sunulan API ve sunulan kapsamlar ya da uy
 
 Kapsamlar genellikle form olur `resourceURI/scopeName` . Microsoft Graph için kapsamlar kısayollarına sahiptir. Örneğin, `User.Read` için bir kısayoldur `https://graph.microsoft.com/user.read` .
 
-Uygulama kaydı sırasında şu parametreleri tanımlamanız gerekir:
+Uygulama kaydı sırasında şu parametreleri tanımlayın:
 
 - Kaynak URI 'SI
 - Bir veya daha fazla kapsam
@@ -68,7 +68,7 @@ Varsayılan olarak, uygulama kayıt portalı Kaynak URI 'sini kullanmanızı ön
 
 İstemci uygulamalarında kapsamlar, *temsilci izinleri* olarak görünür ve uygulama rolleri, Web API 'niz için *Uygulama izinleri* olarak gösterilir.
 
-Kapsamlar, uygulamanızın kullanıcılarına sunulan izin penceresinde de görüntülenir. Bu nedenle, kapsamı tanımlayan karşılık gelen dizeleri sağlamanız gerekir:
+Kapsamlar, uygulamanızın kullanıcılarına sunulan izin penceresinde de görüntülenir. Bu nedenle, kapsamı tanımlayan karşılık gelen dizeleri sağlayın:
 
 - Bir kullanıcı tarafından görüldüğü gibi.
 - Bir kiracı yöneticisi tarafından görüldüğü gibi, yönetici onayı de verebilir.
@@ -99,7 +99,7 @@ Bu bölümde, Daemon uygulamalarının güvenli bir şekilde çağırabilmesi i�
 
 #### <a name="exposing-application-permissions-app-roles"></a>Uygulama izinlerini gösterme (uygulama rolleri)
 
-Uygulama izinlerini göstermek için bildirimi düzenlemeniz gerekir.
+Uygulama izinlerini göstermek için bildirimi düzenleyin.
 
 1. Uygulamanız için uygulama kaydında, **bildirim**' ı seçin.
 1. Bildirimi düzenlemek için `appRoles` ayarı bulun ve uygulama rollerini ekleyin. Rol tanımları aşağıdaki örnek JSON bloğunda verilmiştir.

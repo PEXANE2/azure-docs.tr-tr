@@ -13,12 +13,12 @@ ms.date: 11/22/2019
 ms.author: negoe
 ms.reviewer: marsma, nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 2f9396e20ae0f426dddd57b32297cfe98e135c44
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.openlocfilehash: 01a69dbf9230154b74145f932b678d6bbebbde08
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99225825"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99583968"
 ---
 # <a name="use-msal-in-a-national-cloud-environment"></a>Ulusal bir bulut ortamında MSAL kullanma
 
@@ -40,7 +40,7 @@ Başlamadan önce, bu önkoşulları karşıladığınızdan emin olun.
 
 ### <a name="choose-the-appropriate-identities"></a>Uygun kimlikleri seçin
 
-[Azure Kamu](../../azure-government/index.yml) uygulamaları, kullanıcıların kimliğini doğrulamak IÇIN Azure AD kamu kimliklerini ve Azure AD ortak kimliklerini kullanabilir. Bu kimliklerden herhangi birini kullanabilmeniz için senaryonuz için hangi yetkili uç noktasını seçmeniz gerektiğine karar vermeniz gerekir:
+[Azure Kamu](../../azure-government/index.yml) uygulamaları, kullanıcıların kimliğini doğrulamak IÇIN Azure AD kamu kimliklerini ve Azure AD ortak kimliklerini kullanabilir. Bu kimliklerden herhangi birini kullanabilmeniz için senaryonuz için hangi yetkili uç noktasını seçmeniz gerektiğine karar verin:
 
 - Azure AD Genel: genellikle kuruluşunuzun Microsoft 365 (public veya GCC) veya başka bir uygulamayı desteklemesi için bir Azure AD ortak kiracıya sahip olması halinde kullanılır.
 - Azure AD kamu: genellikle Kuruluşunuzda Office 365 (GCC High veya DoD) desteği için bir Azure AD kamu kiracısı zaten varsa veya Azure AD kamu 'da yeni bir kiracı oluşturmak için kullanılır.

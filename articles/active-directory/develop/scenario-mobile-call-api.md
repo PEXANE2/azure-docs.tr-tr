@@ -13,12 +13,12 @@ ms.date: 05/18/2020
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 601eefa7957972daa2d538e6ba0d9b7a5311c79d
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 656cb167fb47e44c28922afed75d8c46a460aaf1
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98756475"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584406"
 ---
 # <a name="call-a-web-api-from-a-mobile-app"></a>Mobil uygulamadan bir Web API 'SI çağırma
 
@@ -117,7 +117,7 @@ task.resume()
 
 ## <a name="make-several-api-requests"></a>Birkaç API isteği yapın
 
-Aynı API 'yi birkaç kez çağırmanız gerekiyorsa veya birden çok API çağırmanız gerekiyorsa, uygulamanızı oluştururken aşağıdaki konuları göz önünde bulundurun:
+Aynı API 'yi birkaç kez çağırmak veya birden çok API 'yi çağırmak için, uygulamanızı oluştururken aşağıdaki konuları göz önünde bulundurun:
 
 - **Artımlı izin**: Microsoft Identity platform, uygulamaların başlangıçta değil, izin gerektiğinde kullanıcı onayı almasına izin verir. Uygulamanız bir API 'yi çağırmaya her seferinde, yalnızca ihtiyaç duyacağı kapsamları istemesi gerekir.
 
@@ -125,7 +125,7 @@ Aynı API 'yi birkaç kez çağırmanız gerekiyorsa veya birden çok API çağ�
 
 ## <a name="call-several-apis-by-using-incremental-consent-and-conditional-access"></a>Artımlı onay ve koşullu erişim kullanarak birkaç API çağırın
 
-Aynı kullanıcı için birden çok API çağırmanız gerekiyorsa, Kullanıcı için bir belirteç aldıktan sonra, daha sonra `AcquireTokenSilent` bir belirteç almak üzere çağırarak kullanıcıdan kimlik bilgilerini tekrar tekrar sormaktan kaçınabilirsiniz:
+Aynı kullanıcı için birden çok API 'yi çağırmak için, Kullanıcı için bir belirteç aldıktan sonra, daha sonra `AcquireTokenSilent` bir belirteç almak üzere çağırarak kullanıcıdan kimlik bilgilerini tekrar tekrar sormaktan kaçınabilirsiniz:
 
 ```csharp
 var result = await app.AcquireTokenXX("scopeApi1")

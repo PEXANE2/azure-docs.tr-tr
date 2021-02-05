@@ -14,12 +14,12 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.topic: conceptual
 ms.workload: identity
-ms.openlocfilehash: 8935cb3208aadc2822af1f57067877f9cedcb931
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: e4021f0ca2c1c9ca9434744a4aebb4b7938315f0
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98064377"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584239"
 ---
 # <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Koşullu erişim Azure Active Directory için Geliştirici Kılavuzu
 
@@ -43,9 +43,9 @@ Azure AD için uygulama oluşturan geliştiriciler için, bu makalede Koşullu e
 
 ### <a name="app-types-impacted"></a>Etkilenen uygulama türleri
 
-Çoğu ortak durumda, koşullu erişim bir uygulamanın davranışını değiştirmez veya geliştiriciden herhangi bir değişiklik yapılmasını gerektirmez. Yalnızca bir uygulama bir hizmet için dolaylı olarak veya sessizce sessizce bir belirteç istediğinde, bir uygulama, koşullu erişimi "zorluk" işlemek için kod değişiklikleri gerektirir. Etkileşimli bir oturum açma isteği gerçekleştirmek kadar kolay olabilir.
+Çoğu ortak durumda, koşullu erişim bir uygulamanın davranışını değiştirmez veya geliştiriciden herhangi bir değişiklik yapılmasını gerektirmez. Yalnızca bir uygulama, bir hizmet için dolaylı veya sessizce sessizce bir belirteç istediğinde, bir uygulama koşullu erişim sorunlarını işlemek için kod değişiklikleri gerektirir. Etkileşimli bir oturum açma isteği gerçekleştirmek kadar kolay olabilir.
 
-Özellikle, aşağıdaki senaryolar koşullu erişimi "zorluk" işleyecek şekilde kod gerektirir:
+Özellikle, aşağıdaki senaryolar koşullu erişim sorunlarını işlemek için kod gerektirir:
 
 * Şirket adına akış gerçekleştiren uygulamalar
 * Birden çok hizmete/kaynağa erişen uygulamalar
@@ -54,7 +54,7 @@ Azure AD için uygulama oluşturan geliştiriciler için, bu makalede Koşullu e
 
 Koşullu erişim ilkeleri uygulamaya uygulanabilir, ancak uygulamanızın eriştiği bir Web API 'sine de uygulanabilir. Koşullu erişim ilkesini yapılandırma hakkında daha fazla bilgi edinmek için bkz. [hızlı başlangıç: koşullu erişim Azure Active Directory belirli uygulamalar IÇIN MFA gerektirme](../authentication/tutorial-enable-azure-mfa.md).
 
-Senaryoya bağlı olarak, bir kurumsal müşteri, koşullu erişim ilkelerini istediğiniz zaman uygulayabilir ve kaldırabilir. Yeni bir ilke uygulandığında uygulamanızın çalışmaya devam edebilmesi için, "Challenge" işlemesini uygulamanız gerekir. Aşağıdaki örneklerde, sınama işleme gösterilmektedir.
+Senaryoya bağlı olarak, bir kurumsal müşteri, koşullu erişim ilkelerini istediğiniz zaman uygulayabilir ve kaldırabilir. Yeni bir ilke uygulandığında uygulamanızın çalışmaya devam edebilmesi için, sınama işlemi gerçekleştirin. Aşağıdaki örneklerde, sınama işleme gösterilmektedir.
 
 ### <a name="conditional-access-examples"></a>Koşullu erişim örnekleri
 

@@ -8,13 +8,14 @@ ms.topic: conceptual
 ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
+ms.custom: subject-monitoring
 ms.date: 10/01/2020
-ms.openlocfilehash: 183d8b415ccb35d22dcc23ccf11d0707ad0778dd
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: c9b7230ca734bba1527ec5ecd975e1bae141a9b4
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97963664"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584694"
 ---
 # <a name="monitor-azure-machine-learning"></a>Azure Machine Learning'i izleme
 
@@ -164,7 +165,7 @@ Aşağıda, Azure Machine Learning kaynaklarınızı izlemenize yardımcı olmas
 
 Aşağıdaki tabloda Azure Machine Learning için ortak ve önerilen ölçüm uyarısı kuralları listelenmektedir:
 
-| Uyarı türü | Koşul | Açıklama |
+| Uyarı türü | Koşul | Description |
 |:---|:---|:---|
 | Model Dağıtımı başarısız oldu | Toplama türü: Toplam, Işleç: büyüktür, eşik değeri: 0 | Bir veya daha fazla model dağıtımı başarısız olduğunda |
 | Kota kullanım yüzdesi | Toplama türü: Average, Işleç: büyüktür, eşik değeri: 90| Kota kullanım yüzdesi %90 ' den büyük olduğunda |

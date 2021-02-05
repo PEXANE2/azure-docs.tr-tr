@@ -13,12 +13,12 @@ ms.date: 05/16/2019
 ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 428405fc200751d2581ad9ca6e8ec97382594c09
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 73dd7877b399d34a009c9fe479550eb1bf6dc0f1
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98064853"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99583985"
 ---
 # <a name="known-issues-on-internet-explorer-browsers-msaljs"></a>Internet Explorer tarayıcılarındaki bilinen sorunlar (MSAL.js)
 
@@ -39,7 +39,7 @@ Bunun nedeni, Internet Explorer 'ın yerel olarak bulunan JavaScript 'ı destekl
 Uygulamanızı üretime dağıtmak (Azure Web Apps 'te olduğu gibi) normalde ince çalışır ve bu da Son Kullanıcı açılan pencereleri kabul etmiş olarak sunulur. Internet Explorer 11 ile test ettik.
 
 ### <a name="running-locally"></a>Yerel olarak çalışıyor
-Uygulamanızı Internet Explorer 'da çalışan yerel olarak çalıştırmak ve hata ayıklamak istiyorsanız, aşağıdaki noktalara dikkat etmeniz gerekir (uygulamanızı farklı çalıştırmak istediğinizi varsayın *http://localhost:1234* ):
+Uygulamanızı Internet Explorer 'da çalışan yerel olarak çalıştırmak ve hata ayıklamak istiyorsanız, aşağıdaki noktalara dikkat edin (uygulamanızı farklı çalıştırmak istediğinizi varsayın *http://localhost:1234* ):
 
 - Internet Explorer 'ın, MSAL.js düzgün çalışmasını engelleyen "korumalı mod" adlı bir güvenlik mekanizması vardır. Belirtiler arasında, oturum açtıktan sonra, sayfa öğesine yeniden yönlendirilebilir http://localhost:1234/null .
 

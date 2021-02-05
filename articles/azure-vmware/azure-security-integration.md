@@ -2,13 +2,13 @@
 title: Azure Güvenlik Merkezi tümleştirmesiyle Azure VMware Çözüm sanal makinelerinizi koruyun
 description: Azure Güvenlik Merkezi 'nde tek bir panodan Azure VMware Çözüm sanal makinelerinizi Azure 'un yerel güvenlik araçlarıyla nasıl koruyacağınızı öğrenin.
 ms.topic: how-to
-ms.date: 11/06/2020
-ms.openlocfilehash: 66270c5abef48f9d9f30ed1b262a6b4f2f8144c8
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.date: 02/04/2021
+ms.openlocfilehash: 58cfa1e8e7faa56675d966f86d3b390e52acec27
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99061473"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584966"
 ---
 # <a name="protect-your-azure-vmware-solution-vms-with-azure-security-center-integration"></a>Azure Güvenlik Merkezi tümleştirmesiyle Azure VMware Çözüm sanal makinelerinizi koruyun
 
@@ -36,7 +36,12 @@ Uyarı algılama, tehdit görünürlüğü, proaktif arama ve tehdit yanıtı i�
 
 - Azure yerel hizmetleri, Azure 'da, Azure VMware çözümünde ve şirket içi hizmetlerde karma ortam güvenliği için kullanılabilir.
 - Log Analytics çalışma alanı kullanarak, verileri veya günlükleri tek bir noktaya toplayabilir ve aynı verileri farklı Azure yerel hizmetlerine sunabilirsiniz.
-- Azure Güvenlik Merkezi, dosya bütünlüğü izleme, dosya daha az saldırı algılama, işletim sistemi düzeltme eki değerlendirmesi, güvenlik yapılandırması belirleme değerlendirmesi ve uç nokta koruma değerlendirmesi gibi güvenlik özellikleri sağlar.
+- Azure Güvenlik Merkezi, aşağıdakiler dahil olmak üzere çeşitli özellikler sunar:
+    - Dosya bütünlüğünü izleme
+    - Dosya daha az saldırı algılama
+    - İşletim sistemi düzeltme eki değerlendirmesi 
+    - Güvenlik yapılandırması hataları değerlendirmesi
+    - Endpoint Protection değerlendirmesi
 - Azure Sentinel şunları yapmanıza olanak sağlar:
     - Hem şirket içinde hem de birden çok bulutta, tüm kullanıcılar, cihazlar, uygulamalar ve altyapıda bulut ölçeğinde veri toplayın.
     - Daha önce algılanmayan tehditleri algıla.
@@ -78,7 +83,7 @@ Azure Defender, Azure Güvenlik Merkezi 'nin Gelişmiş tehdit korumasını hem 
 5. **Kaynak ayrıntıları** sekmesinde, aşağıdaki ayrıntıları girin: 
     - Abonelik
     - Kaynak grubu
-    - Bölge 
+    - Region 
     - İşletim sistemi
     - Proxy sunucusu ayrıntıları
     
@@ -183,7 +188,7 @@ Veri kaynaklarını Azure Sentinel 'e bağladıktan sonra, algılanan tehditlere
 
 6. **Olay ayarları** sekmesinde, **Bu analiz kuralı tarafından tetiklenen uyarılardan olay oluştur** ' u etkinleştirin ve **Ileri ' yi seçin: otomatik yanıt >**.
  
-    :::image type="content" source="media/azure-security-integration/create-new-analytic-rule-wizard.png" alt-text="Azure Sentinel 'de, bu analiz kuralı tarafından tetiklenen uyarılardan olayları etkin olarak gösteren yeni bir kural oluşturmaya yönelik analitik Kural Sihirbazı ekran görüntüsü.":::
+    :::image type="content" source="media/azure-security-integration/create-new-analytic-rule-wizard.png" alt-text="Azure Sentinel 'de yeni bir kural oluşturmak için analitik Kural Sihirbazı 'nın ekran görüntüsü. Bu kural tarafından tetiklenen uyarılardan olayları etkin olarak gösterir.":::
 
 7. **İleri ' yi seçin: >gözden geçirin**.
 
@@ -235,6 +240,8 @@ Ortamınızdaki tehditleri belirlemek için sorgular oluşturabilir veya Azure S
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Defender panosunu](../security-center/azure-defender-dashboard.md)kullanmayı öğrenin.
-- [Azure Defender](../security-center/azure-defender.md)tarafından sunulan tam koruma aralığını bulun.
-- [Azure Sentinel 'de gelişmiş çok aşamalı saldırı algılama](../azure-monitor/learn/quick-create-workspace.md)hakkında bilgi edinin.
+Azure VMware Çözüm sanal makinelerinizi nasıl koruyabileceğinizi artık kapsadığınıza göre şunları öğrenmek isteyebilirsiniz:
+
+- [Azure Defender panosunu](../security-center/azure-defender-dashboard.md)kullanma.
+- [Azure Sentinel 'de gelişmiş çok aşamalı saldırı algılama](../azure-monitor/learn/quick-create-workspace.md).
+- [Azure VMware Çözüm VM 'Lerinin yaşam döngüsü yönetimi](lifecycle-management-of-azure-vmware-solution-vms.md).

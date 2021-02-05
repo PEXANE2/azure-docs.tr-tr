@@ -11,12 +11,12 @@ ms.date: 11/23/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: Otomatik veri işleme, belge işleme, otomatik veri girişi, form işleme
-ms.openlocfilehash: e1e5a4abf8eab96af62b160e28f98d95cf527eaf
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 2d3a37165994a8c7ff9d46ac24e63b7f58404ce3
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98044773"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584575"
 ---
 # <a name="what-is-form-recognizer"></a>Form Tanıma nedir?
 
@@ -87,13 +87,13 @@ Form tanıyıcı, yazdırılan ve el yazısı metin öğelerinin beklenen boyutl
 Form tanıyıcı ayrıca benzersiz form türlerinin otomatik veri işlemeye yönelik önceden oluşturulmuş modeller de içerir.
 
 ### <a name="prebuilt-invoice-model"></a>Önceden oluşturulmuş fatura modeli
-Önceden oluşturulmuş fatura modeli, verileri çeşitli biçimlerdeki faturalardan ayıklar ve yapılandırılmış verileri döndürür. Bu model, fatura KIMLIĞI, müşteri ayrıntıları, satıcı ayrıntıları, sevk yeri, fatura, toplam, vergi, alt toplam ve daha fazlası gibi önemli bilgileri ayıklar. Ayrıca, önceden oluşturulmuş fatura modeli, faturadaki tüm metin ve tabloları tanımak ve döndürmek için eğitilmiş olur. Daha fazla bilgi için [faturalara](./concept-invoices.md) kavramsal kılavuza bakın.
+Önceden oluşturulmuş fatura modeli, verileri çeşitli biçimlerdeki faturalardan ayıklar ve yapılandırılmış verileri döndürür. Bu model, fatura KIMLIĞI, müşteri ayrıntıları, satıcı ayrıntıları, sevk yeri, fatura, toplam, vergi, alt toplam ve daha fazlası gibi önemli bilgileri ayıklar. Ayrıca, önceden oluşturulmuş fatura modeli, faturadaki tüm metin ve tabloları çözümlemek ve döndürmek için eğitilmiş olur. Daha fazla bilgi için [faturalara](./concept-invoices.md) kavramsal kılavuza bakın.
 
 :::image type="content" source="./media/overview-invoices.jpg" alt-text="örnek fatura" lightbox="./media/overview-invoices.jpg":::
 
 ### <a name="prebuilt-receipt-model"></a>Önceden oluşturulmuş makbuz modeli
 
-Önceden oluşturulmuş makbuz modeli, Avustralya, Kanada, Büyük Britanya, Hindistan ve &mdash; Restoranlar, gaz istasyonları, perakende vb. tarafından kullanılan türden Birleşik Devletler İngilizce satış alındılarını okumak için kullanılır. Bu model, işlemin saati ve tarihi, ticari bilgiler, vergiler, satır öğeleri, toplamlar ve daha fazlası gibi önemli bilgileri ayıklar. Ayrıca, önceden oluşturulmuş makbuz modeli, bir Makbuzdaki tüm metni tanımak ve döndürmek için eğitilmiş olur. Daha fazla bilgi için bkz. [alındılar](./concept-receipts.md) kavramsal Kılavuzu.
+Önceden oluşturulmuş makbuz modeli, Avustralya, Kanada, Büyük Britanya, Hindistan ve &mdash; Restoranlar, gaz istasyonları, perakende vb. tarafından kullanılan türden Birleşik Devletler İngilizce satış alındılarını okumak için kullanılır. Bu model, işlemin saati ve tarihi, ticari bilgiler, vergiler, satır öğeleri, toplamlar ve daha fazlası gibi önemli bilgileri ayıklar. Ayrıca, önceden oluşturulmuş makbuz modeli, bir Makbuzdaki tüm metni çözümlemek ve döndürmek için eğitilmiş olur. Daha fazla bilgi için bkz. [alındılar](./concept-receipts.md) kavramsal Kılavuzu.
 
 :::image type="content" source="./media/overview-receipt.jpg" alt-text="örnek alındısı" lightbox="./media/overview-receipt.jpg":::
 
@@ -104,7 +104,7 @@ Iş kartları modeli, kişinin adı, iş unvanı, adres, e-posta, şirket ve tel
 :::image type="content" source="./media/overview-business-card.jpg" alt-text="örnek iş kartı" lightbox="./media/overview-business-card.jpg":::
 
 
-## <a name="get-started"></a>Kullanmaya başlayın
+## <a name="get-started"></a>başlarken
 
 Formlarınızın verileri çıkarmaya başlamak için [örnek form tanıyıcı aracını](https://fott.azurewebsites.net/) kullanın veya bir hızlı başlangıcı izleyin. Teknolojiyi öğrenirken ücretsiz hizmeti kullanmanızı öneririz. Ücretsiz sayfa sayısının ayda 500 ile sınırlı olduğunu unutmayın.
 
@@ -171,4 +171,4 @@ Tüm bilişsel hizmetlerde olduğu gibi, form tanıyıcı hizmetini kullanan gel
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Form tanıyıcıyla seçtiğiniz dilde bir form işleme uygulaması yazmaya başlamak için [hızlı](quickstarts/client-library.md) başlangıcı doldurun.
+Seçtiğiniz geliştirme dilinde form tanıyıcı ile bir form işleme uygulaması yazmaya başlamak için [hızlı](quickstarts/client-library.md) başlangıcı doldurun.

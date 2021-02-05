@@ -13,12 +13,12 @@ ms.date: 04/10/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: b437efcfa2b0bb2a725929ae0253f48d97d11552
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 2b8577af2c8a6296ae6f4f090e8ff233e51ee6fb
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98754826"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99583934"
 ---
 # <a name="migrating-applications-to-msalnet"></a>Uygulamaları MSAL.NET 'a geçirme
 
@@ -145,7 +145,7 @@ MSAL.NET, belirteç önbelleğini, genişletme özelliğini kaldırarak kapalı 
 
 V 1.0 sürümünde, `https://login.microsoftonline.com/common` yetkilisini kullanıyorsanız, kullanıcıların herhangi BIR AAD hesabıyla oturum açmalarına izin verirsiniz (herhangi bir kuruluş için). Bkz. [adal.net 'de yetkili doğrulaması](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/AuthenticationContext:-the-connection-to-Azure-AD#authority-validation)
 
-`https://login.microsoftonline.com/common`Yetkilisini v 2.0 'da kullanıyorsanız, kullanıcıların herhangi BIR AAD organizasyonu veya Microsoft Kişisel hesabı (MSA) ile oturum açmalarına izin verirsiniz. MSAL.NET ' de, herhangi bir AAD hesabında (ADAL.NET ile aynı davranış) oturum açmayı kısıtlamak istiyorsanız, kullanmanız gerekir `https://login.microsoftonline.com/organizations` . Ayrıntılar için bkz `authority` . [genel istemci uygulamasındaki](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Client-Applications#publicclientapplication)parametresi.
+`https://login.microsoftonline.com/common`Yetkilisini v 2.0 'da kullanıyorsanız, kullanıcıların herhangi BIR AAD organizasyonu veya Microsoft Kişisel hesabı (MSA) ile oturum açmalarına izin verirsiniz. MSAL.NET ' de, oturum açmayı herhangi bir AAD hesabıyla kısıtlamak isterseniz (ADAL.NET ile aynı davranış), kullanın `https://login.microsoftonline.com/organizations` . Ayrıntılar için bkz `authority` . [genel istemci uygulamasındaki](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Client-Applications#publicclientapplication)parametresi.
 
 ## <a name="v10-and-v20-tokens"></a>v 1.0 ve v 2.0 belirteçleri
 
@@ -182,7 +182,7 @@ string[] scopes = { ResourceId + "Directory.Read", ResourceId + "Directory.Write
 
 #### <a name="warning-should-you-have-one-or-two-slashes-in-the-scope-corresponding-to-a-v10-web-api"></a>Uyarı: bir v 1.0 Web API 'sine karşılık gelen kapsamda bir veya iki eğik çizgi olmalıdır
 
-Azure Resource Manager API 'sine karşılık gelen kapsamı yazmak istiyorsanız ( https://management.core.windows.net/) aşağıdaki kapsamı istemeniz gerekir (iki eğik çizgi)
+Azure Resource Manager API 'sine karşılık gelen kapsamı yazmak isterseniz ( https://management.core.windows.net/) aşağıdaki kapsamı isteyin (iki eğik çizgi).
 
 ```csharp
 var scopes = new[] {"https://management.core.windows.net//user_impersonation"};

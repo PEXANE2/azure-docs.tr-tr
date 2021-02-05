@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/13/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40
-ms.openlocfilehash: bbcebfd69789eb6ec03e565b347d05533043781c
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 4c4158fe9c976ca214409ef4c0c9833c610ee34c
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98232344"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584339"
 ---
 # <a name="tutorial-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>Öğretici: Evrensel Windows Platformu (UWP) uygulamasından Microsoft Graph API 'sini çağırma
 
@@ -34,7 +34,7 @@ Bu öğreticide:
 > * Microsoft Graph API 'sini çağırmak için kod ekleme
 > * Uygulamayı test etme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) [Evrensel Windows platformu geliştirme](/windows/uwp/get-started/get-set-up) iş yükü yüklendi
 
@@ -292,7 +292,7 @@ private async void SignOutButton_Click(object sender, RoutedEventArgs e)
     }
 ```
 
-MSAL.NET, belirteçleri almak veya hesapları işlemek için zaman uyumsuz yöntemler kullanır. UI iş parçacığında Kullanıcı Arabirimi eylemlerini desteklemeniz gerekir. Bu, `Dispatcher.RunAsync` çağrının ve çağrı önleminden dolayı nedenidir `ConfigureAwait(false)` .
+MSAL.NET, belirteçleri almak veya hesapları işlemek için zaman uyumsuz yöntemler kullanır. Bu nedenle, UI iş parçacığında Kullanıcı Arabirimi eylemlerini destekler. Bu, `Dispatcher.RunAsync` çağrının ve çağrı önleminden dolayı nedenidir `ConfigureAwait(false)` .
 
 #### <a name="more-information-about-signing-out"></a>Oturumu kapatma hakkında daha fazla bilgi<a name="more-information-on-sign-out"></a>
 
@@ -343,7 +343,7 @@ private async Task DisplayMessageAsync(string message)
 
 ## <a name="register-your-application"></a>Uygulamanızı kaydetme
 
-Şimdi uygulamanızı kaydetmeniz gerekir:
+Şimdi, uygulamanızı kaydedin:
 
 1. <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>oturum açın.
 1. Birden fazla kiracıya erişiminiz varsa, uygulamayı kaydetmek istediğiniz kiracıyı seçmek için üst menüdeki **Dizin + abonelik** filtresini kullanın :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: .

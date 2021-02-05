@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 06/16/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: ebc22e3cf300b664aae5842f7cf924769d4d907e
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 1187c768a54dd04d25b6de0e6785ebb81a7dfc24
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98756492"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584440"
 ---
 # <a name="configure-a-mobile-app-that-calls-web-apis"></a>Web API 'Lerini çağıran bir mobil uygulama yapılandırma
 
@@ -27,7 +27,7 @@ Uygulamanızı oluşturduktan sonra, uygulama kayıt parametrelerini kullanarak 
 
 Aşağıdaki Microsoft kimlik doğrulama kitaplığı (MSAL) türleri mobil uygulamaları destekler.
 
-MSAL | Açıklama
+MSAL | Description
 ------------ | ----------
 ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | Taşınabilir uygulamalar geliştirmek için kullanılır. MSAL.NET, mobil uygulama oluşturmak için aşağıdaki platformları destekler: Evrensel Windows Platformu (UWP), Xamarin. iOS ve Xamarin. Android.
 ![MSAL. iOS](media/sample-v2-code/logo_iOS.png) <br/> MSAL. iOS | Hedef-C veya Swift kullanarak Yerel iOS uygulamaları geliştirmek için kullanılır.
@@ -82,7 +82,7 @@ Aşağıdaki bölümlerde, uygulamanın örneğini oluşturma hakkında daha faz
 
 ##### <a name="specify-the-parent-ui-window-or-activity"></a>Üst Kullanıcı arabirimini, pencereyi veya etkinliği belirtin
 
-Android 'de, etkileşimli kimlik doğrulaması yapmadan önce üst etkinliği geçirmeniz gerekir. İOS 'ta, bir aracı kullandığınızda geçiş yapmanız gerekir `ViewController` . UWP 'de aynı şekilde, üst pencereyi geçirmek isteyebilirsiniz. Belirteci aldığınızda bu dosyayı geçirirsiniz. Ancak uygulamayı oluştururken, döndüren bir temsilci olarak geri çağırma de belirtebilirsiniz `UIParent` .
+Android 'de etkileşimli kimlik doğrulaması yapmadan önce üst etkinliği geçirin. İOS 'ta, bir aracı kullandığınızda geçiş yapın `ViewController` . UWP 'de aynı şekilde, üst pencereyi geçirmek isteyebilirsiniz. Belirteci aldığınızda bu dosyayı geçirirsiniz. Ancak uygulamayı oluştururken, döndüren bir temsilci olarak geri çağırma de belirtebilirsiniz `UIParent` .
 
 ```csharp
 IPublicClientApplication application = PublicClientApplicationBuilder.Create(clientId)

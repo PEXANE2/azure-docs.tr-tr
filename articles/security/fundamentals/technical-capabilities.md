@@ -2,20 +2,21 @@
 title: Azure 'da güvenlik teknik özellikleri-Microsoft Azure
 description: Azure 'da verilerinizi, kaynaklarınızı ve uygulamalarınızı bulutta korumanıza yardımcı olan güvenlik hizmetlerine giriş.
 services: security
-author: terrylanfear
+author: TerryLanfear
+manager: rkarlin
 ms.assetid: ''
 ms.service: security
 ms.subservice: security-fundamentals
 ms.devlang: na
 ms.topic: article
-ms.date: 07/13/2020
+ms.date: 02/04/2021
 ms.author: terrylan
-ms.openlocfilehash: 353b1708a1c6014f9108ad2be62f22c1e0b0604c
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 6e0642a2124d58bb3af483313ac824568b6bbb39
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99092777"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99585152"
 ---
 # <a name="azure-security-technical-capabilities"></a>Azure güvenliğe yönelik teknik özellikler
 Bu makalede, Azure 'da verilerinizi, kaynaklarınızı ve uygulamalarınızı korumanıza ve işletmenizin güvenlik ihtiyaçlarını karşılamanıza yardımcı olan güvenlik hizmetlerine giriş sunulmaktadır.
@@ -431,20 +432,6 @@ Resource Manager çeşitli avantajlar sunar:
 > [!Note]
 > Resource Manager çözümlerinizi dağıtmanın ve yönetmenin yeni bir yolunu sunar. Önceki dağıtım modelini kullandıysanız ve değişiklikler hakkında bilgi edinmek istiyorsanız bkz. [Kaynak Yöneticisi dağıtımı ve klasik dağıtımı anlama](../../azure-resource-manager/management/deployment-models.md).
 
-## <a name="next-steps"></a>Sonraki adımlar
+## <a name="next-step"></a>Sonraki adım
 
-Ayrıntılı güvenlik konularımızın bazılarını okuyarak güvenlik hakkında daha fazla bilgi edinin:
-
-- [Denetim ve günlüğe kaydetme](https://www.microsoft.com/en-us/trustcenter/security/auditingandlogging)
-
-- [Siber suç](https://www.microsoft.com/en-us/trustcenter/security/cybercrime)
-
-- [Tasarım ve operasyonel güvenlik](https://www.microsoft.com/en-us/trustcenter/security/designopsecurity)
-
-- [Şifreleme](https://www.microsoft.com/en-us/trustcenter/security/encryption)
-
-- [Kimlik ve erişim yönetimi](https://www.microsoft.com/en-us/trustcenter/security/identity)
-
-- [Ağ güvenliği](https://www.microsoft.com/en-us/trustcenter/security/networksecurity)
-
-- [Tehdit yönetimi](https://www.microsoft.com/en-us/trustcenter/security/threatmanagement)
+[Azure Güvenlik kıyaslama](../benchmarks/introduction.md) programı, Azure 'da kullandığınız hizmetlerin güvenliğini sağlamaya yardımcı olmak için kullanabileceğiniz bir güvenlik önerileri koleksiyonu içerir.

@@ -12,27 +12,22 @@ ms.workload: identity
 ms.date: 09/17/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: c7abad31c9936729b8d9c19ed2efcb841ac103ca
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: e4a47112d2f66edc8af9b7f100d48bc205f2e85e
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98756239"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584306"
 ---
 # <a name="web-app-that-signs-in-users-move-to-production"></a>Kullanıcılara oturum açan Web uygulaması: üretime taşı
 
-Artık, Web API 'Lerini çağırmaya yönelik bir belirteç almayı öğrenmiş olduğunuza göre, bunu üretime taşımayı öğrenin.
+Artık, Web API 'Lerini çağırmaya yönelik bir belirteç almayı öğrenmiş olduğunuza göre, uygulamanızı üretime taşırken göz önünde bulundurmanız gereken bazı şeyler aşağıda verilmiştir.
 
-[!INCLUDE [Move to production common steps](../../../includes/active-directory-develop-scenarios-production.md)]
+[!INCLUDE [Common steps to move to production](../../../includes/active-directory-develop-scenarios-production.md)]
 
 ## <a name="troubleshooting"></a>Sorun giderme
-
-> [!NOTE]
-> Kullanıcılar Web uygulamasında ilk kez oturum açtığında, onaylaması gerekir. Ancak, bazı kuruluşlarda kullanıcılar aşağıdakine benzer bir ileti görebilir:
->
-> *AppName, kuruluşunuzda yalnızca bir yöneticinin verebileceği kaynaklara erişmek için izinlere ihtiyaç duyuyor. Bu uygulamayı kullanabilmeniz için lütfen bir yöneticiye bu uygulamaya izin vermesini isteyin.*
->
-> Bunun nedeni, kiracı yöneticinizin kullanıcıların onay iznini **devre dışı** bırakmış olması. Bu durumda, kiracı yöneticilerinizle iletişime geçerek uygulamanın gerektirdiği kapsamlar için yönetici onayı oluşturmaları gerekir.
+Kullanıcılar Web uygulamasında ilk kez oturum açtığında, onaylaması gerekir. Ancak, bazı kuruluşlarda, kullanıcılar aşağıdaki gibi bir ileti görebilir: *AppName, kuruluşunuzda yalnızca bir yöneticinin verebileceği kaynaklara erişmek için izinlere ihtiyaç duyuyor olabilir. Bu uygulamayı kullanabilmeniz için lütfen bir yöneticiye bu uygulamaya izin vermesini isteyin.*
+Bunun nedeni, kiracı yöneticinizin kullanıcıların onay iznini **devre dışı** bırakmış olması. Bu durumda, kiracı yöneticilerinizle iletişime geçerek uygulamanın gerektirdiği kapsamlar için yönetici onayı oluşturmaları gerekir.
 
 ## <a name="same-site"></a>Aynı site
 

@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 1fd4279cd35e54e2e04f88973c4a825218a75142
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 4cd762d6c264d95ecb1bd0f3f4c3a4d96eb5a57d
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98131143"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99585101"
 ---
 # <a name="form-recognizer-prebuilt-business-cards-model"></a>Form tanıyıcı önceden oluşturulmuş iş kartları modeli 
 
@@ -35,7 +35,7 @@ Azure form tanıyıcı, önceden oluşturulmuş iş kartları modelini kullanara
 |:-----|:----|:----|:----|
 | ContactNames | nesne dizisi | İş kartından ayıklanan kişi adı | [{"FirstName": "John", "LastName": "tikan"}] |
 | FirstName | string | İlk (verilen) kişi adı | \ | 
-| LastName | string | Kişinin son (aile) adı |   In | 
+| LastName | string | Kişinin son (aile) adı |     In | 
 | CompanyNames | dize dizisi | Şirket adı, iş kartından ayıklandı | ["Contoso"] | 
 | Departmanlar | dize dizisi | Kişinin Departmanı veya kuruluşu | ["R&D"] | 
 | İş başlıkları | dize dizisi | İlgili kişinin Iş unvanı | ["Yazılım mühendisi"] | 
@@ -45,7 +45,7 @@ Azure form tanıyıcı, önceden oluşturulmuş iş kartları modelini kullanara
 | Mobiletelefonlar | telefon numaraları dizisi | İş kartından ayıklanan cep telefonu numarası | ["+ 19876543210"] |
 | Yazdırılacağı | telefon numaraları dizisi | İş kartından ayıklanan Faks telefon numarası | ["+ 19876543211"] |
 | Iş telefonları | telefon numaraları dizisi | İş kartından ayıklanan iş telefonu numarası | ["+ 19876543231"] |
-| Diğer telefonlar    | telefon numaraları dizisi | İş kartından ayıklanan diğer telefon numarası | ["+ 19876543233"] |
+| Diğer telefonlar     | telefon numaraları dizisi | İş kartından ayıklanan diğer telefon numarası | ["+ 19876543233"] |
 
 
 Iş kartı API 'SI Ayrıca, Iş kartından tanınan tüm metinleri de döndürebilir. Bu OCR çıkışı JSON yanıtına dahildir.  

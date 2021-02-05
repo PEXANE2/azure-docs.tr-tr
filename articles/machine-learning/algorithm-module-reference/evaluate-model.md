@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 07/27/2020
-ms.openlocfilehash: 9abf5a17330566aee2414b8499f228d297880cbf
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 39bdf9cb0c97e19a67b23046c6f06b60daa30147
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323790"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584949"
 ---
 # <a name="evaluate-model-module"></a>Model modülünü değerlendir
 
@@ -34,7 +34,7 @@ Eğitilen bir modelin doğruluğunu ölçmek için bu modülü kullanın. Bir mo
 
 
 ## <a name="how-to-use-evaluate-model"></a>Modeli değerlendir kullanma
-1. [Puanlama modelinin](./score-model.md) **puanlanmış veri kümesi** çıkışını veya [veri](./assign-data-to-clusters.md) kümesi çıkışını, **modeli değerlendir** ' in sol giriş bağlantı noktasına bağlayın. 
+1. [Puanlama modelinin](./score-model.md) **puanlanmış veri kümesi** çıkışını veya [veri](./assign-data-to-clusters.md) kümesi çıkışını, **modeli değerlendir**' in sol giriş bağlantı noktasına bağlayın. 
     > [!NOTE] 
     > Giriş veri kümesinin bir bölümünü seçmek için "veri kümesindeki sütunları seçme" gibi modüller kullanıyorsanız, lütfen AUC gibi ölçümleri hesaplamak için gerçek etiket sütununun (eğitiminde kullanılan), ' puanlanmış olasılıkların ' sütununun ve ' puanlanmış Etiketler ' sütununun mevcut olduğundan emin olun.
     > Çok sınıflı sınıflandırma/gerileme için ölçümleri hesaplamak üzere gerçek etiket sütunu, ' puanlanmış Etiketler ' sütunu var.
@@ -48,7 +48,7 @@ Eğitilen bir modelin doğruluğunu ölçmek için bu modülü kullanın. Bir mo
     > + Birden çok sınıflandırma görevi için, değerlendirilecek veri kümesinin, puanlanmış etiketleri temsil eden adlı bir sütunu olmalıdır `Multi Class Scored Labels` .
     > Yukarı akış modülünün çıktılarında bu sütunlar yoksa, yukarıdaki gereksinimlere göre değiştirmeniz gerekir.
 
-2. Seçim [Puan modelinin puın](./score-model.md) veri **kümesi** çıkışını veya ikinci model için veri kümesi çıkışının, **modeli değerlendir** ' in **doğru** giriş bağlantı noktasına bağlanmasını sağlar. Aynı verilerdeki iki farklı modelden sonuçları kolayca karşılaştırabilirsiniz. İki giriş algoritması aynı algoritma türünde olmalıdır. Ya da, farklı parametrelerle aynı veriler üzerinde bulunan iki farklı çalıştırmaların puanlarını karşılaştırabilirsiniz.
+2. Seçim [Puan modelinin puın](./score-model.md) veri **kümesi** çıkışını veya ikinci model için veri kümesi çıkışının, **modeli değerlendir**' in **doğru** giriş bağlantı noktasına bağlanmasını sağlar. Aynı verilerdeki iki farklı modelden sonuçları kolayca karşılaştırabilirsiniz. İki giriş algoritması aynı algoritma türünde olmalıdır. Ya da, farklı parametrelerle aynı veriler üzerinde bulunan iki farklı çalıştırmaların puanlarını karşılaştırabilirsiniz.
 
     > [!NOTE]
     > Algoritma türü ' Machine Learning algoritmaları ' altında ' Iki sınıf sınıflandırma ', ' çok sınıf sınıflandırması ', ' gerileme ', ' Kümeleme ' anlamına gelir. 
@@ -57,7 +57,7 @@ Eğitilen bir modelin doğruluğunu ölçmek için bu modülü kullanın. Bir mo
 
 ## <a name="results"></a>Sonuçlar
 
-**Modeli değerlendir** ' i çalıştırdıktan sonra, sağ taraftaki **modeli değerlendir** gezinti bölmesini açmak için modülü seçin.  Ardından, **çıktılar + Günlükler** sekmesini seçin ve bu sekmede **veri çıkışları** bölümünde çeşitli simgeler bulunur. **Görselleştirilecek** simge çubuk grafik simgesine sahiptir ve sonuçları görmek için ilk yoldur.
+**Modeli değerlendir**' i çalıştırdıktan sonra, sağ taraftaki **modeli değerlendir** gezinti bölmesini açmak için modülü seçin.  Ardından, **çıktılar + Günlükler** sekmesini seçin ve bu sekmede **veri çıkışları** bölümünde çeşitli simgeler bulunur. **Görselleştirilecek** simge çubuk grafik simgesine sahiptir ve sonuçları görmek için ilk yoldur.
 
 İkili sınıflandırma için, **görselleştirin** simgesini tıkladıktan sonra ikili karışıklık matrisini görselleştirebilirsiniz.
 Çoklu sınıflandırma için, karışıklıklar **+ Günlükler** sekmesinde aşağıdaki gibi karışıklığa matris çizim dosyasını bulabilirsiniz:
@@ -94,7 +94,7 @@ Aşağıdaki ölçümler, ikili sınıflandırma modelleri değerlendirilirken r
   
 -   **F1 puanı** ağırlıklı duyarlık ortalaması olarak hesaplanır ve en ideal F1 puanı değerinin 1 olduğu 0 ile 1 arasında geri çağırır.  
   
--   **AUC** , y ekseninde gerçek pozitifler ve x ekseninde hatalı pozitif sonuçlar ile çizilen eğrinin altındaki alanı ölçer. Bu ölçüm, farklı türlerin modellerini karşılaştırmanızı sağlayan tek bir sayı sağladığından yararlıdır.  
+-   **AUC** , y ekseninde gerçek pozitifler ve x ekseninde hatalı pozitif sonuçlar ile çizilen eğrinin altındaki alanı ölçer. Bu ölçüm, farklı türlerin modellerini karşılaştırmanızı sağlayan tek bir sayı sağladığından yararlıdır. AUC sınıflandırma-eşik sabiti. Ölçüm eşiğinin ne kadar seçili olduğuna bakılmaksızın modelin tahminlerinin kalitesini ölçer.
 
 
 ### <a name="metrics-for-regression-models"></a>Regresyon modelleriyle ilgili ölçümler
@@ -113,7 +113,7 @@ Regresyon modelleri için döndürülen ölçümler, hata miktarını tahmin etm
   
 
   
-- Genellikle R <sup>2</sup>olarak anılan **belirleme katsayısı** , modelin tahmine dayalı gücünü 0 ile 1 arasında bir değer olarak temsil eder. Sıfır, modelin rastgele olduğu anlamına gelir (hiçbir şey açıklar); 1, mükemmel bir uyum olduğu anlamına gelir. Ancak, düşük değerler tamamen normal olabilir ve yüksek değerler şüpheli olduğundan, R<sup>2</sup> değerlerini yorumlamak için dikkatli bir değer kullanılmalıdır.
+- Genellikle R <sup>2</sup>olarak anılan **belirleme katsayısı**, modelin tahmine dayalı gücünü 0 ile 1 arasında bir değer olarak temsil eder. Sıfır, modelin rastgele olduğu anlamına gelir (hiçbir şey açıklar); 1, mükemmel bir uyum olduğu anlamına gelir. Ancak, düşük değerler tamamen normal olabilir ve yüksek değerler şüpheli olduğundan, R<sup>2</sup> değerlerini yorumlamak için dikkatli bir değer kullanılmalıdır.
 
 ###  <a name="metrics-for-clustering-models"></a>Kümeleme modelleriyle ilgili ölçümler
 
@@ -125,7 +125,7 @@ Kümeleme modelleri birçok yönden sınıflandırmadan ve regresyon modellerind
   
 Kümeleme modellerini değerlendirmek için aşağıdaki ölçümler raporlanır.
     
--   Sütundaki puanlar, **diğer merkezine ortalama mesafe** , ne kadar yakın, ortalama, kümedeki her noktanın diğer tüm kümelerin centroıd 'leri olduğunu gösterir.   
+-   Sütundaki puanlar, **diğer merkezine ortalama mesafe**, ne kadar yakın, ortalama, kümedeki her noktanın diğer tüm kümelerin centroıd 'leri olduğunu gösterir.   
 
 -   **Küme merkezine ortalama mesafe** olan sütundaki puanlar, bir kümedeki tüm noktaların o kümenin centroıd değerine kadar olan yaklaşımını temsil eder.  
   

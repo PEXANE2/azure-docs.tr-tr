@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: 38115f18d9b35545912fad97767f38fd3827d626
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: 8c740e2868d2cd2033bc896f9b6ca897b38e922f
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99559986"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584830"
 ---
 # <a name="azure-resources-for-qna-maker"></a>Soru-Cevap Oluşturma için Azure kaynakları
 
@@ -134,6 +134,94 @@ Soru-Cevap Oluşturma yönetilen ücretsiz bir hizmettir ve aktarım hızı şu 
 
 ---
 
+## <a name="keys-in-qna-maker"></a>Soru-Cevap Oluşturma anahtarlar
+
+# <a name="qna-maker-ga-stable-release"></a>[Soru-Cevap Oluşturma GA (kararlı sürüm)](#tab/v1)
+
+Soru-Cevap Oluşturma hizmetiniz iki tür anahtara sahiptir: uygulama hizmetinde barındırılan çalışma zamanında kullanılan anahtar ve **sorgu uç noktası anahtarları** **yazma** .
+
+API aracılığıyla hizmete istek yaparken bu anahtarları kullanın.
+
+![Anahtar yönetimi](../media/qnamaker-how-to-key-management/key-management.png)
+
+|Ad|Konum|Amaç|
+|--|--|--|
+|Yazma/abonelik anahtarı|[Azure portalı](https://azure.microsoft.com/free/cognitive-services/)|Bu anahtarlar [soru-cevap oluşturma Management Service API 'lerine](/rest/api/cognitiveservices/qnamaker4.0/knowledgebase)erişmek için kullanılır. Bu API 'Ler, bilgi bankasındaki soruları ve yanıtları düzenlemenize ve bilgi tabanınızı yayımlamanıza olanak sağlar. Yeni bir Soru-Cevap Oluşturma hizmeti oluşturduğunuzda bu anahtarlar oluşturulur.<br><br>Bu anahtarları **anahtarlar** sayfasındaki bilişsel **Hizmetler** kaynağında bulabilirsiniz.|
+|Sorgu uç noktası anahtarı|[Soru-Cevap Oluşturma portalı](https://www.qnamaker.ai)|Bu anahtarlar, bir Kullanıcı sorusu için yanıt almak üzere yayımlanmış bilgi tabanı uç noktasını sorgulamak için kullanılır. Bu sorgu uç noktasını genellikle sohbet bot 'inizdeki veya Soru-Cevap Oluşturma hizmetine bağlanan istemci uygulama kodunda kullanırsınız. Bu anahtarlar Soru-Cevap Oluşturma bilgi bankasını yayımladığınızda oluşturulur.<br><br>Bu anahtarları **hizmet ayarları** sayfasında bulabilirsiniz. Bu sayfayı, açılan menüdeki sayfanın sağ üst kısmındaki kullanıcının menüsünden bulabilirsiniz.|
+
+### <a name="find-authoring-keys-in-the-azure-portal"></a>Azure portal yazma anahtarlarını bulma
+
+Yazma anahtarlarınızı, Soru-Cevap Oluşturma kaynağı oluşturduğunuz Azure portal görüntüleyebilir ve sıfırlayabilirsiniz. Bu anahtarlara abonelik anahtarları denir.
+
+1. Azure portal Soru-Cevap Oluşturma kaynağına gidin ve bilişsel _Hizmetler_ türünün bulunduğu kaynağı seçin:
+
+    ![Soru-Cevap Oluşturma kaynak listesi](../media/qnamaker-how-to-key-management/qnamaker-resource-list.png)
+
+2. **Anahtarlara** git:
+
+    ![Abonelik anahtarı](../media/qnamaker-how-to-key-management/subscription-key.PNG)
+
+### <a name="find-query-endpoint-keys-in-the-qna-maker-portal"></a>Soru-Cevap Oluşturma portalında sorgu uç noktası anahtarlarını bulma
+
+Uç nokta anahtarları bilgi tabanına çağrı yapmak için kullanıldığından, uç nokta kaynakla aynı bölgededir.
+
+Uç nokta anahtarları [soru-cevap oluşturma portalından](https://qnamaker.ai)yönetilebilir.
+
+1. [Soru-cevap oluşturma portalında](https://qnamaker.ai)oturum açın, profilinize gidin ve ardından **hizmet ayarları**' nı seçin:
+
+    ![Uç nokta anahtarı](../media/qnamaker-how-to-key-management/Endpoint-keys.png)
+
+2. Anahtarlarınızı görüntüleyin veya sıfırlayın:
+
+    > [!div class="mx-imgBorder"]
+    > ![Uç nokta anahtar Yöneticisi](../media/qnamaker-how-to-key-management/Endpoint-keys1.png)
+
+    >[!NOTE]
+    >Tehlikede olduğunu düşünüyorsanız, anahtarlarınızı yenileyin. Bu, istemci uygulamanızda veya bot kodunuzda ilgili değişiklikleri gerektirebilir.
+
+# <a name="qna-maker-managed-preview-release"></a>[Soru-Cevap Oluşturma Managed (Önizleme sürümü)](#tab/v2)
+
+Soru-Cevap Oluşturma yönetilen (Önizleme) hizmetiniz, iki tür anahtar ile ilgilidir: müşterinin aboneliğindeki hizmete erişmek için kullanılan **yazma anahtarları** ve **Azure bilişsel arama anahtarları** .
+
+API aracılığıyla hizmete istek yaparken bu anahtarları kullanın.
+
+![Anahtar yönetimi ile yönetilen Önizleme](../media/qnamaker-how-to-key-management/qnamaker-v2-key-management.png)
+
+|Ad|Konum|Amaç|
+|--|--|--|
+|Yazma/abonelik anahtarı|[Azure portalı](https://azure.microsoft.com/free/cognitive-services/)|Bu anahtarlar [soru-cevap oluşturma Management Service API 'lerine](/rest/api/cognitiveservices/qnamaker4.0/knowledgebase)erişmek için kullanılır. Bu API 'Ler, bilgi bankasındaki soruları ve yanıtları düzenlemenize ve bilgi tabanınızı yayımlamanıza olanak sağlar. Yeni bir Soru-Cevap Oluşturma hizmeti oluşturduğunuzda bu anahtarlar oluşturulur.<br><br>Bu anahtarları **anahtarlar** sayfasındaki bilişsel **Hizmetler** kaynağında bulabilirsiniz.|
+|Azure Bilişsel Arama yönetici anahtarı|[Azure portalı](../../../search/search-security-api-keys.md)|Bu anahtarlar, kullanıcının Azure aboneliğinde dağıtılan Azure bilişsel arama hizmeti ile iletişim kurmak için kullanılır. Soru-Cevap Oluşturma yönetilen (Önizleme) hizmeti ile bir Azure bilişsel aramayı ilişkilendirdiğinizde, yönetici anahtarı otomatik olarak Soru-Cevap Oluşturma hizmetine geçirilir. <br><br>Bu anahtarları **anahtarlar** sayfasında **Azure bilişsel arama** kaynağında bulabilirsiniz.|
+
+### <a name="find-authoring-keys-in-the-azure-portal"></a>Azure portal yazma anahtarlarını bulma
+
+Yazma anahtarlarınızı, Soru-Cevap Oluşturma yönetilen (Önizleme) kaynağını oluşturduğunuz Azure portal görüntüleyebilir ve sıfırlayabilirsiniz. Bu anahtarlara abonelik anahtarları denir.
+
+1. Azure portal Soru-Cevap Oluşturma yönetilen (Önizleme) kaynağına gidin ve bilişsel *Hizmetler* türüne sahip kaynağı seçin:
+
+    ![Soru-Cevap Oluşturma yönetilen (Önizleme) kaynak listesi](../media/qnamaker-how-to-key-management/qnamaker-v2-resource-list.png)
+
+2. **Anahtarlar ve uç nokta**'a git:
+
+    ![Soru-Cevap Oluşturma yönetilen (Önizleme) abonelik anahtarı](../media/qnamaker-how-to-key-management/subscription-key-v2.png)
+
+### <a name="update-the-resources"></a>Kaynakları güncelleştirme
+
+Bilgi tabanınız tarafından kullanılan kaynakları nasıl yükselteceğinizi öğrenin. Soru-Cevap Oluşturma yönetilen (Önizleme), önizleme aşamasında **ücretsizdir** . 
+
+---
+
+## <a name="management-service-region"></a>Yönetim hizmeti bölgesi
+
+# <a name="qna-maker-ga-stable-release"></a>[Soru-Cevap Oluşturma GA (kararlı sürüm)](#tab/v1)
+
+Soru-Cevap Oluşturma yönetim hizmeti yalnızca Soru-Cevap Oluşturma portalı ve ilk veri işleme için kullanılır. Bu hizmet yalnızca **Batı ABD** bölgesinde kullanılabilir. Bu Batı ABD hizmetinde hiçbir müşteri verisi depolanmaz.
+
+# <a name="qna-maker-managed-preview-release"></a>[Soru-Cevap Oluşturma Managed (Önizleme sürümü)](#tab/v2)
+
+Soru-Cevap Oluşturma yönetilen (Önizleme) içinde hem yönetim hem de tahmin hizmetleri aynı bölgede birlikte bulunur. Şu anda Soru-Cevap Oluşturma yönetilmiş (Önizleme) **Orta Güney ABD, Kuzey Avrupa ve Avustralya Doğu** sunulmaktadır.
+
+---
+
 ## <a name="resource-naming-considerations"></a>Kaynak adlandırma konuları
 
 # <a name="qna-maker-ga-stable-release"></a>[Soru-Cevap Oluşturma GA (kararlı sürüm)](#tab/v1)
@@ -224,31 +312,6 @@ Portal üzerinden bir QnA hizmeti ve bağımlılıklarını (arama gibi) oluştu
 
 Soru-Cevap Oluşturma, Soru-Cevap Oluşturma kaynak oluşturma işleminin parçası olarak oluşturutından farklı bir bilişsel hizmet kaynağı kullanmak üzere [nasıl yapılandıracağınızı](../How-To/set-up-qnamaker-service-azure.md#configure-qna-maker-to-use-different-cognitive-search-resource) öğrenin.
 
-## <a name="management-service-region"></a>Yönetim hizmeti bölgesi
-
-Soru-Cevap Oluşturma yönetim hizmeti yalnızca Soru-Cevap Oluşturma portalı ve ilk veri işleme için kullanılır. Bu hizmet yalnızca **Batı ABD** bölgesinde kullanılabilir. Bu Batı ABD hizmetinde hiçbir müşteri verisi depolanmaz.
-
-## <a name="keys-in-qna-maker"></a>Soru-Cevap Oluşturma anahtarlar
-
-Soru-Cevap Oluşturma hizmetiniz iki tür anahtara sahiptir: uygulama hizmetinde barındırılan çalışma zamanında kullanılan anahtar ve **sorgu uç noktası anahtarları** **yazma** .
-
-API aracılığıyla hizmete istek yaparken bu anahtarları kullanın.
-
-![Anahtar yönetimi](../media/qnamaker-how-to-key-management/key-management.png)
-
-|Ad|Konum|Amaç|
-|--|--|--|
-|Yazma/abonelik anahtarı|[Azure portalı](https://azure.microsoft.com/free/cognitive-services/)|Bu anahtarlar [soru-cevap oluşturma Management Service API 'lerine](/rest/api/cognitiveservices/qnamaker4.0/knowledgebase)erişmek için kullanılır. Bu API 'Ler, bilgi bankasındaki soruları ve yanıtları düzenlemenize ve bilgi tabanınızı yayımlamanıza olanak sağlar. Yeni bir Soru-Cevap Oluşturma hizmeti oluşturduğunuzda bu anahtarlar oluşturulur.<br><br>Bu anahtarları **anahtarlar** sayfasındaki bilişsel **Hizmetler** kaynağında bulabilirsiniz.|
-|Sorgu uç noktası anahtarı|[Soru-Cevap Oluşturma portalı](https://www.qnamaker.ai)|Bu anahtarlar, bir Kullanıcı sorusu için yanıt almak üzere yayımlanmış bilgi tabanı uç noktasını sorgulamak için kullanılır. Bu sorgu uç noktasını genellikle sohbet bot 'inizdeki veya Soru-Cevap Oluşturma hizmetine bağlanan istemci uygulama kodunda kullanırsınız. Bu anahtarlar Soru-Cevap Oluşturma bilgi bankasını yayımladığınızda oluşturulur.<br><br>Bu anahtarları **hizmet ayarları** sayfasında bulabilirsiniz. Bu sayfayı, açılan menüdeki sayfanın sağ üst kısmındaki kullanıcının menüsünden bulabilirsiniz.|
-
-### <a name="recommended-settings-for-network-isolation"></a>Ağ yalıtımı için önerilen ayarlar
-
-* [Sanal ağı yapılandırarak](../../cognitive-services-virtual-networks.md?tabs=portal)bilişsel hizmet kaynağını ortak erişime karşı koruyun.
-* App Service (QnA Runtime) ortak erişime karşı koruma:
-    * Yalnızca bilişsel hizmet IP 'lerinden gelen trafiğe izin verin. Bunlar, "Biliveservicesmanagement" hizmet etiketinde zaten yer almaktadır. Bu, App Service 'i çağırmak ve Azure Search hizmeti 'ni uygun şekilde güncelleştirmek için API 'Leri yazma (oluşturma/güncelleştirme KB) için gereklidir.
-    * Ayrıca, bot hizmeti, Soru-Cevap Oluşturma Portal (Corpnet olabilir) gibi diğer giriş noktalarına da izin verdiğinizden emin olun. tahmin için "GenerateAnswer" API erişimi.
-    * [Hizmet etiketleri hakkında daha fazla bilgi edinin.](../../../virtual-network/service-tags-overview.md)
-
 # <a name="qna-maker-managed-preview-release"></a>[Soru-Cevap Oluşturma Managed (Önizleme sürümü)](#tab/v2)
 
 Soru-Cevap Oluşturma yönetilen (Önizleme) kaynağı için kaynak adı, `qna-westus-f0-b` diğer kaynakları adlandırmak için de kullanılır.
@@ -294,27 +357,6 @@ Soru-Cevap Oluşturma yönetilen (Önizleme) ile, Soru-Cevap Oluşturma hizmetin
 ### <a name="qna-maker-resource"></a>Soru-Cevap Oluşturma kaynağı
 
 Soru-Cevap Oluşturma yönetilen (Önizleme) kaynağı, yazma ve yayımlama API 'Lerine erişim sağlar, derecelendirme çalışma zamanını barındırır ve telemetri sağlar.
-
-## <a name="region-support"></a>Bölge desteği
-
-Soru-Cevap Oluşturma yönetilen (Önizleme) içinde hem yönetim hem de tahmin hizmetleri aynı bölgede birlikte bulunur. Şu anda Soru-Cevap Oluşturma yönetilmiş (Önizleme) **Orta Güney ABD, Kuzey Avrupa ve Avustralya Doğu** sunulmaktadır.
-
-### <a name="keys-in-qna-maker-managed-preview"></a>Soru-Cevap Oluşturma yönetilen anahtarlar (Önizleme)
-
-Soru-Cevap Oluşturma yönetilen (Önizleme) hizmetiniz, iki tür anahtar ile ilgilidir: müşterinin aboneliğindeki hizmete erişmek için kullanılan **yazma anahtarları** ve **Azure bilişsel arama anahtarları** .
-
-API aracılığıyla hizmete istek yaparken bu anahtarları kullanın.
-
-![Anahtar yönetimi ile yönetilen Önizleme](../media/qnamaker-how-to-key-management/qnamaker-v2-key-management.png)
-
-|Ad|Konum|Amaç|
-|--|--|--|
-|Yazma/abonelik anahtarı|[Azure portalı](https://azure.microsoft.com/free/cognitive-services/)|Bu anahtarlar [soru-cevap oluşturma Management Service API 'lerine](/rest/api/cognitiveservices/qnamaker4.0/knowledgebase)erişmek için kullanılır. Bu API 'Ler, bilgi bankasındaki soruları ve yanıtları düzenlemenize ve bilgi tabanınızı yayımlamanıza olanak sağlar. Yeni bir Soru-Cevap Oluşturma hizmeti oluşturduğunuzda bu anahtarlar oluşturulur.<br><br>Bu anahtarları **anahtarlar** sayfasındaki bilişsel **Hizmetler** kaynağında bulabilirsiniz.|
-|Azure Bilişsel Arama yönetici anahtarı|[Azure portalı](../../../search/search-security-api-keys.md)|Bu anahtarlar, kullanıcının Azure aboneliğinde dağıtılan Azure bilişsel arama hizmeti ile iletişim kurmak için kullanılır. Soru-Cevap Oluşturma yönetilen (Önizleme) hizmeti ile bir Azure bilişsel aramayı ilişkilendirdiğinizde, yönetici anahtarı otomatik olarak Soru-Cevap Oluşturma hizmetine geçirilir. <br><br>Bu anahtarları **anahtarlar** sayfasında **Azure bilişsel arama** kaynağında bulabilirsiniz.|
-
-### <a name="recommended-settings-for-network-isolation"></a>Ağ yalıtımı için önerilen ayarlar 
-
-[Sanal ağı yapılandırarak](../../cognitive-services-virtual-networks.md?tabs=portal)bilişsel hizmet kaynağını ortak erişime karşı koruyun.
 
 ---
 

@@ -14,12 +14,12 @@ ms.date: 11/04/2019
 ms.author: sagonzal
 ms.reviewer: nacanuma, twhitney
 ms.custom: aaddev, devx-track-java
-ms.openlocfilehash: 1d1512447b5d0474f8fabe92dbc7a36259f4618c
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 620f77655f8281919ba0831a7e53af8cd28bc5f2
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98754981"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584002"
 ---
 # <a name="adal-to-msal-migration-guide-for-java"></a>Java için ADAL MSAL geçiş kılavuzu
 
@@ -80,7 +80,7 @@ Java için MSAL, mümkün olduğunda süresi geçen belirteçleri otomatik olara
 
 V 1.0 'da, yetkili kullanırsanız, `https://login.microsoftonline.com/common` Kullanıcılar herhangi bir Azure Active Directory (AAD) hesabıyla oturum açabilirler (herhangi bir kuruluş için).
 
-`https://login.microsoftonline.com/common`Yetkilisi 'yi v 2.0 'da kullanıyorsanız, kullanıcılar herhangi BIR AAD organizasyonu ile veya hatta bir Microsoft Kişisel hesabı (MSA) ile oturum açabilirler. Java için MSAL ' de, herhangi bir AAD hesabıyla oturum açmayı kısıtlamak istiyorsanız, `https://login.microsoftonline.com/organizations` yetkilisini (ADAL4J ile aynı davranış) kullanmanız gerekir. Bir yetkili belirtmek için, `authority` sınıfınızı oluştururken [Publicclientapplication. Builder](https://javadoc.io/doc/com.microsoft.azure/msal4j/1.0.0/com/microsoft/aad/msal4j/PublicClientApplication.Builder.html) yönteminde parametresini ayarlayın `PublicClientApplication` .
+`https://login.microsoftonline.com/common`Yetkilisi 'yi v 2.0 'da kullanıyorsanız, kullanıcılar herhangi BIR AAD organizasyonu ile veya hatta bir Microsoft Kişisel hesabı (MSA) ile oturum açabilirler. Java için MSAL içinde herhangi bir AAD hesabıyla oturum açmayı kısıtlamak istiyorsanız, `https://login.microsoftonline.com/organizations` yetkilisini (ADAL4J ile aynı davranış olan) kullanın. Bir yetkili belirtmek için, `authority` sınıfınızı oluştururken [Publicclientapplication. Builder](https://javadoc.io/doc/com.microsoft.azure/msal4j/1.0.0/com/microsoft/aad/msal4j/PublicClientApplication.Builder.html) yönteminde parametresini ayarlayın `PublicClientApplication` .
 
 ## <a name="v10-and-v20-tokens"></a>v 1.0 ve v 2.0 belirteçleri
 

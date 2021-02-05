@@ -13,12 +13,12 @@ ms.date: 09/16/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 7e80123f21efded92ab6d59d550965ca72427b1c
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 60ce3d32ffa20fc9117890528eac053d1af9fdf2
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98064666"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99583917"
 ---
 # <a name="token-cache-serialization-in-msalnet"></a>MSAL.NET içinde belirteç önbelleği serileştirme
 [Belirteç](msal-acquire-cache-tokens.md)alındıktan sonra, Microsoft kimlik doğrulama KITAPLıĞı (msal) tarafından önbelleğe alınır.  Uygulama kodu, başka bir yöntem tarafından belirteç almadan önce önbellekten bir belirteç almayı denemelidir.  Bu makalede, MSAL.NET içinde belirteç önbelleğinin varsayılan ve özel serileştirmesi açıklanmaktadır.
@@ -34,7 +34,7 @@ MSAL.NET ' de, bir bellek içi belirteç önbelleği varsayılan olarak sağlan�
 
 ## <a name="custom-serialization-for-windows-desktop-apps-and-web-appsweb-apis"></a>Windows Masaüstü uygulamaları ve Web uygulamaları/Web API 'Leri için özel serileştirme
 
-Özel serileştirme, mobil platformlarda (UWP, Xamarin. iOS ve Xamarin. Android) kullanılabilir olmadığını unutmayın. MSAL zaten bu platformlar için güvenli ve performanslı bir serileştirme mekanizması tanımlıyor. Ancak .NET masaüstü ve .NET Core Uygulamaları, değişen mimarilere sahiptir ve MSAL genel amaçlı bir serileştirme mekanizması uygulayamaz. Örneğin, Web siteleri belirteçleri bir Redsıs önbelleğinde depolamayı ya da masaüstü apps 'in belirteçleri şifrelenmiş bir dosyada depolamayı seçebilir. Bu nedenle serileştirme sağlanmamış. .NET masaüstü veya .NET Core 'ta kalıcı bir belirteç önbelleği uygulamasına sahip olmak için Serileştirmeyi özelleştirmeniz gerekir.
+Özel serileştirme, mobil platformlarda (UWP, Xamarin. iOS ve Xamarin. Android) kullanılabilir olmadığını unutmayın. MSAL zaten bu platformlar için güvenli ve performanslı bir serileştirme mekanizması tanımlıyor. Ancak .NET masaüstü ve .NET Core Uygulamaları, değişen mimarilere sahiptir ve MSAL genel amaçlı bir serileştirme mekanizması uygulayamaz. Örneğin, Web siteleri belirteçleri bir Redsıs önbelleğinde depolamayı ya da masaüstü apps 'in belirteçleri şifrelenmiş bir dosyada depolamayı seçebilir. Bu nedenle serileştirme sağlanmamış. .NET masaüstü veya .NET Core 'ta kalıcı bir belirteç önbelleği uygulamasına sahip olmak için serileştirme 'yı özelleştirin.
 
 Aşağıdaki sınıflar ve arabirimler, belirteç önbelleği serileştirmesi içinde kullanılır:
 
@@ -281,7 +281,7 @@ MSAL.NET, .NET Framework ve .NET Core alt platformlarında özel belirteç önbe
 
 [Microsoft. Identity. Web](https://github.com/AzureAD/microsoft-identity-web) kitaplığı, belirteç önbelleği serileştirmesini içeren [Microsoft. Identity. Web](https://www.nuget.org/packages/Microsoft.Identity.Web) Önizleme paketi sağlar:
 
-| Genişletme yöntemi | Microsoft. Identity. Web Sub ad alanı | Açıklama  |
+| Genişletme yöntemi | Microsoft. Identity. Web Sub ad alanı | Description  |
 | ---------------- | --------- | ------------ |
 | `AddInMemoryTokenCaches` | `TokenCacheProviders.InMemory` | Bellek belirteci önbelleği serileştirme. Bu uygulama örneklerde harika. Ayrıca, Web uygulaması yeniden başlatıldığında belirteç önbelleğinin kaybolup olmadığını aklınızda bulundurmayabilmeniz için üretim uygulamalarında da iyidir. `AddInMemoryTokenCaches``MsalMemoryTokenCacheOptions`, kullanılmadığı takdirde önbellek girişinin süresinin dolacağı süreyi belirtmenize olanak tanıyan, isteğe bağlı bir tür parametresi alır.
 | `AddSessionTokenCaches` | `TokenCacheProviders.Session` | Belirteç önbelleği Kullanıcı oturumuna bağlanır. Tanımlama bilgisi çok büyük hale gelecağından KIMLIK belirteci çok sayıda talep içeriyorsa bu seçenek ideal değildir.
@@ -331,7 +331,7 @@ Kullanımları, aşama [2-2 belirteç önbelleğindeki](https://github.com/Azure
 
 Aşağıdaki örneklerde belirteç önbelleği serileştirmesi gösterilmektedir.
 
-| Örnek | Platform | Açıklama|
+| Örnek | Platform | Description|
 | ------ | -------- | ----------- |
 |[Active-Directory-DotNet-Desktop-MSGraph-v2](https://github.com/azure-samples/active-directory-dotnet-desktop-msgraph-v2) | Masaüstü (WPF) | Microsoft Graph API 'sini çağıran Windows Masaüstü .NET (WPF) uygulaması. ![Diyagramda, bir belirteci etkileşimli bir şekilde alarak ve Microsoft Graph için Azure A 'da masaüstü uygulaması W P F TodoListClient ile bir topoloji gösterilmektedir.](media/msal-net-token-cache-serialization/topology.png)|
 |[Active-Directory-DotNet-v1--v2](https://github.com/Azure-Samples/active-directory-dotnet-v1-to-v2) | Masaüstü (konsol) | Azure AD v 1.0 uygulamalarının (ADAL.NET kullanarak) Microsoft Identity platform uygulamalarına (MSAL.NET kullanılarak) geçişini gösteren Visual Studio çözümleri kümesi. Özellikle, bkz. [belirteç önbelleği geçişi](https://github.com/Azure-Samples/active-directory-dotnet-v1-to-v2/blob/master/TokenCacheMigration/README.md)|

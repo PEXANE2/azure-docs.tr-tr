@@ -5,14 +5,14 @@ author: kromerm
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 12/07/2020
+ms.date: 02/04/2021
 ms.author: makromer
-ms.openlocfilehash: e3152f1dff4a80ce3ae8bd121215ceb2595b9ee2
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: a08457ba041fa39fda367976498a4a89930c56e3
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96854017"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99585169"
 ---
 # <a name="common-data-model-format-in-azure-data-factory"></a>Azure Data Factory ortak veri modeli biçimi
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -40,7 +40,7 @@ Aşağıdaki tabloda bir CDM kaynağı tarafından desteklenen özellikler liste
 | Kök konumu: klasör yolu | CDM klasörünün kök klasör konumu | evet | Dize | folderPath |
 | Bildirim dosyası: varlık yolu | Kök klasör içindeki varlığın klasör yolu | hayır | Dize | entityPath |
 | Bildirim dosyası: bildirim adı | Bildirim dosyasının adı. Varsayılan değer ' default ' değeridir  | Hayır | Dize | manifestName |
-| Son değiştirme ölçütü | En son değiştirildiklerinde dosyaları filtrelemek için seçin | hayır | Zaman damgası | Modıfıedafter <br> modifiedBefore | 
+| Son değiştirme ölçütü | En son değiştirildiklerinde dosyaları filtrelemek için seçin | hayır | Timestamp | Modıfıedafter <br> modifiedBefore | 
 | Şemaya bağlı hizmet | Yapı 'nin bulunduğu bağlı hizmet | Evet, bildirim kullanılıyorsa | `'adlsgen2'` veya `'github'` | corpusStore | 
 | Varlık başvurusu kapsayıcısı | Kapsayıcı yapı | Evet, bildirim ve yapı ADLS 2. kullanılıyorsa | Dize | adlsgen2_fileSystem |
 | Varlık başvuru deposu | GitHub deposu adı | Evet, GitHub 'da bildirim ve yapı kullanılıyorsa | Dize | github_repository |
@@ -85,6 +85,7 @@ Havuz dönüşümünde veri akışı sütunlarını varlık özellikleriyle eşl
 2. Bölümleri bulun. Location özelliği 
 3. "Blob.core.windows.net" öğesini "dfs.core.windows.net" olarak değiştir
 4. URL 'deki "% 2F" kodlamasını "/" olarak düzeltin
+5. ADF veri akışları kullanılıyorsa, bölüm dosyası yolundaki özel karakterlerin alfa sayısal değerlerle değiştirilmelidir veya SYNAPSE veri akışlarına geçiş yapılmalıdır
 
 ### <a name="cdm-source-data-flow-script-example"></a>CDM kaynak veri akışı betiği örneği
 

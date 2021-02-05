@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: 36724e518f1bae636c2d2602a227b53a11257591
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 0832b54e02cabecb0b1f0e7af600b8adc621a8b0
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98791063"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584779"
 ---
 # <a name="add-a-secured-sharepoint-data-source-to-your-knowledge-base"></a>Bilgi tabanınız için güvenli bir SharePoint veri kaynağı ekleme
 
@@ -20,7 +20,7 @@ Bilgi tabanınızı Soru-Cevap Oluşturma Yöneticisi olarak güvenli bir ShareP
 
 Soru-Cevap Oluşturma Bilgi Bankası Yöneticisi Active Directory yöneticisi değilse, bu işlemi tamamlaması için Active Directory Manager ile iletişim kurması gerekir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Bulut tabanlı SharePoint-Soru-Cevap Oluşturma izinler için Microsoft Graph kullanır. SharePoint şirket içi ise, Microsoft Graph izinleri belirleyemeyeceği için SharePoint 'ten ayıklanamaz.
 * URL biçimi-Soru-Cevap Oluşturma yalnızca paylaşım için oluşturulan ve biçimdeki SharePoint URL 'lerini destekler `https://\*.sharepoint.com`
@@ -132,8 +132,8 @@ The Active Directory manager will get a pop-up window requesting permissions to 
 
 Azure Blob depolamayı kullanarak API aracılığıyla en son SharePoint içeriğini eklemeye yönelik bir geçici çözüm vardır: 
 1.  SharePoint dosyalarını yerel olarak indirin. API 'yi çağıran kullanıcının SharePoint 'e erişimi olması gerekir. 
-1.  Azure Blob stoarge 'ye yükleyin. Bu, [SAS belirtecini kullanarak](../../../storage/common/storage-sas-overview.md#how-a-shared-access-signature-works) güvenli bir paylaşılan erişim oluşturur. 
-1. SAS belirteci ile oluşturulan blob URL 'sini Soru-Cevap Oluşturma API'si geçirin. Dosyadaki soru cevaplarını ayıklamadan, Soru-Cevap Oluşturma API'si geçirmeden önce URL 'nin sonuna ' &ext = PDF ' veya ' &ext = Doc ' olarak sonek dosya türünü eklemeniz gerekir>  
+1.  Azure Blob depolama alanına yükleyin. Bu, [SAS belirtecini kullanarak](../../../storage/common/storage-sas-overview.md#how-a-shared-access-signature-works) güvenli bir paylaşılan erişim oluşturur. 
+1. SAS belirteci ile oluşturulan blob URL 'sini Soru-Cevap Oluşturma API'si geçirin. Dosyalardaki soru yanıt ayıklamasını sağlamak için, URL 'nin sonuna Soru-Cevap Oluşturma API'si geçirmeden önce ' &ext = PDF ' veya ' &ext = Doc ' olarak sonek dosyası türünü eklemeniz gerekir.
 
 
 <!--

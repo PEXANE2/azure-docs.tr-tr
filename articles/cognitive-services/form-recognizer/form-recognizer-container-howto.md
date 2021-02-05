@@ -7,23 +7,23 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
-ms.date: 07/14/2020
+ms.date: 02/04/2021
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 750c24fd84629f709beb7a92e92fd1ecf581c09a
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: 53334dfdcdb917c754c9bc4205b0918c6d207da8
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97862223"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584796"
 ---
-# <a name="install-and-run-form-recognizer-containers-preview"></a>Form tanıyıcı kapsayıcıları (Önizleme) yükleyip çalıştırın
+# <a name="install-and-run-form-recognizer-containers-retiring"></a>Form tanıyıcı kapsayıcıları (devre dışı bırakma) yükleyip çalıştırın
 
 [!INCLUDE [Form Recognizer containers limit](includes/container-limit.md)]
 
 Azure form tanıyıcı, formlardan anahtar-değer çiftlerini ve tabloları tanımlamak ve ayıklamak için makine öğrenimi teknolojisini uygular. Değerleri ve tablo girişlerini anahtar-değer çiftleriyle ilişkilendirir ve ardından özgün dosyadaki ilişkileri içeren yapılandırılmış verileri çıkarır. 
 
-Karmaşıklığı azaltmak ve özel bir form tanıyıcı modelini iş akışı Otomasyonu sürecinizi veya başka bir uygulamayla kolayca bütünleştirmek için, basit bir REST API kullanarak modeli çağırabilirsiniz. Yalnızca beş form belgesi (ya da boş bir form ve iki doldurulmuş form) gerekli olduğundan, sonuçları hızlıca, doğru ve belirli içeriğinize göre kolayca elde edebilirsiniz. Ağır el ile müdahale veya kapsamlı veri bilimi uzmanlığı gerekli değildir. Veri etiketleme veya veri ek açıklaması gerektirmez.
+Karmaşıklığı azaltmak ve özel bir form tanıyıcı modelini iş akışı Otomasyonu sürecinizi veya başka bir uygulamayla kolayca bütünleştirmek için, basit bir REST API kullanarak modeli çağırabilirsiniz. Yalnızca beş form belgesi gereklidir, bu sayede sonuçları hızlıca, doğru ve belirli içeriğinize göre kolayca elde edebilirsiniz. Ağır el ile müdahale veya kapsamlı veri bilimi uzmanlığı gerekli değildir. Veri etiketleme veya veri ek açıklaması gerektirmez.
 
 | İşlev | Özellikler |
 |----------|----------|
@@ -84,37 +84,9 @@ Her form tanıyıcı kapsayıcısı için ayrılacak en düşük ve önerilen CP
 > [!Note]
 > En düşük ve önerilen değerler, konak makine kaynakları *değil* , Docker sınırlarına dayanır.
 
-## <a name="get-the-container-images-with-the-docker-pull-command"></a>docker pull komutuyla kapsayıcı görüntülerini alın
-
-**Form tanıyıcı** ve **metin tanıma** tekliflerinin kapsayıcı görüntüleri aşağıdaki kapsayıcı kayıt defterinde bulunabilir:
-
-| Kapsayıcı | Tam görüntü adı |
-|-----------|------------|
-| Form Tanıma | `containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer:latest` |
-| Metin Tanıma | `containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text:latest` |
-
-Her iki kapsayıcıya de ihtiyacınız olacak, lütfen **tanıyıcı metin** kapsayıcısının [Bu makalenin dışında ayrıntılı](../Computer-vision/computer-vision-how-to-install-containers.md#get-the-container-image-with-docker-pull) olduğunu unutmayın.
+Form tanıyıcı ve Metin Tanıma kapsayıcılarının her ikisi de gerekir, lütfen **metin tanıma** kapsayıcısının [Bu makalenin dışında ayrıntılı](../Computer-vision/computer-vision-how-to-install-containers.md#get-the-container-image-with-docker-pull) olduğunu unutmayın.
 
 [!INCLUDE [Tip for using docker list](../../../includes/cognitive-services-containers-docker-list-tip.md)]
-
-### <a name="docker-pull-for-the-form-recognizer-container"></a>Form tanıyıcı kapsayıcısı için Docker Pull
-
-#### <a name="form-recognizer"></a>Form Tanıma
-
-Form tanıyıcı kapsayıcısını almak için aşağıdaki komutu kullanın:
-
-```Docker
-docker pull containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer:latest
-```
-### <a name="docker-pull-for-the-recognize-text-container"></a>Metin Tanıma kapsayıcısı için Docker Pull
-
-#### <a name="recognize-text"></a>Metin Tanıma
-
-Metin Tanıma kapsayıcısını almak için aşağıdaki komutu kullanın:
-
-```Docker
-docker pull containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text:latest
-```
 
 ## <a name="how-to-use-the-container"></a>Kapsayıcıyı kullanma
 

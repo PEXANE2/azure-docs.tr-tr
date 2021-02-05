@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/11/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: b2e42dcaeb72a053f20afa47439d1825445b0ad8
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.openlocfilehash: 9e9c4773b8f50d3d7b47f0eb94c039a42bee1d04
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99225842"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584457"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>Hızlı başlangıç: Microsoft 'a ASP.NET Core Web uygulamasına oturum açma ekleme
 
@@ -62,7 +62,7 @@ Bu hızlı başlangıçta, bir ASP.NET Core Web uygulamasının kullanıcılara 
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>1. Adım: uygulamanızı Azure portal yapılandırma
-> Bu hızlı başlangıçta örnek kodu ve bir **yeniden YÖNLENDIRME URI** `https://localhost:44321/` 'Si ve `https://localhost:44321/signin-oidc` bir **ön kanal oturum kapatma URL 'si** gerekir `https://localhost:44321/signout-oidc` . İstek KIMLIĞI belirteçleri yetkilendirme uç noktası tarafından verilecek.
+> Bu hızlı başlangıçtaki kod örneğinin çalışması için ve için bir **yeniden YÖNLENDIRME URI** 'si ve `https://localhost:44321/` `https://localhost:44321/signin-oidc` bir **ön kanal oturum kapatma URL 'si** ekleyin `https://localhost:44321/signout-oidc` . İstek KIMLIĞI belirteçleri yetkilendirme uç noktası tarafından verilecek.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [Bu değişikliği benim için yap]()
 >
@@ -150,7 +150,7 @@ Bu bölüm, kullanıcıların oturum açması için gereken koda genel bir bakı
 
 İçeren çizgi, `.AddMicrosoftIdentityWebApp` uygulamanıza Microsoft Identity platform kimlik doğrulamasını ekler. Daha sonra `AzureAD` yapılandırma dosyasında *appsettings.js* bölümünde yer alan bilgileri temel alarak Microsoft Identity platformunu kullanarak oturum açmak için yapılandırılır:
 
-| *appsettings.js* anahtarda | Açıklama                                                                                                                                                          |
+| *appsettings.js* anahtarda | Description                                                                                                                                                          |
 |------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `ClientId`             | Azure portal kayıtlı uygulamanın **uygulama (istemci) kimliği** .                                                                                       |
 | `Instance`             | Kullanıcının kimlik doğrulaması için güvenlik belirteci hizmeti (STS) uç noktası. Bu değer genellikle `https://login.microsoftonline.com/` Azure genel bulutu 'nı gösterir. |

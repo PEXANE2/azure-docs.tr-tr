@@ -7,19 +7,19 @@ ms.service: machine-learning
 ms.subservice: core
 ms.author: laobri
 author: lobrien
-ms.date: 12/16/2020
+ms.date: 01/29/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: a006dfd4f78f90ed323e5780b173cffb6daeac4a
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 56a3183e259a0b1c661dfe84d5e47c4c221e5d48
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881746"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584879"
 ---
-# <a name="trigger-machine-learning-pipelines-with-azure-machine-learning-sdk-for-python"></a>Python için Azure Machine Learning SDK ile makine öğrenimi işlem hatlarını tetikleme
+# <a name="trigger-machine-learning-pipelines"></a>Makine öğrenimi işlem hatlarını tetikleme
 
-Bu makalede, Azure 'da çalışması için programlı olarak bir işlem hattı zamanlamayı öğreneceksiniz. Geçen süreye veya dosya sistemi değişikliklerine göre bir zamanlama oluşturmayı tercih edebilirsiniz. Zaman tabanlı zamanlamalar, veri kayması için izleme gibi rutin görevlerden yararlanmak için kullanılabilir. Değişiklik tabanlı zamanlamalar, karşıya yüklenen yeni veriler veya düzenlenmekte olan eski veriler gibi düzensiz veya öngörülemeyen değişikliklere tepki vermek için kullanılabilir. Zamanlama oluşturmayı öğrendikten sonra, bunların nasıl alınacağını ve devre dışı bırakılacağı hakkında bilgi edineceksiniz. Son olarak, daha karmaşık tetikleyici Logic veya davranışına izin vermek için bir Azure mantıksal uygulaması kullanmayı öğreneceksiniz.
+Bu makalede, Azure 'da çalışması için programlı olarak bir işlem hattı zamanlamayı öğreneceksiniz. Geçen süreyi veya dosya sistemi değişikliklerini temel alarak bir zamanlama oluşturabilirsiniz. Zaman tabanlı zamanlamalar, veri kayması için izleme gibi rutin görevlerden yararlanmak için kullanılabilir. Değişiklik tabanlı zamanlamalar, karşıya yüklenen yeni veriler veya düzenlenmekte olan eski veriler gibi düzensiz veya öngörülemeyen değişikliklere tepki vermek için kullanılabilir. Zamanlama oluşturmayı öğrendikten sonra, bunların nasıl alınacağını ve devre dışı bırakılacağı hakkında bilgi edineceksiniz. Son olarak, işlem hatlarını çalıştırmak için diğer Azure hizmetlerini, Azure mantıksal uygulaması ve Azure Data Factory kullanmayı öğreneceksiniz. Azure mantıksal uygulaması, daha karmaşık tetikleyici Logic veya davranışına olanak sağlar. Azure Data Factory işlem hatları, daha büyük bir veri düzenleme işlem hattının parçası olarak makine öğrenimi işlem hattını aramanızı sağlar.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -29,7 +29,7 @@ Bu makalede, Azure 'da çalışması için programlı olarak bir işlem hattı z
 
 * Yayımlanmış bir işlem hattına sahip Machine Learning çalışma alanı. [Azure MACHINE LEARNING SDK ile makine öğrenimi işlem hatları oluşturma ve çalıştırma](./how-to-create-machine-learning-pipelines.md)sırasında yerleşik bir yapılandırma kullanabilirsiniz.
 
-## <a name="initialize-the-workspace--get-data"></a>Veri Al & çalışma alanını başlatma
+## <a name="trigger-pipelines-with-azure-machine-learning-sdk-for-python"></a>Python için Azure Machine Learning SDK ile işlem hatlarını tetikleme
 
 Bir işlem hattını zamanlamak için çalışma alanınıza bir başvuru, yayımlanan işlem hattının tanımlayıcısı ve zamanlamayı oluşturmak istediğiniz denemenin adı gerekir. Aşağıdaki kodla bu değerleri alabilirsiniz:
 
@@ -81,7 +81,7 @@ recurring_schedule = Schedule.create(ws, name="MyRecurringSchedule",
 
 ### <a name="create-a-change-based-schedule"></a>Değişiklik tabanlı zamanlama oluşturma
 
-Dosya değişiklikleri tarafından tetiklenen işlem hatları, zaman tabanlı zamanlamalardan daha verimli olabilir. Örneğin, bir dosya değiştirildiğinde veya bir veri dizinine yeni bir dosya eklendiğinde ön işleme adımı yapmak isteyebilirsiniz. Veri deposundaki herhangi bir değişikliği veya veri deposu içindeki belirli bir dizin içindeki değişiklikleri izleyebilirsiniz. Belirli bir dizini izlemenize sonra, bu dizinin alt dizinlerindeki değişiklikler bir çalıştırmayı _tetiklemez_ .
+Dosya değişiklikleri tarafından tetiklenen işlem hatları, zaman tabanlı zamanlamalardan daha verimli olabilir. Bir dosya değiştirilmeden önce bir şey yapmak istediğinizde veya bir veri dizinine yeni bir dosya eklendiğinde, bu dosyayı önceden işleyebilirsiniz. Veri deposundaki herhangi bir değişikliği veya veri deposu içindeki belirli bir dizin içindeki değişiklikleri izleyebilirsiniz. Belirli bir dizini izlemenize sonra, bu dizinin alt dizinlerindeki değişiklikler bir çalıştırmayı _tetiklemez_ .
 
 Bir dosya-reaktif oluşturmak için `Schedule` , `datastore` çağır [. Create](/python/api/azureml-pipeline-core/azureml.pipeline.core.schedule.schedule?preserve-view=true&view=azure-ml-py#&preserve-view=truecreate-workspace--name--pipeline-id--experiment-name--recurrence-none--description-none--pipeline-parameters-none--wait-for-provisioning-false--wait-timeout-3600--datastore-none--polling-interval-5--data-path-parameter-name-none--continue-on-step-failure-none--path-on-datastore-none---workflow-provider-none---service-endpoint-none-)çağrısında parametresini ayarlamanız gerekir. Bir klasörü izlemek için `path_on_datastore` bağımsız değişkenini ayarlayın.
 
@@ -104,7 +104,7 @@ Daha önce ele alınan bağımsız değişkenlere ek olarak, `status` bağımsı
 
 Web tarayıcınızda Azure Machine Learning ' a gidin. Gezinti bölmesinin **uç noktalar** bölümünde **ardışık düzen uç noktaları**' nı seçin. Bu sizi çalışma alanında yayınlanan işlem hatları listesine götürür.
 
-![AML ardışık düzenleri sayfası](./media/how-to-trigger-published-pipeline/scheduled-pipelines.png)
+:::image type="content" source="./media/how-to-trigger-published-pipeline/scheduled-pipelines.png" alt-text="AML ardışık düzenleri sayfası":::
 
 Bu sayfada, çalışma alanındaki tüm işlem hatları hakkında özet bilgileri görebilirsiniz: adlar, açıklamalar, durum ve benzeri. İşlem hattınızı tıklatarak detaya gidin. Sonuç sayfasında, işlem hatınızla ilgili daha fazla ayrıntı vardır ve tek tek çalıştırmalar üzerinde ayrıntıya gidebilirsiniz.
 
@@ -161,11 +161,11 @@ Mantıksal uygulamanız sağlandıktan sonra, işlem hattınızda bir tetikleyic
 
 1. Logic App Designer görünümü ' ne gidin ve boş mantıksal uygulama şablonunu seçin. 
     > [!div class="mx-imgBorder"]
-    > ![Boş şablon](media/how-to-trigger-published-pipeline/blank-template.png)
+    > :::image type="content" source="media/how-to-trigger-published-pipeline/blank-template.png" alt-text="Boş şablon":::
 
 1. Tasarımcıda **BLOB**' u arayın. **Bir blob eklendiğinde veya değiştirildiğinde (yalnızca Özellikler)** tetikleyicisi ' ni seçin ve bu tetikleyiciyi mantıksal uygulamanıza ekleyin.
     > [!div class="mx-imgBorder"]
-    > ![Tetikleyici ekleme](media/how-to-trigger-published-pipeline/add-trigger.png)
+    > :::image type="content" source="media/how-to-trigger-published-pipeline/add-trigger.png" alt-text="Tetikleyici ekleme":::
 
 1. Blob ekleme veya değişiklik için izlemek istediğiniz BLOB depolama hesabı için bağlantı bilgilerini girin. İzlenecek kapsayıcıyı seçin. 
  
@@ -177,7 +177,7 @@ Mantıksal uygulamanız sağlandıktan sonra, işlem hattınızda bir tetikleyic
 1. Yeni veya değiştirilmiş bir blob algılandığında çalışacak bir HTTP eylemi ekleyin. **+ Yeni adım**' ı seçin ve ardından http eylemini arayın ve seçin.
 
   > [!div class="mx-imgBorder"]
-  > ![HTTP eylemi ara](media/how-to-trigger-published-pipeline/search-http.png)
+  > :::image type="content" source="media/how-to-trigger-published-pipeline/search-http.png" alt-text="HTTP eylemi ara":::
 
   Eyleminizi yapılandırmak için aşağıdaki ayarları kullanın:
 
@@ -208,12 +208,18 @@ Mantıksal uygulamanız sağlandıktan sonra, işlem hattınızda bir tetikleyic
     `DataStoreName`Çalışma alanınıza bir [Önkoşul](#prerequisites)olarak eklediğiniz öğesini kullanın.
      
     > [!div class="mx-imgBorder"]
-    > ![HTTP ayarları](media/how-to-trigger-published-pipeline/http-settings.png)
+    > :::image type="content" source="media/how-to-trigger-published-pipeline/http-settings.png" alt-text="HTTP ayarları":::
 
 1. **Kaydet** ' i seçin ve zamanlamanız artık hazırdır.
 
 > [!IMPORTANT]
 > İşlem hattınızı erişimi yönetmek için Azure rol tabanlı erişim denetimi (Azure RBAC) kullanıyorsanız, işlem [hattı senaryonuz (eğitim veya Puanlama) için izinleri ayarlayın](how-to-assign-roles.md#common-scenarios).
+
+## <a name="call-machine-learning-pipelines-from-azure-data-factory-pipelines"></a>Azure Data Factory işlem hatlarından makine öğrenimi işlem hatlarını çağırma
+
+Azure Data Factory işlem hattında, Machine Learning işlem *hattı yürütme* etkinliği bir Azure Machine Learning işlem hattı çalıştırır. Bu etkinliği *Machine Learning* kategorisinin Data Factory yazma sayfasında bulabilirsiniz:
+
+:::image type="content" source="media/how-to-trigger-published-pipeline/azure-data-factory-pipeline-activity.png" alt-text="Azure Data Factory yazma ortamında ML işlem hattı etkinliğini gösteren ekran görüntüsü":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

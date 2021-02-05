@@ -12,12 +12,12 @@ ms.date: 09/08/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 73fbda9a3356e2877617391430a7f2b555b1a0e5
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: ee9f374d110115b224c48853f26037dc461e5fa0
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98063493"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99583850"
 ---
 # <a name="use-microsoft-authenticator-or-intune-company-portal-on-xamarin-applications"></a>Xamarin uygulamalarında Microsoft Authenticator veya Intune Şirket Portalı kullanma
 
@@ -91,7 +91,7 @@ Bu yöntem, uygulama her başlatıldığında çağrılır. Aracıdan gelen yan�
 
 ### <a name="step-4-set-uiviewcontroller"></a>4. Adım: UIViewController () ayarlama
 
-Hala *AppDelegate.cs* dosyasında bir nesne penceresi ayarlamanız gerekir. Genellikle Xamarin iOS için nesne penceresini ayarlamanız gerekmez, ancak aracıdan yanıt göndermek ve almak için bir nesne penceresi gerekir.
+Hala *AppDelegate.cs* dosyasında bir nesne penceresi ayarlayın. Genellikle Xamarin iOS için nesne penceresini ayarlamanız gerekmez, ancak aracıdan yanıt göndermek ve almak için bir nesne penceresi gerekir.
 
 Nesne penceresini ayarlamak için:
 
@@ -237,7 +237,7 @@ result = await app.AcquireTokenInteractive(scopes)
 
 ### <a name="step-4-add-a-redirect-uri-to-your-app-registration"></a>4. Adım: uygulama kaydınız için bir yeniden yönlendirme URI 'SI ekleyin
 
-MSAL, aracıyı çağırmak ve sonra uygulamanıza geri dönmek için URL 'Ler kullanır. Bu gidiş dönüş işleminin tamamlanabilmesi için, [Azure Portal](https://portal.azure.com)kullanarak uygulamanız Için bir **yeniden yönlendirme URI 'si** kaydetmeniz gerekir.
+MSAL, aracıyı çağırmak ve sonra uygulamanıza geri dönmek için URL 'Ler kullanır. Bu gidiş dönüş işleminin tamamlanabilmesi için [Azure Portal](https://portal.azure.com)kullanarak uygulamanız Için bir **yeniden yönlendirme URI 'si** kaydedin.
 
 Uygulamanızın yeniden yönlendirme URI 'sinin biçimi APK 'yi imzalamak için kullanılan sertifikaya bağlıdır. Örneğin:
 

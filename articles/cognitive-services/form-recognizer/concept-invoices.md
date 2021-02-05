@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 11/18/2020
 ms.author: pafarley
-ms.openlocfilehash: 7acfa9c2ffdd4cdd62e965041cdc42dc44d469c5
-ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
+ms.openlocfilehash: 875fa2ad5a3a18c0e2582425a6528730234ac8ed
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/01/2021
-ms.locfileid: "97845572"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99585084"
 ---
 # <a name="form-recognizer-prebuilt-invoice-model"></a>Form tanıyıcı önceden oluşturulmuş fatura modeli
 
@@ -74,7 +74,7 @@ JSON çıktısı 3 bölümden oluşur:
 
 Fatura hizmeti metin, tablolar ve 26 fatura alanlarını ayıklar. JSON çıkış yanıtında bir faturadan ayıklanan alanlar aşağıda verilmiştir (aşağıdaki çıktı bu [örnek faturayı](./media/sample-invoice.jpg)kullanır)  
 
-|Ad| Tür | Açıklama | Metin | Değer (standartlaştırılmış çıkış) |
+|Ad| Tür | Description | Metin | Değer (standartlaştırılmış çıkış) |
 |:-----|:----|:----|:----| :----|
 | CustomerName | string | Faturalandırılmakta olan müşteri | Microsoft Corp |  |
 | CustomerId | string | Müşterinin başvuru KIMLIĞI | CıD-12345 |  |
@@ -107,7 +107,7 @@ Fatura hizmeti metin, tablolar ve 26 fatura alanlarını ayıklar. JSON çıkı�
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - Kendi faturanız ve örneklerinizi [form tanıyıcı örnek Kullanıcı arabiriminde](https://fott-preview.azurewebsites.net/)deneyin.
-- Form tanıyıcı ile seçtiğiniz dilde bir fatura işleme uygulaması yazmaya başlamak için [form tanıyıcı hızlı](quickstarts/client-library.md) başlangıcını doldurun.
+- Form tanıyıcı ile seçtiğiniz geliştirme dilinde bir fatura işleme uygulaması yazmaya başlamak için [form tanıyıcı hızlı](quickstarts/client-library.md) başlangıcını doldurun.
 
 ## <a name="see-also"></a>Ayrıca bkz.
 

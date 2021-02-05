@@ -13,12 +13,12 @@ ms.date: 09/18/2020
 ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: c9e4997ad08f2dd1d96dd442f80ad4203abf6261
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 5734844d91e95fe7d4081e5986095934ea02b4fd
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98015895"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584289"
 ---
 # <a name="tutorial-sign-in-users-and-call-microsoft-graph-from-an-ios-or-macos-app"></a>Öğretici: Kullanıcı oturum açma ve iOS veya macOS uygulamasından Microsoft Graph çağırma
 
@@ -81,7 +81,7 @@ Bu öğreticide oluşturduğunuz uygulamanın tamamlanmış bir sürümünü ind
 1. **Yönet** altında **kimlik doğrulama**  >  **Platform Ekle**  >  **iOS/MacOS**' u seçin.
 1. Projenizin paket KIMLIĞINI girin. Kodu indirdiyseniz, bu `com.microsoft.identitysample.MSALiOS` . Kendi projenizi oluşturuyorsanız, Xcode 'da projenizi seçin ve **genel** sekmesini açın. Paket tanımlayıcısı **kimlik** bölümünde görünür.
 1. Uygulamanızı daha sonra yapılandırırken girmeniz için **msal yapılandırma** sayfasında görünen **msal yapılandırmasını** **Yapılandır** ve Kaydet ' i seçin. 
-1. **Bitti**’yi seçin.
+1. **Bitti** seçeneğini belirleyin.
 
 ## <a name="add-msal"></a>MSAL Ekle
 
@@ -155,7 +155,7 @@ var webViewParameters : MSALWebviewParameters?
 var currentAccount: MSALAccount?
 ```
 
-Yukarıda değiştirmeniz gereken tek değer, `kClientID` [Uygulama Kimliğiniz](./developer-glossary.md#application-id-client-id)olarak atanan değerdir. Bu değer, uygulamayı Azure portal kaydetmek için Bu öğreticinin başındaki adım sırasında kaydettiğiniz MSAL yapılandırma verilerinin bir parçasıdır.
+Yukarıda değiştirdiğiniz tek değer, `kClientID` [Uygulama Kimliğiniz](./developer-glossary.md#application-id-client-id)olarak atanan değerdir. Bu değer, uygulamayı Azure portal kaydetmek için Bu öğreticinin başındaki adım sırasında kaydettiğiniz MSAL yapılandırma verilerinin bir parçasıdır.
 
 ## <a name="configure-xcode-project-settings"></a>Xcode proje ayarlarını yapılandırma
 

@@ -6,12 +6,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 6b9077fec13dd177ec4e07e7fbd7818ded2fd0a1
-ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
+ms.openlocfilehash: 3f2e8fef35095a007051999d806f2942089ae19a
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98164949"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584762"
 ---
 # <a name="accept-active-learning-suggested-questions-in-the-knowledge-base"></a>Bilgi Bankası 'nda önerilen etkin öğrenme sorularını kabul edin
 
@@ -49,18 +49,39 @@ Etkin öğrenme, öneriyi onayladıktan sonra bilgi bankasını veya Arama Hizme
 
 <a name="#score-proximity-between-knowledge-base-questions"></a>
 
+## <a name="active-learning-suggestions-are-saved-in-the-exported-knowledge-base"></a>Etkin öğrenme önerileri, dışarıya kaydedilen Bilgi Bankası 'nda kaydedilir
+
+Uygulamanızda etkin öğrenme etkin olduğunda ve uygulamayı dışarı aktardığınızda, `SuggestedQuestions` TSV dosyasındaki sütun etkin öğrenme verilerini korur.
+
+`SuggestedQuestions`Sütun örtük, `autosuggested` ve açık, geri bildirimde bulunan bir JSON nesnesidir `usersuggested` . Kullanıcı tarafından gönderilen tek bir soru için bu JSON nesnesine bir örnek `help` :
+
+```JSON
+[
+    {
+        "clusterHead": "help",
+        "totalAutoSuggestedCount": 1,
+        "totalUserSuggestedCount": 0,
+        "alternateQuestionList": [
+            {
+                "question": "help",
+                "autoSuggestedCount": 1,
+                "userSuggestedCount": 0
+            }
+        ]
+    }
+]
+```
+
+Bu uygulamayı yeniden içeri aktardığınızda, etkin öğrenme bilgileri toplamaya ve bilgi tabanınız için öneriler önermeye devam etmektedir.
+
+
 ### <a name="architectural-flow-for-using-generateanswer-and-train-apis-from-a-bot"></a>Bir bot 'tan GenerateAnswer kullanımı ve API 'Leri eğitmek için mimari akış
 
 Bir bot veya diğer istemci uygulaması, etkin öğrenimi kullanmak için aşağıdaki mimari akışı kullanmalıdır:
 
 * Bot, [bilgi bankasındaki yanıtı](#use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers) GENERATEANSWER API 'si ile alır. Bu özellik, `top` bir dizi yanıt almak için özelliğini kullanarak.
-* Bot açık geri bildirimi belirler:
-    * Kendi [özel iş mantığınızı](#use-the-score-property-along-with-business-logic-to-get-list-of-answers-to-show-user)kullanarak düşük puanları filtreleyin.
-    * Bot veya istemci uygulamasında, kullanıcıya olası yanıtların listesini görüntüleyin ve kullanıcının seçili yanıtını alın.
-* Bot, seçili yanıtı, [tren API](#train-api)'siyle [soru-cevap oluşturma geri gönderir](#bot-framework-sample-code) .
 
-
-### <a name="use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers"></a>Birkaç eşleşen yanıt almak için GenerateAnswer isteğindeki top özelliğini kullanın
+#### <a name="use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers"></a>Birkaç eşleşen yanıt almak için GenerateAnswer isteğindeki top özelliğini kullanın
 
 Yanıt için Soru-Cevap Oluşturma bir soru gönderilirken, `top` JSON gövdesinin özelliği döndürülecek yanıt sayısını ayarlar.
 
@@ -71,6 +92,12 @@ Yanıt için Soru-Cevap Oluşturma bir soru gönderilirken, `top` JSON gövdesin
     "top": 3
 }
 ```
+
+* Bot açık geri bildirimi belirler:
+    * Kendi [özel iş mantığınızı](#use-the-score-property-along-with-business-logic-to-get-list-of-answers-to-show-user)kullanarak düşük puanları filtreleyin.
+    * Bot veya istemci uygulamasında, kullanıcıya olası yanıtların listesini görüntüleyin ve kullanıcının seçili yanıtını alın.
+* Bot, seçili yanıtı, [tren API](#train-api)'siyle [soru-cevap oluşturma geri gönderir](#bot-framework-sample-code) .
+
 
 ### <a name="use-the-score-property-along-with-business-logic-to-get-list-of-answers-to-show-user"></a>Kullanıcı gösterme yanıtlarının listesini almak için, iş mantığı ile birlikte Score özelliğini kullanın
 
@@ -309,33 +336,6 @@ async callTrain(stepContext){
     return await stepContext.next(stepContext.result);
 }
 ```
-
-## <a name="active-learning-is-saved-in-the-exported-knowledge-base"></a>Etkin öğrenme, dışarıya kaydedilen Bilgi Bankası 'nda kaydedilir
-
-Uygulamanızda etkin öğrenme etkin olduğunda ve uygulamayı dışarı aktardığınızda, `SuggestedQuestions` TSV dosyasındaki sütun etkin öğrenme verilerini korur.
-
-`SuggestedQuestions`Sütun örtük, `autosuggested` ve açık, geri bildirimde bulunan bir JSON nesnesidir `usersuggested` . Kullanıcı tarafından gönderilen tek bir soru için bu JSON nesnesine bir örnek `help` :
-
-```JSON
-[
-    {
-        "clusterHead": "help",
-        "totalAutoSuggestedCount": 1,
-        "totalUserSuggestedCount": 0,
-        "alternateQuestionList": [
-            {
-                "question": "help",
-                "autoSuggestedCount": 1,
-                "userSuggestedCount": 0
-            }
-        ]
-    }
-]
-```
-
-Bu uygulamayı yeniden içeri aktardığınızda, etkin öğrenme bilgileri toplamaya ve bilgi tabanınız için öneriler önermeye devam etmektedir.
-
-
 
 ## <a name="best-practices"></a>En iyi uygulamalar
 

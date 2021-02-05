@@ -2,13 +2,13 @@
 title: Azure Backup Sunucusu ile Azure VMware Çözüm VM 'lerini yedekleme
 description: Azure VMware Çözüm ortamınızı, Azure Backup Sunucusu kullanarak sanal makineleri yedekleyecek şekilde yapılandırın.
 ms.topic: how-to
-ms.date: 06/09/2020
-ms.openlocfilehash: d4273980a134fbdaabe64215aaf0b66a53253788
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.date: 02/04/2021
+ms.openlocfilehash: ea2164ba19703660e54879c25b975342d824662c
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92495698"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99585033"
 ---
 # <a name="back-up-azure-vmware-solution-vms-with-azure-backup-server"></a>Azure Backup Sunucusu ile Azure VMware Çözüm VM 'lerini yedekleme
 
@@ -42,7 +42,7 @@ Varsayılan olarak, Azure Backup Sunucusu HTTPS üzerinden VMware sunucularıyla
    - .0 ve. 1 gibi numaralandırılmış bir sırayla başlayan bir uzantıya sahip kök sertifika dosyası.
    - . R0 veya. R1 gibi bir sırayla başlayan bir uzantıya sahip CRL dosyası.
 
-1. **Sertifikalar** klasöründe, kök sertifika dosyasına sağ tıklayın ve uzantıyı **. CRT**olarak değiştirmek için **Yeniden Adlandır** ' ı seçin.
+1. **Sertifikalar** klasöründe, kök sertifika dosyasına sağ tıklayın ve uzantıyı **. CRT** olarak değiştirmek için **Yeniden Adlandır** ' ı seçin.
 
    Dosya simgesi bir kök sertifikayı temsil eden bir olarak değişir.
 
@@ -166,7 +166,7 @@ VMware 6,7 üzerinde iletişim kuralı olarak TLS etkinleştirilmiş.
    - **VMware sunucusu** olarak yazın 
    - Aracı durumu **Tamam** olarak 
    
-      **Aracı durumu** **bilinmiyor**olarak görürseniz, **Yenile**' yi seçin.
+      **Aracı durumu** **bilinmiyor** olarak görürseniz, **Yenile**' yi seçin.
 
 ## <a name="configure-a-protection-group"></a>Koruma grubu yapılandırma
 
@@ -191,7 +191,7 @@ Koruma grupları birden çok VM toplar ve aynı veri saklama ve yedekleme ayarla
 
 1. **Veri koruma yöntemini seçin** sayfasında, koruma grubu ve koruma ayarları için bir ad girin. 
 
-1. Kısa vadeli korumayı **diske**ayarlayın, çevrimiçi korumayı etkinleştirin ve sonra **İleri**' yi seçin.
+1. Kısa vadeli korumayı **diske** ayarlayın, çevrimiçi korumayı etkinleştirin ve sonra **İleri**' yi seçin.
 
    ![Veri koruma yöntemini seçme](../backup/media/backup-azure-backup-server-vmware/name-protection-group.png)
 
@@ -200,7 +200,7 @@ Koruma grupları birden çok VM toplar ve aynı veri saklama ve yedekleme ayarla
    - **Bekletme aralığı**: disk kurtarma noktalarının saklanacağı gün sayısı.
    - **Hızlı tam yedekleme**: disk kurtarma noktalarının ne sıklıkta alındığı. Kısa vadeli yedeklemelerin oluşma zamanlarını veya tarihleri değiştirmek için **Değiştir**' i seçin.
 
-   :::image type="content" source="media/azure-vmware-solution-backup/new-protection-group-specify-short-term-goals.png" alt-text="vSphere Web Istemcisi":::
+   :::image type="content" source="media/azure-vmware-solution-backup/new-protection-group-specify-short-term-goals.png" alt-text="Disk tabanlı koruma için kısa vadeli hedeflerinizi belirtin":::
 
 1. **Disk depolama ayırmayı gözden geçir** SAYFASıNDA, VM yedeklemeleri için sunulan disk alanını gözden geçirin.
 
@@ -209,22 +209,22 @@ Koruma grupları birden çok VM toplar ve aynı veri saklama ve yedekleme ayarla
    - **Disk alanı:** Koruma grubu için önerilen miktarda disk alanı. Bu ayarı değiştirmek istiyorsanız, her veri kaynağı arttıkça tahmin ettiğiniz miktardan daha fazla alan seçin.
    - **Depolama havuzu ayrıntıları:** Depolama havuzunun toplam ve kalan disk boyutunu içeren durumunu gösterir.
 
-   :::image type="content" source="media/azure-vmware-solution-backup/review-disk-allocation.png" alt-text="vSphere Web Istemcisi":::
+   :::image type="content" source="media/azure-vmware-solution-backup/review-disk-allocation.png" alt-text="Depolama havuzunda verilen disk alanını gözden geçirme":::
 
    > [!NOTE]
    > Bazı senaryolarda raporlanan veri boyutu gerçek VM boyutundan daha yüksek. Sorunun farkındayız ve şu anda araştırıyoruz.
 
 1. **Çoğaltma oluşturma yöntemini seçin** sayfasında, ilk yedeklemeyi nasıl almak istediğinizi belirtin ve **İleri**' yi seçin.
 
-   - Varsayılan değer **otomatik olarak ağ üzerinden** ve **Şimdi**. Varsayılan değeri kullanırsanız, yoğun olmayan bir zaman belirtin. **Daha sonra**seçeneğini belirlerseniz, gün ve saat belirtin.
+   - Varsayılan değer **otomatik olarak ağ üzerinden** ve **Şimdi**. Varsayılan değeri kullanırsanız, yoğun olmayan bir zaman belirtin. **Daha sonra** seçeneğini belirlerseniz, gün ve saat belirtin.
    - Büyük miktarlarda veri veya en iyi olmayan ağ koşulları için, çıkarılabilir medya kullanarak verileri çevrimdışı olarak çoğaltmayı göz önünde bulundurun.
 
    ![Çoğaltma oluşturma yöntemini seçin](../backup/media/backup-azure-backup-server-vmware/replica-creation.png)
 
-1. **Tutarlılık denetimi seçenekleri**için tutarlılık denetimlerinin nasıl ve ne zaman otomatikleştirildiğini seçin ve **İleri**' yi seçin.
+1. **Tutarlılık denetimi seçenekleri** için tutarlılık denetimlerinin nasıl ve ne zaman otomatikleştirildiğini seçin ve **İleri**' yi seçin.
 
    - Çoğaltma verileri tutarsız hale geldiğinde veya bir küme zamanlaması üzerinde tutarlılık denetimleri gerçekleştirebilirsiniz.
-   - Otomatik tutarlılık denetimlerini yapılandırmak istemiyorsanız, koruma grubuna sağ tıklayarak **tutarlılık denetimi**yapabilirsiniz.
+   - Otomatik tutarlılık denetimlerini yapılandırmak istemiyorsanız, koruma grubuna sağ tıklayarak **tutarlılık denetimi** yapabilirsiniz.
 
 1. **Çevrimiçi koruma verilerini belirtin** sayfasında, yedeklemek Istediğiniz VM 'LERI veya VM klasörlerini seçin ve ardından **İleri**' yi seçin. 
 
@@ -257,11 +257,11 @@ Koruma grubunu Azure VMware Çözüm VM 'lerini yedekleyecek şekilde yapıland�
 
 - **İzleme** görev alanında:
    - **Uyarılar**' ın altında hataları, uyarıları ve genel bilgileri izleyebilirsiniz.  Etkin ve etkin olmayan uyarıları görüntüleyebilir ve e-posta bildirimleri ayarlayabilirsiniz.
-   - **İşler**altında, belirli bir korumalı veri kaynağı veya koruma grubu için Azure Backup sunucusu tarafından başlatılan işleri görüntüleyebilirsiniz. İş ilerleme durumunu izleyebilir veya işler tarafından tüketilen kaynakları kontrol edebilirsiniz.
+   - **İşler** altında, belirli bir korumalı veri kaynağı veya koruma grubu için Azure Backup sunucusu tarafından başlatılan işleri görüntüleyebilirsiniz. İş ilerleme durumunu izleyebilir veya işler tarafından tüketilen kaynakları kontrol edebilirsiniz.
 - **Koruma** görev bölmesinde, koruma grubundaki birim ve paylaşımların durumunu kontrol edebilirsiniz. Kurtarma ayarları, disk ayırma ve yedekleme zamanlaması gibi yapılandırma ayarlarını da denetleyebilirsiniz.
-- **Yönetim** görev alanında, **diskler, çevrimiçi**ve **aracılar** sekmelerini görüntüleyerek depolama havuzundaki disklerin durumunu DENETLEYEBILIR, Azure 'a kaydedebilir ve DPM aracısının durumunu dağıttınız.
+- **Yönetim** görev alanında, **diskler, çevrimiçi** ve **aracılar** sekmelerini görüntüleyerek depolama havuzundaki disklerin durumunu DENETLEYEBILIR, Azure 'a kaydedebilir ve DPM aracısının durumunu dağıttınız.
 
-:::image type="content" source="media/azure-vmware-solution-backup/monitor-backup-jobs.png" alt-text="vSphere Web Istemcisi":::
+:::image type="content" source="media/azure-vmware-solution-backup/monitor-backup-jobs.png" alt-text="Azure Backup Sunucusu 'de yedekleme işlerinin durumunu izleme":::
 
 ## <a name="restore-vmware-virtual-machines"></a>VMware sanal makinelerini geri yükleme
 
@@ -284,11 +284,11 @@ Azure Backup Sunucusu Yönetici Konsolu, kurtarılabilir verileri bulmanın iki 
    > [!NOTE] 
    > Kısa vadeli koruma için daha hızlı kurtarma için disk tabanlı bir kurtarma noktası seçin. Kısa vadeli kurtarma noktalarının süresi dolduktan sonra, kurtarmak için yalnızca **çevrimiçi** kurtarma noktaları görürsünüz.
 
-1. Çevrimiçi kurtarma noktasından kurtarmadan önce, hazırlama konumunun kurtarmak istediğiniz sanal makinenin tam sıkıştırılmamış boyutunu barındırmak için yeterli boş alan içerdiğinden emin olun. Hazırlama konumu, **abonelik ayarlarını yapılandırma Sihirbazı**çalıştırılarak görüntülenebilir veya değiştirilebilir.
+1. Çevrimiçi kurtarma noktasından kurtarmadan önce, hazırlama konumunun kurtarmak istediğiniz sanal makinenin tam sıkıştırılmamış boyutunu barındırmak için yeterli boş alan içerdiğinden emin olun. Hazırlama konumu, **abonelik ayarlarını yapılandırma Sihirbazı** çalıştırılarak görüntülenebilir veya değiştirilebilir.
 
-   :::image type="content" source="media/azure-vmware-solution-backup/mabs-recovery-folder-settings.png" alt-text="vSphere Web Istemcisi":::
+   :::image type="content" source="media/azure-vmware-solution-backup/mabs-recovery-folder-settings.png" alt-text="Kurtarma klasörü ayarlarını Azure Backup Sunucusu":::
 
-1. **Kurtarma Sihirbazı 'nı**açmak için **kurtar** ' ı seçin.
+1. **Kurtarma Sihirbazı 'nı** açmak için **kurtar** ' ı seçin.
 
    ![Kurtarma Sihirbazı, kurtarma seçim sayfasını gözden geçirin](../backup/media/restore-azure-backup-server-vmware/recovery-wizard.png)
 
@@ -300,7 +300,7 @@ Azure Backup Sunucusu Yönetici Konsolu, kurtarılabilir verileri bulmanın iki 
 1. **Kurtarma türünü seçin** sayfasında, özgün örneğe veya yeni bir konuma kurtarın.
 
    - **Özgün örneğe kurtar**' ı seçerseniz, sihirbazda başka seçimler yapmanıza gerek kalmaz. Özgün örnek için veriler kullanılır.
-   - **Herhangi bir konakta sanal makine olarak kurtar**' ı seçerseniz, **hedef belirtin** ekranında **ESXi Konağı**, **kaynak havuzu**, **klasör**ve **yol**bilgilerini girin.
+   - **Herhangi bir konakta sanal makine olarak kurtar**' ı seçerseniz, **hedef belirtin** ekranında **ESXi Konağı**, **kaynak havuzu**, **klasör** ve **yol** bilgilerini girin.
 
    ![Kurtarma türü seçin sayfası](../backup/media/restore-azure-backup-server-vmware/recovery-type.png)
 
@@ -323,7 +323,7 @@ Korunan bir VM kurtarma noktasından tek tek dosyaları geri yükleyebilirsiniz.
 
 1. **Için kurtarma noktaları** bölmesinde, istenen kurtarma noktalarını içeren tarihi seçmek için takvimi kullanın. Yedekleme ilkesinin nasıl yapılandırıldığına bağlı olarak, tarihler birden fazla kurtarma noktasına sahip olabilir. 
 
-1. Kurtarma noktasının alındığı günü seçtikten sonra, doğru **kurtarma süresini**seçtiğinizden emin olun. 
+1. Kurtarma noktasının alındığı günü seçtikten sonra, doğru **kurtarma süresini** seçtiğinizden emin olun. 
 
    > [!NOTE]
    > Seçilen tarihin birden çok kurtarma noktası varsa, kurtarma **zamanı** açılır menüsünde bunu seçerek kurtarma noktanızı seçin. 
@@ -341,7 +341,7 @@ Korunan bir VM kurtarma noktasından tek tek dosyaları geri yükleyebilirsiniz.
 
 1. **Kurtarma seçeneklerini belirtin** ekranında, aşağıdaki adımlardan birini yapın:
 
-   - Ağ bant genişliği azaltmayı etkinleştirmek için **Değiştir** ' i seçin. **Kısıtlama** iletişim kutusunda, açmak için **ağ bant genişliği kullanımını azaltmayı etkinleştir** ' i seçin. Etkinleştirildikten sonra **ayarları** ve **iş zamanlamasını**yapılandırın.
+   - Ağ bant genişliği azaltmayı etkinleştirmek için **Değiştir** ' i seçin. **Kısıtlama** iletişim kutusunda, açmak için **ağ bant genişliği kullanımını azaltmayı etkinleştir** ' i seçin. Etkinleştirildikten sonra **ayarları** ve **iş zamanlamasını** yapılandırın.
    - Ağ azaltmayı devre dışı bırakmak için **İleri ' yi** seçin.
 
 1. **Kurtarma türü seçin** ekranında, **İleri**' yi seçin. Dosya veya klasörlerinizi yalnızca bir ağ klasörüne kurtarabilirsiniz.
@@ -356,7 +356,7 @@ Korunan bir VM kurtarma noktasından tek tek dosyaları geri yükleyebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Yedeklemeleri ayarlarken oluşan sorunları gidermek için, Azure Backup Sunucusu için sorun giderme kılavuzunu gözden geçirin.
+Azure VMware Çözüm VM 'lerinizi Azure Backup Sunucusu yedeklemeyi artık kapsadığınıza göre şunları öğrenmek isteyebilirsiniz: 
 
-> [!div class="nextstepaction"]
-> [Azure Backup Sunucusu için sorun giderme kılavuzu](../backup/backup-azure-mabs-troubleshoot.md)
+- [Azure Backup sunucusu yedeklemeler ayarlanırken sorun giderme](../backup/backup-azure-mabs-troubleshoot.md).
+- [Azure VMware Çözüm VM 'Lerinin yaşam döngüsü yönetimi](lifecycle-management-of-azure-vmware-solution-vms.md).

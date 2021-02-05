@@ -8,13 +8,14 @@ ms.topic: reference
 ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
+ms.custom: subject-monitoring
 ms.date: 10/02/2020
-ms.openlocfilehash: d231de8e262194cd7dda2462a3f54d7d531eb63c
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 6da9c6775a6d5c96bc52183fefc3e5330272e9ff
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95542091"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99585135"
 ---
 # <a name="monitoring-azure-machine-learning-data-reference"></a>Azure Machine Learning veri başvurusunu izleme
 
@@ -24,7 +25,7 @@ Azure Machine Learning çalışma alanınızdan Azure Izleyici tarafından topla
 
 Bu bölümde, Azure Machine Learning için toplanan otomatik olarak toplanan tüm platform ölçümleri listelenmektedir. Bu ölçümler için kaynak sağlayıcısı, [Microsoft. MachineLearningServices/Workspaces](../azure-monitor/platform/metrics-supported.md#microsoftmachinelearningservicesworkspaces).
 
-**Model**
+**Modelleme**
 
 | Metric | Birim | Description |
 | ----- | ----- | ----- |

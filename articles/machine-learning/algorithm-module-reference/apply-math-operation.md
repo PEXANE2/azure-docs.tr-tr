@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
-ms.openlocfilehash: 04ce45f428604275696d83938708bcee0c6c023f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3b2925a532d722598ccf16c001c9e2591aed1f2b
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91536775"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584999"
 ---
 # <a name="apply-math-operation"></a>Matematik İşlemi Uygulama
 
@@ -95,7 +95,7 @@ Sonuçları **append** veya **resultonly** seçeneklerini kullanarak oluştururs
 -   **Eşittir (Col2_Col1)**, col2 'e göre test edildiğini belirtir.  
 -   **Eşittir (Col2_ $10)** ve sütun 2 ' yi sabit 10 ' a karşılaştırdığını gösterir.  
 
-**Yerinde** seçeneğini kullansanız bile, kaynak veriler silinmez veya değiştirilmez; özgün veri kümesindeki sütun tasarımcıda hala kullanılabilir. Özgün verileri görüntülemek için, [sütun ekleme](add-columns.md) modülünü bağlanabilir ve **matematik işlemini Uygula işleminin**çıktısına katabilirsiniz.  
+**Yerinde** seçeneğini kullansanız bile, kaynak veriler silinmez veya değiştirilmez; özgün veri kümesindeki sütun tasarımcıda hala kullanılabilir. Özgün verileri görüntülemek için, [sütun ekleme](add-columns.md) modülünü bağlanabilir ve **matematik işlemini Uygula işleminin** çıktısına katabilirsiniz.  
     
 ## <a name="basic-math-operations"></a>Temel matematik işlemleri 
 
@@ -188,7 +188,7 @@ Belirttiğiniz n öğesini kullanarak değerin n. kökünü döndürür.
 
 Seçili olan sütundaki her bir değer için X ' in üssünü hesaplar.  
 
-İlk olarak, **ColumnSet** seçeneğini kullanarak, float olması gereken **tabanı**içeren sütunları seçin.  
+İlk olarak, **ColumnSet** seçeneğini kullanarak, float olması gereken **tabanı** içeren sütunları seçin.  
 
 **İkinci bağımsız değişken türünde**, üs içeren sütunu seçin veya üs olarak kullanılacak bir sabit belirtin.  
 
@@ -249,26 +249,29 @@ Daha büyük değeri döndürür; **sütun kümesindeki** değer veya sabit ya d
 
 Temel aritmetik işlemleri içerir: toplama ve çıkarma, bölme ve çarpma.  Çoğu işlem ikili olduğundan, iki sayı gerektiren bir işlem seçin ve ardından ilk ve ikinci bağımsız değişkenlerde kullanılacak sütunu veya rakamları seçersiniz.
 
-Bölme ve çıkarma için sütunları seçme sırası, anlaşılır görünebilir; Ancak, sonuçların anlaşılması daha kolay hale getirmek için, sütun başlığı işlem adını ve sütunların kullanıldığı sırayı sağlar.
+Bölme ve çıkarma sırası aşağıdaki gibidir: 
+- Çıkart (Arg1_Arg2) = arg1-ARG 2
+- Böl (Arg1_Arg2) = arg1/ARG 2
 
+Aşağıdaki tabloda bazı örnekler gösterilmektedir
 İşlem|Num1|Num2|Sonuç sütunu|Sonuç değeri|
 ----|----|----|----|----
-|Toplama|1|5|Ekle (Num2_Num1)| 4|
+|Toplama|1|5|Ekle (Num2_Num1)| 6|
 |Çarpma|1|5|Birden çok (Num2_Num1)|5|
-|Çıkarma|1|5|Çıkart (Num2_Num1)|4|
-|Çıkarma|0|1|Çıkart (Num2_Num1)|0|
-|Bölüm|1|5|Böl (Num2_Num1)|5|
-|Bölüm|0|1|Böl (Num2_Num1)|Sonsuz|
+|Çıkarma|5|1|Çıkart (Num2_Num1)|4|
+|Çıkarma|0|1|Çıkart (Num2_Num1)|-1|
+|Bölüm|5|1|Böl (Num2_Num1)|5|
+|Bölüm|1|0|Böl (Num2_Num1)|Sonsuz|
 
 ### <a name="add"></a>Ekle
 
-**Sütun kümesini**kullanarak kaynak sütunları belirtin ve ardından bu değerlere **ikinci bağımsız değişkende**belirtilen bir sayı ekleyin.  
+**Sütun kümesini** kullanarak kaynak sütunları belirtin ve ardından bu değerlere **ikinci bağımsız değişkende** belirtilen bir sayı ekleyin.  
 
-Değerleri iki sütuna eklemek için, **sütun kümesi**kullanarak bir sütun veya sütun seçin ve ardından **ikinci bağımsız değişkeni**kullanarak ikinci bir sütun seçin.  
+Değerleri iki sütuna eklemek için, **sütun kümesi** kullanarak bir sütun veya sütun seçin ve ardından **ikinci bağımsız değişkeni** kullanarak ikinci bir sütun seçin.  
 
 ### <a name="divide"></a>Böl
 
-**Sütundaki** değerleri bir sabitine veya **ikinci bağımsız değişkende**tanımlanan sütun değerlerine böler.  Diğer bir deyişle, önce böleni ve ardından Bölüneni seçer. Çıkış değeri, bölüm.
+**Sütundaki** değerleri bir sabitine veya **ikinci bağımsız değişkende** tanımlanan sütun değerlerine böler.  Diğer bir deyişle, önce böleni ve ardından Bölüneni seçer. Çıkış değeri, bölüm.
 
 ### <a name="multiply"></a>Çarp
 
@@ -284,51 +287,51 @@ Azure Machine Learning tasarımcı, çeşitli yuvarlama işlemlerini destekler. 
 
 - Sabit kullanırsanız **duyarlık türünü** **sabit** olarak ayarlayın ve ardından **Sabit duyarlık** metin kutusunda basamak sayısını tamsayı olarak yazın. Tamsayı olmayan bir dize yazarsanız modül bir hata oluşturmaz, ancak sonuçlar beklenmedik olabilir.  
 
-- Veri kümenizdeki her satır için farklı bir duyarlık değeri kullanmak istiyorsanız **duyarlık türünü** **ColumnSet**olarak ayarlayın ve ardından uygun duyarlık değerlerini içeren sütunu seçin.  
+- Veri kümenizdeki her satır için farklı bir duyarlık değeri kullanmak istiyorsanız **duyarlık türünü** **ColumnSet** olarak ayarlayın ve ardından uygun duyarlık değerlerini içeren sütunu seçin.  
 
 ### <a name="ceiling"></a>Ceiling
 
-**Sütun kümesindeki**değerler için tavan döndürür.  
+**Sütun kümesindeki** değerler için tavan döndürür.  
 
 ### <a name="ceilingpower2"></a>CeilingPower2
 
-**Sütun kümesindeki**değerler için kare yukarı tavan döndürür.  
+**Sütun kümesindeki** değerler için kare yukarı tavan döndürür.  
 
 ### <a name="floor"></a>Floor
 
-**Sütun kümesindeki**değerlerin taban değerini belirtilen duyarlığa döndürür.  
+**Sütun kümesindeki** değerlerin taban değerini belirtilen duyarlığa döndürür.  
 
 ### <a name="mod"></a>Mod
 
-**Sütun kümesindeki**değerlerin kesirli kısmını belirtilen duyarlığa döndürür.  
+**Sütun kümesindeki** değerlerin kesirli kısmını belirtilen duyarlığa döndürür.  
 
-### <a name="quotient"></a>Bölüm
+### <a name="quotient"></a>Üs
 
-**Sütun kümesindeki**değerlerin kesirli kısmını belirtilen duyarlığa döndürür.  
+**Sütun kümesindeki** değerlerin kesirli kısmını belirtilen duyarlığa döndürür.  
 
 ### <a name="remainder"></a>Kalan
 
-**Sütun kümesindeki**değerler için kalanı döndürür.  
+**Sütun kümesindeki** değerler için kalanı döndürür.  
 
 ### <a name="rounddigits"></a>RoundDigits
 
-**Sütun kümesindeki**değerleri döndürür ve 4/5 kuralına göre belirtilen basamak sayısına yuvarlanır.  
+**Sütun kümesindeki** değerleri döndürür ve 4/5 kuralına göre belirtilen basamak sayısına yuvarlanır.  
 
 ### <a name="rounddown"></a>RoundDown
 
-**Sütun kümesindeki**değerleri döndürür, belirtilen basamak sayısına yuvarlanır.  
+**Sütun kümesindeki** değerleri döndürür, belirtilen basamak sayısına yuvarlanır.  
 
 ### <a name="roundup"></a>RoundUp
 
-**Sütun kümesindeki**değerleri döndürür, belirtilen basamak sayısına yuvarlanır.  
+**Sütun kümesindeki** değerleri döndürür, belirtilen basamak sayısına yuvarlanır.  
 
 ### <a name="toeven"></a>Tobile
 
-**Sütun kümesindeki**değerleri döndürür, hatta en yakın tam sayıya yuvarlanır.  
+**Sütun kümesindeki** değerleri döndürür, hatta en yakın tam sayıya yuvarlanır.  
 
 ### <a name="toodd"></a>Totek
 
-**Sütun kümesindeki**değerleri döndürür ve en yakın tamsayıya, tek sayıya yuvarlanır.  
+**Sütun kümesindeki** değerleri döndürür ve en yakın tamsayıya, tek sayıya yuvarlanır.  
 
 ### <a name="truncate"></a>Truncate
 
@@ -580,7 +583,7 @@ Veri kümenizin birden çok sütunu olduğunu varsayın ve veri kümesini kendi 
 |2|3|-1|4|6|-2|
 |0|1|-1|0|2|-2|
 
-Daha karmaşık hesaplamalar yapmanız gerekiyorsa, **matematik Işlemi Uygula**işleminin birden çok örneğini zincirleyebilirsiniz. Örneğin, **matematik Işlemi Uygula**' nın bir örneğini kullanarak iki sütun ekleyebilir ve sonra da ortalaması elde etmek üzere toplamı bir sabite bölmek Için **matematik işlemi Uygula** ' nın başka bir örneğini kullanabilirsiniz.  
+Daha karmaşık hesaplamalar yapmanız gerekiyorsa, **matematik Işlemi Uygula** işleminin birden çok örneğini zincirleyebilirsiniz. Örneğin, **matematik Işlemi Uygula**' nın bir örneğini kullanarak iki sütun ekleyebilir ve sonra da ortalaması elde etmek üzere toplamı bir sabite bölmek Için **matematik işlemi Uygula** ' nın başka bir örneğini kullanabilirsiniz.  
   
 Alternatif olarak, SQL, R veya Python betiği kullanarak tüm hesaplamaları tek seferde yapmak için aşağıdaki modüllerden birini kullanın:
  

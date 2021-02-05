@@ -13,12 +13,12 @@ ms.date: 09/03/2020
 ms.author: marsma
 ms.custom: aaddev, contperf-fy21q1
 ms.reviewer: lenalepa, aragra, sureshja
-ms.openlocfilehash: fdaaf935dc458a6a5b2a87a81bb98a1392f1034a
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 460c96ddb06318cacd4e436190f459e4c060536e
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98012130"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99583697"
 ---
 # <a name="quickstart-configure-a-client-application-to-access-a-web-api"></a>Hızlı başlangıç: bir istemci uygulamasını bir Web API 'sine erişmek için yapılandırma
 
@@ -78,7 +78,7 @@ Oturum açmış kullanıcı adına kendi Web API 'nize erişmenin yanı sıra, u
 1. **Temsilci izinleri** seçin. Microsoft Graph, listenin en üstünde gösterilen en yaygın olarak kullanılan birçok izni kullanıma sunar.
 1. **Izinleri Seç**' in altında aşağıdaki izinleri seçin:
 
-    | İzin       | Açıklama                                         |
+    | İzin       | Description                                         |
     |------------------|-----------------------------------------------------|
     | `email`          | Kullanıcıların e-posta adresini görüntüleme                           |
     | `offline_access` | Erişimi verdiğiniz verilere erişimi koruyun |
@@ -110,7 +110,7 @@ Microsoft Graph *dosyaları. Read. All* izni gibi bazı izinler yönetici onayı
 
 ### <a name="configure-client-credentials"></a>İstemci kimlik bilgilerini yapılandırma
 
-Uygulama izinlerini kullanan uygulamalar, Kullanıcı etkileşimi gerektirmeden kendi kimlik bilgilerini kullanarak kimliğini doğrular. Uygulamanız (veya API), uygulama izinlerini kullanarak Microsoft Graph, kendi Web API 'niz veya başka bir API 'ye erişebilerek, istemci uygulamasının kimlik bilgilerini yapılandırmanız gerekir.
+Uygulama izinlerini kullanan uygulamalar, Kullanıcı etkileşimi gerektirmeden kendi kimlik bilgilerini kullanarak kimliğini doğrular. Uygulamanız (veya API), uygulama izinlerini kullanarak Microsoft Graph, kendi Web API 'niz veya başka bir API 'ye erişebilerek, o istemci uygulamasının kimlik bilgilerini yapılandırmanız gerekir.
 
 Uygulamanın kimlik bilgilerini yapılandırma hakkında daha fazla bilgi için, [hızlı başlangıç: Microsoft Identity platformu ile bir uygulama kaydetme](quickstart-register-app.md)konusunun [kimlik bilgileri ekleme](quickstart-register-app.md#add-credentials) bölümüne bakın.
 

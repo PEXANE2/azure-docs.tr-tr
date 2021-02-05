@@ -13,12 +13,12 @@ ms.date: 11/23/2019
 ms.author: abpati
 ms.reviewer: nacanuma
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 161bcb2a4276b39765361e97a4516812c26ef580
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: d847e38a6114b0e5f8d56f6e994aa47dfbe929e7
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98064479"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99583714"
 ---
 # <a name="active-directory-federation-services-support-in-msal-for-python"></a>Python için MSAL Active Directory Federasyon Hizmetleri (AD FS) desteği
 
@@ -57,7 +57,7 @@ Dizini AD FS 'e bağladığınızda, uygulamanızı oluşturmak için kullanmak 
 
 MSAL Python, ADFS 2019 ' i destekler.
 
-ADFS 2016 veya ADFS v2 'ye doğrudan bağlantıyı desteklemez. ADFS 2016 'e doğrudan bağlantı gerektiren senaryoları desteklemeniz gerekiyorsa, ADAL Python 'un en son sürümünü kullanın. Şirket içi sisteminizi ADFS 2019 ' e yükselttikten sonra, MSAL Python 'u kullanabilirsiniz.
+ADFS 2016 veya ADFS v2 'ye doğrudan bağlantıyı desteklemez. ADFS 2016 'e doğrudan bağlantı gerektiren senaryoları desteklemek için, ADAL Python 'un en son sürümünü kullanın. Şirket içi sisteminizi ADFS 2019 ' e yükselttikten sonra, MSAL Python 'u kullanabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

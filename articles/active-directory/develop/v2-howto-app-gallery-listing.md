@@ -12,12 +12,12 @@ ms.date: 12/14/2020
 ms.author: kenwith
 ms.reviewer: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 8f5324e967c5a67ee77559087a02c3421611d8f3
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 3ce00c5182246513aaf3178118058826528619d2
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98752858"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584273"
 ---
 # <a name="publish-your-app-to-the-azure-ad-app-gallery"></a>Uygulamanızı Azure AD uygulama galerisine yayımlayın
 
@@ -69,7 +69,7 @@ Uygulamanızı Azure AD uygulama galerisinde yayımlama adımları şunlardır:
 - Karşılıklı müşteriler, adım adım bir yapılandırma öğreticisini alır.
 - Etki alanları arası kimlik yönetimi ([SCIM](https://techcommunity.microsoft.com/t5/Identity-Standards-Blog/Provisioning-with-SCIM-getting-started/ba-p/880010)) için sistemi kullanan müşteriler aynı uygulama için sağlama kullanabilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 En az iki Kullanıcı kayıtlı olarak test için kalıcı bir hesaba ihtiyacınız vardır.
 
@@ -85,7 +85,7 @@ Tüm Premium Azure AD özellikleriyle 90 gün ücretsiz olan ücretsiz bir test 
 
 ## <a name="step-1---choose-the-right-single-sign-on-standard-for-your-app"></a>1. adım-uygulamanız için sağ çoklu oturum açma standardını seçme
 
-Azure AD uygulama galerisinde bir uygulamayı listelemek için desteklenen çoklu oturum açma seçeneklerinden en az birini uygulamanız gerekir. Çoklu oturum açma seçeneklerini ve müşterilerin bunları Azure AD 'de nasıl yapılandıracağınızı anlamak için bkz. [SSO seçenekleri](../manage-apps/sso-options.md).
+Azure AD uygulama galerisinde bir uygulamayı listelemek için desteklenen çoklu oturum açma seçeneklerinden en az birini uygulayın. Çoklu oturum açma seçeneklerini ve müşterilerin bunları Azure AD 'de nasıl yapılandıracağınızı anlamak için bkz. [SSO seçenekleri](../manage-apps/sso-options.md).
 
 Aşağıdaki tabloda ana standartlar karşılaştırılmaktadır: OpenID Connect (OıDC), Security Assertion Markup Language (SAML) ve Web Hizmetleri Federasyonu (WS-beslenir) ile açık kimlik doğrulama 2,0 (OAuth 2,0).
 
@@ -186,7 +186,7 @@ Uygulamanızı test etmek için bir Azure AD kiracısına sahip olmanız gerekir
 
 Alternatif olarak, Azure AD kiracısı her Microsoft 365 abonelikle birlikte gelir. Ücretsiz bir Microsoft 365 geliştirme ortamı ayarlamak için, bkz. [Microsoft 365 Geliştirici programına ekleme](/office/developer-program/microsoft-365-developer-program).
 
-Kiracınız olduktan sonra, tek oturum açma ve [sağlamayı](../app-provisioning/use-scim-to-provision-users-and-groups.md#step-4-integrate-your-scim-endpoint-with-the-azure-ad-scim-client)test etmeniz gerekir. 
+Bir kiracınız olduktan sonra, çoklu oturum açma ve [sağlama](../app-provisioning/use-scim-to-provision-users-and-groups.md#step-4-integrate-your-scim-endpoint-with-the-azure-ad-scim-client)işlemlerini test edin. 
 
 **OıDC veya Oath uygulamaları için** uygulamanızı çok kiracılı bir uygulama olarak [kaydedin](quickstart-register-app.md) . Desteklenen hesap türlerinde herhangi bir kurumsal dizin ve kişisel Microsoft hesabı seçeneğinde bulunan hesapları seçin.
 

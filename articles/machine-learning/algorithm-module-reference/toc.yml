@@ -28,8 +28,6 @@
       href: convert-to-dataset.md
     - name: Gösterge Değerlerine dönüştürme
       href: convert-to-indicator-values.md
-    - name: Eksik Verileri Temizleme
-      href: clean-missing-data.md
     - name: Meta Verileri Düzenleme
       href: edit-metadata.md
     - name: Verileri Kutulara Gruplama

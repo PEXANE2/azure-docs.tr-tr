@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 7173efd3dab0e8d2fd3c948a3a9bac07641e78f3
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: c1ae52b2b92c5c8d5a1a98632e19d3140672d6ea
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98792091"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99585050"
 ---
 # <a name="form-recognizer-prebuilt-receipt-model"></a>Form tanıyıcı önceden oluşturulmuş makbuz modeli
 
@@ -38,7 +38,7 @@ Giriş API 'SI, optik karakter tanıma (OCR) ve önceden oluşturulmuş alış i
 
 ### <a name="fields-extracted"></a>Ayıklanan alanlar
 
-|Ad| Tür | Açıklama | Metin | Değer (standartlaştırılmış çıkış) |
+|Ad| Tür | Description | Metin | Değer (standartlaştırılmış çıkış) |
 |:-----|:----|:----|:----| :----|
 | Pottype | string | Satış alındısı türü | 'Nün |  |
 | MerchantName | string | Okundu bilgisini veren satıcı adı | Contoso |  |
@@ -467,7 +467,7 @@ Makbuz API 'SI Ayrıca [AI Oluşturucu alma işlemi özelliğini](/ai-builder/pr
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Form tanıyıcı ile seçtiğiniz dilde bir makbuz işleme uygulaması yazmaya başlamak için [form tanıyıcı hızlı](quickstarts/client-library.md) başlangıcını doldurun.
+- Form tanıyıcı ile seçtiğiniz geliştirme dilinde bir makbuz işleme uygulaması yazmaya başlamak için [form tanıyıcı hızlı](quickstarts/client-library.md) başlangıcını doldurun.
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
