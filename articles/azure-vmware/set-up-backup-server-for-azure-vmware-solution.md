@@ -2,13 +2,13 @@
 title: Azure VMware çözümü için Azure Backup Sunucusu ayarlama
 description: Azure Backup Sunucusu kullanarak sanal makineleri yedeklemek için Azure VMware Çözüm ortamınızı ayarlayın.
 ms.topic: how-to
-ms.date: 10/23/2020
-ms.openlocfilehash: 7885c0bc73bd5f7cd802e76ed9db470f77eda30d
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.date: 02/04/2021
+ms.openlocfilehash: e9204b9f86c7e9ef67d2e3d6b45ccf4248d00b32
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98703411"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99581491"
 ---
 # <a name="set-up-azure-backup-server-for-azure-vmware-solution"></a>Azure VMware çözümü için Azure Backup Sunucusu ayarlama
 
@@ -389,7 +389,7 @@ Azure Backup Sunucusu v3 yalnızca depolama birimlerini kabul eder. Bir birim ek
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Backup Sunucusu kullanarak Azure VMware çözümünde çalışan VMware VM 'lerinin bir yedeğinin nasıl yapılandırılacağını öğrenmek için sonraki öğreticiye geçin.
+Azure VMware çözümü için Azure Backup Sunucusu ayarlamayı artık kapsadığınıza göre, şunları öğrenmek isteyebilirsiniz:
 
-> [!div class="nextstepaction"]
-> [Azure VMware Çözüm VM 'lerinin yedeklemesini yapılandırma](backup-azure-vmware-solution-virtual-machines.md)
+- [Azure VMware Çözüm sanal makinelerinize yönelik yedeklemeleri yapılandırma](backup-azure-vmware-solution-virtual-machines.md).
+- Azure [Güvenlik Merkezi tümleştirmesiyle Azure VMware Çözüm VM 'Lerinizi koruma](azure-security-integration.md).

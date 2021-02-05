@@ -13,12 +13,12 @@ ms.date: 08/31/2020
 ms.author: ryanwi
 ms.reviewer: arielgo, jiml
 ms.custom: aaddev, signin_art
-ms.openlocfilehash: 3ee59226853f4ea5aabf57a8866ba014aa874774
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 236e82ab97244e1428441f83295f6a5d4ed56350
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90706209"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99582001"
 ---
 # <a name="branding-guidelines-for-applications"></a>Uygulamalar için markalama yönergeleri
 
@@ -27,7 +27,7 @@ Microsoft Identity platformu ile uygulama geliştirirken, müşterilerinizin iş
 Bu makalede şunları yapacaksınız:
 
 - Microsoft tarafından yönetilen iki hesap türünü ve uygulamanızdan Azure AD hesaplarına nasıl başvuracağınızı öğreneceksiniz
-- Uygulamanızda kullanılmak üzere Microsoft logosu eklemek için ne yapmanız gerektiğini öğrenin
+- Uygulamanızda Microsoft logosu kullanma gereksinimlerini öğrenin
 - Uygulamanızda kullanmak için resmi **Oturum açın** veya **Microsoft hesabıyla oturum açın** görsellerini indireceksiniz
 - Marka ve gezinti konularında yapmanız ve yapmamanız gerekenleri öğreneceksiniz
 

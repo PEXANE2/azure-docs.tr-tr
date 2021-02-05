@@ -5,16 +5,16 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 11/09/2020
-ms.openlocfilehash: 4f64bab698cb87e26fa4fd1587c4269acf99fa59
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: 5dde3da693d87d537fd2177a6f12b55297b5776e
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94384138"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99582205"
 ---
-# <a name="precise-answering"></a>Kesin yanıt
+# <a name="precise-answering"></a>Hassas yanıtlama
 
-Kesin yanıtlama özelliği, herhangi bir Kullanıcı sorgusu için Bilgi Bankası 'nda bulunan en iyi aday yanıtı ile ilgili kesin kısa cevap elde etmenizi sağlar. Bu özellik, çalışma zamanında, Kullanıcı sorgusunun amacını anlayan ve yanıt yolunca bir olgu olarak kısa bir yanıt sunan tam kısa yanıtı algılayan derin bir öğrenme modeli kullanır. 
+Soru-Cevap Oluşturma yönetilen (Önizleme) ' de sunulan kesin yanıt özelliği, herhangi bir Kullanıcı sorgusu için Bilgi Bankası 'nda bulunan en iyi aday yanıtı ile ilgili kesin kısa cevap elde etmenizi sağlar. Bu özellik, çalışma zamanında, Kullanıcı sorgusunun amacını anlayan ve yanıt yolunca bir olgu olarak kısa bir yanıt sunan tam kısa yanıtı algılayan derin bir öğrenme modeli kullanır. 
 
 Bu özellik, senaryonuza özgü işlevselliği test edebilmeniz için test bölmesinde varsayılan olarak üzerinde bulunur. Bu özellik hem içerik geliştiricileri hem de son kullanıcılar için son derece faydalıdır. Artık, içerik geliştiricilerinin bilgi tabanında bulunan her olgu için belirli QnA çiftlerini el ile seçmelerine gerek yoktur ve son kullanıcının, kullanıcının sorgusuna yanıt veren gerçek olguyu bulmak için hizmetten döndürülen tüm yanıt yollamasına bakmasına gerek yoktur. 
 
@@ -32,7 +32,7 @@ Hizmet Ayrıca, sınama bölmesindeki sorgunun hemen **altında bulunan denetle 
 
 ## <a name="publishing-a-qna-maker-bot"></a>Soru-Cevap Oluşturma bot yayımlama
 
-Bir bot yayımladığınızda, uygulamanızda varsayılan olarak kesin yanıt özelliği, yanıt bestecisiyle birlikte kısa bir cevap görürsünüz. Kullanıcı, şablonu tek eBot App Service aracılığıyla güncelleştirerek diğer deneyimleri seçme esnekliği sunar. 
+Bir bot yayımladığınızda, uygulamanızda varsayılan olarak kesin yanıt özelliği, yanıt bestecisiyle birlikte kısa bir cevap görürsünüz. Yanıtta kesin yanıtın (AnswerSpan olarak adlandırılır) nasıl kullanılacağını görmek için [Yanıt oluştur](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerv5.0-preview.1/knowledgebase/generateanswer#answerspan) için API başvurusuna bakın. Kullanıcı, bu şablonu botu App Service aracılığıyla güncelleştirerek diğer deneyimleri seçme esnekliğine sahiptir. 
 
 ## <a name="language-support"></a>Dil desteği
 

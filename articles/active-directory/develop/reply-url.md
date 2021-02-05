@@ -11,12 +11,12 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: marsma, lenalepa, manrath
-ms.openlocfilehash: 30ea74b249937544a0bf9811cad60f02c1ca45c7
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 91df89a69368056c1967e641562cf8515f44ade0
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95752804"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99582817"
 ---
 # <a name="redirect-uri-reply-url-restrictions-and-limitations"></a>Yeniden yönlendirme URI 'SI (yanıt URL 'SI) kısıtlamaları ve sınırlamaları
 
@@ -32,7 +32,7 @@ Yeniden yönlendirme URI 'SI veya yanıt URL 'SI, uygulama başarıyla yetkilend
 
 Bu tablo, Microsoft Identity platformunda bir uygulama kaydına ekleyebileceğiniz en fazla yeniden yönlendirme URI sayısını gösterir.
 
-| Oturum açan hesaplar | Maksimum yeniden yönlendirme URI sayısı | Açıklama |
+| Oturum açan hesaplar | Maksimum yeniden yönlendirme URI sayısı | Description |
 |--------------------------|---------------------------------|-------------|
 | Herhangi bir kuruluşun Azure Active Directory (Azure AD) kiracısındaki Microsoft iş veya okul hesapları | 256 | `signInAudience`uygulama bildirimindeki alan *Azureadmyorg* ya da *Azureadmultipleorgs* olarak ayarlandı |
 | Kişisel Microsoft hesapları ve iş ve okul hesapları | 100 | `signInAudience`uygulama bildirimindeki alan *Azureadandpersonmicrosoftaccount* olarak ayarlandı |
@@ -45,7 +45,7 @@ Bir uygulama kaydına eklediğiniz her yeniden yönlendirme URI 'SI için en faz
 
 Azure Active Directory (Azure AD) uygulama modeli, herhangi bir kuruluşun Azure AD kiracısında iş veya okul hesaplarında oturum açmış uygulamalar için hem HTTP hem de HTTPS düzenlerini desteklemektedir. Bu hesap türleri, `AzureADMyOrg` `AzureADMultipleOrgs` uygulama bildiriminin alanındaki ve değerleri tarafından belirtilir `signInAudience` . Kişisel Microsoft hesapları (MSA) *ve* iş ve okul hesaplarında (yani, `signInAudience` olarak ayarlanır) oturum açmak için `AzureADandPersonalMicrosoftAccount` yalnızca https şemasına izin verilir.
 
-İş veya okul hesaplarında oturum açmaya yönelik uygulama kayıtlarına bir HTTP düzeniyle yeniden yönlendirme URI 'Leri eklemek için, Azure portal [uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) içindeki uygulama bildirimi düzenleyicisini kullanmanız gerekir. Ancak, bildirim düzenleyicisini kullanarak HTTP tabanlı yeniden yönlendirme URI 'SI ayarlamak mümkün olsa da, yeniden yönlendirme URI 'larınız için HTTPS şemasını kullanmanız *önemle* önerilir.
+İş veya okul hesaplarında oturum açmaya yönelik uygulama kayıtlarına bir HTTP düzenine sahip yeniden yönlendirme URI 'Leri eklemek için, Azure portal [uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) içindeki uygulama bildirimi düzenleyicisini kullanın. Ancak, bildirim düzenleyicisini kullanarak HTTP tabanlı yeniden yönlendirme URI 'SI ayarlamak mümkün olsa da, yeniden yönlendirme URI 'larınız için HTTPS şemasını kullanmanız *önemle* önerilir.
 
 ## <a name="localhost-exceptions"></a>Localhost özel durumları
 
@@ -65,7 +65,7 @@ Geliştirme açısından, bu birkaç şey anlamına gelir:
 * Yalnızca bağlantı noktasının farklı olduğu birden çok yeniden yönlendirme URI 'sini kaydetme. Oturum açma sunucusu bir rastgele seçer ve bu yeniden yönlendirme URI 'siyle ilişkili davranışı kullanır (örneğin, a `web` -, `native` -veya `spa` -Type yeniden yönlendirmesi).
 
     Aynı uygulama kaydında farklı kimlik doğrulama akışları kullanmak istediğinizde özellikle önemlidir, örneğin hem yetkilendirme kodu verme hem de dolaylı akış. Her yeniden yönlendirme URI 'siyle doğru yanıt davranışını ilişkilendirmek için, oturum açma sunucusu yeniden yönlendirme URI 'Leri arasında ayrım yapabilmelidir ve yalnızca bağlantı noktası farklı olduğunda bunu yapamaz.
-* Geliştirme sırasında farklı akışları test etmek için localhost 'a birden çok yeniden yönlendirme URI 'SI kaydetmeniz gerekiyorsa, bunları URI 'nin *yol* bileşenini kullanarak birbirinden ayırın. Örneğin, `http://localhost/MyWebApp` eşleşmez `http://localhost/MyNativeApp` .
+* Geliştirme sırasında farklı akışları test etmek üzere localhost 'a birden çok yeniden yönlendirme URI 'sini kaydetmek için URI 'nin *yol* bileşenini kullanarak bunları birbirinden ayırın. Örneğin, `http://localhost/MyWebApp` eşleşmez `http://localhost/MyNativeApp` .
 * IPv6 geri döngü adresi ( `[::1]` ) Şu anda desteklenmiyor.
 
 #### <a name="prefer-127001-over-localhost"></a>Localhost üzerinden 127.0.0.1 tercih et
@@ -84,7 +84,7 @@ Gibi joker karakter URI 'Leri `https://*.contoso.com` kullanışlı görünebili
 
 Joker karakterler şu anda kişisel Microsoft hesaplarında ve iş veya okul hesaplarında oturum açmak üzere yapılandırılmış uygulama kayıtlarında desteklenmez. Ancak, bir kuruluşun Azure AD kiracısında yalnızca iş veya okul hesaplarında oturum açmak üzere yapılandırılan uygulamalar için joker karakter URI 'Lerinde izin verilir.
 
-İş veya okul hesaplarında oturum açmaya yönelik uygulama kayıtlarına joker karakterler içeren yeniden yönlendirme URI 'Leri eklemek için, Azure portal [uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) içindeki uygulama bildirimi düzenleyicisini kullanmanız gerekir. Bildirim düzenleyicisini kullanarak bir joker karakterle yeniden yönlendirme URI 'SI ayarlamak mümkün olsa da, 3.1.2 for the [RFC 6749 bölümüne](https://tools.ietf.org/html/rfc6749#section-3.1.2) bağlı tutmanız ve yalnızca mutlak URI 'ler kullanmanız *önemle* önerilir.
+İş veya okul hesaplarında oturum açmaya yönelik uygulama kayıtlarına joker karakterler içeren yeniden yönlendirme URI 'Leri eklemek için, Azure portal [uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) içindeki uygulama bildirimi düzenleyicisini kullanın. Bildirim düzenleyicisini kullanarak bir joker karakterle yeniden yönlendirme URI 'SI ayarlamak mümkün olsa da, 3.1.2 for the [RFC 6749 bölümüne](https://tools.ietf.org/html/rfc6749#section-3.1.2) bağlı tutmanız ve yalnızca mutlak URI 'ler kullanmanız *önemle* önerilir.
 
 Senaryonuz izin verilen üst sınırdan daha fazla yeniden yönlendirme URI 'si gerektiriyorsa, joker karakter yeniden yönlendirme URI 'si eklemek yerine aşağıdaki [durum parametresi yaklaşımını](#use-a-state-parameter) göz önünde bulundurun.
 

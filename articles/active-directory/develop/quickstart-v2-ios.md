@@ -13,12 +13,12 @@ ms.date: 09/24/2019
 ms.author: marsma
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:iOS
-ms.openlocfilehash: ef2ab6511d80f7f1f836805055e7cc7f48a488e7
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: b43141a3700b9594e2d5fbb875774b7b90e62a0b
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98754298"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99583459"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-or-macos-app"></a>Hızlı başlangıç: Kullanıcı oturum açma ve iOS veya macOS uygulamasından Microsoft Graph API 'sini çağırma
 
@@ -26,7 +26,7 @@ Bu hızlı başlangıçta, yerel bir iOS veya macOS uygulamasının kullanıcıl
 
 Hızlı başlangıç, hem iOS hem de macOS uygulamaları için geçerlidir. Bazı adımlar yalnızca iOS uygulamaları için gereklidir ve bu şekilde belirtilecektir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * XCode 10 +
@@ -69,7 +69,7 @@ Hızlı başlangıç, hem iOS hem de macOS uygulamaları için geçerlidir. Baz�
 > [!div renderon="portal" class="sxs-lookup"]
 >
 > #### <a name="step-1-configure-your-application"></a>1. Adım: Uygulamanızı yapılandırma
-> Bu hızlı başlangıçta çalışması için kod örneği için, auth broker ile uyumlu bir yeniden yönlendirme URI 'SI eklemeniz gerekir.
+> Bu hızlı başlangıçta çalışması için kod örneği için, auth broker ile uyumlu bir **yeniden yönlendirme URI 'si** ekleyin.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [Bu değişikliği benim için yap]()
 >
@@ -118,7 +118,7 @@ Bir Terminal penceresinde indirilen kod örneğini içeren klasöre gidin ve `po
 >     ```
 > 1. Proje ayarlarını açın. **Kimlik** bölümünde, portala girdiğiniz **paket kimliğini** girin.
 > 1. **Info. plist** ' e sağ tıklayıp kaynak **kodu olarak aç**' ı seçin  >  .
-> 1. Dict kök düğümünün altında, `Enter_the_bundle_Id_Here` portalda kullandığınız **_paket kimliği_* _ ile değiştirin.
+> 1. Dict kök düğümünün altında, öğesini `Enter_the_bundle_Id_Here` portalda kullandığınız ***paket kimliğiyle*** değiştirin.
 >
 >    ```xml
 >    <key>CFBundleURLTypes</key>
@@ -178,9 +178,9 @@ let msalConfiguration = MSALPublicClientApplicationConfig(clientId: kClientID, r
 self.applicationContext = try MSALPublicClientApplication(configuration: msalConfiguration)
 ```
 
-> |Konum: | Açıklama |
+> |Konum: | Description |
 > |---------|---------|
-> | `clientId` | _Portal. Azure. com * ' de kayıtlı uygulamadan uygulama KIMLIĞI |
+> | `clientId` | *portal.azure.com*’da kaydedilen uygulamanın Uygulama Kimliği |
 > | `authority` | Microsoft Identity platformu. Çoğu durumda bu durum `https://login.microsoftonline.com/common` |
 > | `redirectUri` | Uygulamanın yeniden yönlendirme URI 'SI. Varsayılan değeri veya özel yeniden yönlendirme URI 'nizi kullanmak için ' Nil ' geçirebilirsiniz. |
 
@@ -214,7 +214,7 @@ Uygulamanızda de şunlar olmalıdır `AppDelegate` . Bu, kimlik doğrulaması y
     }
  ```
 
-Son olarak, uygulamanızda `LSApplicationQueriesSchemes` ***Info. plist** _ ' de bir giriş olmalıdır `CFBundleURLTypes` . Örnek, bu dahil edilmiştir.
+Son olarak, uygulamanızın `LSApplicationQueriesSchemes` ***Info. plist*** dosyasında ile birlikte bir girişi olması gerekir `CFBundleURLTypes` . Örnek, bu dahil edilmiştir.
 
    ```xml
    <key>LSApplicationQueriesSchemes</key>
@@ -232,7 +232,7 @@ Belirteç almak için MSAL’in iki yöntemi vardır: `acquireToken` ve `acquire
 
 Bazı durumlar, kullanıcıların Microsoft Identity platformu ile etkileşime girmesini gerektirir. Bu durumlarda, son kullanıcının hesabını seçmesini, kimlik bilgilerini girmesi veya uygulamanızın izinlerine izin vermesini gerekli olabilir. Örneğin,
 
-_ Kullanıcılar uygulamada ilk kez oturum açtığında
+* Kullanıcılar uygulamada ilk kez oturum açtığında
 * Kullanıcı parolasını sıfırlarsa, kimlik bilgilerini girmeleri gerekir
 * Uygulamanız bir kaynağa ilk kez erişim isteğinde bulunduğunda
 * MFA veya diğer koşullu erişim ilkeleri gerektiğinde
@@ -242,7 +242,7 @@ let parameters = MSALInteractiveTokenParameters(scopes: kScopes, webviewParamete
 self.applicationContext!.acquireToken(with: parameters) { (result, error) in /* Add your handling logic */}
 ```
 
-> |Konum:| Açıklama |
+> |Konum:| Description |
 > |---------|---------|
 > | `scopes` | İstenen kapsamları içerir (yani `[ "user.read" ]` Microsoft Graph veya `[ "<Application ID URL>/scope" ]` özel Web API 'leri için ( `api://<Application ID>/access_as_user` ) |
 
@@ -262,7 +262,7 @@ self.applicationContext!.getCurrentAccount(with: nil) { (currentAccount, previou
 }
 ```
 
-> |Konum: | Açıklama |
+> |Konum: | Description |
 > |---------|---------|
 > | `scopes` | İstenen kapsamları içerir (yani `[ "user.read" ]` Microsoft Graph veya `[ "<Application ID URL>/scope" ]` özel Web API 'leri için ( `api://<Application ID>/access_as_user` ) |
 > | `account` | Belirtecin istendiği hesap. Bu hızlı başlangıç, tek bir hesap uygulaması hakkında. Çok sunuculu bir uygulama oluşturmak istiyorsanız, kullanarak belirteç istekleri için hangi hesabın kullanılacağını belirlemek `accountsFromDeviceForParameters:completionBlock:` ve doğru geçirme yapmak için Logic tanımlamanız gerekir `accountIdentifier` |

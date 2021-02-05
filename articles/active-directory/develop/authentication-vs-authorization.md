@@ -13,12 +13,12 @@ ms.date: 05/22/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: b81b34010736bce33085cb1ebf0faa3da6a41bd6
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 5244a8e572abb56c00d87d0bdd7e8d1291af9b9e
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98755395"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99581916"
 ---
 # <a name="authentication-vs-authorization"></a>Kimlik Doğrulaması ve yetkilendirme
 
@@ -34,7 +34,7 @@ Bu makalede kimlik doğrulama ve yetkilendirme tanımlanmaktadır. Ayrıca, Web 
 
 ## <a name="authentication-and-authorization-using-the-microsoft-identity-platform"></a>Microsoft Identity platformunu kullanarak kimlik doğrulaması ve yetkilendirme
 
-Her birinin kendi Kullanıcı adı ve parola bilgilerini korumalarına yönelik uygulamalar oluşturma, birden çok uygulama arasında Kullanıcı eklemeniz veya kaldırmanız gerektiğinde yüksek bir yönetim yükü doğurur. Bunun yerine, uygulamalarınız bu sorumluluğu merkezi bir kimlik sağlayıcısına devredebilir.
+Her birinin kendi Kullanıcı adı ve parola bilgilerini korumakta olduğu uygulamalar oluşturma, birden çok uygulama arasında kullanıcı eklerken veya kaldırırken yüksek bir yönetim yükü doğurur. Bunun yerine, uygulamalarınız bu sorumluluğu merkezi bir kimlik sağlayıcısına devredebilir.
 
 Azure Active Directory (Azure AD), bulutta merkezi bir kimlik sağlayıcıdır. Kimlik doğrulama ve yetkilendirme için temsilci seçme, şu senaryolara olanak sağlar:
 

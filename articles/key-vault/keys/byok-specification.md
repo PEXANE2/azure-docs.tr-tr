@@ -8,14 +8,14 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: keys
 ms.topic: conceptual
-ms.date: 05/29/2020
+ms.date: 02/04/2021
 ms.author: ambapat
-ms.openlocfilehash: feef35ef86a933f32949468366fea85eb87d4866
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 141abea0c0946c98b6dfe627f32f01682a18be44
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91315788"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99581032"
 ---
 # <a name="bring-your-own-key-specification"></a>Kendi anahtarını getir belirtimi
 
@@ -31,11 +31,11 @@ Gereksinimler şunlardır:
 
 ## <a name="terminology"></a>Terminoloji
 
-|Anahtar adı|Anahtar türü|Kaynak|Açıklama|
+|Anahtar adı|Anahtar türü|Kaynak|Description|
 |---|---|---|---|
 |Anahtar değişim anahtarı (KEK)|RSA|Azure Key Vault HSM|Azure Key Vault içinde oluşturulan bir HSM tarafından desteklenen bir RSA anahtar çifti
 Anahtar sarmalama|AES|Satıcı HSM|-Pred üzerinde HSM tarafından oluşturulan bir [kısa ömürlü] AES anahtarı
-Hedef anahtar|RSA, EC, AES|Satıcı HSM|Azure Key Vault HSM 'ye aktarılacak anahtar
+Hedef anahtar|RSA, EC, AES (yalnızca yönetilen HSM)|Satıcı HSM|Azure Key Vault HSM 'ye aktarılacak anahtar
 
 **Anahtar değişim anahtarı**: müşterinin bYok anahtarının içeri aktarılacağı anahtar KASASıNDA oluşturduğu HSM ile desteklenen bir anahtar. Bu KEK aşağıdaki özelliklere sahip olmalıdır:
 
@@ -130,9 +130,16 @@ JSON blobu, ' Add-AzKeyVaultKey ' (PSH) veya ' az keykasa anahtar içe aktarma '
 
 Müşteri, anahtar aktarım Blobu (". bYok" dosyası) bir çevrimiçi iş istasyonuna aktarır ve sonra bu blobu Key Vault yeni bir HSM ile desteklenen anahtar olarak içeri aktarmak için **az keykasa anahtarı içeri aktarma** komutu çalıştırır. 
 
+Bir RSA anahtarını içeri aktarmak için şu komutu kullanın:
 ```azurecli
 az keyvault key import --vault-name ContosoKeyVaultHSM --name ContosoFirstHSMkey --byok-file KeyTransferPackage-ContosoFirstHSMkey.byok --ops encrypt decrypt
 ```
+Bir EC anahtarını içeri aktarmak için anahtar türü ve eğri adı belirtmeniz gerekir.
+
+```azurecli
+az keyvault key import --vault-name ContosoKeyVaultHSM --name ContosoFirstHSMkey --byok-file --kty EC-HSM --curve-name "P-256" KeyTransferPackage-ContosoFirstHSMkey.byok --ops sign verify
+```
+
 
 Yukarıdaki komut yürütüldüğünde, REST API isteği aşağıdaki gibi göndermeye neden olur:
 
@@ -140,7 +147,7 @@ Yukarıdaki komut yürütüldüğünde, REST API isteği aşağıdaki gibi gönd
 PUT https://contosokeyvaulthsm.vault.azure.net/keys/ContosoFirstHSMKey?api-version=7.0
 ```
 
-İstek gövdesi:
+Bir RSA anahtarı içeri aktarılırken istek gövdesi:
 ```json
 {
   "key": {
@@ -156,6 +163,25 @@ PUT https://contosokeyvaulthsm.vault.azure.net/keys/ContosoFirstHSMKey?api-versi
   }
 }
 ```
+
+Bir EC anahtarı içeri aktarılırken gövde iste:
+```json
+{
+  "key": {
+    "kty": "EC-HSM",
+    "crv": "P-256",
+    "key_ops": [
+      "sign",
+      "verify"
+    ],
+    "key_hsm": "<Base64 encoded BYOK_BLOB>"
+  },
+  "attributes": {
+    "enabled": true
+  }
+}
+```
+
 "key_hsm" değeri, Base64 biçiminde KeyTransferPackage-ContosoFirstHSMkey. bYok kodlandığı tüm içeridir.
 
 ## <a name="references"></a>Başvurular

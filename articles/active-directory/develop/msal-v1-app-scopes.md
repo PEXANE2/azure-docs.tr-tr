@@ -12,12 +12,12 @@ ms.date: 11/25/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: b35b39d7072b22d9cc3f7b4f4ef8886431b06f69
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 7e2fcf2dc0dc53038b82bbf182cb12f580d88357
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98754667"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99583595"
 ---
 # <a name="scopes-for-a-web-api-accepting-v10-tokens"></a>V 1.0 belirteçlerini kabul eden bir Web API 'SI için kapsamlar
 
@@ -37,7 +37,7 @@ var scopes = new [] {  ResourceId+"/user_impersonation"};
 var scopes = [ ResourceId + "/user_impersonation"];
 ```
 
-Microsoft Graph API (https:/graph.microsoft.com/) kullanarak MSAL.NET Azure AD ile okumak ve yazmak için \/ Aşağıdaki örneklerde gösterildiği gibi kapsamların bir listesini oluşturmanız gerekir:
+Microsoft Graph API (https:/graph.microsoft.com/) kullanarak MSAL.NET Azure AD ile okumak ve yazmak için \/ Aşağıdaki örneklerde gösterildiği gibi kapsamların bir listesini oluşturun:
 
 ```csharp
 string ResourceId = "https://graph.microsoft.com/";
@@ -49,7 +49,7 @@ var ResourceId = "https://graph.microsoft.com/";
 var scopes = [ ResourceId + "Directory.Read", ResourceID + "Directory.Write"];
 ```
 
-Azure Resource Manager API 'sine (https:/management.core.windows.net/) karşılık gelen kapsamı yazmak için \/ aşağıdaki kapsamı istemeniz gerekir (iki eğik çizgi).
+Azure Resource Manager API 'sine (https:/management.core.windows.net/) karşılık gelen kapsamı yazmak için \/ aşağıdaki kapsamı isteyin (iki eğik çizgi):
 
 ```csharp
 var scopes = new[] {"https://management.core.windows.net//user_impersonation"};
@@ -59,7 +59,7 @@ var result = await app.AcquireTokenInteractive(scopes).ExecuteAsync();
 ```
 
 > [!NOTE]
-> Azure Resource Manager API 'SI, hedef kitle talebinde (AUD) bir eğik çizgi beklediği için iki eğik çizgi kullanmanız gerekir ve ardından API adını kapsamdan ayırmak için bir eğik çizgi vardır.
+> Azure Resource Manager API 'SI, hedef kitle talebinde (AUD) bir eğik çizgi beklediği için iki eğik çizgi kullanın ve ardından API adını kapsamdan ayırmak için bir eğik çizgi vardır.
 
 Azure AD tarafından kullanılan mantık şunlardır:
 

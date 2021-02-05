@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: virtual-machines
 author: jonbeck7
 ms.service: virtual-machines
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/09/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 63c53a9b95e27486d7d6944c28f8fb085b1bc6ca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d610193783d44b86d48cd5ceaa91377b32b7061b
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74279190"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99580000"
 ---
 <!-- Not used for Ls-series -->
 
@@ -22,7 +22,7 @@ ms.locfileid: "74279190"
 - Depolama kapasitesi GiB veya 1024^3 bayt cinsinden gösterilmiştir. GB (1000 ^ 3 bayt) cinsinden ölçülen diskleri GiB 'de ölçülen disklere (1024 ^ 3) karşılaştırdığınızda, GiB 'de verilen kapasite numaralarının daha küçük görünebileceğinden emin unutmayın. Örneğin, 1023 GiB = 1098,4 GB.
 - Disk aktarım hızı, saniye başına giriş/çıkış işlemi sayısı (IOPS) ve MB/sn (MB/sn = 10^6 bayt/sn) üzerinden ölçülür.
 - Veri diskleri önbelleğe alınmış veya alınmamış modlarda çalışabilir. Önbelleğe alınmış veri diski işlemi için ana bilgisayar önbelleği **SaltOkunur** veya **OkuYaz** moduna ayarlanır.  Önbelleğe alınmamış veri diski işlemi için ana bilgisayar önbelleği **Yok** moduna ayarlanır.
-- Sanal makinelerinize en iyi performansı elde etmek istiyorsanız, vCPU başına veri disklerinin sayısını iki disk ile sınırlamanız gerekir.
+- VM 'leriniz için en iyi depolama performansını nasıl alabileceğinizi öğrenmek için bkz. [sanal makine ve disk performansı](../articles/virtual-machines/disks-performance.md).
 - **Beklenen ağ bant** genişliği tüm ormanlarda tüm NIC 'lerde sanal makine türü başına ayrılan en yüksek bant genişliğine sahip olur. Daha fazla bilgi için bkz. [sanal makine ağ bant genişliği](../articles/virtual-network/virtual-machine-network-throughput.md).
 
   Üst sınırlar garanti edilmez. Hedeflenen uygulama için doğru sanal makine türünü seçmek için teklif kılavuzunu sınırlandırır. Gerçek ağ performansı, ağ tıkanıklığı, uygulama yüklemeleri ve ağ ayarları gibi çeşitli faktörlere bağlıdır. Ağ aktarım hızını iyileştirme hakkında daha fazla bilgi için bkz. [Azure sanal makineler için ağ aktarım hızını iyileştirme](../articles/virtual-network/virtual-network-optimize-network-bandwidth.md). Linux veya Windows üzerinde beklenen ağ performansını elde etmek için belirli bir sürüm seçmeniz veya VM 'nizi en iyi hale getirmeniz gerekebilir. Daha fazla bilgi için bkz. [bant genişliği/işleme testi (NTTTCP)](../articles/virtual-network/virtual-network-bandwidth-testing.md).

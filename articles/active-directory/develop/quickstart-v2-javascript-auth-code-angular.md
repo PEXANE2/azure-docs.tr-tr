@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 01/14/2021
 ms.author: jamesmantu
 ms.custom: aaddev, scenarios:getting-started, languages:JavaScript, devx-track-js
-ms.openlocfilehash: b6e83f8c4ba00f64bd924ce7b404cd3acfcecd14
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 466dc5b09e225876d57dfac7d39d28b88f1beb0f
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98754206"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99583273"
 ---
 # <a name="quickstart-sign-in-and-get-an-access-token-in-an-angular-spa-using-the-auth-code-flow"></a>Hızlı başlangıç: kimlik doğrulama kod akışını kullanarak bir angular SPA 'da oturum açma ve erişim belirteci edinme
 
@@ -27,7 +27,7 @@ Bu hızlı başlangıçta, JavaScript angular tek sayfalı uygulama (SPA), kulla
 
 Bu hızlı başlangıçta yetkilendirme kodu akışıyla MSAL angular v2 kullanılır. Örtük Flow ile MSAL angular 1. x kullanan benzer bir hızlı başlangıç için bkz. [hızlı başlangıç: JavaScript tek sayfalı uygulamalarda oturum açma](./quickstart-v2-angular.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği- [ücretsiz bir Azure aboneliği oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 * [Node.js](https://nodejs.org/en/download/)
@@ -65,7 +65,7 @@ Bu hızlı başlangıçta yetkilendirme kodu akışıyla MSAL angular v2 kullan�
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>1. Adım: uygulamanızı Azure portal yapılandırma
-> Bu hızlı başlangıçta kod örneğinin çalışmasını sağlamak için, bir olarak eklemeniz gerekir `redirectUri` `http://localhost:4200/` .
+> Bu hızlı başlangıçtaki kod örneğinin çalışması için bir **yeniden yönlendirme URI 'si** ekleyin `http://localhost:4200/` .
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [Bu değişiklikleri benim için yap]()
 >

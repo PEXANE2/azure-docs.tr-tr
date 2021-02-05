@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 09/15/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 3b77cc93385efb0bbb8a9b87d29de9bad5cd4ceb
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 938a19276839d5e0d2bd3e0244510fc068cb029c
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95996023"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99582916"
 ---
 # <a name="daemon-app-that-calls-web-apis---app-registration"></a>Web API 'Lerini çağıran Daemon uygulaması-uygulama kaydı
 
@@ -24,7 +24,7 @@ Bir Daemon uygulaması için uygulamayı kaydettiğinizde bilmeniz gerekenler a�
 
 ## <a name="supported-account-types"></a>Desteklenen hesap türleri
 
-Daemon uygulamaları yalnızca Azure AD kiracılarında anlamlı hale getirir. Bu nedenle, uygulamayı oluştururken aşağıdaki seçeneklerden birini belirlemeniz gerekir:
+Daemon uygulamaları yalnızca Azure AD kiracılarında anlamlı hale getirir. Bu nedenle, uygulamayı oluştururken aşağıdaki seçeneklerden birini seçin:
 
 - **Yalnızca bu kuruluş dizinindeki hesaplar**. Daemon uygulamaları genellikle iş kolu (LOB) geliştiricileri tarafından yazıldığı için bu seçim en yaygın bir seçenektir.
 - **Herhangi bir kuruluş dizinindeki hesaplar**. Müşterileriniz için bir yardımcı program aracı sağlayan bir ISV 'niz varsa, bu seçimi yaparsınız. Müşterilerinizin kiracı yöneticilerinin onayını onaylaması gerekir.

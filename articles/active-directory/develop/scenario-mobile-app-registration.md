@@ -13,12 +13,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: cdd32185d1ffddb4c6bc3d62b91690f68dec17ca
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 902348063a24b50d1de0a821d9d6e67931cc53cd
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98014731"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99582545"
 ---
 # <a name="register-mobile-apps-that-call-web-apis"></a>Web API 'Lerini çağıran mobil uygulamaları kaydetme
 
@@ -79,9 +79,9 @@ Yeniden yönlendirme URI 'sini el ile yapılandırmayı tercih ediyorsanız, bun
 
 ### <a name="username-password-authentication"></a>Kullanıcı adı-parola kimlik doğrulaması
 
-Uygulamanız yalnızca Kullanıcı adı-parola kimlik doğrulaması kullanıyorsa, uygulamanız için bir yeniden yönlendirme URI 'SI kaydetmeniz gerekmez. Bu akış Microsoft Identity Platform sürüm 2,0 uç noktasına gidiş dönüş yapar. Uygulamanız belirli bir URI üzerinde geri çağrılmayacaktır.
+Uygulamanız yalnızca Kullanıcı adı-parola kimlik doğrulaması kullanıyorsa, uygulamanız için bir yeniden yönlendirme URI 'SI kaydetmeniz gerekmez. Bu akış, Microsoft Identity platformu 'na gidiş dönüş yapar. Uygulamanız belirli bir URI üzerinde geri çağrılmayacaktır.
 
-Ancak, uygulamanızı ortak bir istemci uygulaması olarak belirlemeniz gerekir. Bunun için:
+Ancak, uygulamanızı ortak bir istemci uygulaması olarak belirleyebilirsiniz. Bunun için:
 
 1. Hala <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span></a>, uygulamanızı **uygulama kayıtları** ve ardından **kimlik doğrulaması**' nı seçin.
 1. **Gelişmiş ayarlar**' da  >  **ortak istemci akışlarının**  >  **aşağıdaki mobil ve Masaüstü akışlarını etkinleştirmesine** izin ver:, **Evet**' i seçin.

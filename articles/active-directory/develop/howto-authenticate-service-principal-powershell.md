@@ -13,12 +13,12 @@ ms.tgt_pltfrm: multiple
 ms.date: 06/26/2020
 ms.author: ryanwi
 ms.reviewer: tomfitz
-ms.openlocfilehash: 096b8ed60bf9880b6904ab952d4558939ca13574
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: b07679c6dd5e03131fde1439213783893971a088
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97652084"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99581831"
 ---
 # <a name="how-to-use-azure-powershell-to-create-a-service-principal-with-a-certificate"></a>Nasıl yapılır: sertifika ile hizmet sorumlusu oluşturmak için Azure PowerShell kullanma
 
@@ -72,7 +72,7 @@ New-AzRoleAssignment -RoleDefinitionName Reader -ServicePrincipalName $sp.Applic
 
 **ResourceGroupName** parametresini kullanıp rol atamasının kapsamı olarak belirli bir kaynak grubunu belirtebilirsiniz. Ayrıca kapsam olarak belirli bir kaynağı belirtmek için **ResourceType** ve **ResourceName** parametrelerini kullanabilirsiniz. 
 
-**Windows 10'unuz veya Windows Server 2016'nız yoksa**, Microsoft Betik Merkezi'nden [Otomatik olarak imzalanan sertifika oluşturucusunu](https://gallery.technet.microsoft.com/scriptcenter/Self-signed-certificate-5920a7c6/) indirmeniz gerekir. İçindekileri ayıklayın ve ihtiyacınız olan cmdlet'i içeri aktarın.
+**Windows 10 veya Windows Server 2016** yoksa, [otomatik olarak Imzalanan sertifika oluşturucuyu](https://gallery.technet.microsoft.com/scriptcenter/Self-signed-certificate-5920a7c6/) Microsoft betik Merkezi ' nden indirin. İçindekileri ayıklayın ve ihtiyacınız olan cmdlet'i içeri aktarın.
 
 ```powershell
 # Only run if you could not use New-SelfSignedCertificate
@@ -91,7 +91,7 @@ $cert = Get-ChildItem -path Cert:\CurrentUser\my | where {$PSitem.Subject -eq 'C
 
 ### <a name="provide-certificate-through-automated-powershell-script"></a>Otomatik PowerShell betiği aracılığıyla sertifika sağlama
 
-Hizmet sorumlusu olarak her oturum açtığınızda, AD uygulamanız için dizinin kiracı kimliğini sağlamanız gerekir. Kiracı, Azure AD 'nin bir örneğidir.
+Hizmet sorumlusu olarak oturum açtığınızda, AD uygulamanız için dizinin kiracı KIMLIĞINI sağlayın. Kiracı, Azure AD 'nin bir örneğidir.
 
 ```powershell
 $TenantId = (Get-AzSubscription -SubscriptionName "Contoso Default").TenantId
@@ -151,7 +151,7 @@ Param (
 ```
 
 ### <a name="provide-certificate-through-automated-powershell-script"></a>Otomatik PowerShell betiği aracılığıyla sertifika sağlama
-Hizmet sorumlusu olarak her oturum açtığınızda, AD uygulamanız için dizinin kiracı kimliğini sağlamanız gerekir. Kiracı, Azure AD 'nin bir örneğidir.
+Hizmet sorumlusu olarak oturum açtığınızda, AD uygulamanız için dizinin kiracı KIMLIĞINI sağlayın. Kiracı, Azure AD 'nin bir örneğidir.
 
 ```powershell
 Param (

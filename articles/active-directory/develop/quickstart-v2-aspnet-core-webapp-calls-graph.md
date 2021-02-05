@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/10/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: 675a5526bfd741876de16fe41c969c09a4ed0ad7
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: bbd7ca198d04769f7e08a9407a0f73744c7cae01
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98938241"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99583646"
 ---
 # <a name="quickstart-aspnet-core-web-app-that-signs-in-users-and-calls-microsoft-graph-on-their-behalf"></a>Hızlı başlangıç: kullanıcılara kaydolan ve adına Microsoft Graph çağıran Web uygulaması ASP.NET Core
 
@@ -64,7 +64,7 @@ Bu hızlı başlangıçta, bir ASP.NET Core Web uygulamasının kullanıcılara 
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>1. Adım: uygulamanızı Azure portal yapılandırma
-> Bu hızlı başlangıçta örnek kodu, uygulama kaydında bir **yeniden YÖNLENDIRME URI** 'Si `https://localhost:44321/signin-oidc` ve **ön kanal oturum kapatma URL 'si** gerektirir `https://localhost:44321/signout-oidc` .
+> Bu hızlı başlangıçtaki kod örneğinin çalışması için, uygulama kaydında bir **yeniden YÖNLENDIRME URI** 'Si `https://localhost:44321/signin-oidc` ve **ön kanal oturum kapatma URL 'si** ekleyin `https://localhost:44321/signout-oidc` .
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [Bu değişikliği benim için yap]()
 >

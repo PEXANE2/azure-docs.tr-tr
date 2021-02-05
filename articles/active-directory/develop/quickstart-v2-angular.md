@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 03/18/2020
 ms.author: janutter
-ms.openlocfilehash: 56359ba07513ac648c682b8114001e251b0ee44c
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.openlocfilehash: 0de3c46eba0b9364e38c4a952a320ac1c3de512f
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99225808"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99583578"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-an-angular-single-page-application"></a>Hızlı başlangıç: angular tek sayfalı uygulamada Kullanıcı oturumu açma ve erişim belirteci edinme
 
@@ -53,7 +53,7 @@ Bu hızlı başlangıçta, angular bir tek sayfalı uygulamanın (SPA) kullanıc
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-the-application-in-the-azure-portal"></a>1. Adım: uygulamayı Azure portal yapılandırma
-> Bu hızlı başlangıçta çalışması için kod örneği için bir yeniden yönlendirme URI 'SI eklemeniz **http://localhost:4200/** ve * * * * örtük izin * * seçeneğini etkinleştirmeniz gerekir.
+> Bu hızlı başlangıçtaki kod örneğinin çalışması için, bir yeniden yönlendirme URI 'SI eklemeniz **http://localhost:4200/** ve **örtülü izni** etkinleştirmeniz gerekir.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [Bu değişiklikleri benim için yap]()
 >
@@ -96,7 +96,7 @@ Bu hızlı başlangıçta, angular bir tek sayfalı uygulamanın (SPA) kullanıc
 >
 > Şu değerleri değiştirin:
 >
->|Değer adı|Açıklama|
+>|Değer adı|Description|
 >|---------|---------|
 >|Enter_the_Application_Id_Here|Uygulama kaydlarınızın **genel bakış** sayfasında bu, **uygulamanızın (istemci) kimlik** değeridir. |
 >|Enter_the_Cloud_Instance_Id_Here|Bu, Azure bulutunun örneğidir. Ana veya küresel Azure bulutu için girin **https://login.microsoftonline.com** . Ulusal bulutlar (örneğin, Çin) için bkz. [Ulusal bulutlar](./authentication-national-cloud.md).|

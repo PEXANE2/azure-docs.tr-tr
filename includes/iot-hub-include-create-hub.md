@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/14/2020
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: 4ad619fa5f0fb8f8e87333f2681727dabedda42b
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: cf651a1a09662e3084a8a9bdb6365b69b6ea52b5
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99427259"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99580144"
 ---
 Bu bölümde [Azure Portal](https://portal.azure.com)kullanarak IoT Hub 'ı oluşturma açıklanmaktadır.
 
@@ -45,7 +45,7 @@ Bu bölümde [Azure Portal](https://portal.azure.com)kullanarak IoT Hub 'ı olu�
 
 1. Hub 'ınızı oluşturmaya devam etmek için **İleri: yönetim** ' i seçin.
 
-   :::image type="content" source="./media/iot-hub-include-create-hub/iot-hub-management-screen.png" alt-text="Azure portal kullanarak yeni bir hub için boyut ve ölçek ayarlayın.":::
+   :::image type="content" source="./media/iot-hub-include-create-hub/iot-hub-management.png" alt-text="Azure portal kullanarak yeni bir hub için boyut ve ölçek ayarlayın.":::
 
     Varsayılan ayarları burada kabul edebilirsiniz. İsterseniz, aşağıdaki alanlardan herhangi birini değiştirebilirsiniz:
 

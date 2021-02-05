@@ -8,6 +8,8 @@
   href: network-requirements.md
 - name: Sınırlamalar
   href: limits.md
+- name: Veri yerleşimi
+  href: data-residency.md
 - name: Remote Rendering örnekleri deposu (GitHub)
   href: 'https://github.com/Azure/azure-remote-rendering'
 - name: Azure Karma Gerçeklik Kaynak Yönetimi REST API’si

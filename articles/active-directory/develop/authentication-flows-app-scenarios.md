@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 03/03/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: c302e10a169a190d11f016620ec048cc58e3ac28
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 4147adb004947c22ec39349f408d794bca160ef5
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99220173"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99582188"
 ---
 # <a name="authentication-flows-and-application-scenarios"></a>Kimlik doğrulama akışları ve uygulama senaryoları
 
@@ -162,7 +162,7 @@ Daha fazla bilgi için bkz. [Web API 'lerini çağıran mobil uygulama](scenario
 
 Uygulamanızın yeniden Web API 'SI gibi Web hizmetlerini güvenli hale getirmek için Microsoft Identity platform uç noktasını kullanabilirsiniz. Korumalı bir Web API 'SI, erişim belirteci aracılığıyla çağrılır. Belirteç, API 'nin verilerinin güvenliğini sağlar ve gelen isteklerin kimliğini doğrular. Bir Web API 'SI çağıran, bir HTTP isteğinin yetkilendirme üstbilgisine bir erişim belirteci ekler.
 
-ASP.NET veya ASP.NET Core Web API 'nizi korumak istiyorsanız, erişim belirtecini doğrulamanız gerekir. Bu doğrulama için ASP.NET JWT ara yazılımını kullanırsınız. Doğrulama, MSAL.NET tarafından değil [.NET kitaplığı Için IdentityModel uzantıları](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/wiki) tarafından yapılır.
+ASP.NET veya ASP.NET Core Web API 'nizi korumak istiyorsanız, erişim belirtecini doğrulayın. Bu doğrulama için ASP.NET JWT ara yazılımını kullanırsınız. Doğrulama, MSAL.NET tarafından değil [.NET kitaplığı Için IdentityModel uzantıları](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/wiki) tarafından yapılır.
 
 Daha fazla bilgi için bkz. [korumalı Web API 'si](scenario-protected-web-api-overview.md).
 

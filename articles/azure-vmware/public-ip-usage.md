@@ -2,13 +2,13 @@
 title: Azure VMware çözümünde genel IP işlevselliğini kullanma
 description: Bu makalede, Azure sanal WAN 'da genel IP işlevlerinin nasıl kullanılacağı açıklanmaktadır.
 ms.topic: how-to
-ms.date: 10/28/2020
-ms.openlocfilehash: 036ec00077720e9dc3197bf9235bea34b77fb5f4
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.date: 02/04/2021
+ms.openlocfilehash: 640f359ed8934048bffd7f58b36e8a3eef71c2f1
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94517912"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99581389"
 ---
 # <a name="how-to-use-the-public-ip-functionality-in-azure-vmware-solution"></a>Azure VMware çözümünde genel IP işlevselliğini kullanma
 
@@ -29,7 +29,7 @@ Azure VMware Çözüm özel bulut dağıtımının bir parçası olarak, genel I
 
 Bu makalede, sanal WAN 'da genel IP işlevselliğini nasıl kullanabileceğiniz hakkında bilgi bulabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure VMware Çözüm ortamı
 - Azure VMware Çözüm ortamında çalışan bir Web sunucusu.
@@ -56,15 +56,15 @@ Bu senaryoda, IIS Web sunucusu ' nu Internet 'te yayımlayacaksınız. Web sites
 
    :::image type="content" source="media/public-ip-usage/avs-private-cloud-resource.png" alt-text="Azure VMware Çözüm özel bulutu 'nın ekran görüntüsü." border="true" lightbox="media/public-ip-usage/avs-private-cloud-resource.png":::
 
-1. **Yönet** altında **bağlantı** ' yı seçin.
+1. **Yönet** altında **bağlantı**' yı seçin.
 
    :::image type="content" source="media/public-ip-usage/avs-private-cloud-manage-menu.png" alt-text="Bağlantı bölümünün ekran görüntüsü." border="true" lightbox="media/public-ip-usage/avs-private-cloud-manage-menu.png":::
 
-1. **Genel IP** sekmesini seçin ve ardından **Yapılandır** ' ı seçin.
+1. **Genel IP** sekmesini seçin ve ardından **Yapılandır**' ı seçin.
 
    :::image type="content" source="media/public-ip-usage/connectivity-public-ip-tab.png" alt-text="Genel IP 'yi yapılandırmaya nereden başlayabileceğiniz gösteren ekran görüntüsü" border="true" lightbox="media/public-ip-usage/connectivity-public-ip-tab.png":::
 
-1. Varsayılan değerleri kabul edin veya değiştirin ve ardından **Oluştur** ' u seçin.
+1. Varsayılan değerleri kabul edin veya değiştirin ve ardından **Oluştur**' u seçin.
 
    - Sanal WAN kaynak grubu
 
@@ -83,7 +83,7 @@ Tüm bileşenlerin dağıtımını tamamlaması yaklaşık bir saat sürer. Bu d
 
 Aşağıdaki adımları izleyerek daha fazla genel IP adresi denetleyebilir ve ekleyebiliriz.
 
-1. Azure portal, **güvenlik duvarı** ' nı arayıp seçin.
+1. Azure portal, **güvenlik duvarı**' nı arayıp seçin.
 
 1. Dağıtılmış bir güvenlik duvarı seçin ve ardından **Bu güvenlik duvarını yapılandırmak ve yönetmek Için Azure Güvenlik Duvarı Yöneticisi 'Ni ziyaret** et 'i
 
@@ -93,11 +93,11 @@ Aşağıdaki adımları izleyerek daha fazla genel IP adresi denetleyebilir ve e
 
    :::image type="content" source="media/public-ip-usage/select-virtual-hub.png" alt-text="Güvenlik Duvarı Yöneticisi ekran görüntüsü" lightbox="media/public-ip-usage/select-virtual-hub.png":::
 
-1. Sanal hub sayfasında **ortak IP yapılandırması** ' nı seçin ve daha fazla genel IP adresi eklemek için **Ekle** ' yi seçin. 
+1. Sanal hub sayfasında **ortak IP yapılandırması**' nı seçin ve daha fazla genel IP adresi eklemek için **Ekle**' yi seçin. 
 
    :::image type="content" source="media/public-ip-usage/virtual-hub-page-public-ip-configuration.png" alt-text="Güvenlik Duvarı Yöneticisi 'nde genel IP yapılandırması ekleme ekranının ekran görüntüsü" border="true" lightbox="media/public-ip-usage/virtual-hub-page-public-ip-configuration.png":::
 
-1. Gereken IP sayısını sağlayın ve **Ekle** ' yi seçin.
+1. Gereken IP sayısını sağlayın ve **Ekle**' yi seçin.
 
    :::image type="content" source="media/public-ip-usage/add-number-of-ip-addresses-required.png" alt-text="Belirtilen sayıda genel IP yapılandırması eklemek için ekran görüntüsü" border="true":::
 
@@ -106,49 +106,49 @@ Aşağıdaki adımları izleyerek daha fazla genel IP adresi denetleyebilir ve e
 
 Tüm bileşenler dağıtıldıktan sonra, bunları eklenen kaynak grubunda görebilirsiniz. Bir sonraki adım, bir güvenlik duvarı ilkesi eklemektir.
 
-1. Azure portal, **güvenlik duvarı** ' nı arayıp seçin.
+1. Azure portal, **güvenlik duvarı**' nı arayıp seçin.
 
 1. Dağıtılmış bir güvenlik duvarı seçin ve ardından **Bu güvenlik duvarını yapılandırmak ve yönetmek Için Azure Güvenlik Duvarı Yöneticisi 'Ni ziyaret** et 'i
 
    :::image type="content" source="media/public-ip-usage/configure-manage-deployed-firewall.png" alt-text="Güvenlik duvarını yapılandırma ve yönetme seçeneğini gösteren ekran görüntüsü" border="true" lightbox="media/public-ip-usage/configure-manage-deployed-firewall.png":::
 
-1. **Azure Güvenlik Duvarı ilkelerini** seçin ve ardından **Azure Güvenlik Duvarı İlkesi Oluştur** ' u seçin.
+1. **Azure Güvenlik Duvarı ilkelerini** seçin ve ardından **Azure Güvenlik Duvarı İlkesi Oluştur**' u seçin.
 
    :::image type="content" source="media/public-ip-usage/create-firewall-policy.png" alt-text="Güvenlik Duvarı Yöneticisi 'nde güvenlik duvarı ilkesi oluşturma ekranının ekran görüntüsü" border="true" lightbox="media/public-ip-usage/create-firewall-policy.png":::
 
 1. **Temel bilgiler** sekmesinde, gerekli ayrıntıları sağlayın ve ileri ' yi SEÇIN **: DNS ayarları**. 
 
-1. **DNS** sekmesi altında **devre dışı bırak** ' ı seçin ve ardından **İleri: kurallar** ' ı seçin.
+1. **DNS** sekmesi altında **devre dışı bırak**' ı seçin ve ardından **İleri: kurallar**' ı seçin.
 
-1. **Kural koleksiyonu Ekle** ' yi seçin, aşağıdaki ayrıntıları sağlayın ve **Ekle** ' yi seçin ve ardından İleri ' yi seçin **: tehdit bilgileri**.
+1. **Kural koleksiyonu Ekle**' yi seçin, aşağıdaki ayrıntıları sağlayın ve **Ekle** ' yi seçin ve ardından İleri ' yi seçin **: tehdit bilgileri**.
 
-   -  Ad
+   -  Name
    -  Kural koleksiyonu türü-DNAT
    -  Öncelik
    -  Kural toplama eylemi – Izin ver
    -  Kural adı
    -  Kaynak türü- **IPAddress**
-   -  Kaynak-* *\** _
-   -  Protokol – _ *TCP**
+   -  Kaynaktaki **\***
+   -  Protokol – **TCP**
    -  Hedef bağlantı noktası – **80**
    -  Hedef türü – **IP adresi**
    -  Hedef – **genel IP adresi**
    -  Çevrilmiş adres – **Azure VMware Çözüm Web sunucusu özel IP adresi**
    -  Çevrilen bağlantı noktası- **Azure VMware Çözüm Web sunucusu bağlantı noktası**
 
-1. Varsayılan değeri bırakın ve ardından **İleri: hub** ' ı seçin.
+1. Varsayılan değeri bırakın ve ardından **İleri: hub**' ı seçin.
 
-1. **Sanal hub 'ı ilişkilendir** ' i seçin.
+1. **Sanal hub 'ı ilişkilendir**' i seçin.
 
-1. Listeden bir hub seçin ve **Ekle** ' yi seçin.
+1. Listeden bir hub seçin ve **Ekle**' yi seçin.
 
    :::image type="content" source="media/public-ip-usage/secure-hubs-with-azure-firewall-polcy.png" alt-text="Güvenli sanal hub 'Lara dönüştürülecek seçili hub 'ları gösteren ekran görüntüsü." border="true" lightbox="media/public-ip-usage/secure-hubs-with-azure-firewall-polcy.png":::
 
-1. Şunu seçin: **İleri: Etiketler**. 
+1. **Sonraki: Etiketler**' i seçin. 
 
 1. Seçim Kaynaklarınızı kategorilere ayırmak için ad ve değer çiftleri oluşturun. 
 
-1. **İleri** ' yi seçin ve Oluştur ' a ve ardından **Oluştur** ' u seçin.
+1. **İleri** ' yi seçin ve Oluştur ' a ve ardından **Oluştur**' u seçin.
 
 ## <a name="limitations"></a>Sınırlamalar
 
@@ -156,5 +156,7 @@ SDDC başına 100 genel IP 'si olabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure sanal WAN](../virtual-wan/virtual-wan-about.md)kullanarak genel IP adreslerini kullanma hakkında daha fazla bilgi edinin.
+Azure VMware çözümünde genel IP işlevselliğinin nasıl kullanılacağını kapsadığınıza göre, şunları öğrenmek isteyebilirsiniz:
 
+- [Azure sanal WAN](../virtual-wan/virtual-wan-about.md)Ile genel IP adreslerini kullanma.
+- [Azure VMware çözümüne bir IPSec tüneli oluşturma](create-ipsec-tunnel.md).

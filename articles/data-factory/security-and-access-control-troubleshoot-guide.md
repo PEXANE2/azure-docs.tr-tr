@@ -5,15 +5,15 @@ services: data-factory
 author: lrtoyou1223
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 01/05/2021
+ms.date: 02/04/2021
 ms.author: lle
 ms.reviewer: craigg
-ms.openlocfilehash: 70e4d0c1a9f26f83924c1343e4e8e51c5595b324
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 37da2869f0cf315ac0a6851c9a77dcee4debf71a
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98944517"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99581695"
 ---
 # <a name="troubleshoot-azure-data-factory-security-and-access-control-issues"></a>Azure Data Factory güvenlik ve erişim denetimi sorunlarını giderme
 
@@ -88,9 +88,10 @@ Data Factory tam etki alanı adının (FQDN) genel IP adresi olarak çözümleni
 #### <a name="resolution"></a>Çözüm
 
 Sorunu gidermek için şunları yapın:
-- [Azure Data Factory Için Azure özel bağlantısı](./data-factory-private-link.md#dns-changes-for-private-endpoints) makalesine başvurun. Yönerge, özel DNS bölgesini veya sunucusunu Data Factory FQDN 'yi özel bir IP adresine çözümlemek üzere yapılandırmaya yöneliktir.
 
-- Uzun süreli çözüm olarak özel bir DNS kullanmanızı öneririz. Ancak, özel DNS bölgesini veya sunucusunu yapılandırmak istemiyorsanız, aşağıdaki geçici çözümü deneyin:
+- As seçeneği, "özel bağlantı DNS bölgesi" Data Factory altına el ile "sanal ağ bağlantısı" eklemenizi öneririz. Ayrıntılar için [Azure özel bağlantısına Azure Data Factory](./data-factory-private-link.md#dns-changes-for-private-endpoints) makalesine bakın. Yönerge, özel DNS bölgesini veya özel DNS sunucusunu Data Factory FQDN 'yi özel bir IP adresine çözümlemek üzere yapılandırmaya yöneliktir. 
+
+- Ancak, özel DNS bölgesini veya özel DNS sunucusunu yapılandırmak istemiyorsanız, aşağıdaki geçici çözümü deneyin:
 
   1. Windows 'da konak dosyasını değiştirin ve özel IP 'yi (Azure Data Factory özel uç noktası) Azure Data Factory FQDN ile eşleyin.
   

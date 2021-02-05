@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 10/05/2019
 ms.author: allensu
-ms.openlocfilehash: c074c29b7a37f49d5a4c7a5fab00b9a3e41c6893
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: b56c57a0b803a41c095f6f25f69a18a815d182f1
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97901547"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99582018"
 ---
 # <a name="azure-private-link-frequently-asked-questions-faq"></a>Azure özel bağlantı hakkında sık sorulan sorular (SSS)
 
@@ -26,7 +26,7 @@ ms.locfileid: "97901547"
 ### <a name="how-is-traffic-being-sent-when-using-private-link"></a>Özel bağlantı kullanılırken trafik nasıl gönderiliyor?
 Trafik, Microsoft omurgası kullanılarak özel olarak gönderilir. İnternet 'te geçiş yapmaz. Azure özel bağlantısı müşteri verilerini depolamaz.
  
-### <a name="what-is-the-difference-between-a-service-endpoints-and-a-private-endpoints"></a>Hizmet uç noktaları ve özel uç noktalar arasındaki fark nedir?
+### <a name="what-is-the-difference-between-service-endpoints-and-private-endpoints"></a>Hizmet uç noktaları ve özel uç noktalar arasındaki fark nedir?
 - Özel uç noktalar, belirli bir hizmetin arkasındaki belirli kaynaklara ağ erişimi sağlayarak parçalı segmentasyon sağlar. Trafik, genel uç noktaları kullanmadan Şirket içinden hizmet kaynağına ulaşabilir.
 - Hizmet uç noktası, genel olarak yönlendirilebilir bir IP adresi kalır.  Özel uç nokta, Özel uç noktanın yapılandırıldığı sanal ağın adres alanındaki özel bir IP 'dir.
 
@@ -34,6 +34,9 @@ Trafik, Microsoft omurgası kullanılarak özel olarak gönderilir. İnternet 't
 Birden çok özel bağlantı kaynak türü özel uç nokta aracılığıyla erişimi destekler. Kaynaklara Azure PaaS hizmetleri ve kendi özel bağlantı hizmetiniz dahildir. Tek-çok ilişkisi. 
 
 Özel bir bağlantı hizmeti, birden çok özel uç noktasından bağlantı alır. Özel bir uç nokta, bir özel bağlantı hizmetine bağlanır.    
+
+### <a name="do-i-need-to-disable-network-policies-for-private-link"></a>Özel bağlantı için ağ ilkelerini devre dışı bırakmem gerekiyor
+Evet. Hem özel uç nokta hem de özel bağlantı hizmetinin düzgün çalışması için ağ ilkelerini devre dışı bırakmalıdır. Her ikisi de birbirinden bağımsız özelliklere sahiptir.
 
 ## <a name="private-endpoint"></a>Özel Uç Nokta 
  

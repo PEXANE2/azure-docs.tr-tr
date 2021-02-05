@@ -6,14 +6,14 @@ author: amitbapat
 tags: azure-resource-manager
 ms.service: key-vault
 ms.topic: conceptual
-ms.date: 02/01/2021
+ms.date: 02/04/2021
 ms.author: ambapat
-ms.openlocfilehash: 444f279f8e96486bd6ad61a2ea2640a18b491c9c
-ms.sourcegitcommit: 983eb1131d59664c594dcb2829eb6d49c4af1560
+ms.openlocfilehash: 1a15ed6b92ade96dd2ed9ef6ffbbe17e2b1452ef
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99222243"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99581423"
 ---
 # <a name="import-hsm-protected-keys-to-managed-hsm-byok"></a>HSM korumalı anahtarları yönetilen HSM 'ye içeri aktar (BYOK)
 
@@ -75,11 +75,14 @@ CLı aracılığıyla oturum açma seçenekleri hakkında daha fazla bilgi için
 
 ## <a name="supported-key-types"></a>Desteklenen anahtar türleri
 
-|Anahtar adı|Anahtar türü|Anahtar boyutu|Kaynak|Description|
+|Anahtar adı|Anahtar türü|Anahtar boyutu/eğrisi|Kaynak|Description|
 |---|---|---|---|---|
 |Anahtar değişim anahtarı (KEK)|RSA| 2.048 bit<br />3.072 bit<br />4.096 bit|Yönetilen HSM|Yönetilen HSM 'de oluşturulan HSM ile desteklenen bir RSA anahtar çifti|
-|Hedef anahtar|RSA|2.048 bit<br />3.072 bit<br />4.096 bit|Satıcı HSM|Yönetilen HSM 'ye aktarılacak anahtar|
-
+|Hedef anahtar|
+||RSA|2.048 bit<br />3.072 bit<br />4.096 bit|Satıcı HSM|Yönetilen HSM 'ye aktarılacak anahtar|
+||EC|P-256<br />P-384<br />P-521|Satıcı HSM|Yönetilen HSM 'ye aktarılacak anahtar|
+||Simetrik anahtar (OCT-HSM)|128 bit<br />192 bit<br />256 bit|Satıcı HSM|Yönetilen HSM 'ye aktarılacak anahtar|
+||||
 ## <a name="generate-and-transfer-your-key-to-the-managed-hsm"></a>Anahtarınızı oluşturun ve yönetilen HSM 'ye aktarın
 
 Anahtarınızı oluşturmak ve yönetilen bir HSM 'ye aktarmak için:

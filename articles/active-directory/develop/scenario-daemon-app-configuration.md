@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 09/19/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: c858f48a67cd434a620fb610046833d29b7475f7
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 8a01ee4e2b0d4e72c1b17cf56953675e735ead79
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98756587"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99582899"
 ---
 # <a name="daemon-app-that-calls-web-apis---code-configuration"></a>Web API 'Lerini çağıran Daemon uygulaması-kod yapılandırması
 
@@ -26,7 +26,7 @@ Web API 'Lerini çağıran Daemon uygulamanız için kodu yapılandırmayı öğ
 
 Bu Microsoft kitaplıkları, Daemon uygulamalarını destekler:
 
-  MSAL kitaplığı | Açıklama
+  MSAL kitaplığı | Description
   ------------ | ----------
   ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | .NET Framework ve .NET Core platformları, Daemon uygulamalarının oluşturulması için desteklenir. (UWP, Xamarin. iOS ve Xamarin. Android desteklenmez çünkü bu platformlar ortak istemci uygulamaları oluşturmak için kullanılır.)
   ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL Python | Python 'da Daemon uygulamaları için destek.
@@ -111,7 +111,7 @@ Sertifikalarla gizli bir istemci oluşturduğunuzda, [Python Daemon](https://git
 
 ### <a name="instantiate-the-msal-application"></a>MSAL uygulamasını oluşturma
 
-MSAL uygulamasını oluşturmak için, MSAL paketini (dile bağlı olarak) eklemeniz, başvurmanız veya içeri aktarmanız gerekir.
+MSAL uygulamasını oluşturmak için, MSAL paketini ekleyin, başvurusu yapın veya içeri aktarın (dile bağlı olarak).
 
 Oluşturma, istemci gizli dizileri veya sertifikalar (ya da gelişmiş bir senaryo olarak imzalanmış onaylar olarak) kullanıp kullanmayacağınızı bağlı olarak değişir.
 
@@ -289,7 +289,7 @@ MSAL.NET, gizli istemci uygulamasına imzalı onaylar sağlamak için iki yönte
 - `.WithClientAssertion()`
 - `.WithClientClaims()`
 
-Kullandığınızda `WithClientAssertion` , imzalı BIR JWT sağlamanız gerekir. Bu gelişmiş senaryo, [istemci onaylamaları](msal-net-client-assertions.md)hakkında ayrıntılıdır.
+Kullandığınızda `WithClientAssertion` , imzalı BIR JWT sağlayın. Bu gelişmiş senaryo, [istemci onaylamaları](msal-net-client-assertions.md)hakkında ayrıntılıdır.
 
 ```csharp
 string signedClientAssertion = ComputeAssertion();

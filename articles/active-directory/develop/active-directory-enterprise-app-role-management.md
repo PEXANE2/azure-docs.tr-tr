@@ -12,12 +12,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 12/07/2020
 ms.author: jeedes
-ms.openlocfilehash: 10b61dd4b6cc3a99b8eecf86cb5ba7e718d64743
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 076054b7240712fec57d0908615ce7abbfb62013
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98015122"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99582239"
 ---
 # <a name="how-to-configure-the-role-claim-issued-in-the-saml-token-for-enterprise-applications"></a>Nasıl yapılır: kurumsal uygulamalar için SAML belirtecinde verilen rol talebini yapılandırma
 
@@ -30,7 +30,7 @@ Azure Active Directory (Azure AD) kullanarak, bir uygulamayı yetkilendirdikten 
 
 ## <a name="when-to-use-this-feature"></a>Bu özelliğin ne zaman kullanılacağı
 
-Uygulamanız bir SAML yanıtında özel rollerin geçirilmesini bekliyorsa, bu özelliği kullanmanız gerekir. Azure AD 'den uygulamanıza geri iletilmesi için gereken sayıda rol oluşturabilirsiniz.
+Uygulamanız Azure AD tarafından döndürülen SAML yanıtında özel roller bekliyorsa bu özelliği kullanın. İhtiyaç duyduğunuz kadar çok sayıda rol oluşturabilirsiniz.
 
 ## <a name="create-roles-for-an-application"></a>Bir uygulama için roller oluşturma
 
@@ -139,7 +139,7 @@ Uygulamanız bir SAML yanıtında özel rollerin geçirilmesini bekliyorsa, bu �
     !["Atamayı Düzenle" bölmesi ve "rol Seç" bölmesi](./media/active-directory-enterprise-app-role-management/graph-explorer-new6.png)
 
     
-    Yeni rolleri görmek için Azure portal oturumunuzu yenilemeniz gerekir.
+    Yeni rolleri görmek için Azure portal oturumunuzu yenileyin.
 
 1. Rol talebinin özelleştirilmiş bir eşlemesini tanımlamak için **öznitelikler** tablosunu güncelleştirin.
 

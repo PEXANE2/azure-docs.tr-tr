@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 45f3a066283a921f60909a4aa3cfdc76f3faad06
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 54caea62feed6ae7c082a979901999a5dcb3bd71
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98753270"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99582256"
 ---
 # <a name="web-app-that-signs-in-users-code-configuration"></a>Kullanıcılara oturum açan Web uygulaması: kod yapılandırması
 
@@ -28,7 +28,7 @@ Kullanıcılara oturum açan Web uygulamanız için kodu yapılandırmayı öğr
 <!-- This section can be in an include for web app and web APIs -->
 Bir Web uygulamasını (ve bir Web API 'SI) korumak için kullanılan kitaplıklar şunlardır:
 
-| Platform | Kitaplık | Açıklama |
+| Platform | Kitaplık | Description |
 |----------|---------|-------------|
 | ![.NET](media/sample-v2-code/logo_NET.png) | [.NET için kimlik modeli uzantıları](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/wiki) | Doğrudan ASP.NET ve ASP.NET Core tarafından kullanılan .NET için Microsoft Identity model uzantıları, hem .NET Framework hem de .NET Core üzerinde çalışan bir dll kümesi önerir. Bir ASP.NET veya ASP.NET Core Web uygulamasından belirteç doğrulamayı, **Tokenvalidationparameters** sınıfını (özellikle de bazı iş ortakları senaryolarında) kullanarak kontrol edebilirsiniz. Uygulamada karmaşıklık, [Microsoft. Identity. Web](https://aka.ms/ms-identity-web) kitaplığında kapsüllenir |
 | ![Java](media/sample-v2-code/small_logo_java.png) | [MSAL Java](https://github.com/AzureAD/microsoft-authentication-library-for-java/wiki) | Java Web uygulamaları için destek |
@@ -64,13 +64,13 @@ Tam uygulama ayrıntıları için bu örneğe başvurmak isteyebilirsiniz.
 
 ## <a name="configuration-files"></a>Yapılandırma dosyaları
 
-Microsoft Identity platformunu kullanarak kullanıcıların oturum açmasını sağlayan Web uygulamaları, yapılandırma dosyaları aracılığıyla yapılandırılır. Doldurmanız gereken ayarlar şunlardır:
+Microsoft Identity platformunu kullanarak kullanıcıların oturum açmasını sağlayan Web uygulamaları, yapılandırma dosyaları aracılığıyla yapılandırılır. Bunlar, yapılandırmada belirtmeniz gereken değerlerdir:
 
 - `Instance`Uygulamanızın Ulusal bulutlarda çalışmasını istiyorsanız (örneğin,) bulut örneği ()
 - Kiracı KIMLIĞINDEKI () hedef kitle `TenantId`
 - `ClientId`Uygulamanız için Azure Portal kopyalandığı şekilde ISTEMCI kimliği ()
 
-Bazen uygulamalar, ve ' nin birleşimi olan parametrized tarafından yapılabilir `Authority` `Instance` `TenantId` .
+Ayrıca, başvuruları da görebilirsiniz `Authority` . `Authority`Değer, ve değerlerinin bitiştirilmesi olur `Instance` `TenantId` .
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
@@ -133,7 +133,7 @@ ASP.NET Core, başka bir dosya ([properties\launchSettings.js](https://github.co
 }
 ```
 
-Azure portal, uygulamanız için **kimlik doğrulama** sayfasında kaydolmanız gereken yanıt URI 'Lerinin bu URL 'lerle eşleşmesi gerekir. Önceki iki yapılandırma dosyası için olmaları gerekir `https://localhost:44321/signin-oidc` . Bunun nedeni, `applicationUrl` `http://localhost:3110` ancak `sslPort` belirtilmiştir (44321). `CallbackPath``/signin-oidc`, içinde tanımlandığı gibi `appsettings.json` .
+Azure portal, uygulamanızın **kimlik doğrulama** sayfasına kaydolmanızı sağlayan yeniden yönlendirme URI 'Lerinin bu URL 'leri eşleşmesi gerekir. Önceki iki yapılandırma dosyası için olmaları gerekir `https://localhost:44321/signin-oidc` . Bunun nedeni, `applicationUrl` `http://localhost:3110` ancak `sslPort` belirtilmiştir (44321). `CallbackPath``/signin-oidc`, içinde tanımlandığı gibi `appsettings.json` .
 
 Aynı şekilde, oturum açma URI 'SI olarak ayarlanır `https://localhost:44321/signout-oidc` .
 
@@ -161,7 +161,7 @@ ASP.NET ' de, uygulama [Web.config](https://github.com/Azure-Samples/ms-identity
   </appSettings>
 ```
 
-Azure portal, uygulamanız için **kimlik doğrulama** sayfasında kaydolmanız gereken yanıt URI 'Lerinin bu URL 'lerle eşleşmesi gerekir. Diğer bir deyişle, olmaları gerekir `https://localhost:44326/` .
+Azure portal, uygulamanızın **kimlik doğrulama** sayfasına kaydolmanızı sağlayan yanıt URI 'Lerinin bu URL 'leri eşleşmesi gerekir. Diğer bir deyişle, olmaları gerekir `https://localhost:44326/` .
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -175,7 +175,7 @@ aad.redirectUriSignin=http://localhost:8080/msal4jsample/secure/aad
 aad.redirectUriGraph=http://localhost:8080/msal4jsample/graph/me
 ```
 
-Azure portal, uygulamanız için **kimlik doğrulama** sayfasında kaydolmanız gereken yanıt URI 'lerinin, `redirectUri` uygulamanın tanımladığı örneklerle eşleşmesi gerekir. Yani, `http://localhost:8080/msal4jsample/secure/aad` ve olmalıdır `http://localhost:8080/msal4jsample/graph/me` .
+Azure portal, uygulamanızın **kimlik doğrulama** sayfasına Kaydolmakta olduğunuz yanıt URI 'lerinin, `redirectUri` uygulamanın tanımladığı örneklerle eşleşmesi gerekir. Yani, `http://localhost:8080/msal4jsample/secure/aad` ve olmalıdır `http://localhost:8080/msal4jsample/graph/me` .
 
 # <a name="python"></a>[Python](#tab/python)
 

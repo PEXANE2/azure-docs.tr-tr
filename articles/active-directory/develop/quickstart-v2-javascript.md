@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:JavaScript, devx-track-js
-ms.openlocfilehash: b2ae48c76ccba80d274e7463b31782b4fbc6a976
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.openlocfilehash: 9a58e4087745ba0c09b85c2740781c493090a370
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99225723"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99583239"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa"></a>Hızlı başlangıç: bir JavaScript SPA 'da Kullanıcı oturumu açma ve erişim belirteci edinme
 
@@ -62,7 +62,7 @@ Bu hızlı başlangıçta, JavaScript tek sayfalı uygulamanın (SPA) kullanıc�
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>1. Adım: uygulamanızı Azure portal yapılandırma
-> Bu hızlı başlangıçta örnek kodu için bir **yeniden yönlendirme URI 'si** gerekir `http://localhost:3000/` ve **örtülü izni** etkinleştirin.
+> Bu hızlı başlangıçtaki kod örneğinin çalışması için, bir **yeniden yönlendirme URI 'si** ekleyin `http://localhost:3000/` ve **örtülü izni** etkinleştirin.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [Bu değişiklikleri benim için yap]()
 >
@@ -203,7 +203,7 @@ Hızlı başlangıç kodu ayrıca MSAL kitaplığının nasıl başlatılacağı
 const myMSALObj = new Msal.UserAgentApplication(msalConfig);
 ```
 
-> |Konum  | Açıklama |
+> |Konum  | Description |
 > |---------|---------|
 > |`clientId`     | Azure portal kayıtlı uygulamanın uygulama KIMLIĞI.|
 > |`authority`    | Seçim Daha önce yapılandırma bölümünde açıklandığı gibi, hesap türlerini destekleyen yetkili URL 'SI. Varsayılan yetkili `https://login.microsoftonline.com/common` . |
@@ -231,7 +231,7 @@ myMSALObj.loginPopup(loginRequest)
 });
 ```
 
-> |Konum  | Açıklama |
+> |Konum  | Description |
 > |---------|---------|
 > | `scopes`   | Seçim Oturum açma sırasında kullanıcı onayı için istenen kapsamları içerir. Örneğin, `[ "user.read" ]` Microsoft Graph veya `[ "<Application ID URL>/scope" ]` özel Web API 'leri için (yani, `api://<Application ID>/access_as_user` ). |
 
@@ -261,13 +261,13 @@ myMSALObj.acquireTokenSilent(tokenRequest)
     });
 ```
 
-> |Konum  | Açıklama |
+> |Konum  | Description |
 > |---------|---------|
 > | `scopes`   | API için erişim belirtecine döndürülmek istenen kapsamları içerir. Örneğin, `[ "mail.read" ]` Microsoft Graph veya `[ "<Application ID URL>/scope" ]` özel Web API 'leri için (yani, `api://<Application ID>/access_as_user` ).|
 
 #### <a name="get-a-user-token-interactively"></a>Etkileşimli olarak kullanıcı belirteci alma
 
-Kullanıcıları Microsoft Identity platformu ile etkileşimde bulunmak için zorlamanız gereken durumlar vardır. Örneğin:
+Kullanıcıları Microsoft Identity platformu ile etkileşime zorlayan durumlar vardır. Örneğin:
 * Parolasının süresi sona erdiği için kullanıcıların kimlik bilgilerini yeniden girmesi gerekebilir.
 * Uygulamanız, kullanıcının onaylaması gereken ek kaynak kapsamlarına erişim istiyor.
 * İki öğeli kimlik doğrulaması gereklidir.

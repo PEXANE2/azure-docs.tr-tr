@@ -3,15 +3,15 @@ author: aahill
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: include
-ms.date: 07/14/2020
+ms.date: 02/04/2021
 ms.author: aahi
-ms.openlocfilehash: f8918766174d77ea2a9c50d9c97d9feae2d9f64a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3f620789e4224f5c278187ea3359752a6f7705be
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86512801"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99580295"
 ---
-> [!IMPORTANT]
-> * Form tanıyıcı kapsayıcı kullanıcıları için sınıra ulaşıldı. Şu anda Form Tanıma kapsayıcısı için yeni uygulama kabul etmiyoruz. 
-> * Form tanıyıcı kapsayıcıları Şu anda form tanıyıcı API 'sinin 1,0 sürümünü kullanıyor. Bunun yerine, yönetilen hizmeti kullanarak API 'nin en son sürümüne erişebilirsiniz.
+> [!CAUTION]
+> * Form tanıyıcı v 1.0 kapsayıcısı kullanımdan kaldırılıyor. Bu makale yalnızca başvuru amaçlıdır. 
+> * API 'nin en son sürümüne REST API ve SDK ile erişebilirsiniz.

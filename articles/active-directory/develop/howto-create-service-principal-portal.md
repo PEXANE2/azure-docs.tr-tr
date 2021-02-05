@@ -12,12 +12,12 @@ ms.date: 06/26/2020
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
-ms.openlocfilehash: 284ab3a2aabb2395636982237159117a10151019
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: d20a363a0320ca45f22183e54bcc390d4733c8bc
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98014952"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99581763"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Nasıl yapılır: Kaynaklara erişebilen bir Azure AD uygulaması ve hizmet sorumlusu oluşturmak için portalı kullanma
 
@@ -55,7 +55,7 @@ Abonelik izinlerinizi denetlemek için:
 
 1. **Abonelik** arayın ve seçin veya **giriş** sayfasında **abonelikler** ' i seçin.
 
-   ![Arama](./media/howto-create-service-principal-portal/select-subscription.png)
+   ![Arayın](./media/howto-create-service-principal-portal/select-subscription.png)
 
 1. Hizmet sorumlusunu oluşturmak istediğiniz aboneliği seçin.
 
@@ -115,7 +115,7 @@ Sonraki bölümde, programlama yoluyla oturum açarken gereken değerlerin nası
 
 ## <a name="get-tenant-and-app-id-values-for-signing-in"></a>Oturum açmak için kiracı ve uygulama KIMLIĞI değerlerini al
 
-Program aracılığıyla oturum açarken, kiracı KIMLIĞINI kimlik doğrulama isteğinizle ve uygulama KIMLIĞIYLE geçirmeniz gerekir.  Ayrıca bir sertifika veya bir kimlik doğrulama anahtarı (aşağıdaki bölümde açıklanmıştır) gerekir. Bu değerleri almak için aşağıdaki adımları kullanın:
+Programlı olarak oturum açtığınızda, kiracı KIMLIĞINI kimlik doğrulama isteğinizle ve uygulama KIMLIĞIYLE geçirin.  Ayrıca bir sertifika veya bir kimlik doğrulama anahtarı (aşağıdaki bölümde açıklanmıştır) gerekir. Bu değerleri almak için aşağıdaki adımları kullanın:
 
 1. **Azure Active Directory** seçin.
 1. Azure AD 'de **uygulama kayıtları** uygulamanızı seçin.
@@ -162,7 +162,7 @@ Sertifikayı karşıya yüklemek için:
 
 1. **Ekle**’yi seçin.
 
-Sertifikayı uygulama kayıt portalı 'nda uygulamanıza kaydettikten sonra, sertifikayı kullanmak için istemci uygulama kodunu etkinleştirmeniz gerekir.
+Sertifikayı uygulama kayıt portalı 'nda uygulamanıza kaydettikten sonra, sertifikayı kullanmak için istemci uygulama kodunu etkinleştirin.
 
 ### <a name="option-2-create-a-new-application-secret"></a>2. seçenek: yeni bir uygulama parolası oluşturma
 

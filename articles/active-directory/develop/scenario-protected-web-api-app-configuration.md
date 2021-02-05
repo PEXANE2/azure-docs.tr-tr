@@ -12,16 +12,16 @@ ms.workload: identity
 ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 3a26157949ff6ef69c9c009dfdd40781b47bc761
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: bdf74a6d8b6798de8aba33baea5afdf987ce1c34
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98753576"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99582494"
 ---
 # <a name="protected-web-api-code-configuration"></a>Korumalı Web API 'SI: kod yapılandırması
 
-Korunan Web API 'niz için kodu yapılandırmak üzere şunları anlamanız gerekir:
+Korunan Web API 'niz için kodu yapılandırmak üzere şunları anlayın:
 
 - API 'Leri korumalı olarak tanımlar.
 - Bir taşıyıcı belirtecini yapılandırma.
@@ -195,7 +195,7 @@ Doğrulama adımları, .NET açık kaynak kitaplığı [Için Microsoft Identity
 
 Bu tabloda doğrulayıcılar açıklanmaktadır:
 
-| Doğrulayıcı | Açıklama |
+| Doğrulayıcı | Description |
 |---------|---------|
 | **ValidateAudience** | Belirtecin sizin için belirteci doğrulayan uygulamanın olduğundan emin olur. |
 | **Validateıssuer** | Belirtecin güvenilir bir STS tarafından verildiğini ve güvendiğiniz bir kişiden geldiğini sağlar. |

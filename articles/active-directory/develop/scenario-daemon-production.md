@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 04ee4ccc3b0553d6532869d6403000fdedd93b5f
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.openlocfilehash: 8dc9bff86a07f3d4a0ec6fd224de6d5633165a6d
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99062720"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99582850"
 ---
 # <a name="daemon-app-that-calls-web-apis---move-to-production"></a>Web API 'Lerini çağıran Daemon uygulaması-üretime taşı
 
@@ -25,7 +25,7 @@ Artık bir hizmetten hizmete çağrı için bir belirteç edinmeyi ve kullanmay�
 
 ## <a name="deployment---multitenant-daemon-apps"></a>Dağıtım-çok kiracılı Daemon uygulamaları
 
-Birkaç kiracıda çalışabilen bir arka plan programı uygulaması oluşturuyorsanız, kiracı yöneticisinin şu şekilde olduğundan emin olmanız gerekir:
+Birkaç kiracıda çalışabilen bir arka plan programı uygulaması oluşturuyorsanız, kiracı yöneticisinin şunları yaptığınızdan emin olun:
 
 - Uygulama için bir hizmet sorumlusu sağlar.
 - Uygulamaya onay verir.

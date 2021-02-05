@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/15/2019
 ms.author: marsma
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:Android
-ms.openlocfilehash: 6d05c4ba6af860616e5afdfba2378ad9b17fcc77
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 49c69a79b4841f13623c9e6ab3daea72dd7fde26
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98938269"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99583663"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>Hızlı başlangıç: Android uygulamasından kullanıcıların oturum açma ve Microsoft Graph API'sini çağırma
 
@@ -35,7 +35,7 @@ Uygulamalar, Microsoft Identity platformunun uygulamanıza belirteç sağlayabil
 
 > [!div class="sxs-lookup" renderon="portal"]
 > ### <a name="step-1-configure-your-application-in-the-azure-portal"></a>1. Adım: uygulamanızı Azure portal yapılandırma
->  Bu hızlı başlangıçta örnek kodu, kimlik doğrulama Aracısı ile uyumlu bir yeniden yönlendirme URI 'SI gerektirir.
+> Bu hızlı başlangıçtaki kod örneğinin çalışması için, auth broker ile uyumlu bir **yeniden yönlendirme URI 'si** ekleyin.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [Bu değişiklikleri benim için yap]()
 >

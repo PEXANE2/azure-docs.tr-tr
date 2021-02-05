@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/25/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: bcbff131706854c079a5af2f38cad98f97018167
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 2109705116c323fd3632b7230a81ccd9158c1a64
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98753319"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99582339"
 ---
 # <a name="a-web-app-that-calls-web-apis-code-configuration"></a>Web API 'Leri çağıran bir Web uygulaması: kod yapılandırması
 
@@ -32,7 +32,7 @@ Web uygulaması, kullanıcılar senaryosunda oturum [açan Web](scenario-web-app
 
 Microsoft kimlik doğrulama kitaplığı 'ndaki (MSAL) aşağıdaki kitaplıklar, Web Apps için yetkilendirme kod akışını destekler:
 
-| MSAL kitaplığı | Açıklama |
+| MSAL kitaplığı | Description |
 |--------------|-------------|
 | ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | .NET Framework ve .NET Core platformları için destek. Desteklenmeyen Evrensel Windows Platformu (UWP), Xamarin. iOS ve Xamarin. Android, bu platformlar ortak istemci uygulamaları oluşturmak için kullanılır. <br/><br/>Web uygulamaları ve Web API 'Leri ASP.NET Core için MSAL.NET, [Microsoft. Identity. Web](https://aka.ms/ms-identity-web)adlı daha üst düzey bir kitaplıkta kapsüllenir. |
 | ![MSAL Python](media/sample-v2-code/logo_python.png) <br/> Python için MSAL | Python web uygulamaları için destek. |
@@ -44,7 +44,7 @@ Microsoft kimlik doğrulama kitaplığı 'ndaki (MSAL) aşağıdaki kitaplıklar
 
 ## <a name="client-secrets-or-client-certificates"></a>İstemci parolaları veya istemci sertifikaları
 
-Web uygulamanız artık bir aşağı akış Web API 'sini çağırırsa, dosyadaki *appsettings.js* bir istemci parolası veya istemci sertifikası sağlamanız gerekir. Aşağıdakileri belirten bir bölüm de ekleyebilirsiniz:
+Web uygulamanız artık bir aşağı akış Web API 'sini çağırdığı için, dosyasında *appsettings.js* bir istemci parolası veya istemci sertifikası sağlayın. Aşağıdakileri belirten bir bölüm de ekleyebilirsiniz:
 
 - Aşağı akış Web API 'sinin URL 'si
 - API 'YI çağırmak için gereken kapsamlar
@@ -184,7 +184,7 @@ Aşağıdaki görüntüde *Microsoft. Identity. Web* 'in çeşitli olanakları v
 :::image type="content" source="media/scenarios/microsoft-identity-web-startup-cs.svg" alt-text="Bir Web API 'SI çağırmak ve bir belirteç önbelleği uygulamasını belirtmek için başlangıç noktası C 'ler içindeki hizmet yapılandırma seçeneklerini gösteren blok diyagramı":::
 
 > [!NOTE]
-> Buradaki kod örneklerini tam olarak anlamak için [ASP.NET Core temelleri](/aspnet/core/fundamentals)ve özellikle de [bağımlılık ekleme](/aspnet/core/fundamentals/dependency-injection) ve [seçenekleriyle](/aspnet/core/fundamentals/configuration/options)ilgili bilgi sahibi olmanız gerekir.
+> Kod örneklerini burada tam olarak anlamak için [ASP.NET Core temelleri](/aspnet/core/fundamentals)hakkında bilgi sahibi olun ve özellikle de [bağımlılık ekleme](/aspnet/core/fundamentals/dependency-injection) ve [seçenekleriyle](/aspnet/core/fundamentals/configuration/options)ilgili bilgi edinin.
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 

@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/12/2020
+ms.date: 02/04/2021
 ms.author: b-juche
-ms.openlocfilehash: 239b985bf45942afbff8ca49d7e15ead24456304
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 13acee8b21adf946192544afcea17b4a8d9b9ec9
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91993984"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99581134"
 ---
 # <a name="manual-qos-capacity-pool"></a>El ile QoS kapasite havuzu
 
@@ -29,7 +29,7 @@ Bu makalede, el ile hizmet kalitesi (QoS) kapasite havuzu işlevlerine giriş sa
 
 [QoS türü](azure-netapp-files-understand-storage-hierarchy.md#qos_types) , bir kapasite havuzunun özniteliğidir. Azure NetApp Files iki QoS türü kapasite havuzu sağlar: otomatik (varsayılan) ve el ile.  
 
-*El ile* QoS kapasite havuzunda, bir birimin kapasitesini ve iş üretimini bağımsız olarak atayabilirsiniz. El ile QoS kapasite havuzu ile oluşturulan tüm birimlerin toplam verimlilik, havuzun toplam verimi ile sınırlıdır. Havuz boyutu ve hizmet düzeyi aktarım hızı birleşimine göre belirlenir. 
+*El ile* QoS kapasite havuzunda, bir birimin kapasitesini ve iş üretimini bağımsız olarak atayabilirsiniz. En düşük ve en yüksek aktarım hızı düzeyleri için bkz. [Azure NetApp Files Için kaynak sınırları](azure-netapp-files-resource-limits.md#resource-limits). El ile QoS kapasite havuzu ile oluşturulan tüm birimlerin toplam verimlilik, havuzun toplam verimi ile sınırlıdır. Havuz boyutu ve hizmet düzeyi aktarım hızı birleşimine göre belirlenir. 
 
 Bir *Otomatik* QoS kapasite havuzunda, işleme, havuzdaki birimlere göre otomatik olarak atanır ve birimlere atanan boyut kotasıyla orantılıdır.  
 

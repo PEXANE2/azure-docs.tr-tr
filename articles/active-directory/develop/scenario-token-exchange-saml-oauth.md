@@ -11,18 +11,18 @@ ms.topic: conceptual
 ms.date: 12/08/2020
 ms.author: kenwith
 ms.reviewer: paulgarn
-ms.openlocfilehash: 92d0dad86b3f048eb96dd7b17ed09f6e20d7cde2
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 812bf7bd68362667fcd1b636d0d28fdbb21c1409
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98063306"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99582358"
 ---
 # <a name="microsoft-identity-platform-token-exchange-scenarios-with-saml-and-oidcoauth"></a>SAML ve OıDC/OAuth ile Microsoft Identity platform belirteci değişim senaryoları
 
 SAML ve OpenID Connect (OıDC)/OAuth, tek Sign-On (SSO) uygulamak için kullanılan popüler protokollerdir. Bazı uygulamalar yalnızca SAML uygulayabilir ve diğerleri yalnızca OıDC/OAuth uygulayabilir. Her iki protokol de gizli dizileri iletmek için belirteçleri kullanır. SAML hakkında daha fazla bilgi edinmek için bkz. [tek Sign-On SAML Protokolü](single-sign-on-saml-protocol.md). OıDC/OAuth hakkında daha fazla bilgi edinmek için bkz. [Microsoft Identity platformunda OAuth 2,0 ve OpenID Connect protokolleri](active-directory-v2-protocols.md).
 
-Bu makalede, bir uygulamanın SAML uyguladığı ancak OıDC/OAuth kullanan Graph API çağırmanız gereken yaygın bir senaryo özetlenmektedir. Bu senaryoyla çalışan kişiler için temel kılavuz sağlanır.
+Bu makalede, bir uygulamanın SAML uyguladığı ancak OıDC/OAuth kullanan Graph API çağırdığı yaygın bir senaryo özetlenmektedir. Bu senaryoyla çalışan kişiler için temel kılavuz sağlanır.
 
 ## <a name="scenario-you-have-a-saml-token-and-want-to-call-the-graph-api"></a>Senaryo: bir SAML belirteciniz var ve Graph API çağırmak istiyorsunuz
 SAML ile birçok uygulama uygulanır. Ancak, Graph API OıDC/OAuth protokollerini kullanır. Bir SAML uygulamasına OıDC/OAuth işlevselliği eklemek çok basit olmasa da mümkündür. Bir uygulamada OAuth işlevselliği kullanılabilir olduğunda Graph API kullanılabilir.

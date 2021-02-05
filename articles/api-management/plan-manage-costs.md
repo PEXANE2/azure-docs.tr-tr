@@ -7,12 +7,12 @@ ms.custom: subject-cost-optimization
 ms.service: api-management
 ms.topic: how-to
 ms.date: 12/15/2020
-ms.openlocfilehash: e171e642440b7c6c99353169e426a722885f1bcf
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 1ebb89ae318e57f1d4e0708a08019515ca43158d
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98725946"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99581338"
 ---
 # <a name="plan-and-manage-costs-for-api-management"></a>API Management maliyetlerini planlayın ve yönetin
 
@@ -20,7 +20,7 @@ Bu makalede, Azure API Management maliyetlerini nasıl planlayabileceğinizi ve 
 
 API Management maliyetleri, Azure faturanızda bulunan Aylık maliyetlerin yalnızca bir parçasıdır. Bu makalede API Management maliyetlerinin nasıl planlanacağı ve yönetileceği açıklanmakta olsa da, üçüncü taraf hizmetler de dahil olmak üzere Azure aboneliğinizde kullanılan tüm Azure hizmetleri ve kaynakları için faturalandırılırsınız.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Maliyet yönetimi 'nde maliyet analizi, çoğu Azure hesap türünü destekler, ancak bunların tümünü kullanmaz. Desteklenen hesap türlerinin tam listesini görüntülemek için, bkz. [Maliyet Yönetimi verilerini anlama](../cost-management-billing/costs/understand-cost-mgt-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn). Maliyet verilerini görüntülemek için bir Azure hesabı için en azından okuma erişiminizin olması gerekir. Azure Maliyet Yönetimi verilerine erişim atama hakkında daha fazla bilgi için bkz. [Verilere erişim atama](../cost-management-billing/costs/assign-access-acm-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).
 
@@ -89,10 +89,10 @@ Ayrıca, maliyet verilerinizi bir depolama hesabına [dışarı aktarabilirsiniz
 
 ### <a name="choose-tier"></a>Katman seçin
 
-Senaryolarınız için hangi hizmet katmanının uygun olabileceğini belirlemenize yardımcı olmak üzere [Azure API Management katmanlarının Özellik tabanlı karşılaştırmasını](api-management-features.md) gözden geçirin. Farklı hizmet katmanları, farklı maliyetler ile çeşitli kullanım durumları için tasarlanan özellik ve yeteneklerin birleşimlerini destekler. Dilediğiniz zaman farklı bir hizmet katmanına [yükseltin](upgrade-and-scale.md) .
+Senaryolarınız için hangi hizmet katmanının uygun olabileceğini belirlemenize yardımcı olmak üzere [Azure API Management katmanlarının Özellik tabanlı karşılaştırmasını](api-management-features.md) gözden geçirin. Farklı hizmet katmanları, farklı maliyetler ile çeşitli kullanım durumları için tasarlanan özellik ve yeteneklerin birleşimlerini destekler. 
 
 * **Tüketim** hizmeti katmanı, sabit maliyet içermeyen hafif ve sunucusuz bir seçenek sağlar. Belirli bir eşiğin üzerinde hizmete yönelik API çağrısı sayısına göre faturalandırılırsınız. Kapasite Ayrıca hizmetin yüküne göre otomatik olarak ölçeklendirilir.
-* Diğer API Management katmanları aylık maliyetlere sahiptir ve değerlendirme ve üretim iş yükleri için daha fazla verimlilik ve daha zengin özellik kümeleri sağlar.
+* **Geliştirici**, **temel**, **Standart** ve **Premium** API Management katmanları aylık maliyetlere sahiptir ve değerlendirme ve üretim iş yükleri için daha fazla verimlilik ve daha zengin özellik kümeleri sağlar. Dilediğiniz zaman farklı bir hizmet katmanına [yükseltin](upgrade-and-scale.md) .
 
 ### <a name="scale-using-capacity-units"></a>Kapasite birimleri kullanarak ölçeklendirme
 

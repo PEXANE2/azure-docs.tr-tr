@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/26/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: b8360a22c815fa28626bb07a1518bd82ba6e3e46
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: d1ab7da9753642093505fa91ea76b9327612a6ac
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98753511"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99582375"
 ---
 # <a name="a-web-api-that-calls-web-apis-code-configuration"></a>Web API 'Leri çağıran bir Web API 'SI: kod yapılandırması
 
@@ -33,7 +33,7 @@ Microsoft, aşağı akış Web API 'Lerini çağıran ASP.NET Core korumalı bir
 
 ## <a name="client-secrets-or-client-certificates"></a>İstemci parolaları veya istemci sertifikaları
 
-Web API 'niz artık bir aşağı akış Web API 'sini çağırırsa, dosyadaki *appsettings.js* bir istemci parolası veya istemci sertifikası sağlamanız gerekir. Aşağıdakileri belirten bir bölüm de ekleyebilirsiniz:
+Web API 'niz artık bir aşağı akış Web API 'sini çağırdığı için, dosyasında *appsettings.js* bir istemci parolası veya istemci sertifikası sağlayın. Aşağıdakileri belirten bir bölüm de ekleyebilirsiniz:
 
 - Aşağı akış Web API 'sinin URL 'si
 - API 'YI çağırmak için gereken kapsamlar
@@ -169,7 +169,7 @@ Aşağıdaki görüntüde *Microsoft. Identity. Web* 'in çeşitli olanakları v
 :::image type="content" source="media/scenarios/microsoft-identity-web-startup-cs.svg" alt-text="Bir Web API 'SI çağırmak ve bir belirteç önbelleği uygulamasını belirtmek için başlangıç noktası C 'ler içindeki hizmet yapılandırma seçeneklerini gösteren blok diyagramı":::
 
 > [!NOTE]
-> Buradaki kod örneklerini tam olarak anlamak için [ASP.NET Core temelleri](/aspnet/core/fundamentals)ve özellikle de [bağımlılık ekleme](/aspnet/core/fundamentals/dependency-injection) ve [seçenekleriyle](/aspnet/core/fundamentals/configuration/options)ilgili bilgi sahibi olmanız gerekir.
+> Kod örneklerini burada tam olarak anlamak için [ASP.NET Core temelleri](/aspnet/core/fundamentals)hakkında bilgi sahibi olun ve özellikle de [bağımlılık ekleme](/aspnet/core/fundamentals/dependency-injection) ve [seçenekleriyle](/aspnet/core/fundamentals/configuration/options)ilgili bilgi edinin.
 
 # <a name="java"></a>[Java](#tab/java)
 

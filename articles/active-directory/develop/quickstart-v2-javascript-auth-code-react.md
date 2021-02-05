@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 01/14/2021
 ms.author: jamesmantu
 ms.custom: aaddev, scenarios:getting-started, languages:JavaScript, devx-track-js
-ms.openlocfilehash: 323c9e207e5a16ba3e5907862e7a1eba84cc02e6
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 9c30b1ff7b6e708fdd64d082b14b4e9d3c7a0f1a
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98754196"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99583324"
 ---
 # <a name="quickstart-sign-in-and-get-an-access-token-in-a-react-spa-using-the-auth-code-flow"></a>Hızlı başlangıç: kimlik doğrulama kod akışını kullanarak oturum açma ve yanıt olarak bir SPA 'da erişim belirteci edinme
 
@@ -27,7 +27,7 @@ Bu hızlı başlangıçta, JavaScript 'e tek sayfalı uygulamanın (SPA) nasıl 
 
 Bu hızlı başlangıçta yetkilendirme kodu akışıyla MSAL yanıt verme kullanılır. Örtülü akışla MSAL.js kullanan benzer bir hızlı başlangıç için bkz. [hızlı başlangıç: JavaScript tek sayfalı uygulamalarda oturum açma kullanıcıları](./quickstart-v2-javascript.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği- [ücretsiz bir Azure aboneliği oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 * [Node.js](https://nodejs.org/en/download/)
@@ -66,7 +66,7 @@ Bu hızlı başlangıçta yetkilendirme kodu akışıyla MSAL yanıt verme kulla
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>1. Adım: uygulamanızı Azure portal yapılandırma
-> Bu hızlı başlangıçta kod örneğinin çalışmasını sağlamak için, bir olarak eklemeniz gerekir `redirectUri` `http://localhost:3000/` .
+> Bu hızlı başlangıçtaki kod örneğinin çalışması için bir **yeniden yönlendirme URI 'si** ekleyin `http://localhost:3000/` .
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [Bu değişiklikleri benim için yap]()
 >

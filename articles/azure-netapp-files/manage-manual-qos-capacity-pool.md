@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 09/28/2020
+ms.date: 02/04/2021
 ms.author: b-juche
-ms.openlocfilehash: 5e44c2cfc81256a8715c7c625648b6ec25bcd319
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 566cc3b1192d632bbffb8f9ef091f291b4bcc6e6
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91929226"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99581166"
 ---
 # <a name="manage-a-manual-qos-capacity-pool"></a>El ile QoS kapasite havuzu yönetme
 
@@ -28,7 +28,7 @@ Bu makalede, el ile QoS türünü kullanan bir kapasite havuzunun nasıl yöneti
 QoS türleriyle ilgili dikkat edilmesi gereken noktaları anlamak için, Azure NetApp Files için [Azure NetApp Files depolama hiyerarşisine](azure-netapp-files-understand-storage-hierarchy.md) ve [performans konularına](azure-netapp-files-performance-considerations.md) bakın.  
 
 ## <a name="register-the-feature"></a>Özelliği kaydetme
-El ile QoS türü özelliği şu anda önizlemededir. Bu özelliği ilk kez kullanıyorsanız, önce özelliği kaydetmeniz gerekir.
+El ile QoS türü özelliği şu anda önizlemededir. Bu özelliği ilk kez kullanıyorsanız önce özelliği kaydetmeniz gerekir.
   
 1.  Özelliği kaydedin:
 
@@ -59,13 +59,14 @@ El ile QoS türünü kullanarak yeni bir kapasite havuzu oluşturmak için:
 El ile QoS türünü kullanmak için, şu anda otomatik QoS türünü kullanan bir kapasite havuzunu değiştirebilirsiniz.  
 
 > [!IMPORTANT]
-> Kapasite türünün el ile QoS olarak ayarlanması kalıcı bir değişiklikdir. El ile QoS tür kapasitesi aracını otomatik QoS kapasite havuzuna dönüştüremezsiniz. 
+> Kapasite türünün el ile QoS olarak ayarlanması kalıcı bir değişiklikdir. El ile QoS tür kapasitesi aracını otomatik QoS kapasite havuzuna dönüştüremezsiniz.  
+> Dönüştürme sırasında, işleme seviyeleri el ile QoS türünün birimleri için üretilen iş limitleriyle uyumlu olabilir. [Azure NetApp Files Için kaynak sınırlarına](azure-netapp-files-resource-limits.md#resource-limits)bakın.
 
 1. NetApp hesabınız için yönetim dikey penceresinde, mevcut kapasite havuzlarını göstermek için **Kapasite havuzları** ' na tıklayın.   
  
 2.  El ile QoS kullanarak değiştirmek istediğiniz kapasite havuzuna tıklayın.
 
-3.  **QoS türünü değiştir**' e tıklayın. Ardından, **Yeni QoS türünü** **el ile**olarak ayarlayın. **Tamam**'a tıklayın. 
+3.  **QoS türünü değiştir**' e tıklayın. Ardından, **Yeni QoS türünü** **el ile** olarak ayarlayın. **Tamam**'a tıklayın. 
 
 ![QoS türünü değiştir](../media/azure-netapp-files/change-qos-type.png)
 

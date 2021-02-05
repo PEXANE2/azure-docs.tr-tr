@@ -14,12 +14,12 @@ ms.date: 10/14/2020
 ms.author: marsma
 ms.reviewer: shoatman
 ms.custom: aaddev
-ms.openlocfilehash: bf9b3a154e19fab08c46f9838f555e223f10e8a0
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: ba639bc023affc7c2e6b2b675cdedc1229636893
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97672296"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99581049"
 ---
 # <a name="adal-to-msal-migration-guide-for-android"></a>Android için ADAL MSAL geçiş kılavuzu
 
@@ -71,7 +71,7 @@ Portalda uygulamanızın kaydında bir **API izinleri** sekmesi görürsünüz. 
 ADAL ve Azure AD v1 uç noktası ile, kendilerine ait oldukları kaynaklara yönelik kullanıcı onayı ilk kullanım için verilir. MSAL ve Microsoft Identity platformu ile, izin artımlı olarak istenebilir. Artımlı onay, bir kullanıcının yüksek ayrıcalığa göz önünde bulundurabilecek izinler için yararlıdır veya iznin neden gerekli olduğuna ilişkin açık bir açıklama ile sağlanmayan durumlarda soru alabilir. ADAL 'da, bu izinler kullanıcının uygulamanızda oturum açmasını terk ediyor olabilir.
 
 > [!TIP]
-> Uygulamanıza izin gereksinimi hakkında daha fazla bağlam sağlamanız gereken senaryolarda artımlı izin kullanımını öneririz.
+> Kullanıcılarınız için uygulamanızın izin ihtiyacı olduğu hakkında ek bağlam sağlamak için artımlı onay kullanın.
 
 ### <a name="admin-consent"></a>Yönetici onayı
 
@@ -128,7 +128,7 @@ MSAL, yetkilendirme doğrulamasını etkinleştirmek veya devre dışı bırakma
 
 Microsoft tarafından bilinmeyen ve yapılandırmanıza dahil olmayan bir yetkiyi kullanmaya çalışırsanız, bir alırsınız `UnknownAuthorityException` .
 
-### <a name="logging"></a>Günlüğe kaydetme
+### <a name="logging"></a>Günlüğe Kaydetme
 Artık, aşağıdaki gibi, yapılandırmanızın bir parçası olarak günlük kaydını bildirimli olarak yapılandırabilirsiniz:
 
 ```json

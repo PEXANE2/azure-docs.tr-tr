@@ -13,12 +13,12 @@ ms.date: 11/20/2020
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 46626c3ebe9d70600be1cc5f73c43677f67bcd09
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: 00768f363d08bc476350e57a8eac69eafd9c3589
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98761367"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99580947"
 ---
 # <a name="application-configuration-options"></a>Uygulama yapılandırma seçenekleri
 
@@ -73,7 +73,7 @@ Bir örnek belirtmezseniz, uygulamanız Azure genel bulut örneğini (URL 'nin �
 
 Oturum açma hedef kitlesi, uygulamanız için iş ihtiyaçlarına bağlıdır:
 
-- İş kolu (LOB) geliştiricisiyseniz, muhtemelen yalnızca kuruluşunuzda kullanılacak tek kiracılı bir uygulama oluşturacaksınız. Bu durumda, kuruluş KIMLIĞI (Azure AD örneğinizin KIMLIĞI) veya Azure AD örneğiyle ilişkili bir etki alanı adı ile organizasyonu belirtmeniz gerekir.
+- İş kolu (LOB) geliştiricisiyseniz, muhtemelen yalnızca kuruluşunuzda kullanılacak tek kiracılı bir uygulama oluşturacaksınız. Bu durumda, organizasyonu kiracı KIMLIĞI (Azure AD örneğinizin KIMLIĞI) veya Azure AD örneğiyle ilişkili bir etki alanı adı ile belirtin.
 - ISV iseniz, kullanıcıların herhangi bir kuruluşta veya bazı kuruluşlarda (çok kiracılı uygulama) iş ve okul hesaplarıyla oturum açmak isteyebilirsiniz. Ancak kullanıcıların kişisel Microsoft hesaplarıyla oturum açmasını da isteyebilirsiniz.
 
 ### <a name="how-to-specify-the-audience-in-your-codeconfiguration"></a>Kodunuzda/yapılandırmanızda hedef kitleyi belirtme
@@ -122,9 +122,9 @@ MSAL kullanan ortak bir istemci uygulama geliştiricisiyseniz:
   | UWP | değeri `WebAuthenticationBroker.GetCurrentApplicationCallbackUri()` . Bu, kaydolmanız gereken WebAuthenticationBroker. GetCurrentApplicationCallbackUri () sonucuna değer ayarlayarak, SSO 'yu tarayıcıda sağlar |
   | .NET Core | `https://localhost`. Bu, .NET Core 'un katıştırılmış Web görünümü için bir kullanıcı arabirimine sahip olmadığından kullanıcının etkileşimli kimlik doğrulaması için sistem tarayıcısını kullanmasına olanak sağlar. |
 
-- Aracıyı desteklemeyen bir Xamarin Android ve iOS uygulaması oluşturuyorsanız, yeniden yönlendirme URI 'SI eklemeniz gerekmez (yeniden yönlendirme URI 'SI `msal{ClientId}://auth` Xamarin Android ve iOS için otomatik olarak ayarlanır)
+- Aracı yeniden yönlendirme URI 'sini desteklemeyen bir Xamarin Android ve iOS uygulaması oluşturuyorsanız yeniden yönlendirme URI 'SI eklemeniz gerekmez. `msal{ClientId}://auth`Xamarin Android ve iOS için otomatik olarak ayarlanır.
 
-- [Uygulama kayıtları](https://aka.ms/appregistrations)YENIDEN yönlendirme URI 'sini yapılandırmanız gerekir:
+- [Uygulama kayıtları](https://aka.ms/appregistrations)YENIDEN yönlendirme URI 'sini yapılandırın:
 
    ![Uygulama kayıtları yeniden yönlendirme URI 'SI](media/msal-client-application-configuration/redirect-uri.png)
 

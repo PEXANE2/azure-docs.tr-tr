@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: b54438441b0e34cccda7fbec37dc1d1740101e9e
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 70fbaab8a409aaef8b1130abd40930a7aec79541
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98754002"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99583103"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-windows-desktop-app"></a>Hızlı Başlangıç: Bir belirteç alma ve bir Windows masaüstü uygulamasından Microsoft Graph API'si çağırma
 
@@ -25,7 +25,7 @@ Bu hızlı başlangıçta, bir Windows Masaüstü .NET (WPF) uygulamasının kul
 Örneğin bir çizim için [nasıl çalıştığını](#how-the-sample-works) görün.
 
 > [!div renderon="docs"]
-> ## <a name="prerequisites"></a>Ön koşullar
+> ## <a name="prerequisites"></a>Önkoşullar
 >
 > * [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) [Evrensel Windows platformu geliştirme](/windows/uwp/get-started/get-set-up) iş yükü yüklendi
 >
@@ -59,7 +59,7 @@ Bu hızlı başlangıçta, bir Windows Masaüstü .NET (WPF) uygulamasının kul
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-azure-portal"></a>1. Adım: Uygulamanızı Azure portalında yapılandırma
-> Bu hızlı başlangıçta çalışması için kod örneği için, olarak bir yanıt URL 'SI eklemeniz gerekir **https://login.microsoftonline.com/common/oauth2/nativeclient** .
+> Bu hızlı başlangıçtaki kod örneğinin çalışması için bir **yeniden yönlendirme URI 'si** ekleyin `https://login.microsoftonline.com/common/oauth2/nativeclient` .
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [Bu değişikliği benim için yap]()
 >
@@ -135,7 +135,7 @@ PublicClientApplicationBuilder.Create(ClientId)
                 .Build();
 ```
 
-> |Konum: | Açıklama |
+> |Konum: | Description |
 > |---------|---------|
 > | `ClientId` | **Uygulama (istemci) Kimliği**, Azure portalda kayıtlı uygulamadır. Bu değeri Azure portalda uygulamanın **Genel bakış** sayfasında bulabilirsiniz. |
 
@@ -157,7 +157,7 @@ authResult = await App.PublicClientApp.AcquireTokenInteractive(_scopes)
                                       .ExecuteAsync();
 ```
 
-> |Konum:| Açıklama |
+> |Konum:| Description |
 > |---------|---------|
 > | `_scopes` | `{ "user.read" }`Microsoft Graph veya `{ "api://<Application ID>/access_as_user" }` özel Web API 'leri için istenen kapsamları içerir. |
 
@@ -172,7 +172,7 @@ authResult = await App.PublicClientApp.AcquireTokenSilent(scopes, firstAccount)
                                       .ExecuteAsync();
 ```
 
-> |Konum: | Açıklama |
+> |Konum: | Description |
 > |---------|---------|
 > | `scopes` | `{ "user.read" }`Microsoft Graph veya `{ "api://<Application ID>/access_as_user" }` özel Web API 'leri için istenen kapsamları içerir. |
 > | `firstAccount` | Önbellekteki ilk kullanıcıyı belirtir (MSAL destekleyen birden çok kullanıcı tek bir uygulama olarak). |

@@ -13,18 +13,18 @@ ms.date: 05/07/2020
 ms.author: jeferrie
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 15f65da83f14f43a7892d52c6a2ed4e08580d367
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: b28454e9b60654541d4f62ec1d8455b30cfc2906
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97614923"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99580836"
 ---
 # <a name="use-msalnet-to-sign-in-users-with-social-identities"></a>Kullanıcıları sosyal kimliklerle oturum açmak için MSAL.NET kullanma
 
 [Azure Active Directory B2C (Azure AD B2C)](../../active-directory-b2c/overview.md)kullanarak sosyal kimliklerle kullanıcıları oturum açmak için msal.net kullanabilirsiniz. Azure AD B2C, ilke kavramı etrafında oluşturulmuştur. MSAL.NET ' de, bir ilke belirtildiğinde bir yetkili sağlamaya çevrilir.
 
-- Ortak istemci uygulamasını başlattığınızda, ilkeyi yetkilinin bir parçası olarak belirtmeniz gerekir.
+- Ortak istemci uygulamasını başlattığınızda, ilkeyi yetkilinin bir parçası olarak belirtin.
 - Bir ilke uygulamak istediğinizde, parametresini kabul eden bir geçersiz kılma çağırın `AcquireTokenInteractive` `authority` .
 
 Bu makale, MSAL.NET 3. x için geçerlidir. MSAL.NET 2. x için bkz. GitHub 'da MSAL.NET wiki içindeki [msal 2. x içinde Azure AD B2C özellikleri](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/AAD-B2C-Specifics-MSAL-2.x) .
@@ -78,7 +78,7 @@ AuthenticationResult ar = await application.AcquireTokenInteractive(scopes)
 
 - `policy` , Azure AD B2C Kullanıcı akışınız veya özel ilkenizin adını (örneğin,) içeren bir dizedir `PolicySignUpSignIn` .
 - `ParentActivityOrWindow` Android (etkinlik) için gereklidir ve iOS 'ta Microsoft Windows ve UIViewController üzerinde Windows gibi üst Kullanıcı arabirimini destekleyen diğer platformlar için isteğe bağlıdır. UI iletişim kutusu hakkında daha fazla bilgi için bkz. [WithParentActivityOrWindow](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Acquiring-tokens-interactively#withparentactivityorwindow) on msal wiki.
-- `GetAccountByPolicy(IEnumerable<IAccount>, string)` , belirli bir ilke için bir hesap bulan bir yöntemdir. Örnek:
+- `GetAccountByPolicy(IEnumerable<IAccount>, string)` , belirli bir ilke için bir hesap bulan bir yöntemdir. Örneğin:
 
   ```csharp
   private IAccount GetAccountByPolicy(IEnumerable<IAccount> accounts, string policy)

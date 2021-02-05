@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 01/31/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 45af940382a261f1793583e471871b9cceed0a57
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 00a70b585ddf522a25e81703fe5bdf55efbcb7e1
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98753832"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99582783"
 ---
 # <a name="scenario-daemon-application-that-calls-web-apis"></a>Senaryo: Web API 'Lerini çağıran Daemon uygulaması
 
@@ -52,7 +52,7 @@ Kendi kimlikleri için belirteç elde eden uygulamalar:
 Geliştiriciler için, bu senaryoya yönelik uçtan uca deneyim aşağıdaki yönlere sahiptir:
 
 - Daemon uygulamaları yalnızca Azure AD kiracılarında çalışabilir. Microsoft kişisel hesaplarını işlemeyi deneyen bir Daemon uygulaması oluşturmak mantıklı değildir. İş kolu (LOB) uygulaması geliştiricisiyseniz, kiracınızda Daemon uygulamanızı oluşturacaksınız. Bir ISV iseniz, çok kiracılı bir Daemon uygulaması oluşturmak isteyebilirsiniz. Her kiracı yöneticisinin izin sağlaması gerekir.
-- [Uygulama kaydı](./scenario-daemon-app-registration.md)sırasında, yanıt URI 'si gerekli değildir. Parolaların veya sertifikaların veya imzalı onayların Azure AD ile paylaşılması gerekir. Ayrıca, uygulama izinleri istemeniz ve bu uygulama izinlerini kullanmak için yönetici onayı vermeniz gerekir.
+- [Uygulama kaydı](./scenario-daemon-app-registration.md)sırasında, yanıt URI 'si gerekli değildir. Gizli dizileri veya sertifikaları veya imzalı onayları Azure AD ile paylaşabilirsiniz. Ayrıca, uygulama izinleri istemeniz ve bu uygulama izinlerini kullanmak için yönetici onayı vermeniz gerekir.
 - Uygulama [yapılandırmasının](./scenario-daemon-app-configuration.md) , uygulama kaydı SıRASıNDA Azure AD ile paylaşılan olarak istemci kimlik bilgilerini sağlaması gerekir.
 - İstemci kimlik bilgileri akışı ile belirteç almak için kullanılan [kapsamın](scenario-daemon-acquire-token.md#scopes-to-request) bir statik kapsam olması gerekir.
 

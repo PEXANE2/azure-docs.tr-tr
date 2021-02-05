@@ -13,12 +13,12 @@ ms.date: 04/10/2019
 ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: a1ec8c31681ab6c0ac40ba33e94f33057ee948e7
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 1a56685c830fc7aa717add3e826c68c04449e378
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98754804"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99580855"
 ---
 # <a name="differences-between-msaljs-and-adaljs"></a>MSAL.js ve ADAL.js arasındaki farklar
 
@@ -48,7 +48,7 @@ Ancak, uygulamanızın daha önceki [Active Directory Federasyon Hizmetleri (AD 
 
 V 1.0 'da, yetkiyi kullanmak `https://login.microsoftonline.com/common` kullanıcıların herhangi bir Azure AD hesabıyla oturum açmalarına olanak tanır (herhangi bir kuruluş için).
 
-V 2.0 sürümünde, yetkiyi kullanarak `https://login.microsoftonline.com/common` , kullanıcıların herhangi bir Azure AD kuruluş hesabıyla veya bir Microsoft kişisel hesabıyla (MSA) oturum açmalarına olanak tanır. Oturum açmayı yalnızca Azure AD hesaplarına kısıtlamak için (ADAL.js ile aynı davranış), kullanmanız gerekir `https://login.microsoftonline.com/organizations` . Ayrıntılar için `authority` [MSAL.jskullanarak başlatma ](msal-js-initializing-client-applications.md)içindeki yapılandırma seçeneğine bakın.
+V 2.0 sürümünde, yetkiyi kullanarak `https://login.microsoftonline.com/common` , kullanıcıların herhangi bir Azure AD kuruluş hesabıyla veya bir Microsoft kişisel hesabıyla (MSA) oturum açmalarına olanak tanır. Oturum açma yöntemini yalnızca Azure AD hesaplarında (ADAL.js ile aynı davranış) kısıtlamak için kullanın `https://login.microsoftonline.com/organizations` . Ayrıntılar için `authority` [MSAL.jskullanarak başlatma ](msal-js-initializing-client-applications.md)içindeki yapılandırma seçeneğine bakın.
 
 ### <a name="scopes-for-acquiring-tokens"></a>Belirteçleri almak için kapsamlar
 * Belirteçleri almak için kimlik doğrulama isteklerinde kaynak parametresi yerine kapsam

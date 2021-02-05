@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
-ms.date: 1/29/2021
-ms.openlocfilehash: 84d37def6aa519eabf26a72ded7b0ab70994c430
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.date: 2/05/2021
+ms.openlocfilehash: abd47a17392e53770802b61e4ee6561252cc4c1e
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99063088"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99581576"
 ---
 # <a name="co-sell-partner-engagement"></a>Ortak satış iş ortağı etkileşimi
 
@@ -79,6 +79,9 @@ Ortak satış yolculuğunu aşağıdaki adımları izleyerek doğrudan Iş Orta�
 
 1. Devam etmeden önce taslağı kaydedin.
 1. Teklifin tüm gerekli bölümlerini tamamladıktan sonra, bunu İnceleme ve yayınlama için gönderebilirsiniz. Sağ üst köşedeki **gözden geçir ve Yayımla**' yı seçin. Teklif ayrıntılarını gözden geçirin ve **Yayımla**' yı seçin.
+
+> [!NOTE]
+> Artık ortak satış için teklifinizi aday olarak bizimle iletişime geçmek zorunda kalmamaktadır. Microsoft ile ortak satış sayfasında tüm gerekli alanları tamamladıktan sonra teklifinizi yeniden yayımladığınızda, ortak satış durumu gereksinimlerini karşılayıp karşılamadığını belirleme teklifinizi gözden geçiğiz.
 
 ## <a name="see-your-offers-co-sell-status"></a>Teklifinizin ortak satış durumunu görün
 

@@ -8,14 +8,14 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: keys
 ms.topic: tutorial
-ms.date: 02/01/2021
+ms.date: 02/04/2021
 ms.author: ambapat
-ms.openlocfilehash: 98da8057fb09cf43a59b921694386cbf3fa8ca21
-ms.sourcegitcommit: 983eb1131d59664c594dcb2829eb6d49c4af1560
+ms.openlocfilehash: 51ba981dcc6f36df3bfaacebb503782faed5c91f
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99222226"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99581015"
 ---
 # <a name="import-hsm-protected-keys-to-key-vault-byok"></a>HSM korumalı anahtarları Key Vault içeri aktar (BYOK)
 
@@ -71,10 +71,13 @@ Aşağıdaki tabloda Azure Key Vault BYOK kullanımına yönelik önkoşullar li
 
 ## <a name="supported-key-types"></a>Desteklenen anahtar türleri
 
-|Anahtar adı|Anahtar türü|Anahtar boyutu|Kaynak|Description|
+|Anahtar adı|Anahtar türü|Anahtar boyutu/eğrisi|Kaynak|Description|
 |---|---|---|---|---|
 |Anahtar değişim anahtarı (KEK)|RSA| 2.048 bit<br />3.072 bit<br />4.096 bit|Azure Key Vault HSM|Azure Key Vault içinde oluşturulan HSM ile desteklenen bir RSA anahtar çifti|
-|Hedef anahtar|RSA|2.048 bit<br />3.072 bit<br />4.096 bit|Satıcı HSM|Azure Key Vault HSM 'ye aktarılacak anahtar|
+|Hedef anahtar|
+||RSA|2.048 bit<br />3.072 bit<br />4.096 bit|Satıcı HSM|Azure Key Vault HSM 'ye aktarılacak anahtar|
+||EC|P-256<br />P-384<br />P-521|Satıcı HSM|Azure Key Vault HSM 'ye aktarılacak anahtar|
+||||
 
 ## <a name="generate-and-transfer-your-key-to-the-key-vault-hsm"></a>Anahtarınızı oluşturun ve Key Vault HSM 'ye aktarın
 
@@ -120,7 +123,7 @@ BYOK aracını indirip yüklemek için HSM satıcınızın belgelerine bakın. B
 BYOK dosyasını bağlı bilgisayarınıza aktarın.
 
 > [!NOTE] 
-> RSA 1.024 bit anahtarlarının içe aktarılması desteklenmez. Şu anda, eliptik eğri (EC) anahtarının içe aktarılması desteklenmez.
+> RSA 1.024 bit anahtarlarının içe aktarılması desteklenmez. P-256K eğrisi ile eliptik eğri anahtarını içeri aktarma desteklenmiyor.
 > 
 > **Bilinen sorun**: bir RSA 4k hedef anahtarının yalnızca bir bellenim 7.4.0 veya daha yeni sürümü ile içeri aktarılması desteklenir.
 
@@ -128,8 +131,15 @@ BYOK dosyasını bağlı bilgisayarınıza aktarın.
 
 Anahtar içeri aktarmayı gerçekleştirmek için, anahtar aktarım paketini (bir BYOK dosyası) bağlantısı kesilen bilgisayarınızdan İnternet 'e bağlı bilgisayara aktarın. BYOK dosyasını Key Vault HSM 'ye yüklemek için [az keykasa Key import](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-import) komutunu kullanın.
 
+Bir RSA anahtarını içeri aktarmak için aşağıdaki komutu kullanın. ----Parametresi isteğe bağlıdır ve varsayılan olarak ' RSA-HSM ' olarak ayarlanır.
 ```azurecli
 az keyvault key import --vault-name ContosoKeyVaultHSM --name ContosoFirstHSMkey --byok-file KeyTransferPackage-ContosoFirstHSMkey.byok
+```
+
+Bir EC anahtarını içeri aktarmak için anahtar türü ve eğri adı belirtmeniz gerekir.
+
+```azurecli
+az keyvault key import --vault-name ContosoKeyVaultHSM --name ContosoFirstHSMkey --byok-file --kty EC-HSM --curve-name "P-256" KeyTransferPackage-ContosoFirstHSMkey.byok
 ```
 
 Karşıya yükleme başarılı olursa, Azure CLı içeri aktarılan anahtarın özelliklerini görüntüler.

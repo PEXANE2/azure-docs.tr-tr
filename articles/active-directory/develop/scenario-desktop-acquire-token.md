@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 01/06/2021
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: c58f4a553073eb3ed062ef9ec2a66c8e4f40e57b
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 4a244c543aa83ae84891e3f942995dc340a7209d
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98785134"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99582664"
 ---
 # <a name="desktop-app-that-calls-web-apis-acquire-a-token"></a>Web API 'Lerini çağıran masaüstü uygulaması: belirteç alma
 
@@ -445,7 +445,7 @@ Onay hakkında daha fazla bilgi için bkz. [Microsoft Identity platform izinleri
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
-MSAL.NET ' de şunu kullanmanız gerekir:
+MSAL.NET ' de şunu kullanın:
 
 ```csharp
 AcquireTokenByIntegratedWindowsAuth(IEnumerable<string> scopes)
@@ -922,7 +922,7 @@ Bu akış, macOS için MSAL üzerinde desteklenmez.
 
 ### <a name="device-code-flow"></a>Cihaz kod akışı
 
-Web denetimlerine sahip olmayan bir komut satırı aracı yazıyorsanız ve önceki akışları kullanmak istemiyorsanız, cihaz kodu akışını kullanmanız gerekir.
+Web denetimlerine sahip olmayan bir komut satırı aracı yazıyorsanız ve önceki akışları kullanmak istemiyorsanız, cihaz kod akışını kullanın.
 
 Azure AD ile etkileşimli kimlik doğrulaması için bir Web tarayıcısı gerekir. Daha fazla bilgi için bkz. [Web tarayıcıları kullanımı](https://aka.ms/msal-net-uses-web-browser). Bir Web tarayıcısı sağlamayan cihazlarda veya işletim sistemlerinde kullanıcıların kimliğini doğrulamak için, cihaz kodu akışı kullanıcının etkileşimli olarak oturum açmak için bilgisayar veya cep telefonu gibi başka bir cihaz kullanmasına olanak sağlar. Uygulama, cihaz kod akışını kullanarak belirteçleri bu cihazlar veya işletim sistemleri için tasarlanan iki adımlı bir işlemle edinir. Bu uygulamaların örnekleri, IoT veya komut satırı araçlarında (CLı) çalışan uygulamalardır. Fikir şu şekilde olur:
 

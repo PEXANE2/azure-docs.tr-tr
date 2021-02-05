@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/09/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 46c8127a93cef8f662930fffd07a2fa3d22b8871
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 4031e43b3ec6f6f451fbc4888cc482249042690b
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98753719"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99582732"
 ---
 # <a name="desktop-app-that-calls-web-apis-app-registration"></a>Web API 'Lerini çağıran masaüstü uygulaması: uygulama kaydı
 
@@ -47,7 +47,7 @@ Bir masaüstü uygulamasında kullanılacak yeniden yönlendirme URI 'Leri, kull
 
 - MacOS için yerel bir amaç-C veya Swift uygulaması oluşturuyorsanız, yeniden yönlendirme URI 'sini uygulamanızın paket tanımlayıcısına göre aşağıdaki biçimde kaydedin: `msauth.<your.app.bundle.id>://auth` . `<your.app.bundle.id>`Uygulamanızın paket tanımlayıcısı ile değiştirin.
 - Uygulamanız yalnızca tümleşik Windows kimlik doğrulaması veya Kullanıcı adı ve parola kullanıyorsa, uygulamanız için bir yeniden yönlendirme URI 'SI kaydetmeniz gerekmez. Bu akışlar Microsoft Identity platform v 2.0 uç noktasına gidiş dönüş yapılır. Uygulamanız belirli bir URI üzerinde geri çağrılmayacaktır.
-- [Cihaz kod akışı](scenario-desktop-acquire-token.md#device-code-flow), [Tümleşik Windows kimlik doğrulaması](scenario-desktop-acquire-token.md#integrated-windows-authentication)ve bir [Kullanıcı adı ile](scenario-desktop-acquire-token.md#username-and-password) gizli bir istemci uygulamasından bir parola ve bir parolayı, bir yeniden yönlendirme URI 'si gerektiren [arka plan uygulamalarında](scenario-daemon-overview.md)kullanılan bir istemci kimlik bilgisi akışı kullanarak ayırt etmek için, bunu bir ortak istemci uygulaması olarak yapılandırmanız gerekir. Bu yapılandırmayı elde etmek için:
+- [Cihaz kod akışı](scenario-desktop-acquire-token.md#device-code-flow), [Tümleşik Windows kimlik doğrulaması](scenario-desktop-acquire-token.md#integrated-windows-authentication)ve bir Kullanıcı adı ile gizli bir istemci uygulamasından bir [parolayı ve bir kullanıcı adını ve bir parolayı](scenario-desktop-acquire-token.md#username-and-password) , bir yeniden yönlendirme URI 'si gerektiren [arka plan uygulamaları](scenario-daemon-overview.md)için kullanılan bir istemci kimlik bilgisi akışını kullanarak ayırt etmek için, bunu bir ortak istemci uygulaması olarak Bu yapılandırmayı elde etmek için:
 
     1. <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span></a>, **uygulama kayıtları**' de Uygulamanızı seçin ve **kimlik doğrulaması**' nı seçin.
     1. **Gelişmiş ayarlar**' da  >  **ortak istemci akışlarının**  >  **aşağıdaki mobil ve Masaüstü akışlarını etkinleştirmesine** izin ver:, **Evet**' i seçin.

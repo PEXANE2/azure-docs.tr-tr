@@ -6,12 +6,12 @@ ms.author: bahusse
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 1/28/2021
-ms.openlocfilehash: b1e8093a1991a97220060c2b6936368f9a4be796
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 765ff76578e48135d2e7d4d9200c1868d2501df4
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99052355"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99581457"
 ---
 # <a name="compute-and-storage-options-in-azure-database-for-mysql---flexible-server-preview"></a>MySQL için Azure veritabanı 'nda işlem ve depolama seçenekleri-esnek sunucu (Önizleme)
 
@@ -102,15 +102,14 @@ Yapmanız önerilir <!--turn on storage auto-grow or to--> Sunucu depoağınız�
 Depolama otomatik büyüme, MySQL için Azure veritabanı esnek sunucusu için henüz kullanılamıyor.
 
 ## <a name="iops"></a>IOPS
-En düşük etkin ıOPS, tüm işlem boyutlarında 100, en fazla etkin ıOPS ise aşağıdaki özniteliklerin her ikisine birden belirlenir: 
-- İşlem: en fazla etkin ıOPS, seçilen işlem boyutu için kullanılabilir maksimum ıOPS ile sınırlı olabilir.
-- Depolama: tüm işlem katmanlarında ıOPS, sağlanan depolama boyutuyla 3:1 oranında ölçeklendirilir.
 
-Sağlanan depolamayı arttırarak veya daha büyük bir işlem boyutuna taşıyarak (ıOPS 'niz işlem ile sınırlıysa) kullanılabilir etkin ıOPS 'yi ölçeklendirebilirsiniz. Önizleme aşamasında desteklenen en büyük etkin ıOPS 20.000 ıOPS 'dir.
+MySQL için Azure veritabanı – esnek sunucu, ek ıOPS sağlama işlemini destekler. Bu özellik, tamamlayıcı ıOPS sınırının üzerinde ek ıOPS sağlamanıza olanak sağlar. Bu özelliği kullanarak, iş yükü gereksinimlerinize göre sağlanan ıOPS sayısını dilediğiniz zaman artırabilir veya azaltabilirsiniz. 
 
-İşlem boyutu başına en fazla etkin ıOPS hakkında daha fazla bilgi edinmek için, hem işlem hem de depolamanın birleşimini kullanarak aşağıda gösterilmektedir: 
+Minimum ıOPS, tüm işlem boyutlarında 100, maksimum ıOPS ise seçili işlem boyutuna göre belirlenir. Önizlemede, desteklenen maksimum ıOPS 20.000 ıOPS 'dir.
 
-| İşlem boyutu         | Maksimum etkin ıOPS  | 
+İşlem boyutu başına en fazla ıOPS hakkında daha fazla bilgi edinmek için aşağıda gösterilmektedir: 
+
+| İşlem boyutu         | Maksimum ıOPS        | 
 |----------------------|---------------------|
 | **Burstable**        |                     |
 | Standard_B1s         | 320                 |
@@ -133,11 +132,14 @@ Sağlanan depolamayı arttırarak veya daha büyük bir işlem boyutuna taşıya
 | Standard_E48ds_v4    | 20000               | 
 | Standard_E64ds_v4    | 20000               |  
 
-En yüksek etkin ıOPS, işlem boyutu başına kullanılabilir maksimum ıOPS 'ye bağımlıdır. Aşağıdaki formüle bakın ve [B serisi](../../virtual-machines/sizes-b-series-burstable.md), [Ddsv4-Series](../../virtual-machines/ddv4-ddsv4-series.md)ve [Edsv4 serisi](../../virtual-machines/edv4-edsv4-series.md) belgelerinde *MAKSIMUM önbelleğe alınmamış disk aktarım hızı: IOPS/Mbps* sütununa bakın.
+Maksimum ıOPS, işlem boyutu başına kullanılabilir maksimum ıOPS 'ye bağımlıdır. [B serisi](../../virtual-machines/sizes-b-series-burstable.md), [Ddsv4-Series](../../virtual-machines/ddv4-ddsv4-series.md)ve [Edsv4 serisi](../../virtual-machines/edv4-edsv4-series.md) belgelerinde *MAKSIMUM önbelleğe alınmamış disk aktarım hızı: IOPS/Mbps* sütununa bakın.
 
-**Maksimum ETKIN IOPS** = MINIMUM (*"önbelleğe alınmış maksimum disk aktarım hızı: IOPS/Mbps"* Işlem boyutu, gib * 3 ' te sağlanan depolama)
+> [!Important]
+> **TAMAMLAYıCı IOPS** , en düşük ("önbelleğe alınmış maksimum disk aktarım hızı: IOPS/Mbps" işlem boyutu Için, gib * 3 ' te sağlanan depolama alanı) değerine eşittir<br>
+> **MINIMUM IOPS** tüm işlem boyutları boyunca 100 ' dir<br>
+> **MAKSIMUM IOPS** , seçilen işlem boyutu tarafından belirlenir. Önizlemede, desteklenen maksimum ıOPS 20.000 ıOPS 'dir.
 
-G/ç tüketiminizi, Azure portal (Azure Izleyici ile) üzerinde [GÇ yüzdesi](./concepts-monitoring.md) ölçümünü kullanarak izleyebilirsiniz. Daha fazla ıOPS gerekiyorsa, işlem boyutu veya sağlanan depolama alanı tarafından kısıtlanıp kısıtlanmayacağını anlamanız gerekir. Sunucunuzun işlem veya depolama alanı için uygun şekilde ölçeklendirme yapın.
+G/ç tüketiminizi, Azure portal (Azure Izleyici ile) üzerinde [GÇ yüzdesi](./concepts-monitoring.md) ölçümünü kullanarak izleyebilirsiniz. Daha fazla ıOPS 'ye ihtiyacınız varsa, en fazla ıOPS işlem temelinde, sunucunuzun işlem ölçeğini ölçeklendirmeniz gerekir.
 
 ## <a name="backup"></a>Backup
 

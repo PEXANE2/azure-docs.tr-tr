@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/09/2019
 ms.author: sagonzal
 ms.custom: aaddev, scenarios:getting-started, languages:Java, devx-track-java
-ms.openlocfilehash: 91aa6c96c714bff26ea7e0df5b2b6971c68edec0
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 601b725e5f1fe06c12416ad8ab36ac657f0412f2
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178582"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99583425"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>Hızlı başlangıç: Microsoft 'a Java Web uygulamasına oturum açma ekleme
 
@@ -25,7 +25,7 @@ Bu hızlı başlangıçta, Java Web uygulamasının kullanıcılara nasıl oturu
 
  Genel bakış için bkz. Örneğin [nasıl çalıştığına ilişkin diyagram](#how-the-sample-works).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu örneği çalıştırmak için şunlar gerekir:
 
@@ -68,7 +68,7 @@ Bu örneği çalıştırmak için şunlar gerekir:
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>1. Adım: uygulamanızı Azure portal yapılandırma
 >
-> Bu hızlı başlangıçta kod örneğini kullanmak için şunları yapmanız gerekir:
+> Bu hızlı başlangıçta kod örneğini kullanmak için:
 >
 > 1. Yanıt URL 'Leri `https://localhost:8443/msal4jsample/secure/aad` ve ekleyin `https://localhost:8443/msal4jsample/graph/me` .
 > 1. Bir istemci gizli dizisi oluşturun.
@@ -161,7 +161,7 @@ Web uygulamasını bir IDE 'den çalıştırmak için Çalıştır ' ı seçin v
 
 ##### <a name="running-the-project-from-tomcat"></a>Projeyi Tomcat 'ten çalıştırma
 
-Web örneğini Tomcat 'e dağıtmak istiyorsanız, kaynak kodunda birkaç değişiklik yapmanız gerekir.
+Web örneğini Tomcat 'e dağıtmak istiyorsanız, kaynak kodunda birkaç değişiklik yapın.
 
 1. *MS-Identity-Java-WebApp/pom.xml* açın.
     - Altında `<name>msal-web-sample</name>` , ekleyin `<packaging>war</packaging>` .
