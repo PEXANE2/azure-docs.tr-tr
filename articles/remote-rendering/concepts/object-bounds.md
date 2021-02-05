@@ -6,56 +6,58 @@ ms.author: flborn
 ms.date: 02/03/2020
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 421265bf1ee488c8e7d0c41e3ec9a250392d6f3d
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: df04b767035dffb62fde89d1e74b808d62fcc943
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92202795"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594493"
 ---
 # <a name="object-bounds"></a>Nesne sınırları
 
-Nesne sınırları, bir [varlığın](entities.md) ve alt öğelerinin kaplayacağı birimi temsil eder. Azure uzaktan Işlemede, nesne sınırları her zaman *eksen hizalanmış sınırlayıcı kutular* (AABB) olarak verilir. Nesne sınırları, *yerel alanda* veya *Dünya*alanında olabilir. Her iki durumda da, her zaman eksen hizalı olur, bu da kapsamlar ve birim yerel ve dünya alanı gösterimi arasında farklılık gösterebilir.
+Nesne sınırları, bir [varlığın](entities.md) ve alt öğelerinin kaplayacağı birimi temsil eder. Azure uzaktan Işlemede, nesne sınırları her zaman *eksen hizalanmış sınırlayıcı kutular* (AABB) olarak verilir. Nesne sınırları, *yerel alanda* veya *Dünya* alanında olabilir. Her iki durumda da, her zaman eksen hizalı olur, bu da kapsamlar ve birim yerel ve dünya alanı gösterimi arasında farklılık gösterebilir.
 
 ## <a name="querying-object-bounds"></a>Nesne sınırlarını sorgulama
 
-Bir [kafesin](meshes.md) yerel AABB ' si doğrudan ağ kaynağından sorgulanabilir. Bu sınırlar, varlığın dönüşümünü kullanarak bir varlığın yerel alanına veya dünya alanına dönüştürülebilir.
+Bir [kafesin](meshes.md) yerel eksen hizalanmış sınırlayıcı kutusu doğrudan kafes kaynağından sorgulanabilir. Bu sınırlar, varlığın dönüşümünü kullanarak bir varlığın yerel alanına veya dünya alanına dönüştürülebilir.
 
 Bu şekilde tüm nesne hiyerarşisinin sınırlarını hesaplamak mümkündür, ancak hiyerarşide geçiş yapmak, her bir kafesin sınırlarını sorgulamak ve bunları el ile birleştirmek gerekir. Bu işlem hem sıkıcı hem de verimsiz.
 
 Daha iyi bir yol, `QueryLocalBoundsAsync` bir varlığı çağırmak ya da `QueryWorldBoundsAsync` bir varlığı kullanmaktır. Hesaplama daha sonra sunucuda boşaltılır ve en az gecikmeyle döndürülür.
 
 ```cs
-private BoundsQueryAsync _boundsQuery = null;
-
-public void GetBounds(Entity entity)
+public async void GetBounds(Entity entity)
 {
-    _boundsQuery = entity.QueryWorldBoundsAsync();
-    _boundsQuery.Completed += (BoundsQueryAsync bounds) =>
+    try
     {
-        if (bounds.IsRanToCompletion)
-        {
-            Double3 aabbMin = bounds.Result.min;
-            Double3 aabbMax = bounds.Result.max;
-            // ...
-        }
-    };
+        Task<Bounds> boundsQuery = entity.QueryWorldBoundsAsync();
+        Bounds result = await boundsQuery;
+    
+        Double3 aabbMin = result.Min;
+        Double3 aabbMax = result.Max;
+        // ...
+    }
+    catch (RRException ex)
+    {
+    }
 }
 ```
 
 ```cpp
 void GetBounds(ApiHandle<Entity> entity)
 {
-    ApiHandle<BoundsQueryAsync> boundsQuery = *entity->QueryWorldBoundsAsync();
-    boundsQuery->Completed([](ApiHandle<BoundsQueryAsync> bounds)
-    {
-        if (bounds->GetIsRanToCompletion())
+    entity->QueryWorldBoundsAsync(
+        // completion callback:
+        [](Status status, Bounds bounds)
         {
-            Double3 aabbMin = bounds->GetResult().min;
-            Double3 aabbMax = bounds->GetResult().max;
-            // ...
+           if (status == Status::OK)
+            {
+                Double3 aabbMin = bounds.Min;
+                Double3 aabbMax = bounds.Max;
+                // ...
+            }
         }
-    });
+    );
 }
 ```
 

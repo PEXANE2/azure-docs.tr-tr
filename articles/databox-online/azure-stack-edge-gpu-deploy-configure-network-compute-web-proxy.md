@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 01/27/2021
+ms.date: 02/04/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: ac64233467166ca6567f1601c3b90f80fdba3dcf
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 07a4c06b840d41455beea9be4ed0343b4946ddb3
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98954656"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594611"
 ---
 # <a name="tutorial-configure-network-for-azure-stack-edge-pro-with-gpu"></a>Öğretici: Azure Stack Edge Pro için ağı GPU ile yapılandırma
 
@@ -56,8 +56,6 @@ Cihazınızın ağını yapılandırmak için bu adımları izleyin.
     
     ![Yerel Web Kullanıcı arabirimi "ağ ayarları" sayfası](./media/azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy/network-2a.png)
 
-
-   
 3. Ağ ayarlarını değiştirmek için bir bağlantı noktası seçin ve sağ bölmede, IP adresi, alt ağ, ağ geçidi, birincil DNS ve ikincil DNS ' yi değiştirin. 
 
     - Bağlantı noktası 1 ' i seçerseniz, bunun statik olarak önceden yapılandırılmış olduğunu görebilirsiniz. 
@@ -74,6 +72,7 @@ Cihazınızın ağını yapılandırmak için bu adımları izleyin.
    * DHCP etkinleştirilmemişse, gerekirse statik IP 'Ler atayabilirsiniz.
    * Ağ arabiriminizi IPv4 olarak yapılandırabilirsiniz.
    * 25 Gbps arabirimlerde, RDMA (uzaktan doğrudan erişim belleği) modunu ıwarp veya RoCE (Yakınsanan Ethernet üzerinden RDMA) olarak ayarlayabilirsiniz. Düşük gecikme sürelerinin birincil gereksinim olduğu ve ölçeklenebilirliğin bir sorun olmadığı durumlarda, RoCE 'yi kullanın. Gecikme süresi bir anahtar gereksinimidir, ancak kullanımı kolaylaştırma ve ölçeklenebilirlik de yüksek önceliklerdir, ıwarp en iyi adaydır.
+   * Ağ arabirimi kartı (NIC) grubu oluşturma veya bağlantı toplama, Azure Stack Edge ile desteklenmez. 
    * Herhangi bir bağlantı noktasının seri numarası, düğüm seri numarasına karşılık gelir.
 
     Cihaz ağı yapılandırıldıktan sonra, sayfa aşağıda gösterildiği gibi güncellenir.
@@ -81,12 +80,11 @@ Cihazınızın ağını yapılandırmak için bu adımları izleyin.
     ![Yerel Web Kullanıcı arabirimi "ağ ayarları" sayfa 2](./media/azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy/network-2.png)
 
 
-     >[!NOTE]
-     >
-     > * Cihaza bağlanmak için başka bir IP adresiniz yoksa, ağ arabiriminin yerel IP adresini statikten DCHP’ye değiştirmeniz önerilmez. Tek bir ağ arabirimi kullanıyorsanız ve DHCP’ye geçiyorsanız, DHCP adresini belirlemenin hiçbir yolu yoktur. Bir DHCP adresine geçiş yapmak istiyorsanız, cihaz hizmetle etkinleştirilinceye kadar bekleyin ve ardından değiştirin. Daha sonra, hizmetinize yönelik Azure portal **cihaz özelliklerindeki** tüm bağdaştırıcıların IP 'lerini görüntüleyebilirsiniz.
+     > [!NOTE]
+     > Cihaza bağlanmak için başka bir IP adresiniz yoksa, ağ arabiriminin yerel IP adresini statikten DCHP’ye değiştirmeniz önerilmez. Tek bir ağ arabirimi kullanıyorsanız ve DHCP’ye geçiyorsanız, DHCP adresini belirlemenin hiçbir yolu yoktur. Bir DHCP adresine geçiş yapmak istiyorsanız, cihaz hizmetle etkinleştirilinceye kadar bekleyin ve ardından değiştirin. Daha sonra, hizmetinize yönelik Azure portal **cihaz özelliklerindeki** tüm bağdaştırıcıların IP 'lerini görüntüleyebilirsiniz.
 
 
-    Ağ ayarlarını yapılandırdıktan ve uyguladıktan sonra, Ileri ' yi seçin. işlem ağını yapılandırmak için Işlem.
+    Ağ ayarlarını yapılandırdıktan ve uyguladıktan sonra, Ileri ' yi seçin. işlem ağını yapılandırmak için **işlem** .
 
 ## <a name="enable-compute-network"></a>İşlem ağını etkinleştir
 

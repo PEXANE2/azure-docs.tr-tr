@@ -9,16 +9,16 @@ ms.service: iot-pnp
 services: iot-pnp
 manager: eliotgra
 ms.custom: references_regions
-ms.openlocfilehash: d6cba4bcb76094ed156ef35b1ea76cea7001c372
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: dcdd19faec5e428ac26917178aa8114245c205b3
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95486305"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594578"
 ---
 # <a name="what-is-iot-plug-and-play"></a>IoT Tak Çalıştır nedir?
 
-IoT Tak ve Kullan, çözüm oluşturucuların akıllı cihazları el ile herhangi bir yapılandırma olmadan çözümleriyle tümleştirmelerini sağlar. IoT Tak ve Kullan 'nin temel tarafında, bir cihazın, yeteneklerini IoT Tak ve Kullan özellikli bir uygulamaya tanıtmak için kullandığı bir cihaz _modelidir_ . Bu model, şunları tanımlayan bir dizi öğe olarak yapılandırılmıştır:
+IoT Tak Çalıştır çözüm oluşturucularının el ile hiçbir yapılandırma gerçekleştirmeden akıllı cihazları kendi çözümlerine tümleştirmesine olanak tanır. IoT Tak ve Kullan 'nin temel tarafında, bir cihazın, yeteneklerini IoT Tak ve Kullan özellikli bir uygulamaya tanıtmak için kullandığı bir cihaz _modelidir_ . Bu model, şunları tanımlayan bir dizi öğe olarak yapılandırılmıştır:
 
 - Bir cihazın veya diğer varlıkların salt okunurdur veya yazılabilir durumunu temsil eden _özelliklerdir_ . Örneğin, bir cihaz seri numarası salt okunurdur ve bir termostat üzerinde hedef sıcaklık yazılabilir bir özellik olabilir.
 - Bir cihaz _tarafından yayılan,_ verilerin düzenli algılayıcı okumalar, zaman zaman hatası veya bilgi iletisi olup olmadığı.
@@ -45,11 +45,13 @@ IoT Tak ve Kullan iki tür geliştirici için yararlıdır:
 
 ## <a name="use-iot-plug-and-play-devices"></a>IoT Tak ve Kullan cihazları kullanma
 
-Bir çözüm Oluşturucusu olarak IoT Tak ve Kullan cihazları kullanan, bulutta barındırılan bir IoT çözümü geliştirebilirsiniz. IoT uygulamanız ve cihazlarınız arasında güvenli, çift yönlü iletişim için ileti hub 'ı görevi gören [IoT Hub](../iot-hub/about-iot-hub.md) , yönetilen bir bulut hizmeti kullanın.
+Bir çözüm Oluşturucusu olarak, IoT Tak ve Kullan cihazları kullanan bulutta barındırılan bir IoT çözümü geliştirmek için [IoT Central](../iot-central/core/overview-iot-central.md) veya [IoT Hub](../iot-hub/about-iot-hub.md) kullanabilirsiniz.
 
-IoT Tak ve Kullan cihazını bir IoT Hub 'ına bağladığınızda, modeli oluşturan arabirimlerde tanımlanan telemetri, özellik ve komutları görüntülemek için [Azure IoT gezgin](./howto-use-iot-explorer.md) aracını kullanabilirsiniz.
+IoT Central Web Kullanıcı arabirimi, cihaz koşullarını izlemenizi, kurallar oluşturmanızı ve milyonlarca cihazı ve bunların yaşam döngüsü boyunca verilerini yönetmenizi sağlar. IoT Tak ve Kullan cihazları, cihazlarınızı izlemek ve denetlemek için özelleştirilebilen panoları kullanabileceğiniz bir IoT Central uygulamasına doğrudan bağlanır. Ayrıca, DTDL modellerini oluşturmak ve düzenlemek için IoT Central Web Kullanıcı arabirimindeki cihaz şablonlarını da kullanabilirsiniz.
 
-Bir Windows veya Linux Gateway 'e eklenmiş var olan sensörlarınız varsa, bu sensörlerden bağlantı kurmak ve cihaz yazılımı/bellenimi ( [Desteklenen protokoller](./concepts-iot-pnp-bridge.md#supported-protocols-and-sensors) için) yazmak zorunda kalmadan IoT Tak ve kullan cihazları oluşturmak için [IoT Tak ve Kullan köprüsü](./concepts-iot-pnp-bridge.md)' ne yararlanabilirsiniz.
+IoT Hub-yönetilen bir bulut hizmeti-IoT uygulamanız ve cihazlarınız arasında güvenli, çift yönlü iletişim için bir ileti hub 'ı işlevi görür. IoT Tak ve Kullan cihazını bir IoT Hub 'ına bağladığınızda, DTDL modelinde tanımlanan telemetri, özellik ve komutları görüntülemek için [Azure IoT gezgin](./howto-use-iot-explorer.md) aracını kullanabilirsiniz.
+
+Bir Windows veya Linux Gateway 'e eklenmiş var olan sensörlarınız varsa, bu sensörlerden bağlantı kurmak ve cihaz yazılımı/bellenimi ( [Desteklenen protokoller](./concepts-iot-pnp-bridge.md#supported-protocols-and-sensors)için) yazmak zorunda kalmadan IoT Tak ve kullan cihazları oluşturmak için [IoT Tak ve Kullan köprüsü](./concepts-iot-pnp-bridge.md)' ne yararlanabilirsiniz.
 
 ## <a name="develop-an-iot-device-application"></a>IoT cihaz uygulaması geliştirme
 

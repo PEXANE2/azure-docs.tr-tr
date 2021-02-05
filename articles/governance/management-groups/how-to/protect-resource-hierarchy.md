@@ -1,14 +1,14 @@
 ---
 title: Kaynak hiyerarşinizi koruma-Azure Idare
 description: Kaynak hiyerarşinizi, varsayılan yönetim grubunu ayarlamayı içeren hiyerarşi ayarlarıyla nasıl koruyacağınızı öğrenin.
-ms.date: 09/02/2020
+ms.date: 02/05/2021
 ms.topic: conceptual
-ms.openlocfilehash: cfaf7a732b3233536006009613cecd5aa1649dee
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 0f0afb5401fc646d26598a211604790af191f156
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91951902"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594595"
 ---
 # <a name="how-to-protect-your-resource-hierarchy"></a>Kaynak hiyerarşinizi koruma
 
@@ -39,7 +39,7 @@ Bu ayarı Azure portal yapılandırmak için aşağıdaki adımları izleyin:
 
 1. Kök yönetim grubunda, yönetim grubunun adının yanındaki **Ayrıntılar** ' ı seçin.
 
-1. **Ayarlar**altında **Hiyerarşi ayarları**' nı seçin.
+1. **Ayarlar** altında **Hiyerarşi ayarları**' nı seçin.
 
 1. **Varsayılan yönetim grubunu değiştir** düğmesini seçin.
 
@@ -82,7 +82,7 @@ Bu ayarı Azure portal yapılandırmak için aşağıdaki adımları izleyin:
 
 1. Kök yönetim grubunda, yönetim grubunun adının yanındaki **Ayrıntılar** ' ı seçin.
 
-1. **Ayarlar**altında **Hiyerarşi ayarları**' nı seçin.
+1. **Ayarlar** altında **Hiyerarşi ayarları**' nı seçin.
 
 1. **Yeni yönetim grupları oluşturmak için Izinleri iste ' ye** geçiş yapın. seçeneğini açık.
 
@@ -91,7 +91,7 @@ Bu ayarı Azure portal yapılandırmak için aşağıdaki adımları izleyin:
 
 ### <a name="set-require-authorization-with-rest-api"></a>REST API yetkilendirme gerektir ayarla
 
-Bu ayarı REST API yapılandırmak için [Hiyerarşi ayarları](/rest/api/resources/hierarchysettings) uç noktası çağrılır. Bunu yapmak için aşağıdaki REST API URI ve gövde biçimini kullanın. Bu değer bir _Boole_değeridir, bu nedenle değer için **true** veya **false** değerini sağlayın. **Doğru** değeri, bu yönetim grubu hiyerarşinizi koruma yöntemini sunar:
+Bu ayarı REST API yapılandırmak için [Hiyerarşi ayarları](/rest/api/resources/hierarchysettings) uç noktası çağrılır. Bunu yapmak için aşağıdaki REST API URI ve gövde biçimini kullanın. Bu değer bir _Boole_ değeridir, bu nedenle değer için **true** veya **false** değerini sağlayın. **Doğru** değeri, bu yönetim grubu hiyerarşinizi koruma yöntemini sunar:
 
 - REST API URI'si
 
@@ -109,7 +109,7 @@ Bu ayarı REST API yapılandırmak için [Hiyerarşi ayarları](/rest/api/resour
   }
   ```
 
-Ayarı yeniden kapatmak için aynı uç noktayı kullanın ve **Requireauthorizationforgroupoluşturmayı** **false**değerine ayarlayın.
+Ayarı yeniden kapatmak için aynı uç noktayı kullanın ve **Requireauthorizationforgroupoluşturmayı** **false** değerine ayarlayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
