@@ -4,16 +4,19 @@ description: Azure Kubernetes Service 'te (AKS) AAD Pod tarafından yönetilen Y
 services: container-service
 ms.topic: article
 ms.date: 12/01/2020
-ms.openlocfilehash: d992c5c5384c04fe39511481550ab7b0ea47069e
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 22b7a03a8598aa6e4b7c392567905d467776360c
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98217881"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99557367"
 ---
 # <a name="use-azure-active-directory-pod-managed-identities-in-azure-kubernetes-service-preview"></a>Azure Kubernetes hizmetinde Azure Active Directory Pod tarafından yönetilen kimlikler kullanma (Önizleme)
 
 Pod tarafından yönetilen kimlik Azure Active Directory, Kubernetes temel öğelerini kullanarak Azure Active Directory (AAD) [Azure kaynakları ve kimlikleri için yönetilen kimlikleri][az-managed-identities] pods ile ilişkilendirin. Yöneticiler, bir kimlik sağlayıcısı olarak AAD 'yi kullanan Azure kaynaklarına erişmesine izin veren Kubernetes temel olarak kimlikler ve bağlamalar oluşturur.
+
+> [!NOTE]
+> Zaten bir AADPODIDENTITY yüklemesine sahipseniz, mevcut yüklemeyi kaldırmanız gerekir. Bu özelliği etkinleştirmek, MıC bileşeninin gerekli olmadığı anlamına gelir.
 
 [!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 

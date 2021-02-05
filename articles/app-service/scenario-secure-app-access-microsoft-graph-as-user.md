@@ -7,16 +7,16 @@ manager: CelesteDG
 ms.service: app-service-web
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 11/30/2020
+ms.date: 01/28/2021
 ms.author: ryanwi
 ms.reviewer: stsoneff
 ms.custom: azureday1
-ms.openlocfilehash: e07ec17a4e14f0099d82bd444f2ee8d37abe9908
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 3413c1a3f27b48c60ae730ad230c653928702faa
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96435017"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063391"
 ---
 # <a name="tutorial-access-microsoft-graph-from-a-secured-app-as-the-user"></a>Öğretici: Kullanıcı olarak güvenli bir uygulamadan Microsoft Graph erişim
 
@@ -85,7 +85,7 @@ Bu kodu örnek bir uygulamanın parçası olarak görmek için [GitHub 'daki ör
 
 ### <a name="install-client-library-packages"></a>İstemci kitaplığı paketlerini yükler
 
-.NET Core komut satırı arabirimini veya Visual Studio 'da Paket Yöneticisi konsolunu kullanarak [Microsoft. Identity. Web](https://www.nuget.org/packages/Microsoft.Identity.Web/) ve [Microsoft. Graph](https://www.nuget.org/packages/Microsoft.Graph) NuGet paketlerini projenize yükler.
+.NET Core komut satırı arabirimini veya Visual Studio 'da Paket Yöneticisi konsolunu kullanarak [Microsoft. Identity. Web](https://www.nuget.org/packages/Microsoft.Identity.Web/) ve [Microsoft. Identity. Web. microsoftgraph](https://www.nuget.org/packages/Microsoft.Identity.Web.MicrosoftGraph) NuGet paketlerini projenize yükler.
 
 # <a name="command-line"></a>[Komut satırı](#tab/command-line)
 
@@ -94,7 +94,7 @@ Bir komut satırı açın ve proje dosyanızı içeren dizine geçiş yapın.
 Install komutlarını çalıştırın.
 
 ```dotnetcli
-dotnet add package Microsoft.Graph
+dotnet add package Microsoft.Identity.Web.MicrosoftGraph
 
 dotnet add package Microsoft.Identity.Web
 ```
@@ -105,7 +105,7 @@ Visual Studio 'da projeyi/çözümü açın ve **Araçlar**  >  **NuGet Paket Y�
 
 Install komutlarını çalıştırın.
 ```powershell
-Install-Package Microsoft.Graph
+Install-Package Microsoft.Identity.Web.MicrosoftGraph
 
 Install-Package Microsoft.Identity.Web
 ```
