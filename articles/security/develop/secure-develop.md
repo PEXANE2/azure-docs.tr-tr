@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 421fb7b0c91171756f55ad25c918955870054e3e
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 8e69803f4740a58adb4230bd82cc723221762cb4
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97511289"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576625"
 ---
 # <a name="develop-secure-applications-on-azure"></a>Azure üzerinde güvenli uygulamalar geliştirme
 Bu makalede, bulut için uygulama geliştirirken göz önünde bulundurmanız gereken güvenlik etkinlikleri ve denetimler sunuyoruz. Microsoft [güvenlik geliştirme yaşam döngüsü 'nin (SDL)](/previous-versions/windows/desktop/cc307891(v=msdn.10)) uygulama ve doğrulama aşamaları sırasında göz önünde bulundurmanız gereken güvenlik soruları ve kavramlar ele alınmıştır. Amaç, daha güvenli bir uygulama geliştirmek için kullanabileceğiniz etkinlikleri ve Azure hizmetlerini tanımlamanıza yardımcı olmaktır.
@@ -140,7 +140,7 @@ Bir güvenlik uzmanı (bir [sızma Sınayıcısı](../fundamentals/pen-testing.m
 
 Kod tamamlama sonrasında saldırı yüzeyini gözden geçirmek, bir uygulama veya sistem üzerinde yapılan tüm tasarım veya uygulama değişikliklerinin dikkate alınmasının sağlanmasına yardımcı olur. Tehdit modelleri de dahil olmak üzere değişikliklerin sonucu olarak oluşturulan tüm yeni saldırı vektörlerini gözden geçirdiğinden ve azaltıldığından emin olmanıza yardımcı olur.
 
-Uygulamayı tarayarak saldırı yüzeyinin bir resmini oluşturabilirsiniz. Microsoft, [saldırı yüzeyi Çözümleyicisi](https://www.microsoft.com/download/details.aspx?id=24487)adlı bir saldırı yüzeyi çözümleme aracı sunar. [OWASP tabanlı saldırı proxy projesi](https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project), [arachnı](http://arachni-scanner.com/), [skipbalık](https://code.google.com/p/skipfish/)ve [w3af](http://w3af.sourceforge.net/)dahil birçok ticari dinamik test ve güvenlik açığı tarama araçları veya hizmetleri arasından seçim yapabilirsiniz. Bu tarama araçları, uygulamanızı gezin ve Web üzerinden erişilebilen uygulamanın bölümlerini eşler. Ayrıca, Azure Marketi 'Nde benzer [Geliştirici Araçları](https://azuremarketplace.microsoft.com/marketplace/apps/category/developer-tools?page=1)için arama yapabilirsiniz.
+Uygulamayı tarayarak saldırı yüzeyinin bir resmini oluşturabilirsiniz. Microsoft, [saldırı yüzeyi Çözümleyicisi](https://www.microsoft.com/download/details.aspx?id=58105)adlı bir saldırı yüzeyi çözümleme aracı sunar. [OWASP tabanlı saldırı proxy projesi](https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project), [arachnı](http://arachni-scanner.com/), [skipbalık](https://code.google.com/p/skipfish/)ve [w3af](http://w3af.sourceforge.net/)dahil birçok ticari dinamik test ve güvenlik açığı tarama araçları veya hizmetleri arasından seçim yapabilirsiniz. Bu tarama araçları, uygulamanızı gezin ve Web üzerinden erişilebilen uygulamanın bölümlerini eşler. Ayrıca, Azure Marketi 'Nde benzer [Geliştirici Araçları](https://azuremarketplace.microsoft.com/marketplace/apps/category/developer-tools?page=1)için arama yapabilirsiniz.
 
 ### <a name="perform-security-penetration-testing"></a>Güvenlik, sızma testi gerçekleştirme
 

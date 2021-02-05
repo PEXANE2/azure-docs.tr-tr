@@ -7,18 +7,18 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 11/11/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: b6e523fc4a3dcd0eb8c8ed7a44b3d7d9fcdd7d34
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 37c8b4bc186c217ecb27638f5f50297102345de7
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98887281"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576540"
 ---
 # <a name="access-your-application-in-a-private-network"></a>Uygulamanıza özel bir ağda erişin
 
 Bu belgede özel bir ağda uygulamanız için bir uç noktaya nasıl erişebileceğiniz açıklanır.  Erişim sağlamak için aboneliğinizde bir **Azure özel DNS bölgesi** oluşturmanız gerekir ve özel tam etki alanı adını (FQDN) IP adresine çevirin/çözümleyin.
 
-Azure yay bulut hizmeti örneğindeki uygulamalar için **uç nokta ata** sanal ağınıza dağıtıldığında, uç nokta özel bir FQDN 'dir. Etki alanına yalnızca özel ağdan erişilebilir. Uygulamalar ve hizmetler uygulama uç noktasını kullanır. Bunlar [, hazırlama dağıtımını doğrula](spring-cloud-howto-staging-environment.md#verify-the-staging-deployment)bölümünde açıklanan **Test uç noktasını** içerirler. [Azure yay bulutu uygulama günlüklerinin gerçek](spring-cloud-howto-log-streaming.md)zamanlı olarak akışını da tarif eden **günlük akışı**, yalnızca özel ağ içinde de kullanılabilir.
+Azure yay bulut hizmeti örneğindeki uygulamalar için **uç nokta ata** sanal ağınıza dağıtıldığında, uç nokta özel bir FQDN 'dir. Etki alanına yalnızca özel ağdan erişilebilir. Uygulamalar ve hizmetler uygulama uç noktasını kullanır. Bunlar, [Uygulamaları ve dağıtımları görüntüleme](spring-cloud-howto-staging-environment.md#view-apps-and-deployments)bölümünde açıklanan **Test uç noktasını** içerirler. [Azure yay bulutu uygulama günlüklerinin gerçek](spring-cloud-howto-log-streaming.md)zamanlı olarak akışını da tarif eden **günlük akışı**, yalnızca özel ağ içinde de kullanılabilir.
 
 ## <a name="create-a-private-dns-zone"></a>Özel bir DNS bölgesi oluşturma
 

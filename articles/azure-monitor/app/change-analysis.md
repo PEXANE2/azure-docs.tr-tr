@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: cawams
 ms.author: cawa
 ms.date: 05/04/2020
-ms.openlocfilehash: 728fd8f4705d24f719b6dd47ba88d89fb399fd5a
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 133a7d9b3fa04797648fa253825505d29e37ca98
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98195883"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576422"
 ---
 # <a name="use-application-change-analysis-preview-in-azure-monitor"></a>Azure Izleyici 'de uygulama değişikliği analizini (Önizleme) kullanma
 
@@ -28,6 +28,17 @@ Değişiklik analizi, altyapı katmanından uygulama dağıtımına kadar olan �
 Aşağıdaki diyagramda değişiklik analizinin mimarisi gösterilmektedir:
 
 ![Değişiklik analizinin değişiklik verilerini nasıl aldığı ve istemci araçlarına sağladığı mimari diyagramı](./media/change-analysis/overview.png)
+
+## <a name="supported-resource-types"></a>Desteklenen kaynak türleri
+
+Uygulama değişiklik Analizi hizmeti, aşağıdakiler gibi ortak kaynaklar dahil olmak üzere tüm Azure Kaynak türlerinde kaynak özelliği düzeyi değişikliklerini destekler:
+- Sanal Makine
+- Sanal makine ölçek kümesi
+- App Service
+- Azure Kubernetes hizmeti
+- Azure İşlevi
+- Ağ kaynakları: ör. ağ güvenlik grubu, sanal ağ, Application Gateway, vb.
+- Veri Hizmetleri: örn. depolama, SQL, Redis Cache, Cosmos DB, vb.
 
 ## <a name="data-sources"></a>Veri kaynakları
 
@@ -49,17 +60,27 @@ Değişiklik analizi, bir uygulamanın dağıtım ve yapılandırma durumunu her
 
 ### <a name="dependency-changes"></a>Bağımlılık değişiklikleri
 
-Kaynak bağımlılıklarındaki değişiklikler de bir Web uygulamasında sorunlara neden olabilir. Örneğin, bir Web uygulaması Redsıs önbelleğine çağırırsa, Redsıs Cache SKU 'SU Web uygulaması performansını etkileyebilir. Bağımlılıklarda yapılan değişiklikleri algılamak için, değişiklik Analizi Web uygulamasının DNS kaydını denetler. Bu şekilde, tüm uygulama bileşenlerinde sorunlara neden olabilecek değişiklikler tanımlanmaktadır.
-Şu anda aşağıdaki bağımlılıklar desteklenir:
+Kaynak bağımlılıklarındaki değişiklikler, bir kaynaktaki sorunlara da neden olabilir. Örneğin, bir Web uygulaması Redsıs önbelleğine çağırırsa, Redsıs Cache SKU 'SU Web uygulaması performansını etkileyebilir. Diğer bir örnek, bir sanal makinenin ağ güvenlik grubunda bağlantı noktası 22 ' nin kapatılmadığı durumlarda bağlantı hatalarına neden olur. 
+
+#### <a name="web-app-diagnose-and-solve-problems-navigator-preview"></a>Web uygulaması sorun Gezginini tanılama ve çözme (Önizleme)
+Bağımlılıklarda yapılan değişiklikleri algılamak için, değişiklik Analizi Web uygulamasının DNS kaydını denetler. Bu şekilde, tüm uygulama bileşenlerinde sorunlara neden olabilecek değişiklikler tanımlanmaktadır.
+Şu anda **Web uygulaması tanılama ve çözme sorunlarını aşağıdaki bağımlılıklar destekler | Gezgin (Önizleme)**:
 - Web Apps
 - Azure Storage
 - Azure SQL
 
-## <a name="application-change-analysis-service"></a>Uygulama değişikliği analiz hizmeti
+#### <a name="related-resources"></a>İlgili kaynaklar
+Uygulama değişiklik Analizi ilgili kaynakları algılar. Ortak örnekler, ağ güvenlik grubu, sanal ağ, Application Gateway ve bir sanal makineyle ilgili Load Balancer. Ağ kaynakları genellikle onu kullanan kaynaklarla aynı kaynak grubunda otomatik olarak sağlanır, bu nedenle değişiklikleri kaynak grubuna göre filtrelemek, sanal makine ve ilgili ağ kaynakları için tüm değişiklikleri gösterir.
+
+![Ağ değişikliklerinin ekran görüntüsü](./media/change-analysis/network-changes.png)
+
+## <a name="application-change-analysis-service-enablement"></a>Uygulama değişiklik Analizi hizmeti etkinleştirme
 
 Uygulama değişikliği çözümleme hizmeti, yukarıda belirtilen veri kaynaklarından verileri hesaplar ve toplar. Kullanıcıların tüm kaynak değişikliklerinde kolayca gezinecek ve sorun giderme veya izleme bağlamında hangi değişikliğin ilgili olduğunu belirleyebilecekleri bir analiz kümesi sağlar.
-"Microsoft. ChangeAnalysis" kaynak sağlayıcısının, Azure Resource Manager izlenen özellikler için bir aboneliğe kayıtlı olması ve proxy ayarları değişiklik verilerinin kullanılabilir olması gerekir. Web uygulaması tanılama ve çözme sorunları aracını girerken veya değişiklik Analizi tek başına sekmesini getirdiğinizde, bu kaynak sağlayıcı otomatik olarak kaydedilir. Aboneliğiniz için herhangi bir performans veya maliyet uygulaması yoktur. Web uygulamaları için değişiklik analizini etkinleştirdiğinizde (veya sorunları Tanıla ve çöz aracını etkinleştirirseniz), Web uygulaması üzerinde daha fazla performans etkisi olur ve fatura maliyeti yoktur.
-Web uygulaması Konuk içi değişiklikler için, bir Web uygulaması içindeki kod dosyalarını taramak üzere ayrı etkinleştirme gerekir. Daha fazla bilgi için bu makalenin ilerleyen kısımlarında bulunan [sorunları Tanıla ve çöz araç bölümündeki değişiklik Analizi](#application-change-analysis-in-the-diagnose-and-solve-problems-tool) bölümüne bakın.
+"Microsoft. ChangeAnalysis" kaynak sağlayıcısının, Azure Resource Manager izlenen özellikler için bir aboneliğe kayıtlı olması ve proxy ayarları değişiklik verilerinin kullanılabilir olması gerekir. Web uygulaması tanılama ve çözme sorunları aracını girerken veya değişiklik Analizi tek başına sekmesini getirdiğinizde, bu kaynak sağlayıcı otomatik olarak kaydedilir. Web uygulaması Konuk içi değişiklikler için, bir Web uygulaması içindeki kod dosyalarını taramak üzere ayrı etkinleştirme gerekir. Daha fazla bilgi için bu makalenin ilerleyen kısımlarında bulunan [sorunları Tanıla ve çöz araç bölümündeki değişiklik Analizi](#application-change-analysis-in-the-diagnose-and-solve-problems-tool) bölümüne bakın.
+
+## <a name="cost"></a>Maliyet
+Uygulama değişikliği Analizi ücretsiz bir hizmettir; BT etkin olan Aboneliklerle ilgili faturalandırma maliyeti yoktur. Ayrıca hizmetin Azure Kaynak özellikleri değişikliklerini taramak için herhangi bir performans etkisi yoktur. Web uygulamaları için değişiklik analizini Konuk dosya değişikliklerine etkinleştirdiğinizde (veya sorunları Tanıla ve çöz aracını etkinleştirirseniz), Web uygulaması üzerinde daha fazla performans etkisi olur ve fatura maliyeti yoktur.
 
 ## <a name="visualizations-for-application-change-analysis"></a>Uygulama değişikliği analizinin görselleştirmeleri
 
@@ -82,6 +103,11 @@ Tüm değişikliklerini görüntülemek için bir kaynağa tıklanın. Gerekirse
 Herhangi bir geri bildirim için dikey penceredeki veya e-postadaki geri bildirim gönder düğmesini kullanın changeanalysisteam@microsoft.com .
 
 ![Değişiklik Analizi dikey penceresinde geri bildirim düğmesinin ekran görüntüsü](./media/change-analysis/change-analysis-feedback.png)
+
+#### <a name="multiple-subscription-support"></a>Çoklu abonelik desteği
+UI, kaynak değişikliklerini görüntülemek için birden çok abonelik seçmeyi destekler. Abonelik filtresini kullanın:
+
+![Birden çok abonelik seçmeyi destekleyen abonelik filtresi ekran görüntüsü](./media/change-analysis/multiple-subscriptions-support.png)
 
 ### <a name="web-app-diagnose-and-solve-problems"></a>Web uygulaması sorunları tanılama ve çözme
 

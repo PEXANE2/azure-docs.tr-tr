@@ -4,12 +4,12 @@ description: Azure Batch havuzlarda işlem düğümleri için kullanılabilir VM
 ms.topic: conceptual
 ms.date: 11/24/2020
 ms.custom: seodec18
-ms.openlocfilehash: 59218361c5fff51b33131fdd2455c599dd12b06a
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: de1f61bb2bdc83377887fda726a65c1900f36d55
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98897502"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576710"
 ---
 # <a name="choose-a-vm-size-and-image-for-compute-nodes-in-an-azure-batch-pool"></a>Bir Azure Batch havuzundaki işlem düğümleri için VM boyutu ve görüntüsü seçme
 
@@ -29,7 +29,7 @@ Sanal makine yapılandırmasındaki toplu iş havuzları neredeyse tüm [VM boyu
 | VM serisi  | Desteklenen boyutlar |
 |------------|---------|
 | Temel A | Basic_A0 *dışındaki* tüm boyutlar (a0) |
-| A | Standard_A0 *dışındaki* tüm boyutlar |
+| A | Standard_A0, Standard_A8, Standard_A9, Standard_A10 ve Standard_A11 *hariç* tüm boyutlar |
 | AV2 | Tüm Boyutlar |
 | B | Desteklenmez |
 | DC | Desteklenmez |

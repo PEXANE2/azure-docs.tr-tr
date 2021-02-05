@@ -8,19 +8,21 @@ ms.subservice: cosmosdb-graph
 ms.topic: how-to
 ms.date: 06/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: 076355e39f813292e00aa54780a3aadc49c50d31
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 91516c9815cfd71ffb59c399ea6580c6e28d8fce
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93082003"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576473"
 ---
 # <a name="using-a-partitioned-graph-in-azure-cosmos-db"></a>Azure Cosmos DB'de bölümlenmiş graf kullanma
 [!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
 
 Azure Cosmos DB Gremlin API 'sinin temel özelliklerinden biri, büyük ölçekli grafikleri yatay ölçeklendirmeyle işleyebilme olanağıdır. Kapsayıcılar depolama ve aktarım hızı bakımından bağımsız olarak ölçeklendirebilir. Azure Cosmos DB, bir grafik verilerini depolamak için otomatik olarak ölçeklenebilen kapsayıcılar oluşturabilirsiniz. Veriler, belirtilen **bölüm anahtarına** göre otomatik olarak dengelenir.
 
-Kapsayıcının boyutunun 20 GB 'den fazlasını depolaması bekleniyorsa veya saniyede 10.000 ' den fazla istek birimi (ru) ayırmak istiyorsanız **bölümlendirme gerekir** . [Azure Cosmos DB bölümleme mekanizmasından](partitioning-overview.md) aynı genel ilkeler aşağıda açıklanan bazı grafiğe özgü iyileştirmeler ile uygulanır.
+Kapsayıcının boyutunun 20 GB 'den fazlasını depolaması bekleniyorsa veya saniyede 10.000 ' den fazla istek birimi (ru) ayırmak istiyorsanız bölümlendirme, dahili olarak yapılır. Veriler, belirttiğiniz bölüm anahtarına göre otomatik olarak bölümlenir. Azure portal veya Gremlin sürücülerinden oluşan 3. x veya daha yüksek sürümlerden Grafik kapsayıcıları oluşturursanız bölüm anahtarı gereklidir. 2. x veya Gremlin sürücülerin daha düşük sürümlerini kullanıyorsanız bölüm anahtarı gerekli değildir. 
+
+[Azure Cosmos DB bölümleme mekanizmasından](partitioning-overview.md) aynı genel ilkeler aşağıda açıklanan bazı grafiğe özgü iyileştirmeler ile uygulanır.
 
 :::image type="content" source="./media/graph-partitioning/graph-partitioning.png" alt-text="Grafik bölümleme." border="false":::
 
@@ -28,20 +30,20 @@ Kapsayıcının boyutunun 20 GB 'den fazlasını depolaması bekleniyorsa veya s
 
 Aşağıdaki kılavuzlar Azure Cosmos DB ' de bölümleme stratejisinin nasıl çalıştığını açıklamaktadır:
 
-- **Her iki köşe ve kenar da JSON belgeleri olarak depolanır** .
+- **Her iki köşe ve kenar da JSON belgeleri olarak depolanır**.
 
-- Köşeler **bir bölüm anahtarı gerektirir** . Bu anahtar, bir karma algoritma aracılığıyla köşenin depolanacağı bölümü saptacaktır. Bölüm anahtarı özellik adı, yeni bir kapsayıcı oluşturulurken tanımlanır ve şu biçimdedir: `/partitioning-key-name` .
+- Köşeler **bir bölüm anahtarı gerektirir**. Bu anahtar, bir karma algoritma aracılığıyla köşenin depolanacağı bölümü saptacaktır. Bölüm anahtarı özellik adı, yeni bir kapsayıcı oluşturulurken tanımlanır ve şu biçimdedir: `/partitioning-key-name` .
 
-- **Kenarlar, kaynak köşelerine sahip olacak** . Diğer bir deyişle, her bir köşe için bölüm anahtarı, giden kenarları ile birlikte nerede depolandığını tanımlar. Bu iyileştirme, `out()` grafik sorgularında kardinalite kullanılırken çapraz bölüm sorgularını önlemek için yapılır.
+- **Kenarlar, kaynak köşelerine sahip olacak**. Diğer bir deyişle, her bir köşe için bölüm anahtarı, giden kenarları ile birlikte nerede depolandığını tanımlar. Bu iyileştirme, `out()` grafik sorgularında kardinalite kullanılırken çapraz bölüm sorgularını önlemek için yapılır.
 
-- **Kenarlar işaret ettikleri köşelerin başvurularını içerir** . Tüm kenarlar, işaret ettikleri köşelerin bölüm anahtarları ve kimlikleriyle birlikte depolanır. Bu hesaplama, tüm `out()` Yön sorgularının her zaman kapsamlı bölümlenmiş bir sorgu olmasını sağlar ve bu durum, geçici bir çapraz bölümlü sorgu değildir.
+- **Kenarlar işaret ettikleri köşelerin başvurularını içerir**. Tüm kenarlar, işaret ettikleri köşelerin bölüm anahtarları ve kimlikleriyle birlikte depolanır. Bu hesaplama, tüm `out()` Yön sorgularının her zaman kapsamlı bölümlenmiş bir sorgu olmasını sağlar ve bu durum, geçici bir çapraz bölümlü sorgu değildir.
 
-- **Grafik sorgularının bir bölüm anahtarı belirtmesi gerekir** . Azure Cosmos DB yatay bölümlemeden tam olarak yararlanmak için, tek bir köşe seçildiğinde, mümkün olduğunda bölüm anahtarı belirtilmelidir. Bölümlenmiş bir grafikte bir veya birden çok köşe seçmek için sorgular aşağıda verilmiştir:
+- **Grafik sorgularının bir bölüm anahtarı belirtmesi gerekir**. Azure Cosmos DB yatay bölümlemeden tam olarak yararlanmak için, tek bir köşe seçildiğinde, mümkün olduğunda bölüm anahtarı belirtilmelidir. Bölümlenmiş bir grafikte bir veya birden çok köşe seçmek için sorgular aşağıda verilmiştir:
 
     - `/id` ve `/label` Gremlin API 'deki bir kapsayıcı için bölüm anahtarı olarak desteklenmez.
 
 
-    - KIMLIĞE göre bir köşe seçerek ve ardından **`.has()` bölüm anahtarı özelliğini belirtmek için adımını kullanarak** :
+    - KIMLIĞE göre bir köşe seçerek ve ardından **`.has()` bölüm anahtarı özelliğini belirtmek için adımını kullanarak**:
 
         ```java
         g.V('vertex_id').has('partitionKey', 'partitionKey_value')
@@ -59,7 +61,7 @@ Aşağıdaki kılavuzlar Azure Cosmos DB ' de bölümleme stratejisinin nasıl �
         g.V(['partitionKey_value0', 'verted_id0'], ['partitionKey_value1', 'vertex_id1'], ...)
         ```
 
-    - Kimlikleri olan bir köşe kümesi seçme ve **bölüm anahtarı değerlerinin bir listesini belirtme** :
+    - Kimlikleri olan bir köşe kümesi seçme ve **bölüm anahtarı değerlerinin bir listesini belirtme**:
 
         ```java
         g.V('vertex_id0', 'vertex_id1', 'vertex_id2', …).has('partitionKey', within('partitionKey_value0', 'partitionKey_value01', 'partitionKey_value02', …)
@@ -75,13 +77,13 @@ Aşağıdaki kılavuzlar Azure Cosmos DB ' de bölümleme stratejisinin nasıl �
 
 Sınırsız kapsayıcı içeren bölümlenmiş grafikleri kullanırken performans ve ölçeklenebilirlik sağlamak için aşağıdaki yönergeleri kullanın:
 
-- **Bir köşeyi sorgularken bölüm anahtarı değerini her zaman belirtin** . Bilinen bir bölümden köşe alma, performansı elde etmenin bir yoludur. Kenarlar, hedef köşelerine başvuru KIMLIĞI ve bölüm anahtarı içerdiğinden sonraki tüm bitişik Bitişiklik işlemleri her zaman bir bölüm kapsamına alınır.
+- **Bir köşeyi sorgularken bölüm anahtarı değerini her zaman belirtin**. Bilinen bir bölümden köşe alma, performansı elde etmenin bir yoludur. Kenarlar, hedef köşelerine başvuru KIMLIĞI ve bölüm anahtarı içerdiğinden sonraki tüm bitişik Bitişiklik işlemleri her zaman bir bölüm kapsamına alınır.
 
-- **Mümkün olduğunda kenarları sorgularken giden yönü kullanın** . Yukarıda belirtildiği gibi, kenarlar giden yönde kaynak köşelerine göre saklanır. Bu nedenle, veriler ve sorgular bu Düzenle göz önünde bulundurularak tasarlandıysa, çapraz bölümleme sorgularına daha küçük bir şekilde geçiş şansı en aza indirilir. Aksine `in()` sorgu her zaman pahalı bir fan sorgu olacaktır.
+- **Mümkün olduğunda kenarları sorgularken giden yönü kullanın**. Yukarıda belirtildiği gibi, kenarlar giden yönde kaynak köşelerine göre saklanır. Bu nedenle, veriler ve sorgular bu Düzenle göz önünde bulundurularak tasarlandıysa, çapraz bölümleme sorgularına daha küçük bir şekilde geçiş şansı en aza indirilir. Aksine `in()` sorgu her zaman pahalı bir fan sorgu olacaktır.
 
-- **Verileri bölümler arasında eşit olarak dağıtan bir bölüm anahtarı seçin** . Bu karar, çözümün veri modeline bağlıdır. [Azure Cosmos DB bölümleyip ölçeklendirerek](partitioning-overview.md)uygun bölüm anahtarı oluşturma hakkında daha fazla bilgi edinin.
+- **Verileri bölümler arasında eşit olarak dağıtan bir bölüm anahtarı seçin**. Bu karar, çözümün veri modeline bağlıdır. [Azure Cosmos DB bölümleyip ölçeklendirerek](partitioning-overview.md)uygun bölüm anahtarı oluşturma hakkında daha fazla bilgi edinin.
 
-- **Bir bölümün sınırları içinde veri almak için sorguları iyileştirin** . En iyi bölümleme stratejisi, sorgulama desenlerine hizalanır. Tek bir bölümden veri alan sorgular mümkün olan en iyi performansı sağlar.
+- **Bir bölümün sınırları içinde veri almak için sorguları iyileştirin**. En iyi bölümleme stratejisi, sorgulama desenlerine hizalanır. Tek bir bölümden veri alan sorgular mümkün olan en iyi performansı sağlar.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

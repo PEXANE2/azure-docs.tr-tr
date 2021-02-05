@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: v-masebo
 ms.date: 05/29/2020
-ms.custom: sqldbrb=2 
-ms.openlocfilehash: e8b9f12c57b2e4bf943e5fc9a9ebc2bbadef9ee9
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.custom: sqldbrb=2
+ms.openlocfilehash: e0ad8e9e71a0ee2c23412d535fe79955edb39ba8
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "86504981"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576659"
 ---
 # <a name="quickstart-use-php-to-query-a-database-in-azure-sql-database"></a>Hızlı başlangıç: Azure SQL veritabanı 'nda bir veritabanını sorgulamak için PHP kullanma
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -54,7 +54,7 @@ Bu hızlı başlangıcı tamamlamak için aşağıdakilere ihtiyacınız vardır
 
   - **Linux**, php 'YI, ODBC sürücüsünü yükleyip SQL Server Için php sürücüsünü yükler. Bkz. [Adım 1, 2 ve 3](/sql/connect/php/installation-tutorial-linux-mac).
 
-  - **Windows**, IIS Express ve CHOCOLATEY için php 'yi yükleyip, ardından ODBC sürücüsünü ve sqlcmd 'yi yükler. Bkz: [1.2 ve 1.3 adımları](https://www.microsoft.com/sql-server/developer-get-started/php/windows/).
+  - **Windows**, PHP ve php sürücülerini YÜKLEDIKTEN sonra ODBC sürücüsünü ve sqlcmd 'yi yükler. Bkz: [1.2 ve 1.3 adımları](https://www.microsoft.com/sql-server/developer-get-started/php/windows/).
 
 ## <a name="get-server-connection-information"></a>Sunucu bağlantı bilgilerini al
 

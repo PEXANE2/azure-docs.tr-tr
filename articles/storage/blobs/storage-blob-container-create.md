@@ -5,16 +5,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/22/2020
+ms.date: 02/04/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3035e0036e5d35729637e35ad8cb1412a0da959f
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: dac50d8e35080a083e42891732512e012fae8fbd
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92091041"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576456"
 ---
 # <a name="create-or-delete-a-container-in-azure-storage-with-net"></a>.NET ile Azure depolama 'da kapsayıcı oluşturma veya silme
 
@@ -32,16 +32,16 @@ Bir kapsayıcının URI 'SI şu biçimdedir:
 
 `https://myaccount.blob.core.windows.net/mycontainer`
 
-## <a name="create-a-container"></a>Bir kapsayıcı oluşturma
+## <a name="create-a-container"></a>Kapsayıcı oluşturma
 
 Bir kapsayıcı oluşturmak için aşağıdaki yöntemlerden birini çağırın:
 
 # <a name="net-v12"></a>[\.NET V12](#tab/dotnet)
 
-- [Oluştur](/dotnet/api/azure.storage.blobs.blobcontainerclient.create)
-- [CreateAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.createasync)
-- [Createıfnotexists çağırmanız](/dotnet/api/azure.storage.blobs.blobcontainerclient.createifnotexists)
-- [CreateIfNotExistsAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.createifnotexistsasync)
+- [CreateBlobContainer](/dotnet/api/azure.storage.blobs.blobserviceclient.createblobcontainer)
+- [Createblobcontainsilinebilir eşitleme](/dotnet/api/azure.storage.blobs.blobserviceclient.createblobcontainerasync)
+
+Aynı ada sahip bir kapsayıcı zaten varsa, bu yöntemler bir özel durum oluşturur.
 
 # <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
 
@@ -49,11 +49,12 @@ Bir kapsayıcı oluşturmak için aşağıdaki yöntemlerden birini çağırın:
 - [CreateAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.createasync)
 - [Createıfnotexists çağırmanız](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.createifnotexists)
 - [CreateIfNotExistsAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.createifnotexistsasync)
----
 
 Aynı ada sahip bir kapsayıcı zaten varsa **Create** ve **createasync** yöntemleri bir özel durum oluşturur.
 
 **Createifnotexists** ve **Createifnotexistsasync** yöntemleri, kapsayıcının oluşturulup oluşturulmayacağını gösteren bir Boole değeri döndürür. Aynı ada sahip bir kapsayıcı zaten varsa, bu yöntemler yeni bir kapsayıcının oluşturulamadığını göstermek için **false** döndürür.
+
+---
 
 Kapsayıcılar depolama hesabının hemen altında oluşturulur. Bir kapsayıcıyı diğerinin altına yerleştirmek mümkün değildir.
 
@@ -99,7 +100,7 @@ private static async Task<CloudBlobContainer> CreateSampleContainerAsync(CloudBl
 
 ## <a name="create-the-root-container"></a>Kök kapsayıcısını oluşturma
 
-Kök kapsayıcı, depolama hesabınız için varsayılan kapsayıcı görevi görür. Her depolama hesabının bir kök kapsayıcısı olabilir ve bu *$root*adı verilmelidir. Kök kapsayıcısının açık olarak oluşturulması veya silinmesi gerekir.
+Kök kapsayıcı, depolama hesabınız için varsayılan kapsayıcı görevi görür. Her depolama hesabının bir kök kapsayıcısı olabilir ve bu *$root* adı verilmelidir. Kök kapsayıcısının açık olarak oluşturulması veya silinmesi gerekir.
 
 Kök kapsayıcı adını dahil etmeden kök kapsayıcısında depolanan bir blob 'a başvurabilirsiniz. Kök kapsayıcı, depolama hesabı hiyerarşisinin en üst düzeyindeki bir bloba başvurmanızı sağlar. Örneğin, kök kapsayıcıda aşağıdaki şekilde olan bir bloba başvurabilirsiniz:
 

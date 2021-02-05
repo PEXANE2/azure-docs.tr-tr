@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 09/14/2020
-ms.openlocfilehash: 771cf97a5c938fb987c66555c92c23f42b302a10
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 3b2d1bbe2de0ae72087fdf3debeaf42f8745fed9
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98134237"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576490"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB Cassandra API'si tarafından desteklenen Apache Cassandra özellikleri 
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -43,7 +43,7 @@ Cassandra sürücülerinin aşağıdaki sürümleri, Azure Cosmos DB Cassandra A
 
 Azure Cosmos DB Cassandra API'si aşağıdaki CQL veri türlerini destekler:
 
-|Komut  |Desteklenir |
+|Tür  |Desteklenir |
 |---------|---------|
 | ascii  | Yes |
 | bigint  | Yes |
@@ -82,13 +82,14 @@ Azure Cosmos DB Cassandra API'si aşağıdaki CQL işlevlerini destekler:
 |Komut  |Desteklenir |
 |---------|---------|
 | Simgesinde | Yes |
-| ttl | Yes |
-| WriteTime | Yes |
+| TTL * * * | Yes |
+| WriteTime * * * | Yes |
 | cast * * | Yes |
 
 > [!NOTE] 
 > \* Cassandra API, belirteci bir izdüşüm/seçici olarak destekler ve yalnızca bir where yan tümcesinin sol tarafında belirtece (PK) izin verir. Örneğin, `WHERE token(pk) > 1024` desteklenir, ancak `WHERE token(pk) > token(100)` desteklenmez.   
-> \*\*`cast()`İşlev Cassandra API içinde kalıcı değil. Örneğin, `SELECT cast(count as double) FROM myTable` desteklenir, ancak `SELECT avg(cast(count as double)) FROM myTable` desteklenmez. 
+> \*\*`cast()`İşlev Cassandra API içinde kalıcı değil. Örneğin, `SELECT cast(count as double) FROM myTable` desteklenir, ancak `SELECT avg(cast(count as double)) FROM myTable` desteklenmez.     
+> \*\*\* Seçeneğiyle belirtilen özel zaman damgaları ve TTL, `USING` bir satır düzeyinde uygulanır (hücre başına değil).
 
 
 
@@ -159,7 +160,6 @@ Azure Cosmos DB, Cassandra API'si hesaplarında aşağıdaki veritabanı komutla
 | ROL OLUŞTUR | No |
 | Kullanıcı oluştur (yerel Apache Cassandra 'da kullanım dışı) | No |
 | DELETE | Yes |
-| SIL (IF KOŞULUNDA hafif işlemler)| Yes |
 | DISTINCT | No |
 | BıRAKMA TOPLAMı | No |
 | DROP FUNCTION | No |
@@ -173,17 +173,25 @@ Azure Cosmos DB, Cassandra API'si hesaplarında aşağıdaki veritabanı komutla
 | KULLANıCıYı bırak (yerel Apache Cassandra 'da kullanım dışı) | No |
 | GRANT | No |
 | INSERT | Yes |
-| Ekle (If koşulu ile hafif işlemler)| Yes |
 | IZINLERI LISTELE | No |
 | ROLLERI LISTELE | No |
 | KULLANıCıLARı LISTELEME (yerel Apache Cassandra 'da kullanım dışı) | No |
 | REVOKE | No |
 | SELECT | Yes |
-| Seç (IF KOŞULUNDA hafif işlemler)| No |
 | UPDATE | Yes |
-| GÜNCELLEŞTIR (If koşulu ile hafif işlemler)| No |
 | KESILEMEDI | No |
 | USE | Yes |
+
+## <a name="lightweight-transactions-lwt"></a>Hafif Işlemler (LWT)
+
+| Bileşen  |Desteklenir |
+|---------|---------|
+| VARSA SIL | Yes |
+| Koşulları SIL | No |
+| MEVCUT DEĞILSE EKLE | Yes |
+| VARSA GÜNCELLEŞTIR | Yes |
+| MEVCUT DEĞILSE GÜNCELLEŞTIR | Yes |
+| GÜNCELLEŞTIRME koşulları | No |
 
 ## <a name="cql-shell-commands"></a>CQL kabuğu komutları
 

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/07/2021
 ms.topic: conceptual
-ms.openlocfilehash: 0855395a305624bb2df96d183dc2bcac45f8e6b3
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: e0088fb129e9c6558de7539ba754a45e067dc3d8
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99051473"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576846"
 ---
 # <a name="create-a-standalone-azure-automation-account"></a>Tek başına Azure Otomasyonu hesabı oluşturma
 
@@ -105,4 +105,4 @@ Klasik farklı çalıştır hesapları, bir Azure Otomasyonu hesabı oluşturdu�
 * PowerShell runbook 'larını kullanmaya başlamak için bkz. [öğretici: PowerShell runbook 'U oluşturma](learn/automation-tutorial-runbook-textual-powershell.md).
 * PowerShell Iş akışı runbook 'larını kullanmaya başlamak için bkz. [öğretici: PowerShell iş akışı runbook 'U oluşturma](learn/automation-tutorial-runbook-textual.md).
 * Python 3 runbook 'unu kullanmaya başlamak için bkz. [öğretici: Python 3 runbook oluşturma](learn/automation-tutorial-runbook-textual-python-3.md).
-* PowerShell cmdlet başvurusu için bkz. [az. Automation](/powershell/module/az.automation&preserve-view=true#automation).
+* PowerShell cmdlet başvurusu için bkz. [az. Automation](/powershell/module/az.automation).

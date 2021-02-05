@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 11/08/2019
 ms.author: sumi
 ms.custom: ''
-ms.openlocfilehash: 5e97a35a272684a99e1ca21cbec9c8f3edef253c
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 8926e99db926fc8182e98509c3deff0ccc3d1612
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99097431"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576676"
 ---
 # <a name="virtual-network-service-endpoints"></a>Sanal Ağ hizmet uç noktaları
 
@@ -126,7 +126,7 @@ Hizmet uç noktaları, bir sanal ağa yazma erişimi olan bir kullanıcı taraf�
 
 Yerleşik roller hakkında daha fazla bilgi için bkz. [Azure yerleşik rolleri](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Özel rollere özel izinler atama hakkında daha fazla bilgi için bkz. [Azure özel roller](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
-Sanal ağlar ve Azure hizmet kaynakları aynı ağda veya farklı aboneliklerde olabilir. Sanal ağ ve Azure hizmet kaynaklarının farklı aboneliklerde olması halinde kaynakların aynı Active Directory (AD) kiracısı altında bulunması gerekir. 
+Sanal ağlar ve Azure hizmet kaynakları aynı ağda veya farklı aboneliklerde olabilir. Azure depolama ve Azure Key Vault gibi belirli Azure Hizmetleri, farklı Active Directory (AD) kiracılarındaki hizmet uç noktalarını da destekler, ancak sanal ağ ve Azure hizmet kaynağı farklı Active Directory (AD) kiracılarda olabilir. Daha fazla ayrıntı için lütfen tek tek hizmet belgelerini denetleyin.  
 
 ## <a name="pricing-and-limits"></a>Fiyatlandırma ve limitler
 

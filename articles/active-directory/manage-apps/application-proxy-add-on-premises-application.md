@@ -1,5 +1,5 @@
 ---
-title: Öğretici-Azure AD 'de şirket içi uygulama-uygulama proxy 'Si ekleme
+title: Öğretici-Azure Active Directory ' de şirket içi uygulama uygulama proxy 'Si ekleme
 description: Azure Active Directory (Azure AD), kullanıcıların Azure AD hesabıyla oturum açarak şirket içi uygulamalara erişmesini sağlayan bir uygulama proxy hizmeti içerir. Bu öğreticide, ortamınızı uygulama proxy 'Si ile kullanım için nasıl hazırlayacağınız gösterilmektedir. Daha sonra, Azure AD kiracınıza şirket içi bir uygulama eklemek için Azure portal kullanır.
 services: active-directory
 author: kenwith
@@ -8,20 +8,20 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/20/2021
+ms.date: 02/04/2021
 ms.author: kenwith
 ms.reviewer: japere
 ms.custom: contperf-fy21q3
-ms.openlocfilehash: 04b3dd51aab9686d102b6b94324f89396a268e7d
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: f18126448f5a6dca29e798ad80cb53a8760689d8
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99260087"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576523"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Öğretici: Azure Active Directory içindeki uygulama proxy 'Si aracılığıyla uzaktan erişim için şirket içi uygulama ekleme
 
-Azure Active Directory (Azure AD), kullanıcıların Azure AD hesabıyla oturum açarak şirket içi uygulamalara erişmesini sağlayan bir uygulama proxy hizmeti içerir. Bu öğretici, ortamınızı uygulama proxy 'Si ile kullanılmak üzere hazırlar. Ortamınız hazırlandıktan sonra, Azure AD kiracınıza şirket içi bir uygulama eklemek için Azure portal kullanırsınız.
+Azure Active Directory (Azure AD), kullanıcıların Azure AD hesabıyla oturum açarak şirket içi uygulamalara erişmesini sağlayan bir uygulama proxy hizmeti içerir. Bu öğretici, ortamınızı uygulama proxy 'Si ile kullanılmak üzere hazırlar. Ortamınız hazırlandıktan sonra, Azure AD kiracınıza şirket içi bir uygulama eklemek için Azure portal kullanırsınız. Azure 'da **uygulamalarınızı görüntülemek ve** uygulama yönetimiyle hızlı bir şekilde yararlanmak Için hızlı [Başlangıç serisini](view-applications-portal.md)kullanıma aldığınızdan emin olun.
 
 :::image type="content" source="./media/application-proxy-add-on-premises-application/app-proxy-diagram.png" alt-text="Uygulama proxy 'Si genel bakış Diyagramı" lightbox="./media/application-proxy-add-on-premises-application/app-proxy-diagram.png":::
 

@@ -8,29 +8,29 @@ ms.author: parkerra
 ms.date: 2/3/2021
 ms.topic: how-to
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: e058186d8848256bf97d99ee1b8b1ddae7d78383
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: 56532c17c91e6c703a6acd7990bbae47cd248165
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99550632"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576574"
 ---
 # <a name="configuring-azure-spatial-anchors-in-a-unity-project"></a>Unity projesinde Azure uzamsal bağlayıcılarını yapılandırma
 
 Bu kılavuzda, Unity projenizde Azure uzamsal bağlayıcı SDK 'sını kullanmaya nasıl başlacağınız gösterilmektedir.
 
-## <a name="requirements"></a>Gereksinimler
+## <a name="project-requirements"></a>Proje gereksinimleri
 
-Azure uzamsal bağlayıcıları Şu anda Unity 2019,4 (LTS) ' i şu yapılandırmalarda desteklemektedir.
-
-* 2.4.0 + Azure uzamsal bağlayıcılarını içeren Unity 2019,4, AR Foundation 3,1 ile desteklenir.
+[!INCLUDE [Unity Project Requirements](../../../includes/spatial-anchors-unity-project-requirements.md)]
 
 ## <a name="configuring-a-project"></a>Proje yapılandırma
 
-### <a name="download-packages"></a>Paketleri İndir
+Unity projenize Azure uzamsal bağlayıcı SDK 'sını eklemeden önce, Unity paket Yöneticisi aracılığıyla [gerekli](#project-requirements) paketleri yüklediğinizden emin olun.
+
+### <a name="download-asa-packages"></a>ASA paketlerini indirme
 [!INCLUDE [Download Unity Packages](../../../includes/spatial-anchors-unity-download-packages.md)]
 
-### <a name="import-packages"></a>Paketleri içeri aktarma
+### <a name="import-asa-packages"></a>ASA paketlerini içeri aktarma
 [!INCLUDE [Import Unity Packages](../../../includes/spatial-anchors-unity-import-packages.md)]
 
 ### <a name="android-only-configure-the-maintemplategradle-file"></a>Yalnızca Android: mainTemplate. Gradle dosyasını yapılandırma

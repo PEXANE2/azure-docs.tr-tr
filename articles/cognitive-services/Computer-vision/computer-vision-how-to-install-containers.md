@@ -12,12 +12,12 @@ ms.date: 11/23/2020
 ms.author: aahi
 ms.custom: seodec18, cog-serv-seo-aug-2020
 keywords: Şirket içi, OCR, Docker, kapsayıcı
-ms.openlocfilehash: a9eae2e547b347c88f8e745742ed34194c37a3b2
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: 2298c7b931a5bb51d5067a9f789135ecf86ef3e5
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97862479"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576829"
 ---
 # <a name="install-read-ocr-docker-containers-preview"></a>Okuma OCR Docker kapsayıcılarını (Önizleme) yükler 
 
@@ -32,17 +32,17 @@ Kapsayıcılar, Görüntü İşleme API’lerini kendi ortamınızda çalıştı
 > [!NOTE]
 > Okuma 3,0-Önizleme kapsayıcısı kullanım dışı bırakılmıştır. 
 
-Okuma 3,2-Önizleme kapsayıcısı şunları sağlar:
+Okuma 3,2-Önizleme OCR kapsayıcısı şunları sağlar:
 * Gelişmiş doğruluk için yeni modeller.
-* Aynı belge içinde birden çok dil için destek
-* Şunları destekler: Felemenkçe, Ingilizce, Fransızca, Almanca, Italyanca, Portekizce ve Ispanyolca.
+* Aynı belge içinde birden çok dil desteği.
+* Toplam 73 dil desteği. [OCR tarafından desteklenen dillerin](./language-support.md#optical-character-recognition-ocr)tam listesine bakın.
 * Hem belgeler hem de görüntüler için tek bir işlem.
 * Daha büyük belgeler ve görüntüler için destek.
-* Güven puanları 0 ' dan 1 ' e kadar.
-* Hem yazdırma hem de el yazısı metin içeren belgeler için destek
-* Basitleştirilmiş Çince ve Japonca desteği.
-* yazdırılmış ve el yazısı metin için güven puanları ve Etiketler. 
+* Güvenilirlik puanları.
+* Hem yazdırma hem de el yazısı metin içeren belgeler için destek.
 * Belgedeki yalnızca seçili olan sayfadan metin ayıklama özelliği.
+* Varsayılan olarak daha doğal bir okuma düzeninde metin satırı çıkış sırası seçin.
+* Yalnızca Latin dilleri için yazı el yazısı stili olarak metin satırı sınıflandırması.
 
 Bugün okuma 2,0 kapsayıcıları kullanıyorsanız, yeni sürümlerdeki değişiklikler hakkında bilgi edinmek için [geçiş kılavuzuna](read-container-migration-guide.md) bakın.
 
@@ -207,7 +207,7 @@ Kapsayıcı API’leri için `http://localhost:5000` konağını kullanın. Swag
 `POST /vision/v3.2/read/analyze` `GET /vision/v3.2/read/operations/{operationId}` Görüntü işleme hizmetinin ilgili Rest işlemlerini nasıl kullandığına benzer şekilde bir görüntüyü zaman uyumsuz olarak okumak için konser içindeki ve işlemlerini kullanabilirsiniz. Zaman uyumsuz POST yöntemi, `operationId` HTTP GET isteğine tanımlayıcı olarak kullanılan bir döndürür.
 
 
-Swagger kullanıcı arabiriminden, `asyncBatchAnalyze` tarayıcıda genişletmek için öğesini seçin. Ardından **deneyin**  >  **dosyayı** seçin öğesini seçin. Bu örnekte, aşağıdaki görüntüyü kullanacağız:
+Swagger kullanıcı arabiriminden, `Analyze` tarayıcıda genişletmek için öğesini seçin. Ardından **deneyin**  >  **dosyayı** seçin öğesini seçin. Bu örnekte, aşağıdaki görüntüyü kullanacağız:
 
 ![sekmeler vs alanları](media/tabs-vs-spaces.png)
 
@@ -225,51 +225,99 @@ Zaman uyumsuz GÖNDERI başarıyla çalıştırıldığında, bir **HTTP 202** d
 ```json
 {
   "status": "succeeded",
-  "createdDateTime": "2020-09-02T10:30:14Z",
-  "lastUpdatedDateTime": "2020-09-02T10:30:15Z",
+  "createdDateTime": "2021-02-04T06:32:08.2752706+00:00",
+  "lastUpdatedDateTime": "2021-02-04T06:32:08.7706172+00:00",
   "analyzeResult": {
     "version": "3.2.0",
     "readResults": [
       {
         "page": 1,
-        "angle": 2.12,
+        "angle": 2.1243,
         "width": 502,
         "height": 252,
         "unit": "pixel",
-        "language": "",
         "lines": [
           {
-            "boundingBox": [58, 42, 314, 59, 311, 123, 56, 121],
+            "boundingBox": [
+              58,
+              42,
+              314,
+              59,
+              311,
+              123,
+              56,
+              121
+            ],
             "text": "Tabs vs",
             "appearance": {
-              "style": "handwriting",
-              "styleConfidence": 0.999
+              "style": {
+                "name": "handwriting",
+                "confidence": 0.96
+              }
             },
             "words": [
               {
-                "boundingBox": [85, 45, 242, 62, 241, 122, 83, 123],
+                "boundingBox": [
+                  68,
+                  44,
+                  225,
+                  59,
+                  224,
+                  122,
+                  66,
+                  123
+                ],
                 "text": "Tabs",
-                "confidence": 0.981
+                "confidence": 0.933
               },
               {
-                "boundingBox": [258, 64, 314, 72, 314, 123, 256, 123],
+                "boundingBox": [
+                  241,
+                  61,
+                  314,
+                  72,
+                  314,
+                  123,
+                  239,
+                  122
+                ],
                 "text": "vs",
-                "confidence": 0.958
+                "confidence": 0.977
               }
             ]
           },
           {
-            "boundingBox": [286, 171, 415, 165, 417, 197, 287, 201],
+            "boundingBox": [
+              286,
+              171,
+              415,
+              165,
+              417,
+              197,
+              287,
+              201
+            ],
             "text": "paces",
             "appearance": {
-              "style": "print",
-              "styleConfidence": 0.603
+              "style": {
+                "name": "handwriting",
+                "confidence": 0.746
+              }
             },
             "words": [
               {
-                "boundingBox": [303, 175, 415, 167, 415, 198, 306, 199],
+                "boundingBox": [
+                  286,
+                  179,
+                  404,
+                  166,
+                  405,
+                  198,
+                  290,
+                  201
+                ],
                 "text": "paces",
-                "confidence": 0.918
+                "confidence": 0.938
               }
             ]
           }

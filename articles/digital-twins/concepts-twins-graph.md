@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 105128af60b90324e93bcad1bd9900a55461378f
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.openlocfilehash: 00058f75a2c4378371c427ff9ebabe7e2336b06a
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99071724"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576557"
 ---
 # <a name="understand-digital-twins-and-their-twin-graph"></a>Dijital TWINS ve ikizi graflarını anlayın
 
@@ -58,9 +58,9 @@ Bir `BasicDigitalTwin` "ikizi" nesnesindeki Özellik alanlarını doğrudan bir 
 
 ### <a name="create-relationships"></a>İlişki oluşturma
 
-Burada, *Groundfloor* adlı bir *taban*-tür dijital ikizi ve *Cafe* adlı bir *Oda* türü dijital Ikizi arasında bir ilişki oluşturmak için [digitaltwins API 'lerini](/rest/api/digital-twins/dataplane/twins) kullanan bazı örnek istemci kodları verilmiştir.
+Bir dijital ikizi ("kaynak" ikizi) başka bir dijital ikizi ("hedef" ikizi) ile bir ilişki oluşturmak için, [Digitaltwıns API 'lerini](/rest/api/digital-twins/dataplane/twins) kullanan bazı örnek istemci kodları aşağıda verilmiştir.
 
-:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_other.cs" id="CreateRelationship_3":::
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_other.cs" id="CreateRelationship_short":::
 
 ## <a name="json-representations-of-graph-elements"></a>Grafik öğelerinin JSON gösterimleri
 
