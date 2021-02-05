@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/18/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 53c0d37d4a25c2f2092a9e52bcae8ea494046bb0
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: 730f26039db0f5441563ac7bf5d6b0ab536cbcd2
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98210027"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99593138"
 ---
 # <a name="app-service-networking-features"></a>App Service ağ özellikleri
 
@@ -113,6 +113,9 @@ IP tabanlı erişim kısıtlamaları özelliği, uygulamanıza ulaşmak için ku
 * Dış Yük Dengeleme hizmetinden veya bilinen çıkış IP adreslerine sahip diğer ağ gereçlerine gelen trafiğe erişimi kısıtlayın. 
 
 Bu özelliği nasıl etkinleştireceğinizi öğrenmek için bkz. [erişim kısıtlamalarını yapılandırma][iprestrictions].
+
+> [!NOTE]
+> IP tabanlı erişim kısıtlama kuralları yalnızca uygulamanız bir App Service Ortamı olduğunda sanal ağ adres aralıklarını işler. Uygulamanız çok kiracılı bir hizmettir, trafiği sanal ağınızdaki alt ağları seçmek üzere kısıtlamak için [hizmet uç noktalarını](../virtual-network/virtual-network-service-endpoints-overview.md) kullanmanız gerekir.
 
 #### <a name="access-restriction-rules-based-on-service-endpoints"></a>Hizmet uç noktalarına dayalı erişim kısıtlama kuralları 
 
@@ -256,7 +259,7 @@ Bu dağıtım stili size internet 'e giden trafik için özel bir adres vermeyec
 
 ### <a name="create-multitier-applications"></a>Çok katmanlı uygulamalar oluşturma
 
-Çok katmanlı bir uygulama, API arka ucu uygulamalarına yalnızca ön uç katmanından erişilebilen bir uygulamadır. Çok katmanlı bir uygulama oluşturmanın iki yolu vardır. Her ikisi de, ön uç Web uygulamanızı sanal bir ağdaki bir alt ağa bağlamak için VNet tümleştirmesini kullanarak başlayın. Bunu yaptığınızda Web uygulamanızın sanal ağınıza çağrı yapmasını olanaklı hale getirir. Ön uç uygulamanız sanal ağa bağlandıktan sonra, API uygulamanıza erişimi nasıl kilitleyecağınıza karar vermeniz gerekir. Şunları yapabilirsiniz:
+Çok katmanlı bir uygulama, API arka ucu uygulamalarına yalnızca ön uç katmanından erişilebilen bir uygulamadır. Çok katmanlı bir uygulama oluşturmanın iki yolu vardır. Her ikisi de, ön uç Web uygulamanızı sanal bir ağdaki bir alt ağa bağlamak için VNet tümleştirmesini kullanarak başlayın. Bunu yaptığınızda Web uygulamanızın sanal ağınıza çağrı yapmasını olanaklı hale getirir. Ön uç uygulamanız sanal ağa bağlandıktan sonra, API uygulamanıza erişimi nasıl kilitleyecağınıza karar vermeniz gerekir. Seçenekleriniz şunlardır:
 
 * Hem ön uç hem de API uygulamasını aynı ıLB Ao 'da barındırın ve uygulama ağ geçidi kullanarak ön uç uygulamayı internet 'e sunun.
 * Ön ucu çok kiracılı hizmette ve arka uçta bir ıLB Ao 'da barındırın.

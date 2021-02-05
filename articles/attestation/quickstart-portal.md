@@ -1,177 +1,164 @@
 ---
-title: Azure kanıtlama 'nı Azure portal ile ayarlama
-description: Azure portal kullanarak bir kanıtlama sağlayıcısı ayarlama ve yapılandırma.
+title: 'Hızlı başlangıç: Azure portal kullanarak Azure kanıtlama ayarlama'
+description: Bu hızlı başlangıçta, Azure portal kullanarak bir kanıtlama sağlayıcısı ayarlamayı ve yapılandırmayı öğreneceksiniz.
 services: attestation
 author: msmbaldwin
 ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 86adac557c6de133e95e97bfedbd302cc6a2b27e
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: a8ab7195958a6c2d5a730c38232eb348d505deda
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99429169"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99593612"
 ---
-# <a name="quickstart-set-up-azure-attestation-with-azure-portal"></a>Hızlı başlangıç: Azure portal ile Azure kanıtlama ayarlama
+# <a name="quickstart-set-up-azure-attestation-by-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak Azure kanıtlama ayarlama
+
+Azure kanıtlama kullanmaya başlamak için bu hızlı başlangıcı izleyin. Azure portal kullanarak bir kanıtlama sağlayıcısını, ilke imzalayan ve bir ilkeyi yönetmeyi öğrenin.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-Azure portal kullanarak bir kanıtlama sağlayıcısını yönetmek için aşağıdaki adımları izleyin.
+## <a name="attestation-provider"></a>Kanıtlama sağlayıcısı
 
-## <a name="1-attestation-provider"></a>1. kanıtlama sağlayıcısı
+Bu bölümde, bir kanıtlama sağlayıcısı oluşturacak ve imzasız ilkelerden veya imzalı ilkelerden yapılandıracaksınız. Ayrıca, kanıtlama sağlayıcısını görüntülemeyi ve silmeyi de öğreneceksiniz.
 
-### <a name="11-create-an-attestation-provider"></a>1,1 kanıtlama sağlayıcısı oluşturma
+### <a name="create-and-configure-the-provider-with-unsigned-policies"></a>İmzasız ilkelerle sağlayıcı oluşturma ve yapılandırma
 
-#### <a name="111-to-configure-the-provider-with-unsigned-policies"></a>1.1.1 sağlayıcıyı imzasız ilkelerle yapılandırma
+1. Azure portal menüsüne veya giriş sayfasına gidin ve **kaynak oluştur**' u seçin.
+1. Arama kutusuna **kanıtlama** girin.
+1. Sonuçlar listesinde **kanıtlama Microsoft Azure**' yi seçin.
+1. **Microsoft Azure kanıtlama** sayfasında **Oluştur**' u seçin.
+1. **Kanıtlama sağlayıcısı oluştur** sayfasında, aşağıdaki girişleri sağlayın:
 
-1.  Azure portal menüsünde veya giriş sayfasından **kaynak oluştur** ' u seçin.
-2.  Arama kutusuna **kanıtlama** girin
-3.  Sonuçlar listesinden **kanıtlama Microsoft Azure** seçin
-4.  Microsoft Azure kanıtlama sayfasında **Oluştur** ' u seçin.
-5.  Kanıtlama sağlayıcısı Oluştur sayfasında, aşağıdaki girişleri sağlayın:
+   - **Abonelik**: Bir abonelik seçin.
+   - **Kaynak grubu**: var olan bir kaynak grubunu seçin veya **Yeni oluştur** ' u seçin ve bir kaynak grubu adı girin.
+   - **Ad**: benzersiz bir ad girin.
+   - **Konum**: bir konum seçin.
+   - **İlke imzalayan sertifikaları dosyası**: sağlayıcıyı imzasız ilkelerle yapılandırmak için ilke imzalayan sertifikalar dosyasını karşıya yüklemeyin.
+
+1. Gerekli girişleri sağlamadıktan sonra, **gözden geçir + oluştur**' u seçin.
+1. Doğrulama sorunları varsa, bunları giderin ve ardından **Oluştur**' u seçin.
+
+### <a name="create-and-configure-the-provider-with-signed-policies"></a>Sağlayıcıyı imzalı ilkelerle oluşturma ve yapılandırma
+
+1. Azure portal menüsüne veya giriş sayfasına gidin ve **kaynak oluştur**' u seçin.
+1. Arama kutusuna **kanıtlama** girin.
+1. Sonuçlar listesinde **kanıtlama Microsoft Azure**' yi seçin.
+1. **Microsoft Azure kanıtlama** sayfasında **Oluştur**' u seçin.
+1. **Kanıtlama sağlayıcısı oluştur** sayfasında, aşağıdaki bilgileri sağlayın:
+
+   - **Abonelik**: Bir abonelik seçin.
+   - **Kaynak grubu**: var olan bir kaynak grubunu seçin veya **Yeni oluştur** ' u seçin ve bir kaynak grubu adı girin.
+   - **Ad**: benzersiz bir ad girin.
+   - **Konum**: bir konum seçin.
+   - **İlke imzalayan sertifikaları dosyası**: kanıtlama sağlayıcısını imzalı ilkelerle yapılandırmak için ilke imzalayan sertifikalar dosyasını karşıya yükleyin. [İlke imzalayan sertifikalarının örneklerine bakın](./policy-signer-examples.md).
+
+1. Gerekli girişleri sağlamadıktan sonra, **gözden geçir + oluştur**' u seçin.
+1. Doğrulama sorunları varsa, bunları giderin ve ardından **Oluştur**' u seçin.
+
+### <a name="view-the-attestation-provider"></a>Kanıtlama sağlayıcısını görüntüleme
+
+1. Azure portal menüsüne veya giriş sayfasına gidin ve **tüm kaynaklar**' ı seçin.
+1. Filtre kutusuna kanıtlama sağlayıcısı adını girin ve seçin.
+
+### <a name="delete-the-attestation-provider"></a>Kanıtlama sağlayıcısını silme
+
+Kanıtlama sağlayıcısını silmenin iki yolu vardır. Seçenekleriniz şunlardır:
+
+1. Azure portal menüsüne veya giriş sayfasına gidin ve **tüm kaynaklar**' ı seçin.
+1. Filtre kutusuna kanıtlama sağlayıcısı adını girin.
+1. Onay kutusunu seçin ve **Sil**' i seçin.
+1. **Evet** girin ve **Sil**' i seçin.
+
+İsterseniz şunları yapabilirsiniz:
+
+1. Azure portal menüsüne veya giriş sayfasına gidin ve **tüm kaynaklar**' ı seçin.
+1. Filtre kutusuna kanıtlama sağlayıcısı adını girin.
+1. Kanıtlama sağlayıcısını seçin ve genel bakış sayfasına gidin.
+1. Menü çubuğunda **Sil** ' i seçin ve **Evet**' i seçin.
+
+## <a name="attestation-policy-signers"></a>Kanıtlama ilkesi imzalayanlar
+
+İlke imzalayan sertifikalarını görüntülemek, eklemek ve silmek için bu bölümdeki adımları izleyin.
+
+### <a name="view-the-policy-signer-certificates"></a>İlke imzalayan sertifikalarını görüntüleme
+
+1. Azure portal menüsüne veya giriş sayfasına gidin ve **tüm kaynaklar**' ı seçin.
+1. Filtre kutusuna kanıtlama sağlayıcısı adını girin.
+1. Kanıtlama sağlayıcısını seçin ve genel bakış sayfasına gidin.
+1. Pencerenin sol tarafındaki kaynak menüsünde veya alt bölmede **ilke imzalayan sertifikalar** ' ı seçin.
+1. **İlke imzalayan sertifikalarını indir**' i seçin. Düğme, ilke imzalama gereksinimi olmadan oluşturulan kanıtlama sağlayıcıları için devre dışı bırakılır.
+1. İndirilen metin dosyası bir JWS biçimindeki tüm sertifikalara sahip olacaktır.
+1. Sertifika sayısını ve indirilen sertifikaları doğrulayın.
+
+### <a name="add-the-policy-signer-certificate"></a>İlke imzalayan sertifikasını ekleme
+
+1.  Azure portal menüsüne veya giriş sayfasına gidin ve **tüm kaynaklar**' ı seçin.
+1.  Filtre kutusuna kanıtlama sağlayıcısı adını girin.
+1.  Kanıtlama sağlayıcısını seçin ve genel bakış sayfasına gidin.
+1.  Pencerenin sol tarafındaki kaynak menüsünde veya alt bölmede **ilke imzalayan sertifikalar** ' ı seçin.
+1.  Üstteki menüden **Ekle** ' yi seçin. Düğme, ilke imzalama gereksinimi olmadan oluşturulan kanıtlama sağlayıcıları için devre dışı bırakılır.
+1.  İlke imzalayan sertifika dosyasını karşıya yükleyin ve **Ekle**' yi seçin. [İlke imzalayan sertifikalarının örneklerine bakın](./policy-signer-examples.md).
+
+### <a name="delete-the-policy-signer-certificates"></a>İlke imzalayan sertifikalarını silme
+
+1.  Azure portal menüsüne veya giriş sayfasına gidin ve **tüm kaynaklar**' ı seçin.
+1.  Filtre kutusuna kanıtlama sağlayıcısı adını girin.
+1.  Kanıtlama sağlayıcısını seçin ve genel bakış sayfasına gidin.
+1.  Pencerenin sol tarafındaki kaynak menüsünde veya alt bölmede **ilke imzalayan sertifikalar** ' ı seçin.
+1.  Üstteki menüden **Sil** ' i seçin. Düğme, ilke imzalama gereksinimi olmadan oluşturulan kanıtlama sağlayıcıları için devre dışı bırakılır.
+1.  İlke imzalayan sertifika dosyasını karşıya yükleyin ve **Sil**' i seçin. [İlke imzalayan sertifikalarının örneklerine bakın](./policy-signer-examples.md). 
+
+## <a name="attestation-policy"></a>Kanıtlama ilkesi
+
+Bu bölümde, bir kanıtlama ilkesinin nasıl görüntüleneceği ve ilke imzalama gereksinimi olmadan ve ile oluşturulan ilkelerin nasıl yapılandırılacağı açıklanmaktadır.
+
+### <a name="view-an-attestation-policy"></a>Kanıtlama ilkesini görüntüleme
+
+1.  Azure portal menüsüne veya giriş sayfasına gidin ve **tüm kaynaklar**' ı seçin.
+1.  Filtre kutusuna kanıtlama sağlayıcısı adını girin.
+1.  Kanıtlama sağlayıcısını seçin ve genel bakış sayfasına gidin.
+1.  Pencerenin sol tarafındaki kaynak menüsünde veya alt bölmede **ilke** ' yi seçin.
+1.  Tercih edilen **kanıtlama türünü** seçin ve **geçerli ilkeyi** görüntüleyin.
+
+### <a name="configure-an-attestation-policy"></a>Kanıtlama ilkesi yapılandırma
+
+Kanıtlama sağlayıcısı bir ilke imzalama gereksinimi olmadan oluşturulduysa, bir ilkeyi JWT veya metin biçiminde karşıya yüklemek için bu adımları izleyin.
+
+1. Azure portal menüsüne veya giriş sayfasına gidin ve **tüm kaynaklar**' ı seçin.
+1. Filtre kutusuna kanıtlama sağlayıcısı adını girin.
+1. Kanıtlama sağlayıcısını seçin ve genel bakış sayfasına gidin.
+1. Pencerenin sol tarafındaki kaynak menüsünde veya alt bölmede **ilke** ' yi seçin.
+1. Üstteki menüden **Yapılandır** ' ı seçin.
+1. **Ilke biçimini** **JWT** veya **metin** olarak seçin.
+
+   Kanıtlama sağlayıcısı, ilke imzalama gereksinimi olmadan oluşturulduysa, Kullanıcı bir ilkeyi **JWT** ya da **metin** biçiminde karşıya yükleyebilir.
+
+      - JWT biçimi 'ni seçerseniz, ilke dosyasını **imzasız/IMZALı JWT** biçiminde ilke içeriğiyle karşıya yükleyin ve **Kaydet**' i seçin. [Bkz. ilke örnekleri](./policy-examples.md).
+      - Metin biçimi seçeneğini belirlediyseniz, ilke dosyasını **metin** biçiminde içeriğe yükleyin veya metin alanına ilke Içeriğini girip **Kaydet**' i seçin. [Bkz. ilke örnekleri](./policy-examples.md).
+
+   Karşıya dosya yükleme seçeneği için, ilke önizlemesi metin biçiminde gösterilir ve düzenlenemez.
+
+1. Yapılandırılan ilkeyi görüntülemek için üstteki menüden **Yenile** ' yi seçin.
+
+Kanıtlama sağlayıcısı bir ilke imzalama gereksinimi ile oluşturulduysa, bir ilkeyi JWT biçiminde karşıya yüklemek için aşağıdaki adımları izleyin.
+
+1.  Azure portal menüsüne veya giriş sayfasına gidin ve **tüm kaynaklar**' ı seçin.
+1.  Filtre kutusuna kanıtlama sağlayıcısı adını girin.
+1.  Kanıtlama sağlayıcısını seçin ve genel bakış sayfasına gidin.
+1.  Pencerenin sol tarafındaki kaynak menüsünde veya alt bölmede **ilke** ' yi seçin.
+1.  Üstteki menüden **Yapılandır** ' ı seçin.
+1.  İlke dosyasını **IMZALı JWT biçiminde** karşıya yükleyin ve **Kaydet**' i seçin. [Bkz. ilke örnekleri](./policy-examples.md).
+
+    Kanıtlama sağlayıcısı bir ilke imzalama gereksinimi ile oluşturulduysa, Kullanıcı bir ilkeyi yalnızca **IMZALı JWT biçiminde** karşıya yükleyebilir.
+
+    Karşıya dosya yükleme seçeneği için, ilke önizlemesi metin biçiminde gösterilir ve düzenlenemez.
     
-    **Abonelik**: abonelik seçin
-    
-    **Kaynak grubu**: var olan bir kaynak grubunu seçin veya **Yeni oluştur** ' u seçin ve bir kaynak grubu adı girin
-    
-    **Ad**: benzersiz bir ad gerekiyor
-
-    **Konum**: bir konum seçin 
-    
-    **İlke imzalayan sertifika dosyası**: sağlayıcıyı imzasız ilkelerle yapılandırmak için ilke imzalayan sertifikaları dosyasını karşıya yüklemeyin 
-6.  Gerekli girişleri sağladıktan sonra, **gözden geçir + oluştur** ' a tıklayın.
-7.  Varsa doğrulama sorunlarını giderin ve **Oluştur**' a tıklayın.
-
-#### <a name="112-to-configure-the-provider-with-signed-policies"></a>1.1.2 imzalı ilkelerle sağlayıcıyı yapılandırmak için
-
-1.  Azure portal menüsünde veya giriş sayfasından **kaynak oluştur** ' u seçin.
-2.  Arama kutusuna **kanıtlama** girin
-3.  Sonuçlar listesinden **kanıtlama Microsoft Azure** seçin
-4.  Microsoft Azure kanıtlama sayfasında **Oluştur** ' u seçin.
-5.  Kanıtlama sağlayıcısı Oluştur sayfasında, aşağıdaki bilgileri sağlayın:
-    
-    a. **Abonelik**: abonelik seçin
-    
-    b. **Kaynak grubu**: var olan bir kaynak grubunu seçin veya **Yeni oluştur** ' u seçin ve bir kaynak grubu adı girin
-    
-    c. **Ad**: benzersiz bir ad gerekiyor
-
-    d. **Konum**: bir konum seçin 
-    
-    e. **İlke imzalayan sertifikaları dosyası**: kanıtlama sağlayıcısını ilke imzalama sertifikaları ile yapılandırmak için, CERT dosyasını yükleyin. Örneklere [buraya](./policy-signer-examples.md) bakın 
-6.  Gerekli girişleri sağladıktan sonra, **gözden geçir + oluştur** ' a tıklayın.
-7.  Varsa doğrulama sorunlarını giderin ve **Oluştur**' a tıklayın.
-
-### <a name="12-view-attestation-provider"></a>1,2 kanıtlama sağlayıcısını görüntüle
-
-1.  Azure portal menüsünden veya giriş sayfasından **tüm kaynaklar** ' ı seçin.
-2.  Filtre kutusuna kanıtlama sağlayıcı adı girin ve seçin
-
-### <a name="13-delete-attestation-provider"></a>1,3 kanıtlama sağlayıcısını Sil
-
-1.  Azure portal menüsünden veya giriş sayfasından **tüm kaynaklar** ' ı seçin.
-2.  Filtre kutusuna kanıtlama sağlayıcı adı girin
-3.  Onay kutusunu seçin ve **Sil** ' e tıklayın.
-4.  Evet yazın ve **Sil** [veya] öğesine tıklayın
-1.  Azure portal menüsünden veya giriş sayfasından **tüm kaynaklar** ' ı seçin.
-2.  Filtre kutusuna kanıtlama sağlayıcı adı girin
-3.  Kanıtlama sağlayıcısını seçin ve genel bakış sayfasına gidin
-4.  Üstteki menüden **Sil** ' e tıklayın ve **Evet** ' e tıklayın.
-
-
-## <a name="2-attestation-policy-signers"></a>2. kanıtlama ilkesi imzalayanlar
-
-### <a name="21-view-policy-signer-certificates"></a>2,1 ilke imzalayan sertifikalarını görüntüleme
-
-1.  Azure portal menüsünden veya giriş sayfasından **tüm kaynaklar** ' ı seçin.
-2.  Filtre kutusuna kanıtlama sağlayıcı adı girin
-3.  Kanıtlama sağlayıcısını seçin ve genel bakış sayfasına gidin
-4.  Sol taraftaki kaynak menüsünde veya alt bölmedeki **ilke imzalayan sertifikalar** ' a tıklayın.
-5.  **İlke imzalayan sertifikaları indir** ' e tıklayın (ilke imzalama gereksinimi olmadan oluşturulan kanıtlama sağlayıcıları için düğme devre dışı bırakılır)
-6.  İndirilen metin dosyası, tüm sertifikaları JWS biçiminde olacak.
-a.  İndirilen sertifika sayısını ve sertifikaları doğrulayın.
-
-### <a name="22-add-policy-signer-certificate"></a>2,2 ilke imzalayan sertifikası ekleme
-
-1.  Azure portal menüsünden veya giriş sayfasından **tüm kaynaklar** ' ı seçin.
-2.  Filtre kutusuna kanıtlama sağlayıcı adı girin
-3.  Kanıtlama sağlayıcısını seçin ve genel bakış sayfasına gidin
-4.  Sol taraftaki kaynak menüsünde veya alt bölmedeki **ilke imzalayan sertifikalar** ' a tıklayın.
-5.  Üst menüden **Ekle** ' ye tıklayın (ilke imzalama gereksinimi olmadan oluşturulan kanıtlama sağlayıcıları için düğme devre dışı bırakılır)
-6.  İlke imzalayan sertifika dosyasını karşıya yükleyin ve **Ekle**' ye tıklayın. Örneklere [buraya](./policy-signer-examples.md) bakın
-
-### <a name="23-delete-policy-signer-certificate"></a>2,3 ilke imzalayan sertifikasını silme
-
-1.  Azure portal menüsünden veya giriş sayfasından **tüm kaynaklar** ' ı seçin.
-2.  Filtre kutusuna kanıtlama sağlayıcı adı girin
-3.  Kanıtlama sağlayıcısını seçin ve genel bakış sayfasına gidin
-4.  Sol taraftaki kaynak menüsünde veya alt bölmedeki **ilke imzalayan sertifikalar** ' a tıklayın.
-5.  Üstteki menüden **Sil** ' e tıklayın (ilke imzalama gereksinimi olmadan oluşturulan kanıtlama sağlayıcıları için düğme devre dışı bırakılır)
-6.  İlke imzalayan sertifika dosyasını karşıya yükleyin ve **Sil**' e tıklayın. Örneklere [buraya](./policy-signer-examples.md) bakın 
-
-## <a name="3-attestation-policy"></a>3. kanıtlama ilkesi
-
-### <a name="31-view-attestation-policy"></a>3,1 kanıtlama ilkesini görüntüleme
-
-1.  Azure portal menüsünden veya giriş sayfasından **tüm kaynaklar** ' ı seçin.
-2.  Filtre kutusuna kanıtlama sağlayıcı adı girin
-3.  Kanıtlama sağlayıcısını seçin ve genel bakış sayfasına gidin
-4.  Sol taraftaki kaynak menüsünde veya alt bölmedeki **ilke** ' ye tıklayın.
-5.  Tercih edilen **kanıtlama türünü** seçin ve **geçerli ilkeyi** görüntüleyin
-
-### <a name="32-configure-attestation-policy"></a>3,2 kanıtlama ilkesini yapılandırma
-
-#### <a name="321-when-attestation-provider-is-created-without-policy-signing-requirement"></a>3.2.1, kanıtlama sağlayıcısı ilke imzalama gereksinimi olmadan oluşturulduğunda
-
-##### <a name="upload-policy-in-jwt-format"></a>İlkeyi JWT biçiminde karşıya yükle
-
-1.  Azure portal menüsünden veya giriş sayfasından **tüm kaynaklar** ' ı seçin.
-2.  Filtre kutusuna kanıtlama sağlayıcı adı girin
-3.  Kanıtlama sağlayıcısını seçin ve genel bakış sayfasına gidin
-4.  Sol taraftaki kaynak menüsünde veya alt bölmedeki **ilke** ' ye tıklayın.
-5.  Üstteki menüden **Yapılandır** ' a tıklayın
-6.  Kanıtlama sağlayıcısı, ilke imzalama gereksinimi olmadan oluşturulduğunda, Kullanıcı bir ilkeyi **JWT** veya **metin** biçiminde karşıya yükleyebilir
-7.  **JWT** olarak **ilke biçimi** seçin
-8.  İlke dosyasını **imzasız/imzalı BIR JWT** biçiminde karşıya yükleyin ve **Kaydet**' e tıklayın. Örneklere [buraya](./policy-examples.md) bakın
-    
-    Karşıya dosya yükleme seçeneği için, ilke önizlemesi metin biçiminde gösterilir ve ilke önizlemesi düzenlenemez.
-
-7.  Yapılandırılmış ilkeyi görüntülemek için üstteki menüden **Yenile** ' ye tıklayın
-
-##### <a name="upload-policy-in-text-format"></a>İlkeyi metin biçiminde karşıya yükle
-
-1.  Azure portal menüsünden veya giriş sayfasından **tüm kaynaklar** ' ı seçin.
-2.  Filtre kutusuna kanıtlama sağlayıcı adı girin
-3.  Kanıtlama sağlayıcısını seçin ve genel bakış sayfasına gidin
-4.  Sol taraftaki kaynak menüsünde veya alt bölmedeki **ilke** ' ye tıklayın.
-5.  Üstteki menüden **Yapılandır** ' a tıklayın
-6.  Kanıtlama sağlayıcısı, ilke imzalama gereksinimi olmadan oluşturulduğunda, Kullanıcı bir ilkeyi **JWT** veya **metin** biçiminde karşıya yükleyebilir
-7.  **Ilke biçimini** **metin** olarak seçin
-8.  İlke dosyasını **metin** biçiminde içerikle karşıya yükleyin veya metin alanına ilke Içeriğini girip **Kaydet**' e tıklayın. Örneklere [buraya](./policy-examples.md) bakın
-
-    Karşıya dosya yükleme seçeneği için, ilke önizlemesi metin biçiminde gösterilir ve ilke önizlemesi düzenlenemez.
-
-8.  Yapılandırılmış ilkeyi görüntülemek için **Yenile** 'ye tıklayın
-
-#### <a name="322-when-attestation-provider-is-created-with-policy-signing-requirement"></a>3.2.2 ilke imzalama gereksinimi ile kanıtlama sağlayıcısı oluşturulduğunda
-
-##### <a name="upload-policy-in-jwt-format"></a>İlkeyi JWT biçiminde karşıya yükle
-
-1.  Azure portal menüsünden veya giriş sayfasından **tüm kaynaklar** ' ı seçin.
-2.  Filtre kutusuna kanıtlama sağlayıcı adı girin
-3.  Kanıtlama sağlayıcısını seçin ve genel bakış sayfasına gidin
-4.  Sol taraftaki kaynak menüsünde veya alt bölmedeki **ilke** ' ye tıklayın.
-5.  Üstteki menüden **Yapılandır** ' a tıklayın
-6.  Kanıtlama sağlayıcısı ilke imzalama gereksinimiyle oluşturulduğunda, Kullanıcı yalnızca **IMZALı JWT biçiminde** bir ilkeyi karşıya yükleyebilir
-7.  Karşıya yükleme ilkesi dosyası **IMZALı JWT biçimidir** ve **Kaydet**' e tıklayın. Örneklere [buraya](./policy-examples.md) bakın
-
-    Karşıya dosya yükleme seçeneği için, ilke önizlemesi metin biçiminde gösterilir ve ilke önizlemesi düzenlenemez.
-    
-8.  Yapılandırılmış ilkeyi görüntülemek için **Yenile** 'ye tıklayın
+1.  Yapılandırılan ilkeyi görüntülemek için **Yenile** ' yi seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

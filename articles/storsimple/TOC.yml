@@ -263,6 +263,10 @@
               href: storsimple-disaster-recovery-using-azure-site-recovery.md
             - name: Express Route ile StorSimple
               href: 'https://databoxbuilds.blob.core.windows.net/storsimpledocs/MicrosoftAzureStorSimple_ExpressRoute.pdf'
+            - name: Hyper-V ile StoSimple
+              href: 'https://databoxbuilds.blob.core.windows.net/storsimpledocs/MicrosoftAzureStorSimple_HyperVDeployment_v1.0.pdf'
+            - name: VMware ile StorSimple
+              href: 'https://databoxbuilds.blob.core.windows.net/storsimpledocs/MicrosoftAzureStorSimple_VMware_v10.pdf'
             - name: Dağıtılmış küresel ad alanı
               href: 'https://www.microsoft.com/download/details.aspx?id=45507'
         - name: İzleme

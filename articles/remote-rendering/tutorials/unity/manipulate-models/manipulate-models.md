@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 48c835070329b5cb0892b10760d37708e46bfa1d
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.openlocfilehash: cec97134173cfc7879baf1d914d8f224a0736430
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96559142"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99593053"
 ---
 # <a name="tutorial-manipulating-models"></a>Öğretici: modelleri düzenleme
 
@@ -37,7 +37,7 @@ Bir modelin [**sınırları, tüm**](https://docs.unity3d.com/Manual/class-BoxCo
 1. **Remoterenderedmodel** ile aynı dizinde yeni bir komut dosyası oluşturun ve bu dosyayı **remotelimitle** adlandırın.
 1. Komut dosyasının içeriğini aşağıdaki kodla değiştirin:
 
-    ```csharp
+    ```cs
     // Copyright (c) Microsoft Corporation. All rights reserved.
     // Licensed under the MIT License. See LICENSE in the project root for license information.
 
@@ -51,8 +51,6 @@ Bir modelin [**sınırları, tüm**](https://docs.unity3d.com/Manual/class-BoxCo
     {
         //Remote bounds works with a specific remotely rendered model
         private BaseRemoteRenderedModel targetModel = null;
-
-        private BoundsQueryAsync remoteBoundsQuery = null;
 
         private RemoteBoundsState currentBoundsState = RemoteBoundsState.NotReady;
 
@@ -94,14 +92,8 @@ Bir modelin [**sınırları, tüm**](https://docs.unity3d.com/Manual/class-BoxCo
             }
         }
 
-        // Create a query using the model entity
-        private void QueryBounds()
-        {
-            //Implement me
-        }
-
-        // Check the result and apply it to the local Unity bounding box if it was successful
-        private void ProcessQueryResult(BoundsQueryAsync remoteBounds)
+        // Create an async query using the model entity
+        async private void QueryBounds()
         {
             //Implement me
         }
@@ -113,31 +105,21 @@ Bir modelin [**sınırları, tüm**](https://docs.unity3d.com/Manual/class-BoxCo
 
     Bu betik,  **Baseremoterenderedmodel** uygulayan komut dosyasıyla aynı gameobject öğesine eklenmelidir. Bu durumda, **Remoterenderedmodel** anlamına gelir. Önceki betiklerle benzer şekilde, bu ilk kod tüm durum değişikliklerini, olayları ve uzak sınırlara ilişkin verileri işleyecektir.
 
-    Uygulamak için iki yöntem vardır: **Querylimitlar** ve **processqueryresult**. **Querylimitler** , sınırları getirir ve **processqueryresult** sorgunun sonucunu alır ve bunu yerel **BoxCollider** uygular.
+    Uygulamak için yalnızca bir yöntem kaldı: **Querylimit'lar**. **Querylimitler** , sınırları zaman uyumsuz olarak getirir, sorgunun sonucunu alır ve yerel **BoxCollider** uygular.
 
-    **Querysýnýrlılar** yöntemi basittir: Uzaktan işleme oturumuna bir sorgu gönderin ve `Completed` olayı dinleyin.
+    **Querysınır** yöntemi basittir: Uzaktan işleme oturumuna bir sorgu gönderin ve sonucu beklein.
 
 1. **Querylimitle** yöntemini aşağıdaki tamamlanmış yöntemle değiştirin:
 
-    ```csharp
+    ```cs
     // Create a query using the model entity
-    private void QueryBounds()
+    async private void QueryBounds()
     {
         remoteBoundsQuery = targetModel.ModelEntity.QueryLocalBoundsAsync();
         CurrentBoundsState = RemoteBoundsState.Updating;
-        remoteBoundsQuery.Completed += ProcessQueryResult;
-    }
-    ```
+        await remoteBounds;
 
-    **Processqueryresult** de basittir. Başarılı olup olmadığını görmek için sonucu denetliyoruz. Yanıtınız evet ise, döndürülen sınırları **BoxCollider** kabul edebileceği bir biçimde dönüştürün ve uygulayın.    
-
-1. **Processqueryresult** yöntemini aşağıdaki tamamlanmış yöntemle değiştirin:
-
-    ```csharp
-    // Check the result and apply it to the local Unity bounding box if it was successful
-    private void ProcessQueryResult(BoundsQueryAsync remoteBounds)
-    {
-        if (remoteBounds.IsRanToCompletion)
+        if (remoteBounds.IsCompleted)
         {
             var newBounds = remoteBounds.Result.toUnity();
             BoundsBoxCollider.center = newBounds.center;
@@ -151,6 +133,8 @@ Bir modelin [**sınırları, tüm**](https://docs.unity3d.com/Manual/class-BoxCo
         }
     }
     ```
+
+    Başarılı olup olmadığını görmek için sorgu sonucunu denetliyoruz. Yanıtınız evet ise, döndürülen sınırları **BoxCollider** kabul edebileceği bir biçimde dönüştürün ve uygulayın.
 
 Artık, **Remotesınır** betiği, **Remoterenderedmodel** ile aynı oyun nesnesine eklendiğinde, gerekirse bir **BoxCollider** eklenir ve model `Loaded` durumuna ulaştığında, sınırlar otomatik olarak sorgulanacaktır ve **BoxCollider** öğesine uygulanır.
 
@@ -198,7 +182,7 @@ Test modeli, sorgulanabilen ve seçilen sayıda alt varlık içerir. Şimdilik, 
 
 1. **Remoteraycaster** adlı yeni bir betik oluşturun ve içeriğini şu kodla değiştirin:
 
-    ```csharp
+    ```cs
     // Copyright (c) Microsoft Corporation. All rights reserved.
     // Licensed under the MIT License. See LICENSE in the project root for license information.
 
@@ -220,7 +204,8 @@ Test modeli, sorgulanabilen ve seçilen sayıda alt varlık içerir. Şimdilik, 
             if(RemoteRenderingCoordinator.instance.CurrentCoordinatorState == RemoteRenderingCoordinator.RemoteRenderingState.RuntimeConnected)
             {
                 var rayCast = new RayCast(origin.toRemotePos(), dir.toRemoteDir(), maxDistance, hitPolicy);
-                return await RemoteRenderingCoordinator.CurrentSession.Actions.RayCastQueryAsync(rayCast).AsTask();
+                var result = await RemoteRenderingCoordinator.CurrentSession.Connection.RayCastQueryAsync(rayCast);
+                return result.Hits;
             }
             else
             {
@@ -243,7 +228,7 @@ Test modeli, sorgulanabilen ve seçilen sayıda alt varlık içerir. Şimdilik, 
 
 1. **Remoterayyon Pointerhandler** adlı yeni bir betik oluşturun ve kodu şu kodla değiştirin:
 
-    ```csharp
+    ```cs
     // Copyright (c) Microsoft Corporation. All rights reserved.
     // Licensed under the MIT License. See LICENSE in the project root for license information.
 
@@ -302,7 +287,7 @@ Test modeli, sorgulanabilen ve seçilen sayıda alt varlık içerir. Şimdilik, 
     }
     ```
 
-**RemoteRayCastPointerHandler** `OnPointerClicked` "Tıklamız" gibi bir işaretçi bir Collider üzerinde ' tıkladığı zaman, remoterk,, mrtk tarafından çağırılır. Bundan sonra, `PointerDataToRemoteRayCast` işaretçinin sonucunu bir nokta ve yöne dönüştürmek için çağırılır. Bu nokta ve yön, uzak oturumunda uzak bir ışın dönüştürmek için kullanılır.
+ `OnPointerClicked` "Tıklamız" gibi bir işaretçi bir Collider üzerinde ' tıkladığı zaman, remoterk,, mrtk tarafından çağırılır. Bundan sonra, `PointerDataToRemoteRayCast` işaretçinin sonucunu bir nokta ve yöne dönüştürmek için çağırılır. Bu nokta ve yön, uzak oturumunda uzak bir ışın dönüştürmek için kullanılır.
 
 ![Sınır güncelleştirildi](./media/raycast-local-remote.png)
 
@@ -314,7 +299,7 @@ Bir Ray cast, **remoterbir Pointerhandler** öğesinde başarıyla tamamlandığ
 
 1. **Remoteentityhelper** adlı yeni bir betik oluşturun ve içeriğini aşağıdaki kodla değiştirin:
 
-    ```csharp
+    ```cs
     // Copyright (c) Microsoft Corporation. All rights reserved.
     // Licensed under the MIT License. See LICENSE in the project root for license information.
     
@@ -359,7 +344,7 @@ Aynı işlem programlı bir şekilde yapılabilir ve belirli uzak varlıkları d
 
 1. **Remoteentityhelper** betiğini aşağıdaki yöntemi de içerecek şekilde değiştirin:
 
-    ```csharp
+    ```cs
     public void MakeSyncedGameObject(Entity entity)
     {
         var entityGameObject = entity.GetOrCreateGameObject(UnityCreationMode.DoNotCreateUnityComponents);

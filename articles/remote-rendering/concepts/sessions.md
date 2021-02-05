@@ -6,12 +6,12 @@ ms.author: jakras
 ms.date: 02/21/2020
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8f2adc846247c4f06c9356f482501fd01c5463bf
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 321d73c78d0192dcb7a303f4aa70a4ff0f18ecea
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92202693"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99593714"
 ---
 # <a name="remote-rendering-sessions"></a>Remote Rendering Oturumları
 
@@ -25,9 +25,9 @@ Bu, Azure uzaktan Işleme kullandığınızda, gerekli donanım özelliklerine s
 
 ## <a name="managing-sessions"></a>Oturumları yönetme
 
-Oturumları yönetmek ve bunlarla etkileşim kurmak için birden çok yol vardır. Oturumların oluşturulması, güncelleştirilmesi ve kapatılmasından bağımsız olarak, [oturum yönetimi REST API](../how-tos/session-rest-api.md). C# ve C++ ' da, bu işlemler sınıflar ve sınıfları aracılığıyla `AzureFrontend` sunulur `AzureSession` . Unity uygulamalarında, bileşen tarafından sağlanan başka yardımcı program işlevleri de vardır `ARRServiceUnity` .
+Oturumları yönetmek ve bunlarla etkileşim kurmak için birden çok yol vardır. Oturumların oluşturulması, güncelleştirilmesi ve kapatılmasından bağımsız olarak, [oturum yönetimi REST API](../how-tos/session-rest-api.md). C# ve C++ ' da, bu işlemler sınıflar ve sınıfları aracılığıyla `RemoteRenderingClient` sunulur `RenderingSession` . Unity uygulamalarında, bileşen tarafından sağlanan başka yardımcı program işlevleri de vardır `ARRServiceUnity` .
 
-Etkin bir oturuma *bağlandıktan* sonra, [model yükleme](models.md) ve sahne ile etkileşim kurma gibi işlemler sınıfı aracılığıyla sunulur `AzureSession` .
+Etkin bir oturuma *bağlandıktan* sonra, [model yükleme](models.md) ve sahne ile etkileşim kurma gibi işlemler sınıfı aracılığıyla sunulur `RenderingSession` .
 
 ### <a name="managing-multiple-sessions-simultaneously"></a>Birden çok oturumu eşzamanlı olarak yönetme
 
@@ -39,14 +39,14 @@ Her oturum birden çok aşamaya gider.
 
 ### <a name="session-startup"></a>Oturum başlatma
 
-ARR 'nin [Yeni bir oturum oluşturmasını](../how-tos/session-rest-api.md#create-a-session)istediğinizde, ilk şey bir oturum [UUID 'si](https://en.wikipedia.org/wiki/Universally_unique_identifier)döndürmemelidir. Bu UUID, oturum hakkındaki bilgileri sorgulamanızı sağlar. UUID ve oturumla ilgili bazı temel bilgiler 30 gün boyunca kalıcıdır, bu sayede oturum durdurulduktan sonra bile bu bilgileri sorgulayabilirsiniz. Bu noktada, **oturum durumu** **Başlangıç**olarak bildirilir.
+ARR 'nin [Yeni bir oturum oluşturmasını](../how-tos/session-rest-api.md#create-a-session)istediğinizde, ilk şey bir oturum [UUID 'si](https://en.wikipedia.org/wiki/Universally_unique_identifier)döndürmemelidir. Bu UUID, oturum hakkındaki bilgileri sorgulamanızı sağlar. UUID ve oturumla ilgili bazı temel bilgiler 30 gün boyunca kalıcıdır, bu sayede oturum durdurulduktan sonra bile bu bilgileri sorgulayabilirsiniz. Bu noktada, **oturum durumu** **Başlangıç** olarak bildirilir.
 
 Ardından, Azure uzaktan Işleme oturumunuzu barındırabileceğinizi bir sunucu bulmaya çalışır. Bu arama için iki parametre vardır. İlk olarak, yalnızca [bölgenizdeki](../reference/regions.md)sunucuları ayıracaktır. Bunun nedeni, bölgeler arasında ağ gecikmesi, bir deneyim sağlamak için çok yüksek olabilir. İkinci faktör, belirlediğiniz istenen *boyutdır* . Her bölgede, [*Standart*](../reference/vm-sizes.md) veya [*Premium*](../reference/vm-sizes.md) boyut isteğini yerine getirebilecek sınırlı sayıda sunucu vardır. Sonuç olarak, istenen boyuttaki tüm sunucular Şu anda bölgenizde kullanılıyorsa, oturum oluşturma başarısız olur. Hatanın nedeni [sorgulanamaz](../how-tos/session-rest-api.md#get-sessions-properties).
 
 > [!IMPORTANT]
 > *Standart* bir sunucu boyutu istemeniz durumunda istek yüksek talebe göre başarısız olursa, bu da bir *Premium* sunucu isteğinin başarısız olacağını göstermez. Bu, sizin için bir seçenek ise, bir *Premium* sunucu boyutuna geri düşmesini deneyebilirsiniz.
 
-Hizmet uygun bir sunucu bulduğunda, bir Azure uzaktan Işleme konağına dönüştürmek için doğru sanal makineyi (VM) üzerine kopyalamanız gerekir. Bu işlem birkaç dakika sürer. Daha sonra VM 'nin önyüklendi ve **oturum durumu** , **Ready**olarak geçiş yapar.
+Hizmet uygun bir sunucu bulduğunda, bir Azure uzaktan Işleme konağına dönüştürmek için doğru sanal makineyi (VM) üzerine kopyalamanız gerekir. Bu işlem birkaç dakika sürer. Daha sonra VM 'nin önyüklendi ve **oturum durumu** , **Ready** olarak geçiş yapar.
 
 Bu noktada, sunucu özel olarak girişinizi bekliyor. Bu ayrıca hizmet için faturalandırılırsınız.
 
@@ -64,16 +64,16 @@ Bir cihaz bir oturuma bağlıyken, diğer cihazların bağlanmasına yönelik gi
 
 ### <a name="session-end"></a>Oturum sonu
 
-Yeni bir oturum istediğinizde, genellikle bir ile sekiz saat aralığında bir *maksimum kira süresi*belirtirsiniz. Bu, konağın girişinizi kabul edeceği süredir.
+Yeni bir oturum istediğinizde, genellikle bir ile sekiz saat aralığında bir *maksimum kira süresi* belirtirsiniz. Bu, konağın girişinizi kabul edeceği süredir.
 
-Bir oturumun bitmesi için iki normal neden vardır. Oturumu durdurulacak veya en fazla kira süresinin sona ereceğini el ile istemeniz gerekir. Her iki durumda da, ana bilgisayara etkin olan bağlantı hemen kapatılır ve hizmet bu sunucuda kapatılır. Sunucu daha sonra Azure havuzuna geri verilir ve diğer amaçlar için bir talep alabilir. Bir oturumun durdurulması geri alınamaz veya iptal edilemez. Durdurulmuş bir oturumdaki oturum **durumunun** sorgulanması, el ile kapatılıp kapatılmadığına veya en fazla kira süresine ulaşılmasına bağlı olarak **durdurulmuş** veya **süresi sona ermeden**döndürülür.
+Bir oturumun bitmesi için iki normal neden vardır. Oturumu durdurulacak veya en fazla kira süresinin sona ereceğini el ile istemeniz gerekir. Her iki durumda da, ana bilgisayara etkin olan bağlantı hemen kapatılır ve hizmet bu sunucuda kapatılır. Sunucu daha sonra Azure havuzuna geri verilir ve diğer amaçlar için bir talep alabilir. Bir oturumun durdurulması geri alınamaz veya iptal edilemez. Durdurulmuş bir oturumdaki oturum **durumunun** sorgulanması, el ile kapatılıp kapatılmadığına veya en fazla kira süresine ulaşılmasına bağlı olarak **durdurulmuş** veya **süresi sona ermeden** döndürülür.
 
 Bir oturum, bazı hatalar nedeniyle durdurulmuş de olabilir.
 
 Her durumda, bir oturum durdurulduğunda daha fazla faturalandırılmaz.
 
 > [!WARNING]
-> Bir oturuma bağlanıp, ne kadar süreyle faturalandırmayı etkilemediği. Hizmetin ödedikleriniz, *oturum süresine*bağlıdır, bu da bir sunucunun sizin için özel olarak ayırdığı zaman ve istenen donanım özellikleri ( [ayrılan boyut](../reference/vm-sizes.md)) anlamına gelir. Bir oturum başlatırsanız, beş dakikaya bağlanıp oturumu durdurmayın, böylece kira süresi dolana kadar çalışmaya devam eder, tam oturum kiralama süresi için faturalandırılırsınız. Buna karşılık, *en fazla kiralama süresi* genellikle bir güvenlik ağı olur. Sekiz saatlik bir kira süresi ile oturum isteyip istemenizden bağımsız olarak, oturumu daha sonra el ile durdurursanız beş dakika boyunca kullanın.
+> Bir oturuma bağlanıp, ne kadar süreyle faturalandırmayı etkilemediği. Hizmetin ödedikleriniz, *oturum süresine* bağlıdır, bu da bir sunucunun sizin için özel olarak ayırdığı zaman ve istenen donanım özellikleri ( [ayrılan boyut](../reference/vm-sizes.md)) anlamına gelir. Bir oturum başlatırsanız, beş dakikaya bağlanıp oturumu durdurmayın, böylece kira süresi dolana kadar çalışmaya devam eder, tam oturum kiralama süresi için faturalandırılırsınız. Buna karşılık, *en fazla kiralama süresi* genellikle bir güvenlik ağı olur. Sekiz saatlik bir kira süresi ile oturum isteyip istemenizden bağımsız olarak, oturumu daha sonra el ile durdurursanız beş dakika boyunca kullanın.
 
 #### <a name="extend-a-sessions-lease-time"></a>Bir oturumun kira süresini genişletme
 
@@ -89,20 +89,22 @@ RemoteRenderingInitialization init = new RemoteRenderingInitialization();
 
 RemoteManagerStatic.StartupRemoteRendering(init);
 
-AzureFrontendAccountInfo accountInfo = new AzureFrontendAccountInfo();
-// fill out accountInfo details...
+SessionConfiguration sessionConfig = new SessionConfiguration();
+// fill out sessionConfig details...
 
-AzureFrontend frontend = new AzureFrontend(accountInfo);
+RemoteRenderingClient client = new RemoteRenderingClient(sessionConfig);
 
-RenderingSessionCreationParams sessionCreationParams = new RenderingSessionCreationParams();
-// fill out sessionCreationParams...
+RenderingSessionCreationOptions rendererOptions = new RenderingSessionCreationOptions();
+// fill out rendererOptions...
 
-AzureSession session = await frontend.CreateNewRenderingSessionAsync(sessionCreationParams).AsTask();
+CreateRenderingSessionResult result = await client.CreateNewRenderingSessionAsync(rendererOptions);
 
+RenderingSession session = result.Session;
 RenderingSessionProperties sessionProperties;
 while (true)
 {
-    sessionProperties = await session.GetPropertiesAsync().AsTask();
+    var propertiesResult = await session.GetPropertiesAsync();
+    sessionProperties = propertiesResult.SessionProperties;
     if (sessionProperties.Status != RenderingSessionStatus.Starting &&
         sessionProperties.Status != RenderingSessionStatus.Unknown)
     {
@@ -118,43 +120,43 @@ if (sessionProperties.Status != RenderingSessionStatus.Ready)
 }
 
 // Connect to server
-Result connectResult = await session.ConnectToRuntime(new ConnectToRuntimeParams()).AsTask();
+ConnectionStatus connectStatus = await session.ConnectAsync(new RendererInitOptions());
 
 // Connected!
 
-while(...)
+while (...)
 {
     // per frame update
 
-    session.Actions.Update();
+    session.Connection.Update();
 }
 
 // Disconnect
-session.DisconnectFromRuntime();
+session.Disconnect();
 
 // stop the session
-await session.StopAsync().AsTask();
+await session.StopAsync();
 
 // shut down the remote rendering SDK
 RemoteManagerStatic.ShutdownRemoteRendering();
 ```
 
-Birden çok `AzureFrontend` ve `AzureSession` örnek, koddan korunabilir, değiştirilebilir ve sorgulanabilir. Ancak tek seferde yalnızca bir cihaz bağlanabilir `AzureSession` .
+Birden çok `RemoteRenderingClient` ve `RenderingSession` örnek, koddan korunabilir, değiştirilebilir ve sorgulanabilir. Ancak tek seferde yalnızca bir cihaz bağlanabilir `RenderingSession` .
 
-Bir sanal makinenin ömrü `AzureFrontend` örneğe veya örneğe bağlı değildir `AzureSession` . `AzureSession.StopAsync` bir oturumu durdurmak için çağrılmalıdır.
+Bir sanal makinenin ömrü `RemoteRenderingClient` örneğe veya örneğe bağlı değildir `RenderingSession` . `RenderingSession.StopAsync` bir oturumu durdurmak için çağrılmalıdır.
 
-Kalıcı oturum KIMLIĞI ile `AzureSession.SessionUUID()` yerel olarak sorgulanabilir ve yerel olarak önbelleğe alınabilir. Bu KIMLIKLE, bir uygulama bu `AzureFrontend.OpenSession` oturuma bağlamak için çağrı yapabilir.
+Kalıcı oturum KIMLIĞI ile `RenderingSession.SessionUuid()` yerel olarak sorgulanabilir ve yerel olarak önbelleğe alınabilir. Bu KIMLIKLE, bir uygulama bu `RemoteRenderingClient.OpenRenderingSessionAsync` oturuma bağlamak için çağrı yapabilir.
 
-True olduğunda, `AzureSession.IsConnected` `AzureSession.Actions` `RemoteManager` [model yükleme](models.md), [varlıkları](entities.md)işleme ve işlenmiş sahneye ilişkin [sorgu bilgilerini](../overview/features/spatial-queries.md) içeren öğesinin bir örneğini döndürür.
+True olduğunda, `RenderingSession.IsConnected` `RenderingSession.Connection` `RenderingConnection` [model yükleme](models.md), [varlıkları](entities.md)işleme ve işlenmiş sahneye ilişkin [sorgu bilgilerini](../overview/features/spatial-queries.md) içeren öğesinin bir örneğini döndürür.
 
 ## <a name="api-documentation"></a>API belgeleri
 
-* [C# AzureSession sınıfı](/dotnet/api/microsoft.azure.remoterendering.azuresession)
-* [C# AzureFrontend. CreateNewRenderingSessionAsync ()](/dotnet/api/microsoft.azure.remoterendering.azurefrontend.createnewrenderingsessionasync)
-* [C# AzureFrontend. OpenRenderingSession ()](/dotnet/api/microsoft.azure.remoterendering.azurefrontend.openrenderingsession)
-* [C++ AzureSession sınıfı](/cpp/api/remote-rendering/azuresession)
-* [C++ AzureFrontend:: CreateNewRenderingSessionAsync](/cpp/api/remote-rendering/azurefrontend#createnewrenderingsessionasync)
-* [C++ AzureFrontend:: OpenRenderingSession](/cpp/api/remote-rendering/azurefrontend#openrenderingsession)
+* [C# RenderingSession sınıfı](/dotnet/api/microsoft.azure.remoterendering.renderingsession)
+* [C# RemoteRenderingClient. CreateNewRenderingSessionAsync ()](/dotnet/api/microsoft.azure.remoterendering.remoterenderingclient.createnewrenderingsessionasync)
+* [C# RemoteRenderingClient. OpenRenderingSessionAsync ()](/dotnet/api/microsoft.azure.remoterendering.remoterenderingclient.openrenderingsessionasync)
+* [C++ RenderingSession sınıfı](/cpp/api/remote-rendering/renderingsession)
+* [C++ RemoteRenderingClient:: CreateNewRenderingSessionAsync](/cpp/api/remote-rendering/remoterenderingclient#createnewrenderingsessionasync)
+* [C++ RemoteRenderingClient:: OpenRenderingSession](/cpp/api/remote-rendering/remoterenderingclient#openrenderingsession)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

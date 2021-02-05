@@ -1,14 +1,14 @@
 ---
 title: 'Hızlı başlangıç: Portal ile bir yönetim grubu oluşturma'
 description: Bu hızlı başlangıçta, kaynaklarınızı bir kaynak hiyerarşisinde düzenlemek üzere bir yönetim grubu oluşturmak için Azure portal kullanırsınız.
-ms.date: 08/31/2020
+ms.date: 02/05/2021
 ms.topic: quickstart
-ms.openlocfilehash: c8cb7b8bd3ad33d1f315670bfbb1782972e6e97f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 5a336fe4caf5d2f825a93b5c7b8f8d05f6255c39
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89661733"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99592441"
 ---
 # <a name="quickstart-create-a-management-group"></a>Hızlı başlangıç: yönetim grubu oluşturma
 
@@ -28,7 +28,7 @@ Dizinde oluşturulan ilk yönetim grubunun tamamlanması 15 dakika sürebilir. D
 
 1. **Tüm hizmetler**  >  **yönetimi + idare**' ı seçin.
 
-1. **Yönetim grupları**seçin.
+1. **Yönetim grupları** seçin.
 
 1. **+ Yönetim grubu Ekle**' yi seçin.
 
@@ -39,7 +39,7 @@ Dizinde oluşturulan ilk yönetim grubunun tamamlanması 15 dakika sürebilir. D
    - **Yönetim grubu kimliği** , bu yönetim grubundaki komutları göndermek için kullanılan dizin benzersiz tanımlayıcısıdır. Bu tanımlayıcı, bu grubu tanımlamak için Azure sisteminde kullanıldığından oluşturulduktan sonra düzenlenebilir değildir. [Kök yönetim grubu](./overview.md#root-management-group-for-each-directory) , Azure Active Directory kimliği olan bir kimlikle otomatik olarak oluşturulur. Diğer tüm yönetim grupları için benzersiz bir KIMLIK atayın.
    - Görünen ad alanı Azure portal içinde görüntülenen addır. Ayrı bir görünen ad, yönetim grubu oluşturulurken isteğe bağlı bir alandır ve herhangi bir zamanda değiştirilebilir.
 
-   :::image type="content" source="./media/create_context_menu.png" alt-text="Alt yönetim grupları ve abonelikleri gösteren yönetim grupları sayfasının ekran görüntüsü.":::
+   :::image type="content" source="./media/create_context_menu.png" alt-text="Yeni bir yönetim grubu oluşturmak için ' yönetim grubu Ekle ' seçeneklerinin ekran görüntüsü.":::
 
 1. **Kaydet**’i seçin.
 
@@ -49,7 +49,7 @@ Oluşturulan yönetim grubunu kaldırmak için şu adımları izleyin:
 
 1. **Tüm hizmetler**  >  **yönetimi + idare**' ı seçin.
 
-1. **Yönetim grupları**seçin.
+1. **Yönetim grupları** seçin.
 
 1. Yukarıda oluşturulan yönetim grubunu bulun, seçin ve ardından adın yanındaki **Ayrıntılar** ' ı seçin.
    Ardından **Sil** ' i seçin ve istemi onaylayın.

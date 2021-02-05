@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 06/08/2020
 ms.topic: quickstart
-ms.openlocfilehash: d35d6e75b45c2ea263c2e986c5fc6f414cad16e4
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: b469f0cae1e356c47bfe60af99c4fa2e73eab78d
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97724978"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594036"
 ---
 # <a name="quickstart-deploy-native-c-sample-to-hololens"></a>Hızlı başlangıç: HoloLens 'e yerel C++ örneği dağıtma
 
@@ -61,26 +61,26 @@ Derleme yapılandırmasını *hata ayıklama* (veya *Release*) ve *ARM64* olarak
 
 ![Visual Studio yapılandırması](media/vs-config-native-cpp-tutorial.png)
 
-Hesap kimlik bilgileri öğreticinin kaynak kodunda kodlandığı için, bunları geçerli kimlik bilgileriyle değiştirin. Bunun için, dosyayı `HolographicAppMain.cpp` Visual Studio içinde açın ve sınıfın Oluşturucusu içinde ön uç 'nin oluşturulduğu parçayı değiştirin `HolographicAppMain` :
+Hesap kimlik bilgileri öğreticinin kaynak kodunda kodlandığı için, bunları geçerli kimlik bilgileriyle değiştirin. Bunun için, dosyayı `HolographicAppMain.cpp` Visual Studio içinde açın ve istemcinin sınıf oluşturucusunun içinde oluşturulduğu parçayı değiştirin `HolographicAppMain` :
 
 ```cpp
-// 2. Create front end
+// 2. Create Client
 {
     // Users need to fill out the following with their account data and model
-    RR::AzureFrontendAccountInfo init;
+    RR::SessionConfiguration init;
     init.AccountId = "00000000-0000-0000-0000-000000000000";
     init.AccountKey = "<account key>";
-    init.AccountDomain = "westus2.mixedreality.azure.com"; // <change to the region that the rendering session should be created in>
-    init.AccountAuthenticationDomain = "westus2.mixedreality.azure.com"; // <change to the region the account was created in>
+    init.RemoteRenderingDomain = "westus2.mixedreality.azure.com"; // <change to the region that the rendering session should be created in>
+    init.AccountDomain = "westus2.mixedreality.azure.com"; // <change to the region the account was created in>
     m_modelURI = "builtin://Engine";
     m_sessionOverride = ""; // If there is a valid session ID to re-use, put it here. Otherwise a new one is created
-    m_frontEnd = RR::ApiHandle(RR::AzureFrontend(init));
+    m_client = RR::ApiHandle(RR::RemoteRenderingClient(init));
 }
 ```
 
 Özellikle, aşağıdaki değerleri değiştirin:
-* `init.AccountId`, `init.AccountKey` ve, `init.AccountAuthenticationDomain` Hesap verilerinizi kullanmak için. [Hesap bilgilerini alma](../../../how-tos/create-an-account.md#retrieve-the-account-information)hakkında paragrafa bakın.
-* Örneğin `init.AccountDomain` , örneğin, diğer bölgelere ait dizenin bölge bölümünü değiştirerek uzaktan işleme oturumunun nerede oluşturulacağını belirtin `westus2` `"westeurope.mixedreality.azure.com"` .
+* `init.AccountId`, `init.AccountKey` ve, `init.AccountDomain` Hesap verilerinizi kullanmak için. [Hesap bilgilerini alma](../../../how-tos/create-an-account.md#retrieve-the-account-information)hakkında paragrafa bakın.
+* Örneğin `init.RemoteRenderingDomain` , örneğin, diğer bölgelere ait dizenin bölge bölümünü değiştirerek uzaktan işleme oturumunun nerede oluşturulacağını belirtin `westus2` `"westeurope.mixedreality.azure.com"` .
 * Ayrıca, `m_sessionOverride` var olan bir oturum kimliği ile değiştirilebilir. Oturumlar, örneğin [PowerShell betiği](../../../samples/powershell-example-scripts.md#script-renderingsessionps1) kullanılarak veya [oturum REST API](../../../how-tos/session-rest-api.md#create-a-session) doğrudan kullanılarak bu örneğin dışında oluşturulabilir.
 Örnek dışında bir oturum oluşturmak, örneğin örnek birden çok kez çalıştırılması önerilir. Hiçbir oturum geçirilmemişse, örnek her başlatma sırasında yeni bir oturum oluşturur ve bu işlem birkaç dakika sürebilir.
 

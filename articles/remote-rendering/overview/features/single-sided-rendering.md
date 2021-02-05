@@ -6,27 +6,27 @@ ms.author: flborn
 ms.date: 02/06/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 37a665c776a64558a13910875f221462fb7d0ef8
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: fea9deae3948b36732b5ea5203fceea6bec07fb9
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92205073"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594087"
 ---
 # <a name="no-loc-textsingle-sided-rendering"></a>:::no-loc text="Single-sided"::: çizmeye
 
 Çoğu işleyicilere, performansı artırmak için [arka yüz kaldırma](https://en.wikipedia.org/wiki/Back-face_culling) kullanır. Ancak, kafesler [kesme düzlemleri](cut-planes.md)açık bir şekilde kesiliyorsa, kullanıcılar genellikle üçgenlerin arka tarafına bakar. Bu üçgenler ortaya koyulur olursa sonuç, ikna edici değildir.
 
-Bu sorunu güvenilir bir şekilde önlemenin yolu, üçgenler *çift taraflı*işlenmelidir. Arka yüz yüzey kaldırma işlemi, performans etkilerine karşı, varsayılan olarak Azure uzaktan Işleme yalnızca Kesme düzlemiyle kesişen kafesler için çift taraflı işlemeye geçiş yapar.
+Bu sorunu güvenilir bir şekilde önlemenin yolu, üçgenler *çift taraflı* işlenmelidir. Arka yüz yüzey kaldırma işlemi, performans etkilerine karşı, varsayılan olarak Azure uzaktan Işleme yalnızca Kesme düzlemiyle kesişen kafesler için çift taraflı işlemeye geçiş yapar.
 
-* :::no-loc text="single-sided"::: İşleme* ayarı bu davranışı özelleştirmenize olanak sağlar.
+*:::no-loc text="single-sided"::: İşleme* ayarı bu davranışı özelleştirmenize olanak sağlar.
 
 > [!CAUTION]
 > :::no-loc text="single-sided":::İşleme ayarı deneysel bir özelliktir. Gelecekte yeniden kaldırılabileceği. Uygulamanızda önemli bir sorunu gerçekten çözmediğiniz müddetçe lütfen varsayılan ayarı değiştirmeyin.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-:::no-loc text="single-sided":::İşleme ayarının yalnızca [converted](../../how-tos/conversion/configure-model-conversion.md) `opaqueMaterialDefaultSidedness` seçeneği olarak ayarlanmış olan kafesler için bir etkisi vardır `SingleSided` . Varsayılan olarak, bu seçenek olarak ayarlanır `DoubleSided` .
+:::no-loc text="single-sided":::İşleme ayarının yalnızca [](../../how-tos/conversion/configure-model-conversion.md) `opaqueMaterialDefaultSidedness` seçeneği olarak ayarlanmış olan kafesler için bir etkisi vardır `SingleSided` . Varsayılan olarak, bu seçenek olarak ayarlanır `DoubleSided` .
 
 ## <a name="no-loc-textsingle-sided-rendering-setting"></a>:::no-loc text="Single-sided"::: işleme ayarı
 
@@ -41,9 +41,9 @@ Bu sorunu güvenilir bir şekilde önlemenin yolu, üçgenler *çift taraflı*i�
 :::no-loc text="single-sided":::Oluşturma ayarlarının değiştirilmesi aşağıdaki şekilde yapılabilir:
 
 ```cs
-void ChangeSingleSidedRendering(AzureSession session)
+void ChangeSingleSidedRendering(RenderingSession session)
 {
-    SingleSidedSettings settings = session.Actions.SingleSidedSettings;
+    SingleSidedSettings settings = session.Connection.SingleSidedSettings;
 
     // Single-sided geometry is rendered as is
     settings.Mode = SingleSidedMode.Normal;
@@ -54,9 +54,9 @@ void ChangeSingleSidedRendering(AzureSession session)
 ```
 
 ```cpp
-void ChangeSingleSidedRendering(ApiHandle<AzureSession> session)
+void ChangeSingleSidedRendering(ApiHandle<RenderingSession> session)
 {
-    ApiHandle<SingleSidedSettings> settings = session->Actions()->GetSingleSidedSettings();
+    ApiHandle<SingleSidedSettings> settings = session->Connection()->GetSingleSidedSettings();
 
     // Single-sided geometry is rendered as is
     settings->SetMode(SingleSidedMode::Normal);
@@ -68,8 +68,8 @@ void ChangeSingleSidedRendering(ApiHandle<AzureSession> session)
 
 ## <a name="api-documentation"></a>API belgeleri
 
-* [C# RemoteManager. SingleSidedSettings özelliği](/dotnet/api/microsoft.azure.remoterendering.remotemanager.singlesidedsettings)
-* [C++ RemoteManager:: SingleSidedSettings ()](/cpp/api/remote-rendering/remotemanager#singlesidedsettings)
+* [C# RenderingConnection. SingleSidedSettings özelliği](/dotnet/api/microsoft.azure.remoterendering.renderingconnection.singlesidedsettings)
+* [C++ RenderingConnection:: SingleSidedSettings ()](/cpp/api/remote-rendering/renderingconnection#singlesidedsettings)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

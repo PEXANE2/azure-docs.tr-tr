@@ -1,14 +1,14 @@
 ---
 title: 'Hızlı başlangıç: REST API bir yönetim grubu oluşturma'
 description: Bu hızlı başlangıçta, kaynaklarınızı bir kaynak hiyerarşisinde düzenlemek üzere bir yönetim grubu oluşturmak için REST API kullanırsınız.
-ms.date: 08/31/2020
+ms.date: 02/05/2021
 ms.topic: quickstart
-ms.openlocfilehash: b19fddf8215a1b133254c2a31bbea568a315f721
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ff1487bf25945c733402ddb74d1e102bea80b4b1
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89237408"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99592509"
 ---
 # <a name="quickstart-create-a-management-group-with-rest-api"></a>Hızlı başlangıç: REST API bir yönetim grubu oluşturma
 
@@ -20,7 +20,7 @@ Dizinde oluşturulan ilk yönetim grubunun tamamlanması 15 dakika sürebilir. D
 
 - Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
-- Henüz yapmadıysanız, [Armclient](https://github.com/projectkudu/ARMClient)' ı yüklemeyin. Azure Resource Manager tabanlı REST API 'Lerine HTTP istekleri gönderen bir araçtır. Alternatif olarak, bekleyen belgelerde "dene" özelliğini veya PowerShell 'in [Invoke-RestMethod](/powershell/module/microsoft.powershell.utility/invoke-restmethod) veya [Postman](https://www.postman.com)gibi araçları kullanabilirsiniz.
+- Henüz yapmadıysanız, [Armclient](https://github.com/projectkudu/ARMClient)' ı yüklemeyin. Azure Resource Manager tabanlı REST API 'Lerine HTTP istekleri gönderen bir araçtır. Bunun yerine, bekleyen belgelerde "dene" özelliğini veya PowerShell 'in [Invoke-RestMethod](/powershell/module/microsoft.powershell.utility/invoke-restmethod) veya [Postman](https://www.postman.com)gibi araçları kullanabilirsiniz.
 
 - Kiracıdaki tüm Azure AD kullanıcıları, [hiyerarşi koruması](./how-to/protect-resource-hierarchy.md#setting---require-authorization) etkinleştirilmemişse, bu kullanıcıya atanan yönetim grubu yazma izni olmadan bir yönetim grubu oluşturabilir. Bu yeni yönetim grubu kök yönetim grubunun veya [Varsayılan yönetim grubunun](./how-to/protect-resource-hierarchy.md#setting---default-management-group) bir alt öğesi haline gelir ve oluşturucuya "Owner" rol ataması verilir. Yönetim grubu hizmeti, bu becerisine, rol atamalarının kök düzeyinde gerekmemesi için izin verir. Kök yönetim grubuna, bir kullanıcı oluşturulduğunda erişemez. Yönetim grupları 'nı kullanmaya başlamak üzere Azure AD Genel yöneticilerini bulmanın önüne geçmek için, kök düzeyinde ilk yönetim gruplarının oluşturulmasına izin veririz.
 
@@ -40,7 +40,7 @@ REST API için [Yönetim grupları-oluştur veya Güncelleştir](/rest/api/resou
 
 **GroupID** , oluşturulmakta olan benzersiz bir tanımlayıcıdır. Bu KIMLIK, bu gruba başvurmak için diğer komutlar tarafından kullanılır ve daha sonra değiştirilemez.
 
-Yönetim grubunun Azure portal içinde farklı bir ad göstermesini istiyorsanız, istek gövdesine **Properties. DisplayName** özelliğini ekleyin. Örneğin, _contoso_ **GroupID** ve _contoso grubunun_görünen adı ile bir yönetim grubu oluşturmak için aşağıdaki uç noktayı ve istek gövdesini kullanın:
+Yönetim grubunun Azure portal içinde farklı bir ad göstermesini istiyorsanız, istek gövdesine **Properties. DisplayName** özelliğini ekleyin. Örneğin, _contoso_ **GroupID** ve _contoso grubunun_ görünen adı ile bir yönetim grubu oluşturmak için aşağıdaki uç noktayı ve istek gövdesini kullanın:
 
 - REST API URI'si
 

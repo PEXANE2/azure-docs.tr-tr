@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 01/23/2020
 ms.topic: quickstart
-ms.openlocfilehash: b2a15bcc9d9dce922470031fd07b66cf9899f0b3
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: c9b5d525954e7f0742cd13fe4d64a73df64ea854
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92281349"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594476"
 ---
 # <a name="quickstart-convert-a-model-for-rendering"></a>Hızlı başlangıç: Modeli işlenmek üzere dönüştürme
 
@@ -24,14 +24,14 @@ ms.locfileid: "92281349"
 > * Azure uzaktan Işleme ile kullanmak için bir 3B modeli yükleme ve dönüştürme
 > * Dönüştürülmüş 3B modeli işleme için bir uygulamaya ekleme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Hızlı başlangıç: Unity ile model işleme](render-model.md)
 * PowerShell betiği kullanılarak dönüştürme için: Install Azure PowerShell [(belgeler)](/powershell/azure/)
   * Yönetici haklarıyla bir PowerShell açın
   * Çalışmaz `Install-Module -Name Az -AllowClobber`
 
-## <a name="overview"></a>Genel bakış
+## <a name="overview"></a>Genel Bakış
 
 Sunucu üzerindeki işleyici, FBX veya GLTF gibi kaynak model biçimleriyle doğrudan çalışabilir. Bunun yerine, modelin özel bir ikili biçimde olmasını gerektirir.
 Dönüştürme hizmeti, Azure Blob depolama alanındaki modelleri kullanır ve dönüştürülen modelleri, belirtilen bir Azure Blob depolama kapsayıcısına geri yazar.
@@ -70,7 +70,7 @@ Bu düğmeye tıkladığınızda, doldurulacak depolama özellikleriyle aşağı
 Formu aşağıdaki şekilde doldurun:
 
 * Açılan kutunun altındaki bağlantıdan yeni bir kaynak grubu oluşturun ve bu **ARR_Tutorial** adlandırın
-* **Depolama hesabı adı**için buraya benzersiz bir ad girin. **Bu ad genel olarak benzersiz olmalıdır**, aksi takdirde adın zaten alındığını bildiren bir istem olacaktır. Bu hızlı başlangıç kapsamında, **arrtutorialstorage**olarak adlandırın. Buna uygun olarak, bu hızlı başlangıçtaki herhangi bir oluşum için adınızı adınızla değiştirmeniz gerekir.
+* **Depolama hesabı adı** için buraya benzersiz bir ad girin. **Bu ad genel olarak benzersiz olmalıdır**, aksi takdirde adın zaten alındığını bildiren bir istem olacaktır. Bu hızlı başlangıç kapsamında, **arrtutorialstorage** olarak adlandırın. Buna uygun olarak, bu hızlı başlangıçtaki herhangi bir oluşum için adınızı adınızla değiştirmeniz gerekir.
 * Size yakın bir **konum** seçin. İdeal olarak, diğer hızlı başlangıçta işlemeyi ayarlamak için kullanılan konumu kullanır.
 * ' Standart ' olarak ayarlanan **performans**
 * **Hesap türü** ' StorageV2 (genel amaçlı v2) ' olarak ayarlandı
@@ -117,7 +117,7 @@ Dönüşümleri başlatmak ve işlenmiş sonuçla etkileşmek için [ARRT adlı 
 
 ### <a name="2-conversion-via-a-powershell-script"></a>2. bir PowerShell betiği aracılığıyla dönüştürme
 
-Varlık dönüştürme hizmetini çağırmayı kolaylaştırmak için bir yardımcı program betiği sağlıyoruz. *Betikler* klasöründe bulunur ve **Conversion.ps1**olarak adlandırılır.
+Varlık dönüştürme hizmetini çağırmayı kolaylaştırmak için bir yardımcı program betiği sağlıyoruz. *Betikler* klasöründe bulunur ve **Conversion.ps1** olarak adlandırılır.
 
 Özellikle, bu betik
 
@@ -126,7 +126,7 @@ Varlık dönüştürme hizmetini çağırmayı kolaylaştırmak için bir yardı
 1. dönüştürme işlemi başarılı veya başarısız ile sonlanana kadar, alınan dönüştürme KIMLIĞIYLE birlikte dönüştürme durumu API 'sini yoklayın
 1. çıktı depolama alanındaki dönüştürülmüş varlığın bir bağlantısını alır
 
-Betik, * üzerindeScripts\arrconfig.js*dosya yapılandırmasını okur. Bu JSON dosyasını bir metin düzenleyicisinde açın.
+Betik, *üzerindeScripts\arrconfig.js* dosya yapılandırmasını okur. Bu JSON dosyasını bir metin düzenleyicisinde açın.
 
 ```json
 {
@@ -155,16 +155,16 @@ Betik, * üzerindeScripts\arrconfig.js*dosya yapılandırmasını okur. Bu JSON 
 
 **Accountsettings** grubu içindeki (hesap kimliği ve anahtar) yapılandırma, [Unity hızlı başlangıç ile model işleme](render-model.md)içindeki kimlik bilgilerine benzer şekilde doldurulmalıdır.
 
-**Assetconversionsettings** grubunun içinde, aşağıda görüldüğü gibi **resourceGroup**, **Blobınputcontainername**ve **bloi putcontainername** ' i değiştirdiğinizden emin olun.
+**Assetconversionsettings** grubunun içinde, aşağıda görüldüğü gibi **resourceGroup**, **Blobınputcontainername** ve **bloi putcontainername** ' i değiştirdiğinizden emin olun.
 **Arrtutorialstorage** değerinin, depolama hesabı oluşturma sırasında seçtiğiniz benzersiz adla değiştirilmeleri gerektiğini unutmayın.
 
 **Localassetdirectorypath** öğesini, diskinizde yer alan ve dönüştürmek istediğiniz modeli içeren dizine işaret etmek üzere değiştirin. \\Çift ters eğik çizgi ("") kullanarak yoldaki ters eğik çizgileri ("") doğru bir şekilde kaçış konusunda dikkatli olun \\ \\ .
 
-**Localassetdirectorypath** içinde verilen yoldaki tüm veriler, **ınputfolderpath**tarafından verilen bir alt yol altında **blobinputcontainername** blob kapsayıcısına yüklenir. Bu nedenle, "D: tmp robot" dizininin içeriğinin yukarıdaki örnek yapılandırmasında " \\ \\ robotConversion" yolu altındaki "arrtutorialstorage" depolama hesabının "arrinput" blob kapsayıcısına yüklenir. Zaten var olan dosyaların üzerine yazılacak.
+**Localassetdirectorypath** içinde verilen yoldaki tüm veriler, **ınputfolderpath** tarafından verilen bir alt yol altında **blobinputcontainername** blob kapsayıcısına yüklenir. Bu nedenle, "D: tmp robot" dizininin içeriğinin yukarıdaki örnek yapılandırmasında " \\ \\ robotConversion" yolu altındaki "arrtutorialstorage" depolama hesabının "arrinput" blob kapsayıcısına yüklenir. Zaten var olan dosyaların üzerine yazılacak.
 
 **Inputassetpath** öğesini dönüştürülecek modelin yolu olarak değiştirin; yol, localAssetDirectoryPath öğesine görelidir. Yol ayırıcısı olarak "" yerine "/" kullanın \\ . Bu nedenle, doğrudan "D: tmp robot" içinde bulunan bir "robot. fbx" dosyası için \\ \\ "robot. fbx" kullanın.
 
-Model dönüştürüldükten sonra, **Bloi Putcontainername**tarafından verilen depolama kapsayıcısına geri yazılır. İsteğe bağlı **Outputfolderpath**sağlanarak bir alt yol belirtilebilir. Yukarıdaki örnekte, sonuçta elde edilen "robot. arrAsset", "dönüştürülmüş/robot" altındaki çıkış blob kapsayıcısına kopyalanacaktır.
+Model dönüştürüldükten sonra, **Bloi Putcontainername** tarafından verilen depolama kapsayıcısına geri yazılır. İsteğe bağlı **Outputfolderpath** sağlanarak bir alt yol belirtilebilir. Yukarıdaki örnekte, sonuçta elde edilen "robot. arrAsset", "dönüştürülmüş/robot" altındaki çıkış blob kapsayıcısına kopyalanacaktır.
 
 **Outputassetfilename** yapılandırma ayarı, dönüştürülmüş varlığın adını belirler-parametre isteğe bağlıdır ve çıkış dosya adı, aksi takdirde giriş dosyası adından çıkarılır.
 
@@ -188,8 +188,8 @@ Connect-AzAccount
 ### <a name="3-conversion-via-api-calls"></a>3. API çağrıları aracılığıyla dönüştürme
 
 C# ve C++ API 'SI, hizmetle etkileşimde bulunmak için bir giriş noktası sağlar:
-* [C# AzureFrontend. StartAssetConversionAsync ()](/dotnet/api/microsoft.azure.remoterendering.azurefrontend.startassetconversionasync)
-* [C++ AzureFrontend:: StartAssetConversionAsync ()](/cpp/api/remote-rendering/azurefrontend#startassetconversionasync)
+* [C# RemoteRenderingClient. StartAssetConversionAsync ()](/dotnet/api/microsoft.azure.remoterendering.remoterenderingclient.startassetconversionasync)
+* [C++ RemoteRenderingClient:: StartAssetConversionAsync ()](/cpp/api/remote-rendering/remoterenderingclient#startassetconversionasync)
 
 
 ## <a name="insert-new-model-into-quickstart-sample-app"></a>Hızlı Başlangıç örnek uygulamasına yeni model Ekle

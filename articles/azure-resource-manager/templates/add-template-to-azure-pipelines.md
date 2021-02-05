@@ -2,25 +2,29 @@
 title: Azure Pipelines ve şablonlar ile CI/CD
 description: Azure Resource Manager şablonları kullanarak Azure Pipelines sürekli tümleştirmenin nasıl yapılandırılacağını açıklar. Bir PowerShell betiğini kullanmayı veya dosyaları bir hazırlama konumuna kopyalamayı ve buradan dağıtmayı gösterir.
 ms.topic: conceptual
-ms.date: 10/01/2020
-ms.openlocfilehash: 86ad2839375b73bf9595cf3369960e614ec03e67
-ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
+ms.date: 02/05/2021
+ms.openlocfilehash: ea1ccac00f121bd81fd8b9b1f182b565fc53d214
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93233823"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594206"
 ---
 # <a name="integrate-arm-templates-with-azure-pipelines"></a>ARM şablonlarını Azure Pipelines ile tümleştirme
 
-Sürekli tümleştirme ve sürekli dağıtım (CI/CD) için, Azure Resource Manager şablonlarını (ARM şablonları) Azure Pipelines tümleştirebilirsiniz. [ARM şablonlarının sürekli tümleştirmesi Azure Pipelines](deployment-tutorial-pipeline.md) , GitHub deponuzdan bir şablon dağıtmak için [ARM şablonu dağıtım görevinin](https://github.com/microsoft/azure-pipelines-tasks/blob/master/Tasks/AzureResourceManagerTemplateDeploymentV3/README.md) nasıl kullanılacağını gösterir. Bu yaklaşım, bir şablonu doğrudan bir depodan dağıtmak istediğinizde işe yarar.
+Sürekli tümleştirme ve sürekli dağıtım (CI/CD) için, Azure Resource Manager şablonlarını (ARM şablonları) Azure Pipelines tümleştirebilirsiniz. Bu makalede, Azure Pipelines şablonları dağıtmanın daha gelişmiş yolunu öğreneceksiniz.
 
-Bu makalede, Azure Pipelines şablonları dağıtmanın iki yolunu öğreneceksiniz. Bu makalede nasıl yapılacağı gösterilmektedir:
+## <a name="select-your-option"></a>Seçeneğinizi belirleyin
 
-* **Azure PowerShell betiği çalıştıran görev ekleyin**. Yerel testleri çalıştırırken kullandığınız betiği kullanabilmeniz için, bu seçeneğin geliştirme yaşam döngüsü genelinde tutarlılık sağlama avantajı vardır. Betiğinizin şablonu dağıtır ancak parametre olarak kullanılacak değerleri alma gibi başka işlemler de gerçekleştirebilir.
+Bu makaleye devam etmeden önce, bir işlem hattından ARM şablonu dağıtmaya yönelik farklı seçenekleri ele alalım.
+
+* **ARM şablonu dağıtım görevini kullanın**. Bu seçenek en kolay seçenektir. Bu yaklaşım, bir şablonu doğrudan bir depodan dağıtmak istediğinizde işe yarar. Bu seçenek bu makalede ele alınmamaktadır, bunun yerine [Azure Pipelines Ile ARM şablonlarının sürekli tümleştirmesinde](deployment-tutorial-pipeline.md)açıklanmıştır. GitHub deponuzdan bir şablon dağıtmak için [ARM şablonu dağıtım görevinin](https://github.com/microsoft/azure-pipelines-tasks/blob/master/Tasks/AzureResourceManagerTemplateDeploymentV3/README.md) nasıl kullanılacağını gösterir.
+
+* **Azure PowerShell betiği çalıştıran görev ekleyin**. Yerel testleri çalıştırırken kullandığınız betiği kullanabilmeniz için, bu seçeneğin geliştirme yaşam döngüsü genelinde tutarlılık sağlama avantajı vardır. Betiğinizin şablonu dağıtır ancak parametre olarak kullanılacak değerleri alma gibi başka işlemler de gerçekleştirebilir. Bu seçenek bu makalede gösterilmektedir. [Azure PowerShell görevi](#azure-powershell-task)' ne bakın.
 
    Visual Studio, bir PowerShell betiği içeren [Azure Kaynak grubu projesi](create-visual-studio-deployment-project.md) sağlar. Betik aşamaları, projenizdeki Kaynak Yöneticisi erişebileceği bir depolama hesabına ait yapıtlardan oluşur. Yapıtlar, projenizdeki bağlantılı şablonlar, betikler ve uygulama ikilileri gibi öğelerdir. Projeden betiği kullanmaya devam etmek istiyorsanız, bu makalede gösterilen PowerShell betiği görevini kullanın.
 
-* **Görevleri kopyalamak ve dağıtmak için görevler ekleyin**. Bu seçenek, proje betiğine uygun bir alternatif sağlar. Ardışık düzende iki görev yapılandırırsınız. Bir görev yapıtları erişilebilir bir konuma göre aşamalar. Diğer görev, şablonu o konumdan dağıtır.
+* **Görevleri kopyalamak ve dağıtmak için görevler ekleyin**. Bu seçenek, proje betiğine uygun bir alternatif sağlar. Ardışık düzende iki görev yapılandırırsınız. Bir görev yapıtları erişilebilir bir konuma göre aşamalar. Diğer görev, şablonu o konumdan dağıtır. Bu seçenek bu makalede gösterilmektedir. Bkz. [görevleri kopyalama ve dağıtma](#copy-and-deploy-tasks).
 
 ## <a name="prepare-your-project"></a>Projenizi hazırlama
 
@@ -34,7 +38,7 @@ Bu makalede, ARM şablonunuz ve Azure DevOps kuruluşunuzun işlem hattını olu
 
 ## <a name="create-pipeline"></a>İşlem hattı oluşturma
 
-1. Daha önce bir işlem hattı eklemediyseniz yeni bir işlem hattı oluşturmanız gerekir. Azure DevOps kuruluşunuzdan işlem **hatları** ve **Yeni işlem hattı** ' nı seçin.
+1. Daha önce bir işlem hattı eklemediyseniz yeni bir işlem hattı oluşturmanız gerekir. Azure DevOps kuruluşunuzdan işlem **hatları** ve **Yeni işlem hattı**' nı seçin.
 
    ![Yeni işlem hattı Ekle](./media/add-template-to-azure-pipelines/new-pipeline.png)
 
@@ -46,7 +50,7 @@ Bu makalede, ARM şablonunuz ve Azure DevOps kuruluşunuzun işlem hattını olu
 
    ![Depo seçin](./media/add-template-to-azure-pipelines/select-repo.png)
 
-1. Oluşturulacak işlem hattının türünü seçin. **Başlatıcı işlem hattı** ' nı seçebilirsiniz.
+1. Oluşturulacak işlem hattının türünü seçin. **Başlatıcı işlem hattı**' nı seçebilirsiniz.
 
    ![İşlem hattı seçin](./media/add-template-to-azure-pipelines/select-pipeline.png)
 
@@ -101,7 +105,7 @@ ScriptPath: '<your-relative-path>/<script-file-name>.ps1'
 ScriptArguments: -Location 'centralus' -ResourceGroupName 'demogroup' -TemplateFile templates\mainTemplate.json
 ```
 
-**Kaydet** ' i seçtiğinizde, derleme işlem hattı otomatik olarak çalıştırılır. Derleme işlem hattınızla ilgili özete dönün ve durumu izleyin.
+**Kaydet**' i seçtiğinizde, derleme işlem hattı otomatik olarak çalıştırılır. Derleme işlem hattınızla ilgili özete dönün ve durumu izleyin.
 
 ![Sonuçları görüntüleme](./media/add-template-to-azure-pipelines/view-results.png)
 
@@ -226,7 +230,7 @@ steps:
     deploymentName: 'deploy1'
 ```
 
-**Kaydet** ' i seçtiğinizde, derleme işlem hattı otomatik olarak çalıştırılır. Derleme işlem hattınızla ilgili özete dönün ve durumu izleyin.
+**Kaydet**' i seçtiğinizde, derleme işlem hattı otomatik olarak çalıştırılır. Derleme işlem hattınızla ilgili özete dönün ve durumu izleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

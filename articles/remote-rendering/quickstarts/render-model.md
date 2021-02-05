@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 01/23/2020
 ms.topic: quickstart
-ms.openlocfilehash: 6258365ab00ab538f3f3502682078d29a391578c
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 525872ca3ad2558c327b7b856254319d3db2dc7f
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97724943"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594002"
 ---
 # <a name="quickstart-render-a-model-with-unity"></a>Hızlı başlangıç: Unity ile model Işleme
 
@@ -74,8 +74,8 @@ Projeyi açın. Gerekirse, Unity 'nin projeyi yüklü sürüme yükseltmesine iz
 ![ARR hesap bilgileri](./media/arr-sample-account-info.png)
 
 > [!IMPORTANT]
-> **Accountdomain** öğesini olarak ayarlayın `<region>.mixedreality.azure.com` ; burada, `<region>` [size yakın olan bölgelerin biri](../reference/regions.md)bulunur. \
-> **Accountauthenticationdomain öğesini** Azure portalında gösterildiği gibi [hesap etki alanı](../how-tos/create-an-account.md#retrieve-the-account-information) olarak ayarlayın.
+> **Remoterenderingdomain** öğesini olarak ayarlayın `<region>.mixedreality.azure.com` , burada, `<region>` [size yakın olan bölgelerden biridir](../reference/regions.md). \
+> **Accountdomain** öğesini, Azure portalında gösterildiği gibi [hesap etki alanı](../how-tos/create-an-account.md#retrieve-the-account-information) olarak ayarlayın.
 
 Daha sonra bu projeyi bir HoloLens 'e dağıtmak ve bu cihazdan uzaktan Işleme hizmetine bağlanmak istiyoruz. Cihazdaki kimlik bilgilerini girmek için kolay bir yol olmadığı için hızlı başlangıç örneği, **kimlik bilgilerini Unity sahnede kaydeder**.
 

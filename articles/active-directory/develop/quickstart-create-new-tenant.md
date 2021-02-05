@@ -13,58 +13,63 @@ ms.date: 03/12/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: 41d70b20708f0f355fab5b5a06790c1c0c6530c6
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 815947b7c1774fb58ca4e3d20a4d1d2b43099cd2
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 02/05/2021
-ms.locfileid: "99583561"
+ms.locfileid: "99593087"
 ---
 # <a name="quickstart-set-up-a-tenant"></a>Hızlı Başlangıç: Kiracıyı ayarlama
 
-Microsoft kimlik platformu geliştiricilerin çok çeşitli özel Microsoft 365 ortamlarını ve kimliklerini hedefleyen uygulamalar derlemesine olanak tanır. Microsoft Identity platform 'u kullanmaya başlamak için, Azure AD kiracısı olarak da adlandırılan bir ortama erişmeniz gerekir. Bu işlem, uygulamaları kaydedebilir ve yönetebilir, Microsoft 365 verilerine erişim sağlayabilir ve özel koşullu erişim ve kiracı kısıtlamaları dağıtabilir.
+Kimlik ve erişim yönetimi için Microsoft Identity platformunu kullanan uygulamalar oluşturmak için bir Azure Active Directory (Azure AD) *kiracısına* erişmeniz gerekir. Uygulamalarınızı kaydedip yönettiğiniz, Microsoft 365 ve diğer Web API 'Lerinde verilere erişimini yapılandıran ve koşullu erişim gibi özellikleri etkinleştiren Azure AD kiracısında.
 
-Kiracı, bir kuruluşu temsil eden birimdir. Kuruluş veya uygulama geliştirici Microsoft'la bir ilişki oluşturduğunda, örneğin Azure'a, Microsoft Intune'a veya Microsoft 365'e kaydolduğunda kuruluşun veya uygulama geliştiricinin aldığı özel bir Azure AD örneğidir.
+Kiracı bir kuruluşu temsil eder. Bu, bir kuruluşun veya uygulama geliştiricisinin Microsoft ile bir ilişkinin başlangıcında aldığı adanmış bir Azure AD örneğidir. Bu ilişki, örneğin Azure, Microsoft Intune veya Microsoft 365 kaydolma ile başlayabilir.
 
-Her Azure AD kiracısı ayrıdır ve diğer Azure AD kiracılarından ayrılmıştır. Kendi iş ve okul kimlikleri, tüketici kimlikleri (bir Azure AD B2C kiracısıysa) ve uygulama kayıtları gösterimi vardır. Kiracınızın içinde yapılan bir uygulama kaydı, yalnızca kiracınızın veya tüm kiracıların içinden hesapların kimlik doğrulaması yapmasına izin verebilir.
+Her Azure AD kiracısı diğer Azure AD kiracılarından ayrıdır. Kendi iş ve okul kimlikleri, tüketici kimlikleri (bir Azure AD B2C kiracı ise) ve uygulama kayıtları için kendi temsili vardır. Kiracınızda bir uygulama kaydı, yalnızca kiracınızdaki veya tüm kiracılarınızdaki hesaplardan gelen kimlik doğrulamaları için izin verebilir.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-- Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="determining-environment-type"></a>Ortam türünü saptama
+## <a name="determining-the-environment-type"></a>Ortam türünü belirleme
 
-İki tür ortam oluşturabilirsiniz. Hangisine ihtiyacınız olduğuna karar verirken yalnızca uygulamanızın kimliklerini doğrulayacağı kullanıcı türlerine bakılır.
+İki tür ortam oluşturabilirsiniz. Ortam, yalnızca uygulamanızın kimlik doğrulaması yapılacak Kullanıcı türlerine bağlıdır. 
 
-* İş ve okul hesapları (Azure AD hesapları) veya Microsoft hesapları (outlook.com ve live.com gibi)
-* Sosyal ve yerel hesaplar (Azure AD B2C)
+Bu hızlı başlangıçta, derlemek istediğiniz uygulama türü için iki senaryo ele alınmaktadır:
 
-Bu hızlı başlangıç, derlemek istediğiniz uygulamanın türüne bağlı olarak iki senaryoya bölünmüştür.
+* İş ve okul (Azure AD) hesapları veya Microsoft hesapları (örneğin, Outlook.com ve Live.com)
+* Sosyal ve yerel (Azure AD B2C) hesaplar
 
 ## <a name="work-and-school-accounts-or-personal-microsoft-accounts"></a>İş ve okul hesapları veya kişisel Microsoft hesapları
 
-### <a name="use-an-existing-tenant"></a>Mevcut kiracıyı kullanma
+İş ve okul hesapları ya da kişisel Microsoft hesapları için bir ortam oluşturmak üzere mevcut bir Azure AD kiracısı kullanabilir veya yeni bir tane oluşturabilirsiniz.
+### <a name="use-an-existing-azure-ad-tenant"></a>Mevcut bir Azure AD kiracısı kullanma
 
-Birçok geliştiricinin, Azure AD kiracılarına bağlı hizmetler veya abonelikler (örneğin, Microsoft 365 veya Azure abonelikleri) aracılığıyla zaten kiracıları vardır.
+Birçok geliştirici, Microsoft 365 veya Azure abonelikleri gibi Azure AD kiracılarına bağlı hizmetler veya abonelikler aracılığıyla kiracıları zaten vardır.
 
-1. Kiracıyı denetlemek için, uygulamanızı yönetmek üzere kullanmak istediğiniz hesapla <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a> oturum açın.
-1. Sağ üst köşeye bakın. Bir kiracınız varsa, otomatik olarak bu kiracıda oturum açar ve kiracı adını doğrudan hesap adınızın altında görebilirsiniz.
-   * Adınızı, e-postanızı, dizininizi/kiracı kimliğinizi (GUID) ve etki alanınızı görmek için, Azure portalının sağ üst kısmında bulunan hesap adınızın üzerine gelin.
+Kiracıyı denetlemek için:
+
+1. <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>oturum açın. Uygulamanızı yönetmek için kullanacağınız hesabı kullanın.
+1. Sağ üst köşeyi kontrol edin. Bir kiracınız varsa, otomatik olarak oturumunuz açık olur. Kiracı adını doğrudan hesap adınızın altına görürsünüz.
+   * Adınızı, e-posta adresinizi, dizininizi veya kiracı KIMLIĞINIZI (bir GUID) ve etki alanını görmek için hesap adınızın üzerine gelin.
    * Hesabınız birden çok kiracıyla ilişkiliyse, kiracılar arasında geçiş yapabileceğiniz bir menüyü açmak için hesap adınızı seçebilirsiniz. Her kiracının kendi kiracı kimliği vardır.
 
 > [!TIP]
 > Kiracı KIMLIĞINI bulmak için şunları yapabilirsiniz:
-> * Dizin / kiracı kimliği değerini almak için hesap adınızın üzerine gelin, veya
-> * **Azure Active Directory > özellikler > KIRACı kimliği** Azure Portal arama ve seçme
+> * Dizin veya kiracı KIMLIĞINI almak için hesap adınızın üzerine gelin.
+> * Azure Portal **Azure Active Directory**  >  **özellikleri**  >  **Kiracı kimliği** ' ni arayın ve seçin.
 
-Hesabınızla ilişkilendirilmiş bir kiracınız yoksa, hesap adınızın altında bir GUID görürsünüz ve sonraki bölümde verilen adımları izleyene kadar uygulamaları kaydetme gibi eylemler gerçekleştiremezsiniz.
+Hesabınızla ilişkili bir kiracınız yoksa, hesap adınızın altında bir GUID görürsünüz. Bir Azure AD kiracısı oluşturana kadar uygulama kaydetme gibi eylemler yapamazsınız.
 
 ### <a name="create-a-new-azure-ad-tenant"></a>Yeni Azure AD kiracısı oluşturma
 
-Zaten bir Azure AD kiracınız yoksa veya geliştirme için yeni bir tane oluşturmak istiyorsanız [hızlı başlangıç](../fundamentals/active-directory-access-create-new-tenant.md) bölümüne bakın veya yalnızca [Dizin oluşturma deneyimini](https://portal.azure.com/#create/Microsoft.AzureActiveDirectory)izleyin. Yeni kiracı oluşturmak için aşağıdaki bilgileri sağlamanız gerekecektir:
+Zaten bir Azure AD kiracınız yoksa veya geliştirme için yeni bir tane oluşturmak istiyorsanız bkz. [Azure AD 'de yeni kiracı oluşturma](../fundamentals/active-directory-access-create-new-tenant.md). Veya Azure portal [Dizin oluşturma deneyimini](https://portal.azure.com/#create/Microsoft.AzureActiveDirectory) kullanın. 
+
+Yeni kiracınızı oluşturmak için aşağıdaki bilgileri sağlayın:
 
 - **Kuruluş adı**
-- **İlk etki alanı** - Bu, *.onmicrosoft.com'un bir parçası olacaktır. Etki alanını daha sonra özelleştirebilirsiniz.
+- **İlk etki alanı** -bu etki alanı *. onmicrosoft.com ' nin parçasıdır. Etki alanını daha sonra özelleştirebilirsiniz.
 - **Ülke veya bölge**
 
 > [!NOTE]
@@ -72,7 +77,7 @@ Zaten bir Azure AD kiracınız yoksa veya geliştirme için yeni bir tane oluşt
 
 ## <a name="social-and-local-accounts"></a>Sosyal ve yerel hesaplar
 
-Sosyal ve yerel hesapların oturumunu açan bir uygulama derlemeye başlamak için, bir Azure AD B2C kiracısı oluşturmanız gerekir. Başlamak için, [Azure AD B2C kiracısı oluşturma](../../active-directory-b2c/tutorial-create-tenant.md) yönergelerini izleyin.
+Sosyal ve yerel hesaplarda oturum açarken uygulamalar oluşturmaya başlamak için Azure AD B2C kiracı oluşturun. Başlamak için bkz. [Azure AD B2C kiracı oluşturma](../../active-directory-b2c/tutorial-create-tenant.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 9f69f89f565b2d98e408b06e300ff781c13680ef
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: 8be5ac75e2da3eaeae300fd36e152a24c9777e64
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97693663"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99593748"
 ---
 # <a name="how-to-install-an-application-gateway-ingress-controller-agic-using-a-new-application-gateway"></a>Yeni bir Application Gateway kullanarak Application Gateway giriş denetleyicisi (AGIC) nasıl yüklenir
 
@@ -30,7 +30,7 @@ Alternatif olarak, aşağıdaki simgeyi kullanarak Azure portal Cloud Shell baş
 
 [Azure Cloud Shell](https://shell.azure.com/) tüm gerekli araçlara zaten sahip. Başka bir ortam kullanmayı seçmeniz gerekir, lütfen aşağıdaki komut satırı araçlarının yüklü olduğundan emin olun:
 
-* `az` -Azure CLı: [yükleme yönergeleri](/cli/azure/install-azure-cli?view=azure-cli-latest)
+* `az` -Azure CLı: [yükleme yönergeleri](/cli/azure/install-azure-cli)
 * `kubectl` -Kubernetes komut satırı aracı: [yükleme yönergeleri](https://kubernetes.io/docs/tasks/tools/install-kubectl)
 * `helm` -Kubernetes Paket Yöneticisi: [yükleme yönergeleri](https://github.com/helm/helm/releases/latest)
 * `jq` -komut satırı JSON işlemcisi: [yükleme yönergeleri](https://stedolan.github.io/jq/download/)

@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 05/28/2020
 ms.topic: reference
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b37aabb39e19fa5ec53d2b006a7cbc1793adad72
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0e2687954fb05ce826e780ae0dbd3931d899885f
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90988048"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594409"
 ---
 # <a name="server-sizes"></a>Sunucu boyutları
 
@@ -30,26 +30,35 @@ Azure uzaktan Işleme iki sunucu yapılandırmasında kullanılabilir: `Standard
 İstenen sunucu yapılandırması türü, işleme oturumu başlatma sırasında belirtilmelidir. Çalışan bir oturum içinde değiştirilemez. Aşağıdaki kod örnekleri, sunucu boyutunun belirtilmesi gereken yeri gösterir:
 
 ```cs
-async void CreateRenderingSession(AzureFrontend frontend)
+async void CreateRenderingSession(RemoteRenderingClient client)
 {
-    RenderingSessionCreationParams sessionCreationParams = new RenderingSessionCreationParams();
-    sessionCreationParams.Size = RenderingSessionVmSize.Standard; // or  RenderingSessionVmSize.Premium
+    RenderingSessionCreationOptions sessionCreationOptions = default;
+    sessionCreationOptions.Size = RenderingSessionVmSize.Standard; // or  RenderingSessionVmSize.Premium
 
-    AzureSession session = await frontend.CreateNewRenderingSessionAsync(sessionCreationParams).AsTask();
+    CreateRenderingSessionResult result = await client.CreateNewRenderingSessionAsync(sessionCreationOptions);
+    if (result.ErrorCode == Result.Success)
+    {
+        RenderingSession session = result.Session;
+        // do something with the session
+    }
 }
 ```
 
 ```cpp
-void CreateRenderingSession(ApiHandle<AzureFrontend> frontend)
+void CreateRenderingSession(ApiHandle<RemoteRenderingClient> client)
 {
-    RenderingSessionCreationParams sessionCreationParams;
-    sessionCreationParams.Size = RenderingSessionVmSize::Standard; // or  RenderingSessionVmSize::Premium
+    RenderingSessionCreationOptions sessionCreationOptions;
+    sessionCreationOptions.Size = RenderingSessionVmSize::Standard; // or  RenderingSessionVmSize::Premium
 
-    if (auto createSessionAsync = frontend->CreateNewRenderingSessionAsync(sessionCreationParams))
-    {
-        // ...
-    }
+    client->CreateNewRenderingSessionAsync(sessionCreationOptions, [](Status status, ApiHandle<CreateRenderingSessionResult> result) {
+        if (status == Status::OK && result->GetErrorCode() == Result::Success)
+        {
+            ApiHandle<RenderingSession> session = result->GetSession();
+            // do something with the session
+        }
+    });
 }
+
 ```
 
 [Örnek PowerShell betikleri](../samples/powershell-example-scripts.md)için, istenen sunucu boyutu dosyanın içinde belirtilmelidir `arrconfig.json` :
@@ -77,7 +86,7 @@ Buna uygun olarak, `standard` bir çokgen sayısı ile birden çok modeli yükle
 
 Yapılandırma boyutunun Bütçe sınırına katkıda bulunan bir modelin veya sahnenin çokgenler sayısını belirlemenin iki yolu vardır `standard` :
 * Model dönüştürme tarafında, [dönüştürme çıkışı json dosyasını](../how-tos/conversion/get-information.md)alın ve `numFaces` [ *ınputstatistics* bölümündeki](../how-tos/conversion/get-information.md#the-inputstatistics-section) girişi kontrol edin.
-* Uygulamanız dinamik içerikle uğraşıyorsa, işlenen çokgenler sayısı, çalışma zamanı sırasında dinamik olarak sorgulanabilir. Bir [performans değerlendirmesi sorgusu](../overview/features/performance-queries.md#performance-assessment-queries) kullanın ve `polygonsRendered` yapı içindeki üyeyi kontrol edin `FrameStatistics` . `polygonsRendered`Bu alan, `bad` oluşturucunun Çokgen sınırlamasını okuması durumunda olarak ayarlanır. Bu zaman uyumsuz sorgudan sonra, kullanıcı eyleminin alınacağından emin olmak için, dama tahtası arka planı her zaman bir gecikmeyle birlikte gönderilir. Kullanıcı eylemi, örneğin model örneklerini gizleyebilir veya silebilir.
+* Uygulamanız dinamik içerikle uğraşıyorsa, işlenen çokgenler sayısı, çalışma zamanı sırasında dinamik olarak sorgulanabilir. Bir [performans değerlendirmesi sorgusu](../overview/features/performance-queries.md#performance-assessment-queries) kullanın ve `polygonsRendered` yapı içindeki üyeyi kontrol edin `FrameStatistics` . `PolygonsRendered`Bu alan, `bad` oluşturucunun Çokgen sınırlamasını okuması durumunda olarak ayarlanır. Bu zaman uyumsuz sorgudan sonra, kullanıcı eyleminin alınacağından emin olmak için, dama tahtası arka planı her zaman bir gecikmeyle birlikte gönderilir. Kullanıcı eylemi, örneğin model örneklerini gizleyebilir veya silebilir.
 
 ## <a name="pricing"></a>Fiyatlandırma
 

@@ -6,12 +6,12 @@ ms.author: jumeder
 ms.date: 10/23/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f59c4f8225d31b61df08f30863c8b9300e20e820
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 7af95cba807cea340438a7de30f096758d0369ad
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94447870"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594172"
 ---
 # <a name="shell-rendering"></a>Kabuk işleme
 
@@ -23,14 +23,14 @@ Kabuk tarafından işlenen nesnelerin görünümünü `ShellRenderingSettings` g
 
 Sınıf `ShellRenderingSettings` , genel kabuk işleme özellikleriyle ilgili ayarları tutar:
 
-| Parametre      | Tür    | Açıklama                                             |
+| Parametre      | Tür    | Description                                             |
 |----------------|---------|---------------------------------------------------------|
 | `Desaturation` | float   | 0 (yok doygunluğu yok) ile 1 (tam doygunluğa) aralığı içindeki olağan son nesne rengine uygulanacak doygunluğu kaldırma miktarı |
 | `Opacity`      | float   | Kabukta işlenen nesnelerin, 0 (görünmez) ile 1 (tamamen donuk) aralığında geçirgenliği |
 
 Ayrıca, tüm sahneye uygulandığında parametrelerin etkileri örnekleri için aşağıdaki tabloya bakın:
 
-|                | 0 | 0.25 | 0.5 | 0,75 | 1,0 | 
+|                | 0 | 0.25 | 0.5 | 0,75 | 1.0 | 
 |----------------|:-:|:----:|:---:|:----:|:---:|
 | **Doygunluğu kaldırma** | ![Doygunluğu kaldırma-0,0](./media/shell-desaturation-00.png) | ![Doygunluğu kaldırma-0,25](./media/shell-desaturation-025.png) | ![Doygunluğu kaldırma-0,5](./media/shell-desaturation-05.png) | ![Doygunluğu kaldırma-0,75](./media/shell-desaturation-075.png) | ![Doygunluğu kaldırma-1,0](./media/shell-desaturation-10.png) |
 | **Opaklık**      | ![Opaklık-0,0](./media/shell-opacity-00.png) | ![Opaklık-0,25](./media/shell-opacity-025.png) | ![Opaklık-0,5](./media/shell-opacity-05.png) | ![Opaklık-0,75](./media/shell-opacity-075.png) | ![Opaklık-1,0](./media/shell-opacity-10.png) |
@@ -42,18 +42,18 @@ Kabuk etkisi, görünümün başka bir şekilde işlenebilmesi için son opak re
 Aşağıdaki kod, API aracılığıyla durumun örnek kullanımını gösterir `ShellRenderingSettings` :
 
 ```cs
-void SetShellSettings(AzureSession session)
+void SetShellSettings(RenderingSession session)
 {
-    ShellRenderingSettings shellRenderingSettings = session.Actions.ShellRenderingSettings;
+    ShellRenderingSettings shellRenderingSettings = session.Connection.ShellRenderingSettings;
     shellRenderingSettings.Desaturation = 0.5f;
     shellRenderingSettings.Opacity = 0.1f;
 }
 ```
 
 ```cpp
-void SetShellSettings(ApiHandle<AzureSession> session)
+void SetShellSettings(ApiHandle<RenderingSession> session)
 {
-    ApiHandle<ShellRenderingSettings> shellRenderingSettings = session->Actions()->GetShellRenderingSettings();
+    ApiHandle<ShellRenderingSettings> shellRenderingSettings = session->Connection()->GetShellRenderingSettings();
     shellRenderingSettings->SetDesaturation(0.5f);
     shellRenderingSettings->SetOpacity(0.1f);
 }

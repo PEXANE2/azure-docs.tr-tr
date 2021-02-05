@@ -5,14 +5,14 @@ services: static-web-apps
 author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: conceptual
-ms.date: 05/08/2020
+ms.date: 02/05/2021
 ms.author: cshoe
-ms.openlocfilehash: acdb635dec5abd73341cc1dda4991b58b82a18c0
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 785fd535c46b67cfd631cd18560f396a6901e5c0
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 02/05/2021
-ms.locfileid: "99574525"
+ms.locfileid: "99593968"
 ---
 # <a name="github-actions-workflows-for-azure-static-web-apps-preview"></a>Azure statik Web Apps önizlemesi için GitHub eylemleri iş akışları
 
@@ -197,12 +197,13 @@ jobs:
 
 ## <a name="monorepo-support"></a>Monorepo desteği
 
-Tek depo, birden fazla uygulama için kod içeren bir depodur. Varsayılan olarak, statik bir Web Apps iş akışı dosyası bir depodaki tüm dosyaları izler, ancak bunu tek bir uygulamayı hedefleyecek şekilde ayarlayabilirsiniz. Bu nedenle, tek depolarda her bir statik site, deponun *. git* klasöründe yan yana bulunan kendi yapılandırma dosyasına sahiptir.
+Tek depo, birden fazla uygulama için kod içeren bir depodur. Varsayılan olarak, statik bir Web Apps iş akışı dosyası bir depodaki tüm dosyaları izler, ancak bunu tek bir uygulamayı hedefleyecek şekilde ayarlayabilirsiniz. Bu nedenle, tek depolarda her bir statik uygulama, deponun *. GitHub/iş akışları* klasöründe yan yana bulunan kendi yapılandırma dosyasına sahiptir.
 
 ```files
-├── .git
-│   ├── azure-static-web-apps-purple-pond.yml
-│   └── azure-static-web-apps-yellow-shoe.yml
+├── .github
+│   └── workflows
+│       ├── azure-static-web-apps-purple-pond.yml
+│       └── azure-static-web-apps-yellow-shoe.yml
 │
 ├── app1  👉 controlled by: azure-static-web-apps-purple-pond.yml
 ├── app2  👉 controlled by: azure-static-web-apps-yellow-shoe.yml
@@ -210,7 +211,7 @@ Tek depo, birden fazla uygulama için kod içeren bir depodur. Varsayılan olara
 ├── api1  👉 controlled by: azure-static-web-apps-purple-pond.yml
 ├── api2  👉 controlled by: azure-static-web-apps-yellow-shoe.yml
 │
-└── readme.md
+└── README.md
 ```
 
 Bir iş akışı dosyasını tek bir uygulamaya hedeflemek için `push` ve bölümlerinde yollar belirtirsiniz `pull_request` .
@@ -236,7 +237,7 @@ on:
       - .github/workflows/azure-static-web-apps-purple-pond.yml
 ```
 
-Bu örnekte, yalnızca dosyaları izleyen dosyalarda yapılan değişiklikler yeni bir derlemeyi tetikler:
+Bu örnekte, yalnızca aşağıdaki dosyalarda yapılan değişiklikler yeni bir derlemeyi tetikler:
 
 - *APP1* klasörünün içindeki dosyalar
 - *Api1* klasörünün içindeki dosyalar

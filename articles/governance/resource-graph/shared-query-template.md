@@ -1,19 +1,19 @@
 ---
 title: 'Hızlı başlangıç: şablonlarla paylaşılan bir sorgu oluşturma'
 description: Bu hızlı başlangıçta, sanal makineleri işletim sistemine göre sayan bir kaynak grafiği paylaşılan sorgusu oluşturmak için bir Azure Resource Manager şablonu (ARM şablonu) kullanırsınız.
-ms.date: 10/14/2020
+ms.date: 02/05/2021
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.openlocfilehash: a629dd5325fc20d6f173d9f4e0524885af8fdf49
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 8d631ffcb14af93f10e578097470efc6156287d5
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057017"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594325"
 ---
 # <a name="quickstart-create-a-shared-query-by-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonu kullanarak paylaşılan sorgu oluşturma
 
-Kaynak Grafiği sorguları, _özel bir sorgu_ veya _paylaşılan sorgu_olarak kaydedilebilir. Özel bir sorgu bireyler portalı profiline kaydedilir ve başkaları tarafından görülemez. Paylaşılan sorgu, izinler ve rol tabanlı erişim aracılığıyla başkalarıyla paylaşılabilecek Kaynak Yöneticisi nesnesidir. Paylaşılan sorgu, kaynak bulmanın ortak ve tutarlı bir şekilde yürütülmesini sağlar. Bu hızlı başlangıç, paylaşılan bir sorgu oluşturmak için bir Azure Resource Manager şablonu (ARM şablonu) kullanır.
+Kaynak Grafiği sorguları, _özel bir sorgu_ veya _paylaşılan sorgu_ olarak kaydedilebilir. Özel bir sorgu bireyler portalı profiline kaydedilir ve başkaları tarafından görülemez. Paylaşılan sorgu, izinler ve rol tabanlı erişim aracılığıyla başkalarıyla paylaşılabilecek Kaynak Yöneticisi nesnesidir. Paylaşılan sorgu, kaynak bulmanın ortak ve tutarlı bir şekilde yürütülmesini sağlar. Bu hızlı başlangıç, paylaşılan bir sorgu oluşturmak için bir Azure Resource Manager şablonu (ARM şablonu) kullanır.
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -21,13 +21,13 @@ Ortamınız önkoşulları karşılıyorsa ve ARM şablonlarını kullanma hakk�
 
 :::image type="content" source="../../media/template-deployments/deploy-to-azure.svg" alt-text="Azure 'da paylaşılan bir sorgu oluşturmak için ARM şablonunu dağıtma" border="false" link="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fresourcegraph-sharedquery-countos%2Fazuredeploy.json":::
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
 ## <a name="review-the-template"></a>Şablonu gözden geçirme
 
-Bu hızlı başlangıçta, _işletim sistemi tarafından Count VM 'ler_adlı bir paylaşılan sorgu oluşturacaksınız. Bu sorguyu SDK 'da veya kaynak Graph Explorer ile portalda denemek için bkz. [OS türlerine göre örnek sayısı sanal makineleri](./samples/starter.md#count-os).
+Bu hızlı başlangıçta, _işletim sistemi tarafından Count VM 'ler_ adlı bir paylaşılan sorgu oluşturacaksınız. Bu sorguyu SDK 'da veya kaynak Graph Explorer ile portalda denemek için bkz. [OS türlerine göre örnek sayısı sanal makineleri](./samples/starter.md#count-os).
 
 Bu hızlı başlangıçta kullanılan şablon [Azure Hızlı Başlangıç Şablonlarından](https://azure.microsoft.com/resources/templates/resourcegraph-sharedquery-countos/) alınmıştır.
 
@@ -48,7 +48,7 @@ Bu hızlı başlangıçta kullanılan şablon [Azure Hızlı Başlangıç Şablo
 
 1. Aşağıdaki değerleri seçin veya girin:
 
-   | Ad | Değer |
+   | Name | Değer |
    |------|-------|
    | Abonelik | Azure aboneliğinizi seçin. |
    | Kaynak grubu | **Yeni oluştur**' u seçin, bir ad belirtin ve ardından **Tamam**' ı seçin. |
@@ -73,7 +73,7 @@ Yeni paylaşılan sorguyu çalıştırmak için aşağıdaki adımları izleyin:
 
 1. Portal arama çubuğundan **Kaynak Grafiği sorgularını** arayın ve seçin.
 
-1. **İşletim sistemine göre sayı VM 'leri**adlı paylaşılan sorguyu seçin, sonra **genel bakış** sayfasında **sonuçlar** sekmesini seçin.
+1. **İşletim sistemine göre sayı VM 'leri** adlı paylaşılan sorguyu seçin, sonra **genel bakış** sayfasında **sonuçlar** sekmesini seçin.
 
 Paylaşılan sorgu kaynak grafiği Gezgini 'nden de açılabilir:
 
@@ -81,7 +81,7 @@ Paylaşılan sorgu kaynak grafiği Gezgini 'nden de açılabilir:
 
 1. **Sorgu aç** düğmesini seçin.
 
-1. **Türü** _paylaşılan sorgular_olarak değiştirin. Listedeki **VM 'Leri bayt sayısı** ' nı görmüyorsanız, sonuçları sınırlandırmak için filtre kutusunu kullanın. **İşletim sistemi paylaşılan sorgusuna göre VM sayısı** görünür olduğunda, adını seçin.
+1. **Türü** _paylaşılan sorgular_ olarak değiştirin. Listedeki **VM 'Leri bayt sayısı** ' nı görmüyorsanız, sonuçları sınırlandırmak için filtre kutusunu kullanın. **İşletim sistemi paylaşılan sorgusuna göre VM sayısı** görünür olduğunda, adını seçin.
 
 1. Sorgu yüklendikten sonra **Sorguyu Çalıştır** düğmesini seçin. Sonuçlar, **sonuçlar** sekmesinde görüntülenir.
 
@@ -91,7 +91,7 @@ Oluşturulan paylaşılan sorguyu kaldırmak için şu adımları izleyin:
 
 1. Portal arama çubuğundan **Kaynak Grafiği sorgularını** arayın ve seçin.
 
-1. **İşletim sisteminin say**adlı paylaşılan sorgunun yanındaki onay kutusunu belirleyin.
+1. **İşletim sisteminin say** adlı paylaşılan sorgunun yanındaki onay kutusunu belirleyin.
 
 1. Sayfanın üst kısmında **Sil** düğmesini seçin.
 

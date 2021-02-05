@@ -6,16 +6,16 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 04cb48a3ff84a67995c1a920a323fa568a67cdf3
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 8eb73fcfde7e294896a12289486ff71794a00ae6
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92203254"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99591727"
 ---
 # <a name="tutorial-refining-materials-lighting-and-effects"></a>Öğretici: malzemeleri, aydınlatmayı ve etkileri Iyileştirme
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 >
@@ -32,11 +32,11 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 Kullanıcıya görsel geri bildirim sağlanması, herhangi bir uygulamadaki kullanıcı deneyiminin önemli bir parçasıdır. Azure uzaktan Işleme, [hiyerarşik durum geçersiz kılma işlemleri](../../../overview/features/override-hierarchical-state.md)aracılığıyla görsel geri bildirim mekanizmaları sağlar. Hiyerarşik durum geçersiz kılmaları, yerel model örneklerine eklenen bileşenlerle uygulanır. [Uzak nesne grafiğini Unity hiyerarşisinde eşitlerken](../manipulate-models/manipulate-models.md#synchronizing-the-remote-object-graph-into-the-unity-hierarchy)bu yerel örneklerin nasıl oluşturulacağını öğrendik.
 
-İlk olarak, [**HierarchicalStateOverrideComponent**](/dotnet/api/microsoft.azure.remoterendering.hierarchicalstateoverridecomponent) bileşeni etrafında bir sarmalayıcı oluşturacağız. **HierarchicalStateOverrideComponent** , uzak varlıktaki geçersiz kılmaları denetleyen yerel betiktir. [**Öğretici varlıkları**](../custom-models/custom-models.md#import-assets-used-by-this-tutorial) , sarmalayıcı oluşturmak için Genişletireceğiz **BaseEntityOverrideController**adlı bir soyut temel sınıf içerir.
+İlk olarak, [**HierarchicalStateOverrideComponent**](/dotnet/api/microsoft.azure.remoterendering.hierarchicalstateoverridecomponent) bileşeni etrafında bir sarmalayıcı oluşturacağız. **HierarchicalStateOverrideComponent** , uzak varlıktaki geçersiz kılmaları denetleyen yerel betiktir. [**Öğretici varlıkları**](../custom-models/custom-models.md#import-assets-used-by-this-tutorial) , sarmalayıcı oluşturmak için Genişletireceğiz **BaseEntityOverrideController** adlı bir soyut temel sınıf içerir.
 
 1. **EntityOverrideController** adlı yeni bir betik oluşturun ve içeriğini şu kodla değiştirin:
 
-    ```csharp
+    ```cs
     // Copyright (c) Microsoft Corporation. All rights reserved.
     // Licensed under the MIT License. See LICENSE in the project root for license information.
 
@@ -160,15 +160,15 @@ Bu uygulama aynı anda tek bir duruma geçiş yapar. Ancak, tek varlıklarda bir
 
 Varlıklara durum uygulamak için daha önce oluşturulan **Remoteentityhelper** 'ı değiştirebiliriz.
 
-1. **Baseremoteentityhelper** soyut sınıfını uygulamak Için **remoteentityhelper** sınıfını değiştirin. Bu değişiklik, **öğretici varlıklarda**sunulan bir görünüm denetleyicisinin kullanılmasına izin verir. Bu, değiştirildiğinde şöyle görünmelidir:
+1. **Baseremoteentityhelper** soyut sınıfını uygulamak Için **remoteentityhelper** sınıfını değiştirin. Bu değişiklik, **öğretici varlıklarda** sunulan bir görünüm denetleyicisinin kullanılmasına izin verir. Bu, değiştirildiğinde şöyle görünmelidir:
 
-    ```csharp
+    ```cs
     public class RemoteEntityHelper : BaseRemoteEntityHelper
     ```
 
 2. Aşağıdaki kodu kullanarak soyut yöntemleri geçersiz kılın:
 
-    ```csharp
+    ```cs
     public override BaseEntityOverrideController EnsureOverrideComponent(Entity entity)
     {
         var entityGameObject = entity.GetOrCreateGameObject(UnityCreationMode.DoNotCreateUnityComponents);
@@ -249,7 +249,7 @@ Otomatik olarak uzak bir varlık oluşturan, bir düz düzlem bileşeni ekleyen 
 
 1. **RemoteCutPlane** adlı yeni bir betik oluşturun ve kodunu aşağıdaki kodla değiştirin:
 
-    ```csharp
+    ```cs
     // Copyright (c) Microsoft Corporation. All rights reserved.
     // Licensed under the MIT License. See LICENSE in the project root for license information.
 
@@ -318,18 +318,18 @@ Otomatik olarak uzak bir varlık oluşturan, bir düz düzlem bileşeni ekleyen 
     }
     ```
 
-    Bu kod, **öğretici varlıklarına**dahil olan **Baseremotecutdüzlemi** sınıfını genişletir. Uzaktan işlenen modele benzer şekilde, bu betik `RemoteRenderingState` uzak düzenleyiciyle ilgili değişiklikleri iliştirir ve dinler. Düzenleyici duruma ulaştığında, gerekiyorsa `RuntimeConnected` otomatik olarak bağlanmaya çalışır. Ayrıca, `CutPlaneComponent` izlemekte olduğumuz bir değişken de var. Bu, Uzak oturumdaki kesme düzlemi ile eşitlenen Azure uzaktan Işleme bileşenidir. Kesilen düzlemi oluşturmak için nelere ihtiyacım olduğuna göz atalım.
+    Bu kod, **öğretici varlıklarına** dahil olan **Baseremotecutdüzlemi** sınıfını genişletir. Uzaktan işlenen modele benzer şekilde, bu betik `RemoteRenderingState` uzak düzenleyiciyle ilgili değişiklikleri iliştirir ve dinler. Düzenleyici duruma ulaştığında, gerekiyorsa `RuntimeConnected` otomatik olarak bağlanmaya çalışır. Ayrıca, `CutPlaneComponent` izlemekte olduğumuz bir değişken de var. Bu, Uzak oturumdaki kesme düzlemi ile eşitlenen Azure uzaktan Işleme bileşenidir. Kesilen düzlemi oluşturmak için nelere ihtiyacım olduğuna göz atalım.
 
 2. `CreateCutPlane()`Yöntemini aşağıdaki tamamlanmış sürümle değiştirin:
 
-    ```csharp
+    ```cs
     public override void CreateCutPlane()
     {
         if (remoteCutPlaneComponent != null)
             return; //Nothing to do!
 
         //Create a root object for the cut plane
-        var cutEntity = RemoteRenderingCoordinator.CurrentSession.Actions.CreateEntity();
+        var cutEntity = RemoteRenderingCoordinator.CurrentSession.Connection.CreateEntity();
 
         //Bind the remote entity to this game object
         cutEntity.BindToUnityGameObject(this.gameObject);
@@ -339,7 +339,7 @@ Otomatik olarak uzak bir varlık oluşturan, bir düz düzlem bileşeni ekleyen 
         syncComponent.SyncEveryFrame = true;
 
         //Add a cut plane to the entity
-        remoteCutPlaneComponent = RemoteRenderingCoordinator.CurrentSession.Actions.CreateComponent(ObjectType.CutPlaneComponent, cutEntity) as CutPlaneComponent;
+        remoteCutPlaneComponent = RemoteRenderingCoordinator.CurrentSession.Connection.CreateComponent(ObjectType.CutPlaneComponent, cutEntity) as CutPlaneComponent;
 
         //Configure the cut plane
         remoteCutPlaneComponent.Normal = SliceNormal;
@@ -353,7 +353,7 @@ Otomatik olarak uzak bir varlık oluşturan, bir düz düzlem bileşeni ekleyen 
 
 3. `DestroyCutPlane()`Yöntemini aşağıdaki tamamlanmış sürümle değiştirin:
 
-    ```csharp
+    ```cs
     public override void DestroyCutPlane()
     {
         if (remoteCutPlaneComponent == null)
@@ -369,7 +369,7 @@ Uzak nesne oldukça basittir ve yalnızca uzak ucu temizliyoruz (ve yerel nesnem
 
 **Appmenu** , kesme düzlemine otomatik olarak eklenecek ve bununla etkileşime girebilen bir görünüm denetleyicisi içerir. **Appmenu** veya görünüm denetleyicilerinden herhangi birini kullanmanız gerekmez, ancak daha iyi bir deneyim için bu şekilde yapılır. Artık kesilmiş düzlemi ve görünüm denetleyicisini test edin.
 
-1. Sahnede yeni, boş bir GameObject oluşturun ve **CutPlane**olarak adlandırın.
+1. Sahnede yeni, boş bir GameObject oluşturun ve **CutPlane** olarak adlandırın.
 1. **RemoteCutPlane** bileşenini **CutPlane** gameobject öğesine ekleyin.
 
    ![Düzlem bileşen yapılandırmasını kes](./media/cut-plane-config.png)
@@ -391,7 +391,7 @@ Yük parametreleri biçiminde yerleşik kullanılabilir Cubemaps listesini içer
 
 1. **Remotesky** adlı yeni bir betik oluşturun ve tüm içeriğini aşağıdaki kodla değiştirin:
 
-    ```csharp
+    ```cs
     // Copyright (c) Microsoft Corporation. All rights reserved.
     // Licensed under the MIT License. See LICENSE in the project root for license information.
 
@@ -402,7 +402,7 @@ Yük parametreleri biçiminde yerleşik kullanılabilir Cubemaps listesini içer
 
     public class RemoteSky : BaseRemoteSky
     {
-        public override Dictionary<string, LoadTextureFromSASParams> AvailableCubemaps => builtInTextures;
+        public override Dictionary<string, LoadTextureFromSasOptions> AvailableCubemaps => builtInTextures;
 
         private bool canSetSky;
         public override bool CanSetSky
@@ -426,22 +426,22 @@ Yük parametreleri biçiminde yerleşik kullanılabilir Cubemaps listesini içer
             }
         }
 
-        private Dictionary<string, LoadTextureFromSASParams> builtInTextures = new Dictionary<string, LoadTextureFromSASParams>()
+        private Dictionary<string, LoadTextureFromSasOptions> builtInTextures = new Dictionary<string, LoadTextureFromSasOptions>()
         {
-            {"Autoshop",new LoadTextureFromSASParams("builtin://Autoshop", TextureType.CubeMap)},
-            {"BoilerRoom",new LoadTextureFromSASParams("builtin://BoilerRoom", TextureType.CubeMap)},
-            {"ColorfulStudio",new LoadTextureFromSASParams("builtin://ColorfulStudio", TextureType.CubeMap)},
-            {"Hangar",new LoadTextureFromSASParams("builtin://Hangar", TextureType.CubeMap)},
-            {"IndustrialPipeAndValve",new LoadTextureFromSASParams("builtin://IndustrialPipeAndValve", TextureType.CubeMap)},
-            {"Lebombo",new LoadTextureFromSASParams("builtin://Lebombo", TextureType.CubeMap)},
-            {"SataraNight",new LoadTextureFromSASParams("builtin://SataraNight", TextureType.CubeMap)},
-            {"SunnyVondelpark",new LoadTextureFromSASParams("builtin://SunnyVondelpark", TextureType.CubeMap)},
-            {"Syferfontein",new LoadTextureFromSASParams("builtin://Syferfontein", TextureType.CubeMap)},
-            {"TearsOfSteelBridge",new LoadTextureFromSASParams("builtin://TearsOfSteelBridge", TextureType.CubeMap)},
-            {"VeniceSunset",new LoadTextureFromSASParams("builtin://VeniceSunset", TextureType.CubeMap)},
-            {"WhippleCreekRegionalPark",new LoadTextureFromSASParams("builtin://WhippleCreekRegionalPark", TextureType.CubeMap)},
-            {"WinterRiver",new LoadTextureFromSASParams("builtin://WinterRiver", TextureType.CubeMap)},
-            {"DefaultSky",new LoadTextureFromSASParams("builtin://DefaultSky", TextureType.CubeMap)}
+            {"Autoshop",new LoadTextureFromSasOptions("builtin://Autoshop", TextureType.CubeMap)},
+            {"BoilerRoom",new LoadTextureFromSasOptions("builtin://BoilerRoom", TextureType.CubeMap)},
+            {"ColorfulStudio",new LoadTextureFromSasOptions("builtin://ColorfulStudio", TextureType.CubeMap)},
+            {"Hangar",new LoadTextureFromSasOptions("builtin://Hangar", TextureType.CubeMap)},
+            {"IndustrialPipeAndValve",new LoadTextureFromSasOptions("builtin://IndustrialPipeAndValve", TextureType.CubeMap)},
+            {"Lebombo",new LoadTextureFromSasOptions("builtin://Lebombo", TextureType.CubeMap)},
+            {"SataraNight",new LoadTextureFromSasOptions("builtin://SataraNight", TextureType.CubeMap)},
+            {"SunnyVondelpark",new LoadTextureFromSasOptions("builtin://SunnyVondelpark", TextureType.CubeMap)},
+            {"Syferfontein",new LoadTextureFromSasOptions("builtin://Syferfontein", TextureType.CubeMap)},
+            {"TearsOfSteelBridge",new LoadTextureFromSasOptions("builtin://TearsOfSteelBridge", TextureType.CubeMap)},
+            {"VeniceSunset",new LoadTextureFromSasOptions("builtin://VeniceSunset", TextureType.CubeMap)},
+            {"WhippleCreekRegionalPark",new LoadTextureFromSasOptions("builtin://WhippleCreekRegionalPark", TextureType.CubeMap)},
+            {"WinterRiver",new LoadTextureFromSasOptions("builtin://WinterRiver", TextureType.CubeMap)},
+            {"DefaultSky",new LoadTextureFromSasOptions("builtin://DefaultSky", TextureType.CubeMap)}
         };
 
         public UnityBoolEvent OnCanSetSkyChanged;
@@ -485,10 +485,10 @@ Yük parametreleri biçiminde yerleşik kullanılabilir Cubemaps listesini içer
             {
                 Debug.Log("Setting sky to " + skyKey);
                 //Load the texture into the session
-                var texture = await RemoteRenderingCoordinator.CurrentSession.Actions.LoadTextureFromSASAsync(AvailableCubemaps[skyKey]).AsTask();
+                var texture = await RemoteRenderingCoordinator.CurrentSession.Connection.LoadTextureFromSasAsync(AvailableCubemaps[skyKey]);
 
                 //Apply the texture to the SkyReflectionSettings
-                RemoteRenderingCoordinator.CurrentSession.Actions.SkyReflectionSettings.SkyReflectionTexture = texture;
+                RemoteRenderingCoordinator.CurrentSession.Connection.SkyReflectionSettings.SkyReflectionTexture = texture;
                 SkyChanged?.Invoke(skyKey);
             }
             else
@@ -501,23 +501,23 @@ Yük parametreleri biçiminde yerleşik kullanılabilir Cubemaps listesini içer
 
     Bu kodun en önemli bölümü yalnızca birkaç satır olacaktır:
 
-    ```csharp
+    ```cs
     //Load the texture into the session
-    var texture = await RemoteRenderingCoordinator.CurrentSession.Actions.LoadTextureFromSASAsync(AvailableCubemaps[skyKey]).AsTask();
+    var texture = await RemoteRenderingCoordinator.CurrentSession.Connection.LoadTextureFromSasAsync(AvailableCubemaps[skyKey]);
 
     //Apply the texture to the SkyReflectionSettings
-    RemoteRenderingCoordinator.CurrentSession.Actions.SkyReflectionSettings.SkyReflectionTexture = texture;
+    RemoteRenderingCoordinator.CurrentSession.Connection.SkyReflectionSettings.SkyReflectionTexture = texture;
     ```
 
     Burada, yerleşik blob depolamadan oturum içine yükleyerek kullanılacak dokuya bir başvuru alırız. Daha sonra, bu dokuyu uygulamak için yalnızca oturum öğesine atamanız gerekir `SkyReflectionTexture` .
 
-1. Sahnede boş bir oyun nesnesi oluşturun ve bunu **ufuk ışığı**olarak adlandırın.
+1. Sahnede boş bir oyun nesnesi oluşturun ve bunu **ufuk ışığı** olarak adlandırın.
 
 1. Bir **Remotesky** betiğini, **ufuk** ve oyun nesnenizin içine ekleyin.
 
     Sky ışıkları arasında geçiş yapmak, `SetSky` içinde tanımlanan dize anahtarlarından biri ile çağırarak yapılabilir `AvailableCubemaps` . **Appmenu** içinde yerleşik olarak bulunan görünüm denetleyicisi otomatik olarak düğme oluşturur ve kendi olaylarını `SetSky` ilgili anahtar ile çağırmak üzere takar.
 1. Unity düzenleyicisinde oynat ' a basın ve bir bağlantı verin.
-1. Yerel çalışma zamanını uzak bir oturuma bağladıktan sonra, farklı gök seçeneklerini araştırmak ve **Testmodelini**nasıl etkileyeceğini görmek Için, **Appmenu > oturum araçları-> uzak çatına** gidin.
+1. Yerel çalışma zamanını uzak bir oturuma bağladıktan sonra, farklı gök seçeneklerini araştırmak ve **Testmodelini** nasıl etkileyeceğini görmek Için, **Appmenu > oturum araçları-> uzak çatına** gidin.
 
 ### <a name="scene-lights"></a>Sahne ışıkları
 
@@ -525,7 +525,7 @@ Uzak sahne ışıkları şunlardır: nokta, nokta ve yön. Yukarıda oluşturdu�
 
 1. **Remotelight** adlı yeni bir betik oluşturun ve kodunu aşağıdaki kodla değiştirin:
 
-    ```csharp
+    ```cs
     // Copyright (c) Microsoft Corporation. All rights reserved.
     // Licensed under the MIT License. See LICENSE in the project root for license information.
 
@@ -618,7 +618,7 @@ Uzak sahne ışıkları şunlardır: nokta, nokta ve yön. Yukarıda oluşturdu�
 
             //Create a root object for the light
             if(lightEntity == null)
-                lightEntity = RemoteRenderingCoordinator.CurrentSession.Actions.CreateEntity();
+                lightEntity = RemoteRenderingCoordinator.CurrentSession.Connection.CreateEntity();
 
             //Bind the remote entity to this game object
             lightEntity.BindToUnityGameObject(this.gameObject);
@@ -631,13 +631,13 @@ Uzak sahne ışıkları şunlardır: nokta, nokta ve yön. Yukarıda oluşturdu�
             switch (RemoteLightType)
             {
                 case ObjectType.DirectionalLightComponent:
-                    var remoteDirectional = RemoteRenderingCoordinator.CurrentSession.Actions.CreateComponent(ObjectType.DirectionalLightComponent, lightEntity) as DirectionalLightComponent;
+                    var remoteDirectional = RemoteRenderingCoordinator.CurrentSession.Connection.CreateComponent(ObjectType.DirectionalLightComponent, lightEntity) as DirectionalLightComponent;
                     //No additional properties
                     remoteLightComponent = remoteDirectional;
                     break;
 
                 case ObjectType.PointLightComponent:
-                    var remotePoint = RemoteRenderingCoordinator.CurrentSession.Actions.CreateComponent(ObjectType.PointLightComponent, lightEntity) as PointLightComponent;
+                    var remotePoint = RemoteRenderingCoordinator.CurrentSession.Connection.CreateComponent(ObjectType.PointLightComponent, lightEntity) as PointLightComponent;
                     remotePoint.Radius = 0;
                     remotePoint.Length = localLight.range;
                     //remotePoint.AttenuationCutoff = //No direct analog in Unity legacy lights
@@ -718,7 +718,7 @@ Uzak sahne ışıkları şunlardır: nokta, nokta ve yön. Yukarıda oluşturdu�
 Uzaktan işlenmiş [malzemeler](../../../concepts/materials.md) ek görsel etkiler sağlamak, işlenen modellerin görsellerinin ince ayarlamalar veya kullanıcılara ek geri bildirim sağlamak için değiştirilebilir. Bir malzemeyi değiştirmek için birçok yol ve birçok neden vardır. Burada, bir malzemenin Albedo renginin nasıl değiştirileceğini ve bir PBR malzemelerinin kabalılığını ve metalness nasıl değiştirileceğini göstereceğiz.
 
 > [!NOTE]
-> Birçok durumda, bir özellik veya etki **HierarchicalStateOverrideComponent**kullanılarak uygulanmazsa, bu, malzemeyi değiştirmek yerine kullanmak için idealdir.
+> Birçok durumda, bir özellik veya etki **HierarchicalStateOverrideComponent** kullanılarak uygulanmazsa, bu, malzemeyi değiştirmek yerine kullanmak için idealdir.
 
 Hedef varlık kabul eden bir betik oluşturacağız ve `OverrideMaterialProperty` hedef varlığın malzemelerinin özelliklerini değiştirmek için birkaç nesne yapılandırır. Hedef varlığın [**Meshcomponent**](../../../concepts/meshes.md#meshcomponent)'u alarak, ağ üzerinde kullanılan malzemelerin bir listesini içeren bir başlangıç yaptık. Kolaylık olması için yalnızca bulunan ilk malzemeyi kullanacağız. İçeriğin yazılma şekline bağlı olarak bu Naïve stratejisi çok kolay bir şekilde başarısız olabilir. bu nedenle, uygun malzemeleri seçmek için büyük olasılıkla daha karmaşık bir yaklaşım almak isteyeceksiniz.
 
@@ -726,7 +726,7 @@ Malzemeden Albedo gibi ortak değerlere erişebiliyoruz. İlk olarak malzemeler,
 
 1. **Entitymaterialcontroller** adlı bir komut dosyası oluşturun ve içeriğini şu kodla değiştirin:
 
-    ```csharp
+    ```cs
     // Copyright (c) Microsoft Corporation. All rights reserved.
     // Licensed under the MIT License. See LICENSE in the project root for license information.
 
@@ -890,7 +890,7 @@ Malzemeden Albedo gibi ortak değerlere erişebiliyoruz. İlk olarak malzemeler,
 
 Bu `OverrideMaterialProperty` tür, istenirse diğer birkaç malzeme değerinin değiştirilmesine izin verecek kadar esnek olmalıdır. `OverrideMaterialProperty`Tür, bir geçersiz kılmanın durumunu izler, eski ve yeni değeri korur ve geçersiz kılmayı ayarlamak için bir temsilci kullanır. Örnek olarak, şuna göz atın `ColorOverride` :
 
-```csharp
+```cs
 ColorOverride = new OverrideMaterialProperty<Color>(
     GetMaterialColor(targetMaterial), //The original value
     targetMaterial, //The target material
@@ -901,7 +901,7 @@ Bu, `OverrideMaterialProperty` geçersiz kılmanın türü kaydıracağı yeni b
 
 , `ColorOverride` `ApplyMaterialColor` İşini yapmak için yöntemini kullanır:
 
-```csharp
+```cs
 private void ApplyMaterialColor(ARRMaterial material, Color color)
 {
     if (material.MaterialSubType == MaterialType.Color)

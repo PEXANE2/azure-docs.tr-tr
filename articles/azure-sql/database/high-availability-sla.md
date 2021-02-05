@@ -8,16 +8,16 @@ ms.subservice: high-availability
 ms.custom: sqldbrb=2
 ms.devlang: ''
 ms.topic: conceptual
-author: sashan
-ms.author: sashan
-ms.reviewer: sstein, sashan
+author: emlisa
+ms.author: emlisa
+ms.reviewer: sstein, emlisa
 ms.date: 10/28/2020
-ms.openlocfilehash: 15067a046d8adc0ba38101bbe24cdc48cd433d56
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 53b6b4f5d783029cb53de71fe3c47b8cb2d26968
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97095449"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99593427"
 ---
 # <a name="high-availability-for-azure-sql-database-and-sql-managed-instance"></a>Azure SQL veritabanı ve SQL yönetilen örneği için yüksek kullanılabilirlik
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -60,7 +60,7 @@ Genel amaçlı hizmet katmanı için yüksek kullanılabilirlik mimarisinin böl
 ![Genel amaçlı bölge yedekli yapılandırması](./media/high-availability-sla/zone-redundant-for-general-purpose.png)
 
 > [!IMPORTANT]
-> Bölge yedekli veritabanlarını destekleyen bölgeler hakkında güncel bilgiler için bkz. [bölgeye göre Hizmetler desteği](../../availability-zones/az-region.md). Bölge yedekli yapılandırma yalnızca 5. nesil işlem donanımı seçildiğinde kullanılabilir. Bu özellik SQL yönetilen örneği 'nde kullanılamaz.
+> Bölge yedekli yapılandırma yalnızca 5. nesil işlem donanımı seçildiğinde kullanılabilir. Bu özellik SQL yönetilen örneği 'nde kullanılamaz. Genel amaçlı katman için bölge yedekli yapılandırma yalnızca şu bölgelerde kullanılabilir: Doğu ABD, Doğu ABD 2, Batı ABD 2, Kuzey Avrupa, Batı Avrupa, Güneydoğu Asya, Avustralya Doğu, Japonya Doğu, UK Güney ve Fransa Orta.
 
 > [!NOTE]
 > 80 sanal çekirdek boyutundaki Genel Amaçlı veritabanları, bölgesel olarak yedekli yapılandırma ile performans düşüşü yaşayabilir. Ayrıca, yedekleme, geri yükleme, veritabanı kopyalama ve coğrafi-DR ilişkilerini ayarlama gibi işlemler 1 TB 'den büyük olan tek veritabanları için daha yavaş performans yaşayabilir. 

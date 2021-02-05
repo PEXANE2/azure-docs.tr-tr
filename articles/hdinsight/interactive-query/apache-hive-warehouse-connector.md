@@ -6,12 +6,12 @@ ms.author: nisgoel
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 05/28/2020
-ms.openlocfilehash: 39eb007c85d9f0623b4a5611e36d4ed7a75423e0
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 6611f5ca7ddae243c4bc314be73a9030311cec89
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98941190"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594443"
 ---
 # <a name="integrate-apache-spark-and-apache-hive-with-hive-warehouse-connector-in-azure-hdinsight"></a>Azure HDInsight 'ta Hive ambarı Bağlayıcısı ile Apache Spark ve Apache Hive tümleştirme
 
@@ -38,7 +38,11 @@ Hive ambarı Bağlayıcısı tarafından desteklenen işlemlerden bazıları şu
 ## <a name="hive-warehouse-connector-setup"></a>Hive ambar Bağlayıcısı kurulumu
 
 > [!IMPORTANT]
-> Spark 2,4 Kurumsal Güvenlik Paketi kümelerinde yüklü olan HiveServer2 Interactive örneği, Hive ambarı Bağlayıcısı ile kullanım için desteklenmez. Bunun yerine, HiveServer2 etkileşimli iş yüklerinizi barındırmak için ayrı bir HiveServer2 Interactive kümesi yapılandırmanız gerekir. Tek bir Spark 2,4 kümesinden yararlanan bir Hive ambar Bağlayıcısı yapılandırması desteklenmez.
+> - Spark 2,4 Kurumsal Güvenlik Paketi kümelerinde yüklü olan HiveServer2 Interactive örneği, Hive ambarı Bağlayıcısı ile kullanım için desteklenmez. Bunun yerine, HiveServer2 etkileşimli iş yüklerinizi barındırmak için ayrı bir HiveServer2 Interactive kümesi yapılandırmanız gerekir. Tek bir Spark 2,4 kümesinden yararlanan bir Hive ambar Bağlayıcısı yapılandırması desteklenmez.
+> - Hive ambar Bağlayıcısı (HWC) kitaplığı, Iş yükü yönetimi (WLM) özelliğinin etkin olduğu etkileşimli sorgu kümeleriyle birlikte kullanılmak üzere desteklenmez. <br>
+Yalnızca Spark iş yüklerine sahip olduğunuz ve HWC kitaplığını kullanmak istediğiniz bir senaryoda, etkileşimli sorgu kümesinde Iş yükü yönetimi özelliğinin etkin olmadığından emin olun ( `hive.server2.tez.interactive.queue` yapılandırma Hive configs içinde ayarlanmadı). <br>
+Hem Spark iş yüklerinin (HWC) hem de LLAP yerel iş yükünün bulunduğu bir senaryoda, paylaşılan meta veri tabanı ile iki ayrı etkileşimli sorgu kümesi oluşturmanız gerekir. WLM özelliğinin gerekli olması ve yalnızca WLM özelliğinin yapılandırılmadığı iş yükü için diğer kümelerinizde, yerel LLAP iş yükleri için bir küme.
+Yalnızca bir kümede etkinleştirilmiş olsa bile, her iki kümeden da WLM kaynak planlarını görüntüleyebileceğinizi unutmayın. WLM özelliğinin devre dışı bırakıldığı kümedeki kaynak planlarında herhangi bir değişiklik yapmayın çünkü bu, diğer kümedeki WLM işlevselliğini etkileyebilir.
 
 Hive ambarı Bağlayıcısı Spark ve etkileşimli sorgu iş yükleri için ayrı kümeler gerektirir. Bu kümeleri Azure HDInsight 'ta ayarlamak için aşağıdaki adımları izleyin.
 

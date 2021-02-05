@@ -1,5 +1,5 @@
 ---
-title: MS Graph API kullanarak bulut eşitlemesi için gelen eşitleme
+title: MS Graph API kullanarak bulut eşitlemesini programlı olarak yapılandırma
 description: Bu konuda yalnızca Graph API kullanarak gelen eşitlemenin nasıl etkinleştirileceği açıklanmaktadır
 services: active-directory
 author: billmath
@@ -11,14 +11,14 @@ ms.date: 12/04/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3796b3d86f647e38cf2ff018e8c0c903d9a64e41
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 6c84636ea86b3b640aef365c1c5d8e634b9a1f48
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98682047"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99593172"
 ---
-# <a name="inbound-synchronization-for-cloud-sync-using-ms-graph-api"></a>MS Graph API kullanarak bulut eşitlemesi için gelen eşitleme
+# <a name="how-to-programmatically-configure-cloud-sync-using-ms-graph-api"></a>MS Graph API kullanarak bulut eşitlemesini programlı olarak yapılandırma
 
 Aşağıdaki belge, yalnızca MSGraph API 'Leri kullanarak bir eşitleme profilinin sıfırdan nasıl çoğaltılacağını açıklamaktadır.  
 Bunun nasıl yapılacağını gösteren yapı aşağıdaki adımlardan oluşur.  Bunlar:
@@ -28,6 +28,7 @@ Bunun nasıl yapılacağını gösteren yapı aşağıdaki adımlardan oluşur. 
 - [Eşitleme Işi oluştur](#create-sync-job)
 - [Hedeflenen etki alanını güncelleştir](#update-targeted-domain)
 - [Eşitleme parolası karmalarını etkinleştir](#enable-sync-password-hashes-on-configuration-blade)
+- [Yanlışlıkla silme](#accidental-deletes)
 - [Eşitleme işini Başlat](#start-sync-job)
 - [İnceleme durumu](#review-status)
 
@@ -210,6 +211,71 @@ Burada, vurgulanan "etki alanı" değeri, girişlerin Azure Active Directory sa�
 ```
 
  Şemayı istek gövdesine ekleyin. 
+
+## <a name="accidental-deletes"></a>Yanlışlıkla silme
+Bu bölümde program aracılığıyla [yanlışlıkla silme](how-to-accidental-deletes.md) /devre dışı bırakma ve programlı silme işlemlerinin nasıl yapılacağı ele alınacaktır.
+
+
+### <a name="enabling-and-setting-the-threshold"></a>Eşiği etkinleştirme ve ayarlama
+Kullanabileceğiniz her iş ayarı için iki işlem vardır:
+
+ - DeleteThresholdEnabled-' true ' olarak ayarlandığında iş için yanlışlıkla silme engellemesini sağlar. Varsayılan olarak ' true ' olarak ayarlayın.
+ - DeleteThresholdValue-yanlışlıkla silme engellemesi etkinken, işin her yürütmesinde izin verilecek en fazla silme sayısını tanımlar. Değer varsayılan olarak 500 olarak ayarlanır.  Bu nedenle, değer 500 olarak ayarlandıysa, izin verilen en fazla silme sayısı her yürütmede 499 olacaktır.
+
+Silme eşiği ayarları öğesinin bir parçasıdır `SyncNotificationSettings` ve Graf aracılığıyla değiştirilebilir. 
+
+Bu yapılandırmanın hedeflediği SyncNotificationSettings öğesini güncelleştirmemiz gerekiyor, bu nedenle gizli dizileri güncelleştirin.
+
+ ```
+ PUT – https://graph.microsoft.com/beta/servicePrincipals/[SERVICE_PRINCIPAL_ID]/synchronization/secrets
+ ```
+
+ Aşağıdaki değer dizisine, yapmaya çalıştığınız değere göre aşağıdaki anahtar/değer çiftini ekleyin:
+
+```
+ Request body -
+ {
+   "value":[
+             {
+               "key":"SyncNotificationSettings",
+               "value": "{\"Enabled\":true,\"Recipients\":\"foobar@xyz.com\",\"DeleteThresholdEnabled\":true,\"DeleteThresholdValue\":50}"
+              }
+            ]
+  }
+
+
+```
+
+Yukarıdaki örnekteki "etkin" ayarı, iş karantinaya alındığında bildirim e-postalarını etkinleştirmek/devre dışı bırakmak içindir.
+
+
+Şu anda gizli dizileri için düzeltme eki isteklerini desteklememiz, bu nedenle diğer değerleri korumak için PUT isteğinin gövdesindeki tüm değerleri (Yukarıdaki örnekte olduğu gibi) eklemeniz gerekir.
+
+Tüm gizli dizileri için varolan değerler kullanılarak alınabilir 
+
+```
+GET https://graph.microsoft.com/beta/servicePrincipals/{id}/synchronization/secrets 
+```
+
+### <a name="allowing-deletes"></a>Silmeleri izin verme
+İş karantinasına alındıktan sonra silmelerde akışa izin vermek için, kapsam olarak yalnızca "Forcesilmeleri" ile yeniden başlatma yapmanız gerekir. 
+
+```
+Request:
+POST https://graph.microsoft.com/beta/servicePrincipals/{id}/synchronization/jobs/{jobId}/restart
+```
+
+```
+Request Body:
+{
+  "criteria": {"resetScope": "ForceDeletes"}
+}
+```
+
+
+
+
+
 
 ## <a name="start-sync-job"></a>Eşitleme işini Başlat
 İş aşağıdaki komutla yeniden alınabilir:

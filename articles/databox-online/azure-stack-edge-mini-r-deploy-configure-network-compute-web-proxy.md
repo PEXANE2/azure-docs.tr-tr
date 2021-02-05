@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 10/14/2020
+ms.date: 02/04/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge Mini R so I can use it to transfer data to Azure.
-ms.openlocfilehash: 915aca5f7400496aacb3c3cf248120dff39d747c
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 1cca747003a127371db7d110500e2b4168f10219
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96468954"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594459"
 ---
 # <a name="tutorial-configure-network-for-azure-stack-edge-mini-r"></a>Öğretici: Azure Stack Edge Mini R için ağı yapılandırma
 
@@ -126,6 +126,7 @@ Cihazınızın ağını yapılandırmak için bu adımları izleyin.
    - Ortamınızda DHCP etkinse, ağ arabirimleri otomatik olarak yapılandırılır. IP adresi, alt ağ, ağ geçidi ve DNS otomatik olarak atanır.
    - DHCP etkinleştirilmemişse, gerekirse statik IP 'Ler atayabilirsiniz.
    - Ağ arabiriminizi IPv4 olarak yapılandırabilirsiniz.
+   - Ağ arabirimi kartı (NIC) grubu oluşturma veya bağlantı toplama, Azure Stack Edge ile desteklenmez.
    - Herhangi bir bağlantı noktasının seri numarası, düğüm seri numarasına karşılık gelir. K serisi bir cihaz için yalnızca bir seri numarası görüntülenir.
 
      >[!NOTE] 
@@ -152,7 +153,7 @@ Ağ ayarlarını yapılandırdıktan ve uyguladıktan sonra, Ileri ' yi seçin. 
     > Azure Stack Edge üzerinde Kubernetes, pod için 172.27.0.0/16 alt ağını ve hizmet için 172.28.0.0/16 alt ağını kullanır. Bunların ağınızda kullanımda olmadığından emin olun. Bu alt ağlar ağınızda zaten kullanılıyorsa, bu alt ağları, `Set-HcsKubeClusterNetworkInfo` cihazın PowerShell arabiriminden cmdlet 'ini çalıştırarak değiştirebilirsiniz. Daha fazla bilgi için bkz. [Kubernetes Pod ve hizmet alt ağlarını değiştirme](azure-stack-edge-gpu-connect-powershell-interface.md#change-kubernetes-pod-and-service-subnets).
 
 
-1. **Kubernetes dış hizmet IP 'leri** atayın. Bunlar ayrıca Yük Dengeleme IP adresleridir. Bu bitişik IP adresleri, Kubernetes kümesi dışında kullanıma sunmak istediğiniz hizmetlere yöneliktir ve sunulan hizmet sayısına bağlı olarak statik IP aralığını belirlersiniz. 
+1. **Kubernetes dış hizmet IP 'leri** atayın. Bunlar ayrıca Yük Dengeleme IP adresleridir. Bu bitişik IP adresleri, Kubernetes kümesi dışında kullanıma sunmak istediğiniz hizmetlere yöneliktir ve sunulan hizmet sayısına bağlı olarak statik IP aralığını belirtebilirsiniz. 
     
     > [!IMPORTANT]
     > İşlem modüllerine erişmek için Azure Stack Edge Mini R hub hizmeti için en az 1 IP adresi belirtmenizi önemle tavsiye ederiz. Daha sonra isteğe bağlı olarak, küme dışından erişilmesi gereken diğer hizmetler/IoT Edge modülleri (hizmet/modül başına 1) için ek IP adresleri belirtebilirsiniz. Hizmet IP adresleri daha sonra güncelleştirilebilen olabilir. 

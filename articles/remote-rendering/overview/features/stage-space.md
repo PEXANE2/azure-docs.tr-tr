@@ -6,16 +6,16 @@ ms.author: chmant
 ms.date: 03/07/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5809494fb8b619569316a24816a2e5d943dee6b4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4a739907ce0a3b0b6dfcb8791b51d0ea5e7e76e7
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89013138"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594019"
 ---
 # <a name="stage-space"></a>Aşama alanı
 
-HoloLens 2 gibi baş izleme verileri sağlayan bir cihazda ARR çalıştırırken, baş poz hem kullanıcı uygulamasına hem de sunucusuna gönderilir. Baş dönüştürmesinin tanımlandığı alana, *aşama alanı*denir.
+HoloLens 2 gibi baş izleme verileri sağlayan bir cihazda ARR çalıştırırken, baş poz hem kullanıcı uygulamasına hem de sunucusuna gönderilir. Baş dönüştürmesinin tanımlandığı alana, *aşama alanı* denir.
 
 Yerel ve uzak içeriği hizalamak için, aşama alanının ve dünya alanının hem istemci hem de sunucu üzerinde aynı olduğu varsayılır. Kullanıcı, kameranın üzerine ek bir dönüşüm eklemeye karar verirse, bu kullanıcının sunucuya gönderilmesi ve yerel ve uzak içeriği doğru şekilde hizalanması gerekir.
 
@@ -27,15 +27,15 @@ Aşama alanının taşınmasının tipik nedenleri [Dünya çapında kilitleme a
 > Deneysel: Bu özellik deneysel olur ve zaman içinde değişecektir. Bu nedenle, daha yeni istemci SDK sürümlerine güncelleştirme, kodu yükseltmek için ek iş gerektirebilir. Geçerli uygulama, aşama alanı başlangıcını değiştirirken kısa bir süre için yerel/uzak içerik hizalamasını keser.
 Bu nedenle, şu anda yalnızca zaman içinde yalnızca çok küçük değişiklikler gösteren Çıpaları gibi dünya kilitleme amaçları için kullanılmak üzere tasarlanmıştır.
 
-Sunucuya ek bir dönüşüm uygulandığını, bir konum tarafından tanımlanan kaynağı ve dünya alanındaki bir döndürme 'nin üzerinden gönderilmesi gerektiğini bildirmek için. Bu ayara, *aşama alanı ayarı*aracılığıyla erişilebilir.
+Sunucuya ek bir dönüşüm uygulandığını, bir konum tarafından tanımlanan kaynağı ve dünya alanındaki bir döndürme 'nin üzerinden gönderilmesi gerektiğini bildirmek için. Bu ayara, *aşama alanı ayarı* aracılığıyla erişilebilir.
 
 > [!IMPORTANT]
 > [Masaüstü benzetimi](../../concepts/graphics-bindings.md) ' nde, kameranın dünya alanı konumu Kullanıcı uygulaması tarafından sağlanır. Bu durumda, zaten kamera dönüşümüyle çarpıldığı için aşama alanı başlangıcını ayarlamak atlanmalıdır.
 
 ```cs
-void ChangeStageSpace(AzureSession session)
+void ChangeStageSpace(RenderingSession session)
 {
-    StageSpaceSettings settings = session.Actions.StageSpaceSettings;
+    StageSpaceSettings settings = session.Connection.StageSpaceSettings;
 
     // Set position and rotation to the world-space transform of the stage space.
     settings.Position = new Double3(0, 0, 0);
@@ -44,9 +44,9 @@ void ChangeStageSpace(AzureSession session)
 ```
 
 ```cpp
-void ChangeStageSpace(ApiHandle<AzureSession> session)
+void ChangeStageSpace(ApiHandle<RenderingSession> session)
 {
-    ApiHandle<StageSpaceSettings> settings = session->Actions()->GetStageSpaceSettings();
+    ApiHandle<StageSpaceSettings> settings = session->Connection()->GetStageSpaceSettings();
 
     // Set position and rotation to the world-space transform of the stage space.
     settings->SetPosition({0, 0, 0});

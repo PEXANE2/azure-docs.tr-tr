@@ -3,14 +3,14 @@ title: Şablon dağıtımı
 description: Azure Resource Manager şablonu dağıtılmadan önce kaynaklarınızda hangi değişikliklerin gerçekleşecektir belirleme.
 author: tfitzmac
 ms.topic: conceptual
-ms.date: 12/15/2020
+ms.date: 02/05/2021
 ms.author: tomfitz
-ms.openlocfilehash: fa70d88b046cf38aa74582066d230c15580465b9
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 8122fa5c00a61017b5f358a112c94a5299539cee
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97673979"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99591633"
 ---
 # <a name="arm-template-deployment-what-if-operation"></a>ARM şablonu dağıtımı what-if işlemi
 
@@ -18,13 +18,9 @@ Azure Resource Manager şablonu (ARM şablonu) dağıtılmadan önce, gerçekle�
 
 Azure PowerShell, Azure CLı veya REST API işlemleri ile durum işlemini kullanabilirsiniz. Kaynak grubu, abonelik, yönetim grubu ve kiracı düzeyinde dağıtımlar için ne desteklenir?
 
-## <a name="install-azure-powershell-module"></a>Azure PowerShell modülünü yükleme
+## <a name="install-azure-powershell-module"></a>Azure PowerShell modülünü Install
 
 PowerShell 'de ne olduğunu kullanmak için **az Module sürüm 4,2 veya sonraki bir** sürümünü kullanmanız gerekir.
-
-Ancak, gerekli modülü yüklemeden önce PowerShell Core (6. x veya 7. x) olduğundan emin olun. PowerShell 5. x veya daha önceki [bir sürümünü kullanıyorsanız, PowerShell sürümünüzü güncelleştirin](/powershell/scripting/install/installing-powershell). Gerekli modülü PowerShell 5. x veya önceki bir sürümüne yükleyemezsiniz.
-
-### <a name="install-latest-version"></a>En son sürümü yükler
 
 Modülünü yüklemek için şunu kullanın:
 
@@ -95,7 +91,7 @@ Yukarıdaki komutlar el ile inceleyebilmeniz için bir metin Özeti döndürür.
 * `$results = Get-AzResourceGroupDeploymentWhatIfResult` kaynak grubu dağıtımları için
 * `$results = Get-AzSubscriptionDeploymentWhatIfResult``$results = Get-AzDeploymentWhatIfResult`abonelik düzeyi dağıtımlar için veya
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure CLI’si
 
 Bir şablonu dağıtımdan önce değişiklikleri önizlemek için şunu kullanın:
 
@@ -326,7 +322,7 @@ results=$(az deployment group what-if --resource-group ExampleGroup --template-u
 
 [Dağıtım modunun](deployment-modes.md)kullanımını destekleyen durum işlemi. Tamamlanmış moda ayarlandığında şablonda olmayan kaynaklar silinir. Aşağıdaki örnek, tamamlanmış bir [kaynağı olmayan bir şablon dağıtmıştır](https://github.com/Azure/azure-docs-json-samples/blob/master/empty-template/azuredeploy.json) .
 
-Şablonu dağıtmadan önce gerçekleştirilecek değişiklikleri önizlemek için dağıtım komutuyla birlikte confirm anahtarı parametresini kullanın. Değişiklikler beklediğiniz gibi olduğunda dağıtımın tamamlanmasını istediğinizi kabul edin.
+Şablonu dağıtmadan önce gerçekleştirilecek değişiklikleri önizlemek için dağıtım komutuyla birlikte confirm anahtarı parametresini kullanın. Değişiklikler beklediğiniz gibi olduğunda, dağıtımın tamamlanmasını istediğinizi yanıtlayın.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

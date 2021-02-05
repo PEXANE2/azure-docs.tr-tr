@@ -5,12 +5,12 @@ ms.assetid: 94af2caf-a2ec-4415-a097-f60694b860b3
 ms.topic: overview
 ms.date: 07/06/2020
 ms.custom: devx-track-dotnet, mvc, seodec18
-ms.openlocfilehash: d59dfe5b0fe3268dcda20fbc83aa31bba8a8713b
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 0bfacc4169de6b30272229283e9aef9a9d69fad5
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936218"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99592339"
 ---
 # <a name="app-service-overview"></a>App Service’e genel bakış
 
@@ -50,13 +50,13 @@ Süresi geçmiş çalışma zamanları, portalda Web Apps oluşturma ve yapılan
 
 Süresi geçmiş bir çalışma zamanı portaldan gizliyse, bu sürümü kullanan mevcut siteleriniz çalışmaya devam edecektir. Bir çalışma zamanı App Service platformundan tamamen kaldırılırsa, Azure abonelik sahipleriniz kaldırılmadan önce bir e-posta bildirimi alır.
 
-Artık portalda gösterilmemiş eski bir çalışma zamanı sürümü ile başka bir Web uygulaması oluşturmanız gerekiyorsa, sitenizin çalışma zamanı sürümünü alma yönergeleri için dil yapılandırma kılavuzlarını inceleyin. Aynı çalışma zamanına sahip başka bir site oluşturmak için Azure CLı kullanabilirsiniz. Alternatif olarak, sitenin ARM şablonunu dışarı aktarmak için portalda Web uygulaması dikey penceresinde **şablonu dışarı aktar** düğmesini de kullanabilirsiniz. Bu şablonu, aynı çalışma zamanına ve yapılandırmaya sahip yeni bir site dağıtmak için yeniden kullanabilirsiniz.
+Artık portalda gösterilmemiş eski bir çalışma zamanı sürümü ile başka bir Web uygulaması oluşturmanız gerekiyorsa, sitenizin çalışma zamanı sürümünü alma yönergeleri için dil yapılandırma kılavuzlarını inceleyin. Aynı çalışma zamanına sahip başka bir site oluşturmak için Azure CLı kullanabilirsiniz. Alternatif olarak, sitenin ARM şablonunu dışarı aktarmak için portalda Web uygulaması dikey penceresinde **şablonu dışarı aktar** düğmesini de kullanabilirsiniz. Aynı çalışma zamanına ve yapılandırmaya sahip yeni bir site dağıtmak için bu şablonu yeniden kullanabilirsiniz.
 
 ### <a name="limitations"></a>Sınırlamalar
 
 - Linux üzerinde App Service, [paylaşılan](https://azure.microsoft.com/pricing/details/app-service/plans/) fiyatlandırma katmanında desteklenmez. 
 - Aynı App Service planında Windows ve Linux uygulamalarını karıştıramazsınız.  
-- Aynı kaynak grubu içinde, aynı bölgedeki Windows ve Linux uygulamalarını karıştıramazsınız.
+- Tarihsel olarak, aynı kaynak grubunda Windows ve Linux uygulamalarını karıştıramazsınız. Ancak, 21 Ocak 2021 tarihinde veya bu tarihten sonra oluşturulan tüm kaynak grupları bu senaryoyu destekler. 21 Ocak 2021 tarihinden önce oluşturulan kaynak grupları için, karma platform dağıtımları ekleme özelliği yakında Azure bölgeleri (Ulusal bulut bölgeleri dahil) arasında kullanıma sunulacaktır.
 - Azure portal, yalnızca şu anda Linux uygulamaları için çalışan özellikleri gösterir. Özellikler etkinken, portalda etkinleştirilir.
 - Yerleşik görüntülere dağıtıldığında, kodunuz ve içeriğiniz, Azure depolama tarafından desteklenen Web içeriği için bir depolama birimi olarak ayrılır. Bu birimin disk gecikmesi, kapsayıcı FileSystem 'ın gecikmesinden daha yüksek ve daha fazla değişken. İçerik dosyalarına ağır salt okuma erişimi gerektiren uygulamalar, dosyaları içerik birimi yerine kapsayıcı dosya sistemine yerleştiren özel kapsayıcı seçeneğinden faydalanabilir.
 

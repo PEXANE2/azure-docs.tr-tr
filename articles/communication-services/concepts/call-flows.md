@@ -9,14 +9,14 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 9fe5cb13ee352b2c49ab6ae57cabd6116cdfa720
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 410f8ab4de0d93262647cbc07e0792cd39f7a844
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91667682"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99593646"
 ---
-# <a name="call-flows"></a>Çağrı akışları
+# <a name="call-flows"></a>Arama akışları
 
 [!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
@@ -26,7 +26,7 @@ Aşağıdaki bölümde, Azure Iletişim hizmetlerindeki çağrı akışlarına i
 
 Eşler arası veya grup çağrısı yaptığınızda, arka planda iki protokol kullanılır-HTTP (REST) for sinyal ve medya için SRTP. 
 
-İstemci kitaplıkları, istemci kitaplıkları ve Iletişim Hizmetleri sinyal denetleyicileri arasında sinyal verme, HTTP REST (TLS) ile işlenir. Gerçek zamanlı medya trafiği (RTP) için, Kullanıcı veri birimi Protokolü (UDP) tercih edilir. UDP 'nin kullanılması güvenlik duvarınız tarafından engellenmediyse, istemci kitaplığı, medya için Iletim Denetim Protokolü (TCP) kullanır. 
+İstemci kitaplıkları, istemci kitaplıkları ve Iletişim Hizmetleri sinyal denetleyicileri arasında sinyal verme, HTTP REST (TLS) ile işlenir. Real-Time medya trafiği (RTP) için, Kullanıcı veri birimi Protokolü (UDP) tercih edilir. UDP 'nin kullanılması güvenlik duvarınız tarafından engellenmediyse, istemci kitaplığı, medya için Iletim Denetim Protokolü (TCP) kullanır. 
 
 Sinyal ve medya protokollerini çeşitli senaryolarda gözden geçirelim. 
 
@@ -44,13 +44,13 @@ Bire bir VoIP veya video çağrılarında trafik, en doğrudan yolu tercih eder.
 
 Çiğdem için kafeterde NAT ve Bob için ev ofisindeki NAT olacaktır. Çiğdem 'in cihazı, NAT 'nin dış adresini gönderecek ve Bob 'un aynı şekilde yapacağız. İstemci kitaplıkları, Azure Iletişim hizmetlerinin ücretsiz olarak sağladığı bir STUN (NAT için oturum çapraz araçları) hizmetinden dış adresler öğrenirler. Çiğdem ve Bob arasındaki el sıkışmasını işleyen mantık, istemci kitaplıkları tarafından sağlanmış olan Azure Iletişim Hizmetleri içine katıştırılır. (Ek yapılandırma gerekmez)
 
-:::image type="content" source="./media/call-flows/about-voice-case-2.png" alt-text="Kullanıcılar ve Iletişim Hizmetleri arasında doğrudan bir VOıP çağrısını gösteren diyagram.":::
+:::image type="content" source="./media/call-flows/about-voice-case-2.png" alt-text="Bir STUN bağlantısını kullanan bir VOıP çağrısını gösteren diyagram.":::
 
 ### <a name="case-3-voip-where-neither-a-direct-nor-nat-connection-is-possible"></a>Durum 3: doğrudan veya NAT bağlantısı mümkün olmayan VoIP
 
 İstemci cihazlarının biri veya her ikisi simetrik bir NAT 'nin arkasında ise, iki istemci kitaplığı arasında medyanın geçişine yönelik ayrı bir bulut hizmeti gereklidir. Bu hizmet, SıRASıYLA (NAT etrafında geçişler kullanılarak çapraz geçiş) olarak adlandırılır ve Iletişim Hizmetleri tarafından da sağlanır. İstemci kitaplığı 'Nı çağıran Iletişim Hizmetleri, algılanan ağ koşullarına bağlı olarak Hizmetleri otomatik olarak kullanır. Microsoft 'un aç hizmetinin kullanımı ayrı olarak ücretlendirilir.
 
-:::image type="content" source="./media/call-flows/about-voice-case-3.png" alt-text="Kullanıcılar ve Iletişim Hizmetleri arasında doğrudan bir VOıP çağrısını gösteren diyagram.":::
+:::image type="content" source="./media/call-flows/about-voice-case-3.png" alt-text="Bir Aç bağlantısını kullanan bir VOıP çağrısını gösteren diyagram.":::
  
 ### <a name="case-4-group-calls-with-pstn"></a>Durum 4: PSTN ile grup çağrıları
 
@@ -58,7 +58,7 @@ PSTN çağrıları için hem sinyal hem de medya, Azure Iletişim Hizmetleri tel
 
 PSTN medya trafiği, medya Işlemcisi adlı bir bileşen üzerinden akar.
 
-:::image type="content" source="./media/call-flows/about-voice-pstn.png" alt-text="Kullanıcılar ve Iletişim Hizmetleri arasında doğrudan bir VOıP çağrısını gösteren diyagram.":::
+:::image type="content" source="./media/call-flows/about-voice-pstn.png" alt-text="Iletişim hizmetleriyle bir PSTN Grup çağrısını gösteren diyagram.":::
 
 > [!NOTE]
 > Medya işleme hakkında bilgi sahibi olmak için, medya işlemcimiz, [RFC 3261 SIP: oturum başlatma Protokolü](https://tools.ietf.org/html/rfc3261)'nde tanımlandığı şekilde yeniden kullanıcı aracısına geri yüklenir, yani Microsoft ve taşıyıcı ağlar arasındaki çağrıları işlerken codec bileşenleri çevirebilir. Azure Iletişim Hizmetleri sinyal denetleyicisi, Microsoft 'un aynı RFC 'ye göre bir SIP Proxy uygulamasıdır.
@@ -70,11 +70,11 @@ Grup çağrıları için varsayılan gerçek zamanlı protokol (RTP) Kullanıcı
 > [!NOTE]
 > Medya Işlemcisi bir MultiPoint denetim birimi (MCU) veya seçmeli Iletme birimi (SFU) işlevi görebilir
 
-:::image type="content" source="./media/call-flows/about-voice-group-calls.png" alt-text="Kullanıcılar ve Iletişim Hizmetleri arasında doğrudan bir VOıP çağrısını gösteren diyagram.":::
+:::image type="content" source="./media/call-flows/about-voice-group-calls.png" alt-text="Iletişim Hizmetleri içindeki UDP medya işlem akışını gösteren diyagram.":::
 
 İstemci kitaplığı, güvenlik duvarı kısıtlamaları nedeniyle medya için UDP kullanamıyorum, Iletim Denetim Protokolü 'Nü (TCP) kullanmak için bir girişimde bulunuldu. Medya Işlemcisi bileşeninin UDP gerektirdiğini unutmayın. Bu durumda, Iletişim Hizmetleri çevirme hizmeti, TCP ile UDP 'ye çevirmek için Grup çağrısına eklenecektir. ETKINLEŞTIRME özellikleri el ile devre dışı bırakılmadığı takdirde, bu durumda ücretleri ETKINLEŞTIRIN.
 
-:::image type="content" source="./media/call-flows/about-voice-group-calls-2.png" alt-text="Kullanıcılar ve Iletişim Hizmetleri arasında doğrudan bir VOıP çağrısını gösteren diyagram.":::
+:::image type="content" source="./media/call-flows/about-voice-group-calls-2.png" alt-text="Iletişim Hizmetleri içindeki TCP medya işlem akışını gösteren diyagram.":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

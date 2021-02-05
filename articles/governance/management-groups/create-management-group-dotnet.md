@@ -1,15 +1,15 @@
 ---
 title: 'Hızlı başlangıç: .NET Core ile bir yönetim grubu oluşturma'
 description: Bu hızlı başlangıçta, kaynaklarınızı bir kaynak hiyerarşisinde düzenlemek üzere bir yönetim grubu oluşturmak için .NET Core 'u kullanırsınız.
-ms.date: 09/30/2020
+ms.date: 02/05/2021
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 138998fdc23fd8a296ca50093e2952017888041f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a74cea9b142785c093b8ed235fc40049746f11a0
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91604698"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99592594"
 ---
 # <a name="quickstart-create-a-management-group-with-net-core"></a>Hızlı başlangıç: .NET Core ile bir yönetim grubu oluşturma
 
@@ -21,7 +21,7 @@ Dizinde oluşturulan ilk yönetim grubunun tamamlanması 15 dakika sürebilir. D
 
 - Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
-- _ClientID_ ve _ClientSecret_dahil olmak üzere bir Azure hizmet sorumlusu. Azure Ilkesiyle kullanılmak üzere bir hizmet sorumlusu yoksa veya yeni bir tane oluşturmak istiyorsanız, bkz. [.NET Yönetim kitaplıkları Için Azure kimlik doğrulaması](/dotnet/azure/sdk/authentication#mgmt-auth).
+- _ClientID_ ve _ClientSecret_ dahil olmak üzere bir Azure hizmet sorumlusu. Azure Ilkesiyle kullanılmak üzere bir hizmet sorumlusu yoksa veya yeni bir tane oluşturmak istiyorsanız, bkz. [.NET Yönetim kitaplıkları Için Azure kimlik doğrulaması](/dotnet/azure/sdk/authentication#mgmt-auth).
   Sonraki adımlarda bunu yapacağımız için .NET Core paketlerini yüklemek için adımı atlayın.
 
 - Kiracıdaki tüm Azure AD kullanıcıları, [hiyerarşi koruması](./how-to/protect-resource-hierarchy.md#setting---require-authorization) etkinleştirilmemişse, bu kullanıcıya atanan yönetim grubu yazma izni olmadan bir yönetim grubu oluşturabilir. Bu yeni yönetim grubu kök yönetim grubunun veya [Varsayılan yönetim grubunun](./how-to/protect-resource-hierarchy.md#setting---default-management-group) bir alt öğesi haline gelir ve oluşturucuya "Owner" rol ataması verilir. Yönetim grubu hizmeti, bu becerisine, rol atamalarının kök düzeyinde gerekmemesi için izin verir. Kök yönetim grubuna, bir kullanıcı oluşturulduğunda erişemez. Yönetim grupları 'nı kullanmaya başlamak üzere Azure AD Genel yöneticilerini bulmanın önüne geçmek için, kök düzeyinde ilk yönetim gruplarının oluşturulmasına izin veririz.

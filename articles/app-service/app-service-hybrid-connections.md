@@ -4,15 +4,15 @@ description: Farklı ağlardaki kaynaklara erişmek için Azure App Service ' de
 author: ccompy
 ms.assetid: 66774bde-13f5-45d0-9a70-4e9536a4f619
 ms.topic: article
-ms.date: 02/04/2020
+ms.date: 02/05/2020
 ms.author: ccompy
 ms.custom: seodec18, fasttrack-edit
-ms.openlocfilehash: 20bdeef0a45bb02fab8841c0dd8ec7755143c693
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 1b3fc4a254c1157f2c2336e6360ba7621f31364d
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 02/05/2021
-ms.locfileid: "99576000"
+ms.locfileid: "99594240"
 ---
 # <a name="azure-app-service-hybrid-connections"></a>Azure App Service Hibrit Bağlantılar
 
@@ -201,11 +201,18 @@ Geçişe erişimi olan herkes, `Reader` Azure Portal Web uygulamasına eklemeye 
 
 ## <a name="troubleshooting"></a>Sorun giderme ##
 
-"Bağlı" durumu, en az bir HCM 'nin bu karma bağlantıyla yapılandırıldığı ve Azure 'a ulaşabilme anlamına gelir. Karma bağlantınızın durumu **bağlı** değilse, karma bağlantınız Azure erişimi olan herhangi bir HCM 'de yapılandırılmamıştır.
+"Bağlı" durumu, en az bir HCM 'nin bu karma bağlantıyla yapılandırıldığı ve Azure 'a ulaşabilme anlamına gelir. Karma bağlantınızın durumu **bağlı** değilse, karma bağlantınız Azure erişimi olan herhangi bir HCM 'de yapılandırılmamıştır. HCM 'niz **bağlı değil** olarak görünüyorsa, denetlenecek birkaç şey vardır:
 
-İstemcilerin uç noktalara bağlanamadığı birincil neden, uç noktanın DNS adı yerine bir IP adresi kullanılarak belirtilme nedenidir. Uygulamanız istenen uç noktaya ulaşamadıysanız ve bir IP adresi kullandıysanız, HCM 'nin çalıştığı konakta geçerli olan bir DNS adı kullanmaya geçiş yapın. Ayrıca, HCM 'nin çalıştığı konakta DNS adının düzgün şekilde çözümlendiğini kontrol edin. HCM 'nin karma bağlantı uç noktasında çalıştığı konaktan bağlantı olduğunu doğrulayın.  
+* Ana bilgisayarınız 443 numaralı bağlantı noktasında Azure 'a giden erişime sahip mi? PowerShell komut *testi-NetConnection hedef-P bağlantı noktasını* kullanarak HCM konağından test edebilirsiniz 
+* HCM büyük olasılıkla hatalı durumda mı? ' Azure Karma Bağlantı Yöneticisi hizmeti "yerel hizmetini yeniden başlatmayı deneyin.
 
-App Service, gelişmiş araçlar (kudu) konsolundan, **tcme** komut satırı aracı çağrılabilir. Bu araç, bir TCP uç noktasına erişiminiz varsa size söyleyebilir, ancak karma bağlantı uç noktasına erişiminiz varsa size bilgi vermez. Aracı bir karma bağlantı uç noktasına karşı konsolunda kullandığınızda yalnızca bir konak kullandığını onaylanıyor olursunuz: bağlantı noktası birleşimi.  
+Durumunuz **bağlı** ise, uygulamanız bitiş noktanıza ulaşamadıysanız:
+
+* Karma bağlantınızda bir DNS adı kullandığınızdan emin olun. Bir IP adresi kullanırsanız, gerekli istemci DNS araması gerçekleşmeyebilir. Web uygulamanızda çalışan istemci bir DNS araması yapmaz, karma bağlantı çalışır durumda olmayacaktır
+* Karma bağlantınızda kullanılan DNS adının HCM ana bilgisayardan çözümleneceğini denetleyin. ' Nin karma bağlantı tanımınızda kullanılan bir tam eşleşme olduğu *nslookup endpointdnsname* kullanarak çözümü denetleyin.
+* HCM konağından uç noktaya erişimi test etmek için PowerShell komutu *Test-NetConnection EndpointDNSname-P bağlantı noktasını*  kullanarak, HCM ana bilgisayarınızdan gelen erişimi test edin ve ardından hedef konaktaki ana bilgisayar tabanlı güvenlik duvarları dahil olmak üzere iki ana bilgisayar arasındaki güvenlik duvarlarını kontrol edin.
+
+App Service, **tcme** komut satırı aracı Gelişmiş araçlar (kudu) konsolundan çağrılabilir. Bu araç, bir TCP uç noktasına erişiminiz varsa size söyleyebilir, ancak karma bağlantı uç noktasına erişiminiz varsa size bilgi vermez. Aracı bir karma bağlantı uç noktasına karşı konsolunda kullandığınızda yalnızca bir konak kullandığını onaylanıyor olursunuz: bağlantı noktası birleşimi.  
 
 Uç noktanız için bir komut satırı istemciniz varsa, bağlantıyı uygulama konsolundan test edebilirsiniz. Örneğin, kıvrımlı kullanarak Web sunucusu uç noktalarına erişimi test edebilirsiniz.
 

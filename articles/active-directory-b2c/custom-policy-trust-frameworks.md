@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 12/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 514ce0a43904048952f38edd6a9d38713f6ef8f3
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: cb33e11af26d5f5a2676f5b236ac142179bdb550
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98936672"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99592849"
 ---
 # <a name="azure-ad-b2c-custom-policy-overview"></a>Azure AD B2C özel ilkeye genel bakış
 
@@ -115,7 +115,7 @@ Her başlatıcı paketi aşağıdaki dosyaları içerir:
 Devralma modeli aşağıdaki gibidir:
 
 - Herhangi bir düzeydeki alt ilke üst ilkeden devralınabilir ve yeni öğeler ekleyerek genişletebilirler.
-- Daha karmaşık senaryolar için daha fazla devralma düzeyi (toplamda 5 ' e kadar) ekleyebilirsiniz.
+- Daha karmaşık senaryolar için daha fazla devralma düzeyi (toplamda en fazla 10) ekleyebilirsiniz.
 - Daha fazla bağlı olan taraf ilkesi ekleyebilirsiniz. Örneğin, Hesabımı Sil, telefon numarası, SAML bağlı olan taraf ilkesini ve daha fazlasını değiştirin.
 
 Aşağıdaki diyagramda, ilke dosyaları ve bağlı olan taraf uygulamaları arasındaki ilişki gösterilmektedir.

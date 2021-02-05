@@ -9,42 +9,34 @@ ms.author: mariusu
 ms.date: 10/15/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: a00f319c55665695879aac3c8ba711ce13fd5d4e
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: fbd5d3c4489d124014e0d956359f64a8ec9c568a
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98763056"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99592798"
 ---
 # <a name="get-started-with-the-web-calling-sample"></a>Web 'i çağıran örnekle çalışmaya başlama
+
+Web çağıran örnek, Iletişim Hizmetleri Web 'i çağıran istemci kitaplığı tarafından sunulan çeşitli yeteneklere adım adım yönergeler olarak hizmet veren bir Web uygulamasıdır. 
+
+Bu örnek, geliştiriciler için oluşturulmuştur ve Iletişim Hizmetleri 'ni kullanmaya başlamanıza çok daha kolay hale gelir. Kullanıcı arabirimi, her biri bir "kodu göster" düğmesine sahip olan birden fazla bölüme ayrılmıştır ve bu, kodu doğrudan tarayıcınızdan kendi Iletişim Hizmetleri uygulamanıza kopyalamanızı sağlar.
+
+## <a name="get-started-with-the-web-calling-sample"></a>Web 'i çağıran örnekle çalışmaya başlama
 
 [!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
 > [!IMPORTANT]
 > [Bu örnek GitHub ' da kullanılabilir.](https://github.com/Azure-Samples/communication-services-web-calling-tutorial/)
 
-Azure Iletişim Hizmetleri **Web çağırma örneği** , JavaScript ile çağırma deneyimi oluşturmak için istemci kitaplığı çağırma iletişim hizmetlerinin nasıl kullanılabileceğini gösterir.
-
-Bu örnek hızlı başlangıçta, örneği yerel makinenizde çalıştırmadan önce örneğin nasıl çalıştığını öğreneceksiniz. Daha sonra Azure Iletişim Hizmetleri kaynaklarınızı kullanarak örneği Azure 'a dağıtırsınız.
-
-## <a name="overview"></a>Genel Bakış
-
-Web çağıran örnek, Iletişim Hizmetleri Web 'i çağıran istemci kitaplığı tarafından sunulan çeşitli yeteneklere adım adım yönergeler olarak hizmet veren bir Web uygulamasıdır. 
-
-Bu örnek, geliştiriciler için oluşturulmuştur ve Iletişim Hizmetleri 'ni kullanmaya başlamanıza çok daha kolay hale gelir. Kullanıcı arabirimi, her biri bir "kodu göster" düğmesine sahip olan birden fazla bölüme ayrılmıştır ve bu, kodu doğrudan tarayıcınızdan kendi Iletişim Hizmetleri uygulamanıza kopyalamanızı sağlar.
-
-[Web çağıran örnek](https://github.com/Azure-Samples/communication-services-web-calling-tutorial) makinenizde çalışırken, aşağıdaki giriş sayfasını görürsünüz:
+Projeyi ayarlamak ve makinenizde yerel olarak çalıştırmak için/Project/Readme.exe ' i izleyin.
+[Web çağırma örneği](https://github.com/Azure-Samples/communication-services-web-calling-tutorial) makinenizde çalışır olduktan sonra, aşağıdaki giriş sayfasını görürsünüz:
 
 :::image type="content" source="./media/web-calling-tutorial-page-1.png" alt-text="Web çağrı öğreticisi 1" lightbox="./media/web-calling-tutorial-page-1.png":::
 
 :::image type="content" source="./media/web-calling-tutorial-page-2.png" alt-text="Web çağırma öğreticisi 2" lightbox="./media/web-calling-tutorial-page-2.png":::
 
-
 ## <a name="user-provisioning-and-sdk-initialization"></a>Kullanıcı hazırlama ve SDK başlatması 
-
-Tanıtımı kullanmaya başlamak için [Iletişim Hizmetleri kaynağınızın](../quickstarts/create-communication-resource.md) bağlantı dizesini içine girin `config.json` . Bu, çağıran SDK 'nizin başlatılabilmesi için bir [Kullanıcı erişim belirteci](../concepts/authentication.md) sağlamak üzere kullanılacaktır.
-
-Kullanıcı kimliği girişinde kendi kişisel tanımlayıcıyı girin. Burada hiçbir şey sağlanmazsa, rastgele bir kullanıcı kimliği oluşturulur. 
 
 SDK 'nizi arka uç belirteç sağlama hizmeti tarafından sağlanan bir belirteç kullanarak başlatmak için "Kullanıcı sağlama ve SDK 'Yı başlatma" seçeneğine tıklayın. Bu arka uç hizmeti içinde `/project/webpack.config.js` .
 

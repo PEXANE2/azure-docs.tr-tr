@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 01/29/2018
 ms.author: victorh
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 81c936acc00801f8473c1ec74aa50dbf2abb4936
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 2e766bcdee2afa3ff4ed75476c619326c4c0e0c2
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93397034"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99591676"
 ---
 # <a name="manage-web-traffic-using-the-azure-cli"></a>Azure CLI kullanarak web trafiğini yönetme
 
@@ -48,8 +48,8 @@ Bu betik, dağıtımı oluşturmak için aşağıdaki komutları kullanır. Tabl
 | [az group create](/cli/azure/group) | Tüm kaynakların depolandığı bir kaynak grubu oluşturur. |
 | [az network vnet create](/cli/azure/network/vnet) | Sanal ağ oluşturur. |
 | [az network vnet subnet create](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-create) | Bir sanal ağda bir alt ağ oluşturur. |
-| [az network public-ip create](/cli/azure/network/public-ip?view=azure-cli-latest) | Uygulama ağ geçidi için genel IP adresini oluşturur. |
-| [az network application-gateway create](/cli/azure/network/application-gateway?view=azure-cli-latest) | Uygulama ağ geçidi oluşturur. |
+| [az network public-ip create](/cli/azure/network/public-ip) | Uygulama ağ geçidi için genel IP adresini oluşturur. |
+| [az network application-gateway create](/cli/azure/network/application-gateway) | Uygulama ağ geçidi oluşturur. |
 | [az vmss create](/cli/azure/vmss) | Sanal makine ölçek kümesi oluşturur. |
 | [az network public-ip show](/cli/azure/network/public-ip) | Uygulama ağ geçidinin genel IP adresini alır. |
 

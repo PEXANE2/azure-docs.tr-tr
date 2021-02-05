@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: troubleshooting
 ms.date: 06/09/2020
 ms.author: surmb
-ms.openlocfilehash: 5e5be79371b640431603409a34b1a7812ed5c2a3
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.openlocfilehash: 95b74e5fc6c5d2c09ff04b3f14e920ae675ab6e1
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2021
-ms.locfileid: "98746113"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99592764"
 ---
 <a name="troubleshoot-backend-health-issues-in-application-gateway"></a>Application Gateway'de arka uç durumu sorunlarını giderme
 ==================================================
@@ -24,7 +24,7 @@ Varsayılan olarak Azure Application Gateway, arka uç sunucularını inceleyere
 
 ### <a name="how-to-check-backend-health"></a>Arka uç durumunu denetleme
 
-Arka uç havuzunuzun durumunu denetlemek için Azure portal **arka uç sistem durumu** sayfasını kullanabilirsiniz. Ya da [Azure PowerShell](/powershell/module/az.network/get-azapplicationgatewaybackendhealth?view=azps-2.6.0), [CLI](/cli/azure/network/application-gateway?view=azure-cli-latest#az-network-application-gateway-show-backend-health)veya [REST API](/rest/api/application-gateway/applicationgateways/backendhealth)kullanabilirsiniz.
+Arka uç havuzunuzun durumunu denetlemek için Azure portal **arka uç sistem durumu** sayfasını kullanabilirsiniz. Ya da [Azure PowerShell](/powershell/module/az.network/get-azapplicationgatewaybackendhealth), [CLI](/cli/azure/network/application-gateway#az-network-application-gateway-show-backend-health)veya [REST API](/rest/api/application-gateway/applicationgateways/backendhealth)kullanabilirsiniz.
 
 Bu yöntemlerin herhangi biri tarafından alınan durum aşağıdakilerden biri olabilir:
 
@@ -119,7 +119,7 @@ Zaman aşımı değerini artırmak için aşağıdaki adımları izleyin:
 
 1.  Azure varsayılan DNS kullanıyorsanız, uygun bir kayıt veya CNAME kaydı eşlemesinin tamamlanıp tamamlanmadığını öğrenmek için etki alanı adı kayıt şirketinize danışın.
 
-1.  Etki alanı özel veya iç ise, aynı sanal ağ içindeki bir VM 'den çözümlemeyi deneyin. Sorunu çözebiliyorsanız Application Gateway yeniden başlatın ve yeniden denetleyin. Application Gateway yeniden başlatmak için, bu bağlı kaynaklarda açıklanan PowerShell komutlarını kullanarak [durdurmanız](/powershell/module/azurerm.network/stop-azurermapplicationgateway?view=azurermps-6.13.0) ve [başlatmanız](/powershell/module/azurerm.network/start-azurermapplicationgateway?view=azurermps-6.13.0) gerekir.
+1.  Etki alanı özel veya iç ise, aynı sanal ağ içindeki bir VM 'den çözümlemeyi deneyin. Sorunu çözebiliyorsanız Application Gateway yeniden başlatın ve yeniden denetleyin. Application Gateway yeniden başlatmak için, bu bağlı kaynaklarda açıklanan PowerShell komutlarını kullanarak [durdurmanız](/powershell/module/azurerm.network/stop-azurermapplicationgateway) ve [başlatmanız](/powershell/module/azurerm.network/start-azurermapplicationgateway) gerekir.
 
 #### <a name="tcp-connect-error"></a>TCP bağlantı hatası
 

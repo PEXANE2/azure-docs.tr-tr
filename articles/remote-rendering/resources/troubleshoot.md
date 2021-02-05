@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 34a947a2a0f6d8c87c0580f273130b671b4f17fc
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 4990f0d0a10709f2c1c5a17806020cd685f999fc
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97722241"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99593342"
 ---
 # <a name="troubleshoot"></a>Sorun giderme
 
@@ -191,9 +191,9 @@ C++ NuGet paketinin içinde, `microsoft.azure.remoterendering.Cpp.targets` hangi
 
 İşlenen nesnelerin baş hareketlerle birlikte taşınması gibi görünse de, *geç aşama yeniden projeksiyonu* (LSR) ile ilgili sorunlarla karşılaşıyor olabilirsiniz. Böyle bir duruma yaklaşıma ilişkin yönergeler için, [geç aşama yeniden projeksiyonunun](../overview/features/late-stage-reprojection.md) bölümüne bakın.
 
-Kararsız hologragram (Wobbling, warping, su ya da atlama hologramlar) için başka bir neden, ağ bağlantısı yetersizliğinde veya çok yüksek gecikme süresine sahip olabilir. Ağ bağlantınızın kalitesi için iyi bir gösterge, [performans istatistikleri](../overview/features/performance-queries.md) değeridir `ARRServiceStats.VideoFramesReused` . Yeniden kullanılan çerçeveler, yeni video çerçevesi kullanılabilir olmadığından (örneğin, paket kaybı nedeniyle veya ağ gecikmede Çeşitlemeler nedeniyle), eski video çerçevesinin istemci tarafında yeniden kullanılması gereken durumları gösterir. `ARRServiceStats.VideoFramesReused`Sıfırdan sık büyükse bu bir ağ sorununu gösterir.
+Kararsız hologragram (Wobbling, warping, su ya da atlama hologramlar) için başka bir neden, ağ bağlantısı yetersizliğinde veya çok yüksek gecikme süresine sahip olabilir. Ağ bağlantınızın kalitesi için iyi bir gösterge, [performans istatistikleri](../overview/features/performance-queries.md) değeridir `ServiceStatistics.VideoFramesReused` . Yeniden kullanılan çerçeveler, yeni video çerçevesi kullanılabilir olmadığından (örneğin, paket kaybı nedeniyle veya ağ gecikmede Çeşitlemeler nedeniyle), eski video çerçevesinin istemci tarafında yeniden kullanılması gereken durumları gösterir. `ServiceStatistics.VideoFramesReused`Sıfırdan sık büyükse bu bir ağ sorununu gösterir.
 
-Bakmak için başka bir değer de vardır `ARRServiceStats.LatencyPoseToReceiveAvg` . Sürekli olarak 100 ms 'nin altında olması gerekir. Daha yüksek değerleri görmek çok uzakta olan bir veri merkezine bağlı olduğunu gösterebilir.
+Bakmak için başka bir değer de vardır `ServiceStatistics.LatencyPoseToReceiveAvg` . Sürekli olarak 100 ms 'nin altında olması gerekir. Daha yüksek değerleri görmek çok uzakta olan bir veri merkezine bağlı olduğunu gösterebilir.
 
 Olası azaltmaları bir liste için bkz. [ağ bağlantısı yönergeleri](../reference/network-requirements.md#guidelines-for-network-connectivity).
 

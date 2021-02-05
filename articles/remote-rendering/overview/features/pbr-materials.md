@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: article
-ms.openlocfilehash: f2e63903546e173e17f2b457b78eb41bcdf65dbd
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: e9908c106e57801cb1b7def8b3353a983cc97de0
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94555575"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99591948"
 ---
 # <a name="pbr-materials"></a>PBR malzemeleri
 
@@ -51,7 +51,7 @@ Bu özellikler tüm malzemelerde ortaktır:
 
 ## <a name="pbr-material-properties"></a>PBR malzeme özellikleri
 
-Fiziksel olarak temel işlemenin temel fikri, çok çeşitli gerçek dünyada malzemelere öykünmek için *Basecolor* , *Metalness* ve *kablık* özelliklerini kullanmaktır. PBR 'nin ayrıntılı bir açıklaması Bu makalenin kapsamı dışındadır. PBR hakkında daha fazla bilgi için bkz. [diğer kaynaklar](http://www.pbr-book.org). Aşağıdaki özellikler, PBR malzemelere özgüdür:
+Fiziksel olarak temel işlemenin temel fikri, çok çeşitli gerçek dünyada malzemelere öykünmek için *Basecolor*, *Metalness* ve *kablık* özelliklerini kullanmaktır. PBR 'nin ayrıntılı bir açıklaması Bu makalenin kapsamı dışındadır. PBR hakkında daha fazla bilgi için bkz. [diğer kaynaklar](http://www.pbr-book.org). Aşağıdaki özellikler, PBR malzemelere özgüdür:
 
 * **Basecolor:** PBR malzemeleri ' nde, *Albedo rengi* *temel renk* olarak adlandırılır. Azure uzaktan Işlemede *Albedo Color* özelliği ortak malzeme özellikleri aracılığıyla zaten mevcut olduğundan, ek bir temel renk özelliği yoktur.
 
@@ -92,9 +92,9 @@ Azure uzaktan Işleme, bir Lambert dağıtma terimiyle GGX NDF, Schlick Fresnel 
 ## <a name="api-documentation"></a>API belgeleri
 
 * [C# pbrmalzemeler sınıfı](/dotnet/api/microsoft.azure.remoterendering.pbrmaterial)
-* [C# RemoteManager. Createmalzemesi ()](/dotnet/api/microsoft.azure.remoterendering.remotemanager.creatematerial)
+* [C# RenderingConnection. Createmalzemesi ()](/dotnet/api/microsoft.azure.remoterendering.renderingconnection.creatematerial)
 * [C++ Pbrmalzemeler sınıfı](/cpp/api/remote-rendering/pbrmaterial)
-* [C++ RemoteManager:: Createmateryal()](/cpp/api/remote-rendering/remotemanager#creatematerial)
+* [C++ RenderingConnection:: Createmateryal()](/cpp/api/remote-rendering/renderingconnection#creatematerial)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

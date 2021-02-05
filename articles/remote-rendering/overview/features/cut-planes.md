@@ -6,12 +6,12 @@ ms.author: jakras
 ms.date: 02/06/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7d8905fbdcfc03f2683698cca57ab6c066e77863
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: b3348e5a999b507aa0d286528970beb0e03f26cd
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92205940"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594381"
 ---
 # <a name="cut-planes"></a>Düzlemleri kesme
 
@@ -22,12 +22,12 @@ Aşağıdaki görüntüde etkisi gösterilmektedir. Sol, sağ taraftaki orijinal
 
 ## <a name="cutplanecomponent"></a>CutPlaneComponent
 
-Bir *CutPlaneComponent*oluşturarak sahneye kesme düzlemi eklersiniz. Düzlemin konumu ve yönü, bileşenin sahip [varlığına](../../concepts/entities.md)göre belirlenir.
+Bir *CutPlaneComponent* oluşturarak sahneye kesme düzlemi eklersiniz. Düzlemin konumu ve yönü, bileşenin sahip [varlığına](../../concepts/entities.md)göre belirlenir.
 
 ```cs
-void CreateCutPlane(AzureSession session, Entity ownerEntity)
+void CreateCutPlane(RenderingSession session, Entity ownerEntity)
 {
-    CutPlaneComponent cutPlane = (CutPlaneComponent)session.Actions.CreateComponent(ObjectType.CutPlaneComponent, ownerEntity);
+    CutPlaneComponent cutPlane = (CutPlaneComponent)session.Connection.CreateComponent(ObjectType.CutPlaneComponent, ownerEntity);
     cutPlane.Normal = Axis.X; // normal points along the positive x-axis of the owner object's orientation
     cutPlane.FadeColor = new Color4Ub(255, 0, 0, 128); // fade to 50% red
     cutPlane.FadeLength = 0.05f; // gradient width: 5cm
@@ -35,9 +35,9 @@ void CreateCutPlane(AzureSession session, Entity ownerEntity)
 ```
 
 ```cpp
-void CreateCutPlane(ApiHandle<AzureSession> session, ApiHandle<Entity> ownerEntity)
+void CreateCutPlane(ApiHandle<RenderingSession> session, ApiHandle<Entity> ownerEntity)
 {
-    ApiHandle<CutPlaneComponent> cutPlane = session->Actions()->CreateComponent(ObjectType::CutPlaneComponent, ownerEntity)->as<CutPlaneComponent>();;
+    ApiHandle<CutPlaneComponent> cutPlane = session->Connection()->CreateComponent(ObjectType::CutPlaneComponent, ownerEntity)->as<CutPlaneComponent>();;
     cutPlane->SetNormal(Axis::X); // normal points along the positive x-axis of the owner object's orientation
     Color4Ub fadeColor;
     fadeColor.channels = { 255, 0, 0, 128 }; // fade to 50% red
@@ -77,15 +77,15 @@ Filtreleme, kesilmiş düzlem tarafındaki bir bit maskesi ve geometri üzerinde
 |--------------------|-------------------|-------------------|:----------------------------:|
 | (0000 0001) = = 1   | (0000 0001) = = 1  | (0000 0001) = = 1  | Yes |
 | (1111 0000) = = 240 | (0001 0001) = = 17 | (0001 0000) = = 16 | Yes |
-| (0000 0001) = = 1   | (0000 0010) = = 2  | (0000 0000) = = 0  | Hayır |
-| (0000 0011) = = 3   | (0000 1000) = = 8  | (0000 0000) = = 0  | Hayır |
+| (0000 0001) = = 1   | (0000 0010) = = 2  | (0000 0000) = = 0  | No |
+| (0000 0011) = = 3   | (0000 1000) = = 8  | (0000 0000) = = 0  | No |
 
 >[!TIP]
 > Kesme düzlemi 0 ' a ayarlandığında `ObjectFilterMask` , mantıksal değer hiçbir şekilde null olmadığı için hiçbir geometriyi etkilemez `AND` . İşleme sistemi bu düzlemleri ilk yerinde kabul etmeyecek, bu yüzden tek tek kesme düzlemleri devre dışı bırakmak için basit bir yöntemdir. Bu kesilen düzlemler da 8 etkin düzlemler sınırına göre sayılmaz.
 
 ## <a name="limitations"></a>Sınırlamalar
 
-* Azure uzaktan Işleme **, en fazla sekiz etkin kesme düzlemleri**destekler. Daha fazla kesme bileşeni oluşturabilirsiniz, ancak aynı anda daha fazlasını etkinleştirmeyi denerseniz, etkinleştirme yok sayılacak. Hangi bileşenlerin sahneyi etkileyeceğini değiştirmek istiyorsanız, önce diğer düzlemleri devre dışı bırakın.
+* Azure uzaktan Işleme **, en fazla sekiz etkin kesme düzlemleri** destekler. Daha fazla kesme bileşeni oluşturabilirsiniz, ancak aynı anda daha fazlasını etkinleştirmeyi denerseniz, etkinleştirme yok sayılacak. Hangi bileşenlerin sahneyi etkileyeceğini değiştirmek istiyorsanız, önce diğer düzlemleri devre dışı bırakın.
 * Kesin olmayan düzler tamamen görsel bir özelliktir, [uzamsal sorguların](spatial-queries.md)sonucunu etkilemez. Bir kes açık bir ağ içine ışın dönüştürmek istiyorsanız, ışın başlangıç noktasını kes düzlede olacak şekilde ayarlayabilirsiniz. Bu şekilde, ışın yalnızca görünür bölümler alabilir.
 
 ## <a name="performance-considerations"></a>Performansla ilgili önemli noktalar

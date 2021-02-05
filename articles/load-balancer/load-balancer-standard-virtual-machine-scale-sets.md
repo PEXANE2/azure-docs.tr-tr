@@ -1,6 +1,6 @@
 ---
-title: Azure Standart Load Balancer ve Sanal Makine Ölçek Kümeleri
-titleSuffix: Azure Standard Load Balancer and Virtual Machine Scale Sets
+title: Azure Standart Load Balancer ve sanal makine ölçek kümeleri için kurallar ekleme
+titleSuffix: Add rules for Azure Standard Load Balancer and virtual machine scale sets
 description: Bu öğrenme yoluyla Azure Standart Load Balancer ve sanal makine ölçek kümelerini kullanmaya başlayın.
 services: load-balancer
 documentationcenter: na
@@ -13,36 +13,40 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/17/2020
 ms.author: irenehua
-ms.openlocfilehash: 7e1df754a4a4ca5878d93d53282fd39191313b54
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 7a2e0531427343a2ec267de54cee05b5eb25889f
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97883172"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99592288"
 ---
-# <a name="azure-load-balancer-with-azure-virtual-machine-scale-sets"></a>Azure sanal makine ölçek kümeleri ile Azure Load Balancer
+# <a name="add-rules-for-azure-load-balancer-with-virtual-machine-scale-sets"></a>Sanal makine ölçek kümeleriyle Azure Load Balancer kurallar ekleme
 
-Sanal Makine Ölçek Kümeleri ve yük dengeleyici ile çalışırken aşağıdaki yönergeler göz önünde bulundurulmalıdır:
+Sanal Makine Ölçek Kümeleri ve Azure Load Balancer çalışırken aşağıdaki yönergeleri göz önünde bulundurun.
 
-## <a name="port-forwarding-and-inbound-nat-rules"></a>Bağlantı noktası Iletme ve gelen NAT kuralları:
-  * Ölçek kümesi oluşturulduktan sonra, yük dengeleyicinin bir sistem durumu araştırması tarafından kullanılan bir yük dengeleme kuralı için arka uç bağlantı noktası değiştirilemez. Bağlantı noktasını değiştirmek için Azure sanal makine ölçek kümesini güncelleştirerek sistem durumu araştırmasını kaldırabilir, bağlantı noktasını güncelleştirebilir ve ardından sistem durumu araştırmasını yeniden yapılandırabilirsiniz.
-  * Yük dengeleyicinin arka uç havuzunda sanal makine ölçek kümesi kullanılırken, varsayılan gelen NAT kuralları otomatik olarak oluşturulur.
+## <a name="port-forwarding-and-inbound-nat-rules"></a>Bağlantı noktası iletme ve gelen NAT kuralları
+
+Ölçek kümesi oluşturulduktan sonra, yük dengeleyicinin bir sistem durumu araştırması tarafından kullanılan bir yük dengeleme kuralı için arka uç bağlantı noktası değiştirilemez. Bağlantı noktasını değiştirmek için, sanal makine ölçek kümesini güncelleştirerek ve bağlantı noktasını güncelleştirerek sistem durumu araştırmasını kaldırın. Sonra sistem durumu araştırmasını yeniden yapılandırın.
+
+Yük dengeleyicinin arka uç havuzunda sanal makine ölçek kümesini kullandığınızda, varsayılan gelen NAT kuralları otomatik olarak oluşturulur.
   
-## <a name="inbound-nat-pool"></a>Gelen NAT havuzu:
-  * Her sanal makine ölçek kümesinin en az bir gelen NAT havuzu olmalıdır. 
-  * Gelen NAT havuzu, gelen NAT kurallarından oluşan bir koleksiyondur. Bir gelen NAT havuzu birden çok sanal makine ölçek kümesini destekleyemez.
+## <a name="inbound-nat-pool"></a>Gelen NAT havuzu
 
-## <a name="load-balancing-rules"></a>Yük Dengeleme kuralları:
-  * Yük dengeleyicinin arka uç havuzunda sanal makine ölçek kümesi kullanılırken, varsayılan Yük Dengeleme kuralı otomatik olarak oluşturulur.
+Her sanal makine ölçek kümesinin en az bir gelen NAT havuzu olmalıdır. Gelen NAT havuzu, gelen NAT kurallarından oluşan bir koleksiyondur. Bir gelen NAT havuzu birden çok sanal makine ölçek kümesini destekleyemez.
+
+## <a name="load-balancing-rules"></a>Yük Dengeleme kuralları
+
+Yük dengeleyicinin arka uç havuzunda sanal makine ölçek kümesini kullandığınızda, varsayılan Yük Dengeleme kuralı otomatik olarak oluşturulur.
   
-## <a name="outbound-rules"></a>Giden kuralları:
-  *  Zaten bir yük dengeleme kuralı tarafından başvurulan bir arka uç havuzu için giden kuralı oluşturmak üzere, gelen yük dengeleme kuralı oluşturulduğunda öncelikle portalda **Hayır** olarak **"örtük giden kuralları oluştur"** seçeneğini işaretlemeniz gerekir.
+## <a name="outbound-rules"></a>Giden kuralları
 
-  :::image type="content" source="./media/vm-scale-sets/load-balancer-and-vm-scale-sets.png" alt-text="Yük Dengeleme kuralı oluşturma" border="true":::
+Bir yük dengeleme kuralı tarafından zaten başvurulan bir arka uç havuzu için bir giden kuralı oluşturmak için, gelen yük dengeleme kuralı oluşturulduğunda Azure portal **örtük giden kuralları oluştur** altında **Hayır** ' ı seçin.
 
-Aşağıdaki yöntemler, mevcut bir Azure yük dengeleyiciye sahip bir sanal makine ölçek kümesi dağıtmak için kullanılabilir.
+  :::image type="content" source="./media/vm-scale-sets/load-balancer-and-vm-scale-sets.png" alt-text="Yük Dengeleme kuralı oluşturmayı gösteren ekran görüntüsü." border="true":::
 
-* [Azure Portal kullanarak bir sanal makine ölçek kümesini mevcut bir Azure Load Balancer yapılandırın](./configure-vm-scale-set-portal.md).
-* [Azure PowerShell kullanarak bir sanal makine ölçek kümesini mevcut bir Azure Load Balancer yapılandırın](./configure-vm-scale-set-powershell.md).
-* [Azure CLI kullanarak mevcut bir Azure Load Balancer bir sanal makine ölçek kümesi yapılandırın](./configure-vm-scale-set-cli.md).
-* [Sanal makine ölçek kümesi tarafından kullanılan mevcut Azure Load Balancer güncelleştirme veya silme](./update-load-balancer-with-vm-scale-set.md)
+Mevcut bir Load Balancer örneğiyle bir sanal makine ölçek kümesi dağıtmak için aşağıdaki yöntemleri kullanın:
+
+* [Azure portal kullanarak bir sanal makine ölçek kümesini mevcut bir Azure Load Balancer örneğiyle yapılandırın](./configure-vm-scale-set-portal.md)
+* [Azure PowerShell kullanarak var olan bir Azure Load Balancer örneği ile sanal makine ölçek kümesi yapılandırma](./configure-vm-scale-set-powershell.md)
+* [Azure CLı kullanarak bir sanal makine ölçek kümesini mevcut bir Azure Load Balancer örneğiyle yapılandırma](./configure-vm-scale-set-cli.md)
+* [Bir sanal makine ölçek kümesi tarafından kullanılan Azure Load Balancer var olan bir örneğini güncelleştirme veya silme](./update-load-balancer-with-vm-scale-set.md)

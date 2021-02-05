@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: 4e09f9b8564c9319e68984df1c0f8db7a496a6d0
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: beb45d0d650b07f6106a3307d2d3a955095ee8b1
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 02/05/2021
-ms.locfileid: "99584813"
+ms.locfileid: "99592271"
 ---
 # <a name="manage-qna-maker-resources"></a>Soru-Cevap Oluşturma kaynaklarını yönetme
 
@@ -92,60 +92,10 @@ Bu yordam, Bilgi Bankası içeriğini yönetmek için gereken Azure kaynakların
     ![Kaynak yeni bir Soru-Cevap Oluşturma yönetilen (Önizleme) hizmeti oluşturdu](../media/qnamaker-how-to-setup-service/resources-created-v2.png)
 
     Bilişsel _Hizmetler_ türündeki kaynağın _abonelik_ anahtarları vardır.
-
+    
 ---
 
-## <a name="find-authoring-keys-in-the-azure-portal"></a>Azure portal yazma anahtarlarını bulma
-
-# <a name="qna-maker-ga-stable-release"></a>[Soru-Cevap Oluşturma GA (kararlı sürüm)](#tab/v1)
-
-Yazma anahtarlarınızı, Soru-Cevap Oluşturma kaynağı oluşturduğunuz Azure portal görüntüleyebilir ve sıfırlayabilirsiniz. Bu anahtarlara abonelik anahtarları denir.
-
-1. Azure portal Soru-Cevap Oluşturma kaynağına gidin ve bilişsel _Hizmetler_ türünün bulunduğu kaynağı seçin:
-
-    ![Soru-Cevap Oluşturma kaynak listesi](../media/qnamaker-how-to-key-management/qnamaker-resource-list.png)
-
-2. **Anahtarlar ve uç nokta**'a git:
-
-    ![Soru-Cevap Oluşturma yönetilen (Önizleme) abonelik anahtarı](../media/qnamaker-how-to-key-management/subscription-key-v2.png)
-
-### <a name="find-query-endpoint-keys-in-the-qna-maker-portal"></a>Soru-Cevap Oluşturma portalında sorgu uç noktası anahtarlarını bulma
-
-Uç nokta anahtarları bilgi tabanına çağrı yapmak için kullanıldığından, uç nokta kaynakla aynı bölgededir.
-
-Uç nokta anahtarları [soru-cevap oluşturma portalından](https://qnamaker.ai)yönetilebilir.
-
-1. [Soru-cevap oluşturma portalında](https://qnamaker.ai)oturum açın, profilinize gidin ve ardından **hizmet ayarları**' nı seçin:
-
-    ![Uç nokta anahtarı](../media/qnamaker-how-to-key-management/Endpoint-keys.png)
-
-2. Anahtarlarınızı görüntüleyin veya sıfırlayın:
-
-    > [!div class="mx-imgBorder"]
-    > ![Uç nokta anahtar Yöneticisi](../media/qnamaker-how-to-key-management/Endpoint-keys1.png)
-
-    >[!NOTE]
-    >Tehlikede olduğunu düşünüyorsanız, anahtarlarınızı yenileyin. Bu, istemci uygulamanızda veya bot kodunuzda ilgili değişiklikleri gerektirebilir.
-
-# <a name="qna-maker-managed-preview-release"></a>[Soru-Cevap Oluşturma Managed (Önizleme sürümü)](#tab/v2)
-
-Yazma anahtarlarınızı, Soru-Cevap Oluşturma yönetilen (Önizleme) kaynağını oluşturduğunuz Azure portal görüntüleyebilir ve sıfırlayabilirsiniz. Bu anahtarlara abonelik anahtarları denir.
-
-1. Azure portal Soru-Cevap Oluşturma yönetilen (Önizleme) kaynağına gidin ve bilişsel *Hizmetler* türüne sahip kaynağı seçin:
-
-    ![Soru-Cevap Oluşturma yönetilen (Önizleme) kaynak listesi](../media/qnamaker-how-to-key-management/qnamaker-v2-resource-list.png)
-
-2. **Anahtarlar ve uç nokta**'a git:
-
-    ![Soru-Cevap Oluşturma yönetilen (Önizleme) abonelik anahtarı](../media/qnamaker-how-to-key-management/subscription-key-v2.png)
-
-### <a name="update-the-resources"></a>Kaynakları güncelleştirme
-
-Bilgi tabanınız tarafından kullanılan kaynakları nasıl yükselteceğinizi öğrenin. Soru-Cevap Oluşturma yönetilen (Önizleme), önizleme aşamasında **ücretsizdir** . 
-
----
-
-### <a name="recommended-settings-for-network-isolation"></a>Ağ yalıtımı için önerilen ayarlar
+## <a name="recommended-settings-for-network-isolation"></a>Ağ yalıtımı için önerilen ayarlar
 
 # <a name="qna-maker-ga-stable-release"></a>[Soru-Cevap Oluşturma GA (kararlı sürüm)](#tab/v1)
 

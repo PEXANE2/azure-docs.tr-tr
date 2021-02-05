@@ -62,7 +62,7 @@
       items:
         - name: Dönüşümler
           href: how-to-transformation.md
-        - name: MS Graph API’siyle gelen eşitleme
+        - name: MS Graph API kullanarak bulut eşitlemesini programlı olarak yapılandırma
           href: how-to-inbound-synch-ms-graph.md
         - name: Azure AD eşitleme API’si
           href: /graph/api/resources/synchronization-overview

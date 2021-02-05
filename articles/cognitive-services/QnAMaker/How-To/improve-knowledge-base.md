@@ -6,12 +6,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 3f2e8fef35095a007051999d806f2942089ae19a
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 7c477655dfb24eebab9a2669697d9ef610088198
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 02/05/2021
-ms.locfileid: "99584762"
+ms.locfileid: "99592033"
 ---
 # <a name="accept-active-learning-suggested-questions-in-the-knowledge-base"></a>Bilgi Bankası 'nda önerilen etkin öğrenme sorularını kabul edin
 
@@ -81,17 +81,17 @@ Bir bot veya diğer istemci uygulaması, etkin öğrenimi kullanmak için aşağ
 
 * Bot, [bilgi bankasındaki yanıtı](#use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers) GENERATEANSWER API 'si ile alır. Bu özellik, `top` bir dizi yanıt almak için özelliğini kullanarak.
 
-#### <a name="use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers"></a>Birkaç eşleşen yanıt almak için GenerateAnswer isteğindeki top özelliğini kullanın
+    #### <a name="use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers"></a>Birkaç eşleşen yanıt almak için GenerateAnswer isteğindeki top özelliğini kullanın
 
-Yanıt için Soru-Cevap Oluşturma bir soru gönderilirken, `top` JSON gövdesinin özelliği döndürülecek yanıt sayısını ayarlar.
+    Yanıt için Soru-Cevap Oluşturma bir soru gönderilirken, `top` JSON gövdesinin özelliği döndürülecek yanıt sayısını ayarlar.
 
-```json
-{
-    "question": "wi-fi",
-    "isTest": false,
-    "top": 3
-}
-```
+    ```json
+    {
+        "question": "wi-fi",
+        "isTest": false,
+        "top": 3
+    }
+    ```
 
 * Bot açık geri bildirimi belirler:
     * Kendi [özel iş mantığınızı](#use-the-score-property-along-with-business-logic-to-get-list-of-answers-to-show-user)kullanarak düşük puanları filtreleyin.

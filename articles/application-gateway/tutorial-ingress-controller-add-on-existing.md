@@ -7,18 +7,18 @@ ms.service: application-gateway
 ms.topic: tutorial
 ms.date: 09/24/2020
 ms.author: caya
-ms.openlocfilehash: 9d1aa54ba1e3f3a589df8f694e340909c4e24ecc
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: d491b714c7d553fbd89d72315f46e6927d437717
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183694"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99593829"
 ---
 # <a name="tutorial-enable-application-gateway-ingress-controller-add-on-for-an-existing-aks-cluster-with-an-existing-application-gateway-through-azure-cli-preview"></a>Öğretici: mevcut bir AKS kümesi için Application Gateway giriş denetleyicisi eklentisini Azure CLı aracılığıyla mevcut bir Application Gateway ile etkinleştirme (Önizleme)
 
 Azure CLı 'yi [Azure Kubernetes Services (AKS)](https://azure.microsoft.com/services/kubernetes-service/) kümeniz için şu anda önizleme aşamasında olan [Application Gateway giriş denetleyicisi (agic)](ingress-controller-overview.md) eklentisini etkinleştirmek için kullanabilirsiniz. Bu öğreticide, ayrı sanal ağlarda dağıtılan mevcut bir Application Gateway ile Kubernetes uygulamanızı mevcut bir AKS kümesinde ortaya çıkarmak için AGIC eklentisini nasıl kullanacağınızı öğreneceksiniz. Mevcut kaynakların benzetimini yapmak için bir sanal ağda AKS kümesi ve ayrı bir sanal ağda Application Gateway oluşturmaya başlayacaksınız. Ardından, AGIC eklentisini etkinleştireceksiniz, iki sanal ağı birlikte eşleyebilir ve AGIC eklentisi kullanılarak Application Gateway üzerinden kullanıma sunulacak bir örnek uygulama dağıtırsınız. Aynı sanal ağdaki mevcut bir Application Gateway ve mevcut AKS kümesi için AGIC eklentisini etkinleştirirseniz, aşağıdaki eşleme adımını atlayabilirsiniz. Eklenti, AKS kümeniz için AGC 'yi [daha önce Held üzerinden](ingress-controller-overview.md#difference-between-helm-deployment-and-aks-add-on) dağıtmanın çok daha hızlı bir yolunu sağlar ve ayrıca tam olarak yönetilen bir deneyim sunar.  
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Kaynak grubu oluşturma 
@@ -67,7 +67,7 @@ Aşağıdaki örnekte, *Myresourcegroup* adlı kaynak grubundaki [Azure CNI](../
 az aks create -n myCluster -g myResourceGroup --network-plugin azure --enable-managed-identity 
 ```
 
-Komuta ek parametreler yapılandırmak için `az aks create` başvuruları [buraya](/cli/azure/aks?view=azure-cli-latest#az-aks-create)ziyaret edin. 
+Komuta ek parametreler yapılandırmak için `az aks create` başvuruları [buraya](/cli/azure/aks#az-aks-create)ziyaret edin. 
 
 ## <a name="deploy-a-new-application-gateway"></a>Yeni bir Application Gateway dağıtma 
 

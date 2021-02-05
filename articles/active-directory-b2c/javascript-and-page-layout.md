@@ -13,12 +13,12 @@ ms.custom: project-no-code, devx-track-js
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 1a1fa09c7c9b8baeeb8f3c2c9b2cf8271e513be1
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: 6bb478038d398226db38dc20e49ed7a14e5d5d0a
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97963545"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99592815"
 ---
 # <a name="javascript-and-page-layout-versions-in-azure-active-directory-b2c"></a>Azure Active Directory B2C içindeki JavaScript ve sayfa düzeni sürümleri
 
@@ -48,7 +48,7 @@ Azure AD B2C, Kullanıcı akışlarınızda ve özel ilkelerindeki Kullanıcı a
 
 ::: zone-end
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
@@ -63,7 +63,7 @@ Kullanıcı akış sayfalarınız için bir sayfa düzeni sürümü belirtmek i�
 
 1. Azure AD B2C kiracınızda **Kullanıcı akışları**' nı seçin.
 1. İlkeyi (örneğin, "B2C_1_SignupSignin") seçerek açın.
-1. **Sayfa düzenlerini** seçin. **Düzen adı** altında, bir Kullanıcı akış sayfası seçin ve **sayfa düzeni sürümünü (Önizleme)** seçin.
+1. **Sayfa düzenlerini** seçin. Bir **Düzen adı** seçin ve ardından **sayfa düzeni sürümünü (Önizleme)** seçin.
 
 Farklı sayfa düzeni sürümleri hakkında daha fazla bilgi için bkz. [sayfa düzeni sürümü değişiklik günlüğü](page-layout.md).
 

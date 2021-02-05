@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/04/2021
 ms.author: allensu
-ms.openlocfilehash: 7f2525b89f03e8bc1a2c3166b46c40b4dbb6ff17
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: 22d7af4f307a99d2d2e29bc1f494d327394e4f10
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99561994"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594291"
 ---
 # <a name="configure-the-distribution-mode-for-azure-load-balancer"></a>Azure Load Balancer için Dağıtım modunu yapılandırın
 
@@ -46,8 +46,8 @@ Portalda Yük Dengeleme kuralını değiştirerek dağıtım modunun yapılandı
 Aşağıdaki seçenekler kullanılabilir: 
 
 * **Hiçbiri (karma tabanlı)** -aynı istemciden gelen ardışık isteklerin herhangi bir sanal makine tarafından işlenebileceğini belirtir.
-* **ISTEMCI IP (kaynak IP benzeşimi 2-kayıt düzeni)** -aynı istemci IP adresinden gelen isteklerin aynı sanal makine tarafından işleneceğini belirtir.
-* **İstemci IP 'si ve Protokolü (kaynak IP benzeşimi 3-kayıt)** -aynı istemci IP adresi ve protokol birleşimlerinden gelen ardışık isteklerin aynı sanal makine tarafından işleneceğini belirtir.
+* **ISTEMCI IP (kaynak IP benzeşimi iki demet)** -aynı istemci IP adresinden gelen isteklerin aynı sanal makine tarafından işleneceğini belirtir.
+* **İstemci IP 'si ve Protokolü (kaynak IP benzeşimi üç demet)** -aynı istemci IP adresi ve protokol birleşimlerinden gelen ardışık isteklerin aynı sanal makine tarafından işleneceğini belirtir.
 
 5. Dağıtım modunu seçin ve ardından **Kaydet**' i seçin.
 
@@ -66,13 +66,36 @@ $lb.LoadBalancingRules[0].LoadDistribution = 'sourceIp'
 Set-AzLoadBalancer -LoadBalancer $lb
 ```
 
-`LoadDistribution`Gerekli Yük Dengeleme miktarı için öğesinin değerini ayarlayın. 
+`LoadDistribution`Gerekli Yük Dengeleme türü için öğesinin değerini ayarlayın. 
 
-İki demet (kaynak IP ve hedef IP) yük dengelemesi için **SourceIP** 'yi belirtin. 
+* İki demet (kaynak IP ve hedef IP) yük dengelemesi için **SourceIP** 'yi belirtin. 
 
-Üç demet için **Sourceıpprotocol** (kaynak IP, hedef IP ve protokol türü) yük dengelemesi belirleyin. 
+* Üç demet için **Sourceıpprotocol** (kaynak IP, hedef IP ve protokol türü) yük dengelemesi belirleyin. 
 
-Beş demet yük dengelemenin varsayılan davranışı için **varsayılan değer** belirtin.
+* Beş demet yük dengelemenin varsayılan davranışı için **varsayılan değer** belirtin.
+
+# <a name="cli"></a>[**CLı**](#tab/azure-cli)
+
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
+
+Mevcut bir yük dengeleme kuralında yük dengeleyici dağıtım ayarlarını değiştirmek için Azure CLı 'yi kullanın.  Aşağıdaki komut Dağıtım modunu güncelleştirir:
+
+```azurecli-interactive
+az network lb rule update \
+    --lb-name myLoadBalancer \
+    --load-distribution SourceIP \
+    --name myHTTPRule \
+    --resource-group myResourceGroupLB 
+```
+`--load-distribution`Gereken Yük Dengeleme türü için değerini ayarlayın.
+
+* İki demet (kaynak IP ve hedef IP) yük dengelemesi için **SourceIP** 'yi belirtin. 
+
+* Üç demet için **Sourceıpprotocol** (kaynak IP, hedef IP ve protokol türü) yük dengelemesi belirleyin. 
+
+* Beş demet yük dengelemenin varsayılan davranışı için **varsayılan değer** belirtin.
+
+Bu makalede kullanılan komutla ilgili daha fazla bilgi için bkz. [az Network lb Rule Update](/cli/azure/network/lb/rule#az_network_lb_rule_update)
 
 ---
 

@@ -1,15 +1,15 @@
 ---
 title: Desteklenen Azure Resource Manager kaynak türleri
 description: Azure Kaynak Grafiği ve değişiklik geçmişi tarafından desteklenen Azure Resource Manager kaynak türlerinin bir listesini sağlayın.
-ms.date: 01/06/2021
+ms.date: 02/04/2021
 ms.topic: reference
 ms.custom: generated
-ms.openlocfilehash: 4198c60bc298eb6a1b9902bb92e3df44648b2c0b
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 865aed468f8a6bcb848b77a82467efc2c531398b
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251786"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594342"
 ---
 # <a name="azure-resource-graph-table-and-resource-type-reference"></a>Azure Kaynak Grafiği tablosu ve kaynak türü başvurusu
 
@@ -130,6 +130,9 @@ Azure Kaynak Grafiği [Azure Resource Manager](../../../azure-resource-manager/m
 - Microsoft. azurestack/linkedabonelikleri
 - Microsoft. Azurestack/kayıtları (Azure Stack hub 'Ları)
 - Microsoft. Azurestackhcı/kümeler (Azure Stack HCı)
+- Microsoft. azurestackhcı/gallerımages
+- Microsoft. azurestackhcı/NetworkInterfaces
+- Microsoft. azurestackhcı/virtualnetworks
 - Microsoft. baremetal/consoleconnections
 - Microsoft. BareMetal/crayServers (Cray sunucuları)
 - Microsoft. BareMetal/monitoringServers (Izleme sunucuları)
@@ -331,6 +334,9 @@ Azure Kaynak Grafiği [Azure Resource Manager](../../../azure-resource-manager/m
 - Microsoft. Insights/workbooktemplates (Azure çalışma kitabı şablonları)
 - Microsoft. IntelligentITDigitalTwin/digitalTwins (Minervas)
 - Microsoft. intelligentitdigitaltwin/digitaltwins/varlıklar
+- Microsoft. intelligentitdigitaltwin/digitaltwins/executionplanlar
+- Microsoft. intelligentitdigitaltwin/digitaltwins/testplanlar
+- Microsoft. intelligentitdigitaltwin/digitaltwins/testler
 - Microsoft. ıotcentral/ıotapps (IoT Central uygulamaları)
 - Microsoft. ıotspaces/Graph (dijital TWINS (kullanım dışı))
 - Microsoft. keykasası/hsmpools
@@ -494,6 +500,7 @@ Azure Kaynak Grafiği [Azure Resource Manager](../../../azure-resource-manager/m
 - Microsoft. resources/Templatespec (şablon özellikleri)
 - Microsoft. resources/templatespec/sürümler
 - Microsoft. SaaS/uygulamalar (hizmet olarak yazılım (klasik))
+- Microsoft. SaaS/kaynaklar (CPX-PlaceHolder)
 - Microsoft. Scheduler/jobCollections (Zamanlayıcı Iş koleksiyonları)
 - Microsoft. SCVMM/bulutlar
 - Microsoft. SCVMM/virtualMachines (SCVMM sanal makinesi-Azure ARC)
@@ -588,6 +595,7 @@ Azure Kaynak Grafiği [Azure Resource Manager](../../../azure-resource-manager/m
 - Microsoft. Web/StaticSites (statik Web Apps (Önizleme))
 - Microsoft. WindowsESU/multipleActivationKeys (Windows çoklu etkinleştirme anahtarları)
 - Microsoft. Windowsıot/DeviceServices (Windows 10 IoT Core Services)
+- Microsoft. workloadbuilder/migrationagents
 - Microsoft. workloadbuilder/iş yükleri
 - MyGet. PackageManagement/Services (MyGet-barındırılan NuGet, NPM, Bower ve VSIX)
 - Paraartık. Cloudmonitorx/Services (Cloudmonitorx)

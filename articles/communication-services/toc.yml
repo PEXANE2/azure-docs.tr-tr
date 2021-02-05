@@ -88,6 +88,8 @@
       href: concepts/client-and-server-architecture.md
     - name: Arama akışları
       href: concepts/call-flows.md
+    - name: Çağrı akışı topolojileri
+      href: concepts/detailed-call-flows.md
     - name: İstemci kitaplıkları ve REST API’leri
       href: concepts/sdk-options.md
     - name: Fiyatlandırma modeli

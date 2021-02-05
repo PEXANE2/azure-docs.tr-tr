@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/10/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 57a9f6f11283e020efc25f55f1df473a6cb2d321
-ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
+ms.openlocfilehash: 30b8104a9596f0b32f731c507b513b204f5d1acd
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98570006"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594104"
 ---
 # <a name="server-side-performance-queries"></a>Sunucu tarafı performans sorguları
 
@@ -39,7 +39,7 @@ Sunucu üzerinde iyi işleme performansı, kararlı çerçeve ücretleri ve iyi 
 Çerçeve istatistikleri, son çerçeve için gecikme gibi bazı üst düzey bilgiler sağlar. Yapıda belirtilen veriler `FrameStatistics` istemci tarafında ölçülür, bu nedenle API zaman uyumlu bir çağrıdır:
 
 ```cs
-void QueryFrameData(AzureSession session)
+void QueryFrameData(RenderingSession session)
 {
     FrameStatistics frameStatistics;
     if (session.GraphicsBinding.GetLastFrameStatistics(out frameStatistics) == Result.Success)
@@ -50,10 +50,10 @@ void QueryFrameData(AzureSession session)
 ```
 
 ```cpp
-void QueryFrameData(ApiHandle<AzureSession> session)
+void QueryFrameData(ApiHandle<RenderingSession> session)
 {
     FrameStatistics frameStatistics;
-    if (*session->GetGraphicsBinding()->GetLastFrameStatistics(&frameStatistics) == Result::Success)
+    if (session->GetGraphicsBinding()->GetLastFrameStatistics(&frameStatistics) == Result::Success)
     {
         // do something with the result
     }
@@ -66,55 +66,49 @@ Alınan `FrameStatistics` nesne aşağıdaki üyeleri barındırır:
 |:-|:-|
 | Latşifreli Posetoreceive | Bu poza yönelik bir sunucu çerçevesi istemci uygulaması tarafından tam olarak kullanılabilir olana kadar, kamera, istemci cihazında tahmine göre gecikme süresi. Bu değer, ağ gidiş dönüş, sunucu işleme süresi, video kod çözme ve değişim dengelemesi içerir. **Yukarıdaki çizimde bulunan Aralık 1 ' i inceleyin.**|
 | Latşifreli Receivetopyeniden gönderildi | İstemci uygulaması CPU üzerinde PresentFrame çağrılana kadar alınan bir uzak çerçevenin kullanılabilirliğine gecikme süresi. **Yukarıdaki çizimde bulunan Aralık 2 '** ye bakın.|
-| latencyPresentToDisplay  | Ekran ışıkları bitene kadar CPU üzerinde bir çerçeve sunumu gecikme süresi. Bu değer, istemci GPU zamanını, işletim sistemi tarafından gerçekleştirilen tüm çerçeve ara belleği, donanım yeniden projeksiyonu ve cihaza bağlı görüntü tarama zamanı içerir. **Yukarıdaki çizimde bulunan Aralık 3 ' ü inceleyin.**|
-| timeSinceLastPresent | CPU üzerinde PresentFrame için sonraki çağrılar arasındaki süre. Görüntüleme süresinden daha büyük değerler (örneğin, 60-Hz istemci cihazında 16,6 MS), istemci uygulamanın zaman içinde CPU iş yükünü bitirmediğinden kaynaklanan sorunları gösterir.|
+| LatencyPresentToDisplay  | Ekran ışıkları bitene kadar CPU üzerinde bir çerçeve sunumu gecikme süresi. Bu değer, istemci GPU zamanını, işletim sistemi tarafından gerçekleştirilen tüm çerçeve ara belleği, donanım yeniden projeksiyonu ve cihaza bağlı görüntü tarama zamanı içerir. **Yukarıdaki çizimde bulunan Aralık 3 ' ü inceleyin.**|
+| TimeSinceLastPresent | CPU üzerinde PresentFrame için sonraki çağrılar arasındaki süre. Görüntüleme süresinden daha büyük değerler (örneğin, 60-Hz istemci cihazında 16,6 MS), istemci uygulamanın zaman içinde CPU iş yükünü bitirmediğinden kaynaklanan sorunları gösterir.|
 | Videoframpaalındı | Son saniye içinde sunucudan alınan çerçeve sayısı. |
 | Videofoymereusedcount | Son saniye içinde, cihazda birden çok kez kullanılan alınan çerçeve sayısı. Sıfır olmayan değerler, çerçevelerin ağ değişimi veya aşırı sunucu işleme süresi nedeniyle yeniden kullanılması gerektiğini ve yeniden yansıtıldığını gösterir. |
 | Videofınmesatlandı | Son saniye içinde kodu çözülen, ancak daha yeni bir çerçeve geldiği için görüntülenmemiş olan alınan çerçeve sayısı. Sıfır olmayan değerler, ağın birden çok çerçeveye ertelenmesini ve daha sonra istemci cihaza bir veri bloğu içinde birlikte ulaştığını gösterir. |
-| Videofınmesatılır | **Videofesmesatine** çok benzer, ancak atılma nedeni, bir karenin daha geç bir şekilde verilmemesine neden olan herhangi bir bekleyen pozla ilişkilendirilmeyecektir. Bu durumda, önemli bir ağ çekişmesi vardır.|
-| videoFrameMinDelta | Son saniye içinde gelen ardışık iki kare arasındaki en az süre. VideoFrameMaxDelta ile birlikte, bu Aralık ağ veya video codec bileşeni tarafından neden olan bir değişim göstergesi sağlar. |
-| videoFrameMaxDelta | Son saniye boyunca ardışık iki kare arasındaki en fazla zaman miktarı. VideoFrameMinDelta ile birlikte, bu Aralık ağ veya video codec bileşeni tarafından neden olan bir değişim göstergesi sağlar. |
+| Videofınmesatılır | **Videofesmesatine** çok benzer, ancak atılma nedeni, bir karenin daha geç bir şekilde verilmemesine neden olan herhangi bir bekleyen pozla ilişkilendirilmeyecektir. Bu atma gerçekleşdiğinde, önemli bir ağ çakışması vardır.|
+| VideoFrameMinDelta | Son saniye içinde gelen ardışık iki kare arasındaki en az süre. VideoFrameMaxDelta ile birlikte, bu Aralık ağ veya video codec bileşeni tarafından neden olan bir değişim göstergesi sağlar. |
+| VideoFrameMaxDelta | Son saniye boyunca ardışık iki kare arasındaki en fazla zaman miktarı. VideoFrameMinDelta ile birlikte, bu Aralık ağ veya video codec bileşeni tarafından neden olan bir değişim göstergesi sağlar. |
 
 Tüm gecikme değerlerinin toplamı, genellikle 60 Hz 'deki kullanılabilir kare süresinden çok daha büyüktür. Bu, çok sayıda çerçeve paralel olarak uçuş aşamasında olduğundan ve çizimde gösterildiği gibi, yeni çerçeve isteklerinin istenen kare hızında kapalı olması nedeniyle Tamam ' dır. Ancak gecikme çok büyük olursa, [geç aşama yeniden projeksiyonunun](../../overview/features/late-stage-reprojection.md)kalitesini etkiler ve genel deneyimle tehlikeye atabilir.
 
-`videoFramesReceived`, `videoFrameReusedCount` ve `videoFramesDiscarded` Ağ ve sunucu performansını ölçmek için kullanılabilir. `videoFramesReceived`Düşükse ve `videoFrameReusedCount` yüksekse bu, ağ tıkanıklığını veya zayıf sunucu performansını gösterebilir. Yüksek bir `videoFramesDiscarded` değer de ağ tıkanıklığını gösterir.
+`VideoFramesReceived`, `VideoFrameReusedCount` ve `VideoFramesDiscarded` Ağ ve sunucu performansını ölçmek için kullanılabilir. Düşük bir `VideoFramesReceived` değer ve yüksek bir `VideoFrameReusedCount` değer birleşimi, ağ tıkanıklığını veya zayıf sunucu performansını gösterebilir. Yüksek bir `VideoFramesDiscarded` değer de ağ tıkanıklığını gösterir.
 
-Son olarak,, `timeSinceLastPresent` `videoFrameMinDelta` , ve `videoFrameMaxDelta` gelen video çerçevelerinin ve yerel mevcut çağrıların varyansı hakkında fikir verir. Yüksek Varyans, çerçeve hızının anlamına gelir.
+Son olarak,, `TimeSinceLastPresent` `VideoFrameMinDelta` , ve `VideoFrameMaxDelta` gelen video çerçevelerinin ve yerel mevcut çağrıların varyansı hakkında fikir verir. Yüksek Varyans, çerçeve hızının anlamına gelir.
 
-Yukarıdaki değerlerden hiçbiri, sunucunun işleme meşgul olduğu tam sürenin gidiş dönüş değerinden çıkarılmasıyla emin olması nedeniyle saf ağ gecikmesi (çizimdeki kırmızı oklar) üzerinde net bir işaret vermez `latencyPoseToReceive` . Genel gecikme süresinin sunucu tarafı kısmı, istemci için kullanılamayan bir bilgi. Bununla birlikte, sonraki paragraf, bu değerin sunucudan alınan ek giriş ile nasıl yaklaşık olarak yapıldığını açıklar ve değer aracılığıyla gösterilir `networkLatency` .
+Yukarıdaki değerlerden hiçbiri, sunucunun işleme meşgul olduğu tam sürenin gidiş dönüş değerinden çıkarılmasıyla emin olması nedeniyle saf ağ gecikmesi (çizimdeki kırmızı oklar) üzerinde net bir işaret vermez `LatencyPoseToReceive` . Genel gecikme süresinin sunucu tarafı kısmı, istemci için kullanılamayan bir bilgi. Bununla birlikte, sonraki paragraf, bu değerin sunucudan alınan ek giriş ile nasıl yaklaşık olarak yapıldığını açıklar ve değer aracılığıyla gösterilir `NetworkLatency` .
 
 ## <a name="performance-assessment-queries"></a>Performans değerlendirmesi sorguları
 
 *Performans değerlendirmesi sorguları* , sunucusundaki CPU ve GPU iş yükü hakkında daha ayrıntılı bilgi sağlar. Veriler sunucudan istendiğinden, bir performans anlık görüntüsünü sorgulamak olağan zaman uyumsuz örüntüyi izler:
 
 ```cs
-PerformanceAssessmentAsync _assessmentQuery = null;
-
-void QueryPerformanceAssessment(AzureSession session)
+async void QueryPerformanceAssessment(RenderingSession session)
 {
-    _assessmentQuery = session.Actions.QueryServerPerformanceAssessmentAsync();
-    _assessmentQuery.Completed += (PerformanceAssessmentAsync res) =>
+    try
     {
-        // do something with the result:
-        PerformanceAssessment result = res.Result;
-        // ...
-
-        _assessmentQuery = null;
-    };
+        PerformanceAssessment result = await session.Connection.QueryServerPerformanceAssessmentAsync();
+        // do something with result...
+    }
+    catch (RRException ex)
+    {
+    }
 }
 ```
 
 ```cpp
-void QueryPerformanceAssessment(ApiHandle<AzureSession> session)
+void QueryPerformanceAssessment(ApiHandle<RenderingSession> session)
 {
-    ApiHandle<PerformanceAssessmentAsync> assessmentQuery = *session->Actions()->QueryServerPerformanceAssessmentAsync();
-    assessmentQuery->Completed([] (ApiHandle<PerformanceAssessmentAsync> res)
-    {
-        // do something with the result:
-        PerformanceAssessment result = res->GetResult();
-
-        // ...
-
+    session->Connection()->QueryServerPerformanceAssessmentAsync([](Status status, PerformanceAssessment result) {
+        if (status == Status::OK)
+        {
+            // do something with result...
+        }
     });
 }
 ```
@@ -123,28 +117,28 @@ Nesnenin aksine `FrameStatistics` , `PerformanceAssessment` nesne sunucu tarafı
 
 | Üye | Açıklama |
 |:-|:-|
-| timeCPU | Kare başına ortalama sunucu CPU süresi (milisaniye cinsinden) |
-| timeGPU | Çerçeve başına ortalama sunucu GPU süresi (milisaniye) |
+| TimeCPU | Kare başına ortalama sunucu CPU süresi (milisaniye cinsinden) |
+| TimeGPU | Çerçeve başına ortalama sunucu GPU süresi (milisaniye) |
 | Kullanımı Zalationcpu | Toplam sunucu CPU kullanımı yüzdesi |
-| kullanımı Zationgpu | Toplam sunucu GPU kullanımı yüzdesi |
-| memoryCPU | Toplam sunucu ana bellek kullanımı yüzdesi |
-| memoryGPU | Sunucu GPU 'SU yüzdesi cinsinden toplam adanmış video belleği kullanımı |
-| networkLatency | Milisaniye cinsinden yaklaşık ortalama gidiş dönüş ağ gecikmesi. Yukarıdaki çizimde, kırmızı okların toplamına karşılık gelir. Değer, gerçek sunucu işleme zamanının değerinden çıkarılmasıyla hesaplanır `latencyPoseToReceive` `FrameStatistics` . Bu yaklaşık değer doğru olmasa da, istemci üzerinde hesaplanan gecikme değerlerinden yalıtılmış olan ağ gecikmesi hakkında bir gösterge sağlar. |
-| polygonsRendered | Bir çerçevede işlenen üçgenin sayısı. Bu sayı Ayrıca, işleme sırasında daha sonra gelen üçgenler de içerir. Yani bu sayı, farklı kamera konumlarında çok fazla farklılık göstermez, ancak üçgen yüzey kaldırma hızına bağlı olarak performans büyük ölçüde farklılık gösterebilir.|
+| Kullanımı Zationgpu | Toplam sunucu GPU kullanımı yüzdesi |
+| MemoryCPU | Toplam sunucu ana bellek kullanımı yüzdesi |
+| MemoryGPU | Sunucu GPU 'SU yüzdesi cinsinden toplam adanmış video belleği kullanımı |
+| Ağ Gecikme Süresi | Milisaniye cinsinden yaklaşık ortalama gidiş dönüş ağ gecikmesi. Yukarıdaki çizimde, bu değer kırmızı okların toplamına karşılık gelir. Değer, gerçek sunucu işleme zamanının değerinden çıkarılmasıyla hesaplanır `LatencyPoseToReceive` `FrameStatistics` . Bu yaklaşık değer doğru olmasa da, istemci üzerinde hesaplanan gecikme değerlerinden yalıtılmış olan ağ gecikmesi hakkında bir gösterge sağlar. |
+| PolygonsRendered | Bir çerçevede işlenen üçgenin sayısı. Bu sayı Ayrıca, işleme sırasında daha sonra gelen üçgenler de içerir. Yani bu sayı, farklı kamera konumlarında çok fazla farklılık göstermez, ancak üçgen yüzey kaldırma hızına bağlı olarak performans büyük ölçüde farklılık gösterebilir.|
 
 Değerleri değerlendirmenize yardımcı olmak için her bölüm **harika**, **iyi**, **mediocre** veya **kötü** gibi bir kalite sınıflandırmasıyla gelir.
 Bu değerlendirme ölçümü sunucunun sistem durumunu kabaca bir şekilde belirtir, ancak mutlak olarak görülmemelidir. Örneğin, GPU süresi için bir ' mediocre ' puanı gördüğünü varsayın. Bu, genel çerçeve süresi bütçesi sınırına yakın olduğundan mediocre olarak kabul edilir. Ancak, bir karmaşık modeli işlemekte olduğunuz için Nonetheless iyi bir değer olabilir.
 
 ## <a name="statistics-debug-output"></a>İstatistik hata ayıklama çıkışı
 
-Sınıfı, `ARRServiceStats` hem çerçeve istatistikleri hem de performans değerlendirmesi sorguları etrafında kaydırılan ve istatistikleri toplanmış değerler olarak veya önceden oluşturulmuş bir dize olarak döndürmek için uygun işlevselliği sağlayan bir C# sınıfıdır. Aşağıdaki kod, istemci uygulamanızda sunucu tarafı istatistiklerini göstermek için en kolay yoldur.
+Sınıfı, `ServiceStatistics` hem çerçeve istatistikleri hem de performans değerlendirmesi sorguları etrafında kaydırılan ve istatistikleri toplanmış değerler olarak veya önceden oluşturulmuş bir dize olarak döndürmek için uygun işlevselliği sağlayan bir C# sınıfıdır. Aşağıdaki kod, istemci uygulamanızda sunucu tarafı istatistiklerini göstermek için en kolay yoldur.
 
 ```cs
-ARRServiceStats _stats = null;
+ServiceStatistics _stats = null;
 
 void OnConnect()
 {
-    _stats = new ARRServiceStats();
+    _stats = new ServiceStatistics();
 }
 
 void OnDisconnect()
@@ -169,14 +163,14 @@ Yukarıdaki kod metin etiketini aşağıdaki metinle doldurur:
 
 ![ArrServiceStats String çıktısı](./media/arr-service-stats.png)
 
-`GetStatsString`API, tüm değerlerin bir dizesini biçimlendirir, ancak her bir değer aynı zamanda örnekten programlı bir şekilde sorgulanabilir `ARRServiceStats` .
+`GetStatsString`API, tüm değerlerin bir dizesini biçimlendirir, ancak her bir değer aynı zamanda örnekten programlı bir şekilde sorgulanabilir `ServiceStatistics` .
 
 Ayrıca üyelerin, zaman içinde değerleri toplayan çeşitleri vardır. , Veya sonekine sahip üyelere bakın `*Avg` `*Max` `*Total` . Üye, `FramesUsedForAverage` Bu toplama için kaç çerçeve kullanıldığını gösterir.
 
 ## <a name="api-documentation"></a>API belgeleri
 
-* [C# RemoteManager. QueryServerPerformanceAssessmentAsync ()](/dotnet/api/microsoft.azure.remoterendering.remotemanager.queryserverperformanceassessmentasync)
-* [C++ RemoteManager:: QueryServerPerformanceAssessmentAsync ()](/cpp/api/remote-rendering/remotemanager#queryserverperformanceassessmentasync)
+* [C# RenderingConnection. QueryServerPerformanceAssessmentAsync ()](/dotnet/api/microsoft.azure.remoterendering.renderingconnection.queryserverperformanceassessmentasync)
+* [C++ RenderingConnection:: QueryServerPerformanceAssessmentAsync ()](/cpp/api/remote-rendering/renderingconnection#queryserverperformanceassessmentasync)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

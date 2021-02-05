@@ -9,12 +9,12 @@ ms.author: jordane
 author: jpe316
 ms.date: 06/22/2020
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: e88fbaed77113896f818710497a544fbab486246
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: ee10866791d1e5015ef5c91d98bff286ed6ce67a
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98072284"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99591914"
 ---
 # <a name="install--use-the-cli-extension-for-azure-machine-learning"></a>& Azure Machine Learning için CLı uzantısını kullanın
 
@@ -193,7 +193,7 @@ Daha fazla bilgi için bkz. [az ml computetarget Create amlcompute](/cli/azure/e
 + Yeni bir computeinstance oluşturun.
 
     ```azurecli-interactive
-    az ml computetarget create computeinstance  -n cpu -s "STANDARD_D3_V2" -v
+    az ml computetarget create computeinstance -n cpu -s "STANDARD_D3_V2" -v
     ```
 
     Daha fazla bilgi için bkz. [az ml computetarget Create computeinstance](/cli/azure/ext/azure-cli-ml/ml/computetarget/create?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-create-computeinstance).
@@ -201,26 +201,26 @@ Daha fazla bilgi için bkz. [az ml computetarget Create amlcompute](/cli/azure/e
 + Bir computeinstance durdur.
 
     ```azurecli-interactive
-    az ml computetarget stop computeinstance -n cpu -v
+    az ml computetarget computeinstance stop -n cpu -v
     ```
 
-    Daha fazla bilgi için bkz. [az ml computetarget stop computeinstance](/cli/azure/ext/azure-cli-ml/ml/computetarget/computeinstance?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-computeinstance-stop).
+    Daha fazla bilgi için bkz. [az ml computetarget computeinstance stop](/cli/azure/ext/azure-cli-ml/ml/computetarget/computeinstance?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-computeinstance-stop).
 
 + Bir computeinstance başlatın.
 
     ```azurecli-interactive
-    az ml computetarget start computeinstance -n cpu -v
+    az ml computetarget computeinstance start -n cpu -v
     ```
 
-    Daha fazla bilgi için bkz. [az ml computetarget start computeinstance](/cli/azure/ext/azure-cli-ml/ml/computetarget/computeinstance?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-computeinstance-start).
+    Daha fazla bilgi için bkz. [az ml computetarget computeinstance start](/cli/azure/ext/azure-cli-ml/ml/computetarget/computeinstance?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-computeinstance-start).
 
 + Bir computeinstance yeniden başlatın.
 
     ```azurecli-interactive
-    az ml computetarget restart computeinstance -n cpu -v
+    az ml computetarget computeinstance restart -n cpu -v
     ```
 
-    Daha fazla bilgi için bkz. [az ml computetarget restart computeinstance](/cli/azure/ext/azure-cli-ml/ml/computetarget/computeinstance?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-computeinstance-restart).
+    Daha fazla bilgi için bkz. [az ml computetarget computeinstance restart](/cli/azure/ext/azure-cli-ml/ml/computetarget/computeinstance?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-computeinstance-restart).
 
 + Bir computeinstance silin.
 
@@ -408,7 +408,7 @@ Aşağıdaki komutlarda, çalışma alanınız için Azure Machine Learning [ort
 
 Aşağıdaki tabloda JSON dosyasındaki her üst düzey alan, türü ve bir açıklama ayrıntıları verilmiştir. Bir nesne türü Python SDK 'dan bir sınıfa bağlanmışsa, Python sınıfında her bir JSON alanı ve genel değişken adı arasında gevşek bir 1:1 eşleşmesi vardır. Bazı durumlarda alan, sınıf değişkeni yerine bir Oluşturucu bağımsız değişkenine de eşlenir. Örneğin, `environmentVariables` alanı `environment_variables` sınıfındaki değişkenle eşlenir [`Environment`](/python/api/azureml-core/azureml.core.environment%28class%29?preserve-view=true&view=azure-ml-py) .
 
-| JSON alanı | Tür | Açıklama |
+| JSON alanı | Tür | Description |
 |---|---|---|
 | `name` | `string` | Ortamın adı. **Microsoft** veya **AzureML** ile ad başlatma. |
 | `version` | `string` | Ortamın sürümü. |

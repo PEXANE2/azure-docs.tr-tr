@@ -1,15 +1,15 @@
 ---
 title: 'Hızlı başlangıç: Azure CLı ile bir yönetim grubu oluşturma'
 description: Bu hızlı başlangıçta, kaynaklarınızı bir kaynak hiyerarşisinde düzenlemek üzere bir yönetim grubu oluşturmak için Azure CLı 'yi kullanırsınız.
-ms.date: 08/31/2020
+ms.date: 02/05/2021
 ms.topic: quickstart
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 54d7afbaa4bfe2799ca0d68927394a38d9845c53
-ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
+ms.openlocfilehash: fe38882bd3b025635662e228ae919a24b03dee78
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94920670"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99592475"
 ---
 # <a name="quickstart-create-a-management-group-with-the-azure-cli"></a>Hızlı başlangıç: Azure CLı ile bir yönetim grubu oluşturma
 
@@ -17,7 +17,7 @@ Yönetim grupları, birden çok abonelik üzerinde erişimi, ilkeyi ve uyumlulu�
 
 Dizinde oluşturulan ilk yönetim grubunun tamamlanması 15 dakika sürebilir. Dizininiz için Azure 'da yönetim grupları hizmetini ayarlamak için ilk kez çalışan süreçler vardır. İşlem tamamlandığında bir bildirim alırsınız. Daha fazla bilgi için bkz. [yönetim gruplarının ilk kurulumu](./overview.md#initial-setup-of-management-groups).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
