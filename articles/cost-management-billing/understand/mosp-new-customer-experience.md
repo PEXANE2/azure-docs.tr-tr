@@ -8,12 +8,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 01/11/2021
 ms.author: banders
-ms.openlocfilehash: f0645115246995c9605563626d99bbf6a76784e1
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
-ms.translationtype: HT
+ms.openlocfilehash: 887b7013eb3060020a39d2df0082768b8185bdde
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98133579"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99575475"
 ---
 # <a name="get-started-with-your-updated-azure-billing-account"></a>Güncelleştirilmiş Azure faturalama hesabınızı kullanmaya başlama
 
@@ -42,7 +42,7 @@ Hesabınız güncelleştirildiğinde her abonelik için otomatik olarak bir fatu
 
 Faturalama profillerindeki roller, faturaları ve ödeme yöntemlerini görüntüleme ve yönetme izinlerine sahiptir. Bu roller, kuruluştaki muhasebe ekibinin üyeleri gibi faturaları ödeyen kullanıcılara atanmalıdır. Daha fazla bilgi için bkz. [faturalama profili rolleri ve görevleri](../manage/understand-mca-roles.md#billing-profile-roles-and-tasks).
 
-Hesabınız güncelleştirildiğinde, başkalarına [faturaları görüntüleme](download-azure-invoice.md#allow-others-to-download-the-your-subscription-invoice) izni verdiğiniz her abonelik için sahip, katkıda bulunan, okuyucu veya fatura okuyucusu Azure rolüne sahip kullanıcılara ilgili faturalama profilinde okuyucu rolü verilir.
+Hesabınız güncelleştirildiğinde, başkalarına [faturaları görüntüleme](download-azure-invoice.md#allow-others-to-download-your-subscription-invoice) izni verdiğiniz her abonelik için sahip, katkıda bulunan, okuyucu veya fatura okuyucusu Azure rolüne sahip kullanıcılara ilgili faturalama profilinde okuyucu rolü verilir.
 
 ## <a name="invoice-sections"></a>Fatura bölümleri
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/28/2020
 ms.author: allensu
-ms.openlocfilehash: 702ca4f4c3fc92eca70479ba02b1ddc8f6858857
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: 9a80242422631995f6d5c24ba2118ee98a9b8d32
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99549669"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576185"
 ---
 # <a name="public-ip-addresses"></a>Genel IP adresleri
 
@@ -62,6 +62,9 @@ Standart SKU genel IP adresleri:
 
 > [!NOTE]
 > [Örnek meta veri hizmeti IDS](../virtual-machines/windows/instance-metadata-service.md)'leri kullanılırken yalnızca temel SKU 'Su olan genel IP adresleri kullanılabilir. Standart SKU desteklenmiyor.
+
+> [!NOTE]
+> Standart SKU genel IP adresi kullanılırken, Tanılama ayarları kaynak dikey penceresinin altında görünmez. Stanrd genel IP adresi kaynağında günlüğe kaydetmeyi etkinleştirmek için Azure Izleyici dikey penceresinde Tanılama Ayarları ' na gidin ve IP adresi kaynağınızı seçin.
 
 ### <a name="basic"></a>Temel
 

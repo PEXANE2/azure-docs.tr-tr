@@ -5,12 +5,12 @@ ms.custom: subject-cost-optimization
 ms.service: app-service
 ms.topic: how-to
 ms.date: 01/01/2021
-ms.openlocfilehash: 9d742606435f62d48446bb8ad56ece7a31b76e47
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 3df08705859678525526f8fef198826f58249d8b
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98736230"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99573373"
 ---
 # <a name="plan-and-manage-costs-for-azure-app-service"></a>Azure App Service maliyetlerini planlayın ve yönetin
 
@@ -125,7 +125,7 @@ Bir yıl veya daha fazla süreyle bilinen en az sayıda işlem örneğini kullan
 
 Ayrılmış örnek fiyatlandırması, ayırmış olduğunuz örnek sayısına kadar aboneliğinizdeki ilgili örneklere uygulanır. Ayrılmış örnekler, bir faturalandırma sorunudur ve belirli işlem örneklerine bağlı değildir. Rezervasyon süresi boyunca herhangi bir noktada ayırdığınız sayıdan daha az örnek çalıştırırsanız, ayrılmış örnekler için yine de ödeme yaparsınız. Rezervasyon süresi boyunca herhangi bir noktada ayırmaktan daha fazla örnek çalıştırırsanız, ek örnekler için normal tahakkuk eden maliyeti ödeyin.
 
-**Yalıtılmış** katman (App Service ortamı), daha düşük fiyatlandırmayla 1 yıllık ve 3 yıllık rezervasyonları da destekler. Daha fazla bilgi için bkz. [rezervasyon iskontolarının Azure App Service yalıtılmış damgalar Için nasıl uygulandığı](../cost-management-billing/reservations/reservation-discount-app-service-isolated-stamp.md).
+**Yalıtılmış** katman (App Service ortamı), daha düşük fiyatlandırmayla 1 yıllık ve 3 yıllık rezervasyonları da destekler. Daha fazla bilgi için bkz. [rezervasyon iskontolarının Azure App Service Için nasıl uygulanacağı](../cost-management-billing/reservations/reservation-discount-app-service.md).
 
 ## <a name="monitor-costs"></a>Maliyetleri izleme
 

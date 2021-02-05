@@ -9,12 +9,12 @@ ms.reviewer: estfan, daviburg, logicappspm
 ms.topic: article
 ms.date: 02/01/2021
 tags: connectors
-ms.openlocfilehash: edf4ce188c9239e697e2148d4fff51966d91f85a
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: cbbc0edf710b8823c1a36daa66bc01d89acf63da
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99252619"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99575492"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Azure Logic Apps’ten SAP sistemlerine bağlanma
 
@@ -504,7 +504,7 @@ SAP 'den mantıksal uygulamanızın tetikleyicisine IDoc paketleri gönderememek
   * Bu segmentlerin SAP tarafından serbest bırakılması için SAP sisteminizin ABAP mühendisine başvurun.
 ### <a name="asynchronous-request-reply-for-triggers"></a>Zaman uyumsuz istek-Tetikleyiciler için yanıtlama
 
-SAP Bağlayıcısı Logic Apps Tetikleyicileri için Azure 'un [zaman uyumsuz istek yanıtı modelini](/azure/architecture/patterns/async-request-reply.md) destekler. Bu kalıbı, varsayılan zaman uyumlu istek-yanıt düzeniyle başarısız olacak başarılı istekler oluşturmak için kullanabilirsiniz. 
+SAP Bağlayıcısı Logic Apps Tetikleyicileri için Azure 'un [zaman uyumsuz istek yanıtı modelini](/azure/architecture/patterns/async-request-reply) destekler. Bu kalıbı, varsayılan zaman uyumlu istek-yanıt düzeniyle başarısız olacak başarılı istekler oluşturmak için kullanabilirsiniz. 
 
 > [!TIP]
 > Birden çok yanıt eylemi olan Logic Apps 'te, tüm yanıt eylemleri aynı istek-yanıt modelini kullanmalıdır. Örneğin, mantıksal uygulamanız birden çok olası yanıt eylemi ile bir anahtar denetimi kullanıyorsa, tüm yanıt eylemlerini, zaman uyumlu veya zaman uyumsuz olarak aynı istek yanıt modelini kullanacak şekilde yapılandırmanız gerekir. 

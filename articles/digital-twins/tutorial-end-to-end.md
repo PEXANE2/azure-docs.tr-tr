@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 8933dd6655223db092597aedf839fd800119864a
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 5ef06f2db487a3e6d897e26758da840f37c3ecaf
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98684014"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99575814"
 ---
 # <a name="tutorial-build-out-an-end-to-end-solution"></a>Öğretici: uçtan uca bir çözüm oluşturma
 
@@ -401,18 +401,15 @@ Bu öğreticide oluşturduğunuz senaryonun incelenmesi aşağıda verilmiştir.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Bu öğreticide oluşturulan kaynaklara artık ihtiyacınız yoksa, bunları silmek için aşağıdaki adımları izleyin. 
+Bu Öğreticiyi tamamladıktan sonra, ne yapmak istediğinize bağlı olarak kaldırmak istediğiniz kaynakları seçebilirsiniz.
 
-[Azure Cloud Shell](https://shell.azure.com)kullanarak, [az Group Delete](/cli/azure/group?preserve-view=true&view=azure-cli-latest#az-group-delete) komutuyla bir kaynak grubundaki tüm Azure kaynaklarını silebilirsiniz. Bu, kaynak grubunu kaldırır; Azure dijital TWINS örneği; IoT Hub ve Hub cihaz kaydı; olay Kılavuzu konusu ve ilişkili abonelikler; ve depolama gibi ilişkili kaynaklar dahil olmak üzere Azure Işlevleri uygulaması.
+[!INCLUDE [digital-twins-cleanup-basic.md](../../includes/digital-twins-cleanup-basic.md)]
 
-> [!IMPORTANT]
-> Silinen kaynak grupları geri alınamaz. Kaynak grubu ve içindeki tüm kaynaklar kalıcı olarak silinir. Yanlış kaynak grubunu veya kaynakları yanlışlıkla silmediğinizden emin olun. 
+* **Bu makalede ayarladığınız Azure dijital TWINS örneğini kullanmaya devam etmek, ancak modellerinin, TWINS ve ilişkilerinin bazılarını veya tümünü temizlemek** için, kaldırmak istediğiniz öğeleri silmek üzere bir [Azure Cloud Shell](https://shell.azure.com) penceresinde [az DT](/cli/azure/ext/azure-iot/dt?view=azure-cli-latest&preserve-view=true) CLI komutlarını kullanabilirsiniz.
 
-```azurecli-interactive
-az group delete --name <your-resource-group>
-```
+    Bu seçenek, bu öğreticide (IoT Hub, Azure Işlevleri uygulaması vb.) oluşturulan diğer Azure kaynaklarından hiçbirini kaldırmayacak. Her kaynak türü için uygun olan [dt komutlarını](/cli/azure/reference-index?view=azure-cli-latest&preserve-view=true) kullanarak bunları tek tek silebilirsiniz.
 
-Son olarak, indirdiğiniz proje örnek klasörünü yerel makinenize silin.
+Yerel makinenizden proje klasörünü de silmek isteyebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: ca8584d6cce3f5487d84f6647c42274879d610dd
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 647564a9b9ca909d2f45ae66673d8beac168a4aa
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98198076"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99575983"
 ---
 # <a name="use-the-portal-to-attach-a-data-disk-to-a-linux-vm"></a>Bir Linux VM 'sine veri diski eklemek için portalı kullanma 
 Bu makalede, Azure portal aracılığıyla bir Linux sanal makinesine hem yeni hem de mevcut diskleri nasıl ekleyebileceğiniz gösterilmektedir. Ayrıca [, Azure Portal bir WINDOWS sanal makinesine veri diski ekleyebilirsiniz](../windows/attach-managed-disk-portal.md). 
@@ -225,4 +225,7 @@ Linux sanal makinenizde KıRPMA desteğini etkinleştirmenin iki yolu vardır. H
     ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
+
+Daha fazla bilgi edinmek ve disk sorunlarını gidermeye yardımcı olmak için bkz. [LINUX VM cihaz adı değişikliklerinde sorun giderme](../troubleshooting/troubleshoot-device-names-problems.md).
+
 Ayrıca, Azure CLı kullanarak [bir veri diski](add-disk.md) ekleyebilirsiniz.

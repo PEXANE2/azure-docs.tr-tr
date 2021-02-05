@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f13dfa4221f8f09c24cce3a451f3180d15ee3b99
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 0c4ed5dfee80c33009874361ae6b4d23ec00bc26
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96435766"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99573339"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Nasıl yapılır: karma Azure Active Directory JOIN Uygulamanızı planlayın
 
@@ -30,7 +30,7 @@ Cihazlarınızı Azure AD'ye taşıyarak, çoklu oturum açma (SSO) özelliği s
 
 Şirket içi Active Directory (AD) ortamınız varsa ve AD alanına katılmış bilgisayarlarınızı Azure AD 'ye eklemek istiyorsanız, karma Azure AD katılımı yaparak bunu yapabilirsiniz. Bu makalede, ortamınızda karma Azure AD katılımı uygulamak için ilgili adımlar sağlanmaktadır. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makalede, [Azure Active Directory ' deki cihaz kimliği yönetimine giriş](./overview.md)hakkında bilgi sahibi olduğunuz varsayılır.
 
@@ -81,6 +81,8 @@ Windows masaüstü işletim sistemi çalıştıran cihazlarda desteklenen sürü
 - Karma Azure AD katılımı, kimlik bilgisi dolaşımı veya Kullanıcı profili dolaşımı veya zorunlu profili kullanılırken Windows alt düzey cihazlarda desteklenmez.
 
 - Sunucu çekirdeği işletim sistemi herhangi bir cihaz kaydı türünü desteklemez.
+
+- Kullanıcı Durumu Taşıma Aracı (USMT) cihaz kaydıyla birlikte çalışmaz.  
 
 ### <a name="os-imaging-considerations"></a>İşletim sistemi görüntüsü konuları
 - Sistem Hazırlama Aracı 'nı (Sysprep) kullanıyorsanız ve yükleme için **Windows 10 1809 öncesi** bir görüntü kullanıyorsanız, görüntünün Azure AD 'ye karma Azure AD katılımı olarak zaten kayıtlı olan bir cihazdan olmadığından emin olun.

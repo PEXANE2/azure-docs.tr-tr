@@ -4,15 +4,15 @@ description: Farklı ağlardaki kaynaklara erişmek için Azure App Service ' de
 author: ccompy
 ms.assetid: 66774bde-13f5-45d0-9a70-4e9536a4f619
 ms.topic: article
-ms.date: 06/08/2020
+ms.date: 02/04/2020
 ms.author: ccompy
 ms.custom: seodec18, fasttrack-edit
-ms.openlocfilehash: 16f6a0660fa9aa20f636ee412f3f337bd5dea9b5
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.openlocfilehash: 20bdeef0a45bb02fab8841c0dd8ec7755143c693
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97825970"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576000"
 ---
 # <a name="azure-app-service-hybrid-connections"></a>Azure App Service Hibrit Bağlantılar
 
@@ -42,7 +42,7 @@ Karma Bağlantılar özelliği için aşağıdakiler de dahil olmak üzere birç
 - Normalde güvenlik duvarı delikleri gerektirmez. Bağlantılar, standart Web bağlantı noktaları üzerinden giden tüm çıkışlardır.
 - Özelliği ağ düzeyinde olduğundan, uygulamanız tarafından kullanılan dile ve uç nokta tarafından kullanılan teknolojiye belirsiz bir şekilde sahip olur.
 - Tek bir uygulamadan birden çok ağda erişim sağlamak için kullanılabilir. 
-- Windows yerel uygulamaları için GA 'de desteklenir ve Linux uygulamaları için önizleme aşamasındadır. Windows kapsayıcı uygulamaları için desteklenmez.
+- Windows Uygulamaları ve Linux uygulamaları için GA 'de desteklenir. Windows kapsayıcı uygulamaları için desteklenmez.
 
 ### <a name="things-you-cannot-do-with-hybrid-connections"></a>Karma Bağlantılar ile yapaistemediğiniz şeyler ###
 

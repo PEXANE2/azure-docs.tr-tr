@@ -5,12 +5,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 02/03/2020
 ms.topic: how-to
-ms.openlocfilehash: 8901877ab3055c02dfc8c129fb35864418cd19d8
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: 2b67eada5dfa89f95e2c9ae045c6bbe3fa0bb1ce
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99549144"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576321"
 ---
 # <a name="check-for-pool-and-node-errors"></a>Havuz ve düğüm hatalarını denetle
 
@@ -24,7 +24,7 @@ Bu makalede havuzlar ve havuz düğümleri için gerçekleşebileceğini arka pl
 
 ### <a name="resize-timeout-or-failure"></a>Zaman aşımını yeniden boyutlandır veya hata
 
-Yeni bir havuz oluştururken veya var olan bir havuzu yeniden boyutlandırdığınızda, hedef düğüm sayısını belirtirsiniz. Oluşturma veya yeniden boyutlandırma işlemi hemen tamamlanır, ancak yeni düğümlerin gerçek ayırması veya mevcut düğümlerin kaldırılması birkaç dakika sürebilir. [Oluşturma](/rest/api/batchservice/pool/add) veya [yeniden boyutlandırma](/rest/api/batchservice/pool/resize) API 'sinde cam yeniden boyutlandırma zaman aşımını belirlersiniz. Yığın, yeniden boyutlandırma zaman aşımı süresi boyunca hedef düğüm sayısını alamazlarsa, havuz kararlı duruma geçer ve raporların yeniden boyutlandırılması hataları görüntülenir.
+Yeni bir havuz oluştururken veya var olan bir havuzu yeniden boyutlandırdığınızda, hedef düğüm sayısını belirtirsiniz. Oluşturma veya yeniden boyutlandırma işlemi hemen tamamlanır, ancak yeni düğümlerin gerçek ayırması veya mevcut düğümlerin kaldırılması birkaç dakika sürebilir. Yeniden boyutlandırma zaman aşımını [oluşturma](/rest/api/batchservice/pool/add) veya [yeniden boyutlandırma](/rest/api/batchservice/pool/resize) API 'sinde belirtebilirsiniz. Yığın, yeniden boyutlandırma zaman aşımı süresi boyunca hedef düğüm sayısını alamazlarsa, havuz kararlı duruma geçer ve raporların yeniden boyutlandırılması hataları görüntülenir.
 
 En son değerlendirme için [Resizeerror](/rest/api/batchservice/pool/get#resizeerror) özelliği oluşan hataları listeler.
 

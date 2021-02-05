@@ -7,19 +7,16 @@ author: ChristopherHouser
 ms.author: chrishou
 ms.reviewer: estfan, valthom
 ms.topic: article
-ms.date: 03/06/2019
+ms.date: 02/03/2021
 tags: connectors
-ms.openlocfilehash: ae99e3fa287cc9012e317142cc1e6aef36ce90d6
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 7873076618125241d9bdf4f225c194572553d060
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93095008"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99573441"
 ---
 # <a name="integrate-3270-screen-driven-apps-on-ibm-mainframes-with-azure-by-using-azure-logic-apps-and-ibm-3270-connector"></a>Azure Logic Apps ve IBM 3270 bağlayıcısını kullanarak Azure ile IBM ana bilgisayarları 'nda 3270 ekran odaklı uygulamayı tümleştirin
-
-> [!NOTE]
-> Bu bağlayıcı [*genel önizlemede*](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
 
 Azure Logic Apps ve IBM 3270 bağlayıcısı sayesinde normalde 3270 öykünücü ekranları üzerinden kullandığınız IBM ana bilgisayar uygulamalarına erişebilir ve bu uygulamaları çalıştırabilirsiniz. Bu sayede Azure Logic Apps ile otomatikleştirilmiş iş yükleri oluşturarak IBM ana bilgisayar uygulamalarınızı Azure, Microsoft ve diğer uygulamalar, hizmetler ve sistemlerle tümleştirebilirsiniz. Bağlayıcı, IBM ana bilgisayarlarıyla iletişim kurmak için TN3270 protokolünü kullanır ve Azure Kamu ile Azure China 21Vianet dışındaki tüm Azure Logic Apps bölgelerinde kullanılabilir durumdadır. Logic Apps 'e yeni başladıysanız [ne Azure Logic Apps](../logic-apps/logic-apps-overview.md) olduğunu gözden geçirin.
 
@@ -55,13 +52,13 @@ Tasarım aracından meta veri dosyası oluşturduktan sonra, bu dosyayı Azure '
   ISE kullanıyorsanız, mantıksal uygulamanızın konumu olarak o ıSE 'yi seçin.
 
 * [3270 tasarım aracını indirip yükleyin](https://aka.ms/3270-design-tool-download).
-Tek önkoşul [Microsoft .NET Framework 4.6.1](https://aka.ms/net-framework-download).
+Tek önkoşul [Microsoft .NET Framework 4,8](https://aka.ms/net-framework-download)' dir.
 
   Bu araç, uygulamanızda 3270 bağlayıcı eylemleri ekleyip çalıştırdığınız görevler için ekranları, gezinti yollarını, yöntemleri ve parametreleri kaydetmenize yardımcı olur. Araç, ana bilgisayar uygulamanızı yönlendirmede kullanılacak bağlayıcı için gerekli meta verileri sağlayan bir Host Integration Designer XML (HIDX) dosyası oluşturur.
   
   Bu aracı indirip yükledikten sonra, ana bilgisayarınıza bağlanmak için şu adımları izleyin:
 
-  1. 3270 tasarım aracını açın. **Oturum** menüsünden **konak oturumları** ' nı seçin.
+  1. 3270 tasarım aracını açın. **Oturum** menüsünden **konak oturumları**' nı seçin.
   
   1. TN3270 ana bilgisayar sunucunuzun bilgilerini sağlayın.
 
@@ -77,20 +74,19 @@ Tek önkoşul [Microsoft .NET Framework 4.6.1](https://aka.ms/net-framework-down
 
 3270 ekran odaklı bir uygulamada ekranlar ve veri alanları senaryolarınız için benzersizdir, bu nedenle 3270 Bağlayıcısı, uygulamanız hakkında, meta veri olarak sağlayabilmeniz için bu bilgilere ihtiyaç duyuyor. Bu meta veriler, mantıksal uygulamanızın ekranları tanımlamasına ve tanımasına yardımcı olan bilgileri açıklar, ekranlar arasında nasıl gezindiğini, veri girişi ve sonuçların nerede beklendiğini açıklar. Bu meta verileri belirtmek ve oluşturmak için, daha sonra daha fazla ayrıntı bölümünde açıklandığı gibi, bu belirli *modlarda* veya aşamada size kılavuzluk eden 3270 tasarım aracını kullanın:
 
-* **Yakala** : Bu modda, ana bilgisayar uygulamanızla belirli bir görevi tamamlamak için gereken ekranları kaydeder, örneğin bir banka bakiyesi alma.
+* **Yakala**: Bu modda, ana bilgisayar uygulamanızla belirli bir görevi tamamlamak için gereken ekranları kaydeder, örneğin bir banka bakiyesi alma.
 
-* **Gezinti** : Bu modda, belirli bir görev için ana bilgisayar uygulamanızın ekranlarında gezinme planını veya yolunu belirtirsiniz.
+* **Gezinti**: Bu modda, belirli bir görev için ana bilgisayar uygulamanızın ekranlarında gezinme planını veya yolunu belirtirsiniz.
 
-* **Yöntemler** : Bu modda,, örneğin, `GetBalance` ekran gezinti yolunu açıklayan yöntemini tanımlarsınız. Her ekranda, yöntemin giriş ve çıkış parametreleri haline gelen alanları da seçersiniz.
+* **Yöntemler**: Bu modda,, örneğin, `GetBalance` ekran gezinti yolunu açıklayan yöntemini tanımlarsınız. Her ekranda, yöntemin giriş ve çıkış parametreleri olacak alanları da seçersiniz.
 
 ### <a name="unsupported-elements"></a>Desteklenmeyen öğeler
 
 Tasarım aracı bu öğeleri desteklemez:
 
 * Kısmi IBM temel eşleme desteği (BMS) eşlemeleri: bir BMS haritasını içeri aktarırsanız, tasarım aracı kısmi ekran tanımlarını yoksayar.
-* In/out parametreleri: ın/out parametrelerini tanımlayamazsınız.
-* Menü işleme: Önizleme sırasında desteklenmez
-* Dizi işleme: Önizleme sırasında desteklenmez
+
+* Menü işleme
 
 <a name="capture-screens"></a>
 
@@ -100,23 +96,23 @@ Bu modda, bu ekranı benzersiz bir şekilde tanımlayan her bir 3270 ekranındak
 
 1. Henüz yapmadıysanız, 3270 tasarım aracını açın. Yakalama moduna girmek için araç çubuğunda **yakala** ' yı seçin.
 
-1. Kaydı başlatmak için F5 tuşuna basın veya **kayıt** menüsünde **kaydı Başlat** ' ı seçin. 
+1. **Oturum** menüsünden **Bağlan**' ı seçin.
 
-1. **Oturum** menüsünden **Bağlan** ' ı seçin.
+1. Kaydı başlatmak için, **kayıt** menüsünden **kaydı Başlat**' ı seçin. (Klavye: Ctrl + E)
 
 1. **Yakalama** bölmesinde, uygulamanızdaki ilk ekrandan başlayarak, kaydettiğiniz belirli bir görev için uygulamanızdaki adımları izleyin.
 
 1. Görevi tamamladıktan sonra, genellikle yaptığınız gibi uygulamanızda oturumunuzu kapatın.
 
-1. **Oturum** menüsünden **bağlantıyı kes** ' i seçin.
+1. **Oturum** menüsünden **bağlantıyı kes**' i seçin.
 
-1. Kaydı durdurmak için SHIFT + F5 tuşlarına basın ya da **kayıt** menüsünde **Kaydı Durdur** ' u seçin.
+1. Kaydı durdurmak için, **kayıt** menüsünden **Kaydı Durdur**' u seçin. (Klavye: CTRL + SHIFT + E)
 
    Bir görev için ekranları yakaladıktan sonra tasarımcı aracı Bu ekranları temsil eden küçük resimleri gösterir. Bu küçük resimler hakkında bazı notlar:
 
    * Yakalanan ekranlarınız dahil olmak üzere, "Empty" adlı bir ekranınız vardır.
 
-     [CICS](https://www.ibm.com/it-infrastructure/z/cics)'e ilk kez bağlandığınızda, çalıştırmak istediğiniz işlemin adını girmeden önce "Clear" tuşunu göndermeniz gerekir. "Clear" tuşunun gönderileceği ekran, ekran adı gibi herhangi bir *tanıma özniteliği* (ekran tanıma Düzenleyicisi kullanarak ekleyebileceğiniz) içermez. Bu ekranı göstermek için, küçük resimler "Empty" adlı bir ekran içerir. Daha sonra bu ekranı, işlem adını girdiğiniz ekranı göstermek için kullanabilirsiniz.
+     [CICS](https://www.ibm.com/it-infrastructure/z/cics)'e ilk kez bağlandığınızda, çalıştırmak istediğiniz işlemin adını girmeden önce "Clear" tuşunu göndermeniz gerekir. "Clear" tuşunun gönderileceği ekran, ekran adı gibi herhangi bir *tanıma özniteliği*(ekran tanıma Düzenleyicisi kullanarak ekleyebileceğiniz) içermez. Bu ekranı göstermek için, küçük resimler "Empty" adlı bir ekran içerir. Daha sonra bu ekranı, işlem adını girdiğiniz ekranı göstermek için kullanabilirsiniz.
 
    * Varsayılan olarak, yakalanan bir ekranın adı ekrandaki ilk sözcüğü kullanır. Bu ad zaten varsa, tasarım aracı adı bir alt çizgi ve sayı ile ekler; örneğin, "ILEGB" ve "WBGB_1".
 
@@ -178,11 +174,11 @@ Bu modda, belirli bir görevde ana bilgisayar uygulamanızın ekranlarıyla gezi
 
 1. Gezinti moduna girmek için 3270 Tasarım aracının araç çubuğunda **Gezinti** ' yi seçin.
 
-1. Planınızı başlatmak için, **Gezinti** bölmesinde **Yeni plan** ' ı seçin.
+1. Planınızı başlatmak için, **Gezinti** bölmesinde **Yeni plan**' ı seçin.
 
-1. **Yeni plan adı Seç** ' in altında planınız için bir ad girin. **Tür** listesinden plan türünü seçin:
+1. **Yeni plan adı Seç**' in altında planınız için bir ad girin. **Tür** listesinden plan türünü seçin:
 
-   | Plan türü | Açıklama |
+   | Plan türü | Description |
    |-----------|-------------|
    | **İşleme** | Tek başına veya Birleşik planlar için |
    | **Bağlan** | Bağlantı planları için |
@@ -195,7 +191,7 @@ Bu modda, belirli bir görevde ana bilgisayar uygulamanızın ekranlarıyla gezi
 
 1. Ekranları, tanımladığınız görevi açıklayan sırada düzenleyin.
 
-1. Çatallar ve birleşimler dahil olmak üzere ekranlar arasında akış yolunu tanımlamak için, Tasarım aracının araç çubuğunda **Flow** ' u seçin.
+1. Çatallar ve birleşimler dahil olmak üzere ekranlar arasında akış yolunu tanımlamak için, Tasarım aracının araç çubuğunda **Flow**' u seçin.
 
 1. Akıştaki ilk ekranı seçin. Akışta bir sonraki ekrana bir bağlantı sürükleyip bırakın.
 
@@ -269,20 +265,20 @@ Bu modda, gezinti planınızla ilişkili bir yöntemi tanımlarsınız. Her yön
    1. **Yakala** bölmesinde, 3270 öykünücü ekranında, yalnızca alanın içinde değil, ilk giriş olarak istediğiniz alanın tamamını seçin.
 
       > [!TIP]
-      > Tüm alanları görüntülemek ve tüm alanını seçtiğinizden emin olmak için, **Görünüm** menüsünde **tüm alanlar** ' ı seçin.
+      > Tüm alanları görüntülemek ve tüm alanını seçtiğinizden emin olmak için, **Görünüm** menüsünde **tüm alanlar**' ı seçin.
 
-   1. Tasarım aracının araç çubuğunda **giriş alanı** ' nı seçin. 
+   1. Tasarım aracının araç çubuğunda **giriş alanı**' nı seçin. 
 
    Daha fazla giriş parametresi eklemek için, önceki adımları her parametre için tekrarlayın.
 
 1. Yönteminizin ilk çıkış parametresini eklemek için aşağıdaki adımları izleyin:
 
-   1. **Yakalama** bölmesinde, 3270 öykünücü ekranında, yalnızca alanın içinde değil, ilk çıkış olarak kullanmak istediğiniz alanın tamamını seçin.
+   1. **Yakala** bölmesinde, 3270 öykünücü ekranında, yalnızca alanın içinde değil, ilk çıkış olarak istediğiniz alanın tamamını seçin.
 
       > [!TIP]
-      > Tüm alanları görüntülemek ve tüm alanını seçtiğinizden emin olmak için, **Görünüm** menüsünde **tüm alanlar** ' ı seçin.
+      > Tüm alanları görüntülemek ve tüm alanını seçtiğinizden emin olmak için, **Görünüm** menüsünde **tüm alanlar**' ı seçin.
 
-   1. Tasarım aracının araç çubuğunda **Çıkış alanı** ' nı seçin.
+   1. Tasarım aracının araç çubuğunda **Çıkış alanı**' nı seçin.
 
    Daha fazla çıkış parametresi eklemek için, önceki adımları her parametre için tekrarlayın.
 
@@ -291,8 +287,8 @@ Bu modda, gezinti planınızla ilişkili bir yöntemi tanımlarsınız. Her yön
    | Özellik adı | Olası değerler | 
    |---------------|-----------------|
    | **Veri türü** | Byte, tarih saat, Decimal, INT, Long, Short, String |
-   | **Alan dolgusu tekniği** | Parametreler, gerekirse boşluklar ile doldurarak bu doldurma türlerini destekler: <p><p>- **Yazın** : alana sırayla karakterleri girin. <p>- **Fill** : alanın içeriğini, gerekirse boşluklar ile doldurarak karakterler ile değiştirin. <p>- **Silinebilir. OfType** : alanı temizleyin ve ardından alana sırayla karakterler girin. |
-   | **Biçim dizesi** | Bazı parametre veri türleri bir biçim dizesi kullanır ve bu, 3270 bağlayıcısından metni ekrandan bir .NET veri türüne nasıl dönüştürmeye bildirir: <p><p>- **DateTime** : DateTime biçim dizesi, [.NET özel tarih ve saat biçimi dizelerini](/dotnet/standard/base-types/custom-date-and-time-format-strings)izler. Örneğin, Tarih `06/30/2019` biçim dizesini kullanır `MM/dd/yyyy` . <p>- **Decimal** : Decimal biçim dizesi [COBOL Picture yan tümcesini](https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasb/picture.htm)kullanır. Örneğin, sayı `100.35` biçim dizesini kullanır `999V99` . |
+   | **Alan dolgusu tekniği** | Parametreler, gerekirse boşluklar ile doldurarak bu doldurma türlerini destekler: <p><p>- **Yazın**: alana sırayla karakterleri girin. <p>- **Fill**: alanın içeriğini, gerekirse boşluklar ile doldurarak karakterler ile değiştirin. <p>- **Silinebilir. OfType**: alanı temizleyin ve ardından alana sırayla karakterler girin. |
+   | **Biçim dizesi** | Bazı parametre veri türleri bir biçim dizesi kullanır ve bu, 3270 bağlayıcısından metni ekrandan bir .NET veri türüne nasıl dönüştürmeye bildirir: <p><p>- **DateTime**: DateTime biçim dizesi, [.NET özel tarih ve saat biçimi dizelerini](/dotnet/standard/base-types/custom-date-and-time-format-strings)izler. Örneğin, Tarih `06/30/2019` biçim dizesini kullanır `MM/dd/yyyy` . <p>- **Decimal**: Decimal biçim dizesi [COBOL Picture yan tümcesini](https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasb/picture.htm)kullanır. Örneğin, sayı `100.35` biçim dizesini kullanır `999V99` . |
    |||
 
 ## <a name="save-and-view-metadata"></a>Meta verileri kaydetme ve görüntüleme
@@ -310,16 +306,16 @@ Ancak, örnek rap dosyasında yapılan değişiklikleri kaydetmeyi veya dosya ta
 
 ## <a name="test-your-method"></a>Yönteminizi test etme
 
-1. Yönteminizi canlı ana bilgisayara karşı çalıştırmak için, hala Yöntemler modundayken F5 tuşuna basın veya Tasarım aracının araç çubuğundan **Çalıştır** ' ı seçin.
+1. Yönteminizi canlı ana bilgisayara karşı çalıştırmak için, hala Yöntemler modundayken F5 tuşuna basın veya Tasarım aracının araç çubuğundan **Test**' i seçin.
 
    > [!TIP]
-   > Modları dilediğiniz zaman değiştirebilirsiniz. **Dosya** menüsünde **mod** ' u seçin ve istediğiniz modu seçin.
+   > Modları dilediğiniz zaman değiştirebilirsiniz. **Dosya** menüsünde **mod**' u seçin ve istediğiniz modu seçin.
 
-1. Parametrelerinizin değerlerini girin ve **Tamam** ' ı seçin.
+1. Parametrelerinizin değerlerini girin ve **Tamam**' ı seçin.
 
-1. Sonraki ekrana devam etmek için **İleri** 'yi seçin.
+1. Sonraki ekrana devam etmek için **İleri**' yi seçin.
 
-1. İşiniz bittiğinde, çıkış parametresi değerlerinizi gösteren **bitti** ' yi seçin.
+1. İşiniz bittiğinde, çıkış parametresi değerlerinizi gösteren **bitti**' yi seçin.
 
 <a name="add-metadata-integration-account"></a>
 
@@ -327,13 +323,13 @@ Ancak, örnek rap dosyasında yapılan değişiklikleri kaydetmeyi veya dosya ta
 
 Hazırsanız, tümleştirme hesabınıza yükleyebilmeniz için HIDX dosyasını oluşturun. 3270 tasarım aracı, HDX dosyasını, RAP Dosyanızı kaydettiğiniz yeni bir alt klasörde oluşturur.
 
-1. 3270 Tasarım aracının araç çubuğunda **kod oluştur** ' u seçin.
+1. 3270 tasarım aracında, **Araçlar** menüsünden **tanımlar oluştur**' u seçin. (Klavye: F6)
 
 1. RAP dosyanızı içeren klasöre gidin ve HIDX dosyanız üretildikten sonra aracın oluşturduğu alt klasörü açın. Aracın HIDX dosyası oluşturduğunu doğrulayın.
 
 1. [Azure Portal](https://portal.azure.com)oturum açın ve tümleştirme hesabınızı bulun.
 
-1. CDX Dosyanızı tümleştirme hesabınıza bir eşleme olarak ekleyin, [haritalar eklemek için bu benzer adımları izleyin](../logic-apps/logic-apps-enterprise-integration-liquid-transform.md), ancak harita türünü seçtiğinizde, **hidx** ' i seçin.
+1. CDX Dosyanızı tümleştirme hesabınıza bir eşleme olarak ekleyin, [haritalar eklemek için bu benzer adımları izleyin](../logic-apps/logic-apps-enterprise-integration-liquid-transform.md), ancak harita türünü seçtiğinizde, **hidx**' i seçin.
 
 Bu konunun ilerleyen kısımlarında, mantıksal uygulamanıza ilk kez bir IBM 3270 eylemi eklediğinizde, tümleştirme hesabınız ve ana bilgisayar sunucunuzun adları gibi bağlantı bilgilerini sağlayarak mantıksal uygulamanız ve ana bilgisayar sunucusu arasında bir bağlantı oluşturmanız istenir. Bağlantıyı oluşturduktan sonra, önceden eklemiş olan HIDX dosyanızı, çalıştırılacak yöntemi ve kullanılacak parametreleri seçebilirsiniz.
 
@@ -347,29 +343,28 @@ Tüm bu adımları tamamladığınızda, IBM ana bilgisayarınıza bağlanmak i�
 
 1. [Azure Portal](https://portal.azure.com)oturum açın ve daha önce açık değilse mantıksal uygulama Tasarımcısı 'nda mantıksal uygulamanızı açın.
 
-1. Eylem eklemek istediğiniz son adım altında **yeni adım** ' ı seçin ve **Eylem Ekle** ' yi seçin. 
+1. Eylem eklemek istediğiniz son adım altında **yeni adım** **>** **Eylem Ekle**' yi seçin. 
 
-1. Arama kutusunda **kuruluş** ' u seçin. Arama kutusuna filtreniz olarak "3270" yazın. Eylemler listesinden şu eylemi seçin: bir **TN3270 bağlantısı üzerinden bir anabilgisayar programı çalıştırır**
+1. Arama kutusunda **kuruluş**' u seçin. Arama kutusuna `3270` filtreniz olarak yazın. Eylemler listesinden, bir **TN3270 bağlantısı üzerinde bir anabilgisayar programı çalıştıran** adlı eylemi seçin
 
    ![3270 eylemini seçin](./media/connectors-create-api-3270/select-3270-action.png)
 
-   Adımlar arasında bir eylem eklemek için, işaretçinizi adımlar arasındaki oka taşıyın. 
-   Görüntülenen artı işaretini ( **+** ) seçin ve ardından **Eylem Ekle** ' yi seçin.
+   Adımlar arasında bir eylem eklemek için, işaretçinizi adımlar arasındaki oka taşıyın. Görüntülenen artı işaretini ( **+** ) seçin ve ardından **Eylem Ekle**' yi seçin.
 
-1. Henüz bağlantı yoksa, bağlantınız için gerekli bilgileri sağlayın ve **Oluştur** ' u seçin.
+1. Henüz bağlantı yoksa, bağlantınız için gerekli bilgileri sağlayın ve **Oluştur**' u seçin.
 
    | Özellik | Gerekli | Değer | Açıklama |
    |----------|----------|-------|-------------|
    | **Bağlantı adı** | Yes | <*bağlantı adı*> | Bağlantınızın adı |
    | **Tümleştirme hesabı KIMLIĞI** | Yes | <*Tümleştirme-hesap-adı*> | Tümleştirme hesabınızın adı |
-   | **Tümleştirme hesabı SAS URL 'SI** | Yes | <*Tümleştirme-hesap-SAS-URL*> | Tümleştirme hesabınızın Azure portal, tümleştirme hesabınızın ayarlarından oluşturabileceğiniz paylaşılan erişim Imzası (SAS) URL 'SI. <p>1. tümleştirme hesabınız menüsünde, **Ayarlar** altında **geri çağırma URL 'si** ' ni seçin. <br>2. sağ bölmedeki **oluşturulan geri çağırma URL 'si** değerini kopyalayın. |
+   | **Tümleştirme hesabı SAS URL 'SI** | Yes | <*Tümleştirme-hesap-SAS-URL*> | Tümleştirme hesabınızın Azure portal, tümleştirme hesabınızın ayarlarından oluşturabileceğiniz paylaşılan erişim Imzası (SAS) URL 'SI. <p>1. tümleştirme hesabınız menüsünde, **Ayarlar** altında **geri çağırma URL 'si**' ni seçin. <br>2. sağ bölmedeki **oluşturulan geri çağırma URL 'si** değerini kopyalayın. |
    | **Sunucu** | Yes | <*TN3270-sunucu adı*> | TN3270 hizmetinizin sunucu adı |
-   | **Bağlantı noktası** | Hayır | <*TN3270-sunucu bağlantı noktası*> | TN3270 sunucunuz tarafından kullanılan bağlantı noktası. Boş bırakılırsa, bağlayıcı `23` varsayılan değer olarak kullanılır. |
-   | **Cihaz Türü** | Hayır | <*IBM-Terminal-model*> | Benzetimi yapılacak IBM terminalinin model adı veya numarası. Boş bırakılırsa, bağlayıcı varsayılan değerleri kullanır. |
-   | **Kod Sayfası** | Hayır | <*kod-sayfa numarası*> | Ana bilgisayar için kod sayfası numarası. Boş bırakılırsa, bağlayıcı `37` varsayılan değer olarak kullanılır. |
-   | **Mantıksal birim adı** | Hayır | <*mantıksal birim adı*> | Konaktan istek yapılacak belirli mantıksal birim adı |
-   | **SSL etkinleştirilsin mi?** | Hayır | Açık veya kapalı | TLS şifrelemesini açın veya kapatın. |
-   | **Ana bilgisayar SSL sertifikası mı doğrula?** | Hayır | Açık veya kapalı | Sunucunun sertifikası için doğrulamayı açın veya devre dışı bırakın. |
+   | **Bağlantı noktası** | No | <*TN3270-sunucu bağlantı noktası*> | TN3270 sunucunuz tarafından kullanılan bağlantı noktası. Boş bırakılırsa, bağlayıcı `23` varsayılan değer olarak kullanılır. |
+   | **Cihaz Türü** | No | <*IBM-Terminal-model*> | Benzetimi yapılacak IBM terminalinin model adı veya numarası. Boş bırakılırsa, bağlayıcı varsayılan değerleri kullanır. |
+   | **Kod Sayfası** | No | <*kod-sayfa numarası*> | Ana bilgisayar için kod sayfası numarası. Boş bırakılırsa, bağlayıcı `37` varsayılan değer olarak kullanılır. |
+   | **Mantıksal birim adı** | No | <*mantıksal birim adı*> | Konaktan istek yapılacak belirli mantıksal birim adı |
+   | **SSL etkinleştirilsin mi?** | No | Açık veya kapalı | TLS şifrelemesini açın veya kapatın. |
+   | **Ana bilgisayar SSL sertifikası mı doğrula?** | No | Açık veya kapalı | Sunucunun sertifikası için doğrulamayı açın veya devre dışı bırakın. |
    ||||
 
    Örneğin:
@@ -405,7 +400,7 @@ Tüm bu adımları tamamladığınızda, IBM ana bilgisayarınıza bağlanmak i�
 
 1. Her adımın giriş ve çıkışlarını gözden geçirmek için bu adımı genişletin.
 
-1. Çıkışları gözden geçirmek için **Ham çıkışları göster** ' i seçin.
+1. Çıkışları gözden geçirmek için **Ham çıkışları göster**' i seçin.
 
 ## <a name="connector-reference"></a>Bağlayıcı başvurusu
 

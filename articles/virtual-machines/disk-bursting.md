@@ -8,21 +8,19 @@ ms.topic: conceptual
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: a8d1a69070628248fb710a614369ff9311252c05
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: dcdbf94e547581cb9ff885ac5896467abdf316ae
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93103039"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576202"
 ---
 # <a name="managed-disk-bursting"></a>Yönetilen disk patlaması
 [!INCLUDE [managed-disks-bursting](../../includes/managed-disks-bursting.md)]
 
 ## <a name="virtual-machine-level-bursting"></a>Sanal makine düzeyinde patlama
-VM düzeyinde burdıya desteği, bu desteklenen boyutlarda genel buluttaki tüm bölgelerde etkin: 
+VM düzeyi patlaması, üzerinde desteklendikleri tüm bölgelerde aşağıdaki VM serisinde etkinleştirilir:
 - [Lsv2 serisi](lsv2-series.md)
-
-VM düzeyi patlaması, aşağıdaki desteklenen boyutlarda de Orta Batı ABD de kullanılabilir:
 - [Dsv3 serisi](dv3-dsv3-series.md)
 - [Esv3 serisi](ev3-esv3-series.md)
 

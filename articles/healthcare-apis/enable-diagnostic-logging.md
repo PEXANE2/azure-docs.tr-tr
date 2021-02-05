@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.reviewer: dseven
 ms.author: cavoeg
 author: CaitlinV39
-ms.date: 11/01/2019
-ms.openlocfilehash: 54119585d4f1377b60b85fbad01fe90f097a304f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.date: 02/03/2021
+ms.openlocfilehash: 8dc87ae5b296f322d9d5a4d59c0a8c9b1c50d5da
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95905183"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99575456"
 ---
 # <a name="enable-diagnostic-logging-in-azure-api-for-fhir"></a>FHıR için Azure API 'de tanılama günlüğünü etkinleştirme
 
@@ -35,9 +35,9 @@ Bu makalede, FHıR için Azure API 'de tanılama günlüğünü etkinleştirmeyi
     2. Üçüncü taraf bir hizmet veya özel analitik çözüm tarafından giriş için **Olay Hub 'ına akış** . Bu adımı yapılandırmadan önce bir olay hub 'ı ad alanı ve Olay Hub 'ı ilkesi oluşturmanız gerekir.
     3. Azure Izleyici 'de Log Analytics çalışma alanına **akış** . Bu seçeneği seçmeden önce günlüklerinizi analiz çalışma alanınızı oluşturmanız gerekecektir.
 
-6. **Auditlogs** ve yakalamak istediğiniz ölçümleri seçin. FHıR için Azure IoT bağlayıcısını kullanıyorsanız, ölçümler için **hataları, trafiği ve gecikme süresini** seçtiğinizden emin olun. 
+6. **Auditlogs** ve/veya **allölçümler**' i seçin. Ölçümler hizmet adı, kullanılabilirlik, veri boyutu, toplam gecikme, toplam istek, toplam hata ve zaman damgası içerir.
 
-   :::image type="content" source="media/iot-metrics-export/diagnostic-setting-add.png" alt-text="IoT Connector2" lightbox="media/iot-metrics-export/diagnostic-setting-add.png":::
+   :::image type="content" source="media/diagnostic-logging/fhir-diagnostic-setting.png" alt-text="Azure FHıR Tanılama ayarları. AuditLogs ve/veya Allölçümler ' i seçin." lightbox="media/diagnostic-logging/fhir-diagnostic-setting.png":::
 
 7. **Kaydet**’i seçin
 

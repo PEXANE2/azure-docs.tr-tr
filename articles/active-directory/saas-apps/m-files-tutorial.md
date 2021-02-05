@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 0df9e4722136dafe94d1bfc84a7767e1e0144d69
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 552e5c2411889ee7f07265eb1cc35d98aed4d7c1
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95997231"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99574187"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-m-files"></a>Öğretici: d-dosyalarla Azure Active Directory tümleştirme
 
@@ -129,7 +129,7 @@ Azure AD çoklu oturum açmayı, e-dosyalarla birlikte yapılandırmak için aş
     >[!NOTE]
     >D-dosya masaüstü uygulamanız için SSO 'yu yapılandırmak istiyorsanız sonraki adımları izleyin. Yalnızca e-Files Web sürümü için SSO yapılandırmak istiyorsanız ek adım gerekmez.  
 
-1. Azure AD ile SSO 'yu etkinleştirmek üzere, e-dosya masaüstü uygulamasını yapılandırmak için sonraki adımları izleyin. E-dosyaları indirmek için, ı [-Files indirme](https://www.m-files.com/en/download-latest-version) sayfasına gidin.
+1. Azure AD ile SSO 'yu etkinleştirmek üzere, e-dosya masaüstü uygulamasını yapılandırmak için sonraki adımları izleyin. E-dosyaları indirmek için, ı [-Files indirme](https://www.m-files.com/customers/product-downloads/download-update-links/) sayfasına gidin.
 
 1. **D-Files masaüstü ayarları** penceresini açın. Ardından **Ekle**' ye tıklayın.
    
@@ -151,7 +151,7 @@ Azure AD çoklu oturum açmayı, e-dosyalarla birlikte yapılandırmak için aş
 
     e. **Sunucu üzerindeki kasa** için, sunucuda ilgili kasayı seçin.
  
-    f. **Tamam** düğmesine tıklayın.
+    f. **Tamam**'a tıklayın.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma 
 
@@ -176,7 +176,7 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**'a tıklayın.
+    d. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 

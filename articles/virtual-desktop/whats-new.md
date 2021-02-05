@@ -8,12 +8,12 @@ ms.author: helohr
 ms.reviewer: thhickli; darank
 manager: lizross
 ms.custom: references_regions
-ms.openlocfilehash: f34a5b957f64558b468c456686f0f86172630135
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 1deec49cfeca65628485ed105e0919f2c2b18b17
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99258804"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99575322"
 ---
 # <a name="whats-new-in-windows-virtual-desktop"></a>Windows sanal masaüstündeki yenilikler nelerdir?
 
@@ -56,7 +56,7 @@ Azure Resource Manager iç içe olan şablonda, networkSecurityGroupRules için 
 
 Önceki sürümdeki sorunları çözmek için FSLogix, sürüm 2009 HF_01 (2.9.7654.46150) yayımladık (2.9.7621.30127). Önceki sürümü kullanmayı durdurmanızı ve FSLogix ' i mümkün olan en kısa sürede güncelleştirmeniz önerilir.
 
-Daha fazla bilgi için bkz. [FSLogix 'teki](/fslogix/whats-new.md#fslogix-apps-2009-hf_01-29765446150)yenilikler içindeki sürüm notları.
+Daha fazla bilgi için bkz. [FSLogix 'teki](/fslogix/whats-new#fslogix-apps-2009-hf_01-29765446150)yenilikler içindeki sürüm notları.
 
 ### <a name="azure-portal-experience-improvements"></a>Azure portal deneyim iyileştirmeleri
 

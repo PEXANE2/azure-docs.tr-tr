@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: tisande
 ms.reviewer: sngun
-ms.openlocfilehash: 0bd572da9bba9048e2c8b9c4b426056620c4c265
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: ad9e6b99b396465c2cff95bd6ab340ef9d668085
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340711"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99575966"
 ---
 # <a name="stored-procedures-triggers-and-user-defined-functions"></a>Saklı yordamlar, Tetikleyiciler ve Kullanıcı tanımlı işlevler
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-Azure Cosmos DB JavaScript'in dil ile tümleşik, işlem tabanlı yürütmesini sağlar. Azure Cosmos DB içinde SQL API 'sini kullanırken, JavaScript dilinde **saklı yordamlar** , **Tetikleyiciler** ve **Kullanıcı tanımlı işlevler (UDF 'ler)** yazabilirsiniz. Veritabanı altyapısı içinde yürütülen mantığınızı JavaScript'te yazabilirsiniz. Azure Cosmos DB veya [Cosmos db SQL API Istemci SDK](how-to-use-stored-procedures-triggers-udfs.md)'larının [Azure Portal](https://portal.azure.com/), [JavaScript Dil tümleşik sorgu API 'sini](javascript-query-api.md) kullanarak Tetikleyiciler, saklı yordamlar ve UDF 'ler oluşturabilir ve bunları çalıştırabilirsiniz.
+Azure Cosmos DB JavaScript'in dil ile tümleşik, işlem tabanlı yürütmesini sağlar. Azure Cosmos DB içinde SQL API 'sini kullanırken, JavaScript dilinde **saklı yordamlar**, **Tetikleyiciler** ve **Kullanıcı tanımlı işlevler (UDF 'ler)** yazabilirsiniz. Veritabanı altyapısı içinde yürütülen mantığınızı JavaScript'te yazabilirsiniz. Azure Cosmos DB veya [Cosmos db SQL API Istemci SDK](how-to-use-stored-procedures-triggers-udfs.md)'larının [Azure Portal](https://portal.azure.com/), [JavaScript Dil tümleşik sorgu API 'sini](javascript-query-api.md) kullanarak Tetikleyiciler, saklı yordamlar ve UDF 'ler oluşturabilir ve bunları çalıştırabilirsiniz.
 
 ## <a name="benefits-of-using-server-side-programming"></a>Sunucu tarafı programlama kullanmanın avantajları
 
@@ -43,7 +43,7 @@ JavaScript 'te saklı yordamlar, Tetikleyiciler ve Kullanıcı tanımlı işlevl
 
 ## <a name="transactions"></a>İşlemler
 
-Tipik bir veritabanındaki işlem, tek bir mantıksal iş birimi olarak gerçekleştirilen işlem sırası olarak tanımlanabilir. Her işlem, **ACID Özellik garantisi** sağlar. ACID, şunu temsil eden iyi bilinen bir kısaltmadır: **a** -micity, **C** onsistency, **i** solation ve **D** uryeteneğinin. 
+Tipik bir veritabanındaki işlem, tek bir mantıksal iş birimi olarak gerçekleştirilen işlem sırası olarak tanımlanabilir. Her işlem, **ACID Özellik garantisi** sağlar. ACID, şunu temsil eden iyi bilinen bir kısaltmadır: **a**-micity, **C** onsistency, **i** solation ve **D** uryeteneğinin. 
 
 * Atomicity, bir işlem içinde gerçekleştirilen tüm işlemlerin tek bir birim olarak değerlendirildiğinden ve tümünün yürütüldüğünden ya da hiçbirinin olmadığından emin garanti eder. 
 
@@ -72,7 +72,7 @@ Saklı yordamlar ve Tetikleyiciler, her zaman bir Azure Cosmos kapsayıcısını
 
 ## <a name="bounded-execution"></a>Sınırlanmış yürütme
 
-Tüm Azure Cosmos DB işlemleri belirtilen zaman aşımı süresi içinde tamamlanmalıdır. Bu kısıtlama JavaScript işlevlerine saklı yordamlar, Tetikleyiciler ve Kullanıcı tanımlı işlevler için geçerlidir. İşlem bu zaman sınırı içinde tamamlanmazsa, işlem geri alınır.
+Tüm Azure Cosmos DB işlemleri belirtilen zaman aşımı süresi içinde tamamlanmalıdır. Saklı yordamların 5 saniyelik bir zaman aşımı sınırı vardır. Bu kısıtlama JavaScript işlevlerine saklı yordamlar, Tetikleyiciler ve Kullanıcı tanımlı işlevler için geçerlidir. İşlem bu zaman sınırı içinde tamamlanmazsa, işlem geri alınır.
 
 JavaScript işlevlerinizin zaman sınırı içinde bitmesini veya yürütmeyi toplu olarak çalıştırmaya devam etmek için devamlılık tabanlı bir model uygulayıp uygulamamayı sağlayabilirsiniz. Zaman sınırlarını işlemek üzere saklı yordamların ve tetikleyicilerin geliştirilmesini basitleştirmek için, Azure Cosmos kapsayıcısı kapsamındaki tüm işlevler (örneğin, öğe oluşturma, okuma, güncelleştirme ve silme), bu işlemin tamamlanıp tamamlanmayacağını temsil eden bir Boole değeri döndürür. Bu değer false ise, komut dosyası, yapılandırılan değerden daha fazla zaman veya sağlanan aktarım hızı kullandığından yordamın yürütmeyi sarması gerektiğini belirtir. İlk kabul edilmeyen depolama işleminden önce sıraya alınan işlemler, saklı yordam zamanında tamamlanırsa ve daha fazla istek sıraya almaz. Bu nedenle, komut dosyasının denetim akışını yönetmek için JavaScript 'in geri çağırma kuralı kullanılarak işlemler tek seferde sıraya alınmalıdır. Betikler sunucu tarafı bir ortamda yürütüldüğü için, bunlar kesinlikle yönetilir. Yürütme sınırlarını sürekli ihlal eden betikler etkin değil olarak işaretlenebilir ve yürütme sınırlarını dikkate almak için bunların yeniden oluşturulması gerekir.
 

@@ -10,17 +10,17 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 01/15/2021
 ms.custom: designer
-ms.openlocfilehash: 6bba5ad17cbb6f1ed72d06b37c6d6af9ebd26495
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.openlocfilehash: e93f912915303ce903a32ceba4f079593657a4ac
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98246477"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576066"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-designer"></a>Öğretici: tasarımcı ile makine öğrenimi modeli dağıtma
 
 
-Diğer kullanıcılara bunu kullanma şansı vermek için [öğreticinin birinci](tutorial-designer-automobile-price-train-score.md) kısmında geliştirilen tahmine dayalı modeli dağıtabilirsiniz. Birinci bölümde, modelinizi eğitilolursunuz. Şimdi, kullanıcı girişine göre yeni tahmin oluşturma zamanı. Öğreticinin bu bölümünde şunları yapmanız gerekir:
+Diğer kullanıcılara bunu kullanma şansı vermek için [öğreticinin birinci](tutorial-designer-automobile-price-train-score.md) kısmında geliştirilen tahmine dayalı modeli dağıtabilirsiniz. Birinci bölümde, modelinizi eğitilolursunuz. Şimdi, kullanıcı girişine göre tahmin oluşturma zamanı. Öğreticinin bu bölümünde şunları yapmanız gerekir:
 
 > [!div class="checklist"]
 > * Gerçek zamanlı bir çıkarım işlem hattı oluşturun.
@@ -28,7 +28,7 @@ Diğer kullanıcılara bunu kullanma şansı vermek için [öğreticinin birinci
 > * Gerçek zamanlı bitiş noktasını dağıtın.
 > * Gerçek zamanlı uç noktayı test edin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Tasarımcı 'da makine öğrenimi modelinin nasıl eğeceğinizi ve puanlandıralınacağını öğrenmek için [öğreticiden birinin bir kısmını](tutorial-designer-automobile-price-train-score.md) doldurun.
 
@@ -122,17 +122,19 @@ AKS hizmetiniz sağlamayı tamamladıktan sonra, dağıtımı tamamlamaya yönel
 > Ayrıca, gerçek zamanlı uç nokta ayarı kutusunda **işlem türü** Için **Azure Container Instance** ' ı seçerseniz **Azure Container Instance** 'a (aci) dağıtabilirsiniz.
 > Azure Container Instance, test veya geliştirme için kullanılır. 48 GB 'den az RAM gerektiren düşük ölçekli CPU tabanlı iş yükleri için ACI 'yi kullanın.
 
-## <a name="view-the-real-time-endpoint"></a>Gerçek zamanlı uç noktayı görüntüleme
+## <a name="test-the-real-time-endpoint"></a>Gerçek zamanlı uç noktayı test etme
 
 Dağıtım bittikten sonra, **uç noktalar** sayfasına giderek gerçek zamanlı uç noktanızı görüntüleyebilirsiniz.
 
 1. **Uç noktalar** sayfasında, dağıttığınız uç noktayı seçin.
 
-1. **Ayrıntılar** SEKMESINDE Rest URI, durum ve Etiketler gibi daha fazla bilgi görebilirsiniz.
+    **Ayrıntılar** SEKMESINDE Rest URI, Swagger tanımı, durum ve Etiketler gibi daha fazla bilgi görebilirsiniz.
 
-1. Kullanım sekmesinde **,** güvenlik anahtarlarını bulabilir ve kimlik doğrulama yöntemlerini ayarlayabilirsiniz.
+    Kullanım sekmesinde **,** örnek tüketim kodu, güvenlik anahtarları bulabilir ve kimlik doğrulama yöntemlerini ayarlayabilirsiniz.
 
-1. **Dağıtım günlükleri** sekmesinde, gerçek zamanlı uç noktanızın ayrıntılı dağıtım günlüklerini bulabilirsiniz. 
+    **Dağıtım günlükleri** sekmesinde, gerçek zamanlı uç noktanızın ayrıntılı dağıtım günlüklerini bulabilirsiniz.
+
+1. Uç noktanızı test etmek için **Test** sekmesine gidin. Buradan, test verileri girebilir ve **Test** bitiş noktanıza ait çıktıyı Doğrula ' yı seçebilirsiniz.
 
 Web hizmetinizi kullanma hakkında daha fazla bilgi için bkz. Web hizmeti [olarak dağıtılan bir modeli](how-to-consume-web-service.md) kullanma
 

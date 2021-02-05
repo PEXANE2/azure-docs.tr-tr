@@ -12,21 +12,21 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 06a6a42724eb172a77079b94f2cf50afb8e9cdf1
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 29aeca30e1fbdd28d3f69597d902a9b714056cd5
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93357326"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99575932"
 ---
-# <a name="grant-locally-managed-partner-accounts-access-to-cloud-resources-using-azure-ad-b2b-collaboration"></a>Azure AD B2B işbirliğini kullanarak bulut kaynaklarına yerel olarak yönetilen iş ortağı hesapları erişimi verme
+# <a name="grant-locally-managed-partner-accounts-access-to-cloud-resources-using-azure-ad-b2b-collaboration"></a>Azure AD B2B işbirliğini kullanarak yerel olarak yönetilen iş ortağı hesaplarına bulut kaynakları için erişim verme
 
 Azure Active Directory (Azure AD) öncesinde, şirket içi kimlik sistemlerine sahip kuruluşların şirket içi dizininde geleneksel olarak yönetilen iş ortağı hesapları vardır. Böyle bir kuruluşta, uygulamaları Azure AD 'ye taşımaya başladığınızda, iş ortaklarınızın ihtiyaç duydukları kaynaklara erişebildiklerinden emin olmak istersiniz. Kaynakların şirket içinde mi yoksa bulutta mı olduğuna bakılmaksızın. Ayrıca, iş ortağı kullanıcılarınızın hem şirket içi hem de Azure AD kaynakları için aynı oturum açma kimlik bilgilerini kullanmasını istiyorsunuz. 
 
 Şirket içi dizininizde dış iş ortaklarınız için hesaplar oluşturursanız (örneğin, partners.contoso.com etki alanında gülşen Moran adında bir dış Kullanıcı için "wmoran" adlı bir oturum açma adı olan bir hesap oluşturursanız, bu hesapları artık buluta eşitleyebilirsiniz. Özellikle, iş ortağı hesaplarını buluta eşitlemek için Azure AD Connect kullanabilirsiniz. Bu, UserType = konuğa sahip bir kullanıcı hesabı oluşturur. Bu, iş ortağı kullanıcılarınızın, yerel hesaplarıyla aynı kimlik bilgilerini kullanarak bulut kaynaklarına erişmesini sağlar ve bunlara gereksinimlerinden daha fazla erişim izni vermez.
 
 > [!NOTE]
-> Ayrıca bkz. [dahili KULLANıCıLARı B2B işbirliğine davet](invite-internal-users.md) etme (genel önizleme özelliği). Bu özellikle, şirket içi dizininizdeki hesaplarını buluta eşitlemenizden bağımsız olarak, dahili Konuk kullanıcılarını B2B işbirliğinin kullanımına davet edebilirsiniz. Kullanıcı B2B işbirliği kullanma davetini kabul ettikten sonra, kendilerine erişmesini istediğiniz kaynaklarda oturum açmak için kendi kimliklerini ve kimlik bilgilerini kullanabilir. Parola korumanız veya hesap yaşam döngülerini yönetmeniz gerekmez.
+> Ayrıca bkz. [dahili KULLANıCıLARı B2B işbirliğiyle davet](invite-internal-users.md)etme. Bu özellikle, şirket içi dizininizdeki hesaplarını buluta eşitlemenizden bağımsız olarak, dahili Konuk kullanıcılarını B2B işbirliğinin kullanımına davet edebilirsiniz. Kullanıcı B2B işbirliği kullanma davetini kabul ettikten sonra, kendilerine erişmesini istediğiniz kaynaklarda oturum açmak için kendi kimliklerini ve kimlik bilgilerini kullanabilir. Parola korumanız veya hesap yaşam döngülerini yönetmeniz gerekmez.
 
 ## <a name="identify-unique-attributes-for-usertype"></a>UserType için benzersiz öznitelikleri tanımla
 
@@ -48,6 +48,6 @@ Uygulama yönergeleri için bkz. [UserType eşitlemesini etkinleştirme](../hybr
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Karma kuruluşlar için B2B işbirliği Azure Active Directory](hybrid-organizations.md)
-- [Şirket içi uygulamalarınıza Azure AD erişimi için B2B kullanıcıları verme](hybrid-cloud-to-on-premises.md)
+- [Azure AD’de B2B kullanıcılarına şirket içi uygulamalarınıza erişim verme](hybrid-cloud-to-on-premises.md)
 - Azure AD Connect genel bir bakış için bkz. Şirket [içi dizinlerinizi Azure Active Directory Ile tümleştirme](../hybrid/whatis-hybrid-identity.md).
 

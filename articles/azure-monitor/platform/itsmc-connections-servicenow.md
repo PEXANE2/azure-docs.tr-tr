@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 12/21/2020
-ms.openlocfilehash: cc4f961c399e9ac5e853085106924584eb3935d0
-ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
+ms.openlocfilehash: 222257f5045984a71c2aee9de83b5fa420306728
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99223398"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99573424"
 ---
 # <a name="connect-servicenow-with-it-service-management-connector"></a>ServiceNow 'ı BT Hizmet Yönetimi Bağlayıcısı bağlama
 
@@ -123,7 +123,7 @@ Bir ServiceNow bağlantısı oluşturmak için aşağıdaki yordamı kullanın.
    | --- | --- |
    | **Bağlantı adı**   | ISMC ile bağlanmak istediğiniz ServiceNow örneği için bir ad girin. Bu adı daha sonra, ıTSM iş öğelerini yapılandırdığınızda ve ayrıntılı analizi görüntülerken Log Analytics ' de kullanırsınız. |
    | **İş ortağı türü**   | **ServiceNow**' ı seçin. |
-   | **Sunucu URL'si**   | ISMC 'a bağlamak istediğiniz ServiceNow örneğinin URL 'sini girin. URL, suffix *. ServiceNow.com* ile desteklenen bir SaaS sürümüne işaret etmelidir (örneğin, https://XXXXX.service-now.com/) .|
+   | **Sunucu URL'si**   | ISMC 'a bağlamak istediğiniz ServiceNow örneğinin URL 'sini girin. URL, suffix *. ServiceNow.com* ile desteklenen bir SaaS sürümüne işaret etmelidir (örneğin `https://XXXXX.service-now.com/` ).|
    | **Kullanıcı adı**   | ISMC bağlantısını desteklemek için ServiceNow uygulamasında oluşturduğunuz tümleştirme Kullanıcı adı ' nı girin.|
    | **Parola**   | Bu kullanıcı adıyla ilişkili parolayı girin. **Note**: Kullanıcı adı ve parola yalnızca kimlik doğrulama belirteçleri oluşturmak için kullanılır. Bunlar, ıSMC hizmetinin içinde herhangi bir yerde depolanmaz.  |
    | **İstemci kimliği**   | Daha önce oluşturduğunuz OAuth2 kimlik doğrulaması için kullanmak istediğiniz istemci KIMLIĞINI girin. İstemci KIMLIĞI ve gizli anahtar oluşturma hakkında daha fazla bilgi için bkz. [OAuth ayarlama](https://old.wiki/index.php/OAuth_Setup). |

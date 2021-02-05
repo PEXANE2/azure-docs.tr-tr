@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 1abb857c9f03be502db02099383c6fe0b5110461
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 2e0cd424b71ff828ed0d8ad4c16d3333cf8a1c45
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98736827"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99575881"
 ---
 # <a name="language-support-for-computer-vision"></a>Görüntü İşleme için dil desteği
 
@@ -25,50 +25,98 @@ Görüntü İşleme bazı özellikleri birden çok dili destekler; Burada bahsed
 
 Görüntü İşleme OCR API 'Leri çeşitli dilleri destekler. Bir dil kodu belirtmenizi gerektirmez. Daha fazla bilgi için bkz. [optik karakter tanıma (OCR)](concept-recognizing-text.md) .
 
-|Dil| Dil kodu | OCR APı 'SI | 3,0 ve 3,1 ' i okuyun | V 3.2-Preview. 1 ' i okuyun |
+|Dil| Dil kodu | OCR APı 'SI | 3.0/3.1 'i okuyun | V 3.2 önizlemesini oku |
 |:-----|:----:|:-----:|:---:|:---:|
+|Afrikaner|`af`| | |✔ |
+|Arnavutça |`sq`| | |✔ |
 |Arapça | `ar`|✔ | | |
+|Asturyanca |`ast`| | |✔ |
+|Baskça  |`eu`| | |✔ |
+|Güneş   |`bi`| | |✔ |
+|Breton dili    |`br`| | |✔ |
+|Katalanca    |`ca`| | |✔ |
+|Cebuano    |`ceb`| | |✔ |
+|Chamorro  |`ch`| | |✔ |
 |Basitleştirilmiş Çince | `zh-Hans`|✔ | |✔ |
-|Geleneksel Çince | `zh-Hant`|✔ | | |
-|Çekçe | `cs` |✔ | | |
-|Danca | `da` |✔ | | |
+|Geleneksel Çince | `zh-Hant`|✔ | |✔ |
+|Kernevekçe     |`kw`| | |✔ |
+|Korsika dili      |`co`| | |✔ |
+|Kritiki Tatarcası (Latin)  |`crh`| | |✔ |
+|Çekçe | `cs` |✔ | |✔ |
+|Danca | `da` |✔ | |✔ |
 |Felemenkçe | `nl` |✔ |✔ |✔ |
 |İngilizce | `en` |✔ |✔ |✔ |
-|Fince | `fi` |✔ | | |
+|Estonya Dili  |`crh`| | |✔ |
+|Fiji Adaları dili |`fj`| | |✔ |
+|Filipino  |`fil`| | |✔ |
+|Fince | `fi` |✔ | |✔ |
 |Fransızca | `fr` |✔ |✔ |✔ |
+|Furlanca  | `fur` | | |✔ |
+|Galiçya Dili   | `gl` | | |✔ |
 |Almanca | `de` |✔ |✔ |✔ |
+|Gilbertese    | `gil` | | |✔ |
 |Yunanca | `el` |✔ | | |
-|Macarca | `hu` |✔ | | |
+|Grönland dili   | `kl` | | |✔ |
+|Haian Creole  | `ht` | | |✔ |
+|Hani dili  | `hni` | | |✔ |
+|Hmong DAW (Latin) | `mww` | | |✔ |
+|Macarca | `hu` |✔ | | ✔ |
+|Endonezce   | `id` | | |✔ |
+|Interlingua  | `ia` | | |✔ |
+|İnuit dili (Latin)  | `iu` | | |✔ |
+|İrlandaca    | `ga` | | |✔ |
 |İtalyanca | `it` |✔ |✔ |✔ |
 |Japonca | `ja` |✔ | |✔ |
-|Korece | `ko` |✔ | | |
+|Cava Dili | `jv` | | |✔ |
+|Kabuverdianu dili | `kea` | | |✔ |
+|Kachin (Latin) | `kac` | | |✔ |
+|Kara-Kalpak | `kaa` | | |✔ |
+|Kashubian | `csb` | | |✔ |
+|Hasi  | `kha` | | |✔ |
+|Korece | `ko` |✔ | |✔ |
+|Kiçe dili  | `quc` | | |✔ |
+|Kürtçe (Latin) | `kur` | | |✔ |
+|Lüksemburgca  | `lb` | | |✔ |
+|Malay dili (Latin)  | `ms` | | |✔ |
+|Manks  | `gv` | | |✔ |
+|Neapolitan   | `nap` | | |✔ |
 |Norveççe | `nb` |✔ | | |
-|Lehçe | `pl` |✔ | | |
+|Norveççe | `no` | | |✔ |
+|Oksitan dili | `oc` | | |✔ |
+|Lehçe | `pl` |✔ | |✔ |
 |Portekizce | `pt` |✔ |✔ |✔ |
 |Rumence | `ro` |✔ | | |
+|Romanş dili  | `rm` | | |✔ |
 |Rusça | `ru` |✔ | | |
+|Scots  | `sco` | | |✔ |
+|İskoçya Gaelcesi  | `gd` | | |✔ |
 |Sırpça (Kiril) | `sr-Cyrl` |✔ | | |
 |Sırpça (Latin) | `sr-Latn` |✔ | | |
 |Slovakça | `sk` |✔ | | |
+|Slovence  | `slv` | | |✔ |
 |İspanyolca | `es` |✔ |✔ |✔ |
-|İsveççe | `sw` |✔ | | |
-|Türkçe | `tr` |✔ | | |
+|Swahili (Latin)  | `sw` | | |✔ |
+|İsveççe | `sv` |✔ | |✔ |
+|Tatarca (Latin)  | `tat` | | |✔ |
+|Tetum    | `tet` | | |✔ |
+|Türkçe | `tr` |✔ | |✔ |
+|Sol Sorb dili  | `hsb` | | |✔ |
+|Özbekçe (Latin)     | `uz` | | |✔ |
+|Volapük   | `vo` | | |✔ |
+|Walser dili    | `wae` | | |✔ |
+|Batı Frisian | `fy` | | |✔ |
+|Yucatec Maya | `yua` | | |✔ |
+|Zhuang | `za` | | |✔ |
+|Zulu dili  | `zu` | | |✔ |
 
 ## <a name="image-analysis"></a>Görüntü analizi
 
 [Analyze-Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b) API 'sindeki bazı eylemler, sorgu parametresiyle belirtilen diğer dillerde sonuç döndürebilir `language` . Diğer Eylemler, belirtilen dilin ne olduğuna bakmaksızın sonuçları Ingilizce olarak döndürür ve bazıları desteklenmeyen diller için bir özel durum oluşturur. Eylemler `visualFeatures` ve sorgu parametreleriyle birlikte belirtilir `details` ; görüntü analizine sahip yapabileceğiniz tüm eylemlerin bir listesi için bkz. [genel bakış](overview.md) .
 
-|Dil | Dil kodu | Kategoriler | Etiketler | Açıklama | Yetişkin | Markalar | Renk | Yüzler | ImageType | Nesneler | Ünlü Kişiler | Bölümler |
+|Dil | Dil kodu | Kategoriler | Etiketler | Description | Yetişkin | Markalar | Renk | Yüzler | ImageType | Nesneler | Ünlü Kişiler | Bölümler |
 |:---|:---:|:----:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 |Çince | `zh`    | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
 |İngilizce | `en`   | ✔ | ✔| ✔|✔|✔|✔|✔|✔|✔|✔|✔|
 |Japonca | `ja`   | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
 |Portekizce | `pt` | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
 |İspanyolca | `es`    | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
-
-## <a name="next-steps"></a>Sonraki adımlar
-
-Bu kılavuzda bahsedilen Görüntü İşleme özelliklerini kullanmaya başlayın.
-
-* [Yerel görüntüyü çözümleme (REST)](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/ComputerVision/REST/CSharp-analyze.md)
-* [Yazdırılan metni Ayıkla (REST)](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/ComputerVision/REST/CSharp-print-text.md)

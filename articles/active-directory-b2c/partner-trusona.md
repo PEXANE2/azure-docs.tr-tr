@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a0d5b369e1c143b3df4157329bcf7d3a3f7142d7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 99368da8b4018e93ad537e4722ffefd476e61291
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87489478"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99573696"
 ---
 # <a name="integrating-trusona-with-azure-active-directory-b2c"></a>Truslonwith Azure Active Directory B2C tümleştirme
 
@@ -28,7 +28,7 @@ Başlamak için şunlar gerekir:
 
 * Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
 * Azure aboneliğinize bağlı [bir Azure AD B2C kiracısı](tutorial-create-tenant.md) .
-* Trusona 'da bir [deneme hesabı](https://www.trusona.com/aadb2c)
+* Trusona 'da bir [deneme hesabı](https://www.trusona.com/)
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
@@ -53,7 +53,7 @@ Bu senaryoda, Trusona, passwordless kimlik doğrulamasını etkinleştirmek içi
 
 ## <a name="onboard-with-trusona"></a>Trusona ekleme
 
-1. Truslonaccount oluşturmak ve başlamak için [formu](https://www.trusona.com/aadb2c) doldurun.
+1. Truslonaccount oluşturmak ve başlamak için [formu](https://www.trusona.com/) doldurun.
 
 2. Truslonmobile uygulamasını App Store 'dan indirin. Uygulamayı yükleyip e-postanızı kaydedin.
 
@@ -67,7 +67,7 @@ Bu senaryoda, Trusona, passwordless kimlik doğrulamasını etkinleştirmek içi
 
 7. **OpenID Connect tümleştirmesi oluştur**' u seçin.
 
-8. Tercih ettiğiniz bir **ad** belirtin ve **Istemci yeniden yönlendirme Konağı alanında**daha önce sağlanmış olan etki alanı bilgilerini (örneğin, Contoso) kullanın.  
+8. Tercih ettiğiniz bir **ad** belirtin ve **Istemci yeniden yönlendirme Konağı alanında** daha önce sağlanmış olan etki alanı bilgilerini (örneğin, Contoso) kullanın.  
 
    > [!NOTE]
    > Azure Active Directory ilk etki alanı adı Istemci yeniden yönlendirme Konağı olarak kullanılır.
@@ -127,7 +127,7 @@ Bu senaryoda, Trusona, passwordless kimlik doğrulamasını etkinleştirmek içi
 
 Şimdi, B2C kimlik sağlayıcılarınızda listelenen **Yeni bir OpenID Connect kimlik sağlayıcısı** olarak truslonsee görmeniz gerekir.
 
-1. Azure AD B2C kiracınızda **ilkeler**altında **Kullanıcı akışları**' nı seçin.
+1. Azure AD B2C kiracınızda **ilkeler** altında **Kullanıcı akışları**' nı seçin.
 
 1. **Yeni Kullanıcı akışı**' nı seçin.
 
@@ -135,14 +135,14 @@ Bu senaryoda, Trusona, passwordless kimlik doğrulamasını etkinleştirmek içi
 
 1. İlkeniz için bir **ad** girin.
 
-1. **Kimlik sağlayıcıları** bölümünde yeni oluşturduğunuz **Truslonıdentity sağlayıcınızı**seçin.
+1. **Kimlik sağlayıcıları** bölümünde yeni oluşturduğunuz **Truslonıdentity sağlayıcınızı** seçin.
 
    > [!NOTE]
    > Trusloni doğal olarak Multi-Factor olduğundan, Multi-Factor Authentication 'ı devre dışı bırakmak en iyisidir.
 
 1. **Oluştur**’u seçin.
 
-1. **Kullanıcı öznitelikleri ve talepler**altında **daha fazla göster**' i seçin. Formunda, önceki bölümde kimlik sağlayıcınızın kurulumu sırasında belirttiğiniz en az bir öznitelik seçin.
+1. **Kullanıcı öznitelikleri ve talepler** altında **daha fazla göster**' i seçin. Formunda, önceki bölümde kimlik sağlayıcınızın kurulumu sırasında belirttiğiniz en az bir öznitelik seçin.
 
 1. **Tamam**’ı seçin.  
 

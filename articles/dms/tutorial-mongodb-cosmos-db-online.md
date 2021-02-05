@@ -11,13 +11,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: seo-nov-2020
 ms.topic: tutorial
-ms.date: 09/25/2019
-ms.openlocfilehash: fed568d67c688a8c2adab979eb68eaf384a72172
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.date: 02/03/2021
+ms.openlocfilehash: 359f268f69918ccfd9fe34a28c3f8d1c79988393
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98539283"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99575631"
 ---
 # <a name="tutorial-migrate-mongodb-to-azure-cosmos-dbs-api-for-mongodb-online-using-dms"></a>Öğretici: DMS kullanarak MongoDB 'yi Azure Cosmos DB için MongoDB online 'a geçirme
 
@@ -48,7 +48,7 @@ Bu öğreticide, Azure veritabanı geçiş hizmeti 'ni kullanarak Azure sanal ma
 
 Bu makalede MongoDB 'nin MongoDB için API 'sine Azure Cosmos DB yönelik çevrimiçi geçiş açıklanmaktadır. Çevrimdışı bir geçiş için bkz. [DMS kullanarak MongoDB 'yi Azure Cosmos DB Için MongoDB 'ye geçirme](tutorial-mongodb-cosmos-db.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için aşağıdakileri yapmanız gerekir:
 
@@ -68,6 +68,18 @@ Bu öğreticiyi tamamlamak için aşağıdakileri yapmanız gerekir:
 * Sanal ağ ağ güvenlik grubu (NSG) kurallarınızın şu iletişim bağlantı noktalarını engellemediğinden emin olun: 53, 443, 445, 9354 ve 10000-20000. Sanal ağ NSG trafik filtrelemesi hakkında daha fazla bilgi için ağ [güvenlik grupları ile ağ trafiğini filtreleme](../virtual-network/virtual-network-vnet-plan-design-arm.md)makalesine bakın.
 * Azure veritabanı geçiş hizmeti 'nin kaynak MongoDB sunucusuna erişmesine izin vermek için Windows Güvenlik duvarınızı açın, varsayılan olarak TCP bağlantı noktası 27017 ' dir.
 * Kaynak veritabanınızın önünde bir güvenlik duvarı gereci kullanırken, Azure veritabanı geçiş hizmeti 'nin geçiş için kaynak veritabanına erişmesine izin vermek üzere güvenlik duvarı kuralları eklemeniz gerekebilir.
+
+## <a name="configure-azure-cosmos-db-server-side-retries-for-efficient-migration"></a>Verimli geçiş için Azure Cosmos DB sunucu tarafı yeniden denemelerini yapılandırma
+
+MongoDB 'den geçiş yapan müşteriler kaynak idare özelliğinden Azure Cosmos DB avantajdan faydalanabilir. Azure Cosmos DB, bu istek, sağlanan RU/s kapsayıcısını aşarsa geçiş sırasında verilen bir veri geçiş hizmeti isteğini kısıtlayabilir daha sonra bu isteğin yeniden denenilmesi gerekir. Veri geçiş hizmeti yeniden denemeler gerçekleştirebilir, ancak veri geçiş hizmeti ve Azure Cosmos DB arasındaki ağ atlamada yer alan gidiş dönüş süresi, bu isteğin genel yanıt süresini etkiler. Kısıtlanmış istekler için yanıt süresini iyileştirmek, geçiş için gereken toplam süreyi kısaltabilir. *Sunucu tarafı yeniden deneme* özelliği Azure Cosmos DB, hizmetin kısıtlama hata kodlarını kesmesini ve daha sonra istek yanıt sürelerini önemli ölçüde iyileştirerek çok daha düşük bir gidiş dönüş süresi ile yeniden denemesini sağlar.
+
+Sunucu tarafı yeniden deneme özelliğini Azure Cosmos DB portalının *Özellikler* dikey penceresinde bulabilirsiniz.
+
+![MongoDB Server-Side yeniden deneme özelliğinin ekran görüntüsü.](media/tutorial-mongodb-to-cosmosdb-online/mongo-server-side-retry-feature.png)
+
+*Devre dışıysa*, aşağıda gösterildiği gibi etkinleştirmenizi öneririz
+
+![MongoDB Server-Side yeniden deneme etkinleştirme ekran görüntüsü.](media/tutorial-mongodb-to-cosmosdb-online/mongo-server-side-retry-enable.png)
 
 ## <a name="register-the-microsoftdatamigration-resource-provider"></a>Microsoft.DataMigration kaynak sağlayıcısını kaydetme
 

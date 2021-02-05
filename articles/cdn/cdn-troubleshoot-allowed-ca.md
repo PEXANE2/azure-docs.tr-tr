@@ -1,30 +1,28 @@
 ---
-title: Azure CDN 'de özel HTTPS 'yi etkinleştirmek için izin verilen CA
+title: Özel HTTPS 'yi etkinleştirmek için izin verilen CA
+titleSuffix: Azure Content Delivery Network
 description: Özel bir etki alanında HTTPS 'yi etkinleştirmek için kendi sertifikanızı kullanıyorsanız, bu sertifikayı oluşturmak için izin verilen bir sertifika yetkilisini (CA) kullanmanız gerekir.
 services: cdn
-documentationcenter: ''
 author: asudbring
-manager: danielgi
-editor: ''
-ms.assetid: ''
 ms.service: azure-cdn
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 10/18/2018
+ms.date: 02/04/2021
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 29b6cb25e021e86ce6663b4db5c89217aaf70a37
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f98e28c89fa70831108cfbbbaca6e2f316d1b039
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84887396"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99573407"
 ---
-# <a name="allowed-certificate-authorities-for-enabling-custom-https-on-azure-cdn"></a>Azure CDN 'de özel HTTPS 'yi etkinleştirmek için izin verilen sertifika yetkilileri
+# <a name="allowed-certificate-authorities-for-enabling-custom-https"></a>Özel HTTPS 'yi etkinleştirmek için izin verilen sertifika yetkilileri
 
-Azure Content Delivery Network (CDN) özel etki alanı için [kendi sertifikanızı kullanarak https özelliğini etkinleştirdiğinizde](cdn-custom-ssl.md?tabs=option-2-enable-https-with-your-own-certificate#tlsssl-certificates) belirli sertifika gereksinimlerini karşılamanız gerekir. **Microsoft profilinden Azure CDN Standard** , aşağıdaki listede onaylanan sertifika YETKILILERINDEN (CA) birinden bir sertifika gerektirir. Onaylanmamış bir CA 'dan bir sertifika veya otomatik olarak imzalanan bir sertifika kullanılıyorsa, istek reddedilir. Verizon profillerden Verizon ve **Azure CDN Premium** **'dan Azure CDN Standart** , geçerli bir CA 'dan geçerli herhangi bir sertifikayı kabul eder.
+Bir Azure CDN (Content Delivery Network) özel etki alanı için [kendi sertifikanızı kullanarak https özelliğini etkinleştirdiğinizde](cdn-custom-ssl.md?tabs=option-2-enable-https-with-your-own-certificate#tlsssl-certificates) belirli sertifika gereksinimleri gereklidir. 
+
+* **Microsoft profilinden Azure CDN Standard** , aşağıdaki listede onaylanan sertifika YETKILILERINDEN (CA) birinden bir sertifika gerektirir. Onaylanmamış bir CA 'dan bir sertifika veya otomatik olarak imzalanan bir sertifika kullanılıyorsa, istek reddedilir. 
+
+* Verizon profillerden Verizon ve **Azure CDN Premium** **'dan Azure CDN Standart** , geçerli bir CA 'dan geçerli herhangi bir sertifikayı kabul eder. Verizon profilleri otomatik olarak imzalanan sertifikaları desteklemez.
 
 > [!NOTE]
 > Özel etki alanı HTTPS özelliğini etkinleştirmek için kendi sertifikanızı kullanma seçeneği, **Akamai profillerinden Azure CDN Standart** *için kullanılamaz.* 

@@ -4,21 +4,23 @@ description: Bu makalede, Azure portal, PowerShell veya REST API 'Lerini kullana
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 11/30/2020
+ms.date: 2/4/2021
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 9fdd6b6a195d0c6d4c4bf0489a037cb138a23a42
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 62acb526a247362b17c4dfd4e26c52760deecd71
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96351733"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99573509"
 ---
 # <a name="manage-server-administrators"></a>Sunucu yöneticilerini yönetme
 
 Sunucu yöneticileri, sunucunun bulunduğu kiracı için Azure Active Directory (Azure AD) içinde geçerli bir Kullanıcı, hizmet sorumlusu veya güvenlik grubu olmalıdır. Sunucu yöneticileri 'ni yönetmek için sunucu Azure portal, SSMS, PowerShell veya REST API sunucu özellikleri ' nde sunucunuz için **Analysis Services yöneticileri** kullanabilirsiniz. 
 
 Bir **güvenlik grubu** eklerken kullanın `obj:groupid@tenantid` . Hizmet sorumluları, sunucu yöneticisi rolüne eklenen güvenlik gruplarında desteklenmez.
+
+Sunucu Yöneticisi rolüne hizmet sorumlusu ekleme hakkında daha fazla bilgi edinmek için bkz. [Sunucu Yöneticisi rolüne hizmet sorumlusu ekleme](analysis-services-addservprinc-admins.md).
 
 Sunucu Güvenlik Duvarı etkinse, Sunucu Yöneticisi istemci bilgisayar IP adresleri bir güvenlik duvarı kuralına dahil olmalıdır. Daha fazla bilgi için bkz. [sunucu güvenlik duvarını yapılandırma](analysis-services-qs-firewall.md).
 

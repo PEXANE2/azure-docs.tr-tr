@@ -10,16 +10,31 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 01/13/2021
 ms.author: pafarley
-ms.openlocfilehash: f10319de67a105b4b5e4641c4171ccd0a6e63440
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: ec340e3371b0fe337354006b1284a21420a11f3a
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99490886"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99573645"
 ---
 # <a name="whats-new-in-computer-vision"></a>Görüntü İşleme yenilikleri
 
 Hizmette nelerin yeni olduğunu öğrenin. Bu öğeler sürüm notları, videolar, blog gönderileri ve diğer bilgi türleri olabilir. Hizmette güncel kalmak için bu sayfaya yer işareti ekleyin.
+
+## <a name="february-2021"></a>Şubat 2021
+
+### <a name="read-api-v32-public-preview-with-ocr-support-for-73-languages"></a>73 dilleri için OCR desteğiyle API v 3.2 genel önizlemesini okuyun
+Görüntü İşleme Read API v 3.2 genel önizlemesi şu özellikleri içerir:
+* Basitleştirilmiş ve geleneksel Çince, Japonca, Korece ve büyük Latin dilleri gibi toplam [73 dili](./language-support.md#optical-character-recognition-ocr) için OCR.
+* Metin çizgilerinin sol sağ ve üst alta (varsayılan) sırada mı yoksa daha doğal bir okuma düzeninde mi çıkış olacağını seçin.
+* Her metin satırı çıktısı için, kendi el yazısı stilinin (yalnızca Latin dilleri) yanı olmadığını belirtin.
+* Birden çok sayfalı belge için yalnızca seçili sayfalar veya sayfa aralığı için metin ayıkla.
+
+Daha fazla bilgi için [okuma API 'sine genel bakış](concept-recognizing-text.md) bölümüne bakın.
+
+> [!div class="nextstepaction"]
+> [Read API v 3.2 genel önizlemeyi kullanın](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-2/operations/5d986960601faab4bf452005)
+
 
 ## <a name="january-2021"></a>Ocak 2021
 

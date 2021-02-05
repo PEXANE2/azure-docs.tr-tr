@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 11/02/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 37bd7d91dfe9e4b9e620f89e7504331d8f631a6a
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 4851d06ffedaacb441d28cae24d7d32bfe1c611c
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98602129"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576270"
 ---
 # <a name="tutorial-coding-with-the-azure-digital-twins-apis"></a>Öğretici: Azure dijital TWINS API 'Leri ile kodlama
 
@@ -25,7 +25,7 @@ Azure dijital TWINS ile çalışan geliştiriciler, Azure dijital TWINS hizmeti 
 > * Kaynakları temizleme
 > * Sonraki adımlar
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğretici, kurulum ve proje çalışması için komut satırını kullanır. Bu nedenle, alýþtýrmalar üzerinde gezinmek için herhangi bir kod düzenleyicisini kullanabilirsiniz.
 
@@ -253,12 +253,16 @@ Komut pencerenizde, programını ile çalıştırın `dotnet run` . Çıktıda b
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/fullClientApp.cs":::
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
- 
-Bu öğreticide kullanılan örnek, bir sonraki öğreticide yeniden kullanılabilir, [*öğretici: örnek bir istemci uygulamasıyla ilgili temel bilgileri keşfedebilir*](tutorial-command-line-app.md). Sonraki öğreticiye devam etmeyi planlıyorsanız, burada ayarladığınız Azure dijital TWINS örneğini koruyabilirsiniz.
+
+Bu Öğreticiyi tamamladıktan sonra, ne yapmak istediğinize bağlı olarak kaldırmak istediğiniz kaynakları seçebilirsiniz.
+
+* **Sonraki öğreticiye devam etmeyi planlıyorsanız**, bu öğreticide kullanılan örnek bir sonraki adımda yeniden kullanılabilir. Burada ayarladığınız Azure dijital TWINS kaynaklarını tutabilir ve bu bölümün geri kalanını atlayabilirsiniz.
+
+[!INCLUDE [digital-twins-cleanup-clear-instance.md](../../includes/digital-twins-cleanup-clear-instance.md)]
  
 [!INCLUDE [digital-twins-cleanup-basic.md](../../includes/digital-twins-cleanup-basic.md)]
 
-Son olarak, yerel makinenizde oluşturduğunuz proje klasörünü silin.
+Yerel makinenizden proje klasörünü de silmek isteyebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

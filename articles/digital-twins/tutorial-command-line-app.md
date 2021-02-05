@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 5/8/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: db85bf19c1b040fea1ed2f5d6dcf904288366c7f
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 5658bfcf0bf877db1dd001c2af58a40f3b027bd9
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98050247"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576253"
 ---
 # <a name="tutorial-explore-azure-digital-twins-with-a-sample-client-app"></a>Öğretici: örnek bir istemci uygulamasıyla Azure dijital TWINS 'i araştırma
 
@@ -133,7 +133,7 @@ Content-Length: 223
 Content-Type: application/json; charset=utf-8
 ```
 
-### <a name="create-digital-twins"></a>Dijital TWINS oluşturma
+### <a name="create-digital-twins"></a>Dijital ikizleri oluşturma
 
 Artık bazı modeller Azure dijital TWINS örneğinizi karşıya yüklediğinize göre, model tanımlarına göre [**dijital TWINS**](concepts-twins-graph.md) oluşturabilirsiniz. Dijital TWINS, iş ortamınızdaki varlıkları, bir gruptaki algılayıcılar gibi şeyler, bir bina içindeki odalar veya bir otomobilde ışıklar temsil eder. 
 
@@ -274,12 +274,15 @@ Azure dijital TWINS 'in ana özelliği, ortamınız hakkında soruları yanıtla
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Bu öğreticideki proje, bir sonraki öğreticinin temelini oluşturur, [*öğretici: uçtan uca bir çözümü bağlama*](tutorial-end-to-end.md). Sonraki öğreticiye devam etmeyi planlıyorsanız, bu Azure dijital TWINS örneğini ve yapılandırılmış örnek uygulamayı kullanmaya devam etmek için ayarladığınız kaynakları koruyabilirsiniz.
-* Bu durumda, örnek uygulama `DeleteAllTwins` ve `DeleteAllModels` komutlarını kullanarak, örneğiniz içindeki TWINS 'leri ve modelleri temizleyebilirsiniz. Bu, bir sonraki öğreticiye yönelik bir temiz kurşun işlem sağlar.
+Bu Öğreticiyi tamamladıktan sonra, ne yapmak istediğinize bağlı olarak kaldırmak istediğiniz kaynakları seçebilirsiniz.
+
+* **Sonraki öğreticiye devam etmeyi planlıyorsanız**, bu Azure dijital TWINS örneğini ve yapılandırılmış örnek uygulamayı bir sonraki öğreticide kullanmaya devam etmek için burada ayarladığınız kaynakları koruyabilirsiniz
+
+* **Azure dijital TWINS örneğini kullanmaya devam etmek, ancak tüm modellerini, TWINS ve ilişkilerini temizlemek** istiyorsanız, örnek uygulama `DeleteAllTwins` ve komutlarını kullanarak, `DeleteAllModels` örneğiniz içindeki TWINS ve modelleri temizleyebilirsiniz. Bu, bir sonraki öğreticiye yönelik bir temiz kurşun işlem sağlar.
 
 [!INCLUDE [digital-twins-cleanup-basic.md](../../includes/digital-twins-cleanup-basic.md)]
 
-Son olarak, indirdiğiniz proje örnek klasörünü yerel makinenize silin.
+Yerel makinenizden proje klasörünü de silmek isteyebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar 
 

@@ -7,31 +7,30 @@ ms.topic: conceptual
 ms.date: 01/14/2021
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 991a335207fc29cef7b243d7e520dd5f62ff691f
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.openlocfilehash: 82a8da9d2663b03d89ad0819ec6d918bebaf5f5e
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99226126"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99574793"
 ---
 # <a name="set-up-a-staging-environment-in-azure-spring-cloud"></a>Azure yay bulutu 'nda hazırlama ortamı ayarlama
 
 **Bu makale şu şekilde geçerlidir:** ✔️ Java
 
-Bu makalede, Azure Spring Cloud 'daki mavi yeşil dağıtım modelini kullanarak bir hazırlama dağıtımının nasıl ayarlanacağı açıklanır. Mavi/yeşil dağıtım, yeni (yeşil) sürüm dağıtıldığı sırada mevcut (mavi) sürümü canlı tutma prensibine dayanan bir Azure DevOps Sürekli Teslim düzenidir. Bu makalede, üretim dağıtımını doğrudan değiştirmeden bu hazırlama dağıtımını üretime nasıl koyabileceğiniz gösterilmektedir.
+Bu makalede, Azure Spring Cloud 'daki mavi-yeşil dağıtım modelini kullanarak bir hazırlama dağıtımının nasıl ayarlanacağı açıklanır. Mavi-yeşil dağıtım, var olan (mavi) bir sürümün canlı tutulması, yeni bir (yeşil) diğeri dağıtılmasından yararlanan bir Azure DevOps sürekli teslim modelidir. Bu makalede, üretim dağıtımını değiştirmeden bu hazırlama dağıtımını üretime nasıl koyabileceğiniz gösterilir.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* *Standart* **fiyatlandırma katmanıyla** Azure yay bulutu örneği.
-* Çalışan bir uygulama.  Bkz. [hızlı başlangıç: Ilk Azure Spring Cloud uygulamanızı dağıtma](spring-cloud-quickstart.md).
-* Azure CLı [ASC uzantısı](https://docs.microsoft.com/cli/azure/azure-cli-extensions-overview)
+* *Standart* **fiyatlandırma katmanında** Azure yay bulutu örneği.
+* Azure CLı [Azure yay bulutu uzantısı](https://docs.microsoft.com/cli/azure/azure-cli-extensions-overview)
 
-Bu örnek için farklı bir uygulama kullanmak istiyorsanız, uygulamanın genel kullanıma açık bir bölümünde basit bir değişiklik yapmanız gerekir.  Bu değişiklik, üretimden hazırlama dağıtımınızı farklılaştırır.
+Bu makale, Spring başlatıcıdan oluşturulan bir uygulamayı kullanır. Bu örnek için farklı bir uygulama kullanmak istiyorsanız, hazırlama dağıtımınızı üretimden ayırt etmek için uygulamanın herkese açık bir bölümünde basit bir değişiklik yapmanız gerekir.
 
 >[!TIP]
 > Azure Cloud Shell, bu makaledeki yönergeleri çalıştırmak için kullanabileceğiniz, ücretsiz bir etkileşimli kabuktur.  Git, JDK, Maven ve Azure CLı 'nin en son sürümleri de dahil olmak üzere, yaygın, önceden yüklenmiş Azure araçlarına sahiptir. Azure aboneliğinizde oturum açtıysanız [Azure Cloud Shell](https://shell.azure.com)başlatın.  Daha fazla bilgi edinmek için bkz. [Azure Cloud Shell Genel Bakış](../cloud-shell/overview.md).
 
-Azure Spring Cloud 'da hazırlama ortamı ayarlamak için, sonraki bölümlerdeki yönergeleri izleyin.
+Azure Spring Cloud 'da mavi yeşil dağıtımlar ayarlamak için, sonraki bölümlerdeki yönergeleri izleyin.
 
 ## <a name="install-the-azure-cli-extension"></a>Azure CLı uzantısını yükler
 
@@ -40,18 +39,77 @@ Aşağıdaki komutu kullanarak Azure CLı için Azure yay bulutu uzantısını y
 ```azurecli
 az extension add --name spring-cloud
 ```
-    
+## <a name="prepare-app-and-deployments"></a>Uygulama ve dağıtımları hazırlama
+Uygulamayı derlemek için şu adımları izleyin:
+1. [Bu yapılandırmayla](https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.3.4.RELEASE&packaging=jar&jvmVersion=1.8&groupId=com.example&artifactId=hellospring&name=hellospring&description=Demo%20project%20for%20Spring%20Boot&packageName=com.example.hellospring&dependencies=web,cloud-eureka,actuator,cloud-starter-sleuth,cloud-starter-zipkin,cloud-config-client)Spring başlatıcısı 'nı kullanarak örnek uygulama için kod oluşturun.
+
+2. Kodu indirin.
+3. Aşağıdaki kaynak dosyası HelloController. Java dosyasını klasöre ekleyin `\src\main\java\com\example\hellospring\` .
+```java
+package com.example.hellospring; 
+import org.springframework.web.bind.annotation.RestController; 
+import org.springframework.web.bind.annotation.RequestMapping; 
+
+@RestController 
+
+public class HelloController { 
+
+@RequestMapping("/") 
+
+  public String index() { 
+
+      return "Greetings from Azure Spring Cloud!"; 
+  } 
+
+} 
+```
+4. . Jar dosyasını oluşturun:
+```azurecli
+mvn clean packge -DskipTests
+```
+5. Azure Spring Cloud örneğiniz üzerinde uygulamayı oluşturun:
+```azurecli
+az spring-cloud app create -n demo -g <resourceGroup> -s <Azure Spring Cloud instance> --is-public
+```
+6. Uygulamayı Azure Spring Cloud 'a dağıtın:
+```azurecli
+az spring-cloud app deploy -n demo -g <resourceGroup> -s <Azure Spring Cloud instance> --jar-path target\hellospring-0.0.1-SNAPSHOT.jar
+```
+7. Hazırlama dağıtımınızın kodunu değiştirin:
+```java
+package com.example.hellospring; 
+import org.springframework.web.bind.annotation.RestController; 
+import org.springframework.web.bind.annotation.RequestMapping; 
+
+@RestController 
+
+public class HelloController { 
+
+@RequestMapping("/") 
+
+  public String index() { 
+
+      return "Greetings from Azure Spring Cloud! THIS IS THE GREEN DEPLOYMENT"; 
+  } 
+
+} 
+```
+8. . Jar dosyasını yeniden oluşturun:
+```azurecli
+mvn clean packge -DskipTests
+```
+9. Yeşil dağıtımı oluşturun: 
+```azurecli
+az spring-cloud app deployment create -n green --app demo -g <resourceGroup> -s <Azure Spring Cloud instance> --jar-path target\hellospring-0.0.1-SNAPSHOT.jar 
+```
+
 ## <a name="view-apps-and-deployments"></a>Uygulamaları ve dağıtımları görüntüleme
 
 Aşağıdaki yordamları kullanarak dağıtılan uygulamaları görüntüleyin.
 
 1. Azure portal Azure Spring Cloud örneğinize gidin.
 
-1. Sol gezinti bölmesinden **dağıtımlar**' a açın.
-
-    [![Dağıtım-kullanımdan kaldırıldı](media/spring-cloud-blue-green-staging/deployments.png)](media/spring-cloud-blue-green-staging/deployments.png)
-
-1. Hizmet örneğiniz için uygulamaları görüntülemek için "uygulamalar" dikey penceresini açın.
+1. Sol gezinti bölmesinden, hizmet örneğiniz için uygulamaları görüntülemek için "uygulamalar" dikey penceresini açın.
 
     [![Uygulamalar-Pano](media/spring-cloud-blue-green-staging/app-dashboard.png)](media/spring-cloud-blue-green-staging/app-dashboard.png)
 
@@ -59,43 +117,16 @@ Aşağıdaki yordamları kullanarak dağıtılan uygulamaları görüntüleyin.
 
     [![Uygulamalar-genel bakış](media/spring-cloud-blue-green-staging/app-overview.png)](media/spring-cloud-blue-green-staging/app-overview.png)
 
-1. Uygulamanın tüm dağıtımlarını görmek için **dağıtımlar** dikey penceresini açın. Dağıtım Kılavuzu, dağıtımın üretim veya hazırlık olduğunu gösterir.
+1. Uygulamanın tüm dağıtımlarını görmek için **dağıtımları** açın. Kılavuz hem üretim hem de hazırlama dağıtımlarını gösterir.
 
-    [![Dağıtımlar panosu](media/spring-cloud-blue-green-staging/deployments-dashboard.png)](media/spring-cloud-blue-green-staging/deployments-dashboard.png)
+    [![Uygulama/dağıtımlar panosu](media/spring-cloud-blue-green-staging/deployments-dashboard.png)](media/spring-cloud-blue-green-staging/deployments-dashboard.png)
 
-1. Dağıtıma genel bakış ' ı görüntülemek için dağıtımın adına tıklayabilirsiniz. Bu durumda, tek dağıtım *varsayılan* olarak adlandırılır.
-
-    [![Dağıtıma genel bakış](media/spring-cloud-blue-green-staging/deployments-overview.png)](media/spring-cloud-blue-green-staging/deployments-overview.png)
-    
-
-## <a name="create-a-staging-deployment"></a>Hazırlama dağıtımı oluşturma
-
-1. Yerel geliştirme ortamınızda uygulamanızda küçük bir değişiklik yapın. Bunun yapılması iki dağıtımı kolayca ayırt etmenizi sağlar. Jar paketini derlemek için aşağıdaki komutu çalıştırın: 
-
-    ```console
-    mvn clean package -DskipTests
-    ```
-
-1. Azure CLı 'de yeni bir dağıtım oluşturun ve bunu hazırlama dağıtım adı "yeşil" olarak verin.
-
-    ```azurecli
-    az spring-cloud app deployment create -g <resource-group-name> -s <service-instance-name> --app <appName> -n green --jar-path gateway/target/gateway.jar
-    ```
-
-1. CLı dağıtımı başarıyla tamamlandıktan sonra **uygulama panosundan** uygulama sayfasına erişin ve sol taraftaki **dağıtımlar** sekmesinde tüm örneklerinizi görüntüleyin.
-
-   [![Yeşil dağıtıldıktan sonra dağıtımlar panosu](media/spring-cloud-blue-green-staging/deployments-dashboard-2.png)](media/spring-cloud-blue-green-staging/deployments-dashboard-2.png)
-
-  
-> [!NOTE]
-> Doğrulama işlemi tamamlanmadan önce trafiğin Bu dağıtıma yönlendirilmemesi için bulma durumu *OUT_OF_SERVICE* .
-
-## <a name="verify-the-staging-deployment"></a>Hazırlama dağıtımını doğrulama
-
-Yeşil hazırlama geliştirmenin çalıştığını doğrulamak için:
-1. **dağıtımlar** ' a gidin ve `green` **hazırlama dağıtımına** tıklayın.
-1. **Genel bakış** sayfasında, **Test uç noktasına** tıklayın.
-1. Bu, yaptığınız değişiklikleri gösteren hazırlama derlemesini açar.
+1. Geçerli olarak dağıtılan uygulamayı açmak için URL 'ye tıklayın.
+    ![URL dağıtıldı](media/spring-cloud-blue-green-staging/running-blue-app.png)
+1. Varsayılan uygulamayı görmek için **durum** sütununda **Üretim** ' a tıklayın.
+    ![Varsayılan çalıştırma](media/spring-cloud-blue-green-staging/running-default-app.png)
+1. Hazırlama uygulamasını görmek için **durum** sütununda **hazırlama** ' ya tıklayın.
+    ![Hazırlama çalışıyor](media/spring-cloud-blue-green-staging/running-staging-app.png)
 
 >[!TIP]
 > * CSS dosyasının doğru bir şekilde yüklendiğinden emin olmak için, test uç noktanızın eğik çizgiyle (/) bitdiğini doğrulayın.  
@@ -105,20 +136,18 @@ Yeşil hazırlama geliştirmenin çalıştığını doğrulamak için:
 > Yapılandırma sunucusu ayarları hem hazırlama ortamınız hem de üretim için geçerlidir. Örneğin, `server.servlet.context-path` yapılandırma sunucusundaki uygulama ağ geçidiniz için bağlam yolunu () bir *somepath* olarak ayarlarsanız, yeşil dağıtımınızın yolu "https:// \<username> : \<password> @ \<cluster-name> . test.azureapps.io/Gateway/Green/somepath/..." olarak değişir.
  
  Bu noktada herkese açık uygulama ağ geçidinizi ziyaret ederseniz, eski sayfayı yeni değiştirmeksizin görmeniz gerekir.
-    
+
 ## <a name="set-the-green-deployment-as-the-production-environment"></a>Yeşil dağıtımı üretim ortamı olarak ayarlama
 
-1. Hazırlama ortamınızda yaptığınız değişikliği doğruladıktan sonra üretime gönderebilirsiniz. **Dağıtım yönetimine** dönün ve şu anda içinde olan uygulamayı seçin `Production` .
+1. Hazırlama ortamınızda yaptığınız değişikliği doğruladıktan sonra üretime gönderebilirsiniz. **Uygulamalar** / **dağıtımları** sayfasında, şu anda içinde olan uygulamayı seçin `Production` .
 
-1. **Kayıt durumundan** sonra üç noktaya tıklayın ve üretim derlemesini olarak ayarlayın `staging` .
+1. Yeşil dağıtımın **kayıt durumundan** sonra üç noktaya tıklayın ve hazırlama derlemesini üretime ayarlayın. 
 
-   [![Dağıtımlar hazırlama dağıtımını ayarladı](media/spring-cloud-blue-green-staging/set-staging-deployment.png)](media/spring-cloud-blue-green-staging/set-staging-deployment.png)
+   [![Üretimi hazırlama olarak ayarla](media/spring-cloud-blue-green-staging/set-staging-deployment.png)](media/spring-cloud-blue-green-staging/set-staging-deployment.png)
 
-1. **Dağıtım yönetimi** sayfasına dönün. `green`Dağıtımını olarak ayarlayın `production` . Ayar tamamlandığında `green` dağıtım durumlarınızın gösterilmesi gerekir.  Bu artık çalışan üretim yapıdır.
+1. Şimdi uygulamanın URL 'SI değişikliklerinizi görüntülemelidir.
 
-   [![Dağıtımlar hazırlama dağıtım sonucunu ayarla](media/spring-cloud-blue-green-staging/set-staging-deployment-result.png)](media/spring-cloud-blue-green-staging/set-staging-deployment-result.png)
-
-1. Uygulamanın URL 'SI değişikliklerinizi görüntülemelidir.
+   ![Şimdi dağıtımda hazırlanıyor](media/spring-cloud-blue-green-staging/new-production-deployment.png)
 
 >[!NOTE]
 > Yeşil dağıtımı üretim ortamı olarak ayarladıktan sonra, önceki dağıtım hazırlama dağıtımı olur.

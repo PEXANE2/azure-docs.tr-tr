@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 9/24/2020
 ms.topic: quickstart
 ms.service: digital-twins
-ms.openlocfilehash: f6bd6b13ab4a2e654bdabc86355f2c3388abed31
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 9d09bca246938f972a212f7ee71f03a618e16ac4
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98050536"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99575699"
 ---
 # <a name="quickstart---explore-a-sample-azure-digital-twins-scenario-using-adt-explorer"></a>Hızlı başlangıç-ADT Explorer kullanarak örnek bir Azure dijital TWINS senaryosunu araştırma
 
@@ -306,11 +306,15 @@ Bu hızlı başlangıçta, sıcaklık güncelleştirmesini el ile yaptınız. Az
 
 Bu hızlı başlangıçta çalışmayı kaydırmak için, önce çalışan konsol uygulamasını sonlandırın. Bu eylem, tarayıcıda ADT gezgin uygulamasıyla bağlantıyı kapatır. Artık canlı verileri tarayıcıda görüntüleyemeyeceksiniz. Tarayıcı sekmesini kapatabilirsiniz.
 
-Azure dijital TWINS öğreticilerine devam etmeyi planlıyorsanız, söz konusu makaleler için bu hızlı başlangıçta örneği yeniden kullanabilirsiniz ve bunu kaldırmanız gerekmez.
+Ardından, daha sonra yapmak istediğiniz seçeneğe bağlı olarak kaldırmak istediğiniz kaynakları seçebilirsiniz.
+
+* **Azure dijital TWINS öğreticilerine devam etmeyi planlıyorsanız**, söz konusu makaleler için bu hızlı başlangıçta örneği yeniden kullanabilirsiniz ve bunu kaldırmanız gerekmez.
+
+[!INCLUDE [digital-twins-cleanup-clear-instance.md](../../includes/digital-twins-cleanup-clear-instance.md)]
  
 [!INCLUDE [digital-twins-cleanup-basic.md](../../includes/digital-twins-cleanup-basic.md)]
 
-Son olarak, **Azure_Digital_Twins__ADT__explorer**, yerel makinenize indirdiğiniz proje örnek klasörünü silin. Hem daraltılmış hem de daraltılmış sürümleri silmeniz gerekebilir.
+Yerel makinenizden proje klasörünü de silmek isteyebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

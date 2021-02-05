@@ -13,12 +13,12 @@ ms.date: 10/27/2020
 ms.author: hirsin
 ms.reviewer: mmacy, hirsin
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: 4a798443560f62673ef8fcf0bce970a66071d011
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: e1dcd52660ff43a93c6a170912fea5a5847fe9d3
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98232395"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99575763"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Microsoft Identity platform erişim belirteçleri
 
@@ -241,7 +241,7 @@ Uygulamanızın iş mantığı bu adımı dikte edecek, bazı yaygın yetkilendi
 * Kullanarak çağıran istemcinin kimlik doğrulama durumunu doğrulama `appidacr` -ortak ISTEMCILERIN API 'nizi çağırma izni yoksa 0 olmaması gerekir.
 * `nonce`Belirtecin yeniden çalındığını doğrulamak için geçmiş talepler listesine göz atın.
 * ' `tid` In API 'nizi çağırması için izin verilen bir kiracı ile eşleştiğinden emin olun.
-* `acr`Kullanıcının MFA gerçekleştirdi olduğunu doğrulamak için talebi kullanın. Bu, [koşullu erişim](../conditional-access/overview.md)kullanılarak zorunlu kılınmalıdır.
+* `amr`Kullanıcının MFA gerçekleştirdi olduğunu doğrulamak için talebi kullanın. Bu, [koşullu erişim](../conditional-access/overview.md)kullanılarak zorunlu kılınmalıdır.
 * `roles`Erişim belirtecinde veya taleplerini istemiş olmanız durumunda, `groups` kullanıcının bu eylemi yapmasına izin verilen grupta olduğunu doğrulayın.
   * Örtük akış kullanılarak alınan belirteçler için, büyük olasılıkla belirtece sığamayacak kadar büyük olduğu için bu verilerin [Microsoft Graph](https://developer.microsoft.com/graph/) sorgulanmak zorunda olacaksınız.
 

@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/06/2019
 ms.author: wolfma
-ms.openlocfilehash: 650ce0cc9586118b30593767c6a3ddb92f494ac3
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: df6f7311613057c445ae714b8b11240d0d5be14b
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95972663"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99569466"
 ---
 ### <a name="standard-and-neural-voices"></a>Standart ve sinir sesleri
 
@@ -18,9 +18,9 @@ Bölgeye/uç noktaya göre standart ve sinir sesinden kullanılabilirliği öğr
 | Region | Uç Nokta | Standart sesler | Sinir sesleri |
 |--------|----------|-----------------|---------------|
 | Doğu Avustralya | `https://australiaeast.tts.speech.microsoft.com/cognitiveservices/v1` | Yes | Yes |
-| Brezilya Güney | `https://brazilsouth.tts.speech.microsoft.com/cognitiveservices/v1` | Yes | Hayır |
+| Güney Brezilya | `https://brazilsouth.tts.speech.microsoft.com/cognitiveservices/v1` | Yes | Hayır |
 | Orta Kanada | `https://canadacentral.tts.speech.microsoft.com/cognitiveservices/v1` | Yes | Yes |
-| Orta ABD | `https://centralus.tts.speech.microsoft.com/cognitiveservices/v1` | Yes | Hayır |
+| Central US | `https://centralus.tts.speech.microsoft.com/cognitiveservices/v1` | Yes | Hayır |
 | Doğu Asya | `https://eastasia.tts.speech.microsoft.com/cognitiveservices/v1` | Yes | Hayır |
 | Doğu ABD | `https://eastus.tts.speech.microsoft.com/cognitiveservices/v1` | Yes | Yes |
 | Doğu ABD 2 | `https://eastus2.tts.speech.microsoft.com/cognitiveservices/v1` | Yes | Hayır |
@@ -48,9 +48,9 @@ Bölgeye/uç noktaya göre standart ve sinir sesinden kullanılabilirliği öğr
 | Region | Uç Nokta |
 |--------|----------|
 | Doğu Avustralya | `https://australiaeast.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId}` |
-| Brezilya Güney | `https://brazilsouth.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId}` |
+| Güney Brezilya | `https://brazilsouth.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId}` |
 | Orta Kanada | `https://canadacentral.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId}` |
-| Orta ABD | `https://centralus.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId}` |
+| Central US | `https://centralus.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId}` |
 | Doğu Asya | `https://eastasia.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId}` |
 | Doğu ABD | `https://eastus.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId}` |
 | Doğu ABD 2 | `https://eastus2.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId}` |
@@ -67,3 +67,14 @@ Bölgeye/uç noktaya göre standart ve sinir sesinden kullanılabilirliği öğr
 | West Europe | `https://westeurope.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId}` |
 | Batı ABD | `https://westus.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId}` |
 | Batı ABD 2 | `https://westus2.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId}` |
+
+### <a name="custom-neural-voice"></a>Özel sinir sesi
+
+Aşağıdaki tabloda, özel sinir ses özellikleri için bölgesel destek ayrıntıları verilmiştir.
+
+| Öne çıkan özelliği | Desteklenen bölgeler |
+|---|---|
+| Ses modeli barındırma | Doğu ABD, Batı ABD 2, Orta Güney ABD, Güneydoğu Asya, UK Güney, Batı Avrupa Avustralya Doğu |
+| Gerçek zamanlı karakterler | Doğu ABD, Batı ABD 2, Orta Güney ABD, Güneydoğu Asya, UK Güney, Batı Avrupa Avustralya Doğu |
+| Uzun ses karakterleri | Doğu ABD, Batı Avrupa, UK Güney, Güneydoğu Asya, Hindistan Orta |
+| Özel sinir eğitimi | Doğu ABD, UK Güney |

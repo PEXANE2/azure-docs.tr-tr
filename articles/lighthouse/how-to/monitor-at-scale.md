@@ -1,14 +1,14 @@
 ---
 title: Temsil edilen kaynakları ölçeklendirmeye göre izleme
 description: Azure Izleyici günlüklerini, yönettiğiniz müşteri kiracılarında ölçeklenebilir bir şekilde nasıl verimli bir şekilde kullanacağınızı öğrenin.
-ms.date: 02/01/2021
+ms.date: 02/02/2021
 ms.topic: how-to
-ms.openlocfilehash: b214f63fba9a5d13aac0f4bf86ce0810f16f0c9c
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: 8847c2e5ee4986d35ad676440720b150794003e8
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99509478"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99575915"
 ---
 # <a name="monitor-delegated-resources-at-scale"></a>Temsil edilen kaynakları ölçeklendirmeye göre izleme
 
@@ -49,9 +49,9 @@ Hangi ilkelerin dağıtılacağını belirledikten sonra, [bunları uygun ölçe
 
 Yönettiğiniz müşteri kiracılarında Temsilcili abonelikler için [Uyarı](../../azure-monitor/platform/alerts-overview.md) görüntüleyebilirsiniz.
 
-Uyarıları birden fazla müşteri genelinde otomatik olarak yenilemek için, uyarıları filtrelemek üzere bir [Azure Kaynak Grafiği](../../governance/resource-graph/overview.md) sorgusu kullanın. Sorguyu panonuza sabitleyebilir ve tüm uygun müşterileri ve abonelikleri seçebilirsiniz.
+Yönetim kiracınızdan, Azure portal veya API 'Ler ile yönetim araçları aracılığıyla [etkinlik günlüğü uyarılarını oluşturabilir, görüntüleyebilir ve yönetebilirsiniz](../../azure-monitor/platform/alerts-activity-log.md) .
 
-Aşağıdaki örnek sorgu önem derecesi 0 ve 1 uyarıları görüntüleyecektir, her 60 dakikada bir yenileme yapılır.
+Uyarıları birden fazla müşteri genelinde otomatik olarak yenilemek için, uyarıları filtrelemek üzere bir [Azure Kaynak Grafiği](../../governance/resource-graph/overview.md) sorgusu kullanın. Sorguyu panonuza sabitleyebilir ve tüm uygun müşterileri ve abonelikleri seçebilirsiniz. Örneğin, aşağıdaki sorguda önem derecesi 0 ve 1 uyarı görüntülenir, her 60 dakikada bir yenileme yapılır.
 
 ```kusto
 alertsmanagementresources

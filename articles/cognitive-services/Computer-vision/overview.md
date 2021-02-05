@@ -15,12 +15,12 @@ ms.custom:
 - cog-serv-seo-aug-2020
 - contperf-fy21q2
 keywords: bilgisayar görme, görüntü işleme uygulamaları, görüntü işleme hizmeti
-ms.openlocfilehash: 62d82388d975f36c422f7eb1e9feff8ce2725d54
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 69edbf558b4bd452c67478bac828bfde26be5a70
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033298"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99575949"
 ---
 # <a name="what-is-computer-vision"></a>Görüntü İşleme nedir?
 
@@ -32,7 +32,7 @@ Azure Görüntü İşleme Hizmeti, resimleri işleyen ve ilgilendiğiniz görsel
 
 ## <a name="optical-character-recognition-ocr"></a>Optik Karakter Tanıma (OCR)
 
-Görüntü İşleme, [optik karakter tanıma (OCR)](concept-recognizing-text.md) özelliklerini içerir. Görüntü ve belgelerden yazdırılmış ve el yazısı metinleri ayıklamak için yeni okuma API 'sini kullanabilirsiniz. En son modelleri kullanır ve çeşitli yüzeyler ve arka planlar üzerinde metinle birlikte kullanılır. Bunlar arasında alış irsaliyeleri, posterleri, kartvizitler, mektuplar ve beyaz tahtalar bulunur. İki OCR API 'si, yazdırılmış metnin [birkaç dilde](./language-support.md)ayıklanarak desteklenir. Başlamak için [hızlı](./quickstarts-sdk/client-library.md) başlangıcı izleyin.
+Görüntü İşleme, [optik karakter tanıma (OCR)](concept-recognizing-text.md) özelliklerini içerir. Görüntü ve belgelerden yazdırılmış ve el yazısı metinleri ayıklamak için yeni okuma API 'sini kullanabilirsiniz. Derin öğrenme tabanlı modeller kullanır ve çeşitli yüzeyler ve arka planlar üzerinde metinle birlikte çalışmaktadır. Bunlar iş belgeleri, faturalar, tahsilatlar, posterler, iş kartları, mektuplar ve beyaz tahtalar içerir. OCR API 'Leri, yazdırılan metnin [birkaç dilde](./language-support.md)ayıklanarak desteklenir. Başlamak için [hızlı](./quickstarts-sdk/client-library.md) başlangıcı izleyin.
 
 ## <a name="computer-vision-for-digital-asset-management"></a>Dijital varlık yönetimi için Görüntü İşleme
 

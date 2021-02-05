@@ -7,12 +7,12 @@ ms.service: load-balancer
 ms.topic: article
 ms.date: 04/22/2020
 ms.author: errobin
-ms.openlocfilehash: 38054d983b0a9f01f396b7379fec37de452d03b7
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 3752a36d22f879b95b02bd49436be78212fe56a2
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99051881"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576050"
 ---
 # <a name="load-balancer-frequently-asked-questions"></a>Load Balancer sık sorulan sorular
 
@@ -52,9 +52,11 @@ Hayır, bu mümkün değildir.
 ## <a name="what-is-the-maximum-data-throughput-that-can-be-achieved-via-an-azure-load-balancer"></a>Azure Load Balancer aracılığıyla elde edilebilecekleri maksimum veri işleme nedir?
 Azure LB bir geçişli ağ yük dengeleyicisi olduğundan, işleme sınırlamaları arka uç havuzunda kullanılan sanal makine türü tarafından dikte edilir. Diğer ağ aktarım hızı hakkında bilgi edinmek için [sanal makine ağ aktarım hızı](../virtual-network/virtual-machine-network-throughput.md)bölümüne bakın.
 
-
 ## <a name="how-do-connections-to-azure-storage-in-the-same-region-work"></a>Azure depolama ile aynı bölgedeki bağlantılar nasıl çalışır?
 Yukarıdaki senaryolar aracılığıyla giden bağlantıların olması, VM ile aynı bölgedeki depolamaya bağlanmak için gerekli değildir. Bunu istemiyorsanız, yukarıda açıklandığı gibi ağ güvenlik gruplarını (NSG 'ler) kullanın. Diğer bölgelerdeki depolama bağlantısı için giden bağlantı gereklidir. Lütfen aynı bölgedeki bir VM 'den depolamaya bağlanırken, depolama tanılama günlüklerindeki kaynak IP adresinin, sanal makinenizin genel IP adresi değil, iç sağlayıcı adresi olacağını unutmayın. Depolama hesabınıza erişimi aynı bölgedeki bir veya daha fazla sanal ağ alt ağında bulunan VM 'Lerle kısıtlamak istiyorsanız, depolama hesabı güvenlik duvarını yapılandırırken ortak IP adresinizi değil [sanal ağ hizmet uç noktalarını](../virtual-network/virtual-network-service-endpoints-overview.md) kullanın. Hizmet uç noktaları yapılandırıldıktan sonra, sanal ağ özel IP adresinizi, iç sağlayıcı adresinde değil, depolama tanılama günlüklerinizin içinde görürsünüz.
+
+## <a name="does-azure-load-balancer-support-tlsssl-termination"></a>, TLS/SSL sonlandırmayı Azure Load Balancer destekler mi?
+Hayır, bir geçiş ağ yük dengeleyici olduğundan Azure Load Balancer Şu anda sonlandırmasını desteklememektedir. Application Gateway, uygulamanız için gerekliyse olası bir çözüm olabilir.
 
 ## <a name="what-are-best-practises-with-respect-to-outbound-connectivity"></a>Giden bağlantı açısından en iyi uygulamalar nelerdir?
 Standart Load Balancer ve standart genel IP, giden bağlantılara yönelik yetenekler ve farklı davranışları tanıtır. Bunlar temel SKU 'Lar ile aynı değildir. Standart SKU 'Lar ile çalışırken giden bağlantı isterseniz, standart genel IP adresleriyle veya standart ortak Load Balancer açıkça tanımlamanız gerekir. Bu, dahili bir Standart Load Balancer kullanırken giden bağlantı oluşturmayı içerir. Her zaman standart bir genel Load Balancer giden kuralları kullanmanızı öneririz. Bu, bir iç Standart Load Balancer kullanıldığında, giden bağlantı istenirse arka uç havuzundaki VM 'Ler için giden bağlantı oluşturmak üzere gerekli adımları uygulamanız gerekir. Giden bağlantı bağlamında, tek bir tek başına VM, tüm VM 'ler bir kullanılabilirlik kümesinde, bir VMSS içindeki tüm örnekler bir grup olarak davranır. Bu, bir kullanılabilirlik kümesindeki tek bir VM standart SKU ile ilişkili ise, bu kullanılabilirlik kümesindeki tüm sanal makine örnekleri, tek bir örnek doğrudan ilişkili olmasa bile standart SKU ile ilişkilendirildikleri kurallarla aynı kurallara göre davranır. Bu davranış, bir yük dengeleyiciye bağlı birden çok ağ arabirimi kartına sahip tek başına bir VM söz konusu olduğunda da gözlemlenmiştir. Tek başına bir NIC eklenirse aynı davranışa sahip olur. Genel kavramları anlamak için tüm belgeyi dikkatle gözden geçirin, SKU 'Lar arasındaki farklılıklar için [Standart Load Balancer](./load-balancer-overview.md) gözden geçirin ve [giden kuralları](load-balancer-outbound-connections.md#outboundrules)gözden geçirin.

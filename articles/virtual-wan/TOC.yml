@@ -116,24 +116,34 @@
           href: certificates-point-to-site.md
         - name: Azure AD kiracısını yapılandırma
           href: openvpn-azure-ad-tenant.md
-        - name: İstemci profili
-          href: about-vpn-profile-download.md
-        - name: Genel ve merkez tabanlı profil
-          href: global-hub-profile.md
-        - name: Azure VPN İstemcisi’ni Windows 10 için yapılandırma
-          href: openvpn-azure-ad-client.md
-        - name: OpenVPN istemcisi yapılandırması
-          href: howto-openvpn-clients.md?
-        - name: AlwaysOn VPN kullanıcı tüneli yapılandırma
-          href: howto-always-on-user-tunnel.md
-        - name: AlwaysOn VPN cihaz tüneli yapılandırma
-          href: howto-always-on-device-tunnel.md
-        - name: Multi-Factor Authentication’ı (MFA) etkinleştirme
-          href: openvpn-azure-ad-mfa.md
-        - name: Azure AD kimlik doğrulamasını yapılandırma
-          href: virtual-wan-point-to-site-azure-ad.md
-        - name: Çok uygulamalı Azure AD kimlik doğrulamasını yapılandırma
-          href: openvpn-azure-ad-tenant-multi-app.md
+        - name: İstemci profilleri
+          items:
+            - name: Genel ve hub tabanlı profilleri indirme
+              href: global-hub-profile.md
+            - name: Profil bilgilerini ayıklama ve görüntüleme
+              href: about-vpn-profile-download.md
+            - name: Intune kullanarak profilleri dağıtma
+              href: vpn-profile-intune.md
+        - name: VPN istemcileri
+          items:
+            - name: Windows 10
+              href: openvpn-azure-ad-client.md
+            - name: OpenVPN
+              href: howto-openvpn-clients.md?
+        - name: Always-On tünellerini yapılandırma
+          items:
+            - name: Kullanıcı tüneli
+              href: howto-always-on-user-tunnel.md
+            - name: Cihaz tüneli
+              href: howto-always-on-device-tunnel.md
+        - name: Kimlik Doğrulaması
+          items:
+            - name: Multi-Factor Authentication (MFA)
+              href: openvpn-azure-ad-mfa.md
+            - name: Azure AD kimlik doğrulaması
+              href: virtual-wan-point-to-site-azure-ad.md
+            - name: Çoklu uygulama Azure AD kimlik doğrulaması
+              href: openvpn-azure-ad-tenant-multi-app.md
     - name: Yönlendirme
       items:
         - name: Sanal merkez yönlendirmeyi yapılandırma

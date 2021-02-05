@@ -1,26 +1,24 @@
 ---
 author: baanders
-description: temel bir Azure dijital TWINS örneğini temizlemek için ekleme dosyası
+description: Azure dijital TWINS örneği temizlemek için ekleme dosyası
 ms.service: digital-twins
 ms.topic: include
-ms.date: 8/13/2020
+ms.date: 2/4/2021
 ms.author: baanders
-ms.openlocfilehash: 4c03ef942896dda63f678018cdd257024cfbb6d4
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: c3c1b814b357a2e4b724590261657e485852f99c
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96011290"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99575700"
 ---
-Bu öğreticide oluşturulan kaynaklara artık ihtiyacınız yoksa, bunları silmek için aşağıdaki adımları izleyin.
-
-[Azure Cloud Shell](https://shell.azure.com)kullanarak, [az Group Delete](/cli/azure/group?preserve-view=true&view=azure-cli-latest#az-group-delete) komutuyla bir kaynak grubundaki tüm Azure kaynaklarını silebilirsiniz. Bu komut, kaynak grubunu ve Azure dijital TWINS örneğini kaldırır.
-
-> [!IMPORTANT]
-> Silinen kaynak grupları geri alınamaz. Kaynak grubu ve içindeki tüm kaynaklar kalıcı olarak silinir. Yanlış kaynak grubunu veya kaynakları yanlışlıkla silmediğinizden emin olun.
-
-Azure Cloud Shell açın ve kaynak grubunu ve içerdiği her şeyi silmek için aşağıdaki komutu çalıştırın.
-
-```azurecli-interactive
-az group delete --name <your-resource-group>
-```
+* **Bu öğreticide oluşturduğunuz kaynakların hiçbirine ihtiyacınız** yoksa, [az Group Delete](/cli/azure/group?preserve-view=true&view=azure-cli-latest#az-group-delete) komutuyla bu makaledeki Azure dijital TWINS örneğini ve diğer tüm kaynakları silebilirsiniz. Bu, kaynak grubunun yanı sıra kaynak grubundaki tüm Azure kaynaklarını da siler.
+    
+    > [!IMPORTANT]
+    > Silinen kaynak grupları geri alınamaz. Kaynak grubu ve içindeki tüm kaynaklar kalıcı olarak silinir. Yanlış kaynak grubunu veya kaynakları yanlışlıkla silmediğinizden emin olun.
+    
+    [Azure Cloud Shell](https://shell.azure.com)açın ve kaynak grubunu ve içerdiği her şeyi silmek için aşağıdaki komutu çalıştırın.
+    
+    ```azurecli-interactive
+    az group delete --name <your-resource-group>
+    ```

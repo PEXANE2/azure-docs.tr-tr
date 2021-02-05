@@ -9,12 +9,12 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 04/30/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 2f7746f079e740493348731376d0a5a7b1a9e954
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: cdfeb2fdeefabb0d2d4af2fb63222adda5d023fb
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93317847"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576033"
 ---
 # <a name="tutorial-convert-ml-experiments-to-production-python-code"></a>Öğretici: ML denemeleri 'yi üretim Python koduna dönüştürme
 
@@ -353,7 +353,7 @@ Kodun yeniden kullanılmasına daha fazla yardımcı olmak için, üçüncü ve 
 Aşağıdaki ifadeyi paketini ve yolunu kullanan bir komut isteminde çalıştırarak not defterinizi yürütülebilir bir betiğe dönüştürün `nbconvert` `experimentation/Diabetes Ridge Regression Training.ipynb` :
 
 ```
-jupyter nbconvert -- to script "Diabetes Ridge Regression Training.ipynb" –output train
+jupyter nbconvert "Diabetes Ridge Regression Training.ipynb" --to script --output train
 ```
 
 Not defteri ' ne dönüştürüldükten sonra `train.py` istenmeyen açıklamaları kaldırın. Dosyasının sonundaki çağrısını, `main()` Aşağıdaki kod gibi bir koşullu çağrı ile değiştirin:
@@ -441,7 +441,7 @@ Ayrıca, işlevleri `train.py` başka dosyalardan de çağrılabilir.
 Aşağıdaki ifadeyi paketini ve yolunu kullanan bir komut isteminde çalıştırarak not defterinizi yürütülebilir bir betiğe birlikte açın `nbconvert` `experimentation/Diabetes Ridge Regression Scoring.ipynb` :
 
 ```
-jupyter nbconvert -- to script "Diabetes Ridge Regression Scoring.ipynb" –output score
+jupyter nbconvert "Diabetes Ridge Regression Scoring.ipynb" --to script --output score
 ```
 
 Not defteri ' ne dönüştürüldükten sonra `score.py` istenmeyen açıklamaları kaldırın. `score.py`Dosyanız aşağıdaki kod gibi görünmelidir:

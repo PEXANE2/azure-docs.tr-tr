@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 5e6188ca2e8e0972e86bed578144a29a96570876
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: acdb635dec5abd73341cc1dda4991b58b82a18c0
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97901207"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99574525"
 ---
 # <a name="github-actions-workflows-for-azure-static-web-apps-preview"></a>Azure statik Web Apps önizlemesi için GitHub eylemleri iş akışları
 
@@ -38,11 +38,11 @@ name: Azure Static Web Apps CI/CD
 on:
   push:
     branches:
-    - master
+    - main
   pull_request:
     types: [opened, synchronize, reopened, closed]
     branches:
-    - master
+    - main
 
 jobs:
   build_and_deploy_job:
@@ -87,11 +87,11 @@ GitHub eylemleri [tetikleyicisi](https://help.github.com/actions/reference/event
 on:
   push:
     branches:
-    - master
+    - main
   pull_request:
     types: [opened, synchronize, reopened, closed]
     branches:
-    - master
+    - main
 ```
 
 Özelliği ile ilişkili ayarlar sayesinde `on` , hangi dalların bir işi tetikleyeceğini tanımlayabilir ve farklı çekme isteği durumları için Tetikleyicileri tetiklenecek şekilde ayarlayabilirsiniz.
@@ -107,7 +107,7 @@ Statik Web Apps iş akışı dosyasında, kullanılabilir iki iş vardır.
 | Ad  | Açıklama |
 |---------|---------|
 |`build_and_deploy_job` | Yürütmeler gönderdiğinizde veya özellikte listelenen dala karşı bir çekme isteği açtığınızda yürütülür `on` . |
-|`close_pull_request_job` | Yalnızca çekme isteklerinden oluşturulan hazırlama ortamını kaldıran bir çekme isteğini kapattığınızda yürütülür. |
+|`close_pull_request_job` | , Çekme isteklerinden oluşturulan hazırlama ortamını kaldıran yalnızca bir çekme isteğini kapattığınızda yürütülür. |
 
 ## <a name="steps"></a>Adımlar
 
@@ -138,9 +138,9 @@ with:
 
 | Özellik | Açıklama | Gerekli |
 |---|---|---|
-| `app_location` | Uygulama kodunuzun konumu.<br><br>Örneğin, `/` uygulamanızın kaynak kodu deponun kökünde veya `/app` uygulama kodunuz adlı bir dizinde ise girin `app` . | Evet |
-| `api_location` | Azure Işlevleri kodunuzun konumu.<br><br>Örneğin, `/api` uygulama kodunuz adlı bir klasörde ise yazın `api` . Klasörde hiçbir Azure Işlevleri uygulaması algılanmazsa, derleme başarısız olmaz, iş akışı bir API istemediğinizi varsayar. | Hayır |
-| `output_location` | Derleme çıkış dizininin öğesine göre konumu `app_location` .<br><br>Örneğin, uygulama kaynak kodunuz adresinde bulunuyorsa `/app` ve derleme betiği dosyaları klasörüne çıktıdaysa `/app/build` `build` değer olarak ayarlanır `output_location` . | Hayır |
+| `app_location` | Uygulama kodunuzun konumu.<br><br>Örneğin, `/` uygulamanızın kaynak kodu deponun kökünde veya `/app` uygulama kodunuz adlı bir dizinde ise girin `app` . | Yes |
+| `api_location` | Azure Işlevleri kodunuzun konumu.<br><br>Örneğin, `/api` uygulama kodunuz adlı bir klasörde ise yazın `api` . Klasörde hiçbir Azure Işlevleri uygulaması algılanmazsa, derleme başarısız olmaz, iş akışı bir API istemediğinizi varsayar. | No |
+| `output_location` | Derleme çıkış dizininin öğesine göre konumu `app_location` .<br><br>Örneğin, uygulama kaynak kodunuz adresinde bulunuyorsa `/app` ve derleme betiği dosyaları klasörüne çıktıdaysa `/app/build` `build` değer olarak ayarlanır `output_location` . | No |
 
 `repo_token`, `action` , Ve `azure_static_web_apps_api_token` değerleri Azure static tarafından sizin için ayarlanır Web Apps el ile değiştirilmemelidir.
 
@@ -194,6 +194,53 @@ jobs:
         env: # Add environment variables here
           HUGO_VERSION: 0.58.0
 ```
+
+## <a name="monorepo-support"></a>Monorepo desteği
+
+Tek depo, birden fazla uygulama için kod içeren bir depodur. Varsayılan olarak, statik bir Web Apps iş akışı dosyası bir depodaki tüm dosyaları izler, ancak bunu tek bir uygulamayı hedefleyecek şekilde ayarlayabilirsiniz. Bu nedenle, tek depolarda her bir statik site, deponun *. git* klasöründe yan yana bulunan kendi yapılandırma dosyasına sahiptir.
+
+```files
+├── .git
+│   ├── azure-static-web-apps-purple-pond.yml
+│   └── azure-static-web-apps-yellow-shoe.yml
+│
+├── app1  👉 controlled by: azure-static-web-apps-purple-pond.yml
+├── app2  👉 controlled by: azure-static-web-apps-yellow-shoe.yml
+│
+├── api1  👉 controlled by: azure-static-web-apps-purple-pond.yml
+├── api2  👉 controlled by: azure-static-web-apps-yellow-shoe.yml
+│
+└── readme.md
+```
+
+Bir iş akışı dosyasını tek bir uygulamaya hedeflemek için `push` ve bölümlerinde yollar belirtirsiniz `pull_request` .
+
+Aşağıdaki örnek, `paths` `push` `pull_request` _Azure-static-Web-Apps-Purple-Pond. yıml_ adlı bir dosyanın ve bölümlerine nasıl bir düğüm ekleneceğini gösterir.
+
+```yml
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - app1/**
+      - api1/**
+      - .github/workflows/azure-static-web-apps-purple-pond.yml
+  pull_request:
+    types: [opened, synchronize, reopened, closed]
+    branches:
+      - main
+    paths:
+      - app1/**
+      - api1/**
+      - .github/workflows/azure-static-web-apps-purple-pond.yml
+```
+
+Bu örnekte, yalnızca dosyaları izleyen dosyalarda yapılan değişiklikler yeni bir derlemeyi tetikler:
+
+- *APP1* klasörünün içindeki dosyalar
+- *Api1* klasörünün içindeki dosyalar
+- Uygulamanın *Azure-static-Web-Apps-Purple-Pond. yıml* iş akışı dosyasında yapılan değişiklikler
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
