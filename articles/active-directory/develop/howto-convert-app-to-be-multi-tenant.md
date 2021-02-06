@@ -13,12 +13,12 @@ ms.date: 10/27/2020
 ms.author: ryanwi
 ms.reviewer: marsma, jmprieur, lenalepa, sureshja, kkrishna
 ms.custom: aaddev
-ms.openlocfilehash: 4f87c3fd0cfda2db535b2c8f7f7330a273e6b767
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 825a7d8c53552120a861657c7f3df7ae8f488c18
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98755341"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99581729"
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>Nasıl yapılır: Çok kiracılı uygulama desenini kullanarak istediğiniz bir Azure Active Directory kullanıcısıyla oturum açma
 
@@ -125,7 +125,7 @@ Yalnızca uygulama izinleri her zaman kiracı yöneticisinin onayını gerektiri
 
 Ayrıca, bazı temsilci izinleri kiracı yöneticisinin onayını gerektirir. Örneğin, oturum açmış kullanıcı olarak Azure AD 'ye geri yazma özelliği, kiracı yöneticisinin onayını gerektirir. Yalnızca uygulama izinleri gibi, sıradan bir kullanıcı yönetici onayı gerektiren bir temsilci izni isteyen bir uygulamada oturum açmaya çalışırsa, uygulamanız bir hata alır. Bir iznin yönetici onayı gerektirip gerektirmediğini, kaynağı yayımlayan geliştirici tarafından belirlenir ve kaynağın belgelerinde bulunabilir. [Microsoft Graph API 'si][MSFT-Graph-permission-scopes] için izin belgeleri, hangi izinlerin yönetici onayı gerektirdiğini gösterir.
 
-Uygulamanız yönetici onayı gerektiren izinler kullanıyorsa, yöneticinin eylemi başlatabileceği bir düğme veya bağlantı gibi bir hareketinizin olması gerekir. Uygulamanızın bu eylem için gönderdiği istek, sorgu dizesi parametresini de içeren olağan OAuth2/OpenID Connect yetkilendirme isteğidir `prompt=admin_consent` . Yönetici bir kez daha alındıktan ve hizmet sorumlusu müşterinin kiracısında oluşturulduktan sonra, sonraki oturum açma isteklerinde parametreye gerek yoktur `prompt=admin_consent` . Yönetici istenen izinleri kabul etmiş olduğundan, Kiracıdaki başka hiçbir kullanıcıya o noktadan sonra izin istenmez.
+Uygulamanız yönetici onayı gerektiren izinler kullanıyorsa, yöneticinin eylemi başlatabildiği bir düğme veya bağlantı gibi bir hareketi vardır. Uygulamanızın bu eylem için gönderdiği istek, sorgu dizesi parametresini de içeren olağan OAuth2/OpenID Connect yetkilendirme isteğidir `prompt=admin_consent` . Yönetici bir kez daha alındıktan ve hizmet sorumlusu müşterinin kiracısında oluşturulduktan sonra, sonraki oturum açma isteklerinde parametreye gerek yoktur `prompt=admin_consent` . Yönetici istenen izinleri kabul etmiş olduğundan, Kiracıdaki başka hiçbir kullanıcıya o noktadan sonra izin istenmez.
 
 Bir kiracı yöneticisi, normal kullanıcıların uygulamaları kabul etme yeteneğini devre dışı bırakabilir. Bu yetenek devre dışıysa, uygulamanın kiracıya kullanılması için yönetici izni her zaman gereklidir. Uygulamanızı son kullanıcı onayı devre dışı olmadan test etmek istiyorsanız, **Kurumsal uygulamalar** altındaki **[kullanıcı ayarları](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/)** bölümünde [Azure Portal][AZURE-portal] yapılandırma anahtarını bulabilirsiniz.
 

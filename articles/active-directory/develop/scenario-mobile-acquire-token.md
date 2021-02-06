@@ -13,12 +13,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: c071cb9a8a27964a93e039e4d1536e078730bfc9
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 6e6eda3d711710ea7450165ab02d7a260067bfcb
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98753627"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99582562"
 ---
 # <a name="get-a-token-for-a-mobile-app-that-calls-web-apis"></a>Web API 'Lerini çağıran bir mobil uygulama için belirteç alın
 
@@ -26,7 +26,7 @@ Uygulamanız korunan Web API 'Lerini çağırabilmeniz için bir erişim belirte
 
 ## <a name="define-a-scope"></a>Kapsam tanımlama
 
-Bir belirteç istediğinizde, bir kapsam tanımlamanız gerekir. Kapsam, uygulamanızın erişebileceği verileri belirler.
+Bir belirteç istediğinizde, bir kapsam tanımlayın. Kapsam, uygulamanızın erişebileceği verileri belirler.
 
 Kapsam tanımlamanın en kolay yolu, istenen Web API 'sini kapsam ile birleştirmenin bir yoludur `App ID URI` `.default` . Bu tanım, uygulamanızın portalda ayarlanan tüm kapsamları gerektirip gerektirmediğini Microsoft Identity platformunu söyler.
 
@@ -236,7 +236,7 @@ Sınıfı aşağıdaki sabitleri tanımlar:
     Bu seçenek, belirteç alımı başarısız olursa ve kullanıcının yeniden oturum açmasını istiyorsanız yararlı olabilir. Bu durumda, MSAL `prompt=login` kimlik sağlayıcısına gönderilir. Bu seçeneği, kuruluş yönetimi 'nin, kullanıcının uygulamanın belirli bölümlerine her erişirken oturum açmasını gerektiren güvenlik odaklı uygulamalarda kullanmak isteyebilirsiniz.
 - `Never` yalnızca .NET 4,5 ve Windows Çalışma Zamanı (WinRT) içindir. Bu sabit kullanıcıya sormaz, ancak gizli katıştırılmış Web görünümünde depolanan tanımlama bilgisini kullanmayı dener. Daha fazla bilgi için bkz. [msal.NET ile Web tarayıcıları kullanma](./msal-net-web-browsers.md).
 
-    Bu seçenek başarısız olursa, `AcquireTokenInteractive` BIR UI etkileşiminin gerekli olduğunu bildirmek için bir özel durum oluşturur. Daha sonra başka bir parametre kullanmanız gerekir `Prompt` .
+    Bu seçenek başarısız olursa, `AcquireTokenInteractive` BIR UI etkileşiminin gerekli olduğunu bildirmek için bir özel durum oluşturur. Ardından başka bir `Prompt` parametre kullanın.
 - `NoPrompt` kimlik sağlayıcısına bir istem göndermez.
 
     Bu seçenek yalnızca Azure Active Directory B2C düzenleme profili ilkeleri için yararlıdır. Daha fazla bilgi için bkz. [B2C özellikleri](https://aka.ms/msal-net-b2c-specificities).

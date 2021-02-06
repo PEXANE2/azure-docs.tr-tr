@@ -13,12 +13,12 @@ ms.date: 11/26/2020
 ms.author: marsma
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 381416384cacd44bdb1b08801f7b3174c9504d0b
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: 565acd745ba5d7fdec71f306d3851e599838f7d9
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98761187"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584053"
 ---
 # <a name="handle-errors-and-exceptions-in-msalnet"></a>MSAL.NET’te hataları ve özel durumları işleme
 
@@ -38,8 +38,8 @@ Aşağıda, ortaya çıkabilecek ve bazı olası azaltmalar bulunan yaygın öze
 
 | Özel durum | Hata kodu | Risk azaltma|
 | --- | --- | --- |
-| [Msaluırequiredexception](/dotnet/api/microsoft.identity.client.msaluirequiredexception) | AADSTS65001: Kullanıcı veya yönetici ' {appName} ' adlı ' {AppID} ' KIMLIĞIYLE uygulamayı kullanmak üzere onay vermedi. Bu Kullanıcı ve kaynak için etkileşimli bir yetkilendirme isteği gönderin.| Önce kullanıcı onayı almanız gerekir. .NET Core kullanmıyorsanız (herhangi bir Web Kullanıcı arabirimine sahip olmayan), çağırın (yalnızca bir kez) `AcquireTokeninteractive` . .NET Core kullanıyorsanız veya bir yapmak istemiyorsanız `AcquireTokenInteractive` , Kullanıcı onay vermek için BIR URL 'ye gidebilir: `https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id={clientId}&response_type=code&scope=user.read` . Şunu çağırmak için `AcquireTokenInteractive` : `app.AcquireTokenInteractive(scopes).WithAccount(account).WithClaims(ex.Claims).ExecuteAsync();`|
-| [Msaluırequiredexception](/dotnet/api/microsoft.identity.client.msaluirequiredexception) | AADSTS50079: kullanıcının [Multi-Factor Authentication 'ı (MFA)](../authentication/concept-mfa-howitworks.md)kullanması gerekir.| Risk azaltma yoktur. Kiracınız için MFA yapılandırıldıysa ve Azure Active Directory (AAD) uygulamayı zorlamaya karar verirse, veya gibi etkileşimli bir akışa geri dönebilmeniz gerekir `AcquireTokenInteractive` `AcquireTokenByDeviceCode` .|
+| [Msaluırequiredexception](/dotnet/api/microsoft.identity.client.msaluirequiredexception) | AADSTS65001: Kullanıcı veya yönetici ' {appName} ' adlı ' {AppID} ' KIMLIĞIYLE uygulamayı kullanmak üzere onay vermedi. Bu Kullanıcı ve kaynak için etkileşimli bir yetkilendirme isteği gönderin.| Önce kullanıcı onayı alın. .NET Core kullanmıyorsanız (herhangi bir Web Kullanıcı arabirimine sahip olmayan), çağırın (yalnızca bir kez) `AcquireTokeninteractive` . .NET Core kullanıyorsanız veya bir yapmak istemiyorsanız `AcquireTokenInteractive` , Kullanıcı onay vermek için BIR URL 'ye gidebilir: `https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id={clientId}&response_type=code&scope=user.read` . Şunu çağırmak için `AcquireTokenInteractive` : `app.AcquireTokenInteractive(scopes).WithAccount(account).WithClaims(ex.Claims).ExecuteAsync();`|
+| [Msaluırequiredexception](/dotnet/api/microsoft.identity.client.msaluirequiredexception) | AADSTS50079: kullanıcının [Multi-Factor Authentication 'ı (MFA)](../authentication/concept-mfa-howitworks.md)kullanması gerekir.| Risk azaltma yoktur. Kiracınız için MFA yapılandırıldıysa ve Azure Active Directory (AAD) uygulamayı zorlamaya karar verirse, veya gibi etkileşimli bir akışa geri dönün `AcquireTokenInteractive` `AcquireTokenByDeviceCode` .|
 | [MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexception) |AADSTS90010: izin türü *sık karşılaşılan* veya */tüketiciler* uç noktaları üzerinden desteklenmiyor. */Kuruluşlar* veya kiracıya özgü uç noktayı kullanın. *Sık karşılaşılan* kullandınız.| Azure AD 'nin iletisinde açıklandığı gibi, yetkilinin bir kiracıya ya da aksi takdirde */kuruluşlara* sahip olması gerekir.|
 | [MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexception) | AADSTS70002: istek gövdesi şu parametreyi içermelidir: `client_secret or client_assertion` .| Bu özel durum, uygulamanız Azure AD 'de ortak bir istemci uygulaması olarak kaydettirilmemişse oluşturulabilir. Azure portal, uygulamanızın bildirimini düzenleyin ve `allowPublicClient` olarak ayarlayın `true` . |
 | [MsalClientException](/dotnet/api/microsoft.identity.client.msalclientexception)| `unknown_user Message`: Oturum açmış kullanıcı tanımlanamadı| Kitaplık, geçerli Windows oturum açmış kullanıcıyı sorgulayamadı veya bu kullanıcı AD veya Azure AD 'ye katılmış değil (iş yeri katılmış kullanıcıları desteklenmez). Hafifletme 1: UWP 'de, uygulamanın şu yeteneklere sahip olup olmadığını denetleyin: kurumsal kimlik doğrulaması, özel ağlar (Istemci ve sunucu), Kullanıcı hesabı bilgileri. Hafifletme 2: Kullanıcı adını (örneğin,) getirmek için kendi mantığınızı uygulayın john@contoso.com ve `AcquireTokenByIntegratedWindowsAuth` Kullanıcı adında alan formu kullanın.|

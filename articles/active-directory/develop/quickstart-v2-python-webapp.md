@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/25/2019
 ms.author: abpati
 ms.custom: aaddev, devx-track-python, scenarios:getting-started, languages:Python
-ms.openlocfilehash: 3c3eaddf1767a3fa4a2ba73ae7a27f1f7df13990
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 0a99ff32f3f1fbcf4af64188640d2edd7f3f5470
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178219"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99583137"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-python-web-app"></a>Hızlı başlangıç: Microsoft 'a Python web uygulamasına oturum açma ekleme
 
@@ -25,7 +25,7 @@ Bu hızlı başlangıçta, bir Python web uygulamasının kullanıcılara nasıl
 
 Örneğin bir çizim için [nasıl çalıştığını](#how-the-sample-works) görün.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - [Python 2.7 +](https://www.python.org/downloads/release/python-2713) veya [Python 3 +](https://www.python.org/downloads/release/python-364/)
@@ -65,7 +65,7 @@ Bu hızlı başlangıçta, bir Python web uygulamasının kullanıcılara nasıl
 > 1. Bir anahtar açıklaması yazın (örneğin, uygulama gizli anahtarı), varsayılan süre sonunu bırakın ve **Ekle**' yi seçin.
 > 1. Daha sonra kullanmak üzere **Istemci parolasının** **değerini** aklınızda yapın.
 > 1. **Yönet** altında **API izinleri**  >  **bir izin Ekle**' yi seçin.
->1.  **Microsoft API 'leri** sekmesinin seçili olduğundan emin olun.
+> 1. **Microsoft API 'leri** sekmesinin seçili olduğundan emin olun.
 > 1. *Yaygın olarak kullanılan Microsoft API 'leri* bölümünde **Microsoft Graph**' yi seçin.
 > 1. **Temsilci izinleri** bölümünde, doğru izinlerin işaretli olduğundan emin olun: **User. Readbasic. All**. Gerekirse arama kutusunu kullanın.
 > 1. **Izin Ekle** düğmesini seçin.
@@ -74,7 +74,7 @@ Bu hızlı başlangıçta, bir Python web uygulamasının kullanıcılara nasıl
 >
 > #### <a name="step-1-configure-your-application-in-azure-portal"></a>1. Adım: Uygulamanızı Azure portalında yapılandırma
 >
-> Bu hızlı başlangıçta çalışması için kod örneği için şunları yapmanız gerekir:
+> Bu hızlı başlangıçtaki kod örneğinin çalışması için:
 >
 > 1. Olarak bir yanıt URL 'SI ekleyin `http://localhost:5000/getAToken` .
 > 1. Bir Istemci gizli dizisi oluşturun.
@@ -110,7 +110,7 @@ Bu hızlı başlangıçta, bir Python web uygulamasının kullanıcılara nasıl
 > CLIENT_SECRET = "Enter_the_Client_Secret_Here"
 > AUTHORITY = "https://login.microsoftonline.com/Enter_the_Tenant_Name_Here"
 > ```
-> Burada:
+> Konum:
 >
 > - `Enter_the_Application_Id_here` - Kaydettiğiniz uygulamanın Uygulama Kimliği değeridir.
 > - `Enter_the_Client_Secret_Here` -Sertifikalar 'da oluşturduğunuz **Istemci gizli anahtarı** , kaydettiğiniz uygulamanın **gizli dizileri &**  .

@@ -13,12 +13,12 @@ ms.date: 12/3/2020
 ms.author: hirsin
 ms.reviewer: nacanuma, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 22352f6d0c7dc48b98be5fcb4101f262adc480d6
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: cfbcc8523ff1d5858317a3654b58ec7b2d23607a
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98795620"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99582035"
 ---
 # <a name="microsoft-identity-platform-application-authentication-certificate-credentials"></a>Microsoft Identity Platform uygulaması kimlik doğrulama sertifikası kimlik bilgileri
 
@@ -101,12 +101,12 @@ Aşağıdaki yöntemlerden herhangi birini kullanarak sertifika kimlik bilgisini
 
 ### <a name="updating-the-application-manifest"></a>Uygulama bildirimini güncelleştirme
 
-Sertifikayı tutan bir sertifika varsa şunları hesaplamanız gerekir:
+Bir sertifika aldıktan sonra, bu değerleri Hesapla:
 
 - `$base64Thumbprint` -Base64 kodlu sertifika karmasının değeri
 - `$base64Value` -Base64 kodlamalı sertifika ham verileri değeri
 
-Ayrıca, uygulama bildiriminde anahtarı tanımlamak için bir GUID sağlamanız gerekir ( `$keyId` ).
+Uygulama bildiriminde () anahtarı tanımlamak için bir GUID girin `$keyId` .
 
 İstemci uygulaması için Azure uygulama kaydı:
 1. Uygulama bildirimini açmak için **bildirim** ' ı seçin.
