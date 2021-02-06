@@ -107,26 +107,15 @@
       href: ./workloads/mainframe-rehosting/overview.md
     - name: Veritabanları
       items:
-        - name: SUSE üzerinde MySQL
-          href: ./linux/mysql-on-opensuse.md
         - name: MongoDB
           items:
-            - name: Linux
-              href: ./linux/install-mongodb.md
             - name: Windows
               href: ./windows/install-mongodb.md
-        - name: PostgreSQL
-          href: ./linux/postgresql-install.md
         - name: Linux üzerinde MS SQL
           href: /sql/linux/sql-server-linux-azure-virtual-machine
     - name: Yüksek Performanslı Bilgi İşlem (HPC)
       href: /azure/architecture/topics/high-performance-computing/
     - name: Kapsayıcılar
-      items:
-        - name: Docker Makinesi kullanma
-          href: ./linux/docker-machine.md
-        - name: Docker Compose kullanma
-          href: ./linux/docker-compose-quickstart.md
     - name: Visual Studio
       href: ./windows/using-visual-studio-vm.md
 - name: Örnekler
@@ -979,10 +968,18 @@
       href: disks-scalability-targets.md
     - name: Yedekleme ve veri koruma
       items:
-        - name: Diskler için yedekleme ve olağanüstü durum kurtarma
-          href: backup-and-disaster-recovery-for-azure-iaas-disks.md
         - name: Artımlı anlık görüntüleri etkinleştir
           href: disks-incremental-snapshots.md
+        - name: Azure Disk Yedekleme
+          items:
+            - name: Genel Bakış
+              href: ../backup/disk-backup-overview.md?context=/azure/virtual-machines/context/context
+            - name: Azure disk yedeklemesini yapılandırma
+              href: ../backup/backup-managed-disks.md?context=/azure/virtual-machines/context/context
+            - name: Azure disk yedekleme ile diskleri geri yükleme
+              href: ../backup/restore-managed-disks.md?context=/azure/virtual-machines/context/context
+        - name: Diskler için yedekleme ve olağanüstü durum kurtarma
+          href: backup-and-disaster-recovery-for-azure-iaas-disks.md
         - name: Bir disk için anlık görüntü oluşturma-CLı
           href: ./linux/snapshot-copy-managed-disk.md
         - name: Bir disk anlık görüntüsü oluşturma-PowerShell
@@ -1281,8 +1278,6 @@
       href: ../azure-monitor/insights/monitor-vm-azure.md?context=/azure/virtual-machines/context/context
     - name: VM 'Leri izleme
       items:
-        - name: Linux
-          href: ./linux/tutorial-monitor.md
         - name: Windows
           href: ./windows/tutorial-monitor.md
     - name: Aracılar

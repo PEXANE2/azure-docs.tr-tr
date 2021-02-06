@@ -8,12 +8,12 @@ ms.date: 04/24/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: e549a79930cf599b89cd549691e23f3587e8a85c
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 4a3f272ab6e4a1788368442d7d060233391442fd
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202717"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99627824"
 ---
 # <a name="introduction-to-azure-managed-disks"></a>Azure yönetilen disklerine giriş
 
@@ -44,6 +44,10 @@ Yönetilen diskler [kullanılabilirlik alanları](../availability-zones/az-overv
 ### <a name="azure-backup-support"></a>Azure Backup desteği
 
 Bölgesel felate karşı korumak için [Azure Backup](../backup/backup-overview.md) , zaman tabanlı yedeklemeler ve yedekleme bekletme ilkeleriyle bir yedekleme işi oluşturmak için kullanılabilir. Bu, sanal makine veya yönetilen disk geri yüklemeler gerçekleştirmenizi sağlar. Şu anda Azure Backup, 32 tebibyte (TiB) disklere kadar disk boyutlarını destekler. Azure VM yedekleme desteği hakkında [daha fazla bilgi edinin](../backup/backup-support-matrix-iaas.md) .
+
+#### <a name="azure-disk-backup"></a>Azure Disk Yedekleme
+
+Azure Backup, yönetilen disklerde verilerinizi koruyan yerel, bulut tabanlı bir yedekleme çözümü olarak Azure disk yedeklemesi (Önizleme) sunar. Bu, birkaç adımda yönetilen diskler için korumayı yapılandırmanızı sağlayan basit, güvenli ve ekonomik bir çözümdür. Azure disk yedekleme, anlık görüntülerin düzenli olarak oluşturulmasını otomatikleştirerek yönetilen diskler için anlık görüntü yaşam döngüsü yönetimi sağlayan ve yedekleme ilkesini kullanarak yapılandırılan süre için bir anahtar, bir çözüm sunar. Azure disk yedekleme hakkında daha fazla bilgi için bkz. [Azure disk yedekleme 'ye Genel Bakış (önizlemede)](../backup/disk-backup-overview.md).
 
 ### <a name="granular-access-control"></a>Ayrıntılı erişim denetimi
 

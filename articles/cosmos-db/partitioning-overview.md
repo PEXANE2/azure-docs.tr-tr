@@ -6,12 +6,12 @@ ms.author: dech
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/12/2020
-ms.openlocfilehash: a70cfc7ab01dabd3d740d878acb453b4d1e76b5f
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: b91c846b5a79125c1cee9c36ce81b5c3d3229ba9
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99507427"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99627787"
 ---
 # <a name="partitioning-and-horizontal-scaling-in-azure-cosmos-db"></a>Azure Cosmos DB'de bölümleme ve yatay ölçeklendirme
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -42,7 +42,7 @@ Kapsayıcılarınızın fiziksel bölümlerinin sayısı aşağıdakilere bağl�
 * Toplam veri depolama alanı (her bir fiziksel Bölüm 50 GB 'a kadar veri saklayabilir).
 
 > [!NOTE]
-> Fiziksel bölümler sistemin dahili bir uygulamasıdır ve tamamen Azure Cosmos DB tarafından yönetilir. Çözümlerinizi geliştirirken fiziksel bölümlere odaklanmayın, bunun yerine bölüm Anahtarlarınıza odaklanırsınız. Mantıksal bölümlerde üretilen iş tüketimini eşit bir şekilde dağıtan bir bölüm anahtarı seçerseniz, fiziksel bölümlerde üretilen iş tüketiminin dengelenmesi güvence altına alınır.
+> Fiziksel bölümler sistemin dahili bir uygulamasıdır ve tamamen Azure Cosmos DB tarafından yönetilir. Çözümlerinizi geliştirirken, bunları denetleyemediğiniz için fiziksel bölümlere odaklanmayın. Bunun yerine, Bölüm Anahtarlarınıza odaklanın. Mantıksal bölümlerde üretilen iş tüketimini eşit bir şekilde dağıtan bir bölüm anahtarı seçerseniz, fiziksel bölümlerde üretilen iş tüketiminin dengelenmesi güvence altına alınır.
 
 Kapsayıcıınızda bulunan toplam fiziksel bölüm sayısı için bir sınır yoktur. Sağlanan aktarım hızı veya veri boyutunuz büyüdükçe, Azure Cosmos DB var olanları bölerek otomatik olarak yeni fiziksel bölümler oluşturacak. Fiziksel bölüm bölmelerini uygulamanızın kullanılabilirliğini etkilemez. Fiziksel bölüm ayrıldıktan sonra, tek bir mantıksal bölüm içindeki tüm veriler aynı fiziksel bölümde saklanmaya devam eder. Fiziksel bölüm ayırma, mantıksal bölümlerin fiziksel bölümlere yeni bir eşlemesini oluşturur.
 
@@ -70,7 +70,7 @@ Azure Cosmos DB, mantıksal bölümleri fiziksel bölümler arasında yaymak iç
 
 Her fiziksel bölüm, [*çoğaltma kümesi*](global-dist-under-the-hood.md)olarak da adlandırılan bir çoğaltmalar kümesinden oluşur. Her çoğaltma kümesi, veritabanı altyapısının bir örneğini barındırır. Bir çoğaltma kümesi, fiziksel bölümde depolanan verilerin dayanıklı, yüksek oranda kullanılabilir ve tutarlı olmasını sağlar. Fiziksel bölümü oluşturan her çoğaltma, bölümün depolama kotasını devralır. Fiziksel bölümün tüm çoğaltmaları, fiziksel bölüme ayrılan üretilen işi topluca destekler. Azure Cosmos DB çoğaltma kümelerini otomatik olarak yönetir.
 
-Genellikle daha küçük kapsayıcılar yalnızca tek bir fiziksel bölüm gerektirir, ancak hala en az 4 yineleme olur.
+Genellikle, daha küçük kapsayıcılar yalnızca tek bir fiziksel bölüm gerektirir, ancak hala en az 4 yineleme olur.
 
 Aşağıdaki görüntüde, mantıksal bölümlerin küresel olarak dağıtılan fiziksel bölümlerle nasıl eşlendiği gösterilmektedir:
 

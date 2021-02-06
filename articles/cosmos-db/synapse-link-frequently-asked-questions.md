@@ -6,12 +6,12 @@ ms.author: rosouz
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/30/2020
-ms.openlocfilehash: 82133f990c1714276aa13ff22c3f19d0993d16df
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: cef5f178ea879ba98df90da36ec9c4b639dd100a
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96488723"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99627791"
 ---
 # <a name="frequently-asked-questions-about-azure-synapse-link-for-azure-cosmos-db"></a>Azure Cosmos DB için Azure Synapse Link hakkında sık sorulan sorular
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -109,9 +109,9 @@ Analiz deposundaki veriler, işlem deposundaki parçaların yatay bölümlemesi 
 
 ## <a name="analytical-time-to-live-ttl"></a>Analitik yaşam süresi (TTL)
 
-### <a name="is-ttl-for-analytical-data-supported-at-both-container-and-item-level"></a>Her iki kapsayıcıda ve öğe düzeyinde desteklenen analitik veriler için TTl mi?
+### <a name="is-ttl-for-analytical-data-supported-at-both-container-and-item-level"></a>Her iki kapsayıcıda ve öğe düzeyinde desteklenen analitik veriler için TTL mi?
 
-Şu anda, analitik veriler için TTl yalnızca kapsayıcı düzeyinde yapılandırılabilir ve öğe düzeyinde analitik TTL ayarlama desteği yoktur.
+Şu an için analiz verilerine yönelik TTL değeri yalnızca kapsayıcı düzeyinde yapılandırılabilir ve öğe düzeyinde analiz TTL değerini ayarlama desteği sunulmaz.
 
 ### <a name="after-setting-the-container-level--analytical-ttl-on-an-azure-cosmos-db-container-can-i-change-to-a-different-value-later"></a>Azure Cosmos DB kapsayıcısında kapsayıcı düzeyi analitik TTL ayarlandıktan sonra, daha sonra farklı bir değere değiştirebilir miyim?
 
@@ -156,7 +156,7 @@ Analitik depo ile kimlik doğrulaması, bir işlem deposuyla aynıdır. Belirli 
 
 Azure Cosmos DB için Spark yapılandırılmış akış desteği, işlem deposunun değişiklik akışı işlevselliği kullanılarak uygulanır ve henüz analitik depolamadan desteklenmez.
 
-## <a name="azure-synapse-studio"></a>Azure SYNAPSE Studio
+## <a name="azure-synapse-studio"></a>Azure Synapse Studio
 
 ### <a name="in-the-azure-synapse-studio-how-do-i-recognize-if-im-connected-to-an-azure-cosmos-db-container-with-the-analytics-store-enabled"></a>Azure SYNAPSE Studio 'da, analiz deposu etkinken Azure Cosmos DB kapsayıcısına bağlandığımı nasıl anlayabilirim?
 
