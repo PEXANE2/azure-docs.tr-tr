@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: 5d81e37ab547d12e33cfacb9725d9bdb22666142
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 26e39b8f0429995bfa336c4971c76f90d903ff55
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97628764"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99628913"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -111,7 +111,9 @@ call oneToOneCall = callAgent.call(appContext, participants, startCallOptions);
 
 ### <a name="place-a-1n-call-with-users-and-pstn"></a>Kullanıcılar ve PSTN ile 1: n çağrısı yerleştir
 > [!WARNING]
-> Şu anda PSTN çağrısı, bir kullanıcıya 1: n çağrısı ve bir PSTN numarası yerleştirmek Için kullanılabilir değil. Aranan telefon numarasını belirtmeniz gerekir.
+> Şu anda PSTN çağırma kullanılamıyor
+
+Bir kullanıcıya 1: n çağrısı ve bir PSTN numarası eklemek için, Aranan telefon numarasını belirtmeniz gerekir.
 Iletişim Hizmetleri kaynağınız, PSTN çağırmaya izin verecek şekilde yapılandırılmalıdır:
 ```java
 CommunicationUser acsUser1 = new CommunicationUser(<USER_ID>);
@@ -629,7 +631,7 @@ DeviceManager deviceManager = callClient.getDeviceManager().get();
 
 ### <a name="enumerate-local-devices"></a>Yerel cihazları listeleme
 
-Yerel cihazlara erişmek için Aygıt Yöneticisi numaralandırma yöntemlerini kullanabilirsiniz. Sabit listesi, zaman uyumlu bir işlemdir.
+Yerel cihazlara erişmek için Device Manager numaralandırma yöntemlerini kullanabilirsiniz. Sabit listesi, zaman uyumlu bir işlemdir.
 
 ```java
 //  Get a list of available video devices for use.

@@ -5,20 +5,16 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: include
-ms.date: 11/05/2020
+ms.date: 02/05/2021
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 48a7912b1a6375111b6f9af1496cbbd41966202c
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 9ba0e7173c41e26a698596fa18bf1fc1453f3fb3
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183924"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99628932"
 ---
-### <a name="which-regions-are-available"></a><a name="regions"></a>Hangi bölgeler kullanılabilir?
-
-[!INCLUDE [Azure Bastion region availability](bastion-regions-include.md)]
-
 ### <a name="do-i-need-a-public-ip-on-my-virtual-machine-to-connect-via-azure-bastion"></a><a name="publicip"></a>Azure ile bağlantı kurmak için sanal makinemde genel bir IP almam gerekir mi?
 
 Hayır. Azure savunma kullanarak bir VM 'ye bağlandığınızda, bağlandığınız Azure sanal makinesinde genel bir IP 'ye gerek kalmaz. Savunma hizmeti, sanal ağınız dahilinde sanal makinenizin özel IP 'si üzerinden sanal makinenize yönelik RDP/SSH oturumu/bağlantısını açar.
