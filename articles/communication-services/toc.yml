@@ -51,6 +51,8 @@
   items:
     - name: Azure İşlevleri’ni kullanarak güvenilir bir kimlik doğrulama hizmeti oluşturma
       href: tutorials/trusted-service-tutorial.md
+    - name: 'C kullanarak HMAC imzasıyla HTTP isteğini imzalama #'
+      href: tutorials/hmac-header-tutorial.md
     - name: Bir Web uygulamasını Iletişim Hizmetleri için hazırlama (Node.js)
       href: tutorials/building-app-start.md
 - name: Kavramlar
@@ -110,6 +112,8 @@
       href: concepts/metrics.md
     - name: Sorun giderme
       href: concepts/troubleshooting-info.md
+    - name: Bilinen sorunlar
+      href: concepts/known-issues.md
 - name: Örnekler
   items:
     - name: Grup araması hero örneği

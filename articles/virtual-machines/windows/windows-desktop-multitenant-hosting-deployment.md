@@ -1,30 +1,48 @@
 ---
 title: Azure 'da çok kiracılı barındırma haklarıyla Windows 10 ' un dağıtımı
 description: Çoklu kiracı barındırma haklarıyla Azure 'a şirket içi lisanslar getirmek için Windows yazılım güvencesi avantajlarınızı nasıl en üst düzeye çıkaracağınızı öğrenin.
-author: xujing
+author: mimckitt
 ms.service: virtual-machines-windows
 ms.topic: how-to
 ms.workload: infrastructure-services
-ms.date: 1/24/2018
+ms.date: 2/2/2021
 ms.author: mimckitt
-ms.openlocfilehash: 8268e305946a19f4f74ff790e680d6bd3faa2b29
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.custom: rybaker, chmimckitt
+ms.openlocfilehash: 744f265251e9f58ce91085f0e5dd5d1ad13eec69
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881444"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99625127"
 ---
 # <a name="how-to-deploy-windows-10-on-azure-with-multitenant-hosting-rights"></a>Azure 'da çok kiracılı barındırma haklarıyla Windows 10 ' un dağıtımı 
-Windows 10 Enterprise E3/E5 veya Kullanıcı başına Windows sanal masaüstü erişimi (Kullanıcı aboneliği lisansları veya eklenti Kullanıcı aboneliği lisansları) olan müşteriler için, Windows 10 için çok kiracılı barındırma hakları, Windows 10 lisanslarınızı buluta getirmenize ve Azure 'da Windows 10 sanal makinelerini başka bir lisans ödemeksizin çalıştırmanıza olanak sağlar. Daha fazla bilgi için lütfen bkz. [Windows 10 Için çok kiracılı barındırma](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx).
+Windows 10 Enterprise E3/E5 veya Kullanıcı başına Windows sanal masaüstü erişimi (Kullanıcı aboneliği lisansları veya eklenti Kullanıcı aboneliği lisansları) olan müşteriler için, Windows 10 için çok kiracılı barındırma hakları, Windows 10 lisanslarınızı buluta getirmenize ve Azure 'da Windows 10 sanal makinelerini başka bir lisans ödemeksizin çalıştırmanıza olanak sağlar. Çoklu kiracı barındırma hakları yalnızca Windows 10 (sürüm 1703 veya üzeri) için kullanılabilir.
+
+Daha fazla bilgi için bkz. [Windows 10 Için çok kiracılı barındırma](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx).
 
 > [!NOTE]
-> Bu makalede, Azure Market 'te Windows 10 Pro Desktop görüntüleri için lisans avantajı 'nı uygulamanız gösterilmektedir.
-> - MSDN abonelikleri için Azure Market 'te Windows 7, 8,1, 10 Enterprise (x64) görüntüleri için lütfen [geliştirme ve test senaryoları Için Azure 'Da Windows istemcisine](client-images.md) bakın
+> - Windows 7, geliştirme veya test için 8,1 ve 10 görüntü kullanmak için bkz. geliştirme ve [test senaryoları Için Azure 'Da Windows istemcisi](client-images.md) .
 > - Windows Server lisanslama avantajları için lütfen [Windows Server görüntüleri Için Azure hibrit kullanım avantajları](hybrid-use-benefit-licensing.md)bölümüne bakın.
->
+
+## <a name="subscription-licenses-that-qualify-for-multitenant-hosting-rights"></a>Çok kiracılı barındırma hakları için uygun olan abonelik lisansları
+
+[Microsoft Yönetim merkezini](https://docs.microsoft.com/microsoft-365/admin/admin-overview/about-the-admin-center?view=o365-worldwide&preserve-view=true)kullanarak, bir kullanıcıya Windows 10 tarafından desteklenen bir lisans atanıp atanmadığını doğrulayabilirsiniz.
+
+> [!IMPORTANT]
+> Kullanıcıların Azure 'da Windows 10 görüntülerini kullanabilmesi için aşağıdaki abonelik lisanslarından birine sahip olmaları gerekir. Bu abonelik lisanslarından birine sahip değilseniz, [bulut hizmeti Iş ortağınız](https://azure.microsoft.com/overview/choosing-a-cloud-service-provider/) aracılığıyla veya doğrudan [Microsoft](https://www.microsoft.com/microsoft-365?rtc=1)aracılığıyla satın alınabilir.
+
+**Uygun Abonelik lisansları:**
+
+-   Microsoft 365 E3/E5 
+-   Microsoft 365 F3 
+-   Microsoft 365 a3/a5 
+-   Windows 10 Enterprise E3/E5
+-   Windows 10 eğitim a3/a5 
+-   Windows VDA E3/E5
+
 
 ## <a name="deploying-windows-10-image-from-azure-marketplace"></a>Azure Marketi 'nden Windows 10 görüntüsünü dağıtma 
-PowerShell, CLı ve Azure Resource Manager şablon dağıtımları için, ve kullanılarak Windows 10 görüntüleri bulunabilir `PublisherName: MicrosoftWindowsDesktop` `Offer: Windows-10` .
+PowerShell, CLı ve Azure Resource Manager şablon dağıtımları için, ve kullanılarak Windows 10 görüntüleri bulunabilir `PublisherName: MicrosoftWindowsDesktop` `Offer: Windows-10` . Çok kiracılı barındırma hakları için Windows 10 sürüm oluşturucuları Güncelleştirmesi (1809) veya üzeri desteklenir. 
 
 ```powershell
 Get-AzVmImageSku -Location '$location' -PublisherName 'MicrosoftWindowsDesktop' -Offer 'Windows-10'
@@ -40,17 +58,6 @@ rs5-pron                    Windows-10 MicrosoftWindowsDesktop eastus
 ```
 
 Kullanılabilir görüntüler hakkında daha fazla bilgi için bkz. [Azure PowerShell Ile Azure MARKETI VM görüntülerini bulma ve kullanma](./cli-ps-findimage.md)
-
-## <a name="qualify-for-multi-tenant-hosting-rights"></a>Çok kiracılı barındırma haklarına uygun hale getir 
-Çok kiracılı barındırma haklarını nitelemek ve Azure kullanıcıları üzerinde Windows 10 görüntülerini çalıştırmak için aşağıdaki aboneliklerden birine sahip olması gerekir: 
-
--   Microsoft 365 E3/E5 
--   Microsoft 365 F3 
--   Microsoft 365 a3/a5 
--   Windows 10 Enterprise E3/E5
--   Windows 10 eğitim a3/a5 
--   Windows VDA E3/E5
-
 
 ## <a name="uploading-windows-10-vhd-to-azure"></a>Windows 10 VHD 'yi Azure 'a yükleme
 Genelleştirilmiş bir Windows 10 VHD 'yi karşıya yüklüyorsanız, lütfen Windows 10 ' un yerleşik yönetici hesabının varsayılan olarak etkin olmadığını unutmayın. Yerleşik yönetici hesabını etkinleştirmek için, Özel Betik uzantısının parçası olarak aşağıdaki komutu ekleyin.
@@ -119,10 +126,7 @@ LicenseType              :
 ```
 
 ## <a name="additional-information-about-joining-azure-ad"></a>Azure AD 'ye katılma hakkında ek bilgiler
->[!NOTE]
->Azure, yerleşik yönetici hesabı olan tüm Windows sanal makinelerini AAD 'ye katmak için kullanılamaz. Örneğin, *ayarlar > hesap > erişim iş veya okul > + Bağlan* çalışmaz. Azure AD 'yi el ile birleştirmek için ikinci yönetici hesabı olarak oluşturmanız ve oturum açmanız gerekir. Azure AD 'yi bir sağlama paketi kullanarak da yapılandırabilirsiniz, daha fazla bilgi edinmek için *sonraki adımlar* bölümündeki bağlantıyı kullanın.
->
->
+Azure, yerleşik yönetici hesabı olan tüm Windows sanal makinelerini AAD 'ye katmak için kullanılamaz. Örneğin, *ayarlar > hesap > erişim iş veya okul > + Bağlan* çalışmaz. Azure AD 'yi el ile birleştirmek için ikinci yönetici hesabı olarak oluşturmanız ve oturum açmanız gerekir. Azure AD 'yi bir sağlama paketi kullanarak da yapılandırabilirsiniz, daha fazla bilgi edinmek için *sonraki adımlar* bölümündeki bağlantıyı kullanın.
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 - [Windows 10 için VDA yapılandırma](/windows/deployment/vda-subscription-activation) hakkında daha fazla bilgi edinin

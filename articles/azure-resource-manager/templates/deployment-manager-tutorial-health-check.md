@@ -1,25 +1,25 @@
 ---
-title: Azure Dağıtım Yöneticisi sistem durumu denetimini kullanma
-description: Azure Dağıtım Yöneticisi Azure kaynaklarını güvenli bir şekilde dağıtmak için sistem durumu denetimi kullanın.
+title: Azure Deployment Manager sistem durumu denetimini kullanma
+description: Azure Deployment Manager Azure kaynaklarını güvenli bir şekilde dağıtmak için sistem durumu denetimi kullanın.
 author: mumian
 ms.date: 10/09/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 3c7b74d31bc3c4e2276cd52c8e6450630dc99bcd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 12d246a493ff9ee9e20868da32d633d51939e66c
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86058036"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99626635"
 ---
-# <a name="tutorial-use-health-check-in-azure-deployment-manager-public-preview"></a>Öğretici: Azure Dağıtım Yöneticisi sistem durumu denetimi kullanma (Genel Önizleme)
+# <a name="tutorial-use-health-check-in-azure-deployment-manager-public-preview"></a>Öğretici: Azure Deployment Manager sistem durumu denetimi kullanma (Genel Önizleme)
 
-[Azure dağıtım Yöneticisi](./deployment-manager-overview.md)'de sistem durumu denetimini tümleştirmeyi öğrenin. Bu öğretici, [Kaynak Yöneticisi şablonları Ile Azure dağıtım Yöneticisi kullanma](./deployment-manager-tutorial.md) öğreticisine dayanır. Bu öğreticiye devam etmeden önce bu öğreticiyi tamamlamalısınız.
+[Azure Deployment Manager](./deployment-manager-overview.md)'de sistem durumu denetimini tümleştirmeyi öğrenin. Bu öğretici, [Kaynak Yöneticisi şablonları Ile Azure Deployment Manager kullanma](./deployment-manager-tutorial.md) öğreticisine dayanır. Bu öğreticiye devam etmeden önce bu öğreticiyi tamamlamalısınız.
 
-[Azure dağıtım Yöneticisi kullanma](./deployment-manager-tutorial.md)bölümünde kullanılan dağıtım şablonunda, Kaynak Yöneticisi şablonlarla bir bekleme adımı kullandınız. Bu öğreticide, bekleme adımını bir sistem durumu denetimi adımıyla değiştirirsiniz.
+[Azure Deployment Manager kullanma](./deployment-manager-tutorial.md)bölümünde kullanılan dağıtım şablonunda, Kaynak Yöneticisi şablonlarla bir bekleme adımı kullandınız. Bu öğreticide, bekleme adımını bir sistem durumu denetimi adımıyla değiştirirsiniz.
 
 > [!IMPORTANT]
-> Aboneliğiniz yeni Azure özelliklerini test etmek üzere işaretlenmişse, Azure Dağıtım Yöneticisi 'yi yalnızca Canary bölgelerine dağıtmak için kullanabilirsiniz. 
+> Aboneliğiniz yeni Azure özelliklerini test etmek üzere işaretlenmişse, Azure Deployment Manager 'yi yalnızca Canary bölgelerine dağıtmak için kullanabilirsiniz.
 
 Bu öğretici aşağıdaki görevleri kapsar:
 
@@ -35,70 +35,67 @@ Bu öğretici aşağıdaki görevleri kapsar:
 
 Ek kaynaklar:
 
-* [Azure Dağıtım Yöneticisi REST API başvurusu](/rest/api/deploymentmanager/).
-* [Azure dağıtım Yöneticisi örneği](https://github.com/Azure-Samples/adm-quickstart).
+* [Azure Deployment Manager REST API başvurusu](/rest/api/deploymentmanager/).
+* [Azure Deployment Manager örneği](https://github.com/Azure-Samples/adm-quickstart).
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
+## <a name="prerequisites"></a>Önkoşullar
 
-## <a name="prerequisites"></a>Ön koşullar
+Bu öğreticiyi tamamlayabilmeniz için şunlar gerekir:
 
-Bu makaleyi tamamlamak için gerekenler:
-
-* [Azure Dağıtım Yöneticisi kaynak yöneticisi şablonlarla kullanın](./deployment-manager-tutorial.md).
+* Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
+* [Azure Deployment Manager kaynak yöneticisi şablonlarla kullanın](./deployment-manager-tutorial.md).
 
 ## <a name="install-the-artifacts"></a>Yapıtları yükler
 
-[Şablonları ve yapıtları](https://github.com/Azure/azure-docs-json-samples/raw/master/tutorial-adm/ADMTutorial.zip) indirin ve bunu yapmadıysanız yerel olarak ayıklayın. Ve sonra [yapıtları hazırlama](./deployment-manager-tutorial.md#prepare-the-artifacts)sırasında bulunan PowerShell betiğini çalıştırın. Betik bir kaynak grubu oluşturur, bir depolama kapsayıcısı oluşturur, bir blob kapsayıcısı oluşturur, indirilen dosyaları karşıya yükler ve ardından bir SAS belirteci oluşturur.
+Önkoşul öğreticisinde kullanılan örnekleri henüz indirmediyseniz, [şablonları ve yapıtları](https://github.com/Azure/azure-docs-json-samples/raw/master/tutorial-adm/ADMTutorial.zip) indirebilir ve yerel olarak sıkıştırmayı açabilirsiniz. Ardından, önkoşul öğreticisi 'nin [yapıtları hazırlama](./deployment-manager-tutorial.md#prepare-the-artifacts)bölümünde PowerShell betiğini çalıştırın. Betik bir kaynak grubu oluşturur, bir depolama kapsayıcısı oluşturur, bir blob kapsayıcısı oluşturur, indirilen dosyaları karşıya yükler ve ardından bir SAS belirteci oluşturur.
 
-SAS belirteci ile URL 'nin bir kopyasını oluşturun. Bu URL, iki parametre dosyasındaki (topoloji parametre dosyası ve piyasaya çıkarma parametre dosyası) bir alanı doldurmak için gereklidir.
-
-CreateADMServiceTopology.Parameters.jsaçın ve **ProjectName** ve **Artifactsourcesaslocation**değerlerini güncelleştirin.
-
-CreateADMRollout.Parameters.jsaçın ve **ProjectName** ve **Artifactsourcesaslocation**değerlerini güncelleştirin.
+* SAS belirteci ile URL 'nin bir kopyasını oluşturun. İki parametre dosyasındaki bir alanı doldurmak için bu URL gereklidir: topoloji parametreleri dosyası ve dağıtım parametreleri dosyası.
+* _ÜzerindeCreateADMServiceTopology.Parameters.js_ açın ve ve değerlerini güncelleştirin `projectName` `artifactSourceSASLocation` .
+* _ÜzerindeCreateADMRollout.Parameters.js_ açın ve ve değerlerini güncelleştirin `projectName` `artifactSourceSASLocation` .
 
 ## <a name="create-a-health-check-service-simulator"></a>Durum denetimi hizmeti simülatörü oluşturma
 
-Üretimde, genellikle bir veya daha fazla izleme sağlayıcısı kullanırsınız. Sistem durumu tümleştirmesini mümkün olduğunca kolay hale getirmek için, Microsoft, en önemli hizmet durumu izleme şirketleriyle birlikte çalışarak dağıtımlarınızla durum denetimlerini tümleştirmek üzere basit bir kopyalama/yapıştırma çözümü sağlar. Bu şirketlerin listesi için bkz. [sistem durumu izleme sağlayıcıları](./deployment-manager-health-check.md#health-monitoring-providers). Bu öğreticinin amacı doğrultusunda, bir sistem durumu izleme hizmetinin benzetimini yapmak için bir [Azure işlevi](../../azure-functions/index.yml) oluşturursunuz. Bu işlev bir durum kodu alır ve aynı kodu döndürür. Azure Dağıtım Yöneticisi şablonunuz dağıtım ile devam etmek için durum kodunu kullanır.
+Üretimde, genellikle bir veya daha fazla izleme sağlayıcısı kullanırsınız. Sistem durumu tümleştirmesini mümkün olduğunca kolay hale getirmek için, Microsoft, en önemli hizmet durumu izleme şirketleriyle birlikte çalışarak dağıtımlarınızla durum denetimlerini tümleştirmek üzere basit bir kopyalama/yapıştırma çözümü sağlar. Bu şirketlerin listesi için bkz. [sistem durumu izleme sağlayıcıları](./deployment-manager-health-check.md#health-monitoring-providers). Bu öğreticinin amacı doğrultusunda, bir sistem durumu izleme hizmetinin benzetimini yapmak için bir [Azure işlevi](../../azure-functions/index.yml) oluşturursunuz. Bu işlev bir durum kodu alır ve aynı kodu döndürür. Azure Deployment Manager şablonunuz dağıtım ile devam etmek için durum kodunu kullanır.
 
 Azure Işlevini dağıtmak için aşağıdaki iki dosya kullanılır. Öğreticiye gitmek için bu dosyaları indirmeniz gerekmez.
 
 * Konumunda bulunan bir Kaynak Yöneticisi şablonu [https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-adm/deploy_hc_azure_function.json](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-adm/deploy_hc_azure_function.json) . Bu şablonu, bir Azure Işlevi oluşturmak için dağıtırsınız.
 * Azure Işlevi kaynak kodunun bir ZIP dosyası [https://github.com/Azure/azure-docs-json-samples/raw/master/tutorial-adm/ADMHCFunction0417.zip](https://github.com/Azure/azure-docs-json-samples/raw/master/tutorial-adm/ADMHCFunction0417.zip) . Çağrılan bu zip Kaynak Yöneticisi şablonu tarafından çağırılır.
 
-Azure işlevini dağıtmak için **dene** ' yi seçerek Azure Cloud Shell 'i açın ve ardından aşağıdaki betiği kabuk penceresine yapıştırın.  Kodu yapıştırmak için kabuk penceresine sağ tıklayıp **Yapıştır**' ı seçin.
+Azure işlevini dağıtmak için **dene** ' yi seçerek Azure Cloud Shell açın ve ardından aşağıdaki betiği kabuk penceresine yapıştırın. Kodu yapıştırmak için kabuk penceresine sağ tıklayıp **Yapıştır**' ı seçin.
 
-```azurepowershell
+```azurepowershell-interactive
 New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-adm/deploy_hc_azure_function.json" -projectName $projectName
 ```
 
 Azure işlevini doğrulamak ve test etmek için:
 
 1. [Azure portalını](https://portal.azure.com) açın.
-1. Kaynak grubunu açın.  Varsayılan ad, **RG** eklenmiş proje adıdır.
-1. Kaynak grubundan App Service ' i seçin.  App Service 'in varsayılan adı, **WebApp** eklenen proje adıdır.
+1. Kaynak grubunu açın. Varsayılan ad, **RG** eklenmiş proje adıdır.
+1. Kaynak grubundan App Service ' i seçin. App Service 'in varsayılan adı, **WebApp** eklenen proje adıdır.
 1. **İşlevler**' i genişletin ve ardından **HttpTrigger1**' ı seçin.
 
-    ![Azure Dağıtım Yöneticisi sistem durumu denetimi Azure Işlevi](./media/deployment-manager-tutorial-health-check/azure-deployment-manager-hc-function.png)
+    ![Azure Deployment Manager sistem durumu denetimi Azure Işlevi](./media/deployment-manager-tutorial-health-check/azure-deployment-manager-hc-function.png)
 
-1. ** &lt; İşlev URL 'sini al/>** seçin.
-1. URL 'YI panoya kopyalamak için **Kopyala** ' yı seçin.  URL şuna benzer:
+1. **&lt; İşlev URL 'sini al/>** seçin.
+1. URL 'YI panoya kopyalamak için **Kopyala** ' yı seçin. URL şuna benzer:
 
     ```url
     https://myhc0417webapp.azurewebsites.net/api/healthStatus/{healthStatus}?code=hc4Y1wY4AqsskAkVw6WLAN1A4E6aB0h3MbQ3YJRF3XtXgHvooaG0aw==
     ```
 
-    `{healthStatus}`URL 'de bir durum kodu ile değiştirin. Bu öğreticide, sağlıksız senaryoyu test etmek için **sağlıksız** kullanın ve sağlıklı senaryoyu test etmek için **sağlıklı** ya da **uyarıyı** kullanın. Biri sağlıksız durum ve diğeri sağlıklı durumda olan iki URL oluşturun. Örnekler için:
+    `{healthStatus}`URL 'de bir durum kodu ile değiştirin. Bu öğreticide, sağlıksız senaryoyu test etmek için *sağlıksız* kullanın ve sağlıklı senaryoyu test etmek için *sağlıklı* ya da *uyarıyı* kullanın. Biri *sağlıksız* durum ve diğeri *sağlıklı* durumda olan iki URL oluşturun. Örneğin:
 
     ```url
     https://myhc0417webapp.azurewebsites.net/api/healthStatus/unhealthy?code=hc4Y1wY4AqsskAkVw6WLAN1A4E6aB0h3MbQ3YJRF3XtXgHvooaG0aw==
     https://myhc0417webapp.azurewebsites.net/api/healthStatus/healthy?code=hc4Y1wY4AqsskAkVw6WLAN1A4E6aB0h3MbQ3YJRF3XtXgHvooaG0aw==
     ```
 
-    Bu öğreticinin tamamlanması için her iki URL 'ye de ihtiyacınız vardır.
+    Bu öğreticiyi tamamlayabilmeniz için her iki URL 'ye de ihtiyacınız vardır.
 
-1. Sistem durumu izleme simülatörünü test etmek için, son adımda oluşturduğunuz URL 'Leri açın.  Sağlıksız durum sonuçları şuna benzer olacaktır:
+1. Sistem durumu izleme simülatörünü test etmek için, önceki adımda oluşturduğunuz URL 'Leri açın. Sağlıksız durum sonuçları şuna benzer olacaktır:
 
-    ```
+    ```Output
     Status: unhealthy
     ```
 
@@ -106,7 +103,7 @@ Azure işlevini doğrulamak ve test etmek için:
 
 Bu bölümün amacı, dağıtım şablonunda bir sistem durumu denetimi adımının nasıl ekleneceğini gösterir.
 
-1. [Azure dağıtım Yöneticisi 'yi Kaynak Yöneticisi şablonlarla birlikte kullanarak](./deployment-manager-tutorial.md)oluşturduğunuz **CreateADMRollout.js** açın. Bu JSON dosyası, indirmenin bir parçasıdır.  [Ön koşullara](#prerequisites) bakın.
+1. [Azure Deployment Manager 'yi Kaynak Yöneticisi şablonlarla birlikte kullanarak](./deployment-manager-tutorial.md)oluşturduğunuz _CreateADMRollout.js_ açın. Bu JSON dosyası, indirmenin bir parçasıdır.  [Ön koşullara](#prerequisites) bakın.
 1. İki parametre daha ekleyin:
 
     ```json
@@ -173,9 +170,9 @@ Bu bölümün amacı, dağıtım şablonunda bir sistem durumu denetimi adımın
     },
     ```
 
-    Tanım temelinde, dağıtım sistem durumu *sağlıklı* veya *Uyarı*olursa devam eder.
+    Tanım temelinde, dağıtım sistem durumu *sağlıklı* veya *Uyarı* olursa devam eder.
 
-1. Yeni tanımlanan sistem durumu denetimi adımını dahil etmek için, piyasaya çıkma tanımının **bağımlılığını** güncelleştirin:
+1. `dependsOn`Yeni tanımlanan sistem durumu denetimi adımını dahil etmek için, dağıtım tanımını güncelleştirin:
 
     ```json
     "dependsOn": [
@@ -184,7 +181,7 @@ Bu bölümün amacı, dağıtım şablonunda bir sistem durumu denetimi adımın
     ],
     ```
 
-1. **StepGroups** durumunu, sistem durumu denetimi adımını içerecek şekilde güncelleştirin. **Healthcheckstep** , **StepGroup2**'in **postdeploymentsteps** içinde çağırılır. **stepGroup3** ve **stepGroup4** yalnızca sağlıklı durum *sağlıklı* veya *Uyarı*olduğunda dağıtılır.
+1. `stepGroups`Durum denetimi adımını içerecek şekilde güncelleştirin. , `healthCheckStep` İçinde çağrılır `postDeploymentSteps` `stepGroup2` . `stepGroup3` ve `stepGroup4` yalnızca sağlıklı durumu *sağlıklı* ya da *Uyarı* olduğunda dağıtılır.
 
     ```json
     "stepGroups": [
@@ -222,15 +219,15 @@ Bu bölümün amacı, dağıtım şablonunda bir sistem durumu denetimi adımın
     ]
     ```
 
-    **StepGroup3** bölümünü, yeniden güncelleştirildikten önce ve sonra karşılaştırırsanız, bu bölüm artık **stepGroup2**'e bağımlıdır.  Bu, **stepGroup3** ve sonraki adım grupları sistem durumu izlemenin sonuçlarına bağlı olduğunda gereklidir.
+    `stepGroup3`Bölümü gözden geçirdikten önce ve sonra karşılaştırırsanız, bu bölüm artık bağımlıdır `stepGroup2` . Bu, `stepGroup3` ve sonraki adım gruplarının sistem durumu izlemenin sonuçlarına bağlı olması durumunda gereklidir.
 
-    Aşağıdaki ekran görüntüsünde, değiştirilen bölgeler ve sistem durumu denetimi adımının nasıl kullanıldığı gösterilmektedir:
+    Aşağıdaki ekran görüntüsünde, değiştirilen alanların ve sistem durumu denetimi adımının nasıl kullanıldığı gösterilmektedir:
 
-    ![Azure Dağıtım Yöneticisi sistem durumu denetimi şablonu](./media/deployment-manager-tutorial-health-check/azure-deployment-manager-hc-rollout-template.png)
+    ![Azure Deployment Manager sistem durumu denetimi şablonu](./media/deployment-manager-tutorial-health-check/azure-deployment-manager-hc-rollout-template.png)
 
 ## <a name="deploy-the-topology"></a>Topolojiyi dağıtma
 
-Topolojiyi dağıtmak için aşağıdaki PowerShell betiğini çalıştırın. [Kaynak Yöneticisi şablonlarıyla Azure dağıtım Yöneticisi kullanma](./deployment-manager-tutorial.md)bölümünde kullandığınız **CreateADMServiceTopology.Parameters.js** ve üzerinde aynı **CreateADMServiceTopology.js** gerekir.
+Topolojiyi dağıtmak için aşağıdaki PowerShell betiğini çalıştırın. [Kaynak Yöneticisi şablonlarıyla Azure Deployment Manager kullanma](./deployment-manager-tutorial.md)bölümünde kullandığınız _CreateADMServiceTopology.Parameters.js_ ve üzerinde aynı _CreateADMServiceTopology.js_ gerekir.
 
 ```azurepowershell
 # Create the service topology
@@ -248,7 +245,7 @@ Kaynakları görmek için **Gizli türleri göster** seçeneği belirlenmelidir.
 
 ## <a name="deploy-the-rollout-with-the-unhealthy-status"></a>Dağıtımı sağlıksız durumuyla dağıtma
 
-[Durum denetimi hizmeti simülatörü oluşturma](#create-a-health-check-service-simulator)bölümünde oluşturduğunuz sağlıksız durum URL 'sini kullanın. Değiştirilen **CreateADMServiceTopology.js** ve **CreateADMServiceTopology.Parameters.js** [Azure dağıtım Yöneticisi 'yi Kaynak Yöneticisi şablonlarıyla](./deployment-manager-tutorial.md)kullandığınız aynı gerekir.
+[Durum denetimi hizmeti simülatörü oluşturma](#create-a-health-check-service-simulator)bölümünde oluşturduğunuz sağlıksız durum URL 'sini kullanın. Değiştirilen _CreateADMServiceTopology.js_ ve _CreateADMServiceTopology.Parameters.js_ [Azure Deployment Manager 'yi Kaynak Yöneticisi şablonlarıyla](./deployment-manager-tutorial.md)kullandığınız aynı gerekir.
 
 ```azurepowershell-interactive
 $healthCheckUrl = Read-Host -Prompt "Enter the health check Azure function URL"
@@ -267,7 +264,7 @@ New-AzResourceGroupDeployment `
 > [!NOTE]
 > `New-AzResourceGroupDeployment` zaman uyumsuz bir çağrıdır. Başarı iletisi yalnızca dağıtımın başarıyla başladığını gösterir. Dağıtımı doğrulamak için kullanın `Get-AZDeploymentManagerRollout` .  Sonraki yordama bakın.
 
-Aşağıdaki PowerShell betiğini kullanarak dağıtım ilerlemesini denetlemek için:
+Dağıtım ilerlemesini denetlemek için aşağıdaki PowerShell betiğini kullanın:
 
 ```azurepowershell
 $projectName = Read-Host -Prompt "Enter the same project name used earlier in this tutorial"
@@ -283,7 +280,7 @@ Get-AzDeploymentManagerRollout `
 
 Aşağıdaki örnek çıktı, sağlıksız durum nedeniyle dağıtımın başarısız olduğunu gösterir:
 
-```output
+```Output
 Service: myhc0417ServiceWUSrg
     TargetLocation: WestUS
     TargetSubscriptionId: <Subscription ID>
@@ -344,29 +341,29 @@ Dağıtım tamamlandıktan sonra, Batı ABD için oluşturulmuş bir ek kaynak g
 
 ## <a name="deploy-the-rollout-with-the-healthy-status"></a>Dağıtımı sağlıklı durumuyla dağıtma
 
-Dağıtımı sağlıklı durum URL 'SI ile yeniden dağıtmak için bu bölümü tekrarlayın.  Dağıtım tamamlandıktan sonra, Doğu ABD için bir kaynak grubunun oluşturulduğunu daha görürsünüz.
+Dağıtımı sağlıklı durum URL 'SI ile yeniden dağıtmak için bu bölümü tekrarlayın. Dağıtım tamamlandıktan sonra, Doğu ABD için bir kaynak grubunun oluşturulduğunu daha görürsünüz.
 
 ## <a name="verify-the-deployment"></a>Dağıtımı doğrulama
 
 1. [Azure portalını](https://portal.azure.com) açın.
-2. Piyasaya çıkarma dağıtımı tarafından oluşturulan yeni kaynak gruplarındaki yeni oluşturulan web uygulamalarına gidin.
-3. Web uygulamasını bir web tarayıcıda açın. Index.html dosyasında konumu ve sürümü doğrulayın.
+1. Dağıtım dağıtımı tarafından oluşturulan yeni kaynak grupları altındaki yeni Web uygulamalarına gidin.
+1. Web uygulamasını bir web tarayıcıda açın. _index.html_ dosyasındaki konumu ve sürümü doğrulayın.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
 Artık Azure kaynakları gerekli değilse, kaynak grubunu silerek dağıttığınız kaynakları temizleyin.
 
 1. Azure portal, sol menüden **kaynak grubu** ' nu seçin.
-2. Bu öğreticide oluşturulan kaynak gruplarını daraltmak için **Ada göre filtrele** alanını kullanın. 3-4 adet olacaktır:
+1. Bu öğreticide oluşturulan kaynak gruplarını daraltmak için **Ada göre filtrele** alanını kullanın.
 
-    * ** &lt; ProjectName>rg**: Dağıtım Yöneticisi kaynaklarını içerir.
-    * ** &lt; ProjectName>ServiceWUSrg**: servicewus tarafından tanımlanan kaynakları içerir.
-    * ** &lt; ProjectName>ServiceEUSrg**: serviceeus tarafından tanımlanan kaynakları içerir.
+    * **&lt; ProjectName>rg**: Deployment Manager kaynaklarını içerir.
+    * **&lt; ProjectName>ServiceWUSrg**: servicewus tarafından tanımlanan kaynakları içerir.
+    * **&lt; ProjectName>ServiceEUSrg**: serviceeus tarafından tanımlanan kaynakları içerir.
     * Kullanıcı tanımlı yönetilen kimlik için kaynak grubu.
-3. Kaynak grubu adını seçin.
-4. Üstteki menüden **kaynak grubunu sil** ' i seçin.
-5. Bu öğretici tarafından oluşturulan diğer kaynak gruplarını silmek için son iki adımı tekrarlayın.
+1. Kaynak grubu adını seçin.
+1. Üstteki menüden **kaynak grubunu sil** ' i seçin.
+1. Bu öğretici tarafından oluşturulan diğer kaynak gruplarını silmek için son iki adımı tekrarlayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, Azure Dağıtım Yöneticisi sistem durumu denetimi özelliğini kullanmayı öğrendiniz. Daha fazla bilgi edinmek için bkz. [Azure Resource Manager belgeleri](../index.yml).
+Bu öğreticide, Azure Deployment Manager sistem durumu denetimi özelliğini kullanmayı öğrendiniz. Daha fazla bilgi edinmek için bkz. [Azure Resource Manager belgeleri](../index.yml).

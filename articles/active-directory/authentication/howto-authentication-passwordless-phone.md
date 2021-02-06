@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 35eff46a0470d429c8ec6f364ffa836501c65f47
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 62dea67f139857befc7ca24b8b8a105241b5c949
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96743607"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99626164"
 ---
 # <a name="enable-passwordless-sign-in-with-the-microsoft-authenticator-app-preview"></a>Microsoft Authenticator uygulamasıyla passwordless oturum açmayı etkinleştirme (Önizleme)
 
@@ -57,10 +57,13 @@ Azure AD, oturum açma işlemi sırasında hangi kimlik doğrulama yöntemlerini
 Parolasız telefon oturumu açma kimlik doğrulama yöntemini etkinleştirmek için aşağıdaki adımları izleyin:
 
 1. [Azure Portal](https://portal.azure.com) bir *genel yönetici* hesabıyla oturum açın.
-1. *Azure Active Directory* arayıp seçin, sonra **güvenlik**  >  **kimlik doğrulama yöntemleri**  >  **kimlik doğrulama yöntemi ilkesi 'ne (Önizleme)** gidin
-1. **Passwordless telefon oturumu açma** altında aşağıdaki seçenekleri belirleyin:
+1. *Azure Active Directory* arayıp seçin, sonra **güvenlik**  >  **kimlik doğrulama yöntemleri**  >  **ilkelerine** gidin.
+1. **Microsoft Authenticator (Önizleme)** altında aşağıdaki seçenekleri belirleyin:
    1. **Etkinleştir** -Evet veya Hayır
    1. **Hedef** -tüm kullanıcılar veya kullanıcıları seçin
+1. Her eklenen grup veya Kullanıcı varsayılan olarak, hem passwordless hem de anında bildirim modlarında ("Any" modunda) Microsoft Authenticator kullanılmak üzere etkinleştirilir. Bunu değiştirmek için her satır için:
+   1. Buraya gidin **...**  >  Öğesini **yapılandırın**.
+   1. **Kimlik doğrulama modu** için-Any, passwordless veya Push
 1. Yeni ilkeyi uygulamak için **Kaydet**' i seçin.
 
 ## <a name="user-registration-and-management-of-microsoft-authenticator"></a>Microsoft Authenticator Kullanıcı kaydı ve yönetimi

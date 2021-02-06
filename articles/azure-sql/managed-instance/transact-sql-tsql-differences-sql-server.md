@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, bonova, danil
 ms.date: 11/10/2020
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: 66198291420d48e04df0821d8d110812d6aa01d7
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: cc31ad851441c980365841b1131405339a1092fa
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99525814"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99626283"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>SQL Server & Azure SQL yönetilen örneği arasındaki T-SQL farklılıkları
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -490,7 +490,7 @@ Restore deyimleri hakkında daha fazla bilgi için bkz. [restore deyimleri](/sql
   - `scan for startup procs`
 - `sp_execute_external_scripts` desteklenmez. Bkz. [sp_execute_external_scripts](/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql#examples).
 - `xp_cmdshell` desteklenmez. Bkz. [xp_cmdshell](/sql/relational-databases/system-stored-procedures/xp-cmdshell-transact-sql).
-- `Extended stored procedures` , ve içeren desteklenmez `sp_addextendedproc` `sp_dropextendedproc` . Bkz. [genişletilmiş saklı yordamlar](/sql/relational-databases/system-stored-procedures/general-extended-stored-procedures-transact-sql).
+- `Extended stored procedures` desteklenmez ve bu `sp_addextendedproc` ve içerir `sp_dropextendedproc` . Bu işlev, SQL Server için kullanımdan kaldırma yolunda olduğundan desteklenmez. Daha fazla ayrıntı için bkz. [genişletilmiş saklı yordamlar](/sql/relational-databases/extended-stored-procedures-programming/database-engine-extended-stored-procedures-programming).
 - `sp_attach_db`, `sp_attach_single_file_db` ve `sp_detach_db` desteklenmez. Bkz. [sp_attach_db](/sql/relational-databases/system-stored-procedures/sp-attach-db-transact-sql), [sp_attach_single_file_db](/sql/relational-databases/system-stored-procedures/sp-attach-single-file-db-transact-sql)ve [sp_detach_db](/sql/relational-databases/system-stored-procedures/sp-detach-db-transact-sql).
 
 ### <a name="system-functions-and-variables"></a>Sistem işlevleri ve değişkenler

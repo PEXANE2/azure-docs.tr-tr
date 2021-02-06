@@ -5,14 +5,19 @@ author: georgewallace
 ms.author: gwallace
 ms.date: 11/28/2018
 ms.topic: conceptual
-ms.openlocfilehash: d82df6ee598664c2b85cfa82395ac66f3865cf7f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1fda83ec00bed0f0c67d45e1e1af61baa5de5e78
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91843015"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99626765"
 ---
 # <a name="service-fabric-mesh-terminology"></a>Service Fabric kafes terminolojisi
+
+> [!IMPORTANT]
+> Azure Service Fabric ağı önizlemesi devre dışı bırakıldı. Yeni dağıtımlar Service Fabric kafes API 'SI aracılığıyla artık izin verilmeyecektir. Mevcut dağıtımlar için destek 28 Nisan 2021 ' den devam edecektir.
+> 
+> Ayrıntılar için bkz. [Azure Service Fabric kafes önizleme kullanımdan](https://azure.microsoft.com/updates/azure-service-fabric-mesh-preview-retirement/)kaldırma.
 
 Azure Service Fabric Mesh, geliştiricilerin sanal makineleri, depolama alanını veya ağ bileşenlerini yönetmeden mikro hizmet uygulamaları dağıtmasını sağlayan tam olarak yönetilen bir hizmettir. Bu makalede, belgelerde kullanılan koşulları daha iyi anlamanıza yardımcı olmak üzere Azure Service Fabric ağı tarafından kullanılan terminoloji ayrıntılı olarak açıklanır.
 

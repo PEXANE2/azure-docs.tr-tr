@@ -7,12 +7,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 9/28/2020
 ms.author: matjazl
-ms.openlocfilehash: bdbab0e032764d07119402686051d391376cb913
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 60a2a41a8005e8bd0fbc313c9a177d54df6dac5e
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91844003"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99627172"
 ---
 # <a name="exporting-de-identified-data-preview"></a>Belirtilen verileri dışarı aktarma (Önizleme)
 
@@ -23,7 +23,10 @@ $Export komutu, FHıR sunucusundan de belirtilen verileri dışarı aktarmak iç
 
  `https://<<FHIR service base URL>>/$export?_container=<<container_name>>&_anonymizationConfig=<<config file name>>&_anonymizationConfigEtag=<<ETag on storage>>`
 
-|Sorgu parametresi            | Örnek |Optionitesi| Açıklama|
+> [!Note] 
+> Artık FHıR için Azure API 'SI, sistem düzeyinde ($export) yalnızca belirtilen dışarı aktarmayı destekler.
+
+|Sorgu parametresi            | Örnek |Optionitesi| Description|
 |---------------------------|---------|-----------|------------|
 | _\_anonymizationConfig_   |Üzerinde DemoConfig.js|Geçersiz şekilde tanımlanan dışarı aktarma için gereklidir |Yapılandırma dosyasının adı. Yapılandırma dosyası biçimini [buradan](https://github.com/microsoft/FHIR-Tools-for-Anonymization#configuration-file-format)görebilirsiniz. Bu dosya, dışarı aktarma konumu olarak yapılandırılmış aynı Azure depolama hesabı içinde, **anonimleştirme** adlı bir kapsayıcı içinde tutulmalıdır. |
 | _\_anonymizationConfigEtag_|"0x8D8494A069489EC"|Geçersiz şekilde tanımlanan dışarı aktarma için isteğe bağlı|Bu, yapılandırma dosyasının ETag ' i. Blob özelliğinden Azure Depolama Gezgini 'ni kullanarak ETag 'i edinebilirsiniz|

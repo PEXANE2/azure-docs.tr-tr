@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: 8ed567ee20835cfe076c9b06234f2cba23f3a8bd
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 98a16e0a60ddf149e8f0e1a092051f3e98ea8225
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96002587"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99627071"
 ---
 # <a name="troubleshoot-deploying-windows-virtual-machine-issues-in-azure"></a>Azure'da Windows sanal makinesi dağıtma sorunlarını giderme
 
@@ -104,7 +104,7 @@ Azure N serisi VM 'lerin GPU yeteneklerini avantajlarından yararlanmak için da
 
 Windows 7, Windows 8 veya Windows 10 ' u Azure 'da geliştirme/test senaryoları için uygun bir Visual Studio (eski adıyla MSDN) aboneliğine sahip olursunuz. 
 
-- Windows 10 görüntüleri, [uygun geliştirme/test tekliflerindeki](../windows/client-images.md#eligible-offers)Azure galerisinden kullanılabilir. 
+- Windows 10 görüntüleri, [uygun geliştirme/test tekliflerindeki](../windows/client-images.md)Azure galerisinden kullanılabilir. 
 - Herhangi bir teklif türündeki Visual Studio aboneleri, 64 bitlik bir Windows 7, Windows 8 veya Windows 10 görüntüsünü [yeterince hazırlayabilir ve oluşturabilir](../windows/prepare-for-upload-vhd-image.md) , sonra da [Azure 'a yükleyebilir](../windows/upload-generalized-managed.md). Kullanım, etkin Visual Studio aboneleri tarafından geliştirme ve test ile sınırlı kalır.
 
 Bu [makalede](../windows/client-images.md) , Azure 'da Windows istemcisini çalıştırmaya yönelik uygunluk gereksinimleri ve Azure Galeri görüntülerinin kullanımı özetlenmektedir.

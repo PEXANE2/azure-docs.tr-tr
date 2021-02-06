@@ -6,14 +6,20 @@ ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: srrengar
 ms.custom: mvc, devcenter, devx-track-azurecli
-ms.openlocfilehash: 63c79169646f05cddc7c605c764398bdef7492d4
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 02de8ea5dd5c53192d2b8c7beba8bc36143beac6
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98682080"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99627003"
 ---
 # <a name="monitoring-and-diagnostics"></a>İzleme ve tanılama
+
+> [!IMPORTANT]
+> Azure Service Fabric ağı önizlemesi devre dışı bırakıldı. Yeni dağıtımlar Service Fabric kafes API 'SI aracılığıyla artık izin verilmeyecektir. Mevcut dağıtımlar için destek 28 Nisan 2021 ' den devam edecektir.
+> 
+> Ayrıntılar için bkz. [Azure Service Fabric kafes önizleme kullanımdan](https://azure.microsoft.com/updates/azure-service-fabric-mesh-preview-retirement/)kaldırma.
+
 Azure Service Fabric Mesh, geliştiricilerin sanal makineleri, depolama alanını veya ağ bileşenlerini yönetmeden mikro hizmet uygulamaları dağıtmasını sağlayan tam olarak yönetilen bir hizmettir. Service Fabric ağ için izleme ve tanılama, üç temel tanılama verisi türüne kategorize edilir:
 
 - Uygulama günlükleri-Bunlar, uygulamanızı nasıl kapatdığınıza (ör. Docker günlükleri) göre Kapsayıcılı uygulamalardaki Günlükler olarak tanımlanmıştır
@@ -43,7 +49,7 @@ az mesh code-package-log get --resource-group <nameOfRG> --application-name SbzV
 
 Ağ ortamı, kapsayıcılarınızın nasıl gerçekleştiğini gösteren bir dizi ölçüm sunar. Aşağıdaki ölçümler Azure portal ve Azure izleyici CLı aracılığıyla sunulmaktadır:
 
-| Ölçüm | Açıklama | Birimler|
+| Metric | Açıklama | Birimler|
 |----|----|----|
 | Cpukullanımı | Yüzde olarak ActualCpu/Ayrıtedcpu | % |
 | Memoryutilileştirme | Yüzde olarak ActualMem/Ayrıtedbellek | % |
@@ -58,7 +64,7 @@ Ağ ortamı, kapsayıcılarınızın nasıl gerçekleştiğini gösteren bir diz
 | RestartCount | Kapsayıcı yeniden başlatmaları sayısı | Yok |
 
 > [!NOTE]
-> ServiceStatus ve Servicereperepstatus değerleri, Service Fabric [HealthState](/dotnet/api/system.fabric.health.healthstate?view=azure-dotnet) ile aynıdır. 
+> ServiceStatus ve Servicereperepstatus değerleri, Service Fabric [HealthState](/dotnet/api/system.fabric.health.healthstate) ile aynıdır.
 
 Her ölçüm farklı boyutlarda kullanılabilir ve bu sayede toplamaları farklı düzeylerde görebilirsiniz. Geçerli boyut listesi aşağıdaki gibidir:
 

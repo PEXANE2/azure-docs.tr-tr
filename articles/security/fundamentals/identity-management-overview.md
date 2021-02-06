@@ -4,8 +4,7 @@ description: Kimlik yönetimine yardımcı olan çekirdek Azure Güvenlik özell
 services: security
 documentationcenter: na
 author: TerryLanfear
-manager: barbkess
-editor: TomSh
+manager: rkarlin
 ms.assetid: 5aa0a7ac-8f18-4ede-92a1-ae0dfe585e28
 ms.service: security
 ms.subservice: security-fundamentals
@@ -13,17 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/19/2018
+ms.date: 02/05/2021
 ms.author: terrylan
 Customer intent: As an IT Pro or decision maker I am trying to learn about identity management capabilities in Azure
-ms.openlocfilehash: 2c7d51da361816841ff556c1da696a48d2ce6a06
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: d931d3923ff49dde2bea234278c995e79670429f
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843698"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99627642"
 ---
-# <a name="azure-identity-management-security-overview"></a>Azure Identity Management güvenliğine genel bakış
+# <a name="azure-identity-management-security-overview"></a>Azure'da kimlik yönetim güvenliğine genel bakış
 
  Kimlik yönetimi, [güvenlik sorumlularının](/windows/security/identity-protection/access-control/security-principals)kimlik doğrulama ve yetkilendirme işlemidir. Ayrıca, bu sorumlular (kimlikler) hakkındaki bilgilerin denetlenmesini da içerir. Güvenlik sorumluları (kimlikler), hizmetler, uygulamalar, kullanıcılar, gruplar vb. içerebilir. Microsoft kimlik ve erişim yönetimi çözümleri, şirket veri merkezinde ve buluta uygulamalara ve kaynaklara erişimi korumaya yardımcı olur. Bu koruma, Multi-Factor Authentication ve koşullu erişim ilkeleri gibi ek doğrulama düzeyleri sunar. Gelişmiş güvenlik raporlaması, denetim ve uyarı aracılığıyla kuşkulu etkinlikleri izlemek, olası güvenlik sorunlarını azaltmaya yardımcı olur. [Azure Active Directory Premium](../../active-directory/fundamentals/active-directory-whatis.md) , binlerce bulut yazılım hizmeti (SaaS) uygulaması ve şirket içinde çalıştırdığınız Web uygulamalarına erişim için çoklu oturum açma (SSO) sağlar.
  
@@ -62,8 +61,8 @@ Yalnızca birden çok Kullanıcı adı grubunu ve parolayı yönetmek zorunda ol
 
 Daha fazla bilgi edinin:
 
-* [Çoklu oturum açma 'ya genel bakış](https://azure.microsoft.com/documentation/videos/overview-of-single-sign-on/)
-* [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../../active-directory/manage-apps/what-is-single-sign-on.md)
+* [SSO 'ya genel bakış](../../active-directory/manage-apps/what-is-single-sign-on.md)
+* [Kimlik doğrulama temelleri videosu](https://www.youtube.com/watch?v=fbSVgC8nGz4&feature=emb_title)
 * [Uygulama yönetiminde hızlı başlangıç serisi](../../active-directory/manage-apps/view-applications-portal.md)
 
 ## <a name="reverse-proxy"></a>Ters proxy
@@ -85,7 +84,7 @@ Daha fazla bilgi edinin:
 
 * [Multi-Factor Authentication](https://azure.microsoft.com/documentation/services/multi-factor-authentication/)
 * [Azure AD Multi-Factor Authentication nedir?](../../active-directory/authentication/concept-mfa-howitworks.md)
-* [Azure AD Multi-Factor Authentication nasıl çalışacaktır?](../../active-directory/authentication/concept-mfa-howitworks.md)
+* [Azure AD Multi-Factor Authentication nasıl çalışır?](../../active-directory/authentication/concept-mfa-howitworks.md)
 
 ## <a name="azure-rbac"></a>Azure RBAC
 
@@ -99,7 +98,7 @@ Azure RBAC, Azure 'da kaynakların ayrıntılı erişim yönetimi sağlayan Azur
 Daha fazla bilgi edinin:
 
 * [Azure rol tabanlı erişim denetimi (Azure RBAC) nedir?](../../role-based-access-control/overview.md)
-* [Azure yerleşik rolleri](../../role-based-access-control/built-in-roles.md)
+* [Yerleşik Azure rolleri](../../role-based-access-control/built-in-roles.md)
 
 ## <a name="security-monitoring-alerts-and-machine-learning-based-reports"></a>Güvenlik izleme, uyarılar ve makine öğrenimi tabanlı raporlar
 

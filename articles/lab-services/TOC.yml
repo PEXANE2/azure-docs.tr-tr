@@ -36,7 +36,7 @@
           href: classroom-labs-scenarios.md
         - name: Hackathon için Laboratuvar Servislerini kullanma
           href: hackathon-labs.md
-        - name: laboratuvarlar - sınıf türleri
+        - name: Laboratuvar sınıfı türleri
           items:
             - name: Sınıf türlerine genel bakış
               href: class-types.md
@@ -46,9 +46,11 @@
               href: class-type-shell-scripting-linux.md
             - name: Etik korsanlık
               href: class-type-ethical-hacking.md
+            - name: GNS3 ile ağ oluşturma
+              href: class-type-networking-gns3.md
             - name: Veritabanı yönetimi
               href: class-type-database-management.md
-            - name: Azure SQL Veritabanı yönetimi ve dağıtımı
+            - name: SQL veritabanı yönetimi ve geliştirme
               href: class-type-sql-server.md
             - name: Python ve Jupyter Notebook’ları
               href: class-type-jupyter-notebook.md
@@ -58,8 +60,8 @@
               href: class-type-matlab.md
             - name: SolidWorks bilgisayar destekli tasarım (CAD)
               href: class-type-solidworks.md
-            - name: GNS3 ile ağ oluşturma
-              href: class-type-networking-gns3.md
+            - name: ArcGIS
+              href: class-type-arcgis.md
             - name: Project Lead the Way
               href: class-type-pltw.md
         - name: Teams içinde Azure Lab Services'i kullanma

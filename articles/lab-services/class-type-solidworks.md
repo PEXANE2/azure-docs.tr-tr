@@ -5,12 +5,12 @@ author: nicolela
 ms.topic: article
 ms.date: 06/26/2020
 ms.author: nicolela
-ms.openlocfilehash: dc6fdadbdfdbdd1d32f640e356a67841187a83c9
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 3a7e8c47977f0518a3a3e9f8a6fd2e57454e1c42
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95999272"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99626113"
 ---
 # <a name="set-up-a-lab-for-engineering-classes-using-solidworks"></a>SOLIDÇALıŞMALAR kullanarak mühendislik sınıfları için laboratuvar ayarlama
 
@@ -57,7 +57,7 @@ Bir sınıf Laboratuvarı ayarlarken aşağıdaki tablodaki ayarları kullanın.
 > **Küçük GPU (görselleştirme)** sanal makine boyutu, yüksek performanslı bir grafik deneyimini etkinleştirecek şekilde yapılandırılmıştır.  Bu sanal makine boyutu hakkında daha fazla bilgi için [GPU 'lar ile laboratuvar ayarlama konusundaki](./how-to-setup-lab-gpu.md)makaleye bakın.
 
 > [!WARNING]
-> Laboratuvar oluşturmadan **önce** laboratuvar hesabının sanal ağını, lisans sunucusu için sanal ağa [eşdüzey](https://www.mathworks.com/support/requirements/matlab-system-requirements.html) olarak kaçırmayın.
+> Laboratuvar oluşturmadan **önce** laboratuvar hesabının sanal ağını, lisans sunucusu için sanal ağa [eşdüzey](./how-to-connect-peer-virtual-network.md) olarak kaçırmayın.
 
 ## <a name="template-virtual-machine-configuration"></a>Şablon sanal makine yapılandırması
 

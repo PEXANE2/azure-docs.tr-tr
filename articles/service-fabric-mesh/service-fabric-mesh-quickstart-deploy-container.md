@@ -5,14 +5,19 @@ author: georgewallace
 ms.author: gwallace
 ms.date: 11/27/2018
 ms.topic: quickstart
-ms.openlocfilehash: c81b53b68c689f4b890d2ff628f38b734aea63dc
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: f34034394d2492dba64214c612a239b92f4b9c46
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499892"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99625727"
 ---
 # <a name="quickstart-deploy-hello-world-to-service-fabric-mesh"></a>Hızlı başlangıç: Merhaba Dünya uygulamasını Service Fabric Mesh’e dağıtma
+
+> [!IMPORTANT]
+> Azure Service Fabric ağı önizlemesi devre dışı bırakıldı. Yeni dağıtımlar Service Fabric kafes API 'SI aracılığıyla artık izin verilmeyecektir. Mevcut dağıtımlar için destek 28 Nisan 2021 ' den devam edecektir.
+> 
+> Ayrıntılar için bkz. [Azure Service Fabric kafes önizleme kullanımdan](https://azure.microsoft.com/updates/azure-service-fabric-mesh-preview-retirement/)kaldırma.
 
 [Service Fabric Mesh](service-fabric-mesh-overview.md), sanal makine sağlamaya gerek kalmadan Azure’da mikro hizmet uygulamalarının oluşturulmasını ve yönetilmesini kolaylaştırır. Bu hızlı başlangıçta, Azure’da Merhaba Dünya uygulamasını oluşturacak ve bunu İnternette kullanıma sunacaksınız. Bu işlem tek bir komutla tamamlanır. Yalnızca birkaç dakika içinde tarayıcınızda bu görünümü görürsünüz:
 

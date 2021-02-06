@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: b239cf6d253c1c2d2e36d213e92e0b218add3f8c
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: dcd8222b46262f6ec70459ec670789ae4a433c1d
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94885997"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99625273"
 ---
 # <a name="chat-client-library-overview"></a>Sohbet istemci kitaplığına genel bakış
 
@@ -49,10 +49,21 @@ Aşağıdaki listede, Iletişim Hizmetleri sohbeti istemci kitaplıklarında Şu
 |                    | Bir kullanıcının üyesi olduğu bir sohbet iş parçacığında başka bir üye tarafından bir ileti silindiğinde bildirim alın                | ✔️   | ❌    | ❌    | ❌  |
 |                    | Başka bir sohbet iş parçacığı üyesi yazıldığında bildirim alın                                                             | ✔️   | ❌    | ❌    | ❌  |
 |                    | Sohbet iş parçacığında başka bir üyenin bir iletiyi okumasından (okundu alındısı) bildirim alın                               | ✔️   | ❌    | ❌    | ❌  |
-| Olaylar             | Sohbet iş parçacıklarında oluşan Kullanıcı etkinliğine abone olmak ve özel bildirim hizmetlerini veya iş mantığını bütünleştirmek için Event Grid kullanın     | ✔️   | ✔️  | ✔️    | ✔️  |
+| Ekinlikler             | Sohbet iş parçacıklarında oluşan Kullanıcı etkinliğine abone olmak ve özel bildirim hizmetlerini veya iş mantığını bütünleştirmek için Event Grid kullanın     | ✔️   | ✔️  | ✔️    | ✔️  |
 | İzleme        | Gönderilen ileti koşullarına göre kullanımı izleme                                                                               | ✔️   | ✔️  | ✔️    | ✔️  |
 |                    | Uygulamanız tarafından yapılan API isteklerinin kalitesini ve durumunu izleyin ve uyarıları Portal aracılığıyla yapılandırın                                                          | ✔️   | ✔️  | ✔️    | ✔️  |
 |Ek özellikler | Akıllı Özellikler *dil çevirisi 'ni, bir istemcideki gelen iletinin yaklaşım analizini &, üye kulakça bir ileti oluşturmak üzere konuşmayı metne dönüştürmeye, vb.* sağlamak için sohbet istemci kitaplığı ile birlikte [bilişsel hizmetler API'si](../../../cognitive-services/index.yml) kullanın.                                                                                         | ✔️   | ✔️  | ✔️    | ✔️  |
+
+## <a name="javascript-chat-client-library-support-by-os-and-browser"></a>İşletim sistemi ve tarayıcı tarafından JavaScript chat istemci kitaplığı desteği
+
+Aşağıdaki tablo, şu anda kullanılabilir olan desteklenen tarayıcı ve sürümlerin kümesini temsil eder.
+
+|                                  | Windows          | Mac OS          | Ubuntu | Linux  | Android | iOS    | iPad işletim sistemi|
+| -------------------------------- | ---------------- | -------------- | ------- | ------ | ------ | ------ | -------|
+| **Sohbet istemci kitaplığı** | Firefox *, Chrome*, yeni kenar | Firefox *, Chrome*, Safari * | Mu  | Mu | Mu | Uygulamasını | Uygulamasını |
+
+
+* Önceki iki sürüme ek olarak en son sürümün desteklendiğini unutmayın.<br/>
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

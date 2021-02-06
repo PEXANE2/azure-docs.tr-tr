@@ -14,12 +14,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4982acb54207a9ed08a96414877603a8253c2ade
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: 22ac3b9ac5f7a10226e8dc7197fdf60dc0a84e3b
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99557760"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99627625"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory'de yönetici rolü izinleri
 
@@ -535,6 +535,7 @@ Aşağıdaki tablolarda, her role verilen Azure Active Directory belirli izinler
 > | Microsoft. Directory/policies/applicationConfiguration/Owners/Read | Azure Active Directory içindeki policies. applicationConfiguration özelliğini okuyun. |
 > | Microsoft. Directory/policies/applicationConfiguration/Owners/Update | Azure Active Directory ilke. applicationConfiguration özelliğini güncelleştirin. |
 > | Microsoft. Directory/policies/applicationConfiguration/policyAppliedTo/Read | Azure Active Directory içindeki policies. applicationConfiguration özelliğini okuyun. |
+> | Microsoft. Directory/provisioningLogs/allProperties/Read | Sağlama günlüklerinin tüm özelliklerini okuyun. |
 > | Microsoft. Directory/Servicesorumlularını/appRoleAssignedTo/Update | Azure Active Directory Servicesorumlularını. appRoleAssignedTo özelliğini güncelleştirin. |
 > | Microsoft. Directory/Servicesorumlularını/Approtaatamalar/güncelleştirme | Azure Active Directory Servicesorumlularını. Approtaatamalar özelliğini güncelleştirin. |
 > | Microsoft. Directory/Servicesorumlularını/hedef kitle/güncelleştirme | Azure Active Directory Servicesorumlularını. Audience özelliğini güncelleştirin. |
@@ -697,6 +698,7 @@ Uygulama kayıtları ve kurumsal uygulamaların uygulama proxy 'Si hariç tüm y
 > | Microsoft. Directory/policies/applicationConfiguration/Owners/Read | Azure Active Directory içindeki policies. applicationConfiguration özelliğini okuyun. |
 > | Microsoft. Directory/policies/applicationConfiguration/Owners/Update | Azure Active Directory ilke. applicationConfiguration özelliğini güncelleştirin. |
 > | Microsoft. Directory/policies/applicationConfiguration/policyAppliedTo/Read | Azure Active Directory içindeki policies. applicationConfiguration özelliğini okuyun. |
+> | Microsoft. Directory/provisioningLogs/allProperties/Read | Sağlama günlüklerinin tüm özelliklerini okuyun. |
 > | Microsoft. Directory/Servicesorumlularını/appRoleAssignedTo/Update | Azure Active Directory Servicesorumlularını. appRoleAssignedTo özelliğini güncelleştirin. |
 > | Microsoft. Directory/Servicesorumlularını/Approtaatamalar/güncelleştirme | Azure Active Directory Servicesorumlularını. Approtaatamalar özelliğini güncelleştirin. |
 > | Microsoft. Directory/Servicesorumlularını/hedef kitle/güncelleştirme | Azure Active Directory Servicesorumlularını. Audience özelliğini güncelleştirin. |
@@ -766,6 +768,7 @@ Azure AD 'de cihazları yönetmek için tam erişim.
 > | Microsoft. Directory/oAuth2PermissionGrants/allProperties/allTasks | OAuth2PermissionGrants oluşturun ve silin ve Azure Active Directory tüm özellikleri okuyun ve güncelleştirin. |
 > | Microsoft. Directory/kuruluş/allProperties/allTasks | Kuruluş oluşturup silin ve Azure Active Directory tüm özellikleri okuyun ve güncelleştirin. |
 > | Microsoft. Directory/policies/allProperties/allTasks | İlkeleri oluşturun ve silin ve Azure Active Directory tüm özellikleri okuyun ve güncelleştirin. |
+> | Microsoft. Directory/provisioningLogs/allProperties/Read | Sağlama günlüklerinin tüm özelliklerini okuyun. |
 > | Microsoft. Directory/Roleatamaları/allProperties/allTasks | Roleatamalar oluşturun ve silin ve Azure Active Directory tüm özellikleri okuyun ve güncelleştirin. |
 > | Microsoft. Directory/roleDefinitions/allProperties/allTasks | RoleDefinitions oluşturun ve silin ve Azure Active Directory tüm özellikleri okuyun ve güncelleştirin. |
 > | Microsoft. Directory/Scopedrolemembersevk/allProperties/allTasks | Scopedrolemembersevk eden oluşturun ve silin ve Azure Active Directory tüm özellikleri okuyun ve güncelleştirin. |
@@ -1143,6 +1146,7 @@ Genel yöneticinin yapabileceği her şeyi okuyabilir, ancak düzenleyemez.
 > | Microsoft. Directory/kuruluş/temel/okuma    | Azure Active Directory içindeki kuruluştaki temel özellikleri okuyun. |
 > | Microsoft. Directory/Organization/trustedCAsForPasswordlessAuth/okuma    | Azure Active Directory içinde Organization. trustedCAsForPasswordlessAuth özelliğini okuyun. |
 > | Microsoft. Directory/policies/standart/Read    | Azure Active Directory içindeki standart ilkeleri okuyun. |
+> | Microsoft. Directory/provisioningLogs/allProperties/Read | Sağlama günlüklerinin tüm özelliklerini okuyun. |
 > | Microsoft. Directory/Roleatamalar/temel/okuma    | Azure Active Directory içindeki Roleatamalarındaki temel özellikleri okuyun. |
 > | Microsoft. Directory/roleDefinitions/temel/okuma    | Azure Active Directory içindeki roleDefinitions ' daki temel özellikleri okuyun. |
 > | Microsoft. Directory/Servicesorumlularını/appRoleAssignedTo/Read    | Azure Active Directory Servicesorumlularını. appRoleAssignedTo özelliğini okuyun. |
@@ -1683,6 +1687,7 @@ Herhangi bir Kullanıcı (yönetici veya yönetici olmayan) için kimlik doğrul
 > | Eylemler | Açıklama |
 > | --- | --- |
 > | Microsoft. Directory/auditLogs/allProperties/Read | Azure Active Directory içindeki auditLogs 'ta tüm özellikleri (ayrıcalıklı özellikler dahil) okuyun. |
+> | Microsoft. Directory/provisioningLogs/allProperties/Read | Sağlama günlüklerinin tüm özelliklerini okuyun. |
 > | Microsoft. Directory/Signınreports/allProperties/Read | Azure Active Directory içindeki Signınreports 'ta tüm özellikleri (ayrıcalıklı özellikler dahil) okuyun. |
 > | Microsoft. Azure. serviceHealth/Allentitıes/allTasks | Azure hizmet durumunu okuyun ve yapılandırın. |
 > | Microsoft. office365. usageReports/allEntities/okuma | Office 365 kullanım raporlarını okuyun. |
@@ -1743,6 +1748,7 @@ Güvenlik bilgilerini ve raporlarını okuyabilir ve Azure AD 'de yapılandırma
 > | Microsoft. Directory/policies/Owners/Update | Azure Active Directory içindeki policies. Owners özelliğini güncelleştirin. |
 > | Microsoft. Directory/policies/tenantDefault/Update | Azure Active Directory ilkeleri. tenantDefault özelliğini güncelleştirin. |
 > | Microsoft. Directory/Privilegedıdentitymanagement/allProperties/Read | Microsoft. AAD. Privilegedıdentitymanagement içindeki tüm kaynakları okuyun. |
+> | Microsoft. Directory/provisioningLogs/allProperties/Read | Sağlama günlüklerinin tüm özelliklerini okuyun. |
 > | Microsoft. Directory/Servicesorumlularını/ilkeleri/güncelleştirme | Azure Active Directory Servicesorumlularını. Policies özelliğini güncelleştirin. |
 > | Microsoft. Directory/Signınreports/allProperties/Read | Azure Active Directory içindeki Signınreports 'ta tüm özellikleri (ayrıcalıklı özellikler dahil) okuyun. |
 > | Microsoft. office365. protectionCenter/allEntities/okuma | Office 365 Koruma Merkezi 'nin tüm yönlerini okuyun. |
@@ -1792,6 +1798,7 @@ Güvenlik olaylarını oluşturur ve yönetir.
 > | Microsoft. Directory/Signınreports/allProperties/Read | Azure Active Directory içindeki Signınreports 'ta tüm özellikleri (ayrıcalıklı özellikler dahil) okuyun. |
 > | Microsoft. AAD. ıdentityprotection/Allentitıes/Read | Microsoft. AAD. ıdentityprotection içindeki tüm kaynakları okuyun. |
 > | Microsoft. AAD. Privilegedıdentitymanagement/allEntities/okuma | Microsoft. AAD. Privilegedıdentitymanagement içindeki tüm kaynakları okuyun. |
+> | Microsoft. Directory/provisioningLogs/allProperties/Read | Sağlama günlüklerinin tüm özelliklerini okuyun. |
 > | Microsoft. Azure. serviceHealth/Allentitıes/allTasks | Azure hizmet durumunu okuyun ve yapılandırın. |
 > | Microsoft. office365. webPortal/allEntities/temel/okuma | Microsoft. office365. webPortal 'daki tüm kaynaklarda temel özellikleri okuyun. |
 > | Microsoft. office365. protectionCenter/allEntities/okuma | Office 365 Koruma Merkezi 'nin tüm yönlerini okuyun. |

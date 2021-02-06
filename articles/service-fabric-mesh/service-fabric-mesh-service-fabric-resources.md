@@ -6,14 +6,19 @@ ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: vturecek
 ms.custom: mvc, devcenter
-ms.openlocfilehash: a7f25d4156c3d2671e1a15a1253ed7ba22265af0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 650755cf2692b613b2998e8ef7b706e09022b178
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91354879"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99626918"
 ---
 # <a name="introduction-to-service-fabric-resource-model"></a>Service Fabric kaynak modeline giriş
+
+> [!IMPORTANT]
+> Azure Service Fabric ağı önizlemesi devre dışı bırakıldı. Yeni dağıtımlar Service Fabric kafes API 'SI aracılığıyla artık izin verilmeyecektir. Mevcut dağıtımlar için destek 28 Nisan 2021 ' den devam edecektir.
+> 
+> Ayrıntılar için bkz. [Azure Service Fabric kafes önizleme kullanımdan](https://azure.microsoft.com/updates/azure-service-fabric-mesh-preview-retirement/)kaldırma.
 
 Service Fabric kaynak modeli, bir Service Fabric kafes uygulamasını oluşturan kaynakları tanımlamaya yönelik basit bir yaklaşım açıklar. Tek tek kaynaklar herhangi bir Service Fabric ortamına dağıtılabilir.  Service Fabric kaynak modeli ayrıca Azure Resource Manager modeliyle uyumludur. Aşağıdaki kaynak türleri şu anda bu modelde destekleniyor:
 

@@ -5,14 +5,19 @@ author: georgewallace
 ms.author: gwallace
 ms.date: 10/26/2018
 ms.topic: conceptual
-ms.openlocfilehash: 67b4b27a5d1faab3e6c156704d67a30b220ac54c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3f0e115e596925878bf9fdd43b7074cefdba47b2
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91840192"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99626867"
 ---
 # <a name="scaling-service-fabric-mesh-applications"></a>Service Fabric kafes uygulamalarını ölçeklendirme
+
+> [!IMPORTANT]
+> Azure Service Fabric ağı önizlemesi devre dışı bırakıldı. Yeni dağıtımlar Service Fabric kafes API 'SI aracılığıyla artık izin verilmeyecektir. Mevcut dağıtımlar için destek 28 Nisan 2021 ' den devam edecektir.
+> 
+> Ayrıntılar için bkz. [Azure Service Fabric kafes önizleme kullanımdan](https://azure.microsoft.com/updates/azure-service-fabric-mesh-preview-retirement/)kaldırma.
 
 Service Fabric kafese uygulama dağıtmanın başlıca avantajlarından biri, hizmetlerinizi kolayca ölçeklendirebilme olanağı sağlar. Bu, hizmetinizdeki farklı yük miktarını işlemek veya kullanılabilirliği iyileştirmek için kullanılmalıdır. Hizmetlerinizi el ile ölçeklendirebilir veya otomatik ölçeklendirme ilkeleri ayarlayabilirsiniz.
 

@@ -4,14 +4,19 @@ description: Azure Service Fabric ağı hakkında sık sorulan sorular ve yanıt
 ms.author: pepogors
 ms.date: 4/23/2019
 ms.topic: troubleshooting
-ms.openlocfilehash: 64eeb43d743d71d5acd456409445a4fadfe91aeb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8e53ab0ae4cc463bea8a6a8cb6d339f94fdcac6d
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86260124"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99626045"
 ---
 # <a name="commonly-asked-service-fabric-mesh-questions"></a>Sık sorulan Service Fabric kafes soruları
+
+> [!IMPORTANT]
+> Azure Service Fabric ağı önizlemesi devre dışı bırakıldı. Yeni dağıtımlar Service Fabric kafes API 'SI aracılığıyla artık izin verilmeyecektir. Mevcut dağıtımlar için destek 28 Nisan 2021 ' den devam edecektir.
+> 
+> Ayrıntılar için bkz. [Azure Service Fabric kafes önizleme kullanımdan](https://azure.microsoft.com/updates/azure-service-fabric-mesh-preview-retirement/)kaldırma.
 
 Azure Service Fabric Mesh, geliştiricilerin sanal makineleri, depolama alanını veya ağ bileşenlerini yönetmeden mikro hizmet uygulamaları dağıtmasını sağlayan tam olarak yönetilen bir hizmettir. Bu makalede, sık sorulan soruların yanıtları bulunur.
 

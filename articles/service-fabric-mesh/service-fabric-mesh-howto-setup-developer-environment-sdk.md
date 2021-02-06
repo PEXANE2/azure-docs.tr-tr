@@ -5,14 +5,19 @@ author: georgewallace
 ms.author: gwallace
 ms.date: 12/12/2018
 ms.topic: conceptual
-ms.openlocfilehash: 479e975abd40be80e17fc187f1d13500d11cb983
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fc234f6954cf263423cc517bb3dda2ba2efa3358
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91842759"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99625744"
 ---
 # <a name="set-up-your-windows-development-environment-to-build-service-fabric-mesh-apps"></a>Service Fabric Mesh uygulamalarını derlemek için Windows geliştirme ortamınızı ayarlayın
+
+> [!IMPORTANT]
+> Azure Service Fabric ağı önizlemesi devre dışı bırakıldı. Yeni dağıtımlar Service Fabric kafes API 'SI aracılığıyla artık izin verilmeyecektir. Mevcut dağıtımlar için destek 28 Nisan 2021 ' den devam edecektir.
+> 
+> Ayrıntılar için bkz. [Azure Service Fabric kafes önizleme kullanımdan](https://azure.microsoft.com/updates/azure-service-fabric-mesh-preview-retirement/)kaldırma.
 
 Windows geliştirme makinenizde Azure Service Fabric kafes uygulamaları derlemek ve çalıştırmak için şunları yapmanız gerekir:
 

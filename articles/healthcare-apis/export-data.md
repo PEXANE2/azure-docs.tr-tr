@@ -7,12 +7,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 1/21/2021
 ms.author: cavoeg
-ms.openlocfilehash: 8ad5ee78a525b3798bbf613168ff74a9e21fe99b
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 3437c8bcf8ff508149abae2549d7c34521700840
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98920266"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99627272"
 ---
 # <a name="how-to-export-fhir-data"></a>FHıR verilerini dışa aktarma
 
@@ -30,12 +30,15 @@ FHıR Için Azure API aşağıdaki düzeylerde $export destekler:
 * [Hasta](https://hl7.org/Fhir/uv/bulkdata/export/index.html#endpoint---all-patients): `GET https://<<FHIR service base URL>>/Patient/$export>>`
 * [Hastalar grubu *](https://hl7.org/Fhir/uv/bulkdata/export/index.html#endpoint---group-of-patients) -fhır için Azure API 'si tüm ilgili kaynakları dışa aktarır ancak grubun özelliklerini dışarı aktarmaz: `GET https://<<FHIR service base URL>>/Group/[ID]/$export>>`
 
+Veriler verildiğinde, her kaynak türü için ayrı bir dosya oluşturulur. İçe aktarılmış dosyaların çok büyük olmamasını sağlamak için, tek bir içe aktarılmış dosyanın boyutu 64 MB 'tan daha büyük hale gelecek şekilde yeni bir dosya oluşturacağız. Sonuç olarak, her bir kaynak türü için birden çok dosya elde edebilirsiniz (hasta-1. ndjson, hasta-2. ndjson). 
 
 
 > [!Note] 
 > `Patient/$export` ve `Group/[ID]/$export` kaynak birden fazla kaynağın bir bölmesinde ise veya birden çok grupta yer alıyorsa yinelenen kaynakları dışarı aktarabilirsiniz.
 
 Ayrıca, aktarım sırasında konum üst bilgisi tarafından döndürülen URL aracılığıyla dışa aktarma durumunun denetlenmesi, gerçek dışa aktarma işinin iptal edilmesi ile birlikte desteklenir.
+
+
 
 ## <a name="settings-and-parameters"></a>Ayarlar ve parametreler
 
@@ -53,7 +56,7 @@ FHıR için Azure API 'SI aşağıdaki sorgu parametrelerini destekler. Bu param
 | \_getirildikten | Yes | Yalnızca belirtilen süreden bu yana değiştirilen kaynakları dışarı aktarmanız sağlar |
 | \_türüyle | Yes | Hangi kaynak türlerinin ekleneceğini belirtmenize izin verir. Örneğin, \_ tür = hasta yalnızca hasta kaynaklarını döndürür|
 | \_tür filtresi | Yes | Daha ayrıntılı filtreleme istemek için, \_ tür parametresiyle birlikte TypeFilter kullanabilirsiniz \_ . _TypeFilter parametresinin değeri, sonuçları daha fazla kısıtlayan FHıR sorgularının virgülle ayrılmış listesidir |
-| \_kapsayıcı | Hayır |  Verilerin verilmesi gereken yapılandırılmış depolama hesabı içindeki kapsayıcıyı belirtir. Bir kapsayıcı belirtilmişse, veriler bu kapsayıcıya ada sahip yeni bir klasörde verilir. Kapsayıcı belirtilmemişse, zaman damgası ve iş KIMLIĞI kullanılarak yeni bir kapsayıcıya aktaralınacaktır. |
+| \_kapsayıcı | No |  Verilerin verilmesi gereken yapılandırılmış depolama hesabı içindeki kapsayıcıyı belirtir. Bir kapsayıcı belirtilmişse, veriler bu kapsayıcıya ada sahip yeni bir klasörde verilir. Kapsayıcı belirtilmemişse, zaman damgası ve iş KIMLIĞI kullanılarak yeni bir kapsayıcıya aktaralınacaktır. |
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

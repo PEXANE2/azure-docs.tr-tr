@@ -6,14 +6,19 @@ ms.topic: tutorial
 ms.date: 09/18/2018
 ms.author: gwallace
 ms.custom: mvc, devcenter, devx-track-csharp
-ms.openlocfilehash: fa15432072f6478100a378fdbdb697556fdf1dc9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b0bdb3c09aead812e1c16f4d0d17aae58e141809
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91842555"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99626801"
 ---
 # <a name="tutorial-create-debug-deploy-and-upgrade-a-multi-service-service-fabric-mesh-app"></a>Öğretici: Çok hizmet sunan bir Service Fabric Mesh uygulaması oluşturma, hata ayıklama, dağıtma ve yükseltme
+
+> [!IMPORTANT]
+> Azure Service Fabric ağı önizlemesi devre dışı bırakıldı. Yeni dağıtımlar Service Fabric kafes API 'SI aracılığıyla artık izin verilmeyecektir. Mevcut dağıtımlar için destek 28 Nisan 2021 ' den devam edecektir.
+> 
+> Ayrıntılar için bkz. [Azure Service Fabric kafes önizleme kullanımdan](https://azure.microsoft.com/updates/azure-service-fabric-mesh-preview-retirement/)kaldırma.
 
 Bu öğretici, bir dizinin birinci bölümüdür. Visual Studio kullanarak ASP.NET web ön ucu ve ASP.NET Core Web API arka uç hizmeti olan bir Azure Service Fabric Mesh uygulaması oluşturmayı öğreneceksiniz. Ardından yerel geliştirme kümenizde uygulamanın hatalarını ayıklayacaksınız. Uygulamayı Azure’da yayımlayacak ve sonra yapılandırma ve kod değişiklikleri yapıp uygulamayı yükselteceksiniz. Son olarak, kullanmadığınız kaynaklar için ücret yansıtılmaması amacıyla, kullanılmayan Azure kaynaklarını temizleyeceksiniz.
 
@@ -79,7 +84,7 @@ Artık bir Service Fabric Mesh uygulamanız var. Şimdi yapılacak işler bilgil
 
 ## <a name="create-the-to-do-items-model"></a>Yapılacak işler öğelerini içeren modeli oluşturma
 
-Kolaylık olması için yapılacak işler bellekte bir liste halinde depolanır. Yapılacak işler için bir sınıf kitaplığı ve onları barındıracak bir liste oluşturun. Visual Studio 'da, şu anda **todolistapp** çözümü yüklü olan **Dosya**  >  **Add**  >  **Yeni proje**Ekle ' yi seçin.
+Kolaylık olması için yapılacak işler bellekte bir liste halinde depolanır. Yapılacak işler için bir sınıf kitaplığı ve onları barındıracak bir liste oluşturun. Visual Studio 'da, şu anda **todolistapp** çözümü yüklü olan **Dosya**  >    >  **Yeni proje** Ekle ' yi seçin.
 
 Üstteki **Yeni Proje Ekle** **iletişim kutusunda** , yazın `C# .net core class` . **Sınıf Kitaplığı (.NET Core)** şablonunu seçin.
 
@@ -346,7 +351,7 @@ URL, hizmet adından ve bağlantı noktasından oluşur. Bu bilgilerin tümü **
 
 > [!IMPORTANT]
 > Aşağıdaki adımlarda YAML dosyaları değiştirilecek.
-> service.yaml dosyasındaki değişkenleri girintilemek için sekme değil boşluk kullanılması gerekir, aksi halde dosya derlenmez. Ortam değişkeni eklediğinizde Visual Studio sekme ekleyebilir. Tüm sekmeleri boşluklarla değiştirin. **Derleme** hata ayıklama çıktısında hata görebileceksiniz, ancak uygulama yine de çalışmaya devam eder ancak sekmeleri boşluklara ve yeniden derlemeden dönüştürene kadar olmaz. Service. YAML dosyasında herhangi bir sekme bulunmadığından emin olmak için, Visual Studio Düzenleyicisi 'nde, **Edit**   >  **Gelişmiş**   >  **Görünüm alanı**Düzenle ' yi kullanarak boşlukların görünmesini sağlayabilirsiniz.
+> service.yaml dosyasındaki değişkenleri girintilemek için sekme değil boşluk kullanılması gerekir, aksi halde dosya derlenmez. Ortam değişkeni eklediğinizde Visual Studio sekme ekleyebilir. Tüm sekmeleri boşluklarla değiştirin. **Derleme** hata ayıklama çıktısında hata görebileceksiniz, ancak uygulama yine de çalışmaya devam eder ancak sekmeleri boşluklara ve yeniden derlemeden dönüştürene kadar olmaz. Service. YAML dosyasında herhangi bir sekme bulunmadığından emin olmak için, Visual Studio Düzenleyicisi 'nde,    >  **Gelişmiş**   >  **Görünüm alanı** Düzenle ' yi kullanarak boşlukların görünmesini sağlayabilirsiniz.
 > service.yaml dosyalarının İngilizce dil ayarı kullanılarak işlendiğini unutmayın. Ondalık ayırıcısı kullanmanız gerekiyorsa, örneğin virgül yerine bir nokta kullanın.
 
 **Çözüm Gezgini**'nde **ToDoService** projesine gidin ve **Hizmet Kaynakları** > **service.yaml** dosyasını açın.

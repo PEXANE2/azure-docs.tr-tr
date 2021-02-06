@@ -6,14 +6,19 @@ ms.topic: tutorial
 ms.date: 01/11/2019
 ms.author: gwallace
 ms.custom: mvc, devcenter, devx-track-azurecli
-ms.openlocfilehash: 54ac7b27ada62a969dd40428fd9a753bb5a99530
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 589e881eb48daf7da9cd2a934b14acfcc76dc5f9
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499841"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99625424"
 ---
 # <a name="tutorial-deploy-an-application-to-service-fabric-mesh-using-a-template"></a>Öğretici: Şablon kullanarak Service Fabric Mesh’e uygulama dağıtma
+
+> [!IMPORTANT]
+> Azure Service Fabric ağı önizlemesi devre dışı bırakıldı. Yeni dağıtımlar Service Fabric kafes API 'SI aracılığıyla artık izin verilmeyecektir. Mevcut dağıtımlar için destek 28 Nisan 2021 ' den devam edecektir.
+> 
+> Ayrıntılar için bkz. [Azure Service Fabric kafes önizleme kullanımdan](https://azure.microsoft.com/updates/azure-service-fabric-mesh-preview-retirement/)kaldırma.
 
 Bu öğretici, bir dizinin birinci bölümüdür. Şablon kullanarak bir Azure Service Fabric Mesh uygulaması dağıtmayı öğreneceksiniz.  Bu uygulama ASP.NET web ön uç hizmeti ve bir ASP.NET Core Web API'si arka uç hizmetinden oluştur ve bu bileşenler Docker Hub'da bulunur.  Docker Hub'dan iki kapsayıcı görüntüsü çekip bunları kendi özel kayıt defterinize göndereceksiniz. Ardından uygulama için bir Azure RM şablonu oluşturacak ve uygulamayı kapsayıcı kayıt defterinizden Service Fabric Mesh'e dağıtacaksınız. İşlem tamamlandığında Service Fabric Mesh'te çalışan basit bir Yapılacaklar Listesi uygulamasına sahip olacaksınız.
 

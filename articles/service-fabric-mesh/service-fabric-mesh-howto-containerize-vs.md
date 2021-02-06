@@ -5,14 +5,19 @@ author: georgewallace
 ms.author: gwallace
 ms.date: 11/08/2018
 ms.topic: conceptual
-ms.openlocfilehash: 2fb6aa7d7c655a1ba4b44dabc33e32ce04ae458f
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: b9c5053a2a49c942cc89bd50c65e13f3a2f8d9d7
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96489284"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99625894"
 ---
 # <a name="containerize-an-existing-net-app-for-service-fabric-mesh"></a>Mevcut bir .NET uygulamasını Service Fabric Mesh için kapsayıcılı hale getirme
+
+> [!IMPORTANT]
+> Azure Service Fabric ağı önizlemesi devre dışı bırakıldı. Yeni dağıtımlar Service Fabric kafes API 'SI aracılığıyla artık izin verilmeyecektir. Mevcut dağıtımlar için destek 28 Nisan 2021 ' den devam edecektir.
+> 
+> Ayrıntılar için bkz. [Azure Service Fabric kafes önizleme kullanımdan](https://azure.microsoft.com/updates/azure-service-fabric-mesh-preview-retirement/)kaldırma.
 
 Bu makalede, var olan bir .NET uygulamasına Service Fabric kafes kapsayıcısı düzenleme desteğinin nasıl ekleneceği gösterilmektedir.
 
@@ -45,7 +50,7 @@ Yüklendikten sonra Visual Studio 2017 Open **Containerssflab\eshoplegacywebform
  
 Service Fabric kafes araçlarını kullanarak mevcut bir ASP.NET veya konsol projesine kapsayıcı düzenleme desteğini aşağıdaki gibi ekleyin:
 
-Visual Studio Çözüm Gezgini 'nde, proje adına (örneğin, **eshoplegacywebforms**) sağ tıklayın ve ardından **Add**  >  **kapsayıcı Orchestrator desteği** Ekle ' yi seçin.
+Visual Studio Çözüm Gezgini 'nde, proje adına (örneğin, **eshoplegacywebforms**) sağ tıklayın ve ardından   >  **kapsayıcı Orchestrator desteği** Ekle ' yi seçin.
 **Kapsayıcı Orchestrator desteği ekle** iletişim kutusu görünür.
 
 ![Visual Studio kapsayıcı Orchestrator iletişim kutusu Ekle](./media/service-fabric-mesh-howto-containerize-vs/add-container-orchestration-support.png)

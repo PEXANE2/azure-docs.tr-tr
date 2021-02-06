@@ -6,20 +6,25 @@ ms.author: edoyle
 ms.topic: how-to
 ms.date: 01/14/2020
 ms.custom: subject-moving-resources
-ms.openlocfilehash: c842a065f108a924c6bffd70d6c2edbbd31b6dff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1b59d482b8b88e37da2d61636ff3f254a46ba5c2
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86260148"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99626096"
 ---
 # <a name="move-a-service-fabric-mesh-application-to-another-azure-region"></a>Service Fabric bir kafes uygulamasını başka bir Azure bölgesine taşıma
+
+> [!IMPORTANT]
+> Azure Service Fabric ağı önizlemesi devre dışı bırakıldı. Yeni dağıtımlar Service Fabric kafes API 'SI aracılığıyla artık izin verilmeyecektir. Mevcut dağıtımlar için destek 28 Nisan 2021 ' den devam edecektir.
+> 
+> Ayrıntılar için bkz. [Azure Service Fabric kafes önizleme kullanımdan](https://azure.microsoft.com/updates/azure-service-fabric-mesh-preview-retirement/)kaldırma.
 
 Bu makalede, Service Fabric kafes uygulamanızın ve kaynaklarının farklı bir Azure bölgesine nasıl taşınacağı açıklanır. Birkaç nedenden dolayı kaynaklarınızı başka bir bölgeye taşıyabilirsiniz. Örneğin kesintilere yanıt olarak, yalnızca belirli bölgelerde bulunan özellik veya Hizmetleri, iç ilke ve idare gereksinimlerini karşılayacak şekilde veya kapasite planlama gereksinimlerine yanıt olarak elde etmek için.
 
  [Service Fabric kafesi](../azure-resource-manager/management/region-move-support.md#microsoftservicefabricmesh) , kaynakları Azure bölgelerinde doğrudan taşıma özelliğini desteklemez. Ancak, geçerli Azure Resource Manager şablonunuzun bir kopyasını yeni hedef bölgeye dağıtarak ve sonra giriş trafiğini ve bağımlılıklarını yeni oluşturulan Service Fabric kafes uygulamasına yönlendirerek kaynakları dolaylı olarak taşıyabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * İstemciler ile Service Fabric kafes uygulamanız arasında trafiği yönlendirme için bir aracı olarak kullanılacak giriş denetleyicisi (örneğin [Application Gateway](../application-gateway/index.yml))
 * Hedef Azure bölgesinde ( `westus` , `eastus` veya `westeurope` ) Service Fabric ağ (Önizleme) kullanılabilirliği
@@ -44,7 +49,7 @@ Bu makalede, Service Fabric kafes uygulamanızın ve kaynaklarının farklı bir
 
 1. Dağıtım tamamlandığında uygulamanızın işlevlerini doğrulamak için uygulama uç noktaları ' nı test edin.
 
-2. Ayrıca, uygulama durumunu denetleyerek (az önce uygulama[göster](/cli/azure/ext/mesh/mesh/app?view=azure-cli-latest#ext-mesh-az-mesh-app-show)) ve [Azure Service Fabric kafes CLI](./service-fabric-mesh-quickstart-deploy-container.md#set-up-service-fabric-mesh-cli)kullanarak uygulama günlüklerini ve ([az kafes kodu-paket-günlüğü](/cli/azure/ext/mesh/mesh/code-package-log?view=azure-cli-latest)) komutlarını inceleyerek uygulamanızın durumunu doğrulayabilirsiniz.
+2. Ayrıca, uygulama durumunu denetleyerek (az önce uygulama[göster](/cli/azure/ext/mesh/mesh/app#ext-mesh-az-mesh-app-show)) ve [Azure Service Fabric kafes CLI](./service-fabric-mesh-quickstart-deploy-container.md#set-up-service-fabric-mesh-cli)kullanarak uygulama günlüklerini ve ([az kafes kodu-paket-günlüğü](/cli/azure/ext/mesh/mesh/code-package-log)) komutlarını inceleyerek uygulamanızın durumunu doğrulayabilirsiniz.
 
 ## <a name="commit"></a>İşleme
 

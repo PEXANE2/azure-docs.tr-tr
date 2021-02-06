@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: liud
 ms.reviewer: pimorano
-ms.openlocfilehash: ba5286b16b6e640e968b50174e39a05328e750a4
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: 5f82e8b7359b90d5127e2c20a2b89cc5ad739a56
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98797303"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99624784"
 ---
 # <a name="continuous-integration-and-delivery-for-azure-synapse-workspace"></a>Azure SYNAPSE çalışma alanı için sürekli tümleştirme ve teslim
 
@@ -101,7 +101,7 @@ SYNAPSE çalışma alanı, SQL betiği, Not defteri, Spark iş tanımı, dataflo
 
      ![Uzantıyı yükleme](media/install-extension.png)
 
-1. Azure DevOps işlem hattının hizmet ilkesine abonelik izni verildiğinden ve aynı zamanda hedef çalışma alanı için çalışma alanı yöneticisi olarak atanmış olduğundan emin olun. 
+1. Azure DevOps işlem hattının hizmet sorumlusuna abonelik izni verildiğinden ve aynı zamanda hedef çalışma alanı için çalışma alanı yöneticisi olarak atanmış olduğundan emin olun. 
 
 1. Yeni bir görev oluşturun. **SYNAPSE çalışma alanı dağıtımı** araması yapın ve ardından **Ekle**' yi seçin.
 
@@ -139,8 +139,8 @@ SYNAPSE çalışma alanınız ile git tümleştirmesi kullanıyorsanız ve deği
 
 ### <a name="use-the-synapse-workspace-deployment-task"></a>SYNAPSE çalışma alanı dağıtım görevini kullanın
 
-SYNAPSE ' de, tüm yapıt türleri, ADF ile farklı olan ARM kaynakları değildir. SYNAPSE yapılarını dağıtmak için ARM şablonu dağıtım görevini kullanamazsınız
+SYNAPSE ' de ARM kaynakları olmayan bir dizi yapıtlar vardır. Bu Azure Data Factory farklıdır. ARM şablonu Dağıtım görevi SYNAPSE yapıtları dağıtmak için düzgün çalışmayacak
  
 ### <a name="unexpected-token-error-in-release"></a>Yayında beklenmeyen belirteç hatası
 
-Parametre dosyanızda, kaçış olmayan parametre değerleri varsa, yayın işlem hattı dosyayı beklenmeyen belirteçle oluşan hata ile ayrıştırmayabilir. Parametreleri almak için parametreleri veya Keykasasını geçersiz kılmanızı öneririz. Geçici çözüm olarak da çift kaçış yapabilirsiniz.
+Parametre dosyanızda, kaçış olmayan parametre değerleri varsa, yayın işlem hattı dosyayı ayrıştırmaz ve "beklenmeyen belirteç" hatasını üretir. Parametre değerlerini almak için, parametreleri geçersiz kılmayı veya Azure Anahtar Kasası 'nı kullanmanızı öneririz. Geçici çözüm olarak çift kaçış karakterleri de kullanabilirsiniz.

@@ -3,14 +3,19 @@ title: Azure Service Fabric kafes örneklerini bulma
 description: Kullanılabilir Service Fabric kafes örnek uygulamalarının bir dizini aşağıda verilmiştir. Bu örneklerdeki kaynak kodu, Service Fabric kaynak modeli kullanılarak belirli bir senaryonun nasıl elde alınacağını gösterir.
 ms.date: 12/03/2018
 ms.topic: conceptual
-ms.openlocfilehash: 64d9e4e112f26f83eedd02b034c8191c6f677618
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2b38cd6a6c0f3aaab4ff5b77be82aee242afef23
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86261283"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99627037"
 ---
 # <a name="find-service-fabric-mesh-samples"></a>Service Fabric ağ örneklerini bulma
+
+> [!IMPORTANT]
+> Azure Service Fabric ağı önizlemesi devre dışı bırakıldı. Yeni dağıtımlar Service Fabric kafes API 'SI aracılığıyla artık izin verilmeyecektir. Mevcut dağıtımlar için destek 28 Nisan 2021 ' den devam edecektir.
+> 
+> Ayrıntılar için bkz. [Azure Service Fabric kafes önizleme kullanımdan](https://azure.microsoft.com/updates/azure-service-fabric-mesh-preview-retirement/)kaldırma.
 
 Bu tabloda, kullanılabilir Service Fabric kafes örnek uygulamaları özetlenmektedir. Bu örneklerdeki kaynak kodu, Service Fabric kaynak modeli kullanılarak belirli bir senaryonun nasıl elde alınacağını gösterir.
 

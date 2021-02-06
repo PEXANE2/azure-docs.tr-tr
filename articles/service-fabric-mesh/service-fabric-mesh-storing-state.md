@@ -5,14 +5,19 @@ author: georgewallace
 ms.author: gwallace
 ms.date: 11/27/2018
 ms.topic: conceptual
-ms.openlocfilehash: b8440a168d6d268cd27e1208ff54616a3b1e193a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 651329b1b061f2cf5a06dbdc9d60f73cec64e7d3
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91843218"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99625558"
 ---
 # <a name="state-management-with-service-fabric"></a>Service Fabric ile durum yönetimi
+
+> [!IMPORTANT]
+> Azure Service Fabric ağı önizlemesi devre dışı bırakıldı. Yeni dağıtımlar Service Fabric kafes API 'SI aracılığıyla artık izin verilmeyecektir. Mevcut dağıtımlar için destek 28 Nisan 2021 ' den devam edecektir.
+> 
+> Ayrıntılar için bkz. [Azure Service Fabric kafes önizleme kullanımdan](https://azure.microsoft.com/updates/azure-service-fabric-mesh-preview-retirement/)kaldırma.
 
 Service Fabric, durum depolama için birçok farklı seçeneği destekler. Durum yönetimi desenleri ve Service Fabric kavramsal bir genel bakış için bkz. [Service Fabric kavramlar: State](../service-fabric/service-fabric-concepts-state.md). Bu tüm kavramlar, hizmetlerinizin Service Fabric kafesin içinde veya dışında çalışmasına bakılmaksızın geçerlidir. 
 

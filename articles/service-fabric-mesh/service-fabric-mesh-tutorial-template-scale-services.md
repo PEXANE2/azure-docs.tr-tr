@@ -6,14 +6,19 @@ ms.topic: tutorial
 ms.date: 01/11/2019
 ms.author: gwallace
 ms.custom: mvc, devcenter, devx-track-azurecli
-ms.openlocfilehash: df28083a0522178b7327d9f6d24029d303e417a1
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 02dc5d43a23c572d441da2bbb7386885bf66ece7
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92747866"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99625391"
 ---
 # <a name="tutorial-scale-an-application-running-in-service-fabric-mesh"></a>Öğretici: Service Fabric Mesh’te çalışan bir uygulamayı ölçeklendirme
+
+> [!IMPORTANT]
+> Azure Service Fabric ağı önizlemesi devre dışı bırakıldı. Yeni dağıtımlar Service Fabric kafes API 'SI aracılığıyla artık izin verilmeyecektir. Mevcut dağıtımlar için destek 28 Nisan 2021 ' den devam edecektir.
+> 
+> Ayrıntılar için bkz. [Azure Service Fabric kafes önizleme kullanımdan](https://azure.microsoft.com/updates/azure-service-fabric-mesh-preview-retirement/)kaldırma.
 
 Bu öğretici, bir dizinin ikinci bölümüdür. [Önceden Service Fabric Mesh’e dağıtılmış olan](service-fabric-mesh-tutorial-template-deploy-app.md) bir uygulamanın hizmet örneği sayısını kendinizin nasıl ölçeklendireceğinizi öğrenin. İşlemi tamamladığınızda üç örnek çalıştıran bir ön uç hizmetine ve iki örnek çalıştıran bir veri hizmetine sahip olacaksınız.
 
@@ -32,7 +37,7 @@ Bu öğretici dizisinde şunların nasıl yapıldığını öğrenirsiniz:
 
 [!INCLUDE [preview note](./includes/include-preview-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiye başlamadan önce:
 

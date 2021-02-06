@@ -6,14 +6,19 @@ ms.topic: tutorial
 ms.date: 01/11/2019
 ms.author: gwallace
 ms.custom: mvc, devcenter, devx-track-azurecli
-ms.openlocfilehash: 331830c50206d14f7894aa837b483656de4222f2
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 8a71e854f03bee75b757e0a0aa02e7aa2c24469b
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92747846"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99626569"
 ---
 # <a name="tutorial-upgrade-a-service-fabric-application-running-in-service-fabric-mesh"></a>Öğretici: Service Fabric Mesh’te çalışan Service Fabric uygulamasını yükseltme
+
+> [!IMPORTANT]
+> Azure Service Fabric ağı önizlemesi devre dışı bırakıldı. Yeni dağıtımlar Service Fabric kafes API 'SI aracılığıyla artık izin verilmeyecektir. Mevcut dağıtımlar için destek 28 Nisan 2021 ' den devam edecektir.
+> 
+> Ayrıntılar için bkz. [Azure Service Fabric kafes önizleme kullanımdan](https://azure.microsoft.com/updates/azure-service-fabric-mesh-preview-retirement/)kaldırma.
 
 Bu öğretici, bir serinin üçüncü bölümüdür. Ayrılan CPU kaynaklarını artırarak, [daha önce Service Fabric Mesh'te dağıtılmış](service-fabric-mesh-tutorial-template-deploy-app.md) Service Fabric uygulamasını yükseltmeyi öğreneceksiniz.  İşiniz bittiğinde, daha yüksek CPU kaynaklarıyla çalışan bir Web ön uç hizmetiniz olur.
 
@@ -32,7 +37,7 @@ Bu öğretici dizisinde şunların nasıl yapıldığını öğrenirsiniz:
 
 [!INCLUDE [preview note](./includes/include-preview-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiye başlamadan önce:
 

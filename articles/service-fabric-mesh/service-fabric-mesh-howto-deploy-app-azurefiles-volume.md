@@ -6,14 +6,19 @@ ms.topic: conceptual
 ms.date: 11/21/2018
 ms.author: gwallace
 ms.custom: mvc, devcenter , devx-track-azurecli
-ms.openlocfilehash: 00addbe992bc113c67df08f73414107d51b3bce5
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 40d10568e13ad455bc5178821da80e89f4132e93
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96007401"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99625846"
 ---
 # <a name="mount-an-azure-files-based-volume-in-a-service-fabric-mesh-application"></a>Azure dosya tabanlı bir birimi Service Fabric bir kafes uygulamasına bağlama 
+
+> [!IMPORTANT]
+> Azure Service Fabric ağı önizlemesi devre dışı bırakıldı. Yeni dağıtımlar Service Fabric kafes API 'SI aracılığıyla artık izin verilmeyecektir. Mevcut dağıtımlar için destek 28 Nisan 2021 ' den devam edecektir.
+> 
+> Ayrıntılar için bkz. [Azure Service Fabric kafes önizleme kullanımdan](https://azure.microsoft.com/updates/azure-service-fabric-mesh-preview-retirement/)kaldırma.
 
 Bu makalede, bir Azure dosya tabanlı birimin Service Fabric bir kafes uygulamasının bir hizmetine nasıl bağlayalacağı açıklanır.  Azure dosyaları birim sürücüsü, bir Azure dosya paylaşımının hizmet durumunu kalıcı hale getirmek için kullandığınız bir kapsayıcıya bağlanması için kullanılan bir Docker birimi sürücüsüdür. Birimler, genel amaçlı dosya depolaması sağlar ve normal disk g/ç dosya API 'Lerini kullanarak dosyaları okumanızı/yazmanızı sağlar.  Uygulama verilerini depolamaya yönelik birimler ve seçenekler hakkında daha fazla bilgi edinmek için [depolama durumunu](service-fabric-mesh-storing-state.md)okuyun.
 

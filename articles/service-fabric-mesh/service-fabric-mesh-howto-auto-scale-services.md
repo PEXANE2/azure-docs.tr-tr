@@ -6,14 +6,20 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: gwallace
 ms.custom: mvc, devcenter
-ms.openlocfilehash: f65fcfa76069a3de37fd3a76e38e38fba40e04ac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a707e3601bb24b2d5c2aa9402edff4a2e8803033
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91843065"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99625913"
 ---
 # <a name="create-autoscale-policies-for-a-service-fabric-mesh-application"></a>Service Fabric kafes uygulaması için otomatik ölçeklendirme ilkeleri oluşturma
+
+> [!IMPORTANT]
+> Azure Service Fabric ağı önizlemesi devre dışı bırakıldı. Yeni dağıtımlar Service Fabric kafes API 'SI aracılığıyla artık izin verilmeyecektir. Mevcut dağıtımlar için destek 28 Nisan 2021 ' den devam edecektir.
+> 
+> Ayrıntılar için bkz. [Azure Service Fabric kafes önizleme kullanımdan](https://azure.microsoft.com/updates/azure-service-fabric-mesh-preview-retirement/)kaldırma.
+
 Service Fabric kafese uygulama dağıtmanın başlıca avantajlarından biri, hizmetlerinizi kolayca ölçeklendirebilme olanağı sağlar. Bu, hizmetinizdeki farklı yük miktarını işlemek veya kullanılabilirliği iyileştirmek için kullanılmalıdır. Hizmetlerinizi el ile ölçeklendirebilir veya otomatik ölçeklendirme ilkeleri ayarlayabilirsiniz.
 
 [Otomatik ölçeklendirme](service-fabric-mesh-scalability.md#autoscaling-service-instances) , hizmet örneklerinizin sayısını (yatay ölçeklendirme) dinamik olarak ölçeklendirmenize olanak tanır. Otomatik ölçeklendirme, büyük ölçüde esneklik sağlar ve CPU veya bellek kullanımına göre hizmet örneklerinin sağlanması veya kaldırılmasına olanak sağlar.

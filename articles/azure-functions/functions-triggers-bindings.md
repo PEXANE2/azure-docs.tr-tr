@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 02/18/2019
 ms.author: cshoe
-ms.openlocfilehash: aa0d78d52ec13c91b82e6a8d10720269076f59a1
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 4cafe9af1eb5a765ab86bafb63cc9ab7d0889dc8
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353553"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99627608"
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Azure İşlevleri tetikleyicileri ve bağlama kavramları
 
@@ -39,16 +39,19 @@ Bu örneklerin kapsamlı olması amaçlıyordu, ancak Tetikleyicileri ve bağlam
 
 ###  <a name="trigger-and-binding-definitions"></a>Tanımları tetikleme ve bağlama
 
-Tetikleyiciler ve bağlamalar, geliştirme yaklaşımına göre farklı şekilde tanımlanır.
+Tetikleyiciler ve bağlamalar, geliştirme diline bağlı olarak farklı şekilde tanımlanır.
 
-| Platform | Tetikleyiciler ve bağlamalar tarafından yapılandırılır... |
+| Dil | Tetikleyiciler ve bağlamalar tarafından yapılandırılır... |
 |-------------|--------------------------------------------|
 | C# sınıf kitaplığı | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;C# öznitelikleriyle yöntemleri ve parametreleri dekorasyon |
-| Diğerlerinin tümü (Azure portal dahil) | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;function.js([şema](http://json.schemastore.org/function)) [üzerinde](./functions-reference.md) güncelleştiriliyor |
+| Java | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Java ek açıklamalarıyla yöntemleri ve parametreleri dekorasyon  | 
+| JavaScript/PowerShell/Python/TypeScript | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;function.js([şema](http://json.schemastore.org/function)) [üzerinde](./functions-reference.md) güncelleştiriliyor |
 
-Portal bu yapılandırma için bir kullanıcı arabirimi sağlar, ancak işlevinizin **tümleştirin** sekmesi aracılığıyla bulunan **Gelişmiş düzenleyiciyi** açarak dosyayı doğrudan düzenleyebilirsiniz.
+Portal, function.jskullanan diller için **tümleştirme** sekmesinde bağlama eklemek üzere bir kullanıcı arabirimi sağlar. Ayrıca, işlevinizin **Code + test** sekmesinde dosyayı doğrudan portalda da düzenleyebilirsiniz. Visual Studio Code, uygun bir istem kümesini izleyerek [dosya üzerinde bir function.jsbağlamayı kolayca eklemenizi](functions-develop-vs-code.md?tabs=nodejs#add-a-function-to-your-project) sağlar. 
 
-.NET ' te, parametre türü giriş verileri için veri türünü tanımlar. Örneğin, `string` bir kuyruk tetikleyicisinin metnini bağlamak için kullanın, ikili olarak okunacak bir bayt dizisi ve bir nesneye serbest bırakmak için özel bir tür.
+.NET ve Java 'da parametre türü, giriş verileri için veri türünü tanımlar. Örneğin, `string` bir kuyruk tetikleyicisinin metnini, ikili olarak okunacak bir bayt dizisini ve bir nesneye seri hale getirmek için özel bir türü bağlamak için kullanın. .NET sınıf kitaplığı işlevleri ve Java işlevleri bağlama tanımları için *function.js* kullanmadığı için, portalda oluşturulup düzenlenemezler. C# Portal düzenlemesi, öznitelikleri yerine *function.js* kullanan c# betiğini temel alır.
+
+Mevcut işlevlere bağlama ekleme hakkında daha fazla bilgi edinmek için bkz. [bağlamaları kullanarak Işlevleri Azure hizmetlerine bağlama](add-bindings-existing-function.md).
 
 JavaScript gibi dinamik olarak yazılan diller için, `dataType` dosyadaki *function.js* özelliğini kullanın. Örneğin, bir HTTP isteğinin içeriğini ikili biçimde okumak için şu `dataType` şekilde ayarlayın `binary` :
 

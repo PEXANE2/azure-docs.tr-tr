@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 78ff0440fa83b6bd002cdf4256dc066342b1b390
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 9d4eb90d49e8cc671156833f22a85e7c2b4dd15b
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424760"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99626669"
 ---
-# <a name="scenario-route-traffic-through-an-nva"></a>Senaryo: trafiği bir NVA üzerinden yönlendirme
+# <a name="scenario-route-traffic-through-an-nva"></a>Senaryo: Trafiği NVA üzerinden yönlendirme
 
 Sanal WAN sanal hub 'ı yönlendirme ile çalışırken, kullanılabilecek oldukça az sayıda senaryo vardır. Bu NVA senaryosunda, hedef, trafiği bir NVA (ağ sanal gereci) yoluyla VNet 'e ve VNet 'e Dala Dala yönlendirmektir. Sanal hub yönlendirmesi hakkında daha fazla bilgi için bkz. [sanal hub yönlendirmesi hakkında](about-virtual-hub-routing.md).
 
@@ -31,7 +31,7 @@ Sanal WAN sanal hub 'ı yönlendirme ile çalışırken, kullanılabilecek olduk
 Bu senaryoda adlandırma kuralını kullanacağız:
 
 * Kullanıcıların bir NVA dağıttığmış olduğu ve diğer sanal ağlara (VNet 2 ve VNet 4 ' te **bağlantı matrisine**) bağlı olduğu sanal ağlarda "NVA VNET".
-* Bir NVA VNet 'e (VNet 5, VNet 6, VNet 7 ve VNet 8) bağlı sanal ağlar için "NVA ışınsal ler", **bağlantı matrisine**aşağıda verilmiştir.
+* Bir NVA VNet 'e (VNet 5, VNet 6, VNet 7 ve VNet 8) bağlı sanal ağlar için "NVA ışınsal ler", **bağlantı matrisine** aşağıda verilmiştir.
 * Sanal WAN 'a bağlı sanal ağlar için "NVA olmayan VNET 'ler", bu kişilerle bir NVA veya diğer VNET 'ler (aşağıdaki **bağlantı matrisinde**, VNET 1 ve VNET 3) yok.
 * NVA VNET 'lerin bağlandığı Microsoft tarafından yönetilen sanal WAN hub 'Ları için "hub 'lar". NVA bağlı uç sanal ağları, yalnızca NVA VNET 'lere sanal WAN hub 'larına bağlanmalıdır.
 
@@ -91,15 +91,15 @@ Artık NVA sanal ağları, NVA olmayan VNET 'ler ve dallar tüm NVA 'ya nasıl u
 
 * **Hub1** ve **Hub2** , NVA sanal ağları **VNET 2** ve **VNET 4**' e doğrudan bağlanır.
 
-* VNET **5** ve **VNET 6** VNET **2**ile eşlenmez.
+* VNET **5** ve **VNET 6** VNET **2** ile eşlenmez.
 
-* VNET **7** ve VNET **8** , **VNET 4**ile eşlenmez.
+* VNET **7** ve VNET **8** , **VNET 4** ile eşlenmez.
 
 * **Vnetme 5, 6, 7, 8** , bir sanal hub 'a doğrudan bağlı değil dolaylı ışınsal
 
 **Şekil 2**
 
-:::image type="content" source="./media/routing-scenarios/nva/nva.png" alt-text="Şekil 1" lightbox="./media/routing-scenarios/nva/nva.png":::
+:::image type="content" source="./media/routing-scenarios/nva/nva.png" alt-text="Şekil 2" lightbox="./media/routing-scenarios/nva/nva.png":::
 
 ## <a name="scenario-workflow"></a><a name="workflow"></a>Senaryo iş akışı
 
@@ -117,7 +117,7 @@ Sanal WAN, Vnettir 5, 6 sanal hub 'a bağlanıp VNet 2 NVA IP aracılığıyla i
 
 2. Vnetme 2, 5, 6 ' dan hub 1 ' in varsayılan yol tablosuna toplanan bir statik yol girişi ekleyin.
 
-   :::image type="content" source="./media/routing-scenarios/nva/nva-static-expand.png" alt-text="Şekil 1":::
+   :::image type="content" source="./media/routing-scenarios/nva/nva-static-expand.png" alt-text="Örnek":::
 
 3. VNet 2 ' in sanal ağ bağlantısı içinde Vnetme 5, 6 için statik bir yol yapılandırın. Bir sanal ağ bağlantısı için yönlendirme yapılandırmasını ayarlamak için bkz. [sanal hub yönlendirme](how-to-virtual-hub-routing.md#routing-configuration).
 
@@ -129,7 +129,7 @@ Bu, aşağıdaki **Şekil 3**' te gösterildiği gibi yönlendirme yapılandırm
 
 **Şekil 3**
 
-   :::image type="content" source="./media/routing-scenarios/nva/nva-result.png" alt-text="Şekil 1" lightbox="./media/routing-scenarios/nva/nva-result.png":::
+   :::image type="content" source="./media/routing-scenarios/nva/nva-result.png" alt-text="Şekil 3" lightbox="./media/routing-scenarios/nva/nva-result.png":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

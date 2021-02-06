@@ -7,12 +7,12 @@ metadata:
   ms.topic: landing-page
   ms.service: app-service
   ms.date: 08/06/2020
-  ms.openlocfilehash: 8ace1c6bb530fcc93d06f48bcef0d1ccfdf82306
-  ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
-  ms.translationtype: HT
+  ms.openlocfilehash: 2344c7a1507feb6ca3938fe0c53cf618b015f0f4
+  ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+  ms.translationtype: MT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 12/22/2020
-  ms.locfileid: "97724434"
+  ms.lasthandoff: 02/06/2021
+  ms.locfileid: "99627327"
 landingContent:
 - title: App Service hakkında
   linkLists:
@@ -60,46 +60,10 @@ landingContent:
       url: scenario-secure-app-overview.md
   - linkListType: how-to-guide
     links:
-    - text: Tanılama günlüklerini etkinleştirme
-      url: troubleshoot-diagnostic-logs.md
     - text: SSH üzerinden Linux kapsayıcısına bağlanma
       url: configure-linux-open-ssh-session.md
     - text: Etkin bir etki alanını App Service’e geçirme
       url: manage-custom-dns-migrate-domain.md
-- title: Veritabanıyla CRUD uygulaması
-  linkLists:
-  - linkListType: tutorial
-    links:
-    - text: SQL Veritabanı ile ASP.NET uygulaması
-      url: app-service-web-tutorial-dotnet-sqldatabase.md
-    - text: SQL Veritabanı ile ASP.NET Core uygulaması
-      url: tutorial-dotnetcore-sqldb-app.md
-    - text: Azure MySQL ile PHP (Laravel) uygulaması
-      url: tutorial-php-mysql-app.md
-    - text: MongoDB ile Node.js (MEAN.js) uygulaması
-      url: tutorial-nodejs-mongodb-app.md
-    - text: Cosmos DB ile Java (Spring Boot) uygulaması
-      url: tutorial-java-spring-cosmosdb.md
-    - text: PostgreSQL ile Python (Django) uygulaması
-      url: tutorial-python-postgresql-app.md
-    - text: PostgreSQL ile Ruby (Rails) uygulaması
-      url: tutorial-ruby-postgres-app.md
-- title: Kodunuzu veya içeriğinizi karşıya yükleme
-  linkLists:
-  - linkListType: deploy
-    links:
-    - text: İçeriği FTP ile karşıya yükleme
-      url: deploy-ftp.md
-    - text: İçeriği zip paketleri olarak karşıya yükleme
-      url: deploy-zip.md
-    - text: Yerel makineden git push komutu
-      url: deploy-local-git.md
-    - text: İçeriği OneDrive veya Dropbox ile eşitleme
-      url: deploy-content-sync.md
-    - text: GitHub, BitBucket vb. ile CI/CD
-      url: deploy-continuous-deployment.md
-    - text: Paketten çalıştırma
-      url: deploy-run-package.md
 - title: Özel kapsayıcıları çalıştırma
   linkLists:
   - linkListType: quickstart
@@ -120,6 +84,24 @@ landingContent:
       url: configure-connect-to-azure-storage.md
     - text: GitHub Eylemleriyle dağıtma
       url: deploy-container-github-action.md
+- title: Veritabanıyla CRUD uygulaması
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: SQL Veritabanı ile ASP.NET uygulaması
+      url: app-service-web-tutorial-dotnet-sqldatabase.md
+    - text: SQL Veritabanı ile ASP.NET Core uygulaması
+      url: tutorial-dotnetcore-sqldb-app.md
+    - text: Azure MySQL ile PHP (Laravel) uygulaması
+      url: tutorial-php-mysql-app.md
+    - text: MongoDB ile Node.js (MEAN.js) uygulaması
+      url: tutorial-nodejs-mongodb-app.md
+    - text: Cosmos DB ile Java (Spring Boot) uygulaması
+      url: tutorial-java-spring-cosmosdb.md
+    - text: PostgreSQL ile Python (Django) uygulaması
+      url: tutorial-python-postgresql-app.md
+    - text: PostgreSQL ile Ruby (Rails) uygulaması
+      url: tutorial-ruby-postgres-app.md
 - title: Yönetme ve tümleştirme
   linkLists:
   - linkListType: concept
@@ -146,6 +128,46 @@ landingContent:
       url: configure-domain-traffic-manager.md
     - text: Uygulamanızı Depolama Bloblarına yedekleme
       url: manage-backup.md
+- title: Kodunuzu veya içeriğinizi karşıya yükleme
+  linkLists:
+  - linkListType: deploy
+    links:
+    - text: İçeriği FTP ile karşıya yükleme
+      url: deploy-ftp.md
+    - text: İçeriği zip paketleri olarak karşıya yükleme
+      url: deploy-zip.md
+    - text: Yerel makineden git push komutu
+      url: deploy-local-git.md
+    - text: İçeriği OneDrive veya Dropbox ile eşitleme
+      url: deploy-content-sync.md
+    - text: GitHub, BitBucket vb. ile CI/CD
+      url: deploy-continuous-deployment.md
+    - text: Paketten çalıştırma
+      url: deploy-run-package.md
+- title: " Uygulamanızı izleme"
+  linkLists:
+  - linkListType: whats-new
+    links:
+    - text: Azure Izleyici ile App Service Tümleştirme (Önizleme)
+      url: https://azure.github.io/AppService/2019/11/01/App-Service-Integration-with-Azure-Monitor.html
+    - text: Azure Izleyici tümleştirmesi için günlük türleri (Önizleme)
+      url: https://azure.github.io/AppService/2020/06/25/New-Logs-Available-for-Azure-Monitor-Integration.html
+  - linkListType: tutorial
+    links:
+    - text: Azure Izleyici 'de hata giderme (Önizleme)
+      url: tutorial-troubleshoot-monitor.md
+  - linkListType: how-to-guide
+    links:
+    - text: Tanılama günlüklerini etkinleştirme
+      url: troubleshoot-diagnostic-logs.md
+    - text: Kaynak olaylarını alma
+      url: get-resource-events.md
+    - text: Sistem durumu denetimi
+      url: monitor-instances-health-check.md
+  - linkListType: reference
+    links:
+    - text: Kotalar ve uyarılar
+      url: web-sites-monitor.md
 - title: Diğer kaynaklar
   linkLists:
   - linkListType: video

@@ -6,14 +6,19 @@ ms.topic: quickstart
 ms.date: 07/17/2018
 ms.author: gwallace
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 15e0c3bcbc19eae344ca3965b2b866ca9a15f28d
-ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
+ms.openlocfilehash: 665988f37d0afdb91bb074d8653cc3c24155966e
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91840328"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99627020"
 ---
 # <a name="quickstart-create-and-deploy-a-web-app-to-azure-service-fabric-mesh"></a>Hızlı Başlangıç: Web uygulaması oluşturup Azure Service Fabric Mesh’e dağıtma
+
+> [!IMPORTANT]
+> Azure Service Fabric ağı önizlemesi devre dışı bırakıldı. Yeni dağıtımlar Service Fabric kafes API 'SI aracılığıyla artık izin verilmeyecektir. Mevcut dağıtımlar için destek 28 Nisan 2021 ' den devam edecektir.
+> 
+> Ayrıntılar için bkz. [Azure Service Fabric kafes önizleme kullanımdan](https://azure.microsoft.com/updates/azure-service-fabric-mesh-preview-retirement/)kaldırma.
 
 Azure Service Fabric Mesh, geliştiricilerin sanal makineleri, depolama alanını veya ağ bileşenlerini yönetmeden mikro hizmet uygulamaları dağıtmasını sağlayan tam olarak yönetilen bir hizmettir.
 
@@ -65,13 +70,13 @@ Service Fabric Mesh projenizi Azure’da yayımlamak için Visual Studio’da **
 
 ![Visual Studio Service Fabric Mesh yayımla iletişim kutusu](media/service-fabric-mesh-quickstart-dotnet-core/visual-studio-publish-dialog.png)
 
-Azure hesabınızı ve aboneliğinizi seçin. Bir **konum**seçin. Bu makalede **Doğu ABD** kullanılmıştır.
+Azure hesabınızı ve aboneliğinizi seçin. Bir **konum** seçin. Bu makalede **Doğu ABD** kullanılmıştır.
 
-**Kaynak grubu**altında öğesini seçin **\<Create New Resource Group...>** . **Kaynak Grubu Oluştur** iletişim kutusu görüntülenir. **Kaynak grubu adı**’nı ve **Konum**’u ayarlayın.  Bu hızlı başlangıçta, **Doğu ABD** konumu kullanılmış ve grup **sfmeshTutorial1RG** olarak adlandırılmıştır (kuruluşunuzda aynı aboneliği kullanan birden fazla kişi varsa benzersiz bir kaynak grubu adı seçin).  **Oluştur**'a tıklayarak kaynak grubunu oluşturun ve yayımla iletişim kutusuna geri dönün.
+**Kaynak grubu** altında öğesini seçin **\<Create New Resource Group...>** . **Kaynak Grubu Oluştur** iletişim kutusu görüntülenir. **Kaynak grubu adı**’nı ve **Konum**’u ayarlayın.  Bu hızlı başlangıçta, **Doğu ABD** konumu kullanılmış ve grup **sfmeshTutorial1RG** olarak adlandırılmıştır (kuruluşunuzda aynı aboneliği kullanan birden fazla kişi varsa benzersiz bir kaynak grubu adı seçin).  **Oluştur**'a tıklayarak kaynak grubunu oluşturun ve yayımla iletişim kutusuna geri dönün.
 
 ![Yeni bir kaynak grubu oluşturmayı gösteren ekran görüntüsü.](media/service-fabric-mesh-quickstart-dotnet-core/visual-studio-publish-new-resource-group-dialog.png)
 
-**Service Fabric uygulamayı Yayımla** iletişim kutusuna geri dönün **Azure Container Registry**altında öğesini seçin **\<Create New Container Registry...>** . **Container Registry Oluştur** iletişim kutusunda **Container registry adı** için benzersiz bir ad girin. Bir **Konum** belirtin (bu hızlı başlangıçta **Doğu ABD** kullanılmıştır). Açılan menüden önceki adımda oluşturduğunuz **Kaynak grubu** adını seçin, örneğin **sfmeshTutorial1RG**. **SKU**’yu **Temel** olarak ayarlayın ve ardından **Oluştur**'a tıklayarak yayımla iletişim kutusuna geri dönün.
+**Service Fabric uygulamayı Yayımla** iletişim kutusuna geri dönün **Azure Container Registry** altında öğesini seçin **\<Create New Container Registry...>** . **Container Registry Oluştur** iletişim kutusunda **Container registry adı** için benzersiz bir ad girin. Bir **Konum** belirtin (bu hızlı başlangıçta **Doğu ABD** kullanılmıştır). Açılan menüden önceki adımda oluşturduğunuz **Kaynak grubu** adını seçin, örneğin **sfmeshTutorial1RG**. **SKU**’yu **Temel** olarak ayarlayın ve ardından **Oluştur**'a tıklayarak yayımla iletişim kutusuna geri dönün.
 
 ![Visual Studio Service Fabric Mesh yeni kaynak grubu iletişim kutusu](media/service-fabric-mesh-quickstart-dotnet-core/visual-studio-publish-new-container-registry-dialog.png)
 

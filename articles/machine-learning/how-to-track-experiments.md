@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 235d54d36965ac5d8d173354b2223247806a1fff
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: 9e5f64d9ef61a272da488ad70e690db4c07ddccc
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97803672"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99625086"
 ---
 # <a name="enable-logging-in-ml-training-runs"></a>ML eğitim çalıştırmaları 'nda günlüğü etkinleştir
 
@@ -51,13 +51,15 @@ Bu örnek, [run.log()](/python/api/azureml-core/azureml.core.run%28class%29?pres
 
 1. Günlüğe kaydetme mantığını içeren bir eğitim betiği oluşturun: `train.py`.
 
-   [! kod-Python](~/MachineLearningNotebooks/how-to-use-azureml/training/train-on-local/train.py)
+   [!code-python[](~/MachineLearningNotebooks/how-to-use-azureml/training/train-on-local/train.py)]
 
 
 1. ```train.py``` betiğini kullanıcı tarafından yönetilen bir ortamda çalıştırılmak üzere gönderin. Betik klasörünün tamamı eğitim için gönderilir.
 
-   [! Not defteri-Python](~/MachineLearningNotebooks/how-to-use-azureml/training/train-on-local/train-on-local.ipynb?name=src) 
-    [! Not defteri-Python](~/MachineLearningNotebooks/how-to-use-azureml/training/train-on-local/train-on-local.ipynb?name=run)
+   [! Not defteri-Python [] (~/MachineLearningNotebooks/how-to-use-azureml/training/train-on-local/train-on-local.ipynb? Name = src)]
+
+
+   [! Not defteri-Python [] (~/MachineLearningNotebooks/how-to-use-azureml/training/train-on-local/train-on-local.ipynb? ad = Run)]
 
     `show_output` parametresi, eğitim sürecinin ayrıntılarına ek olarak uzak kaynaklar veya işlem hedefleri hakkındaki bilgileri görmenizi sağlayan ayrıntılı günlüğe kaydetme özelliğini etkinleştirir. Denemeyi gönderdiğinizde ayrıntılı günlüğe kaydetme özelliğini açmak için aşağıdaki kodu kullanın.
 
@@ -92,7 +94,7 @@ Aşağıdaki not defterlerinde bu makaledeki kavramlar gösterilmiştir:
 * [how-to-use-azureml/training/train-on-local](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-on-local)
 * [how-to-use-azureml/track-and-monitor-experiments/logging-api](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/track-and-monitor-experiments/logging-api)
 
-[! AML-kopya-Azure-Not defteri ekleme](https://github.com/MicrosoftDocs/azure-docs-pr/blob/live/includes/aml-clone-for-examples.md)
+[!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-clone-for-examples.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

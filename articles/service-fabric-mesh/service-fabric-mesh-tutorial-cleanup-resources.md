@@ -6,14 +6,19 @@ ms.topic: tutorial
 ms.date: 09/18/2018
 ms.author: gwallace
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 1d594001340f76c6dde9f3e00de2d76ee4e5104b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4d78e1e27d70b147bb52dff13675e63b79335d62
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91843337"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99625473"
 ---
 # <a name="tutorial-remove-azure-resources"></a>Öğretici: Azure kaynaklarını kaldırma
+
+> [!IMPORTANT]
+> Azure Service Fabric ağı önizlemesi devre dışı bırakıldı. Yeni dağıtımlar Service Fabric kafes API 'SI aracılığıyla artık izin verilmeyecektir. Mevcut dağıtımlar için destek 28 Nisan 2021 ' den devam edecektir.
+> 
+> Ayrıntılar için bkz. [Azure Service Fabric kafes önizleme kullanımdan](https://azure.microsoft.com/updates/azure-service-fabric-mesh-preview-retirement/)kaldırma.
 
 Bu öğretici bir serinin beşinci bölümüdür ve uygulamayla uygulamanın kaynaklarına ücret ödememeniz için bunları nasıl sileceğinizi gösterir.
 

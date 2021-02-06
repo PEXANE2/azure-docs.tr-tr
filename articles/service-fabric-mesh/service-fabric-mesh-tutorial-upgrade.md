@@ -6,14 +6,19 @@ ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: gwallace
 ms.custom: mvc, devcenter, devx-track-csharp
-ms.openlocfilehash: 2d74841e1873e5bd84d839122e0e662ef65ccd11
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1020613eb43177ba159601f253848f8d03f385a8
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91842011"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99625441"
 ---
 # <a name="tutorial-learn-how-to-upgrade-a-service-fabric-application-using-visual-studio"></a>Öğretici: Visual Studio kullanarak Service Fabric uygulamasını nasıl yükselteceğinizi öğrenin
+
+> [!IMPORTANT]
+> Azure Service Fabric ağı önizlemesi devre dışı bırakıldı. Yeni dağıtımlar Service Fabric kafes API 'SI aracılığıyla artık izin verilmeyecektir. Mevcut dağıtımlar için destek 28 Nisan 2021 ' den devam edecektir.
+> 
+> Ayrıntılar için bkz. [Azure Service Fabric kafes önizleme kullanımdan](https://azure.microsoft.com/updates/azure-service-fabric-mesh-preview-retirement/)kaldırma.
 
 Bu öğretici bir serinin dördüncü bölümüdür ve bir Azure Service Fabric kafes uygulamasının doğrudan Visual Studio 'dan nasıl yükseltileceğini gösterir. Yükseltme hem bir kod güncelleştirmesi hem de bir yapılandırma güncelleştirmesi içerir. Visual Studio içinden yükseltme ve yayımlama adımlarının aynı olduğunu görürsünüz.
 
@@ -31,7 +36,7 @@ Bu öğretici dizisinde şunların nasıl yapıldığını öğrenirsiniz:
 
 [!INCLUDE [preview note](./includes/include-preview-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiye başlamadan önce:
 
@@ -47,15 +52,15 @@ Service Fabric bir kafes uygulaması oluşturduğunuzda, Visual Studio her dağ�
 
 `WebFrontEnd_cpu` `1.5` **Web ön uç** hizmetinin daha yoğun bir şekilde kullanılması için CPU kaynaklarını olasılığına olarak güncelleştirmek üzere parametresini güncelleştireceğiz.
 
-1. **Todolistapp** projesinde, **ortamlar**  >  **bulutu**altında **Parameters. YAML** dosyasını açın. `WebFrontEnd_cpu`Değerini olarak değiştirin `1.5` . Parametre adı, `WebFrontEnd_` farklı hizmetlere uygulanan aynı ada sahip parametrelerden ayırt edilebilmesi için en iyi uygulama olarak hizmet adı ile önceden başlatılacaktır.
+1. **Todolistapp** projesinde, **ortamlar**  >  **bulutu** altında **Parameters. YAML** dosyasını açın. `WebFrontEnd_cpu`Değerini olarak değiştirin `1.5` . Parametre adı, `WebFrontEnd_` farklı hizmetlere uygulanan aynı ada sahip parametrelerden ayırt edilebilmesi için en iyi uygulama olarak hizmet adı ile önceden başlatılacaktır.
 
     ```xml
     WebFrontEnd_cpu: 1.5
     ```
 
-2. Webön **uç**hizmeti kaynakları altında **webön uç** projesinin **Service. YAML** dosyasını açın  >  **Service Resources**.
+2. Webön **uç** hizmeti kaynakları altında **webön uç** projesinin **Service. YAML** dosyasını açın  >  .
 
-    İçindeki `resources:` bölümünün olarak `cpu:` ayarlandığını unutmayın `"[parameters('WebFrontEnd_cpu')]"` . Proje bulut için derleniyorsa, için değeri, `'WebFrontEnd_cpu` **Environments**  >  **bulut**  >  **parametreleri. YAML** dosyası ortamlarından alınır ve olur `1.5` . Proje yerel olarak çalışmak üzere derleniyorsa, bu değer **ortamlar**  >  **Yerel**  >  **Parametreler. YAML** dosyasından alınır ve ' 0,5 ' olur.
+    İçindeki `resources:` bölümünün olarak `cpu:` ayarlandığını unutmayın `"[parameters('WebFrontEnd_cpu')]"` . Proje bulut için derleniyorsa, için değeri, `'WebFrontEnd_cpu`   >  **bulut**  >  **parametreleri. YAML** dosyası ortamlarından alınır ve olur `1.5` . Proje yerel olarak çalışmak üzere derleniyorsa, bu değer **ortamlar**  >  **Yerel**  >  **Parametreler. YAML** dosyasından alınır ve ' 0,5 ' olur.
 
 > [!Tip]
 > Varsayılan olarak, profile. YAML dosyasının bir eşi olan parametre dosyası, bu profile. YAML dosyasının değerlerini sağlamak için kullanılacaktır.
@@ -131,7 +136,7 @@ Bu dağıtım için kullanılacak profile. YAML dosyasını seçmek için **hede
 
 ![Visual Studio Service Fabric Mesh yayımla iletişim kutusu](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-publish-dialog.png)
 
-Azure hesabınızı ve aboneliğinizi seçin. **Konumu** , Ilk olarak Azure 'da yapılacak-do uygulamasını yayımladığınızda kullandığınız konuma ayarlayın. Bu makale **Doğu ABD**kullanıldı.
+Azure hesabınızı ve aboneliğinizi seçin. **Konumu** , Ilk olarak Azure 'da yapılacak-do uygulamasını yayımladığınızda kullandığınız konuma ayarlayın. Bu makale **Doğu ABD** kullanıldı.
 
 **Kaynak grubunu** , ilk olarak yapılacak BT uygulamasını Azure 'a yayımladığınızda kullandığınız kaynak grubuna ayarlayın.
 

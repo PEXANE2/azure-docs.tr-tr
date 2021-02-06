@@ -5,27 +5,25 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: include
-ms.date: 11/04/2019
+ms.date: 02/04/2021
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 5630eba4f1be9aead6ff1a89bc036bcc548c3646
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: f469664c716ecef6b82de2befa40b33f253e229f
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99541154"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99627738"
 ---
 1. Oluşturduğunuz sanal WAN 'ı bulun. Sanal WAN sayfasında, **bağlantı** bölümünde, **hub**' ı seçin.
-2. Hub 'Lar sayfasında **+ yeni hub** ' ı seçerek **sanal hub oluştur** sayfasını açın.
+2. **Hub 'lar** sayfasında **+ yeni hub** ' ı seçerek **sanal hub oluştur** sayfasını açın.
 
     ![Ekran görüntüsü, temel kavramlar sekmesi seçiliyken sanal hub oluştur bölmesini gösterir.](./media/virtual-wan-tutorial-hub-include/basics.png "Temel bilgiler")
 3. **Sanal hub** sayfası **temel bilgileri** Oluştur sekmesinde aşağıdaki alanları doldurun:
 
-    **Proje ayrıntıları**
-
-   * Bölge (daha önce konum olarak adlandırılır)
-   * Name
-   * Hub özel adres alanı. En küçük adres alanı bir hub oluşturmak için/24 ' tir. Bu,/25 ile/32 arasında herhangi bir aralığın oluşturulması sırasında bir hata üretecektir. Microsoft tarafından yönetilen bir hizmet olan Azure sanal WAN, farklı ağ geçitleri/hizmetler (örneğin, VPN ağ geçitleri, ExpressRoute ağ geçitleri, kullanıcı VPN/Noktadan siteye ağ geçitleri, güvenlik duvarı, yönlendirme vb.) için sanal hub 'da uygun alt ağları oluşturur. Microsoft bunu hizmetin bir parçası olarak yaparken, kullanıcının sanal hub 'daki hizmetler için alt ağ adres alanını açıkça planlaması gerekmez.
+   * **Bölge** (daha önce konum olarak adlandırılır)
+   * **Ad**
+   * **Hub özel adres alanı** -bir hub oluşturmak için en küçük adres alanı/24 ' dir. /25 ile/32 aralığında herhangi bir şey kullanırsanız, oluşturma sırasında bir hata üretir. Sanal hub 'daki hizmetler için alt ağ adres alanını açıkça planlamanız gerekmez. Azure sanal WAN, yönetilen bir hizmet olduğundan, farklı ağ geçitleri/hizmetler (örneğin, VPN ağ geçitleri, ExpressRoute ağ geçitleri, kullanıcı VPN Noktadan siteye ağ geçitleri, güvenlik duvarı, Yönlendirme ve vb.) için sanal hub 'da uygun alt ağları oluşturur.
 4. **İleri ' yi seçin: siteden siteye**.
 
     ![Ekran görüntüsü, siteye site seçiliyken sanal hub oluştur bölmesini gösterir.](./media/virtual-wan-tutorial-hub-include/site-to-site.png "Siteden siteye")
@@ -33,7 +31,7 @@ ms.locfileid: "99541154"
 5. **Siteden siteye** sekmesinde aşağıdaki alanları doldurun:
 
    * Siteden siteye VPN oluşturmak için **Evet** ' i seçin.
-   * AS numarası alanı şu anda sanal hub 'da düzenlenemez.
+   * AS numarası alanı düzenlenemez.
    * Açılan menüden **ağ geçidi ölçek birimleri** değerini seçin. Ölçek birimi, siteleri bağlamak için sanal hub 'da oluşturulan VPN ağ geçidinin toplam verimini seçmenizi sağlar. 1 ölçek birimi = 500 Mbps ' i seçerseniz, her biri en fazla 500 Mbps hızında olacak şekilde, artıklık için iki örnek oluşturulacaktır. Örneğin, her biri dalda 10 Mbps olan beş dala sahipseniz baş uçta 50 Mbps bir toplama işlemi yapmanız gerekir. Azure VPN ağ geçidinin Birleşik kapasitesini planlama, hub 'a dal sayısını desteklemek için gereken kapasite değerlendirdikten sonra yapılmalıdır.
 6. Doğrulamak için **gözden geçir + oluştur** ' u seçin.
 7. Hub 'ı oluşturmak için **Oluştur** ' u seçin. 30 dakika **sonra hub 'ı bir sayfada görüntülemek** için **yenileyin** . Kaynağa gitmek için **Kaynağa Git** ' i seçin.

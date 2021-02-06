@@ -6,14 +6,20 @@ ms.topic: conceptual
 ms.date: 12/03/2018
 ms.author: asnegi
 ms.custom: mvc, devcenter, devx-track-azurecli
-ms.openlocfilehash: 86822c5a9cef84ff4b51bc94b6b2dd3dbdee91bf
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: ac65693f2513338695e07cd8a19acb13333e7281
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97702018"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99625795"
 ---
 # <a name="mount-highly-available-service-fabric-reliable-disk-based-volume-in-a-service-fabric-mesh-application"></a>Yüksek oranda kullanılabilir Service Fabric Service Fabric bir kafes uygulamasında güvenilir disk tabanlı birim bağlama 
+
+> [!IMPORTANT]
+> Azure Service Fabric ağı önizlemesi devre dışı bırakıldı. Yeni dağıtımlar Service Fabric kafes API 'SI aracılığıyla artık izin verilmeyecektir. Mevcut dağıtımlar için destek 28 Nisan 2021 ' den devam edecektir.
+> 
+> Ayrıntılar için bkz. [Azure Service Fabric kafes önizleme kullanımdan](https://azure.microsoft.com/updates/azure-service-fabric-mesh-preview-retirement/)kaldırma.
+
 Kapsayıcı uygulamalarla kalıcı durumun yaygın bir yöntemi olan Azure dosya depolama gibi uzak depolamayı veya Azure Cosmos DB gibi veritabanını kullanmaktır. Bu, uzak mağazaya önemli okuma ve yazma gecikme süresi doğurur.
 
 Bu makalede, bir Service Fabric kafes uygulamasının kapsayıcısının içine bir birim bağlayarak yüksek oranda kullanılabilir Service Fabric güvenilir diskte nasıl depolanacağını gösterir.

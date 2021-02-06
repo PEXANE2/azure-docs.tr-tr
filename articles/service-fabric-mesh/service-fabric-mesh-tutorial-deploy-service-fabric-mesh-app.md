@@ -5,15 +5,20 @@ author: georgewallace
 ms.topic: tutorial
 ms.date: 09/18/2018
 ms.author: gwallace
-ms.custom: mvc, devcenter , devx-track-azurecli
-ms.openlocfilehash: 51e5fd29d16c3f927dc9b89d9c7145a16f4fd49f
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.custom: mvc, devcenter
+ms.openlocfilehash: be1e477bf3f11d487b8a6705535c09ff6e2b9c3e
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92748250"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99626742"
 ---
 # <a name="tutorial-deploy-a-service-fabric-mesh-application"></a>Öğretici: Service Fabric Mesh uygulaması dağıtma
+
+> [!IMPORTANT]
+> Azure Service Fabric ağı önizlemesi devre dışı bırakıldı. Yeni dağıtımlar Service Fabric kafes API 'SI aracılığıyla artık izin verilmeyecektir. Mevcut dağıtımlar için destek 28 Nisan 2021 ' den devam edecektir.
+> 
+> Ayrıntılar için bkz. [Azure Service Fabric kafes önizleme kullanımdan](https://azure.microsoft.com/updates/azure-service-fabric-mesh-preview-retirement/)kaldırma.
 
 Bir serinin üçüncü kısmı olan bu öğreticide doğrudan Visual Studio'dan bir Azure Service Fabric Mesh web uygulaması yayımlamayı öğreneceksiniz.
 
@@ -33,7 +38,7 @@ Bu öğretici dizisinde şunların nasıl yapıldığını öğrenirsiniz:
 
 [!INCLUDE [preview note](./includes/include-preview-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiye başlamadan önce:
 
@@ -61,11 +66,11 @@ Ardından **Service Fabric Uygulamasını Yayımla** iletişim kutusunu görecek
 
 Azure hesabınızı ve aboneliğinizi seçin. Bir **konum** seçin. Bu makalede **Doğu ABD** kullanılmıştır.
 
-**Kaynak grubu** altında öğesini seçin **\<Create New Resource Group...>** . Yeni bir kaynak grubu oluşturabileceğiniz bir iletişim kutusu açılır. Bu makalede **Doğu ABD** konumu kullanılmış ve grup **sfmeshTutorial1RG** olarak adlandırılmıştır (kuruluşunuzda aynı aboneliği kullanan birden fazla kullanıcı varsa benzersiz bir grup adı seçin).  **Oluştur** 'a bastığınızda kaynak grubu oluşturulur ve yayımla iletişim kutusu açılır.
+**Kaynak grubu** altında öğesini seçin **\<Create New Resource Group...>** . Yeni bir kaynak grubu oluşturabileceğiniz bir iletişim kutusu açılır. Bu makalede **Doğu ABD** konumu kullanılmış ve grup **sfmeshTutorial1RG** olarak adlandırılmıştır (kuruluşunuzda aynı aboneliği kullanan birden fazla kullanıcı varsa benzersiz bir grup adı seçin).  **Oluştur**'a bastığınızda kaynak grubu oluşturulur ve yayımla iletişim kutusu açılır.
 
 ![Visual Studio Service Fabric Mesh yeni kaynak grubu iletişim kutusu](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-publish-new-resource-group-dialog.png)
 
-**Service Fabric uygulamayı Yayımla** iletişim kutusuna geri dönün **Azure Container Registry** altında öğesini seçin **\<Create New Container Registry...>** . **Container Registry Oluştur** iletişim kutusunda **Container registry adı** için benzersiz bir ad girin. Bir **Konum** belirtin (bu öğreticide **Doğu ABD** kullanılmıştır). Açılan menüden önceki adımda oluşturduğunuz **Kaynak grubu** adını seçin, örneğin **sfmeshTutorial1RG** . **SKU** değerini **Temel** ’e ayarladıktan sonra **Oluştur** ’a basarak özel Azure kapsayıcı kayıt defterini kapatıp yayımlama iletişim kutusuna geri dönün.
+**Service Fabric uygulamayı Yayımla** iletişim kutusuna geri dönün **Azure Container Registry** altında öğesini seçin **\<Create New Container Registry...>** . **Container Registry Oluştur** iletişim kutusunda **Container registry adı** için benzersiz bir ad girin. Bir **Konum** belirtin (bu öğreticide **Doğu ABD** kullanılmıştır). Açılan menüden önceki adımda oluşturduğunuz **Kaynak grubu** adını seçin, örneğin **sfmeshTutorial1RG**. **SKU** değerini **Temel**’e ayarladıktan sonra **Oluştur**’a basarak özel Azure kapsayıcı kayıt defterini kapatıp yayımlama iletişim kutusuna geri dönün.
 
 ![Visual Studio Service Fabric Mesh yeni kapsayıcı kayıt defteri iletişim kutusu](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-publish-new-container-registry-dialog.png)
 

@@ -7,12 +7,12 @@ ms.manager: bsiva
 ms.topic: tutorial
 ms.date: 01/02/2021
 ms.custom: MVC
-ms.openlocfilehash: 3e098e64eacf8b126d6a6d72b1f242443e88d55c
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: aeeb810174ff5c21a81bcec8aa9265ff100edf91
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881104"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99626334"
 ---
 # <a name="migrate-machines-as-physical-servers-to-azure"></a>Makineleri fiziksel sunucu olarak Azure 'a geçirme
 
@@ -30,7 +30,7 @@ Bu öğretici, fiziksel sunucuların Azure 'a nasıl değerlendirileceğini ve g
 > [!div class="checklist"]
 > * Azure geçişi ile Azure 'u kullanmaya hazırlanma: sunucu geçişi.
 > * Geçirmek istediğiniz makineler için gereksinimleri denetleyin ve Azure geçişi çoğaltma gereci için, makineleri bulma ve Azure 'a geçirmek için kullanılan bir makine hazırlayın.
-> * Azure geçiş hub 'ına Azure geçiş sunucusu geçiş aracı 'nı ekleyin.
+> * Azure geçişi hub 'ına Azure geçişi: sunucu geçiş aracı 'nı ekleyin.
 > * Çoğaltma gerecini ayarlayın.
 > * Taşımak istediğiniz makinelere Mobility hizmetini yükler.
 > * Çoğaltmayı etkinleştirin.
@@ -51,7 +51,7 @@ Geçiş mimarisini [gözden geçirin](./agent-based-migration-architecture.md) .
 
 ## <a name="prepare-azure"></a>Azure’u hazırlama
 
-Sunucu geçişi ile geçiş için Azure 'u hazırlayın.
+Azure geçişi ile geçiş için Azure 'u hazırlayın: sunucu geçişi.
 
 **Görev** | **Ayrıntılar**
 --- | ---
@@ -116,7 +116,7 @@ Gereç dağıtımı için aşağıdaki gibi hazırlanın:
 
 ## <a name="set-up-the-replication-appliance"></a>Çoğaltma gereç ayarı
 
-Geçişin ilk adımı, çoğaltma gerecini ayarlamaya yönelik. Fiziksel sunucu geçişi için gereci ayarlamak üzere gereç için yükleyici dosyasını indirirler ve ardından bunu [hazırladığınız makinede](#prepare-a-machine-for-the-replication-appliance)çalıştırırsınız. Gereci yükledikten sonra Azure geçişi sunucu geçişine kaydetmelisiniz.
+Geçişin ilk adımı, çoğaltma gerecini ayarlamaya yönelik. Fiziksel sunucu geçişi için gereci ayarlamak üzere gereç için yükleyici dosyasını indirirler ve ardından bunu [hazırladığınız makinede](#prepare-a-machine-for-the-replication-appliance)çalıştırırsınız. Gereci yükledikten sonra Azure geçişi: sunucu geçişi ile kaydedersiniz.
 
 
 ### <a name="download-the-replication-appliance-installer"></a>Çoğaltma gereç yükleyicisini indirin
@@ -129,7 +129,7 @@ Geçişin ilk adımı, çoğaltma gerecini ayarlamaya yönelik. Fiziksel sunucu 
 4. **Hedef bölge**' de, makineleri geçirmek istediğiniz Azure bölgesini seçin.
 5. **Geçiş için hedef bölgenin bölge adı olduğunu onaylayın**' i seçin.
 6. **Kaynak oluştur**' a tıklayın. Bu, arka planda bir Azure Site Recovery Kasası oluşturur.
-    - Azure geçişi sunucu geçişi ile geçiş zaten ayarladıysanız, kaynaklar daha önce ayarlandığı için hedef seçenek yapılandırılamaz.    
+    - Daha önce Azure geçişi: sunucu geçişi ile geçiş ayarladıysanız, kaynaklar daha önce ayarlandığı için hedef seçenek yapılandırılamaz.    
     - Bu düğmeye tıkladıktan sonra bu proje için hedef bölgeyi değiştiremezsiniz.
     - Sonraki tüm geçişler bu bölgedir.
 
@@ -145,7 +145,7 @@ Geçişin ilk adımı, çoğaltma gerecini ayarlamaya yönelik. Fiziksel sunucu 
 
     ![Kaydı Sonlandır](./media/tutorial-migrate-physical-virtual-machines/finalize-registration.png)
 
-Bulunan makineler Azure geçişi sunucu geçişi 'nde görünene kadar kayıt gerçekleştirildikten sonra bu işlem biraz zaman alabilir. VM 'Ler keşfedildiğinde, **bulunan sunucular** sayılır.
+Bulunan makineler Azure geçişi 'nde görünene kadar kayıt gerçekleştirildikten sonra bu işlem biraz zaman alabilir: sunucu geçişi. VM 'Ler keşfedildiğinde, **bulunan sunucular** sayılır.
 
 ![Bulunan sunucular](./media/tutorial-migrate-physical-virtual-machines/discovered-servers.png)
 

@@ -5,22 +5,25 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/22/2021
+ms.date: 02/05/2021
 ms.author: normesta
 ms.reviewer: prishet
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 626e626cbd8fa86bd0366516cbaf5a54789f3988
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 737608e4f83846187decb92b090f2385a8ff4ac6
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98741052"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99627349"
 ---
 # <a name="set-access-control-lists-acls-recursively-for-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage 2. için erişim denetim listelerini (ACL 'Ler) yinelemeli olarak ayarlama
 
 ACL devralma, bir üst dizin altında oluşturulan yeni alt öğeler için zaten kullanılabilir. Ayrıca, bu değişiklikleri her bir alt öğe için ayrı ayrı yapmak zorunda kalmadan, bir üst dizinin varolan alt öğeleri için de, ACL 'Leri yinelemeli olarak ekleyebilir, güncelleştirebilir ve kaldırabilirsiniz.
 
 [Kitaplıklar](#libraries)  |  [Örnekler](#code-samples)  |  [En iyi uygulamalar](#best-practice-guidelines)
+
+> [!NOTE]
+> Azure Depolama Gezgini artık ACL 'Leri yinelemeli olarak uygulama özelliğini desteklemektedir. Daha fazla bilgi edinmek için bkz. [Azure Depolama Gezgini ACL 'leri yinelemeli olarak uygulama](data-lake-storage-explorer.md#apply-acls-recursively). 
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -717,7 +720,7 @@ Gecikme süresini azaltmak için, özyinelemeli ACL işlemini depolama hesabın�
 
 #### <a name="acl-limits"></a>ACL sınırları
 
-Bir dizin veya dosyaya uygulayabileceğiniz en fazla ACL sayısı 32 erişim ACL 'Lerine ve 32 varsayılan ACL 'Lerine sahiptir. Daha fazla bilgi için [Azure Data Lake Storage 2. erişim denetimi](./data-lake-storage-access-control.md)bölümüne bakın.
+Bir dizin veya dosyaya uygulayabileceğiniz en fazla ACL sayısı 32 erişim ACL 'Lerine ve 32 varsayılan ACL 'Lerine sahiptir. Daha fazla bilgi için bkz. [Azure Data Lake Storage 2. Nesil'de erişim denetimi](./data-lake-storage-access-control.md).
 
 ## <a name="see-also"></a>Ayrıca bkz.
 

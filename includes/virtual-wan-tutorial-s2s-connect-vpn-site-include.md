@@ -1,19 +1,19 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: include
-ms.date: 10/08/2020
+ms.date: 02/04/2021
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 2f5f653fdaf9df5d1bb2cf87d06047510ad46d7b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 614a13a140453e3c7ed55a7fc0f9173626ad2f2f
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91856746"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99627737"
 ---
 1. **Siteleri BAĞLAN** sayfasını açmak Için **VPN sitelerini bağla** ' yı seçin.
 
@@ -23,12 +23,12 @@ ms.locfileid: "91856746"
 
    * Önceden paylaşılan bir anahtar girin. Anahtar girmezseniz, Azure oto sizin için bir tane oluşturur.
    * Protokol ve IPSec ayarlarını seçin. Daha fazla bilgi için bkz. [varsayılan/özel IPSec](../articles/virtual-wan/virtual-wan-ipsec.md).
-   * **Varsayılan yolu yayma**için uygun seçeneği belirleyin. **Etkinleştir** seçeneği, sanal hub 'ın bu bağlantıya öğrenilen bir varsayılan yol yaymasını sağlar. Bu bayrak, yalnızca varsayılan yol sanal WAN hub 'ı hub 'da bir güvenlik duvarı dağıtımının bir sonucu olarak zaten öğrenildiği ya da başka bir bağlı sitede zorlamalı tünelyi etkin olan bir bağlantıya varsayılan yol yaymayı sağlar. Varsayılan yol, sanal WAN hub 'ında değil.
+   * **Varsayılan yolu yayma** için uygun seçeneği belirleyin. **Etkinleştir** seçeneği, sanal hub 'ın bu bağlantıya öğrenilen bir varsayılan yol yaymasını sağlar. Bu bayrak, yalnızca varsayılan yol sanal WAN hub 'ı hub 'da bir güvenlik duvarı dağıtımının bir sonucu olarak zaten öğrenildiği ya da başka bir bağlı sitede zorlamalı tünelyi etkin olan bir bağlantıya varsayılan yol yaymayı sağlar. Varsayılan yol, sanal WAN hub 'ında değil.
 
-2. **Bağlan**'ı seçin.
-3. Birkaç dakika içinde, site bağlantının ve bağlantı durumunun gösterilmesi gerekir.
+2. **Bağlan**’ı seçin.
+3. Birkaç dakika sonra, site bağlantının ve bağlantı durumunun gösterilmesi gerekir.
 
-   ![Ekran görüntüsü, site bağlantısı ve bağlantı durumu için bir V P N sitesini gösterir.](./media/virtual-wan-tutorial-connect-vpn-site-include/status.png "durum")
+   ![Ekran görüntüsü, siteden siteye bağlantı ve bağlantı durumunu gösterir.](./media/virtual-wan-tutorial-connect-vpn-site-include/status.png "durum")
 
    **Bağlantı durumu:** Bu, VPN sitesini Azure hub 'ının VPN Gateway 'e bağlayan bağlantı için Azure kaynağının durumudur. Bu denetim düzlemi işlemi başarılı olduktan sonra, Azure VPN ağ geçidi ve şirket içi VPN cihazı bağlantı kurmaya devam eder.
 

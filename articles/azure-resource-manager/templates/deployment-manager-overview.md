@@ -4,12 +4,12 @@ description: Azure Deployment Manager ve güvenli dağıtım uygulamaları hakk�
 ms.topic: conceptual
 ms.date: 11/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: baed44e04a0beca02cc959d302a4a29906b4a78e
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 63553b0bbca031faa44e0d88480fcc08950a3e2c
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99539527"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99627508"
 ---
 # <a name="enable-safe-deployment-practices-with-azure-deployment-manager-public-preview"></a>Azure Deployment Manager ile güvenli dağıtım uygulamalarını etkinleştirme (Genel Önizleme)
 
@@ -21,10 +21,10 @@ Azure Deployment Manager önizlemededir. [Geri bildirim](https://aka.ms/admfeedb
 
 Deployment Manager kullanmak için dört dosya oluşturmanız gerekir:
 
-* Topoloji şablonu
-* Piyasaya çıkma şablonu
-* Topoloji için parametre dosyası
-* Dağıtım için parametre dosyası
+* Topoloji şablonu.
+* Dağıtım şablonu.
+* Topoloji için parametre dosyası.
+* Dağıtım için parametre dosyası.
 
 Dağıtım şablonunu dağıtmadan önce topoloji şablonunu dağıtırsınız.
 

@@ -6,14 +6,19 @@ ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: gwallace
 ms.custom: mvc, devcenter
-ms.openlocfilehash: aa3ac9d8835cd17387346bb29b3e7c30f286cd1f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 40bba03c35568c013e383c08f0a13f765c1cc8bd
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91839733"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99625863"
 ---
 # <a name="configure-a-gateway-resource-to-route-requests"></a>İstekleri yönlendirmek için bir ağ geçidi kaynağı yapılandırma
+
+> [!IMPORTANT]
+> Azure Service Fabric ağı önizlemesi devre dışı bırakıldı. Yeni dağıtımlar Service Fabric kafes API 'SI aracılığıyla artık izin verilmeyecektir. Mevcut dağıtımlar için destek 28 Nisan 2021 ' den devam edecektir.
+> 
+> Ayrıntılar için bkz. [Azure Service Fabric kafes önizleme kullanımdan](https://azure.microsoft.com/updates/azure-service-fabric-mesh-preview-retirement/)kaldırma.
 
 Bir ağ geçidi kaynağı, gelen trafiği uygulamanızın barındırıldığı ağa yönlendirmek için kullanılır. İsteğin yapısına bağlı olarak, isteklerin belirli hizmetlere veya uç noktalara yönlendirildiği kuralları belirtmek için yapılandırın. Ağ ve ağ geçitleri hakkında daha fazla bilgi için bkz. Service Fabric ağdayken [ağa giriş](service-fabric-mesh-networks-and-gateways.md) . 
 

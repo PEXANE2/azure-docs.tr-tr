@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: 2c894ea4bcb9701b8b65bcb9cd0b4b82c1898448
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 7d391998e7f20cff0f77f6aab7938bc375f75c9e
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99500397"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99616378"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -25,10 +25,7 @@ ms.locfileid: "99500397"
 `npm install`JavaScript Için Azure Iletişim Hizmetleri 'Ni çağıran ve ortak istemci kitaplıklarını yüklemek için komutunu kullanın.
 
 ```console
-npm install @azure/communication-common --save
-
 npm install @azure/communication-calling --save
-
 ```
 
 ## <a name="object-model"></a>Nesne modeli
@@ -39,21 +36,22 @@ Aşağıdaki sınıflar ve arabirimler, istemci Kitaplığı çağıran Azure Il
 | ---------------------------------| ------------------------------------------------------------------------------------------------------------------------------------------- |
 | CallClient                       | CallClient, çağıran istemci kitaplığı için ana giriş noktasıdır.                                                                       |
 | CallAgent                        | CallAgent, çağrıları başlatmak ve yönetmek için kullanılır.                                                                                            |
-| AzureCommunicationUserCredential | AzureCommunicationUserCredential sınıfı, CallAgent örneğini oluşturmak için kullanılan CommunicationUserCredential arabirimini uygular. |
+| DeviceManager                    | DeviceManager, medya cihazlarını yönetmek için kullanılır                                                                                           |
+| AzureCommunicationTokenCredential | AzureCommunicationTokenCredential sınıfı, CallAgent örneğini oluşturmak için kullanılan CommunicationTokenCredential arabirimini uygular. |
 
 
 ## <a name="initialize-the-callclient-create-callagent-and-access-devicemanager"></a>CallClient 'ı başlatın, CallAgent oluşturun ve DeviceManager 'a erişin
 
 Yeni bir `CallClient` örnek oluşturun. Bunu, bir günlükçü örneği gibi özel seçeneklerle yapılandırabilirsiniz.
 Bir, örneği oluşturulduktan sonra `CallClient` `CallAgent` örnek üzerinde yöntemini çağırarak bir örnek oluşturabilirsiniz `createCallAgent` `CallClient` . Bu, zaman uyumsuz bir `CallAgent` örnek nesnesi döndürüyor.
-`createCallAgent`Yöntemi bir `CommunicationUserCredential` [Kullanıcı erişim belirtecini](../../access-tokens.md)kabul eden bir bağımsız değişken olarak alır.
+`createCallAgent`Yöntemi bir `CommunicationTokenCredential` [Kullanıcı erişim belirtecini](https://docs.microsoft.com/azure/communication-services/quickstarts/access-tokens)kabul eden bir bağımsız değişken olarak alır.
 Erişim için `DeviceManager` önce bir callAgent örneğine erişmek gerekir. Daha sonra, `getDeviceManager` `CallClient` devmanager 'ı almak için örnek üzerinde yöntemini kullanabilirsiniz.
 
 ```js
 const userToken = '<user token>';
 callClient = new CallClient(options);
-const tokenCredential = new AzureCommunicationUserCredential(userToken);
-const callAgent = await callClient.createCallAgent(tokenCredential, { displayName: 'optional ACS user name' });
+const tokenCredential = new AzureCommunicationTokenCredential(userToken);
+const callAgent = await callClient.createCallAgent(tokenCredential, {displayName: 'optional ACS user name'});
 const deviceManager = await callClient.getDeviceManager()
 ```
 
@@ -63,25 +61,31 @@ Bir çağrı oluşturmak ve başlatmak için, CallAgent 'da API 'lerden birini k
 
 Çağrı oluşturma ve başlatma zaman uyumludur. Çağrı örneği, çağrı olaylarına abone olmanızı sağlar.
 
-## <a name="place-a-11-call-to-a-user-or-a-1n-call-with-users-and-pstn"></a>Kullanıcılara 1:1 çağrısı veya Kullanıcı ve PSTN ile 1: n çağrısı koyun
+## <a name="place-a-call"></a>Bir çağrı yerleştir
 
-Başka bir Iletişim Hizmetleri kullanıcısına çağrı yerleştirmek için, `call` yöntemi çağırın `callAgent` ve [iletişim Hizmetleri yönetim kitaplığıyla oluşturduğunuz](../../access-tokens.md)communicationuser öğesini geçirin.
+### <a name="place-a-11-call-to-a-user-or-pstn"></a>Bir kullanıcıya veya PSTN 'e 1:1 çağrısı koyun
+Başka bir Iletişim Hizmetleri kullanıcısına çağrı yerleştirmek için, `call` yöntemi çağırın `callAgent` ve çağrılan Communicationuserıdentifier ' ı geçirin:
 
 ```js
-const oneToOneCall = callAgent.call([CommunicationUser]);
+const userCallee = { communicationUserId: '<ACS_USER_ID>' }
+const oneToOneCall = callAgent.call([userCallee]);
+```
+
+Bir PSTN çağrısı yerleştirmek için, `call` yöntemini çağırın `callAgent` ve çağrılan Phonenumberıdentifier ' ı geçirin.
+Iletişim Hizmetleri kaynağınız, PSTN çağırmaya izin verecek şekilde yapılandırılmalıdır.
+PSTN numarası çağrılırken, alternatif çağıran KIMLIĞINIZI belirtmeniz gerekir.
+```js
+const pstnCalee = { phoneNumber: '<ACS_USER_ID>' }
+const alternateCallerId = {alternateCallerId: '<Alternate caller Id>'};
+const oneToOneCall = callAgent.call([pstnCallee], {alternateCallerId});
 ```
 
 ### <a name="place-a-1n-call-with-users-and-pstn"></a>Kullanıcılar ve PSTN ile 1: n çağrısı yerleştir
-
-Bir kullanıcıya 1: n çağrısı ve bir PSTN numarası eklemek için, bir CommunicationUser ve her iki Cali için telefon numarası belirtmeniz gerekir.
-
-Iletişim Hizmetleri kaynağınız, PSTN çağırmaya izin verecek şekilde yapılandırılmalıdır.
 ```js
-
-const userCallee = { communicationUserId: <ACS_USER_ID> };
+const userCallee = { communicationUserId: <ACS_USER_ID> }
 const pstnCallee = { phoneNumber: <PHONE_NUMBER>};
-const groupCall = callAgent.call([userCallee, pstnCallee], placeCallOptions);
-
+const alternateCallerId = {alternateCallerId: '<Alternate caller Id>'};
+const groupCall = callAgent.call([userCallee, pstnCallee], {alternateCallerId});
 ```
 
 ### <a name="place-a-11-call-with-video-camera"></a>Video kamera ile 1:1 çağrısı yerleştirme
@@ -89,9 +93,7 @@ const groupCall = callAgent.call([userCallee, pstnCallee], placeCallOptions);
 > Şu anda birden fazla giden yerel video akışı yok.
 Bir video araması yerleştirmek için, deviceManager API 'sini kullanarak yerel kameraları listeleyebilirsiniz `getCameraList` .
 İstediğiniz kamerayı seçtikten sonra, bir `LocalVideoStream` örnek oluşturmak ve `videoOptions` dizi içinde yöntemine bir öğe olarak geçirmek için onu kullanın `localVideoStream` `call` .
-Çağrınızdan bağlantı kurulduktan sonra, seçili kameradan diğer katılımcılara otomatik olarak bir video akışı göndermeye başlar.
-
-Bu ayrıca Call. Accept () video seçenekleri ve CallAgent. JOIN () video seçenekleri için de geçerlidir.
+Çağrınızdan bağlantı kurulduktan sonra, seçili kameradan diğer katılımcılara otomatik olarak bir video akışı göndermeye başlar. Bu ayrıca Call. Accept () video seçenekleri ve CallAgent. JOIN () video seçenekleri için de geçerlidir.
 ```js
 const deviceManager = await callClient.getDeviceManager();
 const videoDeviceInfo = deviceManager.getCameraList()[0];
@@ -101,26 +103,14 @@ const call = callAgent.call(['acsUserId'], placeCallOptions);
 
 ```
 
-### <a name="receiving-an-incoming-call"></a>Gelen bir çağrı alınıyor
-```js
-callAgent.on('callsUpdated', e => {
-    e.added.forEach(addedCall => {
-        if(addedCall.isIncoming) {
-        addedCall.accept();
-    }
-    });
-})
-```
-
 ### <a name="join-a-group-call"></a>Grup çağrısına katılır
 Yeni bir grup çağrısı başlatmak veya devam eden bir grup çağrısına katmak için, ' JOIN ' metodunu kullanın ve bir özelliği olan bir nesne geçirin `groupId` . Değer bir GUID olmalıdır.
 ```js
 
-const locator = { groupId: <GUID>}
-const call = callAgent.join(locator);
+const context = { groupId: <GUID>}
+const call = callAgent.join(context);
 
 ```
-
 ### <a name="join-a-teams-meeting"></a>Takımlar toplantısına katılarak
 Bir ekip toplantısına katmak için ' JOIN ' yöntemini kullanın ve bir toplantı bağlantısı veya bir toplantının koordinatlarını geçirin
 ```js
@@ -137,6 +127,24 @@ const locator = {
 }
 const call = callAgent.join(locator);
 ```
+
+## <a name="receiving-an-incoming-call"></a>Gelen bir çağrı alınıyor
+
+Bu `CallAgent` örnek, `incomingCall` oturum açmış kimlik gelen bir çağrı aldığında bir olayı yayar. Bu olayı dinlemek için aşağıdaki şekilde abone olun:
+
+```js
+const incomingCallHander = async (args: { incomingCall: IncomingCall }) => {
+    //accept the call
+    var call = await incomingCall.accept();
+
+    //reject the call
+    incomingCall.reject();
+};
+callAgentInstance.on('incomingCall', incomingCallHander);
+```
+
+`incomingCall`Olay, `IncomingCall` bir çağrıyı kabul edebilir veya reddedebileceğiniz bir örneği sağlar.
+
 
 ## <a name="call-management"></a>Arama Yönetimi
 
@@ -155,10 +163,10 @@ const callId: string = call.id;
 const remoteParticipants = call.remoteParticipants;
 ```
 
-* Çağrı gelen, çağıran kimliği. Kimlik `Identifier` türlerden biri
+* Çağrı gelen, çağıran kimliği. Kimlik `CommunicationIdentifier` türlerden biri
 ```js
 
-const callerIdentity = call.callerIdentity;
+const callerIdentity = call.callerInfo.identity;
 
 ```
 
@@ -177,9 +185,8 @@ Bu, çağrının geçerli durumunu temsil eden bir dize döndürür:
 * ' Connected '-çağrı bağlı
 * ' Hold '-çağrı beklemeye koyuyor, Yerel uç nokta ve uzak katılımcı arasında medya akışı yok
 * Çağrının ' bağlantısı kesildi ' durumuna geçmeden önce ' bağlantısı kesiliyor '-geçiş durumu
-* ' Bağlantısı kesildi '-son çağrı durumu.
-   * Ağ bağlantısı kaybolursa, durum yaklaşık 2 dakika sonra ' bağlantısı kesildi ' durumuna geçer.
-
+* ' Bağlantısı kesildi '-son çağrı durumu
+  * Ağ bağlantısı kaybolursa, durum yaklaşık 2 dakika sonra ' bağlantısı kesildi ' durumuna geçer.
 
 * Belirli bir çağrının neden bitmediğini görmek için, `callEndReason` özelliği inceleyin.
 ```js
@@ -189,14 +196,10 @@ const callEndReason = call.callEndReason;
 // callEndReason.subCode (number) subCode associated with the reason
 ```
 
-* Geçerli çağrının gelen bir çağrı olup olmadığını öğrenmek için, özelliğini inceleyin ve `isIncoming` döndürür `Boolean` .
+* Geçerli çağrının gelen veya giden bir çağrı olup olmadığını öğrenmek için, `direction` özelliğini inceleyin `CallDirection` .
 ```js
-const isIncoming = call.isIncoming;
-```
-
-* Çağrının kaydedilip kaydedilmediğini denetlemek için, özelliğini inceleyin ve `isRecordingActive` döndürür `Boolean` .
-```js
-const isResordingActive = call.isRecordingActive;
+const isIncoming = call.direction == 'Incoming';
+const isOutgoing = call.direction == 'Outgoing';
 ```
 
 *  Geçerli mikrofonun kapalı olup olmadığını denetlemek için, özelliğini inceleyin ve `muted` döndürür `Boolean` .
@@ -218,6 +221,18 @@ const isScreenSharingOn = call.isScreenSharingOn;
 
 const localVideoStreams = call.localVideoStreams;
 
+```
+
+### <a name="call-ended-event"></a>Çağrı sonu olayı
+
+`Call`Örnek, `callEnded` çağrı sona erdiğinde bir olayı yayar. Bu olay abone olmayı aşağıdaki şekilde dinlemek için:
+
+```js
+const callEndHander = async (args: { callEndReason: CallEndReason }) => {
+    console.log(args.callEndReason)
+};
+
+call.on('callEnded', callEndHander);
 ```
 
 ### <a name="mute-and-unmute"></a>Sessiz ve aç
@@ -269,9 +284,6 @@ const source callClient.getDeviceManager().getCameraList()[1];
 localVideoStream.switchSource(source);
 
 ```
-### <a name="faq"></a>SSS
- * Ağ bağlantısı kaybolursa, çağrı durumu ' bağlantısız ' olarak değişir mi?
-    * Evet, ağ bağlantısı 2 dakikadan fazla kaybolursa, çağrı bağlantısı kesik duruma geçer ve çağrı sona bırakılır.
 
 ## <a name="remote-participants-management"></a>Uzak katılımcılar yönetimi
 
@@ -288,17 +300,18 @@ call.remoteParticipants; // [remoteParticipant, remoteParticipant....]
 
 ### <a name="remote-participant-properties"></a>Uzak katılımcı özellikleri
 Uzak katılımcının ilişkili özellikler ve koleksiyonlar kümesi vardır
-
-* Bu uzak katılımcının tanımlayıcısını alın.
-Kimlik ' Identifier ' türlerinden biridir:
+#### <a name="communicationidentifier"></a>Communicationıdentifier
+Bu uzak katılımcının tanımlayıcısını alın.
 ```js
 const identifier = remoteParticipant.identifier;
-//It can be one of:
-// { communicationUserId: '<ACS_USER_ID'> } - object representing ACS User
-// { phoneNumber: '<E.164>' } - object representing phone number in E.164 format
 ```
+' Communicationıdentifier ' türlerinden biri olabilir:
+  * {Communicationuserıd: ' <ACS_USER_ID ' >}-ACS kullanıcısını temsil eden nesne
+  * {phoneNumber: ' <E. 164> '}-E. 164 biçiminde telefon numarasını temsil eden nesne
+  * {Microsoftteamsuserıd: ' <TEAMS_USER_ID> ', IsAnonymous?: Boolean; bulut?: "public" | "DOD" | "gcch"}-takımlar kullanıcısını temsil eden nesne
 
-* Bu uzak katılımcının durumunu alın.
+#### <a name="state"></a>Durum
+Bu uzak katılımcının durumunu alın.
 ```js
 
 const state = remoteParticipant.state;
@@ -309,30 +322,29 @@ Durum aşağıdakilerden biri olabilir
 * ' Connected '-katılımcı çağrıya bağlı
 * ' Hold '-katılımcı beklemeye açık
 * ' EarlyMedia '-katılımcı çağrıya bağlanmadan önce duyuru yürütülür
-* ' Bağlantısı kesildi '-son durum-katılımcının çağrı bağlantısı kesildi.
-   * Uzak katılımcı ağ bağlantılarını kaybederse, uzak katılımcı durumu yaklaşık 2 dakika sonra ' bağlantısı kesildi ' durumuna geçer.
+* ' Bağlantısı kesildi '-son durum-katılımcının çağrı bağlantısı kesildi
+  * Uzak katılımcı ağ bağlantılarını kaybederse, uzak katılımcı durumu yaklaşık 2 dakika sonra ' bağlantısı kesildi ' durumuna geçer.
 
+#### <a name="call-end-reason"></a>Çağrı bitiş nedeni
 Katılımcının çağrıyı neden bıraktı olduğunu öğrenmek için, `callEndReason` özelliği inceleyin:
 ```js
-
 const callEndReason = remoteParticipant.callEndReason;
 // callEndReason.code (number) code associated with the reason
 // callEndReason.subCode (number) subCode associated with the reason
 ```
-
-* Bu uzak katılımcının kapalı olup olmadığını denetlemek için, `isMuted` özelliği incele, döndürüyor `Boolean`
+#### <a name="is-muted"></a>Kapalı
+Bu uzak katılımcının kapalı olup olmadığını denetlemek için, `isMuted` özelliği incele, döndürüyor `Boolean`
 ```js
 const isMuted = remoteParticipant.isMuted;
 ```
-
-* Bu uzak katılımcının konuşuyor olup olmadığını denetlemek için, `isSpeaking` döndürdüğü özelliği inceleyin `Boolean`
+#### <a name="is-speaking"></a>Konuşuyor
+Bu uzak katılımcının konuşuyor olup olmadığını denetlemek için, `isSpeaking` döndürdüğü özelliği inceleyin `Boolean`
 ```js
-
 const isSpeaking = remoteParticipant.isSpeaking;
-
 ```
 
-* Belirli bir katılımcının Bu çağrıda gönderdiği tüm video akışlarını denetlemek için, `videoStreams` koleksiyon, `RemoteVideoStream` nesneleri içerir
+#### <a name="video-streams"></a>Video akışları
+Belirli bir katılımcının Bu çağrıda gönderdiği tüm video akışlarını denetlemek için, `videoStreams` koleksiyon, `RemoteVideoStream` nesneleri içerir
 ```js
 
 const videoStreams = remoteParticipant.videoStreams; // [RemoteVideoStream, ...]
@@ -348,9 +360,9 @@ Bu, uzak katılımcı örneğini zaman uyumlu olarak döndürür.
 
 ```js
 const userIdentifier = { communicationUserId: <ACS_USER_ID> };
-const pstnIdentifier = { phoneNumber: <PHONE_NUMBER>};
+const pstnIdentifier = { phoneNumber: <PHONE_NUMBER>}
 const remoteParticipant = call.addParticipant(userIdentifier);
-const remoteParticipant = call.addParticipant(pstnIdentifier);
+const remoteParticipant = call.addParticipant(pstnIdentifier, {alternateCallerId: '<Alternate Caller ID>'});
 ```
 
 ### <a name="remove-participant-from-a-call"></a>Katılımcıyı bir çağrıdan kaldır
@@ -361,7 +373,7 @@ Katılımcı de `remoteParticipants` Koleksiyondan kaldırılacak.
 
 ```js
 const userIdentifier = { communicationUserId: <ACS_USER_ID> };
-const pstnIdentifier = { phoneNumber: <PHONE_NUMBER>};
+const pstnIdentifier = { phoneNumber: <PHONE_NUMBER>}
 await call.removeParticipant(userIdentifier);
 await call.removeParticipant(pstnIdentifier);
 ```
@@ -381,9 +393,8 @@ Bu durumda, yeni bir örneğini oluşturun `Renderer` ve ardından `RendererView
 Bir uzak akış değişikliklerinin kullanılabilirliği her kullanıldığında, tüm oluşturucuyu yok edebilir veya tek tek seçebilirsiniz `RendererView` , ancak bu, boş video çerçevesinin görüntülenmesine neden olur.
 
 ```js
-let renderer: Renderer;
+let renderer: Renderer = new Renderer(remoteParticipantStream);
 const displayVideo = () => {
-    renderer = new Renderer(remoteParticipantStream);
     const view = await renderer.createView();
     htmlElement.appendChild(view.target);
 }
@@ -450,9 +461,7 @@ Daha sonra yöntemini çağırarak ölçekleme modunu güncelleştirebilirsiniz 
 ```js
 view.updateScalingMode('Crop')
 ```
-### <a name="faq"></a>SSS
-* Uzak bir katılımcı ağ bağlantılarını kaybederse, durumları ' bağlantısı kesildi ' olarak değişir mi?
-    * Evet, uzak bir katılımcı ağ bağlantılarını 2 dakikadan uzun bir süre kaybederse, bu durum kesilmeden geçiş yapılır ve çağrıdan kaldırılır.
+
 ## <a name="device-management"></a>Cihaz yönetimi
 
 `DeviceManager` ses/video akışlarınızı iletmek için bir çağrıda kullanılabilecek yerel cihazları listelemenizi sağlar. Ayrıca, yerel tarayıcı API 'sini kullanarak bir kullanıcıdan mikrofona ve kameraya erişim izni talep etmenizi sağlar.
@@ -495,7 +504,7 @@ Aygıt Yöneticisi, bir çağrı başlatılırken kullanılacak varsayılan bir 
 const defaultMicrophone = deviceManager.getMicrophone();
 
 // Set the microphone device to use.
-await deviceMicrophone.setMicrophone(AudioDeviceInfo);
+await deviceManager.setMicrophone(AudioDeviceInfo);
 
 // Get the speaker device that is being used.
 const defaultSpeaker = deviceManager.getSpeaker();
@@ -540,6 +549,92 @@ const result = deviceManager.getPermissionState('Camera'); // for camera permiss
 
 console.log(result); // 'Granted' | 'Denied' | 'Prompt' | 'Unknown';
 
+```
+
+## <a name="call-recording-management"></a>Çağrı kayıt yönetimi
+
+Çağrı kaydı, çekirdek API 'nin genişletilmiş bir özelliğidir `Call` . Önce kayıt özelliği API nesnesini edinmeniz gerekir:
+
+```js
+const callRecordingApi = call.api(Features.Recording);
+```
+
+Sonra, çağrının kaydedilip kaydedilmediğini kontrol etmek için, özelliğini inceleyin ve `isRecordingActive` `callRecordingApi` döndürür `Boolean` .
+
+```js
+const isResordingActive = callRecordingApi.isRecordingActive;
+```
+
+Ayrıca, değişiklikleri kaydetmek için abone olabilirsiniz:
+
+```js
+const isRecordingActiveChangedHandler = () => {
+  console.log(callRecordingApi.isRecordingActive);
+};
+
+callRecordingApi.on('isRecordingActiveChanged', isRecordingActiveChangedHandler);
+               
+```
+
+## <a name="call-transfer-management"></a>Çağrı aktarım yönetimi
+
+Çağrı aktarımı, çekirdek API 'nin genişletilmiş bir özelliğidir `Call` . Önce Aktarım özelliği API nesnesini edinmeniz gerekir:
+
+```js
+const callTransferApi = call.api(Features.Transfer);
+```
+
+Çağrı aktarımı üç taraf *transferor*, *transferee* ve *Aktarım hedefi* içerir. Aktarım akışı aşağıdaki gibi çalışır:
+
+1. *Transferor* ve *transferee* arasında bağlı bir çağrı zaten var
+2. *transferor* (*transferee*  ->  *Aktarım hedefi*) çağrısını aktarmaya karar verin
+3. *transferor* Call `transfer` API 'si
+4. *transferee* `accept` `reject` , hedefe olay aracılığıyla *aktarma* isteği mi yoksa aktarım mi olduğunu mı belirleyin `transferRequested` .
+5. *Aktarım hedefi* , yalnızca *transferee* aktarım isteğini gerçekleştirmediği takdirde, gelen bir çağrı alır `accept`
+
+### <a name="transfer-terminology"></a>Taşıma terminolojisi
+
+- Transferor-aktarım isteğini Başlatan bir tane
+- Transferee-transferden veya aktarım hedefine aktarılmakta olan bir kişi
+- Aktarım hedefi-aktarılmakta olan hedef hedefi olan
+
+Geçerli çağrıyı aktarmak için `transfer` zaman uyumlu API kullanabilirsiniz. `transfer``TransferCallOptions`bayrak ayarlamanıza olanak sağlayan isteğe bağlı alır `disableForwardingAndUnanswered` :
+
+- `disableForwardingAndUnanswered` = false- *Aktarım hedefi* aktarım çağrısını yanıtmazsa, aktarım *hedefi* iletme ve yanıtsız ayarları izler
+- `disableForwardingAndUnanswered` = true- *Aktarım hedefi* aktarım çağrısını yanıtmazsa, aktarım denemesi sona bırakılır
+
+```js
+// transfer target can be ACS user
+const id = { communicationUserId: <ACS_USER_ID> };
+```
+
+```js
+// call transfer API
+const transfer = callTransferApi.transfer({targetParticipant: id});
+```
+
+Aktarım, ve olaylarına abone olmanızı `transferStateChanged` sağlar `transferRequested` . `transferRequsted`olay `call` örnekten, `transferStateChanged` olaydan ve aktarımdan gelir `state` ve `error` örnekten gelir `transfer`
+
+```js
+// transfer state
+const transferState = transfer.state; // None | Transferring | Transferred | Failed
+
+// to check the transfer failure reason
+const transferError = transfer.error; // transfer error code that describes the failure if transfer request failed
+```
+
+Transferee, ya da üzerinden transferya da Event tarafından başlatılan aktarım isteğini kabul edebilir veya reddedebilir `transferRequested` `accept()` `reject()` `transferRequestedEventArgs` . `targetParticipant`Bilgilerine, `accept` `reject` içindeki yöntemlere erişebilirsiniz `transferRequestedEventArgs` .
+
+```js
+// Transferee to accept the transfer request
+callTransferApi.on('transferRequested', args => {
+  args.accept();
+});
+
+// Transferee to reject the transfer request
+callTransferApi.on('transferRequested', args => {
+  args.reject();
+});
 ```
 
 ## <a name="eventing-model"></a>Olay modeli

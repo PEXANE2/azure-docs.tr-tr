@@ -3,12 +3,12 @@ title: Bağlı makine Windows aracısına genel bakış
 description: Bu makalede, karma ortamlarda barındırılan sanal makinelerin izlenmesini destekleyen Azure Arc etkin sunucu aracısına sunulan ayrıntılı bir genel bakış sunulmaktadır.
 ms.date: 02/03/2021
 ms.topic: conceptual
-ms.openlocfilehash: 5f12ea90a4398b63eaa19a1fc5a375c15bdfa8c5
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: ed77ee00510fedaf42226081fcf11c4753b8a63a
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99526373"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99626317"
 ---
 # <a name="overview-of-azure-arc-enabled-servers-agent"></a>Azure Arc etkin sunucular aracısına genel bakış
 
@@ -55,6 +55,7 @@ Windows ve Linux işletim sisteminin aşağıdaki sürümleri resmi olarak Azure
 - SUSE Linux Enterprise Server (SLES) 15 (x64)
 - Red Hat Enterprise Linux (RHEL) 7 (x64)
 - Amazon Linux 2 (x64)
+- Oracle Linux 7
 
 > [!WARNING]
 > Linux hostname veya Windows bilgisayar adı, ad içindeki ayrılmış sözcüklerden veya ticari markalara ait olamaz, aksi halde bağlı makineyi Azure 'a kaydetmeye çalışmak başarısız olur. Ayrılmış sözcüklerin listesi için bkz. [ayrılmış kaynak adı hatalarını çözümleme](../../azure-resource-manager/templates/error-reserved-resource-name.md) .

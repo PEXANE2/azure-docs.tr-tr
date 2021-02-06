@@ -4,15 +4,15 @@ description: Bu makalede, Azure Cosmos DB yüksek kullanılabilirlik sağladığ
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 01/18/2021
+ms.date: 02/05/2021
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: d827011c4f831433a7446c90eed0c30c7b1e94d7
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 16d2bf39d61961e2f83910735db1d0ddf1c91849
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98600560"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99627407"
 ---
 # <a name="how-does-azure-cosmos-db-provide-high-availability"></a>Azure Cosmos DB yüksek kullanılabilirlik sağlama
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -80,7 +80,7 @@ Bölgesel kesintiden nadir durumlar için Azure Cosmos DB veritabanınızın her
 
 * Bir okuma bölgesi kesintisi sırasında, herhangi bir tutarlılık düzeyi veya üç veya daha fazla okuma bölgesi ile güçlü tutarlılık kullanan Azure Cosmos hesapları, okuma ve yazma işlemleri için yüksek oranda kullanılabilir olmaya devam edecektir.
 
-* İki veya daha az okuma bölgesi (okuma & yazma bölgesini içerir) ile güçlü tutarlılık kullanan Azure Cosmos hesapları, okuma bölgesi kesintisi sırasında okuma yazma kullanılabilirliğini kaybeder.
+* Üç veya daha az toplam bölge (bir yazma, iki okuma) ile güçlü tutarlılık kullanan Azure Cosmos hesapları, okuma bölgesi kesintisi sırasında yazma kullanılabilirliğini kaybeder. Ancak, dört veya daha fazla toplam bölgesi olan müşteriler bir destek bileti göndererek dinamik okuma çekirdeklerine kullanmayı tercih edebilir. Bu yapılandırmada en az iki okuma bölgesi olan hesaplar, yazma kullanılabilirliğini korur.
 
 * Etkilenen bölgenin bağlantısı otomatik olarak kesilir ve çevrimdışı olarak işaretlenir. [Azure Cosmos DB SDK 'ları](sql-api-sdk-dotnet.md) , okuma çağrılarını tercih edilen bölge listesindeki bir sonraki kullanılabilir bölgeye yönlendirir.
 
@@ -112,15 +112,15 @@ Aşağıdaki tabloda çeşitli hesap yapılandırmalarının yüksek kullanılab
 |Bölge arızaları – kullanılabilirlik | Kullanılabilirlik kaybı | Kullanılabilirlik kaybı yok | Kullanılabilirlik kaybı yok | Kullanılabilirlik kaybı yok |
 |Bölgesel kesinti – veri kaybı | Veri kaybı |  Veri kaybı | Tutarlılık düzeyine bağımlıdır. Daha fazla bilgi için bkz. [tutarlılık, kullanılabilirlik ve performans avantajları](consistency-levels-tradeoffs.md) . | Tutarlılık düzeyine bağımlıdır. Daha fazla bilgi için bkz. [tutarlılık, kullanılabilirlik ve performans avantajları](consistency-levels-tradeoffs.md) .
 |Bölgesel kesinti – kullanılabilirlik | Kullanılabilirlik kaybı | Kullanılabilirlik kaybı | Okuma bölgesi hatası için bir kullanılabilirlik kaybı yok, yazma bölgesi için geçici hata | Kullanılabilirlik kaybı yok |
-|Fiyat (**_1_* _) | Yok | Sağlanan RU/s x 1,25 oranı | Sağlanan RU/s x 1,25 oranı (_*_2_*_) | Çok bölgeli yazma oranı |
+|Fiyat (***1** _) | Yok | Sağlanan RU/s x 1,25 oranı | Sağlanan RU/s x 1,25 oranı (_ *_2_* *) | Çok bölgeli yazma oranı |
 
-Sunucusuz hesaplar istek birimleri (RU) için _*_1_*_ , 1,25 faktörüyle çarpılarak çarpılır.
+Sunucusuz hesaplar istek birimleri (RU) için ***1*** , 1,25 faktörüyle çarpılarak çarpılır.
 
-_*_2_*_ 1,25 oran yalnızca az etkin olan bu bölgelere uygulanabilir.
+***2*** 1,25 oran yalnızca az etkin olan bu bölgelere uygulanabilir.
 
 Kullanılabilirlik Alanları şu şekilde etkinleştirilebilir:
 
-_ [Azure Portal](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
+* [Azure portalındaki](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
 
 * [Azure PowerShell](manage-with-powershell.md#create-account)
 

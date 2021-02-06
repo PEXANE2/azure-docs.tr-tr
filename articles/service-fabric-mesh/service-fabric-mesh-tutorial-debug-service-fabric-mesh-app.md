@@ -6,14 +6,19 @@ ms.topic: tutorial
 ms.date: 10/31/2018
 ms.author: gwallace
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 56cc8b4010dc17cf2b723a72898034de8d6a7175
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9e3dc16481340c0266cd398d0970e2147648e17f
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91843303"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99625457"
 ---
 # <a name="tutorial-debug-a-service-fabric-mesh-application-running-in-your-local-development-cluster"></a>Öğretici: Yerel geliştirme kümenizde çalışan bir Service Fabric Mesh uygulamasının hatalarını ayıklama
+
+> [!IMPORTANT]
+> Azure Service Fabric ağı önizlemesi devre dışı bırakıldı. Yeni dağıtımlar Service Fabric kafes API 'SI aracılığıyla artık izin verilmeyecektir. Mevcut dağıtımlar için destek 28 Nisan 2021 ' den devam edecektir.
+> 
+> Ayrıntılar için bkz. [Azure Service Fabric kafes önizleme kullanımdan](https://azure.microsoft.com/updates/azure-service-fabric-mesh-preview-retirement/)kaldırma.
 
 Bir serinin ikinci kısmı olan bu öğreticide, yerel geliştirme kümenizdeki bir Azure Service Fabric Mesh uygulamasında derleme ve hata ayıklama işleminin nasıl yapıldığı gösterilir.
 
@@ -71,7 +76,7 @@ Yerel dağıtım bittikten ve Visual Studio uygulamanızı çalıştırdıktan s
 
 Şu anda `using (HttpResponseMessage response = client.GetAsync("").GetAwaiter().GetResult())` hizmete bağlanma başarısız olmasına neden olan bir sorun var. Ana bilgisayarınızın IP adresi değiştiğinde bu durumda karşılaşabilirsiniz. Bunu çözmek için:
 
-1. Uygulamayı yerel kümeden kaldırın (Visual Studio 'da, **Build**  >  **temiz çözüm**oluşturun).
+1. Uygulamayı yerel kümeden kaldırın (Visual Studio 'da,   >  **temiz çözüm** oluşturun).
 2. Service Fabric Yerel Küme Yöneticisi'nde **Yerel Kümeyi Durdur**'u ve ardından **Yerel Kümeyi Başlat**'ı seçin.
 3. Uygulamayı yeniden dağıtın (Visual Studio'da, **F5**).
 
@@ -88,7 +93,7 @@ Visual Studio 'da bir Service Fabric kafes uygulamasında hata ayıkladığını
 2. **ToDoService** projesinde, **TodoController.cs** öğesini açın ve **Get** yönteminde (15. satır) bir kesme noktası ayarlayın.
 3. Tarayıcınıza geri dönüp sayfayı yenileyin. Web ön ucu `OnGet()` yönteminde kesme noktasına ulaşırsınız. `backendUrl` değişkenini inceleyerek **service.yaml** dosyasında tanımladığınız ortam değişkenlerinin arka uç hizmetiyle bağlantı kurmak için kullanılan URL'yle nasıl birleştirildiği görebilirsiniz.
 4. `client.GetAsync(backendUrl).GetAwaiter().GetResult())` çağrısından ilerleyin (F10); denetleyicinin `Get()` kesme noktasına ulaşırsınız. Bu yöntemde, yapılacaklar öğesi listesinin bellek içi listeden nasıl alındığını görebilirsiniz.
-5. İşiniz bittiğinde, **SHIFT + F5**tuşlarına basarak Visual Studio 'da projenizin hatalarını ayıklamayı durdurun.
+5. İşiniz bittiğinde, **SHIFT + F5** tuşlarına basarak Visual Studio 'da projenizin hatalarını ayıklamayı durdurun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

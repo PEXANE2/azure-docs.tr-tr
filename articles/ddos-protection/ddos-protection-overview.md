@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/9/2020
 ms.author: yitoh
-ms.openlocfilehash: 114c723b127a17ffdd9c7ed91c6e777838d68e8e
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 71eada0dcd7f7684e6c6be935bcb44405eb95322
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98223355"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99626215"
 ---
 # <a name="azure-ddos-protection-standard-overview"></a>Azure DDoS Koruması Standardı’na genel bakış
 
@@ -51,6 +51,10 @@ DDoS koruma planları, en fazla 100 genel IP adresini kapsayan ayda aylık $2.94
 Bir kiracı altında, tek bir DDoS koruma planı birden çok abonelik genelinde kullanılabilir, bu nedenle birden fazla DDoS koruma planı oluşturmaya gerek yoktur.
 
 Azure DDoS koruması standart fiyatlandırması hakkında bilgi edinmek için bkz. [Azure DDoS koruması standart fiyatlandırması](https://azure.microsoft.com/pricing/details/ddos-protection/).
+
+## <a name="reference-architectures"></a>Başvuru mimarileri
+
+DDoS koruma standardı, [sanal bir ağa dağıtılan hizmetler](https://docs.microsoft.com/azure/virtual-network/virtual-network-for-azure-services)için tasarlanmıştır. Diğer hizmetler için, varsayılan DDoS koruması temel hizmeti geçerlidir. Desteklenen mimariler hakkında daha fazla bilgi edinmek için bkz. [DDoS koruması başvuru mimarileri](https://docs.microsoft.com/azure/ddos-protection/ddos-protection-reference-architectures). 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
