@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/28/2020
 ms.author: yitoh
-ms.openlocfilehash: 22c49502883cb444027bd59a24bfb5bb3c32da4c
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 42d4467a6441e517ef3194f701eb47e7e68505b1
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97915173"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99806316"
 ---
 # <a name="view-and-configure-ddos-diagnostic-logging"></a>DDoS tanılama günlüğünü görüntüleme ve yapılandırma
 
@@ -67,7 +67,7 @@ Aşağıdaki tabloda alan adları ve açıklamaları listelenmektedir:
 
 # <a name="ddosprotectionnotifications"></a>[DDoSProtectionNotifications](#tab/DDoSProtectionNotifications)
 
-| Alan adı | Açıklama |
+| Alan adı | Description |
 | --- | --- |
 | **TimeGenerated** | Bildirimin oluşturulduğu UTC Tarih ve saati. |
 | **ResourceId** | Genel IP adresinizin kaynak KIMLIĞI. |
@@ -75,7 +75,7 @@ Aşağıdaki tabloda alan adları ve açıklamaları listelenmektedir:
 | **Kaynak** | Genel IP adresinizi ve Sanal ağınızı içeren kaynak grubu. |
 | **SubscriptionID** | DDoS koruma planı abonelik KIMLIĞINIZ. |
 | **Kaynak** | Genel IP adresinizin adı. |
-| **Kaynak** | Bu her zaman olur `PUBLICIPADDRESS` . |
+| **ResourceType** | Bu her zaman olur `PUBLICIPADDRESS` . |
 | **OperationName** | Bildirimler için bu olacaktır `DDoSProtectionNotifications` .  |
 | **İleti** | Saldırının ayrıntıları. |
 | **Tür** | Bildirim türü. Olası değerler şunlardır `MitigationStarted` . `MitigationStopped`. |
@@ -83,7 +83,7 @@ Aşağıdaki tabloda alan adları ve açıklamaları listelenmektedir:
 
 # <a name="ddosmitigationflowlogs"></a>[DDoSMitigationFlowLogs](#tab/DDoSMitigationFlowLogs)
 
-| Alan adı | Açıklama |
+| Alan adı | Description |
 | --- | --- |
 | **TimeGenerated** | Akış günlüğünün oluşturulduğu saat UTC Tarih ve saati. |
 | **ResourceId** | Genel IP adresinizin kaynak KIMLIĞI. |
@@ -91,7 +91,7 @@ Aşağıdaki tabloda alan adları ve açıklamaları listelenmektedir:
 | **Kaynak** | Genel IP adresinizi ve Sanal ağınızı içeren kaynak grubu. |
 | **SubscriptionID** | DDoS koruma planı abonelik KIMLIĞINIZ. |
 | **Kaynak** | Genel IP adresinizin adı. |
-| **Kaynak** | Bu her zaman olur `PUBLICIPADDRESS` . |
+| **ResourceType** | Bu her zaman olur `PUBLICIPADDRESS` . |
 | **OperationName** | Akış günlükleri için bu olacaktır `DDoSMitigationFlowLogs` . |
 | **İleti** | Saldırının ayrıntıları. |
 | **Sourcepublicıpaddress** | Genel IP adresinize trafik oluşturan istemcinin genel IP adresi. |
@@ -102,7 +102,7 @@ Aşağıdaki tabloda alan adları ve açıklamaları listelenmektedir:
 
 # <a name="ddosmitigationreports"></a>[DDoSMitigationReports](#tab/DDoSMitigationReports)
 
-| Alan adı | Açıklama |
+| Alan adı | Description |
 | --- | --- |
 | **TimeGenerated** | Raporun oluşturulduğu UTC Tarih ve saati. |
 | **ResourceId** | Genel IP adresinizin kaynak KIMLIĞI. |
@@ -110,7 +110,7 @@ Aşağıdaki tabloda alan adları ve açıklamaları listelenmektedir:
 | **Kaynak** | Genel IP adresinizi ve Sanal ağınızı içeren kaynak grubu. |
 | **SubscriptionID** | DDoS koruma planı abonelik KIMLIĞINIZ. |
 | **Kaynak** | Genel IP adresinizin adı. |
-| **Kaynak** | Bu her zaman olur `PUBLICIPADDRESS` . |
+| **ResourceType** | Bu her zaman olur `PUBLICIPADDRESS` . |
 | **OperationName** | Risk azaltma raporları için bu olacaktır `DDoSMitigationReports` . |
 | **ReportType** | Olası değerler şunlardır `Incremental` `PostMitigation` .|
 | **MitigationPeriodStart** | Risk azaltma başladığında UTC olarak tarih ve saat.  |
@@ -128,7 +128,7 @@ Aşağıdaki tabloda alan adları ve açıklamaları listelenmektedir:
 
 ## <a name="enable-diagnostic-logging-on-all-public-ips"></a>Tüm genel IP 'lerde tanılama günlüğünü etkinleştirme
 
-Bu [şablon](https://github.com/Azure/Azure-Network-Security/tree/master/Azure%20DDoS%20Protection/Enable%20Diagnostic%20Logging/Azure%20Policy) , tanımlı bir kapsamdaki tüm genel IP günlüklerinde tanılama günlüğünü otomatik olarak etkinleştirmek Için bir Azure ilke tanımı oluşturur.
+Bu [şablon](https://aka.ms/ddosdiaglogs) , tanımlı bir kapsamdaki tüm genel IP günlüklerinde tanılama günlüğünü otomatik olarak etkinleştirmek Için bir Azure ilke tanımı oluşturur.
 
 [![Azure’a dağıtın](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Network-Security%2Fmaster%2FAzure%2520DDoS%2520Protection%2FEnable%2520Diagnostic%2520Logging%2FAzure%2520Policy%2FDDoSLogs.json)
 
@@ -142,7 +142,7 @@ Günlükleri Azure Sentinel 'e bağlayabilirsiniz, çalışma kitaplarında veri
 
 ### <a name="azure-ddos-protection-workbook"></a>Azure DDoS koruması çalışma kitabı
 
-Bu Azure Resource Manager (ARM) şablonunu, bir saldırı Analizi çalışma kitabını dağıtmak için kullanabilirsiniz. Bu çalışma kitabı, farklı filtrelenebilir panolar genelinde saldırı verilerini görselleştirmenize olanak tanır. 
+[Bu Azure Resource Manager (ARM) şablonunu](https://aka.ms/ddosworkbook) , bir saldırı Analizi çalışma kitabını dağıtmak için kullanabilirsiniz. Bu çalışma kitabı, farklı filtrelenebilir panolar genelinde saldırı verilerini görselleştirmenize olanak tanır. 
 
 [![Azure’a dağıtın](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Network-Security%2Fmaster%2FAzure%2520DDoS%2520Protection%2FAzure%2520DDoS%2520Protection%2520Workbook%2FAzureDDoSWorkbook_ARM.json)
 

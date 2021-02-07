@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/28/2021
 ms.author: cholse
 ms.reviewer: dbakevlar
-ms.openlocfilehash: 695f151e6d6cc0a677942f60c751567da0cfca7c
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.openlocfilehash: fce947c43e8559f4ea2a65645805e987a9015d3f
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99064248"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99806282"
 ---
 # <a name="back-up-and-recover-an-oracle-database-19c-database-on-an-azure-linux-vm-using-azure-storage"></a>Azure Storage kullanarak bir Azure Linux sanal makinesinde Oracle Database 19c veritabanını yedekleme ve kurtarma
 
@@ -31,19 +31,19 @@ Bu makalede, Azure depolama 'nın bir Azure VM üzerinde çalışan bir Oracle v
    ssh azureuser@<publicIpAddress>
    ```
    
-2. **_Root_* _ kullanıcısına geçin:
+2. ***Kök*** kullanıcıya geç:
  
    ```bash
    sudo su -
    ```
     
-3. Oracle kullanıcısını _*_ /etc/sudoers_ * _ dosyasına ekleyin:
+3. Oracle kullanıcısını ***/etc/sudoers*** dosyasına ekleyin:
 
    ```bash
    echo "oracle   ALL=(ALL)      NOPASSWD: ALL" >> /etc/sudoers
    ```
 
-4. Bu adım, _vmoracle19c * adlı bir VM üzerinde çalışan bir Oracle örneğine (test) sahip olduğunuzu varsayar.
+4. Bu adım, *vmoracle19c* ADLı bir VM üzerinde çalışan bir Oracle örneğine (test) sahip olduğunuzu varsayar.
 
    Kullanıcıyı *Oracle* kullanıcısına geçir:
 
@@ -182,31 +182,31 @@ Azure dosyalarını bağlama sırasında, `cache=none` dosya paylaşma verilerin
 
 1. Azure portal dosya depolamayı yapılandırma
 
-    Azure portal, ***+ kaynak oluştur** _ ' u seçin ve _*_depolama hesabı_*_ ' nı arayıp seçin
+    Azure portal, ***+ kaynak oluştur** _ ' u seçin ve _ *_depolama hesabı_* ' nı arayıp seçin*
     
-    ![Depolama hesabı ekleme sayfası](./media/oracle-backup-recovery/storage-1.png)
+    ![Kaynağın nerede oluşturulacağını ve depolama hesabını seçmesinin nerede olduğunu gösteren ekran görüntüsü.](./media/oracle-backup-recovery/storage-1.png)
     
-2. Depolama hesabı oluştur sayfasında, mevcut kaynak grubunuzu _*_RG-Oracle_*_' ı seçin, depolama hesabınızı _*_oracbkup1_*_ olarak adlandırın ve hesap türü için _*_depolama v2 'yi (generalamaç v2)_*_ seçin. Çoğaltmayı _*_yerel olarak yedekli depolama (LRS)_*_ olarak değiştirin ve performansı _*_Standart_*_ olarak ayarlayın. Konumun kaynak grubundaki diğer kaynaklarınızla aynı bölgeye ayarlandığından emin olun. 
+2. Depolama hesabı oluştur sayfasında, var olan kaynak grubunuzu seçin ***RG-Oracle** _, depolama hesabınızı _*_oracbkup1_*_ olarak adlandırın ve hesap türü için _*_depolama v2 'yi (generalamaç v2)_*_ seçin. Çoğaltmayı _*_yerel olarak yedekli depolama (LRS)_*_ olarak değiştirin ve performansı _ *_Standart_* * olarak ayarlayın. Konumun kaynak grubundaki diğer kaynaklarınızla aynı bölgeye ayarlandığından emin olun. 
     
-    ![Depolama hesabı ekleme sayfası](./media/oracle-backup-recovery/file-storage-1.png)
+    ![Mevcut kaynak grubunuzun nerede seçdiğinin gösterildiği ekran görüntüsü.](./media/oracle-backup-recovery/file-storage-1.png)
    
    
-3. _*_Gelişmiş_*_ sekmesine tıklayın ve Azure dosyaları ' nın altında, _*_büyük dosya paylaşımlarını_*_ _*_etkin_*_ olarak ayarlayın. Gözden geçir + oluştur ' a ve ardından Oluştur ' a tıklayın.
+3. ***Gelişmiş** _ sekmesine tıklayın ve Azure dosyaları ' nın altında, _*_büyük dosya paylaşımlarını_*_ _ *_etkin_* * olarak ayarlayın. Gözden geçir + oluştur ' a ve ardından Oluştur ' a tıklayın.
     
-    ![Depolama hesabı ekleme sayfası](./media/oracle-backup-recovery/file-storage-2.png)
-    
-    
-4. Depolama hesabı oluşturulduğunda kaynağa gidin ve _*_dosya paylaşımları_ ' nı seçin.*_
-    
-    ![Depolama hesabı ekleme sayfası](./media/oracle-backup-recovery/file-storage-3.png)
-    
-5. _*_+ Dosya share_ _ ' e tıklayın *ve _*_yeni dosya paylaşımında_ _ *Dikey penceresinde dosya paylaşımınızı adlandırın _*_orabkup1_*_. _*_Quota_*_**' i _ 10240 _ GIB* olarak ayarlayın ve katman olarak _ _işlem iyileştirilmiş_ _ ' i denetleyin *. Kota, dosya paylaşımının büyüyebileceği üst sınırı yansıtır. Standart depolamayı kullanırken, kaynaklar PAYG olur ve sağlanmamıştır. bu nedenle, 10 TiB olarak ayarlanması, kullandığınız kadar ücretlendirilmeyecektir. Yedekleme stratejiniz daha fazla depolama gerektiriyorsa, tüm yedeklemeleri barındıracak şekilde kotayı uygun bir düzeye ayarlamanız gerekir.   Yeni dosya paylaşma dikey penceresini tamamladığınızda _*_Oluştur_* _ öğesine tıklayın.
-    
-    ![Depolama hesabı ekleme sayfası](./media/oracle-backup-recovery/file-storage-4.png)
+    ![Büyük dosya paylaşımlarının etkin olarak ayarlandığını gösteren ekran görüntüsü.](./media/oracle-backup-recovery/file-storage-2.png)
     
     
-6. Oluşturulduğunda, dosya paylaşma ayarları sayfasında _*_orabkup1_*_ ' a tıklayın. 
-    _*_Bağlan sekmesine tıklayarak_*_ Bağlan dikey penceresini açın ve _*_Linux_*_ sekmesine tıklayın. SMB protokolünü kullanarak dosya paylaşımının bağlanması için sunulan komutları kopyalayın. 
+4. Depolama hesabı oluşturulduğunda kaynağa gidin ve ***dosya paylaşımları*** ' nı seçin.
+    
+    ![Dosya paylaşımlarının nerede seçdiğinin gösterildiği ekran görüntüsü.](./media/oracle-backup-recovery/file-storage-3.png)
+    
+5. ***+ Dosya paylaşma** _ ' e tıklayın ve _*_yeni dosya paylaşma_*_ dikey penceresinde dosya paylaşımınızı adlandırın _*_orabkup1_*_. _*_Kotayı_*_ _*_10240_*_ gib olarak ayarlayın ve işlemi katman olarak _*_optimize_*_ edin. Kota, dosya paylaşımının büyüyebileceği üst sınırı yansıtır. Standart depolamayı kullanırken, kaynaklar PAYG olur ve sağlanmamıştır. bu nedenle, 10 TiB olarak ayarlanması, kullandığınız kadar ücretlendirilmeyecektir. Yedekleme stratejiniz daha fazla depolama gerektiriyorsa, tüm yedeklemeleri barındıracak şekilde kotayı uygun bir düzeye ayarlamanız gerekir.   Yeni dosya paylaşma dikey penceresini tamamladığınızda _ *_Oluştur_* * öğesine tıklayın.
+    
+    ![Yeni bir dosya paylaşımının nereye ekleneceğini gösteren ekran görüntüsü.](./media/oracle-backup-recovery/file-storage-4.png)
+    
+    
+6. Oluşturulduğunda, dosya paylaşma ayarları sayfasında ***orabkup1*** ' a tıklayın. 
+    Bağlantı dikey penceresini açmak için ***Bağlan** _ sekmesine tıklayın ve ardından _ *_Linux_** sekmesine tıklayın. SMB protokolünü kullanarak dosya paylaşımının bağlanması için sunulan komutları kopyalayın. 
     
     ![Depolama hesabı ekleme sayfası](./media/oracle-backup-recovery/file-storage-5.png)
 
@@ -371,7 +371,7 @@ Veritabanı yedeklemesi için RMAN ve Azure dosya depolama kullanılırken birç
 
     ```bash
     cd /u02/oradata/TEST
-    rm -f _.dbf
+    rm -f *.dbf
     ```
 
 3. Aşağıdaki komutlar, eksik veri dosyalarını geri yüklemek ve veritabanını kurtarmak için RMAN kullanır:

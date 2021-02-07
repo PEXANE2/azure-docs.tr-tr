@@ -11,12 +11,12 @@ ms.topic: end-user-help
 ms.date: 01/28/2021
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: b0d7eeeb840a3efc560c20310b38bee93a038795
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: ecc6580148dfba92077336a26ff9160fbe88eb2c
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99056265"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99806164"
 ---
 # <a name="import-passwords-into-the-microsoft-authenticator-app"></a>Microsoft Authenticator uygulamasına parolaları içeri aktarma
 
@@ -39,21 +39,21 @@ Android ve Apple telefonlarında Google Chrome kullanıcıları, birkaç basit a
 
 1. ![ ](./media/user-help-authenticator-app-import-passwords/ellipsis-chrome.png) Android telefonlar için sağ üst köşedeki Google Chrome üç nokta menüsüne veya iOS cihazları için sağ alt kısmına dokunun ve ardından Ayarlar ' a dokunun **.**
 
-   &nbsp; | &nbsp;
+   Platform | Bağlantı
    ---------- | --------
    Android | ![Google Chrome ayarları menü konumu](./media/user-help-authenticator-app-import-passwords/android-settings-menu.png)
    iOS | ![Google Chrome ayarları menü simgesi](./media/user-help-authenticator-app-import-passwords/apple-settings-menu.png)
 
 1. **Ayarlar**' da, **parolalar**' ı açın.
 
-   &nbsp; | &nbsp;
+   Platform | Bağlantı
    ---------- | --------
    Android | ![Andoıd Chrome parolaları komut konumu](./media/user-help-authenticator-app-import-passwords/android-passwords-location.png)
    iOS | ![Apple Chrome parolaları komut konumu](./media/user-help-authenticator-app-import-passwords/apple-passwords-location.png)
 
 1. Android cihazlarda, ![ ](./media/user-help-authenticator-app-import-passwords/ellipsis-chrome.png) Android telefonlar için sağ üst köşedeki Google Chrome üç nokta menüsüne veya iOS cihazları için sağ alt kısmına dokunun ve ardından **Parolaları dışa aktar**' a dokunun.
 
-   &nbsp; | &nbsp;
+   Platform | Bağlantı
    ---------- | --------
    Android | ![Android Chrome dışa aktarma parolaları konumu](./media/user-help-authenticator-app-import-passwords/android-export-passwords-location.png)
    iOS | ![Apple Chrome dışa aktarma parolaları konumu](./media/user-help-authenticator-app-import-passwords/apple-export-passwords-location.png)
@@ -62,7 +62,7 @@ Android ve Apple telefonlarında Google Chrome kullanıcıları, birkaç basit a
 
 1. Parolalar verildikten sonra Chrome, içine aktardığınız uygulamayı seçmenizi ister. Parolaları içeri aktarmaya başlamak için **kimlik doğrulayıcı** ' yı seçin. Tamamlandığında içeri aktarma durumu hakkında bilgilenirsiniz.
 
-   &nbsp; | &nbsp;
+   Platform | Bağlantı
    ---------- | --------
    Android | ![Android Chrome içeri aktarma parolaları konumu](./media/user-help-authenticator-app-import-passwords/android-chrome-import.png)
    iOS | ![Apple Chrome içeri aktarma parolaları konumu](./media/user-help-authenticator-app-import-passwords/apple-chrome-import.png)
@@ -105,7 +105,7 @@ Firefox, parolaların yalnızca masaüstü tarayıcısından verilmesini sağlar
 
       1. Tercih edilen ve güvenli bir yöntem kullanarak Android veya iOS telefonunuzdaki içe aktarılmış CSV dosyasını aktarın ve ardından indirin. Sonra, içeri aktarmayı başlatmak için CSV dosyasını Authenticator uygulamasıyla paylaşabilirsiniz.
 
-         &nbsp; | &nbsp;
+         Platform | Bağlantı
          ---------- | --------
          Android | ![Android Chrome içeri aktarma parolaları konumu](./media/user-help-authenticator-app-import-passwords/android-chrome-import.png)
          iOS | ![Apple Chrome içeri aktarma parolaları konumu](./media/user-help-authenticator-app-import-passwords/apple-chrome-import.png)
@@ -134,7 +134,7 @@ LastPass yalnızca bir masaüstü tarayıcısından parolayı dışarı aktarmay
 
       1. Bir tercih edilen ve güvenli şekilde, dışarıya aktarılmış CSV dosyasını akıllı telefonunuzda aktarın ve indirin. Ardından içeri aktarmayı başlatmak için CSV dosyasını Authenticator uygulamasıyla paylaşabilirsiniz.
 
-         &nbsp; | &nbsp;
+         Platform | Bağlantı
          ---------- | --------
          Android | ![Android LastPass parolaları içeri aktarma konumu](./media/user-help-authenticator-app-import-passwords/android-chrome-import.png)
          iOS | ![Apple LastPass parolalarını içeri aktarma konumu](./media/user-help-authenticator-app-import-passwords/apple-chrome-import.png)
@@ -153,7 +153,7 @@ Bitwarden parolaları yalnızca bir masaüstü tarayıcısından dışarı aktar
 
       1. Bir tercih edilen ve güvenli şekilde, dışarıya aktarılmış CSV dosyasını akıllı telefonunuzda aktarın ve indirin. Ardından içeri aktarmayı başlatmak için CSV dosyasını Authenticator uygulamasıyla paylaşabilirsiniz.
 
-         &nbsp; | &nbsp;
+         Platform | Bağlantı
          ---------- | --------
          Android | ![Android Bitwarden Import parola konumu](./media/user-help-authenticator-app-import-passwords/android-chrome-import.png)
          iOS | ![Apple Bitwarden Import parola konumu](./media/user-help-authenticator-app-import-passwords/apple-chrome-import.png)
@@ -186,7 +186,7 @@ Roboford, parolaların yalnızca masaüstü uygulamasından dışarı aktarılma
 
       1. Bir tercih edilen ve güvenli şekilde, dışarıya aktarılmış CSV dosyasını akıllı telefonunuzda aktarın ve indirin. Ardından içeri aktarmayı başlatmak için CSV dosyasını Authenticator uygulamasıyla paylaşabilirsiniz.
 
-         &nbsp; | &nbsp;
+         Platform | Bağlantı
          ---------- | --------
          Android | ![Android Roboford parola konumunu al](./media/user-help-authenticator-app-import-passwords/android-chrome-import.png)
          iOS | ![Apple Roboford parola konumunu al](./media/user-help-authenticator-app-import-passwords/apple-chrome-import.png)
@@ -209,7 +209,7 @@ Parola yöneticinizin parolalarını içeri aktarma adımları Bu makalede liste
 
       1. Bir tercih edilen ve güvenli şekilde, dışarıya aktarılmış CSV dosyasını akıllı telefonunuzda aktarın ve indirin. Ardından içeri aktarmayı başlatmak için CSV dosyasını Authenticator uygulamasıyla paylaşabilirsiniz.
 
-         &nbsp; | &nbsp;
+         Platform | Bağlantı
          ---------- | --------
          Android | ![Android CSV içeri aktarma parolaları konumu](./media/user-help-authenticator-app-import-passwords/android-chrome-import.png)
          iOS | ![Apple CSV içeri aktarma parolaları konumu](./media/user-help-authenticator-app-import-passwords/apple-chrome-import.png)

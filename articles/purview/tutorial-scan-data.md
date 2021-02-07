@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 12/01/2020
-ms.openlocfilehash: e373556d189e9fffc0626d19250e79c09962a004
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.openlocfilehash: a88c837c986db346bcb4fbb1b15ceab6a304347d
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99062112"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99806231"
 ---
 # <a name="tutorial-scan-data-with-azure-purview-preview"></a>Öğretici: Azure purview ile verileri tarama (Önizleme)
 
@@ -91,7 +91,9 @@ Kataloğu önyüklemek için PowerShell betiklerini çalıştırmadan önce beti
    1. **Genel bakış** bölümünü seçin ve **abonelik kimliği** için GUID 'yi kaydedin.
 
    > [!NOTE]
-   > Azure purview hesabını oluştururken kullandığınız abonelikle aynı aboneliği kullandığınızdan emin olun. Bu, izin verilenler listesine yerleştirilmiş olan abonelikdir.
+   > - Azure purview hesabını oluştururken kullandığınız abonelikle aynı aboneliği kullandığınızdan emin olun. Bu, izin verilenler listesine yerleştirilmiş olan abonelikdir.
+   > - Kökenini, başlangıç paketini çalıştırdıktan sonra bazen Azure purview içinde eksik olabilir. Bunun nedeni, Starter Kit tarafından oluşturulan Data Factory purview 'da izinlerin eksik olmasından kaynaklanır. Data Factory doğru şekilde yapılandırıldığından ve uygun rolün purview 'a atandığından emin olmak için [**Bu belge bağlantısını**](how-to-link-azure-data-factory.md#view-existing-data-factory-connections)  seçin
+
 
 * Katalogadı: [Azure purview hesabı oluştur](create-catalog-portal.md)bölümünde oluşturduğunuz Azure purview hesabının adı.
 

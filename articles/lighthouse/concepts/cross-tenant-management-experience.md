@@ -3,12 +3,12 @@ title: Kiracılar arası yönetim deneyimleri
 description: Azure Temsilcili kaynak yönetimi, bir çapraz kiracı yönetim deneyimi sunar.
 ms.date: 02/02/2021
 ms.topic: conceptual
-ms.openlocfilehash: 5180b2c28bc1157cb785c04f794cc5c9636764c8
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 41047a35328d4eac370d98a6d660f20e5006a2bb
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99576693"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99805183"
 ---
 # <a name="cross-tenant-management-experiences"></a>Kiracılar arası yönetim deneyimleri
 
@@ -143,7 +143,7 @@ Birçok görev ve hizmet, yönetilen kiracılar genelinde Temsilcili kaynaklar �
 
 - [Müşteri Kiracılarında](../../sentinel/multiple-tenants-service-providers.md) Azure Sentinel kaynaklarını yönetme
 - [Birden çok kiracıda saldırıları izleyin ve güvenlik uyarılarını görüntüleyin](https://techcommunity.microsoft.com/t5/azure-sentinel/using-azure-lighthouse-and-azure-sentinel-to-monitor-across/ba-p/1043899)
-- Kiracılar arasında yayılan birden çok Sentinel çalışma alanı genelinde [olayları görüntüleme](../../sentinel/multiple-workspace-view.md)
+- Kiracılar genelinde yayılan birden çok Azure Sentinel çalışma alanı genelinde [olayları görüntüleme](../../sentinel/multiple-workspace-view.md)
 
 [Azure hizmet durumu](../../service-health/index.yml):
 

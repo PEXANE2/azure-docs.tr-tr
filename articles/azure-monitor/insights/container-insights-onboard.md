@@ -3,12 +3,12 @@ title: Kapsayıcılar için Azure Izleyicisini etkinleştirme | Microsoft Docs
 description: Bu makalede, kapsayıcının nasıl çalıştığını ve performansla ilgili sorunları nasıl tanımladığınızı anlayabilmeniz için kapsayıcılar için Azure Izleyicisini etkinleştirme ve yapılandırma açıklanmaktadır.
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: f598b42f1a8d9fcb42f09d17e40850cf3a1282be
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 56f60b58cff351aa37e98cdba933c929aaaedab6
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98943821"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99806028"
 ---
 # <a name="enable-azure-monitor-for-containers"></a>Kapsayıcılar için Azure Izleyicisini etkinleştirme
 
@@ -35,6 +35,12 @@ Aşağıdaki desteklenen yöntemlerden birini kullanarak yeni bir dağıtım vey
 ## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce, aşağıdaki gereksinimleri karşıladığınızdan emin olun:
+
+> [!IMPORTANT]
+> Log Analytics Kapsayıcılı Linux Aracısı (replicaset Pod), düğüm ve kapsayıcı performansı ile ilgili ölçümleri toplamak için küme içindeki tüm Windows 10250 düğümlerine yönelik API çağrıları yapar. Kubelet güvenli bağlantı noktası (: 10250), Windows düğümü için gelen ve giden ve kapsayıcı performansı ile ilgili ölçüm toplamanın çalışması için kümenin sanal ağında açılmalıdır.
+>
+> Windows düğümleri içeren bir Kubernetes kümeniz varsa, Kubelet güvenli bağlantı noktasının (: 10250) kümenin sanal ağındaki hem gelen hem de giden için açık olduğundan emin olmak için lütfen ağ güvenlik grubunu ve ağ Ilkelerini gözden geçirin ve yapılandırın.
+
 
 - Log Analytics bir çalışma alanınız var.
 

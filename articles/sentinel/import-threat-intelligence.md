@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/26/2020
 ms.author: yelevin
-ms.openlocfilehash: bde11c8e06891025be96810acf6d87952a3d8d2f
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 5bf94d7c5889bb5a743655d65e48f021e91e01b7
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94660789"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99807149"
 ---
 # <a name="import-threat-intelligence-into-azure-sentinel"></a>Tehdit analizini Azure Sentinel’e aktarma
 
@@ -36,7 +36,7 @@ Tehdit zekasını (TI) aşağıdaki etkinliklerle Azure Sentinel ile tümleştir
 - İçeri aktarılan tehdit zekasını kullanarak güvenlik uyarıları ve olaylar oluşturmak için yerleşik **analitik** kural şablonlarını kullanın.
 - **Tehdit bilgileri çalışma kitabıyla** Azure Sentinel 'teki tehdit zekası hakkındaki önemli bilgileri görselleştirin.
 
-Tehdit bilgileri ayrıca, arama ve **Not defterleri** **gibi diğer** Azure Sentinel deneyimleri içinde yararlı bir bağlam sağlar ve bu makalede ele alınmamakta, bu DENEYIMLER, dizüstü bilgisayarlarda CTI kullanımını kapsayan, [Sentinel 'de jupi not defterlerinde bu harika blog gönderisine](https://techcommunity.microsoft.com/t5/azure-sentinel/using-threat-intelligence-in-your-jupyter-notebooks/ba-p/860239)değinmektedir.
+Tehdit bilgileri ayrıca, arama ve **Not defterleri** **gibi diğer** Azure Sentinel deneyimleri içinde yararlı bir bağlam sağlar ve bu makalede kapsanmayan, bu deneyimlerin Azure Sentinel 'de bulunan ve Not defterlerindeki CTI kullanımını kapsayan, bu [harika blog postasında bu harika bir Web günlüğü gönderisine](https://techcommunity.microsoft.com/t5/azure-sentinel/using-threat-intelligence-in-your-jupyter-notebooks/ba-p/860239)değinmektedir.
 
 ## <a name="azure-sentinel-data-connectors-for-threat-intelligence"></a>Tehdit bilgileri için Azure Sentinel veri bağlayıcıları
 
@@ -326,7 +326,7 @@ En yaygın görevlerden birine göz atalım, kolayca gruplandırma ve başvuru i
 
 1. Gösterge türünü seçin, ardından **Yeni gösterge** panelinde kırmızı bir yıldız işareti (*) ile işaretlenen gerekli alanları doldurun.
 
-1. **Apply** (Uygula) seçeneğini belirleyin. Gösterge, göstergeler kılavuzuna eklenir ve **Günlükler** Içindeki Threatıntelligenceındicator tablosuna de gönderilir.
+1. **Uygula**’yı seçin. Gösterge, göstergeler kılavuzuna eklenir ve **Günlükler** Içindeki Threatıntelligenceındicator tablosuna de gönderilir.
 
 Tehdit göstergelerini etiketleme, bulmayı kolaylaştırmak için bunları gruplamak için kolay bir yoldur. Genellikle, belirli bir olayla ilgili göstergelere veya belirli bir aktörden veya iyi bilinen bir saldırı kampanyasından tehditleri temsil eden göstergelere bir etiket uygulayabilirsiniz. Tehdit göstergelerini tek tek veya çoklu seçim göstergelerini etiketleyebilir ve hepsini bir kez etiketlendirebilirsiniz. Aşağıda gösterilen birden çok göstergeyi bir olay KIMLIĞIYLE etiketlemeyle ilgili bir örnek aşağıda verilmiştir. Etiketleme serbest biçimli olduğundan, tehdit göstergesi etiketleri için standart adlandırma kuralları oluşturmak önerilen bir uygulamadır. Her göstergeye birden çok etiket uygulayabilirsiniz.
 

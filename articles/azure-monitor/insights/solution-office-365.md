@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/30/2020
-ms.openlocfilehash: eb20bf4164cb2153f6786dbec04f79453554fa25
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: bde1c503d0aaaff1afcee67a26245d5021c43bb4
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95995871"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99807759"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Azure 'da Office 365 yönetim çözümü (Önizleme)
 
@@ -95,8 +95,8 @@ ms.locfileid: "95995871"
 > - [Kullanıma hazır tehditleri algılama](../../sentinel/tutorial-detect-threats-built-in.md)
 > - [Şüpheli tehditleri algılamak için özel analiz kuralları oluşturma](../../sentinel/tutorial-detect-threats-custom.md)
 > - [Verilerinizi izleme](../../sentinel/tutorial-monitor-your-data.md)
-> - [Azure Sentinel ile olayları araştırın](../../sentinel/tutorial-investigate-cases.md)
-> - [Azure Sentinel 'de otomatik tehdit yanıtlarını ayarlama](../../sentinel/tutorial-respond-threats-playbook.md)
+> - [Azure Sentinel ile olayları araştırma](../../sentinel/tutorial-investigate-cases.md)
+> - [Azure Sentinel’de otomatik tehdit yanıtlarını ayarlama](../../sentinel/tutorial-respond-threats-playbook.md)
 > - [Azure Sentinel GitHub topluluğu](https://github.com/Azure/Azure-Sentinel/tree/master/Playbooks)
 > 
 > ### <a name="q-does-azure-sentinel-provide-additional-connectors-as-part-of-the-solution"></a>S: Azure Sentinel, çözümün bir parçası olarak ek bağlayıcılar sağlıyor mu?
@@ -109,7 +109,7 @@ ms.locfileid: "95995871"
 > - Çözümünüzü 31 Ekim 'e kadar el ile boşaltmıyorsanız, verilerinizin bağlantısı otomatik olarak kesilir ve **Officeactivity** tablosu kaldırılır. Yine de, aşağıda açıklandığı gibi, Azure Sentinel 'de Office 365 bağlayıcısını etkinleştirdiğinizde tabloyu geri yükleyebilirsiniz.
 > 
 > ### <a name="q-will-my-data-transfer-to-the-new-solution"></a>S: veri, yeni çözüme aktarılsın mı?
-> Evet. **Office 365** çözümünü çalışma alanınızdan kaldırdığınızda, şema kaldırıldığı için verileri geçici olarak kullanılamıyor olacaktır. Yeni **Office 365** bağlayıcısını Sentinel 'de etkinleştirdiğinizde, şema çalışma alanına geri yüklenir ve önceden toplanan tüm veriler kullanılabilir hale gelir. 
+> Evet. **Office 365** çözümünü çalışma alanınızdan kaldırdığınızda, şema kaldırıldığı için verileri geçici olarak kullanılamıyor olacaktır. Azure Sentinel 'de yeni **Office 365** bağlayıcısını etkinleştirdiğinizde, şema çalışma alanına geri yüklenir ve önceden toplanan tüm veriler kullanılabilir hale gelir. 
  
 
 Office 365 yönetimi çözümü, Azure Izleyici 'de Office 365 ortamınızı izlemenize olanak sağlar.
@@ -121,7 +121,7 @@ Office 365 yönetimi çözümü, Azure Izleyici 'de Office 365 ortamınızı izl
 - Kuruluşunuzun Office 365 etkinlik verilerinin en üstünde bulunan [günlük sorgularını](../log-query/log-query-overview.md) kullanarak işlem sorunlarını giderme işlemi gerçekleştirin.
 
 
-## <a name="uninstall"></a>Kaldırma
+## <a name="uninstall"></a>Kaldır
 
 [Yönetim çözümünü kaldırma](solutions.md#remove-a-monitoring-solution)' daki Işlemi kullanarak Office 365 Yönetim çözümünü kaldırabilirsiniz. Bu, Office 365 ' den toplanan verileri de Azure Izleyici 'ye durdurmayacak. Office 365 aboneliğinizi kaldırmak ve veri toplamayı durdurmak için aşağıdaki yordamı izleyin.
 

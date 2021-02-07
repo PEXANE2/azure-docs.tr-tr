@@ -1,6 +1,6 @@
 ---
 title: "Hızlı başlangıç: Azure Sentinel 'e ekleme"
-description: Bu hızlı başlangıçta, ilk olarak Sentinel 'i etkinleştirerek ve sonra veri kaynaklarını bağlayarak yerleşik Azure Sentinel 'i nasıl yapacağınızı öğrenin.
+description: Bu hızlı başlangıçta, önce onu etkinleştirerek ve sonra veri kaynaklarını bağlayarak Pano üzerinde Azure Sentinel 'i nasıl yapacağınızı öğrenin.
 services: sentinel
 author: yelevin
 ms.author: yelevin
@@ -10,14 +10,14 @@ ms.subservice: azure-sentinel
 ms.topic: quickstart
 ms.date: 10/14/2020
 ms.custom: references_regions
-ms.openlocfilehash: 107806b6372360e501fe9cc0a21d25cff5cc35f9
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 7cb8cb4d99ca8a63195eba21d82814fcd7820f5c
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95248654"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99807776"
 ---
-# <a name="quickstart-on-board-azure-sentinel"></a>Hızlı Başlangıç: Azure Sentinel'i kullanıma alma
+# <a name="quickstart-on-board-azure-sentinel"></a>Hızlı başlangıç: yerleşik Azure Sentinel
 
 Bu hızlı başlangıçta, yerleşik Azure Sentinel 'i nasıl yapacağınızı öğrenin. 
 
@@ -41,7 +41,7 @@ Veri kaynaklarınızı bağlandıktan sonra, verilerinizi temel alan bir expertl
 
 ### <a name="geographical-availability-and-data-residency"></a>Coğrafi kullanılabilirlik ve veri yerleşimi
 
-- Azure Sentinel, Çin ve Almanya (Sovereign) bölgeleri hariç [Log Analytics çoğu GA](https://azure.microsoft.com/global-infrastructure/services/?products=monitor) bölgesindeki çalışma alanlarında çalıştırılabilir. Bazen yeni Log Analytics bölgelerinin Sentinel hizmeti 'nin eklenmesi biraz zaman alabilir. 
+- Azure Sentinel, Çin ve Almanya (Sovereign) bölgeleri hariç [Log Analytics çoğu GA](https://azure.microsoft.com/global-infrastructure/services/?products=monitor) bölgesindeki çalışma alanlarında çalıştırılabilir. Bazen yeni Log Analytics bölgelerinin Azure Sentinel hizmetini eklemek biraz zaman alabilir. 
 
 - Olaylar, yer işaretleri ve analiz kuralları gibi Azure Sentinel tarafından oluşturulan veriler, müşterinin Log Analytics çalışma alanlarından kaynaklanan bazı müşteri verilerini içerebilir. Bu Azure Sentinel tarafından oluşturulan veriler, çalışma alanının bulunduğu coğrafi tabloya göre aşağıdaki tabloda listelenen Coğrafya içine kaydedilir:
 
@@ -57,7 +57,7 @@ Veri kaynaklarınızı bağlandıktan sonra, verilerinizi temel alan bir expertl
 
 ## <a name="enable-azure-sentinel"></a>Azure Sentinel 'i etkinleştirme <a name="enable"></a>
 
-1. Azure portalında oturum açın. Azure Sentinel 'in oluşturulduğu aboneliğin seçildiğinden emin olun.
+1. Azure Portal’da oturum açın. Azure Sentinel 'in oluşturulduğu aboneliğin seçildiğinden emin olun.
 
 1. **Azure Sentinel**' i arayıp seçin.
 

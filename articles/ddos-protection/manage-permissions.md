@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
-ms.openlocfilehash: 08ab78171376f702aecb1f49571dda583eae5d82
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: df53062c7c897493a47d88ea2873f9710b9825bf
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97813879"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99806265"
 ---
 # <a name="manage-ddos-protection-plans-permissions-and-restrictions"></a>DDoS koruma planlarını yönetme: izinler ve kısıtlamalar
 
@@ -30,7 +30,7 @@ DDoS koruma planı bölgeler ve abonelikler arasında çalışmaktadır. Aynı p
 
 DDoS koruma planlarıyla çalışmak için, hesabınız [ağ katılımcısı](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) rolüne veya aşağıdaki tabloda listelenen uygun eylemlere atanmış [özel](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) bir role atanmalıdır:
 
-| Eylem                                            | Ad                                     |
+| Eylem                                            | Name                                     |
 | ---------                                         | -------------                            |
 | Microsoft. Network/Ddosprotectionplanlar/okuma        | DDoS koruma planını okuyun              |
 | Microsoft. Network/Ddosprotectionplanlar/yazma       | DDoS koruma planı oluşturma veya güncelleştirme  |
@@ -43,7 +43,7 @@ Bir sanal ağ için DDoS korumasını etkinleştirmek üzere hesabınıza [sanal
 
 Çoğu kuruluş için birden fazla planın oluşturulması gerekli değildir. Bir plan abonelikler arasında taşınamaz. Bir planın bulunduğu aboneliği değiştirmek istiyorsanız, var olan planı silmeniz ve yeni bir tane oluşturmanız gerekir.
 
-Çeşitli aboneliklerine sahip olan ve tek bir planın bir maliyet denetimi kiracısında dağıtılmasını sağlamak isteyen müşteriler için, Azure [DDoS koruması standart planlarının oluşturulmasını kısıtlamak](https://github.com/Azure/Azure-Network-Security/tree/master/Azure%20DDoS%20Protection/Restrict%20creation%20of%20Azure%20DDoS%20Protection%20Standard%20Plans%20with%20Azure%20Policy)üzere Azure İlkesi ' ni kullanabilirsiniz. Bu ilke, abonelik daha önce özel bir durum olarak işaretlenmediği sürece herhangi bir DDoS planı oluşturulmasını engeller. Bu ilke, DDoS planının dağıtıldığı, ancak bunların uyumsuz olarak işaretlenmesinin gerektiği tüm aboneliklerinin bir listesini gösterir.
+Çeşitli aboneliklerine sahip olan ve tek bir planın bir maliyet denetimi kiracısında dağıtılmasını sağlamak isteyen müşteriler için, Azure [DDoS koruması standart planlarının oluşturulmasını kısıtlamak](https://aka.ms/ddosrestrictplan)üzere Azure İlkesi ' ni kullanabilirsiniz. Bu ilke, abonelik daha önce özel bir durum olarak işaretlenmediği sürece herhangi bir DDoS planı oluşturulmasını engeller. Bu ilke, DDoS planının dağıtıldığı, ancak bunların uyumsuz olarak işaretlenmesinin gerektiği tüm aboneliklerinin bir listesini gösterir.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

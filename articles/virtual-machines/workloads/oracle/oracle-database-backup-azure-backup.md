@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/28/2021
 ms.author: cholse
 ms.reviewer: dbakevlar
-ms.openlocfilehash: 3122b1c5d7ac8b9dca0e244a4b7e73a57c4c5fca
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.openlocfilehash: ac045694e8975509635e03221a8cb9cc84446b55
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99072413"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99806418"
 ---
 # <a name="back-up-and-recover-an-oracle-database-19c-database-on-an-azure-linux-vm-using-azure-backup"></a>Azure Backup kullanarak bir Azure Linux sanal makinesinde Oracle Database 19c veritabanını yedekleme ve kurtarma
 
@@ -697,7 +697,7 @@ Tüm VM 'yi geri yüklemek için şu adımları izleyin:
 
    1. Azure portal **+ kaynak oluştur** ' u seçin ve **depolama hesabı**' nı arayıp seçin.
     
-      ![Depolama hesabı ekleme sayfası](./media/oracle-backup-recovery/storage-1.png)
+      ![Kaynağın nerede oluşturulacağını gösteren ekran görüntüsü.](./media/oracle-backup-recovery/storage-1.png)
     
     
    1. Depolama hesabı oluştur sayfasında, mevcut kaynak grubunuzu **RG-Oracle**' ı seçin, depolama hesabınızı **oracrestore** olarak adlandırın ve hesap türü için **depolama v2 'yi (generalamaç v2)** seçin. Çoğaltmayı **yerel olarak yedekli depolama (LRS)** olarak değiştirin ve performansı **Standart** olarak ayarlayın. Konumun kaynak grubundaki diğer kaynaklarınızla aynı bölgeye ayarlandığından emin olun. 
@@ -877,7 +877,7 @@ VM geri yüklendikten sonra özgün IP adresini yeni VM 'ye yeniden atamalısın
 
 5.  Artık, birincil arabirim olarak yapılandırıldığından VM geri yükleme işlemiyle oluşturulan NIC 'ı ayırmanız gerekir. **Ağ arabirimini ayır ' a** tıklayın ve **vmoracle19c-NIC-xxxxxxxxxxxx** gibi yeni NIC 'yi seçip **Tamam** ' a tıklayın.
 
-    ![IP adresi değeri](./media/oracle-backup-recovery/create-ip-05.png)
+    ![Ağ arabiriminin nereden ayrılın seçdiğinin gösterildiği ekran görüntüsü.](./media/oracle-backup-recovery/create-ip-05.png)
     
     Yeniden oluşturulmuş VM 'niz artık özgün IP adresi ve ağ güvenlik grubu kurallarıyla ilişkili olan özgün NIC 'e sahip olacaktır
     

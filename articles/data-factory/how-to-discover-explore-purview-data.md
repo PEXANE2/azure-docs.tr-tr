@@ -11,12 +11,12 @@ ms.author: lle
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 01/15/2021
-ms.openlocfilehash: 1a8ed80daa4406f32909a6622b8649f37ec48063
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.openlocfilehash: accb9bbf195daa3d25e1aed109e36ef309083385
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99064220"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99805318"
 ---
 # <a name="discover-and-explore-data-in-adf-using-purview"></a>Purview kullanarak ADF 'de veri bulma ve keşfetme
 
@@ -47,7 +47,7 @@ Azure purview tarafından kaydedilen ve taranan verileri bulmak için Data Facto
 ### <a name="actions-that-you-can-perform-over-datasets-with-data-factory-resources"></a>Data Factory kaynaklarıyla veri kümeleri üzerinden gerçekleştirebileceğiniz eylemler 
 Azure purview tarafından arama yaptığınız veriler üzerinde doğrudan bağlantılı hizmet, veri kümesi veya veri akışı oluşturabilirsiniz.
 
-:::image type="content" source="./media/data-factory-purview/actions-over-purview-data.png" alt-text="Veri kümelerini yerine getirmek için ekran görüntüsü.":::
+:::image type="content" source="./media/data-factory-purview/actions-over-purview-data.png" alt-text="Azure purview tarafından arama yaptığınız veriler üzerinde bağlı hizmet, veri kümesi veya veri akışını doğrudan nasıl oluşturabileceğiniz gösteren ekran görüntüsü.":::
 
 ##  <a name="nextsteps"></a>Sonraki adımlar 
 

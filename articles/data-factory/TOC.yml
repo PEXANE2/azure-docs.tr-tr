@@ -760,6 +760,10 @@
           href: solution-template-databricks-notebook.md
     - name: Fiyatlandırmayı anlama
       items:
+        - name: Veri akışı ayrılmış kapasitesine genel bakış
+          href: data-flow-reserved-capacity-overview.md
+        - name: 'Veri akışı, rezervasyon ücretlerini anlama'
+          href: data-flow-understand-reservation-charges.md
         - name: Maliyetleri planlama ve yönetme
           href: plan-manage-costs.md
         - name: Fiyatlandırma örnekleri

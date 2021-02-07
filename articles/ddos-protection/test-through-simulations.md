@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
-ms.openlocfilehash: 55042c8d1e612598cc5728668c9e87b054fb3afa
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: e95495e48725a68ab1fe3f37d235e5765b2c8015
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98537839"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99806248"
 ---
 # <a name="test-through-simulations"></a>Simülasyonlar aracılığıyla test etme
 
@@ -29,7 +29,7 @@ Azure müşterilerinin benzetimler için DDoS koruması etkinleştirilmiş ortak
 - DDoS uyumluluğunu belgeleyin.
 - Ağ Güvenlik ekiplerinizi eğitme.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Bu öğreticideki adımları tamamlayabilmeniz için önce, korunan genel IP adreslerine sahip bir [Azure DDoS standart koruma planı](manage-ddos-protection.md) oluşturmanız gerekir.
 - Önce [BreakingPoint bulutu](http://breakingpoint.cloud/)ile bir hesap oluşturmanız gerekir. 
@@ -63,7 +63,7 @@ Kaynak saldırıya ulaştıktan sonra, aşağıdaki resimde olduğu gibi değeri
 
 ### <a name="breakingpoint-cloud-api-script"></a>BreakingPoint bulutu API betiği
 
-Bu [API betiği](https://github.com/Azure/Azure-Network-Security/tree/master/Azure%20DDoS%20Protection/Breaking%20Point%20SDK) , bir kez çalıştırılarak veya sıradan testleri zamanlamak için cron kullanarak DDoS testini otomatikleştirmek için kullanılabilir. Bu, günlüğün düzgün yapılandırıldığını ve algılama ve yanıt yordamlarının etkin olduğunu doğrulamak için kullanışlıdır. Betikler bir Linux işletim sistemi (Ubuntu 18,04 LTS ile test edilmiştir) ve Python 3 gerektirir. Dahil edilen betiği kullanarak veya [BreakingPoint Cloud](http://breakingpoint.cloud/) Web sitesindeki belgeleri kullanarak ÖNKOŞULLARı ve API istemcisini yükler.
+Bu [API betiği](https://aka.ms/ddosbreakingpoint) , bir kez çalıştırılarak veya sıradan testleri zamanlamak için cron kullanarak DDoS testini otomatikleştirmek için kullanılabilir. Bu, günlüğün düzgün yapılandırıldığını ve algılama ve yanıt yordamlarının etkin olduğunu doğrulamak için kullanışlıdır. Betikler bir Linux işletim sistemi (Ubuntu 18,04 LTS ile test edilmiştir) ve Python 3 gerektirir. Dahil edilen betiği kullanarak veya [BreakingPoint Cloud](http://breakingpoint.cloud/) Web sitesindeki belgeleri kullanarak ÖNKOŞULLARı ve API istemcisini yükler.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

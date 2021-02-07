@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
-ms.date: 01/25/2021
-ms.openlocfilehash: 8e5b43383e0b49c0fe6fffdd9ffee6667fb540f8
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.date: 02/05/2021
+ms.openlocfilehash: 6c064acc44e180d3e99bdcf68d2e1e129d52fd5d
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99054763"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99805943"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure Logic Apps için sınırlar ve yapılandırma bilgileri
 
@@ -427,6 +427,12 @@ Bu bölüm yalnızca Azure Logic Apps hizmeti için gelen IP adreslerini listele
 
 > [!TIP]
 > Güvenlik kuralları oluştururken karmaşıklığı azaltmaya yardımcı olmak için, isteğe bağlı olarak her bölge için gelen Logic Apps IP adresi öneklerini belirtmek yerine **logicappsmanagement** [hizmet etiketini](../virtual-network/service-tags-overview.md)kullanabilirsiniz. İsteğe bağlı olarak, her bölge için gelen yönetilen bağlayıcı IP adresi öneklerini belirtmek yerine Logic Apps hizmetine gelen Web kancası geri çağırmaları oluşturan yönetilen bağlayıcılar için **AzureConnectors** hizmeti etiketini kullanabilirsiniz. Bu Etiketler Logic Apps hizmetinin kullanılabildiği bölgelerde çalışır.
+>
+> Aşağıdaki bağlayıcılar Logic Apps hizmetine gelen Web kancası geri aramalarını yapar:
+>
+> Adobe Creative Cloud, Adobe Sign, Adobe Sign demo, Adobe Imza önizleme, Adobe Imzala aşaması, Azure Sentinel, Iş Merkezi, Tavdly, Common Data Service, DocuSign, DocuSign demo, Dynamics 365 for Fin & Ops, LiveChat, Office 365 Outlook, Outlook.com, Parserr, SAP *, Microsoft ekipleri için vardiyalar, ekip çalışma projeleri, Typeform
+>
+> \***SAP**: Return çağıran, dağıtım ortamının çok kiracılı Azure ya da Ise olmasına bağlıdır. Çok kiracılı ortamda, şirket içi veri ağ geçidi Logic Apps hizmetine geri çağrı yapar. Bir ıSE 'de SAP Bağlayıcısı, Logic Apps hizmetine geri çağrı yapar.
 
 <a name="multi-tenant-inbound"></a>
 
@@ -543,7 +549,7 @@ Bu bölümde Azure Logic Apps hizmeti ve yönetilen bağlayıcılar için giden 
 
 #### <a name="azure-government---outbound-ip-addresses"></a>Azure Kamu-giden IP adresleri
 
-| Bölge | Logic Apps IP | Yönetilen bağlayıcılar IP 'si |
+| Region | Logic Apps IP | Yönetilen bağlayıcılar IP 'si |
 |--------|---------------|-----------------------|
 | Orta US DoD | 52.182.48.215, 52.182.92.143 | 52.127.58.160 - 52.127.58.175, 52.182.54.8, 52.182.48.136, 52.127.61.192 - 52.127.61.223 |
 | US Gov Arizona | 52.244.67.143, 52.244.65.66, 52.244.65.190 | 52.127.2.160 - 52.127.2.175, 52.244.69.0, 52.244.64.91, 52.127.5.224 - 52.127.5.255 |
