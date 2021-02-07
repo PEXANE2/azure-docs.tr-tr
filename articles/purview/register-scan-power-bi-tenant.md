@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/19/2020
-ms.openlocfilehash: 5f42b5f2b2a7660ee0de975068f64572c470503a
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 78187b2cbb6603a0ae0df55465b9a5ce5e7dca7f
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98874915"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99807555"
 ---
 # <a name="register-and-scan-a-power-bi-tenant-preview"></a>Power BI kiracı kaydetme ve tarama (Önizleme)
 
@@ -84,7 +84,7 @@ Artık Power BI kiracınızın yönetim API 'sine bağlanmak için katalog izinl
 
     :::image type="content" source="media/setup-power-bi-scan-catalog-portal/select-power-bi-data-source.png" alt-text="Seçebileceğiniz veri kaynaklarının listesini gösteren resim":::
 
-1. Power BI örneğine kolay bir ad verin.
+3. Power BI örneğine kolay bir ad verin.
 
     :::image type="content" source="media/setup-power-bi-scan-catalog-portal/power-bi-friendly-name.png" alt-text="Power BI veri kaynağını gösteren resim-kolay ad":::
 
@@ -94,17 +94,21 @@ Artık Power BI kiracınızın yönetim API 'sine bağlanmak için katalog izinl
 
     :::image type="content" source="media/setup-power-bi-scan-catalog-portal/power-bi-datasource-registered.png" alt-text="Power BI veri kaynağı kaydedildi":::
 
-1. Taramaya bir ad verin. Desteklenen tek kimlik doğrulama yönteminin **yönetilen kimlik** olduğunu unutmayın.
+    > [!Note]
+    > Power BI için veri kaynağı kaydına ve taramaya yalnızca bir örnek için izin verilir.
+
+
+4. Taramaya bir ad verin. Desteklenen tek kimlik doğrulama yönteminin **yönetilen kimlik** olduğunu unutmayın.
 
     :::image type="content" source="media/setup-power-bi-scan-catalog-portal/power-bi-scan-setup.png" alt-text="Power BI tarama kurulumunu gösteren resim":::
 
     Tarama adı 3-63 karakter uzunluğunda olmalıdır ve yalnızca harf, sayı, alt çizgi ve kısa çizgi içermelidir.  Boşluklara izin verilmez.
 
-1. Bir tarama tetikleyicisi ayarlayın. Seçenekleriniz **her 7 günde** bir ve **30 günde** **bir**.
+5. Bir tarama tetikleyicisi ayarlayın. Seçenekleriniz **her 7 günde** bir ve **30 günde** **bir**.
 
     :::image type="content" source="media/setup-power-bi-scan-catalog-portal/scan-trigger.png" alt-text="Tetikleyici görüntüsünü Tara":::
 
-1. **Yeni taramayı gözden geçir** sayfasında, taramayı başlatmak için **Kaydet ve Çalıştır** ' ı seçin.
+6. **Yeni taramayı gözden geçir** sayfasında, taramayı başlatmak için **Kaydet ve Çalıştır** ' ı seçin.
 
     :::image type="content" source="media/setup-power-bi-scan-catalog-portal/save-run-power-bi-scan.png" alt-text="Power BI ekran görüntüsünü Kaydet ve Çalıştır":::
 

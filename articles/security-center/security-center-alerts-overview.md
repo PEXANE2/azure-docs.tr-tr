@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 10/05/2020
 ms.author: memildin
-ms.openlocfilehash: c1406e6a1f2f36c5d42544c52ade3f991fe2ba0a
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: b26d42ca32f0048bb2bedcb5fef337c3ac1d7d65
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96433028"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99807233"
 ---
 # <a name="security-alerts-in-azure-security-center"></a>Azure Güvenlik Merkezi'nde güvenlik uyarıları
 
@@ -23,7 +23,7 @@ Güvenlik Merkezi 'nde birçok farklı kaynak türü için çeşitli uyarılar v
 
 Güvenlik uyarıları, gelişmiş algılamalar tarafından tetiklenir ve yalnızca Azure Defender ile kullanılabilir. Ücretsiz deneme sürümü mevcuttur. **Fiyatlandırma & ayarları** sayfasından yükseltebilirsiniz. [Güvenlik Merkezi fiyatlandırması](https://azure.microsoft.com/pricing/details/security-center/)hakkında daha fazla bilgi edinin.
 
-## <a name="respond-to-todays-threats"></a>Bugünün tehditlerine <a name="respond-threats"> </a> yanıt verme
+## <a name="respond-to-todays-threats"></a>Bugünün tehditlerine <a name="respond-threats"></a> yanıt verme
 
 Son 20 yılda tehdit kapsamında önemli değişiklikler olmuştur. Geçmişte, şirketler genellikle "neler yapabileceklerini" görmekte olan bireysel saldırganlar tarafından yalnızca Web sitesi savunma hakkında endişelenmek zorunda kalmıştı. Günümüzde saldırganlar çok daha gelişmiş ve düzenlenmiştir. Saldırganlar genellikle belirli finansal ve stratejik hedeflere sahiptir. Ayrıca, bu kaynaklar, nasyon durumları veya düzenlenmiş SUI tarafından komik olabileceği için daha fazla kaynak kullanabilir.
 
@@ -91,7 +91,7 @@ Uyarıları Güvenlik Merkezi dışında görüntülemek için kullanabileceğin
 
 - Uyarı panosunda **CSV raporu indir** , CSV 'ye bir kerelik dışarı aktarma sağlar.
 - Fiyatlandırma & ayarlarından **sürekli dışarı aktarma** , güvenlik uyarıları ve önerilerin akışlarını Log Analytics çalışma alanları ve Event Hubs için yapılandırmanıza olanak tanır. [Sürekli dışarı aktarma hakkında daha fazla bilgi edinin](continuous-export.md)
-- **Azure Sentinel Bağlayıcısı** , Azure Güvenlik Merkezi 'ndeki güvenlik uyarılarını Azure Sentinel 'e akışlar. [Azure Güvenlik Merkezi 'Ni Sentinel ile bağlama hakkında daha fazla bilgi edinin](../sentinel/connect-azure-security-center.md)
+- **Azure Sentinel Bağlayıcısı** , Azure Güvenlik Merkezi 'ndeki güvenlik uyarılarını Azure Sentinel 'e akışlar. [Azure Güvenlik Merkezi 'Ni Azure Sentinel ile bağlama hakkında daha fazla bilgi edinin](../sentinel/connect-azure-security-center.md)
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

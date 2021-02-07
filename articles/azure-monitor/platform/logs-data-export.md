@@ -6,13 +6,13 @@ ms.topic: conceptual
 ms.custom: references_regions, devx-track-azurecli
 author: bwren
 ms.author: bwren
-ms.date: 10/14/2020
-ms.openlocfilehash: bc369b072f90e675cf882d52b2edae30530f1c18
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.date: 02/07/2021
+ms.openlocfilehash: 03061f71ee0cceaa39c7ab9b258f9d3a0a84f1be
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98895977"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99807895"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Azure Izleyici 'de çalışma alanı verilerini dışarı aktarma Log Analytics (Önizleme)
 Azure Izleyici 'de Log Analytics çalışma alanı verileri dışarı aktarma işlemi, Log Analytics çalışma alanınızdaki seçili tablolardan verileri sürekli olarak bir Azure depolama hesabına veya Azure Event Hubs toplanarak dışarı aktaralmanıza olanak sağlar. Bu makalede, bu özellik hakkında ayrıntılar ve çalışma alanlarınızdaki veri dışarı aktarmayı yapılandırma adımları sağlanmaktadır.
@@ -28,8 +28,7 @@ Dahil edilen tablolardaki tüm veriler bir filtre olmadan verilir. Örneğin, *S
 ## <a name="other-export-options"></a>Diğer dışarı aktarma seçenekleri
 Log Analytics çalışma alanı verileri dışarı aktarma bir Log Analytics çalışma alanından sürekli olarak veri aktarır. Belirli senaryolara yönelik verileri dışarı aktarmaya yönelik diğer seçenekler şunlardır:
 
-- Mantıksal uygulama kullanılarak günlük sorgusundan zamanlanan dışarı aktarma. Bu, veri dışa aktarma özelliğine benzerdir, ancak filtrelenmiş veya toplanmış verileri Azure depolama 'ya göndermenizi sağlar. Bu yöntem, [günlük sorgusu sınırlarına](../service-limits.md#log-analytics-workspaces)  tabidir, [Logic App kullanarak Log Analytics çalışma alanındaki arşiv verilerini Azure depolama 'ya](logs-export-logic-app.md)görün.
-- Bir mantıksal uygulama kullanarak bir kerelik dışarı aktarma. [Logic Apps ve güç otomatikleştirme için bkz. Azure Izleyici günlükleri Bağlayıcısı](logicapp-flow-connector.md).
+- Mantıksal uygulama kullanılarak günlük sorgusundan zamanlanan dışarı aktarma. Bu, veri dışa aktarma özelliğine benzerdir, ancak filtrelenmiş veya toplanmış verileri Azure depolama 'ya göndermenizi sağlar. Bu yöntem, [günlük sorgusu sınırlarına](../service-limits.md#log-analytics-workspaces)tabidir, bkz. [Logic App kullanarak Log Analytics çalışma alanındaki verileri Azure depolama 'ya arşivleme](logs-export-logic-app.md).
 - PowerShell betiği kullanılarak yerel makineye bir kerelik dışarı aktarma. Bkz. [Invoke-Azoperationalınsightsqueryexport](https://www.powershellgallery.com/packages/Invoke-AzOperationalInsightsQueryExport).
 
 
@@ -47,16 +46,7 @@ Log Analytics çalışma alanı verileri dışarı aktarma bir Log Analytics ça
 - Bir çalışma alanında iki dışarı aktarma kuralı oluşturabilirsiniz; içindeki bir olay hub 'ı ve depolama hesabına yönelik bir kural olabilir.
 - Hedef depolama hesabı veya Olay Hub 'ı Log Analytics çalışma alanıyla aynı bölgede olmalıdır.
 - Aktarılacak tabloların adları, bir depolama hesabı için 60 karakterden uzun ve bir olay hub 'ına en fazla 47 karakterden oluşabilir. Daha uzun adlara sahip tablolar verilmeyecektir.
-
-> [!NOTE]
-> Log Analytics veri dışa aktarma verileri, şu anda Azure Data Lake Storage 2. için önizleme aşamasında olan Append blobu olarak yazar. Bu depolama alanına dışarı aktarmayı yapılandırmadan önce bir destek isteği açmalısınız. Bu istek için aşağıdaki ayrıntıları kullanın.
-> - Sorun türü: Teknik
-> - Abonelik: Aboneliğiniz
-> - Hizmet: Data Lake Storage 2.
-> - Kaynak: kaynak adınız
-> - Özet: Log Analytics verileri dışarı aktarma işleminden verileri kabul etmek için abonelik kaydı Isteniyor.
-> - Sorun türü: bağlantı
-> - Sorun alt türü: bağlantı sorunu
+- Azure Data Lake Storage için blob desteğinin eklenmesi artık [sınırlı genel önizlemede](https://azure.microsoft.com/updates/append-blob-support-for-azure-data-lake-storage-preview/)
 
 ## <a name="data-completeness"></a>Veri bütünlüğü
 Verilerin dışarı aktarılması, hedefin kullanılamaz durumda olması durumunda 30 dakikaya kadar veri göndermeyi yeniden denemeye devam edecektir. 30 dakika sonra hala kullanılamıyorsa, veriler hedef kullanılabilir olana kadar atılır.
@@ -76,6 +66,9 @@ Depolama hesabı veri biçimi [JSON hatdır](./resource-logs-blob-format.md). Bu
 [![Depolama örneği verileri](media/logs-data-export/storage-data.png)](media/logs-data-export/storage-data.png#lightbox)
 
 Log Analytics veri dışa aktarma, zaman tabanlı bekletme ilkelerinde *allowProtectedAppendWrites* ayarı etkinse, sabit depolama hesaplarına ekleme Blobları yazabilir. Bu, bir ekleme blobuna yeni blokların yazılmasına izin verir, bu sayede koruma ve uyumluluğu koruma sağlar. Bkz. [korumalı ekleme Blobları yazmasına Izin ver](../../storage/blobs/storage-blob-immutable-storage.md#allow-protected-append-blobs-writes).
+
+> [!NOTE]
+> Azure Data Lake depolama için blob desteği ekleme işlemi, tüm Azure bölgelerinde önizleme aşamasında kullanıma sunulmuştur. Depolama Azure Data Lake için dışarı aktarma kuralı oluşturmadan önce [sınırlı genel önizlemeye kaydolun](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR4mEEwKhLjlBjU3ziDwLH-pURDk2NjMzUTVEVzU5UU1XUlRXSTlHSlkxQS4u) . Dışarı aktarma işlemi bu kayıt olmadan çalışmaz.
 
 ### <a name="event-hub"></a>Olay hub'ı
 Veriler, Azure Izleyici 'ye ulaştığında neredeyse gerçek zamanlı olarak olay hub 'ınıza gönderilir. Bir olay hub 'ı, adı " *ve ardından tablonun adı ile* dışarı aktarma yaptığınız her veri türü için oluşturulur. Örneğin, *securityevent* tablosu, *har-securityevent* adlı bir olay hub 'ına gönderilir. Dışarı aktarılmış verilerin belirli bir olay hub 'ına ulaşmasını istiyorsanız veya 47 karakter sınırını aşan bir ada sahip bir tablonuz varsa, kendi olay hub 'ınızın adını girip tanımlanmış tablolar için tüm verileri buna aktarabilirsiniz.

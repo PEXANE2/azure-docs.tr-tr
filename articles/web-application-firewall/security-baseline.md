@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/13/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 4bda3622c1bb1cb66e83b82df0d13cbfee9e20a3
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: b50ab8cae91aab56be287f517fa6e6a0b25db8e1
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98878130"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99807878"
 ---
 # <a name="azure-security-baseline-for-azure-web-application-firewall"></a>Azure Web uygulaması güvenlik duvarı için Azure Güvenlik temeli
 
@@ -135,7 +135,7 @@ Etiketlere göre kaynakları aramak veya eylemler gerçekleştirmek için Azure 
 
 **Kılavuz**: Azure Web uygulaması güvenlik duvarı (WAF) günlüklerini Azure Sentinel veya üçüncü taraf SIEM gibi bir merkezi güvenlik günlüğü yönetimi çözümüne gönderilmek üzere yapılandırın. Bu Günlükler Azure etkinlik, tanılama ve gerçek zamanlı WAF günlüklerini içerir, bu Günlükler daha sonra Azure Izleyici, Excel ve Power BI gibi farklı araçlarla görüntülenebilir. Azure Web uygulaması güvenlik duvarı günlükleri, Azure WAF 'nin değerlendirdiği, eşleştiği ve engellediği veriler hakkında fikir verir.
 
-Azure Sentinel 'de, Azure WAF 'deki güvenlik olaylarına genel bakış sağlayan yerleşik bir Azure WAF çalışma kitabı vardır. Bu çalışma kitabı olayları, eşleşen ve engellenen kuralları ve güvenlik duvarı günlüklerinde günlüğe kaydedilen diğer her şeyi içerir. Bu telemetri, Sentinel tarafından toplanan WAF olaylarına dayalı olarak bildirim almak veya düzeltme eylemleri gerçekleştirmek için PlayBook Otomasyonu 'nu açmak üzere kullanılabilir.
+Azure Sentinel 'de, Azure WAF 'deki güvenlik olaylarına genel bakış sağlayan yerleşik bir Azure WAF çalışma kitabı vardır. Bu çalışma kitabı olayları, eşleşen ve engellenen kuralları ve güvenlik duvarı günlüklerinde günlüğe kaydedilen diğer her şeyi içerir. Bu telemetri, Azure Sentinel tarafından toplanan WAF olaylarına dayalı olarak bildirim almak veya düzeltme eylemleri gerçekleştirmek için PlayBook Otomasyonu 'nu açmak üzere kullanılabilir.
 
 - [Etkinlik günlüklerini görüntüle](../azure-resource-manager/management/view-activity-logs.md)
 

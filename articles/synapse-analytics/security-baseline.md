@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 89a437504394797b8cbed5325210186248082c33
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 5e2f6d8ca1f3911959f396eb1ed77ce8377c0e3c
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98218239"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99807844"
 ---
 # <a name="azure-security-baseline-for-azure-synapse-analytics"></a>Azure SYNAPSE Analytics için Azure Güvenlik temeli
 
@@ -329,7 +329,7 @@ Yönetim işlemleri için, açıkça atanması gereken Azure yerleşik rollerini
 
 * [Azure SQL 'de var olan oturum açma işlemlerini ve yönetici hesaplarını yönetme](../azure-sql/database/logins-create-manage.md#existing-logins-and-user-accounts-after-creating-a-new-database)
 
-* [Azure yerleşik rolleri](../role-based-access-control/built-in-roles.md)
+* [Yerleşik Azure rolleri](../role-based-access-control/built-in-roles.md)
 
 **Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 
@@ -1111,7 +1111,7 @@ Varsayılan olarak, bir depolama hesabındaki veriler Microsoft tarafından yön
 
 ### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10,5: güvenlik uyarılarını olay yanıt sisteminizle birleştirme
 
-**Rehberlik**: sürekli dışa aktarma özelliğini kullanarak Azure Güvenlik Merkezi uyarılarınızı ve önerilerinizi dışarı aktarın. Sürekli dışa aktarma, uyarıları ve önerileri el ile veya devam eden sürekli bir biçimde dışa aktarmanız sağlar. Uyarıları Sentinel 'e akışa almak için Azure Güvenlik Merkezi veri bağlayıcısını kullanabilirsiniz.
+**Rehberlik**: sürekli dışa aktarma özelliğini kullanarak Azure Güvenlik Merkezi uyarılarınızı ve önerilerinizi dışarı aktarın. Sürekli dışa aktarma, uyarıları ve önerileri el ile veya devam eden sürekli bir biçimde dışa aktarmanız sağlar. Azure Güvenlik Merkezi veri bağlayıcısını kullanarak uyarıları Azure Sentinel 'e akışını sağlayabilirsiniz.
 
 * [Sürekli dışarı aktarmayı yapılandırma](../security-center/continuous-export.md)
 

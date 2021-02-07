@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/25/2021
 ms.author: yelevin
-ms.openlocfilehash: 7944ea48feaca1eb8312e01d876bf9627af429d1
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 458c801e1434832bf65da669ca89cb5c5eebe2e8
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98784804"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99807572"
 ---
 # <a name="identify-advanced-threats-with-user-and-entity-behavior-analytics-ueba-in-azure-sentinel"></a>Azure Sentinel 'de Kullanıcı ve varlık davranış analizi (UEBA) ile gelişmiş tehditleri tanımla
 
 > [!IMPORTANT]
 >
-> - UEBA ve varlık sayfaları özellikleri artık **_Tüm_* _ Azure Sentinel coğrafi bölgeler ve bölgelerde **genel kullanıma** sunulmuştur.
+> - UEBA ve varlık sayfaları özellikleri artık **_Tüm_** Azure Sentinel coğrafi bölgeler ve bölgelerde **genel kullanıma** sunulmuştur.
 
 ## <a name="what-is-user-and-entity-behavior-analytics-ueba"></a>Kullanıcı ve varlık davranış analizi (UEBA) nedir?
 
@@ -35,7 +35,7 @@ Kuruluşunuzun içindeki tehditleri ve olası etkisini belirleme-güvenliği aş
 
 Azure Sentinel 'de UEBA özelliği, analistlerin iş yüklerinden ve çalışmalarından drudgery ortadan kaldırır ve yüksek uygunluğa sahip, işlem yapılabilir zeka sunarak araştırma ve düzeltmeye odaklanabilirler.
 
-Azure Sentinel, tüm bağlı veri kaynaklarından Günlükler ve uyarılar toplarken, bunları analiz eder ve zaman ve eş grup ufuk genelindeki kuruluşunuzun varlıklarının (kullanıcılar, konaklar, IP adresleri, uygulamalar vb.) temel davranış profillerini derler. Farklı teknikler ve makine öğrenimi özellikleri kullanarak, Sentinel etkinlikleri tanımlayabilir ve bir varlığın tehlikede olup olmadığını belirlemenize yardımcı olur. Yalnızca bu, belirli varlıkların göreli hassasiyetini belirleyebilir, varlık gruplarını tanımlayabilir ve belirli bir güvenliği aşılmış varlıkların olası etkisini ("değerlendirme yarıçapı") değerlendirebilir. Bu bilgilerle birlikte araştırmanıza ve olay işleme göre önceliklendirmenize etkin bir şekilde öncelik verebilirsiniz. 
+Azure Sentinel, tüm bağlı veri kaynaklarından Günlükler ve uyarılar toplarken, bunları analiz eder ve zaman ve eş grup ufkında kuruluşunuzun varlıklarının (kullanıcılar, konaklar, IP adresleri ve uygulamalar gibi) temel davranış profillerini oluşturur. Azure Sentinel, çeşitli teknikler ve makine öğrenimi özelliklerini kullanarak anormal etkinlikleri tanımlayabilir ve bir varlığın tehlikede olup olmadığını belirlemenize yardımcı olur. Yalnızca bu, belirli varlıkların göreli hassasiyetini belirleyebilir, varlık gruplarını tanımlayabilir ve belirli bir güvenliği aşılmış varlıkların olası etkisini ("değerlendirme yarıçapı") değerlendirebilir. Bu bilgilerle birlikte araştırmanıza ve olay işleme göre önceliklendirmenize etkin bir şekilde öncelik verebilirsiniz. 
 
 ### <a name="architecture-overview"></a>Mimariye genel bakış
 
@@ -45,7 +45,7 @@ Azure Sentinel, tüm bağlı veri kaynaklarından Günlükler ve uyarılar topla
 
 Vartner 'ın UEBA çözümleri için paradigması sayesinde Azure Sentinel, üç başvuru çerçevesine göre "dışarıdan" bir yaklaşım sağlar:
 
-- _ *Kullanım örnekleri:** ilgili saldırı vektörlerine ve senaryolarına dayalı güvenlik&araştırmalarını temel alarak, çeşitli varlıkları kurbanlara, sürelere veya sonlandırma zincirindeki Özet noktalarına yerleştiren alt tekniklere göre Azure Sentinel, her bir veri kaynağının sağlayabildiği en değerli günlüklere odaklanır.
+- **Kullanım örnekleri:** İlgili saldırı vektörlerine ve senaryolarına dayalı güvenlik araştırmalarını temel alarak, çeşitli varlıkları her bir kurbana, bir, bir veya sonlandırma zincirindeki Özet noktaları olarak yerleştiren, tekniklerin ve alt tekniklerin, MITTIK ATT&CK çerçevesiyle hizalı güvenlik araştırması Azure Sentinel, her bir veri kaynağının sağlayabildiği en değerli günlüklere odaklanır.
 
 - **Veri kaynakları:** İlk ve Azure veri kaynaklarını desteklerken, Azure Sentinel, tehdit senaryolarımızla eşleşen verileri sağlamak için üçüncü taraf veri kaynaklarını seçer.
 
@@ -68,7 +68,7 @@ Her etkinlik "araştırma önceliği puanı" ile puanlanır. Bu, belirli bir kul
 
 Bunun nasıl çalıştığına ilişkin bir örnek için davranış analizinin [Microsoft Cloud App Security](https://techcommunity.microsoft.com/t5/microsoft-security-and/prioritize-user-investigations-in-cloud-app-security/ba-p/700136) nasıl kullanıldığını görün.
 
-## <a name="entities-in-azure-sentinel"></a>Azure Sentinel 'de varlıklar
+## <a name="entities-in-azure-sentinel"></a>Azure Sentinel'de varlıklar
 
 ### <a name="entity-identifiers"></a>Varlık tanımlayıcıları
 

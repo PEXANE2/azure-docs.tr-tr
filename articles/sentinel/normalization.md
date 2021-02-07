@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: yelevin
-ms.openlocfilehash: a9d2cd48e3b686614f7361d2007f6f8183c2361e
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 66c315132ef0ef4d320e9edd8e9bcc28b2240924
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94657032"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99805099"
 ---
 # <a name="normalization-in-azure-sentinel"></a>Azure Sentinel 'te normalleştirme
 
@@ -74,7 +74,7 @@ Daha fazla bilgi için bkz. [şema başvuru belgesi](./normalization-schema.md)v
 
 Bir temel tanımlanmış normalleştirilmiş tablolar kümesi ile, verilerinizi bu tablolarla dönüştürmeniz (ayrıştırmanıza/eşlemenizi) gerekir. Diğer bir deyişle, ham biçimindeki belirli verileri, normalleştirilmiş şemada iyi bilinen sütunlara ayıklayacaksınız. Azure Sentinel 'de ayrıştırma **sorgu zaman** -Çözümleyicileri, varolan tablolardaki (CommonSecurityLog, özel günlük tabloları, Syslog gibi) verileri normalleştirilmiş tablolar şemasına dönüştüren Log Analytics Kullanıcı Işlevleri (kusto sorgu DILI-KQL kullanarak) olarak oluşturulur.
 
-Azure Sentinel 'de henüz desteklenmeyen diğer ayrıştırma türü, veri kaynaklarından alınan verileri doğrudan normalleştirilmiş **ingestion time** tablo (lar) halinde toplamaya izin veriliyor. Alma süresi ayrıştırma, veri modeli işlevleri kullanma gerekmeden doğrudan sorgulandığı için gelişmiş performans sağlar.
+Azure Sentinel 'de henüz desteklenmeyen diğer ayrıştırma türü, veri kaynaklarından alınan verileri doğrudan normalleştirilmiş  tablo (lar) halinde toplamaya izin veriliyor. Alma süresi ayrıştırma, veri modeli işlevleri kullanma gerekmeden doğrudan sorgulandığı için gelişmiş performans sağlar.
 
 ### <a name="using-query-time-parsers"></a>Sorgu süresi Çözümleyicileri kullanma
 
@@ -105,11 +105,11 @@ Sorgu işlevini kaydettikten sonra, sorgu Gezginini kapatıp yeni işlevin yans�
 
 #### <a name="using-the-parsers"></a>Çözümleyicileri kullanma
 
-Etkinleştirildikten sonra, şu anda etkinleştirilmiş olan tüm çözümleyiciler üzerinde Birleşik bir görünümü sorgulamak için meta ayrıştırıcısı kullanabilirsiniz. Bunu yapmak için, Sentinel Günlükler sayfasına gidin ve meta ayrıştırıcısı sorgulayın:
+Etkinleştirildikten sonra, şu anda etkinleştirilmiş olan tüm çözümleyiciler üzerinde Birleşik bir görünümü sorgulamak için meta ayrıştırıcısı kullanabilirsiniz. Bunu yapmak için Azure Sentinel Günlükler sayfasına gidin ve meta ayrıştırıcısı sorgulayın:
 
 :::image type="content" source="./media/normalization/query-parser.png" alt-text="Ayrıştırıcısı sorgulama":::
  
-Ayrıca, ' sorgu Gezgini ' ' ne tıklayarak Sentinel günlükleri sayfasında sorgu Gezgini ' ni kullanarak meta ayrıştırıcıya da tek tek ayrıştırıcıya erişebilirsiniz:
+Ayrıca, ' sorgu Gezgini ' ' ne tıklayarak Günlükler sayfasında sorgu Gezgini ' ni kullanarak meta ayrıştırıcıya da tek tek ayrıştırıcıya erişebilirsiniz:
 
 :::image type="content" source="./media/normalization/query-explorer.png" alt-text="Sorgu Gezgini":::
 

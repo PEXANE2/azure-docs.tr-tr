@@ -8,12 +8,12 @@ ms.date: 01/19/2021
 ms.topic: how-to
 ms.prod: windows-server-threshold
 ms.technology: identity-adfs
-ms.openlocfilehash: 33af92c1987d9cd0c88e689dd7bafccadd60cb06
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: fad065795345314c58e83c8d2614ed01c9e78e49
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98614057"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99805538"
 ---
 # <a name="cloud-sync-troubleshooting"></a>Bulut eşitleme sorunlarını giderme
 
@@ -164,7 +164,7 @@ Bulut eşitleme, yapılandırmanızın sistem durumunu izler ve sağlıksız nes
 
 Durumu seçerek, karantinaya alma hakkında daha fazla bilgi görebilirsiniz. Hata kodunu ve iletiyi de elde edebilirsiniz.
 
-![Karantina durumu bilgileri](media/how-to-troubleshoot/quarantine-2.png)
+![Karantinayla ilgili ek bilgileri gösteren ekran görüntüsü.](media/how-to-troubleshoot/quarantine-2.png)
 
 Duruma sağ tıklamak, ek seçenekleri getirir:
     
@@ -172,7 +172,7 @@ Duruma sağ tıklamak, ek seçenekleri getirir:
    - Aracıyı görüntüle
    - karantinayı temizle
 
-![Karantina durumu bilgileri](media/how-to-troubleshoot/quarantine-4.png)
+![Sağ tıklama menü seçeneklerini gösteren ekran görüntüsü.](media/how-to-troubleshoot/quarantine-4.png)
 
 
 ### <a name="resolve-a-quarantine"></a>Karantinayı çözümle
@@ -186,7 +186,7 @@ Bu filigranı temizlemek ve doğrulama işi doğrulandıktan sonra bir Delta eş
 
 Karantinanın temizlendiğine ilişkin bir bildirim görmeniz gerekir.
 
-![Karantina durumu bilgileri](media/how-to-troubleshoot/quarantine-5.png)
+![Karantinanın temizlendiğine ilişkin bildirimi gösteren ekran görüntüsü.](media/how-to-troubleshoot/quarantine-5.png)
 
 Ardından, aracıdaki durumu sağlıklı olarak görmeniz gerekir.
 

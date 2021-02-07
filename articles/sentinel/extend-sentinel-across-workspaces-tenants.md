@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/11/2020
 ms.author: yelevin
-ms.openlocfilehash: 4312a819f8fd41805dca095556efdc6189f23af9
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: dfd8f94dc7ab4e428647b8f44a86a2cd06634e2a
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98757128"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99807250"
 ---
 # <a name="extend-azure-sentinel-across-workspaces-and-tenants"></a>Azure Sentinel’i çalışma alanlarına ve kiracılara genişletme
 
@@ -127,7 +127,7 @@ Azure Sentinel, başlamanızı sağlamak için tasarlanan önceden yüklenmiş s
 
 Birden çok Azure Sentinel çalışma alanını yapılandırmak ve yönetmek için Azure Sentinel yönetim API 'sinin kullanımını otomatikleştirmeniz gerekir. Uyarı kuralları, arama sorguları, çalışma kitapları ve PlayBook 'lar dahil olmak üzere Azure Sentinel kaynaklarının dağıtımını otomatikleştirme hakkında daha fazla bilgi için bkz. [Azure Sentinel: API 'ler, tümleştirme ve yönetim Otomasyonu](https://techcommunity.microsoft.com/t5/azure-sentinel/extending-azure-sentinel-apis-integration-and-management/ba-p/1116885).
 
-Ayrıca bkz. Azure [Sentinel 'ı kod olarak dağıtma ve yönetme](https://techcommunity.microsoft.com/t5/azure-sentinel/deploying-and-managing-azure-sentinel-as-code/ba-p/1131928) [ve Azure](https://techcommunity.microsoft.com/t5/azure-sentinel/combining-azure-lighthouse-with-sentinel-s-devops-capabilities/ba-p/1210966) ve özel bir GitHub deposundan kaynak dağıtma ve yapılandırma için birleştirilmiş, topluluk tarafından katkıda bulunulan bir yöntem. 
+Ayrıca bkz. Azure Sentinel 'i [kod olarak dağıtma ve yönetme](https://techcommunity.microsoft.com/t5/azure-sentinel/deploying-and-managing-azure-sentinel-as-code/ba-p/1131928) ve Azure ve özel bir GitHub deposundan kaynak dağıtma ve yapılandırma için birleştirilmiş, topluluk tarafından katkıda bulunulan bir metodolojisi Azure Sentinel ['in DevOps özellikleri](https://techcommunity.microsoft.com/t5/azure-sentinel/combining-azure-lighthouse-with-sentinel-s-devops-capabilities/ba-p/1210966) . 
 
 ## <a name="managing-workspaces-across-tenants-using-azure-lighthouse"></a>Azure açık Thouse kullanarak kiracılar genelinde çalışma alanlarını yönetme
 

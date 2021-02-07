@@ -10,12 +10,12 @@ ms.custom: how-to, automl, responsible-ml
 ms.author: mithigpe
 author: minthigpen
 ms.date: 07/09/2020
-ms.openlocfilehash: 19cebefd64f5b6dce9c265a591c8d5072fcd83db
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: fe0b2abb7fa2ca986a896a75e5f6d4c238d70109
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222743"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99807267"
 ---
 # <a name="interpretability-model-explanations-in-automated-machine-learning-preview"></a>Yorumlanabilirlik: otomatik makine öğrenmesinde model açıklamaları (önizleme)
 
@@ -31,7 +31,7 @@ Bu makalede şunları öğreneceksiniz:
 - Veri ve açıklamaları desenlerdeki desenleri görmenizi sağlayacak görselleştirmeleri etkinleştirin.
 - Çıkarım veya Puanlama sırasında yorumlenebilirlik uygulayın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Yorumlenebilirlik özellikleri. `pip install azureml-interpret`Gerekli paketi almak için ' i çalıştırın.
 - Oto ml denemeleri oluşturma hakkında bilgi. Azure Machine Learning SDK 'sını kullanma hakkında daha fazla bilgi için, bu [regresyon modeli öğreticisini](tutorial-auto-train-models.md) doldurun veya bkz. [oto ml denemeleri 'ı yapılandırma](how-to-configure-auto-train.md).
@@ -40,7 +40,7 @@ Bu makalede şunları öğreneceksiniz:
 
 `best_run`Hem ham hem de mühendislik uygulanmış özelliklerin açıklamalarını içeren öğesinden açıklamayı alın.
 
-> [!Warning]
+> [!NOTE]
 > Yorumlenebilirlik, en iyi model açıklaması, aşağıdaki algoritmaların en iyi model olarak kullanılması için otomatik ML tahmin denemeleri için kullanılamaz: 
 > * TCNForecaster
 > * Oto ARIMA

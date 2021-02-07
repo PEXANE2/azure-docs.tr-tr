@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.author: yelevin
-ms.openlocfilehash: 6a891a301d5869603a7d90d28bb9063d7d5bdb1d
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: f8d795dcf64230140e1dd07e3f30ca3aa6825ab4
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94660585"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99807012"
 ---
 # <a name="bring-your-own-machine-learning-ml-into-azure-sentinel"></a>Kendi Machine Learning (ML) Azure Sentinel 'e taşıyın
 
@@ -32,7 +32,7 @@ ML algılama modelleri, yanlış pozitifleri azaltmak ve geleneksel bir yaklaş�
 
 ## <a name="what-is-the-bring-your-own-machine-learning-byo-ml-platform"></a>Kendi Machine Learning (BYO-ML) platformunu getir nedir?
 
-ML kaynaklarına sahip kuruluşlar ve benzersiz iş ihtiyaçları için özelleştirilmiş ML modelleri derlemek istiyorsanız **BYO-ml platformunu** sunuyoruz. Platform, [Azure Databricks](/azure/databricks/scenarios/what-is-azure-databricks) / ml ortamını oluşturmak için Azure Databricks[Apache Spark](http://spark.apache.org/) ortamı ve jupi not defterlerini kullanır. Aşağıdaki bileşenleri sağlar:
+ML kaynaklarına sahip kuruluşlar ve benzersiz iş ihtiyaçları için özelleştirilmiş ML modelleri derlemek istiyorsanız **BYO-ml platformunu** sunuyoruz. Platform, [](/azure/databricks/scenarios/what-is-azure-databricks) / ml ortamını oluşturmak için Azure Databricks[Apache Spark](http://spark.apache.org/) ortamı ve jupi not defterlerini kullanır. Aşağıdaki bileşenleri sağlar:
 
 - verilere erişmenize ve sonuçları Log Analytics (LA) ' a İtmenize yardımcı olacak kitaplıkları içeren bir BYO-ML paketi, sonuçları algılama, araştırma ve arama ile tümleştirebilmenizi sağlar. 
 
@@ -79,10 +79,10 @@ Zaten Databricks veya başka bir Spark ortamınız varsa ve var olan kurulumu ku
 
 BYO ML paketi, güvenlik için ML 'nin ön ucundaki Microsoft 'un en iyi yöntemlerini ve araştırmasını içerir. Bu pakette, güvenlik sorunları için aşağıdaki yardımcı programlar, Not defterleri ve algoritma şablonları listesini sağlıyoruz.
 
-| Dosya adı | Açıklama |
+| Dosya adı | Description |
 | --------- | ----------- |
 | azure_sentinel_utilities. WHL | Azure 'dan blob 'ları okumak ve Log Analytics yazmak için yardımcı programları içerir. |
-| Anomalousstrasampledata | Not defteri, üretilen eğitim ve test örnek verileriyle birlikte Sentinel 'de anormal kaynak erişim modelinin kullanımını gösterir. |
+| Anomalousstrasampledata | Not defteri, Azure Sentinel 'de oluşturulan eğitim ve örnek verileri test eden anormal kaynak erişim modelinin kullanımını gösterir. |
 | Anomalousoytraining. ipynb | Algoritmayı eğiten, modelleri derlemek ve kaydetmek için Not defteri. |
 | Anomalousraypuanlama. ipynb | Bir modelin çalışmasını zamanlamak için Not defteri, sonucu görselleştirin ve puanı Azure Sentinel 'e geri yazın. |
 |
@@ -99,7 +99,7 @@ Henüz bir tane yoksa, kendi Databricks ortamınızı oluşturmanız gerekecekti
 
 ### <a name="auto-export-instruction"></a>Otomatik dışa aktarma yönergesi
 
-Sentinel 'de kendi verilerinizi temel alan özel ML modelleri oluşturmak için, ML modelinin Databricks 'ten erişebilmesi için Log Analytics verilerinizi bir BLOB depolama alanına veya Olay Hub kaynağına aktarmanız gerekir. [Azure Sentinel 'e veri](connect-data-sources.md)alma hakkında bilgi edinin.
+Azure Sentinel 'de kendi verilerinizi temel alan özel ML modelleri oluşturmak için, ML modelinin Databricks 'ten erişebilmesi için Log Analytics verilerinizi bir BLOB depolama alanına veya Olay Hub kaynağına aktarmanız gerekir. [Azure Sentinel 'e veri](connect-data-sources.md)alma hakkında bilgi edinin.
 
 Bu örnekte, Azure Blob depolamada dosya paylaşma erişim günlüğü için eğitim verilerinize sahip olmanız gerekir. Verilerin biçimi not defterinde ve kitaplıklarda belgelenmiştir.
 
@@ -141,7 +141,7 @@ Log Analytics otomatik dışarı aktarma tarafından desteklenmeyen özel verile
 
 ### <a name="correlate-with-data-outside-of-azure-sentinel"></a>Azure sentinel dışındaki verilerle bağıntı
 
-Ayrıca, Azure Sentinel dışından BLOB depolama veya Olay Hub 'ına veri getirebilir ve ML modellerinizi oluşturmak için Sentinel verileriyle ilişkilendirileyebilirsiniz. 
+Ayrıca, Azure Sentinel dışından BLOB depolama veya Olay Hub 'ına veri getirebilir ve ML modellerinizi oluşturmak için bunları Azure Sentinel verileriyle ilişkilendirileyebilirsiniz. 
  
 ### <a name="copy-and-install-the-related-packages"></a>İlgili paketleri kopyalayın ve yükler
 

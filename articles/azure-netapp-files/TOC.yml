@@ -63,6 +63,8 @@
       href: azure-netapp-files-faqs.md
     - name: Azure Uygulamayla Tutarlı Anlık Görüntü Aracı nedir?
       href: azacsnap-introduction.md
+    - name: Birim sabit kotasına ne kadar değişiklik yapmak anlamı
+      href: volume-hard-quota-guidelines.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Azure NetApp Files için kaydolma

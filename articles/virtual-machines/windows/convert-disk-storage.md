@@ -1,5 +1,5 @@
 ---
-title: Standart ve Premium SSD arasında yönetilen diskleri depolamayı dönüştürme
+title: Azure PowerShell kullanarak, yönetilen diskler depolamayı standart ve Premium SSD arasında dönüştürme
 description: Azure PowerShell kullanarak, Azure yönetilen disklerini standartdan Premium veya Premium 'a dönüştürme.
 author: roygara
 ms.service: virtual-machines-windows
@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 02/22/2019
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: d81cd0ac57a5a18d90144584e8705cbffcba6f9b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 13159e527fac76a1a79118e9363b94904935a2be
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88871437"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99807504"
 ---
 # <a name="update-the-storage-type-of-a-managed-disk"></a>Yönetilen bir diskin depolama türünü güncelleştirme
 
@@ -22,7 +22,7 @@ Bu işlev, yönetilmeyen diskler için desteklenmez. Ancak, disk türleri arası
 
  
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Dönüştürme, sanal makinenin (VM) yeniden başlatılmasını gerektirdiğinden, önceden var olan bir bakım penceresi sırasında disk depolama alanınızı geçirmeyi zamanlamanız gerekir.
 * Diskiniz yönetilmiyorsa, depolama seçenekleri arasında geçiş yapabilmeniz [için önce onu bir yönetilen diske dönüştürün](convert-unmanaged-to-managed-disks.md) .
@@ -117,7 +117,7 @@ Start-AzVM -ResourceGroupName $vm.ResourceGroupName -Name $vm.Name
 3. VM 'nin bölmesinde, menüden **diskler** ' i seçin.
 4. Dönüştürmek istediğiniz diski seçin.
 5. Menüden **yapılandırma** ' yı seçin.
-6. **Standart HDD** **hesap türünü** **Premium SSD**olarak değiştirin.
+6. **Standart HDD** **hesap türünü** **Premium SSD** olarak değiştirin.
 7. **Kaydet**' e tıklayın ve disk bölmesini kapatın.
 
 Disk türü dönüştürmesi anında gerçekleşir. Dönüştürmeden sonra sanal makinenizin başlamasını sağlayabilirsiniz.

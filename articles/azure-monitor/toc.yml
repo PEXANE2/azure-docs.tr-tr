@@ -1044,6 +1044,8 @@
               href: insights/container-insights-enable-new-cluster.md
             - name: Mevcut AKS kümesi için etkinleştirme
               href: insights/container-insights-enable-existing-clusters.md
+            - name: Azure Ilkesi ile AKS için etkinleştirme
+              href: containers/container-insights-enable-aks-policy.md
             - name: Arc etkin küme için etkinleştirme
               href: insights/container-insights-enable-arc-enabled-clusters.md
             - name: Karma küme için etkinleştirme

@@ -1,6 +1,6 @@
 ---
 title: Syslog verilerini Azure Sentinel 'e bağlama | Microsoft Docs
-description: Bir Linux makinesinde gereç ve Sentinel arasında bir aracı kullanarak Syslog 'yi destekleyen herhangi bir makine veya gereci Azure Sentinel 'e bağlayın.
+description: Bir Linux makinesinde gereç ve Azure Sentinel arasında bir aracı kullanarak Syslog 'yi destekleyen herhangi bir makine veya gereci Azure Sentinel 'e bağlayın.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2020
 ms.author: yelevin
-ms.openlocfilehash: 8c3cf4c3c135b3f275542af4f531d1071e180ebe
-ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
+ms.openlocfilehash: 35c8c2aa31887feb294b04b8a88bbe5478659e5e
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98747199"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99807912"
 ---
 # <a name="collect-data-from-linux-based-sources-using-syslog"></a>Syslog kullanarak Linux tabanlı kaynaklardan veri toplama
 

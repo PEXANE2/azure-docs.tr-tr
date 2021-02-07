@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/11/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 66172fc9e258ae99e8ed263342025f5c33f7a168
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 5eff20ecb1366114ead80877b684ef512742803b
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99219681"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99805403"
 ---
 # <a name="technicalprofiles"></a>TechnicalProfiles
 
@@ -121,7 +121,7 @@ Bir **teknisyen** öğesi, talep sağlayıcısı tarafından desteklenen bir tek
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
 | Ad | Yes | Teknik profilin bir parçası olarak kullanılan Azure AD B2C tarafından desteklenen geçerli bir protokol adı. Olası değerler: `OAuth1` , `OAuth2` , `SAML2` , `OpenIdConnect` , `Proprietary` veya `None` . |
-| İşleyici | Hayır | Protokol adı olarak ayarlandığında `Proprietary` , protokol işleyicisini belirlemek için Azure AD B2C tarafından kullanılan derlemenin adını belirtin. |
+| İşleyici | No | Protokol adı olarak ayarlandığında `Proprietary` , protokol işleyicisini belirlemek için Azure AD B2C tarafından kullanılan derlemenin adını belirtin. |
 
 ## <a name="metadata"></a>Meta veri
 
@@ -191,7 +191,7 @@ Tümleştirildiği hizmetlerle güven sağlamak için, Azure AD B2C gizli dizile
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| Id | Hayır | İlke dosyasındaki diğer öğelerden başvurulan belirli bir anahtar çiftinin benzersiz tanıtıcısı. |
+| Id | No | İlke dosyasındaki diğer öğelerden başvurulan belirli bir anahtar çiftinin benzersiz tanıtıcısı. |
 | Storagereferenceıd değerine | Yes | İlke dosyasındaki diğer öğelerden başvurulan bir depolama anahtarı kapsayıcısının tanımlayıcı değeri. |
 
 ## <a name="input-claims-transformations"></a>Giriş talep dönüştürmeleri
@@ -252,8 +252,8 @@ Aşağıdaki teknik profiller **Createothermailsfromemail** talep dönüşümün
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
 | ClaimTypeReferenceId | Yes | Bir talep türünün tanımlayıcısı. Talep, ilke dosyası veya üst ilke dosyasındaki talep şeması bölümünde zaten tanımlanmış. |
-| Değerinin | Hayır | ClaimTypeReferenceId tarafından belirtilen talep yoksa, sonuçta elde edilen talebin teknik profille bir ınputclaim olarak kullanılabilmesi için bir talep oluşturmak için kullanılacak varsayılan değer. |
-| PartnerClaimType | Hayır | Belirtilen ilke talep türünün eşlendiği dış iş ortağının talep türünün tanımlayıcısı. PartnerClaimType özniteliği belirtilmemişse, belirtilen ilke talep türü aynı ada sahip iş ortağı talep türüne eşlenir. Talep türü adınız diğer taraftan farklıysa bu özelliği kullanın. Örneğin, ilk talep adı ' bir ' ise, iş ortağı ' first_name ' adlı bir talep kullanır. |
+| Değerinin | No | ClaimTypeReferenceId tarafından belirtilen talep yoksa, sonuçta elde edilen talebin teknik profille bir ınputclaim olarak kullanılabilmesi için bir talep oluşturmak için kullanılacak varsayılan değer. |
+| PartnerClaimType | No | Belirtilen ilke talep türünün eşlendiği dış iş ortağının talep türünün tanımlayıcısı. PartnerClaimType özniteliği belirtilmemişse, belirtilen ilke talep türü aynı ada sahip iş ortağı talep türüne eşlenir. Talep türü adınız diğer taraftan farklıysa bu özelliği kullanın. Örneğin, ilk talep adı ' bir ' ise, iş ortağı ' first_name ' adlı bir talep kullanır. |
 
 ## <a name="display-claims"></a>Talepleri görüntüle
 
@@ -279,9 +279,9 @@ Aşağıdaki teknik profiller **Createothermailsfromemail** talep dönüşümün
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| ClaimTypeReferenceId | Hayır | İlke dosyası veya üst ilke dosyasında ClaimsSchema bölümünde zaten tanımlanmış olan bir talep türünün tanımlayıcısı. |
-| Displaycontrolreferenceıd | Hayır | İlke dosyası veya üst ilke dosyasında ClaimsSchema bölümünde zaten tanımlanmış olan bir [görüntüleme denetiminin](display-controls.md) tanımlayıcısı. |
-| Gerekli | Hayır | Görüntüleme talebinin gerekli olup olmadığını belirtir. |
+| ClaimTypeReferenceId | No | İlke dosyası veya üst ilke dosyasında ClaimsSchema bölümünde zaten tanımlanmış olan bir talep türünün tanımlayıcısı. |
+| Displaycontrolreferenceıd | No | İlke dosyası veya üst ilke dosyasında ClaimsSchema bölümünde zaten tanımlanmış olan bir [görüntüleme denetiminin](display-controls.md) tanımlayıcısı. |
+| Gerekli | No | Görüntüleme talebinin gerekli olup olmadığını belirtir. |
 
 Aşağıdaki örnek, kendi kendini onaylanan bir teknik profilde görüntüleme taleplerinin ve görüntüleme denetimlerinin kullanımını gösterir.
 
@@ -326,8 +326,8 @@ Azure AD öznitelik adını içeren **Partnerclaimtype** özniteliği belirtilme
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
 | ClaimTypeReferenceId | Yes | İlke dosyası veya üst ilke dosyasında ClaimsSchema bölümünde zaten tanımlanmış olan bir talep türünün tanımlayıcısı. |
-| Değerinin | Hayır | Talep yoksa bir talep oluşturmak için kullanılacak varsayılan değer. |
-| PartnerClaimType | Hayır | Belirtilen ilke talep türünün eşlendiği dış iş ortağının talep türünün tanımlayıcısı. PartnerClaimType özniteliği belirtilmemişse, belirtilen ilke talep türü aynı ada sahip iş ortağı talep türüne eşlenir. Talep türü adınız diğer taraftan farklıysa bu özelliği kullanın. Örneğin, ilk talep adı ' bir ' ise, iş ortağı ' first_name ' adlı bir talep kullanır. |
+| Değerinin | No | Talep yoksa bir talep oluşturmak için kullanılacak varsayılan değer. |
+| PartnerClaimType | No | Belirtilen ilke talep türünün eşlendiği dış iş ortağının talep türünün tanımlayıcısı. PartnerClaimType özniteliği belirtilmemişse, belirtilen ilke talep türü aynı ada sahip iş ortağı talep türüne eşlenir. Talep türü adınız diğer taraftan farklıysa bu özelliği kullanın. Örneğin, ilk talep adı ' bir ' ise, iş ortağı ' first_name ' adlı bir talep kullanır. |
 
 Aşağıdaki örnekte, yeni yerel hesap oluşturan **AAD-UserWriteUsingLogonEmail** Technical profile veya [Starter Pack](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/SocialAndLocalAccounts), aşağıdaki talepler devam ettirir:
 
@@ -357,9 +357,9 @@ Aşağıdaki örnekte, yeni yerel hesap oluşturan **AAD-UserWriteUsingLogonEmai
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
 | ClaimTypeReferenceId | Yes | İlke dosyası veya üst ilke dosyasında ClaimsSchema bölümünde zaten tanımlanmış olan bir talep türünün tanımlayıcısı. |
-| Değerinin | Hayır | Talep yoksa bir talep oluşturmak için kullanılacak varsayılan değer. |
-|AlwaysUseDefaultValue |Hayır |Varsayılan değerin kullanımını zorunlu kılın.  |
-| PartnerClaimType | Hayır | Belirtilen ilke talep türünün eşlendiği dış iş ortağının talep türünün tanımlayıcısı. İş ortağı talep türü özniteliği belirtilmemişse, belirtilen ilke talep türü aynı ada sahip iş ortağı talep türüne eşlenir. Talep türü adınız diğer taraftan farklıysa bu özelliği kullanın. Örneğin, ilk talep adı ' bir ' ise, iş ortağı ' first_name ' adlı bir talep kullanır. |
+| Değerinin | No | Talep yoksa bir talep oluşturmak için kullanılacak varsayılan değer. |
+|AlwaysUseDefaultValue |No |Varsayılan değerin kullanımını zorunlu kılın.  |
+| PartnerClaimType | No | Belirtilen ilke talep türünün eşlendiği dış iş ortağının talep türünün tanımlayıcısı. İş ortağı talep türü özniteliği belirtilmemişse, belirtilen ilke talep türü aynı ada sahip iş ortağı talep türüne eşlenir. Talep türü adınız diğer taraftan farklıysa bu özelliği kullanın. Örneğin, ilk talep adı ' bir ' ise, iş ortağı ' first_name ' adlı bir talep kullanır. |
 
 ## <a name="output-claims-transformations"></a>Çıkış talepleri dönüşümleri
 
@@ -448,14 +448,14 @@ Farklı senaryolar için farklı talepler kümesi göndermeniz gereken tek bir u
 Aşağıdaki örnek, ekleme işlevinin kullanımını göstermektedir:
 
 - *REST-API-ortak* -temel yapılandırmayla ortak bir teknik profil.
-- *Rest-ValidateProfile* - *REST-API-commom* teknik profilini içerir ve giriş ve çıkış taleplerini belirtir.
-- *Rest-UpdateProfile* - *REST-API-commom* teknik profilini içerir, giriş taleplerini belirtir ve `ServiceUrl` meta verilerin üzerine yazar.
+- *Rest-ValidateProfile* -API- *ortak* teknik profilini içerir ve giriş ve çıkış taleplerini belirtir.
+- *Rest-UpdateProfile* - *REST-API ortak* teknik profilini içerir, giriş taleplerini belirtir ve `ServiceUrl` meta verilerin üzerine yazar.
 
 ```xml
 <ClaimsProvider>
   <DisplayName>REST APIs</DisplayName>
   <TechnicalProfiles>
-    <TechnicalProfile Id="REST-API-Commom">
+    <TechnicalProfile Id="REST-API-Common">
       <DisplayName>Base REST API configuration</DisplayName>
       <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
       <Metadata>
@@ -480,7 +480,7 @@ Aşağıdaki örnek, ekleme işlevinin kullanımını göstermektedir:
       <OutputClaims>
         <OutputClaim ClaimTypeReferenceId="promoCode" />
       </OutputClaims>
-      <IncludeTechnicalProfile ReferenceId="REST-API-Commom" />
+      <IncludeTechnicalProfile ReferenceId="REST-API-Common" />
     </TechnicalProfile>
 
     <TechnicalProfile Id="REST-UpdateProfile">
@@ -492,7 +492,7 @@ Aşağıdaki örnek, ekleme işlevinin kullanımını göstermektedir:
         <InputClaim ClaimTypeReferenceId="objectId" />
         <InputClaim ClaimTypeReferenceId="email" />
       </InputClaims>
-      <IncludeTechnicalProfile ReferenceId="REST-API-Commom" />
+      <IncludeTechnicalProfile ReferenceId="REST-API-Common" />
     </TechnicalProfile>
   </TechnicalProfiles>
 </ClaimsProvider>

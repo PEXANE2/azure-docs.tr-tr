@@ -1,6 +1,6 @@
 ---
 title: Azure Stack hub sanal makinelerinizi Azure Sentinel 'e ekleme | Microsoft Docs
-description: Bu makalede, Azure Stack hub sanal makinelerinde Azure Izleyici, güncelleştirme ve yapılandırma yönetimi sanal makine uzantısının nasıl sağlanacağı ve Sentinel ile izlemeye nasıl başlayacağınız gösterilmektedir.
+description: Bu makalede, Azure Stack hub sanal makinelerinde Azure Izleyici, güncelleştirme ve yapılandırma yönetimi sanal makinesi uzantısının nasıl sağlanacağı ve Azure Sentinel ile izlemeye nasıl başlayacağınız gösterilmektedir.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: yelevin
-ms.openlocfilehash: 068296a02af0abd2fb18d284fdaf01b7c1b198fa
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 120f160e3c7bc7a9a0e81586ea4b97ee827dd33e
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98631151"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99807437"
 ---
 # <a name="connect-azure-stack-hub-virtual-machines-to-azure-sentinel"></a>Azure Stack hub sanal makinelerini Azure Sentinel 'e bağlama
 

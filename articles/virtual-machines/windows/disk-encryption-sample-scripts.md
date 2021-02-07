@@ -1,5 +1,5 @@
 ---
-title: Azure Disk Şifrelemesi örnek betikleri
+title: Windows VM 'Leri için Azure disk şifrelemesi örnek betikleri
 description: Bu makalede, Windows VM 'Leri için Microsoft Azure disk şifrelemesi eki bulunur.
 author: msmbaldwin
 ms.service: virtual-machines-windows
@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 255e284cf8d54a9be59f09f5613cb2728417d234
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: f113a1e559798328a2ef81336e8afff02732bb90
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92912047"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99804963"
 ---
 # <a name="azure-disk-encryption-sample-scripts"></a>Azure Disk Şifrelemesi örnek betikleri 
 
@@ -81,7 +81,7 @@ Aşağıdaki tabloda, PowerShell komut dosyasında hangi parametrelerin kullanı
 Aşağıdaki bölümler, Azure IaaS 'de şifrelenmiş bir VHD olarak dağıtıma önceden şifrelenmiş bir Windows VHD 'si hazırlamak için gereklidir. Azure Site Recovery veya Azure 'da yeni bir Windows VM (VHD) hazırlamak ve önyüklemek için bu bilgileri kullanın. Bir VHD 'yi hazırlama ve karşıya yükleme hakkında daha fazla bilgi için bkz. [Genelleştirilmiş BIR VHD 'Yi karşıya yükleme ve Azure 'da yeni VM 'ler oluşturmak için kullanma](upload-generalized-managed.md).
 
 ### <a name="update-group-policy-to-allow-non-tpm-for-os-protection"></a>Grup ilkesini, işletim sistemi koruması için TPM olmayan bir şekilde güncelleştirme
-**BitLocker Drive Encryption** **Yerel bilgisayar ilkesi**  >  **bilgisayar yapılandırması**  >  **Yönetim Şablonları**  >  **Windows bileşenleri** altında bulacağınız BitLocker Grup İlkesi ayarını BitLocker Sürücü Şifrelemesi yapılandırın. Bu ayarı **işletim sistemi sürücüleri** olarak değiştirin  >  , başlangıçta aşağıdaki şekilde gösterildiği gibi, uyumlu bir TPM olmadan BitLocker 'a **ek kimlik doğrulaması gerektir**  >  **Allow BitLocker without a compatible TPM** :
+ **Yerel bilgisayar ilkesi**  >  **bilgisayar yapılandırması**  >  **Yönetim Şablonları**  >  **Windows bileşenleri** altında bulacağınız BitLocker Grup İlkesi ayarını BitLocker Sürücü Şifrelemesi yapılandırın. Bu ayarı **işletim sistemi sürücüleri** olarak değiştirin  >  , başlangıçta aşağıdaki şekilde gösterildiği gibi, uyumlu bir TPM olmadan BitLocker 'a **ek kimlik doğrulaması gerektir**  >  :
 
 ![Azure’da Microsoft Kötü Amaçlı Yazılımdan Koruma](../media/disk-encryption/disk-encryption-fig8.png)
 

@@ -15,20 +15,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/16/2020
 ms.author: yelevin
-ms.openlocfilehash: fabf847b672f4dbf3e680a21bc7015655c612552
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5c7c3d69bb26773171e9e0afc9f79ff25909a12a
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90906303"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99807301"
 ---
 # <a name="automatically-create-incidents-from-microsoft-security-alerts"></a>Microsoft Güvenlik uyarılarından otomatik olarak olay oluştur
 
-Azure Sentinel 'e bağlı Microsoft Güvenlik çözümlerinde tetiklenen uyarılar; örneğin Microsoft Cloud App Security ve Microsoft Defender for Identity (eskiden Azure ATP), Azure Sentinel 'de otomatik olarak olay oluşturmaz. Varsayılan olarak, bir Microsoft çözümünü Azure Sentinel 'e bağladığınızda, söz konusu hizmette oluşturulan herhangi bir uyarı Azure Sentinel çalışma alanınızdaki güvenlik uyarısı tablosunda Azure Sentinel 'de ham veri olarak depolanır. Daha sonra bu verileri, Sentinel 'e bağlandığınız diğer ham veriler gibi kullanabilirsiniz.
+Azure Sentinel 'e bağlı Microsoft Güvenlik çözümlerinde tetiklenen uyarılar; örneğin Microsoft Cloud App Security ve Microsoft Defender for Identity (eskiden Azure ATP), Azure Sentinel 'de otomatik olarak olay oluşturmaz. Varsayılan olarak, bir Microsoft çözümünü Azure Sentinel 'e bağladığınızda, söz konusu hizmette oluşturulan herhangi bir uyarı Azure Sentinel çalışma alanınızdaki güvenlik uyarısı tablosunda Azure Sentinel 'de ham veri olarak depolanır. Daha sonra bu verileri, Azure Sentinel 'e bağlandığınız diğer ham veriler gibi kullanabilirsiniz.
 
 Azure Sentinel 'i, bağlı bir Microsoft Güvenlik çözümünde her uyarı tetiklendiğinde bu makaledeki yönergeleri uygulayarak otomatik olarak olaylar oluşturacak şekilde yapılandırabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Güvenlik hizmeti uyarılarından olay oluşturmayı etkinleştirmek için [Microsoft güvenlik çözümlerini bağlamanız](connect-data-sources.md#data-connection-methods) gerekir.
 
 ## <a name="using-microsoft-security-incident-creation-analytics-rules"></a>Microsoft güvenlik olayı oluşturma analitik kurallarını kullanma
@@ -47,7 +47,7 @@ Hangi bağlı Microsoft güvenlik çözümlerinin Azure Sentinel olaylarını ot
 
 1. Kural ayrıntılarını değiştirebilir ve uyarı önem derecesine göre ya da uyarının adında bulunan metin ile olayları oluşturacak uyarıları filtrelemeye seçim yapabilirsiniz.  
       
-    Örneğin, **Microsoft güvenlik hizmeti** alanında **Azure Defender** ' ı (yine de *Azure Güvenlik Merkezi*olarak adlandırılabilir) ve **önem derecesine göre filtrele** alanında **yüksek** ' i seçerseniz, yalnızca yüksek önem derecesine sahip Azure Defender uyarıları otomatik olarak Azure Sentinel 'de olay oluşturur.  
+    Örneğin, **Microsoft güvenlik hizmeti** alanında **Azure Defender** ' ı (yine de *Azure Güvenlik Merkezi* olarak adlandırılabilir) ve **önem derecesine göre filtrele** alanında **yüksek** ' i seçerseniz, yalnızca yüksek önem derecesine sahip Azure Defender uyarıları otomatik olarak Azure Sentinel 'de olay oluşturur.  
 
     ![Kural oluşturma Sihirbazı](media/incidents-from-alerts/create-rule-wizard.png)
 
@@ -64,7 +64,7 @@ Hangi bağlı Microsoft güvenlik çözümlerinin Azure Sentinel olaylarını ot
 
    ![Güvenlik Olayları oluştur](media/incidents-from-alerts/generate-security-incidents.png)
 
-1. Olayları **Oluştur** altında, bağlı güvenlik hizmetinde oluşturulan uyarılardan olayları otomatik olarak oluşturan varsayılan analiz kuralını etkinleştirmek için **Etkinleştir** ' i seçin. Daha sonra bu kuralı **analiz** ve ardından **etkin kurallar**altında düzenleyebilirsiniz.
+1. Olayları **Oluştur** altında, bağlı güvenlik hizmetinde oluşturulan uyarılardan olayları otomatik olarak oluşturan varsayılan analiz kuralını etkinleştirmek için **Etkinleştir** ' i seçin. Daha sonra bu kuralı **analiz** ve ardından **etkin kurallar** altında düzenleyebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

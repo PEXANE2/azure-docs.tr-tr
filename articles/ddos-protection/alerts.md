@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/28/2020
 ms.author: yitoh
-ms.openlocfilehash: d9b77def3ccefe3c866ccef78684d38da0b8a268
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: ea62b5df7159440a7538c7db0711b7d8f63ec220
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97915157"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99806299"
 ---
 # <a name="view-and-configure-ddos-protection-alerts"></a>DDoS konuma uyarılarını görüntüleme ve yapılandırma
 
@@ -41,13 +41,13 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 Bu şablonlar sayesinde, tanılama oturum açmayı etkinleştirdiğiniz tüm genel IP adresleri için uyarıları yapılandıracaksınız. Bu nedenle, bu uyarı şablonlarını kullanabilmeniz için önce Tanılama ayarları etkin olan bir Log Analytics çalışma alanına ihtiyacınız olacaktır. Bkz. [DDoS tanılama günlüğünü görüntüleme ve yapılandırma](diagnostic-logging.md).
 
 ### <a name="azure-monitor-alert-rule"></a>Azure Izleyici uyarı kuralı
-Bu [Azure izleyici uyarı kuralı](https://github.com/Azure/Azure-Network-Security/tree/master/Azure%20DDoS%20Protection/Azure%20Monitor%20Alert%20-%20DDoS%20Mitigation%20Started) , etkin bir DDoS risk azaltma ne zaman meydana geldiğini algılamak için basit bir sorgu çalıştırır. Bu, olası bir saldırı olduğunu gösterir. Eylem grupları, uyarının sonucu olarak eylemleri çağırmak için kullanılabilir.
+Bu [Azure izleyici uyarı kuralı](https://aka.ms/ddosmitigationstatus) , etkin bir DDoS risk azaltma ne zaman meydana geldiğini algılamak için basit bir sorgu çalıştırır. Bu, olası bir saldırı olduğunu gösterir. Eylem grupları, uyarının sonucu olarak eylemleri çağırmak için kullanılabilir.
 
 [![Azure’a dağıtın](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Network-Security%2Fmaster%2FAzure%2520DDoS%2520Protection%2FAzure%2520Monitor%2520Alert%2520-%2520DDoS%2520Mitigation%2520Started%2FDDoSMitigationStarted.json)
 
 ### <a name="azure-monitor-alert-rule-with-logic-app"></a>Mantıksal uygulama ile Azure Izleyici uyarı kuralı
 
-Bu [şablon](https://github.com/Azure/Azure-Network-Security/tree/master/Azure%20DDoS%20Protection/DDoS%20Mitigation%20Alert%20Enrichment) , zenginleştirilmiş bir DDoS azaltma uyarısının gerekli bileşenlerini dağıtır: Azure izleyici uyarı kuralı, eylem grubu ve mantıksal uygulama. İşlemin sonucu, IP adresi hakkında, IP ile ilişkili kaynakla ilgili bilgiler dahil olmak üzere, saldırı kapsamındaki IP adresiyle ilgili ayrıntıların bulunduğu bir e-posta uyarısıdır. Kaynağın sahibi, güvenlik ekibi ile birlikte e-postanın bir alıcısı olarak eklenir. Temel bir uygulama kullanılabilirlik testi de gerçekleştirilir ve sonuçlar e-posta uyarısına eklenir.
+Bu [şablon](https://aka.ms/ddosalert) , zenginleştirilmiş bir DDoS azaltma uyarısının gerekli bileşenlerini dağıtır: Azure izleyici uyarı kuralı, eylem grubu ve mantıksal uygulama. İşlemin sonucu, IP adresi hakkında, IP ile ilişkili kaynakla ilgili bilgiler dahil olmak üzere, saldırı kapsamındaki IP adresiyle ilgili ayrıntıların bulunduğu bir e-posta uyarısıdır. Kaynağın sahibi, güvenlik ekibi ile birlikte e-postanın bir alıcısı olarak eklenir. Temel bir uygulama kullanılabilirlik testi de gerçekleştirilir ve sonuçlar e-posta uyarısına eklenir.
 
 [![Azure’a dağıtın](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Network-Security%2Fmaster%2FAzure%2520DDoS%2520Protection%2FDDoS%2520Mitigation%2520Alert%2520Enrichment%2FEnrich-DDoSAlert.json)
 
@@ -62,9 +62,9 @@ Azure Izleyici uyarı yapılandırması kullanılarak saldırı sırasında etki
 
     |Ayar                  |Değer                                                                                               |
     |---------                |---------                                                                                           |
-    | Kapsam                   | **Kaynak seç** seçeneğini belirleyin. </br> Günlüğe kaydetmek istediğiniz genel IP adresini içeren **aboneliği** seçin, **kaynak türü** için **genel IP adresi** ' ni seçin ve ardından ÖLÇÜMLERINI günlüğe kaydetmek istediğiniz belirli genel IP adresini seçin. </br> **Bitti**’yi seçin. | 
-    | Koşul | **Koşul Seç**' i seçin. </br> Sinyal adı altında, **DDoS saldırısı altında** öğesini seçin. </br> **İşleç** altında, **büyüktür veya eşittir**' i seçin. </br> **Toplama türü** altında **en fazla**' yı seçin. </br> **Eşik değeri** altında *1* girin. For **DDoS saldırısı veya ölçüm değil** için **0** , saldırı altında değil, saldırı altında **olduğunuz anlamına gelir** . </br> **Bitti**’yi seçin. | 
-    | Actions | **Eylem grubu Ekle**' yi seçin. </br> **Eylem grubu oluştur**'u seçin. </br> **Bildirimler**' in altında, **bildirim türü** altında **e-posta/SMS ileti/gönderim/ses**' i seçin </br> **Ad**' ın altında, _Myundersaldırıda Kemailalert_' i girin. </br> Düzenle düğmesine tıklayın, ardından **e-posta** ' i seçin ve aşağıdaki seçeneklerden birçoğu gerekir ve ardından **Tamam**' ı seçin. </br> **Gözden geçir ve oluştur**’u seçin. | 
+    | Kapsam                   | **Kaynak seç** seçeneğini belirleyin. </br> Günlüğe kaydetmek istediğiniz genel IP adresini içeren **aboneliği** seçin, **kaynak türü** için **genel IP adresi** ' ni seçin ve ardından ÖLÇÜMLERINI günlüğe kaydetmek istediğiniz belirli genel IP adresini seçin. </br> **Bitti** seçeneğini belirleyin. | 
+    | Koşul | **Koşul Seç**' i seçin. </br> Sinyal adı altında, **DDoS saldırısı altında** öğesini seçin. </br> **İşleç** altında, **büyüktür veya eşittir**' i seçin. </br> **Toplama türü** altında **en fazla**' yı seçin. </br> **Eşik değeri** altında *1* girin. For **DDoS saldırısı veya ölçüm değil** için **0** , saldırı altında değil, saldırı altında **olduğunuz anlamına gelir** . </br> **Bitti** seçeneğini belirleyin. | 
+    | Eylemler | **Eylem grubu Ekle**' yi seçin. </br> **Eylem grubu oluştur**'u seçin. </br> **Bildirimler**' in altında, **bildirim türü** altında **e-posta/SMS ileti/gönderim/ses**' i seçin </br> **Ad**' ın altında, _Myundersaldırıda Kemailalert_' i girin. </br> Düzenle düğmesine tıklayın, ardından **e-posta** ' i seçin ve aşağıdaki seçeneklerden birçoğu gerekir ve ardından **Tamam**' ı seçin. </br> **Gözden geçir ve oluştur**’u seçin. | 
     | Uyarı kuralı ayrıntıları | **Uyarı kuralı adı** altında, _Myddosalert_ yazın. |
 
 Birkaç dakikalık saldırı algılamasında, Azure Izleyici ölçümlerinden aşağıdaki resme benzer bir e-posta almalısınız:

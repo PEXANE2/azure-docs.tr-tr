@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/03/2021
 ms.author: yelevin
-ms.openlocfilehash: ba37b2280ba4d7138f4ed652b7b330bcaf7b9935
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: 3684b5a8069a6b683ae562c527af89814362a7f9
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99566938"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99806995"
 ---
 # <a name="connect-your-agari-phishing-defense-and-brand-protection-solutions-to-azure-sentinel"></a>Agari kimlik avlama savunması ve marka koruma Çözümlerinizi Azure Sentinel 'e bağlama
 
@@ -58,7 +58,7 @@ Agari çözümleri, Azure İşlev Uygulaması kullanarak günlükleri doğrudan 
 
 1. **Seçim Güvenlik Graph API etkinleştirin:** 
 
-    Agari İşlev Uygulaması tehdit zekasını güvenlik Graph API aracılığıyla Sentinel ile paylaşmanıza olanak sağlar. Bu özelliği kullanmak için, [Sentinel Threat Intelligence platformları bağlayıcısını](connect-threat-intelligence.md) etkinleştirmeniz ve ayrıca Azure Active Directory [bir uygulamayı kaydetmeniz](/graph/auth-register-app-v2) gerekir.
+    Agari İşlev Uygulaması, güvenlik Graph API aracılığıyla tehdit zekasını Azure Sentinel ile paylaşmanıza olanak sağlar. Bu özelliği kullanmak için, [Sentinel Threat Intelligence platformları bağlayıcısını](connect-threat-intelligence.md) etkinleştirmeniz ve ayrıca Azure Active Directory [bir uygulamayı kaydetmeniz](/graph/auth-register-app-v2) gerekir.
 
     Bu işlem, aşağıdaki İşlev Uygulaması dağıtımı sırasında kullanabileceğiniz üç bilgi verir: **Graf KIRACı kimliği**, **Graf Istemci kimliği** ve **Graf istemci parolası**.
 

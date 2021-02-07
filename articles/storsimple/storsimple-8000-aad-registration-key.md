@@ -1,25 +1,25 @@
 ---
-title: Aygıt Yöneticisi StorSimple 8000 için Azure AD kimlik doğrulaması
+title: Device Manager StorSimple 8000 için Azure AD kimlik doğrulaması
 description: Hizmetiniz için AAD tabanlı kimlik doğrulaması kullanmayı, yeni kayıt anahtarı oluşturmayı ve cihazların el ile kaydedilmesini gerçekleştirme işlemini açıklar.
 author: alkohli
 ms.service: storsimple
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: alkohli
-ms.openlocfilehash: 0e071a20051f047efbd040dfc01a30e3c1381367
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b09d68e7859a787c05a2fc62294f081c4345ae08
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91631333"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99805049"
 ---
-# <a name="use-azuer-active-directory-ad-authentication-for-your-storsimple"></a>StorSimple için Azuer Active Directory (AD) kimlik doğrulamasını kullanın
+# <a name="use-azure-active-directory-ad-authentication-for-your-storsimple"></a>StorSimple için Azure Active Directory (AD) kimlik doğrulaması kullanın
 
 [!INCLUDE [storsimple-8000-eol-banner](../../includes/storsimple-8000-eol-banner.md)]
 
 ## <a name="overview"></a>Genel Bakış
 
-StorSimple Aygıt Yöneticisi hizmeti Microsoft Azure ' de çalışır ve birden çok StorSimple cihaza bağlanır. StorSimple Aygıt Yöneticisi hizmeti, StorSimple cihazınızda hizmetin kimliğini doğrulamak için bir Access Control hizmeti (ACS) kullandı. ACS mekanizması yakında kullanımdan kalkmış ve bir Azure Active Directory (AAD) kimlik doğrulaması ile değiştirilmeyecektir. Daha fazla bilgi için, ACS kullanımdan kaldırma ve AAD kimlik doğrulamasının kullanımı için aşağıdaki duyurulara gidin.
+StorSimple Device Manager hizmeti Microsoft Azure ' de çalışır ve birden çok StorSimple cihaza bağlanır. StorSimple Device Manager hizmeti, StorSimple cihazınızda hizmetin kimliğini doğrulamak için bir Access Control hizmeti (ACS) kullandı. ACS mekanizması yakında kullanımdan kalkmış ve bir Azure Active Directory (AAD) kimlik doğrulaması ile değiştirilmeyecektir. Daha fazla bilgi için, ACS kullanımdan kaldırma ve AAD kimlik doğrulamasının kullanımı için aşağıdaki duyurulara gidin.
 
 - [Azure ACS 'nin geleceği Azure Active Directory](https://cloudblogs.microsoft.com/enterprisemobility/2015/02/12/the-future-of-azure-acs-is-azure-active-directory/)
 - [Microsoft Access Control Service yaklaşan değişiklikler](https://azure.microsoft.com/blog/acs-access-control-service-namespace-creation-restriction/)
@@ -62,7 +62,7 @@ StorSimple 8000 serisi bir cihaz kullanıyorsanız, çalıştırdığınız ciha
 
 ## <a name="aad-based-registration-keys"></a>AAD tabanlı kayıt anahtarları
 
-StorSimple 8000 serisi cihazlar için güncelleştirme 5 ' ten başlayarak yeni AAD tabanlı kayıt anahtarları kullanılır. StorSimple Aygıt Yöneticisi hizmetinizi cihaza kaydetmek için kayıt anahtarlarını kullanırsınız.
+StorSimple 8000 serisi cihazlar için güncelleştirme 5 ' ten başlayarak yeni AAD tabanlı kayıt anahtarları kullanılır. StorSimple Device Manager hizmetinizi cihaza kaydetmek için kayıt anahtarlarını kullanırsınız.
 
 Güncelleştirme 4 veya daha önceki bir sürümü çalıştıran bir StorSimple 8000 serisi aygıtı kullanıyorsanız, yeni AAD hizmeti kayıt anahtarlarını kullanamazsınız (şimdi etkinleştirilmiş daha eski bir cihaz içerir).
 Bu senaryoda, hizmet kayıt anahtarını yeniden oluşturmanız gerekir. Anahtarı yeniden oluşturduktan sonra, yeni anahtar, sonraki tüm cihazları kaydetmek için kullanılır. Eski anahtar artık geçerli değil.
@@ -75,7 +75,7 @@ Bir AAD hizmeti kayıt anahtarı oluşturmak için aşağıdaki adımları gerç
 
 #### <a name="to-generate-the-aad-service-registration-key"></a>AAD hizmeti kayıt anahtarını oluşturmak için
 
-1. **StorSimple aygıt yöneticisi**, ** &gt; Yönetim** **anahtarlarına**gidin. _Anahtarlar_aramak için arama çubuğunu da kullanabilirsiniz.
+1. **StorSimple Device Manager**, **&gt; Yönetim** **anahtarlarına** gidin. _Anahtarlar_ aramak için arama çubuğunu da kullanabilirsiniz.
     
 2. **Anahtar oluştur**' a tıklayın.
 

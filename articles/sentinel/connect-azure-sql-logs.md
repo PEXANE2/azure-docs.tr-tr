@@ -8,20 +8,20 @@ ms.subservice: azure-sentinel
 ms.topic: how-to
 ms.date: 01/06/2021
 ms.author: yelevin
-ms.openlocfilehash: df132c35ebb04596d91720431f5b08cb88e2abd9
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: a3a09ceffc75e2d396d7bd7aeedd97b7f2b6ec2b
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98104210"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99807742"
 ---
 # <a name="connect-azure-sql-database-diagnostics-and-auditing-logs"></a>Azure SQL veritabanı tanılamayı ve denetim günlüklerini bağlama
 
 Azure SQL, Kullanıcı katılımı olmadan yükseltme, düzeltme eki uygulama ve izleme gibi birçok veritabanı yönetim işlevini işleyen, tam olarak yönetilen bir hizmet olarak platform (PaaS) veritabanı altyapısıdır. 
 
-Azure SQL Veritabanı Bağlayıcısı, veritabanlarının denetim ve tanılama günlüklerini Sentinel 'e aktarmanıza olanak tanıyarak tüm örneklerinizin etkinliğini sürekli olarak izlemenize imkan tanır.
+Azure SQL Veritabanı Bağlayıcısı, veritabanlarının denetim ve tanılama günlüklerini Azure Sentinel 'e aktarmanıza olanak tanıyarak tüm örneklerinizin etkinliğini sürekli olarak izlemenize imkan tanır.
 
-- Tanılama günlüklerini bağlamak, farklı veri türlerindeki veritabanı tanılama günlüklerini Sentinel çalışma alanınıza göndermenizi sağlar.
+- Tanılama günlüklerini bağlamak, farklı veri türlerindeki veritabanı tanılama günlüklerini Azure Sentinel çalışma alanınıza göndermenizi sağlar.
 
 - Denetim günlüklerini bağlamak, tüm Azure SQL veritabanlarınızdaki güvenlik denetim günlüklerini sunucu düzeyinde akışla oluşturmanıza olanak sağlar.
 

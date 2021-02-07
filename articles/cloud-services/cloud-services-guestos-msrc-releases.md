@@ -10,46 +10,44 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 1/26/2021
+ms.date: 2/5/2021
 ms.author: yohaddad
-ms.openlocfilehash: d7873a1b9fa8a404285f39736a4e6ba758fbf22b
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: d5892d0b2ae2004f8604333294411e849dc8394b
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99089216"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99805893"
 ---
 # <a name="azure-guest-os"></a>Azure Konuk işletim sistemi
 Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güvenlik Yanıt Merkezi (MSRC) güncelleştirmeleri gösterilmektedir. Belirli bir güncelleştirmenin kullanmakta olduğunuz Konuk işletim sistemi için geçerli olup olmadığını öğrenmek için bu makaleye arama yapın. Güncelleştirmeler her zaman üzerinde tanıtılan belirli bir [Aile][family-explain] için ileri doğru şekilde devam ederler.
 
 ## <a name="january-2021-guest-os"></a>Ocak 2021 Konuk işletim sistemi
->[!NOTE]
->Ocak Konuk işletim sistemi, şu anda otomatik güncelleştirmeler için yapılandırılmış bulut hizmeti VM 'lerine alındı. Dağıtım tamamlandığında, bu sürüm Azure portal ve yapılandırma dosyaları aracılığıyla el ile güncelleştirmeler için kullanılabilir hale getirilir. Aşağıdaki düzeltme ekleri, Ocak Konuk işletim sistemine dahildir. Bu liste değişebilir. "
 
 | Ürün Kategorisi | Üst KB makalesi | Güvenlik açığı açıklaması | Konuk işletim sistemi | Ilk tanıtılan Tarih |
 | --- | --- | --- | --- | --- |
-|  Rel 21-01 |  [4598230]  |  En son toplu güncelleştirme (LCU) | 6,27 | 12 Ocak 2021 |
-|  Rel 21-01 |  [4580325]  |  Flash güncelleştirmesi | 3,93, 4,86, 5,51, 6,27 | 13 Ekim 2020 |
-|  Rel 21-01 |  [4586768]  |  IE toplu güncelleştirmeleri | 2,106, 3,93, 4,86 | 10 Kasım 2020 |
-|  Rel 21-01 |  [4598243]  |  En son toplu güncelleştirme (LCU) | 5,51 | 12 Ocak 2021 |
-|  Rel 21-01 |  [4578952]  |  .NET Framework 3,5 güvenlik ve kalite toplaması | 2,106 | 12 Ocak 2021 |
-|  Rel 21-01 |  [4578955]  |  .NET Framework 4.5.2 güvenlik ve kalite toplaması | 2,106 | 12 Ocak 2021 |
-|  Rel 21-01 |  [4578953]  |  .NET Framework 3,5 güvenlik ve kalite toplaması | 4,86 | 12 Ocak 2021 |
-|  Rel 21-01 |  [4578956]  |  .NET Framework 4.5.2 güvenlik ve kalite toplaması | 4,86 | 12 Ocak 2021 |
-|  Rel 21-01 |  [4578950]  |  .NET Framework 3,5 güvenlik ve kalite toplaması | 3,93 | 12 Ocak 2021 |
-|  Rel 21-01 |  [4578954]  |  .NET Framework 4.5.2 güvenlik ve kalite toplaması | 3,93 | 12 Ocak 2021 |
-|  Rel 21-01 |  [4578966]  |  .NET Framework 3,5 ve 4.7.2 toplu güncelleştirmesi | 6,27 | 13 Ekim 2020 |
-|  Rel 21-01 |  [4598279]  |  Aylık toplu | 2,106 | 12 Ocak 2020 |
-|  Rel 21-01 |  [4598278]  |  Aylık toplu | 3,93 | 12 Ocak 2020 |
-|  Rel 21-01 |  [4598285]  |  Aylık toplu | 4,86 | 12 Ocak 2020 |
-|  Rel 21-01 |  [4566426]  |  Hizmet yığını güncelleştirmesi | 3,93 | 14 Temmuz 2020 |
-|  Rel 21-01 |  [4566425]  |  Hizmet yığını güncelleştirmesi | 4,86 | 14 Temmuz 2020 |
-|  Rel 21-01 OOB |  [4578013]  |  Tek başına güvenlik güncelleştirmesi | 4,86 | 19 Ağu 2020 |
-|  Rel 21-01 |  [4576750]  |  Hizmet yığını güncelleştirmesi | 5,51 | 8 Eyl, 2020 |
-|  Rel 21-01 |  [4592510]  |  Hizmet yığını güncelleştirmesi | 2,106 | 8. ara, 2020 |
-|  Rel 21-01 |  [4598480]  |  Hizmet yığını güncelleştirmesi | 6,27 | 12 Ocak 2021 |
-|  Rel 21-01 |  [4494175]  |  Mikro kod | 5,51 | 1 Eyl, 2020 |
-|  Rel 21-01 |  [4494174]  |  Mikro kod | 6,27 | Eyl 3, 2020 |
+|  Rel 21-01 |  [4598230]  |  En son toplu güncelleştirme (LCU) | [6,27] | 12 Ocak 2021 |
+|  Rel 21-01 |  [4580325]  |  Flash güncelleştirmesi | [3,93], [4,86], [5,51], [6,27] | 13 Ekim 2020 |
+|  Rel 21-01 |  [4586768]  |  IE toplu güncelleştirmeleri | [2,106], [3,93], [4,86] | 10 Kasım 2020 |
+|  Rel 21-01 |  [4598243]  |  En son toplu güncelleştirme (LCU) | [5,51] | 12 Ocak 2021 |
+|  Rel 21-01 |  [4578952]  |  .NET Framework 3,5 güvenlik ve kalite toplaması | [2,106] | 12 Ocak 2021 |
+|  Rel 21-01 |  [4578955]  |  .NET Framework 4.5.2 güvenlik ve kalite toplaması | [2,106] | 12 Ocak 2021 |
+|  Rel 21-01 |  [4578953]  |  .NET Framework 3,5 güvenlik ve kalite toplaması | [4,86] | 12 Ocak 2021 |
+|  Rel 21-01 |  [4578956]  |  .NET Framework 4.5.2 güvenlik ve kalite toplaması | [4,86] | 12 Ocak 2021 |
+|  Rel 21-01 |  [4578950]  |  .NET Framework 3,5 güvenlik ve kalite toplaması | [3,93] | 12 Ocak 2021 |
+|  Rel 21-01 |  [4578954]  |  .NET Framework 4.5.2 güvenlik ve kalite toplaması | [3,93] | 12 Ocak 2021 |
+|  Rel 21-01 |  [4578966]  |  .NET Framework 3,5 ve 4.7.2 toplu güncelleştirmesi | [6,27] | 13 Ekim 2020 |
+|  Rel 21-01 |  [4598279]  |  Aylık toplu | [2,106] | 12 Ocak 2020 |
+|  Rel 21-01 |  [4598278]  |  Aylık toplu | [3,93] | 12 Ocak 2020 |
+|  Rel 21-01 |  [4598285]  |  Aylık toplu | [4,86] | 12 Ocak 2020 |
+|  Rel 21-01 |  [4566426]  |  Hizmet yığını güncelleştirmesi | [3,93] | 14 Temmuz 2020 |
+|  Rel 21-01 |  [4566425]  |  Hizmet yığını güncelleştirmesi | [4,86] | 14 Temmuz 2020 |
+|  Rel 21-01 OOB |  [4578013]  |  Tek başına güvenlik güncelleştirmesi | [4,86] | 19 Ağu 2020 |
+|  Rel 21-01 |  [4576750]  |  Hizmet yığını güncelleştirmesi | [5,51] | 8 Eyl, 2020 |
+|  Rel 21-01 |  [4592510]  |  Hizmet yığını güncelleştirmesi | [2,106] | 8. ara, 2020 |
+|  Rel 21-01 |  [4598480]  |  Hizmet yığını güncelleştirmesi | [6,27] | 12 Ocak 2021 |
+|  Rel 21-01 |  [4494175]  |  Mikro kod | [5,51] | 1 Eyl, 2020 |
+|  Rel 21-01 |  [4494174]  |  Mikro kod | [6,27] | Eyl 3, 2020 |
 
 [4598230]: https://support.microsoft.com/kb/4598230
 [4580325]: https://support.microsoft.com/kb/4580325
@@ -73,7 +71,11 @@ Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güv
 [4598480]: https://support.microsoft.com/kb/4598480
 [4494175]: https://support.microsoft.com/kb/4494175
 [4494174]: https://support.microsoft.com/kb/4494174
-
+[2,106]: ./cloud-services-guestos-update-matrix.md#family-2-releases
+[3,93]: ./cloud-services-guestos-update-matrix.md#family-3-releases
+[4,86]: ./cloud-services-guestos-update-matrix.md#family-4-releases
+[5,51]: ./cloud-services-guestos-update-matrix.md#family-5-releases
+[6,27]: ./cloud-services-guestos-update-matrix.md#family-6-releases
 
 ## <a name="december-2020-guest-os"></a>Aralık 2020 Konuk işletim sistemi
 

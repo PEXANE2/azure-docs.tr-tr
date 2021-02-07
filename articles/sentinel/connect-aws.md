@@ -1,6 +1,6 @@
 ---
 title: AWS Cloudtraizizi Azure Sentinel 'e bağlayın | Microsoft Docs
-description: AWS Cloudtraı ve Sentinel arasında bir güven ilişkisi oluşturarak AWS kaynak günlüklerine Azure Sentinel erişimini atamak için AWS bağlayıcısını kullanın.
+description: AWS Cloudtraı ve Azure Sentinel arasında bir güven ilişkisi oluşturarak AWS kaynak günlüklerine Azure Sentinel erişimini atamak için AWS bağlayıcısını kullanın.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/27/2020
 ms.author: yelevin
-ms.openlocfilehash: a7405824d2477d2d39c45a56ae545e58a090c321
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 3d24fa1ea046a860feb40d09a6d0a57c79371450
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96436615"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99807606"
 ---
 # <a name="connect-azure-sentinel-to-aws-cloudtrail"></a>Azure Sentinel 'i AWS Cloudtrato 'a bağlama
 
 AWS Cloudiziz yönetimi olaylarınızın Azure Sentinel 'e akışını sağlamak için AWS bağlayıcısını kullanın. Bu bağlantı işlemi, AWS Cloudtraı ve Azure Sentinel arasında bir güven ilişkisi oluşturarak AWS kaynak günlüklerinizi Azure Sentinel 'e erişimi devreder. Bu, AWS günlüklerinde Azure Sentinel 'e erişim izni veren bir rol oluşturarak AWS 'de gerçekleştirilir.
 
 > [!NOTE]
-> AWS Cloudizinin LookupEvents API 'sinde [yerleşik sınırlamaları](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/WhatIsCloudTrail-Limits.html) vardır. Hesap başına saniye başına iki işlem (TPS) ve her bir sorgu en fazla 50 kayıt döndürebilir. Sonuç olarak, tek bir kiracının bir bölgede saniyede 100 'den fazla kayıt oluşturması halinde, biriktirme listeleri ve veri alma gecikmelerinin sonucu olur.
+> AWS Cloudizinin LookupEvents API 'sinde [yerleşik sınırlamaları](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/WhatIsCloudTrail-Limits.html) vardır. Hesap başına saniye başına iki işlem (TPS) ve her bir sorgu en fazla 50 kayıt döndürebilir. Sonuç olarak tek bir kiracı sürekli bir bölgede saniyede 100'den fazla kayıt oluşturursa veri alımında birikmelere ve gecikmelere yol açar.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
