@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.subservice: logs
-ms.openlocfilehash: c25c53159fd0504956eed2cf7f968c573e9fc289
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: a6f8e681f68fb53d7cf88582b4bf4416efc11c86
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98927740"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99820560"
 ---
 # <a name="create-diagnostic-settings-to-send-platform-logs-and-metrics-to-different-destinations"></a>Platform günlüklerini ve ölçümlerini farklı hedeflere göndermek için tanılama ayarlarını oluşturma
 Azure etkinlik günlüğü ve kaynak günlükleri dahil olmak üzere Azure 'daki [Platform günlükleri](platform-logs-overview.md) , Azure kaynakları ve bağımlı oldukları Azure platformu için ayrıntılı tanılama ve denetim bilgileri sağlar. [Platform ölçümleri](data-platform-metrics.md) varsayılan olarak toplanır ve genellikle Azure izleyici ölçümleri veritabanında depolanır. Bu makalede, farklı hedeflere platform ölçümleri ve platform günlükleri göndermek için tanılama ayarlarını oluşturma ve yapılandırma hakkında ayrıntılı bilgi verilmektedir.
@@ -175,6 +175,24 @@ Tanılama ayarlarını bir Kaynak Yöneticisi şablonuyla oluşturmak veya günc
 
 ## <a name="create-using-azure-policy"></a>Azure Ilkesi kullanarak oluşturma
 Her Azure kaynağı için bir tanılama ayarının oluşturulması gerektiğinden, her kaynak oluşturulduğu için Azure Ilkesi otomatik olarak bir tanılama ayarı oluşturmak üzere kullanılabilir. Ayrıntılar için bkz. [Azure izleyici 'yi kullanarak ölçekte Azure Izleyici dağıtma](../deploy-scale.md) .
+
+## <a name="metric-category-is-not-supported-error"></a>Ölçüm kategorisi desteklenmiyor hatası
+Bir tanılama ayarı dağıttığınızda aşağıdaki hata iletisini alırsınız:
+
+   "'*Xxxx*' ölçüm kategorisi desteklenmiyor"
+
+Örneğin: 
+
+   "' ActionsFailed ' ölçüm kategorisi desteklenmiyor"
+
+daha önce dağıtımınız başarılı oldu. 
+
+Kaynak Yöneticisi bir şablon kullanılırken sorun oluşur, Tanılama ayarları REST API, Azure CLı veya Azure PowerShell. Yalnızca desteklenen kategori adları sunulduğundan, Azure portal ile oluşturulan Tanılama ayarları etkilenmez.
+
+Sorun, temeldeki API 'de son bir değişiklikten kaynaklanmıştır. ' Allölçümler ' dışındaki ölçüm kategorileri desteklenmez ve hiçbir şekilde çok özel IP izin listesi senaryolarında yoktur. Geçmişte, bir tanılama ayarı dağıtıldığında diğer kategori adları yoksayıldı. Azure Izleyici arka ucu bu kategorileri yalnızca ' Allölçümler ' öğesine yeniden yönlendirmelidir.  Şubat 2021 itibariyle arka uç, belirtilen ölçüm kategorisini kesin olarak onaylamak üzere güncelleştirildi. Bu değişiklik bazı dağıtımların başarısız olmasına neden oldu.
+
+Bu hatayı alırsanız, bu sorunu giderecek tüm ölçüm kategorisi adlarını ' Allölçümler ' ile değiştirmek için dağıtımlarınızı güncelleştirin. Dağıtım daha önce birden çok kategori ekliyor ise, yalnızca ' Allölçümler ' başvurusuna sahip bir tane tutulmalıdır. Sorunu yaşamaya devam ederseniz, lütfen Azure portal aracılığıyla Azure desteği 'ne başvurun. 
+
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

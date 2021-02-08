@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 09/09/2020
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 621c5e7b0061ccd76fd0109552107915b943511f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 06d6352f018238318c3bb4625ae86a2974f14569
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89653624"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99820172"
 ---
 # <a name="what-is-azure-resource-mover"></a>Azure Kaynak taşıyıcısı nedir?
 
@@ -29,8 +29,6 @@ Kaynakları farklı Azure bölgelerine şu kaynaklara taşıyabilirsiniz:
 - **Dağıtım gereksinimlerine yanıt**: hata halinde dağıtılan kaynakları taşıyın veya kapasite ihtiyaçlarına yanıt olarak taşıyın.
 - **Yetki alma Işlemine yanıt verme**: bir bölge kullanımdan alındığından kaynakları taşıyın.
 
-> [!IMPORTANT]
-> Azure Kaynak taşıyıcısı Şu anda genel önizleme aşamasındadır.
 
 ## <a name="why-use-resource-mover"></a>Kaynak taşıyıcısı neden kullanılmalıdır?
 
@@ -62,6 +60,7 @@ Kaynakları kaynak taşıyıcısı hub 'ında veya bir kaynak grubu içinden ta�
 Kaynak taşıyıcısı kullanarak şu anda bölgeler arasında şu kaynakları taşıyabilirsiniz:
 
 - Azure VM 'Leri ve ilişkili diskler
+- Şifrelenmiş Azure VM 'Leri ve ilişkili diskler. Bu, Azure disk şifrelemesi etkinleştirilmiş VM 'Leri ve varsayılan sunucu tarafı şifrelemesini (platform tarafından yönetilen anahtarlar ve müşteri tarafından yönetilen anahtarlarla birlikte) kullanan Azure VM 'lerini içerir.
 - NIC’ler
 - Kullanılabilirlik kümeleri 
 - Azure sanal ağları 

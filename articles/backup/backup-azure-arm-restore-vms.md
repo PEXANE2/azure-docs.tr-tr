@@ -4,12 +4,12 @@ description: Çapraz bölge geri yükleme özelliği de dahil olmak üzere Azure
 ms.reviewer: geg
 ms.topic: conceptual
 ms.date: 08/02/2020
-ms.openlocfilehash: 4575aedff425fc80f2974be21604be52ccb9525d
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 256998f2e687152bb63c9368af1a56f05bba7672
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99526204"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99820577"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>Azure portal Azure VM verilerini geri yükleme
 
@@ -17,13 +17,13 @@ Bu makalede, Azure VM verilerinin [Azure Backup](backup-overview.md) kurtarma hi
 
 ## <a name="restore-options"></a>Geri yükleme seçenekleri
 
-Azure Backup, sanal makineleri geri yüklemek için bir dizi yöntem sunar.
+Azure Backup bir VM 'yi geri yüklemek için çeşitli yollar sağlar.
 
 **Geri yükleme seçeneği** | **Ayrıntılar**
 --- | ---
 **Yeni VM oluştur** | Geri yükleme noktasından hızlıca temel bir VM oluşturur ve çalıştırmaya başlar.<br/><br/> VM için bir ad belirtebilir, yerleştirileceği kaynak grubunu ve sanal ağı (VNet) seçin ve geri yüklenen VM için bir depolama hesabı belirtin. Yeni VM'nin kaynak VM ile aynı bölgede oluşturulması gerekir.<br><br>Azure VM SKU 'SU belirtilen Azure bölgesinde kullanılamadığından veya başka herhangi bir sorun nedeniyle bir VM geri yüklemesi başarısız olursa, Azure Backup belirtilen kaynak grubundaki diskleri geri yükler.
 **Diski geri yükle** | Yeni bir VM oluşturmak üzere kullanılabilecek bir VM diskini geri yükler.<br/><br/> Azure Backup, VM oluşturmanıza ve özelleştirmenize yardımcı olacak bir şablon sağlar. <br/><br> Geri yükleme işi, özel VM ayarlarını belirtmek ve bir VM oluşturmak için indirebileceğiniz ve kullanabileceğiniz bir şablon oluşturur.<br/><br/> Diskler belirttiğiniz kaynak grubuna kopyalanır.<br/><br/> Alternatif olarak, diski mevcut bir sanal makineye iliştirebilir veya PowerShell kullanarak yeni bir VM oluşturabilirsiniz.<br/><br/> Bu seçenek VM'yi özelleştirmek, yedekleme sırasında mevcut olmayan yapılandırma ayarlarını eklemek veya şablon veya PowerShell kullanılarak yapılandırılması gereken ayarlar eklemek istediğinizde faydalı olur.
-**Mevcut olanı değiştir** | Bir diski geri yükleyebilir ve mevcut VM 'deki bir diski değiştirmek için kullanabilirsiniz.<br/><br/> Geçerli VM'nin mevcut olması gerekir. Silinmesi durumunda bu seçenek kullanılamaz.<br/><br/> Azure Backup, diski değiştirmeden önce var olan sanal makinenin anlık görüntüsünü alır ve bunu belirttiğiniz hazırlama konumunda depolar. VM'ye bağlı olan mevcut diskler seçilen geri yükleme noktasıyla değiştirilir.<br/><br/> Anlık görüntü kasaya kopyalanır ve bekletme ilkesine göre saklanır. <br/><br/> Disk değiştirme işleminden sonra, özgün disk kaynak grubunda tutulur. Gerekli değilse, özgün diskleri el ile silmeyi tercih edebilirsiniz. <br/><br/>[Özel görüntüler kullanılarak oluşturulan](https://azure.microsoft.com/resources/videos/create-a-custom-virtual-machine-image-in-azure-resource-manager-with-powershell/)VM 'ler dahil olmak üzere, var olanı Değiştir, şifrelenmemiş yönetilen sanal makineler için desteklenir. Klasik VM 'Ler için desteklenmez.<br/><br/> Geri yükleme noktası geçerli VM 'den daha fazla veya daha az disk içeriyorsa, geri yükleme noktasındaki disk sayısı yalnızca VM yapılandırmasını yansıtacaktır.<br><br> Aynı zamanda, [Kullanıcı tarafından atanan yönetilen kimlik](../active-directory/managed-identities-azure-resources/overview.md) veya [Key Vault](../key-vault/general/overview.md)gibi bağlantılı kaynaklarla VM 'lerde de desteklenir.
+**Mevcut olanı değiştir** | Bir diski geri yükleyebilir ve mevcut VM 'deki bir diski değiştirmek için kullanabilirsiniz.<br/><br/> Geçerli VM'nin mevcut olması gerekir. Silinmesi durumunda bu seçenek kullanılamaz.<br/><br/> Azure Backup, diski değiştirmeden önce var olan sanal makinenin anlık görüntüsünü alır ve bunu belirttiğiniz hazırlama konumunda depolar. VM'ye bağlı olan mevcut diskler seçilen geri yükleme noktasıyla değiştirilir.<br/><br/> Anlık görüntü kasaya kopyalanır ve bekletme ilkesine göre saklanır. <br/><br/> Disk değiştirme işleminden sonra, özgün disk kaynak grubunda tutulur. Gerekli değilse, özgün diskleri el ile silmeyi tercih edebilirsiniz. <br/><br/>[Özel görüntüler kullanılarak oluşturulan](https://azure.microsoft.com/resources/videos/create-a-custom-virtual-machine-image-in-azure-resource-manager-with-powershell/)VM 'ler dahil olmak üzere, var olanı Değiştir, şifrelenmemiş yönetilen sanal makineler için desteklenir. Klasik VM 'Lerde ve yönetilmeyen VM 'Lerde desteklenmez.<br/><br/> Geri yükleme noktası geçerli VM 'den daha fazla veya daha az disk içeriyorsa, geri yükleme noktasındaki disk sayısı yalnızca VM yapılandırmasını yansıtacaktır.<br><br> Aynı zamanda, [Kullanıcı tarafından atanan yönetilen kimlik](../active-directory/managed-identities-azure-resources/overview.md) veya [Key Vault](../key-vault/general/overview.md)gibi bağlantılı kaynaklarla VM 'lerde de desteklenir.
 **Bölgeler Arası (ikincil bölge)** | Çapraz bölge geri yükleme, Azure [eşlenmiş bölgesi](../best-practices-availability-paired-regions.md#what-are-paired-regions)olan Ikincil bölgedeki Azure VM 'lerini geri yüklemek için kullanılabilir.<br><br> Yedekleme ikincil bölgede yapıldığında, seçilen kurtarma noktası için tüm Azure VM 'lerini geri yükleyebilirsiniz.<br><br> Yedekleme sırasında, anlık görüntüler ikincil bölgeye çoğaltılmaz. Yalnızca kasada depolanan veriler çoğaltılır. Bu nedenle ikincil bölge geri yüklemeleri yalnızca [kasa katmanı](about-azure-vm-restore.md#concepts) geri yükleme amaçlıdır. İkincil bölgenin geri yükleme süresi, birincil bölgenin kasa katmanı geri yükleme süresi ile neredeyse aynı olacaktır.  <br><br> Bu özellik aşağıdaki seçenekler için kullanılabilir:<br> <li> [VM oluştur](#create-a-vm) <br> <li> [Diskleri geri yükle](#restore-disks) <br><br> [Mevcut diskleri Değiştir](#replace-existing-disks) seçeneğini şu anda desteklemiyoruz.<br><br> İzinler<br> İkincil bölgedeki geri yükleme işlemi, Backup Admins ve App Admins tarafından gerçekleştirilebilir.
 
 > [!NOTE]
@@ -181,7 +181,7 @@ CRR etkinse, yedekleme öğelerini ikincil bölgede görüntüleyebilirsiniz.
 
 [Azure Zone sabitlenmiş VM 'ler](https://docs.microsoft.com/azure/virtual-machines/windows/create-portal-availability-zone) , aynı bölgenin tüm [kullanılabilirlik bölgelerinde](https://docs.microsoft.com/azure/availability-zones/az-overview) geri yüklenebilir.
 
-Geri yükleme sürecinde, seçenek **kullanılabilirlik bölgesi** ' ni görürsünüz. Önce varsayılan bölgeyi görürsünüz. Farklı bir bölge seçmek için istediğiniz bölgenin numarasını seçin. Sabitlenmiş bölge kullanılamaz durumdaysa, yedeklenen veriler bölge dışı olarak çoğaltılmadığı için verileri başka bir bölgeye geri yükleyemezsiniz.
+Geri yükleme sürecinde, seçenek **kullanılabilirlik bölgesi** ' ni görürsünüz. Önce varsayılan bölgeyi görürsünüz. Farklı bir bölge seçmek için istediğiniz bölgenin numarasını seçin. Sabitlenmiş bölge kullanılamıyorsa, yedeklenen veriler bölge dışı olarak çoğaltılmadığından verileri başka bir bölgeye geri yükleyemezsiniz.
 
 ![Kullanılabilirlik alanı seç](./media/backup-azure-arm-restore-vms/cross-zonal-restore.png)
 
@@ -200,7 +200,7 @@ Geri yükleme sürecinde, seçenek **kullanılabilirlik bölgesi** ' ni görürs
 
 ## <a name="restore-vms-with-special-configurations"></a>Özel yapılandırmalara sahip VM 'Leri geri yükleme
 
-VM 'Leri geri yüklemeniz gerekebilecek bazı yaygın senaryolar vardır.
+VM 'Leri geri yüklemeniz gerekebilecek pek çok yaygın senaryo vardır.
 
 **Senaryo** | **Rehber**
 --- | ---

@@ -3,12 +3,12 @@ title: Bilgi Bankası Soru-Cevap Oluşturma sorgulama-
 description: Bilgi Bankası 'nın yayımlanması gerekir. Bilgi Bankası, yayımlandıktan sonra, generateAnswer API kullanılarak çalışma zamanı tahmin uç noktasında sorgulanır.
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: d8f986299edee46bf5cace7a9f4c805c29b3ce0c
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: deefc53fdc94851da0e9e255962fbf85692d1393
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96346214"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99820390"
 ---
 # <a name="query-the-knowledge-base-for-answers"></a>Bilgi Bankası yanıtlarını yanıtlar için sorgulama
 
@@ -31,7 +31,7 @@ Eğitilen ve [yayınlanan](../quickstarts/create-publish-knowledge-base.md#publi
 |1|İstemci uygulaması, Kullanıcı sorgusunu [Generateanswer API](../how-to/metadata-generateanswer-usage.md)'sine gönderir.|
 |2|Soru-Cevap Oluşturma dil algılama, yazım ve sözcük ayırıcılarını kullanarak Kullanıcı sorgusunu önceden işler.|
 |3|Bu ön işleme, en iyi arama sonuçları için Kullanıcı sorgusunu değiştirmek üzere alınır.|
-|4|Değiştirilen Bu sorgu, sonuçların sayısını alan bir Azure Bilişsel Arama dizinine gönderilir `top` . Bu sonuçlarda doğru yanıt yoksa, biraz değerini artırın `top` . Genellikle, için 10 değeri `top` sorguların %90 ' de işe yarar.|
+|4|Değiştirilen Bu sorgu, sonuçların sayısını alan bir Azure Bilişsel Arama dizinine gönderilir `top` . Bu sonuçlarda doğru yanıt yoksa, biraz değerini artırın `top` . Genellikle, için 10 değeri `top` sorguların %90 ' de işe yarar. Azure arama filtreleri Bu adımdaki [kelimeleri durdurur](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/STOPWORDS.md) .|
 |5|Soru-Cevap Oluşturma, kullanıcı sorgusuyla getirilen QnA sonuçları arasındaki benzerliği belirlemede anlamlı ve anlamsal tabanlı bir şekilde kullanır.|
 |6|Makine tarafından öğrenilen derecelendiricisini modeli, güven puanlarını ve yeni Derecelendirme sırasını öğrenmek için 5. adımdan farklı özellikleri kullanır.|
 |7|Yeni sonuçlar, istemci uygulamasına derecelendirilir sırada döndürülür.|
@@ -54,7 +54,7 @@ Eğitilen ve [yayınlanan](../quickstarts/create-publish-knowledge-base.md#publi
 |1|İstemci uygulaması, Kullanıcı sorgusunu [Generateanswer API](../how-to/metadata-generateanswer-usage.md)'sine gönderir.|
 |2|Soru-Cevap Oluşturma dil algılama, yazım ve sözcük ayırıcılarını kullanarak Kullanıcı sorgusunu önceden işler.|
 |3|Bu ön işleme, en iyi arama sonuçları için Kullanıcı sorgusunu değiştirmek üzere alınır.|
-|4|Değiştirilen Bu sorgu, sonuçların sayısını alan bir Azure Bilişsel Arama dizinine gönderilir `top` . Bu sonuçlarda doğru yanıt yoksa, biraz değerini artırın `top` . Genellikle, için 10 değeri `top` sorguların %90 ' de işe yarar.|
+|4|Değiştirilen Bu sorgu, sonuçların sayısını alan bir Azure Bilişsel Arama dizinine gönderilir `top` . Bu sonuçlarda doğru yanıt yoksa, biraz değerini artırın `top` . Genellikle, için 10 değeri `top` sorguların %90 ' de işe yarar. Azure arama filtreleri Bu adımdaki [kelimeleri durdurur](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/STOPWORDS.md) .|
 |5|Soru-Cevap Oluşturma, Kullanıcı sorgusu ile Azure Bilişsel Arama getirilen aday QnA sonuçları arasındaki benzerliği tespit etmek için, resim durumu dönüştürücü tabanlı modeli kullanır. Transformatör tabanlı model, tüm dillerin güven puanlarını ve yeni Derecelendirme sırasını belirlemesi için yatay olarak çalışarak, derinlemesine bir öğrenme çok dilli modelidir.|
 |6|Yeni sonuçlar, istemci uygulamasına derecelendirilir sırada döndürülür.|
 |||
@@ -125,4 +125,4 @@ HTTP yanıtı, belirli bir Kullanıcı sorgusuna en iyi eşleşme temelinde Bilg
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Güvenilirlik puanı](./confidence-score.md)
+> [Güvenirlik puanı](./confidence-score.md)

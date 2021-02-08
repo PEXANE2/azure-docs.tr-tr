@@ -10,15 +10,15 @@ ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
 zone_pivot_groups: acs-plat-azp-net
-ms.openlocfilehash: a93ac3b5d988be33c0f27726a75b1006f990d1da
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: d861f6bfbe38ad73715ef521a36cc097b8538c9b
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94886124"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99820017"
 ---
 # <a name="quickstart-create-and-manage-communication-services-resources"></a>Hızlı başlangıç: Iletişim Hizmetleri kaynaklarını oluşturma ve yönetme
-
+ 
 [!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
 İlk Iletişim Hizmetleri kaynağınızı sağlayarak Azure Iletişim Hizmetleri ile çalışmaya başlayın. İletişim Hizmetleri kaynakları, Azure portal veya .NET Management istemci kitaplığı ile sağlanabilir. Yönetim istemci kitaplığı, [Azure Resource Manager](../../azure-resource-manager/management/overview.md), Azure 'un dağıtım ve yönetim hizmeti ile kaynak ve arabirimlerinizi oluşturmanıza, yapılandırmanıza, güncelleştirmenize ve silmesine izin verir. İstemci kitaplıklarında bulunan tüm işlevler Azure portal kullanılabilir. 
@@ -28,6 +28,10 @@ ms.locfileid: "94886124"
 
 ::: zone pivot="platform-azp"
 [!INCLUDE [Azure portal](./includes/create-resource-azp.md)]
+::: zone-end
+
+::: zone pivot="platform-azcli"
+[!INCLUDE [Azure CLI](./includes/create-resource-azcli.md)]
 ::: zone-end
 
 ::: zone pivot="platform-net"
@@ -41,6 +45,14 @@ Bağlantı dizeleri Iletişim Hizmetleri istemci kitaplıklarının Azure 'a ba�
 Iletişim Hizmetleri kaynağınız üzerinde gezindikten sonra, gezinti menüsünden **anahtarlar** ' ı seçin ve iletişim hizmeti istemci kitaplıklarının kullanımı için **bağlantı dizesini** veya **uç nokta** değerlerini kopyalayın. Birincil ve ikincil anahtarlara erişiminizin olduğunu unutmayın. Bu, Iletişim Hizmetleri kaynaklarınıza üçüncü tarafa veya hazırlama ortamına geçici erişim sağlamak istediğiniz senaryolarda yararlı olabilir.
 
 :::image type="content" source="./media/key.png" alt-text="Iletişim Hizmetleri anahtar sayfasının ekran görüntüsü.":::
+
+Ayrıca, Azure CLı kullanarak önemli bilgilere erişebilirsiniz:
+
+```azurecli
+az communication list --resource-group "<resourceGroup>"    
+
+az communication list-key --name "<communicationName>" --resource-group "<resourceGroup>"
+```
 
 ## <a name="store-your-connection-string"></a>Bağlantı dizenizi depolayın
 

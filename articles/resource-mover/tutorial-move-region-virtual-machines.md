@@ -5,15 +5,15 @@ manager: evansma
 author: rayne-wiselman
 ms.service: resource-move
 ms.topic: tutorial
-ms.date: 09/09/2020
+ms.date: 02/04/2021
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 6f21db00ecc9ff2668698f53a4d20f5bae525721
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: d208a4a86896c81982aa2b10ca7ce5e7a6773c05
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95520450"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99820221"
 ---
 # <a name="tutorial-move-azure-vms-across-regions"></a>Öğretici: Azure VM 'lerini bölgeler arasında taşıma
 
@@ -23,7 +23,7 @@ Bu makalede, Azure sanal makinelerini ve ilgili ağ/depolama kaynaklarını [Azu
 > Azure Kaynak taşıyıcısı Şu anda genel önizleme aşamasındadır.
 
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Önkoşulları ve gereksinimleri denetleyin.
@@ -238,12 +238,16 @@ Taşıma işlemini tamamlamak istiyorsanız, taşımayı yürütün.
 - Mobility hizmeti VM 'lerden otomatik olarak kaldırılmaz. El ile kaldırın veya sunucuyu yeniden taşımayı planlıyorsanız bırakın.
 - Taşıma işleminden sonra Azure rol tabanlı erişim denetimi (Azure RBAC) kurallarını değiştirme.
 
+
 ## <a name="delete-source-resources-after-commit"></a>İşlemeden sonra kaynak kaynaklarını Sil
 
 Taşıma işleminden sonra, kaynak bölgedeki kaynakları isteğe bağlı olarak silebilirsiniz. 
 
-1. **Bölgeler arasında**, silmek istediğiniz her kaynak kaynağın adına tıklayın.
-2. Her kaynak için Özellikler sayfasında **Sil**' i seçin.
+> [!NOTE]
+> Birkaç kaynak (örneğin, Anahtar kasaları ve SQL Server sunucular) portaldan silinemez ve kaynak özellik sayfasından silinmelidir.
+
+1. **Bölgeler arasında**, silmek istediğiniz kaynak kaynağın adına tıklayın.
+2. **Kaynağı Sil**' i seçin.
 
 ## <a name="delete-additional-resources-created-for-move"></a>Taşıma için oluşturulan ek kaynakları Sil
 

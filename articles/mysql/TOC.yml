@@ -1,6 +1,7 @@
 - name: MySQL Belgeleri için Azure Veritabanı
   href: index.yml
 - name: Genel Bakış
+  expanded: true
   items:
     - name: MySQL için Azure DB nedir?
       href: overview.md
@@ -12,7 +13,6 @@
       href: concepts-version-policy.md
       displayName: version policy
 - name: Tek sunucu
-  expanded: true
   items:
     - name: Tek Sunucu belgeleri
       href: single-server/index.yml

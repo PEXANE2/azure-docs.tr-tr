@@ -5,15 +5,15 @@ author: rayne-wiselman
 manager: evansma
 ms.service: resource-move
 ms.topic: tutorial
-ms.date: 09/09/2020
+ms.date: 02/04/2021
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 9fe43125c83436f89bf93cbe975317efec2beb46
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 4678a6128be13ac61dc4ac67bbd1a17e99c6d24d
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95542822"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99820237"
 ---
 # <a name="tutorial-move-azure-sql-database-resources-to-another-region"></a>Öğretici: Azure SQL veritabanı kaynaklarını başka bir bölgeye taşıma
 
@@ -22,7 +22,7 @@ Bu öğreticide Azure SQL veritabanlarının ve elastik havuzların [Azure Kayna
 > [!NOTE]
 > Azure Kaynak taşıyıcısı Şu anda önizleme aşamasındadır.
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Önkoşulları ve gereksinimleri denetleyin.
@@ -272,8 +272,11 @@ Veritabanlarının ve elastik havuzların taşınması şu şekilde tamamlanıyo
 
 Taşıma işleminden sonra, kaynak bölgedeki kaynakları isteğe bağlı olarak silebilirsiniz. 
 
-1. **Bölgeler arasında**, silmek istediğiniz her kaynak kaynağın adına tıklayın.
-2. Her kaynak için Özellikler sayfasında **Sil**' i seçin.
+> [!NOTE]
+> SQL Server sunucular portaldan silinemez ve kaynak özellik sayfasından silinmelidir.
+
+1. **Bölgeler arasında**, silmek istediğiniz kaynak kaynağın adına tıklayın.
+2. **Kaynağı Sil**' i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

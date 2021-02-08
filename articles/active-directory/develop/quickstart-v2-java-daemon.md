@@ -12,26 +12,26 @@ ms.workload: identity
 ms.date: 01/22/2021
 ms.author: nacanuma
 ms.custom: aaddev, scenarios:getting-started, languages:Java, devx-track-java
-ms.openlocfilehash: 9c6571793d2317097574d0afdc7137b3a3d5ad6d
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.openlocfilehash: 196b80a704b8a270a4cbb7d3505d5f9be1e23479
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99064535"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99820333"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-java-console-app-using-apps-identity"></a>Hızlı başlangıç: uygulamanın kimliğini kullanarak bir Java konsol uygulamasından belirteç alma ve Microsoft Graph API çağırma
 
-Bu hızlı başlangıçta, Java uygulamasının, Microsoft Graph API 'sini çağırmak ve dizindeki [kullanıcıların listesini](/graph/api/user-list) göstermek için uygulamanın kimliğini kullanarak bir erişim belirteci elde etme şeklini gösteren bir kod örneği indirip çalıştırırsınız. Kod örneği, katılımsız bir işin veya Windows hizmetinin bir kullanıcının kimliği yerine bir uygulama kimliğiyle nasıl çalışacağını gösterir. 
+Bu hızlı başlangıçta, Java uygulamasının, Microsoft Graph API 'sini çağırmak ve dizindeki [kullanıcıların listesini](/graph/api/user-list) göstermek için uygulamanın kimliğini kullanarak bir erişim belirteci alma ve çalıştırma şeklini gösteren bir kod örneği indirirsiniz. Kod örneği, katılımsız bir işin veya Windows hizmetinin bir kullanıcının kimliği yerine bir uygulama kimliğiyle nasıl çalışacağını gösterir. 
 
 > [!div renderon="docs"]
-> ![Bu hızlı başlangıç tarafından oluşturulan örnek uygulamanın nasıl çalıştığını gösterir](media/quickstart-v2-netcore-daemon/netcore-daemon-intro.svg)
+> ![Bu hızlı başlangıç tarafından oluşturulan örnek uygulamanın nasıl çalıştığını gösterir](media/quickstart-v2-java-daemon/java-console-daemon.svg)
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 Bu örneği çalıştırmak için şunlar gerekir:
 
 - [Java Development Kit (JDK)](https://openjdk.java.net/) 8 veya üzeri
-- [Maven](https://maven.apache.org/).
+- [Maven](https://maven.apache.org/)
 
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-app"></a>Hızlı başlangıç uygulamanızı kaydetme ve indirme
@@ -42,7 +42,7 @@ Bu örneği çalıştırmak için şunlar gerekir:
 >
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>1. Seçenek: Uygulamanızı otomatik olarak kaydedip yapılandırın ve ardından kod örneğinizi indirin
 >
-> 1. Yeni [Azure Portal-uygulama kayıtları](https://portal.azure.com/?Microsoft_AAD_RegisteredApps=true#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/JavaDaemonQuickstartPage/sourceType/docs) bölmesine gidin.
+> 1. <a href="https://portal.azure.com/?Microsoft_AAD_RegisteredApps=true#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/JavaDaemonQuickstartPage/sourceType/docs" target="_blank">Azure portal uygulama kayıtları</a> hızlı başlangıç deneyimine gidin.
 > 1. Uygulamanız için bir ad girin ve **Kaydet**'i seçin.
 > 1. Yönergeleri izleyerek yeni uygulamanızı yalnızca tek tıklamayla indirin ve otomatik olarak yapılandırın.
 >
@@ -52,22 +52,22 @@ Bu örneği çalıştırmak için şunlar gerekir:
 > #### <a name="step-1-register-your-application"></a>1. Adım: Uygulamanızı kaydetme
 > Uygulamanızı kaydetmek ve uygulama kayıt bilgilerinizi çözümünüze el ile eklemek için şu adımları izleyin:
 >
-> 1. [Azure Portal](https://portal.azure.com) iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
-> 1. Hesabınız size birden fazla Azure AD kiracısına erişim sunuyorsa sağ üst köşeden hesabınızı seçin ve portal oturumunuzu istediğiniz Azure AD kiracısına ayarlayın.
-> 1. Geliştiriciler için Microsoft Identity platformu [uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) sayfasına gidin.
-> 1. **Yeni kayıt** seçeneğini belirleyin.
-> 1. **Bir uygulamayı kaydet** sayfası göründüğünde, uygulamanızın kayıt bilgilerini girin.
-> 1. **Ad** bölümünde, uygulamanın kullanıcılarına gösterilecek anlamlı bir uygulama adı girin, örneğin `Daemon-console` , uygulamayı oluşturmak için **Kaydet** ' i seçin.
-> 1. Kaydolduktan sonra **sertifikalar & gizlilikler** menüsünü seçin.
-> 1. **İstemci gizli** dizileri altında **+ yeni istemci parolası**' nı seçin. Bir ad verin ve **Ekle**' yi seçin. Parolayı güvenli bir konuma kopyalayın. Kodunuzda kullanmak için ihtiyacınız olacak.
-> 1. Şimdi **API izinleri** menüsünü seçin **+ izin Ekle** düğmesini seçin, **Microsoft Graph**' yi seçin.
+> 1. <a href="https://portal.azure.com/" target="_blank">Azure portalında</a> oturum açın.
+> 1. Birden fazla kiracıya erişiminiz varsa, uygulamayı kaydetmek istediğiniz kiracıyı seçmek için üst menüdeki **Dizin + abonelik** filtresini kullanın :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: .
+> 1. **Azure Active Directory**'yi bulun ve seçin.
+> 1. **Yönet** altında   >  **Yeni kayıt** uygulama kayıtları ' yi seçin.
+> 1. Uygulamanız için bir **ad** girin (örneğin,) `Daemon-console` . Uygulamanızın kullanıcıları bu adı görebilir ve daha sonra değiştirebilirsiniz.
+> 1. **Kaydet**’i seçin.
+> 1. **Yönet** altında **Sertifikalar & gizlilikler**' ı seçin.
+> 1. **İstemci gizli** dizileri altında **yeni istemci parolası**' nı seçin, bir ad girin ve ardından **Ekle**' yi seçin. Daha sonraki bir adımda kullanmak üzere gizli bir konuma gizli değeri kaydedin.
+> 1. **Yönet** altında **API izinleri**  >  **bir izin Ekle**' yi seçin. **Microsoft Graph** seçin.
 > 1. **Uygulama izinleri**' ni seçin.
-> 1. **Kullanıcı** düğümü altında **User. Read. All**' ı seçin ve ardından **izin Ekle** ' yi seçin.
+> 1. **Kullanıcı** düğümü altında **User. Read. All**' ı seçin ve ardından **izin Ekle**' yi seçin.
 
 > [!div class="sxs-lookup" renderon="portal"]
-> ### <a name="download-and-configure-your-quickstart-app"></a>Hızlı başlangıç uygulamanızı indirin ve yapılandırın
+> ### <a name="download-and-configure-the-quickstart-app"></a>Hızlı başlangıç uygulamasını indirme ve yapılandırma
 >
-> #### <a name="step-1-configure-your-application-in-azure-portal"></a>1. Adım: Uygulamanızı Azure portalında yapılandırma
+> #### <a name="step-1-configure-the-application-in-azure-portal"></a>1. Adım: uygulamayı Azure portal yapılandırma
 > Bu hızlı başlangıçta çalışması için kod örneği için, bir istemci parolası oluşturmanız ve Graph API **Kullanıcı. Read. All** uygulama iznini eklemeniz gerekir.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [Bu değişiklikleri benim için yap]()
@@ -75,7 +75,7 @@ Bu örneği çalıştırmak için şunlar gerekir:
 > > [!div id="appconfigured" class="alert alert-info"]
 > > ![Zaten yapılandırılmış](media/quickstart-v2-netcore-daemon/green-check.png) Uygulamanız bu özniteliklerle yapılandırılmış.
 
-#### <a name="step-2-download-your-java-project"></a>2. Adım: Java projenizi Indirme
+#### <a name="step-2-download-the-java-project"></a>2. Adım: Java projesini Indirme
 
 > [!div renderon="docs"]
 > [Java Daemon projesini indirin](https://github.com/Azure-Samples/ms-identity-java-daemon/archive/master.zip)
@@ -89,11 +89,11 @@ Bu örneği çalıştırmak için şunlar gerekir:
 
 
 > [!div renderon="docs"]
-> #### <a name="step-3-configure-your-java-project"></a>3. Adım: Java projenizi yapılandırma
+> #### <a name="step-3-configure-the-java-project"></a>3. Adım: Java projesini yapılandırma
 >
-> 1. Zip dosyasını diskin köküne yakın bir yerel klasöre (örneğin **C:\Azure-Samples**) ayıklayın.
+> 1. Zip dosyasını diskin köküne yakın bir yerel klasöre (örneğin *C:\Azure-Samples*) ayıklayın.
 > 1. **Msal-Client-Credential-Secret** alt klasörüne gidin.
-> 1. **Src\mainresources\application.exe** ' i düzenleyin ve alanları `AUTHORITY` , `CLIENT_ID` ve değerlerini aşağıdaki kod parçacığıyla değiştirin `SECRET` :
+> 1. *Src\mainresources\application.exe* ' i düzenleyin ve alanları `AUTHORITY` , `CLIENT_ID` ve değerlerini aşağıdaki kod parçacığıyla değiştirin `SECRET` :
 >
 >    ```
 >    AUTHORITY=https://login.microsoftonline.com/Enter_the_Tenant_Id_Here/
@@ -102,7 +102,7 @@ Bu örneği çalıştırmak için şunlar gerekir:
 >    ```
 >    Konum:
 >    - `Enter_the_Application_Id_Here` - kaydettiğiniz uygulamanın **Uygulama (istemci) Kimliği** değeridir.
->    - `Enter_the_Tenant_Id_Here` -Bu değeri **Kiracı kimliği** veya **kiracı adıyla** değiştirin (örneğin, contoso.Microsoft.com)
+>    - `Enter_the_Tenant_Id_Here` -Bu değeri **Kiracı kimliği** veya **kiracı adıyla** değiştirin (örneğin, contoso.Microsoft.com).
 >    - `Enter_the_Client_Secret_Here` -Bu değeri, 1. adımda oluşturulan istemci gizli anahtarı ile değiştirin.
 >
 > > [!TIP]
@@ -119,10 +119,10 @@ Bu noktada uygulamayı çalıştırmayı denerseniz, *HTTP 403-Yasak* hatası: '
 ##### <a name="global-tenant-administrator"></a>Genel Kiracı Yöneticisi
 
 > [!div renderon="docs"]
-> Küresel kiracı yöneticisiyseniz, Azure portalının uygulama kaydı 'nda (Önizleme) **API izinleri** sayfasına gidin ve **{Tenant Name} Için yönetici onayı ver** ' i seçin (burada {Tenant Name} dizininizin adıdır).
+> Küresel kiracı yöneticisiyseniz, Azure portal **uygulama kayıtları** Içindeki **API izinleri** sayfasına gidin ve **{Tenant Name} için yönetici onayı ver** ' i seçin (burada {Tenant Name} dizininizin adıdır).
 
 > [!div renderon="portal" class="sxs-lookup"]
-> Genel yöneticiyseniz, **API izinleri** sayfasına gidin **Enter_the_Tenant_Name_Here Için yönetici onayı ver** ' i seçin
+> Genel yöneticiyseniz, **API izinleri** sayfasına gidin **Enter_the_Tenant_Name_Here Için yönetici onayı ver**' i seçin.
 > > [!div id="apipermissionspage"]
 > > [API Izinleri sayfasına gidin]()
 
@@ -163,7 +163,7 @@ $ java -jar msal-client-credential-secret-1.0.0.jar
 
 
 > [!IMPORTANT]
-> Bu hızlı başlangıç uygulaması, kendisini gizli istemci olarak tanımlamak için bir istemci gizli anahtarı kullanır. İstemci parolası proje dosyalarınıza düz metin olarak eklendiğinden, güvenlik nedenleriyle, uygulamayı üretim uygulaması olarak düşünmeden önce istemci parolası yerine bir sertifika kullanmanız önerilir. Sertifika kullanma hakkında daha fazla bilgi için, bu örnek için aynı GitHub deposunda yer alan [yönergelere](https://github.com/Azure-Samples/ms-identity-java-daemon/tree/master/msal-client-credential-certificate) bakın, ancak ikinci klasörde **msal-Client-Credential-Certificate** yazın
+> Bu hızlı başlangıç uygulaması, kendisini gizli istemci olarak tanımlamak için bir istemci gizli anahtarı kullanır. İstemci parolası proje dosyalarınıza düz metin olarak eklendiğinden, güvenlik nedenleriyle, uygulamayı üretim uygulaması olarak düşünmeden önce istemci parolası yerine bir sertifika kullanmanız önerilir. Sertifika kullanma hakkında daha fazla bilgi için, bu örnek için aynı GitHub deposunda, ancak ikinci klasörde **msal-Client-Credential-Certificate** içindeki [Bu yönergelere](https://github.com/Azure-Samples/ms-identity-java-daemon/tree/master/msal-client-credential-certificate) bakın.
 
 ## <a name="more-information"></a>Daha fazla bilgi
 
@@ -251,13 +251,13 @@ IAuthenticationResult result;
 
 > |Konum:| Description |
 > |---------|---------|
-> | `SCOPE` | İstenen kapsamları içerir. Gizli istemciler için, `{Application ID URI}/.default` istenen kapsamların Azure portalında ayarlanmış uygulama nesnesi içinde statik olarak tanımlanmış olduğunu göstermek için şuna benzer biçimi kullanmalıdır (Microsoft Graph için, `{Application ID URI}` işaret eder `https://graph.microsoft.com` ). Özel Web API 'Leri için, `{Application ID URI}` Azure portalının uygulama kaydı 'nda (Önizleme) **bir API 'yi kullanıma** sunma bölümünde tanımlanmıştır. |
+> | `SCOPE` | İstenen kapsamları içerir. Gizli istemciler için, `{Application ID URI}/.default` istenen kapsamların Azure Portal (Microsoft Graph için, işaret edilen uygulama nesnesi içinde statik olarak tanımlandığını göstermek için şuna benzer biçimi kullanması gerekir `{Application ID URI}` `https://graph.microsoft.com` ). Özel Web API 'Leri için, `{Application ID URI}` Azure portalındaki uygulama kayıtları **bir API 'yi kullanıma** sunma  bölümünde tanımlanmıştır.|
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Daemon uygulamaları hakkında daha fazla bilgi için bkz. senaryo giriş sayfası
+Daemon uygulamaları hakkında daha fazla bilgi için bkz. senaryo giriş sayfası.
 
 > [!div class="nextstepaction"]
 > [Web API 'Lerini çağıran Daemon uygulaması](scenario-daemon-overview.md)

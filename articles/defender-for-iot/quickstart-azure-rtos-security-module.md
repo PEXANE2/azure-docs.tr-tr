@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2021
 ms.author: shhazam
-ms.openlocfilehash: d7e901e440a6df5ae1d11a150e09a36b565904d9
-ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
+ms.openlocfilehash: 3054981bbbff45666297399033663d1830ad9e4e
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 02/08/2021
-ms.locfileid: "99809074"
+ms.locfileid: "99820441"
 ---
 # <a name="quickstart-security-module-for-azure-rtos-preview"></a>Hızlı başlangıç: Azure RTOS için güvenlik modülü (Önizleme)
 
@@ -43,8 +43,11 @@ Kullanmaya başlamak için sonraki aşama, Azure kaynaklarınızı hazırlıyor.
 Başlamak için bir IoT Hub bağlantısı gerekir. 
 
 1. **IoT Hub** Azure Portal açın.
+
 1. **IoT cihazlarına** gidin.
+
 1. **Oluştur**’u seçin.
+
 1. IoT bağlantı dizesini [yapılandırma dosyasına](how-to-azure-rtos-security-module.md)kopyalayın.
 
 Bağlantı kimlik bilgileri, Kullanıcı uygulama yapılandırmasından **host_name**, **DEVICE_ID** ve **DEVICE_SYMMETRIC_KEY** alınır.

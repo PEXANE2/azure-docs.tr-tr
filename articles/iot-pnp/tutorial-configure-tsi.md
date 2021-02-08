@@ -1,20 +1,20 @@
 ---
-title: Azure IoT Tak ve Kullan cihaz telemetrinizi depolamak ve analiz etmek için Azure Time Series Insights kullanma
-description: IoT Tak ve Kullan cihazlarınızdan Telemetriyi görüntülemek ve analiz etmek için bir Time Series Insights ortamı ayarlayın ve IoT Hub 'ınızı bağlayın.
+title: Öğretici-Azure IoT Tak ve Kullan cihaz telemetrinizi depolamak ve analiz etmek için Azure Time Series Insights kullanma
+description: Öğretici-Time Series Insights ortamı ayarlama ve IoT Hub 'ınızı, IoT Tak ve Kullan cihazlarınızdan Telemetriyi görüntülemek ve analiz etmek için bağlayın.
 author: lyrana
 ms.author: lyhughes
 ms.date: 10/14/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 5491df61a1198e8eee4ba4701ccfc56154ec75eb
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 299730bcdab3ae7e558f39cc7f7d5076ffc58ea9
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905099"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99820188"
 ---
-# <a name="preview-tutorial-create-and-configure-a-time-series-insights-gen2-environment"></a>Önizleme öğreticisi: Time Series Insights Gen2 ortamı oluşturma ve yapılandırma
+# <a name="tutorial-create-and-configure-a-time-series-insights-gen2-environment"></a>Öğretici: Time Series Insights Gen2 ortamı oluşturma ve yapılandırma
 
 Bu öğreticide, IoT Tak ve Kullan çözümünüz ile tümleştirilecek bir [Azure Time Series Insights Gen2](../time-series-insights/overview-what-is-tsi.md) ortamı oluşturma ve yapılandırma hakkında bilgi edineceksiniz. Nesnelerin İnterneti (IoT) ölçeğinde zaman serisi verilerini toplamak, işlemek, depolamak, sorgulamak ve görselleştirmek için Time Series Insights kullanın.
 

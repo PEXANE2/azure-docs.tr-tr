@@ -1,20 +1,20 @@
 ---
-title: IoT için ihtiyacınız olan IoT kaynaklarını ayarlayın Tak ve Kullan | Microsoft Docs
-description: IoT Tak ve Kullan hızlı başlangıçlarını ve öğreticileri ile kullanmak üzere bir IoT Hub ve cihaz sağlama hizmeti örneği oluşturun.
+title: Hızlı başlangıç-IoT için ihtiyacınız olan IoT kaynaklarını ayarlayın Tak ve Kullan | Microsoft Docs
+description: Hızlı başlangıç-IoT Tak ve Kullan hızlı başlangıçlarla ve öğreticilerle kullanılacak bir IoT Hub ve cihaz sağlama hizmeti örneği oluşturun.
 author: dominicbetts
 ms.author: dobett
 ms.date: 08/11/2020
-ms.topic: how-to
+ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 6e6c090c02798103a30cc68f2ca28e8c4f7f2f17
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 10ec761313ce39beb4b24b838d156478704f943e
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "96004271"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99820039"
 ---
-# <a name="set-up-your-environment-for-the-iot-plug-and-play-quickstarts-and-tutorials"></a>IoT Tak ve Kullan hızlı başlangıç ve öğreticiler için ortamınızı ayarlama
+# <a name="quickstart---set-up-your-environment-for-the-iot-plug-and-play-quickstarts-and-tutorials"></a>Hızlı başlangıç-ortamınızı IoT Tak ve Kullan hızlı başlangıç ve öğreticiler için ayarlama
 
 IoT Tak ve Kullan hızlı başlangıçların ve öğreticilerinin hiçbirini tamamlamadan önce Azure aboneliğinizde bir IoT Hub 'ı ve cihaz sağlama hizmeti 'ni (DPS) yapılandırmanız gerekir. Ayrıca, örnek uygulamalar ve Azure IoT gezgin aracı tarafından kullanılan model dosyalarının yerel kopyalarına de ihtiyacınız olacaktır.
 

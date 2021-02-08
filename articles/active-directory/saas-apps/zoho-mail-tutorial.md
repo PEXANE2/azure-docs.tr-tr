@@ -9,33 +9,29 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/26/2018
+ms.date: 01/19/2021
 ms.author: jeedes
-ms.openlocfilehash: 89c703f6bb956409c97c36c6507519f4e884fcf2
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 50e54b8518ecdbb4ef9f9a55ba50510da6becedc
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92892766"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99820956"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zoho"></a>Öğretici: Zoho ile tümleştirme Azure Active Directory
 
-Bu öğreticide, Zoho 'ı Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz.
-Zoho 'yi Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
+Bu öğreticide, Zoho 'ı Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz. Zoho 'yi Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
 
-* Azure AD 'de, Zoho erişimi olan ' i denetleyebilirsiniz.
-* Kullanıcılarınızın Azure AD hesaplarıyla Zoho (çoklu oturum açma) ile otomatik olarak oturum açmasını sağlayabilirsiniz.
-* Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
-
-Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
+* Azure AD 'de, Zoho erişimi olan denetim.
+* Kullanıcılarınızın Azure AD hesaplarıyla Zoho 'ye otomatik olarak kaydolmalarına imkan tanıyın.
+* Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Azure AD tümleştirmesini Zoho ile yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
+Azure AD tümleştirmesini Zoho One ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
-* Bir Azure AD aboneliği. Bir Azure AD ortamınız yoksa, [burada](https://azure.microsoft.com/pricing/free-trial/) bir aylık deneme sürümü edinebilirsiniz
-* Zoho çoklu oturum açma etkin aboneliği
+* Bir Azure AD aboneliği. Azure AD ortamınız yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
+* Zoho çoklu oturum açma etkin aboneliği.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
@@ -43,70 +39,48 @@ Bu öğreticide, Azure AD çoklu oturum açmayı bir test ortamında yapılandı
 
 * Zoho, **SP** tarafından başlatılan SSO 'yu destekler
 
-## <a name="adding-zoho-from-the-gallery"></a>Galeriden Zoho ekleme
+## <a name="add-zoho-from-the-gallery"></a>Galeriden Zoho ekleyin
 
 Zoho 'ın Azure AD 'ye tümleştirilmesini yapılandırmak için, Galeri 'den yönetilen SaaS uygulamaları listenize Zoho eklemeniz gerekir.
 
-**Galeriden Zoho eklemek için aşağıdaki adımları uygulayın:**
+1. Azure portal iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
+1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
+1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
+1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
+1. **Galeriden Ekle** bölümünde, arama kutusuna **Zoho** yazın.
+1. Sonuçlar panelinden **Zoho** ' ı seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory** simgesine tıklayın.
+## <a name="configure-and-test-azure-ad-sso-for-zoho"></a>Zoho için Azure AD SSO 'yu yapılandırma ve test etme
 
-    ![Azure Active Directory düğmesi](common/select-azuread.png)
+**B. Simon** adlı bir test kullanıcısı kullanarak, Zoho Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve Zoho içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi kurmanız gerekir.
 
-2. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** seçeneğini belirleyin.
+Azure AD SSO 'yu Zoho ile yapılandırmak ve test etmek için aşağıdaki adımları gerçekleştirin:
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
+    1. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
+    1. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
+1. **[Zoho SSO 'Yu yapılandırma](#configure-zoho-sso)** -uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
+    1. Zoho **[test kullanıcısı oluşturun](#create-zoho-test-user)** -kullanıcının Azure AD gösterimine bağlı olan, Zoho 'de B. Simon 'a karşılık gelen bir karşılığı vardır.
+1. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
-3. Yeni uygulama eklemek için, iletişim kutusunun üst kısmındaki **Yeni uygulama** düğmesine tıklayın.
+### <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma
 
-    ![Yeni uygulama düğmesi](common/add-new-app.png)
+Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-4. Arama kutusuna **Zoho** yazın, sonuç panelinden **Zoho** ' ı seçin, sonra da uygulamayı eklemek için düğme **Ekle** ' ye tıklayın.
+1. Azure portal, **Zoho** uygulama tümleştirmesi sayfasında **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
+1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
+1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** kalem simgesine tıklayın.
 
-     ![Sonuç listesinde Zoho](common/search-new-app.png)
-
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
-
-Bu bölümde, **Britta Simon** adlı bir test kullanıcısına göre Zoho Ile Azure AD çoklu oturum açmayı yapılandırıp test edersiniz.
-Çoklu oturum açma için, bir Azure AD kullanıcısı ve Zoho içindeki ilgili Kullanıcı arasındaki bağlantı ilişkisinin kurulması gerekir.
-
-Azure AD çoklu oturum açmayı, Zoho ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
-
-1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. **[Zoho çoklu oturum açmayı yapılandırma](#configure-zoho-single-sign-on)** -uygulama tarafında tek Sign-On ayarlarını yapılandırmak için.
-3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
-4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
-5. Kullanıcının Azure AD gösterimine bağlı olan Zoho 'da Britta Simon 'a sahip olmak için **[Zoho test kullanıcısı oluşturun](#create-zoho-test-user)** .
-6. Yapılandırmanın çalışıp çalışmadığını doğrulamak için **[Çoklu oturum açmayı sınayın](#test-single-sign-on)** .
-
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma
-
-Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleştirirsiniz.
-
-Azure AD çoklu oturum açmayı Zoho ile yapılandırmak için aşağıdaki adımları uygulayın:
-
-1. [Azure Portal](https://portal.azure.com/), **Zoho** uygulama tümleştirmesi sayfasında, **Çoklu oturum açma** ' yı seçin.
-
-    ![Çoklu oturum açma bağlantısını yapılandırma](common/select-sso.png)
-
-2. Çoklu oturum **açma yöntemi seç** iletişim kutusunda, çoklu oturum açmayı etkinleştirmek için **SAML/WS-Besme** modunu seçin.
-
-    ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
-
-3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
-
-    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
+   ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
 4. **Temel SAML yapılandırması** bölümünde aşağıdaki adımları gerçekleştirin:
-
-    ![Zoho etki alanı ve URL 'Leri çoklu oturum açma bilgileri](common/sp-signonurl.png)
 
     **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<company name>.zohomail.com`
 
     > [!NOTE]
     > Değer gerçek değil. Değeri gerçek Sign-On URL 'siyle güncelleştirin. Değeri almak için [Zoho istemci destek ekibine](https://www.zoho.com/mail/contact.html) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-4. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
+5. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 
@@ -114,27 +88,45 @@ Azure AD çoklu oturum açmayı Zoho ile yapılandırmak için aşağıdaki adı
 
     ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
 
-    a. Oturum Açma URL’si
+### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma 
 
-    b. Azure AD tanımlayıcısı
+Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
 
-    c. Oturum kapatma URL 'SI
+1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
+1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
+1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
+   1. **Ad** alanına `B.Simon` girin.  
+   1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
+   1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
+   1. **Oluştur**’a tıklayın.
 
-### <a name="configure-zoho-single-sign-on"></a>Zoho tek Sign-On yapılandırma
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
+
+Bu bölümde, Zoho erişimi vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
+
+1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. Uygulamalar listesinde, **Zoho**' ı seçin.
+1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
+1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
+1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. Kullanıcılara bir rolün atanmasını bekliyorsanız, **Rol Seç** açılır listesinden bunu seçebilirsiniz. Bu uygulama için ayarlanmış bir rol yoksa, "varsayılan erişim" rolü seçili olduğunu görürsünüz.
+1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
+
+### <a name="configure-zoho-sso"></a>Zoho SSO 'yu yapılandırma
 
 1. Farklı bir Web tarayıcısı penceresinde, Zoho mail şirket sitenizde yönetici olarak oturum açın.
 
-2. **Denetim Masası** 'na gidin.
+2. **Denetim Masası**'na gidin.
    
-    ![Denetim Masası](./media/zoho-mail-tutorial/ic789607.png "Denetim Masası")
+    ![Denetim Masası](./media/zoho-mail-tutorial/control-panel.png "Denetim Masası")
 
 3. **SAML kimlik doğrulaması** sekmesine tıklayın.
    
-    ![SAML kimlik doğrulaması](./media/zoho-mail-tutorial/ic789608.png "SAML kimlik doğrulaması")
+    ![SAML kimlik doğrulaması](./media/zoho-mail-tutorial/saml-authentication.png "SAML kimlik doğrulaması")
 
 4. **SAML kimlik doğrulaması ayrıntıları** bölümünde aşağıdaki adımları uygulayın:
    
-    ![SAML kimlik doğrulaması ayrıntıları](./media/zoho-mail-tutorial/ic789609.png "SAML kimlik doğrulaması ayrıntıları")
+    ![SAML kimlik doğrulaması ayrıntıları](./media/zoho-mail-tutorial/details.png "SAML kimlik doğrulaması ayrıntıları")
    
     a. **Oturum açma URL 'si** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'sini** yapıştırın.
    
@@ -144,60 +136,9 @@ Azure AD çoklu oturum açmayı Zoho ile yapılandırmak için aşağıdaki adı
        
     d. Not defteri 'nde Azure portal indirilen Base-64 kodlu sertifikanızı açın, bu içeriği panonuza kopyalayın ve sonra **PublicKey** metin kutusuna yapıştırın.
    
-    e. **Algoritma** olarak **RSA** ' yı seçin.
+    e. **Algoritma** olarak **RSA**' yı seçin.
    
-    f. **Tamam** ’a tıklayın.
-
-### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma 
-
-Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı oluşturmaktır.
-
-1. Azure portal, sol bölmedeki **Azure Active Directory** ' i seçin, **Kullanıcılar** ' ı seçin ve ardından **tüm kullanıcılar** ' ı seçin.
-
-    !["Kullanıcılar ve gruplar" ve "tüm kullanıcılar" bağlantıları](common/users.png)
-
-2. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
-
-    ![Yeni Kullanıcı düğmesi](common/new-user.png)
-
-3. Kullanıcı Özellikleri ' nde aşağıdaki adımları gerçekleştirin.
-
-    ![Kullanıcı iletişim kutusu](common/user-properties.png)
-
-    a. **Ad** alanına **Brittasıon** girin.
-  
-    b. **Kullanıcı adı** alanına **\@ bricompansıon yourcompanydomain. Extension** yazın  
-    Örneğin, BrittaSimon@contoso.com
-
-    c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
-
-    d. **Oluştur** 'a tıklayın.
-
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
-
-Bu bölümde, Zotta 'ın, Zoho 'a erişim vererek çoklu oturum açma özelliğini kullanmasını sağlayabilirsiniz.
-
-1. Azure portal **Kurumsal uygulamalar** ' ı seçin, **tüm uygulamalar** ' ı seçin ve ardından **Zoho** ' i seçin.
-
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
-
-2. Uygulamalar listesinde, bir yazın ve **Zoho** ' ı seçin.
-
-    ![Uygulamalar listesindeki Zoho bağlantısı](common/all-applications.png)
-
-3. Soldaki menüde **Kullanıcılar ve gruplar** ' ı seçin.
-
-    !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
-
-4. **Kullanıcı Ekle** düğmesine tıklayın, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
-
-    ![Atama Ekle bölmesi](common/add-assign-user.png)
-
-5. **Kullanıcılar ve gruplar** Iletişim kutusunda kullanıcılar listesinde **Britta Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-
-6. SAML onaylama işlemi içinde herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, listeden Kullanıcı için uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-
-7. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
+    f. **Tamam**'a tıklayın.
 
 ### <a name="create-zoho-test-user"></a>Zoho test kullanıcısı oluşturma
 
@@ -210,39 +151,39 @@ Azure AD kullanıcılarının, Zoho postasına oturum açmasını sağlamak içi
 
 1. **Zoho mail** şirket sitenizde yönetici olarak oturum açın.
 
-1. **Denetim Masası \> posta & docs** ' a gidin.
+1. **Denetim Masası \> posta & docs**' a gidin.
 
-1. **Kullanıcı ayrıntıları \> Kullanıcı Ekle** ' ye gidin.
+1. **Kullanıcı ayrıntıları \> Kullanıcı Ekle**' ye gidin.
    
-    ![Ekran görüntüsü, Zoho mail sitesini Kullanıcı ayrıntılarına ve seçili Kullanıcı Ekle ' ye gösterir.](./media/zoho-mail-tutorial/ic789611.png "Kullanıcı Ekleme")
+    ![Ekran görüntüsü, Zoho mail sitesini Kullanıcı ayrıntılarına ve seçili Kullanıcı Ekle ' ye gösterir.](./media/zoho-mail-tutorial/add-user-1.png "Kullanıcı Ekleme")
 
 1. **Kullanıcı Ekle** iletişim kutusunda aşağıdaki adımları gerçekleştirin:
    
-    ![Ekran görüntüsü, tanımlanan değerleri girebileceğiniz Kullanıcı Ekle iletişim kutusunu gösterir.](./media/zoho-mail-tutorial/ic789612.png "Kullanıcı Ekleme")
+    ![Ekran görüntüsü, tanımlanan değerleri girebileceğiniz Kullanıcı Ekle iletişim kutusunu gösterir.](./media/zoho-mail-tutorial/add-user-2.png "Kullanıcı Ekleme")
    
     a. **Ad** metin kutusuna, ilk Kullanıcı adını **Britta** gibi yazın.
 
     b. **Soyadı** metin kutusunda, **Simon** gibi kullanıcı adının soyadını yazın.
 
-    c. **E-posta kimliği** metin kutusuna, **brittasıon \@ contoso.com** gibi kullanıcının e-posta kimliğini yazın.
+    c. **E-posta kimliği** metin kutusuna, **brittasıon \@ contoso.com** gıbı kullanıcının e-posta kimliğini yazın.
 
     d. **Parola** metin kutusuna kullanıcının parolasını girin.
    
-    e. **Tamam** ’a tıklayın.  
+    e. **Tamam**'a tıklayın.  
       
     > [!NOTE]
     > Azure Active Directory hesap sahibi, hesabı etkin olmadan önce onaylamak için bağlantı içeren bir e-posta alır.
 
-### <a name="test-single-sign-on"></a>Çoklu oturum açma testi 
+### <a name="test-sso"></a>Test SSO 'SU 
 
-Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açma yapılandırmanızı aşağıdaki seçeneklerle test edersiniz. 
 
-Erişim panelinde Zoho kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Zoho 'da otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](../user-help/my-apps-portal-end-user-access.md).
+* Azure portal içinde **Bu uygulamayı test et** ' e tıklayın. Bu, oturum açma akışını başlatabileceğiniz Zoho oturum açma URL 'sine yeniden yönlendirilir. 
 
-## <a name="additional-resources"></a>Ek Kaynaklar
+* Doğrudan Zoho oturum açma URL 'sine gidin ve oturum açma akışını buradan başlatın.
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](./tutorial-list.md)
+* Microsoft My Apps ' i kullanabilirsiniz. Uygulamalarım içindeki Zoho kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Zoho 'da otomatik olarak oturum açmış olmanız gerekir. Uygulamalarım hakkında daha fazla bilgi için bkz. [uygulamalarıma giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
+## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Active Directory Koşullu erişim nedir?](../conditional-access/overview.md)
+Zoho 'yi yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).

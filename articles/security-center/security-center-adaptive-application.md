@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/06/2020
+ms.date: 02/07/2021
 ms.author: memildin
-ms.openlocfilehash: 103f2c87cf9d14f81462fed145ff8df3d69bfca0
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: cc35f9ee25511faec5723b49763cbdae8963e88b
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98916142"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99820764"
 ---
 # <a name="use-adaptive-application-controls-to-reduce-your-machines-attack-surfaces"></a>Makinelerinizin saldırı yüzeylerini azaltmak için uyarlamalı uygulama denetimleri kullanma
 
@@ -44,7 +44,7 @@ Bilinen güvenli uygulamalar listesini tanımlayarak ve başka bir şey yürüt�
 - Kuruluşunuz tarafından yasaklanmış olan belirli yazılımları engelleyin
 - Hassas verilere erişen uygulamalardan daha fazla bakış artışı
 
-
+Hiçbir zorlama seçeneği yoktur ve hiçbiri planlanmaktadır. Uyarlamalı uygulama denetimleri, güvenli olarak tanımladıklarından başka herhangi bir uygulama çalıştırıyorsa güvenlik uyarıları sağlamaya yöneliktir.
 
 ## <a name="availability"></a>Kullanılabilirlik
 
@@ -235,7 +235,12 @@ REST API kullanılabilen işlevlerden bazıları:
    > PUT isteğinde JSON kullanmadan önce şu özellikleri kaldırın: recommendationStatus, configurationStatus, sorunlar, konum ve dir.
 
 
+## <a name="faq---adaptive-application-controls"></a>SSS-Uyarlamalı uygulama denetimleri
 
+### <a name="are-there-any-options-to-enforce-the-application-controls"></a>Uygulama denetimlerini zorlamak için herhangi bir seçenek var mı?
+Hiçbir zorlama seçeneği yoktur ve hiçbiri planlanmaktadır. Uyarlamalı uygulama denetimleri, güvenli olarak tanımladıklarından başka herhangi bir uygulama çalıştırıyorsa **güvenlik uyarıları** sağlamaya yöneliktir. Bunlar, bir dizi avantaja sahiptir ([Uyarlamalı uygulama denetimlerinin avantajları nelerdir?](#what-are-the-benefits-of-adaptive-application-controls)) ve bu sayfada gösterildiği gibi son derece özelleştirilebilir.
+
+ 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Bu belgede, Azure Güvenlik Merkezi 'nde Uyarlamalı uygulama denetimi 'ni kullanarak Azure 'da ve Azure dışı makinelerde çalışan uygulamaların izin verilenler listesini nasıl tanımlayacağınızı öğrendiniz. Bazı güvenlik merkezi iş yükü koruma özellikleri hakkında daha fazla bilgi edinmek için bkz.:

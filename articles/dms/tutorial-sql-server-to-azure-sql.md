@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 01/03/2021
-ms.openlocfilehash: 9c79a1ab46513da54d61f1da5c1ba3a6dd480a95
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 23bc476c0d4fd90e19428d52b1468d090ffe2a1b
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98785372"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99820798"
 ---
 # <a name="tutorial-migrate-sql-server-to-azure-sql-database-offline-using-dms"></a>Öğretici: DMS kullanarak SQL Server'ı çevrimdışı Azure SQL Veritabanına geçirme
 
@@ -38,7 +38,7 @@ Azure veritabanı geçiş hizmeti 'ni kullanarak veritabanlarını bir SQL Serve
 
 Bu makalede, Azure SQL veritabanı 'ndaki bir veritabanına SQL Server çevrimdışı geçiş açıklanmaktadır. Çevrimiçi geçiş için bkz. [DMS kullanarak çevrimiçi biçimde SQL Server'ı Azure SQL Veritabanı’na geçirme](tutorial-sql-server-azure-sql-online.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için aşağıdakileri yapmanız gerekir:
 
@@ -237,6 +237,9 @@ Hizmet oluşturulduktan sonra Azure portaldan bulun, açın ve yeni bir geçiş 
 1. **Hedef Seç** ekranında, **Adventureworks2016** şemasının Data Migration Yardımcısı dağıtıldığı, önceden sağlanmış Azure SQL VERITABANı olan hedef Azure SQL veritabanı için bağlantı ayrıntılarını belirtin.
 
     ![Hedef seçme](media/tutorial-sql-server-to-azure-sql/dms-select-target2.png)
+    
+    > [!NOTE]
+    > Hedef Azure SQL veritabanı 'na yönelik özel uç nokta bağlantıları, Azure veritabanı geçiş hizmeti tarafından özel bir DNS adı kullanılması dışında desteklenmektedir. 
 
 2. Ileri ' yi seçin **: hedef veritabanlarına eşle** ekranı, kaynak ve hedef veritabanını geçiş için eşleyin.
 

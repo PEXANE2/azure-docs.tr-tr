@@ -7,22 +7,21 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: tutorial
 ms.date: 10/20/2019
-ms.openlocfilehash: b1b7069cb723bffd758c3603cc957329dd6d2a9b
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 2b26b4390cb19b832349b49d4e95a5355caed594
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96463254"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99820305"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-smart-inventory-management-application-template"></a>Öğretici: akıllı envanter yönetimi uygulama şablonunu dağıtma ve yönetme
 
-
-
 Bu öğreticide, bir IoT Central **Smart Inventory Management** uygulama şablonu dağıtarak nasıl başlatılacağınız gösterilmektedir. Şablonu dağıtmayı, kutudan hangilerinin ekleneceğini ve daha sonra ne yapmak isteyebileceğiniz hakkında bilgi edineceksiniz.
 
-Bu öğreticide, 
-* Akıllı envanter yönetimi uygulaması oluştur 
-* uygulamayı gözden geçir 
+Bu öğreticide,
+
+> [!div class="checklist"]
+> uygulama aracılığıyla akıllı envanter yönetimi uygulaması oluşturma 
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -104,7 +103,7 @@ Bu uygulama şablonunun bir parçası olarak var olan beş farklı işi görmek 
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Bu uygulamayı kullanmaya devam edemeyecekiniz, **Yönetim** uygulaması ayarlarını ziyaret ederek uygulama şablonunu silin  >  **Application settings** ve **Sil**' e tıklayın.
+Bu uygulamayı kullanmaya devam edemeyecekiniz, **Yönetim** uygulaması ayarlarını ziyaret ederek uygulama şablonunu silin  >   ve **Sil**' e tıklayın.
 
 > [!div class="mx-imgBorder"]
 > ![Uygulamayı tamamladığınızda uygulamanın nasıl silineceğini gösteren ekran görüntüsü](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_cleanup.png)

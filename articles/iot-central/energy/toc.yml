@@ -1,10 +1,11 @@
-- name: Enerji için Azure IoT Central Belgeleri
+- name: Enerji için Azure IoT Central belgeleri
   href: index.yml
 - name: Genel Bakış
   items:
     - name: Azure IoT Central ile enerji sektörü çözümleri oluşturma
       href: overview-iot-central-energy.md
 - name: Öğreticiler
+  expanded: true
   items:
     - name: Akıllı sayaç izleme uygulaması oluşturma
       href: tutorial-smart-meter-app.md

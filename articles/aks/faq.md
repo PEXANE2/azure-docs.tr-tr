@@ -3,12 +3,12 @@ title: Azure Kubernetes hizmeti (AKS) için sık sorulan sorular
 description: Azure Kubernetes hizmeti (AKS) ile ilgili bazı yaygın soruların yanıtlarını bulun.
 ms.topic: conceptual
 ms.date: 08/06/2020
-ms.openlocfilehash: 7fc348ae7b3edb79e75aa1acd08941fec447da6f
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: 6c2eddf3b7002b101fed8face4a58f2d2b2f4878
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98127643"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99820271"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) hakkında sık sorulan sorular
 
@@ -132,7 +132,9 @@ Düğüm havuzu için Windows Server desteği, Kubernetes projesinde yukarı ak�
 
 ## <a name="does-aks-offer-a-service-level-agreement"></a>AKS bir hizmet düzeyi sözleşmesi sunuyor mu?
 
-AKS, [çalışma süresi SLA 'sı][uptime-sla]ile isteğe bağlı bir eklenti ÖZELLIĞI olarak SLA garantisi sağlar.
+AKS, [çalışma süresi SLA 'sı][uptime-sla]ile isteğe bağlı bir eklenti ÖZELLIĞI olarak SLA garantisi sağlar. 
+
+Varsayılan olarak sunulan ücretsiz SLA, yüksek oranda kullanılabilir bir API sunucusu uç noktası garantisi vermez (hizmet düzeyi hedefiniz% 99,5 ' dir. Geçici bağlantı sorunlarının, yükseltmeler, sağlıksız örnek düzenleme düğümleri, platform bakımı, vb. gibi gözlemlendiği bir durum olabilir. İş yükünüz Apıver yeniden başlatmalarının kabul etmezse, çalışma süresi SLA 'sını kullanmayı öneririz.
 
 ## <a name="can-i-apply-azure-reservation-discounts-to-my-aks-agent-nodes"></a>AKS aracı düğümlerine Azure rezervasyon indirimleri uygulayabilir miyim?
 

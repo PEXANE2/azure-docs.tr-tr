@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/07/2021
+ms.date: 02/08/2021
 ms.author: shhazam
-ms.openlocfilehash: a8f4b96b27eb09443c2644fd63a8783faaa610e4
-ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
+ms.openlocfilehash: f15c4ed6bb7da5cd33eca96c171bfada68092b35
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 02/08/2021
-ms.locfileid: "99809516"
+ms.locfileid: "99820679"
 ---
 # <a name="whats-new-in-azure-defender-for-iot"></a>IoT için Azure Defender 'daki yenilikler nelerdir?
 
@@ -27,13 +27,13 @@ Bu makalede, IoT için Defender için yeni özellikler ve özellik geliştirmele
 Belirtilen özellikler ÖNIZLEMEDEDIR. [Azure önizleme ek koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) , Beta, önizleme veya henüz genel kullanıma sunulmayan Azure özelliklerine uygulanan ek yasal koşulları içerir.
 ## <a name="february-2021"></a>Şubat 2021
 
-### <a name="enhanced-custom-alert-rules"></a>Gelişmiş özel uyarı kuralları
+### <a name="sensor---enhanced-custom-alert-rules"></a>Algılayıcı gelişmiş özel uyarı kuralları
 
 Artık güne, gün grubuna ve zaman aralığı ağ etkinliğine göre özel uyarı kuralları oluşturabilirsiniz.  Gün ve saat kuralı koşullarıyla çalışma, örneğin uyarı önem derecesi, uyarı olayının gerçekleştiği zamana göre elde edilen durumlarda faydalıdır. Örneğin, bir hafta sonu veya akşam 'da ağ etkinliği algılandığında yüksek önem derecesine sahip bir uyarı tetikleyen özel bir kural oluşturun.
 
 Bu özellik, sürüm 10,1 sürümü ile sensörde mevcuttur.
 
-### <a name="export-alerts-from-on-premises-management-console"></a>Şirket içi yönetim konsolundan uyarıları dışarı aktarma
+### <a name="on-premises-management-console---export-alerts"></a>Şirket içi yönetim konsolu-uyarıları dışarı aktarma
 
 Uyarı bilgileri artık şirket içi yönetim konsolundan bir. csv dosyasına aktarılabilir. Filtrelenmiş görünüme göre algılanan tüm uyarıların veya dışarı aktarma bilgilerinin bilgilerini dışarı aktarabilirsiniz.
 
@@ -48,7 +48,7 @@ Yeni bir cihaz Oluşturucu modülü var. Mikro aracı olarak adlandırılan mod�
 - **Güvenlik durure yönetimi** – IoT cihazlarınızın güvenlik duruşunu önceden izleyin.
 - **Sürekli, gerçek zamanlı IoT/ot tehdit algılama** -botağları, deneme yanılma girişimleri, şifre Miners ve şüpheli ağ etkinliği gibi tehditleri algılayın
 
-Kullanım dışı bırakılan güvenlik modülü belgeleri klasik klasöre taşınır.
+Kullanım dışı bırakılan güvenlik modülü belgeleri, *Klasik klasör>cihaz oluşturucular Için aracı tabanlı çözüme* taşınır.
 
 Bu özellik kümesi, geçerli genel önizleme bulutu sürümü ile kullanılabilir.
 

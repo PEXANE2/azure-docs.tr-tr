@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/05/2020
-ms.openlocfilehash: feca2e83646264b28e42125b3fdebf41266c06bd
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 489c6be7bf977d01207fee4d1bd1fda13dc12025
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422731"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99820526"
 ---
 # <a name="api-versions-in-azure-cognitive-search"></a>Azure Bilişsel Arama API sürümleri
 
@@ -87,7 +87,7 @@ Aşağıdaki tabloda, daha güncel SDK sürümlerinin bağlantıları verilmişt
 
 | SDK sürümü | Durum | Açıklama |
 |-------------|--------|------------------------------|
-| [Azure.Search.Doc10 gün](/dotnet/api/overview/azure/search.documents-readme) | Dengeli | Azure .NET SDK 'dan yeni istemci kitaplığı, 2020 Temmuz 'da yayınlandı. Arama REST API-Version = 2020-06-30 REST API, ancak henüz, coğrafi filtreleri desteklemez. |
+| [Azure.Search.Doc10 gün](/dotnet/api/overview/azure/search.documents-readme) | Dengeli | Azure .NET SDK 'dan yeni istemci kitaplığı, 2020 Temmuz 'da yayınlandı. Arama REST API-Version = 2020-06-30 REST API hedefler, ancak henüz coğrafi filtreler için yerel destek sağlamaz. Coğrafi işlemler için [Microsoft. uzamsal](https://www.nuget.org/packages/Microsoft.Spatial/) paketi öneririz. [System.Text.Js](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/core/Microsoft.Azure.Core.Spatial/README.md) ve üzerinde [Newtonsoft.Js](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/core/Microsoft.Azure.Core.Spatial.NewtonsoftJson/README.md)için örnekler mevcuttur. |
 | [Microsoft. Azure. Search 10](https://www.nuget.org/packages/Microsoft.Azure.Search/) | Dengeli | Yayınlanan 2019 Mayıs. Arama REST API-Version = 2019-05-06 ' i hedefler.|
 | [Microsoft. Azure. Management. Search 4.0.0](/dotnet/api/overview/azure/search/management) | Dengeli | Yönetim REST API-Version = 2020-08-01 ' i hedefler.  |
 | Microsoft. Azure. Management. Search 3.0.0 | Dengeli | Yönetim REST API-Version = 2015-08-19 ' i hedefler.  |

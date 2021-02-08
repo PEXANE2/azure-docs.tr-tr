@@ -1,18 +1,18 @@
 ---
 title: 'Öğretici: Azure IoT Central bağlı bir çöp yönetimi uygulaması oluşturma'
-description: Azure IoT Central uygulama şablonlarını kullanarak bağlı bir çöp yönetimi uygulaması derlemeyi öğrenin.
+description: 'Öğretici: Azure IoT Central uygulama şablonlarını kullanarak bağlı bir çöp yönetimi uygulaması derlemeyi öğrenin'
 author: miriambrus
 ms.author: miriamb
 ms.date: 12/11/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 8085409c3dc38d17b6fe0d3cb15857b2396e23b6
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 65245b3c4b7e18670682f7e9e890453e32337644
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97881353"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99820088"
 ---
 # <a name="tutorial-create-a-connected-waste-management-app"></a>Öğretici: bağlı bir çöp yönetimi uygulaması oluşturma
 
@@ -20,13 +20,13 @@ Bu öğreticide, bağlı bir çöp yönetimi uygulaması oluşturmak için Azure
 
 Özellikle şunları nasıl yapacağınızı öğreneceksiniz: 
 
-* Uygulamanızı oluşturmak için Azure IoT Central *bağlı çöp yönetimi* şablonunu kullanın.
-* Operatör panosunu gezin ve özelleştirin. 
-* Bağlı çöp kutusu cihaz şablonunu gezin.
-* Sanal cihazları keşfet.
-* Kuralları keşfet ve yapılandırın.
-* İşleri yapılandırma.
-* Uygulama markanızı özelleştirin.
+> [!div class="checklist"]
+> Uygulamanızı oluşturmak için Azure IoT Central *bağlı çöp yönetimi* şablonunu kullanın.
+> Operatör panosunu gezin ve özelleştirin. Bağlı çöp kutusu cihaz şablonunu gezin.
+> Sanal cihazları keşfet.
+> Kuralları keşfet ve yapılandırın.
+> İşleri yapılandırma.
+> Uygulama markanızı özelleştirin.
 
 ## <a name="prerequisites"></a>Önkoşullar
 

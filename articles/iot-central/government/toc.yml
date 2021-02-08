@@ -5,6 +5,7 @@
     - name: Azure IoT Central ile kamu çözümleri oluşturma
       href: overview-iot-central-government.md
 - name: Öğreticiler
+  expanded: true
   items:
     - name: Bağlantılı atık yönetimi uygulaması oluşturma
       href: tutorial-connected-waste-management.md

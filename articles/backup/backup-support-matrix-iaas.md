@@ -4,12 +4,12 @@ description: Azure Backup hizmeti ile Azure VM 'lerini yedeklerken destek ayarla
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.custom: references_regions
-ms.openlocfilehash: 3d1238bffd785a47b6e0ffab70366a15dfff0ef3
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 1752e6687cd4dda72ee330c489a4642ae32f8219
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99218120"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99820781"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure VM yedekleme için destek matrisi
 
@@ -81,7 +81,7 @@ Azure VM Linux yedeklemeleri için Azure Backup, [Azure tarafından](../virtual-
 - Azure Backup 32 bit işletim sistemlerini desteklemez.
 - Diğer kendi Linux dağıtımları, [Linux Için Azure VM ARACıSı](../virtual-machines/extensions/agent-linux.md) VM 'de kullanılabildiği ve Python desteklendiği sürece çalışan Linux dağıtımlarınız çalışabilir.
 - Azure Backup, Python sürüm 2,7 yüklü değilse proxy tarafından yapılandırılan bir Linux VM 'yi desteklemez.
-- Azure Backup, depolama alanından veya diğer herhangi bir NFS sunucusundan Linux veya Windows makinelerine bağlı NFS dosyalarını yedeklemeyi desteklemez. Yalnızca VM 'ye yerel olarak bağlı olan diskleri yedekler.
+- Azure Backup, depolama alanından veya diğer herhangi bir NFS sunucusundan Linux veya Windows makinelerine bağlı NFS dosyalarını yedeklemeyi desteklemez. Yalnızca VM 'ye yerel olarak bağlı diskleri yedekler.
 
 ## <a name="backup-frequency-and-retention"></a>Yedekleme sıklığı ve bekletme
 
@@ -102,7 +102,7 @@ DPM/MABS diskindeki kurtarma noktaları | dosya sunucuları için 64 ve uygulama
 --- | ---
 **Yeni VM oluştur** | Geri yükleme noktasından hızlıca temel bir VM oluşturur ve çalıştırmaya başlar.<br/><br/> VM için bir ad belirtebilir, yerleştirileceği kaynak grubunu ve sanal ağı (VNet) seçin ve geri yüklenen VM için bir depolama hesabı belirtin. Yeni VM'nin kaynak VM ile aynı bölgede oluşturulması gerekir.
 **Diski geri yükle** | Yeni bir VM oluşturmak üzere kullanılabilecek bir VM diskini geri yükler.<br/><br/> Azure Backup, VM oluşturmanıza ve özelleştirmenize yardımcı olacak bir şablon sağlar. <br/><br> Geri yükleme işi, özel VM ayarlarını belirtmek ve bir VM oluşturmak için indirebileceğiniz ve kullanabileceğiniz bir şablon oluşturur.<br/><br/> Diskler belirttiğiniz kaynak grubuna kopyalanır.<br/><br/> Alternatif olarak, diski mevcut bir sanal makineye iliştirebilir veya PowerShell kullanarak yeni bir VM oluşturabilirsiniz.<br/><br/> Bu seçenek VM'yi özelleştirmek, yedekleme sırasında mevcut olmayan yapılandırma ayarlarını eklemek veya şablon veya PowerShell kullanılarak yapılandırılması gereken ayarlar eklemek istediğinizde faydalı olur.
-**Mevcut olanı değiştir** | Bir diski geri yükleyebilir ve mevcut VM 'deki bir diski değiştirmek için kullanabilirsiniz.<br/><br/> Geçerli VM'nin mevcut olması gerekir. Silinmesi durumunda bu seçenek kullanılamaz.<br/><br/> Azure Backup, diski değiştirmeden önce var olan sanal makinenin anlık görüntüsünü alır ve bunu belirttiğiniz hazırlama konumunda depolar. VM'ye bağlı olan mevcut diskler seçilen geri yükleme noktasıyla değiştirilir.<br/><br/> Anlık görüntü kasaya kopyalanır ve bekletme ilkesine göre saklanır. <br/><br/> Disk değiştirme işleminden sonra, özgün disk kaynak grubunda tutulur. Gerekli değilse, özgün diskleri el ile silmeyi tercih edebilirsiniz. <br/><br/>Mevcut olanı Değiştir, şifrelenmemiş yönetilen sanal makineler ve [özel görüntüler kullanılarak oluşturulan](https://azure.microsoft.com/resources/videos/create-a-custom-virtual-machine-image-in-azure-resource-manager-with-powershell/)VM 'ler için desteklenir. Yönetilmeyen diskler ve [Genelleştirilmiş VM 'ler](../virtual-machines/windows/capture-image-resource.md)için desteklenmez.<br/><br/> Geri yükleme noktası geçerli VM 'den daha fazla veya daha az disk içeriyorsa, geri yükleme noktasındaki disk sayısı yalnızca VM yapılandırmasını yansıtacaktır.<br><br> Aynı zamanda, [Kullanıcı tarafından atanan yönetilen kimlik](../active-directory/managed-identities-azure-resources/overview.md) ve [Key Vault](../key-vault/general/overview.md)gibi bağlantılı kaynaklarla sanal makineler için de desteklenir.
+**Mevcut olanı değiştir** | Bir diski geri yükleyebilir ve mevcut VM 'deki bir diski değiştirmek için kullanabilirsiniz.<br/><br/> Geçerli VM'nin mevcut olması gerekir. Silinmesi durumunda bu seçenek kullanılamaz.<br/><br/> Azure Backup, diski değiştirmeden önce var olan sanal makinenin anlık görüntüsünü alır ve bunu belirttiğiniz hazırlama konumunda depolar. VM'ye bağlı olan mevcut diskler seçilen geri yükleme noktasıyla değiştirilir.<br/><br/> Anlık görüntü kasaya kopyalanır ve bekletme ilkesine göre saklanır. <br/><br/> Disk değiştirme işleminden sonra, özgün disk kaynak grubunda tutulur. Gerekli değilse, özgün diskleri el ile silmeyi tercih edebilirsiniz. <br/><br/>Mevcut olanı Değiştir, şifrelenmemiş yönetilen sanal makineler ve [özel görüntüler kullanılarak oluşturulan](https://azure.microsoft.com/resources/videos/create-a-custom-virtual-machine-image-in-azure-resource-manager-with-powershell/)VM 'ler için desteklenir. Yönetilmeyen diskler ve VM 'Ler, klasik VM 'ler ve [Genelleştirilmiş VM 'ler](../virtual-machines/windows/capture-image-resource.md)için desteklenmez.<br/><br/> Geri yükleme noktası geçerli VM 'den daha fazla veya daha az disk içeriyorsa, geri yükleme noktasındaki disk sayısı yalnızca VM yapılandırmasını yansıtacaktır.<br><br> Aynı zamanda, [Kullanıcı tarafından atanan yönetilen kimlik](../active-directory/managed-identities-azure-resources/overview.md) ve [Key Vault](../key-vault/general/overview.md)gibi bağlantılı kaynaklarla sanal makineler için de desteklenir.
 **Bölgeler Arası (ikincil bölge)** | Çapraz bölge geri yükleme, Azure [eşlenmiş bölgesi](../best-practices-availability-paired-regions.md#what-are-paired-regions)olan Ikincil bölgedeki Azure VM 'lerini geri yüklemek için kullanılabilir.<br><br> Yedekleme ikincil bölgede yapıldığında, seçilen kurtarma noktası için tüm Azure VM 'lerini geri yükleyebilirsiniz.<br><br> Bu özellik aşağıdaki seçenekler için kullanılabilir:<br> <li> [VM oluştur](./backup-azure-arm-restore-vms.md#create-a-vm) <br> <li> [Diskleri geri yükle](./backup-azure-arm-restore-vms.md#restore-disks) <br><br> [Mevcut diskleri Değiştir](./backup-azure-arm-restore-vms.md#replace-existing-disks) seçeneğini şu anda desteklemiyoruz.<br><br> İzinler<br> İkincil bölgedeki geri yükleme işlemi, Backup Admins ve App Admins tarafından gerçekleştirilebilir.
 
 ## <a name="support-for-file-level-restore"></a>Dosya düzeyinde geri yükleme desteği
@@ -145,12 +145,12 @@ VM boyutu |En az 2 CPU çekirdeği ve 1 GB RAM içeren herhangi bir Azure VM boy
 Azure 'a geçirilen VM 'Leri yedekleme| Destekleniyor.<br/><br/> VM 'yi yedeklemek için, geçirilen makinede VM aracısının yüklü olması gerekir.
 Çoklu VM tutarlılığını yedekleme | Azure Backup birden çok VM arasında veri ve uygulama tutarlılığı sağlamaz.
 [Tanılama ayarlarıyla](../azure-monitor/platform/platform-logs-overview.md) yedekleme  | Desteklenmez. <br/><br/> Azure VM 'yi tanılama ayarlarıyla geri yükleme [yeni seçenek oluştur](backup-azure-arm-restore-vms.md#create-a-vm) seçeneği kullanılarak tetikleniyorsa geri yükleme başarısız olur.
-Bölge ile sabitlenmiş VM 'Leri geri yükleme | Desteklenir (Ocak 2019 ' den sonra yedeklenen ve [kullanılabilirlik bölgelerinin](https://azure.microsoft.com/global-infrastructure/availability-zones/) KULLANıLABILDIĞI bir VM için).<br/><br/>Şu anda VM 'lerde sabitlenmiş aynı bölgeye geri yüklemeyi destekliyoruz. Ancak, bölge bir kesinti nedeniyle kullanılamazsa geri yükleme başarısız olur.
+Bölge ile sabitlenmiş VM 'Leri geri yükleme | Desteklenir (Ocak 2019 ' den sonra yedeklenen ve [kullanılabilirlik bölgelerinin](https://azure.microsoft.com/global-infrastructure/availability-zones/) KULLANıLABILDIĞI bir VM için).<br/><br/>Şu anda VM 'lerde sabitlenmiş aynı bölgeye geri yüklemeyi destekliyoruz. Ancak, bölge bir kesinti nedeniyle kullanılamıyorsa geri yükleme başarısız olur.
 Gen2 VM 'Leri | Desteklenir <br> Azure Backup, [Gen2 VM](https://azure.microsoft.com/updates/generation-2-virtual-machines-in-azure-public-preview/)'lerinin yedeklenmesini ve geri yüklenmesini destekler. Bu VM 'Ler kurtarma noktasından geri yüklendiğinde, [Gen2 VM](https://azure.microsoft.com/updates/generation-2-virtual-machines-in-azure-public-preview/)olarak geri yüklenir.
 Kilitleri olan Azure VM 'lerinin yedeklenmesi | Yönetilmeyen VM 'Ler için desteklenmez. <br><br> Yönetilen VM 'Ler için desteklenir.
 [Spot VM'ler](../virtual-machines/spot-vms.md) | Desteklenmez. Azure Backup, normal Azure VM 'Leri olarak spot VM 'Leri geri yükler.
 [Azure adanmış ana bilgisayar](https://docs.microsoft.com/azure/virtual-machines/dedicated-hosts) | Desteklenir
-Tek başına Azure VM 'lerinin Windows depolama alanları yapılandırması | Desteklenir 
+Tek başına Azure VM 'lerinin Windows depolama alanları yapılandırması | Desteklenir
 
 ## <a name="vm-storage-support"></a>VM depolama desteği
 
@@ -167,7 +167,7 @@ Korumalı VM 'ye disk ekleme | Destekleniyor.
 Korumalı VM 'de diski yeniden boyutlandır | Destekleniyor.
 Paylaşılan depolama alanı| Küme Paylaşılan Birimi (CSV) veya Scale-Out dosya sunucusu kullanarak VM 'Leri yedekleme desteklenmez. Yedekleme sırasında CSV yazıcılarının başarısız olma olasılığı yüksektir. Geri yükleme sırasında CSV birimleri içeren diskler gelmeyebilir.
 [Paylaşılan diskler](../virtual-machines/disks-shared-enable.md) | Desteklenmez.
-Ultra SSD diskler | Desteklenmez. Daha fazla ayrıntı için bu [sınırlamalara](selective-disk-backup-restore.md#limitations)bakın.
+Ultra SSD diskler | Desteklenmez. Daha fazla bilgi için, bkz. bu [sınırlamalar](selective-disk-backup-restore.md#limitations).
 [Geçici diskler](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview#temporary-disk) | Geçici diskler Azure Backup tarafından yedeklenmez.
 
 ## <a name="vm-network-support"></a>VM ağı desteği

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/17/2019
 ms.author: kumud
-ms.openlocfilehash: fd154ec40ed4d1650e44a67fd5d362a2bc0c519d
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: f4ce830c889feaeda05745eeb02b72f55ad9314a
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97813947"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99819852"
 ---
 # <a name="quickstart-create-and-configure-azure-ddos-protection-standard"></a>Hızlı başlangıç: Azure DDoS koruma standardı oluşturma ve yapılandırma
 
@@ -77,7 +77,7 @@ Sanal ağ için DDoS standardı etkinleştirildiğinde bir sanal ağı başka bi
 
 ### <a name="enable-ddos-protection-for-all-virtual-networks"></a>Tüm sanal ağlar için DDoS korumasını etkinleştir
 
-Bu [ilke](https://github.com/Azure/Azure-Network-Security/tree/master/Azure%20DDoS%20Protection/Policy%20-%20Virtual%20Networks%20should%20be%20associated%20with%20an%20Azure%20DDoS%20Protection%20Standard%20plan) , DDoS koruma standardı etkin olmayan tanımlanmış bir kapsamdaki tüm sanal ağları algılayacak ve isteğe bağlı olarak VNET 'i korumak için ilişkilendirmeyi oluşturacak bir düzeltme görevi oluşturmaya çalışır. Bu ilkeyi dağıtma hakkında ayrıntılı adım adım yönergeler için bkz https://aka.ms/ddosvnetpolicy-techcommunity ..
+Bu [ilke](https://aka.ms/ddosvnetpolicy) , DDoS koruma standardı etkin olmayan tanımlanmış bir kapsamdaki tüm sanal ağları algılayacak ve isteğe bağlı olarak VNET 'i korumak için ilişkilendirmeyi oluşturacak bir düzeltme görevi oluşturmaya çalışır. Bu ilkeyi dağıtma hakkında ayrıntılı adım adım yönergeler için bkz https://aka.ms/ddosvnetpolicy-techcommunity ..
 
 ## <a name="validate-and-test"></a>Doğrula ve test et
 

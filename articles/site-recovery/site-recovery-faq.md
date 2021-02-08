@@ -4,12 +4,12 @@ description: Bu makalede Azure Site Recovery hakkındaki popüler genel sorular 
 ms.topic: conceptual
 ms.date: 7/14/2020
 ms.author: raynew
-ms.openlocfilehash: ca30f9ba190dfa3c7e224e47b90be4d3bc5d47ae
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.openlocfilehash: 9db91a15c0ee5c982f73f36a36f12b38b969a125
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2021
-ms.locfileid: "98746484"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99820205"
 ---
 # <a name="general-questions-about-azure-site-recovery"></a>Azure Site Recovery hakkındaki genel sorular
 
@@ -188,7 +188,7 @@ Evet, [ExpressRoute](concepts-expressroute-with-site-recovery.md) , şirket içi
 
 ### <a name="if-i-replicate-to-azure-what-kind-of-storage-account-or-managed-disk-do-i-need"></a>Azure 'a çoğaltma yapıyorsanız, ne tür bir depolama hesabı veya yönetilen disk gereksinimim vardır?
 
-LRS veya GRS depolamaya ihtiyacınız vardır. Bölgesel bir kesintinin meydana gelmesi veya birincil bölgenin kurtarılamaması durumunda verilerin korunması için GRS'yi tavsiye ederiz. Hesabın, Kurtarma Hizmetleri kasasıyla aynı bölgede olması gerekir. Azure portal Site Recovery dağıtırken, VMware VM, Hyper-V VM ve fiziksel sunucu çoğaltma için Premium Depolama desteklenir. Yönetilen diskler yalnızca LRS 'yi destekler.
+Depolama hesaplarını hedef depolama olarak kullanmak Azure Site Recovery tarafından desteklenmez. Makineler için hedef depolama olarak yönetilen diskleri kullanmanız önerilir. Yönetilen diskler yalnızca veri dayanıklılığı için LRS türünü destekler.
 
 ### <a name="how-often-can-i-replicate-data"></a>Verileri ne sıklıkta çoğaltabilirim?
 * **Hyper-V:** Hyper-V VM 'Leri, her 30 saniyede bir (Premium Depolama hariç), beş dakika veya 15 dakika olabilir.

@@ -1,21 +1,21 @@
 ---
-title: Video analizlerini dağıtma-nesne ve hareket algılama Azure IoT Central uygulama şablonu
-description: Bu kılavuzda, video analizi-nesne ve hareket algılama uygulama şablonu kullanılarak bir Azure IoT Central uygulaması dağıtma adımları özetlenmektedir.
+title: 'Öğretici: video analizlerini dağıtma-nesne ve hareket algılama Azure IoT Central uygulama şablonu'
+description: Öğretici-bu kılavuzda, video analizi-nesne ve hareket algılama uygulama şablonu kullanılarak bir Azure IoT Central uygulaması dağıtma adımları özetlenmektedir.
 services: iot-central
 ms.service: iot-central
 ms.subservice: iot-central-retail
-ms.topic: how-to
+ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/31/2020
-ms.openlocfilehash: decfa7020be7778e8ca64a9fb0cb4aac1657da27
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: abeae674cef8f13a092b53bde6040ad853bd0cca
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91873345"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99820373"
 ---
-# <a name="how-to-deploy-an-iot-central-application-using-the-video-analytics---object-and-motion-detection-application-template"></a>Video analizi-nesne ve hareket algılama uygulama şablonunu kullanarak IoT Central uygulaması dağıtma
+# <a name="tutorial-how-to-deploy-an-iot-central-application-using-the-video-analytics---object-and-motion-detection-application-template"></a>Öğretici: video analizi-nesne ve hareket algılama uygulama şablonunu kullanarak bir IoT Central uygulaması dağıtma
 
 Temel *video analizi-nesne ve hareket algılama* uygulaması bileşenlerine genel bakış için bkz. [nesne ve hareket algılama video analizi uygulama mimarisi](architecture-video-analytics.md).
 
@@ -45,4 +45,10 @@ Video analizi uygulama şablonunu kullanarak bir IoT Central uygulamasını dağ
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Artık, video analizi uygulama şablonunu dağıtma ve kullanma adımlarına genel bir bakış için bkz. başlamak için Azure 'da [bir video analytics IoT Central uygulaması oluşturma (YOLO v3)](tutorial-video-analytics-create-app-yolo-v3.md) veya [Azure IoT Central (openvino &trade; ) üzerinde bir video analizi oluşturma](tutorial-video-analytics-create-app-openvino.md) .
+Artık, video analizi uygulama şablonunu dağıtma ve kullanma adımlarına genel bir bakış sunulmaktadır.
+
+> [!div class="nextstepaction"]
+> [Azure IoT Central (YOLO v3) üzerinde bir video analizi uygulaması oluşturun](tutorial-video-analytics-create-app-yolo-v3.md) veya
+
+> [!div class="nextstepaction"]
+> Başlamak için [Azure IoT Central 'da (OpenVINO &trade; ) bir video analizi oluşturun](tutorial-video-analytics-create-app-openvino.md) .

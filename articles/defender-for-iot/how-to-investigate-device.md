@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/04/2020
 ms.author: mlottner
-ms.openlocfilehash: cd7802fa4a88c3b05140d30ab4d8b2bbd4adc8f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a7b51138abe6d8e97f55ceae11d4cf13b9ebc136
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90941891"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99820611"
 ---
 # <a name="investigate-a-suspicious-iot-device"></a>Şüpheli bir IoT cihazını araştırın
 
@@ -37,14 +37,14 @@ Varsayılan olarak, IoT için Defender, Log Analytics çalışma alanınızdaki 
 Veri depolamaya yönelik Log Analytics çalışma alanınızı bulmak için:
 
 1. IoT Hub 'ınızı açın,
-1. **Güvenlik**altında **Ayarlar**' ı seçin ve ardından **veri toplama**' yı seçin.
+1. **Güvenlik** altında **Ayarlar**' ı seçin ve ardından **veri toplama**' yı seçin.
 1. Log Analytics çalışma alanı yapılandırma ayrıntılarınızı değiştirin.
 1. **Kaydet**’e tıklayın.
 
 Aşağıdaki yapılandırma, Log Analytics çalışma alanınızda depolanan verilere erişmek için aşağıdakileri yapın:
 
 1. IoT Hub IoT uyarısı için bir Defender ' ı seçin ve tıklayın.
-1. **Daha fazla araştırma**öğesine tıklayın.
+1. **Daha fazla araştırma** öğesine tıklayın.
 1. **Bu uyarıya hangi cihazların olduğunu görmek için seçin öğesini seçin ve DeviceID sütununu görüntüleyin**.
 
 ## <a name="investigation-steps-for-suspicious-iot-devices"></a>Şüpheli IoT cihazları için araştırma adımları

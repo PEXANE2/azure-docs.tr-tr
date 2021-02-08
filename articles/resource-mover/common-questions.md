@@ -5,25 +5,18 @@ author: rayne-wiselman
 manager: evansma
 ms.service: resource-move
 ms.topic: conceptual
-ms.date: 02/01/2021
+ms.date: 02/04/2021
 ms.author: raynew
-ms.openlocfilehash: ab4b8f5a691bc8e4091e9f3f01b709391deeddb0
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: c586832386f3bf6419d8af94ad23662c6801b1ae
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99550717"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99820883"
 ---
 # <a name="common-questions"></a>Sık sorulan sorular
 
 Bu makalede, [Azure Kaynak taşıyıcısı](overview.md)hakkında sık sorulan sorular yanıtlanmaktadır.
-
-## <a name="general"></a>Genel
-
-### <a name="is-resource-mover-generally-available"></a>Kaynak taşıyıcısı genel olarak kullanılabilir mi?
-
-Kaynak taşıyıcısı Şu anda genel önizleme aşamasındadır. Üretim iş yükleri desteklenir.
-
 
 
 ## <a name="moving-across-regions"></a>Bölgeler arasında taşıma
@@ -45,6 +38,9 @@ Kaynak taşıyıcısı kullanarak şu anda bölgeler arasında şu kaynakları t
 - İç ve genel yük dengeleyiciler 
 - Azure SQL veritabanları ve elastik havuzlar
 
+### <a name="can-i-move-disks-across-regions"></a>Diskleri bölgeler arasında taşıyabilir miyim?
+
+Bölgeler arasında taşınan kaynak olarak disk seçemezsiniz. Ancak, diskler VM taşımanın bir parçası olarak taşınır.
 
 ### <a name="can-i-move-resources-across-subscriptions-when-i-move-them-across-regions"></a>Kaynakları bölgeler arasında taşırken kaynakları abonelikler arasında taşıyabilir miyim?
 
@@ -97,6 +93,12 @@ Abonelik farklı bir kiracıya taşındı. | Taşıma koleksiyonu için yönetil
 ### <a name="how-can-i-do-multiple-moves-together"></a>Birden çok daha fazla hareketi nasıl yapabilirim?
 
 Portalda Değiştir seçeneğini kullanarak kaynak/hedef birleşimleri gerektiği gibi değiştirin.
+
+### <a name="what-happens-when-i-remove-a-resource-from-a-list-of-move-resources"></a>Kaynak taşıma listesinden bir kaynağı kaldırdığımda ne olur?
+
+Taşıma listesine eklediğiniz kaynakları kaldırabilirsiniz. Listeden bir kaynağı kaldırdığınızda oluşan davranış, kaynak durumuna bağlıdır. [Daha fazla bilgi edinin](remove-move-resources.md#vm-resource-state-after-removing).
+
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
