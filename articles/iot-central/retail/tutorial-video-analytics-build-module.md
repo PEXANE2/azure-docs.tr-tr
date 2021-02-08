@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/31/2020
-ms.openlocfilehash: c2f6f386f4a8ea062980c0efc97d0cfb4f37f4f2
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: e5236bb7034ae4d5f86ab2f8f965bdbfbc3d6ccd
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92124903"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99832054"
 ---
 # <a name="tutorial-modify-and-build-the-live-video-analytics-gateway-modules"></a>Öğretici: canlı video analizi ağ geçidi modüllerini değiştirme ve derleme
 
@@ -73,6 +73,13 @@ VS Code yerel *canlı video analizi* deposu klasörünü açın.
 1. **NPM Sürüm Patch** komutunu çalıştırmak için vs Code terminalini kullanın. Bu derleme betiği, görüntüleri kapsayıcı Kayıt defterinize dağıtır. VS Code Terminal penceresindeki çıktı, oluşturma işleminin başarılı olup olmadığını gösterir.
 
 1. **Lvaedgegatewaymodule** görüntüsünün sürümü, yapı her tamamlandığında artar. Dağıtım bildirimi dosyasında bu sürümü kullanmanız gerekir.
+
+## <a name="clean-up-resources"></a>Kaynakları temizleme
+
+Uygulamayı tamamladıysanız, oluşturduğunuz tüm kaynakları aşağıdaki şekilde kaldırabilirsiniz:
+
+1. IoT Central uygulamasında, **Yönetim** bölümünde **uygulamanızın** sayfasına gidin. Ardından **Sil**’i seçin.
+1. Azure portal, **LVA-RG** kaynak grubunu silin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

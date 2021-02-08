@@ -7,16 +7,18 @@ ms.date: 08/11/2020
 ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 10ec761313ce39beb4b24b838d156478704f943e
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.openlocfilehash: b2b17cffb8abd748315c437f46000995c4cb598a
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 02/08/2021
-ms.locfileid: "99820039"
+ms.locfileid: "99831918"
 ---
 # <a name="quickstart---set-up-your-environment-for-the-iot-plug-and-play-quickstarts-and-tutorials"></a>Hızlı başlangıç-ortamınızı IoT Tak ve Kullan hızlı başlangıç ve öğreticiler için ayarlama
 
 IoT Tak ve Kullan hızlı başlangıçların ve öğreticilerinin hiçbirini tamamlamadan önce Azure aboneliğinizde bir IoT Hub 'ı ve cihaz sağlama hizmeti 'ni (DPS) yapılandırmanız gerekir. Ayrıca, örnek uygulamalar ve Azure IoT gezgin aracı tarafından kullanılan model dosyalarının yerel kopyalarına de ihtiyacınız olacaktır.
+
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
@@ -130,7 +132,7 @@ Daha önce indirdiğiniz model dosyalarını kullanmak için aracı yapılandır
 
 Daha fazla bilgi için bkz. [Azure IoT Explorer 'ı yüklemek ve kullanmak](howto-use-iot-explorer.md).
 
-## <a name="remove-the-resources"></a>Kaynakları kaldırma
+## <a name="clean-up-resources"></a>Kaynakları temizleme
 
 IoT Hub ve DPS örneğini tüm IoT Tak ve Kullan hızlı başlangıç ve öğreticiler için kullanabilirsiniz. bu nedenle, bu makaledeki adımları yalnızca bir kez gerçekleştirmeniz gerekir. İşiniz bittiğinde, aşağıdaki komutla aboneliğinizden kaldırabilirsiniz:
 

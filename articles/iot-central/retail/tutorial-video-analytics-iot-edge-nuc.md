@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/27/2020
-ms.openlocfilehash: e2e97b857f648390ec017a529115b23c4f17a68d
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 64cdb41540d9750be8664dc60c2b6ceda6c324ca
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94427998"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99831935"
 ---
 # <a name="tutorial-create-an-iot-edge-instance-for-video-analytics-intel-nuc"></a>Öğretici: video analizi için IoT Edge örneği oluşturma (Intel NUC)
 
@@ -148,6 +148,14 @@ IoT Edge cihazınıza bağlı olan kameraların RTSP akış URL 'Lerini belirler
 
 > [!TIP]
 > IoT Edge bilgisayarda VLC gibi bir medya oynatıcı kullanarak kamera akışını görüntülemeyi deneyin.
+
+## <a name="clean-up-resources"></a>Kaynakları temizleme
+
+Uygulamayı tamamladıysanız, oluşturduğunuz tüm kaynakları aşağıdaki şekilde kaldırabilirsiniz:
+
+1. IoT Central uygulamasında, **Yönetim** bölümünde **uygulamanızın** sayfasına gidin. Ardından **Sil**’i seçin.
+1. Azure portal, **LVA-RG** kaynak grubunu silin.
+1. Yerel makinenizde **amp-Viewer** Docker kapsayıcısını durdurun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

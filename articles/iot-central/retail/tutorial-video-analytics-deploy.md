@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/31/2020
-ms.openlocfilehash: abeae674cef8f13a092b53bde6040ad853bd0cca
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.openlocfilehash: f7f1952ab8c98553a447c3ed1955fb556ba48124
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 02/08/2021
-ms.locfileid: "99820373"
+ms.locfileid: "99831952"
 ---
 # <a name="tutorial-how-to-deploy-an-iot-central-application-using-the-video-analytics---object-and-motion-detection-application-template"></a>Öğretici: video analizi-nesne ve hareket algılama uygulama şablonunu kullanarak bir IoT Central uygulaması dağıtma
 
@@ -22,6 +22,10 @@ Temel *video analizi-nesne ve hareket algılama* uygulaması bileşenlerine gene
 Aşağıdaki videoda, bir IoT Central çözümü dağıtmak için _video Analytics-Object ve Motion Detection uygulama şablonunun_ nasıl kullanılacağına ilişkin bir anlatım verilmiştir:
 
 > [!VIDEO https://www.youtube.com/embed/Bo3FziU9bSA]
+
+## <a name="prerequisites"></a>Önkoşullar
+
+Bir Azure aboneliği önerilir. Alternatif olarak, 7 günlük ücretsiz deneme sürümünü kullanabilirsiniz. Azure aboneliğiniz yoksa, [Azure kaydolma sayfasında](https://aka.ms/createazuresubscription)bir tane oluşturabilirsiniz.
 
 ## <a name="deploy-the-application"></a>Uygulamayı dağıtma
 
@@ -42,6 +46,14 @@ Video analizi uygulama şablonunu kullanarak bir IoT Central uygulamasını dağ
     - Yakalanan Videoyu AMS 'de görüntülemek için yerel bir medya oynatıcı yükler.
     - Algılanan nesneleri gösteren yakalanan videoyu görüntüleyin.
     - Tidy.
+
+## <a name="clean-up-resources"></a>Kaynakları temizleme
+
+Uygulamayı tamamladığınızda, oluşturduğunuz tüm kaynakları aşağıdaki şekilde kaldırabilirsiniz:
+
+1. IoT Central uygulamasında, **Yönetim** bölümünde **uygulamanızın** sayfasına gidin. Ardından **Sil**’i seçin.
+1. Azure portal, **LVA-RG** kaynak grubunu silin.
+1. Yerel makinenizde **amp-Viewer** Docker kapsayıcısını durdurun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
