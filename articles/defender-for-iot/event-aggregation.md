@@ -1,30 +1,30 @@
 ---
-title: Olay toplama
+title: Güvenlik modülü klasik olay toplama
 description: IoT olay toplama için Defender hakkında bilgi edinin.
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
-author: mlottner
+author: shhazam-ms
 manager: rkarlin
 editor: ''
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/03/2020
-ms.author: mlottner
-ms.openlocfilehash: c823f0034db7d5fbe1f6b46f6af74e9fa374a6de
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.date: 1/20/2021
+ms.author: shhazam
+ms.openlocfilehash: 0718c2637658e5519760a68f29c7a816b2aa61a1
+ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97832378"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99809227"
 ---
-# <a name="defender-for-iot-event-aggregation"></a>IoT olay toplama için Defender
+# <a name="security-module-classic-event-aggregation"></a>Güvenlik modülü klasik olay toplama
 
-IoT güvenlik aracıları için Defender, yerel cihazınızdan veri ve sistem olayları toplayıp bu verileri işleme ve analiz için Azure bulutuna gönderir. Güvenlik Aracısı, yeni işlem ve yeni bağlantı olayları dahil olmak üzere birçok cihaz olayı türünü toplar. Yeni işlem ve yeni bağlantı olaylarının her ikisi de bir cihazda ikinci olarak sıklıkla meydana gelebilir ve güçlü ve kapsamlı güvenlik için önemli olsa da, güvenlik aracılarının göndermeye zorlanacağı ileti sayısı, IoT Hub kotasına ve maliyet sınırlarına hızlı bir şekilde ulaşabilir veya bu sınıra ulaşabilirler. Ancak, bu olaylar, cihazınızı korumak için önemli olan önemli ölçüde önemli güvenlik bilgilerini içerir.
+IoT güvenlik aracıları için Defender, yerel cihazınızdan veri ve sistem olayları toplar ve bu verileri işleme ve analiz için Azure bulutuna gönderir. Güvenlik Aracısı, yeni işlem ve yeni bağlantı olayları dahil olmak üzere birçok cihaz olayı türünü toplar. Yeni işlem ve yeni bağlantı olaylarının her ikisi de bir cihazda ikinci olarak sıklıkla meydana gelebilir ve güçlü ve kapsamlı güvenlik için önemli olsa da, güvenlik aracılarının göndermeye zorlanacağı ileti sayısı, IoT Hub kotasına ve maliyet sınırlarına hızlı bir şekilde ulaşabilir veya bu sınıra ulaşabilirler. Ancak, bu olaylar, cihazınızı korumak için önemli olan önemli ölçüde önemli güvenlik bilgilerini içerir.
 
-Cihazları koruma altına alırken ek kota ve maliyetleri azaltmak için, IoT aracıları için Defender bu tür olayları toplar.
+Daha fazla kotayı ve cihazlarınızı koruma altına alırken, IoT aracıları için Defender bu olay türlerini toplar.
 
 Olay toplama varsayılan olarak **açıktır** , ancak önerilmese de dilediğiniz zaman el **ile kapatılabilir.**
 
@@ -45,7 +45,7 @@ Aracının bellekte zaten tutulmakta olan bir olay ile aynı olayı topladığı
 Olaylar yalnızca aşağıdaki koşullar karşılandığında özdeş olarak değerlendirilir:
 
 * ProcessCreate olayları- **commandLine**, **çalıştırılabilir**, **Kullanıcı adı** ve Kullanıcı **kimliği** aynı olduğunda
-* ConnectionCreate olayları- **commandLine**, **UserID**, **Direction**, **Yerel adres**, **uzak adres**, * * protokolü ve **hedef bağlantı noktası** aynı olduğunda
+* ConnectionCreate olayları- **commandLine**, **UserID**, **Direction**, **Yerel adres**, **uzak adres**, **protokol** ve **hedef bağlantı noktası** aynı olduğunda.
 * ProcessTerminate olayları- **yürütülebilir** ve **Çıkış durumu** aynı olduğunda
 
 ### <a name="working-with-aggregated-events"></a>Toplu olaylarla çalışma
@@ -70,11 +70,11 @@ Her toplanmış olay, toplanan uyarıların 24 saatlik bir dönemini temsil eder
 | Yapılandırma adı | Olası değerler | Ayrıntılar | Açıklamalar |
 |:-----------|:---------------|:--------|:--------|
 | aggregationEnabledProcessCreate | boolean | İşlem oluşturma olayları için olay toplamayı etkinleştir/devre dışı bırak |
-| Aggregationınterprocesscreate | ISO8601 TimeSpan dizesi | İşlem oluşturma olayları için toplama aralığı |
+| Aggregationınterprocesscreate | ISO8601 TimeSpan dizesi | İşlem için toplama aralığı olaylar oluşturuyor |
 | aggregationEnabledConnectionCreate | boolean| Bağlantı oluşturma olayları için olay toplamayı etkinleştir/devre dışı bırak |
-| Aggregationınterconnectioncreate | ISO8601 TimeSpan dizesi | Bağlantı oluşturma olayları için toplama aralığı |
+| Aggregationınterconnectioncreate | ISO8601 TimeSpan dizesi | Bağlantı için toplama aralığı olaylar oluşturuyor |
 | aggregationEnabledProcessTerminate | boolean | İşlem sonlandırma olayları için olay toplamayı etkinleştir/devre dışı bırak | Yalnızca Windows|
-| Aggregationınterınsterminate | ISO8601 TimeSpan dizesi | İşlem sonlandırma olayları için toplama aralığı | Yalnızca Windows|
+| Aggregationınterınsterminate | ISO8601 TimeSpan dizesi | İşlem sonlandırıldığında olayları toplama aralığı | Yalnızca Windows|
 |
 
 ## <a name="default-configurations-settings"></a>Varsayılan yapılandırma ayarları

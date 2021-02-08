@@ -1,5 +1,5 @@
 ---
-title: Güvenlik aracısına genel bakış
+title: Güvenlik aracıları
 description: IoT cihazlarınızdaki IoT güvenlik hizmeti aracıları için Azure Defender 'ı anlama, yapılandırma, dağıtma ve kullanma ile çalışmaya başlayın.
 services: defender-for-iot
 ms.service: defender-for-iot
@@ -11,33 +11,36 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/27/2019
+ms.date: 1/24/2021
 ms.author: shhazam
-ms.openlocfilehash: 2b1cd131e578b1d16fabee99b8de536e4a48ece0
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.openlocfilehash: fcc2c7c3e724fccd005c8b6c8d1b01982f407c65
+ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98247310"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99809055"
 ---
-# <a name="get-started-with-azure-defender-for-iot-device-security-agents"></a>IoT cihaz güvenlik aracıları için Azure Defender ile çalışmaya başlama
+# <a name="get-started-with-azure-defender-for-iot-device-micro-agents"></a>IoT cihaz mikro aracıları için Azure Defender ile çalışmaya başlama
 
-IoT güvenlik aracıları için Defender, uzak bağlantıları, etkin uygulamaları, oturum açma olaylarını ve işletim sistemi yapılandırma en iyi yöntemlerini izleme gibi gelişmiş güvenlik özellikleri sunar. Tek bir hizmetle cihaz alanı tehdit koruması ve güvenlik duruşunuzu denetim altına alın.
+IoT güvenlik aracıları için Defender, işletim sistemi yapılandırma en iyi yöntemlerini izleme gibi gelişmiş güvenlik özellikleri sunar. Tek bir hizmetle cihaz alanı tehdit koruması ve güvenlik duruşunuzu denetim altına alın.
 
-Linux ve Windows Güvenlik aracıları için başvuru mimarisi her ikisi de C# ve C içinde sağlanır.
-
-IoT güvenlik aracıları için Defender, cihaz işletim sisteminden Ham olay toplamayı, maliyeti azaltmak için olay toplamayı ve bir cihaz modülü ikizi aracılığıyla yapılandırmayı işler. Güvenlik iletileri, IoT Hub aracılığıyla IoT Analytics hizmetleri için Defender 'a gönderilir.
+IoT güvenlik aracılarına yönelik savunma, cihaz işletim sisteminden Ham olay toplamayı, maliyeti azaltmak için olay toplamayı ve bir cihaz modülü ikizi aracılığıyla yapılandırmayı işler. Güvenlik iletileri, IoT Hub aracılığıyla IoT Analytics hizmetleri için Defender 'a gönderilir.
 
 IoT güvenlik aracılarınız için Defender 'ı dağıtmak ve test etmek üzere aşağıdaki iş akışını kullanın:
 
-1. [IoT Hub IoT hizmeti için Defender 'ı etkinleştirin](quickstart-onboard-iot-hub.md)
+1. [IoT hizmetini IoT Hub Için Defender 'ı etkinleştirin](quickstart-onboard-iot-hub.md).
+
 1. IoT Hub kayıtlı bir cihaz yoksa, [Yeni bir cihaz kaydedin](../iot-accelerators/iot-accelerators-device-simulation-overview.md).
-1. Cihazlarınız için [bir azureiotsecurity güvenlik modülü oluşturun](quickstart-create-security-twin.md) .
+
+1. Cihazlarınız için [bir savunma Deriotmikro aracı modülü Ikizi oluşturun](quickstart-create-micro-agent-module-twin.md) .
+
 1. Aracıyı gerçek bir cihaza yüklemek yerine bir Azure sanal cihazına yüklemek için, kullanılabilir bir bölgede [Yeni bir Azure sanal makinesi (VM)](../virtual-machines/linux/quick-create-portal.md) çalıştırın.
+
 1. IoT cihazınıza veya yeni VM 'de [IoT güvenlik Aracısı için bir Defender dağıtın](how-to-deploy-linux-cs.md) .
-1. Bir saldırının zararsız benzetimini çalıştırmak için [trigger_events](https://aka.ms/iot-security-github-trigger-events) yönergelerini izleyin.
-1. Önceki adımda oluşan sanal saldırıya yanıt olarak Defender 'ı IoT uyarıları için doğrulayın. Betiği çalıştırdıktan sonra beş dakika sonra doğrulamaya başlayın.
-1. IoT Hub kullanarak [Log Analytics kullanarak](how-to-security-data-access.md) [uyarıları](concept-security-alerts.md), [önerileri](concept-recommendations.md)ve derin ayrıntılarını inceleyin.
+
+1. Bir işletim sistemi temel olayı çalıştırmak için [trigger_events](https://aka.ms/iot-security-github-trigger-events) yönergelerini izleyin.
+
+1. Önceki adımda sanal işletim sistemi taban çizgisi denetim hatasına yanıt olarak Defender 'ı IoT önerileri için doğrulayın. Betiği çalıştırdıktan sonra 30 dakika sonra doğrulamaya başlayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

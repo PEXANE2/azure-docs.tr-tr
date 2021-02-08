@@ -3,12 +3,12 @@ title: Visual Studio Code-Azure Işlevleri kullanarak Go veya Rust 'da işlev ol
 description: Azure Işlevleri özel işleyicisi olarak go işlevi oluşturmayı öğrenin ve ardından Visual Studio Code içindeki Azure Işlevleri uzantısını kullanarak yerel projeyi Azure Işlevleri 'nde sunucusuz barındırma olarak yayımlayın.
 ms.topic: quickstart
 ms.date: 12/4/2020
-ms.openlocfilehash: 4f2e0b30c4bf5e6c4629fc63f3125e5ddda70ad2
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: a3ef7bdd19badf7a7deaa8376440016e39e0d14b
+ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99493676"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99809579"
 ---
 # <a name="quickstart-create-a-go-or-rust-function-in-azure-using-visual-studio-code"></a>Hızlı başlangıç: Visual Studio Code kullanarak Azure 'da Go veya Rust işlevi oluşturma
 
@@ -262,7 +262,7 @@ Bu bölümde, bir Linux çalıştıran bir işlev uygulamasında projenizi Azure
     ```cmd
     set GOOS=linux
     set GOARCH=amd64
-    go build hello.go
+    go build handler.go
     ```
 
     `defaultExecutablePath`İçindeki *host.js* öğesini `handler.exe` olarak değiştirin `handler` . Bu, işlev uygulamasını Linux ikilisini çalıştıracak şekilde yönlendirir.

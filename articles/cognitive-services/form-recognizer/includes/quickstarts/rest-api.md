@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 12/15/2020
 ms.author: pafarley
-ms.openlocfilehash: 5b00388f1a68560582120e92bb6fceb4f1e153d3
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 3112c93e0877a8441875e3c7627c2a7b84ac8ab1
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99584671"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99808522"
 ---
 > [!NOTE]
 > Bu kılavuz REST API çağrılarını yürütmek için kıvrımlı kullanır. GitHub 'da REST API 'Lerinin nasıl çağrılacağını gösteren [örnek kod](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/python/FormRecognizer/rest) de vardır.
@@ -38,24 +38,19 @@ Bir modeli eğmenize gerek kalmadan, belgelerde tablo, seçim işareti, metin ve
 
 1. `{Endpoint}`Form tanıyıcı aboneliğiniz ile edindiğiniz uç noktayla değiştirin.
 1. `{subscription key}`Önceki adımdan kopyaladığınız abonelik anahtarıyla değiştirin.
-1. İstek gövdesindeki URL 'YI örnek URL 'Lerden biriyle değiştirin.
+1. `\"{your-document-url}`Örnek URL 'lerden biriyle değiştirin.
 
 # <a name="v20"></a>[v2.0](#tab/v2-0)    
 
+
 ```bash
-curl -v -X POST "https://{Endpoint}/formrecognizer/v2.0/layout/analyze"
--H "Content-Type: application/json"
--H "Ocp-Apim-Subscription-Key: {subscription key}"
---data-ascii "{\"source\": \"http://example.com/test.jpg\"}" 
+curl -v -i POST "https://{Endpoint}/formrecognizer/v2.0/layout/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{'source': '{your-document-url}'}"
 ```
 
 # <a name="v21-preview"></a>[v 2.1 Önizleme](#tab/v2-1)    
 
 ```bash
-curl -v -X POST "https://{Endpoint}/formrecognizer/v2.1-preview.2/layout/analyze"
--H "Content-Type: application/json"
--H "Ocp-Apim-Subscription-Key: {subscription key}"
---data-ascii "{\"source\": \"http://example.com/test.jpg\"}" 
+curl -v -i POST "https://{Endpoint}/formrecognizer/v2.1-preview.2/layout/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{'source': '{your-document-url}'}"
 ```
 ---
 
@@ -76,14 +71,13 @@ https://cognitiveservice/formrecognizer/v2.1-preview.2/layout/analyzeResults/54f
 # <a name="v20"></a>[v2.0](#tab/v2-0)    
 
 ```bash
-curl -v -X GET "https://{Endpoint}/formrecognizer/v2.0/layout/analyzeResults/{resultId}"
--H "Ocp-Apim-Subscription-Key: {subscription key}"
+curl -v -X GET "https://{Endpoint}/formrecognizer/v2.0/layout/analyzeResults/{resultId}" -H "Ocp-Apim-Subscription-Key: {subscription key}"
 ```
+
 
 # <a name="v21-preview"></a>[v 2.1 Önizleme](#tab/v2-1)  
 ```bash
-curl -v -X GET "https://{Endpoint}/formrecognizer/v2.1-preview.2/layout/analyzeResults/{resultId}"
--H "Ocp-Apim-Subscription-Key: {subscription key}"
+curl -v -X GET "https://{Endpoint}/formrecognizer/v2.1-preview.2/layout/analyzeResults/{resultId}" -H "Ocp-Apim-Subscription-Key: {subscription key}"
 ```
 ---
 
@@ -336,11 +330,9 @@ Bir faturayı çözümlemeye başlamak için aşağıdaki kıvrımlı komutunu k
 1. `{your invoice URL}`Fatura BELGESININ URL adresiyle değiştirin.
 1. `{subscription key}` değerini abonelik anahtarınızla değiştirin.
 
+
 ```bash
-curl -v -X POST "https://{Endpoint}/formrecognizer/v2.1-preview.2/prebuilt/invoice/analyze"
--H "Content-Type: application/json"
--H "Ocp-Apim-Subscription-Key: {subscription key}"
---data-ascii "{ \"source\": \"{your invoice URL}\"}"
+curl -v -i POST "https://{Endpoint}/formrecognizer/v2.1-preview.2/prebuilt/invoice/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key:  {subscription key}" --data-ascii "{'source': '{your invoice URL}'}"
 ```
 
 `202 (Success)`Har **Işlem-konum** üst bilgisi içeren bir yanıt alacaksınız. Bu üstbilginin değeri, zaman uyumsuz işlemin durumunu sorgulamak ve sonuçları almak için kullanabileceğiniz bir işlem KIMLIĞI içerir.
@@ -358,8 +350,7 @@ https://cognitiveservice/formrecognizer/v2.1-preview.2/prebuilt/invoice/analyzeR
 1. `{subscription key}` değerini abonelik anahtarınızla değiştirin.
 
 ```bash
-curl -v -X GET "https://{Endpoint}/formrecognizer/v2.1-preview.2/prebuilt/invoice/analyzeResults/{resultId}"
--H "Ocp-Apim-Subscription-Key: {subscription key}"
+curl -v -X GET "https://{Endpoint}/formrecognizer/v2.1-preview.2/prebuilt/invoice/analyzeResults/{resultId}" -H "Ocp-Apim-Subscription-Key: {subscription key}"
 ```
 
 ### <a name="examine-the-response"></a>Yanıtı inceleme
@@ -530,8 +521,13 @@ Aşağıdaki fatura belgesine ve buna karşılık gelen JSON çıktısına bakı
 
 Özel bir modeli eğitebilmeniz için bir Azure depolama blobunda eğitim verileri kümesine ihtiyacınız vardır. Aynı türde/yapıda en az beş adet doldurulmuş form (PDF belgesi ve/veya resim) gereklidir. Eğitim verilerinizi birlikte yerleştirmeye yönelik ipuçları ve seçenekler için bkz. [özel bir model için eğitim verileri kümesi oluşturma](../../build-training-data-set.md) .
 
+Etiketli veriler olmadan eğitim varsayılan işlemdir ve daha basittir. Alternatif olarak, daha önce eğitim verilerinizin bazılarını veya tümünü el ile etiketleyebilirsiniz. Bu daha karmaşık bir işlemdir, ancak daha iyi eğitilen bir model ile sonuçlanır.
+
 > [!NOTE]
-> Yüksek doğruluk modelleri için el ile etiketlenmiş verilerle eğitebilirsiniz. Etiket Başlarken Kılavuzu [Ile eğit 'e](../../quickstarts/label-tool.md) bakın.
+> Modelleri, [form tanıyıcı örnek etiketleme aracı](../../quickstarts/label-tool.md)gibi bir grafik kullanıcı arabirimi ile de eğitebilirsiniz.
+
+
+### <a name="train-a-model-without-labels"></a>Etiketler olmadan bir modeli eğitme
 
 Azure Blob kabınızda bulunan belgelerle bir form tanıyıcı modeli eğitmek için aşağıdaki kıvrımlı komutunu çalıştırarak **[özel model eğitimi](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/TrainCustomModelAsync)** API 'sini çağırın. Komutu çalıştırmadan önce Şu değişiklikleri yapın:
 
@@ -541,13 +537,40 @@ Azure Blob kabınızda bulunan belgelerle bir form tanıyıcı modeli eğitmek i
 
    :::image type="content" source="../../media/quickstarts/get-sas-url.png" alt-text="SAS URL 'SI alımı":::
 
-# <a name="v20"></a>[v2.0](#tab/v2-0)    
+# <a name="v20"></a>[v2.0](#tab/v2-0)
 ```bash
-curl -i -X POST "https://{Endpoint}/formrecognizer/v2.0/custom/models" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{ \"source\": \""{SAS URL}"\"}"
+curl -i -X POST "https://{Endpoint}/formrecognizer/v2.0/custom/models" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{ 'source': '{SAS URL}'}"
+```
+
+# <a name="v21-preview"></a>[v 2.1 Önizleme](#tab/v2-1)    
+```bash
+curl -i -X POST "https://{Endpoint}/formrecognizer/v2.1-preview.2/custom/models" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{ 'source': '{SAS URL}'}"
+```
+
+---
+
+
+`201 (Success)`Bir **konum** üst bilgisine sahip bir yanıt alacaksınız. Bu üstbilginin değeri, eğitilen yeni modelin KIMLIĞIDIR.
+
+### <a name="train-a-model-with-labels"></a>Etiketler içeren bir modeli eğitme
+
+Etiketlerle eğitebilmeniz için, `\<filename\>.pdf.labels.json` eğitim belgelerinin yanı sıra BLOB depolama kapsayıcıda özel etiket bilgi dosyalarına () sahip olmanız gerekir. [Form tanıyıcı örnek etiketleme aracı](../../quickstarts/label-tool.md) , bu etiket dosyalarını oluşturmanıza yardımcı olmak için bir kullanıcı arabirimi sağlar. Bunu yaptıktan sonra, JSON gövdesinde olarak ayarlanmış parametresi ile **[özel model API 'Sini eğitebilirsiniz](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/TrainCustomModelAsync)** `"useLabelFile"` `true` .
+
+Komutu çalıştırmadan önce Şu değişiklikleri yapın:
+
+1. `{Endpoint}`Form tanıyıcı aboneliğiniz ile edindiğiniz uç noktayla değiştirin.
+1. `{subscription key}`Önceki adımdan kopyaladığınız abonelik anahtarıyla değiştirin.
+1. `{SAS URL}`Azure Blob depolama kapsayıcısının paylaşılan erişim imzası (SAS) URL 'si ile değiştirin. [!INCLUDE [get SAS URL](../sas-instructions.md)]
+
+   :::image type="content" source="../../media/quickstarts/get-sas-url.png" alt-text="SAS URL 'SI alımı":::
+
+# <a name="v20"></a>[v2.0](#tab/v2-0)
+```bash
+curl -i -X POST "https://{Endpoint}/formrecognizer/v2.0/custom/models" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{ 'source': '{SAS URL}', 'useLabelFile':true }"
 ```
 # <a name="v21-preview"></a>[v 2.1 Önizleme](#tab/v2-1)    
 ```bash
-curl -i -X POST "https://{Endpoint}/formrecognizer/v2.1-preview.2/custom/models" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{ \"source\": \""{SAS URL}"\"}"
+curl -i -X POST "https://{Endpoint}/formrecognizer/v2.1-preview.2/custom/models" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{ 'source': '{SAS URL}', 'useLabelFile':true}"
 ```
 
 ---
@@ -657,12 +680,12 @@ Daha sonra, yeni eğitilen modelinizi kullanarak bir belgeyi analiz edebilir, an
 # <a name="v20"></a>[v2.0](#tab/v2-0)    
 
 ```bash
-curl -v "https://{Endpoint}/formrecognizer/v2.0/custom/models/{model ID}/analyze?includeTextDetails=true" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" -d "{ \"source\": \""{SAS URL}"\" } "
+curl -v "https://{Endpoint}/formrecognizer/v2.0/custom/models/{model ID}/analyze?includeTextDetails=true" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" -d "{ 'source': '{SAS URL}' } "
 ```
 
 # <a name="v21-preview"></a>[v 2.1 Önizleme](#tab/v2-1)    
 ```bash
-curl -v "https://{Endpoint}/formrecognizer/v2.1-preview.2/custom/models/{model ID}/analyze?includeTextDetails=true" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" -d "{ \"source\": \""{SAS URL}"\" } "
+curl -v "https://{Endpoint}/formrecognizer/v2.1-preview.2/custom/models/{model ID}/analyze?includeTextDetails=true" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" -d "{ 'source': '{SAS URL}' } "
 ```
     
 ---
@@ -982,13 +1005,13 @@ Bu bölümde, önceden eğitilen bir makbuz modeli kullanılarak ABD makbuzları
 # <a name="v20"></a>[v2.0](#tab/v2-0)
 
 ```bash
-curl -i -X POST "https://{Endpoint}/formrecognizer/v2.0/prebuilt/receipt/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{ \"source\": \"{your receipt URL}\"}"
+curl -i -X POST "https://{Endpoint}/formrecognizer/v2.0/prebuilt/receipt/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{ 'source': '{your receipt URL}'}"
 ```
 
 # <a name="v21-preview"></a>[v 2.1 Önizleme](#tab/v2-1)    
 
 ```bash
-curl -i -X POST "https://{Endpoint}/formrecognizer/v2.1-preview.2/prebuilt/receipt/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{ \"source\": \"{your receipt URL}\"}"
+curl -i -X POST "https://{Endpoint}/formrecognizer/v2.1-preview.2/prebuilt/receipt/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{ 'source': '{your receipt URL}'}"
 ```
 ---
 
@@ -1367,7 +1390,7 @@ Bu bölümde, önceden eğitilen bir model kullanarak Ingilizce iş kartlarında
 1. `{subscription key}`Önceki adımdan kopyaladığınız abonelik anahtarıyla değiştirin.
 
 ```bash
-curl -i -X POST "https://{Endpoint}/formrecognizer/v2.1-preview.2/prebuilt/businessCard/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{ \"source\": \"{your receipt URL}\"}"
+curl -i -X POST "https://{Endpoint}/formrecognizer/v2.1-preview.2/prebuilt/businessCard/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{ 'source': '{your receipt URL}'}"
 ```
 
 `202 (Success)`Har **Işlem-konum** üst bilgisi içeren bir yanıt alacaksınız. Bu üstbilginin değeri, zaman uyumsuz işlemin durumunu sorgulamak ve sonuçları almak için kullanabileceğiniz bir işlem KIMLIĞI içerir.
@@ -1568,15 +1591,13 @@ Belirli bir özel model hakkında ayrıntılı bilgi almak için aşağıdaki ko
 # <a name="v20"></a>[v2.0](#tab/v2-0)    
 
 ```bash
-curl -v -X GET "https://{Endpoint}/formrecognizer/v2.0/custom/models/{modelId}"
--H "Ocp-Apim-Subscription-Key: {subscription key}"
+curl -v -X GET "https://{Endpoint}/formrecognizer/v2.0/custom/models/{modelId}" -H "Ocp-Apim-Subscription-Key: {subscription key}"
 ```
 
 # <a name="v21-preview"></a>[v 2.1 Önizleme](#tab/v2-1)    
 
 ```bash
-curl -v -X GET "https://{Endpoint}/formrecognizer/v2.1-preview.2/custom/models/{modelId}"
--H "Ocp-Apim-Subscription-Key: {subscription key}"
+curl -v -X GET "https://{Endpoint}/formrecognizer/v2.1-preview.2/custom/models/{modelId}" -H "Ocp-Apim-Subscription-Key: {subscription key}"
 ```
 ---
 
@@ -1631,15 +1652,13 @@ Ayrıca, KIMLIĞINE başvurarak hesabınızdan bir modeli silebilirsiniz. Bu kom
 # <a name="v20"></a>[v2.0](#tab/v2-0)    
 
 ```bash
-curl -v -X DELETE "https://{Endpoint}/formrecognizer/v2.0/custom/models/{modelId}"
--H "Ocp-Apim-Subscription-Key: {subscription key}"
+curl -v -X DELETE "https://{Endpoint}/formrecognizer/v2.0/custom/models/{modelId}" -H "Ocp-Apim-Subscription-Key: {subscription key}"
 ```
 
 # <a name="v21-preview"></a>[v 2.1 Önizleme](#tab/v2-1)
 
 ```bash
-curl -v -X DELETE "https://{Endpoint}/formrecognizer/v2.1-preview.2/custom/models/{modelId}"
--H "Ocp-Apim-Subscription-Key: {subscription key}"
+curl -v -X DELETE "https://{Endpoint}/formrecognizer/v2.1-preview.2/custom/models/{modelId}" -H "Ocp-Apim-Subscription-Key: {subscription key}"
 ```
 ---
 

@@ -3,16 +3,16 @@ title: GCP hesabınızı Azure Güvenlik Merkezi 'ne bağlama
 description: Azure Güvenlik Merkezi 'nden GCP kaynaklarınızı izleme
 author: memildin
 ms.author: memildin
-ms.date: 01/24/2021
+ms.date: 02/07/2021
 ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: d5f8278765c3f62fded44e4b89fb5fded6137c94
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 8ee7b37861be299dd36a596ae1cd4899b0ebffab
+ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98757619"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99809414"
 ---
 #  <a name="connect-your-gcp-accounts-to-azure-security-center"></a>GCP hesaplarınızı Azure Güvenlik Merkezi 'ne bağlama
 
@@ -20,7 +20,7 @@ Bulut güvenlik hizmetleri genellikle birden çok bulut platformunu kapsayan bul
 
 Azure Güvenlik Merkezi, Azure, Amazon Web Services (AWS) ve Google Cloud Platform (GCP) iş yüklerini korur.
 
-GCP hesabınızı Güvenlik Merkezi 'ne ekleme, GCP Güvenlik komutunu ve Azure Güvenlik Merkezi 'ni tümleştirir. Bu nedenle, güvenlik merkezi bu bulut ortamlarının her ikisi arasında görünürlük ve koruma sağlayarak şunları sağlar:
+GCP hesaplarınızı Güvenlik Merkezi 'ne ekleme, GCP Güvenlik komutunu ve Azure Güvenlik Merkezi 'ni tümleştirir. Bu nedenle, güvenlik merkezi bu bulut ortamlarının her ikisi arasında görünürlük ve koruma sağlayarak şunları sağlar:
 
 - Güvenlik yapılandırması hataları algılanamadı
 - Güvenlik Merkezi önerilerini ve GCP güvenlik Komut Merkezi bulgularını gösteren tek bir görünüm
@@ -39,12 +39,15 @@ Aşağıdaki ekran görüntüsünde, güvenlik merkezi 'nin genel bakış panosu
 |Yayın durumu:|Genel kullanılabilirlik (GA)|
 |Fiyat|[Sunucular Için Azure Defender](defender-for-servers-introduction.md) gerekir|
 |Gerekli roller ve izinler:|İlgili Azure aboneliğinde **sahip** veya **katkıda** bulunan|
-|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Hayır](./media/icons/no-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
+|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![No](./media/icons/no-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
 |||
 
 ## <a name="connect-your-gcp-account"></a>GCP hesabınıza bağlanma
 
-GCP bulut bağlayıcınızı oluşturmak için aşağıdaki adımları izleyin. 
+Google Cloud kaynaklarınızı kuruluş veya proje düzeyinde bağlamak için GCP bulut bağlayıcınızı oluşturmak üzere aşağıdaki adımları izleyin. 
+
+> [!TIP]
+> Google Cloud kaynak hiyerarşisi hakkında daha fazla bilgi [edinin.](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy)
 
 ### <a name="step-1-set-up-gcp-security-command-center-with-security-health-analytics"></a>Adım 1. Güvenlik sistem durumu analizi ile GCP güvenlik komut merkezini ayarlama
 
@@ -120,6 +123,15 @@ Kaynaklarınızın tüm etkin önerilerini kaynak türüne göre görüntülemek
 
 :::image type="content" source="./media/quickstart-onboard-gcp/gcp-resource-types-in-inventory.png" alt-text="Varlık envanteri sayfasının kaynak türü filtresi, GCP seçeneklerini gösterir"::: 
 
+
+## <a name="faq-for-connecting-gcp-accounts-to-azure-security-center"></a>GCP hesaplarını Azure Güvenlik Merkezi 'ne bağlama hakkında SSS
+
+### <a name="can-i-connect-multiple-gcp-accounts-to-security-center"></a>Birden fazla GCP hesabını güvenlik merkezi 'ne bağlayabilirim miyim?
+Evet. Yukarıda da belirtildiği gibi, Google Cloud kaynaklarınızı kuruluş veya proje düzeyinde bağlayabilirsiniz. Google Cloud kaynak hiyerarşisi hakkında daha fazla bilgi [edinin.](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy)
+
+
+### <a name="is-there-an-api-for-connecting-my-gcp-resources-to-security-center"></a>GCP kaynaklarımı Güvenlik Merkezi 'ne bağlamak için bir API var mı?
+Evet. Güvenlik Merkezi bulut bağlayıcılarını bir REST API oluşturmak, düzenlemek veya silmek için, [BAĞLAYıCıLAR API](/rest/api/securitycenter/connectors)'sinin ayrıntılarına bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

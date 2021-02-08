@@ -9,12 +9,12 @@ author: rolyon
 ms.author: rolyon
 ms.date: 02/01/2021
 ms.custom: generated
-ms.openlocfilehash: 3b7b65a558470c4e7f04ed84ea186fc1ea98bc40
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: 384d00ee41f2b6bfc2e91815bfcf54819c7d9ab2
+ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99557346"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99809396"
 ---
 # <a name="azure-built-in-roles"></a>Yerleşik Azure rolleri
 
@@ -75,6 +75,7 @@ Aşağıdaki tabloda, her yerleşik rolün bir kısa açıklaması ve benzersiz 
 > | [Depolama kuyruğu veri Iletisi gönderici](#storage-queue-data-message-sender) | Bir Azure depolama kuyruğuna ileti ekleyin. Belirli bir veri işlemi için hangi eylemlerin gerekli olduğunu öğrenmek için bkz. [BLOB ve kuyruk verisi işlemlerini çağırma izinleri](/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). | c6a89b2d-59bc-44d0-9896-0f6e12d7b80a |
 > | [Depolama kuyruğu veri okuyucusu](#storage-queue-data-reader) | Azure depolama kuyruklarını ve sıra iletilerini okuyun ve listeleyin. Belirli bir veri işlemi için hangi eylemlerin gerekli olduğunu öğrenmek için bkz. [BLOB ve kuyruk verisi işlemlerini çağırma izinleri](/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). | 19e7f393-937e-4F77-808e-94535e297925 |
 > | **Web** |  |  |
+> | [Azure haritalar veri Katılımcısı](#azure-maps-data-contributor) | Azure haritalar hesabından ilgili verileri eşlemek için okuma, yazma ve silme erişimi verir. | 8f5e0ce6-4F7B-4dcf-bddf-e6f48634a204 |
 > | [Azure haritalar veri okuyucu](#azure-maps-data-reader) | Azure haritalar hesabından ilgili harita okuma verilerine erişim izni verir. | 423170ca-a8f6-4b0f-8487-9e4eb8f49bfa |
 > | [Katkıda bulunan Arama Hizmeti](#search-service-contributor) | Arama hizmetlerini yönetmenize izin verir, ancak bunlara erişim izni vermez. | 7ca78c08-252a-4471-8644-bb5ff32d4ba0 |
 > | [SignalR AccessKey okuyucusu](#signalr-accesskey-reader) | SignalR hizmeti erişim anahtarlarını okuyun | 04165923-9d83-45d5-8227-78b77b0a687e |
@@ -129,7 +130,15 @@ Aşağıdaki tabloda, her yerleşik rolün bir kısa açıklaması ve benzersiz 
 > | [Blok zinciri üye düğümü erişimi (Önizleme)](#blockchain-member-node-access-preview) | Blok zinciri üye düğümlerine erişim sağlar | 31a002a1-acaf-453E-8a5b-297c9ca1ea24 |
 > | **Yapay zeka + makine öğrenmesi** |  |  |
 > | [Bilişsel hizmetler Katılımcısı](#cognitive-services-contributor) | Bilişsel hizmetler için anahtar oluşturma, okuma, güncelleştirme, silme ve yönetme olanağı sağlar. | 25fbc0a9-bd7c-42A3-aa1a-3b75d497ee68 |
+> | [Bilişsel Hizmetler Özel Görüntü İşleme Katılımcısı](#cognitive-services-custom-vision-contributor) | Projeleri görüntüleme, oluşturma, düzenleme veya silme özelliği de dahil olmak üzere projeye tam erişim. | c1ff6cc2-C111-46fe-8896-e0ef812ad9f3 |
+> | [Bilişsel Hizmetler Özel Görüntü İşleme dağıtımı](#cognitive-services-custom-vision-deployment) | Modelleri yayımlayın, yayımdan kaldırın veya dışarı aktarın. Dağıtım projeyi görüntüleyebilir, ancak güncelleştiremez. | 5c4089e1-6d96-4d2f-b296-c1bc7137275f |
+> | [Bilişsel Hizmetler Özel Görüntü İşleme etiketleyici](#cognitive-services-custom-vision-labeler) | Eğitim görüntülerini görüntüleyin, düzenleyin, görüntü etiketlerini oluşturun, ekleyin, kaldırın veya silin. Etiketleyiciler projeyi görüntüleyebilir, ancak eğitim görüntüleri ve Etiketler dışında herhangi bir şeyi güncelleştiremez. | 88424f51-ebe7-446F-BC41-7fa16989e96c |
+> | [Bilişsel Hizmetler Özel Görüntü İşleme okuyucu](#cognitive-services-custom-vision-reader) | Projedeki salt okuma eylemleri. Okuyucular projeyi oluşturamaz veya güncelleştiremez. | 93586559-C37D-4a6b-BA08-b9f0940c2d73 |
+> | [Bilişsel Hizmetler Özel Görüntü İşleme Trainer](#cognitive-services-custom-vision-trainer) | Modelleri yayımlama, yayımdan kaldırma, dışarı aktarma özelliği de dahil olmak üzere projeleri görüntüleyin, düzenleyin ve modelleri eğitme. Traıners proje oluşturamaz veya silemez. | 0a5ae4ab-0d65-4EEB-be61-29fc9b54394b |
 > | [Bilişsel hizmetler veri okuyucu (Önizleme)](#cognitive-services-data-reader-preview) | Bilişsel hizmetler verilerini okumanızı sağlar. | b59867f0-fa02-499b-be73-45a86b5b3e1c |
+> | [Bilişsel hizmetler ölçüm Danışmanı Yöneticisi](#cognitive-services-metrics-advisor-administrator) | Sistem düzeyi yapılandırması da dahil olmak üzere, projeye tam erişim. | cb43c632-a144-4ec5-977c-e80c4affc34a |
+> | [Bilişsel hizmetler Soru-Cevap Oluşturma Düzenleyicisi](#cognitive-services-qna-maker-editor) | KB oluşturma, düzenleme, içeri aktarma ve dışarı aktarma işlemi yapmanızı sağlar. Bir KB yayımlayamaz veya silemezsiniz. | f4cc2bf9-21be-47a1-bdf1-5c5804381025 |
+> | [Bilişsel hizmetler Soru-Cevap Oluşturma okuyucu](#cognitive-services-qna-maker-reader) | Yalnızca bir KB 'yi okuyup test edelim. | 466ccd10-b268-4a11-b098-b4849f024126 |
 > | [Bilişsel hizmetler kullanıcısı](#cognitive-services-user) | Bilişsel hizmetler 'in anahtarlarını okuyup listelemenizi sağlar. | a97b65f3-24c7-4388-baec-2e87135dc908 |
 > | **Karma Gerçeklik** |  |  |
 > | [Uzaktan Işleme Yöneticisi](#remote-rendering-administrator) | Azure uzaktan Işleme için kullanıcıya dönüştürme, oturum yönetme, işleme ve Tanılama özelliklerini sağlar | 3df8b902-2a6f-47c7-8cc5-360e9b272a7e |
@@ -162,6 +171,8 @@ Aşağıdaki tabloda, her yerleşik rolün bir kısa açıklaması ve benzersiz 
 > | [Yönetilen kimlik Katılımcısı](#managed-identity-contributor) | Kullanıcı tarafından atanan kimlik oluşturma, okuma, güncelleştirme ve silme | e40ec5ca-96e0-45a2-b4ff-59039f2c2b59 |
 > | [Yönetilen kimlik Işleci](#managed-identity-operator) | Kullanıcı tarafından atanan kimliği okuma ve atama | f1a07417-d97a-45cb-824c-7a7467783830 |
 > | **Güvenlik** |  |  |
+> | [Kanıtlama Katılımcısı](#attestation-contributor) | Kanıtlama sağlayıcısı örneğini okuyabilir veya silebilir | bbf86eb8-f7b4-4cce-96e4-18cddf81d86e |
+> | [Kanıtlama okuyucusu](#attestation-reader) | Kanıtlama sağlayıcısı özelliklerini okuyabilir | fd1bd22b-8476-40bc-a0bc-69b95687b9f3 |
 > | [Azure Sentinel Katkıda Bulunanı](#azure-sentinel-contributor) | Azure Sentinel Katkıda Bulunanı | ab8e14d6-4a74-4a29-9ba8-549422addade |
 > | [Azure Sentinel Okuyucusu](#azure-sentinel-reader) | Azure Sentinel Okuyucusu | 8d289c81-5878-46d4-8554-54e1e3d8b5cb |
 > | [Azure Sentinel Yanıtlayıcısı](#azure-sentinel-responder) | Azure Sentinel Yanıtlayıcısı | 3e150937-b8fe-4CFB-8069-0eaf05ecd056 |
@@ -174,6 +185,7 @@ Aşağıdaki tabloda, her yerleşik rolün bir kısa açıklaması ve benzersiz 
 > | [Key Vault okuyucu (Önizleme)](#key-vault-reader-preview) | Anahtar kasalarının ve sertifika, anahtar ve gizli dizileri için meta verileri okuyun. Gizli içerik veya anahtar malzeme gibi hassas değerler okunamaz. Yalnızca ' Azure rol tabanlı erişim denetimi ' izin modelini kullanan anahtar kasaları için geçerlidir. | 21090545-7CA7-4776-B22C-e363652d74d2 |
 > | [Key Vault gizli bilgileri Müdürü (Önizleme)](#key-vault-secrets-officer-preview) | Anahtar kasasının gizli dizileri üzerinde, izinleri yönet dışında herhangi bir işlem gerçekleştirin. Yalnızca ' Azure rol tabanlı erişim denetimi ' izin modelini kullanan anahtar kasaları için geçerlidir. | b86a8fe4-44ce-4948-aee5-eccb2c155cd7 |
 > | [Key Vault gizli dizi kullanıcısı (Önizleme)](#key-vault-secrets-user-preview) | Gizli dizi içeriğini okuyun. Yalnızca ' Azure rol tabanlı erişim denetimi ' izin modelini kullanan anahtar kasaları için geçerlidir. | 4633458b-17de-408A-b874-0445c86b69e6 |
+> | [Yönetilen HSM Katılımcısı](#managed-hsm-contributor) | Yönetilen HSM havuzlarını yönetmenize izin verir, ancak bunlara erişimi olmaz. | 18500a29-7fe2-46b2-a342-b16a415e101d |
 > | [Güvenlik Yöneticisi](#security-admin) | Güvenlik Merkezi için izinleri görüntüleyin ve güncelleştirin. Güvenlik okuyucu rolüyle aynı izinler ve ayrıca güvenlik ilkesini güncelleştirebilir ve uyarıları ve önerileri kapatabilir. | fb1c8493-542b-48eb-b624-b4c8fea62acd |
 > | [Güvenlik değerlendirmesi Katılımcısı](#security-assessment-contributor) | Değerlendirmelere Güvenlik Merkezi 'ne gönderim olanağı sağlar | 612c2aa1-CB24-443B-ac28-3ab7272de6f5 |
 > | [Güvenlik Yöneticisi (eski)](#security-manager-legacy) | Bu eski bir roldür. Lütfen bunun yerine Güvenlik Yöneticisi 'ni kullanın. | e3d13bf0-dd5a-482e-ba6b-9b8433878d10 |
@@ -210,6 +222,7 @@ Aşağıdaki tabloda, her yerleşik rolün bir kısa açıklaması ve benzersiz 
 > | [Yönetim grubu okuyucusu](#management-group-reader) | Yönetim grubu okuyucusu rolü | ac63b705-f282-497d-ac71-919bf39d939d |
 > | [Yeni relik APM hesabı Katılımcısı](#new-relic-apm-account-contributor) | New Relic Application Performance Management hesaplarını ve uygulamaları yönetmenize izin verir, ancak bunlara erişimi kalmaz. | 5d28c62d-5b37-4476-8438-e587778df237 |
 > | [İlke öngörüleri veri yazıcısı (Önizleme)](#policy-insights-data-writer-preview) | Kaynak ilkelerine okuma erişimine ve kaynak bileşen ilkesi olaylarına yazma erişimine izin verir. | 66bb4e9e-B016-4A94-8249-4c0511c2be84 |
+> | [Rezervasyon Satınalmacı](#reservation-purchaser) | Ayırmaları satın almanızı sağlar | f7b75c60-3036-4b75-91c3-6b41c27c1689 |
 > | [Kaynak İlkesine Katkıda Bulunan](#resource-policy-contributor) | Kaynak ilkesi oluşturma/değiştirme, destek bileti oluşturma ve kaynakları/hiyerarşisi okuma haklarına sahip kullanıcılar. | 36243c78-bf99-498c-9df9-86d9f8d28608 |
 > | [Site Recovery Katkıda Bulunanı](#site-recovery-contributor) | Kasa oluşturma ve rol atama dışında Site Recovery hizmetini yönetmenizi sağlar | 6670b86e-a3f7-4917-AC9B-5d6ab1be4567 |
 > | [Site Recovery Operatörü](#site-recovery-operator) | Yük devretme ve yeniden çalışma ve diğer Site Recovery yönetim işlemlerini gerçekleştirmenize izin verir | 494ae006-DB33-4328-BF46-533a6560a3ca |
@@ -220,8 +233,22 @@ Aşağıdaki tabloda, her yerleşik rolün bir kısa açıklaması ve benzersiz 
 > | [Azure dijital TWINS veri sahibi](#azure-digital-twins-data-owner) | Dijital TWINS veri düzlemi için tam erişim rolü | bcd981a7-7f74-457b-83e1-cceb9e632ffe |
 > | [Azure dijital TWINS veri okuyucusu](#azure-digital-twins-data-reader) | Dijital TWINS veri düzlemi özellikleri için salt okunurdur rol | d57506d4-4c8d-48b1-8587-93c323f6a5a3 |
 > | [BizTalk Katılımcısı](#biztalk-contributor) | BizTalk hizmetlerini yönetmenizi sağlar ancak onlara erişim izni vermez. | 5e3c6656-6cfa-4708-81fe-0de47ac73342 |
+> | [Masaüstü Sanallaştırma uygulama grubu Katılımcısı](#desktop-virtualization-application-group-contributor) | Masaüstü Sanallaştırma uygulama grubunun katılımcısı. | 86240b0e-9422-4c43-887b-b61143f32ba8 |
+> | [Masaüstü Sanallaştırma uygulama grubu okuyucusu](#desktop-virtualization-application-group-reader) | Masaüstü Sanallaştırma uygulama grubunun okuyucusu. | aebf23d0-b568-4e86-b8f9-fe83a2c6ab55 |
+> | [Masaüstü Sanallaştırma Katılımcısı](#desktop-virtualization-contributor) | Masaüstü Sanallaştırma katılımcısı. | 082f0a83-3be5-4BA1-904c-961cca79b387 |
+> | [Masaüstü Sanallaştırma Ana bilgisayar havuzu Katılımcısı](#desktop-virtualization-host-pool-contributor) | Masaüstü Sanallaştırma Ana bilgisayar havuzunun katılımcısı. | e307426c-f9b6-4e81-87de-d99efb3c32bc |
+> | [Masaüstü Sanallaştırma Ana bilgisayar havuzu okuyucusu](#desktop-virtualization-host-pool-reader) | Masaüstü Sanallaştırma Ana bilgisayar havuzunun okuyucusu. | ceadfde2-b300-400a-ab7b-6143895aa822 |
+> | [Masaüstü Sanallaştırma okuyucusu](#desktop-virtualization-reader) | Masaüstü Sanallaştırma okuyucusu. | 49a72310-ab8d-41df-bbb0-79b649203868 |
+> | [Masaüstü Sanallaştırma oturumu ana bilgisayar Işleci](#desktop-virtualization-session-host-operator) | Masaüstü Sanallaştırma oturumu ana bilgisayarının işleci. | 2ad6aaab-ead9-4eaa-8ac5-da422f562408 |
 > | [Masaüstü Sanallaştırma kullanıcısı](#desktop-virtualization-user) | Kullanıcının uygulama grubundaki uygulamaları kullanmasına izin verir. | 1d18fff3-a72a-46b5-B4A9-0b38a3cd7e63 |
+> | [Masaüstü Sanallaştırma Kullanıcı oturumu Işleci](#desktop-virtualization-user-session-operator) | Masaüstü Sanallaştırma uesr oturumunun işleci. | ea4bfff8-7fb4-485a-aadd-d4129a0ffaa6 |
+> | [Masaüstü Sanallaştırma çalışma alanı Katılımcısı](#desktop-virtualization-workspace-contributor) | Masaüstü Sanallaştırma çalışma alanının katılımcısı. | 21efdde3-836f-432b-bf3d-3e8e734d4b2b |
+> | [Masaüstü Sanallaştırma çalışma alanı okuyucusu](#desktop-virtualization-workspace-reader) | Masaüstü Sanallaştırma çalışma alanının okuyucusu. | 0fa44ee9-7a7d-466b-9bb2-2bf446b1204d |
+> | [Disk yedekleme okuyucusu](#disk-backup-reader) | Disk yedeklemesi gerçekleştirmek için Yedekleme Kasası için izin sağlar. | 3e5e47e6-65f7-47ef-90b5-e5dd4d455f24 |
+> | [Disk geri yükleme Işleci](#disk-restore-operator) | Disk geri yükleme işlemini gerçekleştirmek için Yedekleme Kasası için izin sağlar. | b50d9833-a0cb-478e-945f-707fcc997c13 |
+> | [Disk anlık görüntüsü Katılımcısı](#disk-snapshot-contributor) | Disk anlık görüntülerini yönetmek için Yedekleme Kasası için izin sağlar. | 7efff54f-A5B4-42b5-a1c5-5411624893ce |
 > | [Zamanlayıcı Iş koleksiyonları Katılımcısı](#scheduler-job-collections-contributor) | Zamanlayıcı iş koleksiyonlarını yönetmenizi sağlar, ancak bunlara erişimi kalmaz. | 188a0f2f-5c9e-469B-ae67-2aa5ce574b94 |
+> | [Hizmetler hub 'ı Işleci](#services-hub-operator) | Hizmet hub 'ı operatörü, Service hub bağlayıcılarıyla ilgili tüm okuma, yazma ve silme işlemlerini gerçekleştirmenize olanak tanır. | 82200a5b-e217-47a5-b665-6d8765ee745b |
 
 
 ## <a name="general"></a>Genel
@@ -2612,9 +2639,52 @@ Azure depolama kuyruklarını ve sıra iletilerini okuyun ve listeleyin. Belirli
 ## <a name="web"></a>Web
 
 
+### <a name="azure-maps-data-contributor"></a>Azure haritalar veri Katılımcısı
+
+Azure haritalar hesabından ilgili verileri eşlemek için okuma, yazma ve silme erişimi verir. [Daha fazla bilgi edinin](../azure-maps/azure-maps-authentication.md)
+
+> [!div class="mx-tableFixed"]
+> | Eylemler | Açıklama |
+> | --- | --- |
+> | *yok* |  |
+> | **NotActions** |  |
+> | *yok* |  |
+> | **Veri eylemleri** |  |
+> | [Microsoft. Maps](resource-provider-operations.md#microsoftmaps)/accounts/*/Read |  |
+> | [Microsoft. Maps](resource-provider-operations.md#microsoftmaps)/accounts/*/Write |  |
+> | [Microsoft. Maps](resource-provider-operations.md#microsoftmaps)/accounts/*/Delete |  |
+> | **NotDataActions** |  |
+> | *yok* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Grants access to read, write, and delete access to map related data from an Azure maps account.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/8f5e0ce6-4f7b-4dcf-bddf-e6f48634a204",
+  "name": "8f5e0ce6-4f7b-4dcf-bddf-e6f48634a204",
+  "permissions": [
+    {
+      "actions": [],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.Maps/accounts/*/read",
+        "Microsoft.Maps/accounts/*/write",
+        "Microsoft.Maps/accounts/*/delete"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Azure Maps Data Contributor",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
 ### <a name="azure-maps-data-reader"></a>Azure haritalar veri okuyucu
 
-Azure haritalar hesabından ilgili harita okuma verilerine erişim izni verir.
+Azure haritalar hesabından ilgili harita okuma verilerine erişim izni verir. [Daha fazla bilgi edinin](../azure-maps/azure-maps-authentication.md)
 
 > [!div class="mx-tableFixed"]
 > | Eylemler | Açıklama |
@@ -5278,6 +5348,249 @@ Bilişsel hizmetler için anahtar oluşturma, okuma, güncelleştirme, silme ve 
 }
 ```
 
+### <a name="cognitive-services-custom-vision-contributor"></a>Bilişsel Hizmetler Özel Görüntü İşleme Katılımcısı
+
+Projeleri görüntüleme, oluşturma, düzenleme veya silme özelliği de dahil olmak üzere projeye tam erişim. [Daha fazla bilgi edinin](../cognitive-services/custom-vision-service/role-based-access-control.md)
+
+> [!div class="mx-tableFixed"]
+> | Eylemler | Açıklama |
+> | --- | --- |
+> | [Microsoft. Biliveservices](resource-provider-operations.md#microsoftcognitiveservices)/*/Read |  |
+> | **NotActions** |  |
+> | *yok* |  |
+> | **Veri eylemleri** |  |
+> | [Microsoft. Biliveservices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/CustomVision/* |  |
+> | **NotDataActions** |  |
+> | *yok* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Full access to the project, including the ability to view, create, edit, or delete projects.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/c1ff6cc2-c111-46fe-8896-e0ef812ad9f3",
+  "name": "c1ff6cc2-c111-46fe-8896-e0ef812ad9f3",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.CognitiveServices/*/read"
+      ],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.CognitiveServices/accounts/CustomVision/*"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Cognitive Services Custom Vision Contributor",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="cognitive-services-custom-vision-deployment"></a>Bilişsel Hizmetler Özel Görüntü İşleme dağıtımı
+
+Modelleri yayımlayın, yayımdan kaldırın veya dışarı aktarın. Dağıtım projeyi görüntüleyebilir, ancak güncelleştiremez. [Daha fazla bilgi edinin](../cognitive-services/custom-vision-service/role-based-access-control.md)
+
+> [!div class="mx-tableFixed"]
+> | Eylemler | Açıklama |
+> | --- | --- |
+> | [Microsoft. Biliveservices](resource-provider-operations.md#microsoftcognitiveservices)/*/Read |  |
+> | **NotActions** |  |
+> | *yok* |  |
+> | **Veri eylemleri** |  |
+> | [Microsoft. Biliveservices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/CustomVision/*/Read |  |
+> | [Microsoft. Biliveservices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/CustomVision/Projects/predictions/* |  |
+> | [Microsoft. Biliveservices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/CustomVision/Projects/iterations/Publish/* |  |
+> | [Microsoft. Biliveservices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/CustomVision/Projects/iterations/Export/* |  |
+> | [Microsoft. Biliveservices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/CustomVision/Projects/QuickTest/* |  |
+> | [Microsoft. Biliveservices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/CustomVision/classify/* |  |
+> | [Microsoft. Biliveservices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/CustomVision/Detect/* |  |
+> | **NotDataActions** |  |
+> | [Microsoft. Biliveservices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/CustomVision/Projects/Export/Read | Projeyi dışa aktarır. |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Publish, unpublish or export models. Deployment can view the project but can't update.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/5c4089e1-6d96-4d2f-b296-c1bc7137275f",
+  "name": "5c4089e1-6d96-4d2f-b296-c1bc7137275f",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.CognitiveServices/*/read"
+      ],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.CognitiveServices/accounts/CustomVision/*/read",
+        "Microsoft.CognitiveServices/accounts/CustomVision/projects/predictions/*",
+        "Microsoft.CognitiveServices/accounts/CustomVision/projects/iterations/publish/*",
+        "Microsoft.CognitiveServices/accounts/CustomVision/projects/iterations/export/*",
+        "Microsoft.CognitiveServices/accounts/CustomVision/projects/quicktest/*",
+        "Microsoft.CognitiveServices/accounts/CustomVision/classify/*",
+        "Microsoft.CognitiveServices/accounts/CustomVision/detect/*"
+      ],
+      "notDataActions": [
+        "Microsoft.CognitiveServices/accounts/CustomVision/projects/export/read"
+      ]
+    }
+  ],
+  "roleName": "Cognitive Services Custom Vision Deployment",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="cognitive-services-custom-vision-labeler"></a>Bilişsel Hizmetler Özel Görüntü İşleme etiketleyici
+
+Eğitim görüntülerini görüntüleyin, düzenleyin, görüntü etiketlerini oluşturun, ekleyin, kaldırın veya silin. Etiketleyiciler projeyi görüntüleyebilir, ancak eğitim görüntüleri ve Etiketler dışında herhangi bir şeyi güncelleştiremez. [Daha fazla bilgi edinin](../cognitive-services/custom-vision-service/role-based-access-control.md)
+
+> [!div class="mx-tableFixed"]
+> | Eylemler | Açıklama |
+> | --- | --- |
+> | [Microsoft. Biliveservices](resource-provider-operations.md#microsoftcognitiveservices)/*/Read |  |
+> | **NotActions** |  |
+> | *yok* |  |
+> | **Veri eylemleri** |  |
+> | [Microsoft. Biliveservices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/CustomVision/*/Read |  |
+> | [Microsoft. Biliveservices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/CustomVision/Projects/predictions/Query/Action | Tahmin uç noktanıza gönderilen görüntüleri alın. |
+> | [Microsoft. Biliveservices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/CustomVision/Projects/images/* |  |
+> | [Microsoft. Biliveservices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/CustomVision/Projects/Tags/* |  |
+> | [Microsoft. Biliveservices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/CustomVision/Projects/images/Suggested/* |  |
+> | [Microsoft. Biliveservices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/CustomVision/Projects/tagsandregions/suggestions/Action | Bu API, Etiketler için bir dizi/etiketsiz görüntü için önerilen Etiketler ve bölgeler alır. Hiçbir etiket bulunamazsa boş bir dizi döndürür. |
+> | **NotDataActions** |  |
+> | [Microsoft. Biliveservices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/CustomVision/Projects/Export/Read | Projeyi dışa aktarır. |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "View, edit training images and create, add, remove, or delete the image tags. Labelers can view the project but can't update anything other than training images and tags.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/88424f51-ebe7-446f-bc41-7fa16989e96c",
+  "name": "88424f51-ebe7-446f-bc41-7fa16989e96c",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.CognitiveServices/*/read"
+      ],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.CognitiveServices/accounts/CustomVision/*/read",
+        "Microsoft.CognitiveServices/accounts/CustomVision/projects/predictions/query/action",
+        "Microsoft.CognitiveServices/accounts/CustomVision/projects/images/*",
+        "Microsoft.CognitiveServices/accounts/CustomVision/projects/tags/*",
+        "Microsoft.CognitiveServices/accounts/CustomVision/projects/images/suggested/*",
+        "Microsoft.CognitiveServices/accounts/CustomVision/projects/tagsandregions/suggestions/action"
+      ],
+      "notDataActions": [
+        "Microsoft.CognitiveServices/accounts/CustomVision/projects/export/read"
+      ]
+    }
+  ],
+  "roleName": "Cognitive Services Custom Vision Labeler",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="cognitive-services-custom-vision-reader"></a>Bilişsel Hizmetler Özel Görüntü İşleme okuyucu
+
+Projedeki salt okuma eylemleri. Okuyucular projeyi oluşturamaz veya güncelleştiremez. [Daha fazla bilgi edinin](../cognitive-services/custom-vision-service/role-based-access-control.md)
+
+> [!div class="mx-tableFixed"]
+> | Eylemler | Açıklama |
+> | --- | --- |
+> | [Microsoft. Biliveservices](resource-provider-operations.md#microsoftcognitiveservices)/*/Read |  |
+> | **NotActions** |  |
+> | *yok* |  |
+> | **Veri eylemleri** |  |
+> | [Microsoft. Biliveservices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/CustomVision/*/Read |  |
+> | [Microsoft. Biliveservices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/CustomVision/Projects/predictions/Query/Action | Tahmin uç noktanıza gönderilen görüntüleri alın. |
+> | **NotDataActions** |  |
+> | [Microsoft. Biliveservices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/CustomVision/Projects/Export/Read | Projeyi dışa aktarır. |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Read-only actions in the project. Readers can't create or update the project.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/93586559-c37d-4a6b-ba08-b9f0940c2d73",
+  "name": "93586559-c37d-4a6b-ba08-b9f0940c2d73",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.CognitiveServices/*/read"
+      ],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.CognitiveServices/accounts/CustomVision/*/read",
+        "Microsoft.CognitiveServices/accounts/CustomVision/projects/predictions/query/action"
+      ],
+      "notDataActions": [
+        "Microsoft.CognitiveServices/accounts/CustomVision/projects/export/read"
+      ]
+    }
+  ],
+  "roleName": "Cognitive Services Custom Vision Reader",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="cognitive-services-custom-vision-trainer"></a>Bilişsel Hizmetler Özel Görüntü İşleme Trainer
+
+Modelleri yayımlama, yayımdan kaldırma, dışarı aktarma özelliği de dahil olmak üzere projeleri görüntüleyin, düzenleyin ve modelleri eğitme. Traıners proje oluşturamaz veya silemez. [Daha fazla bilgi edinin](../cognitive-services/custom-vision-service/role-based-access-control.md)
+
+> [!div class="mx-tableFixed"]
+> | Eylemler | Açıklama |
+> | --- | --- |
+> | [Microsoft. Biliveservices](resource-provider-operations.md#microsoftcognitiveservices)/*/Read |  |
+> | **NotActions** |  |
+> | *yok* |  |
+> | **Veri eylemleri** |  |
+> | [Microsoft. Biliveservices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/CustomVision/* |  |
+> | **NotDataActions** |  |
+> | [Microsoft. Biliveservices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/CustomVision/Projects/Action | Bir proje oluşturun. |
+> | [Microsoft. Biliveservices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/CustomVision/Projects/Delete | Belirli bir projeyi silin. |
+> | [Microsoft. Biliveservices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/CustomVision/Projects/import/Action | Bir projeyi içeri aktarır. |
+> | [Microsoft. Biliveservices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/CustomVision/Projects/Export/Read | Projeyi dışa aktarır. |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "View, edit projects and train the models, including the ability to publish, unpublish, export the models. Trainers can't create or delete the project.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/0a5ae4ab-0d65-4eeb-be61-29fc9b54394b",
+  "name": "0a5ae4ab-0d65-4eeb-be61-29fc9b54394b",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.CognitiveServices/*/read"
+      ],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.CognitiveServices/accounts/CustomVision/*"
+      ],
+      "notDataActions": [
+        "Microsoft.CognitiveServices/accounts/CustomVision/projects/action",
+        "Microsoft.CognitiveServices/accounts/CustomVision/projects/delete",
+        "Microsoft.CognitiveServices/accounts/CustomVision/projects/import/action",
+        "Microsoft.CognitiveServices/accounts/CustomVision/projects/export/read"
+      ]
+    }
+  ],
+  "roleName": "Cognitive Services Custom Vision Trainer",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
 ### <a name="cognitive-services-data-reader-preview"></a>Bilişsel hizmetler veri okuyucu (Önizleme)
 
 Bilişsel hizmetler verilerini okumanızı sağlar.
@@ -5312,6 +5625,209 @@ Bilişsel hizmetler verilerini okumanızı sağlar.
     }
   ],
   "roleName": "Cognitive Services Data Reader (Preview)",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="cognitive-services-metrics-advisor-administrator"></a>Bilişsel hizmetler ölçüm Danışmanı Yöneticisi
+
+Sistem düzeyi yapılandırması da dahil olmak üzere, projeye tam erişim. [Daha fazla bilgi edinin](../cognitive-services/metrics-advisor/how-tos/alerts.md)
+
+> [!div class="mx-tableFixed"]
+> | Eylemler | Açıklama |
+> | --- | --- |
+> | [Microsoft. Biliveservices](resource-provider-operations.md#microsoftcognitiveservices)/*/Read |  |
+> | **NotActions** |  |
+> | *yok* |  |
+> | **Veri eylemleri** |  |
+> | [Microsoft. Biliveservices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/metricsadvisor/* |  |
+> | **NotDataActions** |  |
+> | *yok* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Full access to the project, including the system level configuration.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/cb43c632-a144-4ec5-977c-e80c4affc34a",
+  "name": "cb43c632-a144-4ec5-977c-e80c4affc34a",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.CognitiveServices/*/read"
+      ],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.CognitiveServices/accounts/MetricsAdvisor/*"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Cognitive Services Metrics Advisor Administrator",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="cognitive-services-qna-maker-editor"></a>Bilişsel hizmetler Soru-Cevap Oluşturma Düzenleyicisi
+
+KB oluşturma, düzenleme, içeri aktarma ve dışarı aktarma işlemi yapmanızı sağlar. Bir KB yayımlayamaz veya silemezsiniz. [Daha fazla bilgi edinin](../cognitive-services/qnamaker/reference-role-based-access-control.md)
+
+> [!div class="mx-tableFixed"]
+> | Eylemler | Açıklama |
+> | --- | --- |
+> | [Microsoft. Biliveservices](resource-provider-operations.md#microsoftcognitiveservices)/*/Read |  |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/Roleatamas/Read | Rol ataması hakkında bilgi alın. |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/Roledefinitions/Read | Rol tanımı hakkında bilgi alın. |
+> | **NotActions** |  |
+> | *yok* |  |
+> | **Veri eylemleri** |  |
+> | [Microsoft. Biliveservices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/qnamaker/knowledgebases/Read | Belirli bir knowledgeun listesini veya belirli bir knowledgeelleyici 'nin ayrıntılarını alır. |
+> | [Microsoft. Biliveservices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/qnamaker/knowledgebases/Download/Read | Bilgi Bankası 'nı indirin. |
+> | [Microsoft. Biliveservices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/qnamaker/knowledgebases/Create/Write | Yeni bir Bilgi Bankası oluşturmak için zaman uyumsuz işlem. |
+> | [Microsoft. Biliveservices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/qnamaker/knowledgebases/Write | Bir Bilgi Bankası 'yi değiştirme veya Bilgi Bankası içeriğini değiştirme için zaman uyumsuz işlem. |
+> | [Microsoft. Biliveservices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker/knowledgebases/generateanswer/Action | Bilgi Bankası 'nı sorgulamak için GenerateAnswer çağrısı. |
+> | [Microsoft. Biliveservices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/qnamaker/knowledgebases/Train/Action | Bilgi Bankası 'na öneriler eklemek için çağrıyı eğitme. |
+> | [Microsoft. Biliveservices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/qnamaker/alterations/Read | Çalışma zamanının değişikliklerini indirin. |
+> | [Microsoft. Biliveservices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/qnamaker/alterations/Write | Değişiklikleri değiştirme verileri. |
+> | [Microsoft. Biliveservices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/qnamaker/endpointkeys/Read | Uç nokta için uç nokta anahtarlarını alır |
+> | [Microsoft. Biliveservices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/qnamaker/endpointkeys/refreshkeys/Action | Bir uç nokta anahtarını yeniden oluşturur. |
+> | [Microsoft. Biliveservices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/qnamaker/endpointsettings/Read | Uç nokta için uç nokta ayarlarını alır |
+> | [Microsoft. Biliveservices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/qnamaker/endpointsettings/Write | Uç nokta için uç nokta seetkileni güncelleştirin. |
+> | [Microsoft. Biliveservices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/qnamaker/Operations/Read | Belirli bir uzun süre çalışan işlemin ayrıntılarını alır. |
+> | [Microsoft. Biliveservices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/qnamaker.exe v2/knowledgebases/Read | Belirli bir knowledgeun listesini veya belirli bir knowledgeelleyici 'nin ayrıntılarını alır. |
+> | [Microsoft. Biliveservices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/qnamaker.exe v2/knowledgebases/Download/Read | Bilgi Bankası 'nı indirin. |
+> | [Microsoft. Biliveservices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/qnamaker.exe v2/knowledgebases/Create/Write | Yeni bir Bilgi Bankası oluşturmak için zaman uyumsuz işlem. |
+> | [Microsoft. Biliveservices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/qnamaker.exe v2/knowledgebases/Write | Bir Bilgi Bankası 'yi değiştirme veya Bilgi Bankası içeriğini değiştirme için zaman uyumsuz işlem. |
+> | [Microsoft. Biliveservices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker.v2/knowledgebases/generateanswer/Action | Bilgi Bankası 'nı sorgulamak için GenerateAnswer çağrısı. |
+> | [Microsoft. Biliveservices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/qnamaker.exe v2/knowledgebases/Train/Action | Bilgi Bankası 'na öneriler eklemek için çağrıyı eğitme. |
+> | [Microsoft. Biliveservices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/qnamaker.exe v2/alterations/Read | Çalışma zamanının değişikliklerini indirin. |
+> | [Microsoft. Biliveservices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/qnamaker.exe v2/alterations/Write | Değişiklikleri değiştirme verileri. |
+> | [Microsoft. Biliveservices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/qnamaker.exe v2/endpointkeys/Read | Uç nokta için uç nokta anahtarlarını alır |
+> | [Microsoft. Biliveservices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/qnamaker.exe v2/endpointkeys/refreshkeys/Action | Bir uç nokta anahtarını yeniden oluşturur. |
+> | [Microsoft. Biliveservices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/qnamaker.exe v2/endpointsettings/Read | Uç nokta için uç nokta ayarlarını alır |
+> | [Microsoft. Biliveservices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/qnamaker.exe v2/endpointsettings/Write | Uç nokta için uç nokta seetkileni güncelleştirin. |
+> | [Microsoft. Biliveservices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/qnamaker.exe v2/Operations/Read | Belirli bir uzun süre çalışan işlemin ayrıntılarını alır. |
+> | **NotDataActions** |  |
+> | *yok* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Let's you create, edit, import and export a KB. You cannot publish or delete a KB.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/f4cc2bf9-21be-47a1-bdf1-5c5804381025",
+  "name": "f4cc2bf9-21be-47a1-bdf1-5c5804381025",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.CognitiveServices/*/read",
+        "Microsoft.Authorization/roleAssignments/read",
+        "Microsoft.Authorization/roleDefinitions/read"
+      ],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.CognitiveServices/accounts/QnAMaker/knowledgebases/read",
+        "Microsoft.CognitiveServices/accounts/QnAMaker/knowledgebases/download/read",
+        "Microsoft.CognitiveServices/accounts/QnAMaker/knowledgebases/create/write",
+        "Microsoft.CognitiveServices/accounts/QnAMaker/knowledgebases/write",
+        "Microsoft.CognitiveServices/accounts/QnAMaker/knowledgebases/generateanswer/action",
+        "Microsoft.CognitiveServices/accounts/QnAMaker/knowledgebases/train/action",
+        "Microsoft.CognitiveServices/accounts/QnAMaker/alterations/read",
+        "Microsoft.CognitiveServices/accounts/QnAMaker/alterations/write",
+        "Microsoft.CognitiveServices/accounts/QnAMaker/endpointkeys/read",
+        "Microsoft.CognitiveServices/accounts/QnAMaker/endpointkeys/refreshkeys/action",
+        "Microsoft.CognitiveServices/accounts/QnAMaker/endpointsettings/read",
+        "Microsoft.CognitiveServices/accounts/QnAMaker/endpointsettings/write",
+        "Microsoft.CognitiveServices/accounts/QnAMaker/operations/read",
+        "Microsoft.CognitiveServices/accounts/QnAMaker.v2/knowledgebases/read",
+        "Microsoft.CognitiveServices/accounts/QnAMaker.v2/knowledgebases/download/read",
+        "Microsoft.CognitiveServices/accounts/QnAMaker.v2/knowledgebases/create/write",
+        "Microsoft.CognitiveServices/accounts/QnAMaker.v2/knowledgebases/write",
+        "Microsoft.CognitiveServices/accounts/QnAMaker.v2/knowledgebases/generateanswer/action",
+        "Microsoft.CognitiveServices/accounts/QnAMaker.v2/knowledgebases/train/action",
+        "Microsoft.CognitiveServices/accounts/QnAMaker.v2/alterations/read",
+        "Microsoft.CognitiveServices/accounts/QnAMaker.v2/alterations/write",
+        "Microsoft.CognitiveServices/accounts/QnAMaker.v2/endpointkeys/read",
+        "Microsoft.CognitiveServices/accounts/QnAMaker.v2/endpointkeys/refreshkeys/action",
+        "Microsoft.CognitiveServices/accounts/QnAMaker.v2/endpointsettings/read",
+        "Microsoft.CognitiveServices/accounts/QnAMaker.v2/endpointsettings/write",
+        "Microsoft.CognitiveServices/accounts/QnAMaker.v2/operations/read"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Cognitive Services QnA Maker Editor",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="cognitive-services-qna-maker-reader"></a>Bilişsel hizmetler Soru-Cevap Oluşturma okuyucu
+
+Yalnızca bir KB 'yi okuyup test edelim. [Daha fazla bilgi edinin](../cognitive-services/qnamaker/reference-role-based-access-control.md)
+
+> [!div class="mx-tableFixed"]
+> | Eylemler | Açıklama |
+> | --- | --- |
+> | [Microsoft. Biliveservices](resource-provider-operations.md#microsoftcognitiveservices)/*/Read |  |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/Roleatamas/Read | Rol ataması hakkında bilgi alın. |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/Roledefinitions/Read | Rol tanımı hakkında bilgi alın. |
+> | **NotActions** |  |
+> | *yok* |  |
+> | **Veri eylemleri** |  |
+> | [Microsoft. Biliveservices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/qnamaker/knowledgebases/Read | Belirli bir knowledgeun listesini veya belirli bir knowledgeelleyici 'nin ayrıntılarını alır. |
+> | [Microsoft. Biliveservices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/qnamaker/knowledgebases/Download/Read | Bilgi Bankası 'nı indirin. |
+> | [Microsoft. Biliveservices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker/knowledgebases/generateanswer/Action | Bilgi Bankası 'nı sorgulamak için GenerateAnswer çağrısı. |
+> | [Microsoft. Biliveservices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/qnamaker/alterations/Read | Çalışma zamanının değişikliklerini indirin. |
+> | [Microsoft. Biliveservices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/qnamaker/endpointkeys/Read | Uç nokta için uç nokta anahtarlarını alır |
+> | [Microsoft. Biliveservices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/qnamaker/endpointsettings/Read | Uç nokta için uç nokta ayarlarını alır |
+> | [Microsoft. Biliveservices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/qnamaker.exe v2/knowledgebases/Read | Belirli bir knowledgeun listesini veya belirli bir knowledgeelleyici 'nin ayrıntılarını alır. |
+> | [Microsoft. Biliveservices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/qnamaker.exe v2/knowledgebases/Download/Read | Bilgi Bankası 'nı indirin. |
+> | [Microsoft. Biliveservices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker.v2/knowledgebases/generateanswer/Action | Bilgi Bankası 'nı sorgulamak için GenerateAnswer çağrısı. |
+> | [Microsoft. Biliveservices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/qnamaker.exe v2/alterations/Read | Çalışma zamanının değişikliklerini indirin. |
+> | [Microsoft. Biliveservices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/qnamaker.exe v2/endpointkeys/Read | Uç nokta için uç nokta anahtarlarını alır |
+> | [Microsoft. Biliveservices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/qnamaker.exe v2/endpointsettings/Read | Uç nokta için uç nokta ayarlarını alır |
+> | **NotDataActions** |  |
+> | *yok* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Let's you read and test a KB only.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/466ccd10-b268-4a11-b098-b4849f024126",
+  "name": "466ccd10-b268-4a11-b098-b4849f024126",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.CognitiveServices/*/read",
+        "Microsoft.Authorization/roleAssignments/read",
+        "Microsoft.Authorization/roleDefinitions/read"
+      ],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.CognitiveServices/accounts/QnAMaker/knowledgebases/read",
+        "Microsoft.CognitiveServices/accounts/QnAMaker/knowledgebases/download/read",
+        "Microsoft.CognitiveServices/accounts/QnAMaker/knowledgebases/generateanswer/action",
+        "Microsoft.CognitiveServices/accounts/QnAMaker/alterations/read",
+        "Microsoft.CognitiveServices/accounts/QnAMaker/endpointkeys/read",
+        "Microsoft.CognitiveServices/accounts/QnAMaker/endpointsettings/read",
+        "Microsoft.CognitiveServices/accounts/QnAMaker.v2/knowledgebases/read",
+        "Microsoft.CognitiveServices/accounts/QnAMaker.v2/knowledgebases/download/read",
+        "Microsoft.CognitiveServices/accounts/QnAMaker.v2/knowledgebases/generateanswer/action",
+        "Microsoft.CognitiveServices/accounts/QnAMaker.v2/alterations/read",
+        "Microsoft.CognitiveServices/accounts/QnAMaker.v2/endpointkeys/read",
+        "Microsoft.CognitiveServices/accounts/QnAMaker.v2/endpointsettings/read"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Cognitive Services QnA Maker Reader",
   "roleType": "BuiltInRole",
   "type": "Microsoft.Authorization/roleDefinitions"
 }
@@ -6729,6 +7245,88 @@ Kullanıcı tarafından atanan kimliği okuma ve atama [daha fazla bilgi](../act
 ## <a name="security"></a>Güvenlik
 
 
+### <a name="attestation-contributor"></a>Kanıtlama Katılımcısı
+
+Kanıtlama sağlayıcısı örneğini okuma veya silme [hakkında daha fazla bilgi](../attestation/quickstart-powershell.md) edinebilirsiniz
+
+> [!div class="mx-tableFixed"]
+> | Eylemler | Açıklama |
+> | --- | --- |
+> | Microsoft. kanıtlama/attestationProviders/kanıtlama/okuma |  |
+> | Microsoft. kanıtlama/attestationProviders/kanıtlama/yazma |  |
+> | Microsoft. kanıtlama/attestationProviders/kanıtlama/silme |  |
+> | **NotActions** |  |
+> | *yok* |  |
+> | **Veri eylemleri** |  |
+> | *yok* |  |
+> | **NotDataActions** |  |
+> | *yok* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Can read write or delete the attestation provider instance",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/bbf86eb8-f7b4-4cce-96e4-18cddf81d86e",
+  "name": "bbf86eb8-f7b4-4cce-96e4-18cddf81d86e",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Attestation/attestationProviders/attestation/read",
+        "Microsoft.Attestation/attestationProviders/attestation/write",
+        "Microsoft.Attestation/attestationProviders/attestation/delete"
+      ],
+      "notActions": [],
+      "dataActions": [],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Attestation Contributor",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="attestation-reader"></a>Kanıtlama okuyucusu
+
+Kanıtlama sağlayıcısı özelliklerini okuyabilir [daha fazla bilgi edinin](../attestation/troubleshoot-guide.md)
+
+> [!div class="mx-tableFixed"]
+> | Eylemler | Açıklama |
+> | --- | --- |
+> | Microsoft. kanıtlama/attestationProviders/kanıtlama/okuma |  |
+> | **NotActions** |  |
+> | *yok* |  |
+> | **Veri eylemleri** |  |
+> | *yok* |  |
+> | **NotDataActions** |  |
+> | *yok* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Can read the attestation provider properties",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/fd1bd22b-8476-40bc-a0bc-69b95687b9f3",
+  "name": "fd1bd22b-8476-40bc-a0bc-69b95687b9f3",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Attestation/attestationProviders/attestation/read"
+      ],
+      "notActions": [],
+      "dataActions": [],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Attestation Reader",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
 ### <a name="azure-sentinel-contributor"></a>Azure Sentinel Katkıda Bulunanı
 
 Azure Sentinel katılımcısı [daha fazla bilgi](../sentinel/roles.md)
@@ -7458,6 +8056,45 @@ Gizli dizi içeriğini okuyun. Yalnızca ' Azure rol tabanlı erişim denetimi '
     }
   ],
   "roleName": "Key Vault Secrets User (preview)",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="managed-hsm-contributor"></a>Yönetilen HSM Katılımcısı
+
+Yönetilen HSM havuzlarını yönetmenize izin verir, ancak bunlara erişimi olmaz. [Daha fazla bilgi edinin](../key-vault/managed-hsm/secure-your-managed-hsm.md)
+
+> [!div class="mx-tableFixed"]
+> | Eylemler | Açıklama |
+> | --- | --- |
+> | [Microsoft. Keykasası](resource-provider-operations.md#microsoftkeyvault)/Managedhsms/* |  |
+> | **NotActions** |  |
+> | *yok* |  |
+> | **Veri eylemleri** |  |
+> | *yok* |  |
+> | **NotDataActions** |  |
+> | *yok* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Lets you manage managed HSM pools, but not access to them.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/18500a29-7fe2-46b2-a342-b16a415e101d",
+  "name": "18500a29-7fe2-46b2-a342-b16a415e101d",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.KeyVault/managedHSMs/*"
+      ],
+      "notActions": [],
+      "dataActions": [],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Managed HSM contributor",
   "roleType": "BuiltInRole",
   "type": "Microsoft.Authorization/roleDefinitions"
 }
@@ -9229,6 +9866,63 @@ Kaynak ilkelerine okuma erişimine ve kaynak bileşen ilkesi olaylarına yazma e
 }
 ```
 
+### <a name="reservation-purchaser"></a>Rezervasyon Satınalmacı
+
+Ayırmaları satın almanızı sağlar [daha fazla bilgi](../cost-management-billing/reservations/prepare-buy-reservation.md)
+
+> [!div class="mx-tableFixed"]
+> | Eylemler | Açıklama |
+> | --- | --- |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/Read | Aboneliklerin listesini alır. |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/ResourceGroups/Read | Kaynak gruplarını alır veya listeler. |
+> | [Microsoft. Capacity](resource-provider-operations.md#microsoftcapacity)/Register/Action | Kapasite kaynak sağlayıcısını kaydeder ve kapasite kaynaklarının oluşturulmasına izin vermez. |
+> | [Microsoft. COMPUTE](resource-provider-operations.md#microsoftcompute)/Register/Action | Aboneliği Microsoft. COMPUTE kaynak sağlayıcısına kaydeder |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Register/Action | Microsoft SQL veritabanı kaynak sağlayıcısı için aboneliği kaydeder ve Microsoft SQL veritabanlarının oluşturulmasına izin vermez. |
+> | [Microsoft. tüketim](resource-provider-operations.md#microsoftconsumption)/Register/Action | Tüketim RP 'ye kaydol |
+> | [Microsoft. Capacity](resource-provider-operations.md#microsoftcapacity)/Catalogs/Read | Ayırma kataloğunu okuyun |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/Roleatamas/Read | Rol ataması hakkında bilgi alın. |
+> | [Microsoft. tüketim](resource-provider-operations.md#microsoftconsumption)/reservationRecommendations/Read | Bir abonelik için ayrılmış örnekler için tek veya paylaşılan öneriler listeleyin. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/supportbilet s/Write | Destek bileti oluşturulmasına ve güncelleştirilmesine izin verir |
+> | **NotActions** |  |
+> | *yok* |  |
+> | **Veri eylemleri** |  |
+> | *yok* |  |
+> | **NotDataActions** |  |
+> | *yok* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Lets you purchase reservations",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/f7b75c60-3036-4b75-91c3-6b41c27c1689",
+  "name": "f7b75c60-3036-4b75-91c3-6b41c27c1689",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Resources/subscriptions/read",
+        "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.Capacity/register/action",
+        "Microsoft.Compute/register/action",
+        "Microsoft.SQL/register/action",
+        "Microsoft.Consumption/register/action",
+        "Microsoft.Capacity/catalogs/read",
+        "Microsoft.Authorization/roleAssignments/read",
+        "Microsoft.Consumption/reservationRecommendations/read",
+        "Microsoft.Support/supporttickets/write"
+      ],
+      "notActions": [],
+      "dataActions": [],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Reservation Purchaser",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
 ### <a name="resource-policy-contributor"></a>Kaynak İlkesine Katkıda Bulunan
 
 Kaynak ilkesi oluşturma/değiştirme, destek bileti oluşturma ve kaynakları/hiyerarşisi okuma haklarına sahip kullanıcılar. [Daha fazla bilgi edinin](../governance/policy/overview.md)
@@ -9871,6 +10565,363 @@ BizTalk hizmetlerini yönetmenizi sağlar ancak onlara erişim izni vermez.
 }
 ```
 
+### <a name="desktop-virtualization-application-group-contributor"></a>Masaüstü Sanallaştırma uygulama grubu Katılımcısı
+
+Masaüstü Sanallaştırma uygulama grubunun katılımcısı. [Daha fazla bilgi edinin](../virtual-desktop/rbac.md)
+
+> [!div class="mx-tableFixed"]
+> | Eylemler | Açıklama |
+> | --- | --- |
+> | [Microsoft. DesktopVirtualization](resource-provider-operations.md#microsoftdesktopvirtualization)/applicationgroups/* |  |
+> | [Microsoft. DesktopVirtualization](resource-provider-operations.md#microsoftdesktopvirtualization)/hostpools/Read | Barındırma havuzlarını oku |
+> | [Microsoft. DesktopVirtualization](resource-provider-operations.md#microsoftdesktopvirtualization)/hostpools/sessionhosts/Read | Hostpools/sessionkonakları oku |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/ResourceGroups/Read | Kaynak gruplarını alır veya listeler. |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Dağıtım oluşturma ve yönetme |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rolleri ve rol atamalarını oku |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Alertrules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Destek bileti oluşturma ve güncelleştirme |
+> | **NotActions** |  |
+> | *yok* |  |
+> | **Veri eylemleri** |  |
+> | *yok* |  |
+> | **NotDataActions** |  |
+> | *yok* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Contributor of the Desktop Virtualization Application Group.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/86240b0e-9422-4c43-887b-b61143f32ba8",
+  "name": "86240b0e-9422-4c43-887b-b61143f32ba8",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.DesktopVirtualization/applicationgroups/*",
+        "Microsoft.DesktopVirtualization/hostpools/read",
+        "Microsoft.DesktopVirtualization/hostpools/sessionhosts/read",
+        "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.Resources/deployments/*",
+        "Microsoft.Authorization/*/read",
+        "Microsoft.Insights/alertRules/*",
+        "Microsoft.Support/*"
+      ],
+      "notActions": [],
+      "dataActions": [],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Desktop Virtualization Application Group Contributor",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="desktop-virtualization-application-group-reader"></a>Masaüstü Sanallaştırma uygulama grubu okuyucusu
+
+Masaüstü Sanallaştırma uygulama grubunun okuyucusu. [Daha fazla bilgi edinin](../virtual-desktop/rbac.md)
+
+> [!div class="mx-tableFixed"]
+> | Eylemler | Açıklama |
+> | --- | --- |
+> | [Microsoft. DesktopVirtualization](resource-provider-operations.md#microsoftdesktopvirtualization)/applicationgroups/*/Read |  |
+> | [Microsoft. DesktopVirtualization](resource-provider-operations.md#microsoftdesktopvirtualization)/applicationgroups/Read | Applicationgroups 'ı okuyun |
+> | [Microsoft. DesktopVirtualization](resource-provider-operations.md#microsoftdesktopvirtualization)/hostpools/Read | Barındırma havuzlarını oku |
+> | [Microsoft. DesktopVirtualization](resource-provider-operations.md#microsoftdesktopvirtualization)/hostpools/sessionhosts/Read | Hostpools/sessionkonakları oku |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/ResourceGroups/Read | Kaynak gruplarını alır veya listeler. |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Deployments/Read | Dağıtımları alır veya listeler. |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rolleri ve rol atamalarını oku |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Alertrules/Read | Klasik ölçüm uyarısını okuyun |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Destek bileti oluşturma ve güncelleştirme |
+> | **NotActions** |  |
+> | *yok* |  |
+> | **Veri eylemleri** |  |
+> | *yok* |  |
+> | **NotDataActions** |  |
+> | *yok* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Reader of the Desktop Virtualization Application Group.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/aebf23d0-b568-4e86-b8f9-fe83a2c6ab55",
+  "name": "aebf23d0-b568-4e86-b8f9-fe83a2c6ab55",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.DesktopVirtualization/applicationgroups/*/read",
+        "Microsoft.DesktopVirtualization/applicationgroups/read",
+        "Microsoft.DesktopVirtualization/hostpools/read",
+        "Microsoft.DesktopVirtualization/hostpools/sessionhosts/read",
+        "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.Resources/deployments/read",
+        "Microsoft.Authorization/*/read",
+        "Microsoft.Insights/alertRules/read",
+        "Microsoft.Support/*"
+      ],
+      "notActions": [],
+      "dataActions": [],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Desktop Virtualization Application Group Reader",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="desktop-virtualization-contributor"></a>Masaüstü Sanallaştırma Katılımcısı
+
+Masaüstü Sanallaştırma katılımcısı. [Daha fazla bilgi edinin](../virtual-desktop/rbac.md)
+
+> [!div class="mx-tableFixed"]
+> | Eylemler | Açıklama |
+> | --- | --- |
+> | [Microsoft. DesktopVirtualization](resource-provider-operations.md#microsoftdesktopvirtualization)/* |  |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/ResourceGroups/Read | Kaynak gruplarını alır veya listeler. |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Dağıtım oluşturma ve yönetme |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rolleri ve rol atamalarını oku |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Alertrules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Destek bileti oluşturma ve güncelleştirme |
+> | **NotActions** |  |
+> | *yok* |  |
+> | **Veri eylemleri** |  |
+> | *yok* |  |
+> | **NotDataActions** |  |
+> | *yok* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Contributor of Desktop Virtualization.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/082f0a83-3be5-4ba1-904c-961cca79b387",
+  "name": "082f0a83-3be5-4ba1-904c-961cca79b387",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.DesktopVirtualization/*",
+        "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.Resources/deployments/*",
+        "Microsoft.Authorization/*/read",
+        "Microsoft.Insights/alertRules/*",
+        "Microsoft.Support/*"
+      ],
+      "notActions": [],
+      "dataActions": [],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Desktop Virtualization Contributor",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="desktop-virtualization-host-pool-contributor"></a>Masaüstü Sanallaştırma Ana bilgisayar havuzu Katılımcısı
+
+Masaüstü Sanallaştırma Ana bilgisayar havuzunun katılımcısı. [Daha fazla bilgi edinin](../virtual-desktop/rbac.md)
+
+> [!div class="mx-tableFixed"]
+> | Eylemler | Açıklama |
+> | --- | --- |
+> | [Microsoft. DesktopVirtualization](resource-provider-operations.md#microsoftdesktopvirtualization)/hostpools/* |  |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/ResourceGroups/Read | Kaynak gruplarını alır veya listeler. |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Dağıtım oluşturma ve yönetme |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rolleri ve rol atamalarını oku |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Alertrules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Destek bileti oluşturma ve güncelleştirme |
+> | **NotActions** |  |
+> | *yok* |  |
+> | **Veri eylemleri** |  |
+> | *yok* |  |
+> | **NotDataActions** |  |
+> | *yok* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Contributor of the Desktop Virtualization Host Pool.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/e307426c-f9b6-4e81-87de-d99efb3c32bc",
+  "name": "e307426c-f9b6-4e81-87de-d99efb3c32bc",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.DesktopVirtualization/hostpools/*",
+        "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.Resources/deployments/*",
+        "Microsoft.Authorization/*/read",
+        "Microsoft.Insights/alertRules/*",
+        "Microsoft.Support/*"
+      ],
+      "notActions": [],
+      "dataActions": [],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Desktop Virtualization Host Pool Contributor",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="desktop-virtualization-host-pool-reader"></a>Masaüstü Sanallaştırma Ana bilgisayar havuzu okuyucusu
+
+Masaüstü Sanallaştırma Ana bilgisayar havuzunun okuyucusu. [Daha fazla bilgi edinin](../virtual-desktop/rbac.md)
+
+> [!div class="mx-tableFixed"]
+> | Eylemler | Açıklama |
+> | --- | --- |
+> | [Microsoft. DesktopVirtualization](resource-provider-operations.md#microsoftdesktopvirtualization)/hostpools/*/Read |  |
+> | [Microsoft. DesktopVirtualization](resource-provider-operations.md#microsoftdesktopvirtualization)/hostpools/Read | Barındırma havuzlarını oku |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/ResourceGroups/Read | Kaynak gruplarını alır veya listeler. |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Deployments/Read | Dağıtımları alır veya listeler. |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rolleri ve rol atamalarını oku |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Alertrules/Read | Klasik ölçüm uyarısını okuyun |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Destek bileti oluşturma ve güncelleştirme |
+> | **NotActions** |  |
+> | *yok* |  |
+> | **Veri eylemleri** |  |
+> | *yok* |  |
+> | **NotDataActions** |  |
+> | *yok* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Reader of the Desktop Virtualization Host Pool.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/ceadfde2-b300-400a-ab7b-6143895aa822",
+  "name": "ceadfde2-b300-400a-ab7b-6143895aa822",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.DesktopVirtualization/hostpools/*/read",
+        "Microsoft.DesktopVirtualization/hostpools/read",
+        "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.Resources/deployments/read",
+        "Microsoft.Authorization/*/read",
+        "Microsoft.Insights/alertRules/read",
+        "Microsoft.Support/*"
+      ],
+      "notActions": [],
+      "dataActions": [],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Desktop Virtualization Host Pool Reader",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="desktop-virtualization-reader"></a>Masaüstü Sanallaştırma okuyucusu
+
+Masaüstü Sanallaştırma okuyucusu. [Daha fazla bilgi edinin](../virtual-desktop/rbac.md)
+
+> [!div class="mx-tableFixed"]
+> | Eylemler | Açıklama |
+> | --- | --- |
+> | [Microsoft. DesktopVirtualization](resource-provider-operations.md#microsoftdesktopvirtualization)/*/Read |  |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/ResourceGroups/Read | Kaynak gruplarını alır veya listeler. |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Deployments/Read | Dağıtımları alır veya listeler. |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rolleri ve rol atamalarını oku |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Alertrules/Read | Klasik ölçüm uyarısını okuyun |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Destek bileti oluşturma ve güncelleştirme |
+> | **NotActions** |  |
+> | *yok* |  |
+> | **Veri eylemleri** |  |
+> | *yok* |  |
+> | **NotDataActions** |  |
+> | *yok* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Reader of Desktop Virtualization.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/49a72310-ab8d-41df-bbb0-79b649203868",
+  "name": "49a72310-ab8d-41df-bbb0-79b649203868",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.DesktopVirtualization/*/read",
+        "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.Resources/deployments/read",
+        "Microsoft.Authorization/*/read",
+        "Microsoft.Insights/alertRules/read",
+        "Microsoft.Support/*"
+      ],
+      "notActions": [],
+      "dataActions": [],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Desktop Virtualization Reader",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="desktop-virtualization-session-host-operator"></a>Masaüstü Sanallaştırma oturumu ana bilgisayar Işleci
+
+Masaüstü Sanallaştırma oturumu ana bilgisayarının işleci. [Daha fazla bilgi edinin](../virtual-desktop/rbac.md)
+
+> [!div class="mx-tableFixed"]
+> | Eylemler | Açıklama |
+> | --- | --- |
+> | [Microsoft. DesktopVirtualization](resource-provider-operations.md#microsoftdesktopvirtualization)/hostpools/Read | Barındırma havuzlarını oku |
+> | [Microsoft. DesktopVirtualization](resource-provider-operations.md#microsoftdesktopvirtualization)/hostpools/sessionhosts/* |  |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/ResourceGroups/Read | Kaynak gruplarını alır veya listeler. |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Dağıtım oluşturma ve yönetme |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rolleri ve rol atamalarını oku |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Alertrules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Destek bileti oluşturma ve güncelleştirme |
+> | **NotActions** |  |
+> | *yok* |  |
+> | **Veri eylemleri** |  |
+> | *yok* |  |
+> | **NotDataActions** |  |
+> | *yok* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Operator of the Desktop Virtualization Session Host.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/2ad6aaab-ead9-4eaa-8ac5-da422f562408",
+  "name": "2ad6aaab-ead9-4eaa-8ac5-da422f562408",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.DesktopVirtualization/hostpools/read",
+        "Microsoft.DesktopVirtualization/hostpools/sessionhosts/*",
+        "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.Resources/deployments/*",
+        "Microsoft.Authorization/*/read",
+        "Microsoft.Insights/alertRules/*",
+        "Microsoft.Support/*"
+      ],
+      "notActions": [],
+      "dataActions": [],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Desktop Virtualization Session Host Operator",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
 ### <a name="desktop-virtualization-user"></a>Masaüstü Sanallaştırma kullanıcısı
 
 Kullanıcının uygulama grubundaki uygulamaları kullanmasına izin verir. [Daha fazla bilgi edinin](../virtual-desktop/delegated-access-virtual-desktop.md)
@@ -9882,7 +10933,7 @@ Kullanıcının uygulama grubundaki uygulamaları kullanmasına izin verir. [Dah
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
-> | Microsoft. DesktopVirtualization/applicationGroups/useApplications/Action | ApplicationGroup kullanma |
+> | [Microsoft. DesktopVirtualization](resource-provider-operations.md#microsoftdesktopvirtualization)/Applicationgroups/useapplications/Action | ApplicationGroup kullanma |
 > | **NotDataActions** |  |
 > | *yok* |  |
 
@@ -9905,6 +10956,310 @@ Kullanıcının uygulama grubundaki uygulamaları kullanmasına izin verir. [Dah
     }
   ],
   "roleName": "Desktop Virtualization User",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="desktop-virtualization-user-session-operator"></a>Masaüstü Sanallaştırma Kullanıcı oturumu Işleci
+
+Masaüstü Sanallaştırma uesr oturumunun işleci. [Daha fazla bilgi edinin](../virtual-desktop/rbac.md)
+
+> [!div class="mx-tableFixed"]
+> | Eylemler | Açıklama |
+> | --- | --- |
+> | [Microsoft. DesktopVirtualization](resource-provider-operations.md#microsoftdesktopvirtualization)/hostpools/Read | Barındırma havuzlarını oku |
+> | [Microsoft. DesktopVirtualization](resource-provider-operations.md#microsoftdesktopvirtualization)/hostpools/sessionhosts/Read | Hostpools/sessionkonakları oku |
+> | [Microsoft. DesktopVirtualization](resource-provider-operations.md#microsoftdesktopvirtualization)/hostpools/sessionhosts/usersessions/* |  |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/ResourceGroups/Read | Kaynak gruplarını alır veya listeler. |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Dağıtım oluşturma ve yönetme |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rolleri ve rol atamalarını oku |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Alertrules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Destek bileti oluşturma ve güncelleştirme |
+> | **NotActions** |  |
+> | *yok* |  |
+> | **Veri eylemleri** |  |
+> | *yok* |  |
+> | **NotDataActions** |  |
+> | *yok* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Operator of the Desktop Virtualization Uesr Session.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/ea4bfff8-7fb4-485a-aadd-d4129a0ffaa6",
+  "name": "ea4bfff8-7fb4-485a-aadd-d4129a0ffaa6",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.DesktopVirtualization/hostpools/read",
+        "Microsoft.DesktopVirtualization/hostpools/sessionhosts/read",
+        "Microsoft.DesktopVirtualization/hostpools/sessionhosts/usersessions/*",
+        "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.Resources/deployments/*",
+        "Microsoft.Authorization/*/read",
+        "Microsoft.Insights/alertRules/*",
+        "Microsoft.Support/*"
+      ],
+      "notActions": [],
+      "dataActions": [],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Desktop Virtualization User Session Operator",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="desktop-virtualization-workspace-contributor"></a>Masaüstü Sanallaştırma çalışma alanı Katılımcısı
+
+Masaüstü Sanallaştırma çalışma alanının katılımcısı. [Daha fazla bilgi edinin](../virtual-desktop/rbac.md)
+
+> [!div class="mx-tableFixed"]
+> | Eylemler | Açıklama |
+> | --- | --- |
+> | [Microsoft. DesktopVirtualization](resource-provider-operations.md#microsoftdesktopvirtualization)/Workspaces/* |  |
+> | [Microsoft. DesktopVirtualization](resource-provider-operations.md#microsoftdesktopvirtualization)/applicationgroups/Read | Applicationgroups 'ı okuyun |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/ResourceGroups/Read | Kaynak gruplarını alır veya listeler. |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Dağıtım oluşturma ve yönetme |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rolleri ve rol atamalarını oku |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Alertrules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Destek bileti oluşturma ve güncelleştirme |
+> | **NotActions** |  |
+> | *yok* |  |
+> | **Veri eylemleri** |  |
+> | *yok* |  |
+> | **NotDataActions** |  |
+> | *yok* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Contributor of the Desktop Virtualization Workspace.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/21efdde3-836f-432b-bf3d-3e8e734d4b2b",
+  "name": "21efdde3-836f-432b-bf3d-3e8e734d4b2b",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.DesktopVirtualization/workspaces/*",
+        "Microsoft.DesktopVirtualization/applicationgroups/read",
+        "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.Resources/deployments/*",
+        "Microsoft.Authorization/*/read",
+        "Microsoft.Insights/alertRules/*",
+        "Microsoft.Support/*"
+      ],
+      "notActions": [],
+      "dataActions": [],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Desktop Virtualization Workspace Contributor",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="desktop-virtualization-workspace-reader"></a>Masaüstü Sanallaştırma çalışma alanı okuyucusu
+
+Masaüstü Sanallaştırma çalışma alanının okuyucusu. [Daha fazla bilgi edinin](../virtual-desktop/rbac.md)
+
+> [!div class="mx-tableFixed"]
+> | Eylemler | Açıklama |
+> | --- | --- |
+> | [Microsoft. DesktopVirtualization](resource-provider-operations.md#microsoftdesktopvirtualization)/Workspaces/Read | Çalışma alanlarını oku |
+> | [Microsoft. DesktopVirtualization](resource-provider-operations.md#microsoftdesktopvirtualization)/applicationgroups/Read | Applicationgroups 'ı okuyun |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/ResourceGroups/Read | Kaynak gruplarını alır veya listeler. |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Deployments/Read | Dağıtımları alır veya listeler. |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rolleri ve rol atamalarını oku |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Alertrules/Read | Klasik ölçüm uyarısını okuyun |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Destek bileti oluşturma ve güncelleştirme |
+> | **NotActions** |  |
+> | *yok* |  |
+> | **Veri eylemleri** |  |
+> | *yok* |  |
+> | **NotDataActions** |  |
+> | *yok* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Reader of the Desktop Virtualization Workspace.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/0fa44ee9-7a7d-466b-9bb2-2bf446b1204d",
+  "name": "0fa44ee9-7a7d-466b-9bb2-2bf446b1204d",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.DesktopVirtualization/workspaces/read",
+        "Microsoft.DesktopVirtualization/applicationgroups/read",
+        "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.Resources/deployments/read",
+        "Microsoft.Authorization/*/read",
+        "Microsoft.Insights/alertRules/read",
+        "Microsoft.Support/*"
+      ],
+      "notActions": [],
+      "dataActions": [],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Desktop Virtualization Workspace Reader",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="disk-backup-reader"></a>Disk yedekleme okuyucusu
+
+Disk yedeklemesi gerçekleştirmek için Yedekleme Kasası için izin sağlar. [Daha fazla bilgi edinin](../backup/disk-backup-faq.md)
+
+> [!div class="mx-tableFixed"]
+> | Eylemler | Açıklama |
+> | --- | --- |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rolleri ve rol atamalarını oku |
+> | [Microsoft. COMPUTE](resource-provider-operations.md#microsoftcompute)/Disks/Read | Bir diskin özelliklerini al |
+> | [Microsoft. COMPUTE](resource-provider-operations.md#microsoftcompute)/Disks/begingetaccess/Action | Blob erişimi için diskin SAS URI 'sini al |
+> | **NotActions** |  |
+> | *yok* |  |
+> | **Veri eylemleri** |  |
+> | *yok* |  |
+> | **NotDataActions** |  |
+> | *yok* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Provides permission to backup vault to perform disk backup.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/3e5e47e6-65f7-47ef-90b5-e5dd4d455f24",
+  "name": "3e5e47e6-65f7-47ef-90b5-e5dd4d455f24",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Authorization/*/read",
+        "Microsoft.Compute/disks/read",
+        "Microsoft.Compute/disks/beginGetAccess/action"
+      ],
+      "notActions": [],
+      "dataActions": [],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Disk Backup Reader",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="disk-restore-operator"></a>Disk geri yükleme Işleci
+
+Disk geri yükleme işlemini gerçekleştirmek için Yedekleme Kasası için izin sağlar. [Daha fazla bilgi edinin](../backup/restore-managed-disks.md)
+
+> [!div class="mx-tableFixed"]
+> | Eylemler | Açıklama |
+> | --- | --- |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rolleri ve rol atamalarını oku |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/ResourceGroups/Read | Kaynak gruplarını alır veya listeler. |
+> | [Microsoft. COMPUTE](resource-provider-operations.md#microsoftcompute)/Disks/Write | Yeni bir disk oluşturur veya var olan bir diski güncelleştirir |
+> | [Microsoft. COMPUTE](resource-provider-operations.md#microsoftcompute)/Disks/Read | Bir diskin özelliklerini al |
+> | **NotActions** |  |
+> | *yok* |  |
+> | **Veri eylemleri** |  |
+> | *yok* |  |
+> | **NotDataActions** |  |
+> | *yok* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Provides permission to backup vault to perform disk restore.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/b50d9833-a0cb-478e-945f-707fcc997c13",
+  "name": "b50d9833-a0cb-478e-945f-707fcc997c13",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Authorization/*/read",
+        "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.Compute/disks/write",
+        "Microsoft.Compute/disks/read"
+      ],
+      "notActions": [],
+      "dataActions": [],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Disk Restore Operator",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="disk-snapshot-contributor"></a>Disk anlık görüntüsü Katılımcısı
+
+Disk anlık görüntülerini yönetmek için Yedekleme Kasası için izin sağlar. [Daha fazla bilgi edinin](../backup/backup-managed-disks.md)
+
+> [!div class="mx-tableFixed"]
+> | Eylemler | Açıklama |
+> | --- | --- |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rolleri ve rol atamalarını oku |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/ResourceGroups/Read | Kaynak gruplarını alır veya listeler. |
+> | [Microsoft. COMPUTE](resource-provider-operations.md#microsoftcompute)/anlık görüntüyle TS/Delete | Anlık görüntüyü silme |
+> | [Microsoft. COMPUTE](resource-provider-operations.md#microsoftcompute)/anlık görüntüyle TS/Write | Yeni bir anlık görüntü oluşturma veya var olanı güncelleştirme |
+> | [Microsoft. COMPUTE](resource-provider-operations.md#microsoftcompute)/anlık görüntüyle TS/Read | Anlık görüntünün özelliklerini al |
+> | [Microsoft. COMPUTE](resource-provider-operations.md#microsoftcompute)/anlık görüntüyle TS/begingetaccess/Action | Blob erişimi için anlık görüntünün SAS URI 'sini alma |
+> | [Microsoft. COMPUTE](resource-provider-operations.md#microsoftcompute)/anlık görüntüyle TS/endgetaccess/Action | Anlık görüntünün SAS URI 'sini iptal et |
+> | [Microsoft. COMPUTE](resource-provider-operations.md#microsoftcompute)/Disks/begingetaccess/Action | Blob erişimi için diskin SAS URI 'sini al |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/Storageaccounts/ListKeys/Action | Belirtilen depolama hesabı için erişim anahtarlarını döndürür. |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/Storageaccounts/Write | Belirtilen parametrelerle bir depolama hesabı oluşturur veya özellikleri ya da etiketleri güncelleştirir veya belirtilen depolama hesabı için özel etki alanı ekler. |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/Storageaccounts/Read | Depolama hesaplarının listesini döndürür veya belirtilen depolama hesabının özelliklerini alır. |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/Storageaccounts/Delete | Var olan bir depolama hesabını siler. |
+> | **NotActions** |  |
+> | *yok* |  |
+> | **Veri eylemleri** |  |
+> | *yok* |  |
+> | **NotDataActions** |  |
+> | *yok* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Provides permission to backup vault to manage disk snapshots.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/7efff54f-a5b4-42b5-a1c5-5411624893ce",
+  "name": "7efff54f-a5b4-42b5-a1c5-5411624893ce",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Authorization/*/read",
+        "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.Compute/snapshots/delete",
+        "Microsoft.Compute/snapshots/write",
+        "Microsoft.Compute/snapshots/read",
+        "Microsoft.Compute/snapshots/beginGetAccess/action",
+        "Microsoft.Compute/snapshots/endGetAccess/action",
+        "Microsoft.Compute/disks/beginGetAccess/action",
+        "Microsoft.Storage/storageAccounts/listkeys/action",
+        "Microsoft.Storage/storageAccounts/write",
+        "Microsoft.Storage/storageAccounts/read",
+        "Microsoft.Storage/storageAccounts/delete"
+      ],
+      "notActions": [],
+      "dataActions": [],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Disk Snapshot Contributor",
   "roleType": "BuiltInRole",
   "type": "Microsoft.Authorization/roleDefinitions"
 }
@@ -9956,6 +11311,61 @@ Zamanlayıcı iş koleksiyonlarını yönetmenizi sağlar, ancak bunlara erişim
     }
   ],
   "roleName": "Scheduler Job Collections Contributor",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="services-hub-operator"></a>Hizmetler hub 'ı Işleci
+
+Hizmet hub 'ı operatörü, Service hub bağlayıcılarıyla ilgili tüm okuma, yazma ve silme işlemlerini gerçekleştirmenize olanak tanır. [Daha fazla bilgi edinin](/services-hub/health/sh-connector-roles)
+
+> [!div class="mx-tableFixed"]
+> | Eylemler | Açıklama |
+> | --- | --- |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rolleri ve rol atamalarını oku |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/ResourceGroups/Read | Kaynak gruplarını alır veya listeler. |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Dağıtım oluşturma ve yönetme |
+> | [Microsoft. ServicesHub](resource-provider-operations.md#microsoftserviceshub)/Connectors/Write | Service hub Bağlayıcısı oluşturma veya güncelleştirme |
+> | [Microsoft. ServicesHub](resource-provider-operations.md#microsoftserviceshub)/Connectors/Read | Hizmet Merkezi bağlayıcılarını görüntüleme veya listeleme |
+> | [Microsoft. ServicesHub](resource-provider-operations.md#microsoftserviceshub)/Connectors/Delete | Service hub bağlayıcılarını Sil |
+> | [Microsoft. ServicesHub](resource-provider-operations.md#microsoftserviceshub)/Connectors/checkassessmententitlement/Action | Belirli bir hizmet hub 'ı çalışma alanı için değerlendirme yetkilendirmelerini listeler |
+> | [Microsoft. ServicesHub](resource-provider-operations.md#microsoftserviceshub)/Supportofferingentitlement/Read | Belirli bir hizmet merkezi çalışma alanı için destek teklifi yetkilendirmelerini görüntüleyin |
+> | [Microsoft. ServicesHub](resource-provider-operations.md#microsoftserviceshub)/Workspaces/Read | Belirli bir kullanıcı için hizmet hub 'ı çalışma alanlarını listeleyin |
+> | **NotActions** |  |
+> | *yok* |  |
+> | **Veri eylemleri** |  |
+> | *yok* |  |
+> | **NotDataActions** |  |
+> | *yok* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Services Hub Operator allows you to perform all read, write, and deletion operations related to Services Hub Connectors.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/82200a5b-e217-47a5-b665-6d8765ee745b",
+  "name": "82200a5b-e217-47a5-b665-6d8765ee745b",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Authorization/*/read",
+        "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.Resources/deployments/*",
+        "Microsoft.ServicesHub/connectors/write",
+        "Microsoft.ServicesHub/connectors/read",
+        "Microsoft.ServicesHub/connectors/delete",
+        "Microsoft.ServicesHub/connectors/checkAssessmentEntitlement/action",
+        "Microsoft.ServicesHub/supportOfferingEntitlement/read",
+        "Microsoft.ServicesHub/workspaces/read"
+      ],
+      "notActions": [],
+      "dataActions": [],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Services Hub Operator",
   "roleType": "BuiltInRole",
   "type": "Microsoft.Authorization/roleDefinitions"
 }

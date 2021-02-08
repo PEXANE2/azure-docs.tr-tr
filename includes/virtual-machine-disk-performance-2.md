@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/12/2020
 ms.author: albecker1
 ms.custom: include file
-ms.openlocfilehash: 086ebf71e2da19a96433f32cfb1bae133e875400
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 3c4ab8362b2a717a348a59c0baf829b61e1a8006
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92518097"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99808514"
 ---
 ![D s v 3 belirtimlerini gösteren grafik.](media/vm-disk-performance/dsv3-documentation.jpg)
 
@@ -33,7 +33,7 @@ Ana bilgisayar önbelleğini her bir disk için iş yükü gereksinimlerinize uy
 
 İş yükünüz Bu desenlerden birini izmezse konak önbelleğe alma kullanmanız önerilmez.
 
-Veri akışını ve performansını nasıl etkilediğini görmek için farklı konak önbelleği ayarlarına birkaç örnek üzerinden çalıştıralım. Bu ilk örnekte, ana bilgisayar önbelleğe alma ayarı **salt okunurdur**olarak ayarlandığında GÇ istekleriyle ne olacağını inceleyeceğiz.
+Veri akışını ve performansını nasıl etkilediğini görmek için farklı konak önbelleği ayarlarına birkaç örnek üzerinden çalıştıralım. Bu ilk örnekte, ana bilgisayar önbelleğe alma ayarı **salt okunurdur** olarak ayarlandığında GÇ istekleriyle ne olacağını inceleyeceğiz.
 
 **Yapısı**
 
@@ -56,7 +56,7 @@ Bir yazma işlemi gerçekleştirildiğinde, yazma işlemi tamamlanmadan önce ö
 
 ![Bir okuma ana bilgisayar önbelleği yazma işlemini gösteren diyagram.](media/vm-disk-performance/host-caching-write.jpg)
 
-Daha sonra, ana bilgisayar önbelleği ayarı **okuma/yazma**olarak ayarlandığında GÇ istekleriyle neler olduğunu inceleyelim.
+Daha sonra, ana bilgisayar önbelleği ayarı **okuma/yazma** olarak ayarlandığında GÇ istekleriyle neler olduğunu inceleyelim.
 
 **Yapısı**
 
@@ -67,7 +67,7 @@ Daha sonra, ana bilgisayar önbelleği ayarı **okuma/yazma**olarak ayarlandığ
   - IOPS: 5.000
   - Konak önbelleğe alma: **okuma/yazma**
 
-Okuma, salt okunurdur aynı şekilde işlenir. Yazma/yazma önbelleklemesi ile farklı olan tek şey yazma işlemleri. Konak önbelleğe alma ile yazma, **okuma/yazma**olarak ayarlandığında, yalnızca yazma işleminin tamamlanmış olarak kabul edilmesi için ana bilgisayar önbelleğine yazılması gerekir. Yazma daha sonra geç arka plan işlemi olarak diske yazılır. Bu, önbellekte yazıldığında önbelleğe alınmış GÇ 'ye doğru bir yazma sayılır. Diske geç yazıldığında, önbelleğe alınmamış GÇ 'e doğru sayılır.
+Okuma, salt okunurdur aynı şekilde işlenir. Yazma/yazma önbelleklemesi ile farklı olan tek şey yazma işlemleri. Konak önbelleğe alma ile yazma, **okuma/yazma** olarak ayarlandığında, yalnızca yazma işleminin tamamlanmış olarak kabul edilmesi için ana bilgisayar önbelleğine yazılması gerekir. Yazma daha sonra geç arka plan işlemi olarak diske yazılır. Bu, önbellekte yazıldığında önbelleğe alınmış GÇ 'ye doğru bir yazma sayılır. Diske geç yazıldığında, önbelleğe alınmamış GÇ 'e doğru sayılır.
 
 ![Okuma/yazma ana bilgisayar önbelleği yazma işlemini gösteren diyagram.](media/vm-disk-performance/host-caching-read-write.jpg)
 
@@ -137,6 +137,7 @@ Azure 'da sanal makinelerinizin ve disklerinizin nasıl çalıştığı hakkınd
 - **Disk yazma işlemi/sn**: bir VM 'ye bağlı tüm disklerden saniye içinde yazılan çıkış işlemlerinin sayısı.
 
 ## <a name="storage-io-utilization-metrics"></a>Depolama GÇ kullanım ölçümleri
+Aşağıdaki ölçümler, sanal makinenizde ve disk birleşiminizdeki performans sorunlarını tanılamaya yardımcı olur. Bu ölçümler yalnızca Premium etkin VM kullanılırken kullanılabilir. Bu ölçümler, Ultra hariç tüm disk türleri için kullanılabilir. 
 
 Disk GÇ dönüşü tanılamaya yardımcı olan ölçümler:
 

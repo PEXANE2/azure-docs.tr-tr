@@ -1,79 +1,72 @@
 ---
-title: 'Hızlı başlangıç: hizmeti etkinleştirme'
+title: IoT Aracısı tabanlı çözüm için Defender 'a ekleme
 description: Azure IoT Hub IoT güvenlik hizmeti için Defender 'ı ekleme ve etkinleştirme hakkında bilgi edinin.
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
-author: mlottner
+author: shhazam-ms
 manager: rkarlin
 editor: ''
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/06/2020
-ms.author: mlottner
-ms.openlocfilehash: e3768ef233c60f1687bc804778c3dabf32666e1d
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.date: 1/20/2021
+ms.author: shhazam
+ms.openlocfilehash: 127e439a7740cb97cbe126071aaaa5245cd85782
+ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97835168"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99809142"
 ---
-# <a name="quickstart-onboard-azure-defender-for-iot-service-in-iot-hub"></a>Hızlı başlangıç: IoT Hub 'da IoT hizmeti için Azure Defender 'ı ekleme
+# <a name="onboard-to-defender-for-iot-agent-based-solution"></a>IoT Aracısı tabanlı çözüm için Defender 'a ekleme
 
-Bu makalede, mevcut IoT Hub IoT hizmeti için Defender 'ın nasıl etkinleştirileceği hakkında bir açıklama sunulmaktadır. Şu anda bir IoT Hub yoksa, kullanmaya başlamak için [Azure Portal kullanarak IoT Hub oluşturma](../iot-hub/iot-hub-create-through-portal.md) makalesine bakın.
+Bu makalede, mevcut IoT Hub IoT hizmeti için Defender 'ın nasıl etkinleştirileceği açıklanır. Şu anda bir IoT Hub yoksa, kullanmaya başlamak için [Azure Portal kullanarak IoT Hub oluşturma](../iot-hub/iot-hub-create-through-portal.md) makalesine bakın.
+
+IoT için Defender 'daki IoT Hub IoT güvenlerinizi yönetebilirsiniz. IoT Hub bulunan yönetim portalı aşağıdakileri yapmanıza olanak sağlar: 
+
+- IoT Hub güvenliğini yönetin.
+
+- IoT Hub telemetri temelinde bir aracı yüklemeden IoT cihazının güvenliğinin temel yönetimi. 
+
+- Mikro aracıya dayalı bir IoT cihazının güvenliği için gelişmiş yönetim.
 
 > [!NOTE]
 > IoT için Defender Şu anda yalnızca Standart katman IoT Hub 'Larını desteklemektedir.
 
-## <a name="prerequisites-for-enabling-the-service"></a>Hizmeti etkinleştirme önkoşulları
+## <a name="onboard-to-defender-for-iot-in-iot-hub"></a>IoT Hub 'da IoT için Defender 'a ekleme
 
-- Log Analytics çalışma alanı
-  - İki tür bilgi, IoT için Defender tarafından Log Analytics çalışma alanınızda varsayılan olarak saklanır; **güvenlik uyarıları** ve **önerileri**.
-  - Ek bilgi türü, **Ham olaylar** için depolama alanını eklemeyi seçebilirsiniz. **Ham olayların** Log Analytics daha fazla depolama maliyeti taşıdığına göz önünde unutmayın.
-- IoT Hub (Standart katman)
-- Tüm [sistem önkoşullarını](quickstart-system-prerequisites.md)karşılayın.
+Tüm yeni IoT Hub 'ları için, IoT için Defender varsayılan olarak **Açık** olarak ayarlanmıştır. IoT Hub oluşturma işlemi sırasında IoT için Defender 'ın **Açık** olduğunu doğrulayabilirsiniz.
 
-## <a name="enable-defender-for-iot-on-your-iot-hub"></a>IoT Hub IoT için Defender 'ı etkinleştirin
+Değiştirme seçeneğinin **Açık** olarak ayarlandığını doğrulamak için:
 
-IoT Hub güvenliği sağlamak için:
+1. Azure portalına gidin.
 
-1. **IoT Hub** Azure Portal açın.
-1. **Güvenlik** menüsünde, **IoT çözümünüzün güvenliğini sağla**' yı tıklatın.
+1. Azure hizmetleri listesinden **IoT Hub** seçin.
 
-Tebrikler! IoT Hub IoT için Defender 'ı etkinleştirmeyi tamamladınız.
+1. **Oluştur**’u seçin.
 
-### <a name="geolocation-and-ip-address-handling"></a>Coğrafi konum ve IP adresi işleme
+    :::image type="content" source="media/quickstart-onboard-iot-hub/create-iot-hub.png" alt-text="Üstteki araç çubuğundan Oluştur düğmesini seçin." lightbox="media/quickstart-onboard-iot-hub/create-iot-hub-expanded.png":::
 
-IoT çözümünüzü güvenli hale getirmek için IoT cihazlarınıza gelen ve giden bağlantıların IP adresleri, IoT Edge ve IoT Hub, varsayılan olarak toplanır ve depolanır. Bu bilgiler şüpheli IP kaynaklarından anormal bağlantıları algılamak için gereklidir. Örneğin, bilinen bir botnet 'in IP kaynağından veya coğrafi konum dışında bir IP kaynağından bağlantı kurmak için denemeler yapılır. IoT hizmeti için Defender, IP adresi verilerinin toplanmasını istediğiniz zaman etkinleştirme ve devre dışı bırakma esnekliği sunar.
+1. **Yönetim** sekmesini seçin ve **IoT Için Defender** 'ın **Açık** olarak ayarlandığını doğrulayın.
 
-IP adresi verilerini toplamayı etkinleştirmek veya devre dışı bırakmak için:
+    :::image type="content" source="media/quickstart-onboard-iot-hub/management-tab.png" alt-text="IoT geçiş için Defender 'ın açık olarak ayarlandığından emin olun.":::
 
-1. IoT Hub açın ve ardından **güvenlik** menüsünden **Ayarlar** ' ı seçin.
-1. **Veri toplama** ekranını seçin ve coğrafi konum ve/veya IP işleme ayarlarını istediğiniz gibi değiştirin.
+## <a name="onboard-defender-for-iot-to-an-existing-iot-hub"></a>IoT için Defender 'ı mevcut bir IoT Hub ekleme
 
-### <a name="log-analytics-creation"></a>Log Analytics oluşturma
+Cihaz kimlik yönetimi, cihazınızı buluta ve buluttan cihaza iletişim desenlerine izleyebilirsiniz ve hizmeti başlatmak için aşağıdakileri yapın: 
 
-IoT için Defender açıldığında, IoT cihazlarınıza, IoT Edge ve IoT Hub yönelik ham güvenlik olaylarını, uyarıları ve önerilerini depolamak için varsayılan bir Azure Log Analytics çalışma alanı oluşturulur. Her ay, Azure Log Analytics hizmetine müşteri başına alınan ilk beş (5) veri giriş ücretsizdir. Azure Log Analytics çalışma alanınıza alınan her GB veri, ilk 31 gün boyunca ücretsiz olarak tutulur. [Log Analytics](https://azure.microsoft.com/pricing/details/monitor/) fiyatlandırması hakkında daha fazla bilgi edinin.
+1. IoT Hub gidin. 
 
-Log Analytics çalışma alanı yapılandırmasını değiştirmek için:
+1.  **Güvenlik genel bakış**   menüsünü seçin. 
 
-1. IoT Hub açın ve ardından **güvenlik** menüsünden **Ayarlar** ' ı seçin.
-1. **Veri toplama** ekranını seçin ve Log Analytics ayarların çalışma alanı yapılandırmasını istediğiniz gibi değiştirin.
+1. IoT çözümünüzü güvenli hale getirin ve ekleme formunu doldurun. 
 
-### <a name="customize-your-iot-security-solution"></a>IoT Güvenlik çözümünüzü özelleştirme
-
-Varsayılan olarak, for IoT çözümünü açmak, Azure aboneliğinizdeki tüm IoT Hub 'Larını otomatik olarak korur.
-
-Belirli bir IoT Hub için Defender 'ı IoT hizmetine açmak veya kapatmak için:
-
-1. IoT Hub açın ve ardından **güvenlik** menüsünden **Ayarlar** ' ı seçin.
-1. **Veri toplama** ekranını seçin ve Azure aboneliğinizdeki herhangi bir IoT Hub 'ının güvenlik ayarlarını istediğiniz gibi değiştirin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Çözümünüzü yapılandırmak için sonraki makaleye ilerleyin...
 
 > [!div class="nextstepaction"]
-> [Çözümünüzü yapılandırma](quickstart-configure-your-solution.md)
+> [Bir Defender IoT mikro aracı modülü oluşturma ikizi (Önizleme)](quickstart-create-micro-agent-module-twin.md)

@@ -4,28 +4,25 @@ description: Azure IoT Hub Azure RTOS hizmetine yönelik güvenlik modülünü e
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
-author: rkarlin
+author: shhazam-ms
 manager: rkarlin
 editor: ''
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/24/2020
-ms.author: rkarlin
-ms.openlocfilehash: 321c8d2b9e58aba943c5bf19adf54d6359c5be96
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.date: 01/24/2021
+ms.author: shhazam
+ms.openlocfilehash: d7e901e440a6df5ae1d11a150e09a36b565904d9
+ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96351785"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99809074"
 ---
 # <a name="quickstart-security-module-for-azure-rtos-preview"></a>Hızlı başlangıç: Azure RTOS için güvenlik modülü (Önizleme)
 
 Bu makalede, başlamadan önce önkoşulların açıklaması sağlanmaktadır ve bir IoT Hub Azure RTOS hizmeti için güvenlik modülünün nasıl etkinleştirileceği açıklanır. Şu anda bir IoT Hub yoksa, kullanmaya başlamak için [Azure Portal kullanarak IoT Hub oluşturma](../iot-hub/iot-hub-create-through-portal.md) makalesine bakın.
-
-> [!NOTE]
-> Azure RTOS için güvenlik modülü yalnızca Standart katman IoT Hub 'Larında desteklenir.
 
 ## <a name="prerequisites"></a>Önkoşullar 
 
@@ -46,27 +43,13 @@ Kullanmaya başlamak için sonraki aşama, Azure kaynaklarınızı hazırlıyor.
 Başlamak için bir IoT Hub bağlantısı gerekir. 
 
 1. **IoT Hub** Azure Portal açın.
+1. **IoT cihazlarına** gidin.
+1. **Oluştur**’u seçin.
 1. IoT bağlantı dizesini [yapılandırma dosyasına](how-to-azure-rtos-security-module.md)kopyalayın.
-
 
 Bağlantı kimlik bilgileri, Kullanıcı uygulama yapılandırmasından **host_name**, **DEVICE_ID** ve **DEVICE_SYMMETRIC_KEY** alınır.
 
 Azure RTOS için güvenlik modülü, **MQTT** protokolüne göre Azure IoT ara yazılım bağlantılarını kullanır.
-
-
-### <a name="log-analytics-workspace"></a>Log Analytics çalışma alanı
-
-IoT Hub Log Analytics alma, IoT çözümü için varsayılan Defender tarafından kapalıdır. Azure RTOS için güvenlik modülü ile çalışmaya olanak tanımak üzere şunları yapın: 
-1. Azure portal IoT Hub gidin.
-1. **Güvenlik** menüsündeki **Ayarlar** ' ı seçin.
-   :::image type="content" source="media/quickstart/azure-rtos-hub-settings.png" alt-text="Azure RTOS için veri toplama seçeneğine erişme"::: 
-1. **Veri toplamayı** seçin. 
-1. **Çalışma alanı yapılandırma** seçeneğinde, geçişi **Açık** olarak değiştirin. 
-1. Yeni bir Log Analytics çalışma alanı oluşturun veya var olan bir çalışma alanını ekleyin. **Ham güvenlik verilerine erişim** seçeneğinin seçildiğinden emin olun. 
- :::image type="content" source="media/quickstart/azure-rtos-data-collection-on.png" alt-text="Veri toplama seçeneğini gösteren Azure RTOS yapılandırması ve her ikisi de seçili olan RAW güvenlik verileri seçenekleri":::
-1. **Kaydet**’i seçin
-1. Azure kaynakları listenize dönün ve oluşturduğunuz Log Analytics çalışma alanının IoT Hub için etkinleştirildiğini doğrulayın.
-    :::image type="content" source="media/quickstart/verify-azure-resource-list.png" alt-text="IoT Hub için eklenen doğru Log Analytics çalışma alanının eklenmesini onaylamak için Azure Kaynak listenizi denetleyin"::: 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

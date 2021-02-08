@@ -4,21 +4,21 @@ description: IoT hizmeti için Defender kullanırken kullanılabilecek farklı k
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
-author: mlottner
+author: shhazam-ms
 manager: rkarlin
 editor: ''
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/09/2020
-ms.author: mlottner
-ms.openlocfilehash: 896baa70fb6e18165a025459a063e33d705261ba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 01/24/2021
+ms.author: shhazam
+ms.openlocfilehash: aa5a8a842a750e44d4beeb915008f86c6b5bbb70
+ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90941707"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99809261"
 ---
 # <a name="security-agent-authentication-methods"></a>Güvenlik Aracısı kimlik doğrulama yöntemleri
 
@@ -32,7 +32,7 @@ IoT Hub IoT için her cihaz eklendi için Defender, bir güvenlik modülü gerek
 
 ## <a name="authentication-methods"></a>Kimlik doğrulama yöntemleri
 
-AzureIoTSecurity aracısının kimlik doğrulaması gerçekleştirmesi için iki yöntemi:
+IoT AzureIoTSecurity aracısının kimlik doğrulaması gerçekleştirmesi için Defender 'ın iki yöntemi:
 
 - **Securitymodule** kimlik doğrulama modu<br>
 Aracının kimliği, cihaz kimliğinden bağımsız olarak güvenlik modülü kimliği kullanılarak doğrulanır.
@@ -55,7 +55,7 @@ Güvenlik aracısının mevcut bir cihaz kimlik doğrulama yöntemini (otomatik 
 [Bir güvenlik Aracısı dağıtıldığında](how-to-deploy-agent.md), kimlik doğrulaması ayrıntıları bağımsız değişken olarak sağlanmalıdır.
 Bu bağımsız değişkenler aşağıdaki tabloda belgelenmiştir.
 
-|Linux parametre adı | Windows parametre adı | Toplu parametre |Açıklama|Seçenekler|
+|Linux parametre adı | Windows parametre adı | Toplu parametre |Description|Seçenekler|
 |---------------------|---------------|---------|---------------|---------------|
 |kimlik doğrulama-kimlik|Authenticationıdentity|AUI|Kimlik doğrulama kimliği| **Securitymodule** veya **cihaz**|
 |Authentication-yöntemi|AuthenticationMethod|AUD|Kimlik doğrulama yöntemi|**SymmetricKey** veya **Selfsignedcertificate**|

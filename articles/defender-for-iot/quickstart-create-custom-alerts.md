@@ -1,6 +1,6 @@
 ---
-title: 'Hızlı başlangıç: özel uyarılar oluşturma'
-description: IoT güvenlik hizmeti için Azure Defender için özel cihaz uyarıları anlayın, oluşturun ve atayın.
+title: Özel uyarılar oluşturma
+description: IoT güvenlik hizmeti için Azure Defender için özel cihaz uyarılarını anlayın, oluşturun ve atayın.
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/04/2020
 ms.author: mlottner
-ms.openlocfilehash: 48682e465374c1a0e1fb74fc6627016696ff6d2c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e59bcca9561c33610170f4bc3674eef307cf0de9
+ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90948528"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99809057"
 ---
-# <a name="quickstart-create-custom-alerts"></a>Hızlı başlangıç: özel uyarılar oluşturma
+# <a name="create-custom-alerts"></a>Özel uyarılar oluşturma
 
 Özel güvenlik grupları ve uyarılar kullanarak, IoT çözümünüz genelinde daha iyi güvenlik sağlamak için uçtan uca güvenlik bilgilerinin ve kategorik cihaz bilgilerinin tam avantajlarından yararlanır.
 
@@ -36,9 +36,9 @@ Güvenlik grupları, mantıksal cihaz gruplarını tanımlamanızı ve güvenlik
 
 Bu gruplar belirli donanımlar olan cihazları, belirli bir konumda dağıtılan cihazları veya özel gereksinimlerinize uygun diğer grupları temsil edebilir.
 
-Güvenlik grupları, **SecurityGroup**adlı bir Device ikizi Tag özelliği tarafından tanımlanır. Varsayılan olarak, IoT Hub her bir IoT çözümünün **varsayılan**adlı bir güvenlik grubu vardır. Bir cihazın güvenlik grubunu değiştirmek için **SecurityGroup** özelliğinin değerini değiştirin.
+Güvenlik grupları, **SecurityGroup** adlı bir Device ikizi Tag özelliği tarafından tanımlanır. Varsayılan olarak, IoT Hub her bir IoT çözümünün **varsayılan** adlı bir güvenlik grubu vardır. Bir cihazın güvenlik grubunu değiştirmek için **SecurityGroup** özelliğinin değerini değiştirin.
 
-Örnek:
+Örneğin:
 
 ```
 {
@@ -65,13 +65,19 @@ Cihazlarınızı mantıksal kategoriler halinde gruplandırmak için güvenlik g
 
 ## <a name="customize-an-alert"></a>Bir uyarıyı özelleştirme
 
-1. IoT Hub açın ve **güvenlik** menüsünden **Ayarlar** ' ı seçin. 
-1. **Özel uyarılar**' a tıklayın.
+1. IoT Hub açın ve **güvenlik** menüsünden **Ayarlar** ' ı seçin.
+
+1. **Özel uyarılar**' ı seçin.
+
 1. Özelleştirmeyi uygulamak istediğiniz güvenlik grubunu seçin.
-1. **Özel uyarı Ekle**' ye tıklayın.
+
+1. **Özel uyarı Ekle**' yi seçin.
+
 1. Açılan listeden özel bir uyarı seçin.
-1. Gerekli özellikleri düzenleyin, **Tamam**' a tıklayın.
-1. **Kaydet**' e tıkladığınızdan emin olun. Yeni uyarının kaydedilmeksizin, IoT Hub bir sonraki kapatıyorsunuz uyarı silinir.
+
+1. Gerekli özellikleri düzenleyin, **Tamam**' ı seçin.
+
+1. **Kaydet**' i seçtiğinizden emin olun. Yeni uyarının kaydedilmeksizin, IoT Hub bir sonraki kapatıyorsunuz uyarı silinir.
 
 ## <a name="alerts-available-for-customization"></a>Özelleştirmeler için kullanılabilir uyarılar
 

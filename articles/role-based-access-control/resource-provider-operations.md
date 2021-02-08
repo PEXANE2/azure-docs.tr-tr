@@ -9,12 +9,12 @@ author: rolyon
 ms.author: rolyon
 ms.date: 02/01/2021
 ms.custom: generated
-ms.openlocfilehash: 768a327421a941a39b6f66be411712a565097f66
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: 72a8f2eb93a9c12510b093e29c7b8fc6867cb2eb
+ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99557327"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99809397"
 ---
 # <a name="azure-resource-provider-operations"></a>Azure Kaynak sağlayıcısı işlemleri
 
@@ -160,7 +160,9 @@ Bu bölümde, yerleşik rollerde kullanılan Azure Kaynak sağlayıcılarının 
 | [Microsoft.Intune](#microsoftintune) |
 | **Diğer** |
 | [Microsoft. BingMaps](#microsoftbingmaps) |
+| [Microsoft. DesktopVirtualization](#microsoftdesktopvirtualization) |
 | [Microsoft. DigitalTwins](#microsoftdigitaltwins) |
+| [Microsoft. ServicesHub](#microsoftserviceshub) |
 
 
 ## <a name="general"></a>Genel
@@ -10268,6 +10270,51 @@ Azure hizmeti: [Bing Haritalar](/BingMaps/)
 > | Microsoft. BingMaps/Mapapsıs/Listusageölçümlerini/eylemi | Microsoft. BingMaps/Mapapsıs ölçümlerini listeleyin |
 > | Microsoft. BingMaps/Işlemler/okuma | Microsoft. BingMaps için işlemleri listeleyin |
 
+### <a name="microsoftdesktopvirtualization"></a>Microsoft. DesktopVirtualization
+
+Azure hizmeti: [Windows sanal masaüstü](../virtual-desktop/index.yml)
+
+> [!div class="mx-tableFixed"]
+> | Eylem | Açıklama |
+> | --- | --- |
+> | Microsoft. DesktopVirtualization/Register/Action | Abonelik Kaydet |
+> | Microsoft. DesktopVirtualization/applicationgroups/Read | Applicationgroups 'ı okuyun |
+> | Microsoft. DesktopVirtualization/applicationgroups/Write | Applicationgroups yazma |
+> | Microsoft. DesktopVirtualization/applicationgroups/Delete | Applicationgroups silme |
+> | Microsoft. DesktopVirtualization/applicationgroups/uygulamalar/okuma | Applicationgroups/uygulamaları okuyun |
+> | Microsoft. DesktopVirtualization/applicationgroups/uygulamalar/Write | Applicationgroups/uygulamaları yaz |
+> | Microsoft. DesktopVirtualization/applicationgroups/uygulamalar/Sil | Applicationgroups/uygulamaları Sil |
+> | Microsoft. DesktopVirtualization/applicationgroups/masaüstleri/okuma | Applicationgroups/masaüstleri okuyun |
+> | Microsoft. DesktopVirtualization/applicationgroups/masaüstleri/Write | Applicationgroups/masaüstleri yazma |
+> | Microsoft. DesktopVirtualization/applicationgroups/masaüstleri/Sil | Applicationgroups/masaüstleri silme |
+> | Microsoft. DesktopVirtualization/applicationgroups/externaluseratamaları/okuma |  |
+> | Microsoft. DesktopVirtualization/applicationgroups/Providers/Microsoft. Insights/diagnosticSettings/Read | Tanılama ayarını alır |
+> | Microsoft. DesktopVirtualization/applicationgroups/Providers/Microsoft. Insights/diagnosticSettings/Write | Tanılama ayarını oluşturur veya güncelleştirir |
+> | Microsoft. DesktopVirtualization/applicationgroups/Providers/Microsoft. Insights/logDefinitions/Read | Kullanılabilir günlükleri alır |
+> | Microsoft. DesktopVirtualization/applicationgroups/startmenuıtems/Read | Başlat menüsü öğelerini oku |
+> | Microsoft. DesktopVirtualization/hosthavuzlar/Read | Barındırma havuzlarını oku |
+> | Microsoft. DesktopVirtualization/hosthavuzlar/Write | Hostpools yazma |
+> | Microsoft. DesktopVirtualization/hosthavuzlar/Delete | Hostpools silme |
+> | Microsoft. DesktopVirtualization/hosthavuzlar/Providers/Microsoft. Insights/diagnosticSettings/Read | Tanılama ayarını alır |
+> | Microsoft. DesktopVirtualization/hosthavuzlar/Providers/Microsoft. Insights/diagnosticSettings/Write | Tanılama ayarını oluşturur veya güncelleştirir |
+> | Microsoft. DesktopVirtualization/hosthavuzlar/Providers/Microsoft. Insights/logDefinitions/Read | Kullanılabilir günlükleri alır |
+> | Microsoft. DesktopVirtualization/hosthavuzlar/oturumkonakları/okuma | Hostpools/sessionkonakları oku |
+> | Microsoft. DesktopVirtualization/hosthavuzlar/oturumkonakları/yazma | Hostpools/sessionkonakları yaz |
+> | Microsoft. DesktopVirtualization/hosthavuzlar/oturumkonakları/silme | Hostpools/sessionkonakları silme |
+> | Microsoft. DesktopVirtualization/hostpools/sessionkonakları/usersessions/Read | Hostpools/sessionkonakları/kullanıcıoturumlarını oku |
+> | Microsoft. DesktopVirtualization/hostpools/sessionkonakları/usersessions/Write | Hostpools/sessionkonakları/usersessions yazma |
+> | Microsoft. DesktopVirtualization/hostpools/sessionkonakları/usersessions/Delete | Hostpools/sessionkonakları/usersessions silme |
+> | Microsoft. DesktopVirtualization/hosthavuzlar/oturumkonakları/kullanıcıoturumları/bağlantıyı kes/eylem | Kullanıcı oturumu formu oturum ana bilgisayarının bağlantısını keser |
+> | Microsoft. DesktopVirtualization/hostpools/sessionkonakları/usersessions/sendMessage/Action | Kullanıcı oturumuna ileti gönder |
+> | Microsoft. DesktopVirtualization/çalışma alanları/okuma | Çalışma alanlarını oku |
+> | Microsoft. DesktopVirtualization/çalışma alanları/yazma | Yazma çalışma alanları |
+> | Microsoft. DesktopVirtualization/çalışma alanları/Sil | Çalışma alanlarını sil |
+> | Microsoft. DesktopVirtualization/Workspaces/Providers/Microsoft. Insights/diagnosticSettings/Read | Tanılama ayarını alır |
+> | Microsoft. DesktopVirtualization/Workspaces/Providers/Microsoft. Insights/diagnosticSettings/Write | Tanılama ayarını oluşturur veya güncelleştirir |
+> | Microsoft. DesktopVirtualization/Workspaces/Providers/Microsoft. Insights/logDefinitions/Read | Kullanılabilir günlükleri alır |
+> | **DataAction** | **Açıklama** |
+> | Microsoft. DesktopVirtualization/applicationgroups/useapplications/Action | ApplicationGroup kullanma |
+
 ### <a name="microsoftdigitaltwins"></a>Microsoft. DigitalTwins
 
 Azure hizmeti: [Azure dijital TWINS](../digital-twins/index.yml)
@@ -10316,6 +10363,20 @@ Azure hizmeti: [Azure dijital TWINS](../digital-twins/index.yml)
 > | Microsoft. DigitalTwins/modeller/okuma | Herhangi bir modeli okuyun |
 > | Microsoft. DigitalTwins/modeller/yazma | Herhangi bir model oluşturun veya güncelleştirin |
 > | Microsoft. DigitalTwins/modeller/silme | Herhangi bir modeli Sil |
+
+### <a name="microsoftserviceshub"></a>Microsoft. ServicesHub
+
+Azure hizmeti: [Hizmetler merkezi](/services-hub/)
+
+> [!div class="mx-tableFixed"]
+> | Eylem | Açıklama |
+> | --- | --- |
+> | Microsoft. ServicesHub/bağlayıcılar/Write | Service hub Bağlayıcısı oluşturma veya güncelleştirme |
+> | Microsoft. ServicesHub/bağlayıcılar/okuma | Hizmet Merkezi bağlayıcılarını görüntüleme veya listeleme |
+> | Microsoft. ServicesHub/bağlayıcılar/Sil | Service hub bağlayıcılarını Sil |
+> | Microsoft. ServicesHub/bağlayıcılar/checkAssessmentEntitlement/Action | Belirli bir hizmet hub 'ı çalışma alanı için değerlendirme yetkilendirmelerini listeler |
+> | Microsoft. ServicesHub/supportOfferingEntitlement/Read | Belirli bir hizmet merkezi çalışma alanı için destek teklifi yetkilendirmelerini görüntüleyin |
+> | Microsoft. ServicesHub/çalışma alanları/okuma | Belirli bir kullanıcı için hizmet hub 'ı çalışma alanlarını listeleyin |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

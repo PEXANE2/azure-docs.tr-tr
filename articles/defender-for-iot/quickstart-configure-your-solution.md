@@ -1,24 +1,24 @@
 ---
-title: 'Hızlı başlangıç: çözümünüzü yapılandırma'
+title: IoT çözümünüze Azure kaynakları ekleme
 description: Bu hızlı başlangıçta IoT için Azure Defender 'ı kullanarak uçtan uca IoT çözümünüzü nasıl yapılandıracağınızı öğrenin.
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
-author: mlottner
+author: Shhazam-ms
 manager: rkarlin
 editor: ''
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/06/2020
-ms.author: mlottner
-ms.openlocfilehash: f949d52d4ba461da94153cbbd17ca5fb3eb214d7
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.date: 01/25/2021
+ms.author: shhazam
+ms.openlocfilehash: 8912e8d66ae0cc1b5dba80ee9aabb0fbd288e3c6
+ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92092095"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99809056"
 ---
 # <a name="quickstart-configure-your-azure-defender-for-iot-solution"></a>Hızlı başlangıç: IoT için Azure Defender çözümünüzü yapılandırma
 
@@ -40,12 +40,15 @@ Tüm kaynak ilişkilerini tanımladıktan sonra IoT için Defender, bu kaynaklar
 
 ## <a name="add-azure-resources-to-your-iot-solution"></a>IoT çözümünüze Azure kaynakları ekleme
 
-IoT çözümünüze yeni kaynak eklemek için aşağıdakileri yapın:
+IoT çözümünüze yeni kaynak eklemek için:
 
 1. **IoT Hub** Azure Portal açın.
+
 1. **Güvenlik** / **genel bakış** ' ın altında **Ayarlar**' ın altında, **izlenen kaynaklar**' ı seçin.
+
 1. **Düzenle** ' yi seçin ve IoT çözümünüze ait izlenen kaynakları seçin.
-1. **Ekle**'ye tıklayın.
+
+1. **Ekle**’yi seçin.
 
 Tebrikler! IoT çözümünüze yeni bir kaynak grubu eklediniz.
 

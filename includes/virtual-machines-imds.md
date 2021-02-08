@@ -8,14 +8,14 @@ ms.date: 01/04/2021
 ms.author: chhenk
 ms.reviewer: azmetadatadev
 ms.custom: references_regions
-ms.openlocfilehash: 0b04ebd9672990738d77bc5ae09d7f7fae4ffb9d
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 0121ea65b190f254f032085133f12f6eb0f374ca
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99500156"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99808473"
 ---
-# <a name="azure-instance-metadata-service-imds"></a>Azure Instance Metadata Service (ıMDS)
+# <a name="azure-instance-metadata-service"></a>Azure Instance Metadata Service
 
 Azure Instance Metadata Service (IMDS), çalışmakta olan sanal makine örnekleri hakkında bilgi sağlar. Bunu, sanal makinelerinizi yönetmek ve yapılandırmak için kullanabilirsiniz.
 Bu bilgiler SKU, depolama, ağ yapılandırması ve yaklaşan bakım olaylarını içerir. Mevcut verilerin tüm listesi için bkz. [uç nokta kategorileri Özeti](#endpoint-categories).
@@ -88,7 +88,7 @@ Genel olarak, ıDS istekleri saniyede 5 istek ile sınırlıdır. Bu eşiği aş
 
 Aşağıdaki HTTP fiilleri Şu anda desteklenmektedir:
 
-| Fiil | Açıklama |
+| Fiil | Description |
 |------|-------------|
 | `GET` | İstenen kaynağı alma
 
@@ -268,7 +268,7 @@ Kök uç noktası `http://169.254.169.254/metadata` .
 
 IMDS API 'SI, her biri bir veya daha fazla uç nokta içeren farklı veri kaynaklarını temsil eden birden çok uç nokta kategorisi içerir. Ayrıntılar için bkz. her kategori.
 
-| Kategori kökü | Açıklama | Sunulan sürüm |
+| Kategori kökü | Description | Sunulan sürüm |
 |---------------|-------------|--------------------|
 | `/metadata/attested` | Bkz. [Atsınanan veriler](#attested-data) | 2018-10-01
 | `/metadata/identity` | Bkz. [yönetilen kimliği IMDS aracılığıyla](#managed-identity) | 2018-02-01
@@ -332,7 +332,7 @@ Bu uç nokta, [yol parametreleri](#route-parameters)aracılığıyla yanıt filt
 
 **İşlem**
 
-| Veriler | Açıklama | Sunulan sürüm |
+| Veriler | Description | Sunulan sürüm |
 |------|-------------|--------------------|
 | `azEnvironment` | VM 'nin çalıştığı Azure ortamı | 2018-10-01
 | `customData` | Bu özellik şu anda devre dışı. Bu belge kullanılabilir hale geldiğinde güncelleştirilecek | 2019-02-01
@@ -373,7 +373,7 @@ Bir sanal makinenin depolama profili üç kategoriye ayrılmıştır: görüntü
 
 Görüntü başvurusu nesnesi, işletim sistemi görüntüsüyle ilgili aşağıdaki bilgileri içerir:
 
-| Veriler | Açıklama |
+| Veriler | Description |
 |------|-------------|
 | `id` | Kaynak kimliği
 | `offer` | Platform veya Market görüntüsü teklifi
@@ -383,7 +383,7 @@ Görüntü başvurusu nesnesi, işletim sistemi görüntüsüyle ilgili aşağı
 
 İşletim sistemi diski nesnesi, VM tarafından kullanılan işletim sistemi diski hakkında aşağıdaki bilgileri içerir:
 
-| Veriler | Açıklama |
+| Veriler | Description |
 |------|-------------|
 | `caching` | Önbelleğe alma gereksinimleri
 | `createOption` | VM 'nin nasıl oluşturulduğu hakkında bilgi
@@ -398,7 +398,7 @@ Görüntü başvurusu nesnesi, işletim sistemi görüntüsüyle ilgili aşağı
 
 Veri diskleri dizisi, VM 'ye bağlı veri disklerinin bir listesini içerir. Her veri diski nesnesi şu bilgileri içerir:
 
-Veriler | Açıklama |
+Veriler | Description |
 -----|-------------|
 | `caching` | Önbelleğe alma gereksinimleri
 | `createOption` | VM 'nin nasıl oluşturulduğu hakkında bilgi
@@ -414,7 +414,7 @@ Veriler | Açıklama |
 
 **Ağ**
 
-| Veriler | Açıklama | Sunulan sürüm |
+| Veriler | Description | Sunulan sürüm |
 |------|-------------|--------------------|
 | `ipv4.privateIpAddress` | VM 'nin yerel IPv4 adresi | 2017-04-02
 | `ipv4.publicIpAddress` | VM 'nin genel IPv4 adresi | 2017-04-02
@@ -746,7 +746,7 @@ Klasik dağıtım modeli kullanılarak oluşturulan VM 'Ler için yalnızca, `vm
 
 Kodu çözülen belge aşağıdaki alanları içerir:
 
-| Veriler | Açıklama | Sunulan sürüm |
+| Veriler | Description | Sunulan sürüm |
 |------|-------------|--------------------|
 | `licenseType` | [Azure hibrit avantajı](https://azure.microsoft.com/pricing/hybrid-benefit)için lisans türü. Bu yalnızca AHB özellikli VM 'Ler için geçerlidir. | 2020-09-01
 | `nonce` | İsteğe bağlı olarak istekle birlikte sağlanmış bir dize. Hayır `nonce` sağlanmazsa, geçerli Eşgüdümlü Evrensel Saat zaman damgası kullanılır. | 2018-10-01

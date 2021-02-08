@@ -1,6 +1,6 @@
 ---
-title: IoT mimarisi için Azure Defender
-description: IoT mimarisi ve bilgi akışı için Azure Defender hakkında bilgi edinin.
+title: Aracısız çözüm mimarisi
+description: IoT aracısız mimari ve bilgi akışı için Azure Defender hakkında bilgi edinin.
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
@@ -11,23 +11,23 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 1/13/2021
+ms.date: 1/25/2021
 ms.author: shhazam
-ms.openlocfilehash: 66b960bf874cc46985230e488c749663eff0b835
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 1eb939a63edc4abc638dc128af0d9ebbd7241bef
+ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98621106"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99809312"
 ---
 # <a name="azure-defender-for-iot-architecture"></a>IoT mimarisi için Azure Defender
 
-Bu makalede, IoT için Defender çözümünün işlevsel sistem mimarisi açıklanmaktadır. IoT için Azure Defender, ortamınızın ihtiyaçlarını, kuruluşların aracısız çözümünü ve cihaz oluşturucuları için aracı tabanlı çözümü sunan iki özellik kümesi sunar.
+Bu makalede, IoT aracısız çözümü için Defender 'ın işlevsel sistem mimarisi açıklanmaktadır. IoT için Azure Defender, ortamınızın ihtiyaçlarını, kuruluşların aracısız çözümünü ve cihaz oluşturucuları için aracı tabanlı çözümü sunan iki özellik kümesi sunar.
 
 ## <a name="agentless-solution-for-organizations"></a>Kuruluşlar için aracısız çözüm
 ### <a name="defender-for-iot-components"></a>IoT bileşenleri için Defender
 
-IoT için Defender, hem Azure bulutuna hem de şirket içi bileşenlere bağlanır. Çözüm, birden fazla uzak konum içeren büyük ve coğrafi olarak dağıtılmış ortamlarda ölçeklenebilirlik için tasarlanmıştır. Bu çözüm, ülke, bölge, iş birimi veya bölgeye göre çok katmanlı bir dağıtılmış mimariye izin vermez. 
+IoT için Defender hem Azure bulutuna hem de şirket içi bileşenlere bağlanır. Çözüm, birden fazla uzak konum içeren büyük ve coğrafi olarak dağıtılmış ortamlarda ölçeklenebilirlik için tasarlanmıştır. Bu çözüm, ülke, bölge, iş birimi veya bölgeye göre çok katmanlı bir dağıtılmış mimariye izin vermez. 
 
 IoT için Azure Defender aşağıdaki bileşenleri içerir: 
 
@@ -51,11 +51,11 @@ IoT sensörleri için Defender, ağ cihazlarını bulur ve sürekli olarak izler
  
 Amaç-IoT ve OT ağları için tasarlanan aracısız teknoloji, IoT 'ye ayrıntılı görünürlük ve ağa bağlı dakikalar içinde risk riski sunuyor. Ağ ve ağ cihazlarında, ağ trafiği analizi (NTA) yaklaşımına bağlı olarak sıfır performans etkisi vardır. 
  
-Patentli, IoT ve OT kullanan davranış analizi ve katman 7 derin paket Incelemesi (DPı) sayesinde, geleneksel imza tabanlı çözümlerin ötesinde, anormal veya yetkisiz etkinliklere dayalı olarak Gelişmiş IoT ve OT tehditleri (örneğin, çok sayıda kötü amaçlı yazılım) hemen tespit etmenizi sağlar. 
+Patentli, IoT ve OT kullanan davranış analizi ve katman 7 derin paket Incelemesi (DPı) uygulanıyor, geleneksel imza tabanlı çözümlerin ötesinde, anormal veya yetkisiz etkinliklere dayalı olarak Gelişmiş IoT ve OT tehditleri (örneğin, çok sayıda kötü amaçlı yazılım) hemen tespit etmenizi sağlar. 
   
 IoT sensörleri için Defender, bir SPAN bağlantı noktasına veya ağa DOKUNMASıNA bağlanır ve IoT ve OT ağ trafiği üzerinde hemen DPı gerçekleştirmeye başlar. 
  
-Veri toplama, işleme, analiz ve uyarı doğrudan sensörde gerçekleşir. Bu, düşük bant genişliğine sahip konumlar veya yüksek gecikmeli bağlantı olan konumlara uygun hale getirir, çünkü yalnızca meta veriler yönetim konsoluna aktarılır.
+Veri toplama, işleme, analiz ve uyarı doğrudan sensörde gerçekleşir. Bu işlem, düşük bant genişliğine sahip konumlar veya yüksek gecikmeli bağlantı olan konumlara ideal hale getirir çünkü yalnızca meta veriler yönetim konsoluna aktarılmaktadır.
 
 Algılayıcı beş analiz algılama altyapısı içerir. Altyapılar, hem gerçek zamanlı hem de önceden kaydedilmiş trafiğin analizine dayalı olarak uyarıları tetikler. Aşağıdaki altyapılar mevcuttur: 
 
@@ -90,7 +90,7 @@ Algılayıcı algılamaları, bir ağ eşlemesinde, cihaz envanterinde görünt�
 
 Bu mimari, bir SOC düzeyinde ağın kapsamlı bir görünümünü, iyileştirilmiş uyarı işlemeyi ve işlemsel ağ güvenliğinin denetimini sunarak karar verme ve risk yönetiminin flavasız kalmasını sağlar.
 
-Yönetim Konsolu, çok kiracılı, izleme, veri analizi ve merkezi algılayıcı uzaktan kumandasına ek olarak, uzak gereçlerden her biri için ek sistem bakım araçları (uyarı dışlama gibi) ve tamamen özelleştirilmiş raporlama özellikleri sağlar. Bu ölçeklenebilir mimari, her iki yerel yönetimi de bir site düzeyinde, bölge düzeyinde ve SOC içinde genel yönetime destekler.
+Yönetim Konsolu, çok kiracılı, izleme, veri analizi ve merkezi algılayıcı uzaktan kumandasına ek olarak, uzak gereçlerden her biri için ek sistem bakım araçları (uyarı dışlama gibi) ve tamamen özelleştirilmiş raporlama özellikleri sağlar. Bu mimari, bir site düzeyinde, bölge düzeyinde yerel yönetimi ve SOC içinde genel yönetimi destekler.
 
 Yönetim Konsolu, kurtarma için gereken tüm yapılandırma dosyalarının yedeklemelerini düzenli aralıklarla alan bir yedekleme konsolu sağlayan yüksek kullanılabilirliğe sahip yapılandırma için dağıtılabilir. Birincil konsol başarısız olursa, yerel site yönetimi gereçleri, kesintiye uğramadan kullanılabilirliği sürdürmek için yedekleme konsolu ile eşitlenmek üzere otomatik olarak yük devreder.
 
@@ -104,37 +104,17 @@ SOC iş akışlarınızla sıkı bir şekilde tümleştirilmiş ve Kitaplar çal
 
    :::image type="content" source="media/updates/alerts-and-site-management-v2.png" alt-text="Tüm uyarılarınızı ve bilgilerinizi yönetin.":::
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure portalı
 
 Azure 'daki IoT portalı için Defender, size yardımcı olmak için kullanılır:
 
 - Çözüm gereçlerini satın alma
 
 - Yazılım yükleyip güncelleştirme
+
 - Azure 'a sensörlerden katılın
+
 - Tehdit zekası paketlerini güncelleştirme
-
-## <a name="agent-based-solution-for-device-builders"></a>Cihaz oluşturucular için aracı tabanlı çözüm
-
-### <a name="embedded-security-agent-built-in-mode"></a>Katıştırılmış Güvenlik Aracısı: yerleşik mod
-
-**Yerleşik** modda IoT Hub 'ınızdaki **güvenlik** seçeneğini açmayı seçtiğinizde IoT için Defender etkinleştirilir. Gerçek zamanlı izleme, öneriler ve uyarılar sunma, yerleşik mod, tek adımlı cihaz görünürlüğü ve eşleşmeyen güvenlik sunar. Derleme modu, herhangi bir cihazda aracı yüklemesi gerektirmez ve alan cihazınızı ve IoT Hub 'ınızı çözümlemek ve korumak için günlüğe kaydedilen etkinliklerde gelişmiş çözümlemeler kullanır.
-
-### <a name="embedded-security-agent-enhanced-mode"></a>Katıştırılmış Güvenlik Aracısı: Gelişmiş mod
-
-**Gelişmiş** modda, IoT Hub 'ınızdaki **güvenlik** seçeneğini açıp ve cihazlarınızda IoT cihaz aracıları için Defender 'ı yükledikten sonra aracılar cihazlarınızdan ham güvenlik olaylarını toplar, toplar ve analiz eder. Ham güvenlik olayları, IP bağlantıları, işlem oluşturma, Kullanıcı oturum açmaları ve güvenlikle ilgili diğer bilgileri içerebilir. IoT cihaz aracıları için Defender, yüksek ağ aktarım hızını önlemeye yardımcı olmak için olay toplamayı da işler. Aracılar yüksek düzeyde özelleştirilebilir ve en hızlı SLA 'da yalnızca önemli bilgileri göndermek ya da kapsamlı güvenlik bilgilerini ve bağlamı daha büyük kesimlerde toplamak, daha yüksek hizmet maliyetlerine izin vermek gibi belirli görevler için bunları kullanmanıza olanak sağlar.
-
-Cihaz aracıları ve diğer uygulamalar, Azure IoT Hub 'a güvenlik bilgileri göndermek için **Azure güvenlik iletisi gönderme SDK 'sını** kullanır. IoT Hub, bu bilgileri alır ve IoT hizmeti için Defender 'a iletir.
-
-IoT hizmeti için Defender etkinleştirildikten sonra, iletilen verilere ek olarak IoT Hub, IoT için Defender tarafından analiz edilmek üzere tüm iç verileri de gönderir. Bu veriler cihaz bulutu işlem günlükleri, cihaz kimlikleri ve hub yapılandırması içerir. Bu bilgilerin tümü, IoT Analytics işlem hattı için Defender oluşturmaya yardımcı olur.
-
-IoT Analytics işlem hattı için Defender, Microsoft ve Microsoft iş ortakları içindeki çeşitli kaynaklardan ek tehdit bilgileri akışları da alır. Tüm analiz işlem hattı için Defender, hizmette yapılan tüm müşteri yapılandırmaları (özel uyarılar ve güvenlik iletisi gönder SDK 'Sı) ile birlikte kullanılır.
-
-IoT için Defender, analiz işlem hattını kullanarak, eyleme dönüştürülebilir öneriler ve uyarılar oluşturmak için tüm bilgi akışlarını birleştirir. İşlem hattı, güvenlik araştırmacıları ve uzmanlar tarafından oluşturulan özel kuralların yanı sıra standart cihaz davranışından ve risk analizinden sapma arayan makine öğrenimi modellerini içerir.
-
-Her müşterinin Log Analytics çalışma alanına IoT önerileri ve uyarıları için Defender (analiz işlem hattı çıkışı) yazılır. Çalışma alanındaki ham olayların yanı sıra uyarı ve öneriler de dahil olmak üzere, algılanan şüpheli etkinliklerin tam ayrıntılarını kullanarak derinlemesine araştırma ve sorgular sunar.
-
-:::image type="content" source="media/architecture/micro-agent-architecture.png" alt-text="Mikro aracı mimarisi.":::
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
