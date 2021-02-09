@@ -4,18 +4,21 @@ description: Azure portalını kullanarak sunucusuz yürütme için ilk Azure İ
 ms.topic: how-to
 ms.date: 03/26/2020
 ms.custom: devx-track-csharp, mvc, devcenter, cc996988-fb4f-47
-ms.openlocfilehash: bebef4e8964576b968af8f8aebd06030ca0d0227
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 63e9c87d1d94d6b803c27862bc9f2755e02f3111
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222726"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99980953"
 ---
 # <a name="create-your-first-function-in-the-azure-portal"></a>Azure portalında ilk işlevinizi oluşturma
 
 Azure Işlevleri, öncelikle bir sanal makine (VM) oluşturmak veya bir Web uygulaması yayımlamak zorunda kalmadan kodunuzu sunucusuz bir ortamda çalıştırmanızı sağlar. Bu makalede, Azure Işlevleri 'ni kullanarak Azure portal bir "Hello World" HTTP tetikleyici işlevi oluşturma hakkında bilgi edineceksiniz.
 
-[İşlevlerinizi yerel olarak geliştirmenizi](functions-develop-local.md) ve Azure 'da bir işlev uygulamasında yayımlamayı öneririz.  
+>[!NOTE]
+>Portal içi düzenlemesi yalnızca JavaScript, PowerShell, TypeScript ve C# betik işlevleri için desteklenir.<br><br>C# sınıf kitaplığı, Java ve Python işlevleri için, portalda işlev uygulamasını oluşturabilirsiniz, ancak aynı zamanda işlevleri yerel olarak oluşturmanız ve ardından bunları Azure 'da yayımlamanız gerekir. 
+
+Bunun yerine, [işlevlerinizi yerel olarak geliştirmenizi](functions-develop-local.md) ve Azure 'da bir işlev uygulamasında yayımlamayı öneririz.  
 Seçtiğiniz yerel geliştirme ortamı ve diliniz ile çalışmaya başlamak için aşağıdaki bağlantılardan birini kullanın:
 
 | Visual Studio Code | Terminal/komut istemi | Visual Studio |

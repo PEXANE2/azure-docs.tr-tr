@@ -8,19 +8,17 @@ ms.topic: tutorial
 ms.date: 02/04/2021
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: d208a4a86896c81982aa2b10ca7ce5e7a6773c05
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.openlocfilehash: d1ac17c93bdf95e36f68af678d2ee38b896ef1e7
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99820221"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99979751"
 ---
 # <a name="tutorial-move-azure-vms-across-regions"></a>Öğretici: Azure VM 'lerini bölgeler arasında taşıma
 
 Bu makalede, Azure sanal makinelerini ve ilgili ağ/depolama kaynaklarını [Azure Kaynak taşıyıcısı](overview.md)kullanarak farklı bir Azure bölgesine taşımayı öğrenin.
-
-> [!NOTE]
-> Azure Kaynak taşıyıcısı Şu anda genel önizleme aşamasındadır.
+.
 
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
@@ -40,26 +38,21 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/pricing/free-trial/) oluşturun. Ardından [Azure Portal](https://portal.azure.com)oturum açın.
 
 ## <a name="prerequisites"></a>Önkoşullar
-
--  Taşımak istediğiniz kaynakları içeren abonelikte *sahip* erişiminizin olduğunu denetleyin.
-    - Azure aboneliğindeki belirli bir kaynak ve hedef çifti için ilk kez kaynak eklediğinizde, kaynak taşıyıcısı abonelik tarafından güvenilen [sistem tarafından atanan bir yönetilen kimlik](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) (eski adıyla yönetilen hizmet tanımlaması (MSI)) oluşturur.
-    - Kimliği oluşturmak ve gerekli rolü (katkıda bulunan ya da kaynak abonelikte Kullanıcı erişimi Yöneticisi) atamak için, kaynak eklemek için kullandığınız hesabın abonelikte *sahip* izinleri olması gerekir. Azure rolleri hakkında [daha fazla bilgi edinin](../role-based-access-control/rbac-and-directory-admin-roles.md#azure-roles) .
-- Aboneliğin, hedef bölgede taşıdığınız kaynakları oluşturmak için yeterli kotası olması gerekir. Kota içermiyorsa [ek sınırlamalar isteyin](../azure-resource-manager/management/azure-subscription-service-limits.md).
-- VM 'Leri taşıdığınız hedef Bölgeyle ilişkili fiyatlandırmayı ve ücretleri doğrulayın. Size yardımcı olması için [fiyatlandırma hesaplayıcısını](https://azure.microsoft.com/pricing/calculator/) kullanın.
+**Gereksinim** | **Açıklama**
+--- | ---
+**Abonelik izinleri** | Taşımak istediğiniz kaynakları içeren abonelikte *sahip* erişiminizin olduğunu denetleyin<br/><br/> **Neden sahip erişimine ihtiyacım var?** Azure aboneliğindeki belirli bir kaynak ve hedef çifti için ilk kez kaynak eklediğinizde, kaynak taşıyıcısı abonelik tarafından güvenilen [sistem tarafından atanan bir yönetilen kimlik](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) (eski adıyla yönetilen hizmet tanımlaması (MSI)) oluşturur. Kimliği oluşturmak ve gerekli rolü (katkıda bulunan ya da kaynak abonelikte Kullanıcı erişimi Yöneticisi) atamak için, kaynak eklemek için kullandığınız hesabın abonelikte *sahip* izinleri olması gerekir. Azure rolleri hakkında [daha fazla bilgi edinin](../role-based-access-control/rbac-and-directory-admin-roles.md#azure-roles) .
+**VM desteği** |  Taşımak istediğiniz VM 'Lerin desteklendiğinden emin olun.<br/><br/> - Desteklenen Windows VM 'lerini [doğrulayın](support-matrix-move-region-azure-vm.md#windows-vm-support) .<br/><br/> - Desteklenen Linux VM 'lerini ve çekirdek sürümlerini [doğrulayın](support-matrix-move-region-azure-vm.md#linux-vm-support) .<br/><br/> -Desteklenen [işlem](support-matrix-move-region-azure-vm.md#supported-vm-compute-settings), [depolama](support-matrix-move-region-azure-vm.md#supported-vm-storage-settings)ve [ağ](support-matrix-move-region-azure-vm.md#supported-vm-networking-settings) ayarlarını kontrol edin.
+**Hedef abonelik** | Hedef bölgedeki aboneliğin, hedef bölgede taşıdığınız kaynakları oluşturmak için yeterli kotası olması gerekir. Kota içermiyorsa [ek sınırlamalar isteyin](../azure-resource-manager/management/azure-subscription-service-limits.md).
+**Hedef bölge ücretleri** | VM 'Leri taşıdığınız hedef Bölgeyle ilişkili fiyatlandırmayı ve ücretleri doğrulayın. Size yardımcı olması için [fiyatlandırma hesaplayıcısını](https://azure.microsoft.com/pricing/calculator/) kullanın.
     
 
-## <a name="check-vm-requirements"></a>VM gereksinimlerini denetleme
+## <a name="prepare-vms"></a>VM 'Leri hazırlama
 
-1. Taşımak istediğiniz VM 'Lerin desteklendiğinden emin olun.
-
-    - Desteklenen Windows VM 'lerini [doğrulayın](support-matrix-move-region-azure-vm.md#windows-vm-support) .
-    - Desteklenen Linux VM 'lerini ve çekirdek sürümlerini [doğrulayın](support-matrix-move-region-azure-vm.md#linux-vm-support) .
-    - Desteklenen [işlem](support-matrix-move-region-azure-vm.md#supported-vm-compute-settings), [depolama](support-matrix-move-region-azure-vm.md#supported-vm-storage-settings)ve [ağ](support-matrix-move-region-azure-vm.md#supported-vm-networking-settings) ayarlarını denetleyin.
-2. Taşımak istediğiniz sanal makinelerin açık olduğundan emin olun.
-3. VM 'Lerin en son Güvenilen Kök sertifikalara sahip olduğundan ve güncelleştirilmiş bir sertifika iptal listesi (CRL) olduğundan emin olun. Bunu yapmak için:
+1. VM 'Lerin gereksinimleri karşılayıp karşılamadığını denetledikten sonra, taşımak istediğiniz sanal makinelerin açık olduğundan emin olun. Hedef bölgede kullanılabilir olmasını istediğiniz tüm VM disklerinin VM 'de eklenmiş ve başlatılmış olması gerekir.
+1. VM 'Lerin en son Güvenilen Kök sertifikalara sahip olduğundan ve güncelleştirilmiş bir sertifika iptal listesi (CRL) olduğundan emin olun. Bunu yapmak için:
     - Windows VM 'lerinde en son Windows güncelleştirmelerini yükler.
     - Linux VM 'lerde, makinelerin en son sertifikalara ve CRL 'ye sahip olması için dağıtım kılavuzunu izleyin. 
-4. VM 'lerden giden bağlantıya izin ver:
+1. VM 'lerden giden bağlantıya izin ver:
     - Giden bağlantıyı denetlemek için bir URL tabanlı güvenlik duvarı ara sunucusu kullanıyorsanız, bu [URL 'lere](support-matrix-move-region-azure-vm.md#url-access) erişim izni verin
     - Giden bağlantıyı denetlemek için ağ güvenlik grubu (NSG) kuralları kullanıyorsanız, bu [hizmet etiketi kurallarını](support-matrix-move-region-azure-vm.md#nsg-rules)oluşturun.
 
@@ -85,12 +78,12 @@ Taşımak istediğiniz kaynakları seçin.
     ![Kaynak ve hedef bölge seçme sayfası](./media/tutorial-move-region-virtual-machines/source-target.png)
 
 6. **Taşınacak kaynaklar** bölümünde **kaynakları seç**' e tıklayın.
-7. **Kaynakları seçin** bölümünde VM 'yi seçin. Yalnızca [taşıma için desteklenen kaynaklar](#check-vm-requirements)ekleyebilirsiniz. Sonra da **Bitti**’ye tıklayın.
+7. **Kaynakları seçin** bölümünde VM 'yi seçin. Yalnızca [taşıma için desteklenen kaynaklar](#prepare-vms)ekleyebilirsiniz. Sonra da **Bitti**’ye tıklayın.
 
     ![Taşınacak VM 'Leri seçmek için sayfa](./media/tutorial-move-region-virtual-machines/select-vm.png)
 
 8.  **Taşınacak kaynaklar** bölümünde **İleri**' ye tıklayın.
-9. **Gözden geçir + Ekle** bölümünde kaynak ve hedef ayarlarını kontrol edin. 
+9. **Gözden geçirme** bölümünde kaynak ve hedef ayarlarını kontrol edin. 
 
     ![Ayarları gözden geçirmek ve taşımaya devam etmek için sayfa](./media/tutorial-move-region-virtual-machines/review.png)
 10. Kaynakları eklemeye başlamak için **devam**' a tıklayın.
@@ -99,25 +92,27 @@ Taşımak istediğiniz kaynakları seçin.
 
 > [!NOTE]
 > - Eklenen kaynaklar *hazırlama bekleme* durumunda.
+> - VM 'Ler için kaynak grubu otomatik olarak eklenir.
 > - Bir taşıma koleksiyonundan bir kaynağı kaldırmak istiyorsanız, bunu yapmak için yöntemi taşıma sürecinde nerede olduğunuza bağlıdır. [Daha fazla bilgi edinin](remove-move-resources.md).
 
 ## <a name="resolve-dependencies"></a>Bağımlılıkları çözümle
 
 1. Kaynaklar **sorunlar** sütununda bir *bağımlılıkları doğrula* iletisi gösterince, **bağımlılıkları doğrula** düğmesine tıklayın. Doğrulama işlemi başlar.
 2. Bağımlılıklar bulunursa, **Bağımlılıklar Ekle**' ye tıklayın. 
-3. **Bağımlılıklar Ekle**' de, bağımlı kaynakları seçin > **Bağımlılıklar ekleyin**. Bildirimlerde ilerlemeyi izleyin.
+3. **Bağımlılıklar Ekle**' de, varsayılan **tüm bağımlılıkları göster** seçeneğini bırakın.
+
+    - Tüm bağımlılıkların, bir kaynağın tüm doğrudan ve dolaylı bağımlılıklarında yinelenir. Örneğin, bir VM için NIC, sanal ağ, ağ güvenlik grupları (NSG 'ler) vb. gösterir.
+    - İlk düzey bağımlılıkları göster yalnızca doğrudan bağımlılıkları gösterir. Örneğin, bir VM için sanal ağı değil, NIC 'yi gösterir.
+
+
+4. Eklemek istediğiniz bağımlı kaynakları seçin > **Bağımlılıklar ekleyin**. Bildirimlerde ilerlemeyi izleyin.
 
     ![Bağımlılık Ekle](./media/tutorial-move-region-virtual-machines/add-dependencies.png)
 
-4. Gerekirse ek bağımlılıklar ekleyin ve bağımlılıkları yeniden doğrulayın. 
+4. Bağımlılıkları yeniden doğrulayın. 
     ![Ek bağımlılıklar eklemek için sayfa](./media/tutorial-move-region-virtual-machines/add-additional-dependencies.png)
 
-4. **Bölgeler arası** sayfasında, kaynakların şimdi *hazırlama bekleme* durumunda olduğunu doğrulayın ve sorun yok.
 
-    ![Hazırlama Bekleme durumundaki kaynakları gösteren sayfa](./media/tutorial-move-region-virtual-machines/prepare-pending.png)
-
-> [!NOTE]
-> Taşıma işlemine başlamadan önce hedef ayarları düzenlemek istiyorsanız, kaynak için **hedef yapılandırma** sütunundaki bağlantıyı seçin ve ayarları düzenleyin. Hedef VM ayarlarını düzenlerseniz, hedef VM boyutu, kaynak VM boyutundan küçük olmamalıdır.  
 
 ## <a name="move-the-source-resource-group"></a>Kaynak kaynak grubunu taşıma 
 
@@ -158,9 +153,17 @@ Taşıma işlemini yürütmek ve tamamlamak için:
 
 ## <a name="prepare-resources-to-move"></a>Taşınacak kaynakları hazırlama
 
+Kaynak kaynak grubu taşındığına göre, *hazırlama bekleme* durumundaki diğer kaynakları taşımaya hazırlanabilirsiniz.
+
+1. **Bölgeler arasında**, kaynakların şimdi *hazırlama bekleme* durumunda olduğunu ve sorun olmadan olduğunu doğrulayın. Aksi takdirde, tekrar doğrulayın ve bekleyen sorunları çözün.
+
+    ![Hazırlama Bekleme durumundaki kaynakları gösteren sayfa](./media/tutorial-move-region-virtual-machines/prepare-pending.png)
+
+2. Taşıma işlemine başlamadan önce hedef ayarları düzenlemek istiyorsanız, kaynak için **hedef yapılandırma** sütunundaki bağlantıyı seçin ve ayarları düzenleyin. Hedef VM ayarlarını düzenlerseniz, hedef VM boyutu, kaynak VM boyutundan küçük olmamalıdır.  
+
 Kaynak kaynak grubu taşındığına göre, diğer kaynakları taşımaya hazırlanabilirsiniz.
 
-1. **Bölgeler arasında**, hazırlamak istediğiniz kaynakları seçin. 
+3. Hazırlamak istediğiniz kaynakları seçin. 
 
     ![Diğer kaynaklar için hazırla ' yı seçme sayfası](./media/tutorial-move-region-virtual-machines/prepare-other.png)
 

@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/15/2020
+ms.date: 02/01/2021
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: a2c26c3e41f64a1593a2d3386c76427c0b9682e9
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: d380b9d6a20cbe28a8fc4b64179437cd31fd2937
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98127490"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99979304"
 ---
 # <a name="soft-delete-for-blobs"></a>Bloblar için geçici silme
 
@@ -27,6 +27,10 @@ Verilerinizin yanlışlıkla bir uygulama veya başka bir depolama hesabı kulla
 ## <a name="about-soft-delete-for-blobs"></a>Bloblar için geçici silme hakkında
 
 Depolama hesabında Bloblar için geçici silme etkinleştirildiğinde, nesneleri silindikten sonra, belirtilen veri saklama süresi içinde kurtarabilirsiniz. Bu koruma, bir üzerine yazma sonucu olarak silinen blob 'ları (Blok Blobu, ekleme Blobları veya sayfa Blobları) genişletir.
+
+Aşağıdaki diyagramda, blob geçici silme etkinken silinen bir Blobun nasıl geri yüklenemediği gösterilmektedir:
+
+:::image type="content" source="media/soft-delete-blob-overview/blob-soft-delete-diagram.png" alt-text="Geçici olarak silinen bir Blobun nasıl geri yükleneolabileceğini gösteren diyagram":::
 
 Blob geçici silme etkinken mevcut bir Blobun veya anlık görüntüdeki veriler silinirse, ancak blob sürümü oluşturma etkin değilse, üzerine yazılan verilerin durumunu kaydetmek için geçici olarak silinen bir anlık görüntü oluşturulur. Belirtilen bekletme döneminin süresi dolduktan sonra nesne kalıcı olarak silinir.
 

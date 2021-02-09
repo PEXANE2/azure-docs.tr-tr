@@ -8,12 +8,12 @@ ms.date: 4/24/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: devx-track-js
-ms.openlocfilehash: 3bc24e88368af056e4d4506a5cf688e1172d4930
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: e0c0d18dbb3596733d02430554fd40ec16180c64
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98051573"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99980669"
 ---
 # <a name="create-custom-sdks-for-azure-digital-twins-using-autorest"></a>Oto Rest kullanarak Azure dijital TWINS için özel SDK 'lar oluşturma
 
@@ -57,7 +57,7 @@ Doğrudan bir .NET çözümüne, oto Rest tarafından oluşturulan dosyaları da
 
 Bu bölüm, SDK 'nın kendi projesi olan ve diğer projelere dahil olabilen bir sınıf kitaplığı olarak nasıl oluşturulacağı hakkında yönergeler sağlar. Bu adımlar **Visual Studio 'yu** kullanır (en son sürümü [buradan](https://visualstudio.microsoft.com/downloads/)yükleyebilirsiniz).
 
-Adımlar şunlardır:
+Adımlar aşağıdaki gibidir:
 
 1. Sınıf kitaplığı için yeni bir Visual Studio çözümü oluşturma
 2. Proje adı olarak *Adtapi* kullanın
@@ -112,6 +112,9 @@ Sorgu olmayan disk belleği düzeninde, Azure dijital TWINS 'ten gelen bir giden
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="FindOutgoingRelationshipsMethod":::
 
 İkinci model yalnızca sorgu API 'SI için oluşturulur. Açıkça bir kullanır `continuationToken` .
+
+>[!TIP]
+> Sayfaların alınması için bir temel neden, sorgu API çağrısı için [sorgu birimi ücretlerini](concepts-query-units.md) hesaplaalmaktır.
 
 Bu düzene sahip bir örnek aşağıda verilmiştir:
 

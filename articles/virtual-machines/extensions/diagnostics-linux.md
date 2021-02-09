@@ -1,6 +1,6 @@
 ---
-title: Azure Işlem-Linux Tanılama uzantısı
-description: Azure 'da çalışan Linux sanal makinelerinden ölçümleri ve günlük olaylarını toplamak için Azure Linux Tanılama uzantısı 'nı (LAD) yapılandırma.
+title: Azure Işlem-Linux Tanılama uzantısı 4,0
+description: Azure 'da çalışan Linux sanal makinelerinden ölçümleri ve günlük olaylarını toplamak için Azure Linux Tanılama uzantısı 'nı (LAD 4,0) yapılandırma.
 services: virtual-machines-linux
 author: axayjo
 manager: gwallace
@@ -8,21 +8,21 @@ ms.service: virtual-machines-linux
 ms.subservice: extensions
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
-ms.date: 12/13/2018
+ms.date: 02/05/2021
 ms.author: akjosh
-ms.openlocfilehash: 2e831b3c091b18a5c739275e4c932094ce088ba4
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: ebc4867f0ce16657c550b3d33d76fccdb41cef54
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202615"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99980652"
 ---
-# <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Ölçümleri ve günlükleri izlemek için Linux Tanılama Uzantısı’nı kullanma
+# <a name="use-linux-diagnostic-extension-40-to-monitor-metrics-and-logs"></a>Ölçümleri ve günlükleri izlemek için Linux Tanılama uzantısı 4,0 kullanın
 
-Bu belgede Linux Tanılama uzantısının sürüm 3,0 ve daha yeni bir sürümü açıklanmaktadır.
+Bu belgede Linux Tanılama uzantısının sürüm 4,0 ve daha yeni bir sürümü açıklanmaktadır.
 
 > [!IMPORTANT]
-> Sürüm 2,3 ve üzeri hakkında daha fazla bilgi için [Bu belgeye](/previous-versions/azure/virtual-machines/linux/classic/diagnostic-extension-v2)bakın.
+> Sürüm 3. * hakkında daha fazla bilgi için  [Bu belgeye](https://docs.microsoft.com/azure/virtual-machines/extensions/diagnostics-linux-v3)bakın. Sürüm 2,3 ve üzeri hakkında daha fazla bilgi için [Bu belgeye](/previous-versions/azure/virtual-machines/linux/classic/diagnostic-extension-v2)bakın.
 
 ## <a name="introduction"></a>Giriş
 
@@ -44,10 +44,11 @@ Bu uzantıyı Azure PowerShell cmdlet 'lerini, Azure CLı betikleri, ARM şablon
 >[!NOTE]
 >Tanılama sanal makine uzantısının belirli bileşenleri, [log ANALYTICS VM Uzantısı](./oms-linux.md)'nda da gönderilir. Bu mimaride, her iki uzantı aynı ARM şablonunda örneklendiğinden çakışmalar meydana çıkabilir. Bu yükleme zamanı çakışmalarını önlemek için, uzantıların sırayla yüklendiğinden emin olmak için [ `dependsOn` yönergesini](../../azure-resource-manager/templates/define-resource-dependency.md#dependson) kullanın. Uzantılar her iki sırayla yüklenebilir.
 
-Bu yükleme yönergeleri ve [indirilebilir bir örnek yapılandırma](https://raw.githubusercontent.com/Azure/azure-linux-extensions/master/Diagnostic/tests/lad_2_3_compatible_portal_pub_settings.json) lad 3,0 'yi şu şekilde yapılandırın:
+Bu yükleme yönergeleri ve [indirilebilir bir örnek yapılandırma](https://raw.githubusercontent.com/Azure/azure-linux-extensions/master/Diagnostic/tests/lad_2_3_compatible_portal_pub_settings.json) lad 4,0 'yi şu şekilde yapılandırın:
 
-* aynı ölçümleri, LAD 2,3 ile belirtilen şekilde yakalayın ve saklayın.
-* Yeni bir dosya sistemi ölçümleri kümesi yakalayın, LAD 3,0;
+* aynı ölçümleri, LAD 2,3, 3 *; tarafından sağlandığı ile yakalayın ve saklayın.
+* LAD 4,0 ' de yeni olan Azure depolama 'ya yönelik her zamanki havuz ile Azure Izleyici havuzuna ölçümler gönderin
+* LAD 3,0 tarafından sağlandığı gibi faydalı bir dosya sistemi ölçümleri kümesi yakalayın.
 * LAD 2,3 ile etkinleştirilen varsayılan Syslog koleksiyonunu yakala;
 * VM ölçümlerinde grafik oluşturma ve uyarı verme için Azure portal deneyimini etkinleştirin.
 
@@ -106,6 +107,9 @@ Python2 yürütülebilir dosyası *Python*'un diğer adı olmalıdır. Aşağıd
 
 Bu örneklerde indirilen örnek yapılandırma bir dizi standart veri toplar ve bunları tablo depolamaya gönderir. Örnek yapılandırma ve içeriği için URL, değişikliğe tabidir. Çoğu durumda, portal ayarları JSON dosyasının bir kopyasını indirmeniz ve gereksinimlerinize göre özelleştirmeniz gerekir, ardından oluşturduğunuz herhangi bir şablon veya Otomasyon, bu URL 'YI her seferinde indirmek yerine yapılandırma dosyası sürümünüzü kullanır.
 
+> [!NOTE]
+> Yeni Azure Izleyici havuzunu etkinleştirmek için, VM 'Lerin MSI kimlik doğrulama belirteci oluşturma için sistem tarafından atanan kimliğin etkinleştirilmiş olması gerekir. Bu, VM oluşturma sırasında veya VM oluşturulduktan sonra yapılabilir. Portal, CLı, PowerShell ve Resource Manager aracılığıyla sistem tarafından atanan kimliği etkinleştirme adımları.  [burada](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm)ayrıntılı olarak listelenmiştir. 
+
 #### <a name="azure-cli-sample"></a>Azure CLı örneği
 
 ```azurecli
@@ -120,6 +124,9 @@ az login
 # Select the subscription containing the storage account
 az account set --subscription <your_azure_subscription_id>
 
+# Enable System Assigned Identity to the existing VM
+az vm identity assign -g $my_resource_group -n $my_linux_vm
+
 # Download the sample Public settings. (You could also use curl or any web browser)
 wget https://raw.githubusercontent.com/Azure/azure-linux-extensions/master/Diagnostic/tests/lad_2_3_compatible_portal_pub_settings.json -O portal_public_settings.json
 
@@ -132,10 +139,10 @@ sed -i "s#__VM_RESOURCE_ID__#$my_vm_resource_id#g" portal_public_settings.json
 my_diagnostic_storage_account_sastoken=$(az storage account generate-sas --account-name $my_diagnostic_storage_account --expiry 2037-12-31T23:59:00Z --permissions wlacu --resource-types co --services bt -o tsv)
 my_lad_protected_settings="{'storageAccountName': '$my_diagnostic_storage_account', 'storageAccountSasToken': '$my_diagnostic_storage_account_sastoken'}"
 
-# Finallly tell Azure to install and enable the extension
-az vm extension set --publisher Microsoft.Azure.Diagnostics --name LinuxDiagnostic --version 3.0 --resource-group $my_resource_group --vm-name $my_linux_vm --protected-settings "${my_lad_protected_settings}" --settings portal_public_settings.json
+# Finally tell Azure to install and enable the extension
+az vm extension set --publisher Microsoft.Azure.Diagnostics --name LinuxDiagnostic --version 4.0 --resource-group $my_resource_group --vm-name $my_linux_vm --protected-settings "${my_lad_protected_settings}" --settings portal_public_settings.json
 ```
-#### <a name="azure-cli-sample-for-installing-lad-30-extension-on-the-vmss-instance"></a>VMSS örneğine LAD 3,0 uzantısını yüklemek için Azure CLı örneği
+#### <a name="azure-cli-sample-for-installing-lad-40-extension-on-the-virtual-machine-scale-set-instance"></a>Sanal makine ölçek kümesi örneğine LAD 4,0 uzantısını yüklemek için Azure CLı örneği
 
 ```azurecli
 #Set your Azure VMSS diagnostic variables correctly below
@@ -148,6 +155,9 @@ az login
 
 # Select the subscription containing the storage account
 az account set --subscription <your_azure_subscription_id>
+
+# Enable System Assigned Identity to the existing VMSS
+az vmss identity assign -g $my_resource_group -n $my_linux_vmss
 
 # Download the sample Public settings. (You could also use curl or any web browser)
 wget https://raw.githubusercontent.com/Azure/azure-linux-extensions/master/Diagnostic/tests/lad_2_3_compatible_portal_pub_settings.json -O portal_public_settings.json
@@ -162,7 +172,7 @@ $my_diagnostic_storage_account_sastoken=$(az storage account generate-sas --acco
 $my_lad_protected_settings="{'storageAccountName': '$my_diagnostic_storage_account', 'storageAccountSasToken': '$my_diagnostic_storage_account_sastoken'}"
 
 # Finally tell Azure to install and enable the extension
-az vmss extension set --publisher Microsoft.Azure.Diagnostics --name LinuxDiagnostic --version 3.0 --resource-group $my_resource_group --vmss-name $my_linux_vmss --protected-settings "${my_lad_protected_settings}" --settings portal_public_settings.json
+az vmss extension set --publisher Microsoft.Azure.Diagnostics --name LinuxDiagnostic --version 4.0 --resource-group $my_resource_group --vmss-name $my_linux_vmss --protected-settings "${my_lad_protected_settings}" --settings portal_public_settings.json
 ```
 
 #### <a name="powershell-sample"></a>PowerShell örneği
@@ -175,6 +185,9 @@ $VMresourceGroup = "yourVMResourceGroupName"
 
 # Get the VM object
 $vm = Get-AzVM -Name $vmName -ResourceGroupName $VMresourceGroup
+
+# Enable System Assigned Identity on an existing VM
+Update-AzVM -ResourceGroupName $VMresourceGroup -VM $vm -IdentityType SystemAssigned
 
 # Get the public settings template from GitHub and update the templated values for storage account and resource ID
 $publicSettings = (Invoke-WebRequest -Uri https://raw.githubusercontent.com/Azure/azure-linux-extensions/master/Diagnostic/tests/lad_2_3_compatible_portal_pub_settings.json).Content
@@ -190,7 +203,7 @@ $sasToken = New-AzStorageAccountSASToken -Service Blob,Table -ResourceType Servi
 $protectedSettings="{'storageAccountName': '$storageAccountName', 'storageAccountSasToken': '$sasToken'}"
 
 # Finally install the extension with the settings built above
-Set-AzVMExtension -ResourceGroupName $VMresourceGroup -VMName $vmName -Location $vm.Location -ExtensionType LinuxDiagnostic -Publisher Microsoft.Azure.Diagnostics -Name LinuxDiagnostic -SettingString $publicSettings -ProtectedSettingString $protectedSettings -TypeHandlerVersion 3.0 
+Set-AzVMExtension -ResourceGroupName $VMresourceGroup -VMName $vmName -Location $vm.Location -ExtensionType LinuxDiagnostic -Publisher Microsoft.Azure.Diagnostics -Name LinuxDiagnostic -SettingString $publicSettings -ProtectedSettingString $protectedSettings -TypeHandlerVersion 4.0 
 ```
 
 ### <a name="updating-the-extension-settings"></a>Uzantı ayarları güncelleştiriliyor
@@ -199,21 +212,17 @@ Korumalı veya ortak ayarlarınızı değiştirdikten sonra aynı komutu çalı�
 
 ### <a name="migration-from-previous-versions-of-the-extension"></a>Uzantının önceki sürümlerinden geçiş
 
-Uzantının en son sürümü **3,0**' dir. **Tüm eski sürümler (2. x) kullanım dışıdır ve 31 temmuz 2018 tarihinde veya sonrasında yayımdan kaldırılmış olabilir**.
+Uzantının en son sürümü, **Şu anda genel önizlemede olan 4,0 '** dir. **2. x sürümleri 31 temmuz 2018 tarihinden itibaren kullanım dışı olduğundan, 3. x 'In daha eski sürümleri hala desteklenmektedir**.
 
 > [!IMPORTANT]
-> Bu uzantı, uzantının yapılandırmasındaki son değişiklikleri tanıtır. Uzantının güvenliğini artırmak için bu tür bir değişiklik yapılmıştır; Sonuç olarak, 2. x ile geriye dönük uyumluluk korunamadı. Ayrıca, bu uzantının uzantı yayımcısı 2. x sürümleri için yayımcıdan farklıdır.
->
-> 2. x sürümünden uzantının bu yeni sürümüne geçiş yapmak için eski uzantıyı (eski yayımcı adı altında) kaldırmanız ve ardından uzantının 3. sürümünü kurmanız gerekir.
+> 3. x ' ten uzantının bu yeni sürümüne geçiş yapmak için eski uzantıyı kaldırmalı ve ardından uzantının 4. sürümünü (Azure Izleyici havuzuna ölçüm göndermek için sistem tarafından atanan kimlik ve havuzlar için güncelleştirilmiş yapılandırmayla) yüklemelisiniz.
 
 Öneri
 
 * Uzantıyı otomatik ikincil sürüm yükseltmesi etkin olarak yükler.
-  * Klasik dağıtım modeli VM 'lerinde, uzantıyı Azure XPLAT CLı veya PowerShell aracılığıyla yüklüyorsanız sürüm olarak ' 3. * ' belirtin.
+  * Klasik dağıtım modeli VM 'lerinde, uzantıyı Azure XPLAT CLı veya PowerShell aracılığıyla yüklüyorsanız sürüm olarak ' 4. * ' belirtin.
   * Azure Resource Manager dağıtım modeli VM 'lerinde, VM Dağıtım şablonuna ' "Oto Upgrademinorversion": true ' ekleyin.
-* LAD 3,0 için yeni/farklı bir depolama hesabı kullanın. Sorunlu hesabını paylaşmayı sağlayan LAD 2,3 ile LAD 3,0 arasında birkaç küçük uyumsuzluk vardır:
-  * LAD 3,0, syslog olaylarını farklı bir ada sahip bir tabloda depolar.
-  * Ölçümler için onay tanımlayıcısı dizeleri `builtin` LAD 3,0 ' de farklılık gösterir.
+* LAD 4,0 için aynı depolama hesabı ile LAD 3. * kullanabilirsiniz. 
 
 ## <a name="protected-settings"></a>Korumalı ayarlar
 
@@ -246,7 +255,7 @@ Gerekli SAS belirtecini Azure portal aracılığıyla kolayca oluşturabilirsini
 1. Daha önce açıklanan uygun bölümleri yapın
 1. "SAS oluştur" düğmesine tıklayın.
 
-![Ekran görüntüsü, oluşturma S S ile paylaşılan erişim imzası sayfasını gösterir.](./media/diagnostics-linux/make_sas.png)
+:::image type="content" source="./media/diagnostics-linux/make_sas.png" alt-text="Ekran görüntüsü, oluşturma S S ile paylaşılan erişim imzası sayfasını gösterir.":::
 
 Oluşturulan SAS 'yi storageAccountSasToken alanına kopyalayın; Baştaki soru işaretini ("?") kaldırın.
 
@@ -272,7 +281,7 @@ Bu isteğe bağlı bölüm, uzantının topladığı bilgileri gönderdiği ek h
 name | Bu havuza uzantı yapılandırmasında başka bir yerde başvurmak için kullanılan bir dize.
 tür | Tanımlanmakta olan havuz türü. Bu türün örneklerinde diğer değerleri (varsa) belirler.
 
-Linux Tanılama uzantısının 3,0 sürümü iki havuz türünü destekliyor: EventHub ve JsonBlob.
+Linux Tanılama uzantısının 4,0 sürümü iki havuz türünü destekliyor: EventHub ve JsonBlob.
 
 #### <a name="the-eventhub-sink"></a>EventHub havuzu
 
@@ -317,14 +326,14 @@ JsonBlob havuzuna yöneltilen veriler, Azure depolama 'daki bloblarda depolanır
 
 ## <a name="public-settings"></a>Ortak ayarlar
 
-Bu yapı, uzantı tarafından toplanan bilgileri denetleyen çeşitli ayarlar bloklarını içerir. Her ayar isteğe bağlıdır. Belirtirseniz `ladCfg` , öğesini de belirtmeniz gerekir `StorageAccount` .
+Bu yapı, uzantı tarafından toplanan bilgileri denetleyen çeşitli ayarlar bloklarını içerir. Her ayar (bir merdiveni hariç) isteğe bağlıdır. ' De ölçüm veya Syslog koleksiyonu belirtirseniz `ladCfg` , öğesini de belirtmeniz gerekir `StorageAccount` . LAD 4,0 ölçümleri için Azure Izleyici havuzunu etkinleştirmek üzere sinksConfig öğesinin belirtilmesi gerekir
 
 ```json
 {
     "ladCfg":  { ... },
-    "perfCfg": { ... },
     "fileLogs": { ... },
     "StorageAccount": "the storage account to receive data",
+    "sinksConfig": { ... },
     "mdsdHttpProxy" : ""
 }
 ```
@@ -350,7 +359,15 @@ Kalan öğeler aşağıdaki bölümlerde ayrıntılı olarak açıklanmıştır.
 }
 ```
 
-Bu isteğe bağlı yapı, Azure ölçümleri hizmetine ve diğer veri havuzları 'na teslime ilişkin ölçüm ve günlüklerin toplanması için denetim sağlar. Ya da ya da `performanceCounters` `syslogEvents` ikisini birden belirtmeniz gerekir. Yapıyı belirtmeniz gerekir `metrics` .
+Bu yapı, Azure ölçümleri hizmetine ve diğer veri havuzları 'na teslime yönelik ölçüm ve günlüklerin toplanması için denetim sağlar. Ya da ya da `performanceCounters` `syslogEvents` ikisini birden belirtmeniz gerekir. Yapıyı belirtmeniz gerekir `metrics` .
+
+Syslog veya ölçüm toplamayı etkinleştirmek istemiyorsanız, aşağıda gösterildiği gibi, yalnızca bir IElement cfg öğesi için boş bir yapı belirtebilirsiniz. 
+
+```json
+"ladCfg": {
+    "diagnosticMonitorConfiguration": {}
+    }
+```
 
 Öğe | Değer
 ------- | -----
@@ -468,31 +485,25 @@ Belirttiğinizde `syslogEvents` , Lad verileri her zaman Azure Storage 'daki bir
 
 Örnekler `LinuxSyslog20170410` ve içerir `LinuxSyslog20170609` .
 
-### <a name="perfcfg"></a>perfCfg
+### <a name="sinksconfig"></a>sinksConfig
 
-Bu isteğe bağlı bölüm, rastgele [OMI](https://github.com/Microsoft/omi) sorgularının yürütülmesini denetler.
+Bu isteğe bağlı bölüm, depolama hesabı ve varsayılan Konuk ölçümleri dikey penceresine ek olarak Azure Izleyici havuzuna ölçüm göndermeyi etkinleştirmeyi sağlar.
+
+> [!NOTE]
+> Bu, sistem tarafından atanan kimliğin VM 'Lerde/VMSS 'de etkinleştirilmesini gerektirir. Bu, Portal, CLı, PowerShell ve Resource Manager aracılığıyla yapılabilir. Adımlar [burada](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm)ayrıntılı olarak listelenmiştir. Bunu etkinleştirme adımları, yukarıdaki AZ CLı, PowerShell vb. yükleme örneklerinde de listelenmiştir. 
 
 ```json
-"perfCfg": [
-    {
-        "namespace": "root/scx",
-        "query": "SELECT PercentAvailableMemory, PercentUsedSwap FROM SCX_MemoryStatisticalInformation",
-        "table": "LinuxOldMemory",
-        "frequency": 300,
-        "sinks": ""
-    }
-]
+  "sinksConfig": {
+    "sink": [
+      {
+        "name": "AzMonSink",
+        "type": "AzMonSink",
+        "AzureMonitor": {}
+      }
+    ]
+  },
 ```
 
-Öğe | Değer
-------- | -----
-ad alanı | seçim Sorgunun yürütülmesi gereken OMı ad alanı. Belirtilmemişse, varsayılan değer, [System Center platformlar arası sağlayıcılar](https://github.com/Microsoft/SCXcore)tarafından uygulanan "root/SCX" dır.
-sorgu | Yürütülecek OMı sorgusu.
-tablo | seçim Azure Storage tablosu, belirtilen depolama hesabında (bkz. [korumalı ayarlar](#protected-settings)).
-frequency | seçim Sorgunun yürütülmesi arasındaki saniye sayısı. Varsayılan değer 300 ' dir (5 dakika); minimum değer 15 saniyedir.
-yapma | seçim Ham örnek ölçüm sonuçlarının yayımlanması gereken ek havuz adlarının virgülle ayrılmış bir listesi. Bu ham örneklerin toplaması, uzantı veya Azure ölçümleri tarafından hesaplanmadı.
-
-"Table" veya "Havuzlar" ya da her ikisi de belirtilmelidir.
 
 ### <a name="filelogs"></a>Dosya günlükleri
 
@@ -521,6 +532,9 @@ yapma | seçim Günlük satırlarının gönderildiği ek havuz adlarının virg
 
 ## <a name="metrics-supported-by-the-builtin-provider"></a>Yerleşik sağlayıcı tarafından desteklenen ölçümler
 
+> [!NOTE]
+> LAD tarafından desteklenen varsayılan ölçümler, tüm dosya sistemleri/diskler/ad genelinde toplanır. Toplu olmayan ölçümler için, lütfen daha yeni Azure Izleyici havuz ölçümleri desteğine başvurun.
+
 Yerleşik ölçüm sağlayıcısı, geniş bir Kullanıcı kümesiyle en ilginç ölçüm kaynağıdır. Bu ölçümler beş geniş sınıfa ayrılır:
 
 * İşlemci
@@ -545,8 +559,6 @@ PercentPrivilegedTime | Boşta olmayan süre, ayrıcalıklı (çekirdek) modda h
 
 İlk dört sayaç %100 olmalıdır. Son üç sayaç ayrıca %100 ' a kadar toplam PercentProcessorTime, PercentIOWaitTime ve PercentInterruptTime toplamını alt bölümlere bölüler.
 
-Tüm işlemciler genelinde toplanmış tek bir ölçüm elde etmek için, ayarlayın `"condition": "IsAggregate=TRUE"` . Dört vCPU VM 'nin ikinci mantıksal işlemcisi gibi belirli bir işlemcinin ölçüsünü almak için, ayarlayın `"condition": "Name=\\"1\\""` . Mantıksal işlemci numaraları, aralığındadır `[0..n-1]` .
-
 ### <a name="builtin-metrics-for-the-memory-class"></a>Bellek sınıfı için yerleşik ölçümler
 
 Ölçüm bellek sınıfı bellek kullanımı, sayfalama ve değiştirme hakkında bilgi sağlar.
@@ -569,7 +581,7 @@ Bu ölçüm sınıfının yalnızca tek bir örneği vardır. "Condition" öznit
 
 ### <a name="builtin-metrics-for-the-network-class"></a>Ağ sınıfı için yerleşik ölçümler
 
-Ölçüm ağ sınıfı, önyükleme sonrasında tek bir ağ arabirimlerinde ağ etkinliği hakkında bilgi sağlar. LAD, ana bilgisayar ölçümlerinden alınabilecek bant genişliği ölçümlerini sunmaz.
+Ölçüm ağ sınıfı, önyükleme sonrasında tek bir ağ arabirimindeki ağ etkinliği hakkında bilgi sağlar. LAD, ana bilgisayar ölçümlerinden alınabilecek bant genişliği ölçümlerini sunmaz.
 
 counter | Anlamı
 ------- | -------
@@ -581,8 +593,6 @@ Paket alındı | Önyüklemeden bu yana alınan toplam paket sayısı
 Toplam Rxerrors | Önyüklemeden bu yana alma hatalarının sayısı
 TotalTxErrors | Önyüklemeden bu yana aktarılan hataların sayısı
 Toplam çarpışmalar | Önyüklemeden bu yana ağ bağlantı noktaları tarafından raporlanan çakışmaların sayısı
-
- Bu sınıf ınstanmiş olsa da, LAD tüm ağ cihazlarında toplanan ağ ölçümlerinin yakalanmayı desteklemez. Eth0 gibi belirli bir arabirim için ölçümleri elde etmek üzere `"condition": "InstanceID=\\"eth0\\""` .
 
 ### <a name="builtin-metrics-for-the-filesystem-class"></a>Dosya sistemi sınıfı için yerleşik ölçümler
 
@@ -603,10 +613,6 @@ ReadsPerSecond | Saniye başına okuma işlemi
 WritesPerSecond | Saniye başına yazma işlemi
 TransfersPerSecond | Saniye başına okuma veya yazma işlemi
 
-Tüm dosya sistemleri genelinde toplanmış değerler, ayarıyla elde edilebilir `"condition": "IsAggregate=True"` . "/Mnt" gibi belirli bir bağlı dosya sisteminin değerleri ayarıyla elde edilebilir `"condition": 'Name="/mnt"'` . 
-
-**Note**: JSON yerine Azure portalını kullanıyorsanız, doğru koşul alanı formu adı = '/mnt ' olur
-
 ### <a name="builtin-metrics-for-the-disk-class"></a>Disk sınıfı için yerleşik ölçümler
 
 Ölçümlerin disk sınıfı disk cihazı kullanımı hakkında bilgi sağlar. Bu istatistikler tüm sürücü için geçerlidir. Bir cihazda birden çok dosya sistemi varsa, bu cihaz için sayaçlar tüm bunlar arasında toplanır.
@@ -624,16 +630,14 @@ ReadBytesPerSecond | Saniye başına okunan bayt sayısı
 WriteBytesPerSecond | Saniye başına yazılan bayt sayısı
 BytesPerSecond | Saniye başına okunan veya yazılan bayt sayısı
 
-Tüm diskler genelinde toplanmış değerler ayarıyla elde edilebilir `"condition": "IsAggregate=True"` . Belirli bir cihazla ilgili bilgi almak için (örneğin,/dev/sdf1), ayarlayın `"condition": "Name=\\"/dev/sdf1\\""` .
-
-## <a name="installing-and-configuring-lad-30"></a>LAD 3,0 yükleme ve yapılandırma
+## <a name="installing-and-configuring-lad-40"></a>LAD 4,0 yükleme ve yapılandırma
 
 ### <a name="azure-cli"></a>Azure CLI
 
 Korunan ayarlarınızın dosyada ProtectedSettings.jsolduğu varsayıldığında ve genel yapılandırma bilgileriniz üzerinde PublicSettings.js, şu komutu çalıştırın:
 
 ```azurecli
-az vm extension set --publisher Microsoft.Azure.Diagnostics --name LinuxDiagnostic --version 3.0 --resource-group <resource_group_name> --vm-name <vm_name> --protected-settings ProtectedSettings.json --settings PublicSettings.json
+az vm extension set --publisher Microsoft.Azure.Diagnostics --name LinuxDiagnostic --version 4.0 --resource-group <resource_group_name> --vm-name <vm_name> --protected-settings ProtectedSettings.json --settings PublicSettings.json
 ```
 
 Bu komut, Azure CLı 'nın Azure Kaynak yönetimi modunu kullandığınızı varsayar. Klasik dağıtım modeli (ASM) VM 'Leri için LAD 'yi yapılandırmak üzere, "asm" moduna geçin ( `azure config mode asm` ) ve komutta kaynak grubu adını atlayın. Daha fazla bilgi için [platformlar arası CLI belgelerine](/cli/azure/authenticate-azure-cli)bakın.
@@ -643,12 +647,12 @@ Bu komut, Azure CLı 'nın Azure Kaynak yönetimi modunu kullandığınızı var
 Korunan ayarlarınızın değişkende olduğu varsayıldığında `$protectedSettings` ve ortak yapılandırma bilgileriniz `$publicSettings` değişkeninde ise şu komutu çalıştırın:
 
 ```powershell
-Set-AzVMExtension -ResourceGroupName <resource_group_name> -VMName <vm_name> -Location <vm_location> -ExtensionType LinuxDiagnostic -Publisher Microsoft.Azure.Diagnostics -Name LinuxDiagnostic -SettingString $publicSettings -ProtectedSettingString $protectedSettings -TypeHandlerVersion 3.0
+Set-AzVMExtension -ResourceGroupName <resource_group_name> -VMName <vm_name> -Location <vm_location> -ExtensionType LinuxDiagnostic -Publisher Microsoft.Azure.Diagnostics -Name LinuxDiagnostic -SettingString $publicSettings -ProtectedSettingString $protectedSettings -TypeHandlerVersion 4.0
 ```
 
-## <a name="an-example-lad-30-configuration"></a>Örnek LAD 3,0 yapılandırması
+## <a name="an-example-lad-40-configuration"></a>Örnek LAD 4,0 yapılandırması
 
-Önceki tanımları temel alarak, bazı açıklamayla örnek bir LAD 3,0 uzantı yapılandırması aşağıda verilmiştir. Bu örneği çalışmanıza uygulamak için kendi depolama hesabı adınızı, hesap SAS belirtecinizi ve EventHubs SAS belirteçlerini kullanmanız gerekir.
+Önceki tanımları temel alarak, bazı açıklamayla örnek bir LAD 4,0 uzantı yapılandırması aşağıda verilmiştir. Bu örneği çalışmanıza uygulamak için kendi depolama hesabı adınızı, hesap SAS belirtecinizi ve EventHubs SAS belirteçlerini kullanmanız gerekir.
 
 > [!NOTE]
 > LAD 'yi yüklemek için Azure CLı veya PowerShell 'i kullanmanıza bağlı olarak, ortak ve korumalı ayarların sağlanması yöntemi farklılık gösterir. Azure CLı kullanıyorsanız, yukarıdaki örnek komutla birlikte kullanmak için ProtectedSettings.jsve PublicSettings.jsiçin aşağıdaki ayarları kaydedin. PowerShell kullanıyorsanız, ayarları çalıştırarak ve ile kaydedin `$protectedSettings` `$publicSettings` `$protectedSettings = '{ ... }'` .
@@ -709,7 +713,6 @@ Bu genel ayarlar, LAD 'ye neden olur:
 
 * Yüzde işlemci zamanı ve kullanılan disk alanı ölçümlerini `WADMetrics*` tabloya yükleme
 * Syslog tesis "Kullanıcı" ve önem derecesi "bilgi" den tabloya ileti yükleyin `LinuxSyslog*`
-* Ham OMı sorgu sonuçlarını (PercentProcessorTime ve PercentIdleTime) adlandırılmış `LinuxCPU` tabloya yükle
 * Dosyadaki eklenmiş satırları tabloya Yükle `/var/log/myladtestlog` `MyLadTestLog`
 
 Her durumda, veriler öğesine de yüklenir:
@@ -776,14 +779,15 @@ Her durumda, veriler öğesine de yüklenir:
       }
     }
   },
-  "perfCfg": [
-    {
-      "query": "SELECT PercentProcessorTime, PercentIdleTime FROM SCX_ProcessorStatisticalInformation WHERE Name='_TOTAL'",
-      "table": "LinuxCpu",
-      "frequency": 60,
-      "sinks": "LinuxCpuJsonBlob,LinuxCpuEventHub"
-    }
-  ],
+  "sinksConfig": {
+    "sink": [
+      {
+        "name": "AzMonSink",
+        "type": "AzMonSink",
+        "AzureMonitor": {}
+      }
+    ]
+  },
   "fileLogs": [
     {
       "file": "/var/log/myladtestlog",
@@ -804,7 +808,7 @@ Her durumda, veriler öğesine de yüklenir:
 
 Performans verilerini görüntülemek veya uyarıları ayarlamak için Azure portal kullanın:
 
-![Ekran görüntüsü, seçili ölçüm üzerinde kullanılan disk alanı ve elde edilen grafik ile Azure portal gösterir.](./media/diagnostics-linux/graph_metrics.png)
+:::image type="content" source="./media/diagnostics-linux/graph_metrics.png" alt-text="Ekran görüntüsü, seçili ölçüm üzerinde kullanılan disk alanı ve elde edilen grafik ile Azure portal gösterir.":::
 
 `performanceCounters`Veriler her zaman bir Azure depolama tablosunda depolanır. Azure depolama API 'Leri birçok dil ve platformda kullanılabilir.
 
@@ -815,9 +819,9 @@ Ayrıca, bu kullanıcı arabirimi araçlarını kullanarak Azure Storage 'daki v
 * Visual Studio Sunucu Gezgini.
 * [Ekran görüntüsü Azure Depolama Gezgini kapsayıcıları ve tabloları gösterir.](https://azurestorageexplorer.codeplex.com/ "Azure Depolama Gezgini").
 
-Microsoft Azure Depolama Gezgini oturumunun bu anlık görüntüsü, test sanal makinesinde doğru yapılandırılmış bir LAD 3,0 uzantısının oluşturulan Azure depolama tablolarını ve kapsayıcılarını gösterir. Görüntü, [örnek LAD 3,0 yapılandırmasıyla](#an-example-lad-30-configuration)tam olarak eşleşmez.
+Microsoft Azure Depolama Gezgini oturumunun bu anlık görüntüsü, test sanal makinesinde doğru yapılandırılmış bir LAD 3,0 uzantısının oluşturulan Azure depolama tablolarını ve kapsayıcılarını gösterir. Görüntü, [örnek LAD 3,0 yapılandırmasıyla](#an-example-lad-40-configuration)tam olarak eşleşmez.
 
-![image](./media/diagnostics-linux/stg_explorer.png)
+:::image type="content" source="./media/diagnostics-linux/stg_explorer.png" alt-text="Ekran görüntüsü Azure Depolama Gezgini gösterir.":::
 
 Bir EventHubs uç noktasına yayınlanan iletileri kullanmayı öğrenmek için ilgili [eventhubs belgelerine](../../event-hubs/event-hubs-about.md) bakın.
 

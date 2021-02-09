@@ -7,18 +7,18 @@ ms.service: azure-app-configuration
 ms.topic: how-to
 ms.date: 11/17/2020
 ms.author: drewbat
-ms.openlocfilehash: 4d80c034ab03fed6b9ae2ed0c4c0420afe6f7e32
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 7bd163781203a277f4c9d6866a156c11e4d5d520
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98728100"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99979581"
 ---
 # <a name="pull-settings-to-app-configuration-with-azure-pipelines"></a>Azure Pipelines ile uygulama yapılandırmasına yönelik çekme ayarları
 
 [Azure uygulama yapılandırma](https://marketplace.visualstudio.com/items?itemName=AzureAppConfiguration.azure-app-configuration-task) görevi, uygulama yapılandırma deponuzdan anahtar değerlerini çeker ve bunları sonraki görevler tarafından tüketilen Azure işlem hattı değişkenleri olarak ayarlar. Bu görev, anahtar değerlerini bir yapılandırma dosyasından uygulama yapılandırma deponuza ileten [Azure uygulama yapılandırma gönderim](https://marketplace.visualstudio.com/items?itemName=AzureAppConfiguration.azure-app-configuration-task-push) görevini tamamlar. Daha fazla bilgi için bkz. [Azure Pipelines ayarları uygulama yapılandırmasına gönderme](push-kv-devops-pipeline.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
 - Uygulama yapılandırma deposu- [Azure Portal](https://portal.azure.com)ücretsiz olarak bir tane oluşturun.
@@ -60,7 +60,7 @@ Görevin uygulama yapılandırma deposuna erişebilmesi için, görev içinde ku
 
 Bu bölümde, Azure DevOps derleme işlem hattında Azure uygulama yapılandırma görevinin nasıl kullanılacağı ele alınmaktadır.
 
-1. **Ardışık** düzen işlem hatları ' na tıklayarak derleme ardışık düzeni sayfasına gidin  >  . Derleme ardışık düzeni belgeleri için bkz.  [ilk işlem hattınızı oluşturma](/azure/devops/pipelines/create-first-pipeline?view=azure-devops&tabs=net%2Ctfs-2018-2%2Cbrowser).
+1. **Ardışık** düzen işlem hatları ' na tıklayarak derleme ardışık düzeni sayfasına gidin  >  . Derleme ardışık düzeni belgeleri için bkz.  [ilk işlem hattınızı oluşturma](/azure/devops/pipelines/create-first-pipeline?tabs=net%2Ctfs-2018-2%2Cbrowser).
       - Yeni bir derleme işlem hattı oluşturuyorsanız **Yeni** işlem hattı ' na tıklayın, işlem hattınızla ilgili depoyu seçin. İşlem hattının sağ tarafındaki **yardımcıyı göster** ' i seçin ve **Azure uygulama yapılandırma** görevi ' ni arayın.
       - Varolan bir yapı ardışık düzeni kullanıyorsanız, işlem hattını düzenlemek için **Düzenle** ' yi seçin. **Görevler** sekmesinde **Azure uygulama yapılandırma** görevi ' ni arayın.
 1. Uygulama yapılandırma deposundan anahtar değerlerini çekmek üzere görev için gerekli parametreleri yapılandırın. Parametrelerin açıklamaları, aşağıdaki **Parametreler** bölümünde ve her parametrenin yanındaki araç ipuçlarında bulunur.
@@ -73,10 +73,10 @@ Bu bölümde, Azure DevOps derleme işlem hattında Azure uygulama yapılandırm
 
 Bu bölümde, Azure DevOps sürüm ardışık düzeninde Azure uygulama yapılandırma görevinin nasıl kullanılacağı ele alınacaktır.
 
-1. İşlem hattı Yayınları ' **nı seçerek yayın** ardışık düzeni sayfasına gidin  >  . Yayın işlem hattı belgeleri için bkz. [yayın işlem hatları](/azure/devops/pipelines/release?view=azure-devops).
+1. İşlem hattı Yayınları ' **nı seçerek yayın** ardışık düzeni sayfasına gidin  >  . Yayın işlem hattı belgeleri için bkz. [yayın işlem hatları](/azure/devops/pipelines/release).
 1. Mevcut bir yayın işlem hattını seçin. Bir tane yoksa yeni bir işlem hattı oluşturmak için yeni işlem **hattı** ' na tıklayın.
 1. Yayın işlem hattını düzenlemek için sağ üst köşedeki **Düzenle** düğmesini seçin.
-1. Görevi eklemek için **aşamayı** seçin. Aşamalar hakkında daha fazla bilgi için bkz. [aşamalar, bağımlılıklar ve & koşulları ekleme](/azure/devops/pipelines/release/environments?view=azure-devops).
+1. Görevi eklemek için **aşamayı** seçin. Aşamalar hakkında daha fazla bilgi için bkz. [aşamalar, bağımlılıklar ve & koşulları ekleme](/azure/devops/pipelines/release/environments).
 1. **+**"Aracıda Çalıştır" düğmesine tıklayın ve ardından **Görevler Ekle** sekmesinde **Azure uygulama yapılandırma** görevini ekleyin.
 1. Anahtar değerlerinizi uygulama yapılandırma deponuzdan çekmek için görev içinde gerekli parametreleri yapılandırın. Parametrelerin açıklamaları, aşağıdaki **Parametreler** bölümünde ve her parametrenin yanındaki araç ipuçlarında bulunur.
       - **Azure abonelik** parametresini, önceki adımda oluşturduğunuz hizmet bağlantısının adına ayarlayın.

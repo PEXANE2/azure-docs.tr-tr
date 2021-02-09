@@ -5,14 +5,14 @@ author: bwren
 ms.author: bwren
 services: azure-monitor
 ms.topic: conceptual
-ms.date: 04/27/2020
+ms.date: 02/08/2021
 ms.subservice: logs
-ms.openlocfilehash: a6f8e681f68fb53d7cf88582b4bf4416efc11c86
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.openlocfilehash: 5e1a1c62cafd982d44be3e06b98fc8c30461021c
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99820560"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99979989"
 ---
 # <a name="create-diagnostic-settings-to-send-platform-logs-and-metrics-to-different-destinations"></a>Platform günlüklerini ve ölçümlerini farklı hedeflere göndermek için tanılama ayarlarını oluşturma
 Azure etkinlik günlüğü ve kaynak günlükleri dahil olmak üzere Azure 'daki [Platform günlükleri](platform-logs-overview.md) , Azure kaynakları ve bağımlı oldukları Azure platformu için ayrıntılı tanılama ve denetim bilgileri sağlar. [Platform ölçümleri](data-platform-metrics.md) varsayılan olarak toplanır ve genellikle Azure izleyici ölçümleri veritabanında depolanır. Bu makalede, farklı hedeflere platform ölçümleri ve platform günlükleri göndermek için tanılama ayarlarını oluşturma ve yapılandırma hakkında ayrıntılı bilgi verilmektedir.
@@ -189,7 +189,7 @@ daha önce dağıtımınız başarılı oldu.
 
 Kaynak Yöneticisi bir şablon kullanılırken sorun oluşur, Tanılama ayarları REST API, Azure CLı veya Azure PowerShell. Yalnızca desteklenen kategori adları sunulduğundan, Azure portal ile oluşturulan Tanılama ayarları etkilenmez.
 
-Sorun, temeldeki API 'de son bir değişiklikten kaynaklanmıştır. ' Allölçümler ' dışındaki ölçüm kategorileri desteklenmez ve hiçbir şekilde çok özel IP izin listesi senaryolarında yoktur. Geçmişte, bir tanılama ayarı dağıtıldığında diğer kategori adları yoksayıldı. Azure Izleyici arka ucu bu kategorileri yalnızca ' Allölçümler ' öğesine yeniden yönlendirmelidir.  Şubat 2021 itibariyle arka uç, belirtilen ölçüm kategorisini kesin olarak onaylamak üzere güncelleştirildi. Bu değişiklik bazı dağıtımların başarısız olmasına neden oldu.
+Sorun, temeldeki API 'de son bir değişiklikten kaynaklanmıştır. ' Allölçümler ' dışındaki ölçüm kategorileri desteklenmez ve çok sayıda özel Azure hizmeti hariç değildir. Geçmişte, bir tanılama ayarı dağıtıldığında diğer kategori adları yoksayıldı. Azure Izleyici arka ucu bu kategorileri yalnızca ' Allölçümler ' öğesine yeniden yönlendirmelidir.  Şubat 2021 itibariyle arka uç, belirtilen ölçüm kategorisini kesin olarak onaylamak üzere güncelleştirildi. Bu değişiklik bazı dağıtımların başarısız olmasına neden oldu.
 
 Bu hatayı alırsanız, bu sorunu giderecek tüm ölçüm kategorisi adlarını ' Allölçümler ' ile değiştirmek için dağıtımlarınızı güncelleştirin. Dağıtım daha önce birden çok kategori ekliyor ise, yalnızca ' Allölçümler ' başvurusuna sahip bir tane tutulmalıdır. Sorunu yaşamaya devam ederseniz, lütfen Azure portal aracılığıyla Azure desteği 'ne başvurun. 
 

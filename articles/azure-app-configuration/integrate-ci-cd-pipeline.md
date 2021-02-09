@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.custom: devx-track-csharp
 ms.date: 04/19/2020
 ms.author: alkemper
-ms.openlocfilehash: d076bdf09626ec9ed08fcf43b95fc63d2f4a7dd7
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 3a4d171f0e3225db195c5c2b71ca99a3386e3a36
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96928458"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99979853"
 ---
 # <a name="integrate-with-a-cicd-pipeline"></a>CI/CD işlem hattıyla tümleştirme
 
@@ -35,9 +35,9 @@ Bu öğreticideki adımları uygulamak için herhangi bir kod düzenleyicisi kul
 
 ### <a name="prerequisites"></a>Önkoşullar
 
-Yerel olarak oluşturursanız, henüz yapmadıysanız [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) 'yi indirip yükleyin.
+Yerel olarak oluşturursanız, henüz yapmadıysanız [Azure CLI](/cli/azure/install-azure-cli) 'yi indirip yükleyin.
 
-Azure DevOps ile bir bulut derlemesi yapmak için, [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) 'nın derleme sisteminizde yüklü olduğundan emin olun.
+Azure DevOps ile bir bulut derlemesi yapmak için, [Azure CLI](/cli/azure/install-azure-cli) 'nın derleme sisteminizde yüklü olduğundan emin olun.
 
 ### <a name="export-an-app-configuration-store"></a>Uygulama yapılandırma deposunu dışa aktarma
 
@@ -107,4 +107,4 @@ Azure DevOps ile bir bulut derlemesi yapmak için, [Azure CLI](/cli/azure/instal
 Bu öğreticide, bir dağıtım ardışık düzeninde kullanılacak Azure uygulama yapılandırma verilerini aktarmış olursunuz. Uygulama yapılandırmasını kullanma hakkında daha fazla bilgi için Azure CLı örneklerine devam edin.
 
 > [!div class="nextstepaction"]
-> [Azure CLI](/cli/azure/appconfig?view=azure-cli-latest)
+> [Azure CLI](/cli/azure/appconfig)

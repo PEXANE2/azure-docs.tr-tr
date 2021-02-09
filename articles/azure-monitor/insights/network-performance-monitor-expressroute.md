@@ -6,14 +6,17 @@ ms.topic: conceptual
 author: abshamsft
 ms.author: absha
 ms.date: 11/27/2018
-ms.openlocfilehash: a9f268e5080a5c04c5cdb4767f2db5fd2d77cd3c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 91bb303fca4517f84ad8b430f26543e9f116fddc
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87326163"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99833091"
 ---
 # <a name="expressroute-monitor"></a>ExpressRoute Izleyicisi
+
+> [!IMPORTANT]
+> 1 Temmuz 2021 ' den itibaren, mevcut bir çalışma alanına yeni testler ekleyemez veya Ağ Performansı İzleyicisi yeni bir çalışma alanı etkinleştiremeyeceksiniz. 1 Temmuz 2021 ' den önce oluşturulan testleri kullanmaya devam edebilirsiniz. Geçerli iş yüklerinizde hizmet kesintisini en aza indirmek için, testlerinizi Ağ Performansı İzleyicisi 'den Azure ağ Izleyicisi 'ndeki [Yeni bağlantı izleyicisinden](https://docs.microsoft.com/azure/network-watcher/migrate-to-connection-monitor-from-network-performance-monitor) , 29 Şubat 2024 tarihinden önce geçirin.
 
 Azure ExpressRoute üzerinden, şube ofisleriniz ve Azure arasındaki uçtan uca bağlantıyı ve performansı izlemek için [ağ performansı İzleyicisi](network-performance-monitor.md) Azure ExpressRoute izleyici özelliğini kullanabilirsiniz. Temel avantajlar şunlardır: 
 
@@ -81,7 +84,7 @@ Tüm izlenen ExpressRoute devrelerinin listesini görmek için ExpressRoute devr
 
 ### <a name="trends-of-loss-latency-and-throughput"></a>Kayıp, gecikme süresi ve aktarım hızı eğilimleri 
 
-Bant genişliği kullanımı, gecikme süresi ve kayıp grafikleri etkileşimlidir. Fare denetimlerini kullanarak, bu grafiklerin herhangi bir bölümüne yakınlaştırabilirsiniz. Ayrıca, diğer aralıkların bant genişliği, gecikme süresi ve kayıp verilerini de görebilirsiniz. **Eylemler** düğmesinin altındaki sol üst köşedeki **Tarih/saat**' i seçin. 
+Bant genişliği kullanımı, gecikme süresi ve kayıp grafikleri etkileşimlidir. Fare denetimlerini kullanarak, bu grafiklerin herhangi bir bölümüne yakınlaştırabilirsiniz. Ayrıca, diğer aralıkların bant genişliği, gecikme süresi ve kayıp verilerini de görebilirsiniz. **Eylemler** düğmesinin altındaki sol üst köşedeki  **Tarih/saat**' i seçin. 
 
 ![ExpressRoute gecikmesi](media/network-performance-monitor-expressroute/expressroute-latency.png) 
 
@@ -93,7 +96,7 @@ Sanal ağlara yönelik tüm bağlantıların bir listesini özel eşleme üzerin
 
 ### <a name="circuit-topology"></a>Devre topolojisi 
 
-Devre topolojisini görüntülemek için **topoloji** kutucuğunu seçin. Bu eylem sizi seçili Devre veya eşlemenin topoloji görünümüne götürür. Topoloji diyagramı, ağdaki her segment için gecikme süresi sağlar ve her katman 3 atlama, diyagramın bir düğümü ile temsil edilir. Bir atlama seçildiğinde atlama hakkında daha fazla ayrıntı ortaya çıkarlar. Şirket içi atlamaları dahil etmek için görünürlük düzeyini artırmak üzere kaydırıcı çubuğunu **Filtreler**altına taşıyın. Kaydırıcı çubuğunu sola veya sağa taşımak, topoloji grafiğindeki atlama sayısını artırır veya azaltır. Her bir kesimde gecikme süresi görünür ve bu, ağınızda yüksek gecikmeli kesimleri daha hızlı yalıtımına olanak tanır.
+Devre topolojisini görüntülemek için **topoloji** kutucuğunu seçin. Bu eylem sizi seçili Devre veya eşlemenin topoloji görünümüne götürür. Topoloji diyagramı, ağdaki her segment için gecikme süresi sağlar ve her katman 3 atlama, diyagramın bir düğümü ile temsil edilir. Bir atlama seçildiğinde atlama hakkında daha fazla ayrıntı ortaya çıkarlar. Şirket içi atlamaları dahil etmek için görünürlük düzeyini artırmak üzere kaydırıcı çubuğunu **Filtreler** altına taşıyın. Kaydırıcı çubuğunu sola veya sağa taşımak, topoloji grafiğindeki atlama sayısını artırır veya azaltır. Her bir kesimde gecikme süresi görünür ve bu, ağınızda yüksek gecikmeli kesimleri daha hızlı yalıtımına olanak tanır.
 
 ![ExpressRoute topolojisi](media/network-performance-monitor-expressroute/expressroute-topology.png)
 
@@ -107,9 +110,9 @@ Bu görünüm, sanal ağ bağlantılarını gösterir. 
 
 Ağ Performansı İzleyicisi, birkaç devre bağlantı sorununu tanılamanıza yardımcı olur. Görebileceğiniz bazı sorunlar aşağıda listelenmiştir.
 
-Bildirim kodlarını görebilir ve **günlüğe Loganalytics**aracılığıyla uyarılar ayarlayabilirsiniz. **NPM tanılama** sayfasında, tetiklenen her tanılama iletisi için açıklamaları görebilirsiniz.
+Bildirim kodlarını görebilir ve **günlüğe Loganalytics** aracılığıyla uyarılar ayarlayabilirsiniz. **NPM tanılama** sayfasında, tetiklenen her tanılama iletisi için açıklamaları görebilirsiniz.
 
-| Bildirim kodu (Günlükler) | Açıklama |
+| Bildirim kodu (Günlükler) | Description |
 | --- | --- |
 | 5501 | ExpressRoute devresinin ikincil bağlantısı üzerinden geçiş yapılamıyor |
 | 5502 | ExpressRoute devresinin birincil bağlantısı üzerinden geçiş yapılamıyor |
@@ -141,4 +144,3 @@ Bildirim kodlarını görebilir ve **günlüğe Loganalytics**aracılığıyla u
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Ayrıntılı ağ performansı veri kayıtlarını görüntülemek için [günlüklerde arama](../log-query/log-query-overview.md) yapın.
-

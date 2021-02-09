@@ -12,14 +12,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/23/2020
 ms.author: vinigam
-ms.openlocfilehash: a6ba9c02b384c1b30977d962659983d600c7b2ac
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: bd13712d137ec5a1fdfa6dec8e6f6d1e0a7432cb
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95545729"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99833176"
 ---
 # <a name="create-a-monitor-in-connection-monitor-by-using-the-azure-portal"></a>Azure portal kullanarak bağlantı Izleyicisinde izleyici oluşturma
+
+> [!IMPORTANT]
+> 1 Temmuz 2021 ' den itibaren, mevcut bir çalışma alanına yeni testler ekleyemez veya Ağ Performansı İzleyicisi yeni bir çalışma alanı etkinleştiremeyeceksiniz. Ayrıca, bağlantı Izleyicisinde (klasik) yeni bağlantı izleyicileri ekleyemeyeceksiniz. 1 Temmuz 2021 ' den önce oluşturulan testleri ve bağlantı izleyicilerini kullanmaya devam edebilirsiniz. Geçerli iş yüklerinizde hizmet kesintisini en aza indirmek için, [testlerinizi ağ performansı İzleyicisi ](migrate-to-connection-monitor-from-network-performance-monitor.md) veya  [bağlantı izleyicisinden (klasik)](migrate-to-connection-monitor-from-connection-monitor-classic.md) Azure ağ Izleyicisi 'ndeki yeni bağlantı Izleyicisinden, 29 Şubat 2024 tarihinden önce geçirin.
 
 Kaynaklarınız arasındaki iletişimi izlemek için bağlantı Izleyicisini nasıl kullanacağınızı öğrenin. Bu makalede, Azure portal kullanarak nasıl bir izleyici oluşturacağınız açıklanır. Bağlantı Izleyicisi karma ve Azure bulut dağıtımlarını destekler.
 
@@ -110,7 +113,7 @@ Azure portal, bir bağlantı izleyicisinde bir test grubu oluşturmak için aşa
 
       **Abonelik**  >  **Kaynak grubu**  >  **VNET**  >  **Alt ağ**  >  **Aracılarla VM 'ler**
 
-      Ayrıca, ağacı başka bir düzeyden başlatmak için grubu seçiciye **göre** de değiştirebilirsiniz. Örneğin, sanal ağa göre gruplandırdıysanız, **VNET**  >  aracılarla sanal ağ **alt ağı**  >  **VM**'lerinde aracıların bulunduğu VM 'leri görürsünüz.
+      Ayrıca, ağacı başka bir düzeyden başlatmak için grubu seçiciye **göre** de değiştirebilirsiniz. Örneğin, sanal ağa göre gruplandırdıysanız,   >  aracılarla sanal ağ **alt ağı**  >  **VM**'lerinde aracıların bulunduğu VM 'leri görürsünüz.
 
        VNET, alt ağ veya tek VM seçtiğinizde, karşılık gelen kaynak KIMLIĞI uç nokta olarak ayarlanır. Varsayılan olarak, Azure ağ Izleyicisi uzantısının bulunduğu seçili VNET veya alt ağdaki tüm sanal makineler izlemeye katılır. Kapsamı azaltmak için belirli alt ağları veya aracıları seçin ya da kapsam özelliğinin değerini değiştirin. 
 

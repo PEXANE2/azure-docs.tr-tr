@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/23/2020
-ms.openlocfilehash: 0eb7dec2fd4ee327905acdea7a07456221bcbd46
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 882384b5e57db27cff981f80e790dfd41b624c93
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98946004"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99980703"
 ---
 # <a name="access-apache-hadoop-yarn-application-logs-on-linux-based-hdinsight"></a>Linux tabanlı HDInsight 'ta YARN uygulama günlüklerine erişim Apache Hadoop
 
@@ -37,7 +37,7 @@ YARN zaman çizelgesi sunucusu aşağıdaki veri türlerini içerir:
 
 ## <a name="yarn-applications-and-logs"></a>YARN uygulamaları ve günlükleri
 
-Uygulama günlükleri (ve ilişkili kapsayıcı günlükleri), sorunlu Hadoop uygulamalarında hata ayıklama açısından kritik öneme sahiptir. YARN, uygulama günlüklerini toplama, toplama ve [günlük toplama](https://hortonworks.com/blog/simplifying-user-logs-management-and-access-in-yarn/)ile depolama için iyi bir çerçeve sağlar.
+Uygulama günlükleri (ve ilişkili kapsayıcı günlükleri), sorunlu Hadoop uygulamalarında hata ayıklama açısından kritik öneme sahiptir. YARN, uygulama günlüklerini toplama, toplama ve günlük toplama ile depolama için iyi bir çerçeve sağlar.
 
 Günlük toplama özelliği, uygulama günlüklerine daha belirleyici bir şekilde erişmenizi sağlar. Bir çalışan düğümündeki tüm kapsayıcılar üzerinde günlükleri toplar ve bunları çalışan düğümü başına bir toplu günlük dosyası olarak depolar. Bir uygulama bittikten sonra günlük varsayılan dosya sisteminde depolanır. Uygulamanız yüzlerce veya binlerce kapsayıcı kullanabilir, ancak tek bir çalışan düğümünde çalıştırılan tüm kapsayıcılar için Günlükler her zaman tek bir dosyaya toplanır. Bu nedenle, uygulamanız tarafından kullanılan her çalışan düğümü için yalnızca 1 günlük bir oturum vardır. Günlük toplama, HDInsight kümeleri sürüm 3,0 ve üzerinde varsayılan olarak etkindir. Toplanan Günlükler, küme için varsayılan depolamada bulunur. Aşağıdaki yol, günlüklerin bir yolu olarak verilmiştir:
 

@@ -40,7 +40,7 @@
           href: quickstart-feature-flag-spring-boot.md
 - name: Öğreticiler
   items:
-    - name: Dinamik yapılandırmayı etkinleştirme
+    - name: Yoklama modelini kullanarak dinamik yapılandırmayı etkinleştirme
       items:
         - name: ASP.NET Çekirdeği
           href: enable-dynamic-configuration-aspnet-core.md
@@ -52,6 +52,10 @@
           href: enable-dynamic-configuration-azure-functions-csharp.md
         - name: Spring Boot
           href: enable-dynamic-configuration-java-spring-app.md
+    - name: Anında iletme modelini kullanarak dinamik yapılandırmayı etkinleştir
+      items:
+        - name: .NET Core
+          href: enable-dynamic-configuration-dotnet-core-push-refresh.md
     - name: Özellik bayraklarını kullanma
       items:
         - name: ASP.NET Çekirdeği

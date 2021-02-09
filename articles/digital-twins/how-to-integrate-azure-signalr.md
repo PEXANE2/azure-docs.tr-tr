@@ -7,12 +7,12 @@ ms.author: aymarqui
 ms.date: 09/02/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 71e74789654d2df91d9a087eaaf8d8f2a2664f7b
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 86d0c75d8b4c7c331e3e7ad90271e3fb42ff1964
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98664121"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99980737"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-signalr-service"></a>Azure Digital TWINS 'i Azure SignalR hizmeti ile tümleştirme
 
@@ -69,7 +69,7 @@ Bu bölümde, iki Azure işlevi ayarlayacaksınız:
 
 Ardından, Visual Studio 'Yu (veya seçtiğiniz başka bir kod düzenleyicisini) başlatın ve Code çözümünü *Digital-TWINS-Samples-master > ADTSampleApp* klasöründe açın. Ardından, işlevleri oluşturmak için aşağıdaki adımları uygulayın:
 
-1. *Samplefunctionsapp* projesinde **SignalRFunctions.cs** adlı yeni bir C# Sharp sınıfı oluşturun.
+1. *Samplefunctionsapp* projesinde, **SignalRFunctions.cs** adlı yeni bir C# sınıfı oluşturun.
 
 1. Sınıf dosyasının içeriğini aşağıdaki kodla değiştirin:
     
@@ -82,7 +82,9 @@ Ardından, Visual Studio 'Yu (veya seçtiğiniz başka bir kod düzenleyicisini)
 
     Bu, sınıfındaki tüm bağımlılık sorunlarını çözmelidir.
 
-Sonra, *bir uçtan uca çözüm oluşturma* öğreticisinin [ *uygulamayı Yayımla* bölümünde](tutorial-end-to-end.md#publish-the-app) açıklanan adımları kullanarak işlevinizi Azure 'da yayımlayın. Bunu, uçtan uca öğretici ön eki 'nde kullandığınız App Service/Function uygulamasında yayımlayabilir veya yeni bir tane oluşturabilirsiniz, ancak yinelemeyi en aza indirmek için aynı olanı kullanmak isteyebilirsiniz. Ayrıca, uygulamayı aşağıdaki adımlarla Yayımla:
+Sonra, *bir uçtan uca çözüm oluşturma* öğreticisinin [ *uygulamayı Yayımla* bölümünde](tutorial-end-to-end.md#publish-the-app) açıklanan adımları kullanarak işlevinizi Azure 'da yayımlayın. Bunu, uçtan uca öğretici [ön](#prerequisites)eki 'nde kullandığınız App Service/Function uygulamasında yayımlayabilir veya yeni bir tane oluşturabilirsiniz, ancak aynı çoğaltmayı en aza indirmek için aynı olanı kullanmak isteyebilirsiniz. 
+
+Ardından, uygulamayı aşağıdaki adımlarla yayımlayın:
 1. *Negotiate* işlevinin **http uç nokta URL 'sini** toplayın. Bunu yapmak için Azure portal [işlev uygulamaları](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Web%2Fsites/kind/functionapp) sayfasına gidin ve listeden işlev uygulamanızı seçin. Uygulama menüsünde *işlevler* ' i seçin ve *Negotiate* işlevini seçin.
 
     :::image type="content" source="media/how-to-integrate-azure-signalr/functions-negotiate.png" alt-text="Menüde ' Functions ' vurgulanmış olarak işlev uygulamasının Azure portal görünümü. İşlevlerin listesi sayfada gösterilir ve ' anlaş ' işlevi de vurgulanır.":::
@@ -124,23 +126,11 @@ Bunu yapmak için, olay kılavuzunuzda, bir uç nokta olarak *yayın* Azure işl
 
 ## <a name="configure-and-run-the-web-app"></a>Web uygulamasını yapılandırma ve çalıştırma
 
-Bu bölümde, sonucu eylem olarak görürsünüz. İlk olarak, Azure dijital TWINS örneğiniz aracılığıyla telemetri verileri gönderen **sanal cihaz örnek uygulamasını** başlacaksınız. Daha sonra, ayarlamış olduğunuz Azure SignalR akışına bağlanacak **örnek istemci Web uygulamasını** yapılandıracaksınız. Bundan sonra, örnek Web uygulamasını gerçek zamanlı olarak güncelleştiren verileri görebilmelisiniz.
-
-### <a name="run-the-device-simulator"></a>Cihaz simülatörünü Çalıştır
-
-Uçtan uca öğretici ön eki sırasında, [cihaz simülatörünü](tutorial-end-to-end.md#configure-and-run-the-simulation) bir IoT Hub ve Azure dijital TWINS örneğiniz aracılığıyla veri gönderecek şekilde yapılandırdınız.
-
-Şimdi yapmanız gerekir, *dijital-TWINS-örnekler-master > devicesimülatör > devicesimülatör. sln*' de bulunan simülatör projesini başlatmıştır. Visual Studio kullanıyorsanız, projeyi açabilir ve araç çubuğunda Bu düğmeyle çalıştırabilirsiniz:
-
-:::image type="content" source="media/how-to-integrate-azure-signalr/start-button-simulator.png" alt-text="Visual Studio Başlangıç düğmesi (Devicesimülatör Projesi)":::
-
-Bir konsol penceresi açılır ve sanal sıcaklık telemetri iletilerini görüntüler. Bunlar Azure Digital Twins örneğiniz aracılığıyla gönderilmekte ve burada Azure işlevleri ve SignalR tarafından alınırlar.
-
-Bu konsolda başka bir şey yapmanız gerekmez, ancak sonraki adımları tamamlayarak çalışır durumda bırakın.
+Bu bölümde, sonucu eylem olarak görürsünüz. İlk olarak, ayarlamış olduğunuz Azure SignalR akışına bağlanmak için **örnek istemci Web uygulamasını** yapılandırın. Daha sonra, Azure dijital TWINS örneğiniz aracılığıyla telemetri verileri gönderen **sanal cihaz örnek uygulamasını** başlacaksınız. Bundan sonra örnek Web uygulamasını görüntüleyerek, örnek Web uygulamasını gerçek zamanlı olarak güncelleştiren sanal cihaz verilerini görürsünüz.
 
 ### <a name="configure-the-sample-client-web-app"></a>Örnek istemci Web uygulamasını yapılandırma
 
-Daha sonra, **SignalR Integration Web uygulaması örneğini** şu adımlarla ayarlayın:
+**SignalR tümleştirmesi Web uygulaması örneğini** şu adımlarla ayarlayın:
 1. Visual Studio 'Yu veya tercih ettiğiniz herhangi bir kod düzenleyicisini kullanarak, [*örnek uygulamaları indirme*](#download-the-sample-applications) bölümüne indirdiğiniz zip 'lenmiş _**Azure_Digital_Twins_SignalR_integration_web_app_sample**_ klasörünü açın.
 
 1. *Src/App.js* dosyasını açın ve içindeki URL 'yi, `HubConnectionBuilder` daha önce KAYDETTIĞINIZ **Negotiate** işlevinin HTTP uç noktası URL 'si ile değiştirin:
@@ -161,6 +151,18 @@ Sonra, Azure portal işlev uygulamanızda izinleri ayarlayın:
 1. Örnek menüsünde aşağı kaydırın ve *CORS*' yi seçin. CORS sayfasında, `http://localhost:3000` boş kutuya girerek izin verilen bir kaynak olarak ekleyin. *Erişim-denetim-izin-kimlik bilgilerini etkinleştir* ve *Kaydet* için kutuyu işaretleyin.
 
     :::image type="content" source="media/how-to-integrate-azure-signalr/cors-setting-azure-function.png" alt-text="Azure Işlevinde CORS ayarı":::
+
+### <a name="run-the-device-simulator"></a>Cihaz simülatörünü Çalıştır
+
+Uçtan uca öğretici ön eki sırasında, [cihaz simülatörünü](tutorial-end-to-end.md#configure-and-run-the-simulation) bir IoT Hub ve Azure dijital TWINS örneğiniz aracılığıyla veri gönderecek şekilde yapılandırdınız.
+
+Şimdi yapmanız gerekir, *dijital-TWINS-örnekler-master > devicesimülatör > devicesimülatör. sln*' de bulunan simülatör projesini başlatmıştır. Visual Studio kullanıyorsanız, projeyi açabilir ve araç çubuğunda Bu düğmeyle çalıştırabilirsiniz:
+
+:::image type="content" source="media/how-to-integrate-azure-signalr/start-button-simulator.png" alt-text="Visual Studio Başlangıç düğmesi (Devicesimülatör Projesi)":::
+
+Bir konsol penceresi açılır ve sanal sıcaklık telemetri iletilerini görüntüler. Bunlar Azure Digital Twins örneğiniz aracılığıyla gönderilmekte ve burada Azure işlevleri ve SignalR tarafından alınırlar.
+
+Bu konsolda başka bir şey yapmanız gerekmez, ancak bir sonraki adımı tamamladığınızda uygulamayı çalışır durumda bırakın.
 
 ### <a name="see-the-results"></a>Sonuçları görme
 

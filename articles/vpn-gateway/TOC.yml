@@ -161,7 +161,7 @@
               href: openvpn-azure-ad-mfa.md
             - name: VPN istemcisi yapılandırma
               href: openvpn-azure-ad-client.md
-            - name: İstemci VPN profili indirme dosyası hakkında
+            - name: VPN istemci profili dosyalarıyla çalışma
               href: about-vpn-profile-download.md
             - name: Intune - VPN istemcisi profili dağıtma
               href: vpn-profile-intune.md

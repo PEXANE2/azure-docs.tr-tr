@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/11/2020
 ms.author: pafarley
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 17a7ad29596c5ab5ed65868fde0e814bc83e8c37
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 1d633b1a9f5fee0a5cceb48f2b37aaec2092069f
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99576751"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99979544"
 ---
 # <a name="optical-character-recognition-ocr"></a>Optik Karakter Tanıma (OCR)
 
@@ -132,20 +132,20 @@ Başarılı bir JSON yanıtı örneğine bakın:
 }
 ```
 
-## <a name="select-pages-or-page-ranges-for-text-extraction"></a>Metin ayıklama için sayfa (ler) veya sayfa aralıklarını seçin
-[Okuma 3,2 Önizleme API 'si](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-2/operations/5d986960601faab4bf452005)ile, büyük çok sayfalı belgeler için, `pages` yalnızca bu sayfalardan metin Ayıklanacak sayfa numaralarını veya sayfa aralıklarını belirtmek üzere sorgu parametresini kullanın. Örneğin, aşağıdaki örnekte her iki durum için 10 sayfalı bir belge gösterilmektedir (tüm sayfalar (1-10) ve seçili sayfalar (3-6).
+## <a name="natural-reading-order-output"></a>Doğal okuma sırası çıkışı
+[Okuma 3,2 Önizleme API 'si](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-2/operations/5d986960601faab4bf452005)ile, metin çizgilerinin, sorgu parametresi ile çıkış sırasını belirtin `readingOrder` . `natural`Aşağıdaki örnekte gösterildiği gibi, daha kolay okunabilir bir okuma sırası çıkışı için kullanın.
 
-:::image border type="content" source="./Images/ocr-select-pages.png" alt-text="Seçili sayfa çıkışı":::
-
-## <a name="specify-text-line-order-in-the-output"></a>Çıktıda metin çizgisi sırasını belirtme
-[Okuma 3,2 Önizleme API 'si](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-2/operations/5d986960601faab4bf452005)ile, metin çizgilerinin, sorgu parametresi ile çıkış sırasını belirtin `read order` . `basic`Varsayılan sol sağ ve üst çizgi sırası veya `natural` daha fazla insan okuma kullanımı kolay satır düzeni için arasında seçim yapın. Aşağıdaki örnek, aynı iki sütunlu belge için her iki satır sırası numarası kümesini gösterir. Sağdaki görüntüde okuma düzenini göstermek için her bir sütun içindeki sıralı satır numaralarını gösterdiğine dikkat edin.
-
-:::image border type="content" source="./Images/ocr-read-order.png" alt-text="OCR okuma düzeni örneği":::
+:::image border type="content" source="./Images/ocr-reading-order-example.png" alt-text="OCR okuma düzeni örneği":::
 
 ## <a name="handwritten-classification-for-text-lines-latin-only"></a>Metin satırları için el ile sınıflandırma (yalnızca Latin)
 [Okuma 3,2 PREVIEW API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-2/operations/5d986960601faab4bf452005) yanıtı, her metin satırının el yazısı stili olup olmadığı sınıflandırıp bir güven puanı ile birlikte yer alır. Bu özellik yalnızca Latin dilleri için desteklenir. Aşağıdaki örnek görüntüdeki metin için el yazısı sınıflandırmasını gösterir.
 
-:::image border type="content" source="./Images/handwritten-text-line.png" alt-text="OCR el yazısı sınıflandırması örneği":::
+:::image border type="content" source="./Images/ocr-handwriting-classification.png" alt-text="OCR el yazısı sınıflandırması örneği":::
+
+## <a name="select-pages-or-page-ranges-for-text-extraction"></a>Metin ayıklama için sayfa (ler) veya sayfa aralıklarını seçin
+[Okuma 3,2 Önizleme API 'si](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-2/operations/5d986960601faab4bf452005)ile, büyük çok sayfalı belgeler için, `pages` yalnızca bu sayfalardan metin Ayıklanacak sayfa numaralarını veya sayfa aralıklarını belirtmek üzere sorgu parametresini kullanın. Aşağıdaki örnek, her iki durumda da tüm sayfalar (1-10) ve seçili 3-6 Sayfalar için metin ayıklanarak 10 sayfalı bir belge gösterir.
+
+:::image border type="content" source="./Images/ocr-select-pages.png" alt-text="Seçili sayfa çıkışı":::
 
 ## <a name="supported-languages"></a>Desteklenen diller
 Okuma API 'Leri, yazdırma stili metni için toplam 73 dili destekler. [OCR tarafından desteklenen dillerin](./language-support.md#optical-character-recognition-ocr)tam listesine bakın. El ile yazılmış stil OCR yalnızca Ingilizce için desteklenir.

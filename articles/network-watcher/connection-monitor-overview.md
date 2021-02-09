@@ -15,14 +15,17 @@ ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: vinigam
 ms.custom: mvc
-ms.openlocfilehash: 57228c6b7da04b139c7075c83e313b207907e214
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: 0fa5e09dbe7c0a8cd45557d535353ea4a0a00b16
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97898020"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99833108"
 ---
 # <a name="network-connectivity-monitoring-with-connection-monitor"></a>Bağlantı Izleyicisi ile ağ bağlantısı Izleme
+
+> [!IMPORTANT]
+> 1 Temmuz 2021 ' den itibaren, mevcut bir çalışma alanına yeni testler ekleyemez veya Ağ Performansı İzleyicisi yeni bir çalışma alanı etkinleştiremeyeceksiniz. Ayrıca, bağlantı Izleyicisinde (klasik) yeni bağlantı izleyicileri ekleyemeyeceksiniz. 1 Temmuz 2021 ' den önce oluşturulan testleri ve bağlantı izleyicilerini kullanmaya devam edebilirsiniz. Geçerli iş yüklerinizde hizmet kesintisini en aza indirmek için, [testlerinizi ağ performansı İzleyicisi ](migrate-to-connection-monitor-from-network-performance-monitor.md) veya  [bağlantı izleyicisinden (klasik)](migrate-to-connection-monitor-from-connection-monitor-classic.md) Azure ağ Izleyicisi 'ndeki yeni bağlantı Izleyicisinden, 29 Şubat 2024 tarihinden önce geçirin.
 
 Bağlantı Izleyicisi, Azure ağ Izleyicisi 'nde birleştirilmiş uçtan uca bağlantı izleme sağlar. Bağlantı Izleyicisi özelliği karma ve Azure bulut dağıtımlarını destekler. Ağ Izleyicisi, Azure dağıtımlarınız için bağlantı ile ilgili ölçümleri izlemek, tanılamak ve görüntülemek için araçlar sağlar.
 
@@ -111,7 +114,7 @@ Bağlantı Izleyicisi aşağıdaki varlıkları içerir:
 
  ![Test grupları ve testler arasındaki ilişkiyi tanımlayan bir bağlantı izleyicisini gösteren diyagram](./media/connection-monitor-2-preview/cm-tg-2.png)
 
-[Azure Portal](./connection-monitor-create-using-portal.md) veya [armclient](./connection-monitor-create-using-template.md) kullanarak bir bağlantı İzleyicisi oluşturabilirsiniz
+[Azure Portal](./connection-monitor-create-using-portal.md), [armclient](./connection-monitor-create-using-template.md) veya [PowerShell](connection-monitor-create-using-powershell.md) kullanarak bir bağlantı İzleyicisi oluşturabilirsiniz
 
 Bir test grubuna eklediğiniz tüm kaynaklar, hedefler ve test yapılandırması, bireysel testlere bölünmüştür. Kaynak ve hedeflerin nasıl bölündüğü hakkında bir örnek aşağıda verilmiştir:
 
@@ -271,12 +274,13 @@ Bağlantı Izleyicisi deneyiminden önce oluşturulan bağlantı izleyicilerinde
 
 Ölçümleri kullandığınızda, kaynak türünü Microsoft. Network/networkWatchers/Connectionmonitörleri olarak ayarlayın
 
-| Metric | Görünen ad | Birim | Toplama türü | Açıklama | Boyutlar |
+| Metric | Görünen ad | Birim | Toplama türü | Description | Boyutlar |
 | --- | --- | --- | --- | --- | --- |
-| ProbesFailedPercent | % Yoklama başarısız oldu | Yüzde | Ortalama | Bağlantı İzleme Araştırmaları yüzdesi başarısız oldu. | Boyut yok |
-| AverageRoundtripMs | Ort. gidiş dönüş süresi (MS) | Mayacak | Ortalama | Kaynak ve hedef arasında gönderilen bağlantı izleme araştırmaları için Ortalama ağ RTT. |             Boyut yok |
-| ChecksFailedPercent (Önizleme) | % Denetim başarısız oldu (Önizleme) | Yüzde | Ortalama | Bir test için başarısız denetimlerin yüzdesi. | Connectionmonitorresourceıd <br>SourceAddress <br>Kaynak <br>Sourceresourceıd <br>KaynakTürü <br>Protokol <br>Hedef adres <br>Hedef adı <br>Hedef RESOURCEID <br>Hedef türü <br>DestinationPort <br>TestGroupName <br>TestConfigurationName <br>Region |
-| Roundüçlü MS (Önizleme) | Gidiş dönüş süresi (MS) (Önizleme) | Mayacak | Ortalama | Kaynak ve hedef arasında gönderilen denetimler için RTT. Bu değer, ortalama değildir. | Connectionmonitorresourceıd <br>SourceAddress <br>Kaynak <br>Sourceresourceıd <br>KaynakTürü <br>Protokol <br>Hedef adres <br>Hedef adı <br>Hedef RESOURCEID <br>Hedef türü <br>DestinationPort <br>TestGroupName <br>TestConfigurationName <br>Region |
+| ProbesFailedPercent (klasik) | % Yoklama başarısız oldu (klasik) | Yüzde | Ortalama | Bağlantı İzleme Araştırmaları yüzdesi başarısız oldu. | Boyut yok |
+| AverageRoundtripMs (klasik) | Ort. gidiş dönüş süresi (MS) (klasik) | Mayacak | Ortalama | Kaynak ve hedef arasında gönderilen bağlantı izleme araştırmaları için Ortalama ağ RTT. |             Boyut yok |
+| ChecksFailedPercent | % Denetim başarısız oldu | Yüzde | Ortalama | Bir test için başarısız denetimlerin yüzdesi. | Connectionmonitorresourceıd <br>SourceAddress <br>Kaynak <br>Sourceresourceıd <br>KaynakTürü <br>Protokol <br>Hedef adres <br>Hedef adı <br>Hedef RESOURCEID <br>Hedef türü <br>DestinationPort <br>TestGroupName <br>TestConfigurationName <br>Region |
+| Roundroundtimems | Gidiş dönüş süresi (MS) | Mayacak | Ortalama | Kaynak ve hedef arasında gönderilen denetimler için RTT. Bu değer, ortalama değildir. | Connectionmonitorresourceıd <br>SourceAddress <br>Kaynak <br>Sourceresourceıd <br>KaynakTürü <br>Protokol <br>Hedef adres <br>Hedef adı <br>Hedef RESOURCEID <br>Hedef türü <br>DestinationPort <br>TestGroupName <br>TestConfigurationName <br>Region |
+| TestResult | Test sonucu | Count | Ortalama | Bağlantı İzleyicisi test sonucu | SourceAddress <br>Kaynak <br>Sourceresourceıd <br>KaynakTürü <br>Protokol <br>Hedef adres <br>Hedef adı <br>Hedef RESOURCEID <br>Hedef türü <br>DestinationPort <br>TestGroupName <br>TestConfigurationName <br>SourceIP <br>Hedef IP <br>SourceSubnet <br>Hedef alt ağ |
 
 #### <a name="metric-based-alerts-for-connection-monitor"></a>Bağlantı Izleyicisi için ölçüm tabanlı uyarılar
 

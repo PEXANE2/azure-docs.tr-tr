@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 12/16/2020
-ms.openlocfilehash: 49dfed7faac1e55a40bc7b7ddd5e9555519350a2
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: a0653f24eeb0a96c28714d00f1d943dfc7d336db
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97617315"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99979717"
 ---
 # <a name="manage-azure-sql-database-long-term-backup-retention"></a>Azure SQL veritabanı uzun süreli yedekleme bekletmesini yönetme
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -183,7 +183,7 @@ Remove-AzSqlDatabaseLongTermRetentionBackup -ResourceId $ltrBackup.ResourceId
 ```
 
 > [!IMPORTANT]
-> LTR yedeklemenin silinmesi geri alınamaz. Sunucu silindikten sonra bir LTR yedeklemesini silmek için abonelik kapsamı izninizin olması gerekir. Azure Izleyici 'de her silme hakkında bildirimleri, ' uzun süreli bekletme yedeklemesini siler ' işlemi için filtreleyerek ayarlayabilirsiniz. Etkinlik günlüğü, ne zaman ve ne zaman istek yaptığı hakkında bilgiler içerir. Ayrıntılı yönergeler için bkz. [etkinlik günlüğü uyarıları oluşturma](../../azure-monitor/platform/alerts-activity-log.md) .
+> LTR yedeklemenin silinmesi geri alınamaz. Sunucu veya kaynak grubu silindikten sonra bir LTR yedeklemesini silmek için abonelik kapsamı izninizin olması gerekir. Azure Izleyici 'de her silme hakkında bildirimleri, ' uzun süreli bekletme yedeklemesini siler ' işlemi için filtreleyerek ayarlayabilirsiniz. Etkinlik günlüğü, ne zaman ve ne zaman istek yaptığı hakkında bilgiler içerir. Ayrıntılı yönergeler için bkz. [etkinlik günlüğü uyarıları oluşturma](../../azure-monitor/platform/alerts-activity-log.md) .
 
 ### <a name="restore-from-ltr-backups"></a>LTR yedeklemelerden geri yükleme
 
@@ -196,7 +196,7 @@ Restore-AzSqlDatabase -FromLongTermRetentionBackup -ResourceId $ltrBackup.Resour
 ```
 
 > [!IMPORTANT]
-> Sunucu silindikten sonra bir LTR yedeklemesinden geri yüklemek için, sunucunun aboneliğine yönelik izinlere sahip olmanız ve bu aboneliğin etkin olması gerekir. İsteğe bağlı-ResourceGroupName parametresini de atmalısınız.
+> Sunucu veya kaynak grubu silindikten sonra bir LTR yedeklemesinden geri yüklemek için, sunucunun aboneliğine sahip izninizin olması gerekir ve bu aboneliğin etkin olması gerekir. İsteğe bağlı-ResourceGroupName parametresini de atmalısınız.
 
 > [!NOTE]
 > Buradan var olan veritabanına kopyalamak için geri yüklenen veritabanından veri ayıklama veya var olan veritabanını silerek geri yüklenen veritabanının adını var olan veritabanının adıyla değiştirme gibi görevleri gerçekleştirmek için SQL Server Management Studio kullanarak geri yüklenen veritabanına bağlanabilirsiniz. Bkz. [zaman noktası geri yükleme](recovery-using-backups.md#point-in-time-restore).

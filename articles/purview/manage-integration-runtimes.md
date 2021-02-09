@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 02/03/2021
-ms.openlocfilehash: 72efcacf20b0d67c9d6a8255426a09f9813f17b4
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: 9276f845c95b5e736180159b282ddedc33523c17
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99550507"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99980754"
 ---
 # <a name="create-and-manage-a-self-hosted-integration-runtime"></a>Şirket içinde barındırılan tümleştirme çalışma zamanı oluşturma ve yönetme
 
@@ -41,7 +41,7 @@ Bu makalede, Azure purview 'da veri kaynaklarını taramanızı sağlayan şirke
 
    - Kimlik doğrulama anahtarını kopyalayıp yapıştırın.
 
-   - Şirket içinde barındırılan tümleştirme çalışma zamanını yerel bir Windows makinesinde [Azure Data Factory Integration Runtime](https://www.microsoft.com/download/details.aspx?id=39717) indirin. Yükleyiciyi çalıştırın.
+   - Şirket içinde barındırılan tümleştirme çalışma zamanını yerel bir Windows makinesinde [Microsoft Integration Runtime](https://www.microsoft.com/download/details.aspx?id=39717) indirin. Yükleyiciyi çalıştırın.
 
    - **Kayıt Integration Runtime (Şirket içinde barındırılan)** sayfasında, daha önce kaydettiğiniz iki anahtardan birini yapıştırın ve **Kaydet**' i seçin.
 

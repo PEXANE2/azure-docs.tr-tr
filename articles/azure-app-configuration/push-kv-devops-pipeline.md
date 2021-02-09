@@ -7,12 +7,12 @@ ms.service: azure-app-configuration
 ms.topic: how-to
 ms.date: 07/27/2020
 ms.author: alkemper
-ms.openlocfilehash: fd3f7dbfd824360dcba9f8a166c579e3b55527ba
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: c5e0cc3eb29fb612460b16d8de9dee62949b5bd2
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96932124"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99979615"
 ---
 # <a name="push-settings-to-app-configuration-with-azure-pipelines"></a>Ayarları Azure Pipelines ile uygulama yapılandırmasına gönderme
 
@@ -56,7 +56,7 @@ Görevin uygulama yapılandırma deposuna erişebilmesi için görev içinde kul
 
 Bu bölümde, Azure DevOps derleme işlem hattında Azure uygulama yapılandırma gönderim görevinin nasıl kullanılacağı ele alınmaktadır.
 
-1. **Ardışık** düzen işlem hatları ' na tıklayarak derleme ardışık düzeni sayfasına gidin  >  . Derleme işlem hatları için belgeler [burada](/azure/devops/pipelines/create-first-pipeline?tabs=tfs-2018-2&view=azure-devops)bulunabilir.
+1. **Ardışık** düzen işlem hatları ' na tıklayarak derleme ardışık düzeni sayfasına gidin  >  . Derleme işlem hatları için belgeler [burada](/azure/devops/pipelines/create-first-pipeline?tabs=tfs-2018-2)bulunabilir.
       - Yeni bir derleme işlem hattı oluşturuyorsanız, işlem hattının sağ tarafındaki **yardımcıyı göster** ' i seçin ve **Azure uygulama yapılandırma gönderme** görevini arayın.
       - Var olan bir derleme işlem hattını kullanıyorsanız, işlem hattını düzenlenirken **Görevler** sekmesine gidin ve **Azure uygulama yapılandırma gönderme** görevini arayın.
 2. Yapılandırma dosyasından uygulama yapılandırma deposuna anahtar değerlerini göndermek için gereken parametreleri yapılandırın. **Yapılandırma dosyası yolu** parametresi dosya deposunun kökünde başlar.
@@ -66,10 +66,10 @@ Bu bölümde, Azure DevOps derleme işlem hattında Azure uygulama yapılandırm
 
 Bu bölümde, Azure uygulama yapılandırma gönderme görevinin bir Azure DevOps yayın işlem hatlarında nasıl kullanılacağı ele alınacaktır.
 
-1. İşlem hattı Yayınları ' **nı seçerek yayın** ardışık düzeni sayfasına gidin  >  . Yayın işlem hatlarına yönelik belgeler [burada](/azure/devops/pipelines/release?view=azure-devops)bulunabilir.
+1. İşlem hattı Yayınları ' **nı seçerek yayın** ardışık düzeni sayfasına gidin  >  . Yayın işlem hatlarına yönelik belgeler [burada](/azure/devops/pipelines/release)bulunabilir.
 1. Mevcut bir yayın işlem hattını seçin. Yoksa, yeni bir tane oluşturmak için **+ Yeni** ' yi seçin.
 1. Yayın işlem hattını düzenlemek için sağ üst köşedeki **Düzenle** düğmesini seçin.
-1. Görevi eklemek için **aşamayı** seçin. Aşamalar hakkında daha fazla bilgiyi [burada](/azure/devops/pipelines/release/environments?view=azure-devops)bulabilirsiniz.
+1. Görevi eklemek için **aşamayı** seçin. Aşamalar hakkında daha fazla bilgiyi [burada](/azure/devops/pipelines/release/environments)bulabilirsiniz.
 1. **+** Bu iş için ' i seçin ve ardından **dağıtım** sekmesinin altına **Azure uygulama yapılandırma gönderim** görevini ekleyin.
 1. Anahtar değerlerinizi yapılandırma dosyanızdaki uygulama yapılandırma deponuza göndermek için görev içinde gerekli parametreleri yapılandırın. Parametrelerin açıklamaları aşağıdaki **Parametreler** bölümünde ve her parametrenin yanındaki araç ipuçlarında kullanılabilir.
 1. Bir yayını kaydedin ve kuyruğa alın. Yayın günlüğünde, görevin yürütülmesi sırasında karşılaşılan tüm arızalar görüntülenir.

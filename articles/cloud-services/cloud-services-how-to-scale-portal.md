@@ -1,6 +1,6 @@
 ---
 title: Portalda bulut hizmetini otomatik ölçeklendirme (klasik) | Microsoft Docs
-description: Azure 'da bir bulut hizmeti Web rolü veya çalışan rolü için otomatik ölçek kurallarını yapılandırmak üzere portalını nasıl kullanacağınızı öğrenin.
+description: Azure 'da bir bulut hizmeti (klasik) rollerinin otomatik ölçek kurallarını yapılandırmak için portalını nasıl kullanacağınızı öğrenin.
 ms.topic: article
 ms.service: cloud-services
 ms.date: 10/14/2020
@@ -8,12 +8,12 @@ ms.author: tagore
 author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: a3e7f72dbe16c51280b922da2b5fc6550dee1d34
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: ba7b2279969acab93ac96c42e0033e76e9d0542d
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98743364"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99980839"
 ---
 # <a name="how-to-configure-auto-scaling-for-a-cloud-service-classic-in-the-portal"></a>Portalda bir bulut hizmeti için otomatik ölçeklendirmeyi yapılandırma (klasik)
 
@@ -23,7 +23,7 @@ ms.locfileid: "98743364"
 Koşullar, bir ölçek genişletme veya genişletme işlemini tetikleyen bir bulut hizmeti çalışan rolü için ayarlanabilir. Rolün koşulları, rolün CPU, disk veya ağ yüküne bağlı olabilir. Ayrıca, bir ileti kuyruğuna veya aboneliğinizle ilişkili başka bir Azure kaynağının ölçüsüne göre bir koşul da ayarlayabilirsiniz.
 
 > [!NOTE]
-> Bu makale, bulut hizmeti Web ve çalışan rollerine odaklanır. Doğrudan bir sanal makine (klasik) oluşturduğunuzda bir bulut hizmetinde barındırılır. Standart bir sanal makineyi bir [kullanılabilirlik kümesiyle](/previous-versions/azure/virtual-machines/windows/classic/configure-availability-classic) ilişkilendirerek ölçeklendirebilir ve el ile açıp kapatabilirsiniz.
+> Bu makale, bulut hizmeti 'ne (klasik) odaklanır. Doğrudan bir sanal makine (klasik) oluşturduğunuzda bir bulut hizmetinde barındırılır. Standart bir sanal makineyi bir [kullanılabilirlik kümesiyle](/previous-versions/azure/virtual-machines/windows/classic/configure-availability-classic) ilişkilendirerek ölçeklendirebilir ve el ile açıp kapatabilirsiniz.
 
 ## <a name="considerations"></a>Dikkat edilmesi gerekenler
 Uygulamanız için ölçeklendirmeyi yapılandırmadan önce aşağıdaki bilgileri göz önünde bulundurmanız gerekir:

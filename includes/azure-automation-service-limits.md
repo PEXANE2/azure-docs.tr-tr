@@ -5,15 +5,15 @@ services: automation
 author: mgoedtel
 ms.service: automation
 ms.topic: include
-ms.date: 10/21/2020
+ms.date: 02/08/2021
 ms.author: magoedte
 ms.custom: include file
-ms.openlocfilehash: 4a6b21d3782931e3bee4a13ff95e7f313dcc1af2
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 3ee44509997a16fc7f06fd5a24e473d7011bde40
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92379733"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99974472"
 ---
 #### <a name="process-automation"></a>Süreç otomasyonu
 
@@ -22,9 +22,10 @@ ms.locfileid: "92379733"
 | Her Azure Otomasyonu hesabı (zamanlanmamış iş değil) için her 30 saniyede gönderilen en fazla yeni iş sayısı |100 |Bu sınıra ulaşıldığında, bir iş oluşturmaya yönelik sonraki istekler başarısız olur. İstemci bir hata yanıtı alır.|
 | Otomasyon hesabı başına aynı zamanda aynı anda çalışan iş sayısı üst sınırı (zamanlanmamış iş) |200 |Bu sınıra ulaşıldığında, bir iş oluşturmaya yönelik sonraki istekler başarısız olur. İstemci bir hata yanıtı alır.|
 | 30 günlük bir dönem için iş meta verilerinin maksimum depolama alanı boyutu | 10 GB (yaklaşık 4.000.000 iş)|Bu sınıra ulaşıldığında, bir iş oluşturmaya yönelik sonraki istekler başarısız olur. |
-| En fazla iş akışı sınırı|1 MIB|Tek bir akış 1 MB 'den büyük olamaz.|
+| En fazla iş akışı sınırı|1 MIB|Tek bir akış 1 MiB 'den büyük olamaz.|
 | Otomasyon hesabı başına her 30 saniyede bir içeri aktarılabilen en fazla modül sayısı |5 ||
 | Modülün en büyük boyutu |100 MB ||
+| Bir düğüm yapılandırma dosyasının en büyük boyutu | 1 MB | Durum yapılandırması için geçerlidir |
 | İş çalışma süresi, ücretsiz katman |her takvim ayında abonelik başına 500 dakika ||
 | Sandbox<sup>1</sup> başına izin verilen maksimum disk alanı miktarı |1 GB |Yalnızca Azure korumalı alanlar için geçerlidir.|
 | Bir korumalı alan<sup>1</sup> ' e verilen maksimum bellek miktarı |400 MB |Yalnızca Azure korumalı alanlar için geçerlidir.|

@@ -3,17 +3,17 @@ title: Azure Blob depolamada akışı değiştirme | Microsoft Docs
 description: Azure Blob depolamada değişiklik akışı günlüklerini ve bunların nasıl kullanılacağını öğrenin.
 author: normesta
 ms.author: normesta
-ms.date: 09/08/2020
+ms.date: 02/08/2021
 ms.topic: how-to
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
-ms.openlocfilehash: 7174f7dd53387de9a569a5ddcadc08c32692c749
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 9a439541880cc8e20457edc8d24c5600ba2747c8
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95997112"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99979235"
 ---
 # <a name="change-feed-support-in-azure-blob-storage"></a>Azure Blob depolamada akış desteğini değiştirme
 
@@ -21,9 +21,15 @@ Değişiklik akışı amacı, bloblarda oluşan tüm değişikliklerin işlem g�
 
 [!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
+## <a name="how-the-change-feed-works"></a>Değişiklik akışı nasıl kullanılır?
+
 Değişiklik akışı, standart [BLOB fiyatlandırma](https://azure.microsoft.com/pricing/details/storage/blobs/) maliyetinde Depolama hesabınızdaki özel bir kapsayıcıda [BLOB](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) olarak depolanır. Gereksinimlerinize göre bu dosyaların bekletme süresini denetleyebilirsiniz (geçerli yayının [koşullarına](#conditions) bakın). Değişiklik olayları, [Apache avro](https://avro.apache.org/docs/1.8.2/spec.html) biçim belirtiminde kayıt olarak değişiklik akışına eklenir: satır içi şema ile zengin veri yapıları sağlayan kompakt, hızlı, ikili bir biçimdir. Bu biçim, Hadoop ekosisteminde, Stream Analytics ve Azure Data Factory yaygın olarak kullanılır.
 
 Bu günlükleri zaman uyumsuz, artımlı veya tam olarak işleyebilirsiniz. Herhangi bir sayıda istemci uygulaması değişiklik akışını paralel olarak ve kendi hızda okuyabilir. [Apache detaya gitme](https://drill.apache.org/docs/querying-avro-files/) veya [Apache Spark](https://spark.apache.org/docs/latest/sql-data-sources-avro.html) gibi analitik uygulamalar, günlükleri doğrudan avro dosyaları olarak tüketebilir, bu da bunları yüksek bant genişliğine sahip ve özel bir uygulama yazmak zorunda kalmadan düşük maliyetli bir şekilde işlemenizi sağlar.
+
+Aşağıdaki diyagramda kayıtların değişiklik akışına nasıl eklendiği gösterilmektedir:
+
+:::image type="content" source="media/storage-blob-change-feed/change-feed-diagram.png" alt-text="Değişiklik beslemenin bloblarda sıralı değişiklik günlüğü sağlamak için nasıl çalıştığını gösteren diyagram":::
 
 Değişiklik akışı desteği, değiştirilen nesnelere göre verileri işleyen senaryolar için uygundur. Örneğin, uygulamalar şunları yapabilir:
 

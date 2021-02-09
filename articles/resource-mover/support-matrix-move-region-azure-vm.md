@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: evansma
 ms.service: resource-move
 ms.topic: how-to
-ms.date: 10/11/2020
+ms.date: 02/08/2021
 ms.author: raynew
-ms.openlocfilehash: fa0017b0633d856906609818dd56b5971b1879a7
-ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
+ms.openlocfilehash: 3022b2d4954ffaef71e17ed28dd9b6f141d4da70
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99222807"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99980499"
 ---
 # <a name="support-for-moving-azure-vms-between-azure-regions"></a>Azure bölgeleri arasında Azure VM 'Leri taşıma desteği
 
@@ -116,7 +116,7 @@ Uzantıları | Desteklenmez | Uzantılar hedef bölgedeki sanal makineye kopyala
 Bu tabloda, Azure VM işletim sistemi diski, veri diski ve geçici disk için destek özetlenmektedir. Performans sorunlarından kaçınmak için, [yönetilen DISKLERIN](../virtual-machines/disks-scalability-targets.md) VM disk sınırlarını ve hedeflerini gözlemlemek önemlidir.
 
 > [!NOTE]
-> Hedef VM boyutu, kaynak VM 'den büyük veya bu değere eşit olmalıdır. Doğrulama için kullanılan parametreler: veri diskleri sayısı, NIC sayısı, kullanılabilir CPU 'Lar, GB cinsinden bellek. Bir hata verilmemişse.
+> Hedef VM boyutu, kaynak VM 'den büyük veya bu değere eşit olmalıdır. Doğrulama için kullanılan parametreler: veri diskleri sayısı, NIC sayısı, kullanılabilir CPU 'Lar, GB cinsinden bellek. Bir hata verilir.
 
 
 **Bileşen** | **Destek** | **Ayrıntılar**
@@ -134,6 +134,8 @@ Yönetilen disk (Premium) | Desteklenir |
 Standart SSD | Desteklenir |
 2. nesil (UEFı önyüklemesi) | Desteklenir
 Önyükleme tanılama depolama hesabı | Desteklenmez | VM 'yi hedef bölgeye taşıdıktan sonra yeniden etkinleştirin.
+Azure Disk Şifrelemesi etkin VM 'Ler | Desteklenir | [Daha fazla bilgi edinin](tutorial-move-region-encrypted-virtual-machines.md)
+Müşteri tarafından yönetilen anahtarla sunucu tarafı şifrelemeyi kullanan VM 'Ler | Desteklenir | [Daha fazla bilgi edinin](tutorial-move-region-encrypted-virtual-machines.md)
 
 ### <a name="limits-and-data-change-rates"></a>Sınırlar ve veri değişim oranları
 

@@ -5,18 +5,18 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 11/13/2020
+ms.date: 02/01/2021
 ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
-ms.openlocfilehash: acb2ebb0d7ce70c6b5963a8a6c3e392091e4bb1e
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 9654ff6eab53acfe3e656afdcacd758c548232ba
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96010070"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99979150"
 ---
-# <a name="store-business-critical-blob-data-with-immutable-storage"></a>Sabit depolamayla iş açısından kritik blob verilerini depolayın
+# <a name="store-business-critical-blob-data-with-immutable-storage"></a>İş açısından kritik blob verilerini sabit depolama alanıyla depolama
 
 Azure Blob depolama için sabit depolama, kullanıcıların iş açısından kritik veri nesnelerini bir solucan içinde depolamasına olanak sağlar (bir kez yaz, çok oku) durumu. Bu durum, verileri silinebilir olmayan ve Kullanıcı tarafından belirtilen bir Aralık için değiştirilemez hale getirir. Saklama aralığı süresince, Bloblar oluşturulup okunabilir, ancak değiştirilemez veya silinemez. Genel amaçlı v1, genel amaçlı v2, BlobStorage ve tüm Azure bölgelerindeki blok Blobstorage hesapları için sabit depolama kullanılabilir.
 
@@ -42,7 +42,7 @@ Sabit depolama aşağıdaki özellikleri destekler:
 
 - **[Yasal tutma ilkesi desteği](#legal-holds)**: bekletme aralığı bilinmiyorsa, kullanıcılar yasal tutmaları, yasal saklama temizlenene kadar sabit verileri depolayacak şekilde ayarlayabilir.  Yasal bir saklama ilkesi ayarlandığında, Bloblar oluşturulabilir ve okunabilir, ancak değiştirilemez veya silinemez. Her yasal saklama, bir tanımlayıcı dize olarak kullanılan Kullanıcı tanımlı bir alfasayısal etiketle (örneğin, bir durum KIMLIĞI, olay adı vb.) ilişkilendirilir. 
 
-- **Tüm blob katmanları Için destek**: solucan Ilkeleri Azure Blob depolama katmanından bağımsızdır ve tüm katmanlara uygulanır: sık erişimli, seyrek erişimli ve arşiv. Kullanıcılar verileri iş yüklerine göre en uygun maliyetli katmanda depolarken verilerin de sabit tutulmasını sağlayabilir.
+- **Tüm blob katmanları için destek**: WORM ilkeleri Azure Blob depolama katmanından bağımsızdır ve sık erişimli, seyrek erişimli katmanlara ve arşiv katmanlarına uygulanır. Kullanıcılar verileri iş yüklerine göre en uygun maliyetli katmanda depolarken verilerin de sabit tutulmasını sağlayabilir.
 
 - **Kapsayıcı düzeyinde yapılandırma**: kullanıcılar, zaman tabanlı bekletme ilkelerini ve geçerli saklama etiketlerini kapsayıcı düzeyinde yapılandırabilir. Kullanıcılar basit kapsayıcı düzeyi ayarlarını kullanarak zamana bağlı saklama ilkelerini oluşturup kilitleme, saklama aralıklarını uzatma ve yasal tutma ayarlayıp silme gibi daha birçok işlem yapabilir. Bu ilkeler kapsayıcıdaki mevcut ve yeni tüm bloblara uygulanır.
 
@@ -53,6 +53,10 @@ Sabit depolama aşağıdaki özellikleri destekler:
 Azure Blob depolama için sabit depolama özelliği, iki WORM veya sabit ilke türünü destekler: zamana bağlı saklama ve yasal tutma. Bir kapsayıcıya zaman tabanlı bir bekletme ilkesi veya yasal saklama alanı uygulandığında, mevcut tüm Bloblar 30 saniyeden az bir şekilde sabit bir solucan durumuna geçer. Bu ilkeyle korunan kapsayıcıya yüklenen tüm yeni Bloblar da sabit bir duruma geçer. Tüm Bloblar sabit bir durumda olduktan sonra, değişmez ilke onaylanır ve sabit kapsayıcıda üzerine yazma veya silme işlemlerine izin verilmez.
 
 Kapsayıcıda, yasal bir saklama veya kilitli zaman tabanlı bir ilke tarafından korunan bir blob varsa kapsayıcı ve depolama hesabı silmeye de izin verilmez. Yasal bir saklama ilkesi blob, kapsayıcı ve depolama hesabı silmeye karşı korunur. Hem kilidi açılmış hem de kilitli zaman tabanlı ilkeler, belirtilen süre boyunca blob silinmeye karşı korunur. Hem kilitlemeli hem de kilitli zaman tabanlı ilkeler, kapsayıcıda yalnızca en az bir blob varsa kapsayıcı silmeye karşı koruma sağlayacaktır. Yalnızca *kilitli* zaman tabanlı ilkeye sahip bir kapsayıcı, depolama hesabı silmelerini karşı korunur; kilidi açılmış zaman tabanlı ilkelerle kapsayıcı, depolama hesabı silme koruması ve uyumluluğu sunmaz.
+
+Aşağıdaki diyagramda, zaman tabanlı bekletme ilkelerinin ve yasal tutma işlemlerinin, etkin durumdayken yazma ve silme işlemlerini nasıl engellediği gösterilmektedir.
+
+:::image type="content" source="media/storage-blob-immutable-storage/worm-diagram.png" alt-text="Bekletme ilkelerinin ve yasal tutma işlemlerinin yazma ve silme işlemlerini nasıl engellediğini gösteren diyagram":::
 
 Zamana dayalı saklama ilkelerini ayarlama ve kilitleme hakkında daha fazla bilgi için bkz. [BLOB depolama için imlebilirlik Ilkelerini ayarlama ve yönetme](storage-blob-immutability-policies-manage.md).
 

@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: reference
 ms.date: 11/17/2020
 ms.author: aahi
-ms.openlocfilehash: 8abe785cac4f46401b3efeb7868b061d13810b29
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: c3023c32f2a31235f5a733639a548c190197b413
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99576236"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99981128"
 ---
 # <a name="azure-cognitive-services-container-image-tags-and-release-notes"></a>Azure bilişsel hizmetler kapsayıcı görüntü etiketleri ve sürüm notları
 
@@ -53,14 +53,14 @@ Bu kapsayıcı görüntüsünde aşağıdaki Etiketler kullanılabilir. Ayrıca 
 # <a name="latest-version"></a>[En son sürüm](#tab/current)
 
 İçin sürüm notları `3.2-preview.2` :
-
-* Yeni v 3.2 kapsayıcısı
+* Daha az yayın
+* JSON yanıtında metin satırı sırası arasında seçim yapmak için ReadingOrder parametresi
+* Gelişmiş günlük kaydı
+* CJK modeline düzeltmeler
 
 | Resim etiketleri                    | Notlar |
 |-------------------------------|:------|
-| `latest`                      |       |
-| `3.2-preview.2` |  |
-| `3.2-preview.1` |  |
+|3.2.2.014850001-49e0eac6-AMD64-Önizleme                     |       |
 
 # <a name="previous-versions"></a>[Önceki sürümler](#tab/previous)
 

@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 09/1/2020
 ms.author: alkemper
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: e894caddd037738645a37ccb43265a24d56e8afe
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 083bd56b2b211d11206a277bf31eea797b37cdb9
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99493812"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99979938"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-an-aspnet-core-app"></a>Öğretici: ASP.NET Core uygulamasında dinamik yapılandırmayı kullanma
 
@@ -191,7 +191,7 @@ Devam etmeden önce, önce [uygulama yapılandırması ile bir ASP.NET Core uygu
     ```
     ---
     > [!Tip]
-    > Yapılandırma değerlerini okurken seçenekler deseni hakkında daha fazla bilgi için, [ASP.NET Core Içindeki seçenekler desenlerine](/aspnet/core/fundamentals/configuration/options?view=aspnetcore-3.1)bakın.
+    > Yapılandırma değerlerini okurken seçenekler deseni hakkında daha fazla bilgi için, [ASP.NET Core Içindeki seçenekler desenlerine](/aspnet/core/fundamentals/configuration/options)bakın.
 
 4. `Configure` `UseAzureAppConfiguration` ASP.NET Core Web uygulaması istekleri almaya devam ederken, yenilemenin güncelleştirilmesi için kaydedilen yapılandırma ayarlarının güncelleştirilmesine izin vermek üzere ara yazılımı ekleyerek yöntemini güncelleştirin.
 

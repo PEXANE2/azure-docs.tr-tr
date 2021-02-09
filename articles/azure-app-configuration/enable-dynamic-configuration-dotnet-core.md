@@ -15,16 +15,16 @@ ms.custom: devx-track-csharp
 ms.topic: tutorial
 ms.date: 07/01/2019
 ms.author: abarora
-ms.openlocfilehash: aebe7772c673162d60f35d6a81725ba1452d16a8
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 95c48bded224a40879328dba5861b3564f0ebcf8
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96012365"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99979870"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-a-net-core-app"></a>Öğretici: .NET Core uygulamasında dinamik yapılandırma kullanma
 
-Uygulama yapılandırması .NET Core istemci kitaplığı, bir uygulamanın yeniden başlatılmasına yol açmadan bir yapılandırma ayarları kümesinin güncelleştirilmesini destekler. Bu, öncelikle yapılandırma sağlayıcısına ait seçeneklerden bir örneği alarak `IConfigurationRefresher` ve sonra `TryRefreshAsync` Bu örneğe kodunuzda herhangi bir yere çağrı yaparak uygulanabilir.
+Uygulama yapılandırması .NET Core istemci kitaplığı, bir uygulamanın yeniden başlatılmasına neden olmadan isteğe bağlı yapılandırmayı güncelleştirmeyi destekler. Bu, öncelikle yapılandırma sağlayıcısına ait seçeneklerden bir örneği alarak `IConfigurationRefresher` ve sonra `TryRefreshAsync` Bu örneğe kodunuzda herhangi bir yere çağrı yaparak uygulanabilir.
 
 Ayarları güncel tutmak ve yapılandırma deposuna çok fazla çağrı önlemek için, her bir ayar için bir önbellek kullanılır. Bir ayarın önbelleğe alınmış değeri sona erene kadar, yenileme işlemi değeri, değer yapılandırma deposunda değiştiği zaman bile güncelleştirmez. Her istek için varsayılan kullanım süresi 30 saniyedir, ancak gerekirse geçersiz kılınabilir.
 
@@ -32,7 +32,7 @@ Bu öğreticide, kodunuzda dinamik yapılandırma güncelleştirmelerini nasıl 
 
 Bu öğreticideki adımları uygulamak için herhangi bir kod düzenleyicisi kullanabilirsiniz. [Visual Studio Code](https://code.visualstudio.com/) , Windows, MacOS ve Linux platformlarında kullanılabilen harika bir seçenektir.
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Bir uygulama yapılandırma deposundaki değişikliklere yanıt olarak yapılandırmasını güncelleştirmek için .NET Core uygulamanızı ayarlayın.

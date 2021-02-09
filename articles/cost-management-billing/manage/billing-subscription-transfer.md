@@ -8,15 +8,15 @@ tags: billing,top-support-issue
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 01/06/2021
+ms.date: 02/05/2021
 ms.author: banders
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: ae588708a41c1259628b726a3a471034dba7d131
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
-ms.translationtype: HT
+ms.openlocfilehash: 87f29395e716ad3f06a99d6243b080acf86e4310
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98601531"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99979442"
 ---
 # <a name="transfer-billing-ownership-of-an-azure-subscription-to-another-account"></a>Azure aboneliğinin faturalama sahipliğini başka bir hesaba aktarma
 
@@ -80,7 +80,7 @@ Bir kerede tek bir aktarım isteği etkin olur. Aktarım isteği 15 gün süreyl
 Aktarım isteğini iptal etmek için:
 
 1. [Azure portalında](https://portal.azure.com) oturum açın.
-1. **Abonelikler** > Aktarım isteğini gönderdiğiniz aboneliği seçin alanına gidin > **Faturalama sahipliğini aktar**'ı seçin.
+1. **Abonelikler** ' e gidin > bir aktarım isteği gönderdiğiniz aboneliği seçin ve ardından **faturalandırma sahipliğini aktar**' ı seçin.
 1. Sayfanın en altında **Transfer isteğini iptal et**'i seçin.
 
 :::image type="content" source="./media/billing-subscription-transfer/transfer-billing-owership-cancel-request.png" alt-text="Aktarım isteğini iptal et seçeneğinin bulunduğu Faturalama sahipliğini aktar penceresini gösteren örnek" lightbox="./media/billing-subscription-transfer/transfer-billing-owership-cancel-request.png" :::
@@ -88,6 +88,20 @@ Aktarım isteğini iptal etmek için:
 ## <a name="troubleshooting"></a>Sorun giderme
 
 Abonelikleri aktarırken sorun yaşıyorsanız aşağıdaki sorun giderme bilgilerini kullanın.
+
+### <a name="original-azure-subscription-billing-owner-leaves-your-organization"></a>Özgün Azure aboneliği faturalama sahibi, kuruluşunuzu bırakır
+
+Bir Azure hesabı ve bir Azure aboneliği oluşturan orijinal faturalandırma sahibi, kuruluşunuzu bırakır. Bu durum oluşursa, Kullanıcı kimlikleri artık kuruluşun Azure Active Directory değildir. Daha sonra Azure aboneliğinin faturalandırma sahibi yoktur. Bu durum, herkesin görüntüleme ve ödeme dahil olmak üzere hesaba faturalandırma işlemleri gerçekleştirmesini engeller. Abonelik, süresi geçmiş bir duruma geçebilir. Sonuç olarak, ödeme yapılmadığı için abonelik devre dışı bırakılabilir. Sonuç olarak, abonelik silinebilir ve abonelik üzerinde çalışan her hizmeti etkileyecektir.
+
+Abonelik artık geçerli bir faturalandırma sahibine sahip değilse, Azure diğer faturalandırma sahiplerine, hizmet yöneticilerine, ortak yöneticilere ve abonelik sahiplerine durum bildiren bir e-posta gönderir ve aboneliğin faturalama sahipliğini kabul etmek için bir bağlantı sağlar. Kullanıcılardan herhangi biri, faturalandırma sahipliğini kabul etmek için bağlantıyı seçebilir. Faturalandırma rolleri hakkında daha fazla bilgi için bkz. [faturalandırma rolleri](understand-mca-roles.md) ve [Klasik roller ve Azure RBAC rolleri](../../role-based-access-control/rbac-and-directory-admin-roles.md).
+
+E-postanın nasıl görüneceğine ilişkin bir örnek aşağıda verilmiştir.
+
+:::image type="content" source="./media/billing-subscription-transfer/orphaned-subscription-email.png" alt-text="Fatura sahipliğini kabul etmek için örnek bir e-posta gösteren ekran görüntüsü." lightbox="./media/billing-subscription-transfer/orphaned-subscription-email.png" :::
+
+Ayrıca, Azure, faturalandırma sahipleri, hizmet yöneticileri, ortak yöneticiler ve abonelik sahipleri Azure portal, aboneliğin Ayrıntılar penceresinde bir başlık gösterir. Fatura sahipliğini kabul etmek için başlıktaki bağlantıyı seçin.
+
+:::image type="content" source="./media/billing-subscription-transfer/orphaned-subscription-example.png" alt-text="Geçerli bir faturalandırma sahibi olmayan bir abonelik örneğini gösteren ekran görüntüsü." lightbox="./media/billing-subscription-transfer/orphaned-subscription-example.png" :::
 
 ### <a name="the-transfer-subscription-option-is-unavailable"></a>"Aboneliği aktar" seçeneği kullanılamıyor
 

@@ -6,16 +6,19 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 10/12/2018
-ms.openlocfilehash: 8047e340f3262ba84484f5a8b57c17bf34a4af73
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 1faeb047783b9db24348425e5a6453754e550d4d
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98625174"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99833023"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Ağ Performansı İzleyicisi çözümü SSS
 
 ![Ağ Performansı İzleyicisi simgesi](media/network-performance-monitor-faq/npm-symbol.png)
+
+> [!IMPORTANT]
+> 1 Temmuz 2021 ' den itibaren, mevcut bir çalışma alanına yeni testler ekleyemez veya Ağ Performansı İzleyicisi yeni bir çalışma alanı etkinleştiremeyeceksiniz. 1 Temmuz 2021 ' den önce oluşturulan testleri kullanmaya devam edebilirsiniz. Geçerli iş yüklerinizde hizmet kesintisini en aza indirmek için, testlerinizi Ağ Performansı İzleyicisi 'den Azure ağ Izleyicisi 'ndeki [Yeni bağlantı izleyicisinden](https://docs.microsoft.com/azure/network-watcher/migrate-to-connection-monitor-from-network-performance-monitor) , 29 Şubat 2024 tarihinden önce geçirin.
 
 Bu makale, Azure 'da Ağ Performansı İzleyicisi (NPM) hakkında sık sorulan soruları (SSS) yakalar
 
@@ -34,7 +37,7 @@ Aşağıda, NPM 'nin çeşitli özellikleri için Platform gereksinimleri verilm
 - NPM 'nin ExpressRoute Izleyici özelliği yalnızca Windows Server (2008 SP1 veya üzeri) işletim sistemini destekler.
 
 ### <a name="can-i-use-linux-machines-as-monitoring-nodes-in-npm"></a>Linux makinelerini NPM 'de izleme düğümleri olarak kullanabilir miyim?
-Linux tabanlı düğümleri kullanarak ağları izleme özelliği artık genel kullanıma sunulmuştur. Aracıyı [buradan](../../virtual-machines/extensions/oms-linux.md)öğrenebilirsiniz. 
+Linux tabanlı düğümleri kullanarak ağları izleme özelliği artık genel kullanıma sunulmuştur. Aracıya [buradan](../../virtual-machines/extensions/oms-linux.md)erişin. 
 
 ### <a name="what-are-the-size-requirements-of-the-nodes-to-be-used-for-monitoring-by-npm"></a>NPM tarafından izleme için kullanılacak düğümlerin boyut gereksinimleri nelerdir?
 Ağları izlemek üzere düğüm VM 'lerinde NPM çözümünü çalıştırmak için düğümlerin en az 500 MB ve bir çekirdeğe sahip olması gerekir. NPM 'yi çalıştırmak için ayrı düğümler kullanmanız gerekmez. Çözüm, üzerinde çalışan diğer iş yükleri olan düğümlerde çalıştırılabilir. Çözüm, %5 ' ten fazla CPU kullanıyorsa izleme işlemini durdurma özelliğine sahiptir.
@@ -255,10 +258,10 @@ Bu hata şu durumlarda oluşabilir:
 * İzleme yapılandırmasında ExpressRoute devresini izlemek için seçilen Şirket içi ve Azure düğümleri, hedeflenen ExpressRoute bağlantı hattı üzerinden birbirleriyle bağlantıya sahip değildir. İzlemek istediğiniz ExpressRoute bağlantı hattı üzerinden birbirlerine bağlantısı olan doğru düğümleri seçtiğinizden emin olun.
 
 ### <a name="why-does-expressroute-monitor-report-my-circuitpeering-as-unhealthy-when-it-is-available-and-passing-data"></a>ExpressRoute Izleyicisi, kullanılabilir olduğunda ve veri geçirirken devre dışı/eşlenmesinin neden sağlıksız olduğunu bildirir.
-ExpressRoute Izleyicisi, aracılar/hizmet tarafından, yapılandırma sırasında ayarlanan eşiklerle bildirilen ağ performansı değerlerini (kayıp, gecikme süresi ve bant genişliği kullanımı) karşılaştırır. Bir devre için, bildirilen bant genişliği kullanımı, yapılandırmadaki eşik kümesinden büyükse, devre dışı olarak işaretlenir. Eşleme için, kayıp, gecikme veya bant genişliği kullanımı, yapılandırmadaki eşik kümesinden büyükse, eşleme sağlıksız olarak işaretlenir. NPM, sistem durumu için ölçüm veya başka bir veri biçimi sunmaz.
+ExpressRoute Izleyicisi, aracılar/hizmet tarafından, yapılandırma sırasında ayarlanan eşiklerle bildirilen ağ performansı değerlerini (kayıp, gecikme süresi ve bant genişliği kullanımı) karşılaştırır. Devre için, bildirilen bant genişliği kullanımı yapılandırmadaki eşik kümesinden büyükse, devre dışı olarak işaretlenir. Eşlemeler için, kayıp, gecikme süresi veya raporlanan bant genişliği kullanımı, yapılandırmadaki eşikten büyükse, eşleme sağlıksız olarak işaretlenir. NPM, sistem durumu kararı vermek için ölçümleri veya diğer veri türlerini kullanmaz.
 
-### <a name="why-does-expressroute-monitorbandwidth-utilisation-report-a-value-differrent-from-metrics-bits-inout"></a>ExpressRoute 'ın Izleyiciye neden olan bant genişliği kullanımı raporu, ölçüm bitlerinin içindeki/giden bir değerin farklılaşmasını
-ExpressRoute Izleyicisi için bant genişliği kullanımı, son 20 dakikalık bir bit/sn cinsinden ifade edilen gelen ve giden bant genişliğinin ortalaması olarak belirlenir. Express Route ölçümleri için bit/çıkış, dakika başına veri noktası başına yapılır. Her ikisi için kullanılan veri kümesi de aynıdır, ancak NPM ve ER ölçümleri arasında toplama yapılır. Dakika izleme ve hızlı uyarılara göre ayrıntılı, dakikada bir uyarı için uyarıları doğrudan ER üzerinde ayarlamayı öneririz
+### <a name="why-does-expressroute-monitorbandwidth-utilization-report-a-value-different-from-metrics-bits-inout"></a>ExpressRoute 'ın Izleyiciye neden olan bant genişliği kullanımı, ölçüm bitlerinin içindeki/giden bir değerin farklı olduğunu bildirir
+ExpressRoute Izleyicisi için bant genişliği kullanımı, son 20 dakika içindeki gelen ve giden bant genişliğinin bit/sn cinsinden ifade edildiği ortalama. Express Route ölçümleri için bit/çıkış, dakika başına veri noktası başına yapılır. Her ikisi için kullanılan veri kümesi de aynıdır, ancak toplama NPM ve ER ölçümleri arasında farklılık gösterir. Dakika izleme ve hızlı uyarılara göre ayrıntılı, dakikada bir uyarı için uyarıları doğrudan ER üzerinde ayarlamayı öneririz
 
 ### <a name="while-configuring-monitoring-of-my-expressroute-circuit-the-azure-nodes-are-not-being-detected"></a>ExpressRoute bağlantı hattını izleme yapılandırılırken Azure düğümleri algılanmaz.
 Azure düğümleri Operations Manager aracılığıyla bağlandığında bu durum oluşabilir. ExpressRoute Izleyici özelliği, yalnızca doğrudan aracılar olarak bağlı olan Azure düğümlerini destekler.
@@ -300,4 +303,3 @@ NPM, Kullanıcı arabirimindeki ve milisaniye cinsinden gecikme sayılarını yu
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure 'daki ağ performansı İzleyicisi çözümüne](./network-performance-monitor.md)başvurarak ağ performansı İzleyicisi hakkında daha fazla bilgi edinin.
-

@@ -11,12 +11,12 @@ author: peterclu
 ms.date: 10/06/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, references_regions, contperf-fy21q1
-ms.openlocfilehash: 664264f2cd810f232b967f5af78ba3d522f0a41f
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: 857fba6dfa6191163c06c423cefb42d57f25dc1d
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98060019"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99980584"
 ---
 # <a name="virtual-network-isolation-and-privacy-overview"></a>Sanal ağ yalıtımı ve gizliliği genel bakış
 
@@ -34,7 +34,7 @@ Bu makalede, aşağıdaki konularda bilginiz olduğunu varsaymaktadır:
 + [Azure sanal ağları](../virtual-network/virtual-networks-overview.md)
 + [IP ağı](../virtual-network/public-ip-addresses.md)
 + [Azure Özel Bağlantı](how-to-configure-private-link.md)
-+ [Ağ Güvenlik Grupları (NSG)](../virtual-network/network-security-groups-overview.md)
++ [Ağ güvenlik grupları (NSG)](../virtual-network/network-security-groups-overview.md)
 + [Ağ güvenlik duvarları](../firewall/overview.md)
 
 ## <a name="example-scenario"></a>Örnek senaryo
@@ -137,6 +137,15 @@ Aşağıdaki ağ diyagramı, sanal ağa bağlı bir özel AKS kümesi ile güven
 ### <a name="limitations"></a>Sınırlamalar
 - AKS kümeleri çalışma alanıyla aynı VNet 'e ve ilişkili kaynaklarına ait olmalıdır. 
 
+## <a name="optional-enable-public-access"></a>İsteğe bağlı: genel erişimi etkinleştir
+
+Özel bir uç nokta kullanarak bir sanal ağın arkasındaki çalışma alanını güvenli hale getirebilirsiniz ve yine de genel İnternet üzerinden erişime izin verebilirsiniz. İlk yapılandırma [, çalışma alanının ve ilişkili kaynakların güvenliğini sağlamaya](#secure-the-workspace-and-associated-resources)benzer. 
+
+Çalışma alanının bir özel bağlantıyla güvenliğini doğruladıktan sonra, [genel erişimi etkinleştirin](how-to-configure-private-link.md#enable-public-access). Bundan sonra, çalışma alanına hem genel İnternet 'ten hem de VNet 'ten erişebilirsiniz.
+
+### <a name="limitations"></a>Sınırlamalar
+
+- Azure Machine Learning Studio 'yu genel İnternet üzerinden kullanıyorsanız, tasarımcı gibi bazı özellikler verilerinize erişemez. Bu sorun, veriler VNet 'in arkasında güvenliği sağlanmış bir hizmette depolandığında oluşur. Örneğin, bir Azure depolama hesabı.
 ## <a name="optional-enable-studio-functionality"></a>İsteğe bağlı: Studio işlevselliğini etkinleştir
 
 [Çalışma alanının](#secure-the-workspace-and-associated-resources)  >  güvenliğini sağlama [Eğitim ortamının](#secure-the-training-environment)  >  güvenliğini sağlama [İkinci dereceden sınırlama ortamının](#secure-the-inferencing-environment)  >  güvenliğini sağlama **Studio Işlevselliğini etkinleştir**  >  [Güvenlik Duvarı ayarlarını yapılandırma](#configure-firewall-settings)

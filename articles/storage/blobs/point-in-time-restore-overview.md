@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/28/2020
+ms.date: 02/01/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 518df665db0ba3770bee757f45d02b6ccd303a00
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: 1df2f12d6947734314609dc50787a59a2fa88731
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97803876"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99980527"
 ---
 # <a name="point-in-time-restore-for-block-blobs"></a>Blok Blobları için noktadan noktaya geri yükleme
 
@@ -32,6 +32,10 @@ Noktadan noktaya geri yüklemeyi etkinleştirmek için, depolama hesabı için b
 Bir zaman noktası geri yüklemesi başlatmak için [BLOB aralıklarını geri yükleme](/rest/api/storagerp/storageaccounts/restoreblobranges) işlemini ÇAĞıRıN ve UTC zamanında bir geri yükleme noktası belirtin. Geri yüklemek için, kapsayıcı ve BLOB adlarının lexıgraf aralıklarını belirtebilir veya depolama hesabındaki tüm kapsayıcıları geri yüklemek için aralığı atlayabilirsiniz. Geri yükleme işlemi başına en fazla 10 lexıgraf aralığı desteklenir.
 
 Azure depolama, istenen geri yükleme noktası arasındaki belirtilen bloblarda UTC saatine ve mevcut anda belirtilen tüm değişiklikleri analiz eder. Geri yükleme işlemi atomik olduğundan tüm değişiklikleri geri yükleme işleminde tamamen başarılı olur ya da başarısız olur. Geri yüklenemeyecek blob varsa, işlem başarısız olur ve etkilenen kapsayıcılar sürdürülmesine okuma ve yazma işlemleri devam ettirir.
+
+Aşağıdaki diyagramda, noktadan noktaya geri yüklemenin nasıl çalıştığı gösterilmektedir. Bir veya daha fazla kapsayıcı veya blob aralığı *n* gün öncesine geri yüklendi; burada *n* , zaman içinde nokta geri yükleme için tanımlanan saklama süresinden küçüktür veya eşittir. Bu efekt, bekletme döneminde oluşan yazma ve silme işlemlerini döndürmektir.
+
+:::image type="content" source="media/point-in-time-restore-overview/point-in-time-restore-diagram.png" alt-text="Son nokta, kapsayıcının önceki bir duruma nasıl geri yükleneceğini gösteren diyagram":::
 
 Tek seferde bir depolama hesabında yalnızca bir geri yükleme işlemi çalıştırılabilir. Devam eden bir geri yükleme işlemi iptal edilemez, ancak ilk işlemi geri almak için ikinci bir geri yükleme işlemi gerçekleştirilebilir.
 
@@ -50,7 +54,7 @@ Tek seferde bir depolama hesabında yalnızca bir geri yükleme işlemi çalış
 Zaman içinde geri yükleme, zaman içinde nokta geri yüklemeyi etkinleştirebilmeniz için aşağıdaki Azure depolama özelliklerinin etkinleştirilmesini gerektirir:
 
 - [Geçici silme](./soft-delete-blob-overview.md)
-- [Akışı değiştirme](storage-blob-change-feed.md)
+- [Akışı Değiştir](storage-blob-change-feed.md)
 - [Blob sürümü oluşturma](versioning-overview.md)
 
 ### <a name="retention-period-for-point-in-time-restore"></a>Zaman içinde bir noktaya geri yükleme için bekletme süresi

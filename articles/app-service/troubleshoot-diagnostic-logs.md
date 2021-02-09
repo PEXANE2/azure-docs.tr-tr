@@ -5,12 +5,12 @@ ms.assetid: c9da27b2-47d4-4c33-a3cb-1819955ee43b
 ms.topic: article
 ms.date: 09/17/2019
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: 3b7f8f5a0f48bf0cdca7f72e5fb364ea0a5d1315
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 8f3fb0be08bb806d74c689a7656c1c55019eb105
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99576608"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99980618"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Azure App Service uygulamalar için tanılama günlüğünü etkinleştirme
 ## <a name="overview"></a>Genel Bakış
@@ -191,10 +191,11 @@ Aşağıdaki tabloda desteklenen günlük türleri ve açıklamaları gösterilm
 | AppServiceHTTPLogs | Yes | Yes | Yes | Yes | Web sunucusu günlükleri |
 | AppServiceEnvironmentPlatformLogs | Yes | YOK | Evet | Yes | App Service Ortamı: ölçekleme, yapılandırma değişiklikleri ve durum günlükleri|
 | AppServiceAuditLogs | Yes | Yes | Yes | Yes | FTP ve kudu aracılığıyla oturum açma etkinliği |
-| AppServiceFileAuditLogs | Yes | Yes | TBA dili | TBA dili | Site içeriğinde yapılan dosya değişiklikleri; yalnızca Premium katmanı ve üzeri için kullanılabilir |
+| AppServiceFileAuditLogs | Yes | Yes | TBA dili | TBA dili | Site içeriğinde yapılan dosya değişiklikleri; **yalnızca Premium katmanı ve üzeri için kullanılabilir** |
 | AppServiceAppLogs | ASP .NET | ASP .NET | Java s & Tomcat resimleri <sup>1</sup> | Java s & Tomcat resimleri <sup>1</sup> | Uygulama günlükleri |
 | AppServiceIPSecAuditLogs  | Yes | Yes | Yes | Yes | IP kurallarından gelen istekler |
 | AppServicePlatformLogs  | TBA dili | Yes | Yes | Yes | Kapsayıcı işlem günlükleri |
+| AppServiceAntivirusScanAuditLogs | Yes | Yes | Yes | Yes | Microsoft Defender kullanarak virüsten [koruma taraması günlükleri](https://azure.github.io/AppService/2020/12/09/AzMon-AppServiceAntivirusScanAuditLogs.html) ; **yalnızca Premium katman için kullanılabilir** | 
 
 <sup>1</sup> Java SE uygulamaları için uygulama ayarlarına "$WEBSITE _AZMON_PREVIEW_ENABLED" ekleyin ve bunu 1 veya doğru olarak ayarlayın.
 

@@ -5,14 +5,14 @@ manager: evansma
 author: rayne-wiselman
 ms.service: resource-move
 ms.topic: how-to
-ms.date: 09/10/2020
+ms.date: 02/08/2021
 ms.author: raynew
-ms.openlocfilehash: 27e7c899f0d22789c10541fc98a0d2c63a7843ec
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: eb28e4c8f6b465e2a9b38cc4571bc4a00baf4ef7
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95533064"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99979632"
 ---
 # <a name="modify-target-settings"></a>Hedef ayarlarını değiştirme
 
@@ -37,15 +37,15 @@ Değiştirebileceğiniz yapılandırma ayarları tabloda özetlenmiştir.
 **Kaynak** | **Seçenekler** 
 --- | --- | --- 
 **VM adı** | Seçenekler:<br/><br/> -Hedef bölgede aynı ada sahip yeni bir VM oluşturun.<br/><br/> -Hedef bölgede farklı bir ada sahip yeni bir VM oluşturun.<br/><br/> -Hedef bölgede var olan bir VM 'yi kullanın.<br/><br/> Değişiklik yaptığınız ayarların özel durumu ile yeni bir sanal makine oluşturursanız, yeni hedef VM kaynakla aynı ayarlara atanır.
-**VM kullanılabilirlik bölgesi** | Hedef VM 'nin yerleştirileceği kullanılabilirlik bölgesi. Bu, kaynak ayarlarını değiştirmek istemiyorsanız veya VM 'yi bir kullanılabilirlik alanına yerleştirmek istemiyorsanız, **yok** olarak işaretlenebilir.
+**VM kullanılabilirlik bölgesi** | Hedef VM 'nin yerleştirileceği kullanılabilirlik bölgesi. Kaynak ayarlarını değiştirmek istemiyorsanız veya VM 'yi bir kullanılabilirlik alanına yerleştirmek istemiyorsanız **geçerli değil** ' i seçin.
 **VM SKU** | Hedef VM için kullanılacak [VM türü](https://azure.microsoft.com/pricing/details/virtual-machines/series/) (hedef bölgede kullanılabilir).<br/><br/> Seçilen hedef VM, kaynak VM 'den küçük olmamalıdır.
-**Ağ kaynakları** | Sanal ağlar (VNet) için seçenekler/ağ güvenlik grupları/ağ arabirimleri:<br/><br/> -Hedef bölgede aynı ada sahip yeni bir kaynak oluşturun.<br/><br/> -Hedef bölgede farklı bir ada sahip yeni bir kaynak oluşturun.<br/><br/> -Hedef bölgede var olan bir ağ kaynağını kullanın.<br/><br/> Yeni bir hedef kaynak oluşturursanız, değiştirdiğiniz ayarların dışında, kaynak kaynakla aynı ayarları atanır.
-**Genel IP adresi adı** | Adı belirtin.
-**Genel IP adresi SKU 'SU** | [SKU 'yu](../virtual-network/public-ip-addresses.md#sku)belirtin.
-**Genel IP adresi bölgesi** | Standart genel IP adresleri için [bölgeyi](../virtual-network/public-ip-addresses.md#standard) belirtin.<br/><br/> Bölgenin yedekli olmasını istiyorsanız **bölge yedekli** olarak girin.
-**Yük dengeleyici adı** | Adı belirtin.
-**Yük dengeleyici SKU 'SU** | Temel veya standart. Standart kullanmanızı öneririz.
-**Yük dengeleyici bölgesi** | Yük Dengeleyici için bir bölge belirtin. <br/><br/> Bölgenin yedekli olmasını istiyorsanız **bölge yedekli** olarak girin.
+* * VM kullanılabilirlik kümesi | Hedef VM 'nin yerleştirileceği kullanılabilirlik kümesi. **Geçerli değil** ' i seçerek kaynak ayarlarını değiştirmek istemezsiniz veya VM 'yi bir kullanılabilirlik kümesine yerleştirmek istemezsiniz.
+**VM Anahtar Kasası** | Azure disk şifrelemesini bir VM 'de etkinleştirdiğinizde ilişkili anahtar Kasası.
+**Disk şifreleme kümesi** | VM, sunucu tarafı şifreleme için müşteri tarafından yönetilen bir anahtar kullanıyorsa, ilişkili disk şifrelemesi ayarlanır.
+**Kaynak grubu** | Hedef VM 'nin yerleştirileceği kaynak grubu.
+**Ağ kaynakları** | Ağ arabirimleri, sanal ağlar (VNet/) ve ağ güvenlik grupları/ağ arabirimleri için seçenekler:<br/><br/> -Hedef bölgede aynı ada sahip yeni bir kaynak oluşturun.<br/><br/> -Hedef bölgede farklı bir ada sahip yeni bir kaynak oluşturun.<br/><br/> -Hedef bölgede var olan bir ağ kaynağını kullanın.<br/><br/> Yeni bir hedef kaynak oluşturursanız, değiştirdiğiniz ayarların dışında, kaynak kaynakla aynı ayarları atanır.
+**Genel IP adresi adı, SKU ve bölge** | Standart genel IP adresleri için ad, [SKU](../virtual-network/public-ip-addresses.md#sku)ve [bölgeyi](../virtual-network/public-ip-addresses.md#standard) belirtir.<br/><br/> Bölgenin yedekli olmasını istiyorsanız **bölge yedekli** olarak girin.
+* * Yük dengeleyici adı, SKU 'SU ve bölge * * | Yük Dengeleyici için ad, SKU (temel veya standart) ve bölgeyi belirtir.<br/><br/> Standart sKU kullanmanızı öneririz.<br/><br/> Bölgenin yedekli olmasını istiyorsanız **bölge yedekli** olarak belirtin.
 **Kaynak bağımlılıkları** | Her bağımlılık için seçenekler:<br/><br/>-Kaynak, hedef bölgeye taşınacak kaynak bağımlı kaynakları kullanır.<br/><br/> -Kaynak, hedef bölgede bulunan farklı bağımlı kaynakları kullanır. Bu durumda, hedef bölgedeki herhangi bir benzer kaynak arasından seçim yapabilirsiniz.
 
 ### <a name="edit-vm-target-settings"></a>VM hedef ayarlarını Düzenle

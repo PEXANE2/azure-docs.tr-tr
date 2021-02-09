@@ -11,12 +11,12 @@ ms.reviewer: larryfr, vaidyas, laobri, tracych
 ms.author: trmccorm
 author: tmccrmck
 ms.date: 09/23/2020
-ms.openlocfilehash: 6ea796fb2ec038a03595d37d903fe8ee3ce904db
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: a0f813253520d76731a9b49a89b0bcace7c2ef34
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98070278"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99979173"
 ---
 # <a name="troubleshooting-the-parallelrunstep"></a>ParallelRunStep sorunlarını giderme
 
@@ -171,7 +171,16 @@ Her bir düğümün puan betiğini nasıl yürütülebileceğini tam olarak anla
     - Toplam öğe sayısı, öğe sayısı başarıyla işlendi ve başarısız öğe sayısı.
     - Başlangıç zamanı, süre, işlem süresi ve çalıştırma yöntemi zamanı.
 
-Her çalışan için işlemlerin kaynak kullanımı hakkındaki bilgileri de bulabilirsiniz. Bu bilgiler CSV biçimindedir ve konumunda bulunur `~/logs/sys/perf/<ip_address>/node_resource_usage.csv` . Her işlemle ilgili bilgiler altında bulunabilir `~logs/sys/perf/<ip_address>/processes_resource_usage.csv` .
+Her düğüm için kaynak kullanımının süreli denetim sonuçlarını da görüntüleyebilirsiniz. Günlük dosyaları ve kurulum dosyaları şu klasörslardır:
+
+- `~/logs/perf`: `--resource_monitor_interval` Denetim aralığını saniye cinsinden değiştirmek için ayarlayın. Varsayılan Aralık, `600` yaklaşık 10 dakikadır. İzlemeyi durdurmak için değerini olarak ayarlayın `0` . Her `<ip_address>` klasör şunları içerir:
+
+    - `os/`: Düğümdeki tüm çalışan işlemlerle ilgili bilgiler. Bir denetim bir işletim sistemi komutunu çalıştırır ve sonucu bir dosyaya kaydeder. Linux 'ta, komutu `ps` . Windows üzerinde kullanın `tasklist` .
+        - `%Y%m%d%H`: Alt klasör adı saat ' tir.
+            - `processes_%M`: Dosya, denetim zamanının dakikasına göre sona eriyor.
+    - `node_disk_usage.csv`: Düğümün ayrıntılı disk kullanımı.
+    - `node_resource_usage.csv`: Düğüme kaynak kullanımına genel bakış.
+    - `processes_resource_usage.csv`: Her bir işleme yönelik kaynak kullanımına genel bakış.
 
 ### <a name="how-do-i-log-from-my-user-script-from-a-remote-context"></a>Kullanıcı betiğimin uzak bağlamdan Nasıl yaparım? mi?
 
@@ -233,25 +242,25 @@ Kullanıcı, çalışma alanında kullanılan hizmet sorumlusu kimlik doğrulama
 
 ```python
 service_principal = ServicePrincipalAuthentication(
-    tenant_id="**_",
-    service_principal_id="_*_",
-    service_principal_password="_*_")
+    tenant_id="***",
+    service_principal_id="***",
+    service_principal_password="***")
  
 ws = Workspace(
-    subscription_id="_*_",
-    resource_group="_*_",
-    workspace_name="_*_",
+    subscription_id="***",
+    resource_group="***",
+    workspace_name="***",
     auth=service_principal
     )
  
-default_blob_store = ws.get_default_datastore() # or Datastore(ws, '_*_datastore-name_*_') 
-ds = Dataset.File.from_files(default_blob_store, '_*path**_')
-registered_ds = ds.register(ws, '_*_dataset-name_*_', create_new_version=True)
+default_blob_store = ws.get_default_datastore() # or Datastore(ws, '***datastore-name***') 
+ds = Dataset.File.from_files(default_blob_store, '**path***')
+registered_ds = ds.register(ws, '***dataset-name***', create_new_version=True)
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-_ Azure Machine Learning işlem [hatlarını gösteren bu Jupyıter not defterlerine](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/machine-learning-pipelines) bakın
+* Azure Machine Learning işlem [hatlarını gösteren bu Jupyıter not defterlerine](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/machine-learning-pipelines) bakın
 
 * [Azureml-işlem hattı-adımlar](/python/api/azureml-pipeline-steps/azureml.pipeline.steps?preserve-view=true&view=azure-ml-py) paketiyle ilgili yardım için SDK başvurusuna bakın. ParallelRunStep sınıfı için başvuru [belgelerini](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.parallelrunstep?preserve-view=true&view=azure-ml-py) görüntüleyin.
 

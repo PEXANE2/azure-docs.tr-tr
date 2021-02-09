@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 09/30/2020
-ms.openlocfilehash: 2953f85a5c21cdd670d6e133d09ffacf06f178ef
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 5ba1b9d53255406a73b1b74dbc59fe39e3f9a0d7
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842711"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99979190"
 ---
 # <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace"></a>Azure Machine Learning çalışma alanı için Azure özel bağlantısını yapılandırma
 
@@ -29,13 +29,14 @@ Azure özel bağlantısı, özel bir uç nokta kullanarak çalışma alanınıza
 >
 > Mozilla Firefox kullanıyorsanız, çalışma alanınızın özel uç noktasına erişmeye çalışırken sorunlarla karşılaşabilirsiniz. Bu sorun, Mozilla 'de HTTPS üzerinden DNS ile ilişkili olabilir. Google Chrome 'un Microsoft Edge 'i geçici çözüm olarak kullanmanızı öneririz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Müşteri tarafından yönetilen bir anahtarla özel bağlantı etkin bir çalışma alanı kullanmayı planlıyorsanız, bu özelliği bir destek bileti kullanarak istemeniz gerekir. Daha fazla bilgi için bkz. [kotaları yönetme ve artırma](how-to-manage-quotas.md#private-endpoint-and-private-dns-quota-increases).
 
 ## <a name="limitations"></a>Sınırlamalar
 
-Azure Kamu bölgelerinde veya Azure Çin 21Vianet bölgelerinde özel bağlantıyla birlikte bir Azure Machine Learning çalışma alanı kullanılması kullanılamaz.
+* Azure Kamu bölgelerinde veya Azure Çin 21Vianet bölgelerinde özel bağlantıyla birlikte bir Azure Machine Learning çalışma alanı kullanılması kullanılamaz.
+* Özel bağlantıyla güvenli hale getirilmiş bir çalışma alanı için genel erişimi etkinleştirir ve ortak internet üzerinden Azure Machine Learning Studio 'yu kullanıyorsanız, tasarımcı gibi bazı özellikler verilerinize erişemez. Bu sorun, veriler VNet 'in arkasında güvenliği sağlanmış bir hizmette depolandığında oluşur. Örneğin, bir Azure depolama hesabı.
 
 ## <a name="create-a-workspace-that-uses-a-private-endpoint"></a>Özel uç nokta kullanan bir çalışma alanı oluşturma
 
@@ -158,6 +159,31 @@ Portaldaki Azure Machine Learning çalışma alanından __Özel uç nokta bağla
 > Microsoft, bağlantının geçici kesintisini önlemek için özel bağlantı etkinleştirildikten sonra çalışma alanına bağlanan makinelerde DNS önbelleğini temizlemeye öneriyor. 
 
 Azure sanal makineleri hakkında daha fazla bilgi için bkz. [sanal makineler belgeleri](../virtual-machines/index.yml).
+
+## <a name="enable-public-access"></a>Genel erişimi etkinleştir
+
+Çalışma alanını özel bir uç noktayla yapılandırdıktan sonra, isteğe bağlı olarak çalışma alanına genel erişimi etkinleştirebilirsiniz. Bunu yaptığınızda özel uç nokta kaldırılmaz. Özel erişime ek olarak genel erişim sağlar. Özel bir bağlantı etkin çalışma alanına genel erişimi etkinleştirmek için aşağıdaki adımları kullanın:
+
+# <a name="python"></a>[Python](#tab/python)
+
+Özel bir uç noktayı kaldırmak için [Workspace.delete_private_endpoint_connection](/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#delete-private-endpoint-connection-private-endpoint-connection-name-) kullanın.
+
+```python
+from azureml.core import Workspace
+
+ws = Workspace.from_config()
+ws.update(allow_public_access_when_behind_vnet=True)
+```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+[Machine Learning Için Azure CLI uzantısı](reference-azure-machine-learning-cli.md) [az ml Workspace Update](/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest#ext_azure_cli_ml_az_ml_workspace_update) komutunu sağlar. Çalışma alanına genel erişimi etkinleştirmek için parametresini ekleyin `--allow-public-access true` .
+
+# <a name="portal"></a>[Portal](#tab/azure-portal)
+
+Şu anda portal kullanılarak bu işlevselliği etkinleştirmenin bir yolu yoktur.
+
+---
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

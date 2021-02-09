@@ -6,33 +6,39 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 01/06/2021
+ms.date: 02/08/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: references_regions
-ms.openlocfilehash: 85d880966c4c3864206c7e92256eb8e705812f20
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: 0c15be86c282451440f9b81d57f17e835559b5ae
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97962185"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99979116"
 ---
 # <a name="soft-delete-for-containers-preview"></a>Kapsayıcılar için geçici silme (Önizleme)
 
-Kapsayıcılar için geçici silme (Önizleme), verilerinizin yanlışlıkla veya yanlışlıkla değiştirilmesini veya silinmesini önler. Bir depolama hesabı için kapsayıcı geçici silme etkinleştirildiğinde, silinen tüm kapsayıcı ve içerikleri, belirttiğiniz süre boyunca Azure Storage 'da tutulur. Saklama süresi boyunca, daha önce silinen kapsayıcıları ve bunların içindeki blob 'ları geri yükleyebilirsiniz.
+Kapsayıcılar için geçici silme (Önizleme), verilerinizin yanlışlıkla veya kötü amaçlı olarak silinmesini önler. Bir depolama hesabı için kapsayıcı geçici silme etkinleştirildiğinde, silinen tüm kapsayıcı ve içerikleri, belirttiğiniz süre boyunca Azure Storage 'da tutulur. Saklama süresi boyunca, daha önce silinen kapsayıcıları geri yükleyebilirsiniz. Kapsayıcının geri yüklenmesi, bu kapsayıcıdaki tüm Blobları silindiği zaman geri yükler.
 
 Blob verilerinize yönelik uçtan uca koruma için, Microsoft aşağıdaki veri koruma özelliklerini etkinleştirmeyi önerir:
 
-- Kapsayıcı geçici silme, bir kapsayıcının yanlışlıkla silinmesine veya üzerine yazılmasına karşı koruma için. Kapsayıcı geçici silmeyi etkinleştirme hakkında bilgi edinmek için bkz. [kapsayıcılar için geçici silmeyi etkinleştirme ve yönetme](soft-delete-container-enable.md).
-- Blob geçici silme, tek bir Blobun yanlışlıkla silinmeye veya üzerine yazılmasına karşı koruma sağlamak için. Blob geçici silme özelliğini etkinleştirmeyi öğrenmek için bkz. [Bloblar Için geçici silme](soft-delete-blob-overview.md).
+- Silinen bir kapsayıcıyı geri yüklemek için kapsayıcı geçici silme. Kapsayıcı geçici silmeyi etkinleştirme hakkında bilgi edinmek için bkz. [kapsayıcılar için geçici silmeyi etkinleştirme ve yönetme](soft-delete-container-enable.md).
 - Blob 'un önceki sürümlerini otomatik olarak sürdürmek için blob sürümü oluşturma. Blob sürümü oluşturma etkinleştirildiğinde, yanlışlıkla değiştirildiyse veya silinirse verilerinizi kurtarmak için bir Blobun önceki bir sürümünü geri yükleyebilirsiniz. Blob sürümü oluşturmayı nasıl etkinleştireceğinizi öğrenmek için bkz. [BLOB sürüm oluşturmayı etkinleştirme ve yönetme](versioning-enable.md).
+- Silinen bir Blobu veya sürümü geri yüklemek için blob geçici silme. Blob geçici silme özelliğini etkinleştirmeyi öğrenmek için bkz. [Bloblar için geçici silmeyi etkinleştirme ve yönetme](soft-delete-blob-enable.md).
 
 > [!WARNING]
-> Depolama hesabını silme işlemi geri alınamaz. Geçici silme, bir depolama hesabının silinmesine karşı koruma sağlamaz. Bir depolama hesabının yanlışlıkla silinmesini engellemek için, depolama hesabı kaynağında bir **Cannotdelete** kilidi yapılandırın. Azure kaynaklarını kilitleme hakkında daha fazla bilgi için, bkz. [beklenmeyen değişiklikleri engellemek için kaynakları kilitleme](../../azure-resource-manager/management/lock-resources.md).
+> Depolama hesabını silme işlemi geri alınamaz. Geçici silme, bir depolama hesabının silinmesine karşı koruma sağlamaz, ancak yalnızca söz konusu hesaptaki veri nesnelerinin silinmesine karşı değildir. Bir depolama hesabını silinmeye karşı korumak için, depolama hesabı kaynağında bir **Cannotdelete** kilidi yapılandırın. Azure Resource Manager kaynaklarını kilitleme hakkında daha fazla bilgi için bkz. [kaynakları kilitleme, beklenmeyen değişiklikleri önleme](../../azure-resource-manager/management/lock-resources.md).
 
 ## <a name="how-container-soft-delete-works"></a>Kapsayıcı geçici silme nasıl kullanılır?
 
 Kapsayıcı geçici silmeyi etkinleştirdiğinizde, 1 ila 365 gün arasında silinen kapsayıcılar için bir saklama süresi belirtebilirsiniz. Varsayılan saklama süresi 7 gündür. Saklama süresi boyunca, silme **kapsayıcısını geri** alma işlemini çağırarak silinen kapsayıcıyı kurtarabilirsiniz.
+
+Bir kapsayıcıyı geri yüklediğinizde, kapsayıcının blob 'ları ve BLOB sürümleri de geri yüklenir. Ancak, kapsayıcının kendisi silinmişse Blobları geri yüklemek için yalnızca kapsayıcı geçici silme özelliğini kullanabilirsiniz. Silinen bir blobu, üst kapsayıcısı silinmediği zaman geri yüklemek için blob geçici silme veya blob sürümü oluşturma kullanmanız gerekir.
+
+Aşağıdaki diyagramda, kapsayıcı geçici silme etkinken silinen kapsayıcının nasıl geri yüklenebildiğinden gösterilmektedir:
+
+:::image type="content" source="media/soft-delete-container-overview/container-soft-delete-diagram.png" alt-text="Geçici olarak silinen kapsayıcının nasıl geri yükleneolabileceğini gösteren diyagram":::
 
 Bir kapsayıcıyı geri yüklediğinizde, bu ad yeniden kullanılmazsa özgün adına geri yükleyebilirsiniz. Özgün kapsayıcı adı kullanılmışsa, kapsayıcıyı yeni bir adla geri yükleyebilirsiniz.
 
@@ -42,7 +48,7 @@ Geçici silme kapsayıcısını devre dışı bırakmak, daha önce geçici olar
 
 ## <a name="about-the-preview"></a>Önizleme hakkında
 
-Kapsayıcı geçici silme, tüm genel Azure bölgelerinde önizleme olarak kullanılabilir.
+Kapsayıcı geçici silme, tüm Azure bölgelerinde önizleme olarak kullanılabilir.
 
 > [!IMPORTANT]
 > Kapsayıcı geçici silme önizlemesi yalnızca üretim dışı kullanım için tasarlanmıştır. Üretim hizmet düzeyi sözleşmeleri (SLA 'Lar) Şu anda kullanılamıyor.

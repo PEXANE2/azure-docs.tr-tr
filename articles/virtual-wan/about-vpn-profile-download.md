@@ -5,18 +5,22 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 09/22/2020
+ms.date: 02/08/2021
 ms.author: cherylmc
-ms.openlocfilehash: 116ec518f7788e620fc6bd177e535c8f6af99d10
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d83b6ed2ae83db569d3c61e3cf4cd887f875eb25
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91267780"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99980924"
 ---
-# <a name="working-with-user-vpn-client-profiles"></a>Kullanıcı VPN istemci profilleriyle çalışma
+# <a name="working-with-user-vpn-client-profile-files"></a>Kullanıcı VPN istemci profili dosyalarıyla çalışma
 
-İndirilen profil dosyası, bir VPN bağlantısını yapılandırmak için gereken bilgileri içerir. Bu makale, bir kullanıcı VPN istemci profili için gereken bilgileri elde etmenize ve anlamanıza yardımcı olur.
+Profil dosyaları, bir VPN bağlantısını yapılandırmak için gereken bilgileri içerir. Bu makale, bir kullanıcı VPN istemci profili için gereken bilgileri elde etmenize ve anlamanıza yardımcı olur.
+
+## <a name="download-the-profile"></a>Profili İndir
+
+İstemci profili ZIP dosyasını indirmek için [yükleme profilleri](global-hub-profile.md) makalesindeki adımları kullanabilirsiniz.
 
 [!INCLUDE [client profiles](../../includes/vpn-gateway-vwan-vpn-profile-download.md)]
 

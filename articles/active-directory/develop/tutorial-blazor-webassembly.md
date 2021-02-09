@@ -8,12 +8,12 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.date: 10/16/2020
-ms.openlocfilehash: 30b7f1054f7bfee8dc58638791f0b8a424de92a4
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.openlocfilehash: 7118ff589e580fd3aa1f693e72152f1ad4c18e10
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99226430"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99979887"
 ---
 # <a name="tutorial-sign-in-users-and-call-a-protected-api-from-a-blazor-webassembly-app"></a>Öğretici: kullanıcılarda oturum açın ve Blazor WebAssembly uygulamasından korunan API 'yi çağırın
 
@@ -102,7 +102,7 @@ Ardından, aşağıdaki,, Netstandard 2.1 **ItemGroup**'daki projenizin *. cspro
 
 Ardından, sonraki birkaç adımda belirtilen kodu değiştirin. Bu değişiklikler, Microsoft Graph API 'sine gönderilen giden isteklere [erişim belirteçleri](access-tokens.md) ekler. Bu model, [ASP.NET Core Blazor WebAssembly ek güvenlik senaryolarında](/aspnet/core/blazor/security/webassembly/additional-scenarios)daha ayrıntılı bir şekilde ele alınmıştır.
 
-İlk olarak, aşağıdaki kodla *GraphAuthorizationMessageHandler.cs* adlı yeni bir dosya oluşturun. Bu işleyici, `User.Read` ve `Mail.Read` kapsamları IÇIN Microsoft Graph API 'sine giden isteklere yönelik bir erişim belirteci ekleyecek Kullanıcı olacaktır.
+İlk olarak, aşağıdaki kodla *GraphAPIAuthorizationMessageHandler.cs* adlı yeni bir dosya oluşturun. Bu işleyici, `User.Read` ve `Mail.Read` kapsamları IÇIN Microsoft Graph API 'sine giden isteklere yönelik bir erişim belirteci ekleyecek Kullanıcı olacaktır.
 
 ```csharp
 using Microsoft.AspNetCore.Components;

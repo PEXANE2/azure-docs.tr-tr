@@ -10,12 +10,12 @@ ms.date: 02/02/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e5f8264221ada261ccae1b347c47cdf27967d5d8
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 267fd57b2fd359a73d5c1e01568aba14594e9290
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99537175"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99980276"
 ---
 # <a name="blob-versioning"></a>Blob sürümü oluşturma
 
@@ -37,6 +37,10 @@ Blob sürümü oluşturmayı nasıl etkinleştireceğinizi öğrenmek için bkz.
 Bir sürüm, belirli bir noktadaki bir Blobun durumunu yakalar. Blob sürümü oluşturma bir depolama hesabı için etkinleştirildiğinde, blob her değiştirildiğinde veya silindiğinde Azure Storage otomatik olarak bir blob 'un yeni bir sürümünü oluşturur.
 
 Sürüm oluşturma özelliği etkinken bir blob oluşturduğunuzda, yeni blob blob 'un geçerli sürümüdür (veya temel Blobun). Bu blobu daha sonra değiştirirseniz, Azure depolama, değiştirilmeden önce blob durumunu yakalayan bir sürüm oluşturur. Değiştirilen blob yeni geçerli sürüm olur. Blobu her değiştirdiğiniz zaman yeni bir sürüm oluşturulur.
+
+Aşağıdaki diyagramda, sürümlerin yazma ve silme işlemlerinde nasıl oluşturulduğu ve önceki sürümün geçerli sürüm olacak şekilde nasıl yükseltilerek ilgili bir durum gösterilmektedir:
+
+:::image type="content" source="media/versioning-overview/blob-versioning-diagram.png" alt-text="Blob sürümlendirme 'nin nasıl çalıştığını gösteren diyagram":::
 
 Blob başına çok sayıda sürüm olması, blob listeleme işlemlerine yönelik gecikmeyi artırabilir. Microsoft, blob başına 1000 ' den az sürümden bakım yapmanızı önerir. Eski sürümleri otomatik olarak silmek için yaşam döngüsü yönetimi kullanabilirsiniz. Yaşam döngüsü yönetimi hakkında daha fazla bilgi için bkz. [Azure Blob depolama erişim katmanlarını otomatikleştirerek maliyetleri iyileştirme](storage-lifecycle-management-concepts.md).
 

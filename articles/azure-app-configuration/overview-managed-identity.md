@@ -7,12 +7,12 @@ ms.date: 02/25/2020
 ms.author: barbkess
 ms.reviewer: lcozzens
 ms.service: azure-app-configuration
-ms.openlocfilehash: 270f8d471a95e67939a31357bc1cc056fe8ea4a1
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: e6ced30e8c8c5eb60eea3806d9c8080df7c2a12d
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92072807"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99979598"
 ---
 # <a name="how-to-use-managed-identities-for-azure-app-configuration"></a>Azure Uygulama yapılandırması için Yönetilen kimlikler kullanma
 
@@ -99,7 +99,7 @@ Aşağıdaki adımlar, Kullanıcı tarafından atanan bir kimlik ve bir uygulama
 
 ## <a name="removing-an-identity"></a>Kimlik kaldırma
 
-Azure CLı 'de [az appconfig Identity Remove](/cli/azure/appconfig/identity?view=azure-cli-latest#az-appconfig-identity-remove) komutu kullanılarak özelliği devre dışı bırakarak, sistem tarafından atanan bir kimlik kaldırılabilir. Kullanıcı tarafından atanan kimlikler tek tek kaldırılabilir. Sistem tarafından atanan bir kimliğin bu şekilde kaldırılması, AAD 'den de silinecek. Uygulama kaynağı silindiğinde, sistem tarafından atanan kimlikler de AAD 'den otomatik olarak kaldırılır.
+Azure CLı 'de [az appconfig Identity Remove](/cli/azure/appconfig/identity#az-appconfig-identity-remove) komutu kullanılarak özelliği devre dışı bırakarak, sistem tarafından atanan bir kimlik kaldırılabilir. Kullanıcı tarafından atanan kimlikler tek tek kaldırılabilir. Sistem tarafından atanan bir kimliğin bu şekilde kaldırılması, AAD 'den de silinecek. Uygulama kaynağı silindiğinde, sistem tarafından atanan kimlikler de AAD 'den otomatik olarak kaldırılır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

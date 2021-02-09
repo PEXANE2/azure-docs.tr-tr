@@ -1,14 +1,14 @@
 ---
 title: Kiracılar arası yönetim deneyimleri
 description: Azure Temsilcili kaynak yönetimi, bir çapraz kiracı yönetim deneyimi sunar.
-ms.date: 02/02/2021
+ms.date: 02/08/2021
 ms.topic: conceptual
-ms.openlocfilehash: 41047a35328d4eac370d98a6d660f20e5006a2bb
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: b76723c9ea94581561f5bdb04ea1fd8335da77b7
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99805183"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99981094"
 ---
 # <a name="cross-tenant-management-experiences"></a>Kiracılar arası yönetim deneyimleri
 
@@ -165,6 +165,7 @@ Birçok görev ve hizmet, yönetilen kiracılar genelinde Temsilcili kaynaklar �
 Destek istekleri:
 
 - Temsilci seçme kaynakları için Azure portal [ **Yardım + Destek** 'Ten destek istekleri açın](../../azure-portal/supportability/how-to-create-azure-support-request.md#getting-started) (temsilci seçilen kapsam için kullanılabilen destek planını seçme)
+- [Azure kota API](/rest/api/reserved-vm-instances/quotaapi) 'sini kullanarak, temsilcili müşteri kaynakları için Azure hizmet kotalarını görüntüleyin ve yönetin
 
 ## <a name="current-limitations"></a>Geçerli sınırlamalar
 

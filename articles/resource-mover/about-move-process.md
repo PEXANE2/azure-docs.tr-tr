@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: evansma
 ms.service: resource-move
 ms.topic: overview
-ms.date: 09/09/2020
+ms.date: 02/01/2021
 ms.author: raynew
-ms.openlocfilehash: 5261904dd1ee7f280209015d8f756a055dfab57e
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: facbb30201aa6bde2044ca647383cc32ecd9ba26
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95522965"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99980567"
 ---
 # <a name="about-the-move-process"></a>Taşıma işlemi hakkında
 
@@ -46,7 +46,7 @@ Her taşıma kaynağı özetlenen adımlardan geçer.
 **4. Adım: taşımayı başlatma** | Taşıma sürecini başlatın. Move yöntemi kaynak türüne bağlıdır:<br/><br/> - **Durum bilgisiz**: genellikle durum bilgisiz kaynaklar için taşıma işlemi, içeri aktarılan bir şablonu hedef bölgede dağıtır. Şablon, kaynak kaynak ayarlarını ve hedef ayarlarda yaptığınız tüm el ile düzenlemeleri temel alır.<br/><br/> - **Durum bilgisi**: durum bilgisi olan kaynaklar için taşıma işlemi, hedef bölgede kaynak oluşturmayı veya bir kopyayı etkinleştirmeyi içerebilir.<br/><br/>  Yalnızca durum bilgisi olan kaynaklar için, bir taşımanın başlatılması kaynak kaynakların kapalı kalma süresine yol açabilir. Örneğin, VM 'Ler ve SQL. | Taşıma devre dışı bırakma *işlemi, devam eden taşıma Işlemini başlatmak* için durumu kaydırır.<br/><br/> Başarılı bir başlatma taşıması kaynak durumunu, hiçbir sorun olmadan *taşıma bekleniyor* olarak taşır. <br/><br/> Taşıma işlemini başlatmak için başarısız bir taşıma işlemi durumu *başarısız oldu*.
 **Adım 5 seçenek 1: taşımayı at** | İlk taşıdıktan sonra, bir tam taşıma ile devam etmek isteyip istemediğinize karar verebilirsiniz. Bunu yapmazsanız, taşımayı atabilir ve kaynak taşıyıcısı hedefte oluşturulan kaynakları siler. Durum bilgisi olan kaynaklar için çoğaltma işlemi, atma işleminden sonra devam eder. Bu seçenek, test etmek için kullanışlıdır. | Kaynakları atma *işlemi devam ediyor* durumuna getirilir.<br/><br/> Başarılı bir atma işlemi, hiçbir sorun olmadan *taşıma beklemeyi başlatacak* şekilde durumu taşır.<br/><br/> Başarısız bir atma, taşıma durumunun *atma işlemi başarısız oldu*. 
 **Adım 5 seçenek 2: taşımayı Kaydet** | İlk taşıma işleminden sonra, bir tam taşıma ile devam etmek istiyorsanız, hedef bölgedeki kaynakları doğrularsınız ve ne zaman hazırlandıysanız, taşımayı taşırsınız.<br/><br/> Yalnızca durum bilgisi olan kaynaklar için, COMMIT, VM 'Ler veya SQL gibi kaynak kaynaklarında erişilemez duruma gelmesine neden olabilir. | Taşıma işlemini kullanırsanız, kaynak durumu * devam eden taşıma devam ediyor * * olarak taşınır.<br/><br/> Başarılı bir işlemeden sonra, kaynak durumu bir sorun olmadan *Tamamlanan taşıma hareketini* gösterir.<br/><br/> Başarısız bir kayıt *taşıma durumunun yürütülmesi başarısız oldu*.
-**6. Adım: kaynağı silme** | Taşıma işlemi tamamlandıktan ve hedef bölgede kaynakları doğruladıktan sonra kaynak kaynağı silebilirsiniz. | Taşıma işlemi tamamlandıktan sonra, kaynak durumu *bekleyen kaynağı Sil*'e taşınır.
+**6. Adım: kaynağı silme** | Taşıma işlemi tamamlandıktan ve hedef bölgede kaynakları doğruladıktan sonra kaynak kaynağı silebilirsiniz. | İşlem tamamlandıktan sonra, kaynak durumu *bekleyen kaynağı Sil*'e gider. Daha sonra kaynak kaynağı seçip silebilirsiniz.<br/><br/> -Yalnızca *kaynak silme bekleme* durumundaki kaynaklar silinebilir. | Kaynak taşıyıcısı portalındaki bir kaynak grubunun veya SQL Server silinmesi desteklenmez. Bu kaynaklar yalnızca kaynak özellikleri sayfasından silinebilir.
 
 
 ## <a name="move-region-states"></a>Bölge durumlarını taşı
