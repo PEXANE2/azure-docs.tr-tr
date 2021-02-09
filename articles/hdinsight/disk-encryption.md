@@ -5,12 +5,12 @@ description: Bu makalede, Azure HDInsight kümelerinde bekleyen veriler için ku
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/10/2020
-ms.openlocfilehash: c9e50885a7283d3f7fcd231bf222415389212a93
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 58b3d892ea24430a9d951a5a0230282f6c4fd584
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98927325"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99988612"
 ---
 # <a name="azure-hdinsight-double-encryption-for-data-at-rest"></a>Bekleyen veriler için Azure HDInsight çift şifrelemesi
 
@@ -106,7 +106,7 @@ HDInsight yalnızca Azure Key Vault destekler. Kendi anahtar kasanıza sahipseni
 
     ![Azure Key Vault erişim ilkesi için sorumlusu seçin](./media/disk-encryption/azure-portal-add-access-policy.png)
 
-1. **Ekle**’yi seçin.
+1. **Add (Ekle)** seçeneğini belirleyin.
 
 1. **Kaydet**’i seçin.
 
@@ -116,7 +116,7 @@ HDInsight yalnızca Azure Key Vault destekler. Kendi anahtar kasanıza sahipseni
 
 Artık yeni bir HDInsight kümesi oluşturmaya hazırsınız. Müşteri tarafından yönetilen anahtarlar, küme oluşturma sırasında yalnızca yeni kümelere uygulanabilir. Şifreleme, müşteri tarafından yönetilen anahtar kümelerinden kaldırılamaz ve müşteri tarafından yönetilen anahtarlar var olan kümelere eklenemez.
 
-HDInsight, [kasım 2020 sürümünden](hdinsight-release-notes.md#release-date-11182020)itibaren, hem sürümlü hem de sürüm-daha seyrek anahtar URI 'leri kullanarak kümelerin oluşturulmasını destekler. Kümeyi bir sürüm daha az anahtar URI 'SI ile oluşturursanız, HDInsight kümesi, anahtar Azure Key Vault anahtar güncelleştirilirken anahtar otomatik döndürmeyi gerçekleştirmeye çalışır. Kümeyi sürümlü anahtar URI 'SI ile oluşturursanız, [şifreleme anahtarını döndürme](#rotating-the-encryption-key)bölümünde anlatıldığı şekilde el ile anahtar döndürme gerçekleştirmeniz gerekecektir.
+HDInsight, Kasım 2020 sürümünden itibaren, hem sürümlü hem de sürüm-daha seyrek anahtar URI 'Leri kullanarak kümelerin oluşturulmasını destekler. Kümeyi bir sürüm daha az anahtar URI 'SI ile oluşturursanız, HDInsight kümesi, anahtar Azure Key Vault anahtar güncelleştirilirken anahtar otomatik döndürmeyi gerçekleştirmeye çalışır. Kümeyi sürümlü anahtar URI 'SI ile oluşturursanız, [şifreleme anahtarını döndürme](#rotating-the-encryption-key)bölümünde anlatıldığı şekilde el ile anahtar döndürme gerçekleştirmeniz gerekecektir.
 
 Kasım 2020 sürümünden önce oluşturulan kümeler için, sürümlü anahtar URI 'sini kullanarak anahtar döndürmeyi el ile gerçekleştirmeniz gerekir.
 

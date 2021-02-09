@@ -4,19 +4,47 @@ description: Azure HDInsight için arşivlenmiş sürüm notları. Hadoop, Spark
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 10/07/2020
-ms.openlocfilehash: 8e6f27c378a6cea8fffbdcda58c4fc3bb865e51e
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.date: 02/08/2021
+ms.openlocfilehash: 902b13c947cb005189e23dee943867100809564e
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98932171"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99988556"
 ---
 # <a name="archived-release-notes"></a>Arşivlenmiş sürüm notları
 
 ## <a name="summary"></a>Özet
 
 Azure HDInsight, Azure üzerinde açık kaynaklı Apache Hadoop ve Apache Spark analizlere yönelik kurumsal müşteriler arasındaki en popüler hizmetlerden biridir.
+
+## <a name="release-date-11182020"></a>Yayın tarihi: 11/18/2020
+
+Bu sürüm hem HDInsight 3,6 hem de HDInsight 4,0 için geçerlidir. HDInsight yayını, birkaç gün boyunca tüm bölgeler için kullanılabilir hale getirilir. Burada Yayımlanma tarihi, ilk bölgenin yayın tarihini gösterir. Değişiklikleri aşağıda görmüyorsanız, bölgenin bölgeniz için birkaç gün içinde canlı olmasını bekleyin.
+
+### <a name="new-features"></a>Yeni özellikler
+#### <a name="auto-key-rotation-for-customer-managed-key-encryption-at-rest"></a>Müşteri tarafından yönetilen anahtar şifrelemesi için bekleyen otomatik anahtar döndürme
+Müşteriler, bu sürümden itibaren, bekleyen müşteri tarafından yönetilen anahtar şifrelemesi için Azure KeyValut sürümü-Less şifreleme anahtarı URL 'Lerini kullanabilir. HDInsight, süreleri sona erdiğinde veya yeni sürümlerle değiştirildikleri zaman otomatik olarak bu anahtarları döndürür. Ayrıntılar hakkında daha [fazla bilgi edinin](./disk-encryption.md).
+
+#### <a name="ability-to-select-different-zookeeper-virtual-machine-sizes-for-spark-hadoop-and-ml-services"></a>Spark, Hadoop ve ML Hizmetleri için farklı Zookeeper sanal makine boyutları seçme olanağı
+HDInsight daha önce Spark, Hadoop ve ML Hizmetleri küme türleri için Zookeeper düğüm boyutunu özelleştirmeyi desteklememektedir. Bu, ücretsiz olarak sunulan A2_v2/a2 sanal makine boyutlarını varsayılan olarak alır. Bu sürümden, senaryonuza en uygun Zookeeper sanal makine boyutunu seçebilirsiniz. Sanal makine boyutu A2_v2/a2 dışındaki Zookeeper düğümleri ücretlendirilecektir. A2_v2 ve a2 sanal makineler ücretsiz olarak sunulur.
+
+#### <a name="moving-to-azure-virtual-machine-scale-sets"></a>Azure sanal makine ölçek kümelerine geçme
+HDInsight artık kümeyi sağlamak için Azure sanal makinelerini kullanır. Bu sürümden itibaren, hizmet giderek [Azure sanal makine ölçek kümelerine](../virtual-machine-scale-sets/overview.md)geçiş yapar. İşlemin tamamı ayda sürebilir. Bölgelerinizden ve abonelikleriniz geçirildikten sonra, yeni oluşturulan HDInsight kümeleri, müşteri eylemleri olmadan sanal makine ölçek kümelerinde çalışır. Hiçbir bölme değişikliği beklenmez.
+
+### <a name="deprecation"></a>Kullanımdan kaldırma
+#### <a name="deprecation-of-hdinsight-36-ml-services-cluster"></a>HDInsight 3,6 ML Hizmetleri kümesinin kullanımdan kaldırılması
+HDInsight 3,6 ML Hizmetleri küme türü 31 2020 Aralık 'Ta destek bitişi olacak. Müşteriler, 31 2020 Aralık 'tan sonra yeni 3,6 ML Hizmetleri kümeleri oluşturamayacak. Mevcut kümeler, Microsoft desteği olmadan olduğu gibi çalışır. HDInsight sürümleri için destek süre sonunu ve [küme türlerini kontrol](./hdinsight-component-versioning.md#available-versions)edin.
+
+#### <a name="disabled-vm-sizes"></a>Devre dışı VM boyutları
+HDInsight, 16 2020 Kasım 'dan başlayarak standand_A8, standand_A9, standand_A10 ve standand_A11 VM boyutlarını kullanarak kümeler oluşturan yeni müşterileri engelleyecek. Son üç ay içinde bu VM boyutlarını kullanmış olan mevcut müşteriler etkilenmez. HDInsight, 9 2021 Ocak 'Tan başlayarak standand_A8, standand_A9, standand_A10 ve standand_A11 VM boyutlarını kullanarak küme oluşturan tüm müşterileri engelleyecek. Mevcut kümeler olduğu gibi çalışır. Olası sistem/destek kesintilerini önlemek için HDInsight 4,0 ' ye geçmeyi düşünün.
+
+### <a name="behavior-changes"></a>Davranış değişiklikleri
+#### <a name="add-nsg-rule-checking-before-scaling-operation"></a>Ölçeklendirmeden önce NSG kuralı denetimi ekleme işlemi
+HDInsight, ölçeklendirme işlemiyle ağ güvenlik grupları (NSG 'ler) ve Kullanıcı tanımlı yollar (UDRs) denetimi ekledi. Küme oluşturmanın yanı sıra küme ölçekleme için de aynı doğrulama yapılır. Bu doğrulama öngörülemeyen hataları önlemeye yardımcı olur. Doğrulama geçmezse ölçeklendirme başarısız olur. NSG 'ler ve UDRs 'nin doğru şekilde nasıl yapılandırılacağı hakkında daha fazla bilgi edinin. [HDInsight YÖNETIM IP adresleri](./hdinsight-management-ip-addresses.md)bölümüne bakın.
+
+### <a name="component-version-change"></a>Bileşen sürümü değişikliği
+Bu yayın için bileşen sürümü değişikliği yok. HDInsight 4,0 ve HDInsight 3,6 için geçerli bileşen sürümlerini [Bu belgede](./hdinsight-component-versioning.md)bulabilirsiniz.
 
 ## <a name="release-date-11092020"></a>Yayın tarihi: 11/09/2020
 
@@ -595,11 +623,11 @@ Yeni güncelleştirmeler ve yetenekler aşağıdaki kategorilere ayrılır:
 
     b.  [**Apache Kafka 1,0 ' deki yeni özellikler**](https://kafka.apache.org/downloads#1.0.0)
 
-*  ***R Server 9,1 ile Machine Learning Services 9,3** _ – Bu sürümle birlikte, algoritmik yenilikleriyle birlikte açık kaynak ve mühendislerin en iyi kullanımı ve kullanım kolaylığı sayesinde, tüm tercih edilen dillerde, Apache Spark hızına sahip veri bilimcilerini ve mühendislerini sağlıyoruz. Bu sürüm, R Server 'da sunulan özellikleri, R Server 'dan ML hizmetlerine kadar olan küme adı değişikliği ile birlikte, Python için eklenen destek ile genişletir. 
+*  ***R Server 9,1 ' i güncelleştirme Machine Learning Services 9,3*** – bu sürümle birlikte, algoritmik yenilikleriyle birlikte sunulan açık kaynak ve mühendislerin en iyi kullanımı ve kullanım kolaylığı sayesinde, tüm tercih edilen dillerde Apache Spark hızına sahip olan veri bilimcilerini ve mühendislerini sağlıyoruz. Bu sürüm, R Server 'da sunulan özellikleri, R Server 'dan ML hizmetlerine kadar olan küme adı değişikliği ile birlikte, Python için eklenen destek ile genişletir. 
 
-_ ***Azure Data Lake Storage 2.** _ – HDInsight desteği, Azure Data Lake Storage 2. Önizleme sürümünü destekleyecektir. Kullanılabilir bölgelerde müşteriler, HDInsight kümelerinin birincil veya Ikincil deposu olarak bir ADLS 2. hesabı seçebilecektir.
+*  ***Azure Data Lake Storage 2. Için destek*** – hdınsight, Azure Data Lake Storage 2. Önizleme sürümünü destekleyecektir. Kullanılabilir bölgelerde müşteriler, HDInsight kümelerinin birincil veya Ikincil deposu olarak bir ADLS 2. hesabı seçebilecektir.
 
-_ ***Hdınsight kurumsal güvenlik paketi güncelleştirmeler (Önizleme)** _ – (Önizleme) Azure Blob depolama, ADLS 1., Cosmos DB ve Azure DB Için [sanal ağ hizmet uç noktaları](../virtual-network/virtual-network-service-endpoints-overview.md) desteği.
+*  ***Hdınsight kurumsal güvenlik paketi güncelleştirmeleri (Önizleme)*** – (Önizleme) Azure Blob depolama, ADLS 1., Cosmos DB ve Azure DB Için [sanal ağ hizmet uç noktaları](../virtual-network/virtual-network-service-endpoints-overview.md) desteği.
 
 ### <a name="component-versions"></a>Bileşen sürümleri
 
@@ -797,7 +825,7 @@ Bu sürüm HBase 1.1.2 ve aşağıdaki Apache düzeltme eklerini sağlar.
 
 Bu sürüm, aşağıdaki düzeltme eklerine ek olarak Hive 1.2.1 ve Hive 2.1.0 sağlar:
 
-_ *Hive 1.2.1 Apache yamaları:**
+**Hive 1.2.1 Apache yamaları:**
 
 -   [*HIVE-10697*](https://issues.apache.org/jira/browse/HIVE-10697): objecınspectorconvertors \# unionconvertor hatalı dönüştürme yapar.
 

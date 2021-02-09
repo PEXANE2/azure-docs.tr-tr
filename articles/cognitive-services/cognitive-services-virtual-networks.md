@@ -7,14 +7,14 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 01/27/2021
+ms.date: 02/09/2021
 ms.author: aahi
-ms.openlocfilehash: 8fa10164ae2d697f68156777f224b92f0562475f
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: eaffa535b51b786a53f1e6cc35233c55dd837233
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98940038"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99989084"
 ---
 # <a name="configure-azure-cognitive-services-virtual-networks"></a>Azure Bilişsel Hizmetler sanal ağlarını yapılandırma
 
@@ -59,7 +59,7 @@ Sanal ağlar (VNet 'ler) bilişsel [Hizmetler 'in kullanılabildiği bölgelerde
 
 
 > [!NOTE]
-> LUSıS kullanıyorsanız, **Biliveservicesmanagement** etiketi yalnızca SDK 'yı veya REST API kullanarak hizmeti kullanmanıza izin verebilir. Bir sanal ağ üzerinden HALSıS portalına erişmek ve bu portalı kullanmak için aşağıdaki etiketleri kullanmanız gerekir:  
+> LUYA veya konuşma Hizmetleri kullanıyorsanız, **Biliveservicesmanagement** etiketi yalnızca SDK 'yı veya REST API kullanarak hizmeti kullanmanıza izin verebilir. Bir sanal ağdan HALSıS portalına ve/veya konuşma Studio 'ya erişmek ve bunları kullanmak için aşağıdaki etiketleri kullanmanız gerekir:  
 > * **AzureActiveDirectory**
 > * **Azurefrontkapısı. ön uç**
 > * **AzureResourceManager** 
@@ -157,7 +157,7 @@ Bilişsel hizmetler kaynakları için Azure portal, PowerShell veya Azure CLı a
         --default-action Allow
     ```
 
-**_
+***
 
 ## <a name="grant-access-from-a-virtual-network"></a>Bir sanal ağdan erişim izni verme
 
@@ -169,7 +169,7 @@ Her bilişsel hizmetler kaynağı, [IP ağ kuralları](#grant-access-from-an-int
 
 ### <a name="required-permissions"></a>Gerekli izinler
 
-Bilişsel hizmetler kaynağına bir sanal ağ kuralı uygulamak için, kullanıcının eklenmekte olan alt ağlar için uygun izinlere sahip olması gerekir. Gerekli izin varsayılan _Contributor * rolüne veya bilişsel *Hizmetler katılımcısı* rolüne sahiptir. Gerekli izinler, özel rol tanımlarına da eklenebilir.
+Bilişsel hizmetler kaynağına bir sanal ağ kuralı uygulamak için, kullanıcının eklenmekte olan alt ağlar için uygun izinlere sahip olması gerekir. Gerekli izin varsayılan *katkıda bulunan* rolü veya bilişsel *Hizmetler katılımcısı* rolü. Gerekli izinler, özel rol tanımlarına da eklenebilir.
 
 Bilişsel hizmetler kaynağı ve erişim verilen sanal ağlar, farklı bir Azure AD kiracısının parçası olan abonelikler de dahil olmak üzere farklı aboneliklerde olabilir.
 
@@ -325,10 +325,10 @@ Bilişsel hizmetler kaynakları için sanal ağ kurallarını Azure portal, Powe
         --subnet $subnetid
     ```
 
-**_
+***
 
 > [!IMPORTANT]
-> [Varsayılan kuralı](#change-the-default-network-access-rule) _ * Reddet * * olarak ayarladığınızdan emin olun veya ağ kurallarının hiçbir etkisi yoktur.
+> [Varsayılan kuralı](#change-the-default-network-access-rule) **Reddet** olarak ayarladığınızdan emin olun veya ağ kurallarının hiçbir etkisi yoktur.
 
 ## <a name="grant-access-from-an-internet-ip-range"></a>İnternet IP aralığından erişim izni verme
 
@@ -472,10 +472,10 @@ Bilişsel hizmetler kaynakları için Azure portal, PowerShell veya Azure CLı a
         --ip-address "16.17.18.0/24"
     ```
 
-**_
+***
 
 > [!IMPORTANT]
-> [Varsayılan kuralı](#change-the-default-network-access-rule) _ * Reddet * * olarak ayarladığınızdan emin olun veya ağ kurallarının hiçbir etkisi yoktur.
+> [Varsayılan kuralı](#change-the-default-network-access-rule) **Reddet** olarak ayarladığınızdan emin olun veya ağ kurallarının hiçbir etkisi yoktur.
 
 ## <a name="use-private-endpoints"></a>Özel uç noktaları kullanma
 

@@ -4,13 +4,13 @@ description: Azure HDInsight için en son sürüm notları. Hadoop, Spark, R Ser
 ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 11/12/2020
-ms.openlocfilehash: 6e37501a56bdf247bce2111e8e5a5bf02f37d898
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.date: 02/08/2021
+ms.openlocfilehash: f6b7000812f1adfe6ff7bd93711c9b8fe4ff9adc
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99626130"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99988368"
 ---
 # <a name="azure-hdinsight-release-notes"></a>Azure HDInsight sürüm notları
 
@@ -22,45 +22,43 @@ Azure HDInsight, Azure üzerinde açık kaynaklı analizler için kurumsal müş
 
 Sürüm notlarında abone olmak istiyorsanız, [Bu GitHub deposundaki](https://github.com/hdinsight/release-notes/releases)yayınları izleyin.
 
-## <a name="release-date-11182020"></a>Yayın tarihi: 11/18/2020
+## <a name="release-date-02052021"></a>Yayın tarihi: 02/05/2021
 
 Bu sürüm hem HDInsight 3,6 hem de HDInsight 4,0 için geçerlidir. HDInsight yayını, birkaç gün boyunca tüm bölgeler için kullanılabilir hale getirilir. Burada Yayımlanma tarihi, ilk bölgenin yayın tarihini gösterir. Değişiklikleri aşağıda görmüyorsanız, bölgenin bölgeniz için birkaç gün içinde canlı olmasını bekleyin.
 
 ## <a name="new-features"></a>Yeni özellikler
-### <a name="auto-key-rotation-for-customer-managed-key-encryption-at-rest"></a>Müşteri tarafından yönetilen anahtar şifrelemesi için bekleyen otomatik anahtar döndürme
-Müşteriler, bu sürümden itibaren, bekleyen müşteri tarafından yönetilen anahtar şifrelemesi için Azure KeyValut sürümü-Less şifreleme anahtarı URL 'Lerini kullanabilir. HDInsight, süreleri sona erdiğinde veya yeni sürümlerle değiştirildikleri zaman otomatik olarak bu anahtarları döndürür. Ayrıntılar hakkında daha [fazla bilgi edinin](./disk-encryption.md).
+### <a name="dav4-series-support"></a>Dav4 serisi desteği
+HDInsight bu sürümde Dav4 serisi destek ekledi. [Burada Dav4-Series](https://docs.microsoft.com/azure/virtual-machines/dav4-dasv4-series)hakkında daha fazla bilgi edinin.
 
-### <a name="ability-to-select-different-zookeeper-virtual-machine-sizes-for-spark-hadoop-and-ml-services"></a>Spark, Hadoop ve ML Hizmetleri için farklı Zookeeper sanal makine boyutları seçme olanağı
-HDInsight daha önce Spark, Hadoop ve ML Hizmetleri küme türleri için Zookeeper düğüm boyutunu özelleştirmeyi desteklememektedir. Bu, ücretsiz olarak sunulan A2_v2/a2 sanal makine boyutlarını varsayılan olarak alır. Bu sürümden, senaryonuza en uygun Zookeeper sanal makine boyutunu seçebilirsiniz. Sanal makine boyutu A2_v2/a2 dışındaki Zookeeper düğümleri ücretlendirilecektir. A2_v2 ve a2 sanal makineler ücretsiz olarak sunulur.
+### <a name="kafka-rest-proxy-ga"></a>Kafka REST proxy GA 
+Kafka REST proxy, HTTPS üzerinden bir REST API aracılığıyla Kafka kümeniz ile etkileşim kurmanıza olanak sağlar. Kafka Rest proxy, bu sürümden itibaren genel kullanıma sunulmuştur. [Kafka Rest proxy](https://docs.microsoft.com/azure/hdinsight/kafka/rest-proxy)hakkında daha fazla bilgi edinin.
 
 ### <a name="moving-to-azure-virtual-machine-scale-sets"></a>Azure sanal makine ölçek kümelerine geçme
-HDInsight artık kümeyi sağlamak için Azure sanal makinelerini kullanır. Bu sürümden itibaren, hizmet giderek [Azure sanal makine ölçek kümelerine](../virtual-machine-scale-sets/overview.md)geçiş yapar. İşlemin tamamı ayda sürebilir. Bölgelerinizden ve abonelikleriniz geçirildikten sonra, yeni oluşturulan HDInsight kümeleri, müşteri eylemleri olmadan sanal makine ölçek kümelerinde çalışır. Hiçbir bölme değişikliği beklenmez.
+HDInsight artık kümeyi sağlamak için Azure sanal makinelerini kullanır. Hizmet giderek [Azure sanal makine ölçek kümelerine geçiş yapar](../virtual-machine-scale-sets/overview.md). İşlemin tamamı ayda sürebilir. Bölgelerinizden ve abonelikleriniz geçirildikten sonra, yeni oluşturulan HDInsight kümeleri, müşteri eylemleri olmadan sanal makine ölçek kümelerinde çalışır. Hiçbir bölme değişikliği beklenmez.
 
 ## <a name="deprecation"></a>Kullanımdan kaldırma
-### <a name="deprecation-of-hdinsight-36-ml-services-cluster"></a>HDInsight 3,6 ML Hizmetleri kümesinin kullanımdan kaldırılması
-HDInsight 3,6 ML Hizmetleri küme türü 31 2020 Aralık 'Ta destek bitişi olacak. Müşteriler, 31 2020 Aralık 'tan sonra yeni 3,6 ML Hizmetleri kümeleri oluşturamayacak. Mevcut kümeler, Microsoft desteği olmadan olduğu gibi çalışır. HDInsight sürümleri için destek süre sonunu ve [küme türlerini kontrol](./hdinsight-component-versioning.md#available-versions)edin.
-
 ### <a name="disabled-vm-sizes"></a>Devre dışı VM boyutları
-HDInsight, 16 2020 Kasım 'dan başlayarak standand_A8, standand_A9, standand_A10 ve standand_A11 VM boyutlarını kullanarak kümeler oluşturan yeni müşterileri engelleyecek. Son üç ay içinde bu VM boyutlarını kullanmış olan mevcut müşteriler etkilenmez. HDInsight, 9 2021 Ocak 'Tan başlayarak standand_A8, standand_A9, standand_A10 ve standand_A11 VM boyutlarını kullanarak küme oluşturan tüm müşterileri engelleyecek. Mevcut kümeler olduğu gibi çalışır. Olası sistem/destek kesintilerini önlemek için HDInsight 4,0 ' ye geçmeyi düşünün.
+HDInsight, 9 2021 Ocak 'Tan başlayarak standand_A8, standand_A9, standand_A10 ve standand_A11 VM boyutlarını kullanarak küme oluşturan tüm müşterileri engelleyecek. Mevcut kümeler olduğu gibi çalışır. Olası sistem/destek kesintilerini önlemek için HDInsight 4,0 ' ye geçmeyi düşünün.
 
 ## <a name="behavior-changes"></a>Davranış değişiklikleri
-### <a name="add-nsg-rule-checking-before-scaling-operation"></a>Ölçeklendirmeden önce NSG kuralı denetimi ekleme işlemi
-HDInsight, ölçeklendirme işlemiyle ağ güvenlik grupları (NSG 'ler) ve Kullanıcı tanımlı yollar (UDRs) denetimi ekledi. Küme oluşturmanın yanı sıra küme ölçekleme için de aynı doğrulama yapılır. Bu doğrulama öngörülemeyen hataları önlemeye yardımcı olur. Doğrulama geçmezse ölçeklendirme başarısız olur. NSG 'ler ve UDRs 'nin doğru şekilde nasıl yapılandırılacağı hakkında daha fazla bilgi edinin. [HDInsight YÖNETIM IP adresleri](./hdinsight-management-ip-addresses.md)bölümüne bakın.
+### <a name="default-cluster-vm-size-changes-to-ev3-series"></a>Varsayılan küme VM boyutu Ev3-Series olarak değişir 
+Varsayılan küme VM boyutları, D serisinden Ev3-Series ' e değiştirilecektir. Bu değişiklik, baş düğümler ve çalışan düğümleri için geçerlidir. Bu değişikliğin test edilen iş akışlarınızı etkileyerek etkilenmesinden kaçınmak için ARM şablonunda kullanmak istediğiniz VM boyutlarını belirtin.
+
+### <a name="network-interface-resource-not-visible-for-clusters-running-on-azure-virtual-machine-scale-sets"></a>Azure sanal makine ölçek kümelerinde çalışan kümeler için ağ arabirimi kaynağı görünmüyor
+HDInsight, giderek Azure sanal makine ölçek kümelerine geçiş yapar. Sanal makineler için ağ arabirimleri artık, Azure sanal makine ölçek kümeleri kullanan kümeler için müşterilere görünmez.
+
+
+### <a name="breaking-change-for-net-for-apache-spark-100"></a>Apache Spark 1.0.0 için .NET için son değişiklik
+HDInsight, sonraki sürümde Apache Spark için .NET ilk büyük resmi sürümünü tanıtır. Spark 2.4. x ve Spark 3.0. x için diğer özelliklerle birlikte DataFrame API 'SI için bir tam sayı sağlar. Bu ana sürüm için son değişiklikler olacaktır, kodunuzu ve işlem hatlarınızı güncelleştirmek için gereken adımları anlamak için [Bu geçiş kılavuzuna](https://github.com/dotnet/spark/blob/master/docs/migration-guide.md#upgrading-from-microsoftspark-0x-to-10) bakın. [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/hdinsight/spark/spark-dotnet-version-update#using-net-for-apache-spark-v10-in-hdinsight).
 
 ## <a name="upcoming-changes"></a>Yaklaşan değişiklikler
 Gelecek sürümlerde aşağıdaki değişiklikler olur.
 
-### <a name="breaking-change-for-net-for-apache-spark-100"></a>Apache Spark 1.0.0 için .NET için son değişiklik
-HDInsight, sonraki sürümde Apache Spark için .NET 'in ilk büyük resmi sürümünü ortaya çıkaracak. Spark 2.4. x ve Spark 3.0. x için diğer özelliklerle birlikte DataFrame API 'SI için bir tam sayı sağlar. Bu ana sürüm için son değişiklikler olacaktır, kodunuzu ve işlem hatlarınızı güncelleştirmek için gereken adımları anlamak için [Bu geçiş kılavuzuna](https://github.com/dotnet/spark/blob/master/docs/migration-guide.md#upgrading-from-microsoftspark-0x-to-10) bakın. [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/hdinsight/spark/spark-dotnet-version-update#using-net-for-apache-spark-v10-in-hdinsight).
-
-### <a name="default-cluster-vm-size-will-be-changed-to-ev3-family"></a>Varsayılan küme VM boyutu Ev3 Family olarak değiştirilecek
-Sonraki sürümden (Ocak sonunda) başlayarak, varsayılan küme VM boyutları D ailesinden iken Ev3 Family olarak değiştirilecektir. Bu değişiklik, baş düğümler ve çalışan düğümleri için geçerlidir. Bu değişikliği önlemek için ARM şablonunda kullanmak istediğiniz VM boyutlarını belirtin.
-
 ### <a name="default-cluster-version-will-be-changed-to-40"></a>Varsayılan küme sürümü 4,0 olarak değiştirilecek
-2021 Şubat tarihinden itibaren, HDInsight kümesinin varsayılan sürümü 3,6 ' den 4,0 ' ye değiştirilecek. Kullanılabilir sürümler hakkında daha fazla bilgi için bkz. [kullanılabilir sürümler](./hdinsight-component-versioning.md#available-versions). [Hdınsight 4,0](./hdinsight-version-release.md) ' deki yenilikler hakkında daha fazla bilgi edinin
+2021 Şubat tarihinden itibaren, HDInsight kümesinin varsayılan sürümü 3,6 ' den 4,0 ' ye değiştirilecek. Kullanılabilir sürümler hakkında daha fazla bilgi için bkz. [kullanılabilir sürümler](./hdinsight-component-versioning.md#available-versions). [Hdınsight 4,0](./hdinsight-version-release.md)' deki yenilikler hakkında daha fazla bilgi edinin.
 
 ### <a name="os-version-upgrade"></a>İşletim sistemi sürümü yükseltme
-HDInsight, işletim sistemi sürümünü 16,04 ' den 18,04 ' e yükseltiyor. Yükseltme, 2021 Nisan 'dan önce tamamlanır.
+HDInsight, işletim sistemi sürümünü Ubuntu 16,04 ' den 18,04 ' e yükseltiyor. Yükseltme, 2021 Nisan 'dan önce tamamlanır.
 
 ### <a name="hdinsight-36-end-of-support-on-june-30-2021"></a>HDInsight 3,6 30 2021 Haziran 'da destek bitişi
 HDInsight 3,6, destek sonu olacaktır. Form Haziran 30 2021 ' den itibaren, müşteriler yeni HDInsight 3,6 kümeleri oluşturamaz. Mevcut kümeler, Microsoft desteği olmadan olduğu gibi çalışır. Olası sistem/destek kesintilerini önlemek için HDInsight 4,0 ' ye geçmeyi düşünün.
@@ -71,16 +69,3 @@ HDInsight, küme güvenilirliği ve performans iyileştirmeleri yapmaya devam ed
 ## <a name="component-version-change"></a>Bileşen sürümü değişikliği
 Bu yayın için bileşen sürümü değişikliği yok. HDInsight 4,0 ve HDInsight 3,6 için geçerli bileşen sürümlerini [Bu belgede](./hdinsight-component-versioning.md)bulabilirsiniz.
 
-## <a name="known-issues"></a>Bilinen sorunlar
-### <a name="prevent-hdinsight-cluster-vms-from-rebooting-periodically"></a>HDInsight kümesi sanal makinelerinin düzenli aralıklarla yeniden başlatılmasını engelleme
-
-2020 Kasım 'dan başlayarak, HDInsight kümesi VM 'lerinin düzenli olarak yeniden başlatılmasını fark etmiş olabilirsiniz. Bunun nedeni şunlar olabilir:
-
-1.  CTIO v, kümenizde etkin. Yeni azsec-cBir v paketi, düğüm yeniden başlatılmasını tetikleyen büyük miktarda bellek tüketir. 
-2.  Azure hizmetleri tarafından kullanılan sertifika yetkilileri (CA) listesinde yapılan değişiklikleri izleyen bir CRON işi günlük olarak zamanlanır. Yeni bir CA sertifikası kullanılabilir olduğunda, betik sertifikayı JDK güven deposuna ekler ve yeniden başlatma zamanlar.
-
-HDInsight, düzeltmeleri dağıtmakta ve her iki sorun için çalışan tüm kümeler için düzeltme eki uyguluyor. Bu işlemi hemen uygulamak ve beklenmeyen VM 'Lerin yeniden başlatılmasını önlemek için, aşağıdaki betik eylemlerini tüm küme düğümlerinde kalıcı betik eylemi olarak çalıştırabilirsiniz. HDInsight düzeltme ve düzeltme eki tamamlandıktan sonra başka bir bildirim gönderecek.
-```
-https://hdiconfigactions.blob.core.windows.net/linuxospatchingrebootconfigv02/replace_cacert_script.sh
-https://healingscriptssa.blob.core.windows.net/healingscripts/ChangeOOMPolicyAndApplyLatestConfigForClamav.sh
-```

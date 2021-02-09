@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: Azure Arc etkin bir Kubernetes kümesi (Önizleme) yapılandırmak için Gilar 'ı kullanma
 keywords: Gilar, Kubernetes, K8s, Azure, Arc, Azure Kubernetes hizmeti, AKS, kapsayıcılar
-ms.openlocfilehash: a068ed90ea53b3b25a1f41cebd9a5b8e607afa54
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 72dc42fffb3653de81477fa504c11b9b0328d2eb
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737193"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99988699"
 ---
 # <a name="deploy-configurations-using-gitops-on-arc-enabled-kubernetes-cluster-preview"></a>Arc özellikli Kubernetes kümesinde (Önizleme) GitOps kullanarak yapılandırmaları dağıtma
 
@@ -148,17 +148,17 @@ Yapılandırmayı özelleştirmek için kullanabileceğiniz daha fazla parametre
 
 `--helm-operator-params` : Hele işleci için *Isteğe bağlı* grafik değerleri (etkinse).  Örneğin, '--Held. Versions = v3 ' olarak ayarlayın.
 
-`--helm-operator-chart-version` : Held işleci için *Isteğe bağlı* grafik sürümü (etkinse). Varsayılan: ' 1.2.0 '.
+`--helm-operator-version` : Held işleci için *Isteğe bağlı* grafik sürümü (etkinse). ' 1.2.0 ' veya üstünü kullanın. Varsayılan: ' 1.2.0 '.
 
 `--operator-namespace` : İşleç ad alanı için *Isteğe bağlı* ad. Varsayılan: ' default '. En fazla 23 karakter.
 
-`--operator-params` : İşleç için *Isteğe bağlı* parametreler. Tek tırnak içinde verilmelidir. Örneğin, ```--operator-params='--git-readonly --git-path=releases --sync-garbage-collection' ```
+`--operator-params` : İşleç için *Isteğe bağlı* parametreler. Tek tırnak içinde verilmelidir. Örneğin, ```--operator-params='--git-readonly --sync-garbage-collection --git-branch=main' ```
 
 --İşleci-params içinde desteklenen seçenekler
 
 | Seçenek | Açıklama |
 | ------------- | ------------- |
-| --Git-dal  | Kubernetes bildirimleri için kullanılacak git deposunun dalı. Varsayılan değer ' Master '. |
+| --Git-dal  | Kubernetes bildirimleri için kullanılacak git deposunun dalı. Varsayılan değer ' Master '. Daha yeni depolarda ' Main ' adlı kök dal vardır; bu durumda--git-Branch = Main ' i ayarlamanız gerekir. |
 | --Git-yol  | Kubernetes bildirimlerini bulmak için Flox için Git deposu içindeki göreli yol. |
 | --Git-ReadOnly | Git deposu salt okunurdur, Flox buna yazmaya çalışmaz. |
 | --bildirim oluşturma  | Etkinleştirilirse, Flox. Flox. YAML 'yi arayacaktır ve Kustomize veya diğer bildirim oluşturucularını çalıştırır. |
@@ -226,16 +226,13 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 }
 ```
 
-Oluşturulduğunda, `sourceControlConfiguration` çok sayıda şey meydana gelir:
+Bir `sourceControlConfiguration` oluşturulduğunda veya güncelleştirilirken, bu konuda birkaç şey meydana gelir:
 
-1. Azure Arc, `config-agent` Yeni veya güncelleştirilmiş yapılandırmalara yönelik Azure Resource Manager izler ( `Microsoft.KubernetesConfiguration/sourceControlConfigurations` )
-1. `config-agent`Yeni yapılandırmayı bildirimler `Pending`
-1. `config-agent` yapılandırma özelliklerini okur ve yönetilen bir örneğini dağıtmaya hazırlar `flux`
-    * `config-agent` hedef ad alanını oluşturur
-    * `config-agent` bir Kubernetes hizmet hesabını uygun izinle ( `cluster` veya `namespace` kapsamla) hazırlar
-    * `config-agent` bir örneğini dağıtır `flux`
-    * `flux` bir SSH anahtarı oluşturur ve ortak anahtarı günlüğe kaydeder (SSH seçeneği akışkan x tarafından oluşturulan anahtarlarla kullanılıyorsa)
-1. `config-agent``sourceControlConfiguration`Azure 'da durumu kaynağa geri bildirir
+1. Azure Arc, `config-agent` Yeni veya güncelleştirilmiş yapılandırmalar () için Azure Resource Manager izliyor `Microsoft.KubernetesConfiguration/sourceControlConfigurations` ve yeni `Pending` yapılandırmayı izler.
+1. `config-agent`Yapılandırma özelliklerini okur ve hedef ad alanını oluşturur.
+1. Azure Arc, `controller-manager` bir Kubernetes hizmet hesabını uygun izinle ( `cluster` veya `namespace` kapsamla) hazırlar ve sonra bir örneğini dağıtır `flux` .
+1. SSH seçeneğini akışkan x tarafından oluşturulan anahtarlarla birlikte kullanıyorsanız, `flux` BIR SSH anahtarı oluşturur ve ortak anahtarı günlüğe kaydeder.
+1. `config-agent`Raporlar, `sourceControlConfiguration` Azure 'daki kaynağa geri bildirir.
 
 Sağlama işlemi gerçekleşirken, `sourceControlConfiguration` birkaç durum değişikliği arasında hareket eder. Yukarıdaki komutla ilerlemeyi izleyin `az k8sconfiguration show ...` :
 

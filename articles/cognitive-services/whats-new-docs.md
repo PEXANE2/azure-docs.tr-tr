@@ -1,74 +1,66 @@
 ---
 title: "Bilişsel hizmetler: docs 'taki yenilikler"
-description: 1 Aralık 2020 ' de 31 Aralık 2020 ' de bilişsel hizmetler belgelerinden yenilikler.
+description: 1 Ocak 2021-31 Ocak 2021 için bilişsel hizmetler docs 'daki yenilikler.
 author: erhopf
 manager: nitinme
 ms.topic: conceptual
 ms.author: erhopf
 ms.service: cognitive-services
-ms.date: 01/05/2021
-ms.openlocfilehash: 41acfb2465382e8de4751b54c5b93e77bd12daaf
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.date: 02/08/2021
+ms.openlocfilehash: 92d75289fd4459db8c469a4cb562fe28e8aab779
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98937316"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99989015"
 ---
-# <a name="cognitive-services-docs-whats-new-for-december-1-2020---december-31-2020"></a>Bilişsel hizmetler belgeleri: 1 Aralık 2020 ' deki yenilikler-31 Aralık 2020
+# <a name="cognitive-services-docs-whats-new-for-january-1-2021---january-31-2021"></a>Bilişsel hizmetler belgeleri: 1 Ocak 2021 ' deki yenilikler-31 Ocak 2021
 
-1 Aralık 2020 ile 31 Aralık 2020 arasında bilişsel hizmetler belgelerinden yeniliklere hoş geldiniz. Bu makalede, bu süre boyunca docs 'ta yapılan önemli değişikliklerden bazıları listelenir.
+1 Ocak 2021 tarihine kadar 31 Ocak 2021 tarihine kadar bilişsel hizmetler docs 'daki yenilikler 'e hoş geldiniz. Bu makalede, bu süre boyunca docs 'ta yapılan önemli değişikliklerden bazıları listelenir.
 
 ## <a name="cognitive-services"></a>Bilişsel Hizmetler
 
-### <a name="new-articles"></a>Yeni makaleler
+**Güncelleştirilmiş makaleler**
 
 - [Azure bilişsel hizmetler için maliyetleri planlayın ve yönetin](plan-manage-costs.md)
-
-### <a name="updated-articles"></a>Güncelleştirilmiş makaleler
-
-- [Azure Bilişsel Hizmetler sanal ağlarını yapılandırma](cognitive-services-virtual-networks.md)
-
-## <a name="anomaly-detector"></a>Anomali Algılayıcısı
-
-### <a name="updated-articles"></a>Güncelleştirilmiş makaleler
-
-- [Anomali algılayıcısı REST API hızlı başlangıç](./anomaly-detector/quickstarts/client-libraries.md?pivots=rest-api&tabs=windows)
-
-## <a name="bing-visual-search"></a>Bing Görsel Arama
-
-### <a name="updated-articles"></a>Güncelleştirilmiş makaleler
-
-- [Bir görüntü için Öngörüler elde etmek için bir Öngörüler belirteci kullanma](./bing-visual-search/use-insights-token.md)
-
-## <a name="containers"></a>Kapsayıcılar
-
-### <a name="updated-articles"></a>Güncelleştirilmiş makaleler
-
-- [Azure Container Örneğinde kapsayıcı dağıtma ve çalıştırma](./containers/azure-container-instance-recipe.md)
+- [Azure Bilişsel Hizmetler kapsayıcıları](cognitive-services-container-support.md)
 
 ## <a name="form-recognizer"></a>Form Tanıma
 
-### <a name="updated-articles"></a>Güncelleştirilmiş makaleler
+**Yeni makaleler**
 
-- [Form tanıyıcı giriş sayfası](./form-recognizer/index.yml)
-- [Hızlı başlangıç: form tanıyıcı istemci kitaplığını kullanma](./form-recognizer/quickstarts/client-library.md)
+- [Öğretici: Azure Data Factory kullanarak form verilerini toplu olarak ayıklama](/azure/cognitive-services/form-recognizer/tutorial-bulk-processing.md)
+
+**Güncelleştirilmiş makaleler**
+
+- [Form Tanıma nedir?](/azure/cognitive-services/form-recognizer/overview.md)
+
+## <a name="immersive-reader"></a>Tam Ekran Okuyucu
+
+**Güncelleştirilmiş makaleler**
+
+- [Bir tam ekran okuyucu kaynağı oluşturma ve Azure Active Directory kimlik doğrulamasını yapılandırma](/azure/cognitive-services/immersive-reader/how-to-create-immersive-reader.md)
+
+## <a name="personalizer"></a>Kişiselleştirme
+
+**Güncelleştirilmiş makaleler**
+
+- [Özellikler, Eylemler ve bağlamla ilgili bilgiler](/azure/cognitive-services/personalizer/concepts-features.md)
 
 ## <a name="text-analytics"></a>Metin Analizi
 
-### <a name="updated-articles"></a>Güncelleştirilmiş makaleler
+**Güncelleştirilmiş makaleler**
 
-- [Metin Analizi API'si v3 dil desteği](./text-analytics/language-support.md)
-- [Metin Analizi nasıl çağrılacağını REST API](./text-analytics/how-tos/text-analytics-how-to-call-api.md)
-- [Metin Analizi içinde adlandırılmış varlık tanımayı kullanma](./text-analytics/how-tos/text-analytics-how-to-entity-linking.md)
-- [Örnek: Metin Analizi kullanarak anahtar tümceleri ayıklama](./text-analytics/how-tos/text-analytics-how-to-keyword-extraction.md)
-- [Metin Analizi API’si Belgeleri - Öğreticiler, API Başvurusu - Azure Bilişsel Hizmetler | Microsoft Docs](./text-analytics/index.yml)
-- [Hızlı başlangıç: Metin Analizi istemci kitaplığı ve REST API kullanın](./text-analytics/quickstarts/client-libraries-rest-api.md)
+- [Metin Analizi API'si v3 dil desteği](/azure/cognitive-services/text-analytics/language-support.md)
+- [Metin Analizi API'si sürüm 3. x ' e geçirin](/azure/cognitive-services/text-analytics/migration-guide.md)
+- [Metin Analizi API’sindeki yenilikler](/azure/cognitive-services/text-analytics/whats-new.md)
 
 ## <a name="community-contributors"></a>Topluluk katkı sağlayanlar
 
-Aşağıdaki kişiler bu süre boyunca bilişsel hizmetler belgelerine katkıda bulunanlar. Teşekkür ederiz!
+Aşağıdaki kişiler bu süre boyunca bilişsel hizmetler belgelerine katkıda bulunanlar. Teşekkür ederiz! Yenilikler [giriş sayfasında](index.yml)"katılım alma" başlığı altında yer alan bağlantıları izleyerek nasıl katkıda bulunabileceğinizi öğrenin.
 
-- [hyoshioka0128](https://github.com/hyoshioka0128) -Hiroshi Yoshioka (1)
-- [pymıa](https://github.com/pymia) -MIA//Huai-Wen Chang (1)
+- [Anweshgangula](https://github.com/AnweshGangula) -anwesh Gangula (1)
+- [cdglasz](https://github.com/cdglasz) -Christopher Glasz (1)
+- [huygurca buidac](https://github.com/huybuidac) -buI dac kuy (1)
 
 [!INCLUDE [Service specific updates](./includes/service-specific-updates.md)]

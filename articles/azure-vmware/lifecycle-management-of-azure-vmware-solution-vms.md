@@ -2,13 +2,13 @@
 title: Azure VMware Çözüm VM 'lerinin yaşam döngüsü yönetimi
 description: Azure VMware Çözüm sanal makinelerinizin yaşam döngüsünün tüm yönlerini Microsoft Azure yerel araçlarla yönetmeyi öğrenin.
 ms.topic: conceptual
-ms.date: 09/11/2020
-ms.openlocfilehash: 5bba9cbbc8783cc285ff09f790ee1b35b20ba358
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.date: 02/08/2021
+ms.openlocfilehash: d8224a37e46b336ebf889fe1c075930f34f10ca4
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99062905"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99988527"
 ---
 # <a name="lifecycle-management-of-azure-vmware-solution-vms"></a>Azure VMware Çözüm VM 'lerinin yaşam döngüsü yönetimi
 
@@ -110,3 +110,11 @@ Azure Izleyici, bulut ve şirket içi ortamlarınızdaki telemetri toplama, çö
     - [Azure izleyici 'yi kullanarak günlük uyarıları oluşturun, görüntüleyin ve yönetin](../azure-monitor/platform/alerts-log.md).
     - Otomatik eylemleri ve bildirimleri ayarlamak için [Eylem kuralları](../azure-monitor/platform/alerts-action-rules.md) .
     - [Azure 'ı BT hizmet yönetimi Bağlayıcısı kullanarak ıtssm araçlarına bağlayın](../azure-monitor/platform/itsmc-overview.md).
+    
+ ## <a name="next-steps"></a>Sonraki adımlar
+
+Azure VMware Çözüm sanal makinelerinizi Azure 'un yaşam döngüsü genelinde yönetmek için Azure 'un yerel araçlarını kullanmayı tercih edersiniz. şu bilgileri öğrenmek isteyebilirsiniz:
+
+- Azure [Güvenlik Merkezi Ile Azure VMware Çözüm VM 'Lerinizi koruma](azure-security-integration.md).
+- [Azure VMware çözümü için Azure Backup sunucusu ayarlama](set-up-backup-server-for-azure-vmware-solution.md).
+- [Azure VMware çözümünü bir hub ve bağlı bileşen mimarisinde tümleştirme](concepts-hub-and-spoke.md).

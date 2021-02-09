@@ -8,14 +8,14 @@ manager: gwallace
 editor: ''
 ms.service: api-management
 ms.topic: article
-ms.date: 04/26/2020
+ms.date: 01/25/2021
 ms.author: apimpm
-ms.openlocfilehash: b560b02544eeb96167e68ed305d4d9942d2b1e0f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 48abce693ca22163c0a1742ba71faf36fc6156a1
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82232981"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99989096"
 ---
 # <a name="self-hosted-gateway-overview"></a>Şirket içinde barındırılan ağ geçidine genel bakış
 
@@ -43,13 +43,13 @@ Varsayılan olarak, tüm bu bileşenler Azure 'da dağıtılır ve API 'Lerin al
 
 ## <a name="packaging-and-features"></a>Paketleme ve Özellikler
 
-Şirket içinde barındırılan ağ geçidi, her API Management hizmetinin bir parçası olarak Azure 'a dağıtılan yönetilen ağ geçidinin Kapsayıcılı, işlevsel olarak eşdeğer bir sürümüdür. Şirket içinde barındırılan ağ geçidi, Microsoft Container Registry Linux tabanlı bir Docker [kapsayıcısı](https://aka.ms/apim/sputnik/dhub) olarak kullanılabilir. Docker, Kubernetes veya Şirket içindeki bir sunucu kümesinde çalışan, bulut altyapısındaki veya değerlendirme ve geliştirme amaçları için kişisel bir bilgisayardaki herhangi bir kapsayıcı düzenleme çözümüne dağıtılabilir.
+Şirket içinde barındırılan ağ geçidi, her API Management hizmetin bir parçası olarak Azure 'a dağıtılan yönetilen ağ geçidinin Kapsayıcılı, işlevsel olarak denk bir sürümüdür. Şirket içinde barındırılan ağ geçidi, Microsoft Container Registry Linux tabanlı bir Docker [kapsayıcısı](https://aka.ms/apim/sputnik/dhub) olarak kullanılabilir. Docker, Kubernetes veya Şirket içindeki bir sunucu kümesinde çalışan, bulut altyapısındaki veya değerlendirme ve geliştirme amaçları için kişisel bir bilgisayardaki herhangi bir kapsayıcı düzenleme çözümüne dağıtılabilir.
 
 Yönetilen ağ geçitlerinde bulunan aşağıdaki işlevsellik, şirket içinde barındırılan ağ geçitlerinde **kullanılamaz** :
 
 - Azure İzleyici günlükleri
 - Yukarı akış (arka uç tarafı) TLS sürümü ve şifre yönetimi
-- API Management hizmetine yüklenen [CA kök sertifikalarını](api-management-howto-ca-certificates.md) kullanarak sunucu ve istemci sertifikalarının doğrulanması. Özel CA desteği eklemek için, CA 'nın kök sertifikasını yükleyen şirket içinde barındırılan ağ geçidi kapsayıcı görüntüsüne bir katman ekleyin.
+- API Management hizmetine yüklenen [CA kök sertifikalarını](api-management-howto-ca-certificates.md) kullanarak sunucu ve istemci sertifikalarının doğrulanması. Daha fazla bilgi için, bkz. [Şirket içinde barındırılan ağ geçidinde sertifika doğrulaması](api-management-howto-mutual-certificates-for-clients.md#certificate-validation-in-self-hosted-gateway).
 - [Service Fabric](../service-fabric/service-fabric-api-management-overview.md) ile tümleştirme
 - TLS oturum sürdürme
 - İstemci sertifikası yeniden anlaşması. Diğer bir deyişle, [istemci sertifikası kimlik doğrulamasının](api-management-howto-mutual-certificates-for-clients.md) iş API tüketicileri, ilk TLS el sıkışma kapsamında sertifika sunması gerekir. Bunun emin olmak için, şirket içinde barındırılan bir ağ geçidi özel ana bilgisayar adı yapılandırırken istemci sertifikası ayarını etkinleştirin.

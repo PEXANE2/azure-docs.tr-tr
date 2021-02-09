@@ -8,19 +8,19 @@ ms.subservice: cosmosdb-graph
 ms.topic: how-to
 ms.date: 06/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: 91516c9815cfd71ffb59c399ea6580c6e28d8fce
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 4d76bdcb385ed2fe4b8a697f24187b8e3d5addbc
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99576473"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99988751"
 ---
 # <a name="using-a-partitioned-graph-in-azure-cosmos-db"></a>Azure Cosmos DB'de bölümlenmiş graf kullanma
 [!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
 
 Azure Cosmos DB Gremlin API 'sinin temel özelliklerinden biri, büyük ölçekli grafikleri yatay ölçeklendirmeyle işleyebilme olanağıdır. Kapsayıcılar depolama ve aktarım hızı bakımından bağımsız olarak ölçeklendirebilir. Azure Cosmos DB, bir grafik verilerini depolamak için otomatik olarak ölçeklenebilen kapsayıcılar oluşturabilirsiniz. Veriler, belirtilen **bölüm anahtarına** göre otomatik olarak dengelenir.
 
-Kapsayıcının boyutunun 20 GB 'den fazlasını depolaması bekleniyorsa veya saniyede 10.000 ' den fazla istek birimi (ru) ayırmak istiyorsanız bölümlendirme, dahili olarak yapılır. Veriler, belirttiğiniz bölüm anahtarına göre otomatik olarak bölümlenir. Azure portal veya Gremlin sürücülerinden oluşan 3. x veya daha yüksek sürümlerden Grafik kapsayıcıları oluşturursanız bölüm anahtarı gereklidir. 2. x veya Gremlin sürücülerin daha düşük sürümlerini kullanıyorsanız bölüm anahtarı gerekli değildir. 
+Kapsayıcının boyutunun 20 GB 'den fazlasını depolaması bekleniyorsa veya saniyede 10.000 ' den fazla istek birimi (ru) ayırmak istiyorsanız bölümlendirme, dahili olarak yapılır. Veriler, belirttiğiniz bölüm anahtarına göre otomatik olarak bölümlenir. Azure portal veya Gremlin sürücülerinden oluşan 3. x veya daha yüksek sürümlerden Grafik kapsayıcıları oluşturursanız bölüm anahtarı gereklidir. 2. x veya Gremlin sürücülerin daha düşük sürümlerini kullanıyorsanız bölüm anahtarı gerekli değildir.
 
 [Azure Cosmos DB bölümleme mekanizmasından](partitioning-overview.md) aynı genel ilkeler aşağıda açıklanan bazı grafiğe özgü iyileştirmeler ile uygulanır.
 

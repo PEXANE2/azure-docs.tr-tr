@@ -2,13 +2,13 @@
 title: Azure VMware çözümünde Web uygulamalarınızı korumak için Azure Application Gateway kullanma
 description: Azure VMware çözümünde çalışan Web uygulamalarınızı güvenli bir şekilde sunmak için Azure Application Gateway 'i yapılandırın.
 ms.topic: how-to
-ms.date: 11/13/2020
-ms.openlocfilehash: 02e439989c985354dbe06fa3e231d5daf7099d70
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.date: 02/08/2021
+ms.openlocfilehash: fdef37bd76b08a8778db8401a1e8a0406c2ed652
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629056"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99988640"
 ---
 # <a name="use-azure-application-gateway-to-protect-your-web-apps-on-azure-vmware-solution"></a>Azure VMware çözümünde Web uygulamalarınızı korumak için Azure Application Gateway kullanma
 
@@ -37,14 +37,14 @@ Diyagramda, Azure VMware Çözüm Web uygulamalarıyla Application Gateway doğr
 
 Application Gateway örnek, Hub üzerinde ayrılmış bir alt ağda dağıtılır. Azure genel IP adresine sahiptir. Sanal ağ için standart DDoS korumasının etkinleştirilmesi önerilir. Web sunucusu, NSX T0 ve T1 yönlendiricilerinin arkasındaki bir Azure VMware çözümü özel bulutu üzerinde barındırılır. Azure VMware çözümü, hub ve şirket içi sistemlerle iletişimi etkinleştirmek için [ExpressRoute Global Reach](../expressroute/expressroute-global-reach.md) kullanır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Etkin aboneliği olan bir Azure hesabı.
 - Azure VMware çözümü özel bulutu dağıtıldı ve çalışıyor.
 
 ## <a name="deployment-and-configuration"></a>Dağıtım ve yapılandırma
 
-1. Azure portal, **Application Gateway** araması yapın ve **uygulama ağ geçidi oluştur** ' u seçin.
+1. Azure portal, **Application Gateway** araması yapın ve **uygulama ağ geçidi oluştur**' u seçin.
 
 2. Aşağıdaki şekilde temel ayrıntıları sağlayın; ardından Ileri ' yi seçin **: ön uçlar>**. 
 
@@ -55,19 +55,19 @@ Application Gateway örnek, Hub üzerinde ayrılmış bir alt ağda dağıtılı
     > [!NOTE]
     > Özel ön uçlar için yalnızca standart ve Web uygulaması güvenlik duvarı (WAF) SKU 'Ları desteklenir.
 
-4. Azure VMware Çözüm altyapısında çalışan VM 'Ler için bir arka uç havuzu ekleyin. Azure VMware çözümü özel bulutu üzerinde çalışan Web sunucularının ayrıntılarını sağlayın ve **Ekle** ' yi seçin.  Ardından Ileri ' yi seçin **: yapılandırma>**.
+4. Azure VMware Çözüm altyapısında çalışan VM 'Ler için bir arka uç havuzu ekleyin. Azure VMware çözümü özel bulutu üzerinde çalışan Web sunucularının ayrıntılarını sağlayın ve **Ekle**' yi seçin.  Ardından Ileri ' yi seçin **: yapılandırma>**.
 
-1. **Yapılandırma** sekmesinde, **yönlendirme kuralı ekle** ' yi seçin.
+1. **Yapılandırma** sekmesinde, **yönlendirme kuralı ekle**' yi seçin.
 
 6. **Dinleyici** sekmesinde, dinleyicinin ayrıntılarını sağlayın. HTTPS seçilirse, bir PFX dosyasından veya var olan bir Azure Key Vault sertifikasından bir sertifika sağlamanız gerekir. 
 
-7. **Arka uç hedefleri** sekmesini seçin ve daha önce oluşturulan arka uç havuzunu seçin. **Http ayarları** alanı Için **Yeni Ekle** ' yi seçin.
+7. **Arka uç hedefleri** sekmesini seçin ve daha önce oluşturulan arka uç havuzunu seçin. **Http ayarları** alanı Için **Yeni Ekle**' yi seçin.
 
 8. HTTP ayarlarının parametrelerini yapılandırın. **Add (Ekle)** seçeneğini belirleyin.
 
-9. Yol tabanlı kuralları yapılandırmak istiyorsanız, **yol tabanlı bir kural oluşturmak için birden çok hedef Ekle** ' yi seçin. 
+9. Yol tabanlı kuralları yapılandırmak istiyorsanız, **yol tabanlı bir kural oluşturmak için birden çok hedef Ekle**' yi seçin. 
 
-10. Yol tabanlı bir kural ekleyin ve **Ekle** ' yi seçin. Başka yol tabanlı kurallar eklemek için tekrarlayın. 
+10. Yol tabanlı bir kural ekleyin ve **Ekle**' yi seçin. Başka yol tabanlı kurallar eklemek için tekrarlayın. 
 
 11. Yol tabanlı kurallar eklemeyi bitirdiğinizde yeniden **Ekle** ' yi seçin. ardından Ileri ' yi seçin **: etiketler>**. 
 
@@ -101,13 +101,13 @@ Bu yordamda, mevcut bir uygulama ağ geçidinde Azure VMware çözümü özel bu
     Add-Content -Path C:\inetpub\wwwroot\Default.htm -Value $($env:computername)
     ```
 
-2. Mevcut bir Application Gateway örneğinde sol menüden **arka uç havuzları** ' nı seçin,  **Ekle** ' yi seçin ve yeni havuzların ayrıntılarını girin. Sağ bölmede **Ekle** ' yi seçin.
+2. Mevcut bir Application Gateway örneğinde sol menüden **arka uç havuzları** ' nı seçin,  **Ekle**' yi seçin ve yeni havuzların ayrıntılarını girin. Sağ bölmede **Ekle** ' yi seçin.
 
     :::image type="content" source="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-multi-backend-pool-02.png" alt-text="Arka uç havuzları eklemek için arka uç havuzları sayfasının ekran görüntüsü." lightbox="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-multi-backend-pool-02.png":::
 
-3. **Dinleyiciler** bölümünde her Web sitesi için yeni bir dinleyici oluşturun. Her bir dinleyicinin ayrıntılarını girin ve **Ekle** ' yi seçin.
+3. **Dinleyiciler** bölümünde her Web sitesi için yeni bir dinleyici oluşturun. Her bir dinleyicinin ayrıntılarını girin ve **Ekle**' yi seçin.
 
-4. Sol tarafta **http ayarları** ' nı seçin ve sol bölmedeki **Ekle** ' yi seçin. Ayrıntıları doldurarak yeni bir HTTP ayarı oluşturun ve **Kaydet** ' i seçin.
+4. Sol tarafta **http ayarları** ' nı seçin ve sol bölmedeki **Ekle** ' yi seçin. Ayrıntıları doldurarak yeni bir HTTP ayarı oluşturun ve **Kaydet**' i seçin.
 
     :::image type="content" source="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-multi-backend-pool-03.png" alt-text="Yeni bir HTTP ayarı oluşturmak için HTTP ayarları sayfasının ekran görüntüsü." lightbox="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-multi-backend-pool-03.png":::
 
@@ -155,7 +155,7 @@ Bu yordamda, mevcut bir uygulama ağ geçidinde Azure VMware çözümü özel bu
 2. Mevcut bir Application Gateway örneğine üç yeni arka uç havuzu ekleyin. 
 
    1. Sol menüden **arka uç havuzları** ' nı seçin. 
-   1. **Ekle** ' yi seçin ve ilk havuzun ( **contoso-Web** ) ayrıntılarını girin. 
+   1. **Ekle** ' yi seçin ve ilk havuzun ( **contoso-Web**) ayrıntılarını girin. 
    1. Hedef olarak bir VM ekleyin. 
    1. **Add (Ekle)** seçeneğini belirleyin. 
    1. Hedef olarak benzersiz bir VM ekleyerek **contoso görüntüleri** ve **contoso-video** için bu işlemi tekrarlayın. 
@@ -164,7 +164,7 @@ Bu yordamda, mevcut bir uygulama ağ geçidinde Azure VMware çözümü özel bu
 
 3. **Dinleyiciler** bölümünde, 8080 numaralı bağlantı noktasını kullanarak temel türünde yeni bir dinleyici oluşturun.
 
-4. Sol gezinti çubuğunda **http ayarları** ' nı seçin ve sol bölmeden **Ekle** ' yi seçin. Ayrıntıları doldurarak yeni bir HTTP ayarı oluşturun ve **Kaydet** ' i seçin.
+4. Sol gezinti çubuğunda **http ayarları** ' nı seçin ve sol bölmeden **Ekle** ' yi seçin. Ayrıntıları doldurarak yeni bir HTTP ayarı oluşturun ve **Kaydet**' i seçin.
 
     :::image type="content" source="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-url-route-backend-pool-04.png" alt-text="Http ayarları yapılandırmasını gösteren HTTP ayarı Ekle sayfasının ekran görüntüsü.":::
 
@@ -188,4 +188,8 @@ Bu yordamda, mevcut bir uygulama ağ geçidinde Azure VMware çözümü özel bu
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
-Daha fazla yapılandırma örneği için [Azure Application Gateway belgelerini](../application-gateway/index.yml) gözden geçirin.
+Azure VMware çözümünde çalışan bir Web uygulamasını korumak için Application Gateway kullanmayı da kapsadığınıza göre, şunları öğrenmek isteyebilirsiniz:
+
+- [Azure Application Gateway farklı senaryolar Için yapılandırma](../application-gateway/configuration-overview.md).
+- [Azure VMware Çözüm iş yüklerini dengelemek için Traffic Manager dağıtma](deploy-traffic-manager-balance-workloads.md).
+- [Azure NetApp Files Azure VMware Çözüm tabanlı iş yükleri Ile tümleştirme](netapp-files-with-azure-vmware-solution.md).

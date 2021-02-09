@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/13/2020
 ms.author: apimpm
-ms.openlocfilehash: 4e5522c162e08f0257bd6f20b058bf8bb858cff3
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 553b4527796db3e5d0f430afd6c5e614626187e5
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93099355"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99988897"
 ---
 # <a name="how-to-secure-apis-using-client-certificate-authentication-in-api-management"></a>API Management'ta istemci sertifikası kimlik doğrulamasını kullanarak API'lerin güvenliğini sağlama
 
@@ -94,6 +94,18 @@ Aşağıdaki örnek, API Management yüklenen sertifikalara karşı bir istemci 
 > [!TIP]
 > Bu [makalede](https://techcommunity.microsoft.com/t5/Networking-Blog/HTTPS-Client-Certificate-Request-freezes-when-the-Server-is/ba-p/339672) açıklanan istemci sertifikası kilitlenmesi sorunu, tek bir şekilde kendi kendine bildirimde bulunabilir. Örneğin, istekler `403 Forbidden` dondurduktan sonra istek zaman aşımından sonra durum koduna neden `context.Request.Certificate` olur `null` . Bu sorun genellikle `POST` `PUT` yaklaşık 60 KB veya daha büyük içerik uzunluğuna sahip olan istekleri etkiler.
 > Bu sorunun oluşmasını önlemek için, "özel etki alanları" dikey penceresindeki istenen ana bilgisayar adları için "istemci sertifikası anlaş" ayarını bu belgenin ilk görüntüsünde gösterildiği gibi etkinleştirin. Bu özellik, tüketim katmanında kullanılamaz.
+
+## <a name="certificate-validation-in-self-hosted-gateway"></a>Şirket içinde barındırılan ağ geçidinde sertifika doğrulaması
+
+[Şirket içinde barındırılan ağ geçidi](self-hosted-gateway-overview.md) görüntüsü varsayılan API Management, bir API Management örneğine yüklenen [CA kök sertifikalarını](api-management-howto-ca-certificates.md) kullanarak sunucu ve istemci sertifikalarının doğrulanmasını desteklemez. Şirket içinde barındırılan ağ geçidine özel bir sertifika sunan istemciler yavaş yanıt verebilir, çünkü sertifika iptal listesi (CRL) doğrulamasının ağ geçidinde zaman aşımına uğradığından uzun zaman alabilir. 
+
+Ağ geçidini çalıştırırken geçici bir çözüm olarak, PKI IP adresini API Management örneği yerine localhost adresini (127.0.0.1) gösterecek şekilde yapılandırabilirsiniz. Bu, ağ geçidi istemci sertifikasını doğrulamaya çalıştığında CRL doğrulamanın hızlı bir şekilde başarısız olmasına neden olur. Ağ geçidini yapılandırmak için, kapsayıcıdaki dosyadaki localhost 'a çözülecek API Management örneğine bir DNS girişi ekleyin `/etc/hosts` . Ağ Geçidi dağıtımı sırasında bu girişi ekleyebilirsiniz:
+ 
+* Docker dağıtımı için, `--add-host <hostname>:127.0.0.1` komutuna parametresini ekleyin `docker run` . Daha fazla bilgi için bkz. [kapsayıcı ana bilgisayar dosyasına giriş ekleme](https://docs.docker.com/engine/reference/commandline/run/#add-entries-to-container-hosts-file---add-host)
+ 
+* Kubernetes dağıtımı için `hostAliases` yapılandırma dosyasına bir belirtim ekleyin `myGateway.yaml` . Daha fazla bilgi için bkz. [konak diğer adlarına sahip Pod/etc/konaklarına giriş ekleme](https://kubernetes.io/docs/concepts/services-networking/add-entries-to-pod-etc-hosts-with-host-aliases/).
+
+
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -3,15 +3,15 @@ title: Bir buluta yönelik bulutu yönetme-Azure iş ortağı çözümleri
 description: Bu makalede, Azure portal bir uyumlu bulutun yönetimi açıklanmaktadır. Çoklu oturum açmayı ayarlama, bir veya daha fazla kuruluşu silme ve destek alma.
 ms.service: partner-services
 ms.topic: conceptual
-ms.date: 01/15/2021
+ms.date: 02/08/2021
 author: tfitzmac
 ms.author: tomfitz
-ms.openlocfilehash: 2d13c183f0b3891fa92b5e2a6534acbf8102e032
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: f8a54096ecda4729f7070120a02be3055f933cea
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98253591"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99989146"
 ---
 # <a name="manage-the-confluent-cloud-resource"></a>Konluent bulut kaynağını yönetme
 
@@ -66,13 +66,23 @@ Bir destek talebi göndermek için, aşağıda gösterildiği gibi, bu [destek](
 > [!NOTE]
 > İlk kez kullanıcılar için, şifre destek portalında oturum açmadan önce parolanızı sıfırlayın. Uyumlu bulutla bir hesabınız yoksa, daha fazla yardım almak için adresine bir e-posta gönderin `cloud-support@confluent.io` .
 
+Portalda Azure yardım ve Destek aracılığıyla bir istek gönderebilir ya da Azure 'da confluent bulutu için doğrudan Apache Kafka örneğinden bir istek gönderebilirsiniz.
+
+Azure yardım ve Destek aracılığıyla bir istek göndermek için:
+
+1. **Destek + yardım** seçeneğini belirleyin.
+1. **Destek Isteği oluştur**' u seçin.
+1. Formda, **sorun türü** için **Teknik** ' i seçin. Aboneliğinizi seçin. Hizmetler listesinde **Azure 'Da confluent**' ı seçin.
+
+    :::image type="content" source="media/support-request-help.png" alt-text="Yardım 'dan bir destek isteği oluşturun.":::
+
 Kaynağından bir istek göndermek için şu adımları izleyin:
 
 1. Azure portal, konuş kuruluşunuzu seçin.
 1. Ekranın sol tarafındaki menüden **Yeni destek isteği**' ni seçin.
 1. Bir destek isteği oluşturmak için, **konur portalının** bağlantısını seçin.
 
-    :::image type="content" source="media/support-request.png" alt-text="Bir destek isteği oluşturun.":::
+    :::image type="content" source="media/support-request.png" alt-text="Örnekten bir destek isteği oluşturun.":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

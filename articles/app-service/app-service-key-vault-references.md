@@ -3,15 +3,15 @@ title: Key Vault başvurularını kullanma
 description: Azure App Service ve Azure Işlevlerini Azure Key Vault başvurularını kullanacak şekilde ayarlamayı öğrenin. Key Vault gizli dizileri uygulama kodunuz için kullanılabilir hale getirin.
 author: mattchenderson
 ms.topic: article
-ms.date: 10/09/2019
+ms.date: 02/05/2021
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: bb220da0b906c9d7a5f45dcc841129e14c7c6c51
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: b55aeb68d5fa740d34c8823f555f804be54895a7
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92205855"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99988770"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions"></a>App Service ve Azure Işlevleri için Key Vault başvurularını kullanma
 
@@ -38,26 +38,26 @@ Key Vault parolaları okumak için bir kasasının oluşturulmuş olması ve uyg
 Key Vault bir başvuru, `@Microsoft.KeyVault({referenceString})` `{referenceString}` aşağıdaki seçeneklerden biri tarafından değiştirildiği biçimdedir:
 
 > [!div class="mx-tdBreakAll"]
-> | Başvuru dizesi                                                            | Açıklama                                                                                                                                                                                 |
+> | Başvuru dizesi                                                            | Description                                                                                                                                                                                 |
 > |-----------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-> | SecretUri =_Secreturi_                                                       | **Secreturi** , bir sürüm dahil olmak üzere Key Vault bir parolanın tam veri düzlemi URI 'si olmalıdır, örneğin,https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931  |
-> | VaultName =_vaultname_; SecretName =_secretname_; SecretVersion =_Secretversion_ | **Vaultname** Key Vault kaynağınızın adı olmalıdır. **Secretname** , hedef parolanın adı olmalıdır. **Secretversion** , kullanılacak gizli dizinin sürümü olmalıdır. |
+> | SecretUri =_Secreturi_                                                       | **Secreturi** , isteğe bağlı olarak bir sürüm, örneğin, veya gibi Key Vault bir parolanın tam veri düzlemi URI 'si olmalıdır. `https://myvault.vault.azure.net/secrets/mysecret/``https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931`  |
+> | VaultName =_vaultname_; SecretName =_secretname_; SecretVersion =_Secretversion_ | **Vaultname** gereklidir ve Key Vault kaynağınızın adı olmalıdır. **Secretname** gereklidir ve hedef gizli anahtar adı olmalıdır. **Secretversion** isteğe bağlıdır, ancak varsa, kullanılacak gizli dizinin sürümünü belirtir. |
 
-> [!NOTE] 
-> Sürümler şu anda gerekli. Gizli dizileri döndürürken, uygulama yapılandırmanızda sürümü güncelleştirmeniz gerekir.
 Örneğin, bir bütün başvuru aşağıdaki gibi görünür:
 
-
 ```
-@Microsoft.KeyVault(SecretUri=https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931)
+@Microsoft.KeyVault(SecretUri=https://myvault.vault.azure.net/secrets/mysecret)
 ```
 
 Alternatif olarak:
 
 ```
-@Microsoft.KeyVault(VaultName=myvault;SecretName=mysecret;SecretVersion=ec96f02080254f109c51a1f14cdb1931)
+@Microsoft.KeyVault(VaultName=myvault;SecretName=mysecret)
 ```
 
+## <a name="rotation"></a>Döndürme
+
+Başvuru içinde bir sürüm belirtilmemişse, uygulama Key Vault mevcut olan en son sürümü kullanır. Bir döndürme olayı gibi daha yeni sürümler kullanılabilir olduğunda, uygulama otomatik olarak güncelleştirilecek ve bir gün içinde en son sürümü kullanmaya başlayacaktır. Uygulamada yapılan tüm yapılandırma değişiklikleri, tüm başvurulan parolaların en son sürümlerine anında güncelleştirme yapılmasına neden olur.
 
 ## <a name="source-application-settings-from-key-vault"></a>Key Vault kaynak uygulama ayarları
 

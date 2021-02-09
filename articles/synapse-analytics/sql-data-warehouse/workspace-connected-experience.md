@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 11/23/2020
 ms.author: anvang
 ms.reviewer: jrasnick
-ms.openlocfilehash: 5efb1df378df323585bc0ca1094451cdb095fe4e
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: d477693667c8d78687d27b291d2b3c15612a0f30
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499790"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99989042"
 ---
 # <a name="enabling-synapse-workspace-features-on-an-existing-dedicated-sql-pool-formerly-sql-dw"></a>Var olan ayrılmış bir SQL havuzunda SYNAPSE çalışma alanı özelliklerini etkinleştirme (eski adıyla SQL DW)
 
@@ -32,7 +32,7 @@ Artık SYNAPSE çalışma alanı GA olduğuna göre, DW portalı genel bakış b
 - **SQL özellikleri** SYNAPSE çalışma alanı özelliği etkinleştirildikten sonra tüm SQL özellikleri mantıksal SQL Server ile kalacaktır. Çalışma alanı etkinleştirildikten sonra, SQL kaynak sağlayıcısı üzerinden sunucuya erişim mümkün olmaya devam edecektir. Tüm yönetim işlevleri çalışma alanı aracılığıyla başlatılabilir ve işlem SQL havuzlarınızı barındıran mantıksal SQL Server yapılır. Bir çalışma alanı etkinleştirildiğinde varolan Otomasyon, araç veya bağlantı kopuk veya kesintiye uğratılmaz.  
 - **Kaynak taşıma**  SYNAPSE çalışma alanı özelliği etkinleştirilmiş bir sunucuda bir kaynak taşıma işlemi başlatmak, sunucu ile çalışma alanı arasındaki bağlantının kesintiye uğramasına neden olur ve artık mevcut adanmış SQL Havuzu (eski adıyla SQL DW) örneklerine erişemeyeceksiniz. Bağlantının korunduğundan emin olmak için her iki kaynağın de aynı abonelik ve kaynak grubu içinde kalması önerilir. 
 - **İzleme** Bir çalışma alanı etkin adanmış SQL Havuzu (eski adıyla SQL DW) ile SYNAPSE Studio aracılığıyla gönderilen SQL istekleri, Izleyici hub 'ında görüntülenebilir. Diğer tüm izleme etkinlikleri için Azure portal adanmış SQL Havuzu (eski adıyla SQL DW) izlemeye gidebilirsiniz. 
-- **Güvenlik** ve **erişim denetimleri** yukarıda belirtilen şekilde, SQL Server ve adanmış SQL HAVUZLARı (eski adıyla SQL DW) örnekleri için tüm yönetim işlevleri mantıksal SQL Server 'da olmaya devam edecektir. Bu işlevler, Güvenlik Duvarı kural yönetimi, sunucunun Azure AD yöneticisini ve adanmış SQL havuzunuzdaki (eski adıyla SQL DW) verilere yönelik tüm erişim denetimini içerir. Adanmış SQL havuzunuzun (eski adıyla SQL DW) erişilebilir olduğundan ve SYNAPSE çalışma alanı aracılığıyla kullanılabilmesi için aşağıdaki adımlar gerçekleştirilmelidir. Çalışma alanı rol üyelikleri, kullanıcılara adanmış SQL Havuzu (eski adıyla SQL DW) örnekleri için izinler vermez. Kullanıcıların mantıksal sunucudaki adanmış SQL Havuzu (eski adıyla SQL DW) örneklerine erişebildiğinden emin olmak için normal [SQL kimlik doğrulama](sql-data-warehouse-authentication.md) ilkelerinizi izleyin. 
+- **Güvenlik** ve **erişim denetimleri** yukarıda belirtilen şekilde, SQL Server ve adanmış SQL HAVUZLARı (eski adıyla SQL DW) örnekleri için tüm yönetim işlevleri mantıksal SQL Server 'da olmaya devam edecektir. Bu işlevler, Güvenlik Duvarı kural yönetimi, sunucunun Azure AD yöneticisini ve adanmış SQL havuzunuzdaki (eski adıyla SQL DW) verilere yönelik tüm erişim denetimini içerir. Adanmış SQL havuzunuzun (eski adıyla SQL DW) erişilebilir olduğundan ve SYNAPSE çalışma alanı aracılığıyla kullanılabilmesi için aşağıdaki adımlar gerçekleştirilmelidir. Çalışma alanı rol üyelikleri, kullanıcılara adanmış SQL Havuzu (eski adıyla SQL DW) örnekleri için izinler vermez. Kullanıcıların mantıksal sunucudaki adanmış SQL Havuzu (eski adıyla SQL DW) örneklerine erişebildiğinden emin olmak için normal [SQL kimlik doğrulama](sql-data-warehouse-authentication.md) ilkelerinizi izleyin. Adanmış SQL Havuzu (eski adıyla SQL DW) konak sunucusuna zaten atanmış bir yönetilen kimlik varsa, bu yönetilen kimliğin adı, çalışma alanı iş ortağı hizmetlerini desteklemek için otomatik olarak oluşturulan çalışma alanı yönetilen kimliği ile aynı olur (ör. ADF işlem hatları).  Bağlı bir senaryoda aynı ada sahip iki yönetilen kimlik bulunabilir. Yönetilen kimlikler, Azure AD nesne kimliklerine göre ayırt edilebilir, ancak nesne kimliklerini kullanarak SQL kullanıcıları oluşturma işlevselliği çok yakında kullanıma sunulacak.
 
     ```sql
     CREATE USER [<workspace managed identity] FROM EXTERNAL PROVIDER 
