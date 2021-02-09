@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: 1967a2fb5adebe01ef4bff8d58f7832bffe95762
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f98482a43516683499e83bebafe4eeadc5b7a8b7
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90531279"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99832513"
 ---
 # <a name="tutorial-deploy-and-walkthrough-a-continuous-patient-monitoring-app-template"></a>Öğretici: sürekli hasta izleme uygulama şablonunu dağıtma ve gözden geçirme
 
@@ -24,6 +24,10 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!div class="checklist"]
 > * Uygulama şablonu oluşturma
 > * Uygulama şablonunu gözden geçir
+
+## <a name="prerequisites"></a>Önkoşullar
+
+Bir Azure aboneliği önerilir. Alternatif olarak, 7 günlük ücretsiz deneme sürümünü kullanabilirsiniz. Azure aboneliğiniz yoksa, [Azure kaydolma sayfasında](https://aka.ms/createazuresubscription)bir tane oluşturabilirsiniz.
 
 ## <a name="create-an-application-template"></a>Uygulama şablonu oluşturma
 
@@ -39,7 +43,7 @@ Uygulamanızı oluşturmaya başlamak için uygulama **Oluştur** düğmesini se
 
 Uygulamanızı oluşturmak için:
 
-1. Azure IoT Central, seçtiğiniz şablona göre otomatik olarak bir uygulama adı önerir. Bu adı kabul edebilir veya **sürekli hasta izleme**gibi kendi kolay uygulama adınızı girebilirsiniz. Azure IoT Central, uygulama adına göre sizin için benzersiz bir URL ön eki de oluşturur. İsterseniz bu URL önekini daha kolay bir şekilde değiştirebilirsiniz.
+1. Azure IoT Central, seçtiğiniz şablona göre otomatik olarak bir uygulama adı önerir. Bu adı kabul edebilir veya **sürekli hasta izleme** gibi kendi kolay uygulama adınızı girebilirsiniz. Azure IoT Central, uygulama adına göre sizin için benzersiz bir URL ön eki de oluşturur. İsterseniz bu URL önekini daha kolay bir şekilde değiştirebilirsiniz.
 
 2. *Ücretsiz* fiyatlandırma planı veya *Standart* fiyatlandırma planlarından birini kullanarak uygulamayı oluşturmak isteyip istemediğinizi seçebilirsiniz. Ücretsiz planı kullanarak oluşturduğunuz uygulamalar, süreleri dolmadan yedi gün önce ücretsizdir ve beş adede kadar ücretsiz cihaza izin verir. Ücretsiz plandaki bir uygulamayı, süresi dolmadan önce istediğiniz zaman standart bir fiyatlandırma planına taşıyabilirsiniz. Ücretsiz planı seçerseniz, iletişim bilgilerinizi girmeniz ve Microsoft 'tan bilgi ve ipucu alıp almadığınızı belirlemeniz gerekir. Standart bir plan kullanarak oluşturduğunuz uygulamalar, en fazla iki ücretsiz cihazı destekler ve faturalandırma için Azure abonelik bilgilerinizi girmenizi gerektirir.
 
@@ -49,7 +53,7 @@ Uygulamanızı oluşturmak için:
 
 ### <a name="dashboards"></a>Panolar
 
-Uygulama şablonu dağıttıktan sonra, önce **Lamna in hasta izleme panosuna**gideceksiniz. Lamna sağlık, iki hastaneler: Woodgrove Hospstanve Burkville hospstani içeren kurgusal bir barındırma sistemidir. Woodgrove Hospstanoperator panosunda şunları yapabilirsiniz:
+Uygulama şablonu dağıttıktan sonra, önce **Lamna in hasta izleme panosuna** gideceksiniz. Lamna sağlık, iki hastaneler: Woodgrove Hospstanve Burkville hospstani içeren kurgusal bir barındırma sistemidir. Woodgrove Hospstanoperator panosunda şunları yapabilirsiniz:
 
 * Cihazınızın **pil düzeyi** veya **bağlantı** durumu gibi cihaz telemetrisi ve özellikleri konusuna bakın.
 
@@ -61,11 +65,11 @@ Uygulama şablonu dağıttıktan sonra, önce **Lamna in hasta izleme panosuna**
 
 * Cihazın hasta veya uzak bir senaryo için kullanıldığını belirtmek üzere cihazınızın **hasta durumunu** değiştirin.
 
-:::image type="content" source="media/lamna-in-patient.png" alt-text="Healthcre uygulama şablonu":::
+:::image type="content" source="media/lamna-in-patient.png" alt-text="Hasta durumu":::
 
 Burkville Hospstanu işleci panosunu görmek için **uzak hasta panosuna git** ' i de seçebilirsiniz. Bu pano benzer bir eylem, telemetri ve bilgi kümesi içerir. Ayrıca, kullanımda olan birden çok cihazı görebilir ve her birinde **bellenimi güncelleştirmeyi** seçebilirsiniz.
 
-:::image type="content" source="media/lamna-remote.png" alt-text="Healthcre uygulama şablonu":::
+:::image type="content" source="media/lamna-remote.png" alt-text="Uzak Operatör Panosu":::
 
 ### <a name="device-templates"></a>Cihaz şablonları
 
@@ -75,13 +79,13 @@ Burkville Hospstanu işleci panosunu görmek için **uzak hasta panosuna git** '
 
 * **Akıllı Knee ayracı**: Bu cihaz, bir Knee değiştirme Sury 'den kurtarma yaparken, hastaların kullandığı bir Knee ayracını temsil eder. Bu şablonu seçerseniz cihaz verileri, hareket aralığı ve hızlandırma gibi işlevleri görürsünüz.
 
-:::image type="content" source="media/smart-vitals-device-template.png" alt-text="Healthcre uygulama şablonu":::
+:::image type="content" source="media/smart-vitals-device-template.png" alt-text="Akıllı yama şablonu":::
 
 ### <a name="device-groups"></a>Device groups
 
 Bir cihaz kümesini mantıksal olarak gruplamak ve ardından bunlar üzerinde toplu sorgular veya işlemler çalıştırmak için cihaz gruplarını kullanın.
 
-Cihaz grupları sekmesini seçerseniz, uygulamadaki her bir cihaz şablonu için varsayılan bir cihaz grubu görürsünüz. Ayrıca, **sağlama cihazları** ve **cihazları güncel olmayan üretici yazılımına sahip olan**iki ek örnek cihaz grubu da oluşturulmuştur. Bu örnek cihaz gruplarını, uygulamadaki bazı [işleri](#jobs) çalıştırmak için giriş olarak kullanabilirsiniz.
+Cihaz grupları sekmesini seçerseniz, uygulamadaki her bir cihaz şablonu için varsayılan bir cihaz grubu görürsünüz. Ayrıca, **sağlama cihazları** ve **cihazları güncel olmayan üretici yazılımına sahip olan** iki ek örnek cihaz grubu da oluşturulmuştur. Bu örnek cihaz gruplarını, uygulamadaki bazı [işleri](#jobs) çalıştırmak için giriş olarak kullanabilirsiniz.
 
 ### <a name="rules"></a>Kurallar
 
@@ -93,7 +97,7 @@ Cihaz grupları sekmesini seçerseniz, uygulamadaki her bir cihaz şablonu için
 
 * **Düzeltme Eki pili düşük**: Bu kural, cihazdaki pil düzeyi %10 ' un altına gittiğinde tetiklenir. Cihazını ücretlendirmesi için bir bildirim tetiklemek üzere bu kuralı kullanın.
 
-:::image type="content" source="media/brace-temp-rule.png" alt-text="Healthcre uygulama şablonu":::
+:::image type="content" source="media/brace-temp-rule.png" alt-text="Kurallar":::
 
 ### <a name="jobs"></a>İşler
 
@@ -105,7 +109,7 @@ Cihaz grupları sekmesini seçerseniz, uygulamadaki her bir cihaz şablonu için
 
 ### <a name="devices"></a>Cihazlar
 
-**Cihazlar** sekmesini seçin ve ardından **akıllı Knee ayracın**bir örneğini seçin. Seçtiğiniz belirli bir cihazla ilgili bilgileri araştırmak için üç görünüm vardır. Bu görünümler, cihazınız için cihaz şablonu oluşturduğunuzda oluşturulur ve yayımlanır. Bu nedenle, bu görünümler, bağlandığınız veya benzetim yaptığınız tüm cihazlarda tutarlıdır.
+**Cihazlar** sekmesini seçin ve ardından **akıllı Knee ayracın** bir örneğini seçin. Seçtiğiniz belirli bir cihazla ilgili bilgileri araştırmak için üç görünüm vardır. Bu görünümler, cihazınız için cihaz şablonu oluşturduğunuzda oluşturulur ve yayımlanır. Bu nedenle, bu görünümler, bağlandığınız veya benzetim yaptığınız tüm cihazlarda tutarlıdır.
 
 **Pano** görünümü cihazdan operatör odaklı telemetri ve özelliklere genel bir bakış sunar.
 
@@ -113,7 +117,7 @@ Cihaz grupları sekmesini seçerseniz, uygulamadaki her bir cihaz şablonu için
 
 **Komutlar** sekmesi cihazdaki komutları çalıştırmanızı sağlar.
 
-:::image type="content" source="media/knee-brace-dashboard.png" alt-text="Healthcre uygulama şablonu":::
+:::image type="content" source="media/knee-brace-dashboard.png" alt-text="Knee küme ayracı panosu":::
 
 ### <a name="data-export"></a>Veri dışarı aktarma
 
@@ -123,7 +127,7 @@ Veri dışa aktarma işlemi, cihaz verilerinizi [FHıR Için Azure API 'si](conc
 
 Bu uygulamayı kullanmaya devam edemeyecekiniz, **yönetim > uygulama ayarlarını** ziyaret ederek uygulamayı silin ve **Sil**' e tıklayın.
 
-:::image type="content" source="media/admin-delete.png" alt-text="Healthcre uygulama şablonu":::
+:::image type="content" source="media/admin-delete.png" alt-text="Tidy kaynakları":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

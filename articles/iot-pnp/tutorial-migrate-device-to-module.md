@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 9ac616ddf1c3475f2ca3b3e8097bb74da72faa77
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 33eaa1ea928cc0650c91948c70d46daf499f3b4b
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95500280"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99831217"
 ---
 # <a name="tutorial-connect-an-iot-plug-and-play-module-c"></a>Öğretici: IoT Tak ve Kullan modülünü bağlama (C#)
 
@@ -20,7 +20,12 @@ Bu öğreticide, bir genel IoT Tak ve Kullan [modülünün](../iot-hub/iot-hub-d
 
 Bir cihaz, bir IoT Hub 'ına bağlanırken model KIMLIĞINI yayımladığında bir IoT Tak ve Kullan aygıtıdır ve model KIMLIĞI tarafından tanımlanan dijital TWINS tanım dili (DTDL) modelinde açıklanan özellikleri ve yöntemleri uygular. Cihazların DTDL ve model KIMLIĞINI kullanma hakkında daha fazla bilgi edinmek için bkz. [ıot Tak ve kullan Geliştirici Kılavuzu](./concepts-developer-guide-device.md). Modüller model kimliklerini ve DTDL modellerini aynı şekilde kullanır.
 
-IoT Tak ve Kullan modülünün nasıl uygulanacağını göstermek için bu öğreticide, termostat C# cihaz örneğini genel bir modüle nasıl dönüştürebileceğiniz gösterilmektedir.
+IoT Tak ve Kullan modülünün nasıl uygulanacağını göstermek için, bu öğreticide nasıl yapılacağını gösterilmektedir:
+
+> [!div class="checklist"]
+> * IoT Hub 'ınıza modül içeren bir cihaz ekleyin.
+> * Termostat C# cihaz örneğini genel bir modüle dönüştürün.
+> * Modülle etkileşim kurmak için hizmet SDK 'sını kullanın.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -232,6 +237,10 @@ Azure IoT gezgin aracını kullanarak şunları görebilirsiniz:
 * IoT Edge cihazdan telemetri.
 * IoT Edge Module ikizi özellik güncelleştirmeleri IoT Tak ve Kullan bildirimlerini tetikledi.
 * IoT Edge modülü, IoT Tak ve Kullan komutlarınıza tepki verir.
+
+## <a name="clean-up-resources"></a>Kaynakları temizleme
+
+[!INCLUDE [iot-pnp-clean-resources](../../includes/iot-pnp-clean-resources.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

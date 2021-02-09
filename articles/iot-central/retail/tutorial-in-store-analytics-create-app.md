@@ -11,16 +11,14 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 11/12/2019
-ms.openlocfilehash: fc8928c9f64e323aafb29c9b1e717cc5c2ab6691
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: 112039b9227d5ff34e68b6dc6643597f335fbdb5
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97346716"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99832241"
 ---
 # <a name="tutorial-create-an-in-store-analytics-application-in-azure-iot-central"></a>Öğretici: Azure 'da bir mağaza Analytics uygulaması oluşturma IoT Central
-
-
 
 Öğreticide, bir Azure IoT Central mağaza 'da analiz uygulaması oluşturma çözümü üreticileri gösterilmektedir. Örnek uygulama, perakende mağaza içindir. Bu, yaygın iş ihtiyacı olan bir çözümdür ve bu da, doluluk ve çevre koşullarını izleyip uyarlayabilir.
 
@@ -276,7 +274,12 @@ Kurala bir eylem eklemek için:
 
     Birkaç dakika içinde, belirtilen e-posta hesabı e-posta almaya başlamalıdır. Uygulama, bir algılayıcı her defasında, nem düzeyinin koşuldaki değeri aştığını gösterdiği her seferinde e-posta gönderir.
 
+## <a name="clean-up-resources"></a>Kaynakları temizleme
+
+[!INCLUDE [iot-central-clean-up-resources](../../../includes/iot-central-clean-up-resources.md)]
+
 ## <a name="next-steps"></a>Sonraki adımlar
+
 Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
 
 * Azure IoT Central **Mağaza içi analiz-kullanıma alma** şablonunu kullanarak bir perakende mağaza uygulaması oluşturun

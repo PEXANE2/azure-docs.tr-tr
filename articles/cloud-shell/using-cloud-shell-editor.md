@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/24/2018
 ms.author: damaerte
-ms.openlocfilehash: 7f597bb5cba1a12bdb93325fe2b877ffc644e3e4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1e3ea9222b0f231250bde43fb86c07847ca4835e
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "60199231"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99832344"
 ---
 # <a name="using-the-azure-cloud-shell-editor"></a>Azure Cloud Shell düzenleyicisini kullanma
 
@@ -52,5 +52,6 @@ Komut paletini başlatmak için, `F1` düzenleyicide odak ayarlandığında anah
 Cloud Shell düzenleyicisinde dil vurgulama desteği, [Monako Düzenleyicisi](https://github.com/Microsoft/monaco-editor)'nin Monarch sözdizimi tanımlarının kullanımıyla olan yukarı akış işlevselliği aracılığıyla desteklenir. Katkı yapmayı öğrenmek için, [Monako katkıda bulunan kılavuzunu](https://github.com/Microsoft/monaco-editor/blob/master/CONTRIBUTING.md)okuyun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Cloud Shell Bash [için hızlı başlangıcı deneyin](quickstart.md) 
- [Tümleşik Cloud Shell araçlarının tam listesini görüntüleyin](features.md)
+
+- [Cloud Shell bash için hızlı başlangıcı deneyin](quickstart.md)
+- [Tümleşik Cloud Shell araçlarının tam listesini görüntüleyin](features.md)

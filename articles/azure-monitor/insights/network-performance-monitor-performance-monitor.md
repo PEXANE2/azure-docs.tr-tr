@@ -6,14 +6,17 @@ ms.topic: conceptual
 author: abshamsft
 ms.author: absha
 ms.date: 02/20/2018
-ms.openlocfilehash: 2c20f668c57e8c2e74c320ca535aea18e633daf8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6502d4259aa383c1466967d01282cecfbb8d1ded
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87326129"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99832972"
 ---
 # <a name="network-performance-monitor-solution-performance-monitoring"></a>Ağ Performansı İzleyicisi çözümü: performans izleme
+
+> [!IMPORTANT]
+> 1 Temmuz 2021 ' den itibaren, mevcut bir çalışma alanına yeni testler ekleyemez veya Ağ Performansı İzleyicisi yeni bir çalışma alanı etkinleştiremeyeceksiniz. 1 Temmuz 2021 ' den önce oluşturulan testleri kullanmaya devam edebilirsiniz. Geçerli iş yüklerinizde hizmet kesintisini en aza indirmek için, testlerinizi Ağ Performansı İzleyicisi 'den Azure ağ Izleyicisi 'ndeki [Yeni bağlantı izleyicisinden](https://docs.microsoft.com/azure/network-watcher/migrate-to-connection-monitor-from-network-performance-monitor) , 29 Şubat 2024 tarihinden önce geçirin.
 
 [Ağ performansı İzleyicisi](network-performance-monitor.md) performans izleyicisi özelliği, ağınızdaki çeşitli noktalarda ağ bağlantısını izlemenize yardımcı olur. Bulut dağıtımlarını ve şirket içi konumları, birden çok veri merkezini ve şubelerin yanı sıra görev açısından kritik çok katmanlı uygulamaları veya mikro hizmetleri izleyebilirsiniz. Performans Izleyicisinde, kullanıcılarınız şikayet etmeden önce ağ sorunlarını tespit edebilirsiniz. Önemli avantajlar şunları yapabilirsiniz: 
 
@@ -94,7 +97,7 @@ Bir protokol seçmeden önce aşağıdaki bilgileri göz önünde bulundurun:
 
 Dağıtım sırasında ıCMP kullanmayı seçerseniz, varsayılan izleme kuralını düzenleyerek istediğiniz zaman TCP 'ye geçiş yapabilirsiniz.
 
-1. **Ağ performansı**   >  **İzleyicisi**   >  **Configure**   >  **izleyiciyi**Yapılandır ' a gidin. Ardından **varsayılan kural**' ı seçin. 
+1. **Ağ performansı**   >  **İzleyicisi**   >  ****   >  **izleyiciyi** Yapılandır ' a gidin. Ardından **varsayılan kural**' ı seçin. 
 2. **Protokol** bölümüne ilerleyin ve kullanmak istediğiniz protokolü seçin. 
 3. Ayarı uygulamak için **Kaydet** ' i seçin. 
 
@@ -129,4 +132,3 @@ Aşağıdaki görüntüde, ağın belirli bir bölümünde sorunlu alanların as
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Ayrıntılı ağ performansı veri kayıtlarını görüntülemek için [günlüklerde arama](../log-query/log-query-overview.md) yapın.
-

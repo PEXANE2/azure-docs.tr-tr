@@ -11,12 +11,12 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 11/12/2019
-ms.openlocfilehash: 5165f7d6e16e0d136dbf8d4507090c78372185cb
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: 74ce36652b1a00ac6813c62a17d44e2a5486645f
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97348059"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99831726"
 ---
 # <a name="tutorial--customize-the-operator-dashboard-and-manage-devices-in-azure-iot-central"></a>Öğretici: işletmen panosunu özelleştirme ve Azure IoT Central cihazları yönetme
 
@@ -127,7 +127,7 @@ Kullanılmayan kutucukları kaldırdıktan sonra, düzenlenmiş bir düzen oluş
 
 Kalan kutucukları yeniden düzenlemek için:
 
-1. **Düzenle**’yi seçin.
+1. **Düzenle**'yi seçin.
 
 1. **İskişüretici yazılımı** kutucuğunu seçin ve yukarı **doğru pil kutucuğunun sağına** sürükleyin.
 
@@ -146,7 +146,7 @@ Bu bölümde, [IoT Central Azure 'da yerleşik bir Analytics uygulaması oluştu
 
 RuuviTag sensörlerinden çevresel verileri görüntüleyen kutucuklar eklemek için:
 
-1. **Düzenle**’yi seçin.
+1. **Düzenle**'yi seçin.
 
 1. `RuuviTag` **Cihaz şablonu listesinde öğesini** seçin. 
 
@@ -178,7 +178,7 @@ RuuviTag sensörlerinden çevresel verileri görüntüleyen kutucuklar eklemek i
 
 Yalnızca iki kullanıma alma bölgesi için telemetri göstermek üzere **kişiler trafik** kutucuğunu düzenlemek için:
 
-1. **Düzenle**’yi seçin. 
+1. **Düzenle**'yi seçin. 
 
 1. **Kişiler trafik** kutucuğunda **Yapılandır** ' ı seçin.
 
@@ -201,7 +201,7 @@ Uygulama işleçleri cihazları yönetmek ve durumu izlemek için panoyu kullan�
 
 Her RuuviTag için bir özellik kutucuğu eklemek için:
 
-1. **Düzenle**’yi seçin.
+1. **Düzenle**'yi seçin.
 
 1. `RuuviTag` **Cihaz şablonu listesinde öğesini** seçin. 
 
@@ -230,7 +230,7 @@ Uygulama işletmenleri, komutları çalıştırarak cihazları yönetmek için p
 
 Ağ geçidini yeniden başlatmak için bir komut kutucuğu eklemek için:
 
-1. **Düzenle**’yi seçin. 
+1. **Düzenle**'yi seçin. 
 
 1. `C500` **Cihaz şablonu listesinde öğesini** seçin. Bu, Rigado C500 ağ geçidi şablonudur. 
 
@@ -246,7 +246,12 @@ Ağ geçidini yeniden başlatmak için bir komut kutucuğu eklemek için:
 
 1. İsteğe bağlı olarak, ağ geçidinizdeki yeniden başlatma komutunu çalıştırmak için **yeniden başlatma** kutucuğunu seçin.
 
+## <a name="clean-up-resources"></a>Kaynakları temizleme
+
+[!INCLUDE [iot-central-clean-up-resources](../../../includes/iot-central-clean-up-resources.md)]
+
 ## <a name="next-steps"></a>Sonraki adımlar
+
 Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
 
 * Pano adını değiştirme

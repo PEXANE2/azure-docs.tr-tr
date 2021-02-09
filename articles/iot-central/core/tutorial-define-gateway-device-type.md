@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: f95df6fb74071dc16814f11fb48521f984c89778
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: e42e1791693342592e391a14422b1441c9cbbd31
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95995531"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99832400"
 ---
 # <a name="tutorial---define-a-new-iot-gateway-device-type-in-your-azure-iot-central-application"></a>Öğretici-Azure IoT Central uygulamanızda yeni bir IoT Ağ Geçidi cihaz türü tanımlama
 
@@ -51,11 +51,11 @@ Bu öğreticide, bir **S1 algılayıcısı** cihazının cihaz şablonları ve s
 
 1. **İnceleme** sayfasında, cihaz şablonunu uygulamanıza eklemek için **Oluştur** ' u seçin. 
 
-**_RS40 doluluk algılayıcısı_* cihazı için bir cihaz şablonu oluşturmak için:
+***RS40 doluluk algılayıcısı** cihazı için bir cihaz şablonu oluşturmak için:
 
 1. Sol bölmede **cihaz şablonları**' nı seçin. Sonra **+** şablonu eklemeye başlamak için seçin.
 
-1. **_RS40 doluma algılayıcısı_* cihazının kutucuğunu görene kadar aşağı kaydırın. Kutucuğu seçin ve ardından **İleri: Özelleştir**' i seçin.
+1. ***RS40 doluma algılayıcısı** cihazının kutucuğunu görene kadar aşağı kaydırın. Kutucuğu seçin ve ardından **İleri: Özelleştir**' i seçin.
 
 1. **İnceleme** sayfasında, cihaz şablonunu uygulamanıza eklemek için **Oluştur** ' u seçin. 
 
@@ -94,7 +94,7 @@ Daha sonra, aşağı akış cihaz şablonlarının şablonlarına ilişkiler ekl
 
 1. **+ Ilişki Ekle** ' yi seçin. Görünen ad olarak **sahiplik algılayıcısı** ' nı girin ve hedef olarak **RS40 sahiplik algılayıcısı** ' nı seçin.
 
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.
 
 ![İlişkileri gösteren akıllı derleme ağ geçidi cihaz şablonu](./media/tutorial-define-gateway-device-type/relationships.png)
 
@@ -113,7 +113,7 @@ Bir ağ geçidi cihaz şablonu, bulut özellikleri içerebilir. Bulut özellikle
     | Son Hizmet Tarihi | Yok          | Tarih   |
     | Müşteri Adı     | Yok          | Dize |
 
-2. **Kaydet**'i seçin.
+2. **Kaydet**’i seçin.
 
 ### <a name="create-views"></a>Görünümler oluşturma
 
@@ -198,6 +198,10 @@ Hem sanal aşağı akış cihazlarınız hem de sanal ağ geçidi cihazınıza b
 
 Bir ağ geçidi cihaz şablonu ve ağ geçidi cihaz örneği seçin ve **Birleştir**' i seçin.
 
+## <a name="clean-up-resources"></a>Kaynakları temizleme
+
+[!INCLUDE [iot-central-clean-up-resources](../../../includes/iot-central-clean-up-resources.md)]
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
@@ -208,9 +212,6 @@ Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
 * Cihaz telemetrisi için görselleştirme tanımlayın.
 * İlişkiler ekleyin.
 * Cihaz şablonunuzu yayımlayın.
-
-> [!NOTE]
-> VS Code tabanlı kod oluşturma şu anda IoT Central modeli oluşturulan ağ geçidi cihazları için desteklenmiyor.
 
 Daha sonra, bir cihaz geliştiricisi olarak şunları yapmayı öğrenebilirsiniz:
 

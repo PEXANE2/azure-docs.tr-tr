@@ -8,18 +8,22 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 1/25/2021
+ms.date: 02/08/2021
 ms.author: kenwith
-ms.openlocfilehash: 89b40ac68143c2af0d94434ddedec489a2208839
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 03eacf4405217ee883689a088499d86d6f2262b5
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99256416"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99830711"
 ---
 # <a name="tutorial---customize-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Öğretici-Kullanıcı sağlama özniteliğini özelleştirme-Azure Active Directory SaaS uygulamaları için eşlemeler
 
 Microsoft Azure AD Salesforce, G Suite ve diğerleri gibi üçüncü taraf SaaS uygulamalarına Kullanıcı hazırlama desteği sağlar. Bir üçüncü taraf SaaS uygulaması için Kullanıcı sağlamayı etkinleştirirseniz Azure portal öznitelik değerlerini öznitelik eşlemeleriyle denetler.
+
+Başlamadan önce, uygulama yönetimi ve **tek Sign-On (SSO)** kavramlarıyla ilgili bilgi sahibi olduğunuzdan emin olun, aşağıdaki bağlantıları inceleyin:
+- [Azure AD 'de uygulama yönetiminde hızlı başlangıç serisi](../manage-apps/view-applications-portal.md)
+- [Tek Sign-On (SSO) nedir?](../manage-apps/what-is-single-sign-on.md)
 
 Azure AD Kullanıcı nesneleri ve her SaaS uygulamasının Kullanıcı nesneleri arasında önceden yapılandırılmış bir öznitelikler ve öznitelik eşlemeleri kümesi vardır. Bazı uygulamalar, gruplar gibi kullanıcılarla birlikte diğer nesne türlerini de yönetir.
 

@@ -7,12 +7,12 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: tutorial
 ms.date: 01/09/2020
-ms.openlocfilehash: 4bb50b513a9b09db4a8d59d32816b702bff250f2
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 938d5e96667db6de4a45134cbec2396d45bac9d6
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92125978"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99832139"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-micro-fulfillment-center-application-template"></a>Öğretici: mikro Karşılama Merkezi uygulama şablonunu dağıtma ve gözden geçir
 
@@ -40,7 +40,7 @@ Yeni bir Azure IoT Central uygulaması oluşturmak için:
 
     ![Azure IoT Central IoT uygulama sayfanızı derleme ekran görüntüsü](./media/tutorial-micro-fulfillment-center-app/iotc-retail-homepage-mfc.png)
     
-1. İsteğe bağlı olarak, kolay bir **uygulama adı**seçin. Uygulama şablonu kurgusal şirket Northwind Traders ' i temel alır. 
+1. İsteğe bağlı olarak, kolay bir **uygulama adı** seçin. Uygulama şablonu kurgusal şirket Northwind Traders ' i temel alır. 
 
     >[!NOTE]
     >Kolay bir uygulama adı kullanırsanız, uygulama URL 'SI için yine de benzersiz bir değer kullanmanız gerekir.
@@ -55,7 +55,7 @@ Yeni bir Azure IoT Central uygulaması oluşturmak için:
 
 ## <a name="walk-through-the-application"></a>Uygulamayı gözden geçir 
 
-Uygulama şablonunu başarıyla dağıttıktan sonra, **Northwind Traders Micro-Karşılama Merkezi panosunu**görürsünüz. Northwind Traders, bu Azure IoT Central uygulamasında yönetilen bir mikro karşılama merkezinin bulunduğu kurgusal bir satıcıdır. Bu operatör panosunda, bu şablondaki cihazlarla ilgili bilgileri ve telemetrisi, gerçekleştirebileceğiniz bir dizi komut, iş ve eylemi görürsünüz. Pano, mantıksal olarak iki bölüme ayrılır. Sol tarafta, karşılama yapısı içinde ortam koşullarını izleyebilir ve sağ tarafta, bir robot taşıyıcının durumunu tesis içinde izleyebilirsiniz.  
+Uygulama şablonunu başarıyla dağıttıktan sonra, **Northwind Traders Micro-Karşılama Merkezi panosunu** görürsünüz. Northwind Traders, bu Azure IoT Central uygulamasında yönetilen bir mikro karşılama merkezinin bulunduğu kurgusal bir satıcıdır. Bu operatör panosunda, bu şablondaki cihazlarla ilgili bilgileri ve telemetrisi, gerçekleştirebileceğiniz bir dizi komut, iş ve eylemi görürsünüz. Pano, mantıksal olarak iki bölüme ayrılır. Sol tarafta, karşılama yapısı içinde ortam koşullarını izleyebilir ve sağ tarafta, bir robot taşıyıcının durumunu tesis içinde izleyebilirsiniz.  
 
 Panodan şunları yapabilirsiniz:
    * Çekme sayısı, işlenen siparişlerin sayısı ve yapı sistemi durumu gibi özellikler gibi cihaz telemetrisine bakın.  
@@ -92,8 +92,7 @@ Bu uygulamayı kullanmaya devam etmeyecekecekseniz uygulama şablonunu silin. **
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Şu konular hakkında daha fazla bilgi edinin:
+Aşağıdakiler hakkında daha fazla bilgi edinin:
+
 > [!div class="nextstepaction"]
 > [Mikro-Karşılama Merkezi Çözüm mimarisi](./architecture-micro-fulfillment-center.md)
-* [Azure IoT Central perakende şablonları](./overview-iot-central-retail.md) hakkında daha fazla bilgi edinin
-* [Azure IoT Central](../core/overview-iot-central.md) hakkında daha fazla bilgi

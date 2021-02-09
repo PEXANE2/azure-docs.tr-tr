@@ -4,12 +4,12 @@ description: Farklı Azure bölgelerindeki Azure Container Instances hizmeti iç
 ms.topic: article
 ms.date: 04/27/2020
 ms.custom: references_regions
-ms.openlocfilehash: 63ec7c9027f957714108263dcbb4300a3cc68388
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: a415a739cd9c1e2ca39ebeaef1d8903ab72cf0c4
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98661383"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99831289"
 ---
 # <a name="resource-availability-for-azure-container-instances-in-azure-regions"></a>Azure bölgelerindeki Azure Container Instances kaynak kullanılabilirliği
 
@@ -29,12 +29,12 @@ Aşağıdaki bölgeler ve en fazla kaynak, genel dağıtımlar, [Azure sanal ağ
 > [!IMPORTANT]
 > Bir bölgedeki en fazla kaynak, dağıtımınıza bağlı olarak farklı bir bölgedir. Örneğin, bir bölgenin bir Azure sanal ağ dağıtımında genel bir dağıtıma göre farklı bir en yüksek CPU ve bellek boyutu olabilir. Aynı bölge, GPU kaynaklarıyla bir dağıtım için farklı bir maksimum değerler kümesine de sahip olabilir. Bölgenizin en büyük değerleri için aşağıdaki tabloları denetlemeden önce dağıtım türünü doğrulayın.
 
-| Bölge | En Fazla CPU | Maksimum bellek (GB) | VNET Max CPU 'SU | VNET maksimum bellek (GB) | Depolama (GB) | GPU SKU 'Ları (Önizleme) |
+| Region | En Fazla CPU | Maksimum bellek (GB) | VNET Max CPU 'SU | VNET maksimum bellek (GB) | Depolama (GB) | GPU SKU 'Ları (Önizleme) |
 | -------- | :---: | :---: | :----: | :-----: | :-------: | :----: |
 | Doğu Avustralya | 4 | 16 | 4 | 16 | 50 | Yok |
-| Brezilya Güney | 4 | 16 | 2 | 8 | 50 | Yok |
+| Güney Brezilya | 4 | 16 | 2 | 8 | 50 | Yok |
 | Orta Kanada | 4 | 16 | 4 | 16 | 50 | Yok |
-| Orta Hindistan | 4 | 16 | Yok | Yok | 50 | V100 |
+| Orta Hindistan | 4 | 16 | 4 | 4 | 50 | V100 |
 | Central US | 4 | 16 | 4 | 16 | 50 | Yok |
 | Doğu Asya | 4 | 16 | 4 | 16 | 50 | Yok |
 | Doğu ABD | 4 | 16 | 4 | 16 | 50 | K80, P100, V100 |
@@ -81,10 +81,10 @@ Aşağıdaki bölgeler ve en fazla kaynaklar, [desteklenen ve önizleme](contain
 > [!NOTE]
 > 1B, 2B ve 3B Konakları hakkında daha fazla bilgi için bkz. [konak ve kapsayıcı sürümü uyumluluğu](/virtualization/windowscontainers/deploy-containers/update-containers#host-and-container-version-compatibility) .
 
-| Bölge | 1B/2B maks. CPU | 1B/2B maksimum bellek (GB) |3B Max CPU | 3B maksimum bellek (GB) | Depolama (GB) |
+| Region | 1B/2B maks. CPU | 1B/2B maksimum bellek (GB) |3B Max CPU | 3B maksimum bellek (GB) | Depolama (GB) |
 | -------- | :---: | :---: | :----: | :-----: | :-------: |
 | Doğu Avustralya | 2 | 8 | 2 | 8 | 20 |
-| Brezilya Güney | 4 | 16 | 4 | 16 | 20 |
+| Güney Brezilya | 4 | 16 | 4 | 16 | 20 |
 | Orta Kanada | 2 | 8 | 2 | 3,5 | 20 |
 | Orta Hindistan | 2 | 3,5 | 2 | 3,5 | 20 |
 | Central US | 2 | 3,5 | 2 | 3,5 | 20 |
@@ -110,10 +110,10 @@ Aşağıdaki bölgeler ve en fazla kaynaklar, [desteklenen ve önizleme](contain
 > [!NOTE]
 > 1B, 2B ve 3B Konakları hakkında daha fazla bilgi için bkz. [konak ve kapsayıcı sürümü uyumluluğu](/virtualization/windowscontainers/deploy-containers/update-containers#host-and-container-version-compatibility) .
 
-| Bölge | 1B/2B maks. CPU | 1B/2B maksimum bellek (GB) |3B Max CPU | 3B maksimum bellek (GB) | Depolama (GB) |
+| Region | 1B/2B maks. CPU | 1B/2B maksimum bellek (GB) |3B Max CPU | 3B maksimum bellek (GB) | Depolama (GB) |
 | -------- | :---: | :---: | :----: | :-----: | :-------: |
 | Doğu Avustralya | 4 | 16 | 4 | 16 | 20 |
-| Brezilya Güney | 4 | 16 | 4 | 16 | 20 |
+| Güney Brezilya | 4 | 16 | 4 | 16 | 20 |
 | Orta Kanada | 4 | 16 | 4 | 16 | 20 |
 | Orta Hindistan | 4 | 16 | 4 | 16 | 20 |
 | Central US | 4 | 16 | 4 | 16 | 20 |

@@ -1,5 +1,5 @@
 ---
-title: Azure IoT Central ile kamu çözümleri oluşturma
+title: Azure IoT Central kamu çözümleri nelerdir?
 description: Azure IoT Central uygulama şablonlarını kullanarak akıllı şehir çözümleri oluşturmayı öğrenin.
 author: miriambrus
 ms.author: miriamb
@@ -7,14 +7,14 @@ ms.date: 12/11/2020
 ms.topic: overview
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 72b0e3c3cee0ed9131fe6ee1f50cee10ec03a7b7
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: a903622f698107f7f1a593946f083fca1573d53e
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97590826"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99834349"
 ---
-# <a name="building-government-solutions-with-azure-iot-central"></a>Azure IoT Central ile kamu çözümleri oluşturma
+# <a name="what-are-the-iot-central-government-solutions"></a>IoT Central kamu çözümleri nelerdir?
 
 Azure IoT Central uygulama şablonlarını kullanarak akıllı şehir çözümleri oluşturmaya başlayın. **Su kalitesinde izleme**, **su tüketimi izleme** ve **bağlı çöp yönetimiyle** hemen başlayın.
 
@@ -71,8 +71,6 @@ Bağlı çöp yönetimi uygulama şablonu önceden yapılandırılmış olarak o
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Ücretsiz [uygulama oluşturma](https://apps.azureiotcentral.com/build/government) Için IoT Central kamu uygulaması şablonlarından birini deneyin
 * [Su kalitesi izleme kavramları](./concepts-waterqualitymonitoring-architecture.md) hakkında bilgi edinin
 * [Su tüketim izleme kavramları](./concepts-waterconsumptionmonitoring-architecture.md) hakkında bilgi edinin
 * [Bağlı çöp yönetimi kavramları](./concepts-connectedwastemanagement-architecture.md) hakkında bilgi edinin  
-* IoT Central hakkında bilgi edinin, bkz. [IoT Central genel bakış](../core/overview-iot-central.md)

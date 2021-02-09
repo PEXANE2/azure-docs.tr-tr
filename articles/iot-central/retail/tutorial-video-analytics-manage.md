@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/31/2020
-ms.openlocfilehash: 1c1ddeb8cafd8aa7584da48a715139c5d12eeb10
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: fbfef094cd062e437f2a28369162de96631ef41b
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91874807"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99832615"
 ---
 # <a name="tutorial-monitor-and-manage-a-video-analytics---object-and-motion-detection-application"></a>Öğretici: bir video analizini Izleme ve yönetme-nesne ve hareket algılama uygulaması
 
@@ -22,7 +22,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * IoT Central uygulamanıza nesne ve hareket algılama kameraları ekleyin.
 > * Video akışlarınızı yönetin ve ilginç olaylar algılandığında yürütün.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce şunları tamamlamalısınız:
 
@@ -55,13 +55,13 @@ Kamera cihazını eklemek için **Çalıştır** ' ı seçin:
 
 ## <a name="add-a-motion-detection-camera-optional"></a>Hareket algılama Kamerası ekleme (isteğe bağlı)
 
-IoT Edge ağ geçidi cihazınıza bağlı iki kamera varsa, uygulamaya bir hareket algılama Kamerası eklemek için önceki adımları tekrarlayın. **Kamera kimliği**, **Kamera adı**ve **RTSP URL** parametreleri için farklı değerler kullanın.
+IoT Edge ağ geçidi cihazınıza bağlı iki kamera varsa, uygulamaya bir hareket algılama Kamerası eklemek için önceki adımları tekrarlayın. **Kamera kimliği**, **Kamera adı** ve **RTSP URL** parametreleri için farklı değerler kullanın.
 
 ## <a name="view-the-downstream-devices"></a>Aşağı akış cihazlarını görüntüleme
 
 Az önce eklediğiniz kamera cihazlarını görmek için **LVA Gateway 001** cihazının **aşağı akış cihazları** sekmesini seçin:
 
-:::image type="content" source="media/tutorial-video-analytics-manage/inspect-downstream.png" alt-text="Kamera Ekle":::
+:::image type="content" source="media/tutorial-video-analytics-manage/inspect-downstream.png" alt-text="Bilgiyi":::
 
 Kamera aygıtları, uygulamanın **cihazlar** sayfasındaki listede de görüntülenir.
 
@@ -98,7 +98,7 @@ Varsayılan değerleri kullanın veya cihaz özelliklerini özelleştirmeniz ger
 
 Birkaç saniye sonra, her ayar için **kabul edilen** onay iletisini görürsünüz:
 
-:::image type="content" source="media/tutorial-video-analytics-manage/object-detection.png" alt-text="Kamera Ekle":::
+:::image type="content" source="media/tutorial-video-analytics-manage/object-detection.png" alt-text="Nesne Algıla":::
 
 ## <a name="start-lva-processing"></a>LVA işlemesini Başlat
 
@@ -108,13 +108,13 @@ Birkaç saniye sonra, her ayar için **kabul edilen** onay iletisini görürsün
 
 Komut tamamlandığında, hata olmadığından emin olmak için komut geçmişini görüntüleyin:
 
-:::image type="content" source="media/tutorial-video-analytics-manage/start-processing.png" alt-text="Kamera Ekle":::
+:::image type="content" source="media/tutorial-video-analytics-manage/start-processing.png" alt-text="LVA işleme komutunu Başlat":::
 
 ## <a name="monitor-the-cameras"></a>Kameraları izleme
 
 **Camera-003** cihazına gidin ve **Pano** sekmesini seçin:
 
-:::image type="content" source="media/tutorial-video-analytics-manage/camera-dashboard.png" alt-text="Kamera Ekle":::
+:::image type="content" source="media/tutorial-video-analytics-manage/camera-dashboard.png" alt-text="Kamera panosu":::
 
 **Algılama sayısı** kutucuğu, tek saniyelik bir algılama aralığı sırasında seçili algılama sınıfları nesnelerinin her biri için Ortalama algılama sayısını gösterir.
 
@@ -151,22 +151,22 @@ docker run -it --rm -e amsAadClientId="<FROM_AZURE_PORTAL>" -e amsAadSecret="<FR
 |Amsaadclientıd| Aadclientıd|
 |amsAadSecret| AadSecret |
 |Amsaadtenantıd| Aadtenantıd |
-|Amssubscriptionıd| kaynak grubundaki|
+|Amssubscriptionıd| SubscriptionId|
 |amsResourceGroup| adlı yönetilen örnek, |
 |amsAccountName| AccountName|
 
 **Camera-003** cihazına gidin ve **Pano** sekmesini seçin. Ardından, **çıkarım olayı video** kutucuğunda yakalanan nesne algılama köprülerinin birine tıklayın. Video, yerel video oynatıcı tarafından görüntülenen bir sayfada görünür:
 
-:::image type="content" source="media/tutorial-video-analytics-manage/video-snippet.png" alt-text="Kamera Ekle":::
+:::image type="content" source="media/tutorial-video-analytics-manage/video-snippet.png" alt-text="Video kod parçacığı":::
 
 ## <a name="change-the-simulated-devices-in-application-dashboards"></a>Uygulama panolarındaki sanal cihazları değiştirme
 
 Uygulama panoları başlangıçta IoT Central sanal cihazlardan oluşturulan telemetri ve özelliklerle doldurulur. Kutucukları gerçek kameralardan veya Live555 benzeticisinden telemetri olarak yapılandırmak için aşağıdaki adımları izleyin:
 
 1. **(Örnek) gerçek kamera İzleyicisi** uygulama panosuna gidin.
-1. **Düzenle**’yi seçin.
+1. **Düzenle**'yi seçin.
 1. **Dekont** kutucuğunu seçin ve silin.
-1. Pano başlığını *gerçek kamera Izleyicisine*değiştirin.
+1. Pano başlığını *gerçek kamera Izleyicisine* değiştirin.
 1. **Çıkarım sayısı** kutucuğunda Yapılandır simgesini seçin.
 1. **Grafiği Yapılandır** bölümünde, **LVA Edge nesne algılayıcısı** cihaz grubundaki bir veya daha fazla gerçek kameraları seçin.
 1. `AI Inference Interface/Inference Count`Telemetri alanını seçin.
@@ -182,7 +182,7 @@ Uygulama panoları başlangıçta IoT Central sanal cihazlardan oluşturulan tel
 
 **Gerçek kamera İzleyicisi** panosu artık gerçek kamera cihazınızdan değerleri gösterir:
 
-:::image type="content" source="media/tutorial-video-analytics-manage/update-real-cameras.png" alt-text="Kamera Ekle":::
+:::image type="content" source="media/tutorial-video-analytics-manage/update-real-cameras.png" alt-text="Gerçek kameralar uygulama panosu":::
 
 ## <a name="pause-processing"></a>İşlemeyi Duraklat
 
@@ -195,7 +195,7 @@ Uygulamada canlı video analizi işlemini duraklatabilirsiniz:
     * **Akış uç noktası** kaynağına tıklayın.
     * **Akış uç noktası ayrıntıları** sayfasında **Durdur**' u seçin.
 
-## <a name="tidy-up"></a>Tidy yukarı
+## <a name="clean-up-resources"></a>Kaynakları temizleme
 
 Uygulamayı tamamladıysanız, oluşturduğunuz tüm kaynakları aşağıdaki şekilde kaldırabilirsiniz:
 

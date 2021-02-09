@@ -2,14 +2,14 @@
 author: alkohli
 ms.service: databox
 ms.topic: include
-ms.date: 11/05/2018
+ms.date: 02/05/2021
 ms.author: alkohli
-ms.openlocfilehash: a4adef26153870dbce4c24303a403c69285f7252
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b5fa444e223991ba6f7e6587a66df858fb7f9c31
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67188812"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99831589"
 ---
 Sanal cihaz için yerel Web Kullanıcı arabirimi için desteklenen tarayıcıların listesi aşağıda verilmiştir.
 
@@ -17,5 +17,5 @@ Sanal cihaz için yerel Web Kullanıcı arabirimi için desteklenen tarayıcıla
 |---------|---------|---------|
 |Google Chrome   |En son sürüm         |         |
 |Microsoft Edge    | En son sürüm        |         |
-|Internet Explorer     | En son sürüm        |         |
+|Internet Explorer     | En son sürüm        |Gelişmiş güvenlik özellikleri etkinse, yerel Web UI sayfalarına erişemeyebilirsiniz. Gelişmiş güvenliği devre dışı bırakın ve tarayıcınızı yeniden başlatın. |
 |'U    |En son sürüm         |         |

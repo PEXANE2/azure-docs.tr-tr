@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: yegu
-ms.openlocfilehash: 2ff97dd30d9b993385f52ea531653a89197f8756
-ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
+ms.openlocfilehash: c13821544ff9725a387534370fc716c70072bb85
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97734632"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99831782"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>Redsıs için Azure önbelleğini yapılandırma
 Bu konuda, Redsıs örnekleri için Azure önbelleğiniz için kullanılabilen yapılandırma açıklanmaktadır. Bu konu, Redsıs örnekleri için Azure önbelleği için varsayılan Redsıs sunucu yapılandırmasını da içerir.
@@ -33,7 +33,7 @@ Redsıs ayarları için Azure önbelleği, **Kaynak menüsü** kullanılarak **r
 * [Genel Bakış](#overview)
 * [Etkinlik günlüğü](#activity-log)
 * [Erişim denetimi (IAM)](#access-control-iam)
-* [Lerimi](#tags)
+* [Etiketler](#tags)
 * [Sorunları tanılama ve çözme](#diagnose-and-solve-problems)
 * [Ayarlar](#settings)
     * [Erişim tuşları](#access-keys)
@@ -236,10 +236,7 @@ Daha fazla bilgi için bkz. [redsıs Için Premium Azure önbelleği için kalı
 
 Bir bakım penceresi belirtmek için, istenen günleri denetleyin ve her gün için bakım penceresi başlangıç saatini belirtip **Tamam**' a tıklayın. Bakım penceresi saati UTC 'dir.
 
-> [!IMPORTANT]
-> **Güncelleştirmeleri zamanla** Işlevi yalnızca Premium katman önbellekleri için kullanılabilir. Daha fazla bilgi ve yönergeler için bkz. [redsıs yönetimi Için Azure önbelleği-zamanlama güncelleştirmeleri](cache-administration.md#schedule-updates).
->
->
+Daha fazla bilgi ve yönergeler için bkz. [redsıs yönetimi Için Azure önbelleği-zamanlama güncelleştirmeleri](cache-administration.md#schedule-updates)
 
 ### <a name="geo-replication"></a>Coğrafi çoğaltma
 
@@ -386,7 +383,7 @@ Redsıs örnekleri için yeni Azure önbelleği, aşağıdaki varsayılan Redsı
 >
 >
 
-| Ayar | Varsayılan değer | Açıklama |
+| Ayar | Varsayılan değer | Description |
 | --- | --- | --- |
 | `databases` |16 |Varsayılan veritabanı sayısı 16 ' dır, ancak fiyatlandırma katmanını temel alarak farklı bir sayı yapılandırabilirsiniz. <sup>1</sup> varsayılan veritabanı DB 0 ' dır, `connection.GetDatabase(dbid)` `dbid` ve arasında bir sayı olan ' i kullanarak bağlantı başına temelinde farklı bir tane seçebilirsiniz `0` `databases - 1` . |
 | `maxclients` |Fiyatlandırma katmanına bağlıdır<sup>2</sup> |Bu değer, aynı anda izin verilen en fazla bağlı istemci sayısıdır. Sınıra ulaşıldıktan sonra, ' en fazla istemci sayısına ulaşıldı ' hatası döndüren tüm yeni bağlantıları kapatır. |

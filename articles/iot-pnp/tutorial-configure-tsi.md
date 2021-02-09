@@ -7,18 +7,23 @@ ms.date: 10/14/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 299730bcdab3ae7e558f39cc7f7d5076ffc58ea9
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.openlocfilehash: 08ae21c2cd0859b7c361756a4f0380d3ab322a28
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 02/08/2021
-ms.locfileid: "99820188"
+ms.locfileid: "99834366"
 ---
 # <a name="tutorial-create-and-configure-a-time-series-insights-gen2-environment"></a>Öğretici: Time Series Insights Gen2 ortamı oluşturma ve yapılandırma
 
 Bu öğreticide, IoT Tak ve Kullan çözümünüz ile tümleştirilecek bir [Azure Time Series Insights Gen2](../time-series-insights/overview-what-is-tsi.md) ortamı oluşturma ve yapılandırma hakkında bilgi edineceksiniz. Nesnelerin İnterneti (IoT) ölçeğinde zaman serisi verilerini toplamak, işlemek, depolamak, sorgulamak ve görselleştirmek için Time Series Insights kullanın.
 
-İlk olarak, bir Time Series Insights ortamı sağladığınızda IoT Hub 'ınızı bir akış olay kaynağı olarak bağlayacaksınız. Daha sonra [zaman serisi modelinizi](../time-series-insights/concepts-model-overview.md)yazmak için model eşitleme aracılığıyla çalışırsınız. Sıcaklık denetleyicisi ve termostat cihazları için kullandığınız [dijital TWINS tanım dili (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl) örnek model dosyalarını kullanırsınız.
+Bu öğreticide şunları yaptınız:
+
+> [!div class="checklist"]
+> * Time Series Insights ortamı sağlayın ve IoT Hub 'ınızı akış olay kaynağı olarak bağlayın.
+> * [Zaman serisi modelinizi](../time-series-insights/concepts-model-overview.md)yazmak için model eşitleme aracılığıyla çalışın.
+> * Sıcaklık denetleyicisi ve termostat cihazları için kullandığınız [dijital TWINS tanım dili (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl) örnek model dosyalarını kullanın.
 
 > [!NOTE]
 > Time Series Insights ile IoT Tak ve Kullan arasındaki bu tümleştirme önizlemededir. DTDL cihaz modellerinin Time Series Insights zaman serisi modeliyle ne şekilde eşleşbir şekilde değiştirileceği. 
@@ -222,10 +227,11 @@ Grafik bölmesine dönün ve cihazınızı > **cihaz Fleet** ' i genişletin. **
 
 ![Thermostat2 için örnek türünün nasıl değiştirileceğini gösteren ekran görüntüsü.](./media/tutorial-configure-tsi/charting-values.png)
 
+## <a name="clean-up-resources"></a>Kaynakları temizleme
+
+[!INCLUDE [iot-pnp-clean-resources](../../includes/iot-pnp-clean-resources.md)]
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Aralık boyutlandırma ve y ekseni denetimleri de dahil olmak üzere çeşitli grafik seçenekleri hakkında daha fazla bilgi edinmek için bkz. [Azure Time Series Insights Explorer](../time-series-insights/concepts-ux-panels.md).
-
-* Ortamınızın zaman serisi modeline derinlemesine bir genel bakış için, bkz. [Azure Time Series Insights Gen2 Içinde zaman serisi modeli](../time-series-insights/concepts-model-overview.md).
-
-* Sorgu API 'Lerini ve zaman serisi Ifade sözdizimini incelemek için bkz. [Azure Time Series Insights Gen2 Query API 'leri](/rest/api/time-series-insights/reference-query-apis).
+> [!div class="nextstepaction"]
+> Aralık boyutlandırma ve y ekseni denetimleri de dahil olmak üzere çeşitli grafik seçenekleri hakkında daha fazla bilgi edinmek için bkz. [Azure Time Series Insights Explorer](../time-series-insights/concepts-ux-panels.md).

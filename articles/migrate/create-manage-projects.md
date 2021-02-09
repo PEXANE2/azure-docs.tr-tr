@@ -6,16 +6,18 @@ ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 11/23/2020
-ms.openlocfilehash: 750cf0a938fffd4e5bfe25811bb276f7cb1b5583
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 0d4ccc1a60f9ac3c2183023d3d3772da6a1e307b
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98757568"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99830762"
 ---
 # <a name="create-and-manage-azure-migrate-projects"></a>Azure Geçişi projelerini oluşturma ve yönetme
 
-Bu makalede, [Azure geçişi](migrate-services-overview.md) projelerini oluşturma, yönetme ve silme işlemlerinin nasıl yapılacağı açıklanır. Klasik Azure geçişi projelerini kullanıyorsanız, lütfen bu projeleri silin ve yeni bir Azure geçişi projesi oluşturma adımlarını izleyin. Klasik Azure geçişi projelerini veya bileşenlerini Azure geçişi 'ne yükseltemezsiniz. Oluşturma işlemini başlatmak için önce [SSS](https://docs.microsoft.com/azure/migrate/resources-faq#i-have-a-project-with-the-previous-classic-experience-of-azure-migrate-how-do-i-start-using-the-new-version) 'yi görüntüleyin.
+Bu makalede, [Azure geçişi](migrate-services-overview.md) projelerini oluşturma, yönetme ve silme işlemlerinin nasıl yapılacağı açıklanır. 
+
+Klasik Azure geçişi, Şubat 2024 ' de devre dışı bırakılıyor. Şubat 2024 ' den sonra Azure geçişi 'nin klasik sürümü artık desteklenmeyecektir ve klasik projedeki envanter meta verileri silinir. Klasik Azure geçişi projelerini kullanıyorsanız, bu projeleri silin ve yeni bir Azure geçişi projesi oluşturma adımlarını izleyin. Klasik Azure geçişi projelerini veya bileşenlerini Azure geçişi 'ne yükseltemezsiniz. Oluşturma işlemini başlatmak için önce [SSS](https://docs.microsoft.com/azure/migrate/resources-faq#i-have-a-project-with-the-previous-classic-experience-of-azure-migrate-how-do-i-start-using-the-new-version) 'yi görüntüleyin.
 
 Değerlendirme veya geçiş yaptığınız ortamdan toplanan bulma, değerlendirme ve geçiş meta verilerini depolamak için bir Azure geçişi projesi kullanılır. Bir projede keşfedilen varlıkları izleyebilir, değerlendirmeler oluşturabilir ve geçişleri Azure 'da düzenleyebilirsiniz.  
 

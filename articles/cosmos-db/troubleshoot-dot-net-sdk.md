@@ -3,18 +3,18 @@ title: Azure Cosmos DB .NET SDK'sını kullanırken karşılaşılan sorunları 
 description: .NET SDK kullanırken Azure Cosmos DB sorunları tanımlamak, tanılamak ve sorunlarını gidermek için istemci tarafı günlüğe kaydetme gibi özellikleri ve diğer üçüncü taraf araçları kullanın.
 author: anfeldma-ms
 ms.service: cosmos-db
-ms.date: 09/12/2020
+ms.date: 02/05/2021
 ms.author: anfeldma
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 6a78b38bd71a2822d94e58834ab17824c9ef6ec6
-ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
+ms.openlocfilehash: 04813b9d70557314e619fded5294644f5f6fadf5
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97683114"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99831255"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-net-sdk"></a>Azure Cosmos DB .NET SDK'sını kullanırken karşılaşılan sorunları tanılama ve giderme
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -55,7 +55,7 @@ Etkin olarak izlenen [GitHub sorunları bölümüne](https://github.com/Azure/az
 [Portal ölçümlerinin](./monitor-cosmos-db.md) denetlenmesi, istemci tarafı bir sorun olup olmadığını veya hizmette bir sorun olup olmadığını belirlemenize yardımcı olur. Örneğin, ölçümler yüksek bir hız sınırlı istek (HTTP durum kodu 429) içeriyorsa, isteğin azaltıldı, [istek hızı çok büyük](troubleshoot-request-rate-too-large.md) bölümünü kontrol edin. 
 
 ## <a name="retry-logic"></a>Yeniden deneme mantığı <a id="retry-logics"></a>
-Herhangi bir GÇ hatasında Cosmos DB SDK, SDK 'da yeniden deneme uygulanabiliyorsa, başarısız olan işlemi yeniden denemeye çalışır. Herhangi bir hata için yeniden deneme olması iyi bir uygulamadır, ancak özellikle işleme/yeniden deneme yazma hataları olmalıdır. Yeniden deneme mantığı sürekli iyileştirildiğinden, en son SDK 'nın kullanılması önerilir.
+Tüm GÇ hatalarında Cosmos DB SDK'sı, SDK'da yeniden deneme uygulanabiliyorsa başarısız işlemi yeniden dener. Herhangi bir hata için yeniden deneme olması iyi bir uygulamadır, ancak özellikle işleme/yeniden deneme yazma hataları olmalıdır. Yeniden deneme mantığı sürekli iyileştirildiğinden, en son SDK 'nın kullanılması önerilir.
 
 1. Okuma ve sorgulama GÇ arızaları, son kullanıcıya sunulmadan SDK tarafından yeniden denenir.
 2. Yazma (oluşturma, upsert, Replace, Delete) "Not" ıdempotent, bu nedenle SDK başarısız yazma işlemlerini her zaman yeniden denemeyebilir. Kullanıcının uygulama mantığının hatayı işlemesi ve yeniden denemesi gerekir.
@@ -63,10 +63,11 @@ Herhangi bir GÇ hatasında Cosmos DB SDK, SDK 'da yeniden deneme uygulanabiliyo
 
 ## <a name="common-error-status-codes"></a>Ortak hata durum kodları <a id="error-codes"></a>
 
-| Durum Kodu | Açıklama | 
+| Durum Kodu | Description | 
 |----------|-------------|
 | 400 | Hatalı istek (hata iletisine bağlıdır)| 
 | 401 | [Yetkilendirilmemiş](troubleshoot-unauthorized.md) | 
+| 403 | [Yasak](troubleshoot-forbidden.md) |
 | 404 | [Kaynak bulunamadı](troubleshoot-not-found.md) |
 | 408 | [İstek zaman aşımına uğradı](troubleshoot-dot-net-sdk-request-timeout.md) |
 | 409 | Çakışma hatası, yazma işlemindeki bir kaynak için belirtilen KIMLIğIN mevcut bir kaynak tarafından alındığı zaman. Bu sorunu çözmek için kaynak için başka bir KIMLIK kullanın, çünkü KIMLIK aynı bölüm anahtarı değerine sahip tüm belgeler içinde benzersiz olmalıdır. |

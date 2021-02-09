@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 11/18/2020
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: dc8044ee72689634a1d4ce3e0e8b1a499404c5ce
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: 0fcea6a44f5379ff3da5b348ae45486be6c2516a
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99560295"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99831323"
 ---
 # <a name="use-workspace-behind-a-firewall-for-azure-machine-learning"></a>Azure Machine Learning için bir güvenlik duvarının arkasındaki çalışma alanını kullan
 
@@ -123,6 +123,7 @@ Bu bölümdeki konaklar Microsoft 'a aittir ve çalışma alanınızın düzgün
 | ----- | ----- | ----- | ----- |
 | Azure Active Directory | login.microsoftonline.com | login.microsoftonline.us | login.chinacloudapi.cn |
 | Azure portalı | management.azure.com | management.azure.us | management.azure.cn |
+| Azure Resource Manager | management.azure.com | management.usgovcloudapi.net | management.chinacloudapi.cn |
 
 **Azure Machine Learning Konakları**
 
@@ -146,7 +147,7 @@ Bu bölümdeki konaklar Microsoft 'a aittir ve çalışma alanınızın düzgün
 | **Şunun için gerekli:** | **Azure genel** | **Azure Devlet Kurumları** | **Azure China 21Vianet** |
 | ----- | ----- | ----- | ----- |
 | İşlem kümesi/örnek | \*. batchai.core.windows.net | \*. batchai.core.usgovcloudapi.net |\*. batchai.ml.azure.cn |
-| İşlem kümesi/örnek | graph.windows.net |  |  |
+| İşlem kümesi/örnek | graph.windows.net | graph.windows.net | graph.chinacloudapi.cn |
 | İşlem örneği | \*. instances.azureml.net | \*. instances.azureml.us | \*. instances.azureml.cn |
 | İşlem örneği | \*. instances.azureml.ms |  |  |
 

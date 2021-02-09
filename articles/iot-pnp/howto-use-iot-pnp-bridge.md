@@ -7,12 +7,12 @@ ms.date: 12/11/2020
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: bf730dbc28d15c3d036e9ebeedbe035db087c5d8
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 9bcf256b6144702254bbff4a57e5ff402abaa962
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97673041"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99834111"
 ---
 # <a name="how-to-connect-an--iot-plug-and-play-bridge-sample-running-on-linux-or-windows-to-iot-hub"></a>Linux veya Windows üzerinde çalışan bir IoT Tak ve Kullan köprüsü örneğini IoT Hub 'a bağlama
 
@@ -44,7 +44,7 @@ az iot hub device-identity show-connection-string --hub-name <YourIoTHubName> --
 
 ## <a name="download-and-run-the-bridge"></a>Köprüyü indirme ve çalıştırma
 
-Bu makalede, Köprüsü çalıştırmak için iki seçeneğiniz vardır. Şunları yapabilirsiniz:
+Bu makalede, Köprüsü çalıştırmak için iki seçeneğiniz vardır. Seçenekleriniz şunlardır:
 
 - Önceden oluşturulmuş bir yürütülebiliri indirin ve bu bölümde açıklandığı gibi çalıştırın.
 - Kaynak kodunu indirin ve ardından aşağıdaki bölümde açıklandığı gibi [köprüyü derleyin ve çalıştırın](#build-and-run-the-bridge) .
@@ -279,6 +279,8 @@ Azure IoT Explorer modellerini indirmek için:
 Köprü başladıktan sonra, çalıştığını doğrulamak için Azure IoT gezgin aracını kullanın. Modelde tanımlanan telemetri, Özellikler ve komutları görebilirsiniz `dtmi:com:example:PnpBridgeEnvironmentalSensor;1` .
 
 [!INCLUDE [iot-pnp-iot-explorer.md](../../includes/iot-pnp-iot-explorer.md)]
+
+## <a name="clean-up-resources"></a>Kaynakları temizleme
 
 [!INCLUDE [iot-pnp-clean-resources.md](../../includes/iot-pnp-clean-resources.md)]
 

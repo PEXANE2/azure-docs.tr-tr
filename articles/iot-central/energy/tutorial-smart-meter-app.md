@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: a95f1befcdc9b59293eb97330ba7ceae3034a74b
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: d9b5af45ab9a1003cc25e8b1ea2059b83bc715c4
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97516765"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99833312"
 ---
 # <a name="tutorial-create-and-walk-through-the-smart-meter-monitoring-app-template"></a>Öğretici: akıllı ölçüm izleme uygulaması şablonunu oluşturma ve adım adım izleme 
 
@@ -28,7 +28,7 @@ Bu öğretici, benzetimli verilerle örnek bir cihaz modeli içeren akıllı öl
 Aboneliğiniz yoksa [ücretsiz bir deneme hesabı oluşturun](https://azure.microsoft.com/free)
 
 ## <a name="prerequisites"></a>Önkoşullar
-- Hiçbiri
+- Yok
 - Azure aboneliği önerilir, ancak denemek için gerekli değildir
 
 ## <a name="create-a-smart-meter-monitoring-app"></a>Akıllı sayaç izleme uygulaması oluşturma 
@@ -102,8 +102,7 @@ Bu uygulamayı kullanmaya devam etmeyi istemediğinize karar verirseniz, aşağ�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Akıllı ölçüm uygulama mimarisi hakkında bilgi edinin 
+Akıllı ölçüm uygulama mimarisi hakkında bilgi edinmek için bkz.:
+
 > [!div class="nextstepaction"]
-> [kavram makalesi](./concept-iot-central-smart-meter-app.md)
-* Ücretsiz olarak akıllı ölçüm uygulama şablonları oluşturun: [akıllı ölçüm](https://apps.azureiotcentral.com/build/new/smart-meter-monitoring) uygulaması
-* IoT Central hakkında daha fazla bilgi için bkz. [IoT Central genel bakış](../index.yml)
+> [Akıllı ölçüm uygulama mimarisi](./concept-iot-central-smart-meter-app.md)

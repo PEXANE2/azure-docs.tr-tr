@@ -7,12 +7,12 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: tutorial
 ms.date: 10/20/2019
-ms.openlocfilehash: 2b8ed417de966f8731542e8f5ca12a6a05e2dc8a
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.openlocfilehash: 9d7c4d2afa8eaf197ec05bcb0aed654153fb8f0d
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 02/08/2021
-ms.locfileid: "99820288"
+ms.locfileid: "99831306"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-digital-distribution-center-application-template"></a>Öğretici: dijital bir dağıtım merkezi uygulama şablonunu dağıtma ve gözden geçir
 
@@ -109,8 +109,8 @@ Bu uygulamayı kullanmaya devam edemeyecekiniz, **Yönetim** uygulaması ayarlar
 > ![Uygulamayı tamamladığınızda uygulamanın nasıl silineceğini gösteren ekran görüntüsü](./media/tutorial-iot-central-ddc/ddc-cleanup.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* Dijital dağıtım merkezi çözüm mimarisi hakkında daha fazla bilgi edinin 
+
+Dijital dağıtım merkezi çözüm mimarisi hakkında daha fazla bilgi edinin:
+
 > [!div class="nextstepaction"]
 > [Dijital dağıtım merkezi kavramı](./architecture-digital-distribution-center.md)
-* Diğer [IoT Central perakende şablonları](./overview-iot-central-retail.md) hakkında daha fazla bilgi edinin
-* IoT Central hakkında daha fazla bilgi edinin [IoT Central genel bakış](../core/overview-iot-central.md)

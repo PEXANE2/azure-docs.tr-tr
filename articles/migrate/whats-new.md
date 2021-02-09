@@ -7,21 +7,19 @@ ms.author: anvar
 ms.manager: bsiva
 ms.date: 04/19/2020
 ms.custom: mvc
-ms.openlocfilehash: fbafed60019005fe2d81c96fb9557e3c307669ac
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: cc207522048e3f0491e3aa54f2ae21d2e7e63bc2
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98233772"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99834059"
 ---
 # <a name="whats-new-in-azure-migrate"></a>Azure geçişi 'ndeki yenilikler
 
 [Azure geçişi](migrate-services-overview.md) , şirket içi sunucuları, uygulamaları ve verileri Microsoft Azure bulutuna keşfetmenize, değerlendirmenize ve geçirmenize yardımcı olur. Bu makalede, Azure geçişi 'ndeki yeni sürümler ve Özellikler özetlenmektedir.
 
 ## <a name="update-january-2021"></a>Güncelleştirme (Ocak 2021)
--  VMware VM 'lerinin, platform tarafından yönetilen ve müşteri tarafından yönetilen anahtarlarla (CMK) birlikte Çift şifreleme kullanılarak Azure sanal makinelerine geçirilmesi, Azure geçişi sunucu geçişini (aracısız çoğaltma) kullanarak artık Azure portal aracılığıyla kullanıma sunulmuştur.
-- VMware VM 'lerinin, müşteri tarafından yönetilen anahtarlar (CMK) ile sunucu tarafı şifreleme (CMK) kullanılarak şifrelenmiş diskler ile Azure sanal makinelere geçirilmesi ve Azure geçişi sunucu geçişini (aracı tabanlı çoğaltma) kullanarak artık Azure portal aracılığıyla bulabilirsiniz.
-- AWS ve GCP gibi diğer bulutlardan, müşteri tarafından yönetilen anahtarlar (CMK) ile birlikte sunucu tarafı şifrelemesi (SSE) kullanılarak şifrelenmiş diskler içeren Azure sanal makinelerine yönelik fiziksel sunucuların ve VM 'lerin geçirilmesi, Azure geçişi sunucu geçişini (aracı tabanlı çoğaltma) kullanarak artık Azure portal aracılığıyla kullanıma sunulmuştur.
+-  Azure geçişi: sunucu geçiş aracı artık, VMware sanal makinelerini, fiziksel sunucuları ve sanal makineleri diğer bulutlardan Azure sanal makinelerine, müşteri tarafından yönetilen anahtarlarla (CMK) sunucu tarafı şifrelemesiyle şifrelenen disklerle Azure sanal makinelerine geçirmenize olanak tanır.
 
 ## <a name="update-december-2020"></a>Güncelleştirme (Aralık 2020)
 - Azure geçişi artık, VMware geçiş 'nin aracısız yöntemini kullanarak Azure VM aracısını VMware VM 'lerine otomatik olarak Azure 'a geçirirken VMware VM 'lerine otomatik olarak yüklenir.

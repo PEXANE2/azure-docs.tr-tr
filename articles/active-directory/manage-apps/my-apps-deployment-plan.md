@@ -11,17 +11,17 @@ ms.workload: identity
 ms.date: 02/29/2020
 ms.author: kenwith
 ms.reviewer: baselden
-ms.openlocfilehash: 13fe9c52312ba6053a6093ec51d42f05a44627e0
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 10e548eb87b7ac4254fa916f804a6710252be7fc
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99258295"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99830728"
 ---
 # <a name="plan-azure-active-directory-my-apps-configuration"></a>Azure Active Directory Apps yapılandırması 'nı planla
 
 > [!NOTE]
-> Bu makale, kuruluşunuzun uygulama portalı 'nın yapılandırmasını planlamak isteyen BT uzmanları için tasarlanmıştır. Uygulamalarımı ve koleksiyonlarımı kullanma hakkında son kullanıcı hakkında bilgi için bkz. My Apps [portalından oturum açma ve uygulama başlatma](../user-help/my-apps-portal-end-user-access.md).
+> Bu makale, kuruluşunuzun uygulama portalı 'nın yapılandırmasını planlamak isteyen BT uzmanları için tasarlanmıştır. 
 >
 > **Son Kullanıcı belgeleri için bkz. [uygulamalarım portalından oturum açma ve uygulamaları başlatma](../user-help/my-apps-portal-end-user-access.md)**.
 

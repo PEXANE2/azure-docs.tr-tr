@@ -11,12 +11,12 @@ ms.custom:
 ms.author: dobett
 author: dominicbetts
 ms.date: 11/12/2019
-ms.openlocfilehash: fca9a72fa237a11a02b6d4fbe30ebba5857384cf
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: 2695b34745ff02d55f18cebbe87a468f807ca77a
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97346376"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99831697"
 ---
 # <a name="tutorial-export-data-from-azure-iot-central-and-visualize-insights-in-power-bi"></a>Öğretici: Azure IoT Central verileri dışarı aktarın ve öngörüleri Power BI görselleştirin
 
@@ -46,7 +46,7 @@ Olay Hub 'ınızı ve mantıksal uygulamanızı oluşturmadan önce, bunları y�
 1. **Abonelik** için, IoT Central uygulamanızı oluşturmak Için kullandığınız Azure aboneliğinin adını seçin.
 1. **Kaynak grubu** adı için _Retail-Store-Analysis_* yazın.
 1. **Bölge** için IoT Central uygulaması için seçtiğiniz bölgeyi seçin.
-1. **Gözden geçir + oluştur**' u seçin.
+1. **Gözden geçir + Oluştur**’u seçin.
 1. **Gözden geçir + oluştur** sayfasında **Oluştur**' u seçin.
 
 Artık aboneliğinizde **Retail-Store-Analysis** adlı bir kaynak grubunuz var.
@@ -109,7 +109,7 @@ Power BI panonuz, perakende izleme uygulamanızdan verileri görüntüler. Bu ç
 
     | Değer adı  | Değer türü |
     | ----------- | ---------- |
-    | Zaman damgası   | DateTime   |
+    | Timestamp   | DateTime   |
     | Nem oranı    | Sayı     |
     | Sıcaklık | Sayı     |
 
@@ -132,7 +132,7 @@ Ayrıca, doluluk telemetrisi için bir akış veri kümesi gerekir:
 
     | Değer adı     | Değer türü |
     | -------------- | ---------- |
-    | Zaman damgası      | DateTime   |
+    | Timestamp      | DateTime   |
     | Sıra uzunluğu 1 | Sayı     |
     | Sıra uzunluğu 2 | Sayı     |
     | İyi zaman 1   | Sayı     |
@@ -441,7 +441,7 @@ Artık, Olay Hub 'ınız aracılığıyla IoT Central uygulamanızdan telemetri 
 | ------- | -------- | -------- | -------- | -------- |
 | Veri kümesi | Bölge 1 algılayıcısı | Bölge 1 algılayıcısı | Bölge 2 algılayıcısı | Bölge 2 algılayıcısı |
 | Görselleştirme türü | Çizgi grafik | Çizgi grafik | Çizgi grafik | Çizgi grafik |
-| Eksen | Zaman damgası | Zaman damgası | Zaman damgası | Zaman damgası |
+| Eksen | Timestamp | Timestamp | Timestamp | Timestamp |
 | Değerler | Sıcaklık | Nem oranı | Sıcaklık | Nem oranı |
 | Zaman penceresi | 60 dakika | 60 dakika | 60 dakika | 60 dakika |
 | Başlık | Sıcaklık (1 saat) | Nem (1 saat) | Sıcaklık (1 saat) | Nem (1 saat) |
@@ -475,7 +475,7 @@ Depodaki iki kullanıma alma için sıra uzunluğu ve diyi zamanı göstermek ü
 | ------- | ------- | ------- | ------- | ------- |
 | Veri kümesi | Doluluk algılayıcısı | Doluluk algılayıcısı | Doluluk algılayıcısı | Doluluk algılayıcısı |
 | Görselleştirme türü | Kümelenmiş sütun grafik | Kümelenmiş sütun grafik | Ölçer | Ölçer |
-| Eksen    | Zaman damgası | Zaman damgası | Yok | Yok |
+| Eksen    | Timestamp | Timestamp | Yok | Yok |
 | Değer | İyi zaman 1 | Diyi zaman 2 | Sıra uzunluğu 1 | Sıra uzunluğu 2 |
 | Zaman penceresi | 60 dakika | 60 dakika |  Yok | Yok |
 | Başlık | İyi zaman | İyi zaman | Sırası Uzunluğu | Sırası Uzunluğu |
@@ -504,6 +504,4 @@ Uygulamayı korumak, ancak bununla ilişkili maliyetleri azaltmak istiyorsanız,
 Bu üç öğreticide, **Mağaza içi analiz-kullanıma alma** IoT Central uygulama şablonunu kullanan bir uçtan uca çözüm gösterilmektedir. Cihazları uygulamaya bağladınız, cihazları izlemek için IoT Central kullandınız ve cihaz telemetrisinden öngörüleri görüntülemek için bir pano oluşturmak üzere Power BI kullandınız. Önerilen bir sonraki adım, diğer IoT Central uygulama şablonlarından birini keşfetmeye yönelik olur:
 
 > [!div class="nextstepaction"]
-> * [IoT Central ile enerji sektörü çözümleri oluşturma](../energy/overview-iot-central-energy.md)
-> * [IoT Central ile kamu çözümleri oluşturma](../government/overview-iot-central-government.md)
-> * [IoT Central ile sağlık çözümleri oluşturma](../healthcare/overview-iot-central-healthcare.md)
+> [IoT Central ile enerji sektörü çözümleri oluşturma](../energy/overview-iot-central-energy.md)

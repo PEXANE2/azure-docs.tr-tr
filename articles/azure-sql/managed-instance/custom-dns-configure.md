@@ -12,14 +12,14 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova
 ms.date: 07/17/2019
-ms.openlocfilehash: 017698975706aa8501cd059351cf9a9d88594f77
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: a54907dd3f7b3fbc06033624f14b12de14d9afb9
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92779909"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99831510"
 ---
-# <a name="configure-a-custom-dns-for-azure-sql-managed-instance"></a>Azure SQL yönetilen örneği için özel bir DNS yapılandırma
+# <a name="configure-a-custom-dns-for-azure-sql-managed-instance"></a>Azure SQL Yönetilen Örneği için özel bir DNS yapılandırma
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
 Azure SQL yönetilen örneğinin bir Azure [sanal ağı (VNet)](../../virtual-network/virtual-networks-overview.md)içinde dağıtılması gerekir. Özel ana bilgisayar adlarının SQL Yönetilen Örneğinden çözümlenmesini gerektiren birkaç senaryo (örneğin veritabanı postası, bulutunuzda veya hibrit ortamınızda bulunan diğer SQL Server örnekleriyle bağlantılı sunucular) vardır. Böyle bir durumda Azure içinde özel DNS yapılandırmanız gerekir. 
@@ -30,7 +30,7 @@ SQL yönetilen örneği, iç işleyişi için aynı DNS 'i kullandığından, ö
 > Her zaman posta sunucusu için tam etki alanı adı (FQDN), SQL Server örneği ve diğer hizmetler için ise özel DNS bölgeniz içinde olsalar bile kullanın. Örneğin, `smtp.contoso.com` doğru çözümlenmeyeceği için posta sunucunuz için kullanın `smtp` . Aynı sanal ağ içinde SQL Server VM 'lerine başvuran bağlı sunucu veya çoğaltma oluşturmak için de bir FQDN ve varsayılan DNS soneki gerekir. Örneğin, `SQLVM.internal.cloudapp.net`. Daha fazla bilgi için, bkz. [kendı DNS sunucunuzu kullanan ad çözümlemesi](../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server).
 
 > [!IMPORTANT]
-> Sanal ağ DNS sunucularının güncelleştirilmesi, SQL yönetilen örneğini hemen etkilemez. SQL yönetilen örneği DNS yapılandırması, DHCP kira süresi dolduktan sonra veya platform yükseltildikten sonra, hangisi önce gerçekleşirse güncellenir. **Kullanıcıların, ilk yönetilen örneğini oluşturmadan önce sanal ağ DNS yapılandırmalarını ayarlaması önerilir.**
+> Sanal ağ DNS sunucularının güncelleştirilmesi, SQL yönetilen örneğini hemen etkilemez. Daha fazla ayrıntı için bkz. [SQL yönetilen örnek sanal kümesindeki sanal ağ DNS sunucuları ayarını nasıl eşitler](synchronize-vnet-dns-servers-setting-on-virtual-cluster.md) .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

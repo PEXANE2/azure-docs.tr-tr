@@ -6,14 +6,17 @@ ms.topic: conceptual
 author: abshamsft
 ms.author: absha
 ms.date: 02/20/2018
-ms.openlocfilehash: 18c07266cec68aaf6e95fe4085b9d21244fecff4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5d7c7068c4a8669cdff782267030d38ac0f73584
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91761048"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99832938"
 ---
 # <a name="service-connectivity-monitor"></a>Hizmet Bağlantısı İzleyicisi
+
+> [!IMPORTANT]
+> 1 Temmuz 2021 ' den itibaren, mevcut bir çalışma alanına yeni testler ekleyemez veya Ağ Performansı İzleyicisi yeni bir çalışma alanı etkinleştiremeyeceksiniz. 1 Temmuz 2021 ' den önce oluşturulan testleri kullanmaya devam edebilirsiniz. Geçerli iş yüklerinizde hizmet kesintisini en aza indirmek için, testlerinizi Ağ Performansı İzleyicisi 'den Azure ağ Izleyicisi 'ndeki [Yeni bağlantı izleyicisinden](https://docs.microsoft.com/azure/network-watcher/migrate-to-connection-monitor-from-network-performance-monitor) , 29 Şubat 2024 tarihinden önce geçirin.
 
 Açık bir TCP bağlantı noktası olan herhangi bir uç noktaya ağ bağlantısını izlemek için [ağ performansı İzleyicisi](network-performance-monitor.md) ' deki hizmet bağlantısı İzleyicisi özelliğini kullanabilirsiniz. Bu uç noktalar, Web siteleri, SaaS uygulamaları, PaaS uygulamaları ve SQL veritabanlarını içerir. 
 
@@ -59,8 +62,8 @@ Hizmet uç noktalarına ağ bağlantısını izlemek için testlerinizi oluştur
     * TCP isteklerine yanıt veren ancak SQL Server, FTP sunucusu veya SSH bağlantı noktası gibi HTTP/S isteklerine yanıt vermeyen bir hizmete bağlantıyı izlemek için **ağ** ' ı seçin. 
     * Örneğin: bir BLOB depolama hesabına Web testi oluşturmak Için **Web** ' i seçin ve hedefi *yourstorageaccount*. blob.Core.Windows.net olarak girin. Benzer şekilde, [Bu bağlantıyı](../../storage/common/storage-account-overview.md#storage-account-endpoints) kullanarak diğer tablo depolama, kuyruk depolama ve Azure dosyaları için testler de oluşturabilirsiniz.
 4. Ağ gecikmesi, paket kaybı ve topoloji bulma gibi ağ ölçümleri gerçekleştirmek istemiyorsanız **ağ ölçülerini gerçekleştir** onay kutusunu temizleyin. Özellikten en yüksek avantajdan yararlanmak için seçili kalsın. 
-5. **Hedef**bölümünde, ağ bağlantısını Izlemek istediğiniz URL/FQDN/IP adresini girin.
-6. **Bağlantı noktası numarası**alanına hedef hizmetin bağlantı noktası numarasını girin. 
+5. **Hedef** bölümünde, ağ bağlantısını Izlemek istediğiniz URL/FQDN/IP adresini girin.
+6. **Bağlantı noktası numarası** alanına hedef hizmetin bağlantı noktası numarasını girin. 
 7. **Sınama sıklığı**' nda, testin ne sıklıkta çalışmasını istediğinizi gösteren bir değer girin. 
 8. Hizmetine ağ bağlantısını izlemek istediğiniz düğümleri seçin. Test başına eklenen aracıların sayısının 150 ' den küçük olduğundan emin olun. Herhangi bir aracı en fazla 150 uç noktası/Aracısı test edebilir.
 
@@ -117,7 +120,7 @@ Bir tamsayı gözlemlerseniz, şu adımları izleyin:
     - Hizmete ağ bağlantısını denetlemek için kullanılan düğüm bir Windows istemci makinese, hedef hizmet ıCMP isteklerini engelliyor veya bir ağ güvenlik duvarı düğümden kaynaklanan ıCMP isteklerini engelliyor.
     - **Ağ ölçümlerini Uygula** onay kutusu, test yapılandırmasında boştur. 
 
-* Hizmet yanıt süresi yoksa ancak ağ kaybı ve gecikme süresi geçerliyse, hedef hizmet bir Web uygulaması olmayabilir. Test yapılandırmasını düzenleyin ve test türünü **Web**yerine **ağ** olarak seçin. 
+* Hizmet yanıt süresi yoksa ancak ağ kaybı ve gecikme süresi geçerliyse, hedef hizmet bir Web uygulaması olmayabilir. Test yapılandırmasını düzenleyin ve test türünü **Web** yerine **ağ** olarak seçin. 
 
 * Uygulama yavaş çalışıyorsa, ağ veya uygulama sağlayıcısının sonundaki bir sorun nedeniyle zayıf uygulama performansının olup olmadığını saptayın.
 
@@ -134,4 +137,3 @@ ABD kamu Virginia bölgesi için yalnızca DOD URL 'Leri yerleşik NPM ' dir. GC
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Ayrıntılı ağ performansı veri kayıtlarını görüntülemek için [günlüklerde arama](../log-query/log-query-overview.md) yapın.
-

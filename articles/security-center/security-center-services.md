@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/26/2021
+ms.date: 02/08/2021
 ms.author: memildin
-ms.openlocfilehash: 04dfd731f1dcf0e9e7c045e0f7ef335c8db5b359
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: e827178d8ccb0f7de8d32433d03502a7412d1139
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98805619"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99834060"
 ---
 # <a name="feature-coverage-for-machines"></a>Makineler için özellik kapsamı
 
@@ -54,7 +54,7 @@ Aşağıdaki iki sekmede, Azure Güvenlik Merkezi 'nin Windows ve Linux sanal ma
 
 |**Özellik**|**Azure Sanal Makineler**|**Azure Sanal Makine Ölçek Kümeleri**|**Azure yay etkin makineler**|**Azure Defender gerekli**
 |----|:----:|:----:|:----:|:----:|
-|[Uç nokta tümleştirmesi için Microsoft Defender](security-center-wdatp.md)|-|-|-|Yes|
+|[Uç nokta tümleştirmesi için Microsoft Defender](security-center-wdatp.md)|-|-|-|-|
 |[Sanal makine davranış analizi (ve güvenlik uyarıları)](./azure-defender.md)|✔</br>(desteklenen sürümlerde)|✔</br>(desteklenen sürümlerde)|✔|Yes|
 |[Dosya daha az güvenlik uyarısı](alerts-reference.md#alerts-windows)|-|-|-|Yes|
 |[Ağ tabanlı güvenlik uyarıları](other-threat-protections.md#network-layer)|✔|✔|-|Yes|
@@ -96,10 +96,10 @@ Bu korumaların her biri için önerilerin ne zaman oluşturulduğu hakkında bi
 | Trend Micro – derin güvenlik | Windows Server Ailesi  | Hayır | Yes |
 | Symantec v12.1.1100+| Windows Server Ailesi  | Hayır | Yes |
 | McAfee v10+ | Windows Server Ailesi  | Hayır | Yes |
-| McAfee v10+ | Linux sunucu ailesi  | Hayır | Evet * *\** _ |
-| Sophos v9 +| Linux sunucu ailesi  | Hayır | Yes  _*\**_  |
+| McAfee v10+ | Linux sunucu ailesi  | Hayır | Yes **\*** |
+| Sophos v9 +| Linux sunucu ailesi  | Hayır | Yes  **\***  |
 
- _*\**_ Kapsam durumu ve destekleyici veriler şu anda yalnızca korunan aboneliklerinizle ilişkili olan Log Analytics çalışma alanında kullanılabilir. Azure Güvenlik Merkezi portalında yansıtılmaz.
+ **\*** Kapsam durumu ve destekleyici veriler şu anda yalnızca korunan aboneliklerinizle ilişkili olan Log Analytics çalışma alanında kullanılabilir. Azure Güvenlik Merkezi portalında yansıtılmaz.
 
 > [!NOTE]
 > Windows Server 2008 R2 sanal makinesi üzerinde System Center Endpoint Protection (SCEP) algılama, PowerShell (v 3.0 veya üzeri) sonrasında SCEP yüklenmesini gerektirir.
@@ -136,7 +136,7 @@ Bu korumaların her biri için önerilerin ne zaman oluşturulduğu hakkında bi
 |[Kubernetes iş yükü koruması](kubernetes-workload-protections.md)|-|-|
 |||
 
-(1)*sunucular için _ Azure Defender* gerektirir*
+(1) **sunucular Için Azure Defender** gerektirir
 
 (2) kısmi
 

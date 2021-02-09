@@ -1,4 +1,4 @@
-- name: Sağlık Hizmetleri için Azure IoT Central belgeleri
+- name: Sağlık belgeleri için Azure IoT Central
   href: index.yml
 - name: Genel Bakış
   items:
@@ -9,6 +9,8 @@
   items:
     - name: Sürekli hasta izleme uygulaması oluşturma
       href: tutorial-continuous-patient-monitoring.md
+    - name: Sağlık verileri önceliklendirme panosu oluşturma
+      href: howto-health-data-triage.md
 - name: Kavramlar
   items:
     - name: Sürekli hasta izleme mimarisi
@@ -19,8 +21,6 @@
       href: ../core/concepts-app-templates.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
 - name: Nasıl yapılır kılavuzları
   items:
-    - name: Sağlık verileri önceliklendirme panosu oluşturma
-      href: howto-health-data-triage.md
     - name: Cihazları bağlama ve geliştirme
       items:
         - name: Rigado Cascade 500'ü hazırlama ve bağlama

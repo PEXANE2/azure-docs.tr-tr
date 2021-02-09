@@ -10,6 +10,8 @@
       href: overview-iot-central-developer.md
     - name: Son güncelleştirmeler
       items:
+        - name: Ocak 2021 yeni ve güncelleştirilmiş özellikler
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-feature-updates-january-2021/'
         - name: Kasım 2020 yeni ve güncelleştirilmiş özellikler
           href: 'https://azure.microsoft.com/updates/azure-iot-central-feature-updates-november-2020/'
         - name: Ekim 2020 yeni ve güncelleştirilmiş özellikler

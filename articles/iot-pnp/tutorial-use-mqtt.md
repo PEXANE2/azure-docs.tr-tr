@@ -7,12 +7,12 @@ ms.date: 05/13/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 6852b0532b23e46c7b986926b21cd0b7e9f9736d
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 429400bb6cb41ede89597dc739a612d1bf9893f2
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93421388"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99831272"
 ---
 # <a name="tutorial---use-mqtt-to-develop-an-iot-plug-and-play-device-client"></a>Öğretici-MQTT kullanarak IoT Tak ve Kullan cihaz istemcisi geliştirme
 
@@ -20,7 +20,7 @@ Her olabiliyorsa IoT Tak ve Kullan cihaz istemcilerinizi oluşturmak için Azure
 
 Bu öğreticideki örnek, [ıssquıto](http://mosquitto.org/) MQTT kitaplığı ve Visual Studio 'Da Çakışan Küreler kullanır. Bu öğreticideki adımlarda geliştirme makinenizde Windows kullandığınızı varsayalım.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [iot-pnp-prerequisites](../../includes/iot-pnp-prerequisites.md)]
 
@@ -33,11 +33,11 @@ Bu öğreticiyi Windows üzerinde gerçekleştirmek için, yerel Windows ortamı
 IoT Hub yeni bir cihaz eklemek için *Azure IoT gezgin* aracını kullanın. IoT Hub 'ınızı, Azure IoT Gezgini aracını, [ıot Tak ve kullan hızlı başlangıç ve öğreticiler için ortamınızı ayarlamayı](set-up-environment.md)tamamladıktan sonra yapılandırdınız:
 
 1. **Azure IoT gezgin** aracını başlatın.
-1. **IoT Hub 'ları** sayfasında **Bu hub 'da cihazları görüntüle** ' yi seçin.
-1. **Cihazlar** sayfasında **+ Yeni** ' yi seçin.
+1. **IoT Hub 'ları** sayfasında **Bu hub 'da cihazları görüntüle**' yi seçin.
+1. **Cihazlar** sayfasında **+ Yeni**' yi seçin.
 1. Otomatik olarak oluşturulmuş bir simetrik anahtar kullanan *My-MQTT-Device* adlı bir cihaz oluşturun.
-1. **Cihaz kimliği** SAYFASıNDA, **SAS belirtecine sahip bağlantı dizesi** ' ni genişletin.
-1. **Simetrik anahtar** olarak kullanılacak **birincil anahtarı** seçin, sona erme süresini 60 dakika olarak ayarlayın ve **Oluştur** ' u seçin.
+1. **Cihaz kimliği** SAYFASıNDA, **SAS belirtecine sahip bağlantı dizesi**' ni genişletin.
+1. **Simetrik anahtar** olarak kullanılacak **birincil anahtarı** seçin, sona erme süresini 60 dakika olarak ayarlayın ve **Oluştur**' u seçin.
 1. Oluşturulan **SAS belirteci bağlantı dizesini** kopyalayın, bu değeri öğreticide daha sonra kullanırsınız.
 
 ## <a name="clone-sample-repo"></a>Örnek depoyu Kopyala
@@ -80,7 +80,7 @@ Kodu oluşturup çalıştırmadan önce IoT Hub 'ınızın ve cihazınızın ayr
 
 Örnek kodu Visual Studio 'da görüntülemek için, *ıotmqttsample\src\windows* klasöründeki *MQTTWin32. sln* çözüm dosyasını açın.
 
-**Çözüm Gezgini** ' de, **TelemetryMQTTWin32** projesine sağ tıklayın ve **Başlangıç projesi olarak ayarla** ' yı seçin.
+**Çözüm Gezgini**' de, **TelemetryMQTTWin32** projesine sağ tıklayın ve **Başlangıç projesi olarak ayarla**' yı seçin.
 
 **TelemetryMQTTWin32** projesinde **MQTT_Mosquitto. cpp** kaynak dosyasını açın. Bağlantı bilgileri tanımlarını cihaz ayrıntılarıyla güncelleştirin daha önce bir değişiklik yaptınız. Belirteç dizesi yer tutucularını şu şekilde değiştirin:
 
@@ -137,15 +137,14 @@ Aşağıdaki tanımlar, cihazın IoT Hub 'ına bilgi göndermek için kullandı�
 * , `DEVICE_TELEMETRY_MESSAGE` Cihazın IoT Hub 'ınıza telemetri göndermek için kullandığı konuyu tanımlar.
 
 MQTT hakkında daha fazla bilgi için [Azure IoT GitHub deposu Için MQTT örnekleri](https://github.com/Azure-Samples/IoTMQTTSample/) sayfasını ziyaret edin.
-  
+
+## <a name="clean-up-resources"></a>Kaynakları temizleme
+
+[!INCLUDE [iot-pnp-clean-resources](../../includes/iot-pnp-clean-resources.md)]
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, IoT Tak ve Kullan kurallarını izlemek için bir MQTT cihaz istemcisini nasıl değiştireceğiniz hakkında daha fazla öğrendiniz. IoT Tak ve Kullan hakkında daha fazla bilgi edinmek için bkz.:
-
-> [!div class="nextstepaction"]
-> [Mimari](concepts-architecture.md)
-
-MQTT protokolü için IoT Hub desteği hakkında daha fazla bilgi edinmek için bkz.:
+Bu öğreticide, IoT Tak ve Kullan kurallarını izlemek için bir MQTT cihaz istemcisini nasıl değiştireceğiniz hakkında daha fazla öğrendiniz. MQTT protokolü için IoT Hub desteği hakkında daha fazla bilgi edinmek için bkz.:
 
 > [!div class="nextstepaction"]
 > [MQTT protokolünü kullanarak IoT Hub 'ınız ile iletişim kurma](../iot-hub/iot-hub-mqtt-support.md)

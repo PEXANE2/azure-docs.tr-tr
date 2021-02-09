@@ -7,13 +7,13 @@ ms.author: bagol
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
-ms.date: 02/02/2021
-ms.openlocfilehash: 0eb3b8feda09d931654d1781ea37737d68a1b377
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.date: 02/04/2021
+ms.openlocfilehash: 37a9294b156bd41b72e777696f10a1c4ac2bb354
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99526645"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99832768"
 ---
 # <a name="whats-new-in-azure-sentinel"></a>Azure Sentinel 'deki yenilikler
 
@@ -32,6 +32,7 @@ Belirtilen özellikler Şu anda ÖNIZLEME aşamasındadır. [Azure önizleme ek 
 
 ## <a name="january-2021"></a>Ocak 2021
 
+- [Analiz Kuralı Sihirbazı: Gelişmiş sorgu düzenlemesi deneyimi (Genel Önizleme)](#analytics-rule-wizard-improved-query-editing-experience-public-preview)
 - [Az. Securityınsights PowerShell modülü (Genel Önizleme)](#azsecurityinsights-powershell-module-public-preview)
 - [SQL Veritabanı Bağlayıcısı](#sql-database-connector)
 - [Geliştirilmiş olay açıklamaları](#improved-incident-comments)
@@ -40,6 +41,16 @@ Belirtilen özellikler Şu anda ÖNIZLEME aşamasındadır. [Azure önizleme ek 
 - [Analiz kuralı önizleme grafikleriyle geliştirilmiş kural ayarlama](#improved-rule-tuning-with-the-analytics-rule-preview-graphs-public-preview)
 
 
+## <a name="analytics-rule-wizard-improved-query-editing-experience-public-preview"></a>Analiz Kuralı Sihirbazı: Gelişmiş sorgu düzenlemesi deneyimi (Genel Önizleme)
+
+Azure Sentinel zamanlanmış analiz Kuralı Sihirbazı artık sorguları yazma ve düzenlemeyle ilgili aşağıdaki geliştirmeleri sağlar:
+
+-   Sorgunuzu görüntülemek için daha fazla ekran alanı sağlayan genişletilebilir bir düzen penceresi.
+-   Sorgu kodunuzda anahtar sözcük vurgulama.
+-   Genişletilmiş otomatik tam destek.
+-   Gerçek zamanlı sorgu doğrulamaları. Sorguınızdaki hatalar artık kaydırma çubuğunda kırmızı bir blok olarak ve **kural mantığını ayarla** sekmesi adında kırmızı bir nokta olarak gösterilir. Ayrıca, hatalı bir sorgu kaydedilemez.
+
+Daha fazla bilgi için bkz. [öğretici: tehditleri algılayın](tutorial-detect-threats-built-in.md).
 ### <a name="azsecurityinsights-powershell-module-public-preview"></a>Az. Securityınsights PowerShell modülü (Genel Önizleme)
 
 Azure Sentinel artık yeni [az. Securityınsights](https://www.powershellgallery.com/packages/Az.SecurityInsights/) PowerShell modülünü desteklemektedir.
@@ -113,7 +124,7 @@ Azure Sentinel için bu güncelleştirme, MITRE ATT&CK çerçevesi matrisinde ka
 - **Koleksiyon**
 - **Komut ve denetim**
 - **Kimlik bilgisi erişimi**
-- **Keşfini**
+- **Bulma**
 - **Yürütme**
 - **Sızdırma**
 - **Etki**

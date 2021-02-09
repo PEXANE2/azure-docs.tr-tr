@@ -15,19 +15,22 @@ ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: 24b1549b2e460bc0e72fb76f5437b15838604949
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: a4f3e0bbd282fb1253e206e71c2eb1667773248e
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97896371"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99834094"
 ---
 # <a name="tutorial-monitor-network-communication-between-two-virtual-machines-using-the-azure-portal"></a>Öğretici: Azure portalını kullanarak iki sanal makine arasındaki ağ iletişimini izleme
 
 > [!NOTE]
 > Bu öğretici bağlantı Izleyicisini (klasik) kapsar. Gelişmiş bağlantı izleme deneyimi için yeni ve geliştirilmiş [bağlantı izleyicisini](connection-monitor-overview.md) deneyin
 
-Bir sanal makine (VM) ve başka bir sanal makine gibi bir uç nokta arasındaki iletişimin başarılı olması, kuruluşunuz için kritik olabilir. Bazen iletişimi kesebilecek yapılandırma değişiklikleri olur. Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+> [!IMPORTANT]
+> 1 Temmuz 2021 tarihinden itibaren bağlantı Izleyicisine (klasik) yeni bağlantı izleyicileri ekleyemeyeceksiniz, ancak 1 2021 Temmuz 'dan önce oluşturulan mevcut bağlantı izleyicilerini kullanmaya devam edebilirsiniz. Geçerli iş yüklerinizde hizmet kesintisini en aza indirmek için, [bağlantı izleyicisinden (klasik)](migrate-to-connection-monitor-from-connection-monitor-classic.md) Azure Ağ İzleyicisi 'Nde 29 Şubat 2024 ' den önceki yeni bağlantı izleyicisine geçiş yapın.
+
+Bir sanal makine (VM) ve başka bir sanal makine gibi bir uç nokta arasındaki iletişimin başarılı olması, kuruluşunuz için kritik olabilir. Bazen iletişimi kesebilecek yapılandırma değişiklikleri olur. Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * İki sanal makine oluşturma
@@ -78,7 +81,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 |Adım|Ayar|Değer|
 |---|---|---|
 | 1 | **Ubuntu Server** sürümü seçin |                                                                         |
-| 3 | Ad                                  | myVm2                                                                   |
+| 3 | Name                                  | myVm2                                                                   |
 | 3 | Kimlik doğrulaması türü                   | SSH genel anahtarınızı yapıştırın veya **Parola**’yı seçin bir parola girin. |
 | 3 | Kaynak grubu                        | **Mevcut olanı kullan**’ı seçin ve **myResourceGroup** seçeneğini belirleyin.                 |
 | 6 | Uzantıları                            | **Linux için ağ Izleyicisi Aracısı**                                             |

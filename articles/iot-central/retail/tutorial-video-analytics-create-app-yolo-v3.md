@@ -8,12 +8,12 @@ ms.topic: tutorial
 author: KishorIoT
 ms.author: nandab
 ms.date: 10/06/2020
-ms.openlocfilehash: ecc32908aea2fb474d2ebe5bd94f556527eda814
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+ms.openlocfilehash: 70769ec97affcd95d07a1365d6357262072c86ec
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96763455"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99832083"
 ---
 # <a name="tutorial-create-a-video-analytics---object-and-motion-detection-application-in-azure-iot-central-yolo-v3"></a>Öğretici: Azure IoT Central bir video Analytics-nesne ve hareket algılama uygulaması oluşturma (YOLO v3)
 
@@ -127,3 +127,25 @@ Bu öğretici, çözümünüzü nesne ve hareket algılama için YOLO v3 modül�
 *LVA-yapılandırma* klasörüne gidin ve daha önce düzenlediğiniz bildirim dosyasında *deployment.amd64.js* seçin. **Karşıya Yükle**’yi seçin. Doğrulama tamamlandığında **Değiştir**' i seçin.
 
 [!INCLUDE [iot-central-video-analytics-part4](../../../includes/iot-central-video-analytics-part4.md)]
+
+## <a name="clean-up-resources"></a>Kaynakları temizleme
+
+Uygulamayı tamamladıysanız, oluşturduğunuz tüm kaynakları aşağıdaki şekilde kaldırabilirsiniz:
+
+1. IoT Central uygulamasında, **Yönetim** bölümünde **uygulamanızın** sayfasına gidin. Ardından **Sil**’i seçin.
+1. Azure portal, **LVA-RG** kaynak grubunu silin.
+1. Yerel makinenizde **amp-Viewer** Docker kapsayıcısını durdurun.
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+Artık **video analizi-nesne ve hareket algılama** uygulama şablonunu kullanarak bir IoT Central uygulaması oluşturdunuz, ağ geçidi cihazı için bir cihaz şablonu oluşturdunuz ve uygulamaya bir ağ geçidi cihazı eklediniz.
+
+Video analizi-nesne ve hareket algılama uygulamasını, sanal bir sanal makineyi benzetimli video akışlarıyla çalıştıran IoT Edge modüller kullanarak denemek istiyorsanız:
+
+> [!div class="nextstepaction"]
+> [Video analizi için IoT Edge örneği oluşturma (Linux VM)](tutorial-video-analytics-iot-edge-vm.md)
+
+**Gerçek bir** cihaz ile gerçek zamanlı olarak çalışan IoT Edge modüller kullanarak video analizi-nesne ve hareket algılama uygulamasını denemek istiyorsanız:
+
+> [!div class="nextstepaction"]
+> [Video analizi için IoT Edge örneği oluşturma (Intel NUC)](tutorial-video-analytics-iot-edge-nuc.md)

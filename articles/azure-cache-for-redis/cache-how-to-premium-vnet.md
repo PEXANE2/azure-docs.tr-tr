@@ -7,12 +7,12 @@ ms.service: cache
 ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.date: 10/09/2020
-ms.openlocfilehash: 9343bc424a0a38da173a56701528c4fd7549aabd
-ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
+ms.openlocfilehash: 908254fec0d9e92b0e30c2e4968c3c505bbbdbf8
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97734666"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99833839"
 ---
 # <a name="configure-virtual-network-support-for-a-premium-tier-azure-cache-for-redis-instance"></a>Redsıs örneği için Premium katmanlı bir Azure önbelleği için sanal ağ desteğini yapılandırma
 
@@ -178,7 +178,7 @@ Redsıs için Azure önbelleği için bir sanal ağda karşılanmamış olabilec
 * Dünya çapındaki Azure depolama uç noktalarına giden ağ bağlantısı. Redsıs örneği için Azure önbelleğiyle aynı bölgedeki ve *diğer* Azure bölgelerinde bulunan depolama uç noktaları dahil olan uç noktalar dahildir. Azure depolama uç noktaları şu DNS etki alanları altında çözümlenir: *Table.Core.Windows.net*, *BLOB.Core.Windows.net*, *Queue.Core.Windows.net* ve *File.Core.Windows.net*.
 * *OCSP.DigiCert.com*, *crl4.DigiCert.com*, *OCSP.msocsp.com*, *mscrl.Microsoft.com*, *crl3.DigiCert.com*, *cacerts.DigiCert.com*, *oneocsp.Microsoft.com* ve *CRL.Microsoft.com* giden ağ bağlantısı. Bu bağlantı, TLS/SSL işlevselliğini desteklemek için gereklidir.
 * Sanal ağın DNS yapılandırması, önceki noktalarda bahsedilen tüm uç noktaları ve etki alanlarını çözebilme yeteneğine sahip olmalıdır. Bu DNS gereksinimleri, sanal ağ için yapılandırılmış ve korunan geçerli bir DNS altyapısının sağlanması sağlanarak karşılanacaktır.
-* Aşağıdaki Azure Izleme uç noktalarına giden ağ bağlantısı: *shoebox2-Black.shoebox2.Metrics.nsatc.net*, *North-prod2.prod2.Metrics.nsatc.net*, *azglobal-Black.azglobal.Metrics.nsatc.net*, *shoebox2-Red.shoebox2.Metrics.nsatc.net*, *East-prod2.prod2.Metrics.nsatc.net* ve *azglobal-Red.azglobal.Metrics.nsatc.net*.
+* Aşağıdaki Azure Izleme uç noktalarına giden ağ bağlantısı: *shoebox2-Black.shoebox2.Metrics.nsatc.net*, *North-prod2.prod2.Metrics.nsatc.net*, *azglobal-Black.azglobal.Metrics.nsatc.net*, *shoebox2-Red.shoebox2.Metrics.nsatc.net*, *East-prod2.prod2.Metrics.nsatc.net*, *azglobal-Red.azglobal.Metrics.nsatc.net*, *shoebox3.prod.microsoftmetrics.com*, *shoebox3-Red.prod.microsoftmetrics.com* ve *shoebox3-Black.prod.microsoftmetrics.com*.
 
 ### <a name="how-can-i-verify-that-my-cache-is-working-in-a-virtual-network"></a>Önbelleğim bir sanal ağda çalıştığını nasıl doğrulayabilirim?
 
@@ -190,7 +190,7 @@ Bağlantı noktası gereksinimleri önceki bölümde açıklandığı gibi yapı
 
 - Tüm önbellek düğümlerini [yeniden başlatın](cache-administration.md#reboot) . [Gelen bağlantı noktası gereksinimleri](cache-how-to-premium-vnet.md#inbound-port-requirements) ve [giden bağlantı noktası gereksinimleri](cache-how-to-premium-vnet.md#outbound-port-requirements)bölümünde belirtildiği gibi, tüm gerekli önbellek bağımlılıklarına ulaşılırsa, önbellek başarıyla yeniden başlatılabilir.
 - Önbellek düğümleri yeniden başlatıldıktan sonra, Azure portal önbellek durumu tarafından raporlandıktan sonra, aşağıdaki testleri yapabilirsiniz:
-  - [Tcpıng](https://www.elifulkerson.com/projects/tcping.php)kullanarak önbellek ile aynı sanal ağ içinde olan bir makineden 6380 bağlantı noktasını kullanarak önbellek uç noktasına ping gönderin. Örnek:
+  - [Tcpıng](https://www.elifulkerson.com/projects/tcping.php)kullanarak önbellek ile aynı sanal ağ içinde olan bir makineden 6380 bağlantı noktasını kullanarak önbellek uç noktasına ping gönderin. Örneğin:
     
     `tcping.exe contosocache.redis.cache.windows.net 6380`
     
@@ -213,7 +213,7 @@ Aşağıdaki bağlantı dizesine benzer IP adresini kullanmaktan kaçının:
 
 `10.128.2.84:6380,password=xxxxxxxxxxxxxxxxxxxx,ssl=True,abortConnect=False`
 
-DNS adını çözemezseniz, bazı istemci kitaplıkları, `sslHost` StackExchange. redsıs istemcisi tarafından belirtilen gibi yapılandırma seçeneklerini içerir. Bu seçenek, sertifika doğrulama için kullanılan ana bilgisayar adını geçersiz kılmanıza olanak sağlar. Örnek:
+DNS adını çözemezseniz, bazı istemci kitaplıkları, `sslHost` StackExchange. redsıs istemcisi tarafından belirtilen gibi yapılandırma seçeneklerini içerir. Bu seçenek, sertifika doğrulama için kullanılan ana bilgisayar adını geçersiz kılmanıza olanak sağlar. Örneğin:
 
 `10.128.2.84:6380,password=xxxxxxxxxxxxxxxxxxxx,ssl=True,abortConnect=False;sslHost=[mycachename].redis.windows.net`
 
