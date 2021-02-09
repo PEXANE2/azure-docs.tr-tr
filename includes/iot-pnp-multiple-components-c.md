@@ -4,14 +4,22 @@ ms.author: dobett
 ms.service: iot-pnp
 ms.topic: include
 ms.date: 11/20/2020
-ms.openlocfilehash: 190e2144e92ffd77c098b4bf9205de03e55af7df
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 398f11c6e55cb62e0b29c148494cf3d590200b9d
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95510538"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99834208"
 ---
 Bu öğreticide, bileşenleriyle bir örnek IoT Tak ve Kullan cihaz uygulaması oluşturma, bunları IoT Hub 'ınıza bağlama ve Azure IoT Gezgini aracını kullanarak hub 'a gönderdiği bilgileri görüntüleme hakkında bilgi verilmektedir. Örnek uygulama C dilinde yazılır ve C için Azure IoT cihaz SDK 'sına dahildir. Bir çözüm Oluşturucusu, herhangi bir cihaz kodunu görüntülemeye gerek olmadan IoT Tak ve Kullan cihazının yeteneklerini anlamak için Azure IoT gezgin aracını kullanabilir.
+
+Bu öğreticide şunları yaptınız:
+
+> [!div class="checklist"]
+> * Örnek kodu indirin.
+> * Örnek kodu oluşturun.
+> * Örnek cihaz uygulamasını çalıştırın ve IoT Hub 'ınıza bağlandığını doğrulayın.
+> * Kaynak kodunu gözden geçirin.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -282,5 +290,3 @@ iothubResult = IoTHubDeviceClient_LL_SendEventAsync(deviceClientLL, messageHandl
 ```
 
 `main`İşlev son olarak farklı bileşenleri yok eder ve hub bağlantısını kapatır.
-
-[!INCLUDE [iot-pnp-clean-resources.md](iot-pnp-clean-resources.md)]

@@ -4,14 +4,14 @@ description: Gizli düğümlere sahip bir AKS kümesi oluşturmayı ve Azure CL�
 author: agowdamsft
 ms.service: container-service
 ms.topic: quickstart
-ms.date: 12/11/2020
+ms.date: 2/5/2020
 ms.author: amgowda
-ms.openlocfilehash: 92b4cd58b496602b479a24bab81a1d9322e732b0
-ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
+ms.openlocfilehash: b6fe8f4fe34799a71d59b7487d96217b4ac6a429
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97760648"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99833212"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-with-confidential-computing-nodes-dcsv2-using-azure-cli-preview"></a>Hızlı başlangıç: Azure CLı (Önizleme) kullanarak gizli bilgi işlem düğümleri (DCsv2) ile bir Azure Kubernetes hizmeti (AKS) kümesi dağıtma
 
@@ -75,7 +75,7 @@ az provider register --namespace Microsoft.ContainerService
 ```
 
 ### <a name="azure-confidential-computing-feature-registration-on-azure-optional-but-recommended"></a>Azure 'da Azure gizli bilgi Işlem özelliği kaydı (isteğe bağlı ancak önerilir)
-AKS-ConfidentialComputinAddon Azure aboneliğine kaydediliyor. Bu özellik [, Ayrıntılar bölümünde](./confidential-nodes-aks-overview.md#aks-provided-daemon-sets-addon)açıklandığı gibi iki daemonsets ekler:
+AKS-ConfidentialComputingAddon Azure aboneliğine kaydediliyor. Bu özellik [, Ayrıntılar bölümünde](./confidential-nodes-aks-overview.md#aks-provided-daemon-sets-addon)açıklandığı gibi iki daemonsets ekler:
 1. SGX cihaz sürücüsü eklentisi
 2. SGX kanıtlama teklif Yardımcısı
 
@@ -85,7 +85,7 @@ az feature register --name AKS-ConfidentialComputingAddon --namespace Microsoft.
 Durumun kayıtlı olarak gösterilmesi birkaç dakika sürebilir. ' Az Feature List ' komutunu kullanarak kayıt durumunu kontrol edebilirsiniz. Bu özellik kaydı, her abonelik için yalnızca bir kez yapılır. Daha önce kaydedilmişse yukarıdaki adımı atlayabilirsiniz:
 
 ```azurecli-interactive
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKS-ConfidentialComputinAddon')].{Name:name,State:properties.state}"
+az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKS-ConfidentialComputingAddon')].{Name:name,State:properties.state}"
 ```
 Durum kayıtlı olarak görünüyorsa, ' az Provider Register ' komutunu kullanarak Microsoft. ContainerService kaynak sağlayıcısı kaydını yenileyin:
 
@@ -143,12 +143,12 @@ Bu bölüm, önceden koşul bölümünde listelenen ölçütlere uyan bir AKS k�
 İlk olarak, özelliği Azure aboneliğine eklemenize olanak tanır
 
 ```azurecli-interactive
-az feature register --name AKS-ConfidentialComputinAddon --namespace Microsoft.ContainerService
+az feature register --name AKS-ConfidentialComputingAddon --namespace Microsoft.ContainerService
 ```
 Durumun kayıtlı olarak gösterilmesi birkaç dakika sürebilir. ' Az Feature List ' komutunu kullanarak kayıt durumunu kontrol edebilirsiniz. Bu özellik kaydı, her abonelik için yalnızca bir kez yapılır. Daha önce kaydedilmişse yukarıdaki adımı atlayabilirsiniz:
 
 ```azurecli-interactive
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKS-ConfidentialComputinAddon')].{Name:name,State:properties.state}"
+az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKS-ConfidentialComputingAddon')].{Name:name,State:properties.state}"
 ```
 Durum kayıtlı olarak görünüyorsa, ' az Provider Register ' komutunu kullanarak Microsoft. ContainerService kaynak sağlayıcısı kaydını yenileyin:
 

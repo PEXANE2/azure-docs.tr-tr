@@ -4,16 +4,24 @@ ms.author: dobett
 ms.service: iot-pnp
 ms.topic: include
 ms.date: 11/20/2020
-ms.openlocfilehash: 49b18b83c778a990398c4443d508743566ecfb20
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: bece0f95f3cd87bcf803637835ef1854606b088b
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95510545"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99834195"
 ---
 Bu öğretici, birden çok bileşen örnek IoT Tak ve Kullan cihaz uygulaması oluşturmayı, IoT Hub 'ınıza bağlamayı ve gönderdiği Telemetriyi görüntülemek için Azure CLı 'yi kullanmayı gösterir. Örnek uygulama Java 'da yazılmıştır ve Java için Azure IoT cihaz SDK 'sına dahildir. Bir çözüm Oluşturucusu, herhangi bir cihaz kodunu görüntülemeye gerek olmadan bir IoT Tak ve Kullan cihazının yeteneklerini anlamak için Azure CLı 'yı kullanabilir.
 
 Bu öğreticide, bileşenleriyle bir örnek IoT Tak ve Kullan cihaz uygulaması oluşturma, bunları IoT Hub 'ınıza bağlama ve Azure IoT Gezgini aracını kullanarak hub 'a gönderdiği bilgileri görüntüleme hakkında bilgi verilmektedir. Örnek uygulama Java 'da yazılmıştır ve Java için Azure IoT cihaz SDK 'sına dahildir. Bir çözüm Oluşturucusu, herhangi bir cihaz kodunu görüntülemeye gerek olmadan IoT Tak ve Kullan cihazının yeteneklerini anlamak için Azure IoT gezgin aracını kullanabilir.
+
+Bu öğreticide şunları yaptınız:
+
+> [!div class="checklist"]
+> * Örnek kodu indirin.
+> * Örnek kodu oluşturun.
+> * Örnek cihaz uygulamasını çalıştırın ve IoT Hub 'ınıza bağlandığını doğrulayın.
+> * Kaynak kodunu gözden geçirin.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -135,5 +143,3 @@ Message message = PnpHelper.createIotHubMessageUtf8(telemetryName, currentTemper
 :::image type="content" source="media/iot-pnp-multiple-components-java/multiple-component.png" alt-text="Azure IoT Gezgini 'nde birden çok bileşen cihazı":::
 
 Ayrıca, iki termostat bileşeninden ya da varsayılan bileşende komutları çağırmak için Azure IoT gezgin aracını da kullanabilirsiniz.
-
-[!INCLUDE [iot-pnp-clean-resources.md](iot-pnp-clean-resources.md)]

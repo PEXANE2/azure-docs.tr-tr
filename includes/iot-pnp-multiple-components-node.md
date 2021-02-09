@@ -4,14 +4,21 @@ ms.author: dobett
 ms.service: iot-pnp
 ms.topic: include
 ms.date: 11/20/2020
-ms.openlocfilehash: d803796792a3933cdf915214f15c56d146ecb49d
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 43a8600a288a9797edcd326a1cb5dbcc8688d61f
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95510544"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99834186"
 ---
 Bu öğreticide, bileşenleriyle bir örnek IoT Tak ve Kullan cihaz uygulaması oluşturma, bunları IoT Hub 'ınıza bağlama ve Azure IoT Gezgini aracını kullanarak hub 'a gönderdiği bilgileri görüntüleme hakkında bilgi verilmektedir. Örnek uygulama Node.js için yazılmıştır ve Node.js için Azure IoT Hub cihaz SDK 'sına dahildir. Bir çözüm Oluşturucusu, herhangi bir cihaz kodunu görüntülemeye gerek olmadan IoT Tak ve Kullan cihazının yeteneklerini anlamak için Azure IoT gezgin aracını kullanabilir.
+
+Bu öğreticide şunları yaptınız:
+
+> [!div class="checklist"]
+> * Örnek kodu indirin.
+> * Örnek cihaz uygulamasını çalıştırın ve IoT Hub 'ınıza bağlandığını doğrulayın.
+> * Kaynak kodunu gözden geçirin.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -120,5 +127,3 @@ Sonraki adımları tamamladıktan sonra örneği çalışır durumda tutun.
 Cihaz istemcisi örneği başladıktan sonra, çalıştığını doğrulamak için Azure IoT gezgin aracını kullanın.
 
 [!INCLUDE [iot-pnp-iot-explorer.md](iot-pnp-iot-explorer.md)]
-
-[!INCLUDE [iot-pnp-clean-resources.md](iot-pnp-clean-resources.md)]
