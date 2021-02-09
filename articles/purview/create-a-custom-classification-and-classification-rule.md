@@ -6,13 +6,13 @@ ms.author: anmuk
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 11/1/2020
-ms.openlocfilehash: 53c71eec4c913c606669b7d36ca9a71ac8f3e2f1
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.date: 2/5/2021
+ms.openlocfilehash: 3cc29e0bd806ab76c4980128df5a89761e465fe7
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97693464"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99988382"
 ---
 # <a name="custom-classifications-in-azure-purview"></a>Azure purview 'da özel sınıflandırmalar 
 
@@ -39,7 +39,7 @@ Ayrıca, varsayılan sınıflandırmaların herhangi biri gereksinimlerinizi kar
     :::image type="content" source="media/create-a-custom-classification-and-classification-rule/new-classification.png" alt-text="Yeni sınıflandırma" border="true":::
 
 Sınıflandırmanızı bir ad ve açıklama verebileceğiniz **Yeni sınıflandırma Ekle** bölmesi açılır. Gibi bir ad boşluğu kuralı kullanmak iyi bir uygulamadır `your company name.classification name` .
-Microsoft Sistem sınıflandırmaları, ayrılmış ad alanı altında gruplandırılır `MS.` . MS örnek bir örnektir **. Devlet. ABD. Sosyal \_ Güvenlik \_ numarası**.
+Microsoft Sistem sınıflandırmaları, ayrılmış ad alanı altında gruplandırılır `MICROSOFT.` . MICROSOFT bir örnektir **. Devlet. ABD. Sosyal \_ Güvenlik \_ numarası**.
 
 Sınıflandırmanın adı bir harfle başlamalı ve arkasından bir harf, rakam ve nokta (.) veya alt çizgi karakterlerinden oluşmalıdır.
 Boşluklara izin verilmez. Siz yazarken, UX otomatik olarak kolay bir ad oluşturur. Bu kolay ad, kullanıcıların katalogda bir varlığa uyguladığınızda gördükleri şeydir.
@@ -98,7 +98,7 @@ Tarama sistemi daha sonra bu kuralı, çalışan KIMLIĞI deseninin bulunduğu h
 |Alan     |Açıklama  |
 |---------|---------|
 |Ad   |    Gereklidir. Maksimum değer 100 karakterdir.    |
-|Açıklama      |İsteğe bağlı. Maksimum değer 256 karakterdir.    |
+|Description      |İsteğe bağlı. Maksimum değer 256 karakterdir.    |
 |Sınıflandırma adı    | Gereklidir. Bir eşleşme bulunursa tarayıcıya uygulamayı bildirmek için açılan listeden sınıflandırmanın adını seçin.        |
 |Durum   |  Gereklidir. Seçenekler etkin veya devre dışı. Varsayılan değer etkindir.    |
 |Veri kalıbı    |İsteğe bağlı. Veri alanında depolanan verileri temsil eden bir normal ifade. Sınır çok büyük. Önceki örnekte, veri desenleri, sözcük olan bir çalışan KIMLIĞI için test `Employee{GUID}` .  |

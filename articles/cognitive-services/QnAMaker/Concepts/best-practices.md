@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: ee8d838ba315c2e261a61699948b71a710341165
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 8a6189a613c9a6768428a13e35e0e009894b8b3f
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96346367"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99988041"
 ---
 # <a name="best-practices-of-a-qna-maker-knowledge-base"></a>Soru-Cevap Oluşturma Bilgi Bankası 'nın en iyi yöntemleri
 
@@ -41,7 +41,7 @@ Kullanıcılarınız bir metin stili `How do I add a toner cartridge to my print
 
 ### <a name="good-answers"></a>İyi yanıtlar
 
-En iyi yanıtlar basit yanıtlardan oluşur ancak çok basittir. Ve gibi yanıtları kullanmayın `yes` `no` . Yanıtlarınızın diğer kaynaklara bağlanması veya medya ve bağlantılarla zengin bir deneyim sağlaması gerekiyorsa, yanıtlar arasında ayrım yapmak için [meta veri etiketlemesini](../how-to/edit-knowledge-base.md#add-metadata) kullanın, ardından [submit the query](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration) `strictFilters` doğru yanıt sürümünü almak için sorguyu özelliğindeki meta veri etiketleriyle birlikte gönderebilirsiniz.
+En iyi yanıtlar basit yanıtlardan oluşur ancak çok basittir. Ve gibi yanıtları kullanmayın `yes` `no` . Yanıtlarınızın diğer kaynaklara bağlanması veya medya ve bağlantılarla zengin bir deneyim sağlaması gerekiyorsa, yanıtlar arasında ayrım yapmak için [meta veri etiketlemesini](../how-to/edit-knowledge-base.md#add-metadata) kullanın, ardından [](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration) `strictFilters` doğru yanıt sürümünü almak için sorguyu özelliğindeki meta veri etiketleriyle birlikte gönderebilirsiniz.
 
 |Yanıt|Yukarı açılan istemler|
 |--|--|
@@ -141,7 +141,7 @@ Bilgi bankasındaki bir soru ile bir kullanıcı sorgusuyla eşleşen derecelend
 Bu iki QnAs, çok benzer sözcüklerle phrased olduğundan, bu benzerlik,  *"konum olduğu yer `<x>` "* gibi phrased çok sayıda kullanıcı sorgusunun çok benzer puanlarını oluşmasına neden olabilir. Bunun yerine, KB 'unuzda birçok soruda olabilecek "konum" gibi kelimeleri önleyerek "  *Park partisi olan* " ve *"ATM* olduğu" gibi sorguları açıkça ayırt etmeye çalışın.
 
 ## <a name="collaborate"></a>İşbirliği
-Soru-Cevap Oluşturma, kullanıcıların Bilgi Bankası 'nda [işbirliği](../index.yml) yapmasına olanak sağlar. Kullanıcıların bilgi tabanlara erişebilmesi için Azure Soru-Cevap Oluşturma kaynak grubuna erişmesi gerekir. Bazı kuruluşlar Bilgi Bankası düzenlemesini ve bakımını dış olarak almak isteyebilir ve yine de Azure kaynaklarına erişimi koruyabilecek. Bu düzenleyici-onaylayan modeli, farklı aboneliklerde iki özdeş [soru-cevap oluşturma hizmeti](../How-to/set-up-qnamaker-service-azure.md) ayarlanarak ve düzenleme testi döngüsüne yönelik bir seçim yaparak yapılır. Sınama tamamlandıktan sonra Bilgi Bankası içerikleri, son olarak Bilgi Bankası 'nı yayımlayacak ve uç noktayı güncelleştiren, onaylayanın Soru-Cevap Oluşturma hizmetine bir [içeri aktarma](../Tutorials/migrate-knowledge-base.md) işlemi ile aktarılır.
+Soru-Cevap Oluşturma, kullanıcıların Bilgi Bankası 'nda işbirliği yapmasına olanak sağlar. Kullanıcıların bilgi tabanlara erişebilmesi için Azure Soru-Cevap Oluşturma kaynak grubuna erişmesi gerekir. Bazı kuruluşlar Bilgi Bankası düzenlemesini ve bakımını dış olarak almak isteyebilir ve yine de Azure kaynaklarına erişimi koruyabilecek. Bu düzenleyici-onaylayan modeli, farklı aboneliklerde iki özdeş [soru-cevap oluşturma hizmeti](../How-to/set-up-qnamaker-service-azure.md) ayarlanarak ve düzenleme testi döngüsüne yönelik bir seçim yaparak yapılır. Sınama tamamlandıktan sonra Bilgi Bankası içerikleri, son olarak Bilgi Bankası 'nı yayımlayacak ve uç noktayı güncelleştiren, onaylayanın Soru-Cevap Oluşturma hizmetine bir [içeri aktarma](../Tutorials/migrate-knowledge-base.md) işlemi ile aktarılır.
 
 
 

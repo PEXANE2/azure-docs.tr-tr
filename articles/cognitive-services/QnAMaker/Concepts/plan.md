@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: e523b35afca33213a40060819a1293e94d413b00
-ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
+ms.openlocfilehash: bf5582016f74e67926c38111a3d8d2f468f3ac79
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99222874"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99987989"
 ---
 # <a name="plan-your-qna-maker-app"></a>Soru-Cevap Oluşturma Uygulamanızı planlayın
 
@@ -124,17 +124,17 @@ Bir kullanıcının botunuzu nasıl kullanacağınızı bilmesi ve konuşmada bo
 
 Ortak çalışanlar, Bilgi Bankası uygulamasının tam geliştirme yığınını paylaşan diğer geliştiriciler olabilir veya yalnızca Bilgi Bankası yazma ile sınırlı olabilir.
 
-Bilgi Bankası yazma, ortak çalışan becerileri kapsamını sınırlandırmak için Azure portal uyguladığınız çeşitli [rol tabanlı erişim izinlerini](../reference-role-based-access-control.md) destekler.
+Bilgi Bankası yazma, ortak çalışan becerileri kapsamını sınırlandırmak için Azure portal uyguladığınız çeşitli rol tabanlı erişim izinlerini destekler.
 
 ## <a name="integration-with-client-applications"></a>İstemci uygulamalarıyla tümleştirme
 
-[İstemci uygulamalarıyla](../index.yml) tümleştirme, tahmin çalışma zamanı uç noktasına bir sorgu gönderilerek gerçekleştirilir. Bir sorgu, Soru-Cevap Oluşturma Web uygulaması uç noktasına SDK veya REST tabanlı bir istek ile özel bilgi tabanıza gönderilir.
+İstemci uygulamalarıyla tümleştirme, tahmin çalışma zamanı uç noktasına bir sorgu gönderilerek gerçekleştirilir. Bir sorgu, Soru-Cevap Oluşturma Web uygulaması uç noktasına SDK veya REST tabanlı bir istek ile özel bilgi tabanıza gönderilir.
 
 İstemci isteğinin doğru şekilde doğrulanması için, istemci uygulamanın doğru kimlik bilgilerini ve Bilgi Bankası KIMLIĞINI gönderebilmesi gerekir. Bir Azure bot hizmeti kullanıyorsanız, bu ayarları Azure portal bot yapılandırmasının bir parçası olarak yapılandırın.
 
 ### <a name="conversation-flow-in-a-client-application"></a>İstemci uygulamasında konuşma akışı
 
-Azure bot gibi bir [istemci uygulamasındaki](../index.yml)konuşma akışı, Bilgi Bankası ile etkileşime girmeden önce ve sonra işlevselliği gerektirebilir.
+Azure bot gibi bir istemci uygulamasındaki konuşma akışı, Bilgi Bankası ile etkileşime girmeden önce ve sonra işlevselliği gerektirebilir.
 
 İstemci uygulamanız konuşma akışını, izleme istemlerini işlemek için alternatif bir yol sunarak veya Chit-CHIT dahil olmak üzere destekliyor mu? Bu durumda, bunları erken tasarlayın ve istemci uygulama sorgusunun başka bir hizmet tarafından veya bilgi tabanınıza gönderildiğinde doğru şekilde işlendiğinden emin olun.
 
@@ -148,7 +148,7 @@ Bu tür bir [paylaşılan mimari](../choose-natural-language-processing-service.
 
 ### <a name="active-learning-from-a-client-application"></a>İstemci uygulamasından etkin öğrenme
 
-Soru-Cevap Oluşturma, yanıt için alternatif sorular önererek bilgi bankasını geliştirmek üzere _etkin öğrenimi_ kullanır. Bu [etkin öğrenimi](active-learning-suggestions.md)'nin bir parçası olan istemci uygulaması sorumludur. Konuşma istemleriyle, istemci uygulaması bilgi bankasından Kullanıcı için faydalı olmayan bir yanıt döndürmeyeceğini ve daha iyi bir yanıt belirleyebileceğini belirleyebilir. Tahmin kalitesini artırmak için istemci uygulamanın [Bu bilgileri bilgi bankasına geri gönderebilmesi](active-learning-suggestions.md#how-you-give-explicit-feedback-with-the-train-api) gerekir.
+Soru-Cevap Oluşturma, yanıt için alternatif sorular önererek bilgi bankasını geliştirmek üzere _etkin öğrenimi_ kullanır. Bu [etkin öğrenimi](../How-To/use-active-learning.md)'nin bir parçası olan istemci uygulaması sorumludur. Konuşma istemleriyle, istemci uygulaması bilgi bankasından Kullanıcı için faydalı olmayan bir yanıt döndürmeyeceğini ve daha iyi bir yanıt belirleyebileceğini belirleyebilir. Tahmin kalitesini artırmak için istemci uygulamanın bu bilgileri bilgi bankasına geri gönderebilmesi gerekir.
 
 ### <a name="providing-a-default-answer"></a>Varsayılan bir yanıt sağlama
 
@@ -208,16 +208,16 @@ Bilgi bankasındaki [geliştirme yaşam döngüsü](development-lifecycle-knowle
 
 ### <a name="knowledge-base-development-of-qna-maker-pairs"></a>Soru-Cevap Oluşturma çiftleri hakkında bilgi Bankası geliştirme
 
-[QNA Pairs](question-answer-set.md) , istemci uygulaması kullanımınıza göre tasarlanıp geliştirilebilmelidir.
+QnA Pairs, istemci uygulaması kullanımınıza göre tasarlanıp geliştirilebilmelidir.
 
 Her bir çift şunları içerebilir:
 * Meta veri-filtreleyerek, QnA çiftlerinizi verilerinize kaynak, içerik, biçim ve amaç hakkında ek bilgilerle etiketleyebilmesini sağlayacak şekilde sorgulama yapılır.
 * İzleme istemleri-Kullanıcı doğru yanıta ulaşabilmesi için bilgi tabanınız aracılığıyla bir yol belirlemesine yardımcı olur.
-* Diğer sorular-aramanın farklı formlardaki yanıtınızı eşleştirmeye izin vermek için önemlidir. [Etkin öğrenme önerileri](active-learning-suggestions.md) , alternatif sorulara sahiptir.
+* Diğer sorular-aramanın farklı formlardaki yanıtınızı eşleştirmeye izin vermek için önemlidir. [Etkin öğrenme önerileri](../How-To/use-active-learning.md) , alternatif sorulara sahiptir.
 
 ### <a name="devops-development"></a>DevOps geliştirme
 
-Bir DevOps ardışık düzenine eklemek için Bilgi Bankası geliştirme işlemi, bilgi bankasını [toplu test](../index.yml)sırasında yalıtıyor olması gerekir.
+Bir DevOps ardışık düzenine eklemek için Bilgi Bankası geliştirme işlemi, bilgi bankasını toplu test sırasında yalıtıyor olması gerekir.
 
 Bilgi Bankası, Bilişsel Arama dizinini Soru-Cevap Oluşturma kaynaktaki diğer tüm bilgi bankalarıyla paylaşır. Bilgi Bankası, Bölüm tarafından yalıtılırken, Dizin paylaşımı, yayımlanan bilgi tabanı ile karşılaştırıldığında puanta farklılık oluşmasına neden olabilir.
 

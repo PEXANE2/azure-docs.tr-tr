@@ -5,21 +5,17 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: e4f0e229488093067b231a5c92334238ca216234
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: 652489e8de68d61707fd419843f0dbb2ffd83754
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99550564"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99987941"
 ---
 # <a name="manage-qna-maker-app"></a>Soru-Cevap Oluşturma uygulamayı yönetme
 
 Soru-Cevap Oluşturma, işbirmci rolüne bağlı olarak ortak çalışan erişimini kısıtlamak için bir yetenek sunarak farklı yazarlar ve içerik düzenleyicilerle işbirliği yapmanızı sağlar.
 [Soru-cevap oluşturma ortak çalışan kimlik doğrulama kavramları](../Concepts/role-based-access-control.md)hakkında daha fazla bilgi edinin.
-
-Ayrıca, [etkin öğrenme](../Concepts/active-learning-suggestions.md)aracılığıyla alternatif sorular önererek bilgi Bankalarınızın kalitesini geliştirebilirsiniz. Kullanıcı Gönderimleri göz önüne alınır ve alternatif sorular listesinde öneri olarak görünür. Bu önerileri diğer sorular olarak ekleme veya reddetme esnekliği vardır.
-
-Bilgi tabanınız otomatik olarak değişmez. Değişikliklerin etkili olabilmesi için önerileri kabul etmelisiniz. Bu öneriler, sorular ekler ancak mevcut soruları değiştirmez veya kaldırmaz.
 
 ## <a name="add-azure-role-based-access-control-azure-rbac"></a>Azure rol tabanlı erişim denetimi (Azure RBAC) ekleme
 
@@ -43,7 +39,7 @@ Aşağıdaki adımlarda ortak çalışan rolü kullanılır, ancak bu adımlar k
 
     ![Soru-Cevap Oluşturma ıAM](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam.png)
 
-1. **Ekle**’yi seçin.
+1. **Add (Ekle)** seçeneğini belirleyin.
 
     ![Soru-Cevap Oluşturma ıAM ekleme](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam-add.png)
 

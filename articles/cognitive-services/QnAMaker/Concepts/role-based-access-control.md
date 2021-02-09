@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 05/15/2020
-ms.openlocfilehash: cb6d0ee9c651ca1dcc554f5951a5733727af2d6b
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: f43fa06cf93d383efcb0fe746de28ab143280e50
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98954115"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99988020"
 ---
 # <a name="collaborate-with-other-authors-and-editors"></a>Diğer yazarlarla ve düzenleyicilerle işbirliği yapın
 
@@ -46,7 +46,7 @@ Aşağıdaki diyagramda, Soru-Cevap Oluşturma portalında oturum açmak ve yazm
 
 ## <a name="authenticate-by-qna-maker-portal"></a>Soru-Cevap Oluşturma portalına göre kimlik doğrulaması
 
-Soru-Cevap Oluşturma portalını kullanarak yazar ve işbirliği yaparsanız, [ortak çalışan için kaynağa uygun rolü](../index.yml)ekledikten sonra, soru-cevap oluşturma portalı tüm erişim izinlerini yönetir.
+Soru-Cevap Oluşturma portalını kullanarak yazar ve işbirliği yaparsanız, ortak çalışan için kaynağa uygun rolü ekledikten sonra, Soru-Cevap Oluşturma portalı tüm erişim izinlerini yönetir.
 
 ## <a name="authenticate-by-qna-maker-apis-and-sdks"></a>Soru-Cevap Oluşturma API 'Ler ve SDK 'Lar tarafından kimlik doğrulama
 
@@ -54,4 +54,4 @@ API 'Leri kullanarak, REST veya SDK 'Lar aracılığıyla yazar ve işbirliği y
 
 ## <a name="next-step"></a>Sonraki adım
 
-* [Diller](../index.yml) ve [istemci uygulamaları](../index.yml) için Bilgi Bankası tasarlama
+* Diller ve istemci uygulamaları için Bilgi Bankası tasarlama

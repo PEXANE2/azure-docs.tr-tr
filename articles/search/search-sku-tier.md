@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/15/2021
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 320f02f6ece106b4d0e14293f95533aa5b4e0743
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: df218c2a4c066343ef571c6f24554ecaa806b639
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98693460"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99987878"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>Azure Bilişsel Arama için bir fiyatlandırma katmanı seçin
 
@@ -53,14 +53,15 @@ Bazı katmanlar belirli iş türleri için tasarlanmıştır. Örneğin, **Stand
 
 Birçok özellik, ücretsiz katman dahil olmak üzere tüm katmanlarda kullanılabilir. Birkaç durumda, seçtiğiniz katman bir özelliği uygulama yeteneğinizi etkiler. Aşağıdaki tabloda hizmet katmanıyla ilgili özellik kısıtlamaları açıklanmaktadır.
 
-| Öne çıkan özelliği | Sınırlamalar |
+| Özellik | Sınırlamalar |
 |---------|-------------|
 | [Dizinleyiciler](search-indexer-overview.md) | Dizin oluşturucular S3 HD üzerinde kullanılamaz.  |
 | [Yapay zeka zenginleştirme](search-security-manage-encryption-keys.md) | Ücretsiz katmanda çalışır, ancak önerilmez. |
 | [Giden (Dizin Oluşturucu) erişimi için yönetilen veya güvenilen kimlikler](search-howto-managed-identities-data-sources.md) | Ücretsiz katmanda kullanılamaz.|
 | [Müşteri tarafından yönetilen şifreleme anahtarları](search-security-manage-encryption-keys.md) | Ücretsiz katmanda kullanılamaz. |
 | [IP güvenlik duvarı erişimi](service-configure-firewall.md) | Ücretsiz katmanda kullanılamaz. |
-| [Özel uç nokta (Azure özel bağlantısı ile tümleştirme)](service-create-private-endpoint.md) | Bir arama hizmetine gelen bağlantılar için ücretsiz katmanda kullanılamaz. Diğer Azure kaynaklarına yönelik Dizin oluşturucular tarafından giden bağlantılar için ücretsiz veya S3 HD 'de kullanılamaz. Becerileri kullanan Dizin oluşturucular için, ücretsiz, temel, S1 veya S3 HD ' de kullanılamaz.|
+| [Özel uç nokta (Azure özel bağlantısı ile tümleştirme)](service-create-private-endpoint.md) | Bir arama hizmetine gelen bağlantılar için ücretsiz katmanda kullanılamaz. Diğer Azure kaynaklarına yönelik Dizin oluşturucular tarafından giden bağlantılar için ücretsiz veya S3 HD 'de kullanılamaz. Becerileri kullanan Dizin oluşturucular için, ücretsiz, temel, S1 veya S3 HD ' de kullanılamaz.| 
+| [Kullanılabilirlik Alanları](search-performance-optimization.md) | Ücretsiz katmanda ve temel katmanda kullanılamaz. |
 
 Yeterli kapasiteye sahip değilseniz, Kaynak yoğunluklu Özellikler iyi çalışmayabilir. Örneğin, [AI zenginleştirme](cognitive-search-concept-intro.md) , veri kümesi küçük olmadığı sürece ücretsiz bir hizmette zaman aşımına uğrar uzun süreli yetenekler içerir.
 

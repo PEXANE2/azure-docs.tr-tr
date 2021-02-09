@@ -412,7 +412,7 @@
           href: cognitive-search-common-errors-warnings.md
 - name: Başvuru
   items:
-    - name: Azure CLI’si
+    - name: Azure CLI
       href: /cli/azure/search
     - name: Azure PowerShell
       href: /powershell/module/az.search
@@ -530,6 +530,8 @@
   items:
     - name: Azure Topluluk Desteği
       href: 'https://azure.microsoft.com/support/community/?product=search'
+    - name: İş ortağı Spotlight
+      href: resource-partners-knowledge-mining.md
     - name: Azure Güncelleştirmeleri
       href: 'https://azure.microsoft.com/updates/?product=search'
     - name: Geri Bildirim Forumu (UserVoice)
@@ -554,8 +556,6 @@
           href: 'https://www.pluralsight.com/courses/azure-adding-search-abilities-apps'
         - name: Geliştirici kursu (Pluralsight)
           href: 'https://www.pluralsight.com/courses/microsoft-azure-textual-content-search-enabling'
-    - name: İş ortağı çözümleri
-      href: resource-partners-knowledge-mining.md
     - name: SSS
       href: search-faq-frequently-asked-questions.md
     - name: Fiyatlandırma

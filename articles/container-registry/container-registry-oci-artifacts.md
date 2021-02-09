@@ -4,14 +4,14 @@ description: Azure 'da özel bir kapsayıcı kayıt defteri kullanarak açık ka
 author: SteveLasker
 manager: gwallace
 ms.topic: article
-ms.date: 08/12/2020
+ms.date: 02/03/2021
 ms.author: stevelas
-ms.openlocfilehash: 7c95766cc12b281521fa52ab113fadd4321d0815
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8a73f295999888dab20531ffdd0fb042790a5357
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89485012"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99988222"
 ---
 # <a name="push-and-pull-an-oci-artifact-using-an-azure-container-registry"></a>Azure Container Registry kullanarak bir OCı yapıtı gönderme ve çekme
 
@@ -19,7 +19,7 @@ ms.locfileid: "89485012"
 
 Bu özelliği göstermek için, bu makalede bir örnek yapıtı (bir metin dosyası) Azure Container Registry 'ye göndermek için [OCI kayıt defteri (ORAS)](https://github.com/deislabs/oras) aracının nasıl kullanılacağı gösterilmektedir. Ardından, yapıtı kayıt defterinden çekin. Her yapıya uygun farklı komut satırı araçlarını kullanarak bir Azure Container Registry 'de çeşitli OCı yapılarını yönetebilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * **Azure kapsayıcısı kayıt defteri** -Azure aboneliğinizde bir kapsayıcı kayıt defteri oluşturun. Örneğin, [Azure Portal](container-registry-get-started-portal.md) veya [Azure CLI](container-registry-get-started-azure-cli.md)'yi kullanın.
 * **Oras aracı** - [GitHub deposundan](https://github.com/deislabs/oras/releases)işletim sisteminiz için geçerli bir oras sürümü indirin ve yükleyin. Araç, sıkıştırılmış bir tarbol (dosya) olarak serbest bırakılır `.tar.gz` . İşletim sisteminiz için standart yordamları kullanarak dosyayı ayıklayın ve yükledikten sonra.
@@ -34,7 +34,7 @@ Bu bölümde, kullanılan kimliğe bağlı olarak kayıt defterinde oturum açma
 
 ### <a name="sign-in-with-oras"></a>ORAS ile oturum açın
 
-Hizmet [sorumlusu](container-registry-auth-service-principal.md) 'nı gönderim haklarıyla kullanarak, `oras login` HIZMET sorumlusu uygulama kimliğini ve parolasını kullanarak kayıt defterinde oturum açmak için komutunu çalıştırın. Tam kayıt defteri adını (tümü küçük harf), bu örnekte *myregistry.azurecr.io*olarak belirtin. Hizmet sorumlusu uygulama KIMLIĞI, ortam değişkenine `$SP_APP_ID` ve değişkendeki parolaya geçirilir `$SP_PASSWD` .
+Hizmet [sorumlusu](container-registry-auth-service-principal.md) 'nı gönderim haklarıyla kullanarak, `oras login` HIZMET sorumlusu uygulama kimliğini ve parolasını kullanarak kayıt defterinde oturum açmak için komutunu çalıştırın. Tam kayıt defteri adını (tümü küçük harf), bu örnekte *myregistry.azurecr.io* olarak belirtin. Hizmet sorumlusu uygulama KIMLIĞI, ortam değişkenine `$SP_APP_ID` ve değişkendeki parolaya geçirilir `$SP_PASSWD` .
 
 ```bash
 oras login myregistry.azurecr.io --username $SP_APP_ID --password $SP_PASSWD
@@ -46,7 +46,7 @@ STDIN 'den parolayı okumak için kullanın `--password-stdin` .
 
 Kapsayıcı kayıt defterinden yapıtları göndermek ve çekmek için kimliğinizi kullanarak Azure CLı ['Da oturum açın](/cli/azure/authenticate-azure-cli) .
 
-Ardından, kayıt defterine erişmek için [az ACR oturum açma](/cli/azure/acr?view=azure-cli-latest#az-acr-login) Azure CLI komutunu kullanın. Örneğin, *myregistry*adlı bir kayıt defterine kimlik doğrulaması yapmak için:
+Ardından, kayıt defterine erişmek için [az ACR oturum açma](/cli/azure/acr#az-acr-login) Azure CLI komutunu kullanın. Örneğin, *myregistry* adlı bir kayıt defterine kimlik doğrulaması yapmak için:
 
 ```azurecli
 az login
@@ -61,12 +61,12 @@ az acr login --name myregistry
 Yerel çalışma çalışma dizininde bazı örnek metinle bir metin dosyası oluşturun. Örneğin, bir bash kabuğu 'nda:
 
 ```bash
-echo "Here is an artifact!" > artifact.txt
+echo "Here is an artifact" > artifact.txt
 ```
 
 `oras push`Bu metin dosyasını kayıt defterinize göndermek için komutunu kullanın. Aşağıdaki örnek örnek metin dosyasını `samples/artifact` depoya gönderir. Kayıt defteri, tam olarak nitelenmiş kayıt defteri adı *myregistry.azurecr.io* (tümü küçük harf) ile tanımlanır. Yapıt etiketlendi `1.0` . Yapıtın, varsayılan olarak, dosya adını izleyen *medya türü* dizesi tarafından tanımlanan tanımlanmamış bir türü vardır `artifact.txt` . Ek türler için bkz. [OCI yapıtları](https://github.com/opencontainers/artifacts) . 
 
-**Linux**
+**Linux veya macOS**
 
 ```bash
 oras push myregistry.azurecr.io/samples/artifact:1.0 \
@@ -137,7 +137,7 @@ oras pull myregistry.azurecr.io/samples/artifact:1.0 \
 
 ```bash
 $ cat artifact.txt
-Here is an artifact!
+Here is an artifact
 ```
 
 ## <a name="remove-the-artifact-optional"></a>Yapıtı Kaldır (isteğe bağlı)
@@ -157,7 +157,7 @@ Bir kapsayıcı görüntüsü derlemek için kaynak kodu ve ikili dosyalar, bir 
 Örneğin, tek satırlık bir Dockerfile oluşturun:
 
 ```bash
-echo "FROM hello-world" > hello-world.dockerfile
+echo "FROM mcr.microsoft.com/hello-world" > hello-world.dockerfile
 ```
 
 Hedef kapsayıcı kayıt defterinde oturum açın.
@@ -170,14 +170,15 @@ az acr login --name myregistry
 Komutunu kullanarak hedef kayıt defterine yeni bir OCı yapıtı oluşturun ve gönderin `oras push` . Bu örnek, yapıt için varsayılan medya türünü ayarlar.
 
 ```bash
-oras push myregistry.azurecr.io/hello-world:1.0 hello-world.dockerfile
+oras push myregistry.azurecr.io/dockerfile:1.0 hello-world.dockerfile
 ```
 
 Yeni yapıyı derleme bağlamı olarak kullanarak Hello-World görüntüsünü oluşturmak için [az ACR Build](/cli/azure/acr#az-acr-build) komutunu çalıştırın:
 
 ```azurecli
-az acr build --registry myregistry --file hello-world.dockerfile \
-  oci://myregistry.azurecr.io/hello-world:1.0
+az acr build --registry myregistry --image builds/hello-world:v1 \
+  --file hello-world.dockerfile \
+  oci://myregistry.azurecr.io/dockerfile:1.0
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar

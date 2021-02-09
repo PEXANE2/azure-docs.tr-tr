@@ -3,12 +3,12 @@ title: Öğretici-Azure VM 'lerinde SAP HANA veritabanlarını yedekleme
 description: Bu öğreticide, Azure VM 'de çalışan SAP HANA veritabanlarını Azure Backup kurtarma hizmetleri kasasına nasıl yedekleyeceğinizi öğrenin.
 ms.topic: tutorial
 ms.date: 02/24/2020
-ms.openlocfilehash: 31a0a773096ec0f69e87bfd4a05f8ba98185e6cf
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: ede8ebab205e814de3988a2b5c432a21f965eb55
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94695223"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99987785"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm"></a>Öğretici: Azure VM 'de SAP HANA veritabanlarını yedekleme
 
@@ -71,7 +71,7 @@ Ağ güvenlik grupları (NSG) kullanıyorsanız, Azure Backup giden erişime izi
 
 1. **Ayarlar** altında **giden güvenlik kuralları** ' nı seçin.
 
-1. **Ekle**’yi seçin. [Güvenlik kuralı ayarları](../virtual-network/manage-network-security-group.md#security-rule-settings)' nda açıklandığı gibi yeni bir kural oluşturmak için gereken tüm ayrıntıları girin. Seçenek **hedefinin** *hizmet etiketi* olarak ayarlandığından ve **hedef hizmet etiketinin** *AzureBackup* olarak ayarlandığından emin olun.
+1. **Add (Ekle)** seçeneğini belirleyin. [Güvenlik kuralı ayarları](../virtual-network/manage-network-security-group.md#security-rule-settings)' nda açıklandığı gibi yeni bir kural oluşturmak için gereken tüm ayrıntıları girin. Seçenek **hedefinin** *hizmet etiketi* olarak ayarlandığından ve **hedef hizmet etiketinin** *AzureBackup* olarak ayarlandığından emin olun.
 
 1. Yeni oluşturulan giden güvenlik kuralını kaydetmek için **Ekle**  ' yi seçin.
 
@@ -98,6 +98,46 @@ Sunucularınızdaki gerekli hizmetlere erişime izin vermek için aşağıdaki F
 ### <a name="use-an-http-proxy-server-to-route-traffic"></a>Trafiği yönlendirmek için bir HTTP proxy sunucusu kullanma
 
 Azure VM üzerinde çalışan bir SAP HANA veritabanını yedeklerken, VM 'deki yedekleme uzantısı, Azure depolama 'ya Azure Backup ve verilere yönetim komutları göndermek için HTTPS API 'Lerini kullanır. Yedekleme uzantısı, kimlik doğrulaması için Azure AD 'yi de kullanır. Bu üç hizmet için yedekleme uzantısı trafiğini HTTP ara sunucusu üzerinden yönlendirin. Gerekli hizmetlere erişim izni vermek için yukarıda bahsedilen IP 'Ler ve FQDN 'lerin listesini kullanın. Kimliği doğrulanmış proxy sunucuları desteklenmez.
+
+## <a name="understanding-backup-and-restore-throughput-performance"></a>Yedekleme ve geri yükleme verimlilik performansını anlama
+
+Backint aracılığıyla sunulan SAP HANA Azure VM 'lerinde yedeklemeler (log ve log olmayan), Azure kurtarma hizmetleri kasalarına akışlardır ve bu nedenle bu akış metodolojisini anlamak önemlidir.
+
+HANA 'nın geri dönüş bileşeni, veritabanı dosyalarının bulunduğu temel disklere bağlı olan, daha sonra Azure Backup hizmeti tarafından okunan ve Azure kurtarma hizmetleri kasasından taşınan temel disklere bağlanan ' kanallar ' (bir kanal ve yazılacak bir kanal) sağlar. Azure Backup hizmeti, biriktirme listesi yerel doğrulama denetimlerine ek olarak akışları doğrulamak için de bir sağlama toplamı gerçekleştirir. Bu doğrulamalar, Azure kurtarma hizmetleri kasasında bulunan verilerin gerçekten güvenilir ve kurtarılabilir olmasını sağlayacaktır.
+
+Akışlar öncelikli olarak disklerle ilgilendiğinden, yedekleme ve geri yükleme performansını ölçmek için disk performansını anlamanız gerekir. Azure VM 'lerinde disk aktarım hızını ve performansını derinlemesine anlamak için [Bu makaleye](https://docs.microsoft.com/azure/virtual-machines/disks-performance) bakın. Bunlar yedekleme ve geri yükleme performansı için de geçerlidir.
+
+**Azure Backup hizmeti, günlük olmayan yedeklemeler (örneğin, tam, türev ve artımlı) ve Hana için günlük yedeklemeleri için 100 MB/sn 'ye kadar ~ 420 Mbps elde etme girişiminde bulunur**. Yukarıda belirtildiği gibi, bunlar garantili hızlardır ve aşağıdaki faktörlere bağlı olarak değişir:
+
+* VM 'nin önbelleğe alınmamış disk aktarım hızı üst sınırı
+* Temel disk türü ve verimlilik
+* Aynı anda aynı diske okuma ve yazma işlemi gerçekleştirmeye çalışan işlem sayısı.
+
+> [!IMPORTANT]
+> Önbelleğe alınmamış disk üretiminin 400 MB/sn 'tan daha az olduğu daha küçük VM 'lerde, disk ıOPS 'nin tamamı, disklerden okuma/yazma işlemlerine ilişkin işlemleri SAP HANA etkileyebilecek yedekleme hizmeti tarafından tüketilebilir. Bu durumda, yedekleme hizmeti tüketimini kısıtlama veya en yüksek sınıra sınırlamak için bir sonraki bölüme başvurabilirsiniz.
+
+### <a name="limiting-backup-throughput-performance"></a>Yedekleme verimlilik performansını sınırlandırma
+
+Yedekleme hizmeti disk ıOPS tüketimini maksimum değere kısıtlamak istiyorsanız aşağıdaki adımları gerçekleştirin.
+
+1. "Opt/msawb/bin" klasörüne git
+2. "ExtensionSettingOverrides.JSÜZERINDE" adlı yeni bir JSON dosyası oluşturun
+3. JSON dosyasına anahtar-değer çifti eklemek için aşağıdaki adımları izleyin:
+
+    ```json
+    {
+    "MaxUsableVMThroughputInMBPS": 200
+    }
+    ```
+
+4. Dosyanın izinlerini ve sahipliğini aşağıdaki şekilde değiştirin:
+    
+    ```bash
+    chmod 750 ExtensionSettingsOverrides.json
+    chown root:msawb ExtensionSettingsOverrides.json
+    ```
+
+5. Hiçbir hizmetin yeniden başlatılması gerekmez. Azure Backup hizmeti bu dosyada belirtilen verimlilik performansını sınırlandırmaya çalışacaktır.
 
 ## <a name="what-the-pre-registration-script-does"></a>Ön kayıt betiği ne yapar
 
@@ -158,7 +198,7 @@ Kurtarma Hizmetleri kasası oluşturmak için:
    Aboneliğinizdeki kullanılabilir kaynak gruplarının listesini görmek için **Varolanı kullan**' ı seçin ve ardından aşağı açılan liste kutusundan bir kaynak seçin. Yeni bir kaynak grubu oluşturmak için **Yeni oluştur**'u seçip bir ad girin. Kaynak grupları hakkında tüm bilgiler için bkz. [Azure Resource Manager genel bakış](../azure-resource-manager/management/overview.md).
    * **Konum**: Kasa için coğrafi bölgeyi seçin. Kasa, SAP HANA çalıştıran sanal makine ile aynı bölgede olmalıdır. **Doğu ABD 2** kullandık.
 
-5. **Gözden geçir + oluştur**' u seçin.
+5. **Gözden geçir + Oluştur**’u seçin.
 
    ![Gözden geçirme & oluştur ' u seçin](./media/tutorial-backup-sap-hana-db/review-create.png)
 

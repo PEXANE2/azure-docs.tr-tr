@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/14/2020
-ms.openlocfilehash: 362d5f2046ff4e9ba52dd2e73433cc39e80f7a50
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 6ca489dc0c5c7ba8ba67f3456d04be953544a8fb
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93420606"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99987821"
 ---
 # <a name="scale-for-performance-on-azure-cognitive-search"></a>Azure Bilişsel Arama performans için ölçeklendirin
 
@@ -86,6 +86,27 @@ Yüksek gecikme oranları için bir diğer neden, tek bir sorgunun tamamlanması
 Bunun hakkında daha fazla bilgi için lütfen [Azure Bilişsel Arama hizmet düzeyi sözleşmesi](https://azure.microsoft.com/support/legal/sla/search/v1_0/)ziyaret edin.
 
 Çoğaltmalar verilerinizin kopyaları olduğundan, birden fazla kopyaya sahip olmak Azure Bilişsel Arama 'nin makine yeniden başlatmaları ve bakım yapmasına izin verdiğinden, sorgu yürütme diğer çoğaltmalarda devam eder. Buna karşılık, çoğaltmaları dışarıda bırakırsanız, bu çoğaltmaların bir veya daha fazla kaynak olduğu varsayıldığında sorgu performansı düşüşüne tabi olursunuz.
+
+### <a name="availability-zones"></a>Kullanılabilirlik Alanları
+
+[Kullanılabilirlik alanları](https://docs.microsoft.com/azure/availability-zones/az-overview) , bir bölgenin veri merkezlerini ayrı fiziksel konum gruplarına bölerek yüksek kullanılabilirlik, bölge içi bölge grubu sağlar. Arama hizmeti tek bir bölgede çalışır; çoğaltmalar farklı bölgelerde çalışır.
+
+Arama hizmetinize iki veya daha fazla çoğaltma ekleyerek Azure Bilişsel Arama ile Kullanılabilirlik Alanları kullanabilirsiniz. Her çoğaltma, bölge içinde farklı bir kullanılabilirlik bölgesine yerleştirilir. Kullanılabilirlik Alanları daha fazla çoğaltmadıysanız çoğaltmalar, olabildiğince eşit Kullanılabilirlik Alanları dağıtılır.
+
+Azure Bilişsel Arama şu anda şu bölgelerden birinde oluşturulan Standart katman veya daha yüksek arama hizmetleri için Kullanılabilirlik Alanları desteklemektedir:
++ Avustralya Doğu (30 Ocak 2021 veya üzeri oluşturulanlar)
++ Kanada Orta (30 Ocak 2021 veya üzeri oluşturulanlar)
++ Orta ABD (4 Aralık 2020 veya üzeri)
++ Doğu ABD 2 (30 Ocak 2021 veya üzeri oluşturulanlar)
++ Fransa Orta (23 Ekim 2020 veya üzeri oluşturuldu)
++ Japonya Doğu (30 Ocak 2021 veya üzeri oluşturulanlar)
++ Kuzey Avrupa (28 Ocak 2021 veya üzeri oluşturulan)
++ Güney Doğu Asya (31 Ocak 2021 veya üzeri oluşturulan)
++ UK Güney (30 Ocak 2021 veya üzeri oluşturulanlar)
++ Batı Avrupa (29 Ocak 2021 veya üzeri oluşturulanlar)
++ Batı ABD 2 (30 Ocak 2021 veya üzeri oluşturulanlar)
+
+Kullanılabilirlik Alanları [Azure Bilişsel Arama hizmet düzeyi sözleşmesi](https://azure.microsoft.com/support/legal/sla/search/v1_0/)etkilemez.
 
 ## <a name="scale-for-geo-distributed-workloads-and-geo-redundancy"></a>Coğrafi olarak dağıtılan iş yükleri ve coğrafi yedeklilik için ölçeklendirin
 

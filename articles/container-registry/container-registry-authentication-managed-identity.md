@@ -3,12 +3,12 @@ title: Yönetilen kimlikle kimlik doğrulaması
 description: Kullanıcı tarafından atanan veya sistem tarafından atanan yönetilen bir Azure kimliği kullanarak özel kapsayıcı kayıt defterinizde görüntülere erişim sağlama.
 ms.topic: article
 ms.date: 01/16/2019
-ms.openlocfilehash: 9a144f0e865cfc9bf857752eed65dbe5cda88bd9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 68564cc5743b1deb43bf39f897c239dc683c334c
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91253471"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99987758"
 ---
 # <a name="use-an-azure-managed-identity-to-authenticate-to-an-azure-container-registry"></a>Azure Container Registry 'de kimlik doğrulamak için Azure yönetilen kimliği kullanma 
 
@@ -53,9 +53,9 @@ Bu makalede, `aci-helloworld:v1` kapsayıcı resminin kayıt defterinizde depola
 
 ## <a name="create-a-docker-enabled-vm"></a>Docker özellikli bir VM oluşturma
 
-Docker özellikli bir Ubuntu sanal makinesi oluşturun. Ayrıca, [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) 'yı sanal makineye yüklemeniz gerekir. Zaten bir Azure sanal makineniz varsa, sanal makineyi oluşturmak için bu adımı atlayın.
+Docker özellikli bir Ubuntu sanal makinesi oluşturun. Ayrıca, [Azure CLI](/cli/azure/install-azure-cli) 'yı sanal makineye yüklemeniz gerekir. Zaten bir Azure sanal makineniz varsa, sanal makineyi oluşturmak için bu adımı atlayın.
 
-[Az VM Create][az-vm-create]ile varsayılan bir Ubuntu Azure sanal makinesi dağıtın. Aşağıdaki örnek, *Myresourcegroup*adlı mevcut bir kaynak grubunda *mydockervm* adlı bir sanal makine oluşturur:
+[Az VM Create][az-vm-create]ile varsayılan bir Ubuntu Azure sanal makinesi dağıtın. Aşağıdaki örnek, *Myresourcegroup* adlı mevcut bir kaynak grubunda *mydockervm* adlı bir sanal makine oluşturur:
 
 ```azurecli
 az vm create \
@@ -86,7 +86,7 @@ sudo apt install docker.io -y
 Yükleme sonrasında, Docker 'ın sanal makinede düzgün çalıştığını doğrulamak için aşağıdaki komutu çalıştırın:
 
 ```bash
-sudo docker run -it hello-world
+sudo docker run -it mcr.microsoft.com/hello-world
 ```
 
 Çıkış:
@@ -99,7 +99,7 @@ This message shows that your installation appears to be working correctly.
 
 ### <a name="install-the-azure-cli"></a>Azure CLI'yi yükleme
 
-Azure CLI 'yi, Ubuntu sanal makinenize yüklemek için [apt Ile Azure CLI 'Yı kurma](/cli/azure/install-azure-cli-apt?view=azure-cli-latest) bölümündeki adımları izleyin. Bu makalede, sürüm 2.0.55 veya üstünü yüklediğinizden emin olun.
+Azure CLI 'yi, Ubuntu sanal makinenize yüklemek için [apt Ile Azure CLI 'Yı kurma](/cli/azure/install-azure-cli-apt) bölümündeki adımları izleyin. Bu makalede, sürüm 2.0.55 veya üstünü yüklediğinizden emin olun.
 
 SSH oturumundan çıkın.
 
@@ -107,7 +107,7 @@ SSH oturumundan çıkın.
 
 ### <a name="create-an-identity"></a>Kimlik oluşturma
 
-[Az Identity Create](/cli/azure/identity?view=azure-cli-latest#az-identity-create) komutunu kullanarak aboneliğinizde bir kimlik oluşturun. Daha önce kapsayıcı kayıt defteri veya sanal makine ya da farklı bir tane oluşturmak için kullandığınız kaynak grubunu kullanabilirsiniz.
+[Az Identity Create](/cli/azure/identit#az-identity-create) komutunu kullanarak aboneliğinizde bir kimlik oluşturun. Daha önce kapsayıcı kayıt defteri veya sanal makine ya da farklı bir tane oluşturmak için kullandığınız kaynak grubunu kullanabilirsiniz.
 
 ```azurecli-interactive
 az identity create --resource-group myResourceGroup --name myACRId
@@ -173,7 +173,7 @@ Ardından, [az ACR oturum açma][az-acr-login]ile kayıt defterine kimlik doğru
 az acr login --name myContainerRegistry
 ```
 
-Bir ileti görmeniz gerekir `Login succeeded` . Ardından, `docker` kimlik bilgileri sağlamadan komutları çalıştırabilirsiniz. Örneğin, [docker pull][docker-pull] `aci-helloworld:v1` kayıt defterinizin oturum açma sunucusu adını belirterek görüntüyü çekmek için Docker Pull çalıştırın. Oturum açma sunucusu adı, kapsayıcının kayıt defteri adınızın (tümü küçük harflerinden) ve ardından gelen ' den oluşur `.azurecr.io` `mycontainerregistry.azurecr.io` .
+Bir ileti görmeniz gerekir `Login succeeded` . Ardından, `docker` kimlik bilgileri sağlamadan komutları çalıştırabilirsiniz. Örneğin, [][docker-pull] `aci-helloworld:v1` kayıt defterinizin oturum açma sunucusu adını belirterek görüntüyü çekmek için Docker Pull çalıştırın. Oturum açma sunucusu adı, kapsayıcının kayıt defteri adınızın (tümü küçük harflerinden) ve ardından gelen ' den oluşur `.azurecr.io` `mycontainerregistry.azurecr.io` .
 
 ```
 docker pull mycontainerregistry.azurecr.io/aci-helloworld:v1
@@ -225,7 +225,7 @@ Ardından, [az ACR oturum açma][az-acr-login]ile kayıt defterine kimlik doğru
 az acr login --name myContainerRegistry
 ```
 
-Bir ileti görmeniz gerekir `Login succeeded` . Ardından, `docker` kimlik bilgileri sağlamadan komutları çalıştırabilirsiniz. Örneğin, [docker pull][docker-pull] `aci-helloworld:v1` kayıt defterinizin oturum açma sunucusu adını belirterek görüntüyü çekmek için Docker Pull çalıştırın. Oturum açma sunucusu adı, kapsayıcının kayıt defteri adınızın (tümü küçük harflerinden) ve ardından gelen ' den oluşur `.azurecr.io` `mycontainerregistry.azurecr.io` .
+Bir ileti görmeniz gerekir `Login succeeded` . Ardından, `docker` kimlik bilgileri sağlamadan komutları çalıştırabilirsiniz. Örneğin, [][docker-pull] `aci-helloworld:v1` kayıt defterinizin oturum açma sunucusu adını belirterek görüntüyü çekmek için Docker Pull çalıştırın. Oturum açma sunucusu adı, kapsayıcının kayıt defteri adınızın (tümü küçük harflerinden) ve ardından gelen ' den oluşur `.azurecr.io` `mycontainerregistry.azurecr.io` .
 
 ```
 docker pull mycontainerregistry.azurecr.io/aci-helloworld:v1

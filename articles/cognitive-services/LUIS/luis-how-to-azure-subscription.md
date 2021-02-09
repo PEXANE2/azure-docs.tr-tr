@@ -7,12 +7,12 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 09/07/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: d8944c9e49bde8c452a10a1886cae316a0f7a33f
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 168833ea0a451913f4ed019cba832a16207e0d9c
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98945079"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99988158"
 ---
 # <a name="create-luis-resources"></a>LUSıS kaynakları oluşturma
 
@@ -236,6 +236,10 @@ CI/CD işlem hatları gibi otomatikleştirilmiş süreçler için bir Luo çalı
 
 1. [Bu Web sitesinden](https://resources.azure.com/api/token?plaintext=true)bir Azure Resource Manager belirteci alın. Bu belirtecin kullanım süreleri doluyor, bu nedenle hemen kullanın. İstek bir Azure Resource Manager belirteci döndürüyor.
 
+    ```azurecli
+    az account get-access-token --resource=https://management.core.windows.net/ --query accessToken --output tsv
+    ```
+    
     ![Azure Resource Manager belirteci istemek için Web sitesini gösteren ekran görüntüsü.](./media/luis-manage-keys/get-arm-token.png)
 
 1. Bu belirteci kullanarak LUSıS çalışma zamanı kaynaklarını abonelikler arasında isteyin. Kullanıcı hesabınızın erişimi olan [Get Lusıs Azure hesapları API 'sini](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5be313cec181ae720aa2b26c)kullanın.

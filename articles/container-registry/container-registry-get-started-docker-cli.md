@@ -1,21 +1,21 @@
 ---
-title: '& çekme Docker görüntüsü gönder'
-description: Docker CLI’yı kullanarak Azure’da özel bir kapsayıcı kayıt defterine Docker görüntüleri itme ve kapsayıcıdan görüntü çekme
+title: Çekme & istek kapsayıcı görüntüsü gönder
+description: Docker CLı kullanarak Azure 'daki özel kapsayıcı Kayıt defterinize Docker görüntüleri gönderme ve çekme
 ms.topic: article
 ms.date: 01/23/2019
 ms.custom: seodec18, H1Hack27Feb2017
-ms.openlocfilehash: d04a5fcbc4d6294a216ddfc9a8e6ea1ef98825a3
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: 83ef385313b035f5e5d7d993e7948725906c75a7
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98071638"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99987763"
 ---
-# <a name="push-your-first-image-to-a-private-docker-container-registry-using-the-docker-cli"></a>Docker CLI’yı kullanarak özel bir Dockler kapsayıcı kayıt defterine ilk görüntünüzü itme
+# <a name="push-your-first-image-to-your-azure-container-registry-using-the-docker-cli"></a>Docker CLı kullanarak ilk görüntünüzü Azure Container Registry 'nize gönderin
 
-Azure kapsayıcısı kayıt defteri, [Docker Hub](https://hub.docker.com/)’ın genel Docker görüntülerini depolama yöntemine benzer şekilde özel [Docker](https://hub.docker.com) kapsayıcı görüntülerini depolar ve yönetir. Kapsayıcı kayıt defterinizde [oturum açma](https://docs.docker.com/engine/reference/commandline/login/), [gönderim](https://docs.docker.com/engine/reference/commandline/push/), [çekme](https://docs.docker.com/engine/reference/commandline/pull/)ve diğer işlemler için [DOCKER komut satırı arabirimini](https://docs.docker.com/engine/reference/commandline/cli/) (Docker CLI) kullanabilirsiniz.
+Azure Container Registry, [Docker Hub 'ın](https://hub.docker.com/) ortak Docker kapsayıcı görüntülerini depoladığı yönteme benzer şekilde özel kapsayıcı görüntülerini ve diğer yapıtları depolar ve yönetir. Kapsayıcı kayıt defterinizde [oturum açma](https://docs.docker.com/engine/reference/commandline/login/), [gönderim](https://docs.docker.com/engine/reference/commandline/push/), [çekme](https://docs.docker.com/engine/reference/commandline/pull/)ve diğer kapsayıcı görüntüsü işlemleri için [DOCKER komut satırı arabirimini](https://docs.docker.com/engine/reference/commandline/cli/) (Docker CLI) kullanabilirsiniz.
 
-Aşağıdaki adımlarda, genel Docker Hub kayıt defterinden resmi bir [NGINX görüntüsü](https://store.docker.com/images/nginx) indirir, özel Azure Container kayıt defteriniz için etiketleyerek Kayıt defterinize gönderirsiniz ve sonra kayıt defterinden çekebilirsiniz.
+Aşağıdaki adımlarda, bir genel [NGINX görüntüsünü](https://store.docker.com/images/nginx)indirir, özel Azure Container kayıt defteriniz için etiketleyerek, Kayıt defterinize gönderirsiniz ve sonra kayıt defterinden çekolursunuz.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -24,9 +24,10 @@ Aşağıdaki adımlarda, genel Docker Hub kayıt defterinden resmi bir [NGINX g�
 
 ## <a name="log-in-to-a-registry"></a>Kayıt defterinde oturum açma
 
-Özel kapsayıcı kayıt defterinizde [kimlik doğrulamanın birkaç yolu](container-registry-authentication.md) vardır. Komut satırında çalışırken önerilen yöntem, [az ACR Login](/cli/azure/acr?view=azure-cli-latest#az-acr-login)Azure CLI komutuna sahip olur. Örneğin, *myregistry* adlı bir kayıt defterinde oturum açmak için:
+Özel kapsayıcı kayıt defterinizde [kimlik doğrulamanın birkaç yolu](container-registry-authentication.md) vardır. Komut satırında çalışırken önerilen yöntem, [az ACR Login](/cli/azure/acr#az-acr-login)Azure CLI komutuna sahip olur. Örneğin, *myregistry* adlı bir kayıt defterinde oturum açmak IÇIN Azure CLI 'da oturum açın ve kayıt defterinizde kimlik doğrulaması yapın:
 
 ```azurecli
+az login
 az acr login --name myregistry
 ```
 
@@ -43,12 +44,12 @@ Her iki komut de `Login Succeeded` tamamlandığında döndürülür.
 > [!TIP]
 > `docker login`' İ kullanırken ve Kayıt defterinize göndermek üzere resimleri etiketlediğinizde, her zaman tam olarak nitelenmiş kayıt defteri adını (tümü küçük harf) belirtin. Bu makaledeki örneklerde, tam nitelikli ad *myregistry.azurecr.io*' dir.
 
-## <a name="pull-the-official-nginx-image"></a>Resmi NGINX görüntüsünü çekme
+## <a name="pull-a-public-nginx-image"></a>Genel NGINX görüntüsü çekme
 
-İlk olarak, genel NGINX görüntüsünü yerel bilgisayarınıza çekin.
+İlk olarak, yerel bilgisayarınıza ortak bir NGINX görüntüsü çekin. Bu örnek, Microsoft Container Registry bir görüntü çeker.
 
 ```
-docker pull nginx
+docker pull mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine
 ```
 
 ## <a name="run-the-container-locally"></a>Kapsayıcıyı yerel olarak çalıştırma
@@ -56,7 +57,7 @@ docker pull nginx
 8080 numaralı bağlantı noktasında NGINX kapsayıcısının etkileşimli () yerel bir örneğini başlatmak için aşağıdaki [Docker Run](https://docs.docker.com/engine/reference/run/) komutunu yürütün `-it` . `--rm`Bağımsız değişkeni kapsayıcıyı durdurduğunuzda kaldırılması gerektiğini belirtir.
 
 ```
-docker run -it --rm -p 8080:80 nginx
+docker run -it --rm -p 8080:80 mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine
 ```
 
 `http://localhost:8080`Çalışan kapsayıcıda NGINX tarafından sunulan varsayılan Web sayfasını görüntülemek için öğesine gidin. Aşağıdakine benzer bir sayfa görmeniz gerekir:
@@ -72,7 +73,7 @@ Kapsayıcıyı durdurmak ve kaldırmak için tuşuna basın `Control` + `C` .
 Kayıt defterinizin tam yolunu içeren görüntünün diğer adını oluşturmak için [Docker Tag](https://docs.docker.com/engine/reference/commandline/tag/) ' i kullanın. Bu örnek, kayıt defterinin kökünde dağınıklığı önlemek için `samples` ad alanını belirtir.
 
 ```
-docker tag nginx myregistry.azurecr.io/samples/nginx
+docker tag mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine myregistry.azurecr.io/samples/nginx
 ```
 
 Ad alanları ile etiketleme hakkında daha fazla bilgi için, [Azure Container Registry Için en iyi yöntemlerin](container-registry-best-practices.md) [Depo ad alanları](container-registry-best-practices.md#repository-namespaces) bölümüne bakın.
