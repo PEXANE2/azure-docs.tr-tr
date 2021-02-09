@@ -9,12 +9,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to, data4ml
 ms.date: 05/14/2020
-ms.openlocfilehash: b7eaf374e72997013f09b1c94ce16c67d115a818
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: a4f15a1a0911e5a33da8b5f9445709cb42e7e10e
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94987380"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99981519"
 ---
 # <a name="create-and-explore-azure-machine-learning-dataset-with-labels"></a>Etiketlerle Azure Machine Learning veri kümesi oluşturma ve araştırma
 
@@ -39,6 +39,9 @@ Bir veri etiketleme projesini tamamladığınızda, etiket verilerini etiketleme
 ### <a name="coco"></a>COCO 
 
  COCO dosyası, Azure Machine Learning çalışma alanının varsayılan Blob deposunda *dışarı aktarma/Coco* içindeki bir klasörde oluşturulur. 
+ 
+>[!NOTE]
+>Nesne algılama projelerinde, COCO dosyasındaki "Bbox": [x, y, Width, Height] "değerleri normalleştirilmelidir. Bunlar 1 olarak ölçeklendirilir. Örnek: (10, 10) konumdaki bir sınırlayıcı kutu, yaklaşık 30 piksel genişlik, 60 piksel yükseklik, 640x480 piksel boyutunda, (0,015625) olarak açıklanacaktır. 0,02083, 0,046875, 0,125). Coordintes normalleştirildiğinden, tüm görüntüler için "width" ve "height" şeklinde ' 0,0 ' olarak gösterilecektir. Gerçek genişlik ve yükseklik, OpenCV veya Pillow (PIL) gibi Python kitaplığı kullanılarak elde edilebilir.
 
 ### <a name="azure-machine-learning-dataset"></a>Azure Machine Learning veri kümesi
 

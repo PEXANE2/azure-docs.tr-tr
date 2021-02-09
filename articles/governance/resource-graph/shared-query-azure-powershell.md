@@ -4,18 +4,18 @@ description: Bu hızlı başlangıçta, Azure PowerShell kullanarak kaynak grafi
 ms.date: 01/11/2021
 ms.topic: quickstart
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d7efc02cad3aaa67c639a319f1a7bb455d6e04b0
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: 2b771253b1dea4bd1d2913bf7c48062112019a19
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98128099"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99981553"
 ---
 # <a name="quickstart-create-a-resource-graph-shared-query-using-azure-powershell"></a>Hızlı başlangıç: Azure PowerShell kullanarak kaynak grafiği paylaşılan sorgusu oluşturma
 
 Bu makalede, [az. ResourceGraph](/powershell/module/az.resourcegraph) PowerShell modülünü kullanarak Azure Kaynak Grafiği paylaşılan sorgusunu nasıl oluşturabileceğiniz açıklanmaktadır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
@@ -36,7 +36,7 @@ Bu makalede, [az. ResourceGraph](/powershell/module/az.resourcegraph) PowerShell
 
 ## <a name="create-a-resource-graph-shared-query"></a>Kaynak Grafiği paylaşılan sorgusu oluşturma
 
-`Az.ResourceGraph`PowerShell modülü tercih ettiğiniz ortamınıza eklendiğinde, kaynak grafiği paylaşılan sorgusu oluşturma zamanı. Paylaşılan sorgu, Azure Resource Graph Explorer 'da izin vereceğiniz veya çalıştırabileceğiniz bir Azure Resource Manager nesnesidir. Sorgu _konuma_ göre gruplandırılan tüm kaynakların sayısını özetler.
+Tercih ettiğiniz ortamınıza **az. ResourceGraph** PowerShell modülü eklendiğinde, kaynak grafiği paylaşılan sorgusu oluşturma zamanı. Paylaşılan sorgu, Azure Resource Graph Explorer 'da izin vereceğiniz veya çalıştırabileceğiniz bir Azure Resource Manager nesnesidir. Sorgu _konuma_ göre gruplandırılan tüm kaynakların sayısını özetler.
 
 1. Azure Kaynak Grafiği paylaşılan sorgusunu depolamak için [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) ile bir kaynak grubu oluşturun. Bu kaynak grubunun adı `resource-graph-queries` ve konumu `westus2` .
 
@@ -47,7 +47,7 @@ Bu makalede, [az. ResourceGraph](/powershell/module/az.resourcegraph) PowerShell
    New-AzResourceGroup -Name resource-graph-queries -Location westus2
    ```
 
-1. `Az.ResourceGraph`PowerShell modülünü ve [New-AzResourceGraphQuery](/powershell/module/az.resourcegraph/new-azresourcegraphquery) cmdlet 'Ini kullanarak Azure Kaynak Grafiği paylaşılan sorgusunu oluşturun:
+1. **Az. ResourceGraph** PowerShell modülünü ve [New-azresourcegraphquery](/powershell/module/az.resourcegraph/new-azresourcegraphquery) cmdlet 'Ini kullanarak Azure Kaynak Grafiği paylaşılan sorgusunu oluşturun:
 
    ```azurepowershell-interactive
    # Create the Azure Resource Graph shared query
@@ -80,7 +80,7 @@ Bu makalede, [az. ResourceGraph](/powershell/module/az.resourcegraph) PowerShell
 Kaynak Grafiği paylaşılan sorgu ve kaynak grubunu Azure ortamınızdan kaldırmak isterseniz, aşağıdaki komutları kullanarak bunu yapabilirsiniz:
 
 - [Remove-AzResourceGraphQuery](/powershell/module/az.resourcegraph/remove-azresourcegraphquery)
-- [Remove-AzResourceGroup](/cli/azure/group#az_group_delete)
+- [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup)
 
 ```azurepowershell-interactive
 # Delete the Azure Resource Graph shared query

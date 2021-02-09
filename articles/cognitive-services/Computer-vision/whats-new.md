@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 01/13/2021
 ms.author: pafarley
-ms.openlocfilehash: ec340e3371b0fe337354006b1284a21420a11f3a
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 1128504ee5f8c086d6a3c30a9fdd021550394f3f
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99573645"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99981774"
 ---
 # <a name="whats-new-in-computer-vision"></a>Görüntü İşleme yenilikleri
 
@@ -25,12 +25,12 @@ Hizmette nelerin yeni olduğunu öğrenin. Bu öğeler sürüm notları, videola
 
 ### <a name="read-api-v32-public-preview-with-ocr-support-for-73-languages"></a>73 dilleri için OCR desteğiyle API v 3.2 genel önizlemesini okuyun
 Görüntü İşleme Read API v 3.2 genel önizlemesi şu özellikleri içerir:
-* Basitleştirilmiş ve geleneksel Çince, Japonca, Korece ve büyük Latin dilleri gibi toplam [73 dili](./language-support.md#optical-character-recognition-ocr) için OCR.
-* Metin çizgilerinin sol sağ ve üst alta (varsayılan) sırada mı yoksa daha doğal bir okuma düzeninde mi çıkış olacağını seçin.
-* Her metin satırı çıktısı için, kendi el yazısı stilinin (yalnızca Latin dilleri) yanı olmadığını belirtin.
+* Basitleştirilmiş ve geleneksel Çince, Japonca, Korece ve Latin dilleri gibi [73 dilleri Için OCR](./language-support.md#optical-character-recognition-ocr) .
+* Metin çizgilerinin doğal okuma düzeninde çıkışını yapın.
+* Metin satırlarını el yazısı stili olarak sınıflandırın ve Güvenirlik puanı (yalnızca Latin dilleri) ile birlikte değil.
 * Birden çok sayfalı belge için yalnızca seçili sayfalar veya sayfa aralığı için metin ayıkla.
 
-Daha fazla bilgi için [okuma API 'sine genel bakış](concept-recognizing-text.md) bölümüne bakın.
+Daha fazla bilgi için bkz. [Önizleme özelliklerini okuyun](concept-recognizing-text.md#natural-reading-order-output) .
 
 > [!div class="nextstepaction"]
 > [Read API v 3.2 genel önizlemeyi kullanın](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-2/operations/5d986960601faab4bf452005)

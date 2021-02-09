@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/04/2017
 ms.author: robinsh
 ms.custom: mqtt, devx-track-csharp
-ms.openlocfilehash: 8d45ad630d09a4909cf00b830df139057cc0fcaf
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 43cafb8c5efe0581fe7c4136aa41980b3d817be2
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92142286"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99981417"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-net"></a>IoT Hub (.NET) ile cihazınızdan buluta dosya yükleme
 
@@ -27,7 +27,7 @@ Bu öğretici, IoT Hub dosya yükleme yeteneklerini nasıl kullanacağınızı g
 
 * Uygulama arka uçtaki dosyayı işlemeyi tetiklemek için karşıya dosya yükleme bildirimlerini IoT Hub kullanın.
 
-[Bir cihazdan IoT Hub 'ına](quickstart-send-telemetry-dotnet.md) hızlı başlangıç yapın ve [IoT Hub öğreticisiyle buluttan cihaza iletiler gönderin](iot-hub-csharp-csharp-c2d.md) IoT Hub ' ın temel cihazdan buluta ve buluttan cihaza mesajlaşma işlevlerini gösterir. [IoT Hub öğreticisi Ile Ileti yönlendirmeyi yapılandırma](tutorial-routing.md) , Microsoft Azure Blob depolamada cihazdan buluta iletileri güvenilir bir şekilde depolamanın yolunu açıklar. Ancak, bazı senaryolarda, cihazlarınızın IoT Hub kabul ettiği görece küçük cihazdan buluta iletileri içine gönderdikleri verileri kolayca eşleyemezsiniz. Örnek:
+[Bir cihazdan IoT Hub 'ına](quickstart-send-telemetry-dotnet.md) hızlı başlangıç yapın ve [IoT Hub öğreticisiyle buluttan cihaza iletiler gönderin](iot-hub-csharp-csharp-c2d.md) IoT Hub ' ın temel cihazdan buluta ve buluttan cihaza mesajlaşma işlevlerini gösterir. [IoT Hub öğreticisi Ile Ileti yönlendirmeyi yapılandırma](tutorial-routing.md) , Microsoft Azure Blob depolamada cihazdan buluta iletileri güvenilir bir şekilde depolamanın yolunu açıklar. Ancak, bazı senaryolarda, cihazlarınızın IoT Hub kabul ettiği görece küçük cihazdan buluta iletileri içine gönderdikleri verileri kolayca eşleyemezsiniz. Örneğin:
 
 * Görüntü içeren büyük dosyalar
 
@@ -64,9 +64,9 @@ Bu öğreticinin sonunda iki .NET konsol uygulaması çalıştırırsınız:
 
 Bu bölümde, IoT Hub 'ından buluttan cihaza iletileri almak için [IoT Hub ile buluttan cihaza Iletileri gönderme](iot-hub-csharp-csharp-c2d.md) bölümünde oluşturduğunuz cihaz uygulamasını değiştirirsiniz.
 
-1. Visual Studio Çözüm Gezgini, **SimulatedDevice** projesine sağ tıklayın ve **Add**  >  **var olan öğe**Ekle ' yi seçin. Bir görüntü dosyası bulun ve projenize ekleyin. Bu öğreticide görüntünün adlandırıldığı varsayılır `image.jpg` .
+1. Visual Studio Çözüm Gezgini, **SimulatedDevice** projesine sağ tıklayın ve   >  **var olan öğe** Ekle ' yi seçin. Bir görüntü dosyası bulun ve projenize ekleyin. Bu öğreticide görüntünün adlandırıldığı varsayılır `image.jpg` .
 
-1. Görüntüye sağ tıklayın ve ardından **Özellikler**' i seçin. **Çıkış Dizinine Kopyala** ' nın **her zaman Kopyala**olarak ayarlandığından emin olun.
+1. Görüntüye sağ tıklayın ve ardından **Özellikler**' i seçin. **Çıkış Dizinine Kopyala** ' nın **her zaman Kopyala** olarak ayarlandığından emin olun.
 
     ![Çıkış dizinine kopyalamak için görüntü özelliğinin nerede güncelleşbir olduğunu göster](./media/iot-hub-csharp-csharp-file-upload/image-properties.png)
 
@@ -79,16 +79,15 @@ Bu bölümde, IoT Hub 'ından buluttan cihaza iletileri almak için [IoT Hub ile
 1. **Program** sınıfına aşağıdaki yöntemi ekleyin:
 
     ```csharp
-    private static async void SendToBlobAsync()
+    private static async Task SendToBlobAsync(string fileName)
     {
-        string fileName = "image.jpg";
         Console.WriteLine("Uploading file: {0}", fileName);
         var watch = System.Diagnostics.Stopwatch.StartNew();
 
-        using (var sourceData = new FileStream(@"image.jpg", FileMode.Open))
-        {
-            await deviceClient.UploadToBlobAsync(fileName, sourceData);
-        }
+        await deviceClient.GetFileUploadSasUriAsync(new FileUploadSasUriRequest { BlobName = fileName });
+        var blob = new CloudBlockBlob(sas.GetBlobUri());
+        await blob.UploadFromFileAsync(fileName);
+        await deviceClient.CompleteFileUploadAsync(new FileUploadCompletionNotification { CorrelationId = sas.CorrelationId, IsSuccess = true });
 
         watch.Stop();
         Console.WriteLine("Time to upload file: {0}ms\n", watch.ElapsedMilliseconds);
@@ -100,7 +99,7 @@ Bu bölümde, IoT Hub 'ından buluttan cihaza iletileri almak için [IoT Hub ile
 1. **Main** yöntemine aşağıdaki satırı ekleyin `Console.ReadLine()` :
 
     ```csharp
-    SendToBlobAsync();
+    await SendToBlobAsync("image.jpg");
     ```
 
 > [!NOTE]
@@ -118,7 +117,7 @@ Bu bölümde, IoT Hub 'ten karşıya dosya yükleme bildirimi iletileri alan bir
 
 1. Geçerli Visual Studio çözümünde **Dosya**  >  **Yeni**  >  **Proje**' yi seçin. **Yeni proje oluştur**' da **konsol uygulaması (.NET Framework)** öğesini seçin ve ardından **İleri**' yi seçin.
 
-1. Projeyi *Readfileuploadnotification*olarak adlandırın. **Çözüm**altında **çözüme Ekle**' yi seçin. Projeyi oluşturmak için **Oluştur**'u seçin.
+1. Projeyi *Readfileuploadnotification* olarak adlandırın. **Çözüm** altında **çözüme Ekle**' yi seçin. Projeyi oluşturmak için **Oluştur**'u seçin.
 
     ![Visual Studio 'da ReadFileUploadNotification projesini yapılandırma](./media/iot-hub-csharp-csharp-file-upload/read-file-upload-project-configure.png)
 
@@ -182,9 +181,9 @@ Bu bölümde, IoT Hub 'ten karşıya dosya yükleme bildirimi iletileri alan bir
 
 1. Çözüm Gezgini 'nde çözümünüze sağ tıklayın ve **Başlangıç projelerini ayarla**' yı seçin.
 
-1. **Ortak özellikler**  >  **Başlangıç projesinde** **birden çok başlangıç**projesi ' ni seçin ve ardından **readfileuploadnotification** ve **SimulatedDevice**için **başlatma** eylemini seçin. Değişikliklerinizi kaydetmek için **Tamam**’ı seçin.
+1. **Ortak özellikler**  >  **Başlangıç projesinde** **birden çok başlangıç** projesi ' ni seçin ve ardından **readfileuploadnotification** ve **SimulatedDevice** için **başlatma** eylemini seçin. Değişikliklerinizi kaydetmek için **Tamam**’ı seçin.
 
-1. **F5**tuşuna basın. Her iki uygulama da başlamalıdır. Karşıya yükleme işleminin bir konsol uygulamasında tamamlandığını ve diğer konsol uygulaması tarafından alınan karşıya yükleme bildirim iletisini görmeniz gerekir. Azure Depolama hesabınızdaki karşıya yüklenen dosyanın varlığını denetlemek için [Azure Portal](https://portal.azure.com/) veya Visual Studio Sunucu Gezgini kullanabilirsiniz.
+1. **F5** tuşuna basın. Her iki uygulama da başlamalıdır. Karşıya yükleme işleminin bir konsol uygulamasında tamamlandığını ve diğer konsol uygulaması tarafından alınan karşıya yükleme bildirim iletisini görmeniz gerekir. Azure Depolama hesabınızdaki karşıya yüklenen dosyanın varlığını denetlemek için [Azure Portal](https://portal.azure.com/) veya Visual Studio Sunucu Gezgini kullanabilirsiniz.
 
     ![Çıkış ekranını gösteren ekran görüntüsü](./media/iot-hub-csharp-csharp-file-upload/run-apps1.png)
 

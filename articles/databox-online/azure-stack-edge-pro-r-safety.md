@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 12/18/2020
+ms.date: 02/04/2021
 ms.author: alkohli
-ms.openlocfilehash: 627196c0a76f1de23f7e5421c47a33356a73967f
-ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
+ms.openlocfilehash: cc24839396116a5b581758b29b087c237a6f902b
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/21/2020
-ms.locfileid: "97709460"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99981349"
 ---
 # <a name="azure-stack-edge-pro-r-safety-instructions"></a>Azure Stack Edge Pro R güvenlik yönergeleri
 
@@ -27,17 +27,17 @@ Azure Stack Edge Pro R cihazınızı kullanmadan önce bu makaledeki tüm güven
 
 Hasar uyarısı işaretlerine yönelik aşağıdaki sinyal sözcükleri şunlardır:
 
-| Simge | Açıklama |
+| Simge | Description |
 |:--- |:--- |
 | ![Hasar simgesi](./media/azure-stack-edge-pro-r-safety/icon-safety-warning.png)| **Danger:** Önedilmediği durumlarda, ölüm veya ciddi bir yaralama oluşmasına neden olan tehlikeli bir durum belirtir. <br> **Uyarı:** Önedilmediği durumlarda, ölüm veya ciddi bir yaralama oluşmasına neden olabilecek tehlikeli bir durum belirtir. <br> **Dikkat:** Önedilmediği durumlarda küçük veya orta bir yaralanmaya neden olabilecek tehlikeli bir durum belirtir.|
 |
 
 Azure Stack Edge Pro R Edge cihazınızı ayarlarken ve çalıştırırken aşağıdaki rastlantı simgeleri gözlemlenecek:
 
-| Simge | Açıklama |
+| Simge | Description |
 |:--- |:--- |
 | ![Önce tüm yönergeleri okuyun](./media/azure-stack-edge-pro-r-safety/icon-safety-read-all-instructions.png) | Önce tüm yönergeleri okuyun |
-| ![Hasar simgesi](./media/azure-stack-edge-pro-r-safety/icon-safety-warning.png) | Hasar simgesi |
+| ![Bildirim simgesi ](./media/azure-stack-edge-mini-r-safety/icon-safety-notice.png) **bildirimi:** | Önemli kabul edilen, ancak tehlike ile ilgili olmayan bilgileri gösterir. || ![Hasar simgesi](./media/azure-stack-edge-pro-r-safety/icon-safety-warning.png) | Hasar simgesi |
 | ![İpucu rastlantı simgesi](./media/azure-stack-edge-pro-r-safety/icon-safety-tip-hazard.png)  | İpucu hasar|
 | ![Ağır ağırlık simgesi](./media/azure-stack-edge-pro-r-safety/icon-safety-heavy-weight.png)  | Ağır rastlantı|
 | ![Elektrik sarsıntı simgesi](./media/azure-stack-edge-pro-r-safety/icon-safety-electric-shock.png) | Elektrik şok hasar |
@@ -88,6 +88,7 @@ Azure Stack Edge Pro R Edge cihazınızı ayarlarken ve çalıştırırken aşa�
   * Güç kaynağı kablosunu, ürünün ana güç bağlantısı kesildiğinde sundukları için yeterli alanla birlikte sunulur.
 * Ürünle birlikte Ethernet kabloları sağlanmaz. Elektromanyetik paraziti azaltmak için, Cat 6 korumalı çift çifti (STP) kablolarının kullanılması önerilir.
 * Ekipman etrafında yeterli hava dolaşımını sağlayan bir iş alanında ekipman ayarlama; Cihaz çalışırken ön ve arka kapakların tamamen kaldırıldığından emin olun.
+* Ürünle birlikte Ethernet kabloları sağlanmaz. Elektromanyetik paraziti azaltmak için, Cat 6 korumalı (STP) kablolama kullanılması önerilir.
 * Ekipmanları, uçak açısından en azımların ücretsiz olarak, sıcaklığın yanı sıra ekipman genelinde sorunsuz bir şekilde dolaşıma izin verecek şekilde yükler.
 * Donatımları, sıvı ve fazla sayıda insandaki ortamların kaynaklarından koruyun.
 * Herhangi bir likit veya herhangi bir yabancı nesnenin sisteme girmesine izin vermeyin. Meşruları veya herhangi bir diğer likit kapsayıcıyı sisteme veya yanına yerleştirmeyin.
@@ -207,7 +208,7 @@ A device that has a UPS installed is designed to operate in the following enviro
 > Maximum corrosive contaminant levels measured at &lt;/= 50% relative humidity. --> 
 
 
-> ![Not simgesi ](./media/azure-stack-edge-pro-r-safety/icon-safety-notice.png) **bildirimi:** &nbsp; Microsoft tarafından açıkça onaylanmamış ekipman üzerinde yapılan değişiklikler veya değişiklikler, kullanıcının donatımını çalıştırma yetkisini geçersiz edebilir.
+> ![Bildirim simgesi-2 ](./media/azure-stack-edge-pro-r-safety/icon-safety-notice.png) **bildirim:** &nbsp; Microsoft tarafından açıkça onaylanmamış ekipmanlarda yapılan değişiklikler veya değişiklikler, kullanıcının donatımını çalıştırma yetkisini geçersiz edebilir.
 
 Kanada ve ABD:
 
