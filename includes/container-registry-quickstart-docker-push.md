@@ -8,19 +8,19 @@ ms.topic: include
 ms.date: 08/04/2020
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 6a16106495e584c9acbc02d380242df665f35ce5
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 404fd10c3e3610671d2b6e5dbc6aba8bcaa70046
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96020031"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100018984"
 ---
 ## <a name="push-image-to-registry"></a>Kayıt defterine görüntü gönderme
 
-Azure Container kayıt defterine görüntü gönderebilmeniz için önce bir görüntünüz olmalıdır. Henüz herhangi bir yerel kapsayıcı görüntünüz yoksa, Docker Hub 'ından mevcut bir görüntüyü çekmek için aşağıdaki [Docker Pull][docker-pull] komutunu çalıştırın. Bu örnek için `hello-world` görüntüyü çekin.
+Azure Container kayıt defterine görüntü gönderebilmeniz için önce bir görüntünüz olmalıdır. Henüz herhangi bir yerel kapsayıcı görüntünüz yoksa, var olan bir ortak görüntüyü çekmek için aşağıdaki [Docker Pull][docker-pull] komutunu çalıştırın. Bu örnekte, `hello-world` görüntüyü Microsoft Container Registry çekin.
 
 ```
-docker pull hello-world
+docker pull mcr.microsoft.com/hello-world
 ```
 
 Bir görüntüyü Kayıt defterinize gönderebilmeniz için önce kayıt defteri oturum açma sunucunuzun tam adı ile etiketlemelisiniz. Oturum açma sunucusu adı *\<registry-name\> . azurecr.io* biçimindedir (tümü küçük harf olmalıdır), örneğin, *mycontainerregistry.azurecr.io*.
@@ -28,13 +28,13 @@ Bir görüntüyü Kayıt defterinize gönderebilmeniz için önce kayıt defteri
 Görüntüyü [docker tag][docker-tag] komutunu kullanarak etiketleyin. `<login-server>` değerini, ACR örneğinizin sunucu adıyla değiştirin.
 
 ```
-docker tag hello-world <login-server>/hello-world:v1
+docker tag mcr.microsoft.com/hello-world <login-server>/hello-world:v1
 ```
 
 Örnek:
 
 ```
-docker tag hello-world mycontainerregistry.azurecr.io/hello-world:v1
+docker tag mcr.microsoft.com/hello-world mycontainerregistry.azurecr.io/hello-world:v1
 ```
 
 
