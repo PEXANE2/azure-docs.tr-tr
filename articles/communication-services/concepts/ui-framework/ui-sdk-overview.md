@@ -7,12 +7,12 @@ ms.author: dademath
 ms.date: 11/16/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: ecef7e13c107a07b6dac52a467315d2a5f1f9090
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: b6f9987c21ecdcf0e1b5358486312dceb26c8b82
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99539882"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100008562"
 ---
 # <a name="azure-communication-services-ui-framework"></a>Azure Iletişim Hizmetleri Kullanıcı arabirimi çerçevesi
 
@@ -47,7 +47,7 @@ Bu gereksinimleri anlamak, doğru istemci kitaplığını seçmenize yardımcı 
 
 Değiştirilen [Kullanıcı arabirimi SDK](ui-sdk-features.md)'lerinde özellik kullanılabilirliği hakkındaki ayrıntılar burada mevcuttur, ancak temel denge aşağıda özetlenmiştir.
 
-|İstemci kitaplığı/SDK|Uygulama karmaşıklığı|    Özelleştirme yeteneği|  Events| Sohbet| [Takımlar birlikte çalışma](./../voice-video-calling/teams-interop.md)
+|İstemci kitaplığı/SDK|Uygulama karmaşıklığı|    Özelleştirme yeteneği|  Events| Sohbet| [Takımlar birlikte çalışma](./../teams-interop.md)
 |---|---|---|---|---|---|---|
 |Bileşik bileşenler|Düşük|Düşük|✔|✔|✕
 |Temel bileşenler|Orta|Orta|✔|✔|✕

@@ -10,12 +10,12 @@ metadata:
   author: philmea
   ms.author: philmea
   ms.date: 02/12/2020
-  ms.openlocfilehash: bcba2b48fdecda311ce349f90ba43023b906bd44
-  ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
-  ms.translationtype: HT
+  ms.openlocfilehash: 29f3b0bf0a00c9e4e238e8bb514f80e7451d30a6
+  ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+  ms.translationtype: MT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 11/26/2020
-  ms.locfileid: "96186414"
+  ms.lasthandoff: 02/09/2021
+  ms.locfileid: "100007763"
 landingContent:
 - title: Azure Digital Twins Hakkında
   linkLists:
@@ -23,6 +23,14 @@ landingContent:
     links:
     - text: Azure Digital Twins nedir?
       url: overview.md
+  - linkListType: concept
+    links:
+    - text: Özel modeller
+      url: concepts-models.md
+    - text: Dijital ikizler ve ikiz grafiği
+      url: concepts-twins-graph.md
+    - text: Sorgu dili
+      url: concepts-query-language.md
 - title: Hızlı başlangıç ile çalışmaya başlama
   linkLists:
   - linkListType: quickstart
@@ -43,20 +51,6 @@ landingContent:
     links:
     - text: Uçtan uca çözüme bağlanma
       url: tutorial-end-to-end.md
-- title: Öğrenin
-  linkLists:
-  - linkListType: concept
-    links:
-    - text: Özel modeller
-      url: concepts-models.md
-  - linkListType: concept
-    links:
-    - text: Dijital ikizler ve ikiz grafiği
-      url: concepts-twins-graph.md
-  - linkListType: concept
-    links:
-    - text: Sorgu dili
-      url: concepts-query-language.md
 - title: Geliştirme
   linkLists:
   - linkListType: how-to-guide
@@ -115,3 +109,19 @@ landingContent:
     links:
     - text: Logic Apps bağlayıcısı için özel Swagger’lar
       url: /samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/
+- title: Microsoft Learn ile senaryo tabanlı öğrenme
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: 'Öğrenme yolu: Azure dijital TWINS ile geliştirme'
+      url: /learn/paths/develop-azure-digital-twins/
+  - linkListType: learn
+    links:
+    - text: "Modül öğren: Azure dijital TWINS 'e giriş"
+      url: /learn/modules/develop-with-azure-digital-twins/introduction-to-azure-digital-twins/
+    - text: 'Modül öğren: bir çikolata üreteci üretim satırı için Azure dijital TWINS grafiği oluşturma'
+      url: /learn/modules/develop-with-azure-digital-twins/build-azure-digital-twins-graph-for-chocolate-factory/
+    - text: "Modül öğrenme: Azure dijital TWINS 'e veri alma"
+      url: /learn/modules/develop-with-azure-digital-twins/ingest-data-into-azure-digital-twins/
+    - text: "Modül hakkında bilgi edinin: Azure dijital TWINS 'den aşağı akış hizmetlerine çıkış"
+      url: /learn/modules/develop-with-azure-digital-twins/route-output-from-azure-digital-twins-to-downstream-services/

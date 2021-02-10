@@ -3,26 +3,26 @@ title: Kubernetes için Azure Defender-avantajlar ve Özellikler
 description: Kubernetes için Azure Defender 'ın avantajları ve özellikleri hakkında bilgi edinin.
 author: memildin
 ms.author: memildin
-ms.date: 9/12/2020
+ms.date: 02/07/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: a19e90a15991cdc03999bf43d5bece63325aab05
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 1f013f22b482c1e1d093f106bd786be870103f3d
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98916593"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100008511"
 ---
 # <a name="introduction-to-azure-defender-for-kubernetes"></a>Kubernetes için Azure Defender 'a giriş
 
 Azure Kubernetes Service (AKS), Kapsayıcılı uygulamalar geliştirmeye, dağıtmaya ve yönetmeye yönelik Microsoft tarafından yönetilen bir hizmettir.
 
-Azure Güvenlik Merkezi ve AKS, en iyi bulut Yerel Kubernetes güvenlik sunumunu ve birlikte aşağıda özetlenen ortam sağlamlaştırma, iş yükü koruması ve çalışma zamanı koruması sağlar.
+Azure Güvenlik Merkezi ve AKS, [Güvenlik Merkezi 'Nde kapsayıcı güvenliği](container-security.md)kapsamında özetlenen ortam sağlamlaştırma, iş yükü koruması ve çalışma zamanı koruması ile bulut Yerel bir Kubernetes güvenlik teklifi oluşturur.
 
 Kubernetes kümelerinize yönelik tehdit algılama için, **Kubernetes Için Azure Defender**'ı etkinleştirin.
 
-Linux AKS düğümleriniz için ana bilgisayar düzeyinde tehdit algılama, [sunucular Için Azure Defender 'ı](defender-for-servers-introduction.md)etkinleştirdiğinizde kullanılabilir.
+Linux AKS düğümleriniz için ana bilgisayar düzeyinde tehdit algılama, sunucular ve onun Log Analytics Aracısı [Için Azure Defender](defender-for-servers-introduction.md) ' ı etkinleştirdiğinizde kullanılabilir. Ancak, AKS kümeniz bir sanal makine ölçek kümesi üzerinde dağıtılmışsa, Log Analytics Aracısı Şu anda desteklenmemektedir.
 
 ## <a name="availability"></a>Kullanılabilirlik
 
@@ -36,45 +36,17 @@ Linux AKS düğümleriniz için ana bilgisayar düzeyinde tehdit algılama, [sun
 
 ## <a name="what-are-the-benefits-of-azure-defender-for-kubernetes"></a>Kubernetes için Azure Defender 'ın yararları nelerdir?
 
-### <a name="run-time-protection"></a>Çalışma zamanı koruması
+Kubernetes için Azure Defender, Azure Kubernetes hizmeti (AKS) tarafından alınan Günlükler aracılığıyla AKS tarafından yönetilen hizmetlerinizi izleyerek **küme düzeyinde tehdit koruması** sağlar.
 
-Güvenlik Merkezi, aşağıdaki AKS kaynaklarının sürekli analizi aracılığıyla Kapsayıcılı ortamlarınız için gerçek zamanlı tehdit koruması sağlar ve ana bilgisayar *ve* aks kümesi düzeyinde algılanan tehditler ve kötü amaçlı etkinlikler için uyarı oluşturur. Bu bilgileri kullanarak güvenlik sorunlarını hızlı bir şekilde çözebilir ve kapsayıcılarınızın güvenlik düzeyini artırabilirsiniz.
-
-Güvenlik Merkezi, farklı düzeylerde tehdit koruması sağlar: 
-
-- **Konak düzeyi (sunucular Için Azure Defender tarafından verilmiştir)** -Güvenlik Merkezi 'Nin diğer VM 'lerde kullandığı aynı Log Analytics aracısını kullanarak, Azure Defender, LINUX aks düğümlerinizi Web kabuğu algılama ve BILINEN şüpheli IP adresleriyle bağlantı gibi şüpheli etkinlikler için izler. Aracı Ayrıca, ayrıcalıklı kapsayıcı oluşturma, API sunucularına şüpheli erişim ve bir Docker kapsayıcısı içinde çalışan Secure Shell (SSH) sunucuları gibi kapsayıcıya özel analizler için de izler.
-
-    AKS konak düzeyi uyarılarının bir listesi için, [Uyarı tablosuna](alerts-reference.md#alerts-containerhost)bakın.
-
-    >[!IMPORTANT]
-    > Aracıları konaklarınıza yüklememeyi seçerseniz, yalnızca tehdit koruması avantajları ve güvenlik uyarılarının bir alt kümesini alırsınız. Hala kötü amaçlı sunucularla ağ analizi ve iletişimlerle ilgili uyarılar alacaksınız.
-
-- **Aks kümesi düzeyi (Kubernetes Için Azure Defender tarafından sağlanır)** -küme düzeyinde tehdit koruması, Kubernetes 'ın denetim günlüklerini çözümlemeye dayanır. Bu **aracısız** izlemeyi etkinleştirmek Için Azure Defender 'ı etkinleştirin. Bu düzeyde uyarı oluşturmak için, güvenlik merkezi AKS tarafından yönetilen Hizmetleri AKS tarafından alınan günlükleri kullanarak izler. Bu düzeydeki olay örnekleri, sunulan Kubernetes panoları, yüksek ayrıcalıklı rollerin oluşturulmasını ve hassas takmaları oluşturmayı içerir.
-
-    AKS küme düzeyi uyarılarının bir listesi için, [Uyarı tablosuna](alerts-reference.md#alerts-akscluster)bakın.
-
-    >[!NOTE]
-    > Güvenlik Merkezi, Azure Kubernetes hizmet eylemleri ve abonelik ayarlarında Kubernetes seçeneği etkinleştirildikten sonra gerçekleşen dağıtımlar için güvenlik uyarıları oluşturur. 
-
-Ayrıca, güvenlik araştırmacıları küresel takımımız tehdidi sürekli olarak izler. Bulundukları gibi kapsayıcıya özgü uyarıları ve güvenlik açıklarını ekler.
+Azure Defender 'ın Kubernetes izleyicilerine yönelik güvenlik olayları örnekleri, sunulan Kubernetes panoları, yüksek ayrıcalıklı rollerin oluşturulmasını ve hassas takmaları oluşturmayı içerir. AKS küme düzeyi uyarılarının tam listesi için, [Uyarı tablosuna](alerts-reference.md#alerts-akscluster)bakın.
 
 > [!TIP]
 > [Bu blog gönderisine](https://techcommunity.microsoft.com/t5/azure-security-center/how-to-demonstrate-the-new-containers-features-in-azure-security/ba-p/1011270)ait yönergeleri izleyerek kapsayıcı uyarılarının benzetimini yapabilirsiniz.
 
+Ayrıca, güvenlik araştırmacıları küresel takımımız tehdidi sürekli olarak izler. Bulundukları gibi kapsayıcıya özgü uyarıları ve güvenlik açıklarını ekler.
 
-
-## <a name="how-does-security-centers-kubernetes-protection-work"></a>Güvenlik Merkezi 'nin Kubernetes koruması nasıl çalışır?
-
-Azure Güvenlik Merkezi, Azure Kubernetes hizmeti ve Azure Ilkesi arasındaki etkileşimin üst düzey diyagramı aşağıda verilmiştir.
-
-Güvenlik Merkezi tarafından alınan ve çözümlenen öğelerin şunları görmenizi sağlayabilirsiniz:
-
-- API sunucusundan denetim günlükleri
-- Log Analytics aracısından ham güvenlik olayları
-- AKS kümesindeki küme yapılandırma bilgileri
-- Azure Ilkesinden iş yükü yapılandırması ( **Kubernetes Için Azure ilke eklentisi** aracılığıyla). [Kubernetes giriş denetimini kullanan iş yükü koruma en iyi uygulamaları hakkında daha fazla bilgi edinin](container-security.md#workload-protection-best-practices-using-kubernetes-admission-control)
-
-:::image type="content" source="./media/defender-for-kubernetes-intro/kubernetes-service-security-center-integration-detailed.png" alt-text="Azure Güvenlik Merkezi, Azure Kubernetes hizmeti ve Azure Ilkesi arasındaki etkileşimin üst düzey mimarisi" lightbox="./media/defender-for-kubernetes-intro/kubernetes-service-security-center-integration-detailed.png":::
+>[!NOTE]
+> Güvenlik Merkezi, Kubernetes için Azure Defender etkinleştirildikten **sonra** gerçekleşen Azure Kubernetes hizmet eylemleri ve dağıtımları için güvenlik uyarıları oluşturur.
 
 
 
@@ -83,23 +55,18 @@ Güvenlik Merkezi tarafından alınan ve çözümlenen öğelerin şunları gör
 
 ### <a name="can-i-still-get-aks-protections-without-the-log-analytics-agent"></a>Log Analytics Aracısı olmadan AKS korumalarını almaya devam edebilir miyim?
 
-Yukarıda belirtildiği gibi, **Kubernetes için isteğe bağlı Azure Defender** planı, küme düzeyinde koruma sağlar, **sunucular için Azure Defender** Log Analytics Aracısı düğümlerinizi korur. 
+**Kubernetes planı Için Azure Defender** , küme düzeyinde korumalar sağlar. Ayrıca, **sunucular Için Azure Defender**'ın Log Analytics aracısını dağıtırsanız, bu planla birlikte sunulan düğümleriniz için tehdit koruması alacaksınız. [Sunucular Için Azure Defender 'A giriş](defender-for-servers-introduction.md)hakkında daha fazla bilgi edinin.
 
 Mümkün olan en iyi koruma için her ikisini de dağıtmanız önerilir.
 
 Aracıyı konaklarınıza yüklememeyi seçerseniz, yalnızca tehdit koruması avantajları ve güvenlik uyarılarının bir alt kümesini alacaksınız. Hala kötü amaçlı sunucularla ağ analizi ve iletişimlerle ilgili uyarılar alacaksınız.
 
-
 ### <a name="does-aks-allow-me-to-install-custom-vm-extensions-on-my-aks-nodes"></a>AKS, AKS düğümlerine özel VM uzantıları yüklememe izin veriyor mu?
-
 Azure Defender 'ın AKS düğümlerinizi izlemesi için Log Analytics aracısını çalıştırması gerekir. 
 
 AKS yönetilen bir hizmettir ve Log Analytics Aracısı Microsoft tarafından yönetilen bir uzantıdır, ayrıca AKS kümelerinde de desteklenir.
 
-
-
 ### <a name="if-my-cluster-is-already-running-an-azure-monitor-for-containers-agent-do-i-need-the-log-analytics-agent-too"></a>Kümem zaten kapsayıcılar Aracısı için bir Azure Izleyici çalıştırıyorsa, Log Analytics aracısına da ihtiyacım var mı?
-
 Azure Defender 'ın AKS düğümlerinizi izlemesi için Log Analytics aracısını çalıştırması gerekir.
 
 Kümeleriniz zaten kapsayıcı Aracısı için Azure Izleyicisini çalıştırıyorsa, Log Analytics aracısını da yükleyebilirsiniz ve iki aracı herhangi bir sorun olmadan başka bir şekilde çalışabilir.
@@ -111,8 +78,10 @@ Kümeleriniz zaten kapsayıcı Aracısı için Azure Izleyicisini çalıştırı
 
 Bu makalede, Kubernetes için Azure Defender dahil güvenlik merkezi 'nin Kubernetes koruması hakkında bilgi edindiniz. 
 
+> [!div class="nextstepaction"]
+> [Azure Defender’ı etkinleştirme](security-center-pricing.md#enable-azure-defender)
+
 İlgili malzemeler için aşağıdaki makalelere bakın: 
 
-- [Azure Defender’ı etkinleştirme](security-center-pricing.md#enable-azure-defender)
 - [Uyarıları bir SıEM, SOAR veya BT hizmet yönetimi çözümüne akış](export-to-siem.md)
 - [Uyarıların başvuru tablosu](alerts-reference.md)

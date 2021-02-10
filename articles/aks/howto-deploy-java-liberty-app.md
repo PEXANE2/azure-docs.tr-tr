@@ -7,16 +7,23 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/01/2021
 keywords: Java, jakartaee, JavaEE, mikro profil, açık-Liberty, WebSphere-Liberty, aks, Kubernetes
-ms.openlocfilehash: 2e025c706512b6ab3945118da996b11a5a8a9585
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: d0e6f2fea6894378da736ba83a90ee28402ec7f9
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99526899"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100007146"
 ---
 # <a name="deploy-a-java-application-with-open-liberty-or-websphere-liberty-on-an-azure-kubernetes-service-aks-cluster"></a>Azure Kubernetes Service (AKS) kümesi üzerinde açık özgürlük veya WebSphere özgürlük ile Java uygulaması dağıtma
 
-Bu kılavuzda, Open Liberty veya WebSphere Liberty çalışma zamanı üzerinde Java, Java EE, [Jakarta](https://jakarta.ee/)veya [mikro profil](https://microprofile.io/) uygulamanızın nasıl çalıştırılacağı ve daha sonra açık serbest bırakma işlecini kullanarak bir aks kümesine Kapsayıcılı uygulamayı dağıtma işlemlerinin nasıl yapılacağı gösterilir. Açık özgürlük Işleci, açık serbest bir Kubernetes kümelerinde çalışan uygulamaların dağıtımını ve yönetimini basitleştirir. İşleci kullanarak izleme ve dökümleri toplama gibi daha gelişmiş işlemleri de gerçekleştirebilirsiniz. Bu makale, bir serbest uygulama hazırlama, uygulama Docker görüntüsünü oluşturma ve Kapsayıcılı uygulamayı bir AKS kümesinde çalıştırma konusunda size kılavuzluk eder.  Açık özgürlük hakkında daha fazla bilgi için, bkz. [serbest bir proje açın sayfası](https://openliberty.io/). IBM WebSphere özgürlük hakkında daha fazla bilgi için bkz. [WebSphere Liberty ürün sayfası](https://www.ibm.com/cloud/websphere-liberty).
+Bu makalede nasıl yapılacağı gösterilmektedir:  
+* Açık özgürlük veya WebSphere Liberty çalışma zamanında Java, Java EE, Jakarta veya mikro profil uygulamanızı çalıştırın.
+* Açık serbest yer kapsayıcısı görüntülerini kullanarak uygulama Docker görüntüsünü oluşturun.
+* Açık Liberty Işlecini kullanarak Kapsayıcılı uygulamayı bir AKS kümesine dağıtın.   
+
+Açık özgürlük Işleci, Kubernetes kümelerinde çalışan uygulamaların dağıtımını ve yönetimini basitleştirir. Açık serbest bir Işleçle, izleme ve dökümleri toplama gibi daha gelişmiş işlemler de yapabilirsiniz. 
+
+Açık özgürlük hakkında daha fazla bilgi için, bkz. [serbest bir proje açın sayfası](https://openliberty.io/). IBM WebSphere özgürlük hakkında daha fazla bilgi için bkz. [WebSphere Liberty ürün sayfası](https://www.ibm.com/cloud/websphere-liberty).
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -24,17 +31,20 @@ Bu kılavuzda, Open Liberty veya WebSphere Liberty çalışma zamanı üzerinde 
 
 * Bu makale, Azure CLı 'nin en son sürümünü gerektirir. Azure Cloud Shell kullanılıyorsa, en son sürüm zaten yüklüdür.
 * Bu kılavuzdaki komutları yerel olarak çalıştırıyorsanız (Azure Cloud Shell yerine):
-  * UNIX benzeri işletim sistemi yüklü bir yerel makine hazırlayın (örneğin, Ubuntu, macOS).
+  * UNIX benzeri işletim sistemi yüklü bir yerel makine hazırlayın (örneğin, Ubuntu, macOS, Linux için Windows alt sistemi).
   * Bir Java CE uygulamasını (örneğin, [Benimsetopenjdk OpenJDK 8 LTS/OpenJ9](https://adoptopenjdk.net/?variant=openjdk8&jvmVariant=openj9)) yükler.
   * [Maven](https://maven.apache.org/download.cgi) 3.5.0 veya üstünü yükler.
   * IŞLETIM sisteminize [Docker](https://docs.docker.com/get-docker/) 'yi yüklemeyin.
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
-Azure kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği mantıksal bir gruptur. *Eastus* konumundaki [az Group Create](/cli/azure/group#az_group_create) komutunu kullanarak *Java-Liberty-Project* kaynak grubu oluşturun. Azure Container Registry (ACR) örneği ve AKS kümesini daha sonra oluşturmak için kullanılır. 
+Azure kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği mantıksal bir gruptur.  
+
+*Eastus* konumundaki [az Group Create](/cli/azure/group#az_group_create) komutunu kullanarak *Java-Liberty-Project* adlı bir kaynak grubu oluşturun. Bu kaynak grubu daha sonra Azure Container Registry (ACR) örneği ve AKS kümesi oluşturmak için kullanılır. 
 
 ```azurecli-interactive
-az group create --name java-liberty-project --location eastus
+RESOURCE_GROUP_NAME=java-liberty-project
+az group create --name $RESOURCE_GROUP_NAME --location eastus
 ```
 
 ## <a name="create-an-acr-instance"></a>ACR örneği oluşturma
@@ -42,7 +52,8 @@ az group create --name java-liberty-project --location eastus
 ACR örneğini oluşturmak için [az ACR Create](/cli/azure/acr#az_acr_create) komutunu kullanın. Aşağıdaki örnek, *youruniqueacrname* adlı bir ACR örneği oluşturur. *Youruniqueacrname* 'in Azure içinde benzersiz olduğundan emin olun.
 
 ```azurecli-interactive
-az acr create --resource-group java-liberty-project --name youruniqueacrname --sku Basic --admin-enabled
+REGISTRY_NAME=youruniqueacrname
+az acr create --resource-group $RESOURCE_GROUP_NAME --name $REGISTRY_NAME --sku Basic --admin-enabled
 ```
 
 Kısa bir süre sonra, şunu içeren bir JSON çıktısı görmeniz gerekir:
@@ -55,10 +66,9 @@ Kısa bir süre sonra, şunu içeren bir JSON çıktısı görmeniz gerekir:
 
 ### <a name="connect-to-the-acr-instance"></a>ACR örneğine bağlanma
 
-Bir görüntüyü ACR örneğine göndermek için öncelikle oturum açmanız gerekir. Bağlantıyı doğrulamak için aşağıdaki komutları çalıştırın:
+Bir görüntüyü gönderebilmeniz için ACR örneğinde oturum açmanız gerekir. Bağlantıyı doğrulamak için aşağıdaki komutları çalıştırın:
 
 ```azurecli-interactive
-REGISTRY_NAME=youruniqueacrname
 LOGIN_SERVER=$(az acr show -n $REGISTRY_NAME --query 'loginServer' -o tsv)
 USER_NAME=$(az acr credential show -n $REGISTRY_NAME --query 'username' -o tsv)
 PASSWORD=$(az acr credential show -n $REGISTRY_NAME --query 'passwords[0].value' -o tsv)
@@ -73,7 +83,8 @@ docker login $LOGIN_SERVER -u $USER_NAME -p $PASSWORD
 AKS kümesi oluşturmak için [az aks create](/cli/azure/aks#az_aks_create) komutunu kullanın. Aşağıdaki örnekte, bir düğüm ile *myAKSCluster* adlı bir küme oluşturulmuştur. Bu işlem birkaç dakika sürer.
 
 ```azurecli-interactive
-az aks create --resource-group java-liberty-project --name myAKSCluster --node-count 1 --generate-ssh-keys --enable-managed-identity
+CLUSTER_NAME=myAKSCluster
+az aks create --resource-group $RESOURCE_GROUP_NAME --name $CLUSTER_NAME --node-count 1 --generate-ssh-keys --enable-managed-identity
 ```
 
 Birkaç dakika sonra komut tamamlanır ve aşağıdakiler dahil olmak üzere küme hakkında JSON biçimli bilgileri döndürür:
@@ -96,7 +107,7 @@ az aks install-cli
 `kubectl` istemcisini Kubernetes kümenize bağlanacak şekilde yapılandırmak için [az aks get-credentials](/cli/azure/aks#az_aks_get_credentials) komutunu kullanın. Bu komut, kimlik bilgilerini indirir ve Kubernetes CLı 'yi bunları kullanacak şekilde yapılandırır.
 
 ```azurecli-interactive
-az aks get-credentials --resource-group java-liberty-project --name myAKSCluster --overwrite-existing
+az aks get-credentials --resource-group $RESOURCE_GROUP_NAME --name $CLUSTER_NAME --overwrite-existing
 ```
 
 > [!NOTE]
@@ -144,6 +155,7 @@ curl -L https://raw.githubusercontent.com/OpenLiberty/open-liberty-operator/mast
 1. Bu kılavuz için örnek kodu kopyalayın. Örnek [GitHub](https://github.com/Azure-Samples/open-liberty-on-aks)' dır.
 1. Dizini `javaee-app-simple-cluster` Yerel kopyanızda değiştirin.
 1. `mvn clean package`Uygulamayı paketlemek için çalıştırın.
+1. `mvn liberty:dev`Uygulamayı test etmek için ' i çalıştırın. `The defaultServer server is ready to run a smarter planet.`Başarılı olursa komut çıktısında görmeniz gerekir. `CTRL-C`Uygulamayı durdurmak için kullanın.
 1. Uygulama görüntüsünü derlemek ve ACR örneğine göndermek için aşağıdaki komutlardan birini çalıştırın.
    * Açık özgürlük, hafif bir açık kaynak Java™ çalışma zamanı olarak kullanmayı tercih ediyorsanız açık serbest bir temel görüntüyle derleyin:
 
@@ -206,12 +218,12 @@ Uygulama çalıştığında, bir Kubernetes Yük Dengeleyici Hizmeti, uygulaman�
 kubectl get service javaee-app-simple-cluster --watch
 
 NAME                        TYPE           CLUSTER-IP     EXTERNAL-IP     PORT(S)          AGE
-javaee-app-simple-cluster   LoadBalancer   10.0.251.169   52.152.189.57   9080:31732/TCP   68s
+javaee-app-simple-cluster   LoadBalancer   10.0.251.169   52.152.189.57   80:31732/TCP     68s
 ```
 
-*Dış IP* adresinin *bekliyor* durumundan gerçek bir genel IP adresine değişene kadar bekleyin, `CTRL-C` izleme işlemini durdurmak için kullanın `kubectl` .
+*Dış IP* adresi *bekliyor* durumundan gerçek ortak IP adresine değiştiğinde, `CTRL-C` izleme işlemini durdurmak için kullanın `kubectl` .
 
-Uygulama giriş sayfasını görmek için, dış IP adresine ve hizmetinizin bağlantı noktasına ( `52.152.189.57:9080` Yukarıdaki örnek için) bir Web tarayıcısı açın. Sayfanın sol tarafında görünen uygulama çoğaltmalarınızın Pod adını görmeniz gerekir. Birkaç dakika bekleyin ve sayfayı yenileyin, AKS kümesi tarafından sağlanacak Yük Dengeleme nedeniyle büyük olasılıkla farklı bir pod adı görürsünüz.
+`52.152.189.57`Uygulama giriş sayfasını görmek için hizmetinizin dış IP adresine (Yukarıdaki örnek için) bir Web tarayıcısı açın. Sayfanın sol tarafında görünen uygulama çoğaltmalarınızın Pod adını görmeniz gerekir. Birkaç dakika bekleyin ve AKS kümesi tarafından sağlanmış yük dengelemesi nedeniyle farklı bir pod adı görmek için sayfayı yenileyin.
 
 :::image type="content" source="./media/howto-deploy-java-liberty-app/deploy-succeeded.png" alt-text="Java Liberty uygulaması AKS 'de başarıyla dağıtıldı":::
 
@@ -223,7 +235,7 @@ Uygulama giriş sayfasını görmek için, dış IP adresine ve hizmetinizin ba�
 Azure ücretlerinden kaçınmak için gereksiz kaynakları temizlemeniz gerekir.  Küme artık gerekli olmadığında, [az Group Delete](/cli/azure/group#az_group_delete) komutunu kullanarak kaynak grubunu, kapsayıcı hizmetini, kapsayıcı kayıt defterini ve tüm ilgili kaynakları kaldırın.
 
 ```azurecli-interactive
-az group delete --name java-liberty-project --yes --no-wait
+az group delete --name $RESOURCE_GROUP_NAME --yes --no-wait
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar

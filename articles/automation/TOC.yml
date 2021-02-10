@@ -252,6 +252,8 @@
           href: automation-solution-vm-management-config.md
         - name: VM'leri çalışma saatleri dışında başlat/durdur özelliğinden sorgu günlükleri
           href: automation-solution-vm-management-logs.md
+        - name: VM'leri çalışma saatleri dışında başlat/durdur kaldır
+          href: automation-solution-vm-management-remove.md
         - name: VM'leri çalışma saatleri dışında başlat/durdur özelliğiyle ilgili sorunları giderme
           href: troubleshoot/start-stop-vm.md
     - name: Güncelleştirme Yönetimi

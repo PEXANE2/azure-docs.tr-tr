@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/30/2020
 ms.author: radeltch
 ms.reviewer: cynthn
-ms.openlocfilehash: 056eba8694d1727350809121f763181e3cdbdc64
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 8192d7104daf1474a2123331183edf05e6fa1ada
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94968613"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100007423"
 ---
 # <a name="azure-monitor-for-sap-solutions-providers-preview"></a>SAP Solutions sağlayıcıları için Azure izleyici (Önizleme)
 
@@ -41,7 +41,7 @@ Müşteriler SAP izleyici kaynağını dağıtırken herhangi bir sağlayıcı y
 
 Müşteriler, SAP HANA veritabanından veri toplamayı etkinleştirmek için *SAP HANA* bir veya daha fazla sağlayıcı türü sağlayıcısı yapılandırabilir. SAP HANA sağlayıcı, SQL bağlantı noktası üzerinden SAP HANA veritabanına bağlanır, veri kaynağından telemetri verilerini çeker ve müşteri aboneliğinde Log Analytics çalışma alanına gönderir. SAP HANA sağlayıcısı SAP HANA veritabanından her 1 dakikada bir veri toplar.  
 
-Genel önizlemede, müşteriler SAP HANA sağlayıcı ile aşağıdaki verileri görmeyi bekleyebilir: temel altyapı kullanımı, SAP HANA ana bilgisayar durumu, SAP HANA sistem çoğaltması ve SAP HANA yedekleme telemetri verileri. SAP HANA sağlayıcıyı yapılandırmak için ana bilgisayar IP adresi, HANA SQL bağlantı noktası numarası ve SYSTEMDB Kullanıcı adı ve parola gereklidir. Müşterilerin SAP HANA sağlayıcısı 'nı SYSTEMDB 'ye karşı yapılandırmak önerilir, ancak ek sağlayıcılar diğer veritabanı Kiracılarına karşı yapılandırılabilir.
+Genel önizlemede, müşteriler SAP HANA sağlayıcı ile aşağıdaki verileri görmeyi bekleyebilir: temel altyapı kullanımı, SAP HANA ana bilgisayar durumu, SAP HANA sistem çoğaltması ve SAP HANA yedekleme telemetri verileri. SAP HANA sağlayıcıyı yapılandırmak için ana bilgisayar IP adresi, HANA SQL bağlantı noktası numarası ve SYSTEMDB Kullanıcı adı ve parola gereklidir. Müşterilerin SAP HANA sağlayıcısı 'nı SYSTEMDB 'ye karşı yapılandırmak önerilir, ancak diğer veritabanı kiracılarına göre daha fazla sağlayıcı yapılandırılabilir.
 
 ![SAP Solutions sağlayıcıları için Azure Izleyici-SAP HANA](./media/azure-monitor-sap/azure-monitor-providers-hana.png)
 
@@ -68,10 +68,38 @@ Yüksek kullanılabilirlik kümesi sağlayıcısını yapılandırmak için, iki
    Yüksek kullanılabilirlik kümesi sağlayıcısını yapılandırmak için aşağıdaki bilgiler gereklidir:
    
    - **Ad**. Bu sağlayıcının adı. Bu Azure Monitor for SAP Solutions örneği için benzersiz olmalıdır.
-   - **Prometheus uç noktası**. Genellikle http \: // \<servername or ip address\> : 9664/ölçümler.
+   - **Prometheus uç noktası**. http \: // \<servername or ip address\> : 9664/ölçümler.
    - **SID**. SAP sistemleri için SAP SID 'sini kullanın. Diğer sistemler (örneğin, NFS kümeleri) için, küme için üç karakterli bir ad kullanın. SID, izlenen diğer kümelerden farklı olmalıdır.   
    - **Küme adı**. Küme oluşturulurken kullanılan küme adı. Küme adı küme özelliğinde bulunabilir `cluster-name` .
    - **Ana bilgisayar adı**. VM 'nin Linux ana bilgisayar adı.  
+
+
+## <a name="provider-type-os-linux"></a>Sağlayıcı türü işletim sistemi (Linux)
+Müşteriler, BareMetal veya VM düğümünden veri toplamayı etkinleştirmek için bir veya daha fazla sağlayıcı türü işletim sistemi (Linux) sağlayıcısı yapılandırabilir. İşletim sistemi (Linux) sağlayıcısı, [Node_Exporter](https://github.com/prometheus/node_exporter)uç noktası kullanarak BareMetal veya VM düğümlerine bağlanır   , düğümlerdeki telemetri verilerini çeker ve müşteri aboneliğinde Log Analytics çalışma alanına gönderir. İşletim sistemi (Linux) sağlayıcısı, düğümlerden çoğu ölçüm için verileri her 60 saniyede bir toplar. 
+
+Genel önizlemede, müşteriler OS (Linux) sağlayıcısı ile aşağıdaki verileri görmeyi bekleyebilir: 
+   - CPU kullanımı, Işleme göre CPU kullanımı 
+   - Disk kullanımı, g/ç okuma & yazma 
+   - Bellek dağıtımı, bellek kullanımı, takas belleği kullanımı 
+   - Ağ kullanımı, ağ gelen & giden trafik ayrıntıları. 
+
+Bir işletim sistemi (Linux) sağlayıcısı yapılandırmak için iki birincil adım vardır:
+1.  [](https://github.com/prometheus/node_exporter)   Her bir baremetal veya VM düğümlerine Node_Exporter yükler.
+   [Node_exporter](https://github.com/prometheus/node_exporter)yüklemek için iki seçeneğiniz vardır: 
+      - İşletim sistemi (Linux) sağlayıcısı yüklemek için her bir BareMetal veya VM düğümlerinde, anormal kullanım [Node_Exporter](https://github.com/prometheus/node_exporter) Otomasyon yüklemesi için.  
+      -  [El ile yükleme](https://prometheus.io/docs/guides/node-exporter/)yapın.
+
+2. Ortamınızdaki her bir BareMetal veya VM düğüm örneği için bir işletim sistemi (Linux) sağlayıcısı yapılandırın. 
+   İşletim sistemi (Linux) sağlayıcısını yapılandırmak için aşağıdaki bilgiler gereklidir: 
+      - Ada. Bu sağlayıcının adı. Bu Azure Monitor for SAP Solutions örneği için benzersiz olmalıdır. 
+      - Düğüm verme uç noktası. Genellikle http:// <servername or ip address> : 9100/ölçümler 
+
+> [!NOTE]
+> 9100 Node_Exporter uç noktası için sunulan bir bağlantı noktasıdır.
+
+> [!Warning]
+> Düğüm yeniden başlatmasından sonra düğüm dışarı aktarıcı 'nın çalışmaya devam edin. 
+
 
 ## <a name="provider-type-microsoft-sql-server"></a>Sağlayıcı türü Microsoft SQL Server
 

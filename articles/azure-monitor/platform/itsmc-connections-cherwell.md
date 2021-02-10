@@ -6,19 +6,20 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 12/21/2020
-ms.openlocfilehash: 73fc13cf2a49d7cacd7540d06c6d0afd9cea68e5
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: a24ece3c0b75d0d0d22e13c6e5367c27fbaeab66
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97729752"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100006794"
 ---
 # <a name="connect-cherwell-with-it-service-management-connector"></a>BT Hizmet Yönetimi Bağlayıcısı ile Cherwell bağlama
 
 Bu makalede, iş öğelerinizi merkezi olarak yönetmek için Log Analytics Cherwell örneğiniz ile BT Hizmet Yönetimi Bağlayıcısı (ITSMC) arasındaki bağlantının nasıl yapılandırılacağı hakkında bilgi sağlanır.
 
 > [!NOTE]
-> Çeriyi ve Provance müşterilerinin, tümleştirmede başka bir çözüm olarak, Cherwell ve Provance uç noktasına [Web kancası eylemi](./action-groups.md#webhook) kullanmasını sağlıyoruz.
+> Azure uyarısı ile 1 Ekim 2020 Cherwell ıSM tümleştirmesi artık yeni müşteriler için etkinleştirilmeyecektir. Yeni ıTSM bağlantıları desteklenecek.
+> Mevcut ıTSM bağlantıları desteklenecek.
 
 Aşağıdaki bölümlerde, Cherwell ürününüzü Azure 'daki ıSMC 'a bağlama hakkında ayrıntılı bilgi sağlanmaktadır.
 
@@ -80,6 +81,6 @@ Cherwell için istemci KIMLIĞINI/anahtarını oluşturmak için aşağıdaki yo
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [ITSM Bağlayıcısı genel bakış](itsmc-overview.md)
+* [ITSM Bağlayıcısına Genel Bakış](itsmc-overview.md)
 * [Azure uyarılarından ıTSM iş öğeleri oluşturma](./itsmc-definition.md#create-itsm-work-items-from-azure-alerts)
 * [ITSM Bağlayıcısındaki sorunları giderme](./itsmc-resync-servicenow.md)

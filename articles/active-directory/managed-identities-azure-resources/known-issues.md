@@ -13,16 +13,16 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 12/01/2020
+ms.date: 02/04/2021
 ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 2be66904898ecdf2006952f5e80c17dc78b81c06
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.openlocfilehash: 3f1be2e64435cb0bcdb369a398a9a65fc3714fb2
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97825800"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100008545"
 ---
 # <a name="faqs-and-known-issues-with-managed-identities-for-azure-resources"></a>Azure kaynakları için yönetilen kimliklerle ilgili SSS ve bilinen sorunlar
 
@@ -48,6 +48,10 @@ Hayır. Yönetilen kimlikler ve Azure AD Uygulaması kayıtları, dizinde aynı 
 Uygulama kayıtları iki bileşeni vardır: uygulama nesnesi + bir hizmet sorumlusu nesnesi. Azure kaynakları için Yönetilen kimlikler şu bileşenlerden yalnızca birine sahiptir: bir hizmet sorumlusu nesnesi. 
 
 Yönetilen kimliklerin dizinde uygulama nesnesi yoktur, bu da genellikle MS Graph için uygulama izinleri vermek için kullanılır. Bunun yerine, Yönetilen kimlikler için MS Graph izinlerinin doğrudan hizmet sorumlusuna verilmesi gerekir.  
+
+### <a name="can-the-same-managed-identity-be-used-across-multiple-regions"></a>Aynı yönetilen kimlik birden çok bölgede kullanılabilir mi?
+
+Kısaca Evet olarak, birden fazla Azure bölgesinde Kullanıcı tarafından atanan Yönetilen kimlikler kullanabilirsiniz. Daha uzun yanıt, Kullanıcı tarafından atanan Yönetilen kimlikler, Azure AD 'de oluşturulan ilişkili [hizmet sorumlusu](../develop/app-objects-and-service-principals.md#service-principal-object) (SPN), genel olarak kullanılabilir. Hizmet sorumlusu herhangi bir Azure bölgesinden kullanılabilir ve kullanılabilirliği Azure AD 'nin kullanılabilirliğine bağlıdır. Örneğin, South-Central bölgesinde bir kullanıcı tarafından atanan yönetilen kimlik oluşturduysanız ve bu bölge kullanılamaz duruma gelirse bu sorun yalnızca yönetilen kimliğin üzerinde [Denetim düzlemi](../../azure-resource-manager/management/control-plane-and-data-plane.md) etkinliklerini etkiler.  Yönetilen kimlikleri kullanmak için önceden yapılandırılmış kaynaklar tarafından gerçekleştirilen etkinlikler bundan etkilenmez.
 
 ### <a name="does-managed-identities-for-azure-resources-work-with-azure-cloud-services"></a>Azure kaynakları için Yönetilen kimlikler Azure Cloud Services ile çalışır mi?
 

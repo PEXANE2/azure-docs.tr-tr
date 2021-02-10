@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: ff7de678e40a02b364451e7c88d661d2e38ed9d4
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 50ab66a1f98d06d79a46d61f683d56822b619721
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98918932"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100007063"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-across-availability-zones"></a>Kullanılabilirlik Alanları arasında bir Azure Service Fabric kümesi dağıtma
 Azure 'daki Kullanılabilirlik Alanları, uygulamalarınızı ve verilerinizi veri merkezi hatalarından koruyan yüksek kullanılabilirliğe sahip bir tekliftir. Bir kullanılabilirlik alanı, bir Azure bölgesi içinde bağımsız güç, soğutma ve ağ ile donatılmış benzersiz bir fiziksel konumdur.
@@ -374,8 +374,8 @@ Birden çok kullanılabilirlik bölgesini desteklemek için Service Fabric nodeT
 * İlk değer, nodeType için true olarak ayarlanması gereken **Çoğulkullanılabilirliği Bilityzones** ' dır.
 * İkinci değer **Sfzonalupgrademode** ' dır ve isteğe bağlıdır. Kümede birden çok AZ olan NodeType zaten varsa, bu özellik değiştirilemez.
       Özelliği, yükseltme etki alanlarında VM 'lerin mantıksal gruplandırmasını denetler.
-          Değer false (düz mod) olarak ayarlandıysa: düğüm türü altındaki VM 'Ler, 5 UDs 'deki bölge bilgilerini yoksayarak UD 'de gruplandırılır.
-          Değer atlanırsa veya true (hiyerarşik mod) olarak ayarlandıysa: VM 'Ler, en fazla 15 UDs 'ye kadar olan bir dağılımı yansıtacak şekilde gruplandırılır. 3 bölgenin her biri 5 UDs 'ye sahip olacaktır.
+          Değer "Parallel" olarak ayarlandıysa: NodeType altındaki VM 'Ler, 5 UDs 'deki bölge bilgilerini yoksayarak Uılılar altında gruplandırılır.
+          Değer atlanırsa veya "hiyerarşik" olarak ayarlanırsa: VM 'Ler, en fazla 15 UDs 'ye kadar olan makineleri yansıtacak şekilde gruplandırılır. 3 bölgenin her biri 5 UDs 'ye sahip olacaktır.
           Bu özellik yalnızca ServiceFabric uygulaması ve kod yükseltmeleri için yükseltme davranışını tanımlar. Temel alınan sanal makine ölçek kümesi yükseltmeleri, tüm AZ olarak paralel olmaya devam edecektir.
       Bu özelliğin, birden çok bölgesi etkin olmayan düğüm türleri için UD dağıtımı üzerinde hiçbir etkisi olmayacaktır.
 * Üçüncü değer **Vmsszonalupgrademode = Parallel** değeridir. Bu, birden fazla AZs içeren bir nodeType eklenirse kümede yapılandırılacak *zorunlu* bir özelliktir. Bu özellik, tüm az bir kez paralel olarak gerçekleştirilecek sanal makine ölçek kümesi güncelleştirmeleri için yükseltme modunu tanımlar.

@@ -107,10 +107,10 @@
         - name: Dağıtım hataları için destek isteği açma
           href: fix-deployment-provisioning-failures.md
     - name: SSS
-      href: faq.md
+      href: faq.yml
 - name: Başvuru
   items:
-    - name: Azure CLI’si
+    - name: Azure CLI
       href: /cli/azure/ext/vmware/vmware
     - name: Azure PowerShell
       href: /powershell/module/az.vmware/

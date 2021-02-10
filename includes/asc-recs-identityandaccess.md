@@ -2,15 +2,15 @@
 author: memildin
 ms.service: security-center
 ms.topic: include
-ms.date: 01-26-2021
+ms.date: 02/09/2021
 ms.author: memildin
 ms.custom: generated
-ms.openlocfilehash: 7487262faa8af74af26ac2123686a8e202254e76
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: e1d2039ba3a667e40740acd7781090c9c0cf5281
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98797143"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100007651"
 ---
 Bu kategoride **21** öneri vardır.
 
@@ -20,7 +20,7 @@ Bu kategoride **21** öneri vardır.
 |Key Vault için Azure Defender etkinleştirilmelidir |Azure Güvenlik Merkezi, ek bir güvenlik zekası katmanı sağlayan Key Vault için Azure Defender 'ı içerir.<br>Key Vault için Azure Defender, Key Vault hesaplara yönelik olağan dışı ve olası zararlı girişimleri algılar.<br><br>Önemli: bu öneriyi kaldırmak, anahtar kasalarınızı koruma ücretlerine neden olur. Bu abonelikte hiç bir Anahtar Kasası yoksa hiçbir ücret ödemeyecektir.<br>Gelecekte bu abonelikte herhangi bir Anahtar Kasası oluşturursanız, bunlar otomatik olarak korunur ve ücretler bu anda başlayacaktır.<br> <a href='https://docs.microsoft.com/azure/security-center/advanced-threat-protection-key-vault'>Key Vault için Azure Defender hakkında daha fazla bilgi edinin.</a><br />(İlgili ilke: [Key Vault Için Azure Defender etkinleştirilmelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fmicrosoft.authorization%2fpolicyDefinitions%2f0e6763cc-5078-4e64-889d-ff4d9a839047)) |Yüksek |
 |Kullanım dışı bırakılan hesaplar aboneliğinizden kaldırılmalıdır |Oturum açmasını engelleyen Kullanıcı hesaplarının aboneliklerinizden kaldırılması gerekir.<br>Bu hesaplar, fark etmeden verilerinize erişme yollarını bulmak isteyen saldırganlar için hedef olabilir.<br />(İlgili ilke: [kullanımdan kaldırılan hesapların aboneliğinizden kaldırılması gerekir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f6b1cbf55-e8b6-442f-ba4c-7246b6381474)) |Yüksek |
 |Sahip izinleri olan kullanım dışı hesaplar aboneliğinizden kaldırılmalıdır |Oturum açmasını engelleyen Kullanıcı hesaplarının aboneliklerinizden kaldırılması gerekir.<br>Bu hesaplar, fark etmeden verilerinize erişme yollarını bulmak isteyen saldırganlar için hedef olabilir.<br />(İlgili ilke: [sahip izinleri olan kullanım dışı hesaplar aboneliğinizden kaldırılmalıdır](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2febb62a0c-3560-49e1-89ed-27e074e9f8ad)) |Yüksek |
-|Key Vault tanılama günlükleri etkinleştirilmelidir |Günlükleri etkinleştirin ve bir yıla kadar saklayın. Bu, bir güvenlik olayı gerçekleştiğinde veya ağınızın güvenliği tehlikeye atılırsa araştırma amaçlarıyla etkinlik izlerini yeniden oluşturmayı sağlar.<br />(İlgili ilke: [Key Vault Içindeki tanılama günlükleri etkinleştirilmelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fcf820ca0-f99e-4f3e-84fb-66e913812d21)) |Düşük |
+|Key Vault tanılama günlükleri etkinleştirilmelidir |Günlükleri etkinleştirin ve bir yıla kadar saklayın. Bu, bir güvenlik olayı gerçekleştiğinde veya ağınızın güvenliği tehlikeye atılırsa araştırma amaçlarıyla etkinlik izlerini yeniden oluşturmayı sağlar.<br />(İlgili ilke: [Key Vault Içindeki kaynak günlükleri etkinleştirilmelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fcf820ca0-f99e-4f3e-84fb-66e913812d21)) |Düşük |
 |Sahip izinleri olan dış hesaplar aboneliğinizden kaldırılmalıdır |Farklı etki alanı adlarına sahip (dış hesaplar) sahip izinlere sahip hesaplar aboneliğinizden kaldırılmalıdır. Bu, izlenmeyen erişimi engeller. Bu hesaplar, fark etmeden verilerinize erişme yollarını bulmak isteyen saldırganlar için hedef olabilir.<br />(İlgili ilke: [sahip izinleri olan dış hesaplar aboneliğinizden kaldırılmalıdır](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2ff8456c1c-aa66-4dfb-861a-25d127b775c9)) |Yüksek |
 |Okuma izinlerine sahip dış hesapların aboneliğinizden kaldırılması gerekir |Farklı etki alanı adlarına (dış hesaplara) sahip okuma izinleri olan hesaplar aboneliğinizden kaldırılmalıdır. Bu, izlenmeyen erişimi engeller. Bu hesaplar, fark etmeden verilerinize erişme yollarını bulmak isteyen saldırganlar için hedef olabilir.<br />(İlgili ilke: [Okuma izinlerine sahip dış hesapların aboneliğinizden kaldırılması gerekir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f5f76cf89-fbf2-47fd-a3f4-b891fa780b60)) |Yüksek |
 |Yazma izinlerine sahip dış hesapların aboneliğinizden kaldırılması gerekir |Farklı etki alanı adlarına (dış hesaplara) sahip yazma izinleri olan hesaplar aboneliğinizden kaldırılmalıdır. Bu, izlenmeyen erişimi engeller. Bu hesaplar, fark etmeden verilerinize erişme yollarını bulmak isteyen saldırganlar için hedef olabilir.<br />(İlgili ilke: [yazma izinlerine sahip dış hesapların aboneliğinizden kaldırılması gerekir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f5c607a2e-c700-4744-8254-d77e7c9eb5e4)) |Yüksek |

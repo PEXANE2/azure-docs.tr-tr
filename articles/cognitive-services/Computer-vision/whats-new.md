@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 01/13/2021
 ms.author: pafarley
-ms.openlocfilehash: 1128504ee5f8c086d6a3c30a9fdd021550394f3f
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: 31ca65099d645b7fdfee70275515f0a864cd905f
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 02/09/2021
-ms.locfileid: "99981774"
+ms.locfileid: "100007406"
 ---
 # <a name="whats-new-in-computer-vision"></a>Görüntü İşleme yenilikleri
 
@@ -24,13 +24,14 @@ Hizmette nelerin yeni olduğunu öğrenin. Bu öğeler sürüm notları, videola
 ## <a name="february-2021"></a>Şubat 2021
 
 ### <a name="read-api-v32-public-preview-with-ocr-support-for-73-languages"></a>73 dilleri için OCR desteğiyle API v 3.2 genel önizlemesini okuyun
-Görüntü İşleme Read API v 3.2 genel önizlemesi şu özellikleri içerir:
+Görüntü İşleme, bulut hizmeti ve Docker kapsayıcısı olarak sunulan Read API v 3.2 genel önizlemesi, şu güncelleştirmeleri içerir:
 * Basitleştirilmiş ve geleneksel Çince, Japonca, Korece ve Latin dilleri gibi [73 dilleri Için OCR](./language-support.md#optical-character-recognition-ocr) .
-* Metin çizgilerinin doğal okuma düzeninde çıkışını yapın.
-* Metin satırlarını el yazısı stili olarak sınıflandırın ve Güvenirlik puanı (yalnızca Latin dilleri) ile birlikte değil.
-* Birden çok sayfalı belge için yalnızca seçili sayfalar veya sayfa aralığı için metin ayıkla.
+* Metin satırı çıktısı için doğal okuma düzeni.
+* Metin çizgileri için el yazısı stili sınıflandırması (yalnızca Latin dilleri).
+* Yalnızca bir çok sayfalı belge için seçili sayfalar için metin ayıkla.
+* Şirket içi dağıtım için [daha az bir kapsayıcı](./computer-vision-how-to-install-containers.md?tabs=version-3-2) olarak kullanılabilir.
 
-Daha fazla bilgi için bkz. [Önizleme özelliklerini okuyun](concept-recognizing-text.md#natural-reading-order-output) .
+Okuma API 'SI hakkında [daha fazla bilgi edinin](concept-recognizing-text.md) .
 
 > [!div class="nextstepaction"]
 > [Read API v 3.2 genel önizlemeyi kullanın](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-2/operations/5d986960601faab4bf452005)

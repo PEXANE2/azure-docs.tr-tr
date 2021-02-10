@@ -3,16 +3,16 @@ title: GCP hesabınızı Azure Güvenlik Merkezi 'ne bağlama
 description: Azure Güvenlik Merkezi 'nden GCP kaynaklarınızı izleme
 author: memildin
 ms.author: memildin
-ms.date: 02/07/2021
+ms.date: 02/08/2021
 ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 8ee7b37861be299dd36a596ae1cd4899b0ebffab
-ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
+ms.openlocfilehash: 94c7a800fc551faf6650b8e30fe7c2188f7d2dbb
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99809414"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100008392"
 ---
 #  <a name="connect-your-gcp-accounts-to-azure-security-center"></a>GCP hesaplarınızı Azure Güvenlik Merkezi 'ne bağlama
 
@@ -39,15 +39,21 @@ Aşağıdaki ekran görüntüsünde, güvenlik merkezi 'nin genel bakış panosu
 |Yayın durumu:|Genel kullanılabilirlik (GA)|
 |Fiyat|[Sunucular Için Azure Defender](defender-for-servers-introduction.md) gerekir|
 |Gerekli roller ve izinler:|İlgili Azure aboneliğinde **sahip** veya **katkıda** bulunan|
-|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![No](./media/icons/no-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
+|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Hayır](./media/icons/no-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
 |||
 
 ## <a name="connect-your-gcp-account"></a>GCP hesabınıza bağlanma
 
-Google Cloud kaynaklarınızı kuruluş veya proje düzeyinde bağlamak için GCP bulut bağlayıcınızı oluşturmak üzere aşağıdaki adımları izleyin. 
+Güvenlik Merkezi 'nden izlemek istediğiniz her kuruluş için bir bağlayıcı oluşturun.
 
-> [!TIP]
-> Google Cloud kaynak hiyerarşisi hakkında daha fazla bilgi [edinin.](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy)
+GCP hesaplarınızı belirli Azure aboneliklerine bağlarken, [Google Cloud kaynak hiyerarşisini](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy#resource-hierarchy-detail) ve bu yönergeleri göz önünde bulundurun:
+
+- GCP hesaplarınızı, *kuruluş* düzeyinde ASC 'ye bağlayabilirsiniz
+- Birden çok kuruluşun bir Azure aboneliğine bağlanmasını sağlayabilirsiniz
+- Birden çok kuruluşun birden çok Azure aboneliğine bağlanmasını sağlayabilirsiniz
+- Bir kuruluşa bağlandığınızda, bu kuruluştaki tüm *Projeler* Güvenlik Merkezi 'ne eklenir
+
+GCP bulut bağlayıcınızı oluşturmak için aşağıdaki adımları izleyin. 
 
 ### <a name="step-1-set-up-gcp-security-command-center-with-security-health-analytics"></a>Adım 1. Güvenlik sistem durumu analizi ile GCP güvenlik komut merkezini ayarlama
 
@@ -64,7 +70,7 @@ Güvenlik sistem durumu analizlerini ilk kez etkinleştirdiğinizde, verilerin k
 
 ### <a name="step-2-enable-gcp-security-command-center-api"></a>Adım 2. GCP güvenlik Komut Merkezi API 'sini etkinleştir
 
-1. Google 'ın **bulut konsolu API kitaplığından** Azure Güvenlik Merkezi 'ne bağlanmak istediğiniz projeyi seçin.
+1. Google 'ın **bulut konsolu API kitaplığından**, Azure Güvenlik Merkezi 'ne bağlanmak istediğiniz her bir projeyi seçin.
 1. API kitaplığı 'nda **Güvenlik Komut Merkezi API 'sini** bulun ve seçin.
 1. API 'nin sayfasında **Etkinleştir**' i seçin.
 
@@ -73,7 +79,11 @@ Güvenlik sistem durumu analizlerini ilk kez etkinleştirdiğinizde, verilerin k
 
 ### <a name="step-3-create-a-dedicated-service-account-for-the-security-configuration-integration"></a>3. Adım Güvenlik Yapılandırması tümleştirmesi için adanmış bir hizmet hesabı oluşturma
 
-1. **GCP konsolunda**, güvenlik merkezi 'ne bağlanmak istediğiniz projeyi seçin.
+1. **GCP konsolunda**, gereken hizmet hesabını oluşturmakta olduğunuz kuruluştan bir proje seçin. 
+
+    > [!NOTE]
+    > Bu hizmet hesabı kuruluş düzeyine eklendiğinde, kuruluştaki diğer tüm etkin projelerden güvenlik Komut Merkezi tarafından toplanan verilere erişmek için kullanılacaktır. 
+
 1. **Gezinti menüsünde**, **IAM & yönetici** seçenekleri altında **hizmet hesapları**' nı seçin.
 1. **HIZMET hesabı oluştur**' u seçin.
 1. Hesap adı girin ve **Oluştur**' u seçin.
@@ -84,7 +94,7 @@ Güvenlik sistem durumu analizlerini ilk kez etkinleştirdiğinizde, verilerin k
     1. Kuruluş düzeyine geçin.
     1. **Ekle**' yi seçin.
     1. **Yeni Üyeler** alanında, daha önce kopyaladığınız **e-posta değerini** yapıştırın.
-    1. Rolü **Güvenlik Merkezi yönetici Görüntüleyicisi** olarak belirtip Kaydet ' i seçin.
+    1. Rolü **Güvenlik Merkezi yönetici Görüntüleyicisi** olarak belirtip **Kaydet**' i seçin.
         :::image type="content" source="./media/quickstart-onboard-gcp/iam-settings-gcp-permissions-admin-viewer.png" alt-text="İlgili GCP izinlerini ayarlama":::
 
 
@@ -97,7 +107,7 @@ Güvenlik sistem durumu analizlerini ilk kez etkinleştirdiğinizde, verilerin k
 1. Bu JSON dosyasını daha sonra kullanmak üzere kaydedin.
 
 
-### <a name="step-5-connect-gcp-to-security-center"></a>5. Adım. GCP 'yi Güvenlik Merkezi 'ne bağlama 
+### <a name="step-5-connect-gcp-to-security-center"></a>5. Adım. GCP 'yi Güvenlik Merkezi 'ne bağlama
 1. Güvenlik Merkezi menüsünden **bulut bağlayıcıları**' nı seçin.
 1. GCP hesabı Ekle ' yi seçin.
 1. Ekleme sayfasında, aşağıdakileri yapın ve ardından **İleri**' yi seçin.
@@ -126,8 +136,12 @@ Kaynaklarınızın tüm etkin önerilerini kaynak türüne göre görüntülemek
 
 ## <a name="faq-for-connecting-gcp-accounts-to-azure-security-center"></a>GCP hesaplarını Azure Güvenlik Merkezi 'ne bağlama hakkında SSS
 
-### <a name="can-i-connect-multiple-gcp-accounts-to-security-center"></a>Birden fazla GCP hesabını güvenlik merkezi 'ne bağlayabilirim miyim?
-Evet. Yukarıda da belirtildiği gibi, Google Cloud kaynaklarınızı kuruluş veya proje düzeyinde bağlayabilirsiniz. Google Cloud kaynak hiyerarşisi hakkında daha fazla bilgi [edinin.](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy)
+### <a name="can-i-connect-multiple-gcp-organizations-to-security-center"></a>Birden fazla GCP kurumumu Güvenlik Merkezi 'ne bağlayabilirim miyim?
+Evet. Güvenlik Merkezi 'nin GCP Bağlayıcısı, Google bulut kaynaklarınızı *kuruluş* düzeyinde bağlar. 
+
+Güvenlik Merkezi 'nden izlemek istediğiniz her GCP organizasyonu için bir bağlayıcı oluşturun. Bir kuruluşa bağlandığınızda, bu kuruluştaki tüm projeler güvenlik merkezi 'ne eklenir.
+
+[Google 'ın çevrimiçi belgelerinden](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy)Google bulut kaynak hiyerarşisi hakkında bilgi edinin.
 
 
 ### <a name="is-there-an-api-for-connecting-my-gcp-resources-to-security-center"></a>GCP kaynaklarımı Güvenlik Merkezi 'ne bağlamak için bir API var mı?
@@ -138,3 +152,4 @@ Evet. Güvenlik Merkezi bulut bağlayıcılarını bir REST API oluşturmak, dü
 GCP hesabınızı bağlamak, Azure Güvenlik Merkezi 'nde bulunan çok bulut deneyiminin bir parçasıdır. İlgili bilgiler için şu sayfaya bakın:
 
 - [AWS hesaplarınızı Azure Güvenlik Merkezi 'ne bağlama](quickstart-onboard-aws.md)
+- [Google Cloud kaynak hiyerarşisi](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy)-Google 'ın çevrimiçi belgelerinden Google bulut kaynak hiyerarşisi hakkında bilgi edinin

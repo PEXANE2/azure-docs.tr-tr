@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/11/2020
-ms.openlocfilehash: a618a5d94513f7d648d118ae3bebdb34e4f5b1c4
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: b1e0dbd23fa14c1bd79275d3f9ff6a164293ac19
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98728868"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100007355"
 ---
 # <a name="log-analytics-data-security"></a>Log Analytics veri güvenliği
 Bu belge, [Azure Güven Merkezi](https://www.microsoft.com/en-us/trust-center?rtc=1)bilgileri tamamlayacak bir Azure izleyici özelliği olan Log Analytics özgü bilgiler sağlamaya yöneliktir.  
@@ -173,6 +173,8 @@ Yukarıda açıklandığı gibi, yönetim sunucusu veya doğrudan bağlı aracı
 Log Analytics hizmeti, sertifikaları ve Azure kimlik doğrulamasıyla veri bütünlüğünü doğrulayarak gelen verilerin güvenilen bir kaynaktan olmasını sağlar. İşlenmemiş ham veriler daha sonra, verilerin sonunda bekleyen bir Azure Olay Hub 'ında depolanacaktır. Depolanan verilerin türü, içeri aktarılan ve veri toplamak için kullanılan çözümlerin türlerine bağlıdır. Daha sonra, Log Analytics hizmet ham verileri işler ve veritabanına geri gelir.
 
 Veritabanında depolanan toplanan verilerin saklama süresi, seçilen fiyatlandırma planına bağlıdır. *Ücretsiz* katman için toplanan veriler yedi gün boyunca kullanılabilir. *Ücretli* katmanda, toplanan veriler varsayılan olarak 31 gün kullanılabilir, ancak 730 güne genişletilebilir. Veriler, verilerin gizliliğini sağlamak için Azure depolama 'da Rest 'ten şifrelenmiş olarak depolanır ve veriler yerel olarak yedekli depolama (LRS) kullanılarak yerel bölgede çoğaltılır. Verilerin son iki haftası da SSD tabanlı önbellekte depolanır ve bu önbellek şifrelenir.
+
+Veritabanı depolamadaki veriler bir kez alındıktan sonra değiştirilemez, ancak [ *Temizleme* API yolu](personal-data-mgmt.md#delete)aracılığıyla silinebilir. Veriler değiştirilemeyeceği halde, bazı sertifikalar verilerin sabit tutulmasını gerektirir ve depolamada değiştirilemez veya silinemez. Veri imlebilirlik, [Sabit depolama](../../storage/blobs/storage-blob-immutability-policies-manage.md)olarak yapılandırılmış bir depolama hesabına [veri aktarma](logs-data-export.md) kullanılarak sağlanabilir.
 
 ## <a name="4-use-log-analytics-to-access-the-data"></a>4. verilere erişmek için Log Analytics kullanın
 Log Analytics çalışma alanınıza erişmek için, daha önce ayarladığınız kuruluş hesabını veya Microsoft hesabı kullanarak Azure portal oturum açın. Portal ve Log Analytics hizmeti arasındaki tüm trafik güvenli bir HTTPS kanalı üzerinden gönderilir. Portalı kullanırken Kullanıcı istemcisinde (Web tarayıcısı) bir oturum KIMLIĞI oluşturulur ve veriler, oturum sonlandırılana kadar yerel önbellekte depolanır. Sonlandırıldığında, önbellek silinir. Kişisel olarak tanımlanabilen bilgiler içermeyen istemci tarafı tanımlama bilgileri otomatik olarak kaldırılmaz. Oturum tanımlama bilgileri HTTPOnly olarak işaretlenir ve güvenli hale getirilir. Önceden belirlenmiş bir boşta kalma süresinden sonra, Azure portal oturumu sonlandırılır.

@@ -3,12 +3,12 @@ title: Desteklenen içerik biçimleri
 description: Docker ile uyumlu kapsayıcı görüntüleri, Held grafikleri, OCı görüntüleri ve OCı yapıtları dahil Azure Container Registry tarafından desteklenen içerik biçimleri hakkında bilgi edinin.
 ms.topic: article
 ms.date: 08/30/2019
-ms.openlocfilehash: ab915385f46f83c7b655acd1a48d66df84b50653
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b2a54c65d149a27ed9eae85c3308d657ed3471a3
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84695275"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100008341"
 ---
 # <a name="content-formats-supported-in-azure-container-registry"></a>Azure Container Registry desteklenen içerik biçimleri
 
@@ -20,11 +20,11 @@ Aşağıdaki Docker kapsayıcı görüntü biçimleri desteklenir:
 
 * [Docker görüntü bildirimi v2, şema 1](https://docs.docker.com/registry/spec/manifest-v2-1/)
 
-* [Docker Image manifest v2, şema 2](https://docs.docker.com/registry/spec/manifest-v2-2/) -kayıt defterlerinin çoklu platform görüntülerini tek bir "Image: Tag" başvurusu altında depolamasına Izin veren bildirim listeleri içerir
+* [Docker Image manifest v2, şema 2](https://docs.docker.com/registry/spec/manifest-v2-2/) -kayıt defterlerinin tek bir başvuru altında [Multi-Architecture görüntülerini](push-multi-architecture-images.md) depolamasına izin veren bildirim listeleri içerir `image:tag`
 
 ## <a name="oci-images"></a>OCı görüntüleri
 
-Azure Container Registry, [Açık kapsayıcı girişimi (OCI) görüntü biçimi belirtimini](https://github.com/opencontainers/image-spec/blob/master/spec.md)karşılayan görüntüleri destekler. Paketleme biçimleri, [Singularımage Format (SIF)](https://github.com/sylabs/sif)içerir.
+Azure Container Registry, isteğe bağlı [görüntü dizini](https://github.com/opencontainers/image-spec/blob/master/image-index.md) belirtimi dahil olmak üzere [Açık KAPSAYıCı girişim (OCI) görüntü biçimi belirtimini](https://github.com/opencontainers/image-spec/blob/master/spec.md)karşılayan görüntüleri destekler. Paketleme biçimleri, [Singularımage Format (SIF)](https://github.com/sylabs/sif)içerir.
 
 ## <a name="oci-artifacts"></a>OCı yapıtları
 

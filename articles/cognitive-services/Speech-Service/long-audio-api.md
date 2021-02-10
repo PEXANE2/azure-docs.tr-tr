@@ -1,5 +1,5 @@
 ---
-title: Uzun ses API 'SI (Önizleme)-konuşma hizmeti
+title: Uzun ses API 'SI-konuşma hizmeti
 titleSuffix: Azure Cognitive Services
 description: Uzun ses API 'sinin zaman uyumsuz senkron metin okuma için nasıl tasarlandığına öğrenin.
 services: cognitive-services
@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 08/11/2020
 ms.author: trbye
-ms.openlocfilehash: 255cfe11f8601abc89a1d96f702f453c2af1ccbd
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: e28bd5b5caca259201758f0c633b2120a411f422
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96533069"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100007457"
 ---
-# <a name="long-audio-api-preview"></a>Uzun ses API 'SI (Önizleme)
+# <a name="long-audio-api"></a>Uzun ses API 'SI
 
-Uzun ses API 'SI, zaman uyumsuz birleştirme için tasarlanan uzun biçimli metin (örneğin, ses kitapları, haber makaleleri ve belgeler) için tasarlanmıştır. Bu API gerçek zamanlı olarak birleştirilmiş ses döndürmez, bunun yerine beklentiler, yanıtları yoklayacaksınız ve çıkışta hizmetten kullanılabilir hale getirildiklerinden çıktıyı tüketebilir. Konuşma SDK 'Sı tarafından kullanılan metinden konuşmaya dönüştürme API 'sinin aksine, uzun ses API 'SI 10 dakikadan daha uzun bir şekilde birleştirilmiş ses oluşturabilir ve bu da Yayımcılar ve ses içeriği platformları için idealdir.
+Uzun ses API 'SI, zaman uyumsuz birleştirme için tasarlanan uzun biçimli metin (örneğin, ses kitapları, haber makaleleri ve belgeler) için tasarlanmıştır. Bu API gerçek zamanlı olarak birleştirilmiş ses döndürmez, bunun yerine beklentiler, yanıtları yoklayacaksınız ve çıkışta hizmetten kullanılabilir hale getirildiklerinden çıktıyı tüketebilir. Konuşma SDK 'Sı tarafından kullanılan metin okuma API 'sinden farklı olarak, uzun ses API 'SI 10 dakikadan daha uzun bir yığın oluşturabilir, böylece bir toplu iş içindeki ses kitapları gibi uzun ses içeriği oluşturmak için yayımcılar ve ses içeriği platformları için ideal hale getirebilirsiniz.
 
 Uzun ses API 'sinin ek avantajları:
 
@@ -47,53 +47,41 @@ Metin dosyanızı hazırlarken şunları yaptığınızdan emin olun:
 * SSML metni için düz metin veya 400 [faturalanabilir karakter](./text-to-speech.md#pricing-note) için 400 karakterden daha uzun ve 10.000 ' den az paragraf içeriyor
   * Düz metin için, her paragraf **Enter/Return** -View [düz metin girişi örneğine](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Java/en-US.txt) vurarak ayrılır
   * SSML metninde her SSML parçası bir paragraf olarak değerlendirilir. SSML parçaları farklı paragraflar ile ayrılmalıdır- [SSML metin girişi örneğini](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Java/SSMLTextInputSample.txt) görüntüleyin
-> [!NOTE]
-> Çince (Mainland), Çince (Hong Kong çın ÖIB), Çince (Tayvan), Japonca ve Korece için bir sözcük iki karakter olarak sayılır. 
 
 ## <a name="python-example"></a>Python örneği
 
-Bu bölüm, uzun ses API 'sinin temel kullanımını gösteren Python örnekleri içerir. Favori IDE ortamınızda veya düzenleyicide yeni bir Python projesi oluşturun. Sonra bu kod parçacığını adlı bir dosyaya kopyalayın `voice_synthesis_client.py` .
+Bu bölüm, uzun ses API 'sinin temel kullanımını gösteren Python örnekleri içerir. Favori IDE ortamınızda veya düzenleyicide yeni bir Python projesi oluşturun. Sonra bu kod parçacığını adlı bir dosyaya kopyalayın `long_audio_synthesis_client.py` .
 
 ```python
-import argparse
 import json
 import ntpath
-import urllib3
 import requests
-import time
-from json import dumps, loads, JSONEncoder, JSONDecoder
-import pickle
-
-urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 ```
 
-Bu kitaplıklar bağımsız değişkenleri ayrıştırmak, HTTP isteğini oluşturmak ve metinden konuşmaya uzun ses REST API çağırmak için kullanılır.
+Bu kitaplıklar, HTTP isteğini oluşturmak için kullanılır ve metin okuma uzun ses senku REST API.
 
 ### <a name="get-a-list-of-supported-voices"></a>Desteklenen seslerin listesini al
 
-Bu kod, kullanabileceğiniz belirli bir bölgeye/uç noktaya ait seslerin tam listesini almanızı sağlar. Kodu şu şekilde ekleyin `voice_synthesis_client.py` :
+Desteklenen seslerin listesini almak için öğesine bir GET isteği gönderin `https://<endpoint>/api/texttospeech/v3.0/longaudiosynthesis/voices` .
 
+
+Bu kod, kullanabileceğiniz belirli bir bölgeye/uç noktaya ait seslerin tam listesini almanızı sağlar.
 ```python
-parser = argparse.ArgumentParser(description='Text-to-speech client tool to submit voice synthesis requests.')
-parser.add_argument('--voices', action="store_true", default=False, help='print voice list')
-parser.add_argument('-key', action="store", dest="key", required=True, help='the speech subscription key, like fg1f763i01d94768bda32u7a******** ')
-parser.add_argument('-region', action="store", dest="region", required=True, help='the region information, could be centralindia, canadacentral or uksouth')
-args = parser.parse_args()
-baseAddress = 'https://%s.customvoice.api.speech.microsoft.com/api/texttospeech/v3.0-beta1/' % args.region
+def get_voices():
+    region = '<region>'
+    key = '<your_key>'
+    url = 'https://{}.customvoice.api.speech.microsoft.com/api/texttospeech/v3.0/longaudiosynthesis/voices'.format(region)
+    header = {
+        'Ocp-Apim-Subscription-Key': key
+    }
 
-def getVoices():
-    response=requests.get(baseAddress+"voicesynthesis/voices", headers={"Ocp-Apim-Subscription-Key":args.key}, verify=False)
-    voices = json.loads(response.text)
-    return voices
+    response = requests.get(url, headers=header)
+    print(response.text)
 
-if args.voices:
-    voices = getVoices()
-    print("There are %d voices available:" % len(voices))
-    for voice in voices:
-        print ("Name: %s, Description: %s, Id: %s, Locale: %s, Gender: %s, PublicVoice: %s, Created: %s" % (voice['name'], voice['description'], voice['id'], voice['locale'], voice['gender'], voice['isPublicVoice'], voice['created']))
+get_voices()
 ```
 
-Komutunu kullanarak betiği çalıştırın `python voice_synthesis_client.py --voices -key <your_key> -region <region>` ve aşağıdaki değerleri değiştirin:
+Aşağıdaki değerleri değiştirin:
 
 * `<your_key>`Konuşma hizmeti abonelik anahtarınızla değiştirin. Bu bilgiler, [Azure Portal](https://aka.ms/azureportal)kaynağınızın **genel bakış** sekmesinde bulunabilir.
 * `<region>`Konuşma kaynağınızın oluşturulduğu bölgeyle değiştirin (örneğin: `eastus` veya `westus` ). Bu bilgiler, [Azure Portal](https://aka.ms/azureportal)kaynağınızın **genel bakış** sekmesinde bulunabilir.
@@ -101,163 +89,321 @@ Komutunu kullanarak betiği çalıştırın `python voice_synthesis_client.py --
 Aşağıdakine benzer bir çıktı görürsünüz:
 
 ```console
-There are xx voices available:
-
-Name: Microsoft Server Speech Text to Speech Voice (en-US, xxx), Description: xxx , Id: xxx, Locale: en-US, Gender: Male, PublicVoice: xxx, Created: 2019-07-22T09:38:14Z
-Name: Microsoft Server Speech Text to Speech Voice (zh-CN, xxx), Description: xxx , Id: xxx, Locale: zh-CN, Gender: Female, PublicVoice: xxx, Created: 2019-08-26T04:55:39Z
+{
+  "values": [
+    {
+      "locale": "en-US",
+      "voiceName": "en-US-AriaNeural",
+      "description": "",
+      "gender": "Female",
+      "createdDateTime": "2020-05-21T05:57:39.123Z",
+      "properties": {
+        "publicAvailable": true
+      }
+    },
+    {
+      "id": "8fafd8cd-5f95-4a27-a0ce-59260f873141"
+      "locale": "en-US",
+      "voiceName": "my custom neural voice",
+      "description": "",
+      "gender": "Male",
+      "createdDateTime": "2020-05-21T05:25:40.243Z",
+      "properties": {
+        "publicAvailable": false
+      }
+    }
+  ]
+}
 ```
 
-**Publicvoice** parametresi **true** ise, Voice genel sinir sestir. Aksi takdirde, özel sinir sestir.
+**Properties. publicAvailable** değeri **true** ise, Voice ortak bir sinir sestir. Aksi takdirde, özel bir sinir sestir.
 
 ### <a name="convert-text-to-speech"></a>Metni konuşmaya Dönüştür
 
-Bir giriş metin dosyasını düz metin veya SSML metninde hazırlayın ve ardından aşağıdaki kodu ekleyin `voice_synthesis_client.py` :
+Bir giriş metin dosyasını düz metin veya SSML metninde hazırlayın ve ardından aşağıdaki kodu ekleyin `long_audio_synthesis_client.py` :
 
 > [!NOTE]
-> ' concatenateResult ', isteğe bağlı bir parametredir. Bu parametre ayarlanmamışsa, her paragraf için ses çıkışları oluşturulacaktır. Ayrıca, parametresini ayarlayarak sesos 'yi 1 çıkışa ekleyebilirsiniz. Varsayılan olarak, Ses çıktısı Riff-16khz-16bit-mono-PCM olarak ayarlanır. Desteklenen ses çıkışları hakkında daha fazla bilgi için bkz. [ses çıkış biçimleri](#audio-output-formats).
+> `concatenateResult` isteğe bağlı bir parametredir. Bu parametre ayarlanmamışsa, her paragraf için ses çıkışları oluşturulacaktır. Ayrıca, parametresini ayarlayarak sesos 'yi 1 çıkışa ekleyebilirsiniz. 
+> `outputFormat` Ayrıca isteğe bağlıdır. Varsayılan olarak, Ses çıktısı Riff-16khz-16bit-mono-PCM olarak ayarlanır. Desteklenen ses çıkış biçimleri hakkında daha fazla bilgi için bkz. [ses çıkış biçimleri](#audio-output-formats).
 
 ```python
-parser.add_argument('--submit', action="store_true", default=False, help='submit a synthesis request')
-parser.add_argument('--concatenateResult', action="store_true", default=False, help='If concatenate result in a single wave file')
-parser.add_argument('-file', action="store", dest="file", help='the input text script file path')
-parser.add_argument('-voiceId', action="store", nargs='+', dest="voiceId", help='the id of the voice which used to synthesis')
-parser.add_argument('-locale', action="store", dest="locale", help='the locale information like zh-CN/en-US')
-parser.add_argument('-format', action="store", dest="format", default='riff-16khz-16bit-mono-pcm', help='the output audio format')
+def submit_synthesis():
+    region = '<region>'
+    key = '<your_key>'
+    input_file_path = '<input_file_path>'
+    locale = '<locale>'
+    url = 'https://{}.customvoice.api.speech.microsoft.com/api/texttospeech/v3.0/longaudiosynthesis'.format(region)
+    header = {
+        'Ocp-Apim-Subscription-Key': key
+    }
 
-def submitSynthesis():
-    modelList = args.voiceId
-    data={'name': 'simple test', 'description': 'desc...', 'models': json.dumps(modelList), 'locale': args.locale, 'outputformat': args.format}
-    if args.concatenateResult:
-        properties={'ConcatenateResult': 'true'}
-        data['properties'] = json.dumps(properties)
-    if args.file is not None:
-        scriptfilename=ntpath.basename(args.file)
-        files = {'script': (scriptfilename, open(args.file, 'rb'), 'text/plain')}
-    response = requests.post(baseAddress+"voicesynthesis", data, headers={"Ocp-Apim-Subscription-Key":args.key}, files=files, verify=False)
-    if response.status_code == 202:
-        location = response.headers['Location']
-        id = location.split("/")[-1]
-        print("Submit synthesis request successful")
-        return id
-    else:
-        print("Submit synthesis request failed")
-        print("response.status_code: %d" % response.status_code)
-        print("response.text: %s" % response.text)
-        return 0
+    voice_identities = [
+        {
+            'voicename': '<voice_name>'
+        }
+    ]
 
-def getSubmittedSynthesis(id):
-    response=requests.get(baseAddress+"voicesynthesis/"+id, headers={"Ocp-Apim-Subscription-Key":args.key}, verify=False)
-    synthesis = json.loads(response.text)
-    return synthesis
+    payload = {
+        'displayname': 'long audio synthesis sample',
+        'description': 'sample description',
+        'locale': locale,
+        'voices': json.dumps(voice_identities),
+        'outputformat': 'riff-16khz-16bit-mono-pcm',
+        'concatenateresult': True,
+    }
 
-if args.submit:
-    id = submitSynthesis()
-    if (id == 0):
-        exit(1)
+    filename = ntpath.basename(input_file_path)
+    files = {
+        'script': (filename, open(input_file_path, 'rb'), 'text/plain')
+    }
 
-    while(1):
-        print("\r\nChecking status")
-        synthesis=getSubmittedSynthesis(id)
-        if synthesis['status'] == "Succeeded":
-            r = requests.get(synthesis['resultsUrl'])
-            filename=id + ".zip"
-            with open(filename, 'wb') as f:  
-                f.write(r.content)
-                print("Succeeded... Result file downloaded : " + filename)
-            break
-        elif synthesis['status'] == "Failed":
-            print("Failed...")
-            break
-        elif synthesis['status'] == "Running":
-            print("Running...")
-        elif synthesis['status'] == "NotStarted":
-            print("NotStarted...")
-        time.sleep(10)
+    response = requests.post(url, payload, headers=header, files=files)
+    print('response.status_code: %d' % response.status_code)
+    print(response.headers['Location'])
+
+submit_synthesis()
 ```
 
-Komutunu kullanarak betiği çalıştırın `python voice_synthesis_client.py --submit -key <your_key> -region <region> -file <input> -locale <locale> -voiceId <voice_guid>` ve aşağıdaki değerleri değiştirin:
+Aşağıdaki değerleri değiştirin:
 
 * `<your_key>`Konuşma hizmeti abonelik anahtarınızla değiştirin. Bu bilgiler, [Azure Portal](https://aka.ms/azureportal)kaynağınızın **genel bakış** sekmesinde bulunabilir.
 * `<region>`Konuşma kaynağınızın oluşturulduğu bölgeyle değiştirin (örneğin: `eastus` veya `westus` ). Bu bilgiler, [Azure Portal](https://aka.ms/azureportal)kaynağınızın **genel bakış** sekmesinde bulunabilir.
-* `<input>`Metin okuma için hazırladığınız metin dosyasının yoluyla değiştirin.
+* `<input_file_path>`Metin okuma için hazırladığınız metin dosyasının yoluyla değiştirin.
 * `<locale>`İstenen çıkış yerel ayarıyla değiştirin. Daha fazla bilgi için bkz. [dil desteği](language-support.md#neural-voices).
-* `<voice_guid>`İstenen çıkış sesiyle değiştirin. Önceki uç noktaya yapılan çağrılarınızın döndürdüğü sesden birini kullanın `/voicesynthesis/voices` .
+
+Önceki uç noktaya yapılan çağrılarınızın döndürdüğü sesden birini kullanın `/voices` .
+
+* Genel sinir Voice kullanıyorsanız, `<voice_name>` istenen çıkış sesiyle değiştirin.
+* Özel bir sinir sesi kullanmak için, `voice_identities` değişkeni aşağıdaki ile değiştirin ve `<voice_id>` `id` özel sinir sesinizin ile değiştirin.
+```Python
+voice_identities = [
+    {
+        'id': '<voice_id>'
+    }
+]
+```
 
 Aşağıdakine benzer bir çıktı görürsünüz:
 
 ```console
-Submit synthesis request successful
-
-Checking status
-NotStarted...
-
-Checking status
-Running...
-
-Checking status
-Running...
-
-Checking status
-Succeeded... Result file downloaded : xxxx.zip
+response.status_code: 202
+https://<endpoint>/api/texttospeech/v3.0/longaudiosynthesis/<guid>
 ```
 
-Sonuç, hizmet tarafından oluşturulan giriş metnini ve ses çıktı dosyalarını içerir. Bu dosyaları bir zip dosyasına indirebilirsiniz.
-
 > [!NOTE]
-> 1 ' den fazla giriş dosyası varsa, birden fazla istek göndermeniz gerekir. Farkında olması gereken bazı sınırlamalar vardır. 
-> * İstemcinin her bir Azure abonelik hesabı için saniyede en fazla **5** istek göndermesine izin verilir. Sınırlama aştıysa, istemci 429 hata kodu (çok fazla istek) alır. Lütfen saniye başına istek miktarını azaltın
-> * Sunucunun her bir Azure abonelik hesabı için en fazla **120** istek çalıştırmasına ve sıraya alma yapmasına izin verilir. Sınırlama aşıldıysa, sunucu 429 hata kodu (çok fazla istek) döndürür. Lütfen bekleyin ve bazı istekler tamamlanana kadar yeni istek gönderilmesini önleyin
+> 1 ' den fazla giriş dosyası varsa, birden fazla istek göndermeniz gerekir. Farkında olması gereken bazı sınırlamalar vardır.
+> * İstemcinin her bir Azure abonelik hesabı için saniyede en fazla **5** istek göndermesine izin verilir. Sınırlama aştıysa, istemci 429 hata kodu (çok fazla istek) alır. Lütfen saniye başına istek miktarını azaltın.
+> * Sunucunun her bir Azure abonelik hesabı için en fazla **120** istek çalıştırmasına ve sıraya alma yapmasına izin verilir. Sınırlama aşıldıysa, sunucu 429 hata kodu (çok fazla istek) döndürür. Lütfen bekleyin ve bazı istekler tamamlanana kadar yeni istek gönderilmesini önleyin.
+
+Çıkışın URL 'SI, istek durumunu almak için kullanılabilir.
+
+### <a name="get-information-of-a-submitted-request"></a>Gönderilen istek hakkında bilgi alın
+
+Gönderilen bir senmu isteğinin durumunu almak için, önceki adımda döndürülen URL 'ye bir GET isteği gönderin.
+```Python
+
+def get_synthesis():
+    url = '<url>'
+    key = '<your_key>'
+    header = {
+        'Ocp-Apim-Subscription-Key': key
+    }
+    response = requests.get(url, headers=header)
+    print(response.text)
+
+get_synthesis()
+```
+Çıktı şöyle olacaktır:
+```console
+response.status_code: 200
+{
+  "models": [
+    {
+      "voiceName": "en-US-AriaNeural"
+    }
+  ],
+  "properties": {
+    "outputFormat": "riff-16khz-16bit-mono-pcm",
+    "concatenateResult": false,
+    "totalDuration": "PT5M57.252S",
+    "billableCharacterCount": 3048
+  },
+  "id": "eb3d7a81-ee3e-4e9a-b725-713383e71677",
+  "lastActionDateTime": "2021-01-14T11:12:27.240Z",
+  "status": "Succeeded",
+  "createdDateTime": "2021-01-14T11:11:02.557Z",
+  "locale": "en-US",
+  "displayName": "long audio synthesis sample",
+  "description": "sample description"
+}
+```
+
+`status`Özelliğinden, bu isteğin durumunu okuyabilirsiniz. İstek `NotStarted` durumundan başlar, sonra olarak değişir `Running` ve son olarak `Succeeded` veya olur `Failed` . Durum durumuna gelinceye kadar bu API 'yi yoklamak için bir döngü kullanabilirsiniz `Succeeded` .
+
+### <a name="download-audio-result"></a>Ses sonucunu indir
+
+Birleştirme isteği başarılı olduktan sonra, GET API çağırarak ses sonucunu indirebilirsiniz `/files` .
+
+```python
+def get_files():
+    id = '<request_id>'
+    region = '<region>'
+    key = '<your_key>'
+    url = 'https://{}.customvoice.api.speech.microsoft.com/api/texttospeech/v3.0/longaudiosynthesis/{}/files'.format(region, id)
+    header = {
+        'Ocp-Apim-Subscription-Key': key
+    }
+
+    response = requests.get(url, headers=header)
+    print('response.status_code: %d' % response.status_code)
+    print(response.text)
+
+get_files()
+```
+`<request_id>`Sonucu indirmek istediğiniz ISTEĞIN kimliğiyle değiştirin. Bu, önceki adımın yanıtında bulunabilir.
+
+Çıktı şöyle olacaktır:
+```console
+response.status_code: 200
+{
+  "values": [
+    {
+      "name": "2779f2aa-4e21-4d13-8afb-6b3104d6661a.txt",
+      "kind": "LongAudioSynthesisScript",
+      "properties": {
+        "size": 4200
+      },
+      "createdDateTime": "2021-01-14T11:11:02.410Z",
+      "links": {
+        "contentUrl": "https://customvoice-usw.blob.core.windows.net/artifacts/input.txt?st=2018-02-09T18%3A07%3A00Z&se=2018-02-10T18%3A07%3A00Z&sp=rl&sv=2017-04-17&sr=b&sig=e05d8d56-9675-448b-820c-4318ae64c8d5"
+      }
+    },
+    {
+      "name": "voicesynthesis_waves.zip",
+      "kind": "LongAudioSynthesisResult",
+      "properties": {
+        "size": 9290000
+      },
+      "createdDateTime": "2021-01-14T11:12:27.226Z",
+      "links": {
+        "contentUrl": "https://customvoice-usw.blob.core.windows.net/artifacts/voicesynthesis_waves.zip?st=2018-02-09T18%3A07%3A00Z&se=2018-02-10T18%3A07%3A00Z&sp=rl&sv=2017-04-17&sr=b&sig=e05d8d56-9675-448b-820c-4318ae64c8d5"
+      }
+    }
+  ]
+}
+```
+Çıktı 2 dosya bilgilerini içerir. Bu, `"kind": "LongAudioSynthesisScript"` giriş betiğinizin gönderildiği bir. Diğeri, `"kind": "LongAudioSynthesisResult"` Bu isteğin sonucudur.
+Sonuç, giriş metninin bir kopyasıyla birlikte oluşturulan ses çıkış dosyalarını içeren zip ' dir.
+
+Her iki dosya da özelliğindeki URL 'den indirilebilir `links.contentUrl` .
+
+### <a name="get-all-synthesis-requests"></a>Tüm sensıs isteklerini al
+
+Aşağıdaki kodla gönderilen tüm isteklerin listesini alabilirsiniz:
+
+```python
+def get_synthesis():
+    region = '<region>'
+    key = '<your_key>'
+    url = 'https://{}.customvoice.api.speech.microsoft.com/api/texttospeech/v3.0/longaudiosynthesis/'.format(region)    
+    header = {
+        'Ocp-Apim-Subscription-Key': key
+    }
+
+    response = requests.get(url, headers=header)
+    print('response.status_code: %d' % response.status_code)
+    print(response.text)
+
+get_synthesis()
+```
+
+Çıkış şöyle olacaktır:
+```console
+response.status_code: 200
+{
+  "values": [
+    {
+      "models": [
+        {
+          "id": "8fafd8cd-5f95-4a27-a0ce-59260f873141",
+          "voiceName": "my custom neural voice"
+        }
+      ],
+      "properties": {
+        "outputFormat": "riff-16khz-16bit-mono-pcm",
+        "concatenateResult": false,
+        "totalDuration": "PT1S",
+        "billableCharacterCount": 5
+      },
+      "id": "f9f0bb74-dfa5-423d-95e7-58a5e1479315",
+      "lastActionDateTime": "2021-01-05T07:25:42.433Z",
+      "status": "Succeeded",
+      "createdDateTime": "2021-01-05T07:25:13.600Z",
+      "locale": "en-US",
+      "displayName": "Long Audio Synthesis",
+      "description": "Long audio synthesis sample"
+    },
+    {
+      "models": [
+        {
+          "voiceName": "en-US-AriaNeural"
+        }
+      ],
+      "properties": {
+        "outputFormat": "riff-16khz-16bit-mono-pcm",
+        "concatenateResult": false,
+        "totalDuration": "PT5M57.252S",
+        "billableCharacterCount": 3048
+      },
+      "id": "eb3d7a81-ee3e-4e9a-b725-713383e71677",
+      "lastActionDateTime": "2021-01-14T11:12:27.240Z",
+      "status": "Succeeded",
+      "createdDateTime": "2021-01-14T11:11:02.557Z",
+      "locale": "en-US",
+      "displayName": "long audio synthesis sample",
+      "description": "sample description"
+    }
+  ]
+}
+```
+
+`values` özelliği, sensıs isteklerinin bir listesini içerir. Liste, en fazla 100 sayfa boyutuna sahip sayfalandırılır. 100 ' den fazla istek varsa, `"@nextLink"` sayfalandırılmış listenin bir sonraki sayfasını almak için bir özellik sağlanacaktır.
+
+```console
+  "@nextLink": "https://<endpoint>/api/texttospeech/v3.0/longaudiosynthesis/?top=100&skip=100"
+```
+
+Ayrıca, URL parametresi sağlayarak sayfa boyutunu özelleştirebilir ve sayıyı atlayabilirsiniz `skip` `top` .
 
 ### <a name="remove-previous-requests"></a>Önceki istekleri kaldır
 
 Hizmet, her bir Azure aboneliği hesabı için en fazla **20.000** istek tutar. İstek miktarınız bu sınırlamayı aşarsa, lütfen yenilerini oluşturmadan önce önceki istekleri kaldırın. Mevcut istekleri kaldırmazsanız bir hata bildirimi alırsınız.
 
-Aşağıdaki kodu `voice_synthesis_client.py` dosyasına ekleyin:
-
+Aşağıdaki kod, belirli bir sensıs isteğinin nasıl kaldırılacağını gösterir.
 ```python
-parser.add_argument('--syntheses', action="store_true", default=False, help='print synthesis list')
-parser.add_argument('--delete', action="store_true", default=False, help='delete a synthesis request')
-parser.add_argument('-synthesisId', action="store", nargs='+', dest="synthesisId", help='the id of the voice synthesis which need to be deleted')
+def delete_synthesis():
+    id = '<request_id>'
+    region = '<region>'
+    key = '<your_key>'
+    url = 'https://{}.customvoice.api.speech.microsoft.com/api/texttospeech/v3.0/longaudiosynthesis/{}/'.format(region, id)
+    header = {
+        'Ocp-Apim-Subscription-Key': key
+    }
 
-def getSubmittedSyntheses():
-    response=requests.get(baseAddress+"voicesynthesis", headers={"Ocp-Apim-Subscription-Key":args.key}, verify=False)
-    syntheses = json.loads(response.text)
-    return syntheses
-
-def deleteSynthesis(ids):
-    for id in ids:
-        print("delete voice synthesis %s " % id)
-        response = requests.delete(baseAddress+"voicesynthesis/"+id, headers={"Ocp-Apim-Subscription-Key":args.key}, verify=False)
-        if (response.status_code == 204):
-            print("delete successful")
-        else:
-            print("delete failed, response.status_code: %d, response.text: %s " % (response.status_code, response.text))
-
-if args.syntheses:
-    synthese = getSubmittedSyntheses()
-    print("There are %d synthesis requests submitted:" % len(synthese))
-    for synthesis in synthese:
-        print ("ID : %s , Name : %s, Status : %s " % (synthesis['id'], synthesis['name'], synthesis['status']))
-
-if args.delete:
-    deleteSynthesis(args.synthesisId)
+    response = requests.delete(url, headers=header)
+    print('response.status_code: %d' % response.status_code)
 ```
 
-`python voice_synthesis_client.py --syntheses -key <your_key> -region <region>`Yaptığınız sensıs isteklerinin bir listesini almak için ' i çalıştırın. Aşağıdakine benzer bir çıktı görürsünüz:
+İstek başarıyla kaldırılırsa, yanıt durum kodu HTTP 204 (Içerik yok) olur.
 
 ```console
-There are <number> synthesis requests submitted:
-ID : xxx , Name : xxx, Status : Succeeded
-ID : xxx , Name : xxx, Status : Running
-ID : xxx , Name : xxx : Succeeded
+response.status_code: 204
 ```
 
-Bir isteği silmek için, öğesini çalıştırın `python voice_synthesis_client.py --delete -key <your_key> -region <Region> -synthesisId <synthesis_id>` ve `<synthesis_id>` önceki istekten döndürülen BIR istek kimliği değeriyle değiştirin.
-
 > [!NOTE]
-> Durumu ' Running '/' bekliyor ' olan istekler kaldırılamaz veya silinemez.
+> Durumu veya olan istekler `NotStarted` `Running` kaldırılamaz veya silinemez.
 
-Tamamlandı, `voice_synthesis_client.py` [GitHub](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Python/voiceclient.py)' da kullanılabilir.
+Tamamlandı, `long_audio_synthesis_client.py` [GitHub](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Python/voiceclient.py)' da kullanılabilir.
 
 ## <a name="http-status-codes"></a>HTTP durum kodu
 
@@ -285,7 +431,7 @@ Aşağıdaki tabloda, REST API HTTP yanıt kodlarının ve iletilerinin ayrınt�
 
 Uzun ses API 'SI, benzersiz uç noktaları olan birden çok bölgede kullanılabilir.
 
-| Bölge | Uç Nokta |
+| Region | Uç Nokta |
 |--------|----------|
 | Doğu ABD | `https://eastus.customvoice.api.speech.microsoft.com` |
 | Hindistan Orta | `https://centralindia.customvoice.api.speech.microsoft.com` |

@@ -58,6 +58,8 @@
 - name: Kavramlar
   expanded: false
   items:
+    - name: Teams ile birlikte çalışabilirlik
+      href: concepts/teams-interop.md
     - name: Sohbet
       items:
         - name: Sohbet istemci kitaplığına genel bakış
@@ -78,8 +80,6 @@
           href: concepts/voice-video-calling/calling-sdk-features.md
         - name: Ses ve görüntü kavramları
           href: concepts/voice-video-calling/about-call-types.md
-        - name: Teams ile birlikte çalışabilirlik
-          href: concepts/voice-video-calling/teams-interop.md
     - name: UI çerçevesi
       items:
         - name: UI çerçevesine genel bakış

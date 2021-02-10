@@ -8,12 +8,12 @@ ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.date: 02/04/2021
-ms.openlocfilehash: 37a9294b156bd41b72e777696f10a1c4ac2bb354
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: 9136947767bffb7bea800cdd2a735794baf8f329
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99832768"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100007372"
 ---
 # <a name="whats-new-in-azure-sentinel"></a>Azure Sentinel 'deki yenilikler
 
@@ -41,7 +41,7 @@ Belirtilen özellikler Şu anda ÖNIZLEME aşamasındadır. [Azure önizleme ek 
 - [Analiz kuralı önizleme grafikleriyle geliştirilmiş kural ayarlama](#improved-rule-tuning-with-the-analytics-rule-preview-graphs-public-preview)
 
 
-## <a name="analytics-rule-wizard-improved-query-editing-experience-public-preview"></a>Analiz Kuralı Sihirbazı: Gelişmiş sorgu düzenlemesi deneyimi (Genel Önizleme)
+### <a name="analytics-rule-wizard-improved-query-editing-experience-public-preview"></a>Analiz Kuralı Sihirbazı: Gelişmiş sorgu düzenlemesi deneyimi (Genel Önizleme)
 
 Azure Sentinel zamanlanmış analiz Kuralı Sihirbazı artık sorguları yazma ve düzenlemeyle ilgili aşağıdaki geliştirmeleri sağlar:
 

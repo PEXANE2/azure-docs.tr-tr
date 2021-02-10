@@ -3,12 +3,12 @@ title: '& görüntüleri hakkında'
 description: Azure Container kayıt defterleri, depolar ve kapsayıcı görüntülerinin temel kavramlarına giriş.
 ms.topic: article
 ms.date: 06/16/2020
-ms.openlocfilehash: cd2f93c119817c722401f7290064894f3d39dac9
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 0cc7df22236c60bd473385d92c8db563be68f688
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94335903"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100008528"
 ---
 # <a name="about-registries-repositories-and-images"></a>Kayıt defterleri, depolar ve görüntüler hakkında
 
@@ -45,7 +45,7 @@ Bu öğeler hakkındaki ayrıntılar için aşağıdaki bölümlere bakın.
 - *ACR-HelloWorld: v1*
 - *ACR-HelloWorld: v2*
 
-Depo adlarında [ad alanları](container-registry-best-practices.md#repository-namespaces)da bulunabilir. Ad alanları, eğik çizgi ile ayrılmış adları kullanarak kuruluşunuzda ilgili depoları ve yapıt sahipliğini tanımlamanızı sağlar. Ancak kayıt defteri, tüm depoları bağımsız olarak değil, bağımsız olarak yönetir. Örnek:
+Depo adlarında [ad alanları](container-registry-best-practices.md#repository-namespaces)da bulunabilir. Ad alanları, eğik çizgi ile ayrılmış adları kullanarak kuruluşunuzda ilgili depoları ve yapıt sahipliğini tanımlamanızı sağlar. Ancak kayıt defteri, tüm depoları bağımsız olarak değil, bağımsız olarak yönetir. Örneğin:
 
 - *Pazarlama/campaign10-18/Web: v2*
 - *Pazarlama/campaign10-18/API: v3*
@@ -81,7 +81,30 @@ Olası katman işlemesini güvenli yalıtım ve koruma sağlamak için Katmanlar
 
 ### <a name="manifest"></a>Bildirim
 
-Bir kapsayıcı kayıt defterine gönderilen her kapsayıcı görüntüsü veya yapıtı bir *bildirimle* ilişkilendirilir. Görüntü gönderildiğinde kayıt defteri tarafından oluşturulan bildirim, görüntüyü benzersiz bir şekilde tanımlar ve katmanlarını belirtir. Azure CLı komutu ile bir depo için bildirimleri listeleyebilir [az ACR Repository Show-bildirimleri][az-acr-repository-show-manifests]:
+Bir kapsayıcı kayıt defterine gönderilen her kapsayıcı görüntüsü veya yapıtı bir *bildirimle* ilişkilendirilir. Görüntü gönderildiğinde kayıt defteri tarafından oluşturulan bildirim, görüntüyü benzersiz bir şekilde tanımlar ve katmanlarını belirtir. 
+
+Linux görüntüsü için temel bir bildirim aşağıdakine `hello-world` benzer şekilde görünür:
+
+  ```json
+  {
+    "schemaVersion": 2,
+    "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+    "config": {
+        "mediaType": "application/vnd.docker.container.image.v1+json",
+        "size": 1510,
+        "digest": "sha256:fbf289e99eb9bca977dae136fbe2a82b6b7d4c372474c9235adc1741675f587e"
+      },
+    "layers": [
+        {
+          "mediaType": "application/vnd.docker.image.rootfs.diff.tar.gzip",
+          "size": 977,
+          "digest": "sha256:2c930d010525941c1d56ec53b97bd057a67ae1865eebf042686d2a2d18271ced"
+        }
+      ]
+  }
+  ```
+
+Azure CLı komutu ile bir depo için bildirimleri listeleyebilir [az ACR Repository Show-bildirimleri][az-acr-repository-show-manifests]:
 
 ```azurecli
 az acr repository show-manifests --name <acrName> --repository <repositoryName>

@@ -3,12 +3,12 @@ title: Olay teslimi, yönetilen hizmet kimliği ve özel bağlantı
 description: Bu makalede bir Azure olay Kılavuzu konusu için yönetilen hizmet kimliğinin nasıl etkinleştirileceği açıklanır. Olayları desteklenen hedeflere iletmek için kullanın.
 ms.topic: how-to
 ms.date: 01/28/2021
-ms.openlocfilehash: ca154c252976911627184a63386cba1544ed21e0
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 3e643465db7cc918499ca962c4697cb61cb4b594
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99054427"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100007780"
 ---
 # <a name="event-delivery-with-a-managed-identity"></a>Yönetilen bir kimlikle olay teslimi
 Bu makalede, Azure Event Grid özel konuları veya etki alanları için [yönetilen bir hizmet kimliğinin](../active-directory/managed-identities-azure-resources/overview.md) nasıl etkinleştirileceği açıklanır. Olayları, Service Bus kuyrukları ve konuları, Olay Hub 'ları ve depolama hesapları gibi desteklenen hedeflere iletmek için kullanın.
@@ -237,7 +237,7 @@ az eventgrid event-subscription create
 ```
 
 ### <a name="use-the-azure-cli---azure-storage-queue"></a>Azure CLı-Azure depolama kuyruğunu kullanma 
-Bu bölümde, Azure depolama kuyruğuna olayları teslim etmek üzere sistem tarafından atanan kimliğin kullanımını etkinleştirmek için Azure CLı 'yı nasıl kullanacağınızı öğreneceksiniz. Kimlik, depolama hesabındaki **Depolama Blobu veri katılımcısı** rolünün bir üyesi olmalıdır.
+Bu bölümde, Azure depolama kuyruğuna olayları teslim etmek üzere sistem tarafından atanan kimliğin kullanımını etkinleştirmek için Azure CLı 'yı nasıl kullanacağınızı öğreneceksiniz. Kimlik, depolama hesabındaki **depolama kuyruğu veri Iletisi gönderici** rolünün bir üyesi olmalıdır. Ayrıca, yük atılacak için kullanılan depolama hesabındaki **Depolama Blobu veri katılımcısı** rolünün bir üyesi olmalıdır.
 
 #### <a name="define-variables"></a>Değişkenleri tanımlama  
 

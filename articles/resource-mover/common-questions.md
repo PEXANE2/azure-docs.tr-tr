@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: conceptual
 ms.date: 02/04/2021
 ms.author: raynew
-ms.openlocfilehash: c586832386f3bf6419d8af94ad23662c6801b1ae
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.openlocfilehash: a75cd3c5dbf205f49aa606bfe96623a61bce39db
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99820883"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100007066"
 ---
 # <a name="common-questions"></a>Sık sorulan sorular
 
@@ -42,6 +42,10 @@ Kaynak taşıyıcısı kullanarak şu anda bölgeler arasında şu kaynakları t
 
 Bölgeler arasında taşınan kaynak olarak disk seçemezsiniz. Ancak, diskler VM taşımanın bir parçası olarak taşınır.
 
+### <a name="what-does-it-mean-to-move-a-resource-group"></a>Bir kaynak grubunu taşımanın ne anlama geliyor?
+
+Taşıma için bir kaynak seçildiğinde, karşılık gelen kaynak grubu taşıma için otomatik olarak eklenir. Hedef kaynağın hedefte olduğu gibi bir kaynak grubuna yerleştirilmesi gerektiğinden, bu gereklidir. Taşıma için eklendikten sonra, özelleştirmeyi ve bir kaynak grubu sağlamayı tercih edebilirsiniz. Kaynak grubunun taşınması, kaynak **kaynak grubundaki tüm kaynakların taşınacağı anlamına gelmez** .
+
 ### <a name="can-i-move-resources-across-subscriptions-when-i-move-them-across-regions"></a>Kaynakları bölgeler arasında taşırken kaynakları abonelikler arasında taşıyabilir miyim?
 
 Kaynakları hedef bölgeye taşıdıktan sonra aboneliği değiştirebilirsiniz. Kaynakları farklı bir aboneliğe taşıma hakkında [daha fazla bilgi edinin](../azure-resource-manager/management/move-resource-group-and-subscription.md) . 
@@ -69,7 +73,7 @@ Evet, hem aktarım hem de bekleyen.
 - Portaldaki bölgeler arasında kaynakları taşırsanız, bu işlem otomatik olarak gerçekleşir.
 - PowerShell kullanarak kaynakları taşırsanız, koleksiyona sistem tarafından atanan bir kimlik atamak için cmdlet 'leri çalıştırır ve ardından kimlik sorumlusu için doğru abonelik izinlerine sahip bir rol atamalısınız. 
 
-### <a name="what-managed-identity-permissions-does-resource-mover-need"></a>Kaynak taşıyıcısı hangi yönetilen kimlik izinlerine ihtiyaç duyuyor?
+### <a name="what-managed-identity-permissions-does-resource-mover-need"></a>Kaynak taşıyıcısı hangi yönetilen kimlik izinlerine ihtiyaç duyuyor? 
 
 Azure Kaynak Taşıyıcı yönetilen kimliğinin en azından şu izinlere sahip olması gerekir: 
 

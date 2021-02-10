@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 11/11/2020
+ms.date: 02/04/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 35ffae55e749c7493b9cd8af13dfd5216abf5822
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: d003008ea5b0d2591574f6f488b0145ee6f08a5e
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94515515"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100008137"
 ---
 # <a name="microsoft-365-external-sharing-and-azure-active-directory-azure-ad-b2b-collaboration"></a>Microsoft 365 dış paylaşım ve Azure Active Directory (Azure AD) B2B işbirliği
 
@@ -32,8 +32,7 @@ OneDrive/SharePoint Online 'ın ayrı bir davet Yöneticisi vardır. OneDrive/Sh
 
 - Azure AD B2B işbirliği davet edilen kullanıcılar OneDrive/SharePoint Online Paylaşım iletişim kutularından alınabilir. OneDrive/SharePoint Online davet edilen kullanıcılar, davetlerini kullandıktan sonra Azure AD 'de de görünür.
 
-- Lisanslama gereksinimleri farklılık gösterir. Lisanslama hakkında daha fazla bilgi edinmek için bkz. [Azure AD B2B lisanslama](./external-identities-pricing.md) ve ["Dış Kullanıcı nedir?", SharePoint Online dış paylaşımına genel bakış](/sharepoint/external-sharing-overview#what-happens-when-users-share).
-
+- Lisanslama gereksinimleri farklılık gösterir. Lisanslama hakkında daha fazla bilgi edinmek için bkz. [Azure AD dış kimlikleri lisanslama](./external-identities-pricing.md) ve [SharePoint Online dış paylaşımına genel bakış](/sharepoint/external-sharing-overview).
 OneDrive/SharePoint Online 'da dış paylaşımı Azure AD B2B işbirliğiyle yönetmek için, OneDrive/SharePoint Online dış paylaşım ayarını **yalnızca kuruluşunuzun dizininde zaten var olan dış kullanıcılarla paylaşıma Izin verecek** şekilde ayarlayın. Kullanıcılar dışarıdan paylaşılan sitelere gidebilir ve yöneticinin eklediği dış ortak çalışanlarla seçim yapabilir. Yönetici, B2B işbirliği daveti API 'Leri aracılığıyla dış ortak çalışanları ekleyebilir.
 
 

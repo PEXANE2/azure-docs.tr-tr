@@ -5,12 +5,12 @@ services: automation
 ms.subservice: ''
 ms.date: 06/30/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 6668fe3c30bd5187016ac2e0c766e7e78d5b3e8c
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 41388e46f5204acaa53f376bc05cebf975361dad
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98896520"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100008171"
 ---
 # <a name="troubleshoot-feature-deployment-issues"></a>Özellik dağıtımı sorunlarını giderme
 
@@ -148,7 +148,7 @@ Aşağıdaki özelliklerle ilgili kaynakları, kullanıyorsanız, çalışma ala
 Özellik kaynaklarını kaldırdıktan sonra, çalışma alanınızın bağlantısını kaldırabilirsiniz. Çalışma alanınızda ve otomasyon hesabınızda bu özelliklerden var olan yapıtları temizlemek önemlidir:
 
 * Güncelleştirme Yönetimi için, Otomasyon hesabınızdan **güncelleştirme dağıtımlarını (zamanlamalar)** kaldırın.
-* VM'leri çalışma saatleri dışında Başlat/Durdur için, Otomasyon hesabınızdaki Özellik bileşenlerinde bulunan kilitleri **Ayarlar**  >  **kilitleri** altında kaldırın. Daha fazla bilgi için bkz. [özelliği kaldırma](../automation-solution-vm-management.md#remove-the-feature).
+* VM'leri çalışma saatleri dışında Başlat/Durdur için, Otomasyon hesabınızdaki Özellik bileşenlerinde bulunan kilitleri **Ayarlar**  >  **kilitleri** altında kaldırın. Daha fazla bilgi için bkz. [özelliği kaldırma](../automation-solution-vm-management-remove.md).
 
 ## <a name="log-analytics-for-windows-extension-failures"></a><a name="mma-extension-failures"></a>Windows uzantısı hatalarında Log Analytics
 

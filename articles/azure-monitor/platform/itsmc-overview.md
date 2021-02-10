@@ -7,12 +7,12 @@ author: nolavime
 ms.author: v-jysur
 ms.date: 12/16/2020
 ms.custom: references_regions
-ms.openlocfilehash: ed13837eabadc38cee50efac3b9340c973c8ea70
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: d22bb05ad6db3630e9b0242e098fd81f65e34b05
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99492442"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100007321"
 ---
 # <a name="it-service-management-connector-overview"></a>BT Hizmet Yönetimi Bağlayıcısı genel bakış
 
@@ -32,7 +32,8 @@ ISMC aşağıdaki ıTSM araçlarıyla bağlantıları destekler:
 -   Cherwell
 
    >[!NOTE]
-> Çeriyi ve Provance müşterilerinin, tümleştirmede başka bir çözüm olarak, Cherwell ve Provance uç noktasına [Web kancası eylemi](./action-groups.md#webhook) kullanmasını sağlıyoruz.
+> 1-Ekim-2020 Cherwell ve Azure uyarısı ile Provance ıSM tümleştirmeleri artık yeni müşteriler için etkinleştirilmeyecektir. Yeni ıTSM bağlantıları desteklenecek.
+> Mevcut ıTSM bağlantıları desteklenecek.
 
 ISMC ile şunları yapabilirsiniz:
 

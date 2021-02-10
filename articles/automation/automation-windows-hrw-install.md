@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 11/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: e77a90617d79dab8c71cdf0c7a6a4fb21e052fbd
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 09c86e23379cf9ccecf77d88a99ad6b3a7019a87
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182793"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100006998"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>Windows karma runbook çalışanı dağıtma
 
@@ -20,7 +20,7 @@ Azure Otomasyonu runbook 'ları depolar ve yönetir ve ardından bunları bir ve
 
 Runbook Worker 'ı başarıyla dağıttıktan sonra, runbook 'larınızı şirket içi veri merkezinizde veya diğer bulut ortamınızda otomatikleştirmek üzere nasıl yapılandıracağınızı öğrenmek için [karma Runbook Worker 'daki runbook 'Ları Çalıştır](automation-hrw-run-runbooks.md) ' ı inceleyin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce, aşağıdakilere sahip olduğunuzdan emin olun.
 
@@ -38,8 +38,8 @@ Karma Runbook Worker rolü, desteklenen Windows işletim sistemi için [Log Anal
 
 Karma Runbook Worker özelliği aşağıdaki işletim sistemlerini destekler:
 
-* Windows Server 2019
-* Windows Server 2016, sürüm 1709 ve 1803
+* Windows Server 2019 (sunucu çekirdeği dahil)
+* Windows Server 2016, sürüm 1709 ve 1803 (sunucu çekirdeği hariç)
 * Windows Server 2012, 2012 R2
 * Windows Server 2008 SP2 (x64), 2008 R2
 * Windows 10 Enterprise (çoklu oturum dahil) ve Pro

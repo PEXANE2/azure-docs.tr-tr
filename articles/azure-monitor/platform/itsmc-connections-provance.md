@@ -6,19 +6,20 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 12/21/2020
-ms.openlocfilehash: 19d2ef1d4d711738d60938aac502dfd490e021a1
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 0cdbcf0a895a2fc9b81df464f364e04aa79abf99
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97729734"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100006777"
 ---
 # <a name="connect-provance-with-it-service-management-connector"></a>BT Hizmet Yönetimi Bağlayıcısı ile Provance 'e bağlanma
 
 Bu makalede, iş öğelerinizi merkezi olarak yönetmek için Log Analytics içindeki Provance örneğiniz ile BT Hizmet Yönetimi Bağlayıcısı (ITSMC) arasındaki bağlantının nasıl yapılandırılacağı hakkında bilgi sağlanır.
 
 > [!NOTE]
-> Çeriyi ve Provance müşterilerinin, tümleştirmede başka bir çözüm olarak, Cherwell ve Provance uç noktasına [Web kancası eylemi](./action-groups.md#webhook) kullanmasını sağlıyoruz.
+> 1-Ekim-2020 Provance ıSM tümleştirmesi, Azure uyarısı ile artık yeni müşteriler için etkinleştirilmeyecektir. Yeni ıTSM bağlantıları desteklenecek.
+> Mevcut ıTSM bağlantıları desteklenecek.
 
 Aşağıdaki bölümlerde, Provance ürününüzü Azure 'daki ıSMC 'a bağlama hakkında ayrıntılı bilgi sağlanmaktadır.
 
@@ -69,6 +70,6 @@ Bir Provance bağlantısı oluşturmak için aşağıdaki yordamı kullanın:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [ITSM Bağlayıcısı genel bakış](itsmc-overview.md)
+* [ITSM Bağlayıcısına Genel Bakış](itsmc-overview.md)
 * [Azure uyarılarından ıTSM iş öğeleri oluşturma](./itsmc-definition.md#create-itsm-work-items-from-azure-alerts)
 * [ITSM Bağlayıcısındaki sorunları giderme](./itsmc-resync-servicenow.md)

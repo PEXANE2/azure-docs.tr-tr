@@ -338,7 +338,7 @@
         - name: MySQL ile uygulama oluşturma
           href: ../mysql/flexible-server/tutorial-deploy-wordpress-on-aks.md
           maintainContext: true
-        - name: Açık bir özgürlük veya WebSphere serbest uygulamasını dağıtın
+        - name: Açık Liberty veya WebSphere özgürlük ile uygulama oluşturma
           href: howto-deploy-java-liberty-app.md
         - name: Azure API Management'ı kullanma
           href: ../api-management/api-management-kubernetes.md

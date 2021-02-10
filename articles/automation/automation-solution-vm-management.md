@@ -1,20 +1,20 @@
 ---
 title: Azure Otomasyonu VM'leri çalışma saatleri dışında başlat/durdur genel bakış
-description: Bu makalede, bir zamanlamaya göre VM 'Leri başlatan veya durduran ve bunları Azure Izleyici günlüklerinden etkin bir şekilde izleyen VM'leri çalışma saatleri dışında başlat/durdur özelliği açıklanır.
+description: Bu makalede, bir zamanlamaya göre VM 'Leri başlatan veya durduran ve Azure Izleyici günlüklerinden bunları proaktif olarak izleyen VM'leri çalışma saatleri dışında başlat/durdur özelliği açıklanır.
 services: automation
 ms.subservice: process-automation
-ms.date: 09/22/2020
+ms.date: 02/04/2020
 ms.topic: conceptual
-ms.openlocfilehash: 89566bdfb56ca662813b586b2203eec7e7e5566b
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 991ef6e7ffc26294f75ba5bd2f24c62ea6e0b421
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99055390"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100007015"
 ---
 # <a name="startstop-vms-during-off-hours-overview"></a>VM'leri çalışma saatleri dışında başlat/durdur genel bakış
 
-VM'leri çalışma saatleri dışında başlat/durdur özelliği, etkin Azure VM 'Leri başlatır veya sonlandırır. Kullanıcı tanımlı zamanlamalarda makineleri başlatır veya sonlandırır, Azure Izleyici günlükleri aracılığıyla öngörüler sağlar ve [eylem gruplarını](../azure-monitor/platform/action-groups.md)kullanarak isteğe bağlı e-postalar gönderir. Bu özellik çoğu senaryo için hem Azure Resource Manager hem de klasik VM 'lerde etkinleştirilebilir. 
+VM'leri çalışma saatleri dışında başlat/durdur özelliği, etkin Azure VM 'Leri başlatır veya sonlandırır. Kullanıcı tanımlı zamanlamalarda makineleri başlatır veya sonlandırır, Azure Izleyici günlükleri aracılığıyla öngörüler sağlar ve [eylem gruplarını](../azure-monitor/platform/action-groups.md)kullanarak isteğe bağlı e-postalar gönderir. Bu özellik çoğu senaryo için hem Azure Resource Manager hem de klasik VM 'lerde etkinleştirilebilir.
 
 Bu özellik, VM 'Leri başlatmak için [Start-AzVm](/powershell/module/az.compute/start-azvm) cmdlet 'ini kullanır. VM 'Leri durdurmak için [stop-AzVM](/powershell/module/az.compute/stop-azvm) kullanır.
 
@@ -39,9 +39,9 @@ Geçerli özellikle ilgili sınırlamalar aşağıda verilmiştir:
 
 - Çalışma saatleri dışında VM 'Leri Başlat/Durdur özelliği için Runbook 'lar bir [Azure farklı çalıştır hesabıyla](./automation-security-overview.md#run-as-accounts)çalışır. Bu farklı çalıştır hesabı, kullanım süresini dolacak veya sıklıkla değiştirebilen bir parola yerine sertifika kimlik doğrulaması kullandığından, tercih edilen kimlik doğrulama yöntemidir.
 
-- Bağlı Otomasyon hesabı ve Log Analytics çalışma alanının aynı kaynak grubunda olması gerekir.
+- Sorgu ve analiz etmek için runbook iş günlüklerini ve iş akışını depolayan bir çalışma alanında, bir [Azure izleyici Log Analytics çalışma alanı](../azure-monitor/platform/design-logs-deployment.md) . Otomasyon hesabı yeni veya mevcut bir Log Analytics çalışma alanına bağlanabilir ve her iki kaynağın de aynı kaynak grubunda olması gerekir.
 
-- VM'leri çalışma saatleri dışında başlat/durdur özelliği için etkin VM 'lerle çalışmak üzere ayrı bir Otomasyon hesabı kullanmanızı öneririz. Azure modül sürümleri sıklıkla yükseltilir ve parametreleri değişebilir. Özelliği aynı temposunda yükseltilmez ve kullandığı cmdlet 'lerin daha yeni sürümleriyle çalışmayabilir. Modül güncelleştirmelerini üretim Otomasyonu hesabınıza aktarmadan önce bir test Otomasyonu hesabında test etmeniz önerilir.
+VM'leri çalışma saatleri dışında başlat/durdur özelliği için etkin VM 'lerle çalışmak üzere ayrı bir Otomasyon hesabı kullanmanızı öneririz. Azure modül sürümleri sıklıkla yükseltilir ve parametreleri değişebilir. Özelliği aynı temposunda yükseltilmez ve kullandığı cmdlet 'lerin daha yeni sürümleriyle çalışmayabilir. Güncelleştirilmiş modülleri üretim Otomasyonu hesabınıza aktarmadan önce, herhangi bir uyumluluk sorunu olmadığını doğrulamak için bunları bir test Otomasyonu hesabına aktarmanıza önerilir.
 
 ## <a name="permissions"></a>İzinler
 
@@ -148,7 +148,7 @@ Aşağıdaki tabloda, Otomasyon hesabınızda oluşturulan değişkenler listele
 |Internal_ResourceGroupName | Otomasyon hesabı kaynak grubu adı.|
 
 >[!NOTE]
->Değişken için `External_WaitTimeForVMRetryInSeconds` , varsayılan değer 600 ' den 2100 ' e güncelleştirilmiştir. 
+>Değişken için `External_WaitTimeForVMRetryInSeconds` , varsayılan değer 600 ' den 2100 ' e güncelleştirilmiştir.
 
 Tüm senaryolarda, ve değişkenleri, `External_Start_ResourceGroupNames`  `External_Stop_ResourceGroupNames` `External_ExcludeVMNames` **AutoStop_CreateAlert_Parent**, **SequencedStartStop_Parent** ve **ScheduledStartStop_Parent** runbook 'Ları Için virgülle ayrılmış VM listeleri hariç olmak üzere VM 'leri hedeflemek için gereklidir. Diğer bir deyişle, sanal makinelerinizin başlatma ve durdurma eylemlerinin gerçekleşmesi için hedef kaynak gruplarına ait olması gerekir. Mantığı Azure Ilkesine benzer şekilde çalışarak abonelik veya kaynak grubunu hedefleyebilir ve yeni oluşturulan VM 'Ler tarafından devralınan eylemlere sahip olabilirsiniz. Bu yaklaşım her VM için ayrı bir zamanlamanın korunmasını, sonra da her bir sanal makine için ayrı bir zamanlama olmasını önler.
 
@@ -174,18 +174,14 @@ Klasik VM 'Ler için VM'leri çalışma saatleri dışında başlat/durdur özel
 
 Bulut hizmeti başına 20 ' den fazla VM varsa, bazı öneriler aşağıda verilmiştir:
 
-* Üst runbook **ScheduledStartStop_Parent** birden çok zamanlama oluşturun ve zamanlamaya göre 20 VM 'yi belirtin. 
-* Zamanlama özelliklerinde, `VMList` VM adlarını virgülle ayrılmış bir liste olarak belirtmek için parametresini kullanın (boşluk yok). 
+* Üst runbook **ScheduledStartStop_Parent** birden çok zamanlama oluşturun ve zamanlamaya göre 20 VM 'yi belirtin.
+* Zamanlama özelliklerinde, `VMList` VM adlarını virgülle ayrılmış bir liste olarak belirtmek için parametresini kullanın (boşluk yok).
 
 Aksi takdirde, bu özelliğin Otomasyon işi üçten fazla saat çalışırsa, bu, dengeli olarak kaldırılmış veya [dengeli](automation-runbook-execution.md#fair-share) bir şekilde kaldırılır.
 
 Azure CSP abonelikleri yalnızca Azure Resource Manager modelini destekler. Azure Resource Manager olmayan hizmetler programda yok. VM'leri çalışma saatleri dışında başlat/durdur özelliği çalıştırıldığında, klasik kaynakları yönetmek için cmdlet 'ler olduğundan hatalar alabilirsiniz. CSP hakkında daha fazla bilgi edinmek için bkz. [CSP aboneliklerinde kullanılabilir hizmetler](/azure/cloud-solution-provider/overview/azure-csp-available-services). CSP aboneliği kullanıyorsanız, dağıtımdan sonra [External_EnableClassicVMs](#variables) değişkenini false olarak ayarlamanız gerekir.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
-
-## <a name="enable-the-feature"></a>Özelliği etkinleştirin
-
-Özelliği kullanmaya başlamak için [etkinleştirme VM'leri çalışma saatleri dışında Başlat/Durdur](automation-solution-vm-management-enable.md)içindeki adımları izleyin.
 
 ## <a name="view-the-feature"></a>Özelliği görüntüleme
 
@@ -195,7 +191,7 @@ Etkin özelliğe erişmek için aşağıdaki mekanizmalardan birini kullanın:
 
 * Otomasyon hesabınıza bağlı Log Analytics çalışma alanına gidin. Çalışma alanını seçtikten sonra sol bölmeden **çözümler** ' i seçin. Çözümler sayfasında, listeden **Başlat-Durdur-VM [çalışma alanı]** öğesini seçin.  
 
-Özelliği seçmek start-stop-VM [çalışma alanı] sayfasını görüntüler. Burada, **Startstopvm** kutucuğundaki bilgiler gibi önemli ayrıntıları gözden geçirebilirsiniz. Log Analytics çalışma alanınızda olduğu gibi, bu kutucuk, başlatılan ve başarıyla tamamlanmış olan özellik için Runbook işlerinin bir sayısını ve grafik temsilini görüntüler.
+Özelliği seçmek **Start-Stop-VM [çalışma alanı]** sayfasını görüntüler. Burada, **Startstopvm** kutucuğundaki bilgiler gibi önemli ayrıntıları gözden geçirebilirsiniz. Log Analytics çalışma alanınızda olduğu gibi, bu kutucuk, başlatılan ve başarıyla tamamlanmış olan özellik için Runbook işlerinin bir sayısını ve grafik temsilini görüntüler.
 
 ![Otomasyon Güncelleştirme Yönetimi sayfası](media/automation-solution-vm-management/azure-portal-vmupdate-solution-01.png)
 
@@ -203,37 +199,7 @@ Halka kutucuğuna tıklayarak iş kayıtlarının daha fazla analizini yapabilir
 
 ## <a name="update-the-feature"></a>Özelliği güncelleştirme
 
-VM'leri çalışma saatleri dışında başlat/durdur önceki bir sürümünü dağıttıysanız, güncelleştirilmiş bir yayını dağıtmadan önce hesabınızı hesabınızdan silin. [Özelliği kaldırmak](#remove-the-feature) için adımları izleyin ve sonra [etkinleştirmek](automation-solution-vm-management-enable.md)için adımları uygulayın.
-
-## <a name="remove-the-feature"></a>Özelliği kaldır
-
-Artık özelliği kullanmanız gerekmiyorsa, Otomasyon hesabından silebilirsiniz. Özelliğin silinmesi yalnızca ilişkili runbook 'ları kaldırır. Özellik eklendiğinde oluşturulan zamanlamaları veya değişkenleri silmez. 
-
-VM'leri çalışma saatleri dışında başlat/durdur silmek için:
-
-1. Otomasyon hesabınızdan **ilgili kaynaklar** altında **bağlantılı çalışma alanı** ' nı seçin.
-
-2. **Çalışma alanına git**' i seçin.
-
-3. **Genel** altında **çözümler** ' e tıklayın. 
-
-4. Çözümler sayfasında, **Başlat-Durdur-VM [çalışma alanı]** seçeneğini belirleyin. 
-
-5. VMManagementSolution [çalışma alanı] sayfasında menüden **Sil** ' i seçin.<br><br> ![VM yönetimi özelliğini Sil](media/automation-solution-vm-management/vm-management-solution-delete.png)
-
-6. Çözümü Sil penceresinde, özelliği silmek istediğinizi onaylayın.
-
-7. Bilgiler doğrulanırken ve özellik silinirken, menüden seçili olan **Bildirimler** altında ilerlemeyi izleyebilirsiniz. Kaldırma işleminden sonra çözümler sayfasına döndürülürsünüz.
-
-8. Otomasyon hesabı ve Log Analytics çalışma alanı bu işlemin bir parçası olarak silinmez. Log Analytics çalışma alanını tutmak istemiyorsanız, Azure portal el ile silmeniz gerekir:
-
-    1. **Log Analytics çalışma alanlarını** arayın ve seçin.
-
-    2. Log Analytics çalışma alanı sayfasında, çalışma alanını seçin.
-
-    3. Menüden **Sil** ' i seçin.
-
-    4. Azure Otomasyonu hesabı [özellik bileşenlerini](#components)tutmak istemiyorsanız, her bir el ile silebilirsiniz.
+VM'leri çalışma saatleri dışında başlat/durdur önceki bir sürümünü dağıttıysanız, güncelleştirilmiş bir yayını dağıtmadan önce hesabınızı hesabınızdan silin. [Özelliği kaldırmak](automation-solution-vm-management-remove.md#delete-the-feature) için adımları izleyin ve sonra [etkinleştirmek](automation-solution-vm-management-enable.md)için adımları uygulayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

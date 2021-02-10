@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: f2ea7af0ec9c740c07cd3a5e4ebd88a9ad1a031d
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: c2faf8e8b6a814989fa9e1693fddeedb525df13a
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94542652"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100006862"
 ---
 # <a name="mysql-drivers-and-management-tools-compatible-with-azure-database-for-mysql"></a>MySQL için Azure veritabanı ile uyumlu MySQL sürücüleri ve yönetim araçları
 Bu makalede, MySQL için Azure veritabanı ile uyumlu olan sürücüler ve yönetim araçları açıklanmaktadır.
@@ -26,7 +26,7 @@ MySQL için Azure veritabanı, dünyanın en popüler MySQL veritabanı Communit
 | .NET | MySQL Bağlayıcısı/ağı | https://github.com/mysql/mysql-connector-net | 6.6.3, 7,0, 8,0 |  | Bir kodlama hatası, bazı UTF8 olmayan Windows sistemlerinde bağlantıların başarısız olmasına neden olabilir. |
 | Node.js | mysqljs | https://github.com/mysqljs/mysql/ <br> NPM 'den yükleme paketi:<br> `npm install mysql`NPM 'den Çalıştır | 2.15 | 2.14.1 ve öncesi | |
 | Node.js | düğüm-mysql2 | https://github.com/sidorares/node-mysql2 | 1.3.4 + | | |
-| Başlayın | MySQL sürücüsüne git | https://github.com/go-sql-driver/mysql/releases | 1,3, 1,4 | 1,2 ve öncesi | `allowNativePasswords=true`Sürüm 1,3 için bağlantı dizesinde kullanın. Sürüm 1,4, bir çözüm içerir ve `allowNativePasswords=true` artık gerekli değildir. |
+| Go | MySQL sürücüsüne git | https://github.com/go-sql-driver/mysql/releases | 1,3, 1,4 | 1,2 ve öncesi | `allowNativePasswords=true`Sürüm 1,3 için bağlantı dizesinde kullanın. Sürüm 1,4, bir çözüm içerir ve `allowNativePasswords=true` artık gerekli değildir. |
 | Python | MySQL Bağlayıcısı/Python | https://pypi.python.org/pypi/mysql-connector-python | 1.2.3, 2,0, 2,1, 2,2, MySQL 8,0 ile 8.0.16 + kullanın  | 1.2.2 ve öncesi | |
 | Python | PyMySQL | https://pypi.org/project/PyMySQL/ | 0.7.11, 0.8.0, 0.8.1, 0.9.3 + | 0.9.0-0.9.2 (web2py 'de gerileme) | |
 | Java | MariaDB Bağlayıcısı/J | https://downloads.mariadb.org/connector-java/ | 2,1, 2,0, 1,6 | 1.5.5 ve öncesi | | 
@@ -43,16 +43,16 @@ MySQL için Azure veritabanı, dünyanın en popüler MySQL veritabanı Communit
 ## <a name="management-tools"></a>Yönetim Araçları
 Uyumluluk avantajı veritabanı yönetim araçlarına da genişletilir. Veritabanı düzenlemesi Kullanıcı izinlerinin sınırlandırmaları içinde çalıştığı sürece mevcut araçlarınız MySQL için Azure veritabanı ile çalışmaya devam etmelidir. Test edilmiş ve MySQL için Azure veritabanı 5,6 ve 5,7 ile uyumlu olmak üzere bulunan üç ortak veritabanı yönetim aracı aşağıdaki tabloda listelenmiştir:
 
-|                                     | **MySQL çalışma ekranı 6. x ve yukarı** | **Navicat 12** | **PHPMyAdmin 4. x ve yukarı** |
-| :---------------------------------- | :----------------------------- | :------------- | :-------------------------|
-| **Oluşturma, güncelleştirme, okuma, yazma, silme** | X | X | X |
-| **SSL bağlantısı** | X | X | X |
-| **SQL sorgu otomatik tamamlama** | X | X |  |
-| **Verileri içeri ve dışarı aktarma** | X | X | X |
-| **Birden çok biçime aktar** | X | X | X |
-| **Yedekleme ve geri yükleme** |  | X |  |
-| **Sunucu parametrelerini görüntüle** | X | X | X |
-| **Istemci bağlantılarını görüntüle** | X | X | X |
+|                                     | **MySQL çalışma ekranı 6. x ve yukarı** | **Navicat 12** | **PHPMyAdmin 4. x ve yukarı** | **MySQL 9,0 için dbForge Studio** |
+| :---------------------------------- | :----------------------------- | :------------- | :-------------------------| :------------------------------- |
+| **Oluşturma, güncelleştirme, okuma, yazma, silme** | X | X | X | X |
+| **SSL bağlantısı** | X | X | X | X |
+| **SQL sorgu otomatik tamamlama** | X | X |  | X |
+| **Verileri içeri ve dışarı aktarma** | X | X | X | X |
+| **Birden çok biçime aktar** | X | X | X | X |
+| **Yedekleme ve Geri Yükleme** |  | X |  | X |
+| **Sunucu parametrelerini görüntüle** | X | X | X | X |
+| **Istemci bağlantılarını görüntüle** | X | X | X | X |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/22/2020
+ms.date: 02/07/2021
 ms.author: memildin
-ms.openlocfilehash: ea66bb5bcdd6132809804632919a120f5c93353f
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: eb70a31d0fa5f231bd0db8ca27517ce43fe1db28
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98132727"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100007827"
 ---
 # <a name="container-security-in-security-center"></a>Güvenlik Merkezi’nde kapsayıcı güvenliği
 
@@ -70,11 +70,25 @@ IaaS Linux VM 'lerinde barındırılan yönetilmeyen kapsayıcıları izlemek i�
 ### <a name="continuous-monitoring-of-your-kubernetes-clusters"></a>Kubernetes kümelerinizi sürekli izleme
 Güvenlik Merkezi Azure Kubernetes hizmeti (AKS) ile birlikte çalışarak Kapsayıcılı uygulamalar geliştirmek, dağıtmak ve yönetmek için Microsoft 'un yönetilen kapsayıcı düzenleme hizmetidir.
 
-AKS, kümelerinizin güvenlik duruşuna güvenlik denetimleri ve görünürlük sağlar. Güvenlik Merkezi şu özellikleri kullanır:
-* AKS kümelerinizin yapılandırmasını sürekli izleyin
-* Endüstri standartlarına göre hizalanmış güvenlik önerileri oluşturun
+AKS, kümelerinizin güvenlik duruşuna güvenlik denetimleri ve görünürlük sağlar. Güvenlik Merkezi, AKS kümelerinizin yapılandırmasını sürekli izlemek ve sektör standartlarıyla uyumlu güvenlik önerileri oluşturmak için bu özellikleri kullanır.
+
+Bu, Azure Güvenlik Merkezi, Azure Kubernetes hizmeti ve Azure Ilkesi arasındaki etkileşimin üst düzey bir diyagramıdır:
+
+:::image type="content" source="./media/defender-for-kubernetes-intro/kubernetes-service-security-center-integration-detailed.png" alt-text="Azure Güvenlik Merkezi, Azure Kubernetes hizmeti ve Azure Ilkesi arasındaki etkileşimin üst düzey mimarisi" lightbox="./media/defender-for-kubernetes-intro/kubernetes-service-security-center-integration-detailed.png":::
+
+Güvenlik Merkezi tarafından alınan ve çözümlenen öğelerin şunları görmenizi sağlayabilirsiniz:
+
+- API sunucusundan denetim günlükleri
+- Log Analytics aracısından ham güvenlik olayları
+
+    > [!NOTE]
+    > Şu anda sanal makine ölçek kümelerinde çalışan Azure Kubernetes hizmet kümelerine Log Analytics aracısının yüklenmesini desteklemiyoruz.
+
+- AKS kümesindeki küme yapılandırma bilgileri
+- Azure Ilkesinden iş yükü yapılandırması ( **Kubernetes Için Azure ilke eklentisi** aracılığıyla)
 
 Bu özellik için görünebilen ilgili güvenlik merkezi önerilerinin ayrıntıları için, öneriler başvuru tablosunun [işlem bölümüne](recommendations-reference.md#recs-compute) bakın.
+
 
 ###  <a name="workload-protection-best-practices-using-kubernetes-admission-control"></a>İş yükü koruma en iyi-Kubernetes giriş denetimi kullanan uygulamalar
 
