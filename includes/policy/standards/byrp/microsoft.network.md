@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 02/04/2021
+ms.date: 02/09/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 192a57dbca523125ea5c13c7f9c41efd7fe99baa
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: a4f16067fa8837fa0f1062ba4cc8c2c1daf5d22b
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99558177"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100091301"
 ---
 ## <a name="azure-security-benchmark"></a>Azure Güvenlik Karşılaştırması
 
@@ -147,6 +147,20 @@ Bu uyumluluk standardı hakkında daha fazla bilgi için bkz. [HIPAA HITRUST 9,2
 |Ağ hizmetlerinin güvenliği |0837.09. n2Organizational. 2-09. n |Dış bilgi sistem sağlayıcılarıyla resmi anlaşmalar, güvenlik ve gizlilik için özel yükümlülükleri içerir. |[Ağ Izleyicisi etkinleştirilmelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb6e2945c-0b7b-40f5-9233-7a5323b5cdc6) |[1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/NetworkWatcher_Enabled_Audit.json) |
 |Ağ hizmetlerinin güvenliği |0886.09 n2Organizational. 4-09. n |Kuruluş, belirli bilgi sistemlerinin dış bilgi sistemlerine bağlanmasına izin vermek için bir biçimsel anlaşma veya başka bir belgedeki belge (i), tüm özel durum reddi veya, II) Reddet-tümü, özel durum (tercih edilen) ilkesi için ilke kullanır. |[Ağ Izleyicisi etkinleştirilmelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb6e2945c-0b7b-40f5-9233-7a5323b5cdc6) |[1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/NetworkWatcher_Enabled_Audit.json) |
 |Ağ hizmetlerinin güvenliği |0888.09 n2Organizational. 6-09. n |Dış/dış kaynaklı hizmet sağlayıcısına sahip sözleşme, hizmet sağlayıcının, kapsanan bilgilerin paylaşılmasından sorumlu olduğunu içerir. |[Ağ Izleyicisi etkinleştirilmelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb6e2945c-0b7b-40f5-9233-7a5323b5cdc6) |[1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/NetworkWatcher_Enabled_Audit.json) |
+
+## <a name="new-zealand-ism"></a>Yeni Zelanda ıSM
+
+Tüm Azure hizmetleri için kullanılabilen Azure Ilkesi 'nin Bu uyumluluk standardına nasıl eşlendiğini gözden geçirmek için bkz. [Azure Ilke mevzuatı uyumluluğu-Yeni Zelanda bilgi güvenliği el kitabı](../../../../articles/governance/policy/samples/new-zealand-ism.md).
+Bu uyumluluk standardı hakkında daha fazla bilgi için bkz. [Yeni Zelanda bilgi güvenliği el kitabı](https://www.nzism.gcsb.govt.nz/).
+
+|Etki alanı |Denetim KIMLIĞI |Denetim başlığı |İlke<br /><sub>(Azure portal)</sub> |İlke sürümü<br /><sub>GitHub</sub>  |
+|---|---|---|---|---|
+|Ağ güvenliği |NS-5 |Hizmet reddi (DoS) yanıt planının 18.3.19 içeriği |[Azure DDoS koruma standardı etkinleştirilmelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa7aca53f-2ed4-4466-a25e-0b45ade68efd) |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_EnableDDoSProtection_Audit.json) |
+|Ağ güvenliği |NS-7 |18.4.10 kötü amaçlı kod sayacı-ölçüler |[Tüm Internet trafiği, dağıtılan Azure Güvenlik duvarınız aracılığıyla yönlendirilmelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffc5e4038-4584-4632-8c85-c0448d374b2c) |[3.0.0-Önizleme](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/ASC_All_Internet_traffic_should_be_routed_via_Azure_Firewall.json) |
+|Ağ güvenliği |NS-7 |18.4.10 kötü amaçlı kod sayacı-ölçüler |[Web uygulaması güvenlik duvarı (WAF) Application Gateway için etkinleştirilmelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F564feb30-bf6a-4854-b4bb-0d2d2d1e6c66) |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/WAF_AppGatewayEnabled_Audit.json) |
+|Ağ güvenliği |NS-7 |18.4.10 kötü amaçlı kod sayacı-ölçüler |[Azure ön kapı hizmeti hizmeti için Web uygulaması güvenlik duvarı (WAF) etkinleştirilmelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F055aa869-bc98-4af8-bafc-23f1ab6ffe2c) |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/WAF_AFD_Enabled_Audit.json) |
+|Ağ güvenliği |NS-7 |18.4.10 kötü amaçlı kod sayacı-ölçüler |[Web uygulaması güvenlik duvarı (WAF) Application Gateway için belirtilen modu kullanmalıdır](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F12430be1-6cc8-4527-a9a8-e3d38f250096) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/WAF_AppGatewayMode_Audit.json) |
+|Ağ güvenliği |NS-7 |18.4.10 kötü amaçlı kod sayacı-ölçüler |[Web uygulaması güvenlik duvarı (WAF), Azure ön kapı hizmeti için belirtilen modu kullanmalıdır](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F425bea59-a659-4cbb-8d31-34499bd030b8) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/WAF_AFD_Mode_Audit.json) |
 
 ## <a name="nist-sp-800-171-r2"></a>NIST SP 800-171 R2
 

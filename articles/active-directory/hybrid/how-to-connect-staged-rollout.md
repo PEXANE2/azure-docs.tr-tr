@@ -10,12 +10,12 @@ ms.date: 06/03/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10fe3b895ea5084247822f1c35275e68d80b73fa
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: c9e0a645bc580ab3a0794ca6ded1e60159df7d92
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98762987"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100090607"
 ---
 # <a name="migrate-to-cloud-authentication-using-staged-rollout-preview"></a>Hazırlanan piyasaya çıkma kullanarak bulut kimlik doğrulamasına geçiş (Önizleme)
 
@@ -33,7 +33,7 @@ Bu özelliği denemeden önce doğru kimlik doğrulama yöntemini seçme Kılavu
 
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 -   Federasyon etki alanları içeren bir Azure Active Directory (Azure AD) kiracınız vardır.
 
@@ -83,10 +83,6 @@ Aşağıdaki senaryolar hazırlanan dağıtım için desteklenmez:
     - Dinamik Gruplar, hazırlanan dağıtım için *desteklenmez* .
     - Grup içindeki kişi nesneleri grubun eklenmesini engeller.
 
-- Azure AD Connect veya PowerShell kullanarak, Federasyon kimlik doğrulamasından en son tam geçişi ' i yine de yapmanız gerekir. Hazırlanan dağıtım etki alanlarını federe 'dan yönetilene geçmez.  Etki alanı cutover hakkında daha fazla bilgi için bkz. [Federasyon 'dan Parola karması eşitlemesine geçiş](plan-migrate-adfs-password-hash-sync.md) ve [Federasyondan geçişli kimlik doğrulamasına geçirme](plan-migrate-adfs-pass-through-authentication.md)
-
-
-
 - Hazırlanmış dağıtım için ilk olarak bir güvenlik grubu eklediğinizde, bir UX zaman aşımını önlemek için 200 kullanıcıyla sınırlı olursunuz. Grubu ekledikten sonra, gerektiğinde doğrudan buna daha fazla kullanıcı ekleyebilirsiniz.
 
 - Kullanıcılar hazırlanan piyasaya sürülirken, Enforcecıpasswordpolicyforpasswordsyncedusers etkinleştirildiğinde parola süre sonu ilkesi, özelleştirme seçeneği olmadan 90 gün olarak ayarlanır. 
@@ -95,7 +91,9 @@ Aşağıdaki senaryolar hazırlanan dağıtım için desteklenmez:
 
 - Windows 10 hibrit JOIN veya Azure AD JOIN birincil yenileme belirteci alma, kullanıcının şirket içi UPN 'si yönlendirilebilir olmadığında. Bu senaryo, hazırlanan dağıtım modundayken WS-Trust uç noktasına geri dönecektir, ancak hazırlanan geçiş tamamlandığında ve Kullanıcı oturum açma artık federasyon sunucusuna bağlı olmadığında çalışmayı durduracaktır.
 
-
+  >[!NOTE]
+  >Azure AD Connect veya PowerShell kullanarak, Federasyon kimlik doğrulamasından en son tam geçişi ' i yine de yapmanız gerekir. Hazırlanan dağıtım etki alanlarını federe 'dan yönetilene geçmez.  Etki alanı cutover hakkında daha fazla bilgi için bkz. [Federasyon 'dan Parola karması eşitlemesine geçiş](plan-migrate-adfs-password-hash-sync.md#step-3-change-the-sign-in-method-to-password-hash-synchronization-and-enable-seamless-sso) ve [Federasyondan geçişli kimlik doğrulamasına geçirme](plan-migrate-adfs-password-hash-sync.md#step-3-change-the-sign-in-method-to-password-hash-synchronization-and-enable-seamless-sso)
+  
 ## <a name="get-started-with-staged-rollout"></a>Hazırlanan piyasaya çıkma ile çalışmaya başlama
 
 Hazırlanan dağıtım kullanarak *Parola karması eşitlemesini* test etmek için, sonraki bölümde yer aldığı ön iş yönergelerini izleyin.
@@ -257,3 +255,5 @@ C: Evet. PowerShell kullanarak hazırlanan dağıtımı gerçekleştirme hakkın
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - [Azure AD 2,0 Preview](/powershell/module/azuread/?view=azureadps-2.0-preview#staged_rollout )
+- [Oturum açma yöntemini Parola karması eşitlemesi olarak değiştirme](plan-migrate-adfs-password-hash-sync.md#step-3-change-the-sign-in-method-to-password-hash-synchronization-and-enable-seamless-sso)
+- [Geçiş kimlik doğrulaması için oturum açma yöntemini değiştirme](plan-migrate-adfs-password-hash-sync.md#step-3-change-the-sign-in-method-to-password-hash-synchronization-and-enable-seamless-sso)

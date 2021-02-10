@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/17/2019
+ms.date: 02/08/2021
 ms.author: jeedes
-ms.openlocfilehash: 30cc4e66f73f0fe7f4c11f84f24312caf4f8a483
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: f786c4461bc49b4a20aceabc4dbf908a3b085158
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92516775"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100091239"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-mondaycom"></a>Öğretici: monday.com ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -25,8 +25,6 @@ Bu öğreticide, monday.com 'i Azure Active Directory (Azure AD) ile tümleştir
 * Azure AD 'de monday.com 'e erişimi olan denetim.
 * Kullanıcılarınızın Azure AD hesaplarıyla monday.com otomatik olarak oturum açmalarına olanak tanıyın.
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
-
-Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -42,22 +40,22 @@ Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test eders
 * monday.com **SP ve ıDP** tarafından başlatılan SSO 'yu destekler
 * monday.com **, tam zamanında** Kullanıcı sağlamayı destekler
 
-## <a name="adding-mondaycom-from-the-gallery"></a>Galeriden monday.com ekleme
+## <a name="add-mondaycom-from-the-gallery"></a>Galeriden monday.com ekleme
 
 Monday.com tümleştirmesini Azure AD 'ye göre yapılandırmak için, Galeriden monday.com yönetilen SaaS uygulamaları listesine eklemeniz gerekir.
 
-1. [Azure Portal](https://portal.azure.com) iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
+1. Azure portal iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
 1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
 1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
 1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
 1. **Galeriden Ekle** bölümünde, arama kutusuna **Monday.com** yazın.
 1. Sonuçlar panelinden **Monday.com** ' i seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-mondaycom"></a>Monday.com için Azure AD çoklu oturum açmayı yapılandırma ve test etme
+## <a name="configure-and-test-azure-ad-sso-for-mondaycom"></a>Monday.com için Azure AD SSO 'yu yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'yu Monday.com ile yapılandırın ve test edin. SSO 'nun çalışması için, monday.com içinde bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'yu Monday.com ile yapılandırın ve test edin. SSO 'nun çalışması için, monday.com içinde bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
-Azure AD SSO 'yu monday.com ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
+Azure AD SSO 'yu monday.com ile yapılandırmak ve test etmek için aşağıdaki adımları gerçekleştirin:
 
 1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
     1. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
@@ -70,9 +68,9 @@ Azure AD SSO 'yu monday.com ile yapılandırmak ve test etmek için aşağıdaki
 
 Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-1. [Azure Portal](https://portal.azure.com/), **Monday.com** uygulama tümleştirmesi sayfasında **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
+1. Azure portal, **Monday.com** uygulama tümleştirmesi sayfasında **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
 1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
-1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
+1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** kalem simgesine tıklayın.
 
    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -88,14 +86,10 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     c. Meta veri dosyası başarıyla karşıya yüklendikten sonra, **tanımlayıcı** ve **yanıt URL** değerleri temel SAML yapılandırması bölümünde otomatik olarak doldurulur.
 
-    ![Ekran görüntüsü; tanımlayıcı girebileceğiniz, yanıt U R L ve Kaydet ' i seçebileceğiniz temel SAML yapılandırmasını gösterir.](common/idp-intiated.png)
-
     > [!Note]
     > **Tanımlayıcı** ve **yanıt URL 'si** değerleri otomatik olarak doldurulmazsa, değerleri el ile girin. **Tanımlayıcı** ve **yanıt URL 'si** aynıdır ve değer aşağıdaki düzende bulunur:`https://<your-domain>.monday.com/saml/saml_callback`
 
 1. Uygulamayı **SP** tarafından başlatılan modda yapılandırmak Istiyorsanız **ek URL 'ler ayarla** ' ya tıklayın ve aşağıdaki adımı gerçekleştirin:
-
-    ![Ekran görüntüsü, U R L 'ye bir Işaret girebileceğiniz ek U R 'Leri ayarlamayı gösterir.](common/metadata-upload-additional-signon.png)
 
     **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<YOUR_DOMAIN>.monday.com`
 
@@ -108,7 +102,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. Monday.com uygulaması, yukarıdakine ek olarak, aşağıda gösterilen SAML yanıtına daha fazla öznitelik geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
 
-    | Adı | Kaynak özniteliği |
+    | Name | Kaynak özniteliği |
     |--|--|
     | E-posta | Kullanıcı. Mail |
     | FirstName | Kullanıcı. |
@@ -141,20 +135,14 @@ Bu bölümde, monday.com 'e erişim vererek Azure çoklu oturum açma özelliği
 1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
 1. Uygulamalar listesinde **Monday.com**' yi seçin.
 1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
-
-   !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
-
 1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
-
-    ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
-
 1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. Kullanıcılara bir rolün atanmasını bekliyorsanız, **Rol Seç** açılır listesinden bunu seçebilirsiniz. Bu uygulama için ayarlanmış bir rol yoksa, "varsayılan erişim" rolü seçili olduğunu görürsünüz.
 1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
 ## <a name="configure-mondaycom-sso"></a>Monday.com SSO 'yu yapılandırma
 
-1. Yapılandırmayı monday.com içinde otomatik hale getirmek için, **uzantıyı yüklemek**üzere **uygulamalar güvenli oturum açma tarayıcı uzantısı** ' nı yüklemeniz gerekir.
+1. Yapılandırmayı monday.com içinde otomatik hale getirmek için, **uzantıyı yüklemek** üzere **uygulamalar güvenli oturum açma tarayıcı uzantısı** ' nı yüklemeniz gerekir.
 
     ![Uygulamalarım uzantısı](common/install-myappssecure-extension.png)
 
@@ -166,15 +154,15 @@ Bu bölümde, monday.com 'e erişim vererek Azure çoklu oturum açma özelliği
 
 1. Sayfanın sağ üst köşesindeki **profile** gidin ve **yönetici**' ye tıklayın.
 
-    ![Ekran görüntüsü seçili yönetim profilini gösterir.](./media/mondaycom-tutorial/configuration01.png)
+    ![Ekran görüntüsü seçili yönetim profilini gösterir.](./media/mondaycom-tutorial/configuration-1.png)
 
 1. **Güvenlik** ' i SEÇIN ve SAML ' nin yanındaki **Aç** ' a tıkladığınızdan emin olun.
 
-    ![Ekran görüntüsü, SAML 'nin yanında açma seçeneğiyle Güvenlik sekmesini gösterir.](./media/mondaycom-tutorial/configuration02.png)
+    ![Ekran görüntüsü, SAML 'nin yanında açma seçeneğiyle Güvenlik sekmesini gösterir.](./media/mondaycom-tutorial/configuration-2.png)
 
 1. IDP 'nizden aşağıdaki ayrıntıları girin.
 
-    ![Ekran görüntüsü, t 'ınızdan bilgi girebileceğiniz SAML sağlayıcısını gösterir.](./media/mondaycom-tutorial/configuration03.png)
+    ![Ekran görüntüsü, t 'ınızdan bilgi girebileceğiniz SAML sağlayıcısını gösterir.](./media/mondaycom-tutorial/configuration-3.png)
 
     > [!NOTE]
     > Daha fazla bilgi için [Bu](https://support.monday.com/hc/articles/360000460605-SAML-Single-Sign-on?abcb=34642) makaleye bakın
@@ -185,16 +173,20 @@ Bu bölümde, monday.com içinde B. Simon adlı bir Kullanıcı oluşturulur. mo
 
 ## <a name="test-sso"></a>Test SSO 'SU
 
-Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açma yapılandırmanızı aşağıdaki seçeneklerle test edersiniz. 
 
-Erişim panelinde monday.com kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız monday.com için otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](../user-help/my-apps-portal-end-user-access.md).
+#### <a name="sp-initiated"></a>SP başlatıldı:
 
-## <a name="additional-resources"></a>Ek kaynaklar
+* Azure portal içinde **Bu uygulamayı test et** ' e tıklayın. Bu, oturum açma akışını başlatabileceğiniz monday.com oturum açma URL 'sine yeniden yönlendirilir.  
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](./tutorial-list.md)
+* Doğrudan monday.com oturum açma URL 'sine gidin ve oturum açma akışını buradan başlatın.
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
+#### <a name="idp-initiated"></a>IDP başlatıldı:
 
-- [Azure Active Directory'de koşullu erişim nedir?](../conditional-access/overview.md)
+* Azure portal **Bu uygulamayı test et** ' e tıklayın ve SSO 'yu ayarladığınız Monday.com otomatik olarak oturum açmış olmanız gerekir. 
 
-- [Azure AD ile monday.com deneyin](https://aad.portal.azure.com/)
+Uygulamayı dilediğiniz modda test etmek için Microsoft My Apps ' i de kullanabilirsiniz. Uygulamamda monday.com kutucuğuna tıkladığınızda, SP modunda yapılandırıldıysa oturum açma akışını başlatmak için uygulama oturum açma sayfasına yönlendirilirsiniz ve ıDP modunda yapılandırıldıysa, SSO 'yu ayarladığınız monday.com için otomatik olarak oturum açmış olmanız gerekir. Uygulamalarım hakkında daha fazla bilgi için bkz. [uygulamalarıma giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+Monday.com yapılandırıldıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).

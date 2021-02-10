@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d0a082149d85736000b5bb6a91e2fc7132205a88
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 6f17f6eb913d1ea54e8db6acd369d165553e16ec
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98220295"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100091049"
 ---
 # <a name="plan-and-deploy-on-premises-azure-active-directory-password-protection"></a>Şirket içi Azure Active Directory parola korumasını planlayın ve dağıtın
 
@@ -85,7 +85,8 @@ Aşağıdaki temel gereksinimler geçerlidir:
 * Azure AD parola koruma bileşenlerine sahip etki alanı denetleyicileri dahil tüm makinelerde evrensel C çalışma zamanı yüklü olmalıdır.
     * Windows Update tüm güncelleştirmelere sahip olduğunuzdan emin olarak çalışma zamanını alabilirsiniz. Alternatif olarak, bir işletim sistemine özgü güncelleştirme paketi de edinebilirsiniz. Daha fazla bilgi için bkz. [Windows 'Da evrensel C çalışma zamanı güncelleştirmesi](https://support.microsoft.com/help/2999226/update-for-uniersal-c-runtime-in-windows).
 * Windows Server Active Directory ormanını Azure AD 'ye kaydetmek için, orman kök etki alanında Active Directory etki alanı yöneticisi ayrıcalıklarına sahip bir hesap gerekir.
-* Anahtar Dağıtım Hizmeti, Windows Server 2012 çalıştıran etki alanındaki tüm etki alanı denetleyicilerinde etkinleştirilmelidir. Varsayılan olarak, bu hizmet el ile tetikleyici başlangıcı aracılığıyla etkinleştirilir.
+* Anahtar Dağıtım Hizmeti, Windows Server 2012 ve sonraki sürümlerini çalıştıran etki alanındaki tüm etki alanı denetleyicilerinde etkinleştirilmelidir. Varsayılan olarak, bu hizmet el ile tetikleyici başlangıcı aracılığıyla etkinleştirilir.
+
 * Ağ bağlantısı, her etki alanındaki en az bir etki alanı denetleyicisi ve Azure AD parola koruması için proxy hizmetini barındıran en az bir sunucu arasında bulunmalıdır. Bu bağlantı, etki alanı denetleyicisinin RPC uç nokta Eşleyici bağlantı noktası 135 ve proxy hizmetindeki RPC sunucusu bağlantı noktasına erişmesine izin vermelidir.
     * Varsayılan olarak, RPC sunucu bağlantı noktası dinamik bir RPC bağlantı noktasıdır, ancak [statik bir bağlantı noktası kullanacak](#static)şekilde yapılandırılabilir.
 * Azure AD parola koruma Proxy hizmetinin yükleneceği tüm makinelerin aşağıdaki uç noktalara ağ erişimi olması gerekir:

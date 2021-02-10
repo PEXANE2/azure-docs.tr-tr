@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 09/30/2020
+ms.date: 02/09/2021
 ms.author: justinha
-ms.openlocfilehash: 89671d0e69d4e526e30c80619b57d698d5a5acc5
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 3d0f2b44f37cb318be2117b5dc5d8b42b418ff19
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99491174"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100090998"
 ---
 # <a name="frequently-asked-questions-faqs-about-azure-active-directory-ad-domain-services"></a>Azure Active Directory (AD) etki alanı Hizmetleri hakkında sık sorulan sorular (SSS)
 
@@ -152,7 +152,7 @@ Azure AD Domain Services, Azure için ücretsiz denemeye dahildir. [Azure 'un ü
 Hayır. Azure AD Domain Services yönetilen bir etki alanını etkinleştirdikten sonra, yönetilen etki alanını silinceye kadar hizmet seçtiğiniz sanal ağınız içinde kullanılabilir. Hizmeti duraklatmanın bir yolu yoktur. Faturalandırma, yönetilen etki alanını silene kadar saatlik olarak devam eder.
 
 ### <a name="can-i-fail-over-azure-ad-domain-services-to-another-region-for-a-dr-event"></a>Azure AD Domain Services yük devri bir DR olayı için başka bir bölgeye verebilir miyim?
-Hayır. Azure AD Domain Services Şu anda coğrafi olarak yedekli bir dağıtım modeli sağlamıyor. Azure bölgesindeki tek bir sanal ağla sınırlıdır. Birden çok Azure bölgesini kullanmak istiyorsanız, Azure IaaS VM 'lerinde Active Directory Etki Alanı denetleyicilerinizi çalıştırmanız gerekir. Mimari Kılavuzu için bkz. Şirket [içi Active Directory etki alanınızı Azure 'A genişletme](/azure/architecture/reference-architectures/identity/adds-extend-domain).
+Evet, yönetilen bir etki alanı için coğrafi dayanıklılık sağlamak üzere Azure AD DS 'yi destekleyen herhangi bir Azure bölgesindeki eşlenmiş bir sanal ağa ek bir [çoğaltma kümesi](tutorial-create-replica-set.md) oluşturabilirsiniz. Çoğaltma kümeleri, yönetilen etki alanı ile aynı ad alanını ve yapılandırmayı paylaşır.
 
 ### <a name="can-i-get-azure-ad-domain-services-as-part-of-enterprise-mobility-suite-ems-do-i-need-azure-ad-premium-to-use-azure-ad-domain-services"></a>Enterprise Mobility Suite 'in (EMS) bir parçası olarak Azure AD Domain Services alabilir miyim? Azure AD Domain Services kullanmak için Azure AD Premium ihtiyacım var mı?
 Hayır. Azure AD Domain Services, Kullandıkça Öde Azure hizmetidir ve EMS 'nin bir parçası değildir. Azure AD Domain Services, tüm Azure AD sürümleriyle (ücretsiz ve Premium) kullanılabilir. Kullanıma bağlı olarak saatlik olarak faturalandırılırsınız.

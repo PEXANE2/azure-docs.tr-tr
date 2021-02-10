@@ -143,6 +143,8 @@
                   href: resilience-client-app.md
                 - name: Daemon uygulamaları
                   href: resilience-daemon-app.md
+            - name: Esnekliği için uygulama durumunu izleme
+              href: monitor-sign-in-health-for-resilience.md
         - name: Azure’da kullanılan yetkililere sertifika sağlama
           href: certificate-authorities.md
     - name: Dağıtım kılavuzu

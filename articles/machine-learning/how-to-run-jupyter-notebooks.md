@@ -11,89 +11,27 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 01/19/2021
-ms.openlocfilehash: 46e0687056d697afc2d4355bdf900af138273eaf
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.openlocfilehash: 06ae46eb96db39f44cd052e6e9b0d1a19f898007
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99061843"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100091577"
 ---
-# <a name="how-to-run-jupyter-notebooks-in-your-workspace"></a>Çalışma alanınızda Jupyter Notebooks’u çalıştırma
+# <a name="run-jupyter-notebooks-in-your-workspace"></a>Çalışma alanınızda Jupyıter not defterlerini çalıştırma
 
 Jupyıter not defterlerinizi Azure Machine Learning Studio 'daki çalışma alanınızda doğrudan çalıştırmayı öğrenin. [Jupi](https://jupyter.org/) veya [Jupyıterlab](https://jupyterlab.readthedocs.io)'ı başlatabilmeniz sırasında, çalışma alanından çıkmadan not defterlerinizi düzenleyebilir ve çalıştırabilirsiniz.
+
+Not defterleri dahil olmak üzere dosyaları oluşturma ve yönetme hakkında bilgi için bkz. [çalışma alanınızdaki dosyaları oluşturma ve yönetme](how-to-manage-files.md).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://aka.ms/AMLFree) oluşturun.
 * Machine Learning çalışma alanı. Bkz. [Azure Machine Learning çalışma alanı oluşturma](how-to-manage-workspace.md).
 
-## <a name="create-notebooks"></a><a name="create"></a> Not defterleri oluştur
-
-Azure Machine Learning çalışma alanınızda yeni bir Jupyter Not defteri oluşturun ve çalışmaya başlayın. Yeni oluşturulan Not defteri, varsayılan çalışma alanı depolama alanında depolanır. Bu not defteri, çalışma alanına erişimi olan herkesle paylaşılabilir. 
-
-Yeni bir not defteri oluşturmak için: 
-
-1. Çalışma alanınızı [Azure Machine Learning Studio](https://ml.azure.com)'da açın.
-1. Sol tarafta, **Not defterleri**' ni seçin. 
-1. **My Files** bölümündeki **User Files** bölümünde **yeni dosya oluştur** simgesini seçin.
-
-    :::image type="content" source="media/how-to-run-jupyter-notebooks/create-new-file.png" alt-text="Yeni dosya oluştur":::
-
-1. Dosyayı adlandırın. 
-1. Jupyter Not defteri dosyaları için dosya türü olarak **Not defteri** ' ni seçin.
-1. Bir dosya dizini seçin.
-1. **Oluştur**’u seçin.
-
-Metin dosyaları da oluşturabilirsiniz.  Dosya türü olarak **metin** ' i seçin ve uzantıyı ada ekleyin (örneğin, myfile.py veya myfile.txt)  
-
-Ayrıca, Not defterleri sayfasının en üstünde bulunan araçlarla Not defterleri de dahil olmak üzere klasörleri ve dosyaları karşıya yükleyebilirsiniz.  Not defterleri ve çoğu metin dosya türleri Önizleme bölümünde görüntülenir.  Diğer dosya türleri için Önizleme yoktur.
-
-> [!IMPORTANT]
-> Not defterlerinde ve betiklerde bulunan içerikler, oturumlarınızdan verileri okuyabilir ve Azure 'da kuruluşunuz olmadan verilere erişebilir.  Yalnızca güvenilir kaynaklardan gelen dosyaları yükleyin. Daha fazla bilgi için bkz. [güvenli kod en iyi uygulamaları](concept-secure-code-best-practice.md#azure-ml-studio-notebooks).
-
-### <a name="clone-samples"></a>Örnek kopyalama
-
-Çalışma alanınız, SDK 'Yı keşfetmenize ve kendi makine öğrenimi projeleriniz için örnek olarak size yardımcı olmak üzere tasarlanan Not defterleri içeren bir **Samples** klasörü içerir.  Bu not defterlerini çalışma alanı depolama kabınızda kendi klasörünüze kopyalayabilirsiniz.  
-
-Bir örnek için bkz. [öğretici: Ilk ml denemenize oluşturma](tutorial-1st-experiment-sdk-setup.md#azure).
-
-### <a name="use-files-from-git-and-version-my-files"></a><a name="terminal"></a> Git ve sürüm dosyalarımı dosyaları kullan
-
-Tüm git işlemlerine, bir Terminal penceresi kullanarak erişebilirsiniz. Tüm git dosyaları ve klasörleri, çalışma alanı dosya sisteminizde depolanacak.
-
-> [!NOTE]
-> Dosya ve klasörlerinizi **~/CloudFiles/Code/Users** klasörünün altında herhangi bir yere ekleyerek tüm jupi ortamlarınızda görünür olmaları gerekir.
-
-Terminale erişmek için:
-
-1. Çalışma alanınızı [Azure Machine Learning Studio](https://ml.azure.com)'da açın.
-1. Sol tarafta, **Not defterleri**' ni seçin.
-1. Sol taraftaki **Kullanıcı dosyaları** bölümünde yer alan herhangi bir not defteri seçin.  Not defteriniz yoksa, önce [bir not defteri oluşturun](#create)
-1. Bir **işlem** hedefi seçin veya yeni bir tane oluşturun ve çalışır hale gelene kadar bekleyin.
-1. **Açık Terminal** simgesini seçin.
-
-    :::image type="content" source="media/how-to-run-jupyter-notebooks/open-terminal.png" alt-text="Açık Terminal":::
-
-1. Simgeyi görmüyorsanız, işlem hedefinin sağındaki **...** ' ı seçin ve ardından **Açık Terminal**' yı seçin.
-
-    :::image type="content" source="media/how-to-run-jupyter-notebooks/alt-open-terminal.png" alt-text="Terminalden aç...":::
-
-
-[Git depoları çalışma alanı dosya sisteminize kopyalama](concept-train-model-git-integration.md#clone-git-repositories-into-your-workspace-file-system)hakkında daha fazla bilgi edinin.
-
-### <a name="copy-and-paste-in-terminal"></a>Terminalde Kopyala ve Yapıştır
-
-> * Windows: `Ctrl-Insert` kopyalayıp `Ctrl-Shift-v` yapıştırmak için veya kullanın `Shift-Insert` .
-> * Mac OS: `Cmd-c` kopyalamak ve `Cmd-v` yapıştırmak için.
-> * FireFox/IE Pano izinlerini düzgün şekilde desteklemiyor olabilir.
-
-### <a name="share-notebooks-and-other-files"></a>Not defterlerini ve diğer dosyaları paylaşma
-
-Bir not defteri veya dosyayı paylaşmak için URL 'YI kopyalayıp yapıştırın.  Bu URL 'ye yalnızca çalışma alanının diğer kullanıcıları erişebilir.  [Çalışma alanınıza erişim verme](how-to-assign-roles.md)hakkında daha fazla bilgi edinin.
-
 ## <a name="edit-a-notebook"></a>Not defterini düzenleme
 
-Bir not defteri düzenlemek için, çalışma alanınızın **Kullanıcı dosyaları** bölümünde yer alan herhangi bir not defterini açın. Düzenlemek istediğiniz hücreye tıklayın. 
+Bir not defteri düzenlemek için, çalışma alanınızın **Kullanıcı dosyaları** bölümünde yer alan herhangi bir not defterini açın. Düzenlemek istediğiniz hücreye tıklayın.  Bu bölümde hiç not defteriniz yoksa, bkz. çalışma alanınızdaki [dosyaları oluşturma ve yönetme](how-to-manage-files.md).
 
 Bir işlem örneğine bağlanmadan Not defterini düzenleyebilirsiniz.  Not defterindeki hücreleri çalıştırmak istediğinizde, bir işlem örneği seçin veya oluşturun.  Durdurulmuş bir işlem örneği seçerseniz, ilk hücreyi çalıştırdığınızda otomatik olarak başlatılır.
 
@@ -101,7 +39,7 @@ Bir işlem örneği çalışırken, herhangi bir Python not defterinde [IntelliS
 
 Ayrıca, Not defteri araç çubuğundan Jupyter veya JupyterLab ' i de başlatabilirsiniz.  Azure Machine Learning, Microsoft Desteği sınırının dışında açık kaynak ürünleri olduklarından jupi veya jupi 'nın hata ve hatalarını düzeltir.
 
-### <a name="focus-mode"></a>Odak modu
+## <a name="focus-mode"></a>Odak modu
 
 Etkin sekmelerinize odaklanabilmeniz için, geçerli görünümünüzü genişletmek üzere odak modunu kullanın. Odak modu, Not defterleri dosya gezginini gizler.
 
@@ -110,14 +48,13 @@ Etkin sekmelerinize odaklanabilmeniz için, geçerli görünümünüzü genişle
 
     :::image type="content" source="media/how-to-run-jupyter-notebooks/focusmode.gif" alt-text="Odak modunu/standart görünümü değiştirme":::
 
-
-### <a name="use-intellisense"></a>IntelliSense kullanma
+## <a name="use-intellisense"></a>IntelliSense kullanma
 
 [IntelliSense](https://code.visualstudio.com/docs/editor/intellisense) , bir dizi özelliği içeren bir kod tamamlama yardımıdır: liste üyeleri, parametre bilgileri, hızlı bilgi ve tam sözcük. Bu özellikler, kullanmakta olduğunuz kod hakkında daha fazla bilgi edinmenize, yazmakta olduğunuz parametreleri izlemenize ve yalnızca birkaç tuş vuruşu ile özelliklere ve yöntemlere çağrılar eklemenize yardımcı olur.  
 
 Kod yazarken, IntelliSense 'i tetiklemek için Ctrl + Space tuşlarını kullanın.
 
-### <a name="clean-your-notebook-preview"></a>Not defterinizi Temizleme (Önizleme)
+## <a name="clean-your-notebook-preview"></a>Not defterinizi Temizleme (Önizleme)
 
 > [!IMPORTANT]
 > Toplama özelliği şu anda genel önizlemededir.
@@ -133,7 +70,7 @@ Bir not defteri oluşturma sırasında, genellikle veri araştırma veya hata ay
 
 Yeni Not defteri, toplama için seçtiğiniz hücreyle aynı sonuçları üretmek için gereken tüm hücrelere sahip yalnızca kod hücrelerini içerir.
 
-### <a name="save-and-checkpoint-a-notebook"></a>Not defteri kaydetme ve kontrol noktası
+## <a name="save-and-checkpoint-a-notebook"></a>Not defteri kaydetme ve kontrol noktası
 
 Azure Machine Learning, bir *ıpynb* dosyası oluşturduğunuzda bir denetim noktası dosyası oluşturur.
 
@@ -145,24 +82,34 @@ Her bir not defteri, her 30 saniyede bir otomatik kaydedilir. Otomatik kaydetme,
  
 Adlandırılmış bir kontrol noktası oluşturmak ve Not defterini kaydedilmiş bir denetim noktasına dönüştürmek için Not defteri menüsünde **kontrol noktaları** ' nı seçin.
 
-## <a name="delete-a-notebook"></a>Not defterini silme
+## <a name="export-a-notebook"></a>Bir not defterini dışarı aktarma
 
-**Örnek** Not *defterlerini silemezsiniz.*  Bu not defterleri, Studio 'nun bir parçasıdır ve her yeni SDK yayımlandığında güncellenir.  
+Not defteri araç çubuğunda, menüyü seçin ve ardından **olarak dışa aktar** ' ı desteklenen türlerden herhangi biri olarak dışa aktarın:
 
-**Kullanıcı dosyaları** not defterlerini şu *yollarla silebilirsiniz:*
+* Not Defteri
+* Python
+* HTML
+* LaTeX
 
-* Studio 'da, bir klasörün veya dosyanın sonundaki **...** öğesini seçin.  Desteklenen bir tarayıcı (Microsoft Edge, Chrome veya Firefox) kullandığınızdan emin olun.
-* Herhangi bir not defteri araç çubuğundan, işlem örneği için Terminal penceresine erişmek üzere [**terminali aç**](#terminal)  ' ı seçin.
-* Ya da bu araçların bulunduğu jupi veya Jupyıterlab.
+:::image type="content" source="media/how-to-run-jupyter-notebooks/export-notebook.png" alt-text="Bir not defterini bilgisayarınıza aktarma":::
+
+İçe aktarılmış dosya bilgisayarınıza kaydedilir.
 
 ## <a name="run-a-notebook-or-python-script"></a>Bir not defteri veya Python betiği çalıştırma
 
-Bir not defteri veya Python betiği çalıştırmak için önce çalışan bir [işlem örneğine](concept-compute-instance.md)bağlanırsınız. İşlem örneğiniz yoksa, oluşturmak için aşağıdaki adımları kullanın: 
+Bir not defteri veya Python betiği çalıştırmak için önce çalışan bir [işlem örneğine](concept-compute-instance.md)bağlanırsınız.
 
-1. **+** Not defteri veya betik araç çubuğunda öğesini seçin. 
-2. Işlem adını adlandırın ve bir **sanal makine boyutu** seçin. 
-3. **Oluştur**’u seçin.
-4. İşlem örneği dosyaya otomatik olarak bağlanır.  Artık işlem örneğinin solundaki aracı kullanarak not defteri hücrelerini veya Python betiğini çalıştırabilirsiniz
+* İşlem örneğiniz yoksa, oluşturmak için aşağıdaki adımları kullanın:
+
+    1. Not defteri veya betik araç çubuğunda, Işlem açılan menüsünde **+ Yeni işlem**' i seçin. Ekran boyutunuza bağlı olarak, bu, bir **...** menüsü altında bulunabilir.
+        :::image type="content" source="media/how-to-run-jupyter-notebooks/new-compute.png" alt-text="Yeni işlem oluştur":::
+    1. Işlem adını adlandırın ve bir **sanal makine boyutu** seçin. 
+    1. **Oluştur**’u seçin.
+    1. İşlem örneği dosyaya otomatik olarak bağlanır.  Artık işlem örneğinin solundaki aracı kullanarak not defteri hücrelerini veya Python betiğini çalıştırabilirsiniz.
+
+* Durdurulmuş bir işlem örneğiniz varsa, işlem açılan listesinin sağ tarafındaki  **Işlem Başlat** ' ı seçin. Ekran boyutunuza bağlı olarak, bu, bir **...** menüsü altında bulunabilir.
+
+    :::image type="content" source="media/how-to-run-jupyter-notebooks/start-compute.png" alt-text="İşlem örneğini Başlat":::
 
 Yalnızca sizin oluşturduğunuz işlem örneklerini görebilir ve kullanabilirsiniz.  **Kullanıcı DOSYALARıNıZ** VM 'den ayrı olarak depolanır ve çalışma alanındaki tüm işlem örnekleri arasında paylaşılır.
 
@@ -209,33 +156,12 @@ Bu eylemler, Not defteri durumunu sıfırlayacaktır ve not defterindeki tüm de
 | İşlem durdur     |    Hiçbir hücre çalıştırılmayacak  |
 | Jupyter veya JupyterLab 'da Not defteri 'ni açın     |    Yeni bir sekmede açılan not defteri.  |
 
-### <a name="add-new-kernels"></a>Yeni çekirdekler Ekle
+## <a name="add-new-kernels"></a>Yeni çekirdekler Ekle
 
-Not defteri, bağlı işlem örneğinde yüklü olan tüm Jupyter çekirdekler 'leri otomatik olarak bulur.  İşlem örneğine bir çekirdek eklemek için:
+Yeni çekirdekler oluşturmak ve işlem örneğinize eklemek için [terminali kullanın](how-to-access-terminal.md#add-new-kernels) . Not defteri, bağlı işlem örneğinde yüklü olan tüm Jupyter çekirdekler 'leri otomatik olarak bulur.
 
-1. Not defteri araç çubuğunda [**Terminal aç**](#terminal) ' ı seçin.
-1. Yeni bir ortam oluşturmak için Terminal penceresini kullanın.  Örneğin, aşağıdaki kod oluşturulur `newenv` :
-    ```shell
-    conda create -y --name newenv
-    ```
-1. Ortamı etkinleştirin.  Örneğin, oluşturduktan sonra `newenv` :
+Yüklü olan çekirdekler üzerinde değişiklik yapmak için sağdaki çekirdek açılan listesini kullanın.  
 
-    ```shell
-    conda activate newenv
-    ```
-1. Yeni ortama privand ipykernel paketini yükleyip bu Conda env için bir çekirdek oluşturun
-
-    ```shell
-    conda install -y pip
-    conda install -y ipykernel
-    python -m ipykernel install --user --name newenv --display-name "Python (newenv)"
-    ```
-1. Çekirdeği yükledikten sonra lütfen sayfayı yenileyin ve bir not defteri açın. Artık çekirdek listesinde yeni çekirdeği görürsünüz.
-
-> [!NOTE]
-> Bir not defteri içinde paket yönetimi için **% PIP** veya **% Conda** Magic işlevlerini kullanarak paketleri, tüm paketlere (Şu anda çalışan çekirdeklerdeki paketler dahil), tüm paketlere başvuran **! PIP** veya **! Conda** yerine **çalışmakta olan çekirdeğe** otomatik olarak yükler.
-
-[Kullanılabilir Jupyter kernels](https://github.com/jupyter/jupyter/wiki/Jupyter-kernels) 'leri yüklenebilir.
 
 ### <a name="status-indicators"></a>Durum göstergeleri
 

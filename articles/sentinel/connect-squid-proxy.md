@@ -14,30 +14,30 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/17/2021
 ms.author: yelevin
-ms.openlocfilehash: b183abf8d42e6f4b1c43db2d87b2650721e0c2a9
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.openlocfilehash: eec88bf85f1b7a2ec8db2bf23c43629d84cc5106
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98567994"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100090454"
 ---
 # <a name="connect-your-squid-proxy-to-azure-sentinel"></a>SQUID ara sunucusunu Azure Sentinel 'e bağlama
 
 > [!IMPORTANT]
 > SQUID Proxy Bağlayıcısı Şu anda **Önizleme** aşamasındadır. Beta, önizleme veya henüz genel kullanıma sunulmayan Azure özelliklerine uygulanan ek koşullar için [Microsoft Azure önizlemeleri için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) 'na bakın.
 
-Bu makalede, SQUID Proxy gerecinizi Azure Sentinel 'e bağlama açıklanmaktadır. SQUID Proxy Data Connector, SQUID günlüklerinizi kolayca Azure Sentinel 'e bağlamanıza olanak tanır. böylece, verileri çalışma kitaplarında görüntüleyebilir, özel uyarılar oluşturmak için kullanabilir ve araştırmayı geliştirebilirsiniz. SQUID Proxy ile Azure Sentinel arasındaki tümleştirme Syslog kullanımını oluşturur.
+Bu makalede, SQUID Proxy gerecinizi Azure Sentinel 'e bağlama açıklanmaktadır. SQUID Proxy Data Connector, SQUID günlüklerinizi kolayca Azure Sentinel 'e bağlamanıza olanak tanır. böylece, verileri çalışma kitaplarında görüntüleyebilir, özel uyarılar oluşturmak için kullanabilir ve araştırmayı geliştirebilirsiniz. SQUID Proxy ile Azure Sentinel arasındaki tümleştirme, Log Analytics Aracısı tarafından yerel dosya işlemeyi kullanır.
 
 > [!NOTE]
 > Veriler, Azure Sentinel çalıştırdığınız çalışma alanının coğrafi konumunda depolanır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure Sentinel çalışma alanında okuma ve yazma izninizin olması gerekir.
 
-## <a name="forward-squid-proxy-logs-to-the-syslog-agent"></a>SQUID proxy günlüklerini Syslog aracısına ilet  
+## <a name="forward-squid-proxy-logs-to-the-log-analytics-agent"></a>SQUID proxy günlüklerini Log Analytics aracısına ilet  
 
-Syslog Aracısı aracılığıyla syslog iletilerini Azure çalışma alanınıza iletmek için SQUID Proxy 'yi yapılandırın.
+SQUID Proxy 'yi, Log Analytics Aracısı aracılığıyla Azure çalışma alanınıza günlük dosyaları gönderecek şekilde yapılandırın.
 
 1. Azure Sentinel gezinti menüsünde **veri bağlayıcıları**' nı seçin.
 
