@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: larryfr
 author: BlackMist
 ms.date: 09/10/2020
-ms.openlocfilehash: a01aab13b87398b7d27af02fa84dd7fadf7b8345
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: b814c12a0d57230a81a68f6030a26ded93bd0399
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99431006"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100097084"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning sürüm notları
 
@@ -162,7 +162,7 @@ Bu makalede Azure Machine Learning sürümleri hakkında bilgi edinin.  Tam SDK 
 ## <a name="2020-11-30"></a>2020-11-30
 ### <a name="azure-machine-learning-studio-notebooks-experience-november-update"></a>Azure Machine Learning Studio Not defteri deneyimi (Kasım güncelleştirmesi)
 + **Yeni özellikler**
-   + Yerel Terminal. Kullanıcılar artık tümleşik Terminal aracılığıyla bir tümleşik terminale ve git işlemine erişime sahip olur [.](./how-to-run-jupyter-notebooks.md#terminal)
+   + Yerel Terminal. Kullanıcılar artık tümleşik Terminal aracılığıyla bir tümleşik terminale ve git işlemine erişime sahip olur [.](./how-to-access-terminal.md)
   + Yinelenen klasör 
   + Işlem açılan için maliyetlendirme 
   + Çevrimdışı Işlem Pyi 
@@ -940,7 +940,7 @@ Artık Azure Machine Learning doğrudan stüdyo Web deneyiminin içinde Machine 
 
 Studio 'dan aşağıdaki Web tabanlı yazma araçlarına erişin:
     
-| Web tabanlı araç  |     Açıklama  |
+| Web tabanlı araç  |     Description  |
 |---|---|
 | Azure ML Studio Not defterleri   |     Not defteri dosyaları için birinci sınıf yazma ve Azure ML Python SDK 'da bulunan tüm işlemleri destekleme. | 
 
@@ -1452,7 +1452,7 @@ Studio 'dan veri kümeleri, işlem hatları, modeller, uç noktaları ve daha fa
 
 Studio 'dan aşağıdaki Web tabanlı yazma araçlarına erişin:
 
-| Web tabanlı araç | Açıklama | 
+| Web tabanlı araç | Description | 
 |-|-|-|
 | Not defteri VM (Önizleme) | Tam olarak yönetilen bulut tabanlı iş istasyonu | 
 | [Otomatik makine öğrenimi](tutorial-first-experiment-automated-ml.md) (Önizleme) | Machine Learning modeli geliştirmeyi otomatikleştirmek için kod deneyimi yok | 

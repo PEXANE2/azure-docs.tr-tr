@@ -3,12 +3,12 @@ title: PowerShell ile Azure VM 'lerini yedekleme ve kurtarma
 description: PowerShell ile Azure Backup kullanarak Azure VM 'lerinin nasıl yedekleneceği ve kurtarılacağı açıklanmaktadır
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: 90bb6f60712fc59aec05ff2e85364fccf00ff1df
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: 66b8fe0109a4dd2e054106b67f893def2ee596b0
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98804801"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100095095"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>PowerShell ile Azure VM 'lerini yedekleme ve geri yükleme
 
@@ -526,6 +526,53 @@ Bir Kullanıcı, yedeklenen kümenin tamamı yerine birkaç diski seçmeli şeki
 > Bunlardan biri seçmeli olarak disklere geri yüklemek için diskleri seçmeli olarak yedekleyecek. Daha fazla ayrıntı [burada](selective-disk-backup-restore.md#selective-disk-restore)verilmiştir.
 
 Diskleri geri yükledikten sonra, VM 'yi oluşturmak için sonraki bölüme gidin.
+
+#### <a name="restore-disks-to-a-secondary-region"></a>Diskleri ikincil bir bölgeye geri yükleme
+
+VM 'lerinizi koruduğunuz kasada çapraz bölge geri yükleme etkinse, yedekleme verileri ikincil bölgeye çoğaltılır. Yedekleme verilerini kullanarak geri yükleme gerçekleştirebilirsiniz. İkincil bölgede geri yükleme tetiklenmesi için aşağıdaki adımları gerçekleştirin:
+
+1. VM 'lerinizin korunduğu [kasa kimliğini getirin](#fetch-the-vault-id) .
+1. [Geri yüklenecek doğru yedekleme öğesini](#select-the-vm-when-restoring-files)seçin.
+1. Geri yüklemeyi gerçekleştirmek için kullanmak istediğiniz ikincil bölgede uygun kurtarma noktasını seçin.
+
+    Bu adımı gerçekleştirmek için şu komutu çalıştırın:
+
+    ```powershell
+    $rp=Get-AzRecoveryServicesBackupRecoveryPoint -UseSecondaryRegion -Item $backupitem -VaultId $targetVault.ID
+    $rp=$rp[0]
+    ```
+
+1. İkincil bölgede geri yükleme tetiklenmesi için [restore-Azrecoveryservicesbackupıtem](/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem) cmdlet 'ini `-RestoreToSecondaryRegion` parametresiyle yürütün.
+
+    Bu adımı gerçekleştirmek için şu komutu çalıştırın:
+
+    ```powershell
+    $restorejob = Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -StorageAccountName "DestAccount" -StorageAccountResourceGroupName "DestRG" -TargetResourceGroupName "DestRGforManagedDisks" -VaultId $targetVault.ID -VaultLocation $targetVault.Location -RestoreToSecondaryRegion -RestoreOnlyOSDisk
+    ```
+
+    Çıkış aşağıdaki örneğe benzeyecektir:
+
+    ```output
+    WorkloadName     Operation             Status              StartTime                 EndTime          JobID
+    ------------     ---------             ------              ---------                 -------          ----------
+    V2VM             CrossRegionRestore   InProgress           4/23/2016 5:00:30 PM                       cf4b3ef5-2fac-4c8e-a215-d2eba4124f27
+    ```
+
+1. Restore işini izlemek için parametresiyle [Get-AzRecoveryServicesBackupJob](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupjob) cmdlet 'ini yürütün `-UseSecondaryRegion` .
+
+    Bu adımı gerçekleştirmek için şu komutu çalıştırın:
+
+    ```powershell
+    Get-AzRecoveryServicesBackupJob -From (Get-Date).AddDays(-7).ToUniversalTime() -To (Get-Date).ToUniversalTime() -UseSecondaryRegion -VaultId $targetVault.ID
+    ```
+
+    Çıkış aşağıdaki örneğe benzeyecektir:
+
+    ```output
+    WorkloadName     Operation            Status               StartTime                 EndTime                   JobID
+    ------------     ---------            ------               ---------                 -------                   -----
+    V2VM             CrossRegionRestore   InProgress           2/8/2021 4:24:57 PM                                 2d071b07-8f7c-4368-bc39-98c7fb2983f7
+    ```
 
 ## <a name="replace-disks-in-azure-vm"></a>Azure VM 'de diskleri değiştirme
 

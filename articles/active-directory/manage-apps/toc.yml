@@ -158,6 +158,8 @@
           href: migration-resources.md
         - name: AD FS uygulamasını Azure’a geçirme
           href: migrate-adfs-apps-to-azure.md
+        - name: Uygulama kimlik doğrulamasını Azure Active Directory geçir
+          href: migrate-application-authentication-to-azure-active-directory.md
         - name: AD FS uygulaması etkinlik raporunu kullanma (önizleme)
           href: migrate-adfs-application-activity.md
     - name: Şirket içi bağlayıcıları yapılandırma

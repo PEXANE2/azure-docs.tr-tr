@@ -31,7 +31,7 @@
   items:
     - name: Modelinizi test etme
       href: test-your-model.md
-    - name: Sınıflandırıcınızı geliştirme
+    - name: Modelinizi geliştirme
       href: getting-started-improving-your-classifier.md
     - name: Etki alanı seçme
       href: select-domain.md

@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 05/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 84a49ea2f6ce4a5119af024ab3de67fa2b89c02e
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: f1f2caa194972bb870dc58cfa0bd6ccb2f8db053
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98539747"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100099923"
 ---
 # <a name="session-host-virtual-machine-configuration"></a>Oturum ana bilgisayarı sanal makine yapılandırması
 
@@ -193,7 +193,7 @@ Yan yana yığın yüklenip etkinleştirilirse, **qwinsta** çıktısı çıktı
 > [!div class="mx-imgBorder"]
 > ![Yan yana yığın, çıktıda RDP-sxs olarak listelenen qwinsta yüklü veya etkin.](media/23b8e5f525bb4e24494ab7f159fa6b62.png)
 
-Aşağıda listelenen kayıt defteri girişlerini inceleyin ve değerlerinin eşleştiğini doğrulayın. Kayıt defteri anahtarları eksikse veya değerler uyuştubulunursa, yan yana yığının nasıl yeniden yükleneceğini öğrenmek için [PowerShell ile bir konak havuzu oluşturma](create-host-pools-powershell.md) ' daki yönergeleri izleyin.
+Aşağıda listelenen kayıt defteri girişlerini inceleyin ve değerlerinin eşleştiğini doğrulayın. Kayıt defteri anahtarları eksikse veya değerler uyuştuorsa, [desteklenen bir işletim sistemi](troubleshoot-agent.md#error-operating-a-pro-vm-or-other-unsupported-os)çalıştırdığınızdan emin olun. Bu durumda, yan yana yığının nasıl yeniden yükleneceğini öğrenmek için [PowerShell ile bir konak havuzu oluşturma](create-host-pools-powershell.md) ' daki yönergeleri izleyin.
 
 ```registry
     HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal

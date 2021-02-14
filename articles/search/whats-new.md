@@ -6,18 +6,25 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
-ms.date: 02/08/2021
+ms.date: 02/09/2021
 ms.custom: references_regions
-ms.openlocfilehash: 7e3f6eeab13a29eddd671411f46ac2220c10f68f
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.openlocfilehash: 08491dcaf66789f13aa9f2e058303a28e7ab8388
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99820866"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100099532"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Azure Bilişsel Arama yenilikleri
 
 Hizmette nelerin yeni olduğunu öğrenin. Hizmette güncel kalmasını sağlamak için bu sayfaya yer işareti ekleyin. Özellikleri genel önizlemede görüntülemek için [Önizleme özelliği listesini](search-api-preview.md) gözden geçirin.
+
+## <a name="february-2021"></a>Şubat 2021
+
+|Özellik&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  |  Description | Kullanılabilirlik  |
+|------------------------------|---------------|---------------|
+| [Belgeleri Sıfırla (Önizleme)](search-howto-run-reset-indexers.md) |  Dizin Oluşturucu iş yüklerindeki ayrı ayrı seçili arama belgelerini yeniden işler. | [Arama REST API 2020-06-30-Önizleme](/rest/api/searchservice/index-preview) |
+| Kullanılabilirlik alanı desteği | Belirli bölgelerde iki veya daha fazla çoğaltma ile, [performans Için ölçeklendirerek](search-performance-optimization.md), iki veya daha fazla ayrı fiziksel konumda çoğaltmalar bulundurarak dayanıklılık elde edin.  | Arama hizmeti oluşturma 'nin bölgesi ve tarihi kullanılabilirliği belirlenir. Ayrıntılar için performans ayarlama belgesine bakın. |
 
 ## <a name="january-2021"></a>Ocak 2021
 

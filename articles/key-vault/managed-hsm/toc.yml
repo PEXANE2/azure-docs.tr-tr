@@ -39,8 +39,6 @@
       href: access-control.md
     - name: Yerel RBAC yerleşik rolleri
       href: built-in-roles.md
-- name: Nasıl yapılır kılavuzları
-  items: null
 - name: Başvuru
   items:
     - name: Azure PowerShell

@@ -9,21 +9,26 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 07/29/2020
+ms.date: 01/19/2021
 ms.author: curtand
-ms.openlocfilehash: 55df08b0782c446d7313e709de9b8ceaeb58ab2b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2e1cfae18265dc00cda9fb66f7b9b5dbbdf6d64d
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88798202"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100092392"
 ---
 # <a name="change-your-work-or-school-account-password-from-the-change-password-page"></a>Parola değiştirme sayfasında iş veya okul hesabınızın parolasını değiştirme
 
 **Hesabım portalının** **parola değiştirme** sayfası, iş veya okul hesabınız için mevcut bir parolayı güncelleştirmenize yardımcı olur, bu da parolayı hatırladığınızı ve hesabınızı kilitsiz olmadığınız varsayılır. Parolanızı anımsamıyorsanız, hesabınızı kilitlediyseniz veya kuruluşunuzda hiç parola alınmadıysa, parolanızı sıfırlamak için güvenlik bilgilerinizi ve mobil cihazınızı kullanabilirsiniz.
 
 >[!Important]
->Bu makale, mevcut bir iş veya okul hesabı için bilinen bir parolayı güncelleştirmeye çalışan kullanıcılara yöneliktir. Xbox, hotmail veya Outlook.com gibi kişisel bir hesaba ulaşmaya çalışan bir kullanıcı varsa, [Microsoft hesabı makalesinde oturum açabilmeniz](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) için içindeki önerileri deneyin. Çalışanlarınız veya diğer kullanıcılarınız için self servis parola sıfırlamayı test etme hakkında daha fazla bilgi bulmaya çalışan bir yöneticisiyseniz, bkz. [self servis parola sıfırlama](../authentication/tutorial-enable-sspr.md).
+>Bu makale, mevcut bir iş veya okul hesabı için bilinen bir parolayı güncelleştirmeye çalışan kullanıcılara yöneliktir. Xbox, hotmail veya Outlook.com gibi kişisel bir hesaba ulaşmaya çalışan bir kullanıcı varsa, [Microsoft hesabı makalesinde oturum açabilmeniz](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) için içindeki önerileri deneyin. Kişisel Microsoft hesabı oturum açarken bir hata görürseniz, kuruluşunuzun etki alanı adını (örneğin contoso.com) veya aşağıdaki URL 'Lerden birindeki kuruluşunuzun **KIRACı kimliğini** kullanarak oturum açabilirsiniz:
+>
+>   - https://myaccount.microsoft.com?tenantId=*your_domain_name*
+>   - https://myaccount.microsoft.com?tenant=*your_tenant_ID*
+>
+>Çalışanlarınız veya diğer kullanıcılarınız için self servis parola sıfırlamayı test etme hakkında daha fazla bilgi bulmaya çalışan bir yöneticisiyseniz, bkz. [self servis parola sıfırlama](../authentication/tutorial-enable-sspr.md).
 
 ## <a name="update-a-password-from-the-change-password-page"></a>Parolayı Değiştir sayfasından bir parolayı güncelleştirin
 

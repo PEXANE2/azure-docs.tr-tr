@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla, rarayudu
 ms.topic: conceptual
-ms.date: 01/20/2021
-ms.openlocfilehash: a74868beea6e5903b6b17a7bc0c82cc822fcd36f
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.date: 02/12/2021
+ms.openlocfilehash: d7ed3fb268920d6f4d015886c560b2d9fcbdc632
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99055187"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100104510"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Azure Logic Apps 'da güvenli erişim ve veriler
 
@@ -123,11 +123,11 @@ Gövdesinde, `KeyType` ya da olarak özelliğini ekleyin `Primary` `Secondary` .
 
 ### <a name="enable-azure-active-directory-open-authentication-azure-ad-oauth"></a>Azure Active Directory açma kimlik doğrulamasını etkinleştirme (Azure AD OAuth)
 
-İstek tabanlı bir tetikleyici tarafından oluşturulan bir uç noktaya gelen çağrılar için, mantıksal uygulamanıza yönelik bir yetkilendirme ilkesi tanımlayarak veya ekleyerek [Azure Active Directory açma kimlik doğrulamasını (Azure AD OAuth)](../active-directory/develop/index.yml) etkinleştirebilirsiniz. Bu şekilde, gelen çağrılar yetkilendirme için OAuth [erişim belirteçleri](../active-directory/develop/access-tokens.md) kullanır.
+İstek tabanlı tetikleyici tarafından oluşturulan bir uç noktaya gelen çağrılar için, mantıksal uygulamanıza yönelik bir yetkilendirme ilkesi tanımlayarak veya ekleyerek [Azure AD OAuth](../active-directory/develop/index.yml) 'ı etkinleştirebilirsiniz. Bu şekilde, gelen çağrılar yetkilendirme için OAuth [erişim belirteçleri](../active-directory/develop/access-tokens.md) kullanır.
 
 Mantıksal uygulamanız bir OAuth erişim belirteci içeren bir gelen istek aldığında, Azure Logic Apps hizmeti belirtecin taleplerini her yetkilendirme ilkesi tarafından belirtilen taleplerle karşılaştırır. Belirtecin talepleri ve en az bir ilkedeki tüm talepler arasında bir eşleşme varsa, gelen istek için Yetkilendirme başarılı olur. Belirteç, yetkilendirme ilkesi tarafından belirtilen sayıdan daha fazla talebe sahip olabilir.
 
-Azure AD OAuth 'ı etkinleştirmeden önce şu hususları gözden geçirin:
+#### <a name="considerations-before-you-enable-azure-ad-oauth"></a>Azure AD OAuth 'ı etkinleştirmeden önce dikkat edilecek noktalar
 
 * İstek uç noktasına gelen çağrı yalnızca Azure AD OAuth veya [paylaşılan erişim imzası (SAS)](#sas)olan bir yetkilendirme şemasını kullanabilir. Tek bir düzenin kullanılması diğer düzeni devre dışı bırakmakla birlikte, her iki düzeni de aynı anda kullanmak bir hataya neden olur çünkü Logic Apps hizmeti hangi düzenin seçeceğini bilmez.
 
@@ -180,11 +180,15 @@ Azure AD OAuth 'ı etkinleştirmeden önce şu hususları gözden geçirin:
    }
    ```
 
+#### <a name="enable-azure-ad-oauth-for-your-logic-app"></a>Mantıksal uygulamanız için Azure AD OAuth 'ı etkinleştirin
+
+Azure portal veya Azure Resource Manager şablonunuz için şu adımları izleyin:
+
 <a name="define-authorization-policy-portal"></a>
 
-#### <a name="define-authorization-policy-in-azure-portal"></a>Azure portal yetkilendirme ilkesini tanımlama
+#### <a name="portal"></a>[Portal](#tab/azure-portal)
 
-Azure portal mantıksal uygulamanız için Azure AD OAuth 'ı etkinleştirmek üzere mantıksal uygulamanıza bir veya daha fazla yetkilendirme ilkesi eklemek için aşağıdaki adımları izleyin:
+[Azure Portal](https://portal.azure.com), mantıksal uygulamanıza bir veya daha fazla yetkilendirme ilkesi ekleyin:
 
 1. [Azure Portal](https://portal.microsoft.com)mantıksal uygulama tasarımcısında mantıksal uygulamanızı bulun ve açın.
 
@@ -216,9 +220,9 @@ Azure portal mantıksal uygulamanız için Azure AD OAuth 'ı etkinleştirmek ü
 
 <a name="define-authorization-policy-template"></a>
 
-#### <a name="define-authorization-policy-in-azure-resource-manager-template"></a>Azure Resource Manager şablonunda yetkilendirme ilkesi tanımlama
+#### <a name="resource-manager-template"></a>[Kaynak Yöneticisi şablonu](#tab/azure-resource-manager)
 
-Mantıksal uygulamanızı dağıtmaya yönelik ARM şablonunda Azure AD OAuth 'yı etkinleştirmek için aşağıdaki adımları ve söz dizimini izleyin:
+ARM şablonunuzda aşağıdaki adımları ve söz dizimini takip eden bir yetkilendirme ilkesi tanımlayın:
 
 1. `properties` [Mantıksal uygulamanızın kaynak tanımına](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md#logic-app-resource-definition)ait bölümünde, yoksa `accessControl` bir nesne içeren bir nesne ekleyin `triggers` .
 
@@ -271,6 +275,8 @@ Mantıksal uygulamanızı dağıtmaya yönelik ARM şablonunda Azure AD OAuth 'y
 ],
 ```
 
+---
+
 <a name="include-auth-header"></a>
 
 #### <a name="include-authorization-header-in-request-trigger-outputs"></a>İstek tetikleyicisi çıktılarına ' Authorization ' üst bilgisini dahil et
@@ -310,11 +316,13 @@ Paylaşılan erişim Imzası (SAS) ile birlikte, mantıksal uygulamanızı çağ
 
 Belirttiğiniz herhangi bir IP adresi ne olursa olsun, [Logic Apps REST API: Iş akışı Tetikleyicileri-Çalıştır](/rest/api/logic/workflowtriggers/run) isteği veya API Management kullanarak istek tabanlı tetikleyicisine sahip bir mantıksal uygulamayı çalıştırmaya devam edebilirsiniz. Ancak, bu senaryo Azure REST API için de [kimlik doğrulaması](../active-directory/develop/authentication-vs-authorization.md) gerektirir. Tüm olaylar Azure denetim günlüğünde görüntülenir. Erişim denetim ilkelerini uygun şekilde ayarladığınızdan emin olun.
 
+Mantıksal uygulamanızın gelen IP adreslerini kısıtlamak için Azure portal veya Azure Resource Manager şablonunuz için şu adımları izleyin:
+
 <a name="restrict-inbound-ip-portal"></a>
 
-#### <a name="restrict-inbound-ip-ranges-in-azure-portal"></a>Azure portal gelen IP aralıklarını kısıtla
+#### <a name="portal"></a>[Portal](#tab/azure-portal)
 
-Mantıksal uygulamanıza ait gelen IP adreslerini kısıtlamak için portalını kullandığınızda, bu kısıtlamalar hem Tetikleyicileri hem de eylemleri etkiler *ve* bu da portaldaki açıklamaya **ızın verilen gelen IP adresleri** altında. Tetikleyicilerle ilgili kısıtlamaları, eylemlerden ayrı olarak ayarlamak için, [ `accessControl` mantıksal uygulamanızın Azure Resource Manager şablonundaki nesneyi](#restrict-inbound-ip-template) veya [REST API: Workflow-Create veya Update işlemini Logic Apps](/rest/api/logic/workflows/createorupdate)kullanın.
+[Azure Portal](https://portal.azure.com), bu filtre hem Tetikleyicileri hem de eylemleri etkiler *ve* Bu, PORTALDA **izin verilen gelen IP adresleri** altındaki açıklamanın aksine. Bu filtreyi Tetikleyiciler ve eylemler için ayrı olarak ayarlamak için, `accessControl` mantıksal uygulamanız için Azure Resource Manager şablonda nesnesini kullanın veya [REST API: Workflow-Create veya Update işlemi Logic Apps](/rest/api/logic/workflows/createorupdate).
 
 1. [Azure Portal](https://portal.azure.com)mantıksal uygulama tasarımcısında mantıksal uygulamanızı açın.
 
@@ -323,23 +331,23 @@ Mantıksal uygulamanıza ait gelen IP adreslerini kısıtlamak için portalını
 1. **Erişim denetimi yapılandırması** bölümünde, **ızın verilen gelen IP adresleri** altında senaryonuz için yolu seçin:
 
    * Mantıksal uygulamanızı yalnızca yerleşik [Azure Logic Apps eylemini](../logic-apps/logic-apps-http-endpoint.md)kullanarak iç içe bir mantıksal uygulama olarak çağrılabilir hale getirmek için yalnızca, iç içe geçmiş mantıksal uygulamayı çağırmak için **Azure Logic Apps** eylemini *kullandığınızda yalnızca* **diğer Logic Apps** seçin.
-   
+
      Bu seçenek, mantıksal uygulama kaynağınızın boş bir dizisini yazar ve yalnızca yerleşik **Azure Logic Apps** eylemini kullanan üst mantıksal uygulamalardan gelen çağrıların iç içe mantıksal uygulamayı tetikleyebilmesine gerek duyar.
 
    * Mantıksal uygulamanızı yalnızca HTTP eylemini kullanarak iç içe geçmiş bir uygulama olarak çağrılabilir hale getirmek için, **yalnızca diğer Logic Apps** *DEĞIL* , **belirli IP aralıklarını** seçin. **Tetikleyiciler Için IP aralıkları** kutusu göründüğünde, ana mantıksal UYGULAMANıN [giden IP adreslerini](../logic-apps/logic-apps-limits-and-config.md#outbound)girin. Geçerli bir IP aralığı şu biçimleri kullanır: *x. x. x. x/x* veya *x. x. x. x-x. x. x.* x.
-   
+
      > [!NOTE]
      > İç içe mantıksal uygulamanızı çağırmak için **yalnızca diğer Logic Apps** SEÇENEĞINI ve http eylemini kullanırsanız, çağrı engellenir ve "401 Yetkisiz" hatası alırsınız.
-        
+
    * Diğer IP 'lerden gelen çağrıları kısıtlamak istediğiniz senaryolarda, **Tetikleyiciler Için IP aralıkları** kutusu göründüğünde, tetikleyicinin kabul ettiği IP adresi aralıklarını belirtin. Geçerli bir IP aralığı şu biçimleri kullanır: *x. x. x. x/x* veya *x. x. x. x-x. x. x.* x.
 
 1. İsteğe bağlı olarak, **çalıştırma geçmişinden GIRILEN IP adreslerine giriş ve çıkış iletileri almak için çağrıları kısıtla**' nın altında, çalıştırma geçmişinde giriş ve çıkış iletilerine erişebilen gelen ÇAĞRıLAR için IP adresi aralıklarını belirtebilirsiniz.
 
 <a name="restrict-inbound-ip-template"></a>
 
-#### <a name="restrict-inbound-ip-ranges-in-azure-resource-manager-template"></a>Azure Resource Manager şablonunda gelen IP aralıklarını kısıtla
+#### <a name="resource-manager-template"></a>[Kaynak Yöneticisi şablonu](#tab/azure-resource-manager)
 
-[Mantıksal uygulamalar için dağıtımı Kaynak Yöneticisi şablonları kullanarak otomatikleştirmeniz](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)durumunda, bölümü kullanarak mantıksal uygulamanızın kaynak tanımında izin VERILEN gelen IP adresi aralıklarını belirtebilirsiniz `accessControl` . Bu bölümde, `triggers` `actions` `contents` özelliği ile bölümü dahil ederek,, ve isteğe bağlı bölümleri uygun şekilde kullanın `allowedCallerIpAddresses` `addressRange` ve özellik değerini *x. x. x. x/x* veya *x. x. x. x-x* . x. x. x biçimindeki izin verilen IP aralığı olarak ayarlayın.
+ARM şablonunuzda, bölümünü kullanarak mantıksal uygulamanızın kaynak tanımında izin verilen gelen IP adresi aralıklarını belirtin `accessControl` . Bu bölümde, `triggers` `actions` `contents` özelliği ile bölümü dahil ederek,, ve isteğe bağlı bölümleri uygun şekilde kullanın `allowedCallerIpAddresses` `addressRange` ve özellik değerini *x. x. x. x/x* veya *x. x. x. x-x* . x. x. x biçimindeki izin verilen IP aralığı olarak ayarlayın.
 
 * İç içe mantıksal uygulamanız yalnızca Azure Logic Apps eylemini kullanan diğer mantıksal uygulamalardan gelen çağrılara izin veren **diğer Logic Apps** seçeneğini kullanıyorsa, `addressRange` özelliği boş bir diziye (**[]**) ayarlayın.
 
@@ -439,6 +447,8 @@ Bu örnekte, HTTP eylemini kullanan Logic Apps 'ten gelen çağrılara izin vere
 }
 ```
 
+---
+
 <a name="secure-operations"></a>
 
 ## <a name="access-to-logic-app-operations"></a>Mantıksal uygulama işlemlerine erişim
@@ -473,11 +483,15 @@ Mantıksal uygulamanızın çalıştırma geçmişinde giriş ve çıkışlara e
 
 ### <a name="restrict-access-by-ip-address-range"></a>IP adresi aralığına göre erişimi kısıtla
 
-Yalnızca belirli IP adresi aralıklarından gelen isteklerin bu verileri görüntülemesi için mantıksal uygulamanızın çalıştırma geçmişinde giriş ve çıkışlara erişimi sınırlayabilirsiniz. Örneğin, herhangi bir kişinin girişlere ve çıkışlara erişmesini engellemek için gibi bir IP adresi aralığı belirtin `0.0.0.0-0.0.0.0` . Yalnızca yönetici izinlerine sahip bir kişi, mantıksal uygulamanızın verilerine "tam zamanında" erişim olanağı sunan bu kısıtlamayı kaldırabilir. Azure portal veya mantıksal uygulama dağıtımı için kullandığınız bir Azure Resource Manager şablonunda kısıtlamak için IP aralıklarını belirtebilirsiniz.
+Yalnızca belirli IP adresi aralıklarından gelen isteklerin bu verileri görüntülemesi için mantıksal uygulamanızın çalıştırma geçmişinde giriş ve çıkışlara erişimi sınırlayabilirsiniz.
 
-#### <a name="restrict-ip-ranges-in-azure-portal"></a>Azure portal IP aralıklarını kısıtla
+Örneğin, herhangi bir kişinin girişlere ve çıkışlara erişmesini engellemek için gibi bir IP adresi aralığı belirtin `0.0.0.0-0.0.0.0` . Yalnızca yönetici izinlerine sahip bir kişi, mantıksal uygulamanızın verilerine "tam zamanında" erişim olanağı sunan bu kısıtlamayı kaldırabilir.
 
-1. Azure portal mantıksal uygulama tasarımcısında mantıksal uygulamanızı açın.
+İzin verilen IP aralıklarını belirtmek için, Azure portal veya Azure Resource Manager şablonunuz için şu adımları izleyin:
+
+#### <a name="portal"></a>[Portal](#tab/azure-portal)
+
+1. [Azure Portal](https://portal.azure.com)mantıksal uygulama tasarımcısında mantıksal uygulamanızı açın.
 
 1. Mantıksal uygulamanızın menüsünde, **Ayarlar**' ın altında, **iş akışı ayarları**' nı seçin.
 
@@ -487,9 +501,9 @@ Yalnızca belirli IP adresi aralıklarından gelen isteklerin bu verileri görü
 
    Geçerli bir IP aralığı şu biçimleri kullanır: *x. x. x. x/x* veya *x. x. x. x-x. x. x.* x
 
-#### <a name="restrict-ip-ranges-in-azure-resource-manager-template"></a>Azure Resource Manager şablonundaki IP aralıklarını kısıtlama
+#### <a name="resource-manager-template"></a>[Kaynak Yöneticisi şablonu](#tab/azure-resource-manager)
 
-[Mantıksal uygulamalar için dağıtımı Kaynak Yöneticisi şablonları kullanarak otomatikleştirmeniz](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)durumunda, `accessControl` mantıksal uygulamanızın kaynak tanımındaki bölümünün bulunduğu bölümü kullanarak IP aralıklarını belirtebilirsiniz `contents` , örneğin:
+ARM şablonunuzda, `accessControl` mantıksal uygulamanızın kaynak tanımındaki bölümünün bulunduğu bölümü kullanarak IP aralıklarını belirtin `contents` , örneğin:
 
 ``` json
 {
@@ -528,11 +542,41 @@ Yalnızca belirli IP adresi aralıklarından gelen isteklerin bu verileri görü
 }
 ```
 
+---
+
 <a name="obfuscate"></a>
 
 ### <a name="secure-data-in-run-history-by-using-obfuscation"></a>Gizleme kullanarak çalıştırma geçmişindeki verileri güvenli hale getirme
 
-Birçok tetikleyici ve eylemin, girdileri, çıkışları veya her ikisini de mantıksal uygulamanın çalıştırma geçmişinden güvenli hale getirmek için ayarları vardır. Bu ayarları kullanarak bu verileri güvenli hale getirmenize yardımcı olması için bu [noktaları gözden geçirin](#obfuscation-considerations).
+Birçok tetikleyici ve eylemin, girdileri, çıkışları veya her ikisini de mantıksal uygulamanın çalıştırma geçmişinden güvenli hale getirmek için ayarları vardır. Bu ayarları kullanarak bu verileri güvenli hale getirmenize yardımcı olması için şu hususları gözden geçirin:
+
+* Bir tetikleyici veya eylemde girişleri veya çıkışları gizlemeniz durumunda Logic Apps, güvenli verileri Azure Log Analytics 'a göndermez. Ayrıca, izleme için bu tetikleyiciye veya eyleme [izlenen Özellikler](../logic-apps/monitor-logic-apps-log-analytics.md#extend-data) ekleyemezsiniz.
+
+* [İş akışı geçmişini işlemek için Logic Apps API 'si](/rest/api/logic/) güvenli çıktılar döndürmez.
+
+* Girişleri çıkardığı veya çıkışları açıkça çıkardığı bir eylemden çıkışları güvenli hale getirmek için bu eylemde el ile **güvenli çıktılar** açın.
+
+* Açık **girişleri** veya **güvenli çıkışları** , çalışma geçmişinin verileri gizleyebileceği şekilde bekleyen aşağı akış eylemlerinde etkinleştirdiğinizden emin olun.
+
+  **Güvenli çıkışlar ayarı**
+
+  Bir tetikleyici veya eylemde **güvenli çıktıları** el ile açtığınızda, Logic Apps çalıştırma geçmişinde bu çıktıları gizler. Bir aşağı akış eylemi açık olarak bu güvenli çıkışları giriş olarak kullanıyorsa Logic Apps, bu eylemin çalışma geçmişinde girişlerini gizler, ancak eylemin **güvenli girişler** ayarını *etkinleştirmez* .
+
+  ![Birçok eylemin giriş ve aşağı akış etkisi olarak güvenli çıktılar](./media/logic-apps-securing-a-logic-app/secure-outputs-as-inputs-flow.png)
+
+  Oluşturma, ayrıştırma JSON ve yanıt eylemlerinin yalnızca **güvenli girişler** ayarı vardır. Açık olduğunda, ayar bu eylemlerin çıkışlarını da gizler. Bu eylemler, yukarı akış güvenli çıkışlarını giriş olarak açıkça kullanıyorsa, Logic Apps bu eylemlerin girişlerini ve çıkışlarını gizler, ancak bu eylemlerin **güvenli girişler** ayarını *etkinleştirmez* . Bir aşağı akış eylemi, giriş olarak oluşturma, ayrıştırma JSON veya Yanıt eylemlerdeki gizli çıkışları açıkça kullanıyorsa, Logic Apps *Bu aşağı akış eyleminin giriş veya çıkışlarını gizlemez*.
+
+  ![Belirli eylemlerdeki aşağı akış etkisi olan giriş olarak güvenli çıktılar](./media/logic-apps-securing-a-logic-app/secure-outputs-as-inputs-flow-special.png)
+
+  **Güvenli girişler ayarı**
+
+  Bir tetikleyici veya eylemde **güvenli girişleri** el ile açtığınızda Logic Apps, bu girdileri çalıştırma geçmişinde gizler. Bir aşağı akış eylemi, giriş olarak bu tetikleyici veya eylemden görünür çıkışları açıkça kullanıyorsa, Logic Apps bu aşağı akış eyleminin çalıştırma geçmişindeki girişlerini gizler, ancak bu eylemde **güvenli girişleri** *etkinleştirmez* ve bu eylemin çıktılarını gizlemez.
+
+  ![Birçok eylemin güvenli girişler ve aşağı akış etkileri](./media/logic-apps-securing-a-logic-app/secure-inputs-impact-on-downstream.png)
+
+  Oluşturma, ayrıştırma JSON ve yanıt eylemleri, tetikleyici veya eylemden güvenli girişler içeren görünür çıktıları açıkça kullanıyorsa, Logic Apps bu eylemlerin girişlerini ve çıkışlarını gizler, ancak bu eylemin **güvenli girişler** ayarını *etkinleştirmez* . Bir aşağı akış eylemi, giriş olarak oluşturma, ayrıştırma JSON veya Yanıt eylemlerdeki gizli çıkışları açıkça kullanıyorsa, Logic Apps *Bu aşağı akış eyleminin giriş veya çıkışlarını gizlemez*.
+
+  ![Belirli eylemlerdeki güvenli girişler ve aşağı akış etkisi](./media/logic-apps-securing-a-logic-app/secure-inputs-flow-special.png)
 
 #### <a name="secure-inputs-and-outputs-in-the-designer"></a>Tasarımcıda güvenli girişler ve çıktılar
 
@@ -575,8 +619,6 @@ Temel tetikleyici veya eylem tanımında `runtimeConfiguration.secureData.proper
 * `"inputs"`: Çalıştırma geçmişindeki girişlerin güvenliğini sağlar.
 * `"outputs"`: Çalıştırma geçmişindeki çıkışların güvenliğini sağlar.
 
-Bu verileri güvenli hale getirmenize yardımcı olması için bu ayarları kullandığınızda [göz önünde bulundurmanız gereken bazı noktalar](#obfuscation-considerations) aşağıda verilmiştir.
-
 ```json
 "<trigger-or-action-name>": {
    "type": "<trigger-or-action-type>",
@@ -594,38 +636,6 @@ Bu verileri güvenli hale getirmenize yardımcı olması için bu ayarları kull
    <other-attributes>
 }
 ```
-
-<a name="obfuscation-considerations"></a>
-
-#### <a name="considerations-when-securing-inputs-and-outputs"></a>Girişlerin ve çıkışların güvenliğini sağlamak için dikkate edilmesi gerekenler
-
-* Bir tetikleyici veya eylemde girişleri veya çıkışları gizlemeniz durumunda Logic Apps, güvenli verileri Azure Log Analytics 'a göndermez. Ayrıca, izleme için bu tetikleyiciye veya eyleme [izlenen Özellikler](../logic-apps/monitor-logic-apps-log-analytics.md#extend-data) ekleyemezsiniz.
-
-* [İş akışı geçmişini işlemek için Logic Apps API 'si](/rest/api/logic/) güvenli çıktılar döndürmez.
-
-* Girişleri çıkardığı veya çıkışları açıkça çıkardığı bir eylemden çıkışları güvenli hale getirmek için bu eylemde el ile **güvenli çıktılar** açın.
-
-* Açık **girişleri** veya **güvenli çıkışları** , çalışma geçmişinin verileri gizleyebileceği şekilde bekleyen aşağı akış eylemlerinde etkinleştirdiğinizden emin olun.
-
-  **Güvenli çıkışlar ayarı**
-
-  Bir tetikleyici veya eylemde **güvenli çıktıları** el ile açtığınızda, Logic Apps çalıştırma geçmişinde bu çıktıları gizler. Bir aşağı akış eylemi açık olarak bu güvenli çıkışları giriş olarak kullanıyorsa Logic Apps, bu eylemin çalışma geçmişinde girişlerini gizler, ancak eylemin **güvenli girişler** ayarını *etkinleştirmez* .
-
-  ![Birçok eylemin giriş ve aşağı akış etkisi olarak güvenli çıktılar](./media/logic-apps-securing-a-logic-app/secure-outputs-as-inputs-flow.png)
-
-  Oluşturma, ayrıştırma JSON ve yanıt eylemlerinin yalnızca **güvenli girişler** ayarı vardır. Açık olduğunda, ayar bu eylemlerin çıkışlarını da gizler. Bu eylemler, yukarı akış güvenli çıkışlarını giriş olarak açıkça kullanıyorsa, Logic Apps bu eylemlerin girişlerini ve çıkışlarını gizler, ancak bu eylemlerin **güvenli girişler** ayarını *etkinleştirmez* . Bir aşağı akış eylemi, giriş olarak oluşturma, ayrıştırma JSON veya Yanıt eylemlerdeki gizli çıkışları açıkça kullanıyorsa, Logic Apps *Bu aşağı akış eyleminin giriş veya çıkışlarını gizlemez*.
-
-  ![Belirli eylemlerdeki aşağı akış etkisi olan giriş olarak güvenli çıktılar](./media/logic-apps-securing-a-logic-app/secure-outputs-as-inputs-flow-special.png)
-
-  **Güvenli girişler ayarı**
-
-  Bir tetikleyici veya eylemde **güvenli girişleri** el ile açtığınızda Logic Apps, bu girdileri çalıştırma geçmişinde gizler. Bir aşağı akış eylemi, giriş olarak bu tetikleyici veya eylemden görünür çıkışları açıkça kullanıyorsa, Logic Apps bu aşağı akış eyleminin çalıştırma geçmişindeki girişlerini gizler, ancak bu eylemde **güvenli girişleri** *etkinleştirmez* ve bu eylemin çıktılarını gizlemez.
-
-  ![Birçok eylemin güvenli girişler ve aşağı akış etkileri](./media/logic-apps-securing-a-logic-app/secure-inputs-impact-on-downstream.png)
-
-  Oluşturma, ayrıştırma JSON ve yanıt eylemleri, tetikleyici veya eylemden güvenli girişler içeren görünür çıktıları açıkça kullanıyorsa, Logic Apps bu eylemlerin girişlerini ve çıkışlarını gizler, ancak bu eylemin **güvenli girişler** ayarını *etkinleştirmez* . Bir aşağı akış eylemi, giriş olarak oluşturma, ayrıştırma JSON veya Yanıt eylemlerdeki gizli çıkışları açıkça kullanıyorsa, Logic Apps *Bu aşağı akış eyleminin giriş veya çıkışlarını gizlemez*.
-
-  ![Belirli eylemlerdeki güvenli girişler ve aşağı akış etkisi](./media/logic-apps-securing-a-logic-app/secure-inputs-flow-special.png)
 
 <a name="secure-action-parameters"></a>
 

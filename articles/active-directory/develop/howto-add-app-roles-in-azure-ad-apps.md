@@ -13,12 +13,12 @@ ms.date: 11/13/2020
 ms.author: kkrishna
 ms.reviewer: marsma, kkrishna, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: b2ac90334ade52d68c775d9db5a84545774f3844
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: fce963bd9ffdc6f768d7b3de4a9e4870add06136
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98013711"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100104255"
 ---
 # <a name="how-to-add-app-roles-to-your-application-and-receive-them-in-the-token"></a>Nasıl yapılır: uygulamanıza uygulama rolleri ekleme ve bunları belirtece alma
 
@@ -49,7 +49,7 @@ Eklediğiniz rol sayısı, Azure Active Directory tarafından zorlanan uygulama 
 
 Azure portal Kullanıcı arabirimini kullanarak bir uygulama rolü oluşturmak için:
 
-1. <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>oturum açın.
+1. <a href="https://portal.azure.com/" target="_blank">Azure portalında</a> oturum açın.
 1. Üst menüdeki **Dizin + abonelik** filtresi ' ni seçin ve ardından uygulama rolü eklemek istediğiniz uygulama kaydını içeren Azure Active Directory kiracıyı seçin.
 1. **Azure Active Directory**'yi bulun ve seçin.
 1. **Yönet**' in altında **uygulama kayıtları**' yi seçin ve ardından uygulama rollerini tanımlamak istediğiniz uygulamayı seçin.
@@ -74,7 +74,7 @@ Azure portal Kullanıcı arabirimini kullanarak bir uygulama rolü oluşturmak i
 
 Bildirimi doğrudan düzenleyerek roller eklemek için:
 
-1. <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>oturum açın.
+1. <a href="https://portal.azure.com/" target="_blank">Azure portalında</a> oturum açın.
 1. Üst menüdeki **Dizin + abonelik** filtresi ' ni seçin ve ardından uygulama rolü eklemek istediğiniz uygulama kaydını içeren Azure Active Directory kiracıyı seçin.
 1. **Azure Active Directory**'yi bulun ve seçin.
 1. **Yönet**' in altında **uygulama kayıtları**' yi seçin ve ardından uygulama rollerini tanımlamak istediğiniz uygulamayı seçin.
@@ -136,7 +136,7 @@ Uygulamanıza uygulama rolleri ekledikten sonra, rollere kullanıcılar ve grupl
 
 Azure portal kullanarak kullanıcılara ve gruplara roller atamak için:
 
-1. <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>oturum açın.
+1. <a href="https://portal.azure.com/" target="_blank">Azure portalında</a> oturum açın.
 1. **Azure Active Directory**, sol taraftaki gezinti menüsünde **Kurumsal uygulamalar** ' ı seçin.
 1. Tüm uygulamalarınızın listesini görüntülemek için **tüm uygulamalar** ' ı seçin. Uygulamanız listede görünmezse, listeyi kısıtlamak için **tüm uygulamalar** listesinin en üstündeki filtreleri kullanın veya uygulamanızı bulmak için listeyi aşağı kaydırın.
 1. Rollere kullanıcı veya güvenlik grubu atamak istediğiniz uygulamayı seçin.
@@ -158,7 +158,7 @@ Uygulama rollerini bir uygulamaya atadığınızda, *Uygulama izinleri* oluştur
 
 Azure portal kullanarak uygulama rollerini bir uygulamaya atamak için:
 
-1. <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>oturum açın.
+1. <a href="https://portal.azure.com/" target="_blank">Azure portalında</a> oturum açın.
 1. **Azure Active Directory**, sol taraftaki gezinti menüsünde **uygulama kayıtları** ' i seçin.
 1. Tüm uygulamalarınızın listesini görüntülemek için **tüm uygulamalar** ' ı seçin. Uygulamanız listede görünmezse, listeyi kısıtlamak için **tüm uygulamalar** listesinin en üstündeki filtreleri kullanın veya uygulamanızı bulmak için listeyi aşağı kaydırın.
 1. Uygulama rolü atamak istediğiniz uygulamayı seçin.

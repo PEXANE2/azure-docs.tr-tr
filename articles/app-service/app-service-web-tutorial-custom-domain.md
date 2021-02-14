@@ -7,12 +7,12 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 08/25/2020
 ms.custom: mvc, seodec18
-ms.openlocfilehash: b45e1fbaf912cc045ba51a79db434baecbabdf43
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: eea42ab17311b85bdce429e22e8d0ed694e2f0ec
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96608274"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100096353"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>Öğretici: mevcut bir özel DNS adını Azure App Service eşleme
 
@@ -127,7 +127,7 @@ Dışında başka bir alt etki alanınız varsa `www` , alt etki `www` alanını
 
 Bir alt etki alanını uygulamanın varsayılan etki alanı adına eşleyin ( `<app-name>.azurewebsites.net` , burada `<app-name>` uygulamanızın adıdır). Alt etki alanı için bir CNAME eşlemesi oluşturmak için `www` iki kayıt oluşturun:
 
-| Kayıt türü | Konak | Değer | Yorumlar |
+| Kayıt türü | Ana bilgisayar | Değer | Yorumlar |
 | - | - | - |
 | CNAME | `www` | `<app-name>.azurewebsites.net` | Etki alanı eşlemesi. |
 | TXT | `asuid.www` | [Daha önce aldığınız doğrulama KIMLIĞI](#get-a-domain-verification-id) | App Service, `asuid.<subdomain>` özel etki alanının sahipliğini doğrulamak için txt kaydına erişir. |
@@ -195,7 +195,7 @@ A kaydını eşlemek için, uygulamanın dış IP adresine ihtiyacınız vardır
 
 Bir kaydı bir uygulamayla eşlemek için genellikle kök etki alanına iki kayıt oluşturun:
 
-| Kayıt türü | Konak | Değer | Yorumlar |
+| Kayıt türü | Ana bilgisayar | Değer | Yorumlar |
 | - | - | - |
 | A | `@` | [Uygulamanın IP adresini kopyalama](#info) bölümünden IP adresi | Etki alanı eşlemesi ( `@` genellikle kök etki alanını temsil eder). |
 | TXT | `asuid` | [Daha önce aldığınız doğrulama KIMLIĞI](#get-a-domain-verification-id) | App Service, `asuid.<subdomain>` özel etki alanının sahipliğini doğrulamak için txt kaydına erişir. Kök etki alanı için kullanın `asuid` . |
@@ -203,7 +203,7 @@ Bir kaydı bir uygulamayla eşlemek için genellikle kök etki alanına iki kay�
 > [!NOTE]
 > `www.contoso.com`Önerilen [CNAME kaydı](#map-a-cname-record)yerine bir kayıt kullanarak bir alt etki alanı (gibi) eklemek için BIR kayıt ve txt kaydımızda aşağıdaki tablo gibi görünmesi gerekir:
 >
-> | Kayıt türü | Konak | Değer |
+> | Kayıt türü | Ana bilgisayar | Değer |
 > | - | - | - |
 > | A | `www` | [Uygulamanın IP adresini kopyalama](#info) bölümünden IP adresi |
 > | TXT | `asuid.www` | [Daha önce aldığınız doğrulama KIMLIĞI](#get-a-domain-verification-id) |
@@ -256,7 +256,7 @@ Azure portal uygulamanın **özel etki alanları** sayfasına geri döndüğün�
 
 `*`Uygulamanın varsayılan etki alanı adına ( `<app-name>.azurewebsites.net` , uygulamanızın adıdır) bir joker karakter adı eşleyin `<app-name>` . Joker karakter adını eşlemek için iki kayıt oluşturun:
 
-| Kayıt türü | Konak | Değer | Yorumlar |
+| Kayıt türü | Ana bilgisayar | Değer | Yorumlar |
 | - | - | - |
 | CNAME | `*` | `<app-name>.azurewebsites.net` | Etki alanı eşlemesi. |
 | TXT | `asuid` | [Daha önce aldığınız doğrulama KIMLIĞI](#get-a-domain-verification-id) | App Service, `asuid` özel etki alanının sahipliğini doğrulamak için txt kaydına erişir. |
@@ -309,17 +309,20 @@ Daha önce yapılandırdığınız DNS adlarına gidin (örneğin,,, `contoso.co
 - Yapılandırılmış özel etki alanında bir kayıt veya CNAME kaydı eksik.
 - Tarayıcı istemcisi etki alanınızın eski IP adresini önbelleğe almıştır. Önbelleği temizleyin ve DNS çözümlemesini yeniden test edin. Windows makinesinde önbelleği `ipconfig /flushdns` ile temizlersiniz.
 
-<a name="virtualdir" aria-hidden="true"></a>
-
 ## <a name="migrate-an-active-domain"></a>Etkin bir etki alanını geçirme
 
 Canlı siteyi ve onun DNS etki alanı adını hiçbir kesinti olmadan App Service'e geçirmek için, bkz. [Etkin DNS adını Azure App Service'e geçirme](manage-custom-dns-migrate-domain.md).
+
+<a name="virtualdir" aria-hidden="true"></a>
 
 ## <a name="redirect-to-a-custom-directory"></a>Özel bir dizine yeniden yönlendirme
 
 Varsayılan olarak, App Service web isteklerini uygulama kodunuzun kök dizinine yönlendirir. Ancak bazı Web çerçeveleri kök dizinde başlatılmaz. Örneğin, [Laravel](https://laravel.com/)`public` alt dizininden başlar. DNS örneğine devam etmek için `contoso.com` , bu tür bir uygulamaya adresinden erişilebilir `http://contoso.com/public` , ancak `http://contoso.com` bunun yerine dizine doğrudan yönlendirmek istersiniz `public` . Bu adım DNS çözümlemesi içermez ancak sanal dizinin özelleştirilmesi ile ilgilidir.
 
-Bir sanal dizini özelleştirmek için, Web uygulaması sayfanızın sol bölmesindeki **uygulama ayarları** ' nı seçin.
+Windows uygulamaları için bir sanal dizin özelleştirmek için, Web uygulaması sayfanızın sol bölmesindeki **uygulama ayarları** ' nı seçin. 
+
+> [!NOTE]
+> Linux uygulamalarında Bu sayfa yoktur. Linux uygulamalarının site kökünü değiştirmek için dile özgü yapılandırma kılavuzlarından (örneğin,[php](configure-language-php.md?pivots=platform-linux#change-site-root)) bakın.
 
 Sayfanın en altında, kök sanal dizin `/` varsayılan olarak `site\wwwroot` dizinine (uygulama kodunuzun kök dizini) işaret eder. Bunu, örneğin `site\wwwroot\public` dizinine işaret edecek şekilde değiştirin ve değişikliklerinizi kaydedin.
 

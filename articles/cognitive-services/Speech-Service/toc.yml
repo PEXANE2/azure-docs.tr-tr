@@ -529,8 +529,6 @@
           displayName: 'ACI,azure container instances,container instances,containers'
           maintainContext: true
           href: ../containers/azure-container-instance-recipe.md
-        - name: Kapsayıcılar hakkında SSS
-          href: speech-container-faq.md
         - name: Bilişsel Hizmetler kapsayıcıları belgeleri
           href: ../containers/index.yml
 - name: Cihazlar

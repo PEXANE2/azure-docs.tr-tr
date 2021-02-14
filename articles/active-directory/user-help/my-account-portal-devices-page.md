@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 07/29/2020
+ms.date: 01/19/2021
 ms.author: curtand
-ms.openlocfilehash: 784ee418c3713cce53d7e99e30fd445e75d144da
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d82b59e887eb35a972812dd82dbca5ca6bc5179b
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88798219"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100096217"
 ---
 # <a name="manage-your-connected-devices-from-the-devices-page"></a>Cihazlar sayfasından bağlı cihazlarınızı yönetin
 
@@ -27,7 +27,12 @@ ms.locfileid: "88798219"
 - Artık sahip olmadığınız, kaybedilmiş veya çalınmış olan cihazları devre dışı bırakın.
 
 >[!Important]
->Bu makale, bir iş veya okul hesabına bağlı cihaz bilgilerini güncelleştirmeye çalışan kullanıcılara yöneliktir. Çalışanlarınız ve diğer kullanımlarınızla ilgili cihaz yönetimi hakkında bilgi arayan bir yöneticiyseniz, [cihaz kimlikleri belgelerine](../devices/index.yml)bakın.
+>Bu makale, bir iş veya okul hesabına bağlı cihaz bilgilerini güncelleştirmeye çalışan kullanıcılara yöneliktir. Kişisel Microsoft hesabı oturum açarken bir hata görürseniz, kuruluşunuzun etki alanı adını (örneğin contoso.com) veya aşağıdaki URL 'Lerden birindeki kuruluşunuzun **KIRACı kimliğini** kullanarak oturum açabilirsiniz:
+>
+>   - https://myaccount.microsoft.com?tenantId=*your_domain_name*
+>   - https://myaccount.microsoft.com?tenant=*your_tenant_ID*
+>
+>Çalışanlarınız ve diğer kullanımlarınızla ilgili cihaz yönetimi hakkında bilgi arayan bir yöneticiyseniz, [cihaz kimlikleri belgelerine](../devices/index.yml)bakın.
 
 ## <a name="view-your-connected-devices"></a>Bağlı cihazlarınızı görüntüleme
 

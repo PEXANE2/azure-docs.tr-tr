@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2020
 ms.author: yelevin
-ms.openlocfilehash: f7f6de717f0ed9a2e27e15199b6f0ea566e0fdcd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 71e1c7787243713b29be9455fee966eff54f6d90
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87021639"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100097662"
 ---
 # <a name="connect-your-pulse-connect-secure-to-azure-sentinel"></a>Azure Sentinel 'de Pulse Connect 'i güvenli hale getirin
 
 > [!IMPORTANT]
 > Azure Sentinel 'de Pulse Connect Secure Data Connector Şu anda genel önizleme aşamasındadır.
-> Bu özellik, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Bu özellik, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Bu makalede, [Pulse Connect güvenli](https://www.pulsesecure.net/products/pulse-connect-secure/) Gerecinizin Azure Sentinel 'e nasıl bağlanacağı açıklanır. Pulse Connect Secure Data Connector, Azure Sentinel ile Pulse Connect güvenli günlüklerinizi kolayca bağlamanıza olanak tanır, panoları görüntüleyebilir, özel uyarılar oluşturabilir ve araştırmayı geliştirebilirsiniz. Pulse Connect Secure ve Azure Sentinel arasında tümleştirme, syslog kullanımını sağlar.
 
@@ -48,7 +48,7 @@ Başarılı bir bağlantı kurulduktan sonra, veriler Syslog altında Log Analyt
 
 ## <a name="validate-connectivity"></a>Bağlantıyı doğrula
 
-Günlüklerinizin Log Analytics görünene kadar 20 dakikadan bu kadar bir zaman çıkabilir. 
+Günlüklerinizin Log Analytics görünmeye başlaması 20 dakikaya kadar sürebilir. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

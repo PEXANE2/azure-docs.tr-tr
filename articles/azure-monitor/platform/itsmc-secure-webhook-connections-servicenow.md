@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 12/31/2020
-ms.openlocfilehash: fc384ffbc246f5ce9fa84b8161cbc4a5226fa5c8
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 7801145ba1bcaa2ffd543becfe190f05d232e8c8
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97843622"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100104969"
 ---
 # <a name="connect-servicenow-to-azure-monitor"></a>ServiceNow 'ı Azure Izleyici 'ye bağlama
 
@@ -22,7 +22,7 @@ Aşağıdaki bölümlerde, Azure 'da ServiceNow ürününüzü bağlama ve güve
 Aşağıdaki önkoşulları karşılatığınızdan emin olun:
 
 * Azure AD kaydedilir.
-* ServiceNow olay yönetimi-ıTOM 'un desteklenen sürümüne sahipsiniz (sürüm Orlando veya üzeri).
+* ServiceNow olay yönetimi-ıTOM 'un desteklenen sürümüne sahipsiniz (New York veya üzeri sürümü).
 
 ## <a name="configure-the-servicenow-connection"></a>ServiceNow bağlantısını yapılandırma
 

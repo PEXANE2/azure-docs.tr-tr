@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 11/19/2019
+ms.date: 02/09/2021
 ms.author: jeedes
-ms.openlocfilehash: ba58af8d3d28efcc7f97be01a96202a2203a3459
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: 1290a13f23f49a99d5b9d962d93d91bc3331356d
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98796936"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100093152"
 ---
 # <a name="tutorial-configure-single-sign-on-sso-between-azure-active-directory-and-f5"></a>Öğretici: Azure Active Directory ile F5 arasında çoklu oturum açma (SSO) yapılandırma
 
@@ -26,7 +26,8 @@ Bu öğreticide, F5 'i Azure Active Directory (Azure AD) ile tümleştirmeyi ö�
 * Kullanıcılarınızın Azure AD hesaplarıyla F5 'e otomatik olarak oturum açmalarına olanak sağlayın.
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-Azure AD 'de çoklu oturum açma ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory uygulamalarda çoklu oturum açma](../manage-apps/what-is-single-sign-on.md).
+> [!NOTE]
+> F5 BIG-IP APM [Şimdi satın al](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/f5-networks.f5-big-ip-best?tab=Overview).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -113,18 +114,18 @@ Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test eders
 
 F5 'in tümleştirmesini Azure AD 'ye göre yapılandırmak için Galeri 'den yönetilen SaaS uygulamaları listenize F5 ' i eklemeniz gerekir.
 
-1. [Azure Portal](https://portal.azure.com) iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
+1. Azure portal iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
 1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
 1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
 1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
 1. **Galeriden Ekle** bölümünde, arama kutusuna **F5** yazın.
 1. Sonuçlar panelinden **F5** ' i seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-f5"></a>F5 için Azure AD çoklu oturum açmayı yapılandırma ve test etme
+## <a name="configure-and-test-azure-ad-sso-for-f5"></a>F5 için Azure AD SSO 'yu yapılandırma ve test etme
 
 **B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'yu F5 ile yapılandırın ve test edin. SSO 'nun çalışması için, F5 'teki bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
-Azure AD SSO 'yu F5 ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
+Azure AD SSO 'yu F5 ile yapılandırmak ve test etmek için aşağıdaki adımları gerçekleştirin:
 
 1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
     1. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
@@ -137,7 +138,7 @@ Azure AD SSO 'yu F5 ile yapılandırmak ve test etmek için aşağıdaki yapı t
 
 Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-1. [Azure Portal](https://portal.azure.com/) **F5** uygulaması tümleştirme sayfasında **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
+1. Azure portal **F5** uygulaması tümleştirme sayfasında **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
 1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
 1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
 
@@ -183,19 +184,10 @@ Bu bölümde, F5 'e erişim vererek Azure çoklu oturum açma özelliğini kulla
 1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
 1. Uygulamalar listesinde **F5**' i seçin.
 1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
-
-   !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
-
 1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
-
-    ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
-
 1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. Kullanıcılara bir rolün atanmasını bekliyorsanız, **Rol Seç** açılır listesinden bunu seçebilirsiniz. Bu uygulama için ayarlanmış bir rol yoksa, "varsayılan erişim" rolü seçili olduğunu görürsünüz.
 1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
-1. **Koşullu erişim** ' e tıklayın.
-1. **Yeni ilke**' ye tıklayın.
-1. Şimdi, koşullu erişim ilkesi için bir kaynak olarak F5 uygulamanızı görebilir ve çok faktörlü auth, cihaz tabanlı erişim denetimi veya kimlik koruma Ilkesi dahil herhangi bir koşullu erişim uygulayabilirsiniz.
 
 ## <a name="configure-f5-sso"></a>F5 SSO 'yu Yapılandır
 
@@ -355,9 +347,9 @@ Bu bölüm, Kılavuzlu yapılandırmayı kullanmezseniz veya ek parametreler ekl
 
     f. **Eşleşen kaynak =% {Session. Server. landinguri}** 
 
-    örneğin: **Eşleşen değer =/** _
+    örneğin: **Eşleşen değer =/***
 
-    h. _ *Update* 'e tıklayın*
+    h. **Güncelleştir** 'e tıklayın
 
     i. **Tamam 'a** tıklayın
 
@@ -449,26 +441,24 @@ Bu bölümde, F5 'te B. Simon adlı bir Kullanıcı oluşturacaksınız. F5 plat
 
 ## <a name="test-sso"></a>Test SSO 'SU 
 
-Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açma yapılandırmanızı aşağıdaki seçeneklerle test edersiniz. 
 
-Erişim panelinde F5 kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız F5 'te otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](../user-help/my-apps-portal-end-user-access.md).
+#### <a name="sp-initiated"></a>SP başlatıldı:
 
-## <a name="additional-resources"></a>Ek kaynaklar
+* Azure portal içinde **Bu uygulamayı test et** ' e tıklayın. Bu, oturum açma akışını başlatabileceğiniz F5 oturum açma URL 'sine yeniden yönlendirilir.  
 
-- [ SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi ](./tutorial-list.md)
+* Doğrudan F5 oturum açma URL 'sine gidin ve oturum açma akışını buradan başlatın.
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir? ](../manage-apps/what-is-single-sign-on.md)
+#### <a name="idp-initiated"></a>IDP başlatıldı:
 
-- [Azure Active Directory'de koşullu erişim nedir?](../conditional-access/overview.md)
+* Azure portal **Bu uygulamayı test et** ' e tıklayın ve SSO 'Yu ayarladığınız F5 'te otomatik olarak oturum açmış olmanız gerekir 
 
-- [Azure AD ile F5 'i deneyin](https://aad.portal.azure.com/)
+Uygulamayı dilediğiniz modda test etmek için Microsoft My Apps ' i de kullanabilirsiniz. Uygulamalarım içinde F5 kutucuğuna tıkladığınızda, SP modunda yapılandırıldıysa oturum açma akışını başlatmak için uygulama oturum açma sayfasına yönlendirilirsiniz ve ıDP modunda yapılandırıldıysa, SSO 'yu ayarladığınız F5 'te otomatik olarak oturum açmış olmanız gerekir. Uygulamalarım hakkında daha fazla bilgi için bkz. [uygulamalarıma giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-- [Kerberos uygulaması için F5 çoklu oturum açmayı yapılandırma](kerbf5-tutorial.md)
+> [!NOTE]
+> F5 BIG-IP APM [Şimdi satın al](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/f5-networks.f5-big-ip-best?tab=Overview).
 
-- [Gelişmiş Kerberos uygulaması için F5 çoklu oturum açmayı yapılandırma](advance-kerbf5-tutorial.md)
+## <a name="next-steps"></a>Sonraki adımlar
 
-- [F5 BIG-IP APM ve güvenli karma erişim için Azure AD tümleştirmesi](https://docs.microsoft.com/azure/active-directory/manage-apps/f5-aad-integration)
+F5 'i yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
-- [Güvenli karma erişim için Azure IaaS 'de F5 BIG-IP Virtual Edition VM dağıtma öğreticisi](https://docs.microsoft.com/azure/active-directory/manage-apps/f5-bigip-deployment-guide)
-
-- [Parola açısından daha az VPN için F5 BIG-IP ile çoklu oturum açma tümleştirmesi Azure Active Directory öğreticisi](https://docs.microsoft.com/azure/active-directory/manage-apps/f5-aad-password-less-vpn) 

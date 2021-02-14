@@ -781,6 +781,8 @@
             - name: Kullanılabilirlik uyarıları
               displayname: 'alerts, global, alerting'
               href: app/availability-alerts.md
+            - name: SLA raporu
+              href: app/sla-report.md
             - name: Sorun giderme
               displayname: 'availability, troubleshoot, troubleshoot availability'
               href: app/troubleshoot-availability.md
@@ -794,8 +796,8 @@
         - name: Canlı Ölçüm akışı
           displayname: 'live, quickpulse, quick pulse, live metrics'
           href: app/live-stream.md
-        - name: SLA raporu
-          href: app/sla-report.md
+        - name: İş öğesi tümleştirmesi
+          href: app/work-item-integration.md
         - name: Ölçümler
           items:
             - name: Günlük tabanlı ve önceden toplanmış ölçümler

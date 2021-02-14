@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: end-user-help
-ms.date: 10/19/2020
+ms.date: 01/19/2021
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: 8da9e97aaa2c6d99990df4221d8b6e99ab18ac83
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 34885e2a364778a2f81f4920aa26aa3bb5f40320
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93124821"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100095027"
 ---
 # <a name="perform-an-access-review-from-the-my-apps-portal"></a>Uygulamalarım portalından bir erişim incelemesi gerçekleştirme
 
@@ -29,6 +29,11 @@ Uygulamalarınız ve gruplarınız için erişim gözden geçirmeleri gerçekle�
 
 >[!Important]
 >Bu içerik, **uygulamalarım** kullanıcılarına yöneliktir. Yöneticiyseniz, [uygulama yönetimi belgelerinde](../manage-apps/index.yml)bulut tabanlı uygulamalarınızın nasıl ayarlanacağı ve yönetileceği hakkında daha fazla bilgi edinebilirsiniz.
+>
+> Kişisel bir Microsoft hesabı oturum açarken hata görürseniz, kuruluşunuzun etki alanı adını (örneğin contoso.com) veya aşağıdaki URL 'Lerden birindeki kuruluşunuzun **KIRACı kimliğini** kullanarak oturum açabilirsiniz:
+>
+>   - https://myapplications.microsoft.com?tenantId=*your_domain_name*
+>   - https://myapplications.microsoft.com?tenant=*your_tenant_ID*
 
 ## <a name="manage-access-reviews"></a>Erişim incelemelerini yönetme
 
@@ -41,17 +46,17 @@ Yöneticiniz kendi erişim incelemelerinizi gerçekleştirme izni verdiyse, kend
 
 1. İş veya okul hesabınızda oturum açın.
 
-2. Web tarayıcınızı açın ve adresine gidin https://myapps.microsoft.com veya kuruluşunuz tarafından sunulan bağlantıyı kullanın. Örneğin, kuruluşunuz için, gibi özelleştirilmiş bir sayfaya yönlendirilmeyebilirsiniz https://myapps.microsoft.com/contoso.com .
+1. Web tarayıcınızı açın ve adresine gidin https://myapps.microsoft.com veya kuruluşunuz tarafından sunulan bağlantıyı kullanın. Örneğin, kuruluşunuz için, gibi özelleştirilmiş bir sayfaya yönlendirilmeyebilirsiniz https://myapps.microsoft.com/contoso.com .
 
     Kuruluşunuzun sahip olduğu ve kullanabileceğiniz bulut tabanlı uygulamaların tümünü gösteren **uygulamalar** sayfası görüntülenir.
 
     ![Uygulamalarım portalındaki uygulamalar sayfası](media/my-apps-portal/my-apps-home.png)
 
-3. Onayınızı bekleyen erişim gözden geçirmeleri listesini görmek için **erişim İncelemeleri** kutucuğunu seçin.
+1. Onayınızı bekleyen erişim gözden geçirmeleri listesini görmek için **erişim İncelemeleri** kutucuğunu seçin.
 
     ![Kuruluş için bekleyen erişim gözden geçirmeleri içeren erişim İncelemeleri sayfası](media/my-apps-portal/my-apps-portal-access-reviews-page.png)
 
-4. Erişim incelemenizi başlatmak için **gözden geçirmeyi** Başlat ' ı seçin.
+1. Erişim incelemenizi başlatmak için **gözden geçirmeyi** Başlat ' ı seçin.
 
 5. Erişiminizi gözden geçirin ve hâlâ gerekli olup olmadığını saptayın.
 
@@ -62,11 +67,11 @@ Yöneticiniz kendi erişim incelemelerinizi gerçekleştirme izni verdiyse, kend
 
 6. Erişiminizi **kaldırmak için, erişiminizi korumak Için** **Evet** ' i seçin.
 
-    **Evet** ' i seçerseniz, **neden** kutusunda bir gerekçe belirtmeniz gerekebilir.
+    **Evet**' i seçerseniz, **neden** kutusunda bir gerekçe belirtmeniz gerekebilir.
 
     ![Örnek metinle ilgili neden kutusunu gösteren erişim gözden geçirme sayfası](media/my-apps-portal/my-apps-portal-perform-access-reviews-reason-box.png)
 
-7. **Gönder** ’i seçin.
+7. **Gönder**’i seçin.
 
     Erişim incelemeniz tamamlanmıştır ve **My Apps** portalına dönersiniz.
 

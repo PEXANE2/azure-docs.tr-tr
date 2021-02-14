@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/23/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 2da90a2c8950d85d8db2a414bbe63dfc7b94cf01
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 4388c1a43cf958133356ed9d1ac80aec3ba0ce16
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98601332"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100093650"
 ---
 # <a name="create--use-software-environments-in-azure-machine-learning"></a>Azure Machine Learning yazılım ortamları oluşturun & kullanın
 
@@ -34,7 +34,7 @@ Bu makaledeki örneklerde nasıl yapılacağı gösterilmektedir:
 
 Ortamların Azure Machine Learning nasıl çalıştığı hakkında üst düzey bir genel bakış için bkz. [ml ortamları nedir?](concept-environments.md) Geliştirme ortamlarını yapılandırma hakkında daha fazla bilgi için [buraya](how-to-configure-environment.md)bakın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Python için Azure MACHINE LEARNING SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py) (>= 1.13.0)
 * [Azure Machine Learning çalışma alanı](how-to-manage-workspace.md)
@@ -398,7 +398,7 @@ service = Model.deploy(
 
 ## <a name="notebooks"></a>Notebooks
 
-Bu [makalede](./how-to-run-jupyter-notebooks.md#add-new-kernels) bir Conda ortamının bir not defterine çekirdek olarak nasıl yükleneceğine ilişkin bilgiler sağlanmaktadır.
+Bu [makalede](./how-to-access-terminal.md#add-new-kernels) bir Conda ortamının bir not defterine çekirdek olarak nasıl yükleneceğine ilişkin bilgiler sağlanmaktadır.
 
 [Özel bir Docker temel görüntüsünü kullanarak model dağıtma](how-to-deploy-custom-docker-image.md) özel bir Docker temel görüntüsü kullanarak bir modelin nasıl dağıtılacağını gösterir.
 

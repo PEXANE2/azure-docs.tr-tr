@@ -6,20 +6,20 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 11/17/2020
+ms.date: 02/09/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5802070bf9b495c0e866d160d6661349369a444e
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 5b6bd16eacf4b1bbb7b93f5500813e7fa9dc7eef
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95993762"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100095856"
 ---
 # <a name="enable-and-manage-blob-versioning"></a>Blob sürüm oluşturmayı etkinleştirme ve yönetme
 
-Bir nesnenin önceki sürümlerini otomatik olarak sürdürmek için blob Storage sürümü oluşturmayı etkinleştirebilirsiniz.  Blob sürümü oluşturma etkinleştirildiğinde, yanlışlıkla değiştirildiyse veya silinirse verilerinizi kurtarmak için bir Blobun önceki bir sürümünü geri yükleyebilirsiniz.
+Bir blob 'un önceki sürümlerini değiştirildiğinde veya silindiğinde blob Storage sürümü oluşturmayı etkinleştirebilirsiniz. Blob sürümü oluşturma etkinleştirildiğinde, yanlışlıkla değiştirildiyse veya silinirse verilerinizi kurtarmak için bir Blobun önceki bir sürümünü geri yükleyebilirsiniz.
 
 Bu makalede, Azure portal veya bir Azure Resource Manager şablonu kullanılarak depolama hesabı için blob sürüm oluşturma 'nın nasıl etkinleştirileceği veya devre dışı bırakılacağı gösterilmektedir. Blob sürümü oluşturma hakkında daha fazla bilgi için bkz. [BLOB sürümü oluşturma](versioning-overview.md).
 
@@ -27,15 +27,41 @@ Bu makalede, Azure portal veya bir Azure Resource Manager şablonu kullanılarak
 
 ## <a name="enable-blob-versioning"></a>Blob sürümü oluşturmayı etkinleştirme
 
-# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure portalı](#tab/portal)
 
-Azure portal blob sürümü oluşturmayı etkinleştirmek için:
+Azure portal bir depolama hesabı için blob sürüm oluşturmayı etkinleştirmek için:
 
 1. Portalda depolama hesabınıza gidin.
 1. **BLOB hizmeti** altında **veri koruma**' yı seçin.
 1. **Sürüm oluşturma** bölümünde, **etkin**' i seçin.
 
 :::image type="content" source="media/versioning-enable/portal-enable-versioning.png" alt-text="Azure portal blob sürümü oluşturmayı nasıl etkinleştireceğinizi gösteren ekran görüntüsü":::
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+PowerShell ile bir depolama hesabı için blob sürüm oluşturmayı etkinleştirmek için önce [az. Storage](https://www.powershellgallery.com/packages/Az.Storage) Module Version 2.3.0 veya üstünü yüklemeniz gerekir. Ardından, aşağıdaki örnekte gösterildiği gibi, sürüm oluşturmayı etkinleştirmek için [Update-AzStorageBlobServiceProperty](/powershell/module/az.storage/update-azstorageblobserviceproperty) komutunu çağırın. Açılı ayraçlar içindeki değerleri kendi değerlerinizle değiştirmeyi unutmayın:
+
+```powershell
+# Set resource group and account variables.
+$rgName = "<resource-group>"
+$accountName = "<storage-account>"
+
+# Enable versioning.
+Update-AzStorageBlobServiceProperty -ResourceGroupName $rgName `
+    -StorageAccountName $accountName `
+    -IsVersioningEnabled $true
+```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Azure CLı ile bir depolama hesabı için blob sürüm oluşturmayı etkinleştirmek üzere önce Azure CLı sürüm 2.2.0 veya üstünü yüklemeniz gerekir. Ardından, aşağıdaki örnekte gösterildiği gibi, sürüm oluşturmayı etkinleştirmek için [az Storage Account blob-Service-Properties Update](/cli/azure/ext/storage-blob-preview/storage/account/blob-service-properties#ext_storage_blob_preview_az_storage_account_blob_service_properties_update) komutunu çağırın. Açılı ayraçlar içindeki değerleri kendi değerlerinizle değiştirmeyi unutmayın:
+
+```azurecli
+az storage account blob-service-properties update \
+    --resource-group <resource_group> \
+    --account-name <storage-account> \
+    --enable-versioning true
+```
 
 # <a name="template"></a>[Şablon](#tab/template)
 

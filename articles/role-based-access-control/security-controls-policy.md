@@ -1,18 +1,18 @@
 ---
 title: Azure RBAC için Azure Ilke mevzuat uyumluluk denetimleri
 description: Azure rol tabanlı erişim denetimi (Azure RBAC) için kullanılabilen Azure Ilke mevzuat uyumluluk denetimlerini listeler. Bu yerleşik ilke tanımları, Azure kaynaklarınızın uyumluluğunu yönetmek için yaygın yaklaşımlar sağlar.
-ms.date: 02/04/2021
+ms.date: 02/09/2021
 ms.topic: sample
 author: rolyon
 ms.author: rolyon
 ms.service: role-based-access-control
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 7306002099c512a64e963972ac1a28a96411efb8
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: afaa76cb475ad9d63d69bd8d535180e2d7dbe4e2
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99556804"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100093375"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-rbac"></a>Azure RBAC için Azure Ilke mevzuat uyumluluk denetimleri
 

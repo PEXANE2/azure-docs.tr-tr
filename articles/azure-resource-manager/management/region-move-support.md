@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: reference
 ms.date: 08/25/2020
 ms.author: raynew
-ms.openlocfilehash: 49c5828e02bf96a536ff14f6b84e81f7adbe3090
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: 18d4d84462d528b718d784ff6a16ecf990ed0d20
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98806896"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100094024"
 ---
 # <a name="support-for-moving-azure-resources-across-regions"></a>Bölgeler arasında Azure kaynaklarını taşıma desteği
 
@@ -151,7 +151,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > - [Microsoft. Portal](#microsoftportal)
 > - [Microsoft. PowerBI](#microsoftpowerbi)
 > - [Microsoft. Powerbiadanmış](#microsoftpowerbidedicated)
-> - [Microsoft. ProjectBabylon](#microsoftprojectbabylon)
+> - [Microsoft. purview](#microsoftpurview)
 > - [Microsoft. ProviderHub](#microsoftproviderhub)
 > - [Microsoft. hisse](#microsoftquantum)
 > - [Microsoft. RecoveryServices](#microsoftrecoveryservices)
@@ -1518,7 +1518,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | ------------- | ----------- |
 > | kapasiteler |  Hayır | 
 
-## <a name="microsoftprojectbabylon"></a>Microsoft. ProjectBabylon
+## <a name="microsoftpurview"></a>Microsoft. purview
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Bölge taşıma | 

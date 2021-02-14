@@ -11,12 +11,12 @@ ms.subservice: msi
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: references_regions
-ms.openlocfilehash: 31ca126c75d5c2e3fa7fd91f3398202fad418183
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: 969ca74d628da2bf91e0a7c091c9792f2676fb71
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99555612"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100095690"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Azure kaynakları için yönetilen kimlikleri destekleyen hizmetler
 
@@ -355,6 +355,17 @@ Yönetilen kimlik türü | Tüm genel kullanıma açık<br>Küresel Azure bölge
 Azure SignalR hizmeti için yönetilen kimliği (varsa) yapılandırmak üzere aşağıdaki listeye bakın:
 
 - [Azure Resource Manager şablonu](../../azure-signalr/howto-use-managed-identity.md)
+
+### <a name="azure-resource-mover"></a>Azure Kaynak Taşıyıcı
+
+Yönetilen kimlik türü | Tüm genel kullanıma açık<br>Küresel Azure bölgeleri | Azure Kamu | Azure Almanya | Azure China 21Vianet |
+| --- | :-: | :-: | :-: | :-: |
+| Sistem tarafından atanan | Azure Kaynak taşıyıcısı hizmetinin kullanılabildiği bölgelerde kullanılabilir | Kullanılamaz | Kullanılamaz | Kullanılamaz |
+| Kullanıcı tarafından atanan | Kullanılamaz | Kullanılamaz | Kullanılamaz | Kullanılamaz |
+
+Azure Kaynak taşıyıcısı 'ni kullanmak için aşağıdaki belgeye başvurun:
+
+- [Azure Kaynak Taşıyıcı](../../resource-mover/overview.md)
 
 ## <a name="azure-services-that-support-azure-ad-authentication"></a>Azure AD kimlik doğrulamasını destekleyen Azure hizmetleri
 

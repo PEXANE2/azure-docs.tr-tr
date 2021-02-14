@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 02/04/2021
+ms.date: 02/09/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 84318d814637b9a68a3920ea4167cda7e0d0dcb6
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: 6ce7ab768bab32dc6af00f6594a81a6773c67a9e
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99561891"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100096910"
 ---
 ## <a name="azure-security-benchmark"></a>Azure Güvenlik Karşılaştırması
 
@@ -20,7 +20,7 @@ Tüm Azure hizmetleri için kullanılabilen Azure Ilkesi 'nin Bu uyumluluk stand
 
 |Etki alanı |Denetim KIMLIĞI |Denetim başlığı |İlke<br /><sub>(Azure portal)</sub> |İlke sürümü<br /><sub>GitHub</sub>  |
 |---|---|---|---|---|
-|Günlüğe Kaydetme ve Tehdit Algılama |LT-4 |Azure kaynakları için günlüğe kaydetmeyi etkinleştirme |[Data Lake Analytics tanılama günlükleri etkinleştirilmelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc95c74d9-38fe-4f0d-af86-0c7d626a315c) |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Data%20Lake/DataLakeAnalytics_AuditDiagnosticLog_Audit.json) |
+|Günlüğe Kaydetme ve Tehdit Algılama |LT-4 |Azure kaynakları için günlüğe kaydetmeyi etkinleştirme |[Data Lake Analytics kaynak günlüklerinin etkinleştirilmesi gerekir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc95c74d9-38fe-4f0d-af86-0c7d626a315c) |[4.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Data%20Lake/DataLakeAnalytics_AuditDiagnosticLog_Audit.json) |
 
 ## <a name="azure-security-benchmark-v1"></a>Azure Güvenlik kıyaslaması v1
 
@@ -30,7 +30,7 @@ Tüm Azure hizmetleri için kullanılabilen Azure Ilkesi 'nin Bu uyumluluk stand
 
 |Etki alanı |Denetim KIMLIĞI |Denetim başlığı |İlke<br /><sub>(Azure portal)</sub> |İlke sürümü<br /><sub>GitHub</sub>  |
 |---|---|---|---|---|
-|Günlüğe Kaydetme ve İzleme |2.3 |Azure kaynakları için denetim günlüğünü etkinleştirme |[Data Lake Analytics tanılama günlükleri etkinleştirilmelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc95c74d9-38fe-4f0d-af86-0c7d626a315c) |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Data%20Lake/DataLakeAnalytics_AuditDiagnosticLog_Audit.json) |
+|Günlüğe Kaydetme ve İzleme |2.3 |Azure kaynakları için denetim günlüğünü etkinleştirme |[Data Lake Analytics kaynak günlüklerinin etkinleştirilmesi gerekir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc95c74d9-38fe-4f0d-af86-0c7d626a315c) |[4.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Data%20Lake/DataLakeAnalytics_AuditDiagnosticLog_Audit.json) |
 
 ## <a name="hipaa-hitrust-92"></a>HIPAA HITRUST 9.2
 
@@ -39,5 +39,5 @@ Bu uyumluluk standardı hakkında daha fazla bilgi için bkz. [HIPAA HITRUST 9,2
 
 |Etki alanı |Denetim KIMLIĞI |Denetim başlığı |İlke<br /><sub>(Azure portal)</sub> |İlke sürümü<br /><sub>GitHub</sub>  |
 |---|---|---|---|---|
-|Denetim günlüğü |1210.09 aa3System. 3-09. aa |Kuruluşun içinde veya dışında kapsanan bilgilerin tüm kapanışları, olay, alıcı ve gönderici için açıklama türü, tarih/saat gibi günlüğe kaydedilir. |[Data Lake Analytics tanılama günlükleri etkinleştirilmelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc95c74d9-38fe-4f0d-af86-0c7d626a315c) |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Data%20Lake/DataLakeAnalytics_AuditDiagnosticLog_Audit.json) |
+|Denetim günlüğü |1210.09 aa3System. 3-09. aa |Kuruluşun içinde veya dışında kapsanan bilgilerin tüm kapanışları, olay, alıcı ve gönderici için açıklama türü, tarih/saat gibi günlüğe kaydedilir. |[Data Lake Analytics kaynak günlüklerinin etkinleştirilmesi gerekir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc95c74d9-38fe-4f0d-af86-0c7d626a315c) |[4.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Data%20Lake/DataLakeAnalytics_AuditDiagnosticLog_Audit.json) |
 

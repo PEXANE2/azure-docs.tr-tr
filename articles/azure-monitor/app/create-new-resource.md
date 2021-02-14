@@ -2,17 +2,20 @@
 title: Yeni bir Azure Application Insights kaynağı oluşturma | Microsoft Docs
 description: Yeni bir canlı uygulama için Application Insights izlemeyi el ile ayarlayın.
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: e69611d650f61630c8b36f7387b79cffbb61f227
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.date: 02/10/2021
+ms.openlocfilehash: 3233aed895eac269bd34a961728b3302581ff360
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99062922"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100104595"
 ---
 # <a name="create-an-application-insights-resource"></a>Application Insights kaynağı oluşturma
 
 Azure Application Insights, uygulamanız hakkındaki verileri bir Microsoft Azure *kaynağında* görüntüler. Bu nedenle yeni bir kaynak oluşturmak, [Yeni bir uygulamayı izlemek için Application Insights ayarlamanın][start]bir parçasıdır. Yeni kaynağınızı oluşturduktan sonra, izleme anahtarını alabilir ve Application Insights SDK 'sını yapılandırmak için kullanabilirsiniz. İzleme anahtarı, telemetrinizi kaynağa bağlar.
+
+> [!IMPORTANT]
+> Klasik Application Insights kullanım dışı bırakıldı. Lütfen [çalışma alanı tabanlı Application Insights yükseltme](convert-classic-resource.md)hakkında daha fazla bilgi için bu yönergeleri izleyin.
 
 ## <a name="sign-in-to-microsoft-azure"></a>Microsoft Azure oturum açın
 

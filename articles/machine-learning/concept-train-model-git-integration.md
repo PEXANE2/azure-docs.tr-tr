@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.date: 11/16/2020
-ms.openlocfilehash: 989fc7cb66cf5381d174a3aad12f84f5b055aab8
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 7c10d3066dc7b9ee0994de8c327b286bf8c917e7
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94701645"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100099481"
 ---
 # <a name="git-integration-for-azure-machine-learning"></a>Azure Machine Learning için git tümleştirmesi
 
@@ -28,7 +28,7 @@ Azure Machine Learning, yerel bir git deposundan bilgileri izlediğinden, belirl
 
 ## <a name="clone-git-repositories-into-your-workspace-file-system"></a>Git depolarını çalışma alanı dosya sisteminize kopyalama
 Azure Machine Learning, çalışma alanındaki tüm kullanıcılar için paylaşılan bir dosya sistemi sağlar.
-Bir Git deposunu bu dosya paylaşımında kopyalamak için bir terminal açmak & bir Işlem örneği oluşturmanız önerilir.
+Bir Git deposunu bu dosya paylaşımında kopyalamak için bir [Terminal açmak](how-to-access-terminal.md)& bir işlem örneği oluşturmanız önerilir.
 Terminal açıldıktan sonra tam bir git istemcisine erişiminiz olur ve git CLı deneyimi aracılığıyla Git 'i kopyalayabilir ve bunlarla çalışabilirsiniz.
 
 Başkalarının doğrudan çalışma dalınızda çakışmalar yapamaması için depoyu kullanıcılar dizininize kopyalamanız önerilir.
@@ -39,7 +39,7 @@ Kopyalama hakkında daha fazla bilgi için bkz. [GIT CLI kullanma](https://guide
 
 ## <a name="authenticate-your-git-account-with-ssh"></a>SSH ile git hesabınızın kimliğini doğrulama
 ### <a name="generate-a-new-ssh-key"></a>Yeni bir SSH anahtarı oluştur
-1) Azure Machine Learning Not Defteri sekmesinde [Terminal penceresini açın](./how-to-run-jupyter-notebooks.md#terminal) .
+1) Azure Machine Learning Not Defteri sekmesinde [Terminal penceresini açın](./how-to-access-terminal.md) .
 
 2) Aşağıdaki metni e-posta adresinizdeki yerine yapıştırın.
 
@@ -89,7 +89,7 @@ cat ~/.ssh/id_rsa.pub
 
 + [GitLab](https://docs.gitlab.com/ee/ssh/#adding-an-ssh-key-to-your-gitlab-account)
 
-+ [Azure DevOps](/azure/devops/repos/git/use-ssh-keys-to-authenticate?view=azure-devops#step-2--add-the-public-key-to-azure-devops-servicestfs)  2. **adımda** başlayın.
++ [Azure DevOps](/azure/devops/repos/git/use-ssh-keys-to-authenticate?view=azure-devops#step-2--add-the-public-key-to-azure-devops-servicestfs&preserve-view=true)  2. **adımda** başlayın.
 
 + [Bitbucket](https://support.atlassian.com/bitbucket-cloud/docs/set-up-an-ssh-key/#SetupanSSHkey-ssh2). **Adım 4**' te başlayın.
 

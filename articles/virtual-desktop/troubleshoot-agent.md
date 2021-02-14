@@ -6,19 +6,19 @@ ms.topic: troubleshooting
 ms.date: 12/16/2020
 ms.author: sefriend
 manager: clarkn
-ms.openlocfilehash: 8e3c372cb186d3043e89b0b084a86b7be128146d
-ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
+ms.openlocfilehash: 1500a635d5177ed8899cdc3f1364e57a8525892c
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99475261"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100099957"
 ---
 # <a name="troubleshoot-common-windows-virtual-desktop-agent-issues"></a>Yaygın Windows sanal masaüstü Aracısı sorunlarını giderme
 
 Windows sanal masaüstü Aracısı, birden çok etken nedeniyle bağlantı sorunlarına neden olabilir:
    - Aracıda aracının hizmeti durdurmasına neden olan bir hata.
    - Güncelleştirmeler ile ilgili sorunlar.
-   - Aracı yüklemesi sırasında, oturum ana bilgisayarına bağlantıyı kesintiye uğradan yüklemeyle ilgili sorunlar.
+   - Aracı yüklemesi sırasında yüklemeyle ilgili sorunlar, oturum ana bilgisayarına bağlantıyı kesintiye uğraşır.
 
 Bu makale, bu yaygın senaryolara yönelik çözümler ve bağlantı sorunlarının nasıl ele alınacağını size kılavuzluk eder.
 
@@ -184,7 +184,7 @@ Bu sorunu çözmek için sinyal eşiğini değiştirin:
 1. Komut isteinizi yönetici olarak açın.
 2. **Qwinsta** komutunu girin ve çalıştırın.
 3. İki yığın bileşeni görüntülenmelidir: **RDP-TCP** ve **RDP-sxs**. 
-   - Kullanmakta olduğunuz işletim sisteminin sürümüne bağlı olarak, aşağıdaki ekran görüntüsünde gösterildiği gibi, **RDP-sxs** tarafından izlenen yapı numarası gelebilir. Varsa, daha sonra bu numarayı daha sonra yazmak istediğinizden emin olun.
+   - Kullanmakta olduğunuz işletim sisteminin sürümüne bağlı olarak, **RDP-sxs** tarafından izlenen yapı numarası gelebilir. Varsa, daha sonra bu numarayı daha sonra yazmak istediğinizden emin olun.
 4. Kayıt Defteri Düzenleyicisi'ni açın.
 5. **HKEY_LOCAL_MACHINE**  >  **System**  >  **CurrentControlSet**  >  **Control**  >  **Terminal Server**  >  **winistasyonlara** gidin.
 6. **Winistasyonların** altında farklı yığın sürümleri için birkaç klasör görebilirsiniz. 3. adımdaki sürüm numarasıyla eşleşen klasörü seçin.
@@ -207,7 +207,7 @@ Bu sorunu çözmek için diskinizde yer açın:
 Yönetici olarak bir PowerShell penceresi açın ve aşağıdaki cmdlet 'i çalıştırın:
 
 ```powershell
-Get-AzWvdSessionHost -TenantName <tenantname> -HostPoolName <hostpoolname>|Select-Object *
+Get-AzWvdSessionHost -ResourceGroupName <resourcegroupname> -HostPoolName <hostpoolname> | Select-Object *
 ```
 
 Konak havuzunuzdaki oturum ana bilgisayarı veya konaklar için listelenen durum her zaman **kullanılamıyor** ya da **yükseltme** durumunda olduğunda, aracı veya yığın yüklemesi başarısız olmuş olabilir

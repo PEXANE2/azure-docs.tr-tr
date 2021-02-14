@@ -12,12 +12,12 @@ ms.date: 05/22/2019
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja
 ms.custom: aaddev
-ms.openlocfilehash: 46919a97364aeff29e2b458c619315571dba7710
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 311dfd976610c392909a0ec3d91fecaa4d733539
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98013677"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100104204"
 ---
 # <a name="how-to-configure-terms-of-service-and-privacy-statement-for-an-app"></a>Nasıl yapılır: bir uygulama için hizmet koşullarını ve gizlilik bildirimini yapılandırma
 
@@ -58,11 +58,11 @@ Hizmet koşulları ve gizlilik bildirimi hazırlandığı zaman, aşağıdaki y�
 ### <a name="using-the-azure-portal"></a><a name="azure-portal"></a>Azure portalını kullanma
 Azure portal aşağıdaki adımları izleyin.
 
-1. <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>oturum açın, doğru azuread kiracısı (B2C değil) seçin.
+1. <a href="https://portal.azure.com/" target="_blank">Azure Portal</a> oturum açın ve doğru Azure AD kiracısını (B2C değil) seçin.
 2. **Uygulama kayıtları** bölümüne gidin ve uygulamanızı seçin.
-3. **Marka** bölmesini açın.
+3. **Yönet** altında **marka**' i seçin.
 4. **Hizmet koşulları URL 'sini** ve **Gizlilik bildirimi URL 'si** alanlarını doldurun.
-5. Yaptığınız değişiklikleri kaydedin.
+5. **Kaydet**’i seçin.
 
     ![Uygulama özellikleri, hizmet koşullarını ve gizlilik bildirimi URL 'Lerini içerir](./media/howto-add-terms-of-service-privacy-statement/azure-portal-terms-service-privacy-statement-urls.png)
 
