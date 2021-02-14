@@ -12,17 +12,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/20/2020
 ms.author: yelevin
-ms.openlocfilehash: 3bdb9d2b23ce05929ba5612e0c6a03fe1aab05de
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 62ed3915dcaf596d144a2f59817626cdf8ec47e5
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77588255"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100092783"
 ---
 # <a name="connect-your-forcepoint-dlp-to-azure-sentinel"></a>Forcepoint DLP 'nizi Azure Sentinel 'e bağlama
 
 > [!IMPORTANT]
-> Azure Sentinel 'de Forcepoint veri kaybı önleme (DLP) veri Bağlayıcısı Şu anda genel önizlemededir. Bu özellik, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Azure Sentinel 'de Forcepoint veri kaybı önleme (DLP) veri Bağlayıcısı Şu anda genel önizlemededir. Bu özellik, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 
 
@@ -38,15 +38,15 @@ Forcepoint DLP [tümleştirme kılavuzunda](https://frcpnt.com/dlp-sentinel)aç�
 
 ## <a name="find-your-data"></a>Verilerinizi bulun
 
-Forcepoint DLP bağlayıcısını ayarladıktan sonra, veriler CustomLogs **ForcepointDLPEvents_CL**altında Log Analytics görüntülenir.
+Forcepoint DLP bağlayıcısını ayarladıktan sonra, veriler CustomLogs **ForcepointDLPEvents_CL** altında Log Analytics görüntülenir.
 
 
-Forcepoint DLP için Log Analytics ilgili şemayı kullanmak için, **ForcepointDLPEvents_CL**aratın.
+Forcepoint DLP için Log Analytics ilgili şemayı kullanmak için, **ForcepointDLPEvents_CL** aratın.
 
 
 ## <a name="validate-connectivity"></a>Bağlantıyı doğrula
 
-Günlüklerinizin Log Analytics görünene kadar 20 dakikadan bu kadar bir zaman çıkabilir.
+Günlüklerinizin Log Analytics görünmeye başlaması 20 dakikaya kadar sürebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

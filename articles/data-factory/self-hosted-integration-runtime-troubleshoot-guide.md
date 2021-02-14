@@ -1,18 +1,17 @@
 ---
 title: Azure Data Factory içinde şirket içinde barındırılan tümleştirme çalışma zamanı sorunlarını giderme
 description: Azure Data Factory ' de şirket içinde barındırılan tümleştirme çalışma zamanı sorunlarını giderme hakkında bilgi edinin.
-services: data-factory
 author: lrtoyou1223
 ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 01/25/2021
 ms.author: lle
-ms.openlocfilehash: 3735d7b21faf62905ed4c06dbef80c9737e7329e
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: 2cb0e0870b32270340e37d54dc54a43b22ee014a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99551085"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100376471"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>Şirket içinde barındırılan tümleştirme çalışma zamanı sorunlarını giderme
 
@@ -83,8 +82,8 @@ Azure Data Factory arabiriminden eşzamanlı iş sınırını arttırmaya çalı
 Eşzamanlı iş sayısı sınırı bilgisayarın mantıksal çekirdeğinin ve belleğine bağlıdır. Değeri, 24 gibi bir değere ayarlamayı deneyin ve ardından sonucu görüntüleyin.
 
 > [!TIP] 
-> - Mantıksal çekirdek sayısı hakkında daha fazla bilgi edinmek ve makinenizin mantıksal çekirdek sayısını belirleme hakkında daha fazla bilgi için bkz. [Windows 10 ' da CPU 'inizdeki çekirdek sayısını bulmanın dört yolu](https://www.top-password.com/blog/find-number-of-cores-in-your-cpu-on-windows-10/).
-> - Math. log ' un nasıl hesaplanacağını öğrenmek için, [logaritma hesaplayıcısına](https://www.rapidtables.com/calc/math/Log_Calculator.html)gidin.
+> -    Mantıksal çekirdek sayısı hakkında daha fazla bilgi edinmek ve makinenizin mantıksal çekirdek sayısını belirleme hakkında daha fazla bilgi için bkz. [Windows 10 ' da CPU 'inizdeki çekirdek sayısını bulmanın dört yolu](https://www.top-password.com/blog/find-number-of-cores-in-your-cpu-on-windows-10/).
+> -    Math. log ' un nasıl hesaplanacağını öğrenmek için, [logaritma hesaplayıcısına](https://www.rapidtables.com/calc/math/Log_Calculator.html)gidin.
 
 
 ### <a name="self-hosted-ir-high-availability-ha-ssl-certificate-issue"></a>Şirket içinde barındırılan IR yüksek kullanılabilirlik (HA) SSL sertifikası sorunu

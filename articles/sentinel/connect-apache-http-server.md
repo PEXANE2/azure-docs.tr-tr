@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/03/2021
 ms.author: yelevin
-ms.openlocfilehash: 59ef34f9d6d42277d8e83bf4e0ebb8ee29096f52
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: 6a1a2a2a7dac961e49e6ced38803649ebf5ad523
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99566934"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100096863"
 ---
 # <a name="connect-your-apache-http-server-to-azure-sentinel"></a>Apache HTTP sunucunuzu Azure Sentinel 'e bağlama
 
@@ -37,7 +37,7 @@ Bu makalede Apache HTTP sunucunuzu Azure Sentinel 'e nasıl bağlayabileceğiniz
 
 ## <a name="configure-and-integrate-apache-http-server-logs-via-log-analytics-agent"></a>Log Analytics Aracısı aracılığıyla Apache HTTP sunucusu günlüklerini yapılandırma ve Tümleştirme
 
-Log Analytics Aracısı aracılığıyla verileri Azure çalışma alanınıza iletmek için Apache HTTP sunucusu günlük dosyaları konumunu yapılandırın.
+Apache HTTP sunucusunu, Log Analytics Aracısı aracılığıyla Azure çalışma alanınıza günlük dosyaları gönderecek şekilde yapılandırın.
 Log Analytics aracısını Apache HTTP sunucusu günlük dosyalarını okuyacak şekilde yapılandırın.
 
 1. https://httpd.apache.org/docs/2.4/logs.htmlApache HTTP Server 'da günlük dosyaları konumunu ayarlama konusundaki yönergeleri izleyin.

@@ -4,15 +4,15 @@ description: Azure portal kullanarak bir sanal ağ geçidini silme
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.date: 10/16/2020
+ms.date: 02/10/2021
 ms.author: cherylmc
 ms.topic: how-to
-ms.openlocfilehash: 7d9ae31b5701707589d79fd5f3d7eb0802038eb9
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 413fd8c7f03ef44abe4bece39ca717c533dea66b
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148213"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100376402"
 ---
 # <a name="delete-a-virtual-network-gateway-using-the-portal"></a>Portalı kullanarak bir sanal ağ geçidini silme
 
@@ -55,7 +55,7 @@ Aşağıdaki adımlar artık kullanılmayan kaynakları silmenizi yardımcı olu
 #### <a name="to-delete-the-gateway-subnet"></a>Ağ geçidi alt ağını silmek için
 
 1. **Tüm kaynaklarda**, sanal ağı bulun. 
-1. **Alt ağlar** dikey penceresinde, **Gatewaysubnet**ve ardından **Sil**' e tıklayın. 
+1. **Alt ağlar** dikey penceresinde, **Gatewaysubnet** ve ardından **Sil**' e tıklayın. 
 1. Ağ geçidi alt ağını silmek istediğinizi onaylamak için **Evet** ' e tıklayın.
 
 ## <a name="delete-a-vpn-gateway-by-deleting-the-resource-group"></a><a name="deleterg"></a>Kaynak grubunu silerek VPN ağ geçidini silme

@@ -1,18 +1,18 @@
 ---
 title: Azure Data Lake Analytics için Azure Ilke mevzuat uyumluluk denetimleri
 description: Azure Data Lake Analytics için kullanılabilen Azure Ilke mevzuat uyumluluk denetimlerini listeler. Bu yerleşik ilke tanımları, Azure kaynaklarınızın uyumluluğunu yönetmek için yaygın yaklaşımlar sağlar.
-ms.date: 02/04/2021
+ms.date: 02/09/2021
 ms.topic: sample
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-lake-analytics
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: ce859f119e7bf0f2f1eafa12c6739841731fa3e1
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: 45f6bfd19a784e7fe233748420dff2990df39920
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99561883"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100096911"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-data-lake-analytics"></a>Azure Data Lake Analytics için Azure Ilke mevzuat uyumluluk denetimleri
 

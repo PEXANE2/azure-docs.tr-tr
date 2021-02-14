@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/31/2020
-ms.openlocfilehash: f7f1952ab8c98553a447c3ed1955fb556ba48124
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: e524905aaeed54de6501eb6f024bf28dbab9c594
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99831952"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100362174"
 ---
 # <a name="tutorial-how-to-deploy-an-iot-central-application-using-the-video-analytics---object-and-motion-detection-application-template"></a>Öğretici: video analizi-nesne ve hareket algılama uygulama şablonunu kullanarak bir IoT Central uygulaması dağıtma
 
@@ -22,6 +22,13 @@ Temel *video analizi-nesne ve hareket algılama* uygulaması bileşenlerine gene
 Aşağıdaki videoda, bir IoT Central çözümü dağıtmak için _video Analytics-Object ve Motion Detection uygulama şablonunun_ nasıl kullanılacağına ilişkin bir anlatım verilmiştir:
 
 > [!VIDEO https://www.youtube.com/embed/Bo3FziU9bSA]
+
+Bu öğretici kümesinde şunları yapmayı öğreneceksiniz:
+
+> [!div class="checklist"]
+> * Uygulamayı dağıtma
+> * Uygulamaya bağlanan bir IoT Edge örneğini dağıtma
+> * Uygulamayı izleme ve yönetme
 
 ## <a name="prerequisites"></a>Önkoşullar
 

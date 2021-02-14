@@ -54,8 +54,12 @@
       href: ensure-tags-exists-on-new-virtual-machines.md
     - name: IoT Hub cihazının bağlantısı kesildiğinde e-posta gönderme
       href: publish-iot-hub-events-to-logic-apps.md
-    - name: Service Bus olaylarını yanıtlama
-      href: ../service-bus-messaging/service-bus-to-event-grid-integration-example.md?toc=%2fazure%2fevent-grid%2ftoc.json
+    - name: Event Grid aracılığıyla Service Bus olaylarını işleme
+      items:
+        - name: Azure Logic Apps
+          href: ../service-bus-messaging/service-bus-to-event-grid-integration-example.md?toc=%2fazure%2fevent-grid%2ftoc.json
+        - name: Azure İşlevleri
+          href: ../service-bus-messaging/service-bus-to-event-grid-integration-function.md?toc=%2fazure%2fevent-grid%2ftoc.json
     - name: Event Hubs’dan veri akışı sağlama
       href: event-grid-event-hubs-integration.md
     - name: Media Services olaylarını yönlendirme
@@ -262,14 +266,18 @@
       items:
         - name: Bir özel bağlantı üzerinden güvenle olay yayımlama
           href: configure-private-endpoints.md
+        - name: Yönetilen kimlik kullanarak olay sunma
+          href: managed-service-identity.md
+        - name: Özel bir bağlantı üzerinden olayları güvenli bir şekilde sunun
+          href: consume-private-endpoints.md
         - name: IP güvenlik duvarını yapılandırma
           href: configure-firewall.md
         - name: Azure Active Directory ile Web Kancasının güvenliğini sağlama
           href: secure-webhook-delivery.md
-        - name: 'Olay teslimi, yönetilen kimlik ve özel bağlantı'
-          href: managed-service-identity.md
     - name: Sorun giderme
       items:
+        - name: Event Grid sorunlarını giderme
+          href: troubleshoot-issues.md
         - name: Tanılama günlüklerini etkinleştirme
           href: enable-diagnostic-logs-topic.md
         - name: Sorun giderme hataları

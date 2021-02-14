@@ -11,12 +11,12 @@ ms.date: 03/27/2019
 ms.author: procha
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f207509baba2499adf5d5d00df0ccd0503a25491
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 918dd929244c7177790a77bfff32589847073c70
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98665200"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100104796"
 ---
 # <a name="azure-synapse-analytics-data-integration-partners"></a>Azure SYNAPSE Analytics veri tümleştirme iş ortakları
 
@@ -52,7 +52,8 @@ Azure SYNAPSE Analytics 'te adanmış SQL havuzunu kullanarak veri ambarı çöz
 | ![Timexödeme](./media/sql-data-warehouse-partner-data-integration/timextender-logo.png) |**Timexödeme**<br>Timexmenkul, bulma Merkezi, şirketlerin veri içgörülerini 10 kata kadar hızlandıran tümleşik bir veri yönetimi platformu sunarak modern bir veri merkezi oluşturmasına yardımcı olur. Günlük ETL ve ELT 'un ötesinde, tek bir platformda veri erişimi, veri modelleme ve uyumluluk olanakları sağlar. Keşif Merkezi, bulut ölçek analizi için birlikte bulunan bir veri yapısı sağlar. Analiz ve AI için çeşitli veri siloları, katalog, model, taşıma ve belge verilerini bağlamanıza ve tümleştirmenize olanak tanır. | [Ürün sayfası](https://www.timextender.com/)<br> [Azure Market](https://azuremarketplace.microsoft.com/marketplace/apps?search=timextender&page=1) |
 | ![Trifacta](./media/sql-data-warehouse-partner-data-integration/trifacta_logo.png) |**Trifacta Wrangler**<br> Trifacta, kişilerin ve kuruluşların analizler ve analiz edilmek üzere çeşitli verileri keşfetmesine yardımcı olur. Trifacta Wrangler, ölçeklendirmekte olan verileri ve çok sayıda son kullanıcıyı desteklemek için gereken veri denetimi iş yüklerini işlemek üzere tasarlanmıştır.|[Ürün sayfası](https://www.trifacta.com/)<br> [Azure Market](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/trifactainc1587522950142.trifactaazure?tab=Overview) |
 | ![WhereScape](./media/sql-data-warehouse-partner-data-integration/wherescape_logo.png) |**Wherescape RED**<br> WhereScape RED, ETL iş akışlarını kolaylaştırmak için Otomasyon araçlarıyla takımlar sağlayan bir IDE 'dir. IDE, popüler veri hedefleri için en iyi uygulama, iyileştirilmiş yerel kod sağlar. Veri altyapınızı geliştirme, dağıtma ve çalıştırma süresini kesmek için WhereScape RED kullanın.|[Ürün sayfası](https://www.wherescape.com/)<br> [Azure Market](https://azuremarketplace.microsoft.com/marketplace/apps/wherescapesoftware.wherescape-red?source=datamarket&tab=Overview) |
-| ![Xplenty](./media/sql-data-warehouse-partner-data-integration/xplenty-logo.png) |**Xplenty**<br> Xplenty ELT platformu, basit bir bulut hizmeti kullanarak verileri analiz ve üretim kullanım örneklerine hızlı ve kolay bir şekilde hazırlamanızı sağlar. Xplenty 'in noktası & tıklayın, & bırakma arabirimini sürükleyin, herhangi bir yazılımı yüklemeden, dağıtmaya veya uygulamadan veri tümleştirme, işleme ve hazırlık imkanı sunar. Azure SYNAPSE, Azure Blob Storage ve SQL Server dahil olmak üzere geniş bir veri depoları ve SaaS uygulaması ile bağlanın ve tümleştirin. Xplenty Ayrıca REST API aracılığıyla erişilebilen tüm Web hizmetlerini destekler.|[Ürün sayfası](https://www.xplenty.com/integrations/azure-synapse-analytics/ )<br> |
+| ![Xpert bı](./media/sql-data-warehouse-partner-data-integration/xpertbi-logo.png) |**Xpert bı**<br> Xpert bı, kuruluşların meta veri tabanlı Otomasyon üzerinden daha hızlı bir şekilde Azure 'da güçlü ve ölçeklenebilir bir veri platformu oluşturup bakımını sağlar. Yerleşik veri idare işlevleri ile çevik veri geliştirme için en iyi uygulamalar ve DataOps ile Azure SYNAPSE 'ı genişletir. Azure SYNAPSE, Azure Data Lake Storage ve Azure SQL veritabanı gibi farklı Azure çözümleri arasında hızlı bir şekilde test etmek ve geçiş yapmak için, iş ve analiz gereksinimleriniz değiştikçe ve büyüdükçe|[Ürün sayfası](https://www.bi-builders.com/adding-automation-and-governance-to-azure-analytics/)<br> |
+| ![Xplenty](./media/sql-data-warehouse-partner-data-integration/xplenty-logo.png) |**Xplenty**<br> Xplenty ELT platformu, basit bir bulut hizmeti kullanarak verileri analiz ve üretim kullanım örneklerine hızlı ve kolay bir şekilde hazırlamanızı sağlar. Xplenty 'in noktası & seçin, & bırakma arabirimini sürükleyip, herhangi bir yazılımı yüklemeden, dağıtmaya veya sürdürmeden veri tümleştirme, işleme ve hazırlık imkanı sunar. Azure SYNAPSE, Azure Blob Storage ve SQL Server dahil olmak üzere geniş bir veri depoları ve SaaS uygulaması ile bağlanın ve tümleştirin. Xplenty Ayrıca REST API aracılığıyla erişilebilen tüm Web hizmetlerini destekler.|[Ürün sayfası](https://www.xplenty.com/integrations/azure-synapse-analytics/ )<br> |
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

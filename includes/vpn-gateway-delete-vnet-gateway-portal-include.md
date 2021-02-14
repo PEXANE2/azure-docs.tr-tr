@@ -5,20 +5,20 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 10/16/2020
+ms.date: 02/10/2021
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: b8a61586acd888301350277d924f3d4fe176b4c8
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 91dc6ba0bcd455aefe9de2efdff2feb20938152d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148198"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100376403"
 ---
 ### <a name="step-1-navigate-to-the-virtual-network-gateway"></a>1. Adım: sanal ağ geçidine gidin
 
 1. [Azure Portal](https://portal.azure.com) **tüm kaynaklar**' a gidin. 
-2. Sanal ağ geçidi sayfasını açmak için, silmek istediğiniz sanal ağ geçidine gidin ve tıklayın.
+2. Sanal ağ geçidi sayfasını açmak için sanal ağ geçidine gidin ve seçmek için tıklayın. 
 
 ### <a name="step-2-delete-connections"></a>2. Adım: bağlantıları silme
 
@@ -30,5 +30,5 @@ ms.locfileid: "92148198"
 
 S2S yapılandırmanıza ek olarak bu VNet 'e yönelik bir P2S yapılandırmasına sahipseniz, sanal ağ geçidinin silinmesi uyarı vermeden tüm P2S istemcilerinin bağlantısını otomatik olarak keser.
 
-1. Sanal ağ geçidi sayfasında **Genel Bakış ' a**tıklayın.
+1. Sanal ağ geçidi sayfasında **Genel Bakış ' a** tıklayın.
 2. **Genel bakış** sayfasında, ağ geçidini silmek için **Sil** ' e tıklayın.

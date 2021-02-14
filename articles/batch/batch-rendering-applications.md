@@ -1,14 +1,14 @@
 ---
 title: Uygulamaları işleme
 description: Azure Batch ile herhangi bir işleme uygulaması kullanmak mümkündür. Ancak, Azure Market VM görüntüleri önceden yüklenmiş ortak uygulamalar ile kullanılabilir.
-ms.date: 02/01/2021
+ms.date: 02/12/2021
 ms.topic: how-to
-ms.openlocfilehash: 4eeb87c866858f2f1733b81e3e2154f4521e94bc
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: e296ab09498b6bb7ee21e3d88c9c416c66368d69
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99430037"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100362242"
 ---
 # <a name="pre-installed-applications-on-batch-rendering-vm-images"></a>Toplu işleme VM görüntülerinde önceden yüklenmiş uygulamalar
 
@@ -18,20 +18,15 @@ Uygun olduğunda, önceden yüklenmiş işleme uygulamaları için kullanım ba�
 
 Bazı uygulamalar yalnızca Windows 'u destekler, ancak çoğu hem Windows hem de Linux üzerinde desteklenir.
 
-## <a name="applications-on-centos-7-rendering-image"></a>CentOS 7 işleme görüntüsündeki uygulamalar
+## <a name="applications-on-latest-centos-7-rendering-image"></a>En son CentOS 7 işleme görüntüsündeki uygulamalar
 
-Aşağıdaki liste, CentOS 7,6, sürüm 1.1.6 işleme görüntüleri için geçerlidir.
+Aşağıdaki liste CentOS işleme görüntüsü olan sürüm 1.1.7 için geçerlidir.
 
-* Autodesk Maya I/O 2017 Güncelleştirme 5 (cut 201708032230)
-* Autodesk Maya g/ç 2018 güncelleştirme 2 (201711281015)
-* Autodesk Maya g/ç 2019 güncelleştirme 1
-* Maya 2017 için Autodesk Arnold (Arnold sürüm 5.3.1.1) MtoA-3.2.1.1-2017
-* Maya 2018 için Autodesk Arnold (Arnold sürüm 5.3.1.1) MtoA-3.2.1.1-2018
-* Maya 2019 için Autodesk Arnold (Arnold sürüm 5.3.1.1) MtoA-3.2.1.1-2019
-* Chaos Group V-Ray for Maya 2017 (sürüm 3.60.04)
-* Chaos Group V-Ray for Maya 2018 (sürüm 3.60.04)
-* Blender (2.68)
-* Blender (2,8)
+* Autodesk Maya g/ç 2020 güncelleştirme 4,6
+* Maya 2020 için Autodesk Arnold (Arnold sürüm 6.2.0.0) MtoA-4.2.0-2020
+* Chaos Group V-Ray for Maya 2020 (sürüm 5.00.21)
+* Blender (2,80)
+* AZ 10
 
 ## <a name="applications-on-latest-windows-server-rendering-image"></a>En son Windows Server işleme görüntüsündeki uygulamalar
 
@@ -96,6 +91,21 @@ Aşağıdaki liste Windows Server 2016, sürüm 1.3.7 işleme görüntüleri iç
 
 > [!NOTE]
 > Chaos Group V-Ray For 3ds Max 2019 (sürüm 4.10.01), V-Ray üzerinde önemli değişiklikler sunar. Önceki sürümü (sürüm 3.60.02) kullanmak için Windows Server 2016, sürüm 1.3.2 işleme düğümlerini kullanın.
+
+## <a name="applications-on-previous-centos-rendering-images"></a>Önceki CentOS işleme görüntülerinde uygulamalar
+
+Aşağıdaki liste, CentOS 7,6, sürüm 1.1.6 işleme görüntüleri için geçerlidir.
+
+* Autodesk Maya I/O 2017 Güncelleştirme 5 (cut 201708032230)
+* Autodesk Maya g/ç 2018 güncelleştirme 2 (201711281015)
+* Autodesk Maya g/ç 2019 güncelleştirme 1
+* Maya 2017 için Autodesk Arnold (Arnold sürüm 5.3.1.1) MtoA-3.2.1.1-2017
+* Maya 2018 için Autodesk Arnold (Arnold sürüm 5.3.1.1) MtoA-3.2.1.1-2018
+* Maya 2019 için Autodesk Arnold (Arnold sürüm 5.3.1.1) MtoA-3.2.1.1-2019
+* Chaos Group V-Ray for Maya 2017 (sürüm 3.60.04)
+* Chaos Group V-Ray for Maya 2018 (sürüm 3.60.04)
+* Blender (2.68)
+* Blender (2,8)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

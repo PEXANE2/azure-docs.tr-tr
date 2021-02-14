@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: decf289614179718d5c3424f6d4482a5ce2c43e1
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: 6241f6156b01c3c90f00578ae5416e4e77270930
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97680730"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100386807"
 ---
 # <a name="tutorial-migrate-from-google-maps-to-azure-maps"></a>Öğretici: Google Maps 'tan Azure Maps 'e geçiş
 
@@ -26,7 +26,7 @@ Bu makalede, Google Maps 'tan Web, mobil ve sunucu tabanlı uygulamaların Micro
 > * Geçişinizi planlayın.
 > * Teknik kaynakların ve desteğin nerede bulunacağı.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 1. [Azure portalında](https://portal.azure.com) oturum açın. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 2. [Azure haritalar hesabı oluşturma](quick-demo-map-app.md#create-an-azure-maps-account)
@@ -48,7 +48,7 @@ Tablo, Google Maps özelliklerine karşılık gelen Azure Maps özelliklerinin �
 | REST hizmeti API 'Leri           | ✓                                      |
 | Yönler (Yönlendirme)        | ✓                                      |
 | Uzaklık matrisi             | ✓                                      |
-| Nedeniyle                   | Planlandı                                |
+| Nedeniyle                   | ✓ (Önizleme)                            |
 | Coğrafi kodlama (Ileri/ters) | ✓                                      |
 | Coğrafi Konum                 | Yok                                    |
 | En yakın yollar               | ✓                                      |

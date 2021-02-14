@@ -3,12 +3,12 @@ title: Sanal makinelerin içeriğini denetleme hakkında bilgi edinin
 description: Azure Ilkesi 'nin sanal makineler içindeki ayarları denetlemek için konuk yapılandırma istemcisini nasıl kullandığını öğrenin.
 ms.date: 01/14/2021
 ms.topic: conceptual
-ms.openlocfilehash: c141169545379f1ac0dd18a97e85652f97b90e6f
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: 5d1503680ea2ca7d0ff7c8adae19c05abfe441c0
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98210129"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100104816"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Azure İlkesi’nin Konuk Yapılandırmasını anlama
 
@@ -142,11 +142,15 @@ _Yapılandırma_ ile başlayan tanımları atarken, _Windows VM 'Lerde Konuk yap
 
 Konuk yapılandırması için kullanılabilen Denetim ilkesi tanımları, **Microsoft. HybridCompute/machines** kaynak türünü içerir. İlke atamasının kapsamındaki [sunucular Için Azure yaya](../../../azure-arc/servers/overview.md) eklendi tüm makineler otomatik olarak eklenir.
 
+## <a name="troubleshooting-guest-configuration"></a>Konuk yapılandırması sorunlarını giderme
+
+Konuk yapılandırma sorunlarını giderme hakkında daha fazla bilgi için bkz. [Azure İlkesi sorunlarını giderme](../troubleshoot/general.md).
+
 ### <a name="multiple-assignments"></a>Birden çok atama
 
 Konuk yapılandırma ilkesi tanımları, Ilke ataması farklı parametreler kullanıyor olsa bile, şu anda yalnızca makine başına aynı Konuk atamasını atamayı destekler.
 
-## <a name="client-log-files"></a>İstemci günlük dosyaları
+### <a name="client-log-files"></a>İstemci günlük dosyaları
 
 Konuk yapılandırma uzantısı, günlük dosyalarını aşağıdaki konumlara Yazar:
 
@@ -180,6 +184,15 @@ linesToIncludeAfterMatch=10
 logPath=/var/lib/GuestConfig/gc_agent_logs/gc_agent.log
 egrep -B $linesToIncludeBeforeMatch -A $linesToIncludeAfterMatch 'DSCEngine|DSCManagedEngine' $logPath | tail
 ```
+
+### <a name="client-files"></a>İstemci dosyaları
+
+Konuk yapılandırma istemcisi içerik paketlerini bir makineye indirir ve içeriği ayıklar.
+Hangi içeriğin indirilip depolandığını doğrulamak için aşağıda verilen klasör konumlarını görüntüleyin.
+
+Windows: `c:\programdata\guestconfig\configurations`
+
+Linux: `/var/lib/guestconfig/configurations`
 
 ## <a name="guest-configuration-samples"></a>Konuk yapılandırma örnekleri
 

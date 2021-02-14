@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: reference
 ms.workload: identity
-ms.date: 01/18/2021
+ms.date: 02/09/2021
 ms.author: chmutali
-ms.openlocfilehash: f260bca196839a091ae7d12be6d5f85912bf92db
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 2b1a43ee6b13d32c0eaed92538cf9c25405e061b
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99255993"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100104340"
 ---
 # <a name="how-azure-active-directory-provisioning-integrates-with-workday"></a>Azure Active Directory sağlama Workday ile nasıl tümleştirilir
 
@@ -448,6 +448,21 @@ Bir kullanıcıyla ilişkili sertifikaları almak istediğinizi varsayalım. Bu 
 Bir çalışana atanan *sağlama gruplarını* almak istediğinizi varsayalım. Bu bilgiler, *hesap sağlama veri* kümesinin bir parçası olarak kullanılabilir. *Get_Workers* yanıtının bir parçası olarak bu veri kümesini almak IÇIN aşağıdaki XPath 'i kullanın: 
 
 `wd:Worker/wd:Worker_Data/wd:Account_Provisioning_Data/wd:Provisioning_Group_Assignment_Data[wd:Status='Assigned']/wd:Provisioning_Group/text()`
+
+## <a name="handling-different-hr-scenarios"></a>Farklı ık senaryolarını işleme
+
+### <a name="retrieving-international-job-assignments-and-secondary-job-details"></a>Uluslararası iş atamaları ve ikincil iş ayrıntıları alınıyor
+
+Varsayılan olarak, Workday Bağlayıcısı çalışanın birincil işiyle ilişkili öznitelikleri alır. Bağlayıcı ayrıca uluslararası iş atamaları veya ikincil işlerle ilişkili *ek Iş verilerinin* alınmasını da destekler. 
+
+Uluslararası iş atamalarıyla ilişkili öznitelikleri almak için aşağıdaki adımları kullanın: 
+
+1. Workday bağlantı URL 'sini ayarlama Workday Web hizmeti API 'SI sürüm 30,0 veya üstünü kullanır. İş günü sağlama uygulamanızda [doğru XPath değerlerini](workday-attribute-reference.md#xpath-values-for-workday-web-services-wws-api-v30) buna göre ayarlayın. 
+1. `@wd:Primary_Job=0` `Worker_Job_Data` Doğru özniteliği almak için düğümdeki seçiciyi kullanın. 
+   * **Örnek 1:** XPATH 'i `SecondaryBusinessTitle` kullanmak için `wd:Worker/wd:Worker_Data/wd:Employment_Data/wd:Worker_Job_Data[@wd:Primary_Job=0]/wd:Position_Data/wd:Business_Title/text()`
+   * **Örnek 2:** XPATH 'i `SecondaryBusinessLocation` kullanmak için `wd:Worker/wd:Worker_Data/wd:Employment_Data/wd:Worker_Job_Data[@wd:Primary_Job=0]/wd:Position_Data/wd:Business_Site_Summary_Data/wd:Location_Reference/@wd:Descriptor`
+
+ 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

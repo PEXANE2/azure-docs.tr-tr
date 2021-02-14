@@ -13,12 +13,12 @@ ms.date: 09/24/2018
 ms.author: kkrishna
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 5f6ac11fc5c7bbe7a8f81e6ea89e2c582ebcf264
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: f3eff6f5660089472ef431bad9a4f05be1fffe24
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178747"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100104154"
 ---
 # <a name="how-to-restrict-your-azure-ad-app-to-a-set-of-users-in-an-azure-ad-tenant"></a>Nasıl yapılır: Azure AD kiracısındaki bir Kullanıcı kümesiyle Azure AD uygulamanızı kısıtlama
 
@@ -47,7 +47,7 @@ Etkin Kullanıcı atamasına sahip bir uygulama oluşturmanın iki yolu vardır.
 
 ### <a name="enterprise-applications-requires-the-global-administrator-role"></a>Kurumsal uygulamalar (genel yönetici rolü gerektirir)
 
-1. <a href="https://portal.azure.com/" target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> Azure Portal</a> **genel yönetici** olarak oturum açın.
+1. <a href="https://portal.azure.com/" target="_blank">Azure Portal</a> **genel yönetici** olarak oturum açın.
 1. Birden fazla kiracıya erişiminiz varsa, uygulamayı kaydetmek istediğiniz kiracıyı seçmek için üst menüdeki **Dizin + abonelik** filtresini kullanın :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: .
 1. **Azure Active Directory**'yi bulun ve seçin.
 1. **Yönet** altında **Kurumsal uygulamalar**  >  **tüm uygulamalar**' ı seçin.
@@ -59,13 +59,13 @@ Etkin Kullanıcı atamasına sahip bir uygulama oluşturmanın iki yolu vardır.
 
 ### <a name="app-registration"></a>Uygulama kaydı
 
-1. <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>oturum açın.
+1. <a href="https://portal.azure.com/" target="_blank">Azure portalında</a> oturum açın.
 1. Birden fazla kiracıya erişiminiz varsa, uygulamayı kaydetmek istediğiniz kiracıyı seçmek için üst menüdeki **Dizin + abonelik** filtresini kullanın :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: .
 1. **Azure Active Directory**'yi bulun ve seçin.
 1. **Yönet**'in altında **Uygulama kayıtları** nı seçin.
 1. Yönetmek istediğiniz uygulamayı oluşturun veya seçin. Bu uygulamanın **sahibi** olmanız gerekir.
 1. Uygulamanın **genel bakış** sayfasında, **temel** bileşenler bölümündeki **Yerel Dizin ' de yönetilen uygulama** bağlantısını seçin.
-1. **Yönet** altında **Özellikler**' i seçin.
+1. **Yönet**'in altında **Özellikler**'i seçin.
 1. **Kullanıcı atamasının gerekli** ayarını bulun ve **Evet** olarak ayarlayın. Bu seçenek **Evet** olarak ayarlandığında, Kiracıdaki kullanıcılardan önce bu uygulamaya atanması gerekir, aksi durumda bu uygulamada oturum açamazsınız.
 1. **Kaydet**’i seçin.
 

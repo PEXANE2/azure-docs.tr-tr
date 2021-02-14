@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: dfd0156907f18dcb7f38246993ddc4abcd508631
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: 25d9d53b9bc597b5eb51586c594dd631609f476e
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99549397"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100362157"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>SAP iş yükü senaryolarını barındırmak ve çalıştırmak için Azure kullanın
 
@@ -84,6 +84,7 @@ Bu bölümde, Microsoft Power BI tümleştirme hakkındaki belgeleri SAP veri ka
 
 ## <a name="change-log"></a>Değişiklik Günlüğü
 
+- 02/11/2021: RHEL 8. x için [Red Hat Enterprise Linux sunucusundaki Azure VM 'LERINDE IBM DB2 LUW 'ın yüksek kullanılabilirliğe sahip](./high-availability-guide-rhel-ibm-db2-luw.md) değişiklikler
 - 02/03/2021: [Azure 'da RHEL 'de paceyapıcısı ayarlama](./high-availability-guide-rhel-pacemaker.md) , stonıth Create komutunda pcmk_host_map güncelleştirmek için değiştirin
 - 02/03/2021: stonıth Create komutunda pcmk_host_map eklemek için [Azure 'da SLES 'de paceyapıcısı ayarlama](./high-availability-guide-suse-pacemaker.md) sırasında değişiklik yapın 
 - 02/03/2021: [Azure sanal makine depolama konfigürasyonları SAP HANA](./hana-vm-operations-storage.md) makalesinde SuSE için g/ç Zamanlayıcı ayarları hakkında daha fazla bilgi
