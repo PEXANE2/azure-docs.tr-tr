@@ -9,18 +9,18 @@ ms.date: 08/20/2019
 ms.author: normesta
 ms.reviewer: sumameh
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 738ed3b819a62760408341184daca8a8ba555029
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: f5fa4ad357e937fed7df5be24a1fc78409a0259b
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95913683"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100516405"
 ---
 # <a name="tutorial-implement-the-data-lake-capture-pattern-to-update-a-databricks-delta-table"></a>Öğretici: bir Databricks Delta tablosunu güncelleştirmek için Data Lake Capture modelini uygulama
 
 Bu öğreticide, hiyerarşik ad alanı olan bir depolama hesabındaki olayların nasıl işleneceği gösterilmektedir.
 
-Bir kullanıcının bir Databricks Delta tablosunu, bir satış siparişi açıklayan bir virgülle ayrılmış değerler (CSV) dosyasını karşıya yükleyerek doldurmasına olanak sağlayan küçük bir çözüm oluşturacaksınız. Bu çözümü, Azure Databricks bir Event Grid aboneliği, bir Azure Işlevi ve bir [işi](https://docs.azuredatabricks.net/user-guide/jobs.html) birbirine bağlayarak oluşturacaksınız.
+Bir kullanıcının bir Databricks Delta tablosunu, bir satış siparişi açıklayan bir virgülle ayrılmış değerler (CSV) dosyasını karşıya yükleyerek doldurmasına olanak sağlayan küçük bir çözüm oluşturacaksınız. Bu çözümü, Azure Databricks bir Event Grid aboneliği, bir Azure Işlevi ve bir [işi](/azure/databricks/jobs) birbirine bağlayarak oluşturacaksınız.
 
 Bu öğreticide şunları yapacaksınız:
 
@@ -31,7 +31,7 @@ Bu öğreticide şunları yapacaksınız:
 
 Bu çözümü, Azure Databricks çalışma alanıyla başlayarak ters sırada oluşturacağız.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
@@ -116,7 +116,7 @@ Bu bölümde Azure portalını kullanarak bir Azure Databricks çalışma alanı
 
 4. **Küme oluştur**' u seçin. Küme çalışmaya başladıktan sonra kümeye not defterleri ekleyebilir ve Spark işleri çalıştırabilirsiniz.
 
-Küme oluşturma hakkında daha fazla bilgi için bkz. [Azure Databricks üzerinde Spark kümesi oluşturma](https://docs.azuredatabricks.net/user-guide/clusters/create.html).
+Küme oluşturma hakkında daha fazla bilgi için bkz. [Azure Databricks üzerinde Spark kümesi oluşturma](/azure/databricks/clusters/create).
 
 ### <a name="create-a-notebook"></a>Not defteri oluşturma
 
@@ -153,7 +153,7 @@ Küme oluşturma hakkında daha fazla bilgi için bkz. [Azure Databricks üzerin
     Bu kod, **source_file** adlı bir pencere öğesi oluşturur. Daha sonra, bu kodu çağıran ve bu pencere öğesine bir dosya yolu geçiren bir Azure Işlevi oluşturacaksınız.  Bu kod ayrıca depolama hesabıyla hizmet sorumlunuzu doğrular ve diğer hücrelerde kullanacağınız bazı değişkenler oluşturur.
 
     > [!NOTE]
-    > Bir üretim ayarında, kimlik doğrulama anahtarınızı Azure Databricks ' de depolamayı göz önünde bulundurun. Ardından, kimlik doğrulama anahtarı yerine kod blosonra bir arama anahtarı ekleyin. <br><br>Örneğin, bu kod satırını kullanmak yerine `spark.conf.set("fs.azure.account.oauth2.client.secret", "<password>")` Aşağıdaki kod satırını kullanacaksınız: `spark.conf.set("fs.azure.account.oauth2.client.secret", dbutils.secrets.get(scope = "<scope-name>", key = "<key-name-for-service-credential>"))` . <br><br>Bu Öğreticiyi tamamladıktan sonra, bu yaklaşımın örneklerini görmek için Azure Databricks Web sitesindeki [Azure Data Lake Storage 2.](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) makalesine bakın.
+    > Bir üretim ayarında, kimlik doğrulama anahtarınızı Azure Databricks ' de depolamayı göz önünde bulundurun. Ardından, kimlik doğrulama anahtarı yerine kod blosonra bir arama anahtarı ekleyin. <br><br>Örneğin, bu kod satırını kullanmak yerine `spark.conf.set("fs.azure.account.oauth2.client.secret", "<password>")` Aşağıdaki kod satırını kullanacaksınız: `spark.conf.set("fs.azure.account.oauth2.client.secret", dbutils.secrets.get(scope = "<scope-name>", key = "<key-name-for-service-credential>"))` . <br><br>Bu Öğreticiyi tamamladıktan sonra, bu yaklaşımın örneklerini görmek için Azure Databricks Web sitesindeki [Azure Data Lake Storage 2.](/azure/databricks/data/data-sources/azure/azure-datalake-gen2) makalesine bakın.
 
 2. Bu bloktaki kodu çalıştırmak için **SHIFT + enter** tuşlarına basın.
 

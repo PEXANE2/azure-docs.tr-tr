@@ -7,23 +7,23 @@ author: Vkurpad
 ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/18/2020
-ms.openlocfilehash: 9fb76c5c96795b8092c86e22acbab4ea5963b42e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 02/09/2021
+ms.openlocfilehash: 2448609b1184c8e91947bffbd13cfea8e3fe5d52
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90971627"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100390870"
 ---
 # <a name="incremental-enrichment-and-caching-in-azure-cognitive-search"></a>Azure Bilişsel Arama artımlı zenginleştirme ve önbelleğe alma
 
 > [!IMPORTANT] 
-> Artımlı zenginleştirme Şu anda genel önizlemededir. Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
+> Artımlı zenginleştirme Şu anda genel önizlemededir. Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
 > [REST API önizleme sürümleri](search-api-preview.md) bu özelliği sağlar. Şu anda portal veya .NET SDK desteği yok.
 
 *Artımlı zenginleştirme* , [becerileri](cognitive-search-working-with-skillsets.md)hedefleyen bir özelliktir. Daha sonra bir zenginleştirme işlem hattı tarafından oluşturulan işleme çıkışını gelecekteki Dizin Oluşturucu çalıştırmalarının yeniden kullanmak üzere kaydetmek için Azure depolama 'dan yararlanır. Mümkün olan yerlerde, Dizin Oluşturucu halen geçerli olan önbelleğe alınmış çıktıyı yeniden kullanır. 
 
-Yalnızca artımlı zenginleştirme, işlem sırasında (özellikle OCR ve görüntü işleme) parasal yatırımınızı korumasına karşın daha verimli bir sistem de sağlar. Yapılar ve içerik önbelleğe alındığında, bir Dizin Oluşturucu hangi yeteneklerin değiştirildiğini ve yalnızca değiştirilmiş olanları ve herhangi bir aşağı akış bağımlı becerileri tespit edebilir. 
+Yalnızca artımlı zenginleştirme, işlem sırasında (özellikle OCR ve görüntü işleme) parasal yatırımınızı korumasına karşın daha verimli bir sistem de sağlar. 
 
 Artımlı önbelleğe alma kullanan bir iş akışı aşağıdaki adımları içerir:
 
@@ -95,7 +95,7 @@ Bu parametre ayarlandığında, yalnızca beceri tanımı güncelleştirmelerini
 Aşağıdaki örnek, parametresiyle bir Update beceri isteği gösterir:
 
 ```http
-PUT https://customerdemos.search.windows.net/skillsets/callcenter-text-skillset?api-version=2020-06-30-Preview&disableCacheReprocessingChangeDetection=true
+PUT https://[search service].search.windows.net/skillsets/[skillset name]?api-version=2020-06-30-Preview&disableCacheReprocessingChangeDetection=true
 ```
 
 ### <a name="bypass-data-source-validation-checks"></a>Veri kaynağı doğrulama denetimlerini atla
@@ -103,7 +103,7 @@ PUT https://customerdemos.search.windows.net/skillsets/callcenter-text-skillset?
 Bir veri kaynağı tanımında yapılan çoğu değişiklik önbelleği geçersiz kılar. Bununla birlikte, bir değişikliğin bir bağlantı dizesini değiştirme veya depolama hesabındaki anahtarı döndürme gibi bir değişikliği önbelleğin geçersiz kılamadı olduğunu bildiğiniz senaryolarda, `ignoreResetRequirement` veri kaynağı güncelleştirmesinde parametresini ekleyin. Bu parametreyi olarak ayarlamak `true` , işlemenin, tüm nesnelerin yeniden oluşturulmasına ve sıfırdan doldurulmasına neden olacak bir sıfırlama koşulu tetiklemeden, devam etmesine izin verir.
 
 ```http
-PUT https://customerdemos.search.windows.net/datasources/callcenter-ds?api-version=2020-06-30-Preview&ignoreResetRequirement=true
+PUT https://[search service].search.windows.net/datasources/[data source name]?api-version=2020-06-30-Preview&ignoreResetRequirement=true
 ```
 
 ### <a name="force-skillset-evaluation"></a>Beceri değerlendirmesini zorla
@@ -111,6 +111,10 @@ PUT https://customerdemos.search.windows.net/datasources/callcenter-ds?api-versi
 Önbelleğin amacı gereksiz işlemden kaçınmaktır, ancak dizin oluşturucunun algılamadığı bir yeteneğe değişiklik yapmayı (örneğin, özel bir beceri gibi harici koddaki bir şeyi değiştirme) varsayalım.
 
 Bu durumda, bu yeteneğin çıktısına bağımlılığı olan tüm aşağı akış becerileri de dahil olmak üzere belirli bir yeteneğin yeniden işlenmesini zorlamak için [sıfırlama becerileri](/rest/api/searchservice/preview-api/reset-skills) kullanabilirsiniz. Bu API, yeniden işlenmek üzere geçersiz kılınmaları ve işaretlenmesi gereken yetenekler listesini içeren bir POST isteğini kabul eder. Yeteneklerini sıfırladıktan sonra, işlem hattını çağırmak için Dizin oluşturucuyu çalıştırın.
+
+### <a name="reset-documents"></a>Belgeleri Sıfırla
+
+[Bir dizin oluşturucunun sıfırlanması](/rest/api/searchservice/reset-indexer) , arama corpmundaki tüm belgelerin yeniden işlenmesini sağlayacaktır. Yalnızca birkaç belgenin yeniden işlenmesi gereken senaryolarda ve veri kaynağı güncelleştirilemeyebilir, belirli belgelerin yeniden işlenmesini zorlamak için [belgeleri Sıfırla (Önizleme)](/rest/api/searchservice/preview-api/reset-documents) kullanın. Bir belge sıfırlandığında, Dizin Oluşturucu bu belge için önbelleği geçersiz kılar ve belge veri kaynağından okunarak yeniden işlenir. Daha fazla bilgi için bkz. [Dizinleyicileri, becerileri ve belgeleri çalıştırma veya sıfırlama](search-howto-run-reset-indexers.md).
 
 ## <a name="change-detection"></a>Değişiklik algılama
 
@@ -161,7 +165,7 @@ REST API sürüm `2020-06-30-Preview` , Dizin oluşturucularda ek özellikler ar
 
 + [Becerileri sıfırlama (api-Version = 2020-06-30)](/rest/api/searchservice/preview-api/reset-skills)
 
-+ Veritabanı Dizin oluşturucular (Azure SQL, Cosmos DB). Bazı Dizin oluşturucular verileri sorgular aracılığıyla alır. Veri alan sorgular için [güncelleştirme veri kaynağı](/rest/api/searchservice/update-data-source) , güncelleştirme eyleminiz önbelleği geçersiz kılamadığında olarak ayarlanması gereken, **ıgnoreresetrequirement**isteği üzerinde yeni bir parametreyi destekler `true` . 
++ Veritabanı Dizin oluşturucular (Azure SQL, Cosmos DB). Bazı Dizin oluşturucular verileri sorgular aracılığıyla alır. Veri alan sorgular için [güncelleştirme veri kaynağı](/rest/api/searchservice/update-data-source) , güncelleştirme eyleminiz önbelleği geçersiz kılamadığında olarak ayarlanması gereken, **ıgnoreresetrequirement** isteği üzerinde yeni bir parametreyi destekler `true` . 
 
   , Verilerinizde kolayca algılanmayacak istenmeyen tutarsızlığa yol açacağından, **ıgnoreresetrequirement** 'ı gelişigüzel bir şekilde kullanın.
 

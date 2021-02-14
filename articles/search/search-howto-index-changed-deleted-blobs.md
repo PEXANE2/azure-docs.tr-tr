@@ -8,14 +8,14 @@ ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/29/2021
-ms.openlocfilehash: b23dabb4388331de9e37ee9db1d4b9d727ccde68
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: 79d5583f8c9e562a0d21a91c210aa6259472661d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99430569"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100383543"
 ---
-# <a name="how-to-set-up-change-and-deletion-detection-for-blobs-in-azure-cognitive-search-indexing"></a>Azure Bilişsel Arama Dizin oluşturma 'da blob 'lar için değişiklik ve silme algılamasını ayarlama
+# <a name="change-and-deletion-detection-in-blob-indexing-azure-cognitive-search"></a>Blob dizinlemesi 'nde değişiklik ve silme algılaması (Azure Bilişsel Arama)
 
 İlk arama dizini oluşturulduktan sonra, sonraki Dizin Oluşturucu işlerinin yalnızca yeni ve değiştirilmiş belgeleri seçmesini isteyebilirsiniz. Azure Blob depolamadan kaynaklanan arama içerikleri için, dizin oluşturmayı tetiklemek üzere bir zamanlama kullandığınızda değişiklik algılama otomatik olarak gerçekleşir. Varsayılan olarak, hizmet blob 'un zaman damgasıyla belirlendiği şekilde yalnızca değiştirilen Blobları yeniden dizinler `LastModified` . Arama Dizin oluşturucular tarafından desteklenen diğer veri kaynaklarının aksine, Bloblar her zaman bir zaman damgasına sahiptir ve bu da bir değişiklik algılama ilkesini el ile ayarlama ihtiyacını ortadan kaldırır.
 

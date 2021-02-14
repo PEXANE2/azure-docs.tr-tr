@@ -426,8 +426,10 @@
             - name: Linux
               displayname: diagnostics extension
               items:
-                - name: Genel Bakış
+                - name: 'Sürüm 4,0'
                   href: ../virtual-machines/extensions/diagnostics-linux.md?toc=/azure/azure-monitor/toc.json
+                - name: 'Sürüm 3,0'
+                  href: ../virtual-machines/extensions/diagnostics-linux-v3.md?toc=/azure/azure-monitor/toc.json
                 - name: Telegraf ile ölçümleri toplama
                   href: platform/collect-custom-metrics-linux-telegraf.md
         - name: Sorun giderme
@@ -976,10 +978,14 @@
               href: app/sharepoint.md
             - name: Windows masaüstü
               href: app/windows-desktop.md
-        - name: Diğer araçlar
-          items:
-            - name: Değişiklik analizi
-              href: app/change-analysis.md
+    - name: Değişiklik Analizi
+      items:
+        - name: Genel Bakış
+          href: app/change-analysis.md
+        - name: Görsel öğeler
+          href: app/change-analysis-visualizations.md
+        - name: Sorun giderme
+          href: app/change-analysis-troubleshoot.md
     - name: VM'ler için Azure İzleyici
       items:
         - name: Genel Bakış

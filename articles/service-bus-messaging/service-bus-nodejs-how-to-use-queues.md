@@ -1,18 +1,18 @@
 ---
 title: JavaScript 'te Azure/Service-Bus kuyruklarını kullanma
-description: '@azure/service-busService Bus kuyruğuna ileti göndermek ve ileti almak için paketin en son önizleme sürümünü kullanan bir JavaScript programı yazmayı öğrenin.'
+description: '@azure/service-busService Bus kuyruğuna ileti göndermek ve ileti almak için paketin en son sürümünü kullanan bir JavaScript programı yazmayı öğrenin.'
 author: spelluru
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 11/09/2020
 ms.author: spelluru
 ms.custom: devx-track-js
-ms.openlocfilehash: ac24d84176f27170648545bc8044c5dcbc77781a
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 27ffbafb92dd3269e38092b64e2b74f17ff9f09f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98180022"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100373088"
 ---
 # <a name="send-messages-to-and-receive-messages-from-azure-service-bus-queues-javascript"></a>Azure Service Bus kuyruklarından ileti gönderme ve iletileri alma (JavaScript)
 Bu öğreticide, [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) bir Service Bus kuyruğuna ileti göndermek ve ileti almak için bir JavaScript programında paketin nasıl kullanılacağını öğrenirsiniz.
@@ -205,6 +205,7 @@ Azure portal Service Bus ad alanının **genel bakış** sayfasında **gelen** v
 ## <a name="next-steps"></a>Sonraki adımlar
 Aşağıdaki belgelere ve örneklere bakın: 
 
-- [JS için Azure Service Bus istemci kitaplığı](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/servicebus/service-bus/README.md)
-- [Örnekler](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/servicebus/service-bus/samples). **JavaScript** klasöründe JavaScript örnekleri ve **TypeScript** 'in TypeScript örnekleri vardır. 
-- [Azure-ServiceBus başvuru belgeleri](/javascript/api/overview/azure/service-bus)
+- [JavaScript için Azure Service Bus istemci kitaplığı](https://www.npmjs.com/package/@azure/service-bus)
+- [JavaScript örnekleri](https://docs.microsoft.com/samples/azure/azure-sdk-for-js/service-bus-javascript/)
+- [TypeScript örnekleri](https://docs.microsoft.com/samples/azure/azure-sdk-for-js/service-bus-typescript/)
+- [API başvuru belgeleri](/javascript/api/overview/azure/service-bus)

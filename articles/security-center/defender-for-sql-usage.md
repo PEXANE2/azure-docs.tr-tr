@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/23/2020
+ms.date: 02/11/2021
 ms.author: memildin
-ms.openlocfilehash: d741aad2e97b211e42dc6c8b6176f102703acc5b
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 205f92d4282f0cad00c1dd136636da319e107f3f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98916498"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100391090"
 ---
 # <a name="azure-defender-for-sql-servers-on-machines"></a>Makinelerdeki SQL sunucuları için Azure Defender 
 
@@ -33,7 +33,7 @@ Bu Azure Defender planı, veritabanlarına erişmek veya veritabanına yararlanm
 |Yayın durumu:|Genel kullanılabilirlik (GA)|
 |Fiyat|**MAKINELERDEKI SQL Server 'lar Için Azure Defender** , [fiyatlandırma sayfasında](security-center-pricing.md) gösterildiği gibi faturalandırılır|
 |Korumalı SQL sürümleri:|Azure SQL Server (Microsoft desteği kapsamında tüm sürümler)|
-|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![Hayır](./media/icons/no-icon.png) Çin gov, diğer gov|
+|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![No](./media/icons/no-icon.png) Çin gov, diğer gov|
 |||
 
 ## <a name="set-up-azure-defender-for-sql-servers-on-machines"></a>Makinelerde SQL Server 'lar için Azure Defender 'ı ayarlama
@@ -70,7 +70,7 @@ Bunların her ikisi de aşağıda açıklanmıştır.
 
 1. **MAKINELERDEKI SQL Server 'lar Için Azure Defender** seçeneğini **ayarlayın.** 
 
-    ![İsteğe bağlı planlar içeren güvenlik merkezi fiyatlandırma sayfası](media/security-center-advanced-iaas-data/sql-servers-on-vms-in-pricing-small.png)
+    :::image type="content" source="./media/security-center-advanced-iaas-data/sql-servers-on-vms-in-pricing-small.png" alt-text="İsteğe bağlı planlar içeren güvenlik merkezi fiyatlandırma sayfası":::
 
     Plan, seçilen çalışma alanına bağlı tüm SQL Server 'lar üzerinde etkinleştirilecek. SQL Server örneğinin ilk yeniden başlatıldıktan sonra koruma tam olarak etkin olur.
 

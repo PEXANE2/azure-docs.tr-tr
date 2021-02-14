@@ -1,22 +1,17 @@
 ---
 title: Azure Data Factory kullanarak MySQL 'ten veri kopyalama
 description: MySQL veritabanından havuz olarak desteklenen bir veri deposuna veri kopyalamanızı sağlayan Azure Data Factory MySQL Bağlayıcısı hakkında bilgi edinin.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/09/2020
 ms.author: jingwang
-ms.openlocfilehash: 16f7a1481b15f280995bb71fa9e30ed3a129ab6d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b6a2253a4a124fe5e3725863c799f91714e66cab
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89612629"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100375264"
 ---
 # <a name="copy-data-from-mysql-using-azure-data-factory"></a>Azure Data Factory kullanarak MySQL 'ten veri kopyalama
 
@@ -39,15 +34,15 @@ Bu MySQL Bağlayıcısı aşağıdaki etkinlikler için desteklenir:
 
 MySQL veritabanından desteklenen herhangi bir havuz veri deposuna veri kopyalayabilirsiniz. Kopyalama etkinliği tarafından kaynak/havuz olarak desteklenen veri depolarının listesi için [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats) tablosuna bakın.
 
-Özellikle, bu MySQL Bağlayıcısı MySQL **sürüm 5,6, 5,7 ve 8,0 ' i**destekler.
+Özellikle, bu MySQL Bağlayıcısı MySQL **sürüm 5,6, 5,7 ve 8,0 ' i** destekler.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
 Integration Runtime sürüm 3,7 ' den başlayarak yerleşik bir MySQL sürücüsü sağlar, bu nedenle herhangi bir sürücüyü el ile yüklemeniz gerekmez.
 
-## <a name="getting-started"></a>Başlarken
+## <a name="getting-started"></a>Kullanmaya başlama
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -59,18 +54,18 @@ MySQL bağlı hizmeti için aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Type özelliği: **MySQL** olarak ayarlanmalıdır | Evet |
-| Dizisi | MySQL için Azure veritabanı örneğine bağlanmak için gereken bilgileri belirtin.<br/> Ayrıca, Azure Key Vault parolayı yerleştirebilir ve `password` yapılandırmayı bağlantı dizesinin dışına çekebilirsiniz. Daha ayrıntılı bilgi için aşağıdaki örneklere bakın ve [kimlik bilgilerini Azure Key Vault makalesine depolayın](store-credentials-in-key-vault.md) . | Evet |
-| connectVia | Veri deposuna bağlanmak için kullanılacak [Integration Runtime](concepts-integration-runtime.md) . [Önkoşullar](#prerequisites) bölümünden daha fazla bilgi edinin. Belirtilmemişse, varsayılan Azure Integration Runtime kullanır. |Hayır |
+| tür | Type özelliği: **MySQL** olarak ayarlanmalıdır | Yes |
+| Dizisi | MySQL için Azure veritabanı örneğine bağlanmak için gereken bilgileri belirtin.<br/> Ayrıca, Azure Key Vault parolayı yerleştirebilir ve `password` yapılandırmayı bağlantı dizesinin dışına çekebilirsiniz. Daha ayrıntılı bilgi için aşağıdaki örneklere bakın ve [kimlik bilgilerini Azure Key Vault makalesine depolayın](store-credentials-in-key-vault.md) . | Yes |
+| connectVia | Veri deposuna bağlanmak için kullanılacak [Integration Runtime](concepts-integration-runtime.md) . [Önkoşullar](#prerequisites) bölümünden daha fazla bilgi edinin. Belirtilmemişse, varsayılan Azure Integration Runtime kullanır. |No |
 
 Tipik bir bağlantı dizesi `Server=<server>;Port=<port>;Database=<database>;UID=<username>;PWD=<password>` . Servis talebi başına ayarlayabileceğiniz daha fazla özellik:
 
 | Özellik | Açıklama | Seçenekler | Gerekli |
 |:--- |:--- |:--- |:--- |
-| SSLMode | Bu seçenek, sürücünün MySQL 'e bağlanırken TLS şifrelemesini ve doğrulamasını kullanıp kullanmadığını belirtir. Ör.,  `SSLMode=<0/1/2/3/4>` .| DEVRE DıŞı (0)/tercıh EDILEN (1) **(varsayılan)** /gerekli (2)/VERIFY_CA (3)/VERIFY_IDENTITY (4) | Hayır |
+| SSLMode | Bu seçenek, sürücünün MySQL 'e bağlanırken TLS şifrelemesini ve doğrulamasını kullanıp kullanmadığını belirtir. Ör.,  `SSLMode=<0/1/2/3/4>` .| DEVRE DıŞı (0)/tercıh EDILEN (1) **(varsayılan)** /gerekli (2)/VERIFY_CA (3)/VERIFY_IDENTITY (4) | No |
 | SSLCert | İstemcinin kimliğini temin etmek için kullanılan SSL sertifikasını içeren bir. ped dosyasının tam yolu ve adı. <br/> Sunucuya göndermeden önce bu sertifikayı şifrelemek üzere özel bir anahtar belirtmek için `SSLKey` özelliğini kullanın.| | Evet, iki yönlü SSL doğrulaması kullanıyorsanız. |
 | SSLKey | İki yönlü SSL doğrulaması sırasında istemci tarafı sertifikayı şifrelemek için kullanılan özel anahtarı içeren dosyanın tam yolu ve adı.|  | Evet, iki yönlü SSL doğrulaması kullanıyorsanız. |
-| UseSystemTrustStore | Bu seçenek, sistem güven deposundan veya belirtilen ped dosyasından bir CA sertifikası kullanılıp kullanılmayacağını belirtir. Örneğin `UseSystemTrustStore=<0/1>;`| Etkin (1)/devre dışı (0) **(varsayılan)** | Hayır |
+| UseSystemTrustStore | Bu seçenek, sistem güven deposundan veya belirtilen ped dosyasından bir CA sertifikası kullanılıp kullanılmayacağını belirtir. Örneğin `UseSystemTrustStore=<0/1>;`| Etkin (1)/devre dışı (0) **(varsayılan)** | No |
 
 **Örnek:**
 
@@ -99,13 +94,13 @@ Tipik bir bağlantı dizesi `Server=<server>;Port=<port>;Database=<database>;UID
         "type": "MySql",
         "typeProperties": {
             "connectionString": "Server=<server>;Port=<port>;Database=<database>;UID=<username>;",
-            "password": { 
-                "type": "AzureKeyVaultSecret", 
-                "store": { 
-                    "referenceName": "<Azure Key Vault linked service name>", 
-                    "type": "LinkedServiceReference" 
-                }, 
-                "secretName": "<secretName>" 
+            "password": { 
+                "type": "AzureKeyVaultSecret", 
+                "store": { 
+                    "referenceName": "<Azure Key Vault linked service name>", 
+                    "type": "LinkedServiceReference" 
+                }, 
+                "secretName": "<secretName>" 
             }
         },
         "connectVia": {
@@ -150,7 +145,7 @@ MySQL 'ten veri kopyalamak için aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | DataSet 'in Type özelliği: **Mysqltable** olarak ayarlanmalıdır | Evet |
+| tür | DataSet 'in Type özelliği: **Mysqltable** olarak ayarlanmalıdır | Yes |
 | tableName | MySQL veritabanındaki tablonun adı. | Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse) |
 
 **Örnek**
@@ -183,7 +178,7 @@ MySQL 'ten veri kopyalamak için aşağıdaki özellikler, etkinlik **kaynağın
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Kopyalama etkinliği kaynağının Type özelliği: **Mysqlsource** olarak ayarlanmalıdır | Evet |
+| tür | Kopyalama etkinliği kaynağının Type özelliği: **Mysqlsource** olarak ayarlanmalıdır | Yes |
 | sorgu | Verileri okumak için özel SQL sorgusunu kullanın. Örneğin: `"SELECT * FROM MyTable"`. | Hayır (veri kümesinde "tableName" belirtilmişse) |
 
 **Örnek:**

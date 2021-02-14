@@ -1,22 +1,17 @@
 ---
 title: Azure Data Factory kullanarak SharePoint Online listesinden veri kopyalama
 description: Azure Data Factory bir işlem hattındaki kopyalama etkinliğini kullanarak SharePoint Online listesinden desteklenen havuz veri depolarına veri kopyalamayı öğrenin.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: jingwang
-ms.openlocfilehash: 440dd561beddc9696ec703142fe82655b69fbb48
-ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
+ms.openlocfilehash: 3f05c90ba3c7e6b47009cbb597c56dac8a01427a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99474956"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100393437"
 ---
 # <a name="copy-data-from-sharepoint-online-list-by-using-azure-data-factory"></a>Azure Data Factory kullanarak SharePoint Online listesinden veri kopyalama
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -86,7 +81,7 @@ Aşağıdaki özellikler bir SharePoint Online listesi bağlı hizmeti için des
 | Serviceprincipalıd  | Azure Active Directory kayıtlı uygulamanın uygulama (istemci) KIMLIĞI. | Yes          |
 | Servicesprincipalkey | Uygulamanın anahtarı. Data Factory güvenli bir şekilde depolamak için bu alanı **SecureString** olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | Yes          |
 | Değerine            | Uygulamanızın bulunduğu kiracı KIMLIĞI.          | Yes          |
-| connectVia          | Veri deposuna bağlanmak için kullanılacak [Integration Runtime](concepts-integration-runtime.md) . Bu makalenin önceki kısımlarında yer alarak [önkoşulları](#prerequisites)öğrenin. Belirtilmemişse, varsayılan Azure Integration Runtime kullanılır. | Hayır           |
+| connectVia          | Veri deposuna bağlanmak için kullanılacak [Integration Runtime](concepts-integration-runtime.md) . Bu makalenin önceki kısımlarında yer alarak [önkoşulları](#prerequisites)öğrenin. Belirtilmemişse, varsayılan Azure Integration Runtime kullanılır. | No           |
 
 **Örnek:**
 
@@ -148,8 +143,8 @@ SharePoint Online listesinden veri kopyalamak için, etkinlik **kaynağını** k
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
 | tür | Kopyalama etkinliği kaynağının **Type** özelliği, **Sharepointonlinelistsource** olarak ayarlanmalıdır. | Yes |
-| sorgu | Verileri filtrelemek için özel OData sorgu seçenekleri. Örnek: `"$top=10&$select=Title,Number"`. | Hayır |
-| httpRequestTimeout | HTTP isteğinin yanıt alması için zaman aşımı (saniye olarak). Varsayılan değer 300 ' dir (5 dakikadır). | Hayır |
+| sorgu | Verileri filtrelemek için özel OData sorgu seçenekleri. Örnek: `"$top=10&$select=Title,Number"`. | No |
+| httpRequestTimeout | HTTP isteğinin yanıt alması için zaman aşımı (saniye olarak). Varsayılan değer 300 ' dir (5 dakikadır). | No |
 
 **Örnek**
 
@@ -196,7 +191,7 @@ SharePoint Online listesinden veri kopyaladığınızda, SharePoint Online liste
 | Birden fazla satır metin                          | Edm.String                                           | Dize                                   |
 | Seçim (arasından seçim yapabileceğiniz menü)                    | Edm.String                                           | Dize                                   |
 | Sayı (1, 1,0, 100)                            | Edm.Double                                           | Çift                                   |
-| Para birimi ($, ¥, €)                              | Edm.Double                                           | Çift                                   |
+| Para birimi ($, ¥, &euro; )                              | Edm.Double                                           | Çift                                   |
 | Tarih ve Saat                                   | EDM. DateTime                                         | DateTime                                 |
 | Arama (zaten bu sitede olan bilgiler)       | Edm.Int32                                            | Int32                                    |
 | Evet/Hayır (onay kutusu)                              | Edm.Boolean                                          | Boole                                  |

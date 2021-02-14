@@ -2,30 +2,30 @@
 title: Azure Arc etkin bir ekleme hizmeti sorumlusu oluşturma (Önizleme)
 services: azure-arc
 ms.service: azure-arc
-ms.date: 05/19/2020
+ms.date: 02/09/2021
 ms.topic: article
 author: mlearned
 ms.author: mlearned
-description: 'Azure Arc etkin bir ekleme hizmeti sorumlusu oluşturma '
+description: 'Azure Arc etkin ekleme hizmeti sorumlusu oluşturma '
 keywords: Kubernetes, yay, Azure, kapsayıcılar
-ms.openlocfilehash: 8eb38dbc04d964c0ab4869e801099ee9420d6ac2
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 8772cf7634d9a833af120784e3e7868b41d202c4
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98184705"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100390496"
 ---
 # <a name="create-an-azure-arc-enabled-onboarding-service-principal-preview"></a>Azure Arc etkin bir ekleme hizmeti sorumlusu oluşturma (Önizleme)
 
 ## <a name="overview"></a>Genel Bakış
 
-Azure yaya Kubernetes kümelerini ekleme için sınırlı ayrıcalıklara sahip bir rol atamasına sahip hizmet sorumlularını kullanmak mümkündür. Bu, Azure Pipelines ve GitHub eylemleri gibi sürekli tümleştirme ve sürekli dağıtım (CI/CD) Işlem hatları için yararlıdır.
+Kubernetes kümelerini, sınırlı ayrıcalıklı rol atamaları olan hizmet sorumlularını kullanarak Azure yaya ekleyebilirsiniz. Bu özellik, Azure Pipelines ve GitHub eylemleri gibi sürekli tümleştirme ve sürekli dağıtım (CI/CD) Işlem hatları için yararlıdır.
 
-Aşağıdaki adımlar, Azure yaya Kubernetes kümelerini eklemek için hizmet sorumlularını kullanmayla ilgili bir yol sağlar.
+Azure yaya Kubernetes kümelerini ekleme için hizmet sorumlularını nasıl kullanacağınızı öğrenmek için aşağıdaki adımları izleyin.
 
 ## <a name="create-a-new-service-principal"></a>Yeni bir hizmet sorumlusu oluşturun
 
-Bilgilendirici bir adla yeni bir hizmet sorumlusu oluşturun. Bu adın Azure Active Directory kiracınız için benzersiz olması gerektiğini unutmayın:
+Azure Active Directory kiracınız için benzersiz olan bilgilendirici bir adla yeni bir hizmet sorumlusu oluşturun.
 
 ```console
 az ad sp create-for-RBAC --skip-assignment --name "https://azure-arc-for-k8s-onboarding"
@@ -45,16 +45,16 @@ az ad sp create-for-RBAC --skip-assignment --name "https://azure-arc-for-k8s-onb
 
 ## <a name="assign-permissions"></a>İzinler atama
 
-Yeni hizmet sorumlusunu oluşturduktan sonra, "Kubernetes kümesi-Azure Arc ekleme" rolünü yeni oluşturulan sorumluya atayın. Bu, sınırlı izinleri olan yerleşik bir Azure roldür ve bu, yalnızca sorumlunun kümeleri Azure 'a kaydetmesini sağlar. Sorumlu, aboneliğin içindeki diğer kümeleri veya kaynakları güncelleştiremez, silemez veya değiştiremezler.
+Yeni oluşturulan hizmet sorumlusuna "Kubernetes kümesi-Azure Arc ekleme" rolünü atayın. Sınırlı izinlerle bu yerleşik Azure rolü yalnızca sorumlunun kümeleri Azure 'a kaydetmesini sağlar. Bu atanan role sahip asıl öğe, aboneliğin içindeki diğer kümeleri veya kaynakları güncelleştiremez, silemez veya değiştiremezler.
 
 Müşteriler, sınırlı yetenekler verildiğinde, bu sorumluyu birden çok küme eklemek için kolayca yeniden kullanabilir.
 
-Rol atarken uygun bağımsız değişkene geçerek izinler daha fazla sınırlı olabilir `--scope` . Bu, müşterilerin küme kaydını kısıtlayasağlar. Aşağıdaki senaryolar çeşitli parametreler tarafından desteklenir `--scope` :
+Rolü atarken uygun bağımsız değişkeni geçirerek, izinleri daha fazla sınırlandırabilirsiniz `--scope` . Bu, müşterilerin küme kaydını kısıtlayasağlar. Aşağıdaki senaryolar çeşitli parametreler tarafından desteklenir `--scope` :
 
 | Kaynak  | `scope` bağımsız değişkeni| Etki |
 | ------------- | ------------- | ------------- |
-| Abonelik | `--scope /subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333` | Hizmet sorumlusu, belirtilen abonelikte var olan bir kaynak grubuna herhangi bir kümeyi kaydedebilir |
-| Kaynak Grubu | `--scope /subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333/resourceGroups/myGroup`  | Hizmet sorumlusu __yalnızca__ kaynak grubundaki kümeleri kaydedebilir `myGroup` |
+| Abonelik | `--scope /subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333` | Hizmet sorumlusu, belirtilen abonelikte var olan bir kaynak grubuna herhangi bir kümeyi kaydedebilir. |
+| Kaynak Grubu | `--scope /subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333/resourceGroups/myGroup`  | Hizmet sorumlusu __yalnızca__ kaynak grubundaki kümeleri kaydedebilir `myGroup` . |
 
 ```console
 az role assignment create \
@@ -80,7 +80,7 @@ az role assignment create \
 
 ## <a name="use-service-principal-with-the-azure-cli"></a>Azure CLı ile hizmet sorumlusu kullanma
 
-Yeni oluşturulan hizmet sorumlusuna başvurun:
+Yeni oluşturulan hizmet sorumlusuna aşağıdaki komutlarla başvurun:
 
 ```azurecli
 az login --service-principal -u mySpnClientId -p mySpnClientSecret --tenant myTenantID

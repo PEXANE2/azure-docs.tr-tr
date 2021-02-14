@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 02/01/2021
+ms.date: 02/09/2021
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: d380b9d6a20cbe28a8fc4b64179437cd31fd2937
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: a370a7f04e0e43b96e4a574313c4f24c4990ab6f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99979304"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100390372"
 ---
 # <a name="soft-delete-for-blobs"></a>Bloblar için geçici silme
 
@@ -83,7 +83,7 @@ Bir anlık görüntüde **silme blobu** çağrıldığında, bu anlık görünt�
 > [!NOTE]  
 > Geçici olarak silinen bir Blobun üzerine yazıldığında, yazma işleminden önce blob 'un durumunun geçici olarak silinmiş bir anlık görüntüsü otomatik olarak oluşturulur. Yeni blob, üzerine yazılan Blobun katmanını devralır.
 
-Geçici silme, verilerinizi kapsayıcı veya hesap silme durumlarında veya blob meta verileri ile blob özelliklerinin üzerine yazıldığında kaydetmez. Bir depolama hesabını silinmeye karşı korumak için Azure Resource Manager kullanarak bir kilit yapılandırabilirsiniz. Daha fazla bilgi için, [beklenmeyen değişiklikleri engellemek üzere kaynakları kilitleme](../../azure-resource-manager/management/lock-resources.md)Azure Resource Manager makalesine bakın.
+Geçici silme, verilerinizi kapsayıcı veya hesap silme durumlarında veya blob meta verileri ile blob özelliklerinin üzerine yazıldığında kaydetmez. Bir depolama hesabını silinmeye karşı korumak için Azure Resource Manager kullanarak bir kilit yapılandırabilirsiniz. Daha fazla bilgi için, [beklenmeyen değişiklikleri engellemek üzere kaynakları kilitleme](../../azure-resource-manager/management/lock-resources.md)Azure Resource Manager makalesine bakın.  Kapsayıcıları yanlışlıkla silinmeye karşı korumak için, depolama hesabı için kapsayıcı geçici silme 'yı yapılandırın. Daha fazla bilgi için bkz. [kapsayıcılar Için geçici silme (Önizleme)](soft-delete-container-overview.md).
 
 Aşağıdaki tabloda, geçici silme açıkken beklenen davranışın ayrıntıları verilmiştir:
 

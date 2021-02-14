@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/04/2021
+ms.date: 02/10/2021
 ms.author: memildin
-ms.openlocfilehash: 20a464011e5a8d37a6215b222323ca989e02ac04
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: fb8dc22c923b7b53a6263baa43046862af4d2f04
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99550928"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100370282"
 ---
 # <a name="tutorial-improve-your-regulatory-compliance"></a>Öğretici: Mevzuat uyumluluğunuzu artırma
 
@@ -26,7 +26,7 @@ Azure Güvenlik Merkezi, mevzuat **Uyumluluk panosunu** kullanarak, mevzuat uyum
 
 Güvenlik Merkezi, aboneliklerinize uygulanan standartların denetimlerine ve en iyi uygulamalarına göre risk faktörlerini analiz etmek için karma bulut ortamınızı sürekli değerlendirir. Pano, bu standartlarla uyumluluğun durumunu yansıtır. 
 
-Azure aboneliğinde Güvenlik Merkezi 'ni etkinleştirdiğinizde, [Azure Güvenlik kıyaslaması](../security/benchmarks/introduction.md)otomatik olarak atanır. Bu, yaygın olarak kullanılan kıyaslama, [Internet güvenliği (CIS) Için merkezden](https://www.cisecurity.org/benchmark/azure/) ve [ulusal standartlar ve teknolojı Enstitüsü (NIST)](https://www.nist.gov/) ile bulut merkezli güvenliğe odaklanarak yapılar oluşturur.
+Azure aboneliğinde Güvenlik Merkezi 'ni etkinleştirdiğinizde, [Azure Güvenlik kıyaslaması](../security/benchmarks/introduction.md) otomatik olarak bu aboneliğe atanır. Bu, yaygın olarak kullanılan kıyaslama, [Internet güvenliği (CIS) Için merkezden](https://www.cisecurity.org/benchmark/azure/) ve [ulusal standartlar ve teknolojı Enstitüsü (NIST)](https://www.nist.gov/) ile bulut merkezli güvenliğe odaklanarak yapılar oluşturur.
 
 Mevzuat uyumluluk panosu, ortamınızdaki tüm değerlendirmelerin durumunu seçtiğiniz standartlar ve yönetmeliklerinize göre gösterir. Önerilerle ilgili işlem yaparken ve ortamınızdaki risk etmenlerini azaltmanız durumunda uyumluluk durmanız artar.
 
@@ -45,7 +45,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 Bu öğreticide ele alınan özellikler arasında ilerlemek için:
 
 - [Azure Defender](azure-defender.md) etkin olmalıdır. Azure Defender 'ı 30 gün boyunca ücretsiz olarak deneyebilirsiniz.
-- İlke uyumluluk verilerine okuyucu erişimi olan bir hesapla oturum açmanız gerekir (**güvenlik okuyucusu** yeterli değildir). Abonelik için **Genel okuyucu** rolü çalışacaktır. En azından, **kaynak Ilkesi katılımcısı** ve **Güvenlik yönetici** rollerinin atanması gerekir.
+- İlke uyumluluk verilerine okuyucu erişimi olan bir hesapla oturum açmış olmanız gerekir (**güvenlik okuyucusu** yeterli değildir). Abonelik için **Genel okuyucu** rolü çalışacaktır. En azından, **kaynak Ilkesi katılımcısı** ve **Güvenlik yönetici** rollerinin atanması gerekir.
 
 ##  <a name="assess-your-regulatory-compliance"></a>Mevzuata uyumluluğunuzu değerlendirin
 
@@ -59,13 +59,13 @@ Seçtiğiniz standartlar ve yönetmeliklerle uyumlu olan boşlukların dikkatine
 
     :::image type="content" source="./media/security-center-compliance-dashboard/compliance-dashboard.png" alt-text="Mevzuat uyumluluk panosu" lightbox="./media/security-center-compliance-dashboard/compliance-dashboard.png":::
 
-1. Uyumluluk standardı için sizin için uygun bir sekme seçin (1). Standart (2) üzerinde hangi aboneliklerin uygulandığını ve bu standart (3) için tüm denetimlerin listesini görürsünüz. İlgili denetimler için, bu denetimle ilişkili geçen ve başarısız değerlendirmelerin ayrıntılarını (4) ve etkilenen kaynakların sayısını (5) görüntüleyebilirsiniz. Bazı denetimler gri renkte. Bu denetimlere kendileriyle ilişkili güvenlik merkezi değerlendirmeleri yok. Bunlarla ilgili gereksinimleri kontrol edin ve kendi ortamınızda kendi ortamınızda değerlendirin. Bunlardan bazıları teknik değil işlem ile ilgili olabilir.
+1. Uyumluluk standardı için sizin için uygun bir sekme seçin (1). Standart (2) üzerinde hangi aboneliklerin uygulandığını ve bu standart (3) için tüm denetimlerin listesini görürsünüz. İlgili denetimler için, bu denetimle ilişkili geçen ve başarısız değerlendirmelerin ayrıntılarını (4) ve etkilenen kaynakların sayısını (5) görebilirsiniz. Bazı denetimler gri renkte. Bu denetimlere kendileriyle ilişkili güvenlik merkezi değerlendirmeleri yok. Gereksinimlerini denetleyin ve ortamınızda değerlendirin. Bunlardan bazıları teknik değil işlem ile ilgili olabilir.
 
     :::image type="content" source="./media/security-center-compliance-dashboard/compliance-drilldown.png" alt-text="Belirli bir standartta uyumluluk ayrıntılarını keşfetme":::
 
 1. Belirli bir standart için geçerli uyumluluk durumunuzu Özetle bir PDF raporu oluşturmak için, **raporu indir**' i seçin.
 
-    Rapor, güvenlik merkezi değerlendirme verilerine dayanarak seçili standart için uyumluluk durumunuzu üst düzey bir Özet sağlar ve söz konusu standart denetimlere göre düzenlenmiştir. Rapor ilgili hissedarlarla paylaşılabilir ve iç ve dış denetçiler için kanıt sağlayabilir.
+    Rapor, güvenlik merkezi değerlendirme verilerine bağlı olarak seçili standart için uyumluluk durumunuzu üst düzey bir Özet sağlar. Rapor, söz konusu standart denetimlere göre düzenlenmiştir. Rapor ilgili hissedarlarla paylaşılabilir ve iç ve dış denetçiler için kanıt sağlayabilir.
 
     :::image type="content" source="./media/security-center-compliance-dashboard/download-report.png" alt-text="Uyumluluk raporunu indir":::
 
@@ -73,7 +73,7 @@ Seçtiğiniz standartlar ve yönetmeliklerle uyumlu olan boşlukların dikkatine
 
 Yasal uyumluluk panosundaki bilgileri kullanarak, önerileri doğrudan pano içinde çözerek uyumluluk durunuzu geliştirebilirsiniz.
 
-1.  Söz konusu öneriye ilişkin ayrıntıları görüntülemek için Panoda görünen başarısız değerlendirmelerin herhangi birine tıklayın. Her öneri, sorunu çözmek için izlenmesi gereken bir düzeltme adımları kümesi içerir.
+1.  Bu öneriye ilişkin ayrıntıları görüntülemek için Panoda görünen başarısız olan değerlendirmelerin birini seçin. Her öneri, sorunu çözmek için bir düzeltme adımları kümesi içerir.
 
 1.  Daha fazla ayrıntı görüntülemek ve söz konusu kaynak için öneriyi çözümlemek üzere belirli bir kaynağı seçin. <br>Örneğin, **Azure CIS 1.1.0** Standard 'da, **sanal makinelere uygulanacak öneri disk şifrelemesi**' ni seçin.
 
@@ -85,7 +85,7 @@ Yasal uyumluluk panosundaki bilgileri kullanarak, önerileri doğrudan pano içi
 
     Önerilerin nasıl uygulanacağı hakkında daha fazla bilgi için bkz. [Azure Güvenlik Merkezi 'nde güvenlik önerilerini uygulama](security-center-recommendations.md).
 
-1.  Önerileri çözümlemek için eylem gerçekleştirdikten sonra uyumluluk puanınız artdığından uyumluluk panosu raporundaki etkiyi görürsünüz.
+1.  Önerileri çözümlemek için işlem yaptıktan sonra, uyumluluk puanınız artdığından uyumluluk panosu raporunda sonucu görürsünüz.
 
     > [!NOTE]
     > Değerlendirmeler yaklaşık 12 saatte bir çalışır, bu nedenle yalnızca ilgili değerlendirmenin bir sonraki çalıştırıldıktan sonra uyumluluk verilerinize etkisini görürsünüz.
@@ -116,21 +116,99 @@ Ayrıca, uyum verilerinizin **PDF/CSV raporunu** doğrudan mevzuata uyumluluk pa
 
 Güvenlik Merkezi 'nin iş akışı Otomasyonu özelliği, mevzuat uyumluluk değerlendirmelerinden biri değiştiğinde Logic Apps tetikleyebilir.
 
-Örneğin, bir uyumluluk değerlendirmesi başarısız olduğunda güvenlik merkezi 'nin belirli bir kullanıcıyı e-posta ile postasını isteyebilirsiniz. Öncelikle Logic App ( [Azure Logic Apps](../logic-apps/logic-apps-overview.md)kullanarak) oluşturmanız ve ardından tetikleyiciyi [Güvenlik Merkezi tetikleyicilerine otomatik hale](workflow-automation.md)getirme bölümünde açıklandığı gibi yeni bir iş akışı otomasyonunda ayarlamanız gerekir.
+Örneğin, bir uyumluluk değerlendirmesi başarısız olduğunda güvenlik merkezi 'nin belirli bir kullanıcıyı e-posta ile postasını isteyebilirsiniz. Önce mantıksal uygulamayı oluşturmanız gerekir ( [Azure Logic Apps](../logic-apps/logic-apps-overview.md)kullanarak) ve ardından tetikleyiciyi [Güvenlik Merkezi tetikleyicilerine otomatik hale](workflow-automation.md)getirme bölümünde açıklandığı gibi yeni bir iş akışı otomasyonunda ayarlamanız gerekir.
 
 :::image type="content" source="media/release-notes/regulatory-compliance-triggers-workflow-automation.png" alt-text="Bir iş akışı Otomasyonu tetiklemek için mevzuat uyumluluk değerlendirmelerinde yapılan değişiklikleri kullanma" lightbox="media/release-notes/regulatory-compliance-triggers-workflow-automation.png":::
+
+
+
+
+## <a name="faq---regulatory-compliance-dashboard"></a>SSS-mevzuat uyumluluk panosu
+
+- [Uyumluluk panosunda hangi standartlar destekleniyor?](#what-standards-are-supported-in-the-compliance-dashboard)
+- [Bazı denetimler neden gri renkte görünüyor?](#why-do-some-controls-appear-grayed-out)
+- [Panodan PCI-DSS, ISO 27001 veya SOC2 TSP gibi yerleşik bir standart nasıl kaldırabilirim?](#how-can-i-remove-a-built-in-standard-like-pci-dss-iso-27001-or-soc2-tsp-from-the-dashboard)
+- [Öneri temelinde önerilen değişikliği yaptı, ancak panoda yansıtılmıyor](#i-made-the-suggested-changed-based-on-the-recommendation-yet-it-isnt-being-reflected-in-the-dashboard)
+- [Uyumluluk panosuna erişmek için hangi izinlere ihtiyacım var?](#what-permissions-do-i-need-to-access-the-compliance-dashboard)
+- [Yasal uyumluluk panosu benim için yüklenmiyor](#the-regulatory-compliance-dashboard-isnt-loading-for-me)
+- [Panom 'ta standart olarak geçen ve başarısız denetimler raporunu nasıl görüntüleyebilirim?](#how-can-i-view-a-report-of-passing-and-failing-controls-per-standard-in-my-dashboard)
+- [Uyumluluk verileriyle bir raporu PDF dışında bir biçimde nasıl indirebilirim?](#how-can-i-download-a-report-with-compliance-data-in-a-format-other-than-pdf)
+- [Yasal uyumluluk panosundaki bazı ilkeler için nasıl özel durumlar oluşturabilirim?](#how-can-i-create-exceptions-for-some-of-the-policies-in-the-regulatory-compliance-dashboard)
+- [Yasal uyumluluk panosunu kullanmak için hangi Azure Defender planlarına veya lisanslarına ihtiyacım var?](#what-azure-defender-plans-or-licenses-do-i-need-to-use-the-regulatory-compliance-dashboard)
+
+### <a name="what-standards-are-supported-in-the-compliance-dashboard"></a>Uyumluluk panosunda hangi standartlar destekleniyor?
+Varsayılan olarak, mevzuat uyumluluk panosu Azure Güvenlik kıyaslaması ' nı gösterir. Azure Güvenlik kıyaslaması, genel uyumluluk çerçevelerine dayalı olarak güvenlik ve uyumluluk en iyi uygulamaları için Microsoft tarafından yazılan, Azure 'a özgü kılavuzlardır. [Azure Güvenlik kıyaslaması giriş](../security/benchmarks/introduction.md)bölümünde daha fazla bilgi edinin.
+
+Diğer standartlarla uyumluluğunuzu izlemek için, bunları panonuza açıkça eklemeniz gerekir.
+ 
+Azure CIS 1.1.0 (New), NıST SP 800-53 R4, NıST SP 800-171 R2, SWIFT CSP CSCF-V2020, UK resmi ve UK NHS, HIPAA ZRUST, Kanada Federal PBMM, ISO 27001, SOC2-TSP ve PCI-DSS 3.2.1 gibi standartları ekleyebilirsiniz.  
+ 
+Panoya daha fazla standartlar eklenecektir ve [mevzuat uyumluluk panonuzdaki standartlar kümesini özelleştirme](update-regulatory-compliance-packages.md)bilgilerine dahil edilecek.
+
+### <a name="why-do-some-controls-appear-grayed-out"></a>Bazı denetimler neden gri renkte görünüyor?
+Panodaki her uyumluluk standardı için, Standart denetimlerin bir listesi vardır. İlgili denetimler için, iletme ve başarısız değerlendirmelerin ayrıntılarını görüntüleyebilirsiniz.
+
+Bazı denetimler gri renkte. Bu denetimlere kendileriyle ilişkili güvenlik merkezi değerlendirmeleri yok. Bazıları yordam veya işlemle ilgili olabilir ve bu nedenle Güvenlik Merkezi tarafından doğrulanamaz. Henüz uygulanan otomatik ilkeler veya değerlendirmeler yoktur, ancak gelecekte olacaktır. Ve bazı denetimler, [bulutta paylaşılan sorumluluk](../security/fundamentals/shared-responsibility.md)bölümünde açıklandığı gibi platform sorumluluğu olabilir. 
+
+### <a name="how-can-i-remove-a-built-in-standard-like-pci-dss-iso-27001-or-soc2-tsp-from-the-dashboard"></a>Panodan PCI-DSS, ISO 27001 veya SOC2 TSP gibi yerleşik bir standart nasıl kaldırabilirim? 
+Yasal uyumluluk panosunu özelleştirmek ve yalnızca sizin için geçerli olan standartlara odaklanmak için, kuruluşunuzla ilgili olmayan, görüntülenen düzenleme standartlarından herhangi birini kaldırabilirsiniz. Bir standart kaldırmak için [panonuzdan bir standart kaldırma](update-regulatory-compliance-packages.md#remove-a-standard-from-your-dashboard)bölümündeki yönergeleri izleyin.
+
+### <a name="i-made-the-suggested-changed-based-on-the-recommendation-yet-it-isnt-being-reflected-in-the-dashboard"></a>Öneri temelinde önerilen değişikliği yaptı, ancak panoda yansıtılmıyor
+Önerileri çözümlemek için işlem yaptıktan sonra, uyumluluk verilerinize yönelik değişiklikleri görmek için 12 saat bekleyin. Değerlendirmeler yaklaşık 12 saatte bir çalıştırılır. bu nedenle, uyumluluk verilerinizde yalnızca değerlendirmelerin çalıştırıldıktan sonra etkisini görürsünüz.
+ 
+### <a name="what-permissions-do-i-need-to-access-the-compliance-dashboard"></a>Uyumluluk panosuna erişmek için hangi izinlere ihtiyacım var?
+Uyumluluk verilerini görüntülemek için, ilke uyumluluk verilerine en az **okuyucu** erişimine de sahip olmanız gerekir; Güvenlik okuyucusu tek başına yeterli olmaz. Abonelik üzerinde küresel bir okuyucunuz varsa, bu da yeterli olacaktır.
+
+Panoya erişmek ve standartları yönetmek için en düşük rol kümesi, **kaynak Ilkesi katılımcısı** ve **Güvenlik Yöneticisi**'dir.
+
+
+### <a name="the-regulatory-compliance-dashboard-isnt-loading-for-me"></a>Yasal uyumluluk panosu benim için yüklenmiyor
+Yasal uyumluluk panosunu kullanmak için Azure Güvenlik Merkezi 'nin abonelik düzeyinde Azure Defender 'ın etkinleştirilmiş olması gerekir. Pano doğru şekilde yüklenmemesi durumunda aşağıdaki adımları deneyin:
+
+1. Tarayıcınızın önbelleğini temizleyin.
+1. Farklı bir tarayıcı deneyin.
+1. Panoyu farklı ağ konumundan açmayı deneyin.
+
+
+### <a name="how-can-i-view-a-report-of-passing-and-failing-controls-per-standard-in-my-dashboard"></a>Panom 'ta standart olarak geçen ve başarısız denetimler raporunu nasıl görüntüleyebilirim?
+Ana panoda, (1) panoda ' ilk 4 ' en düşük uyumluluk standartlarından oluşan geçirme ve başarısız denetimler raporunu görebilirsiniz. Tüm iletme/başarısız denetimlerin durumunu görmek için, (2) **Tümünü göster** (x, izlemekte olduğunuz standartların sayısıdır) seçeneğini belirleyin. Bağlam düzlemi, izlenen standartlarınızın her biri için uyumluluk durumunu görüntüler.
+
+:::image type="content" source="media/security-center-compliance-dashboard/summaries-of-compliance-standards.png" alt-text="Mevzuat uyumluluk panosunun Özet bölümü":::
+
+
+### <a name="how-can-i-download-a-report-with-compliance-data-in-a-format-other-than-pdf"></a>Uyumluluk verileriyle bir raporu PDF dışında bir biçimde nasıl indirebilirim?
+**Raporu indir**' i seçtiğinizde, standart ve BIÇIMI (PDF veya CSV) seçin. Sonuçta elde edilen rapor, portalın filtresinde seçtiğiniz geçerli abonelik kümesini yansıtır.
+
+- PDF raporu seçtiğiniz standart için bir Özet durumu gösterir
+- CSV raporu, her denetimle ilişkili ilkelerle ilişkili olduğundan kaynak başına ayrıntılı sonuçlar sağlar
+
+Şu anda özel bir ilke için rapor indirme desteği yoktur; yalnızca sağlanan düzenleme standartları için.
+
+
+### <a name="how-can-i-create-exceptions-for-some-of-the-policies-in-the-regulatory-compliance-dashboard"></a>Yasal uyumluluk panosundaki bazı ilkeler için nasıl özel durumlar oluşturabilirim?
+Güvenlik Merkezi 'nde yerleşik olan ve güvenli puana dahil olan ilkeler için, [güvenli puanınızdan kaynakları ve önerileri muaf tutma](exempt-resource.md)bölümünde açıklandığı gibi doğrudan portalda bir veya daha fazla kaynak için muafiyet oluşturabilirsiniz.
+
+Diğer ilkeler için, [Azure ilke muafiyet yapısındaki](../governance/policy/concepts/exemption-structure.md)yönergeleri izleyerek doğrudan ilkenin kendisinde bir istisna oluşturabilirsiniz.
+
+
+### <a name="what-azure-defender-plans-or-licenses-do-i-need-to-use-the-regulatory-compliance-dashboard"></a>Yasal uyumluluk panosunu kullanmak için hangi Azure Defender planlarına veya lisanslarına ihtiyacım var?
+Azure Kaynak türlerinizi üzerinde etkinleştirilmiş Azure Defender Paketleriniz varsa, güvenlik merkezi 'nde tüm verileriyle birlikte mevzuat uyumluluk panosuna erişebilirsiniz.
+
+
+
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Bu öğreticide, güvenlik merkezi 'nin mevzuat uyumluluk panosunu şu şekilde kullanma hakkında bilgi edindiniz:
 
-- Sizin için önemli olan standartlar ve yönetmeliklerle ilgili uyumluluk durunuzu görüntüleyin ve izleyin.
-- İlgili önerileri çözümleyerek ve Uyumluluk puanı iyileştirerek uyumluluğu izleyerek uyumluluk durumunuzu geliştirebilirsiniz.
+> [!div class="checklist"]
+> * Sizin için önemli olan standartlar ve yönetmeliklerle ilgili uyumluluk durunuzu görüntüleyin ve izleyin.
+> * İlgili önerileri çözümleyerek ve Uyumluluk puanı iyileştirerek uyumluluğu izleyerek uyumluluk durumunuzu geliştirebilirsiniz.
 
 Mevzuat uyumluluk panosu uyumluluk sürecini büyük ölçüde basitleştirebilir ve Azure, hibrit ve çok bulut ortamınız için uyumluluk kanıtını toplamak için gereken süreyi önemli ölçüde kesebilir.
 
 Daha fazla bilgi edinmek için bu ilgili sayfalara bakın:
 
 - [Yasal uyumluluk panonuzda standartlar kümesini özelleştirme](update-regulatory-compliance-packages.md) -yasal uyumluluk panonuzda hangi standartların görüneceğini seçme hakkında bilgi edinin. 
-- [Azure Güvenlik Merkezi 'Nde güvenlik durumu izleme](security-center-monitoring.md) -Azure kaynaklarınızın sistem durumunu izlemeyi öğrenin.
-- [Azure Güvenlik Merkezi 'nde güvenlik önerilerini yönetme](security-center-recommendations.md) -Azure kaynaklarınızın korunmasına yardımcı olmak Için Azure Güvenlik Merkezi 'nde önerilerin nasıl kullanılacağını öğrenin.
+- [Azure Güvenlik Merkezi 'nde güvenlik önerilerini yönetme](security-center-recommendations.md) -Azure kaynaklarınızı korumaya yardımcı olması Için Güvenlik Merkezi 'ndeki önerilerin nasıl kullanılacağını öğrenin.

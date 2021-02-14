@@ -3,12 +3,12 @@ title: Azure abonelik limitleri ve kotaları
 description: Ortak Azure aboneliği ve hizmet sınırları, Kotalar ve kısıtlamaların bir listesini sağlar. Bu makale, limitlerin en yüksek değerleriyle birlikte nasıl artabileceğine ilişkin bilgiler içerir.
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 0a20d38d0f8d5be4a19dcdb8b6b846699bac6cc1
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: ac35f09e1a7274019a8ca504fc697ca81de000f7
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98920483"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100370130"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure aboneliği ve hizmet limitleri, kotalar ve kısıtlamalar
 
@@ -364,6 +364,9 @@ SQL veritabanı limitleri için bkz. [SQL veritabanı kaynak limitleri tek verit
 
 Azure SYNAPSE Analytics limitleri için bkz. [Azure SYNAPSE kaynak sınırları](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md).
 
+## <a name="azure-files-and-azure-file-sync"></a>Azure dosyaları ve Azure Dosya Eşitleme
+Azure dosya ve Dosya Eşitleme sınırları hakkında daha fazla bilgi edinmek için bkz. [Azure dosyaları ölçeklenebilirlik ve performans hedefleri](../../storage/files/storage-files-scale-targets.md).
+
 ## <a name="storage-limits"></a>Depolama sınırları
 
 <!--like # storage accts -->
@@ -378,16 +381,6 @@ Standart depolama hesapları sınırları hakkında daha fazla bilgi için bkz. 
 ### <a name="azure-blob-storage-limits"></a>Azure Blob depolama sınırları
 
 [!INCLUDE [storage-blob-scale-targets](../../../includes/storage-blob-scale-targets.md)]
-
-### <a name="azure-files-limits"></a>Azure dosya sınırları
-
-Azure dosya limitleri hakkında daha fazla bilgi için bkz. [Azure dosyaları ölçeklenebilirlik ve performans hedefleri](../../storage/files/storage-files-scale-targets.md).
-
-[!INCLUDE [storage-files-scale-targets](../../../includes/storage-files-scale-targets.md)]
-
-### <a name="azure-file-sync-limits"></a>Azure Dosya Eşitleme sınırları
-
-[!INCLUDE [storage-sync-files-scale-targets](../../../includes/storage-sync-files-scale-targets.md)]
 
 ### <a name="azure-queue-storage-limits"></a>Azure kuyruk depolama sınırları
 

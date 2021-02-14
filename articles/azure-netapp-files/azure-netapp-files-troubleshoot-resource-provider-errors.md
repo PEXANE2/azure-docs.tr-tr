@@ -13,20 +13,30 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 10/18/2019
+ms.date: 02/10/2021
 ms.author: b-juche
-ms.openlocfilehash: 870caffe2bd286c2eec3390915bc5e64e0103a07
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ac83e5a9366a12c5adce0e08f04f2bb28a7d788d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85483474"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100374890"
 ---
 # <a name="troubleshoot-azure-netapp-files-resource-provider-errors"></a>Azure NetApp Files Kaynak Sağlayıcısı hatalarını giderme 
 
 Bu makalede ortak Azure NetApp Files kaynak sağlayıcısı hataları, nedenleri, çözümleri ve geçici çözümleri (varsa) açıklanmaktadır.
 
 ## <a name="common-azure-netapp-files-resource-provider-errors"></a>Ortak Azure NetApp Files kaynak sağlayıcısı hataları
+
+***Oluşturma `netAppAccounts` Bu bölgede kısıtlandı.***
+
+Bu durum, abonelik Azure NetApp Files için zaman içinde listelendiğinde ve Kullanıcı bir NetApp hesabı oluşturmayı denediğinde oluşur.
+
+* Neden:   
+Azure NetApp Files için Azure Kaynak sağlayıcısı başarıyla kaydedilemedi. 
+ 
+* Çözüm:   
+Aboneliğiniz waitolduktan sonra [Azure NetApp kaynak sağlayıcısı kaydında](azure-netapp-files-register.md#resource-provider) açıklanan tüm adımları doldurun.
 
 ***BareMetalTenantId değiştirilemez.***  
 

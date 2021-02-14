@@ -1,22 +1,17 @@
 ---
 title: Azure Data Factory kullanarak Hive 'den veri kopyalama
 description: Azure Data Factory işlem hattındaki kopyalama etkinliğini kullanarak Hive 'den desteklenen havuz veri depolarına veri kopyalamayı öğrenin.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: jingwang
-ms.openlocfilehash: 4207c4ddfcbab325b1ae119dcd200af30fc59f58
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 8f6e85d82c01663e404f7046f84706feb209ba5a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844948"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100367036"
 ---
 # <a name="copy-and-transform-data-from-hive-using-azure-data-factory"></a>Azure Data Factory kullanarak Hive 'den veri kopyalama ve dönüştürme 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -34,11 +29,11 @@ Verileri Hive 'dan desteklenen herhangi bir havuz veri deposuna kopyalayabilirsi
 
 Azure Data Factory, bağlantıyı etkinleştirmek için yerleşik bir sürücü sağlar, bu nedenle bu bağlayıcıyı kullanarak herhangi bir sürücüyü el ile yüklemeniz gerekmez.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
-## <a name="getting-started"></a>Başlarken
+## <a name="getting-started"></a>Kullanmaya başlama
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -101,7 +96,7 @@ Hive 'den veri kopyalamak için, veri kümesinin Type özelliğini **Hiveobject*
 |:--- |:--- |:--- |
 | tür | DataSet 'in Type özelliği: **Hiveobject** olarak ayarlanmalıdır | Yes |
 | schema | Şemanın adı. |Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse)  |
-| table | Tablonun adı. |Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse)  |
+| tablo | Tablonun adı. |Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse)  |
 | tableName | Şema bölümü dahil olmak üzere tablonun adı. Bu özellik geriye dönük uyumluluk için desteklenir. Yeni iş yükü için `schema` ve kullanın `table` . | Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse) |
 
 **Örnek**
@@ -176,13 +171,13 @@ Aşağıdaki tabloda, bir Hive kaynağı tarafından desteklenen özellikler lis
 
 | Ad | Açıklama | Gerekli | İzin verilen değerler | Veri akışı betiği özelliği |
 | ---- | ----------- | -------- | -------------- | ---------------- |
-| Depolama | Deponun olması gerekir `hive` | yes |  `hive` | mağaza | 
-| Biçimlendir | Bir tablo veya sorgudan okuma yapıp etmeksizin | yes | `table` veya `query` | biçim |
+| Depolama | Deponun olması gerekir `hive` | evet |  `hive` | mağaza | 
+| Biçimlendir | Bir tablo veya sorgudan okuma yapıp etmeksizin | evet | `table` veya `query` | biçim |
 | Şema adı | Bir tablodan okurken, kaynak tablonun şeması |  Evet, biçim ise `table` | Dize | schemaName |
 | Tablo adı | Bir tablodan okurken tablo adı |   Evet, biçim ise `table` | Dize | tableName |
 | Sorgu | Biçim ise `query` , Hive bağlı hizmetindeki kaynak sorgusu | Evet, biçim ise `query` | Dize | sorgu |
-| Hazırlanmış | Hive tablosu her zaman hazırlanacaktır. | yes | `true` | hazırlanmış |
-| Depolama kapsayıcısı | Hive 'dan okumadan veya Hive 'e yazmadan önce verileri hazırlamak için kullanılan depolama kapsayıcısı. Hive kümesinin bu kapsayıcıya erişimi olması gerekir. | yes | Dize | storageContainer |
+| Hazırlanmış | Hive tablosu her zaman hazırlanacaktır. | evet | `true` | hazırlanmış |
+| Depolama kapsayıcısı | Hive 'dan okumadan veya Hive 'e yazmadan önce verileri hazırlamak için kullanılan depolama kapsayıcısı. Hive kümesinin bu kapsayıcıya erişimi olması gerekir. | evet | Dize | storageContainer |
 | Hazırlama veritabanı | Bağlı hizmette belirtilen kullanıcı hesabının erişimi olduğu şema/veritabanı. Hazırlama sırasında dış tablolar oluşturmak için kullanılır ve daha sonra bırakılır | hayır | `true` veya `false` | stagingDatabaseName |
 | SQL betikleri öncesi | Verileri okumadan önce Hive tablosunda çalıştırılacak SQL kodu | hayır | Dize | preSQLs |
 

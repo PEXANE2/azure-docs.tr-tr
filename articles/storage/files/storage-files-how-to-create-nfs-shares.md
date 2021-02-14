@@ -4,110 +4,164 @@ description: Ağ dosya sistemi protokolü kullanılarak iliştirilenebilir bir A
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/04/2020
+ms.date: 01/22/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 323eed77d6f7a6ccfcdd0a7c7aecff3a125300dc
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: dc23dec8a8d59a7762e93cdfaa2a39d824506e7b
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98602666"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100382132"
 ---
 # <a name="how-to-create-an-nfs-share"></a>NFS paylaşma oluşturma
-
-Azure dosya paylaşımları, bulutta yaşayan tamamen yönetilen dosya paylaşımlardır. Bunlar, sunucu Ileti bloğu Protokolü veya ağ dosya sistemi (NFS) protokolü kullanılarak erişilebilirler. Bu makalede NFS protokolünü kullanan bir dosya paylaşımının oluşturulması ele alınmaktadır. Her iki protokol hakkında daha fazla bilgi için bkz. [Azure dosya paylaşma protokolleri](storage-files-compare-protocols.md).
+Azure dosya paylaşımları, bulutta yaşayan tamamen yönetilen dosya paylaşımlardır. Bu makalede NFS protokolünü kullanan bir dosya paylaşımının oluşturulması ele alınmaktadır. Her iki protokol hakkında daha fazla bilgi için bkz. [Azure dosya paylaşma protokolleri](storage-files-compare-protocols.md).
 
 ## <a name="limitations"></a>Sınırlamalar
-
 [!INCLUDE [files-nfs-limitations](../../../includes/files-nfs-limitations.md)]
 
 ### <a name="regional-availability"></a>Bölgesel kullanılabilirlik
-
 [!INCLUDE [files-nfs-regional-availability](../../../includes/files-nfs-regional-availability.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
-
-- Bir [dosya depolama hesabı](storage-how-to-create-premium-fileshare.md)oluşturun.
-
-    > [!IMPORTANT]
-    > NFS paylaşımlarına yalnızca güvenilen ağlardan erişilebilir. NFS paylaşımınızla kurulan bağlantılar aşağıdaki kaynaklardan birinden kaynaklanmalıdır:
-
+## <a name="prerequisites"></a>Önkoşullar
+- NFS paylaşımlarına yalnızca güvenilen ağlardan erişilebilir. NFS paylaşımınızla kurulan bağlantılar aşağıdaki kaynaklardan birinden kaynaklanmalıdır:
     - [Özel uç nokta oluşturun](storage-files-networking-endpoints.md#create-a-private-endpoint) (önerilir) ya da [genel uç noktanıza erişimi kısıtlayın](storage-files-networking-endpoints.md#restrict-public-endpoint-access).
     - [Azure dosyaları ile kullanmak üzere Linux üzerinde Noktadan siteye (P2S) VPN yapılandırın](storage-files-configure-p2s-vpn-linux.md).
     - [Azure dosyaları ile kullanmak Için siteden sıteye VPN yapılandırın](storage-files-configure-s2s-vpn.md).
     - [ExpressRoute](../../expressroute/expressroute-introduction.md)'ı yapılandırın.
-- Azure CLı 'yı kullanmayı planlıyorsanız [en son sürümü yükleyebilirsiniz](/cli/azure/install-azure-cli?view=azure-cli-latest).
+
+- Azure CLı 'yı kullanmayı planlıyorsanız [en son sürümü yükleyebilirsiniz](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true).
 
 ## <a name="register-the-nfs-41-protocol"></a>NFS 4,1 protokolünü kaydetme
-
 Azure PowerShell modülünü veya Azure CLı kullanıyorsanız, aşağıdaki komutları kullanarak özelliğinizi kaydedin:
 
-### <a name="powershell"></a>PowerShell
+# <a name="portal"></a>[Portal](#tab/azure-portal)
+Azure dosyaları için NFS 4,1 özelliğini kaydetmek üzere Azure PowerShell ya da Azure CLı kullanın.
 
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 ```azurepowershell
+# Connect your PowerShell session to your Azure account, if you have not already done so.
 Connect-AzAccount
-$context = Get-AzSubscription -SubscriptionId <yourSubscriptionIDHere>
+
+# Set the actively selected subscription, if you have not already done so.
+$subscriptionId = "<yourSubscriptionIDHere>"
+$context = Get-AzSubscription -SubscriptionId $subscriptionId
 Set-AzContext $context
-Register-AzProviderFeature -FeatureName AllowNfsFileShares -ProviderNamespace Microsoft.Storage
+
+# Register the NFS 4.1 feature with Azure Files to enable the preview.
+Register-AzProviderFeature `
+    -ProviderNamespace Microsoft.Storage `
+    -FeatureName AllowNfsFileShares 
+    
 Register-AzResourceProvider -ProviderNamespace Microsoft.Storage
 ```
 
-### <a name="azure-cli"></a>Azure CLI
-
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli
+# Connect your Azure CLI to your Azure account, if you have not already done so.
 az login
-az feature register --name AllowNfsFileShares \
-                    --namespace Microsoft.Storage \
-                    --subscription <yourSubscriptionIDHere>
-az provider register --namespace Microsoft.Storage
+
+# Provide the subscription ID for the subscription where you would like to 
+# register the feature
+subscriptionId="<yourSubscriptionIDHere>"
+
+az feature register \
+    --name AllowNfsFileShares \
+    --namespace Microsoft.Storage \
+    --subscription $subscriptionId
+
+az provider register \
+    --namespace Microsoft.Storage
 ```
 
-## <a name="verify-feature-registration"></a>Özellik kaydını doğrula
+---
 
 Kayıt onayı bir saate kadar sürebilir. Kaydın tamamlandığını doğrulamak için aşağıdaki komutları kullanın:
 
-### <a name="powershell"></a>PowerShell
-
-```azurepowershell
-Get-AzProviderFeature -ProviderNamespace Microsoft.Storage -FeatureName AllowNfsFileShares
-```
-
-### <a name="azure-cli"></a>Azure CLI
-
-```azurecli
-az feature show --name AllowNfsFileShares --namespace Microsoft.Storage --subscription <yourSubscriptionIDHere>
-```
-
-## <a name="verify-storage-account-kind"></a>Depolama hesabı türünü doğrulama
-
-Şu anda yalnızca FileStorage hesapları NFS paylaşımları oluşturabilir. 
-
 # <a name="portal"></a>[Portal](#tab/azure-portal)
-
-Sahip olduğunuz depolama hesabı türünü doğrulamak için Azure portal gidin. Ardından, depolama hesabınızdan **Özellikler**' i seçin. Özellikler dikey penceresinde, **Hesap türü** altındaki değeri inceleyin, değer **FileStorage** olmalıdır.
+Azure dosyaları için NFS 4,1 özelliğinin kaydını denetlemek üzere Azure PowerShell veya Azure CLı kullanın. 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
-Bir dosya depolama hesabınız olduğunu doğrulamak için aşağıdaki komutu kullanabilirsiniz:
-
 ```azurepowershell
-$accountKind=Get-AzStorageAccount -ResourceGroupName "yourResourceGroup" -Name "yourStorageAccountName"
-$accountKind.Kind
+Get-AzProviderFeature `
+    -ProviderNamespace Microsoft.Storage `
+    -FeatureName AllowNfsFileShares
 ```
-
-Çıktının **dosya depolaması** olması gerekir, aksi takdirde depolama hesabınız yanlış türde. Bir **dosya depolama** hesabı oluşturmak için bkz. [Azure Premium dosya paylaşma oluşturma](storage-how-to-create-premium-fileshare.md).
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-Bir dosya depolama hesabınız olduğunu doğrulamak için aşağıdaki komutu kullanabilirsiniz:
-
 ```azurecli
-az storage account show -g yourResourceGroup -n yourStorageAccountName
+az feature show \
+    --name AllowNfsFileShares \
+    --namespace Microsoft.Storage \
+    --subscription $subscriptionId
 ```
 
-Çıktı **"tür": "FileStorage"** içermelidir, yoksa depolama hesabınız yanlış türde. Bir **dosya depolama** hesabı oluşturmak için bkz. [Azure Premium dosya paylaşma oluşturma](storage-how-to-create-premium-fileshare.md).
-
 ---
+
+## <a name="create-a-filestorage-storage-account"></a>FileStorage depolama hesabı oluşturma
+Şu anda, NFS 4,1 paylaşımları yalnızca Premium dosya paylaşımları olarak kullanılabilir. Bir Premium dosya paylaşımının NFS 4,1 protokol desteğiyle dağıtılması için önce bir FileStorage depolama hesabı oluşturmanız gerekir. Depolama hesabı, Azure 'da birden çok Azure dosya paylaşımını dağıtmak için kullanılabilen, paylaşılan bir depolama havuzunu temsil eden üst düzey bir nesnedir.
+
+# <a name="portal"></a>[Portal](#tab/azure-portal)
+Bir dosya depolama depolama hesabı oluşturmak için Azure portal gidin.
+
+1. Azure portal sol taraftaki menüden **depolama hesapları** ' nı seçin.
+
+    ![Ana sayfa Azure portal depolama hesabı seçin](media/storage-how-to-create-premium-fileshare/azure-portal-storage-accounts.png)
+
+2. Açılan **Depolama Hesapları** penceresinde **Ekle**'yi seçin.
+3. Depolama hesabının oluşturulacağı aboneliği seçin.
+4. Depolama hesabının oluşturulacağı kaynak grubunu seçin
+
+5. Ardından, depolama hesabınız için bir ad girin. Seçtiğiniz ad Azure genelinde benzersiz olmalıdır. Ad ayrıca 3 - 24 karakter uzunluğunda olmalıdır ve yalnızca rakam ve küçük harf içerebilir.
+6. Depolama hesabınız için bir konum seçin veya varsayılan konumu kullanın.
+7. **Performans** için **Premium** seçin.
+
+    **Dosya depolama** için **Premium** ' u seçerek **Hesap türü** açılan listesinde kullanılabilir bir seçenek olması gerekir.
+
+8. **Hesap türü** ' nü seçin ve **FileStorage**' ı seçin.
+9. **Çoğaltmayı** **yerel olarak yedekli depolama (LRS)** varsayılan değerine ayarlı bırakın.
+
+    ![Premium dosya paylaşımında depolama hesabı oluşturma](media/storage-how-to-create-premium-fileshare/create-filestorage-account.png)
+
+10. Depolama hesabı ayarlarınızı gözden geçirmek ve hesabı oluşturmak için **Gözden Geçir + Oluştur**’u seçin.
+11. **Oluştur**’u seçin.
+
+Depolama hesabı kaynağınız oluşturulduktan sonra şuraya gidin.
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+Bir dosya depolama depolama hesabı oluşturmak için, bir PowerShell istemi açın ve aşağıdaki komutları yürütün ve `<resource-group>` `<storage-account>` ortamınız için uygun değerleri ve ile değiştirin.
+
+```powershell
+$resourceGroupName = "<resource-group>"
+$storageAccountName = "<storage-account>"
+$location = "westus2"
+
+$storageAccount = New-AzStorageAccount `
+    -ResourceGroupName $resourceGroupName `
+    -Name $storageAccountName `
+    -SkuName Premium_LRS `
+    -Location $location `
+    -Kind FileStorage
+```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+Bir dosya depolama depolama hesabı oluşturmak için terminalinizi açın ve aşağıdaki komutları yürütün ve `<resource-group>` `<storage-account>` ortamınız için uygun değerleri ve ile değiştirin.
+
+```azurecli-interactive
+resourceGroup="<resource-group>"
+storageAccount="<storage-account>"
+location="westus2"
+
+az storage account create \
+    --resource-group $resourceGroup \
+    --name $storageAccount \
+    --location $location \
+    --sku Premium_LRS \
+    --kind FileStorage
+```
+---
+
 ## <a name="create-an-nfs-share"></a>NFS paylaşımı oluşturma
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
@@ -138,7 +192,7 @@ Bir dosya depolama hesabı oluşturup ağı yapılandırdığınıza göre, bir 
    echo $PSVersionTable.PSVersion.ToString() 
    ```
     
-   PowerShell sürümünüzü yükseltmek için bkz. [var olan Windows PowerShell 'ı yükseltme](/powershell/scripting/install/installing-windows-powershell?view=powershell-6#upgrading-existing-windows-powershell)
+   PowerShell sürümünüzü yükseltmek için bkz. [var olan Windows PowerShell 'ı yükseltme](/powershell/scripting/install/installing-windows-powershell?view=powershell-6&preserve-view=true#upgrading-existing-windows-powershell)
     
 1. PowershellGet modülünün en son sürümünü yükler.
 
@@ -154,41 +208,40 @@ Bir dosya depolama hesabı oluşturup ağı yapılandırdığınıza göre, bir 
    Install-Module Az.Storage -Repository PsGallery -RequiredVersion 2.5.2-preview -AllowClobber -AllowPrerelease -Force  
    ```
 
-   PowerShell modüllerinin nasıl yükleneceği hakkında daha fazla bilgi için bkz [. Azure PowerShell modülünü Install](/powershell/azure/install-az-ps?view=azps-3.0.0)
+   PowerShell modüllerinin nasıl yükleneceği hakkında daha fazla bilgi için bkz [. Azure PowerShell modülünü Install](/powershell/azure/install-az-ps?view=azps-3.0.0&preserve-view=true)
    
 1. Azure PowerShell modülüyle Premium bir dosya paylaşımı oluşturmak için [New-Azrmstoragesshare](/powershell/module/az.storage/new-azrmstorageshare) cmdlet 'ini kullanın.
 
-> [!NOTE]
-> Sağlanan paylaşım boyutları paylaşım kotası ile belirtilir, dosya paylaşımları sağlanan boyutta faturalandırılır. Daha fazla bilgi edinmek için bkz. [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/storage/files/).
+    > [!NOTE]
+    > Premium dosya paylaşımları, sağlanan bir model kullanılarak faturalandırılır. Paylaşımın sağlanan boyutu aşağıdaki şekilde belirtilmiştir `QuotaGiB` . Daha fazla bilgi için bkz. [sağlanan modeli](understanding-billing.md#provisioned-model) ve [Azure dosyaları fiyatlandırma sayfasını](https://azure.microsoft.com/pricing/details/storage/files/)anlama.
 
-  ```powershell
-  New-AzRmStorageShare `
-   -ResourceGroupName $resourceGroupName `
-   -StorageAccountName $storageAccountName `
-   -Name myshare `
-   -EnabledProtocol NFS `
-   -RootSquash RootSquash `
-   -Context $storageAcct.Context
-  ```
+    ```powershell
+    New-AzRmStorageShare `
+        -StorageAccount $storageAccount `
+        -Name myshare `
+        -EnabledProtocol NFS `
+        -RootSquash RootSquash `
+        -QuotaGiB 1024
+    ```
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-
 Azure CLı ile Premium dosya paylaşma oluşturmak için [az Storage Share Create](/cli/azure/storage/share-rm) komutunu kullanın.
 
 > [!NOTE]
-> Sağlanan paylaşım boyutları paylaşım kotası ile belirtilir, dosya paylaşımları sağlanan boyutta faturalandırılır. Daha fazla bilgi edinmek için bkz. [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/storage/files/).
+> Premium dosya paylaşımları, sağlanan bir model kullanılarak faturalandırılır. Paylaşımın sağlanan boyutu aşağıdaki şekilde belirtilmiştir `quota` . Daha fazla bilgi için bkz. [sağlanan modeli](understanding-billing.md#provisioned-model) ve [Azure dosyaları fiyatlandırma sayfasını](https://azure.microsoft.com/pricing/details/storage/files/)anlama.
 
 ```azurecli-interactive
 az storage share-rm create \
-    --storage-account $STORAGEACCT \
+    --resource-group $resourceGroup \
+    --storage-account $storageAccount \
+    --name "myshare" \
     --enabled-protocol NFS \
     --root-squash RootSquash \
-    --name "myshare" 
+    --quota 1024
 ```
 ---
 
 ## <a name="next-steps"></a>Sonraki adımlar
-
 Artık bir NFS paylaşma oluşturduğunuza göre, bunu kullanmak için Linux istemcinizle bağlamanız gerekir. Ayrıntılar için bkz. [NFS paylaşma bağlama](storage-files-how-to-mount-nfs-shares.md).
 
 Herhangi bir sorunla karşılaşırsanız bkz. [Azure NFS dosya paylaşımları sorunlarını giderme](storage-troubleshooting-files-nfs.md).

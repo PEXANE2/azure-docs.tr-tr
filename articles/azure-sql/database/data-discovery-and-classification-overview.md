@@ -11,14 +11,14 @@ ms.topic: conceptual
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 12/01/2020
+ms.date: 02/11/2021
 tags: azure-synapse
-ms.openlocfilehash: 41ad711de81f075727e4c177c318054677cb0ece
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 254d69c723a97d9007a1f6c0f0eb7b34bcfe3c4e
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98185368"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100392774"
 ---
 # <a name="data-discovery--classification"></a>Veri Bulma ve Sınıflandırma
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -75,7 +75,7 @@ Kuruluş genelinde ilke tanımlandıktan sonra, özelleştirilmiş ilkenizi kull
 > [!NOTE]
 > Aşağıdaki örnek Azure SQL veritabanı 'nı kullanır, ancak veri bulma & sınıflandırmasını yapılandırmak istediğiniz uygun ürünü seçmeniz gerekir.
 
-1. [Azure portalına](https://portal.azure.com) gidin.
+1. [Azure Portal](https://portal.azure.com) gidin.
 
 1. Azure SQL veritabanı bölmesinizdeki **güvenlik** başlığı altında bulunan **veri bulma & sınıflandırmasına** gidin. Genel Bakış sekmesi, veritabanının geçerli sınıflandırma durumunun bir özetini içerir. Özet, yalnızca belirli şema parçalarını, bilgi türlerini ve etiketleri göstermek üzere filtreleyebileceğiniz tüm sınıflandırılan sütunların ayrıntılı bir listesini içerir. Herhangi bir sütunu henüz sınıflandırılmamış [4. adıma atlayın](#step-4).
 
@@ -183,6 +183,13 @@ Sınıflandırmaları ve önerileri programlı bir şekilde yönetmek için REST
 - [Get](/rest/api/sql/sensitivitylabels/get): belirtilen sütunun duyarlılık etiketini alır.
 - [Geçerli veritabanına göre Listele](/rest/api/sql/sensitivitylabels/listcurrentbydatabase): belirtilen veritabanının geçerli duyarlılık etiketlerini alır.
 - [Veritabanı tarafından önerilen liste](/rest/api/sql/sensitivitylabels/listrecommendedbydatabase): belirtilen veritabanının önerilen duyarlılık etiketlerini alır.
+
+
+## <a name="faq---advanced-classification-capabilities"></a>SSS-gelişmiş sınıflandırma özellikleri
+
+**Soru**: [Azure PURVIEW](https://docs.microsoft.com/azure/purview/overview) , SQL veri bulma & sınıflandırmasının yerini alacak veya SQL veri bulma & sınıflandırması yakında kullanımdan kalkacaktır mi?
+**Cevap**: SQL veri bulma & sınıflandırmasını desteklemeye devam ediyoruz ve gelişmiş sınıflandırma özelliklerini ve veri yönetimini sağlamak için daha zengin özellikleri olan [Azure purview](https://docs.microsoft.com/azure/purview/overview) 'ı benimsemenizi öneririz. Herhangi bir hizmeti, özelliği, API 'yi veya SKU 'yu devre dışı bırakmaya karar verirse, bir geçiş veya geçiş yolu da dahil olmak üzere ön bildirim alırsınız. Buradan Microsoft yaşam döngüsü ilkeleri hakkında daha fazla bilgi edinin.
+
 
 ## <a name="next-steps"></a><a id="next-steps"></a>Sonraki adımlar
 

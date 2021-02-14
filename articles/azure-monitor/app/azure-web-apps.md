@@ -4,19 +4,19 @@ description: Azure Uygulama Hizmetleri için uygulama performansı izleme. Grafi
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-js, devx-track-dotnet
-ms.openlocfilehash: c0ee68659f4729ed8f63b9ea990343adf51513bd
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: cd203c64695a9a61a93409a96f6a92b9acf9fe70
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186380"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100365234"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Azure App Service performansını izleme
 
 [Azure Uygulama hizmetlerinde](../../app-service/index.yml) çalışan ASP.NET ve ASP.NET Core tabanlı Web uygulamalarında izlemenin etkinleştirilmesi artık hiç olmadığı kadar kolay. Daha önce bir site uzantısını el ile yüklemek için, en son uzantı/aracı artık varsayılan olarak App Service görüntüsüne yerleşik olarak bulunur. Bu makale, Application Insights izlemenin nasıl etkinleştirilebileceğine ve büyük ölçekli dağıtımlar için işlemi otomatikleştirmek üzere ön kılavuz sağlamanıza yol gösterecektir.
 
 > [!NOTE]
-> **Geliştirme araçları** uzantıları aracılığıyla Application Insights bir site uzantısının el ile eklenmesi  >  **Extensions** kullanım dışıdır. Bu uzantı yükleme yöntemi, her yeni sürüm için el ile güncelleştirmelere bağımlıdır. Uzantının en son kararlı sürümü artık App Service görüntüsünün bir parçası olarak  [önceden yüklenmiştir](https://github.com/projectkudu/kudu/wiki/Azure-Site-Extensions) . Dosyalar içinde bulunur `d:\Program Files (x86)\SiteExtensions\ApplicationInsightsAgent` ve her kararlı sürümle otomatik olarak güncelleştirilir. Aşağıda izlemeyi etkinleştirmek için aracı tabanlı yönergeleri izlerseniz, devre dışı bırakılmış uzantıyı sizin için otomatik olarak kaldırır.
+> **Geliştirme araçları** uzantıları aracılığıyla Application Insights bir site uzantısının el ile eklenmesi  >   kullanım dışıdır. Bu uzantı yükleme yöntemi, her yeni sürüm için el ile güncelleştirmelere bağımlıdır. Uzantının en son kararlı sürümü artık App Service görüntüsünün bir parçası olarak  [önceden yüklenmiştir](https://github.com/projectkudu/kudu/wiki/Azure-Site-Extensions) . Dosyalar içinde bulunur `d:\Program Files (x86)\SiteExtensions\ApplicationInsightsAgent` ve her kararlı sürümle otomatik olarak güncelleştirilir. Aşağıda izlemeyi etkinleştirmek için aracı tabanlı yönergeleri izlerseniz, devre dışı bırakılmış uzantıyı sizin için otomatik olarak kaldırır.
 
 ## <a name="enable-application-insights"></a>Application Insights'ı etkinleştirme
 
@@ -61,11 +61,11 @@ Azure App Services 'da barındırılan uygulamalar için uygulama izlemeyi etkin
         
 | Veriler | ASP.NET temel koleksiyonu | ASP.NET önerilen koleksiyon |
 | --- | --- | --- |
-| CPU, bellek ve G/Ç kullanım eğilimlerini ekler |Evet |Evet |
-| Kullanım eğilimlerini toplar ve kullanılabilirlik sonuçlarıyla işlemler arasında bağıntı sağlar | Evet |Evet |
-| Ana işlem tarafından işlenmeyen özel durumları toplar | Evet |Evet |
-| Örnekleme kullanıldığında yük altındaki APM ölçümü doğruluğunu geliştirir | Evet |Evet |
-| Mikro hizmetler ile istek/bağımlılık sınırları arasında bağıntı sağlar | Hayır (yalnızca tek örnekli APM özellikleri) |Evet |
+| CPU, bellek ve G/Ç kullanım eğilimlerini ekler |Yes |Yes |
+| Kullanım eğilimlerini toplar ve kullanılabilirlik sonuçlarıyla işlemler arasında bağıntı sağlar | Yes |Yes |
+| Ana işlem tarafından işlenmeyen özel durumları toplar | Yes |Yes |
+| Örnekleme kullanıldığında yük altındaki APM ölçümü doğruluğunu geliştirir | Yes |Yes |
+| Mikro hizmetler ile istek/bağımlılık sınırları arasında bağıntı sağlar | Hayır (yalnızca tek örnekli APM özellikleri) |Yes |
 
 3. Daha önce applicationinsights.config dosyası aracılığıyla denetleyebilmeniz gereken örnekleme gibi ayarları yapılandırmak için artık karşılık gelen bir ön ek ile uygulama ayarları aracılığıyla aynı ayarlarla etkileşime geçebilirsiniz. 
 
@@ -75,7 +75,8 @@ Azure App Services 'da barındırılan uygulamalar için uygulama izlemeyi etkin
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/netcore)
 
-Aşağıdaki ASP.NET Core sürümleri desteklenir: ASP.NET Core 2,1, ASP.NET Core 2,2, ASP.NET Core 3,0, ASP.NET Core 3,1
+> [!IMPORTANT]
+> Aşağıdaki ASP.NET Core sürümleri desteklenir: ASP.NET Core 2,1, 3,1 ve 5,0. 2,0, 2,2 ve 3,0 sürümleri devre dışı bırakıldı ve artık desteklenmiyor. Otomatik izleme çalışması için lütfen desteklenen bir .NET Core [sürümüne](https://dotnet.microsoft.com/platform/support/policy/dotnet-core) yükseltin.
 
 ASP.NET Core, kendinden bağımsız dağıtım ve Linux tabanlı uygulamalardan tam Framework 'ü hedeflemek, aracı/uzantısı tabanlı izleme ile Şu anda **desteklenmemektedir** . (Kod aracılığıyla[el ile izleme](./asp-net-core.md) , önceki senaryolardan tümünde çalışır.)
 
@@ -90,13 +91,13 @@ ASP.NET Core, kendinden bağımsız dağıtım ve Linux tabanlı uygulamalardan 
 
      ![Web uygulamanızı izleme](./media/azure-web-apps/create-resource-01.png)
 
-2. Hangi kaynağı kullanacağınızı belirttikten sonra, uygulamanız için her platform için verileri nasıl toplayacağınızı Application Insights istediğinizi seçebilirsiniz. ASP.NET Core, ASP.NET Core 2,1, 2,2, 3,0 ve 3,1 için **Önerilen koleksiyon** veya **devre dışı** bırakma olanakları sunmaktadır.
+2. Hangi kaynağı kullanacağınızı belirttikten sonra, uygulamanız için her platform için verileri nasıl toplayacağınızı Application Insights istediğinizi seçebilirsiniz. ASP.NET Core, ASP.NET Core 2,1 ve 3,1 için **Önerilen koleksiyon** veya **devre dışı** bırakma olanakları sunmaktadır.
 
     ![Platform başına seçenekleri belirleyin](./media/azure-web-apps/choose-options-new-net-core.png)
 
 # <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
-App Service Web uygulamanızın içinden **Ayarlar** bölümünden  >  Application Insights etkinleştir '**i seçin**  >  **Enable**. Node.js aracı tabanlı izleme şu anda önizleme aşamasındadır.
+App Service Web uygulamanızın içinden **Ayarlar** bölümünden  >  Application Insights etkinleştir '**i seçin**  >  . Node.js aracı tabanlı izleme şu anda önizleme aşamasındadır.
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -419,6 +420,12 @@ Azure App Services Web uygulamasında ASP.NET veya ASP.NET Core için kodsuz kul
 ### <a name="connection-string-and-instrumentation-key"></a>Bağlantı dizesi ve izleme anahtarı
 
 Kodsuz kullanacaksınız izleme kullanıldığında yalnızca bağlantı dizesi gereklidir. Bununla birlikte, el ile izleme gerçekleştirilirken SDK 'nın eski sürümleriyle geriye dönük uyumluluğu korumak için de izleme anahtarını ayarlamayı öneririz.
+
+### <a name="difference-between-standard-metrics-from-application-insights-vs-azure-app-service-metrics"></a>Application Insights ile Azure App Service ölçümlerinden standart ölçümler arasındaki fark nedir?
+
+Application Insights, uygulamayı uygulamaya yapan bu istekler için telemetri toplar. WebApps/IIS 'de hata oluştuysa ve istek kullanıcı uygulamasına ulaşamadıysanız, Application Insights onunla ilgili telemetri yoktur.
+
+`serverresponsetime`Application Insights tarafından hesaplanan süre, Web Apps tarafından gözlemlenen sunucu yanıt süresi ile aynı değildir. Bunun nedeni Application Insights yalnızca istek fiili Kullanıcı uygulamasına ulaştığında süreyi saymaktadır. İstek IIS 'de takılırsa/sıraya alınmışsa, bu bekleme süresi Web uygulaması ölçümlerine dahil edilir, ancak Application Insights ölçümlerine katılmaz.
 
 ## <a name="release-notes"></a>Sürüm notları
 

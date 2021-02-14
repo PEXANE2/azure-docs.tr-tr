@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: 54da62ce961156b64c917b448557c17e7516e222
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: ef753043218f259c69082dbb8682517be79cf95c
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97862146"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100099804"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>Azure Machine Learning işlem örneği nedir?
 
@@ -32,7 +32,7 @@ Makine öğrenimi için bulutta tam olarak yapılandırılmış ve yönetilen ge
 
 İşlem örneği, Machine Learning geliştirme ortamınız için iyileştirilmiş, tam olarak yönetilen bulut tabanlı bir iş istasyonudur. Aşağıdaki avantajları sağlar:
 
-|Önemli avantajlar|Açıklama|
+|Önemli avantajlar|Description|
 |----|----|
 |Üretkenlik|Tümleşik not defterlerini ve Azure Machine Learning Studio 'daki aşağıdaki araçları kullanarak modeller oluşturabilir ve dağıtabilirsiniz:<br/>-Jupyıter<br/>-Jupyıterlab<br/>-RStudio (Önizleme)<br/>İşlem örneği, Azure Machine Learning çalışma alanı ve Studio ile tamamen tümleşiktir. Çalışma alanındaki diğer veri bilimcileri ile not defterlerini ve verileri paylaşabilirsiniz.<br/> İşlem örnekleri ile [vs Code](https://techcommunity.microsoft.com/t5/azure-ai/power-your-vs-code-notebooks-with-azml-compute-instances/ba-p/1629630) de kullanabilirsiniz.
 |Yönetilen & güvenli|Güvenlik ayak izini azaltın ve kurumsal güvenlik gereksinimleriyle uyumluluk ekleyin. İşlem örnekleri, güçlü yönetim ilkeleri ve güvenli ağ yapılandırmalarının yanı sıra şunları sağlar:<br/><br/>-Kaynak Yöneticisi şablonlarından veya Azure Machine Learning SDK 'dan oto sağlama<br/>- [Azure rol tabanlı erişim denetimi (Azure RBAC)](../role-based-access-control/overview.md)<br/>- [Sanal ağ desteği](./how-to-secure-training-vnet.md#compute-instance)<br/>-SSH erişimini etkinleştirmek/devre dışı bırakmak için SSH ilkesi<br/>TLS 1,2 etkin |
@@ -51,7 +51,7 @@ Azure Machine Learning işlem örneği, çalışma alanınızdaki tamamen tümle
 
 İşlem örneğini, SSH gerekmeden uzak sunucu olarak kullanarak [vs Code](https://techcommunity.microsoft.com/t5/azure-ai/power-your-vs-code-notebooks-with-azml-compute-instances/ba-p/1629630) jupi not defterlerini çalıştırabilirsiniz. Ayrıca, [uzak SSH uzantısı](https://devblogs.microsoft.com/python/enhance-your-azure-machine-learning-experience-with-the-vs-code-extension/)aracılığıyla vs Code tümleştirmesini etkinleştirebilirsiniz.
 
-[Paketleri yükleyebilir](how-to-create-manage-compute-instance.md#install-packages) ve işlem örneğinize [çekirdekler ekleyebilirsiniz](how-to-create-manage-compute-instance.md#add-new-kernels) .  
+[Paketleri yükleyebilir](how-to-access-terminal.md#install-packages) ve işlem örneğinize [çekirdekler ekleyebilirsiniz](how-to-access-terminal.md#add-new-kernels) .  
 
 Aşağıdaki araçlar ve ortamlar, işlem örneğinde zaten yüklüdür: 
 
@@ -77,7 +77,7 @@ Aşağıdaki araçlar ve ortamlar, işlem örneğinde zaten yüklüdür:
 |Anaconda Python||
 |Jupi ve uzantıları||
 |Jupi terlab ve uzantıları||
-[Python için Azure Machine Learning SDK'sı](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)</br>Pypı 'den|, Azureml ek paketlerin çoğunu içerir.  Tam listeyi görmek için, [işlem örneğiniz üzerinde bir Terminal penceresi açın](how-to-run-jupyter-notebooks.md#terminal) ve şunu çalıştırın: <br/> `conda list -n azureml_py36 azureml*` |
+[Python için Azure Machine Learning SDK'sı](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)</br>Pypı 'den|, Azureml ek paketlerin çoğunu içerir.  Tam listeyi görmek için, [işlem örneğiniz üzerinde bir Terminal penceresi açın](how-to-access-terminal.md) ve şunu çalıştırın: <br/> `conda list -n azureml_py36 azureml*` |
 |Diğer Pypı paketleri|`jupytext`</br>`tensorboard`</br>`nbconvert`</br>`notebook`</br>`Pillow`|
 |Conda paketleri|`cython`</br>`numpy`</br>`ipykernel`</br>`scikit-learn`</br>`matplotlib`</br>`tqdm`</br>`joblib`</br>`nodejs`</br>`nb_conda_kernels`|
 |Derin öğrenme paketleri|`PyTorch`</br>`TensorFlow`</br>`Keras`</br>`Horovod`</br>`MLFlow`</br>`pandas-ml`</br>`scrapbook`|
@@ -124,15 +124,15 @@ Aşağıdaki eylemleri gerçekleştirebilirsiniz:
 
 Bu eylemler, Azure RBAC tarafından denetlenebilir:
 * *Microsoft. MachineLearningServices/çalışma alanları/hesaplar/okundu*
-* *Microsoft. MachineLearningServices/çalışma alanları/hesaplar/yaz*
+* *Microsoft.MachineLearningServices/workspaces/computes/write*
 * *Microsoft. MachineLearningServices/çalışma alanları/hesaplar/Sil*
 * *Microsoft. MachineLearningServices/çalışma alanları/hesaplar/Başlat/eylem*
 * *Microsoft. MachineLearningServices/Workspaces/hesaplar/durdur/eylem*
 * *Microsoft. MachineLearningServices/Workspaces/hesaplar/yeniden Başlat/eylem*
 
 Bir işlem örneği oluşturmak için aşağıdaki eylemler için izinlerinizin olması gerekir:
-* *Microsoft. MachineLearningServices/çalışma alanları/hesaplar/yaz*
-* *Microsoft. MachineLearningServices/Workspaces/Checkcomputenameavaılabılıty/Action*
+* *Microsoft.MachineLearningServices/workspaces/computes/write*
+* *Microsoft.MachineLearningServices/workspaces/checkComputeNameAvailability/action*
 
 
 ### <a name="create-a-compute-instance"></a><a name="create"></a>İşlem örneği oluşturma

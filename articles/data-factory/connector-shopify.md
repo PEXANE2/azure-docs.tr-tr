@@ -1,22 +1,18 @@
 ---
 title: Shopify 'dan veri kopyalama (Önizleme)
 description: Azure Data Factory bir işlem hattındaki kopyalama etkinliğini kullanarak Shopify 'tan desteklenen havuz veri depolarına veri kopyalamayı öğrenin.
-services: data-factory
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/01/2019
-ms.openlocfilehash: e387d8329249fff0b3e84460bd753f35dd275507
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 47b955ebd8827a46ae718d8a89863d5b37024e5d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81415188"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100393403"
 ---
 # <a name="copy-data-from-shopify-using-azure-data-factory-preview"></a>Azure Data Factory kullanarak Shopify 'tan veri kopyalama (Önizleme)
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -37,7 +33,7 @@ Shopify 'ten desteklenen herhangi bir havuz veri deposuna veri kopyalayabilirsin
 
 Azure Data Factory, bağlantıyı etkinleştirmek için yerleşik bir sürücü sağlar, bu nedenle bu bağlayıcıyı kullanarak herhangi bir sürücüyü el ile yüklemeniz gerekmez.
 
-## <a name="getting-started"></a>Başlarken
+## <a name="getting-started"></a>Kullanmaya başlama
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -49,12 +45,12 @@ Aşağıdaki özellikler Shopify bağlı hizmeti için desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Type özelliği: **Shopify** olarak ayarlanmalıdır | Evet |
-| konak | Shopify sunucusunun uç noktası. (yani, mystore.myshopify.com)  | Evet |
-| accessToken | Shopify 'in verilerine erişmek için kullanılabilecek API erişim belirteci. Çevrimdışı modda belirtecin kullanım süreleri dolmaz. Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | Evet |
-| useEncryptedEndpoints | Veri kaynağı uç noktalarının HTTPS kullanılarak şifrelenip şifrelenmediğini belirtir. Varsayılan değer true şeklindedir.  | Hayır |
-| Usehostdoğrulaması | Sunucu sertifikasında, TLS üzerinden bağlanırken sunucunun ana bilgisayar adıyla eşleşecek şekilde, ana bilgisayar adının istenip istenmeyeceğini belirtir. Varsayılan değer true şeklindedir.  | Hayır |
-| Usepeerdoğrulaması | TLS üzerinden bağlanılırken sunucu kimliğinin doğrulanıp doğrulanmayacağını belirtir. Varsayılan değer true şeklindedir.  | Hayır |
+| tür | Type özelliği: **Shopify** olarak ayarlanmalıdır | Yes |
+| konak | Shopify sunucusunun uç noktası. (yani, mystore.myshopify.com)  | Yes |
+| accessToken | Shopify 'in verilerine erişmek için kullanılabilecek API erişim belirteci. Çevrimdışı modda belirtecin kullanım süreleri dolmaz. Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | Yes |
+| useEncryptedEndpoints | Veri kaynağı uç noktalarının HTTPS kullanılarak şifrelenip şifrelenmediğini belirtir. Varsayılan değer true şeklindedir.  | No |
+| Usehostdoğrulaması | Sunucu sertifikasında, TLS üzerinden bağlanırken sunucunun ana bilgisayar adıyla eşleşecek şekilde, ana bilgisayar adının istenip istenmeyeceğini belirtir. Varsayılan değer true şeklindedir.  | No |
+| Usepeerdoğrulaması | TLS üzerinden bağlanılırken sunucu kimliğinin doğrulanıp doğrulanmayacağını belirtir. Varsayılan değer true şeklindedir.  | No |
 
 **Örnek:**
 
@@ -78,11 +74,11 @@ Aşağıdaki özellikler Shopify bağlı hizmeti için desteklenir:
 
 Veri kümelerini tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi için bkz. [veri kümeleri](concepts-datasets-linked-services.md) makalesi. Bu bölüm, Shopify veri kümesi tarafından desteklenen özelliklerin bir listesini sağlar.
 
-Shopify öğesinden veri kopyalamak için, veri kümesinin Type özelliğini **ShopifyObject**olarak ayarlayın. Aşağıdaki özellikler desteklenir:
+Shopify öğesinden veri kopyalamak için, veri kümesinin Type özelliğini **ShopifyObject** olarak ayarlayın. Aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | DataSet 'in Type özelliği: **ShopifyObject** olarak ayarlanmalıdır | Evet |
+| tür | DataSet 'in Type özelliği: **ShopifyObject** olarak ayarlanmalıdır | Yes |
 | tableName | Tablonun adı. | Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse) |
 
 **Örnek**
@@ -108,11 +104,11 @@ Etkinlikleri tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi iç
 
 ### <a name="shopify-as-source"></a>Kaynak olarak Shopify
 
-Shopify adresinden veri kopyalamak için kopyalama etkinliğindeki kaynak türünü **ShopifySource**olarak ayarlayın. Aşağıdaki özellikler, etkinlik **kaynağını** kopyalama bölümünde desteklenir:
+Shopify adresinden veri kopyalamak için kopyalama etkinliğindeki kaynak türünü **ShopifySource** olarak ayarlayın. Aşağıdaki özellikler, etkinlik **kaynağını** kopyalama bölümünde desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Kopyalama etkinliği kaynağının Type özelliği: **ShopifySource** olarak ayarlanmalıdır | Evet |
+| tür | Kopyalama etkinliği kaynağının Type özelliği: **ShopifySource** olarak ayarlanmalıdır | Yes |
 | sorgu | Verileri okumak için özel SQL sorgusunu kullanın. Örneğin: `"SELECT * FROM "Products" WHERE Product_Id = '123'"`. | Hayır (veri kümesinde "tableName" belirtilmişse) |
 
 **Örnek:**

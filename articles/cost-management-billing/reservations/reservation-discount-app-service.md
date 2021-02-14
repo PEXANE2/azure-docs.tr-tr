@@ -6,14 +6,14 @@ ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: conceptual
-ms.date: 02/01/2021
+ms.date: 02/12/2021
 ms.author: banders
-ms.openlocfilehash: debe02a89e10712ad8a0b8d61b0fdc3f8a4bd7b2
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: c599c64ce4b22bbf7bece77602b22fef6629d07c
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99577808"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100369739"
 ---
 # <a name="how-reservation-discounts-apply-to-azure-app-service-premium-v3-instances-and-isolated-stamps"></a>Azure App Service Premium v3 örnekleri ve yalıtılmış damgalar için rezervasyon iskontoları nasıl uygulanır
 
@@ -40,10 +40,6 @@ Azure rezervasyon indirimi, Premium v3 örneklerinin saatlik olarak çalıştır
 4.  4\. saatte 1. örnek 0,5 saat ve 2. örnek 1 saat çalışıyor. 1\. örnek tümüyle rezervasyon kapsamındadır ve 2. örneğin 0,5 saatlik kısmı kapsama gider. Artan 0,5 saat için kullandıkça öde fiyatından ücretlendirilirsiniz.
 
 Faturalama kullanım raporlarında Azure rezervasyonlarınızın uygulanmasını anlamak ve görüntülemek için bkz. [Rezervasyon kullanımınızı anlama](understand-reserved-instance-usage-ea.md).
-
-### <a name="discount-can-apply-to-different-sizes"></a>Farklı boyutlara indirim uygulanabilir
-
-Ayrılmış bir Premium v3 örneği satın alıp **örnek boyutu esnekliği Için En Iyi duruma getirilmiş** seçeneğini belirlediğinizde, indirim kapsamı seçtiğiniz Premium v3 örnek boyutu için geçerlidir. Aynı zamanda aynı seri örnek boyutu esneklik grubundaki diğer örnek boyutlarına de uygulanabilir.
 
 ## <a name="how-reservation-discounts-apply-to-isolated-stamps"></a>Rezervasyon iskontolarının yalıtılmış damgalar için nasıl uygulandığı
 

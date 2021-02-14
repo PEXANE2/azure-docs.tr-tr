@@ -4,18 +4,17 @@ titleSuffix: Azure Data Science Virtual Machine
 description: Azure Veri Bilimi Sanal Makinesi 'ye genel bakış-Azure bulut platformunda, veri bilimi sağlamak için önceden yüklenmiş ve yapılandırılmış araçlar ve kitaplıklar ile kullanımı kolay bir sanal makine.
 keywords: veri bilimi araçları, veri bilimi sanal makinesi, veri bilimi için araçlar, linux veri bilimi
 services: machine-learning
-ms.service: machine-learning
-ms.subservice: data-science-vm
+ms.service: data-science-vm
 author: vijetajo
 ms.author: vijetaj
 ms.topic: overview
 ms.date: 04/02/2020
-ms.openlocfilehash: 7bcee0f571fe42e4c00499f188e35d0e0ff2ebe7
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: bd2333d89e4d1789b3464606b49f624609ef67d5
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322499"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100518768"
 ---
 # <a name="what-is-the-azure-data-science-virtual-machine-for-linux-and-windows"></a>Linux ve Windows için Azure Veri Bilimi Sanal Makinesi nedir?
 
@@ -24,7 +23,7 @@ Veri Bilimi Sanal Makinesi (DSVM), veri bilimi yapmak için özel olarak oluştu
 DSVM şu şirket üzerinde kullanılabilir:
 
 + Windows Server 2019
-+ Ubuntu 18,04 LTS
++ Ubuntu 18.04 LTS
 
 ## <a name="comparison-with-azure-machine-learning"></a>Azure Machine Learning ile karşılaştırma
 
@@ -51,16 +50,16 @@ Bu iki ürün teklifi arasındaki temel farklılıklar aşağıda ayrıntılı o
 
 |Özellik |Veri Bilimi<br>VM |AzureML<br>İşlem Örneği  | 
 |---------|---------|---------|
-| Tam olarak yönetilen | Hayır        | Evet        |
+| Tam olarak yönetilen | Hayır        | Yes        |
 |Dil Desteği     |  Python, R, Julia, SQL, C#,<br> Java, Node.js, F #       | Python ve R        |
-|İşletim Sistemi     | Ubuntu<br>Windows         |    Ubuntu     |
-|Önceden yapılandırılmış GPU seçeneği     |  Evet       |    Evet     |
-|Ölçeği artırma seçeneği | Evet | Evet |
-|SSH erişimi    | Evet        |    Evet     |
-|RDP erişimi    | Evet        |     Hayır    |
-|Yerleşik<br>Barındırılan Not defterleri     |   No<br>(ek yapılandırma gerektirir)      |      Evet   |
-|Yerleşik SSO     | No <br>(ek yapılandırma gerektirir)         |    Evet     |
-|Yerleşik Işbirliği     | Hayır         | Evet        |
+|Operating System     | Ubuntu<br>Windows         |    Ubuntu     |
+|Önceden yapılandırılmış GPU seçeneği     |  Yes       |    Yes     |
+|Ölçeği artırma seçeneği | Yes | Yes |
+|SSH erişimi    | Yes        |    Yes     |
+|RDP erişimi    | Yes        |     Hayır    |
+|Yerleşik<br>Barındırılan Not defterleri     |   No<br>(ek yapılandırma gerektirir)      |      Yes   |
+|Yerleşik SSO     | No <br>(ek yapılandırma gerektirir)         |    Yes     |
+|Yerleşik Işbirliği     | Hayır         | Yes        |
 |Önceden yüklenmiş Araçlar     |  Jupiter (Lab), RStudio Server, VSCode,<br> Visual Studio, Pylt, Juno,<br>Power BI Desktop, SSMS, <br>Microsoft Office 365, Apache detaya gitme       |     Jupyıter (Lab)<br> RStudio Server   |
 
 ## <a name="sample-use-cases"></a>Kullanım örnekleri

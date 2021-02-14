@@ -1,21 +1,17 @@
 ---
 title: Azure Data Factory Kullanıcı arabirimini kullanarak Azure Veri Fabrikası oluşturma
 description: Azure Blob’daki bir konumdan başka bir konuma veri kopyalayan işlem hattı içeren bir veri fabrikası oluşturun.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: quickstart
 ms.date: 12/14/2020
 ms.author: jingwang
-ms.openlocfilehash: 0f22d4695a6324b0f0cde466e252b1a3a504f433
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: e7d4770af38081353fc58eec9957f50e2b6a7348
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98632758"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100372799"
 ---
 # <a name="quickstart-create-a-data-factory-by-using-the-azure-data-factory-ui"></a>Hızlı Başlangıç: Azure Data Factory kullanıcı arabirimini kullanarak bir veri fabrikası oluşturma 
 
@@ -39,7 +35,7 @@ Bu videoyu izlemeniz, Data Factory kullanıcı arabirimini anlamanıza yardımc�
 ## <a name="create-a-data-factory"></a>Veri fabrikası oluşturma
 
 1. **Microsoft Edge** veya **Google Chrome** web tarayıcısını açın. Şu anda Data Factory kullanıcı arabirimi yalnızca Microsoft Edge ve Google Chrome web tarayıcılarında desteklenmektedir.
-1. [Azure portalına](https://portal.azure.com) gidin. 
+1. [Azure Portal](https://portal.azure.com) gidin. 
 1. Azure portalı menüsünden **Kaynak oluştur**'u seçin.
 1. **Tümleştirme**' i ve ardından **Data Factory**' yi seçin. 
    

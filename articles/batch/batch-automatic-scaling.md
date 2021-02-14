@@ -4,12 +4,12 @@ description: Havuzdaki işlem düğümlerinin sayısını dinamik olarak ayarlam
 ms.topic: how-to
 ms.date: 11/23/2020
 ms.custom: H1Hack27Feb2017, fasttrack-edit, devx-track-csharp
-ms.openlocfilehash: 033272f22b98b27c67e9a551bce952368d35a043
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 06f717e7c3ab8285b494f89c39838af6b0d96c8f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95737301"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100381435"
 ---
 # <a name="create-an-automatic-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Batch havuzundaki işlem düğümlerini ölçeklemek için otomatik formül oluşturma
 
@@ -128,6 +128,7 @@ Batch hizmetindeki ölçümleri temel alan ayarlamalar yapmak için, bu hizmet t
 | $PendingTasks |$ActiveTasks ve $RunningTasks toplamı. |
 | $SucceededTasks |Başarıyla tamamlanan görevlerin sayısı. |
 | $FailedTasks |Başarısız olan görevlerin sayısı. |
+| $TaskSlotsPerNode |Havuzdaki tek bir işlem düğümünde eşzamanlı görevleri çalıştırmak için kullanılabilen görev Yuvaları sayısı. |
 | $CurrentDedicatedNodes |Ayrılmış işlem düğümlerinin geçerli sayısı. |
 | $CurrentLowPriorityNodes |Etkin olmayan düğümler de dahil olmak üzere, düşük öncelikli işlem düğümlerinin geçerli sayısı. |
 | $PreemptedNodeCount | Havuzdaki bir durumda olan düğüm sayısı. |
@@ -166,7 +167,7 @@ Otomatik ölçeklendirme formülleri aşağıdaki türleri destekler:
   - TimeInterval_Week
   - TimeInterval_Year
 
-## <a name="operations"></a>İşlemler
+## <a name="operations"></a>Operations
 
 Bu işlemlere, önceki bölümde listelenen türlerde izin verilir.
 
@@ -195,7 +196,7 @@ Bu işlemlere, önceki bölümde listelenen türlerde izin verilir.
 
 Bir otomatik ölçeklendirme formülü tanımlarken, önceden tanımlanmış bu **işlevleri** kullanabilirsiniz.
 
-| İşlev | Dönüş türü | Açıklama |
+| İşlev | Dönüş türü | Description |
 | --- | --- | --- |
 | Ort (doubleVecList) |double |DoubleVecList içindeki tüm değerlerin ortalama değerini döndürür. |
 | Len (doubleVecList) |double |DoubleVecList 'ten oluşturulan vector öğesinin uzunluğunu döndürür. |
@@ -217,7 +218,7 @@ Bir otomatik ölçeklendirme formülü tanımlarken, önceden tanımlanmış bu 
 | Time (dize dateTime = "") |timestamp |Hiçbir parametre geçirilmemişse, geçerli zamanın zaman damgasını veya varsa dateTime dizesinin zaman damgasını döndürür. Desteklenen dateTime biçimleri W3C-DTF ve RFC 1123 ' dir. |
 | Val (doubleVec v, Double ı) |double |Bir başlangıç dizini olan, vektör v 'de i konumunda olan öğenin değerini döndürür. |
 
-Önceki tabloda açıklanan işlevlerden bazıları bağımsız değişken olarak bir liste kabul edebilir. Virgülle ayrılmış liste, *Double* ve *doubleVec*'ın herhangi bir birleşimidir. Örnek:
+Önceki tabloda açıklanan işlevlerden bazıları bağımsız değişken olarak bir liste kabul edebilir. Virgülle ayrılmış liste, *Double* ve *doubleVec*'ın herhangi bir birleşimidir. Örneğin:
 
 `doubleVecList := ( (double | doubleVec)+(, (double | doubleVec) )* )?`
 
@@ -312,7 +313,7 @@ Bunu yapmak için, `GetSample(interval look-back start, interval look-back end)`
 $runningTasksSample = $RunningTasks.GetSample(1 * TimeInterval_Minute, 6 * TimeInterval_Minute);
 ```
 
-Yukarıdaki satır Batch tarafından değerlendirildiğinde, değerlerin vektörü olarak bir dizi örnek döndürür. Örnek:
+Yukarıdaki satır Batch tarafından değerlendirildiğinde, değerlerin vektörü olarak bir dizi örnek döndürür. Örneğin:
 
 ```
 $runningTasksSample=[1,1,1,1,1,1,1,1,1,1];
@@ -476,7 +477,7 @@ response = batch_service_client.pool.enable_auto_scale(pool_id, auto_scale_formu
 
 ## <a name="enable-autoscaling-on-an-existing-pool"></a>Mevcut bir havuzda otomatik ölçeklendirmeyi etkinleştir
 
-Her Batch SDK 'Sı otomatik ölçeklendirmeyi etkinleştirmek için bir yol sağlar. Örnek:
+Her Batch SDK 'Sı otomatik ölçeklendirmeyi etkinleştirmek için bir yol sağlar. Örneğin:
 
 - [Batchclient. PoolOperations. Enableoto Scaleasync](/dotnet/api/microsoft.azure.batch.pooloperations.enableautoscaleasync) (Batch .net)
 - [Bir havuzda otomatik ölçeklendirmeyi etkinleştir](/rest/api/batchservice/enable-automatic-scaling-on-a-pool) (REST API)

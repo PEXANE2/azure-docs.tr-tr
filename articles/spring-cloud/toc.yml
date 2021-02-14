@@ -10,7 +10,7 @@
   items:
     - name: İlk uygulamanızı yayınlama
       href: spring-cloud-quickstart.md
-    - name: Mikro hizmetler oluşturma ve çalıştırma
+    - name: Mikro hizmetler oluşturun ve çalıştırın
       expanded: true
       items:
         - name: Örnek uygulamaya giriş
@@ -63,7 +63,7 @@
           href: spring-cloud-tutorial-prepare-app-deployment.md
         - name: Yapılandırma Sunucusunu ayarlama
           href: spring-cloud-tutorial-config-server.md
-        - name: Hizmet Kaydını Etkinleştirme
+        - name: Hizmet kaydını etkinleştir
           href: spring-cloud-service-registration.md
     - name: Dağıtma
       items:
@@ -147,7 +147,7 @@
       items:
         - name: Sorunları kendi kendine tanılama ve çözme
           href: spring-cloud-howto-self-diagnose-solve.md
-        - name: Sorun Giderme Kılavuzu
+        - name: Sorun giderme kılavuzu
           href: spring-cloud-troubleshoot.md
     - name: Geçirme
       items:
@@ -157,7 +157,11 @@
           href: /azure/developer/java/migration/migrate-spring-boot-to-azure-spring-cloud
         - name: Tomcat
           href: /azure/developer/java/migration/migrate-tomcat-to-azure-spring-cloud
-- name: DevOps Dağıtımı
+- name: Mimari
+  items:
+    - name: Başvuru mimarisi
+      href: spring-cloud-reference-architecture.md
+- name: DevOps dağıtımı
   items:
     - name: Azure DevOps ile CI/CD
       href: spring-cloud-howto-cicd.md
@@ -167,17 +171,17 @@
       href: spring-cloud-github-actions-key-vault.md
 - name: Sorun giderme
   items:
-    - name: Sorun Giderme Kılavuzu
+    - name: Sorun giderme kılavuzu
       href: spring-cloud-troubleshoot.md
 - name: Başvuru
   items:
-    - name: Azure CLI Eklentisi
+    - name: Azure CLı eklentisi
       href: /cli/azure/ext/spring-cloud/spring-cloud
     - name: Azure PowerShell
       href: /powershell/module/az.springcloud
     - name: Kaynaklar
       href: spring-cloud-resources.md
-    - name: Sık Sorulan Sorular
+    - name: Sık sorulan sorular
       href: spring-cloud-faq.md
     - name: REST API başvurusu
       href: /rest/api/azurespringcloud/

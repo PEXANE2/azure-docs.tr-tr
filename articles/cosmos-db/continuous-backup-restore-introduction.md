@@ -8,12 +8,12 @@ ms.date: 02/01/2021
 ms.author: govindk
 ms.reviewer: sngun
 ms.custom: references_regions
-ms.openlocfilehash: 036f086c88267f6a20da51746ca875c48a248712
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: d1dc108ecec93dddeb768eb61af425ba67f23002
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99538865"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100393148"
 ---
 # <a name="continuous-backup-with-point-in-time-restore-preview-feature-in-azure-cosmos-db"></a>Azure Cosmos DB içindeki noktadan noktaya geri yükleme (Önizleme) özelliği ile sürekli yedekleme
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -33,7 +33,7 @@ Azure Cosmos DB, ek sağlanmış üretilen iş (ru) kullanmadan veya veritabanı
 
 :::image type="content" source="./media/continuous-backup-restore-introduction/continuous-backup-restore-blob-storage.png" alt-text="Azure Blob depolama alanına veri yedeklemesini Azure Cosmos DB." lightbox="./media/continuous-backup-restore-introduction/continuous-backup-restore-blob-storage.png" border="false":::
 
-Geri yükleme için kullanılabilir zaman penceresi (Bekletme dönemi olarak da bilinir) aşağıdaki iki değerin alt değeridir: "Bundan sonra 30 gün sonra geçmiş" veya "kaynak oluşturma zamanına kadar". Geri yükleme için zaman içindeki nokta, bekletme dönemi içinde herhangi bir zaman damgası olabilir.
+Geri yükleme için kullanılabilir zaman penceresi (Bekletme dönemi olarak da bilinir) şu iki değerin alt değeridir: *30 gün* sonra, bundan sonra veya *kaynak oluşturma zamanına kadar*. Geri yükleme için zaman içindeki nokta, bekletme dönemi içinde herhangi bir zaman damgası olabilir.
 
 Genel önizlemede, SQL API 'SI veya MongoDB içerik noktası Azure Cosmos DB hesabını [Azure Portal](continuous-backup-restore-portal.md), [Azure komut satırı ARABIRIMI](continuous-backup-restore-command-line.md) (az CLI), [Azure PowerShell](continuous-backup-restore-powershell.md)veya [Azure Resource Manager](continuous-backup-restore-template.md)kullanarak başka bir hesaba geri yükleyebilirsiniz.
 
@@ -59,17 +59,18 @@ Geri yükleme tamamlandıktan sonra bu konfigürasyonları geri yüklenen hesaba
 
 ## <a name="restore-scenarios"></a>Geri yükleme senaryoları
 
-Aşağıda, zaman içinde belirli bir noktaya geri yükleme özelliği tarafından giderilen bazı önemli senaryolar verilmiştir. [A] aracılığıyla [c] senaryoları geri yükleme zaman damgası önceden biliniyorsa geri yüklemenin nasıl tetikleneceğini gösterir. Ancak, yanlışlıkla silmenin veya bozulmanın tam süresini bildiğiniz senaryolar olabilir. Senaryolar [d] ve [e] geri yüklenebilen veritabanı veya kapsayıcılarındaki yeni olay akışı API 'Lerini kullanarak geri yükleme zaman damgasını _bulmayı_ gösterir.
+Aşağıda, zaman içinde belirli bir noktaya geri yükleme özelliği tarafından giderilen bazı önemli senaryolar verilmiştir. [A] aracılığıyla [c] senaryoları geri yükleme zaman damgası önceden biliniyorsa geri yüklemenin nasıl tetikleneceğini gösterir.
+Ancak, yanlışlıkla silmenin veya bozulmanın tam süresini bildiğiniz senaryolar olabilir. Senaryolar [d] ve [e] geri yüklenebilen veritabanı veya kapsayıcılarındaki yeni olay akışı API 'Lerini kullanarak geri yükleme zaman damgasını _bulmayı_ gösterir.
 
 :::image type="content" source="./media/continuous-backup-restore-introduction/restorable-account-scenario.png" alt-text="Geri yüklenebilen bir hesap için zaman damgalarına sahip ömür döngüsü olayları." lightbox="./media/continuous-backup-restore-introduction/restorable-account-scenario.png" border="false":::
 
-a. **Silinen hesabı geri yükle** -geri yüklediğiniz tüm silinen hesaplar **geri yükleme** bölmesinden görünür. Örneğin, "Account A" ı T3 zaman damgasında silinirse. Bu durumda, T3, konum, hedef hesap adı, kaynak grubu ve hedef hesap adından hemen önce gelen zaman damgası [Azure Portal](continuous-backup-restore-portal.md#restore-deleted-account), [PowerShell](continuous-backup-restore-powershell.md#trigger-restore)veya [CLI](continuous-backup-restore-command-line.md#trigger-restore)'dan geri yüklemek için yeterlidir.  
+a. **Silinen hesabı geri yükle** -geri yüklediğiniz tüm silinen hesaplar **geri yükleme** bölmesinden görünür. Örneğin, *A hesabı* T3 zaman damgasında silinirse. Bu durumda, T3, konum, hedef hesap adı, kaynak grubu ve hedef hesap adından hemen önce gelen zaman damgası [Azure Portal](continuous-backup-restore-portal.md#restore-deleted-account), [PowerShell](continuous-backup-restore-powershell.md#trigger-restore)veya [CLI](continuous-backup-restore-command-line.md#trigger-restore)'dan geri yüklemek için yeterlidir.  
 
 :::image type="content" source="./media/continuous-backup-restore-introduction/restorable-container-database-scenario.png" alt-text="Geri yüklenebilen bir veritabanı ve kapsayıcı için zaman damgalarına sahip ömür döngüsü olayları." lightbox="./media/continuous-backup-restore-introduction/restorable-container-database-scenario.png" border="false":::
 
-b. **Belirli bir bölgedeki bir hesabın verilerini geri yükleme** -Örneğin, "Doğu ABD" ve "Batı ABD" iki bölgede "hesap a" varsa, zaman damgası: T3. "Batı ABD" içinde A hesabının bir kopyasına ihtiyacınız varsa, hedef konum olarak Batı ABD ile [Azure Portal](continuous-backup-restore-portal.md), [PowerShell](continuous-backup-restore-powershell.md#trigger-restore)veya [CLI](continuous-backup-restore-command-line.md#trigger-restore) 'dan bir zaman noktası geri yüklemesi yapabilirsiniz.
+b. **Belirli bir bölgedeki hesabın verilerini geri yükleme** -Örneğin, Iki bölgede *hesap a* *Doğu ABD* ve *Batı ABD* zaman damgası: T3. *Batı ABD* hesap a 'nın bir kopyasına ihtiyacınız varsa, hedef konum olarak Batı ABD ile [Azure Portal](continuous-backup-restore-portal.md), [PowerShell](continuous-backup-restore-powershell.md#trigger-restore)veya [CLI](continuous-backup-restore-command-line.md#trigger-restore) 'dan bir zaman noktası geri yüklemesi yapabilirsiniz.
 
-c. **Bilinen bir geri yükleme zaman damgasına sahip bir kapsayıcı içindeki yanlışlıkla yazma veya silme Işleminden kurtarma** yapın; Örneğin, "veritabanı 1" Içindeki "kapsayıcı 1" öğesinin içeriğinin zaman damgası T3 ' de yanlışlıkla değiştirildiğini **biliyorsanız** . İstediğiniz kapsayıcı durumunu kurtarmak için [Azure Portal](continuous-backup-restore-portal.md#restore-live-account), [PowerShell](continuous-backup-restore-powershell.md#trigger-restore)veya [CLI](continuous-backup-restore-command-line.md#trigger-restore) 'dan zaman damgası T3 ' den başka bir hesaba geri yükleme yapabilirsiniz.
+c. **Bilinen bir geri yükleme zaman damgasıyla kapsayıcı içindeki yanlışlıkla yazma veya silme Işleminden kurtarma** yapın; Örneğin, *veritabanı 1* içindeki *kapsayıcı 1* ' in içeriğinin zaman damgası T3 ' de yanlışlıkla değiştirildiğini **biliyorsanız** . İstediğiniz kapsayıcı durumunu kurtarmak için [Azure Portal](continuous-backup-restore-portal.md#restore-live-account), [PowerShell](continuous-backup-restore-powershell.md#trigger-restore)veya [CLI](continuous-backup-restore-command-line.md#trigger-restore) 'dan zaman damgası T3 ' den başka bir hesaba geri yükleme yapabilirsiniz.
 
 d. **Veritabanını yanlışlıkla silmeden önce bir hesabı önceki bir noktaya geri yükleme** - [Azure Portal](continuous-backup-restore-portal.md#restore-live-account), bir veritabanının ne zaman silindiğini ve geri yükleme zamanını bulmak için olay akışı bölmesini kullanabilirsiniz. Benzer şekilde, [Azure CLI](continuous-backup-restore-command-line.md#trigger-restore) ve [PowerShell](continuous-backup-restore-powershell.md#trigger-restore)ile veritabanı olayları akışını numaralandırarak veritabanı silme olayını bulabilir ve ardından restore komutunu gerekli parametrelerle tetikleyebilirsiniz.
 
@@ -81,7 +82,7 @@ Azure Cosmos DB, sürekli yedekleme hesabı için geri yükleme izinlerini belir
 
 ## <a name="pricing"></a><a id="continuous-backup-pricing"></a>Fiyatlandırma
 
-Sürekli yedeklemenin etkin olduğu Azure Cosmos DB hesapları, "yedeklemeyi depolamak" ve "verilerinizi geri yüklemek" için ek bir aylık ücret ödersiniz. Geri yükleme maliyeti, geri yükleme işlemi her başlatıldığında eklenir. Sürekli yedekleme ile bir hesap yapılandırırsanız ancak verileri geri yüklüyorsanız, faturanızda yalnızca yedekleme depolama alanı maliyeti yer alır.
+Sürekli yedeklemenin etkin olduğu Azure Cosmos DB hesapları *, yedeklemenin depolanması* ve *verilerinizi geri yüklemek* için ek bir aylık ücret doğuracaktır. Geri yükleme maliyeti, geri yükleme işlemi her başlatıldığında eklenir. Sürekli yedekleme ile bir hesap yapılandırırsanız ancak verileri geri yüklüyorsanız, faturanızda yalnızca yedekleme depolama alanı maliyeti yer alır.
 
 Aşağıdaki örnek, ABD 'deki devlet dışı bir bölgede dağıtılan bir Azure Cosmos hesabının fiyatını temel alır. Fiyatlandırma ve hesaplama, kullandığınız bölgeye bağlı olarak değişebilir, en son fiyatlandırma bilgileri için [Azure Cosmos DB fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/cosmos-db/) bakın.
 

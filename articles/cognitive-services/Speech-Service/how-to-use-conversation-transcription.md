@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 10/20/2020
 ms.author: trbye
 zone_pivot_groups: acs-js-csharp
-ms.openlocfilehash: ae3d7b329c55ce0be101cee73e1fc7674a2d75aa
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 48cd4c7996eabad7293aa2429c76b8943e0ab3da
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95026548"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100368481"
 ---
 # <a name="get-started-with-real-time-conversation-transcription"></a>Gerçek zamanlı konuşma dökümü ile çalışmaya başlama
 
@@ -25,7 +25,7 @@ Konuşma **SDK 'sı konuşma API 'si** , veya kullanarak konuşma hizmetine ses 
 ## <a name="limitations"></a>Sınırlamalar
 
 * Yalnızca şu abonelik bölgelerinde kullanılabilir: `centralus` , `eastasia` , `eastus` , `westeurope`
-* Kayıttan yürütme başvuru akışı olan 7 MIC dairesel çok mikrofonlu bir dizi gerektirir. Microphone dizisinin [belirtimizi](./speech-devices-sdk-microphone.md)karşılaması gerekir.
+* 7 MIC dairesel çok mikrofonlu dizi gerektirir. Microphone dizisinin [belirtimizi](./speech-devices-sdk-microphone.md)karşılaması gerekir.
 * [Konuşma cihazları SDK 'sı](speech-devices-sdk.md) , uygun cihazlar ve görüşme dökümünü gösteren örnek bir uygulama sağlar.
 
 ## <a name="prerequisites"></a>Önkoşullar

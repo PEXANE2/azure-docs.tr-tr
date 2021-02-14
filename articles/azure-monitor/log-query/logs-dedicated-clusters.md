@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 09/16/2020
-ms.openlocfilehash: 1222108694ff7274e5d8fd063635b70a76ffc59c
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: bcd89274b1f2ba7b31a10a481e3d73901eac2c60
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98954758"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100375196"
 ---
 # <a name="azure-monitor-logs-dedicated-clusters"></a>Azure Izleyici, ayrılmış kümeleri günlüğe kaydeder
 
@@ -84,7 +84,7 @@ Aşağıdaki özellikler belirtilmelidir:
 Her bölge için abonelik başına en fazla 2 etkin kümeniz olabilir. Küme silinirse, hala 14 gün için ayrılmıştır. Her bölge için abonelik başına en fazla 4 ayrılmış kümeniz olabilir (etkin veya son silinen).
 
 > [!WARNING]
-> Küme oluşturma işlemi kaynak ayırmayı ve sağlamayı tetikler. Bu işlemin tamamlanması bir saate kadar sürebilir. Bunu zaman uyumsuz olarak çalıştırmanız önerilir.
+> Küme oluşturma işlemi kaynak ayırmayı ve sağlamayı tetikler. Bu işlemin tamamlanması birkaç saat sürebilir. Bunu zaman uyumsuz olarak çalıştırmanız önerilir.
 
 Kümeleri oluşturan kullanıcı hesabı, standart Azure kaynak oluşturma iznine sahip olmalıdır: `Microsoft.Resources/deployments/*` ve `Microsoft.OperationalInsights/clusters/write` rol atamalarında bu belirli eylem ya da veya ya da buna sahip olarak küme yazma izni olmalıdır `Microsoft.OperationalInsights/*` `*/write` .
 

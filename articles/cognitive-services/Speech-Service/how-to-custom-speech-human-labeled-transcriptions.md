@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 09/06/2019
+ms.date: 02/12/2021
 ms.author: erhopf
-ms.openlocfilehash: 85f239afd1b9263440abff1f924c12cdb7eeadaa
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: db3d8f4424f59d8432221753af776a5b55859882
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99560275"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100388864"
 ---
 # <a name="how-to-create-human-labeled-transcriptions"></a>İnsan etiketlendirmeleri oluşturma
 
@@ -24,7 +24,12 @@ Tanıma doğruluğunu artırmak istiyorsanız, özellikle sözcüklerin silindi�
 Tanımayı geliştirmek için büyük bir döküm verileri örneği gerekir, 10 ila 20 saatlik Döküm verileri sağlamayı öneririz. Bu sayfada, yüksek kaliteli dökümler oluşturmanıza yardımcı olmak için tasarlanan yönergeleri inceleyeceğiz. Bu kılavuz, ABD Ingilizcesi, MANDARIN Çince ve Almanca bölümleri ile yerel ayar tarafından bölünmüştür.
 
 > [!NOTE]
-> Tüm temel modeller, ses dosyalarıyla özelleştirmeyi desteklemez. Bir temel model bunu desteklemiyorsa, eğitim yalnızca ilgili metinle aynı şekilde döküm metinlerini kullanacaktır.
+> Tüm temel modeller, ses dosyalarıyla özelleştirmeyi desteklemez. Bir temel model bunu desteklemiyorsa, eğitim yalnızca ilgili metinle aynı şekilde döküm metinlerini kullanacaktır. Ses verileriyle eğitimi destekleyen temel modellerin listesi için bkz. [dil desteği](language-support.md#speech-to-text) .
+
+> [!NOTE]
+> Eğitim için kullanılan temel modeli değiştirirken ve eğitim veri kümesinde seslerinizi değiştirdiğinizde, yeni seçilen temel modelin [ses verileriyle eğitimi destekleyip desteklemediğini](language-support.md#speech-to-text) *her zaman* denetleyin. Daha önce kullanılan temel model, ses verileriyle eğitimi desteklemeiyorsa ve eğitim veri kümesi ses içeriyorsa, yeni temel modele sahip eğitim süresi büyük **ölçüde** artar ve birkaç saat ile birkaç güne ve daha fazlasına kolayca gidebilirler. Konuşma hizmeti aboneliğiniz eğitim için [adanmış donanıma sahip](custom-speech-overview.md#set-up-your-azure-account) bir bölgede **değilse** bu özellikle doğrudur.
+>
+> Yukarıdaki paragrafta açıklanan sorunu ortaya çıkardıysanız, veri kümesindeki ses miktarını azaltarak veya tamamen yalnızca metni bırakarak eğitim süresini hızla azaltabilirsiniz. Konuşma hizmeti aboneliğiniz eğitim için [adanmış donanıma sahip bir bölgede](custom-speech-overview.md#set-up-your-azure-account) **değilse** , ikinci seçenek kesinlikle önerilir.
 
 ## <a name="us-english-en-us"></a>ABD Ingilizcesi (en-US)
 

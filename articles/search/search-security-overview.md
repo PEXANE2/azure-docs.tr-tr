@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/04/2021
 ms.custom: references_regions
-ms.openlocfilehash: 954d08fa163b481393df28ae22016859badea694
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 46f2035e5f8409cd38faeb9c327b88b06fc7d7a0
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99537315"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100097645"
 ---
 # <a name="security-overview-for-azure-cognitive-search"></a>Azure Bilişsel Arama için güvenliğe genel bakış
 
@@ -113,12 +113,6 @@ Arama hizmeti yönetimi için [üç temel rol](search-security-rbac.md#managemen
 
 > [!Note]
 > Azure genelinde mekanizmalar kullanarak, yönetici haklarına sahip kullanıcılar tarafından, arama hizmetinizin yanlışlıkla veya izinsiz olarak silinmesini engellemek için bir aboneliği veya kaynağı kilitleyebilir. Daha fazla bilgi için bkz. [beklenmeyen silme işlemini engellemek için kaynakları kilitleme](../azure-resource-manager/management/lock-resources.md).
-
-## <a name="threat-protection"></a>Tehdit koruması
-
-Arama hizmetindeki içeriğe erişim yalnızca sorgular aracılığıyla yapılır. Arama hizmetiniz bir sorgu saldırısının hedefi ise sistem, en yüksek kapasiteye yaklaşımlar olarak sorguları düşürülecektir. 
-
-Kısıtlama, farklı API 'Ler için farklı davranır. Sorgu API 'Leri (arama/önerme/otomatik tamamlama) ve dizin oluşturma API 'Leri, hizmet üzerindeki yüke göre dinamik olarak azaldı. Dizin API 'Leri ve hizmet işlemleri API 'SI statik istek hızı sınırlarına sahiptir. [Azaltma limitlerinin](search-limits-quotas-capacity.md#throttling-limits)statik hız isteği sınırlarını gözden geçirebilirsiniz. Azaltma davranışı hakkında daha fazla bilgi için bkz. [sorgu Isteklerini izleme](search-monitor-queries.md).
 
 <a name="encryption"></a>
 

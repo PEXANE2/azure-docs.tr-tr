@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/19/2020
-ms.openlocfilehash: 78187b2cbb6603a0ae0df55465b9a5ce5e7dca7f
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: a4883bfce2469af0ee8bcc34933f94b0b5329959
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99807555"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100518088"
 ---
 # <a name="register-and-scan-a-power-bi-tenant-preview"></a>Power BI kiracı kaydetme ve tarama (Önizleme)
 
@@ -23,7 +23,7 @@ Bu makalede, Azure purview Portal 'ın Power BI kiracıyı kaydetmek ve taramak 
 
 ## <a name="create-a-security-group-for-permissions"></a>İzinler için bir güvenlik grubu oluşturma
 
-Kimlik doğrulaması ayarlamak için bir güvenlik grubu oluşturun ve kataloğun yönetilen kimliğini buna ekleyin.
+Kimlik doğrulaması ayarlamak için bir güvenlik grubu oluşturun ve bu gruba purview yönetilen kimliğini ekleyin.
 
 1. [Azure Portal](https://portal.azure.com), **Azure Active Directory** için arama yapın.
 1. Azure Active Directory yeni bir güvenlik grubu oluşturun, aşağıdaki [temel bir grup oluşturun ve Azure Active Directory kullanarak Üyeler ekleyin](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
@@ -35,11 +35,11 @@ Kimlik doğrulaması ayarlamak için bir güvenlik grubu oluşturun ve kataloğu
 
     :::image type="content" source="./media/setup-power-bi-scan-PowerShell/security-group.png" alt-text="Güvenlik grubu türü":::
 
-1. Kataloğunuzun yönetilen kimliğini bu güvenlik grubuna ekleyin. **Üyeler**' i seçin ve **+ üye Ekle**' yi seçin.
+1. Purview yönetilen kimliğinizi bu güvenlik grubuna ekleyin. **Üyeler**' i seçin ve **+ üye Ekle**' yi seçin.
 
     :::image type="content" source="./media/setup-power-bi-scan-PowerShell/add-group-member.png" alt-text="Kataloğun yönetilen örneğini grubuna ekleyin.":::
 
-1. Kataloğunuza yönelik arama yapın ve seçin.
+1. Purview yönetilen kimliğinizi arayın ve seçin.
 
     :::image type="content" source="./media/setup-power-bi-scan-PowerShell/add-catalog-to-group-by-search.png" alt-text="Arayarak katalog ekleme":::
 
@@ -61,14 +61,14 @@ Kimlik doğrulaması ayarlamak için bir güvenlik grubu oluşturun ve kataloğu
     :::image type="content" source="./media/setup-power-bi-scan-PowerShell/allow-service-principals-power-bi-admin.png" alt-text="Hizmet sorumluların salt okunurdur Power BI yönetici API izinleri alma ile nasıl izin verileceğini gösteren resim":::
 
     > [!Caution]
-    > Oluşturduğunuz güvenlik grubuna (bir üye olarak veri kataloğu yönetilen Kimliğiniz) izin vermek için, salt okunurdur Power BI yönetici API 'Lerini kullanmak için, bu Kiracıdaki tüm Power BI yapıtlarınız için meta verilere (ör. Pano ve rapor adları, sahipler, açıklamalar vb.) erişmesine izin verin. Meta veriler Azure purview 'a çekildikten sonra, Power BI izinleri değil, bu meta verileri kimlerin görebileceğini saptayın.
+    > Oluşturduğunuz güvenlik grubuna (örneğin, bir üye olarak yönetilen kimlik bilgileri) salt okunurdur Power BI yönetici API 'Lerini kullanmak için izin vermek istiyorsanız, bu Kiracıdaki tüm Power BI yapıtlarınız için meta verilere (ör. Pano ve rapor adları, sahipler, açıklamalar vb.) erişmesine izin verin. Meta veriler Azure purview 'a çekildikten sonra, Power BI izinleri değil, bu meta verileri kimlerin görebileceğini saptayın.
 
     > [!Note]
     > Güvenlik grubunu geliştirici ayarlarından kaldırabilirsiniz, ancak daha önce ayıklanan meta veriler, purview hesabından kaldırılmaz. İsterseniz bunu ayrı olarak silebilirsiniz.
 
 ## <a name="register-your-power-bi-and-set-up-a-scan"></a>Power BI kaydetme ve tarama kurma
 
-Artık Power BI kiracınızın yönetim API 'sine bağlanmak için katalog izinleri vermiş olduğunuza göre, tarama Portalı ' nı Katalog portalından ayarlayabilirsiniz.
+Artık Power BI kiracınızın yönetim API 'sine bağlanmak için, yönetilen kimlik yönetimli kimlik izinlerini vermiş olduğunuza göre, Azure purview Studio 'dan taramanızı ayarlayabilirsiniz.
 
 İlk olarak, purview URL 'nize özel bir özellik bayrağı ekleyin 
 

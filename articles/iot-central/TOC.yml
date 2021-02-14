@@ -1,0 +1,317 @@
+- name: Azure IoT Central belgeleri
+  href: index.yml
+- name: Genel Bakış
+  items:
+    - name: Azure IoT Central nedir?
+      href: core/overview-iot-central.md
+    - name: Kullanıcı arabirimi turu
+      href: core/overview-iot-central-tour.md
+    - name: Son güncelleştirmeler
+      items:
+        - name: Ocak 2021 yeni ve güncelleştirilmiş özellikler
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-feature-updates-january-2021/'
+        - name: Kasım 2020 yeni ve güncelleştirilmiş özellikler
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-feature-updates-november-2020/'
+        - name: Ekim 2020 yeni ve güncelleştirilmiş özellikler
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-feature-upadates-october-2020/'
+        - name: Eylül 2020 yeni ve güncelleştirilmiş özellikler
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-feature-updates-september-2020/'
+        - name: Ağustos 2020 yeni ve güncelleştirilmiş özellikler
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-feature-updates-august-2020/'
+        - name: Temmuz 2020 yeni ve güncelleştirilmiş özellikler
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-feature-updates-july-2020/'
+        - name: Haziran 2020 yeni ve güncelleştirilmiş özellikler
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-feature-updates-june-2020/'
+        - name: Haziran 2020 kullanıcı arabirimi ve belge güncelleştirmeleri
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-ui-documenation-updates-june-2020/'
+        - name: Mayıs 2020 iş ve ölçüm güncelleştirmeleri
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-jobs-and-metrics-feature-updates-may-2020/'
+        - name: Mayıs 2020 pano güncelleştirmeleri
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-may-2020-dashboard-updates/'
+        - name: Nisan 2020 yeni özellikler
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-april-2020-new-features/'
+        - name: Nisan 2020 güncelleştirmeleri
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-april-2020-updates/'
+        - name: Mart 2020
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-march-2020-updates/'
+- name: Hızlı Başlangıçlar
+  expanded: true
+  items:
+    - name: 1. Yeni uygulama oluşturma
+      href: core/quick-deploy-iot-central.md
+    - name: 2. Sanal cihaz ekleme
+      href: core/quick-create-simulated-device.md
+    - name: 3. Kuralları ve eylemleri yapılandırma
+      href: core/quick-configure-rules.md
+    - name: 4. Cihazlarınızı izleme
+      href: core/quick-monitor-devices.md
+- name: Öğreticiler
+  items:
+    - name: Cihazları geliştirme ve bağlama
+      items:
+        - name: Cihaz oluşturma ve bağlama
+          href: core/tutorial-connect-device.md
+        - name: Ağ geçidi cihaz şablonu oluşturma
+          href: core/tutorial-define-gateway-device-type.md
+        - name: IoT Edge cihazına bağlanma
+          href: core/tutorial-add-edge-as-leaf-device.md
+    - name: Tümleşik çözümler oluşturun
+      items:
+        - name: Cihaz grubu oluşturma
+          href: core/tutorial-use-device-groups.md
+        - name: Kural oluşturma
+          href: core/tutorial-create-telemetry-rules.md
+        - name: IoT Central API’lerini keşfetme
+          href: /learn/modules/manage-iot-central-apps-with-rest-api/
+    - name: Sektöre özgü çözümler
+      items:
+        - name: Retail
+          href: retail/overview-iot-central-retail.md
+          items:
+            - name: Mağaza içi analizi ödeme
+              href: retail/store-analytics-architecture.md
+              items:
+                - name: 1- Perakende uygulaması oluşturma
+                  href: retail/tutorial-in-store-analytics-create-app.md
+                - name: 2 - Operatör panosunu özelleştirme
+                  href: retail/tutorial-in-store-analytics-customize-dashboard.md
+                - name: 3 - Verileri dışarı aktarma ve içgörüleri görselleştirme
+                  href: retail/tutorial-in-store-analytics-export-data-visualize-insights.md
+            - name: Akıllı envanter yönetimi
+              href: retail/architecture-smart-inventory-management.md
+              items:
+                - name: Akıllı envanter yönetimi uygulaması oluşturma
+                  href: retail/tutorial-iot-central-smart-inventory-management.md
+            - name: Bağlı lojistik
+              href: retail/architecture-connected-logistics.md
+              items:
+                - name: Bağlantılı lojistik uygulaması oluşturma
+                  href: retail/tutorial-iot-central-connected-logistics.md
+            - name: Dijital dağıtım merkezi
+              href: retail/architecture-digital-distribution-center.md
+              items:
+                - name: Dijital dağıtım merkezi uygulaması oluşturma
+                  href: retail/tutorial-iot-central-digital-distribution-center.md
+            - name: Mikro karşılama merkezi
+              href: retail/architecture-micro-fulfillment-center.md
+              items:
+                - name: Mikro karşılama merkezi uygulaması oluşturma
+                  href: retail/tutorial-micro-fulfillment-center.md
+            - name: Video analizi - nesne ve hareket algılama
+              href: retail/architecture-video-analytics.md
+              items:
+                - name: 0 - Nesne ve hareket algılama uygulamasını dağıtma
+                  href: retail/tutorial-video-analytics-deploy.md
+                - name: 1 - Video analizi uygulaması oluşturma
+                  items:
+                    - name: Nesne ve hareket algılama (YOLO v3)
+                      href: retail/tutorial-video-analytics-create-app-yolo-v3.md
+                    - name: Nesne ve hareket algılama (OpenVINO)
+                      href: retail/tutorial-video-analytics-create-app-openvino.md
+                - name: 2 - IoT Edge cihazını yapılandırma
+                  items:
+                    - name: Uçta video analizi cihazı oluşturma (Linux VM)
+                      href: retail/tutorial-video-analytics-iot-edge-vm.md
+                    - name: Uçta video analizi cihazı oluşturma (Intel NUC)
+                      href: retail/tutorial-video-analytics-iot-edge-nuc.md
+                - name: 3 - Video analizi uygulamasını izleme ve yönetme
+                  href: retail/tutorial-video-analytics-manage.md
+                - name: 4 - Canlı video analizi ağ geçidi modüllerini değiştirme ve oluşturma
+                  href: retail/tutorial-video-analytics-build-module.md
+        - name: Enerji
+          href: energy/overview-iot-central-energy.md
+          items:
+            - name: Akıllı ölçüm uygulaması mimarisi
+              href: energy/concept-iot-central-smart-meter-app.md
+            - name: Akıllı sayaç izleme uygulaması oluşturma
+              href: energy/tutorial-smart-meter-app.md
+            - name: Güneş paneli uygulaması mimarisi
+              href: energy/concept-iot-central-solar-panel-app.md
+            - name: Güneş paneli izleme uygulaması oluşturma
+              href: energy/tutorial-solar-panel-app.md
+        - name: Kamu
+          href: government/overview-iot-central-government.md
+          items:
+            - name: Bağlı atık izleme referans mimarisi
+              href: government/concepts-connectedwastemanagement-architecture.md
+            - name: Bağlantılı atık yönetimi uygulaması oluşturma
+              href: government/tutorial-connected-waste-management.md
+            - name: Su tüketimi izleme referans mimarisi
+              href: government/concepts-waterconsumptionmonitoring-architecture.md
+            - name: Su tüketimi izleme uygulaması oluşturma
+              href: government/tutorial-water-consumption-monitoring.md
+            - name: Su kalitesi izleme referans mimarisi
+              href: government/concepts-waterqualitymonitoring-architecture.md
+            - name: Su kalitesi izleme uygulaması oluşturma
+              href: government/tutorial-water-quality-monitoring.md
+            - name: Azure IoT Central uygulamanızı Dynamics 365 alan hizmetleriyle bağlama
+              href: government/how-to-configure-connected-field-services.md
+        - name: Sağlık
+          href: healthcare/overview-iot-central-healthcare.md
+          items:
+            - name: Sürekli hasta izleme mimarisi
+              href: healthcare/concept-continuous-patient-monitoring-architecture.md
+            - name: Sürekli hasta izleme uygulaması oluşturma
+              href: healthcare/tutorial-continuous-patient-monitoring.md
+            - name: Sağlık verileri önceliklendirme panosu oluşturma
+              href: healthcare/howto-health-data-triage.md
+- name: Kavramlar
+  items:
+    - name: Mimari
+      href: core/concepts-architecture.md
+    - name: Cihaz geliştirici kılavuzu
+      href: core/overview-iot-central-developer.md
+    - name: Çözüm Oluşturucu Kılavuzu
+      href: core/overview-iot-central-developer.md
+    - name: Uygulama şablonları nedir?
+      href: core/concepts-app-templates.md
+    - name: Cihaz şablonları nedir?
+      href: core/concepts-device-templates.md
+    - name: Cihaz bağlantısı
+      href: core/concepts-get-connected.md
+    - name: İleti yükleri
+      href: core/concepts-telemetry-properties-commands.md
+    - name: IoT Edge cihazlarını bağlama
+      href: core/concepts-iot-edge.md
+- name: Nasıl yapılır kılavuzları
+  items:
+    - name: Cihazları geliştirme ve bağlama
+      items:
+        - name: Cihaz şablonu ayarlama
+          href: core/howto-set-up-template.md
+        - name: Cihaz şablonu için sürüm oluşturma
+          href: core/howto-version-device-template.md
+        - name: Özellikleri kullanma
+          href: core/howto-use-properties.md
+        - name: Komutları kullanma
+          href: core/howto-use-commands.md
+        - name: X.509 kullanarak cihazları bağlama
+          href: core/how-to-connect-devices-x509.md
+        - name: Azure CLI'yı kullanarak cihaz bağlantısını izleme
+          href: core/howto-monitor-devices-azure-cli.md
+        - name: Azure Sphere DevKit'i hazırlama ve bağlama
+          href: core/howto-connect-sphere.md
+        - name: RuuviTag cihazını hazırlama ve bağlama
+          href: core/howto-connect-ruuvi.md
+        - name: Rigado Cascade 500'ü hazırlama ve bağlama
+          href: core/howto-connect-rigado-cascade-500.md
+        - name: Diğer IoT bulutlarına bağlanma
+          href: core/howto-build-iotc-device-bridge.md
+    - name: Tümleşik çözümler oluşturun
+      items:
+        - name: Panonuza kutucuklar ekleme
+          href: core/howto-add-tiles-to-your-dashboard.md
+        - name: Kuralları yapılandırma
+          href: core/howto-configure-rules.md
+        - name: Kurallar üzerinde web kancaları oluşturma
+          href: core/howto-create-webhooks.md
+        - name: Kurallar üzerinde Azure İzleyici eylem gruplarını bağlama
+          href: core/howto-use-action-groups.md
+        - name: Cihaz verilerinizi analiz etme
+          href: core/howto-create-analytics.md
+        - name: Verileri bulut hedeflerine aktarma
+          href: core/howto-export-data.md
+        - name: Verileri bulut hedeflerine dışarı aktarma (eski)
+          href: core/howto-export-data-legacy.md
+        - name: Diğer hizmetlerle tümleştirmek için iş akışlarını kullanma
+          href: core/howto-configure-rules-advanced.md
+        - name: Özel kurallar oluşturma
+          href: core/howto-create-custom-rules.md
+        - name: Databricks ile özel analizler oluşturma
+          href: core/howto-create-custom-analytics.md
+        - name: Power BI’da verilerinizi görselleştirme
+          href: core/howto-connect-powerbi.md
+    - name: Cihazlarınızı yönetme
+      items:
+        - name: Cihaz ekleme ve kaldırma
+          href: core/howto-manage-devices.md
+        - name: İş çalıştırma
+          href: core/howto-run-a-job.md
+    - name: Çözümünüzü yönetin
+      items:
+        - name: Uygulama ayarlarını değiştirme
+          href: core/howto-administer.md
+        - name: Kullanıcıları ve rolleri yönetme
+          href: core/howto-manage-users-roles.md
+        - name: Faturanızı yönetme
+          href: core/howto-view-bill.md
+        - name: Uygulama kullanıcı arabirimini özelleştirme
+          href: core/howto-customize-ui.md
+        - name: Uygulamanızı dışarı aktarma
+          href: core/howto-use-app-templates.md
+        - name: V2 'yi v3 uygulamasına geçir
+          href: core/howto-migrate.md
+        - name: Uygulamanın durumunu izleme
+          href: core/howto-monitor-application-health.md
+        - name: Uygulamanız hakkında
+          href: core/howto-get-app-info.md
+        - name: Dosya yüklemelerini yapılandırma ve kullanma
+          href: core/howto-configure-file-uploads.md
+        - name: Roll X.509 sertifikaları
+          href: core/how-to-roll-x509-certificates.md
+        - name: Azure portalından yönetme
+          href: core/howto-manage-iot-central-from-portal.md
+        - name: Azure CLI’den yönetme
+          href: core/howto-manage-iot-central-from-cli.md
+        - name: Azure PowerShell’den yönetme
+          href: core/howto-manage-iot-central-from-powershell.md
+        - name: Programlama yoluyla yönetme
+          href: core/howto-manage-iot-central-programmatically.md
+        - name: CSP portalından yönetme
+          href: core/howto-create-and-manage-applications-csp.md
+    - name: Çözümünüzü kişiselleştirin
+      items:
+        - name: Kişisel pano oluşturma
+          href: core/howto-create-personal-dashboards.md
+        - name: Kişisel tercihlerinizi yönetme
+          href: core/howto-manage-preferences.md
+        - name: Canlı sohbeti açma/kapatma
+          href: core/howto-show-hide-chat.md
+    - name: Sorun giderme
+      items:
+        - name: Cihaz bağlantıları
+          href: core/troubleshoot-connection.md
+    - name: SSS
+      href: core/howto-faq.md
+- name: Başvuru
+  items:
+    - name: Azure CLI’si
+      href: /cli/azure/azure-cli-reference-for-IoT
+    - name: IoT Central API başvurusu
+      href: /rest/api/iotcentral/
+- name: Kaynaklar
+  items:
+    - name: Kod örnekleri
+      href: /samples/browse/?expanded=azure&products=azure-iot-central
+    - name: Destek ve yardım seçenekleri
+      href: ../iot-fundamentals/iot-support-help.md
+    - name: Azure IoT hizmetleri
+      items:
+        - name: IoT Hub
+          href: ../iot-hub/index.yml
+        - name: IoT Hub Cihazı Sağlama Hizmeti
+          href: ../iot-dps/index.yml
+        - name: IoT Edge
+          href: ../iot-edge/index.yml
+        - name: IoT çözüm hızlandırıcıları
+          href: ../iot-accelerators/index.yml
+        - name: IoT Tak Çalıştır
+          href: ../iot-pnp/index.yml
+        - name: Azure Haritalar
+          href: ../azure-maps/index.yml
+        - name: Time Series Insights
+          href: ../time-series-insights/index.yml
+    - name: Azure IoT SDK’ları
+      items:
+        - name: IoT Hizmet SDK’ları
+          href: ../iot-hub/iot-hub-devguide-sdks.md#azure-iot-hub-service-sdks
+        - name: IoT Cihaz SDK'ları
+          href: ../iot-hub/iot-hub-devguide-sdks.md#azure-iot-hub-device-sdks
+    - name: Müşteri verisi yerleşimi
+      href: core/iot-central-customer-data-residency.md
+    - name: Müşteri verisi istekleri
+      href: core/iot-central-customer-data-requests.md
+    - name: Desteklenen tarayıcılar
+      href: core/iot-central-supported-browsers.md
+    - name: Azure IoT Central (eski şablonlar)
+      href: /previous-versions/azure/iot-central/core/overview-iot-central
