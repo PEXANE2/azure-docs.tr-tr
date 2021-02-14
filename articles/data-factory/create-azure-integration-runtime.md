@@ -1,23 +1,19 @@
 ---
 title: Azure Data Factory 'de Azure tümleştirme çalışma zamanı oluşturma
 description: Azure Data Factory ' de Azure tümleştirme çalışma zamanı oluşturmayı, verileri kopyalamak ve dönüştürme etkinliklerini göndermek için kullanılan hakkında bilgi edinin.
-services: data-factory
-documentationcenter: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/09/2020
 author: nabhishek
 ms.author: abnarain
-manager: anandsub
-ms.openlocfilehash: 97f3a8f79e503b8870baf67ee982b0091d926b1e
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: ecf2a74a16234084fbac4d1c26157d1703b56a13
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895350"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100373071"
 ---
-# <a name="how-to-create-and-configure-azure-integration-runtime"></a>Azure Integration Runtime oluşturma ve yapılandırma
+# <a name="how-to-create-and-configure-azure-integration-runtime"></a>Azure Integration Runtime’ı oluşturma ve yapılandırma
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Integration Runtime (IR), farklı ağ ortamları genelinde veri tümleştirme özellikleri sağlamak için Azure Data Factory tarafından kullanılan işlem altyapısıdır. IR hakkında daha fazla bilgi için bkz. [Integration Runtime](concepts-integration-runtime.md).
@@ -52,16 +48,16 @@ Azure Data Factory Kullanıcı arabirimini kullanarak bir Azure IR oluşturmak i
 
    ![Giriş sayfası Yönet düğmesi](media/doc-common-process/get-started-page-manage-button.png)
 
-1. Sol bölmedeki **tümleştirme çalışma zamanları** ' nı seçin ve ardından **+ Yeni** ' yi seçin.
+1. Sol bölmedeki **tümleştirme çalışma zamanları** ' nı seçin ve ardından **+ Yeni**' yi seçin.
 
    ![Sol bölmedeki ve + yeni düğmesindeki tümleştirme çalışma zamanlarını vurgulayan ekran görüntüsü.](media/doc-common-process/manage-new-integration-runtime.png)
 
-1. **Tümleştirme çalışma zamanı kurulumu** sayfasında, **Azure, şirket içinde barındırılan** ' ı seçin ve ardından **devam** ' ı seçin. 
+1. **Tümleştirme çalışma zamanı kurulumu** sayfasında, **Azure, şirket içinde barındırılan**' ı seçin ve ardından **devam**' ı seçin. 
 
-1. Aşağıdaki sayfada **Azure** ' u seçerek bir Azure IR oluşturun ve ardından **devam** ' ı seçin.
+1. Aşağıdaki sayfada **Azure** ' u seçerek bir Azure IR oluşturun ve ardından **devam**' ı seçin.
    ![Tümleştirme çalışma zamanı oluşturma](media/create-azure-integration-runtime/new-azure-integration-runtime.png)
 
-1. Azure IR için bir ad girin ve **Oluştur** ' u seçin.
+1. Azure IR için bir ad girin ve **Oluştur**' u seçin.
    ![Azure IR oluşturma](media/create-azure-integration-runtime/create-azure-integration-runtime.png)
 
 1. Oluşturma işlemi tamamlandığında bir açılır bildirim görürsünüz. Tümleştirme çalışma **zamanları** sayfasında, listede yenı oluşturulan IR 'yi görtığınızdan emin olun.

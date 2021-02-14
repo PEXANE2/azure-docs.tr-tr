@@ -1,22 +1,18 @@
 ---
 title: Ve Microsoft Access 'e veri kopyalama
 description: Azure Data Factory bir işlem hattındaki kopyalama etkinliğini kullanarak verileri ve Microsoft Access 'ten nasıl kopyalanacağını öğrenin.
-services: data-factory
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 06/28/2020
-ms.openlocfilehash: 00966af4e0fc83015726d86a4c7cb5724ad38633
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1a17876385e3a48543c8185a0f48a3e4016afa1a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85513360"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100374397"
 ---
 # <a name="copy-data-from-and-to-microsoft-access-using-azure-data-factory"></a>Azure Data Factory kullanarak ve Microsoft Access 'ten veri kopyalama
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -42,7 +38,7 @@ Bu Microsoft Access bağlayıcısını kullanmak için şunları yapmanız gerek
 >[!NOTE]
 >ODBC sürücüsünün Microsoft Access 2016 sürümü bu bağlayıcı ile çalışmıyor. Bunun yerine sürücü sürüm 2013 veya 2010 kullanın.
 
-## <a name="getting-started"></a>Başlarken
+## <a name="getting-started"></a>Kullanmaya başlama
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -54,13 +50,13 @@ Microsoft Access bağlı hizmeti için aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Type özelliği: **MicrosoftAccess** olarak ayarlanmalıdır | Evet |
-| Dizisi | Kimlik bilgisi bölümünü dışlayarak ODBC bağlantı dizesi. Bağlantı dizesini belirtebilir veya Integration Runtime makinesinde ayarladığınız Sistem DSN 'sini (veri kaynağı adı) kullanabilirsiniz (yine de bağlı hizmette kimlik bilgisi bölümünü de belirtmeniz gerekir).<br> Ayrıca, Azure Key Vault bir parola yerleştirebilir ve  `password`   yapılandırmayı bağlantı dizesinin dışına çekebilirsiniz.Daha ayrıntılı bilgi için [Azure Key Vault 'de mağaza kimlik bilgilerini](store-credentials-in-key-vault.md)inceleyin   .| Evet |
-| authenticationType | Microsoft Access veri deposuna bağlanmak için kullanılan kimlik doğrulaması türü.<br/>İzin verilen değerler: **temel** ve **anonim**. | Evet |
-| userName | Temel kimlik doğrulaması kullanıyorsanız Kullanıcı adını belirtin. | Hayır |
-| password | Kullanıcı adı için belirttiğiniz kullanıcı hesabı için parola belirtin. Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | Hayır |
-| kimlik bilgisi | Sürücüye özgü özellik-değer biçiminde belirtilen bağlantı dizesinin erişim kimlik bilgisi kısmı. Bu alanı SecureString olarak işaretleyin. | Hayır |
-| connectVia | Veri deposuna bağlanmak için kullanılacak [Integration Runtime](concepts-integration-runtime.md) . [Önkoşul](#prerequisites)bölümünde belirtildiği gibi, kendinden konak Integration Runtime gereklidir. |Evet |
+| tür | Type özelliği: **MicrosoftAccess** olarak ayarlanmalıdır | Yes |
+| Dizisi | Kimlik bilgisi bölümünü dışlayarak ODBC bağlantı dizesi. Bağlantı dizesini belirtebilir veya Integration Runtime makinesinde ayarladığınız Sistem DSN 'sini (veri kaynağı adı) kullanabilirsiniz (yine de bağlı hizmette kimlik bilgisi bölümünü de belirtmeniz gerekir).<br> Ayrıca, Azure Key Vault bir parola yerleştirebilir ve `password` yapılandırmayı bağlantı dizesinin dışına çekebilirsiniz. Daha ayrıntılı bilgi için [Azure Key Vault 'de mağaza kimlik bilgilerini](store-credentials-in-key-vault.md) inceleyin.| Yes |
+| authenticationType | Microsoft Access veri deposuna bağlanmak için kullanılan kimlik doğrulaması türü.<br/>İzin verilen değerler: **temel** ve **anonim**. | Yes |
+| userName | Temel kimlik doğrulaması kullanıyorsanız Kullanıcı adını belirtin. | No |
+| password | Kullanıcı adı için belirttiğiniz kullanıcı hesabı için parola belirtin. Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | No |
+| kimlik bilgisi | Sürücüye özgü özellik-değer biçiminde belirtilen bağlantı dizesinin erişim kimlik bilgisi kısmı. Bu alanı SecureString olarak işaretleyin. | No |
+| connectVia | Veri deposuna bağlanmak için kullanılacak [Integration Runtime](concepts-integration-runtime.md) . [Önkoşul](#prerequisites)bölümünde belirtildiği gibi, kendinden konak Integration Runtime gereklidir. |Yes |
 
 **Örnek:**
 
@@ -94,7 +90,7 @@ Verileri Microsoft Access 'ten kopyalamak için aşağıdaki özellikler destekl
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Veri kümesinin Type özelliği: **Microsoftaccesstable** olarak ayarlanmalıdır | Evet |
+| tür | Veri kümesinin Type özelliği: **Microsoftaccesstable** olarak ayarlanmalıdır | Yes |
 | tableName | Microsoft Access 'teki tablonun adı. | Kaynak için Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse);<br/>Havuz için Evet |
 
 **Örnek**
@@ -125,7 +121,7 @@ Verileri Microsoft Access 'ten kopyalamak için, etkinlik **kaynağını** kopya
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Kopyalama etkinliği kaynağının Type özelliği: **Microsoftaccesssource** olarak ayarlanmalıdır | Evet |
+| tür | Kopyalama etkinliği kaynağının Type özelliği: **Microsoftaccesssource** olarak ayarlanmalıdır | Yes |
 | sorgu | Verileri okumak için özel sorguyu kullanın. Örneğin: `"SELECT * FROM MyTable"`. | Hayır (veri kümesinde "tableName" belirtilmişse) |
 
 **Örnek:**
@@ -166,10 +162,10 @@ Verileri Microsoft Access 'e kopyalamak için, kopyalama etkinliği **havuzu** b
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Kopyalama etkinliği havuzunun Type özelliği: **Microsoftaccesssink** olarak ayarlanmalıdır | Evet |
-| writeBatchTimeout |Toplu ekleme işleminin, zaman aşımına uğramadan önce tamamlaması için bekleme süresi.<br/>İzin verilen değerler: TimeSpan. Örnek: "00:30:00" (30 dakika). |Hayır |
+| tür | Kopyalama etkinliği havuzunun Type özelliği: **Microsoftaccesssink** olarak ayarlanmalıdır | Yes |
+| writeBatchTimeout |Toplu ekleme işleminin, zaman aşımına uğramadan önce tamamlaması için bekleme süresi.<br/>İzin verilen değerler: TimeSpan. Örnek: "00:30:00" (30 dakika). |No |
 | writeBatchSize |Arabellek boyutu writeBatchSize ulaştığında verileri SQL tablosuna ekler.<br/>İzin verilen değerler: Integer (satır sayısı). |Hayır (varsayılan 0-otomatik olarak algılanır) |
-| Ön Copyscrıpt |Her çalıştırmada veri deposuna veri yazmadan önce yürütülecek kopyalama etkinliği için bir SQL sorgusu belirtin. Bu özelliği, önceden yüklenmiş verileri temizlemek için kullanabilirsiniz. |Hayır |
+| Ön Copyscrıpt |Her çalıştırmada veri deposuna veri yazmadan önce yürütülecek kopyalama etkinliği için bir SQL sorgusu belirtin. Bu özelliği, önceden yüklenmiş verileri temizlemek için kullanabilirsiniz. |No |
 
 **Örnek:**
 

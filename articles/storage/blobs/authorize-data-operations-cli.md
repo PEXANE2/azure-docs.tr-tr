@@ -6,17 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 11/13/2020
+ms.date: 02/10/2021
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 060bfb6c88bbed8ba12c5b5ebfd2e9617f5abfb2
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: 06b37e8b25d932115384124a45156c801fb9708f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94637540"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100361681"
 ---
 # <a name="choose-how-to-authorize-access-to-blob-data-with-azure-cli"></a>Azure CLı ile blob verilerine erişim yetkisi verme seçeneğini belirleyin
 
@@ -33,6 +33,9 @@ Blob verilerini okumak ve yazmak için Azure CLı komutları isteğe bağlı `--
 - `--auth-mode` `key` Yetkilendirme için kullanılacak hesap erişim anahtarını almayı denemek için parametreyi eski değere ayarlayın. `--auth-mode`Parametresini atlarsanız, Azure CLI de erişim anahtarını almaya çalışır.
 
 Parametresini kullanmak için `--auth-mode` Azure CLI sürüm 2.0.46 veya üstünü yüklediğinizden emin olun. `az --version`Yüklü sürümünüzü denetlemek için ' i çalıştırın.
+
+> [!NOTE]
+> Bir depolama hesabı Azure Resource Manager **salt okunur** bir kilit ile kilitlendiğinde, bu depolama hesabı Için [liste anahtarları](/rest/api/storagerp/storageaccounts/listkeys) işlemine izin verilmez. **Liste anahtarları** bir post işlemidir ve hesap Için **salt okunur** BIR kilit yapılandırıldığında tüm post işlemleri engellenir. Bu nedenle, hesap **salt okunur** bir kilit ile kilitlendiğinde, hesap anahtarlarına sahip olmayan kullanıcıların blob verilerine erişmek IÇIN Azure AD kimlik bilgilerini kullanması gerekir.
 
 > [!IMPORTANT]
 > `--auth-mode`Parametresini atlarsanız veya olarak ayarlarsanız `key` , Azure CLI yetkilendirme için hesap erişim anahtarını kullanmaya çalışır. Bu durumda, Microsoft, erişim anahtarını komuta veya **AZURE_STORAGE_KEY** ortam değişkenine sağlamanızı önerir. Ortam değişkenleri hakkında daha fazla bilgi için bkz. [yetkilendirme parametreleri için ortam değişkenlerini ayarlama](#set-environment-variables-for-authorization-parameters)başlıklı Bölüm.
@@ -60,7 +63,7 @@ Aşağıdaki örnekte Azure AD kimlik bilgilerinizi kullanarak Azure CLı 'dan n
     > [!IMPORTANT]
     > Azure rolü atamalarının yayılması birkaç dakika sürebilir.
 
-1. [az storage container create](/cli/azure/storage/container#az-storage-container-create) `--auth-mode` `login` Azure AD kimlik bilgilerinizi kullanarak kapsayıcıyı oluşturmak için parametresi olarak ayarlanmış az Storage Container Create komutunu çağırın. Açılı ayraçlar içindeki yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın:
+1. [](/cli/azure/storage/container#az-storage-container-create) `--auth-mode` `login` Azure AD kimlik bilgilerinizi kullanarak kapsayıcıyı oluşturmak için parametresi olarak ayarlanmış az Storage Container Create komutunu çağırın. Açılı ayraçlar içindeki yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın:
 
     ```azurecli
     az storage container create \
@@ -83,6 +86,9 @@ az storage container create \
     --auth-mode key
 ```
 
+> [!IMPORTANT]
+> Bir depolama hesabı Azure Resource Manager **salt okunur** bir kilit ile kilitlendiğinde, bu depolama hesabı Için [liste anahtarları](/rest/api/storagerp/storageaccounts/listkeys) işlemine izin verilmez. **Liste anahtarları** bir post işlemidir ve hesap Için **salt okunur** BIR kilit yapılandırıldığında tüm post işlemleri engellenir. Bu nedenle, hesap **salt okunur** bir kilit ile kilitlendiğinde, KULLANıCıLARıN Azure AD kimlik bilgileriyle verilere erişmesi gerekir.
+
 ## <a name="authorize-with-a-sas-token"></a>SAS belirteciyle yetkilendirme
 
 Bir SAS belirtecine sahip olmanız durumunda SAS tarafından izin verilen veri işlemlerini çağırabilirsiniz. Aşağıdaki örnek, bir SAS belirteci kullanarak kapsayıcının nasıl oluşturulacağını gösterir:
@@ -98,7 +104,7 @@ az storage container create \
 
 Her bir Azure depolama veri işlemine yapılan her çağrıya dahil etmek için, ortam değişkenlerinde yetkilendirme parametreleri belirtebilirsiniz. Aşağıdaki tabloda kullanılabilir ortam değişkenleri açıklanmaktadır.
 
-| Ortam değişkeni                  | Açıklama                                                                                                                                                                                                                                                                                                                                                                     |
+| Ortam değişkeni                  | Description                                                                                                                                                                                                                                                                                                                                                                     |
 |---------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |    AZURE_STORAGE_ACCOUNT              |    Depolama hesabı adı. Bu değişken, depolama hesabı anahtarı veya SAS belirteci ile birlikte kullanılmalıdır. Hiçbiri yoksa, Azure CLı kimliği doğrulanmış Azure AD hesabını kullanarak depolama hesabı erişim anahtarını almaya çalışır. Tek seferde çok sayıda komut yürütülürse, Azure depolama kaynak sağlayıcısı azaltma sınırına ulaşılmış olabilir. Kaynak sağlayıcısı limitleri hakkında daha fazla bilgi için bkz. [Azure depolama kaynak sağlayıcısı Için ölçeklenebilirlik ve performans hedefleri](../common/scalability-targets-resource-provider.md).             |
 |    AZURE_STORAGE_KEY                  |    Depolama hesabı anahtarı. Bu değişkenin depolama hesabı adıyla birlikte kullanılması gerekir.                                                                                                                                                                                                                                                                          |

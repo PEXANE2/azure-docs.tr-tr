@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET, devx-track-js
-ms.openlocfilehash: fec130ff02d9796fb9a6cea7a831bbdcb25cb1ed
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.openlocfilehash: f7f14b91dc69eeba4ac06f6608f6151634dc38d3
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99225639"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100103507"
 ---
 # <a name="quickstart-add-sign-in-using-openid-connect-to-a-nodejs-web-app"></a>Hızlı başlangıç: Node.js Web uygulamasına OpenID Connect ile oturum açma ekleme
 
@@ -30,7 +30,7 @@ Bu hızlı başlangıçta, Express ile Node.js kullanılarak oluşturulmuş bir 
 
 ## <a name="register-your-application"></a>Uygulamanızı kaydetme
 
-1. <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>oturum açın.
+1. <a href="https://portal.azure.com/" target="_blank">Azure portalında</a> oturum açın.
 1. Birden fazla kiracıya erişiminiz varsa, uygulamayı kaydetmek istediğiniz kiracıyı seçmek için üst menüdeki **Dizin + abonelik** filtresini kullanın :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: .
 1. **Azure Active Directory**'yi bulun ve seçin.
 1. **Yönet** altında   >  **Yeni kayıt** uygulama kayıtları ' yi seçin.
@@ -50,7 +50,7 @@ Bu hızlı başlangıçta, Express ile Node.js kullanılarak oluşturulmuş bir 
 1. **Yönet**' in altında **Sertifikalar & gizli**  >  **anahtar istemci parolası**' nı seçin.
 1. Bir anahtar açıklaması girin (örneğin, uygulama gizli anahtarı).
 1. **1 yılda, 2 yıl içinde** bir anahtar süresi seçin veya **hiçbir zaman sona ermez**.
-1. **Ekle**’yi seçin. Anahtar değeri görüntülenecektir. Anahtar değerini kopyalayın ve daha sonra kullanmak üzere güvenli bir konuma kaydedin.
+1. **Add (Ekle)** seçeneğini belirleyin. Anahtar değeri görüntülenecektir. Anahtar değerini kopyalayın ve daha sonra kullanmak üzere güvenli bir konuma kaydedin.
 
 
 ## <a name="download-the-sample-application-and-modules"></a>Örnek uygulamayı ve modülleri indirin

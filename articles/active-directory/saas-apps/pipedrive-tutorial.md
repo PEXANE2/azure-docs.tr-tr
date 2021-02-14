@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/06/2020
+ms.date: 02/05/2021
 ms.author: jeedes
-ms.openlocfilehash: f85cb97406e8b6cbb4811268696fc36f47ec3adb
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 6f0002f3b8de76bded536c4f434f757c4ac96df6
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896557"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100382591"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-pipedrive"></a>Öğretici: Pipedrive ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -25,8 +25,6 @@ Bu öğreticide, Pipedrive 'i Azure Active Directory (Azure AD) ile tümleştirm
 * Azure AD 'de Pipedrive 'e erişimi olan denetim.
 * Kullanıcılarınızın Azure AD hesaplarıyla Pipedrive otomatik olarak oturum açmalarına olanak tanıyın.
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
-
-Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -40,25 +38,23 @@ Başlamak için aşağıdaki öğeler gereklidir:
 Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz.
 
 * Pipedrive **SP ve ıDP** tarafından başlatılan SSO 'yu destekler
-* Pipedrive SSO 'yu yapılandırdıktan sonra, kuruluşunuzun gizli verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](/cloud-app-security/proxy-deployment-any-app).
 
-
-## <a name="adding-pipedrive-from-the-gallery"></a>Galeriden Pipedrive ekleme
+## <a name="add-pipedrive-from-the-gallery"></a>Galeriden Pipedrive ekleme
 
 Pipedrive tümleştirmesini Azure AD 'ye göre yapılandırmak için, Galeriden Pipedrive yönetilen SaaS uygulamaları listesine eklemeniz gerekir.
 
-1. [Azure Portal](https://portal.azure.com) iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
+1. Azure portal iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
 1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
-1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** ' ı seçin.
-1. Yeni uygulama eklemek için **Yeni uygulama** ' yı seçin.
+1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
+1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
 1. **Galeriden Ekle** bölümünde, arama kutusuna **Pipedrive** yazın.
 1. Sonuçlar panelinden **Pipedrive** ' i seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-pipedrive"></a>Pipedrive için Azure AD çoklu oturum açmayı yapılandırma ve test etme
+## <a name="configure-and-test-azure-ad-sso-for-pipedrive"></a>Pipedrive için Azure AD SSO 'yu yapılandırma ve test etme
 
 **B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'yu Pipedrive ile yapılandırın ve test edin. SSO 'nun çalışması için, Pipedrive içinde bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
-Azure AD SSO 'yu Pipedrive ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
+Azure AD SSO 'yu Pipedrive ile yapılandırmak ve test etmek için aşağıdaki adımları gerçekleştirin:
 
 1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
     * Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
@@ -71,9 +67,9 @@ Azure AD SSO 'yu Pipedrive ile yapılandırmak ve test etmek için aşağıdaki 
 
 Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-1. [Azure Portal](https://portal.azure.com/), **Pipedrive** uygulama tümleştirmesi sayfasında **Yönet** bölümünü bulun ve **Çoklu oturum açma** ' yı seçin.
-1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML** ' yi seçin.
-1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
+1. Azure portal, **Pipedrive** uygulama tümleştirmesi sayfasında **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
+1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
+1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** kalem simgesine tıklayın.
 
    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -96,7 +92,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. Pipedrive uygulaması, yukarıdakine ek olarak, aşağıda gösterilen SAML yanıtına daha fazla öznitelik geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
 
-    | Ad | Kaynak özniteliği|
+    | Name | Kaynak özniteliği|
     | ------------ | --------- |
     | e-posta | Kullanıcı. Mail |
 
@@ -112,47 +108,41 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
 
-1. Azure portal sol bölmeden **Azure Active Directory** ' i seçin, **Kullanıcılar** ' ı seçin ve ardından **tüm kullanıcılar** ' ı seçin.
+1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
 1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
    1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur** 'a tıklayın.
+   1. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
 Bu bölümde, Pipedrive 'e erişim vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
 
-1. Azure portal **Kurumsal uygulamalar** ' ı seçin ve ardından **tüm uygulamalar** ' ı seçin.
-1. Uygulamalar listesinde **Pipedrive** ' yi seçin.
-1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar** ' ı seçin.
-
-   !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
-
-1. **Kullanıcı Ekle** ' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
-
-    ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
-
+1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. Uygulamalar listesinde **Pipedrive**' yi seçin.
+1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
+1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. Kullanıcılara bir rolün atanmasını bekliyorsanız, **Rol Seç** açılır listesinden bunu seçebilirsiniz. Bu uygulama için ayarlanmış bir rol yoksa, "varsayılan erişim" rolü seçili olduğunu görürsünüz.
 1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
 ## <a name="configure-pipedrive-sso"></a>Pipedrive SSO 'yu yapılandırma
 
 1. Farklı bir tarayıcı penceresinde, yönetici olarak Pipedrive Web sitesinde oturum açın.
 
-1. **Kullanıcı profili** ' ne tıklayın ve **Ayarlar** ' ı seçin.
+1. **Kullanıcı profili** ' ne tıklayın ve **Ayarlar**' ı seçin.
 
-    !["Kullanıcı profili" menüsünden Seçili "ayarları" gösteren ekran görüntüsü.](./media/pipedrive-tutorial/configure1.png)
+    !["Kullanıcı profili" menüsünden Seçili "ayarları" gösteren ekran görüntüsü.](./media/pipedrive-tutorial/configure-1.png)
 
-1. Aşağı kaydırarak Güvenlik Merkezi ' ne gidin ve **Çoklu oturum açma** ' yı seçin.
+1. Aşağı kaydırarak Güvenlik Merkezi ' ne gidin ve **Çoklu oturum açma**' yı seçin.
 
-    !["Güvenlik Merkezi" 'nde seçili "çoklu oturum açma" yı gösteren ekran görüntüsü.](./media/pipedrive-tutorial/configure2.png)
+    !["Güvenlik Merkezi" 'nde seçili "çoklu oturum açma" yı gösteren ekran görüntüsü.](./media/pipedrive-tutorial/configure-2.png)
 
 1. **Pipedrive Için SAML yapılandırması** bölümünde aşağıdaki adımları uygulayın:
 
-    ![Tüm metin kutularının vurgulandığına ilişkin "S A M L Configuration for Pipedrive" bölümünü gösteren ekran görüntüsü.](./media/pipedrive-tutorial/configure3.png)
+    ![Tüm metin kutularının vurgulandığına ilişkin "S A M L Configuration for Pipedrive" bölümünü gösteren ekran görüntüsü.](./media/pipedrive-tutorial/configure-3.png)
 
     a. **Veren** metin kutusunda, Azure Portal kopyaladığınız **uygulama Federasyon meta veri URL 'si** değerini yapıştırın.
 
@@ -166,17 +156,17 @@ Bu bölümde, Pipedrive 'e erişim vererek Azure çoklu oturum açma özelliğin
 
 1. Farklı bir tarayıcı penceresinde, yönetici olarak Pipedrive Web sitesinde oturum açın.
 
-1. Şirket için aşağı kaydırın ve **Kullanıcıları Yönet** ' i seçin.
+1. Şirket için aşağı kaydırın ve **Kullanıcıları Yönet**' i seçin.
 
-    !["Şirket" menüsünden Seçili "Kullanıcıları Yönet" i gösteren ekran görüntüsü.](./media/pipedrive-tutorial/user1.png)
+    !["Şirket" menüsünden Seçili "Kullanıcıları Yönet" i gösteren ekran görüntüsü.](./media/pipedrive-tutorial/user-1.png)
 
-1. **Kullanıcı Ekle** ' ye tıklayın.
+1. **Kullanıcı Ekle**' ye tıklayın.
     
-    ![Sağ tarafta "Kullanıcı Ekle" düğmesi seçili olan "Kullanıcıları Yönet" sayfasını gösteren ekran görüntüsü.](./media/pipedrive-tutorial/user2.png)
+    ![Sağ tarafta "Kullanıcı Ekle" düğmesi seçili olan "Kullanıcıları Yönet" sayfasını gösteren ekran görüntüsü.](./media/pipedrive-tutorial/user-2.png)
 
 1. **Kullanıcıları Yönet** bölümünde aşağıdaki adımları uygulayın:
 
-    ![Pipedrive yapılandırması](./media/pipedrive-tutorial/user3.png)
+    ![Pipedrive yapılandırması](./media/pipedrive-tutorial/user-3.png)
 
     a. **E-posta** metin kutusuna, gibi kullanıcının e-posta adresini girin `B.Simon@contoso.com` .
 
@@ -184,22 +174,25 @@ Bu bölümde, Pipedrive 'e erişim vererek Azure çoklu oturum açma özelliğin
 
     c. **Soyadı** metin kutusuna kullanıcının soyadını girin.
 
-    d. **Onayla ve kullanıcıları davet et** ' e tıklayın.
+    d. **Onayla ve kullanıcıları davet et**' e tıklayın.
 
 ## <a name="test-sso"></a>Test SSO 'SU 
 
-Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
-Erişim panelinde Pipedrive kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Pipedrive için otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](../user-help/my-apps-portal-end-user-access.md).
+Bu bölümde, Azure AD çoklu oturum açma yapılandırmanızı aşağıdaki seçeneklerle test edersiniz. 
 
-## <a name="additional-resources"></a>Ek kaynaklar
+#### <a name="sp-initiated"></a>SP başlatıldı:
 
-- [ SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi ](./tutorial-list.md)
+* Azure portal içinde **Bu uygulamayı test et** ' e tıklayın. Bu, oturum açma akışını başlatabileceğiniz Pipedrive oturum açma URL 'sine yeniden yönlendirilir.  
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir? ](../manage-apps/what-is-single-sign-on.md)
+* Doğrudan Pipedrive oturum açma URL 'sine gidin ve oturum açma akışını buradan başlatın.
 
-- [Azure Active Directory'de koşullu erişim nedir?](../conditional-access/overview.md)
+#### <a name="idp-initiated"></a>IDP başlatıldı:
 
-- [Azure AD ile Pipedrive deneyin](https://aad.portal.azure.com/)
+* Azure portal **Bu uygulamayı test et** ' e tıklayın ve SSO 'Yu ayarladığınız Pipedrive otomatik olarak oturum açmış olmanız gerekir. 
 
-- [Microsoft Cloud App Security oturum denetimi nedir?](/cloud-app-security/proxy-intro-aad)
+Uygulamayı dilediğiniz modda test etmek için Microsoft My Apps ' i de kullanabilirsiniz. Uygulamamda Pipedrive kutucuğuna tıkladığınızda, SP modunda yapılandırıldıysa oturum açma akışını başlatmak için uygulama oturum açma sayfasına yönlendirilirsiniz ve ıDP modunda yapılandırıldıysa, SSO 'yu ayarladığınız Pipedrive için otomatik olarak oturum açmış olmanız gerekir. Uygulamalarım hakkında daha fazla bilgi için bkz. [uygulamalarıma giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+Pipedrive yapılandırıldıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).

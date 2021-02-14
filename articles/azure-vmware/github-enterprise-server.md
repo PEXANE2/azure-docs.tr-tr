@@ -2,17 +2,17 @@
 title: Azure VMware çözümünüz özel bulutunuzda GitHub Enterprise Server 'ı ayarlama
 description: Azure VMware Çözüm özel bulutunuzda GitHub Enterprise Server 'ı ayarlamayı öğrenin.
 ms.topic: how-to
-ms.date: 02/03/2021
-ms.openlocfilehash: 2b05e352fd8a81d6d180d4c60e67ab48465b284f
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.date: 02/11/2021
+ms.openlocfilehash: 59a76c3976f6fcda88423b7b78344f2abed1ea84
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99549111"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100382030"
 ---
 # <a name="set-up-github-enterprise-server-on-your-azure-vmware-solution-private-cloud"></a>Azure VMware çözümünüz özel bulutunuzda GitHub Enterprise Server 'ı ayarlama
 
-Bu makalede, Azure VMware Çözüm özel bulutunuzda "Şirket içi" [sürümü olan GitHub](https://github.com/)Enterprise Server 'ı ayarlama adımlarını adım adım inceleyeceğiz. Bu kılavuzda ele alınan senaryo, GitHub eylemleri üzerinde dakikada 25 ' e kadar iş yürüten 3.000 adede kadar geliştirici sunan bir GitHub Enterprise Server örneğidir. GitHub eylemleri gibi *Önizleme* özelliklerinin (yazma sırasında) kurulumunu içerir. Kurulumu belirli gereksinimlerinize göre özelleştirmek için, [VMware 'de GitHub Enterprise Server yükleme](https://docs.github.com/en/enterprise/admin/installation/installing-github-enterprise-server-on-vmware#hardware-considerations)bölümünde listelenen gereksinimleri gözden geçirin.
+Bu makalede, Azure VMware Çözüm özel bulutunuzda "Şirket içi" [sürümü olan GitHub](https://github.com/)Enterprise Server 'ı ayarlama adımlarını adım adım inceleyeceğiz. Ele alacağız senaryo, GitHub eylemleri üzerinde dakikada 25 ' e kadar iş yürüten 3.000 adede kadar geliştirici sunan bir GitHub kurumsal sunucu örneğidir. GitHub eylemleri gibi *Önizleme* özelliklerinin (yazma sırasında) kurulumunu içerir. Kurulumu belirli gereksinimlerinize göre özelleştirmek için, [VMware 'de GitHub Enterprise Server yükleme](https://docs.github.com/en/enterprise/admin/installation/installing-github-enterprise-server-on-vmware#hardware-considerations)bölümünde listelenen gereksinimleri gözden geçirin.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
@@ -51,7 +51,7 @@ En azından aşağıdaki adımları gerçekleştirmeniz önerilir:
 
 1. Yönetim [kabuğu 'NA SSH aracılığıyla erişebilmek](https://docs.github.com/en/enterprise/admin/configuration/accessing-the-administrative-shell-ssh)için genel bir SSH anahtarını yönetim konsoluna yükleyin. 
 
-2. Güvenilen bir sertifika yetkilisi tarafından imzalanmış bir sertifikayı kullanabilmeniz için, [örneğiniz ÜZERINDEKI TLS 'Yi yapılandırın](https://docs.github.com/en/enterprise/admin/configuration/configuring-tls) .
+2. Güvenilen bir sertifika yetkilisi tarafından imzalanan bir sertifika kullanabilmeniz için [örneğiniz ÜZERINDE TLS yapılandırın](https://docs.github.com/en/enterprise/admin/configuration/configuring-tls) .
 
 :::image type="content" source="media/github-enterprise-server/configuring-your-instance.png" alt-text="Örneğinizi yapılandırma.":::
 
@@ -59,7 +59,7 @@ Ayarlarınızı uygulayın.  Örnek yeniden başlatıldıktan sonra, bir sonraki
 
 :::image type="content" source="media/github-enterprise-server/create-admin-account.png" alt-text="Yönetici hesabınızı oluşturun.":::
 
-Örnek yeniden başlatıldıktan sonra örnekte yeni bir yönetici hesabı oluşturun. Bu kullanıcının parolasını da bir yere göz önünde olduğunuzdan emin olun.
+Örnek yeniden başlatıldıktan sonra örnekte yeni bir yönetici hesabı oluşturabilirsiniz. Bu kullanıcının parolasını da bir yere göz önünde olduğunuzdan emin olun.
 
 ### <a name="other-configuration-steps"></a>Diğer yapılandırma adımları
 
@@ -178,7 +178,7 @@ Bu Çalıştırıcısı kuruluşunuzdaki kuruluşlar için kullanılabilir hale 
 
 :::image type="content" source="media/github-enterprise-server/edit-runner-access.png" alt-text="Çalıştırıcısı erişimini düzenleyin.":::
 
-Burada tüm kuruluşların kullanımına sunacağız, ancak aynı zamanda bir kuruluş alt kümesine erişimi ve hatta belirli depolara erişimi de sınırlayabilirsiniz.
+Burada tüm kuruluşlar için kullanılabilir hale getiririz, ancak kuruluşların bir alt kümesiyle ve hatta belirli depolara erişmesini sınırlayabilirsiniz.
 
 ## <a name="optional-configuring-github-connect"></a>Seçim GitHub Connect yapılandırılıyor
 
@@ -223,11 +223,11 @@ Her şey başarıyla çalıştırıldıysa, deponuzda "Merhaba Dünya" adlı yen
 
 Tebrikler! Azure VMware Çözüm özel bulutunuzda çalışan GitHub Enterprise Server 'daki ilk eylemler iş akışınızı az önce tamamladınız.
 
-Bu makalede, Azure VMware çözümünüz özel bulutunuzun en üstünde GitHub.com 'in şirket içinde barındırılan eşdeğeri olan GitHub Enterprise Server 'ın yeni bir örneğini ayarladık. Bu örnek, GitHub eylemleri için destek içerir ve günlüklerin ve yapıtların sürekliliği için Azure Blob depolamayı kullanır. Ancak GitHub eylemleriyle yapabileceklerinizi yalnızca bir şekilde yeniden sunuyoruz. [GitHub Market](https://github.com/marketplace)'teki eylem listesine göz atın veya [kendinizinkini oluşturun](https://docs.github.com/en/actions/creating-actions).
+Bu makalede, Azure VMware çözümünüz özel bulutunuzun en üstünde GitHub.com 'in şirket içinde barındırılan eşdeğeri olan GitHub Enterprise Server 'ın yeni bir örneğini ayarladık. Bu örnek, GitHub eylemleri için destek içerir ve günlüklerin ve yapıtların sürekliliği için Azure Blob depolamayı kullanır. Ancak GitHub eylemleriyle yapabileceklerinizi biraz daha hazırlıyoruz. [GitHub Market](https://github.com/marketplace)'teki eylem listesine göz atın veya [kendinizinkini oluşturun](https://docs.github.com/en/actions/creating-actions).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure VMware Çözüm özel bulutunuzda GitHub Enterprise Server 'ı ayarlamayı gördüğünüze göre, şu bilgileri öğrenmek isteyebilirsiniz: 
+Azure VMware Çözüm özel bulutunuzda GitHub Enterprise Server ayarlamayı artık kapsadığınıza göre, şunları öğrenmek isteyebilirsiniz: 
 
 - [GitHub eylemleri ile çalışmaya](https://docs.github.com/en/actions)başlama.
 - [Beta programına katılma](https://resources.github.com/beta-signup/).

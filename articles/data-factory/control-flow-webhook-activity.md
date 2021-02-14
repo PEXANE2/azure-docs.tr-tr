@@ -1,22 +1,18 @@
 ---
 title: Azure Data Factory Web kancası etkinliği
 description: Web kancası etkinliği, eklenen veri kümesini kullanıcının belirttiği ölçütlere göre doğrulayıp işlem hattının yürütülmesine devam etmez.
-services: data-factory
-documentationcenter: ''
 author: dcstwh
 ms.author: weetok
-manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/25/2019
-ms.openlocfilehash: 144006c3d0722bc3211f542b7059bba0bb0cbdbf
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 435cad4d1ef002261b194431dbdb787e072808f5
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499416"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100361494"
 ---
 # <a name="webhook-activity-in-azure-data-factory"></a>Azure Data Factory Web kancası etkinliği
 
@@ -55,15 +51,15 @@ Web kancası etkinliği, özel kodunuzla işlem hattı yürütülmesini denetley
 
 Özellik | Açıklama | İzin verilen değerler | Gerekli
 -------- | ----------- | -------------- | --------
-**ada** | Web kancası etkinliğinin adı. | Dize | Evet |
-**türüyle** | "Web kancası" olarak ayarlanmalıdır. | Dize | Evet |
-**yöntemidir** | Hedef uç nokta için REST API yöntemi. | Dize. Desteklenen tür "POST" dır. | Evet |
-**'deki** | Hedef uç nokta ve yol. | Bir dizenin **ResultType** değeri olan bir dize veya ifade. | Evet |
+**name** | Web kancası etkinliğinin adı. | Dize | Yes |
+**türüyle** | "Web kancası" olarak ayarlanmalıdır. | Dize | Yes |
+**yöntemidir** | Hedef uç nokta için REST API yöntemi. | Dize. Desteklenen tür "POST" dır. | Yes |
+**'deki** | Hedef uç nokta ve yol. | Bir dizenin **ResultType** değeri olan bir dize veya ifade. | Yes |
 **bilgisinde** | İsteğe gönderilen üst bilgiler. İşte bir istek üzerinde dili ve türü ayarlayan bir örnek: `"headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }` . | Bir dizenin **ResultType** değeri olan bir dize veya ifade. | Evet. `Content-Type`Gibi bir üst bilgi `"headers":{ "Content-Type":"application/json"}` gereklidir. |
-**bölümü** | Uç noktaya gönderilen yükü temsil eder. | JSON **değeri JSON** olan geçerli JSON veya bir ifade. İstek yükünün şeması için bkz. [istek yük şeması](./control-flow-web-activity.md#request-payload-schema) . | Evet |
-**yetkilendirmesi** | Uç noktayı çağırmak için kullanılan kimlik doğrulama yöntemi. Desteklenen türler şunlardır "temel" ve "ClientCertificate". Daha fazla bilgi için bkz. [Kimlik doğrulaması](./control-flow-web-activity.md#authentication). Kimlik doğrulaması gerekmiyorsa, bu özelliği dışlayın. | Bir dizenin **ResultType** değeri olan bir dize veya ifade. | Hayır |
-**aş** | Etkinliğin **Callbackuri** tarafından çağrılması için belirtilen geri çağırma için bekleyeceği süre. Varsayılan değer 10 dakikadır ("00:10:00"). Değerler, *d* TimeSpan biçimine sahiptir. *SS*:*dd*:*SS*. | Dize | Hayır |
-**Geri aramada durum bildir** | Bir kullanıcının Web kancası etkinliğinin başarısız durumunu rapormasına olanak sağlar. | Boole | Hayır |
+**bölümü** | Uç noktaya gönderilen yükü temsil eder. | JSON **değeri JSON** olan geçerli JSON veya bir ifade. İstek yükünün şeması için bkz. [istek yük şeması](./control-flow-web-activity.md#request-payload-schema) . | Yes |
+**yetkilendirmesi** | Uç noktayı çağırmak için kullanılan kimlik doğrulama yöntemi. Desteklenen türler şunlardır "temel" ve "ClientCertificate". Daha fazla bilgi için bkz. [Kimlik doğrulaması](./control-flow-web-activity.md#authentication). Kimlik doğrulaması gerekmiyorsa, bu özelliği dışlayın. | Bir dizenin **ResultType** değeri olan bir dize veya ifade. | No |
+**timeout** | Etkinliğin **Callbackuri** tarafından çağrılması için belirtilen geri çağırma için bekleyeceği süre. Varsayılan değer 10 dakikadır ("00:10:00"). Değerler, *d* TimeSpan biçimine sahiptir. *SS*:*dd*:*SS*. | Dize | No |
+**Geri aramada durum bildir** | Bir kullanıcının Web kancası etkinliğinin başarısız durumunu rapormasına olanak sağlar. | Boole | No |
 
 ## <a name="authentication"></a>Kimlik Doğrulaması
 

@@ -1,27 +1,23 @@
 ---
 title: Databricks jar ile veri dönüştürme
-description: Databricks jar çalıştırarak verileri nasıl işleyeceğini veya dönüştüreceğinizi öğrenin.
-services: data-factory
-documentationcenter: ''
-ms.assetid: ''
+description: Azure Data Factory bir işlem hattı içinde Databricks jar çalıştırarak verileri nasıl işleyeceğini veya dönüştürebileceğinizi öğrenin.
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.author: abnarain
 author: nabhishek
-manager: shwang
-ms.date: 03/15/2018
-ms.openlocfilehash: 6b010000a674e351051c664dd5eeacd40e802439
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 02/10/2021
+ms.openlocfilehash: ccfe8fbf330e1c7f6f415b64a1f18d93a084a0ba
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81414620"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100374023"
 ---
 # <a name="transform-data-by-running-a-jar-activity-in-azure-databricks"></a>Azure Databricks bir jar etkinliği çalıştırarak verileri dönüştürme
+
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Bir [Data Factory](concepts-pipelines-activities.md) işlem hattındaki Azure Databricks Jar etkinliği Azure Databricks kümenizde Spark jar 'i çalıştırır. Bu makale [data transformation activities](transform-data.md)   , veri dönüştürme ve desteklenen dönüştürme etkinliklerine genel bir bakış sunan veri dönüştürme etkinlikleri makalesinde oluşturulur.Azure Databricks, Apache Spark çalıştırmak için yönetilen bir platformdur.
+Bir [Data Factory](concepts-pipelines-activities.md) işlem hattındaki Azure Databricks Jar etkinliği Azure Databricks kümenizde Spark jar 'i çalıştırır. Bu makale, veri dönüştürme ve desteklenen dönüştürme etkinliklerine genel bir bakış sunan [veri dönüştürme etkinlikleri](transform-data.md) makalesinde oluşturulur. Azure Databricks, Apache Spark çalıştırmak için yönetilen bir platformdur.
 
 Bu özelliğe yönelik on bir dakikalık bir giriş ve tanıtım için, aşağıdaki videoyu izleyin:
 
@@ -58,20 +54,20 @@ Aşağıdaki tabloda JSON tanımında kullanılan JSON özellikleri açıklanmak
 
 |Özellik|Açıklama|Gerekli|
 |:--|---|:-:|
-|name|İşlem hattındaki etkinliğin adı.|Evet|
-|açıklama|Etkinliğin ne yaptığını açıklayan metin.|Hayır|
-|tür|Databricks jar etkinliği için etkinlik türü Databricksmini jar ' dir.|Evet|
-|linkedServiceName|Jar etkinliğinin üzerinde çalıştığı Databricks bağlı hizmetinin adı. Bu bağlı hizmet hakkında bilgi edinmek için bkz. [işlem bağlı hizmetleri](compute-linked-services.md)   makalesi.|Evet|
-|mainClassName|Yürütülecek ana yöntemi içeren sınıfın tam adı. Bu sınıf, kitaplık olarak sunulan bir JAR içinde yer almalıdır.|Evet|
-|parameters|Main yöntemine geçirilecek parametreler.  Bu bir dizeler dizisidir.|Hayır|
+|name|İşlem hattındaki etkinliğin adı.|Yes|
+|açıklama|Etkinliğin ne yaptığını açıklayan metin.|No|
+|tür|Databricks jar etkinliği için etkinlik türü Databricksmini jar ' dir.|Yes|
+|linkedServiceName|Jar etkinliğinin üzerinde çalıştığı Databricks bağlı hizmetinin adı. Bu bağlı hizmet hakkında bilgi edinmek için bkz. [işlem bağlı hizmetleri](compute-linked-services.md) makalesi.|Yes|
+|mainClassName|Yürütülecek ana yöntemi içeren sınıfın tam adı. Bu sınıf, kitaplık olarak sunulan bir JAR içinde yer almalıdır. JAR dosyası birden çok sınıf içerebilir. Sınıfların her biri, bir Main yöntemi içerebilir.|Yes|
+|parameters|Main yöntemine geçirilecek parametreler. Bu özellik bir dizeler dizisidir.|No|
 |kitaplıklar|İşi yürütecek olan kümeye yüklenecek kitaplıkların listesi. <dize, nesne> dizisi olabilir|Evet (mainClassName yöntemini içeren en az bir tane)|
 
 > [!NOTE]
-> **Bilinen sorun** -eşzamanlı Databricks jar etkinliklerini çalıştırmak Için aynı [etkileşimli kümeyi](compute-linked-services.md#example---using-existing-interactive-cluster-in-databricks) kullanırken (küme yeniden başlatma olmadan), databricks 'te, 1. etkinliğin parametrelerinin de aşağıdaki etkinlikler tarafından da kullanılacağı bilinen bir sorun vardır. Bu nedenle, sonraki işlere geçirilen yanlış parametrelere neden oldu. Bunu azaltmak için bunun yerine bir [iş kümesi](compute-linked-services.md#example---using-new-job-cluster-in-databricks) kullanın. 
+> **Bilinen sorun** -eşzamanlı Databricks jar etkinliklerini çalıştırmak Için aynı [etkileşimli kümeyi](compute-linked-services.md#example---using-existing-interactive-cluster-in-databricks) kullanırken (küme yeniden başlatma olmadan), databricks 'te, 1. etkinliğin parametrelerinin de aşağıdaki etkinlikler tarafından da kullanılacağı bilinen bir sorun vardır. Bu nedenle, sonraki işlere geçirilen yanlış parametrelere neden oldu. Bunu azaltmak için bunun yerine bir [iş kümesi](compute-linked-services.md#example---using-new-job-cluster-in-databricks) kullanın.
 
 ## <a name="supported-libraries-for-databricks-activities"></a>Databricks etkinlikleri için desteklenen kitaplıklar
 
-Yukarıdaki databricks etkinlik tanımında şu kitaplık türlerini belirtirsiniz: *jar*, *Egg*, *Maven*, *Pypı*, *Cran*.
+Önceki Databricks etkinlik tanımında şu kitaplık türlerini belirttiniz: `jar` , `egg` ,, `maven` `pypi` , `cran` .
 
 ```json
 {
@@ -105,19 +101,26 @@ Yukarıdaki databricks etkinlik tanımında şu kitaplık türlerini belirtirsin
 
 ```
 
-Daha fazla ayrıntı için kitaplık türleri için [Databricks belgeleri](https://docs.azuredatabricks.net/api/latest/libraries.html#managedlibrarieslibrary) bölümüne bakın.
+Daha fazla bilgi için bkz. kitaplık türleri için [Databricks belgeleri](/azure/databricks/dev-tools/api/latest/libraries#managedlibrarieslibrary) .
 
 ## <a name="how-to-upload-a-library-in-databricks"></a>Databricks 'te bir kitaplığı karşıya yükleme
 
-#### <a name="using-databricks-workspace-ui"></a>[Databricks çalışma alanı kullanıcı arabirimini kullanma](https://docs.azuredatabricks.net/user-guide/libraries.html#create-a-library)
+### <a name="you-can-use-the-workspace-ui"></a>Çalışma alanı kullanıcı arabirimini kullanabilirsiniz:
 
-Kullanıcı arabirimi kullanılarak eklenen kitaplığın dBFS yolunu almak için [Databricks CLI (yükleme)](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#install-the-cli)kullanabilirsiniz. 
+1. [Databricks çalışma alanı kullanıcı arabirimini kullanma](/azure/databricks/libraries/#create-a-library)
 
-Genellikle jar kitaplıkları, Kullanıcı arabirimi kullanılırken dBFS:/FileStore/jars altında depolanır. CLı aracılığıyla tümünü listeleme: *databricks FS ls dBFS:/FileStore/Job-jars* 
+2. Kullanıcı arabirimi kullanılarak eklenen kitaplığın dBFS yolunu almak için [Databricks CLI](/azure/databricks/dev-tools/cli/#install-the-cli)kullanabilirsiniz.
 
+   Genellikle jar kitaplıkları, Kullanıcı arabirimi kullanılırken dBFS:/FileStore/jars altında depolanır. CLı aracılığıyla tümünü listeleme: *databricks FS ls dBFS:/FileStore/Job-jars*
 
+### <a name="or-you-can-use-the-databricks-cli"></a>Ya da Databricks CLı 'yi de kullanabilirsiniz:
 
-#### <a name="copy-library-using-databricks-cli"></a>[Databricks CLı kullanarak Kitaplığı kopyalama](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#copy-a-file-to-dbfs)
-Databricks CLı [(yükleme adımları)](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#install-the-cli)kullanın. 
+1. [Databricks CLI kullanarak kitaplığı kopyalamayı](/azure/databricks/dev-tools/cli/#copy-a-file-to-dbfs) izleyin
 
-Örnek-JAR 'yi dBFS 'e kopyalama: *dBFS CP sparkpi-Assembly-0.1. jar dBFS:/docs/parlak Pi. jar*
+2. Databricks CLı kullanma [(yükleme adımları)](/azure/databricks/dev-tools/cli/#install-the-cli)
+
+   Örnek olarak, bir JAR 'yi dBFS 'e kopyalamak için: `dbfs cp SparkPi-assembly-0.1.jar dbfs:/docs/sparkpi.jar`
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+Bu özelliğin on bir bir ön eki ve tanıtımı için [videoyu](https://channel9.msdn.com/Shows/Azure-Friday/Execute-Jars-and-Python-scripts-on-Azure-Databricks-using-Data-Factory/player)izleyin.

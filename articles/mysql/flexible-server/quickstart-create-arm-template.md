@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: sumuth
 ms.date: 10/23/2020
-ms.openlocfilehash: a7dc6a6b11d3bfacf0aac5472a872ffaa7acc92b
-ms.sourcegitcommit: 003ac3b45abcdb05dc4406661aca067ece84389f
+ms.openlocfilehash: 5be0bf21514dd92c2f980081bb57d873895bbb91
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96748714"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100099940"
 ---
 # <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-mysql---flexible-server-preview"></a>Hızlı başlangıç: MySQL için Azure veritabanı oluşturmak için bir ARM şablonu kullanma-esnek sunucu (Önizleme)
 
@@ -97,7 +97,7 @@ Dosyasında bir _mysql-flexible-server-template.js_ oluşturun ve bu JSON betiğ
       "location": "[parameters('location')]",
       "sku": {
         "name": "Standard_D4ds_v4",
-        "tier": "[parameters('serverEdition')]"        
+        "tier": "[parameters('serverEdition')]"
       },
       "tags": "[parameters('tags')]",
       "properties": {
@@ -179,7 +179,7 @@ Read-Host -Prompt "Press [ENTER] to continue ..."
 
 Sunucunuzun Azure 'da oluşturulup oluşturuçalışmadığını doğrulamak için aşağıdaki adımları izleyin.
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure portalı
 
 1. [Azure Portal](https://portal.azure.com), **MySQL için Azure veritabanı sunucuları**' nı arayıp seçin.
 1. Veritabanı listesinde yeni sunucunuzu seçin. Yeni MySQL için Azure veritabanı sunucunuzun **genel bakış** sayfası görüntülenir.
@@ -205,6 +205,22 @@ echo "Enter the resource group where the Azure Database for MySQL server exists:
 read resourcegroupName &&
 az resource show --resource-group $resourcegroupName --name $serverName --resource-type "Microsoft.DbForMySQL/flexibleServers"
 ```
+## <a name="exporting-arm-template-from-the-portal"></a>, Portaldan ARM şablonu dışarı aktarılıyor
+[BIR ARM şablonunu Azure Portal dışa aktarabilirsiniz](../../azure-resource-manager/templates/export-template-portal.md) . Şablonu dışarı aktarmanın iki yolu vardır:
+
+- [Kaynak grubundan veya kaynaktan dışarı aktarın](../../azure-resource-manager/templates/export-template-portal.md#export-template-from-a-resource). Bu seçenek, mevcut kaynaklardan yeni bir şablon oluşturur. Bu şablon, kaynak grubunun geçerli durumunun "Snapshot" ' dır. Kaynak grubunun tamamını veya kaynak grubu içindeki belirli kaynakları dışarı aktarabilirsiniz.
+- [Dağıtımdan veya geçmişten önce dışarı aktarın](../../azure-resource-manager/templates/export-template-portal.md#export-template-before-deployment). Bu seçenek, dağıtım için kullanılan bir şablonun tam bir kopyasını alır.
+
+Şablonu dışarı aktarırken, ```"parameters":{ }``` şablonun bölümünde, ```administratorLogin``` Güvenlik nedenleriyle bu olduğunu fark edersiniz ```administratorLoginPassword``` . Şablonu dağıtılmadan önce bu parametreleri şablonunuza eklemeniz **gerekir** , aksi olarak şablon başarısız olur.
+
+```
+"administratorLogin": {
+      "type": "String"
+    },
+"administratorLoginPassword": {
+      "type": "SecureString"
+    },
+```
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
@@ -212,7 +228,7 @@ az resource show --resource-group $resourcegroupName --name $serverName --resour
 
 Kaynak grubunu silmek için:
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure portalı
 
 1. [Azure Portal](https://portal.azure.com), **kaynak gruplarını** arayıp seçin.
 1. Kaynak grubu listesinde, kaynak grubunuzun adını seçin.

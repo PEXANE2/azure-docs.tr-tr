@@ -1,22 +1,17 @@
 ---
 title: Azure Data Factory Web etkinliği
 description: Bir işlem hattından REST uç noktasını çağırmak için Data Factory tarafından desteklenen denetim akışı etkinliklerinin biri olan Web etkinliğini nasıl kullanabileceğinizi öğrenin.
-services: data-factory
-documentationcenter: ''
 author: dcstwh
 ms.author: weetok
-manager: jroth
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/19/2018
-ms.openlocfilehash: fbe37152f4ff1ce24754bc2d7b968c8e1c76ca10
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
+ms.openlocfilehash: e4578b41e5cbb62c8a1bfa0c48d4fd60d042a506
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97387726"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100361528"
 ---
 # <a name="web-activity-in-azure-data-factory"></a>Azure Data Factory Web etkinliği
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -81,10 +76,10 @@ method | Hedef uç nokta için REST API yöntemi. | Dize. <br/><br/>Desteklenen 
 url | Hedef uç nokta ve yol | Dize (veya dize resultType 'ı olan ifade). Etkinlik uç noktadan yanıt almazsa, 1 dakikanın sonunda zaman aşımına uğrar ve hata verir. | Yes
 bilgisinde | İsteğe gönderilen üst bilgiler. Örneğin, bir istek için dili ve türü ayarlamak için: `"headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }` . | Dize (veya dize resultType 'ı olan ifade) | Evet, Content-Type üst bilgisi gereklidir. `"headers":{ "Content-Type":"application/json"}`
 body | Uç noktaya gönderilen yükü temsil eder.  | Dize (veya dize resultType 'ı olan ifade). <br/><br/>İstek [yükü şeması](#request-payload-schema) 'nda istek yükü şeması bölümüne bakın. | POST/PUT yöntemleri için gereklidir.
-kimlik doğrulaması | Uç noktayı çağırmak için kullanılan kimlik doğrulama yöntemi. Desteklenen türler "Basic, or ClientCertificate" dir. Daha fazla bilgi için bkz. [kimlik doğrulama](#authentication) bölümü. Kimlik doğrulaması gerekmiyorsa, bu özelliği dışlayın. | Dize (veya dize resultType 'ı olan ifade) | Hayır
+kimlik doğrulaması | Uç noktayı çağırmak için kullanılan kimlik doğrulama yöntemi. Desteklenen türler "Basic, or ClientCertificate" dir. Daha fazla bilgi için bkz. [kimlik doğrulama](#authentication) bölümü. Kimlik doğrulaması gerekmiyorsa, bu özelliği dışlayın. | Dize (veya dize resultType 'ı olan ifade) | No
 veri kümeleri | Uç noktaya geçirilen veri kümelerinin listesi. | Veri kümesi başvuruları dizisi. Boş bir dizi olabilir. | Yes
 linkedServices | Uç noktaya geçirilen bağlı hizmetlerin listesi. | Bağlı hizmet başvuruları dizisi. Boş bir dizi olabilir. | Yes
-connectVia | Veri deposuna bağlanmak için kullanılacak [tümleştirme çalışma zamanı](./concepts-integration-runtime.md) . Azure tümleştirme çalışma zamanını veya şirket içinde barındırılan tümleştirme çalışma zamanını (veri depolduğunuz özel bir ağda olması halinde) kullanabilirsiniz. Bu özellik belirtilmezse, hizmet varsayılan Azure tümleştirme çalışma zamanını kullanır. | Integration Runtime başvurusu. | Hayır 
+connectVia | Veri deposuna bağlanmak için kullanılacak [tümleştirme çalışma zamanı](./concepts-integration-runtime.md) . Azure tümleştirme çalışma zamanını veya şirket içinde barındırılan tümleştirme çalışma zamanını (veri depolduğunuz özel bir ağda olması halinde) kullanabilirsiniz. Bu özellik belirtilmezse, hizmet varsayılan Azure tümleştirme çalışma zamanını kullanır. | Integration Runtime başvurusu. | No 
 
 > [!NOTE]
 > Web etkinliğinin çağırdığı REST uç noktaları JSON türünde bir yanıt döndürmelidir. Etkinlik uç noktadan yanıt almazsa, 1 dakikanın sonunda zaman aşımına uğrar ve hata verir.
@@ -103,7 +98,7 @@ Aşağıdaki tabloda JSON içeriği için gereksinimler gösterilmektedir:
 
 Aşağıda, Web etkinliğinde desteklenen kimlik doğrulama türleri verilmiştir.
 
-### <a name="none"></a>Hiçbiri
+### <a name="none"></a>Yok
 
 Kimlik doğrulaması gerekmiyorsa, "Authentication" özelliğini eklemeyin.
 

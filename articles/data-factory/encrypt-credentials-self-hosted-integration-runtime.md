@@ -1,22 +1,17 @@
 ---
 title: Azure Data Factory kimlik bilgilerini şifreleyin
 description: Şirket içi veri depolarınız için kimlik bilgilerini kendi kendine barındırılan tümleştirme çalışma zamanına sahip bir makinede şifrelemeyi ve depolamayı öğrenin.
-services: data-factory
-documentationcenter: ''
 author: nabhishek
-manager: anandsub
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: abnarain
-ms.openlocfilehash: cd775c5a3bf367600a4537a9409a9bb8f902f588
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 59d177aa3baf25f185201f1b6c4738cfce9c25a3
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82628989"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100392655"
 ---
 # <a name="encrypt-credentials-for-on-premises-data-stores-in-azure-data-factory"></a>Azure Data Factory içindeki şirket içi veri depoları için kimlik bilgilerini şifreleyin
 
@@ -57,7 +52,7 @@ New-AzDataFactoryV2LinkedServiceEncryptedCredential -DataFactoryName $dataFactor
 ```
 
 ## <a name="use-the-json-with-encrypted-credentials"></a>JSON 'ı şifreli kimlik bilgileriyle kullanma
-Şimdi, **Sqlserverlinkedservice**öğesini ayarlamak için şifrelenmiş kimlik bilgilerini içeren önceki KOMUTTAN çıkış json dosyasını kullanın.
+Şimdi, **Sqlserverlinkedservice** öğesini ayarlamak için şifrelenmiş kimlik bilgilerini içeren önceki KOMUTTAN çıkış json dosyasını kullanın.
 
 ```powershell
 Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $ResourceGroupName -Name "EncryptedSqlServerLinkedService" -DefinitionFile ".\encryptedSqlServerLinkedService.json" 

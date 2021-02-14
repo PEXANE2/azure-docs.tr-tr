@@ -3,12 +3,12 @@ title: Azure VM 'lerini yeni aboneliğe veya kaynak grubuna taşıma
 description: Sanal makineleri yeni bir kaynak grubuna veya aboneliğe taşımak için Azure Resource Manager kullanın.
 ms.topic: conceptual
 ms.date: 12/01/2020
-ms.openlocfilehash: b1032b5a632bcac82cb9ae1f1b3df7b49f5463f5
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: ad7023f309f1ca948711eaa9bdf3867d2ef7a6f8
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96456320"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100104918"
 ---
 # <a name="move-guidance-for-virtual-machines"></a>Sanal makineler için taşıma Kılavuzu
 
@@ -58,7 +58,7 @@ Planların eklendiği Market kaynaklarından oluşturulan sanal makineler abonel
 
 Azure Backup ile yapılandırılmış sanal makineleri taşımak için, geri yükleme noktalarını kasadan silmeniz gerekir.
 
-Sanal makineniz için [geçici silme](../../../backup/backup-azure-security-feature-cloud.md) etkinse, bu geri yükleme noktaları tutulurken sanal makineyi taşıyamazsınız. Geri yükleme noktalarını sildikten sonra [geçici silmeyi devre dışı bırakın](../../../backup/backup-azure-security-feature-cloud.md#enabling-and-disabling-soft-delete) veya 14 gün bekleyin.
+Sanal makineniz için [geçici silme](../../../backup/soft-delete-virtual-machines.md) etkinse, bu geri yükleme noktaları tutulurken sanal makineyi taşıyamazsınız. Geri yükleme noktalarını sildikten sonra [geçici silmeyi devre dışı bırakın](../../../backup/backup-azure-security-feature-cloud.md#enabling-and-disabling-soft-delete) veya 14 gün bekleyin.
 
 ### <a name="portal"></a>Portal
 

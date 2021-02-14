@@ -12,19 +12,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/20/2020
 ms.author: yelevin
-ms.openlocfilehash: 86854fa22a49f09e5d3d2fc5fdb53c245850fbac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7cbf1c52af1d2902ae0726fc0dd98dbf12cecc44
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77587949"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100097458"
 ---
 # <a name="connect-your-zimperium-mobile-threat-defense-to-azure-sentinel"></a>Zkusurum mobil tehdit savunmanızı Azure Sentinel 'e bağlama
 
 
 > [!IMPORTANT]
 > Azure Sentinel 'deki Zyium mobil tehdit savunma verileri Bağlayıcısı Şu anda genel önizleme aşamasındadır.
-> Bu özellik, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Bu özellik, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 
 
@@ -58,7 +58,7 @@ Zkusurda mobil tehdit savunması için Log Analytics ilgili şemayı kullanmak i
 
 ## <a name="validate-connectivity"></a>Bağlantıyı doğrula
 
-Günlüklerinizin Log Analytics görünene kadar 20 dakikadan bu kadar bir zaman çıkabilir.
+Günlüklerinizin Log Analytics görünmeye başlaması 20 dakikaya kadar sürebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

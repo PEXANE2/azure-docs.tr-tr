@@ -9,12 +9,12 @@ metadata:
   author: ggailey777
   ms.author: azfundocs
   ms.date: 09/17/2019
-  ms.openlocfilehash: 10c606ab86a577f22167197138e56a14d176b88a
-  ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
-  ms.translationtype: HT
+  ms.openlocfilehash: 65b2c25bde616f8a2bbc9abf6439871d288306b9
+  ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+  ms.translationtype: MT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 01/19/2021
-  ms.locfileid: "98570142"
+  ms.lasthandoff: 02/14/2021
+  ms.locfileid: "100363041"
 landingContent:
 - title: Azure İşlevleri hakkında
   linkLists:
@@ -128,14 +128,22 @@ landingContent:
       url: functions-how-to-azure-devops.md
     - text: Jenkins eklentisini kullanarak dağıtma
       url: /azure/developer/jenkins/deploy-to-azure-functions
-- title: Performans ve izleme
+- title: Performans ve izleme en iyi uygulamaları
   linkLists:
   - linkListType: concept
     links:
+    - text: Performans ve güvenilirlik
+      url: functions-best-practices.md
+    - text: Bağlantıları yönetme
+      url: manage-connections.md
+    - text: Depolama hakkında dikkat edilmesi gerekenler
+      url: storage-considerations.md
+    - text: Hata işleme ve işlev yeniden denemeleri
+      url: functions-bindings-error-pages.md
+    - text: Güvenlik
+      url: security-concepts.md
     - text: İzleme işlevleri
       url: functions-monitoring.md
-    - text: Performansı iyileştirme
-      url: functions-best-practices.md
     - text: Ağ konusunda dikkat edilmesi gerekenler
       url: functions-networking-options.md
   - linkListType: how-to-guide

@@ -1,23 +1,18 @@
 ---
 title: Verileri Azure tablosuna/konumundan taşıma
 description: Azure Data Factory kullanarak verileri Azure Tablo depolama içine/altına taşımayı öğrenin.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.assetid: 07b046b1-7884-4e57-a613-337292416319
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 1d7802a3fe4fb904aad7fd9257edbf8b10efe127
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: cc8e0272dc690ed541883ae943c118cbbe2f1854
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637437"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100392128"
 ---
 # <a name="move-data-to-and-from-azure-table-using-azure-data-factory"></a>Azure Data Factory kullanarak verileri Azure tablosuna ve Azure 'a taşıma
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -33,12 +28,12 @@ Desteklenen herhangi bir kaynak veri deposundan verileri Azure Tablo depolama al
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="getting-started"></a>Başlarken
+## <a name="getting-started"></a>Kullanmaya başlama
 Farklı araçlar/API 'Ler kullanarak bir Azure Tablo depolama alanına/kaynağından veri taşıyan kopyalama etkinliği ile bir işlem hattı oluşturabilirsiniz.
 
-İşlem hattı oluşturmanın en kolay yolu **Kopyalama Sihirbazı** ' nı kullanmaktır. Veri kopyalama Sihirbazı 'nı kullanarak işlem hattı oluşturma hakkında hızlı bir yol için bkz. [öğretici: kopyalama Sihirbazı 'nı kullanarak işlem hattı oluşturma](data-factory-copy-data-wizard-tutorial.md) .
+İşlem hattı oluşturmanın en kolay yolu **Kopyalama Sihirbazı**' nı kullanmaktır. Veri kopyalama Sihirbazı 'nı kullanarak işlem hattı oluşturma hakkında hızlı bir yol için bkz. [öğretici: kopyalama Sihirbazı 'nı kullanarak işlem hattı oluşturma](data-factory-copy-data-wizard-tutorial.md) .
 
-İşlem hattı oluşturmak için aşağıdaki araçları da kullanabilirsiniz: **Visual Studio** , **Azure PowerShell** , **Azure Resource Manager şablonu** , **.NET API** ve **REST API** . Kopyalama etkinliğine sahip bir işlem hattı oluşturmak için adım adım yönergeler için bkz. [kopyalama etkinliği öğreticisi](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) . 
+İşlem hattı oluşturmak için aşağıdaki araçları da kullanabilirsiniz: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager şablonu**, **.NET API** ve **REST API**. Kopyalama etkinliğine sahip bir işlem hattı oluşturmak için adım adım yönergeler için bkz. [kopyalama etkinliği öğreticisi](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) . 
 
 Araçları veya API 'Leri kullanıp kullanmayacağınızı bir kaynak veri deposundan havuz veri deposuna veri taşınan bir işlem hattı oluşturmak için aşağıdaki adımları gerçekleştirirsiniz: 
 
@@ -82,7 +77,7 @@ Diğer yandan etkinliğin typeProperties bölümünde bulunan özellikler her et
 | Özellik | Açıklama | İzin verilen değerler | Gerekli |
 | --- | --- | --- | --- |
 | azureTableSourceQuery |Verileri okumak için özel sorguyu kullanın. |Azure tablo sorgu dizesi. Sonraki bölümde örneklere bakın. |Hayır. Bir tableName, azureTableSourceQuery olmadan belirtildiğinde, tablodaki tüm kayıtlar hedefe kopyalanır. Bir azureTableSourceQuery belirtilmişse, sorguyu karşılayan tablodaki kayıtlar da hedefe kopyalanır. |
-| azureTableSourceIgnoreTableNotFound |Swallow tablosunun özel durumunun mevcut olup olmadığını belirtin. |TRUE<br/>FALSE |Hayır |
+| azureTableSourceIgnoreTableNotFound |Swallow tablosunun özel durumunun mevcut olup olmadığını belirtin. |TRUE<br/>FALSE |No |
 
 ### <a name="azuretablesourcequery-examples"></a>azureTableSourceQuery örnekleri
 Azure Tablo sütunu dize türünde ise:
@@ -101,10 +96,10 @@ Azure Tablo sütunu tarih saat türünde ise:
 
 | Özellik | Açıklama | İzin verilen değerler | Gerekli |
 | --- | --- | --- | --- |
-| azureTableDefaultPartitionKeyValue |Havuz tarafından kullanılabilen varsayılan bölüm anahtarı değeri. |Bir dize değeri. |Hayır |
-| azureTablePartitionKeyName |Değerleri bölüm anahtarları olarak kullanılan sütunun adını belirtin. Belirtilmemişse, bölüm anahtarı olarak AzureTableDefaultPartitionKeyValue kullanılır. |Bir sütun adı. |Hayır |
-| azureTableRowKeyName |Sütun değerleri satır anahtarı olarak kullanılan sütunun adını belirtin. Belirtilmezse, her satır için bir GUID kullanın. |Bir sütun adı. |Hayır |
-| azureTableInsertType |Azure tablosuna veri ekleme modu.<br/><br/>Bu özellik, çıkış tablosunda eşleşen bölüm ve satır anahtarlarının değerlerinin değiştirilmesini veya birleştirildiğini denetler. <br/><br/>Bu ayarların (birleştirme ve değiştirme) nasıl çalıştığını öğrenmek için bkz. [varlık ekleme veya birleştirme](/rest/api/storageservices/Insert-Or-Merge-Entity) ve [varlık ekleme veya değiştirme](/rest/api/storageservices/Insert-Or-Replace-Entity) konuları. <br/><br> Bu ayar tablo düzeyinde değil, satır düzeyinde uygulanır ve hiçbir seçenek, girişte bulunmayan çıkış tablosundaki satırları silmez. |Birleştir (varsayılan)<br/>değiştirin |Hayır |
+| azureTableDefaultPartitionKeyValue |Havuz tarafından kullanılabilen varsayılan bölüm anahtarı değeri. |Bir dize değeri. |No |
+| azureTablePartitionKeyName |Değerleri bölüm anahtarları olarak kullanılan sütunun adını belirtin. Belirtilmemişse, bölüm anahtarı olarak AzureTableDefaultPartitionKeyValue kullanılır. |Bir sütun adı. |No |
+| azureTableRowKeyName |Sütun değerleri satır anahtarı olarak kullanılan sütunun adını belirtin. Belirtilmezse, her satır için bir GUID kullanın. |Bir sütun adı. |No |
+| azureTableInsertType |Azure tablosuna veri ekleme modu.<br/><br/>Bu özellik, çıkış tablosunda eşleşen bölüm ve satır anahtarlarının değerlerinin değiştirilmesini veya birleştirildiğini denetler. <br/><br/>Bu ayarların (birleştirme ve değiştirme) nasıl çalıştığını öğrenmek için bkz. [varlık ekleme veya birleştirme](/rest/api/storageservices/Insert-Or-Merge-Entity) ve [varlık ekleme veya değiştirme](/rest/api/storageservices/Insert-Or-Replace-Entity) konuları. <br/><br> Bu ayar tablo düzeyinde değil, satır düzeyinde uygulanır ve hiçbir seçenek, girişte bulunmayan çıkış tablosundaki satırları silmez. |Birleştir (varsayılan)<br/>değiştirin |No |
 | writeBatchSize |WriteBatchSize veya writeBatchTimeout değeri isabet edildiğinde Azure tablosuna veri ekler. |Tamsayı (satır sayısı) |Hayır (varsayılan: 10000) |
 | writeBatchTimeout |WriteBatchSize veya writeBatchTimeout değeri isabet edildiğinde Azure tablosuna veri ekler |timespan<br/><br/>Örnek: "00:20:00" (20 dakika) |Hayır (varsayılan olarak, depolama istemcisi varsayılan zaman aşımı değeri 90 sn) |
 
@@ -155,7 +150,7 @@ Aşağıdaki örnek şunu gösterir:
   }
 }
 ```
-Azure Data Factory, iki tür Azure Storage bağlı hizmetini destekler: **Azurestorage** ve **Azurestorampasas** . Birincisi için, hesap anahtarını ve sonraki bir sürümü içeren bağlantı dizesini belirtirsiniz, paylaşılan erişim Imzası (SAS) URI 'sini belirtirsiniz. Ayrıntılar için [bağlı hizmetler](#linked-service-properties) bölümüne bakın.  
+Azure Data Factory, iki tür Azure Storage bağlı hizmetini destekler: **Azurestorage** ve **Azurestorampasas**. Birincisi için, hesap anahtarını ve sonraki bir sürümü içeren bağlantı dizesini belirtirsiniz, paylaşılan erişim Imzası (SAS) URI 'sini belirtirsiniz. Ayrıntılar için [bağlı hizmetler](#linked-service-properties) bölümüne bakın.  
 
 **Azure tablo giriş veri kümesi:**
 
@@ -323,7 +318,7 @@ Aşağıdaki örnek şunu gösterir:
 }
 ```
 
-Azure Data Factory, iki tür Azure Storage bağlı hizmetini destekler: **Azurestorage** ve **Azurestorampasas** . Birincisi için, hesap anahtarını ve sonraki bir sürümü içeren bağlantı dizesini belirtirsiniz, paylaşılan erişim Imzası (SAS) URI 'sini belirtirsiniz. Ayrıntılar için [bağlı hizmetler](#linked-service-properties) bölümüne bakın.
+Azure Data Factory, iki tür Azure Storage bağlı hizmetini destekler: **Azurestorage** ve **Azurestorampasas**. Birincisi için, hesap anahtarını ve sonraki bir sürümü içeren bağlantı dizesini belirtirsiniz, paylaşılan erişim Imzası (SAS) URI 'sini belirtirsiniz. Ayrıntılar için [bağlı hizmetler](#linked-service-properties) bölümüne bakın.
 
 **Azure Blob giriş veri kümesi:**
 

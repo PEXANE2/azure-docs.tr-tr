@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 01/22/2021
 ms.custom: seodec18
-ms.openlocfilehash: bf743bf1997a339664a6da2e5c02f1bcc1deea26
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: b1b055fa7f083bd8bccda16498e2894d5d67eace
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98736760"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100374142"
 ---
 # <a name="querying-data-from-azure-time-series-insights-gen2"></a>Azure Time Series Insights 2. Nesil'deki Verileri Sorgulama
 
@@ -54,13 +54,12 @@ Bu API 'lerin çoğu, birden çok zaman serisi model varlığı üzerinde toplu 
 
 ## <a name="time-series-query-tsq-apis"></a>Zaman serisi sorgusu (TSQ) API 'Leri
 
-Bu API 'Ler, çok katmanlı depolama çözümümüzde (normal ve soğuk) her iki mağaza üzerinde de kullanılabilir. Sorgu URL 'SI parametreleri sorgunun yürütülmesi gereken [Depo türünü](/rest/api/time-series-insights/dataaccessgen2/query/execute#uri-parameters) belirtmek için kullanılır:
+Bu API 'Ler, çok katmanlı depolama çözümümüzde (normal ve soğuk) her iki mağaza üzerinde de kullanılabilir. 
 
 * [Olayları alma API 'si](/rest/api/time-series-insights/dataaccessgen2/query/execute#getevents): ham olayların ve ilişkili olay zaman damgalarının, kaynak sağlayıcıdan Azure Time Series Insights Gen2 içinde kaydedildikleri şekilde sorgu ve alma imkanı sunar. Bu API, belirli bir zaman serisi KIMLIĞI ve arama kapsamı için ham olayların alınmasına izin verir. Bu API, seçilen giriş için tüm yanıt veri kümesini almak üzere sayfalandırmayı destekler.
 
   > [!IMPORTANT]
-
-  > * [JSON düzleştirme ve kaçış kuralları üzerinde yapılan değişikliklerin](./ingestion-rules-update.md)bir parçası olarak, diziler **dinamik** tür olarak depolanır. Bu tür olarak depolanan yük özelliklerine **yalnızca olayları al API 'si aracılığıyla erişilebilir**.
+  > [JSON düzleştirme ve kaçış kuralları üzerinde yapılan değişikliklerin](./ingestion-rules-update.md)bir parçası olarak, diziler **dinamik** tür olarak depolanır. Bu tür olarak depolanan yük özelliklerine **yalnızca olayları al API 'si aracılığıyla erişilebilir**.
 
 * [SERI API al](/rest/api/time-series-insights/dataaccessgen2/query/execute#getseries): ham olaylarda değişkenler tarafından tanımlanan hesaplamalar uygulanarak, hesaplanan değerlerin ve ilişkili olay zaman damgalarının sorgu ve alınmasına izin vermez. Bu değişkenler, zaman serisi modelinde tanımlanabilir ya da sorguda satır içi olarak sağlanmış olabilir. Bu API, seçilen giriş için tüm yanıt veri kümesini almak üzere sayfalandırmayı destekler.
 
@@ -69,6 +68,16 @@ Bu API 'Ler, çok katmanlı depolama çözümümüzde (normal ve soğuk) her iki
   Belirtilen arama kapsamı ve aralığı için bu API, bir zaman serisi KIMLIĞI için değişken başına toplam bir yanıt döndürür. Yanıt veri kümesindeki aralıkların sayısı, zaman aralığı (UNIX dönemi-1 Ocak 1970 ' den beri geçen milisaniye sayısı) ve onay işaretlerini sorguda belirtilen Aralık aralığı boyutuna bölerek hesaplanır.
 
   Yanıt kümesinde döndürülen zaman damgaları, aralıktan örneklenmiş olayları değil, sol Aralık sınırlardır.
+
+
+### <a name="selecting-store-type"></a>Mağaza türü seçiliyor
+
+Yukarıdaki API 'Ler tek bir çağrıda yalnızca iki depolama türünden birine (soğuk veya sıcak) karşı çalıştırılabilir. Sorgu URL 'SI parametreleri, sorgunun üzerinde yürütülmesi gereken [Depo türünü](/rest/api/time-series-insights/dataaccessgen2/query/execute#uri-parameters) belirtmek için kullanılır. 
+
+Hiçbir parametre belirtilmemişse, sorgu varsayılan olarak soğuk depoda yürütülür. Bir sorgu hem soğuk hem de ısınma mağazasındaki bir zaman aralığına yayılmışsa, sıcak mağaza yalnızca kısmi veri içermesinden bu yana, sorguyu en iyi deneyim için soğuk depoya yönlendirmenize önerilir. 
+
+[Azure Time Series Insights Gezgini](./concepts-ux-panels.md) ve [Power BI Bağlayıcısı](./how-to-connect-power-bi.md) yukarıdaki API 'lere çağrılar yapar ve ilgili yerlerde otomatik olarak doğru stoyeniden yazma parametresini seçer. 
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

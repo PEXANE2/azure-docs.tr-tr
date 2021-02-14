@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 10/14/2020
 ms.author: alkohli
-ms.openlocfilehash: f7d81d14ca561e6d4d897994088b2fc01b2c7701
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 891885dce52ee57fa163bb71b427591156091651
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96468046"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100362866"
 ---
 # <a name="security-and-data-protection-for-azure-stack-edge-pro-r-and-azure-stack-edge-mini-r"></a>Azure Stack Edge Pro R ve Azure Stack Edge Mini R için güvenlik ve veri koruması
 
-[!INCLUDE [applies-to-r-skus](../../includes/azure-stack-edge-applies-to-r-sku.md)]
+[!INCLUDE [applies-to-pro-r-and-mini-r--skus](../../includes/azure-stack-edge-applies-to-pro-r-mini-r-sku.md)]
 
 Güvenlik, özellikle de teknoloji gizli veya özel verilerle kullanılıyorsa, yeni bir teknolojiyi benimseiyorsanız önemli bir konudur. Azure Stack Edge Pro R ve Azure Stack Edge Mini R, yalnızca yetkili varlıkların verilerinizi görüntüleye, değiştirmesini veya silmesini sağlamanıza yardımcı olur.
 
@@ -66,7 +66,7 @@ Daha fazla bilgi için bkz. [etkinleştirme anahtarı edinme](azure-stack-edge-p
 
 Parolalar yalnızca yetkili kullanıcıların verilerinize erişebilmesini güvence altına alabilir. Azure Stack Edge Pro R cihazlarının ön yüklemesi kilitli durumda.
 
-Şunları yapabilirsiniz:
+Seçenekleriniz şunlardır:
 
 - Cihazın yerel Web Kullanıcı arabirimine bir tarayıcı aracılığıyla bağlanın ve ardından cihazda oturum açmak için bir parola sağlayın.
 - HTTP üzerinden cihaz PowerShell arabirimine uzaktan bağlanın. Uzaktan yönetim varsayılan olarak açıktır. Uzaktan Yönetim Ayrıca, kullanıcıların yapabileceklerinizi sınırlandırmak için yeterli yönetim (JEA) kullanmak üzere yapılandırılmıştır. Daha sonra cihazda oturum açmak için cihaz parolasını sağlayabilirsiniz. Daha fazla bilgi için bkz. [cihazınıza uzaktan bağlanma](azure-stack-edge-gpu-connect-powershell-interface.md).

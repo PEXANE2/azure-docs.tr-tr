@@ -8,12 +8,12 @@ services: time-series-insights
 ms.service: time-series-insights
 ms.topic: conceptual
 ms.date: 12/14/2020
-ms.openlocfilehash: b4ed5a419df97f98b883a07825184122945e092e
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 38403eed56dc718afdfce13375dd2662beb13eb6
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879570"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100374176"
 ---
 # <a name="visualize-data-from-azure-time-series-insights-in-power-bi"></a>Power BI Azure Time Series Insights verileri görselleştirme
 
@@ -37,9 +37,7 @@ Lütfen [ortam erişim ilkelerini](./concepts-access-policies.md) gözden geçir
 > [!IMPORTANT]
 > * [Power BI Desktop](https://powerbi.microsoft.com/downloads/)en son sürümünü indirip yükleyin. Bu makaledeki adımlarla birlikte takip etmek için, Power BI Desktop yüklü olan en azından Aralık 2020 (2.88.321.0) sürümüne sahip olduğunuzdan emin olun. 
 
-## <a name="connect-data-from-azure-time-series-insights-to-power-bi"></a>Azure Time Series Insights verileri Power BI 'ye bağlama
-
-### <a name="1-export-data-into-power-bi-desktop"></a>1. verileri Power BI masaüstüne aktarın
+## <a name="export-data-from-azure-time-series-insights-into-power-bi-desktop"></a>Azure Time Series Insights verileri Power BI masaüstüne aktarma
 
 Başlamak için:
 
@@ -53,37 +51,36 @@ Başlamak için:
    * **Veri biçimi**: Power BI **Toplam verileri** veya **Ham olayları** dışarı aktarmak isteyip istemediğinizi seçin. 
 
        > [!NOTE]
-       > * Ham olayları dışa aktardığınızda, bu verileri daha sonra Power BI içinde toplayabilirsiniz. Ancak, toplu verileri dışa aktardığınızda Power BI ham verilere döndüremezsiniz. 
-       > * Ham olay düzeyi verileri için 250.000 olay sayısı sınırı vardır.
+       > Ham olayları dışa aktardığınızda, bu verileri daha sonra Power BI içinde toplayabilirsiniz. Ancak, toplu verileri dışa aktardığınızda Power BI ham verilere döndüremezsiniz. Ham olay düzeyi verileri için 250.000 olay sayısı sınırı vardır.
 
    * **Zaman aralığı**: Power BI ' de **sabit** bir zaman aralığı veya **en son** verileri görmek isteyip istemediğinizi seçin. Sabit zaman aralığının seçilmesi, yaptığınız arama alanındaki verilerin Power BI aktarılacağı anlamına gelir. En son zaman aralığını seçmek, Power BI seçtiğiniz arama kapsamı için en son verileri alacak anlamına gelir (örneğin, 1 saatlik veri Grafikleriniz ve "en son" ayarını seçerseniz Power BI bağlayıcı her zaman en son 1 saatlik veri için sorgular yapar.)
   
-   * **Mağaza türü**: seçtiğiniz sorguyu **yarı depoya** veya **soğuk depoya** karşı çalıştırmak isteyip istemediğinizi seçin. 
+   * **Mağaza türü**: seçtiğiniz sorguyu **yarı depoya** veya **soğuk depoya** karşı çalıştırmak isteyip istemediğinizi seçin. Hem soğuk hem de ısınma mağazalarını kapsayan bir Aralık seçtiyseniz, sıcak mağaza yalnızca en son verileri içermesinden, sorgunuz varsayılan olarak soğuk depoya yönlendirilir. Stoyeniden yazma parametresinin el ile değiştirilmesine izin verilir, ancak en iyi deneyim için önerilmez. 
 
-    > [!TIP]
-    > * Azure Time Series Insights gezgin, dışarı aktarmayı seçtiğiniz verilere bağlı olarak önerilen parametreleri otomatik olarak seçer. 
+    > [!TIP] 
+    > Azure Time Series Insights Gezgini, dışarı aktarmayı seçtiğiniz verilerin bulunduğu arama aralığına ve görünümüne bağlı olarak önerilen parametreleri otomatik olarak seçer. 
 
 1. Ayarlarınızı yapılandırdıktan sonra **sorguyu panoya kopyala**' yı seçin.
 
     [![Azure Time Series Insights Explorer 'ın kalıcı olarak dışarı aktarılması](media/how-to-connect-power-bi/choose-explorer-parameters.jpg)](media/how-to-connect-power-bi/choose-explorer-parameters.jpg#lightbox)
 
-2. Power BI Desktop'ı başlatın.
+1. Power BI Desktop'ı başlatın.
    
-3. **Giriş** sekmesinde Power BI Desktop ' de, sol üst köşedeki **verileri al** ' ı seçin ve daha sonra **daha fazlasını** yapın.
+1. **Giriş** sekmesinde Power BI Desktop ' de, sol üst köşedeki **verileri al** ' ı seçin ve daha sonra **daha fazlasını** yapın.
 
     [![Power BI’da verileri alma](media/how-to-connect-power-bi/get-data-power-bi.jpg)](media/how-to-connect-power-bi/get-data-power-bi.jpg#lightbox)
 
-4. **Azure Time Series Insights** arayın, **Azure Time Series Insights (Beta)** öğesini seçin ve sonra **bağlanın**.
+1. **Azure Time Series Insights** arayın, **Azure Time Series Insights (Beta)** öğesini seçin ve sonra **bağlanın**.
 
     [![Power BI Azure Time Series Insights bağlama](media/how-to-connect-power-bi/select-tsi-connector.jpg)](media/how-to-connect-power-bi/select-tsi-connector.jpg#lightbox)
 
     Alternatif olarak, **Azure** sekmesine gidin, **Azure Time Series Insights (Beta)** öğesini seçin ve sonra **bağlantısını** yapın.
 
-5. Azure Time Series Insights Gezgini ' nden kopyaladığınız sorguyu **özel sorgu** alanına yapıştırın ve sonra **Tamam**' a basın.
+1. Azure Time Series Insights Gezgini ' nden kopyaladığınız sorguyu **özel sorgu** alanına yapıştırın ve sonra **Tamam**' a basın.
 
     [![Özel sorguyu yapıştırın ve Tamam ' ı seçin.](media/how-to-connect-power-bi/custom-query-load.png)](media/how-to-connect-power-bi/custom-query-load.png#lightbox)  
 
-6.  Veri tablosu şimdi yüklenir. Power BI yüklemek için **Yükle** ' ye basın. Verilerde herhangi bir dönüştürme yapmak istiyorsanız, **verileri Dönüştür**' e tıklayarak bunu şimdi yapabilirsiniz. Ayrıca, yükledikten sonra verilerinizi dönüştürebilirsiniz.
+1.  Veri tablosu şimdi yüklenir. Power BI yüklemek için **Yükle** ' ye basın. Verilerde herhangi bir dönüştürme yapmak istiyorsanız, **verileri Dönüştür**' e tıklayarak bunu şimdi yapabilirsiniz. Ayrıca, yükledikten sonra verilerinizi dönüştürebilirsiniz.
 
     [![Tablodaki verileri gözden geçirin ve Yükle ' yi seçin.](media/how-to-connect-power-bi/review-the-loaded-data-table.png)](media/how-to-connect-power-bi/review-the-loaded-data-table.png#lightbox)  
 

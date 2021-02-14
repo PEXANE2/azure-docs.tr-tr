@@ -1,22 +1,17 @@
 ---
 title: Azure Data Factory kullanarak Phoenix 'ten veri kopyalama
 description: Azure Data Factory işlem hattındaki kopyalama etkinliğini kullanarak, Phoenix 'ten desteklenen havuz veri depolarına veri kopyalamayı öğrenin.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: d236b9f8800b644a0aa51597d01df1c1442475ac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b0919e1da93f0cf0a5d27e541493b724d2fa5f0a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81416766"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100374329"
 ---
 # <a name="copy-data-from-phoenix-using-azure-data-factory"></a>Azure Data Factory kullanarak Phoenix 'ten veri kopyalama 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -38,7 +33,7 @@ Azure Data Factory, bağlantıyı etkinleştirmek için yerleşik bir sürücü 
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
-## <a name="getting-started"></a>Başlarken
+## <a name="getting-started"></a>Kullanmaya başlama
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -50,19 +45,19 @@ Phoenix bağlantılı hizmeti için aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Type özelliği: **Phoenix** olarak ayarlanmalıdır | Evet |
-| konak | Phoenix sunucusunun IP adresi veya ana bilgisayar adı. (yani, 192.168.222.160)  | Evet |
-| port | Phoenix sunucusunun istemci bağlantılarını dinlemek için kullandığı TCP bağlantı noktası. Varsayılan değer 8765 ' dir. Azure Hdınsights 'e bağlanıyorsanız, bağlantı noktasını 443 olarak belirtin. | Hayır |
-| httpPath | Phoenix sunucusuna karşılık gelen kısmi URL. (yani,/Gateway/Sandbox/Phoenix/Version). `/hbasephoenix0`Hdınsights kümesi kullanıp kullanın belirtin.  | Hayır |
-| authenticationType | Phoenix sunucusuna bağlanmak için kullanılan kimlik doğrulama mekanizması. <br/>İzin verilen değerler: **Anonymous**, **userNameAndPassWord**, **WindowsAzureHDInsightService** | Evet |
-| username | Phoenix sunucusuna bağlanmak için kullanılan Kullanıcı adı.  | Hayır |
-| password | Kullanıcı adına karşılık gelen parola. Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | Hayır |
-| enableSsl | Sunucu bağlantılarının TLS kullanılarak şifrelenip şifrelenmediğini belirtir. Varsayılan değer false'tur.  | Hayır |
-| trustedCertPath | TLS üzerinden bağlanılırken sunucuyu doğrulamak için güvenilir CA sertifikaları içeren. ped dosyasının tam yolu. Bu özellik yalnızca, şirket içinde barındırılan IR 'de TLS kullanılırken ayarlanabilir. Varsayılan değer, IR ile birlikte yüklenen CAcert. Pez dosyasıdır.  | Hayır |
-| useSystemTrustStore | Sistem güven deposundan veya belirtilen ped dosyasından bir CA sertifikası kullanılıp kullanılmayacağını belirtir. Varsayılan değer false'tur.  | Hayır |
-| Allowwhostnamecnuyuşmazlığını | TLS üzerinden bağlanılırken, CA tarafından verilen bir TLS/SSL sertifika adının, sunucunun ana bilgisayar adıyla eşleşmesi gerekip gerekmediğini belirtir. Varsayılan değer false'tur.  | Hayır |
-| allowSelfSignedServerCert | Sunucudan kendinden imzalı sertifikalara izin verilip verilmeyeceğini belirtir. Varsayılan değer false'tur.  | Hayır |
-| connectVia | Veri deposuna bağlanmak için kullanılacak [Integration Runtime](concepts-integration-runtime.md) . [Önkoşullar](#prerequisites) bölümünden daha fazla bilgi edinin. Belirtilmemişse, varsayılan Azure Integration Runtime kullanır. |Hayır |
+| tür | Type özelliği: **Phoenix** olarak ayarlanmalıdır | Yes |
+| konak | Phoenix sunucusunun IP adresi veya ana bilgisayar adı. (yani, 192.168.222.160)  | Yes |
+| port | Phoenix sunucusunun istemci bağlantılarını dinlemek için kullandığı TCP bağlantı noktası. Varsayılan değer 8765 ' dir. Azure Hdınsights 'e bağlanıyorsanız, bağlantı noktasını 443 olarak belirtin. | No |
+| httpPath | Phoenix sunucusuna karşılık gelen kısmi URL. (yani,/Gateway/Sandbox/Phoenix/Version). `/hbasephoenix0`Hdınsights kümesi kullanıp kullanın belirtin.  | No |
+| authenticationType | Phoenix sunucusuna bağlanmak için kullanılan kimlik doğrulama mekanizması. <br/>İzin verilen değerler: **Anonymous**, **userNameAndPassWord**, **WindowsAzureHDInsightService** | Yes |
+| username | Phoenix sunucusuna bağlanmak için kullanılan Kullanıcı adı.  | No |
+| password | Kullanıcı adına karşılık gelen parola. Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | No |
+| enableSsl | Sunucu bağlantılarının TLS kullanılarak şifrelenip şifrelenmediğini belirtir. Varsayılan değer false'tur.  | No |
+| trustedCertPath | TLS üzerinden bağlanılırken sunucuyu doğrulamak için güvenilir CA sertifikaları içeren. ped dosyasının tam yolu. Bu özellik yalnızca, şirket içinde barındırılan IR 'de TLS kullanılırken ayarlanabilir. Varsayılan değer, IR ile birlikte yüklenen CAcert. Pez dosyasıdır.  | No |
+| useSystemTrustStore | Sistem güven deposundan veya belirtilen ped dosyasından bir CA sertifikası kullanılıp kullanılmayacağını belirtir. Varsayılan değer false'tur.  | No |
+| Allowwhostnamecnuyuşmazlığını | TLS üzerinden bağlanılırken, CA tarafından verilen bir TLS/SSL sertifika adının, sunucunun ana bilgisayar adıyla eşleşmesi gerekip gerekmediğini belirtir. Varsayılan değer false'tur.  | No |
+| allowSelfSignedServerCert | Sunucudan kendinden imzalı sertifikalara izin verilip verilmeyeceğini belirtir. Varsayılan değer false'tur.  | No |
+| connectVia | Veri deposuna bağlanmak için kullanılacak [Integration Runtime](concepts-integration-runtime.md) . [Önkoşullar](#prerequisites) bölümünden daha fazla bilgi edinin. Belirtilmemişse, varsayılan Azure Integration Runtime kullanır. |No |
 
 >[!NOTE]
 >Kümeniz, HDInsight gibi yapışkan oturumu desteklemiyorsa, http yolu ayarının sonunda doğrudan düğüm dizini ekleyin, örneğin `/hbasephoenix0` yerine belirtin `/hbasephoenix` .
@@ -93,11 +88,11 @@ Phoenix bağlantılı hizmeti için aşağıdaki özellikler desteklenir:
 
 Veri kümelerini tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi için bkz. [veri kümeleri](concepts-datasets-linked-services.md) makalesi. Bu bölüm, Phoenix veri kümesi tarafından desteklenen özelliklerin bir listesini sağlar.
 
-Phoenix 'ten veri kopyalamak için, veri kümesinin Type özelliğini **PhoenixObject**olarak ayarlayın. Aşağıdaki özellikler desteklenir:
+Phoenix 'ten veri kopyalamak için, veri kümesinin Type özelliğini **PhoenixObject** olarak ayarlayın. Aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | DataSet 'in Type özelliği: **PhoenixObject** olarak ayarlanmalıdır | Evet |
+| tür | DataSet 'in Type özelliği: **PhoenixObject** olarak ayarlanmalıdır | Yes |
 | schema | Şemanın adı. |Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse)  |
 | tablo | Tablonun adı. |Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse)  |
 | tableName | Şemanın bulunduğu tablonun adı. Bu özellik geriye dönük uyumluluk için desteklenir. `schema` `table` Yeni iş yükü için ve kullanın. | Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse) |
@@ -125,11 +120,11 @@ Etkinlikleri tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi iç
 
 ### <a name="phoenix-as-source"></a>Kaynak olarak Phoenix
 
-Phoenix 'ten veri kopyalamak için kopyalama etkinliğindeki kaynak türünü **PhoenixSource**olarak ayarlayın. Aşağıdaki özellikler, etkinlik **kaynağını** kopyalama bölümünde desteklenir:
+Phoenix 'ten veri kopyalamak için kopyalama etkinliğindeki kaynak türünü **PhoenixSource** olarak ayarlayın. Aşağıdaki özellikler, etkinlik **kaynağını** kopyalama bölümünde desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Kopyalama etkinliği kaynağının Type özelliği: **PhoenixSource** olarak ayarlanmalıdır | Evet |
+| tür | Kopyalama etkinliği kaynağının Type özelliği: **PhoenixSource** olarak ayarlanmalıdır | Yes |
 | sorgu | Verileri okumak için özel SQL sorgusunu kullanın. Örneğin: `"SELECT * FROM MyTable"`. | Hayır (veri kümesinde "tableName" belirtilmişse) |
 
 **Örnek:**

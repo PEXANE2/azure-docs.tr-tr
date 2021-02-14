@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 08/28/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40
-ms.openlocfilehash: 17cff66d3f8c816099bcc61322a1d331bfe58872
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.openlocfilehash: 03ffea7688207b56a683d3afcbe49bf95ea00708
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99226313"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100103133"
 ---
 # <a name="tutorial-add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>Öğretici: Microsoft 'a bir ASP.NET Web uygulamasına oturum açma ekleme
 
@@ -48,7 +48,7 @@ Oluşturduğunuz örnek uygulama, kullanıcının oturum açma düğmesiyle kiml
 
 Bu kılavuz aşağıdaki kitaplıkları kullanır:
 
-|Kitaplık|Açıklama|
+|Kitaplık|Description|
 |---|---|
 |[Microsoft.Owin.Security.OpenIdConnect](https://www.nuget.org/packages/Microsoft.Owin.Security.OpenIdConnect/)|Uygulamanın kimlik doğrulaması için OpenIdConnect kullanmasını sağlayan ara yazılım|
 |[Microsoft.Owin.Security.Cookies](https://www.nuget.org/packages/Microsoft.Owin.Security.Cookies)|Bir uygulamanın tanımlama bilgilerini kullanarak bir Kullanıcı oturumu korumasına olanak tanıyan ara yazılım|
@@ -187,7 +187,7 @@ Oturum açma ve oturum kapatma yöntemlerini kullanıma sunmak üzere yeni bir d
 
 1.  **Denetleyiciler** klasörüne sağ tıklayın ve denetleyici **Ekle**' yi seçin  >  .
 2.  **MVC (.NET sürümü) Denetleyici – Boş** girişini seçin.
-3.  **Ekle**’yi seçin.
+3.  **Add (Ekle)** seçeneğini belirleyin.
 4.  **HomeController** olarak adlandırın ve **Ekle**' yi seçin.
 5.  Sınıfa OWıN başvuruları ekleyin:
 
@@ -279,7 +279,7 @@ Bu denetleyici bir denetleyiciyi koruma amacıyla `[Authorize]` özniteliğini k
 
 1.  **Denetleyiciler** klasörüne sağ tıklayın ve ardından denetleyici **Ekle**' yi seçin  >  .
 2.  **MVC {sürüm} Denetleyici – Boş** girişini seçin.
-3.  **Ekle**’yi seçin.
+3.  **Add (Ekle)** seçeneğini belirleyin.
 4.  **ClaimsController** olarak adlandırın.
 5.  Denetleyici sınıfınızın kodunu aşağıdaki kodla değiştirin. Bu `[Authorize]` özniteliği sınıfına ekler:
 
@@ -361,7 +361,7 @@ Uygulamanızı kaydetmek ve uygulama kayıt bilgilerinizi çözümünüze ekleme
 
 Uygulamanızı hızlı bir şekilde kaydetmek için şu adımları izleyin:
 
-1. <a href="https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/AspNetWebAppQuickstartPage/sourceType/docs" target="_blank">Azure portal uygulama kayıtları <span class="docon docon-navigate-external x-hidden-focus"></span> </a> hızlı başlangıç deneyimine gidin.  
+1. <a href="https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/AspNetWebAppQuickstartPage/sourceType/docs" target="_blank">Azure portal uygulama kayıtları</a> hızlı başlangıç deneyimine gidin.  
 1. Uygulamanız için bir ad girin ve **Kaydet**'i seçin.
 1. Yeni uygulamanızı tek bir tıklama ile indirip otomatik olarak yapılandırmak için yönergeleri izleyin.
 
@@ -375,7 +375,7 @@ Uygulamanızı kaydetmek ve uygulama kayıt bilgilerinizi çözümünüze el ile
    1. Visual Studio 'da projeye sağ tıklayın, **Özellikler**' i seçin ve ardından **Web** sekmesini seçin. **Sunucular** bölümünde, **proje URL** ayarını **SSL URL 'si** olarak değiştirin.
    1. SSL URL 'sini kopyalayın. Bu URL 'YI, sonraki adımda, kayıt portalının yeniden yönlendirme URI 'leri listesindeki yeniden yönlendirme URI 'Leri listesine ekleyeceksiniz.<br/><br/>![Proje özellikleri](media/active-directory-develop-guidedsetup-aspnetwebapp-configure/vsprojectproperties.png)<br />
    
-1. <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>oturum açın.
+1. <a href="https://portal.azure.com/" target="_blank">Azure portalında</a> oturum açın.
 1. Birden fazla kiracıya erişiminiz varsa, uygulamayı kaydetmek istediğiniz kiracıyı seçmek için üst menüdeki **Dizin + abonelik** filtresini kullanın :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: .
 1. **Azure Active Directory**'yi bulun ve seçin.
 1. **Yönet** altında   >  **Yeni kayıt** uygulama kayıtları ' yi seçin.

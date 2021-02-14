@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/16/2019
 ms.author: jeedes
-ms.openlocfilehash: bec931309cbd6bc8bfa96ba3e054d06336c031e1
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: f0fafa5c0cc2e0b1bf0f4e11db3265824feb5296
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92459552"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100374719"
 ---
 # <a name="tutorial-integrate-jfrog-artifactory-with-azure-active-directory"></a>Öğretici: JFrog Artifactory 'yi Azure Active Directory tümleştirme
 
@@ -28,7 +28,7 @@ Bu öğreticide, JFrog Artifactory 'yi Azure Active Directory (Azure AD) ile tü
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -56,7 +56,7 @@ JFrog Artifactory 'nin tümleştirmesini Azure AD 'ye göre yapılandırmak içi
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak JFrog Artifactory Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve JFrog Artifactory içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak JFrog Artifactory Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve JFrog Artifactory içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu JFrog Artifactory ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -81,11 +81,16 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     a. **Tanımlayıcı** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`<servername>.jfrog.io`
 
-    b. **Yanıt URL 'si** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:`https://<servername>.jfrog.io/<servername>/webapp/saml/loginResponse`
+    b. **Yanıt URL 'si** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:
+    
+    - Artifactory 6. x için: `https://<servername>.jfrog.io/artifactory/webapp/saml/loginResponse`
+    - Artifactory 7. x için: `https://<servername>.jfrog.io/<servername>/webapp/saml/loginResponse`
 
 1. Uygulamayı **SP** tarafından başlatılan modda yapılandırmak Istiyorsanız **ek URL 'ler ayarla** ' ya tıklayın ve aşağıdaki adımı gerçekleştirin:
 
-    **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<servername>.jfrog.io/<servername>/webapp/`
+    **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:
+    - Artifactory 6. x için: `https://<servername>.jfrog.io/<servername>/webapp/`
+    - Artifactory 7. x için: `https://<servername>.jfrog.io/ui/login`
 
     > [!NOTE]
     > Bu değerler gerçek değildir. Bu değerleri gerçek tanımlayıcı, yanıt URL 'SI ve oturum açma URL 'SI ile güncelleştirin. Bu değerleri almak için [JFrog Artifactory istemci destek ekibine](https://support.jfrog.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
@@ -94,9 +99,9 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     ![Ekran görüntüsü, düzenleme denetimi olarak adlandırılan Kullanıcı özniteliklerini gösterir.](common/edit-attribute.png)
 
-1. Yukarıdakine ek olarak, JFrog Artifactory uygulaması, SAML yanıtına daha fazla özniteliğin geri geçirilmesini bekler. **Grup talepleri (Önizleme)** Iletişim kutusundaki **Kullanıcı öznitelikleri & talepler** bölümünde aşağıdaki adımları uygulayın:
+1. Yukarıdaki ' a ek olarak, JFrog Artifactory, bir dizi ek özniteliğin SAML yanıtına geri geçirilmesini bekler. **Grup talepleri (Önizleme)** Iletişim kutusundaki **Kullanıcı öznitelikleri & talepler** bölümünde aşağıdaki adımları uygulayın:
 
-    a. **Talepte döndürülen gruplar ' ın**yanındaki **kaleme** tıklayın.
+    a. **Talepte döndürülen gruplar ' ın** yanındaki **kaleme** tıklayın.
 
     ![Ekran görüntüsü, düzenleme simgesi seçili olan talepleri & Kullanıcı özniteliklerini gösterir.](./media/jfrog-artifactory-tutorial/config04.png)
 
@@ -106,17 +111,20 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     c. **Kaydet**’e tıklayın.
 
-4. **SAML Ile tekli Sign-On ayarlama** sayfasında, **SAML Imzalama Sertifikası** bölümünde **sertifika (ham)** bulun ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
+4. **SAML Ile tekli Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, sertifikayı Indirip bilgisayarınıza kaydetmek Için sertifikayı bulun **(base64)** ve **İndir** ' i seçin.
 
-    ![Sertifika indirme bağlantısı](common/certificateraw.png)
+    ![Sertifika indirme bağlantısı](./media/jfrog-artifactory-tutorial/certificate-base.png)
 
-6. **JFrog Artifactory 'Yi ayarla** bölümünde, gereksiniminize göre uygun URL 'leri kopyalayın.
+6. Artifactory 'yi (SAML hizmeti sağlayıcısı adı) ' tanımlayıcı ' alanıyla yapılandırın (bkz. 4. adım). **JFrog Artifactory 'Yi ayarla** bölümünde, gereksiniminize göre uygun URL 'leri kopyalayın.
+
+   - Artifactory 6. x için: `https://<servername>.jfrog.io/artifactory/webapp/saml/loginResponse` 
+   - Artifactory 7. x için: `https://<servername>.jfrog.io/<servername>/webapp/saml/loginResponse`
 
     ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
 
 ### <a name="configure-jfrog-artifactory-sso"></a>JFrog Artifactory SSO 'yu yapılandırma
 
-**JFrog Artifactory** tarafında çoklu oturum açmayı yapılandırmak için, indirilen **sertifikayı (ham)** ve Azure Portal ' den [JFrog Artifactory destek ekibine](https://support.jfrog.com)doğru kopyalanmış URL 'leri göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
+**JFrog Artifactory** tarafında çoklu oturum açmayı yapılandırmak için ihtiyaç duyduğunuz her şey, SAML yapılandırması ekranındaki Artifactory Yöneticisi tarafından yapılandırılabilir.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
