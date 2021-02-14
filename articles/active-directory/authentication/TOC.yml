@@ -154,6 +154,8 @@
           href: howto-password-ban-bad-on-premises-faq.md
         - name: Aracı sürümü geçmişi
           href: howto-password-ban-bad-on-premises-agent-versions.md
+    - name: Geçici erişim geçişi (Önizleme) kullanın
+      href: howto-authentication-temporary-access-pass.md
     - name: SMS tabanlı kimlik doğrulaması kullan
       href: howto-authentication-sms-signin.md
     - name: E-posta adresi oturum açma kullan

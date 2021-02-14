@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 12/08/2020
 ms.author: reyandap
 ms.custom: references_pricing
-ms.openlocfilehash: 8ced9bb33be341d35904967092414676a6ffe3ac
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 13451291544f704000ab61d41ed5014fa69298e4
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905545"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100517697"
 ---
 # <a name="about-virtual-wan-pricing"></a>Sanal WAN fiyatlandırması hakkında
 
@@ -23,14 +23,13 @@ Azure sanal WAN, birden çok ağ ve güvenlik hizmetini birleştirilmiş bir çe
 Sanal WAN 'daki her hizmet fiyatlandırılır. Bu nedenle, tek bir fiyat önermesi sanal WAN için geçerli değildir. [Azure Fiyatlandırma Hesaplayıcı](https://azure.microsoft.com/pricing/calculator/) , sanal bir WAN 'da sağlanan hizmetleri temel alan maliyeti türetmeye yönelik bir mekanizma sağlar. Bu makalede, sanal WAN fiyatlandırması hakkında sık sorulan sorular ele alınmaktadır.
 
 >[!NOTE]
->Geçerli fiyatlandırma bilgileri için bkz. [sanal WAN fiyatlandırması](https://azure.microsoft.com/pricing/details/virtual-wan/).
->
+>Geçerli fiyatlandırma bilgileri için bkz. [sanal WAN fiyatlandırması](https://azure.microsoft.com/pricing/details/virtual-wan/). Sanal WAN fiyatlandırma sayfasında, Inter-Region (Intra/ınkıtal) [Azure veri aktarımı ücretlerine](https://azure.microsoft.com/pricing/details/bandwidth/)tabi olduğu için, hub tabanlı (hub-hub) ücretleri gösterilmez.
 
 ## <a name="common-pricing-questions"></a><a name="questions"></a>Genel fiyatlandırma soruları
 
 ### <a name="what-is-a-scale-unit"></a><a name="scale-unit"></a>Ölçek birimi nedir?
 
-**Ölçek birimi** , bir sanal hub 'daki siteden sıteye (S2S), noktadan sıteye (P2S) ve EXPRESSROUTE (er) için toplam kapasiteye yönelik birimi sağlar. Örnek:
+**Ölçek birimi** , bir sanal hub 'daki siteden sıteye (S2S), noktadan sıteye (P2S) ve EXPRESSROUTE (er) için toplam kapasiteye yönelik birimi sağlar. Örneğin:
 
 * **1 S2S VPN ölçek birimi** , bir sanal hub maliyetlendirme $0.361/saat içinde toplam 500 Mbps VPN Gateway (çift örnek esneklik için dağıtılır) kapasitesini belirtir.
 * **1 er ölçek birimi** , sanal hub maliyetlendirme $0.42/HR içinde toplam 2 Gbps er ağ geçidi gerektirir.
@@ -38,7 +37,7 @@ Sanal WAN 'daki her hizmet fiyatlandırılır. Bu nedenle, tek bir fiyat önerme
 
 ### <a name="what-is-a-connection-unit"></a><a name="connection-unit"></a>Bağlantı birimi nedir?
 
-Bir **bağlantı birimi** , Azure ağ geçitlerine bağlanan şirket Içi/Microsoft dışı uç nokta için geçerlidir. Siteden siteye VPN için bu değer dallar anlamına gelir. Kullanıcı VPN (Noktadan siteye) için bu değer uzak kullanıcıları belirtir. ExpressRoute için bu değer ExpressRoute bağlantı hattı bağlantıları anlamına gelir.<br>Örnek:
+Bir **bağlantı birimi** , Azure ağ geçitlerine bağlanan şirket Içi/Microsoft dışı uç nokta için geçerlidir. Siteden siteye VPN için bu değer dallar anlamına gelir. Kullanıcı VPN (Noktadan siteye) için bu değer uzak kullanıcıları belirtir. ExpressRoute için bu değer ExpressRoute bağlantı hattı bağlantıları anlamına gelir.<br>Örneğin:
 
 * Bir şube bağlantısı sanal hub maliyetlerinde Azure VPN 'ye bağlanıyor $0,05/hr. Bu nedenle 100 şube bağlantısı, Azure sanal hub 'a bağlanan şube bağlantıları maliyetlidir * 100/hr.
 

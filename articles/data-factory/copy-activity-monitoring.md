@@ -1,22 +1,17 @@
 ---
 title: Kopyalama etkinliğini izleme
 description: Azure Data Factory kopyalama etkinliği yürütmesini izleme hakkında bilgi edinin.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.author: jingwang
-ms.openlocfilehash: 92119709aa260f3180c503a77064f6e80dece6e6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 58860e404dff3030e51ff2977eaee081a15247f7
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89440618"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100388303"
 ---
 # <a name="monitor-copy-activity"></a>Kopyalama etkinliğini izleme
 
@@ -48,9 +43,9 @@ En son **yürütme ayrıntıları ve süreleri** , kopyalama etkinliğinizin üz
 
 ## <a name="monitor-programmatically"></a>Program aracılığıyla izleme
 
-Kopyalama etkinliği yürütme ayrıntıları ve performans özellikleri, **Copy Activity run result**  >  Kullanıcı arabirimi izleme görünümünü oluşturmak için kullanılan etkinlik çalıştırma sonucu**çıktısını** Kopyala bölümünde de döndürülür. Aşağıda, döndürülebilecek özelliklerin tamamı listelenmiştir. Yalnızca kopyalama senaryonuz için geçerli olan özellikleri görürsünüz. Etkinlik çalışmalarının genel olarak nasıl izleneceği hakkında daha fazla bilgi için bkz. [programlı bir Azure Data Factory 'yi izleme](monitor-programmatically.md).
+Kopyalama etkinliği yürütme ayrıntıları ve performans özellikleri,   >  Kullanıcı arabirimi izleme görünümünü oluşturmak için kullanılan etkinlik çalıştırma sonucu **çıktısını** Kopyala bölümünde de döndürülür. Aşağıda, döndürülebilecek özelliklerin tamamı listelenmiştir. Yalnızca kopyalama senaryonuz için geçerli olan özellikleri görürsünüz. Etkinlik çalışmalarının genel olarak nasıl izleneceği hakkında daha fazla bilgi için bkz. [programlı bir Azure Data Factory 'yi izleme](monitor-programmatically.md).
 
-| Özellik adı  | Açıklama | Çıkışdaki birim |
+| Özellik adı  | Description | Çıkışdaki birim |
 |:--- |:--- |:--- |
 | dataRead | Kaynaktaki okunan gerçek veri miktarı. | Int64 değeri, bayt cinsinden |
 | Veri yazıldı | Havuza yazılan/havuza kaydedilen verilerin gerçek bağlaması. Boyut, `dataRead` her veri deposunun verileri nasıl depoladığını birbirleriyle ilişkilendiren şekilde boyutundan farklı olabilir. | Int64 değeri, bayt cinsinden |
@@ -67,7 +62,7 @@ Kopyalama etkinliği yürütme ayrıntıları ve performans özellikleri, **Copy
 | aktarım hızı | Veri aktarımı oranı. | Kayan nokta sayısı, KBps cinsinden |
 | Kaynakcepeakconnections | Kopyalama etkinliği sırasında kaynak veri deposuna kurulan en yüksek eşzamanlı bağlantı sayısı. | Int32 değeri (birim yok) |
 | sinkPeakConnections| Kopyalama etkinliği sırasında havuz veri deposuna kurulan en yüksek eşzamanlı bağlantı sayısı.| Int32 değeri (birim yok) |
-| sqlDwPolyBase | Veriler Azure SYNAPSE Analytics 'e (eski adıyla SQL veri ambarı) kopyalandığında PolyBase 'in kullanılıp kullanılmayacağını belirtir. | Boole |
+| sqlDwPolyBase | Veriler Azure SYNAPSE Analytics 'e kopyalandığında PolyBase 'in kullanılıp kullanılmayacağını belirtir. | Boole |
 | Redkaydırıcı Tunload | Redshift öğesinden veri kopyalanırken KALDıRMA kullanılıp kullanılmayacağını belirtir. | Boole |
 | hdfsDistcp | Veriler, ne zaman bir sunucudan kopyalanırsa kullanılır. | Boole |
 | Etkilenen bir tümleştirme çalışma zamanı | Etkinlik çalıştırmasının gücü için kullanılan tümleştirme çalışma zamanı (IR) veya çalışma zamanları (biçiminde) `<IR name> (<region if it's Azure IR>)` . | Metin (dize) |
@@ -163,6 +158,6 @@ Kopyalama etkinliği yürütme ayrıntıları ve performans özellikleri, **Copy
 ## <a name="next-steps"></a>Sonraki adımlar
 Diğer kopyalama etkinliği makalelerine bakın:
 
-\- [Kopyalama etkinliğine genel bakış](copy-activity-overview.md)
+\-[Kopyalama etkinliğine genel bakış](copy-activity-overview.md)
 
 \- [Kopyalama etkinliği performansı](copy-activity-performance.md)

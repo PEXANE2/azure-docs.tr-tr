@@ -1,22 +1,18 @@
 ---
 title: Veri Yönetimi Ağ Geçidi için sürüm notları
 description: Veri Yönetimi ağ geçidi, sürüm notları
-services: data-factory
 author: nabhishek
-manager: anandsub
-ms.assetid: 14762e82-76d9-41c4-ba9f-14a54da29c36
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 0538777cadf7935a6684932a17fadc10849518d8
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b5bf0c6d6996a67e8b0fec3ec51e31fef8eedf26
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96001635"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100363925"
 ---
 # <a name="release-notes-for-data-management-gateway"></a>Veri Yönetimi Ağ Geçidi için sürüm notları
 > [!NOTE]
@@ -46,12 +42,12 @@ Burada sürüm notlarını daha fazla sürdürmedik. En son sürüm notlarını 
 
 ## <a name="2963132"></a>2.9.6313.2
 ### <a name="enhancements-"></a>Gelişmeleri
--   Güvenlik duvarınızdaki tüm Azure IP adreslerine izin vermek yerine Service Bus izin vermek için DNS girdileri ekleyebilirsiniz (gerekirse). Burada daha fazla ayrıntı bulabilirsiniz.
--   Artık Blok Blobu için desteklenen en büyük boyut olan 4,75 TB 'a kadar tek bir blok blobundan veri kopyalayabilirsiniz. (önceki sınır 195 GB idi).
--   Düzeltildi: kopyalama etkinliği sırasında birkaç küçük dosyanın sıkıştırması kaldırılırken yetersiz bellek sorunu.
--   Düzeltildi: belge DB 'den ıdempottik özelliğiyle SQL Server kopyalanırken Dizin aralık dışında bir sorun oluştu.
--   Düzeltildi: SQL Temizleme betiği kopyalama sihirbazından SQL Server çalışmıyor.
--   Düzeltildi: sonunda boşluk olan sütun adı kopyalama etkinliğinde çalışmıyor.
+-    Güvenlik duvarınızdaki tüm Azure IP adreslerine izin vermek yerine Service Bus izin vermek için DNS girdileri ekleyebilirsiniz (gerekirse). Burada daha fazla ayrıntı bulabilirsiniz.
+-    Artık Blok Blobu için desteklenen en büyük boyut olan 4,75 TB 'a kadar tek bir blok blobundan veri kopyalayabilirsiniz. (önceki sınır 195 GB idi).
+-    Düzeltildi: kopyalama etkinliği sırasında birkaç küçük dosyanın sıkıştırması kaldırılırken yetersiz bellek sorunu.
+-    Düzeltildi: belge DB 'den ıdempottik özelliğiyle SQL Server kopyalanırken Dizin aralık dışında bir sorun oluştu.
+-    Düzeltildi: SQL Temizleme betiği kopyalama sihirbazından SQL Server çalışmıyor.
+-    Düzeltildi: sonunda boşluk olan sütun adı kopyalama etkinliğinde çalışmıyor.
 
 ## <a name="28662833"></a>2.8.66283.3
 ### <a name="enhancements-"></a>Gelişmeleri
@@ -128,7 +124,7 @@ Burada sürüm notlarını daha fazla sürdürmedik. En son sürüm notlarını 
     *  [Kod içermeyen kopyalama aracını](data-factory-copy-data-wizard-tutorial.md)kullanarak bir depolamadan veri kopyalayabilirsiniz. Bu özellik hakkında genel bilgi için bkz. [aşamalı kopya](data-factory-copy-activity-performance.md#staged-copy) .
 *  Veri Yönetimi ağ geçidini, verileri doğrudan bir SQL Server veritabanından Azure Machine Learning içine almak için kullanabilirsiniz.
 
-*  Performans iyileştirmeleri
+*  Performans geliştirmeleri
 
     * Kod içermeyen kopyalama aracında SQL Server göre şemayı/önizlemeyi görüntüleme performansını artırabilirsiniz.
 
@@ -144,7 +140,7 @@ Burada sürüm notlarını daha fazla sürdürmedik. En son sürüm notlarını 
 
 *  Otomatik güncelleştirme başarısız olursa, ağ geçidi yükleyicisi en yüksek üç kez otomatik güncellemeyi yeniden dener.
 
-*  Performans iyileştirmeleri
+*  Performans geliştirmeleri
 
     * Kod içermeyen kopyalama senaryosunda şirket içi sunucudan büyük tabloları yükleme performansını geliştirir.
 
@@ -152,7 +148,7 @@ Burada sürüm notlarını daha fazla sürdürmedik. En son sürüm notlarını 
 
 ## <a name="11058921"></a>1.10.5892.1
 
-*  Performans iyileştirmeleri
+*  Performans geliştirmeleri
 
 *  Hata düzeltmeleri
 
@@ -164,34 +160,34 @@ Burada sürüm notlarını daha fazla sürdürmedik. En son sürüm notlarını 
 *  Güncelleştirme zamanlama süresini ayarlama yeteneği
 *  Otomatik güncelleştirmeyi değiştirme/kapatma için PowerShell betiği
 *  JSON biçimi desteği  
-*  Performans iyileştirmeleri
+*  Performans geliştirmeleri
 *  Hata düzeltmeleri
 
 ## <a name="1858221"></a>1.8.5822.1
 
 *  Sorun giderme deneyimini geliştirme
-*  Performans iyileştirmeleri
+*  Performans geliştirmeleri
 *  Hata düzeltmeleri
 
 ### <a name="1757951"></a>1.7.5795.1
 
-*  Performans iyileştirmeleri
+*  Performans geliştirmeleri
 *  Hata düzeltmeleri
 
 ### <a name="1757641"></a>1.7.5764.1
 
-*  Performans iyileştirmeleri
+*  Performans geliştirmeleri
 *  Hata düzeltmeleri
 
 ### <a name="1657351"></a>1.6.5735.1
 
 *  Şirket içi bir kaynak/havuz desteği
-*  Performans iyileştirmeleri
+*  Performans geliştirmeleri
 *  Hata düzeltmeleri
 
 ### <a name="1656961"></a>1.6.5696.1
 
-*  Performans iyileştirmeleri
+*  Performans geliştirmeleri
 *  Hata düzeltmeleri
 
 ### <a name="1656761"></a>1.6.5676.1
@@ -208,7 +204,7 @@ Burada sürüm notlarını daha fazla sürdürmedik. En son sürüm notlarını 
 ### <a name="1656721"></a>1.6.5672.1
 
 *  Azure Data Factory için ODBC veri kaynağı destek tablosu adı
-*  Performans iyileştirmeleri
+*  Performans geliştirmeleri
 *  Hata düzeltmeleri
 
 ### <a name="1656581"></a>1.6.5658.1
@@ -229,13 +225,13 @@ Burada sürüm notlarını daha fazla sürdürmedik. En son sürüm notlarını 
 
 *  Azure Data Factory (MySQL, PostgreSQL, DB2, Teradata ve Sybase) için beş ilişkisel veritabanını destekleme
 *  Sıkıştırma desteği (gzip ve söndür)
-*  Performans iyileştirmeleri
+*  Performans geliştirmeleri
 *  Hata düzeltmeleri
 
 ### <a name="1455491"></a>1.4.5549.1
 
 *  Azure Data Factory için Oracle veri kaynağı desteği ekle
-*  Performans iyileştirmeleri
+*  Performans geliştirmeleri
 *  Hata düzeltmeleri
 
 ### <a name="1454921"></a>1.4.5492.1

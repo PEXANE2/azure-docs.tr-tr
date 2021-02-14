@@ -113,6 +113,8 @@
                   href: ./security/workspace-data-exfiltration-protection.md
                 - name: Synapse çalışma alanı ile özel bağlantı merkezleri
                   href: ./security/synapse-private-link-hubs.md
+                - name: Güvenli depolama hesabına Bağlan
+                  href: ./security/connect-to-a-secure-storage-account.md
             - name: Kimlik doğrulaması ve geçiş
               items:
                 - name: Azure Active Directory
@@ -571,7 +573,11 @@
         - name: Delta Lake ile çalışma
           href: ./spark/apache-spark-delta-lake-overview.md
         - name: Kitaplıkları yönetme
-          href: ./spark/apache-spark-azure-portal-add-libraries.md
+          items:
+            - name: Kitaplıkları ekleme ve yönetme
+              href: ./spark/apache-spark-azure-portal-add-libraries.md
+            - name: Kitaplık yükleme hatalarını giderme
+              href: ./spark/apache-spark-troubleshoot-library-errors.md
         - name: Not defterlerini ve IDE araçlarını kullanma
           items:
             - name: Not defterlerini yönetme

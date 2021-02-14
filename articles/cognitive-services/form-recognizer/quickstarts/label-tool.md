@@ -11,12 +11,12 @@ ms.date: 01/29/2021
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: Belge işleme
-ms.openlocfilehash: 0405ea116a1867ec75beff21637f18fb37565627
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 9642f9ce51cd3eb90344f96bc099da7adea93022
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99584728"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100364804"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>Örnek etiketleme aracını kullanarak form tanıyıcı modelini etiketlerle eğitme
 
@@ -228,7 +228,7 @@ Formlarınızın en az beş kısmını etiketlemek için yukarıdaki adımları 
 İsteğe bağlı olarak, her etiket için beklenen veri türünü ayarlayabilirsiniz. Etiketin sağ tarafındaki bağlam menüsünü açın ve menüden bir tür seçin. Bu özellik, algılama algoritmasının metin algılama doğruluğunu iyileştirecek bazı varsayımlar yapmasına olanak sağlar. Ayrıca, algılanan değerlerin son JSON çıkışında standartlaştırılmış bir biçimde döndürülmesini de sağlar. Değer türü bilgileri etiket dosyalarınızda aynı yoldaki *fields.js* dosyasına kaydedilir.
 
 > [!div class="mx-imgBorder"]
-> ![Örnek etiketleme aracıyla değer türü seçimi](../media/whats-new/formre-value-type.png)
+> ![Örnek etiketleme aracıyla değer türü seçimi](../media/whats-new/value-type.png)
 
 Aşağıdaki değer türleri ve Çeşitlemeler Şu anda destekleniyor:
 * `string`

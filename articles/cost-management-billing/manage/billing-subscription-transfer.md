@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 02/05/2021
 ms.author: banders
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 87f29395e716ad3f06a99d6243b080acf86e4310
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: 2fb1a8c3e583a4bdc88f2b61844e9bcb16dc7cdf
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99979442"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100367206"
 ---
 # <a name="transfer-billing-ownership-of-an-azure-subscription-to-another-account"></a>Azure aboneliğinin faturalama sahipliğini başka bir hesaba aktarma
 
@@ -91,9 +91,12 @@ Abonelikleri aktarırken sorun yaşıyorsanız aşağıdaki sorun giderme bilgil
 
 ### <a name="original-azure-subscription-billing-owner-leaves-your-organization"></a>Özgün Azure aboneliği faturalama sahibi, kuruluşunuzu bırakır
 
-Bir Azure hesabı ve bir Azure aboneliği oluşturan orijinal faturalandırma sahibi, kuruluşunuzu bırakır. Bu durum oluşursa, Kullanıcı kimlikleri artık kuruluşun Azure Active Directory değildir. Daha sonra Azure aboneliğinin faturalandırma sahibi yoktur. Bu durum, herkesin görüntüleme ve ödeme dahil olmak üzere hesaba faturalandırma işlemleri gerçekleştirmesini engeller. Abonelik, süresi geçmiş bir duruma geçebilir. Sonuç olarak, ödeme yapılmadığı için abonelik devre dışı bırakılabilir. Sonuç olarak, abonelik silinebilir ve abonelik üzerinde çalışan her hizmeti etkileyecektir.
+> [!Note]
+> Bu bölüm, Microsoft Müşteri Sözleşmesi için bir faturalandırma hesabına özel olarak uygulanır. Bir [Microsoft Müşteri sözleşmesine](mca-request-billing-ownership.md#check-for-access)erişiminiz olup olmadığını denetleyin.
 
-Abonelik artık geçerli bir faturalandırma sahibine sahip değilse, Azure diğer faturalandırma sahiplerine, hizmet yöneticilerine, ortak yöneticilere ve abonelik sahiplerine durum bildiren bir e-posta gönderir ve aboneliğin faturalama sahipliğini kabul etmek için bir bağlantı sağlar. Kullanıcılardan herhangi biri, faturalandırma sahipliğini kabul etmek için bağlantıyı seçebilir. Faturalandırma rolleri hakkında daha fazla bilgi için bkz. [faturalandırma rolleri](understand-mca-roles.md) ve [Klasik roller ve Azure RBAC rolleri](../../role-based-access-control/rbac-and-directory-admin-roles.md).
+Bir Azure hesabı ve bir Azure aboneliği oluşturan orijinal faturalandırma hesabı sahibi, kuruluşunuzu terk etmek mümkündür. Bu durum oluşursa, Kullanıcı kimlikleri artık kuruluşun Azure Active Directory değildir. Daha sonra Azure aboneliğinin faturalandırma sahibi yoktur. Bu durum, herkesin görüntüleme ve ödeme dahil olmak üzere hesaba faturalandırma işlemleri gerçekleştirmesini engeller. Abonelik, süresi geçmiş bir duruma geçebilir. Sonuç olarak, ödeme yapılmadığı için abonelik devre dışı bırakılabilir. Sonuç olarak, abonelik silinebilir ve abonelik üzerinde çalışan her hizmeti etkileyecektir.
+
+Bir aboneliğin artık geçerli bir faturalandırma hesabı sahibi yoksa, Azure diğer faturalandırma hesabı sahiplerine, hizmet yöneticilerine (varsa), Co-Administrators (varsa) ve abonelik sahipleriyle ilgili olduğunu bildirerek, aboneliğin faturalama sahipliğini kabul etmek için bir bağlantı sağlar. Kullanıcılardan herhangi biri, faturalandırma sahipliğini kabul etmek için bağlantıyı seçebilir. Faturalandırma rolleri hakkında daha fazla bilgi için bkz. [faturalandırma rolleri](understand-mca-roles.md) ve [Klasik roller ve Azure RBAC rolleri](../../role-based-access-control/rbac-and-directory-admin-roles.md).
 
 E-postanın nasıl görüneceğine ilişkin bir örnek aşağıda verilmiştir.
 

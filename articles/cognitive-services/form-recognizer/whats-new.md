@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: pafarley
-ms.openlocfilehash: a8eecabe71cb439949f7e0638c7339eb31b08500
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: c7b6586f02d14d4e49ce9a5024b19ea15c8d2267
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99581270"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100364701"
 ---
 # <a name="whats-new-in-form-recognizer"></a>Form Tanıma'daki yenilikler
 
@@ -148,7 +148,7 @@ GitHub 'da **yeni örnekler** mevcuttur.
   Aşağıdaki görüntü, tabloların nasıl tanındığını ve ayıklanacağını gösteren bir örnektir:
 
   > [!div class="mx-imgBorder"]
-  > ![Örnek etiketleme aracını kullanarak tablo görselleştirme](./media/whats-new/formre-table-viz.png)
+  > ![Örnek etiketleme aracını kullanarak tablo görselleştirme](./media/whats-new/table-viz.png)
 
     Ayıklanan tablolar altındaki JSON çıktısında kullanılabilir `"pageResults"` .
 

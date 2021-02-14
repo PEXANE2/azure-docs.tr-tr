@@ -1,19 +1,17 @@
 ---
 title: Azure SQL veritabanı tablolarını Azure Data Factory ile Azure CosmosDB 'ye geçirme
 description: Azure SQL veritabanı 'nda var olan bir normalleştirilmiş veritabanı şemasını alın ve Azure Data Factory bir Azure CosmosDB denormallanmış kapsayıcıya geçirin.
-services: data-factory
 author: kromerm
+ms.author: makromer
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/29/2020
-ms.author: makromer
-ms.openlocfilehash: 5d93cb49c77a4c8164a8b4e9bca349a805f39678
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 3d67ac9474704fac39dbe7eb91aead5c4babc4ce
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93041637"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100383951"
 ---
 # <a name="migrate-normalized-database-schema-from-azure-sql-database-to-azure-cosmosdb-denormalized-container"></a>Azure SQL Veritabanı'ndaki normalleştirilmiş veritabanı şemasını Azure Cosmos DB'deki normalleştirilmişlikten çıkarılmış kapsayıcıya geçirme
 
@@ -50,7 +48,7 @@ Elde edilen CosmosDB kapsayıcısı, iç sorguyu tek bir belgeye katıştırır 
 
 2. Veri akışı etkinliği ekleyin
 
-3. Veri akışı etkinliğinde **Yeni eşleme veri akışı** ' nı seçin.
+3. Veri akışı etkinliğinde **Yeni eşleme veri akışı**' nı seçin.
 
 4. Bu veri akışı grafiğini aşağıdan oluşturacağız
 

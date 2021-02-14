@@ -932,7 +932,7 @@
         - name: REST (Yönetim düzlemi)
           href: /rest/api/cosmos-db-resource-provider/2020-04-01/sqlresources
         - name: PowerShell
-          href: /powershell/module/az.cosmosdb/?view=azps-5.1.0#cosmos-db&preserve-view=true
+          href: /powershell/module/az.cosmosdb/?view=azps-5.5.0#cosmos-db&preserve-view=true
         - name: Resource Manager şablonu
           href: /azure/templates/microsoft.documentdb/allversions
           displayName: ARM
@@ -1050,7 +1050,7 @@
         - name: REST kaynak sağlayıcısı
           href: /rest/api/cosmos-db-resource-provider/2020-04-01/cassandraresources
         - name: PowerShell
-          href: /powershell/module/az.cosmosdb/?view=azps-5.1.0#cosmos-db&preserve-view=true
+          href: /powershell/module/az.cosmosdb/?view=azps-5.5.0#cosmos-db&preserve-view=true
         - name: Resource Manager şablonu
           href: /azure/templates/microsoft.documentdb/allversions
 - name: MongoDB API’si
@@ -1117,6 +1117,8 @@
           items:
             - name: Geçiş öncesine yönelik kılavuz
               href: mongodb-pre-migration.md
+            - name: MongoDB yerel araçları (çevrimdışı)
+              href: tutorial-mongotools-cosmos-db.md
             - name: Veritabanı Geçiş Hizmeti (çevrimiçi)
               href: ../dms/tutorial-mongodb-cosmos-db-online.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
             - name: Veritabanı Geçiş Hizmeti (çevrimdışı)
@@ -1175,7 +1177,7 @@
         - name: REST kaynak sağlayıcısı
           href: /rest/api/cosmos-db-resource-provider/2020-04-01/mongodbresources
         - name: PowerShell
-          href: /powershell/module/az.cosmosdb/?view=azps-5.1.0#cosmos-db&preserve-view=true
+          href: /powershell/module/az.cosmosdb/?view=azps-5.5.0#cosmos-db&preserve-view=true
         - name: Resource Manager şablonu
           href: /azure/templates/microsoft.documentdb/allversions
 - name: Gremlin API
@@ -1253,7 +1255,7 @@
         - name: Yanıt Üst Bilgileri
           href: gremlin-headers.md
         - name: PowerShell
-          href: /powershell/module/az.cosmosdb/?view=azps-5.1.0#cosmos-db&preserve-view=true
+          href: /powershell/module/az.cosmosdb/?view=azps-5.5.0#cosmos-db&preserve-view=true
         - name: REST kaynak sağlayıcısı
           href: /rest/api/cosmos-db-resource-provider/2020-04-01/gremlinresources
         - name: Resource Manager şablonu
@@ -1339,7 +1341,7 @@
         - name: Python
           href: table-sdk-python.md
         - name: PowerShell
-          href: /powershell/module/az.cosmosdb/?view=azps-5.1.0#cosmos-db&preserve-view=true
+          href: /powershell/module/az.cosmosdb/?view=azps-5.5.0#cosmos-db&preserve-view=true
         - name: Tablo depolama REST API'leri
           href: /rest/api/storageservices/table-service-rest-api
 - name: Nasıl yapılır kılavuzları
@@ -1419,7 +1421,7 @@
           href: monitor-cosmos-db.md
         - name: Azure izleyici ölçümlerini kullanma
           items:
-            - name: Cosmos için Azure İzleyici (önizleme)
+            - name: Cosmos DB için Azure Izleyici
               href: ../azure-monitor/insights/cosmosdb-insights-overview.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
             - name: İzlenecek senaryolar
               href: use-metrics.md

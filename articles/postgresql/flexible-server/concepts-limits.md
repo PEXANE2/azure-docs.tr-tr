@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: cc17a66aceb6ab3eba9a18f8f07902822f4c81bb
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 0221022c342735744d59f956d6047b4abf23b5cf
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96937670"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100516524"
 ---
 # <a name="limits-in-azure-database-for-postgresql---flexible-server"></a>PostgreSQL için Azure veritabanı sınırları-esnek sunucu
 
@@ -66,6 +66,13 @@ Bir PostgreSQL bağlantısı bile boşta, yaklaşık 10 MB bellek içerebilir. A
 
 - Ana veritabanı altyapısı sürümleri arasında otomatik geçiş Şu anda desteklenmiyor. Bir sonraki ana sürüme yükseltmek isterseniz, bir dökümünü alın ve yeni altyapı sürümüyle oluşturulmuş bir sunucuya [geri yükleyin](../howto-migrate-using-dump-and-restore.md) .
 
+### <a name="storage"></a>Depolama
+
+- Yapılandırıldıktan sonra, depolama boyutu küçültülemez.
+- Şu anda, depolama otomatik büyüme özelliği kullanılamıyor. Lütfen kullanımı izleyin ve depolama alanını daha yüksek bir boyuta yükseltin. 
+- Depolama alanı kullanımı %95 ' e ulaştığında veya kullanılabilir kapasite 5 GiB 'den küçükse, disk dolu durumlarla ilişkili hataları önlemek için sunucu otomatik olarak **salt okuma moduna** geçiş yapılır. 
+- `storage used` `storage percent` Depolama boyutunu artırma gibi işlemleri daha etkili bir şekilde gerçekleştirmek için bazı eşikleri aştığında ya da bu uyarılar için uyarı kuralları ayarlamanızı öneririz. Örneğin, depolama alanı yüzdesi %80 kullanımı aşarsa bir uyarı ayarlayabilirsiniz.
+  
 ### <a name="networking"></a>Ağ
 
 - VNET 'e ve dışına taşıma Şu anda desteklenmiyor.

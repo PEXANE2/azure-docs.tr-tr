@@ -3,12 +3,12 @@ title: Azure İşlevleri için uygulama ayarları başvurusu
 description: Azure Işlevleri uygulama ayarları veya ortam değişkenleri için başvuru belgeleri.
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: a28530fd4e4731065c4ddcc2f39e9a4660529921
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 8cb3e12c48adf1273c58f4914e34590e21b9d3cc
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881932"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100378307"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Azure İşlevleri için uygulama ayarları başvurusu
 
@@ -19,7 +19,7 @@ Bir işlev uygulamasındaki uygulama ayarları, bu işlev uygulaması için tüm
 Dosyasında ve [local.settings.json](functions-run-local.md#local-settings-file) dosyasında [host.js](functions-host-json.md) başka genel yapılandırma seçenekleri vardır.
 
 > [!NOTE]  
-> Dosya üzerinde host.jsdeğiştirmek zorunda kalmadan değerleri ayarlama host.jsgeçersiz kılmak için uygulama ayarlarını kullanabilirsiniz. Bu, belirli bir ortam için ayarlarda belirli host.jsyapılandırmanız veya değiştirmeniz gereken senaryolar için yararlıdır. Bu Ayrıca, projenizin yeniden yayımlanmasını gerektirmeden ayarları host.jsdeğiştirmenize de olanak tanır. Daha fazla bilgi edinmek için [ başvuruhost.jsmakalesine](functions-host-json.md#override-hostjson-values)bakın.  
+> Dosya üzerinde host.jsdeğiştirmek zorunda kalmadan değerleri ayarlama host.jsgeçersiz kılmak için uygulama ayarlarını kullanabilirsiniz. Bu, belirli bir ortam için ayarlarda belirli host.jsyapılandırmanız veya değiştirmeniz gereken senaryolar için yararlıdır. Bu Ayrıca, projenizin yeniden yayımlanmasını gerektirmeden ayarları host.jsdeğiştirmenize de olanak tanır. Daha fazla bilgi edinmek için [ başvuruhost.jsmakalesine](functions-host-json.md#override-hostjson-values)bakın. İşlev uygulaması ayarlarında yapılan değişiklikler, işlev uygulamanızın yeniden başlatılmasını gerektirir.
 
 ## <a name="appinsights_instrumentationkey"></a>APPINSIGHTS_INSTRUMENTATIONKEY
 
@@ -213,7 +213,7 @@ Bu ayarın değeri, Python uygulamaları için özel bir paket dizin URL 'SI gö
 
 Daha fazla bilgi edinmek için bkz. Python geliştirici başvurusunda [özel bağımlılıklar](functions-reference-python.md#remote-build-with-extra-index-url) .
 
-## <a name="scale_controller_logging_enable"></a>ÖLÇEK \_ denetleyicisi \_ günlüğü \_ Etkinleştir
+## <a name="scale_controller_logging_enabled"></a>ÖLÇEK \_ denetleyicisi \_ günlüğü \_ etkin
 
 _Bu ayar şu an önizleme aşamasındadır._  
 
@@ -221,7 +221,7 @@ Bu ayar Azure Işlevleri ölçek denetleyicisindeki günlüğü denetler. Daha f
 
 |Anahtar|Örnek değer|
 |-|-|
-|SCALE_CONTROLLER_LOGGING_ENABLE|Appınsights: ayrıntılı|
+|SCALE_CONTROLLER_LOGGING_ENABLED|Appınsights: ayrıntılı|
 
 Bu anahtarın değeri `<DESTINATION>:<VERBOSITY>` , aşağıdaki şekilde tanımlanan biçimde sağlanır:
 
@@ -235,7 +235,7 @@ Bu anahtarın değeri `<DESTINATION>:<VERBOSITY>` , aşağıdaki şekilde tanım
 |---|------------|
 |WEBSITE_CONTENTAZUREFILECONNECTIONSTRING|DefaultEndpointsProtocol = https; AccountName = [ad]; AccountKey = [anahtar]|
 
-Yalnızca Windows üzerinde çalışan bir tüketim veya Premium planlarına dağıtım yaparken kullanılır. Linux için desteklenmez. Bu ayarı değiştirmek veya kaldırmak, işlev uygulamanızın başlatılamamasına neden olabilir. Daha fazla bilgi için [Bu sorun giderme makalesine](functions-recover-storage-account.md#storage-account-application-settings-were-deleted)bakın. 
+Yalnızca Premium planına veya Windows üzerinde çalışan bir tüketim planına dağıtım yaparken kullanılır. Linux çalıştıran tüketimlerini planları için desteklenmez. Bu ayarı değiştirmek veya kaldırmak, işlev uygulamanızın başlatılamamasına neden olabilir. Daha fazla bilgi için [Bu sorun giderme makalesine](functions-recover-storage-account.md#storage-account-application-settings-were-deleted)bakın. 
 
 ## <a name="website_contentovervnet"></a>Web sItesI \_ contenentovervnet
 
@@ -253,7 +253,7 @@ Windows üzerinde olay odaklı ölçeklendirme planında, işlev uygulaması kod
 |---|------------|
 |WEBSITE_CONTENTSHARE|functionapp091999e2|
 
-Yalnızca Windows üzerinde çalışan bir tüketim veya Premium planlardaki işlev uygulamaları tarafından kullanılır. Linux için desteklenmez. Bu ayarı değiştirmek veya kaldırmak, işlev uygulamanızın başlatılamamasına neden olabilir. Daha fazla bilgi için [Bu sorun giderme makalesine](functions-recover-storage-account.md#storage-account-application-settings-were-deleted)bakın.
+Yalnızca Premium planına veya Windows üzerinde çalışan bir tüketim planına dağıtım yaparken kullanılır. Linux çalıştıran tüketimlerini planları için desteklenmez. Bu ayarı değiştirmek veya kaldırmak, işlev uygulamanızın başlatılamamasına neden olabilir. Daha fazla bilgi için [Bu sorun giderme makalesine](functions-recover-storage-account.md#storage-account-application-settings-were-deleted)bakın.
 
 Dağıtım sırasında bir işlev uygulaması oluşturmak için bir Azure Resource Manager kullanırken, şablonda WEBSITE_CONTENTSHARE eklemeyin. Bu uygulama ayarı dağıtım sırasında oluşturulur. Daha fazla bilgi için bkz. [işlev uygulamanız için kaynak dağıtımını otomatikleştirme](functions-infrastructure-as-code.md#windows).   
 

@@ -8,18 +8,25 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: bffff099e8df2b944cbef50a074ef625267ed238
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: cf0db71600c9350b4d70e6375f509a6e88709f70
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98944635"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100378341"
 ---
 # <a name="how-to-connect-devices-with-x509-certificates-using-nodejs-device-sdk-for-iot-central-application"></a>IoT Central uygulama için Node.js cihaz SDK 'sını kullanarak X. 509.440 sertifikalarıyla cihazları bağlama
 
 IoT Central, bir cihaz ve uygulamanız arasındaki iletişimin güvenliğini sağlamak için hem paylaşılan erişim imzalarını (SAS) hem de X. 509.440 sertifikalarını destekler. [Azure IoT Central uygulama öğreticisine bir istemci uygulaması oluşturma ve bağlama](./tutorial-connect-device.md) ÖĞRETICISINE SAS kullanır. Bu makalede, kod örneğini X. 509.440 kullanacak şekilde nasıl değiştireceğiniz hakkında bilgi edineceksiniz.  X. 509.440 sertifikaları üretim ortamlarında önerilir. Daha fazla bilgi için bkz. [Azure IoT Central 'ye bağlanma](./concepts-get-connected.md).
 
 Bu makalede, genellikle üretim ortamında kullanılan X. 509.440- [Group](how-to-connect-devices-x509.md#use-a-group-enrollment) kayıtlarını kullanmanın iki yolu ve [bireysel](how-to-connect-devices-x509.md#use-an-individual-enrollment) kayıtlar test için yararlıdır.
+
+Bu makaledeki kod parçacıkları JavaScript kullanır. Diğer dillerdeki kod örnekleri için bkz.:
+
+- [,](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client/samples/iothub_ll_client_x509_sample)
+- [C#](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/iot-hub/Samples/device/X509DeviceCertWithChainSample)
+- [Java](https://github.com/Azure/azure-iot-sdk-java/tree/master/device/iot-device-samples/send-event-x509)
+- [Python](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/sync-samples)
 
 ## <a name="prerequisites"></a>Önkoşullar
 

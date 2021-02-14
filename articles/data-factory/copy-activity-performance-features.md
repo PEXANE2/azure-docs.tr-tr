@@ -1,23 +1,18 @@
 ---
 title: Etkinlik performansını en iyi duruma getirme özelliklerini Kopyala
 description: Azure Data Factory. ' de kopyalama etkinliği performansını iyileştirmenize yardımcı olan temel özellikler hakkında bilgi edinin
-services: data-factory
-documentationcenter: ''
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/24/2020
-ms.openlocfilehash: 8e46e9b323657b747fd73bad3b25ed66390f3aa9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ecb4550b218b069273cba2e3d70a9510c1cc74ca
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91324340"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100387810"
 ---
 # <a name="copy-activity-performance-optimization-features"></a>Etkinlik performansını en iyi duruma getirme özelliklerini Kopyala
 
@@ -40,7 +35,7 @@ Kopyalama etkinliği çalıştırmasını güçlendiren izin verilen, **2 ile 25
 
 Kopyalama etkinliği izleme görünümü veya etkinlik çıkışında her bir kopya için kullanılan orus 'yi görebilirsiniz. Daha fazla bilgi için bkz. [kopyalama etkinliği izleme](copy-activity-monitoring.md). Bu varsayılanı geçersiz kılmak için, özellik için aşağıdaki gibi bir değer belirtin `dataIntegrationUnits` . Kopyalama işleminin çalışma zamanında kullandığı *gerçek sayı* , veri düzenlerinize bağlı olarak yapılandırılan değere eşit veya ondan daha az.
 
-**Kullanılan mus \* kopyalama süresi \* birim fiyatı/Diu-saat**üzerinden ücretlendirilecektir. Geçerli fiyatlara [buradan](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/)bakın. Yerel para birimi ve ayrı ayırt sayma, abonelik türü başına uygulanabilir.
+**Kullanılan mus \* kopyalama süresi \* birim fiyatı/Diu-saat** üzerinden ücretlendirilecektir. Geçerli fiyatlara [buradan](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/)bakın. Yerel para birimi ve ayrı ayırt sayma, abonelik türü başına uygulanabilir.
 
 **Örnek:**
 
@@ -91,7 +86,7 @@ Aşağıdaki tabloda, paralel kopyalama davranışı listelenmektedir:
 
 | Kopyalama senaryosu | Paralel kopyalama davranışı |
 | --- | --- |
-| Dosya depoları arasında | `parallelCopies`**dosya düzeyinde**paralellik belirler. Her bir dosya içindeki parçalama otomatik ve şeffaf bir şekilde gerçekleşir. Verileri paralel olarak yüklemek için belirli bir veri deposu türü için en iyi uygun öbek boyutunu kullanmak üzere tasarlanmıştır. <br/><br/>Kopya etkinliğinin gerçek sayısı, çalışma zamanında kullanılan, sahip olduğunuz dosya sayısından daha fazla değil. Kopyalama davranışı dosya havuzunda **birleştirme dosyası** ise kopyalama etkinliği dosya düzeyinde paralellik özelliğinden yararlanamaz. |
+| Dosya depoları arasında | `parallelCopies`**dosya düzeyinde** paralellik belirler. Her bir dosya içindeki parçalama otomatik ve şeffaf bir şekilde gerçekleşir. Verileri paralel olarak yüklemek için belirli bir veri deposu türü için en iyi uygun öbek boyutunu kullanmak üzere tasarlanmıştır. <br/><br/>Kopya etkinliğinin gerçek sayısı, çalışma zamanında kullanılan, sahip olduğunuz dosya sayısından daha fazla değil. Kopyalama davranışı dosya havuzunda **birleştirme dosyası** ise kopyalama etkinliği dosya düzeyinde paralellik özelliğinden yararlanamaz. |
 | Dosya deposundan dosya olmayan depoya | -Verileri Azure SQL veritabanı 'na veya Azure Cosmos DB kopyalarken, varsayılan paralel kopya Ayrıca havuz katmanına (DTU 'Lar/ru sayısı) göre değişir.<br>-Verileri Azure tablosuna kopyalarken, varsayılan paralel kopya 4 ' dir. |
 | Dosya depolamadan dosya deposuna | -Seçenek etkinleştirilmiş veri deposundan ( [Azure SQL veritabanı](connector-azure-sql-database.md#azure-sql-database-as-the-source), [Azure SQL yönetilen örneği](connector-azure-sql-managed-instance.md#sql-managed-instance-as-a-source), [Azure SYNAPSE Analytics](connector-azure-sql-data-warehouse.md#azure-synapse-analytics-as-the-source), [Oracle](connector-oracle.md#oracle-as-source), [Netezza](connector-netezza.md#netezza-as-source), [SAP HANA](connector-sap-hana.md#sap-hana-as-source), [SAP açık hub](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source), [SAP tablosu](connector-sap-table.md#sap-table-as-source), [SQL Server](connector-sql-server.md#sql-server-as-a-source)ve [Teradata](connector-teradata.md#teradata-as-source)dahil) veri kopyalanırken varsayılan paralel kopya 4 ' dir. Kopya etkinliğinin gerçek sayısı, çalışma zamanında kullanılan, sahip olduğunuz veri bölümlerinin sayısından fazla değil. Şirket içinde barındırılan Integration Runtime ve Azure Blob/ADLS 2. ' e kopyalama sırasında, en fazla etkin paralel kopya, IR düğümü başına 4 veya 5 ' tir.<br>-Diğer senaryolar için paralel kopya etkili olmaz. Paralellik belirtilmiş olsa bile, uygulanmaz. |
 | Dosya olmayan depolar arasında | -Verileri Azure SQL veritabanı 'na veya Azure Cosmos DB kopyalarken, varsayılan paralel kopya Ayrıca havuz katmanına (DTU 'Lar/ru sayısı) göre değişir.<br/>-Seçenek etkinleştirilmiş veri deposundan ( [Azure SQL veritabanı](connector-azure-sql-database.md#azure-sql-database-as-the-source), [Azure SQL yönetilen örneği](connector-azure-sql-managed-instance.md#sql-managed-instance-as-a-source), [Azure SYNAPSE Analytics](connector-azure-sql-data-warehouse.md#azure-synapse-analytics-as-the-source), [Oracle](connector-oracle.md#oracle-as-source), [Netezza](connector-netezza.md#netezza-as-source), [SAP HANA](connector-sap-hana.md#sap-hana-as-source), [SAP açık hub](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source), [SAP tablosu](connector-sap-table.md#sap-table-as-source), [SQL Server](connector-sql-server.md#sql-server-as-a-source)ve [Teradata](connector-teradata.md#teradata-as-source)dahil) veri kopyalanırken varsayılan paralel kopya 4 ' dir.<br>-Verileri Azure tablosuna kopyalarken, varsayılan paralel kopya 4 ' dir. |
@@ -126,10 +121,10 @@ Veri mağazalarınızı barındıran makinelerde yükü denetlemek veya kopyalam
 
 Bir kaynak veri deposundan bir havuz veri deposuna veri kopyaladığınızda, Azure Blob depolamayı veya Azure Data Lake Storage 2. geçici bir hazırlama deposu olarak kullanmayı seçebilirsiniz. Hazırlama, özellikle aşağıdaki durumlarda yararlı olur:
 
-- **Çeşitli veri depolarından verileri, PolyBase aracılığıyla Azure SYNAPSE Analytics 'e (eski adıyla SQL veri ambarı) almak, verileri kar/ç 'den ya da Amazon Redshift/performans ve veri alımı aracılığıyla verileri içe aktarmak istiyorsunuz.** Hakkında daha fazla bilgi edinin:
+- **Çeşitli veri depolarından veri almak için PolyBase aracılığıyla Azure SYNAPSE Analytics 'e veri alma, verileri kar/ç 'den parça veya Amazon Redshift/bir performans üzerinden alma.** Hakkında daha fazla bilgi edinin:
   - [Azure SYNAPSE Analytics 'e veri yüklemek Için PolyBase kullanın](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-synapse-analytics).
   - [Kar tanesi Bağlayıcısı](connector-snowflake.md)
-  - [Amazon Redshift Bağlayıcısı](connector-amazon-redshift.md)
+  - [Amazon Redshift bağlayıcısı](connector-amazon-redshift.md)
   - [Bağlantı ucu Bağlayıcısı](connector-hdfs.md)
 - **Şirket BT ilkeleri nedeniyle güvenlik duvarınızdaki bağlantı noktası 80 ve bağlantı noktası 443 dışındaki bağlantı noktalarını açmak istemezsiniz.** Örneğin, verileri şirket içi veri deposundan bir Azure SQL veritabanına veya Azure SYNAPSE Analytics 'e kopyaladığınızda, bağlantı noktası 1433 ' de giden TCP iletişimini hem Windows Güvenlik Duvarı hem de kurumsal güvenlik duvarı için etkinleştirmeniz gerekir. Bu senaryoda, hazırlanan kopya, ilk olarak şirket içinde barındırılan tümleştirme çalışma zamanından yararlanarak bağlantı noktası 443 ' de verileri HTTP veya HTTPS üzerinden bir hazırlama deposuna kopyalayabilir, sonra verileri hazırdan SQL veritabanına veya Azure SYNAPSE Analytics 'e yükleyebilir. Bu akışta 1433 numaralı bağlantı noktasını etkinleştirmeniz gerekmez.
 - **Bazen bir karma veri hareketini (yani, şirket içi veri deposundan bir bulut veri deposuna kopyalamak için) yavaş bir ağ bağlantısı üzerinden gerçekleştirme işlemi biraz zaman alır.** Performansı artırmak için, hazırlanan kopyayı, verileri bulutta hazırlama veri deposuna taşımak daha az zaman alması amacıyla Şirket içindeki verileri sıkıştırmak için kullanabilirsiniz. Daha sonra, hedef veri deposuna yüklemeden önce hazırlama deposundaki verileri açabilir.
@@ -150,10 +145,10 @@ Hedef veri deposuna yüklemeden önce verilerin depolamada hazırlanması isteyi
 
 | Özellik | Açıklama | Varsayılan değer | Gerekli |
 | --- | --- | --- | --- |
-| Enablehazırlama |Verileri bir geçici hazırlama deposu aracılığıyla kopyalamak isteyip istemediğinizi belirtin. |Yanlış |Hayır |
+| Enablehazırlama |Verileri bir geçici hazırlama deposu aracılığıyla kopyalamak isteyip istemediğinizi belirtin. |Yanlış |No |
 | linkedServiceName |Bir [Azure Blob depolama](connector-azure-blob-storage.md#linked-service-properties) alanının veya [Azure Data Lake Storage 2.](connector-azure-data-lake-storage.md#linked-service-properties) bağlı hizmetin, geçici hazırlama deposu olarak kullandığınız depolama örneğine başvuran bir adını belirtin. |Yok |Evet, **Enablehazırlama** true olarak ayarlandığında |
-| path |Hazırlanan verileri içermesini istediğiniz yolu belirtin. Bir yol sağlamazsanız, hizmet geçici verileri depolamak için bir kapsayıcı oluşturur. |Yok |Hayır |
-| enableCompression |Verilerin hedefe kopyalanmadan önce sıkıştırılması gerekip gerekmediğini belirtir. Bu ayar, aktarılmakta olan verilerin hacmini azaltır. |Yanlış |Hayır |
+| path |Hazırlanan verileri içermesini istediğiniz yolu belirtin. Bir yol sağlamazsanız, hizmet geçici verileri depolamak için bir kapsayıcı oluşturur. |Yok |No |
+| enableCompression |Verilerin hedefe kopyalanmadan önce sıkıştırılması gerekip gerekmediğini belirtir. Bu ayar, aktarılmakta olan verilerin hacmini azaltır. |Yanlış |No |
 
 >[!NOTE]
 > Hazırlanan bir kopyayı sıkıştırma etkinken kullanırsanız, hazırlama blobu bağlı hizmeti için hizmet sorumlusu veya MSI kimlik doğrulaması desteklenmez.
@@ -198,7 +193,7 @@ Aşağıda, önceki tabloda açıklanan özelliklerle birlikte kopyalama etkinli
 Diğer kopyalama etkinliği makalelerine bakın:
 
 - [Kopyalama etkinliğine genel bakış](copy-activity-overview.md)
-- [Kopyalama etkinliği performans ve ölçeklenebilirlik Kılavuzu](copy-activity-performance.md)
+- [Kopyalama etkinliği performans ve ölçeklenebilirlik kılavuzu](copy-activity-performance.md)
 - [Kopyalama etkinliği performansını sorun giderme](copy-activity-performance-troubleshooting.md)
 - [Data Lake veya veri ambarınızdan verileri Azure 'a geçirmek için Azure Data Factory kullanın](data-migration-guidance-overview.md)
 - [Verileri Amazon S3'ten Azure Depolama'ya geçirme](data-migration-guidance-s3-azure-storage.md)

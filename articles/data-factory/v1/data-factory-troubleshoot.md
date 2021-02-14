@@ -1,24 +1,19 @@
 ---
 title: Azure Data Factory sorunlarını giderme
 description: Azure Data Factory kullanmayla ilgili sorunları nasıl giderebileceğinizi öğrenin.
-services: data-factory
-documentationcenter: ''
-ms.assetid: 38fd14c1-5bb7-4eef-a9f5-b289ff9a6942
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 author: dcstwh
 ms.author: weetok
 ms.reviewer: maghan
-manager: anandsub
 robots: noindex
-ms.openlocfilehash: bd18a26a1c199e1ecc32cfc371d2931b1dee0c3f
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: ed831e5f07eb29110b858dfb16b73f276926424f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96494979"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100388252"
 ---
 # <a name="troubleshoot-data-factory-issues"></a>Data Factory'de sorun giderme
 > [!NOTE]
@@ -35,14 +30,15 @@ Bu hatayı aldıysanız Azure Data Factory kaynak sağlayıcısı makinenizde ka
 1. Azure PowerShell’i çalıştırın.
 2. Aşağıdaki komutu kullanarak Azure hesabınızda oturum açın.
 
-    ```powershell
-    Connect-AzAccount
-    ```
+   ```powershell
+   Connect-AzAccount
+   ```
+
 3. Azure Data Factory sağlayıcısı 'nı kaydetmek için aşağıdaki komutu çalıştırın.
 
-    ```powershell        
-    Register-AzResourceProvider -ProviderNamespace Microsoft.DataFactory
-    ```
+   ```powershell
+   Register-AzResourceProvider -ProviderNamespace Microsoft.DataFactory
+   ```
 
 ### <a name="problem-unauthorized-error-when-running-a-data-factory-cmdlet"></a>Sorun: Data Factory cmdlet 'i çalıştırılırken yetkisiz hata
 Azure PowerShell ile doğru Azure hesabını veya aboneliğini kullanmıyor olabilirsiniz. Azure PowerShell ile kullanılacak doğru Azure hesabını ve aboneliğini seçmek için aşağıdaki cmdlet’leri kullanın.
@@ -67,7 +63,7 @@ Ağ Geçidi makinesinde **veri yönetimi ağ geçidi Configuration Manager** ba�
 ### <a name="problem-input-slices-are-in-waiting-state-forever"></a>Sorun: giriş dilimleri sonsuza kadar bekliyor
 Dilimler çeşitli nedenlerden dolayı **bekleme** durumunda olabilir. Yaygın nedenlerinden biri, **External** özelliğinin **true** olarak ayarlanmamalıdır. Azure Data Factory kapsamı dışında üretilen tüm veri kümeleri **External** özelliği ile işaretlenmelidir. Bu özellik, verilerin dış olduğunu ve Veri Fabrikası içindeki herhangi bir işlem hattı tarafından yedeklenmedi olduğunu gösterir. İlgili depoda veriler kullanılabilir duruma geldiğinde veri dilimleri **Hazır** olarak işaretlenir.
 
-**External** özelliğinin kullanımı ile ilgili olarak aşağıdaki örneğe bakın. External ' i true olarak ayarladığınızda, isteğe bağlı olarak **Externaldata** _ belirtebilirsiniz.
+**External** özelliğinin kullanımı ile ilgili olarak aşağıdaki örneğe bakın. External ' i true olarak belirlediğinizde, isteğe bağlı olarak **Externaldata*** belirtebilirsiniz.
 
 Bu özellikle ilgili daha ayrıntılı bilgiler için [Veri kümeleri](data-factory-create-datasets.md) makalesine bakın.
 
@@ -97,7 +93,7 @@ Bu özellikle ilgili daha ayrıntılı bilgiler için [Veri kümeleri](data-fact
 }
 ```
 
-Hatayı gidermek için, _ *External** özelliğini ve Isteğe bağlı **externaldata** bölümünü giriş tablosunun JSON tanımına ekleyin ve tabloyu yeniden oluşturun.
+Hatayı gidermek için girdi tablosunun JSON tanımına **external** özelliğini ve isteğe bağlı **externalData** bölümünü ekleyin ve tabloyu yeniden oluşturun.
 
 ### <a name="problem-hybrid-copy-operation-fails"></a>Sorun: karma kopyalama işlemi başarısız oluyor
 Veri Yönetimi ağ geçidini kullanarak şirket içi veri deposuna/üzerinden kopyalama ile ilgili sorunları gidermeye yönelik adımlar için bkz. [ağ geçidi sorunlarını giderme](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) adımları.

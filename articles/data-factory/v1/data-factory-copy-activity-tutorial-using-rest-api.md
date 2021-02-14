@@ -1,24 +1,18 @@
 ---
 title: 'Öğretici: Azure Data Factory işlem hattı oluşturmak için REST API kullanma '
 description: Bu öğreticide, Azure Blob depolamadan Azure SQL veritabanı 'na veri kopyalamak için kopyalama etkinliği ile bir Azure Data Factory işlem hattı oluşturmak üzere REST API kullanırsınız.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: ''
-editor: ''
-ms.assetid: 1704cdf8-30ad-49bc-a71c-4057e26e7350
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 91a92f9dd0eaf55b8ba35f38102ee30b8cda4bfa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7488834252dcd4e231c2d91a1435838befe7b1d1
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87053818"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100377032"
 ---
 # <a name="tutorial-use-rest-api-to-create-an-azure-data-factory-pipeline-to-copy-data"></a>Öğretici: Verileri kopyalamak amacıyla Azure Data Factory işlem hattı oluşturmak için REST API kullanma 
 > [!div class="op_single_selector"]
@@ -46,7 +40,7 @@ Bir işlem hattında birden fazla etkinlik olabilir. Bir etkinliğin çıkış v
 >  
 > Bu öğreticideki veri işlem hattı, bir kaynak veri deposundaki verileri hedef veri deposuna kopyalar. Azure Data Factory kullanarak verileri dönüştürme hakkında bir öğretici için bkz. [Öğretici: Hadoop kümesi kullanarak verileri dönüştürmek için işlem hattı oluşturma](data-factory-build-your-first-pipeline.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -70,7 +64,7 @@ Bir işlem hattında birden fazla etkinlik olabilir. Bir etkinliğin çıkış v
      ```PowerShell     
      Get-AzSubscription
      ``` 
-  3. Çalışmak isteğiniz aboneliği seçmek için aşağıdaki komutu çalıştırın. ** &lt; Nameofazuyeniden gönderme Scription** &gt; değerini Azure aboneliğinizin adıyla değiştirin. 
+  3. Çalışmak isteğiniz aboneliği seçmek için aşağıdaki komutu çalıştırın. **&lt; Nameofazuyeniden gönderme Scription** &gt; değerini Azure aboneliğinizin adıyla değiştirin. 
      
      ```PowerShell
      Get-AzSubscription -SubscriptionName <NameOfAzureSubscription> | Set-AzContext
@@ -121,7 +115,7 @@ JSON özellikleri hakkındaki ayrıntılar için bkz. [Azure Depolama bağlı hi
 
 ### <a name="azuresqllinkedservicejson"></a>Üzerinde azuresqllinkedservice.js
 > [!IMPORTANT]
-> **ServerName**, **DatabaseName**, **UserName**ve **Password** değerini sunucunuzun adı, SQL veritabanı adı, Kullanıcı hesabı ve hesap için parola ile değiştirin.  
+> **ServerName**, **DatabaseName**, **UserName** ve **Password** değerini sunucunuzun adı, SQL veritabanı adı, Kullanıcı hesabı ve hesap için parola ile değiştirin.  
 > 
 >
 
@@ -351,7 +345,7 @@ Bu adımda, **ADFCopyTutorialDF** adlı bir Azure Data Factory oluşturacaksın�
 
 Aşağıdaki noktalara dikkat edin:
 
-* Azure Data Factory adı küresel olarak benzersiz olmalıdır. Sonuçlarda **Veri fabrikası adı “ADFCopyTutorialDF” kullanılamıyor** hatasını görürseniz aşağıdaki adımları uygulayın:  
+* Azure Data Factory adı küresel olarak benzersiz olmalıdır. Sonuçlarda hata görürseniz: **"ADFCopyTutorialDF" Veri Fabrikası adı kullanılamıyor**, aşağıdaki adımları uygulayın:  
   
   1. **datafactory.json** dosyasında adı değiştirin (örneğin, adınızADFCopyTutorialDF).
   2. **$cmd** değişkenine bir değerin atandığı ilk komutta, ADFCopyTutorialDF’yi yeni adla değiştirip komutu çalıştırın. 
@@ -526,7 +520,7 @@ Bu öğreticide, Azure blobundan Azure SQL veritabanı 'na veri kopyalamak için
 2. Oluşturulan **bağlı hizmetler**:
    1. Girdi verilerinizi barındıran Azure Depolama hesabınızı bağlamak için bir Azure Depolama bağlı hizmeti.     
    2. Çıktı verilerini tutan veritabanınızı bağlamak için bir Azure SQL bağlı hizmeti. 
-3. İşlem hatları için girdi verilerini ve çıktı verilerini açıklayan veri **kümeleri**oluşturuldu.
+3. İşlem hatları için girdi verilerini ve çıktı verilerini açıklayan veri **kümeleri** oluşturuldu.
 4. Kaynak olarak BlobSource’u, havuz olarak SqlSink’i kapsayan bir Kopyalama Etkinliği’ne sahip bir **işlem hattı** oluşturuldu. 
 
 ## <a name="next-steps"></a>Sonraki adımlar

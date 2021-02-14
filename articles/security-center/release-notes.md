@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/04/2021
+ms.date: 02/10/2021
 ms.author: memildin
-ms.openlocfilehash: fe031fa6de86b8059ba175fc4e1df6385ca7e796
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: d40d6107d3eee4b45f2184a61b1cdfc99559e9c7
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99551035"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100379054"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure Güvenlik Merkezi 'ndeki yenilikler nelerdir?
 
@@ -39,6 +39,7 @@ Güvenlik Merkezi 'ne yakında çıkacak *planlı* değişiklikler hakkında bil
 - [Öneri ayrıntıları sayfasından ilkeye doğrudan bağlantı](#direct-link-to-policy-from-recommendation-details-page)
 - [SQL veri sınıflandırması önerisi artık güvenli puanınızı etkilemesiz](#sql-data-classification-recommendation-no-longer-affects-your-secure-score)
 - [İş akışı tahminleri, mevzuat uyumluluk değerlendirmelerinde (Önizleme) yapılan değişikliklerle tetiklenebilir](#workflow-automations-can-be-triggered-by-changes-to-regulatory-compliance-assessments-preview)
+- [Varlık envanteri sayfa iyileştirmeleri](#asset-inventory-page-enhancements)
 
 ### <a name="kubernetes-workload-protection-recommendations-released-for-general-availability-ga"></a>Kubernetes iş yükü koruma önerileri genel kullanıma sunuldu (GA)
 
@@ -70,16 +71,32 @@ Bir önerinin ayrıntılarını gözden geçirirken genellikle temel alınan ilk
 
 
 ### <a name="sql-data-classification-recommendation-no-longer-affects-your-secure-score"></a>SQL veri sınıflandırması önerisi artık güvenli puanınızı etkilemesiz
-
 **SQL veritabanlarınızdaki önerinin hassas verileri** , artık güvenli puanınızı etkilememelidir. Bu, denetim artık 0 ' ın güvenli bir puan değerine sahip olması için **veri sınıflandırması** güvenlik denetimindeki tek öneriden oluşur.
 
 
 ### <a name="workflow-automations-can-be-triggered-by-changes-to-regulatory-compliance-assessments-preview"></a>İş akışı tahminleri, mevzuat uyumluluk değerlendirmelerinde (Önizleme) yapılan değişikliklerle tetiklenebilir
-
 İş akışı otomasyonuna yönelik tetikleyici seçeneklerine üçüncü bir veri türü ekledik: mevzuat uyumluluk değerlendirmelerinde yapılan değişiklikler.
 
 :::image type="content" source="media/release-notes/regulatory-compliance-triggers-workflow-automation.png" alt-text="Bir iş akışı Otomasyonu tetiklemek için mevzuat uyumluluk değerlendirmelerinde yapılan değişiklikleri kullanma" lightbox="media/release-notes/regulatory-compliance-triggers-workflow-automation.png":::
 
+
+### <a name="asset-inventory-page-enhancements"></a>Varlık envanteri sayfa iyileştirmeleri
+Güvenlik Merkezi 'nin varlık Envanteri sayfası aşağıdaki yollarla geliştirilmiştir:
+
+- Artık sayfanın en üstündeki özetler, güvenlik merkezi 'nin etkinleştirilmeksizin aboneliklerin sayısını gösteren **kayıtsız abonelikler** içerir.
+
+    :::image type="content" source="media/release-notes/unregistered-subscriptions.png" alt-text="Varlık envanteri sayfasının en üstündeki özetlerdeki kayıtlı olmayan aboneliklerin sayısı":::
+
+- Filtreler genişletilir ve şunları içerecek şekilde geliştirilmiştir:
+    - **Sayımlar** -her bir filtre, her bir kategorinin ölçütlerine uyan kaynak sayısını gösterir
+
+        :::image type="content" source="media/release-notes/counts-in-inventory-filters.png" alt-text="Azure Güvenlik Merkezi 'nin varlık envanteri sayfasındaki filtrelerdeki sayımlar":::
+
+    - **Muafiyet Filtresi içerir** (isteğe bağlı)-dışarıda olan/olmayan kaynaklara Sonuçları daraltın. Bu filtre varsayılan olarak gösterilmez, ancak **Filtre Ekle** düğmesinden erişilebilir.
+
+        :::image type="content" source="media/release-notes/adding-contains-exemption-filter.gif" alt-text="Azure Güvenlik Merkezi 'nin varlık envanteri sayfasına ' istisna içeriyor ' filtresini ekleme":::
+
+[Varlık envanteriyle kaynaklarınızı araştırıp yönetme](asset-inventory.md)hakkında daha fazla bilgi edinin.
 
 ## <a name="january-2021"></a>Ocak 2021
 
@@ -630,7 +647,7 @@ Güvenlik Merkezi 'nin yasal uyumluluk panosu, uyumlu uyumluluk denetimleri ve g
 
 Pano, varsayılan bir mevzuat standartları kümesi içerir. Sağlanan standartlardan herhangi biri kuruluşunuzla ilgili değilse, bir abonelik için kullanıcı arabiriminden kaldırma işlemi artık basit bir işlemdir. Standartlar yalnızca *abonelik* düzeyinde kaldırılabilir; Yönetim grubu kapsamı değil.
 
-[Panonuzdan bir standart kaldırma](update-regulatory-compliance-packages.md#removing-a-standard-from-your-dashboard)hakkında daha fazla bilgi edinin.
+[Panodan bir standart kaldırma](update-regulatory-compliance-packages.md#remove-a-standard-from-your-dashboard)hakkında daha fazla bilgi edinin.
 
 
 ### <a name="microsoftsecuritysecuritystatuses-table-removed-from-azure-resource-graph-arg"></a>Microsoft. Security/Securitydurumlarının tablosu Azure Kaynak grafiğinden kaldırıldı (ARG)

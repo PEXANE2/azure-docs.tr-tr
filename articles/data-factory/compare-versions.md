@@ -1,21 +1,17 @@
 ---
 title: Azure Data Factory ile Data Factory sürüm 1'in karşılaştırılması
 description: Bu makale Azure Data Factory ile Azure Data Factory sürüm 1’i karşılaştırır.
-services: data-factory
-documentationcenter: ''
 author: kromerm
-manager: anandsub
+ms.author: makromer
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: overview
 ms.date: 04/09/2018
-ms.author: makromer
-ms.openlocfilehash: c6a46f6c8a57b681f66bb98fced17bf0e2464fcd
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: dc5a4c92ee4ac0acd4a69ef94fec0981e328d829
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92638253"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100393726"
 ---
 # <a name="compare-azure-data-factory-with-data-factory-version-1"></a>Azure Data Factory ile Data Factory sürüm 1'in karşılaştırılması
 
@@ -28,9 +24,9 @@ Aşağıdaki tabloda Data Factory ile Data Factory sürüm 1'in özellikleri kar
 
 | Özellik | Sürüm 1 | Geçerli sürüm | 
 | ------- | --------- | --------- | 
-| Veri kümeleri | Etkinliklerinizde girdi ve çıktı olarak kullanmak istediğiniz verilere başvuran verilerin adlandırılmış bir görünümüdür. Veri kümeleri tablolar, dosyalar, klasörler ve belgeler gibi farklı veri depolarındaki verileri tanımlar. Örneğin Azure Blob veri kümesi, etkinliğin verileri okuması için gereken blob kapsayıcısını ve Azure Blob depolama klasörünü belirtir.<br/><br/>**Kullanılabilirlik** , veri kümesi (saatlik, günlük gibi) için model dilimleme işleme penceresini tanımlar. | Veri kümeleri geçerli sürümde aynıdır. Ancak, veri kümeleri için **kullanılabilirlik** zaman çizelgelerini tanımlamanız gerekmez. İşlem hatlarını bir zaman çizelgesi oluşturma paradigmasından zamanlayabilen bir tetikleyici kaynak belirleyebilirsiniz. Daha fazla bilgi için [Tetikleyiciler](concepts-pipeline-execution-triggers.md#trigger-execution) ve [Veri Kümeleri](concepts-datasets-linked-services.md) bölümlerine bakın. | 
+| Veri kümeleri | Etkinliklerinizde girdi ve çıktı olarak kullanmak istediğiniz verilere başvuran verilerin adlandırılmış bir görünümüdür. Veri kümeleri tablolar, dosyalar, klasörler ve belgeler gibi farklı veri depolarındaki verileri tanımlar. Örneğin Azure Blob veri kümesi, etkinliğin verileri okuması için gereken blob kapsayıcısını ve Azure Blob depolama klasörünü belirtir.<br/><br/>**Kullanılabilirlik**, veri kümesi (saatlik, günlük gibi) için model dilimleme işleme penceresini tanımlar. | Veri kümeleri geçerli sürümde aynıdır. Ancak, veri kümeleri için **kullanılabilirlik** zaman çizelgelerini tanımlamanız gerekmez. İşlem hatlarını bir zaman çizelgesi oluşturma paradigmasından zamanlayabilen bir tetikleyici kaynak belirleyebilirsiniz. Daha fazla bilgi için [Tetikleyiciler](concepts-pipeline-execution-triggers.md#trigger-execution) ve [Veri Kümeleri](concepts-datasets-linked-services.md) bölümlerine bakın. | 
 | Bağlı hizmetler | Bağlı hizmetler, dış kaynaklara bağlanmak için Data Factory'ye gereken bağlantı bilgilerini tanımlayan bağlantı dizelerine çok benzer. | Bağlı hizmetler Data Factory V1 ile aynıdır, ancak Data Factory'nin geçerli sürümünün Integration Runtime bilgi işlem ortamından yararlanmak için yeni bir **connectVia** özelliği de bulunur. Daha fazla bilgi için bkz. [Azure Data Factory’de tümleştirme çalışma zamanı](concepts-integration-runtime.md) ve [Azure Blob depolama için bağlı hizmeti özellikleri](connector-azure-blob-storage.md#linked-service-properties). |
-| İşlem hatları | Bir veri fabrikasında bir veya daha fazla işlem hattı olabilir. İşlem hattı, bir görevi gerçekleştiren etkinliklerden oluşan mantıksal gruptur. İşlem hatlarını zamanlamak ve çalıştırmak için startTime, endTime ve isPaused kullanırsınız. | İşlem hatları, veriler üzerinde uygulanacak etkinlik gruplarıdır. Ancak işlem hattındaki etkinliklerin zamanlanması, tetikleyici kaynaklarına ayrılmıştır. Data Factory'nin geçerli sürümü üzerindeki işlem hatlarını, tetikleyiciler aracılığıyla ayrı olarak zamanladığınız “iş akışı birimleri” olarak düşünebilirsiniz. <br/><br/>Data Factory'nin geçerli sürümünde, işlem hatlarının yürütüleceği zaman “pencereleri” yoktur. Data Factory V1’in startTime, endTime, ve isPaused kavramları, Data Factory'nin geçerli sürümünde bulunmaz. Daha fazla bilgi bkz. [İşlem hattı yürütme ve tetikleyicileri](concepts-pipeline-execution-triggers.md) ve [İşlem hatları ve etkinlikler](concepts-pipelines-activities.md). |
+| Pipelines | Bir veri fabrikasında bir veya daha fazla işlem hattı olabilir. İşlem hattı, bir görevi gerçekleştiren etkinliklerden oluşan mantıksal gruptur. İşlem hatlarını zamanlamak ve çalıştırmak için startTime, endTime ve isPaused kullanırsınız. | İşlem hatları, veriler üzerinde uygulanacak etkinlik gruplarıdır. Ancak işlem hattındaki etkinliklerin zamanlanması, tetikleyici kaynaklarına ayrılmıştır. Şu anki Data Factory işlem hatlarını, Tetikleyiciler aracılığıyla ayrı olarak zamanladığınız "iş akışı birimleri" olarak düşünebilirsiniz. <br/><br/>İşlem hatları geçerli Data Factory sürümünde yürütme zaman yürütmesiyle "Windows" değildir. Data Factory V1’in startTime, endTime, ve isPaused kavramları, Data Factory'nin geçerli sürümünde bulunmaz. Daha fazla bilgi bkz. [İşlem hattı yürütme ve tetikleyicileri](concepts-pipeline-execution-triggers.md) ve [İşlem hatları ve etkinlikler](concepts-pipelines-activities.md). |
 | Etkinlikler | Etkinlikler, bir işlem hattındaki verilerinizde gerçekleştirilecek eylemleri tanımlar. Veri taşıma (kopyalama etkinliği) ve veri dönüştürme etkinlikleri (Hive, Pig ve MapReduce gibi) desteklenir. | Geçerli Data Factory sürümünde, etkinlikler bir işlem hattının içinde tanımlanmış eylemlerdir. Data Factory geçerli sürümü, yeni [Denetim akışı etkinliklerini](concepts-pipelines-activities.md#control-flow-activities)tanıtır. Bu etkinlikleri denetim akışında (döngü ve dal oluşturma) kullanırsınız. V1’de desteklenen veri taşıma ve veri dönüştürmek etkinlikleri, geçerli sürümde de desteklenir. Geçerli sürümde dönüşüm etkinliklerini veri kümelerini kullanmadan da tanımlayabilirsiniz. |
 | Karma veri taşıma ve etkinlik dağıtma | Adı Integration Runtime olarak değişen [Veri Yönetimi Ağ Geçidi](v1/data-factory-data-management-gateway.md), şirket içi ile bulut arasında veri taşıma desteği sunuyordu.| Veri Yönetimi Ağ Geçidi artık Şirket İçinde Barındırılan Integration Runtime olarak adlandırılmaktadır. V1’deki özelliklerin aynısını sunar. <br/><br/> Data Factory'nin geçerli sürümündeki Azure-SSIS Integration Runtime, bulutta SQL Server Integration Services (SSIS) dağıtımını ve çalıştırılmasını destekler. Daha fazla bilgi için bkz. [Azure Data Factory'de tümleştirme çalışma zamanı](concepts-integration-runtime.md).|
 | Parametreler | NA | Parametreler, işlem hatlarında tanımlanan salt okunur yapılandırma ayarlarının anahtar-değer çiftleridir. İşlem hattını el ile çalıştırırken, bağımsız değişkenleri parametrelere geçirebilirsiniz. Bir zamanlayıcı tetikleyicisi kullanıyorsanız, tetikleyici de parametrelere ilişkin değerleri geçirebilir. İşlem hattındaki etkinlikler parametre değerlerini kullanır.  |
@@ -69,12 +65,12 @@ Durum da dahil olmak üzere etkinlik çıktıları, işlem hattının sonraki bi
 [İşlem Hattı Yürütme etkinliği](control-flow-execute-pipeline-activity.md) bir Data Factory işlem hattının başka bir işlem hattını çağırmasını sağlar.
 
 ### <a name="delta-flows"></a>Delta akışlar
-ETL düzenlerindeki bir anahtar kullanım örneği, bir işlem hattının son yinelenmesinden itibaren yalnızca verilerin değiştiği “değişiklik yüklemeleri”dir. Geçerli sürümdeki [arama etkinliği](control-flow-lookup-activity.md), esnek zamanlama ve denetim akışı gibi yeni özellikler, bu kullanım örneğini doğal bir biçimde sunar. Adım adım yönergeler içeren bir öğretici için bkz. [Öğretici: Artımlı kopya](tutorial-incremental-copy-powershell.md).
+ETL desenlerindeki bir anahtar kullanım örneği, yalnızca bir işlem hattının son yinelemesi yüklendikten sonra değişen verilerin değiştiği "Delta yükleri" dir. Geçerli sürümdeki [arama etkinliği](control-flow-lookup-activity.md), esnek zamanlama ve denetim akışı gibi yeni özellikler, bu kullanım örneğini doğal bir biçimde sunar. Adım adım yönergeler içeren bir öğretici için bkz. [Öğretici: Artımlı kopya](tutorial-incremental-copy-powershell.md).
 
 ### <a name="other-control-flow-activities"></a>Diğer denetim akışı etkinlikleri
 Data Factory'nin geçerli sürümü tarafından desteklenen denetim akışı etkinliklerinin bazıları aşağıda verilmiştir. 
 
-Denetim etkinliği | Açıklama
+Denetim etkinliği | Description
 ---------------- | -----------
 [ForEach etkinliği](control-flow-for-each-activity.md) | İşlem hattınızda yinelenen bir denetim akışını tanımlar. Bu etkinlik bir koleksiyon üzerinde yinelemek için kullanılır ve bir döngüde belirtilen etkinlikleri çalıştırır. Bu etkinliğin döngü uygulaması, programlama dillerindeki Foreach döngü yapısına benzer.
 [Web etkinliği](control-flow-web-activity.md) | Bir Data Factory işlem hattından özel bir REST uç noktasını çağırmak için kullanılabilir. Etkinlik tarafından kullanılacak ve erişilecek veri kümelerini ve bağlı hizmetleri geçirebilirsiniz. 
@@ -92,7 +88,7 @@ Azure-SSIS Integration Runtime, bulutta SSIS paketlerinizi çalıştırmaya ayr�
 ## <a name="flexible-scheduling"></a>Esnek zamanlama
 Data Factory'nin geçerli sürümünde veri kümesi kullanılabilirlik zaman çizelgelerini tanımlamanız gerekmez. İşlem hatlarını bir zaman çizelgesi oluşturma paradigmasından zamanlayabilen bir tetikleyici kaynak belirleyebilirsiniz. Esnek bir zamanlama ve yürütme modeli için, parametreleri tetikleyiciden işlem hatlarına geçirebilirsiniz. 
 
-Data Factory'nin geçerli sürümünde, işlem hatlarının yürütüleceği zaman “pencereleri” yoktur. Data Factory V1’in startTime, endTime, ve isPaused kavramları, Data Factory'nin geçerli sürümünde mevcut değildir. Data Factory'nin geçerli sürümünde işlem hattı oluşturma ve ardından bunu zamanlama hakkında daha fazla bilgi için bkz. [İşlem hattı yürütme ve tetikleyiciler](concepts-pipeline-execution-triggers.md).
+İşlem hatları geçerli Data Factory sürümünde yürütme zaman yürütmesiyle "Windows" değildir. Data Factory V1’in startTime, endTime, ve isPaused kavramları, Data Factory'nin geçerli sürümünde mevcut değildir. Data Factory'nin geçerli sürümünde işlem hattı oluşturma ve ardından bunu zamanlama hakkında daha fazla bilgi için bkz. [İşlem hattı yürütme ve tetikleyiciler](concepts-pipeline-execution-triggers.md).
 
 ## <a name="support-for-more-data-stores"></a>Daha fazla veri deposu desteği
 Geçerli sürümde V1’e kıyasla daha fazla veri deposuna ve daha fazla veri deposundan veri kopyalanabilir. Desteklenen veri depoları listesi için aşağıdaki makalelere bakın:
@@ -103,7 +99,7 @@ Geçerli sürümde V1’e kıyasla daha fazla veri deposuna ve daha fazla veri d
 ## <a name="support-for-on-demand-spark-cluster"></a>İsteğe bağlı Spark kümesi desteği
 Geçerli sürüm, isteğe bağlı Azure HDInsight Spark kümesi oluşturulmasını destekler. İsteğe bağlı bir Spark kümesi oluşturmak için, steğe bağlı HDInsight bağlı servis tanımınızdaki küme türünü Spark olarak belirtin. Ardından, işlem hattınızdaki Spark etkinliğini bu bağlı hizmeti kullanacak biçimde yapılandırabilirsiniz. 
 
-Çalışma zamanında, etkinlik yürütüldüğünde, Data Factory hizmeti otomatik olarak Spark kümesini oluşturur. Daha fazla bilgi için aşağıdaki makalelere bakın:
+Çalışma zamanında, etkinlik yürütüldüğünde, Data Factory hizmeti otomatik olarak Spark kümesini oluşturur. Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
 
 - [Data Factory'nin geçerli sürümündeki Spark etkinliği](transform-data-using-spark.md)
 - [İsteğe bağlı Azure HDInsight bağlı hizmeti](compute-linked-services.md#azure-hdinsight-on-demand-linked-service)
@@ -115,16 +111,16 @@ Geçerli sürümdeki özel etkinlikte .NET arabirimi uygulamanız gerekmez. Doğ
 
 Daha fazla bilgi için bkz. [Data Factory ve sürüm 1’de özel etkinlikler arasındaki farklar](transform-data-using-dotnet-custom-activity.md#compare-v2-v1).
 
-## <a name="sdks"></a>SDK’lar
+## <a name="sdks"></a>SDK
  Data Factory'nin geçerli sürümü işlem hatlarını yazmak, yönetmek ve izlemek için kullanılabilen daha geniş SDK seçenekleri sunar.
 
-- **.NET SDK** : .NET SDK, geçerli sürüm için güncelleştirilmiştir.
+- **.NET SDK**: .NET SDK, geçerli sürüm için güncelleştirilmiştir.
 
-- **PowerShell** : PowerShell cmdlet'leri geçerli sürüm için güncelleştirilmiştir. Geçerli sürümün cmdlet 'leri adında **DataFactoryV2** vardır, örneğin: Get-AzDataFactoryV2. 
+- **PowerShell**: PowerShell cmdlet'leri geçerli sürüm için güncelleştirilmiştir. Geçerli sürümün cmdlet 'leri adında **DataFactoryV2** vardır, örneğin: Get-AzDataFactoryV2. 
 
-- **Python SDK** : Bu SDK geçerli sürüm içindir.
+- **Python SDK**: Bu SDK geçerli sürüm içindir.
 
-- **REST API** : REST API, geçerli sürüm için güncelleştirilmiştir. 
+- **REST API**: REST API, geçerli sürüm için güncelleştirilmiştir. 
 
 Geçerli sürüm için güncelleştirilmiş olan SDK'lar V1 istemcileriyle uyumlu değildir. 
 
@@ -132,11 +128,11 @@ Geçerli sürüm için güncelleştirilmiş olan SDK'lar V1 istemcileriyle uyuml
 
 | | Sürüm 2 | Sürüm 1 |
 | ------ | -- | -- | 
-| **Azure Portal** | [Evet](quickstart-create-data-factory-portal.md) | Hayır |
+| **Azure portalı** | [Evet](quickstart-create-data-factory-portal.md) | No |
 | **Azure PowerShell** | [Evet](quickstart-create-data-factory-powershell.md) | [Evet](./v1/data-factory-build-your-first-pipeline-using-powershell.md) |
 | **.NET SDK** | [Evet](quickstart-create-data-factory-dot-net.md) | [Evet](./v1/data-factory-build-your-first-pipeline-using-vs.md) |
 | **REST API** | [Evet](quickstart-create-data-factory-rest-api.md) | [Evet](./v1/data-factory-build-your-first-pipeline-using-rest-api.md) |
-| **Python SDK'sı** | [Evet](quickstart-create-data-factory-python.md) | Hayır |
+| **Python SDK'sı** | [Evet](quickstart-create-data-factory-python.md) | No |
 | **Resource Manager şablonu** | [Evet](quickstart-create-data-factory-resource-manager-template.md) | [Evet](./v1/data-factory-build-your-first-pipeline-using-arm.md) | 
 
 ## <a name="roles-and-permissions"></a>Roller ve izinler

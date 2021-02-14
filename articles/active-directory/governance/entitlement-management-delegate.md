@@ -16,12 +16,12 @@ ms.date: 12/23/2020
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a5812d4dbbd1a63b16d5bee77bb018ea18dd1d6
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: c8e6c13600cb5940351d31b54af403584cc68a5f
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98937686"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100515657"
 ---
 # <a name="delegation-and-roles-in-azure-ad-entitlement-management"></a>Azure AD yetkilendirme yönetiminde yetkilendirme ve roller
 
@@ -133,9 +133,6 @@ Genel yönetici veya Kullanıcı Yöneticisi olmayan bir kullanıcı için bir k
 | [Uygulama Yöneticisi](../roles/permissions-reference.md) | Katalog sahibi |  |  | :heavy_check_mark: |  |
 | [Bulut uygulaması Yöneticisi](../roles/permissions-reference.md) | Katalog sahibi |  |  | :heavy_check_mark: |  |
 | Kullanıcı | Katalog sahibi | Yalnızca Grup sahibi ise | Yalnızca Grup sahibi ise | Yalnızca uygulama sahibi ise |  |
-
-> [!NOTE]
-> Bir Kullanıcı bir güvenlik grubu veya Microsoft 365 Grubu eklerse, Grup rol atanabilir olamaz. Kullanıcı, erişim paketini oluştururken rol atanabilir bir grup eklerse, bu rol atanabilir grubun sahibi de olmalıdır. Daha fazla bilgi için başvuru [Azure Active Directory rol atanabilir bir grup oluşturun](../roles/groups-create-eligible.md).
 
 Bir görev için en düşük ayrıcalıklı rolü öğrenmek için, [Azure Active Directory ' de yönetici görevine göre yönetici rollerine](../roles/delegate-by-task.md#entitlement-management)de başvurabilirsiniz.
 

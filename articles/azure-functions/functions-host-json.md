@@ -3,12 +3,12 @@ title: Azure Işlevleri 2. x için başvuru host.js
 description: Azure Işlevleri için başvuru belgeleri v2 çalışma zamanı ile dosyada host.js.
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: 735c92720f4a3f871499ad3a0565446a02b438eb
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 7ab60fb364eb3268a03c04bb4950251ae030f015
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97654821"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100374057"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Azure İşlevleri 2.x ve üzeri için host.json başvurusu 
 
@@ -39,6 +39,7 @@ Sürüm 2. x + için aşağıdaki örnek *host.js* , belirtilen tüm seçenekler
         "flushTimeout": "00:00:30"
     },
     "extensions": {
+        "blobs": {},
         "cosmosDb": {},
         "durableTask": {},
         "eventHubs": {},
@@ -175,7 +176,7 @@ Bu ayarlar hakkında daha fazla bilgi için bkz. [örnekleme Application Insight
 | samplingPercentageDecreaseTimeout | 00:00:01 | Örnekleme yüzdesi değeri değiştiğinde, bu özellik daha sonra daha az veri yakalamak için örnekleme yüzdesini yeniden ne kadar küçük bir süre sonra Application Insights izin verileceğini belirler. |
 | Minörneklingpercentage | 0.1 | Örnekleme yüzdesi farklılık gösterdiğinden, bu özellik izin verilen minimum örnekleme yüzdesini belirler. |
 | maxSamplingPercentage | 100,0 | Örnekleme yüzdesi farklılık gösterdiğinden, bu özellik izin verilen en fazla örnekleme yüzdesini belirler. |
-| movingAverageRatio | 1,0 | Hareketli ortalama hesaplamasında, en son değere atanan ağırlık. 1 ' den küçük veya buna eşit bir değer kullanın. Daha küçük değerler, algoritmayı ani değişikliklere karşı daha az reaktif hale getirir. |
+| movingAverageRatio | 1.0 | Hareketli ortalama hesaplamasında, en son değere atanan ağırlık. 1 ' den küçük veya buna eşit bir değer kullanın. Daha küçük değerler, algoritmayı ani değişikliklere karşı daha az reaktif hale getirir. |
 | excludedTypes | null | Örneklemeyi istemediğiniz türlerin noktalı virgülle ayrılmış listesi. Tanınan türler şunlardır: `Dependency` , `Event` , `Exception` , `PageView` , `Request` , ve `Trace` . Belirtilen türlerin tüm örnekleri iletilir; belirtilmeyen türler örneklenir. |
 | ıncludedtypes | null | Örneklemeyi yapmak istediğiniz türlerin noktalı virgülle ayrılmış listesi; boş liste tüm türleri gösterir. `excludedTypes`Burada listelenen geçersiz kılma türlerinde listelenen tür. Tanınan türler şunlardır: `Dependency` , `Event` , `Exception` , `PageView` , `Request` , ve `Trace` . Belirtilen türlerin örnekleri örneklenir; belirtilmemiş veya zımni türler, örnekleme olmadan iletilir. |
 
@@ -215,6 +216,10 @@ Anlık görüntüler hakkında daha fazla bilgi için bkz. [.NET uygulamalarınd
 | tempFolder | null | Mini dökümler ve Uploader günlük dosyalarının yazılacağı klasörü belirtir. Ayarlanmamışsa, *%Temp%\dökümler* kullanılır. |
 | Thresholdfori biçimlendirme | 1 | Anlık görüntü sorulmadan önce kaç Application Insights kez bir özel durum görmeniz gerekir. |
 | uploaderProxy | null | Snapshot Uploader işleminde kullanılan proxy sunucusunu geçersiz kılar. Uygulamanız bir ara sunucu üzerinden İnternet 'e bağlanıyorsa bu ayarı kullanmanız gerekebilir. Snapshot Collector uygulamanızın sürecinde çalışır ve aynı ara sunucu ayarlarını kullanacaktır. Ancak, anlık görüntü yükleyicisi ayrı bir işlem olarak çalışır ve proxy sunucusunu el ile yapılandırmanız gerekebilir. Bu değer null ise Snapshot Collector, sistem .net. WebRequest. DefaultWebProxy ' yi inceleyerek ve değeri Snapshot Uploader ' e geçirerek proxy 'nin adresini otomatik olarak yeniden dener. Bu değer null değilse, oto algılaması kullanılmaz ve burada belirtilen proxy sunucusu, anlık görüntü yükleyicisi 'nde kullanılacaktır. |
+
+## <a name="blobs"></a>larını
+
+Yapılandırma ayarları, [Depolama Blobu Tetikleyicileri ve bağlamaları](functions-bindings-storage-blob.md#hostjson-settings)bölümünde bulunabilir.  
 
 ## <a name="cosmosdb"></a>cosmosDb
 
@@ -378,7 +383,7 @@ Yönetilen bağımlılık Şu anda yalnızca PowerShell tabanlı işlevlerde des
 
 ## <a name="queues"></a>klarında
 
-Yapılandırma ayarları, [depolama kuyruğu Tetikleyicileri ve bağlamaları](functions-bindings-storage-queue-output.md#host-json)bölümünde bulunabilir.  
+Yapılandırma ayarları, [depolama kuyruğu Tetikleyicileri ve bağlamaları](functions-bindings-storage-queue.md#host-json)bölümünde bulunabilir.  
 
 ## <a name="retry"></a>retry
 

@@ -3,14 +3,14 @@ title: Azure Izleyici Application Insights çalışma alanı tabanlı kaynak şe
 description: Azure Izleyici Application Insights çalışma alanı tabanlı kaynakların yeni tablo yapısı ve şeması hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 05/09/2020
-ms.openlocfilehash: 8f0bee64d74cfd5b6abef5c918c023974fda3fcf
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: e63d4a680ad76ccd6895aed53f3276a5775b1226
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91931062"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100385974"
 ---
-# <a name="workspace-based-resource-changes-preview"></a>Çalışma alanı tabanlı kaynak değişiklikleri (Önizleme)
+# <a name="workspace-based-resource-changes"></a>Çalışma alanı tabanlı kaynak değişiklikleri
 
 [Çalışma alanı tabanlı Application Insights kaynaklarının](create-workspace-resource.md)kullanıma sunulmasından önce Application Insights verileri Azure izleyici 'deki diğer günlük verilerinden ayrı olarak depolandı. Her ikisi de Azure Veri Gezgini tabanlıdır ve aynı kusto sorgu dilini (KQL) kullanır. Bu, [Azure izleyici 'de günlüklerde](../platform/data-platform-logs.md)açıklanmıştır.
 
@@ -18,7 +18,7 @@ ms.locfileid: "91931062"
 
 ## <a name="table-structure"></a>Tablo yapısı
 
-| Eski tablo adı | Yeni tablo adı | Açıklama |
+| Eski tablo adı | Tablonun yeni adı | Description |
 |:---|:---|:---|
 | availabilityResults | AppAvailabilityResults |  Kullanılabilirlik testlerinden özet veriler.|
 | Browserzamanlamalar | Appbrowserzamanlamalar | Gelen verileri işlemek için geçen süre gibi istemci performansı hakkındaki veriler.|
@@ -66,7 +66,7 @@ Eski tablo: kullanılabilirlik
 |ItemType|string|Tür|Dize|
 |location|string|Konum|string|
 |message|string|İleti|string|
-|name|string|Adı|string|
+|name|string|Name|string|
 |operation_Id|string|OperationId|string|
 |operation_Name|string|OperationName|string|
 |operation_ParentId|string|Operationparentıd|string|
@@ -106,7 +106,7 @@ Eski tablo: Browserzamanlamalar
 |ItemCount|int|ItemCount|int|
 |ID|string|\_ID|string|
 |ItemType|string|Tür|string|
-|name|string|Adı|datetime|
+|name|string|Name|datetime|
 |networkDuration|real|NetworkDurationMs|real|
 |operation_Id|string|OperationId|string|
 |operation_Name|string|OperationName|string|
@@ -153,7 +153,7 @@ Eski tablo: bağımlılıklar
 |ItemCount|int|ItemCount|int|
 |ID|string|\_ID|string|
 |ItemType|string|Tür|Dize|
-|name|string|Adı|string|
+|name|string|Name|string|
 |operation_Id|string|OperationId|string|
 |operation_Name|string|OperationName|string|
 |operation_ParentId|string|Operationparentıd|string|
@@ -195,7 +195,7 @@ Eski tablo: customEvents
 |ItemCount|int|ItemCount|int|
 |ID|string|\_ID|string|
 |ItemType|string|Tür|string|
-|name|string|Adı|string|
+|name|string|Name|string|
 |operation_Id|string|OperationId|string|
 |operation_Name|string|OperationName|string|
 |operation_ParentId|string|Operationparentıd|string|
@@ -230,7 +230,7 @@ Eski tablo: Customölçümler
 |iKey|string|IKey|string|
 |ID|string|\_ID|string|
 |ItemType|string|Tür|string|
-|name|string|Adı|string|
+|name|string|Name|string|
 |operation_Id|string|OperationId|string|
 |operation_Name|string|OperationName|string|
 |operation_ParentId|string|Operationparentıd|string|
@@ -275,7 +275,7 @@ Eski tablo: pageViews
 |ItemCount|int|ItemCount|int|
 |ID|string|\_ID|string|
 |ItemType|string|Tür|Dize|
-|name|string|Adı|string|
+|name|string|Name|string|
 |operation_Id|string|OperationId|string|
 |operation_Name|string|OperationName|string|
 |operation_ParentId|string|Operationparentıd|string|
@@ -315,7 +315,7 @@ Eski tablo: performanceCounters
 |örnek|string|Örnek|string|
 |ID|string|\_ID|string|
 |ItemType|string|Tür|string|
-|name|string|Adı|string|
+|name|string|Name|string|
 |operation_Id|string|OperationId|string|
 |operation_Name|string|OperationName|string|
 |operation_ParentId|string|Operationparentıd|string|
@@ -355,7 +355,7 @@ Eski tablo: istekler
 |ItemCount|int|ItemCount|int|
 |ID|string|\_ID|string|
 |ItemType|string|Tür|Dize|
-|name|string|Adı|Dize|
+|name|string|Name|Dize|
 |operation_Id|string|OperationId|string|
 |operation_Name|string|OperationName|string|
 |operation_ParentId|string|Operationparentıd|string|

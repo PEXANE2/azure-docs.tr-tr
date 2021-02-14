@@ -15,18 +15,18 @@ ms.topic: quickstart
 ms.date: 04/30/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 7a3c4bc2a0445a2821e212986b495993695652a6
-ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
+ms.openlocfilehash: 45edf57ed41f8cf7be839edade5038a0787424a4
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98165935"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100367307"
 ---
 # <a name="quickstart-create-an-azure-cdn-profile-and-endpoint"></a>Hızlı Başlangıç: Azure CDN profili ve uç noktası oluşturma
 
 Bu hızlı başlangıçta, bir veya daha fazla CDN uç noktası koleksiyonu olan yeni bir CDN profili oluşturarak Azure Content Delivery Network 'yi (CDN) etkinleştirirsiniz. Bir profil ve uç nokta oluşturduktan sonra müşterilerinize içerik sunmaya başlayabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 - Kaynak ana bilgisayar adı için kullandığınız *cdnstorageacct123* adlı bir Azure depolama hesabı. Bu gereksinimi gerçekleştirmek için bkz. [Azure Storage hesabını Azure CDN Ile tümleştirme](cdn-create-a-storage-account-with-cdn.md).
@@ -81,7 +81,7 @@ Bir CDN profili oluşturduktan sonra, bunu bir uç nokta oluşturmak için kulla
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Öğretici: bir Web uygulamasının statik içeriğini sunucu için CDN kullanma](cdn-add-to-web-app.md)
+> [Öğretici: bir Web uygulamasından statik içerik sağlamak için CDN kullanma](cdn-add-to-web-app.md)
 
 > [!div class="nextstepaction"]
 > [Öğretici: Azure CDN uç noktanıza özel etki alanı ekleme](cdn-map-content-to-custom-domain.md)

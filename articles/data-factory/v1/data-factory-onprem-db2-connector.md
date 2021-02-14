@@ -1,23 +1,18 @@
 ---
 title: Azure Data Factory kullanarak DB2 'den veri taşıma
 description: Azure Data Factory kopyalama etkinliğini kullanarak şirket içi DB2 veritabanından veri taşımayı öğrenin
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.assetid: c1644e17-4560-46bb-bf3c-b923126671f1
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: e5d2c6b0460c3a7566adb17601aceb57e57f4d0b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: bcd1e6f9f9be1765e76399707ae36776a9f1987d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96001074"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100387368"
 ---
 # <a name="move-data-from-db2-by-using-azure-data-factory-copy-activity"></a>Azure Data Factory kopyalama etkinliğini kullanarak DB2 verilerini taşıyın
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -59,7 +54,7 @@ Data Factory DB2 Bağlayıcısı, dağıtılmış Ilişkisel veritabanı mimaris
 > - I için DB2 (AS400): bir Power User 'ın kopyalama etkinliğini çalıştırmadan önce normal kullanıcı için koleksiyon oluşturmasına Izin verin. Koleksiyonu oluşturmak için komutunu kullanın: `create collection <username>`
 > - Z/OS veya LUW için DB2: yüksek ayrıcalıklı bir hesap kullanın--paket yetkilileri ve BIND, BINERDD olan bir Power User veya yönetici, kopyayı bir kez çalıştırmak için ortak izinlere yürütme IZNI verır. Gerekli paket, kopyalama sırasında otomatik olarak oluşturulur. Daha sonra, sonraki kopya çalışmalarınız için normal kullanıcıya dönebilirsiniz.
 
-## <a name="getting-started"></a>Başlarken
+## <a name="getting-started"></a>Kullanmaya başlama
 Farklı araçlar ve API 'Ler kullanarak şirket içi DB2 veri deposundan veri taşımak için kopyalama etkinliği ile bir işlem hattı oluşturabilirsiniz: 
 
 - İşlem hattı oluşturmanın en kolay yolu Azure Data Factory kopyalama Sihirbazı ' nı kullanmaktır. Kopyalama Sihirbazı 'nı kullanarak bir işlem hattı oluşturmaya yönelik hızlı bir anlatım için, bkz [: kopyalama sihirbazını kullanarak işlem hattı oluşturma](data-factory-copy-data-wizard-tutorial.md). 
@@ -318,7 +313,7 @@ Kopyalama etkinliği verileri bir DB2 türünden .NET türüne dönüştürdüğ
 | Sayısal |Ondalık |
 | Tarih |Tarih-Saat |
 | Süre |TimeSpan |
-| Zaman damgası |DateTime |
+| Timestamp |DateTime |
 | Xml |Byte [] |
 | Char |Dize |
 | VarChar |Dize |
@@ -344,7 +339,7 @@ Kopyalama etkinliği verileri bir DB2 türünden .NET türüne dönüştürdüğ
 | Sayısal |Ondalık |
 | Tarih |Tarih-Saat |
 | Süre |TimeSpan |
-| Zaman damgası |DateTime |
+| Timestamp |DateTime |
 | Xml |Byte [] |
 | Char |Dize |
 

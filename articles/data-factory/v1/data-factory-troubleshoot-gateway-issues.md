@@ -1,22 +1,18 @@
 ---
 title: Veri Yönetimi ağ geçidi sorunlarını giderme
 description: Veri Yönetimi ağ geçidi ile ilgili sorunları gidermeye yönelik ipuçları sağlar.
-services: data-factory
 author: nabhishek
-manager: anandsub
-ms.assetid: c6756c37-4e5a-4d1e-ab52-365f149b4128
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/01/2017
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 7b12ff431b2d164baf4f70fa5341f538b16bca51
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 284486c5db248ced8ada6e7194c7bc5a9be5689f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896574"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100388354"
 ---
 # <a name="troubleshoot-issues-with-using-data-management-gateway"></a>Veri Yönetimi Ağ Geçidi kullanımıyla ilgili sorunları giderme
 Bu makalede Veri Yönetimi ağ geçidi kullanmayla ilgili sorunları giderme hakkında bilgi sağlanır.
@@ -99,7 +95,7 @@ Kurulum güncel/en son ve ağ geçidi portalda hala mevcutsa, Azure portal ağ g
 ### <a name="6-problem"></a>6. sorun
 Bir ağ geçidini kaydederken aşağıdaki hata iletisini görebilirsiniz.
 
-`Error: Gateway has been online for a while, then shows “Gateway is not registered” with the status “Gateway key is invalid”`
+`Error: Gateway has been online for a while, then shows "Gateway is not registered" with the status "Gateway key is invalid"`
 
 ![Ağ Geçidi anahtarı geçersiz veya boş](media/data-factory-troubleshoot-gateway-issues/gateway-not-registered-key-invalid.png)
 
@@ -107,7 +103,7 @@ Bir ağ geçidini kaydederken aşağıdaki hata iletisini görebilirsiniz.
 Bu hata, ağ geçidi silindiğinden veya ilişkili ağ geçidi anahtarı yeniden üretildiğinden oluşabilir.
 
 #### <a name="resolution"></a>Çözüm
-Ağ Geçidi silinmişse, portaldan ağ geçidini yeniden oluşturun, **Kaydet** ' e tıklayın, anahtarı portaldan kopyalayın, yapıştırın ve ağ geçidini kaydetmeyi deneyin.
+Ağ Geçidi silinmişse, portaldan ağ geçidini yeniden oluşturun, **Kaydet**' e tıklayın, anahtarı portaldan kopyalayın, yapıştırın ve ağ geçidini kaydetmeyi deneyin.
 
 Ağ geçidi hala mevcutsa ancak anahtarı yeniden üretildiğinde, ağ geçidini kaydetmek için yeni anahtarı kullanın. Anahtarınız yoksa portaldan anahtarı yeniden oluşturun.
 
@@ -167,7 +163,7 @@ Ağ Geçidi Service Bus aracılığıyla bulut hizmetine bağlanamaz.
 #### <a name="resolution"></a>Çözüm
 Ağ geçidini yeniden çevrimiçi olarak almak için aşağıdaki adımları izleyin:
 
-1. Ağ Geçidi makinesi ve şirket güvenlik duvarında IP adresine giden kurallara izin verin. Windows olay günlüğünden IP adreslerini bulabilirsiniz (KIMLIK = = 401): erişim izinleri XX tarafından yasaklanmış bir şekilde bir yuvaya erişme girişiminde bulunuldu. XX. XX. XX: 9350.
+1. Ağ Geçidi makinesi ve şirket güvenlik duvarında IP adresine giden kurallara izin verin. Windows olay günlüğünden IP adreslerini bulabilirsiniz (KIMLIK = = 401): erişim izinleri XX. xx. xx. XX: 9350 tarafından yasaklanmış bir şekilde bir yuvaya erişme girişiminde bulunuldu.
 1. Ağ geçidinde ara sunucu ayarlarını yapılandırın. Ayrıntılar için ara sunucu konuları bölümüne bakın.
 1. Ağ Geçidi makinesindeki Windows güvenlik duvarında ve şirket güvenlik duvarında 5671 ve 9350-9354 giden bağlantı noktalarını etkinleştirin. Ayrıntılar için bağlantı noktaları ve güvenlik duvarı bölümüne bakın. Bu adım isteğe bağlıdır, ancak performans değerlendirmesi yapmanızı öneririz.
 
@@ -233,7 +229,7 @@ Veri deposu bağlantısı veya sürücü ile ilgili hatalar görürseniz, aşağ
 
 1. Ağ Geçidi makinesinde Veri Yönetimi ağ geçidi Configuration Manager başlatın.
 2. **Tanılama** sekmesine geçin.
-3. **Test bağlantısı** ' nda Ağ Geçidi grubu değerlerini ekleyin.
+3. **Test bağlantısı**' nda Ağ Geçidi grubu değerlerini ekleyin.
 4. Bağlantı bilgilerini ve kimlik bilgilerini kullanarak ağ geçidi makinesinden şirket içi veri kaynağına bağlanıp bağlanamadıysanız bkz. **Test** ' e tıklayın. Bir sürücü yükledikten sonra bağlantı testi yine başarısız olursa, ağ geçidini son değişiklikleri alması için yeniden başlatın.
 
 ![Tanılama sekmesinde Bağlantıyı Sına](media/data-factory-troubleshoot-gateway-issues/test-connection-in-diagnostics-tab.png)

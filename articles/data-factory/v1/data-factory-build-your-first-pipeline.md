@@ -1,22 +1,18 @@
 ---
 title: 'Data Factory öğreticisi: Ilk veri işlem hattı '
 description: Bu Azure Data Factory öğreticide, Hadoop kümesinde Hive betiği kullanarak verileri işleyen bir veri fabrikası oluşturma ve zamanlama işlemi gösterilmektedir.
-services: data-factory
-documentationcenter: ''
 author: dcstwh
 ms.author: weetok
-manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: a79872c11d76a74932fe232fa3f7818edc58ffcc
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 7f1de53e20614ca66c91735ce462da5a194d1836
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96496220"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100377236"
 ---
 # <a name="tutorial-build-your-first-pipeline-to-transform-data-using-hadoop-cluster"></a>Öğretici: Hadoop kümesi kullanarak verileri dönüştürmek için ilk işlem hattınızı oluşturma
 > [!div class="op_single_selector"]

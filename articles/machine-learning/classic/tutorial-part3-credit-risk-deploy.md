@@ -6,15 +6,15 @@ author: likebupt
 ms.author: keli19
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: tutorial
 ms.date: 07/27/2020
-ms.openlocfilehash: 3afcf87c360651ac314450910fbf5ab72afd289a
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 68a5f6773543b922d024336556e4de24dd96fd33
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95503914"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100517391"
 ---
 # <a name="tutorial-3-deploy-credit-risk-model---azure-machine-learning-studio-classic"></a>Öğretici 3: Kredi risk modelini dağıtma-Azure Machine Learning Studio (klasik)
 
@@ -48,12 +48,12 @@ Bu üç bölümden oluşan öğreticide, genel kullanıma açık kredi riski ver
 ## <a name="prepare-for-deployment"></a>Dağıtım için hazırlanma
 Başkalarına bu öğreticide geliştirdiğiniz tahmine dayalı modeli kullanma şansı vermek için, Azure 'da Web hizmeti olarak dağıtabilirsiniz.
 
-Modelimizi eğitmek için bu noktaya kadar deneme yapmış olursunuz. Ancak dağıtılan hizmet artık eğitimi yapamayacak. modelimize bağlı olarak kullanıcının girişini Puanlama yoluyla yeni tahminler oluşturacağız. Bu nedenle, bu denemeyi bir ***eğitim** _ denemenizin tahmine _*_dayalı_*_ bir deneyiye dönüştürmeye yönelik bazı hazırlıklar yaptık. 
+Modelimizi eğitmek için bu noktaya kadar deneme yapmış olursunuz. Ancak dağıtılan hizmet artık eğitimi yapamayacak. modelimize bağlı olarak kullanıcının girişini Puanlama yoluyla yeni tahminler oluşturacağız. Bu nedenle, bu denemeyi bir ***eğitim** _ denemenize _ tahmine *_dayalı_** denemeye dönüştürmek için bazı hazırlıklar yapacağız. 
 
 Dağıtım hazırlığı üç adımlı bir işlemdir:  
 
 1. Modellerden birini kaldırma
-1. Oluşturduğunuz _training denemeyi * bir tahmine *dayalı denemenize* dönüştürün
+1. Oluşturduğunuz Eğitim denemesini tahmine dayalı bir *deneyle* dönüştürün 
 1. Tahmine dayalı denemeyi Web hizmeti olarak dağıtma
 
 ### <a name="remove-one-of-the-models"></a>Modellerden birini kaldırma

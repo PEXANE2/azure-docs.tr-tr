@@ -3,12 +3,12 @@ title: Azure Event Grid SDK 'lar
 description: Azure Event Grid için SDK 'Ları açıklar. Bu SDK 'lar yönetim, yayımlama ve tüketim sağlar.
 ms.topic: reference
 ms.date: 07/07/2019
-ms.openlocfilehash: 5e93448ef703be88583cd59ae5eee9d1993c4054
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c5b79f7cb7ae0112e2dacd077289786fc7b5c956
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91322538"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100516778"
 ---
 # <a name="event-grid-sdks-for-management-and-publishing"></a>Yönetim ve yayımlama için SDK 'Ları Event Grid
 
@@ -21,7 +21,7 @@ Yönetim SDK 'Ları, olay Kılavuzu konuları ve abonelikleri oluşturmanızı, 
 * [.NET](https://www.nuget.org/packages/Microsoft.Azure.Management.EventGrid)
 * [Git](https://github.com/Azure/azure-sdk-for-go)
 * [Java](https://search.maven.org/#search%7Cga%7C1%7Cazure-mgmt-eventgrid)
-* [Node](https://www.npmjs.com/package/azure-arm-eventgrid)
+* [Node](https://www.npmjs.com/package/@azure/arm-eventgrid)
 * [Python](https://pypi.python.org/pypi/azure-mgmt-eventgrid)
 * [Ruby](https://rubygems.org/gems/azure_mgmt_event_grid)
 
@@ -35,7 +35,7 @@ Veri düzlemi SDK 'Ları, kimlik doğrulama, olay yapma ve belirtilen uç noktay
 | Java | Kararlı SDK: [Azure-eventgrid](https://mvnrepository.com/artifact/com.microsoft.azure/azure-eventgrid)<p>SDK önizlemesi: [Azure-mesajlaşma-eventgrid](https://search.maven.org/artifact/com.azure/azure-messaging-eventgrid/)</p> |  
 | Python | [Azure-eventgrid](https://pypi.org/project/azure-eventgrid/#history) ( **yayın geçmişi** sayfasında en son kararlı ve yayın öncesi sürümlerine bakın) |
 | JavaScript | [@azure/eventgrid](https://www.npmjs.com/package/@azure/eventgrid/) (en son kararlı ve beta sürüm paketlerini görmek için **sürümler** sekmesine geçin). | 
-| Başlayın | [Go için Azure SDK](https://github.com/Azure/azure-sdk-for-go) | | 
+| Go | [Go için Azure SDK](https://github.com/Azure/azure-sdk-for-go) | | 
 | Ruby | [azure_event_grid](https://rubygems.org/gems/azure_event_grid) | | 
 
 

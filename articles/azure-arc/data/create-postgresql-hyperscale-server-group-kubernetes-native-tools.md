@@ -9,18 +9,18 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 30852b6b3f9a4b490c4b58fe07f34ee49c60fa9f
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: 250c1ef837793c2149ff653f395f40272cf43335
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97955255"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100384954"
 ---
 # <a name="create-a-postgresql-hyperscale-server-group-using-kubernetes-tools"></a>Kubernetes araçlarını kullanarak bir PostgreSQL hiper ölçek sunucu grubu oluşturma
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Zaten bir [Azure Arc veri denetleyicisi](./create-data-controller.md)oluşturmuş olmanız gerekir.
 
@@ -44,14 +44,14 @@ data:
   password: <your base64 encoded password>
 kind: Secret
 metadata:
-  name: example-login-secret
+  name: pg1-login-secret
 type: Opaque
 ---
 apiVersion: arcdata.microsoft.com/v1alpha1
 kind: postgresql-12
 metadata:
   generation: 1
-  name: example
+  name: pg1
 spec:
   engine:
     extensions:
@@ -107,7 +107,7 @@ echo '<your string to encode here>' | base64
 
 ### <a name="customizing-the-name"></a>Adı özelleştirme
 
-Şablon, Name özniteliği için bir ' example ' değeri içerir.  Bunu değiştirebilirsiniz, ancak DNS adlandırma standartlarını izleyen karakterler olmalıdır.  Ayrıca, eşleştirilecek gizli anahtar adını da değiştirmelisiniz.  Örneğin, PostgreSQL hiper ölçek sunucu grubunun adını ' postgres1 ' olarak değiştirirseniz, gizli anahtar adını ' example-Login-Secret ' iken ' postgres1-Login-Secret ' olarak değiştirmelisiniz
+Şablon, Name özniteliği için ' PG1 'in ' değerine sahip.  Bunu değiştirebilirsiniz, ancak DNS adlandırma standartlarını izleyen karakterler olmalıdır.  Ayrıca, eşleştirilecek gizli anahtar adını da değiştirmelisiniz.  Örneğin, PostgreSQL hiper ölçek sunucu grubunun adını ' PG2 ' olarak değiştirirseniz, gizli anahtar adını ' PG1 'in-Login-Secret ' iken ' PG2-Login-Secret ' olarak değiştirmeniz gerekir
 
 ### <a name="customizing-the-engine-version"></a>Altyapı sürümünü özelleştirme
 
@@ -152,10 +152,10 @@ kubectl create -n <your target namespace> -f <path to your yaml file>
 PostgreSQL hiper ölçek sunucu grubunu oluşturma işleminin tamamlanması birkaç dakika sürer. İlerleme durumunu başka bir Terminal penceresinde aşağıdaki komutlarla izleyebilirsiniz:
 
 > [!NOTE]
->  Aşağıdaki örnek komutlarda, ' Arc ' adına sahip ' postgres1 ' ve Kubernetes ad alanı adlı bir PostgreSQL hiper ölçek sunucu grubu oluşturduğunuzu varsayalım.  Farklı bir ad alanı/PostgreSQL hiper ölçek sunucu grubu adı kullandıysanız, ' yay ' ve ' postgres1 ' değerini adlarınızla değiştirebilirsiniz.
+>  Aşağıdaki örnek komutlarda, ' Arc ' adına sahip ' PG1 'in ' ve Kubernetes ad alanı adlı bir PostgreSQL hiper ölçek sunucu grubu oluşturduğunuzu varsayalım.  Farklı bir ad alanı/PostgreSQL hiper ölçek sunucu grubu adı kullandıysanız, ' yay ' ve ' PG1 'in ' değerini adlarınızla değiştirebilirsiniz.
 
 ```console
-kubectl get postgresql-12/postgres1 --namespace arc
+kubectl get postgresql-12/pg1 --namespace arc
 ```
 
 ```console
@@ -168,7 +168,7 @@ Ayrıca, aşağıdaki gibi bir komut çalıştırarak belirli bir pod 'un oluşt
 kubectl describe po/<pod name> --namespace arc
 
 #Example:
-#kubectl describe po/postgres1-0 --namespace arc
+#kubectl describe po/pg1-0 --namespace arc
 ```
 
 ## <a name="troubleshooting-creation-problems"></a>Oluşturma sorunlarını giderme

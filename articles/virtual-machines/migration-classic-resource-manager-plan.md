@@ -1,22 +1,22 @@
 ---
 title: Klasik 'dan Azure Resource Manager 'e geçiş planlaması
-description: Bu makalede, IaaS kaynaklarının klasik 'ten Linux 'a Azure Resource Manager geçişini nasıl planlayacağınızı öğrenin.
-services: virtual-machines-linux
+description: Bu makalede, IaaS kaynaklarının klasik 'dan Azure Resource Manager geçirilmesini nasıl planlayacağınızı öğrenin.
+services: virtual-machines
 author: tanmaygore
 manager: vashan
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: 271a20c5c9b6e157343246afb79f40894fe8a097
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: c29ca5f51e59775479fa5e97e88b28dba110d866
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94904796"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100366084"
 ---
-# <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager-in-linux"></a>IaaS kaynaklarının klasik 'ten Linux 'a Azure Resource Manager geçişini planlama
+# <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>IaaS kaynaklarının Klasik’ten Azure Resource Manager’a geçişini planlama
 
 > [!IMPORTANT]
 > Bugün, IaaS VM 'lerinin yaklaşık %90 ' u [Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/)kullanıyor. 28 Şubat 2020 itibariyle klasik VM 'Ler kullanımdan kaldırılmıştır ve 1 Mart 2023 tarihinde tamamen kullanımdan kaldırılacaktır. Bu kullanımdan kaldırma ve [nasıl etkilediği](classic-vm-deprecation.md#how-does-this-affect-me)hakkında [daha fazla bilgi edinin]( https://aka.ms/classicvmretirement) .

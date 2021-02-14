@@ -6,12 +6,12 @@ ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/07/2020
-ms.openlocfilehash: cf3c07f32f15ff176974219bd8143a1ea315c945
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: f8d8547c2d4900e6258f7360c50d8dfc17157832
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93423054"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100517253"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure veritabanı ile iş sürekliliği 'ne genel bakış-tek sunucu
 
@@ -21,7 +21,7 @@ Bu genel bakışta, PostgreSQL için Azure veritabanı 'nın iş sürekliliği v
 
 İş sürekliliği planınızı geliştirdikçe, kurtarma süresi hedefiniz (RTO) bu şekilde kesintiye uğradıktan sonra uygulama tamamen kurtarmadan önce kabul edilebilir maksimum süreyi anlamanız gerekir. Ayrıca, kurtarma noktası hedefiniz (RPO) olduğundan, uygulamanın, kesintiye uğratan sonra kurtarma sırasında kaybedilmesi için en yüksek veri güncelleştirme miktarını (zaman aralığı) anlamanız gerekir.
 
-PostgreSQL için Azure veritabanı, coğrafi geri yükleme başlatabilir ve okuma çoğaltmalarını farklı bir bölgede dağıtmaya yönelik coğrafi olarak yedekli yedeklemeler içeren iş sürekliliği özellikleri sunar. Her birinin, kurtarma zamanı ve olası veri kaybı için farklı özellikleri vardır. [Coğrafi geri yükleme](concepts-backup.md) özelliği ile, başka bir bölgeden çoğaltılan yedekleme verileri kullanılarak yeni bir sunucu oluşturulur. Geri yükleme ve kurtarma için gereken toplam süre, veritabanının boyutuna ve kurtarılacak günlüklerin miktarına bağlıdır. Sunucu oluşturmak için genel süre, birkaç dakikadan birkaç saate kadar farklılık gösterir. [Okuma çoğaltmalarıyla](concepts-read-replicas.md), birincil işlemden alınan işlem günlükleri zaman uyumsuz olarak çoğaltmaya akışla kaydedilir. Bölge düzeyi veya bölge düzeyinde bir hata nedeniyle birincil veritabanı kesintisi durumunda çoğaltmaya yük devretmek, daha kısa bir RTO ve azaltılmış veri kaybı sağlar.
+PostgreSQL için Azure Veritabanı coğrafi geri yükleme başlatma olanağıyla coğrafi olarak yedekli yedeklemeleri ve farklı bir bölgeye okuma amaçlı çoğaltmalar dağıtmayı içeren iş sürekliliği özellikleri sağlar. Her birinin, kurtarma zamanı ve olası veri kaybı için farklı özellikleri vardır. [Coğrafi geri yükleme](concepts-backup.md) özelliği ile, başka bir bölgeden çoğaltılan yedekleme verileri kullanılarak yeni bir sunucu oluşturulur. Geri yükleme ve kurtarma için gereken toplam süre, veritabanının boyutuna ve kurtarılacak günlüklerin miktarına bağlıdır. Sunucu oluşturmak için genel süre, birkaç dakikadan birkaç saate kadar farklılık gösterir. [Okuma çoğaltmalarıyla](concepts-read-replicas.md), birincil işlemden alınan işlem günlükleri zaman uyumsuz olarak çoğaltmaya akışla kaydedilir. Bölge düzeyi veya bölge düzeyinde bir hata nedeniyle birincil veritabanı kesintisi durumunda çoğaltmaya yük devretmek, daha kısa bir RTO ve azaltılmış veri kaybı sağlar.
 
 > [!NOTE]
 > Birincil ve çoğaltma arasındaki gecikme, siteler arasındaki gecikmeye, aktarılan veri miktarına ve birincil sunucunun yazma iş yükünde en önemlisi ne kadar önemli olduğuna bağlıdır. Ağır yazma iş yükleri önemli bir gecikme oluşturabilir. 
@@ -32,7 +32,7 @@ Aşağıdaki tabloda **tipik bir iş yükü** senaryosunda RTO ve RPO karşıla�
 
 | **Özellik** | **Temel** | **Genel Amaçlı** | **Bellek için iyileştirilmiş** |
 | :------------: | :-------: | :-----------------: | :------------------: |
-| Yedekten belirli bir noktaya geri yükleme | Bekletme dönemi içinde herhangi bir geri yükleme noktası | Bekletme dönemi içinde herhangi bir geri yükleme noktası | Bekletme dönemi içinde herhangi bir geri yükleme noktası |
+| Yedekten belirli bir noktaya geri yükleme | Bekletme dönemi içinde herhangi bir geri yükleme noktası <br/> RTO-değişecek <br/>RPO < 15 dk| Bekletme dönemi içinde herhangi bir geri yükleme noktası <br/> RTO-değişecek <br/>RPO < 15 dk | Bekletme dönemi içinde herhangi bir geri yükleme noktası <br/> RTO-değişecek <br/>RPO < 15 dk |
 | Coğrafi olarak çoğaltılan yedeklerden coğrafi geri yükleme | Desteklenmez | RTO-değişecek <br/>RPO < 1 h | RTO-değişecek <br/>RPO < 1 h |
 | Okuma amaçlı çoğaltmalar | RTO-dakika * <br/>RPO < 5 dk * | RTO-dakika * <br/>RPO < 5 dk *| RTO-dakika * <br/>RPO < 5 dk *|
 
