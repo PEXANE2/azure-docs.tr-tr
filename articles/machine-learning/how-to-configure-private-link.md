@@ -10,13 +10,13 @@ ms.custom: how-to, devx-track-azurecli
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 09/30/2020
-ms.openlocfilehash: 5ba1b9d53255406a73b1b74dbc59fe39e3f9a0d7
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.date: 02/09/2021
+ms.openlocfilehash: 75ea473c8669e9d50d2e9971a20a5fc1c3070779
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99979190"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100368022"
 ---
 # <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace"></a>Azure Machine Learning çalışma alanı için Azure özel bağlantısını yapılandırma
 
@@ -31,8 +31,9 @@ Azure özel bağlantısı, özel bir uç nokta kullanarak çalışma alanınıza
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Müşteri tarafından yönetilen bir anahtarla özel bağlantı etkin bir çalışma alanı kullanmayı planlıyorsanız, bu özelliği bir destek bileti kullanarak istemeniz gerekir. Daha fazla bilgi için bkz. [kotaları yönetme ve artırma](how-to-manage-quotas.md#private-endpoint-and-private-dns-quota-increases).
+* Müşteri tarafından yönetilen bir anahtarla özel bağlantı etkin bir çalışma alanı kullanmayı planlıyorsanız, bu özelliği bir destek bileti kullanarak istemeniz gerekir. Daha fazla bilgi için bkz. [kotaları yönetme ve artırma](how-to-manage-quotas.md#private-endpoint-and-private-dns-quota-increases).
 
+* İçinde özel uç noktasını oluşturmak için var olan bir sanal ağınız olmalıdır. Özel uç nokta eklemeden önce [Özel uç noktalar için ağ ilkelerini de devre dışı bırakmanız](../private-link/disable-private-endpoint-network-policy.md) gerekir.
 ## <a name="limitations"></a>Sınırlamalar
 
 * Azure Kamu bölgelerinde veya Azure Çin 21Vianet bölgelerinde özel bağlantıyla birlikte bir Azure Machine Learning çalışma alanı kullanılması kullanılamaz.
@@ -73,6 +74,19 @@ ws = Workspace.create(name='myworkspace',
 * `--pe-vnet-name`: İçinde özel uç nokta oluşturmak için var olan sanal ağ.
 * `--pe-subnet-name`: İçinde özel uç nokta oluşturulacak alt ağın adı. `default` varsayılan değerdir.
 
+Bu parametreler Create komutu için gerekli diğer parametrelere ek niteliğindedir. Örneğin, aşağıdaki komut, var olan bir kaynak grubunu ve VNet 'i kullanarak Batı ABD bölgesinde yeni bir çalışma alanı oluşturur:
+
+```azurecli
+az ml workspace create -r myresourcegroup \
+    -l westus \
+    -n myworkspace \
+    --pe-name myprivateendpoint \
+    --pe-auto-approval \
+    --pe-resource-group myresourcegroup \
+    --pe-vnet-name myvnet \
+    --pe-subnet-name mysubnet
+```
+
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
 Azure Machine Learning Studio 'daki __ağ__ sekmesi özel bir uç nokta yapılandırmanıza olanak tanır. Ancak, var olan bir sanal ağ gerektirir. Daha fazla bilgi için bkz. [portalda çalışma alanları oluşturma](how-to-manage-workspace.md).
@@ -82,10 +96,6 @@ Azure Machine Learning Studio 'daki __ağ__ sekmesi özel bir uç nokta yapılan
 ## <a name="add-a-private-endpoint-to-a-workspace"></a>Çalışma alanına özel uç nokta ekleme
 
 Mevcut bir çalışma alanına özel bir uç nokta eklemek için aşağıdaki yöntemlerden birini kullanın:
-
-> [!IMPORTANT]
->
-> İçinde özel uç noktasını oluşturmak için var olan bir sanal ağınız olmalıdır. Özel uç nokta eklemeden önce [Özel uç noktalar için ağ ilkelerini de devre dışı bırakmanız](../private-link/disable-private-endpoint-network-policy.md) gerekir.
 
 > [!WARNING]
 >

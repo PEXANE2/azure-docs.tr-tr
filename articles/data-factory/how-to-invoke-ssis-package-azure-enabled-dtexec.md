@@ -1,22 +1,17 @@
 ---
 title: Azure özellikli dtexec yardımcı programıyla SQL Server Integration Services (SSIS) paketlerini yürütme
 description: Azure özellikli dtexec yardımcı programıyla SQL Server Integration Services (SSIS) paketlerini yürütmeyi öğrenin.
-services: data-factory
-documentationcenter: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/12/2020
 author: swinarko
 ms.author: sawinark
-manager: mflasko
-ms.reviewer: douglasl
-ms.openlocfilehash: 90c269435f8df2cb3e7aeedc8ff561693c831a09
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: 980e8e3c2f2c1ca1dc716df1e77caaa3fe3181aa
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98556486"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100386178"
 ---
 # <a name="run-sql-server-integration-services-packages-with-the-azure-enabled-dtexec-utility"></a>Azure özellikli dtexec yardımcı programıyla SQL Server Integration Services paketlerini çalıştırma
 
@@ -32,7 +27,7 @@ AzureDTExec, paketlerinizi Data Factory işlem hatları 'nda SSIS paket etkinlik
 
 AzureDTExec, veri fabrikanıza işlem hatları üreten bir Azure Active Directory (Azure AD) uygulaması kullanmak için SSMS aracılığıyla yapılandırılabilir. Ayrıca, paketlerinizi depoladığınız dosya sistemlerine, dosya paylaşımlarına veya Azure dosyalarına erişecek şekilde yapılandırılabilir. AzureDTExec, çağırma seçeneklerine verdiğiniz değerlere bağlı olarak, içinde bir SSIS paketi yürütme etkinliği ile benzersiz bir Data Factory işlem hattı oluşturur ve çalıştırır. Options için aynı değerlerle AzureDTExec çağırma, mevcut ardışık düzeni yeniden çalıştırır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 AzureDTExec 'yi kullanmak için sürüm 18,3 veya üzeri olan SSMS 'nin en son sürümünü indirip yükleyin. [Bu Web sitesinden](/sql/ssms/download-sql-server-management-studio-ssms)indirin.
 
 ## <a name="configure-the-azuredtexec-utility"></a>AzureDTExec yardımcı programını yapılandırma

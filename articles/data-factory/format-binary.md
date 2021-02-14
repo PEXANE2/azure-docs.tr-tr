@@ -2,19 +2,16 @@
 title: Azure Data Factory ikili biçimi
 description: Bu konu başlığı altında, Azure Data Factory Ikili biçimi nasıl ele alınacağını açıklamaktadır.
 author: linda33wj
-manager: shwang
-ms.reviewer: craigg
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/29/2020
 ms.author: jingwang
-ms.openlocfilehash: be4338942057cf52bf26b7fd1e15f77e724d49f8
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: cc5b54e99584b74b287fa66deba1694419b46b16
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96348917"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100393692"
 ---
 # <a name="binary-format-in-azure-data-factory"></a>Azure Data Factory ikili biçimi
 
@@ -35,9 +32,9 @@ Veri kümelerini tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi
 | ---------------- | ------------------------------------------------------------ | -------- |
 | tür             | Veri kümesinin Type özelliği **binary** olarak ayarlanmalıdır. | Yes      |
 | location         | Dosya (ler) in konum ayarları. Her dosya tabanlı bağlayıcının, altında kendi konum türü ve desteklenen özellikleri vardır `location` . **Bağlayıcı makalesi-> veri kümesi özellikleri bölümünde ayrıntılara bakın**. | Yes      |
-| sıkıştırma | Dosya sıkıştırmayı yapılandırmak için özellik grubu. Etkinlik yürütmesi sırasında sıkıştırma/açma işlemi yapmak istediğinizde bu bölümü yapılandırın. | Hayır |
-| tür | İkili dosyaları okumak/yazmak için kullanılan sıkıştırma codec bileşeni. <br>İzin verilen değerler şunlardır **bzip2**, **gzip**, **söndür**, **zipsöndür**, **tar** veya **targzip**. <br>Örneğin, dosya tabanlı havuz veri deposuna **açılan** dosyaları açmak için kopyalama **etkinliği kullanılırken,** / **TarGzip** / **Tar** varsayılan dosyalar klasörüne çıkarılır: `<path specified in dataset>/<folder named as source compressed file>/` , `preserveZipFileNameAsFolder` / `preserveCompressionFileNameAsFolder` sıkıştırılmış dosyaların adının klasör yapısı olarak korunup korunmayacağını denetlemek için [etkinlik kaynağını kopyalama](#binary-as-source) üzerinde kullanın.| Hayır       |
-| düzey | Sıkıştırma oranı. Kopyalama etkinliği havuzunda veri kümesi kullanıldığında Uygula.<br>İzin verilen değerler **en iyi** veya **en hızlardır**.<br>- **En hızlı:** Elde edilen dosya en iyi şekilde sıkıştırılmasa bile, sıkıştırma işleminin mümkün olduğunca hızlı bir şekilde tamamlanmalıdır.<br>- **En iyi**: işlemin tamamlanmasını daha uzun sürse bile sıkıştırma işlemi en iyi şekilde sıkıştırılmalıdır. Daha fazla bilgi için bkz. [sıkıştırma düzeyi](/dotnet/api/system.io.compression.compressionlevel) konusu. | Hayır       |
+| sıkıştırma | Dosya sıkıştırmayı yapılandırmak için özellik grubu. Etkinlik yürütmesi sırasında sıkıştırma/açma işlemi yapmak istediğinizde bu bölümü yapılandırın. | No |
+| tür | İkili dosyaları okumak/yazmak için kullanılan sıkıştırma codec bileşeni. <br>İzin verilen değerler şunlardır **bzip2**, **gzip**, **söndür**, **zipsöndür**, **tar** veya **targzip**. <br>Örneğin, dosya tabanlı havuz veri deposuna **açılan** dosyaları açmak için kopyalama **etkinliği kullanılırken,** /  /  varsayılan dosyalar klasörüne çıkarılır: `<path specified in dataset>/<folder named as source compressed file>/` , `preserveZipFileNameAsFolder` / `preserveCompressionFileNameAsFolder` sıkıştırılmış dosyaların adının klasör yapısı olarak korunup korunmayacağını denetlemek için [etkinlik kaynağını kopyalama](#binary-as-source) üzerinde kullanın.| No       |
+| düzey | Sıkıştırma oranı. Kopyalama etkinliği havuzunda veri kümesi kullanıldığında Uygula.<br>İzin verilen değerler **en iyi** veya **en hızlardır**.<br>- **En hızlı:** Elde edilen dosya en iyi şekilde sıkıştırılmasa bile, sıkıştırma işleminin mümkün olduğunca hızlı bir şekilde tamamlanmalıdır.<br>- **En iyi**: işlemin tamamlanmasını daha uzun sürse bile sıkıştırma işlemi en iyi şekilde sıkıştırılmalıdır. Daha fazla bilgi için bkz. [sıkıştırma düzeyi](/dotnet/api/system.io.compression.compressionlevel) konusu. | No       |
 
 Aşağıda, Azure Blob depolamada bir Ikili veri kümesi örneği verilmiştir:
 
@@ -73,22 +70,22 @@ Etkinlikleri tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi iç
 
 ### <a name="binary-as-source"></a>Kaynak olarak ikili
 
-Aşağıdaki özellikler kopyalama etkinliği **_ \_ kaynağı \**** bölümünde desteklenir.
+Aşağıdaki özellikler, etkinlik ***\* kaynağını \**** kopyalama bölümünde desteklenir.
 
 | Özellik      | Açıklama                                                  | Gerekli |
 | ------------- | ------------------------------------------------------------ | -------- |
 | tür          | Kopyalama etkinliği kaynağının Type özelliği **Binarysource** olarak ayarlanmalıdır. | Yes      |
-| formatSettings | Bir özellik grubu. Aşağıdaki **ikili okuma ayarları** tablosuna bakın. | Hayır       |
-| storeSettings | Veri deposundan veri okuma hakkında bir özellik grubu. Her dosya tabanlı bağlayıcının, altında kendi desteklenen okuma ayarları vardır `storeSettings` . **Bağlayıcı makalesi-> kopyalama etkinliği özellikleri bölümünde ayrıntılara bakın**. | Hayır       |
+| formatSettings | Bir özellik grubu. Aşağıdaki **ikili okuma ayarları** tablosuna bakın. | No       |
+| storeSettings | Veri deposundan veri okuma hakkında bir özellik grubu. Her dosya tabanlı bağlayıcının, altında kendi desteklenen okuma ayarları vardır `storeSettings` . **Bağlayıcı makalesi-> kopyalama etkinliği özellikleri bölümünde ayrıntılara bakın**. | No       |
 
 Altında desteklenen **ikili okuma ayarları** `formatSettings` :
 
 | Özellik      | Açıklama                                                  | Gerekli |
 | ------------- | ------------------------------------------------------------ | -------- |
 | tür          | FormatSettings türünün **Binaryreadsettings** olarak ayarlanması gerekir. | Yes      |
-| compressionProperties | Belirli bir sıkıştırma codec bileşeni için verileri açmak üzere bir özellik grubu. | Hayır       |
-| preserveZipFileNameAsFolder<br>(*`compressionProperties` -> `type` as `ZipDeflateReadSettings`*) | Giriş veri kümesi **Zipsöndür** sıkıştırma ile yapılandırıldığında geçerlidir. Kaynak ZIP dosya adının kopyalama sırasında klasör yapısı olarak korunup korunmayacağını gösterir.<br>- **True (varsayılan)** olarak ayarlandığında Data Factory daraltılmış dosyaları içine yazar `<path specified in dataset>/<folder named as source zip file>/` .<br>- **False** olarak ayarlandığında Data Factory ZIP dosyalarını doğrudan öğesine yazar `<path specified in dataset>` . Yarış veya beklenmedik davranışlara engel olmak için farklı kaynak ZIP dosyalarında yinelenen dosya adlarında bulunmadığından emin olun.  | Hayır |
-| preserveCompressionFileNameAsFolder<br>(*`compressionProperties` -> `type` `TarGZipReadSettings` veya `TarReadSettings` olarak*) | Giriş veri kümesi **targık** sıkıştırması ile yapılandırıldığında geçerlidir / **Tar** . Kaynak sıkıştırılmış dosya adının kopyalama sırasında klasör yapısı olarak korunup korunmayacağını gösterir.<br>- **True (varsayılan)** olarak ayarlandığında Data Factory, açılan dosyaları içine yazar `<path specified in dataset>/<folder named as source compressed file>/` . <br>- **False** olarak ayarlandığında Data Factory açılan dosyaları doğrudan öğesine yazar `<path specified in dataset>` . Yarış veya beklenmedik davranışlara engel olmak için farklı kaynak dosyalarında yinelenen dosya adlarında bulunmadığından emin olun. | Hayır |
+| compressionProperties | Belirli bir sıkıştırma codec bileşeni için verileri açmak üzere bir özellik grubu. | No       |
+| preserveZipFileNameAsFolder<br>(*`compressionProperties` -> `type` as `ZipDeflateReadSettings`*) | Giriş veri kümesi **Zipsöndür** sıkıştırma ile yapılandırıldığında geçerlidir. Kaynak ZIP dosya adının kopyalama sırasında klasör yapısı olarak korunup korunmayacağını gösterir.<br>- **True (varsayılan)** olarak ayarlandığında Data Factory daraltılmış dosyaları içine yazar `<path specified in dataset>/<folder named as source zip file>/` .<br>- **False** olarak ayarlandığında Data Factory ZIP dosyalarını doğrudan öğesine yazar `<path specified in dataset>` . Yarış veya beklenmedik davranışlara engel olmak için farklı kaynak ZIP dosyalarında yinelenen dosya adlarında bulunmadığından emin olun.  | No |
+| preserveCompressionFileNameAsFolder<br>(*`compressionProperties` -> `type` `TarGZipReadSettings` veya `TarReadSettings` olarak*) | Giriş veri kümesi **targık** sıkıştırması ile yapılandırıldığında geçerlidir /  . Kaynak sıkıştırılmış dosya adının kopyalama sırasında klasör yapısı olarak korunup korunmayacağını gösterir.<br>- **True (varsayılan)** olarak ayarlandığında Data Factory, açılan dosyaları içine yazar `<path specified in dataset>/<folder named as source compressed file>/` . <br>- **False** olarak ayarlandığında Data Factory açılan dosyaları doğrudan öğesine yazar `<path specified in dataset>` . Yarış veya beklenmedik davranışlara engel olmak için farklı kaynak dosyalarında yinelenen dosya adlarında bulunmadığından emin olun. | No |
 
 ```json
 "activities": [
@@ -120,7 +117,7 @@ Altında desteklenen **ikili okuma ayarları** `formatSettings` :
 
 ### <a name="binary-as-sink"></a>Havuz olarak ikili
 
-Aşağıdaki özellikler kopyalama etkinliği **_ \_ Havuz \**** bölümünde desteklenir.
+Aşağıdaki özellikler, etkinlik ***\* havuzunu \**** Kopyala bölümünde desteklenir.
 
 | Özellik      | Açıklama                                                  | Gerekli |
 | ------------- | ------------------------------------------------------------ | -------- |

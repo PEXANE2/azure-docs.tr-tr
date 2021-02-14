@@ -5,14 +5,14 @@ author: harelbr
 ms.author: harelbr
 services: monitoring
 ms.topic: conceptual
-ms.date: 12/15/2020
+ms.date: 02/10/2021
 ms.subservice: alerts
-ms.openlocfilehash: 8f59f3488f6c8f5b35ec68d93db656447f882a92
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: ee281e60a0eb6f6192e63a9733146714e4aaf2eb
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97510691"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100104391"
 ---
 # <a name="supported-resources-for-metric-alerts-in-azure-monitor"></a>Azure Izleyici 'de ölçüm uyarıları için desteklenen kaynaklar
 
@@ -35,7 +35,7 @@ Daha yeni uyarılar tarafından desteklenen Azure Izleyici ölçüm kaynakların
 |Microsoft. AppConfiguration/Configurationmağazaları |Yes | Hayır | [Uygulama Yapılandırması](./metrics-supported.md#microsoftappconfigurationconfigurationstores) |
 |Microsoft. AppPlatform/yay | Yes | Hayır | [Azure Spring Cloud](./metrics-supported.md#microsoftappplatformspring) |
 |Microsoft. Automation/automationAccounts | Yes| Hayır | [Otomasyon Hesapları](./metrics-supported.md#microsoftautomationautomationaccounts) |
-|Microsoft. AVS/Privatebulutlar | Hayır | Hayır | |
+|Microsoft. AVS/Privatebulutlar | Hayır | Hayır | [Azure VMware Çözümü](./metrics-supported.md#microsoftavsprivateclouds) |
 |Microsoft.Batch/batchAccounts | Yes | Hayır | [Toplu Hesaplar](./metrics-supported.md#microsoftbatchbatchaccounts) |
 |Microsoft. Cache/Redsıs | Yes | Yes | [Redis için Azure Önbelleği](./metrics-supported.md#microsoftcacheredis) |
 |Microsoft. ClassicCompute/domainNames/yuvalar/roller | Hayır | Hayır | [Klasik Cloud Services](./metrics-supported.md#microsoftclassiccomputedomainnamesslotsroles) |
@@ -54,7 +54,7 @@ Daha yeni uyarılar tarafından desteklenen Azure Izleyici ölçüm kaynakların
 |Microsoft. DataBoxEdge/dataBoxEdgeDevices | Yes | Yes | [Data Box](./metrics-supported.md#microsoftdataboxedgedataboxedgedevices) |
 |Microsoft. DataFactory/DataFactory| Yes| Hayır | [Veri fabrikaları v1](./metrics-supported.md#microsoftdatafactorydatafactories) |
 |Microsoft. DataFactory/Factory |Yes | Hayır | [Veri fabrikaları v2](./metrics-supported.md#microsoftdatafactoryfactories) |
-|Microsoft. DataShare/hesapları | Yes | Hayır | |
+|Microsoft. DataShare/hesapları | Yes | Hayır | [Veri paylaşımları](./metrics-supported.md#microsoftdatashareaccounts) |
 |Microsoft. Dbformarıdb/sunucular | Hayır | Hayır | [MariaDB için DB](./metrics-supported.md#microsoftdbformariadbservers) |
 |Microsoft. Dbformyısql/sunucuları | Hayır | Hayır |[MySQL için DB](./metrics-supported.md#microsoftdbformysqlservers)|
 |Microsoft. DBforPostgreSQL/sunucuları | Hayır | Hayır | [PostgreSQL için DB](./metrics-supported.md#microsoftdbforpostgresqlservers)|
@@ -62,7 +62,7 @@ Daha yeni uyarılar tarafından desteklenen Azure Izleyici ölçüm kaynakların
 |Microsoft. DBforPostgreSQL/Flexibtaservers | Yes | Hayır | [PostgreSQL için DB (esnek sunucular)](./metrics-supported.md#microsoftdbforpostgresqlflexibleservers)|
 |Microsoft. Devices/IotHubs | Yes | Hayır |[IoT Hub’ı](./metrics-supported.md#microsoftdevicesiothubs) |
 |Microsoft. Devices/provisioningServices| Yes | Hayır | [Cihaz sağlama hizmetleri](./metrics-supported.md#microsoftdevicesprovisioningservices) |
-|Microsoft. DigitalTwins/Digitaltwınsınstances | Yes | Hayır | |
+|Microsoft. DigitalTwins/Digitaltwınsınstances | Yes | Hayır | [Digital Twins](./metrics-supported.md#microsoftdigitaltwinsdigitaltwinsinstances) |
 |UmentDB/databaseAccounts Microsoft.Doc | Yes | Hayır | [Cosmos DB](./metrics-supported.md#microsoftdocumentdbdatabaseaccounts) |
 |Microsoft. EventGrid/Domains | Yes | Hayır | [Event Grid Etki Alanları](./metrics-supported.md#microsofteventgriddomains) |
 |Microsoft. EventGrid/Systemkonuları | Yes | Hayır | [Event Grid sistem konuları](./metrics-supported.md#microsofteventgridsystemtopics) |
@@ -87,10 +87,10 @@ Daha yeni uyarılar tarafından desteklenen Azure Izleyici ölçüm kaynakların
 |Microsoft. Network/Expressroutedevreleri | Yes | Hayır |[ExpressRoute devreleri](./metrics-supported.md#microsoftnetworkexpressroutecircuits) |
 |Microsoft. Network/expressRoutePorts | Yes | Hayır |[ExpressRoute Direct](./metrics-supported.md#microsoftnetworkexpressrouteports) |
 |Microsoft. Network/loadBalancers (yalnızca standart SKU 'Lar için)| Yes| Hayır | [Yük dengeleyiciler](./metrics-supported.md#microsoftnetworkloadbalancers) |
-|Microsoft. Network/Natgateway 'ler| Hayır | Hayır | |
-|Microsoft. Network/privateEndpoints| Hayır | Hayır | |
-|Microsoft. Network/privateLinkServices| Hayır | Hayır |
-|Microsoft. Network/publicıpaddresses | Hayır | Hayır |[Genel IP Adresleri](./metrics-supported.md#microsoftnetworkpublicipaddresses)|
+|Microsoft. Network/Natgateway 'ler| Hayır | Hayır | [NAT ağ geçitleri](./metrics-supported.md#microsoftnetworknatgateways) |
+|Microsoft. Network/privateEndpoints| Hayır | Hayır | [Özel Uç Noktalar](./metrics-supported.md#microsoftnetworkprivateendpoints) |
+|Microsoft. Network/privateLinkServices| Hayır | Hayır | [Özel bağlantı Hizmetleri](./metrics-supported.md#microsoftnetworkprivatelinkservices) |
+|Microsoft. Network/publicıpaddresses | Hayır | Hayır | [Genel IP Adresleri](./metrics-supported.md#microsoftnetworkpublicipaddresses)|
 |Microsoft. Network/trafficManagerProfiles | Yes | Hayır | [Traffic Manager Profilleri](./metrics-supported.md#microsoftnetworktrafficmanagerprofiles) |
 |Microsoft. Operationalınsights/çalışma alanları| Yes | Hayır | [Log Analytics çalışma alanları](./metrics-supported.md#microsoftoperationalinsightsworkspaces)|
 |Microsoft. eşleme/eşlemeler | Yes | Hayır | [Eşlemeler](./metrics-supported.md#microsoftpeeringpeerings) |
@@ -107,7 +107,7 @@ Daha yeni uyarılar tarafından desteklenen Azure Izleyici ölçüm kaynakların
 |Microsoft. Storage/storageAccounts/fileServices | Yes| Hayır | [Depolama hesapları-dosyalar](./metrics-supported.md#microsoftstoragestorageaccountsfileservices) |
 |Microsoft. Storage/storageAccounts/queueServices | Yes| Hayır | [Depolama hesapları-kuyruklar](./metrics-supported.md#microsoftstoragestorageaccountsqueueservices) |
 |Microsoft. Storage/storageAccounts/tableServices | Yes| Hayır | [Depolama hesapları-tablolar](./metrics-supported.md#microsoftstoragestorageaccountstableservices) |
-|Microsoft. StorageCache/önbellekler | Yes | Hayır | |
+|Microsoft. StorageCache/önbellekler | Yes | Hayır | [HPC önbellekleri](./metrics-supported.md#microsoftstoragecachecaches) |
 |Microsoft. Storagessync/storageSyncServices | Yes | Hayır | [Depolama Eşitleme Hizmetleri](./metrics-supported.md#microsoftstoragesyncstoragesyncservices) |
 |Microsoft. StreamAnalytics/streamingjobs | Yes | Hayır | [Stream Analytics](./metrics-supported.md#microsoftstreamanalyticsstreamingjobs) |
 |Microsoft. SYNAPSE/çalışma alanları | Yes | Hayır | [Synapse Analytics](./metrics-supported.md#microsoftsynapseworkspaces) |

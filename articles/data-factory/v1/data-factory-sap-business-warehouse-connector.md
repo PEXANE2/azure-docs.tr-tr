@@ -1,23 +1,18 @@
 ---
 title: Azure Data Factory kullanarak SAP Business Warehouse 'tan veri taşıma
 description: Azure Data Factory kullanarak SAP Business Warehouse 'tan veri taşıma hakkında bilgi edinin.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-editor: ''
+ms.author: jingwang
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: fb91a09ed31658c2d547a7b46cf2f986bfbd0e50
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 513d6b28908b99594eaa525e86690fa75bffb103
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97508297"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100386977"
 ---
 # <a name="move-data-from-sap-business-warehouse-using-azure-data-factory"></a>Azure Data Factory kullanarak SAP Business Warehouse 'Tan veri taşıma
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -42,7 +37,7 @@ SAP BW örneğine bağlantıyı etkinleştirmek için aşağıdaki bileşenleri 
 > [!TIP]
 > NetWeaver RFC SDK 'dan ayıklanan dll 'leri System32 klasörüne koyun.
 
-## <a name="getting-started"></a>Başlarken
+## <a name="getting-started"></a>Kullanmaya başlama
 Farklı araçlar/API 'Ler kullanarak şirket içi Cassandra veri deposundan veri taşıyan kopyalama etkinliği ile bir işlem hattı oluşturabilirsiniz. 
 
 - İşlem hattı oluşturmanın en kolay yolu **Kopyalama Sihirbazı**' nı kullanmaktır. Veri kopyalama Sihirbazı 'nı kullanarak işlem hattı oluşturma hakkında hızlı bir yol için bkz. [öğretici: kopyalama Sihirbazı 'nı kullanarak işlem hattı oluşturma](data-factory-copy-data-wizard-tutorial.md) . 
@@ -288,7 +283,7 @@ SAP BW verileri taşırken, SAP BW türlerinden .NET türlerine aşağıdaki eş
 
 ABAP Dictionary içindeki veri türü | .NET veri türü
 -------------------------------- | --------------
-ACCP |  int
+ACCP |    int
 CHAR | Dize
 CLNT | Dize
 CURR | Ondalık

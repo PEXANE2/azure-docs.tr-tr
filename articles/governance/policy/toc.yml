@@ -219,7 +219,7 @@
       href: 'https://github.com/azure/azure-policy#known-issues'
 - name: Başvuru
   items:
-    - name: Azure CLI
+    - name: Azure CLI’si
       href: /cli/azure/policy
     - name: Azure PowerShell
       items:
@@ -323,8 +323,6 @@
       items:
         - name: Governance YouTube Kanalı
           href: 'https://www.youtube.com/channel/UCZZ3-oMrVI5ssheMzaWC4uQ'
-        - name: Video - Ignite 2019
-          href: 'https://myignite.techcommunity.microsoft.com/sessions/81584?source=sessions'
         - name: Konuk Yapılandırma videoları
           items:
             - name: Başlarken

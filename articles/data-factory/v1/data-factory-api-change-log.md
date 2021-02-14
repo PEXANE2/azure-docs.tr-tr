@@ -1,23 +1,19 @@
 ---
 title: Data Factory-.NET API değişiklik günlüğü
 description: Azure Data Factory için belirli bir .NET API sürümünde değişiklik, özellik eklemeleri, hata düzeltmeleri ve benzeri işlemleri açıklar.
-services: data-factory
-documentationcenter: ''
 author: dcstwh
 ms.author: weetok
-manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 robots: noindex
 ms.date: 01/22/2018
-ms.openlocfilehash: 70df35409d1c84efb996bb40f4e39bde6ad7d5a8
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 3f7c80f5818c1353f438a164bf52c777056ad6d4
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96496509"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100377491"
 ---
 # <a name="azure-data-factory---net-api-change-log"></a>Azure Data Factory-.NET API değişiklik günlüğü
 > [!NOTE]
@@ -181,5 +177,5 @@ Aşağıdaki sınıflar yeniden adlandırıldı. Yeni adlar 4.0.0 sürümünden 
 * **Liste** işlem hattı API 'si, tam ayrıntılar yerine yalnızca bir işlem hattının özetini döndürür. Örneğin, bir işlem hattı özetindeki etkinlikler yalnızca ad ve tür içerir.
 
 ### <a name="feature-additions"></a>Özellik eklemeleri
-* [Sqldwsink](/dotnet/api/microsoft.azure.management.datafactories.models.sqldwsink) sınıfı iki yeni özelliği **destekler, bu, Azure** Azure SYNAPSE Analytics **SqlWriterCleanupScript**'e ıdempotent kopyalamayı desteklemek için. Bu özellikler hakkında daha fazla bilgi için bkz. [Azure SYNAPSE Analytics](data-factory-azure-sql-data-warehouse-connector.md) makalesi.
+* [Sqldwsink](/dotnet/api/microsoft.azure.management.datafactories.models.sqldwsink) sınıfı iki yeni özelliği **destekler, bu, Azure** Azure SYNAPSE Analytics 'e ıdempotent kopyalamayı desteklemek için. Bu özellikler hakkında daha fazla bilgi için bkz. [Azure SYNAPSE Analytics](data-factory-azure-sql-data-warehouse-connector.md) makalesi.
 * Artık kopyalama etkinliğinin bir parçası olarak Azure SQL veritabanı ve Azure SYNAPSE Analytics kaynakları için saklı yordam çalıştırmayı destekliyoruz. [SQLSource](/dotnet/api/microsoft.azure.management.datafactories.models.sqlsource) ve [sqldwsource](/dotnet/api/microsoft.azure.management.datafactories.models.sqldwsource) sınıfları şu özelliklere sahiptir: **SqlReaderStoredProcedureName** ve **StoredProcedureParameters**. Bu özellikler hakkındaki ayrıntılar için bkz. [Azure SQL veritabanı](data-factory-azure-sql-connector.md#sqlsource) ve [Azure Synapse Analytics](data-factory-azure-sql-data-warehouse-connector.md#sqldwsource) makaleleri Azure.com.

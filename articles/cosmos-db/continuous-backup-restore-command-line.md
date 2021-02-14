@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 02/01/2021
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 2e09542cbe56df7c8d6984a98fe77142f543ec03
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 9ea71dae746ac423e7b17b6235b4d5cd3e143cd7
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99539205"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100377338"
 ---
 # <a name="configure-and-manage-continuous-backup-and-point-in-time-restore-preview---using-azure-cli"></a>Sürekli yedekleme ve zaman noktası geri yükleme (Önizleme) yapılandırma ve yönetme-Azure CLı kullanma
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -46,7 +46,7 @@ Bu makalede, Azure CLı kullanarak sürekli yedekleme ve verileri geri yükleme 
 
 ## <a name="provision-a-sql-api-account-with-continuous-backup"></a><a id="provision-sql-api"></a>Sürekli yedekleme ile bir SQL API hesabı sağlama
 
-Sürekli yedekleme ile bir SQL API hesabı sağlamak için, `--backup-policy-type Continuous` normal sağlama komutuyla birlikte ek bir bağımsız değişken geçirilmelidir. Aşağıdaki komut, " `pitracct2` myrg" kaynak grubu altında "Batı ABD" bölgesinde oluşturulan sürekli yedekleme ilkesiyle adlandırılan tek bölgeli yazma hesabının bir örneğidir:
+Sürekli yedekleme ile bir SQL API hesabı sağlamak için, `--backup-policy-type Continuous` normal sağlama komutuyla birlikte ek bir bağımsız değişken geçirilmelidir. Aşağıdaki komut, `pitracct2` *myrg* kaynak grubu altında *Batı ABD* bölgesinde oluşturulan sürekli yedekleme ilkesiyle birlikte adlandırılan tek bir bölge yazma hesabına örnektir:
 
 ```azurecli-interactive
 
@@ -61,7 +61,7 @@ az cosmosdb create \
 
 ## <a name="provision-an-azure-cosmos-db-api-for-mongodb-account-with-continuous-backup"></a><a id="provision-mongo-api"></a>Sürekli yedekleme ile MongoDB hesabı için Azure Cosmos DB API sağlama
 
-Aşağıdaki komut, `pitracct3` "myrg" kaynak grubu altında "Batı ABD" bölgesini oluşturan sürekli yedekleme ilkesiyle adlandırılan tek bir bölge yazma hesabının bir örneğini gösterir:
+Aşağıdaki komut, `pitracct3` *myrg* kaynak grubu altında *Batı ABD* bölgeyi oluşturan sürekli yedekleme ilkesiyle adlandırılan tek bir bölge yazma hesabının bir örneğini gösterir:
 
 ```azurecli-interactive
 
@@ -145,13 +145,13 @@ Yanıt, geri yüklenen ve geri yüklenebilecekleri bölgeleri içeren tüm verit
   }
 ```
 
-Hesap için "CreationTime" veya "DeletionTime" gibi, bölge için de bir "CreationTime" veya "DeletionTime" vardır. Bu süreler, bu bölgeye geri yüklenecek doğru bölgeyi ve geçerli bir zaman aralığını seçmenizi sağlar.
+`CreationTime`Ya da `DeletionTime` hesabı için olduğu gibi, bölge için de bir `CreationTime` veya vardır `DeletionTime` . Bu süreler, bu bölgeye geri yüklenecek doğru bölgeyi ve geçerli bir zaman aralığını seçmenizi sağlar.
 
 **Canlı bir veritabanı hesabındaki tüm veritabanlarının sürümlerini listeleyin**
 
 Veritabanlarının tüm sürümlerinin listelenmesi, veritabanının mevcut zamanının bilinmediği bir senaryoda doğru veritabanını seçmenize olanak sağlar.
 
-Veritabanlarının tüm sürümlerini listelemek için aşağıdaki CLı komutunu çalıştırın. Bu komut yalnızca canlı hesaplarla birlikte kullanılabilir. "InstanceId" ve "location" parametreleri komut yanıtında "ad" ve "konum" özelliklerinden elde edilir `az cosmosdb restorable-database-account list` . InstanceId özniteliği Ayrıca, geri yüklenmekte olan kaynak veritabanı hesabının bir özelliğidir:
+Veritabanlarının tüm sürümlerini listelemek için aşağıdaki CLı komutunu çalıştırın. Bu komut yalnızca canlı hesaplarla birlikte kullanılabilir. `instanceId`Ve parametreleri, `location` `name` `location` komutu yanıtı içindeki ve özelliklerinden elde edilir `az cosmosdb restorable-database-account list` . InstanceId özniteliği Ayrıca, geri yüklenmekte olan kaynak veritabanı hesabının bir özelliğidir:
 
 ```azurecli-interactive
 az cosmosdb sql restorable-database list \
@@ -198,7 +198,7 @@ Bu komut çıktısı artık bir veritabanının oluşturulup silindiğini göste
 
 **Canlı bir veritabanı hesabındaki bir veritabanının tüm SQL kapsayıcıları sürümlerini listeleyin**
 
-Tüm SQL kapsayıcıları sürümlerini listelemek için aşağıdaki komutu kullanın. Bu komut yalnızca canlı hesaplarla birlikte kullanılabilir. "DatabaseRid" parametresi, geri yüklemek istediğiniz veritabanının "RESOURCEID" parametresidir. Komutun yanıtında bulunan "Ownerresourceıd" özniteliğinin değeridir `az cosmosdb sql restorable-database list` .
+Tüm SQL kapsayıcıları sürümlerini listelemek için aşağıdaki komutu kullanın. Bu komut yalnızca canlı hesaplarla birlikte kullanılabilir. `databaseRid`Parametresi, `ResourceId` geri yüklemek istediğiniz veritabanının bir veritabanıdır. `ownerResourceid`Komutun yanıtında bulunan özniteliğin değeridir `az cosmosdb sql restorable-database list` .
 
 ```azurecli-interactive
 az cosmosdb sql restorable-container list \
@@ -265,7 +265,7 @@ az cosmosdb sql restorable-resource list \
 
 ## <a name="enumerate-restorable-resources-for-mongodb-api-account"></a><a id="enumerate-mongodb-api"></a>MongoDB API hesabı için geri yüklenebilen kaynakları numaralandır
 
-Aşağıda açıklanan listeleme komutları, çeşitli zaman damgalarına geri yükleme için kullanılabilen kaynakları keşfetmenize yardımcı olur. Ayrıca, geri yüklenebilen hesap, veritabanı ve kapsayıcı kaynaklarında önemli olayların bir akışını da sağlar. SQL API 'SI gibi, `az cosmosdb` komutunu "MongoDB" ile "SQL" yerine parametre olarak kullanabilirsiniz. Bu komutlar yalnızca canlı hesaplar için çalışır.
+Aşağıda açıklanan listeleme komutları, çeşitli zaman damgalarına geri yükleme için kullanılabilen kaynakları keşfetmenize yardımcı olur. Ayrıca, geri yüklenebilen hesap, veritabanı ve kapsayıcı kaynaklarında önemli olayların bir akışını da sağlar. SQL API 'SI gibi, `az cosmosdb` komutunu, ancak yerine parametresiyle birlikte kullanabilirsiniz `mongodb` `sql` . Bu komutlar yalnızca canlı hesaplar için çalışır.
 
 **Canlı bir veritabanı hesabındaki tüm MongoDB veritabanlarının sürümlerini listeleyin**
 

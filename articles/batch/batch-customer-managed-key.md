@@ -3,14 +3,14 @@ title: Azure Key Vault ve yönetilen kimlik ile Azure Batch hesabınız için m�
 description: Müşteri tarafından yönetilen anahtarları kullanarak Batch verilerinin nasıl şifreleneceğini öğrenin.
 author: pkshultz
 ms.topic: how-to
-ms.date: 01/25/2021
+ms.date: 02/11/2021
 ms.author: peshultz
-ms.openlocfilehash: 01dc21f067b03ad8e07a05a18aa6312ed7f7189e
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: d3f10436b95aaeb5eb35a873c2a3862c1492bd47
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98789422"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100385073"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-batch-account-with-azure-key-vault-and-managed-identity"></a>Azure Key Vault ve yönetilen kimlik ile Azure Batch hesabınız için müşteri tarafından yönetilen anahtarlar yapılandırın
 
@@ -21,11 +21,6 @@ Sağladığınız anahtarların [Azure Key Vault](../key-vault/general/basic-con
 İki tür yönetilen kimlik vardır: [ *sistem tarafından atanan* ve *Kullanıcı tarafından atanan*](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types).
 
 Batch hesabınızı sistem tarafından atanan yönetilen kimlikle oluşturabilir veya müşterinin yönettiği anahtarlara erişecek şekilde, Kullanıcı tarafından atanan ayrı bir yönetilen kimlik oluşturabilirsiniz. Farkları anlamak için [karşılaştırma tablosunu](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) gözden geçirin ve çözümünüz için hangi seçeneğin en iyi şekilde çalışmadığını değerlendirin. Örneğin, birden çok Azure kaynağına erişmek için aynı yönetilen kimliği kullanmak istiyorsanız, Kullanıcı tarafından atanan bir yönetilen kimlik gerekecektir. Aksi takdirde, Batch hesabınızla ilişkili sistem tarafından atanan bir yönetilen kimlik yeterli olabilir. Kullanıcı tarafından atanan yönetilen kimliğin kullanılması, [Aşağıdaki örnekte](#create-a-batch-account-with-user-assigned-managed-identity-and-customer-managed-keys)gösterildiği gibi, toplu hesap oluşturma sırasında müşteri tarafından yönetilen anahtarları zorunlu kılmak için de sağlar.
-
-> [!IMPORTANT]
-> Azure Batch 'de müşteri tarafından yönetilen anahtarlar için destek şu anda Batı Avrupa, Kuzey Avrupa, İsviçre Kuzey, Orta ABD, Orta Güney ABD, Orta Batı ABD, Doğu ABD, Doğu ABD 2, Batı ABD 2, US Gov Virginia ve US Gov Arizona bölgeleri için genel önizlemededir.
-> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir.
-> Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="create-a-batch-account-with-system-assigned-managed-identity"></a>Sistem tarafından atanan yönetilen kimlikle Batch hesabı oluşturma
 
@@ -43,7 +38,7 @@ Hesap oluşturulduktan sonra, **Özellikler** bölümünde **kimlik sorumlusu ki
 
 Bu toplu Iş hesabına Key Vault erişimini sağlamak için bu değere ihtiyacınız olacak.
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure CLI’si
 
 Yeni bir Batch hesabı oluşturduğunuzda, `SystemAssigned` parametresi için öğesini belirtin `--identity` .
 
@@ -68,7 +63,7 @@ az batch account show \
 ```
 
 > [!NOTE]
-> Bir Batch hesabında oluşturulan sistem tarafından atanan yönetilen kimlik yalnızca Key Vault müşterinin yönettiği anahtarları almak için kullanılır. Bu kimlik, Batch havuzlarında kullanılamaz.
+> Bir Batch hesabında oluşturulan sistem tarafından atanan yönetilen kimlik yalnızca Key Vault müşterinin yönettiği anahtarları almak için kullanılır. Bu kimlik, Batch havuzlarında kullanılamaz. Bir havuzda Kullanıcı tarafından atanan yönetilen kimlik kullanmak için bkz. [Batch havuzlarında yönetilen kimlikleri yapılandırma](managed-identity-pools.md).
 
 ## <a name="create-a-user-assigned-managed-identity"></a>Kullanıcı tarafından atanan yönetilen kimlik oluşturma
 
@@ -90,7 +85,7 @@ Azure Batch için müşteri tarafından yönetilen anahtarlarla [Azure Key Vault
 
 Azure portal, Key Vault oluşturulduktan sonra, **Ayarlar**' ın altında bulunan **erişim ilkesi** ' nde, yönetilen kimlik ' i kullanarak Batch hesabı erişimini ekleyin. **Anahtar izinleri** altında **Al**, **sarmalama tuşu** ve **sarmalama tuşunu kaldır**' ı seçin.
 
-![Ekran göster erişim ilkesi Ekle ekranı gösteriliyor.](./media/batch-customer-managed-key/key-permissions.png)
+![Erişim ilkesi ekle ekranını gösteren ekran görüntüsü.](./media/batch-customer-managed-key/key-permissions.png)
 
 **Asıl** altındaki **Seç** alanında aşağıdakilerden birini girin:
 
@@ -117,7 +112,7 @@ Yukarıdaki adımları izledikten sonra, Batch hesabınızda müşteri tarafınd
 
 ![Şifreleme bölümünü ve müşterinin yönettiği anahtarı etkinleştirme seçeneğini gösteren ekran görüntüsü](./media/batch-customer-managed-key/encryption-page.png)
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure CLI’si
 
 Batch hesabı sistem tarafından atanan yönetilen kimlikle oluşturulduktan ve Key Vault Erişimi verildikten sonra, Batch hesabını `{Key Identifier}` parametresi altındaki URL ile güncelleştirin `keyVaultProperties` . **Encryption_key_source** olarak da ayarlayın `Microsoft.KeyVault` .
 
@@ -159,7 +154,7 @@ var account = await batchManagementClient.Account.CreateAsync("MyResourceGroup",
 
 ## <a name="update-the-customer-managed-key-version"></a>Müşteri tarafından yönetilen anahtar sürümünü Güncelleştir
 
-Bir anahtarın yeni bir sürümünü oluşturduğunuzda, Batch hesabını yeni sürümü kullanacak şekilde güncelleştirin. Şu adımları uygulayın:
+Bir anahtarın yeni bir sürümünü oluşturduğunuzda, Batch hesabını yeni sürümü kullanacak şekilde güncelleştirin. Şu adımları izleyin:
 
 1. Azure portal ' de Batch hesabınıza gidin ve şifreleme ayarlarını görüntüleyin.
 2. Yeni anahtar sürümünün URI 'sini girin. Alternatif olarak, sürümü güncelleştirmek için Key Vault ve anahtarı bir kez daha seçebilirsiniz.
@@ -202,7 +197,7 @@ az batch account set \
 - **Access 'i geri yükledikten sonra Batch hesabının yeniden çalışması için ne kadar sürer?** Erişim geri yüklendikten sonra hesabın yeniden erişilebilir olması 10 dakika kadar sürebilir.
 - **Batch hesabı, kaynaklarıma ne olur? kullanılamıyor mu?** Müşteri tarafından yönetilen anahtarlara toplu erişim kaybedildiğinde çalışan havuzların kaybolması, çalışmaya devam edecektir. Ancak, düğümler kullanılamayan bir duruma geçer ve görevler çalışmayı durdurur (ve yeniden kuyruğa olur). Erişim geri yüklendikten sonra düğümler yeniden kullanılabilir hale gelir ve görevler yeniden başlatılır.
 - **Bu şifreleme mekanizması bir toplu Iş havuzundaki VM disklerine mi uygulanabilir?** Hayır. Bulut hizmeti yapılandırma havuzları için, işletim sistemi ve geçici disk için hiçbir şifreleme uygulanmaz. Sanal makine yapılandırma havuzları için, işletim sistemi ve belirtilen veri diskleri varsayılan olarak bir Microsoft Platformu yönetilen anahtarıyla şifrelenir. Şu anda bu diskler için kendi anahtarınızı belirtemezsiniz. Microsoft Platformu yönetilen anahtarıyla bir Batch havuzu için VM 'lerin geçici diskini şifrelemek üzere, [sanal makine yapılandırma](/rest/api/batchservice/pool/add#virtualmachineconfiguration) havuzunuzdaki [diskencryptionconfiguration](/rest/api/batchservice/pool/add#diskencryptionconfiguration) özelliğini etkinleştirmeniz gerekir. Son derece hassas ortamlarda, geçici disk şifrelemeyi etkinleştirmenizi ve hassas verileri işletim sistemi ve veri disklerinde depolamayı önlemeniz önerilir. Daha fazla bilgi için bkz. [disk şifrelemesi etkinken havuz oluşturma](./disk-encryption.md)
-- **İşlem düğümlerinde kullanılabilir olan Batch hesabında sistem tarafından atanan yönetilen kimlik mi?** Hayır. Sistem tarafından atanan yönetilen kimlik Şu anda yalnızca müşteri tarafından yönetilen anahtar için Azure Key Vault erişim için kullanılır.
+- **İşlem düğümlerinde kullanılabilir olan Batch hesabında sistem tarafından atanan yönetilen kimlik mi?** Hayır. Sistem tarafından atanan yönetilen kimlik Şu anda yalnızca müşteri tarafından yönetilen anahtar için Azure Key Vault erişim için kullanılır. İşlem düğümlerinde Kullanıcı tarafından atanan yönetilen kimlik kullanmak için bkz. [Batch havuzlarında yönetilen kimlikleri yapılandırma](managed-identity-pools.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

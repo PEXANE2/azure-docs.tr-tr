@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/01/2021
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: c0af1db12f3ade2945524f48e4539d2d2e9aa6b9
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 1cf94964f420f7a7d4fc0f6ba0b77813b3e75787
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99539198"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100393233"
 ---
 # <a name="frequently-asked-questions-on-the-azure-cosmos-db-point-in-time-restore-feature-preview"></a>Azure Cosmos DB zaman noktası geri yükleme özelliği (Önizleme) hakkında sık sorulan sorular
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -31,7 +31,7 @@ Geri yükleme süresi verilerinizin boyutuna bağlıdır.
 Geri yükleme, veritabanları veya kapsayıcılar gibi önemli kaynakların o anda var olup olmadığına bağlı olarak gerçekleşmeyebilir. Saati girip, belirli bir süre için seçili veritabanına veya kapsayıcıya bakarak emin olabilirsiniz. Geri yüklenecek kaynak yok görürseniz geri yükleme işlemi çalışmaz.
 
 ### <a name="how-can-i-track-if-an-account-is-being-restored"></a>Bir hesabın geri yüklenip yüklenmediğinde nasıl izleyebilirim?
-Restore komutunu gönderdikten ve aynı sayfada bekledikten sonra, işlem tamamlandıktan sonra durum çubuğunda başarıyla geri yüklenen hesap iletisi görüntülenir. Ayrıca, geri yüklenen hesabı arayabilir ve [Geri yüklenmekte olan hesabın durumunu izleyebilirsiniz](continuous-backup-restore-portal.md#track-restore-status). Geri yükleme devam ederken, hesabın durumu "oluşturma" olur, geri yükleme işlemi tamamlandıktan sonra hesap durumu "çevrimiçi" olarak değişir.
+Restore komutunu gönderdikten ve aynı sayfada bekledikten sonra, işlem tamamlandıktan sonra durum çubuğunda başarıyla geri yüklenen hesap iletisi görüntülenir. Ayrıca, geri yüklenen hesabı arayabilir ve [Geri yüklenmekte olan hesabın durumunu izleyebilirsiniz](continuous-backup-restore-portal.md#track-restore-status). Geri yükleme devam *ederken, hesabın durumu oluşturulacak, geri* yükleme işlemi tamamlandıktan sonra hesap durumu *çevrimiçi* olarak değişir.
 
 Benzer şekilde, PowerShell ve CLı için aşağıdaki gibi komutu yürüterek geri yükleme işleminin ilerlemesini izleyebilirsiniz `az cosmosdb show` :
 
@@ -39,7 +39,7 @@ Benzer şekilde, PowerShell ve CLı için aşağıdaki gibi komutu yürüterek g
 az cosmosdb show --name "accountName" --resource-group "resourceGroup"
 ```
 
-Hesap çevrimiçi olduğunda provisioningState "başarılı" olarak gösterilir.
+Hesap çevrimiçi olduğunda provisioningState *başarılı* olarak gösterilir.
 
 ```json
 {
@@ -60,7 +60,7 @@ Hesap çevrimiçi olduğunda provisioningState "başarılı" olarak gösterilir.
 ### <a name="how-can-i-find-out-whether-an-account-was-restored-from-another-account"></a>Bir hesabın başka bir hesaptan geri yüklenip yüklenmediğini nasıl öğrenebilirim?
 Komutunu çalıştırın `az cosmosdb show` , çıktıda özelliğinin değerini görebilirsiniz `createMode` . Değer **geri yükle** olarak ayarlandıysa. hesabın başka bir hesaptan geri yüklendiğini belirtir. `restoreParameters`Özelliği `restoreSource` , kaynak hesap kimliği olan gibi daha ayrıntılı ayrıntılara sahiptir. Parametresindeki son GUID, `restoreSource` kaynak hesabın InstanceId 'sidir.
 
-Örneğin, aşağıdaki çıktıda, kaynak hesabın örnek KIMLIĞI "7b4bb-f6a0-430e-ade1-638d781830cc" olur.
+Örneğin, aşağıdaki çıktıda, kaynak hesabın örnek KIMLIĞI *7b4bb-f6a0-430e-ade1-638d781830cc* ' dir
 
 ```json
 "restoreParameters": {
@@ -75,9 +75,9 @@ Komutunu çalıştırın `az cosmosdb show` , çıktıda özelliğinin değerini
 Tüm paylaşılan üretilen iş veritabanı geri yüklendi. Geri yükleme için paylaşılan bir üretilen iş veritabanında kapsayıcıların bir alt kümesini seçemezsiniz.
 
 ### <a name="what-is-the-use-of-instanceid-in-the-account-definition"></a>Hesap tanımında InstanceId 'nin kullanımı nedir?
-Belirli bir zamanda, Azure Cosmos DB hesabının "accountName" özelliği, etkin durumdayken genel olarak benzersizdir. Ancak, hesap silindikten sonra, aynı ada sahip başka bir hesap oluşturulabilir ve bu nedenle "accountName" bir hesap örneğini tanımlamak için artık yeterli değildir. 
+Belirli bir zamanda, Azure Cosmos DB hesabının `accountName` özelliği, etkin durumdayken genel olarak benzersizdir. Ancak, hesap silindikten sonra, aynı ada sahip başka bir hesap oluşturulabilir ve bu nedenle "accountName" bir hesap örneğini tanımlamak için artık yeterli değildir. 
 
-KIMLIĞI veya "InstanceId", bir hesap örneğinin özelliğidir ve geri yükleme için aynı ada sahip olmaları durumunda birden fazla hesapta (canlı ve silinmiş) ayırt etmek için kullanılır. Veya komutlarını çalıştırarak örnek KIMLIĞINI alabilirsiniz `Get-AzCosmosDBRestorableDatabaseAccount`  `az cosmosdb restorable-database-account` . Ad özniteliği değeri "InstanceId" değerini gösterir.
+ID veya bir `instanceId` Hesap örneğinin özelliğidir ve geri yükleme için aynı ada sahip olmaları durumunda birden fazla hesapta (canlı ve silinmiş) ayırt etmek için kullanılır. Veya komutlarını çalıştırarak örnek KIMLIĞINI alabilirsiniz `Get-AzCosmosDBRestorableDatabaseAccount`  `az cosmosdb restorable-database-account` . Ad özniteliği değeri "InstanceId" değerini gösterir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

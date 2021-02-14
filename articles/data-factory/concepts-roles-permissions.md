@@ -4,18 +4,14 @@ description: Veri fabrikaları oluşturmak ve alt kaynaklarla çalışmak için 
 ms.date: 11/5/2018
 ms.topic: conceptual
 ms.service: data-factory
-services: data-factory
-documentationcenter: ''
-ms.workload: data-services
 author: dcstwh
 ms.author: weetok
-manager: anandsub
-ms.openlocfilehash: 30e07b645701cf560534b152ae42559213daf838
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: cec5df9a5046e912ab8542c91bde4344affa0925
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99053780"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100364486"
 ---
 # <a name="roles-and-permissions-for-azure-data-factory"></a>Azure Data Factory için roller ve izinler
 
@@ -54,14 +50,13 @@ Kaynak grubu düzeyinde veya yukarıdaki **Data Factory katkıda** bulunan rolü
 
 Azure Repos ve GitHub üzerindeki izinler Data Factory izinlerinden bağımsızdır. Sonuç olarak, yalnızca okuyucu rolünün bir üyesi olan depo izinlerine sahip bir Kullanıcı, Data Factory alt kaynakları düzenleyebilir ve değişiklikleri depoya kaydedebilir, ancak bu değişiklikleri yayımlayamaz.
 
+
 > [!IMPORTANT]
 > **Data Factory katkıda** bulunan rolüyle şablon dağıtımı kaynak yöneticisi, izinlerinizi yükselmez. Örneğin, bir Azure sanal makinesi oluşturan bir şablon dağıtırsanız ve sanal makine oluşturma izniniz yoksa, dağıtım bir yetkilendirme hatasıyla başarısız olur.
 
-> [!IMPORTANT]
-> **Microsoft. DataFactory/Factory/Write** izni, yayımlama bağlamı içindeki her iki modda da gereklidir.
-
+   Yayımla bağlamında, **Microsoft. DataFactory/Factory/Write** izni aşağıdaki modlar için geçerlidir.
 - Bu izin yalnızca, müşteri genel parametreleri değiştirdiğinde canlı modda gereklidir.
-- Son kayıt kimliğine sahip fabrika nesnesi güncelleştirildiğinden, bu izin her zaman, müşteri yayımlandıktan sonra her zaman git modunda gereklidir.
+- Bu izin her zaman, müşteri yayımlandıktan sonra her zaman git modunda gereklidir, son kayıt KIMLIĞINE sahip fabrika nesnesinin güncelleştirilmesi gerekir.
 
 ### <a name="custom-scenarios-and-custom-roles"></a>Özel senaryolar ve özel roller
 
@@ -95,6 +90,7 @@ Bazen farklı veri fabrikası kullanıcıları için farklı erişim düzeyleri 
 - Bir kullanıcının PowerShell veya SDK 'dan bir veri fabrikasını güncelleştirmesine izin verin, ancak Azure portal.
 
   Kullanıcı için veri fabrikası kaynağında yerleşik **katkıda** bulunan rolünü atayın. Bu rol, kullanıcının Azure portal kaynakları görmesini sağlar, ancak kullanıcı  **Yayımla** ve **Tümünü Yayımla** düğmelerine erişemez.
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

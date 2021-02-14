@@ -4,14 +4,14 @@ description: Redsıs yüksek kullanılabilirlik özellikleri ve seçenekleri iç
 author: yegu-ms
 ms.service: cache
 ms.topic: conceptual
-ms.date: 10/28/2020
+ms.date: 02/08/2021
 ms.author: yegu
-ms.openlocfilehash: e44aed1415f85bf4ea597eac6720207301946b97
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: d9c8f5dd8b2647756087ce6f36ff3a25b2aaaadc
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93076920"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100387980"
 ---
 # <a name="high-availability-for-azure-cache-for-redis"></a>Redsıs için Azure önbelleği için yüksek kullanılabilirlik
 
@@ -21,10 +21,9 @@ Redin için Azure Cache, bir önbellek için *düğüm* olarak adlandırılan bi
 
 | Seçenek | Açıklama | Kullanılabilirlik | Standart | Premium | Kurumsal |
 | ------------------- | ------- | ------- | :------: | :---: | :---: |
-| [Standart çoğaltma](#standard-replication)| Otomatik yük devretme ile tek bir veri merkezinde veya kullanılabilirlik bölgesinde (AZ) çift düğümlü çoğaltılan yapılandırma | %99,9 |✔|✔|-|
-| [Kurumsal küme](#enterprise-cluster) | Otomatik yük devretme ile iki bölgedeki bağlantılı önbellek örnekleri | %99,9 |-|-|✔|
-| [Bölge yedekliliği](#zone-redundancy) | Otomatik yük devretme ile AZs genelinde çok düğümlü çoğaltılan yapılandırma | % 99,95 (Standart çoğaltma),% 99,99 (kurumsal küme) |-|✔|✔|
-| [Coğrafi çoğaltma](#geo-replication) | Kullanıcı denetimli yük devretmeyle, iki bölgedeki bağlantılı önbellek örnekleri | % 99,9 (tek bir bölge için) |-|✔|-|
+| [Standart çoğaltma](#standard-replication)| Otomatik yük devretme ile tek bir veri merkezinde çift düğümlü çoğaltılan yapılandırma | %99,9 |✔|✔|-|
+| [Bölge yedekliliği](#zone-redundancy) | Otomatik yük devretme ile AZs genelinde çok düğümlü çoğaltılan yapılandırma | % 99,95 (Premium katman),% 99,99 (kurumsal Katmanlar) |-|Önizleme|Önizleme|
+| [Coğrafi çoğaltma](#geo-replication) | Kullanıcı denetimli yük devretmeyle, iki bölgedeki bağlantılı önbellek örnekleri | % 99,9 (Premium katmanı, tek bölge) |-|✔|-|
 
 ## <a name="standard-replication"></a>Standart çoğaltma
 
@@ -48,37 +47,36 @@ Bir birincil düğüm, Redsıs yazılımı veya işletim sistemi güncelleştirm
 
 Ayrıca, redde için Azure önbelleği Premium katmanda ek çoğaltma düğümlerine izin verir. [Çoklu çoğaltma önbelleği](cache-how-to-multi-replicas.md) , en çok üç çoğaltma düğümü ile yapılandırılabilir. Daha fazla çoğaltmanın olması, birincil olarak yedeklenen ek düğümler nedeniyle genellikle dayanıklılığı geliştirir. Daha fazla çoğaltmalarla birlikte, Redsıs örneği için Azure önbelleği yine de veri merkezi veya AZ geniş bir kesinti tarafından ciddi bir şekilde etkilenebilir. Birden çok kopyayı, [bölge artıklarıyla](#zone-redundancy)birlikte kullanarak önbellek kullanılabilirliğini artırabilirsiniz.
 
-## <a name="enterprise-cluster"></a>Kurumsal küme
-
->[!NOTE]
->Bu, önizleme olarak kullanılabilir.
->
->
-
-Bir açık kurumsal katmandaki bir önbellek Redsıs kurumsal kümesi üzerinde çalışır. Her zaman çekirdek oluşturmak için tek sayıda sunucu düğümü gerektirir. Varsayılan olarak, her biri ayrılmış bir VM 'de barındırılan üç düğümden oluşur. Kurumsal önbellekte iki adet aynı boyutlu *veri düğümü* ve bir küçük *çekirdek düğümü* vardır. Enterprise Flash önbelleğinde üç boyutlu veri düğümü vardır. Kurumsal küme Redsıs verilerini dahili olarak bölümlere böler. Her bölümde *birincil* ve en az bir *çoğaltma* bulunur. Her veri düğümü bir veya daha fazla bölüm barındırır. Kurumsal küme, herhangi bir bölümün birincil ve çoğaltmasının aynı veri düğümüne hiçbir şekilde birlikte olmamasını sağlar. Bölümler, verileri zaman uyumsuz iken ilgili çoğaltmalara göre çoğaltır.
-
-Bir veri düğümü kullanılamaz hale geldiğinde veya ağ bölünmesi gerçekleştiğinde, [Standart çoğaltmada](#standard-replication) açıklanacak olan bir yük devretme gerçekleşecektir. Kurumsal küme, hangi kalan düğümlerin yeni bir çekirdeğe katılacağı tespit etmek için çekirdek tabanlı bir model kullanır. Ayrıca, gerektiğinde bu düğümlerde bulunan çoğaltma bölümlerini de yükseltir.
-
 ## <a name="zone-redundancy"></a>Bölge yedekliliği
-
->[!NOTE]
->Bu, önizleme olarak kullanılabilir.
->
->
 
 Redsıs için Azure önbelleği, Premium ve Enterprise katmanlarında bölgesel olarak yedekli yapılandırmaların kullanılmasını destekler. Bölgesel olarak [yedekli önbellek](cache-how-to-zone-redundancy.md) , düğümlerini aynı bölgedeki farklı [Azure kullanılabilirlik alanları](../availability-zones/az-overview.md) arasında yerleştirebilir. Tek bir hata noktası olarak veri merkezini veya AZ kesintiyi ortadan kaldırır ve önbelleğinizin genel kullanılabilirliğini artırır.
 
-Aşağıdaki diyagramda bölge yedekli yapılandırması gösterilmektedir:
+### <a name="premium-tier"></a>Premium katmanı
 
-:::image type="content" source="media/cache-high-availability/zone-redundancy.png" alt-text="Veri çoğaltma Kurulumu":::
+>[!NOTE]
+>Bu, önizleme olarak kullanılabilir.
+>
+>
+
+Aşağıdaki diyagramda Premium katmanının bölgesel olarak yedekli yapılandırması gösterilmektedir:
+
+:::image type="content" source="media/cache-high-availability/zone-redundancy.png" alt-text="Bölge artıklığı kurulumu":::
    
 Reds için Azure Cache, bir bölgenin yedekli önbelleğindeki düğümleri seçtiğiniz Azlara göre hepsini bir kez kez dağıtır. Başlangıçta birincil olarak hangi düğümün çalışacağını de belirler.
 
 Bölge yedekli önbelleği otomatik yük devretme sağlar. Geçerli birincil düğüm kullanılamadığında, çoğaltmalardan biri üzerinden alınır. Yeni birincil düğüm farklı bir AZ ise uygulamanız daha yüksek önbellek yanıt süresi ile karşılaşabilir. Azlar coğrafi olarak ayrılır. Bir AZ diğerine geçiş yapmak, uygulamanızın ve önbelleğinin barındırıldığı konum arasındaki fiziksel mesafeyi değiştirir. Bu değişiklik, uygulamadan önbelleğe gidiş dönüş ağ gecikmelerinin etkilerini etkiler. Ek gecikme süresinin çoğu uygulama için kabul edilebilir bir Aralık içinde olması beklenir. Uygulamanızı, bölgesel olarak yedekli bir önbellekte iyi gerçekleştirebileceği şekilde test etmenizi öneririz.
 
+### <a name="enterprise-and-enterprise-flash-tiers"></a>Enterprise ve Enterprise Flash katmanları
+
+Bir açık kurumsal katmandaki bir önbellek Redsıs kurumsal kümesi üzerinde çalışır. Her zaman çekirdek oluşturmak için tek sayıda sunucu düğümü gerektirir. Varsayılan olarak, her biri ayrılmış bir VM 'de barındırılan üç düğümden oluşur. Kurumsal önbellekte iki adet aynı boyutlu *veri düğümü* ve bir küçük *çekirdek düğümü* vardır. Enterprise Flash önbelleğinde üç boyutlu veri düğümü vardır. Kurumsal küme Redsıs verilerini dahili olarak bölümlere böler. Her bölümde *birincil* ve en az bir *çoğaltma* bulunur. Her veri düğümü bir veya daha fazla bölüm barındırır. Kurumsal küme, herhangi bir bölümün birincil ve çoğaltmasının aynı veri düğümüne hiçbir şekilde birlikte olmamasını sağlar. Bölümler, verileri zaman uyumsuz iken ilgili çoğaltmalara göre çoğaltır.
+
+Bir veri düğümü kullanılamaz hale geldiğinde veya ağ bölünmesi gerçekleştiğinde, [Standart çoğaltmada](#standard-replication) açıklanacak olan bir yük devretme gerçekleşecektir. Kurumsal küme, hangi kalan düğümlerin yeni bir çekirdeğe katılacağı tespit etmek için çekirdek tabanlı bir model kullanır. Ayrıca, gerektiğinde bu düğümlerde bulunan çoğaltma bölümlerini de yükseltir.
+
 ## <a name="geo-replication"></a>Coğrafi çoğaltma
 
-Coğrafi çoğaltma, genellikle olağanüstü durum kurtarma için tasarlanmıştır. Birincil önbelleğinizi yedeklemek için, farklı bir Azure bölgesindeki Redsıs örneği için bir Azure önbelleği yapılandırma olanağı sağlar. [Redde Azure önbelleği için Coğrafi çoğaltmayı ayarlama,](cache-how-to-geo-replication.md) coğrafi çoğaltmanın nasıl çalıştığına ilişkin ayrıntılı bir açıklama sağlar.
+[Coğrafi çoğaltma](cache-how-to-geo-replication.md) , genellikle iki Azure bölgesini kapsayan redsıs örnekleri Için Iki Azure önbelleğinin bağlanmasına yönelik bir mekanizmadır. Birincil bağlı önbellek ve diğeri ikincil bağlantılı önbellek olarak bir önbellek seçilir. Yalnızca birincil bağlantılı önbellek okuma ve yazma isteklerini kabul eder. Birincil önbelleğe yazılan veriler ikincil bağlantılı önbelleğe çoğaltılır. İkincil bağlantılı önbellek okuma isteklerine yönelik olarak kullanılabilir. Birincil ve ikincil önbellek örnekleri arasındaki veri aktarımı TLS ile korunmaktadır.
+
+Coğrafi çoğaltma, genellikle olağanüstü durum kurtarma için tasarlanmıştır. Bu, önbellek verilerinizi farklı bir bölgeye yedekleme olanağı sağlar. Varsayılan olarak, uygulamanız birincil bölgeye yazar ve okur. Bu, isteğe bağlı olarak ikincil bölgeden okunacak şekilde yapılandırılabilir. Coğrafi çoğaltma, uygulamanızın geri kalanı birincil bölgede kalırsa bölgeler arasında eklenen ağ gecikmesinden kaynaklanan sorunlar nedeniyle otomatik yük devretme sağlamaz. İkincil önbelleğin bağlantısını kaldırarak yük devretmeyi yönetmeniz ve başlatmanız gerekir. Bu, bunu yeni birincil örnek olarak yükseltir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

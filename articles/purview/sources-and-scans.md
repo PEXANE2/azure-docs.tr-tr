@@ -7,12 +7,13 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/24/2020
-ms.openlocfilehash: 6432cc9affd34c0fa9b832aea91932a2b9e7540f
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.custom: references_regions
+ms.openlocfilehash: 9a73f9b734d5404d07e05dd37d5ad8571c1aab2e
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96576681"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100383900"
 ---
 # <a name="supported-data-sources-and-file-types-in-azure-purview"></a>Azure purview 'da desteklenen veri kaynakları ve dosya türleri
 
@@ -70,6 +71,28 @@ Dosya türlerine göre kaynak kümeleri için dosya örnekleme:
 - 100 dosyalarındaki **diğer yapılandırılmış dosya türleri (JSON, XML, txt)** -1, ' kaynak kümesi ' olarak kabul edilen bir klasör veya bölüm dosyaları grubu Içinde (L3 tarama) örneklenir
 - **SQL Objects ve CosmosDB varlıkları** -her dosya L3 tarandı.
 - **Belge dosyası türleri** -her dosya L3 tarandı. Kaynak kümesi desenleri bu dosya türleri için uygulanmaz.
+
+## <a name="scan-regions"></a>Tarama bölgeleri
+Aşağıda, purview tarayıcısının çalıştığı tüm Azure veri kaynağı (veri merkezi) bölgelerinin bir listesi verilmiştir. Azure veri kaynağınız bu listenin dışında bir bölgedeyse, tarayıcı, purview örneğinizin bölgesinde çalışacaktır.
+ 
+### <a name="purview-scanner-regions"></a>Tarayıcı bölgelerini takip edin
+
+- EastUs
+- EastUs2 
+- Güneydoğu ABD
+- WestUs
+- WestUs2
+- Güneydoğu
+- WestEurope
+- NorthEurope
+- UkSouth
+- AustraliaEast
+- Canadaorta
+- BrazilSouth
+- Merkezileştirme Hindistan
+- JapanEast
+- SouthAfricaNorth
+- Francecna al
 
 ## <a name="classification"></a>Sınıflandırma
 

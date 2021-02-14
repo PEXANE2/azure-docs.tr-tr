@@ -16,12 +16,12 @@ ms.topic: reference
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6140f5fd431a0b089b45892130e075bde02a2eb2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6185c5408f74b914ce5ad47634999786ba1d7ab6
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91299774"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100368005"
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Azure AD Connect Health sık sorulan sorular
 Bu makale, Azure Active Directory (Azure AD) Connect Health hakkında sık sorulan soruların (SSS) yanıtlarını içerir. Bu SSS, faturalandırma modeli, yetenekler, sınırlamalar ve destek dahil olmak üzere hizmetin nasıl kullanılacağına ilişkin soruları kapsar.
@@ -29,7 +29,7 @@ Bu makale, Azure Active Directory (Azure AD) Connect Health hakkında sık sorul
 ## <a name="general-questions"></a>Genel sorular
 **S: birden çok Azure AD dizinini yönetiyorum. Nasıl yaparım? Azure Active Directory Premium birine geçiş yapılsın mı?**
 
-Farklı Azure AD kiracılar arasında geçiş yapmak için sağ üst köşedeki şu anda oturum açmış olan **Kullanıcı adını** seçin ve ardından uygun hesabı seçin. Hesap burada listelenmiyorsa **oturumu**Kapat ' ı seçin ve ardından oturum açmak için Azure Active Directory Premium etkinleştirilmiş olan dizinin genel yönetici kimlik bilgilerini kullanın.
+Farklı Azure AD kiracılar arasında geçiş yapmak için sağ üst köşedeki şu anda oturum açmış olan **Kullanıcı adını** seçin ve ardından uygun hesabı seçin. Hesap burada listelenmiyorsa **oturumu** Kapat ' ı seçin ve oturum açmak için Azure Active Directory Premium (P1 veya P2) etkin olan dizinin genel yönetici kimlik bilgilerini kullanın.
 
 **S: Azure AD Connect Health tarafından desteklenen kimlik rollerinin sürümü nedir?**
 
@@ -47,8 +47,8 @@ Hizmet tarafından sunulan özelliklerin role ve işletim sistemine göre farkl�
 
 **S: altyapımı izlemek için kaç lisansa ihtiyacım var?**
 
-* İlk Connect Health Aracısı için en az bir Azure AD Premium lisansı gerekir.
-* Her ek kayıtlı aracı 25 ek Azure AD Premium lisansı gerektirir.
+* İlk Connect Health Aracısı için en az bir Azure AD Premium (P1 veya P2) lisansı gerekir.
+* Her ek kayıtlı aracı 25 ek Azure AD Premium (P1 veya P2) lisansı gerektirir.
 * Aracı sayısı, tüm izlenen roller (AD FS, Azure AD Connect ve/veya AD DS) içinde kayıtlı olan aracıların toplam sayısına eşdeğerdir.
 * AAD Connect Health lisanslama, lisansı belirli kullanıcılara atamanız gerekmez. Yalnızca gerekli sayıda lisansa sahip olmanız gerekir.
 
@@ -70,10 +70,10 @@ Lisanslama bilgileri de [Azure AD fiyatlandırma sayfasında](https://aka.ms/aad
 
 | Roller | Özellikler | Almanya bulutu 'nda destekleniyor |
 | ------ | --------------- | --- |
-| Eşitleme için Health Connect | İzleme/öngörü/uyarılar/analiz | Hayır |
-|  | Eşitleme hata raporu | Evet |
-| ADFS için Connect Health | İzleme/öngörü/uyarılar/analiz | Hayır |
-| EKLER için Connect Health | İzleme/öngörü/uyarılar/analiz | Hayır |
+| Eşitleme için Health Connect | İzleme/öngörü/uyarılar/analiz | No |
+|  | Eşitleme hata raporu | Yes |
+| ADFS için Connect Health | İzleme/öngörü/uyarılar/analiz | No |
+| EKLER için Connect Health | İzleme/öngörü/uyarılar/analiz | No |
 
 Eşitleme için bağlantı durumunun aracı bağlantısının olduğundan emin olmak için lütfen [yükleme gereksinimini](how-to-connect-health-agent-install.md#outbound-connectivity-to-the-azure-service-endpoints) uygun şekilde yapılandırın.
 

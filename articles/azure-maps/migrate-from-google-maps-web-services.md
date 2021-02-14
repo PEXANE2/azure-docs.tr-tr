@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 3bb0aadf81ba501070ce0c734847bb16c0378896
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 04bbb0465f26e82d247c53e7393c4476b9d36fde
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98624047"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100386858"
 ---
 # <a name="tutorial-migrate-web-service-from-google-maps"></a>Öğretici: Google Maps 'tan Web hizmeti geçirme
 
@@ -54,7 +54,7 @@ Tablo, listelenen Google Maps hizmeti API 'Lerinde benzer işlevlere sahip Azure
 
 Aşağıdaki hizmet API 'Leri Şu anda Azure haritalar 'da kullanılabilir değildir:
 
-- Coğrafi Konum
+- Coğrafi konum-Azure haritaları coğrafi konum olarak adlandırılan bir hizmete sahiptir, ancak konum bilgilerine IP adresi sağlar, ancak şu anda Cell Tower veya WiFi çapraz yerleşimini desteklemez.
 - Ayrıntılar ve fotoğraflar-telefon numaralarını ve Web sitesi URL 'sini Azure haritalar arama API 'sinde bulabilirsiniz.
 - Harita URL 'Leri
 - En yakın yollar-bu, [burada](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Basic%20snap%20to%20road%20logic)gösterildiği gıbı Web SDK kullanılarak ulaşılabilir, ancak şu anda hizmet olarak kullanılamaz.

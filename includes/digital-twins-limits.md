@@ -5,16 +5,19 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 6/9/2020
 ms.author: baanders
-ms.openlocfilehash: 08ae189253c6141a6b84035b71016ff5099ec162
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 4a69b2ff15fc4857e9fb292d2f753aa68ed875d4
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98689900"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100370128"
 ---
 ### <a name="functional-limits"></a>İşlevsel sınırlar
 
-Aşağıdaki tabloda, Azure dijital TWINS 'in işlevsel sınırları listelenmektedir.
+Aşağıdaki tabloda Azure dijital TWINS 'in işlevsel sınırları listelenmektedir. 
+
+> [!TIP]
+> Bu işlev sınırları içinde çalışacak modelleme önerileri için bkz. [model tasarlamak Için en iyi uygulamalar](../articles/digital-twins/concepts-models.md#best-practices-for-designing-models).
 
 | Alan | Özellik | Varsayılan limit | Ayarlanabilir? |
 | --- | --- | --- | --- |
@@ -28,6 +31,7 @@ Aşağıdaki tabloda, Azure dijital TWINS 'in işlevsel sınırları listelenmek
 | Yönlendirme | Tek bir Azure dijital TWINS örneği için yol sayısı | 6 | Yes |
 | Modeller | Tek bir Azure dijital TWINS örneği içindeki model sayısı | 10,000 | Yes |
 | Modeller | Tek bir API çağrısında karşıya yüklenebilen model sayısı | 250 | No |
+| Modeller | Tek bir modelin en büyük boyutu (PUT veya PATCH isteğindeki JSON gövdesi) | 1 MB | No |
 | Modeller | Tek bir sayfada döndürülen öğelerin sayısı | 100 | No |
 | Sorgu | Tek bir sayfada döndürülen öğelerin sayısı | 100 | Yes |
 | Sorgu | `AND`  /  `OR` Sorgudaki ifade sayısı | 50 | Yes |

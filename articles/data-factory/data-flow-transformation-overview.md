@@ -3,16 +3,15 @@ title: Eşleme veri akışı dönüşümüne genel bakış
 description: Eşleme veri akışı 'nda bulunan farklı dönüşümlere genel bakış
 author: dcstwh
 ms.author: weetok
-manager: anandsub
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/27/2020
-ms.openlocfilehash: 9d44890e84e97a413543a4291d1331fee0f04841
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: ba2ff2b5f108d7910958b374cc4b602a84a3f53d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96490899"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100367920"
 ---
 # <a name="mapping-data-flow-transformation-overview"></a>Eşleme veri akışı dönüşümüne genel bakış
 
@@ -20,7 +19,7 @@ ms.locfileid: "96490899"
 
 Aşağıda şu anda eşleme veri akışında desteklenen dönüşümlerin bir listesi verilmiştir. Yapılandırma ayrıntılarını öğrenmek için her dönüşüme tıklayın.
 
-| Ad | Kategori | Açıklama |
+| Name | Kategori | Açıklama |
 | ---- | -------- | ----------- |
 | [Toplama](data-flow-aggregate.md) | Şema değiştiricisi | SUM, MIN, MAX ve COUNT gibi farklı toplamalar türlerini, var olan veya hesaplanan sütunlara göre gruplanmış olarak tanımlayın. | 
 | [Satırı değiştirme](data-flow-alter-row.md) | Satır değiştiricisi | Satırlarda INSERT, DELETE, Update ve upsert ilkeleri ayarlayın. |
@@ -37,7 +36,7 @@ Aşağıda şu anda eşleme veri akışında desteklenen dönüşümlerin bir li
 | [Seç](data-flow-select.md) | Şema değiştiricisi | Diğer ad sütunları ve akış adları ve sütunları bırakma veya yeniden sıralama |
 | [Havuz](data-flow-sink.md) | - | Verileriniz için son hedef |
 | [Sırala](data-flow-sort.md) | Satır değiştiricisi | Geçerli veri akışındaki gelen satırları Sırala |
-| [Kaynaktaki](data-flow-source.md) | - | Veri akışı için bir veri kaynağı |
+| [Kaynak](data-flow-source.md) | - | Veri akışı için bir veri kaynağı |
 | [Vekil anahtar](data-flow-surrogate-key.md) | Şema değiştiricisi | Artan iş dışı bir anahtar değeri ekleyin |
 | [Birleşim](data-flow-union.md) | Birden çok giriş/çıkış | Birden çok veri akışını dikey olarak birleştirme |
 | [Özetlemeyi açma](data-flow-unpivot.md) | Şema değiştiricisi | Sütunları satır değerlerine ekleyin |

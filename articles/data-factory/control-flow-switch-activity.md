@@ -1,20 +1,18 @@
 ---
 title: Azure Data Factory etkinlik değiştirme
 description: Switch etkinliği, işleme akışını bir koşula göre denetlemenizi sağlar.
-services: data-factory
 author: dcstwh
 ms.author: weetok
 ms.reviewer: maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/08/2019
-ms.openlocfilehash: fd5bb37d54183020e233774a778d27f5d4588bb4
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 4d58b032fe0371c9b54cf66ab13f525880867fb6
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96486034"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100385362"
 ---
 # <a name="switch-activity-in-azure-data-factory"></a>Azure Data Factory etkinlik değiştirme
 
@@ -69,11 +67,11 @@ Switch etkinliği, programlama dillerinde bir switch ifadesinin sağladığı i�
 
 Özellik | Açıklama | İzin verilen değerler | Gerekli
 -------- | ----------- | -------------- | --------
-name | Anahtar etkinliğinin adı. | Dize | Evet
-tür | *Switch* olarak ayarlanmalıdır* | Dize | Evet
-ifade | Dize değeri değerlendirmesi gereken ifade | Sonuç türü dize olan ifade | Evet
-çalışmaların | Değer ifade değerlendirmesiyle eşleştiğinde yürütülecek bir değer ve bir etkinlik kümesi içeren servis talepleri kümesi. En az bir örnek sağlanmalıdır. 25 servis talebi için maksimum sınır vardır. | Case nesneleri dizisi | Evet
-Defaultacmize | İfade değerlendirmesi karşılanmadığı zaman yürütülen etkinlik kümesi. | Etkinlik dizisi | Evet
+name | Anahtar etkinliğinin adı. | Dize | Yes
+tür | *Switch* olarak ayarlanmalıdır* | Dize | Yes
+ifade | Dize değeri değerlendirmesi gereken ifade | Sonuç türü dize olan ifade | Yes
+çalışmaların | Değer ifade değerlendirmesiyle eşleştiğinde yürütülecek bir değer ve bir etkinlik kümesi içeren servis talepleri kümesi. En az bir örnek sağlanmalıdır. 25 servis talebi için maksimum sınır vardır. | Case nesneleri dizisi | Yes
+Defaultacmize | İfade değerlendirmesi karşılanmadığı zaman yürütülen etkinlik kümesi. | Etkinlik dizisi | Yes
 
 ## <a name="example"></a>Örnek
 

@@ -2,13 +2,13 @@
 title: Azure VMware çözümünde Web uygulamalarınızı korumak için Azure Application Gateway kullanma
 description: Azure VMware çözümünde çalışan Web uygulamalarınızı güvenli bir şekilde sunmak için Azure Application Gateway 'i yapılandırın.
 ms.topic: how-to
-ms.date: 02/08/2021
-ms.openlocfilehash: fdef37bd76b08a8778db8401a1e8a0406c2ed652
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.date: 02/10/2021
+ms.openlocfilehash: 9b10c206114ca922cc11bd8cb0321941b8ba672c
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99988640"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100384206"
 ---
 # <a name="use-azure-application-gateway-to-protect-your-web-apps-on-azure-vmware-solution"></a>Azure VMware çözümünde Web uygulamalarınızı korumak için Azure Application Gateway kullanma
 
@@ -35,7 +35,7 @@ Diyagramda, Azure VMware Çözüm Web uygulamalarıyla Application Gateway doğr
 
 :::image type="content" source="media/hub-spoke/azure-vmware-solution-second-level-traffic-segmentation.png" alt-text="Azure VMware Çözüm Web uygulamalarıyla Application Gateway doğrulamak için kullanılan test senaryosunu gösteren diyagram." border="false":::
 
-Application Gateway örnek, Hub üzerinde ayrılmış bir alt ağda dağıtılır. Azure genel IP adresine sahiptir. Sanal ağ için standart DDoS korumasının etkinleştirilmesi önerilir. Web sunucusu, NSX T0 ve T1 yönlendiricilerinin arkasındaki bir Azure VMware çözümü özel bulutu üzerinde barındırılır. Azure VMware çözümü, hub ve şirket içi sistemlerle iletişimi etkinleştirmek için [ExpressRoute Global Reach](../expressroute/expressroute-global-reach.md) kullanır.
+Application Gateway örnek, Hub üzerinde ayrılmış bir alt ağda dağıtılır. Azure genel IP adresine sahiptir. Sanal ağ için standart DDoS korumasının etkinleştirilmesi önerilir. Web sunucusu, NSX T0 ve T1 ağ geçitlerinin arkasındaki bir Azure VMware çözümü özel bulutu üzerinde barındırılır. Azure VMware çözümü, hub ve şirket içi sistemlerle iletişimi etkinleştirmek için [ExpressRoute Global Reach](../expressroute/expressroute-global-reach.md) kullanır.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -57,7 +57,7 @@ Application Gateway örnek, Hub üzerinde ayrılmış bir alt ağda dağıtılı
 
 4. Azure VMware Çözüm altyapısında çalışan VM 'Ler için bir arka uç havuzu ekleyin. Azure VMware çözümü özel bulutu üzerinde çalışan Web sunucularının ayrıntılarını sağlayın ve **Ekle**' yi seçin.  Ardından Ileri ' yi seçin **: yapılandırma>**.
 
-1. **Yapılandırma** sekmesinde, **yönlendirme kuralı ekle**' yi seçin.
+5. **Yapılandırma** sekmesinde, **yönlendirme kuralı ekle**' yi seçin.
 
 6. **Dinleyici** sekmesinde, dinleyicinin ayrıntılarını sağlayın. HTTPS seçilirse, bir PFX dosyasından veya var olan bir Azure Key Vault sertifikasından bir sertifika sağlamanız gerekir. 
 
@@ -67,7 +67,7 @@ Application Gateway örnek, Hub üzerinde ayrılmış bir alt ağda dağıtılı
 
 9. Yol tabanlı kuralları yapılandırmak istiyorsanız, **yol tabanlı bir kural oluşturmak için birden çok hedef Ekle**' yi seçin. 
 
-10. Yol tabanlı bir kural ekleyin ve **Ekle**' yi seçin. Başka yol tabanlı kurallar eklemek için tekrarlayın. 
+10. Yol tabanlı bir kural ekleyin ve **Ekle**' yi seçin. Yol tabanlı daha fazla kural eklemek için tekrarlayın. 
 
 11. Yol tabanlı kurallar eklemeyi bitirdiğinizde yeniden **Ekle** ' yi seçin. ardından Ileri ' yi seçin **: etiketler>**. 
 
@@ -77,7 +77,7 @@ Application Gateway örnek, Hub üzerinde ayrılmış bir alt ağda dağıtılı
 
 ## <a name="configuration-examples"></a>Yapılandırma örnekleri
 
-Bu bölümde, bu kullanım durumları için arka uç havuzları olarak Azure VMware Çözüm VM 'Leri ile Application Gateway yapılandırmayı öğreneceksiniz: 
+Şimdi Azure VMware Çözüm VM 'leriyle Application Gateway aşağıdaki kullanım örnekleri için arka uç havuzları olarak yapılandıracağız: 
 
 - [Birden çok site barındırma](#hosting-multiple-sites)
 - [URL 'ye göre yönlendirme](#routing-by-url)
@@ -94,7 +94,7 @@ Bu yordamda, mevcut bir uygulama ağ geçidinde Azure VMware çözümü özel bu
 
     :::image type="content" source="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-multi-backend-pool.png" alt-text="VSphere Istemcisinde bir Web sunucusunun ayrıntılarının özetini gösteren ekran görüntüsü.":::
 
-    Bu öğreticiyi göstermek için Internet Information Services (IIS) rolü yüklü Windows Server 2016 ' i kullandık. VM 'Ler yüklendikten sonra, VM 'lerin her birinde IIS 'yi yapılandırmak için aşağıdaki PowerShell komutlarını çalıştırın. 
+    Windows Server 2016 ' i Internet Information Services (IIS) rolü yüklenmiş olarak kullandık. VM 'Ler yüklendikten sonra, VM 'lerin her birinde IIS 'yi yapılandırmak için aşağıdaki PowerShell komutlarını çalıştırın. 
 
     ```powershell
     Install-WindowsFeature -Name Web-Server
@@ -121,7 +121,7 @@ Bu yordamda, mevcut bir uygulama ağ geçidinde Azure VMware çözümü özel bu
 
 ### <a name="routing-by-url"></a>URL 'ye göre yönlendirme
 
-Bu yordamda, mevcut bir uygulama ağ geçidinde Azure VMware çözümü özel bulutu üzerinde çalışan VM 'Ler kullanılarak arka uç adres havuzlarının nasıl tanımlanacağı gösterilmektedir. Daha sonra, Web trafiğinin havuzlardaki uygun sunuculara ulaştığınızdan emin olmak için yönlendirme kuralları oluşturursunuz.
+Aşağıdaki adımlar, bir Azure VMware çözümü özel bulutu üzerinde çalışan VM 'Leri kullanarak arka uç adres havuzlarını tanımlar. Özel bulut, mevcut bir Application Gateway üzerinde. Daha sonra, Web trafiğinin havuzlardaki uygun sunuculara ulaştığınızdan emin olmak için yönlendirme kuralları oluşturursunuz.
 
 1. Özel bulutunuzda, Web grubunu temsil eden bir sanal makine havuzu oluşturun. 
 

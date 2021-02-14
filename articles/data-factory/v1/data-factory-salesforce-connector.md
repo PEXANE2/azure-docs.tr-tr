@@ -1,23 +1,18 @@
 ---
 title: Data Factory kullanarak Salesforce 'tan veri taşıma
 description: Azure Data Factory kullanarak Salesforce 'tan veri taşıma hakkında bilgi edinin.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.assetid: dbe3bfd6-fa6a-491a-9638-3a9a10d396d1
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: ba95ba57bb57b1b2e9ecde3ad27f6bb5fbca66cb
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: ccc20f415d13356de755af5d1d3afc5b29de72f2
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93124892"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100387062"
 ---
 # <a name="move-data-from-salesforce-by-using-azure-data-factory"></a>Azure Data Factory kullanarak Salesforce 'tan veri taşıma
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -46,12 +41,12 @@ Salesforce, hem toplam API istekleri hem de eşzamanlı API istekleri için sın
 
 Ayrıca, her iki senaryoda da "REQUEST_LIMIT_EXCEEDED" hatasını alabilirsiniz. Ayrıntılar için [Salesforce geliştirici sınırları](https://resources.docs.salesforce.com/200/20/en-us/sfdc/pdf/salesforce_app_limits_cheatsheet.pdf) MAKALESINDEKI "API isteği sınırları" bölümüne bakın.
 
-## <a name="getting-started"></a>Başlarken
+## <a name="getting-started"></a>Kullanmaya başlama
 Verileri Salesforce 'tan farklı araçlar/API 'Ler kullanarak taşıyan kopyalama etkinliğiyle bir işlem hattı oluşturabilirsiniz.
 
-İşlem hattı oluşturmanın en kolay yolu **Kopyalama Sihirbazı** ' nı kullanmaktır. Veri kopyalama Sihirbazı 'nı kullanarak işlem hattı oluşturma hakkında hızlı bir yol için bkz. [öğretici: kopyalama Sihirbazı 'nı kullanarak işlem hattı oluşturma](data-factory-copy-data-wizard-tutorial.md) .
+İşlem hattı oluşturmanın en kolay yolu **Kopyalama Sihirbazı**' nı kullanmaktır. Veri kopyalama Sihirbazı 'nı kullanarak işlem hattı oluşturma hakkında hızlı bir yol için bkz. [öğretici: kopyalama Sihirbazı 'nı kullanarak işlem hattı oluşturma](data-factory-copy-data-wizard-tutorial.md) .
 
-İşlem hattı oluşturmak için aşağıdaki araçları da kullanabilirsiniz: **Visual Studio** , **Azure PowerShell** , **Azure Resource Manager şablonu** , **.NET API** ve **REST API** . Kopyalama etkinliğine sahip bir işlem hattı oluşturmak için adım adım yönergeler için bkz. [kopyalama etkinliği öğreticisi](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
+İşlem hattı oluşturmak için aşağıdaki araçları da kullanabilirsiniz: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager şablonu**, **.NET API** ve **REST API**. Kopyalama etkinliğine sahip bir işlem hattı oluşturmak için adım adım yönergeler için bkz. [kopyalama etkinliği öğreticisi](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
 
 Araçları veya API 'Leri kullanıp kullanmayacağınızı bir kaynak veri deposundan havuz veri deposuna veri taşınan bir işlem hattı oluşturmak için aşağıdaki adımları gerçekleştirirsiniz:
 
@@ -69,7 +64,7 @@ Aşağıdaki tabloda, Salesforce bağlantılı hizmetine özgü JSON öğelerine
 | Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
 | tür |Type özelliği: **Salesforce** olarak ayarlanmalıdır. |Yes |
-| environmentUrl | Salesforce örneğinin URL 'sini belirtin. <br><br> -Varsayılan: "https: \/ /login.Salesforce.com". <br> -Korumalı verileri veri kopyalamak için "" seçeneğini belirtin https://test.salesforce.com . <br> -Özel etki alanından veri kopyalamak için, örneğin "https://[Domain]. My. Salesforce. com" belirtin. |Hayır |
+| environmentUrl | Salesforce örneğinin URL 'sini belirtin. <br><br> -Varsayılan: "https: \/ /login.Salesforce.com". <br> -Korumalı verileri veri kopyalamak için "" seçeneğini belirtin https://test.salesforce.com . <br> -Özel etki alanından veri kopyalamak için, örneğin "https://[Domain]. My. Salesforce. com" belirtin. |No |
 | username |Kullanıcı hesabı için bir Kullanıcı adı belirtin. |Yes |
 | password |Kullanıcı hesabı için bir parola belirtin. |Yes |
 | Belirtilmedi |Kullanıcı hesabı için bir güvenlik belirteci belirtin. Güvenlik belirtecini sıfırlama/alma hakkında yönergeler için bkz. [güvenlik belirteci alma](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm) . Genel olarak güvenlik belirteçleri hakkında daha fazla bilgi edinmek için bkz. [güvenlik ve API](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm). |Yes |
@@ -108,8 +103,8 @@ Kopyalama etkinliğinde, kaynak **Relationalsource** türünde olduğunda (Sales
 ### <a name="retrieving-data-using-where-clause-on-datetime-column"></a>Tarih saat sütununda WHERE yan tümcesi kullanılarak veri alma
 SOQL veya SQL sorgusu belirttiğinizde, tarih saat biçimi farklılığı ile ilgilenyin. Örneğin:
 
-* **Soql örneği** : `$$Text.Format('SELECT Id, Name, BillingCity FROM Account WHERE LastModifiedDate >= {0:yyyy-MM-ddTHH:mm:ssZ} AND LastModifiedDate < {1:yyyy-MM-ddTHH:mm:ssZ}', WindowStart, WindowEnd)`
-* **SQL örneği** :
+* **Soql örneği**: `$$Text.Format('SELECT Id, Name, BillingCity FROM Account WHERE LastModifiedDate >= {0:yyyy-MM-ddTHH:mm:ssZ} AND LastModifiedDate < {1:yyyy-MM-ddTHH:mm:ssZ}', WindowStart, WindowEnd)`
+* **SQL örneği**:
     * **Sorguyu belirtmek için kopyalama Sihirbazı 'Nı kullanma:**`$$Text.Format('SELECT * FROM Account WHERE LastModifiedDate >= {{ts\'{0:yyyy-MM-dd HH:mm:ss}\'}} AND LastModifiedDate < {{ts\'{1:yyyy-MM-dd HH:mm:ss}\'}}', WindowStart, WindowEnd)`
     * **Sorgu belirtmek IÇIN JSON düzenlemesini kullanma (doğru kaçış karakteri):**`$$Text.Format('SELECT * FROM Account WHERE LastModifiedDate >= {{ts\\'{0:yyyy-MM-dd HH:mm:ss}\\'}} AND LastModifiedDate < {{ts\\'{1:yyyy-MM-dd HH:mm:ss}\\'}}', WindowStart, WindowEnd)`
 
@@ -119,8 +114,8 @@ SOQL veya SQL sorgusu belirttiğinizde, tarih saat biçimi farklılığı ile il
 ### <a name="retrieving-deleted-records-from-salesforce-recycle-bin"></a>Silinen kayıtları Salesforce geri dönüşüm kutusu 'ndan alma
 Salesforce geri dönüşüm kutusu 'ndaki geçici silinen kayıtları sorgulamak için sorgunuzda **"IsDeleted = 1"** belirtebilirsiniz. Örneğin,
 
-* Yalnızca silinen kayıtları sorgulamak için, "select * from MyTable__c **WHERE IsDeleted = 1** " belirtin
-* Var olan ve silinen dahil tüm kayıtları sorgulamak için, "select * from MyTable__c **WHERE IsDeleted = 0 veya IsDeleted = 1** " belirtin
+* Yalnızca silinen kayıtları sorgulamak için, "select * from MyTable__c **WHERE IsDeleted = 1**" belirtin
+* Var olan ve silinen dahil tüm kayıtları sorgulamak için, "select * from MyTable__c **WHERE IsDeleted = 0 veya IsDeleted = 1**" belirtin
 
 ## <a name="json-example-copy-data-from-salesforce-to-azure-blob"></a>JSON örneği: Salesforce 'tan Azure Blob 'a veri kopyalama
 Aşağıdaki örnek, [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) veya [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)kullanarak bir işlem hattı oluşturmak için kullanabileceğiniz örnek JSON tanımlarını sağlar. Verilerin Salesforce 'tan Azure Blob depolama alanına nasıl kopyalanacağını gösterir. Ancak, veriler burada belirtilen Azure Data Factory kopyalama etkinliği kullanılarak [burada](data-factory-data-movement-activities.md#supported-data-stores-and-formats) belirtilen herhangi bir havuza kopyalanabilir.
@@ -287,7 +282,7 @@ RelationalSource tarafından desteklenen özelliklerin listesi için bkz. [relat
 | --- | --- |
 | Otomatik sayı |Dize |
 | Onay kutusu |Boole |
-| Para birimi |Ondalık |
+| Para Birimi |Ondalık |
 | Tarih |DateTime |
 | Tarih/Saat |DateTime |
 | E-posta |Dize |

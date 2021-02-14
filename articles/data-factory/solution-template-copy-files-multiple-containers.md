@@ -1,22 +1,18 @@
 ---
 title: Birden çok kapsayıcıdan dosyaları kopyalama
 description: Azure Data Factory kullanarak birden çok kapsayıcıdan dosya kopyalamak için bir çözüm şablonu kullanmayı öğrenin.
-services: data-factory
 author: dearandyxu
 ms.author: yexu
-ms.reviewer: douglasl
-manager: anandsub
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/1/2018
-ms.openlocfilehash: f78d0b02c9790234a63ef64200dcab72bc64c033
-ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
+ms.openlocfilehash: ec7af1e81e0b295491420597636c8443f4d36512
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92629434"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100376097"
 ---
 # <a name="copy-multiple-folders-with-azure-data-factory"></a>Birden çok klasörü Azure Data Factory kopyalama
 
@@ -37,8 +33,8 @@ Bu şablon, kaynak depolama deponuzda verilen bir üst klasörden klasörleri s�
 - **Kopya** , her bir klasörü kaynak depolama deposundan hedef depoya kopyalar.
 
 Şablon aşağıdaki parametreleri tanımlar:
-- *Sourcefilefolder* , veri kaynağı deponuzu ana klasör yolunun parçasıdır: *sourcefilefolder/sourcefiledirectory* , burada alt klasörlerin bir listesini alabilirsiniz. 
-- *Sourcefiledirectory* , veri kaynağı deponuzu üst klasör yolundan bölümüdür: *sourcefilefolder/sourcefiledirectory* , alt klasörlerin bir listesini alabilir. 
+- *Sourcefilefolder* , veri kaynağı deponuzu ana klasör yolunun parçasıdır: *sourcefilefolder/sourcefiledirectory*, burada alt klasörlerin bir listesini alabilirsiniz. 
+- *Sourcefiledirectory* , veri kaynağı deponuzu üst klasör yolundan bölümüdür: *sourcefilefolder/sourcefiledirectory*, alt klasörlerin bir listesini alabilir. 
 - *Destinationfilefolder* , dosyaların hedef deponuza kopyalanacağı bir üst klasör yolu: *destinationfilefolder/destinationfiledirectory* bölümüdür. 
 - *Destinationfiledirectory* , dosyaların hedef deponuza kopyalanacağı ana klasör yolunun bir parçasıdır: *destinationfilefolder/destinationfiledirectory* . 
 
@@ -54,7 +50,7 @@ Depolama depoları arasında kök klasörler altında birden çok kapsayıcıyı
 
     ![Hedefe yeni bir bağlantı oluşturun](media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image2.png)
 
-3. **Bu şablonu kullan** ' ı seçin.
+3. **Bu şablonu kullan**' ı seçin.
 
     ![Bu şablonu kullan](media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image3.png)
     
@@ -62,7 +58,7 @@ Depolama depoları arasında kök klasörler altında birden çok kapsayıcıyı
 
     ![İşlem hattını gösterme](media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image4.png)
 
-5. **Hata Ayıkla** ' yı seçin, **parametreleri** girin ve ardından **son** ' u seçin.
+5. **Hata Ayıkla**' yı seçin, **parametreleri** girin ve ardından **son**' u seçin.
 
     ![İşlem hattını çalıştırma](media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image5.png)
 

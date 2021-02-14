@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/16/2020
 ms.author: juergent
-ms.openlocfilehash: 85f268990ac9e0c04cba1b9c409a232a24ce0d61
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: 8202b9bd496b4f539df99e35a3118ed109dbd31c
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96608643"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100365115"
 ---
 # <a name="high-availability-of-ibm-db2-luw-on-azure-vms-on-red-hat-enterprise-linux-server"></a>Red Hat Enterprise Linux Server üzerinde Azure VM’lerindeki IBM Db2 LUW’a yönelik yüksek kullanılabilirlik
 
@@ -37,7 +37,7 @@ Desteklenen IBM DB2 sürümleri, SAP Note [1928533]' de belgelendiği gibi 10,5 
 
 Yüklemeye başlamadan önce, aşağıdaki SAP notları ve belgelerine bakın:
 
-| SAP Note | Açıklama |
+| SAP Note | Description |
 | --- | --- |
 | [1928533] | Azure 'da SAP uygulamaları: Desteklenen Ürünler ve Azure VM türleri |
 | [2015553] | Azure üzerinde SAP: destek önkoşulları |
@@ -146,10 +146,6 @@ Seçilen işletim sisteminin IBM DB2 LUW için IBM/SAP tarafından desteklendiğ
     + Adım 3 ' te oluşturduğunuz Azure kullanılabilirlik kümesini seçin veya kullanılabilirlik Bölgesi ' ni (adım 3 ' te ile aynı bölgeyi değil) seçin.
 1. Veri disklerini VM 'lere ekleyin ve ardından [IBM DB2 Azure sanal makineleri IÇIN SAP iş yükü için][dbms-db2]bir dosya sistemi kurulumu önerisi ' ne bakın.
 
-## <a name="create-the-pacemaker-cluster"></a>Paceoluşturucu kümesi oluşturma
-    
-Bu IBM DB2 sunucusu için temel bir Paceoluşturucu kümesi oluşturmak için bkz. [Azure 'da Red Hat Enterprise Linux Paceyapıcısı ayarlama][rhel-pcs-azr]. 
-
 ## <a name="install-the-ibm-db2-luw-and-sap-environment"></a>IBM DB2 LUW ve SAP ortamını yükler
 
 IBM DB2 LUW 'yu temel alan bir SAP ortamının yüklemesine başlamadan önce, aşağıdaki belgeleri gözden geçirin:
@@ -209,7 +205,7 @@ Birincil IBM DB2 LUW veritabanı örneğini ayarlamak için:
 
 SAP homojen sistem kopyalama yordamını kullanarak bekleme veritabanı sunucusunu ayarlamak için aşağıdaki adımları yürütün:
 
-1. **Hedef sistemler** **System copy**  >  **Dağıtılmış**  >  **veritabanı örneği**> sistem kopyalama seçeneğini belirleyin.
+1. **Hedef sistemler**   >  **Dağıtılmış**  >  **veritabanı örneği**> sistem kopyalama seçeneğini belirleyin.
 1. Bir kopyalama yöntemi olarak, yedek sunucu örneğindeki bir yedeği geri yüklemek için yedekleme kullanabilmeniz için **homojen sistemi** ' ni seçin.
 1. Homojen sistem kopyası için veritabanını geri yüklemek üzere çıkış adımına ulaştığınızda yükleyiciden çıkın. Veritabanını birincil ana bilgisayarın yedeğinden geri yükleyin. Sonraki yükleme aşamaları, birincil veritabanı sunucusunda zaten yürütüldü.
 
@@ -277,7 +273,6 @@ SOCK_RECV_BUF_REQUESTED,ACTUAL(bytes) = 0, 369280
              READS_ON_STANDBY_ENABLED = N
 
 
-
 #Secondary output:
 Database Member 0 -- Database ID2 -- Standby -- Up 1 days 15:45:18 -- Date 2019-06-25-10.56.19.820474
 
@@ -324,84 +319,10 @@ SOCK_RECV_BUF_REQUESTED,ACTUAL(bytes) = 0, 367360
                  PEER_WINDOW(seconds) = 1000
                       PEER_WINDOW_END = 06/25/2019 11:12:59.000000 (1561461179)
              READS_ON_STANDBY_ENABLED = N
-
 </code></pre>
-
-
-
-## <a name="db2-pacemaker-configuration"></a>DB2 Paceoluşturucu yapılandırması
-
-Düğüm arızası durumunda otomatik yük devretme için pacemaker kullandığınızda, DB2 örneklerinizi ve Pacedevcinizi uygun şekilde yapılandırmanız gerekir. Bu bölümde bu tür bir yapılandırma açıklanmaktadır.
-
-Aşağıdaki öğelerin ön eki vardır:
-
-- **[A]**: tüm düğümlere uygulanabilir
-- **[1]**: yalnızca düğüm 1 için geçerlidir 
-- **[2]**: yalnızca düğüm 2 ' de geçerlidir
-
-**[A]** pacemaker yapılandırması için Önkoşul:
-1. Db2stop ile Kullanıcı DB2 ile her iki veritabanı sunucusunu da kapatın \<sid> .
-1. DB2 kullanıcısının Kabuk ortamını \<sid> */bin/ksh* olarak değiştirin:
-<pre><code># Install korn shell:
-sudo yum install ksh
-# Change users shell:
-sudo usermod -s /bin/ksh db2&lt;sid&gt;</code></pre>
-   
-
-### <a name="pacemaker-configuration"></a>Pacemaker yapılandırması
-
-**[1]** IBM DB2 HADR 'e özgü Paceyapıcısı yapılandırması:
-<pre><code># Put Pacemaker into maintenance mode
-sudo pcs property set maintenance-mode=true 
-</code></pre>
-
-**[1]** IBM DB2 kaynakları oluşturma:
-<pre><code># Replace <b>bold strings</b> with your instance name db2sid, database SID, and virtual IP address/Azure Load Balancer.
-sudo pcs resource create Db2_HADR_<b>ID2</b> db2 instance='<b>db2id2</b>' dblist='<b>ID2</b>' master meta notify=true resource-stickiness=5000
-
-#Configure resource stickiness and correct cluster notifications for master resoruce
-sudo pcs resource update Db2_HADR_<b>ID2</b>-master meta notify=true resource-stickiness=5000
-
-# Configure virtual IP - same as Azure Load Balancer IP
-sudo pcs resource create vip_<b>db2id2</b>_<b>ID2</b> IPaddr2 ip='<b>10.100.0.40</b>'
-
-# Configure probe port for Azure load Balancer
-sudo pcs resource create nc_<b>db2id2</b>_<b>ID2</b> azure-lb port=<b>62500</b>
-
-#Create a group for ip and Azure loadbalancer probe port
-sudo pcs resource group add g_ipnc_<b>db2id2</b>_<b>ID2</b> vip_<b>db2id2</b>_<b>ID2</b> nc_<b>db2id2</b>_<b>ID2</b>
-
-#Create colocation constrain - keep Db2 HADR Master and Group on same node
-sudo pcs constraint colocation add g_ipnc_<b>db2id2</b>_<b>ID2</b> with master Db2_HADR_<b>ID2</b>-master
-
-#Create start order constrain
-sudo pcs constraint order promote Db2_HADR_<b>ID2</b>-master then g_ipnc_<b>db2id2</b>_<b>ID2</b>
-</code></pre>
-
-**[1]** IBM DB2 kaynaklarını başlatın:
-* Pacemaker 'ı bakım modundan çıkar.
-<pre><code># Put Pacemaker out of maintenance-mode - that start IBM Db2
-sudo pcs property set maintenance-mode=false</pre></code>
-
-**[1]** küme durumunun tamam olduğundan ve tüm kaynakların başlatıldığından emin olun. Kaynakların üzerinde çalıştığı düğüm önemli değildir.
-<pre><code>sudo pcs status</code>
-2 nodes configured
-5 resources configured
-
-Çevrimiçi: [az-idb01 az-idb02]
-
-Kaynakların tam listesi:
-
- rsc_st_azure (stonith: fence_azure_arm): başlatıldı az-idb01 Master/bağımlı kümesi: Db2_HADR_ID2-Master [Db2_HADR_ID2] asılları: [az-idb01] SLA: [az-idb02] kaynak grubu: g_ipnc_db2id2_ID2 vip_db2id2_ID2 (OCF:: sinyal: IPaddr2): başlatıldı az-idb01 nc_db2id2_ID2 (OCF:: sinyal: Azure-lb): başlatıldı az-idb01
-
-Daemon durumu: Corosync: etkin/devre dışı pacemaker: etkin/devre dışı pcsd: etkin/etkin
-</pre>
-
-> [!IMPORTANT]
-> Paceoluşturucu aracını kullanarak pacemaker kümelenmiş DB2 örneğini yönetmeniz gerekir. Db2stop gibi DB2 komutları kullanıyorsanız Paceyapıcısı eylemi kaynak hatası olarak algılar. Bakım yapıyorsanız, düğümleri veya kaynakları bakım moduna alabilirsiniz. Paceyapıcısı izleme kaynaklarını askıya alır ve ardından normal DB2 yönetim komutlarını kullanabilirsiniz.
-
 
 ### <a name="configure-azure-load-balancer"></a>Azure Load Balancer'ı yapılandırma
+
 Azure Load Balancer yapılandırmak için, [Azure Standart Load Balancer SKU](../../../load-balancer/load-balancer-overview.md) 'sunu kullanmanızı ve ardından şunları yapmanızı öneririz.
 
 > [!NOTE]
@@ -409,7 +330,6 @@ Azure Load Balancer yapılandırmak için, [Azure Standart Load Balancer SKU](..
 
 > [!IMPORTANT]
 > Kayan IP, Yük Dengeleme senaryolarında NIC ikincil IP yapılandırmasında desteklenmez. Ayrıntılar için bkz. [Azure yük dengeleyici sınırlamaları](../../../load-balancer/load-balancer-multivip-overview.md#limitations). VM için ek IP adresine ihtiyacınız varsa ikinci bir NIC dağıtın.  
-
 
 1. Ön uç IP havuzu oluşturun:
 
@@ -464,8 +384,119 @@ Azure Load Balancer yapılandırmak için, [Azure Standart Load Balancer SKU](..
    örneğin: **Tamam**’ı seçin.
 
 **[A]** araştırma bağlantı noktası için güvenlik duvarı kuralı ekle:
+
 <pre><code>sudo firewall-cmd --add-port=<b><probe-port></b>/tcp --permanent
 sudo firewall-cmd --reload</code></pre>
+
+## <a name="create-the-pacemaker-cluster"></a>Paceoluşturucu kümesi oluşturma
+    
+Bu IBM DB2 sunucusu için temel bir Paceoluşturucu kümesi oluşturmak için bkz. [Azure 'da Red Hat Enterprise Linux Paceyapıcısı ayarlama][rhel-pcs-azr]. 
+
+## <a name="db2-pacemaker-configuration"></a>DB2 Paceoluşturucu yapılandırması
+
+Düğüm arızası durumunda otomatik yük devretme için pacemaker kullandığınızda, DB2 örneklerinizi ve Pacedevcinizi uygun şekilde yapılandırmanız gerekir. Bu bölümde bu tür bir yapılandırma açıklanmaktadır.
+
+Aşağıdaki öğelerin ön eki vardır:
+
+- **[A]**: tüm düğümlere uygulanabilir
+- **[1]**: yalnızca düğüm 1 için geçerlidir 
+- **[2]**: yalnızca düğüm 2 ' de geçerlidir
+
+**[A]** pacemaker yapılandırması için Önkoşul:
+1. Db2stop ile Kullanıcı DB2 ile her iki veritabanı sunucusunu da kapatın \<sid> .
+1. DB2 kullanıcısının Kabuk ortamını \<sid> */bin/ksh* olarak değiştirin:
+<pre><code># Install korn shell:
+sudo yum install ksh
+# Change users shell:
+sudo usermod -s /bin/ksh db2&lt;sid&gt;</code></pre>  
+
+### <a name="pacemaker-configuration"></a>Pacemaker yapılandırması
+
+**[1]** IBM DB2 HADR 'e özgü Paceyapıcısı yapılandırması:
+<pre><code># Put Pacemaker into maintenance mode
+sudo pcs property set maintenance-mode=true 
+</code></pre>
+
+**[1]** IBM DB2 kaynakları oluşturma:
+
+**RHEL 7. x** üzerinde bir küme oluşturuyorsanız aşağıdaki komutları kullanın:
+
+<pre><code># Replace <b>bold strings</b> with your instance name db2sid, database SID, and virtual IP address/Azure Load Balancer.
+sudo pcs resource create Db2_HADR_<b>ID2</b> db2 instance='<b>db2id2</b>' dblist='<b>ID2</b>' master meta notify=true resource-stickiness=5000
+
+#Configure resource stickiness and correct cluster notifications for master resoruce
+sudo pcs resource update Db2_HADR_<b>ID2</b>-master meta notify=true resource-stickiness=5000
+
+# Configure virtual IP - same as Azure Load Balancer IP
+sudo pcs resource create vip_<b>db2id2</b>_<b>ID2</b> IPaddr2 ip='<b>10.100.0.40</b>'
+
+# Configure probe port for Azure load Balancer
+sudo pcs resource create nc_<b>db2id2</b>_<b>ID2</b> azure-lb port=<b>62500</b>
+
+#Create a group for ip and Azure loadbalancer probe port
+sudo pcs resource group add g_ipnc_<b>db2id2</b>_<b>ID2</b> vip_<b>db2id2</b>_<b>ID2</b> nc_<b>db2id2</b>_<b>ID2</b>
+
+#Create colocation constrain - keep Db2 HADR Master and Group on same node
+sudo pcs constraint colocation add g_ipnc_<b>db2id2</b>_<b>ID2</b> with master Db2_HADR_<b>ID2</b>-master
+
+#Create start order constrain
+sudo pcs constraint order promote Db2_HADR_<b>ID2</b>-master then g_ipnc_<b>db2id2</b>_<b>ID2</b>
+</code></pre>
+
+**RHEL 8. x** üzerinde bir küme oluşturuyorsanız aşağıdaki komutları kullanın:
+
+<pre><code># Replace <b>bold strings</b> with your instance name db2sid, database SID, and virtual IP address/Azure Load Balancer.
+sudo pcs resource create Db2_HADR_<b>ID2</b> db2 instance='<b>db2id2</b>' dblist='<b>ID2</b>' promotable meta notify=true resource-stickiness=5000
+
+#Configure resource stickiness and correct cluster notifications for master resoruce
+sudo pcs resource update Db2_HADR_<b>ID2</b>-clone meta notify=true resource-stickiness=5000
+
+# Configure virtual IP - same as Azure Load Balancer IP
+sudo pcs resource create vip_<b>db2id2</b>_<b>ID2</b> IPaddr2 ip='<b>10.100.0.40</b>'
+
+# Configure probe port for Azure load Balancer
+sudo pcs resource create nc_<b>db2id2</b>_<b>ID2</b> azure-lb port=<b>62500</b>
+
+#Create a group for ip and Azure loadbalancer probe port
+sudo pcs resource group add g_ipnc_<b>db2id2</b>_<b>ID2</b> vip_<b>db2id2</b>_<b>ID2</b> nc_<b>db2id2</b>_<b>ID2</b>
+
+#Create colocation constrain - keep Db2 HADR Master and Group on same node
+sudo pcs constraint colocation add g_ipnc_<b>db2id2</b>_<b>ID2</b> with master Db2_HADR_<b>ID2</b>-clone
+
+#Create start order constrain
+sudo pcs constraint order promote Db2_HADR_<b>ID2</b>-clone then g_ipnc_<b>db2id2</b>_<b>ID2</b>
+</code></pre>
+
+**[1]** IBM DB2 kaynaklarını başlatın:
+* Pacemaker 'ı bakım modundan çıkar.
+<pre><code># Put Pacemaker out of maintenance-mode - that start IBM Db2
+sudo pcs property set maintenance-mode=false</pre></code>
+
+**[1]** küme durumunun tamam olduğundan ve tüm kaynakların başlatıldığından emin olun. Kaynakların üzerinde çalıştığı düğüm önemli değildir.
+<pre><code>sudo pcs status
+2 nodes configured
+5 resources configured
+
+Online: [ az-idb01 az-idb02 ]
+
+Full list of resources:
+
+ rsc_st_azure   (stonith:fence_azure_arm):      Started az-idb01
+ Master/Slave Set: Db2_HADR_ID2-master [Db2_HADR_ID2]
+     Masters: [ az-idb01 ]
+     Slaves: [ az-idb02 ]
+ Resource Group: g_ipnc_db2id2_ID2
+     vip_db2id2_ID2     (ocf::heartbeat:IPaddr2):       Started az-idb01
+     nc_db2id2_ID2      (ocf::heartbeat:azure-lb):      Started az-idb01
+
+Daemon Status:
+  corosync: active/disabled
+  pacemaker: active/disabled
+  pcsd: active/enabled
+</code></pre>
+
+> [!IMPORTANT]
+> Paceoluşturucu aracını kullanarak pacemaker kümelenmiş DB2 örneğini yönetmeniz gerekir. Db2stop gibi DB2 komutları kullanıyorsanız Paceyapıcısı eylemi kaynak hatası olarak algılar. Bakım yapıyorsanız, düğümleri veya kaynakları bakım moduna alabilirsiniz. Paceyapıcısı izleme kaynaklarını askıya alır ve ardından normal DB2 yönetim komutlarını kullanabilirsiniz.
 
 ### <a name="make-changes-to-sap-profiles-to-use-virtual-ip-for-connection"></a>Bağlantı için sanal IP 'yi kullanmak üzere SAP profillerinde değişiklikler yapın
 HADR yapılandırmasının birincil örneğine bağlanmak için, SAP uygulama katmanının Azure Load Balancer için tanımladığınız ve yapılandırdığınız sanal IP adresini kullanması gerekir. Aşağıdaki değişiklikler gereklidir:
@@ -479,11 +510,9 @@ j2ee/dbhost = db-virt-hostname
 <pre><code>Hostname=db-virt-hostname
 </code></pre>
 
-
-
 ## <a name="install-primary-and-dialog-application-servers"></a>Birincil ve iletişim kutusu uygulama sunucularını yükler
 
-Birincil ve iletişim uygulama sunucularını bir DB2 HADR yapılandırmasına karşı yüklediğinizde, yapılandırma için seçtiğiniz sanal ana bilgisayar adını kullanın. 
+Birincil ve iletişim uygulama sunucularını bir DB2 HADR yapılandırmasına karşı yüklediğinizde, yapılandırma için seçtiğiniz sanal ana bilgisayar adını kullanın.
 
 DB2 HADR yapılandırmasını oluşturmadan önce yüklemeyi gerçekleştirdiyseniz, önceki bölümde açıklandığı gibi ve SAP Java yığınları için aşağıdaki gibi değişiklikleri yapın.
 
@@ -501,19 +530,20 @@ JDBC URL 'sini denetlemek veya güncelleştirmek için J2EE yapılandırma arac�
     
     <pre><code>jdbc:db2://db-virt-hostname:5912/TSP:deferPrepares=0</code></pre>  
     
-1. **Ekle**’yi seçin.
+1. **Add (Ekle)** seçeneğini belirleyin.
 1. Değişikliklerinizi kaydetmek için sol üst köşedeki disk simgesini seçin.
 1. Yapılandırma aracını kapatın.
 1. Java örneğini yeniden başlatın.
 
 ## <a name="configure-log-archiving-for-hadr-setup"></a>HADR kurulumu için Günlük arşivlemeyi yapılandırma
+
 HADR kurulumu için DB2 Günlük arşivlemeyi yapılandırmak üzere, hem birincil hem de bekleme veritabanını tüm günlük Arşivi konumlarından otomatik günlük alma özelliğine sahip olacak şekilde yapılandırmanızı öneririz. Hem birincil hem de bekleme veritabanının günlük arşivi dosyalarını, veritabanı örneklerinden birinin günlük dosyalarını arşivleyebileceğiniz tüm günlük Arşivi konumlarından alabilmesi gerekir. 
 
 Günlük arşivleme yalnızca birincil veritabanı tarafından gerçekleştirilir. Veritabanı sunucularının HADR rollerini değiştirirseniz veya bir hata oluşursa, yeni birincil veritabanı, günlük arşivlemeden sorumludur. Birden çok günlük arşiv konumu ayarladıysanız günlüklerinizin iki kez arşivlenmesi gerekebilir. Yerel veya uzak bir catch durumunda, arşivlenmiş günlükleri eski birincil sunucudan yeni birincil sunucunun etkin günlük konumuna el ile kopyalamanız de gerekebilir.
 
 Günlüklerin her iki düğümden de yazıldığı ortak bir NFS paylaşımının veya GlusterFS yapılandırılmasını öneririz. NFS paylaşımının veya GlusterFS, yüksek oranda kullanılabilir olmalıdır. 
 
-Aktarımlar için mevcut olan yüksek oranda kullanılabilir NFS paylaşımlarını veya GlusterFS 'yi veya bir profil dizini kullanabilirsiniz. Daha fazla bilgi için bkz:
+Aktarımlar için mevcut olan yüksek oranda kullanılabilir NFS paylaşımlarını veya GlusterFS 'yi veya bir profil dizini kullanabilirsiniz. Daha fazla bilgi için bkz.
 
 - [SAP NetWeaver için Red Hat Enterprise Linux üzerinde Azure Sanal Makineler'de GlusterFS][glusterfs] 
 - [SAP uygulamaları için Azure NetApp Files Red Hat Enterprise Linux üzerindeki Azure VM 'lerinde SAP NetWeaver için yüksek kullanılabilirlik][anf-rhel]
@@ -553,9 +583,6 @@ Bir SAP sistemindeki özgün durum, aşağıdaki görüntüde gösterildiği gib
 
 ![Dbakokpit-geçiş öncesi](./media/high-availability-guide-rhel-ibm-db2-luw/hadr-sap-mgr-org-rhel.png)
 
-
-
-
 ### <a name="test-takeover-of-ibm-db2"></a>IBM DB2 'nin test etme
 
 
@@ -565,9 +592,12 @@ Bir SAP sistemindeki özgün durum, aşağıdaki görüntüde gösterildiği gib
 > * Hiçbir konum kısıtlaması yok (geçiş testinin sol üyesi ol)
 > * IBM DB2 HADR eşitlemesi çalışıyor. Kullanıcı DB2 ile denetle\<sid> <pre><code>db2pd -hadr -db \<DBSID></code></pre>
 
-
 Aşağıdaki komutu yürüterek birincil DB2 veritabanını çalıştıran düğümü geçirin:
-<pre><code>sudo pcs resource move Db2_HADR_<b>ID2</b>-master</code></pre>
+<pre><code># On RHEL 7.x
+sudo pcs resource move Db2_HADR_<b>ID2</b>-master
+# On RHEL 8.x
+sudo pcs resource move Db2_HADR_<b>ID2</b>-clone --master
+</code></pre>
 
 Geçiş yapıldıktan sonra, CRM durum çıktısı şöyle görünür:
 <pre><code>2 nodes configured
@@ -594,8 +624,13 @@ Bir SAP sistemindeki özgün durum, aşağıdaki görüntüde gösterildiği gib
 "PCs kaynak taşıma" ile kaynak geçişi konum kısıtlamaları oluşturur. Bu durumda konum kısıtlamaları az-idb01 üzerinde IBM DB2 örneğinin çalıştırılmasını engellemektedir. Konum kısıtlamaları silinmediği takdirde kaynak yeniden başarısız olamaz.
 
 Konum kısıtlama ve bekleme düğümü, az-idb01 tarihinde başlatılır.
-<pre><code>sudo pcs resource clear Db2_HADR_<b>ID2</b>-master</code></pre>
+<pre><code># On RHEL 7.x
+sudo pcs resource clear Db2_HADR_<b>ID2</b>-master
+# On RHEL 8.x
+sudo pcs resource clear Db2_HADR_<b>ID2</b>-clone</code></pre>
+
 Ve küme durumu şu şekilde değişir:
+
 <pre><code>2 nodes configured
 5 resources configured
 
@@ -613,13 +648,16 @@ Full list of resources:
 
 ![Dbakokpit-kaldırılan konum kısıtlama](./media/high-availability-guide-rhel-ibm-db2-luw/hadr-sap-mgr-clear-rhel.png)
 
-
 Kaynağı *az-idb01* 'e geri geçirin ve konum kısıtlamalarını temizleyin
-<pre><code>sudo pcs resource move Db2_HADR_<b>ID2</b>-master az-idb01
+<pre><code># On RHEL 7.x
+sudo pcs resource move Db2_HADR_<b>ID2</b>-master az-idb01
 sudo pcs resource clear Db2_HADR_<b>ID2</b>-master
-</code></pre>
+# On RHEL 8.x
+sudo pcs resource move Db2_HADR_<b>ID2</b>-clone --master
+sudo pcs resource clear Db2_HADR_<b>ID2</b>-clone</code></pre>
 
-- **bilgisayar kaynak taşıma \<res_name> <host> :** konum kısıtlamaları oluşturur ve ele alınmasına neden olabilir
+- **RHEL 7. x-PC kaynak taşıma \<res_name> <host> :** konum kısıtlamaları oluşturur ve birlikte bulunan sorunlara neden olabilir
+- **RHEL 8. x-PC Resource Move \<res_name> --Master:** konum kısıtlamaları oluşturur ve ele alınmasına neden olabilir
 - **bilgisayar kaynağı Temizleme \<res_name>**: konum kısıtlamalarını temizler
 - **bilgisayar kaynağı Temizleme \<res_name>**: kaynağın tüm hatalarını temizler
 
@@ -763,7 +801,7 @@ Failed Actions:
 
 ### <a name="crash-the-vm-that-runs-the-hadr-primary-database-instance-with-halt"></a>HADR birincil veritabanı örneğini çalıştıran VM 'yi "Durdur" ile çökme
 
-<pre><code>#Linux kernel panic. 
+<pre><code>#Linux kernel panic.
 sudo echo b > /proc/sysrq-trigger</code></pre>
 
 Böyle bir durumda, Paceyapıcısı, birincil veritabanı örneğini çalıştıran düğümün yanıt vermediğini algılar.

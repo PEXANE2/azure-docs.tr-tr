@@ -1,23 +1,18 @@
 ---
 title: Salesforce pazarlama bulutlarından veri kopyalama
 description: Azure Data Factory bir işlem hattındaki kopyalama etkinliğini kullanarak Salesforce pazarlama bulutlarından desteklenen havuz veri depolarına veri kopyalamayı öğrenin.
-services: data-factory
-documentationcenter: ''
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/17/2020
-ms.openlocfilehash: 1f0fb1ee8580c0c7f6eb30228b65e0a3780ef0a8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 161b81b196a1e178c7244845b25594440e6d6e1e
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87076801"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100369756"
 ---
 # <a name="copy-data-from-salesforce-marketing-cloud-using-azure-data-factory"></a>Azure Data Factory kullanarak Salesforce pazarlama bulutlarından veri kopyalama
 
@@ -39,7 +34,7 @@ Salesforce Marketing Cloud Connector, OAuth 2 kimlik doğrulamasını destekler 
 >[!NOTE]
 >Bu bağlayıcı özel nesneler veya özel veri uzantıları almayı desteklemiyor.
 
-## <a name="getting-started"></a>Başlarken
+## <a name="getting-started"></a>Kullanmaya başlama
 
 .NET SDK, Python SDK, Azure PowerShell, REST API veya Azure Resource Manager şablonu kullanarak kopyalama etkinliği ile bir işlem hattı oluşturabilirsiniz. Kopyalama etkinliğine sahip bir işlem hattı oluşturmak için adım adım yönergeler için bkz. [kopyalama etkinliği öğreticisi](quickstart-create-data-factory-dot-net.md) .
 
@@ -51,16 +46,16 @@ Aşağıdaki özellikler, Salesforce pazarlama bulutu bağlı hizmeti için dest
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Type özelliği şu şekilde ayarlanmalıdır: **Salesforcepazarbulutu** | Evet |
-| connectionProperties | Salesforce pazarlama bulutuna bağlanmayı tanımlayan bir özellik grubu. | Evet |
+| tür | Type özelliği şu şekilde ayarlanmalıdır: **Salesforcepazarbulutu** | Yes |
+| connectionProperties | Salesforce pazarlama bulutuna bağlanmayı tanımlayan bir özellik grubu. | Yes |
 | ***Altında `connectionProperties` :*** | | |
-| authenticationType | Kullanılacak kimlik doğrulama yöntemini belirtir. İzin verilen değerler `Enhanced sts OAuth 2.0` veya `OAuth_2.0` .<br><br>Salesforce pazarlama bulutu eski paketi yalnızca `OAuth_2.0` , Gelişmiş paket gereksinimdeyken desteklenir `Enhanced sts OAuth 2.0` . <br>1 Ağustos 2019 ' den itibaren Salesforce pazarlama bulutu eski paketleri oluşturma özelliğini kaldırdı. Tüm yeni paketler gelişmiş paketlerdir. | Evet |
-| konak | Gelişmiş paket için ana bilgisayar, "Mc" harflerinden başlayan bir 28 karakterlik dize tarafından temsil edilen alt [etki alanı](https://developer.salesforce.com/docs/atlas.en-us.mc-apis.meta/mc-apis/your-subdomain-tenant-specific-endpoints.htm) olmalıdır, örneğin `mc563885gzs27c5t9-63k636ttgm` . <br>Eski paket için, belirtin `www.exacttargetapis.com` . | Evet |
-| clientId | Salesforce pazarlama bulut uygulamasıyla ilişkili istemci KIMLIĞI.  | Evet |
-| clientSecret | Salesforce pazarlama bulut uygulamasıyla ilişkili istemci gizli dizisi. Bu alanı bir SecureString olarak güvenli bir şekilde depolamak için bir SecureString olarak işaretlemeyi veya gizli dizi Azure Key Vault ve veri kopyalama işlemini gerçekleştirirken ADF kopyalama etkinliği çekimine izin vermek için, [Key Vault mağaza kimlik bilgilerinden](store-credentials-in-key-vault.md)daha fazla bilgi edinin. | Evet |
-| useEncryptedEndpoints | Veri kaynağı uç noktalarının HTTPS kullanılarak şifrelenip şifrelenmediğini belirtir. Varsayılan değer true şeklindedir.  | Hayır |
-| Usehostdoğrulaması | Sunucu sertifikasında, TLS üzerinden bağlanırken sunucunun ana bilgisayar adıyla eşleşecek şekilde, ana bilgisayar adının istenip istenmeyeceğini belirtir. Varsayılan değer true şeklindedir.  | Hayır |
-| Usepeerdoğrulaması | TLS üzerinden bağlanılırken sunucu kimliğinin doğrulanıp doğrulanmayacağını belirtir. Varsayılan değer true şeklindedir.  | Hayır |
+| authenticationType | Kullanılacak kimlik doğrulama yöntemini belirtir. İzin verilen değerler `Enhanced sts OAuth 2.0` veya `OAuth_2.0` .<br><br>Salesforce pazarlama bulutu eski paketi yalnızca `OAuth_2.0` , Gelişmiş paket gereksinimdeyken desteklenir `Enhanced sts OAuth 2.0` . <br>1 Ağustos 2019 ' den itibaren Salesforce pazarlama bulutu eski paketleri oluşturma özelliğini kaldırdı. Tüm yeni paketler gelişmiş paketlerdir. | Yes |
+| konak | Gelişmiş paket için ana bilgisayar, "Mc" harflerinden başlayan bir 28 karakterlik dize tarafından temsil edilen alt [etki alanı](https://developer.salesforce.com/docs/atlas.en-us.mc-apis.meta/mc-apis/your-subdomain-tenant-specific-endpoints.htm) olmalıdır, örneğin `mc563885gzs27c5t9-63k636ttgm` . <br>Eski paket için, belirtin `www.exacttargetapis.com` . | Yes |
+| clientId | Salesforce pazarlama bulut uygulamasıyla ilişkili istemci KIMLIĞI.  | Yes |
+| clientSecret | Salesforce pazarlama bulut uygulamasıyla ilişkili istemci gizli dizisi. Bu alanı bir SecureString olarak güvenli bir şekilde depolamak için bir SecureString olarak işaretlemeyi veya gizli dizi Azure Key Vault ve veri kopyalama işlemini gerçekleştirirken ADF kopyalama etkinliği çekimine izin vermek için, [Key Vault mağaza kimlik bilgilerinden](store-credentials-in-key-vault.md)daha fazla bilgi edinin. | Yes |
+| useEncryptedEndpoints | Veri kaynağı uç noktalarının HTTPS kullanılarak şifrelenip şifrelenmediğini belirtir. Varsayılan değer true şeklindedir.  | No |
+| Usehostdoğrulaması | Sunucu sertifikasında, TLS üzerinden bağlanırken sunucunun ana bilgisayar adıyla eşleşecek şekilde, ana bilgisayar adının istenip istenmeyeceğini belirtir. Varsayılan değer true şeklindedir.  | No |
+| Usepeerdoğrulaması | TLS üzerinden bağlanılırken sunucu kimliğinin doğrulanıp doğrulanmayacağını belirtir. Varsayılan değer true şeklindedir.  | No |
 
 **Örnek: Gelişmiş STS için genişletilmiş STS OAuth 2 kimlik doğrulamasını kullanma** 
 
@@ -140,11 +135,11 @@ Aşağıdaki yük ile Salesforce pazarlama bulutu bağlı hizmetini kullanıyors
 
 Veri kümelerini tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi için bkz. [veri kümeleri](concepts-datasets-linked-services.md) makalesi. Bu bölüm, Salesforce pazarlama bulut veri kümesi tarafından desteklenen özelliklerin bir listesini sağlar.
 
-Salesforce pazarlama bulutundaki verileri kopyalamak için veri kümesinin Type özelliğini **Salesforcemarketing Cloudobject**olarak ayarlayın. Aşağıdaki özellikler desteklenir:
+Salesforce pazarlama bulutundaki verileri kopyalamak için veri kümesinin Type özelliğini **Salesforcemarketing Cloudobject** olarak ayarlayın. Aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Veri kümesinin Type özelliği şu şekilde ayarlanmalıdır: **Salesforcepazarbir dobject** | Evet |
+| tür | Veri kümesinin Type özelliği şu şekilde ayarlanmalıdır: **Salesforcepazarbir dobject** | Yes |
 | tableName | Tablonun adı. | Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse) |
 
 **Örnek**
@@ -170,11 +165,11 @@ Etkinlikleri tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi iç
 
 ### <a name="salesforce-marketing-cloud-as-source"></a>Kaynak olarak Salesforce pazarlama bulutu
 
-Salesforce pazarlama bulutundaki verileri kopyalamak için kopyalama etkinliğindeki kaynak türünü **Salesforcemarketing CloudSource**olarak ayarlayın. Aşağıdaki özellikler, etkinlik **kaynağını** kopyalama bölümünde desteklenir:
+Salesforce pazarlama bulutundaki verileri kopyalamak için kopyalama etkinliğindeki kaynak türünü **Salesforcemarketing CloudSource** olarak ayarlayın. Aşağıdaki özellikler, etkinlik **kaynağını** kopyalama bölümünde desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Kopyalama etkinliği kaynağının Type özelliği şu şekilde ayarlanmalıdır: **Salesforcepazarlamakaynağı** | Evet |
+| tür | Kopyalama etkinliği kaynağının Type özelliği şu şekilde ayarlanmalıdır: **Salesforcepazarlamakaynağı** | Yes |
 | sorgu | Verileri okumak için özel SQL sorgusunu kullanın. Örneğin: `"SELECT * FROM MyTable"`. | Hayır (veri kümesinde "tableName" belirtilmişse) |
 
 **Örnek:**

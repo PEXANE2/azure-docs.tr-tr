@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 894a90c50f968c892a76160a7375f11fe09390d6
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 00291907ddea75ba4507779d1226502dc8343aea
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98785008"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100365710"
 ---
 # <a name="enforce-a-naming-policy-on-microsoft-365-groups-in-azure-active-directory"></a>Azure Active Directory Microsoft 365 Gruplar üzerinde bir adlandırma ilkesi zorlama
 
@@ -78,8 +78,6 @@ Adlandırma ilkesini yapılandırmak için aşağıdaki rollerden biri gereklidi
 Seçili Yöneticiler, tüm grup iş yükleri ve uç noktalarında bu ilkelerden muaf tutulur. böylece, engellenen kelimeleri ve kendi adlandırma kurallarını kullanarak gruplar oluşturabilirler. Grup adlandırma ilkesinden muaf tutulan Yönetici rollerinin listesi aşağıda verilmiştir.
 
 - Genel yönetici
-- İş ortağı katman 1 desteği
-- İş ortağı katman 2 desteği
 - Kullanıcı yöneticisi
 
 ## <a name="configure-naming-policy-in-azure-portal"></a>Azure portal adlandırma ilkesini yapılandırma

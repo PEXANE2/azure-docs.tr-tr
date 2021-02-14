@@ -3,12 +3,12 @@ title: Azure Işlevlerinin güvenliğini sağlama
 description: Azure 'da çalışan işlev kodunuzun genel saldırılara karşı daha güvenli hale getirme hakkında bilgi edinin.
 ms.date: 4/13/2020
 ms.topic: conceptual
-ms.openlocfilehash: ee54ff8c1efaee00999888891e6de255060aa416
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 351bdca7ff94b6c058b5ab62fd9c16d707e7dc78
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491333"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100368498"
 ---
 # <a name="securing-azure-functions"></a>Azure Işlevlerinin güvenliğini sağlama
 
@@ -107,6 +107,8 @@ Uygulama ayarlarında depolanan bağlantı dizeleri ve diğer kimlik bilgileri, 
 
 [!INCLUDE [app-service-managed-identities](../../includes/app-service-managed-identities.md)]
 
+Yönetilen kimlikler, bazı tetikleyicilerden ve bağlamalardan bağlantılar için gizli dizi yerine kullanılabilir. Bkz. [kimlik tabanlı bağlantılar](#identity-based-connections).
+
 Daha fazla bilgi için bkz. [App Service ve Azure işlevleri için Yönetilen kimlikler kullanma](../app-service/overview-managed-identity.md?toc=%2fazure%2fazure-functions%2ftoc.json).
 
 #### <a name="restrict-cors-access"></a>CORS erişimini kısıtla
@@ -136,6 +138,14 @@ Ayrıca, yerel bilgisayarınızda işlevleri geliştirirken dosya local.settings
 Uygulama ayarları birçok sayıda işlev için yeterli olsa da, aynı gizli dizileri birden çok hizmet arasında paylaşmak isteyebilirsiniz. Bu durumda, parolaların yedekli şekilde depolanması daha olası güvenlik açıklarına neden olur. Daha güvenli bir yaklaşım, merkezi bir gizli depolama hizmetidir ve gizli dizileri yerine bu hizmete yönelik başvuruları kullanır.      
 
 [Azure Key Vault](../key-vault/general/overview.md) , erişim ilkeleri ve denetim geçmişi üzerinde tam denetim ile merkezi gizli dizi yönetimi sağlayan bir hizmettir. Uygulama ayarlarınızda bir bağlantı dizesi veya anahtar yerine bir Key Vault başvurusu kullanabilirsiniz. Daha fazla bilgi için bkz. [App Service ve Azure işlevleri için Key Vault başvurularını kullanma](../app-service/app-service-key-vault-references.md?toc=%2fazure%2fazure-functions%2ftoc.json).
+
+### <a name="identity-based-connections"></a>Kimlik tabanlı bağlantılar
+
+Kimlikler, bazı kaynaklara bağlanmak için gizli dizileri yerine kullanılabilir. Bu, bir gizli dizi yönetimine gerek duyulmayan avantajına sahiptir ve daha ayrıntılı erişim denetimi ve denetimi sağlar. 
+
+[Azure AD kimlik doğrulamasını destekleyen Azure hizmetleri](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)bağlantısını oluşturan kodu yazarken, bir parola veya bağlantı dizesi yerine bir kimlik kullanmayı seçebilirsiniz. Her iki bağlantı yönteminin ayrıntıları, her hizmet için belgelerde ele alınmıştır.
+
+Bazı Azure Işlevleri tetikleyici ve bağlama uzantıları, kimlik tabanlı bağlantı kullanılarak yapılandırılabilir. Bugün, [Azure Blob](./functions-bindings-storage-blob.md) ve [Azure kuyruk](./functions-bindings-storage-queue.md) uzantılarını içerir. Bu uzantıların bir kimlik kullanacak şekilde nasıl yapılandırılacağı hakkında bilgi için bkz. [Azure işlevleri 'nde kimlik tabanlı bağlantıları kullanma](./functions-reference.md#configure-an-identity-based-connection).
 
 ### <a name="set-usage-quotas"></a>Kullanım kotalarını ayarlama
 

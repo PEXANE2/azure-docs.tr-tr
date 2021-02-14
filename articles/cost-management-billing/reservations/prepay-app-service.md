@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 02/01/2021
 ms.author: banders
 ms.custom: references_regions
-ms.openlocfilehash: 89e0c62b580c0c354fc7277e61b452005a86e3d9
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 92a315121ad8ae6fadcadbf6d531eb3e99ae69a9
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99577816"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100374550"
 ---
 # <a name="save-costs-with-azure-app-service-reserved-instances"></a>Azure App Service ayrılmış örneklerle maliyet tasarrufu yapın
 
@@ -37,24 +37,12 @@ Satın almanız gereken rezervasyonları belirlemede yardımcı olması için re
 - Hem paylaşılan kapsam hem de tek abonelik kapsamı için satın alma önerileri almak üzere API 'Leri kullanabilirsiniz. Daha fazla bilgi için bkz. [Kurumsal müşterilere yönelik ayrılmış örnek satın alma önerisi API 'leri](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation).
 - Kurumsal Anlaşma (EA) ve Microsoft Müşteri Sözleşmesi (MCA) müşterileri için, [Azure Consumption Insights Power BI içerik paketi](/power-bi/service-connect-to-azure-consumption-insights)ile paylaşılan ve tek abonelik kapsamlarına yönelik satın alma önerileri sunulmaktadır.
 
-#### <a name="instance-size-flexibility-setting"></a>Örnek boyut esnekliği ayarı
-
-Örnek boyutu esnekliği ayarı, ayrılmış örnek indirimlerini hangi hizmetlerin alacağını belirler.
-
-Ayarın açık veya kapalı olup olmadığı, rezervasyon iskontoları, eşleşen tüm Premium v3 ayrılmış örnek kullanımı için otomatik olarak uygulanır.
-
 ### <a name="analyze-your-usage-information"></a>Kullanım bilgilerinizi çözümleyin
 
 Satın almanız gereken rezervasyonları belirlemede yardımcı olması için kullanım bilgilerinizi çözümleyin. Kullanım verileri, kullanım dosyası ve API 'lerde kullanılabilir. Hangi ayırmayı satın almak istediğinizi öğrenmek için bunları birlikte kullanın. Satın alınacak rezervasyonların miktarını öğrenmek için günlük olarak yüksek kullanıma sahip Premium v3 örneklerini denetleyin.
 
 Kullanım dosyanız, faturalandırma dönemine ve günlük kullanıma göre ücretlerinizi gösterir. Kullanım dosyanızı indirme hakkında daha fazla bilgi için bkz. [Azure kullanımınızı ve ücretlerinizi görüntüleme ve indirme](../understand/download-azure-daily-usage.md). Ardından, kullanım dosyası bilgilerini kullanarak [hangi ayırmayı satın almayı belirleyebilirsiniz](determine-reservation-purchase.md).
 
-### <a name="purchase-restriction-considerations"></a>Satın alma kısıtlaması konuları
-
-Aşağıdaki Premium v3 örnekleri için rezervasyon iskontoları uygulanmaz:
-
-- **Önizleme veya promosyon örnekleri** -önizlemede olan tüm Premium v3 ayrılmış örnek serisi veya boyutu veya promosyon ölçümü kullanır.
-- **Bulutlar** -rezervasyonlar Almanya veya Çin bölgelerinde satın alınabilir.
 
 ## <a name="buy-a-premium-v3-reserved-instance"></a>Premium v3 ile ayrılmış örnek satın alma
 
@@ -79,7 +67,6 @@ EA sözleşmeniz varsa, daha fazla örnek eklemek için **daha fazla ek ekle se�
 | Kapsam | Ayırma kapsamı bir aboneliği veya birden çok aboneliği (paylaşılan kapsamı) kapsayabilir. Şunları seçerseniz: <ul><li>**Tek kaynak grubu kapsamı**: Yalnızca seçilen kaynak grubunda eşleşen kaynaklara rezervasyon indirimini uygular. </li><li>**Tek abonelik kapsamı**: Yalnızca seçilen abonelikte eşleşen kaynaklara rezervasyon indirimini uygular.</li><li>**Paylaşılan kapsam**: Faturalama bağlamında bulunan uygun aboneliklerdeki eşleşen kaynaklara rezervasyon indirimini uygular. EA müşterileri için, faturalandırma bağlamı kayıt olur. Kullandıkça öde fiyatlarına tabi bireysel abonelikler için faturalama kapsamı, hesap yöneticisi tarafından oluşturulan tüm uygun aboneliklerdir.</li></ul> |
 | Region | Ayırma kapsamındaki Azure bölgesi. |
 | Premium v3 ayrılmış örnek boyutu | Premium v3 ayrılmış örneklerinin boyutu. |
-| İçin iyileştirin | Premium v3 ayrılmış örnek boyutu esnekliği varsayılan olarak seçilidir. Aynı [Premium v3 ayrılmış örnek Boyut grubundaki](../../virtual-machines/reserved-vm-instance-size-flexibility.md)diğer Premium v3 ile ayrılmış örneklere rezervasyon iskontosunu uygulamak için örnek boyutu esneklik değerini değiştirmek için **Gelişmiş ayarlar** ' a tıklayın. Kapasite önceliği dağıtımlarınızda veri merkezi kapasitesine öncelik verir. İhtiyacınız olduğunda Premium v3 ayrılmış örneklerini başlatma yeteneizin daha fazla güvenilirlik sağlar. Kapasite önceliği yalnızca rezervasyon kapsamı tek abonelik olduğunda kullanılabilir. |
 | Süre | Bir yıl veya üç yıl. Ayrıca, yalnızca HBv2 Premium v3 ile ayrılmış örnekler için kullanılabilir 5 yıllık bir terim vardır. |
 | Miktar | Ayırma içinde satın alınan örneklerin sayısı. Miktar, fatura iskontosunu elde eden, çalışan Premium v3 ile ayrılmış örnek sayısıdır. Örneğin, Doğu ABD 10 standart \_ D2 Premium v3 ile ayrılmış örneği çalıştırıyorsanız, çalışan tüm Premium v3 ayrılmış örneklerinin avantajını en üst düzeye çıkarmak için miktarı 10 olarak belirtirsiniz. |
 

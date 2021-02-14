@@ -5,14 +5,14 @@ ms.topic: conceptual
 ms.custom: devx-track-dotnet
 author: DaleKoetke
 ms.author: dalek
-ms.date: 5/7/2020
+ms.date: 2/7/2021
 ms.reviewer: mbullwin
-ms.openlocfilehash: 477a96f1bf66255b11b2fee36c38e55b18cddb69
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: 3ae3224ae17d0dee2ed1080669c6057ca62959d9
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99556126"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100384512"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Application Insights için kullanımı ve maliyetleri yönetme
 
@@ -286,15 +286,18 @@ Günlük birim Cap e-postalarını devre dışı bırakmak için, Application In
 
 Azure Application Insights 'in erken benimseme için, hala iki olası fiyatlandırma katmanı vardır: temel ve kurumsal. Temel fiyatlandırma katmanı yukarıda açıklananla aynıdır ve varsayılan katmandır. Ek bir ücret ödemeden tüm kurumsal katman özelliklerini içerir. Temel katman, birincil olarak alınan verilerin hacmi üzerinde yer alır.
 
-> [!NOTE]
-> Bu eski fiyatlandırma katmanları yeniden adlandırıldı. Kurumsal fiyatlandırma katmanı artık **düğüm başına** çağrılır ve temel fiyatlandırma KATMANı artık **GB başına** çağırılır. Bu yeni adlar aşağıda ve Azure portal kullanılır.  
+Bu eski fiyatlandırma katmanları yeniden adlandırıldı. Kurumsal fiyatlandırma katmanı artık **düğüm başına** çağrılır ve temel fiyatlandırma KATMANı artık **GB başına** çağırılır. Bu yeni adlar aşağıda ve Azure portal kullanılır.  
 
-Düğüm başına (eskiden Enterprise) katmanının düğüm başına ücreti vardır ve her düğüm günlük veri indirimi alır. Düğüm başına fiyatlandırma katmanında, dahil edilen indirimin üzerinde alınan veriler için ücretlendirilirsiniz. Operations Management Suite kullanıyorsanız düğüm başına katmanını seçmeniz gerekir.
+Düğüm başına (eskiden Enterprise) katmanının düğüm başına ücreti vardır ve her düğüm günlük veri indirimi alır. Düğüm başına fiyatlandırma katmanında, dahil edilen indirimin üzerinde alınan veriler için ücretlendirilirsiniz. Operations Management Suite kullanıyorsanız düğüm başına katmanını seçmeniz gerekir. 2018 Nisan 'da, Azure izleme için [Yeni bir fiyatlandırma](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/) modeli sunuyoruz. Bu model, izleme hizmetlerinin tam portföyüne ilişkin basit bir "Kullandıkça öde" modeli benimsemektedir. [Yeni fiyatlandırma modeli](../platform/usage-estimated-costs.md)hakkında daha fazla bilgi edinin.
 
 Para birimi ve bölgenizin geçerli fiyatları için bkz. [Application Insights fiyatlandırması](https://azure.microsoft.com/pricing/details/application-insights/).
 
-> [!NOTE]
-> 2018 Nisan 'da, Azure izleme için [Yeni bir fiyatlandırma](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/) modeli sunuyoruz. Bu model, izleme hizmetlerinin tam portföyüne ilişkin basit bir "Kullandıkça öde" modeli benimsemektedir. [Yeni fiyatlandırma modeli](../platform/usage-estimated-costs.md)hakkında daha fazla bilgi edinin, kullanım modellerinize bağlı olarak [Bu modele geçme etkisini nasıl değerlendirirsiniz](../platform/usage-estimated-costs.md#understanding-your-azure-monitor-costs) ve [yeni modeli nasıl kabul](../platform/usage-estimated-costs.md#azure-monitor-pricing-model) edebilirsiniz
+### <a name="understanding-billed-usage-on-the-legacy-enterprise-per-node-tier"></a>Eski Kurumsal (düğüm başına) katmanda faturalandırılan kullanımı anlama 
+
+Aşağıda açıklandığı gibi, daha ayrıntılı olarak, eski Kurumsal (düğüm başına) katmanı, düğümlerin sayısını ve veri fazla kullanım miktarını hesaplamak için bir abonelikteki tüm Application Insights kaynakları genelinde kullanımı birleştirir. Bu Birleşik işlem nedeniyle, **bir abonelikteki tüm Application Insights kaynakların kullanımı, kaynaklardan yalnızca birine göre raporlanır**.  Bu, [Faturalanan kullanımlarınızın](https://docs.microsoft.com/azure/azure-monitor/app/pricing#viewing-application-insights-usage-on-your-azure-bill) her bir Application Insights kaynakları için gözlemlediğiniz kullanımla mutabık hale gelmesini sağlar. 
+
+> [!WARNING]
+> Eski Kurumsal (düğüm başına) katmanda Application Insights kaynaklarının kullanımını izleme ve anlama karmaşıklığı nedeniyle, geçerli Kullandıkça Öde fiyatlandırma katmanını kullanmanız önemle önerilir. 
 
 ### <a name="per-node-tier-and-operations-management-suite-subscription-entitlements"></a>Düğüm başına katman ve Operations Management Suite abonelik yetkilendirmeleri
 
@@ -347,4 +350,3 @@ Fiyatlandırma katmanını Azure Kaynak Yönetimi 'ni kullanarak ayarlamak için
 [start]: ./app-insights-overview.md
 [pricing]: https://azure.microsoft.com/pricing/details/application-insights/
 [pricing]: https://azure.microsoft.com/pricing/details/application-insights/
-

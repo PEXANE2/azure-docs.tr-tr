@@ -9,12 +9,12 @@ ms.date: 1/8/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 7f6e90edc0503326dc9dbb06abfcf59fa2d51e1e
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 9ae7009468b548cb9386fd405abfbe110d62f9a3
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92043825"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100377525"
 ---
 # <a name="deploy-iot-edge-modules-at-scale-using-visual-studio-code"></a>Visual Studio Code kullanarak ölçekli IoT Edge modülleri dağıtma
 
@@ -44,7 +44,7 @@ Hub 'ınız ile işlemler yapmak için Visual Studio Code için Azure IoT uzant�
 
 1. **Azure IoT Hub** bölüm üstbilgisindeki **..** . öğesine tıklayın. Üç noktayı görmüyorsanız üstbilginin üzerine gelin.
 
-1. **IoT Hub Seç ' i**seçin.
+1. **IoT Hub Seç ' i** seçin.
 
 1. Azure hesabınızda oturum açmadıysanız, bunu yapmak için istemleri izleyin.
 
@@ -82,7 +82,7 @@ Visual Studio Code kullanarak modüller dağıtmak için, dağıtım bildirimini
             "edgeAgent": {
               "type": "docker",
               "settings": {
-                "image": "mcr.microsoft.com/azureiotedge-agent:1.0",
+                "image": "mcr.microsoft.com/azureiotedge-agent:1.1",
                 "createOptions": "{}"
               }
             },
@@ -91,7 +91,7 @@ Visual Studio Code kullanarak modüller dağıtmak için, dağıtım bildirimini
               "status": "running",
               "restartPolicy": "always",
               "settings": {
-                "image": "mcr.microsoft.com/azureiotedge-hub:1.0",
+                "image": "mcr.microsoft.com/azureiotedge-hub:1.1",
                 "createOptions": "{\"HostConfig\":{\"PortBindings\":{\"5671/tcp\":[{\"HostPort\":\"5671\"}],\"8883/tcp\":[{\"HostPort\":\"8883\"}],\"443/tcp\":[{\"HostPort\":\"443\"}]}}}"
               }
             }
@@ -220,7 +220,7 @@ Dağıtım bildirimini yapılandırdıktan ve cihaz ikizi içinde Etiketler yap�
 
 1. Kullanmak istediğiniz dağıtım bildirimi JSON dosyasına gidin ve **kenar dağıtım bildirimini Seç**' e tıklayın.
 
-1. **DAĞıTıM kimliğiyle**başlayarak, istenen değerleri girin.
+1. **DAĞıTıM kimliğiyle** başlayarak, istenen değerleri girin.
 
    ![Dağıtım KIMLIĞI belirtin](./media/how-to-deploy-monitor-vscode/create-deployment-at-scale.png)
 
@@ -229,7 +229,7 @@ Dağıtım bildirimini yapılandırdıktan ve cihaz ikizi içinde Etiketler yap�
   | Parametre | Açıklama |
   | --- | --- |
   | Dağıtım KIMLIĞI | IoT Hub 'ında oluşturulacak dağıtımın adı. Dağıtımınıza 128 küçük harflerden oluşan benzersiz bir ad verin. Boşluklardan ve aşağıdaki geçersiz karakterlerden kaçının: `& ^ [ ] { } \ | " < > /` . |
-  | Hedef koşul | Bu dağıtıma hangi cihazların hedeflenceğini belirleyen bir hedef koşul girin.Bu koşul, Device ikizi etiketlerine veya Device ikizi bildirilen özelliklerine dayalıdır ve ifade biçimiyle eşleşmelidir.Örneğin, `tags.environment='test' and properties.reported.devicemodel='4000x'` . |
+  | Hedef koşul | Bu dağıtıma hangi cihazların hedeflenceğini belirleyen bir hedef koşul girin. Bu koşul, Device ikizi etiketlerine veya Device ikizi bildirilen özelliklerine dayalıdır ve ifade biçimiyle eşleşmelidir. Örneğin, `tags.environment='test' and properties.reported.devicemodel='4000x'`. |
   | Öncelik |  Pozitif bir tamsayı. Aynı cihaza iki veya daha fazla dağıtım hedeflenirse, öncelik için en yüksek sayısal değere sahip dağıtım uygulanır. |
 
   Önceliği belirttikten sonra, Terminal aşağıdaki gösterimi benzer bir çıktı görüntülemelidir:

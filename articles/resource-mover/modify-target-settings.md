@@ -1,5 +1,5 @@
 ---
-title: Azure Kaynak taşıyıcısı ile bölgeler arasında Azure VM 'Leri taşırken hedef ayarları değiştirme
+title: Azure Kaynak taşıyıcısı ile bölgeler arasında Azure VM 'lerini taşırken hedef ayarlarını değiştirme
 description: Azure Kaynak taşıyıcısı ile bölgeler arasında Azure VM 'Leri taşırken hedef ayarları değiştirmeyi öğrenin.
 manager: evansma
 author: rayne-wiselman
@@ -7,14 +7,14 @@ ms.service: resource-move
 ms.topic: how-to
 ms.date: 02/08/2021
 ms.author: raynew
-ms.openlocfilehash: eb28e4c8f6b465e2a9b38cc4571bc4a00baf4ef7
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: 936a667948c888f3ca7c53eaa5be9cc97facf5f7
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99979632"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100375366"
 ---
-# <a name="modify-target-settings"></a>Hedef ayarlarını değiştirme
+# <a name="modify-destination-settings"></a>Hedef ayarlarını değiştirme
 
 Bu makalede, [Azure Kaynak taşıyıcısı](overview.md)ile Azure bölgeleri arasında kaynakları taşırken hedef ayarların nasıl değiştirileceği açıklanır.
 
@@ -27,7 +27,7 @@ Azure VM 'lerini ve ilişkili kaynakları taşırken, hedef ayarları değiştir
 - Hazırlama işlemi tamamlandıktan sonra bazı hedef özellikleri düzenleme için kullanılamaz olabileceğinden, kaynakları hazırlamadan önce ayarları değiştirmenizi öneririz.
 
 Ancak
-- Kaynak kaynağı taşıyorsanız, genellikle taşıma işlemini başlat işlemini başlatana kadar hedef ayarları değiştirebilirsiniz.
+- Kaynak kaynağını taşıyorsanız, taşıma işlemini başlat işlemini başlatana kadar genellikle hedef ayarları değiştirebilirsiniz.
 - Kaynak bölgede var olan bir kaynağı atarsanız, taşıma işlemi tamamlanana kadar hedef ayarlarını değiştirebilirsiniz.
 
 ### <a name="settings-you-can-modify"></a>Değiştirebileceğiniz ayarlar
@@ -48,14 +48,14 @@ Değiştirebileceğiniz yapılandırma ayarları tabloda özetlenmiştir.
 * * Yük dengeleyici adı, SKU 'SU ve bölge * * | Yük Dengeleyici için ad, SKU (temel veya standart) ve bölgeyi belirtir.<br/><br/> Standart sKU kullanmanızı öneririz.<br/><br/> Bölgenin yedekli olmasını istiyorsanız **bölge yedekli** olarak belirtin.
 **Kaynak bağımlılıkları** | Her bağımlılık için seçenekler:<br/><br/>-Kaynak, hedef bölgeye taşınacak kaynak bağımlı kaynakları kullanır.<br/><br/> -Kaynak, hedef bölgede bulunan farklı bağımlı kaynakları kullanır. Bu durumda, hedef bölgedeki herhangi bir benzer kaynak arasından seçim yapabilirsiniz.
 
-### <a name="edit-vm-target-settings"></a>VM hedef ayarlarını Düzenle
+### <a name="edit-vm-destination-settings"></a>VM hedef ayarlarını Düzenle
 
 Kaynak bölgeden hedefe bağımlı kaynaklar istemiyorsanız, birkaç seçeneğiniz vardır:
 
 - Hedef bölgede yeni bir kaynak oluşturun. Farklı ayarlar belirtmediğiniz sürece, yeni kaynak kaynak kaynakla aynı ayarlara sahip olur.
 - Hedef bölgede var olan bir kaynağı kullanın.
 
-Tam davranış, kaynak türüne bağlıdır. Hedef ayarları değiştirme hakkında [daha fazla bilgi edinin](modify-target-settings.md) .
+Tam davranış, kaynak türüne bağlıdır. Hedef ayarlarını değiştirme hakkında [daha fazla bilgi edinin](modify-target-settings.md) .
 
 Kaynak taşıma koleksiyonundaki **hedef yapılandırma** girişini kullanarak bir kaynağın hedef ayarlarını değiştirirsiniz. 
 
@@ -77,7 +77,7 @@ Azure SQL veritabanı kaynaklarını taşırken, taşıma için hedef ayarları 
     - Hedef veritabanı için ayarları ve veritabanı için bölge yedekliği ayarlarını değiştirebilirsiniz.
 - Elastik havuzlar için:
     -  Taşımayı başlatmadan önce hedef yapılandırmayı dilediğiniz zaman değiştirebilirsiniz.
-    - Havuz için hedef elastik havuzu ve bölge yedeklemesini değiştirebilirsiniz. 
+    - Hedef elastik havuzu ve havuz için bölge yedekliliği ' nı değiştirebilirsiniz. 
 
 ### <a name="sql-settings-you-can-modify"></a>Değiştirebileceğiniz SQL ayarları
 
@@ -86,12 +86,12 @@ Azure SQL veritabanı kaynaklarını taşırken, taşıma için hedef ayarları 
 **Ad** | Hedef bölgede aynı ada sahip yeni bir veritabanı oluşturun.<br/><br/> Hedef bölgede farklı bir adla yeni bir veritabanı oluşturun.<br/><br/> Hedef bölgede var olan bir veritabanını kullanın. | Hedef bölgede aynı ada sahip yeni bir elastik havuz oluşturun.<br/><br/> Hedef bölgede farklı bir adla yeni bir elastik havuz oluşturun.<br/><br/> Hedef bölgede mevcut bir elastik havuzu kullanın.
 **Bölge yedekliliği** | Bölge yedekliliği destekleyen bir bölgeden olmayan bir bölgeye taşımak için, bölge ayarında **devre dışı bırak** yazın.<br/><br/> Bölge yedekliliği desteklemeyen bir bölgeden geçiş yapmak için bölge ayarında **Etkinleştir** yazın. | Bölge yedekliliği destekleyen bir bölgeden olmayan bir bölgeye taşımak için, bölge ayarında **devre dışı bırak** yazın.<br/><br/> Bölge yedekliliği desteklemeyen bir bölgeden geçiş yapmak için bölge ayarında **Etkinleştir** yazın.
 
-### <a name="edit-sql-target-settings"></a>SQL hedef ayarlarını Düzenle
+### <a name="edit-sql-destination-settings"></a>SQL hedef ayarlarını Düzenle
 
-Azure SQL veritabanı kaynağı için hedef ayarları aşağıdaki gibi değiştirirsiniz: 
+Azure SQL veritabanı kaynağı için hedef ayarlarını şu şekilde değiştirirsiniz: 
 
-1. **Bölgeler arasında**, değiştirmek istediğiniz kaynak için **hedef yapılandırma** girişine tıklayın.
-2. **Yapılandırma ayarları**' nda, yukarıdaki tabloda özetlenen hedef ayarları belirtin.
+1. **Bölgeler arasında**, değiştirmek istediğiniz kaynak Için, **hedef yapılandırma** girişi ' ne tıklayın.
+2. **Yapılandırma ayarları**' nda, yukarıdaki tabloda özetlenen hedef ayarlarını belirtin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

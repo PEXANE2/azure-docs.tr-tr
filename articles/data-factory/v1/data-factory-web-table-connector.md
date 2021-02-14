@@ -1,23 +1,18 @@
 ---
 title: Azure Data Factory kullanarak Web tablosundan veri taşıma
 description: Azure Data Factory kullanarak bir Web sayfasındaki tablodaki verileri taşıma hakkında bilgi edinin.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.assetid: f54a26a4-baa4-4255-9791-5a8f935898e2
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/05/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: d2ea038c7d7212529185d77a6ba9e64deacb1c9e
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 7663848bd06244de7efb169a576e11a5c78204c1
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96012859"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100392910"
 ---
 # <a name="move-data-from-a-web-table-source-using-azure-data-factory"></a>Azure Data Factory kullanarak bir Web tablosu kaynağından veri taşıma
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -51,7 +46,7 @@ Bu Web tablosu bağlayıcısını kullanmak için, şirket içinde barındırıl
 }
 ```
 
-## <a name="getting-started"></a>Başlarken
+## <a name="getting-started"></a>Kullanmaya başlama
 Farklı araçlar/API 'Ler kullanarak şirket içi Cassandra veri deposundan veri taşıyan kopyalama etkinliği ile bir işlem hattı oluşturabilirsiniz. 
 
 - İşlem hattı oluşturmanın en kolay yolu **Kopyalama Sihirbazı**' nı kullanmaktır. Veri kopyalama Sihirbazı 'nı kullanarak işlem hattı oluşturma hakkında hızlı bir yol için bkz. [öğretici: kopyalama Sihirbazı 'nı kullanarak işlem hattı oluşturma](data-factory-copy-data-wizard-tutorial.md) . 
@@ -74,7 +69,7 @@ Aşağıdaki tabloda, web bağlantılı hizmetine özgü JSON öğeleri için a�
 | --- | --- | --- |
 | tür |Type özelliği: **Web** olarak ayarlanmalıdır |Yes |
 | Url |Web kaynağının URL 'SI |Yes |
-| authenticationType |Deðeri. |Yes |
+| authenticationType |Anonim. |Yes |
 
 ### <a name="using-anonymous-authentication"></a>Anonim kimlik doğrulaması kullanma
 

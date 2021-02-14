@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 03/18/2020
 ms.author: janutter
-ms.openlocfilehash: 0de3c46eba0b9364e38c4a952a320ac1c3de512f
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 95747bb68a904212e7e075fc29b2497932d66e5f
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99583578"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100103864"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-an-angular-single-page-application"></a>Hızlı başlangıç: angular tek sayfalı uygulamada Kullanıcı oturumu açma ve erişim belirteci edinme
 
@@ -35,9 +35,7 @@ Bu hızlı başlangıçta, angular bir tek sayfalı uygulamanın (SPA) kullanıc
 >
 > ### <a name="option-1-express-register-and-automatically-configure-the-app-and-then-download-the-code-sample"></a>Seçenek 1 (Express): uygulamayı kaydedin ve otomatik olarak yapılandırın ve ardından kod örneğini indirin
 >
-> 1. <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>oturum açın.
-> 1. Hesabınızın birden fazla kiracıya erişimi varsa, sağ üst köşedeki hesabı seçin ve ardından Portal oturumunuzu kullanmak istediğiniz Azure Active Directory (Azure AD) kiracısına ayarlayın.
-> 1. Yeni [uygulama kayıtları](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade/quickStartType/JavascriptSpaQuickstartPage/sourceType/docs) bölmesini Azure Portal açın.
+> 1. <a href="https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade/quickStartType/JavascriptSpaQuickstartPage/sourceType/docs" target="_blank">Azure portal uygulama kayıtları</a> hızlı başlangıç deneyimine gidin.
 > 1. Uygulamanız için bir ad girin ve ardından **Kaydet**' i seçin.
 > 1. Hızlı başlangıç bölmesine gidin ve angular hızlı başlangıcını görüntüleyin. Yeni uygulamanızı indirip otomatik olarak yapılandırmak için yönergeleri izleyin.
 >
@@ -45,8 +43,8 @@ Bu hızlı başlangıçta, angular bir tek sayfalı uygulamanın (SPA) kullanıc
 >
 > #### <a name="step-1-register-the-application"></a>1. Adım: uygulamayı kaydetme
 >
-> 1. <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>oturum açın.
-> 1. Hesabınızın birden fazla kiracıya erişimi varsa, sağ üst köşedeki hesabınızı seçin ve Portal oturumunuzu kullanmak istediğiniz Azure AD kiracısına ayarlayın.
+> 1. <a href="https://portal.azure.com/" target="_blank">Azure portalında</a> oturum açın.
+> 1. Birden fazla kiracıya erişiminiz varsa, uygulamayı kaydetmek istediğiniz kiracıyı seçmek için üst menüdeki **Dizin + abonelik** filtresini kullanın :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: .
 > 1. Azure portal [tek sayfalı bir uygulamayı kaydetmek](./scenario-spa-app-registration.md) için yönergeleri izleyin.
 > 1. Uygulama kaydlarınızın **kimlik doğrulama** bölmesine yeni bir platform ekleyin ve yenıden yönlendirme URI 'sini kaydedin: `http://localhost:4200/` .
 > 1. Bu hızlı başlangıç, [örtük verme akışını](v2-oauth2-implicit-grant-flow.md)kullanır. **Örtük verme ve karma akışlar** bölümünde **Kimlik belirteçleri** ve **erişim belirteçleri**' ni seçin. KIMLIK belirteçleri ve erişim belirteçleri gereklidir çünkü bu uygulama kullanıcılar üzerinde oturum açar ve bir API çağırır.

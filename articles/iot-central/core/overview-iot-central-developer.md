@@ -4,24 +4,24 @@ description: Azure IoT Central, IoT çözümlerinin oluşturulmasını kolaylaş
 author: dominicbetts
 ms.author: dobett
 ms.date: 05/05/2020
-ms.topic: overview
+ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom:
 - mvc
 - device-developer
-ms.openlocfilehash: e33f48c9496ffa3cca9d8b1aa71d524be9a311bb
-ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
+ms.openlocfilehash: 326fed659be43be3115cae1d7c2b14d0708f4a96
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96122247"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100377814"
 ---
-# <a name="iot-central-device-development-overview"></a>IoT Central cihaz geliştirmeye genel bakış
+# <a name="iot-central-device-development-guide"></a>IoT Central cihaz geliştirme Kılavuzu
 
 *Bu makale, cihaz geliştiricileri için geçerlidir.*
 
-IoT Central bir uygulama, yaşam döngüsü boyunca milyonlarca cihazı izlemenize ve yönetmenize olanak sağlar. Bu genel bakış, IoT Central bağlanan cihazlarda çalıştırılacak kodu uygulayan cihaz geliştiricilerine yöneliktir.
+IoT Central bir uygulama, yaşam döngüsü boyunca milyonlarca cihazı izlemenize ve yönetmenize olanak sağlar. Bu kılavuz, IoT Central bağlanan cihazlarda çalıştırılacak kodu uygulayan cihaz geliştiricileri için tasarlanmıştır.
 
 Cihazlar, aşağıdaki temel elemanlar kullanılarak bir IoT Central uygulamayla etkileşim kurar:
 

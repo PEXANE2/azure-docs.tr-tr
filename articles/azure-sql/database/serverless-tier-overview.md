@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: sstein
 ms.date: 12/8/2020
-ms.openlocfilehash: b0d599b7d52d8a0e93f16761d1983ad25fa45c61
-ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
+ms.openlocfilehash: 1b8be7fc6295c6332d26718b5752d2fd8f2a6f73
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97687396"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100393250"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL veritabanı sunucusuz
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -25,16 +25,16 @@ Sunucusuz, Azure SQL veritabanı 'nda, bir saniyede kullanılan işlem miktarı 
 
 ## <a name="serverless-compute-tier"></a>Sunucusuz işlem katmanı
 
-Azure SQL veritabanı 'ndaki tek veritabanlarına yönelik sunucusuz işlem katmanı, bir işlem otomatik ölçeklendirme aralığı ve otomatik duraklama gecikmesi tarafından parametrelenir. Bu parametrelerin yapılandırması, veritabanı performans deneyimini ve işlem maliyetini şekillendirilir.
+Azure SQL veritabanı 'ndaki tek veritabanlarına yönelik sunucusuz işlem katmanı, bir işlem otomatik ölçeklendirme aralığı ve otomatik duraklatma gecikmesi tarafından parametrelenir. Bu parametrelerin yapılandırması, veritabanı performans deneyimini ve işlem maliyetini şekillendirilir.
 
 ![Sunucusuz faturalandırma](./media/serverless-tier-overview/serverless-billing.png)
 
 ### <a name="performance-configuration"></a>Performans yapılandırması
 
 - **Minimum sanal çekirdekler** ve **maksimum sanal çekirdekler** , veritabanı için kullanılabilir işlem kapasitesi aralığını tanımlayan yapılandırılabilir parametrelerdir. Bellek ve GÇ sınırları belirtilen vCore aralığıyla orantılıdır.  
-- Otomatik **duraklatma gecikmesi** , veritabanının otomatik olarak duraklatılmadan önce devre dışı olması gereken süreyi tanımlayan yapılandırılabilir bir parametredir. Sonraki oturum açma veya diğer etkinlik gerçekleştiğinde veritabanı otomatik olarak sürdürülür.  Alternatif olarak, oto duraklamayı devre dışı bırakılabilir.
+- **Otomatik duraklatma gecikmesi** , veritabanının otomatik olarak duraklatılmadan önce devre dışı olması gereken süreyi tanımlayan yapılandırılabilir bir parametredir. Sonraki oturum açma veya diğer etkinlik gerçekleştiğinde veritabanı otomatik olarak sürdürülür.  Alternatif olarak, Otomatik duraklatma devre dışı bırakılabilir.
 
-### <a name="cost"></a>Cost
+### <a name="cost"></a>Maliyet
 
 - Sunucusuz bir veritabanının maliyeti, işlem maliyeti ve depolama maliyetinin özetidir.
 - İşlem kullanımı, yapılandırılan minimum ve maksimum limitlerin arasında olduğunda, işlem maliyeti sanal çekirdeği ve kullanılan belleği temel alır.
@@ -48,16 +48,16 @@ Daha fazla maliyet ayrıntısı için bkz. [faturalandırma](serverless-tier-ove
 
 Sunucusuz model aralıklı, tahmin edilemez kullanım düzenleri olan ve boşta kullanım dönemlerinden sonra işlemin ısınması için biraz beklemeyi kaldırabilen tek veritabanları için fiyat-performans açısından iyileştirilmiştir. Buna karşılık sağlanan işlem katmanı, ortalama kullanımı yüksek olan ve işlem ısınması için beklemeyi kaldıramayan tek veritabanları veya elastik havuzlardaki birden çok veritabanı için fiyat-performans açısından iyileştirilmiştir.
 
-### <a name="scenarios-well-suited-for-serverless-compute"></a>Daha az işlem için senaryolar iyi uygun
+### <a name="scenarios-well-suited-for-serverless-compute"></a>Sunucusuz işlem için uygun senaryolar
 
 - Kesintili kullanım desenlerine sahip tek veritabanları, zaman içinde etkinlik dışı ve düşük ortalama işlem kullanımı dönemleriyle birlikte oluşmuştur.
 - Sağlanan işlem katmanındaki tek veritabanları, genellikle ölçeklendirildi ve hizmet için işlem yeniden oluşturmayı tercih eden müşteriler.
 - SQL veritabanı 'nda dağıtımdan önce işlem boyutlandırmanın zor veya tahmin edilmesi mümkün olmayan kullanım geçmişi olmayan yeni tek veritabanları.
 
-### <a name="scenarios-well-suited-for-provisioned-compute"></a>Senaryolar, sağlanan işlem için iyi uygun
+### <a name="scenarios-well-suited-for-provisioned-compute"></a>Sağlanan işlem için uygun senaryolar
 
 - Daha düzenli, öngörülebilir kullanım desenleri ve zaman içinde daha fazla ortalama işlem kullanımı olan tek veritabanları.
-- Daha sık bellek kırpmasını veya duraklatılmış bir durumdan kaynaklanan gecikme süresi ile ilgili performansı karşılamaz olan veritabanları.
+- Daha sık bellek kırpmasını veya duraklatılmış bir durumdan devam eden gecikmelerden kaynaklanan performans dengelerini karşılamaz veritabanları.
 - Daha iyi fiyat performansı iyileştirmesi için esnek havuzlarda birleştirilemeyen, kesintili kullanım desenlerine sahip birden çok veritabanı.
 
 ## <a name="comparison-with-provisioned-compute-tier"></a>Sağlanan işlem katmanıyla karşılaştırma
@@ -93,42 +93,42 @@ Sağlanan işlem veritabanlarının aksine, CPU veya etkin önbellek kullanımı
 - En son kullanılan önbellek girişlerinin toplam boyutu bir süre eşiğinin altına düştüğünde etkin önbellek kullanımı düşük kabul edilir.
 - Cache geri kazanma tetiklendiğinde, hedef önbellek boyutu artımlı olarak önceki boyutunun bir kesirine düşürülür ve geri kazanma yalnızca kullanım düşük kalırsa devam eder.
 - Cache geri kazanma gerçekleştiğinde, çıkarmak için önbellek girdileri seçme ilkesi, bellek baskısı yüksek olduğunda sağlanan işlem veritabanları için aynı seçim ilkesidir.
-- Önbellek boyutu, yapılandırılabilecek minimum sanal çekirdekler tarafından tanımlanan en düşük bellek sınırının altına hiç düşürülmez.
+- Önbellek boyutu, yapılandırılmış minimum sanal çekirdekler tarafından tanımlanan en düşük bellek sınırının altına hiçbir şekilde indirgenmez.
 
 Hem sunucusuz hem de sağlanan işlem veritabanlarında, kullanılabilir tüm bellek kullanılıyorsa önbellek girdileri çıkartılamayabilir.
 
-CPU kullanımı düşük olduğunda, etkin önbellek kullanımının kullanım düzenine bağlı olarak yüksek kalabileceğini ve bellek geri kazanma engel olabileceğini unutmayın.  Ayrıca, düzenli arka plan işlemlerinin önceki Kullanıcı etkinliğine yanıt vermemesi nedeniyle bellek geri kazanma gerçekleşmeden önce, Kullanıcı etkinliği durdurulmadan önce ek gecikme olabilir.  Örneğin, silme işlemleri ve QDS temizleme görevleri, silinmek üzere işaretlenmiş hayalet kayıtlar oluşturur, ancak veri sayfalarını önbelleğe okumayı gerektirebilecek hayalet temizleme işlemi çalıştırılıncaya kadar fiziksel olarak silinmez.
+CPU kullanımı düşük olduğunda, etkin önbellek kullanımının kullanım düzenine bağlı olarak yüksek kalabileceğini ve bellek geri kazanma engel olabileceğini unutmayın.  Ayrıca, düzenli arka plan işlemlerinin önceki Kullanıcı etkinliğine yanıt vermemesi nedeniyle, bellek geri kazanma gerçekleşmeden önce Kullanıcı etkinliği durdurulmadan daha fazla gecikme olabilir.  Örneğin, silme işlemleri ve QDS temizleme görevleri, silinmek üzere işaretlenmiş hayalet kayıtlar oluşturur, ancak veri sayfalarını önbelleğe okumayı gerektirebilecek hayalet temizleme işlemi çalıştırılıncaya kadar fiziksel olarak silinmez.
 
 #### <a name="cache-hydration"></a>Önbellek hidrasyonu
 
 Veriler diskten aynı şekilde ve sağlanan veritabanları için aynı hızda getirilirken, SQL önbelleği artar. Veritabanı meşgulse, önbelleğin en yüksek bellek sınırına kadar kısıtlı olarak büyümesine izin verilir.
 
-## <a name="autopausing-and-autoresuming"></a>Oto duraklatıp ve oto sürdürülüyor
+## <a name="auto-pause-and-auto-resume"></a>Otomatik duraklatma ve otomatik olarak devam etmeyi bırak
 
-### <a name="autopausing"></a>Oto duraklatma
+### <a name="auto-pause"></a>Otomatik duraklatma
 
-Aşağıdaki koşulların tümü, oto duraklatma gecikmesi süresince doğru olursa, oto duraklatma tetiklenir:
+Otomatik duraklatma gecikmesi süresi için aşağıdaki koşulların tümü doğru olursa otomatik duraklatma tetiklenir:
 
 - Sayı oturumu = 0
 - Kullanıcı havuzunda çalışan Kullanıcı iş yükü için CPU = 0
 
-İstenirse, oto duraklamayı devre dışı bırakmak için bir seçenek sağlanır.
+İsterseniz otomatik duraklamayı devre dışı bırakmak için bir seçenek sağlanır.
 
-Aşağıdaki özellikler otomatik duraklamayı desteklemez, ancak otomatik ölçeklendirmeyi destekler.  Aşağıdaki özelliklerden herhangi biri kullanılırsa, yeniden duraklatma devre dışı bırakılmalıdır ve veritabanı eylemsizlik süresi ne olursa olsun veritabanı çevrimiçi olarak kalır:
+Aşağıdaki özellikler otomatik duraklamayı desteklemez, ancak otomatik ölçeklendirmeyi destekler.  Aşağıdaki özelliklerden herhangi biri kullanılırsa, Otomatik duraklatma devre dışı bırakılmalıdır ve veritabanı eylemsizlik süresi ne olursa olsun veritabanı çevrimiçi olarak kalır:
 
 - Coğrafi çoğaltma (etkin coğrafi çoğaltma ve otomatik yük devretme grupları).
 - Uzun süreli yedek saklama (LTR).
-- SQL Data Sync 'de kullanılan eşitleme veritabanı.  Eşitleme veritabanlarının aksine, hub ve üye veritabanları, oto duraklamayı destekler.
+- SQL Data Sync 'de kullanılan eşitleme veritabanı.  Eşitleme veritabanlarının aksine, hub ve üye veritabanları otomatik duraklamayı destekler.
 - DNS diğer ad
 - Elastik Işlerde kullanılan iş veritabanı (Önizleme).
 
-Veritabanının çevrimiçi olmasını gerektiren bazı hizmet güncelleştirmelerinin dağıtımı sırasında, oto duraklatma geçici olarak engellenir.  Bu gibi durumlarda, hizmet güncelleştirmesi tamamlandıktan sonra yeniden duraklatma yeniden kullanılabilir duruma gelir.
+Otomatik duraklatma, veritabanının çevrimiçi olmasını gerektiren bazı hizmet güncelleştirmelerinin dağıtımı sırasında geçici olarak engellenir.  Bu gibi durumlarda, hizmet güncelleştirmesi tamamlandıktan sonra otomatik duraklatma yeniden kullanılabilir duruma gelir.
 
-### <a name="autoresuming"></a>Oto yeniden sürdürülüyor
+### <a name="auto-resuming"></a>Otomatik olarak yeniden sürdürülüyor
 
-Aşağıdaki koşullardan herhangi biri herhangi bir zamanda doğruysa, oto yeniden sürdürme tetiklenir:
+Aşağıdaki koşullardan herhangi biri doğruysa, otomatik olarak yeniden başlatma tetiklenir:
 
-|Özellik|Oto özgeçmişi tetikleyicisi|
+|Özellik|Tetikleyiciyi otomatik olarak yeniden başlatma|
 |---|---|
 |Kimlik doğrulaması ve yetkilendirme|Oturum aç|
 |Tehdit algılama|Veritabanı veya sunucu düzeyinde tehdit algılama ayarlarını etkinleştirme/devre dışı bırakma.<br>Tehdit algılama ayarlarını veritabanı veya sunucu düzeyinde değiştirme.|
@@ -139,7 +139,7 @@ Aşağıdaki koşullardan herhangi biri herhangi bir zamanda doğruysa, oto yeni
 |Güvenlik açığı değerlendirmesi|Etkinse geçici taramalar ve düzenli taramalar|
 |Sorgu (performans) veri deposu|Sorgu deposu ayarlarını değiştirme veya görüntüleme|
 |Performans önerileri|Performans önerilerini görüntüleme veya uygulama|
-|Oto ayarlama|Otomatik Dizin oluşturma gibi otomatik ayarlama önerilerini uygulama ve doğrulama|
+|Otomatik ayarlama|Otomatik Dizin oluşturma gibi otomatik ayarlama önerilerini uygulama ve doğrulama|
 |Veritabanı kopyalama|Kopya olarak veritabanı oluşturun.<br>BACPAC dosyasına dışarı aktarın.|
 |SQL Data Sync|Yapılandırılabilir bir zamanlamaya göre çalışan ya da el ile gerçekleştirilen merkez ve üye veritabanları arasında eşitleme|
 |Belirli veritabanı meta verilerini değiştirme|Yeni veritabanı etiketleri ekleniyor.<br>Maksimum sanal çekirdekler, en az sanal çekirdek veya oto duraklatma gecikmesi değiştiriliyor.|
@@ -147,7 +147,7 @@ Aşağıdaki koşullardan herhangi biri herhangi bir zamanda doğruysa, oto yeni
 
 Yukarıda listelenen işlemlerden herhangi birini gerçekleştirerek izleme, yönetim veya diğer çözümler otomatik olarak devam ettirmeyi tetikler.
 
-Ayrıca, veritabanının çevrimiçi olmasını gerektiren bazı hizmet güncelleştirmelerinin dağıtımı sırasında, oto devam etme işlemi tetiklenir.
+Otomatik sürdürme, veritabanının çevrimiçi olmasını gerektiren bazı hizmet güncelleştirmelerinin dağıtımı sırasında da tetiklenir.
 
 ### <a name="connectivity"></a>Bağlantı
 
@@ -155,7 +155,7 @@ Sunucusuz bir veritabanı duraklatıldığında, ilk oturum açma işlemi verita
 
 ### <a name="latency"></a>Gecikme süresi
 
-Bir sunucusuz veritabanını oto Resume ve oto duraklatma gecikmesi genellikle 1 dakikalık ve oto duraklamaya 1-10 dakika sıradır.
+Otomatik olarak devam etmeyi ve otomatik olarak duraklatma gecikmesi, otomatik olarak devam etmek için 1 dakikalık ve otomatik olarak duraklatılacağı 1-10 dakikadır.
 
 ### <a name="customer-managed-transparent-data-encryption-byok"></a>Müşteri tarafından yönetilen saydam veri şifrelemesi (BYOK)
 
@@ -209,7 +209,7 @@ CREATE DATABASE testdb
 ( EDITION = 'GeneralPurpose', SERVICE_OBJECTIVE = 'GP_S_Gen5_1' ) ;
 ```
 
-Ayrıntılar için bkz. [veritabanı oluşturma](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current).  
+Ayrıntılar için bkz. [veritabanı oluşturma](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current&preserve-view=true).  
 
 ### <a name="move-a-database-from-the-provisioned-compute-tier-into-the-serverless-compute-tier"></a>Sağlanan işlem katmanından bir veritabanını sunucusuz işlem katmanına taşıma
 
@@ -234,14 +234,14 @@ az sql db update -g $resourceGroupName -s $serverName -n $databaseName `
 
 #### <a name="use-transact-sql-t-sql"></a>Transact-SQL (T-SQL) kullanma
 
-T-SQL kullanırken, en düşük sanal çekirdekler ve oto duraklatma gecikmesi için varsayılan değerler uygulanır.
+T-SQL kullanırken, varsayılan değerler en düşük sanal çekirdekler ve otomatik duraklatma gecikmesi için uygulanır.
 
 ```sql
 ALTER DATABASE testdb 
 MODIFY ( SERVICE_OBJECTIVE = 'GP_S_Gen5_1') ;
 ```
 
-Ayrıntılar için bkz. [alter database](/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current).
+Ayrıntılar için bkz. [alter database](/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current&preserve-view=true).
 
 ### <a name="move-a-database-from-the-serverless-compute-tier-into-the-provisioned-compute-tier"></a>Bir veritabanını sunucusuz işlem katmanından sağlanan işlem katmanına taşıma
 

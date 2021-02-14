@@ -9,14 +9,14 @@ ms.topic: tutorial
 author: aminsaied
 ms.author: amsaied
 ms.reviewer: sgilley
-ms.date: 09/15/2020
+ms.date: 02/11/2021
 ms.custom: devx-track-python
-ms.openlocfilehash: b1fa4d3e6c017232922e500352558e34726b90cc
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 65c609343aece4e23917ede79dfb3c4723ffb70c
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98183090"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100369075"
 ---
 # <a name="tutorial-train-your-first-machine-learning-model-part-3-of-4"></a>Öğretici: ilk makine öğrenimi modelinizi eğitme (Bölüm 3/4)
 
@@ -38,7 +38,7 @@ Bu öğreticide şunları yaptınız:
 > * Azure Machine Learning için günlük ölçümleri.
 > * Ölçümünüzü bulutta görüntüleyin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Python sanal ortamlarını yönetmek ve paketleri yüklemek için [Anaconda](https://www.anaconda.com/download/) veya [miniconda](https://www.anaconda.com/download/) .
 - Serinin [part1](tutorial-1st-experiment-sdk-setup-local.md) ve [Bölüm 2](tutorial-1st-experiment-hello-world.md) ' nin tamamlanması.
@@ -59,18 +59,8 @@ Daha sonra eğitim betiğini tanımlarsınız. Bu betik, PyTorch API 'lerini kul
 
 Artık şu dizin yapısına sahipsiniz:
 
-```txt
-tutorial
-└──.azureml
-|  └──config.json
-└──src
-|  └──hello.py
-|  └──model.py
-|  └──train.py
-└──01-create-workspace.py
-└──02-create-compute.py
-└──03-run-hello.py
-```
+:::image type="content" source="media/tutorial-1st-experiment-sdk-train/directory-structure.png" alt-text="Dizin yapısı src alt dizininde train.py gösterir":::
+
 
 > [!div class="nextstepaction"]
 > [Bir sorunla karşılaşdığım](https://www.research.net/r/7CTJQQN?issue=create-scripts) [eğitim betiklerini oluşturdum](?success=create-scripts#environment)

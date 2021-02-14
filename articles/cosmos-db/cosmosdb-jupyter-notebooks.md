@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 05/19/2020
 author: deborahc
 ms.author: dech
-ms.openlocfilehash: 8dca9e3e29796618b905c4d266eb674f82565969
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 4f57d2793a28f4bbb201764c67af82f31d0b9333
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097626"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100369807"
 ---
 # <a name="built-in-jupyter-notebooks-support-in-azure-cosmos-db-preview"></a>Azure Cosmos DB 'de yerleşik jupi Not Defteri desteği (Önizleme)
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -24,7 +24,7 @@ Azure Cosmos DB yerleşik jupi Not defterleri, Azure portal ve Azure Cosmos DB h
 
 Azure Cosmos DB, çekirdek (SQL), Cassandra, Gremlin, tablo ve MongoDB için API dahil tüm API 'Ler için hem C# hem de Python not defterlerini destekler. Not defteri içinde, Azure Cosmos DB kaynakları oluşturmayı, verileri yüklemeyi ve verilerinizi Azure Cosmos DB ve görselleştirmeyi kolaylaştıran yerleşik komutlar ve özelliklerden yararlanabilirsiniz. 
 
-:::image type="content" source="./media/cosmosdb-jupyter-notebooks/jupyter-notebooks-portal.png" alt-text="Azure Cosmos DB 'de jupi Not defteri görselleştirmeleri":::
+:::image type="content" source="./media/cosmosdb-jupyter-notebooks/jupyter-notebooks-portal.png" alt-text="Azure Cosmos DB 'de jupi Not Defteri desteği":::
 
 ## <a name="benefits-of-jupyter-notebooks"></a>Jupyıter Not defterlerinin avantajları
 
@@ -61,5 +61,7 @@ Jupyter Not defterleri, her biri ayrı bloklara veya hücrelere düzenlenmiş bi
 Azure Cosmos DB yerleşik Jupyter not defterlerini kullanmaya başlamak için aşağıdaki makalelere bakın:
 
 * [Azure Cosmos hesabında not defterlerini etkinleştirme](enable-notebooks.md)
+* [Not defteri örnekleri galerisini keşfet](https://cosmos.azure.com/gallery.html)
 * [Python Not defteri özelliklerini ve komutlarını kullanma](use-python-notebook-features-and-commands.md)
 * [C# Not defteri özelliklerini ve komutlarını kullanma](use-csharp-notebook-features-and-commands.md)
+* [GitHub deposundan not defterlerini içeri aktarma](import-github-notebooks.md)

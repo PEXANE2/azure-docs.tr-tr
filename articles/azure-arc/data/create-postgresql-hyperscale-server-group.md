@@ -7,14 +7,14 @@ ms.subservice: azure-arc-data
 author: TheJY
 ms.author: jeanyd
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 02/11/2021
 ms.topic: how-to
-ms.openlocfilehash: 45bb045e7bad2d5f8a56b71787b3abb5921cb7d5
-ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
+ms.openlocfilehash: 4ff45eea8e07a282d8529c745344c11706bc27bb
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98985895"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100387997"
 ---
 # <a name="create-an-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Azure Arc özellikli PostgreSQL Hiper Ölçek sunucu grubu oluşturma
 
@@ -81,13 +81,13 @@ azdata arc postgres server create -n <name> --workers <# worker nodes with #>=2>
 > [!IMPORTANT]
 > - Yedeklemeler için kullanılan depolama sınıfı (_--Storage-Class-Backups-SCB_) sağlanmazsa veri denetleyicisinin veri depolama sınıfına varsayılan olarak ayarlanır.
 > - Bir sunucu grubunu ayrı bir sunucu grubuna geri yüklemek için (zaman içinde nokta geri yükleme gibi), sunucu grubunuzu ReadWriteMany erişim moduyla PVC 'leri kullanacak şekilde yapılandırmanız gerekir. Bunun için sunucu grubunun oluşturulması gerekir. Oluşturulduktan sonra değiştirilemez. Daha ayrıntılı bilgi için şunu okuyun:
->    - [Yedekleme ve geri yükleme ile ilgili bu bölüm](https://docs.microsoft.com/azure/azure-arc/data/backup-restore-postgresql-hyperscale#create-a-server-group-that-is-ready-for-backups-and-restores)
->    - [Bu bölüm, Azure Arc etkin PostgreSQL Hyperscale sınırlamaları hakkında](https://docs.microsoft.com/azure/azure-arc/data/limitations-postgresql-hyperscale)
+>    - [Yedeklemeler ve geri yüklemeler için Ready bir sunucu grubu oluşturma](backup-restore-postgresql-hyperscale.md#create-a-server-group-that-is-ready-for-backups-and-restores)
+>    - [Azure Arc etkin PostgreSQL Hyperscale sınırlamaları](limitations-postgresql-hyperscale.md)
 
 
 > [!NOTE]
 > - **Kullanılabilir başka komut satırı parametreleri vardır.  ' İ çalıştırarak seçeneklerin tüm listesini görüntüleyin `azdata arc postgres server create --help` .**
-
+>
 > - --Volume-size-* parametreleri tarafından kabul edilen birim bir Kubernetes kaynak miktarıdır (bundan sonra, bu, bu sahip olan bu sahip (T, G, M, K, m) veya bunların iki bitlik eşdeğerinden (TI, gi, mı, ki) biridir).
 > - Adların uzunluğu 12 karakter veya daha az olmalıdır ve DNS adlandırma kurallarına uymalıdır.
 > - _Postgres_ standart yönetici kullanıcısının parolasını girmeniz istenir.  `AZDATA_PASSWORD`Create komutunu çalıştırmadan önce oturum ortam değişkenini ayarlayarak etkileşimli istemi atlayabilirsiniz.

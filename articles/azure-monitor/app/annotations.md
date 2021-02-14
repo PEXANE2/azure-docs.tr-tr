@@ -3,12 +3,12 @@ title: Application Insights için sürüm ek açıklamaları | Microsoft Docs
 description: Application Insights içinde Ölçüm Gezgini grafiklerinize dağıtım veya yapı işaretçileri ekleyin.
 ms.topic: conceptual
 ms.date: 08/14/2020
-ms.openlocfilehash: 58f6603687838713fafbf4cd5cc3f100e22b7401
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: c23c973bc02482e7000cfd1d066a322fff93542a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95993729"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100386042"
 ---
 # <a name="annotations-on-metric-charts-in-application-insights"></a>Application Insights 'de ölçüm grafiklerindeki ek açıklamalar
 
@@ -63,7 +63,7 @@ Azure Pipelines sürüm şablonlarınızın her biri için ayrı bir API anahtar
    
 1. Yayın Şablonu penceresinde, **değişkenler** sekmesinde, yeni API anahtarı için bir değişken tanımı oluşturmak üzere **Ekle** ' yi seçin.
 
-1. **Ad**' ın altında, değer ' in altında, `ApiKey` **API erişimi** sekmesinden kopyaladığınız API anahtarını yapıştırın. **Value**
+1. **Ad**' ın altında, değer ' in altında, `ApiKey` **API erişimi** sekmesinden kopyaladığınız API anahtarını yapıştırın. 
    
    ![Azure DevOps değişkenleri sekmesinde Ekle ' yi seçin, ApiKey değişkenini adlandırın ve değer altına API anahtarını yapıştırın.](./media/annotations/7-paste-api-key.png)
    
@@ -81,7 +81,7 @@ Azure Pipelines sürüm şablonlarınızın her biri için ayrı bir API anahtar
 
 Şimdi yeni bir sürüm dağıtmak için yayın şablonunu kullandığınızda Application Insights için bir ek açıklama gönderilir. Ek açıklamalar aşağıdaki konumlarda görüntülenebilir:
 
-Sürüm ek açıklamalarını el ile oluşturma becerisinin bulunduğu kullanım bölmesi:
+Sürüm ek açıklamalarını el ile oluşturma becerisinin bulunduğu **kullanım** bölmesi:
 
 ![Bir dönem boyunca görünen Kullanıcı ziyaretlerinin sayısına sahip çubuk grafiğinin ekran görüntüsü. Yayın ek açıklamaları, grafiğin üzerinde, bir yayının gerçekleştiği andaki süreyi belirten yeşil onay işaretleri olarak görünür](./media/annotations/usage-pane.png)
 

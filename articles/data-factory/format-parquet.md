@@ -2,19 +2,16 @@
 title: Azure Data Factory içinde Parquet biçimi
 description: Bu konu, Azure Data Factory içinde Parquet biçimiyle nasıl başa çıkılacağını açıklamaktadır.
 author: linda33wj
-manager: shwang
-ms.reviewer: craigg
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/27/2020
 ms.author: jingwang
-ms.openlocfilehash: c99225b53266fc74ea357151de824cd8d8ed2088
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: a10403b5f26b551458a9e20330bc817512f707de
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96011617"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100386400"
 ---
 # <a name="parquet-format-in-azure-data-factory"></a>Azure Data Factory içinde Parquet biçimi
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -66,7 +63,7 @@ Etkinlikleri tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi iç
 
 ### <a name="parquet-as-source"></a>Kaynak olarak Parquet
 
-Aşağıdaki özellikler kopyalama etkinliği **_ \_ kaynağı \**** bölümünde desteklenir.
+Aşağıdaki özellikler, etkinlik ***\* kaynağını \**** kopyalama bölümünde desteklenir.
 
 | Özellik      | Açıklama                                                  | Gerekli |
 | ------------- | ------------------------------------------------------------ | -------- |
@@ -75,7 +72,7 @@ Aşağıdaki özellikler kopyalama etkinliği **_ \_ kaynağı \**** bölümünd
 
 ### <a name="parquet-as-sink"></a>Havuz olarak Parquet
 
-Aşağıdaki özellikler kopyalama etkinliği **_ \_ Havuz \**** bölümünde desteklenir.
+Aşağıdaki özellikler, etkinlik ***\* havuzunu \**** Kopyala bölümünde desteklenir.
 
 | Özellik      | Açıklama                                                  | Gerekli |
 | ------------- | ------------------------------------------------------------ | -------- |
@@ -101,13 +98,13 @@ Aşağıdaki tabloda bir Parquet kaynağı tarafından desteklenen özellikler l
 
 | Ad | Açıklama | Gerekli | İzin verilen değerler | Veri akışı betiği özelliği |
 | ---- | ----------- | -------- | -------------- | ---------------- |
-| Biçimlendir | Biçim olmalıdır `parquet` | yes | `parquet` | biçim |
+| Biçimlendir | Biçim olmalıdır `parquet` | evet | `parquet` | biçim |
 | Joker karakter yolları | Joker karakterle eşleşen tüm dosyalar işlenecek. Veri kümesinde ayarlanan klasör ve dosya yolunu geçersiz kılar. | hayır | String [] | Yavaya Cardyolları |
 | Bölüm kök yolu | Bölümlenmiş dosya verileri için bölümlenmiş klasörleri sütun olarak okumak üzere bir bölüm kök yolu girebilirsiniz | hayır | Dize | Partitionrootyolu |
 | Dosya listesi | Kaynağınızın işlenecek dosyaları listeleyen bir metin dosyasına işaret edip etmediğini belirtir | hayır | `true` veya `false` | Si |
 | Dosya adının depolanacak sütun | Kaynak dosya adı ve yolu ile yeni bir sütun oluşturma | hayır | Dize | rowUrlColumn |
 | Tamamlandıktan sonra | İşlemden sonra dosyaları silin veya taşıyın. Dosya yolu, kapsayıcı kökünden başlar | hayır | Sil: `true` veya `false` <br> Geçiş `[<from>, <to>]` | purgeFiles <br> moveFiles |
-| Son değiştirme ölçütü | En son değiştirildiklerinde dosyaları filtrelemek için seçin | hayır | Zaman damgası | Modıfıedafter <br> modifiedBefore |
+| Son değiştirme ölçütü | En son değiştirildiklerinde dosyaları filtrelemek için seçin | hayır | Timestamp | Modıfıedafter <br> modifiedBefore |
 | Dosya bulunamamış izin ver | True ise bir dosya bulunmazsa bir hata oluşturulmaz | hayır | `true` veya `false` | ıgnorenofilesfound |
 
 ### <a name="source-example"></a>Kaynak örneği
@@ -131,7 +128,7 @@ Aşağıdaki tabloda bir Parquet havuzu tarafından desteklenen özellikler list
 
 | Ad | Açıklama | Gerekli | İzin verilen değerler | Veri akışı betiği özelliği |
 | ---- | ----------- | -------- | -------------- | ---------------- |
-| Biçimlendir | Biçim olmalıdır `parquet` | yes | `parquet` | biçim |
+| Biçimlendir | Biçim olmalıdır `parquet` | evet | `parquet` | biçim |
 | Klasörü temizle | Hedef klasör, yazma işleminden önce silinirse | hayır | `true` veya `false` | kesilemedi |
 | Dosya adı seçeneği | Yazılan verilerin adlandırma biçimi. Varsayılan olarak, biçimdeki bölüm başına bir dosya `part-#####-tid-<guid>` | hayır | Model: dize <br> Bölüm başına: dize [] <br> Sütunda veri olarak: dize <br> Tek dosyaya çıkış: `['<fileName>']` | filePattern <br> Partitionbir dosya adı <br> rowUrlColumn <br> Partitionbir dosya adı |
 

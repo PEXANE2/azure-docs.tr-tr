@@ -2,19 +2,16 @@
 title: Azure Data Factory sınırlandırılmış metin biçimi
 description: Bu konu başlığı altında, Azure Data Factory sınırlandırılmış metin biçimiyle nasıl başa çıkılabileceğinizi açıklamaktadır.
 author: linda33wj
-manager: shwang
-ms.reviewer: craigg
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/07/2020
 ms.author: jingwang
-ms.openlocfilehash: 0fa68a8dbdcb1f2c0cc4af1b4df751fd81c0de14
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 5b6367d2765277493ea34a4f7a23cae4b24c4dc4
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96854640"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100386603"
 ---
 # <a name="delimited-text-format-in-azure-data-factory"></a>Azure Data Factory sınırlandırılmış metin biçimi
 
@@ -39,7 +36,7 @@ Veri kümelerini tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi
 | firstRowAsHeader | İlk satırın, sütun adlarıyla bir başlık satırı olarak değerlendirilip değerlendirilmeyeceğini belirtir.<br>İzin verilen değerler **true** ve **false** (varsayılan) şeklindedir.<br>Üst bilgi olarak ilk satır yanlış olduğunda, Kullanıcı arabirimi veri önizleme ve arama etkinliği çıkışı otomatik olarak sütun adları oluştur Prop_ {n} (0 ' dan başlayarak), kopyalama etkinliği kaynaktan havuza [Açık eşleme](copy-activity-schema-and-type-mapping.md#explicit-mapping) gerektirir ve sütunları sıraya göre konumlandırır (Column_ 1 ' den başlayarak)  | No       |
 | nullValue        | Null değerin dize gösterimini belirtir. <br>Varsayılan değer boş bir **dizedir**. | No       |
 | encodingName     | Test dosyalarını okumak/yazmak için kullanılan kodlama türü. <br>İzin verilen değerler şunlardır: "UTF-8", "UTF-16", "UTF-16TO", "UTF-32", "UTF-32TO", "US-ASCII", "UTF-7", "BIG5", "EUC-JP", "EUC-KR", "GB2312", "GB18030", "JOHAB", "SHIFT-JıS", "CP875", "CP866", "IBM00858", "IBM037", "IBM273", "IBM437", "IBM500", "IBM737", "IBM775", "IBM850", "IBM852", "IBM855", "IBM857", "IBM860", "" IBM861 "," IBM863 "," IBM864 "," IBM865 "," IBM869 "," IBM870 "," IBM01140 "," IBM01141 "," IBM01142 "," IBM01143 "," IBM01144 "," IBM01145 "," IBM01146 "," IBM01147 "," IBM01148 "," IBM01149 "," ISO-2022-JP "," ISO-2022-KR "," ISO-8859-1 "," ISO-8859-2 "," ISO-8859-3 "," ISO-8859-4 "," ISO-8859-5 "," ISO-8859-6 "," ISO-8859-7 "," ISO-8859-8 "," ISO-8859-9 "," ISO-8859-13 " , "ISO-8859-15", "WINDOWS-874", "WINDOWS-1250", "WINDOWS-1251", "WINDOWS-1252", "WINDOWS-1253", "WINDOWS-1254", "WINDOWS-1255", "WINDOWS-1256", "WINDOWS-1257", "WINDOWS-1258".<br>Veri akışı eşleme, UTF-7 kodlamasını desteklemez. | No       |
-| compressionCodec | Metin dosyalarını okumak/yazmak için kullanılan sıkıştırma codec bileşeni. <br>İzin verilen değerler **şunlardır bzip2**, **gzip**, **söndür**, **zipsöndür**, **targzip**, **tar**, **Snappy** veya **lz4**. Varsayılan değer sıkıştırılmaz. <br>**Şu anda** kopyalama etkinliği "Snappy" & "lz4" desteklemez ve eşleme veri akışı "zipsöndür", "targzip" ve "tar" değerlerini desteklemez. <br>Örneğin, dosya tabanlı havuz veri deposuna **açılan** dosyaları açmak için kopyalama **etkinliği kullanılırken,** / **TarGzip** / **Tar** varsayılan dosyalar klasörüne çıkarılır: `<path specified in dataset>/<folder named as source compressed file>/` , `preserveZipFileNameAsFolder` / `preserveCompressionFileNameAsFolder` sıkıştırılmış dosyaların adının klasör yapısı olarak korunup korunmayacağını denetlemek için [etkinlik kaynağını kopyalama](#delimited-text-as-source) üzerinde kullanın. | No       |
+| compressionCodec | Metin dosyalarını okumak/yazmak için kullanılan sıkıştırma codec bileşeni. <br>İzin verilen değerler **şunlardır bzip2**, **gzip**, **söndür**, **zipsöndür**, **targzip**, **tar**, **Snappy** veya **lz4**. Varsayılan değer sıkıştırılmaz. <br>**Şu anda** kopyalama etkinliği "Snappy" & "lz4" desteklemez ve eşleme veri akışı "zipsöndür", "targzip" ve "tar" değerlerini desteklemez. <br>Örneğin, dosya tabanlı havuz veri deposuna **açılan** dosyaları açmak için kopyalama **etkinliği kullanılırken,** /  /  varsayılan dosyalar klasörüne çıkarılır: `<path specified in dataset>/<folder named as source compressed file>/` , `preserveZipFileNameAsFolder` / `preserveCompressionFileNameAsFolder` sıkıştırılmış dosyaların adının klasör yapısı olarak korunup korunmayacağını denetlemek için [etkinlik kaynağını kopyalama](#delimited-text-as-source) üzerinde kullanın. | No       |
 | compressionLevel | Sıkıştırma oranı. <br>İzin verilen değerler **en iyi** veya **en hızlardır**.<br>- **En hızlı:** Elde edilen dosya en iyi şekilde sıkıştırılmasa bile, sıkıştırma işleminin mümkün olduğunca hızlı bir şekilde tamamlanmalıdır.<br>- **En iyi**: işlemin tamamlanmasını daha uzun sürse bile sıkıştırma işlemi en iyi şekilde sıkıştırılmalıdır. Daha fazla bilgi için bkz. [sıkıştırma düzeyi](/dotnet/api/system.io.compression.compressionlevel) konusu. | No       |
 
 Azure Blob depolamada sınırlandırılmış metin veri kümesi örneği aşağıda verilmiştir:
@@ -76,7 +73,7 @@ Etkinlikleri tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi iç
 
 ### <a name="delimited-text-as-source"></a>Kaynak olarak ayrılmış metin 
 
-Aşağıdaki özellikler kopyalama etkinliği **_ \_ kaynağı \**** bölümünde desteklenir.
+Aşağıdaki özellikler, etkinlik ***\* kaynağını \**** kopyalama bölümünde desteklenir.
 
 | Özellik       | Açıklama                                                  | Gerekli |
 | -------------- | ------------------------------------------------------------ | -------- |
@@ -92,7 +89,7 @@ Desteklenen **sınırlandırılmış metin okuma ayarları** `formatSettings` :
 | skipLineCount | Giriş dosyalarından veri okurken atlanacak **boş olmayan** satır sayısını belirtir. <br>Hem skipLineCount hem de firstRowAsHeader parametresi belirtilirse önce satırlar atlanır, ardından giriş dosyasındaki üst bilgi bilgileri okunur. | No       |
 | compressionProperties | Belirli bir sıkıştırma codec bileşeni için verileri açmak üzere bir özellik grubu. | No       |
 | preserveZipFileNameAsFolder<br>(*`compressionProperties` -> `type` as `ZipDeflateReadSettings`*) |  Giriş veri kümesi **Zipsöndür** sıkıştırma ile yapılandırıldığında geçerlidir. Kaynak ZIP dosya adının kopyalama sırasında klasör yapısı olarak korunup korunmayacağını gösterir.<br>- **True (varsayılan)** olarak ayarlandığında Data Factory daraltılmış dosyaları içine yazar `<path specified in dataset>/<folder named as source zip file>/` .<br>- **False** olarak ayarlandığında Data Factory ZIP dosyalarını doğrudan öğesine yazar `<path specified in dataset>` . Yarış veya beklenmedik davranışlara engel olmak için farklı kaynak ZIP dosyalarında yinelenen dosya adlarında bulunmadığından emin olun.  | No |
-| preserveCompressionFileNameAsFolder<br>(*`compressionProperties` -> `type` `TarGZipReadSettings` veya `TarReadSettings` olarak*)  | Giriş veri kümesi **targık** sıkıştırması ile yapılandırıldığında geçerlidir / **Tar** . Kaynak sıkıştırılmış dosya adının kopyalama sırasında klasör yapısı olarak korunup korunmayacağını gösterir.<br>- **True (varsayılan)** olarak ayarlandığında Data Factory, açılan dosyaları içine yazar `<path specified in dataset>/<folder named as source compressed file>/` . <br>- **False** olarak ayarlandığında Data Factory açılan dosyaları doğrudan öğesine yazar `<path specified in dataset>` . Yarış veya beklenmedik davranışlara engel olmak için farklı kaynak dosyalarında yinelenen dosya adlarında bulunmadığından emin olun. | No |
+| preserveCompressionFileNameAsFolder<br>(*`compressionProperties` -> `type` `TarGZipReadSettings` veya `TarReadSettings` olarak*)  | Giriş veri kümesi **targık** sıkıştırması ile yapılandırıldığında geçerlidir /  . Kaynak sıkıştırılmış dosya adının kopyalama sırasında klasör yapısı olarak korunup korunmayacağını gösterir.<br>- **True (varsayılan)** olarak ayarlandığında Data Factory, açılan dosyaları içine yazar `<path specified in dataset>/<folder named as source compressed file>/` . <br>- **False** olarak ayarlandığında Data Factory açılan dosyaları doğrudan öğesine yazar `<path specified in dataset>` . Yarış veya beklenmedik davranışlara engel olmak için farklı kaynak dosyalarında yinelenen dosya adlarında bulunmadığından emin olun. | No |
 
 ```json
 "activities": [
@@ -124,7 +121,7 @@ Desteklenen **sınırlandırılmış metin okuma ayarları** `formatSettings` :
 
 ### <a name="delimited-text-as-sink"></a>Havuz olarak ayrılmış metin
 
-Aşağıdaki özellikler kopyalama etkinliği **_ \_ Havuz \**** bölümünde desteklenir.
+Aşağıdaki özellikler, etkinlik ***\* havuzunu \**** Kopyala bölümünde desteklenir.
 
 | Özellik       | Açıklama                                                  | Gerekli |
 | -------------- | ------------------------------------------------------------ | -------- |
@@ -157,7 +154,7 @@ Aşağıdaki tabloda, ayrılmış bir metin kaynağı tarafından desteklenen ö
 | Çok satırlı satırlar | Kaynak dosya birden çok satıra yayılan satırlar içeriyor. Çok satırlı değerler tırnak içinde olmalıdır. | Hayır `true` veya `false` | multiLineRow |
 | Dosya adının depolanacak sütun | Kaynak dosya adı ve yolu ile yeni bir sütun oluşturma | hayır | Dize | rowUrlColumn |
 | Tamamlandıktan sonra | İşlemden sonra dosyaları silin veya taşıyın. Dosya yolu, kapsayıcı kökünden başlar | hayır | Sil: `true` veya `false` <br> Geçiş `['<from>', '<to>']` | purgeFiles <br> moveFiles |
-| Son değiştirme ölçütü | En son değiştirildiklerinde dosyaları filtrelemek için seçin | hayır | Zaman damgası | Modıfıedafter <br> modifiedBefore |
+| Son değiştirme ölçütü | En son değiştirildiklerinde dosyaları filtrelemek için seçin | hayır | Timestamp | Modıfıedafter <br> modifiedBefore |
 | Dosya bulunamamış izin ver | True ise bir dosya bulunmazsa bir hata oluşturulmaz | hayır | `true` veya `false` | ıgnorenofilesfound |
 
 ### <a name="source-example"></a>Kaynak örneği

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/16/2020
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: cbded0a9c905bb488e1bae0f92d777e2e7ed7441
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: a9edd93aa265622732be4a7582cce9900959bf6d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98630862"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100374992"
 ---
 # <a name="smb-multichannel-performance"></a>Çok Kanallı SMB performansı
 
@@ -110,7 +110,7 @@ Yük, tek bir 128 GiB dosyasına göre oluşturulmuştur. Çok iş parçacıklı
 
 - Daha büyük ortalama GÇ boyutuna sahip tek bir NIC 'de (> ~ 16k), hem okuma hem de yazma işlemlerinde önemli iyileştirmeler yapılmıştır.
 - Daha küçük GÇ boyutları için, çok kanallı SMB etkinken performans üzerinde yaklaşık %10 ' un küçük bir etkisi vardı. Bu, yükü birden çok dosya üzerinden yayarak veya özelliği devre dışı bırakarak azaltılabilir.
-- Performans,  [tek dosya sınırlarına](storage-files-scale-targets.md#file-level-limits)göre hala bağlanmıştır.
+- Performans, [tek dosya sınırlarına](storage-files-scale-targets.md#file-scale-targets)göre hala bağlanmıştır.
 
 ## <a name="optimizing-performance"></a>Performansı iyileştirme
 

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 11/30/2020
+ms.date: 02/12/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8a249102de6a5bff7354e339e604b7d2efebd4fb
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 68ed67afc949b3a67936f20a098bca8b6906a598
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96546226"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100365557"
 ---
 # <a name="enable-b2b-external-collaboration-and-manage-who-can-invite-guests"></a>B2B dış işbirliğini etkinleştirme ve konuk davet edebilecek kişileri yönetme
 
@@ -45,8 +45,6 @@ Varsayılan olarak, konukları dahil tüm kullanıcılar Konuk kullanıcıları 
 
 4. **Konuk Kullanıcı erişimi kısıtlamaları (Önizleme)** altında, konuk kullanıcıların sahip olmasını istediğiniz erişim düzeyini seçin:
   
-    ![Konuk Kullanıcı erişimi kısıtlamaları ayarları](./media/delegate-invitations/guest-user-access.png)
-
    - **Konuk kullanıcılar aynı üyelere (en kapsamlı) sahiptir**: Bu seçenek, konuklara Azure AD kaynaklarına ve dizin verilerine üye kullanıcı olarak aynı erişimi sağlar.
 
    - **Konuk kullanıcıların, dizin nesnelerinin özelliklerine ve üyeliklerine sınırlı erişimi vardır**: (varsayılan) Bu ayar, kullanıcıları, grupları veya diğer dizin kaynaklarını numaralandırma gibi belirli dizin görevlerinin konukları engeller. Konuklar, tüm gizli olmayan grupların üyeliğini görebilir.
@@ -69,13 +67,11 @@ Varsayılan olarak, konukları dahil tüm kullanıcılar Konuk kullanıcıları 
 
 6. **Konuklar için bir kerelik geçiş kodu** altında uygun ayarları seçin (daha fazla bilgi için bkz. e- [posta bir kerelik geçiş kodu kimlik doğrulaması](one-time-passcode.md)):
 
-   ![E-posta bir kerelik geçiş kodu ayarları](./media/delegate-invitations/email-otp-settings.png)
-
-   - **Mart 2021 ' de guests için e-posta tek seferlik geçiş kodunu otomatik olarak etkinleştirin**. Varsayılanını E-posta bir kerelik geçiş kodu özelliği kiracınız için zaten etkin değilse, bu, Mart 2021 ' de otomatik olarak açılır. Özelliğin o anda etkinleştirilmesini istiyorsanız başka bir eylem gerekmez. Özelliği zaten etkinleştirdiyseniz veya devre dışı bıraktığınız takdirde bu seçenek kullanılamaz.
+   - **Ekim 2021 ' de guests için e-posta tek seferlik geçiş kodunu otomatik olarak etkinleştirin**. Varsayılanını E-posta bir kerelik geçiş kodu özelliği kiracınız için zaten etkin değilse, 2021 Ekim 'de otomatik olarak açılır. Özelliğin o anda etkinleştirilmesini istiyorsanız başka bir eylem gerekmez. Özelliği zaten etkinleştirdiyseniz veya devre dışı bıraktığınız takdirde bu seçenek kullanılamaz.
 
    - **Şimdi geçerli olan konuklar için tek seferlik geçiş kodunu etkinleştirin**. Kiracınız için bir kerelik geçiş kodu özelliğini etkinleştirir.
 
-   - **Konuklar için tek seferlik e-posta geçiş kodunu devre dışı bırakın**. , Kiracınız için bir kerelik geçiş kodu özelliğini kapatır ve özelliğin Mart 2021 ' de açılmasını önler.
+   - **Konuklar için tek seferlik e-posta geçiş kodunu devre dışı bırakın**. , Kiracınız için bir kerelik geçiş kodu özelliğini kapatır ve özelliğin 2021 Ekim 'de açılmasını önler.
 
    > [!NOTE]
    > Yukarıdaki seçenekler yerine, bu özelliği etkinleştirdiyseniz veya devre dışı bıraktığınız takdirde veya daha önce önizlemeyi kabul ettiyseniz, aşağıdaki iki durumlu bir geçiş görürsünüz:
@@ -91,7 +87,7 @@ Varsayılan olarak, konukları dahil tüm kullanıcılar Konuk kullanıcıları 
     ![İşbirliği kısıtlamaları ayarları](./media/delegate-invitations/collaboration-restrictions.png)
 ## <a name="assign-the-guest-inviter-role-to-a-user"></a>Konuk davet eden rolünü bir kullanıcıya atama
 
-Konuk davet eden rolü sayesinde, bireysel kullanıcılara bir küresel yönetici veya başka yönetici rolü atamadan konukları davet etme yeteneği verebilirsiniz. Konuk davet eden rolünü kişilere atayın. Daha sonra **, yöneticileri ve konuk davet eden rolünde bulunan kullanıcıları Evet 'e davet edediğinizden** emin **Yes** olun.
+Konuk davet eden rolü sayesinde, bireysel kullanıcılara bir küresel yönetici veya başka yönetici rolü atamadan konukları davet etme yeteneği verebilirsiniz. Konuk davet eden rolünü kişilere atayın. Daha sonra **, yöneticileri ve konuk davet eden rolünde bulunan kullanıcıları Evet 'e davet edediğinizden** emin olun.
 
 Konuk davet eden rolüne kullanıcı eklemek için PowerShell 'in nasıl kullanılacağını gösteren bir örnek aşağıda verilmiştir:
 

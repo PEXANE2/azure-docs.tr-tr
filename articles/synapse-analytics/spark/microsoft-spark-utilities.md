@@ -1,7 +1,7 @@
 ---
 title: Microsoft Spark yardımcı programlarına giriş
 description: 'Öğretici: Azure SYNAPSE Analytics not defterlerinde Msmini yardımcı programları'
-author: ruxu
+author: ruixinxu
 services: synapse-analytics
 ms.service: synapse-analytics
 ms.topic: reference
@@ -10,12 +10,12 @@ ms.date: 09/10/2020
 ms.author: ruxu
 ms.reviewer: ''
 zone_pivot_groups: programming-languages-spark-all-minus-sql
-ms.openlocfilehash: d36086052f4e5719fd17989e3326a4b5728ee3ca
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 58672bd68d9a2ea85f58b3761f3b89098b9f5afc
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98954302"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100368668"
 ---
 # <a name="introduction-to-microsoft-spark-utilities"></a>Microsoft Spark yardımcı programlarına giriş
 
@@ -25,9 +25,9 @@ Microsoft Spark Utilities (Msparlak utils), ortak görevleri kolayca gerçekleş
 
 ### <a name="configure-access-to-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage 2. erişimi yapılandırma 
 
-SYNAPSE Not defterleri, ADLS 2. hesaplarına erişmek için Azure Active Directory (Azure AD) geçişini kullanır. ADLS 2. hesabına (veya klasöre) erişmek için bir **BLOB depolama katılımcısı** olması gerekir. 
+SYNAPSE Not defterleri, ADLS 2. hesaplarına erişmek için Azure Active Directory (Azure AD) geçişini kullanır. ADLS 2. hesabına (veya klasöre) erişmek için bir **BLOB depolama veri katılımcısı** olmanız gerekir. 
 
-SYNAPSE işlem hatları, depolama hesaplarına erişmek için çalışma alanı kimliğini (MSI) kullanır. İşlem hattı etkinliklerinizde Msmini yardımcı programları kullanmak için, ADLS 2. hesabına (veya klasöre) erişmek için çalışma alanı kimliğinizin **BLOB depolama katılımcısı** olması gerekir.
+SYNAPSE işlem hatları, depolama hesaplarına erişmek için çalışma alanı kimliğini (MSI) kullanır. İşlem hattı etkinliklerinizde Msmini yardımcı programları kullanmak için, ADLS 2. hesabına (veya klasöre) erişmek için çalışma alanı kimliğinizin **BLOB depolama veri katılımcısı** olması gerekir.
 
 Azure AD ve çalışma alanı MSI ADLS 2. hesabına erişimi olduğundan emin olmak için şu adımları izleyin:
 1. [Azure Portal](https://portal.azure.com/) ve erişmek istediğiniz depolama hesabını açın. Erişmek istediğiniz belirli bir kapsayıcıya gidebilirsiniz.

@@ -1,23 +1,18 @@
 ---
 title: SSIS paketlerini SSDT 'den yürütme
 description: SSDT 'den Azure 'da SSIS paketlerini yürütmeyi öğrenin.
-services: data-factory
-documentationcenter: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.author: sawinark
 author: swinarko
-ms.reviewer: douglasl
-manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 09/06/2020
-ms.openlocfilehash: a455d547fa3db2fd6e963458a29c77f516112e18
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: f11a3845e8644f3f60425538b2ef32cff668d88d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98556520"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100384937"
 ---
 # <a name="execute-ssis-packages-in-azure-from-ssdt"></a>SSDT 'den Azure 'da SSIS paketlerini yürütme
 
@@ -27,7 +22,7 @@ Bu makalede, SQL Server Veri Araçları (SSDT) üzerinde Azure etkin SQL Server 
 
 Bu özellikle, yeni oluşturulan/mevcut bir Azure-SSIS IR SSIS projelerine iliştirebilir ve sonra paketlerinizi yürütebilirsiniz.  Azure SQL veritabanı sunucunuz tarafından barındırılan SSIS kataloğuna (SSSıSDB) veya proje dağıtım modelindeki yönetilen örneğe dağıtılacak paketlerin çalıştırılmasını destekliyoruz. Paket dağıtım modelinde Azure SQL yönetilen örneğiniz tarafından barındırılan dosya sistemine/Azure dosyalarına/SQL Server veritabanına (MSDB) dağıtılacak paketlerin çalıştırılmasını da destekliyoruz. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu özelliği kullanmak için lütfen Visual Studio için SSIS projeleri uzantısı 'nı (VS.) [buradan](https://marketplace.visualstudio.com/items?itemName=SSIS.SqlServerIntegrationServicesProjects)indirip yükleyin. Alternatif olarak, en son SSDT 'yi de tek başına yükleyici olarak indirip [yükleyebilirsiniz.](/sql/ssdt/download-sql-server-data-tools-ssdt#ssdt-for-vs-2017-standalone-installer)
 

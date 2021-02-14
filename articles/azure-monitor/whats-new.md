@@ -5,17 +5,61 @@ ms.subservice: ''
 ms.topic: overview
 author: bwren
 ms.author: bwren
-ms.date: 01/11/2021
-ms.openlocfilehash: 6347bd3710a4727b9d3f820072ffff21cb57752d
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.date: 02/10/2021
+ms.openlocfilehash: 35bfc9c752243a69912b0732c4105712fa4a6086
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98071876"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100377678"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Azure Izleyici belgelerindeki yenilikler nelerdir?
 
 Bu makalede, yeni veya önemli ölçüde güncelleştirilmiş Azure Izleyici makaleleri listelenmektedir. Önceki aydan makale güncelleştirmelerini dahil etmek için her ayın ilk haftası yenilenir.
+
+## <a name="january-2021"></a>Ocak 2021 
+
+### <a name="general"></a>Genel 
+- [Azure IZLEYICI SSS](faq.md) -Application Insights için cihaz bilgilerine giriş eklendi.
+### <a name="agents"></a>Aracılar  
+- [Analiz Azure Izleyici günlükleri Için olay izleme (ETW) olayları toplanıyor](platform/data-sources-event-tracing-windows.md) -yeni makale.
+- [Azure izleyici 'de (Önizleme) veri toplama kuralları](platform/data-collection-rule-overview.md) -POWERSHELL ve CLI örneklerine bağlantılar eklendi.
+
+### <a name="alerts"></a>Uyarılar  
+- [Güvenli dışarı aktarma Ile ITSM araçlarına bağlanmak Için Azure 'ı yapılandırın](platform/itsm-connector-secure-webhook-connections-azure-configuration.md) -yeni makale.
+- [ISMC panosundaki bağlayıcı durumu hataları](platform/itsmc-dashboard-errors.md) -yeni makale.
+- [ISMC panosunu kullanarak hataları araştırın](platform/itsmc-dashboard.md) -yeni makale.
+- [Azure ölçüm uyarılarında sorun giderme](platform/alerts-troubleshoot-metric.md) -dinamik eşiklere eklenen bölümler.
+- BT Hizmet Yönetimi Bağlayıcısı-yeni makaledeki [sorunları giderin](platform/itsmc-troubleshoot-overview.md) .
+
+### <a name="application-insights"></a>Application Insights
+- [Azure Application Insights telemetri bağıntısı](app/correlation.md) , bir modül bir modül başka bir modül tarafından OpenCensus Python 'da çağırdığında izleme bağıntısı
+- [Web sayfaları için Application Insights](app/javascript.md) -yeni makale.
+- [Application Insights JAVASCRIPT SDK-yeni makale Için analiz otomatik toplama eklentisi ' ne tıklayın](app/javascript-click-analytics-plugin.md) .
+- [Kod değişikliği olmadan uygulamalarınızı izleyin-Azure izleyici için otomatik izleme Application Insights](app/codeless-overview.md) Python sütunu eklendi.
+- [JavaScript SDK 'sı için Application Insights eklentisi](app/javascript-react-plugin.md) -yeni makale.
+- [Telemetri işlemcileri (Önizleme)-Java ile yeniden yazan Azure izleyici Application Insights](app/java-standalone-telemetry-processors.md) .
+- [Azure Application Insights Ile Kullanım Analizi](app/usage-overview.md) -yeni makale.
+- [Web uygulaması sorunlarını bulmak Için Azure izleyici 'de uygulama değişikliği analizini kullanın](app/change-analysis.md) -eklenen hata iletileri.
+
+
+### <a name="insights"></a>Insights    
+- [Azure Için Azure izleyici Veri Gezgini (Önizleme)](insights/data-explorer.md) -yeni makale.
+
+### <a name="logs"></a>Günlükler    
+- [Azure izleyici müşteri tarafından yönetilen anahtar](platform/customer-managed-keys.md) -Kullanıcı tarafından atanan yönetilen kimliği tanıtın.
+- [Azure izleyici, ayrılmış kümeleri günlüğe kaydeder](log-query/logs-dedicated-clusters.md) -yanıt kodu güncelleştirildi.
+- [Çapraz hizmet sorgusu-Azure izleyici ve azure Veri Gezgini (Önizleme)](platform/azure-monitor-troubleshooting-logs.md) -yeni makale.
+
+### <a name="metrics"></a>Ölçümler
+- [Azure Izleyici ölçüm ölçümleri toplama ve açıklanacak](platform/metrics-aggregation-explained.md) yeni makale.
+
+### <a name="platform-logs"></a>Platform günlükleri
+- [Azure Izleyici kaynak günlüğü desteklenen hizmetler ve Kategoriler](platform/resource-logs-categories.md) -yeni makale.
+
+### <a name="visualizations"></a>Görsel öğeler
+- [Azure izleyici çalışma kitapları veri kaynakları](platform/workbooks-data-sources.md) -birleştirme ve değişiklik Analizi eklendi.
+
 
 ## <a name="december-2020"></a>Aralık 2020
 
@@ -598,7 +642,7 @@ Platform günlüğü içeriğinin yeniden ve konsolidasyonundan yeni ve güncell
 
 - [Azure Ölçüm Gezgini](platform/metrics-charts.md) ile eklenen toplama bölümünün gelişmiş özellikleri.
 
-### <a name="workbooks"></a>Çalışma kitapları
+### <a name="workbooks"></a>Çalışma Kitapları
 
 - [Azure Izleyici çalışma kitapları ve Azure Resource Manager şablonları](platform/workbooks-automate.md) -çalışma kitabı şablonu dağıtmak için Kaynak Yöneticisi şablonu eklendi.
 

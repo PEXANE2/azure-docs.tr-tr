@@ -8,12 +8,12 @@ ms.service: cognitive-search
 ms.topic: overview
 ms.date: 02/09/2021
 ms.custom: references_regions
-ms.openlocfilehash: 08491dcaf66789f13aa9f2e058303a28e7ab8388
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: 13cb22c178be29af71b57d0f50fdbd0e95718069
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 02/10/2021
-ms.locfileid: "100099532"
+ms.locfileid: "100104612"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Azure Bilişsel Arama yenilikleri
 
@@ -24,7 +24,7 @@ Hizmette nelerin yeni olduğunu öğrenin. Hizmette güncel kalmasını sağlama
 |Özellik&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  |  Description | Kullanılabilirlik  |
 |------------------------------|---------------|---------------|
 | [Belgeleri Sıfırla (Önizleme)](search-howto-run-reset-indexers.md) |  Dizin Oluşturucu iş yüklerindeki ayrı ayrı seçili arama belgelerini yeniden işler. | [Arama REST API 2020-06-30-Önizleme](/rest/api/searchservice/index-preview) |
-| Kullanılabilirlik alanı desteği | Belirli bölgelerde iki veya daha fazla çoğaltma ile, [performans Için ölçeklendirerek](search-performance-optimization.md), iki veya daha fazla ayrı fiziksel konumda çoğaltmalar bulundurarak dayanıklılık elde edin.  | Arama hizmeti oluşturma 'nin bölgesi ve tarihi kullanılabilirliği belirlenir. Ayrıntılar için performans ayarlama belgesine bakın. |
+| [Kullanılabilirlik Alanları](search-performance-optimization.md#availability-zones)| Belirli bölgelerde bulunan iki veya daha fazla çoğaltma ile Hizmetleri arayın, [Bu makalede](search-performance-optimization.md#availability-zones)listelendiği gibi iki veya daha fazla ayrı fiziksel konumda çoğaltmalar elde ederek dayanıklılık kazanın.  | Arama hizmeti oluşturma 'nin bölgesi ve tarihi kullanılabilirliği belirlenir. Ayrıntılar için performans ayarlama belgesine bakın. |
 
 ## <a name="january-2021"></a>Ocak 2021
 
@@ -37,6 +37,7 @@ Hizmette nelerin yeni olduğunu öğrenin. Hizmette güncel kalmasını sağlama
 | Ay | Özellik | Açıklama |
 |-------|---------|-------------|
 | Kasım | [Müşteri tarafından yönetilen anahtar şifrelemesi (genişletilmiş)](search-security-manage-encryption-keys.md) | Müşteri tarafından yönetilen şifrelemeyi, bir arama hizmeti tarafından oluşturulan ve yönetilen tüm varlık aralığı üzerinde genişletir. Genel olarak kullanılabilir.|
+| Eylül | [Azure Bilişsel Arama için Visual Studio Code uzantısı](search-get-started-vs-code.md) | Dizinler, Dizin oluşturucular, veri kaynakları ve becerileri oluşturmak için bir çalışma alanı, gezinti, IntelliSense ve şablonlar ekler. | Genel Önizleme |
 | Eylül | [Yönetilen hizmet kimliği (Dizin oluşturucular)](search-howto-managed-identities-data-sources.md) | Genel olarak kullanılabilir.  |
 | Eylül | [Özel bağlantı kullanan giden istekler](search-indexer-howto-access-private.md) | Genel olarak kullanılabilir.  |
 | Eylül | [Yönetim REST API (2020-08-01)](/rest/api/searchmanagement/management-api-versions) | Genel olarak kullanılabilir. |

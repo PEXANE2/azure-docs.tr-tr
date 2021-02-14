@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 02/04/2021
 ms.author: ambapat
-ms.openlocfilehash: 1a15ed6b92ade96dd2ed9ef6ffbbe17e2b1452ef
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 71cc36541b8809d93c84225edf771400d2878b4f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99581423"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100376063"
 ---
 # <a name="import-hsm-protected-keys-to-managed-hsm-byok"></a>HSM korumalı anahtarları yönetilen HSM 'ye içeri aktar (BYOK)
 
@@ -70,6 +70,7 @@ CLı aracılığıyla oturum açma seçenekleri hakkında daha fazla bilgi için
 |Securosys SA|Üretici, hizmet olarak HSM|Primus HSM ailesi, Securosys bulutları HSM|[Primus BYOK aracı ve belgeleri](https://www.securosys.com/primus-azure-byok)|
 |StorMagic|ISV (Kurumsal anahtar yönetim sistemi)|Birden çok HSM markalarını ve modellerini kapsayan<ul><li>Utıco</li><li>Thales</li><li>nCipher</li></ul>[Ayrıntılar için bkz. Stormagic sitesi](https://stormagic.com/doc/svkms/Content/Integrations/Azure_KeyVault_BYOK.htm)|[SvKMS ve Azure Key Vault BYOK](https://stormagic.com/doc/svkms/Content/Integrations/Azure_KeyVault_BYOK.htm)|
 |IBM|Üretici|IBM 476x, CryptoExpress|[IBM Kurumsal anahtar yönetim altyapısı](https://www.ibm.com/security/key-management/ekmf-bring-your-own-key-azure)|
+|Utıco|Üreticisini<br/>Hizmet olarak HSM|u. güven çıpası, CryptoServer|[Uıtıco BYOK aracı ve tümleştirme Kılavuzu](https://support.hsm.utimaco.com/support/downloads/byok)|
 ||||
 
 

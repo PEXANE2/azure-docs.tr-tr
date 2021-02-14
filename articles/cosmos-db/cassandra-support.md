@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 09/14/2020
-ms.openlocfilehash: 3b2d1bbe2de0ae72087fdf3debeaf42f8745fed9
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: f48935edd5746b0f3f3440e249024cbe2901317b
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99576490"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100374380"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB Cassandra API'si tarafından desteklenen Apache Cassandra özellikleri 
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -238,7 +238,7 @@ Azure Cosmos DB Cassandra API'si bir yönetilen hizmet platformudur. Kümeyi yö
 
 ## <a name="hosted-cql-shell-preview"></a>Barındırılan CQL kabuğu (Önizleme)
 
-Barındırılan yerel Cassandra kabuğunu (CDıSH v 5.0.1) doğrudan [Azure Portal](data-explorer.md) veya [Azure Cosmos DB Explorer](https://cosmos.azure.com/)'daki Veri Gezgini açabilirsiniz. CQL kabuğu 'nu etkinleştirmeden önce hesabınızdaki [Not defterleri özelliğini etkinleştirmeniz](enable-notebooks.md) gerekir (henüz etkinleştirilmemişse, üzerine tıklandığınızda sorulur `Open Cassandra Shell` ). Desteklenen Azure bölgeleri için [Azure Cosmos DB hesapları için not defterlerini etkinleştirme](enable-notebooks.md) bölümünde vurgulanan nota bakın.
+Barındırılan yerel Cassandra kabuğunu (CDıSH v 5.0.1) doğrudan [Azure Portal](data-explorer.md) veya [Azure Cosmos DB Explorer](https://cosmos.azure.com/)'daki Veri Gezgini açabilirsiniz. CQL kabuğu 'nu etkinleştirmeden önce hesabınızdaki [Not defterleri özelliğini etkinleştirmeniz](enable-notebooks.md) gerekir (henüz etkinleştirilmemişse, üzerine tıklandığınızda sorulur `Open Cassandra Shell` ). Desteklenen Azure bölgeleri için [Azure Cosmos DB hesapları için not defterlerini etkinleştirme](enable-notebooks.md#supported-regions) makalesine bakın.
 
 :::image type="content" source="./media/cassandra-support/cqlsh.png" alt-text="CSQLSH 'i aç":::
 

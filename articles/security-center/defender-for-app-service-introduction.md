@@ -7,12 +7,12 @@ ms.date: 01/25/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 99da711038e1fcea3e14584fde09ccd1f79feffa
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 2a3253d1ed8b0814fc20b3256a0f98d3aa0949f6
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98916722"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100393318"
 ---
 # <a name="introduction-to-azure-defender-for-app-service"></a>App Service için Azure Defender 'a giriş
 
@@ -23,13 +23,13 @@ Azure App Service, Web uygulamalarınızı ve API 'lerinizi oluşturmak ve barı
 
 ## <a name="availability"></a>Kullanılabilirlik
 
-|Görünüş|Ayrıntılar|
-|----|:----|
-|Yayın durumu:|Genel kullanılabilirlik (GA)|
-|Fiyat|[App Service Için Azure Defender](azure-defender.md) , [fiyatlandırma sayfasında](security-center-pricing.md) gösterildiği gibi faturalandırılır<br>Fiyatlandırma ve ayarlar sayfası, **kaynak miktarlarınızın** örnek sayısını listeler. Bu sayı, Bu abonelikteki tüm App Service planlarında, Fiyatlandırma Katmanı sayfasını açtığınız anda çalışan toplam işlem örneği sayısıdır.<br>Sayıyı doğrulamak için, Azure portal **App Service planlarını** açın ve her plan tarafından kullanılan işlem örneği sayısını denetleyin.|
-|Desteklenen App Service planları:|![Evet ](./media/icons/yes-icon.png) temel, standart, Premium, yalıtılmış veya Linux<br>![](./media/icons/no-icon.png)Ücretsiz, paylaşılan veya tüketim yok<br>[App Service planları hakkında daha fazla bilgi edinin](https://azure.microsoft.com/pricing/details/app-service/plans/)|
-|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Hayır](./media/icons/no-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
-|||
+| Görünüş                       | Ayrıntılar                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+|------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Yayın durumu:               | Genel kullanılabilirlik (GA)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| Fiyat                     | [App Service Için Azure Defender](azure-defender.md) , [fiyatlandırma sayfasında](security-center-pricing.md) gösterildiği gibi faturalandırılır<br>Faturalandırma, tüm planlardaki toplam işlem örneklerine göre belirlenir|
+| Desteklenen App Service planları: | Tüm App Service planları desteklenir (bir özel durum ile aşağıya bakın). [App Service planları hakkında daha fazla bilgi edinin](https://azure.microsoft.com/pricing/details/app-service/plans/).<br>Tüketim planındaki Azure Işlevleri desteklenmez. [Azure işlevleri barındırma seçenekleri hakkında daha fazla bilgi edinin](../azure-functions/functions-scale.md).                                                                                                                                                                                                                                                                   |
+| Larının                      | ![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![No](./media/icons/no-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)                                                                                                                                                                                                                                                                                                                                                                                 |
+|                              |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 
 ## <a name="what-are-the-benefits-of-azure-defender-for-app-service"></a>App Service için Azure Defender 'ın avantajları nelerdir?
 

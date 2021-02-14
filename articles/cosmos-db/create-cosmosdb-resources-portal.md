@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 11/10/2020
-ms.openlocfilehash: 731a1fdf9520efc43c954cba79602ed84f983b3d
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.openlocfilehash: 041b930a0c2fa82727216b4ca0c8367387d0d801
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98247259"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100367273"
 ---
 # <a name="quickstart-create-an-azure-cosmos-account-database-container-and-items-from-the-azure-portal"></a>Hızlı başlangıç: Azure portal bir Azure Cosmos hesabı, veritabanı, kapsayıcı ve öğe oluşturma
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -31,7 +31,7 @@ Azure Cosmos DB, Microsoft'un genel olarak dağıtılmış çok modelli veritaba
 
 Bu hızlı başlangıçta Azure portal kullanarak Azure Cosmos DB bir [SQL API](./introduction.md) hesabı oluşturma, bir belge veritabanı ve kapsayıcı oluşturma ve kapsayıcıya veri ekleme işlemlerinin nasıl yapılacağı gösterilmiştir. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bir Azure aboneliği veya ücretsiz Azure Cosmos DB deneme hesabı
 - [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] 
@@ -45,7 +45,7 @@ Azure Cosmos DB hesabı oluşturmak için [Azure portalına](https://portal.azur
 
    :::image type="content" source="./media/create-cosmosdb-resources-portal/find-nosql-cosmosdb-marketplace.png" alt-text="Azure portalındaki Veritabanları bölmesi":::
 
-1. **Ekle**’yi seçin.
+1. **Add (Ekle)** seçeneğini belirleyin.
 1. **Azure Cosmos DB Hesabı Oluştur** sayfasında, yeni Azure Cosmos hesabına yönelik temel ayarları girin. 
 
     |Ayar|Değer|Açıklama |
@@ -71,7 +71,7 @@ Azure Cosmos DB hesabı oluşturmak için [Azure portalına](https://portal.azur
 > - Coğrafi yedeklilik
 > - Birden Çok Bölgeli Yazmalar
    
-   :::image type="content" source="./media/create-cosmosdb-resources-portal/azure-cosmos-db-create-new-account-detail.png" alt-text="Azure Cosmos DB için yeni hesap sayfası":::
+   :::image type="content" source="./media/create-cosmosdb-resources-portal/azure-cosmos-db-create-new-account-detail-2.png" alt-text="Azure Cosmos DB için yeni hesap sayfası":::
 
 1. **Gözden geçir ve oluştur**’u seçin. **Ağ** ve **Etiketler** bölümlerini atlayabilirsiniz.
 

@@ -4,12 +4,12 @@ description: Büyük ölçekli paralel iş yükleri bulutta çalıştırmak içi
 ms.topic: how-to
 ms.date: 01/26/2021
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 943fd145dbd4964e0d43d91f726ea5a79fda59de
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: bd9dd9b6d6d3a8d6938427b83528746ae5d09318
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98896015"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100368515"
 ---
 # <a name="create-a-batch-account-with-the-azure-portal"></a>Azure portalıyla Batch hesabı oluşturma
 
@@ -67,6 +67,9 @@ Batch hesabına uygulanan [kaynak kotalarını](batch-quota-limit.md) görüntü
 ## <a name="additional-configuration-for-user-subscription-mode"></a>Kullanıcı aboneliği modu için ek yapılandırma
 
 Kullanıcı aboneliği modunda bir Batch hesabı oluşturmayı seçerseniz, hesabı oluşturmadan önce aşağıdaki ek adımları gerçekleştirin.
+
+> [!IMPORTANT]
+> Batch hesabını Kullanıcı abonelik modunda oluşturan kullanıcının, Batch hesabının oluşturulacağı abonelik için katkıda bulunan veya sahip rolü ataması olması gerekir.
 
 ### <a name="allow-azure-batch-to-access-the-subscription-one-time-operation"></a>Azure Batch hizmetinin aboneliğe erişmesine izin verme (tek seferlik işlem)
 
