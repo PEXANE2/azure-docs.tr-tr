@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: end-user-help
-ms.date: 03/21/2019
+ms.date: 01/19/2021
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: 5ae946f82590f2270719570e4b589d49542ffec8
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 4377ed76de971f78336ea9024b59dafc5d513487
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94833988"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100094976"
 ---
 # <a name="troubleshoot-problems-with-the-my-apps-portal"></a>Uygulamalarım portalındaki sorunları giderme
 
@@ -31,9 +31,9 @@ Uygulamalarım güvenli oturum açma uzantısını yüklerken sorun yaşıyorsan
 
     - **Microsoft Edge.** Windows 10 yıldönümü sürümünde veya sonraki sürümlerde çalışır.
 
-    - **Google Chrome.** Windows 7 veya sonraki sürümlerde ve Mac OS X veya üzeri sürümlerde çalışır.
+    - **Google Chrome.** Windows 7 veya üzeri sürümlerde ve macOS X veya üzeri sürümlerde çalışır.
 
-    - **Mozilla Firefox 26,0 veya üzeri.** Windows XP SP2 veya sonraki sürümlerde ve Mac OS X 10,6 veya üzeri sürümlerde çalışır.
+    - **Mozilla Firefox 26,0 veya üzeri.** Windows XP SP2 veya üzeri sürümlerde ve macOS X 10,6 veya üzeri sürümlerde çalışır.
 
     - **Internet Explorer 11.** Windows 7 veya sonraki sürümlerde (sınırlı destek) çalışıyor.
 
@@ -46,6 +46,11 @@ Uygulamalarım güvenli oturum açma uzantısını yüklerken sorun yaşıyorsan
 ## <a name="i-cant-sign-in-to-the-my-apps-portal"></a>**Uygulamalarım** portalında oturum açamıyorum
 
 **Uygulamalarım** portalında oturum açarken sorun yaşıyorsanız aşağıdakileri deneyebilirsiniz:
+
+- Kişisel bir Microsoft hesabı oturum açarken hata görürseniz, kuruluşunuzun etki alanı adını (örneğin contoso.com) veya aşağıdaki URL 'Lerden birindeki kuruluşunuzun **KIRACı kimliğini** kullanarak oturum açabilirsiniz:
+
+   - https://myapplications.microsoft.com?tenantId=*your_domain_name*
+   - https://myapplications.microsoft.com?tenant=*your_tenant_ID*
 
 - Doğru URL 'YI kullandığınızdan emin olun. https://myapps.microsoft.comKuruluşunuz için veya gibi özelleştirilmiş bir sayfa olmalıdır https://myapps.microsoft.com/contoso.com .
 

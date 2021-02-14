@@ -4,12 +4,12 @@ description: Bir Azure Kubernetes Service (AKS) kümesindeki uygulama taleplerin
 services: container-service
 ms.topic: article
 ms.date: 07/18/2019
-ms.openlocfilehash: 5f0754638be1aa29672b6a59218a6c9d695261a5
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: c0564dc3b394b4a65e70a487b6f6989cb306bdda
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98223151"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100373258"
 ---
 # <a name="automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) ile bir kümeyi uygulama taleplerini karşılayacak şekilde otomatik olarak ölçeklendirme
 
@@ -273,6 +273,9 @@ az aks nodepool update \
 ```
 
 Küme otomatik yapılandırmasını var olan bir kümede yeniden etkinleştirmek istiyorsanız, [az aks nodepool Update][az-aks-nodepool-update] komutunu kullanarak `--enable-cluster-autoscaler` ,, ve parametrelerini belirterek yeniden etkinleştirebilirsiniz `--min-count` `--max-count` .
+
+> [!NOTE]
+> Birden çok bölgeye yayılan ve Volume topik zamanlaması gibi bölgelerle ilgili zamanlama özelliklerinden yararlanan nodepools ile küme otomatik Scaler kullanmayı planlıyorsanız, her bölge için bir nodepool ve `--balance-similar-node-groups` Otomatik Scaler profili aracılığıyla etkinleştirilir. Bu, otomatik olarak ölçeklenebilmesini sağlayacak ve nodepools dengeli olan boyutları denemeye devam eder.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

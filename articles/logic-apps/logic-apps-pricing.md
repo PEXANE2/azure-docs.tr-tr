@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla
 ms.topic: conceptual
 ms.date: 01/29/2021
-ms.openlocfilehash: 0de0c5d53bd3195a24f75f4a2e65c19602e2a2b3
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 103855748c4b5d998dfc81eeb4044f5f53dae9e5
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99088930"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100372017"
 ---
 # <a name="pricing-and-billing-models-for-azure-logic-apps"></a>Azure Logic Apps için fiyatlandırma ve faturalandırma modelleri
 
@@ -72,8 +72,8 @@ Sabit bir fiyatlandırma modeli, bir [ *tümleştirme hizmeti ortamında* (ISE)]
 
 | ıSE SKU 'SU | Description |
 |---------|-------------|
-| **Premium** | Temel birim sabit kapasiteye sahiptir ve [Premium SKU 'su için saatlik bir ücret üzerinden faturalandırılır](https://azure.microsoft.com/pricing/details/logic-apps). Daha fazla işleme ihtiyacınız varsa, ıSE veya daha sonra oluşturduğunuz zaman [daha fazla ölçek birimi ekleyebilirsiniz](../logic-apps/ise-manage-integration-service-environment.md#add-capacity) . Her ölçek birimi, [temel birim oranının kabaca yarısı olan saatlik bir ücret](https://azure.microsoft.com/pricing/details/logic-apps)üzerinden faturalandırılır. <p><p>Sınır bilgileri için [Azure Logic Apps Içindeki Ise sınırları](logic-apps-limits-and-config.md#integration-service-environment-ise)bölümüne bakın. |
-| **Geliştirici** | Temel birim sabit kapasiteye sahiptir ve [Geliştirici SKU 'su için saatlik bir ücret üzerinden faturalandırılır](https://azure.microsoft.com/pricing/details/logic-apps). Bu SKU, ölçek artırma özelliğine, hizmet düzeyi sözleşmesine (SLA) veya yayımlanmış sınırlara sahip değildir. Bu SKU 'yu yalnızca araştırma, denemeleri, geliştirme ve test için kullanın, üretim veya performans testi değil. |
+| **Premium** | Temel birim [sabit kapasiteye](logic-apps-limits-and-config.md#integration-service-environment-ise) sahiptir ve [Premium SKU 'su için saatlik bir ücret üzerinden faturalandırılır](https://azure.microsoft.com/pricing/details/logic-apps). Daha fazla işleme ihtiyacınız varsa, ıSE veya daha sonra oluşturduğunuz zaman [daha fazla ölçek birimi ekleyebilirsiniz](../logic-apps/ise-manage-integration-service-environment.md#add-capacity) . Her ölçek birimi, [temel birim oranının kabaca yarısı olan saatlik bir ücret](https://azure.microsoft.com/pricing/details/logic-apps)üzerinden faturalandırılır. <p><p>Kapasite ve limit bilgilerini, [Azure Logic Apps Içindeki Ise sınırlarına](logic-apps-limits-and-config.md#integration-service-environment-ise)bakın. |
+| **Geliştirici** | Temel birim [sabit kapasiteye](logic-apps-limits-and-config.md#integration-service-environment-ise) sahiptir ve [Geliştirici SKU 'su için saatlik bir ücret üzerinden faturalandırılır](https://azure.microsoft.com/pricing/details/logic-apps). Ancak, bu SKU, geri dönüştürme sırasında bir hizmet düzeyi sözleşmesi (SLA), ölçek artırma özelliği veya yedekliliği yoktur, bu da gecikme veya kapalı kalma süresi yaşayabileceğiniz anlamına gelir. Arka uç güncelleştirmeleri zaman zaman kesme hizmeti gerektirebilir. <p><p>**Önemli**: Bu SKU 'yu yalnızca araştırma, denemeleri, geliştirme ve test için (üretim veya performans testi için değil) kullandığınızdan emin olun. <p><p>Kapasite ve limit bilgilerini, [Azure Logic Apps Içindeki Ise sınırlarına](logic-apps-limits-and-config.md#integration-service-environment-ise)bakın. |
 |||
 
 ### <a name="included-at-no-extra-cost"></a>Ek ücret ödemeden dahil değildir

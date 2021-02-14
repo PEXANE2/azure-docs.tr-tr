@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/07/2021
 ms.author: trbye
 ms.custom: references_regions
-ms.openlocfilehash: 118ab33c8d8ce46559957236daa21ba494655e69
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 9dfd950303d1cb838d44ae672fed33dd4cd7b5ec
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99526288"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100381911"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Konuşma hizmeti için dil ve ses desteği
 
@@ -26,7 +26,7 @@ Dil desteği, konuşma hizmeti işlevselliğine göre farklılık gösterir. Aş
 
 Hem Microsoft konuşma SDK 'Sı hem de REST API aşağıdaki dilleri (yerel ayarlar) destekler. 
 
-Doğruluğu artırmak için, bir dilin bir alt kümesi için, **Ses + insan etiketli yazılı** döküm veya **Ilgili metin: cümleler** karşıya yüklenirken özelleştirme sunulur. Özelleştirme hakkında daha fazla bilgi için bkz. [özel konuşma tanıma kullanmaya başlama](./custom-speech-overview.md).
+Doğruluğu artırmak için, bir dilin bir alt kümesi için, **Ses + insan etiketli yazılı** döküm veya **Ilgili metin: cümleler** karşıya yüklenirken özelleştirme sunulur. **Ses + insan etiketli yazılı betikler** ile akustik modelin özelleştirilmesi için destek, aşağıda listelenen belirli temel modellerle sınırlıdır. Diğer temel modeller ve diller yalnızca Ilgili metinle aynı şekilde özel modeller eğmek için yazılı betiklerin metnini kullanır **: cümleler**. Özelleştirme hakkında daha fazla bilgi için bkz. [özel konuşma tanıma kullanmaya başlama](./custom-speech-overview.md).
 
 <!--
 To get the AM and ML bits:
@@ -53,48 +53,48 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | Arapça (Birleşik Arap Emirlikleri)      | `ar-AE` | Dil modeli                                   |                           |
 | Bulgarca (Bulgaristan)               | `bg-BG` | Dil modeli                                   |                           |
 | Katalanca (İspanya)                    | `ca-ES` | Dil modeli                                   | Yes                          |
-| Çince (Cantoneo, geleneksel)   | `zh-HK` | Akustik model<br>Dil modeli                 |        Yes                   |
-| Çince (Mandarin, Basitleştirilmiş)     | `zh-CN` | Akustik model<br>Dil modeli                 |     Yes                      |
-| Çince (Taiwanese Mandarin)       | `zh-TW` | Akustik model<br>Dil modeli                 |           Yes                |
+| Çince (Cantoneo, geleneksel)   | `zh-HK` | Akustik model (20201015)<br>Dil modeli                 |        Yes                   |
+| Çince (Mandarin, Basitleştirilmiş)     | `zh-CN` | Akustik model (20200910)<br>Dil modeli                 |     Yes                      |
+| Çince (Taiwanese Mandarin)       | `zh-TW` | Akustik model (20190701, 20201015)<br>Dil modeli                 |           Yes                |
 | Hırvatça (Hırvatistan)                 | `hr-HR` | Dil modeli                                   |                           |
 | Çekçe (Çek Cumhuriyeti)             | `cs-CZ` | Dil modeli                                   |                           |
 | Danca (Danimarka)                   | `da-DK` | Dil modeli                                   | Yes                          |
-| Felemenkçe (Hollanda)                | `nl-NL` | Dil modeli                                   |    Yes                       |
-| İngilizce (Avustralya)                | `en-AU` | Akustik model<br>Dil modeli                 | Yes                          |
-| İngilizce (Kanada)                   | `en-CA` | Akustik model<br>Dil modeli                 | Yes                          |
+| Felemenkçe (Hollanda)                | `nl-NL` | Akustik model (20201015)<br>Dil modeli                                   |    Yes                       |
+| İngilizce (Avustralya)                | `en-AU` | Akustik model (20201019)<br>Dil modeli                 | Yes                          |
+| İngilizce (Kanada)                   | `en-CA` | Akustik model (20201019)<br>Dil modeli                 | Yes                          |
 | İngilizce (Hong Kong)                | `en-HK` | Dil modeli                                   |                           |
-| İngilizce (Hindistan)                    | `en-IN` | Akustik model<br>Dil modeli                 | Yes                          |
+| İngilizce (Hindistan)                    | `en-IN` | Akustik model (20200923)<br>Dil modeli                 | Yes                          |
 | İngilizce (İrlanda)                  | `en-IE` | Dil modeli                                   |                           |
-| İngilizce (Yeni Zelanda)              | `en-NZ` | Akustik model<br>Dil modeli                 |  Yes                         |
+| İngilizce (Yeni Zelanda)              | `en-NZ` | Akustik model (20201019)<br>Dil modeli                 |  Yes                         |
 | İngilizce (Nijerya)                  | `en-NG` | Dil modeli                                   |                           |
 | İngilizce (Filipinler)              | `en-PH` | Dil modeli                                   |                           |
 | İngilizce (Singapur)                | `en-SG` | Dil modeli                                   |                           |
 | İngilizce (Güney Afrika)             | `en-ZA` | Dil modeli                                   |                           |
-| İngilizce (İngiltere)           | `en-GB` | Akustik model<br>Dil modeli<br>İşi| Yes                          |
-| İngilizce (ABD)            | `en-US` | Akustik model<br>Dil modeli<br>İşi| Yes                          |
+| İngilizce (İngiltere)           | `en-GB` | Akustik model (20201019)<br>Dil modeli<br>İşi| Yes                          |
+| İngilizce (ABD)            | `en-US` | Akustik model (20201019)<br>Dil modeli<br>İşi| Yes                          |
 | Estonya dili (Estonya)                  | `et-EE` | Dil modeli                                   |                           |
 | Fince (Finlandiya)                  | `fi-FI` | Dil modeli                                   |     Yes                      |
-| Fransızca (Kanada)                    | `fr-CA` | Akustik model<br>Dil modeli                 |     Yes                      |
-| Fransızca (Fransa)                    | `fr-FR` | Akustik model<br>Dil modeli<br>İşi|      Yes                     |
-| Almanca (Almanya)                   | `de-DE` | Akustik model<br>Dil modeli<br>İşi|  Yes                         |
+| Fransızca (Kanada)                    | `fr-CA` | Akustik model (20201015)<br>Dil modeli                 |     Yes                      |
+| Fransızca (Fransa)                    | `fr-FR` | Akustik model (20201015)<br>Dil modeli<br>İşi|      Yes                     |
+| Almanca (Almanya)                   | `de-DE` | Akustik model (20190701, 20200619, 20201127)<br>Dil modeli<br>İşi|  Yes                         |
 | Yunanca (Yunanistan)                     | `el-GR` | Dil modeli                                   |                           |
 | Gucerat dili (Hindistan)                  | `gu-IN` | Dil modeli                                   |                           |
-| Hintçe (Hindistan)                      | `hi-IN` | Akustik model<br>Dil modeli                 |     Yes                      |
+| Hintçe (Hindistan)                      | `hi-IN` | Akustik model (20200701)<br>Dil modeli                 |     Yes                      |
 | Macarca (Macaristan)                | `hu-HU` | Dil modeli                                   |                           |
 | İrlanda dili (Irlanda)                     | `ga-IE` | Dil modeli                                   |                           |
-| İtalyanca (İtalya)                    | `it-IT` | Akustik model<br>Dil modeli<br>İşi|      Yes                     |
-| Japonca (Japonya)                   | `ja-JP` | Akustik model<br>Dil modeli                 |      Yes                     |
-| Korece (Kore)                     | `ko-KR` | Akustik model<br>Dil modeli                 |      Yes                     |
+| İtalyanca (İtalya)                    | `it-IT` | Akustik model (20201016)<br>Dil modeli<br>İşi|      Yes                     |
+| Japonca (Japonya)                   | `ja-JP` | Dil modeli                                   |      Yes                     |
+| Korece (Kore)                     | `ko-KR` | Akustik model (20201015)<br>Dil modeli                 |      Yes                     |
 | Letonca (Letonya)                   | `lv-LV` | Dil modeli                                   |                           |
 | Litvanca (Litvanya)             | `lt-LT` | Dil modeli                                   |                           |
 | Malta dili (Malta)                     | `mt-MT` | Dil modeli                                   |                           |
 | Marathi dili (Hindistan)                    | `mr-IN` | Dil modeli                                   |                           |
 | Norveççe (Bokmål, Norveç)         | `nb-NO` | Dil modeli                                   |     Yes                      |
 | Lehçe (Polonya)                    | `pl-PL` | Dil modeli                                   |       Yes                    |
-| Portekizce (Brezilya)                | `pt-BR` | Akustik model<br>Dil modeli<br>İşi|          Yes                 |
+| Portekizce (Brezilya)                | `pt-BR` | Akustik model (20190620, 20201015)<br>Dil modeli<br>İşi|          Yes                 |
 | Portekizce (Portekiz)              | `pt-PT` | Dil modeli                                   |             Yes              |
 | Rumence (Romanya)                 | `ro-RO` | Dil modeli                                   |                           |
-| Rusça (Rusya)                   | `ru-RU` | Akustik model<br>Dil modeli                 |                Yes           |
+| Rusça (Rusya)                   | `ru-RU` | Akustik model (20200907)<br>Dil modeli                 |                Yes           |
 | Slovakça (Slovakya)                  | `sk-SK` | Dil modeli                                   |                           |
 | Slovence (Slovenya)               | `sl-SI` | Dil modeli                                   |                           |
 | İspanyolca (Arjantin)                | `es-AR` | Dil modeli                                   |                           |
@@ -109,13 +109,13 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | İspanyolca (Ekvator Ginesi)        | `es-GQ` | Dil modeli                                   |                           |
 | İspanyolca (Guatemala)                | `es-GT` | Dil modeli                                   |                           |
 | İspanyolca (Honduras)                 | `es-HN` | Dil modeli                                   |                           |
-| İspanyolca (Meksika)                   | `es-MX` | Akustik model<br>Dil modeli                 |    Yes                       |
+| İspanyolca (Meksika)                   | `es-MX` | Akustik model (20200907)<br>Dil modeli                 |    Yes                       |
 | İspanyolca (Nikaragua)                | `es-NI` | Dil modeli                                   |                           |
 | İspanyolca (Panama)                   | `es-PA` | Dil modeli                                   |                           |
 | İspanyolca (Paraguay)                 | `es-PY` | Dil modeli                                   |                           |
 | İspanyolca (Peru)                     | `es-PE` | Dil modeli                                   |                           |
 | İspanyolca (Porto Riko)              | `es-PR` | Dil modeli                                   |                           |
-| İspanyolca (İspanya)                    | `es-ES` | Akustik model<br>Dil modeli                 |  Yes                         |
+| İspanyolca (İspanya)                    | `es-ES` | Akustik model (20201015)<br>Dil modeli                 |  Yes                         |
 | İspanyolca (Uruguay)                  | `es-UY` | Dil modeli                                   |                           |
 | İspanyolca (ABD)                      | `es-US` | Dil modeli                                   |                           |
 | İspanyolca (Venezuela)                | `es-VE` | Dil modeli                                   |                           |

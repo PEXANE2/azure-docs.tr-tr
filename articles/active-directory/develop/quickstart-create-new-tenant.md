@@ -13,12 +13,12 @@ ms.date: 03/12/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: 815947b7c1774fb58ca4e3d20a4d1d2b43099cd2
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: 83cf8840ffb9d123efa88d4acc304c8af4db5bf8
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99593087"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100102470"
 ---
 # <a name="quickstart-set-up-a-tenant"></a>Hızlı Başlangıç: Kiracıyı ayarlama
 
@@ -50,7 +50,7 @@ Birçok geliştirici, Microsoft 365 veya Azure abonelikleri gibi Azure AD kirac�
 
 Kiracıyı denetlemek için:
 
-1. <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>oturum açın. Uygulamanızı yönetmek için kullanacağınız hesabı kullanın.
+1. <a href="https://portal.azure.com/" target="_blank">Azure portalında</a> oturum açın. Uygulamanızı yönetmek için kullanacağınız hesabı kullanın.
 1. Sağ üst köşeyi kontrol edin. Bir kiracınız varsa, otomatik olarak oturumunuz açık olur. Kiracı adını doğrudan hesap adınızın altına görürsünüz.
    * Adınızı, e-posta adresinizi, dizininizi veya kiracı KIMLIĞINIZI (bir GUID) ve etki alanını görmek için hesap adınızın üzerine gelin.
    * Hesabınız birden çok kiracıyla ilişkiliyse, kiracılar arasında geçiş yapabileceğiniz bir menüyü açmak için hesap adınızı seçebilirsiniz. Her kiracının kendi kiracı kimliği vardır.

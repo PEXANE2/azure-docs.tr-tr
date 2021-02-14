@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 11/17/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: e47dad8498c48a5da5307517efe493fa5c1aa590
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: e180ecbf5c68dbd9c179244083a641ac6ed42de0
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94748072"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100371966"
 ---
 # <a name="execute-data-science-tasks-exploration-modeling-and-deployment"></a>Veri bilimi görevlerini yürütme: araştırma, modelleme ve dağıtım
 
@@ -42,7 +42,7 @@ Bu aşamanın sonundaki teslim edilebilir bir veri araştırma rapordur. Rapor, 
 Birden çok Model derlendikten sonra, modelleri kaydetmek ve yönetmek için genellikle bir sisteme sahip olmanız gerekir. Genellikle betiklerin veya API 'lerin ve arka uç veritabanının veya sürüm oluşturma sisteminin bir birleşimine ihtiyacınız vardır. Bu yönetim görevleri için göz önünde bulundurmanız gereken birkaç seçenek şunlardır:
 
 1. [Azure Machine Learning-model yönetimi hizmeti](../index.yml)
-2. [MıT 'ten ModelDB](http://modeldb.csail.mit.edu:3000/projects) 
+2. [MıT 'ten ModelDB](https://people.csail.mit.edu/mvartak/papers/modeldb-hilda.pdf) 
 3. [Model yönetimi sistemi olarak SQL-Server](https://blogs.technet.microsoft.com/dataplatforminsider/2016/10/17/sql-server-as-a-machine-learning-model-management-system/)
 4. [Microsoft Machine Learning Server](/sql/advanced-analytics/r/r-server-standalone)
 

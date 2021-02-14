@@ -6,14 +6,14 @@ ms.reviewer: dhgandhi
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 11/17/2020
+ms.date: 02/11/2021
 ms.author: banders
-ms.openlocfilehash: 4cc213db19a567f18c5ff483b64a75e3bbeef892
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
-ms.translationtype: HT
+ms.openlocfilehash: 63fbf76b2211e530707f3598d176b646c317cc53
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94962119"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100363058"
 ---
 # <a name="transfer-azure-subscriptions-between-subscribers-and-csps"></a>Azure aboneliklerini aboneler ile CSP'ler arasında aktarma
 
@@ -36,6 +36,7 @@ Aboneliği aktardıktan sonra mevcut rezervasyonlarınız uygulanmaya devam etme
 
 Diğer Azure aboneliklerini CSP iş ortağına aktarmak isteyen abonenin kaynak aboneliklerindeki kaynakları CSP aboneliklerine taşıması gerekir. Kaynakları abonelikler arasında taşımak için aşağıdaki yönergeleri izleyin.
 
+1. Müşteriyle bir [Satıcı ilişkisi](/partner-center/request-a-relationship-with-a-customer) oluşturun. Hem müşteri hem de Iş ortağı kiracının aynı yetkili bölgelerde olduğundan emin olmak için [CSP bölgesel yetkilendirme genel bakışını](/partner-center/regional-authorization-overview) gözden geçirin.
 1. CSP iş ortağınızla birlikte çalışarak hedef Azure CSP aboneliklerini oluşturun.
 1. Kaynak ve hedef CSP aboneliklerinin aynı Azure Active Directory (Azure AD) kiracısında olduğundan emin olun.  
     Azure CSP aboneliğinin Azure AD kiracısını değiştiremezsiniz. Bunun yerine kaynak aboneliği CSP Azure AD kiracısına eklemeniz veya onunla ilişkilendirmeniz gerekir. Daha fazla bilgi için bkz. [Azure Active Directory kiracınıza bir Azure aboneliğini ekleme veya ilişkilendirme](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).

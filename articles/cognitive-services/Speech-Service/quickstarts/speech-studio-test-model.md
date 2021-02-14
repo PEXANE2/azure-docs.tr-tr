@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 09/04/2020
+ms.date: 02/12/2021
 ms.author: v-demjoh
-ms.openlocfilehash: 572b3b3459e1d837130f3c987d45ee45629f37ad
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 93a0c171497faa9e87457a03da0b78003feaa533
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96485085"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100362276"
 ---
 # <a name="test-a-model-using-an-audio-file-in-speech-studio"></a>Konuşma Studio 'da bir ses dosyası kullanarak bir modeli test etme
 
@@ -23,7 +23,7 @@ Bu nasıl yapılır bölümünde konuşmayı bir ses dosyasından metne dönüş
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Konuşma portalını kullanmadan önce, [bir Azure hesabı oluşturmak ve konuşma hizmetine abone olmak için bu yönergeleri izleyin](../custom-speech-overview.md#set-up-your-azure-account). Bu Birleşik abonelik, konuşmadan metne, metinden konuşmaya, konuşma çevirisine ve Özel Konuşma Tanıma portalına erişmenizi sağlar.
+Konuşma Studio 'Yu kullanmadan önce, [bir Azure hesabı oluşturmak ve konuşma hizmetine abone olmak için bu yönergeleri izleyin](../custom-speech-overview.md#set-up-your-azure-account). Bu Birleşik abonelik, konuşmadan metne, metinden konuşmaya, konuşma çevirisine ve konuşma Studio 'ya erişmenizi sağlar.
 
 ## <a name="download-an-audio-file"></a>Ses dosyası indirme
 
@@ -32,7 +32,7 @@ Konuşma içeren bir ses dosyasını indirmek ve bir ZIP dosyasına paketlemek i
 1. Bağlantıyı sağ tıklayıp **Bağlantıyı farklı kaydet**' i seçerek **[Bu bağlantıdan örnek wav dosyasını](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-speech-sdk/f9807b1079f3a85f07cbb6d762c6b5449d536027/samples/cpp/windows/console/samples/whatstheweatherlike.wav)** indirin. Dosyayı indirmek için **Kaydet** ' e tıklayın `whatstheweatherlike.wav` .
 2. Bir dosya Gezgini veya bir zip aracıyla Terminal penceresi kullanarak, `whatstheweatherlike.zip` indirdiğiniz dosyayı içeren adlı bir zip dosyası oluşturun `whatstheweatherlike.wav` . Windows Gezgini ' nde, Windows Gezgini 'ni açabilir, klasöre gidebilir, `Downloads` `whatstheweatherliike.wav` **Gönder ' e** tıklayın, **Sıkıştırılmış (daraltılmış) klasöre** ve ardından ENTER tuşuna basarak varsayılan dosya adını kabul edebilirsiniz.
 
-## <a name="create-a-project-in-the-custom-speech-portal"></a>Özel Konuşma Tanıma portalında proje oluşturma
+## <a name="create-a-project-in-the-speech-studio"></a>Konuşma Studio 'da bir proje oluşturma
 
 Bir ses dosyasının zip alanınızı içeren bir proje oluşturmak için bu adımları izleyin.
 
@@ -58,7 +58,7 @@ Konuşma Studio, ZIP dosyanızın içeriğini tamamladıktan sonra, hataları ve
 
 Daha ayrıntılı bilgi için, bu ayrıntıları tanımlayan dosyaları indirebilirsiniz. Dosyalar, ses dosyalarınıza ait sözcük temelli konuşma ve her sözcük hakkında konum, süre ve döküm güvenilirliği bilgilerini içeren JSON dosyalarını içerir. Bu dosyaları görmek için aşağıdaki adımları izleyin.
 
-1. **İndir**'e tıklayın.
+1. **İndir**’e tıklayın.
 2. Indir iletişim kutusunda **Ses** seçimini kaldırın ve **İndir**' e tıklayın.
 3. İndirilen ZIP dosyasını sıkıştırmayı açın ve ayıklanan dosyaları inceleyin.
 

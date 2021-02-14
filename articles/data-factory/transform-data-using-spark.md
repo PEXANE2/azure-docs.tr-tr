@@ -1,21 +1,18 @@
 ---
 title: Spark etkinliğini kullanarak verileri dönüştürme
 description: Spark etkinliğini kullanarak Spark programlarını bir Azure Data Factory işlem hattından çalıştırarak verileri dönüştürmeyi öğrenin.
-services: data-factory
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 author: nabhishek
 ms.author: abnarain
-manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 05/08/2020
-ms.openlocfilehash: cac64b17e7aad9aa2bf88386f21d5f82b3013fa3
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: e5c50d2cbd16ad2808dab485ad2b2870d6f3d350
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94566784"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100392366"
 ---
 # <a name="transform-data-using-spark-activity-in-azure-data-factory"></a>Azure Data Factory Spark etkinliğini kullanarak verileri dönüştürme
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -62,17 +59,17 @@ Aşağıdaki tabloda JSON tanımında kullanılan JSON özellikleri açıklanmak
 | Özellik              | Açıklama                              | Gerekli |
 | --------------------- | ---------------------------------------- | -------- |
 | name                  | İşlem hattındaki etkinliğin adı.    | Yes      |
-| açıklama           | Etkinliğin ne yaptığını açıklayan metin.  | Hayır       |
+| açıklama           | Etkinliğin ne yaptığını açıklayan metin.  | No       |
 | tür                  | Spark etkinliği için etkinlik türü HDInsightSpark ' dir. | Yes      |
 | linkedServiceName     | Spark programının çalıştığı HDInsight Spark bağlı hizmetinin adı. Bu bağlı hizmet hakkında bilgi edinmek için bkz. [işlem bağlı hizmetleri](compute-linked-services.md) makalesi. | Yes      |
-| Mini iş Linkedservice | Spark iş dosyasını, bağımlılıklarını ve günlüklerini tutan Azure depolama bağlı hizmeti. Burada yalnızca **[Azure Blob depolama](./connector-azure-blob-storage.md)** ve **[ADLS 2.](./connector-azure-data-lake-storage.md)** bağlı hizmetleri desteklenir. Bu özellik için bir değer belirtmezseniz, HDInsight kümesiyle ilişkili depolama kullanılır. Bu özelliğin değeri yalnızca bir Azure depolama bağlı hizmeti olabilir. | Hayır       |
+| Mini iş Linkedservice | Spark iş dosyasını, bağımlılıklarını ve günlüklerini tutan Azure depolama bağlı hizmeti. Burada yalnızca **[Azure Blob depolama](./connector-azure-blob-storage.md)** ve **[ADLS 2.](./connector-azure-data-lake-storage.md)** bağlı hizmetleri desteklenir. Bu özellik için bir değer belirtmezseniz, HDInsight kümesiyle ilişkili depolama kullanılır. Bu özelliğin değeri yalnızca bir Azure depolama bağlı hizmeti olabilir. | No       |
 | rootPath              | Spark dosyasını içeren Azure Blob kapsayıcısı ve klasörü. Dosya adı büyük/küçük harfe duyarlıdır. Bu klasörün yapısıyla ilgili ayrıntılar için klasör yapısı bölümüne (sonraki bölüm) bakın. | Yes      |
 | entryFilePath         | Spark kodunun/paketinin kök klasörünün göreli yolu. Giriş dosyası bir Python dosyası ya da. jar dosyası olmalıdır. | Yes      |
-| Sınıf             | Uygulamanın Java/Spark ana sınıfı      | Hayır       |
-| değişkenlerinden             | Spark programına yönelik komut satırı bağımsız değişkenlerinin listesi. | Hayır       |
-| proxyUser             | Spark programını yürütmek için kimliğe bürünmeye yönelik kullanıcı hesabı | Hayır       |
-| Mini yapılandırma           | Spark yapılandırma özellikleri için değerler belirtin: [Spark yapılandırma-uygulama özellikleri](https://spark.apache.org/docs/latest/configuration.html#available-properties). | Hayır       |
-| GetDebugInfo          | Spark günlük dosyalarının, HDInsight kümesi tarafından kullanılan (veya) mini iş Linkedservice tarafından belirtilen Azure depolama 'ya ne zaman kopyalanacağını belirtir. İzin verilen değerler: None, Always veya Failure. Varsayılan değer: Hiçbiri. | Hayır       |
+| Sınıf             | Uygulamanın Java/Spark ana sınıfı      | No       |
+| değişkenlerinden             | Spark programına yönelik komut satırı bağımsız değişkenlerinin listesi. | No       |
+| proxyUser             | Spark programını yürütmek için kimliğe bürünmeye yönelik kullanıcı hesabı | No       |
+| Mini yapılandırma           | Spark yapılandırma özellikleri için değerler belirtin: [Spark yapılandırma-uygulama özellikleri](https://spark.apache.org/docs/latest/configuration.html#available-properties). | No       |
+| GetDebugInfo          | Spark günlük dosyalarının, HDInsight kümesi tarafından kullanılan (veya) mini iş Linkedservice tarafından belirtilen Azure depolama 'ya ne zaman kopyalanacağını belirtir. İzin verilen değerler: None, Always veya Failure. Varsayılan değer: Hiçbiri. | No       |
 
 ## <a name="folder-structure"></a>Klasör yapısı
 Spark işleri Pig/Hive işlerinin daha genişdir. Spark işleri için, jar paketleri (Java SıNıFYOLUNA yerleştirilmiş), Python dosyaları (PYTHONPATH üzerine yerleştirilmiş) ve diğer tüm dosyalar gibi birden çok bağımlılığı sağlayabilirsiniz.

@@ -14,12 +14,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 22ac3b9ac5f7a10226e8dc7197fdf60dc0a84e3b
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.openlocfilehash: fb8533f4ca714402482c666c520c1d0bd745e8cf
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99627625"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100363279"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory'de yönetici rolü izinleri
 
@@ -67,11 +67,27 @@ Bu rol Ayrıca, Microsoft Graph API üzerinde uygulama izinleri hariç olmak üz
 
 Bu roldeki kullanıcılar, "kullanıcılar uygulamaları kaydedebilirler" ayarı Hayır olarak ayarlanırsa uygulama kayıtları oluşturabilir. Bu rol Ayrıca, "kullanıcılar kendi adına şirket verilerine erişim izni verebilir" ayarında Hayır olarak ayarlanırsa, tek başına kendi adına onay izni verir. Bu role atanan kullanıcılar, yeni uygulama kayıtları veya kurumsal uygulamalar oluştururken sahip olarak eklenir.
 
+### <a name="attack-payload-author"></a>[Saldırı yükü yazarı](#attack-payload-author-permissions)
+
+Bu roldeki kullanıcılar, saldırı yükleri oluşturabilir ancak bunları gerçekten başlatamaz veya zamanlayamaz. Böylece saldırı yükleri, kiracının benzetim oluşturmak için kullanabilecekleri tüm yöneticiler tarafından kullanılabilir.
+
+### <a name="attack-simulation-administrator"></a>[Saldırı simülasyonu Yöneticisi](#attack-simulation-administrator-permissions)
+
+Bu roldeki kullanıcılar, saldırı simülasyonu oluşturma, simülasyon başlatma/zamanlama ve simülasyon sonuçlarının incelenmesi gibi tüm özellikleri oluşturabilir ve yönetebilir. Bu rolün üyeleri Kiracıdaki tüm benzetimler için bu erişime sahiptir.
+
 ### <a name="authentication-administrator"></a>[Kimlik doğrulama Yöneticisi](#authentication-administrator-permissions)
 
-Bu role sahip kullanıcılar, bazı kullanıcılar için parola olmayan kimlik bilgilerini ayarlayabilir veya sıfırlayabilir ve tüm kullanıcılar için parolaları güncelleştirebilir. Kimlik doğrulama yöneticileri, var olan parola olmayan kimlik bilgilerine (örneğin, MFA veya FIDO) göre yeniden kaydolmak için yönetici olmayan veya bazı rollere atanmayan kullanıcıların, bir sonraki oturum açma üzerinde MFA 'yı isteyen **CIHAZDA MFA 'yı hatırlayabilmesini** gerektirebilir. Bir kimlik doğrulama yöneticisinin bir kullanıcının parolasını sıfırlayıp sıfırlayamayacağı, kullanıcının atandığı role bağlıdır. Bir kimlik doğrulama yöneticisinin parolalarını sıfırlayaacağı rollerin listesi için, bkz. [parola sıfırlama izinleri](#password-reset-permissions).
+Bu role sahip kullanıcılar, yönetici olmayanlar ve bazı roller için herhangi bir kimlik doğrulama yöntemi (parolalar dahil) ayarlayabilir veya sıfırlayabilir. Kimlik doğrulama yöneticileri, var olan parola olmayan kimlik bilgilerine (örneğin, MFA veya FIDO) göre yeniden kaydolmak için yönetici olmayan veya bazı rollere atanmayan kullanıcıların, bir sonraki oturum açma üzerinde MFA 'yı isteyen **CIHAZDA MFA 'yı hatırlayabilmesini** gerektirebilir. Kimlik doğrulama yöneticisinin authentcation yöntemlerini okuyaacağı veya güncelleştirebir rolün listesi için bkz. [parola sıfırlama izinleri](#password-reset-permissions).
 
-[Ayrıcalıklı kimlik doğrulama Yöneticisi](#privileged-authentication-administrator) rolü, tüm kullanıcılar için yeniden kayıt ve Multi-Factor Authentication 'ı zorunlu hale verebilir.
+[Ayrıcalıklı kimlik doğrulama Yöneticisi](#privileged-authentication-administrator) rolünün tüm kullanıcılar için yeniden kaydolmayı ve Multi-Factor Authentication 'ı zorlama izni vardır.
+
+[Kimlik doğrulama İlkesi yönetici](#authentication-policy-administrator) rolü, her kullanıcının kaydedebileceği ve kullanabileceği yöntemleri belirleyen kiracının kimlik doğrulama yöntemi ilkesini ayarlama iznine sahiptir.
+
+| Rol | Kullanıcının kimlik doğrulama yöntemlerini yönetme | Kullanıcı başına MFA yönetme | MFA ayarlarını yönetme | Kimlik doğrulama yöntemi ilkesini Yönet | Parola koruma ilkesini Yönet |  
+| ---- | ---- | ---- | ---- | ---- | ---- | 
+| Kimlik doğrulama Yöneticisi | Bazı kullanıcılar için Evet (yukarıya bakın) | Bazı kullanıcılar için Evet (yukarıya bakın) | Hayır | Hayır | Hayır | 
+| Ayrıcalıklı kimlik doğrulama Yöneticisi| Tüm kullanıcılar için Evet | Tüm kullanıcılar için Evet  |Hayır | Hayır  |Hayır | 
+| Kimlik doğrulama İlkesi Yöneticisi | Hayır  |Hayır | Yes | Yes | Yes | 
 
 > [!IMPORTANT]
 > Bu role sahip kullanıcılar, Azure Active Directory ' nin içindeki ve dışındaki gizli veya özel bilgilere veya kritik yapılandırmaya erişimi olabilecek kişiler için kimlik bilgilerini değiştirebilir. Bir kullanıcının kimlik bilgilerini değiştirmek, kullanıcının kimliğini ve izinlerini kabul etme imkanını ifade edebilir. Örneğin:
@@ -82,13 +98,27 @@ Bu role sahip kullanıcılar, bazı kullanıcılar için parola olmayan kimlik b
 >* Exchange Online, Office Security ve Uyumluluk Merkezi ve insan kaynakları sistemleri gibi Azure AD dışında diğer hizmetlerde bulunan yöneticiler.
 >* Gizli veya özel bilgilere erişebilen Yöneticiler, yasal Counsel ve insan kaynakları çalışanları gibi yönetici olmayanlar.
 
-### <a name="attack-payload-author"></a>[Saldırı yükü yazarı](#attack-payload-author-permissions)
+> [!IMPORTANT]
+> Bu rol, şu anda eski MFA yönetim portalındaki Kullanıcı başına MFA 'yı yönetme yeteneğine sahip değil. Aynı işlevler [set-MsolUser](https://docs.microsoft.com/powershell/module/msonline/set-msoluser) komutunu Azure AD PowerShell modülü kullanılarak gerçekleştirilebilir.
 
-Bu roldeki kullanıcılar, saldırı yükleri oluşturabilir ancak bunları gerçekten başlatamaz veya zamanlayamaz. Böylece saldırı yükleri, kiracının benzetim oluşturmak için kullanabilecekleri tüm yöneticiler tarafından kullanılabilir.
+### <a name="authentication-policy-administrator"></a>[Kimlik doğrulama Ilkesi Yöneticisi](#authentication-policy-administrator-permissions)
 
-### <a name="attack-simulation-administrator"></a>[Saldırı simülasyonu Yöneticisi](#attack-simulation-administrator-permissions)
+Bu role sahip kullanıcılar, kimlik doğrulama yöntemleri ilkesini, kiracı genelinde MFA ayarlarını ve parola koruma ilkesini yapılandırabilir. Bu rol, parola koruma ayarlarını yönetme izni verir: akıllı kilitleme yapılandırması ve özel yasaklanmış parolalar listesi güncelleştiriliyor. 
 
-Bu roldeki kullanıcılar, saldırı simülasyonu oluşturma, simülasyon başlatma/zamanlama ve simülasyon sonuçlarının incelenmesi gibi tüm özellikleri oluşturabilir ve yönetebilir. Bu rolün üyeleri Kiracıdaki tüm benzetimler için bu erişime sahiptir.
+[Kimlik doğrulama Yöneticisi](#authentication-administrator) ve [ayrıcalıklı kimlik doğrulama Yöneticisi](#privileged-authentication-administrator) rollerinin kullanıcılara kayıtlı kimlik doğrulama yöntemlerini yönetme izni vardır ve tüm kullanıcılar için yeniden kayıt ve Multi-Factor Authentication 'ı zorunlu hale getirebilirsiniz. 
+
+| Rol | Kullanıcının kimlik doğrulama yöntemlerini yönetme | Kullanıcı başına MFA yönetme | MFA ayarlarını yönetme | Kimlik doğrulama yöntemi ilkesini Yönet | Parola koruma ilkesini Yönet |  
+| ---- | ---- | ---- | ---- | ---- | ---- | 
+| Kimlik doğrulama Yöneticisi | Bazı kullanıcılar için Evet (yukarıya bakın) | Bazı kullanıcılar için Evet (yukarıya bakın) | Hayır | Hayır | Hayır | 
+| Ayrıcalıklı kimlik doğrulama Yöneticisi| Tüm kullanıcılar için Evet | Tüm kullanıcılar için Evet  |Hayır | Hayır  |Hayır | 
+| Kimlik doğrulama İlkesi Yöneticisi | Hayır  |Hayır | Yes | Yes | Yes | 
+
+> [!IMPORTANT]
+> Bu rol, şu anda eski MFA yönetim portalındaki MFA ayarlarını yönetme yeteneğine sahip değil.
+
+### <a name="azure-ad-joined-device-local-administrator"></a>[Azure AD 'ye katılmış cihaz yerel Yöneticisi](#azure-ad-joined-device-local-administrator-permissions)
+
+Bu rol, yalnızca [cihaz ayarları](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/DeviceSettings/menuId/)'nda ek bir yerel yönetici olarak atanmak üzere kullanılabilir. Bu role sahip kullanıcılar, Azure Active Directory katılmış tüm Windows 10 cihazlarında yerel makine yöneticileri haline gelir. Azure Active Directory cihaz nesnelerini yönetme yeteneğine sahip değildir.
 
 ### <a name="azure-devops-administrator"></a>[Azure DevOps Yöneticisi](#azure-devops-administrator-permissions)
 
@@ -164,12 +194,7 @@ Kuruluşunuzdaki [müşteri kasası isteklerini](/office365/admin/manage/custome
 
 ### <a name="desktop-analytics-administrator"></a>[Masaüstü Analizi Yöneticisi](#desktop-analytics-administrator-permissions)
 
-
 Bu roldeki kullanıcılar masaüstü Analizi ve Office özelleştirmesi & Ilkesi hizmetlerini yönetebilir. Bu, masaüstü analizi için varlık envanterini görüntüleme, dağıtım planları oluşturma, dağıtım ve sistem durumunu görüntüleme imkanını içerir. Office özelleştirmesi & Ilke hizmetinde, bu rol kullanıcıların Office ilkelerini yönetmesine olanak sağlar.
-
-### <a name="device-administrators"></a>[Cihaz Yöneticileri](#device-administrators-permissions)
-
-Bu rol, yalnızca [cihaz ayarları](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/DeviceSettings/menuId/)'nda ek bir yerel yönetici olarak atanmak üzere kullanılabilir. Bu role sahip kullanıcılar, Azure Active Directory katılmış tüm Windows 10 cihazlarında yerel makine yöneticileri haline gelir. Azure Active Directory cihaz nesnelerini yönetme yeteneğine sahip değildir.
 
 ### <a name="directory-readers"></a>[Dizin okuyucuları](#directory-readers-permissions)
 
@@ -186,14 +211,18 @@ Kullanmayın. Bu rol, Azure AD Connect hizmetine otomatik olarak atanır ve baş
 ### <a name="directory-writers"></a>[Dizin yazarları](#directory-writers-permissions)
 Bu roldeki kullanıcılar, kullanıcıların, grupların ve hizmet sorumlularının temel bilgilerini okuyabilir ve güncelleştirebilir. Bu rolü yalnızca [onay çerçevesini](../develop/quickstart-register-app.md)desteklemeyen uygulamalara atayın. Herhangi bir kullanıcıya atanmamalıdır.
 
-### <a name="dynamics-365-administrator--crm-administrator"></a>[Dynamics 365 Yöneticisi/CRM Yöneticisi](#crm-service-administrator-permissions)
+### <a name="domain-name-administrator"></a>[Etki alanı adı yöneticisi](#domain-name-administrator-permissions)
+
+Bu role sahip kullanıcılar, etki alanı adlarını yönetebilir (okuyabilir, ekleyebilir, doğrulayamaz, güncelleştirebilir ve silebilir). Kullanıcılar, gruplar ve uygulamalarla ilgili dizin bilgilerini de okuyabilir, bu nesneler etki alanı bağımlılıklarına sahip olabilir. Şirket içi ortamlarda, bu role sahip olan kullanıcılar, ilgili kullanıcıların her zaman şirket içinde kimlik doğrulamasından geçirilmeleri için, Federasyon etki alanı adlarını yapılandırabilir. Bu kullanıcılar daha sonra Azure AD tabanlı hizmetlerde çoklu oturum açma yoluyla şirket içi parolalarla oturum açabilirler. Federasyon ayarlarının Azure AD Connect aracılığıyla eşitlenmesi gerekir, böylece kullanıcıların Azure AD Connect yönetme izinleri de vardır.
+
+### <a name="dynamics-365-administrator"></a>[Dynamics 365 Yöneticisi](#dynamics-365-administrator-permissions)
 
 Bu role sahip olan kullanıcılar, hizmet mevcut olduğunda Microsoft Dynamics 365 Online içinde genel izinlere sahiptir ve destek biletlerini yönetebilir ve hizmet durumunu izleyebilir. Daha fazla bilgi [için, Azure AD kuruluşunuzu yönetmek üzere hizmet yöneticisi rolünü kullanın](/dynamics365/customer-engagement/admin/use-service-admin-role-manage-tenant).
 
 > [!NOTE]
 > Microsoft Graph API ve Azure AD PowerShell 'de, bu rol "Dynamics 365 hizmet yöneticisi" olarak tanımlanır. [Azure Portal](https://portal.azure.com), "Dynamics 365 Yöneticisi" dir.
 
-### <a name="exchange-administrator"></a>[Exchange Yöneticisi](#exchange-service-administrator-permissions)
+### <a name="exchange-administrator"></a>[Exchange Yöneticisi](#exchange-administrator-permissions)
 
 Bu role sahip olan kullanıcılar, hizmet mevcut olduğunda Microsoft Exchange Online içinde genel izinlere sahiptir. Ayrıca tüm Microsoft 365 gruplarını oluşturup yönetebilir, destek biletlerini yönetebilir ve hizmet durumunu izleyebilir. [Yönetici rolleri hakkında](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)daha fazla bilgi Microsoft 365.
 
@@ -272,7 +301,7 @@ Bu roldeki kullanıcılar, [M365 Insights uygulamasındaki](https://go.microsoft
 ### <a name="insights-business-leader"></a>[Öngörüler Iş lideri](#insights-business-leader-permissions)
 Bu roldeki kullanıcılar, [M365 Insights uygulaması](https://go.microsoft.com/fwlink/?linkid=2129521)aracılığıyla bir panolar ve Öngörüler kümesine erişebilir. Bu, tüm panolara ve sunulan Öngörüler ve veri araştırma işlevlerine tam erişim içerir. Bu roldeki kullanıcılar, Öngörüler yönetici rolünün sorumluluğu olan ürün yapılandırma ayarlarına erişemez.
 
-### <a name="intune-administrator"></a>[Intune Yöneticisi](#intune-service-administrator-permissions)
+### <a name="intune-administrator"></a>[Intune Yöneticisi](#intune-administrator-permissions)
 
 Bu role sahip olan kullanıcılar, hizmet mevcut olduğunda Microsoft Intune çevrimiçi olarak genel izinlere sahiptir. Ayrıca, bu rol, ilkeyi ilişkilendirmek ve grupları oluşturmak ve yönetmek için kullanıcıları ve cihazları yönetme özelliğini içerir. [Microsoft Intune Ile rol tabanlı yönetim denetimi (RBAC)](/intune/role-based-access-control)hakkında daha fazla bilgi.
 
@@ -333,7 +362,7 @@ Kullanmayın. Bu rol kullanımdan kaldırılmıştır ve gelecekte Azure AD 'den
 
 Bu role sahip olan kullanıcılar, parolaları yönetme yeteneğine sahiptir. Bu rol, hizmet isteklerini yönetme veya hizmet durumunu izleme özelliği vermez. Parola yöneticisinin bir kullanıcının parolasını sıfırlayıp sıfırlayamayacağı, kullanıcının atandığı role bağlıdır. Parola yöneticisinin parolalarını sıfırlayaacağı rollerin listesi için bkz. [parola sıfırlama izinleri](#password-reset-permissions).
 
-### <a name="power-bi-administrator"></a>[Power BI Yöneticisi](#power-bi-service-administrator-permissions)
+### <a name="power-bi-administrator"></a>[Power BI Yöneticisi](#power-bi-administrator-permissions)
 
 Bu role sahip olan kullanıcılar Microsoft Power BI içinde genel izinlere sahiptir, hizmet mevcut olduğunda, destek biletlerini yönetebilir ve hizmet durumunu izleyebilir. [Power BI yönetici rolünü anlama](/power-bi/service-admin-role)hakkında daha fazla bilgi.
 
@@ -354,7 +383,30 @@ Bu role sahip kullanıcılar Microsoft Evrensel Yazdırma çözümünde yazıcı
 
 ### <a name="privileged-authentication-administrator"></a>[Ayrıcalıklı kimlik doğrulama Yöneticisi](#privileged-authentication-administrator-permissions)
 
-Bu role sahip kullanıcılar, genel yöneticiler dahil olmak üzere tüm kullanıcılar için parola olmayan kimlik bilgilerini ayarlayabilir veya sıfırlayabilir ve tüm kullanıcılar için parolaları güncelleştirebilirler. Ayrıcalıklı kimlik doğrulama yöneticileri, kullanıcıların mevcut parola olmayan kimlik bilgilerine (MFA veya FIDO gibi) yeniden kaydolmasını ve ' cihazda MFA 'yı hatırlamaları için, tüm kullanıcıların bir sonraki oturum açma aşamasında MFA istemini sormasını sağlayabilir.
+Bu role sahip kullanıcılar, genel yöneticiler dahil olmak üzere herhangi bir kullanıcı için herhangi bir kimlik doğrulama yöntemi (parolalar dahil) ayarlayabilir veya sıfırlayabilir. Ayrıcalıklı kimlik doğrulama yöneticileri, kullanıcıların mevcut parola olmayan kimlik bilgilerine (MFA veya FIDO gibi) yeniden kaydolmasını ve ' cihazda MFA 'yı hatırlamaları için, tüm kullanıcıların bir sonraki oturum açma aşamasında MFA istemini sormasını sağlayabilir. 
+
+[Kimlik doğrulama Yöneticisi](#authentication-administrator) rolünün, yönetici rollerine sahip standart kullanıcılar ve kullanıcılar için yeniden kaydolmayı ve Multi-Factor Authentication 'ı zorlama izni vardır.
+
+[Kimlik doğrulama İlkesi yönetici](#authentication-policy-administrator) rolü, her kullanıcının kaydedebileceği ve kullanabileceği yöntemleri belirleyen kiracının kimlik doğrulama yöntemi ilkesini ayarlama iznine sahiptir.
+
+| Rol | Kullanıcının kimlik doğrulama yöntemlerini yönetme | Kullanıcı başına MFA yönetme | MFA ayarlarını yönetme | Kimlik doğrulama yöntemi ilkesini Yönet | Parola koruma ilkesini Yönet |  
+| ---- | ---- | ---- | ---- | ---- | ---- | 
+| Kimlik doğrulama Yöneticisi | Bazı kullanıcılar için Evet (yukarıya bakın) | Bazı kullanıcılar için Evet (yukarıya bakın) | Hayır | Hayır | Hayır | 
+| Ayrıcalıklı kimlik doğrulama Yöneticisi| Tüm kullanıcılar için Evet | Tüm kullanıcılar için Evet  |Hayır | Hayır  |Hayır | 
+| Kimlik doğrulama İlkesi Yöneticisi | Hayır  |Hayır | Yes | Yes | Yes | 
+
+> [!IMPORTANT]
+> Bu role sahip kullanıcılar, Azure Active Directory ' nin içindeki ve dışındaki gizli veya özel bilgilere veya kritik yapılandırmaya erişimi olabilecek kişiler için kimlik bilgilerini değiştirebilir. Bir kullanıcının kimlik bilgilerini değiştirmek, kullanıcının kimliğini ve izinlerini kabul etme imkanını ifade edebilir. Örneğin:
+>
+>* Sahip oldukları uygulamaların kimlik bilgilerini yönetebilen uygulama kaydı ve kurumsal uygulama sahipleri. Bu uygulamaların Azure AD 'de ayrıcalıklı izinleri olabilir ve kimlik doğrulama yöneticilerine başka bir yerde izin verilmez. Bu yol aracılığıyla bir kimlik doğrulama Yöneticisi bir uygulama sahibinin kimliğini varsayabilir ve sonra uygulamanın kimlik bilgilerini güncelleştirerek ayrıcalıklı bir uygulamanın kimliğini daha fazla varsayabilir.
+>* Azure abonelik sahipleri, hassas veya özel bilgilere veya Azure 'da kritik yapılandırmaya erişebilir.
+>* Grup üyeliğini yönetebilen güvenlik grubu ve Grup sahipleri Microsoft 365. Bu gruplar, Azure AD 'de ve başka bir yerde hassas veya özel bilgilere veya kritik yapılandırmaya erişim verebilir.
+>* Exchange Online, Office Security ve Uyumluluk Merkezi ve insan kaynakları sistemleri gibi Azure AD dışında diğer hizmetlerde bulunan yöneticiler.
+>* Gizli veya özel bilgilere erişebilen Yöneticiler, yasal Counsel ve insan kaynakları çalışanları gibi yönetici olmayanlar.
+
+
+> [!IMPORTANT]
+> Bu rol, şu anda eski MFA yönetim portalındaki Kullanıcı başına MFA 'yı yönetme yeteneğine sahip değil. Aynı işlevler [set-MsolUser](https://docs.microsoft.com/powershell/module/msonline/set-msoluser) komutunu Azure AD PowerShell modülü kullanılarak gerçekleştirilebilir.
 
 ### <a name="privileged-role-administrator"></a>[Ayrıcalıklı rol yöneticisi](#privileged-role-administrator-permissions)
 
@@ -432,7 +484,7 @@ Bu role sahip kullanıcılar, Azure ve Microsoft 365 hizmetleri için Microsoft 
 > [!NOTE]
 > Daha önce bu rol, [Azure Portal](https://portal.azure.com) ve [Microsoft 365 Yönetim Merkezi](https://admin.microsoft.com)'nde "Hizmet Yöneticisi" olarak adlandırılmıştı. Microsoft Graph API 'SI, Azure AD Graph API ve Azure AD PowerShell 'de bulunan adı ile uyum sağlamak için bunu "hizmet desteği Yöneticisi" olarak yeniden adlandırdık.
 
-### <a name="sharepoint-administrator"></a>[SharePoint Yöneticisi](#sharepoint-service-administrator-permissions)
+### <a name="sharepoint-administrator"></a>[SharePoint Yöneticisi](#sharepoint-administrator-permissions)
 
 Bu role sahip olan kullanıcılar Microsoft SharePoint Online içinde genel izinlere sahiptir, hizmet mevcut olduğunda, tüm Microsoft 365 grupları oluşturup yönetebilir, destek biletlerini yönetebilir ve hizmet durumunu izleyebilir. [Yönetici rolleri hakkında](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)daha fazla bilgi.
 
@@ -442,12 +494,16 @@ Bu role sahip olan kullanıcılar Microsoft SharePoint Online içinde genel izin
 > [!NOTE]
 > Bu rol Ayrıca, Microsoft Intune için Microsoft Graph API 'sine kapsamlı izinler vererek SharePoint ve OneDrive kaynaklarıyla ilgili ilkelerin yönetimine ve yapılandırılmasına izin verir.
 
-### <a name="skype-for-business--lync-administrator"></a>[Skype Kurumsal/Lync Yöneticisi](#lync-service-administrator-permissions)
+### <a name="skype-for-business-administrator"></a>[Skype Kurumsal Yöneticisi](#skype-for-business-administrator-permissions)
 
 Bu role sahip olan kullanıcılar, hizmet mevcut olduğunda, Microsoft Skype Kurumsal içinde genel izinlere sahiptir ve ayrıca Azure Active Directory Skype 'e özgü kullanıcı özniteliklerini yönetir. Ayrıca, bu rol, destek biletlerini yönetme ve hizmet durumunu izleme ve takımlar ve Skype Kurumsal yönetim merkezine erişme olanağı verir. Hesap Ayrıca takımlar için lisanslanmış olmalıdır veya takımlar PowerShell cmdlet 'lerini çalıştıramıyor. Skype Kurumsal [yönetici rolü](https://support.office.com/article/about-the-skype-for-business-admin-role-aeb35bda-93fc-49b1-ac2c-c74fbeb737b5) ve [Skype Kurumsal ve Microsoft ekipleri eklenti lisanslaması](/skypeforbusiness/skype-for-business-and-microsoft-teams-add-on-licensing/skype-for-business-and-microsoft-teams-add-on-licensing) hakkında daha fazla bilgi
 
 > [!NOTE]
 > Microsoft Graph API ve Azure AD PowerShell 'de, bu rol "Lync Hizmet Yöneticisi" olarak tanımlanır. Bu, [Azure Portal](https://portal.azure.com/)"Skype Kurumsal Yöneticisi" dir.
+
+### <a name="teams-administrator"></a>[Takımlar Yöneticisi](#teams-administrator-permissions)
+
+Bu roldeki kullanıcılar Microsoft ekipleri & Skype Kurumsal Yönetici Merkezi ve ilgili PowerShell modülleri aracılığıyla Microsoft ekipleri iş yükünün tüm yönlerini yönetebilir. Bu, diğer alanların yanı sıra telefon, mesajlaşma, toplantılar ve takımların kendileri ile ilgili tüm yönetim araçlarını içerir. Bu rol Ayrıca, tüm Microsoft 365 grupları oluşturma ve yönetme, destek biletlerini yönetme ve hizmet durumunu izleme özelliğini verir.
 
 ### <a name="teams-communications-administrator"></a>[Takımlar Iletişim Yöneticisi](#teams-communications-administrator-permissions)
 
@@ -464,10 +520,6 @@ Bu roldeki kullanıcılar, Microsoft ekiplerinde Skype Kurumsal Yönetim Merkezi
 ### <a name="teams-devices-administrator"></a>[Takımlar cihazları Yöneticisi](#teams-devices-administrator-permissions)
 
 Bu role sahip kullanıcılar takımlar [tarafından sertifikalı cihazları](https://www.microsoft.com/microsoft-365/microsoft-teams/across-devices/devices) takımlar yönetim merkezinden yönetebilir. Bu rol, cihazları arama ve filtreleme özelliği sayesinde tüm cihazların tek bakışta görüntülenmesine izin verir. Kullanıcı, cihazın oturum açma hesabı, marka ve modeli dahil olmak üzere her bir cihazın ayrıntılarını denetleyebilir. Kullanıcı cihazdaki ayarları değiştirebilir ve yazılım sürümlerini güncelleştirebilir. Bu rol, ekip etkinliğini denetlemek ve cihazın kalitesini çağırmak için izinler vermez. 
-
-### <a name="teams-service-administrator"></a>[Takımlar Hizmet Yöneticisi](#teams-service-administrator-permissions)
-
-Bu roldeki kullanıcılar Microsoft ekipleri & Skype Kurumsal Yönetici Merkezi ve ilgili PowerShell modülleri aracılığıyla Microsoft ekipleri iş yükünün tüm yönlerini yönetebilir. Bu, diğer alanların yanı sıra telefon, mesajlaşma, toplantılar ve takımların kendileri ile ilgili tüm yönetim araçlarını içerir. Bu rol Ayrıca, tüm Microsoft 365 grupları oluşturma ve yönetme, destek biletlerini yönetme ve hizmet durumunu izleme özelliğini verir.
 
 ### <a name="usage-summary-reports-reader"></a>[Kullanım Özeti raporları okuyucusu](#usage-summary-reports-reader-permissions)
 
@@ -566,22 +618,6 @@ Aşağıdaki tablolarda, her role verilen Azure Active Directory belirli izinler
 > | Microsoft. Directory/oAuth2PermissionGrants/createAsOwner | Azure Active Directory 'de oAuth2PermissionGrants oluşturun. Oluşturucu ilk sahip olarak eklenir ve oluşturulan nesne, oluşturucunun 250 tarafından oluşturulan nesneler kotasına göre sayılır. |
 > | Microsoft. Directory/Servicesorumlularını/createAsOwner | Azure Active Directory 'de Servicesorumlularını oluşturun. Oluşturucu ilk sahip olarak eklenir ve oluşturulan nesne, oluşturucunun 250 tarafından oluşturulan nesneler kotasına göre sayılır. |
 
-### <a name="authentication-administrator-permissions"></a>Kimlik doğrulama Yöneticisi izinleri
-
-Yönetici olmayan kullanıcılar için kimlik doğrulama yöntemi bilgilerini görüntüleme, ayarlama ve sıfırlamaya izin verildi.
-
-> [!div class="mx-tableFixed"]
-> | Eylemler | Açıklama |
-> | --- | --- |
-> | Microsoft. Directory/Users/ınvalidateallrefreshtokens | Azure Active Directory tüm Kullanıcı yenileme belirteçlerini geçersiz kılar. |
-> | Microsoft. Directory/Users/strongAuthentication/Update | MFA kimlik bilgileri gibi güçlü kimlik doğrulama özelliklerini güncelleştirin. |
-> | Microsoft. Azure. serviceHealth/Allentitıes/allTasks | Azure hizmet durumunu okuyun ve yapılandırın. |
-> | Microsoft. Azure. Supportbilet/allEntities/allTasks | Dizin düzeyinde hizmetler için Azure destek biletleri oluşturun ve yönetin. |
-> | Microsoft. office365. webPortal/allEntities/temel/okuma | Microsoft. office365. webPortal 'daki tüm kaynaklarda temel özellikleri okuyun. |
-> | Microsoft. office365. serviceHealth/allEntities/allTasks | Microsoft 365 hizmeti durumunu okuyun ve yapılandırın. |
-> | Microsoft. office365. Supportbilet/allEntities/allTasks | Office 365 destek biletleri oluşturun ve yönetin. |
-> | Microsoft. Directory/Users/Password/Update | Microsoft 365 kuruluştaki tüm kullanıcılar için parolaları güncelleştirin. Daha ayrıntılı bilgi için çevrimiçi belgelere bakın. |
-
 ### <a name="attack-payload-author-permissions"></a>Saldırı yükü yazar izinleri
 
 , Bir yönetici tarafından daha sonra dağıtılabilecek saldırı yükleri oluşturabilir.
@@ -603,13 +639,55 @@ Yönetici olmayan kullanıcılar için kimlik doğrulama yöntemi bilgilerini g�
 > | Microsoft. office365. protectionCenter/saldırıda Ksimülatör/raporlar/allProperties/Read | Saldırı simülasyonu, yanıtları ve ilgili eğitimin raporlarını okuyun. |
 > | Microsoft. office365. protectionCenter/saldırıda Ksimülatör/simülasyon/allProperties/allTasks | Saldırı simülatörü 'nda saldırı simülasyonu şablonları oluşturun ve yönetin. |
 
+### <a name="authentication-administrator-permissions"></a>Kimlik doğrulama Yöneticisi izinleri
+
+Yönetici olmayan kullanıcılar için kimlik doğrulama yöntemi bilgilerini görüntüleme, ayarlama ve sıfırlamaya izin verildi.
+
+> [!div class="mx-tableFixed"]
+> | Eylemler | Açıklama |
+> | --- | --- |
+> | Microsoft. Directory/Users/ınvalidateallrefreshtokens | Azure Active Directory tüm Kullanıcı yenileme belirteçlerini geçersiz kılar. |
+> | Microsoft. Directory/Users/strongAuthentication/Update | MFA kimlik bilgileri gibi güçlü kimlik doğrulama özelliklerini güncelleştirin. |
+> | Microsoft. Azure. serviceHealth/Allentitıes/allTasks | Azure hizmet durumunu okuyun ve yapılandırın. |
+> | Microsoft. Azure. Supportbilet/allEntities/allTasks | Dizin düzeyinde hizmetler için Azure destek biletleri oluşturun ve yönetin. |
+> | Microsoft. office365. webPortal/allEntities/temel/okuma | Microsoft. office365. webPortal 'daki tüm kaynaklarda temel özellikleri okuyun. |
+> | Microsoft. office365. serviceHealth/allEntities/allTasks | Microsoft 365 hizmeti durumunu okuyun ve yapılandırın. |
+> | Microsoft. office365. Supportbilet/allEntities/allTasks | Office 365 destek biletleri oluşturun ve yönetin. |
+> | Microsoft. Directory/Users/Password/Update | Microsoft 365 kuruluştaki tüm kullanıcılar için parolaları güncelleştirin. Daha ayrıntılı bilgi için çevrimiçi belgelere bakın. |
+
+### <a name="authentication-policy-administrator-permissions"></a>Kimlik doğrulama Ilkesi yönetici izinleri
+
+Kimlik doğrulama yöntemleri ilkesini, parola koruma ilkesini ve kiracı genelinde MFA ayarlarını görüntüleme ve ayarlamaya izin verilir.
+
+> [!div class="mx-tableFixed"]
+> | Eylemler | Açıklama |
+> | --- | --- |
+> | Microsoft. Directory/kuruluş/strongAuthentication/Update | Azure Active Directory bir kuruluşun güçlü kimlik doğrulama özelliklerini güncelleştirin. |
+> | Microsoft. Directory/userCredentialPolicies/oluşturma | Azure Active Directory kullanıcılar için kimlik bilgisi ilkeleri oluşturun. |
+> | Microsoft. Directory/userCredentialPolicies/Delete | Azure Active Directory kullanıcılar için kimlik bilgisi ilkelerini silin. |
+> | Microsoft. Directory/userCredentialPolicies/standart/okuma | Azure Active Directory kullanıcılar için kimlik bilgisi ilkelerinin standart özelliklerini okuyun. |
+> | Microsoft. Directory/userCredentialPolicies/sahipler/okuma | Azure Active Directory kullanıcılar için kimlik bilgisi ilkelerinin sahiplerini okuyun. |
+> | Microsoft. Directory/userCredentialPolicies/policyAppliedTo/Read | Azure Active Directory ilke. appliesTo gezinti bağlantısını okuyun. |
+> | Microsoft. Directory/userCredentialPolicies/temel/güncelleştirme | Azure Active Directory kullanıcılar için temel ilkeleri güncelleştirin. |
+> | Microsoft. Directory/userCredentialPolicies/Owners/Update | Azure Active Directory kullanıcılar için kimlik bilgisi ilkelerinin sahiplerini güncelleştirin. |
+> | Microsoft. Directory/userCredentialPolicies/tenantDefault/Update | Azure Active Directory ilke. ıorganizationdefault özelliğini güncelleştirin. |
+
+### <a name="azure-ad-joined-device-local-administrator-permissions"></a>Azure AD 'ye katılmış cihaz yerel yönetici izinleri
+
+Bu role atanan kullanıcılar, Azure AD 'ye katılmış cihazlarda yerel Yöneticiler grubuna eklenir.
+
+> [!div class="mx-tableFixed"]
+> | Eylemler | Açıklama |
+> | --- | --- |
+> | Microsoft. Directory/groupSettings/Basic/Read | Azure Active Directory groupSettings üzerindeki temel özellikleri okuyun. |
+> | Microsoft. Directory/groupSettingTemplates/Basic/Read | Azure Active Directory groupSettingTemplates üzerindeki temel özellikleri okuyun. |
+
 ### <a name="azure-devops-administrator-permissions"></a>Azure DevOps yönetici izinleri
 
 , Azure DevOps kuruluş ilkesini ve ayarlarını yönetebilir.
 
 > [!NOTE]
 > Bu rol Azure Active Directory dışında ek izinlere sahiptir. Daha fazla bilgi için yukarıdaki [rol açıklaması](#azure-devops-administrator) konusuna bakın.
-
 
 > [!div class="mx-tableFixed"]
 > | Eylemler | Açıklama |
@@ -622,7 +700,6 @@ Azure Information Protection hizmetinin tüm yönlerini yönetebilir.
 
 > [!NOTE]
 > Bu rol Azure Active Directory dışında ek izinlere sahiptir. Daha fazla bilgi için yukarıdaki [rol açıklaması](#) konusuna bakın.
-
 
 > [!div class="mx-tableFixed"]
 > | Eylemler | Açıklama |
@@ -658,7 +735,6 @@ Kimlik deneyimi çerçevesinde güven çerçevesi ilkeleri oluşturun ve yöneti
 
 > [!NOTE]
 > Bu rol Azure Active Directory dışında ek izinlere sahiptir. Daha fazla bilgi için yukarıdaki rol açıklaması konusuna bakın.
-
 
 > [!div class="mx-tableFixed"]
 > | Eylemler | Açıklama |
@@ -734,86 +810,12 @@ Azure AD 'de cihazları yönetmek için tam erişim.
 > | Microsoft. Azure. serviceHealth/Allentitıes/allTasks | Azure hizmet durumunu okuyun ve yapılandırın. |
 > | Microsoft. office365. serviceHealth/allEntities/allTasks | Microsoft 365 hizmeti durumunu okuyun ve yapılandırın. |
 
-### <a name="global-administrator-permissions"></a>Genel yönetici izinleri
-
-, Azure AD kimliklerini kullanan Azure AD ve Microsoft hizmetlerinin tüm yönlerini yönetebilir.
-
-> [!NOTE]
-> Bu rol Azure Active Directory dışında ek izinlere sahiptir. Daha fazla bilgi için yukarıdaki rol açıklaması konusuna bakın.
-
-
-> [!div class="mx-tableFixed"]
-> | Eylemler | Açıklama |
-> | --- | --- |
-> | Microsoft. AAD. cloudAppSecurity/allEntities/allTasks | Tüm kaynakları oluşturup silin ve Microsoft. AAD. cloudAppSecurity içindeki standart özellikleri okuyun ve güncelleştirin. |
-> | Microsoft. Directory/Yönetimtiveunits/allProperties/allTasks | Yönettiveunits oluşturun ve silin ve Azure Active Directory tüm özellikleri okuyun ve güncelleştirin. |
-> | Microsoft. Directory/uygulamalar/allProperties/allTasks | Uygulamalar oluşturun ve silin ve Azure Active Directory tüm özellikleri okuyun ve güncelleştirin. |
-> | Microsoft. Directory/Approtaatamalar/allProperties/allTasks | Approtaatamalar oluşturun ve silin ve Azure Active Directory tüm özellikleri okuyun ve güncelleştirin. |
-> | Microsoft. Directory/auditLogs/allProperties/Read | Azure Active Directory içindeki auditLogs 'ta tüm özellikleri (ayrıcalıklı özellikler dahil) okuyun. |
-> | Microsoft. Directory/bitlockerKeys/Key/Read | Azure Active Directory içindeki BitLocker anahtar nesnelerini ve özelliklerini (kurtarma anahtarı dahil) okuyun. |
-> | Microsoft. Directory/Contacts/allProperties/allTasks | Kişiler oluşturup silin ve Azure Active Directory tüm özellikleri okuyun ve güncelleştirin. |
-> | Microsoft. Directory/sözleşmeleri/allProperties/allTasks | Sözleşmeleri oluşturup silin ve Azure Active Directory tüm özellikleri okuyun ve güncelleştirin. |
-> | Microsoft. Directory/Devices/allProperties/allTasks | Cihazları oluşturun ve silin ve Azure Active Directory tüm özellikleri okuyun ve güncelleştirin. |
-> | Microsoft. Directory/directoryRoles/allProperties/allTasks | DirectoryRoles oluşturun ve silin ve Azure Active Directory tüm özellikleri okuyun ve güncelleştirin. |
-> | Microsoft. Directory/directoryRoleTemplates/allProperties/allTasks | DirectoryRoleTemplates oluşturup silin ve Azure Active Directory tüm özellikleri okuyun ve güncelleştirin. |
-> | Microsoft. Directory/Domains/allProperties/allTasks | Etki alanlarını oluşturun ve silin ve Azure Active Directory tüm özellikleri okuyun ve güncelleştirin. |
-> | Microsoft. Directory/entitlementManagement/allProperties/allTasks | Kaynakları oluşturup silin ve Azure AD Yetkilendirme Yönetimi 'nde tüm özellikleri okuyun ve güncelleştirin. |
-> | Microsoft. Directory/Groups/allProperties/allTasks | Grupları oluşturun ve silin ve Azure Active Directory tüm özellikleri okuyun ve güncelleştirin. |
-> | Microsoft. Directory/Groupsastifbletoroles/allProperties/Update | Azure Active Directory, ısastifbletorole özelliği true olarak ayarlanan grupları güncelleştirin. |
-> | Microsoft. Directory/Groupsastifbletoroles/Create | Azure Active Directory ' de ısastifbletorole özelliği true olarak ayarlanan gruplar oluşturun. |
-> | Microsoft. Directory/Groupsastifbletoroles/Delete | Iastifbletorole özelliği Azure Active Directory olan grupları silin. |
-> | Microsoft. Directory/groupSettings/allProperties/allTasks | GroupSettings oluşturun ve silin ve Azure Active Directory tüm özellikleri okuyun ve güncelleştirin. |
-> | Microsoft. Directory/groupSettingTemplates/allProperties/allTasks | GroupSettingTemplates oluşturup silin ve Azure Active Directory tüm özellikleri okuyun ve güncelleştirin. |
-> | Microsoft. Directory/Logınantmarkalaması/allProperties/allTasks | Logınantmarkalaması oluşturun ve silin ve Azure Active Directory tüm özellikleri okuyun ve güncelleştirin. |
-> | Microsoft. Directory/oAuth2PermissionGrants/allProperties/allTasks | OAuth2PermissionGrants oluşturun ve silin ve Azure Active Directory tüm özellikleri okuyun ve güncelleştirin. |
-> | Microsoft. Directory/kuruluş/allProperties/allTasks | Kuruluş oluşturup silin ve Azure Active Directory tüm özellikleri okuyun ve güncelleştirin. |
-> | Microsoft. Directory/policies/allProperties/allTasks | İlkeleri oluşturun ve silin ve Azure Active Directory tüm özellikleri okuyun ve güncelleştirin. |
-> | Microsoft. Directory/provisioningLogs/allProperties/Read | Sağlama günlüklerinin tüm özelliklerini okuyun. |
-> | Microsoft. Directory/Roleatamaları/allProperties/allTasks | Roleatamalar oluşturun ve silin ve Azure Active Directory tüm özellikleri okuyun ve güncelleştirin. |
-> | Microsoft. Directory/roleDefinitions/allProperties/allTasks | RoleDefinitions oluşturun ve silin ve Azure Active Directory tüm özellikleri okuyun ve güncelleştirin. |
-> | Microsoft. Directory/Scopedrolemembersevk/allProperties/allTasks | Scopedrolemembersevk eden oluşturun ve silin ve Azure Active Directory tüm özellikleri okuyun ve güncelleştirin. |
-> | Microsoft. Directory/serviceAction/activateService | Azure Active Directory 'de Activateservice hizmeti eylemini gerçekleştirebilir |
-> | Microsoft. Directory/serviceAction/disableDirectoryFeature | Azure Active Directory 'da Disabledirectoryfeature hizmet eylemini gerçekleştirebilir |
-> | Microsoft. Directory/serviceAction/enableDirectoryFeature | Azure Active Directory 'da Enabledirectoryfeature hizmeti eylemini gerçekleştirebilir |
-> | Microsoft. Directory/serviceAction/getAvailableExtentionProperties | Azure Active Directory içinde Getavailableextentionproperties hizmeti eylemini gerçekleştirebilir |
-> | Microsoft. Directory/Servicesorumlularını/allProperties/allTasks | Servicesorumlularını oluşturup silin ve Azure Active Directory tüm özellikleri okuyun ve güncelleştirin. |
-> | Microsoft. Directory/Signınreports/allProperties/Read | Azure Active Directory içindeki Signınreports 'ta tüm özellikleri (ayrıcalıklı özellikler dahil) okuyun. |
-> | Microsoft. Directory/subscribedSkus/allProperties/allTasks | SubscribedSkus oluşturun ve silin ve Azure Active Directory tüm özellikleri okuyun ve güncelleştirin. |
-> | Microsoft. Directory/Users/allProperties/allTasks | Kullanıcı oluşturun ve silin ve Azure Active Directory tüm özellikleri okuyun ve güncelleştirin. |
-> | Microsoft. directorySync/Allentitıes/allTasks | Azure AD Connect tüm eylemleri gerçekleştirin. |
-> | Microsoft. AAD. ıdentityprotection/allEntities/allTasks | Tüm kaynakları oluşturup silin ve Microsoft. AAD. ıdentityprotection 'da standart özellikleri okuyun ve güncelleştirin. |
-> | Microsoft. AAD. Privilegedıdentitymanagement/allEntities/okuma | Microsoft. AAD. Privilegedıdentitymanagement içindeki tüm kaynakları okuyun. |
-> | Microsoft. Azure. advancedThreatProtection/Allentitıes/Read | Microsoft. Azure. advancedThreatProtection içindeki tüm kaynakları okuyun. |
-> | Microsoft. Azure. ınformationprotection/allEntities/allTasks | Azure Information Protection tüm yönlerini yönetin. |
-> | Microsoft. Azure. serviceHealth/Allentitıes/allTasks | Azure hizmet durumunu okuyun ve yapılandırın. |
-> | Microsoft. Azure. Supportbilet/allEntities/allTasks | Dizin düzeyinde hizmetler için Azure destek biletleri oluşturun ve yönetin. |
-> | Microsoft. Commerce. faturalandırma/allEntities/allTasks | Faturalandırma 'nin tüm yönlerini yönetin. |
-> | Microsoft. Intune/allEntities/allTasks | Intune 'un tüm yönlerini yönetin. |
-> | Microsoft. office365. Karmaşıssuancemanager/allEntities/allTasks | Office 365 uyumluluk Yöneticisi 'nin tüm yönlerini yönetme |
-> | Microsoft. office365. desktopAnalytics/allEntities/allTasks | Masaüstü analizinin tüm yönlerini yönetin. |
-> | Microsoft. office365. Exchange/allEntities/allTasks | Exchange Online 'ın tüm yönlerini yönetin. |
-> | Microsoft. office365. kasa/allEntities/allTasks | Office 365 Müşteri Kasası tüm yönlerini yönetin |
-> | Microsoft. office365. messageCenter/messages/okundu | Microsoft. office365. messageCenter içindeki iletileri okuyun. |
-> | Microsoft. office365. messageCenter/securityMessages/Read | Microsoft. office365. messageCenter içindeki securityMessages 'i okuyun. |
-> | Microsoft. office365. protectionCenter/allEntities/allTasks | Office 365 Koruma Merkezi 'nin tüm yönlerini yönetin. |
-> | Microsoft. office365. Securityzorluk Ancecenter/allEntities/allTasks | Tüm kaynakları oluşturup silin ve Microsoft. office365. Securitykarmaşıkancecenter içindeki standart özellikleri okuyun ve güncelleştirin. |
-> | Microsoft. office365. serviceHealth/allEntities/allTasks | Microsoft 365 hizmeti durumunu okuyun ve yapılandırın. |
-> | Microsoft. office365. SharePoint/allEntities/allTasks | Tüm kaynakları oluşturup silin ve Microsoft. office365. SharePoint içindeki standart özellikleri okuyun ve güncelleştirin. |
-> | Microsoft. office365. Sktypeınfo/allEntities/allTasks | Skype Kurumsal Çevrimiçi 'nin tüm yönlerini yönetin. |
-> | Microsoft. office365. Supportbilet/allEntities/allTasks | Office 365 destek biletleri oluşturun ve yönetin. |
-> | Microsoft. office365. usageReports/allEntities/okuma | Office 365 kullanım raporlarını okuyun. |
-> | Microsoft. office365. webPortal/allEntities/temel/okuma | Microsoft. office365. webPortal 'daki tüm kaynaklarda temel özellikleri okuyun. |
-> | Microsoft. powerApps. dynamics365/allEntities/allTasks | Dynamics 365 'in tüm yönlerini yönetin. |
-> | Microsoft. powerApps. PowerBI/allEntities/allTasks | Power BI tüm yönlerini yönetin. |
-> | Microsoft. Windows. Savunderadvancedthreatprotection/Allentitıes/Read | Microsoft. Windows. savunma Deradvancedthreatprotection içindeki tüm kaynakları okuyun. |
-
 ### <a name="compliance-administrator-permissions"></a>Uyumluluk Yöneticisi izinleri
 
 , Azure AD ve Microsoft 365 uyumluluk yapılandırma ve raporlarını okuyabilir ve yönetebilir.
 
 > [!NOTE]
 > Bu rol Azure Active Directory dışında ek izinlere sahiptir. Daha fazla bilgi için yukarıdaki rol açıklaması konusuna bakın.
-
 
 > [!div class="mx-tableFixed"]
 > | Eylemler | Açıklama |
@@ -832,7 +834,6 @@ Uyumluluk içeriğini oluşturur ve yönetir.
 
 > [!NOTE]
 > Bu rol Azure Active Directory dışında ek izinlere sahiptir. Daha fazla bilgi için yukarıdaki rol açıklaması konusuna bakın.
-
 
 > [!div class="mx-tableFixed"]
 > | Eylemler | Açıklama |
@@ -862,31 +863,12 @@ Uyumluluk içeriğini oluşturur ve yönetir.
 > | Microsoft. Directory/policies/conditionalAccess/policiesAppliedTo/Read | Azure Active Directory içindeki policies. conditionalAccess özelliğini okuyun. |
 > | Microsoft. Directory/policies/conditionalAccess/tenantDefault/Update | Azure Active Directory policies. conditionalAccess özelliğini güncelleştirin. |
 
-### <a name="crm-service-administrator-permissions"></a>CRM hizmeti yönetici izinleri
-
-, Dynamics 365 ürününün tüm yönlerini yönetebilir.
-
-> [!NOTE]
-> Bu rol Azure Active Directory dışında ek izinlere sahiptir. Daha fazla bilgi için yukarıdaki rol açıklaması konusuna bakın.
-
-
-> [!div class="mx-tableFixed"]
-> | Eylemler | Açıklama |
-> | --- | --- |
-> | Microsoft. Azure. serviceHealth/Allentitıes/allTasks | Azure hizmet durumunu okuyun ve yapılandırın. |
-> | Microsoft. Azure. Supportbilet/allEntities/allTasks | Dizin düzeyinde hizmetler için Azure destek biletleri oluşturun ve yönetin. |
-> | Microsoft. powerApps. dynamics365/allEntities/allTasks | Dynamics 365 'in tüm yönlerini yönetin. |
-> | Microsoft. office365. webPortal/allEntities/temel/okuma | Microsoft. office365. webPortal 'daki tüm kaynaklarda temel özellikleri okuyun. |
-> | Microsoft. office365. serviceHealth/allEntities/allTasks | Microsoft 365 hizmeti durumunu okuyun ve yapılandırın. |
-> | Microsoft. office365. Supportbilet/allEntities/allTasks | Office 365 destek biletleri oluşturun ve yönetin. |
-
 ### <a name="customer-lockbox-access-approver-permissions"></a>Müşteri Kasası erişimi onaylayan izinleri
 
 , Müşteri kurumsal verilerine erişmek için Microsoft destek isteklerini onaylayabilir.
 
 > [!NOTE]
 > Bu rol Azure Active Directory dışında ek izinlere sahiptir. Daha fazla bilgi için yukarıdaki rol açıklaması konusuna bakın.
-
 
 > [!div class="mx-tableFixed"]
 > | Eylemler | Açıklama |
@@ -901,7 +883,6 @@ Uyumluluk içeriğini oluşturur ve yönetir.
 > [!NOTE]
 > Bu rol Azure Active Directory dışında ek izinlere sahiptir. Daha fazla bilgi için yukarıdaki rol açıklaması konusuna bakın.
 
-
 > [!div class="mx-tableFixed"]
 > | Eylemler | Açıklama |
 > | --- | --- |
@@ -911,16 +892,6 @@ Uyumluluk içeriğini oluşturur ve yönetir.
 > | Microsoft. office365. desktopAnalytics/allEntities/allTasks | Masaüstü analizinin tüm yönlerini yönetin. |
 > | Microsoft. office365. serviceHealth/allEntities/allTasks | Microsoft 365 hizmeti durumunu okuyun ve yapılandırın. |
 > | Microsoft. office365. Supportbilet/allEntities/allTasks | Office 365 destek biletleri oluşturun ve yönetin. |
-
-### <a name="device-administrators-permissions"></a>Cihaz yöneticileri izinleri
-
-Bu role atanan kullanıcılar, Azure AD 'ye katılmış cihazlarda yerel Yöneticiler grubuna eklenir.
-
-> [!div class="mx-tableFixed"]
-> | Eylemler | Açıklama |
-> | --- | --- |
-> | Microsoft. Directory/groupSettings/Basic/Read | Azure Active Directory groupSettings üzerindeki temel özellikleri okuyun. |
-> | Microsoft. Directory/groupSettingTemplates/Basic/Read | Azure Active Directory groupSettingTemplates üzerindeki temel özellikleri okuyun. |
 
 ### <a name="directory-readers-permissions"></a>Dizin okuyucular izinleri
 Temel dizin bilgilerini okuyabilir. Uygulamalara erişim vermek için, kullanıcılara yönelik değildir.
@@ -1050,13 +1021,39 @@ Temel dizin bilgilerini okuyabilir & yazabilir. Uygulamalara erişim vermek içi
 > | Microsoft. Directory/Users/Reprocesslicenseatama | Azure Active Directory bir kullanıcı için lisans atamalarını yeniden işleyin. |
 > | Microsoft. Directory/Users/userPrincipalName/Update | Azure Active Directory içindeki Users. userPrincipalName özelliğini güncelleştirin. |
 
-### <a name="exchange-service-administrator-permissions"></a>Exchange hizmeti yönetici izinleri
+### <a name="domain-name-administrator-permissions"></a>Etki alanı adı yönetici izinleri
+
+, Bulutta ve şirket içinde etki alanı adlarını yönetebilir.
+
+> [!div class="mx-tableFixed"]
+> | Eylemler | Açıklama |
+> | --- | --- |
+> | Microsoft. Directory/Domains/allProperties/allTasks | Etki alanlarını oluşturun ve silin ve Azure Active Directory tüm özellikleri okuyun ve güncelleştirin. |
+> | Microsoft. office365. Supportbilet/allEntities/allTasks | Office 365 destek biletleri oluşturun ve yönetin. |
+
+### <a name="dynamics-365-administrator-permissions"></a>Dynamics 365 yönetici izinleri
+
+, Dynamics 365 ürününün tüm yönlerini yönetebilir.
+
+> [!NOTE]
+> Bu rol Azure Active Directory dışında ek izinlere sahiptir. Daha fazla bilgi için yukarıdaki rol açıklaması konusuna bakın.
+
+> [!div class="mx-tableFixed"]
+> | Eylemler | Açıklama |
+> | --- | --- |
+> | Microsoft. Azure. serviceHealth/Allentitıes/allTasks | Azure hizmet durumunu okuyun ve yapılandırın. |
+> | Microsoft. Azure. Supportbilet/allEntities/allTasks | Dizin düzeyinde hizmetler için Azure destek biletleri oluşturun ve yönetin. |
+> | Microsoft. powerApps. dynamics365/allEntities/allTasks | Dynamics 365 'in tüm yönlerini yönetin. |
+> | Microsoft. office365. webPortal/allEntities/temel/okuma | Microsoft. office365. webPortal 'daki tüm kaynaklarda temel özellikleri okuyun. |
+> | Microsoft. office365. serviceHealth/allEntities/allTasks | Microsoft 365 hizmeti durumunu okuyun ve yapılandırın. |
+> | Microsoft. office365. Supportbilet/allEntities/allTasks | Office 365 destek biletleri oluşturun ve yönetin. |
+
+### <a name="exchange-administrator-permissions"></a>Exchange yönetici izinleri
 
 , Exchange ürününün tüm yönlerini yönetebilir.
 
 > [!NOTE]
 > Bu rol Azure Active Directory dışında ek izinlere sahiptir. Daha fazla bilgi için yukarıdaki rol açıklaması konusuna bakın.
-
 
 > [!div class="mx-tableFixed"]
 > | Eylemler | Açıklama |
@@ -1104,12 +1101,84 @@ Kimlik sağlayıcılarını doğrudan federasyonda kullanılmak üzere yapıland
 > | --- | --- |
 > | Microsoft. AAD. B2C/IdentityProviders/allTasks | Azure Active Directory B2C kimlik sağlayıcılarını okuyun ve yapılandırın. |
 
+### <a name="global-administrator-permissions"></a>Genel yönetici izinleri
+
+, Azure AD kimliklerini kullanan Azure AD ve Microsoft hizmetlerinin tüm yönlerini yönetebilir.
+
+> [!NOTE]
+> Bu rol Azure Active Directory dışında ek izinlere sahiptir. Daha fazla bilgi için yukarıdaki rol açıklaması konusuna bakın.
+
+> [!div class="mx-tableFixed"]
+> | Eylemler | Açıklama |
+> | --- | --- |
+> | Microsoft. AAD. cloudAppSecurity/allEntities/allTasks | Tüm kaynakları oluşturup silin ve Microsoft. AAD. cloudAppSecurity içindeki standart özellikleri okuyun ve güncelleştirin. |
+> | Microsoft. Directory/Yönetimtiveunits/allProperties/allTasks | Yönettiveunits oluşturun ve silin ve Azure Active Directory tüm özellikleri okuyun ve güncelleştirin. |
+> | Microsoft. Directory/uygulamalar/allProperties/allTasks | Uygulamalar oluşturun ve silin ve Azure Active Directory tüm özellikleri okuyun ve güncelleştirin. |
+> | Microsoft. Directory/Approtaatamalar/allProperties/allTasks | Approtaatamalar oluşturun ve silin ve Azure Active Directory tüm özellikleri okuyun ve güncelleştirin. |
+> | Microsoft. Directory/auditLogs/allProperties/Read | Azure Active Directory içindeki auditLogs 'ta tüm özellikleri (ayrıcalıklı özellikler dahil) okuyun. |
+> | Microsoft. Directory/bitlockerKeys/Key/Read | Azure Active Directory içindeki BitLocker anahtar nesnelerini ve özelliklerini (kurtarma anahtarı dahil) okuyun. |
+> | Microsoft. Directory/Contacts/allProperties/allTasks | Kişiler oluşturup silin ve Azure Active Directory tüm özellikleri okuyun ve güncelleştirin. |
+> | Microsoft. Directory/sözleşmeleri/allProperties/allTasks | Sözleşmeleri oluşturup silin ve Azure Active Directory tüm özellikleri okuyun ve güncelleştirin. |
+> | Microsoft. Directory/Devices/allProperties/allTasks | Cihazları oluşturun ve silin ve Azure Active Directory tüm özellikleri okuyun ve güncelleştirin. |
+> | Microsoft. Directory/directoryRoles/allProperties/allTasks | DirectoryRoles oluşturun ve silin ve Azure Active Directory tüm özellikleri okuyun ve güncelleştirin. |
+> | Microsoft. Directory/directoryRoleTemplates/allProperties/allTasks | DirectoryRoleTemplates oluşturup silin ve Azure Active Directory tüm özellikleri okuyun ve güncelleştirin. |
+> | Microsoft. Directory/Domains/allProperties/allTasks | Etki alanlarını oluşturun ve silin ve Azure Active Directory tüm özellikleri okuyun ve güncelleştirin. |
+> | Microsoft. Directory/entitlementManagement/allProperties/allTasks | Kaynakları oluşturup silin ve Azure AD Yetkilendirme Yönetimi 'nde tüm özellikleri okuyun ve güncelleştirin. |
+> | Microsoft. Directory/Groups/allProperties/allTasks | Grupları oluşturun ve silin ve Azure Active Directory tüm özellikleri okuyun ve güncelleştirin. |
+> | Microsoft. Directory/Groupsastifbletoroles/allProperties/Update | Azure Active Directory, ısastifbletorole özelliği true olarak ayarlanan grupları güncelleştirin. |
+> | Microsoft. Directory/Groupsastifbletoroles/Create | Azure Active Directory ' de ısastifbletorole özelliği true olarak ayarlanan gruplar oluşturun. |
+> | Microsoft. Directory/Groupsastifbletoroles/Delete | Iastifbletorole özelliği Azure Active Directory olan grupları silin. |
+> | Microsoft. Directory/groupSettings/allProperties/allTasks | GroupSettings oluşturun ve silin ve Azure Active Directory tüm özellikleri okuyun ve güncelleştirin. |
+> | Microsoft. Directory/groupSettingTemplates/allProperties/allTasks | GroupSettingTemplates oluşturup silin ve Azure Active Directory tüm özellikleri okuyun ve güncelleştirin. |
+> | Microsoft. Directory/Logınantmarkalaması/allProperties/allTasks | Logınantmarkalaması oluşturun ve silin ve Azure Active Directory tüm özellikleri okuyun ve güncelleştirin. |
+> | Microsoft. Directory/oAuth2PermissionGrants/allProperties/allTasks | OAuth2PermissionGrants oluşturun ve silin ve Azure Active Directory tüm özellikleri okuyun ve güncelleştirin. |
+> | Microsoft. Directory/kuruluş/allProperties/allTasks | Kuruluş oluşturup silin ve Azure Active Directory tüm özellikleri okuyun ve güncelleştirin. |
+> | Microsoft. Directory/policies/allProperties/allTasks | İlkeleri oluşturun ve silin ve Azure Active Directory tüm özellikleri okuyun ve güncelleştirin. |
+> | Microsoft. Directory/provisioningLogs/allProperties/Read | Sağlama günlüklerinin tüm özelliklerini okuyun. |
+> | Microsoft. Directory/Roleatamaları/allProperties/allTasks | Roleatamalar oluşturun ve silin ve Azure Active Directory tüm özellikleri okuyun ve güncelleştirin. |
+> | Microsoft. Directory/roleDefinitions/allProperties/allTasks | RoleDefinitions oluşturun ve silin ve Azure Active Directory tüm özellikleri okuyun ve güncelleştirin. |
+> | Microsoft. Directory/Scopedrolemembersevk/allProperties/allTasks | Scopedrolemembersevk eden oluşturun ve silin ve Azure Active Directory tüm özellikleri okuyun ve güncelleştirin. |
+> | Microsoft. Directory/serviceAction/activateService | Azure Active Directory 'de Activateservice hizmeti eylemini gerçekleştirebilir |
+> | Microsoft. Directory/serviceAction/disableDirectoryFeature | Azure Active Directory 'da Disabledirectoryfeature hizmet eylemini gerçekleştirebilir |
+> | Microsoft. Directory/serviceAction/enableDirectoryFeature | Azure Active Directory 'da Enabledirectoryfeature hizmeti eylemini gerçekleştirebilir |
+> | Microsoft. Directory/serviceAction/getAvailableExtentionProperties | Azure Active Directory içinde Getavailableextentionproperties hizmeti eylemini gerçekleştirebilir |
+> | Microsoft. Directory/Servicesorumlularını/allProperties/allTasks | Servicesorumlularını oluşturup silin ve Azure Active Directory tüm özellikleri okuyun ve güncelleştirin. |
+> | Microsoft. Directory/Signınreports/allProperties/Read | Azure Active Directory içindeki Signınreports 'ta tüm özellikleri (ayrıcalıklı özellikler dahil) okuyun. |
+> | Microsoft. Directory/subscribedSkus/allProperties/allTasks | SubscribedSkus oluşturun ve silin ve Azure Active Directory tüm özellikleri okuyun ve güncelleştirin. |
+> | Microsoft. Directory/Users/allProperties/allTasks | Kullanıcı oluşturun ve silin ve Azure Active Directory tüm özellikleri okuyun ve güncelleştirin. |
+> | Microsoft. directorySync/Allentitıes/allTasks | Azure AD Connect tüm eylemleri gerçekleştirin. |
+> | Microsoft. AAD. ıdentityprotection/allEntities/allTasks | Tüm kaynakları oluşturup silin ve Microsoft. AAD. ıdentityprotection 'da standart özellikleri okuyun ve güncelleştirin. |
+> | Microsoft. AAD. Privilegedıdentitymanagement/allEntities/okuma | Microsoft. AAD. Privilegedıdentitymanagement içindeki tüm kaynakları okuyun. |
+> | Microsoft. Azure. advancedThreatProtection/Allentitıes/Read | Microsoft. Azure. advancedThreatProtection içindeki tüm kaynakları okuyun. |
+> | Microsoft. Azure. ınformationprotection/allEntities/allTasks | Azure Information Protection tüm yönlerini yönetin. |
+> | Microsoft. Azure. serviceHealth/Allentitıes/allTasks | Azure hizmet durumunu okuyun ve yapılandırın. |
+> | Microsoft. Azure. Supportbilet/allEntities/allTasks | Dizin düzeyinde hizmetler için Azure destek biletleri oluşturun ve yönetin. |
+> | Microsoft. Commerce. faturalandırma/allEntities/allTasks | Faturalandırma 'nin tüm yönlerini yönetin. |
+> | Microsoft. Intune/allEntities/allTasks | Intune 'un tüm yönlerini yönetin. |
+> | Microsoft. office365. Karmaşıssuancemanager/allEntities/allTasks | Office 365 uyumluluk Yöneticisi 'nin tüm yönlerini yönetme |
+> | Microsoft. office365. desktopAnalytics/allEntities/allTasks | Masaüstü analizinin tüm yönlerini yönetin. |
+> | Microsoft. office365. Exchange/allEntities/allTasks | Exchange Online 'ın tüm yönlerini yönetin. |
+> | Microsoft. office365. kasa/allEntities/allTasks | Office 365 Müşteri Kasası tüm yönlerini yönetin |
+> | Microsoft. office365. messageCenter/messages/okundu | Microsoft. office365. messageCenter içindeki iletileri okuyun. |
+> | Microsoft. office365. messageCenter/securityMessages/Read | Microsoft. office365. messageCenter içindeki securityMessages 'i okuyun. |
+> | Microsoft. office365. protectionCenter/allEntities/allTasks | Office 365 Koruma Merkezi 'nin tüm yönlerini yönetin. |
+> | Microsoft. office365. Securityzorluk Ancecenter/allEntities/allTasks | Tüm kaynakları oluşturup silin ve Microsoft. office365. Securitykarmaşıkancecenter içindeki standart özellikleri okuyun ve güncelleştirin. |
+> | Microsoft. office365. serviceHealth/allEntities/allTasks | Microsoft 365 hizmeti durumunu okuyun ve yapılandırın. |
+> | Microsoft. office365. SharePoint/allEntities/allTasks | Tüm kaynakları oluşturup silin ve Microsoft. office365. SharePoint içindeki standart özellikleri okuyun ve güncelleştirin. |
+> | Microsoft. office365. Sktypeınfo/allEntities/allTasks | Skype Kurumsal Çevrimiçi 'nin tüm yönlerini yönetin. |
+> | Microsoft. office365. Supportbilet/allEntities/allTasks | Office 365 destek biletleri oluşturun ve yönetin. |
+> | Microsoft. office365. usageReports/allEntities/okuma | Office 365 kullanım raporlarını okuyun. |
+> | Microsoft. office365. webPortal/allEntities/temel/okuma | Microsoft. office365. webPortal 'daki tüm kaynaklarda temel özellikleri okuyun. |
+> | Microsoft. powerApps. dynamics365/allEntities/allTasks | Dynamics 365 'in tüm yönlerini yönetin. |
+> | Microsoft. powerApps. PowerBI/allEntities/allTasks | Power BI tüm yönlerini yönetin. |
+> | Microsoft. Windows. Savunderadvancedthreatprotection/Allentitıes/Read | Microsoft. Windows. savunma Deradvancedthreatprotection içindeki tüm kaynakları okuyun. |
+
 ### <a name="global-reader-permissions"></a>Genel okuyucu izinleri
+
 Genel yöneticinin yapabileceği her şeyi okuyabilir, ancak düzenleyemez.
 
 > [!NOTE]
 > Bu rol Azure Active Directory dışında ek izinlere sahiptir. Daha fazla bilgi için yukarıdaki [rol açıklaması](#global-reader) konusuna bakın.
-
 
 > [!div class="mx-tableFixed"]
 > | Eylemler | Açıklama |
@@ -1179,6 +1248,7 @@ Genel yöneticinin yapabileceği her şeyi okuyabilir, ancak düzenleyemez.
 > | Microsoft. office365. webPortal/allEntities/standart/okuma    | Microsoft. office365. webPortal 'daki tüm kaynaklarda standart özellikleri okuyun. |
 
 ### <a name="groups-administrator-permissions"></a>Gruplar yönetici izinleri
+
 , Adlandırma ve süre sonu ilkeleri gibi grupların ve Grup ayarlarının tüm yönlerini yönetebilir.
 
 > [!div class="mx-tableFixed"]
@@ -1201,6 +1271,7 @@ Genel yöneticinin yapabileceği her şeyi okuyabilir, ancak düzenleyemez.
 > | Microsoft. office365. Supportbilet/allEntities/allTasks | Office 365 destek biletleri oluşturun ve yönetin. |
 
 ### <a name="guest-inviter-permissions"></a>Konuk Davetleyici izinleri
+
 ' Üyeler konukları davet edebilir ' ayarından bağımsız olarak Konuk kullanıcıları davet edebilir.
 
 > [!div class="mx-tableFixed"]
@@ -1300,13 +1371,12 @@ Microsoft 365 Insights uygulamasında yönetim erişimine sahiptir.
 > | Microsoft. Insights/raporlar/okuma | Öngörüler uygulamasındaki raporları ve panoları görüntüleyin. |
 > | Microsoft. Insights/programlar/güncelleştirme | Insights uygulamasındaki programları dağıtın ve yönetin. |
 
-### <a name="intune-service-administrator-permissions"></a>Intune Hizmet Yöneticisi izinleri
+### <a name="intune-administrator-permissions"></a>Intune yönetici izinleri
 
 , Intune ürününün tüm yönlerini yönetebilir.
 
 > [!NOTE]
 > Bu rol Azure Active Directory dışında ek izinlere sahiptir. Daha fazla bilgi için yukarıdaki rol açıklaması konusuna bakın.
-
 
 > [!div class="mx-tableFixed"]
 > | Eylemler | Açıklama |
@@ -1349,7 +1419,6 @@ Microsoft 365 Insights uygulamasında yönetim erişimine sahiptir.
 > [!NOTE]
 > Bu rol Azure Active Directory dışında ek izinlere sahiptir. Daha fazla bilgi için yukarıdaki rol açıklaması konusuna bakın.
 
-
 > [!div class="mx-tableFixed"]
 > | Eylemler | Açıklama |
 > | --- | --- |
@@ -1370,33 +1439,12 @@ Microsoft 365 Insights uygulamasında yönetim erişimine sahiptir.
 > | Microsoft. office365. webPortal/allEntities/temel/okuma | Microsoft. office365. webPortal 'daki tüm kaynaklarda temel özellikleri okuyun. |
 > | Microsoft. office365. serviceHealth/allEntities/allTasks | Microsoft 365 hizmeti durumunu okuyun ve yapılandırın. |
 
-### <a name="lync-service-administrator-permissions"></a>Lync hizmeti yönetici izinleri
-
-, Skype Kurumsal ürününün tüm yönlerini yönetebilir.
-
-> [!NOTE]
-> Bu rol Azure Active Directory dışında ek izinlere sahiptir. Daha fazla bilgi için yukarıdaki rol açıklaması konusuna bakın.
-
-
-> [!div class="mx-tableFixed"]
-> | Eylemler | Açıklama |
-> | --- | --- |
-> | Microsoft. Azure. serviceHealth/Allentitıes/allTasks | Azure hizmet durumunu okuyun ve yapılandırın. |
-> | Microsoft. Azure. Supportbilet/allEntities/allTasks | Azure destek biletleri oluşturun ve yönetin. |
-> | Microsoft. office365. serviceHealth/allEntities/allTasks | Microsoft 365 hizmeti durumunu okuyun ve yapılandırın. |
-> | Microsoft. office365. Sktypeınfo/allEntities/allTasks | Skype Kurumsal Çevrimiçi 'nin tüm yönlerini yönetin. |
-> | Microsoft. office365. Supportbilet/allEntities/allTasks | Office 365 destek biletleri oluşturun ve yönetin. |
-> | Microsoft. office365. usageReports/allEntities/okuma    | Office 365 kullanım raporlarını okuyun. |
-> | Microsoft. office365. webPortal/allEntities/temel/okuma | Microsoft. office365. webPortal 'daki tüm kaynaklarda temel özellikleri okuyun. |
-
-
 ### <a name="message-center-privacy-reader-permissions"></a>İleti Merkezi Gizlilik okuyucusu izinleri
 
 Ileti merkezi gönderilerini, veri gizliliği iletilerini, grupları, etki alanlarını ve abonelikleri okuyabilir.
 
 > [!NOTE]
 > Bu rol Azure Active Directory dışında ek izinlere sahiptir. Daha fazla bilgi için yukarıdaki rol açıklaması konusuna bakın.
-
 
 > [!div class="mx-tableFixed"]
 > | Eylemler | Açıklama |
@@ -1406,11 +1454,11 @@ Ileti merkezi gönderilerini, veri gizliliği iletilerini, grupları, etki alanl
 > | Microsoft. office365. messageCenter/securityMessages/Read | Microsoft. office365. messageCenter içindeki securityMessages 'i okuyun. |
 
 ### <a name="message-center-reader-permissions"></a>İleti Merkezi okuyucu izinleri
+
 Yalnızca Ileti merkezindeki kuruluşlarındaki iletileri ve güncelleştirmeleri okuyabilir. 
 
 > [!NOTE]
 > Bu rol Azure Active Directory dışında ek izinlere sahiptir. Daha fazla bilgi için yukarıdaki rol açıklaması konusuna bakın.
-
 
 > [!div class="mx-tableFixed"]
 > | Eylemler | Açıklama |
@@ -1419,11 +1467,11 @@ Yalnızca Ileti merkezindeki kuruluşlarındaki iletileri ve güncelleştirmeler
 > | Microsoft. office365. messageCenter/messages/okundu | Microsoft. office365. messageCenter içindeki iletileri okuyun. |
 
 ### <a name="modern-commerce-user-permissions"></a>Modern ticari Kullanıcı izinleri
+
 , Bir şirket, departman veya takım için ticari satınalmaları yönetebilir. 
 
 > [!NOTE]
 > Bu rol Azure Active Directory dışında ek izinlere sahiptir. Daha fazla bilgi için yukarıdaki rol açıklaması konusuna bakın.
-
 
 > [!div class="mx-tableFixed"]
 > | Eylemler | Açıklama |
@@ -1433,13 +1481,12 @@ Yalnızca Ileti merkezindeki kuruluşlarındaki iletileri ve güncelleştirmeler
 > | Microsoft. office365. Supportbilet/allEntities/allTasks | Kendi Office 365 destek biletlerini oluşturun ve görüntüleyin. |
 > | Microsoft. office365. webPortal/allEntities/temel/okuma | Microsoft. office365. webPortal 'daki tüm kaynaklarda temel özellikleri okuyun. |
 
-
 ### <a name="network-administrator-permissions"></a>Ağ Yöneticisi izinleri
+
 , Hizmet uygulamaları olarak Microsoft 365 yazılım için ağ konumlarını yönetebilir ve kurumsal ağ tasarımı öngörülerini gözden geçirebilir.
 
 > [!NOTE]
 > Bu rol Azure Active Directory dışında ek izinlere sahiptir. Daha fazla bilgi için yukarıdaki rol açıklaması konusuna bakın.
-
 
 > [!div class="mx-tableFixed"]
 > | Eylemler | Açıklama |
@@ -1448,11 +1495,11 @@ Yalnızca Ileti merkezindeki kuruluşlarındaki iletileri ve güncelleştirmeler
 > | Microsoft. office365. Network/Locations/allProperties/allTasks | Her konum için ağ konumları özelliklerini okuyun ve yapılandırın. |
 
 ### <a name="office-apps-administrator-permissions"></a>Office uygulamaları yönetici izinleri
+
 , İlke ve ayarlar yönetimi dahil olmak üzere Office uygulamalarının bulut hizmetlerini yönetebilir ve son kullanıcının cihazlarına "yenilikler" özellik içeriğini seçme, seçme ve yayımlama yeteneğini yönetme olanağı sağlar.
 
 > [!NOTE]
 > Bu rol Azure Active Directory dışında ek izinlere sahiptir. Daha fazla bilgi için yukarıdaki rol açıklaması konusuna bakın.
-
 
 > [!div class="mx-tableFixed"]
 > | Eylemler | Açıklama |
@@ -1471,7 +1518,6 @@ Kullanmayın-genel kullanıma yönelik değildir.
 
 > [!NOTE]
 > Bu rol Azure Active Directory dışında ek izinlere sahiptir. Daha fazla bilgi için yukarıdaki rol açıklaması konusuna bakın.
-
 
 > [!div class="mx-tableFixed"]
 > | Eylemler | Açıklama |
@@ -1517,7 +1563,6 @@ Kullanmayın-genel kullanıma yönelik değildir.
 
 > [!NOTE]
 > Bu rol Azure Active Directory dışında ek izinlere sahiptir. Daha fazla bilgi için yukarıdaki rol açıklaması konusuna bakın.
-
 
 > [!div class="mx-tableFixed"]
 > | Eylemler | Açıklama |
@@ -1573,7 +1618,7 @@ Kullanmayın-genel kullanıma yönelik değildir.
 > | Microsoft. Directory/Users/Password/Update | Azure Active Directory tüm kullanıcılar için parolaları güncelleştirin. Daha ayrıntılı bilgi için çevrimiçi belgelere bakın. |
 > | Microsoft. office365. webPortal/allEntities/temel/okuma | Microsoft. office365. webPortal 'daki tüm kaynaklarda temel özellikleri okuyun. |
 
-### <a name="power-bi-service-administrator-permissions"></a>Power BI hizmeti yönetici izinleri
+### <a name="power-bi-administrator-permissions"></a>Yönetici izinlerini Power BI
 
 Power BI ürünün tüm yönlerini yönetebilir.
 
@@ -1589,7 +1634,6 @@ Power BI ürünün tüm yönlerini yönetebilir.
 > | Microsoft. office365. webPortal/allEntities/temel/okuma | Microsoft. office365. webPortal 'daki tüm kaynaklarda temel özellikleri okuyun. |
 > | Microsoft. office365. serviceHealth/allEntities/allTasks | Microsoft 365 hizmeti durumunu okuyun ve yapılandırın. |
 > | Microsoft. office365. Supportbilet/allEntities/allTasks | Office 365 destek biletleri oluşturun ve yönetin. |
-
 
 ### <a name="power-platform-administrator-permissions"></a>Güç platformu yönetici izinleri
 
@@ -1661,7 +1705,6 @@ Herhangi bir Kullanıcı (yönetici veya yönetici olmayan) için kimlik doğrul
 > [!NOTE]
 > Bu rol Azure Active Directory dışında ek izinlere sahiptir. Daha fazla bilgi için yukarıdaki rol açıklaması konusuna bakın.
 
-
 > [!div class="mx-tableFixed"]
 > | Eylemler | Açıklama |
 > | --- | --- |
@@ -1682,7 +1725,6 @@ Herhangi bir Kullanıcı (yönetici veya yönetici olmayan) için kimlik doğrul
 > [!NOTE]
 > Bu rol Azure Active Directory dışında ek izinlere sahiptir. Daha fazla bilgi için yukarıdaki rol açıklaması konusuna bakın.
 
-
 > [!div class="mx-tableFixed"]
 > | Eylemler | Açıklama |
 > | --- | --- |
@@ -1698,7 +1740,6 @@ Herhangi bir Kullanıcı (yönetici veya yönetici olmayan) için kimlik doğrul
 
 > [!NOTE]
 > Bu rol Azure Active Directory dışında ek izinlere sahiptir. Daha fazla bilgi için yukarıdaki rol açıklaması konusuna bakın.
-
 
 > [!div class="mx-tableFixed"]
 > | Eylemler | Açıklama |
@@ -1716,7 +1757,6 @@ Yer işaretleri, Q ve as, konumlar, FloorPlan gibi düzenleme içeriği oluştur
 > [!NOTE]
 > Bu rol Azure Active Directory dışında ek izinlere sahiptir. Daha fazla bilgi için yukarıdaki rol açıklaması konusuna bakın.
 
-
 > [!div class="mx-tableFixed"]
 > | Eylemler | Açıklama |
 > | --- | --- |
@@ -1729,7 +1769,6 @@ Güvenlik bilgilerini ve raporlarını okuyabilir ve Azure AD 'de yapılandırma
 
 > [!NOTE]
 > Bu rol Azure Active Directory dışında ek izinlere sahiptir. Daha fazla bilgi için yukarıdaki rol açıklaması konusuna bakın.
-
 
 > [!div class="mx-tableFixed"]
 > | Eylemler | Açıklama |
@@ -1764,7 +1803,6 @@ Güvenlik olaylarını oluşturur ve yönetir.
 > [!NOTE]
 > Bu rol Azure Active Directory dışında ek izinlere sahiptir. Daha fazla bilgi için yukarıdaki rol açıklaması konusuna bakın.
 
-
 > [!div class="mx-tableFixed"]
 > | Eylemler | Açıklama |
 > | --- | --- |
@@ -1779,14 +1817,12 @@ Güvenlik olaylarını oluşturur ve yönetir.
 > | Microsoft. office365. Supportbilet/allEntities/allTasks | Office 365 destek biletleri oluşturun ve yönetin. |
 > | Microsoft. Windows. Savunderadvancedthreatprotection/Allentitıes/Read | Windows Defender Gelişmiş tehdit koruması 'nı okuyun ve yapılandırın. |
 
-
 ### <a name="security-reader-permissions"></a>Güvenlik okuyucusu izinleri
 
 , Azure AD ve Microsoft 365 güvenlik bilgilerini ve raporlarını okuyabilir.
 
 > [!NOTE]
 > Bu rol Azure Active Directory dışında ek izinlere sahiptir. Daha fazla bilgi için yukarıdaki rol açıklaması konusuna bakın.
-
 
 > [!div class="mx-tableFixed"]
 > | Eylemler | Açıklama |
@@ -1811,7 +1847,6 @@ Güvenlik olaylarını oluşturur ve yönetir.
 > [!NOTE]
 > Bu rol Azure Active Directory dışında ek izinlere sahiptir. Daha fazla bilgi için yukarıdaki rol açıklaması konusuna bakın.
 
-
 > [!div class="mx-tableFixed"]
 > | Eylemler | Açıklama |
 > | --- | --- |
@@ -1821,13 +1856,12 @@ Güvenlik olaylarını oluşturur ve yönetir.
 > | Microsoft. office365. serviceHealth/allEntities/allTasks | Microsoft 365 hizmeti durumunu okuyun ve yapılandırın. |
 > | Microsoft. office365. Supportbilet/allEntities/allTasks | Office 365 destek biletleri oluşturun ve yönetin. |
 
-### <a name="sharepoint-service-administrator-permissions"></a>SharePoint Hizmet Yöneticisi izinleri
+### <a name="sharepoint-administrator-permissions"></a>SharePoint yönetici izinleri
 
 , SharePoint hizmetinin tüm yönlerini yönetebilir.
 
 > [!NOTE]
 > Bu rol Azure Active Directory dışında ek izinlere sahiptir. Daha fazla bilgi için yukarıdaki rol açıklaması konusuna bakın.
-
 
 > [!div class="mx-tableFixed"]
 > | Eylemler | Açıklama |
@@ -1847,80 +1881,30 @@ Güvenlik olaylarını oluşturur ve yönetir.
 > | Microsoft. office365. usageReports/allEntities/allProperties/Read | Office 365 kullanım raporlarını okuyun. |
 > | Microsoft. office365. webPortal/allEntities/standart/okuma | Microsoft. office365. webPortal 'daki tüm kaynaklarda temel özellikleri okuyun. |
 
-### <a name="teams-communications-administrator-permissions"></a>Takımlar Iletişimleri yönetici izinleri
+### <a name="skype-for-business-administrator-permissions"></a>Skype Kurumsal Yönetici izinleri
 
-, Microsoft ekipleri hizmeti içindeki çağrı ve toplantılar özelliklerini yönetebilir.
+, Skype Kurumsal ürününün tüm yönlerini yönetebilir.
 
 > [!NOTE]
 > Bu rol Azure Active Directory dışında ek izinlere sahiptir. Daha fazla bilgi için yukarıdaki rol açıklaması konusuna bakın.
-
 
 > [!div class="mx-tableFixed"]
 > | Eylemler | Açıklama |
 > | --- | --- |
 > | Microsoft. Azure. serviceHealth/Allentitıes/allTasks | Azure hizmet durumunu okuyun ve yapılandırın. |
-> | Microsoft. Azure. Supportbilet/allEntities/allTasks | Dizin düzeyinde hizmetler için Azure destek biletleri oluşturun ve yönetin. |
-> | Microsoft. office365. webPortal/allEntities/temel/okuma | Microsoft. office365. webPortal 'daki tüm kaynaklarda temel özellikleri okuyun. |
+> | Microsoft. Azure. Supportbilet/allEntities/allTasks | Azure destek biletleri oluşturun ve yönetin. |
 > | Microsoft. office365. serviceHealth/allEntities/allTasks | Microsoft 365 hizmeti durumunu okuyun ve yapılandırın. |
+> | Microsoft. office365. Sktypeınfo/allEntities/allTasks | Skype Kurumsal Çevrimiçi 'nin tüm yönlerini yönetin. |
 > | Microsoft. office365. Supportbilet/allEntities/allTasks | Office 365 destek biletleri oluşturun ve yönetin. |
-> | Microsoft. office365. usageReports/allEntities/okuma | Office 365 kullanım raporlarını okuyun. |
-> | Microsoft. ekipler/toplantılar/allProperties/allTasks | Toplantı ilkeleri, konfigürasyonlar ve konferans köprüleri dahil olmak üzere toplantıları yönetin. |
-> | Microsoft. ekipler/ses/allProperties/allTasks | Arama ilkeleri ve telefon numarası envanteri ve atama dahil olmak üzere sesi yönetin. |
-> | Microsoft. ekipler/callQuality/allProperties/Read | Çağrı kalitesi panosundaki (CQD) tüm verileri okuyun. |
-
-### <a name="teams-communications-support-engineer-permissions"></a>Takımlar Iletişimleri destek mühendisi izinleri
-
-, Gelişmiş araçları kullanarak takımlar içindeki iletişim sorunlarını giderebilir.
-
-> [!NOTE]
-> Bu rol Azure Active Directory dışında ek izinlere sahiptir. Daha fazla bilgi için yukarıdaki rol açıklaması konusuna bakın.
-
-
-> [!div class="mx-tableFixed"]
-> | Eylemler | Açıklama |
-> | --- | --- |
-> | Microsoft. Azure. serviceHealth/Allentitıes/allTasks | Azure hizmet durumunu okuyun ve yapılandırın. |
+> | Microsoft. office365. usageReports/allEntities/okuma    | Office 365 kullanım raporlarını okuyun. |
 > | Microsoft. office365. webPortal/allEntities/temel/okuma | Microsoft. office365. webPortal 'daki tüm kaynaklarda temel özellikleri okuyun. |
-> | Microsoft. office365. serviceHealth/allEntities/allTasks | Microsoft 365 hizmeti durumunu okuyun ve yapılandırın. |
-> | Microsoft. ekipler/callQuality/allProperties/Read | Çağrı kalitesi panosundaki (CQD) tüm verileri okuyun. |
 
-### <a name="teams-communications-support-specialist-permissions"></a>Takımlar Iletişimleri destek uzmanı izinleri
-
-Temel araçları kullanarak takımlar içindeki iletişim sorunlarını giderebilirsiniz.
-
-> [!NOTE]
-> Bu rol Azure Active Directory dışında ek izinlere sahiptir. Daha fazla bilgi için yukarıdaki rol açıklaması konusuna bakın.
-
-
-> [!div class="mx-tableFixed"]
-> | Eylemler | Açıklama |
-> | --- | --- |
-> | Microsoft. Azure. serviceHealth/Allentitıes/allTasks | Azure hizmet durumunu okuyun ve yapılandırın. |
-> | Microsoft. office365. webPortal/allEntities/temel/okuma | Microsoft. office365. webPortal 'daki tüm kaynaklarda temel özellikleri okuyun. |
-> | Microsoft. office365. serviceHealth/allEntities/allTasks | Microsoft 365 hizmeti durumunu okuyun ve yapılandırın. |
-> | Microsoft. ekipler/callQuality/Basic/Read | Çağrı kalitesi panosundaki temel verileri okuyun (CQD). |
-
-### <a name="teams-devices-administrator-permissions"></a>Takımlar cihazlar yönetici izinleri
-
-Ekip sertifikalı cihazlarda yönetim ile ilgili görevler gerçekleştirebilir.
-
-> [!NOTE]
-> Bu rol Azure Active Directory dışında ek izinlere sahiptir. Daha fazla bilgi için yukarıdaki rol açıklaması konusuna bakın.
-
-
-> [!div class="mx-tableFixed"]
-> | Eylemler | Açıklama |
-> | --- | --- |
-> | Microsoft. office365. webPortal/allEntities/temel/okuma | Microsoft. office365. webPortal 'daki tüm kaynaklarda temel özellikleri okuyun. |
-> | Microsoft. takımlar/cihazlar/temel/okuma | Yapılandırma ilkeleri de dahil olmak üzere takımlar tarafından sertifikalı cihazların tüm yönlerini yönetin. |
-
-### <a name="teams-service-administrator-permissions"></a>Takımlar hizmeti yönetici izinleri
+### <a name="teams-administrator-permissions"></a>Takımlar yönetici izinleri
 
 , Microsoft ekipleri hizmetini yönetebilir.
 
 > [!NOTE]
 > Bu rol Azure Active Directory dışında ek izinlere sahiptir. Daha fazla bilgi için yukarıdaki rol açıklaması konusuna bakın.
-
 
 > [!div class="mx-tableFixed"]
 > | Eylemler | Açıklama |
@@ -1944,7 +1928,71 @@ Ekip sertifikalı cihazlarda yönetim ile ilgili görevler gerçekleştirebilir.
 > | Microsoft. office365. webPortal/allEntities/standart/okuma | Microsoft. office365. webPortal 'daki tüm kaynaklarda temel özellikleri okuyun. |
 > | Microsoft. ekipler/allEntities/allProperties/allTasks | Ekipteki tüm kaynakları yönetin. |
 
+### <a name="teams-communications-administrator-permissions"></a>Takımlar Iletişimleri yönetici izinleri
+
+, Microsoft ekipleri hizmeti içindeki çağrı ve toplantılar özelliklerini yönetebilir.
+
+> [!NOTE]
+> Bu rol Azure Active Directory dışında ek izinlere sahiptir. Daha fazla bilgi için yukarıdaki rol açıklaması konusuna bakın.
+
+> [!div class="mx-tableFixed"]
+> | Eylemler | Açıklama |
+> | --- | --- |
+> | Microsoft. Azure. serviceHealth/Allentitıes/allTasks | Azure hizmet durumunu okuyun ve yapılandırın. |
+> | Microsoft. Azure. Supportbilet/allEntities/allTasks | Dizin düzeyinde hizmetler için Azure destek biletleri oluşturun ve yönetin. |
+> | Microsoft. office365. webPortal/allEntities/temel/okuma | Microsoft. office365. webPortal 'daki tüm kaynaklarda temel özellikleri okuyun. |
+> | Microsoft. office365. serviceHealth/allEntities/allTasks | Microsoft 365 hizmeti durumunu okuyun ve yapılandırın. |
+> | Microsoft. office365. Supportbilet/allEntities/allTasks | Office 365 destek biletleri oluşturun ve yönetin. |
+> | Microsoft. office365. usageReports/allEntities/okuma | Office 365 kullanım raporlarını okuyun. |
+> | Microsoft. ekipler/toplantılar/allProperties/allTasks | Toplantı ilkeleri, konfigürasyonlar ve konferans köprüleri dahil olmak üzere toplantıları yönetin. |
+> | Microsoft. ekipler/ses/allProperties/allTasks | Arama ilkeleri ve telefon numarası envanteri ve atama dahil olmak üzere sesi yönetin. |
+> | Microsoft. ekipler/callQuality/allProperties/Read | Çağrı kalitesi panosundaki (CQD) tüm verileri okuyun. |
+
+### <a name="teams-communications-support-engineer-permissions"></a>Takımlar Iletişimleri destek mühendisi izinleri
+
+, Gelişmiş araçları kullanarak takımlar içindeki iletişim sorunlarını giderebilir.
+
+> [!NOTE]
+> Bu rol Azure Active Directory dışında ek izinlere sahiptir. Daha fazla bilgi için yukarıdaki rol açıklaması konusuna bakın.
+
+> [!div class="mx-tableFixed"]
+> | Eylemler | Açıklama |
+> | --- | --- |
+> | Microsoft. Azure. serviceHealth/Allentitıes/allTasks | Azure hizmet durumunu okuyun ve yapılandırın. |
+> | Microsoft. office365. webPortal/allEntities/temel/okuma | Microsoft. office365. webPortal 'daki tüm kaynaklarda temel özellikleri okuyun. |
+> | Microsoft. office365. serviceHealth/allEntities/allTasks | Microsoft 365 hizmeti durumunu okuyun ve yapılandırın. |
+> | Microsoft. ekipler/callQuality/allProperties/Read | Çağrı kalitesi panosundaki (CQD) tüm verileri okuyun. |
+
+### <a name="teams-communications-support-specialist-permissions"></a>Takımlar Iletişimleri destek uzmanı izinleri
+
+Temel araçları kullanarak takımlar içindeki iletişim sorunlarını giderebilirsiniz.
+
+> [!NOTE]
+> Bu rol Azure Active Directory dışında ek izinlere sahiptir. Daha fazla bilgi için yukarıdaki rol açıklaması konusuna bakın.
+
+> [!div class="mx-tableFixed"]
+> | Eylemler | Açıklama |
+> | --- | --- |
+> | Microsoft. Azure. serviceHealth/Allentitıes/allTasks | Azure hizmet durumunu okuyun ve yapılandırın. |
+> | Microsoft. office365. webPortal/allEntities/temel/okuma | Microsoft. office365. webPortal 'daki tüm kaynaklarda temel özellikleri okuyun. |
+> | Microsoft. office365. serviceHealth/allEntities/allTasks | Microsoft 365 hizmeti durumunu okuyun ve yapılandırın. |
+> | Microsoft. ekipler/callQuality/Basic/Read | Çağrı kalitesi panosundaki temel verileri okuyun (CQD). |
+
+### <a name="teams-devices-administrator-permissions"></a>Takımlar cihazlar yönetici izinleri
+
+Ekip sertifikalı cihazlarda yönetim ile ilgili görevler gerçekleştirebilir.
+
+> [!NOTE]
+> Bu rol Azure Active Directory dışında ek izinlere sahiptir. Daha fazla bilgi için yukarıdaki rol açıklaması konusuna bakın.
+
+> [!div class="mx-tableFixed"]
+> | Eylemler | Açıklama |
+> | --- | --- |
+> | Microsoft. office365. webPortal/allEntities/temel/okuma | Microsoft. office365. webPortal 'daki tüm kaynaklarda temel özellikleri okuyun. |
+> | Microsoft. takımlar/cihazlar/temel/okuma | Yapılandırma ilkeleri de dahil olmak üzere takımlar tarafından sertifikalı cihazların tüm yönlerini yönetin. |
+
 ### <a name="usage-summary-reports-reader-permissions"></a>Kullanım Özeti raporları okuyucu izinleri
+
 , M365 kullanım analizlerinin ve üretkenlik puanındaki yalnızca kiracı düzeyindeki toplamaları görebilir.
 
 > [!div class="mx-tableFixed"]
@@ -1954,6 +2002,7 @@ Ekip sertifikalı cihazlarda yönetim ile ilgili görevler gerçekleştirebilir.
 > | Microsoft. office365. webPortal/allEntities/standart/okuma | Microsoft. office365. webPortal 'daki tüm kaynaklarda temel özellikleri okuyun.|
 
 ### <a name="user-administrator-permissions"></a>Kullanıcı Yöneticisi izinleri
+
 , Sınırlı yöneticiler için parola sıfırlama dahil olmak üzere kullanıcıların ve grupların tüm yönlerini yönetebilir.
 
 > [!div class="mx-tableFixed"]
@@ -2001,6 +2050,7 @@ Grafik displayName | Görünen ad Azure portal | Directoryroletemplateıd
 Uygulama Yöneticisi | Uygulama Yöneticisi | 9B895D92-2CD3-44C7-9D02-A6AC2D5EA5C3
 Uygulama Geliştirici | Uygulama geliştiricisi | CF1C38E5-3621-4004-A7CB-879624DCED7C
 Kimlik doğrulama Yöneticisi | Kimlik doğrulama Yöneticisi | c4e39bd9-1100-46d3-8c65-fb160da0071f
+Kimlik doğrulama Ilkesi Yöneticisi | Kimlik doğrulama İlkesi Yöneticisi | 0526716b-113d-4c15-b2c8-68e3c22b9f80
 Saldırı yükü yazarı | Saldırı yükü yazarı | 9c6df0f2-1e7c-4dc3-B195-66dfbd24aa8f
 Saldırı simülasyonu Yöneticisi | Saldırı simülasyonu Yöneticisi | c430b396-e693-46cc-96f3-db01bf8bb62a
 Azure AD 'ye katılmış cihaz yerel Yöneticisi | Azure AD 'ye katılmış cihaz yerel Yöneticisi | 9f06204d-73c1-4d4c-880a-6edb90606fd8
@@ -2022,6 +2072,7 @@ Cihaz kullanıcıları | Kullanım Dışı | d405c6df-0af8-4e3b-95e4-4d06e542189
 Dizin okuyucuları | Dizin okuyucuları | 88d8e3e3-8f55-4a1e-953a-9b9898b8876b
 Dizin eşitleme hesapları | Kullanılmaması nedeniyle gösterilmez | d29b2b05-8046-44ba-8758-1e26182fcf32
 Dizin yazarları | Dizin yazarları | 9360feb5-f418-4baa-8175-e2a00bac4301
+Etki alanı adı yöneticisi | Etki alanı adı yöneticisi | 8329153b-31d0-4727-b945-745eb3bc5f31
 Dynamics 365 Yöneticisi | Dynamics 365 Yöneticisi | 44367163-eba1-44c3-98af-f5787879f96a
 Exchange Yöneticisi | Exchange yöneticisi | 29232cdf-9323-42fd-ade2-1d097af3e4de
 Dış kimlik Kullanıcı akış Yöneticisi | Dış kimlik Kullanıcı akış Yöneticisi | 6e591065-9bad-43ed-90f3-e9424366d2f0
@@ -2061,11 +2112,11 @@ Güvenlik Okuyucusu | Güvenlik okuyucusu | 5d6b6bb7-de71-4623-B4AF-96380a352509
 Hizmet desteği Yöneticisi | Hizmet desteği yöneticisi | f023fd81-a637-4b56-95fd-791ac0226033
 SharePoint Yöneticisi | SharePoint yöneticisi | f28a1f50-f6e7-4571-818b-6a12f2af6b6c
 Skype Kurumsal Yöneticisi | Skype Kurumsal yöneticisi | 75941009-915a-4869-ABE7-691bff18279e
+Takımlar Yöneticisi | Takımlar Yöneticisi | 69091246-20e8-4a56-aa4d-066075b2a7a8
 Takımlar Iletişim Yöneticisi | Takımlar Iletişim Yöneticisi | baf37b3a-610e-45da-9e62-d9d1e5e8914b
 Takımlar Iletişimleri Destek Mühendisi | Takımlar Iletişimleri Destek Mühendisi | f70938a0-fc10-4177-9e90-2178f8765737
 Takımlar Iletişimleri destek uzmanı | Takımlar Iletişimleri destek uzmanı | fcf91098-03e3-41a9-b5ba-6f0ec8188a12
 Takımlar cihazları Yöneticisi | Takımlar cihazları Yöneticisi | 3d762c5a-1B6C-493F-843e-55a3b42923d4
-Takımlar Hizmet Yöneticisi | Takımlar Hizmet Yöneticisi | 69091246-20e8-4a56-aa4d-066075b2a7a8
 Kullanım Özeti raporları okuyucusu | Kullanım Özeti raporları okuyucusu | 75934031-6c7e-415A-99d7-48dbd49e875e
 Kullanıcı | Kullanılmadığından gösterilmez | a0b1b346-4d3e-4e8b-98f8-753987be4970
 Kullanıcı Yöneticisi | Kullanıcı yöneticisi | fe930be7-5e62-47db-91af-98c3a49a38b1
@@ -2110,7 +2161,6 @@ Kimlik doğrulama Yöneticisi | &nbsp; | &nbsp; | :heavy_check_mark: | &nbsp; | 
 Dizin okuyucuları | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
 Genel Yönetici | &nbsp; | &nbsp; | &nbsp; | &nbsp; | :heavy_check_mark: | :heavy_check_mark:\*
 Gruplar Yöneticisi | &nbsp; | &nbsp; | &nbsp; | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
-Konuk | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
 Konuk davetci | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
 Yardım Masası Yöneticisi | &nbsp; | :heavy_check_mark: | &nbsp; | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
 İleti Merkezi okuyucusu | &nbsp; | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
@@ -2118,7 +2168,6 @@ Parola Yöneticisi | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark
 Ayrıcalıklı kimlik doğrulama Yöneticisi | &nbsp; | &nbsp; | &nbsp; | &nbsp; | :heavy_check_mark: | :heavy_check_mark:
 Ayrıcalıklı rol yöneticisi | &nbsp; | &nbsp; | &nbsp; | &nbsp; | :heavy_check_mark: | :heavy_check_mark:
 Rapor okuyucu | &nbsp; | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
-Kısıtlı Konuk | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
 Kullanıcı (yönetici rolü yok) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
 Kullanıcı Yöneticisi | &nbsp; | &nbsp; | &nbsp; | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
 Kullanım Özeti raporları okuyucusu | &nbsp; | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:

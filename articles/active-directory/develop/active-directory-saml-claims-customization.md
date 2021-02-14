@@ -13,12 +13,12 @@ ms.date: 12/09/2020
 ms.author: kenwith
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 0ded249a55e5a59bdcad7407694cbd5ed4cf2352
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 05447f41ca891adfe14533a74dfedf153e3c5773
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98756064"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100102708"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Nasıl yapılır: kurumsal uygulamalar için SAML belirtecinde verilen talepleri özelleştirme
 
@@ -54,7 +54,7 @@ SAML isteği Nameıdpolicy için bir öğe içermiyorsa, Microsoft Identity plat
 
 **Ad tanımlayıcı biçimi Seç** açılan menüsünde, aşağıdaki seçeneklerden birini seçebilirsiniz.
 
-| NameID biçimi | Açıklama |
+| NameID biçimi | Description |
 |---------------|-------------|
 | **Varsayılanını** | Microsoft Identity platform varsayılan kaynak biçimini kullanır. |
 | **Kalıcı** | Microsoft Identity platform, NameID biçimi olarak persistent kullanacaktır. |
@@ -81,10 +81,8 @@ Daha fazla bilgi için bkz. [Tablo 3: kaynak başına GEÇERLI kimlik değerleri
 
 Ayrıca, Azure AD 'de tanımladığınız talepler için herhangi bir sabit (statik) değer atayabilirsiniz. Sabit değer atamak için lütfen aşağıdaki adımları izleyin:
 
-1. <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span></a>, **Kullanıcı öznitelikleri & talepler** bölümünde, talepleri düzenlemek için **Düzenle** simgesine tıklayın.
-
+1. <a href="https://portal.azure.com/" target="_blank">Azure Portal</a>, **Kullanıcı öznitelikleri & talepler** bölümünde, talepleri düzenlemek için **Düzenle** simgesine tıklayın.
 1. Değiştirmek istediğiniz gerekli talebe tıklayın.
-
 1. **Kaynak özniteliğinde** kuruluşunuza göre sabit değeri tırnak işareti olmadan girin ve **Kaydet**' e tıklayın.
 
     ![Kuruluş öznitelikleri & talepler bölümünde Azure portal](./media/active-directory-saml-claims-customization/organization-attribute.png)

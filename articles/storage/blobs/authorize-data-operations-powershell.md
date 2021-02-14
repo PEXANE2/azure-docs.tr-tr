@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/14/2020
+ms.date: 02/10/2021
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: blobs
-ms.openlocfilehash: de42854f512a69b7b70a15a10fe8499ca1d0bf8b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 45fa5cf4c76577cb5e8ba9bf482f4aab7301e3c6
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96017738"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100391499"
 ---
 # <a name="run-powershell-commands-with-azure-ad-credentials-to-access-blob-data"></a>Blob verilerine erişmek için Azure AD kimlik bilgileriyle PowerShell komutlarını çalıştırma
 
@@ -28,6 +28,9 @@ Azure rol tabanlı erişim denetimi (Azure RBAC) aracılığıyla bir Azure AD g
 Azure depolama uzantıları blob verilerinde işlemler için desteklenir. Hangi işlemler çağrlayabileceği, PowerShell 'de oturum açmak için Azure AD güvenlik sorumlusuna verilen izinlere bağlıdır. Azure depolama kapsayıcıları izinleri Azure RBAC aracılığıyla atanır. Örneğin, **BLOB veri okuyucusu** rolünü atadıysanız, bir kapsayıcıdan veri okuyan betik komutlarını çalıştırabilirsiniz. **BLOB veri katılımcısı** rolüne atandıysanız, bir kapsayıcıyı veya içerdikleri verileri okuyan, yazan veya silen betik komutlarını çalıştırabilirsiniz.
 
 Bir kapsayıcıdaki her bir Azure depolama işlemi için gereken izinler hakkında daha fazla bilgi için bkz. [OAuth belirteçleriyle depolama Işlemlerini çağırma](/rest/api/storageservices/authorize-with-azure-active-directory#call-storage-operations-with-oauth-tokens).  
+
+> [!IMPORTANT]
+> Bir depolama hesabı Azure Resource Manager **salt okunur** bir kilit ile kilitlendiğinde, bu depolama hesabı Için [liste anahtarları](/rest/api/storagerp/storageaccounts/listkeys) işlemine izin verilmez. **Liste anahtarları** bir post işlemidir ve hesap Için **salt okunur** BIR kilit yapılandırıldığında tüm post işlemleri engellenir. Bu nedenle, hesap **salt okunur** bir kilit ile kilitlendiğinde, hesap anahtarlarına sahip olmayan kullanıcıların blob verilerine erişmek IÇIN Azure AD kimlik bilgilerini kullanması gerekir. PowerShell 'de, `-UseConnectedAccount` Azure AD kimlik bilgilerinizle bir **Azurestoraygecontext** nesnesi oluşturmak için parametresini ekleyin.
 
 ## <a name="call-powershell-commands-using-azure-ad-credentials"></a>Azure AD kimlik bilgilerini kullanarak PowerShell komutlarını çağırma
 

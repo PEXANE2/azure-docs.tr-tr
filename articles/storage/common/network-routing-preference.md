@@ -11,18 +11,21 @@ ms.author: santoshc
 ms.reviewer: tamram
 ms.subservice: common
 ms.custom: references_regions
-ms.openlocfilehash: 9afe58434d60280f635deab75b763077bc76b93c
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: 601c8dfb4b4e2f16da5c560f67e2d251a5d3072a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98797628"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100362752"
 ---
 # <a name="configure-network-routing-preference-for-azure-storage-preview"></a>Azure depolama için ağ yönlendirme tercihini yapılandırma (Önizleme)
 
 Ağ trafiğinin Internet üzerinden kendi hesabınıza nasıl yönlendirildiğini belirtmek için, Azure depolama hesabınız için ağ [yönlendirme tercihi](../../virtual-network/routing-preference-overview.md) 'ni (Önizleme) yapılandırabilirsiniz. Varsayılan olarak, Internet 'ten gelen trafik, [Microsoft Global ağı](../../networking/microsoft-global-network.md)üzerinden depolama hesabınızın genel uç noktasına yönlendirilir. Azure depolama, trafiğin depolama hesabınıza nasıl yönlendirildiğini yapılandırmak için ek seçenekler sağlar.
 
 Yönlendirme tercihini yapılandırmak, Premium ağ performansı veya maliyeti için trafiğinizi iyileştirmek için esneklik sağlar. Bir yönlendirme tercihi yapılandırdığınızda, trafiğin varsayılan olarak depolama hesabınız için genel uç noktaya nasıl yönlendirilmeyeceğini belirtirsiniz. Depolama hesabınız için rotaya özgü uç noktaları da yayımlayabilirsiniz.
+
+> [!NOTE]
+> Bu özellik, Premium performans katmanını veya bölgesel olarak yedekli depolamayı (ZRS) kullanmak üzere yapılandırılmış depolama hesaplarında desteklenmez.
 
 ## <a name="microsoft-global-network-versus-internet-routing"></a>Microsoft Global Network ve Internet yönlendirme karşılaştırması
 

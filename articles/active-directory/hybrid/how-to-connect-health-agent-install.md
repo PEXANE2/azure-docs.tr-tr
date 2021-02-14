@@ -17,12 +17,12 @@ ms.topic: how-to
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 57362aa84886d7b7d764617ce5a43ca2393bed52
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 0e644b7937f6ccb23b4833405b8f4ed3119879a5
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98018250"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100362293"
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>Aracı yüklemesini Azure AD Connect Health
 
@@ -34,7 +34,7 @@ Aşağıdaki tabloda Azure AD Connect Health kullanımı için gereksinimler lis
 
 | Gereksinim | Açıklama |
 | --- | --- |
-| Azure AD Premium yüklendi. |Azure AD Connect Health bir Azure AD Premium özelliğidir. Daha fazla bilgi için bkz. [Azure AD Premium kaydolma](../fundamentals/active-directory-get-started-premium.md). <br /><br />30 günlük ücretsiz denemeyi başlatmak için bkz. [deneme sürümü başlatma](https://azure.microsoft.com/trial/get-started-active-directory/). |
+| Azure AD Premium (P1 veya P2) alt Sciption vardır.  |Azure AD Connect Health, Azure AD Premium özelliğidir (P1 veya P2). Daha fazla bilgi için bkz. [Azure AD Premium kaydolma](../fundamentals/active-directory-get-started-premium.md). <br /><br />30 günlük ücretsiz denemeyi başlatmak için bkz. [deneme sürümü başlatma](https://azure.microsoft.com/trial/get-started-active-directory/). |
 | Azure AD 'de Genel yöneticuyoruz. |Varsayılan olarak, yalnızca genel Yöneticiler, sistem durumu aracılarını yükleyebilir ve yapılandırabilir, portala erişebilir ve Azure AD Connect Health içinde herhangi bir işlem yapabilir. Daha fazla bilgi için bkz. [Azure AD dizininizi yönetme](../fundamentals/active-directory-whatis.md). <br /><br /> Azure rol tabanlı erişim denetimi (Azure RBAC) kullanarak, kuruluşunuzdaki diğer kullanıcıların Azure AD Connect Health erişmesine izin verebilirsiniz. Daha fazla bilgi için bkz. [Azure RBAC Azure AD Connect Health](how-to-connect-health-operations.md#manage-access-with-azure-rbac). <br /><br />**Önemli**: aracıları yüklemek için bir iş veya okul hesabı kullanın. Microsoft hesabı kullanamazsınız. Daha fazla bilgi için bkz. [Azure 'a kuruluş olarak kaydolma](../fundamentals/sign-up-organization.md). |
 | Azure AD Connect Health Aracısı hedeflenen her sunucuya yüklenir. | Sistem durumu aracılarının veri alabilmesi ve izleme ve analiz özellikleri sağlaması için hedeflenen sunucularda yüklü ve yapılandırılmış olması gerekir. <br /><br />Örneğin, Active Directory Federasyon Hizmetleri (AD FS) (AD FS) altyapınızdan veri almak için aracıyı AD FS sunucusuna ve Web uygulaması proxy sunucusuna yüklemelisiniz. Benzer şekilde, şirket içi Azure AD Domain Services (Azure AD DS) altyapınızdan veri almak için aracıyı etki alanı denetleyicilerine yüklemelisiniz.  |
 | Azure hizmet uç noktalarında giden bağlantı vardır. | Yükleme ve çalışma zamanı sırasında, aracı ile Azure AD Connect Health hizmet uç noktaları arasında bağlantı kurulması gerekir. Güvenlik duvarları giden bağlantıyı engel, [giden bağlantı uç noktalarını](how-to-connect-health-agent-install.md#outbound-connectivity-to-the-azure-service-endpoints) izin verilenler listesine ekleyin. |
@@ -195,7 +195,7 @@ Aracının yüklü olduğunu doğrulamak için sunucuda aşağıdaki hizmetleri 
 ![Sunucuda Eşitleme Hizmetleri için çalışan Azure AD Connect Health gösteren ekran görüntüsü.](./media/how-to-connect-health-agent-install/services.png)
 
 > [!NOTE]
-> Azure AD Connect Health kullanmak için Azure AD Premium sahip olmanız gerektiğini unutmayın. Azure AD Premium yoksa, Azure portal yapılandırmayı tamamlayamazsınız. Daha fazla bilgi için [gereksinimlere](how-to-connect-health-agent-install.md#requirements)bakın.
+> Azure AD Connect Health kullanmak için Azure AD Premium (P1 veya P2) sahip olmanız gerektiğini unutmayın. Azure AD Premium yoksa, Azure portal yapılandırmayı tamamlayamazsınız. Daha fazla bilgi için [gereksinimlere](how-to-connect-health-agent-install.md#requirements)bakın.
 >
 >
 
@@ -351,7 +351,7 @@ Bir proxy sunucusunu el ile belirtebilirsiniz. Sistem durumu aracısını çalı
 Set-AzureAdConnectHealthProxySettings -HttpsProxyAddress address:port
 ```
 
-İşte bir örnek: 
+Aşağıda bir örnek verilmiştir: 
 
 `Set-AzureAdConnectHealthProxySettings -HttpsProxyAddress myproxyserver: 443`
 

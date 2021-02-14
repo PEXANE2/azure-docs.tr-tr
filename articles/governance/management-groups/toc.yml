@@ -22,9 +22,15 @@
     - name: Yönetim grubu oluşturma - .NET
       displayName: hierarchy
       href: ./create-management-group-dotnet.md
+    - name: Yönetim grubu oluşturma-go
+      displayName: hierarchy
+      href: ./create-management-group-go.md
     - name: Yönetim grubu oluşturma - JavaScript
       displayName: hierarchy
       href: ./create-management-group-javascript.md
+    - name: Yönetim grubu oluşturma-Python
+      displayName: hierarchy
+      href: ./create-management-group-python.md
     - name: Yönetim grubu oluşturma - REST
       displayName: hierarchy
       href: ./create-management-group-rest-api.md
@@ -42,14 +48,18 @@
       href: ./how-to/protect-resource-hierarchy.md
 - name: Başvuru
   items:
-    - name: Azure CLI’si
+    - name: Azure CLI
       href: /cli/azure/account/management-group
     - name: Azure PowerShell
       href: /powershell/module/az.resources/#resources
     - name: .NET için Azure SDK
       href: /dotnet/api/overview/azure/managementgroups
+    - name: Go için Azure SDK
+      href: 'https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/services/preview/resources/mgmt/2018-03-01-preview/managementgroups'
     - name: JavaScript için Azure SDK
       href: /javascript/api/@azure/arm-managementgroups/managementgroups
+    - name: Python için Azure SDK
+      href: /python/api/azure-mgmt-managementgroups/azure.mgmt.managementgroups
     - name: REST
       href: /rest/api/resources/managementgroups
     - name: Resource Manager şablonları

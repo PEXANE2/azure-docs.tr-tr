@@ -1,19 +1,19 @@
 ---
 title: SYNAPSE Studio 'da SYNAPSE RBAC rol atamalarını gözden geçirme
 description: Bu makalede SYNAPSE Studio kullanarak SYNAPSE RBAC rol atamalarının nasıl gözden geçirkullanılacağı açıklanmaktadır
-author: billgib
+author: RonyMSFT
 ms.service: synapse-analytics
 ms.topic: how-to
 ms.subservice: security
 ms.date: 12/1/2020
-ms.author: billgib
+ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: ee3b2c69d7782dca10b16a3b1726b75bfd99326e
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 9065ca9c7638f3d2bda36e4831b81963936f4b45
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98218134"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100102164"
 ---
 # <a name="how-to-review-synapse-rbac-role-assignments"></a>SYNAPSE RBAC rol atamalarını gözden geçirme
 

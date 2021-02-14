@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/26/2021
+ms.date: 02/11/2021
 ms.author: memildin
-ms.openlocfilehash: 9e537bfa782569fb8fa2a7957c6874bda69d8c06
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: c12ad505777111499fb354709ce606189398458f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98805361"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100391956"
 ---
 # <a name="pricing-of-azure-security-center"></a>Azure Güvenlik Merkezi fiyatlandırması
 Azure Güvenlik Merkezi, Azure’da, şirket içinde ve diğer bulutlarda çalışan iş yükleri için birleşik güvenlik yönetimi ve gelişmiş tehdit koruması sağlar. Karma bulut iş yükleri, tehditlere maruz kalma olasılığını azaltan etkin savunmaları ve hızlı gelişen siber risklerle hızlanmanıza yardımcı olacak akıllı algılama üzerinde görünürlük ve denetim sağlar.
@@ -118,10 +118,9 @@ Uç nokta için bir Microsoft Defender lisansınız zaten varsa, Azure Defender 
 İndirimi onaylamak için, güvenlik merkezi 'nin destek ekibine başvurun ve ilgili her lisans için ilgili çalışma alanı KIMLIĞI, bölge ve lisans bilgilerini belirtin.
 
 ### <a name="my-subscription-has-azure-defender-for-servers-enabled-do-i-pay-for-not-running-servers"></a>Aboneliğimin etkinleştirilmiş sunucular için Azure Defender 'ı var, çalışan olmayan sunucular için ücret ödersiniz mi? 
-Hayır. Azure Defender 'ı bir abonelik üzerinde [sunucular için](defender-for-servers-introduction.md) etkinleştirdiğinizde, yalnızca sunucuları çalıştırmak için saatlik olarak faturalandırılırsınız. Kapalı olduğu süre boyunca kapalı olan herhangi bir sunucu için ücret ödersiniz. 
+Hayır. Bir abonelikteki [sunucular Için Azure Defender](defender-for-servers-introduction.md) 'ı etkinleştirdiğinizde, "serbest bırakıldı" durumunda olan tüm sunucular söz konusu durumdayken ücretlendirilmezsiniz.
 
-> [!TIP]
-> Bu, Güvenlik Merkezi tarafından korunan diğer kaynak türleri için de geçerlidir. 
+:::image type="content" source="media/security-center-pricing/deallocated-virtual-machines.png" alt-text="Serbest bırakılmış bir makineyi gösteren Azure sanal makineleri":::
 
 ### <a name="will-i-be-charged-for-machines-without-the-log-analytics-agent-installed"></a>Log Analytics Aracısı yüklenmeden makineler için ücretlendirilmem gerekir mi?
 Evet. Azure Defender 'ı bir abonelik üzerinde [sunucular için](defender-for-servers-introduction.md) etkinleştirdiğinizde, Bu abonelikteki makineler Log Analytics aracısını yüklememiş olsanız bile bir dizi koruma alır.

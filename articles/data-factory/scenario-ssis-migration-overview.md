@@ -1,22 +1,17 @@
 ---
 title: Şirket içi SQL Server Integration Services (SSIS) iş yüklerini SSIS Azure Data Factory (ADF) olarak geçirme
 description: On-premises SSIS iş yüklerini ADF 'de SSIS 'e geçirin.
-services: data-factory
-documentationcenter: ''
 author: chugugrace
 ms.author: chugu
-ms.reviewer: ''
-manager: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 9/3/2019
-ms.openlocfilehash: ef4b01e38a60d6770ba476988fab934ada0bc631
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 78c488302a874319f79a143e4657d161fe849855
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92635703"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100373615"
 ---
 # <a name="migrate-on-premises-ssis-workloads-to-ssis-in-adf"></a>Şirket içi SSIS iş yüklerini ADF 'de SSIS 'ye geçirme
 
@@ -28,7 +23,7 @@ Veritabanı iş yüklerinizi, Azure SQL veritabanı veya Azure SQL yönetilen ö
 
 Azure Data Factory (ADF) içindeki Azure-SSIS Integration Runtime (IR), SSIS paketlerinin çalıştırılmasını destekler. Azure-SSIS IR sağlandıktan sonra, Azure 'da paketlerinizi dağıtmak ve çalıştırmak için SQL Server Veri Araçları (SSDT)/SQL Server Management Studio (SSMS) gibi tanıdık araçları ve dtınstall/dtutil/dtexec gibi komut satırı yardımcı programlarını kullanabilirsiniz. Daha fazla bilgi için bkz. [Azure SSIS Asansör-ve-SHIFT 'e genel bakış](/sql/integration-services/lift-shift/ssis-azure-lift-shift-ssis-packages-overview).
 
-Bu makalede, şirket içi SSIS 'den SSIS 'e yönelik ETL iş yüklerinizin geçiş süreci ADF 'de gösterilmektedir. Geçiş işlemi iki aşamadan oluşur: **değerlendirme** ve **geçiş** .
+Bu makalede, şirket içi SSIS 'den SSIS 'e yönelik ETL iş yüklerinizin geçiş süreci ADF 'de gösterilmektedir. Geçiş işlemi iki aşamadan oluşur: **değerlendirme** ve **geçiş**.
 
 ## <a name="assessment"></a>Değerlendirme
 
@@ -49,7 +44,7 @@ Data Migration Yardımcısı (DMA), bu amaçla yerel olarak yüklenebilen ve ça
   - MSDB, SSIS paketlerini depolamak için kullanılan SQL Server bir sistem veritabanıdır.
   - SSIS paketlerini depolamak için kullanılan SQL Server yükleme yolundaki belirli bir klasör olan yönetilen dosya sistemi.
 
-DMA, **DMA sürümü v 5.0** 'Dan beri **dosya sistemi** , **paket deposu** ve **SSIS kataloğunda** depolanan paketlerin toplu değerlendirmesini desteklemektedir.
+DMA, **DMA sürümü v 5.0**'Dan beri **dosya sistemi**, **paket deposu** ve **SSIS kataloğunda** depolanan paketlerin toplu değerlendirmesini desteklemektedir.
 
 [DMA](/sql/dma/dma-overview)'yı alın ve [paket değerlendirmenizi gerçekleştirin](/sql/dma/dma-assess-ssis).
 

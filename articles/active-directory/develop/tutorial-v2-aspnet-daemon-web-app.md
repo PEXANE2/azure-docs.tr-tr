@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/10/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: a5f0a7d8221e970c8c1aa3c1ddffbfc56f2d5715
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.openlocfilehash: 4fccff70fd267aef84550b4e2f5d6f5f9422a341
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99226194"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100103031"
 ---
 # <a name="tutorial-build-a-multi-tenant-daemon-that-uses-the-microsoft-identity-platform"></a>Öğretici: Microsoft Identity platformunu kullanan çok kiracılı bir Daemon oluşturma
 
@@ -93,7 +93,7 @@ Otomasyonu kullanmak istemiyorsanız, aşağıdaki bölümlerde bulunan adımlar
 
 ### <a name="choose-the-azure-ad-tenant"></a>Azure AD kiracısını seçme
 
-1. <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>oturum açın.
+1. <a href="https://portal.azure.com/" target="_blank">Azure portalında</a> oturum açın.
 1. Birden fazla kiracıya erişiminiz varsa, uygulamayı kaydetmek istediğiniz kiracıyı seçmek için üst menüdeki **Dizin + abonelik** filtresini kullanın :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: .
 
 
@@ -116,7 +116,7 @@ Otomasyonu kullanmak istemiyorsanız, aşağıdaki bölümlerde bulunan adımlar
 1. **İstemci gizli** dizileri bölümünde **yeni istemci parolası**' nı seçin. 
 1. Bir anahtar açıklaması girin (örneğin, **uygulama gizli** dizisi).
 1. **1 yılda**, **2 yıl içinde** bir anahtar süresi seçin veya **hiçbir zaman sona ermez**.
-1. **Ekle**’yi seçin. Anahtar değerini güvenli bir konuma kaydedin. Bu anahtar daha sonra Visual Studio 'da projeyi yapılandırmak için gereklidir.
+1. **Add (Ekle)** seçeneğini belirleyin. Anahtar değerini güvenli bir konuma kaydedin. Bu anahtar daha sonra Visual Studio 'da projeyi yapılandırmak için gereklidir.
 1. **Yönet** altında **API izinleri**  >  **bir izin Ekle**' yi seçin.
 1. **Yaygın olarak kullanılan Microsoft API 'leri** bölümünde **Microsoft Graph**' yi seçin.
 1. **Uygulama izinleri** bölümünde, doğru izinlerin seçildiğinden emin olun: **User. Read. All**.
@@ -203,7 +203,7 @@ Bu projede Web uygulaması ve Web API projeleri vardır. Azure Web siteleri 'ne 
 
 ### <a name="create-and-publish-dotnet-web-daemon-v2-to-an-azure-website"></a>Bir Azure Web sitesinde DotNet-Web-Daemon-v2 oluşturma ve yayımlama
 
-1. <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>oturum açın.
+1. <a href="https://portal.azure.com/" target="_blank">Azure portalında</a> oturum açın.
 1. Sol üst köşeden **Kaynak oluştur**'u seçin.
 1. **Web**  >  **Web uygulaması**' nı seçin ve ardından Web sitenize bir ad verin. Örneğin, **DotNet-Web-Daemon-v2-contoso.azurewebsites.net** olarak adlandırın.
 1. **Abonelik**, **kaynak grubu** ve **App Service planı ve konum** bilgilerini seçin. **Işletim sistemi** **Windows** ve **Yayımlama** **kodudur**.
@@ -224,7 +224,7 @@ Visual Studio projeyi yayımlayacak ve projenin URL 'sine otomatik olarak bir ta
 
 ### <a name="update-the-azure-ad-tenant-application-registration-for-dotnet-web-daemon-v2"></a>DotNet-Web-Daemon-v2 için Azure AD kiracı uygulaması kaydını güncelleştirme
 
-1. <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>geri dönün.
+1. <a href="https://portal.azure.com/" target="_blank">Azure Portal</a>geri dönün.
 1. Sol bölmede **Azure Active Directory** hizmetini seçin ve **uygulama kayıtları**' ı seçin.
 1. **DotNet-Web-Daemon-v2** uygulamasını seçin.
 1. Uygulamanızın **kimlik doğrulama** sayfasında, **ön kanal oturum kapatma URL 'si** alanlarını hizmetinizin adresiyle güncelleştirin. Örneğin, kullanın `https://dotnet-web-daemon-v2-contoso.azurewebsites.net/Account/EndSession` .

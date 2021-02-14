@@ -6,13 +6,13 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.date: 05/14/2020
-ms.openlocfilehash: 9b022f83ed2a4e3a23165cc6bda298a53c008c7c
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.date: 02/11/2021
+ms.openlocfilehash: fb9f12b3b31f1049cd4d9306294783e514331229
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93331650"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100382200"
 ---
 # <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-postgresql---single-server"></a>Hızlı başlangıç: bir ARM şablonu kullanarak PostgreSQL için Azure veritabanı oluşturma-tek sunucu
 
@@ -24,7 +24,7 @@ Ortamınız önkoşulları karşılıyorsa ve ARM şablonlarını kullanma hakk�
 
 [:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="Azure 'a dağıtma":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-managed-postgresql-with-vnet%2fazuredeploy.json)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -70,34 +70,34 @@ Azure portal PostgreSQL için Azure veritabanı sunucu şablonunu dağıtmak iç
 
 **VNET Ile PostgreSQL Için Azure veritabanı 'Nı dağıtma** sayfası:
 
-1. **Kaynak grubu** Için **Yeni oluştur** ' u seçin, yeni kaynak grubu için bir ad girin ve **Tamam** ' ı seçin.
+1. **Kaynak grubu** Için **Yeni oluştur**' u seçin, yeni kaynak grubu için bir ad girin ve **Tamam**' ı seçin.
 
 2. Yeni bir kaynak grubu oluşturduysanız, kaynak grubu ve yeni sunucu için bir **konum** seçin.
 
-3. **Sunucu adı** , **yönetici oturumu açma** ve **yönetici oturum açma parolası** girin.
+3. **Sunucu adı**, **yönetici oturumu açma** ve **yönetici oturum açma parolası** girin.
 
     :::image type="content" source="./media/quickstart-create-postgresql-server-database-using-arm-template/deploy-azure-database-for-postgresql-with-vnet.png" alt-text="VNet ile PostgreSQL için Azure veritabanı 'nı dağıtma, Azure hızlı başlangıç şablonu, Azure portal":::
 
 4. İsterseniz diğer varsayılan ayarları değiştirin:
 
-    * **Abonelik** : sunucu için kullanmak istediğiniz Azure aboneliği.
-    * **SKU kapasitesi** : *2* (varsayılan), *4* , *8* , *16* , *32* veya *64* olabilen Vcore kapasitesi.
-    * **SKU adı** : *B_Gen5_1* , *GP_Gen5_2* (varsayılan) veya *MO_Gen5_32* gıbı alt çizgilerden BIRLEŞTIRILMIŞ SKU katmanı öneki, SKU ailesi ve SKU kapasitesi.
-    * **SKU boyutu MB** : PostgreSQL Için Azure veritabanı sunucusu 'nun megabayt cinsinden depolama boyutu (varsayılan *51200* ).
-    * **SKU katmanı** : *temel* , *generalamacını* (varsayılan) veya *memoryoptıılanmış* gibi dağıtım katmanı.
-    * **SKU ailesi** : sunucu dağıtımı için donanım oluşturmayı gösteren *4. nesil* veya *5. nesil* (varsayılan).
-    * **PostgreSQL sürümü** : dağıtılacak PostgreSQL sunucusunun sürümü, örneğin *9,5* , *9,6* , *10* veya *11* (varsayılan).
-    * **Yedekleme bekletme günleri** : coğrafi olarak yedekli yedekleme saklama için gün cinsinden istenen süre (varsayılan *7* ).
-    * **Coğrafi olarak yedekli yedekleme** : coğrafi olağanüstü durum kurtarma (COĞRAFI-Dr) gereksinimlerine bağlı olarak *etkin* veya *devre dışı* (varsayılan).
-    * **Sanal ağ adı** : sanal ağın adı (varsayılan *azure_postgresql_vnet* ).
-    * **Alt ağ adı** : alt ağın adı (varsayılan *azure_postgresql_subnet* ).
-    * **Sanal ağ kuralı adı** : alt ağa izin veren sanal ağ kuralının adı (varsayılan *allowsubnet* ).
-    * **VNET adresi ön eki** : sanal ağın adres ön eki (varsayılan *10.0.0.0/16* ).
-    * **Alt ağ ön eki** : alt ağın adres ön eki (varsayılan *10.0.0.0/16* ).
+    * **Abonelik**: sunucu için kullanmak istediğiniz Azure aboneliği.
+    * **SKU kapasitesi**: *2* (varsayılan), *4*, *8*, *16*, *32* veya *64* olabilen Vcore kapasitesi.
+    * **SKU adı**: *B_Gen5_1*, *GP_Gen5_2* (varsayılan) veya *MO_Gen5_32* gıbı alt çizgilerden BIRLEŞTIRILMIŞ SKU katmanı öneki, SKU ailesi ve SKU kapasitesi.
+    * **SKU boyutu MB**: PostgreSQL Için Azure veritabanı sunucusu 'nun megabayt cinsinden depolama boyutu (varsayılan *51200*).
+    * **SKU katmanı**: *temel*, *generalamacını* (varsayılan) veya *memoryoptıılanmış* gibi dağıtım katmanı.
+    * **SKU ailesi**: sunucu dağıtımı için donanım oluşturmayı gösteren *4. nesil* veya *5. nesil* (varsayılan).
+    * **PostgreSQL sürümü**: dağıtılacak PostgreSQL sunucusunun sürümü, örneğin *9,5*, *9,6*, *10* veya *11* (varsayılan).
+    * **Yedekleme bekletme günleri**: coğrafi olarak yedekli yedekleme saklama için gün cinsinden istenen süre (varsayılan *7*).
+    * **Coğrafi olarak yedekli yedekleme**: coğrafi olağanüstü durum kurtarma (COĞRAFI-Dr) gereksinimlerine bağlı olarak *etkin* veya *devre dışı* (varsayılan).
+    * **Sanal ağ adı**: sanal ağın adı (varsayılan *azure_postgresql_vnet*).
+    * **Alt ağ adı**: alt ağın adı (varsayılan *azure_postgresql_subnet*).
+    * **Sanal ağ kuralı adı**: alt ağa izin veren sanal ağ kuralının adı (varsayılan *allowsubnet*).
+    * **VNET adresi ön eki**: sanal ağın adres ön eki (varsayılan *10.0.0.0/16*).
+    * **Alt ağ ön eki**: alt ağın adres ön eki (varsayılan *10.0.0.0/16*).
 
-5. Hüküm ve koşulları okuyun ve ardından **yukarıda belirtilen hüküm ve koşulları kabul ediyorum** ' u seçin.
+5. Hüküm ve koşulları okuyun ve ardından **yukarıda belirtilen hüküm ve koşulları kabul ediyorum**' u seçin.
 
-6. **Satın al** 'ı seçin.
+6. **Satın al**'ı seçin.
 
 # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
@@ -148,7 +148,7 @@ read -p "Press [ENTER] to continue: "
 
 Yeni PostgreSQL için Azure veritabanı sunucusuna genel bir bakış görmek için şu adımları izleyin:
 
-1. [Azure Portal](https://portal.azure.com), **PostgreSQL için Azure veritabanı sunucuları** ' nı arayıp seçin.
+1. [Azure Portal](https://portal.azure.com), **PostgreSQL için Azure veritabanı sunucuları**' nı arayıp seçin.
 
 2. Veritabanı listesinde yeni sunucunuzu seçin. Yeni PostgreSQL için Azure veritabanı sunucunuzun **genel bakış** sayfası görüntülenir.
 
@@ -175,6 +175,34 @@ read -p "Press [ENTER] to continue: "
 
 ---
 
+## <a name="exporting-arm-template-from-the-portal"></a>, Portaldan ARM şablonu dışarı aktarılıyor
+[BIR ARM şablonunu Azure Portal dışa aktarabilirsiniz](../azure-resource-manager/templates/export-template-portal.md) . Şablonu dışarı aktarmanın iki yolu vardır:
+
+- [Kaynak grubundan veya kaynaktan dışarı aktarın](../azure-resource-manager/templates/export-template-portal.md#export-template-from-a-resource). Bu seçenek, mevcut kaynaklardan yeni bir şablon oluşturur. Bu şablon, kaynak grubunun geçerli durumunun "Snapshot" ' dır. Kaynak grubunun tamamını veya kaynak grubu içindeki belirli kaynakları dışarı aktarabilirsiniz.
+- [Dağıtımdan veya geçmişten önce dışarı aktarın](../azure-resource-manager/templates/export-template-portal.md#export-template-before-deployment). Bu seçenek, dağıtım için kullanılan bir şablonun tam bir kopyasını alır.
+
+Şablonu dışarı aktarırken, ```"properties":{ }```  PostgreSQL sunucu kaynağının bölümünde, güvenlik nedenleriyle bu olduğunu fark edersiniz ```administratorLogin``` ```administratorLoginPassword``` . Şablonu dağıtılmadan önce bu parametreleri şablonunuza eklemeniz **gerekir** , aksi olarak şablon başarısız olur.
+
+```
+"resources": [
+    {
+      "type": "Microsoft.DBforPostgreSQL/servers",
+      "apiVersion": "2017-12-01",
+      "name": "[parameters('servers_name')]",
+      "location": "southcentralus",
+      "sku": {
+                "name": "B_Gen5_1",
+                "tier": "Basic",
+                "family": "Gen5",
+                "capacity": 1
+            },
+      "properties": {
+        "administratorLogin": "[parameters('administratorLogin')]",
+        "administratorLoginPassword": "[parameters('administratorLoginPassword')]",
+```
+
+
+
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
 Artık gerekli olmadığında kaynak grubundaki kaynakları silen kaynak grubunu silin.
@@ -185,9 +213,9 @@ Artık gerekli olmadığında kaynak grubundaki kaynakları silen kaynak grubunu
 
 2. Kaynak grubu listesinde, kaynak grubunuzun adını seçin.
 
-3. Kaynak grubunuzun **genel bakış** sayfasında **kaynak grubunu sil** ' i seçin.
+3. Kaynak grubunuzun **genel bakış** sayfasında **kaynak grubunu sil**' i seçin.
 
-4. Onay iletişim kutusunda, kaynak grubunuzun adını yazın ve ardından **Sil** ' i seçin.
+4. Onay iletişim kutusunda, kaynak grubunuzun adını yazın ve ardından **Sil**' i seçin.
 
 # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
