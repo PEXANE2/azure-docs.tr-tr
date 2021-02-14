@@ -2,13 +2,13 @@
 title: Azure Izleyici 'de ölçümleri Azure Service Bus | Microsoft Docs
 description: Bu makalede, Azure Izleyici 'nin Service Bus varlıkları (kuyruklar, konular ve abonelikler) izlemek için nasıl kullanılacağı açıklanmaktadır.
 ms.topic: article
-ms.date: 11/18/2020
-ms.openlocfilehash: 1f8bd9484bf2a2106818da1d6e4ef21e937d2ac3
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.date: 02/12/2021
+ms.openlocfilehash: fa242b4d8c8a6ce83801667e686864f858f8a000
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94916891"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100519108"
 ---
 # <a name="azure-service-bus-metrics-in-azure-monitor"></a>Azure Izleyici 'de Azure Service Bus ölçümleri
 
@@ -37,7 +37,7 @@ Azure Izleyici, ölçümlere erişmek için birden çok yol sağlar. Ölçümler
 
 Boyutları destekleyen ölçümler için, istenen boyut değeri ile filtrelemeniz gerekir.
 
-## <a name="billing"></a>Faturalama
+## <a name="billing"></a>Faturalandırma
 
 Azure Izleyici 'de ölçümler ve uyarılar her uyarı temelinde ücretlendirilir. Bu ücretler, uyarı ayarlandığında ve kaydedilmeden önce portalda kullanılabilir olmalıdır. 
 
@@ -74,7 +74,7 @@ Aşağıdaki iki tür hata, Kullanıcı hataları olarak sınıflandırılmaktad
 
 | Ölçüm Adı | Description |
 | ------------------- | ----------------- |
-|Gelen İletiler|Belirli bir süre boyunca Service Bus gönderilen olay veya ileti sayısı.<br/><br/> Birim: sayım <br/> Toplama türü: Toplam <br/> Boyut: varlık adı|
+|Gelen İletiler|Belirli bir süre boyunca Service Bus gönderilen olay veya ileti sayısı. Bu ölçüm otomatik olarak iletilen iletileri içermez.<br/><br/> Birim: sayım <br/> Toplama türü: Toplam <br/> Boyut: varlık adı|
 |Giden İletiler|Belirli bir süre içinde Service Bus alınan olay veya ileti sayısı.<br/><br/> Birim: sayım <br/> Toplama türü: Toplam <br/> Boyut: varlık adı|
 | İletiler| Kuyruktaki/konudaki iletilerin sayısı. <br/><br/> Birim: sayım <br/> Toplama türü: Ortalama <br/> Boyut: varlık adı |
 | Etkin Iletiler| Bir kuyruktaki/konudaki etkin ileti sayısı. <br/><br/> Birim: sayım <br/> Toplama türü: Ortalama <br/> Boyut: varlık adı |
@@ -126,7 +126,7 @@ Azure Service Bus, Azure Izleyici 'de ölçümler için aşağıdaki boyutları 
     1. **Kaynak türüne göre filtrele** alanı Için **Service Bus ad alanlarını** seçin. 
     2. **Aboneliğe göre filtrele** alanı için aboneliğinizi seçin.
     3. Listeden **Service Bus ad alanını** seçin. 
-    4. **Bitti**'yi seçin. 
+    4. **Bitti** seçeneğini belirleyin. 
     
         ![Ad alanı seçin](./media/service-bus-metrics-azure-monitor/select-namespace.png)
 1. **Ölçüt Ekle**' yi seçin ve **sinyal mantığını Yapılandır** sayfasında aşağıdaki işlemleri yapın:
@@ -134,10 +134,10 @@ Azure Service Bus, Azure Izleyici 'de ölçümler için aşağıdaki boyutları 
     2. Bir sinyal seçin. Örneğin: **hizmet hataları**. 
 
         ![Sunucu hatalarını seçin](./media/service-bus-metrics-azure-monitor/select-server-errors.png)
-    1. Condition **değerinden büyük** ' **Condition** ı seçin.
+    1. Condition **değerinden büyük** ' ı seçin.
     2. **Zaman toplama** için **Toplam** ' u seçin. 
     3. **Eşik** için **5** girin. 
-    4. **Bitti**'yi seçin.    
+    4. **Bitti** seçeneğini belirleyin.    
 
         ![Koşul Belirt](./media/service-bus-metrics-azure-monitor/specify-condition.png)    
 1. **Kural oluştur** sayfasında, **uyarı ayrıntılarını tanımla**' yı genişletin ve aşağıdaki eylemleri yapın:

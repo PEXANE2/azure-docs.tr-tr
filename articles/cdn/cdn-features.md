@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 11/15/2019
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 8dbf3b5de4b908eb831158b73b2b17472bc4895e
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 3a794d8915c820abecd530911f05ac649e5e538c
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95020972"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100379922"
 ---
 # <a name="what-are-the-comparisons-between-azure-cdn-product-features"></a>Azure CDN ürün özellikleri arasındaki karşılaştırmalar nelerdir?
 
@@ -57,12 +57,12 @@ Aşağıdaki tabloda her ürünle birlikte sunulan özellikler karşılaştırı
 | [Belirteç kimlik doğrulaması](cdn-token-auth.md)  |  |  |  |**&#x2713;**| 
 | [DDOS koruması](https://www.us-cert.gov/ncas/tips/ST04-015)  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | [Kendi sertifikanızı getirme](cdn-custom-ssl.md?tabs=option-2-enable-https-with-your-own-certificate#tlsssl-certificates) |**&#x2713;** |  | **&#x2713;** | **&#x2713;** |
-| Desteklenen TLS sürümleri | TLS 1,2, TLS 1.0/1.1- [yapılandırılabilir](/rest/api/cdn/customdomains/enablecustomhttps#usermanagedhttpsparameters) | TLS 1.2 | TLS 1.2 | TLS 1.2 |
+| Desteklenen TLS sürümleri | TLS 1,2, TLS 1.0/1.1- [yapılandırılabilir](/rest/api/cdn/cdn/customdomains/enablecustomhttps#usermanagedhttpsparameters) | TLS 1.2 | TLS 1.2 | TLS 1.2 |
 ||||
 | **Analiz ve raporlama** | **Standart Microsoft** | **Standart Akamai** | **Standard Verizon** | **Premium Verizon** | 
 | [Azure tanılama günlükleri](cdn-azure-diagnostic-logs.md)  | **&#x2713;** | **&#x2713;** |**&#x2713;** |**&#x2713;** |
-| [Verizon 'dan çekirdek raporlar](cdn-analyze-usage-patterns.md)  |  | |**&#x2713;** |**&#x2713;** |
-| [Verizon 'ten özel raporlar](cdn-verizon-custom-reports.md)  |  | |**&#x2713;** |**&#x2713;** |
+| [Verizon’dan alınan çekirdek raporlar](cdn-analyze-usage-patterns.md)  |  | |**&#x2713;** |**&#x2713;** |
+| [Verizon özel raporları](cdn-verizon-custom-reports.md)  |  | |**&#x2713;** |**&#x2713;** |
 | [Gelişmiş HTTP raporları](cdn-advanced-http-reports.md)  |  | | |**&#x2713;** |
 | [Gerçek zamanlı istatistikler](cdn-real-time-stats.md)  |  | | |**&#x2713;** |
 | [Uç düğümü performansı](cdn-edge-performance.md)  |  | | |**&#x2713;** |

@@ -1,22 +1,17 @@
 ---
 title: Azure Data Factory kullanarak ayrıntılardan veri kopyalama
 description: Azure Data Factory bir işlem hattındaki kopyalama etkinliğini kullanarak, detaylandırma 'ten desteklenen havuz veri depolarından veri kopyalamayı öğrenin.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: jingwang
-ms.openlocfilehash: 050037748969fe76dd1be9db80d68fb23ccd7940
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1bdd8df45d9e63898b3d08542aa0370d3c430651
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81417382"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100381044"
 ---
 # <a name="copy-data-from-drill-using-azure-data-factory"></a>Azure Data Factory kullanarak ayrıntılardan veri kopyalama
 
@@ -39,7 +34,7 @@ Azure Data Factory, bağlantıyı etkinleştirmek için yerleşik bir sürücü 
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
-## <a name="getting-started"></a>Başlarken
+## <a name="getting-started"></a>Kullanmaya başlama
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -51,9 +46,9 @@ Detaylandırma bağlantılı hizmeti için aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Type özelliği: **detaylandırma** olarak ayarlanmalıdır | Evet |
-| Dizisi | Detaya gitme bağlantısı için bir ODBC bağlantı dizesi. <br/>Ayrıca, Azure Key Vault parolayı yerleştirebilir ve `pwd` yapılandırmayı bağlantı dizesinin dışına çekebilirsiniz. Daha ayrıntılı bilgi için aşağıdaki örneklere bakın ve [kimlik bilgilerini Azure Key Vault makalesine depolayın](store-credentials-in-key-vault.md) . | Evet |
-| connectVia | Veri deposuna bağlanmak için kullanılacak [Integration Runtime](concepts-integration-runtime.md) . [Önkoşullar](#prerequisites) bölümünden daha fazla bilgi edinin. Belirtilmemişse, varsayılan Azure Integration Runtime kullanır. |Hayır |
+| tür | Type özelliği: **detaylandırma** olarak ayarlanmalıdır | Yes |
+| Dizisi | Detaya gitme bağlantısı için bir ODBC bağlantı dizesi. <br/>Ayrıca, Azure Key Vault parolayı yerleştirebilir ve `pwd` yapılandırmayı bağlantı dizesinin dışına çekebilirsiniz. Daha ayrıntılı bilgi için aşağıdaki örneklere bakın ve [kimlik bilgilerini Azure Key Vault makalesine depolayın](store-credentials-in-key-vault.md) . | Yes |
+| connectVia | Veri deposuna bağlanmak için kullanılacak [Integration Runtime](concepts-integration-runtime.md) . [Önkoşullar](#prerequisites) bölümünden daha fazla bilgi edinin. Belirtilmemişse, varsayılan Azure Integration Runtime kullanır. |No |
 
 **Örnek:**
 
@@ -82,13 +77,13 @@ Detaylandırma bağlantılı hizmeti için aşağıdaki özellikler desteklenir:
         "type": "Drill",
         "typeProperties": {
             "connectionString": "ConnectionType=Direct;Host=<host>;Port=<port>;AuthenticationType=Plain;UID=<user name>;",
-            "pwd": { 
-                "type": "AzureKeyVaultSecret", 
-                "store": { 
-                    "referenceName": "<Azure Key Vault linked service name>", 
-                    "type": "LinkedServiceReference" 
-                }, 
-                "secretName": "<secretName>" 
+            "pwd": { 
+                "type": "AzureKeyVaultSecret", 
+                "store": { 
+                    "referenceName": "<Azure Key Vault linked service name>", 
+                    "type": "LinkedServiceReference" 
+                }, 
+                "secretName": "<secretName>" 
             }
         },
         "connectVia": {
@@ -104,11 +99,11 @@ Detaylandırma bağlantılı hizmeti için aşağıdaki özellikler desteklenir:
 
 Veri kümelerini tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi için bkz. [veri kümeleri](concepts-datasets-linked-services.md) makalesi. Bu bölüm, detaylandırma veri kümesi tarafından desteklenen özelliklerin bir listesini sağlar.
 
-Detaylandırma 'ten veri kopyalamak için, veri kümesinin Type özelliğini **DrillTable**olarak ayarlayın. Aşağıdaki özellikler desteklenir:
+Detaylandırma 'ten veri kopyalamak için, veri kümesinin Type özelliğini **DrillTable** olarak ayarlayın. Aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | DataSet 'in Type özelliği: **DrillTable** olarak ayarlanmalıdır | Evet |
+| tür | DataSet 'in Type özelliği: **DrillTable** olarak ayarlanmalıdır | Yes |
 | schema | Şemanın adı. |Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse)  |
 | tablo | Tablonun adı. |Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse)  |
 | tableName | Şemanın bulunduğu tablonun adı. Bu özellik geriye dönük uyumluluk için desteklenir. `schema` `table` Yeni iş yükü için ve kullanın. | Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse) |
@@ -136,11 +131,11 @@ Etkinlikleri tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi iç
 
 ### <a name="drillsource-as-source"></a>Kaynak olarak DrillSource
 
-Detaydan veri kopyalamak için kopyalama etkinliğindeki kaynak türünü **DrillSource**olarak ayarlayın. Aşağıdaki özellikler, etkinlik **kaynağını** kopyalama bölümünde desteklenir:
+Detaydan veri kopyalamak için kopyalama etkinliğindeki kaynak türünü **DrillSource** olarak ayarlayın. Aşağıdaki özellikler, etkinlik **kaynağını** kopyalama bölümünde desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Kopyalama etkinliği kaynağının Type özelliği: **DrillSource** olarak ayarlanmalıdır | Evet |
+| tür | Kopyalama etkinliği kaynağının Type özelliği: **DrillSource** olarak ayarlanmalıdır | Yes |
 | sorgu | Verileri okumak için özel SQL sorgusunu kullanın. Örneğin: `"SELECT * FROM MyTable"`. | Hayır (veri kümesinde "tableName" belirtilmişse) |
 
 **Örnek:**

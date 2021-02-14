@@ -1,23 +1,18 @@
 ---
 title: Data Factory kullanarak arama dizinine veri gönderme
 description: Azure Data Factory kullanarak Azure Bilişsel Arama dizinine veri gönderme hakkında bilgi edinin.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.assetid: f8d46e1e-5c37-4408-80fb-c54be532a4ab
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: f6521efe024ba0ea29ae427aeaf06ca0e5fa8dd7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0226ab75d53733b94a9ae5734b42b7340998759c
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84194911"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100379277"
 ---
 # <a name="push-data-to-an-azure-cognitive-search-index-by-using-azure-data-factory"></a>Azure Data Factory kullanarak bir Azure Bilişsel Arama dizinine veri gönderme
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -34,12 +29,12 @@ Data Factory hizmetinin şirket içi veri deposuna bağlanmasına izin vermek i�
 
 Veri Yönetimi ağ geçidi, şirket içi veri kaynaklarını bulut hizmetlerine güvenli ve yönetilen bir şekilde bağlar. Veri Yönetimi ağ geçidi hakkındaki ayrıntılar için bkz. Şirket [içi ve bulut hakkındaki verileri taşıma](data-factory-move-data-between-onprem-and-cloud.md) .
 
-## <a name="getting-started"></a>Başlarken
+## <a name="getting-started"></a>Kullanmaya başlama
 Farklı araçlar/API 'Ler kullanarak bir kaynak veri deposundan verileri bir arama dizinine gönderen kopyalama etkinliğiyle bir işlem hattı oluşturabilirsiniz.
 
 İşlem hattı oluşturmanın en kolay yolu **Kopyalama Sihirbazı**' nı kullanmaktır. Veri kopyalama Sihirbazı 'nı kullanarak işlem hattı oluşturma hakkında hızlı bir yol için bkz. [öğretici: kopyalama Sihirbazı 'nı kullanarak işlem hattı oluşturma](data-factory-copy-data-wizard-tutorial.md) .
 
-İşlem hattı oluşturmak için aşağıdaki araçları da kullanabilirsiniz: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager şablonu**, **.NET API**ve **REST API**. Kopyalama etkinliğine sahip bir işlem hattı oluşturmak için adım adım yönergeler için bkz. [kopyalama etkinliği öğreticisi](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
+İşlem hattı oluşturmak için aşağıdaki araçları da kullanabilirsiniz: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager şablonu**, **.NET API** ve **REST API**. Kopyalama etkinliğine sahip bir işlem hattı oluşturmak için adım adım yönergeler için bkz. [kopyalama etkinliği öğreticisi](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
 
 Araçları veya API 'Leri kullanıp kullanmayacağınızı bir kaynak veri deposundan havuz veri deposuna veri taşınan bir işlem hattı oluşturmak için aşağıdaki adımları gerçekleştirirsiniz:
 
@@ -57,9 +52,9 @@ Aşağıdaki tabloda, Azure Bilişsel Arama bağlı hizmetine özgü JSON öğel
 
 | Özellik | Açıklama | Gerekli |
 | -------- | ----------- | -------- |
-| tür | Type özelliği: **Azuresearch**olarak ayarlanmalıdır. | Evet |
-| url | Arama Hizmeti URL 'SI. | Evet |
-| anahtar | Arama hizmeti için yönetici anahtarı. | Evet |
+| tür | Type özelliği: **Azuresearch** olarak ayarlanmalıdır. | Yes |
+| url | Arama Hizmeti URL 'SI. | Yes |
+| anahtar | Arama hizmeti için yönetici anahtarı. | Yes |
 
 ## <a name="dataset-properties"></a>Veri kümesi özellikleri
 
@@ -67,19 +62,19 @@ Veri kümelerini tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi
 
 | Özellik | Açıklama | Gerekli |
 | -------- | ----------- | -------- |
-| tür | Type özelliği **AzureSearchIndex**olarak ayarlanmalıdır.| Evet |
-| indexName | Arama dizininin adı. Data Factory dizini oluşturmaz. Dizinin Azure Bilişsel Arama mevcut olması gerekir. | Evet |
+| tür | Type özelliği **AzureSearchIndex** olarak ayarlanmalıdır.| Yes |
+| indexName | Arama dizininin adı. Data Factory dizini oluşturmaz. Dizinin Azure Bilişsel Arama mevcut olması gerekir. | Yes |
 
 
 ## <a name="copy-activity-properties"></a>Kopyalama etkinliğinin özellikleri
 Etkinlikleri tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi için, işlem [hatları oluşturma](data-factory-create-pipelines.md) makalesine bakın. Ad, açıklama, giriş ve çıkış tabloları ve çeşitli ilkeler gibi özellikler, tüm etkinlik türleri için kullanılabilir. Ancak, typeProperties bölümünde kullanılabilen özellikler her etkinlik türüyle farklılık gösterir. Kopyalama etkinliği için, kaynak ve havuz türlerine göre farklılık gösterir.
 
-Kopyalama etkinliği için, havuz **AzureSearchIndexSink**türünde olduğunda, typeproperties bölümünde aşağıdaki özellikler mevcuttur:
+Kopyalama etkinliği için, havuz **AzureSearchIndexSink** türünde olduğunda, typeproperties bölümünde aşağıdaki özellikler mevcuttur:
 
 | Özellik | Açıklama | İzin verilen değerler | Gerekli |
 | -------- | ----------- | -------------- | -------- |
-| WriteBehavior | Dizinde bir belgenin zaten mevcut olduğu zaman birleştirilip birleştirilmeyeceğini veya değiştirip edilmeyeceğini belirtir. Bkz. [Writebehavior özelliği](#writebehavior-property).| Birleştir (varsayılan)<br/>Karşıya Yükleme| Hayır |
-| WriteBatchSize | Arabellek boyutu writeBatchSize ulaştığında verileri arama dizinine yükler. Ayrıntılar için bkz. [Writebatchsize özelliği](#writebatchsize-property) . | 1 ile 1.000 arasında. Varsayılan değer 1000 ' dir. | Hayır |
+| WriteBehavior | Dizinde bir belgenin zaten mevcut olduğu zaman birleştirilip birleştirilmeyeceğini veya değiştirip edilmeyeceğini belirtir. Bkz. [Writebehavior özelliği](#writebehavior-property).| Birleştir (varsayılan)<br/>Karşıya Yükleme| No |
+| WriteBatchSize | Arabellek boyutu writeBatchSize ulaştığında verileri arama dizinine yükler. Ayrıntılar için bkz. [Writebatchsize özelliği](#writebatchsize-property) . | 1 ile 1.000 arasında. Varsayılan değer 1000 ' dir. | No |
 
 ### <a name="writebehavior-property"></a>WriteBehavior özelliği
 Veri yazarken AzureSearchSink upları. Diğer bir deyişle, bir belge yazarken belge anahtarı arama dizininde zaten mevcutsa Azure Bilişsel Arama bir çakışma özel durumu oluşturmak yerine mevcut belgeyi güncelleştirir.
@@ -99,12 +94,12 @@ Aşağıdaki tabloda bir Azure Bilişsel Arama veri türünün desteklenip deste
 
 | Azure Bilişsel Arama veri türü | Azure Bilişsel Arama havuzunda desteklenir |
 | ---------------------- | ------------------------------ |
-| Dize | E |
-| Int32 | E |
-| Int64 | E |
-| Çift | E |
-| Boole | E |
-| Veri Timesapmayı | E |
+| Dize | Y |
+| Int32 | Y |
+| Int64 | Y |
+| Çift | Y |
+| Boole | Y |
+| Veri Timesapmayı | Y |
 | Dize dizisi | N |
 | GeographyPoint | N |
 
@@ -185,7 +180,7 @@ Aşağıdaki örnek şunu gösterir:
 
 **Azure Bilişsel Arama çıkış veri kümesi:**
 
-Örnek, verileri Azure **bilişsel arama adlı bir**dizine kopyalar. Data Factory dizini oluşturmaz. Örneği test etmek için bu ada sahip bir dizin oluşturun. Giriş veri kümesiyle aynı sayıda sütuna sahip arama dizini oluşturun. Yeni girişler her saat arama dizinine eklenir.
+Örnek, verileri Azure **bilişsel arama adlı bir** dizine kopyalar. Data Factory dizini oluşturmaz. Örneği test etmek için bu ada sahip bir dizin oluşturun. Giriş veri kümesiyle aynı sayıda sütuna sahip arama dizini oluşturun. Yeni girişler her saat arama dizinine eklenir.
 
 ```JSON
 {
@@ -206,7 +201,7 @@ Aşağıdaki örnek şunu gösterir:
 
 **SQL kaynağı ve Azure Bilişsel Arama Dizin havuzu ile işlem hattındaki etkinliği kopyalama:**
 
-İşlem hattı, giriş ve çıkış veri kümelerini kullanmak üzere yapılandırılmış bir kopyalama etkinliği içerir ve her saat çalışacak şekilde zamanlanır. İşlem hattı JSON tanımında **kaynak** türü **SQLSource** olarak ayarlanır ve **Havuz** türü **AzureSearchIndexSink**olarak ayarlanır. **Sqlreaderquery** özelliği IÇIN belirtilen SQL sorgusu, kopyalamanın Son saatteki verilerini seçer.
+İşlem hattı, giriş ve çıkış veri kümelerini kullanmak üzere yapılandırılmış bir kopyalama etkinliği içerir ve her saat çalışacak şekilde zamanlanır. İşlem hattı JSON tanımında **kaynak** türü **SQLSource** olarak ayarlanır ve **Havuz** türü **AzureSearchIndexSink** olarak ayarlanır. **Sqlreaderquery** özelliği IÇIN belirtilen SQL sorgusu, kopyalamanın Son saatteki verilerini seçer.
 
 ```JSON
 {

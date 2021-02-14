@@ -4,18 +4,17 @@ titleSuffix: Azure Data Science Virtual Machine
 description: Veri Bilimi Sanal Makinesi erişim kimlik bilgilerini güvenli bir şekilde nasıl depolayacağınızı öğrenin. Yönetilen hizmet kimliklerini nasıl kullanacağınızı ve erişim kimlik bilgilerini depolamak için Azure Key Vault öğreneceksiniz.
 keywords: derin öğrenme, AI, veri bilimi araçları, veri bilimi sanal makinesi, Jeo-uzamsal analiz, ekip veri bilimi işlemi
 services: machine-learning
-ms.service: machine-learning
-ms.subservice: data-science-vm
+ms.service: data-science-vm
 author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 05/08/2018
-ms.openlocfilehash: d5604e42c2c27463e10c136ccd18c3c21846fc5a
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: adc66fc794ac6cce3fc0f8fd1552f701a4968860
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93309158"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100519686"
 ---
 # <a name="store-access-credentials-securely-on-an-azure-data-science-virtual-machine"></a>Erişim kimlik bilgilerini Azure Veri Bilimi Sanal Makinesi güvenli bir şekilde depolayın
 

@@ -11,12 +11,12 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: 0d1cbb8efe0882f48a345d44a650eb711a44d570
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: f9b970f498db7530b35c57a75edeae55dec3f22d
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97739195"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100098852"
 ---
 # <a name="create-an-azure-machine-learning-compute-cluster"></a>Azure Machine Learning işlem kümesi oluşturma
 
@@ -100,7 +100,7 @@ Studio 'da bir işlem kümesi oluşturma hakkında bilgi için, bkz. [Azure Mach
 
  ## <a name="lower-your-compute-cluster-cost"></a><a id="low-pri-vm"></a> İşlem kümesi maliyetinizi düşürün
 
-İş yüklerinizin bazılarını veya tümünü çalıştırmak için [düşük öncelikli VM 'ler](concept-plan-manage-cost.md#low-pri-vm) kullanmayı da tercih edebilirsiniz. Bu VM 'Lerin garantili kullanılabilirliği yoktur ve kullanımda olabilir. Geçersiz hale başlatılan iş yeniden başlatıldı, sürdürülmez. 
+İş yüklerinizin bazılarını veya tümünü çalıştırmak için [düşük öncelikli VM 'ler](concept-plan-manage-cost.md#low-pri-vm) kullanmayı da tercih edebilirsiniz. Bu VM 'Lerin garantili kullanılabilirliği yoktur ve kullanımda olabilir. Önden bir işi yeniden başlatmanız gerekir. 
 
 Düşük öncelikli bir VM belirtmek için şu yolların herhangi birini kullanın:
     

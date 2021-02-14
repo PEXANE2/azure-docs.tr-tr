@@ -1,26 +1,26 @@
 ---
 title: Azure Güvenlik Merkezi tümleştirmesiyle Azure VMware Çözüm sanal makinelerinizi koruyun
-description: Azure Güvenlik Merkezi 'nde tek bir panodan Azure VMware Çözüm sanal makinelerinizi Azure 'un yerel güvenlik araçlarıyla nasıl koruyacağınızı öğrenin.
+description: Azure VMware Çözüm VM 'lerinizi Azure Güvenlik Merkezi panosundan Azure 'un yerel güvenlik araçlarıyla koruyun.
 ms.topic: how-to
-ms.date: 02/04/2021
-ms.openlocfilehash: 58cfa1e8e7faa56675d966f86d3b390e52acec27
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.date: 02/12/2021
+ms.openlocfilehash: b37d09d6e8f239586a18c0fa3b1dcd7bfee98102
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99584966"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100516371"
 ---
 # <a name="protect-your-azure-vmware-solution-vms-with-azure-security-center-integration"></a>Azure Güvenlik Merkezi tümleştirmesiyle Azure VMware Çözüm sanal makinelerinizi koruyun
 
-Azure yerel güvenlik araçları, Azure, Azure VMware çözümünün ve şirket içi sanal makinelerin (VM) karma ortamı için güvenli bir altyapı sağlar. Bu makalede, karma ortam güvenliği için Azure Araçları ayarlama gösterilmektedir. Farklı türlerde tehditleri tanımlamak ve gidermek için çeşitli araçlar kullanacaksınız.
+Azure yerel güvenlik araçları, Azure, Azure VMware çözümünün ve şirket içi sanal makinelerin (VM) karma ortamı için koruma sağlar. Bu makalede, karma ortam güvenliği için Azure Araçları ayarlama gösterilmektedir. Bu araçları çeşitli tehditleri tanımlamak ve gidermek için kullanacaksınız.
 
 ## <a name="azure-native-services"></a>Azure yerel hizmetleri
 
-Azure yerel hizmetinin her biri için hızlı bir özet aşağıda verilmiştir:
+Azure yerel hizmetlerine yönelik hızlı bir özet aşağıda verilmiştir:
 
 - **Log Analytics çalışma alanı:** Log Analytics çalışma alanı, günlük verilerinin depolanması için benzersiz bir ortamdır. Her çalışma alanının kendi veri deposu ve yapılandırması vardır. Veri kaynakları ve çözümler, verilerini belirli bir çalışma alanında depolamak üzere yapılandırılmıştır.
-- **Azure Güvenlik Merkezi:** Azure Güvenlik Merkezi, Birleşik bir altyapı güvenliği yönetim sistemidir. Veri merkezlerinin güvenlik duruşunu güçlendirir ve bulutta veya Şirket içindeki karma iş yükleri genelinde gelişmiş tehdit koruması sağlar.
-- **Azure Sentinel:** Azure Sentinel, bulutta yerel, güvenlik bilgileri olay yönetimi (SıEM) ve güvenlik Orchestration otomatik yanıtı (SOAR) çözümüdür. Bir ortam genelinde akıllı güvenlik Analizi ve tehdit bilgileri sağlar. Uyarı algılama, tehdit görünürlüğü, proaktif arama ve tehdit yanıtı için tek bir çözümdür.
+- **Azure Güvenlik Merkezi:** Azure Güvenlik Merkezi, Birleşik bir altyapı güvenliği yönetim sistemidir. Veri merkezlerinin güvenliğini güçlendirir ve bulutta veya şirket içinde karma iş yükleri genelinde gelişmiş tehdit koruması sağlar.
+- **Azure Sentinel:** Azure Sentinel, bulutta yerel bir güvenlik bilgileri olay yönetimi (SıEM) çözümüdür. Bir ortam genelinde güvenlik analizi, uyarı algılama ve otomatikleştirilmiş tehdit yanıtı sağlar.
 
 ## <a name="topology"></a>Topoloji
 
@@ -30,13 +30,13 @@ Log Analytics Aracısı, Azure, Azure VMware çözümü ve şirket içi VM 'lerd
 
 Günlükler Log Analytics çalışma alanı tarafından toplandıktan sonra, Log Analytics çalışma alanını Azure Güvenlik Merkezi ile yapılandırabilirsiniz. Azure Güvenlik Merkezi, Azure VMware Çözüm VM 'lerinin güvenlik açığı durumunu değerlendirir ve kritik güvenlik açıkları için bir uyarı yükseltir. Örneğin, değerlendirir eksik işletim sistemi düzeltme ekleri, güvenlik yapılandırması ve [uç nokta koruması](../security-center/security-center-services.md).
 
-Uyarı algılama, tehdit görünürlüğü, proaktif arama ve tehdit yanıtı için Log Analytics çalışma alanını Azure Sentinel ile yapılandırabilirsiniz. Yukarıdaki diyagramda Azure Güvenlik Merkezi, Azure Güvenlik Merkezi bağlayıcısı kullanılarak Azure Sentinel 'e bağlanır. Azure Güvenlik Merkezi, bir olay oluşturmak ve diğer tehditlere eşlemek için ortam güvenlik açığını Azure Sentinel 'e iletir. Ayrıca, istenmeyen etkinlikleri algılamak ve olaylara dönüştürmek için zamanlanmış kurallar sorgusunu da oluşturabilirsiniz.
+Uyarı algılama, tehdit görünürlüğü, arama ve tehdit yanıtı için Log Analytics çalışma alanını Azure Sentinel ile yapılandırabilirsiniz. Yukarıdaki diyagramda Azure Güvenlik Merkezi, Azure Güvenlik Merkezi bağlayıcısı kullanılarak Azure Sentinel 'e bağlanır. Azure Güvenlik Merkezi, bir olay oluşturmak ve diğer tehditlere eşlemek için ortam güvenlik açığını Azure Sentinel 'e iletir. Ayrıca, istenmeyen etkinlikleri algılamak ve olaylara dönüştürmek için zamanlanmış kurallar sorgusunu da oluşturabilirsiniz.
 
 ## <a name="benefits"></a>Avantajlar
 
 - Azure yerel hizmetleri, Azure 'da, Azure VMware çözümünde ve şirket içi hizmetlerde karma ortam güvenliği için kullanılabilir.
 - Log Analytics çalışma alanı kullanarak, verileri veya günlükleri tek bir noktaya toplayabilir ve aynı verileri farklı Azure yerel hizmetlerine sunabilirsiniz.
-- Azure Güvenlik Merkezi, aşağıdakiler dahil olmak üzere çeşitli özellikler sunar:
+- Azure Güvenlik Merkezi, aşağıdakiler dahil olmak üzere birçok özellik sunar:
     - Dosya bütünlüğünü izleme
     - Dosya daha az saldırı algılama
     - İşletim sistemi düzeltme eki değerlendirmesi 
@@ -50,11 +50,11 @@ Uyarı algılama, tehdit görünürlüğü, proaktif arama ve tehdit yanıtı i�
 
 ## <a name="create-a-log-analytics-workspace"></a>Log Analytics çalışma alanı oluşturma
 
-Çeşitli kaynaklardan veri toplamak için bir Log Analytics çalışma alanına ihtiyacınız olacaktır. Daha fazla bilgi için [Azure portal Log Analytics çalışma alanı oluşturma](../azure-monitor/learn/quick-create-workspace.md)bölümüne bakın. 
+Çeşitli kaynaklardan veri toplamak için bir Log Analytics çalışma alanı gerekir. Daha fazla bilgi için [Azure portal Log Analytics çalışma alanı oluşturma](../azure-monitor/learn/quick-create-workspace.md)bölümüne bakın. 
 
 ## <a name="deploy-security-center-and-configure-azure-vmware-solution-vms"></a>Güvenlik Merkezi 'Ni dağıtma ve Azure VMware Çözüm VM 'lerini yapılandırma
 
-Azure Güvenlik Merkezi önceden yapılandırılmış bir araçtır ve dağıtım gerektirmez. Azure portal, **Güvenlik Merkezi** ' ni arayıp seçin.
+Azure Güvenlik Merkezi, dağıtım gerektirmeyen önceden yapılandırılmış bir araçtır. Azure portal, **Güvenlik Merkezi** ' ni arayıp seçin.
 
 ### <a name="enable-azure-defender"></a>Azure Defender’ı etkinleştirme
 
@@ -149,7 +149,7 @@ Artık Azure Sentinel 'i veri kaynaklarınızla (Bu durumda güvenlik olayları)
 
 ## <a name="create-rules-to-identify-security-threats"></a>Güvenlik tehditlerini tanımlamak için kurallar oluşturma
 
-Veri kaynaklarını Azure Sentinel 'e bağladıktan sonra, algılanan tehditlere dayalı olarak uyarılar oluşturmak için kurallar oluşturabilirsiniz. Aşağıdaki örnekte, yanlış parolayla Windows Server 'da oturum açma girişimlerini belirlemek için bir kural oluşturacağız.
+Veri kaynaklarını Azure Sentinel 'e bağladıktan sonra, algılanan tehditler için uyarı oluşturmak üzere kurallar oluşturabilirsiniz. Aşağıdaki örnekte, Windows Server 'da yanlış parolayla oturum açma girişimleri için bir kural oluşturacağız.
 
 1. Azure Sentinel Genel Bakış sayfasında, Konfigürasyonlar ' ın altında **analiz**' ı seçin.
 
@@ -196,7 +196,7 @@ Veri kaynaklarını Azure Sentinel 'e bağladıktan sonra, algılanan tehditlere
 
 Windows Server 'da başarısız olan üçüncü oturum açma denemesinden sonra oluşturulan kural, her başarısız girişim için bir olay tetikler.
 
-## <a name="view-generated-alerts"></a>Oluşturulan uyarıları görüntüle
+## <a name="view-alerts"></a>Uyarıları görüntüleme
 
 Oluşturulan olayları Azure Sentinel ile görüntüleyebilirsiniz. Ayrıca, olayları atayıp Azure Sentinel içinden bir kez çözümlendikten sonra kapatabilirsiniz.
 

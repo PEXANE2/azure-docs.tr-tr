@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: 209125a5cc8d86c1af07966d52681aa91ea7dc19
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 584266a8f6aa82d8a47b5e3faff044acf0ef298c
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97027008"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100361630"
 ---
 # <a name="configure-azure-ad-multi-factor-authentication-settings"></a>Azure AD Multi-Factor Authentication ayarlarını yapılandırma
 
@@ -65,9 +65,7 @@ Bir kullanıcıyı engellemek için aşağıdaki adımları izleyin:
 
 1. **Azure Active Directory**  >  **güvenlik**  >  **MFA**  >  **blok/kullanıcıları engellemeyi kaldır**' a gidin.
 1. Kullanıcıyı engellemek için **Ekle** ' yi seçin.
-1. **Çoğaltma grubunu** seçin ve ardından *Azure varsayılanı*' nı seçin.
-
-    Engellenen Kullanıcı için Kullanıcı adını girin ve `username\@domain.com` sonra *neden* alanında bir açıklama sağlayın.
+1. Engellenen Kullanıcı için Kullanıcı adını girin ve `username@domain.com` sonra *neden* alanında bir açıklama sağlayın.
 1. Hazırsanız, kullanıcıyı engellemek için **Tamam** ' ı seçin.
 
 ### <a name="unblock-a-user"></a>Kullanıcının engellemesini kaldırma

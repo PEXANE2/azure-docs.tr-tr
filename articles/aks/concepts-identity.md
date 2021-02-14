@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: 3c291d9a9d48b6f75148b673848b8451521bab91
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 8d69033dedc3a45263b087c9b9ee5b156af460be
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97615820"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100361069"
 ---
 # <a name="access-and-identity-options-for-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) için erişim ve kimlik seçenekleri
 
@@ -166,7 +166,7 @@ Azure RBAC tümleştirmesiyle, AKS, Azure rol tanımı ve rol atamalarını kull
 
 ![Kubernetes yetkilendirme akışı için Azure RBAC](media/concepts-identity/azure-rbac-k8s-authz-flow.png)
 
-Yukarıdaki diyagramda gösterildiği gibi, Azure RBAC tümleştirmesi kullanılırken, Kubernetes API 'sine yönelik tüm istekler [Azure Active Integration bölümünde](#azure-active-directory-integration)açıklanacak şekilde aynı kimlik doğrulama akışını izler. 
+Yukarıdaki diyagramda gösterildiği gibi, Azure RBAC tümleştirmesi kullanılırken, Kubernetes API 'sine yönelik tüm istekler, [Azure Active Directory tümleştirme bölümünde](#azure-active-directory-integration)açıklanacak şekilde aynı kimlik doğrulama akışını izler. 
 
 Bununla birlikte, kimlik doğrulama için yalnızca Kubernetes RBAC 'e güvenmek yerine, isteği AAD 'de olduğu sürece istek aslında Azure tarafından yetkilendirilir. Kimlik AAD 'de yoksa, örneğin bir Kubernetes hizmet hesabı için Azure RBAC, bu, normal Kubernetes RBAC olacaktır.
 
@@ -174,6 +174,8 @@ Bu senaryoda, kullanıcılara dört yerleşik rolden birini verebilir veya Kuber
 
 Bu özellik, örneğin, kullanıcılara yalnızca abonelikler arasında AKS kaynağı izinleri verme ancak bunları ayarlama ve onları, Kubernetes API 'sine erişimi denetleyen bu kümelerin her birinde sahip olabilecekleri rol ve izinleri vermenizi sağlayacak şekilde izin verecektir. Örneğin, `Azure Kubernetes Service RBAC Viewer` abonelik kapsamında role izin verebilir ve alıcı tüm Kubernetes nesnelerini listeleyebilir, ancak değiştiremez.
 
+> [!IMPORTANT]
+> Bu özelliği kullanmadan önce lütfen Kubernetes yetkilendirmesi için Azure RBAC 'i etkinleştirmeniz gerektiğini unutmayın. Daha fazla ayrıntı ve adım adım yönergeler için [buraya bakın](manage-azure-rbac.md).
 
 #### <a name="built-in-roles"></a>Yerleşik roller
 
@@ -186,7 +188,6 @@ AKS, aşağıdaki dört yerleşik rolü sağlar. Bunlar, [Kubernetes yerleşik r
 | Azure Kubernetes hizmeti RBAC Yöneticisi  | Yönetici erişimine izin verir, bir ad alanı içinde verilmek üzere tasarlanmıştır. Ad alanı içinde roller ve rol bağlamaları oluşturma özelliği de dahil olmak üzere bir ad alanındaki (veya küme kapsamındaki) kaynakların çoğuna okuma/yazma erişimi sağlar. Bu rol, kaynak kotasına veya ad alanının kendine yazma erişimine izin vermez. |
 | Azure Kubernetes hizmeti RBAC kümesi Yöneticisi  | Süper Kullanıcı erişiminin herhangi bir kaynak üzerinde herhangi bir işlem gerçekleştirmesine izin verir. Kümedeki her kaynak ve tüm ad alanlarında tam denetim sağlar. |
 
-**Azure RBAC 'i Kubernetes yetkilendirmesi için nasıl etkinleştireceğinizi öğrenmek için [buradan okuyun](manage-azure-rbac.md).**
 
 ## <a name="summary"></a>Özet
 

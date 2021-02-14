@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2019
 ms.author: kaushika
-ms.openlocfilehash: cb5ce421b6a38edcb8d92866f749a544eff927d6
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: f3e1ea8861646490875667f6238b3f8813bd6c4b
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99096398"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100518173"
 ---
 # <a name="troubleshoot-virtual-network-peering-issues"></a>Sanal ağ eşleme sorunlarını giderme
 
@@ -233,7 +233,7 @@ Bu sorunu çözmek için, her iki sanal ağdan eşlemeyi silin ve sonra yeniden 
 
 ### <a name="failed-to-peer-a-databricks-virtual-network"></a>Databricks sanal ağının eşi yapılamadı
 
-Bu sorunu çözmek için **Azure Databricks** altında sanal ağ eşlemesini yapılandırın ve ardından **kaynak kimliği**' ni kullanarak hedef sanal ağı belirtin. Daha fazla bilgi için bkz. [peer a Databricks sanal ağını uzak bir sanal ağa](https://docs.azuredatabricks.net/administration-guide/cloud-configurations/azure/vnet-peering.html#id2).
+Bu sorunu çözmek için **Azure Databricks** altında sanal ağ eşlemesini yapılandırın ve ardından **kaynak kimliği**' ni kullanarak hedef sanal ağı belirtin. Daha fazla bilgi için bkz. [peer a Databricks sanal ağını uzak bir sanal ağa](/azure/databricks/administration-guide/cloud-configurations/azure/vnet-peering#id2).
 
 ### <a name="the-remote-virtual-network-lacks-a-gateway"></a>Uzak sanal ağda ağ geçidi eksik
 

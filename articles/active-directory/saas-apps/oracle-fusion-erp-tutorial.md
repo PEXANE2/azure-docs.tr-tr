@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 09/10/2019
+ms.date: 02/09/2021
 ms.author: jeedes
-ms.openlocfilehash: 9b116547670070c010a83f774a50b67fe9618be5
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 0dd49117448cf02e2c22e362600e4f9e889b6555
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92515623"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100390785"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-oracle-fusion-erp"></a>Öğretici: Oracle Fusion ERP ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -25,8 +25,6 @@ Bu öğreticide, Oracle Fusion ERP 'yi Azure Active Directory (Azure AD) ile tü
 * Azure AD 'de Oracle Fusion ERP 'ye erişimi olan denetim.
 * Kullanıcılarınızın Azure AD hesaplarıyla Oracle Fusion ERP 'de otomatik olarak oturum açmalarına olanak sağlayın.
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
-
-Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -39,13 +37,13 @@ Başlamak için aşağıdaki öğeler gereklidir:
 
 Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz.
 
-* Oracle Fusion ERP, **SP** tarafından başlatılan SSO 'yu destekler
+* Oracle Fusion ERP, **SP** tarafından başlatılan SSO 'yu destekler.
 
-## <a name="adding-oracle-fusion-erp-from-the-gallery"></a>Galeriden Oracle Fusion ERP ekleme
+## <a name="add-oracle-fusion-erp-from-the-gallery"></a>Galeriden Oracle Fusion ERP ekleme
 
 Oracle Fusion ERP 'nin tümleştirmesini Azure AD 'ye göre yapılandırmak için, Galeriden Oracle Fusion ERP 'yi yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
 
-1. [Azure Portal](https://portal.azure.com) iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
+1. Azure portal iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
 1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
 1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
 1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
@@ -54,9 +52,9 @@ Oracle Fusion ERP 'nin tümleştirmesini Azure AD 'ye göre yapılandırmak içi
 
 ## <a name="configure-and-test-azure-ad-sso-for-oracle-fusion-erp"></a>Oracle Fusion ERP için Azure AD SSO 'yu yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Oracle Fusion ERP Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, Oracle Fusion ERP 'de bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Oracle Fusion ERP Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, Oracle Fusion ERP 'de bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
-Azure AD SSO 'yu Oracle Fusion ERP ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
+Azure AD SSO 'yu Oracle Fusion ERP ile yapılandırmak ve test etmek için aşağıdaki adımları gerçekleştirin:
 
 1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
     1. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
@@ -69,9 +67,9 @@ Azure AD SSO 'yu Oracle Fusion ERP ile yapılandırmak ve test etmek için aşa�
 
 Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-1. [Azure Portal](https://portal.azure.com/), **Oracle Fusion ERP** uygulama tümleştirmesi sayfasında **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
+1. Azure portal, **Oracle FUSION ERP** uygulama tümleştirmesi sayfasında **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
 1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
-1. **SAML Ile tek Sign-On ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
+1. **SAML Ile tek Sign-On ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** kalem simgesine tıklayın.
 
    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -111,15 +109,9 @@ Bu bölümde, Oracle Fusion ERP 'ye erişim izni vererek Azure çoklu oturum aç
 1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
 1. Uygulamalar listesinde **Oracle FUSION ERP**' yi seçin.
 1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
-
-   !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
-
 1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
-
-    ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
-
 1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. Kullanıcılara bir rolün atanmasını bekliyorsanız, **Rol Seç** açılır listesinden bunu seçebilirsiniz. Bu uygulama için ayarlanmış bir rol yoksa, "varsayılan erişim" rolü seçili olduğunu görürsünüz.
 1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
 ## <a name="configure-oracle-fusion-erp-sso"></a>Oracle Fusion ERP SSO 'yu yapılandırma
@@ -132,16 +124,14 @@ Bu bölümde, Oracle Fusion ERP 'de Britta Simon adlı bir Kullanıcı oluştura
 
 ## <a name="test-sso"></a>Test SSO 'SU 
 
-Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açma yapılandırmanızı aşağıdaki seçeneklerle test edersiniz. 
 
-Erişim panelinde Oracle Fusion ERP kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Oracle Fusion ERP ' de otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](../user-help/my-apps-portal-end-user-access.md).
+* Azure portal içinde **Bu uygulamayı test et** ' e tıklayın. Bu, oturum açma akışını başlatabileceğiniz Oracle Fusion ERP oturum açma URL 'sine yeniden yönlendirilir. 
 
-## <a name="additional-resources"></a>Ek kaynaklar
+* Oracle Fusion ERP oturum açma URL 'sine doğrudan gidin ve oturum akışını buradan başlatın.
 
-- [ SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi ](./tutorial-list.md)
+* Microsoft My Apps ' i kullanabilirsiniz. Uygulamalarım içindeki Oracle Fusion ERP kutucuğuna tıkladığınızda bu, Oracle Fusion ERP oturum açma URL 'sine yönlendirilir. Uygulamalarım hakkında daha fazla bilgi için bkz. [uygulamalarıma giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir? ](../manage-apps/what-is-single-sign-on.md)
+## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Active Directory'de koşullu erişim nedir?](../conditional-access/overview.md)
-
-- [Azure AD ile Oracle Fusion ERP 'yi deneyin](https://aad.portal.azure.com/)
+Oracle Fusion ERP 'yi yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).

@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 02/04/2021
+ms.date: 02/09/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: d0195d8c848b29156bfb77a639d34a18ac6a817b
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: 28b3ac6f5e9560f479d529fc99f4b851a2292fe0
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99560877"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100106097"
 ---
 ## <a name="azure-security-benchmark"></a>Azure Güvenlik Karşılaştırması
 
@@ -20,7 +20,7 @@ Tüm Azure hizmetleri için kullanılabilen Azure Ilkesi 'nin Bu uyumluluk stand
 
 |Etki alanı |Denetim KIMLIĞI |Denetim başlığı |İlke<br /><sub>(Azure portal)</sub> |İlke sürümü<br /><sub>GitHub</sub>  |
 |---|---|---|---|---|
-|Günlüğe Kaydetme ve Tehdit Algılama |LT-4 |Azure kaynakları için günlüğe kaydetmeyi etkinleştirme |[Olay Hub 'ındaki tanılama günlükleri etkinleştirilmelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F83a214f7-d01a-484b-91a9-ed54470c9a6a) |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Event%20Hub/EventHub_AuditDiagnosticLog_Audit.json) |
+|Günlüğe Kaydetme ve Tehdit Algılama |LT-4 |Azure kaynakları için günlüğe kaydetmeyi etkinleştirme |[Olay Hub 'ındaki kaynak günlükleri etkinleştirilmelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F83a214f7-d01a-484b-91a9-ed54470c9a6a) |[4.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Event%20Hub/EventHub_AuditDiagnosticLog_Audit.json) |
 
 ## <a name="azure-security-benchmark-v1"></a>Azure Güvenlik kıyaslaması v1
 
@@ -31,7 +31,7 @@ Tüm Azure hizmetleri için kullanılabilen Azure Ilkesi 'nin Bu uyumluluk stand
 |Etki alanı |Denetim KIMLIĞI |Denetim başlığı |İlke<br /><sub>(Azure portal)</sub> |İlke sürümü<br /><sub>GitHub</sub>  |
 |---|---|---|---|---|
 |Ağ Güvenliği |1.1 |Sanal ağınızda Ağ güvenlik gruplarını veya Azure Güvenlik duvarını kullanarak kaynakları koruma |[Olay Hub 'ı bir sanal ağ hizmeti uç noktası kullanmalıdır](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fd63edb4a-c612-454d-b47d-191a724fcbf0) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/VirtualNetworkServiceEndpoint_EventHub_AuditIfNotExists.json) |
-|Günlüğe Kaydetme ve İzleme |2.3 |Azure kaynakları için denetim günlüğünü etkinleştirme |[Olay Hub 'ındaki tanılama günlükleri etkinleştirilmelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F83a214f7-d01a-484b-91a9-ed54470c9a6a) |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Event%20Hub/EventHub_AuditDiagnosticLog_Audit.json) |
+|Günlüğe Kaydetme ve İzleme |2.3 |Azure kaynakları için denetim günlüğünü etkinleştirme |[Olay Hub 'ındaki kaynak günlükleri etkinleştirilmelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F83a214f7-d01a-484b-91a9-ed54470c9a6a) |[4.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Event%20Hub/EventHub_AuditDiagnosticLog_Audit.json) |
 
 ## <a name="hipaa-hitrust-92"></a>HIPAA HITRUST 9.2
 
@@ -43,6 +43,6 @@ Bu uyumluluk standardı hakkında daha fazla bilgi için bkz. [HIPAA HITRUST 9,2
 |Ağlarda ayrım yapma |0805.01 m1Organizational. 12-01. dk |Kuruluşun güvenlik ağ geçitleri (ör. güvenlik duvarları) güvenlik ilkelerini uygular ve etki alanları arasındaki trafiği filtrelemek, yetkisiz erişimi engellemek ve etki alanlarının her biri için, DMZs dahil olmak üzere iç kablolu, iç kablosuz ve dış ağ kesimleri (örn. Internet) arasında ayrımı sürdürmek için kullanılır. |[Olay Hub 'ı bir sanal ağ hizmeti uç noktası kullanmalıdır](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fd63edb4a-c612-454d-b47d-191a724fcbf0) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/VirtualNetworkServiceEndpoint_EventHub_AuditIfNotExists.json) |
 |Ağlarda ayrım yapma |0806.01 m2Organizational. 12356-01. dk |Kuruluşlar ağı, kurumsal gereksinimlere bağlı olarak, iç ağdan mantıksal olarak ayrılan genel erişimli sistem bileşenlerine yönelik alt ağlar da dahil olmak üzere, tanımlı bir güvenlik çevresi ve dereceli bir denetim kümesi ile mantıksal ve fiziksel olarak bölünmüştür; ve trafik, risk değerlendirmesine ve bunların ilgili güvenlik gereksinimlerine bağlı olarak, gereken işlevlere ve veri/sistemlerin sınıflandırmasına göre denetlenir. |[Olay Hub 'ı bir sanal ağ hizmeti uç noktası kullanmalıdır](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fd63edb4a-c612-454d-b47d-191a724fcbf0) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/VirtualNetworkServiceEndpoint_EventHub_AuditIfNotExists.json) |
 |Ağlarda ayrım yapma |0894.01 m2Organizational. 7-01. dk |Ağlar, fiziksel sunucular, uygulamalar veya veriler sanallaştırılmış sunuculara geçirilirken üretim düzeyindeki ağlardan ayırabilirsiniz. |[Olay Hub 'ı bir sanal ağ hizmeti uç noktası kullanmalıdır](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fd63edb4a-c612-454d-b47d-191a724fcbf0) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/VirtualNetworkServiceEndpoint_EventHub_AuditIfNotExists.json) |
-|Denetim günlüğü |1207.09 aa2System. 4-09. aa |Denetim kayıtları 90 gün boyunca tutulur ve daha eski denetim kayıtları bir yıl boyunca arşivlenir. |[Olay Hub 'ındaki tanılama günlükleri etkinleştirilmelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F83a214f7-d01a-484b-91a9-ed54470c9a6a) |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Event%20Hub/EventHub_AuditDiagnosticLog_Audit.json) |
+|Denetim günlüğü |1207.09 aa2System. 4-09. aa |Denetim kayıtları 90 gün boyunca tutulur ve daha eski denetim kayıtları bir yıl boyunca arşivlenir. |[Olay Hub 'ındaki kaynak günlükleri etkinleştirilmelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F83a214f7-d01a-484b-91a9-ed54470c9a6a) |[4.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Event%20Hub/EventHub_AuditDiagnosticLog_Audit.json) |
 |Ağ denetimleri |0863.09 m2Organizational. 910-09. d |Kuruluş, güvenilir olmayan ağlar ile kapsanan bilgi ortamındaki tüm sistem bileşenleri arasındaki bağlantıları kısıtlayan bir güvenlik duvarı yapılandırması oluşturur; ve güvenlik duvarı yapılandırmasındaki değişiklikler ağ diyagramında güncelleştirilir. |[Olay Hub 'ı bir sanal ağ hizmeti uç noktası kullanmalıdır](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fd63edb4a-c612-454d-b47d-191a724fcbf0) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/VirtualNetworkServiceEndpoint_EventHub_AuditIfNotExists.json) |
 

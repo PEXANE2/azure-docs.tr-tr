@@ -2,43 +2,45 @@
 title: Apache Spark için kitaplıkları yönetme
 description: Azure SYNAPSE Analytics 'te Apache Spark tarafından kullanılan kitaplıkları ekleme ve yönetme hakkında bilgi edinin.
 services: synapse-analytics
-author: euangMS
+author: midesa
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.date: 10/16/2020
 ms.author: midesa
 ms.reviewer: jrasnick
 ms.subservice: spark
-ms.openlocfilehash: 62610e1b86671021e66891ae232bacbd4b3e40ed
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 0458fb8b140166b7bdf0fc0df41dbb207fdce3c9
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96458820"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100518530"
 ---
 # <a name="manage-libraries-for-apache-spark-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te Apache Spark için kitaplıkları yönetme
 
-Kitaplıklar, programlarınıza veya projelerinize dahil etmek isteyebileceğiniz yeniden kullanılabilir kod sağlar. Üçüncü tarafa veya yerel olarak oluşturulmuş bir koda uygulamalarınızın kullanılabilir olmasını sağlamak için, bir kitaplığı sunucusuz Apache Spark havuzlarınızdan birine yükleyebilirsiniz. Spark havuzu için bir kitaplık yüklendikten sonra, aynı havuzu kullanan tüm oturumlarda kullanılabilir. 
+Kitaplıklar, programlarınıza veya projelerinize dahil etmek isteyebileceğiniz yeniden kullanılabilir kod sağlar. Üçüncü tarafa veya yerel olarak oluşturulmuş bir kodu uygulamalarınız için kullanılabilir hale getirmek için, bir kitaplığı sunucusuz Apache Spark havuzlarınızdan birine yükleyebilirsiniz. Spark havuzu için bir kitaplık yüklendikten sonra, aynı havuzu kullanan tüm oturumlarda kullanılabilir. 
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 - Kitaplıkları yüklemek ve güncelleştirmek için, Azure SYNAPSE Analytics çalışma alanına bağlı birincil Gen2 depolama hesabında **Depolama Blobu veri katılımcısı** veya **Depolama Blobu veri sahibi** izinlerine sahip olmanız gerekir.
   
 ## <a name="default-installation"></a>Varsayılan yükleme
-Azure SYNAPSE Analytics 'teki Apache Spark, tam bir anacondas yüklemesi ve ek kitaplıklar içerir. Tam kitaplıklar listesi, [Apache Spark sürüm desteği](apache-spark-version-support.md)' nde bulunabilir. 
+Azure SYNAPSE Analytics 'teki Apache Spark, tam bir anacondas yüklemesi artı ek kitaplıklar içerir. Tam kitaplıklar listesi, [Apache Spark sürüm desteği](apache-spark-version-support.md)' nde bulunabilir. 
 
-Bir Spark örneği başlatıldığında, bu kitaplıklar otomatik olarak dahil edilir. Ek Python ve özel oluşturulmuş paketler Spark havuz düzeyinde eklenebilir.
+Bir Spark örneği başlatıldığında, bu kitaplıklar otomatik olarak dahil edilir. Ek Python ve özel olarak oluşturulmuş paketler Spark havuz düzeyinde eklenebilir.
 
 
 ## <a name="manage-python-packages"></a>Python paketlerini Yönet
 Spark uygulamanız için kullanmak istediğiniz kitaplıkları tanımladıktan sonra bunları bir Spark havuzuna yükleyebilirsiniz. 
 
- Sanal ortamı yükseltmek için bir *requirements.txt* dosyası ( `pip freeze` komuttan çıkış) kullanılabilir. Bu dosyada yüklenmek veya yükseltmek üzere listelenen paketler, havuz başlatma sırasında PyPi 'den indirilir. Bu gereksinimler dosyası, bu Spark havuzundan bir Spark örneği oluşturulduğu her seferinde kullanılır.
+ Sanal ortamı yükseltmek için bir *requirements.txt* dosyası ( `pip freeze` komuttan çıkış) kullanılabilir. Bu dosyada yüklenmek veya yükseltmek üzere listelenen paketler, havuz başlatma sırasında PyPI 'den indirilir. Bu gereksinimler dosyası, bu Spark havuzundan bir Spark örneği oluşturulduğu her seferinde kullanılır.
 
 > [!IMPORTANT]
 > - Yüklemekte olduğunuz Paket büyükse veya yüklemesi uzun sürüyorsa, bu, Spark örneği başlangıç süresini etkiler.
 > - Yükleme zamanında derleyici desteği gerektiren GCC gibi paketler desteklenmez.
 > - Paketler düşürülemez, yalnızca eklenebilir veya yükseltilebilir.
-> - Kitaplıkları yüklemek için, SYNAPSE çalışma alanına bağlı birincil Gen2 depolama hesabında Depolama Blobu veri katılımcısı veya Depolama Blobu veri sahibi izinlerinizin olması gerekir.
+> - PySpark, Python, Scala/Java, .NET veya Spark sürümünün değiştirilmesi desteklenmez.
+> - Pypı 'den paket yükleme, DEP özellikli çalışma alanları içinde desteklenmez.
+
 
 ### <a name="requirements-format"></a>Gereksinimler biçimi
 
@@ -53,6 +55,9 @@ alabaster==0.7.10
 ### <a name="install-python-packages"></a>Python paketlerini yükler
 Spark uygulamanızı geliştirirken, var olan veya yeni kitaplıkları yüklemeniz gerektiğini fark edebilirsiniz. Kitaplıklar, havuz oluşturma sırasında veya sonrasında güncelleştirilemeyebilir.
 
+> [!IMPORTANT]
+> Kitaplıkları yüklemek için, SYNAPSE çalışma alanına bağlı birincil Gen2 depolama hesabında Depolama Blobu veri katılımcısı veya Depolama Blobu veri sahibi izinlerinizin olması gerekir.
+
 #### <a name="install-packages-during-pool-creation"></a>Havuz oluşturma sırasında paketleri yükler
 Havuz oluşturma sırasında bir Spark havuzuna kitaplık yüklemek için:
    
@@ -66,7 +71,7 @@ Havuz oluşturma sırasında bir Spark havuzuna kitaplık yüklemek için:
  
 
 #### <a name="install-packages-from-the-synapse-workspace"></a>Paketleri SYNAPSE çalışma alanından yükler
-Azure SYNAPSE Analytics portalından bir Spark havuzuna güncelleştirmek veya başka kitaplıklar eklemek için:
+Azure SYNAPSE Analytics portalından bir Spark havuzuna güncelleştirmek veya daha fazla kitaplık eklemek için:
 
 1.  Azure portal Azure SYNAPSE Analytics çalışma alanınıza gidin.
    
@@ -101,7 +106,7 @@ for d in pkg_resources.working_set:
      print(d)
 ```
 ### <a name="update-python-packages"></a>Python paketlerini güncelleştirme
-Paketler, oturumlar arasında dilediğiniz zaman eklenebilir veya değiştirilebilir. Yeni bir paket yapılandırma dosyası karşıya yüklendiğinde, bu, var olan paketlerin ve sürümlerin üzerine yazar.  
+Paketler, oturumlar arasında dilediğiniz zaman eklenebilir veya değiştirilebilir. Yeni bir paket yapılandırma dosyası var olan paketlerin ve sürümlerin üzerine yazacak.  
 
 Bir kitaplığı güncelleştirmek veya kaldırmak için:
 1. Azure SYNAPSE Analytics çalışma alanınıza gidin. 
@@ -131,6 +136,8 @@ Dosyalar, depolama hesabının varsayılan kapsayıcısında aşağıdaki yola y
 ```
 abfss://<file_system>@<account_name>.dfs.core.windows.net/synapse/workspaces/<workspace_name>/sparkpools/<pool_name>/libraries/python/
 ```
+
+Klasörü ```python``` zaten yoksa klasörü içine eklemeniz gerekebilir ```libraries``` .
 
 >[!IMPORTANT]
 >Özel paketler, oturumlar arasında eklenebilir veya değiştirilebilir. Ancak, güncelleştirilmiş paketi görmek için havuzun ve oturumun yeniden başlatılmasını beklemeniz gerekir.

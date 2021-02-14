@@ -1,102 +1,127 @@
 ---
 title: Taramalar için kimlik bilgileri oluşturma ve yönetme
-description: Bu makalede, Azure purview 'da kimlik bilgileri oluşturma ve yönetme adımları açıklanır.
+description: Azure purview 'da kimlik bilgileri oluşturma ve yönetme adımları hakkında bilgi edinin.
 author: viseshag
 ms.author: viseshag
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 11/23/2020
-ms.openlocfilehash: 4c964f3661e120026189a75d331e6db975b41c70
-ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
+ms.date: 02/11/2021
+ms.openlocfilehash: 091f4d7a4acdcc5d1a2b89a5121ee0cff3ee1f55
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97756084"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100381197"
 ---
 # <a name="credentials-for-source-authentication-in-azure-purview"></a>Azure purview 'da kaynak kimlik doğrulaması için kimlik bilgileri
 
-Bu makalede, kayıtlı kimlik doğrulama bilgilerini hızlı bir şekilde yeniden kullanmak ve veri kaynağı taramalarınızda uygulamanız için Azure takip görünümü 'nde nasıl kimlik bilgileri oluşturabileceğiniz açıklanır.
+Bu makalede, Azure purview 'da kimlik bilgileri oluşturma açıklanır. Bu kayıtlı kimlik bilgileri, kayıtlı kimlik doğrulama bilgilerini hızlı bir şekilde yeniden kullanmanıza ve veri kaynağı taramalarınız için uygulamanıza
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* Azure Anahtar Kasası. Bir oluşturma hakkında bilgi edinmek için bkz. [hızlı başlangıç: Azure Portal kullanarak bir Anahtar Kasası oluşturma](../key-vault/general/quick-create-portal.md).
+- Azure Anahtar Kasası. Bir oluşturma hakkında bilgi edinmek için bkz. [hızlı başlangıç: Azure Portal kullanarak bir Anahtar Kasası oluşturma](../key-vault/general/quick-create-portal.md).
 
 ## <a name="introduction"></a>Giriş
-Kimlik bilgileri, Azure purview 'ın kayıtlı veri kaynaklarınızda kimlik doğrulamak için kullanabileceği kimlik doğrulama bilgileridir. Çeşitli kimlik doğrulama senaryoları (Kullanıcı adı/parola gerektiren temel kimlik doğrulaması gibi) için bir kimlik bilgisi nesnesi oluşturulabilir ve seçilen kimlik doğrulama yöntemi türüne göre gereken belirli bilgileri yakalar. Kimlik bilgileri, kimlik bilgileri oluşturma işlemi sırasında hassas kimlik doğrulama bilgilerini almak için mevcut Azure Anahtar Kasası sırlarınızı kullanır.
 
-## <a name="using-purview-managed-identity-to-set-up-scans"></a>Taramaları ayarlamak için purview tarafından yönetilen kimliği kullanma
-Taramaları ayarlamak için purview yönetilen kimliğini kullanıyorsanız, bu kimlik bilgilerini açık bir şekilde oluşturmanız ve anahtar kasanızın, bunları depolamak için takip görünümüne bağlamanız gerekmez. Veri kaynaklarınızı taramak için adım adım yönetilen kimliği ekleme hakkında ayrıntılı yönergeler için aşağıdaki veri kaynağına özel kimlik doğrulama bölümlerine bakın:
+Kimlik bilgileri, Azure purview 'ın kayıtlı veri kaynaklarınızda kimlik doğrulamak için kullanabileceği kimlik doğrulama bilgileridir. Kullanıcı adı/parola gerektiren temel kimlik doğrulaması gibi çeşitli kimlik doğrulama senaryoları için bir kimlik bilgisi nesnesi oluşturulabilir. Kimlik bilgileri, seçilen kimlik doğrulama yöntemine göre kimlik doğrulaması yapmak için gereken belirli bilgileri yakalar. Kimlik bilgileri, kimlik bilgileri oluşturma işlemi sırasında hassas kimlik doğrulama bilgilerini almak için mevcut Azure Anahtar Kasası sırlarınızı kullanır.
+
+## <a name="use-purview-managed-identity-to-set-up-scans"></a>Taramaları ayarlamak için purview yönetilen kimliğini kullanın
+
+Taramaları ayarlamak için purview yönetilen kimliğini kullanıyorsanız, bu kimlik bilgilerini açık bir şekilde oluşturmanız ve anahtar kasanızın, bunları depolamak için takip görünümüne bağlamanız gerekmez. Veri kaynaklarınızı taramak için adım adım yönetilen kimliği ekleme hakkında ayrıntılı yönergeler için aşağıdaki veri kaynağına özgü kimlik doğrulama bölümlerine bakın:
 
 - [Azure Blob Depolama](register-scan-azure-blob-storage-source.md#setting-up-authentication-for-a-scan)
 - [Azure Data Lake Storage Gen1](register-scan-adls-gen1.md#setting-up-authentication-for-a-scan)
 - [Azure Data Lake Storage 2. Nesil](register-scan-adls-gen2.md#setting-up-authentication-for-a-scan)
 - [Azure SQL Veritabanı](register-scan-azure-sql-database.md)
-- [Azure SQL Veritabanı Yönetilen Örneği](register-scan-azure-sql-database-managed-instance.md#setting-up-authentication-for-a-scan)
+- [Azure SQL veritabanı yönetilen örneği](register-scan-azure-sql-database-managed-instance.md#setting-up-authentication-for-a-scan)
 - [Azure Synapse Analytics](register-scan-azure-synapse-analytics.md#setting-up-authentication-for-a-scan)
 
 ## <a name="create-azure-key-vaults-connections-in-your-azure-purview-account"></a>Azure purview hesabınızda Azure Anahtar Kasası bağlantıları oluşturma
 
-Bir kimlik bilgisi oluşturabilmeniz için önce, mevcut Azure Key Vault örneklerinden birini veya daha fazlasını Azure purview hesabınızla ilişkilendirmeniz gerekir.
+Bir kimlik bilgisi oluşturabilmeniz için önce mevcut Azure Key Vault örneklerinden bir veya daha fazlasını Azure purview hesabınızla ilişkilendirin.
 
-1. Azure purview gezinme menüsünde, yönetim merkezine gidin ve kimlik bilgileri ' ne gidin.
+1. [Azure Portal](https://portal.azure.com)Azure purview hesabınızı seçin. **Yönetim merkezine** gidin ve **kimlik bilgileri**' ne gidin.
 
-2. Kimlik bilgileri komut çubuğundan Yönet Key Vault bağlantıları ' nı seçin.
+2. **Kimlik bilgileri** sayfasında **Yönet Key Vault bağlantıları**' nı seçin.
 
-    :::image type="content" source="media/manage-credentials/manage-kv-connections.png" alt-text="AKV bağlantılarını yönetme":::
+   :::image type="content" source="media/manage-credentials/manage-kv-connections.png" alt-text="Azure Key Vault bağlantılarını yönetme":::
 
-3. Key Vault bağlantıları Yönet panelinden + yeni ' yi seçin 
+3. Key Vault bağlantılarını Yönet sayfasından **+ Yeni** ' yi seçin.
 
-4. Gerekli bilgileri sağlayın ve Oluştur ' u seçin.
+4. Gerekli bilgileri girip **Oluştur**' u seçin.
 
-5. Key Vault Azure purview hesabınızla başarıyla ilişkilendirildiğini onaylayın
+5. Aşağıdaki örnekte gösterildiği gibi Key Vault Azure purview hesabınızla başarıyla ilişkilendirildiğini doğrulayın:
 
-    :::image type="content" source="media/manage-credentials/view-kv-connections.png" alt-text="AKV bağlantılarını görüntüle":::
+   :::image type="content" source="media/manage-credentials/view-kv-connections.png" alt-text="Onaylamak için Azure Key Vault bağlantılarını görüntüleyin.":::
 
 ## <a name="grant-the-purview-managed-identity-access-to-your-azure-key-vault"></a>Azure Key Vault yönetilen kimlik erişimine izin verin
 
-Anahtar Kasası > erişim ilkelerine > erişim Ilkesi Ekle ' ye gidin. Gizli dizi izinleri açılan listesinde alma izni verin ve asıl görünüm MSI olacak asıl ' ı seçin. 
+1. Azure Key Vault gidin.
 
-:::image type="content" source="media/manage-credentials/add-msi-to-akv.png" alt-text="Bu MSI 'yi AKV 'ye Ekle":::
+2. **Erişim ilkeleri** sayfasını seçin.
 
+3. **Erişim Ilkesi Ekle**' yi seçin.
 
-:::image type="content" source="media/manage-credentials/add-access-policy.png" alt-text="Erişim İlkesi Ekle":::
+   :::image type="content" source="media/manage-credentials/add-msi-to-akv.png" alt-text="Bu MSI 'yi AKV 'ye Ekle":::
 
+4. Gizli dizi **izinleri** açılır listesinde, **Al** ve **Listele** izinleri ' ni seçin.
 
-:::image type="content" source="media/manage-credentials/save-access-policy.png" alt-text="Erişim ilkesini Kaydet":::
+5. **Asıl seçin** için, yönetilen kimlik ' i seçin.
+
+   :::image type="content" source="media/manage-credentials/add-access-policy.png" alt-text="Erişim İlkesi Ekle":::
+
+6. **Add (Ekle)** seçeneğini belirleyin.
+
+7. Erişim ilkesini kaydetmek için **Kaydet** ' i seçin.
+
+   :::image type="content" source="media/manage-credentials/save-access-policy.png" alt-text="Erişim ilkesini Kaydet":::
 
 ## <a name="create-a-new-credential"></a>Yeni kimlik bilgisi oluştur
 
-Bugörünümde desteklenen kimlik bilgisi türü:
-* Temel kimlik doğrulaması: **parolayı** Anahtar Kasası 'nda gizli dizi olarak ekleyeceksiniz
-* Hizmet sorumlusu: **hizmet sorumlusu anahtarını** Anahtar Kasası 'nda gizli dizi olarak ekleyeceksiniz 
-* SQL kimlik doğrulaması: **parolayı** Anahtar Kasası 'nda gizli dizi olarak ekleyeceksiniz
-* Hesap anahtarı: **hesap anahtarını** Anahtar Kasası 'nda gizli dizi olarak ekleyeceksiniz
+Bu kimlik bilgisi türleri purview 'da desteklenir:
+
+- Temel kimlik doğrulaması: **parolayı** Anahtar Kasası 'nda gizli dizi olarak eklersiniz.
+- Hizmet sorumlusu: **hizmet sorumlusu anahtarını** Anahtar Kasası 'nda gizli dizi olarak eklersiniz.
+- SQL kimlik doğrulaması: **parolayı** Anahtar Kasası 'nda gizli dizi olarak eklersiniz.
+- Hesap anahtarı: **hesap anahtarını** Anahtar Kasası 'nda gizli dizi olarak eklersiniz.
 
 Daha fazla bilgi için bkz. [Key Vault için gizli dizi ekleme](../key-vault/secrets/quick-create-portal.md#add-a-secret-to-key-vault).
 
-Gizli dizilerinizi Anahtar Kasanızda depoladıktan sonra kimlik bilgileri komut çubuğundan + yeni ' yi seçerek yeni kimlik bilgilerinizi oluşturun. Kimlik doğrulama yöntemini seçme ve öğesinden bir gizli anahtar seçilecek bir Key Vault örneği de dahil olmak üzere gerekli bilgileri sağlayın. Tüm ayrıntılar doldurulduktan sonra Oluştur ' a tıklayın.
+Gizli dizileri anahtar kasasında sakladıktan sonra:
 
-:::image type="content" source="media/manage-credentials/new-credential.png" alt-text="Yeni kimlik bilgisi":::
+1. Azure purview ' de kimlik bilgileri sayfasına gidin.
 
-Kimlik bilgileri listesi görünümünde yeni kimlik bilgilerinizin görüntülendiğini ve kullanıma hazırlandiğini doğrulayın
+2. **+ Yeni** seçeneğini belirleyerek yeni kimlik bilgilerinizi oluşturun.
 
-:::image type="content" source="media/manage-credentials/view-credentials.png" alt-text="Kimlik bilgisini görüntüle":::
+3. Gerekli bilgileri sağlayın. **Kimlik doğrulama yöntemini** ve bir gizli anahtar seçilecek **Key Vault bağlantıyı** seçin.
+
+4. Tüm ayrıntılar doldurulduktan sonra **Oluştur**' u seçin.
+
+   :::image type="content" source="media/manage-credentials/new-credential.png" alt-text="Yeni kimlik bilgisi":::
+
+5. Yeni kimlik bilgilerinizin liste görünümünde görüntülendiğini ve kullanıma hazırlandiğini doğrulayın.
+
+   :::image type="content" source="media/manage-credentials/view-credentials.png" alt-text="Kimlik bilgisini görüntüle":::
 
 ## <a name="manage-your-key-vault-connections"></a>Anahtar Kasası bağlantılarınızı yönetin
 
 1. Ada göre Key Vault bağlantıları arama/bulma
 
-    :::image type="content" source="media/manage-credentials/search-kv.png" alt-text="Anahtar kasasında ara":::
+   :::image type="content" source="media/manage-credentials/search-kv.png" alt-text="Anahtar kasasında ara":::
 
-1. Bir veya daha fazla Key Vault bağlantıyı silme
- 
-    :::image type="content" source="media/manage-credentials/delete-kv.png" alt-text="Anahtar kasasını Sil":::
+2. Bir veya daha fazla Key Vault bağlantıyı silme
+
+   :::image type="content" source="media/manage-credentials/delete-kv.png" alt-text="Anahtar kasasını Sil":::
 
 ## <a name="manage-your-credentials"></a>Kimlik bilgilerinizi yönetin
 
-1. Kimlik bilgilerini ada göre ara/bul
+1. Kimlik bilgilerini ada göre arayın/bulun.
   
-2. Mevcut bir kimlik bilgisi seçin ve güncelleştirmeleri yapın
+2. Mevcut bir kimlik bilgisi seçin ve güncelleştirmeleri yapın.
 
-3. Bir veya daha fazla kimlik bilgisini sil
+3. Bir veya daha fazla kimlik bilgisini silin.
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+[Tarama kuralı kümesi oluşturma](create-a-scan-rule-set.md)

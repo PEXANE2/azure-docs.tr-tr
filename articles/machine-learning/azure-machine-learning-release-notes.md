@@ -9,16 +9,46 @@ ms.topic: reference
 ms.author: larryfr
 author: BlackMist
 ms.date: 09/10/2020
-ms.openlocfilehash: b814c12a0d57230a81a68f6030a26ded93bd0399
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: c54034ef927bb49a955ef6121f5a8d56b57f0bd3
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100097084"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100375570"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning sürüm notları
 
 Bu makalede Azure Machine Learning sürümleri hakkında bilgi edinin.  Tam SDK başvuru içeriği için Azure Machine Learning [**Python başvurusu için ana SDK**](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) sayfasına gidin.
+
+
+## <a name="2021-02-09"></a>2021-02-09
+
+### <a name="azure-machine-learning-sdk-for-python-v1220"></a>Python v 1.22.0 için SDK Azure Machine Learning
++ **Hata düzeltmeleri ve geliştirmeleri**
+  + **azureml-automl-core**
+    + Vision modelleri için Conda yıml dosyasına ek bir PIP bağımlılığının eklendiği hata düzeltildi.
+  + **azureml-automl-runtime**
+    + Klasik tahmin modellerinin (örn. oto), bilinmeyen hedef değerleri olan satırlarda eğitim verileri alabileceği bir hata düzeltildi. Bu, bu modellerin veri sözleşmesini ihlal etti. * Zaman serisi gecikme işlecinde yineleme ölçütü ile çeşitli hatalar düzeltildi. Daha önce, yineleme ölçütü işlemi, tüm düzenlenmiş satırları doğru şekilde işaretlemez, bu nedenle her zaman doğru oluşum gecikmesi değerlerini oluşturmaz. Ayrıca, öteleme işleci ile sıralı pencere işleci arasındaki bazı uyumluluk sorunlarını, yinelenme ölçütü davranışına göre de düzeltildi. Daha önce bu, yuvarlama penceresi işlecinin, aksi takdirde kullanması gereken eğitim verilerinden bazı satırları bırakmasıyla sonuçlandı.
+  + **azureml-core**
+    + Hedef kitle tarafından belirteç kimlik doğrulaması desteği ekleniyor.
+    + `process_count`Çok işlem çok düğümlü PyTorch işlerini desteklemek Için [Pytorchconfiguration](/python/api/azureml-core/azureml.core.runconfig.pytorchconfiguration?preserve-view=true&view=azure-ml-py) öğesine ekleyin.
+  + **azureml-pipeline-steps**
+    + [Commandstep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.commandstep?preserve-view=true&view=azure-ml-py) şimdi GA ve artık deneysel yok.
+    + [Parallelrunconfig](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.parallelrunconfig?preserve-view=true&view=azure-ml-py): allowed_failed_count bağımsız değişken ekleyin ve mini toplu iş düzeyinde hata eşiğini denetlemek için allowed_failed_percent. Hata eşiğinin Şu anda 3 türleri vardır:
+       + error_threshold-izin verilen başarısız mini Batch öğelerinin sayısı; 
+       + allowed_failed_count-izin verilen başarısız mini toplu iş sayısı; 
+       + allowed_failed_percent-izin verilen başarısız mini toplu işlerin yüzdesi. 
+       
+       Bir iş, bunlardan herhangi birini aşarsa durur. geriye dönük uyumluluk sağlamak için error_threshold gereklidir. Değeri yok saymak için-1 olarak ayarlayın.
+    + Oto Mlstep adında sabit boşluk işleme.
+    + ScriptRunConfig artık HyperDriveStep tarafından destekleniyor
+  + **azureml-train-core**
+    + ScriptRun 'tan çağrılan hiper sürücü çalıştırmaları artık alt çalıştırma olarak kabul edilir.
+    + `process_count`Çok işlem çok düğümlü PyTorch işlerini desteklemek Için [Pytorchconfiguration](/python/api/azureml-core/azureml.core.runconfig.pytorchconfiguration?preserve-view=true&view=azure-ml-py) öğesine ekleyin.
+  + **azureml-widgets**
+    + Bir ParallelRunStep durumunu görselleştirmek için pencere öğesi ParallelRunStepDetails öğesini ekleyin.
+    + Hiper sürücü kullanıcılarının, her alt çalışma için her bir hiper parametre kümesine karşılık gelen ölçüm değerini gösteren paralel koordinatlar grafiğinde ek bir eksen görmesini sağlar.
+
 
  ## <a name="2021-01-31"></a>2021-01-31
 ### <a name="azure-machine-learning-studio-notebooks-experience-january-update"></a>Azure Machine Learning Studio Not defteri deneyimi (Ocak güncelleştirmesi)
@@ -35,6 +65,7 @@ Bu makalede Azure Machine Learning sürümleri hakkında bilgi edinin.  Tam SDK 
   + Geliştirilmiş performans 
   + Gelişmiş hız ve çekirdek güvenilirliği
   
+
  ## <a name="2021-01-25"></a>2021-01-25
 
 ### <a name="azure-machine-learning-sdk-for-python-v1210"></a>Python v 1.21.0 için SDK Azure Machine Learning
@@ -145,7 +176,7 @@ Bu makalede Azure Machine Learning sürümleri hakkında bilgi edinin.  Tam SDK 
     + HyperDriveRun.get_children_sorted_by_primary_metric () Şu anda daha hızlı tamamlanır
     + Hiper sürücü SDK 'sında geliştirilmiş hata işleme.
     +  Deneme çalıştırmalarını yapılandırmak için ScriptRunConfig kullanma yerine tüm tahmin aracı sınıfları kullanım dışı bırakıldı. Kullanım dışı bırakılan sınıflar şunları içerir:
-        + MMLBaseEstimator
+        + MMLBase
         + Tahmin Aracı
         + PyTorch 
         + TensorFlow 

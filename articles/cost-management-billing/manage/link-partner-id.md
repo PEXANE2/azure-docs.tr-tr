@@ -8,12 +8,12 @@ ms.date: 10/05/2020
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.openlocfilehash: 96b6467d0d529f5839c33182057f3aa3c39cb6e7
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
-ms.translationtype: HT
+ms.openlocfilehash: a214e91307308e191ce92b6461c1454d2cc7dd2b
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132559"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100370487"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>İş ortağı kimliğini Azure hesaplarınıza bağlama
 
@@ -162,9 +162,7 @@ Evet, Azure Stack için iş ortağı kimliğinizi bağlayabilirsiniz.
 
 **Şirketim müşteri kaynaklarına erişmek için [Azure Lighthouse](../../lighthouse/overview.md) kullanıyorsa iş ortağı kimliğimi nasıl ilişkilendirebilirim?**
 
-[Azure Market’te bir yönetilen hizmet teklifi yayımlayarak](../../lighthouse/how-to/publish-managed-services-offers.md) müşterileri Azure’da atanan kaynak yönetimine eklerseniz, MPN kimliğiniz otomatik olarak ilişkilendirilir.
-
-Müşterileri [Azure Resource Manager şablonları dağıtarak eklerseniz](../../lighthouse/how-to/onboard-customer.md), MPN kimliğinizi eklenmiş aboneliklerinizin her birine erişimi olan en az bir kullanıcı hesabıyla ilişkilendirmeniz gerekir. Bunu her bir müşteri kiracısında değil, hizmet sağlayıcısı kiracınızda yapmanız gerektiğini unutmayın. Kolaylık olması için kiracınızda bir hizmet sorumlusu hesabı oluşturmanızı, bunu MPN kimliğinizle ilişkilendirmenizi ve sonra [iş ortağı tarafından kazanılan krediye uygun bir Azure yerleşik rolüyle](/partner-center/azure-roles-perms-pec) eklediğiniz her müşteriye erişim vermenizi öneririz. Daha fazla bilgi için bkz. [İş ortağı kimliğinizi, temsilci atanan kaynaklardaki etkinizi izleyecek şekilde bağlama](../../lighthouse/how-to/partner-earned-credit.md).
+Azure Sthouse etkinliklerinin tanınması için, MPN KIMLIĞINIZI eklendi aboneliklerinizin her birine erişimi olan en az bir kullanıcı hesabıyla ilişkilendirmeniz gerekir. Bunu her bir müşteri kiracısında değil, hizmet sağlayıcısı kiracınızda yapmanız gerektiğini unutmayın. Kolaylık olması için kiracınızda bir hizmet sorumlusu hesabı oluşturmanızı, bunu MPN kimliğinizle ilişkilendirmenizi ve sonra [iş ortağı tarafından kazanılan krediye uygun bir Azure yerleşik rolüyle](/partner-center/azure-roles-perms-pec) eklediğiniz her müşteriye erişim vermenizi öneririz. Daha fazla bilgi için bkz. [İş ortağı kimliğinizi, temsilci atanan kaynaklardaki etkinizi izleyecek şekilde bağlama](../../lighthouse/how-to/partner-earned-credit.md).
 
 **İş Ortağı Yönetici Bağlantısını (PAL) Müşterime nasıl açıklayabilirim?**
 

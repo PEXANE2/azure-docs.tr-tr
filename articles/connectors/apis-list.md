@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla
 ms.topic: article
-ms.date: 01/07/2021
-ms.openlocfilehash: c2b89450c0e474f5030f8812e888890f1fedde7e
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.date: 02/12/2021
+ms.openlocfilehash: 4b431220dbab49b74f38a8f37be8aac1a0c5c460
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98019644"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100382897"
 ---
 # <a name="connectors-for-azure-logic-apps"></a>Azure Logic Apps için Bağlayıcılar
 
@@ -66,7 +66,7 @@ Bir Azure sanal ağındaki kaynaklara doğrudan erişmesi gereken Logic Apps iç
 > [!NOTE]
 > ISE ve bağlayıcılarında çalışan Logic Apps, bu bağlayıcıların çalıştığı durumlar ne olursa olsun, tüketim tabanlı fiyatlandırma planına karşı sabit bir fiyatlandırma planını takip edin. Daha fazla bilgi için bkz. [Logic Apps fiyatlandırma modeli](../logic-apps/logic-apps-pricing.md) ve [Logic Apps fiyatlandırma ayrıntıları](https://azure.microsoft.com/pricing/details/logic-apps/).
 
-| Etiketle | Örnek | Açıklama |
+| Etiketle | Örnek | Description |
 |-------|---------|-------------|
 | **ÇEKIRDEĞIN** | ![Örnek çekırdek Bağlayıcısı](./media/apis-list/example-core-connector.png) | Bu etiketle birlikte yerleşik Tetikleyiciler ve Eylemler, Logic Apps ile aynı ıSE 'de çalışır. |
 | **ISE** | ![Örnek ıSE Bağlayıcısı](./media/apis-list/example-ise-connector.png) | Bu etikete sahip yönetilen bağlayıcılar, Logic Apps ile aynı ıSE 'de çalışır. Azure sanal ağına bağlı bir şirket içi sisteminiz varsa, bir ıSE, Logic Apps 'in [Şirket içi veri ağ geçidi](../logic-apps/logic-apps-gateway-connection.md)olmadan bu sisteme doğrudan erişmesini sağlar. Bunun yerine, varsa, bu sistemin **Ise** bağlayıcısını kullanabilirsiniz, bir http eylemi veya [özel bağlayıcı](#custom). **Ise** bağlayıcıları olmayan şirket içi sistemler için şirket içi veri ağ geçidi kullanın. Kullanılabilir ıSE bağlayıcılarını gözden geçirmek için bkz. [Ise bağlayıcıları](#ise-connectors). |
@@ -452,15 +452,21 @@ Bu sorunları gidermek veya geçici çözüm bulmak için şu çözümleri deney
 >
 > Sesleri oluşturma hakkında daha fazla bilgi için bkz. [Azure Logic Apps Azure sanal ağlarına bağlanma](../logic-apps/connect-virtual-network-vnet-isolated-environment.md).
 
+## <a name="get-ready-for-deployment"></a>Dağıtıma hazırlanın
+
+Bir mantıksal uygulama içinden bağlantı oluşturabilirsiniz, ancak bağlantılar kendi kaynak tanımlarıyla ayrı Azure kaynaklarıdır. Bu bağlantı kaynağı tanımlarını gözden geçirmek için, [mantıksal uygulamanızı Azure 'Dan Visual Studio 'ya indirin](../logic-apps/manage-logic-apps-with-visual-studio.md). Bu, en kolay dağıtım için hazırlamış geçerli bir parametreli mantıksal uygulama şablonu oluşturmanın en kolay yoludur.
+
 <a name="block-connections"></a>
 
 ## <a name="block-creating-connections"></a>Bağlantı oluşturmayı engelle
 
 Kuruluşunuz Azure Logic Apps bağlayıcılarını kullanarak belirli kaynaklara bağlanmasına izin vermezse, [Azure ilkesi](../governance/policy/overview.md)kullanarak mantıksal uygulama iş akışlarında belirli bağlayıcılar için [Bu bağlantıları oluşturma özelliğini engelleyebilirsiniz](../logic-apps/block-connections-connectors.md) . Daha fazla bilgi için bkz. [Azure Logic Apps içindeki belirli bağlayıcılar tarafından oluşturulan bağlantıları engelleyin](../logic-apps/block-connections-connectors.md).
 
-## <a name="get-ready-for-deployment"></a>Dağıtıma hazırlanın
+## <a name="known-issues"></a>Bilinen sorunlar
 
-Bir mantıksal uygulama içinden bağlantı oluşturabilirsiniz, ancak bağlantılar kendi kaynak tanımlarıyla ayrı Azure kaynaklarıdır. Bu bağlantı kaynağı tanımlarını gözden geçirmek için, [mantıksal uygulamanızı Azure 'Dan Visual Studio 'ya indirin](../logic-apps/manage-logic-apps-with-visual-studio.md). Bu, en kolay dağıtım için hazırlamış geçerli bir parametreli mantıksal uygulama şablonu oluşturmanın en kolay yoludur.
+#### <a name="error-badgateway-client-request-id-guid"></a>Hata: BadGateway. İstemci istek kimliği: ' {GUID} '
+
+Bu hata, bir veya daha fazla bağlantının, SFTP ad SQL gibi Azure Active Directory (Azure AD) OAuth kimlik doğrulamasını desteklemediği bir mantıksal uygulamadaki etiketlerin güncelleştirilmesini, bu bağlantıları bozmasına neden olur. Bu davranışı önlemek için bu etiketlerin güncelleştirilmesini önleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

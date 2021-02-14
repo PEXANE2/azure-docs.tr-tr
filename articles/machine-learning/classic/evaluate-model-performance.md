@@ -3,22 +3,22 @@ title: 'ML Studio (klasik): & çapraz Validate modellerini değerlendir-Azure'
 description: Azure Machine Learning Studio (klasik) ' de model performansını izlemek için kullanabileceğiniz ölçümler hakkında bilgi edinin.
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: ca369f8a3e680a4d2aae49df83dda0cdd3dc4075
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: b2ca78d30659fce6e4246c81216cae94b404955e
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93310154"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100520026"
 ---
 # <a name="evaluate-model-performance-in-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio model performansını değerlendir (klasik)
 
-**Uygulama hedefi:** ![ İçin geçerlidir. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasik) ![ için geçerlidir. ](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
+**Uygulama hedefi:** ![ İçin geçerlidir. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasik) ![ için geçerlidir.](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
 
 Bu makalede, Azure Machine Learning Studio (klasik) ' de model performansını izlemek için kullanabileceğiniz ölçümler hakkında bilgi edinebilirsiniz.  Bir modelin performansını değerlendirmek, veri bilimi işlemindeki temel aşamalardan biridir. Bir veri kümesinin Puanlama (tahminleri), eğitilen bir model tarafından ne kadar başarılı olduğunu gösterir. Azure Machine Learning Studio (klasik), ana makine öğrenimi modüllerinin ikisi aracılığıyla model değerlendirmesini destekler: 
@@ -47,13 +47,13 @@ Alternatif olarak, giriş verilerinin farklı alt kümelerine otomatik olarak bi
 Aşağıdaki bölümlerde, hem [değerlendirme modelini][evaluate-model] hem de [çapraz doğrulama model][cross-validate-model] modüllerini kullanarak basit regresyon ve sınıflandırma modelleri oluşturacağız ve performanslarını değerlendiririz.
 
 ## <a name="evaluating-a-regression-model"></a>Regresyon modelini değerlendirme
-Bir otomobil 'nin boyut, Horsepower, altyapı özellikleri gibi özellikleri kullanarak bir fiyat tahmin etmek istediğimiz olduğunu varsayalım. Bu, hedef değişkenin ( *Fiyat* ) sürekli sayısal bir değer olduğu tipik bir gerileme sorunudur. Belirli bir otomobilin özellik değerleri verildiğinde, bu otomobilin fiyatını tahmin edebilen bir doğrusal regresyon modeline uyabiliriz. Bu regresyon modeli, eğitidiğimiz veri kümesini öğrenmek için kullanılabilir. Tahmin edilen otomobil fiyatlarına sahip olduktan sonra, tahmine dayalı olarak gerçek fiyatlardan ne kadar tahmin edilebileceğini inceleyerek model performansını değerlendirebiliriz. Bunu göstermek için, Machine Learning Studio (klasik) içindeki **kayıtlı veri kümeleri** bölümünde bulunan *otomatik mobil fiyat verileri (ham) veri kümesini* kullanırız.
+Bir otomobil 'nin boyut, Horsepower, altyapı özellikleri gibi özellikleri kullanarak bir fiyat tahmin etmek istediğimiz olduğunu varsayalım. Bu, hedef değişkenin (*Fiyat*) sürekli sayısal bir değer olduğu tipik bir gerileme sorunudur. Belirli bir otomobilin özellik değerleri verildiğinde, bu otomobilin fiyatını tahmin edebilen bir doğrusal regresyon modeline uyabiliriz. Bu regresyon modeli, eğitidiğimiz veri kümesini öğrenmek için kullanılabilir. Tahmin edilen otomobil fiyatlarına sahip olduktan sonra, tahmine dayalı olarak gerçek fiyatlardan ne kadar tahmin edilebileceğini inceleyerek model performansını değerlendirebiliriz. Bunu göstermek için, Machine Learning Studio (klasik) içindeki **kayıtlı veri kümeleri** bölümünde bulunan *otomatik mobil fiyat verileri (ham) veri kümesini* kullanırız.
 
 ### <a name="creating-the-experiment"></a>Deneme oluşturma
 Azure Machine Learning Studio (klasik) çalışma alanınıza aşağıdaki modülleri ekleyin:
 
 * Otomobil fiyat verileri (ham)
-* [Çizgisel Regresyon][linear-regression]
+* [Doğrusal regresyon][linear-regression]
 * [Model Eğitme][train-model]
 * [Puanlama Modeli][score-model]
 * [Modeli Değerlendirme][evaluate-model]
@@ -65,7 +65,7 @@ Bağlantı noktalarını aşağıda gösterildiği gibi Şekil 1 ' de bağlayın
 Şekil 1. Regresyon modeli değerlendiriliyor.
 
 ### <a name="inspecting-the-evaluation-results"></a>Değerlendirme sonuçlarını inceleme
-Denemeyi çalıştırdıktan sonra, [modeli değerlendir][evaluate-model] modülünün çıkış bağlantı noktasına tıklayabilir ve değerlendirme sonuçlarını görmek Için *Görselleştir* ' i seçebilirsiniz. Regresyon modelleri için kullanılabilen değerlendirme ölçümleri şunlardır: *Ortalama mutlak hata* , *kök anlamı mutlak hata* , *göreli mutlak hata* , *göreli kare hata* ve *belirleme katsayısı*.
+Denemeyi çalıştırdıktan sonra, [modeli değerlendir][evaluate-model] modülünün çıkış bağlantı noktasına tıklayabilir ve değerlendirme sonuçlarını görmek Için *Görselleştir* ' i seçebilirsiniz. Regresyon modelleri için kullanılabilen değerlendirme ölçümleri şunlardır: *Ortalama mutlak hata*, *kök anlamı mutlak hata*, *göreli mutlak hata*, *göreli kare hata* ve *belirleme katsayısı*.
 
 Burada "Error" terimi, tahmin edilen değer ile true değeri arasındaki farkı temsil eder. Bu farkın mutlak değeri veya kare değeri, tahmin edilen ve gerçek değer arasındaki fark bazı durumlarda negatif olabilir, ancak tüm örneklerde oluşan toplam hata boyutunu yakalamak için hesaplanır. Hata ölçümleri, bir regresyon modelinin tahmine dayalı performansını, tahminlerinin gerçek değerlerden oluşan ortalama sapması bakımından ölçer. Daha düşük hata değerleri, modelin tahminlerde daha doğru olduğu anlamına gelir. Tam bir hata ölçüsü, modelin verileri mükemmel bir şekilde sığdığı anlamına gelir.
 
@@ -107,7 +107,7 @@ Bu bağlantı noktalarını Şekil 5 ' te aşağıda gösterildiği gibi bağlay
 Şekil 5. Ikili sınıflandırma modeli değerlendiriliyor.
 
 ### <a name="inspecting-the-evaluation-results"></a>Değerlendirme sonuçlarını inceleme
-Denemeyi çalıştırdıktan sonra, [modeli değerlendir][evaluate-model] modülünün çıkış bağlantı noktasına tıklayabilir ve değerlendirme sonuçlarını görmek Için *Görselleştir* ' i seçebilirsiniz (Şekil 7). İkili sınıflandırma modelleriyle kullanılabilen değerlendirme ölçümleri şunlardır: *doğruluk* , *duyarlık* , *geri çağırma* , *F1 puanı* ve *AUC*. Ayrıca modül, doğru pozitif sonuç sayısı, yanlış negatifler, yanlış pozitif sonuçlar ve gerçek negatiflerin sayısını gösteren bir karışıklık matrisi çıkarır, bu da *Roc* , *duyarlık/geri çekme* ve *yükseltme eğrileri.*
+Denemeyi çalıştırdıktan sonra, [modeli değerlendir][evaluate-model] modülünün çıkış bağlantı noktasına tıklayabilir ve değerlendirme sonuçlarını görmek Için *Görselleştir* ' i seçebilirsiniz (Şekil 7). İkili sınıflandırma modelleriyle kullanılabilen değerlendirme ölçümleri şunlardır: *doğruluk*, *duyarlık*, *geri çağırma*, *F1 puanı* ve *AUC*. Ayrıca modül, doğru pozitif sonuç sayısı, yanlış negatifler, yanlış pozitif sonuçlar ve gerçek negatiflerin sayısını gösteren bir karışıklık matrisi çıkarır, bu da *Roc*, *duyarlık/geri çekme* ve *yükseltme eğrileri.*
 
 Doğruluk, doğru sınıflandırılan örneklerin oranını sağlar. Bu, genellikle bir sınıflandırıcının değerlendirmesi sırasında baktığın ilk ölçümdür. Bununla birlikte, test verileri dengesiz olduğunda (örneklerin çoğu sınıflardan birine aittir) veya sınıflardan birindeki performanstan daha fazla ilgileniyorsanız, doğruluk gerçekten bir sınıflandırıcının verimliliğini yakalamaz. Gelir düzeyi sınıflandırma senaryosunda, örneklerin %99 ' unun yıl başına 50 ' ye eşit veya daha az alan kişileri gösterdiği bazı verileri test ettiğini varsayın. Tüm örnekler için "<= 50K" sınıfını tahmin ederek 0,99 doğruluğu elde etmek mümkündür. Bu durumdaki sınıflandırıcının genel olarak iyi bir iş yapmakta olduğu görülüyor, ancak gerçekte, yüksek gelir bireylerini sınıflandırmayacak (%1) kopyalan.
 
@@ -144,7 +144,7 @@ Bu deneyde, Iris tesisindeki üç farklı türde (sınıf) örnekler içeren pop
 ### <a name="creating-the-experiment"></a>Deneme oluşturma
 Azure Machine Learning Studio (klasik) çalışma alanınıza aşağıdaki modülleri ekleyin:
 
-* [Verileri içeri aktar][import-data]
+* [Verileri İçeri Aktarma][import-data]
 * [Çok Sınıflı Karar Ormanı][multiclass-decision-forest]
 * [Verileri Bölme][split]
 * [Model Eğitme][train-model]

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/17/2020
 ms.author: hahamil
 ms.custom: aaddev, devx-track-js
-ms.openlocfilehash: e6bbebafab45080a2076f33d66dd96296a761e4f
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: fc5d9cbd02490748c17a9f40a1440c5ad0c46278
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98754946"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100104119"
 ---
 # <a name="migrate-a-javascript-single-page-app-from-implicit-grant-to-auth-code-flow"></a>Bir JavaScript tek sayfalı uygulamayı örtük kimlik doğrulama kod akışına geçirme
 
@@ -41,7 +41,7 @@ Uygulamalarınız için mevcut uygulama kaydınızı kullanmaya devam etmek isti
 
 Şu anda **Web** platformu yeniden yönlendirme URI 'leriyle yapılandırılmış olan uygulama kayıtları için şu adımları izleyin:
 
-1. <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span></a> oturum açın ve **Azure Active Directory** kiracınızı seçin.
+1. <a href="https://portal.azure.com/" target="_blank">Azure Portal</a> oturum açın ve **Azure Active Directory** kiracınızı seçin.
 1. **Uygulama kayıtları**, uygulamanızı ve sonra **kimlik doğrulamasını** seçin.
 1. **Yeniden yönlendirme URI 'leri** altındaki **Web** platformu kutucuğunda, URI 'larınızı geçirmeniz gerektiğini belirten uyarı başlığını seçin.
 

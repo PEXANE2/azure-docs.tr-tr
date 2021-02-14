@@ -1,22 +1,17 @@
 ---
 title: Azure Data Factory kullanarak Concur verilerini kopyalama (Önizleme)
 description: Azure Data Factory bir işlem hattındaki kopyalama etkinliğini kullanarak, verileri Concur 'tan desteklenen havuz veri depolarına kopyalamayı öğrenin.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/25/2020
 ms.author: jingwang
-ms.openlocfilehash: f6d6c830eec8e711e700733a90611c353b68439d
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: 974682aa9e9bebd6e2d17237decd8389174ff28d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96030807"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100383679"
 ---
 # <a name="copy-data-from-concur-using-azure-data-factory-preview"></a>Azure Data Factory kullanarak Concur verilerini kopyalama (Önizleme)
 
@@ -39,7 +34,7 @@ Concur kaynağından desteklenen herhangi bir havuz veri deposuna veri kopyalaya
 > [!NOTE]
 > İş ortağı hesabı şu anda desteklenmiyor.
 
-## <a name="getting-started"></a>Başlarken
+## <a name="getting-started"></a>Kullanmaya başlama
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -53,7 +48,7 @@ Concur bağlı hizmeti için aşağıdaki özellikler desteklenir:
 |:--- |:--- |:--- |
 | tür | Type özelliği: **Concur** olarak ayarlanmalıdır | Yes |
 | connectionProperties | Concur 'e nasıl bağlanılacağını tanımlayan bir özellik grubu. | Yes |
-| **_Altında `connectionProperties` :_* _ | | |
+| ***Altında `connectionProperties` :*** | | |
 | authenticationType | İzin verilen değerler `OAuth_2.0_Bearer` ve `OAuth_2.0` (eski). OAuth 2,0 kimlik doğrulama seçeneği, Şubat 2017 ' den beri kullanım dışı olan eski Concur API 'siyle birlikte kullanılabilir. | Yes |
 | konak | Concur sunucusunun uç noktası, `implementation.concursolutions.com` ör.  | Yes |
 | baseUrl | Concur 'in yetkilendirme URL 'sinin temel URL 'SI. | `OAuth_2.0_Bearer`Kimlik doğrulaması için Evet |
@@ -65,7 +60,7 @@ Concur bağlı hizmeti için aşağıdaki özellikler desteklenir:
 | Usehostdoğrulaması | Sunucu sertifikasında, TLS üzerinden bağlanırken sunucunun ana bilgisayar adıyla eşleşecek şekilde, ana bilgisayar adının istenip istenmeyeceğini belirtir. Varsayılan değer true şeklindedir.  | No |
 | Usepeerdoğrulaması | TLS üzerinden bağlanılırken sunucu kimliğinin doğrulanıp doğrulanmayacağını belirtir. Varsayılan değer true şeklindedir.  | No |
 
-_ *Örnek:**
+**Örnek:**
 
 ```json
 { 

@@ -144,6 +144,10 @@
           href: ./security-controls-policy.md
         - name: Ağ güvenliği
           href: network-security.md
+    - name: Diğer hizmetlerle tümleştirme
+      items:
+        - name: Azure Service Bus ve Azure Event Grid tümleştirmesi
+          href: service-bus-to-event-grid-integration-concept.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Bölgeler arasında taşıma
@@ -168,8 +172,6 @@
               href: message-sequencing.md
             - name: İleti süre sonu (Yaşam Süresi)
               href: message-expiration.md
-            - name: Azure Event Grid kullanarak ileti işleme
-              href: service-bus-to-event-grid-integration-concept.md
         - name: Konu başlığı filtreleri ve eylemleri
           href: topic-filters.md
         - name: Standart’tan Premium ad alanlarına geçirme

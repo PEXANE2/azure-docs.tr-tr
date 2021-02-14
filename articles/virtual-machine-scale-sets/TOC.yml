@@ -25,25 +25,25 @@
   items:
     - name: 1 - Ölçek kümesi oluşturup yönetme
       items:
-        - name: Azure CLI’si
+        - name: Azure CLI
           href: tutorial-create-and-manage-cli.md
         - name: Azure PowerShell
           href: tutorial-create-and-manage-powershell.md
     - name: 2 - Veri disklerini kullanma
       items:
-        - name: Azure CLI’si
+        - name: Azure CLI
           href: tutorial-use-disks-cli.md
         - name: Azure PowerShell
           href: tutorial-use-disks-powershell.md
     - name: 3 - Özel VM görüntüsü kullanma
       items:
-        - name: Azure CLI’si
+        - name: Azure CLI
           href: tutorial-use-custom-image-cli.md
         - name: Azure PowerShell
           href: tutorial-use-custom-image-powershell.md
     - name: 4 - Uygulamaları ölçek kümesine dağıtma
       items:
-        - name: Azure CLI’si
+        - name: Azure CLI
           href: tutorial-install-apps-cli.md
         - name: Azure PowerShell
           href: tutorial-install-apps-powershell.md
@@ -329,9 +329,10 @@
           href: virtual-machine-scale-sets-placement-groups.md
         - name: Yönetilen disk kullanmak üzere bir ölçek kümesi şablonu dönüştürme
           href: virtual-machine-scale-sets-convert-template-to-md.md
-        - name: Ayrılmış konakları kullanma (önizleme)
-          href: ../virtual-machines/dedicated-hosts.md
+        - name: Ayrılmış konakları kullanma
           items:
+            - name: Genel Bakış
+              href: ../virtual-machines/dedicated-hosts.md
             - name: CLI
               href: ../virtual-machines/linux/dedicated-hosts-cli.md
             - name: PowerShell

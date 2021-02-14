@@ -4,19 +4,18 @@ titleSuffix: Azure Data Science Virtual Machine
 description: Desteklenen program dilleri ve ilgili Araçlar Veri Bilimi Sanal Makinesi önceden yüklenir.
 keywords: veri bilimi araçları, veri bilimi sanal makinesi, veri bilimi için araçlar, linux veri bilimi
 services: machine-learning
-ms.service: machine-learning
-ms.subservice: data-science-vm
+ms.service: data-science-vm
 ms.custom: devx-track-python
 author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: 8a73336ba0a324c65ee0de764d81a8e69ab6079c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 42110eb896a751080044247932770f37617174c9
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87843275"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100516439"
 ---
 # <a name="languages-supported-on-the-data-science-virtual-machine"></a>Veri Bilimi Sanal Makinesi desteklenen diller 
 
@@ -56,7 +55,7 @@ Veri Bilimi Sanal Makinesi (DSVM), yapay zeka (AI) uygulamalarınızı oluşturm
   Visual Studio Community Edition 'da yüklü olan Visual Studio için Python Araçları (PTV) kullanın. Varsayılan olarak, PTV 'lerde otomatik olarak ayarlanan tek ortam Python 3,6 ' dir. 
 
     > [!NOTE]
-    > Python 2,7 ' de PTV 'leri göstermek için PTV 'lerde özel bir ortam oluşturmanız gerekir. Visual Studio Community sürümünde bu ortam yolunu ayarlamak için **Araçlar**  ->  **Python araçları**  ->  **Python ortamları** ' na gidin ve **+ özel**' i seçin. Sonra, konumu **c:\anaconda\envs\python2** olarak ayarlayın ve **Otomatik Algıla**seçeneğini belirleyin.
+    > Python 2,7 ' de PTV 'leri göstermek için PTV 'lerde özel bir ortam oluşturmanız gerekir. Visual Studio Community sürümünde bu ortam yolunu ayarlamak için **Araçlar**  ->  **Python araçları**  ->  **Python ortamları** ' na gidin ve **+ özel**' i seçin. Sonra, konumu **c:\anaconda\envs\python2** olarak ayarlayın ve **Otomatik Algıla** seçeneğini belirleyin.
 
 * Jupyter içinde kullanın:
 
@@ -111,7 +110,7 @@ Veri Bilimi Sanal Makinesi (DSVM), yapay zeka (AI) uygulamalarınızı oluşturm
 | ------------- | ------------- |
 | Desteklenen dil sürümleri | Microsoft R Open 3. x (CRAN-R ile %100 uyumlu)<br /> Microsoft R Server 9. x geliştirici sürümü (bir kurumsal özellikli ölçeklenebilir R platformu)|
 | Desteklenen DSVM sürümleri      | Linux, Windows     |
-| DSVM 'de nasıl yapılandırılır/yüklenir?  | Pencerelerin `C:\Program Files\Microsoft\ML Server\R_SERVER` <br />'Un `/usr/lib64/microsoft-r/3.3/lib64/R`    |
+| DSVM 'de nasıl yapılandırılır/yüklenir?  | Windows: `C:\Program Files\Microsoft\ML Server\R_SERVER` <br />Linux: `/usr/lib64/microsoft-r/3.3/lib64/R`    |
 | Örneklere bağlantılar      | R için örnek Jupyıter Not defterleri dahil edilmiştir.     |
 | DSVM 'deki ilgili araçlar      | Parlak r, Python, Julia      |
 
@@ -177,7 +176,7 @@ Veri Bilimi Sanal Makinesi (DSVM), yapay zeka (AI) uygulamalarınızı oluşturm
 
 * Jupyter içinde kullanın:
 
-  Jupyter ' ı açın **ve yeni ' yi seçerek yeni** bir not defteri oluşturun. Çekirdek türünü **JULIA sürümü**olarak ayarlayabilirsiniz.
+  Jupyter ' ı açın **ve yeni ' yi seçerek yeni** bir not defteri oluşturun. Çekirdek türünü **JULIA sürümü** olarak ayarlayabilirsiniz.
 
 * Julia paketlerini yükler:
 
@@ -194,7 +193,7 @@ Veri Bilimi Sanal Makinesi (DSVM), yapay zeka (AI) uygulamalarınızı oluşturm
 
 * Jupyter içinde kullanın:
 
-  Jupyter ' ı açın **ve yeni ' yi seçerek yeni** bir not defteri oluşturun. Çekirdek türünü **JULIA sürümü**olarak ayarlayabilirsiniz.
+  Jupyter ' ı açın **ve yeni ' yi seçerek yeni** bir not defteri oluşturun. Çekirdek türünü **JULIA sürümü** olarak ayarlayabilirsiniz.
 
 * Julia paketlerini yükler:
 

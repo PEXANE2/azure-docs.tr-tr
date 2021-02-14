@@ -3,8 +3,7 @@ title: Linux için Azure DSC Uzantısı
 description: Azure Linux VM 'sinin Istenen durum yapılandırması kullanılarak yapılandırılmasını sağlamak için OMı ve DSC paketlerini yükleyerek.
 services: virtual-machines-linux
 documentationcenter: ''
-author: bobbytreed
-manager: carmonm
+author: mgoedtel
 editor: ''
 ms.assetid: ''
 ms.service: virtual-machines-linux
@@ -13,20 +12,20 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
-ms.author: robreed
-ms.openlocfilehash: 1d1a5cf67a10a83a227f240fc31d25abfe9c7dd0
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.author: magoedte
+ms.openlocfilehash: bfd5da519116eff66aede607f4cab7c207b30ee6
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94955948"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100093718"
 ---
 # <a name="dsc-extension-for-linux-microsoftostcextensionsdscforlinux"></a>Linux için DSC Uzantısı (Microsoft. OSTCExtensions. DSCForLinux)
 
 İstenen Durum Yapılandırması (DSC), BT ve geliştirme altyapınızı kod olarak yapılandırmayla yönetmek için kullanabileceğiniz bir yönetim platformudur.
 
 > [!NOTE]
-> Linux için DSC Uzantısı ve [Linux Için Azure izleyici sanal makine uzantısı](./oms-linux.md) Şu anda bir çakışma sunmakta ve yan yana yapılandırmada desteklenmemektedir. İki çözümü aynı VM 'de birlikte kullanmayın.
+> Linux için DSC Uzantısı ve [Linux için Log Analytics sanal makine uzantısı](./oms-linux.md) Şu anda bir çakışma sunmakta ve yan yana yapılandırmada desteklenmemektedir. İki çözümü aynı VM 'de birlikte kullanmayın.
 
 DSCForLinux uzantısı Microsoft tarafından yayımlanır ve desteklenir. Uzantı, Azure sanal makinelerine OMı ve DSC aracısını yükleme. DSC Uzantısı aşağıdaki eylemleri de gerçekleştirebilir:
 
@@ -36,7 +35,7 @@ DSCForLinux uzantısı Microsoft tarafından yayımlanır ve desteklenir. Uzant�
 - Linux VM 'ye özel DSC modülleri (Install ExtensionAction) yükler.
 - Linux VM 'den özel DSC modüllerini kaldırın (ExtensionAction 'ı kaldırın).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 ### <a name="operating-system"></a>İşletim sistemi
 
@@ -75,10 +74,10 @@ Desteklenen tüm korumalı yapılandırma parametreleri aşağıda verilmiştir:
 * `RegistrationUrl`: (isteğe bağlı, dize) Azure Otomasyonu hesabının URL 'SI
 * `RegistrationKey`: (isteğe bağlı, dize) Azure Otomasyonu hesabının erişim anahtarı
 
-
 ## <a name="scenarios"></a>Senaryolar
 
 ### <a name="register-an-azure-automation-account"></a>Azure Otomasyonu hesabı kaydetme
+
 Üzerinde protected.js
 ```json
 {
@@ -144,7 +143,6 @@ $publicConfig = '{
 }'
 ```
 
-
 ### <a name="apply-an-mof-configuration-file-in-public-storage-to-the-vm"></a>SANAL makineye bir MOF yapılandırma dosyası (ortak depolamada) uygulama
 
 Üzerinde public.js
@@ -193,14 +191,18 @@ $publicConfig = '{
 ```
 
 ### <a name="apply-a-meta-mof-configuration-file-in-public-storage-to-the-vm"></a>VM 'ye bir meta MOF yapılandırma dosyası (genel depolamada) uygulama
+
 Üzerinde public.js
+
 ```json
 {
   "FileUri": "<meta-mof-file-uri>",
   "ExtensionAction": "Pull"
 }
 ```
+
 PowerShell biçimi
+
 ```powershell
 $publicConfig = '{
   "FileUri": "<meta-mof-file-uri>",
@@ -209,14 +211,18 @@ $publicConfig = '{
 ```
 
 ### <a name="install-a-custom-resource-module-a-zip-file-in-an-azure-storage-account-to-the-vm"></a>VM 'ye özel bir kaynak modülü (bir Azure depolama hesabına ZIP dosyası) yüklemek
+
 Üzerinde protected.js
+
 ```json
 {
   "StorageAccountName": "<storage-account-name>",
   "StorageAccountKey": "<storage-account-key>"
 }
 ```
+
 Üzerinde public.js
+
 ```json
 {
   "ExtensionAction": "Install",
@@ -238,14 +244,19 @@ $publicConfig = '{
 ```
 
 ### <a name="install-a-custom-resource-module-a-zip-file-in-public-storage-to-the-vm"></a>VM 'ye özel bir kaynak modülü (ortak depolamaya bir ZIP dosyası) yüklemek
+
 Üzerinde public.js
+
 ```json
 {
   "ExtensionAction": "Install",
   "FileUri": "<resource-zip-file-uri>"
 }
+
 ```
+
 PowerShell biçimi
+
 ```powershell
 $publicConfig = '{
   "ExtensionAction": "Install",
@@ -254,14 +265,18 @@ $publicConfig = '{
 ```
 
 ### <a name="remove-a-custom-resource-module-from-the-vm"></a>Özel bir kaynak modülünü VM 'den kaldırma
+
 Üzerinde public.js
+
 ```json
 {
   "ResourceName": "<resource-name>",
   "ExtensionAction": "Remove"
 }
 ```
+
 PowerShell biçimi
+
 ```powershell
 $publicConfig = '{
   "ResourceName": "<resource-name>",
@@ -277,10 +292,10 @@ Azure VM uzantıları, Azure Resource Manager şablonlarıyla dağıtılabilir. 
 
 Azure Resource Manager şablonu hakkında daha fazla bilgi için bkz. [yazma Azure Resource Manager şablonları](../../azure-resource-manager/templates/template-syntax.md).
 
-
 ## <a name="azure-cli-deployment"></a>Azure CLı dağıtımı
 
 ### <a name="use-azure-cliazure-cli"></a>[Azure CLı] [Azure-CLI] kullanın
+
 DSCForLinux uzantısını dağıtmadan önce, `public.json` `protected.json` Bölüm 3 ' teki farklı senaryolara göre ve ' yi yapılandırın.
 
 #### <a name="classic"></a>Klasik
@@ -288,33 +303,40 @@ DSCForLinux uzantısını dağıtmadan önce, `public.json` `protected.json` Bö
 [!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
 
 Klasik dağıtım moduna Azure hizmet yönetimi modu da denir. Şunu çalıştırarak geçiş yapabilirsiniz:
+
 ```
 $ azure config mode asm
 ```
 
 Şu işlemi çalıştırarak DSCForLinux uzantısını dağıtabilirsiniz:
+
 ```
 $ azure vm extension set <vm-name> DSCForLinux Microsoft.OSTCExtensions <version> \
 --private-config-path protected.json --public-config-path public.json
 ```
 
 Kullanılabilir en son uzantı sürümünü öğrenmek için şunu çalıştırın:
+
 ```
 $ azure vm extension list
 ```
 
 #### <a name="resource-manager"></a>Resource Manager
+
 Şunu çalıştırarak Azure Resource Manager moduna geçebilirsiniz:
+
 ```
 $ azure config mode arm
 ```
 
 Şu işlemi çalıştırarak DSCForLinux uzantısını dağıtabilirsiniz:
+
 ```
 $ azure vm extension set <resource-group> <vm-name> \
 DSCForLinux Microsoft.OSTCExtensions <version> \
 --private-config-path protected.json --public-config-path public.json
 ```
+
 > [!NOTE]
 > Azure Resource Manager modda `azure vm extension list` şimdilik kullanılamıyor.
 >
@@ -340,6 +362,7 @@ $version = '< version>'
 ```
 
 $PrivateConfig ve $publicConfig içeriğini önceki bölümdeki farklı senaryolara göre değiştirin.
+
 ```
 $privateConfig = '{
   "StorageAccountName": "<storage-account-name>",
@@ -354,7 +377,7 @@ $publicConfig = '{
 }'
 ```
 
-```
+```powershell
 Set-AzureVMExtension -ExtensionName $extensionName -VM $vm -Publisher $publisher `
   -Version $version -PrivateConfiguration $privateConfig `
   -PublicConfiguration $publicConfig | Update-AzureVM
@@ -382,6 +405,7 @@ $version = '< version>'
 ```
 
 $PrivateConfig ve $publicConfig içeriğini önceki bölümdeki farklı senaryolara göre değiştirin.
+
 ```
 $privateConfig = '{
   "StorageAccountName": "<storage-account-name>",
@@ -396,7 +420,7 @@ $publicConfig = '{
 }'
 ```
 
-```
+```powershell
 Set-AzVMExtension -ResourceGroupName $rgName -VMName $vmName -Location $location `
   -Name $extensionName -Publisher $publisher -ExtensionType $extensionName `
   -TypeHandlerVersion $version -SettingString $publicConfig -ProtectedSettingString $privateConfig
@@ -421,11 +445,10 @@ Uzantı yürütme çıkışı aşağıdaki dosyaya kaydedilir:
 Hata kodu: 51, desteklenmeyen dağıtım veya desteklenmeyen uzantı eylemini temsil eder.
 Bazı durumlarda, daha yüksek bir OMı sürümü makinede zaten mevcutsa DSC Linux uzantısı OMı 'yi yükleyemez. [hata yanıtı: (000003) Indirgeme izin verilmiyor]
 
-
-
 ### <a name="support"></a>Destek
 
 Bu makalenin herhangi bir noktasında daha fazla yardıma ihtiyacınız varsa, [MSDN Azure ve Stack Overflow forumlarında](https://azure.microsoft.com/support/community/)Azure uzmanlarıyla iletişim kurun. Alternatif olarak, bir Azure destek olayı da oluşturabilirsiniz. [Azure destek sitesine](https://azure.microsoft.com/support/options/)gidin ve **Destek Al**' ı seçin. Azure desteğini kullanma hakkında daha fazla bilgi için, [Microsoft Azure support SSS](https://azure.microsoft.com/support/faq/)makalesini okuyun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
+
 Uzantılar hakkında daha fazla bilgi için bkz. [Linux Için sanal makine uzantıları ve özellikleri](features-linux.md).

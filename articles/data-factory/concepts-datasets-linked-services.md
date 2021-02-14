@@ -1,23 +1,19 @@
 ---
 title: Veri kümeleri
 description: Data Factory veri kümeleri hakkında bilgi edinin. Veri kümeleri giriş/çıkış verilerini temsil eder.
-services: data-factory
-documentationcenter: ''
 author: dcstwh
 ms.author: weetok
-manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/24/2020
-ms.openlocfilehash: 6a9de6ff174adc5f6be9647560ad4e26367cb4ed
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 4dafb738fd7d44893705994baa962831c101804b
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500130"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100390037"
 ---
 # <a name="datasets-in-azure-data-factory"></a>Azure Data Factory'de veri kümeleri
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -69,10 +65,10 @@ Aşağıdaki tabloda, yukarıdaki JSON 'daki özellikler açıklanmaktadır:
 
 Özellik | Açıklama | Gerekli |
 -------- | ----------- | -------- |
-name | Veri kümesinin adı. Bkz. [Azure Data Factory adlandırma kuralları](naming-rules.md). |  Evet |
-tür | Veri kümesinin türü. Data Factory tarafından desteklenen türlerden birini belirtin (örneğin: DelimitedText, Azurestabtable). <br/><br/>Ayrıntılar için bkz. [veri kümesi türleri](#dataset-type). | Evet |
-schema | Veri kümesinin şeması, fiziksel veri türü ve şeklini temsil eder. | Hayır |
-typeProperties | Tür özellikleri her tür için farklıdır. Desteklenen türler ve özellikleri hakkında ayrıntılı bilgi için bkz. [veri kümesi türü](#dataset-type). | Evet |
+name | Veri kümesinin adı. Bkz. [Azure Data Factory adlandırma kuralları](naming-rules.md). |  Yes |
+tür | Veri kümesinin türü. Data Factory tarafından desteklenen türlerden birini belirtin (örneğin: DelimitedText, Azurestabtable). <br/><br/>Ayrıntılar için bkz. [veri kümesi türleri](#dataset-type). | Yes |
+schema | Veri kümesinin şeması, fiziksel veri türü ve şeklini temsil eder. | No |
+typeProperties | Tür özellikleri her tür için farklıdır. Desteklenen türler ve özellikleri hakkında ayrıntılı bilgi için bkz. [veri kümesi türü](#dataset-type). | Yes |
 
 Veri kümesinin şemasını içeri aktardığınızda, **Şemayı Içeri aktar** düğmesini seçin ve kaynaktan veya yerel bir dosyadan içeri aktarmayı seçin. Çoğu durumda, şemayı doğrudan kaynaktan içeri aktarırsınız. Ancak zaten bir yerel şema dosyanız varsa (bir Parquet dosyası veya üst bilgiyle CSV), bu dosyadaki şemayı temel olarak Data Factory yönlendirebilirsiniz.
 

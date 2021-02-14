@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: overview
 ms.date: 09/28/2020
 ms.author: ginle
-ms.openlocfilehash: ae78aa80594e46b02d77adcafed961e801780d4f
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: 6dff16f4a68f3db4ff841141e7d7025e794cca8f
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99430268"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100105190"
 ---
 # <a name="configure-customer-managed-keys-at-rest"></a>Bekleyen müşteri tarafından yönetilen anahtarları yapılandırma
 
@@ -26,7 +26,7 @@ Azure 'da bu, genellikle müşterinin Azure Key Vault bir şifreleme anahtarı k
 - [Azure Key Vault örneğine bir erişim ilkesi ekleme](../cosmos-db/how-to-setup-cmk.md#add-an-access-policy-to-your-azure-key-vault-instance)
 - [Azure Key Vault bir anahtar oluşturun](../cosmos-db/how-to-setup-cmk.md#generate-a-key-in-azure-key-vault)
 
-## <a name="specify-the-azure-key-vault-key"></a>Azure Key Vault anahtarını belirtin
+## <a name="using-azure-portal"></a>Azure portalını kullanma
 
 Azure portal için Azure API 'nizi oluştururken, "ek ayarlar" sekmesinde "veritabanı ayarları" altında "veri şifreleme" yapılandırma seçeneğini görebilirsiniz. Hizmet tarafından yönetilen anahtar seçeneği varsayılan olarak seçilir. 
 
@@ -44,9 +44,100 @@ Mevcut FHıR hesaplarında, anahtar şifreleme seçimini (hizmet veya müşteri 
 
 Ayrıca, belirtilen anahtarın yeni bir sürümünü oluşturabilirsiniz, bundan sonra verilerinizin hizmet kesintisi olmadan yeni sürümle şifrelenmesini sağlayabilirsiniz. Verilere erişimi kaldırmak için anahtara erişimi de kaldırabilirsiniz. Anahtar devre dışı bırakıldığında, sorgular bir hataya neden olur. Anahtar yeniden etkinleştirilmişse sorgular yeniden başarılı olur.
 
+
+
+
+## <a name="using-azure-powershell"></a>Azure PowerShell’i kullanma
+
+Azure Key Vault anahtar URI 'SI ile aşağıdaki PowerShell komutunu çalıştırarak CMK 'yi PowerShell kullanarak yapılandırabilirsiniz:
+
+```powershell
+New-AzHealthcareApisService
+    -Name "myService"
+    -Kind "fhir-R4"
+    -ResourceGroupName "myResourceGroup"
+    -Location "westus2"
+    -CosmosKeyVaultKeyUri "https://<my-vault>.vault.azure.net/keys/<my-key>"
+```
+
+## <a name="using-azure-cli"></a>Azure CLI’yı kullanma
+
+PowerShell yönteminde olduğu gibi, Azure Key Vault anahtar URI 'nizi parametre altına geçirerek `key-vault-key-uri` ve AŞAĞıDAKI CLI komutunu çalıştırarak CMK 'yi yapılandırabilirsiniz: 
+
+```azurecli-interactive
+az healthcareapis service create
+    --resource-group "myResourceGroup"
+    --resource-name "myResourceName"
+    --kind "fhir-R4"
+    --location "westus2"
+    --cosmos-db-configuration key-vault-key-uri="https://<my-vault>.vault.azure.net/keys/<my-key>"
+
+```
+## <a name="using-azure-resource-manager-template"></a>Azure Resource Manager şablonu kullanma
+
+Azure Key Vault anahtar URI 'SI ile CMK 'yi, **Özellikler** nesnesindeki **Keyvaultkeyuri** özelliği altına geçirerek yapılandırabilirsiniz.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "services_myService_name": {
+            "defaultValue": "myService",
+            "type": "String"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.HealthcareApis/services",
+            "apiVersion": "2020-03-30",
+            "name": "[parameters('services_myService_name')]",
+            "location": "westus2",
+            "kind": "fhir-R4",
+            "properties": {
+                "accessPolicies": [],
+                "cosmosDbConfiguration": {
+                    "offerThroughput": 400,
+                    "keyVaultKeyUri": "https://<my-vault>.vault.azure.net/keys/<my-key>"
+                },
+                "authenticationConfiguration": {
+                    "authority": "https://login.microsoftonline.com/72f988bf-86f1-41af-91ab-2d7cd011db47",
+                    "audience": "[concat('https://', parameters('services_myService_name'), '.azurehealthcareapis.com')]",
+                    "smartProxyEnabled": false
+                },
+                "corsConfiguration": {
+                    "origins": [],
+                    "headers": [],
+                    "methods": [],
+                    "maxAge": 0,
+                    "allowCredentials": false
+                }
+            }
+        }
+    ]
+}
+```
+
+Ve şablonu aşağıdaki PowerShell betiğine dağıtabilirsiniz:
+
+```powershell
+$resourceGroupName = "myResourceGroup"
+$accountName = "mycosmosaccount"
+$accountLocation = "West US 2"
+$keyVaultKeyUri = "https://<my-vault>.vault.azure.net/keys/<my-key>"
+
+New-AzResourceGroupDeployment `
+    -ResourceGroupName $resourceGroupName `
+    -TemplateFile "deploy.json" `
+    -accountName $accountName `
+    -location $accountLocation `
+    -keyVaultKeyUri $keyVaultKeyUri
+```
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, müşteri tarafından yönetilen anahtarların bekleyen olarak nasıl yapılandırılacağını öğrendiniz. Daha sonra, Azure Cosmos DB SSS bölümüne bakabilirsiniz: 
+Bu makalede, müşteri tarafından yönetilen anahtarların Azure portal, PowerShell, CLı ve Kaynak Yöneticisi şablonu kullanarak geri kalanında nasıl yapılandırılacağını öğrendiniz. Karşılaşabileceğiniz diğer sorular için Azure Cosmos DB SSS bölümüne bakabilirsiniz: 
  
 >[!div class="nextstepaction"]
 >[Cosmos DB: CMK 'yi kurma](https://docs.microsoft.com/azure/cosmos-db/how-to-setup-cmk#frequently-asked-questions)

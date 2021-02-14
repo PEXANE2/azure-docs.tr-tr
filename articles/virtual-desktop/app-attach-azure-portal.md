@@ -3,15 +3,15 @@ title: Windows sanal masaüstü MALTı uygulama iliştirme Portal önizlemesi-Az
 description: Azure portal kullanarak Windows sanal masaüstü için MSIX uygulama iliştirme 'yi ayarlama.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 12/14/2020
+ms.date: 02/11/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 34bcef24d5e7fbda53984f14a2307859c9210262
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 19ce054ce29b744f900676ecf4e55af3487d9891
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98185963"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100373479"
 ---
 # <a name="set-up-msix-app-attach-with-the-azure-portal"></a>Azure portalla MSIX uygulama iliştirmeyi ayarlama
 
@@ -65,7 +65,7 @@ Daha sonra, Azure portal için MSIX uygulama iliştirme yönetim arabirimini ind
 
 Yönetim arabirimini ayarlamak için:
 
-1. [Önizleme portalını açın](https://preview.portal.azure.com/?feature.msixapplications=true#home).
+1. [Azure Portal açın](https://portal.azure.com).
 2. Uzantıyı güvenilir olarak düşünmenizi isteyip istemediğinizi soran bir istem alırsanız, **Izin ver**' i seçin.
 
       > [!div class="mx-imgBorder"]
@@ -171,6 +171,9 @@ Uygulamaları yayımlamak için:
 ## <a name="assign-a-user-to-an-app-group"></a>Bir uygulama grubuna kullanıcı atama
 
 Bir uygulama grubuna MSIX uygulama atadıktan sonra kullanıcılara onlara erişim vermeniz gerekir. Yayımlanan MSIX uygulamalarıyla bir uygulama grubuna kullanıcılar veya Kullanıcı grupları ekleyerek erişim atayabilirsiniz. Kullanıcılarınızı bir uygulama grubuna atamak için [Azure Portal ile uygulama gruplarını yönetme](manage-app-groups.md) bölümündeki yönergeleri izleyin.
+
+>[!NOTE]
+>Genel Önizleme sırasında uzak uygulamaları test ettiğinizde, MSIX uygulama iliştirme uzak uygulamaları akışdan kaybolabilir. Değerlendirme ortamında kullandığınız konak havuzu, üretim ortamındaki bir RD Aracısı tarafından sunulduğundan, uygulamalar görüntülenmez. Üretim ortamındaki RD Aracısı, MALTı uygulama iliştirme uzak uygulamaları mevcut olmadığından, uygulamalar akışta görünmez.
 
 ## <a name="change-msix-package-state"></a>MSIX paket durumunu değiştir
 
