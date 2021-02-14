@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/13/2020
-ms.openlocfilehash: 651e0635f0b556cd47adfccdbac59ef587570128
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e2caa09d41abb1842100ed8259e82ec411390ccb
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91535738"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100520638"
 ---
 # <a name="ranking-algorithm-in-azure-cognitive-search"></a>Azure Bilişsel Arama 'de derecelendirme algoritması
 
@@ -24,7 +24,7 @@ ms.locfileid: "91535738"
 
 Bu makalede, Preview API kullanılarak oluşturulan ve sorgulanan yeni dizinler için mevcut Arama hizmetlerinde yeni BM25 derecelendirme algoritmasını nasıl kullanabileceğiniz açıklanır.
 
-Azure Bilişsel Arama, daha önce kullanılan *Classicbenzerlik* uygulamasının yerini alacak olan *BM25Similarity*BM25 algoritmasının resmi Lucene uygulamasını benimseme sürecinde Okapi. Daha eski Classıbenzerlik algoritması gibi, BM25Similarity, her belge sorgu çiftinin uygunluk düzeyini hesaplamak için değişken olarak sıklık (TF) ve ters belge sıklığı (ıDF) değişkenlerini kullanan bir TF-IDF benzeri alma işlevidir. Bu, daha sonra sıralama için kullanılır. 
+Azure Bilişsel Arama, daha önce kullanılan *Classicbenzerlik* uygulamasının yerini alacak olan *BM25Similarity* BM25 algoritmasının resmi Lucene uygulamasını benimseme sürecinde Okapi. Daha eski Classıbenzerlik algoritması gibi, BM25Similarity, her belge sorgu çiftinin uygunluk düzeyini hesaplamak için değişken olarak sıklık (TF) ve ters belge sıklığı (ıDF) değişkenlerini kullanan bir TF-IDF benzeri alma işlevidir. Bu, daha sonra sıralama için kullanılır. 
 
 BM25, klasik daha eski benzerlik algoritmasına benzer olsa da, bunun üzerinde iyileştirebilmek için 'ın kökünü dayalı bilgi alımı ' na götürür. BM25 Ayrıca, kullanıcının ilgi puanı ile eşleşen koşulların dönem sıklığıyla nasıl ölçeklendirileceğine karar vermesini sağlayan gelişmiş özelleştirme seçenekleri sunar.
 
@@ -32,7 +32,7 @@ BM25, klasik daha eski benzerlik algoritmasına benzer olsa da, bunun üzerinde 
 
 Yeni bir dizin oluşturduğunuzda, algoritmayı belirtmek için bir **benzerlik** özelliği ayarlayabilirsiniz. `api-version=2019-05-06-Preview`' Yi aşağıda gösterildiği gibi kullanabilirsiniz `api-version=2020-06-30` .
 
-```
+```http
 PUT https://[search service name].search.windows.net/indexes/[index name]?api-version=2019-05-06-Preview
 ```
 
@@ -105,7 +105,7 @@ PUT https://[search service name].search.windows.net/indexes/[index name]?api-ve
 
 ## <a name="see-also"></a>Ayrıca bkz.  
 
-+ [REST API Başvurusu](/rest/api/searchservice/)
++ [REST API başvurusu](/rest/api/searchservice/)
 + [Dizinlerinize Puanlama profilleri ekleme](index-add-scoring-profiles.md)
 + [Dizin API 'SI oluştur](/rest/api/searchservice/create-index)
 + [Azure Bilişsel Arama .NET SDK](/dotnet/api/overview/azure/search)

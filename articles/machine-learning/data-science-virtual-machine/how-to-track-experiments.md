@@ -3,18 +3,17 @@ title: Modelleri izlemeyi ve dağıtımı deneyin
 titleSuffix: Azure Data Science Virtual Machine
 description: Azure Machine Learning ve/veya MLFlow ile Veri Bilimi Sanal Makinesi nasıl izleneceğini ve günlüğe denemeleri öğrenin.
 services: machine-learning
-ms.service: machine-learning
-ms.subservice: data-science-vm
+ms.service: data-science-vm
 author: samkemp
 ms.author: samkemp
 ms.topic: conceptual
 ms.date: 07/17/2020
-ms.openlocfilehash: 7726fce7ac69ebfaabf44049abc49c53f8175718
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 3795d531c5c4c543587ab817c05cd1cfeea6be06
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98704549"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100518547"
 ---
 # <a name="track-experiments-and-deploy-models-in-azure-machine-learning"></a>Azure Machine Learning ' de izleme denemeleri ve modelleri dağıtma
 
@@ -24,13 +23,13 @@ Aşağıdaki diyagramda, MLflow Izlemenin yanı sıra, Azure Machine Learning ç
 
 ![denemeleri izleme](./media/how-to-track-experiments/mlflow-diagram-track.png)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Bir Azure Machine Learning çalışma alanı](../how-to-manage-workspace.md#create-a-workspace) sağlamanız gerekir
 
 ## <a name="create-a-new-notebook"></a>Yeni not defteri oluşturma
 
-Azure Machine Learning ve MLFlow SDK Veri Bilimi VM'si önceden yüklenir ve **azureml_py36_ \** _ Conda ortamından erişilebilir. JupyterLab içinde, başlatıcı 'ye tıklayın ve aşağıdaki çekirdeği seçin:
+Azure Machine Learning ve MLFlow SDK Veri Bilimi VM'si önceden yüklenir ve **azureml_py36_ \*** Conda ortamından erişilebilir. JupyterLab içinde, başlatıcı 'ye tıklayın ve aşağıdaki çekirdeği seçin:
 
 ![çekirdek seçimi](./media/how-to-track-experiments/experiment-tracking-1.png)
 
@@ -137,7 +136,7 @@ Bu bölümde, bir DSVM üzerinde eğitilen modellerin Azure Machine Learning iç
 
 __Yeni çıkarım kümesi__ bölmesindeki Fill details:
 
-_ İşlem adı
+* İşlem adı
 * Kubernetes hizmeti-yeni oluştur seçeneğini belirleyin
 * Bölgeyi seçin
 * VM boyutunu seçin (Bu öğreticinin amaçları doğrultusunda Standard_D3_v2 için varsayılan değer yeterlidir)

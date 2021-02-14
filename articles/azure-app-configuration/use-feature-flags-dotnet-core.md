@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 09/17/2020
 ms.author: alkemper
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: bf0df4cc6e686b553baf8c2439c807d2f07ef440
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 701fe4ffc6147086dde740bfdb2dc7db92508e28
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99807487"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100380245"
 ---
 # <a name="tutorial-use-feature-flags-in-an-aspnet-core-app"></a>Öğretici: ASP.NET Core uygulamasında Özellik bayraklarını kullanma
 
@@ -218,7 +218,7 @@ Kurala göre, `FeatureManagement` Bu JSON belgesinin bölümü Özellik bayrağ�
 
 ## <a name="use-dependency-injection-to-access-ifeaturemanager"></a>Ieaturemanager 'a erişmek için bağımlılık ekleme 'yi kullanma 
 
-Özellik bayrağı değerlerini el ile denetleme gibi bazı işlemlerde, [Ifeaturemanager](/dotnet/api/microsoft.featuremanagement.ifeaturemanage)'ın bir örneğini almanız gerekir. ASP.NET Core MVC 'de, bağımlılık ekleme aracılığıyla Özellik yöneticisine erişebilirsiniz `IFeatureManager` . Aşağıdaki örnekte, `IFeatureManager` bir denetleyicinin oluşturucusunun imzasına bir tür bağımsız değişkeni eklenir. Çalışma zamanı başvuruyu otomatik olarak çözer ve oluşturucuyu çağırırken bir arabirim sağlar. Denetleyicinin zaten oluşturucuda bir veya daha fazla bağımlılık ekleme bağımsız değişkenine sahip olduğu bir uygulama şablonu kullanıyorsanız (gibi) `ILogger` , yalnızca `IFeatureManager` ek bir bağımsız değişken olarak ekleyebilirsiniz:
+Özellik bayrağı değerlerini el ile denetleme gibi bazı işlemlerde, [Ifeaturemanager](https://docs.microsoft.com/dotnet/api/microsoft.featuremanagement.ifeaturemanager?view=azure-dotnet-preview)'ın bir örneğini almanız gerekir. ASP.NET Core MVC 'de, bağımlılık ekleme aracılığıyla Özellik yöneticisine erişebilirsiniz `IFeatureManager` . Aşağıdaki örnekte, `IFeatureManager` bir denetleyicinin oluşturucusunun imzasına bir tür bağımsız değişkeni eklenir. Çalışma zamanı başvuruyu otomatik olarak çözer ve oluşturucuyu çağırırken bir arabirim sağlar. Denetleyicinin zaten oluşturucuda bir veya daha fazla bağımlılık ekleme bağımsız değişkenine sahip olduğu bir uygulama şablonu kullanıyorsanız (gibi) `ILogger` , yalnızca `IFeatureManager` ek bir bağımsız değişken olarak ekleyebilirsiniz:
 
 ### <a name="net-5x"></a>[.NET 5. x](#tab/core5x)
     

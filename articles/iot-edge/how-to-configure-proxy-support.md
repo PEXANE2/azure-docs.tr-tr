@@ -10,12 +10,12 @@ services: iot-edge
 ms.custom:
 - amqp
 - contperf-fy21q1
-ms.openlocfilehash: fb7cb0638ca86ea736749e6fb35e2295128162aa
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 7fc57b46055281c64b39767047f6b7cb5b748ad2
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97032992"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100373836"
 ---
 # <a name="configure-an-iot-edge-device-to-communicate-through-a-proxy-server"></a>IoT Edge cihazını ara sunucu üzerinden iletişim kuracak şekilde yapılandırma
 
@@ -211,7 +211,7 @@ EdgeAgent ve edgeHub modüllerine ek olarak, diğer modüllerin ara sunucu yapı
 
 Aşağıdaki yordam IoT Edge cihazının ömrü boyunca geçerlidir.
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure portalı
 
 IoT Edge cihazları için dağıtımlar oluşturmak üzere **modülleri ayarlama** Sihirbazı 'nı kullandığınızda, her modülün proxy sunucu bağlantılarını yapılandırabileceğiniz bir **ortam değişkenleri** bölümü vardır.
 
@@ -245,7 +245,7 @@ Ortam değişkenleri dahil olmak üzere, modül tanımınızın aşağıdaki edg
 "edgeHub": {
     "type": "docker",
     "settings": {
-        "image": "mcr.microsoft.com/azureiotedge-hub:1.0",
+        "image": "mcr.microsoft.com/azureiotedge-hub:1.1",
         "createOptions": ""
     },
     "env": {
@@ -275,7 +275,7 @@ IoT Edge cihazınızdaki confige. YAML dosyasına **Upstreamprotocol** ortam de�
 
 Kullanmaya çalıştığınız ara sunucu, TLS ile güvenli bağlantılarda trafik incelemesi gerçekleştiriyorsa, X. 509.440 sertifikalarıyla kimlik doğrulamanın çalışmadığına dikkat etmeniz önemlidir. IoT Edge, belirtilen sertifikayla ve anahtarla sona erdirmek üzere şifrelenmiş bir TLS kanalı oluşturur. Bu kanal trafik incelemesi için bozulur, proxy, kanalı uygun kimlik bilgileriyle yeniden oluşturamıyor ve IoT Hub ve IoT Hub cihaz sağlama hizmeti bir `Unauthorized` hata döndürüyor.
 
-Trafik incelemesi gerçekleştiren bir proxy kullanmak için, denetimi önlemek için, paylaşılan erişim imzası kimlik doğrulamasını kullanmanız veya IoT Hub ve IoT Hub cihaz sağlama hizmeti 'nin bir izin öğesine eklenmesi gerekir.
+Trafik incelemesi gerçekleştiren bir proxy kullanmak için, denetimi önlemek için, paylaşılan erişim imzası kimlik doğrulamasını kullanmanız veya IoT Hub ve IoT Hub cihaz sağlama hizmeti 'nin bir izin verilenler listesine eklenmesi gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

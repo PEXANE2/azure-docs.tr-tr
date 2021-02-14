@@ -1,24 +1,20 @@
 ---
 title: Yönetilen sanal ağ & yönetilen özel uç noktaları
 description: Azure Data Factory yönetilen sanal ağ ve yönetilen özel uç noktalar hakkında bilgi edinin.
-services: data-factory
 ms.author: abnarain
 author: nabhishek
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom:
 - seo-lt-2019
 - references_regions
 ms.date: 07/15/2020
-ms.openlocfilehash: 81d82bccd6b6bd97b84df5269dd59ffac4903370
-ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
+ms.openlocfilehash: d950b05dd34788c2c5ef0b34b8ec8ac0b20ad4b6
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94980387"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100379582"
 ---
 # <a name="azure-data-factory-managed-virtual-network-preview"></a>Azure Data Factory yönetilen sanal ağ (Önizleme)
 
@@ -51,7 +47,7 @@ Yönetilen özel uç noktalar, Azure kaynaklarına özel bir bağlantı kurarak 
 
 ![Yeni yönetilen özel uç nokta](./media/tutorial-copy-data-portal-private/new-managed-private-endpoint.png)
 
-Azure Data Factory özel bağlantıları destekler. Özel bağlantı, Azure (PaaS) hizmetlerine (Azure depolama, Azure Cosmos DB, Azure SYNAPSE Analytics (eski adıyla SQL veri ambarı)) erişmenizi sağlar.
+Azure Data Factory özel bağlantıları destekler. Özel bağlantı, Azure (PaaS) hizmetlerine (Azure depolama, Azure Cosmos DB, Azure SYNAPSE Analytics gibi) erişmenizi sağlar.
 
 Özel bir bağlantı kullandığınızda, veri depolarınız ve yönetilen sanal ağınız arasındaki trafik tamamen Microsoft omurga ağı üzerinden geçer. Özel bağlantı, veri savunma risklerine karşı koruma sağlar. Özel bir uç nokta oluşturarak kaynağa özel bir bağlantı kurarsınız.
 
@@ -86,7 +82,7 @@ ADF tarafından yönetilen sanal ağdan özel bağlantı üzerinden bağlanmak i
 - Azure Dosyaları
 - Azure Data Lake Gen2
 - Azure SQL veritabanı (Azure SQL yönetilen örneği dahil değil)
-- Azure Synapse Analytics (eski adı SQL Veri Ambarı)
+- Azure Synapse Analytics
 - Azure CosmosDB SQL
 - Azure Key Vault
 - Azure özel bağlantı hizmeti
@@ -115,7 +111,7 @@ ADF tarafından yönetilen sanal ağdan özel bağlantı üzerinden bağlanmak i
 - Azure depolama ve Azure Data Lake Gen2, ADF tarafından yönetilen sanal ağdan gelen genel uç nokta ile bağlantı için desteklenmez.
 
 ### <a name="linked-service-creation-of-azure-key-vault"></a>Bağlı hizmet oluşturma Azure Key Vault 
-- Azure Key Vault için bağlı bir hizmet oluşturduğunuzda, hiçbir Azure Integration Runtime başvurusu yoktur. Bu nedenle Azure Key Vault bağlı hizmet oluşturma sırasında özel uç nokta oluşturamazsınız. Ancak, Azure Key Vault bağlı hizmete başvuran ve bu bağlı hizmet, yönetilen sanal ağ ile Azure Integration Runtime başvuran veri depoları için bağlı hizmet oluşturduğunuzda, oluşturma sırasında Azure Key Vault bağlı hizmeti için özel bir uç nokta oluşturabilirsiniz. 
+- Azure Key Vault için Bağlı Hizmet oluşturduğunuzda Azure Integration Runtime başvurusu yoktur. Bu nedenle Azure Key Vault bağlı hizmet oluşturma sırasında özel uç nokta oluşturamazsınız. Ancak, Azure Key Vault bağlı hizmete başvuran ve bu bağlı hizmet, yönetilen sanal ağ ile Azure Integration Runtime başvuran veri depoları için bağlı hizmet oluşturduğunuzda, oluşturma sırasında Azure Key Vault bağlı hizmeti için özel bir uç nokta oluşturabilirsiniz. 
 - Azure Key Vault bağlı hizmeti için **test bağlantısı** IŞLEMI yalnızca URL biçimini doğrular, ancak herhangi bir ağ işlemi yapmaz.
 
 ## <a name="next-steps"></a>Sonraki adımlar

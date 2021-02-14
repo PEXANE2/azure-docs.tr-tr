@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/18/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, cc996988-fb4f-47, devx-track-python
-ms.openlocfilehash: 087073437fe9d6159422799c04ce095c0aae5eca
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 778424cbb81f8fe51a57dd41d94aa9015ffad94e
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "96001261"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100381520"
 ---
 # <a name="azure-queue-storage-output-bindings-for-azure-functions"></a>Azure Işlevleri için Azure kuyruk depolama çıkışı bağlamaları
 
@@ -398,13 +398,15 @@ Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığı
 |**Görünüm** | yok | Olarak ayarlanmalıdır `out` . Bu özellik, Azure portal tetikleyiciyi oluşturduğunuzda otomatik olarak ayarlanır. |
 |**ada** | yok | İşlev kodundaki kuyruğu temsil eden değişkenin adı. `$return`İşlev dönüş değerine başvuracak şekilde ayarlanır.|
 |**Adı** |**Adı** | Kuyruğun adı. |
-|**bağlanma** | **Bağlantı** |Bu bağlama için kullanılacak depolama bağlantı dizesini içeren bir uygulama ayarının adı. Uygulama ayarı adı "AzureWebJobs" ile başlıyorsa, burada yalnızca adının geri kalanını belirtebilirsiniz. Örneğin, `connection` "Mystorage" olarak ayarlarsanız, işlevler çalışma zamanı "MyStorage" adlı bir uygulama ayarı arar. `connection`Boş bırakırsanız, işlevler çalışma zamanı adlı uygulama ayarında varsayılan depolama bağlantı dizesini kullanır `AzureWebJobsStorage` .|
+|**bağlanma** | **Bağlantı** |Bu bağlama için kullanılacak depolama bağlantı dizesini içeren bir uygulama ayarının adı. Uygulama ayarı adı "AzureWebJobs" ile başlıyorsa, burada yalnızca adının geri kalanını belirtebilirsiniz.<br><br>Örneğin, `connection` "Mystorage" olarak ayarlarsanız, işlevler çalışma zamanı "MyStorage" adlı bir uygulama ayarı arar. `connection`Boş bırakırsanız, işlevler çalışma zamanı adlı uygulama ayarında varsayılan depolama bağlantı dizesini kullanır `AzureWebJobsStorage` .<br><br>[Uzantının 5. x veya daha yüksek bir sürümünü](./functions-bindings-storage-queue.md#storage-extension-5x-and-higher)kullanıyorsanız, bağlantı dizesi yerine bağlantıyı tanımlayan bir yapılandırma bölümüne başvuru sağlayabilirsiniz. Bkz. [Bağlantılar](./functions-reference.md#connections).|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 ## <a name="usage"></a>Kullanım
 
 # <a name="c"></a>[C#](#tab/csharp)
+
+### <a name="default"></a>Varsayılan
 
 Gibi bir yöntem parametresi kullanarak tek bir kuyruk iletisi yazın `out T paramName` . Bir parametre yerine yöntem dönüş türünü kullanabilir `out` ve `T` aşağıdaki türlerden herhangi biri olabilir:
 
@@ -420,7 +422,18 @@ C# ve C# komut dosyasında, aşağıdaki türlerden birini kullanarak birden ço
 * `ICollector<T>` veya `IAsyncCollector<T>`
 * [CloudQueue](/dotnet/api/microsoft.azure.storage.queue.cloudqueue)
 
+### <a name="additional-types"></a>Ek türler
+
+[Depolama uzantısının 5.0.0 veya daha yüksek sürümünü](./functions-bindings-storage-queue.md#storage-extension-5x-and-higher) kullanan uygulamalar, [.NET için Azure SDK 'sının](/dotnet/api/overview/azure/storage.queues-readme)türlerini de kullanabilir. Bu sürüm, `CloudQueue` aşağıdaki türlerin yerine eski ve türler için destek bırakır `CloudQueueMessage` :
+
+- [QueueMessage](/dotnet/api/azure.storage.queues.models.queuemessage)
+- Birden çok kuyruk iletisi yazmak için [Queueclient](/dotnet/api/azure.storage.queues.queueclient)
+
+Bu türleri kullanan örnekler için, [uzantının GitHub deposuna](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Microsoft.Azure.WebJobs.Extensions.Storage.Queues#examples)bakın.
+
 # <a name="c-script"></a>[C# betiği](#tab/csharp-script)
+
+### <a name="default"></a>Varsayılan
 
 Gibi bir yöntem parametresi kullanarak tek bir kuyruk iletisi yazın `out T paramName` . , `paramName` `name` *Üzerindefunction.js* özelliğinde belirtilen değerdir. Bir parametre yerine yöntem dönüş türünü kullanabilir `out` ve `T` aşağıdaki türlerden herhangi biri olabilir:
 
@@ -436,6 +449,15 @@ C# ve C# komut dosyasında, aşağıdaki türlerden birini kullanarak birden ço
 * `ICollector<T>` veya `IAsyncCollector<T>`
 * [CloudQueue](/dotnet/api/microsoft.azure.storage.queue.cloudqueue)
 
+### <a name="additional-types"></a>Ek türler
+
+[Depolama uzantısının 5.0.0 veya daha yüksek sürümünü](./functions-bindings-storage-queue.md#storage-extension-5x-and-higher) kullanan uygulamalar, [.NET için Azure SDK 'sının](/dotnet/api/overview/azure/storage.queues-readme)türlerini de kullanabilir. Bu sürüm, `CloudQueue` aşağıdaki türlerin yerine eski ve türler için destek bırakır `CloudQueueMessage` :
+
+- [QueueMessage](/dotnet/api/azure.storage.queues.models.queuemessage)
+- Birden çok kuyruk iletisi yazmak için [Queueclient](/dotnet/api/azure.storage.queues.queueclient)
+
+Bu türleri kullanan örnekler için, [uzantının GitHub deposuna](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Microsoft.Azure.WebJobs.Extensions.Storage.Queues#examples)bakın.
+
 # <a name="java"></a>[Java](#tab/java)
 
 [Queueoutput](/java/api/com.microsoft.azure.functions.annotation.queueoutput) ek açıklamasını kullanarak bir işlevden sıra iletisini almak için iki seçenek vardır:
@@ -450,7 +472,7 @@ C# ve C# komut dosyasında, aşağıdaki türlerden birini kullanarak birden ço
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-Kuyruk iletisine çıkış, `Push-OutputBinding` dosyadakifunction.jsbağlamanın parametresi tarafından belirlenen adla eşleşen bağımsız değişkenleri geçirdiğiniz yerde kullanılabilir `name` . *function.json*
+Kuyruk iletisine çıkış, `Push-OutputBinding` dosyadakifunction.jsbağlamanın parametresi tarafından belirlenen adla eşleşen bağımsız değişkenleri geçirdiğiniz yerde kullanılabilir `name` . 
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -469,38 +491,6 @@ Bir işlevden sıra iletisini almak için iki seçenek vardır:
 | Kuyruk | [Sıra hata kodları](/rest/api/storageservices/queue-service-error-codes) |
 | Blob, tablo, kuyruk | [Depolama hatası kodları](/rest/api/storageservices/fileservices/common-rest-api-error-codes) |
 | Blob, tablo, kuyruk |  [Sorun giderme](/rest/api/storageservices/fileservices/troubleshooting-api-operations) |
-
-<a name="host-json"></a>  
-
-## <a name="hostjson-settings"></a>Ayarlar üzerinde host.js
-
-Bu bölümde, 2. x ve üzeri sürümlerde bu bağlama için kullanılabilen genel yapılandırma ayarları açıklanmaktadır. Aşağıdaki dosyada örnek host.js, bu bağlamanın yalnızca sürüm 2. x + ayarlarını içerir. 2. x ve daha ötesi sürümlerindeki genel yapılandırma ayarları hakkında daha fazla bilgi için bkz. [ Azure işlevleri için başvuruhost.js](functions-host-json.md).
-
-> [!NOTE]
-> 1. x Işlevleri içindeki host.jsbaşvurusu için bkz. [ Azure işlevleri için başvuru üzerindehost.js, 1. x](functions-host-json-v1.md).
-
-```json
-{
-    "version": "2.0",
-    "extensions": {
-        "queues": {
-            "maxPollingInterval": "00:00:02",
-            "visibilityTimeout" : "00:00:30",
-            "batchSize": 16,
-            "maxDequeueCount": 5,
-            "newBatchThreshold": 8
-        }
-    }
-}
-```
-
-|Özellik  |Varsayılan | Description |
-|---------|---------|---------|
-|Maxpollingınterval|00:00:01|Sıra yoklamaları arasındaki en uzun Aralık. En az 00:00:00.100 (100 ms) ve 00:01:00 (1 dak) artar.  1. x içinde veri türü milisaniyedir ve 2. x ve üzeri bir TimeSpan 'dir.|
-|visibilityTimeout|00:00:00|Bir ileti işlenirken yeniden denemeler arasındaki zaman aralığı başarısız olur. |
-|batchSize|16|Işlevlerin çalışma zamanının aynı anda ve işlemleri paralel olarak aldığı sıra iletilerinin sayısı. İşlenen sayı öğesine doğru aldığında, `newBatchThreshold` çalışma zamanı başka bir Batch alır ve bu iletileri işlemeye başlar. Bu nedenle, işlev başına işlenen en fazla eşzamanlı ileti sayısı `batchSize` artı olur `newBatchThreshold` . Bu sınır, kuyruğa tetiklenen her bir işlev için ayrı olarak uygulanır. <br><br>Bir kuyrukta alınan iletiler için paralel yürütmeyi önlemek istiyorsanız, `batchSize` 1 olarak ayarlayabilirsiniz. Ancak, bu ayar yalnızca işlev uygulamanız tek bir sanal makinede (VM) çalıştığı sürece eşzamanlılık ortadan kaldırır. İşlev uygulaması birden çok VM 'ye ölçekleniyorsa, her VM, her bir kuyruk tetiklenen işlevin bir örneğini çalıştırabilir.<br><br>Maksimum `batchSize` değer 32 ' dir. |
-|maxDequeueCount|5|Zarar sırasına taşımadan önce bir iletiyi işlemeyi deneme sayısı.|
-|newBatchThreshold|batchSize/2|Aynı anda işlenen ileti sayısı bu sayıya indiğinde, çalışma zamanı başka bir toplu işi alır.|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

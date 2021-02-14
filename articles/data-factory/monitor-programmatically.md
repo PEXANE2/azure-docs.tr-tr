@@ -1,22 +1,18 @@
 ---
 title: Programlı olarak bir Azure Data Factory izleme
 description: Farklı yazılım geliştirme setleri (SDK 'lar) kullanarak bir veri fabrikasında bir işlem hattını izlemeyi öğrenin.
-services: data-factory
-documentationcenter: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/16/2018
 author: dcstwh
 ms.author: weetok
-manager: anandsub
 ms.custom: devx-track-python
-ms.openlocfilehash: b5d1f0c0d6aa848e590e68e1f18abf7861674483
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: 038da033c2bdf78a0a2547cc713944bc11bf093d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98556571"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100379905"
 ---
 # <a name="programmatically-monitor-an-azure-data-factory"></a>Programlı olarak bir Azure Data Factory izleme
 
@@ -28,12 +24,23 @@ Bu makalede, farklı yazılım geliştirme setleri (SDK 'lar) kullanılarak bir 
 
 ## <a name="data-range"></a>Veri aralığı
 
-Data Factory yalnızca 45 gün boyunca işlem hattı çalıştırma verilerini depolar. Data Factory işlem hattı çalıştırmaları hakkında daha fazla bilgi için bkz. Örneğin, PowerShell komutu ile `Get-AzDataFactoryV2PipelineRun` isteğe bağlı ve parametreler için en fazla tarih yok `LastUpdatedAfter` `LastUpdatedBefore` . Ancak, bir önceki yıla ait veriler için sorgulama yaparsanız sorgu bir hata döndürmez, ancak yalnızca son 45 günden alınan işlem hattı çalıştırma verilerini döndürür.
+Data Factory yalnızca 45 gün boyunca işlem hattı çalıştırma verilerini depolar. Data Factory işlem hattı çalıştırmaları hakkında daha fazla bilgi için bkz. Örneğin, PowerShell komutu ile `Get-AzDataFactoryV2PipelineRun` isteğe bağlı ve parametreler için en fazla tarih yok `LastUpdatedAfter` `LastUpdatedBefore` . Ancak, geçen yıla ait veriler için sorgulama yaparsanız bir hata almazsınız ancak yalnızca son 45 günden veri hattı çalıştırın.
 
-İşlem hattı çalıştırma verilerini 45 günden fazla süreyle kalıcı hale getirmek istiyorsanız, [Azure izleyici](monitor-using-azure-monitor.md)ile kendi tanılama günlük kaydını ayarlayın.
+İşlem hattı çalıştırma verilerini 45 günden uzun süre tutmak istiyorsanız, [Azure izleyici](monitor-using-azure-monitor.md)ile kendi tanılama günlük kaydını ayarlayın.
+
+## <a name="pipeline-run-information"></a>İşlem hattı çalıştırma bilgileri
+
+İşlem hattı çalıştırma özellikleri için ardışık düzen [EYLEMSIZLIK API başvurusuna](https://docs.microsoft.com/rest/api/datafactory/pipelineruns/get#pipelinerun)bakın. İşlem hattı çalıştırmasının yaşam döngüsü sırasında farklı durumları varsa, çalışma durumunun olası değerleri aşağıda listelenmiştir:
+
+* Kuyruğa alındı
+* Ediyor
+* Başarılı
+* Başarısız
+* İptal Ediliyor
+* İptal edildi
 
 ## <a name="net"></a>.NET
-.NET SDK kullanarak bir işlem hattı oluşturma ve izlemeye yönelik kapsamlı bir anlatım için bkz. [.NET kullanarak veri fabrikası ve işlem hattı oluşturma](quickstart-create-data-factory-dot-net.md).
+.NET SDK kullanarak bir işlem hattı oluşturup izlemenin tam bir Kılavuzu için bkz. [.NET kullanarak veri fabrikası ve işlem hattı oluşturma](quickstart-create-data-factory-dot-net.md).
 
 1. Veri kopyalamayı bitirene kadar işlem hattı çalıştırmasının durumunu sürekli olarak denetlemek için aşağıdaki kodu ekleyin.
 
@@ -45,7 +52,7 @@ Data Factory yalnızca 45 gün boyunca işlem hattı çalıştırma verilerini d
     {
         pipelineRun = client.PipelineRuns.Get(resourceGroup, dataFactoryName, runResponse.RunId);
         Console.WriteLine("Status: " + pipelineRun.Status);
-        if (pipelineRun.Status == "InProgress")
+        if (pipelineRun.Status == "InProgress" || pipelineRun.Status == "Queued")
             System.Threading.Thread.Sleep(15000);
         else
             break;
@@ -71,7 +78,7 @@ Data Factory yalnızca 45 gün boyunca işlem hattı çalıştırma verilerini d
 .NET SDK ile ilgili tüm belgeler için, [Data Factory .NET SDK başvurusu](/dotnet/api/microsoft.azure.management.datafactory)' na bakın.
 
 ## <a name="python"></a>Python
-Python SDK kullanarak bir işlem hattı oluşturma ve izlemeye yönelik kapsamlı bir anlatım için bkz. [Python kullanarak veri fabrikası ve işlem hattı oluşturma](quickstart-create-data-factory-python.md).
+Python SDK kullanarak bir işlem hattı oluşturma ve izleme hakkında tam bir adım adım için bkz. [Python kullanarak veri fabrikası ve işlem hattı oluşturma](quickstart-create-data-factory-python.md).
 
 İşlem hattı çalıştırmasını izlemek için aşağıdaki kodu ekleyin:
 
@@ -89,7 +96,7 @@ print_activity_run_details(activity_runs_paged[0])
 Python SDK ile ilgili tüm belgeler için, [Data Factory Python SDK başvurusu](/python/api/overview/azure/datafactory)' na bakın.
 
 ## <a name="rest-api"></a>REST API
-REST API kullanarak bir işlem hattı oluşturma ve izlemeye yönelik kapsamlı bir anlatım için, bkz. [REST API kullanarak veri fabrikası oluşturma ve işlem hattı oluşturma](quickstart-create-data-factory-rest-api.md).
+REST API kullanarak bir işlem hattı oluşturup izlemenin tam bir Kılavuzu için, bkz. [REST API kullanarak veri fabrikası ve işlem hattı oluşturma](quickstart-create-data-factory-rest-api.md).
  
 1. İşlem hattı çalıştırma durumunu, verileri kopyalama işlemi tamamlanıncaya kadar sürekli olarak denetlemek için aşağıdaki betiği çalıştırın.
 
@@ -99,7 +106,7 @@ REST API kullanarak bir işlem hattı oluşturma ve izlemeye yönelik kapsamlı 
         $response = Invoke-RestMethod -Method GET -Uri $request -Header $authHeader
         Write-Host  "Pipeline run status: " $response.Status -foregroundcolor "Yellow"
 
-        if ($response.Status -eq "InProgress") {
+        if ( ($response.Status -eq "InProgress") -or ($response.Status -eq "Queued") ) {
             Start-Sleep -Seconds 15
         }
         else {
@@ -119,7 +126,7 @@ REST API kullanarak bir işlem hattı oluşturma ve izlemeye yönelik kapsamlı 
 REST API hakkındaki tüm belgeler için bkz. [Data Factory REST API başvurusu](/rest/api/datafactory/).
 
 ## <a name="powershell"></a>PowerShell
-PowerShell kullanarak bir işlem hattı oluşturma ve izlemeye yönelik kapsamlı bir anlatım için bkz. [PowerShell kullanarak veri fabrikası ve işlem hattı oluşturma](quickstart-create-data-factory-powershell.md).
+PowerShell kullanarak bir işlem hattı oluşturma ve izleme hakkında tam bir adım adım için bkz. [PowerShell kullanarak veri fabrikası ve işlem hattı oluşturma](quickstart-create-data-factory-powershell.md).
 
 1. İşlem hattı çalıştırma durumunu, verileri kopyalama işlemi tamamlanıncaya kadar sürekli olarak denetlemek için aşağıdaki betiği çalıştırın.
 
@@ -128,12 +135,12 @@ PowerShell kullanarak bir işlem hattı oluşturma ve izlemeye yönelik kapsaml�
         $run = Get-AzDataFactoryV2PipelineRun -ResourceGroupName $resourceGroupName -DataFactoryName $DataFactoryName -PipelineRunId $runId
 
         if ($run) {
-            if ($run.Status -ne 'InProgress') {
-                Write-Host "Pipeline run finished. The status is: " $run.Status -foregroundcolor "Yellow"
+            if ( ($run.Status -ne "InProgress") -and ($run.Status -ne "Queued") ) {
+                Write-Output ("Pipeline run finished. The status is: " +  $run.Status)
                 $run
                 break
             }
-            Write-Host  "Pipeline is running...status: InProgress" -foregroundcolor "Yellow"
+            Write-Output ("Pipeline is running...status: " + $run.Status)
         }
 
         Start-Sleep -Seconds 30

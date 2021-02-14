@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 06/19/2020
+ms.date: 02/12/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c97958add682a4c49d7832843c0b95ffd2663bf
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 0e9189b6608b74be6a72dbdfe66276c5050f042f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96859640"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100365472"
 ---
 # <a name="properties-of-an-azure-active-directory-b2b-collaboration-user"></a>Azure Active Directory B2B işbirliği kullanıcısının özellikleri
 
@@ -28,7 +28,7 @@ Kuruluşun ihtiyaçlarına bağlı olarak, bir Azure AD B2B işbirliği kullanı
 - Durum 1: Azure AD 'nin dış bir örneğinde bulunan ve davet edilen kuruluşta Konuk Kullanıcı olarak gösterilen. Bu durumda, B2B kullanıcısı, davet edilen kiracıya ait olan bir Azure AD hesabı kullanarak oturum açar. İş ortağı kuruluşu Azure AD kullanmıyorsa, Azure AD 'de Konuk Kullanıcı hala oluşturulur. Gereksinimler, davetlerinin yanı sıra Azure AD 'nin e-posta adreslerini doğrular. Bu düzenleme, tam zamanında (JıT) kiracı veya "viral" kiramı olarak da adlandırılır.
 
    > [!IMPORTANT]
-   > Microsoft, **31 mart 2021**' den ıtıbaren, B2B işbirliği senaryoları Için YÖNETILMEYEN Azure AD hesapları ve kiracılar oluşturarak artık davetlerin kullanımını desteklememektedir. Hazırlık aşamasında, müşterilerin [e-posta bir kerelik geçiş kodu kimlik doğrulamasını](one-time-passcode.md)kabul etmelerini öneririz. Bu genel önizleme özelliğiyle ilgili geri bildirimlerinize hoş geldiniz ve işbirliği yapmak için daha fazla yol oluşturmak heyecanlıyız.
+   > Microsoft, **2021 Ekim 'Den itibaren**, B2B işbirliği senaryoları Için YÖNETILMEYEN Azure AD hesapları ve kiracılar oluşturarak artık davetlerin kullanımını desteklememektedir. Hazırlık aşamasında, müşterilerin [e-posta bir kerelik geçiş kodu kimlik doğrulamasını](one-time-passcode.md)kabul etmelerini öneririz. Bu genel önizleme özelliğiyle ilgili geri bildirimlerinize hoş geldiniz ve işbirliği yapmak için daha fazla yol oluşturmak heyecanlıyız.
 
 - Durum 2: bir Microsoft veya diğer hesapta barındırın ve konak kuruluşunda Konuk Kullanıcı olarak temsil edilir. Bu durumda, Konuk Kullanıcı Microsoft hesabı veya sosyal hesap (google.com veya benzeri) ile oturum açar. Davet edilen kullanıcının kimliği, teklifi satın alma sırasında, davet edilen kuruluşun dizininde bir Microsoft hesabı olarak oluşturulur.
 

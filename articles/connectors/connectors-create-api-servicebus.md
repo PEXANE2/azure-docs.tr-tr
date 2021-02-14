@@ -3,16 +3,16 @@ title: Azure Service Bus ile Exchange iletileri
 description: Azure Logic Apps Azure Service Bus kullanarak ileti gönderen ve alan otomatik görevler ve iş akışları oluşturun
 services: logic-apps
 ms.suite: integration
-ms.reviewer: logicappspm
+ms.reviewer: logicappspm, azla
 ms.topic: conceptual
-ms.date: 10/22/2020
+ms.date: 02/10/2021
 tags: connectors
-ms.openlocfilehash: b6276ff940d8b156a671cb5386ce53ede30dd879
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 98d2ee8a85d25065c0021841a9b99a6d616a35d8
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96019727"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100367427"
 ---
 # <a name="exchange-messages-in-the-cloud-by-using-azure-logic-apps-and-azure-service-bus"></a>Azure Logic Apps ve Azure Service Bus kullanarak bulutta ileti alışverişi yapın
 
@@ -169,7 +169,7 @@ Bir mantıksal uygulama oluşturduğunuzda, sıralı konvoy düzenini uygulayan 
 
 ## <a name="delays-in-updates-to-your-logic-app-taking-effect"></a>Mantıksal uygulamanıza yönelik güncelleştirmelerde yapılan gecikmeler
 
-Service Bus tetikleyicisinin yoklama aralığı 10 saniye gibi küçükse, mantıksal uygulamanızdaki güncelleştirmeler 10 dakikaya kadar etkili olmayabilir. Bu sorunu geçici olarak çözmek için, mantıksal uygulamanızı güncelleştirmeden önce yoklama aralığını 30 saniye veya 1 dakika gibi daha büyük bir değere geçici olarak artırabilirsiniz. Güncelleştirmeyi yaptıktan sonra, yoklama aralığını özgün değere sıfırlayabilirsiniz. 
+Service Bus tetikleyicisinin yoklama aralığı 10 saniye gibi küçükse, mantıksal uygulamanızdaki güncelleştirmeler 10 dakikaya kadar etkili olmayabilir. Bu sorunu geçici olarak çözmek için mantıksal uygulamayı devre dışı bırakabilir, değişiklikleri yapabilir ve sonra mantıksal uygulamayı yeniden etkinleştirebilirsiniz.
 
 <a name="connector-reference"></a>
 

@@ -1,22 +1,17 @@
 ---
 title: Değişiklik verilerini yakalama kullanarak artımlı olarak veri kopyalama
 description: Bu öğreticide, Delta verilerini Azure SQL yönetilen örnek veritabanındaki bir tablodan Azure depolama birimine artımlı olarak kopyalayan bir Azure Data Factory işlem hattı oluşturacaksınız.
-services: data-factory
 ms.author: nihurt
 author: hurtn
-manager: ''
-ms.reviewer: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: tutorial
-ms.custom: ''
 ms.date: 05/04/2020
-ms.openlocfilehash: 754f58fe7ee9bc8d10ba1fa973615781ce4d6dce
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: ba4e5c3998c7c6218d2f0232e3c05930ca82e378
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98555925"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100391278"
 ---
 # <a name="incrementally-load-data-from-azure-sql-managed-instance-to-azure-storage-using-change-data-capture-cdc"></a>Değişiklik verilerini yakalama (CDC) kullanarak Azure SQL yönetilen örneğinden Azure depolama 'ya artımlı olarak veri yükleme
 
@@ -51,7 +46,7 @@ Bu öğreticide, aşağıdaki işlemleri gerçekleştiren bir işlem hattı olu�
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 * **Azure SQL veritabanı yönetilen örneği**. Veritabanını **kaynak** veri deposu olarak kullanabilirsiniz. Bir Azure SQL veritabanı yönetilen örneği yoksa, oluşturma adımları için [Azure SQL veritabanı yönetilen örneği oluşturma](../azure-sql/managed-instance/instance-create-quickstart.md) makalesine bakın.
 * **Azure depolama hesabı**. Blob depolamayı **Havuz** veri deposu olarak kullanırsınız. Azure depolama hesabınız yoksa, oluşturma adımları için [Depolama hesabı oluşturma](../storage/common/storage-account-create.md) makalesine bakın. **RAW** adlı bir kapsayıcı oluşturun. 
 
@@ -90,10 +85,10 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
 
     ```sql
      insert into customers 
-        (customer_id, first_name, last_name, email, city) 
+         (customer_id, first_name, last_name, email, city) 
      values 
-        (1, 'Chevy', 'Leward', 'cleward0@mapy.cz', 'Reading'),
-        (2, 'Sayre', 'Ateggart', 'sateggart1@nih.gov', 'Portsmouth'),
+         (1, 'Chevy', 'Leward', 'cleward0@mapy.cz', 'Reading'),
+         (2, 'Sayre', 'Ateggart', 'sateggart1@nih.gov', 'Portsmouth'),
         (3, 'Nathalia', 'Seckom', 'nseckom2@blogger.com', 'Portsmouth');
     ```
 

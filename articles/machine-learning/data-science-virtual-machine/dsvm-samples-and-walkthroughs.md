@@ -4,18 +4,17 @@ titleSuffix: Azure Data Science Virtual Machine
 description: Bu örnekler ve izlenecek yollar sayesinde, Veri Bilimi Sanal Makinesi ortak görevleri ve senaryoları nasıl işleyeceğinizi öğrenin.
 keywords: veri bilimi araçları, veri bilimi sanal makinesi, veri bilimi için araçlar, linux veri bilimi
 services: machine-learning
-ms.service: machine-learning
-ms.subservice: data-science-vm
+ms.service: data-science-vm
 author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 98a1cd883867aa2f785b15f4c7ae4f2266a421ae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cda5dfd936243602775e1f4f965032b9d746b0b7
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87012578"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100519771"
 ---
 # <a name="samples-on-azure-data-science-virtual-machines"></a>Azure veri bilimi sanal makinelerinde örnekler
 
@@ -23,12 +22,12 @@ Azure veri bilimi sanal makineleri (DSVMs) kapsamlı bir örnek kod kümesi içe
 > [!NOTE]
 > Veri bilimi sanal makinelerinizde Jupyıter not defterlerini çalıştırma hakkında daha fazla bilgi için bkz. [Access jupi](#access-jupyter) Section.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu örnekleri çalıştırmak için, bir [Ubuntu veri bilimi sanal makinesi](./dsvm-ubuntu-intro.md)sağlamış olmanız gerekir.
 
 ## <a name="available-samples"></a>Kullanılabilir örnekler
-| Örnek kategorisi | Açıklama | Konumlar |
+| Örnek kategorisi | Description | Konumlar |
 | ------------- | ------------- | ------------- |
 | R dili  | Örnekler, Azure tabanlı bulut veri depoları ile bağlanma ve açık kaynaklı R ve Microsoft Machine Learning Server karşılaştırma gibi senaryolar gösterir. Ayrıca, Microsoft Machine Learning Server ve SQL Server modelleri nasıl kullanıma sunulabileceğini açıklar. <br/> [R dili](#r-language) | <br/>`~notebooks` <br/> <br/> `~samples/MicrosoftR` <br/> <br/> `~samples/RSqlDemo` <br/> <br/> `~samples/SQLRServices`<br/> <br/>|
 | Python dili  | Örnek olarak, Azure tabanlı bulut veri depoları ile bağlanma ve Azure Machine Learning ile çalışma gibi senaryolar açıklanmaktadır.  <br/> [Python dili](#python-language) | <br/>`~notebooks` <br/><br/>|

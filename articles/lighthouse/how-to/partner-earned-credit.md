@@ -1,32 +1,30 @@
 ---
 title: Temsilcili kaynaklar üzerindeki etkisini izlemek için iş ortağı KIMLIĞINIZI bağlayın
 description: İş ortağı KIMLIĞINIZI, Azure açık Thouse aracılığıyla yönettiğiniz müşteri kaynaklarında iş ortağı kazanılan kredisi (PEC) alacak şekilde ilişkilendirmeyi öğrenin.
-ms.date: 01/28/2021
+ms.date: 02/12/2021
 ms.topic: how-to
-ms.openlocfilehash: 46338b925b1ad44019c9cc95e4b7f8c0963c07c4
-ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
+ms.openlocfilehash: 4c18aae38570ab3fd84df7d45fb18e35404158be
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98985980"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100372102"
 ---
 # <a name="link-your-partner-id-to-track-your-impact-on-delegated-resources"></a>Temsilcili kaynaklar üzerindeki etkisini izlemek için iş ortağı KIMLIĞINIZI bağlayın 
 
 [Microsoft iş ortağı ağı](https://partner.microsoft.com/)üyesiyse, Iş ortağı kimliğinizi, Microsoft tarafından verilen müşteri kaynaklarını yönetmek için kullanılan kimlik bilgileriyle bağlantılandırın ve Microsoft 'un, Azure müşteri başarısını çalıştıran iş ortaklarını belirlemesine ve tanımasına izin verebilirsiniz. Bu bağlantı Ayrıca [CSP (bulut çözümü sağlayıcısı)](/partner-center/csp-overview) iş ortaklarının [, Microsoft Müşteri SÖZLEŞMESI 'ni (MCA) imzalayan](/partner-center/confirm-customer-agreement) ve [Azure planı kapsamında](/partner-center/azure-plan-get-started)olan müşteriler için [yönetilen hizmetler (PEC) için iş ortağı kazanılmış kredisi](/partner-center/partner-earned-credit) almasına izin verir.
 
-[Azure Market 'Te yönetilen hizmet teklifleri olan müşteriler](publish-managed-services-offers.md)eklerseniz,, teklifleri yayımlamak Için kullanılan Iş Ortağı Merkezi hesabıyla ilişkili MPN kimliği kullanılarak otomatik olarak bağlantı gerçekleşir. Bu müşterilere yönelik etkileri izlemek için başka bir eylem gerekmez.
-
-[Azure Kaynak Yönetimi şablonlarını kullanarak müşteriler](onboard-customer.md)eklerseniz, bu bağlantıyı oluşturmak için işlem yapmanız gerekir. Bu işlem, [MPN kimliğiniz](../../cost-management-billing/manage/link-partner-id.md) , eklendi aboneliklerinizin her birine erişimi olan yönetim kiracınızdaki en az bir kullanıcı hesabıyla ilişkilendirilerek yapılır.
+Azure açık kullanım etkinlikleri için tanınma kazanmak için, [MPN kimliğinizi](../../cost-management-billing/manage/link-partner-id.md) yönettiğiniz kiracınızdaki en az bir kullanıcı hesabıyla bağlamanız ve bağlı hesabın eklendi aboneliklerinizin her birine erişebildiğinden emin olmanız gerekir.
 
 ## <a name="associate-your-partner-id-when-you-onboard-new-customers"></a>Yeni müşterileri eklediğinizde iş ortağı KIMLIĞINIZI ilişkilendirin
 
-Azure Resource Manager şablonlar (ARM şablonları) aracılığıyla müşterileri eklerken, iş ortağı KIMLIĞINIZI bağlamak için aşağıdaki işlemi kullanın (varsa, iş ortağı tarafından kazanılan kredileri etkinleştirin). Bu adımları tamamlayabilmeniz için [MPN iş ortağı kimliğinizi](/partner-center/partner-center-account-setup#locate-your-mpn-id) bilmeniz gerekir. İş ortağı profilinizde gösterilen **İlişkili MPN kimliğini** kullandığınızdan emin olun.
+İş ortağı KIMLIĞINIZI bağlamak için aşağıdaki işlemi kullanın (varsa, iş ortağı kazanılan krediyi etkinleştirin). Bu adımları tamamlayabilmeniz için [MPN iş ortağı kimliğinizi](/partner-center/partner-center-account-setup#locate-your-mpn-id) bilmeniz gerekir. İş ortağı profilinizde gösterilen **İlişkili MPN kimliğini** kullandığınızdan emin olun.
 
 Kolaylık olması için kiracınızda bir hizmet sorumlusu hesabı oluşturmanızı, **ilişkili MPN Kimliğinizle** bağlamayı ve ardından, sahip olduğunuz her MÜŞTERIYE, [PEC için uygun olan bir Azure yerleşik rolüyle](/partner-center/azure-roles-perms-pec)birlikte erişim vermeyi öneririz.
 
-1. Yönettiğiniz kiracınızda [bir hizmet sorumlusu hesabı oluşturun](../../active-directory/develop/howto-authenticate-service-principal-powershell.md) . Bu örnekte, bu hizmet sorumlusu için ad *sağlayıcı Otomasyonu hesabını* kullanacağız.
+1. Yönettiğiniz kiracınızda [bir hizmet sorumlusu Kullanıcı hesabı oluşturun](../../active-directory/develop/howto-authenticate-service-principal-powershell.md) . Bu örnekte, bu hizmet sorumlusu hesabı için ad *sağlayıcı Otomasyonu hesabını* kullanacağız.
 1. Bu hizmet sorumlusu hesabını kullanarak, yönetim kiracınızdaki [ilişkili MPN Kimliğinizle bağlantı](../../cost-management-billing/manage/link-partner-id.md#link-to-a-partner-id) yapın. Bunu yalnızca bir kez yapmanız gerekir.
-1. [ARM şablonları kullanarak bir müşteriyi](onboard-customer.md)EKLEDIĞINIZDE, [PEC Için uygun olan Azure yerleşik rolüne](/partner-center/azure-roles-perms-pec)sahip bir kullanıcı olarak sağlayıcı Otomasyonu hesabını içeren bir yetkilendirme eklediğinizden emin olun.
+1. [ARM şablonlarını](onboard-customer.md) veya [yönetilen hizmet tekliflerini](publish-managed-services-offers.md)kullanarak BIR müşteriyi eklediğinizde, [PEC için uygun olan Azure yerleşik rolüne](/partner-center/azure-roles-perms-pec)sahip bir kullanıcı olarak sağlayıcı Otomasyonu hesabını içeren bir yetkilendirme eklediğinizden emin olun.
 
 Bu adımları izleyerek, yönettiğiniz her müşteri kiracının iş ortağı KIMLIĞINIZLE ilişkilendirilmesi gerekir. Sağlayıcı Otomasyonu hesabının, müşteri kiracısında herhangi bir eylem doğrulaması veya yapması gerekmez.
 

@@ -1,20 +1,20 @@
 ---
-title: 'Hızlı başlangıç: Kurumsal katman önbelleği oluşturma'
-description: Bu hızlı başlangıçta, Redsıs kurumsal katmanı için bir Azure önbelleği örneği oluşturmayı öğrenin
+title: 'Hızlı başlangıç: Redsıs kurumsal önbelleği oluşturma'
+description: Bu hızlı başlangıçta, kurumsal katmanlarda Redsıs için Azure önbelleğinin bir örneğini oluşturmayı öğrenin
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 10/28/2020
-ms.openlocfilehash: 95f6e2cf7803ff0b152f33c08f170725b5a0e94e
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.date: 02/08/2021
+ms.openlocfilehash: 50535ab9ac2a3541ade7b9abd8f355bbeaf6d4b3
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95795685"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100365013"
 ---
-# <a name="quickstart-create-an-enterprise-tier-cache-preview"></a>Hızlı başlangıç: Kurumsal katman önbelleği oluşturma (Önizleme)
+# <a name="quickstart-create-a-redis-enterprise-cache-preview"></a>Hızlı başlangıç: Redsıs kurumsal önbelleği oluşturma (Önizleme)
 
 Redsıs ' Kurumsal katmanları için Azure önbelleği, Azure 'da tamamen tümleşik ve yönetilen [Redsıs Enterprise](https://redislabs.com/redis-enterprise/) sağlar. Şu anda önizleme olarak kullanılabilir. Bu önizlemede iki yeni katman vardır:
 * Verileri depolamak için bir sanal makinede geçici bellek (DRAM) kullanan kuruluş
@@ -22,7 +22,7 @@ Redsıs ' Kurumsal katmanları için Azure önbelleği, Azure 'da tamamen tümle
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Başlamadan önce bir Azure aboneliğine sahip olmanız gerekir. Hesabınız yoksa bir [Hesap](https://azure.microsoft.com/)oluşturun. Daha fazla bilgi için bkz. [Kurumsal katman gereksinimleri](cache-overview.md#enterprise-tier-requirements).
+Başlamadan önce bir Azure aboneliğine sahip olmanız gerekir. Hesabınız yoksa bir [Hesap](https://azure.microsoft.com/)oluşturun. Daha fazla bilgi için bkz. [Kurumsal katman gereksinimleri](cache-overview.md#enterprise-and-enterprise-flash-tier-requirements).
 
 ## <a name="create-a-cache"></a>Bir önbellek oluşturma
 1. Önbellek oluşturmak için, önizleme davetinizdeki bağlantıyı kullanarak Azure portal oturum açın ve **kaynak oluştur**' u seçin.

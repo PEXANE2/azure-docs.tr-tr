@@ -5,14 +5,14 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 02/02/2021
+ms.date: 02/10/2021
 ms.author: tisande
-ms.openlocfilehash: 58ee3bcd0ba14359ea9adaa131b8280b81008b57
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 26465eb9826c60daad7b44e1c2fe6ae3c19b1ed0
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99526781"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100378817"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Azure Cosmos DB'de dizin oluşturma ilkeleri
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -290,7 +290,7 @@ WHERE c.firstName = "John" AND Contains(c.lastName, "Smith", true)
 ORDER BY c.firstName, c.lastName
 ```
 
-Bir sorguyu bir filtre ve yan tümcesiyle iyileştirmek için Bileşik dizinler oluşturulurken aşağıdaki noktalar kullanılır `ORDER BY` :
+Bir sorguyu bir filtre ve yan tümcesiyle iyileştirmek için Bileşik dizinler oluştururken aşağıdaki noktalar geçerlidir `ORDER BY` :
 
 * Bir özellikte filtre içeren bir sorgu üzerinde bir bileşik dizin tanımlamadıysanız ve `ORDER BY` farklı bir özellik kullanarak ayrı bir yan tümce kullanırsanız, sorgu yine de başarılı olur. Ancak, özellikle `ORDER BY` yan tümcesindeki özelliğin yüksek bir kardinalite özelliği varsa, SORGUNUN ru maliyeti bileşik bir dizinle azaltılabilir.
 * Sorgu, özelliklere filtre uygular, bu, ilk olarak `ORDER BY` yan tümcesine eklenmelidir.
@@ -308,6 +308,26 @@ Bir sorguyu bir filtre ve yan tümcesiyle iyileştirmek için Bileşik dizinler 
 | ```(name ASC, timestamp ASC)```          | ```SELECT * FROM c WHERE c.name = "John" ORDER BY c.timestamp ASC``` | ```No```   |
 | ```(age ASC, name ASC, timestamp ASC)``` | ```SELECT * FROM c WHERE c.age = 18 and c.name = "John" ORDER BY c.age ASC, c.name ASC,c.timestamp ASC``` | `Yes` |
 | ```(age ASC, name ASC, timestamp ASC)``` | ```SELECT * FROM c WHERE c.age = 18 and c.name = "John" ORDER BY c.timestamp ASC``` | `No` |
+
+### <a name="queries-with-a-filter-and-an-aggregate"></a>Filtre ve toplama içeren sorgular 
+
+Bir sorgu bir veya daha fazla özellik üzerinde filtreleyip bir toplam sistem işlevi içeriyorsa, filtre ve toplam sistem işlevindeki özellikler için bir bileşik dizin oluşturmak yararlı olabilir. Bu iyileştirme, [Sum](sql-query-aggregate-sum.md) ve [AVG](sql-query-aggregate-avg.md) sistem işlevleri için geçerlidir.
+
+Bir sorguyu filtre ve toplu sistem işleviyle iyileştirmek için Bileşik dizinler oluştururken aşağıdaki noktalar geçerlidir.
+
+* Sorguları toplamalar ile çalıştırırken Bileşik dizinler isteğe bağlıdır. Ancak, sorgunun RU maliyeti genellikle bileşik bir dizinle önemli ölçüde azaltılabilir.
+* Sorgu birden çok özelliğe filtre uygular, eşitlik filtreleri bileşik dizindeki ilk Özellikler olmalıdır.
+* Bileşik dizin başına en fazla bir Aralık filtresine sahip olabilirsiniz ve toplam sistem işlevindeki özellikte olması gerekir.
+* Toplu sistem işlevindeki özellik, en son bileşik dizin içinde tanımlanmalıdır.
+* `order`( `ASC` Veya `DESC` ) bunun önemi yoktur.
+
+| **Bileşik dizin**                      | **Örnek sorgu**                                  | **Bileşik dizin desteği** |
+| ---------------------------------------- | ------------------------------------------------------------ | --------------------------------- |
+| ```(name ASC, timestamp ASC)```          | ```SELECT AVG(c.timestamp) FROM c WHERE c.name = "John"``` | `Yes` |
+| ```(timestamp ASC, name ASC)```          | ```SELECT AVG(c.timestamp) FROM c WHERE c.name = "John"``` | `No` |
+| ```(name ASC, timestamp ASC)```          | ```SELECT AVG(c.timestamp) FROM c WHERE c.name > "John"``` | `No` |
+| ```(name ASC, age ASC, timestamp ASC)```          | ```SELECT AVG(c.timestamp) FROM c WHERE c.name = "John" AND c.age = 25``` | `Yes` |
+| ```(age ASC, timestamp ASC)```          | ```SELECT AVG(c.timestamp) FROM c WHERE c.name = "John" AND c.age > 25``` | `No` |
 
 ## <a name="index-transformationmodifying-the-indexing-policy"></a>Dizin oluşturma ilkesi <Dizin dönüştürme>değiştirme
 

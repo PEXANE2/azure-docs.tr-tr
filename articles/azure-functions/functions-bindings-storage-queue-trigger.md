@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/18/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, cc996988-fb4f-47, devx-track-python
-ms.openlocfilehash: 95560801d4132735435e4d45e8a588476636ec38
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 59cedb25295770ba4ae4a33aac3287c5fed1297d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "96001244"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100381503"
 ---
 # <a name="azure-queue-storage-trigger-for-azure-functions"></a>Azure Işlevleri için Azure kuyruk depolama tetikleyicisi
 
@@ -27,7 +27,7 @@ Kuyruktaki yeni bir öğe alındığında bir işlev başlatmak için kuyruk tet
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-Aşağıdaki örnek, kuyruğu [C# function](functions-dotnet-class-library.md) `myqueue-items` yoklayan ve kuyruk öğesi her işlendiğinde bir günlük yazan bir C# işlevini gösterir.
+Aşağıdaki örnek, kuyruğu [](functions-dotnet-class-library.md) `myqueue-items` yoklayan ve kuyruk öğesi her işlendiğinde bir günlük yazan bir C# işlevini gösterir.
 
 ```csharp
 public static class QueueFunctions
@@ -357,13 +357,15 @@ Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığı
 |**Görünüm**| yok | Yalnızca *function.js* dosyasında. Olarak ayarlanmalıdır `in` . Bu özellik, Azure portal tetikleyiciyi oluşturduğunuzda otomatik olarak ayarlanır. |
 |**ada** | yok |İşlev kodundaki kuyruk öğesi yükünü içeren değişkenin adı.  |
 |**Adı** | **Adı**| Yoklamaya yönelik kuyruğun adı. |
-|**bağlanma** | **Bağlantı** |Bu bağlama için kullanılacak depolama bağlantı dizesini içeren bir uygulama ayarının adı. Uygulama ayarı adı "AzureWebJobs" ile başlıyorsa, burada yalnızca adının geri kalanını belirtebilirsiniz. Örneğin, `connection` "Mystorage" olarak ayarlarsanız, işlevler çalışma zamanı "MyStorage" adlı bir uygulama ayarı arar. `connection`Boş bırakırsanız, işlevler çalışma zamanı adlı uygulama ayarında varsayılan depolama bağlantı dizesini kullanır `AzureWebJobsStorage` .|
+|**bağlanma** | **Bağlantı** |Bu bağlama için kullanılacak depolama bağlantı dizesini içeren bir uygulama ayarının adı. Uygulama ayarı adı "AzureWebJobs" ile başlıyorsa, burada yalnızca adının geri kalanını belirtebilirsiniz.<br><br>Örneğin, `connection` "Mystorage" olarak ayarlarsanız, işlevler çalışma zamanı "MyStorage" adlı bir uygulama ayarı arar. `connection`Boş bırakırsanız, işlevler çalışma zamanı adlı uygulama ayarında varsayılan depolama bağlantı dizesini kullanır `AzureWebJobsStorage` .<br><br>[Uzantının 5. x veya daha yüksek bir sürümünü](./functions-bindings-storage-queue.md#storage-extension-5x-and-higher)kullanıyorsanız, bağlantı dizesi yerine bağlantıyı tanımlayan bir yapılandırma bölümüne başvuru sağlayabilirsiniz. Bkz. [Bağlantılar](./functions-reference.md#connections).|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 ## <a name="usage"></a>Kullanım
 
 # <a name="c"></a>[C#](#tab/csharp)
+
+### <a name="default"></a>Varsayılan
 
 Gibi bir yöntem parametresi kullanarak ileti verilerine erişin `string paramName` . Aşağıdaki türlerden birine bağlanabilirsiniz:
 
@@ -374,7 +376,17 @@ Gibi bir yöntem parametresi kullanarak ileti verilerine erişin `string paramNa
 
 ' `CloudQueueMessage` A bağlanıp bir hata iletisi almaya çalışırsanız, [doğru depolama SDK sürümüne](functions-bindings-storage-queue.md#azure-storage-sdk-version-in-functions-1x)başvurunuz olduğundan emin olun.
 
+### <a name="additional-types"></a>Ek türler
+
+[Depolama uzantısının 5.0.0 veya daha yüksek sürümünü](./functions-bindings-storage-queue.md#storage-extension-5x-and-higher) kullanan uygulamalar, [.NET için Azure SDK 'sının](/dotnet/api/overview/azure/storage.queues-readme)türlerini de kullanabilir. Bu sürüm, `CloudQueueMessage` aşağıdaki türlerin yerine eski tür için desteği bırakır:
+
+- [QueueMessage](/dotnet/api/azure.storage.queues.models.queuemessage)
+ 
+Bu türleri kullanan örnekler için, [uzantının GitHub deposuna](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Microsoft.Azure.WebJobs.Extensions.Storage.Queues#examples)bakın.
+
 # <a name="c-script"></a>[C# betiği](#tab/csharp-script)
+
+### <a name="default"></a>Varsayılan
 
 Gibi bir yöntem parametresi kullanarak ileti verilerine erişin `string paramName` . , `paramName` `name` *Üzerindefunction.js* özelliğinde belirtilen değerdir. Aşağıdaki türlerden birine bağlanabilirsiniz:
 
@@ -384,6 +396,14 @@ Gibi bir yöntem parametresi kullanarak ileti verilerine erişin `string paramNa
 * [CloudQueueMessage]
 
 ' `CloudQueueMessage` A bağlanıp bir hata iletisi almaya çalışırsanız, [doğru depolama SDK sürümüne](functions-bindings-storage-queue.md#azure-storage-sdk-version-in-functions-1x)başvurunuz olduğundan emin olun.
+
+### <a name="additional-types"></a>Ek türler
+
+[Depolama uzantısının 5.0.0 veya daha yüksek sürümünü](./functions-bindings-storage-queue.md#storage-extension-5x-and-higher) kullanan uygulamalar, [.NET için Azure SDK 'sının](/dotnet/api/overview/azure/storage.queues-readme)türlerini de kullanabilir. Bu sürüm, `CloudQueueMessage` aşağıdaki türlerin yerine eski tür için desteği bırakır:
+
+- [QueueMessage](/dotnet/api/azure.storage.queues.models.queuemessage)
+
+Bu türleri kullanan örnekler için, [uzantının GitHub deposuna](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Microsoft.Azure.WebJobs.Extensions.Storage.Queues#examples)bakın.
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -395,7 +415,7 @@ Kuyruk öğesi yükü, `context.bindings.<NAME>` `<NAME>` *üzerindefunction.js*
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-Dosyadakifunction.jsbağlama parametresi tarafından belirlenen adla eşleşen dize parametresi aracılığıyla kuyruk iletisine erişin `name` . *function.json*
+Dosyadakifunction.jsbağlama parametresi tarafından belirlenen adla eşleşen dize parametresi aracılığıyla kuyruk iletisine erişin `name` . 
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -448,7 +468,7 @@ Kuyruk tetikleyicisi, bir işlevin aynı anda bir kuyruk iletisini işlemesini o
 
 ## <a name="hostjson-properties"></a>host.jsözelliklerde
 
-Dosyadaki [host.js](functions-host-json.md#queues) , sıra tetikleyicisi davranışını denetleyen ayarları içerir. Kullanılabilir ayarlarla ilgili ayrıntılar için [ ayarlarıhost.js](functions-bindings-storage-queue-output.md#hostjson-settings) bölümüne bakın.
+Dosyadaki [host.js](functions-host-json.md#queues) , sıra tetikleyicisi davranışını denetleyen ayarları içerir. Kullanılabilir ayarlarla ilgili ayrıntılar için [ ayarlarıhost.js](functions-bindings-storage-queue.md#hostjson-settings) bölümüne bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

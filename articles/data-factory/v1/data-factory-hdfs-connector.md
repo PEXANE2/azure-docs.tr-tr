@@ -1,23 +1,18 @@
 ---
 title: Şirket içinden veri taşıma
 description: Azure Data Factory kullanarak verileri Şirket içinden nasıl taşıyacağınız hakkında bilgi edinin.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.assetid: 3215b82d-291a-46db-8478-eac1a3219614
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: c4393ebeb8b1e287bd881233418a902fc523f7f5
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 52e176e0fed85b649d482614667d695db539e5d1
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97589636"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100383084"
 ---
 # <a name="move-data-from-on-premises-hdfs-using-azure-data-factory"></a>Azure Data Factory kullanarak verileri Şirket içinden taşıma
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -44,7 +39,7 @@ Data Factory hizmeti, Veri Yönetimi ağ geçidini kullanarak şirket içi bir s
 
 Ağ geçidini, aynı şirket içi makineye veya Azure VM 'ye bir bilgisayar adına yükleyebilir, ağ geçidini ayrı bir makineye/Azure IaaS VM 'sine yüklemenizi öneririz. Ağ geçidinin ayrı bir makinede bulunması, kaynak çekişmesini azaltır ve performansı geliştirir. Ağ geçidini ayrı bir makineye yüklediğinizde, makinenin makineye bilgisayar adına erişebilmesi gerekir.
 
-## <a name="getting-started"></a>Başlarken
+## <a name="getting-started"></a>Kullanmaya başlama
 Farklı araçları/API 'Leri kullanarak bir, bir, bir
 
 İşlem hattı oluşturmanın en kolay yolu **Kopyalama Sihirbazı**' nı kullanmaktır. Veri kopyalama Sihirbazı 'nı kullanarak işlem hattı oluşturma hakkında hızlı bir yol için bkz. [öğretici: kopyalama Sihirbazı 'nı kullanarak işlem hattı oluşturma](data-factory-copy-data-wizard-tutorial.md) .
@@ -112,6 +107,7 @@ Bağlı hizmet bir veri deposunu veri fabrikasına bağlar. Bir şirket içi bir
     }
 }
 ```
+
 ## <a name="dataset-properties"></a>Veri kümesi özellikleri
 Veri kümelerini tanımlamaya yönelik özellikler & bölümlerin tam listesi için bkz. [veri kümeleri oluşturma](data-factory-create-datasets.md) makalesi. Bir veri kümesinin yapısı, kullanılabilirliği ve İlkesi gibi bölümler, tüm veri kümesi türleri (Azure SQL, Azure blob, Azure tablosu vb.) için benzerdir.
 
@@ -363,25 +359,25 @@ Bir şirket içi ortamı ayarlamak için, bu şekilde iki seçenek bulunur. Büy
 
 **Ağ Geçidi makinesinde:**
 
-1.  Kerberos KDC sunucusunu ve bölgesini yapılandırmak için **Ksetup** yardımcı programını çalıştırın.
+1. Kerberos KDC sunucusunu ve bölgesini yapılandırmak için **Ksetup** yardımcı programını çalıştırın.
 
-    Kerberos bölgesi bir Windows etki alanından farklı olduğundan, makinenin bir çalışma grubunun üyesi olarak yapılandırılması gerekir. Bu, Kerberos bölgesi ayarlanarak ve bir KDC sunucusunu aşağıdaki gibi ekleyerek elde edilebilir. *Realm.com* değerini, gereken şekilde kendi ilgili bölge ile değiştirin.
+   Kerberos bölgesi bir Windows etki alanından farklı olduğundan, makinenin bir çalışma grubunun üyesi olarak yapılandırılması gerekir. Bu, Kerberos bölgesi ayarlanarak ve bir KDC sunucusunu aşağıdaki gibi ekleyerek elde edilebilir. *Realm.com* değerini, gereken şekilde kendi ilgili bölge ile değiştirin.
 
-    ```cmd
-    C:> Ksetup /setdomain REALM.COM
-    C:> Ksetup /addkdc REALM.COM <your_kdc_server_address>
-    ```
+   ```cmd
+   Ksetup /setdomain REALM.COM
+   Ksetup /addkdc REALM.COM <your_kdc_server_address>
+   ```
 
-    Bu 2 komutu yürüttükten sonra makineyi **yeniden başlatın** .
+   Bu 2 komutu yürüttükten sonra makineyi **yeniden başlatın** .
 
-2.  **Ksetup** komutuyla yapılandırmayı doğrulayın. Çıktının şöyle olması gerekir:
+2. **Ksetup** komutuyla yapılandırmayı doğrulayın. Çıktının şöyle olması gerekir:
 
-    ```cmd
-    C:> Ksetup
-    default realm = REALM.COM (external)
-    REALM.com:
-        kdc = <your_kdc_server_address>
-    ```
+   ```cmd
+   Ksetup
+   default realm = REALM.COM (external)
+   REALM.com:
+      kdc = <your_kdc_server_address>
+   ```
 
 **Azure Data Factory:**
 
@@ -390,8 +386,8 @@ Bir şirket içi ortamı ayarlamak için, bu şekilde iki seçenek bulunur. Büy
 ### <a name="option-2-enable-mutual-trust-between-windows-domain-and-kerberos-realm"></a><a name="kerberos-mutual-trust"></a>2. seçenek: Windows etki alanı ve Kerberos bölgesi arasında karşılıklı güveni etkinleştirin
 
 #### <a name="requirement"></a>Malzeme
-*   Ağ Geçidi makinesi bir Windows etki alanına katılması gerekir.
-*   Etki alanı denetleyicisinin ayarlarını güncelleştirmek için izninizin olması gerekir.
+*    Ağ Geçidi makinesi bir Windows etki alanına katılması gerekir.
+*    Etki alanı denetleyicisinin ayarlarını güncelleştirmek için izninizin olması gerekir.
 
 #### <a name="how-to-configure"></a>Nasıl yapılandırılır:
 
@@ -450,54 +446,54 @@ Bir şirket içi ortamı ayarlamak için, bu şekilde iki seçenek bulunur. Büy
 
 **Etki alanı denetleyicisinde:**
 
-1.  Bir bölge girişi eklemek için aşağıdaki **Ksetup** komutlarını çalıştırın:
+1. Bir bölge girişi eklemek için aşağıdaki **Ksetup** komutlarını çalıştırın:
 
-    ```cmd
-    C:> Ksetup /addkdc REALM.COM <your_kdc_server_address>
-    C:> ksetup /addhosttorealmmap HDFS-service-FQDN REALM.COM
-    ```
+   ```cmd
+   Ksetup /addkdc REALM.COM <your_kdc_server_address>
+   ksetup /addhosttorealmmap HDFS-service-FQDN REALM.COM
+   ```
 
-2.  Windows etki alanından Kerberos bölgesine güven oluşturun. [password] sorumlu **krbtgt/Realm. COM \@ ad.com** için paroladır.
+2. Windows etki alanından Kerberos bölgesine güven oluşturun. [password] sorumlu **krbtgt/Realm. COM \@ ad.com** için paroladır.
 
-    ```cmd
-    C:> netdom trust REALM.COM /Domain: AD.COM /add /realm /passwordt:[password]
-    ```
+   ```cmd
+   netdom trust REALM.COM /Domain: AD.COM /add /realm /passwordt:[password]
+   ```
 
-3.  Kerberos 'da kullanılan şifreleme algoritmasını seçin.
+3. Kerberos 'da kullanılan şifreleme algoritmasını seçin.
 
-    1. Sunucu Yöneticisi > grup ilkesi yönetim > etki alanı > Grup İlkesi nesneleri > varsayılan veya etkin etki alanı Ilkesi ' ne gidin ve düzenleyin.
+   1. Sunucu Yöneticisi > grup ilkesi yönetim > etki alanı > Grup İlkesi nesneleri > varsayılan veya etkin etki alanı Ilkesi ' ne gidin ve düzenleyin.
 
-    2. **Grup İlkesi Yönetimi Düzenleyicisi** açılır penceresinde, bilgisayar yapılandırması > Ilkeler > Windows ayarları > güvenlik ayarları > yerel Ilkeler > güvenlik seçenekleri ' ne gidin ve **ağ güvenliğini yapılandırın: Kerberos Için izin verilen şifreleme türlerini yapılandırın**.
+   2. **Grup İlkesi Yönetimi Düzenleyicisi** açılır penceresinde, bilgisayar yapılandırması > Ilkeler > Windows ayarları > güvenlik ayarları > yerel Ilkeler > güvenlik seçenekleri ' ne gidin ve **ağ güvenliğini yapılandırın: Kerberos Için izin verilen şifreleme türlerini yapılandırın**.
 
-    3. KDC 'ye bağlanırken kullanmak istediğiniz şifreleme algoritmasını seçin. Genellikle, tüm seçenekleri seçmeniz yeterlidir.
+   3. KDC 'ye bağlanırken kullanmak istediğiniz şifreleme algoritmasını seçin. Genellikle, tüm seçenekleri seçmeniz yeterlidir.
 
-        ![Kerberos için yapılandırma şifreleme türleri](media/data-factory-hdfs-connector/config-encryption-types-for-kerberos.png)
+      ![Kerberos için yapılandırma şifreleme türleri](media/data-factory-hdfs-connector/config-encryption-types-for-kerberos.png)
 
-    4. Belirli bir bölgede kullanılacak şifreleme algoritmasını belirtmek için **Ksetup** komutunu kullanın.
+   4. Belirli bir bölgede kullanılacak şifreleme algoritmasını belirtmek için **Ksetup** komutunu kullanın.
 
-       ```cmd
-       C:> ksetup /SetEncTypeAttr REALM.COM DES-CBC-CRC DES-CBC-MD5 RC4-HMAC-MD5 AES128-CTS-HMAC-SHA1-96 AES256-CTS-HMAC-SHA1-96
-       ```
+      ```cmd
+      ksetup /SetEncTypeAttr REALM.COM DES-CBC-CRC DES-CBC-MD5 RC4-HMAC-MD5 AES128-CTS-HMAC-SHA1-96 AES256-CTS-HMAC-SHA1-96
+      ```
 
-4.  Windows etki alanında Kerberos sorumlusu kullanmak için etki alanı hesabı ve Kerberos sorumlusu arasındaki eşlemeyi oluşturun.
+4. Windows etki alanında Kerberos sorumlusu kullanmak için etki alanı hesabı ve Kerberos sorumlusu arasındaki eşlemeyi oluşturun.
 
-    1. **Kullanıcı ve bilgisayar Active Directory** yönetim araçlarını > başlatın.
+   1. **Kullanıcı ve bilgisayar Active Directory** yönetim araçlarını > başlatın.
 
-    2. Gelişmiş özellikleri **görüntüle** gelişmiş özellikleri ' ne tıklayarak yapılandırın  >  .
+   2. Gelişmiş özellikleri **görüntüle** gelişmiş özellikleri ' ne tıklayarak yapılandırın  >  .
 
-    3. Eşleme oluşturmak istediğiniz hesabı bulun ve **ad eşlemelerini** görüntülemek için sağ tıklayın > **Kerberos adları** sekmesi ' ne tıklayın.
+   3. Eşleme oluşturmak istediğiniz hesabı bulun ve **ad eşlemelerini** görüntülemek için sağ tıklayın > **Kerberos adları** sekmesi ' ne tıklayın.
 
-    4. Realm 'tan bir sorumlu ekleyin.
+   4. Realm 'tan bir sorumlu ekleyin.
 
-        ![Eşleme güvenlik kimliği](media/data-factory-hdfs-connector/map-security-identity.png)
+      ![Eşleme güvenlik kimliği](media/data-factory-hdfs-connector/map-security-identity.png)
 
 **Ağ Geçidi makinesinde:**
 
 * Bir bölge girişi eklemek için aşağıdaki **Ksetup** komutlarını çalıştırın.
 
    ```cmd
-   C:> Ksetup /addkdc REALM.COM <your_kdc_server_address>
-   C:> ksetup /addhosttorealmmap HDFS-service-FQDN REALM.COM
+   Ksetup /addkdc REALM.COM <your_kdc_server_address>
+   ksetup /addhosttorealmmap HDFS-service-FQDN REALM.COM
    ```
 
 **Azure Data Factory:**
@@ -506,7 +502,6 @@ Bir şirket içi ortamı ayarlamak için, bu şekilde iki seçenek bulunur. Büy
 
 > [!NOTE]
 > Kaynak veri kümesindeki sütunları havuz veri kümesinden sütunlara eşlemek için, bkz. [Azure Data Factory veri kümesi sütunlarını eşleme](data-factory-map-columns.md).
-
 
 ## <a name="performance-and-tuning"></a>Performans ve ayarlama
 Veri taşıma (kopyalama etkinliği) performansını Azure Data Factory ve en iyileştirmek için çeşitli yollarla etkileyen temel faktörlerle ilgili bilgi edinmek için bkz. [etkinlik performansını kopyalama & ayarlama Kılavuzu](data-factory-copy-activity-performance.md) .

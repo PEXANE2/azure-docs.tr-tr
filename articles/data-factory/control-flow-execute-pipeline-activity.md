@@ -1,22 +1,18 @@
 ---
 title: Azure Data Factory içinde işlem hattı etkinliğini yürütme
 description: Başka bir Data Factory işlem hattından bir Data Factory işlem hattını çağırmak için ardışık düzen yürütme etkinliğini nasıl kullanabileceğinizi öğrenin.
-services: data-factory
-documentationcenter: ''
 author: dcstwh
 ms.author: weetok
-manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 7df636bbdc85b9fcdcbfef260daca905f9949d8c
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 9bcf8fd62e3b20701136d7912074afb37d567e2f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500062"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100383356"
 ---
 # <a name="execute-pipeline-activity-in-azure-data-factory"></a>Azure Data Factory içinde işlem hattı etkinliğini yürütme
 
@@ -66,11 +62,11 @@ ms.locfileid: "96500062"
 
 Özellik | Açıklama | İzin verilen değerler | Gerekli
 -------- | ----------- | -------------- | --------
-name | İşlem hattının yürütülmesi etkinliğinin adı. | Dize | Evet
-tür | : **Executepipeline** olarak ayarlanmalıdır. | Dize | Evet
-konfigüre | Bu işlem hattının çağırdığı bağımlı işlem hattına işlem hattı başvurusu. İşlem hattı başvuru nesnesi iki özelliğe sahiptir: **ReferenceName** ve **Type**. ReferenceName özelliği, başvuru işlem hattının adını belirtir. Type özelliği PipelineReference olarak ayarlanmalıdır. | PipelineReference | Evet
-parameters | Çağrılan işlem hattına geçirilecek parametreler | Parametre adlarını bağımsız değişken değerleriyle eşleyen bir JSON nesnesi | Hayır
-waitOnCompletion | Etkinlik yürütmenin bağımlı işlem hattı yürütmenin bitmesini bekleyip beklemediğini tanımlar. Varsayılan değer false’tur. | Boole | Hayır
+name | İşlem hattının yürütülmesi etkinliğinin adı. | Dize | Yes
+tür | : **Executepipeline** olarak ayarlanmalıdır. | Dize | Yes
+konfigüre | Bu işlem hattının çağırdığı bağımlı işlem hattına işlem hattı başvurusu. İşlem hattı başvuru nesnesi iki özelliğe sahiptir: **ReferenceName** ve **Type**. ReferenceName özelliği, başvuru işlem hattının adını belirtir. Type özelliği PipelineReference olarak ayarlanmalıdır. | PipelineReference | Yes
+parameters | Çağrılan işlem hattına geçirilecek parametreler | Parametre adlarını bağımsız değişken değerleriyle eşleyen bir JSON nesnesi | No
+waitOnCompletion | Etkinlik yürütmenin bağımlı işlem hattı yürütmenin bitmesini bekleyip beklemediğini tanımlar. Varsayılan değer false’tur. | Boole | No
 
 ## <a name="sample"></a>Örnek
 Bu senaryonun iki işlem hattı vardır:

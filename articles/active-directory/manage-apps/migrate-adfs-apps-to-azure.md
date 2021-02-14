@@ -1,6 +1,6 @@
 ---
 title: AD FS uygulama kimlik doğrulamasını Azure Active Directory olarak taşıma
-description: Bu makale, kuruluşların Federasyon SaaS uygulamalarına odaklanarak uygulamaların Azure AD 'ye nasıl taşınacağını anlamalarına yardımcı olmak için tasarlanmıştır.
+description: Bu makale, kuruluşların Federasyon SaaS uygulamalarına odaklanarak uygulamaları Azure Active Directory nasıl taşıyabileceğini anlamalarına yardımcı olmak için tasarlanmıştır.
 services: active-directory
 author: kenwith
 manager: daveba
@@ -8,25 +8,22 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: how-to
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.date: 04/01/2020
+ms.date: 02/10/2021
 ms.author: kenwith
 ms.reviewer: baselden
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: b27ccf5a861295ae83b5ddc021e77de75962de48
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: b8ad137389ac11a41872190122eae6405a126b5b
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99258397"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100381248"
 ---
 # <a name="moving-application-authentication-from-active-directory-federation-services-to-azure-active-directory"></a>Uygulama kimlik doğrulamasını Active Directory Federasyon Hizmetleri’nden Azure Active Directory’ye taşıma
 
 [Azure Active Directory (Azure AD)](../fundamentals/active-directory-whatis.md) , kişilere, iş ortaklarınıza ve müşterilerinize uygulamalara erişmek ve herhangi bir platformdan ve cihazdan işbirliği yapmak için tek bir kimlik sağlayan bir evrensel kimlik platformu sunar. Azure AD ['nin eksiksiz bir kimlik yönetimi özellikleri paketi](../fundamentals/active-directory-whatis.md)vardır. Uygulama (uygulama) kimlik doğrulama ve Azure AD yetkilendirmesi için standartlaştırarak bu yeteneklerin sağladığı avantajlar sağlanır.
 
 > [!TIP]
-> Bu makale, geliştirici hedef kitlesi için yazılmıştır. Proje yöneticileri ve yöneticileri bir uygulamanın Azure AD 'ye geçişini planlarken, [uygulama kimlik doğrulamamızı Azure AD](https://aka.ms/migrateapps/whitepaper) teknik INCELEMESINE (PDF) geçirdiğimiz bir okumayı göz önünde bulundurmalıdır.
+> Bu makale, geliştirici hedef kitlesi için yazılmıştır. Proje yöneticileri ve Yöneticiler, uygulamanın Azure AD 'ye geçişini planlayan [uygulama kimlik doğrulamasını Azure AD](migrate-application-authentication-to-azure-active-directory.md) makalesinde okumayı göz önünde bulundurmalıdır.
 
 ## <a name="introduction"></a>Giriş
 

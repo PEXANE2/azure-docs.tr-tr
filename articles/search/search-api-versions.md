@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/05/2020
-ms.openlocfilehash: 489c6be7bf977d01207fee4d1bd1fda13dc12025
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.openlocfilehash: d2308d065755df834a224ef3b1df202d7b7dc5ae
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99820526"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100518955"
 ---
 # <a name="api-versions-in-azure-cognitive-search"></a>Azure Bilişsel Arama API sürümleri
 
@@ -96,19 +96,19 @@ Aşağıdaki tabloda, daha güncel SDK sürümlerinin bağlantıları verilmişt
 
 | SDK sürümü | Durum | Açıklama  |
 |-------------|--------|------------------------------|
-| [Java Azure-Arama-belgeler 11](https://newreleases.io/project/github/Azure/azure-sdk-for-java/release/azure-search-documents_11.1.0) | Dengeli | Azure .NET SDK 'dan yeni istemci kitaplığı, 2020 Temmuz 'da yayınlandı. Arama REST API-Version = 2019-05-06 ' i hedefler. |
+| [Java Azure-Arama-belgeler 11](https://newreleases.io/project/github/Azure/azure-sdk-for-java/release/azure-search-documents_11.1.0) | Dengeli | Azure Java SDK 'dan yeni istemci kitaplığı, 2020 Temmuz tarihinde yayınlandı. Arama REST API-Version = 2019-05-06 ' i hedefler. |
 | [Java yönetim Istemcisi 1.35.0](/java/api/overview/azure/search/management) | Dengeli | Yönetim REST API-Version = 2015-08-19 ' i hedefler. |
 
 ## <a name="azure-sdk-for-javascript"></a>JavaScript için Azure SDK
 
 | SDK sürümü | Durum | Açıklama  |
 |-------------|--------|------------------------------|
-| [JavaScript Azure-Arama 11,0](https://azure.github.io/azure-sdk-for-node/azure-search/latest/) | Dengeli | Azure .NET SDK 'dan yeni istemci kitaplığı, 2020 Temmuz 'da yayınlandı. Arama REST API-Version = 2016-09-01 ' i hedefler. |
-| [JavaScript Azure-ARM-arama](https://azure.github.io/azure-sdk-for-node/azure-arm-search/latest/) | Dengeli | Yönetim REST API-Version = 2015-08-19 ' i hedefler. |
+| [JavaScript @azure/search-documents 11,0](https://www.npmjs.com/package/@azure/search-documents) | Dengeli | Azure JavaScript & TypesScript SDK 'dan yeni istemci kitaplığı, 2020 Temmuz 'da yayınlandı. Arama REST API-Version = 2016-09-01 ' i hedefler. |
+| [JavaScript @azure/arm-search](https://www.npmjs.com/package/@azure/arm-search) | Dengeli | Yönetim REST API-Version = 2015-08-19 ' i hedefler. |
 
 ## <a name="azure-sdk-for-python"></a>Python için Azure SDK
 
 | SDK sürümü | Durum | Açıklama  |
 |-------------|--------|------------------------------|
-| [Python Azure-Arama-belgeler 11,0](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-search-documents/11.0.0/index.html) | Dengeli | Azure .NET SDK 'dan yeni istemci kitaplığı, 2020 Temmuz 'da yayınlandı. Arama REST API-Version = 2019-05-06 ' i hedefler. |
-| [Python Azure-MGMT-arama 1,0](/python/api/overview/azure/search) | Dengeli | Yönetim REST API-Version = 2015-08-19 ' i hedefler. |
+| [Python Azure-Arama-belgeler 11,0](https://pypi.org/project/azure-search-documents/) | Dengeli | Azure Python SDK 'dan yeni istemci kitaplığı, 2020 Temmuz 'dan yayınlandı. Arama REST API-Version = 2019-05-06 ' i hedefler. |
+| [Python Azure-MGMT-arama 8,0](https://pypi.org/project/azure-mgmt-search/) | Dengeli | Yönetim REST API-Version = 2015-08-19 ' i hedefler. |

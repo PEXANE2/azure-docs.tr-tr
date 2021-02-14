@@ -5,12 +5,12 @@ description: Bir Azure Kubernetes hizmeti (AKS) kümesi için hizmet sorumlusu v
 services: container-service
 ms.topic: article
 ms.date: 03/11/2019
-ms.openlocfilehash: c787f172bc03e11c574c4de967aee05da9df18aa
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: ba2c31872ae026cfdfcb7be17d333fb98194dce6
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94427522"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100389017"
 ---
 # <a name="update-or-rotate-the-credentials-for-azure-kubernetes-service-aks"></a>Azure Kubernetes hizmeti (AKS) için kimlik bilgilerini güncelleştirme veya döndürme
 
@@ -47,6 +47,9 @@ az ad sp credential list --id $SP_ID --query "[].endDate" -o tsv
 ### <a name="reset-the-existing-service-principal-credential"></a>Mevcut hizmet sorumlusu kimlik bilgisini sıfırlayın
 
 Mevcut hizmet sorumlusunun kimlik bilgilerini güncelleştirmek için [az aks Show][az-aks-show] komutunu kullanarak kümenizin HIZMET sorumlusu kimliğini alın. Aşağıdaki örnek, *Myresourcegroup* kaynak grubundaki *Myakscluster* adlı kümenin kimliğini alır. Hizmet sorumlusu KIMLIĞI, ek komutta kullanılmak üzere *SP_ID* adlı bir değişken olarak ayarlanır. Bu komutlar Bash söz dizimini kullanır.
+
+> [!WARNING]
+> Azure sanal makine ölçek kümeleri kullanan bir AKS kümesindeki küme kimlik bilgilerinizi sıfırladığınızda, yeni kimlik bilgileri ile düğümlerinizi güncelleştirmek için bir [düğüm görüntüsü yükseltmesi][node-image-upgrade] yapılır.
 
 ```azurecli-interactive
 SP_ID=$(az aks show --resource-group myResourceGroup --name myAKSCluster \
@@ -138,3 +141,4 @@ Bu makalede, AKS kümesi için hizmet sorumlusu ve AAD tümleştirme uygulamalar
 [az-ad-sp-create]: /cli/azure/ad/sp#az-ad-sp-create-for-rbac
 [az-ad-sp-credential-list]: /cli/azure/ad/sp/credential#az-ad-sp-credential-list
 [az-ad-sp-credential-reset]: /cli/azure/ad/sp/credential#az-ad-sp-credential-reset
+[node-image-upgrade]: ./node-image-upgrade.md

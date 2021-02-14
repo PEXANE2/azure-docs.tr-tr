@@ -6,15 +6,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: tutorial
-ms.date: 05/12/2020
+ms.date: 02/10/2021
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: b3cb6bf56820da84d17f0b981f461a545bbe5ab6
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: d39c1d8c3ac60dda62556b1a8da0dfe29e3c1ee3
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96549268"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100383628"
 ---
 # <a name="tutorial-build-a-java-web-application-using-azure-cosmos-db-and-the-sql-api"></a>Öğretici: Azure Cosmos DB ve SQL API kullanarak Java Web uygulaması oluşturma
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -37,7 +37,7 @@ Bu Java uygulaması öğreticisi görevleri oluşturmanızı, almanızı ve aşa
 :::image type="content" source="./media/sql-api-java-application/image1.png" alt-text="Yapılacaklar Listesi Java uygulamam":::
 
 > [!TIP]
-> Bu uygulama geliştirme öğreticisi, Java kullanımına ilişkin deneyim sahibi olduğunuzu varsayar. Java veya [önkoşul araçlarında](#Prerequisites) yeniyseniz GitHub'dan [yapılacaklar](https://github.com/Azure-Samples/documentdb-java-todo-app) projesinin tamamını indirmenizi ve [bu makalenin sonundaki yönergeleri](#GetProject) kullanarak projeyi oluşturmanızı öneririz. Oluşturduktan sonra, proje bağlamında kodu daha iyi kavramak için makaleyi inceleyebilirsiniz.  
+> Bu uygulama geliştirme öğreticisi, Java kullanımına ilişkin deneyim sahibi olduğunuzu varsayar. Java veya [Önkoşul araçlarıyla](#Prerequisites)yeni bir sürümüne sahipseniz, tüm [Todo] https://github.com/Azure-Samples/azure-cosmos-java-sql-api-todo-app) projesini GitHub 'dan indirmenizi ve [Bu makalenin sonundaki yönergeleri](#GetProject)kullanarak oluşturmayı öneririz. Oluşturduktan sonra, proje bağlamında kodu daha iyi kavramak için makaleyi inceleyebilirsiniz.  
 >
 
 ## <a name="prerequisites-for-this-java-web-application-tutorial"></a><a id="Prerequisites"></a>Bu Java web uygulaması öğreticisi için önkoşullar
@@ -110,15 +110,15 @@ JSP uygulaması oluşturmak için:
    
    * **Grup Kimliği** kutusunda, girin `com.azure` .
    * **Yapıt kimliği** kutusuna, girin `azure-cosmos` .
-   * **Sürüm** kutusuna yazın `4.0.1-beta.1` .
+   * **Sürüm** kutusuna yazın `4.11.0` .
   
    Ya da, Grup KIMLIĞI ve yapıt KIMLIĞI için bağımlılık XML 'sini doğrudan *pom.xml* dosyasına ekleyebilirsiniz:
 
    ```xml
    <dependency>
-      <groupId>com.azure</groupId>
-      <artifactId>azure-cosmos</artifactId>
-      <version>4.0.1-beta.1</version>
+     <groupId>com.azure</groupId>
+     <artifactId>azure-cosmos</artifactId>
+     <version>4.11.0</version>
    </dependency>
    ```
 
@@ -132,7 +132,7 @@ JSP uygulaması oluşturmak için:
 
 İlk olarak, yeni bir *TodoItem. Java* dosyası içinde bir model tanımlayalim. `TodoItem`Sınıfı, alıcı ve ayarlayıcı yöntemleriyle birlikte bir öğenin şemasını tanımlar:
 
-:::code language="java" source="~/samples-cosmosdb-java-v4-web-app/src/com/microsoft/azure/documentdb/sample/model/TodoItem.java":::
+:::code language="java" source="~/samples-cosmosdb-java-v4-web-app/src/com/microsoft/azure/cosmos/sample/model/TodoItem.java":::
 
 ### <a name="add-the-data-access-objectdao-classes"></a>Veri erişim nesnesi (DAO) sınıfları ekleme
 
@@ -140,37 +140,37 @@ Azure Cosmos DB yapılacaklar öğelerini soyutlamak için bir veri erişim nesn
 
 1. Azure Cosmos DB hizmetini çağırmak için yeni bir nesne örneği oluşturmalısınız `cosmosClient` . Genel olarak, `cosmosClient` sonraki her istek için yeni bir istemci oluşturmak yerine nesneyi yeniden kullanmak en iyisidir. İstemcisini sınıfı içinde tanımlayarak yeniden kullanabilirsiniz `cosmosClientFactory` . [1. adımda](#CreateDB)kaydettiğiniz konak ve MASTER_KEY değerlerini güncelleştirin. Ana bilgisayar değişkenini URI 'ınızla değiştirin ve MASTER_KEY BIRINCIL ANAHTARıNıZLA değiştirin. `CosmosClientFactory` *Cosmosclientfactory. Java* dosyası içinde sınıfını oluşturmak için aşağıdaki kodu kullanın:
 
-   :::code language="java" source="~/samples-cosmosdb-java-v4-web-app/src/com/microsoft/azure/documentdb/sample/dao/CosmosClientFactory.java":::
+   :::code language="java" source="~/samples-cosmosdb-java-v4-web-app/src/com/microsoft/azure/cosmos/sample/dao/CosmosClientFactory.java":::
 
 1. Yeni bir *TodoDao. Java* dosyası oluşturun ve `TodoDao` Todo öğelerini oluşturmak, güncelleştirmek, okumak ve silmek için sınıfı ekleyin:
 
-   :::code language="java" source="~/samples-cosmosdb-java-v4-web-app/src/com/microsoft/azure/documentdb/sample/dao/TodoDao.java":::
+   :::code language="java" source="~/samples-cosmosdb-java-v4-web-app/src/com/microsoft/azure/cosmos/sample/dao/TodoDao.java":::
 
 1. Yeni bir *Mockdao. Java* dosyası oluşturun ve sınıfı ekleyin `MockDao` , bu sınıf `TodoDao` öğeler üzerinde CRUD işlemleri gerçekleştirmek için sınıfını uygular:
 
-   :::code language="java" source="~/samples-cosmosdb-java-v4-web-app/src/com/microsoft/azure/documentdb/sample/dao/MockDao.java":::
+   :::code language="java" source="~/samples-cosmosdb-java-v4-web-app/src/com/microsoft/azure/cosmos/sample/dao/MockDao.java":::
 
 1. Yeni bir *Docdbdao. Java* dosyası oluşturun ve sınıfı ekleyin `DocDbDao` . Bu sınıf, Todoıtems kapsayıcıya kalıcı hale getirmek için kodu tanımlar, varsa veritabanınızı ve koleksiyonunuzu alır veya yoksa yeni bir tane oluşturur. Bu örnek, TodoItem düz eski Java nesnelerini (POJOs) JSON belgelerine seri hale getirmek ve seri hale getirmek için [Gson](https://code.google.com/p/google-gson/) kullanır. Yapılacaklar öğelerini bir koleksiyona kaydetmek için, istemcinin hangi veritabanı ve koleksiyona kalıcı hale getireceğini (kendine bağlantılar tarafından başvurulduğu üzere) bilmesi gerekir. Bu sınıf, belgeleri kendi kendine bağlamak yerine başka bir özniteliğe (ör. "ID") almak için de yardımcı işlevi tanımlar. Bir TodoItem JSON belgesini KIMLIĞE göre almak ve sonra bir POJO 'ya seri hale getirmek için yardımcı yöntemi kullanabilirsiniz.
 
    Ayrıca, `cosmosClient` BIR SQL sorgusu kullanarak bir todoıtems koleksiyonu veya listesini almak için istemci nesnesini de kullanabilirsiniz. Son olarak, listenizden bir TodoItem silmek için Delete yöntemini tanımlarsınız. Aşağıdaki kod, sınıfının içeriğini gösterir `DocDbDao` :
 
-   :::code language="java" source="~/samples-cosmosdb-java-v4-web-app/src/com/microsoft/azure/documentdb/sample/dao/DocDbDao.java":::
+   :::code language="java" source="~/samples-cosmosdb-java-v4-web-app/src/com/microsoft/azure/cosmos/sample/dao/DocDbDao.java":::
 
 1. Sonra, yeni bir *TodoDaoFactory. Java* dosyası oluşturun ve `TodoDaoFactory` Yeni bir docdbdao nesnesi oluşturan sınıfı ekleyin:
 
-   :::code language="java" source="~/samples-cosmosdb-java-v4-web-app/src/com/microsoft/azure/documentdb/sample/dao/TodoDaoFactory.java":::
+   :::code language="java" source="~/samples-cosmosdb-java-v4-web-app/src/com/microsoft/azure/cosmos/sample/dao/TodoDaoFactory.java":::
 
 ### <a name="add-a-controller"></a>Denetleyici ekleme
 
 Uygulamanıza *TodoItemController* denetleyicisi ekleyin. Bu projede oluşturucuyu, alıcıları, ayarlayıcıları ve bir derleyici oluşturmak için [Project Lombok](https://projectlombok.org/)'u kullanırsınız. Alternatif olarak, bu kodu el ile yazabilir veya IDE 'nin oluşturmasını sağlayabilirsiniz.:
 
-:::code language="java" source="~/samples-cosmosdb-java-v4-web-app/src/com/microsoft/azure/documentdb/sample/controller/TodoItemController.java":::
+:::code language="java" source="~/samples-cosmosdb-java-v4-web-app/src/com/microsoft/azure/cosmos/sample/controller/TodoItemController.java":::
 
 ### <a name="create-a-servlet"></a>Servlet oluşturma
 
 Daha sonra, HTTP isteklerini denetleyiciye yönlendirmeye yönelik bir servlet oluşturun. *Apıvlet. Java* dosyasını oluşturun ve bunun altında aşağıdaki kodu tanımlayın:
 
-:::code language="java" source="~/samples-cosmosdb-java-v4-web-app/src/com/microsoft/azure/documentdb/sample/ApiServlet.java":::
+:::code language="java" source="~/samples-cosmosdb-java-v4-web-app/src/com/microsoft/azure/cosmos/sample/ApiServlet.java":::
 
 ## <a name="wire-the-rest-of-the-of-java-app-together"></a><a id="Wire"></a>Java uygulamasının geri kalanını birlikte bağlayın
 
@@ -194,17 +194,17 @@ Azure Web Siteleri Java uygulamalarını dağıtmayı, uygulamanızı bir WAR do
 
 1. **WAR Dışarı Aktar** penceresinde aşağıdakileri yapın:
    
-   * Web projesi kutusuna azure-documentdb-java-sample metnini girin.
+   * Web projesi kutusuna Azure-Cosmos-Java-Sample yazın.
    * Hedef kutusunda WAR dosyasını kaydetmek için bir hedef seçin.
    * **Finish (Son)** düğmesine tıklayın.
 
 1. Artık elinizde bir WAR dosyası olduğuna göre, bunu Azure Web Sitenizin **webapps** dizinine yüklemeniz yeterlidir. Dosyayı karşıya yükleme konusunda yönergeler için bkz. [Azure App Service Web Apps’e Java uygulaması ekleme](../app-service/quickstart-java.md). WAR dosyası webapps dizinine yüklendikten sonra, çalışma zamanı ortamı eklemiş olduğunu algılar ve otomatik olarak yükler.
 
-1. Tamamlanmış ürününüzü görüntülemek için, `http://YOUR\_SITE\_NAME.azurewebsites.net/azure-java-sample/` adresine gidip görevlerinizi eklemeye başlayın!
+1. Tamamlanmış ürününüzü görüntülemek için, `http://YOUR\_SITE\_NAME.azurewebsites.net/azure-cosmos-java-sample/` adresine gidip görevlerinizi eklemeye başlayın!
 
 ## <a name="get-the-project-from-github"></a><a id="GetProject"></a>Projeyi GitHub'dan alma
 
-Bu öğreticideki tüm örnekler GitHub'daki [todo](https://github.com/Azure-Samples/documentdb-java-todo-app) projesinde bulunur. todo projesini Eclipse'e aktarmak için [Önkoşullar](#Prerequisites) bölümünde listelenen yazılım ve kaynaklara sahip olduğunuzdan emin olun ve ardından aşağıdakileri yapın:
+Bu öğreticideki tüm örnekler GitHub'daki [todo](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-todo-app) projesinde bulunur. todo projesini Eclipse'e aktarmak için [Önkoşullar](#Prerequisites) bölümünde listelenen yazılım ve kaynaklara sahip olduğunuzdan emin olun ve ardından aşağıdakileri yapın:
 
 1. [Proje Lombok](https://projectlombok.org/)'u yükleyin. Lombok projede oluşturucular, alıcılar ve ayarlayıcılar oluşturmak için kullanılır. Lombok.jar dosyasını indirdikten sonra, yüklemek için buna çift tıklayın veya komut satırından yükleyin.
 
@@ -216,7 +216,7 @@ Bu öğreticideki tüm örnekler GitHub'daki [todo](https://github.com/Azure-Sam
 
 1. **Depo Kaynağı Seçin** ekranında **URI'yi kopyalama**'ya tıklayın.
 
-1. **Kaynak Git Deposu** ekranında, **URI** kutusunda, https://github.com/Azure-Samples/documentdb-java-todo-app.git girin ve ardından **İleri**’ye tıklayın.
+1. **Kaynak Git Deposu** ekranında, **URI** kutusunda, https://github.com/Azure-Samples/azure-cosmos-java-sql-api-todo-app girin ve ardından **İleri**’ye tıklayın.
 
 1. **Dal seçimi** ekranında, **ana** ' ın seçili olduğundan emin olun ve ardından **İleri**' ye tıklayın.
 
@@ -226,9 +226,9 @@ Bu öğreticideki tüm örnekler GitHub'daki [todo](https://github.com/Azure-Sam
 
 1. **Projeleri İçeri Aktar** ekranında **DocumentDB** projesinin seçimini kaldırın ve ardından **Son**'a tıklayın. DocumentDB projesi, daha sonra bağımlılık olarak ekleyeceğimiz Azure Cosmos DB Java SDK'sını içerir.
 
-1. **Proje Gezgini**’nde azure-documentdb-java-sample\src\com.microsoft.azure.documentdb.sample.dao\DocumentClientFactory.java konumuna gidin ve HOST ve MASTER_KEY değerlerini Azure Cosmos DB hesabınızın URI ve PRIMARY KEY değerleriyle değiştirin ve ardından dosyayı kaydedin. Daha fazla bilgi için bkz [. 1. adım. Azure Cosmos veritabanı hesabı oluşturun](#CreateDB).
+1. **Proje Gezgini**'nde Azure-Cosmos-Java-sample\src\com.Microsoft.Azure.Cosmos.Sample.dao\DocumentClientFactory.Java adresine gıdın ve konağı ve MASTER_KEY değerlerini Azure Cosmos DB HESABıNıZ için URI ve birincil anahtarla değiştirin ve dosyayı kaydedin. Daha fazla bilgi için bkz [. 1. adım. Azure Cosmos veritabanı hesabı oluşturun](#CreateDB).
 
-1. **Proje Gezgini**'nde **azure-documentdb-java-sample**'a sağ tıklayın, **Yapı Yolu**'na tıklayın ve ardından **Oluşturma Yolunu Yapılandır**'a tıklayın.
+1. **Proje Gezgini**'nde, **Azure-Cosmos-Java-Sample**' a sağ tıklayın, **Yapı yolu**' na tıklayın ve ardından **Yapı yolunu Yapılandır**' a tıklayın.
 
 1. **Java Oluşturma Yolu** ekranında sağ bölmedeki **Kitaplıklar** sekmesini seçin ve ardından **Dış JAR'lar Ekle**'ye tıklayın. Lombok.jar dosyasının konumuna gidin, **Aç**'a tıklayın ve ardından **Tamam**'a tıklayın.
 
@@ -242,11 +242,11 @@ Bu öğreticideki tüm örnekler GitHub'daki [todo](https://github.com/Azure-Sam
 
 1. Ekranın en altındaki **Sunucular** sekmesinde **Localhost'ta Tomcat v7.0 Sunucusu**'na sağ tıklayın ve ardından **Ekle ve Kaldır**'a tıklayın.
 
-1. **Ekle ve Kaldır** penceresinde **azure-documentdb-java-sample**'ı **Yapılandırılmış** kutusuna taşıyın ve ardından **Son**'a tıklayın.
+1. **Ekle ve Kaldır** penceresinde **Azure-Cosmos-Java-Sample** ' ı **yapılandırılmış** kutusuna taşıyın ve ardından **son**' a tıklayın.
 
 1. **Sunucular** sekmesinde **Localhost'ta Tomcat v7.0 Sunucusu**'na sağ tıklayın ve ardından **Yeniden Başlat**'a tıklayın.
 
-1. Bir tarayıcıda, `http://localhost:8080/azure-documentdb-java-sample/` konumuna gidin ve görev listenizi eklemeye başlayın. Varsayılan bağlantı noktası değerlerinizi değiştirdiyseniz 8080'i seçtiğiniz değere değiştirmeyi unutmayın.
+1. Bir tarayıcıda, `http://localhost:8080/azure-cosmos-java-sample/` konumuna gidin ve görev listenizi eklemeye başlayın. Varsayılan bağlantı noktası değerlerinizi değiştirdiyseniz 8080'i seçtiğiniz değere değiştirmeyi unutmayın.
 
 1. Projenizi bir Azure Web sitesine dağıtmak için bkz [. 6. adım. Uygulamanızı Azure Web siteleri 'ne dağıtın](#Deploy).
 

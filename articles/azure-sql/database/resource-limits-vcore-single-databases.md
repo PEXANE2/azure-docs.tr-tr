@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/22/2021
-ms.openlocfilehash: a4be96d35116ed40ca61f00ed8f2ddd786760242
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 1fec13eefad7f27bcaac8f2c690b99909cd24e59
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98735252"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100518054"
 ---
 # <a name="resource-limits-for-single-databases-using-the-vcore-purchasing-model"></a>Sanal çekirdek satın alma modeli kullanıldığında tek veritabanları için kaynak sınırları
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -42,14 +42,14 @@ Bir sunucudaki tek veritabanları için DTU satın alma model sınırları için
 |En fazla sanal çekirdek|0.5-1|0.5-2|0,5-4|0.75-6|1.0-8|
 |En fazla bellek (GB)|2.02-3|2.05-6|2.10-12|2.25-18|3.00-24|
 |Min-en fazla otomatik duraklatma gecikmesi (dakika)|60-10080|60-10080|60-10080|60-10080|60-10080|
-|Columnstore desteği|Yes|Yes|Yes|Yes|Yes|
+|Columnstore desteği|Evet*|Yes|Yes|Yes|Yes|
 |Bellek içi OLTP depolaması (GB)|Yok|Yok|Yok|Yok|Yok|
 |En fazla veri boyutu (GB)|512|1024|1024|1024|1536|
 |En fazla günlük boyutu (GB)|154|307|307|307|461|
 |TempDB en fazla veri boyutu (GB)|32|64|128|192|256|
 |Depolama türü|Uzak SSD|Uzak SSD|Uzak SSD|Uzak SSD|Uzak SSD|
 |GÇ gecikme süresi (yaklaşık)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|
-|En fazla veri ıOPS *|320|640|1280|1920|2560|
+|Maksimum veri ıOPS 'si \*\*|320|640|1280|1920|2560|
 |En fazla günlük hızı (MBps)|4,5|9|18|27|36|
 |Maksimum eş zamanlı çalışan (istek)|75|150|300|450|600|
 |Maks. eş zamanlı oturum|30.000|30.000|30.000|30.000|30.000|
@@ -58,7 +58,8 @@ Bir sunucudaki tek veritabanları için DTU satın alma model sınırları için
 |Okuma Amaçlı Ölçeği Genişletme|Yok|Yok|Yok|Yok|Yok|
 |Dahil edilen yedekleme depolaması|1X DB boyutu|1X DB boyutu|1X DB boyutu|1X DB boyutu|1X DB boyutu|
 
-\* 8 KB ile 64 KB arasında değişen GÇ boyutları için maksimum değer. Gerçek ıOPS iş yüküne bağımlıdır. Ayrıntılar için bkz. [Data IO idare](resource-limits-logical-server.md#resource-governance).
+\* Daha küçük maksimum sanal çekirdek yapılandırmasına sahip hizmet hedefleri, sütun deposu dizinleri oluşturmak ve kullanmak için yeterli belleğe sahip olmayabilir.  Sütun deposuyla ilgili performans sorunlarıyla karşılaşırsanız, kullanılabilir maksimum belleği artırmak için maksimum sanal çekirdek yapılandırmasını artırın.  
+\*\* 8 KB ile 64 KB arasında değişen GÇ boyutları için maksimum değer. Gerçek ıOPS iş yüküne bağımlıdır. Ayrıntılar için bkz. [Data IO idare](resource-limits-logical-server.md#resource-governance).
 
 ### <a name="gen5-compute-generation-part-2"></a>5. nesil işlem oluşturma (2. bölüm)
 
@@ -212,7 +213,7 @@ Bir sunucudaki tek veritabanları için DTU satın alma model sınırları için
 |En fazla günlük boyutu (TB)|Sınırsız |Sınırsız |Sınırsız |Sınırsız |Sınırsız |Sınırsız |Sınırsız |
 |TempDB en fazla veri boyutu (GB)|512|576|640|768|1024|1280|2560|
 |Depolama türü| [1. nota](#notes) |[1. nota](#notes)|[1. nota](#notes)|[1. nota](#notes) |[1. nota](#notes) |[1. nota](#notes) |[1. nota](#notes) |
-|En yüksek yerel SSD ıOPS *|64000 |72000 |80000 |96000 |160000 |192000 |204800 |
+|En yüksek yerel SSD ıOPS *|64000 |72000 |80000 |96000 |128000 |160000 |204800 |
 |En fazla günlük hızı (MBps)|100 |100 |100 |100 |100 |100 |100 |
 |GÇ gecikme süresi (yaklaşık)|[2. nota](#notes)|[2. nota](#notes)|[2. nota](#notes)|[2. nota](#notes)|[2. nota](#notes)|[2. nota](#notes)|[2. nota](#notes)|
 |Maksimum eş zamanlı çalışan (istek)|1600|1800|2000|2400|3200|4000|8000|

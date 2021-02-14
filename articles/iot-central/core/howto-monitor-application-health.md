@@ -3,25 +3,25 @@ title: Azure IoT Central uygulamasının sistem durumunu izleme | Microsoft Docs
 description: Operatör veya yönetici olarak, IoT Central uygulamanıza bağlı cihazların genel sistem durumunu izleyin.
 author: dominicbetts
 ms.author: dobett
-ms.date: 05/14/2020
+ms.date: 01/27/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 12485e07bc3cad9d420141ecc6ee66763ac010b7
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: 1c16da10a8a7853b1392383855aba0ff24424f33
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98760764"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100515878"
 ---
-# <a name="monitor-the-overall-health-of-the-devices-connected-to-an-iot-central-application"></a>IoT Central uygulamasına bağlı cihazların genel sistem durumunu izleme
+# <a name="monitor-the-overall-health-of-an-iot-central-application"></a>Bir IoT Central uygulamasının genel sistem durumunu izleme
 
 > [!NOTE]
 > Ölçümler yalnızca sürüm 3 IoT Central uygulamalarında kullanılabilir. Uygulamanızın sürümünü nasıl denetleyeceğinizi öğrenmek için, bkz. [uygulamanız hakkında](./howto-get-app-info.md).
 
 *Bu makale işleçler ve yöneticiler için geçerlidir.*
 
-Bu makalede, IoT Central uygulamanıza bağlı cihazların genel durumunu değerlendirmek için IoT Central tarafından sağlanan ölçüm kümesini nasıl kullanacağınızı öğreneceksiniz.
+Bu makalede, IoT Central uygulamanıza bağlı cihazların sistem durumunu değerlendirmek ve çalışan verilerin dışarı aktarımlarının sistem durumunu değerlendirmek için IoT Central tarafından sunulan ölçüm kümesini nasıl kullanacağınızı öğreneceksiniz.
 
 Ölçümler, IoT Central uygulamanız için varsayılan olarak etkindir ve bunlara [Azure Portal](https://portal.azure.com/)erişebilirsiniz. [Azure izleyici veri platformu bu ölçümleri kullanıma sunar](../../azure-monitor/platform/data-platform-metrics.md) ve bunlarla etkileşimde bulunmak için çeşitli yollar sağlar. Örneğin, Azure portal, bir REST API veya PowerShell veya Azure CLı içindeki sorguları kullanabilirsiniz.
 
@@ -31,7 +31,7 @@ Bu makalede, IoT Central uygulamanıza bağlı cihazların genel durumunu değer
 
 ## <a name="view-metrics-in-the-azure-portal"></a>Azure portal ölçümleri görüntüleme
 
-Aşağıdaki adımlarda, bazı [bağlı cihazlara](./tutorial-connect-device.md)sahip bir [IoT Central uygulamasına](./quick-deploy-iot-central.md) sahip olduğunuz varsayılır.
+Aşağıdaki adımlarda, bazı [bağlı cihazlara](./tutorial-connect-device.md) veya çalışan bir [veri dışa aktarmaya](howto-export-data.md)sahip bir [IoT Central uygulamasına](./quick-deploy-iot-central.md) sahip olduğunuz varsayılır.
 
 Portalda IoT Central ölçümleri görüntülemek için:
 

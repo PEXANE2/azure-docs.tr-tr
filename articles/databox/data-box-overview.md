@@ -9,12 +9,12 @@ ms.subservice: pod
 ms.topic: overview
 ms.date: 12/18/2020
 ms.author: alkohli
-ms.openlocfilehash: dd71b03f55cc1522727f6c496c1bdbe0f42cb828
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: 13c07da7393c70bb1fc61930dd1179994c68ed75
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97678607"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100389816"
 ---
 # <a name="what-is-azure-data-box"></a>Azure Data Box nedir?
 
@@ -22,7 +22,7 @@ Microsoft Azure Data Box bulut çözümü, Azure 'da çok sayıda veri gönderme
 
 Azure 'dan verileri içeri veya dışarı aktarmak için Data Box cihazı Azure portal üzerinden sipariş edebilirsiniz. Cihaz size ulaştıktan sonra, yerel web kullanıcı arabirimini kullanarak cihazı hızla ayarlayabilirsiniz. Verileri içeri aktarıp dışarı aktarıp verdiğinize bağlı olarak, sunuculardaki verileri cihaza veya cihazdan sunucularınıza kopyalayın ve cihazı Azure 'a geri gönderin. Azure 'a veri aktardıysanız, Azure veri merkezinde verileriniz otomatik olarak cihazdan Azure 'a yüklenir. Sürecin tamamı Azure portalındaki Data Box hizmeti tarafından uçtan uca izlenir.
 
-## <a name="use-cases"></a>Kullanım örnekleri
+## <a name="use-cases"></a>Uygulama alanları
 
 Data Box, ağ bağlantısının hiç olmadığı veya sınırlı olduğu senaryolarda 40 TB'tan büyük boyutlu veri aktarımları için idealdir. Veri taşıma işlemi tek seferlik, düzenli veya başta toplu veri aktarımı ve ardından düzenli aktarımlardan oluşabilir. 
 
@@ -66,7 +66,7 @@ Data Box, büyük miktarlarda veriyi ağ bağlantısını çok az etkileyerek ve
 
 Data Box cihazı bu sürümde aşağıdaki özelliklere sahiptir.
 
-| Belirtimler                                          | Açıklama              |
+| Belirtimler                                          | Description              |
 |---------------------------------------------------------|--------------------------|
 | Ağırlık                                                  | < 50 lb                |
 | Boyutlar                                              | Cihaz - Genişlik: 309,0 mm Yükseklik: 430,4 mm Derinlik: 502,0 mm |            

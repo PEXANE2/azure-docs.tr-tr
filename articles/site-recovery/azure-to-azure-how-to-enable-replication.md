@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 04/29/2018
-ms.openlocfilehash: fe5feed4bb6f9b84a3f161692310922f7a6d2f00
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 49929cfe0abc634dc4b704aba1c7b11a5d7dd777
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424792"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100383594"
 ---
 # <a name="replicate-azure-vms-to-another-azure-region"></a>Azure sanal makinelerini başka bir Azure bölgesine çoğaltma
 
@@ -30,7 +30,7 @@ Bu makalede, [Azure 'Dan Azure 'a olağanüstü durum kurtarma öğreticisinde](
 
 1. Kasada **+ Çoğalt**' a tıklayın.
 2. Aşağıdaki alanlara göz önünde edin:
-   - **Kaynak**: Bu örnekte **Azure**olan VM 'lerin kaynak noktası.
+   - **Kaynak**: Bu örnekte **Azure** olan VM 'lerin kaynak noktası.
    - **Kaynak konumu**: VM 'lerinizi korumak istediğiniz Azure bölgesi. Bu çizim için kaynak konumu ' Doğu Asya '
    - **Dağıtım modeli**: kaynak makinelerin Azure dağıtım modeli.
    - **Kaynak aboneliği**: kaynak sanal makinelerinizin ait olduğu abonelik. Bu abonelik, kurtarma hizmetleri kasanızın bulunduğu Azure Active Directory kiracısında bulunan aboneliklerden biri olabilir.
@@ -54,7 +54,10 @@ Bu makalede, [Azure 'Dan Azure 'a olağanüstü durum kurtarma öğreticisinde](
    - **Hedef depolama hesapları (kaynak VM yönetilen diskleri kullanmıyor)**: varsayılan olarak Site Recovery, kaynak VM depolama yapılandırmanızı inceleyerek yeni bir hedef depolama hesabı oluşturur. Depolama hesabı zaten mevcut olduğunda, yeniden kullanılır.
    - **Çoğaltma ile yönetilen diskler (kaynak sanal makine yönetilen diskleri kullanır)**: Site Recovery kaynak VM 'nin yönetilen diskiyle aynı depolama türüyle (Standart veya Premium) kaynak sanal makinenin yönetilen disklerini yansıtmak için hedef bölgede yeni bir çoğaltma tarafından yönetilen diskler oluşturur.
    - **Önbellek depolama hesapları**: Site Recovery, kaynak bölgede önbellek depolaması adlı ek depolama hesabı gerektirir. Kaynak VM 'lerde oluşan tüm değişiklikler, hedef konuma çoğaltılmadan önce izlenir ve önbellek depolama hesabına gönderilir. Bu depolama hesabı standart olmalıdır.
-   - **Hedef kullanılabilirlik kümeleri**: Site Recovery, kaynak bölgedeki bir kullanılabilirlik kümesinin parçası olan VM 'ler için, varsayılan olarak hedef bölgede "ASR" sonekine sahip yeni bir kullanılabilirlik kümesi oluşturur. Site Recovery tarafından oluşturulan kullanılabilirlik kümesi zaten mevcutsa, yeniden kullanılır.
+   - **Hedef kullanılabilirlik kümeleri**: varsayılan olarak Site Recovery, kaynak bölgedeki bir kullanılabilirlik kümesinin parçası olan VM 'ler için, ad içinde "Azure Site Recovery" sonekine sahip hedef bölgede yeni bir kullanılabilirlik kümesi oluşturur. Site Recovery tarafından oluşturulan kullanılabilirlik kümesi zaten mevcutsa, yeniden kullanılır.
+     >[!NOTE]
+     >Hedef kullanılabilirlik kümeleri yapılandırılırken, lütfen farklı boyutlardaki VM 'Ler için farklı kullanılabilirlik kümeleri yapılandırın. 
+     >
    - **Hedef kullanılabilirlik bölgeleri**: hedef bölge kullanılabilirlik alanlarını destekliyorsa, Site Recovery varsayılan olarak hedef bölgedeki kaynak bölgeyle aynı bölge numarasını atar.
 
      Hedef bölge kullanılabilirlik bölgelerini desteklemiyorsa, hedef VM 'Ler varsayılan olarak tek örnek olarak yapılandırılır. Gerekirse, ' Özelleştir ' öğesine tıklayarak bu tür VM 'Leri hedef bölgedeki kullanılabilirlik kümelerinin bir parçası olacak şekilde yapılandırabilirsiniz.
@@ -98,7 +101,7 @@ Site Recovery tarafından kullanılan varsayılan hedef ayarlarını değiştire
 2. Özelleştir ' e tıklayın **:** varsayılan ayarları değiştirmek için:
     - **Hedef kaynak grubu**' nda, aboneliğin hedef konumundaki tüm kaynak grupları listesinden kaynak grubunu seçin.
     - **Hedef sanal ağ**' da, hedef konumdaki tüm sanal ağ listesinden ağı seçin.
-    - **Kullanılabilirlik**kümesi ' nde, kaynak bölgedeki bir kullanılabilirlik KÜMESININ parçasıysa VM 'ye kullanılabilirlik kümesi ayarları ekleyebilirsiniz.
+    - **Kullanılabilirlik** kümesi ' nde, kaynak bölgedeki bir kullanılabilirlik KÜMESININ parçasıysa VM 'ye kullanılabilirlik kümesi ayarları ekleyebilirsiniz.
     - **Hedef depolama hesapları**' nda, kullanmak istediğiniz hesabı seçin.
 
         ![Hedef abonelik ayarlarının nasıl özelleştirileceğini gösteren ekran görüntüsü.](./media/site-recovery-replicate-azure-to-azure/customize.PNG)

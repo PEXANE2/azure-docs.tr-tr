@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/08/2020
-ms.openlocfilehash: 5bd1a9111528146224561995feaecf54612a1c78
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d16eefc8dd3f693e108e457782dc9d076180ba8e
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91535670"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100520604"
 ---
 # <a name="similarity-and-scoring-in-azure-cognitive-search"></a>Azure Bilişsel Arama benzerlik ve Puanlama
 
@@ -21,7 +21,7 @@ Puanlama, tam metin arama sorguları için arama sonuçlarında döndürülen he
 
 Varsayılan olarak, ilk 50 yanıtta döndürülür, ancak **$top** parametresini kullanarak daha küçük veya daha fazla sayıda öğe döndürebilir (tek bir yanıtta 1000 ' e kadar) **$Skip** ve sonraki sonuç kümesini elde edebilirsiniz.
 
-Arama puanı, verilerin istatistiksel özelliklerine ve sorgusuna göre hesaplanır. Azure Bilişsel Arama, arama terimiyle eşleşen belgeleri ( [searchMode](/rest/api/searchservice/search-documents#searchmodeany--all-optional)'e bağlı olarak) bulur, bu, arama teriminin birçok örneğini içeren favoring belgelerdir. Terim veri dizini genelinde nadir ise ve belge içinde ortak olduğunda arama puanı daha da artar. Bu yaklaşıma yönelik bu yaklaşımın temelini, *tf-ıDF veya* Term Frequency-ters belge sıklığı olarak bilinir.
+Arama puanı, verilerin istatistiksel özelliklerine ve sorgusuna göre hesaplanır. Azure Bilişsel Arama, arama terimiyle eşleşen belgeleri ( [searchMode](/rest/api/searchservice/search-documents#query-parameters)'e bağlı olarak) bulur, bu, arama teriminin birçok örneğini içeren favoring belgelerdir. Terim veri dizini genelinde nadir ise ve belge içinde ortak olduğunda arama puanı daha da artar. Bu yaklaşıma yönelik bu yaklaşımın temelini, *tf-ıDF veya* Term Frequency-ters belge sıklığı olarak bilinir.
 
 Arama puanı değerleri, bir sonuç kümesi boyunca yinelenebilir. Birden çok isabetle aynı arama puanı varsa, aynı puanlanmış öğelerin sıralaması tanımlanmamıştır ve kararlı değildir. Sorguyu yeniden çalıştırın ve özellikle de ücretsiz hizmeti veya birden çok çoğaltmaya sahip faturalandırılabilir bir hizmeti kullanıyorsanız, öğelerin vardiya konumunu görebilirsiniz. Aynı puan ile iki öğe verildiğinde, ilk olarak bir tane görünecek garanti yoktur.
 
@@ -32,7 +32,7 @@ Yinelenen puanlar arasındaki bağlamanın kesilmesini istiyorsanız, ilk sıray
 
 ## <a name="scoring-profiles"></a>Puanlama modelleri
 
-Özel bir *Puanlama profili*tanımlayarak farklı alanların derecelendirildiği yöntemi özelleştirebilirsiniz. Puanlama profilleri, arama sonuçlarında öğelerin derecelendirmesi üzerinde daha fazla denetim sağlar. Örneğin, gelir potansiyelini temel alarak öğeleri artırmak, daha yeni öğeleri yükseltmek ya da envanterdeki çok uzun olan öğeleri artırmak isteyebilirsiniz. 
+Özel bir *Puanlama profili* tanımlayarak farklı alanların derecelendirildiği yöntemi özelleştirebilirsiniz. Puanlama profilleri, arama sonuçlarında öğelerin derecelendirmesi üzerinde daha fazla denetim sağlar. Örneğin, gelir potansiyelini temel alarak öğeleri artırmak, daha yeni öğeleri yükseltmek ya da envanterdeki çok uzun olan öğeleri artırmak isteyebilirsiniz. 
 
 Puanlama profili, Dizin tanımının ağırlıklı alanlar, işlevler ve parametrelerden oluşan bir parçasıdır. Tanımlama hakkında daha fazla bilgi için bkz. [Puanlama profilleri](index-add-scoring-profiles.md).
 
@@ -42,7 +42,7 @@ Puanlama profili, Dizin tanımının ağırlıklı alanlar, işlevler ve paramet
 
 Ölçeklenebilirlik için Azure Bilişsel Arama her dizini bir parçalama işlemi aracılığıyla yatay olarak dağıtır, bu da [bir dizinin bölümlerinin fiziksel olarak ayrı](search-capacity-planning.md#concepts-search-units-replicas-partitions-shards)olduğu anlamına gelir.
 
-Varsayılan olarak, bir belgenin puanı *bir parça içindeki*verilerin istatistiksel özelliklerine göre hesaplanır. Bu yaklaşım genellikle büyük yapı verileri için bir sorun değildir ve tüm parçalar genelinde bilgilere göre puanı hesaplamak için gerekenden daha iyi performans sağlar. Yani, bu performans iyileştirmesinin kullanılması, farklı parçalar halinde iki benzer belge (veya benzer belge) farklı ilgi puanları ile sonlanmasına neden olabilir.
+Varsayılan olarak, bir belgenin puanı *bir parça içindeki* verilerin istatistiksel özelliklerine göre hesaplanır. Bu yaklaşım genellikle büyük yapı verileri için bir sorun değildir ve tüm parçalar genelinde bilgilere göre puanı hesaplamak için gerekenden daha iyi performans sağlar. Yani, bu performans iyileştirmesinin kullanılması, farklı parçalar halinde iki benzer belge (veya benzer belge) farklı ilgi puanları ile sonlanmasına neden olabilir.
 
 Puanı tüm parçalar genelinde istatistiksel özelliklere göre hesaplamak isterseniz, [sorgu parametresi](/rest/api/searchservice/search-documents) olarak *scoringStatistics = Global* ekleyerek bunu yapabilirsiniz (veya *"scoringStatistics": "Global"* i [sorgu isteğinin](/rest/api/searchservice/search-documents)gövde parametresi olarak ekleyebilirsiniz).
 

@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/16/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: f0c9a01e43f12e8fbe597c85c22b79c0994305e3
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 41662c5e4cc0ed9458f8b1b1279e2753daed789f
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96938877"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100518464"
 ---
 # <a name="supported-postgresql-major-versions"></a>Desteklenen PostgreSQL ana sürümleri
 
@@ -29,11 +29,8 @@ Geçerli küçük yayın 10,11 ' dir. Bu küçük sürümdeki geliştirmeler ve 
 ## <a name="postgresql-version-96"></a>PostgreSQL sürüm 9,6
 Geçerli ikincil sürüm 9.6.16. Bu küçük sürümdeki geliştirmeler ve düzeltmeler hakkında daha fazla bilgi edinmek için [PostgreSQL belgelerine](https://www.postgresql.org/docs/9.6/static/release-9-6-16.html) bakın.
 
-## <a name="postgresql-version-95"></a>PostgreSQL sürüm 9,5
-Geçerli ikincil sürüm 9.5.20. Bu küçük sürümdeki geliştirmeler ve düzeltmeler hakkında bilgi edinmek için [PostgreSQL belgelerine](https://www.postgresql.org/docs/9.5/static/release-9-5-20.html) bakın.
-
-> [!NOTE]
-> Postgres Community [sürüm oluşturma ilkesiyle](https://www.postgresql.org/support/versioning/)hizalama, PostgreSQL Için Azure veritabanı, 11 Şubat 2021 tarihinde Postgres sürüm 9,5 ' i devre dışı bırakır. Daha fazla ayrıntı ve kısıtlama için lütfen [PostgreSQL Için Azure veritabanı sürüm oluşturma ilkesine](concepts-version-policy.md) bakın.
+## <a name="postgresql-version-95-retired"></a>PostgreSQL sürüm 9,5 (kullanımdan kaldırıldı)
+Postgres topluluğunun [sürüm oluşturma ilkesiyle](https://www.postgresql.org/support/versioning/)hizalama, PostgreSQL Için Azure veritabanı, 11 Şubat 2021 Itibariyle Postgres sürüm 9,5 ' ü kullanımdan kaldırılmıştır. Daha fazla ayrıntı ve kısıtlama için lütfen [PostgreSQL Için Azure veritabanı sürüm oluşturma ilkesine](concepts-version-policy.md) bakın. Bu ana sürümü çalıştırıyorsanız, lütfen en kısa zamanda, tercihen daha yüksek bir sürüme yükselterek tercihen PostgreSQL 11 ' e yükseltin.
 
 ## <a name="managing-upgrades"></a>Yükseltmeleri yönetme
 PostgreSQL projesi, bildirilen hataları çözmek için düzenli olarak küçük yayınlar yayınlar. PostgreSQL için Azure Veritabanı, hizmetin aylık dağıtımları sırasında ikincil sürümlerle sunuculara otomatik olarak yama uygular. 

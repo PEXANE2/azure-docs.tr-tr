@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 10/02/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q1
-ms.openlocfilehash: e4d25b5ec50346c7a2ecabff835209218d1a3b63
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: 850b590ae8aeab822367714fb9a56661306c2387
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100093412"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100518700"
 ---
 # <a name="set-up-compute-targets-for-model-training-and-deployment"></a>Model eğitimi ve dağıtımı için işlem hedefleri ayarlama
 
@@ -225,7 +225,7 @@ Azure Databricks bir işlem hedefi olarak eklemek için aşağıdaki bilgileri s
 
 * __Databricks işlem adı__: Bu işlem kaynağına atamak istediğiniz ad.
 * __Databricks çalışma alanı adı__: Azure Databricks çalışma alanının adı.
-* __Databricks erişim belirteci__: Azure Databricks için kimlik doğrulaması yapmak için kullanılan erişim belirteci. Erişim belirteci oluşturmak için, bkz. [kimlik doğrulama](https://docs.azuredatabricks.net/dev-tools/api/latest/authentication.html) belgesi.
+* __Databricks erişim belirteci__: Azure Databricks için kimlik doğrulaması yapmak için kullanılan erişim belirteci. Erişim belirteci oluşturmak için, bkz. [kimlik doğrulama](/azure/databricks/dev-tools/api/latest/authentication) belgesi.
 
 Aşağıdaki kod, Azure Machine Learning SDK ile bir işlem hedefi olarak Azure Databricks nasıl ekleneceğini gösterir (__Databricks çalışma alanı, AML çalışma alanınızın aynı abonelikte bulunması gerekir__):
 

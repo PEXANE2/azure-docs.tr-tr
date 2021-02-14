@@ -4,18 +4,17 @@ titleSuffix: Azure Data Science Virtual Machine
 description: Veri Bilimi Sanal Makinesi bulunan araçlar ve tümleşik geliştirme ortamları hakkında bilgi edinin.
 keywords: veri bilimi araçları, veri bilimi sanal makinesi, veri bilimi için araçlar, linux veri bilimi
 services: machine-learning
-ms.service: machine-learning
-ms.subservice: data-science-vm
+ms.service: data-science-vm
 author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: 42a595246f45b2c7423aaf77c95f17243cf8813c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cecc195b8b97ffd9b25cf12898726352ddd698a9
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87012392"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100519448"
 ---
 # <a name="development-tools-on-the-azure-data-science-virtual-machine"></a>Azure Veri Bilimi Sanal Makinesi geliştirme araçları
 
@@ -63,7 +62,7 @@ Veri Bilimi Sanal Makinesi (DSVM), yüksek düzeyde üretken bir tümleşik geli
 | Nedir o?   | R için Web tabanlı IDE    |
 | Desteklenen DSVM sürümleri      | Linux      |
 | Tipik kullanımlar      |  R geliştirme     |
-| Kullanma ve çalıştırma      | Hizmeti _systemctl rstudio-Server_' ı etkinleştirerek etkinleştirin ve ardından hizmeti _systemctl start rstudio-Server_ile başlatın. Ardından, http: \/ /Your-VM-IP: 8787 konumundaki RStudio sunucusunda oturum açın.       |
+| Kullanma ve çalıştırma      | Hizmeti _systemctl rstudio-Server_' ı etkinleştirerek etkinleştirin ve ardından hizmeti _systemctl start rstudio-Server_ ile başlatın. Ardından, http: \/ /Your-VM-IP: 8787 konumundaki RStudio sunucusunda oturum açın.       |
 | DSVM 'deki ilgili araçlar      |   Visual Studio, Visual Studio Code, RStudio Masaüstü      |
 
 ## <a name="juno"></a>Juno 

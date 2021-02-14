@@ -13,12 +13,12 @@ ms.date: 11/15/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: marsma, aragra, lenalepa, sureshja
-ms.openlocfilehash: 8953f9ca174414c55e6e06774167d3951d0bbd41
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 4afffb558b9cbf53a762b1b2bb1ce544e554feaf
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99090247"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100103898"
 ---
 # <a name="how-to-remove-an-application-registered-with-the-microsoft-identity-platform"></a>Microsoft Identity platformu ile kaydedilen bir uygulamayı kaldırma
 
@@ -39,9 +39,10 @@ Kendiniz veya kuruluşunuz tarafından kaydedilmiş uygulamalar gerek bir uygula
 
 Bir uygulamayı silmek için, uygulamanın sahibi olarak listelenmiş veya yönetici ayrıcalıklarına sahip olmanız gerekir.
 
-1. <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a> iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
-1. Hesabınız size birden fazla Azure AD kiracısına erişim sunuyorsa sağ üst köşeden hesabınızı seçin ve portal oturumunuzu istediğiniz Azure AD kiracısına ayarlayın.
-1. Sol taraftaki Gezinti bölmesinde **Azure Active Directory** hizmetini seçin ve **uygulama kayıtları**' ı seçin. Yapılandırmak istediğiniz uygulamayı bulun ve seçin. Uygulamayı seçtikten sonra uygulamanın **Genel Bakış** sayfasını görebilirsiniz.
+1. <a href="https://portal.azure.com/" target="_blank">Azure portalında</a> oturum açın.
+1. Birden fazla kiracıya erişiminiz varsa,  :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: uygulamanın kaydedildiği kiracıyı seçmek Için üst menüdeki Dizin + abonelik filtresini kullanın.
+1. **Azure Active Directory** arayın ve seçin. 
+1. **Yönet**' in altında **uygulama kayıtları** ' yi seçin ve yapılandırmak istediğiniz uygulamayı seçin. Uygulamayı seçtikten sonra uygulamanın **Genel Bakış** sayfasını görebilirsiniz.
 1. **Genel Bakış** sayfasından **Sil**'i seçin.
 1. Uygulamayı silmek istediğinizi onaylamak için **Evet**'i seçin.
 

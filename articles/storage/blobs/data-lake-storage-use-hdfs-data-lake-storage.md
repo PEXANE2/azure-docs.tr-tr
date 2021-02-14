@@ -9,12 +9,12 @@ ms.date: 12/06/2018
 ms.author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: artek
-ms.openlocfilehash: d2b36dd600efa864913e0087c49bffd556e8330d
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: f1f2ea8bd51b7eeda9afdd6a94d5de1d58acef57
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95912408"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100520655"
 ---
 # <a name="using-the-hdfs-cli-with-data-lake-storage-gen2"></a>Data Lake Storage 2. ile
 
@@ -25,7 +25,7 @@ HDInsight, işlem düğümlerine yerel olarak bağlı olan dağıtılmış kapsa
 GUCLı hakkında daha fazla bilgi için bkz. [resmi belgeler](https://hadoop.apache.org/docs/r2.4.1/hadoop-project-dist/hadoop-common/FileSystemShell.html) ve bu Ayrıntılar [Kılavuzu](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html)
 
 >[!NOTE]
->HDInsight yerine Azure Databricks kullanıyorsanız ve bir komut satırı arabirimi kullanarak verilerinizle etkileşim kurmak istiyorsanız, databricks CLı dosya sistemiyle etkileşim kurmak için Databricks CLı 'yi kullanabilirsiniz. Bkz. [Databricks CLI](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html).
+>HDInsight yerine Azure Databricks kullanıyorsanız ve bir komut satırı arabirimi kullanarak verilerinizle etkileşim kurmak istiyorsanız, databricks CLı dosya sistemiyle etkileşim kurmak için Databricks CLı 'yi kullanabilirsiniz. Bkz. [Databricks CLI](/azure/databricks/dev-tools/cli/).
 
 ## <a name="use-the-hdfs-cli-with-an-hdinsight-hadoop-cluster-on-linux"></a>Linux 'ta bir HDInsight Hadoop kümesi ile bir HDInsight Hadoop kümesi kullanma
 

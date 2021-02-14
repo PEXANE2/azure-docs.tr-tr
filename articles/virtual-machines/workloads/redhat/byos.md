@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/10/2020
 ms.author: alsin
 ms.reviewer: cynthn
-ms.openlocfilehash: 7006096154d8958e13e7a86783bd07067b95d293
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 38bf8b3c1c39322aea27f5f4d427c31010837bfb
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98872901"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100391029"
 ---
 # <a name="red-hat-enterprise-linux-bring-your-own-subscription-gold-images-in-azure"></a>Azure 'da kendi aboneliğinizi getir Gold görüntülerini Red Hat Enterprise Linux
 
@@ -30,9 +30,6 @@ Red Hat Enterprise Linux (RHEL) görüntüleri, Kullandıkça Öde veya kendi ab
 - Red Hat Gold görüntülerinden sağlanan VM 'Ler, RHEL Kullandıkça Öde görüntüleriyle ilişkili RHEL ücretleri taşımaz.
 - Görüntülerin yetkileri yok. Red Hat Subscription-Manager kullanarak doğrudan Red Hat 'ten güncelleştirmeleri almak için bu VM 'Leri kaydedebilir ve abone olabilirsiniz.
 - Kullandıkça Öde görüntülerinin [Azure hibrit avantajı](../../linux/azure-hybrid-benefit-linux.md)kullanarak KCG 'ye geçmesi mümkündür. Ancak, başlangıçta dağıtılan bir KCG 'nin Linux görüntüleri için Kullandıkça Öde faturalandırma modellerine geçiş yapmak mümkün değildir. Faturalandırma modelini KCG 'den Kullandıkça Öde 'ye geçirmek için, sanal makineyi ilgili görüntüden yeniden dağıtmanız gerekir.
-
->[!NOTE]
-> 2. nesil RHEL BYOS görüntüleri Market teklifiyle Şu anda kullanılamıyor. 2. nesil RHEL BYOS görüntüsüne ihtiyacınız varsa, Red Hat abonelik yönetimi 'nde bulut erişim panosunu ziyaret edin. Daha fazla bilgi için bkz. [Red Hat belgeleri](https://access.redhat.com/articles/4847681).
 
 ## <a name="requirements-and-conditions-to-access-the-red-hat-gold-images"></a>Red Hat Gold görüntülerine erişmek için gereksinimler ve koşullar
 

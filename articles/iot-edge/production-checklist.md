@@ -11,12 +11,12 @@ services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 7cabae837656611813d44017ce2e1112f06066ef
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 7850763abe2ef40aea4ab3b97187d50f7060fa18
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96013301"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100388779"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>IoT Edge çözümünüzü üretime dağıtmaya hazırlanma
 
@@ -188,11 +188,11 @@ Ardından, edgeAgent ve edgeHub sistem modülleri için dosyadaki deployment.tem
 
 * edgeAgent:
 
-    `"image": "<registry name and server>/azureiotedge-agent:1.0",`
+    `"image": "<registry name and server>/azureiotedge-agent:1.1",`
 
 * EdgeHub
 
-    `"image": "<registry name and server>/azureiotedge-hub:1.0",`
+    `"image": "<registry name and server>/azureiotedge-hub:1.1",`
 
 ## <a name="networking"></a>Ağ
 
@@ -285,7 +285,7 @@ Değişikliklerin etkili olması için kapsayıcı altyapısının yeniden başl
 
 #### <a name="option-adjust-log-settings-for-each-container-module"></a>Seçenek: her kapsayıcı modülü için günlük ayarlarını ayarla
 
-Bu şekilde, her modülün **createOptions** ' de yapabilirsiniz. Örnek:
+Bu şekilde, her modülün **createOptions** ' de yapabilirsiniz. Örneğin:
 
 ```yml
 "createOptions": {

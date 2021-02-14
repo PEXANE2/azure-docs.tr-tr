@@ -1,22 +1,19 @@
 ---
 title: Dosya tabanlı depolama arasında dosyaları taşıma
 description: Azure Data Factory kullanarak dosya tabanlı depolama arasında dosya taşımak için bir çözüm şablonu kullanmayı öğrenin.
-services: data-factory
 author: dearandyxu
 ms.author: yexu
 ms.reviewer: ''
-manager: shwang
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 7/12/2019
-ms.openlocfilehash: f6baea73c0c4964bb3937304603a2a92a13d52b2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c88f2d25046ee017fccd2cee6e951be72d4dda91
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86522729"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100361953"
 ---
 # <a name="move-files-with-azure-data-factory"></a>Dosyaları Azure Data Factory taşıma
 
@@ -62,7 +59,7 @@ Bu şablon, kaynak dosya tabanlı deponuzdan dosyaları alır. Ardından, bunlar
 
     ![İşlem hattını gösterme](media/solution-template-move-files/move-files4.png)
 
-5. **Hata Ayıkla**' yı seçin, **parametreleri**girin ve ardından **son**' u seçin.   Parametreler, dosyaları taşımak istediğiniz klasör yolu ve dosyaları taşımak istediğiniz klasör yoludur. 
+5. **Hata Ayıkla**' yı seçin, **parametreleri** girin ve ardından **son**' u seçin.   Parametreler, dosyaları taşımak istediğiniz klasör yolu ve dosyaları taşımak istediğiniz klasör yoludur. 
 
     ![İşlem hattını çalıştırma](media/solution-template-move-files/move-files5.png)
 

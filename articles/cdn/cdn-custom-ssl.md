@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/27/2021
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: c4ad270b989e0e212c1d362ae4bfafc91fe07f3e
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 61ba50f8ec9e1de18238160b23096670753cffd6
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98943532"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100367512"
 ---
 # <a name="tutorial-configure-https-on-an-azure-cdn-custom-domain"></a>Öğretici: Azure CDN özel etki alanı üzerinde HTTPS yapılandırma
 
@@ -156,9 +156,11 @@ Azure CDN’ye, Azure Key Vault hesabınızdaki sertifikalara (gizli dizi) eriş
 
     :::image type="content" source="./media/cdn-custom-ssl/cdn-vault-permissions.png" alt-text="CDN 'den keykasaya yönelik izinleri seçin" border="true":::
 
-5. **Ekle**’yi seçin. 
+5. **Add (Ekle)** seçeneğini belirleyin. 
 
-    Azure CDN artık bu anahtar kasasına ve bu anahtar kasasında depolanan sertifikalara (gizli diziler) erişebilir.
+> [!NOTE]
+> Azure CDN artık bu anahtar kasasına ve bu anahtar kasasında depolanan sertifikalara (gizli diziler) erişebilir. Bu abonelikte oluşturulan herhangi bir CDN örneğinin bu anahtar kasasındaki sertifikalara erişimi olur. 
+
  
 ### <a name="select-the-certificate-for-azure-cdn-to-deploy"></a>Azure CDN’nin dağıtacağı sertifikayı seçme
  

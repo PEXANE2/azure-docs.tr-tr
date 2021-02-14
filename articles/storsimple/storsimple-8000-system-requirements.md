@@ -12,14 +12,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 09/28/2017
+ms.date: 02/11/2021
 ms.author: alkohli
-ms.openlocfilehash: 6dcaa83980210a1f5449e8a2e0982cb8e39ff03d
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: fa7616a740e8246fa08e950494428095f41ee404
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94966199"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100382863"
 ---
 # <a name="storsimple-8000-series-software-high-availability-and-networking-requirements"></a>StorSimple 8000 serisi yazılım, yüksek kullanılabilirlik ve ağ gereksinimleri
 
@@ -41,7 +41,7 @@ Aşağıdaki yazılım gereksinimleri, StorSimple cihazınıza erişen depolama 
 
 | Desteklenen işletim sistemleri | Sürüm gerekli | Ek gereksinimler/notlar |
 | --- | --- | --- |
-| Windows Server |2008 R2 SP1, 2012, 2012 R2, 2016 |StorSimple Iscsı birimleri yalnızca aşağıdaki Windows disk türlerinde kullanılmak üzere desteklenir:<ul><li>Temel diskte basit birim</li><li>Dinamik diskte basit ve yansıtılmış birim</li></ul>Yalnızca işletim sisteminde yerel olarak bulunan yazılım Iscsı başlatıcıları desteklenir. Donanım Iscsı başlatıcıları desteklenmez.<br></br>Windows Server 2012 ve 2016 ölçülü kaynak sağlama ve ODX özellikleri, StorSimple Iscsı birimi kullanıyorsanız desteklenir.<br><br>StorSimple, ölçülü kaynak sağlanmış ve tam olarak sağlanan birimler oluşturabilir. Kısmen sağlanan birimler oluşturamaz.<br><br>Ölçülü kaynak kullanan birimin yeniden biçimlendirilmesi uzun zaman alabilir. Yeniden biçimlendirmek yerine birimi silmenizi ve sonra yeni bir birim oluşturmanızı öneririz. Bununla birlikte yine de birimi yeniden biçimlendirmeyi tercih ediyorsanız:<ul><li>Yer geri kazanma gecikmelerini önlemek için yeniden biçimlendirmeden önce aşağıdaki komutu çalıştırın:  <br>`fsutil behavior set disabledeletenotify 1`</br></li><li>Yeniden biçimlendirme tamamlandıktan sonra yer geri kazanma özelliğini yeniden etkinleştirmek için aşağıdaki komutu kullanın: <br>`fsutil behavior set disabledeletenotify 0`</br></li><li>Windows Server 2012 düzeltmesini Windows Server bilgisayarınıza [bb 2878635](https://support.microsoft.com/kb/2870270) ' de açıklandığı gibi uygulayın.</li></ul></li></ul></ul> SharePoint için StorSimple Snapshot Manager veya StorSimple Bağdaştırıcısı yapılandırıyorsanız, [isteğe bağlı bileşenler Için yazılım gereksinimleri](#software-requirements-for-optional-components)' ne gidin. |
+| Windows Server |2008 R2 SP1, 2012, 2012 R2, 2016 |StorSimple Iscsı birimleri yalnızca aşağıdaki Windows disk türlerinde kullanılmak üzere desteklenir:<ul><li>Temel diskte basit birim</li><li>Dinamik diskte basit ve yansıtılmış birim</li></ul>Yalnızca işletim sisteminde yerel olarak bulunan yazılım Iscsı başlatıcıları desteklenir. Donanım Iscsı başlatıcıları desteklenmez.<br></br>Windows Server 2012 ve 2016 ölçülü kaynak sağlama ve ODX özellikleri, StorSimple Iscsı birimi kullanıyorsanız desteklenir.<br><br>StorSimple, ölçülü kaynak sağlanmış ve tam olarak sağlanan birimler oluşturabilir. Kısmen sağlanan birimler oluşturamaz.<br><br>Ölçülü kaynak kullanan birimin yeniden biçimlendirilmesi uzun zaman alabilir. Yeniden biçimlendirmek yerine birimi silmenizi ve sonra yeni bir birim oluşturmanızı öneririz. Bununla birlikte yine de birimi yeniden biçimlendirmeyi tercih ediyorsanız:<ul><li>Yer geri kazanma gecikmelerini önlemek için yeniden biçimlendirmeden önce aşağıdaki komutu çalıştırın:  <br>`fsutil behavior set disabledeletenotify 1`</br></li><li>Yeniden biçimlendirme tamamlandıktan sonra yer geri kazanma özelliğini yeniden etkinleştirmek için aşağıdaki komutu kullanın: <br>`fsutil behavior set disabledeletenotify 0`</br></li><li>Windows Server 2012 düzeltmesini Windows Server bilgisayarınıza [bb 2878635](https://support.microsoft.com/kb/2870270) ' de açıklandığı gibi uygulayın.</li></ul></li></ul></ul> SharePoint için StorSimple Snapshot Manager veya StorSimple Bağdaştırıcısı yapılandırıyorsanız, [isteğe bağlı bileşenler Için yazılım gereksinimleri](#software-requirements-for-optional-components)' ne gidin. <br> Windows Server istemciniz, StorSimple cihazına erişmek için SMB protokolünü kullanıyorsa, paralel işlemeyi arttırmaya yönelik yönergeler için [SMB dosya sunucularının performans ayarları](/windows-server/administration/performance-tuning/role/file-server/smb-file-server) ' na gidin.|
 | VMware ESX |5,5 ve 6,0 |Iscsı istemcisi olarak VMware vSphere desteklenir. VAAı-Block özelliği, StorSimple cihazlarında VMware vSphere desteklenir. |
 | Linux RHEL/CentOS |5, 6 ve 7 |Open-Iscsı Başlatıcısı sürüm 5, 6 ve 7 olan Linux Iscsı istemcileri için destek. |
 | Linux |SUSE Linux 11 | |
@@ -69,7 +69,7 @@ StorSimple cihazınız kilitli bir cihazdır. Ancak, Iscsı, bulut ve Yönetim t
 | TCP 443 (HTTPS)<sup>3</sup> |Out |WAN |Yes |<ul><li>Giden bağlantı noktası, buluttaki verilere erişmek için kullanılır.</li><li>Giden Web proxy 'si Kullanıcı tarafından yapılandırılabilir.</li><li>Sistem güncelleştirmelerine izin vermek için, bu bağlantı noktasının denetleyici sabit IP 'Leri için de açık olması gerekir.</li><li>Bu bağlantı noktası, her iki çöp toplama denetleyicisinde de kullanılır.</li></ul> |
 | UDP 53 (DNS) |Out |WAN |Bazı durumlarda; notlara bakın. |Bu bağlantı noktası yalnızca Internet tabanlı bir DNS sunucusu kullanıyorsanız gereklidir. |
 | UDP 123 (NTP) |Out |WAN |Bazı durumlarda; notlara bakın. |Bu bağlantı noktası yalnızca Internet tabanlı bir NTP sunucusu kullanıyorsanız gereklidir. |
-| TCP 9354 |Out |WAN |Yes |Giden bağlantı noktası StorSimple cihaz tarafından StorSimple Aygıt Yöneticisi hizmetiyle iletişim kurmak için kullanılır. |
+| TCP 9354 |Out |WAN |Yes |Giden bağlantı noktası StorSimple cihaz tarafından StorSimple Device Manager hizmetiyle iletişim kurmak için kullanılır. |
 | 3260 (Iscsı) |İçinde |LAN |No |Bu bağlantı noktası, Iscsı üzerinden verilere erişmek için kullanılır. |
 | 5985 |İçinde |LAN |No |Gelen bağlantı noktası, StorSimple aygıtıyla iletişim kurmak için StorSimple Snapshot Manager tarafından kullanılır.<br>Bu bağlantı noktası, HTTP üzerinden StorSimple için Windows PowerShell uzaktan bağlandığınızda da kullanılır. |
 | 5986 |İçinde |LAN |No |Bu bağlantı noktası, HTTPS üzerinden StorSimple için Windows PowerShell uzaktan bağlandığınızda kullanılır. |
@@ -86,7 +86,7 @@ StorSimple cihazınız kilitli bir cihazdır. Ancak, Iscsı, bulut ve Yönetim t
 
 ### <a name="url-patterns-for-firewall-rules"></a>Güvenlik duvarı kuralları için URL desenleri
 
-Ağ yöneticileri, genellikle gelen ve giden trafiği filtrelemek için URL desenlerine göre gelişmiş güvenlik duvarı kuralları yapılandırabilir. StorSimple cihazınız ve StorSimple Aygıt Yöneticisi hizmeti, Azure Service Bus, Azure Active Directory Access Control, depolama hesapları ve Microsoft Update sunucuları gibi diğer Microsoft uygulamalarına bağımlıdır. Bu uygulamalarla ilişkili URL desenleri güvenlik duvarı kurallarını yapılandırmak için kullanılabilir. Bu uygulamalarla ilişkili URL desenlerinin değiştirebileceğini anlamak önemlidir. Bu işlem, ağ yöneticisinin StorSimple için güvenlik duvarı kurallarını ve gerektiğinde izlemesini ve güncelleştirmesini gerektirir.
+Ağ yöneticileri, genellikle gelen ve giden trafiği filtrelemek için URL desenlerine göre gelişmiş güvenlik duvarı kuralları yapılandırabilir. StorSimple cihazınız ve StorSimple Device Manager hizmeti, Azure Service Bus, Azure Active Directory Access Control, depolama hesapları ve Microsoft Update sunucuları gibi diğer Microsoft uygulamalarına bağımlıdır. Bu uygulamalarla ilişkili URL desenleri güvenlik duvarı kurallarını yapılandırmak için kullanılabilir. Bu uygulamalarla ilişkili URL desenlerinin değiştirebileceğini anlamak önemlidir. Bu işlem, ağ yöneticisinin StorSimple için güvenlik duvarı kurallarını ve gerektiğinde izlemesini ve güncelleştirmesini gerektirir.
 
 Çoğu durumda, StorSimple sabit IP adreslerine bağlı olarak, giden trafik için güvenlik duvarı kurallarınızı ayarlamanızı öneririz. Bununla birlikte, güvenli ortamlar oluşturmak için gerekli olan gelişmiş güvenlik duvarı kurallarını ayarlamak için aşağıdaki bilgileri kullanabilirsiniz.
 
@@ -174,7 +174,7 @@ Yukarıdaki ağ gereksinimlerine ek olarak, StorSimple çözümünüzün en iyi 
 
 StorSimple çözümüne dahil olan donanım platformunun, veri merkezinizde yüksek düzeyde kullanılabilir, hataya dayanıklı bir depolama altyapısı için bir temel sağlayan kullanılabilirlik ve güvenilirlik özellikleri vardır. Ancak, StorSimple çözümünüzün kullanılabilirliğini sağlamaya yardımcı olmak için uymanız gereken gereksinimler ve en iyi uygulamalar vardır. StorSimple 'ı dağıtmadan önce, StorSimple cihazı ve bağlı konak bilgisayarları için aşağıdaki gereksinimleri ve en iyi yöntemleri dikkatle gözden geçirin.
 
-StorSimple cihazınızın donanım bileşenlerinin izlenmesi ve saklanması hakkında daha fazla bilgi için, bkz. [storsimple Aygıt Yöneticisi hizmetini kullanarak donanım bileşenlerini ve durum](storsimple-8000-monitor-hardware-status.md) ve [StorSimple donanım bileşeni değişimini](storsimple-8000-hardware-component-replacement.md)izleyin.
+StorSimple cihazınızın donanım bileşenlerinin izlenmesi ve saklanması hakkında daha fazla bilgi için, bkz. [storsimple Device Manager hizmetini kullanarak donanım bileşenlerini ve durum](storsimple-8000-monitor-hardware-status.md) ve [StorSimple donanım bileşeni değişimini](storsimple-8000-hardware-component-replacement.md)izleyin.
 
 ### <a name="high-availability-requirements-and-procedures-for-your-storsimple-device"></a>StorSimple cihazınız için yüksek kullanılabilirlik gereksinimleri ve yordamları
 
@@ -233,7 +233,7 @@ StorSimple cihaz modeli 8600, birincil kutunun yanı sıra genişletilmiş bir d
 * Hem cbod Kasası denetleyici modüllerinin hem de SAS kablolarının ve tüm sabit disk sürücülerinin her zaman yüklü olduğundan emin olun.
 * Bir EBOD Kasası denetleyicisi modülü başarısız olursa, hemen bir değiştirme isteyin.
 * Bir EBOD Kasası denetleyicisi modülü başarısız olursa, başarısız modülün yerine geçmeden önce diğer denetleyici modülünün etkin olduğundan emin olun. Bir denetleyicinin etkin olduğunu doğrulamak için [cihazınızda etkin denetleyiciyi tanımla](storsimple-8000-controller-replacement.md#identify-the-active-controller-on-your-device)' ya gidin.
-* Ebod denetleyicisi modül değişikliği sırasında, **Monitor**  >  **donanım sistem durumunu** izlemeye erişerek StorSimple aygıt yöneticisi hizmetinde bileşenin durumunu sürekli olarak izleyin.
+* Ebod denetleyicisi modül değişikliği sırasında,   >  **donanım sistem durumunu** izlemeye erişerek StorSimple Device Manager hizmetinde bileşenin durumunu sürekli olarak izleyin.
 * SAS kablosu başarısız olursa veya değişiklik gerektiriyorsa (Bu tür bir belirleme yapmak için Microsoft Desteği dahil edilmelidir), yalnızca değiştirme gerektiren SAS kablosunu kaldırdığınızdan emin olun.
 * Her zaman bir noktada, her iki SAS kablolarını sistemden eşzamanlı olarak kaldırmayın.
 

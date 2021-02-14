@@ -3,22 +3,22 @@ title: 'ML Studio (klasik): bir Web hizmetini yeniden eğitme-Azure'
 description: Azure Machine Learning Studio (klasik) sürümünde yeni eğitilen makine öğrenimi modelini kullanmak üzere bir Web hizmetini güncelleştirmeyi öğrenin.
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: seodec18, devx-track-csharp
 ms.date: 02/14/2019
-ms.openlocfilehash: ff0378871139a038f096a44b9ee0c6af2cb67d73
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: a4fe9e54e5e03a8dbf2a727b22f784c36d6c65f9
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325824"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100517595"
 ---
 # <a name="retrain-and-deploy-a-machine-learning-model"></a>Makine öğrenimi modelini yeniden eğitme ve dağıtma
 
-**Uygulama hedefi:** ![ İçin geçerlidir. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasik) ![ için geçerlidir. ](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
+**Uygulama hedefi:** ![ İçin geçerlidir. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasik) ![ için geçerlidir.](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
 
 Yeniden eğitim, makine öğrenimi modellerinin doğru kalmasını sağlamanın ve kullanılabilir en uygun verilere göre bir yoldur. Bu makalede, bir makine öğrenimi modelinin Studio 'da yeni bir Web hizmeti olarak nasıl yeniden eğitilmesi ve dağıtılması gösterilmektedir (klasik). Klasik bir Web hizmetini yeniden eğiteyorsanız, [Bu nasıl yapılır makalesini görüntüleyin.](retrain-classic-web-service.md)
@@ -53,7 +53,7 @@ Bir yeniden eğitme Web hizmeti dağıtmak için aşağıdaki adımları kullan�
 1. Deneme tuvalinin alt kısmındaki **Web hizmeti ayarla** ' ya tıklayın.
 1. **Web hizmetini dağıt [yeni]** öğesini seçin. Azure Machine Learning Web Hizmetleri portalı **Web Hizmeti Dağıt** sayfasında açılır.
 1. Web hizmetiniz için bir ad yazın ve bir ödeme planı seçin.
-1. **Dağıt** 'ı seçin.
+1. **Dağıt**'ı seçin.
 
 ## <a name="retrain-the-model"></a>Modeli yeniden eğitme
 
@@ -64,8 +64,8 @@ Yeniden eğitim API 'Lerini çağırmak için aşağıdaki adımları kullanın:
 1. Visual Studio 'da bir C# konsol uygulaması oluşturun: **Yeni**  >  **Proje**  >  **Visual C#**  >  **Windows Klasik Masaüstü**  >  **konsol uygulaması (.NET Framework)**.
 1. Machine Learning Web Hizmetleri portalında oturum açın.
 1. Üzerinde çalıştığınız Web hizmetine tıklayın.
-1. **Tüketme** ' ye tıklayın.
-1. Kullanım **sayfasının en** altında, **örnek kod** bölümünde **toplu işlem** ' e tıklayın.
+1. **Tüketme**' ye tıklayın.
+1. Kullanım **sayfasının en** altında, **örnek kod** bölümünde **toplu işlem**' e tıklayın.
 1. Toplu yürütme için örnek C# kodunu kopyalayın ve Program.cs dosyasına yapıştırın. Ad alanının bozulmadan kaldığından emin olun.
 
 Açıklamalarda belirtilen Microsoft. AspNet. WebApi. Client NuGet paketini ekleyin. Microsoft.WindowsAzure.Storage.dll başvurusunu eklemek için, [Azure depolama hizmetleri için istemci kitaplığı](https://www.nuget.org/packages/WindowsAzure.Storage)'nı yüklemeniz gerekebilir.
@@ -82,21 +82,21 @@ Aşağıdaki ekran görüntüsünde, Azure Machine Learning Web Hizmetleri porta
 const string apiKey = "abc123"; // Replace this with the API key for the web service
 ```
 
-Kullanım sayfasının **temel tüketim bilgileri** bölümünde, birincil **Consume** anahtarı bulun ve **apikey** bildirimine kopyalayın.
+Kullanım sayfasının **temel tüketim bilgileri** bölümünde, birincil  anahtarı bulun ve **apikey** bildirimine kopyalayın.
 
 ### <a name="update-the-azure-storage-information"></a>Azure depolama bilgilerini güncelleştirme
 
 BES örnek kodu bir dosyayı yerel sürücüden (örneğin, "C:\temp\CensusInput.csv") Azure depolama 'ya yükler, işler ve sonuçları Azure depolama 'ya geri yazar.
 
 1. Azure portalda oturum açma
-1. Sol gezinti sütununda, **diğer hizmetler** ' e tıklayın, **depolama hesapları** ' nı arayın ve seçin.
+1. Sol gezinti sütununda, **diğer hizmetler**' e tıklayın, **depolama hesapları**' nı arayın ve seçin.
 1. Depolama hesapları listesinden, geri çekme modelini depolamak için bir tane seçin.
-1. Sol gezinti sütununda **erişim tuşları** ' na tıklayın.
+1. Sol gezinti sütununda **erişim tuşları**' na tıklayın.
 1. **Birincil erişim anahtarını** kopyalayın ve kaydedin.
-1. Sol gezinti sütununda, **Bloblar** ' a tıklayın.
+1. Sol gezinti sütununda, **Bloblar**' a tıklayın.
 1. Var olan bir kapsayıcıyı seçin veya yeni bir kapsayıcı oluşturun ve adı kaydedin.
 
-*StorageAccountName* , *Storageaccountkey* ve *storagecontainername* bildirimlerini bulun ve portaldan kaydettiğiniz değerleri güncelleştirin.
+*StorageAccountName*, *Storageaccountkey* ve *storagecontainername* bildirimlerini bulun ve portaldan kaydettiğiniz değerleri güncelleştirin.
 
 ```csharp
 const string StorageAccountName = "mystorageacct"; // Replace this with your Azure storage account name
@@ -130,11 +130,11 @@ Yeniden eğitim çıkışının bir örneği aşağıda verilmiştir:
 
 Uygulamayı çalıştırdığınızda, çıkış, değerlendirme sonuçlarına erişmek için gerekli olan URL ve paylaşılan erişim imzaları belirtecini içerir.
 
-*Output2* için çıkış sonuçlarından *baselocation* , *Relatıvelocation* ve *sasblobtoken* ' ı birleştirerek ve tüm URL 'yi tarayıcı adres çubuğuna yapıştırarak, geri çekme modelinin performans sonuçlarını görebilirsiniz.
+*Output2* için çıkış sonuçlarından *baselocation*, *Relatıvelocation* ve *sasblobtoken* ' ı birleştirerek ve tüm URL 'yi tarayıcı adres çubuğuna yapıştırarak, geri çekme modelinin performans sonuçlarını görebilirsiniz.
 
 Yeni eğitilen modelin mevcut olandan daha iyi bir performans gerçekleştirip gerçekleştirmediğini belirleme sonuçlarını inceleyin.
 
-*Baselocation* , *relatıvelocation* ve *sasblobtoken* 'ı çıkış sonuçlarından kaydedin.
+*Baselocation*, *relatıvelocation* ve *sasblobtoken* 'ı çıkış sonuçlarından kaydedin.
 
 ## <a name="update-the-predictive-experiment"></a>Tahmine dayalı denemeyi güncelleştirme
 

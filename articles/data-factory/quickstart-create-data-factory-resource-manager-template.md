@@ -1,22 +1,20 @@
 ---
 title: Azure Resource Manager şablonu kullanarak Azure Data Factory oluşturma (ARM şablonu)
 description: Bir Azure Resource Manager şablonu kullanarak örnek Azure Data Factory işlem hattı oluşturun (ARM şablonu).
-services: data-factory
 ms.service: data-factory
 tags: azure-resource-manager
-ms.workload: data-services
 author: dcstwh
 ms.author: weetok
 ms.reviewer: maghan, jingwang
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 07/16/2020
-ms.openlocfilehash: 0a9c4f6d9e98e721370f54dfbe261025cf186b6c
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: f3e76bf16b702adb26183209d36189a53b695c40
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96497499"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100373853"
 ---
 # <a name="quickstart-create-an-azure-data-factory-using-arm-template"></a>Hızlı başlangıç: ARM şablonunu kullanarak Azure Data Factory oluşturma
 
@@ -104,13 +102,13 @@ Daha fazla Azure Data Factory şablon örneği [hızlı başlangıç şablonu ga
 2. Depolama hesabınızın oluşturulduğunu doğrulayın.
     1. Depolama hesabı adı, depolama biçimindedir \<uniqueid\> .
 
-    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-storage-account.png" alt-text="Depolama hesabı":::
+    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-storage-account.png" alt-text="Depolama Hesabı":::
 
 3. Oluşturulan depolama hesabını seçin ve **kapsayıcılar**' ı seçin.
     1. **Kapsayıcılar** sayfasında, oluşturduğunuz blob kapsayıcısını seçin.
         1. Blob kapsayıcısı adı-blob biçimindedir \<uniqueid\> .
 
-    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-blob-container.png" alt-text="Blob kapsayıcı":::
+    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-blob-container.png" alt-text="Blob kapsayıcısı":::
 
 ### <a name="upload-a-file"></a>Dosyayı karşıya yükleme
 

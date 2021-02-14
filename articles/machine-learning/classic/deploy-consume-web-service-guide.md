@@ -3,22 +3,22 @@ title: 'ML Studio (klasik): dağıtım ve tüketim-Azure'
 description: Makine öğrenimi iş akışlarını ve modellerini Web Hizmetleri olarak dağıtmak için Azure Machine Learning Studio (klasik) kullanabilirsiniz. Bu Web Hizmetleri daha sonra, gerçek zamanlı veya toplu işlem modunda tahmine dayalı olarak, makine öğrenimi modellerini Internet üzerinden uygulamalardan çağırmak için kullanılabilir.
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 04/19/2017
-ms.openlocfilehash: dc71dc87ca972c52fabb91a6412eec702eee5460
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 57c5462cd6eccab1d9c42e674e10ea34db3612b7
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93307426"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100520366"
 ---
 # <a name="azure-machine-learning-studio-classic-web-services-deployment-and-consumption"></a>Azure Machine Learning Studio (klasik) Web Hizmetleri: dağıtım ve tüketim
 
-**Uygulama hedefi:** ![ İçin geçerlidir. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasik) ![ için geçerlidir. ](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
+**Uygulama hedefi:** ![ İçin geçerlidir. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasik) ![ için geçerlidir.](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
 Makine öğrenimi iş akışlarını ve modellerini Web Hizmetleri olarak dağıtmak için Azure Machine Learning Studio (klasik) kullanabilirsiniz. Bu Web Hizmetleri daha sonra, gerçek zamanlı veya toplu işlem modunda tahmine dayalı olarak, makine öğrenimi modellerini Internet üzerinden uygulamalardan çağırmak için kullanılabilir. Web hizmetleri yeniden hazırlandığından, bunları .NET ve Java gibi çeşitli programlama dilleri ve platformlarından ve Excel gibi uygulamalardan çağırabilirsiniz.
 
@@ -69,7 +69,7 @@ Uygulama çalıştırıldığında bir Web hizmeti JSON şablonu oluşturulur. B
 
 Bunları, *Machinelearningworkspace* düğümü ile aynı düzeydeki *Özellikler* DÜĞÜMÜNÜN alt öğeleri olarak JSON şablonuna ekleyin.
 
-İşte bir örnek:
+Aşağıda bir örnek verilmiştir:
 
 ```json
 "StorageAccount": {

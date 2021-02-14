@@ -2,13 +2,13 @@
 title: Azure VMware çözümü ile Azure NetApp Files
 description: Şirket içi sunucular, Azure VMware Çözüm VM 'Leri ve bulut altyapılarında veri geçirmek ve eşitlemek için Azure VMware Çözüm VM 'Leri ile Azure NetApp Files kullanın.
 ms.topic: how-to
-ms.date: 02/08/2021
-ms.openlocfilehash: 69d4e3a99de28d55b2fd95b1fc05c04c2ae0a37b
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.date: 02/10/2021
+ms.openlocfilehash: db7d8eb05e5bd70f6a2397b3017924093218e78e
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99988651"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100371575"
 ---
 # <a name="azure-netapp-files-with-azure-vmware-solution"></a>Azure VMware çözümü ile Azure NetApp Files
 
@@ -16,7 +16,7 @@ Bu makalede, Azure VMware Çözüm tabanlı iş yükleriyle Azure NetApp Files t
 
 ## <a name="azure-netapp-files-overview"></a>Azure NetApp Files genel bakış
 
-[Azure NetApp Files](../azure-netapp-files/azure-netapp-files-introduction.md) , geçiş Için bir Azure hizmetidir ve bulutta en zorlu kurumsal dosya iş yüklerini çalıştırmaya çalışır. Bu, kod değişikliği olmadan veritabanları, SAP ve yüksek performanslı bilgi işlem uygulamaları içerir.
+[Azure NetApp Files](../azure-netapp-files/azure-netapp-files-introduction.md) , geçiş Için bir Azure hizmetidir ve bulutta en zorlu kurumsal dosya iş yüklerini (VERITABANLARı, SAP ve yüksek performanslı bilgi işlem uygulamaları) kod değişikliği olmadan çalıştırmaya çalışır.
 
 ### <a name="features"></a>Özellikler
 (Azure NetApp Files kullanıldığı hizmetler.)
@@ -31,7 +31,7 @@ Azure NetApp Files birçok Azure bölgesinde kullanılabilir ve bölgeler arası
 
 ## <a name="reference-architecture"></a>Başvuru mimarisi
 
-Aşağıdaki diyagramda bir Azure VMware çözümü özel bulutuna Azure ExpressRoute üzerinden bir bağlantı gösterilmektedir. Azure VMware Çözüm ortamı, Azure VMware Çözüm VM 'lerine bağlanan Azure NetApp Files paylaşımına erişir.
+Aşağıdaki diyagramda bir Azure VMware çözümü özel bulutuna Azure ExpressRoute üzerinden bir bağlantı gösterilmektedir. Azure VMware Çözüm ortamı, Azure VMware Çözüm VM 'lerine bağlı Azure NetApp Files paylaşımına erişir.
 
 ![Azure VMware Çözüm mimarisi için NetApp dosyalarını gösteren diyagram.](media/net-app-files/net-app-files-topology.png)
 
@@ -83,11 +83,13 @@ Aşağıdaki adımlar, Azure NetApp Files Premium hizmet düzeyinde Azure 'da ol
 
     :::image type="content" source="media/net-app-files/configuration-of-volume.png" alt-text="Bir birimin yapılandırma ayrıntılarını gösteren ekran görüntüsü.":::
 
-    Birimin anfvolume 200 GiB boyutunda olduğunu ve kapasite havuzunda anfpool1 olduğunu görebilirsiniz.  10.22.3.4 aracılığıyla bir NFS dosya paylaşma olarak veriliyor:/ANFVOLUME. Azure NetApp Files için Azure sanal ağından (VNet) bir özel IP oluşturuldu ve sanal makineye bağlanacak NFS yolu. Boyut veya "Kota" ile Azure NetApp Files birim performansı hakkında bilgi edinmek için bkz. [Azure NetApp Files Için performans konuları](../azure-netapp-files/azure-netapp-files-performance-considerations.md). 
+    Anfvolume 'in boyutunun 200 GiB olduğunu ve kapasite havuzunda anfpool1 olduğunu görebilirsiniz. 10.22.3.4 aracılığıyla bir NFS dosya paylaşma olarak veriliyor:/ANFVOLUME. Azure NetApp Files için Azure sanal ağından (VNet) bir özel IP oluşturuldu ve sanal makineye bağlanacak NFS yolu.
+
+    Boyut veya "Kota" ile Azure NetApp Files birim performansı hakkında bilgi edinmek için bkz. [Azure NetApp Files Için performans konuları](../azure-netapp-files/azure-netapp-files-performance-considerations.md). 
 
 ## <a name="verify-pre-configured-azure-vmware-solution-vm-share-mapping"></a>Önceden yapılandırılmış Azure VMware Çözüm VM 'si paylaşma eşlemesini doğrulama
 
-Bir Azure NetApp Files paylaşımının Azure VMware Çözüm VM 'sine erişilebilir hale getirmek için SMB ve NFS paylaşma eşlemesini anlamanız önemlidir. Yalnızca SMB veya NFS birimleri yapılandırıldıktan sonra burada belgelenen gibi bağlanamazlar.
+Azure NetApp Files paylaşımınızı Azure VMware Çözüm VM 'niz tarafından erişilebilir hale getirmek için SMB ve NFS paylaşma eşlemesini anlamanız gerekir. Yalnızca SMB veya NFS birimleri yapılandırıldıktan sonra, bunları burada belgelenen şekilde bağlayabilirsiniz.
 
 - SMB paylaşma: bir SMB birimini dağıtmadan önce bir Active Directory bağlantısı oluşturun. Başarılı bir bağlantı için, belirtilen etki alanı denetleyicilerine Azure NetApp Files Temsilcili alt ağı tarafından erişilebilir olmalıdır. Active Directory Azure NetApp Files hesabında yapılandırıldıktan sonra, SMB birimleri oluşturulurken seçilebilir bir öğe olarak görünür.
 

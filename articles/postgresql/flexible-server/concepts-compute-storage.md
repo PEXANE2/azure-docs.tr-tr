@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: ca60c44d1e167367e2c138af1e7bfd4ba1a69417
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a3c8c8b2316a206ba837c0b32fd699dc0ed1eeea
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91710082"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100519397"
 ---
 # <a name="compute-and-storage-options-in-azure-database-for-postgresql---flexible-server"></a>PostgreSQL için Azure veritabanı 'nda işlem ve depolama seçenekleri-esnek sunucu
 
@@ -151,7 +151,10 @@ Bir \* g/ç bant genişliği ile işaretlendiğinde, SEÇTIĞINIZ VM türüyle s
 
 Depolama sınırına ulaştığınızda, sunucu hataları döndürbaşlayacaktır ve diğer değişiklikleri engeller. Bu da yedeklemeler ve WAL Arşivi gibi diğer işletimsel etkinliklerle ilgili sorunlara neden olabilir.
 
+Bu durumdan kaçınmak için, depolama alanı kullanımı %95 ' e ulaştığında veya kullanılabilir kapasite 5 GiB 'den küçükse, sunucu otomatik olarak **salt okuma moduna** geçiş yapılır.
+
 Kullanımda olan disk alanını etkin bir şekilde izlemenizi ve depolama alanının dışında disk boyutunu artırmayı öneririz. Sunucu depoağınızın disk dışına yaklaştığı durumlarda size bildirimde bulunan bir uyarı oluşturabilirsiniz, böylece disk tükenme sorunları yaşamaktan kaçınabilirsiniz. Daha fazla bilgi için bkz. [Uyarı ayarlama](howto-alert-on-metrics.md)hakkında belge.
+
 
 ### <a name="storage-auto-grow"></a>Depolama otomatik büyüme
 

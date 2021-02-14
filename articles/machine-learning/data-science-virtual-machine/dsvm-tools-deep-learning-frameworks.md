@@ -4,19 +4,18 @@ titleSuffix: Azure Data Science Virtual Machine
 description: Azure Veri Bilimi Sanal Makinesi 'de kullanılabilir derin öğrenme çerçeveleri ve araçları.
 keywords: veri bilimi araçları, veri bilimi sanal makinesi, veri bilimi için araçlar, linux veri bilimi
 services: machine-learning
-ms.service: machine-learning
-ms.subservice: data-science-vm
+ms.service: data-science-vm
 ms.custom: devx-track-python
 author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 07/17/2020
-ms.openlocfilehash: c8c6ee3d5eecc02ac921d7b10f2394380af684c2
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 3c720e2b033d07397f3b13c37e1b4e15251b0a17
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93309025"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100519499"
 ---
 # <a name="deep-learning-and-ai-frameworks-for-the-azure-data-science-vm"></a>Azure Veri Bilimi VM'si için derin öğrenme ve AI çerçeveleri
 DSVM üzerindeki derin öğrenme çerçeveleri aşağıda listelenmiştir.
@@ -43,7 +42,7 @@ DSVM üzerindeki derin öğrenme çerçeveleri aşağıda listelenmiştir.
 
 | Kategori | Değer |
 | ------------- | ------------- |
-| Desteklenen sürüm (ler) | 5,2 |
+| Desteklenen sürüm (ler) | 5.2 |
 | Desteklenen DSVM sürümleri      | Ubuntu 16.04    |
 | DSVM 'de nasıl yapılandırılır/yüklenir?  | Chainer, Python 3,5 ' ye yüklenir. |
 | Nasıl çalıştırılır?      | Terminal: Python 3,5 ortamını etkinleştirin, çalıştırın `python` ve ardından `import chainer` . <br/> * JupyterHub: [jupyterhub 'A bağlanın](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine)ve ardından örnek not defterlerini bulmak Için Chainer dizinine gidin.| 
@@ -55,7 +54,7 @@ DSVM üzerindeki derin öğrenme çerçeveleri aşağıda listelenmiştir.
 | Desteklenen sürüm (ler) | 10.0.130|
 | Desteklenen DSVM sürümleri      | Windows Server 2019<br>Ubuntu 18.04<br> Windows 2016<br> Ubuntu 16.04  |
 | DSVM 'de nasıl yapılandırılır/yüklenir?  |_NVIDIA-SMI_ sistem yolunda kullanılabilir.  |
-| Nasıl çalıştırılır?      | Bir komut istemi (Windows üzerinde) veya bir Terminal (Linux 'ta) açın ve ardından _NVIDIA-SMI_ ' yi çalıştırın. |
+| Nasıl çalıştırılır?      | Bir komut istemi (Windows üzerinde) veya bir Terminal (Linux 'ta) açın ve ardından _NVIDIA-SMI_' yi çalıştırın. |
 
 
 ## <a name="horovod"></a>[Horovod](https://github.com/uber/horovod)
@@ -146,5 +145,5 @@ DSVM üzerindeki derin öğrenme çerçeveleri aşağıda listelenmiştir.
 | ------------- | ------------- |
 | Desteklenen sürüm (ler) | 1.0.3 |
 | Desteklenen DSVM sürümleri      | Ubuntu 16.04 |
-| DSVM 'de nasıl yapılandırılır/yüklenir?  |Bu, Python 2,7 ' de ( _root_ ) ve Python 3,5 ( _py35_ ) ortamında yüklenir. |
+| DSVM 'de nasıl yapılandırılır/yüklenir?  |Bu, Python 2,7 ' de (_root_) ve Python 3,5 (_py35_) ortamında yüklenir. |
 | Nasıl çalıştırılır?      |  Terminal: istediğiniz Python sürümünü etkinleştirin (root veya py35), Python 'u çalıştırın ve ardından Ano içeri aktarın.<br/>* Jupyter: Python 2,7 veya 3,5 çekirdeğini seçin ve sonra da Ano içeri aktarın.  <br/>Son matematik çekirdek kitaplığı (MKL) hatasını geçici olarak çözmek için öncelikle MKL iş parçacığı katmanını aşağıdaki şekilde ayarlamanız gerekir:<br/><br/>`export MKL_THREADING_LAYER=GNU`  |

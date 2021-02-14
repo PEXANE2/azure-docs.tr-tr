@@ -11,18 +11,18 @@ services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 9f81d059c1a71bf6349d0ef9b4aae8f7a47c161f
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 9ecb1c50fe99cc93417a37e892049e03585945a5
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96938792"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100370436"
 ---
 # <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>IoT Edge cihazını saydam ağ geçidi olarak davranacak şekilde yapılandırma
 
 Bu makalede, bir IoT Edge cihazının diğer cihazların IoT Hub iletişim kurması için saydam bir ağ geçidi olarak çalışacak şekilde yapılandırılması için ayrıntılı yönergeler sağlanmaktadır. Bu makalede, saydam bir ağ geçidi olarak yapılandırılmış bir IoT Edge cihazına başvurmak için *IoT Edge ağ geçidi* terimi kullanılmaktadır. Daha fazla bilgi için bkz. [bir IoT Edge cihazının ağ geçidi olarak nasıl kullanılabileceği](./iot-edge-as-gateway.md).
 
-<!-- 1.0.10 -->
+<!-- 1.1 -->
 ::: moniker range="iotedge-2018-06"
 
 >[!NOTE]
@@ -97,8 +97,8 @@ Aşağıdaki dosyaları hazırlayın:
 2. Sertifikaları farklı bir makinede oluşturduysanız, bunları IoT Edge cihazınıza kopyalayın.
 
 3. IoT Edge cihazınızda güvenlik Daemon yapılandırma dosyasını açın.
-   * Pencerelerin `C:\ProgramData\iotedge\config.yaml`
-   * 'Un `/etc/iotedge/config.yaml`
+   * Windows: `C:\ProgramData\iotedge\config.yaml`
+   * Linux: `/etc/iotedge/config.yaml`
 
 4. Dosyanın **sertifika ayarları** bölümünü bulun. Sertifikalarla başlayan dört satırın açıklamasını kaldırın **:** ve aşağıdaki özellikler için üç dosyanıza dosya URI 'lerini değer olarak sağlayın:
    * **device_ca_cert**: cihaz CA sertifikası
@@ -110,8 +110,8 @@ Aşağıdaki dosyaları hazırlayın:
 5. Dosyayı kaydedin ve kapatın.
 
 6. IoT Edge yeniden başlatın.
-   * Pencerelerin `Restart-Service iotedge`
-   * 'Un `sudo systemctl restart iotedge`
+   * Windows: `Restart-Service iotedge`
+   * Linux: `sudo systemctl restart iotedge`
 
 ## <a name="deploy-edgehub-and-route-messages"></a>EdgeHub ve yönlendirme iletileri dağıtma
 
@@ -137,7 +137,7 @@ IoT Edge hub modülünü dağıtmak ve gelen iletileri aşağı akış cihazlar�
 
 5. **İleri: rotalar**' ı seçin.
 
-6. **Rotalar** sayfasında, aşağı akış aygıtlarından gelen iletileri işlemek için bir yol olduğundan emin olun. Örnek:
+6. **Rotalar** sayfasında, aşağı akış aygıtlarından gelen iletileri işlemek için bir yol olduğundan emin olun. Örneğin:
 
    * Bir modülden veya bir aşağı akış cihazdan IoT Hub için tüm iletileri gönderen bir yol:
        * **Ad**: `allMessagesToHub`
