@@ -2,13 +2,13 @@
 title: Sanal ağ hizmeti uç noktaları-Azure Event Hubs | Microsoft Docs
 description: Bu makalede bir sanal ağa Microsoft. EventHub hizmet uç noktası ekleme hakkında bilgi sağlanır.
 ms.topic: article
-ms.date: 07/29/2020
-ms.openlocfilehash: 029338e3835d03b1a66ff6629e872c84113b0ff2
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.date: 02/12/2021
+ms.openlocfilehash: f725c4f4d94cbf7d0463ce49c1d2809444ef6f7a
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96015595"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100516694"
 ---
 # <a name="allow-access-to-azure-event-hubs-namespaces-from-specific-virtual-networks"></a>Belirli sanal ağlardan Azure Event Hubs ad alanlarına erişime izin ver 
 
@@ -46,8 +46,8 @@ Bu bölümde, bir sanal ağ hizmeti uç noktası eklemek için Azure portal nas�
 1. [Azure portal](https://portal.azure.com) **Event Hubs ad alanına** gidin.
 4. Sol menüdeki **Ayarlar** altında **ağ** ' ı seçin. **Ağ** sekmesini yalnızca **Standart** veya **adanmış** ad alanları için görürsünüz. 
 
-    > [!NOTE]
-    > Varsayılan olarak, **Seçilen ağlar** seçeneği aşağıdaki görüntüde gösterildiği gibi seçilidir. Bu sayfaya bir IP güvenlik duvarı kuralı belirtmezseniz veya bir sanal ağ eklerseniz, ad alanına **genel İnternet** üzerinden erişilebilir (erişim anahtarı kullanılarak). 
+    > [!WARNING]
+    > **Seçili ağlar** seçeneğini belirleyin ve bu sayfada en az bir IP güvenlik duvarı kuralı veya bir sanal ağ eklememeniz durumunda, ad alanına **genel İnternet** üzerinden erişilebilir (erişim anahtarı kullanılarak). 
 
     :::image type="content" source="./media/event-hubs-firewall/selected-networks.png" alt-text="Ağlar sekmesi-seçili ağlar seçeneği" lightbox="./media/event-hubs-firewall/selected-networks.png":::    
 
@@ -79,28 +79,12 @@ Bu bölümde, bir sanal ağ hizmeti uç noktası eklemek için Azure portal nas�
 [!INCLUDE [event-hubs-trusted-services](../../includes/event-hubs-trusted-services.md)]
 
 ## <a name="use-resource-manager-template"></a>Resource Manager şablonu kullanma
+Aşağıdaki örnek Kaynak Yöneticisi şablonu, var olan bir Event Hubs ad alanına bir sanal ağ kuralı ekler. Ağ kuralı için bir sanal ağdaki alt ağın KIMLIĞINI belirtir. 
 
-Aşağıdaki Kaynak Yöneticisi şablonu, var olan bir Event Hubs ad alanına bir sanal ağ kuralı eklenmesini sağlar.
+KIMLIK, sanal ağ alt ağı için tam olarak nitelenmiş bir Kaynak Yöneticisi yoludur. Örneğin, `/subscriptions/{id}/resourceGroups/{rg}/providers/Microsoft.Network/virtualNetworks/{vnet}/subnets/default` bir sanal ağın varsayılan alt ağı için.
 
-Şablon parametreleri:
+Sanal ağ veya güvenlik duvarları kuralları eklerken, değerini `defaultAction` olarak ayarlayın `Deny` .
 
-* `namespaceName`: Event Hubs ad alanı.
-* `vnetRuleName`: Oluşturulacak sanal ağ kuralının adı.
-* `virtualNetworkingSubnetId`: Sanal ağ alt ağı için tam olarak nitelenmiş Kaynak Yöneticisi yolu; Örneğin, `/subscriptions/{id}/resourceGroups/{rg}/providers/Microsoft.Network/virtualNetworks/{vnet}/subnets/default` bir sanal ağın varsayılan alt ağı için.
-
-> [!NOTE]
-> Mümkün olan reddetme kuralları olmadığı sürece, Azure Resource Manager şablonu, bağlantıları kısıtlayameyen **"Izin ver"** olarak ayarlanmış varsayılan eylemi içerir.
-> Sanal ağ veya güvenlik duvarları kuralları yaparken, **_"DefaultAction"_ öğesini değiştirmemiz gerekir**
-> 
-> Kaynak
-> ```json
-> "defaultAction": "Allow"
-> ```
-> şöyle değiştirin:
-> ```json
-> "defaultAction": "Deny"
-> ```
->
 
 ```json
 {
@@ -202,6 +186,9 @@ Aşağıdaki Kaynak Yöneticisi şablonu, var olan bir Event Hubs ad alanına bi
 ```
 
 Şablonu dağıtmak için [Azure Resource Manager][lnk-deploy]talimatlarını izleyin.
+
+> [!IMPORTANT]
+> IP ve sanal ağ kuralları yoksa, olarak ayarlamış olsanız bile tüm trafik ad alanına akar `defaultAction` `deny` .  Ad alanına genel İnternet üzerinden erişilebilir (erişim anahtarı kullanılarak). Yalnızca belirtilen IP adreslerinden veya bir sanal ağın alt ağından gelen trafiğe izin vermek için ad alanı için en az bir IP kuralı veya sanal ağ kuralı belirtin.  
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

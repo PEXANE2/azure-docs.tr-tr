@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.date: 06/01/2020
 ms.author: ericrad
 ms.reviewer: mimckitt
-ms.openlocfilehash: 99528d1575056917b68bcb38f41a24d065822827
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 3bda1e2076e29fc1365bfc236adc9071db2564a1
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92792812"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100104748"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-linux-vms"></a>Azure Metadata Service: Linux VM'ler için Zamanlanan Olaylar
 
@@ -71,7 +71,7 @@ VNET etkin VM 'Ler için Metadata Service statik olmayan statik bir IP 'den kull
 VM bir sanal ağ içinde oluşturulmadıysa, bulut hizmetleri ve klasik VM 'Ler için varsayılan durumlar olarak, kullanılacak IP adresini bulması için ek mantık gerekir. [Konak uç noktasını bulmayı](https://github.com/azure-samples/virtual-machines-python-scheduled-events-discover-endpoint-for-non-vnet-vm)öğrenmek için bu örneğe bakın.
 
 ### <a name="version-and-region-availability"></a>Sürüm ve bölge kullanılabilirliği
-Zamanlanan Olaylar hizmeti sürümlenmiş. Sürümler zorunludur; geçerli sürüm `2019-01-01` .
+Zamanlanan Olaylar hizmeti sürümlenmiş. Sürümler zorunludur; geçerli sürüm `2019-08-01` .
 
 | Sürüm | Yayın türü | Bölgeler | Sürüm Notları | 
 | - | - | - | - | 
@@ -138,7 +138,7 @@ Zamanlanan olayların olduğu durumlarda, yanıt bir olay dizisi içerir.
 | Kaynaklar| Bu olayın etkilediği kaynakların listesi. Listenin, en çok bir [güncelleştirme etki](../manage-availability.md)alanından makineler içermesi garanti edilir, ancak bu, ud 'deki tüm makineleri içermeyebilir. <br><br> Örnek: <br><ul><li> ["FrontEnd_IN_0", "BackEnd_IN_0"] |
 | EventStatus | Bu olayın durumu. <br><br> Değerler: <ul><li>`Scheduled`: Bu olay, özellikte belirtilen süreden sonra başlayacak şekilde zamanlandı `NotBefore` .<li>`Started`: Bu olay başlatıldı.</ul> Hiç `Completed` veya benzer bir durum sağlanmamıştır. Olay tamamlandığında olay artık döndürülmez.
 | NotBefore| Bu olayın başlayabileceği zaman. <br><br> Örnek: <br><ul><li> Mon, 19 Eyl 2016 18:29:47 GMT  |
-| Açıklama | Bu olayın açıklaması. <br><br> Örnek: <br><ul><li> Ana bilgisayar sunucusu bakımda. |
+| Description | Bu olayın açıklaması. <br><br> Örnek: <br><ul><li> Ana bilgisayar sunucusu bakımda. |
 | EventSource | Olayın Başlatıcısı. <br><br> Örnek: <br><ul><li> `Platform`: Bu olay platform tarafından başlatılır. <li>`User`: Bu olay kullanıcı tarafından başlatılır. |
 
 ### <a name="event-scheduling"></a>Olay zamanlaması

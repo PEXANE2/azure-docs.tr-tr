@@ -1,22 +1,18 @@
 ---
 title: SAP Business Warehouse 'dan veri yükleme
 description: SAP Business Warehouse 'dan veri kopyalamak için Azure Data Factory kullanma (siyah beyaz)
-services: data-factory
 author: linda33wj
 ms.author: jingwang
-manager: shwang
-ms.reviewer: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/22/2019
-ms.openlocfilehash: bad9a706c5289966334af26eacbfa41c418b7ab5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3dabb6d5df0a74cc7ae2fb8b381ad9e0dfe04e63
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91360812"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100370708"
 ---
 # <a name="copy-data-from-sap-business-warehouse-by-using-azure-data-factory"></a>Azure Data Factory kullanarak SAP Business Warehouse 'tan veri kopyalama
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -26,7 +22,7 @@ Bu makalede, Azure Data Factory kullanarak SAP Business Warehouse 'tan (bant gen
 > [!TIP]
 > Açık Hub tümleştirmesi ve değişim ayıklama akışı SAP BW dahil SAP BW verileri kopyalama hakkında genel bilgi için, bkz. [Azure Data Factory kullanarak SAP Business Warehouse 'Tan açık hub aracılığıyla veri kopyalama](connector-sap-business-warehouse-open-hub.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - **Azure Data Factory**: yoksa [bir veri fabrikası oluşturmak](quickstart-create-data-factory-portal.md#create-a-data-factory)için adımları izleyin.
 
@@ -37,7 +33,7 @@ Bu makalede, Azure Data Factory kullanarak SAP Business Warehouse 'tan (bant gen
   - Uzak Işlev çağrıları (RFC) ve SAP BW için yetkilendirme.
   - **S_SDSAUTH** yetkilendirme nesnesinin "yürütme" etkinliğinin izinleri.
 
-- **Sap .net bağlayıcı 3,0 ile [Şirket Içinde barındırılan bir tümleştirme çalışma zamanı (IR)](concepts-integration-runtime.md#self-hosted-integration-runtime) **. Aşağıdaki kurulum adımlarını izleyin:
+- **Sap .net bağlayıcı 3,0 ile [Şirket Içinde barındırılan bir tümleştirme çalışma zamanı (IR)](concepts-integration-runtime.md#self-hosted-integration-runtime)**. Aşağıdaki kurulum adımlarını izleyin:
 
   1. Şirket içinde barındırılan tümleştirme çalışma zamanı, sürüm 3,13 veya üstünü yükleyip kaydettirin. (Bu işlem bu makalenin ilerleyen kısımlarında açıklanmaktadır.)
 
@@ -51,7 +47,7 @@ Azure portalında veri fabrikanıza gidin. Data Factory Kullanıcı arabirimini 
 
 1. **Başlarken** sayfasında, veri kopyalama aracını açmak için **veri kopyalama** ' yi seçin.
 
-2. **Özellikler** sayfasında, bir **görev adı**belirtin ve ardından **İleri**' yi seçin.
+2. **Özellikler** sayfasında, bir **görev adı** belirtin ve ardından **İleri**' yi seçin.
 
 3. **Kaynak veri deposu** sayfasında **+ Yeni bağlantı oluştur**' u seçin. Bağlayıcı galerisinden **Hub SAP BW açın** ve ardından **devam**' ı seçin. Bağlayıcıları filtrelemek için arama kutusuna **SAP** yazabilirsiniz.
 
@@ -61,11 +57,11 @@ Azure portalında veri fabrikanıza gidin. Data Factory Kullanıcı arabirimini 
 
    1. **Tümleştirme çalışma zamanı aracılığıyla Bağlan** listesinden, mevcut bir şirket IÇINDE barındırılan IR seçin. Ya da henüz yoksa bir tane oluşturun.
 
-      Şirket içinde barındırılan yeni bir IR oluşturmak için **+ Yeni**' yi seçin ve ardından **Şirket içinde barındırılan**' ı seçin. Bir **ad**girin ve ardından **İleri**' yi seçin. Geçerli bilgisayara yüklemek için **Hızlı Kurulum** ' u seçin veya sunulan **el ile kurulum** adımlarını izleyin.
+      Şirket içinde barındırılan yeni bir IR oluşturmak için **+ Yeni**' yi seçin ve ardından **Şirket içinde barındırılan**' ı seçin. Bir **ad** girin ve ardından **İleri**' yi seçin. Geçerli bilgisayara yüklemek için **Hızlı Kurulum** ' u seçin veya sunulan **el ile kurulum** adımlarını izleyin.
 
       [Önkoşullar](#prerequisites)bölümünde belirtildiği gibi, şirket IÇINDE barındırılan IR 'nin çalıştığı bilgisayarda 3,0 MICROSOFT .net Için SAP bağlayıcısının yüklü olduğundan emin olun.
 
-   2. SAP BW **sunucu adını**, **sistem numarasını**, **Istemci kimliğini,** **dili** ( **en**dışında), **Kullanıcı adını**ve **parolayı**girin.
+   2. SAP BW **sunucu adını**, **sistem numarasını**, **Istemci kimliğini,** **dili** ( **en** dışında), **Kullanıcı adını** ve **parolayı** girin.
 
    3. Ayarları doğrulamak için **Bağlantıyı Sına** ' yı seçin ve ardından **son**' u seçin.
 
@@ -120,7 +116,7 @@ Azure portalında veri fabrikanıza gidin. Data Factory Kullanıcı arabirimini 
 
     ![Etkinlik izleme ayrıntıları](media/load-sap-bw-data/activity-monitoring-details.png)
 
-17. **En yüksek Istek kimliğini**görüntülemek için, etkinlik izleme görünümüne geri dönün ve **Eylemler**bölümünden **Çıkış** ' ı seçin.
+17. **En yüksek Istek kimliğini** görüntülemek için, etkinlik izleme görünümüne geri dönün ve **Eylemler** bölümünden **Çıkış** ' ı seçin.
 
     ![Etkinlik çıkış ekranı](media/load-sap-bw-data/activity-output.png)
 
@@ -133,7 +129,7 @@ Azure portalında veri fabrikanıza gidin. Data Factory Kullanıcı arabirimini 
 
 Şimdi, SAP BW açık hub 'dan artımlı kopya yapılandırmaya devam edelim.
 
-Artımlı kopya, **Istek kimliğini**temel alan bir "yüksek filigran" mekanizması kullanır. Bu KIMLIK, DTP tarafından açık hub hedefi SAP BW otomatik olarak oluşturulur. Aşağıdaki diyagramda bu iş akışı gösterilmektedir:
+Artımlı kopya, **Istek kimliğini** temel alan bir "yüksek filigran" mekanizması kullanır. Bu KIMLIK, DTP tarafından açık hub hedefi SAP BW otomatik olarak oluşturulur. Aşağıdaki diyagramda bu iş akışı gösterilmektedir:
 
 ![Artımlı kopya iş akışı akış grafiği](media/load-sap-bw-data/incremental-copy-workflow.png)
 
@@ -143,13 +139,13 @@ Veri Fabrikası **Başlarken** sayfasında, yerleşik şablonu kullanmak için �
 
 2. Şablonun ana sayfasında, aşağıdaki üç bağlantıyı seçin veya oluşturun ve ardından pencerenin sağ alt köşesinde **Bu şablonu kullan** ' ı seçin.
 
-   - **Azure Blob depolama**: Bu kılavuzda, *en fazla kopyalanmış istek kimliği*olan üst sınırı depolamak için Azure Blob depolamayı kullanırız.
+   - **Azure Blob depolama**: Bu kılavuzda, *en fazla kopyalanmış istek kimliği* olan üst sınırı depolamak için Azure Blob depolamayı kullanırız.
    - **Açık Hub SAP BW**: Bu, verilerin kopyalanacağı kaynaktır. Ayrıntılı yapılandırma için önceki tam kopyalama talimatından bakın.
    - **Azure Data Lake Storage 2.**: Bu, verilerin kopyalanacağı havuzdır. Ayrıntılı yapılandırma için önceki tam kopyalama talimatından bakın.
 
    ![SAP BW şablondan artımlı kopyalama](media/load-sap-bw-data/incremental-copy-from-sap-bw-template.png)
 
-3. Bu şablon, aşağıdaki üç etkinliğe sahip bir işlem hattı oluşturur ve bunları başarılı olarak zincirleme hale getirir: *arama*, *veri kopyalama*ve *Web*.
+3. Bu şablon, aşağıdaki üç etkinliğe sahip bir işlem hattı oluşturur ve bunları başarılı olarak zincirleme hale getirir: *arama*, *veri kopyalama* ve *Web*.
 
    İşlem hattı **parametreleri** sekmesine gidin. Sağlamanız gereken tüm konfigürasyonları görürsünüz.
 
@@ -165,19 +161,19 @@ Veri Fabrikası **Başlarken** sayfasında, yerleşik şablonu kullanmak için �
 
    - **Highsulu Markblobdirectory**: üst-eşik değerini depolamak için kapsayıcı altında klasör yolunu belirtin.
 
-   - **Highsulu Markblobname**: üst eşik değerini depolamak için blob adını belirtin, örneğin `requestIdCache.txt` . BLOB depolama alanında, Highsulu Markblobcontainer + Highsulu Markblobdirectory + Highsulu Markblobname ( *Container/Path/requestIdCache.txt*gibi) karşılık gelen yola gidin. 0 içerikli bir blob oluşturun.
+   - **Highsulu Markblobname**: üst eşik değerini depolamak için blob adını belirtin, örneğin `requestIdCache.txt` . BLOB depolama alanında, Highsulu Markblobcontainer + Highsulu Markblobdirectory + Highsulu Markblobname ( *Container/Path/requestIdCache.txt* gibi) karşılık gelen yola gidin. 0 içerikli bir blob oluşturun.
 
       ![Blob içeriği](media/load-sap-bw-data/blob.png)
 
    - **Logicappurl**: Bu şablonda, blob depolamada yüksek filigrandaki değeri ayarlamak için Azure Logic Apps çağırmak üzere webactivity kullanırız. Ya da, Azure SQL veritabanı 'nı depolamak için kullanabilirsiniz. Değeri güncelleştirmek için saklı yordam etkinliğini kullanın.
 
-      Aşağıdaki görüntüde gösterildiği gibi öncelikle bir mantıksal uygulama oluşturmanız gerekir. Ardından, **http post URL 'sini**yapıştırın.
+      Aşağıdaki görüntüde gösterildiği gibi öncelikle bir mantıksal uygulama oluşturmanız gerekir. Ardından, **http post URL 'sini** yapıştırın.
 
       ![Mantıksal uygulama yapılandırması](media/load-sap-bw-data/logic-app-config.png)
 
-      1. Azure portala gidin. Yeni bir **Logic Apps** hizmeti seçin. **Logic Apps tasarımcısına**gitmek Için **+ boş mantıksal uygulama** ' yı seçin.
+      1. Azure portala gidin. Yeni bir **Logic Apps** hizmeti seçin. **Logic Apps tasarımcısına** gitmek Için **+ boş mantıksal uygulama** ' yı seçin.
 
-      2. **BIR http isteği alındığında**bir tetikleyicisi oluşturun. HTTP istek gövdesini aşağıdaki gibi belirtin:
+      2. **BIR http isteği alındığında** bir tetikleyicisi oluşturun. HTTP istek gövdesini aşağıdaki gibi belirtin:
 
          ```json
          {
@@ -190,11 +186,11 @@ Veri Fabrikası **Başlarken** sayfasında, yerleşik şablonu kullanmak için �
          }
          ```
 
-      3. **BLOB oluştur** eylemi ekleyin. **Klasör yolu** ve **BLOB adı**Için, daha önce *highsulu Markblobcontainer + highsulu Markblobdirectory* ve *highsulu markblobname*içinde yapılandırdığınız aynı değerleri kullanın.
+      3. **BLOB oluştur** eylemi ekleyin. **Klasör yolu** ve **BLOB adı** Için, daha önce *highsulu Markblobcontainer + highsulu Markblobdirectory* ve *highsulu markblobname* içinde yapılandırdığınız aynı değerleri kullanın.
 
       4. **Kaydet**’i seçin. Daha sonra, Data Factory işlem hattında kullanılacak **http post URL 'sinin** değerini kopyalayın.
 
-4. Data Factory işlem hattı parametrelerini sağlamadıktan sonra, **Debug**  >  yapılandırmayı doğrulamak üzere bir çalıştırma çağırmak için hata ayıklama**sonu** ' nu seçin. Ya da tüm değişiklikleri yayımlamak için **Yayımla** ' yı seçin ve ardından bir çalıştırmayı yürütmek Için **tetikleyici Ekle** ' yi seçin.
+4. Data Factory işlem hattı parametrelerini sağlamadıktan sonra,   >  yapılandırmayı doğrulamak üzere bir çalıştırma çağırmak için hata ayıklama **sonu** ' nu seçin. Ya da tüm değişiklikleri yayımlamak için **Yayımla** ' yı seçin ve ardından bir çalıştırmayı yürütmek Için **tetikleyici Ekle** ' yi seçin.
 
 ## <a name="sap-bw-open-hub-destination-configurations"></a>SAP BW açık hub hedefi yapılandırması
 
@@ -207,8 +203,8 @@ Hem geçmiş kopyasına hem de artımlı kopyaya ya da yalnızca artımlı kopya
 1. Açık hub hedefini oluşturun. Gerekli dönüştürme ve veri aktarımı işlemini otomatik olarak oluşturan OHD 'nin SAP Işlem RSA1 oluşturabilirsiniz. Aşağıdaki ayarları kullanın:
 
    - **ObjectType**: herhangi bir nesne türünü kullanabilirsiniz. Burada, bir örnek olarak **InfoCube** kullanıyoruz.
-   - **Hedef türü**: **veritabanı tablosu**seçin.
-   - **Tablonun anahtarı**: **Teknik anahtar**seçin.
+   - **Hedef türü**: **veritabanı tablosu** seçin.
+   - **Tablonun anahtarı**: **Teknik anahtar** seçin.
    - **Ayıklama**: **verileri tut ve tabloya kayıt Ekle '** yi seçin.
 
    ![SAP BW OHD Delta ayıklama iletişim kutusu oluşturma](media/load-sap-bw-data/create-sap-bw-ohd-delta.png)
@@ -235,9 +231,9 @@ Aynı OHD için birden fazla DTP olamaz. Bu nedenle, Delta Ayıklamadan önce ek
 
 Tam yük OHD için, Delta ayıklama için farklı seçenekler seçin:
 
-- OHD 'de: **verileri silmek ve kayıt eklemek**için **ayıklama** seçeneğini ayarlayın. Aksi takdirde, bir bant genişliği işlem zincirinde DTP 'yi tekrarlamanız sırasında veriler birçok kez ayıklanır.
+- OHD 'de: **verileri silmek ve kayıt eklemek** için **ayıklama** seçeneğini ayarlayın. Aksi takdirde, bir bant genişliği işlem zincirinde DTP 'yi tekrarlamanız sırasında veriler birçok kez ayıklanır.
 
-- DTP: **ayıklama modunu** **tam**olarak ayarlayın. Bu görüntüde gösterildiği gibi, OHD oluşturulduktan sonra otomatik olarak oluşturulan DTP 'nin **Delta** değerinden hemen **tam** olarak değiştirilmesi gerekir:
+- DTP: **ayıklama modunu** **tam** olarak ayarlayın. Bu görüntüde gösterildiği gibi, OHD oluşturulduktan sonra otomatik olarak oluşturulan DTP 'nin **Delta** değerinden hemen **tam** olarak değiştirilmesi gerekir:
 
    !["Tam" ayıklama için yapılandırılmış SAP BW OHD iletişim kutusu oluştur](media/load-sap-bw-data/create-sap-bw-ohd-full2.png)
 
@@ -263,11 +259,11 @@ SAP açık hub hedefi, Data-Mart denetimli bir veri hedefi değildir (2015 sür�
 
 1. Data Factory (SAP 'de tam DTP kullanarak) tam ayıklama çalıştırın.
 2. Delta DTP 'si için açık hub tablosundaki tüm satırları silin.
-3. Değişim DTP 'nin durumunu **getirildi**olarak ayarlayın.
+3. Değişim DTP 'nin durumunu **getirildi** olarak ayarlayın.
 
 Bundan sonra, sonraki Delta DTPs ve Data Factory Delta dışlamaları beklenen şekilde çalışır.
 
-Delta DTP 'nin durumunu **getirildi**olarak ayarlamak için, Delta DTP 'yi el ile çalıştırmak için aşağıdaki seçeneği kullanabilirsiniz:
+Delta DTP 'nin durumunu **getirildi** olarak ayarlamak için, Delta DTP 'yi el ile çalıştırmak için aşağıdaki seçeneği kullanabilirsiniz:
 
 *Veri Aktarımı yok; Kaynakta Delta durumu: getirildi*
 

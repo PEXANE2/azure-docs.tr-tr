@@ -8,22 +8,26 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/04/2021
+ms.date: 02/09/2021
 ms.author: kenwith
 ms.reviewer: japere
-ms.custom: contperf-fy21q3
-ms.openlocfilehash: f18126448f5a6dca29e798ad80cb53a8760689d8
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.custom: contperf-fy21q3-portal
+ms.openlocfilehash: 6bd44ea0217f11a156598a1a6f3703e528dd82d4
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99576523"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100095180"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Öğretici: Azure Active Directory içindeki uygulama proxy 'Si aracılığıyla uzaktan erişim için şirket içi uygulama ekleme
 
-Azure Active Directory (Azure AD), kullanıcıların Azure AD hesabıyla oturum açarak şirket içi uygulamalara erişmesini sağlayan bir uygulama proxy hizmeti içerir. Bu öğretici, ortamınızı uygulama proxy 'Si ile kullanılmak üzere hazırlar. Ortamınız hazırlandıktan sonra, Azure AD kiracınıza şirket içi bir uygulama eklemek için Azure portal kullanırsınız. Azure 'da **uygulamalarınızı görüntülemek ve** uygulama yönetimiyle hızlı bir şekilde yararlanmak Için hızlı [Başlangıç serisini](view-applications-portal.md)kullanıma aldığınızdan emin olun.
+Azure Active Directory (Azure AD), kullanıcıların Azure AD hesabıyla oturum açarak şirket içi uygulamalara erişmesini sağlayan bir uygulama proxy hizmeti içerir. Uygulama proxy 'si hakkında daha fazla bilgi edinmek için bkz. [uygulama proxy nedir?](what-is-application-proxy.md). Bu öğretici, ortamınızı uygulama proxy 'Si ile kullanılmak üzere hazırlar. Ortamınız hazırlandıktan sonra, Azure AD kiracınıza şirket içi bir uygulama eklemek için Azure portal kullanırsınız. 
 
 :::image type="content" source="./media/application-proxy-add-on-premises-application/app-proxy-diagram.png" alt-text="Uygulama proxy 'Si genel bakış Diyagramı" lightbox="./media/application-proxy-add-on-premises-application/app-proxy-diagram.png":::
+
+Başlamadan önce, uygulama yönetimi ve **tek Sign-On (SSO)** kavramlarıyla ilgili bilgi edindiğinizden emin olun. Aşağıdaki bağlantılara göz atın:
+- [Azure AD 'de uygulama yönetiminde hızlı başlangıç serisi](view-applications-portal.md)
+- [Tek Sign-On (SSO) nedir?](what-is-single-sign-on.md)
 
 Bağlayıcılar, uygulama proxy 'sinin önemli bir parçasıdır. Bağlayıcılar hakkında daha fazla bilgi edinmek için bkz. [Azure AD uygulama ara sunucusu bağlayıcıları anlama](application-proxy-connectors.md).
 
@@ -223,7 +227,7 @@ Ortamınızı hazırladığınıza ve bir bağlayıcı yükleolduğunuza göre, 
     | **Üst bilgilerdeki URL 'Leri çevir** | Uygulamanız kimlik doğrulaması isteğindeki orijinal ana bilgisayar üst bilgisini gerektirmediğiniz sürece bu değeri **Evet** olarak tutun. |
     | **Uygulama gövdesinde URL 'Leri çevir** | Diğer şirket içi uygulamalara yönelik olarak kodlanmış HTML bağlantıları yoksa ve özel etki alanları kullanmadıkça bu değeri **Hayır** olarak tutun. Daha fazla bilgi için bkz. [uygulama proxy 'si Ile bağlantı çevirisi](application-proxy-configure-hard-coded-link-translation.md).<br><br>Bu uygulamayı Microsoft Cloud App Security (MCAS) ile izlemeyi planlıyorsanız, bu değeri **Evet** olarak ayarlayın. Daha fazla bilgi için bkz. [Microsoft Cloud App Security ve Azure Active Directory ile gerçek zamanlı uygulama erişimi Izlemeyi yapılandırma](application-proxy-integrate-with-microsoft-cloud-application-security.md). |
 
-7. **Ekle**’yi seçin.
+7. **Add (Ekle)** seçeneğini belirleyin.
 
 ## <a name="test-the-application"></a>Uygulamayı test edin
 

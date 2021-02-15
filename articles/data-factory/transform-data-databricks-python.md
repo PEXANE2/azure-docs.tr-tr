@@ -1,27 +1,21 @@
 ---
 title: Databricks Python ile veri dönüştürme
-description: Databricks Python çalıştırarak verileri nasıl işleyeceğini veya dönüştüreceğinizi öğrenin.
-services: data-factory
-documentationcenter: ''
+description: Azure Data Factory bir işlem hattında Databricks Python etkinliğini çalıştırarak verileri nasıl işleyeceğini veya dönüştürebileceğinizi öğrenin.
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/15/2018
 author: dcstwh
 ms.author: weetok
-ms.reviewer: maghan
-manager: anandsub
 ms.custom: devx-track-python
-ms.openlocfilehash: 7e80fad02a186173868a6aa78aedeac0801f199a
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 49dfe11ceb01471e3b5afadd30259dcd63e7b82a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96496900"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100373955"
 ---
 # <a name="transform-data-by-running-a-python-activity-in-azure-databricks"></a>Azure Databricks bir Python etkinliği çalıştırarak verileri dönüştürme
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
-
 
 Bir [Data Factory işlem hattının](concepts-pipelines-activities.md) Azure Databricks python etkinliği Azure Databricks kümenizdeki bir Python dosyası çalıştırır. Bu makale, veri dönüştürme ve desteklenen dönüştürme etkinliklerine genel bir bakış sunan [veri dönüştürme etkinlikleri](transform-data.md) makalesinde oluşturulur. Azure Databricks, Apache Spark çalıştırmak için yönetilen bir platformdur.
 
@@ -66,13 +60,13 @@ Aşağıdaki tabloda JSON tanımında kullanılan JSON özellikleri açıklanmak
 
 |Özellik|Açıklama|Gerekli|
 |---|---|---|
-|name|İşlem hattındaki etkinliğin adı.|Evet|
-|açıklama|Etkinliğin ne yaptığını açıklayan metin.|Hayır|
-|tür|Databricks Python etkinliği için etkinlik türü Databricksmini Python ' dır.|Evet|
-|linkedServiceName|Python etkinliğinin çalıştırıldığı Databricks bağlı hizmetinin adı. Bu bağlı hizmet hakkında bilgi edinmek için bkz. [işlem bağlı hizmetleri](compute-linked-services.md) makalesi.|Evet|
-|pythonFile|Yürütülecek Python dosyasının URI 'SI. Yalnızca DBFS yolları desteklenir.|Evet|
-|parameters|Python dosyasına geçirilecek komut satırı parametreleri. Bu bir dizeler dizisidir.|Hayır|
-|kitaplıklar|İşi yürütecek olan kümeye yüklenecek kitaplıkların listesi. <dize, nesne> dizisi olabilir|Hayır|
+|name|İşlem hattındaki etkinliğin adı.|Yes|
+|açıklama|Etkinliğin ne yaptığını açıklayan metin.|No|
+|tür|Databricks Python etkinliği için etkinlik türü Databricksmini Python ' dır.|Yes|
+|linkedServiceName|Python etkinliğinin çalıştırıldığı Databricks bağlı hizmetinin adı. Bu bağlı hizmet hakkında bilgi edinmek için bkz. [işlem bağlı hizmetleri](compute-linked-services.md) makalesi.|Yes|
+|pythonFile|Yürütülecek Python dosyasının URI 'SI. Yalnızca DBFS yolları desteklenir.|Yes|
+|parameters|Python dosyasına geçirilecek komut satırı parametreleri. Bu bir dizeler dizisidir.|No|
+|kitaplıklar|İşi yürütecek olan kümeye yüklenecek kitaplıkların listesi. <dize, nesne> dizisi olabilir|No|
 
 ## <a name="supported-libraries-for-databricks-activities"></a>Databricks etkinlikleri için desteklenen kitaplıklar
 
@@ -110,18 +104,22 @@ Yukarıdaki databricks etkinlik tanımında şu kitaplık türlerini belirtirsin
 
 ```
 
-Daha fazla ayrıntı için kitaplık türleri için [Databricks belgeleri](https://docs.azuredatabricks.net/api/latest/libraries.html#managedlibrarieslibrary) bölümüne bakın.
+Daha fazla ayrıntı için kitaplık türleri için [Databricks belgeleri](/azure/databricks/dev-tools/api/latest/libraries#managedlibrarieslibrary) bölümüne bakın.
 
 ## <a name="how-to-upload-a-library-in-databricks"></a>Databricks 'te bir kitaplığı karşıya yükleme
 
-#### <a name="using-databricks-workspace-ui"></a>[Databricks çalışma alanı kullanıcı arabirimini kullanma](https://docs.azuredatabricks.net/user-guide/libraries.html#create-a-library)
+### <a name="you-can-use-the-workspace-ui"></a>Çalışma alanı kullanıcı arabirimini kullanabilirsiniz:
 
-Kullanıcı arabirimi kullanılarak eklenen kitaplığın dBFS yolunu almak için [Databricks CLI (yükleme)](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#install-the-cli)kullanabilirsiniz. 
+1. [Databricks çalışma alanı kullanıcı arabirimini kullanma](/azure/databricks/libraries/#create-a-library)
 
-Genellikle jar kitaplıkları, Kullanıcı arabirimi kullanılırken dBFS:/FileStore/jars altında depolanır. CLı aracılığıyla tümünü listeleyebilirsiniz: *databricks FS ls dBFS:/FileStore/jars* 
+2. Kullanıcı arabirimi kullanılarak eklenen kitaplığın dBFS yolunu almak için [Databricks CLI](/azure/databricks/dev-tools/cli/#install-the-cli)kullanabilirsiniz.
 
+   Genellikle jar kitaplıkları, Kullanıcı arabirimi kullanılırken dBFS:/FileStore/jars altında depolanır. CLı aracılığıyla tümünü listeleme: *databricks FS ls dBFS:/FileStore/Job-jars*
 
+### <a name="or-you-can-use-the-databricks-cli"></a>Ya da Databricks CLı 'yi de kullanabilirsiniz:
 
-#### <a name="copy-library-using-databricks-cli"></a>[Databricks CLı kullanarak Kitaplığı kopyalama](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#copy-a-file-to-dbfs)
+1. [Databricks CLI kullanarak kitaplığı kopyalamayı](/azure/databricks/dev-tools/cli/#copy-a-file-to-dbfs) izleyin
 
-Örnek: *databricks FS CP sparkpi-Assembly-0.1. jar dBFS:/FileStore/jars*
+2. Databricks CLı kullanma [(yükleme adımları)](/azure/databricks/dev-tools/cli/#install-the-cli)
+
+   Örnek olarak, bir JAR 'yi dBFS 'e kopyalamak için: `dbfs cp SparkPi-assembly-0.1.jar dbfs:/docs/sparkpi.jar`

@@ -4,16 +4,16 @@ description: Hangi işletim sistemlerinin Azure IoT Edge Daemon ve çalışma za
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 12/09/2020
+ms.date: 02/11/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: b17f1f32a3e49e9161afe92d62b85a162affcd9f
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 9a9361df817db46028259d8792d9a1431df4ce67
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98630539"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100516334"
 ---
 # <a name="azure-iot-edge-supported-systems"></a>Desteklenen sistemleri Azure IoT Edge
 
@@ -62,12 +62,11 @@ Azure IoT Edge, Linux veya Windows kapsayıcıları olarak oluşturulan modülle
 
 Linux kapsayıcıları olarak oluşturulan modüller, Linux veya Windows cihazlarına dağıtılabilir. Linux cihazlarında, IoT Edge çalışma zamanı doğrudan konak cihaza yüklenir. Windows cihazlarında, IoT Edge çalışma zamanına göre önceden oluşturulmuş bir Linux sanal makinesi, konak cihazında çalışır.
 
-Windows üzerinde Linux için IoT Edge Şu anda genel önizlemededir, ancak Windows cihazlarda IoT Edge çalıştırmanın önerilen yoludur.
+[Windows üzerinde Linux için IoT Edge](iot-edge-for-linux-on-windows.md) Şu anda genel önizlemededir, ancak windows cihazlarda IoT Edge çalıştırmanın önerilen yoludur.
 
 | Operating System | 'TÜR | ARM32v7 | ARM64 |
 | ---------------- | ----- | ------- | ----- |
 | Raspberry PI OS Esnetme |  | ![Raspberry PI OS Esneti + ARM32v7](./media/tutorial-c-module/green-check.png) |  |
-| Ubuntu Server 16.04 | ![Ubuntu Server 16,04 + AMD64](./media/tutorial-c-module/green-check.png) |  | Genel Önizleme  |
 | Ubuntu Server 18.04 | ![Ubuntu Server 18,04 + AMD64](./media/tutorial-c-module/green-check.png) |  | Genel Önizleme |
 | Windows 10 Pro | Genel Önizleme |  |  |
 | Windows 10 Enterprise | Genel Önizleme |  |  |
@@ -76,20 +75,26 @@ Windows üzerinde Linux için IoT Edge Şu anda genel önizlemededir, ancak Wind
 
 Tüm Windows işletim sistemleri sürüm 1809 (derleme 17763) veya üzeri olmalıdır.
 
+>[!NOTE]
+>Ubuntu Server 16,04 desteği IoT Edge sürüm 1,1 sürümüyle sona erdi.
+
 #### <a name="windows-containers"></a>Windows kapsayıcıları
+
+>[!IMPORTANT]
+>IoT Edge 1,1 LTS, Windows kapsayıcılarını destekleyecek son sürüm kanaldır. Sürüm 1,2 ' den başlayarak Windows kapsayıcıları desteklenmeyecektir. Windows cihazlarda IoT Edge çalıştırmak için [Windows 'Ta Linux için IoT Edge](iot-edge-for-linux-on-windows.md) kullanmayı veya taşımayı düşünün.
 
 Windows kapsayıcıları olarak oluşturulan modüller yalnızca Windows cihazlarına dağıtılabilir.
 
 | Operating System | 'TÜR | ARM32v7 | ARM64 |
 | ---------------- | ----- | ------- | ----- |
 | Windows 10 IoT Enterprise | ![check1](./media/tutorial-c-module/green-check.png) |  |  |
-| Windows 10 IoT Core<sup>1</sup><br> | ![check1](./media/tutorial-c-module/green-check.png) |  |  |
 | Windows Server 2019  | ![check1](./media/tutorial-c-module/green-check.png) |  |  |
-| Windows Server IoT 2019<br> | ![check1](./media/tutorial-c-module/green-check.png) |  |  |
-
-<sup>1</sup> Windows 10 IoT Core, sürüm 1.0.10 sonrasında desteklenmez
+| Windows Server IoT 2019 | ![check1](./media/tutorial-c-module/green-check.png) |  |  |
 
 Tüm Windows işletim sistemleri sürüm 1809 (derleme 17763) olmalıdır. Windows kapsayıcıları sürümü, ana bilgisayar Windows cihazının sürümü ile tam olarak eşleşmesi gerektiğinden Windows için belirli bir Windows derlemesi IoT Edge gerekir. Windows kapsayıcıları Şu anda yalnızca 17763 derlemesini kullanır.
+
+>[!NOTE]
+>Windows 10 IoT Core desteği, IoT Edge sürüm 1,1 sürümü ile sona erdi.
 
 ### <a name="tier-2"></a>Katman 2
 
@@ -98,20 +103,18 @@ Aşağıdaki tabloda listelenen sistemler Azure IoT Edge uyumlu olarak değerlen
 | Operating System | 'TÜR | ARM32v7 | ARM64 |
 | ---------------- | ----- | ------- | ----- |
 | [CentOS 7.5](https://wiki.centos.org/Manuals/ReleaseNotes/CentOS7.1804) | ![CentOS + AMD64](./media/tutorial-c-module/green-check.png) | ![CentOS + ARM32v7](./media/tutorial-c-module/green-check.png) | ![CentOS + ARM64](./media/tutorial-c-module/green-check.png) |
-| [Debian 8](https://www.debian.org/releases/jessie/) | ![Desek8 + AMD64](./media/tutorial-c-module/green-check.png) | ![Desek8 + ARM32v7](./media/tutorial-c-module/green-check.png) | ![Desek8 + ARM64](./media/tutorial-c-module/green-check.png) |
+| [Ubuntu 20,04 <sup>1</sup>](https://wiki.ubuntu.com/FocalFossa/ReleaseNotes) | ![Ubuntu 20,04 + AMD64](./media/tutorial-c-module/green-check.png) | ![Ubuntu 20,04 + ARM32v7](./media/tutorial-c-module/green-check.png) | ![Ubuntu 20,04 + ARM64](./media/tutorial-c-module/green-check.png) |
 | [Debian 9](https://www.debian.org/releases/stretch/) | ![Dete 9 + AMD64](./media/tutorial-c-module/green-check.png) | ![Debir 9 + ARM32v7](./media/tutorial-c-module/green-check.png) | ![Debir 9 + ARM64](./media/tutorial-c-module/green-check.png) |
 | [Debian 10](https://www.debian.org/releases/buster/) | ![De, 10 + AMD64](./media/tutorial-c-module/green-check.png) | ![De, 10 + ARM32v7](./media/tutorial-c-module/green-check.png) | ![De, 10 + ARM64](./media/tutorial-c-module/green-check.png) |
 | [Mentor Embedded Linux Flex OS](https://www.mentor.com/embedded-software/linux/mel-flex-os/) | ![Mentor Embedded Linux Flex OS + AMD64](./media/tutorial-c-module/green-check.png) | ![Mentor Embedded Linux Flex OS + ARM32v7](./media/tutorial-c-module/green-check.png) | ![Mentor Embedded Linux Flex OS + ARM64](./media/tutorial-c-module/green-check.png) |
 | [Mentor Embedded Linux OMNI OS](https://www.mentor.com/embedded-software/linux/mel-omni-os/) | ![Mentor Embedded Linux OMNI OS + AMD64](./media/tutorial-c-module/green-check.png) |  | ![Mentor Embedded Linux OMNI OS + ARM64](./media/tutorial-c-module/green-check.png) |
 | [RHEL 7.5](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/7.5_release_notes/index) | ![RHEL 7,5 + AMD64](./media/tutorial-c-module/green-check.png) | ![RHEL 7,5 + ARM32v7](./media/tutorial-c-module/green-check.png) | ![RHEL 7,5 + ARM64](./media/tutorial-c-module/green-check.png) |
-| [Ubuntu 16.04](https://wiki.ubuntu.com/XenialXerus/ReleaseNotes) | ![Ubuntu 16,04 + AMD64](./media/tutorial-c-module/green-check.png) | ![Ubuntu 16,04 + ARM32v7](./media/tutorial-c-module/green-check.png) | ![Ubuntu 16,04 + ARM64](./media/tutorial-c-module/green-check.png) |
 | [Ubuntu 18.04](https://wiki.ubuntu.com/BionicBeaver/ReleaseNotes) | ![Ubuntu 18,04 + AMD64](./media/tutorial-c-module/green-check.png) | ![Ubuntu 18,04 + ARM32v7](./media/tutorial-c-module/green-check.png) | ![Ubuntu 18,04 + ARM64](./media/tutorial-c-module/green-check.png) |
 | [Wind River 8](https://docs.windriver.com/category/os-wind_river_linux) | ![Rüzgar River 8 + AMD64](./media/tutorial-c-module/green-check.png) |  |  |
 | [Yocto](https://www.yoctoproject.org/) | ![Yocto + AMD64](./media/tutorial-c-module/green-check.png) | ![Yocto + ARM32v7](./media/tutorial-c-module/green-check.png) | ![Yocto + ARM64](./media/tutorial-c-module/green-check.png) |
 | Raspberry PI OS Buster |  | ![Raspberry PI OS Buster + ARM32v7](./media/tutorial-c-module/green-check.png) | ![Raspberry PI OS Buster + ARM64](./media/tutorial-c-module/green-check.png) |
-| [Ubuntu 20,04 <sup>1</sup>](https://wiki.ubuntu.com/FocalFossa/ReleaseNotes) | ![Ubuntu 20,04 + AMD64](./media/tutorial-c-module/green-check.png) | ![Ubuntu 20,04 + ARM32v7](./media/tutorial-c-module/green-check.png) | ![Ubuntu 20,04 + ARM64](./media/tutorial-c-module/green-check.png) |
 
-<sup>1</sup> [Azure IoT Edge sürümlerinin](https://github.com/Azure/azure-iotedge/releases) depolarından çıkan 9 paket, Ubuntu 20,04 ile kutudan çıkmalıdır.
+<sup>1</sup> [Linux için yükleme veya kaldırma Azure IoT Edge](how-to-install-iot-edge.md) , ubuntu Server 18,04 yükleme adımları Ubuntu 20,04 üzerinde hiçbir değişiklik yapılmadan çalışmalıdır.
 
 ## <a name="releases"></a>Yayınlar
 
@@ -121,23 +124,32 @@ IoT Edge bileşenleri tek tek yüklenebilir ve güncelleştirilmiş olabilir ve 
 
 | Yayınla | Güvenlik cini | Edge hub 'ı<br>Edge Aracısı | Libiothsm | Moby |
 |--|--|--|--|--|
-| **1.0.10** | 1.0.10 | 1.0.10 | 1.0.10 |  |
+| **1.1.0 LTS**<sup>1</sup> | 1.1.0 | 1.1.0 | 1.1.0 |   |
+| **1.0.10** | 1.0.10<br>1.0.10.1<br>1.0.10.2<br><br>1.0.10.4 | 1.0.10<br>1.0.10.1<br>1.0.10.2<br>1.0.10.3<br>1.0.10.4 | 1.0.10<br>1.0.10.1<br>1.0.10.2<br><br>1.0.10.4 |  |
 | **1.0.9** | 1.0.9.5<br>1.0.9.4<br>1.0.9.3<br>1.0.9.2<br>1.0.9.1<br>1.0.9 | 1.0.9.5<br>1.0.9.4<br>1.0.9.3<br>1.0.9.2<br>1.0.9.1<br>1.0.9 | 1.0.9.5<br>1.0.9.4<br>1.0.9.3<br>1.0.9.2<br>1.0.9.1<br>1.0.9 |  |
 | **1.0.8** | 1.0.8 | 1.0.8.5<br>1.0.8.4<br>1.0.8.3<br>1.0.8.2<br>1.0.8.1<br>1.0.8 | 1.0.8 | 3.0.6 |
 | **1.0.7** | 1.0.7.1<br>1.0.7 | 1.0.7.1<br>1.0.7 | 1.0.7.1<br>1.0.7 | 3.0.5<br>3.0.4 (ARMv7hl, CentOS) |
 | **1.0.6** | 1.0.6.1<br>1.0.6 | 1.0.6.1<br>1.0.6 | 1.0.6.1<br>1.0.6 |  |
 | **1.0.5** | 1.0.5 | 1.0.5 | 1.0.5 | 3.0.2 |
 
+<sup>1</sup> IoT Edge 1,1, ilk uzun süreli destek (LTS) yayın kanaldır. Bu sürüm yeni özellikler sunmadı, ancak hata düzeltmeleri ve güvenlik düzeltme ekleri alacak. IoT Edge 1,1 LTS, .NET Core 3,1 kullanır ve [.NET Core ve .NET 5 sürüm yaşam döngüsü](https://dotnet.microsoft.com/platform/support/policy/dotnet-core)ile eşleşecek şekilde 3 Aralık 2022 tarihine kadar desteklenecektir.
+
+>[!IMPORTANT]
+>Uzun süreli bir destek kanalının yayımlanması sayesinde, 1.0. x çalıştıran tüm geçerli müşterilerin cihazlarını 1.1. x sürümüne yükselterek devam eden destek almasını öneririz.
+
 IoT Edge, Microsoft. Azure. Devices. Client SDK 'sını kullanır. Daha fazla bilgi için bkz. [Azure ıOT C# SDK GitHub deposu](https://github.com/Azure/azure-iot-sdk-csharp) veya [.NET için Azure SDK başvuru içeriği](/dotnet/api/overview/azure/iot/client). Aşağıdaki listede, her sürümün test ettiği istemci SDK sürümü gösterilmektedir:
 
-* **IoT Edge 1.0.10**: istemci SDK 'sı 1.28.0
-* **IoT Edge 1.0.9**: istemci SDK 'sı 1.21.1
-* **IoT Edge 1.0.8**: istemci SDK 'sı 1.20.3
-* **IoT Edge 1.0.7**: istemci SDK 'sı 1.20.1
-* **IoT Edge 1.0.6**: istemci SDK 'sı 1.17.1
-* **IoT Edge 1.0.5**: istemci SDK 'sı 1.17.1
+| IoT Edge sürümü | Microsoft. Azure. Devices. Client SDK sürümü |
+|------------------|--------------------------------------------|
+| 1.1.0 (LTS)      | 1.28.0                                     |
+| 1.0.10           | 1.28.0                                     |
+| 1.0.9            | 1.21.1                                     |
+| 1.0.8            | 1.20.3                                     |
+| 1.0.7            | 1.20.1                                     |
+| 1.0.6            | 1.17.1                                     |
+| 1.0.5            | 1.17.1                                     |
 
-## <a name="virtual-machines"></a>Virtual Machines
+## <a name="virtual-machines"></a>Sanal Makineler
 
 Azure IoT Edge, sanal makinelerde çalıştırılabilir. Bir sanal makinenin IoT Edge cihaz olarak kullanılması, müşteriler var olan altyapıyı Edge zekası ile genişletmek istediğinizde yaygındır. Konak VM işletim sistemi ailesi, bir modülün kapsayıcısı içinde kullanılan Konuk işletim sisteminin ailesiyle eşleşmelidir. Bu gereksinim, Azure IoT Edge doğrudan bir cihazda çalıştırıldığı zaman ile aynıdır. Azure IoT Edge, temel alınan sanallaştırma teknolojisinin belirsiz olması ve Hyper-V ve vSphere gibi platformlar tarafından desteklenen VM 'lerde çalışır.
 

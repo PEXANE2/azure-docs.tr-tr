@@ -1,14 +1,14 @@
 ---
 title: Azure Market’teki Yönetilen Hizmet teklifleri
 description: Yönetilen hizmet teklifleri, Azure Market 'te müşterilere kaynak yönetimi teklifleri satmanızı sağlar.
-ms.date: 07/28/2020
+ms.date: 02/10/2021
 ms.topic: conceptual
-ms.openlocfilehash: 6c3047cd95128f689e75d9c1f5fba5a39f86291c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7f3a12f34b4cedcb12ad2786fcb687044c30c211
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88163331"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100375553"
 ---
 # <a name="managed-service-offers-in-azure-marketplace"></a>Azure Market’teki Yönetilen Hizmet teklifleri
 
@@ -18,7 +18,7 @@ Bu makalede, [Azure Marketi](https://azuremarketplace.microsoft.com)'Ndeki **yö
 
 Yönetilen hizmet, müşterileri Azure 'un kullanımına ekleme sürecini kolaylaştırır. Bir müşteri Azure Marketi 'nde bir teklif satın aldığında, hangi aboneliklerin ve/veya kaynak gruplarının eklendi olması gerektiğini belirleyebilecektir.
 
-Bundan sonra, kuruluşunuzdaki kullanıcılar, teklifi oluştururken tanımladığınız erişime göre, [Azure tarafından atanan kaynak yönetimi](azure-delegated-resource-management.md)aracılığıyla bu kaynaklar üzerinde yönetim kiracının içinden çalışabilecektir. Bu işlem, erişim düzeyini tanımlayan rollerle birlikte müşteri kaynaklarına erişimi olacak Azure Active Directory (Azure AD) kullanıcılarını, gruplarını ve hizmet sorumlularını belirten bir bildirimde yapılır. Bir dizi Kullanıcı veya uygulama hesabı yerine bir Azure AD grubuna izinler atayarak, erişim gereksinimleriniz değiştiğinde bireysel kullanıcı ekleyebilir veya kaldırabilirsiniz.
+Bundan sonra, kuruluşunuzdaki kullanıcılar, teklifi oluştururken tanımladığınız erişime göre, [Azure tarafından atanan kaynak yönetimi](azure-delegated-resource-management.md)aracılığıyla bu kaynaklar üzerinde yönetim kiracının içinden çalışabilecektir. Bu işlem, erişim düzeyini tanımlayan [rollerle](tenants-users-roles.md) birlikte müşteri kaynaklarına erişimi olacak Azure Active Directory (Azure AD) kullanıcılarını, gruplarını ve hizmet sorumlularını belirten bir bildirimde yapılır.
 
 ## <a name="public-and-private-offers"></a>Ortak ve özel teklifler
 

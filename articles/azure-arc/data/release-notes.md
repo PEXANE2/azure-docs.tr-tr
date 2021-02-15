@@ -7,18 +7,45 @@ ms.reviewer: mikeray
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
-ms.date: 12/09/2020
+ms.date: 02/11/2021
 ms.topic: conceptual
-ms.openlocfilehash: 2c9b239269aa00255aa08d6c233cd7978b253d94
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: f303ddb4d32da4c4cb6609f3ceec34e5c83529a8
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97653580"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100391465"
 ---
 # <a name="release-notes---azure-arc-enabled-data-services-preview"></a>Sürüm notları-Azure Arc etkin veri Hizmetleri (Önizleme)
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
+
+## <a name="january-2021"></a>Ocak 2021
+
+### <a name="new-capabilities-and-features"></a>Yeni özellikler ve Özellikler
+
+Azure Data CLı ( `azdata` ) sürüm numarası: 20.3.0. Adresinden indirin [https://aka.ms/azdata](https://aka.ms/azdata) . `azdata` [Azure Data CLI ( `azdata` ) uygulamasını yükleyebilirsiniz](/sql/azdata/install/deploy-install-azdata).
+
+
+Ek güncelleştirmeler şunlardır:
+- Yerelleştirilmiş Portal 17 yeni dil için kullanılabilir
+- Kuin-Native. YAML dosyalarında küçük değişiklikler
+- Yeni Grafana ve kibana sürümleri
+- Azure Data Studio çözümlenen not defterlerinde azdata kullanırken Python ortamları ile ilgili sorunlar
+- Pg_audit uzantısı artık PostgreSQL hiper ölçek için kullanılabilir
+- Bir PostgreSQL hiper ölçek veritabanının tam geri yüklenmesi sırasında bir yedekleme KIMLIĞI artık gerekli değildir
+- Durum (sistem durumu), bir sunucu grubu oluşturan tüm PostgreSQL örnekleri için raporlanır
+
+   Önceki sürümlerde, durum sunucu grubu düzeyinde toplanmış ve PostgreSQL düğüm düzeyinde toplanmıyor.
+
+- PostgreSQL dağıtımları artık Create komutlarında belirtilen birim boyutu parametrelerini karşılayamıyor
+- Bir sunucu grubu düzenlenirken altyapı sürümü parametreleri artık kabul edilir
+- PostgreSQL hiper ölçek etkinleştirilmiş Azure Arc 'ın adlandırma kuralı değiştirildi
+
+    Şu biçimdedir: `ServergroupName{c, w}-n` . Örneğin, üç düğüm içeren bir sunucu grubu, bir düzenleyici düğümü ve iki çalışan düğümü şöyle temsil edilir:
+   - `Postgres01c-0` (düzenleyici düğümü)
+   - `Postgres01w-0` (çalışan düğümü)
+   - `Postgres01w-1` (çalışan düğümü)
 
 ## <a name="december-2020"></a>Aralık 2020
 

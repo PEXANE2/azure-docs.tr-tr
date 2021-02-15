@@ -1,21 +1,18 @@
 ---
 title: PowerShell kullanarak verileri Şirket içinden Azure 'a kopyalama
 description: Bu PowerShell betiği, verileri bir SQL Server veritabanından başka bir Azure Blob depolama alanına kopyalar.
-services: data-factory
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: article
 ms.author: jingwang
 author: linda33wj
-manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 10/31/2017
-ms.openlocfilehash: bc10017da8561cda09658ec9380cc82095f3ef94
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 34c5497a8b059260dfe60e8015e62c0f1511f021
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92632241"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100373394"
 ---
 # <a name="use-powershell-to-create-a-data-factory-pipeline-to-copy-data-from-sql-server-to-azure"></a>SQL Server verileri Azure 'a kopyalamak için bir Data Factory işlem hattı oluşturmak üzere PowerShell 'i kullanma
 
@@ -25,11 +22,11 @@ Bu örnek PowerShell betiği, verileri bir SQL Server veritabanından Azure Blob
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh-az.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-- **SQL Server** . Bu örnekteki bir SQL Server veritabanını **kaynak** veri deposu olarak kullanırsınız.
-- **Azure depolama hesabı** . Azure Blob depolama alanını bu örnekteki **hedef/havuz** veri deposu olarak kullanırsınız. bir Azure depolama hesabınız yoksa, oluşturma adımları için [depolama hesabı oluşturma](../../storage/common/storage-account-create.md) makalesine bakın.
-- **Şirket içinde barındırılan tümleştirme çalışma zamanı** . MSI dosyasını [indirme merkezi](https://www.microsoft.com/download/details.aspx?id=39717) 'nden indirin ve makinenize şirket içinde barındırılan tümleştirme çalışma zamanı yüklemek için çalıştırın.  
+- **SQL Server**. Bu örnekteki bir SQL Server veritabanını **kaynak** veri deposu olarak kullanırsınız.
+- **Azure depolama hesabı**. Azure Blob depolama alanını bu örnekteki **hedef/havuz** veri deposu olarak kullanırsınız. bir Azure depolama hesabınız yoksa, oluşturma adımları için [depolama hesabı oluşturma](../../storage/common/storage-account-create.md) makalesine bakın.
+- **Şirket içinde barındırılan tümleştirme çalışma zamanı**. MSI dosyasını [indirme merkezi](https://www.microsoft.com/download/details.aspx?id=39717) 'nden indirin ve makinenize şirket içinde barındırılan tümleştirme çalışma zamanı yüklemek için çalıştırın.  
 
 ### <a name="create-sample-database-in-sql-server"></a>SQL Server örnek veritabanı oluşturma
 1. SQL Server veritabanında, aşağıdaki SQL komut **dosyasını kullanarak,** şunu kullanan bir tablo oluşturun:

@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 12/18/2020
+ms.date: 02/12/2021
 ms.author: mimart
 author: msmimart
 manager: CelesteDG
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9a0668b3ea651d129dc076e5f2247e38f5ab7d0
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: f37c7e2f21c76fcc902b0922399081b9be949e99
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98725504"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100365540"
 ---
 # <a name="email-one-time-passcode-authentication"></a>E-posta bir kerelik geçiş kodu kimlik doğrulaması
 
@@ -26,7 +26,7 @@ Bu makalede, B2B Konuk kullanıcıları için bir kerelik geçiş kodu kimlik do
 ![E-posta bir kerelik geçiş kodu genel bakış Diyagramı](media/one-time-passcode/email-otp.png)
 
 > [!IMPORTANT]
-> **2021 Mart 'Tan itibaren**, tüm mevcut kiracılar için e-posta bir kerelik geçiş kodu özelliği açık olur ve yeni kiracılar için varsayılan olarak etkinleştirilir. Bu özelliğin otomatik olarak kullanılmasına izin vermek istemiyorsanız, devre dışı bırakabilirsiniz. Bkz. [e-posta bir kerelik geçiş kodunu devre dışı bırakma](#disable-email-one-time-passcode) .
+> **2021 Ekim 'e başlayarak**, tüm mevcut kiracılar için e-posta bir kerelik geçiş kodu özelliği açık olur ve yeni kiracılar için varsayılan olarak etkinleştirilir. Bu özelliğin otomatik olarak kullanılmasına izin vermek istemiyorsanız, devre dışı bırakabilirsiniz. Bkz. [e-posta bir kerelik geçiş kodunu devre dışı bırakma](#disable-email-one-time-passcode) .
 
 > [!NOTE]
 > Bir kerelik geçiş kodu kullanıcılarının kiracı bağlamını içeren bir bağlantı kullanarak oturum açması gerekir (örneğin, `https://myapps.microsoft.com/?tenantid=<tenant id>` veya `https://portal.azure.com/<tenant id>` doğrulanmış bir etki alanı söz konusu olduğunda `https://myapps.microsoft.com/<verified domain>.onmicrosoft.com` ). Uygulama ve kaynakların doğrudan bağlantıları, kiracı bağlamını dahil ettikleri sürece da çalışır. Konuk kullanıcılar şu anda kiracı bağlamı olmayan uç noktaları kullanarak oturum açamıyor. Örneğin, kullanarak `https://myapps.microsoft.com` , `https://portal.azure.com` bir hataya neden olur.
@@ -71,7 +71,7 @@ Konuk Kullanıcı teri@gmail.com , Google Federasyonu ayarlanmamış olan Fabrik
 
 ## <a name="disable-email-one-time-passcode"></a>E-posta bir kerelik geçiş kodunu devre dışı bırak
 
-2021 Mart 'tan itibaren, tüm mevcut kiracılar için e-posta bir kerelik geçiş kodu özelliği açık olur ve yeni kiracılar için varsayılan olarak etkinleştirilir. Bu sırada, Microsoft, B2B işbirliği senaryolarında yönetilmeyen ("viral" veya "tam zamanında") Azure AD hesapları ve kiracılar oluşturarak davetlerin kullanımını desteklememektedir. Konuk kullanıcılarınız için sorunsuz bir geri dönüş kimlik doğrulama yöntemi sağladığından e-posta bir kerelik geçiş kodu özelliğini etkinleştiriyoruz. Ancak, bu özelliği kullanmayı tercih ederseniz bu özelliği devre dışı bırakma seçeneğiniz vardır.
+2021 Ekim 'e başlayarak, tüm mevcut kiracılar için e-posta bir kerelik geçiş kodu özelliği açık olur ve yeni kiracılar için varsayılan olarak etkinleştirilir. Bu sırada, Microsoft, B2B işbirliği senaryolarında yönetilmeyen ("viral" veya "tam zamanında") Azure AD hesapları ve kiracılar oluşturarak davetlerin kullanımını desteklememektedir. Konuk kullanıcılarınız için sorunsuz bir geri dönüş kimlik doğrulama yöntemi sağladığından e-posta bir kerelik geçiş kodu özelliğini etkinleştiriyoruz. Ancak, bu özelliği kullanmayı tercih ederseniz bu özelliği devre dışı bırakma seçeneğiniz vardır.
 
 > [!NOTE]
 >
@@ -87,10 +87,8 @@ Konuk Kullanıcı teri@gmail.com , Google Federasyonu ayarlanmamış olan Fabrik
 
 4. **Konuklar için bir kerelik parola geçiş kodu** altında, **Konuklar için tek seferlik e-posta geçiş kodunu devre dışı bırak** seçeneğini belirleyin
 
-    ![E-posta bir kerelik geçiş kodu ayarları](media/one-time-passcode/otp-admin-settings.png)
-
    > [!NOTE]
-   > Yukarıda gösterilen seçenekler yerine aşağıdaki iki durumlu geçiş görürseniz bu, daha önce etkinleştirilen, devre dışı bırakılmış veya özelliğin önizlemesini kabul ettiğiniz anlamına gelir. Özelliği devre dışı bırakmak için **Hayır** ' ı seçin.
+   > E-posta bir kerelik geçiş kodu seçeneği yerine aşağıdaki iki durumlu düğmeyi görürseniz, bu, daha önce etkin, devre dışı veya özelliğin önizlemesini kabul ettiğiniz anlamına gelir. Özelliği devre dışı bırakmak için **Hayır** ' ı seçin.
    >
    >![E-posta bir kerelik geçiş kodunu etkinleştir](media/delegate-invitations/enable-email-otp-opted-in.png)
 
@@ -98,14 +96,14 @@ Konuk Kullanıcı teri@gmail.com , Google Federasyonu ayarlanmamış olan Fabrik
 
 ## <a name="note-for-public-preview-customers"></a>Genel Önizleme müşterileri için göz önünde
 
-Daha önce bir kerelik geçiş kodu genel önizlemesine kaydoldıysanız, otomatik özellik etkinleştirme için Mart 2021 tarihi sizin için geçerlidir; bu nedenle ilgili iş işlemleriniz etkilenmez. Ayrıca, Azure portal, **Konuklar için tek seferlik bir geçiş kodu** altında, **Mart 2021 ' de guests için e-posta geçiş kodunu otomatik olarak etkinleştirme** seçeneğini görmezsiniz. Bunun yerine, aşağıdaki **Evet** veya **Hayır** biçimini görürsünüz:
+Daha önce bir kerelik geçiş kodu genel önizlemesine sahipseniz, otomatik özellik etkinleştirme için 2021 Ekim tarihi sizin için uygun değildir, bu nedenle ilgili iş işlemleriniz etkilenmez. Ayrıca, Azure portal **Guests için tek seferlik parola geçiş kodu** altında, **2021 Ekim 'de Konuklar için tek seferlik bir geçiş kodunu otomatik olarak etkinleştirme** seçeneğini görmezsiniz. Bunun yerine, aşağıdaki **Evet** veya **Hayır** biçimini görürsünüz:
 
 ![E-posta bir kerelik geçiş kodunu etkinleştir](media/delegate-invitations/enable-email-otp-opted-in.png)
 
-Ancak, özelliği devre dışı bırakmayı tercih ediyorsanız ve bu özelliğin Mart 2021 ' de otomatik olarak etkinleştirilmesini istiyorsanız, Microsoft Graph API [e-posta kimlik doğrulama yöntemi yapılandırma kaynak türünü](/graph/api/resources/emailauthenticationmethodconfiguration)kullanarak varsayılan ayarlara geri döndürebilirsiniz. Varsayılan ayarlara döndükten sonra, **Konuklar için bir kerelik geçiş kodu** altında aşağıdaki seçenekler kullanılabilir:
+Ancak, özelliği devre dışı bırakmayı tercih ediyorsanız ve BT 'nin 2021 Ekim 'de otomatik olarak etkinleştirilmesini istiyorsanız, Microsoft Graph API [e-posta kimlik doğrulama yöntemi yapılandırma kaynak türünü](/graph/api/resources/emailauthenticationmethodconfiguration)kullanarak varsayılan ayarlara geri döndürebilirsiniz. Varsayılan ayarlara döndükten sonra, **Konuklar için bir kerelik geçiş kodu** altında aşağıdaki seçenekler kullanılabilir:
 
-- **Mart 2021 ' de guests için e-posta tek seferlik geçiş kodunu otomatik olarak etkinleştirin**. Varsayılanını E-posta bir kerelik geçiş kodu özelliği kiracınız için zaten etkin değilse, bu, Mart 2021 ' de otomatik olarak açılır. Özelliğin o anda etkinleştirilmesini istiyorsanız başka bir eylem gerekmez. Özelliği zaten etkinleştirdiyseniz veya devre dışı bıraktığınız takdirde bu seçenek kullanılamaz.
+- **Ekim 2021 ' de guests için e-posta tek seferlik geçiş kodunu otomatik olarak etkinleştirin**. Varsayılanını E-posta bir kerelik geçiş kodu özelliği kiracınız için zaten etkin değilse, 2021 Ekim 'de otomatik olarak açılır. Özelliğin o anda etkinleştirilmesini istiyorsanız başka bir eylem gerekmez. Özelliği zaten etkinleştirdiyseniz veya devre dışı bıraktığınız takdirde bu seçenek kullanılamaz.
 
 - **Şimdi geçerli olan konuklar için tek seferlik geçiş kodunu etkinleştirin**. Kiracınız için bir kerelik geçiş kodu özelliğini etkinleştirir.
 
-- **Konuklar için tek seferlik e-posta geçiş kodunu devre dışı bırakın**. , Kiracınız için bir kerelik geçiş kodu özelliğini kapatır ve özelliğin Mart 2021 ' de açılmasını önler.
+- **Konuklar için tek seferlik e-posta geçiş kodunu devre dışı bırakın**. , Kiracınız için bir kerelik geçiş kodu özelliğini kapatır ve özelliğin 2021 Ekim 'de açılmasını önler.

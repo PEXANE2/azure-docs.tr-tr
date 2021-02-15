@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 01/20/2021
 ms.author: kgremban
-ms.openlocfilehash: ab783d6cb20f1c2fe31e8556dc57999df20d5637
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: efbae71162bdd0c126287191f7ad35cf903db138
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98629819"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100378086"
 ---
 # <a name="install-or-uninstall-azure-iot-edge-for-linux"></a>Linux için Azure IoT Edge yükleme veya kaldırma
 
@@ -32,7 +32,7 @@ Bu makalede, Linux cihazlarına Azure IoT Edge çalışma zamanını yüklemek i
 
 * Bir Linux cihazı
 
-  X64, ARM32 veya ARM64 Linux cihazı vardır. Microsoft, Ubuntu Server 16,04, Ubuntu Server 18,04 ve Raspberry PI OS genişletme işletim sistemlerini için yükleme paketleri sağlar.
+  X64, ARM32 veya ARM64 Linux cihazı vardır. Microsoft, Ubuntu Server 18,04 ve Raspberry PI OS Esnetme işletim sistemlerini yükleme paketleri sağlar.
 
   Şu anda üretim senaryolarında desteklenen işletim sistemleri hakkında en son bilgiler için, bkz. [Azure IoT Edge desteklenen sistemler](support.md#operating-systems)
 
@@ -42,12 +42,6 @@ Bu makalede, Linux cihazlarına Azure IoT Edge çalışma zamanını yüklemek i
 * Cihazınızı Microsoft Yükleme paketlerine erişmek için hazırlayın.
 
   Cihaz işletim sisteminizle eşleşen depo yapılandırmasını yükler.
-
-  * **Ubuntu Server 16,04**:
-
-    ```bash
-    curl https://packages.microsoft.com/config/ubuntu/16.04/multiarch/prod.list > ./microsoft-prod.list
-    ```
 
   * **Ubuntu Server 18,04**:
 

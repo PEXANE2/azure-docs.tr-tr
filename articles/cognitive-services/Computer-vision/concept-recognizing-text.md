@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/11/2020
 ms.author: pafarley
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 1d633b1a9f5fee0a5cceb48f2b37aaec2092069f
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: 2833fd44b75f4bebf41b5100eb2350ca69436520
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99979544"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100362803"
 ---
 # <a name="optical-character-recognition-ocr"></a>Optik Karakter Tanıma (OCR)
 
@@ -132,8 +132,8 @@ Başarılı bir JSON yanıtı örneğine bakın:
 }
 ```
 
-## <a name="natural-reading-order-output"></a>Doğal okuma sırası çıkışı
-[Okuma 3,2 Önizleme API 'si](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-2/operations/5d986960601faab4bf452005)ile, metin çizgilerinin, sorgu parametresi ile çıkış sırasını belirtin `readingOrder` . `natural`Aşağıdaki örnekte gösterildiği gibi, daha kolay okunabilir bir okuma sırası çıkışı için kullanın.
+## <a name="natural-reading-order-output-latin-only"></a>Doğal okuma sırası çıkışı (yalnızca Latin)
+[Okuma 3,2 Önizleme API 'si](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-2/operations/5d986960601faab4bf452005)ile, metin çizgilerinin, sorgu parametresi ile çıkış sırasını belirtin `readingOrder` . `natural`Aşağıdaki örnekte gösterildiği gibi, daha kolay okunabilir bir okuma sırası çıkışı için kullanın. Bu özellik yalnızca Latin dilleri için desteklenir.
 
 :::image border type="content" source="./Images/ocr-reading-order-example.png" alt-text="OCR okuma düzeni örneği":::
 

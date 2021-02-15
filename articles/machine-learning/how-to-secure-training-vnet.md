@@ -11,12 +11,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 07/16/2020
 ms.custom: contperf-fy20q4, tracking-python, contperf-fy21q1
-ms.openlocfilehash: 02045c7ba2373c57213cc7fffb71a5e6bb5979e6
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 9a937336e1628add54ab5f52cdd6ef475d463f7d
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99538009"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100515997"
 ---
 # <a name="secure-an-azure-machine-learning-training-environment-with-virtual-networks"></a>Sanal ağlarla Azure Machine Learning eğitim ortamının güvenliğini sağlama
 
@@ -26,7 +26,7 @@ Bu makale, bir Azure Machine Learning iş akışını güvenli hale getirmek iç
 
 Bu serideki diğer makalelere göz atın:
 
-[1. VNET genel bakış](how-to-network-security-overview.md)  >  [çalışma alanı](how-to-secure-workspace-vnet.md)3 ' ü güvenceye alın  >  **. Eğitim ortamının** 4 ' ü koruyun  >  [. Invenli ortam](how-to-secure-inferencing-vnet.md)5 ' i güvenli hale getirin   >  [. Studio işlevselliğini etkinleştir](how-to-enable-studio-virtual-network.md)
+[1. VNET 'e genel bakış](how-to-network-security-overview.md)  >  [2. Çalışma alanı](how-to-secure-workspace-vnet.md)3 ' ü güvenli hale getirin  >  **. Eğitim ortamının** 4 ' ü koruyun  >  [. Invenli ortam](how-to-secure-inferencing-vnet.md)5 ' i güvenli hale getirin   >  [. Studio işlevselliğini etkinleştir](how-to-enable-studio-virtual-network.md)
 
 Bu makalede, bir sanal ağda aşağıdaki eğitim işlem kaynaklarını güvenli hale getirme hakkında bilgi edineceksiniz:
 > [!div class="checklist"]
@@ -273,7 +273,7 @@ Azure Işlem örneği üzerinde not defterleri kullanıyorsanız, not defteriniz
 > * Çalışma alanı için Azure depolama hesabı bir sanal ağda da güvenlik altına alınırsa, Azure Databricks kümesiyle aynı sanal ağda olmaları gerekir.
 > * Azure Databricks tarafından kullanılan __databricks-Private__ ve __databricks-genel__ alt ağlarına ek olarak, sanal ağ için oluşturulan __varsayılan__ alt ağ de gereklidir.
 
-Bir sanal ağla Azure Databricks kullanma hakkında ayrıntılı bilgi için bkz. [Azure sanal ağınızda Azure Databricks dağıtma](https://docs.azuredatabricks.net/administration-guide/cloud-configurations/azure/vnet-inject.html).
+Bir sanal ağla Azure Databricks kullanma hakkında ayrıntılı bilgi için bkz. [Azure sanal ağınızda Azure Databricks dağıtma](/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject).
 
 <a id="vmorhdi"></a>
 

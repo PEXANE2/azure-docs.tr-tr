@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/14/2021
+ms.date: 02/05/2021
 ms.author: jeedes
-ms.openlocfilehash: c6932292b86924cfab6d17c315cbd6946bd63f61
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 0be2e2f6ce22525cb4c3a7e0656ce9ce75fb7f77
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98621337"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100363550"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-coupa"></a>Öğretici: bağa ile tümleştirme Azure Active Directory
 
@@ -28,10 +28,10 @@ Bu öğreticide, Azure Active Directory (Azure AD) ile bir bağa tümleştirmeyi
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Azure AD tümleştirmesini bir kupona ile yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
+Başlamak için aşağıdaki öğeler gereklidir:
 
-* Bir Azure AD aboneliği. Bir Azure AD ortamınız yoksa, [burada](https://azure.microsoft.com/pricing/free-trial/)bir aylık deneme sürümü edinebilirsiniz.
-* Tek bir oturum açma etkin aboneliği bağlayamıyor.
+* Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
+* Çoklu oturum açma (SSO) özellikli bir abonelik.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
@@ -63,7 +63,7 @@ Azure AD SSO 'yu bir kupona ile yapılandırmak ve test etmek için aşağıdaki
     1. Kullanıcının Azure AD gösterimine bağlı olan bir B. Simon ınbağon 'ya sahip olmak üzere, bir e-ç **[test kullanıcısı oluşturun](#create-coupa-test-user)** .
 1. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
-### <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma
 
 Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
@@ -128,17 +128,17 @@ Bu bölümde, Azure çoklu oturum açma özelliğini kullanarak, kupona 'ya eri�
 1. Kullanıcılara bir rolün atanmasını bekliyorsanız, **Rol Seç** açılır listesinden bunu seçebilirsiniz. Bu uygulama için ayarlanmış bir rol yoksa, "varsayılan erişim" rolü seçili olduğunu görürsünüz.
 1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
-### <a name="configure-coupa-sso"></a>Kupona SSO 'yu yapılandırma
+## <a name="configure-coupa-sso"></a>Kupona SSO 'yu yapılandırma
 
 1. Bir yönetici olarak, bağa şirket sitenizde oturum açın.
 
 2. **Kurulum \> güvenlik denetimi**' ne gidin.
 
-    ![Güvenlik denetimleri](./media/coupa-tutorial/ic791900.png "Güvenlik Denetimleri")
+    ![Güvenlik denetimleri](./media/coupa-tutorial/setup.png "Güvenlik Denetimleri")
 
 3. Bu **kimlik bilgilerini kullanarak oturum açın** bölümünde aşağıdaki adımları uygulayın:
 
-    ![Bağa SP meta verileri](./media/coupa-tutorial/ic791901.png "Bağa SP meta verileri")
+    ![Bağa SP meta verileri](./media/coupa-tutorial/login.png "Bağa SP meta verileri")
 
     a. **SAML kullanarak oturum aç '** ı seçin.
 
@@ -158,15 +158,15 @@ Azure AD kullanıcılarının bir kupona 'da oturum açmasını sağlamak için,
 
 2. Üstteki menüde, **Kurulum**' a ve ardından **Kullanıcılar**' a tıklayın.
 
-    ![Kullanıcılar](./media/coupa-tutorial/ic791908.png "Kullanıcılar")
+    ![Kullanıcılar](./media/coupa-tutorial/user.png "Kullanıcılar")
 
 3. **Oluştur**’a tıklayın.
 
-    ![Kullanıcı Oluşturma](./media/coupa-tutorial/ic791909.png "Kullanıcı Oluştur")
+    ![Kullanıcı Oluşturma](./media/coupa-tutorial/create.png "Kullanıcı Oluştur")
 
 4. **Kullanıcı oluştur** bölümünde aşağıdaki adımları uygulayın:
 
-    ![Kullanıcı ayrıntıları](./media/coupa-tutorial/ic791910.png "Kullanıcı ayrıntıları")
+    ![Kullanıcı ayrıntıları](./media/coupa-tutorial/details.png "Kullanıcı ayrıntıları")
 
     a. İlgili metin kutularına sağlamak istediğiniz geçerli bir Azure Active Directory hesabının **oturum açma**, **ad**, ad, **Soyadı**, **tek Sign-On kimliği**, **e-posta** özniteliklerini yazın.
 
@@ -179,7 +179,7 @@ Azure AD kullanıcılarının bir kupona 'da oturum açmasını sağlamak için,
 >[!NOTE]
 >Azure AD Kullanıcı hesapları sağlamak için, herhangi bir diğer bağa Kullanıcı hesabı oluşturma aracını veya bir bağa tarafından sunulan API 'Leri kullanabilirsiniz.
 
-### <a name="test-sso"></a>Test SSO 'SU
+## <a name="test-sso"></a>Test SSO 'SU
 
 Bu bölümde, Azure AD çoklu oturum açma yapılandırmanızı aşağıdaki seçeneklerle test edersiniz. 
 

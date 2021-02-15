@@ -9,18 +9,19 @@ ms.topic: conceptual
 author: FrancescaLazzeri
 ms.author: lazzeri
 ms.date: 03/05/2020
-ms.openlocfilehash: b824604ce9d0171b5612ab559eace4b35fd01eb8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+adobe-target: true
+ms.openlocfilehash: 730fcf3fb552b92a02b255ad654f64d5ff7a92fa
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82890971"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100367065"
 ---
 # <a name="machine-learning-algorithm-cheat-sheet-for-azure-machine-learning-designer"></a>Azure Machine Learning tasarlayıcı için Machine Learning algoritması sayfası
 
 **Azure Machine Learning algoritması** , bir tahmine dayalı analiz modeli için doğru algoritmayı seçmenize yardımcı olur.
 
-Azure Machine Learning, ***Sınıflandırma***, ***öneren sistemleri***, ***kümeleme***, ***anomali algılama***, ***gerileme***ve ***metin analizi*** ailelerine ait büyük bir algoritma kitaplığına sahiptir. Her biri farklı bir makine öğrenimi sorun türünü ele almak üzere tasarlanmıştır.
+Azure Machine Learning, ***Classification** _, _*_öneren Systems_*_, _*_kümeleme_*_, _*_anomali algılama_*_, _*_gerileme_*_ ve _ *_metin analizi_** ailelerine ait büyük bir algoritma kitaplığına sahiptir. Her biri farklı bir makine öğrenimi sorun türünü ele almak üzere tasarlanmıştır.
 
 Ek yönergeler için bkz. [algoritmaları seçme](how-to-select-algorithms.md)
 
@@ -42,7 +43,7 @@ Azure Machine Learning tasarımcısında algoritmalar hakkında daha fazla bilgi
 
 ## <a name="kinds-of-machine-learning"></a>Makine öğrenimi türleri
 
-Machine Learning 'in üç ana kategorisi vardır: *denetimli öğrenme*, denetimli *öğrenme*ve *pekiştirmeye dayalı Learning*.
+Machine Learning 'in üç ana kategorisi vardır: *denetimli öğrenme*, denetimli *öğrenme* ve *pekiştirmeye dayalı Learning*.
 
 ### <a name="supervised-learning"></a>Denetimli öğrenme
 

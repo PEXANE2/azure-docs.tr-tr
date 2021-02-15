@@ -475,6 +475,10 @@
           href: reference-third-party-cookies-spas.md
         - name: Chrome’da SameSite tanımlama bilgisi değişikliklerini işleme
           href: howto-handle-samesite-cookie-changes-chrome-browser.md
+    - name: Passwordless kimlik doğrulamasını destekleme
+      items:
+        - name: Destek FIDO2 kimlik doğrulaması
+          href: support-fido2-authentication.md
     - name: Uygulama ve hizmetlerde kimliğini doğrulaması
       items:
         - name: Azure PowerShell’i kullanarak hizmet sorumlusu oluşturma

@@ -16,12 +16,12 @@ ms.date: 11/05/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73376994e01ed89891726a8f6e1b727f89dab2fb
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 1957adc0effd5b37d7aff3f813267da6ca065e0a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201731"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100368974"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Azure AD Connect Önkoşulları
 Bu makalede Azure Active Directory (Azure AD) Connect için Önkoşullar ve donanım gereksinimleri açıklanmaktadır.
@@ -73,6 +73,7 @@ Active Directory ortamınızı güvenli hale getirmek hakkında daha fazla bilgi
     - TLS/SSL sertifikalarını yapılandırmanız gerekir. Daha fazla bilgi için bkz. AD FS SSL [/TLS protokollerini ve şifre paketlerini yönetme](/windows-server/identity/ad-fs/operations/manage-ssl-protocols-in-ad-fs) ve [ssl sertifikalarını yönetme](/windows-server/identity/ad-fs/operations/manage-ssl-certificates-ad-fs-wap)AD FS.
     - Ad çözümlemesi yapılandırmanız gerekir. 
 - Genel yöneticileriniz MFA etkinleştirilmişse, URL https://secure.aadcdn.microsoftonline-p.com  güvenilen siteler listesinde olmalıdır. MFA sınaması istendiğinde bu siteyi Güvenilen siteler listesine eklemeniz istenir ve daha önce eklenmemiştir. Internet Explorer 'ı, güvenilen sitelerinize eklemek için kullanabilirsiniz.
+- Eşitleme için Azure AD Connect Health kullanmayı planlıyorsanız, Azure AD Connect Health önkoşullarının de karşılandığından emin olun. Daha fazla bilgi için bkz. [Aracı yüklemesi Azure AD Connect Health](how-to-connect-health-agent-install.md).
 
 #### <a name="harden-your-azure-ad-connect-server"></a>Azure AD Connect sunucunuzu Harden 
 BT ortamınızın bu kritik bileşeninin güvenlik saldırısı yüzeyini azaltmak için Azure AD Connect sunucunuzu çok fazla kullanmanızı öneririz. Bu önerilerin ardından, kuruluşunuzun bazı güvenlik risklerini azaltmaya yardımcı olur.

@@ -3,18 +3,18 @@ title: 'ML Studio (klasik): net # özel sinir Networks-Azure'
 description: 'NET # sinir Networks belirtim dili için sözdizimi Kılavuzu. Azure Machine Learning Studio (klasik) içinde özel sinir ağ modelleri oluşturmayı öğrenin.'
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2018
-ms.openlocfilehash: a36eb21f681aec1cfc52a000b60bdbc30cab0633
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: 5137b633f66088efbee41b96ba715eb3b18961dc
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96302801"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100519261"
 ---
 # <a name="guide-to-net-neural-network-specification-language-for-machine-learning-studio-classic"></a>Machine Learning Studio için net # sinir ağ belirtim diline kılavuzluk (klasik)
 
@@ -57,7 +57,7 @@ Ayrıca, net # aşağıdaki dört gelişmiş bağlantı paketi türünü destekl
 
 ## <a name="supported-customizations"></a>Desteklenen özelleştirmeler
 
-Azure Machine Learning Studio (klasik) içinde oluşturduğunuz sinir ağ modellerinin mimarisi, NET # kullanılarak kapsamlı bir şekilde özelleştirilebilir. Şunları yapabilirsiniz:
+Azure Machine Learning Studio (klasik) içinde oluşturduğunuz sinir ağ modellerinin mimarisi, NET # kullanılarak kapsamlı bir şekilde özelleştirilebilir. Seçenekleriniz şunlardır:
 
 + Gizli katmanlar oluşturun ve her katmandaki düğümlerin sayısını denetleyin.
 + Katmanların birbirlerine nasıl bağlandığını belirtin.
@@ -151,7 +151,7 @@ Daha önce, bir katmanı tanımladıktan hemen sonra, tanımladığınız katman
 Şu anda, beş tür bağlantı demeti desteklenir:
 
 + Anahtar sözcüğü ile gösterilen **tam** demeti`all`
-+ **Filtered** Anahtar sözcüğü ve `where` ardından bir koşul Ifadesi tarafından belirtilen filtrelenmiş paket
++  Anahtar sözcüğü ve `where` ardından bir koşul Ifadesi tarafından belirtilen filtrelenmiş paket
 + Anahtar sözcüğü ve ardından evme öznitelikleri tarafından belirtilen **evsel** paketleri `convolve`
 + Anahtar sözcük **en fazla havuz** veya **Ortalama havuz** tarafından belirtilen **Havuz** paketleri
 + Anahtar sözcük **Yanıt norm** tarafından belirtilen **Yanıt normalleştirme** paketleri
@@ -214,14 +214,14 @@ Doldurmayı denetleyen iki özellik kümesi vardır: birbirini dışlayan Özell
 
     Bir boyutun değeri false ise, çekirdekler, bırakılan her bir taraftaki düğümlerin sayısı aynı (1 ' e kadar bir farka kadar) olacak şekilde tanımlanır. Bu özniteliğin varsayılan değeri, tüm bileşenleri false değerine eşit olan bir tanımlama grubu olur.
 
-+ **Üsteli panel** ve küçük **panel**: (isteğe bağlı) kullanılacak doldurma miktarı üzerinde daha fazla denetim sağlar. **Önemli:** Bu öznitelikler ve yalnızca yukarıdaki **doldurma** özelliği **_not_*_ tanımlanmazsa tanımlanabilir. Değerler, paket parametre sayısı olan uzunluklara sahip tamsayı değerli diziler olmalıdır. Bu öznitelikler belirtildiğinde, giriş katmanının her boyutunun alt ve üst uçlarına "kukla" düğümler eklenir. Her boyuttaki alt ve üst uçlarına eklenen düğümlerin sayısı _* küçük panel**[i] ve en büyük **panel**[i] tarafından belirlenir.
++ **Üsteli panel** ve küçük **panel**: (isteğe bağlı) kullanılacak doldurma miktarı üzerinde daha fazla denetim sağlar. **Önemli:** Bu öznitelikler ve yalnızca yukarıdaki **doldurma** özelliği ***_ tanımlanmazsa tanımlanabilir. Değerler, paket parametre sayısı olan uzunluklara sahip tamsayı değerli diziler olmalıdır. Bu öznitelikler belirtildiğinde, giriş katmanının her boyutunun alt ve üst uçlarına "kukla" düğümler eklenir. Her boyuttaki alt ve üst uçlarına eklenen düğümlerin sayısı _* küçük panel**[i] ve en büyük **panel**[i] tarafından belirlenir.
 
     Çekirdekler 'in yalnızca "gerçek" düğümlere karşılık geldiğinden ve "kukla" düğümlere karşılık gelmesini sağlamak için aşağıdaki koşulların karşılanması gerekir:
   - Küçük **panel** bileşeninin her bileşeni, öğesinden kesinlikle küçük olmalıdır `KernelShape[d]/2` .
   - Üstün her bileşeni, ' den **büyük olmamalıdır** `KernelShape[d]/2` .
   - Bu özniteliklerin varsayılan değeri, tüm bileşenleri 0 ' a eşit olan bir tanımlama grubu olur.
 
-    **Padding** = true ayarı, çekirdeğin "Center" değerini "Real" girişinin içinde tutmak için gereken kadar doldurma sağlar. Bu, çıktı boyutunu bilgi işlem için matematik bir bit olarak değiştirir. Genellikle, çıkış boyutu *D* olarak hesaplanır `D = (I - K) / S + 1` , burada `I` giriş boyutudur, `K` çekirdek boyutudur, `S` ilerdir ve `/` tamsayı bölümü olur (sıfıra yuvarlar). Üstepad = [1, 1] ayarlarsanız, giriş boyutu `I` etkin olarak 29 ve bu nedenle `D = (29 - 5) / 2 + 1 = 13` . Ancak, **Padding** = true olduğunda, temelde `I` tarafından tamponlanır `K - 1` ; Bu nedenle `D = ((28 + 4) - 5) / 2 + 1 = 27 / 2 + 1 = 13 + 1 = 14` . Üstpanel ve küçük **UpperPad** **panel** değerlerini belirterek, doldurma üzerinde yalnızca **Padding** = true değerini ayarlamış kadar daha fazla denetim sahibi olursunuz.
+    **Padding** = true ayarı, çekirdeğin "Center" değerini "Real" girişinin içinde tutmak için gereken kadar doldurma sağlar. Bu, çıktı boyutunu bilgi işlem için matematik bir bit olarak değiştirir. Genellikle, çıkış boyutu *D* olarak hesaplanır `D = (I - K) / S + 1` , burada `I` giriş boyutudur, `K` çekirdek boyutudur, `S` ilerdir ve `/` tamsayı bölümü olur (sıfıra yuvarlar). Üstepad = [1, 1] ayarlarsanız, giriş boyutu `I` etkin olarak 29 ve bu nedenle `D = (29 - 5) / 2 + 1 = 13` . Ancak, **Padding** = true olduğunda, temelde `I` tarafından tamponlanır `K - 1` ; Bu nedenle `D = ((28 + 4) - 5) / 2 + 1 = 27 / 2 + 1 = 13 + 1 = 14` . Üstpanel ve küçük  **panel** değerlerini belirterek, doldurma üzerinde yalnızca **Padding** = true değerini ayarlamış kadar daha fazla denetim sahibi olursunuz.
 
 Evsel ağlar ve uygulamaları hakkında daha fazla bilgi için şu makalelere bakın:
 
@@ -266,9 +266,9 @@ Yanıt normalleştirme, sinir ağlarında genelleştirmeye yardımcı olmak içi
 
 Yanıt normalleştirme paketleri, **Paylaşım**, **Mapcount** ve **ağırlıklar** hariç tüm evsel öznitelikleri destekler.
 
-+ Çekirdek x _ ile aynı haritada neurlanlar içeriyorsa **_x_*, normalleştirme şeması _* aynı eşleme normalleştirmesi olarak adlandırılır**. Aynı eşleme normalleştirmesini tanımlamak için **ınputshape** içindeki ilk koordinat 1 değerini içermelidir.
++ Çekirdek, ***x** _ ile aynı haritada neurlanlar içeriyorsa, normalleştirme şeması _ * aynı eşleme normalleştirme * * olarak adlandırılır. Aynı eşleme normalleştirmesini tanımlamak için **ınputshape** içindeki ilk koordinat 1 değerini içermelidir.
 
-+ Çekirdek, x _ ile aynı uzamsal konumdaki neurlanlar içeriyorsa **_x_*, ancak şemaların diğer Eşlemlerde olması halinde, normalleştirme şeması*, haritalar normalleştirmede _ olarak adlandırılır**. Bu tür bir yanıt normalleştirme, gerçek olarak bulunan tür tarafından ilham olarak bulunan, büyük etkinleştirme düzeyleri için, farklı haritalar üzerinde hesaplanan neuron çıkışları arasında rekabet oluşturma gibi bir yan yana engelleme biçimi uygular. Haritalar normalleştirmesini belirlemek için ilk koordinat, bir tamsayı ve eşleme sayısından büyük bir tamsayı olmalıdır ve koordinatların geri kalanı 1 değerini içermelidir.
++ Çekirdek, ***x** _ ile aynı uzamsal konumda neurlanlar içeriyorsa, ancak bu haritalar diğer Eşlemlerde ise, normalleştirme şeması, haritalar normalleştirmesi * * üzerinde _ * olarak adlandırılır. Bu tür bir yanıt normalleştirme, gerçek olarak bulunan tür tarafından ilham olarak bulunan, büyük etkinleştirme düzeyleri için, farklı haritalar üzerinde hesaplanan neuron çıkışları arasında rekabet oluşturma gibi bir yan yana engelleme biçimi uygular. Haritalar normalleştirmesini belirlemek için ilk koordinat, bir tamsayı ve eşleme sayısından büyük bir tamsayı olmalıdır ve koordinatların geri kalanı 1 değerini içermelidir.
 
 Yanıt normalleştirme paketleri, hedef düğüm değerini belirlemede önceden tanımlanmış bir işlevi kaynak düğüm değerlerine uygulayarak, hiçbir zaman kaybı yoktur (ağırlık veya Bialar).
 

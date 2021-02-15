@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/28/2021
-ms.openlocfilehash: 5fc47599d09e5be60311dbda15868d87de4d91d2
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: 5381c12253f3f301099d469639cc75e390ebceff
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99509393"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100360967"
 ---
 # <a name="creating-indexers-in-azure-cognitive-search"></a>Azure Bilişsel Arama Dizin oluşturucular oluşturma
 
@@ -142,6 +142,20 @@ Zamanlanan işleme genellikle Değiştirilen içeriğin artımlı dizin oluştur
 + [Azure Data Lake Storage 2. Nesil](search-howto-index-azure-data-lake-storage.md)
 + [Azure Tablo depolama](search-howto-indexing-azure-tables.md)
 + [Azure Cosmos DB](search-howto-index-cosmosdb.md)
+
+## <a name="change-detection-and-indexer-state"></a>Algılama ve Dizin Oluşturucu durumunu değiştir
+
+Dizin oluşturucular temel verilerdeki değişiklikleri algılayabilir ve yalnızca her bir Dizin Oluşturucu çalıştırmasında yeni veya güncelleştirilmiş belgeleri işleyebilir. Örneğin, Dizin Oluşturucu durumu bir çalıştırmanın işlenen belgelerle başarılı olduğunu söyyorsa `0/0` , dizin oluşturucunun temel alınan veri kaynağında yeni veya değiştirilmiş satır ya da blob bulmadığını gösterir.
+
+Bir dizin oluşturucunun değişiklik algılamayı nasıl desteklediği, veri kaynağına göre farklılık gösterir:
+
++ Azure Blob depolama, Azure Tablo depolama ve bir tarih ve saat ile her blob veya satır güncelleştirmesi Azure Data Lake Storage 2. damgası. Çeşitli Dizin oluşturucular bu bilgileri, dizinde güncelleştirilecek belgeleri belirlemede kullanır. Yerleşik değişiklik algılama, bir dizin oluşturucunun, sizin bölüminizdeki ek yapılandırma gerekmeden yeni ve güncelleştirilmiş belgeleri tanıyabileceği anlamına gelir.
+
++ Azure SQL ve Cosmos DB platformlarındaki değişiklik algılama özelliklerini sağlar. Veri kaynağı tanımınızda değişiklik algılama ilkesini belirtebilirsiniz.
+
+Büyük dizin oluşturma yükleri için bir Dizin Oluşturucu, iç "yüksek su işareti" ile işlenen son belgeyi de izler. İşaretleyici, API 'de hiçbir yerde gösterilmez, ancak dahili olarak Dizin Oluşturucu durdurulma konumunu izler. Dizin oluşturma devam ederse, zamanlanmış bir çalıştırma veya isteğe bağlı bir çağrı aracılığıyla Dizin Oluşturucu, kaldığı yerden seçim yapabilmesi için yüksek su işaretine başvurur.
+
+Tam olarak yeniden dizin eklemek için yüksek su işaretini temizlemeniz gerekiyorsa, [sıfırlama dizin oluşturucuyu](https://docs.microsoft.com/rest/api/searchservice/reset-indexer)kullanabilirsiniz. Daha seçmeli yeniden dizin oluşturmak için, [becerileri Sıfırla](https://docs.microsoft.com/rest/api/searchservice/preview-api/reset-skills) veya [belgeleri Sıfırla](https://docs.microsoft.com/rest/api/searchservice/preview-api/reset-documents)' yı kullanın. API 'Leri sıfırlama ile iç durumu temizleyebilir ve [artımlı zenginleştirme](search-howto-incremental-index.md)seçeneğini etkinleştirdiyseniz önbelleği de temizleyebilirsiniz. Her sıfırlama seçeneğinin daha fazla arka planı ve karşılaştırması için bkz. [Dizinleyicileri, becerileri ve belgeleri çalıştırma veya sıfırlama](search-howto-run-reset-indexers.md).
 
 ## <a name="know-your-data"></a>Verilerinizi öğrenin
 

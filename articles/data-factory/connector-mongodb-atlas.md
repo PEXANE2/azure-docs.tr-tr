@@ -1,23 +1,18 @@
 ---
 title: MongoDB Atlas 'dan veri kopyalama
 description: Azure Data Factory işlem hattındaki kopyalama etkinliğini kullanarak MongoDB Atlas 'dan desteklenen havuz veri depolarına veri kopyalamayı öğrenin.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
 ms.author: jingwang
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 09/28/2020
-ms.openlocfilehash: 34b0c053f4f0fea933a6e1f48d8f93e6352776b9
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: b2f77e4bd8df66084937da3dd203ebb71d9a3511
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91946868"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100368804"
 ---
 # <a name="copy-data-from-mongodb-atlas-using-azure-data-factory"></a>Azure Data Factory kullanarak MongoDB Atlas 'dan veri kopyalama
 
@@ -29,13 +24,13 @@ Bu makalede, MongoDB Atlas veritabanından veri kopyalamak için Azure Data Fact
 
 MongoDB Atlas veritabanından desteklenen herhangi bir havuz veri deposuna veri kopyalayabilirsiniz. Kopyalama etkinliği tarafından kaynak/havuz olarak desteklenen veri depolarının listesi için [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats) tablosuna bakın.
 
-Özellikle, bu MongoDB Atlas Bağlayıcısı **4,2 'e kadar olan sürümleri**destekler.
+Özellikle, bu MongoDB Atlas Bağlayıcısı **4,2 'e kadar olan sürümleri** destekler.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 Kopyalama için Azure Integration Runtime kullanıyorsanız, etkin bölgenin [Azure Integration Runtime IP 'Leri](azure-integration-runtime-ip-addresses.md) MongoDB Atlas IP erişim listesine eklediğinizden emin olun.
 
-## <a name="getting-started"></a>Başlarken
+## <a name="getting-started"></a>Kullanmaya başlama
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -118,7 +113,7 @@ Aşağıdaki özellikler, etkinlik **kaynağını** kopyalama bölümünde deste
 | batchSize | MongoDB Atlas örneğinden alınan yanıtın her bir toplu işinde döndürülecek belge sayısını belirtir. Çoğu durumda, toplu iş boyutunu değiştirmek Kullanıcı veya uygulamayı etkilemez. Cosmos DB sınırlar, her toplu işlem, belge boyutunun batchSize toplam sayısı olan 40MB 'ı aşamaz, bu nedenle belge boyutunuz büyükse bu değeri azaltın. | No<br/>(varsayılan değer **100**' dir) |
 
 >[!TIP]
->ADF desteği BSON belgeyi **katı modda**kullanıyor. Filtre sorgunuzun kabuk modu yerine katı modda olduğundan emin olun. [MongoDB el ile](https://docs.mongodb.com/manual/reference/mongodb-extended-json/index.html)daha fazla açıklama bulabilirsiniz.
+>ADF desteği BSON belgeyi **katı modda** kullanıyor. Filtre sorgunuzun kabuk modu yerine katı modda olduğundan emin olun. [MongoDB el ile](https://docs.mongodb.com/manual/reference/mongodb-extended-json/index.html)daha fazla açıklama bulabilirsiniz.
 
 **Örnek:**
 

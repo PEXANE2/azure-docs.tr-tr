@@ -212,6 +212,8 @@
       items:
         - name: Dizin oluşturucu oluşturma
           href: search-howto-create-indexers.md
+        - name: Dizin oluşturucuyu çalıştırma veya sıfırlama
+          href: search-howto-run-reset-indexers.md
         - name: Dizin Oluşturucu zamanlama
           href: search-howto-schedule-indexers.md
         - name: Alan eşlemelerini tanımlama

@@ -3,21 +3,21 @@ title: 'ML Studio (klasik): uygulama yaşam döngüsü yönetimi-Azure'
 description: Azure Machine Learning Studio (klasik) üzerinde uygulama yaşam döngüsü yönetimi en iyi yöntemlerini uygulama
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.date: 10/27/2016
-ms.openlocfilehash: f5c9e27e894541d71986fe929cbc5d6fde31bc18
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 82d6f1fd250621ec34015970e1339ccfbd134675
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93308817"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100518411"
 ---
 # <a name="application-lifecycle-management-in-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio 'de uygulama yaşam döngüsü yönetimi (klasik)
 
-**Uygulama hedefi:** ![ İçin geçerlidir. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasik) ![ için geçerlidir. ](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
+**Uygulama hedefi:** ![ İçin geçerlidir. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasik) ![ için geçerlidir.](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
 
 Azure Machine Learning Studio (klasik), Azure bulut platformunda çalışır durumda olan Machine Learning denemeleri geliştirmeye yönelik bir araçtır. Visual Studio IDE ve ölçeklenebilir bulut hizmeti tek bir platformda birleştirilmiştir. Standart uygulama yaşam döngüsü yönetimi (ALM) uygulamalarını, çeşitli varlıkların dağıtımını otomatik yürütmeye ve dağıtıma, Azure Machine Learning Studio (klasik) içine ekleyebilirsiniz. Bu makalede bazı seçenekler ve yaklaşımların bazıları açıklanmaktadır.

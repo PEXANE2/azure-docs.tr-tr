@@ -3,18 +3,18 @@ title: Data Science örnekleri kopyalama-ML Studio (klasik)-Azure
 description: 'Veri bilimi için ticari gizli dizi: işlerinizi sizin için yapın. Azure Yapay Zeka Galerisi makine öğrenimi örneklerini alın.'
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: conceptual
 author: sdgilley
 ms.author: sgilley
 ms.custom: seodec18
 ms.date: 03/22/2019
-ms.openlocfilehash: 84caf1ea684e46eec00f8479bd0e7c4123e731b1
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 2410e5fed48b7ab206360debc3bbeb174b3943cb
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322796"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100517068"
 ---
 # <a name="copy-other-peoples-work-to-do-data-science"></a>Veri bilimi için başkalarının çalışmalarını kopyalama
 ## <a name="video-5-data-science-for-beginners-series"></a>Video 5: yeni başlayanlar için veri bilimi serisi
@@ -74,7 +74,7 @@ Bu denemeye tıklayın ve bu katkıda bulunan işi açıklayan bir Web sayfası 
 
 ![Studio 'da aç (klasik) düğmesi](./media/data-science-for-beginners-copy-other-peoples-work-to-do-data-science/open-in-studio.png)
 
-Bu, bana tıklayabilir ve **Azure Machine Learning Studio (klasik)** ' e doğru bir zaman alır. Denemenin bir kopyasını oluşturur ve kendi çalışma alanım 'a koyar. Bu, katkıda bulunan veri kümesini, yaptıkları tüm işlemleri, kullandıkları algoritmaların tümünü ve sonuçların nasıl kaydedildiğini içerir.
+Bu, bana tıklayabilir ve **Azure Machine Learning Studio (klasik)**' e doğru bir zaman alır. Denemenin bir kopyasını oluşturur ve kendi çalışma alanım 'a koyar. Bu, katkıda bulunan veri kümesini, yaptıkları tüm işlemleri, kullandıkları algoritmaların tümünü ve sonuçların nasıl kaydedildiğini içerir.
 
 ![Machine Learning Studio (klasik)-kümeleme algoritması örneğinde bir galeri denemesi açın](./media/data-science-for-beginners-copy-other-peoples-work-to-do-data-science/cluster-experiment-open-in-studio.png)
 

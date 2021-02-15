@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2020
 ms.author: yelevin
-ms.openlocfilehash: fe49481357b542ce52de5fc9dab3059cb584c229
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 902475ae3e60761fb30620c5ba2fa8cbd905c916
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87083914"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100099192"
 ---
 # <a name="connect-your-symantec-proxysg-to-azure-sentinel"></a>Symantec ProxySG 'nizi Azure Sentinel 'e bağlama
 
 > [!IMPORTANT]
 > Azure Sentinel 'deki Symantec ProxySG veri Bağlayıcısı Şu anda genel önizlemededir.
-> Bu özellik, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Bu özellik, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Bu makalede [Symantec ProxySG](https://www.broadcom.com/products/cyber-security/network/gateway/proxy-sg-and-advanced-secure-gateway) gerecinizi Azure Sentinel 'e nasıl bağlayabileceğiniz açıklanır. Symantec ProxySG veri Bağlayıcısı, Azure Sentinel ile Symantec ProxySG günlüklerinizi kolayca bağlamanıza olanak tanır, panoları görüntüleyebilir, özel uyarılar oluşturabilir ve araştırmayı geliştirebilirsiniz. Symantec ProxySG ve Azure Sentinel arasındaki tümleştirme Syslog kullanımını sağlar.
 
@@ -48,7 +48,7 @@ Başarılı bir bağlantı kurulduktan sonra, veriler Syslog altında Log Analyt
 
 ## <a name="validate-connectivity"></a>Bağlantıyı doğrula
 
-Günlüklerinizin Log Analytics görünene kadar 20 dakikadan bu kadar bir zaman çıkabilir. 
+Günlüklerinizin Log Analytics görünmeye başlaması 20 dakikaya kadar sürebilir. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

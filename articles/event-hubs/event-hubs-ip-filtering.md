@@ -2,13 +2,13 @@
 title: Azure Event Hubs güvenlik duvarı kuralları | Microsoft Docs
 description: Belirli IP adreslerinden Azure Event Hubs bağlantılara izin vermek için güvenlik duvarı kurallarını kullanın.
 ms.topic: article
-ms.date: 07/16/2020
-ms.openlocfilehash: e07f863bf8b7d5f64ec0ba04bf16fba12f4a785d
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.date: 02/12/2021
+ms.openlocfilehash: 18d043ebff7ff317207d0a33eaeba741fea8cc8a
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94427454"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100517204"
 ---
 # <a name="allow-access-to-azure-event-hubs-namespaces-from-specific-ip-addresses-or-ranges"></a>Belirli IP adreslerinden veya aralıklardan Azure Event Hubs ad alanlarına erişime izin ver
 Varsayılan olarak, istek geçerli kimlik doğrulaması ve yetkilendirmeyle geldiği sürece, Event Hubs ad alanlarına internet 'ten erişilebilir. IP güvenlik duvarı ile bunu, [CIDR (sınıfsız Inter-Domain yönlendirme)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) gösteriminde yalnızca bir IPv4 adresi veya IPv4 adres aralıkları kümesiyle sınırlayabilirsiniz.
@@ -26,8 +26,9 @@ Bu bölümde, bir Event Hubs ad alanı için IP güvenlik duvarı kuralları olu
 
 1. [Azure portal](https://portal.azure.com) **Event Hubs ad alanına** gidin.
 4. Sol menüdeki **Ayarlar** altında **ağ** ' ı seçin. **Ağ** sekmesini yalnızca **Standart** veya **adanmış** ad alanları için görürsünüz. 
-    > [!NOTE]
-    > Varsayılan olarak, **Seçilen ağlar** seçeneği aşağıdaki görüntüde gösterildiği gibi seçilidir. Bu sayfaya bir IP güvenlik duvarı kuralı belirtmezseniz veya bir sanal ağ eklerseniz, ad alanına **genel İnternet** üzerinden erişilebilir (erişim anahtarı kullanılarak).  
+    
+    > [!WARNING]
+    > **Seçili ağlar** seçeneğini belirleyin ve bu sayfada en az bir IP güvenlik duvarı kuralı veya bir sanal ağ eklememeniz durumunda, ad alanına **genel İnternet** üzerinden erişilebilir (erişim anahtarı kullanılarak).  
 
     :::image type="content" source="./media/event-hubs-firewall/selected-networks.png" alt-text="Ağlar sekmesi-seçili ağlar seçeneği" lightbox="./media/event-hubs-firewall/selected-networks.png":::    
 
@@ -55,23 +56,9 @@ Bu bölümde, bir Event Hubs ad alanı için IP güvenlik duvarı kuralları olu
 
 Aşağıdaki Kaynak Yöneticisi şablonu, var olan bir Event Hubs ad alanına bir IP filtre kuralı eklenmesine olanak sağlar.
 
-Şablon parametreleri:
+şablondaki **IPMask** , CIDR gösteriminde tek bir IPv4 adresidir veya bir IP adresleri bloğudur. Örneğin, CıDR gösteriminde 70.37.104.0/24, Aralık için önemli olan önek bit sayısını belirten, 70.37.104.0 ile 70.37.104.255 arasındaki 256 IPv4 adresini temsil eder.
 
-- **IPMask** , CIDR gösteriminde tek bir IPv4 ADRESIDIR veya IP adresi bloğudur. Örneğin, CıDR gösteriminde 70.37.104.0/24, Aralık için önemli olan önek bit sayısını belirten, 70.37.104.0 ile 70.37.104.255 arasındaki 256 IPv4 adresini temsil eder.
-
-> [!NOTE]
-> Mümkün olan reddetme kuralları olmadığı sürece, Azure Resource Manager şablonu, bağlantıları kısıtlayameyen **"Izin ver"** olarak ayarlanmış varsayılan eylemi içerir.
-> Sanal ağ veya güvenlik duvarları kuralları yaparken, **_"DefaultAction"_ öğesini değiştirmemiz gerekir**
-> 
-> Kaynak
-> ```json
-> "defaultAction": "Allow"
-> ```
-> şöyle değiştirin:
-> ```json
-> "defaultAction": "Deny"
-> ```
->
+Sanal ağ veya güvenlik duvarları kuralları eklerken, değerini `defaultAction` olarak ayarlayın `Deny` .
 
 ```json
 {
@@ -136,6 +123,9 @@ Aşağıdaki Kaynak Yöneticisi şablonu, var olan bir Event Hubs ad alanına bi
 ```
 
 Şablonu dağıtmak için [Azure Resource Manager][lnk-deploy]talimatlarını izleyin.
+
+> [!IMPORTANT]
+> IP ve sanal ağ kuralları yoksa, olarak ayarlamış olsanız bile tüm trafik ad alanına akar `defaultAction` `deny` .  Ad alanına genel İnternet üzerinden erişilebilir (erişim anahtarı kullanılarak). Yalnızca belirtilen IP adreslerinden veya bir sanal ağın alt ağından gelen trafiğe izin vermek için ad alanı için en az bir IP kuralı veya sanal ağ kuralı belirtin.  
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

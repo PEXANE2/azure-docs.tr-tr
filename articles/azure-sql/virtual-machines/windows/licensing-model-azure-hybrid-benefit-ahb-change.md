@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 11/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: ea274914ac70540d5763884bbd01e41e349a530d
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 5813331d5eafd953d776dd19d9cc885ff71b8be0
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879839"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100361562"
 ---
 # <a name="change-the-license-model-for-a-sql-virtual-machine-in-azure"></a>Azure'da SQL sanal makinesi için lisans modelini değiştirme
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -119,7 +119,6 @@ Lisans modelinin değiştirilmesi:
    - Yalnızca SQL Server Standard ve Enterprise sürümleri için desteklenir. Express, Web ve Developer için lisans değişiklikleri desteklenmez. 
    - Yalnızca Azure Resource Manager modeli aracılığıyla dağıtılan sanal makineler için desteklenir. Klasik model aracılığıyla dağıtılan sanal makineler desteklenmez. 
    - Yalnızca genel veya Azure Kamu bulutları için kullanılabilir. 
-   - Yalnızca tek bir ağ arabirimine (NIC) sahip sanal makinelerde desteklenir. 
 
 > [!Note]
 > Yalnızca yazılım güvencesi veya abonelik lisanslarına sahip çekirdek tabanlı lisanslama SQL Server Azure Hibrit Avantajı uygundur. SQL Server için sunucu + CAL Lisanslama kullanıyorsanız ve yazılım güvencesi varsa, bu sunucular için lisans taşınabilirliği ' ni kullanarak Azure SQL Server sanal makine görüntüsüne kendi lisansını getir ' i kullanabilirsiniz, ancak Azure Hibrit Avantajı diğer özelliklerinden yararlanabilirsiniz. 
@@ -136,10 +135,6 @@ Bu hata, SQL Server IaaS Aracısı uzantısına kayıtlı olmayan bir SQL Server
 
 Aboneliğinizi kaynak sağlayıcısına kaydetmeniz ve sonra [SQL Server VM SQL IaaS Aracısı Uzantısı ile kaydetmeniz](sql-agent-extension-manually-register-single-vm.md)gerekir. 
 
-
-**' ' Sanal makinesi \<vmname\> ilişkili birden fazla NIC 'ye sahip**
-
-Bu hata, birden fazla NIC içeren sanal makinelerde oluşur. Lisanslama modelini değiştirmeden önce NIC 'lerden birini kaldırın. Lisans modelini değiştirdikten sonra NIC 'i sanal makineye geri ekleyebilseniz de, otomatik yedekleme ve düzeltme eki uygulama gibi Azure portal işlemler artık desteklenmeyecektir. 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

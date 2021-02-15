@@ -1,22 +1,18 @@
 ---
 title: PowerShell kullanarak bir tabloyu artımlı olarak kopyalama
 description: Bu öğreticide, verileri bir Azure SQL veritabanından Azure Blob depolama alanına artımlı olarak kopyalayan bir Azure Data Factory işlem hattı oluşturacaksınız.
-services: data-factory
 author: dearandyxu
 ms.author: yexu
-manager: anandsub
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-dt-2019
 ms.date: 01/22/2018
-ms.openlocfilehash: 50608870fa397ad5586c626f1d1fe5c9d893b4ca
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: a3346f3f126b880a5a2983f9dd35aa84f6389a31
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222828"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100367733"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-powershell"></a>PowerShell kullanarak verileri Azure SQL veritabanından Azure Blob depolama alanına artımlı olarak yükleme
 
@@ -59,7 +55,7 @@ Bu çözümü oluşturmak için önemli adımlar şunlardır:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 

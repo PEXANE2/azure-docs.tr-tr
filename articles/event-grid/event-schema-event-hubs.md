@@ -2,25 +2,25 @@
 title: Azure Event Hubs Event Grid kaynak olarak
 description: Azure Event Grid olan olay hub 'ları olayları için sunulan özellikleri açıklar
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: 960aa1fe7184e1d02d28fdc135907119fee8f123
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 02/11/2021
+ms.openlocfilehash: e9bb4b5a27173181c7295e96a1eb0654a1a929e6
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86113692"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100363518"
 ---
 # <a name="azure-event-hubs-as-an-event-grid-source"></a>Azure Event Hubs Event Grid kaynak olarak
 
-Bu makalede, Olay Hub 'ları olayları için özellikler ve şema sağlanmaktadır.Olay şemalarına giriş için bkz. [Azure Event Grid olay şeması](event-schema.md).
+Bu makalede, Olay Hub 'ları olayları için özellikler ve şema sağlanmaktadır. Olay şemalarına giriş için bkz. [Azure Event Grid olay şeması](event-schema.md).
 
-## <a name="event-grid-event-schema"></a>Event Grid olay şeması
-
-### <a name="available-event-types"></a>Kullanılabilir olay türleri
+## <a name="available-event-types"></a>Kullanılabilir olay türleri
 
 Event Hubs yakalama dosyası oluşturulduğunda **Microsoft. EventHub. CaptureFileCreated** olay türünü yayar.
 
-### <a name="example-event"></a>Örnek olay
+## <a name="example-event"></a>Örnek olay
+
+# <a name="event-grid-event-schema"></a>[Event Grid olay şeması](#tab/event-grid-event-schema)
 
 Bu örnek olay, yakalama özelliği bir dosya depoladığında harekete geçirilen bir olay hub 'ı olayının şemasını gösterir: 
 
@@ -49,34 +49,83 @@ Bu örnek olay, yakalama özelliği bir dosya depoladığında harekete geçiril
 ]
 ```
 
-### <a name="event-properties"></a>Olay özellikleri
+# <a name="cloud-event-schema"></a>[Bulut olay şeması](#tab/cloud-event-schema)
+
+Bu örnek olay, yakalama özelliği bir dosya depoladığında harekete geçirilen bir olay hub 'ı olayının şemasını gösterir: 
+
+```json
+[
+    {
+        "source": "/subscriptions/<guid>/resourcegroups/rgDataMigrationSample/providers/Microsoft.EventHub/namespaces/tfdatamigratens",
+        "subject": "eventhubs/hubdatamigration",
+        "type": "Microsoft.EventHub.CaptureFileCreated",
+        "time": "2017-08-31T19:12:46.0498024Z",
+        "id": "14e87d03-6fbf-4bb2-9a21-92bd1281f247",
+        "data": {
+            "fileUrl": "https://tf0831datamigrate.blob.core.windows.net/windturbinecapture/tfdatamigratens/hubdatamigration/1/2017/08/31/19/11/45.avro",
+            "fileType": "AzureBlockBlob",
+            "partitionId": "1",
+            "sizeInBytes": 249168,
+            "eventCount": 1500,
+            "firstSequenceNumber": 2400,
+            "lastSequenceNumber": 3899,
+            "firstEnqueueTime": "2017-08-31T19:12:14.674Z",
+            "lastEnqueueTime": "2017-08-31T19:12:44.309Z"
+        },
+        "specversion": "1.0"
+    }
+]
+```
+
+
+---
+
+
+## <a name="event-properties"></a>Olay özellikleri
+
+# <a name="event-grid-event-schema"></a>[Event Grid olay şeması](#tab/event-grid-event-schema)
+Bir olay aşağıdaki en üst düzey verilere sahiptir:
+
+| Özellik | Tür | Description |
+| -------- | ---- | ----------- |
+| `topic` | dize | Olay kaynağının tam kaynak yolu. Bu alan yazılabilir değil. Event Grid bu değeri sağlar. |
+| `subject` | string | Olay konusunun yayımcı tarafından tanımlanan yolu. |
+| `eventType` | string | Bu olay kaynağı için kayıtlı olay türlerinden biri. |
+| `eventTime` | string | Etkinliğin UTC saatine göre oluşturulduğu zaman. |
+| `id` | string | Etkinliğin benzersiz tanımlayıcısı. |
+| `data` | object | Olay Hub 'ı olay verileri. |
+| `dataVersion` | string | Veri nesnesinin şema sürümü. Şema sürümünü yayımcı tanımlar. |
+| `metadataVersion` | string | Olay meta verilerinin şema sürümü. Event Grid en üst düzey özelliklerin şemasını tanımlar. Event Grid bu değeri sağlar. |
+
+# <a name="cloud-event-schema"></a>[Bulut olay şeması](#tab/cloud-event-schema)
 
 Bir olay aşağıdaki en üst düzey verilere sahiptir:
 
-| Özellik | Tür | Açıklama |
+| Özellik | Tür | Description |
 | -------- | ---- | ----------- |
-| konu başlığı | string | Olay kaynağının tam kaynak yolu. Bu alan yazılabilir değil. Event Grid bu değeri sağlar. |
-| subject | string | Olay konusunun yayımcı tarafından tanımlanan yolu. |
-| eventType | string | Bu olay kaynağı için kayıtlı olay türlerinden biri. |
-| eventTime | string | Etkinliğin UTC saatine göre oluşturulduğu zaman. |
-| kimlik | string | Etkinliğin benzersiz tanımlayıcısı. |
-| veriler | object | Olay Hub 'ı olay verileri. |
-| dataVersion | string | Veri nesnesinin şema sürümü. Şema sürümünü yayımcı tanımlar. |
-| metadataVersion | string | Olay meta verilerinin şema sürümü. Event Grid en üst düzey özelliklerin şemasını tanımlar. Event Grid bu değeri sağlar. |
+| `source` | dize | Olay kaynağının tam kaynak yolu. Bu alan yazılabilir değil. Event Grid bu değeri sağlar. |
+| `subject` | string | Olay konusunun yayımcı tarafından tanımlanan yolu. |
+| `type` | string | Bu olay kaynağı için kayıtlı olay türlerinden biri. |
+| `time` | string | Etkinliğin UTC saatine göre oluşturulduğu zaman. |
+| `id` | string | Etkinliğin benzersiz tanımlayıcısı. |
+| `data` | object | Olay Hub 'ı olay verileri. |
+| `specversion` | string | CloudEvents şema belirtimi sürümü. |
+
+---
 
 Veri nesnesi aşağıdaki özelliklere sahiptir:
 
-| Özellik | Tür | Açıklama |
+| Özellik | Tür | Description |
 | -------- | ---- | ----------- |
-| Dosya URL 'si | string | Yakalama dosyasının yolu. |
-| fileType | string | Yakalama dosyasının dosya türü. |
-| PartitionID | string | Parça KIMLIĞI. |
-| sizeInBytes | tamsayı | Dosya boyutu. |
-| eventCount | tamsayı | Dosyadaki olay sayısı. |
-| firstSequenceNumber | tamsayı | Kuyruktaki en küçük sıra numarası. |
-| lastSequenceNumber | tamsayı | Kuyruktaki son sıra numarası. |
-| firstEnqueueTime | string | Sıradan ilk kez. |
-| lastEnqueueTime | string | Sıradaki son zaman. |
+| `fileUrl` | dize | Yakalama dosyasının yolu. |
+| `fileType` | string | Yakalama dosyasının dosya türü. |
+| `partitionId` | string | Parça KIMLIĞI. |
+| `sizeInBytes` | tamsayı | Dosya boyutu. |
+| `eventCount` | tamsayı | Dosyadaki olay sayısı. |
+| `firstSequenceNumber` | tamsayı | Kuyruktaki en küçük sıra numarası. |
+| `lastSequenceNumber` | tamsayı | Kuyruktaki son sıra numarası. |
+| `firstEnqueueTime` | string | Sıradan ilk kez. |
+| `lastEnqueueTime` | string | Sıradaki son zaman. |
 
 ## <a name="tutorials-and-how-tos"></a>Öğreticiler ve nasıl yapılır kılavuzları
 

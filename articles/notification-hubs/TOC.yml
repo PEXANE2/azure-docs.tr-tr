@@ -151,6 +151,8 @@
       href: notification-hubs-baidu-china-android-notifications-get-started.md
     - name: Notification Hubs aracılığıyla APNS VOIP kullanma
       href: voip-apns.md
+    - name: Notification Hubs için tanılama günlüklerini etkinleştirme
+      href: notification-hubs-diagnostic-logs.md
 - name: Başvuru
   items:
     - name: .NET
