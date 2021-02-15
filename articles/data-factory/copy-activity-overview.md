@@ -1,22 +1,17 @@
 ---
 title: Etkinliği Azure Data Factory Kopyala
 description: Azure Data Factory kopyalama etkinliği hakkında bilgi edinin. Desteklenen bir kaynak veri deposundan verileri desteklenen bir havuz veri deposuna kopyalamak için kullanabilirsiniz.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/12/2020
 ms.author: jingwang
-ms.openlocfilehash: 0b10a4de78c44e4c0a113a1f1a46c316b13a1f78
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: d52a0bba5fddaa865b8fad74b778ba7a3838b2a4
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96902174"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100387912"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Etkinliği Azure Data Factory Kopyala
 
@@ -183,7 +178,7 @@ Kopyalama etkinliğinin kaynak verilerinizi havuzunuzu nasıl eşlediğini öğr
 
 ## <a name="add-additional-columns-during-copy"></a>Kopyalama sırasında ek sütunlar ekleme
 
-Kaynak veri deposundan havuza veri kopyalamanın yanı sıra, havuza kopyalamak üzere ek veri sütunları da eklemek için yapılandırabilirsiniz. Örnek:
+Kaynak veri deposundan havuza veri kopyalamanın yanı sıra, havuza kopyalamak üzere ek veri sütunları da eklemek için yapılandırabilirsiniz. Örneğin:
 
 - Dosya tabanlı kaynaktan kopyalama yapıldığında, verilerin hangi dosyadan geldiğini izlemek için göreli dosya yolunu ek bir sütun olarak depolayın.
 - Belirtilen kaynak sütununu başka bir sütun olarak çoğaltın. 
@@ -253,7 +248,7 @@ Verileri SQL Database/Azure SYNAPSE Analytics 'e kopyalarken, hedef tablo yoksa,
 Bu özellik, herhangi bir kaynaktaki verileri aşağıdaki havuz veri depolarına kopyalarken desteklenir. *ADF yazma Kullanıcı arabirimi* – > *kopyalama etkinliği havuzu* – > *Tablo seçeneği* – > *otomatik olarak tablo oluştur* veya `tableOption` kopyalama etkinliği havuz yükünde özellik aracılığıyla) seçeneğini bulabilirsiniz.
 
 - [Azure SQL Veritabanı](connector-azure-sql-database.md)
-- [Azure SQL Veritabanı Yönetilen Örneği](connector-azure-sql-managed-instance.md)
+- [Azure SQL veritabanı yönetilen örneği](connector-azure-sql-managed-instance.md)
 - [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md)
 - [SQL Server](connector-sql-server.md)
 

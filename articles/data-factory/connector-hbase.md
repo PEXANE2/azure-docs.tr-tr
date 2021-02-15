@@ -1,22 +1,17 @@
 ---
 title: Azure Data Factory kullanarak HBase 'den veri kopyalama
 description: Azure Data Factory bir işlem hattındaki kopyalama etkinliğini kullanarak HBase 'den desteklenen havuz veri depolarına veri kopyalamayı öğrenin.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: f2d10a6150a6e6957b303ca391c97e166342111c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 02f4b88b1dab99b3b052f59f91f7869d8aedc77f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81417248"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100388371"
 ---
 # <a name="copy-data-from-hbase-using-azure-data-factory"></a>Azure Data Factory kullanarak HBase 'den veri kopyalama 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -38,7 +33,7 @@ Azure Data Factory, bağlantıyı etkinleştirmek için yerleşik bir sürücü 
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
-## <a name="getting-started"></a>Başlarken
+## <a name="getting-started"></a>Kullanmaya başlama
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -50,18 +45,18 @@ HBase bağlı hizmeti için aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Type özelliği: **HBase** olarak ayarlanmalıdır | Evet |
-| konak | HBase sunucusunun IP adresi veya ana bilgisayar adı. Yani.  `[clustername].azurehdinsight.net`, `192.168.222.160` )  | Evet |
-| port | HBase örneğinin istemci bağlantılarını dinlemek için kullandığı TCP bağlantı noktası. Varsayılan değer 9090 ' dir. Azure Hdınsights 'e bağlanıyorsanız, bağlantı noktasını 443 olarak belirtin. | Hayır |
-| httpPath | HBase sunucusuna karşılık gelen kısmi URL (örn. `/hbaserest0` hdınsights kümesi kullanılırken). | Hayır |
-| authenticationType | HBase sunucusuna bağlanmak için kullanılacak kimlik doğrulama mekanizması. <br/>İzin verilen değerler: **anonim**, **temel** | Evet |
-| username | HBase örneğine bağlanmak için kullanılan Kullanıcı adı.  | Hayır |
-| password | Kullanıcı adına karşılık gelen parola. Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | Hayır |
-| enableSsl | Sunucu bağlantılarının TLS kullanılarak şifrelenip şifrelenmediğini belirtir. Varsayılan değer false'tur.  | Hayır |
-| trustedCertPath | TLS üzerinden bağlanılırken sunucuyu doğrulamak için güvenilir CA sertifikaları içeren. ped dosyasının tam yolu. Bu özellik yalnızca, şirket içinde barındırılan IR 'de TLS kullanılırken ayarlanabilir. Varsayılan değer, IR ile birlikte yüklenen CAcert. Pez dosyasıdır.  | Hayır |
-| Allowwhostnamecnuyuşmazlığını | TLS üzerinden bağlanılırken, CA tarafından verilen bir TLS/SSL sertifika adının, sunucunun ana bilgisayar adıyla eşleşmesi gerekip gerekmediğini belirtir. Varsayılan değer false'tur.  | Hayır |
-| allowSelfSignedServerCert | Sunucudan kendinden imzalı sertifikalara izin verilip verilmeyeceğini belirtir. Varsayılan değer false'tur.  | Hayır |
-| connectVia | Veri deposuna bağlanmak için kullanılacak [Integration Runtime](concepts-integration-runtime.md) . [Önkoşullar](#prerequisites) bölümünden daha fazla bilgi edinin. Belirtilmemişse, varsayılan Azure Integration Runtime kullanır. |Hayır |
+| tür | Type özelliği: **HBase** olarak ayarlanmalıdır | Yes |
+| konak | HBase sunucusunun IP adresi veya ana bilgisayar adı. Yani.  `[clustername].azurehdinsight.net`, `192.168.222.160` )  | Yes |
+| port | HBase örneğinin istemci bağlantılarını dinlemek için kullandığı TCP bağlantı noktası. Varsayılan değer 9090 ' dir. Azure Hdınsights 'e bağlanıyorsanız, bağlantı noktasını 443 olarak belirtin. | No |
+| httpPath | HBase sunucusuna karşılık gelen kısmi URL (örn. `/hbaserest0` hdınsights kümesi kullanılırken). | No |
+| authenticationType | HBase sunucusuna bağlanmak için kullanılacak kimlik doğrulama mekanizması. <br/>İzin verilen değerler: **anonim**, **temel** | Yes |
+| username | HBase örneğine bağlanmak için kullanılan Kullanıcı adı.  | No |
+| password | Kullanıcı adına karşılık gelen parola. Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | No |
+| enableSsl | Sunucu bağlantılarının TLS kullanılarak şifrelenip şifrelenmediğini belirtir. Varsayılan değer false'tur.  | No |
+| trustedCertPath | TLS üzerinden bağlanılırken sunucuyu doğrulamak için güvenilir CA sertifikaları içeren. ped dosyasının tam yolu. Bu özellik yalnızca, şirket içinde barındırılan IR 'de TLS kullanılırken ayarlanabilir. Varsayılan değer, IR ile birlikte yüklenen CAcert. Pez dosyasıdır.  | No |
+| Allowwhostnamecnuyuşmazlığını | TLS üzerinden bağlanılırken, CA tarafından verilen bir TLS/SSL sertifika adının, sunucunun ana bilgisayar adıyla eşleşmesi gerekip gerekmediğini belirtir. Varsayılan değer false'tur.  | No |
+| allowSelfSignedServerCert | Sunucudan kendinden imzalı sertifikalara izin verilip verilmeyeceğini belirtir. Varsayılan değer false'tur.  | No |
+| connectVia | Veri deposuna bağlanmak için kullanılacak [Integration Runtime](concepts-integration-runtime.md) . [Önkoşullar](#prerequisites) bölümünden daha fazla bilgi edinin. Belirtilmemişse, varsayılan Azure Integration Runtime kullanır. |No |
 
 >[!NOTE]
 >Kümeniz, HDInsight gibi yapışkan oturumu desteklemiyorsa, http yolu ayarının sonunda doğrudan düğüm dizini ekleyin, örneğin `/hbaserest0` yerine belirtin `/hbaserest` .
@@ -127,11 +122,11 @@ HBase bağlı hizmeti için aşağıdaki özellikler desteklenir:
 
 Veri kümelerini tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi için bkz. [veri kümeleri](concepts-datasets-linked-services.md) makalesi. Bu bölüm, HBase veri kümesi tarafından desteklenen özelliklerin bir listesini sağlar.
 
-Verileri HBase 'den kopyalamak için, veri kümesinin Type özelliğini **Hbaseobject**olarak ayarlayın. Aşağıdaki özellikler desteklenir:
+Verileri HBase 'den kopyalamak için, veri kümesinin Type özelliğini **Hbaseobject** olarak ayarlayın. Aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Veri kümesinin Type özelliği: **Hbaseobject** olarak ayarlanmalıdır | Evet |
+| tür | Veri kümesinin Type özelliği: **Hbaseobject** olarak ayarlanmalıdır | Yes |
 | tableName | Tablonun adı. | Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse) |
 
 **Örnek**
@@ -157,11 +152,11 @@ Etkinlikleri tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi iç
 
 ### <a name="hbasesource-as-source"></a>Kaynak olarak HBaseSource
 
-HBase 'den veri kopyalamak için kopyalama etkinliğindeki kaynak türünü **Hbasesource**olarak ayarlayın. Aşağıdaki özellikler, etkinlik **kaynağını** kopyalama bölümünde desteklenir:
+HBase 'den veri kopyalamak için kopyalama etkinliğindeki kaynak türünü **Hbasesource** olarak ayarlayın. Aşağıdaki özellikler, etkinlik **kaynağını** kopyalama bölümünde desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Kopyalama etkinliği kaynağının Type özelliği: **Hbasesource** olarak ayarlanmalıdır | Evet |
+| tür | Kopyalama etkinliği kaynağının Type özelliği: **Hbasesource** olarak ayarlanmalıdır | Yes |
 | sorgu | Verileri okumak için özel SQL sorgusunu kullanın. Örneğin: `"SELECT * FROM MyTable"`. | Hayır (veri kümesinde "tableName" belirtilmişse) |
 
 **Örnek:**

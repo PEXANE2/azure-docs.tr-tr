@@ -9,12 +9,12 @@ ms.subservice: security
 ms.date: 12/03/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: c6ec84d41d113a38e78ab13404ef19faf625530b
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: 513d23de3d7f823ec934af32e5f3776e876f02d8
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100102181"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100369008"
 ---
 # <a name="how-to-set-up-access-control-for-your-synapse-workspace"></a>SYNAPSE çalışma alanınız için erişim denetimi nasıl ayarlanır 
 
@@ -132,7 +132,7 @@ SQL havuzları, Apache Spark havuzları ve tümleştirme çalışma zamanları o
 
 ## <a name="step-6-assign-sql-active-directory-admin-role"></a>6. Adım: SQL Active Directory yönetici rolü atama
 
-İş istasyonu Oluşturucu, çalışma alanı için otomatik olarak SQL Active Directory yöneticisi olarak ayarlanır.  Bu rol yalnızca tek bir kullanıcı veya gruba izin verebilir. Bu adımda, çalışma alanındaki SQL Active Directory Yöneticisini `workspace1_SQLAdmins` güvenlik grubuna atarsınız.  Bu rolü atamak, bu gruba, çalışma alanındaki tüm SQL havuzlarına ve veritabanlarına yüksek düzeyde ayrıcalıklı yönetici erişimi sağlar.   
+Çalışma alanı Oluşturucusu, çalışma alanı için otomatik olarak SQL Active Directory yöneticisi olarak ayarlanır.  Bu rol yalnızca tek bir kullanıcı veya gruba izin verebilir. Bu adımda, çalışma alanındaki SQL Active Directory Yöneticisini `workspace1_SQLAdmins` güvenlik grubuna atarsınız.  Bu rolü atamak, bu gruba, çalışma alanındaki tüm SQL havuzlarına ve veritabanlarına yüksek düzeyde ayrıcalıklı yönetici erişimi sağlar.   
 
 - Azure portalını açın
 - `workspace1` sayfasına gidin

@@ -14,7 +14,21 @@
 - name: Örnekler
   items:
     - name: Azure PowerShell
-      href: powershell-samples.md
+      items:
+        - name: Örnek betikler
+          href: powershell-samples.md
+        - name: VPN ağ geçidi oluşturma
+          href: scripts/vpn-gateway-sample-create-vpn-gateway-powershell.md
+        - name: VPN ağ geçidi + P2S RADIUS
+          href: scripts/vpn-gateway-sample-point-to-site-radius-authentication-powershell.md
+        - name: VPN Gateway + P2S sertifika kimlik doğrulaması
+          href: scripts/vpn-gateway-sample-point-to-site-certificate-authentication-powershell.md
+        - name: VPN Gateway + siteden siteye
+          href: scripts/vpn-gateway-sample-site-to-site-powershell.md
+        - name: Sanal Ağdan Sanal Ağa
+          href: scripts/vpn-gateway-sample-vnet-vnet-powershell.md
+        - name: VPN cihaz şablonu indirme
+          href: scripts/vpn-gateway-sample-site-to-site-download-devicescript-powershell.md
 - name: Kavramlar
   items:
     - name: Uzaktan çalışma
@@ -101,8 +115,6 @@
           href: ../expressroute/expressroute-howto-coexist-resource-manager.md?toc=%2fazure%2fvpn-gateway%2ftoc.json
         - name: Özel eşleme üzerinden VPN
           href: site-to-site-vpn-private-peering.md
-    - name: Azure ve AWS arasında siteler arası bağlantı
-      href: create-vpn-azure-aws-managed-solutions.md
     - name: Sanal Ağdan Sanal Ağa bağlantılar
       items:
         - name: VNet-VNet bağlantıları yapılandırma

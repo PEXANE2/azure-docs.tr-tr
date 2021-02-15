@@ -8,12 +8,12 @@ ms.date: 10/08/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 3f6c12b892e01aafd5beecdff14751481cf7fc96
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 406420fcd517ceda8ea6eedfc955f54b15541f74
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91963406"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100366611"
 ---
 # <a name="learn-how-to-deploy-modules-and-establish-routes-in-iot-edge"></a>IoT Edge'de modülleri dağıtmayı ve yolları oluşturmayı öğrenin
 
@@ -126,7 +126,7 @@ IoT Edge Agent istenen özellikler listesi, hangi modüllerin bir IoT Edge cihaz
 
 Dahil edilen veya dahil olması gereken özelliklerin tamamı listesi için bkz. [IoT Edge Aracısı ve IoT Edge hub özellikleri](module-edgeagent-edgehub.md).
 
-Örnek:
+Örneğin:
 
 ```json
 {
@@ -234,7 +234,7 @@ Kaynak özelliği aşağıdaki değerlerden herhangi biri olabilir:
 
 Koşul, bir yol bildiriminde isteğe bağlıdır. Kaynaktaki tüm iletileri havuza geçirmek istiyorsanız **WHERE** yan tümcesini tamamen bırakmalısınız. Ya da, koşulu karşılayan belirli iletileri veya ileti türlerini filtrelemek için [IoT Hub sorgu dilini](../iot-hub/iot-hub-devguide-routing-query-syntax.md) kullanabilirsiniz. IoT Edge yollar, ikizi etiketlerine veya özelliklerine göre iletileri filtrelemeyi desteklemez.
 
-IoT Edge modüller arasında geçen iletiler, cihazlarınızla Azure IoT Hub arasında geçen iletilerle aynı şekilde biçimlendirilir. Tüm iletiler JSON olarak biçimlendirilir ve **SystemProperties**, **appproperties**ve **Body** parametreleri vardır.
+IoT Edge modüller arasında geçen iletiler, cihazlarınızla Azure IoT Hub arasında geçen iletilerle aynı şekilde biçimlendirilir. Tüm iletiler JSON olarak biçimlendirilir ve **SystemProperties**, **appproperties** ve **Body** parametreleri vardır.
 
 Aşağıdaki söz dizimine sahip üç parametrenin herhangi biri etrafında sorgular oluşturabilirsiniz:
 
@@ -244,7 +244,7 @@ Aşağıdaki söz dizimine sahip üç parametrenin herhangi biri etrafında sorg
 
 İleti özellikleri için sorgu oluşturma hakkında örnekler için bkz. [cihazdan buluta ileti yolları sorgu ifadeleri](../iot-hub/iot-hub-devguide-routing-query-syntax.md).
 
-IoT Edge özgü bir örnek, bir yaprak cihazdan bir ağ geçidi cihazına ulaşan iletileri filtrelemek istediğinizde olur. Modüllerden gelen iletiler, **Connectionmoduleıd**adlı bir sistem özelliği içerir. Bu nedenle, yaprak cihazlardan iletileri doğrudan IoT Hub yönlendirmek istiyorsanız modül iletilerini dışlamak için aşağıdaki yolu kullanın:
+IoT Edge özgü bir örnek, bir yaprak cihazdan bir ağ geçidi cihazına ulaşan iletileri filtrelemek istediğinizde olur. Modüllerden gelen iletiler, **Connectionmoduleıd** adlı bir sistem özelliği içerir. Bu nedenle, yaprak cihazlardan iletileri doğrudan IoT Hub yönlendirmek istiyorsanız modül iletilerini dışlamak için aşağıdaki yolu kullanın:
 
 ```query
 FROM /messages/* WHERE NOT IS_DEFINED($connectionModuleId) INTO $upstream
@@ -256,7 +256,7 @@ Havuz, iletilerin nereye gönderileceğini tanımlar. Yalnızca modüller ve IoT
 
 Sink özelliği aşağıdaki değerlerden herhangi biri olabilir:
 
-| Havuz | Açıklama |
+| Havuz | Description |
 | ---- | ----------- |
 | `$upstream` | İletiyi IoT Hub gönder |
 | `BrokeredEndpoint("/modules/<moduleId>/inputs/<input>")` | İletiyi belirli bir modülün belirli bir girdisine gönder |
@@ -327,7 +327,7 @@ Aşağıdaki örnekte, geçerli bir dağıtım bildirimi belgesinin nasıl gör�
           "edgeAgent": {
             "type": "docker",
             "settings": {
-              "image": "mcr.microsoft.com/azureiotedge-agent:1.0",
+              "image": "mcr.microsoft.com/azureiotedge-agent:1.1",
               "createOptions": ""
             }
           },
@@ -337,7 +337,7 @@ Aşağıdaki örnekte, geçerli bir dağıtım bildirimi belgesinin nasıl gör�
             "restartPolicy": "always",
             "startupOrder": 0,
             "settings": {
-              "image": "mcr.microsoft.com/azureiotedge-hub:1.0",
+              "image": "mcr.microsoft.com/azureiotedge-hub:1.1",
               "createOptions": "{\"HostConfig\":{\"PortBindings\":{\"443/tcp\":[{\"HostPort\":\"443\"}],\"5671/tcp\":[{\"HostPort\":\"5671\"}],\"8883/tcp\":[{\"HostPort\":\"8883\"}]}}}"
             }
           }

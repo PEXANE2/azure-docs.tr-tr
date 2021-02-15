@@ -1,22 +1,18 @@
 ---
 title: Kaynak denetimi
 description: Azure Data Factory 'da kaynak denetimini yapılandırmayı öğrenin
-services: data-factory
 ms.service: data-factory
-ms.workload: data-services
 author: dcstwh
 ms.author: weetok
-manager: anandsub
-ms.reviewer: ''
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/02/2020
-ms.openlocfilehash: 27f14834e45dd32bdf3a26d22d38ab250aa1bcbe
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: 5bf1877edaa6c13cb0c645eb2d1c7ec2dc53ad00
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98127745"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100392451"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Azure Data Factory kaynak denetimi
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
@@ -30,7 +26,7 @@ Varsayılan olarak, Azure Data Factory Kullanıcı arabirimi deneyimi (UX) yazar
 Daha iyi bir yazma deneyimi sağlamak için Azure Data Factory, bir Git deposunu Azure Repos veya GitHub ile yapılandırmanıza olanak tanır. Git, daha kolay değişiklik izleme ve işbirliğine olanak tanıyan bir sürüm denetim sistemidir. Bu makale, en iyi yöntemler ve sorun giderme kılavuzu ile birlikte bir git deposunda yapılandırma ve çalışmayı özetler.
 
 > [!NOTE]
-> Azure Data Factory git tümleştirmesi yalnızca Azure Kamu bulutundaki GitHub Enterprise için kullanılabilir.
+> Azure Kamu Bulutu için yalnızca GitHub Enterprise kullanılabilir.
 
 Azure Data Factory git ile tümleştirilme hakkında daha fazla bilgi edinmek için aşağıdaki 15 dakikalık öğretici videosunu görüntüleyin:
 

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/16/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 76a244810042adf3cec64b15fe847c5b684527c2
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 502776e85eaafa46fb2b5ce45ca3bd937e303566
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98631193"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100366327"
 ---
 # <a name="storsimple-8100-and-8600-migration-to-azure-file-sync"></a>StorSimple 8100 ve 8600 Azure Dosya Eşitleme 'e geçiş
 
@@ -33,12 +33,12 @@ Geçişinizi planlamaya başladığınızda öncelikle geçirmeniz gereken tüm 
 
 ### <a name="migration-cost-summary"></a>Geçiş maliyeti Özeti
 
-StorSimple Veri Yöneticisi bir kaynaktaki veri dönüştürme hizmeti işleri aracılığıyla StorSimple birimlerinden Azure dosya paylaşımlarına geçiş yapmak ücretsizdir. Geçiş sırasında ve sonrasında diğer maliyetler de tahakkuk edebilir:
+StorSimple Veri Yöneticisi kaynaktaki geçiş işleri aracılığıyla StorSimple birimlerinden Azure dosya paylaşımlarına geçiş yapmak ücretsizdir. Geçiş sırasında ve sonrasında diğer maliyetler de tahakkuk edebilir:
 
 * **Ağ çıkış:** StorSimple dosyalarınız, belirli bir Azure bölgesindeki bir depolama hesabında etkin. Azure dosya paylaşımlarını aynı Azure bölgesinde bulunan bir depolama hesabına geçirirseniz, çıkış maliyeti olmaz. Bu geçişin bir parçası olarak, dosyalarınızı farklı bir bölgedeki depolama hesabına taşıyabilirsiniz. Bu durumda, çıkış maliyetleri sizin için geçerlidir.
 * **Azure dosya paylaşma işlemleri:** Dosyalar bir Azure dosya paylaşımında (bir geçişin parçası olarak veya birinin dışında) kopyalandığında, dosya ve meta veriler yazıldığı için işlem maliyetleri uygulanır. En iyi uygulama olarak, geçiş sırasında işlem için iyileştirilmiş katmanda Azure dosya paylaşımınızı başlatın. Geçiş bittikten sonra istediğiniz katmana geçiş yapın. Aşağıdaki aşamalar bunu uygun noktada çağıracaktır.
 * **Azure dosya paylaşma katmanını değiştirme:** Azure dosya paylaşma maliyeti işlemlerinin katmanını değiştirme. Çoğu durumda, önceki noktadan gelen önerileri izlemek daha uygun maliyetli olacaktır.
-* **Depolama maliyeti:** Bu geçiş dosyaları bir Azure dosya paylaşımında kopyalamaya başladığında Azure dosya depolaması tüketilir ve faturalandırılır.
+* **Depolama maliyeti:** Bu geçiş dosyaları bir Azure dosya paylaşımında kopyalamaya başladığında Azure dosya depolaması tüketilir ve faturalandırılır. Geçirilen yedeklemeler [Azure dosya paylaşımında anlık görüntüler](storage-snapshots-files.md)olur. Dosya paylaşımının anlık görüntüleri yalnızca içerdikleri farklar için depolama kapasitesini kullanır.
 * **StorSimple:** StorSimple cihazlarının ve depolama hesaplarının sağlanması ihtimaline kadar depolama, yedeklemeler ve Gereçler için StorSimple maliyeti gerçekleşmeye devam edecektir.
 
 ### <a name="direct-share-access-vs-azure-file-sync"></a>Doğrudan paylaşma-erişim ve Azure Dosya Eşitleme karşılaştırması
@@ -49,7 +49,7 @@ Doğrudan erişim için bir alternatif [Azure dosya eşitleme](./storage-sync-fi
 
 Azure Dosya Eşitleme, iki ana bileşeni temel alan bir Microsoft bulut hizmetidir:
 
-* Dosya eşitleme ve bulut katmanlama.
+* Herhangi bir Windows Server 'da performans erişim önbelleği oluşturmaya yönelik dosya eşitleme ve bulut katmanlama.
 * Azure 'da, SMB ve Dosya REST gibi birden çok protokol üzerinden erişilebilen yerel depolama olarak dosya paylaşımları.
 
 Azure dosya paylaşımları, öznitelikler, izinler ve zaman damgaları gibi depolanmış dosyalardaki önemli dosya uygunluk yönlerini korurlar. Azure dosya paylaşımları ile, artık bulutta depolanan dosya ve klasörleri yorumlamak için bir uygulama veya hizmet gereksinimi yoktur. Bunlara Windows Dosya Gezgini gibi tanıdık protokoller ve istemciler üzerinden yerel olarak erişebilirsiniz. Azure dosya paylaşımları, genel amaçlı dosya sunucusu verilerini ve uygulama verilerini bulutta depolamanıza olanak tanır. Azure dosya paylaşımının yedeklenmesi yerleşik bir işlevdir ve Azure Backup tarafından daha da geliştirilebilir.
@@ -61,14 +61,14 @@ Bu makalede geçiş adımları ele alınmaktadır. Geçirmeden önce Azure Dosya
 
 ### <a name="storsimple-service-data-encryption-key"></a>StorSimple hizmeti veri şifreleme anahtarı
 
-StorSimple gerecinizi ilk kez ayarladığınızda, bir hizmet veri şifreleme anahtarı oluşturmuş ve anahtarı güvenli bir şekilde depolamanızı istedi. Bu anahtar, StorSimple gerecinin dosyalarınızı depoladığı ilişkili Azure depolama hesabındaki tüm verileri şifrelemek için kullanılır.
+StorSimple gerecinizi ilk kez ayarladığınızda, "hizmet veri şifreleme anahtarı" oluşturmuş ve anahtarı güvenli bir şekilde depolamanızı istedi. Bu anahtar, StorSimple gerecinin dosyalarınızı depoladığı ilişkili Azure depolama hesabındaki tüm verileri şifrelemek için kullanılır.
 
-Başarılı bir geçiş için hizmet veri şifreleme anahtarı gereklidir. Şimdi, stoğunuzdaki her bir gereçde bu anahtarı almak için uygun bir zamandır.
+Başarılı bir geçiş için "hizmet verileri şifreleme anahtarı" gereklidir. Bu anahtarı, stokunuzdaki her bir uygulama için bir tane olmak üzere kayıtlarınızdaki bu anahtarı almak için iyi bir zamandır.
 
 Kayıtlarınızda anahtarları bulamıyorsanız, Gereç içinden anahtarı alabilirsiniz. Her gereç benzersiz bir şifreleme anahtarına sahiptir. Anahtarı almak için:
 
-* Azure portal üzerinden Microsoft Azure bir destek isteği dosyası. İsteğin içeriği StorSimple cihaz seri numaralarına ve "hizmet verileri şifreleme anahtarı" alma isteğine sahip olmalıdır.
-* StorSimple Destek Mühendisi bir ekran paylaşım toplantısı isteğiyle sizinle iletişim kuracaktır.
+* Azure portal üzerinden Microsoft Azure bir destek isteği dosyası. İstek, StorSimple cihaz seri numaranızı ve "hizmet veri şifreleme anahtarını" alma isteğini içermelidir.
+* StorSimple Destek Mühendisi, bir sanal Toplantı isteğiyle sizinle iletişim kuracaktır.
 * Toplantıdan başlamadan önce, [bir seri konsol](../../storsimple/storsimple-8000-windows-powershell-administration.md#connect-to-windows-powershell-for-storsimple-via-the-device-serial-console) veya [uzak bir PowerShell oturumu](../../storsimple/storsimple-8000-windows-powershell-administration.md#connect-remotely-to-storsimple-using-windows-powershell-for-storsimple)aracılığıyla StorSimple gerecinize bağlantığınızdan emin olun.
 
 > [!CAUTION]
@@ -81,15 +81,21 @@ Kayıtlarınızda anahtarları bulamıyorsanız, Gereç içinden anahtarı alabi
 ### <a name="storsimple-volume-backups"></a>StorSimple birim yedeklemeleri
 
 StorSimple, birim düzeyinde değişiklik yedeklemeleri sunmaktadır. Azure dosya paylaşımları, paylaşım anlık görüntüleri olarak da adlandırılan bu becerisine sahiptir.
+Geçiş işleriniz, canlı birimden verileri değil yalnızca yedeklemeleri taşıyabilir. Bu nedenle en son yedekleme her zaman bir geçişte taşınan yedeklemeler listesinde olmalıdır.
 
-Geçişinizin bir parçası olarak ne olduğuna karar verin, her türlü yedeklemeyi taşıma yükümlülüğü de vardır.
+Geçişiniz sırasında eski yedeklemeleri taşımaya gerek olup olmadığına karar verin.
+En iyi yöntem, bu listenin olabildiğince küçük tutulması, böylece geçiş işleriniz daha hızlı tamamlanır.
+
+Geçirilmesi gereken kritik yedeklemeleri belirlemek için yedekleme ilkelerinizin bir denetim listesini oluşturun. Örneğin:
+* En son yedekleme. (Note: en son yedekleme her zaman bu listenin bir parçası olmalıdır.)
+* 12 ay boyunca bir aylık yedekleme.
+* Üç yıl boyunca bir adet yedekleme. 
+
+Daha sonra, geçiş işlerinizi oluştururken, listenizdeki gereksinimleri karşılamak için geçirilmesi gereken tam StorSimple birim yedeklemelerini belirlemek için bu listeyi kullanabilirsiniz.
 
 > [!CAUTION]
-> , StorSimple birimlerinden yedeklemeleri geçirmeniz gerekiyorsa, bunu durdurun.
->
-> Şu anda yalnızca en son birim yedeklemenizi geçirebilirsiniz. Yedekleme geçişine yönelik destek, 2020 sonuna ulaştığında gönderilir. Şimdi başlatırsanız, yedeklemelerinizi daha sonra "başlatamazsınız". Gelecek sürümde, yedeklemelerin Azure dosya paylaşımı anlık görüntülerinin aralarında yer aldığı Azure dosya paylaşımlarına en eskiye "geri oynamaları" gerekir.
-
-Yalnızca canlı verileri geçirmek istiyorsanız ve yedeklemeler için herhangi bir gereksinim yoksa, bu kılavuzu izleyerek devam edebilirsiniz. Kısa süreli yedek saklama gereksiniminiz varsa, bir ay veya ikisi varsa geçişinize hemen devam etmeyi ve bu dönemden sonra StorSimple kaynaklarınızı sağlamayı seçebilirsiniz. Bu yaklaşım, Azure dosya paylaşımında gerek duyduğunuz kadar yedekleme geçmişi oluşturmanıza olanak sağlar. Her iki sistemi de çalıştırdığınız zaman, ek maliyet uygulanır. Bu yaklaşım, kısa süreli yedekleme bekletmeye ihtiyacınız olursa bu yaklaşımı dikkate almanız gerekmez.
+> **50** 'den fazla StorSimple birimi yedeklemesi seçilmesi desteklenmez.
+> Geçiş işleriniz yalnızca yedeklemeleri, canlı birimden hiçbir şekilde veri taşıyabilir. Bu nedenle, en son yedekleme canlı verilere en yakın olduğundan, her zaman bir geçişe taşınacak yedeklemeler listesinin bir parçası olmalıdır.
 
 ### <a name="map-your-existing-storsimple-volumes-to-azure-file-shares"></a>Mevcut StorSimple birimlerinizi Azure dosya paylaşımlarına eşleyin
 
@@ -99,31 +105,26 @@ Yalnızca canlı verileri geçirmek istiyorsanız ve yedeklemeler için herhangi
 
 Geçişiniz, her biri daha az sayıda Azure dosya paylaşımı tutan birden çok depolama hesabı dağıtımından faydalanır.
 
-Dosya paylaşımlarınız yüksek düzeyde etkin ise (birçok kullanıcı veya uygulama tarafından kullanılır), iki Azure dosya paylaşımı depolama hesabınızın performans sınırına ulaşabilirler. Bu nedenle, en iyi uygulama, her biri kendi bireysel dosya paylaşımlarına ve genellikle depolama hesabı başına ikiden fazla ya da üç paylaşımdan daha fazla depolama hesabına geçmeyecektir.
+Dosya paylaşımlarınız yüksek düzeyde etkin ise (birçok kullanıcı veya uygulama tarafından kullanılır), iki Azure dosya paylaşımı depolama hesabınızın performans sınırına ulaşabilirler. Bu nedenle, en iyi uygulama, her biri kendi tek dosya paylaşımlarına ve genellikle depolama hesabı başına ikiden fazla veya üç paylaşımdan daha fazla depolama hesabına geçiş yapmak olacaktır.
 
 En iyi yöntem, depolama hesaplarını her bir dosya paylaşımıyla dağıtmaktır. İçinde arşiv paylaşımlarınız varsa, birden fazla Azure dosya paylaşımını aynı depolama hesabında havuza alabilirsiniz.
 
-Bu konular, [buluta erişimi doğrudan](#direct-share-access-vs-azure-file-sync) (bır Azure VM veya hizmeti aracılığıyla) Azure dosya eşitleme kıyasla daha fazla geçerlidir. Yalnızca bu paylaşımlar üzerinde Azure Dosya Eşitleme kullanmayı planlıyorsanız, tek bir Azure depolama hesabına birden çok gruplandırma işlemi sorunsuz olur. Ayrıca, bir uygulamayı kaldırmak ve daha sonra bir dosya paylaşımının doğrudan erişebileceği bir buluta kaydırmak isteyebileceğiniz göz önünde bulundurun. Ya da Azure 'da, daha yüksek ıOPS ve üretilen iş numaralarına sahip olmanın avantajlarından faydalanabileceğiniz bir hizmeti kullanmaya başlayabilirsiniz.
+Bu konular, [buluta erişimi doğrudan](#direct-share-access-vs-azure-file-sync) (bır Azure VM veya hizmeti aracılığıyla) Azure dosya eşitleme kıyasla daha fazla geçerlidir. Bu paylaşımlar üzerinde Azure Dosya Eşitleme özel olarak kullanmayı planlıyorsanız, birkaçını tek bir Azure depolama hesabına göre gruplamak iyidir. Daha sonra, bir uygulamayı bir dosya paylaşımıyla doğrudan erişebilen buluta taşımak ve kaydırmak, bu senaryonun daha yüksek ıOPS ve aktarım hızı olması yararlı olabilir. Ya da Azure 'da, daha yüksek ıOPS ve aktarım hızı sahibi olmanın avantajlarından faydalanabileceğiniz bir hizmeti kullanmaya başlayabilirsiniz.
 
 Paylaşımlarınızın bir listesini yaptıysanız, her bir paylaşımı bulunacağı depolama hesabıyla eşleyin.
 
 > [!IMPORTANT]
 > Bir Azure bölgesine karar verin ve her depolama hesabının ve Azure Dosya Eşitleme kaynağın seçtiğiniz bölgeyle eşleştiğinden emin olun.
+> Depolama hesapları için ağ ve güvenlik duvarı ayarlarını şimdi yapılandırmayın. Bu yapılandırmalarda bu yapılandırmaların yapılması, geçişe olanaksız hale getirir. Geçiş işlemi tamamlandıktan sonra bu Azure depolama ayarlarını yapılandırın.
 
 ### <a name="phase-1-summary"></a>Aşama 1 Özeti
 
 1. aşama sonunda:
 
 * StorSimple cihazlarınız ve birimleriniz için iyi bir genel bakış sunulmaktadır.
-* Veri dönüştürme hizmeti, her StorSimple cihazı için hizmet veri şifreleme anahtarınızı aldığınız için buluttaki StorSimple birimlerine erişmeye hazır.
-* Hangi birimlerin geçirilmesi gerektiğini ve ayrıca birimlerinizi uygun sayıda Azure dosya paylaşımı ve depolama hesabı ile nasıl eşleneceğini gösteren bir planınız vardır.
-
-> [!CAUTION]
-> , StorSimple birimlerinden yedeklemeleri geçirmeniz gerekiyorsa, **burada durun**.
->
-> Bu geçiş yaklaşımı, şu anda yedeklemeleri geçiremeyen yeni veri dönüştürme hizmeti özelliklerine bağımlıdır. Yedekleme geçişine yönelik destek, 2020 sonuna ulaştığında gönderilir. Şu anda yalnızca canlı verilerinizi geçirebilirsiniz. Şimdi başlatırsanız, yedeklemelerinizi daha sonra "başlatamazsınız". Yedeklemeler arasında Azure dosya paylaşımı anlık görüntüleri ile, Azure dosya paylaşımlarının en eskiden en yeniye ve canlı verilere "oynanabilir" olması gerekir.
-
-Yalnızca canlı verileri geçirmek istiyorsanız ve yedeklemeler için herhangi bir gereksinim yoksa, bu kılavuzu izleyerek devam edebilirsiniz.
+* Her StorSimple cihazı için "hizmet veri şifreleme anahtarınızı" aldığınız için Veri Yöneticisi hizmeti buluttaki StorSimple birimlerine erişmeye hazır.
+* Hangi birimlerin ve yedeklemelerin (en son dışında) geçirilmesi gereken bir planınız vardır.
+* Birimlerinizi uygun sayıda Azure dosya paylaşımı ve depolama hesabı ile nasıl eşleyeceğinizi öğrenirsiniz.
 
 ## <a name="phase-2-deploy-azure-storage-and-migration-resources"></a>2. Aşama: Azure depolama ve geçiş kaynaklarını dağıtma
 
@@ -133,9 +134,12 @@ Bu bölümde, Azure 'da gereken farklı kaynak türlerini dağıtmaya yönelik k
 
 Muhtemelen birçok Azure depolama hesabı dağıtmanız gerekecektir. Her biri dağıtım planınıza göre daha az sayıda Azure dosya paylaşımını tutar ve bu makalenin önceki bölümünde tamamlanır. [Planlı depolama hesaplarınızı dağıtmak](../common/storage-account-create.md#create-a-storage-account)için Azure Portal gidin. Tüm yeni depolama hesapları için aşağıdaki temel ayarlara uygunluğunu göz önünde bulundurun.
 
+> [!IMPORTANT]
+> Depolama hesaplarınız için ağ ve güvenlik duvarı ayarlarını şimdi yapılandırmayın. Bu noktada bu yapılandırmaların yapılması, geçişe olanaksız hale getirir. Geçiş işlemi tamamlandıktan sonra bu Azure depolama ayarlarını yapılandırın.
+
 #### <a name="subscription"></a>Abonelik
 
-StorSimple dağıtımınız veya farklı bir dağıtım için kullandığınız aboneliği kullanabilirsiniz. Tek sınırlama, aboneliğinizin StorSimple aboneliğiyle aynı Azure Active Directory kiracısında olması gerekir. Geçişe başlamadan önce StorSimple aboneliğini doğru kiracıya taşımayı düşünün. Yalnızca tüm aboneliği taşıyabilirsiniz. Bireysel StorSimple kaynakları farklı bir kiracıya veya aboneliğe taşınamaz.
+StorSimple dağıtımınız veya farklı bir dağıtım için kullandığınız aboneliği kullanabilirsiniz. Tek sınırlama, aboneliğinizin StorSimple aboneliğiyle aynı Azure Active Directory kiracısında olması gerekir. Geçişe başlamadan önce StorSimple aboneliğini uygun kiracıya taşımayı düşünün. Yalnızca tüm aboneliği taşıyabilirsiniz, bireysel StorSimple kaynakları farklı bir kiracıya veya aboneliğe taşınamaz.
 
 #### <a name="resource-group"></a>Kaynak grubu
 
@@ -197,7 +201,7 @@ Büyük, 100-TIB kapasiteli dosya paylaşımlarının birçok avantajı vardır:
 
 * Daha küçük 5-TiB kapasiteli dosya paylaşımlarına kıyasla performansınız büyük ölçüde artmıştır (örneğin, ıOPS 'nin 10 katı).
 * Geçişiniz önemli ölçüde daha hızlı tamamlanır.
-* Bir dosya paylaşımının, kendisine geçirilecek tüm verileri tutmak için yeterli kapasiteye sahip olacağını doğrulayın.
+* Bir dosya paylaşımının, kendisine geçirilecek tüm verileri tutmak için yeterli kapasiteye sahip olduğundan emin olmanız gerekir. Bu işlem, fark yedeklemeleri için gereken depolama kapasitesi de dahildir.
 * Gelecekteki büyüme ele alınmıştır.
 
 ### <a name="azure-file-shares"></a>Azure dosya paylaşımları
@@ -232,24 +236,57 @@ Azure Dosya Eşitleme ile, en sık erişilen dosyaları şirket içi önbelleğe
 
 ## <a name="phase-3-create-and-run-a-migration-job"></a>3. Aşama: geçiş işi oluşturma ve çalıştırma
 
-Bu bölümde, bir geçiş işinin nasıl ayarlanacağı ve seçtiğiniz hedef Azure dosya paylaşımında kopyalanması gereken bir StorSimple birimindeki dizinlerin dikkatle nasıl eşlenileceği açıklanmaktadır. Başlamak için StorSimple Veri Yöneticisi gidin, menüdeki **iş tanımlarını** bulun ve **+ iş tanımı**' nı seçin. Hedef depolama türü, varsayılan **Azure dosya paylaşımıdır**.
+Bu bölümde, bir geçiş işinin nasıl ayarlanacağı ve seçtiğiniz hedef Azure dosya paylaşımında kopyalanması gereken bir StorSimple birimindeki dizinlerin dikkatle nasıl eşlenileceği açıklanmaktadır. Başlamak için StorSimple Veri Yöneticisi gidin, menüdeki **iş tanımlarını** bulun ve **+ iş tanımı**' nı seçin. Doğru hedef depolama türü varsayılan: **Azure dosya paylaşımıdır**.
 
 ![StorSimple 8000 serisi geçiş işi türleri.](media/storage-files-migration-storsimple-8000/storage-files-migration-storsimple-8000-new-job-type.png "İş tanımlarının bir ekran görüntüsü, iş türünü isteyen yeni bir Iş tanımları iletişim kutusuyla açılır Azure portal: dosya paylaşımında veya blob kapsayıcısına kopyalama.")
 
-> [!IMPORTANT]
-> Herhangi bir geçiş işini çalıştırmadan önce, StorSimple birimlerinizin otomatik olarak zamanlanmış yedeklemelerini durdurun.
-
 :::row:::
     :::column:::
-        ![StorSimple 8000 serisi geçiş işi.](media/storage-files-migration-storsimple-8000/storage-files-migration-storsimple-8000-new-job.png "Veri dönüştürme hizmeti işi için yeni iş oluşturma formunun ekran görüntüsü.")
+        ![StorSimple 8000 serisi geçiş işi.](media/storage-files-migration-storsimple-8000/storage-files-migration-storsimple-8000-new-job.png "Geçiş işi için yeni iş oluşturma formunun ekran görüntüsü.")
     :::column-end:::
     :::column:::
-        **İş tanımı adı**</br>Bu ad, taşıdığınız dosya kümesini göstermelidir. Azure dosya paylaşımınıza benzer bir ad vermek iyi bir uygulamadır. </br></br>**İşin çalıştığı konum**</br>Bir bölge seçerken, StorSimple depolama hesabınızla aynı bölgeyi seçmeniz gerekir, aksi takdirde, bu durumda bir bölge de buraya yakın olur. </br></br><h3>Kaynak</h3>**Kaynak aboneliği**</br>StorSimple Device Manager kaynağınızı depoladığınız aboneliği seçin. </br></br>**StorSimple kaynağı**</br>Gerecinizin birlikte kaydedildiği StorSimple Device Manager seçin. </br></br>**Hizmet verileri şifreleme anahtarı**</br>Kayıtlarınızda anahtarı bulamıyorsanız bu [makalenin önceki bölümüne](#storsimple-service-data-encryption-key) bakın. </br></br>**Cihaz**</br>Geçirmek istediğiniz birimi tutan StorSimple cihazınızı seçin. </br></br>**Birim**</br>Kaynak birimi seçin. Daha sonra, tüm birim veya alt dizinleri hedef Azure dosya paylaşımında geçirmek istediğinize karar verirsiniz. </br></br><h3>Hedef</h3>Bu geçiş işinin hedefi olarak abonelik, depolama hesabı ve Azure dosya paylaşımından birini seçin.
+        **İş tanımı adı**</br>Bu ad, taşıdığınız dosya kümesini göstermelidir. Azure dosya paylaşımınıza benzer bir ad vermek iyi bir uygulamadır. </br></br>**İşin çalıştığı konum**</br>Bir bölge seçerken, StorSimple depolama hesabınızla aynı bölgeyi seçmeniz gerekir, aksi takdirde, bu durumda bir bölge de buraya yakın olur. </br></br><h3>Kaynak</h3>**Kaynak aboneliği**</br>StorSimple Device Manager kaynağınızı depoladığınız aboneliği seçin. </br></br>**StorSimple kaynağı**</br>Gerecinizin birlikte kaydedildiği StorSimple Device Manager seçin. </br></br>**Hizmet verileri şifreleme anahtarı**</br>Kayıtlarınızda anahtarı bulamıyorsanız bu [makalenin önceki bölümüne](#storsimple-service-data-encryption-key) bakın. </br></br>**Cihaz**</br>Geçirmek istediğiniz birimi tutan StorSimple cihazınızı seçin. </br></br>**Birim**</br>Kaynak birimi seçin. Daha sonra, tüm birim veya alt dizinleri hedef Azure dosya paylaşımında geçirmek istediğinize karar verirsiniz.</br></br> **Birim yedeklemeleri**</br>Bu işin bir parçası olarak taşınacak belirli yedeklemeleri seçmek için *birim yedeklemeleri Seç* ' i seçebilirsiniz. [Bu makaledeki](#selecting-volume-backups-to-migrate) yakında, ayrılmış bir bölümde işlem ayrıntılı olarak ele alınmaktadır.</br></br><h3>Hedef</h3>Bu geçiş işinin hedefi olarak abonelik, depolama hesabı ve Azure dosya paylaşımından birini seçin.</br></br><h3>Dizin eşleme</h3>[Bu makaledeki adanmış bir bölüm](#directory-mapping), tüm ilgili ayrıntıları ele alır.
     :::column-end:::
 :::row-end:::
 
-> [!IMPORTANT]
-> Geçişi gerçekleştirmek için en son birim yedeklemesi kullanılacaktır. En az bir birim yedeğinin bulunduğundan emin olun, aksi halde iş başarısız olur. Ayrıca, en son yedeklemenin gerçek zamanlı olmasını mümkün olduğunca küçük bir şekilde canlı paylaşıma karşı korumak için oldukça güncel olduğundan emin olun. Yeni oluşturduğunuz işi çalıştırmadan *önce* el ile başka bir birim yedeklemesi tetiklenmesi ve tamamlanması yararlı olabilir.
+### <a name="selecting-volume-backups-to-migrate"></a>Geçirilecek birim yedeklemeleri seçme
+
+Geçirilmesi gereken yedeklemeler seçmenin önemli yönleri vardır:
+
+- Geçiş işleriniz, canlı bir birimden verileri değil yalnızca yedeklemeleri taşıyabilir. En son yedekleme, canlı verilere en yakın olan ve her zaman bir geçişe taşınan yedeklemeler listesinde olmalıdır.
+- En son yedeğinizin güncel olduğundan emin olun. Bir geçiş işi oluşturmadan önce el ile tetiklenmesi ve başka bir birim yedeklemesini tamamlamak yararlı olabilir. Canlı paylaşıma yönelik küçük bir Delta geçişi, geçiş deneyiminizi iyileştirir. Bu Delta sıfır olabilir = StorSimple biriminde en yeni yedekleme gerçekleştirildikten sonra gerçekleşen daha fazla değişiklik yok-sonra 5. Aşama: Kullanıcı kesildi, büyük ölçüde basitleşmez ve SED olur.
+- Yedeklemeler Azure dosya paylaşımında **en eskiden en eskiye** doğru oynatılıp yürütülmelidir. Daha eski bir yedekleme, bir geçiş işi çalıştıktan sonra Azure dosya paylaşımındaki yedeklemelerin listesini "sıralanamaz". Bu nedenle, bir iş oluşturmadan *önce* yedekleme listenizin tamamlandığından emin olmanız gerekir. 
+- İş oluşturulduktan sonra, iş hiç çalıştırılmasa bile, bir işteki yedeklemelerin bu listesi değiştirilemez. 
+
+:::row:::
+    :::column:::        
+        :::image type="content" source="media/storage-files-migration-storsimple-8000/storage-files-migration-storsimple-8000-job-select-backups.png" alt-text="Yeni iş oluşturma formunun, StorSimple yedeklemelerinin geçiş için seçildiği bölümü açıklayan ekran görüntüsü." lightbox="media/storage-files-migration-storsimple-8000/storage-files-migration-storsimple-8000-job-select-backups-expanded.png":::
+    :::column-end:::
+    :::column:::
+        Geçiş işiniz için StorSimple biriminizin yedeklerini seçmek için, iş oluşturma formunda *birim yedeklemeleri Seç* ' i seçin.
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        :::image type="content" source="media/storage-files-migration-storsimple-8000/storage-files-migration-storsimple-8000-job-select-backups-annotated.png" alt-text="Yedeklemeleri seçme için dikey pencerenin üst yarısındaki tüm kullanılabilir yedeklemeleri listeleyen bir resim. Seçilen bir yedekleme bu listede gri renkte olacak ve dikey pencerenin alt yarısında ikinci bir listeye eklenecektir. Ayrıca, yeniden de silinebilir." lightbox="media/storage-files-migration-storsimple-8000/storage-files-migration-storsimple-8000-job-select-backups-annotated.png":::
+    :::column-end:::
+    :::column:::
+        Yedekleme seçimi dikey penceresi açıldığında, iki listeye ayrılır. İlk listede, tüm kullanılabilir yedeklemeler görüntülenir. Belirli bir zaman aralığı için filtre uygulayarak sonuç kümesini genişletebilir ve daraltabilirsiniz. (sonraki bölüme bakın) </br></br>Seçilen bir yedekleme gri renkte görünür ve dikey pencerenin alt yarısında ikinci bir listeye eklenir. İkinci liste, geçiş için seçilen tüm yedeklemeleri görüntüler. Hatada seçili bir yedek de yeniden kaldırılabilir.
+        > [!CAUTION]
+        > Geçirmek istediğiniz **Tüm** yedeklemeleri seçmelisiniz. Daha sonra üzerinde eski yedeklemeler ekleyemezsiniz. İş oluşturulduktan sonra seçiminizi değiştirmek için işi değiştiremezsiniz.
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        :::image type="content" source="media/storage-files-migration-storsimple-8000/storage-files-migration-storsimple-8000-job-select-backups-time.png" alt-text="Yedekleme seçimi dikey penceresinin zaman aralığının seçimini gösteren ekran görüntüsü." lightbox="media/storage-files-migration-storsimple-8000/storage-files-migration-storsimple-8000-job-select-backups-time-expanded.png":::
+    :::column-end:::
+    :::column:::
+        Varsayılan olarak, liste en son yedi gün içinde StorSimple birim yedeklemelerini gösterecek şekilde filtrelenmiştir ve en son yedeklemenin seçimini kolaylaştırır. Daha önceki yedeklemeler için dikey pencerenin en üstündeki zaman aralığı filtresini kullanın. Mevcut bir filtreden seçim yapabilir veya yalnızca bu süre boyunca gerçekleştirilen yedeklemeleri filtrelemek için özel bir zaman aralığı ayarlayabilirsiniz.
+    :::column-end:::
+:::row-end:::
+
+> [!CAUTION]
+> 50 'den fazla StorSimple birimi yedeklemesi seçilmesi desteklenmez. Çok sayıda yedekleme işi başarısız olabilir.
 
 ### <a name="directory-mapping"></a>Dizin eşleme
 
@@ -310,11 +347,30 @@ Birden çok kaynak konumu yeni bir dizin yapısına sıralar:
 * Windows gibi klasör adları büyük/küçük harfe duyarlıdır ancak durum korunur.
 
 > [!NOTE]
-> Bu ve StorSimple biriminizdeki *$Recycle. bin* *içerikleri, dönüştürme* işi tarafından kopyalanmayacak.
+> Bu ve StorSimple biriminizdeki *$Recycle. bin* *içerikleri, geçiş* işi tarafından kopyalanmayacak.
+
+### <a name="run-a-migration-job"></a>Geçiş işi çalıştırma
+
+Geçiş işleriniz, kaynak grubuna dağıttığınız Veri Yöneticisi kaynaktaki *iş tanımları* altında listelenir.
+İş tanımları listesinden, çalıştırmak istediğiniz işi seçin.
+
+Açılan iş dikey penceresinde, iş çalışmalarınızın alt listede görebilirsiniz. Başlangıçta bu liste boş olur. Dikey pencerenin üst kısmında, *çalıştırma işi* adlı bir komut vardır. Bu komut işi hemen çalıştırmayacak, **iş çalıştırma** dikey penceresini açar:
+
+:::row:::
+    :::column:::
+        :::image type="content" source="media/storage-files-migration-storsimple-8000/storage-files-migration-storsimple-8000-run-job.png" alt-text="Geçirilecek seçili yedeklemeleri görüntüleyen bir açılan menü denetimi ile birlikte iş çalıştırma dikey penceresini gösteren resim. En eski yedekleme vurgulanmıştır, önce seçilmesi gerekir." lightbox="media/storage-files-migration-storsimple-8000/storage-files-migration-storsimple-8000-run-job-expanded.png":::
+    :::column-end:::
+    :::column:::
+        Bu sürümde, her iş birkaç kez çalıştırılmalıdır. </br></br>**Geçirmek istediğiniz yedeklemeler listenizden en eski yedekten başlamanız gerekir.** (görüntüde vurgulanan)</br></br>Her seferinde, her zaman giderek daha yeni bir yedeklemeye karşı yedekleme seçildiği sürece işi yeniden çalıştırırsınız.
+        </br></br>
+        > [!CAUTION]
+        > Geçiş işini önce en eski yedeklemeden, sonra da her zaman aşamalı olarak daha yeni bir yedeklemeye sahip olacak şekilde çalıştırmanız zorunludur. Yedeklemelerinizin sırasını en eskiye doğru el ile en yeniye korumanız gerekir.
+    :::column-end:::
+:::row-end:::
 
 ### <a name="phase-3-summary"></a>3. aşama Özeti
 
-3. aşama sonunda, StorSimple birimlerindeki veri dönüştürme hizmeti işlerinizi Azure dosya paylaşımlarına çalıştıracaksınız. Artık, paylaşıma yönelik Azure Dosya Eşitleme ayarlama (bir paylaşımın geçiş işleri tamamlandıktan sonra) veya bilgi çalışanlarınızın ve uygulamalarınızın paylaşılan erişimini Azure dosya paylaşımında yönlendirmeye ekleyebilirsiniz.
+3. aşama sonunda, StorSimple birimlerinden Azure dosya paylaşımlarından geçiş işlerinizin en az birini çalıştırırsınız. Aynı geçiş işini, en eskiden geçirilmesi gereken en yeniye ve en son yedeklemelere çalıştıracaksınız. Artık, paylaşıma yönelik Azure Dosya Eşitleme ayarlama (bir paylaşımın geçiş işleri tamamlandığında) veya bilgi çalışanlarınızın ve uygulamalarınızın paylaşılan erişimini Azure dosya paylaşımında yönlendiren şekilde gerçekleştirebilirsiniz.
 
 ## <a name="phase-4-access-your-azure-file-shares"></a>4. Aşama: Azure dosya paylaşımlarınızı erişme
 
@@ -371,7 +427,7 @@ Kayıtlı şirket içi Windows Server Örneğiniz, bu işlem için önceden haz�
 
 :::row:::
     :::column:::
-        [![Azure dosya paylaşımlarını doğrudan bilgi çalışanlarına ve uygulamalarına güvenli bir şekilde kullanıma sunma hakkında adım adım kılavuz ve tanıtım-oynatmak için tıklayın!](./media/storage-files-migration-storsimple-8000/azure-files-direct-access-video-placeholder.png)](https://youtu.be/KG0OX0RgytI)
+        [![Azure dosya paylaşımlarını doğrudan bilgi çalışanlarına ve uygulamalarına güvenli bir şekilde kullanıma sunma hakkında adım adım kılavuz ve tanıtım-oynatmak için tıklayın!](./media/storage-files-migration-storsimple-8000/azure-files-direct-access-video-placeholder.png)](https://youtu.be/a-Twfus0HWE)
     :::column-end:::
     :::column:::
         Bu video, Azure dosya paylaşımlarını doğrudan bilgi çalışanları ve uygulamaları için beş basit adımda güvenli bir şekilde kullanıma sunma kılavuzudur.</br>
@@ -391,21 +447,21 @@ Kayıtlı şirket içi Windows Server Örneğiniz, bu işlem için önceden haz�
 
 ### <a name="phase-4-summary"></a>4. aşama Özeti
 
-Bu aşamada StorSimple Veri Yöneticisi birden çok veri dönüştürme hizmeti işi oluşturdunuz ve çalıştırdık. Bu işler, dosyalarınızı ve klasörlerinizi Azure dosya paylaşımlarına geçirdiniz. Ayrıca, Azure Dosya Eşitleme veya ağ ve depolama hesaplarınızı doğrudan Share-Access için hazırladınız.
+Bu aşamada StorSimple Veri Yöneticisi birden çok geçiş işi oluşturdunuz ve çalıştırdık. Bu işler, dosyalarınızı ve klasörlerinizi Azure dosya paylaşımlarına geçirdiniz. Ayrıca, Azure Dosya Eşitleme veya ağ ve depolama hesaplarınızı doğrudan Share-Access için hazırladınız.
 
 ## <a name="phase-5-user-cut-over"></a>5. Aşama: Kullanıcı tarafından kesilen
 
 Bu aşama, geçişinizi sarmalandırmak için gereklidir:
 
 * Kapalı kalma süresini planlayın.
-* StorSimple tarafında üretilen kullanıcılarınızın ve uygulamalarınızın her türlü değişikliği, 1. aşama 'da veri dönüştürme işleri çalışırken yakalayın.
+* 2. aşama üzerinde geçiş işleri çalışırken, StorSimple tarafında üretilen kullanıcılarınızın ve uygulamalarınızın yaptığı değişikliklerle birlikte yakalayın.
 * Doğrudan paylaşım erişimi aracılığıyla Azure Dosya Eşitleme veya Azure dosya paylaşımları ile kullanıcılarınızı yeni Windows Server örneğine devretmek.
 
 ### <a name="plan-your-downtime"></a>Kapalı kalma süresini planlayın
 
 Bu geçiş yaklaşımı, kullanıcılarınız ve uygulamalarınız için bazı kapalı kalma süresi gerektirir. Amaç, kapalı kalma süresini en düşük tutmaya sağlamaktır. Aşağıdaki konular yardımcı olabilir:
 
-* Veri dönüştürme işlerinizi çalıştırırken StorSimple birimlerinizi kullanılabilir tutun.
+* Geçiş işlerinizi çalıştırırken StorSimple birimlerinizi kullanılabilir tutun.
 * Veri geçişi işlerinizi bir paylaşım için çalıştırmayı bitirdiğinizde, StorSimple birimlerinden veya paylaşımlarından Kullanıcı erişiminin (en azından yazma erişimi) kaldırılması zaman vardır. Son bir RoboCopy, Azure dosya paylaşımınızı yakalar. Daha sonra kullanıcılarınızı daha fazla izleyebilirsiniz. RoboCopy çalıştırdığınız yer, Azure Dosya Eşitleme veya doğrudan paylaşma erişimi seçtiğinizden bağımsız olarak değişir. RoboCopy üzerindeki yaklaşan bölüm ilgili konuyu ele alır.
 * RoboCopy yakala 'yı tamamladıktan sonra, Azure dosya paylaşımından doğrudan veya Azure Dosya Eşitleme ile bir Windows Server örneğindeki bir SMB paylaşımından yeni konumu kullanıcılarınıza sunmaya hazırsınız demektir. Genellikle bir DFS-N dağıtımı, hızla ve verimli bir şekilde kesme gerçekleştirmeye yardımcı olur. Mevcut paylaşımlarınızın adresini tutarlı olarak tutacaksınız ve geçirilmiş dosya ve klasörlerinizi içeren yeni bir konuma yeniden işaret eder.
 
@@ -413,7 +469,7 @@ Bu geçiş yaklaşımı, kullanıcılarınız ve uygulamalarınız için bazı k
 
 Bir Azure dosya paylaşımında Azure Dosya Eşitleme kullandığınızda, herhangi bir yerel RoboCopy başlamadan *önce* tüm ad alanınızı sunucuya indirmeyi tamamladığımıza dikkat etmeniz önemlidir. Ad alanınızı indirmek için gereken süre, Azure dosya paylaşımınızda bulunan öğelerin sayısına bağlıdır. Ad alanınızı sunucuda tam olarak ulaşıp ulaşmadığını belirlemek için iki yöntem vardır.
 
-#### <a name="azure-portal"></a>Azure portal
+#### <a name="azure-portal"></a>Azure portalı
 
 Ad alanınız ne zaman tam olarak geldiğini görmek için Azure portal kullanabilirsiniz.
 
@@ -438,7 +494,7 @@ Bu noktada, şirket içi Windows Server Örneğiniz ve StorSimple 8100 ya da 860
 
 1. Geçiş devam ederken kullanıcıların veya uygulamaların StorSimple tarafında üretilen değişikliklerle ilgili değişiklikler yapmanız gerekir.
 1. Azure Dosya Eşitleme kullandığınız durumlar için: StorSimple gereci, şu anda yerel olarak depolanmış dosya içeriği olmayan bir ad alanı olan Windows Server örneğine karşı doldurulmuş bir önbelleğe sahiptir. Son RoboCopy, yerel olarak önbelleğe alınmış dosya içeriğini kullanıma sunarak yerel Azure Dosya Eşitleme önbelleğinizi hızlı bir şekilde başlatabilir ve Azure Dosya Eşitleme sunucusuna uyabilirler.
-1. Bazı dosyalar, geçersiz karakterler nedeniyle veri dönüştürme işi 'nin arkasında bırakılmış olabilir. Varsa, bunları Azure Dosya Eşitleme özellikli Windows Server örneğine kopyalayın. Daha sonra, bunları eşitlebilmeleri için ayarlayabilirsiniz. Belirli bir paylaşıma yönelik Azure Dosya Eşitleme kullanmıyorsanız, StorSimple biriminde geçersiz karakterlerle dosyaları yeniden adlandırmayı daha iyi bir hale getiriyorsunuz. Ardından, RoboCopy doğrudan Azure dosya paylaşımında çalıştırın.
+1. Bazı dosyalar, geçersiz karakterler nedeniyle geçiş işi 'nin arkasında bırakılmış olabilir. Varsa, bunları Azure Dosya Eşitleme özellikli Windows Server örneğine kopyalayın. Daha sonra, bunları eşitlebilmeleri için ayarlayabilirsiniz. Belirli bir paylaşıma yönelik Azure Dosya Eşitleme kullanmıyorsanız, StorSimple biriminde geçersiz karakterlerle dosyaları yeniden adlandırmayı daha iyi bir hale getiriyorsunuz. Ardından, RoboCopy doğrudan Azure dosya paylaşımında çalıştırın.
 
 > [!WARNING]
 > Windows Server 2019 ' de Robocopy Şu anda, hedef sunucudaki Azure Dosya Eşitleme katmanlı dosyaların kaynaktan yeniden kopyalanmasını ve Robocopy 'nin/MıR işlevi kullanılırken Azure 'a yeniden yüklenmesini sağlayan bir sorunla karşılaşır. Robocopy 'nin 2019 dışında bir Windows Server üzerinde kullanılması zorunludur. Tercih edilen bir seçenek Windows Server 2016 ' dir. Bu notta, sorun Windows Update aracılığıyla çözümlenmelidir.

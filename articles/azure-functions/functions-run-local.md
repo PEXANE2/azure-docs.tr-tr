@@ -5,12 +5,12 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: devx-track-csharp, 80e4ff38-5174-43
-ms.openlocfilehash: efb91c7b26c67a3672abb3f9cc8992fd45971a25
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 3ddd84f2f73546b42a3925802b3357df16485488
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96932464"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100521450"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Azure Functions Core Tools ile çalışma
 
@@ -41,7 +41,7 @@ Belirli bir bilgisayara yalnızca bir temel araçlar sürümü yükleyebilirsini
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Azure Functions Core Tools Şu anda Azure hesabınızda kimlik doğrulaması için Azure CLı 'ye bağımlıdır. Bu, Azure CLı 'yı Azure Functions Core Tools 'ten [Azure 'a yayımlayabilmek](#publish) için [yerel olarak kurmanız](/cli/azure/install-azure-cli) gerektiği anlamına gelir. 
+Azure Functions Core Tools Şu anda Azure hesabınızda kimlik doğrulaması için [Azure CLI](/cli/azure/install-azure-cli) veya [Azure PowerShell](/powershell/azure/install-az-ps) bağlı olabilir. Bu, Azure Functions Core Tools 'ten [Azure 'a yayımlayabilmek](#publish) için bu araçlardan birini yüklemelisiniz. 
 
 ## <a name="install-the-azure-functions-core-tools"></a>Azure Functions Core Tools’u Yükleme
 
@@ -275,7 +275,7 @@ Geliştirme için Microsoft Azure Depolama Öykünücüsü kullanılırken bile 
 
 ## <a name="create-a-function"></a><a name="create-func"></a>İşlev oluşturma
 
-Bir işlev oluşturmak için aşağıdaki komutu çalıştırın:
+İşlev oluşturmak için aşağıdaki komutu çalıştırın:
 
 ```
 func new
@@ -505,7 +505,7 @@ func run MyHttpTrigger -c '{\"name\": \"Azure\"}'
 Azure Functions Core Tools iki tür dağıtımı destekler: işlev projesi dosyalarını [ZIP dağıtımı](functions-deployment-technologies.md#zip-deploy) ve [dağıtım](functions-deployment-technologies.md#docker-container)aracılığıyla doğrudan işlev uygulamanıza dağıtma. Kodunuzu dağıtacağınız [Azure aboneliğinizde zaten bir işlev uygulaması oluşturmuş](functions-cli-samples.md#create)olmanız gerekir. İkililerin dağıtılması için derleme gerektiren projeler oluşturulmalıdır.
 
 >[!IMPORTANT]
->Azure [CLI](/cli/azure/install-azure-cli) 'Yı temel araçlardan Azure 'da yayımlayabilmek için yerel olarak yüklü olmalıdır.  
+>Azure [CLI](/cli/azure/install-azure-cli) veya [Azure PowerShell](/powershell/azure/install-az-ps) yerel olarak yüklü olması gerekir.  
 
 Proje klasörü, yayınlanmaması gereken dile özgü dosyalar ve dizinler içerebilir. Dışlanan öğeler kök proje klasöründeki bir. funcignore dosyasında listelenir.     
 
@@ -520,7 +520,7 @@ func azure functionapp publish <FunctionAppName>
 >[!IMPORTANT]
 > Java, yerel projenizi Azure 'da yayımlamak için Maven 'yi kullanır. Azure 'da yayımlamak için şu komutu kullanın: `mvn azure-functions:deploy` . Azure kaynakları ilk dağıtım sırasında oluşturulur.
 
-Bu komut, Azure 'da var olan bir işlev uygulamasına yayınlar. Aboneliğinizde mevcut olmayan bir ' a yayımlamayı denerseniz bir hata alırsınız `<FunctionAppName>` . Azure CLı kullanarak komut isteminden veya Terminal penceresinde bir işlev uygulaması oluşturmayı öğrenmek için bkz. [sunucusuz yürütme için işlev uygulaması oluşturma](./scripts/functions-cli-create-serverless.md). Varsayılan olarak, bu komut, [uzak derlemeyi](functions-deployment-technologies.md#remote-build) kullanır ve uygulamanızı [dağıtım paketinden çalıştırmak](run-functions-from-deployment-package.md)üzere dağıtır. Bu önerilen dağıtım modunu devre dışı bırakmak için `--nozip` seçeneğini kullanın.
+Bu komut, Azure 'da var olan bir işlev uygulamasına yayınlar. Aboneliğinizde mevcut olmayan bir ' a yayımlamayı denerseniz bir hata alırsınız `<FunctionAppName>` . Azure CLı veya Azure PowerShell kullanarak komut isteminden veya Terminal penceresinde bir işlev uygulaması oluşturmayı öğrenmek için bkz. [sunucusuz yürütme için işlev uygulaması oluşturma](./scripts/functions-cli-create-serverless.md). Varsayılan olarak, bu komut, [uzak derlemeyi](functions-deployment-technologies.md#remote-build) kullanır ve uygulamanızı [dağıtım paketinden çalıştırmak](run-functions-from-deployment-package.md)üzere dağıtır. Bu önerilen dağıtım modunu devre dışı bırakmak için `--nozip` seçeneğini kullanın.
 
 >[!IMPORTANT]
 > Azure portal bir işlev uygulaması oluşturduğunuzda, varsayılan olarak Işlev çalışma zamanının 3. x sürümünü kullanır. İşlev uygulamasının çalışma zamanının sürüm 1. x ' i kullanmasını sağlamak için [Sürüm 1. x üzerinde Çalıştır](functions-versions.md#creating-1x-apps)' daki yönergeleri izleyin.
@@ -593,7 +593,7 @@ Bir hata veya özellik isteğini dosyabir [GitHub sorunu açın](https://github.
 <!-- LINKS -->
 
 [Azure Functions Core Tools]: https://www.npmjs.com/package/azure-functions-core-tools
-[Azure Portal]: https://portal.azure.com 
+[Azure portalı]: https://portal.azure.com 
 [Node.js]: https://docs.npmjs.com/getting-started/installing-node#osx-or-windows
 [`FUNCTIONS_WORKER_RUNTIME`]: functions-app-settings.md#functions_worker_runtime
 [AzureWebJobsStorage]: functions-app-settings.md#azurewebjobsstorage

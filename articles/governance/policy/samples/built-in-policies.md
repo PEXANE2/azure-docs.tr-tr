@@ -1,15 +1,15 @@
 ---
 title: Yerleşik ilke tanımlarının listesi
 description: Azure Ilkesi için yerleşik ilke tanımlarını listeleyin. Kategoriler arasında Etiketler, mevzuat uyumluluğu, Key Vault, Kubernetes, Konuk yapılandırma ve daha fazlası bulunur.
-ms.date: 02/04/2021
+ms.date: 02/09/2021
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: 7adce6f1dd75f7084b1beac37277c4abadfe904d
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: 9f2a28c9acf2287c70bedad305ee1c143868c59d
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99561430"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100100429"
 ---
 # <a name="azure-policy-built-in-policy-definitions"></a>Azure Ilkesi yerleşik ilke tanımları
 

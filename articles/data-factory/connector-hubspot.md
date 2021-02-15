@@ -1,22 +1,17 @@
 ---
 title: Azure Data Factory kullanarak Hubnoktadan veri kopyalama
 description: Azure Data Factory bir işlem hattındaki kopyalama etkinliğini kullanarak HubSpot 'dan desteklenen havuz veri depolarına veri kopyalamayı öğrenin.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/18/2020
 ms.author: jingwang
-ms.openlocfilehash: 151f156439a40b2e5515886849635f00b2fcc1e7
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: 7f2ab069be7985376c44f2cd2ae3ccdd728d4e2a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97680910"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100385668"
 ---
 # <a name="copy-data-from-hubspot-using-azure-data-factory"></a>Azure Data Factory kullanarak Hubnoktadan veri kopyalama
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -35,7 +30,7 @@ Hub 'dan verileri desteklenen herhangi bir havuz veri deposuna kopyalayabilirsin
 
 Azure Data Factory, bağlantıyı etkinleştirmek için yerleşik bir sürücü sağlar, bu nedenle bu bağlayıcıyı kullanarak herhangi bir sürücüyü el ile yüklemeniz gerekmez.
 
-## <a name="getting-started"></a>Başlarken
+## <a name="getting-started"></a>Kullanmaya başlama
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 

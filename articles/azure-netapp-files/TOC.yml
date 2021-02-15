@@ -125,7 +125,7 @@
           href: troubleshoot-capacity-pools.md
         - name: Bölgeler arası çoğaltma sorunlarını giderme
           href: troubleshoot-cross-region-replication.md
-        - name: Çift protokol birimlerinde sorunları giderme
+        - name: SMB veya çift protokol birimlerinde sorun giderme
           href: troubleshoot-dual-protocol-volumes.md
         - name: NFSv4.1 Kerberos birimlerinde sorun giderme
           href: troubleshoot-nfsv41-kerberos-volumes.md

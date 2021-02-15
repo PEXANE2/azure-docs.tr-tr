@@ -1,23 +1,18 @@
 ---
 title: Azure Data Factory kullanarak QuickBooks Online 'dan veri kopyalama (Önizleme)
 description: Azure Data Factory bir işlem hattındaki kopyalama etkinliğini kullanarak QuickBooks Online 'dan desteklenen havuz veri depolarına veri kopyalamayı öğrenin.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
 ms.author: jingwang
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/15/2021
-ms.openlocfilehash: ecdb0e55aa7127a373e63612908ed58109c1f8e2
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: eecbcb817ad31480f8f6c3c7272328d06b17c081
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98233177"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100384070"
 ---
 # <a name="copy-data-from-quickbooks-online-using-azure-data-factory-preview"></a>Azure Data Factory kullanarak QuickBooks Online 'dan veri kopyalama (Önizleme)
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -52,7 +47,7 @@ QuickBooks bağlı hizmeti için aşağıdaki özellikler desteklenir:
 |:--- |:--- |:--- |
 | tür | Type özelliği: **QuickBooks** olarak ayarlanmalıdır | Yes |
 | connectionProperties | QuickBooks 'a nasıl bağlanılacağını tanımlayan bir özellik grubu. | Yes |
-| **_Altında `connectionProperties` :_* _ | | |
+| ***Altında `connectionProperties` :*** | | |
 | endpoint | QuickBooks Online sunucusunun uç noktası. (yani, quickbooks.api.intuit.com)  | Yes |
 | CompanyID | Yetkilendirmek için QuickBooks şirketinin şirket KIMLIĞI. Şirket KIMLIĞINI bulma hakkında bilgi için, bkz. [ŞIRKET kimliğini bulma nasıl yaparım?](https://quickbooks.intuit.com/community/Getting-Started/How-do-I-find-my-Company-ID/m-p/185551). | Yes |
 | consumerKey | OAuth 2,0 kimlik doğrulaması için QuickBooks Online uygulamanızın istemci KIMLIĞI. [Buradan](https://developer.intuit.com/app/developer/qbo/docs/develop/authentication-and-authorization/oauth-2.0#obtain-oauth2-credentials-for-your-app)daha fazla bilgi edinebilirsiniz. | Yes |
@@ -60,7 +55,7 @@ QuickBooks bağlı hizmeti için aşağıdaki özellikler desteklenir:
 | refreshToken | QuickBooks uygulamasıyla ilişkili OAuth 2,0 yenileme belirteci. [Buradan](https://developer.intuit.com/app/developer/qbo/docs/develop/authentication-and-authorization/oauth-2.0#obtain-oauth2-credentials-for-your-app)daha fazla bilgi edinebilirsiniz. Göz yenileme belirtecinin 180 gün sonra zaman aşımına erdiğini göreceksiniz. Müşterinin yenileme belirtecini düzenli olarak güncelleştirmesi gerekiyor. <br/>Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın.| Yes |
 | useEncryptedEndpoints | Veri kaynağı uç noktalarının HTTPS kullanılarak şifrelenip şifrelenmediğini belirtir. Varsayılan değer true şeklindedir.  | No |
 
-_ *Örnek:**
+**Örnek:**
 
 ```json
 {

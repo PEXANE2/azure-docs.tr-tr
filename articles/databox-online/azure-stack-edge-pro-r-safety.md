@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 02/04/2021
+ms.date: 02/12/2021
 ms.author: alkohli
-ms.openlocfilehash: cc24839396116a5b581758b29b087c237a6f902b
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: dacc9ecc28ffa482b60d1e48735fe3620b5b7558
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99981349"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100363075"
 ---
 # <a name="azure-stack-edge-pro-r-safety-instructions"></a>Azure Stack Edge Pro R güvenlik yönergeleri
 
@@ -134,6 +134,7 @@ Azure Stack Edge Pro R Edge cihazınızı ayarlarken ve çalıştırırken aşa�
 
 * Kesintisiz güç kaynağı (UPS) olmayan sistemler için tüm AC güç kablosunu sökün ve donanımlardan tamamen AC gücünü tamamen kaldırın.
 * UPS içeren sistemler için tüm AC güç kablosunu çıkarın ve UPS güç anahtarını kullanarak sistemi yeniden enerji katın. KGK, tehlikeli AC ve DC voltages içerir.
+* Bir sistem bir UPS içeriyorsa, UPS korumalı bir giriş güç kablosu ile sağlanmıştı. Korumalı giriş güç kablosunu kullanmanız gerekir, kablonun yerini değiştirmeyin veya değiştirmeyin.
 
 ![Uyarı simgesi ](./media/azure-stack-edge-pro-r-safety/icon-safety-warning.png)
  ![ elektrik sarsıntı simgesi ](./media/azure-stack-edge-pro-r-safety/icon-safety-electric-shock.png) **uyarısı:**
@@ -210,21 +211,22 @@ A device that has a UPS installed is designed to operate in the following enviro
 
 > ![Bildirim simgesi-2 ](./media/azure-stack-edge-pro-r-safety/icon-safety-notice.png) **bildirim:** &nbsp; Microsoft tarafından açıkça onaylanmamış ekipmanlarda yapılan değişiklikler veya değişiklikler, kullanıcının donatımını çalıştırma yetkisini geçersiz edebilir.
 
-Kanada ve ABD:
+#### <a name="canada-and-usa"></a>Kanada ve ABD:
 
-Uyarı: Bu ekipman test edilmiştir ve bir sınıftaki dijital bir cihaz için sınırlara uyum sağlamak ve bu da FCC kuralların 15. bölümünde yer Bu sınırlar, ekipman ticari bir ortamda çalıştırıldığında zararlı girişim için makul bir koruma sağlamak üzere tasarlanmıştır. Bu ekipman radyo sıklığı enerjisi oluşturur ve kullanır ve yönerge kılavuzuna uygun şekilde yüklenip kullanılmayacaksa radyo iletişimine zararlı girişim yapılmasına neden olabilir. Bu ekipmanın bir yöresel alanındaki işlemi, zararlı bir girişim oluşmasına neden olur ve bu durumda kullanıcının, girişim kendi masrafına göre düzeltilmesi gerekecektir.
+> ![Uyarı simgesi-2 ](./media/azure-stack-edge-pro-r-safety/icon-safety-notice.png) **bildirim:** &nbsp; Bu ekipman test edilmiştir ve bir sınıftaki dijital bir cihaz için sınırlara uyum sağlamak Için, FCC bu kuralların 15. bölümüne uyun. Bu sınırlar, ekipman ticari bir ortamda çalıştırıldığında zararlı girişim için makul bir koruma sağlamak üzere tasarlanmıştır. Bu ekipman radyo sıklığı enerjisi oluşturur ve kullanır ve yönerge kılavuzuna uygun şekilde yüklenip kullanılmayacaksa radyo iletişimine zararlı girişim yapılmasına neden olabilir. Bu ekipmanın bir yöresel alanındaki işlemi, zararlı bir girişim oluşmasına neden olur ve bu durumda kullanıcının, girişim kendi masrafına göre düzeltilmesi gerekecektir.
 
 Bu cihaz, FCC kuralları ve sektör Kanada lisans muafiyeti RSS standardının 15. bölümüne uyar. İşlem şu iki koşula tabidir: (1) Bu cihaz zararlı bir girişim oluşmasına neden olabilir ve (2) Bu cihaz, cihazın istenmeyen çalışmasına neden olabilecek girişim dahil olmak üzere, alınan bir girişimi kabul etmelidir.
 
 ![Mevzuat bilgileri uyarısı 1](./media/azure-stack-edge-mini-r-safety/regulatory-information-1.png)
 
 
-ICES-3 (A)/NMB-3 (A) Microsoft Corporation, One Microsoft Way, Redmond, WA 98052, USA.
-Birleşik Devletler: (800) 426-9400 Kanada: (800) 933-4750
+, ICES-3 (A)/NMB-3 (A) Microsoft Corporation, One Microsoft Way, Redmond, WA 98052, ABD Birleşik Devletler: (800) 426-9400 Kanada: (800) 933-4750
 
-Avrupa BIRLIĞI: uygunluk bildiriminin bir kopyasını Isteyin. 
+#### <a name="european-union"></a>AVRUPA BIRLIĞI:
 
-![Uyarı simgesi](./media/azure-stack-edge-pro-r-safety/icon-safety-warning.png)
+Conformity 'in AB bildiriminin bir kopyasını isteyin. [CSI_Compliance@microsoft.com](mailto:CSI_Compliance@microsoft.com) adresine e-posta gönderin.
+
+![Uyarı simgesi ](./media/azure-stack-edge-pro-r-safety/icon-safety-warning.png) **uyarısı!**
 
 Bu bir ürün sınıfındır. Yurtiçi bir ortamda, bu ürün radyo girişimine neden olabilir ve bu durumda kullanıcının yeterli ölçüler yapması gerekebilir.
 
@@ -237,7 +239,6 @@ Bu bir ürün sınıfındır. Yurtiçi bir ortamda, bu ürün radyo girişimine 
 Bu ürün, para hücresi pili (lar) içerir.
 
 Microsoft Irlanda Sandyford IND EST Dublin D18 KX32 Gu telefon numarası: + 353 1 295 3826 Faks numarası: + 353 1 706 4110
-
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

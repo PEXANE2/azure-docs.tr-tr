@@ -5,25 +5,25 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 11/30/2020
+ms.date: 02/12/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: elisol
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f9ea8b1c1346deee9fed591493607270f18ad5b
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 94fd488ceb7ddb3724dd576c97c9070481e95147
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96547772"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100365642"
 ---
 # <a name="azure-active-directory-b2b-best-practices"></a>Azure Active Directory B2B en iyi uygulamaları
 Bu makale, Azure Active Directory (Azure AD) ile işletmeler arası (B2B) işbirliği için öneriler ve en iyi uygulamalar içerir.
 
    > [!IMPORTANT]
-   > Microsoft, B2B işbirliği senaryolarına yönelik yönetilmeyen ("viral" veya "tam zamanında") Azure AD hesapları ve kiracılar oluşturarak davetleri artık **2021 Mart 'Tan itibaren** desteklemez. Bu sırada, tüm mevcut kiracılar için e-posta bir kerelik geçiş kodu özelliği açık olur ve yeni kiracılar için varsayılan olarak etkinleştirilir. Konuk kullanıcılarınız için sorunsuz bir geri dönüş kimlik doğrulama yöntemi sağladığından e-posta bir kerelik geçiş kodu özelliğini etkinleştiriyoruz. Ancak, bu özelliği kullanmayı tercih ederseniz bu özelliği devre dışı bırakma seçeneğiniz vardır. Ayrıntılar için bkz. [e-posta bir kerelik geçiş kodu kimlik doğrulaması](one-time-passcode.md)
+   > Microsoft, B2B işbirliği senaryolarına yönelik yönetilmeyen ("viral" veya "tam zamanında") Azure AD hesapları ve kiracılar oluşturarak artık davetlerin kullanımını desteklememektedir. **2021** Bu sırada, tüm mevcut kiracılar için e-posta bir kerelik geçiş kodu özelliği açık olur ve yeni kiracılar için varsayılan olarak etkinleştirilir. Konuk kullanıcılarınız için sorunsuz bir geri dönüş kimlik doğrulama yöntemi sağladığından e-posta bir kerelik geçiş kodu özelliğini etkinleştiriyoruz. Ancak, bu özelliği kullanmayı tercih ederseniz bu özelliği devre dışı bırakma seçeneğiniz vardır. Ayrıntılar için bkz. [e-posta bir kerelik geçiş kodu kimlik doğrulaması](one-time-passcode.md)
 
 
 ## <a name="b2b-recommendations"></a>B2B önerileri

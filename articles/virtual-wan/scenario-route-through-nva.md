@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 9d4eb90d49e8cc671156833f22a85e7c2b4dd15b
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.openlocfilehash: 24671a34214864e253d96c356dc8b2853bf6d560
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99626669"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100519805"
 ---
 # <a name="scenario-route-traffic-through-an-nva"></a>Senaryo: Trafiği NVA üzerinden yönlendirme
 
@@ -30,9 +30,9 @@ Sanal WAN sanal hub 'ı yönlendirme ile çalışırken, kullanılabilecek olduk
 
 Bu senaryoda adlandırma kuralını kullanacağız:
 
-* Kullanıcıların bir NVA dağıttığmış olduğu ve diğer sanal ağlara (VNet 2 ve VNet 4 ' te **bağlantı matrisine**) bağlı olduğu sanal ağlarda "NVA VNET".
-* Bir NVA VNet 'e (VNet 5, VNet 6, VNet 7 ve VNet 8) bağlı sanal ağlar için "NVA ışınsal ler", **bağlantı matrisine** aşağıda verilmiştir.
-* Sanal WAN 'a bağlı sanal ağlar için "NVA olmayan VNET 'ler", bu kişilerle bir NVA veya diğer VNET 'ler (aşağıdaki **bağlantı matrisinde**, VNET 1 ve VNET 3) yok.
+* Kullanıcıların bir NVA dağıttığmış olduğu ve diğer sanal ağlara bağlı bileşen (VNet 2 ve VNet 4 ' **te, makalede daha sonra** yer aldığı sanal ağlar IÇIN "NVA VNET").
+* Bir NVA VNet 'e (VNet 5, VNet 6, VNet 7 ve VNet 8 ' **de, makalede daha sonra** ) bağlı sanal ağlar IÇIN "NVA ışınsal 'ler".
+* Sanal WAN 'a bağlı sanal ağlar için "NVA olmayan VNET 'ler", bir NVA veya diğer VNET 'ler (Bu makalede daha sonra **Şekil 2** ' de yer alan 1 VNET 1 ve VNET 3) yok.
 * NVA VNET 'lerin bağlandığı Microsoft tarafından yönetilen sanal WAN hub 'Ları için "hub 'lar". NVA bağlı uç sanal ağları, yalnızca NVA VNET 'lere sanal WAN hub 'larına bağlanmalıdır.
 
 Aşağıdaki bağlantı matrisi, bu senaryoda desteklenen akışları özetler:
@@ -49,7 +49,7 @@ Aşağıdaki bağlantı matrisi, bu senaryoda desteklenen akışları özetler:
 Bağlantı matrisindeki her bir hücre, VNet veya dalın (akışın "Kimden" tarafı, tablodaki satır başlıkları) bir hedef VNet veya dal (akışın "to" tarafı, tablodaki sütun üst bilgileri) ile iletişim kurar. "Doğrudan", bağlantının sanal WAN tarafından yerel olarak sağlandığı anlamına gelir, "eşleme", bağlantının VNet 'teki bir User-Defined yolu tarafından sağlandığı anlamına gelir, "NVA VNet üzerinden" bağlantısı, bağlantının NVA VNet 'te dağıtılan NVA 'nın altına geçtiği anlamına gelir. Aşağıdaki topluluklara bir göz atın:
 
 * NVA ışınsal 'ler sanal WAN tarafından yönetilmez. Sonuç olarak, diğer VNET 'ler veya dallarla iletişim kurdukları mekanizmalar Kullanıcı tarafından korunur. NVA VNet bağlantısı, VNet eşlemesi tarafından sağlanır ve bir sonraki atlama, Internet bağlantısını, diğer bağlı şubelere ve dallara kapsamalıdır, NVA 'ya işaret eden 0.0.0.0/0 için varsayılan rota
-* NVA VNET 'ler, kendi NVA bağlı kuruluşları hakkında bilgilendirir, ancak diğer NVA sanal ağlarına bağlı NVA ışınsal 'ler hakkında bilgi sahibi olur. Örneğin, Tablo 1 ' de VNET 2, VNET 5 ve VNet 6 gibi diğer bağlı bileşen (VNet 7 ve VNet 8) hakkında bilgi sahibi değildir. Diğer bağlı bileşen öneklerini NVA VNET 'lere eklemek için bir statik yol gerekir
+* NVA VNET 'ler, kendi NVA bağlı kuruluşları hakkında bilgilendirir, ancak diğer NVA sanal ağlarına bağlı NVA ışınsal 'ler hakkında bilgi sahibi olur. Örneğin, bu makalede daha sonra gelen şekil 2 ' de, VNET 2, VNET 7 ve VNET 8 gibi diğer bağlı bileşen hakkında değil, VNet 5 ve VNet 6 hakkında bilgi sahibi değildir. Diğer bağlı bileşen öneklerini NVA VNET 'lere eklemek için bir statik yol gerekir
 * Benzer şekilde, dallar ve NVA olmayan VNET 'ler, NVA bağlı bilgileri sanal WAN hub 'larına bağlı olmadığından, her NVA ana ağı hakkında bilgi vermez. Sonuç olarak, burada statik yollar da gerekecektir.
 
 NVA ışınsal 'ler sanal WAN tarafından yönetilmediği hesaba katılarak, diğer tüm satırlar aynı bağlantı modelini gösterir. Sonuç olarak, tek bir yol tablosu (varsayılan bir) şunları yapacaktır:

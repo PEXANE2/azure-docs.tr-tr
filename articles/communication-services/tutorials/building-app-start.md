@@ -8,12 +8,12 @@ ms.author: nmurav
 ms.date: 01/03/2012
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 60b5a2bf5c0aed3d1a4621e179429a157c2a0962
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: db59a9e7693190582736b9460658f629f4f1e555
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99421693"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100369637"
 ---
 # <a name="tutorial-prepare-a-web-app-for-azure-communication-services-nodejs"></a>Öğretici: Azure Iletişim Hizmetleri için bir Web uygulaması hazırlama (Node.js)
 
@@ -106,11 +106,25 @@ node --version
 
 ## <a name="set-up-a-local-webserver"></a>Yerel Web sunucusu kurma
 
+### <a name="create-a-new-npm-package"></a>Yeni NPM paketi oluşturma
+
+Terminalinizde, çalışma alanı klasörünüzün yolundan şunu yazın:
+
+``` console
+npm init -y
+```
+
+Bu komut yeni bir NPM paketi başlatır ve `package.json` projenizin kök klasörüne ekler.
+
+:::image type="content" source="./media/step-one-pic-eight.png" alt-text="Paket JSON 'ı":::
+
+NPM init komutuna ek belgeler [burada](https://docs.npmjs.com/cli/v6/commands/npm-init) bulunabilir
+
 ### <a name="install-webpack"></a>WebPack 'i yükler
 
 [WebPack](https://webpack.js.org/) , Azure 'a dağıtabileceğiniz statik dosyalara kod paketlemenizi sağlar. Ayrıca, çağıran örnekle kullanmak üzere yapılandırdığımız bir geliştirme sunucusuna sahiptir.
 
-Web paketini yüklemek için Open terminalinize şunu yazın:
+Terminalinizde, Web paketini yüklemek için aşağıdakini yazın:
 
 ``` Console
 npm install webpack@4.42.0 webpack-cli@3.3.11 webpack-dev-server@3.10.3 --save-dev
@@ -175,7 +189,7 @@ Kaynak eşleme seçenekleri [burada](https://webpack.js.org/configuration/devtoo
 
 :::image type="content" source="./media/step-one-pic-11.png" alt-text="WebPack yapılandırılıyor":::
 
-Geliştirme sunucusunu çalıştırmak için adresine gidin `package.json.js` ve betikler altına aşağıdaki kodu ekleyin:
+Geliştirme sunucusunu çalıştırmak için adresine gidin `package.json` ve betikler altına aşağıdaki kodu ekleyin:
 
 ```JavaScript
     "build:dev": "webpack-dev-server --config webpack.dev.js"
@@ -206,7 +220,7 @@ Dosyanız şu şekilde görünmelidir:
 
 NPM 'den kullanılabilecek komutu eklediniz. 
 
-:::image type="content" source="./media/step-one-pic-12.png" alt-text="package-json.jsdeğiştirme ":::
+:::image type="content" source="./media/step-one-pic-12.png" alt-text="package.jsdeğiştirme":::
 
 ### <a name="testing-the-development-server"></a>Geliştirme sunucusunu test etme
 
@@ -261,7 +275,7 @@ Geliştirme yapılandırmanızı test etmek için aşağıdaki terminal komutunu
 npm run build:dev
 ```
 
-Konsol, sunucunun nerede çalıştığını gösterir. Varsayılan olarak, bu `http://localhost:8080` . Build: dev komutu, daha önce eklediğimiz komuttur `package-json.js` .
+Konsol, sunucunun nerede çalıştığını gösterir. Varsayılan olarak, bu `http://localhost:8080` . Build: dev komutu, daha önce eklediğimiz komuttur `package.json` .
 
  :::image type="content" source="./media/step-one-pic-16.png" alt-text="Geliştirme sunucusu başlatma":::
  
@@ -289,26 +303,11 @@ Bu eylem, Azure Iletişim Hizmetleri ortak ve çağrı paketlerini paketinizin b
 
 :::image type="content" source="./media/step-one-pic-nine.png" alt-text="Azure Iletişim Hizmetleri paketlerini yükleme":::
 
-Bu paketler, Azure Iletişim Hizmetleri ekibi tarafından sağlanır ve kimlik doğrulama ve çağırma kitaplıklarını içerir. "--Save" komutu, uygulamamızın üretim kullanımı için bu paketlere bağlı olduğunu ve bu paketlere bu paketlere dahil edileceğini bildirir `dependencies` `package-json.js` . Üretim için uygulamayı oluştururken, paketler üretim kodumuza dahil edilir.
+Bu paketler, Azure Iletişim Hizmetleri ekibi tarafından sağlanır ve kimlik doğrulama ve çağırma kitaplıklarını içerir. "--Save" komutu, uygulamamızın üretim kullanımı için bu paketlere bağlı olduğunu ve bu paketlere bu paketlere dahil edileceğini bildirir `dependencies` `package.json` . Üretim için uygulamayı oluştururken, paketler üretim kodumuza dahil edilir.
 
 
 ## <a name="publish-your-website-to-azure-static-websites"></a>Web sitenizi Azure statik Web siteleri 'ne yayımlama
 
-### <a name="create-a-new-npm-package"></a>Yeni NPM paketi oluşturma
-
-Terminalinizde, çalışma alanı klasörünüzün yolundan şunu yazın:
-
-``` console
-npm init -y
-```
-
-Bu komut yeni bir NPM paketi başlatır ve `package.json` projenizin kök klasörüne ekler.
-
-:::image type="content" source="./media/step-one-pic-eight.png" alt-text="Paket JSON 'ı":::
-
-NPM init komutuna ek belgeler [burada](https://docs.npmjs.com/cli/v6/commands/npm-init) bulunabilir
-
- 
 ### <a name="create-a-configuration-for-production-deployment"></a>Üretim dağıtımı için bir yapılandırma oluşturma
 
 Aşağıdaki kodu öğesine ekleyin `webpack.prod.js` :

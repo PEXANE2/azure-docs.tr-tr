@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 01/19/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 7214a1eb41e4434818123ee26765ceb10ad551a5
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 598673bca5b893236cfd38a7fa220ff25ee9dd7e
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99094918"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100388524"
 ---
 # <a name="azure-storage-redundancy"></a>Azure Depolama yedekliliği
 
@@ -185,6 +185,14 @@ Aşağıdaki tabloda, depolama hesabınız için hangi artıklık türünün ge�
 | Birincil bölge kullanılamaz hale gelirse ikincil bölgeye okuma erişimi kullanılabilir | Hayır | Hayır | Evet (RA-GRS ile) | Evet (RA-GZRS ile) |
 
 birincil bölge kullanılamaz duruma gelirse, yazma kullanılabilirliğini geri yüklemek için <sup>1</sup> hesap yük devretmesi gerekir. Daha fazla bilgi için bkz. [olağanüstü durum kurtarma ve depolama hesabı yük devretme](storage-disaster-recovery-guidance.md).
+
+### <a name="supported-azure-storage-services"></a>Desteklenen Azure depolama hizmetleri
+
+Aşağıdaki tabloda, her bir Azure depolama hizmeti tarafından hangi artıklık seçeneklerinin desteklendiği gösterilmektedir.
+
+| LRS | ZRS | GRS/RA-GRS | GZRS/RA-GZRS |
+|:-|:-|:-|:-|
+| Blob depolama<br />Kuyruk depolama<br />Tablo depolama<br />Azure Dosyaları<br />Azure yönetilen diskler | Blob depolama<br />Kuyruk depolama<br />Tablo depolama<br />Azure Dosyaları | Blob depolama<br />Kuyruk depolama<br />Tablo depolama<br />Azure Dosyaları<br /> | Blob depolama<br />Kuyruk depolama<br />Tablo depolama<br />Azure Dosyaları<br /> |
 
 ### <a name="supported-storage-account-types"></a>Desteklenen depolama hesabı türleri
 

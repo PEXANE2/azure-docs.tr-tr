@@ -1,22 +1,17 @@
 ---
 title: Kopyalama etkinliğinde veri tutarlılığı doğrulaması
 description: Azure Data Factory ' de kopyalama etkinliğinde veri tutarlılığı doğrulamanın nasıl etkinleştirileceği hakkında bilgi edinin.
-services: data-factory
-documentationcenter: ''
 author: dearandyxu
-manager: ''
-ms.reviewer: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 3/27/2020
 ms.author: yexu
-ms.openlocfilehash: 274250fecdf69b6a488c33ff25df3728a1c90af0
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: b71657f67c1b9c623d6d48f33b986ac43533cca6
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98556384"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100373025"
 ---
 #  <a name="data-consistency-verification-in-copy-activity"></a>Kopyalama etkinliğinde veri tutarlılığı doğrulaması
 
@@ -74,11 +69,11 @@ Aşağıdaki örnek, kopyalama etkinliğinde veri tutarlılığı doğrulamasın
 
 Özellik | Açıklama | İzin verilen değerler | Gerekli
 -------- | ----------- | -------------- | -------- 
-Validatedatatutarlılığı | Bu özellik için true ayarlarsanız, ikili dosyalar kopyalanırken kopyalama etkinliği, kaynak ve hedef depo arasında veri tutarlılığı sağlamak için kaynaktan hedef depoya kopyalanan her bir ikili dosyanın dosya boyutunu, lastModifiedDate ve MD5 sağlama toplamını denetler. Tablo verilerini kopyalarken, kopyalama etkinliği, kaynaktan okunan toplam satır sayısının, hedefe kopyalanan satırların sayısı artı atlanan uyumsuz satır sayısı ile aynı olduğundan emin olmak için iş tamamlandıktan sonra toplam satır sayısını denetler. Bu seçeneği etkinleştirerek kopyalama performansının etkileneceğini unutmayın.  | Doğru<br/>False (varsayılan) | Hayır
-Veri tutarsızlığı | Tutarsız dosyaları atlamak istediğinizi öğrenmek için skipErrorFile özellik paketi içindeki anahtar-değer çiftlerinden biri. <br/> -True: tutarsız dosyaları atlayarak geri kalanı kopyalamak istiyorsunuz.<br/> -False: tutarsız dosya bulunduğunda kopyalama etkinliğini iptal etmek istiyorsunuz.<br/>Bu özelliğin yalnızca ikili dosyaları kopyalarken ve Validatedatatutarlılığı true olarak ayarlandığında geçerli olduğunu unutmayın.  | Doğru<br/>False (varsayılan) | Hayır
-Günlüğe kaydetme ayarları | Atlanan dosyaları günlüğe kaydetmek için oturum günlüğünü etkinleştirmek üzere belirtilenebilir bir özellik grubu. | | Hayır
-linkedServiceName | [Azure Blob depolama alanına](connector-azure-blob-storage.md#linked-service-properties) bağlı hizmet veya oturum günlüğü dosyalarını depolamak için [Azure Data Lake Storage 2.](connector-azure-data-lake-storage.md#linked-service-properties) . | `AzureBlobStorage` `AzureBlobFS` Günlük dosyalarını depolamak için kullandığınız örneğe başvuran bağlı hizmetin veya türlerin adları. | Hayır
-path | Günlük dosyalarının yolu. | Günlük dosyalarını depolamak istediğiniz yolu belirtin. Bir yol sağlamazsanız, hizmet sizin için bir kapsayıcı oluşturur. | Hayır
+Validatedatatutarlılığı | Bu özellik için true ayarlarsanız, ikili dosyalar kopyalanırken kopyalama etkinliği, kaynak ve hedef depo arasında veri tutarlılığı sağlamak için kaynaktan hedef depoya kopyalanan her bir ikili dosyanın dosya boyutunu, lastModifiedDate ve MD5 sağlama toplamını denetler. Tablo verilerini kopyalarken, kopyalama etkinliği, kaynaktan okunan toplam satır sayısının, hedefe kopyalanan satırların sayısı artı atlanan uyumsuz satır sayısı ile aynı olduğundan emin olmak için iş tamamlandıktan sonra toplam satır sayısını denetler. Bu seçeneği etkinleştirerek kopyalama performansının etkileneceğini unutmayın.  | Doğru<br/>False (varsayılan) | No
+Veri tutarsızlığı | Tutarsız dosyaları atlamak istediğinizi öğrenmek için skipErrorFile özellik paketi içindeki anahtar-değer çiftlerinden biri. <br/> -True: tutarsız dosyaları atlayarak geri kalanı kopyalamak istiyorsunuz.<br/> -False: tutarsız dosya bulunduğunda kopyalama etkinliğini iptal etmek istiyorsunuz.<br/>Bu özelliğin yalnızca ikili dosyaları kopyalarken ve Validatedatatutarlılığı true olarak ayarlandığında geçerli olduğunu unutmayın.  | Doğru<br/>False (varsayılan) | No
+Günlüğe kaydetme ayarları | Atlanan dosyaları günlüğe kaydetmek için oturum günlüğünü etkinleştirmek üzere belirtilenebilir bir özellik grubu. | | No
+linkedServiceName | [Azure Blob depolama alanına](connector-azure-blob-storage.md#linked-service-properties) bağlı hizmet veya oturum günlüğü dosyalarını depolamak için [Azure Data Lake Storage 2.](connector-azure-data-lake-storage.md#linked-service-properties) . | `AzureBlobStorage` `AzureBlobFS` Günlük dosyalarını depolamak için kullandığınız örneğe başvuran bağlı hizmetin veya türlerin adları. | No
+path | Günlük dosyalarının yolu. | Günlük dosyalarını depolamak istediğiniz yolu belirtin. Bir yol sağlamazsanız, hizmet sizin için bir kapsayıcı oluşturur. | No
 
 >[!NOTE]
 >- Ya da Azure Blob veya Azure Data Lake Storage 2. ikili dosyalarını kopyalarken, ADF, [Azure Blob API 'si](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions?view=azure-dotnet-legacy&preserve-view=true) ve [Azure Data Lake Storage 2. API 'si](/rest/api/storageservices/datalakestoragegen2/path/update#request-headers)aracılığıyla blok düzeyinde MD5 sağlama toplamı doğrulaması yapar. Azure Blob üzerinde ContentMD5 veya veri kaynağı olarak Azure Data Lake Storage 2., ADF dosyaları okuduktan sonra dosya düzeyi MD5 sağlama toplamı doğrulaması yapar. Dosyaları Azure Blob 'a veya veri hedefi olarak Azure Data Lake Storage 2. kopyaladıktan sonra, ADF, veri tutarlılığı doğrulaması için aşağı akış uygulamaları tarafından daha fazla tüketilen Azure Blob veya Azure Data Lake Storage 2. ContentMD5 yazar.

@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 02/05/2021
-ms.openlocfilehash: 6c064acc44e180d3e99bdcf68d2e1e129d52fd5d
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 19c7d37d62ec54e57127f5993e8bae4d4e9a2908
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99805943"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100388541"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure Logic Apps için sınırlar ve yapılandırma bilgileri
 
@@ -193,19 +193,20 @@ Mantıksal uygulama kaynak tanımınız hakkında daha fazla bilgi için bkz. [g
 
 ### <a name="integration-service-environment-ise"></a>Tümleştirme hizmeti ortamı (ıSE)
 
-[Premium Ise SKU 'su](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)için üretilen iş sınırları aşağıda verilmiştir:
+* [Geliştirici Ise SKU 'su](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level): dakikada 500 yürütme sağlar, ancak aşağıdaki noktalara dikkat edin:
 
-| Name | Sınır | Notlar |
-|------|-------|-------|
-| Taban birimi yürütme sınırı | Altyapı kapasitesi %80 ' a ulaştığında sistem kısıtlanıyor | Ayda ~ 4.000 eylem yürütmelerinin sayısını sağlar; Bu, ayda ~ 160.000.000 eylem yürütmeleri | |
-| Ölçek birimi yürütme sınırı | Altyapı kapasitesi %80 ' a ulaştığında sistem kısıtlanıyor | Her ölçek birimi, dakikada ~ 80.000.000 daha fazla eylem yürütmeleri olan ~ 2.000 ek eylem yürütmeleri sağlayabilir | |
-| Ekleyebileceğiniz maksimum ölçek birimi | 10 | |
-||||
+  * Bu SKU 'yu yalnızca araştırma, denemeleri, geliştirme veya test için (üretim veya performans testi için değil) kullandığınızdan emin olun. Bu SKU, geri dönüştürme sırasında bir hizmet düzeyi sözleşmesi (SLA), ölçek artırma yeteneği veya yedekliliği olmadığından gecikme veya kapalı kalma süresi yaşayabileceğiniz anlamına gelir.
 
-Normal işlemede Bu limitlerin üzerine gitmek veya bu limitlerin üzerine gidebilecek yük testi çalıştırmak için, gereksinimlerle ilgili yardım için [Logic Apps ekibine başvurun](mailto://logicappsemail@microsoft.com) .
+  * Arka uç güncelleştirmeleri zaman zaman kesme hizmeti gerektirebilir.
 
-> [!NOTE]
-> [Geliştirici Ise SKU 'su](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) yayımlanmış sınırlara sahip değildir, ölçeklendirme özelliği yoktur ve hizmet düzeyi ANLAŞMASı (SLA) yoktur. Bu SKU 'YU yalnızca deneme, geliştirme ve test için kullanın, üretim veya performans testi yapın.
+* [Premium Ise SKU 'su](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level): aşağıdaki tabloda, bu SKU 'nun üretilen iş sınırları açıklanmakta, ancak normal işlemede bu sınırları aşmamak veya bu limitlerin üzerine gidebilecek yük testi çalıştırmak için gereksinimlerinizin bulunduğu yardım için [Logic Apps ekibine başvurun](mailto://logicappsemail@microsoft.com) .
+
+  | Name | Sınır | Notlar |
+  |------|-------|-------|
+  | Taban birimi yürütme sınırı | Altyapı kapasitesi %80 ' a ulaştığında sistem kısıtlanıyor | Ayda ~ 4.000 eylem yürütmelerinin sayısını sağlar; Bu, ayda ~ 160.000.000 eylem yürütmeleri | |
+  | Ölçek birimi yürütme sınırı | Altyapı kapasitesi %80 ' a ulaştığında sistem kısıtlanıyor | Her ölçek birimi, dakikada ~ 80.000.000 daha fazla eylem yürütmeleri olan ~ 2.000 ek eylem yürütmeleri sağlayabilir | |
+  | Ekleyebileceğiniz maksimum ölçek birimi | 10 | |
+  ||||
 
 <a name="gateway-limits"></a>
 

@@ -6,12 +6,12 @@ ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/29/2021
-ms.openlocfilehash: e74c96e0c03d75f34a16d95d0bed642c1900f558
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: db3b62e7ce07c1e10bc5030c37cb8957d281ea05
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99219732"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100517306"
 ---
 # <a name="backup-and-restore-in-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure veritabanı 'nda yedekleme ve geri yükleme-tek sunucu
 
@@ -66,7 +66,7 @@ PostgreSQL için Azure veritabanı 'nda geri yükleme gerçekleştirmek, özgün
 - Tek **noktaya geri yükleme** , yedekleme artıklığı seçeneğiyle birlikte kullanılabilir ve özgün sunucunuz ile aynı bölgede yeni bir sunucu oluşturur.
 - **Coğrafi geri yükleme** yalnızca, sunucunuzu coğrafi olarak yedekli depolama için yapılandırdıysanız kullanılabilir ve sunucunuzu farklı bir bölgeye geri yüklemenize olanak tanır.
 
-Tahmini kurtarma süresi, veritabanı boyutları, işlem günlüğü boyutu, ağ bant genişliği ve aynı bölgedeki aynı bölgede Kurtarılan toplam veritabanı sayısı gibi çeşitli faktörlere bağlıdır. Kurtarma zamanı genellikle 12 saatten düşüktür.
+Tahmini kurtarma süresi, veritabanı boyutları, işlem günlüğü boyutu, ağ bant genişliği ve aynı bölgedeki aynı bölgede Kurtarılan toplam veritabanı sayısı gibi çeşitli faktörlere bağlıdır. Kurtarma süresi, son veri yedeklemeye ve gerçekleştirilen kurtarma gereksinimlerinin miktarına bağlı olarak değişir. Genellikle 12 saatten daha düşüktür.
 
 > [!NOTE] 
 > Kaynak PostgreSQL sunucunuz, müşteri tarafından yönetilen anahtarlarla şifrelenirse, daha fazla dikkat edilmesi için lütfen [belgelere](concepts-data-encryption-postgresql.md) bakın. 

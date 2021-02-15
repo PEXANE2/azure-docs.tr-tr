@@ -5,30 +5,30 @@ description: Azure portal, PowerShell veya Azure CLı kullanarak Azure dosya pay
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 2/22/2020
+ms.date: 1/20/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli, references_regions
-ms.openlocfilehash: 3ff7b3cd29740461a4f94f3c1d433086db119a09
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 5a27f38e92955c0aa240f6be394aacd187c3a8b8
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98673815"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100370912"
 ---
 # <a name="create-an-azure-file-share"></a>Azure dosya paylaşımı oluşturma
 Bir Azure dosya paylaşımının oluşturulması için, nasıl kullanacağınız hakkında üç soruyu yanıtlamanız gerekir:
 
 - **Azure dosya paylaşımınıza ilişkin performans gereksinimleri nelerdir?**  
-    Azure dosyaları, sabit disk tabanlı (HDD tabanlı) donanımda barındırılan ve katı hal disk tabanlı (SSD tabanlı) donanımda barındırılan Premium dosya paylaşımları gibi standart dosya paylaşımları (işlem için iyileştirilmiş, sık erişimli ve seyrek erişimli dosya paylaşımları dahil) sağlar.
-
-- **Dosya paylaşımıyla ne kadar boyut gerekir?**  
-    Standart dosya paylaşımları 100 TiB 'ye yayılabilir, ancak bu özellik varsayılan olarak etkinleştirilmemiştir; 5 TiB 'den büyük bir dosya paylaşımının olması gerekiyorsa, depolama hesabınız için büyük dosya paylaşma özelliğini etkinleştirmeniz gerekir. Premium dosya paylaşımları, herhangi bir özel ayar olmadan 100 TiB 'ye kadar yayılabilir, ancak standart dosya paylaşımları gibi Kullandıkça Öde yerine Premium dosya paylaşımları temin edilir. Bu, bir dosya paylaşımının sağlamaktan çok daha büyük olması için toplam depolama maliyetini artıracak anlamına gelir.
+    Azure dosyaları, sabit disk tabanlı (HDD tabanlı) donanımda barındırılan standart dosya paylaşımları ve katı hal disk tabanlı (SSD tabanlı) donanımda barındırılan Premium dosya paylaşımları sunar.
 
 - **Azure dosya paylaşımınıza yönelik yedeklilik gereksinimleriniz nelerdir?**  
     Standart dosya paylaşımları yerel olarak yedekli (LRS), bölgesel olarak yedekli (ZRS), coğrafi olarak yedekli (GRS) veya coğrafi bölge-yedekli (GZRS) depolama alanı sunar, ancak büyük dosya paylaşımı özelliği yalnızca yerel olarak yedekli ve bölge yedekli dosya paylaşımlarında desteklenir. Premium dosya paylaşımları hiçbir coğrafi artıklık biçimini desteklemez.
 
-    Premium dosya paylaşımları, çoğu bölgede depolama hesapları sunan ve bölge artıklığı sağlayan, bölgelerin daha küçük bir alt kümesinde yerel olarak artıklık ile kullanılabilir. Premium dosya paylaşımlarının bölgede şu anda kullanılabilir olup olmadığını öğrenmek için bkz. Azure için [bölgeye göre kullanılabilir ürünler](https://azure.microsoft.com/global-infrastructure/services/?products=storage) sayfası. ZRS 'yi destekleyen bölgeler hakkında daha fazla bilgi için bkz. [Azure Storage yedekliği](../common/storage-redundancy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
+    Premium dosya paylaşımları, bölgelerin bir alt kümesinde yerel olarak artıklık ve bölge yedekliliği ile kullanılabilir. Premium dosya paylaşımlarının bölgede şu anda kullanılabilir olup olmadığını öğrenmek için bkz. Azure için [bölgeye göre kullanılabilir ürünler](https://azure.microsoft.com/global-infrastructure/services/?products=storage) sayfası. ZRS 'yi destekleyen bölgeler hakkında daha fazla bilgi için bkz. [Azure Storage yedekliği](../common/storage-redundancy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
+
+- **Dosya paylaşımıyla ne kadar boyut gerekir?**  
+    Yerel ve bölgesel olarak yedekli depolama hesaplarında Azure dosya paylaşımları 100 TiB 'ye kadar yayılabilir, ancak coğrafi ve coğrafi bölge yedekli depolama hesaplarında Azure dosya paylaşımları yalnızca 5 TiB 'ye kadar yayılabilir. 
 
 Bu üç seçenek hakkında daha fazla bilgi için bkz. [Azure dosyaları dağıtımı Için planlama](storage-files-planning.md).
 
@@ -51,7 +51,7 @@ Azure portal aracılığıyla bir depolama hesabı oluşturmak için panodan **+
 
 ![Tarayıcıda depolama hesabı hızlı oluşturma seçeneğinin ekran görüntüsü](media/storage-how-to-create-file-share/create-storage-account-0.png)
 
-#### <a name="the-basics-section"></a>Temel bilgiler bölümü
+#### <a name="basics"></a>Temel bilgiler
 Bir depolama hesabı oluşturmak için tamamlanacak ilk bölüm **temel bilgiler** olarak etiketlenir. Bu, depolama hesabı oluşturmak için gerekli tüm alanları içerir. GPv2 depolama hesabı oluşturmak için, **performans** radyo düğmesinin *Standart* olarak ayarlandığından ve **Hesap türü** açılan listesinin *StorageV2 (genel amaçlı v2)* olarak seçildiğinden emin olun.
 
 ![Standart seçili ve hesap türü StorageV2 seçiliyken performans radyo düğmesinin ekran görüntüsü](media/storage-how-to-create-file-share/create-storage-account-1.png)
@@ -61,28 +61,28 @@ Bir dosya depolama depolama hesabı oluşturmak için, **performans** radyo dü�
 ![Premium seçiliyken ve dosya depolama seçiliyken hesap türüyle performans radyo düğmesinin ekran görüntüsü](media/storage-how-to-create-file-share/create-storage-account-2.png)
 
 Diğer temelleri alanları, depolama hesabı seçiminizden bağımsızdır:
-- **Abonelik**: dağıtım yapılacak depolama hesabı için abonelik. 
-- **Kaynak grubu**: dağıtılacak depolama hesabının kaynak grubu. Yeni bir kaynak grubu oluşturabilir veya var olan bir kaynak grubunu kullanabilirsiniz. Kaynak grubu, Azure hizmetlerinizi gruplandırmaya yönelik mantıksal bir kapsayıcıdır. Bir depolama hesabı oluşturduğunuzda, yeni bir kaynak grubu oluşturma veya var olan bir kaynak grubu kullanma seçeneğiniz vardır.
 - **Depolama hesabı adı**: oluşturulacak depolama hesabı kaynağının adı. Bu ad genel olarak benzersiz olmalıdır, aksi takdirde istediğiniz ad olabilir. SMB aracılığıyla bir Azure dosya paylaşımının bağladığınızda, depolama hesabı adı sunucu adı olarak kullanılır.
 - **Konum**: dağıtım yapılacak depolama hesabının bölgesi. Bu, kaynak grubuyla ilişkili bölge veya kullanılabilir başka bir bölge olabilir.
-- **Çoğaltma**: Bu, çoğaltma olarak etiketlendiği halde bu alan aslında **yedeklilik** anlamına gelir; Bu, istenen artıklık düzeyindedir: yerel olarak yedekli (LRS), bölge artıklığı (ZRS), coğrafi yedeklilik (GRS) ve coğrafi bölge-artıklık. Bu açılan liste ayrıca, Azure dosya paylaşımları için uygulanan okuma erişimli coğrafi yedeklilik (RA-GRS) ve Okuma Erişimli Coğrafi bölge yedekliliği (RA-GZRS) içerir; Bu seçilenlerle bir depolama hesabında oluşturulan herhangi bir dosya paylaşımının sırasıyla coğrafi olarak yedekli veya coğrafi bölge-yedekli olması gerekir. Bölgenize veya seçili depolama hesabı türüne bağlı olarak, bazı artıklık seçeneklerine izin verilmiyor olabilir.
-- **BLOB erişim katmanı**: Bu alan Azure dosyaları için uygulanmıyor, bu nedenle radyo düğmelerinden birini seçebilirsiniz. 
+- **Çoğaltma**: Bu, çoğaltma olarak etiketlendiği halde bu alan aslında **yedeklilik** anlamına gelir; Bu, istenen artıklık düzeyindedir: yerel olarak yedekli (LRS), bölge artıklığı (ZRS), coğrafi yedeklilik (GRS) ve coğrafi bölge-artıklığı (GZRS). Bu açılan liste ayrıca, Azure dosya paylaşımları için uygulanan okuma erişimli coğrafi yedeklilik (RA-GRS) ve Okuma Erişimli Coğrafi bölge yedekliliği (RA-GZRS) içerir; Bu seçilenlerle bir depolama hesabında oluşturulan herhangi bir dosya paylaşımının sırasıyla coğrafi olarak yedekli veya coğrafi bölge-yedekli olması gerekir. 
 
-> [!Important]  
-> Blob erişim katmanının seçilmesi dosya paylaşımının katmanını etkilemez.
-
-#### <a name="the-networking-blade"></a>Ağ dikey penceresi
+#### <a name="networking"></a>Ağ
 Ağ bölümü, ağ seçeneklerini yapılandırmanızı sağlar. Bu ayarlar, depolama hesabının oluşturulması için isteğe bağlıdır ve isterseniz daha sonra yapılandırılabilir. Bu seçenekler hakkında daha fazla bilgi için bkz. [Azure dosyaları ağ iletişimi konuları](storage-files-networking-overview.md).
 
-#### <a name="the-advanced-blade"></a>Gelişmiş dikey pencere
+#### <a name="data-protection"></a>Veri koruma
+Veri koruma bölümü, Depolama hesabınızdaki Azure dosya paylaşımları için geçici silme ilkesini yapılandırmanıza olanak tanır. Blob 'lar, kapsayıcılar için geçici silme ile ilgili diğer ayarlar, kapsayıcılar, sürüm oluşturma ve değişiklik akışı için yalnızca Azure Blob depolama için geçerlidir.
+
+#### <a name="advanced"></a>Gelişmiş
 Gelişmiş bölüm, Azure dosya paylaşımları için çeşitli önemli ayarlar içerir:
 
-- **Güvenli aktarım gerekli**: Bu alan, depolama hesabının depolama hesabıyla iletişim için şifreleme gerektirip gerektirmediğini belirtir. Bunun etkin olmasını öneririz, ancak SMB 2,1 desteğinin olması gerekiyorsa, bunu devre dışı bırakmanız gerekir. Depolama hesabınızı, hizmet uç noktaları ve/veya özel uç noktalarla bir sanal ağa erişimi sınırlandırdıysanız şifrelemeyi devre dışı bırakmanızı öneririz.
+- **Güvenli aktarım gerekli**: Bu alan, depolama hesabının depolama hesabıyla iletişim için şifreleme gerektirip gerektirmediğini belirtir. SMB 2,1 desteğine ihtiyacınız varsa, bunu devre dışı bırakmanız gerekir.
 - **Büyük dosya paylaşımları**: Bu alan, 100 TİB 'ye yayılan dosya paylaşımları için depolama hesabı sağlar. Bu özelliği etkinleştirmek, depolama hesabınızı yalnızca yerel olarak yedekli ve bölgesel olarak yedekli depolama seçenekleriyle sınırlandırır. Büyük dosya paylaşımları için GPv2 depolama hesabı etkinleştirildikten sonra, büyük dosya paylaşımı özelliğini devre dışı bırakayükleyemezsiniz. Tüm Premium dosya paylaşımları 100 TiB 'ye kadar ölçeklenebileceğinden, FileStorage depolama hesapları (Premium dosya paylaşımları için depolama hesapları) bu seçeneğe sahip değildir. 
 
 ![Azure dosyaları için uygulanan önemli gelişmiş ayarların ekran görüntüsü](media/storage-how-to-create-file-share/create-storage-account-3.png)
 
-Gelişmiş sekmesinde bulunan diğer ayarlar (blob geçici silme, Azure Data Lake Storage Gen 2 için hiyerarşik ad alanı ve BLOB depolama için NFSv3), Azure dosyaları için uygulanmaz.
+Gelişmiş sekmesinde bulunan diğer ayarlar (Azure Data Lake Storage Gen 2 için hiyerarşik ad alanı, varsayılan blob katmanı, NFSv3 for blob Storage vb.) Azure dosyaları için uygulanmaz.
+
+> [!Important]  
+> Blob erişim katmanının seçilmesi dosya paylaşımının katmanını etkilemez.
 
 #### <a name="tags"></a>Etiketler
 Etiketler, birden fazla kaynağa ve kaynak grubuna aynı etiketi uygulayarak kaynakları kategorilere ayırmanıza ve birleştirilmiş faturalandırmayı görüntülemenize olanak tanıyan ad/değer çiftleridir. Bunlar isteğe bağlıdır ve depolama hesabı oluşturulduktan sonra uygulanabilir.
@@ -163,19 +163,19 @@ az storage account create \
 ## <a name="create-file-share"></a>Dosya paylaşımı oluşturma
 Depolama hesabınızı oluşturduktan sonra, dosya paylaşımınızın oluşturulması gerekir. Bu işlem, genellikle bir Premium dosya paylaşımının veya standart dosya paylaşımının kullanılıp kullanılmadığından bağımsız olarak aynıdır. Aşağıdaki farklılıkları göz önünde bulundurmanız gerekir.
 
-Standart dosya paylaşımları standart katmanlardan birine dağıtılabilir: işlem için iyileştirilmiş (varsayılan), sık veya seyrek. Bu, depolama hesabının **BLOB erişim katmanından** etkilenmemiş bir dosya paylaşma katmanıdır (Bu özellik yalnızca Azure Blob depolama ile Ilgilidir; Azure dosyalarıyla ilişkili değildir). Dağıtım katmanını dağıtıldıktan sonra istediğiniz zaman değiştirebilirsiniz. Premium dosya paylaşımları, standart bir katmanda standart dosya paylaşımlarına doğrudan dönüştürülemez.
+Standart dosya paylaşımları standart katmanlardan birine dağıtılabilir: işlem için iyileştirilmiş (varsayılan), sık veya seyrek. Bu, depolama hesabının **BLOB erişim katmanından** etkilenmemiş bir dosya paylaşma katmanıdır (Bu özellik yalnızca Azure Blob depolama ile Ilgilidir; Azure dosyalarıyla ilişkili değildir). Dağıtım katmanını dağıtıldıktan sonra istediğiniz zaman değiştirebilirsiniz. Premium dosya paylaşımları doğrudan herhangi bir Standart katmana dönüştürülemez.
 
 > [!Important]  
 > GPv2 depolama hesabı türleri içindeki katmanlar arasında dosya paylaşımlarını taşıyabilirsiniz (işlem için iyileştirilmiş, sık erişimli ve seyrek erişimli). Katmanlar arasında paylaşma işlemleri işlemler arası işlemler: bir Hotter katmanından daha soğuk bir katmana geçiş yapmak, daha soğuk bir katmandan bir dosya için daha soğuk katman yazma işlemi ücreti uygular, ancak daha soğuk bir katmanda bulunan her dosya için seyrek katman okuma işlemi ücreti olur.
 
 **Quota** özelliği, Premium ve standart dosya paylaşımları arasında biraz farklılık gösterir:
 
-- Standart dosya paylaşımları için bu, son kullanıcıların gidebileceği Azure dosya paylaşımının üst sınırıdır. Standart dosya paylaşımının kotasının birincil amacı budgetary: "Bu dosya paylaşımının bu noktanın ötesine büyümesini istemiyorum". Bir kota belirtilmemişse standart dosya paylaşımı 100 TiB 'ye yayılabilir (veya büyük dosya paylaşımları özelliği bir depolama hesabı için ayarlanmamışsa, 5 TiB).
+- Standart dosya paylaşımları için bu, son kullanıcıların gidebileceği Azure dosya paylaşımının üst sınırıdır. Bir kota belirtilmemişse standart dosya paylaşımı 100 TiB 'ye yayılabilir (veya büyük dosya paylaşımları özelliği bir depolama hesabı için ayarlanmamışsa, 5 TiB).
 
-- Premium dosya paylaşımları için kotanın **sağlanan boyut** ile aşırı yüklenmiş olması gerekir. Sağlanan boyut, fiili kullanımdan bağımsız olarak faturalandırılacaksınız. Premium bir dosya paylaşma sağladığınızda iki faktörü göz önünde bulundurmanız gerekir: 1) paylaşımın bir alan kullanım perspektifinden ve 2) iş yükünüz için gereken ıOPS. Her sağlanan GiB size ek ayrılmış ve patlama ıOPS sahibine. Premium dosya paylaşımının nasıl planlanacağı hakkında daha fazla bilgi için bkz. [Premium dosya paylaşımlarını sağlama](understanding-billing.md#provisioned-model).
+- Premium dosya paylaşımları için kota **sağlanan boyut** anlamına gelir. Sağlanan boyut, fiili kullanımdan bağımsız olarak faturalandırılacaksınız. Premium dosya paylaşımının nasıl planlanacağı hakkında daha fazla bilgi için bkz. [Premium dosya paylaşımlarını sağlama](understanding-billing.md#provisioned-model).
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
-Depolama hesabınızı yeni oluşturduysanız, **Kaynağa Git**' i seçerek dağıtım ekranından bu sayfaya gidebilirsiniz. Depolama hesabını daha önce oluşturduysanız, onu içeren kaynak grubu aracılığıyla buna gidebilirsiniz. Depolama hesabında bir kez, **dosya paylaşımları** etiketli kutucuğu seçin (depolama hesabı için içindekiler tablosu aracılığıyla **dosya paylaşımlarına** da gidebilirsiniz).
+Depolama hesabınızı yeni oluşturduysanız, **Kaynağa Git**' i seçerek dağıtım ekranından bu sayfaya gidebilirsiniz. Depolama hesabında bir kez, **dosya paylaşımları** etiketli kutucuğu seçin (depolama hesabı için içindekiler tablosu aracılığıyla **dosya paylaşımlarına** da gidebilirsiniz).
 
 ![Dosya paylaşımları kutucuğunun ekran görüntüsü](media/storage-how-to-create-file-share/create-file-share-1.png)
 
@@ -185,9 +185,9 @@ Yeni dosya paylaşma dikey penceresi ekranda görünmelidir. Yeni dosya paylaşm
 
 - **Ad**: oluşturulacak dosya paylaşımının adı.
 - **Kota**: Standart dosya paylaşımları için dosya paylaşımının kotası; Premium dosya paylaşımları için dosya paylaşımının sağlanan boyutu.
-- **Katmanlar**: bir dosya paylaşımının seçili katmanı. Bu alan yalnızca **genel amaçlı (GPv2) depolama hesabında** kullanılabilir. İşlem için iyileştirilmiş, sık veya seyrek seçim yapabilirsiniz. Paylaşımın katmanı herhangi bir zamanda değiştirilebilir. Geçiş işlemi tamamlandıktan sonra istenirse, geçiş sırasında mümkün olan en yüksek katmanı, işlem masraflarını en aza indirmek ve daha sonra isterseniz daha düşük bir katmana geçiş yapmanızı öneririz.
+- **Katmanlar**: bir dosya paylaşımının seçili katmanı. Bu alan yalnızca **genel amaçlı (GPv2) depolama hesabında** kullanılabilir. İşlem için iyileştirilmiş, sık veya seyrek seçim yapabilirsiniz. Paylaşımın katmanı herhangi bir zamanda değiştirilebilir. Geçiş işlemi tamamlandıktan sonra istenirse, işlem giderlerini en aza indirmek ve sonra isterseniz daha düşük bir katmana geçiş yapmak için, geçiş sırasında mümkün olan en yoğun katmanını seçmeniz önerilir.
 
-Yeni paylaşımın oluşturulmasını bitirilirken **Oluştur** ' u seçin. Depolama hesabınız bir sanal ağda ise, istemciniz sanal ağda de olmadığı takdirde, başarıyla bir Azure dosya paylaşımının oluşturabileceksiniz. Ayrıca, Azure PowerShell cmdlet 'ini kullanarak bu zaman noktası sınırlamasını de çözebilirsiniz `New-AzRmStorageShare` .
+Yeni paylaşımın oluşturulmasını bitirilirken **Oluştur** ' u seçin.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 Cmdlet 'i ile bir Azure dosya paylaşma oluşturabilirsiniz [`New-AzRmStorageShare`](/powershell/module/az.storage/New-AzRmStorageShare) . Aşağıdaki PowerShell komutları, `$resourceGroupName` `$storageAccountName` Azure PowerShell ile depolama hesabı oluşturma bölümünde değişkenleri ve yukarıda tanımlanan şekilde ayarlamış olduğunuz varsayılır. 
@@ -198,16 +198,6 @@ Aşağıdaki örnek, parametresini kullanarak bir açık katmanla bir dosya payl
 > Premium dosya paylaşımları için parametresi, `-QuotaGiB` dosya paylaşımının sağlanan boyutunu ifade eder. Dosya paylaşımının sağlanan boyutu, kullanımdan bağımsız olarak, faturalandırılacak tutardır. Standart dosya paylaşımları, sağlanan boyut yerine kullanıma göre faturalandırılır.
 
 ```powershell
-# Update the Azure storage module to use the preview version. You may need to close and 
-# reopen PowerShell before running this command. If you are running PowerShell 5.1, ensure 
-# the following:
-# - Run the below cmdlets as an administrator.
-# - Have PowerShellGet 2.2.3 or later. Uncomment the following line to check.
-# Get-Module -ListAvailable -Name PowerShellGet
-Remove-Module -Name Az.Storage -ErrorAction SilentlyContinue
-Uninstall-Module -Name Az.Storage
-Install-Module -Name Az.Storage -RequiredVersion "2.1.1-preview" -AllowClobber -AllowPrerelease 
-
 # Assuming $resourceGroupName and $storageAccountName from earlier in this document have already
 # been populated. The access tier parameter may be TransactionOptimized, Hot, or Cool for GPv2 
 # storage accounts. Standard tiers are only available in standard storage accounts. 
@@ -222,13 +212,8 @@ New-AzRmStorageShare `
     Out-Null
 ```
 
-> [!Note]  
-> PowerShell aracılığıyla katmanları ayarlama ve değiştirme özelliği, önizleme az. Storage PowerShell modülünde sunulmaktadır. Bu cmdlet 'ler veya çıktısı, genel olarak kullanılabilen az. Storage PowerShell modülünde yayınlanmadan önce değişebilir, bu nedenle komut dosyalarını aklınızda oluşturun.
-
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 Komutuyla bir Azure dosya paylaşma oluşturabilirsiniz [`az storage share-rm create`](/cli/azure/storage/share-rm?preserve-view=true&view=azure-cli-latest#az_storage_share_rm_create) . Aşağıdaki Azure CLı komutları, `$resourceGroupName` `$storageAccountName` Azure CLI ile depolama hesabı oluşturma bölümünde değişkenleri ve yukarıda tanımlanan şekilde ayarlamış olduğunuz varsayılır.
-
-Belirli bir katmana bir dosya paylaşımının oluşturulması veya taşınması işlevselliği, en son Azure CLı güncelleştirmesinde bulunabilir. Azure CLı 'nın güncelleştirilmesi, kullanmakta olduğunuz işletim sistemi/Linux dağıtımına özeldir. Azure CLı 'yi sisteminizde güncelleştirme hakkında yönergeler için bkz. [Azure CLI 'Yı yüklemek](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest).
 
 > [!Important]  
 > Premium dosya paylaşımları için parametresi, `--quota` dosya paylaşımının sağlanan boyutunu ifade eder. Dosya paylaşımının sağlanan boyutu, kullanımdan bağımsız olarak, faturalandırılacak tutardır. Standart dosya paylaşımları, sağlanan boyut yerine kullanıma göre faturalandırılır.
@@ -244,9 +229,6 @@ az storage share-rm create \
     --quota 1024 \
     --output none
 ```
-
-> [!Note]  
-> Parametresi ile bir katmana ayarlama özelliği, `--access-tier` en son Azure CLI paketinde bir önizleme sağlar. Bu komut veya çıktısı genel kullanıma açık olarak işaretlenmeden önce değişebilir, bu nedenle komut dosyalarını aklınızda oluşturun.
 
 ---
 
@@ -273,8 +255,6 @@ Elde edilen iletişim kutusunda istenen katmanı seçin: işlem için iyileştir
 Aşağıdaki PowerShell cmdlet 'i, `$resourceGroupName` `$storageAccountName` `$shareName` Bu belgenin önceki bölümlerinde açıklandığı gibi, değişkenlerini ayarlamış olduğunuzu varsayar.
 
 ```PowerShell
-# This cmdlet requires Az.Storage version 2.1.1-preview, which is installed
-# in the earlier example.
 Update-AzRmStorageShare `
     -ResourceGroupName $resourceGroupName `
     -StorageAccountName $storageAccountName `

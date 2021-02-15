@@ -1,22 +1,18 @@
 ---
 title: Azure portal kullanarak bir tabloyu artımlı olarak kopyalama
 description: Bu öğreticide, Azure SQL veritabanındaki bir tablodan Azure Blob depolama alanına Delta verileri yükleyen bir işlem hattı ile bir Azure Data Factory oluşturursunuz.
-services: data-factory
 author: dearandyxu
 ms.author: yexu
-manager: anandsub
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-dt-2019
 ms.date: 11/09/2020
-ms.openlocfilehash: d1a7f47b1cdccb02952bd7d9d333855f5eec27d5
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 1f88571b407c138516568a7f74476ca35425da75
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97508535"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100384699"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-the-azure-portal"></a>Azure portal kullanarak Azure SQL veritabanından Azure Blob depolama alanına artımlı olarak veri yükleme
 
