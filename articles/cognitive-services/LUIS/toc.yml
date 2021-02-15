@@ -413,7 +413,7 @@
     - name: Uyumluluk
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Şifreleme
-      href: luis-encryption-of-data-at-rest.md
+      href: encrypt-data-at-rest.md
     - name: Sanal ağları yapılandırma
       maintainContext: true
       href: ../cognitive-services-virtual-networks.md

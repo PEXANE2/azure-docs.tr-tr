@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/06/2020
 ms.service: azure
 ms.topic: how-to
-ms.openlocfilehash: f52e308199ddb8bc21809009ad71918d077ac5b2
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: ebd5a0c14b6f9e3a57e3a7df888b5f9d24f9a2df
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97842852"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100523626"
 ---
 # <a name="work-with-alerts-on-the-on-premises-management-console"></a>Şirket içi yönetim konsolunda uyarılarla çalışma 
 
@@ -119,13 +119,34 @@ Bir bölge eşlemesindeki cihazları görüntülemek için:
 
 ## <a name="manage-alert-events"></a>Uyarı olaylarını yönetme
 
-Kuruluş sensörleri tarafından algılanan uyarı olaylarını aşağıdaki gibi yönetebilirsiniz:
+Şirket içi yönetim konsolundan uyarı olaylarının yönetilmesi için çeşitli seçenekler mevcuttur.
 
 - Uyarı olaylarını öğrenin veya kabul edin. Yetkilendirildiği tüm uyarı olaylarını öğrenmek ve şu anda kabul edilmedi olan tüm uyarı olaylarını doğrulamak için **& bildirim alın** ' ı seçin.
 
   :::image type="content" source="media/how-to-work-with-alerts-on-premises-management-console/learn-and-acknowledge.png" alt-text="Tümünü öğrenmek için & Onayla ' yı seçin.":::
 
 - Uyarı olaylarını susturma ve aç.
+
+Bilgi edinme ve uyarı olaylarını ele alma hakkında daha fazla bilgi edinmek için bkz. algılayıcı [uyarı olaylarını yönetme](how-to-manage-the-alert-event.md) makalesi.
+
+## <a name="export-alert-information"></a>Uyarı bilgilerini dışarı aktar
+
+Uyarı bilgilerini bir. csv dosyasına aktarın. Filtrelenmiş görünüme göre algılanan tüm uyarıların veya dışarı aktarma bilgilerinin bilgilerini dışarı aktarabilirsiniz. Aşağıdaki bilgiler verilir:
+
+- Kaynak adres
+- Hedef adres
+- Uyarı başlığı
+- Uyarı önem derecesi
+- Uyarı iletisi
+- Ek bilgiler
+- Onaylanan durum
+- PCAP kullanılabilirliği
+
+Dışarı aktarmak için:
+
+1. Yan menüden Uyarılar ' ı seçin.
+1. Export (Dışarı aktar) öğesini seçin.
+1. Birden çok cihazı içeren her uyarı için uyarı bilgilerini ayrı satırlarda dışarı aktarmak için genişletilmiş uyarıları dışarı aktar ' ı seçin. Genişletilmiş uyarıları dışa aktarma seçildiğinde,. csv dosyası her satırdaki benzersiz öğelerle birlikte uyarının yinelenen bir satırını oluşturur. Bu seçeneğin kullanılması, dışarıya aktarılmış uyarı olaylarını araştırmanızı kolaylaştırır.  
 
 ## <a name="create-alert-exclusion-rules"></a>Uyarı dışlama kuralları oluşturma
 
@@ -225,6 +246,6 @@ API kullanarak oluşturduğunuz kurallar, **hariç tutma kuralı** penceresinde 
 
 :::image type="content" source="media/how-to-work-with-alerts-on-premises-management-console/edit-exclusion-rule-screen.png" alt-text="Dışlama kuralını Düzenle görünümünün ekran görüntüsü.":::
 
-## <a name="see-also"></a>Ayrıca bkz.
+## <a name="next-steps"></a>Sonraki adımlar
 
 [Sensörinizdeki uyarılarla çalışma](how-to-work-with-alerts-on-your-sensor.md)

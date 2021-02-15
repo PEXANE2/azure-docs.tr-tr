@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 01/03/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: a71ea75eb603b141c4b28cff5f2b4aa957583bcd
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 3d5a29ed26d58f0cbaa57768d4b8ad236283deb9
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98621321"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100523864"
 ---
 # <a name="about-azure-defender-for-iot-network-setup"></a>IoT Ağ kurulumu için Azure Defender hakkında
 
@@ -534,24 +534,23 @@ Site dağıtımından önce bu listeyi gözden geçirin:
 
 | **#** | **Görev veya etkinlik** | **Durum** | **Açıklamalar** |
 |--|--|--|--|
-| 1 | Küresel sağlayın. | ☐ |  |
-| 3 | Cihazları sipariş edin. | ☐ |  |
-| 4 | Ağdaki alt ağların bir listesini hazırlayın. | ☐ |  |
-| 5 | Üretim ağlarının VLAN listesini sağlayın. | ☐ |  |
-| 6 | Ağdaki anahtar modellerinin bir listesini sağlayın. | ☐ |  |
-| 7 | Endüstriyel ekipmanın satıcıların ve protokollerinin bir listesini sağlayın. | ☐ |  |
-| 8 | Sensörler için ağ ayrıntılarını sağlayın (IP adresi, alt ağ, D-GW, DNS). | ☐ |  |
-| 9 | Gerekli güvenlik duvarı kuralları ve erişim listesi oluşturun. | ☐ |  |
-| 10 | Bağlantı noktası izleme için anahtarlar üzerinde kapsayıcı bağlantı noktaları oluşturun veya ağ dokunmayı istediğiniz şekilde yapılandırın. | ☐ |  |
-| 11 | Algılayıcı gereçlerinde raf alanı hazırlayın. | ☐ |  |
-| 12 | Personel için bir iş istasyonu hazırlayın. | ☐ |  |
-| 13 | IoT raf cihazları için Defender için bir klavye, izleyici ve fare sağlayın. | ☐ |  |
-| 14 | Gereçlerden oluşan raf ve kablo. | ☐ |  |
-| 15 | Dağıtımı desteklemek için site kaynaklarını ayırın. | ☐ |  |
-| 16 | Active Directory grupları veya yerel kullanıcılar oluşturun. | ☐ |  |
-| 17 | Kurulum Eğitimi (kendi kendine öğrenme). | ☐ |  |
-| 18 | Git veya git. | ☐ |  |
-| 19 | Dağıtım tarihini zamanlayın. | ☐ |  |
+| 1 | Cihazları sipariş edin. | ☐ |  |
+| 2 | Ağdaki alt ağların bir listesini hazırlayın. | ☐ |  |
+| 3 | Üretim ağlarının VLAN listesini sağlayın. | ☐ |  |
+| 4 | Ağdaki anahtar modellerinin bir listesini sağlayın. | ☐ |  |
+| 5 | Endüstriyel ekipmanın satıcıların ve protokollerinin bir listesini sağlayın. | ☐ |  |
+| 6 | Sensörler için ağ ayrıntılarını sağlayın (IP adresi, alt ağ, D-GW, DNS). | ☐ |  |
+| 7 | Gerekli güvenlik duvarı kuralları ve erişim listesi oluşturun. | ☐ |  |
+| 8 | Bağlantı noktası izleme için anahtarlar üzerinde kapsayıcı bağlantı noktaları oluşturun veya ağ dokunmayı istediğiniz şekilde yapılandırın. | ☐ |  |
+| 9 | Algılayıcı gereçlerinde raf alanı hazırlayın. | ☐ |  |
+| 10 | Personel için bir iş istasyonu hazırlayın. | ☐ |  |
+| 11 | IoT raf cihazları için Defender için bir klavye, izleyici ve fare sağlayın. | ☐ |  |
+| 12 | Gereçlerden oluşan raf ve kablo. | ☐ |  |
+| 13 | Dağıtımı desteklemek için site kaynaklarını ayırın. | ☐ |  |
+| 14 | Active Directory grupları veya yerel kullanıcılar oluşturun. | ☐ |  |
+| 15 | Kurulum Eğitimi (kendi kendine öğrenme). | ☐ |  |
+| 16 | Git veya git. | ☐ |  |
+| 17 | Dağıtım tarihini zamanlayın. | ☐ |  |
 
 
 | **Date** | **Not** | **Dağıtım tarihi** | **Not** |
@@ -564,7 +563,7 @@ Site dağıtımından önce bu listeyi gözden geçirin:
 
 Endüstriyel ağ diyagramına genel bir bakış için, bir Defender for IoT donatımı için uygun konumu tanımlamanızı sağlayacak.
 
-1.  Endüstriyel OT ortamının genel bir ağ diyagramını görüntüleyin. Örnek:
+1.  Endüstriyel OT ortamının genel bir ağ diyagramını görüntüleyin. Örneğin:
 
     :::image type="content" source="media/how-to-set-up-your-network/ot-global-network-diagram.png" alt-text="Küresel ağ için endüstriyel OT ortamının diyagramı.":::
 
@@ -606,7 +605,7 @@ Endüstriyel ağ diyagramına genel bir bakış için, bir Defender for IoT dona
 
     İlkeleri nelerdir? __________________________________ 
 
-    Örnek:
+    Örneğin:
 
     - Siemens
 
@@ -696,6 +695,6 @@ Bir Active Directory site Kullanıcı grubu oluşturmak veya yerel kullanıcıla
 | Kamera | |
 | X-ray makinesi | |
 
-## <a name="see-also"></a>Ayrıca bkz.
+## <a name="next-steps"></a>Sonraki adımlar
 
 [IoT yüklemesi için Defender hakkında](how-to-install-software.md)

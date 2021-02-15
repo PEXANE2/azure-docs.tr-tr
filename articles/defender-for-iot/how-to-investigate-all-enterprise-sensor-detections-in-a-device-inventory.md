@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/02/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 9da5c8c89ee124e527584164b21b096ac815e5ca
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: b4d824386a7c14165697f4b93f2e93cf0182a855
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98625473"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100524034"
 ---
 # <a name="investigate-all-enterprise-sensor-detections-in-the-device-inventory"></a>Cihaz envanterindeki tüm kurumsal algılayıcı algılamalarını araştırın
 
@@ -51,7 +51,7 @@ Aşağıdaki tabloda, cihaz envanterindeki tablo sütunları açıklanmaktadır.
 
 Veri tümleştirme özellikleri, diğer kurumsal kaynaklardaki bilgilerle cihaz envanterindeki verileri geliştirmenize olanak sağlar. Bu kaynaklar CMDBs, DNS, güvenlik duvarları ve Web API 'Leri içerir.
 
-Bu bilgileri öğrenmek için kullanabilirsiniz. Örnek:
+Bu bilgileri öğrenmek için kullanabilirsiniz. Örneğin:
 
 - Cihaz satın alma tarihleri ve garanti sonu tarihleri
 
@@ -225,6 +225,6 @@ Aşağıdaki ek bölge bilgileri kullanılabilir:
 
 - **Güncelleştirme ilerlemesi**: bağlı algılayıcı yükseltiliyorsa, yükseltme durumları görüntülenir. Yükseltme sırasında şirket içi yönetim konsolu, algılayıcıdan cihaz bilgilerini almaz.
 
-## <a name="see-also"></a>Ayrıca bkz.
+## <a name="next-steps"></a>Sonraki adımlar
 
 [Bir cihaz envanterinde algılayıcı algılamalarını araştırma](how-to-investigate-sensor-detections-in-a-device-inventory.md)

@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: corywink
-ms.openlocfilehash: c702cb16267d5495feedd8d361092b23b6d4deac
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 569a1365e73acbc2fdaf351f2e2cff21181241e1
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100372474"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100523490"
 ---
 # <a name="take-a-tour-of-the-azure-iot-central-ui"></a>Azure IoT Central Kullanıcı Arabirimi turuna katılın
 
@@ -97,8 +97,8 @@ IoT uygulamanızın içindeyken, farklı alanlara erişmek için sol bölmeyi ku
 
 * Cihaz şablonlarını ve cihazlarını aramak için bir **arama** değeri girin.
 * Kullanıcı arabirimi dilini veya temasını değiştirmek için **Ayarlar** simgesini seçin. [Uygulama tercihlerinizi yönetme](howto-manage-preferences.md) hakkında daha fazla bilgi edinin
-* Uygulamanın oturumunu kapatmak için **Hesap** simgesini seçin.
 * Yardım ve destek almak için, kaynak listesinden **Yardım** açılır listesini seçin. Uygulamanız hakkında hakkında [bilgi edinmek](./howto-get-app-info.md) için **uygulamanızın bağlantısını kullanabilirsiniz** . Ücretsiz fiyatlandırma planındaki bir uygulamada, destek kaynakları [canlı sohbete](howto-show-hide-chat.md)erişim içerir.
+* Uygulamanın oturumunu kapatmak için **Hesap** simgesini seçin.
 
 Kullanıcı arabirimi için açık renkli tema veya koyu renkli temayı seçebilirsiniz:
 
