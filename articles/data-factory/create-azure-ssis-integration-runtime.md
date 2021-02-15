@@ -1,22 +1,17 @@
 ---
 title: Azure Data Factory 'de bir Azure-SSIS tümleştirme çalışma zamanı oluşturma
 description: Azure 'da SSIS paketlerini dağıtıp çalıştırmak için Azure Data Factory 'de Azure-SSIS tümleştirme çalışma zamanı oluşturmayı öğrenin.
-services: data-factory
-documentationcenter: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/13/2020
 author: swinarko
 ms.author: sawinark
-ms.reviewer: douglasl
-manager: mflasko
-ms.openlocfilehash: 62b1575e2ab379e6b4e61926e00dfad85ffeb6c0
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: 4e3137b08c558c8e9dfadda07f0b8bb66433ee83
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98556367"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100389425"
 ---
 # <a name="create-an-azure-ssis-integration-runtime-in-azure-data-factory"></a>Azure Data Factory 'de bir Azure-SSIS tümleştirme çalışma zamanı oluşturma
 
@@ -39,7 +34,7 @@ Bir Azure-SSIS IR sağlandıktan sonra, Azure 'da paketlerinizi dağıtmak ve ç
 
 Bu makalede, Azure portal, Azure PowerShell ve Azure Resource Manager şablonunu kullanarak bir Azure-SSIS IR sağlama gösterilmektedir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -79,7 +74,7 @@ Data Factory ve Azure-SSIS IR kullanılabilen Azure bölgelerinin listesi için 
 
 Aşağıdaki tabloda, Azure-SSıR IR ile bağlantılı olarak bir Azure SQL veritabanı sunucusunun ve SQL yönetilen örneğinin belirli özellikleri karşılaştırılmaktadır:
 
-| Öne çıkan özelliği | SQL Veritabanı| SQL yönetilen örneği |
+| Özellik | SQL Veritabanı| SQL yönetilen örneği |
 |---------|--------------|------------------|
 | **Zamanlama** | SQL Server Agent kullanılamıyor.<br/><br/>Bkz. Data Factory işlem hattında [paket yürütmeyi zamanlama](/sql/integration-services/lift-shift/ssis-azure-schedule-packages#activity).| Yönetilen örnek Aracısı kullanılabilir. |
 | **Kimlik Doğrulaması** | **Db_owner** rolünde üye olarak, veri fabrikanızın yönetilen kimliği ile herhangi BIR Azure AD grubunu temsil eden bir bulunan veritabanı kullanıcısına sahıp bır SSISDB örneği oluşturabilirsiniz.<br/><br/>Bkz. [Azure SQL veritabanı sunucusunda BIR SSıSDB oluşturmak Için Azure AD kimlik doğrulamasını etkinleştirme](enable-aad-authentication-azure-ssis-ir.md#enable-azure-ad-on-azure-sql-database). | Veri fabrikanızın yönetilen kimliğini temsil eden kapsanan bir veritabanı kullanıcısına sahip bir SSıSDB örneği oluşturabilirsiniz. <br/><br/>Bkz. Azure [SQL yönetilen örneği 'NDE SSıSDB oluşturmak Için Azure AD kimlik doğrulamasını etkinleştirme](enable-aad-authentication-azure-ssis-ir.md#enable-azure-ad-on-sql-managed-instance). |

@@ -33,8 +33,12 @@
       href: tutorial-load-balancer-standard-public-zonal-portal.md
     - name: Load Balancer’da bağlantı noktası iletmeyi yapılandırma
       href: tutorial-load-balancer-port-forwarding-portal.md
-    - name: Bölgeler arası yük dengeleyici oluşturma - Portal
-      href: tutorial-cross-region-portal.md
+    - name: Bölgeler arası yük dengeleyici
+      items:
+        - name: Bölgeler arası yük dengeleyici oluşturma - Portal
+          href: tutorial-cross-region-portal.md
+        - name: Çapraz bölge yük dengeleyici oluşturma-PowerShell
+          href: tutorial-cross-region-powershell.md
 - name: Örnekler
   items:
     - name: Azure CLI’si
@@ -89,6 +93,8 @@
       href: backend-pool-management.md
     - name: Standart Load Balancer ve Sanal Makine Ölçek Kümeleri
       href: load-balancer-standard-virtual-machine-scale-sets.md
+    - name: Azure Instance Metadata Service kullanarak bilgi alma
+      href: instance-metadata-service-load-balancer.md
 - name: Nasıl yapılır
   items:
     - name: Portal ayarları
@@ -144,6 +150,8 @@
           href: move-across-regions-internal-load-balancer-powershell.md
     - name: Yalnızca giden yük dengeleyici yapılandırması
       href: egress-only.md
+    - name: Azure ıMDS kullanarak meta verileri alma
+      href: howto-load-balancer-imds.md
     - name: Sorun giderme
       items:
         - name: Azure Load Balancer sorunlarını giderme
@@ -181,6 +189,8 @@
     - name: Resource Manager şablonu
       href: /azure/templates/microsoft.network/loadbalancers
       displayName: ARM
+    - name: Azure Instance Metadata Service (ıMDS) için ortak hata kodları
+      href: troubleshoot-load-balancer-imds.md
 - name: Kaynaklar
   items:
     - name: Microsoft Learn ile becerilerinizi geliştirin

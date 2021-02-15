@@ -5,22 +5,20 @@ description: Özel bir etki alanını bir BLOB depolama alanına veya bir Azure 
 author: normesta
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/23/2020
+ms.date: 02/12/2021
 ms.author: normesta
 ms.reviewer: dineshm
 ms.subservice: blobs
-ms.openlocfilehash: dcc6f3bca80cb5860679327226d3e034c3e9b14a
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 52fc7b9c1229421fd46b8110857a0a7a8a4f916a
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95996874"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100520434"
 ---
 # <a name="map-a-custom-domain-to-an-azure-blob-storage-endpoint"></a>Özel bir etki alanını Azure Blob depolama uç noktasıyla eşleme
 
 Özel bir etki alanını blob hizmeti uç noktası veya [statik bir Web sitesi](storage-blob-static-website.md) uç noktası ile eşleyebilirsiniz. 
-
-[!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
 > [!NOTE] 
 > Bu eşleme yalnızca alt etki alanları için geçerlidir (örneğin: `www.contoso.com` ). Web uç noktanızın kök etki alanında kullanılabilir olmasını istiyorsanız (örneğin: `contoso.com` ), Azure CDN kullanmanız gerekir. Rehberlik için, bu makalenin [https özellikli özel etki alanı eşleştirme](#enable-https) bölümüne bakın. Özel etki alanınızı kök etki alanını etkinleştirmek için bu makalenin bu bölümüne gittiğinden, HTTPS 'yi etkinleştirmek için bu bölümün içindeki adım isteğe bağlıdır. 
@@ -61,8 +59,11 @@ Ana bilgisayar adı, protokol tanımlayıcısı ve sondaki eğik çizgi olmayan 
 2. Menü bölmesinde, **Ayarlar**' ın altında **Özellikler**' i seçin.  
 
 3. **Birincil blob hizmeti uç noktası** veya **birincil statik Web sitesi uç noktası** değerini bir metin dosyasına kopyalayın. 
+  
+   > [!NOTE]
+   > Data Lake depolama uç noktası desteklenmez (örneğin: `https://mystorageaccount.dfs.core.windows.net/` ).
 
-4. Protokol tanımlayıcısını (*örn.* https) ve sondaki eğik çizgiyi bu dizeden kaldırın. Aşağıdaki tablo örnekleri içerir.
+4. Protokol tanımlayıcısını (örneğin: `HTTPS` ) ve sondaki eğik çizgiyi bu dizeden kaldırın. Aşağıdaki tablo örnekleri içerir.
 
    | Uç nokta türü |  endpoint | Ana bilgisayar adı |
    |------------|-----------------|-------------------|
@@ -75,7 +76,7 @@ Ana bilgisayar adı, protokol tanımlayıcısı ve sondaki eğik çizgi olmayan 
 
 #### <a name="step-2-create-a-canonical-name-cname-record-with-your-domain-provider"></a>2. Adım: etki alanı sağlayıcınızla kurallı ad (CNAME) kaydı oluşturma
 
-Ana bilgisayar adınızı göstermek için bir CNAME kaydı oluşturun. CNAME kaydı, bir kaynak etki alanı adını hedef etki alanı adına eşleyen bir DNS kaydı türüdür.
+Ana bilgisayar adınızı göstermek için bir CNAME kaydı oluşturun. CNAME kaydı, bir kaynak etki alanı adını hedef etki alanı adıyla eşleyen bir etki alanı adı sistemi (DNS) kaydı türüdür.
 
 1. Etki alanı Kaydedicinizin Web sitesinde oturum açın ve sonra DNS ayarlarını yönetme sayfasına gidin.
 
@@ -95,9 +96,14 @@ Ana bilgisayar adınızı göstermek için bir CNAME kaydı oluşturun. CNAME ka
 
 #### <a name="step-3-register-your-custom-domain-with-azure"></a>3. Adım: özel etki alanınızı Azure 'a kaydetme
 
+##### <a name="portal"></a>[Portal](#tab/azure-portal)
+
 1. [Azure Portal](https://portal.azure.com)depolama hesabınıza gidin.
 
-2. Menü bölmesinde, **BLOB hizmeti** altında **özel etki alanı**' nı seçin.  
+2. Menü bölmesinde, **BLOB hizmeti** altında **özel etki alanı**' nı seçin.
+
+   > [!NOTE]
+   > Hiyerarşik ad alanı özelliği etkin olan hesaplarda bu seçenek görünmez. Bu hesaplar için, bu adımı gerçekleştirmek için PowerShell veya Azure CLı kullanın.
 
    ![Özel etki alanı seçeneği](./media/storage-custom-domain-name/custom-domain-button.png "Özel etki alanı")
 
@@ -111,18 +117,60 @@ Ana bilgisayar adınızı göstermek için bir CNAME kaydı oluşturun. CNAME ka
 
    CNAME kaydı, etki alanı adı sunucuları (DNS) üzerinden yayıldıktan sonra ve kullanıcılarınız uygun izinlere sahipse, özel etki alanını kullanarak blob verilerini görüntüleyebilirler.
 
+##### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+Aşağıdaki PowerShell komutunu çalıştırın
+
+```powershell
+Set-AzStorageAccount -ResourceGroupName <resource-group-name> -Name <storage-account-name> -CustomDomainName <custom-domain-name> -UseSubDomain $false
+```
+
+- `<resource-group-name>`Yer tutucusunu kaynak grubunun adıyla değiştirin.
+
+- `<storage-account-name>`Yer tutucusunu depolama hesabının adıyla değiştirin.
+
+- Yer tutucusunu, alt etki `<custom-domain-name>` alanı dahil olmak üzere özel etki alanınızın adıyla değiştirin.
+
+  Örneğin, etki alanınız *contoso.com* ve alt etki alanı diğer adınız *www* ise, girin `www.contoso.com` . Alt etki alanı *fotoğraflarınız* ise, girin `photos.contoso.com` .
+
+CNAME kaydı, etki alanı adı sunucuları (DNS) üzerinden yayıldıktan sonra ve kullanıcılarınız uygun izinlere sahipse, özel etki alanını kullanarak blob verilerini görüntüleyebilirler.
+
+##### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Aşağıdaki PowerShell komutunu çalıştırın
+
+```azurecli
+az storage account update \
+   --resource-group <resource-group-name> \ 
+   --name <storage-account-name> \
+   --custom-domain <custom-domain-name> \
+   --use-subdomain false
+  ```
+
+- `<resource-group-name>`Yer tutucusunu kaynak grubunun adıyla değiştirin.
+
+- `<storage-account-name>`Yer tutucusunu depolama hesabının adıyla değiştirin.
+
+- Yer tutucusunu, alt etki `<custom-domain-name>` alanı dahil olmak üzere özel etki alanınızın adıyla değiştirin.
+
+  Örneğin, etki alanınız *contoso.com* ve alt etki alanı diğer adınız *www* ise, girin `www.contoso.com` . Alt etki alanı *fotoğraflarınız* ise, girin `photos.contoso.com` .
+
+CNAME kaydı, etki alanı adı sunucuları (DNS) üzerinden yayıldıktan sonra ve kullanıcılarınız uygun izinlere sahipse, özel etki alanını kullanarak blob verilerini görüntüleyebilirler.
+
+---
+
 #### <a name="step-4-test-your-custom-domain"></a>4. Adım: özel etki alanınızı test etme
 
 Özel etki alanının blob hizmeti uç noktanıza eşlendiğinden emin olmak için, depolama hesabınızda ortak kapsayıcıda bir blob oluşturun. Daha sonra, bir Web tarayıcısında aşağıdaki biçimde bir URI kullanarak bloba erişin: `http://<subdomain.customdomain>/<mycontainer>/<myblob>`
 
-Örneğin, *photos.contoso.com* özel alt etki alanındaki *MyForms* kapsayıcısındaki bir Web formuna erişmek için aşağıdaki URI 'yi kullanabilirsiniz:`http://photos.contoso.com/myforms/applicationform.htm`
+Örneğin, `myforms` *photos.contoso.com* özel alt etki alanındaki kapsayıcıda bir Web formuna erışmek için aşağıdaki URI 'yi kullanabilirsiniz: `http://photos.contoso.com/myforms/applicationform.htm`
 
 <a id="zero-down-time"></a>
 
 ### <a name="map-a-custom-domain-with-zero-downtime"></a>Özel bir etki alanını sıfır kapalı kalma süresiyle eşleme
 
 > [!NOTE]
-> Etki alanının kullanıcılarınız için kısa bir süre içinde kullanılamadığına ilişkin endişeleriniz varsa, bu makalenin [özel etki alanı eşleme](#map-a-domain) bölümündeki adımları takip edin. Daha az adımla daha basit bir yaklaşımdır.  
+> Etki alanının kullanıcılarınız için kısa bir süre içinde kullanılamadığına ilişkin endişeleriniz varsa, bu makalenin [özel etki alanı eşleme](#map-a-domain) bölümünde yer alan adımları kullanmayı göz önünde bulundurun. Daha az adımla daha basit bir yaklaşımdır.  
 
 Etki alanınız Şu anda sıfır kesinti gerektiren bir hizmet düzeyi sözleşmesi (SLA) olan bir uygulamayı destekliyorsa, DNS eşlemesi gerçekleşirken kullanıcıların etki alanına erişebildiğinden emin olmak için aşağıdaki adımları izleyin. 
 
@@ -148,7 +196,10 @@ Ana bilgisayar adı, protokol tanımlayıcısı ve sondaki eğik çizgi olmayan 
 
 3. **Birincil blob hizmeti uç noktası** veya **birincil statik Web sitesi uç noktası** değerini bir metin dosyasına kopyalayın. 
 
-4. Protokol tanımlayıcısını (*örn.* https) ve sondaki eğik çizgiyi bu dizeden kaldırın. Aşağıdaki tablo örnekleri içerir.
+   > [!NOTE]
+   > Data Lake depolama uç noktası desteklenmez (örneğin: `https://mystorageaccount.dfs.core.windows.net/` ).
+
+4. Protokol tanımlayıcısını (örneğin: `HTTPS` ) ve sondaki eğik çizgiyi bu dizeden kaldırın. Aşağıdaki tablo örnekleri içerir.
 
    | Uç nokta türü |  endpoint | Ana bilgisayar adı |
    |------------|-----------------|-------------------|
@@ -157,7 +208,7 @@ Ana bilgisayar adı, protokol tanımlayıcısı ve sondaki eğik çizgi olmayan 
   
    Bu değeri daha sonra için bir kenara ayarlayın.
 
-#### <a name="step-2-create-a-intermediary-canonical-name-cname-record-with-your-domain-provider"></a>2. Adım: etki alanı sağlayıcınızla bir ara kurallı ad (CNAME) kaydı oluşturma
+#### <a name="step-2-create-an-intermediary-canonical-name-cname-record-with-your-domain-provider"></a>2. Adım: etki alanı sağlayıcınızla bir ara kurallı ad (CNAME) kaydı oluşturma
 
 Ana bilgisayar adınızı göstermek için geçici bir CNAME kaydı oluşturun. CNAME kaydı, bir kaynak etki alanı adını hedef etki alanı adına eşleyen bir DNS kaydı türüdür.
 
@@ -179,17 +230,18 @@ Ana bilgisayar adınızı göstermek için geçici bir CNAME kaydı oluşturun. 
 
      Konak adının alt etki alanını ekleyin `asverify` . Örneğin: `asverify.mystorageaccount.blob.core.windows.net`.
 
-4. Özel etki alanını kaydetmek için **Kaydet** düğmesini seçin.
-
-   Kayıt başarılı olursa, Portal, depolama hesabınızın başarıyla güncelleştirildiğini size bildirir. Özel etki alanınız Azure tarafından doğrulandı, ancak etki alanınız için olan trafik henüz depolama hesabınıza yönlendirilmiyor.
-
 #### <a name="step-3-pre-register-your-custom-domain-with-azure"></a>3. Adım: özel etki alanınızı Azure ile ön kaydetme
 
 Özel etki alanınızı Azure 'a önceden kaydettiğinizde, Azure 'un etki alanı için DNS kaydını değiştirmek zorunda kalmadan özel etki alanınızı tanımasına izin verirsiniz. Bu şekilde, etki alanı için DNS kaydını değiştirdiğinizde, işlem kesinti olmadan blob uç noktasına eşleştirilir.
 
+##### <a name="portal"></a>[Portal](#tab/azure-portal)
+
 1. [Azure Portal](https://portal.azure.com)depolama hesabınıza gidin.
 
-2. Menü bölmesinde, **BLOB hizmeti** altında **özel etki alanı**' nı seçin.  
+2. Menü bölmesinde, **BLOB hizmeti** altında **özel etki alanı**' nı seçin.
+
+   > [!NOTE]
+   > Hiyerarşik ad alanı özelliği etkin olan hesaplarda bu seçenek görünmez. Bu hesaplar için, bu adımı gerçekleştirmek için PowerShell veya Azure CLı kullanın.
 
    ![Özel etki alanı seçeneği](./media/storage-custom-domain-name/custom-domain-button.png "Özel etki alanı")
 
@@ -203,7 +255,49 @@ Ana bilgisayar adınızı göstermek için geçici bir CNAME kaydı oluşturun. 
 
 5. Özel etki alanını kaydetmek için **Kaydet** düğmesini seçin.
   
-   CNAME kaydı, etki alanı adı sunucuları (DNS) üzerinden yayıldıktan sonra ve kullanıcılarınız uygun izinlere sahipse, özel etki alanını kullanarak blob verilerini görüntüleyebilirler.
+   Kayıt başarılı olursa, Portal, depolama hesabınızın başarıyla güncelleştirildiğini size bildirir. Özel etki alanınız Azure tarafından doğrulandı, ancak etki alanı sağlayıcınızla bir CNAME kaydı oluşturana kadar etki alanına giden trafik henüz depolama hesabınıza yönlendirilmemiştir. Bunu bir sonraki bölümde yapacaksınız.
+
+##### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+Aşağıdaki PowerShell komutunu çalıştırın
+
+```powershell
+Set-AzStorageAccount -ResourceGroupName <resource-group-name> -Name <storage-account-name> -CustomDomainName <custom-domain-name> -UseSubDomain $true
+```
+
+- `<resource-group-name>`Yer tutucusunu kaynak grubunun adıyla değiştirin.
+
+- `<storage-account-name>`Yer tutucusunu depolama hesabının adıyla değiştirin.
+
+- Yer tutucusunu, alt etki `<custom-domain-name>` alanı dahil olmak üzere özel etki alanınızın adıyla değiştirin.
+
+  Örneğin, etki alanınız *contoso.com* ve alt etki alanı diğer adınız *www* ise, girin `www.contoso.com` . Alt etki alanı *fotoğraflarınız* ise, girin `photos.contoso.com` .
+
+Etki alanı sağlayıcınızla bir CNAME kaydı oluşturana kadar, etki alanına giden trafik henüz depolama hesabınıza yönlendirilmemiştir. Bunu bir sonraki bölümde yapacaksınız.
+
+##### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Aşağıdaki PowerShell komutunu çalıştırın
+
+```azurecli
+az storage account update \
+   --resource-group <resource-group-name> \ 
+   --name <storage-account-name> \
+   --custom-domain <custom-domain-name> \
+   --use-subdomain true
+  ```
+
+- `<resource-group-name>`Yer tutucusunu kaynak grubunun adıyla değiştirin.
+
+- `<storage-account-name>`Yer tutucusunu depolama hesabının adıyla değiştirin.
+
+- Yer tutucusunu, alt etki `<custom-domain-name>` alanı dahil olmak üzere özel etki alanınızın adıyla değiştirin.
+
+  Örneğin, etki alanınız *contoso.com* ve alt etki alanı diğer adınız *www* ise, girin `www.contoso.com` . Alt etki alanı *fotoğraflarınız* ise, girin `photos.contoso.com` .
+
+Etki alanı sağlayıcınızla bir CNAME kaydı oluşturana kadar, etki alanına giden trafik henüz depolama hesabınıza yönlendirilmemiştir. Bunu bir sonraki bölümde yapacaksınız.
+
+---
 
 #### <a name="step-4-create-a-cname-record-with-your-domain-provider"></a>4. Adım: etki alanı sağlayıcınızla CNAME kaydı oluşturma
 
@@ -227,15 +321,13 @@ Ana bilgisayar adınızı göstermek için geçici bir CNAME kaydı oluşturun.
 
 Özel etki alanının blob hizmeti uç noktanıza eşlendiğinden emin olmak için, depolama hesabınızda ortak kapsayıcıda bir blob oluşturun. Daha sonra, bir Web tarayıcısında aşağıdaki biçimde bir URI kullanarak bloba erişin: `http://<subdomain.customdomain>/<mycontainer>/<myblob>`
 
-Örneğin, *photos.contoso.com* özel alt etki alanındaki *MyForms* kapsayıcısındaki bir Web formuna erişmek için aşağıdaki URI 'yi kullanabilirsiniz:`http://photos.contoso.com/myforms/applicationform.htm`
+Örneğin, `myforms` *photos.contoso.com* özel alt etki alanındaki kapsayıcıda bir Web formuna erışmek için aşağıdaki URI 'yi kullanabilirsiniz: `http://photos.contoso.com/myforms/applicationform.htm`
 
 ### <a name="remove-a-custom-domain-mapping"></a>Özel etki alanı eşlemesini kaldırma
 
 Özel bir etki alanı eşlemesini kaldırmak için özel etki alanı kaydını silin. Aşağıdaki yordamlardan birini kullanın.
 
 #### <a name="portal"></a>[Portal](#tab/azure-portal)
-
-Özel etki alanı ayarını kaldırmak için şunları yapın:
 
 1. [Azure Portal](https://portal.azure.com)depolama hesabınıza gidin.
 
@@ -246,29 +338,7 @@ Ana bilgisayar adınızı göstermek için geçici bir CNAME kaydı oluşturun.
 
 4. **Kaydet** düğmesini seçin.
 
-Özel etki alanı başarıyla kaldırıldıktan sonra, depolama hesabınızın başarıyla güncelleştirildiğini belirten bir portal bildirimi görürsünüz
-
-#### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-
-Özel bir etki alanı kaydını kaldırmak için [az Storage Account Update](/cli/azure/storage/account) CLI komutunu kullanın ve sonra `""` bağımsız değişken değeri için boş bir dize () belirtin `--custom-domain` .
-
-* Komut biçimi:
-
-  ```azurecli
-  az storage account update \
-      --name <storage-account-name> \
-      --resource-group <resource-group-name> \
-      --custom-domain ""
-  ```
-
-* Komut örneği:
-
-  ```azurecli
-  az storage account update \
-      --name mystorageaccount \
-      --resource-group myresourcegroup \
-      --custom-domain ""
-  ```
+Özel etki alanı başarıyla kaldırıldıktan sonra, depolama hesabınızın başarıyla güncelleştirildiğini belirten bir portal bildirimi görürsünüz.
 
 #### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -293,6 +363,28 @@ Ana bilgisayar adınızı göstermek için geçici bir CNAME kaydı oluşturun.
       -AccountName "mystorageaccount" `
       -CustomDomainName ""
   ```
+
+#### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Özel bir etki alanı kaydını kaldırmak için [az Storage Account Update](/cli/azure/storage/account) CLI komutunu kullanın ve sonra `""` bağımsız değişken değeri için boş bir dize () belirtin `--custom-domain` .
+
+* Komut biçimi:
+
+  ```azurecli
+  az storage account update \
+      --name <storage-account-name> \
+      --resource-group <resource-group-name> \
+      --custom-domain ""
+  ```
+
+* Komut örneği:
+
+  ```azurecli
+  az storage account update \
+      --name mystorageaccount \
+      --resource-group myresourcegroup \
+      --custom-domain ""
+  ```
 ---
 
 <a id="enable-https"></a>
@@ -302,8 +394,6 @@ Ana bilgisayar adınızı göstermek için geçici bir CNAME kaydı oluşturun.
 Bu yaklaşım, daha fazla adım içerir, ancak HTTPS erişimini de mümkün kılar. 
 
 Kullanıcıların HTTPS kullanarak blob veya Web içeriğinize erişmesine gerek yoksa, bu makalenin [yalnızca http özellikli bir özel etki alanını eşleme](#enable-http) bölümüne bakın. 
-
-Özel bir etki alanını eşlemek ve HTTPS erişimini etkinleştirmek için aşağıdakileri yapın:
 
 1. Blob veya Web uç noktanıza [Azure CDN](../../cdn/cdn-overview.md) etkinleştirin. 
 

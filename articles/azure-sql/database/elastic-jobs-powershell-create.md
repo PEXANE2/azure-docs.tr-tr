@@ -11,17 +11,17 @@ author: johnpaulkee
 ms.author: joke
 ms.reviwer: sstein
 ms.date: 10/21/2020
-ms.openlocfilehash: 1fc5653f08f8fc7916257dfdba570f451c0afa75
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 95e9ef340328bb4c1835e966cc9c3019bca88c09
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98131942"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100368838"
 ---
 # <a name="create-an-elastic-job-agent-using-powershell-preview"></a>PowerShell kullanarak elastik Iş Aracısı oluşturma (Önizleme)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-[Elastik işler (Önizleme)](job-automation-overview.md#elastic-database-jobs-preview) bir veya daha fazla Transact-SQL (T-SQL) komut dosyasının çok sayıda veritabanı arasında paralel olarak çalıştırılmasını sağlar.
+[Elastik işler (Önizleme)](job-automation-overview.md) bir veya daha fazla Transact-SQL (T-SQL) komut dosyasının çok sayıda veritabanı arasında paralel olarak çalıştırılmasını sağlar.
 
 Bu öğreticide, birden çok veritabanında bir sorgu çalıştırmak için gereken adımları öğreneceksiniz:
 
@@ -35,7 +35,7 @@ Bu öğreticide, birden çok veritabanında bir sorgu çalıştırmak için gere
 > * Bir işin yürütülmesini başlatma
 > * Bir işi izleme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Elastik Veritabanı işleri yükseltilen sürümünde, geçiş sırasında kullanılmak üzere yeni bir PowerShell cmdlet 'leri kümesi vardır. Bu yeni cmdlet 'ler, tüm mevcut iş kimlik bilgilerinizi, hedefleri (veritabanları, sunucular, özel koleksiyonlar dahil), iş Tetikleyicileri, iş zamanlamaları, iş içerikleri ve işleri yeni bir elastik Iş aracısına aktarır.
 
@@ -63,7 +63,7 @@ Bu öğretici, **az. SQL** modülüne ek olarak *SqlServer* PowerShell modülün
 
 ## <a name="create-required-resources"></a>Gerekli kaynakları oluşturma
 
-Elastik İş aracısı oluşturmak için [İş veritabanı](job-automation-overview.md#job-database) olarak kullanılacak bir veritabanı (S0 veya üzeri) gerekir.
+Elastik İş aracısı oluşturmak için [İş veritabanı](job-automation-overview.md#elastic-job-database) olarak kullanılacak bir veritabanı (S0 veya üzeri) gerekir.
 
 Aşağıdaki betik yeni bir kaynak grubu ve sunucunun yanı sıra İş veritabanı olarak kullanılacak bir veritabanı oluşturur. İkinci komut, işleri yürütmek için iki boş veritabanı ile ikinci bir sunucu oluşturur.
 

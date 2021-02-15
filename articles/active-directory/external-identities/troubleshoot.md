@@ -5,7 +5,7 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: troubleshooting
-ms.date: 12/11/2020
+ms.date: 02/12/2021
 tags: active-directory
 ms.author: mimart
 author: msmimart
@@ -14,12 +14,12 @@ ms.custom:
 - it-pro
 - seo-update-azuread-jan"
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa0d0d032c2ab6ae1d6c5e6b1c8b1793a6b3bd7c
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 60cd944ecb144a30e872259f6e959a11c3ea6319
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99090646"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100365438"
 ---
 # <a name="troubleshooting-azure-active-directory-b2b-collaboration"></a>B2B işbirliği Azure Active Directory sorunlarını giderme
 
@@ -27,7 +27,7 @@ ms.locfileid: "99090646"
 
    > [!IMPORTANT]
    > - **4 ocak 2021 tarihinden itibaren** Google, [WebView oturum açma desteğini kullanımdan](https://developers.googleblog.com/2020/08/guidance-for-our-effort-to-block-less-secure-browser-and-apps.html)kaldırır. Gmail ile Google Federasyonu veya self servis kaydolma kullanıyorsanız, [iş kolu yerel uygulamalarınızı uyumluluk için test](google-federation.md#deprecation-of-webview-sign-in-support)etmeniz gerekir.
-   > - Microsoft, **31 mart 2021**' den ıtıbaren, B2B işbirliği senaryoları Için YÖNETILMEYEN Azure AD hesapları ve kiracılar oluşturarak artık davetlerin kullanımını desteklememektedir. Hazırlık aşamasında, müşterilerin [e-posta bir kerelik geçiş kodu kimlik doğrulamasını](one-time-passcode.md)kabul etmelerini öneririz. Bu genel önizleme özelliğiyle ilgili geri bildirimlerinize hoş geldiniz ve işbirliği yapmak için daha fazla yol oluşturmak heyecanlıyız.
+   > - Microsoft, **2021 Ekim 'Den itibaren**, B2B işbirliği senaryoları Için YÖNETILMEYEN Azure AD hesapları ve kiracılar oluşturarak artık davetlerin kullanımını desteklememektedir. Hazırlık aşamasında, müşterilerin [e-posta bir kerelik geçiş kodu kimlik doğrulamasını](one-time-passcode.md)kabul etmelerini öneririz. Bu genel önizleme özelliğiyle ilgili geri bildirimlerinize hoş geldiniz ve işbirliği yapmak için daha fazla yol oluşturmak heyecanlıyız.
 
 ## <a name="ive-added-an-external-user-but-do-not-see-them-in-my-global-address-book-or-in-the-people-picker"></a>Dış Kullanıcı ekledim ancak bunları Genel Adres defterimde veya kişiler seçicisinde gördüm
 
@@ -112,7 +112,7 @@ Azure ABD kamu bulutu dahilinde, B2B işbirliği Şu anda yalnızca Azure ABD de
 
 Özel Kullanıcı öznitelikleri veya Kullanıcı akışları gibi self servis kaydolma özellikleri kullanılırken, adlı bir uygulama `aad-extensions-app. Do not modify. Used by AAD for storing user data.` otomatik olarak oluşturulur. Kaydolan kullanıcılar ve toplanan özel öznitelikler hakkında bilgi depolamak için Azure AD dış kimlikleri tarafından kullanılır.
 
-Yanlışlıkla sildiyseniz `aad-extensions-app` , bu dosyayı kurtarmak için 30 gününüz vardır. Azure AD PowerShell modülünü kullanarak uygulamayı geri yükleyebilirsiniz.
+`aad-extensions-app` uygulamasını yanlışlıkla sildiyseniz 30 gün içinde kurtarabilirsiniz. Azure AD PowerShell modülünü kullanarak uygulamayı geri yükleyebilirsiniz.
 
 1. Azure AD PowerShell modülünü başlatın ve çalıştırın `Connect-AzureAD` .
 1. Silinen uygulamayı kurtarmak istediğiniz Azure AD kiracısı için genel yönetici olarak oturum açın.

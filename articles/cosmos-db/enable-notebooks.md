@@ -5,35 +5,36 @@ author: deborahc
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
-ms.date: 09/22/2019
+ms.date: 02/09/2021
 ms.author: dech
-ms.openlocfilehash: 7b52a066f80b686a0e424d8f63d520d46691a72a
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.custom: references_regions
+ms.openlocfilehash: b8ce745a0a0db96e7f6b9e3a0140d46364246e4a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187825"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100379616"
 ---
 # <a name="enable-notebooks-for-azure-cosmos-db-accounts-preview"></a>Azure Cosmos DB hesapları için not defterlerini etkinleştirme (Önizleme)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 > [!IMPORTANT]
-> Azure Cosmos DB için yerleşik Not defterleri Şu anda şu Azure bölgelerinde sunulmaktadır: Avustralya Doğu, Doğu ABD, Doğu ABD 2, Kuzey Avrupa, Orta Güney ABD, Güneydoğu Asya, UK Güney, Batı Avrupa ve Batı ABD 2. Not defterlerini kullanmak için, bu bölgelerden birindeki mevcut bir hesapta not defterleri [ile yeni bir hesap oluşturun](#enable-notebooks-in-a-new-cosmos-account) veya Not [defterlerini etkinleştirin](#enable-notebooks-in-an-existing-cosmos-account) .
+> Azure Cosmos DB için yerleşik Not defterleri Şu anda [29 bölgede](#supported-regions)kullanılabilir. Not defterlerini kullanmak için [Yeni bir Cosmos hesabı oluşturun](#create-a-new-cosmos-account) veya bu bölgelerden birindeki [mevcut bir hesapta not defterlerini etkinleştirin](#enable-notebooks-in-an-existing-cosmos-account) . 
 
 Azure Cosmos DB 'daki yerleşik jupi Not defterleri, Azure portal verilerinizi analiz etmenize ve görselleştirmenize olanak tanır. Bu makale, Azure Cosmos DB hesabınız için bu özelliği etkinleştirmeyi açıklar.
 
-## <a name="enable-notebooks-in-a-new-cosmos-account"></a>Yeni bir Cosmos hesabındaki not defterlerini etkinleştir
-
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
-1. Azure Cosmos DB **kaynak veritabanları oluştur**' u seçin  >  **Databases**  >  **Azure Cosmos DB**.
-1. **Azure Cosmos DB hesabı oluştur** sayfasında, **Not defterleri**' ni seçin. 
+## <a name="create-a-new-cosmos-account"></a>Yeni bir Cosmos hesabı oluşturun
+10 Şubat 2021 ' den itibaren, [desteklenen bölgeden](#supported-regions) birinde oluşturulan yeni Azure Cosmos hesaplarının otomatik olarak not defterleri etkin olur. Not defterlerini etkinleştirmek için ek yapılandırma gerekmez. Yeni bir hesap oluşturmak için aşağıdaki yönergeleri kullanın:
+1. [Azure portal](https://portal.azure.com/) oturum açın.
+1. Azure Cosmos DB **kaynak veritabanları oluştur**' u seçin  >    >  .
+1. Hesap için temel ayarları girin. 
  
-    :::image type="content" source="media/enable-notebooks/create-new-account-with-notebooks.png" alt-text="Azure Cosmos DB dikey pencere Oluştur bölümünde Not defterleri seçeneğini belirleyin":::
+   :::image type="content" source="./media/create-cosmosdb-resources-portal/azure-cosmos-db-create-new-account-detail-2.png" alt-text="Azure Cosmos DB için yeni hesap sayfası":::
 
 1. **Gözden geçir ve oluştur**’u seçin. **Ağ** ve **Etiketler** seçeneğini atlayabilirsiniz. 
 1. Hesap ayarlarını gözden geçirip **Oluştur** seçeneğini belirleyin. Hesabın oluşturulması birkaç dakika sürer. Portal sayfasında **Dağıtımınız tamamlandı** iletisinin görüntülenmesini bekleyin. 
 
-   :::image type="content" source="media/enable-notebooks/create-new-account-with-notebooks-complete.png" alt-text="Azure portalındaki Bildirimler bölmesi":::
+   :::image type="content" source="media/enable-notebooks/create-new-account-with-notebooks-complete.png" alt-text="Azure portaldaki Bildirimler bölmesi":::
 
 1. Azure Cosmos DB hesabı sayfasına gitmek için **Kaynağa git** seçeneğini belirleyin.
 
@@ -74,6 +75,45 @@ Yeni bir not defteri oluşturmak için **Yeni Not** defteri ' ni **seçip not de
 
 :::image type="content" source="media/enable-notebooks/create-or-upload-new-notebook.png" alt-text="Yeni bir not defteri oluşturun veya karşıya yükleyin":::
 
+## <a name="supported-regions"></a>Desteklenen bölgeler
+Azure Cosmos DB için yerleşik Not defterleri, 29 Azure bölgelerinde Şu anda kullanılabilir. Bu bölgelerde oluşturulan yeni Azure Cosmos hesaplarında, Not defterleri otomatik olarak etkinleştirilir. Not defterleri hesabınızla ücretsizdir. 
+
+- Orta Avustralya
+- Orta Avustralya 2
+- Doğu Avustralya
+- Güneydoğu Avustralya
+- Güney Brezilya
+- Orta Kanada
+- Doğu Kanada
+- Orta Hindistan
+- Central US
+- Doğu ABD
+- Doğu ABD 2
+- Orta Fransa
+- Güney Fransa
+- Almanya Kuzey
+- Almanya Orta Batı
+- Batı Japonya
+- Güney Kore - Güney
+- Orta Kuzey ABD
+- Kuzey Avrupa
+- Orta Güney ABD
+- Güneydoğu Asya
+- İsviçre Kuzey
+- BAE Orta
+- Güney Birleşik Krallık
+- Batı Birleşik Krallık
+- Batı Orta ABD
+- West Europe
+- Batı Hindistan
+- Batı ABD 2
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Jupyıter Not defterlerinin Azure Cosmos DB](cosmosdb-jupyter-notebooks.md) avantajları hakkında bilgi edinin
+* [Jupyıter Not defterlerinin Azure Cosmos DB](cosmosdb-jupyter-notebooks.md) avantajları hakkında bilgi edinin
+* [Not defteri örnekleri galerisini keşfet](https://cosmos.azure.com/gallery.html)
+* [Python Not defteri özelliklerini ve komutlarını kullanma](use-python-notebook-features-and-commands.md)
+* [C# Not defteri özelliklerini ve komutlarını kullanma](use-csharp-notebook-features-and-commands.md)
+* [GitHub deposundan not defterlerini içeri aktarma](import-github-notebooks.md)
+
+

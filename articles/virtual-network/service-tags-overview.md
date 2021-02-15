@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 10/30/2020
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: 506e568f44d8dd5354ed7bd3ec20d0c71d484b85
-ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
+ms.openlocfilehash: 41db671e4ab76dc56dc2c01f4852640acfe3fd83
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99475193"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100389748"
 ---
 # <a name="virtual-network-service-tags"></a>Sanal ağ hizmeti etiketleri
 <a name="network-service-tags"></a>
@@ -153,6 +153,7 @@ Bu dosyalardaki IP adresi aralıkları CıDR gösteriminde.
 ### <a name="tips"></a>İpuçları 
 - JSON dosyasındaki daha fazla *ChangeNumber* değerini belirterek bir yayından sonraki güncelleştirmeleri tespit edebilirsiniz. Her alt bölüm (örneğin, **Storage. WestUS**), değişiklik gerçekleştiğinde arttırılan kendi *ChangeNumber* değerini içerir. Alt bölümleri değiştirildiğinde dosyanın *ChangeNumber* en üst düzeyi artırılır.
 - Hizmet etiketi bilgilerini ayrıştırmayla ilgili örnekler için (örneğin, WestUS ' de depolama için tüm adres aralıklarını alma), [hizmet etiketi bulma API PowerShell](/powershell/module/az.network/Get-AzNetworkServiceTag?viewFallbackFrom=azps-2.3.2) belgelerine bakın.
+- Hizmet etiketlerine yeni IP adresleri eklendiğinde, bu adresler Azure 'da en az bir hafta boyunca kullanılmaz. Bu, hizmet etiketleriyle ilişkili IP adreslerini izlemek için gerekebilecek tüm sistemleri güncelleştirmeniz için size zaman kazandırır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - [Ağ güvenlik grubu oluşturmayı](tutorial-filter-network-traffic.md)öğrenin.

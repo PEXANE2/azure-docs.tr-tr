@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/05/2021
 ms.author: b-juche
-ms.openlocfilehash: 69a970b7b088795602dfb842b20ad6457d5f27c4
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: b173342c1c384213e88f216334b5e03cd8b7bea7
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99808348"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100374499"
 ---
 # <a name="what-changing-to-volume-hard-quota-means-for-your-azure-netapp-files-service"></a>Azure NetApp Files hizmetiniz için birim sabit kotasında ne kadar değişiklik yapılır?
 
 Hizmetin başından Azure NetApp Files, kapasite havuzu sağlama ve otomatik büyüme mekanizması kullanıyor. Azure NetApp Files birimler, seçilen bir katmanın ve boyutun, müşteri tarafından sağlanan kapasite havuzunda ölçülü kaynak olarak sağlanır. Birim boyutları (kotalar) performans ve kapasite sağlamak için kullanılır ve Kotalar herhangi bir zamanda anında ayarlanabilir. Bu davranış, şu anda birim kotasının birim bant genişliğini denetlemek için kullanılan bir performans mandalı olduğu anlamına gelir. Şu anda Kapasite dolduğunda kapasite havuzlarının ölçeği otomatik olarak büyütülür.   
 
 > [!IMPORTANT] 
-> Birim ve kapasite havuzu sağlamanın Azure NetApp Files davranışı *el ile* ve *denetlenebilir* mekanizmaya değişecektir. **15 Mart 2021 ' den başlayarak, birim boyutları (Kota) bant genişliği performansını ve sağlanan kapasiteyi yönetir ve temel alınan kapasite havuzları artık otomatik olarak büyütülecektir.** 
+> Birim ve kapasite havuzu sağlamanın Azure NetApp Files davranışı *el ile* ve *denetlenebilir* mekanizmaya değişecektir. **1 Nisan 2021 ' den itibaren, birim boyutları (Kota) bant genişliği performansını ve sağlanan kapasiteyi yönetir ve temel alınan kapasite havuzları artık otomatik olarak büyütülecektir.** 
 
 ## <a name="reasons-for-the-change-to-volume-hard-quota"></a>Birim sabit kotası değişikliğine yönelik nedenler
 

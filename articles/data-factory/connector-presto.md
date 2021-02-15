@@ -1,22 +1,17 @@
 ---
 title: Azure Data Factory kullanarak verileri Presto 'dan kopyalama
 description: Azure Data Factory bir işlem hattındaki kopyalama etkinliğini kullanarak, Presto 'dan desteklenen havuz veri depolarına veri kopyalamayı öğrenin.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/18/2020
 ms.author: jingwang
-ms.openlocfilehash: af05983432c0f76a88ff82a3638d86a971ef77f5
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: 33e521d418c219be8eb85b79a0e07d999edb1b08
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97680699"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100374278"
 ---
 # <a name="copy-data-from-presto-using-azure-data-factory"></a>Azure Data Factory kullanarak verileri Presto 'dan kopyalama
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -34,7 +29,7 @@ Verileri, Presto 'dan desteklenen herhangi bir havuz veri deposuna kopyalayabili
 
 Azure Data Factory, bağlantıyı etkinleştirmek için yerleşik bir sürücü sağlar, bu nedenle bu bağlayıcıyı kullanarak herhangi bir sürücüyü el ile yüklemeniz gerekmez.
 
-## <a name="getting-started"></a>Başlarken
+## <a name="getting-started"></a>Kullanmaya başlama
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -95,7 +90,7 @@ Verileri Presto 'dan kopyalamak için DataSet 'in Type özelliğini **Prestoobje
 |:--- |:--- |:--- |
 | tür | DataSet 'in Type özelliği: **Prestoobject** olarak ayarlanmalıdır | Yes |
 | schema | Şemanın adı. |Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse)  |
-| table | Tablonun adı. |Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse)  |
+| tablo | Tablonun adı. |Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse)  |
 | tableName | Şemanın bulunduğu tablonun adı. Bu özellik geriye dönük uyumluluk için desteklenir. `schema` `table` Yeni iş yükü için ve kullanın. | Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse) |
 
 **Örnek**

@@ -1,22 +1,18 @@
 ---
 title: Azure Data Factory veri hareketine yönelik güvenlik konuları
 description: Azure Data Factory veri hareketini güvenli hale getirme hakkında bilgi edinin.
-services: data-factory
-documentationcenter: ''
 author: nabhishek
-manager: anandsub
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: c694cf58f4c6b613cbc183753785a34bc15063bd
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 33b1ad381b3f7865768f9e39295a2985f8aa5234
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97093613"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100375111"
 ---
 # <a name="azure-data-factory---security-considerations-for-data-movement"></a>Azure Data Factory-veri hareketine yönelik güvenlik konuları
 
@@ -33,10 +29,10 @@ Data Factory yalnızca **Batı ABD**, **Doğu ABD** ve **Kuzey Avrupa** bölgele
 Azure Data Factory kendisi, sertifikalar kullanılarak şifrelenen bulut veri depoları için bağlı hizmet kimlik bilgileri dışında hiçbir veri depolamaz. Veri hareketini [desteklenen veri depoları](data-factory-data-movement-activities.md#supported-data-stores-and-formats) arasında, verilerin işlenmesini de başka bölgelerde veya şirket içi bir ortamda [işlem hizmetleri](data-factory-compute-linked-services.md) kullanarak düzenlemek için veri temelinde iş akışları oluşturmanızı sağlar. Hem programlama, hem de kullanıcı arabirimi mekanizmalarını kullanarak [iş akışlarını izlemenizi ve yönetmenizi](data-factory-monitor-manage-pipelines.md) de sağlar.
 
 Azure Data Factory kullanarak veri taşıma için **sertifikalıdır** :
--   [HıPAA/HITECH](/compliance/regulatory/offering-hipaa-hitech)  
--   [ISO/ıEC 27001](https://www.microsoft.com/en-us/trustcenter/Compliance/ISO-IEC-27001)  
--   [ISO/ıEC 27018](https://www.microsoft.com/en-us/trustcenter/Compliance/ISO-IEC-27018) 
--   [CSA YıLDıZı](https://www.microsoft.com/en-us/trustcenter/Compliance/CSA-STAR-Certification)
+-    [HıPAA/HITECH](/compliance/regulatory/offering-hipaa-hitech)  
+-    [ISO/ıEC 27001](https://www.microsoft.com/en-us/trustcenter/Compliance/ISO-IEC-27001)  
+-    [ISO/ıEC 27018](https://www.microsoft.com/en-us/trustcenter/Compliance/ISO-IEC-27018) 
+-    [CSA YıLDıZı](https://www.microsoft.com/en-us/trustcenter/Compliance/CSA-STAR-Certification)
      
 Azure uyumluluğu ile ilgileniyorsanız ve Azure 'un kendi altyapısını nasıl güvenlik altına alıyorsa, [Microsoft Güven Merkezi](https://microsoft.com/en-us/trustcenter/default.aspx)' ni ziyaret edin. 
 
@@ -122,7 +118,7 @@ Tüm veri aktarımları, Azure hizmetleriyle iletişim sırasında ortadaki adam
  
 Ayrıca, şirket içi ağınız ve Azure arasında iletişim kanalını daha güvenli hale getirmek için [ıPSEC VPN](../../vpn-gateway/vpn-gateway-about-vpn-devices.md) veya [Express Route](../../expressroute/expressroute-introduction.md) 'u da kullanabilirsiniz.
 
-Sanal ağ, buluttaki ağınızın mantıksal bir gösterimidir. IPSec VPN (siteden siteye) veya Express Route (özel eşleme) ayarlayarak, şirket içi bir ağı Azure sanal ağınıza (VNet) bağlayabilirsiniz     
+Sanal ağ, buluttaki ağınızın mantıksal bir gösterimidir. IPSec VPN (siteden siteye) veya Express Route (özel eşleme) ayarlayarak, şirket içi bir ağı Azure sanal ağınıza (VNet) bağlayabilirsiniz        
 
 Aşağıdaki tabloda, karma veri hareketine yönelik farklı kaynak ve hedef konum birleşimlerine göre ağ ve ağ geçidi yapılandırma önerileri özetlenmektedir.
 
@@ -144,7 +140,7 @@ Aşağıdaki resimlerde Express Route ve IPSec VPN (sanal ağ ile) kullanarak ş
 
 ### <a name="firewall-configurations-and-filtering-ip-address-of-gateway"></a>Güvenlik Duvarı konfigürasyonları ve filtreleme IP adresi
 
-#### <a name="firewall-requirements-for-on-premisesprivate-network"></a>Şirket içi/özel ağ için güvenlik duvarı gereksinimleri  
+#### <a name="firewall-requirements-for-on-premisesprivate-network"></a>Şirket içi/özel ağ için güvenlik duvarı gereksinimleri    
 Bir kuruluşta kurumsal **güvenlik duvarı** kuruluşun merkezi yönlendiricisinde çalışır. Ve **Windows Güvenlik Duvarı** , ağ geçidinin yüklü olduğu yerel makinede bir daemon olarak çalışır. 
 
 Aşağıdaki tabloda, **Şirket güvenlik duvarı** için **giden bağlantı noktası** ve etki alanı gereksinimleri verilmiştir.
@@ -154,7 +150,7 @@ Aşağıdaki tabloda, **Şirket güvenlik duvarı** için **giden bağlantı nok
 | `*.servicebus.windows.net` | 443, 80 | Data Factory içindeki veri taşıma hizmetlerine bağlanmak için ağ geçidi için gereklidir |
 | `*.core.windows.net` | 443 | [Hazırlanmış kopya](data-factory-copy-activity-performance.md#staged-copy) özelliğini kullandığınızda, Azure depolama hesabına bağlanmak için ağ geçidi tarafından kullanılır. | 
 | `*.frontend.clouddatahub.net` | 443 | Azure Data Factory hizmetine bağlanmak için ağ geçidi gereklidir. | 
-| `*.database.windows.net` | 1433   | (Isteğe bağlı) hedef Azure SQL veritabanı/Azure SYNAPSE Analytics olduğunda gereklidir. 1433 numaralı bağlantı noktasını açmadan verileri Azure SQL veritabanı/Azure SYNAPSE Analytics 'e kopyalamak için hazırlanan kopyalama özelliğini kullanın. | 
+| `*.database.windows.net` | 1433    | (Isteğe bağlı) hedef Azure SQL veritabanı/Azure SYNAPSE Analytics olduğunda gereklidir. 1433 numaralı bağlantı noktasını açmadan verileri Azure SQL veritabanı/Azure SYNAPSE Analytics 'e kopyalamak için hazırlanan kopyalama özelliğini kullanın. | 
 | `*.azuredatalakestore.net` | 443 | (Isteğe bağlı) hedef Azure Data Lake deposu olduğunda gereklidir | 
 
 > [!NOTE] 

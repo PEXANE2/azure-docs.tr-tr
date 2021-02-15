@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d14c9330977296630ee58bc2b508f4304472044c
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: c4c654f70af2188264465d97abded9cae95e9275
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92366369"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100364588"
 ---
 # <a name="conditional-access-users-and-groups"></a>Koşullu erişim: kullanıcılar ve gruplar
 
@@ -42,6 +42,9 @@ Koşullu erişim ilkesi oluştururken aşağıdaki seçenekler bulunabilir.
    - Kullanıcılar ve gruplar
       - Belirli kullanıcı kümelerinin hedeflenmesini sağlar. Örneğin, kuruluşlar, bulut uygulaması olarak bir ık uygulaması seçildiğinde ık departmanın tüm üyelerini içeren bir grup seçebilir. Bir grup, dinamik veya atanan güvenlik ve dağıtım grupları dahil olmak üzere Azure AD 'de herhangi bir grup türü olabilir. İlke, iç içe geçmiş kullanıcılara ve gruplara uygulanır.
 
+> [!IMPORTANT]
+> Koşullu erişim Ilkesine hangi kullanıcıların ve grupların dahil edileceğini seçerken, doğrudan koşullu erişim ilkesine eklenebilen bireysel kullanıcı sayısı için bir sınır vardır. Bir koşullu erişim ilkesine doğrudan eklenmesi gereken büyük miktarda bireysel kullanıcı varsa, kullanıcıları bir gruba yerleştirmenizi ve bunun yerine grubu koşullu erişim ilkesine atamayı öneririz.
+
 > [!WARNING]
 > Kullanıcılar veya gruplar 2048 'den fazla grup üyesiyse, erişimleri engellenebilir. Bu sınır hem doğrudan hem de iç içe Grup üyeliği için geçerlidir.
 
@@ -52,7 +55,7 @@ Koşullu erişim ilkesi oluştururken aşağıdaki seçenekler bulunabilir.
 
 Kuruluşların her ikisi de bir kullanıcıyı veya grubu dahil ve hariç tutdığında, Kullanıcı veya grup ilkeden hariç tutulur, hariç tutma eylemi ilkede bir içerme işlemini geçersiz kılar. Dışlamalar genellikle acil durum erişimi veya kesme camı hesapları için kullanılır. Acil durum erişim hesapları ve neden önemli oldukları hakkında daha fazla bilgi aşağıdaki makalelerde bulunabilir: 
 
-* [Azure AD 'de acil durum erişim hesaplarını yönetme](../roles/security-emergency-access.md)
+* [Azure AD'deki acil durum erişim hesaplarını yönetme](../roles/security-emergency-access.md)
 * [Azure Active Directory ile dayanıklı bir erişim denetimi yönetim stratejisi oluşturma](../authentication/concept-resilient-controls.md)
 
 Koşullu erişim ilkesi oluştururken aşağıdaki seçenekler dışarıda tutulacak.
@@ -66,7 +69,7 @@ Koşullu erişim ilkesi oluştururken aşağıdaki seçenekler dışarıda tutul
 
 ### <a name="preventing-administrator-lockout"></a>Yönetici kilitlemeyi önler
 
-**Tüm kullanıcılara** ve **tüm uygulamalara**uygulanan bir ilke oluştururken bir yöneticinin kendilerini kendi dizininden kilitlemesini engellemek için aşağıdaki uyarıyı görür.
+**Tüm kullanıcılara** ve **tüm uygulamalara** uygulanan bir ilke oluştururken bir yöneticinin kendilerini kendi dizininden kilitlemesini engellemek için aşağıdaki uyarıyı görür.
 
 > Kendinizi kilitlemeyin! Önce küçük bir kullanıcı kümesine, beklendiği gibi davrandığını doğrulamak için bir ilke uygulanmasını öneririz. Ayrıca, bu ilkeden en az bir yöneticiyi dışlamamız önerilir. Bu, hala erişiminizin olmasını sağlar ve bir değişiklik gerekliyse bir ilkeyi güncelleştirebilir. Lütfen etkilenen kullanıcıları ve uygulamaları gözden geçirin.
 

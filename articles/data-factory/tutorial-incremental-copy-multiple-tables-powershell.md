@@ -1,22 +1,19 @@
 ---
 title: PowerShell kullanarak birden çok tabloyu artımlı olarak kopyalama
 description: Bu öğreticide, bir SQL Server veritabanındaki birden çok tablodan Azure SQL veritabanı 'na Delta verileri yükleyen bir işlem hattı ile Azure Data Factory oluşturursunuz.
-services: data-factory
 ms.author: yexu
 author: dearandyxu
-manager: anandsub
 ms.reviewer: douglasl, maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 06/10/2020
-ms.openlocfilehash: 61a4119947b1412d3e874458e06748fd40a381b4
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: bf6d4642b672f2b2d76d567b793349bc40f8550b
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97510269"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100384852"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-azure-sql-database-using-powershell"></a>PowerShell kullanarak SQL Server birden çok tablodan Azure SQL veritabanı 'na artımlı olarak veri yükleme
 

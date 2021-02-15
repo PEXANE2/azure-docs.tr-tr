@@ -1,22 +1,18 @@
 ---
 title: Kar tanesi içindeki verileri kopyalama ve dönüştürme
 description: Data Factory kullanarak kar halinde verileri kopyalamayı ve dönüştürmeyi öğrenin.
-services: data-factory
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/08/2020
-ms.openlocfilehash: 49e4a6f7f8c268669a94796257d5740ec6f4e6ff
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 816c9ae25034382763e18ea61055a2a18ccc03d6
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96902094"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100388847"
 ---
 # <a name="copy-and-transform-data-in-snowflake-by-using-azure-data-factory"></a>Azure Data Factory kullanarak kar tanesi içindeki verileri kopyalama ve dönüştürme
 
@@ -111,7 +107,7 @@ Aşağıdaki özellikler, kar tanesi veri kümesi için desteklenir.
 | :-------- | :----------------------------------------------------------- | :-------------------------- |
 | tür      | Veri kümesinin Type özelliği, **kar tablosu** olarak ayarlanmalıdır. | Yes                         |
 | schema | Şemanın adı. Şema adı ADF 'de büyük/küçük harfe duyarlıdır. |Kaynak için Hayır, havuz için Evet  |
-| table | Tablo/görünüm adı. ADF 'de tablo adının büyük/küçük harfe duyarlı olduğunu aklınızda edin. |Kaynak için Hayır, havuz için Evet  |
+| tablo | Tablo/görünüm adı. ADF 'de tablo adının büyük/küçük harfe duyarlı olduğunu aklınızda edin. |Kaynak için Hayır, havuz için Evet  |
 
 **Örnek:**
 
@@ -150,8 +146,8 @@ Verileri kar 'lerden kopyalamak için, etkinlik **kaynağını** kopyalama böl�
 | tür                         | Kopyalama etkinliği kaynağının Type özelliği **SnowflakeSource** olarak ayarlanmalıdır. | Yes      |
 | sorgu          | Kar tanesi 'nden verileri okumak için SQL sorgusunu belirtir. Şema, tablo ve sütun adları küçük harf içeriyorsa, sorgu gibi nesne tanımlayıcısını tırnak içine alarak tırnak işareti `select * from "schema"."myTable"` .<br>Saklı yordamın yürütülmesi desteklenmiyor. | No       |
 | exportSettings | Kar tanesi 'nden verileri almak için kullanılan gelişmiş ayarlar. Deyiminizi çağırdığınızda Data Factory geçirilecek olan COPY komutuna göre desteklenen olanları yapılandırabilirsiniz. | No       |
-| ***Altında `exportSettings` :** _ |  |  |
-| tür | Dışa aktarma komutunun türü _ * kar Keexportcopycommand * * olarak ayarlanır. | Yes |
+| ***Altında `exportSettings` :*** |  |  |
+| tür | Dışa aktarma komutunun türü, **kar Keexportcopycommand** olarak ayarlanır. | Yes |
 | additionalCopyOptions | Anahtar-değer çiftlerinin sözlüğü olarak belirtilen ek kopyalama seçenekleri. Örnekler: MAX_FILE_SIZE, ÜZERINE yaz. Daha fazla bilgi için bkz. [kar tanesi kopyalama seçenekleri](https://docs.snowflake.com/en/sql-reference/sql/copy-into-location.html#copy-options-copyoptions). | No |
 | additionalFormatOptions | Komutları anahtar-değer çiftleri sözlüğü olarak kopyalamak için belirtilen ek dosya biçimi seçenekleri. Örnekler: DATE_FORMAT, TIME_FORMAT, TIMESTAMP_FORMAT. Daha fazla bilgi için bkz. [kar tanesi biçim türü seçenekleri](https://docs.snowflake.com/en/sql-reference/sql/copy-into-location.html#format-type-options-formattypeoptions). | No |
 
@@ -280,8 +276,8 @@ Verileri kar 'a kopyalamak için, etkinlik **havuzunu** Kopyala bölümünde aş
 | tür              | Kopyalama etkinliği havuzunun Type özelliği, **SnowflakeSink** olarak ayarlanır. | Yes                                           |
 | Ön Copyscrıpt     | Kopyalama etkinliği için, her çalıştırmada verileri kar alanına yazmadan önce çalıştırılacak bir SQL sorgusu belirtin. Önceden yüklenmiş verileri temizlemek için bu özelliği kullanın. | No                                            |
 | importSettings | Kar ayarlarına veri yazmak için kullanılan gelişmiş ayarlar. Deyiminizi çağırdığınızda Data Factory geçirilecek olan COPY komutuna göre desteklenen olanları yapılandırabilirsiniz. | No |
-| **_Altında `importSettings` :_* _ |                                                              |  |
-| tür | Import komutunun türü _ * kar Keımportcopycommand * * olarak ayarlanır. | Yes |
+| ***Altında `importSettings` :*** |                                                              |  |
+| tür | Import komutunun türü, **kar Keımportcopycommand** olarak ayarlanır. | Yes |
 | additionalCopyOptions | Anahtar-değer çiftlerinin sözlüğü olarak belirtilen ek kopyalama seçenekleri. Örnekler: ON_ERROR, zorla, LOAD_UNCERTAIN_FILES. Daha fazla bilgi için bkz. [kar tanesi kopyalama seçenekleri](https://docs.snowflake.com/en/sql-reference/sql/copy-into-table.html#copy-options-copyoptions). | No |
 | additionalFormatOptions | Anahtar-değer çiftleri sözlüğü olarak sağlanmış olan COPY komutuna ek dosya biçimi seçenekleri verilmiştir. Örnekler: DATE_FORMAT, TIME_FORMAT, TIMESTAMP_FORMAT. Daha fazla bilgi için bkz. [kar tanesi biçim türü seçenekleri](https://docs.snowflake.com/en/sql-reference/sql/copy-into-table.html#format-type-options-formattypeoptions). | No |
 

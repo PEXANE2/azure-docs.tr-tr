@@ -1,22 +1,18 @@
 ---
 title: Azure portal ve PowerShell kullanarak işlem hatlarını izleme ve yönetme
 description: Azure portal ve Azure PowerShell kullanarak oluşturduğunuz Azure veri fabrikalarını ve işlem hatlarını izleyip yönetme hakkında bilgi edinin.
-services: data-factory
-documentationcenter: ''
 author: dcstwh
 ms.author: weetok
-manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/30/2018
-ms.openlocfilehash: 2a30c755bc19849ad3a821cbbc75b787a3b0bb98
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 486f12c29c473d46e3aff73abe747f8aa5a2ef8d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96495863"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100380415"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-azure-portal-and-powershell"></a>Azure portal ve PowerShell 'i kullanarak Azure Data Factory işlem hatlarını izleme ve yönetme
 > [!div class="op_single_selector"]
@@ -87,7 +83,7 @@ Data Factory 'deki veri kümesi dilimleri aşağıdaki durumlardan birine sahip 
 
 <table>
 <tr>
-    <th align="left">Durum</th><th align="left">Alt</th><th align="left">Açıklama</th>
+    <th align="left">Durum</th><th align="left">Alt</th><th align="left">Description</th>
 </tr>
 <tr>
     <td rowspan="8">Bekleme</td><td>ScheduleTime</td><td>Dilimin çalışması için geçen süre.</td>
@@ -178,7 +174,7 @@ Azure PowerShell kullanarak işlem hatlarınızı yönetebilirsiniz. Örneğin, 
 ```powershell
 Suspend-AzDataFactoryPipeline [-ResourceGroupName] <String> [-DataFactoryName] <String> [-Name] <String>
 ```
-Örnek:
+Örneğin:
 
 ```powershell
 Suspend-AzDataFactoryPipeline -ResourceGroupName ADF -DataFactoryName productrecgamalbox1dev -Name PartitionProductsUsagePipeline
@@ -189,7 +185,7 @@ Sorun ardışık düzen ile düzeltildikten sonra, aşağıdaki PowerShell komut
 ```powershell
 Resume-AzDataFactoryPipeline [-ResourceGroupName] <String> [-DataFactoryName] <String> [-Name] <String>
 ```
-Örnek:
+Örneğin:
 
 ```powershell
 Resume-AzDataFactoryPipeline -ResourceGroupName ADF -DataFactoryName productrecgamalbox1dev -Name PartitionProductsUsagePipeline
@@ -222,7 +218,7 @@ Etkinlik bir işlem hattında başarısız olursa, işlem hattı tarafından ür
     ```powershell   
     Get-AzDataFactorySlice [-ResourceGroupName] <String> [-DataFactoryName] <String> [-DatasetName] <String> [-StartDateTime] <DateTime> [[-EndDateTime] <DateTime> ] [-Profile <AzureProfile> ] [ <CommonParameters>]
     ```   
-   Örnek:
+   Örneğin:
 
     ```powershell   
     Get-AzDataFactorySlice -ResourceGroupName ADF -DataFactoryName LogProcessingFactory -DatasetName EnrichedGameEventsTable -StartDateTime 2014-05-04 20:00:00
@@ -236,7 +232,7 @@ Etkinlik bir işlem hattında başarısız olursa, işlem hattı tarafından ür
     <DateTime> [-Profile <AzureProfile> ] [ <CommonParameters>]
     ```
 
-    Örnek:
+    Örneğin:
 
     ```powershell   
     Get-AzDataFactoryRun -ResourceGroupName ADF -DataFactoryName LogProcessingFactory -DatasetName EnrichedGameEventsTable -StartDateTime "5/5/2014 12:00:00 AM"
@@ -287,7 +283,7 @@ Bir ilke hatası nedeniyle dilimin doğrulanmasına başarısız olması durumun
 
 ![Hataları düzeltin ve doğrulayın](./media/data-factory-monitor-manage-pipelines/fix-error-and-validate.png)
 
-### <a name="use-azure-powershell"></a>Azure PowerShell'i kullanma
+### <a name="use-azure-powershell"></a>Azure PowerShell kullanma
 **Set-AzDataFactorySliceStatus** cmdlet 'ini kullanarak başarısızlıklarını yeniden çalıştırabilirsiniz. Sözdizimi ve cmdlet ile ilgili diğer ayrıntılar için [set-AzDataFactorySliceStatus](/powershell/module/az.datafactory/set-azdatafactoryslicestatus) konusuna bakın.
 
 **Örnek:**

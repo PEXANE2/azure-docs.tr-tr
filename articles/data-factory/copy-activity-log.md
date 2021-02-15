@@ -1,22 +1,17 @@
 ---
 title: Kopyalama etkinliğinde oturum günlüğü
 description: Azure Data Factory 'de oturum günlüğü kopyalama etkinliğinde nasıl etkinleştirileceği hakkında bilgi edinin.
-services: data-factory
-documentationcenter: ''
 author: dearandyxu
-manager: ''
-ms.reviewer: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/11/2020
 ms.author: yexu
-ms.openlocfilehash: e56a840da07a2f6e966867699506f0122a0e7956
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: 7cb00d62556babbd8e43e2fac2faa815a63943ed
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94593664"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100385277"
 ---
 #  <a name="session-log-in-copy-activity"></a>Kopyalama etkinliğinde oturum günlüğü
 
@@ -71,12 +66,12 @@ Aşağıdaki örnek, kopyalama etkinliğinde oturum günlüğünü etkinleştirm
 
 Özellik | Açıklama | İzin verilen değerler | Gerekli
 -------- | ----------- | -------------- | -------- 
-enableCopyActivityLog | Doğru olarak ayarlandığında, kopyalanmış dosyaları günlüğe kaydetme, Atlanan dosyaları veya Atlanan satırları günlüğe kaydetme fırsatına sahip olursunuz.  | Doğru<br/>False (varsayılan) | Hayır
-logLevel | "Bilgi" kopyalanan tüm dosyaları, Atlanan dosyaları ve atlanan satırları günlüğe kaydeder. "Uyarı" Atlanan dosyaları günlüğe kaydeder ve yalnızca satırları atladı.  | Bilgi<br/>Uyarı (varsayılan) | Hayır
-enableReliableLogging | Doğru olduğunda, her dosya hedefe kopyalandıktan sonra, etkinlik, güvenilir modda kopyalanması durumunda günlükleri hemen boşaltır.  Kopyalama etkinliğinde güvenilir günlük modu etkin olan çok büyük miktarlarda dosya kopyalarken, her dosya kopyalama işlemi için çift yazma işlemleri gerektiğinden, kopyalama üretilen işinin etkilenmesi beklenir. Bir istek hedef depoya ve başka bir istek ise günlük depolama deposuna ait.  En iyi çaba modundaki kopyalama etkinliği, kopyalama üretilen işinin çok daha az etkilenmesi durumunda, kayıtları bir süre içinde toplu iş ile temizler. Son günlük olaylarının, kopyalama etkinliği başarısız olduğunda günlük dosyasına boşaltılmadığından birkaç olasılık olduğundan bu modda günlük kaydı ve zaman içinde garanti edilmez. Şu anda, hedefe kopyalanan bazı dosyalar günlüğe kaydedilmez.  | Doğru<br/>False (varsayılan) | Hayır
-logLocationSettings | Oturum günlüklerinin depolayabileceği konumu belirtmek için kullanılabilecek bir özellik grubu. | | Hayır
-linkedServiceName | [Azure Blob depolama alanına](connector-azure-blob-storage.md#linked-service-properties) bağlı hizmet veya oturum günlüğü dosyalarını depolamak için [Azure Data Lake Storage 2.](connector-azure-data-lake-storage.md#linked-service-properties) . | `AzureBlobStorage` `AzureBlobFS` Günlük dosyalarını depolamak için kullandığınız örneğe başvuran bağlı hizmetin veya türlerin adları. | Hayır
-path | Günlük dosyalarının yolu. | Günlük dosyalarını depolamak istediğiniz yolu belirtin. Bir yol sağlamazsanız, hizmet sizin için bir kapsayıcı oluşturur. | Hayır
+enableCopyActivityLog | Doğru olarak ayarlandığında, kopyalanmış dosyaları günlüğe kaydetme, Atlanan dosyaları veya Atlanan satırları günlüğe kaydetme fırsatına sahip olursunuz.  | Doğru<br/>False (varsayılan) | No
+logLevel | "Bilgi" kopyalanan tüm dosyaları, Atlanan dosyaları ve atlanan satırları günlüğe kaydeder. "Uyarı" Atlanan dosyaları günlüğe kaydeder ve yalnızca satırları atladı.  | Bilgi<br/>Uyarı (varsayılan) | No
+enableReliableLogging | Doğru olduğunda, her dosya hedefe kopyalandıktan sonra, etkinlik, güvenilir modda kopyalanması durumunda günlükleri hemen boşaltır.  Kopyalama etkinliğinde güvenilir günlük modu etkin olan çok büyük miktarlarda dosya kopyalarken, her dosya kopyalama işlemi için çift yazma işlemleri gerektiğinden, kopyalama üretilen işinin etkilenmesi beklenir. Bir istek hedef depoya ve başka bir istek ise günlük depolama deposuna ait.  En iyi çaba modundaki kopyalama etkinliği, kopyalama üretilen işinin çok daha az etkilenmesi durumunda, kayıtları bir süre içinde toplu iş ile temizler. Son günlük olaylarının, kopyalama etkinliği başarısız olduğunda günlük dosyasına boşaltılmadığından birkaç olasılık olduğundan bu modda günlük kaydı ve zaman içinde garanti edilmez. Şu anda, hedefe kopyalanan bazı dosyalar günlüğe kaydedilmez.  | Doğru<br/>False (varsayılan) | No
+logLocationSettings | Oturum günlüklerinin depolayabileceği konumu belirtmek için kullanılabilecek bir özellik grubu. | | No
+linkedServiceName | [Azure Blob depolama alanına](connector-azure-blob-storage.md#linked-service-properties) bağlı hizmet veya oturum günlüğü dosyalarını depolamak için [Azure Data Lake Storage 2.](connector-azure-data-lake-storage.md#linked-service-properties) . | `AzureBlobStorage` `AzureBlobFS` Günlük dosyalarını depolamak için kullandığınız örneğe başvuran bağlı hizmetin veya türlerin adları. | No
+path | Günlük dosyalarının yolu. | Günlük dosyalarını depolamak istediğiniz yolu belirtin. Bir yol sağlamazsanız, hizmet sizin için bir kapsayıcı oluşturur. | No
 
 
 ## <a name="monitoring"></a>İzleme
@@ -102,14 +97,17 @@ Kopyalama etkinliği tamamen çalıştıktan sonra, günlük dosyalarının yolu
 
 ```
 
+> [!NOTE]
+> `enableCopyActivityLog`Özelliği olarak ayarlandığında `Enabled` , günlük dosyası adları sistem tarafından oluşturulur.
+
 ### <a name="the-schema-of-the-log-file"></a>Günlük dosyasının şeması
 
 Bir günlük dosyasının şeması aşağıda verilmiştir.
 
 Sütun | Açıklama 
 -------- | -----------  
-Zaman damgası | ADF nesneyi okurken, yazarken veya atlayan zaman damgası.
-Düzey | Bu öğenin günlük düzeyi. Bu, ' Warning ' veya "Info" olabilir.
+Timestamp | ADF nesneyi okurken, yazarken veya atlayan zaman damgası.
+Level | Bu öğenin günlük düzeyi. Bu, ' Warning ' veya "Info" olabilir.
 OperationName | ADF kopyalama etkinliği işlem davranışı her nesne. ' FileRead ', ' FileWrite ', ' FileSkip ' veya ' TabularRowSkip ' olabilir.
 Operationıtem | Dosya adları veya Atlanan satırlar.
 İleti | Dosyanın kaynak depodan okunup okunmasından veya hedef depoya yazılabilmesinin gösterilmesi hakkında daha fazla bilgi. Ayrıca, dosyanın veya satırların neden atlandığını da sağlayabilir.

@@ -1,23 +1,18 @@
 ---
 title: Azure Data Factory tekrarlanabilir kopya
 description: Verileri kopyalayan bir dilim birden çok kez çalıştırılsa bile, yinelemeleri nasıl önleyeceğinizi öğrenin.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-editor: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: cd0f389615c95ef9b9bc8280b6486740ddba4fb4
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: c427cd90412121e896738ca43f4c66dd24b096dc
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96456827"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100387096"
 ---
 # <a name="repeatable-copy-in-azure-data-factory"></a>Azure Data Factory tekrarlanabilir kopya
 

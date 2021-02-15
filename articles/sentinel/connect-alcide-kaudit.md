@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/21/2020
 ms.author: yelevin
-ms.openlocfilehash: cf8da1d88529a823ff4399fb955c8a5e0abbd20e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6d1314b79f09f1bed2de5d6964b0a6224b5962ca
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87038248"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100096880"
 ---
 # <a name="connect-your-alcide-kaudit-to-azure-sentinel"></a>Alcide Kaudıt 'nizi Azure Sentinel 'e bağlama
 
 > [!IMPORTANT]
 > Azure Sentinel 'deki Alcide Kaudıt veri Bağlayıcısı Şu anda genel önizlemededir.
-> Bu özellik, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Bu özellik, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 [Alcide Kaudıt](https://www.alcide.io/kaudit-K8s-forensics/) , anormal Kubernetes davranışlarını belirlemenize ve algılama süresini azaltırken Kubernetes ihlallerine ve olaylarına odaklanmanıza yardımcı olur. Bu makalede, Alcide Kaudıt çözümünüzü Azure Sentinel 'e nasıl bağlayabileceğiniz açıklanır. Alcide Kaudıt veri Bağlayıcısı, Kauıdıt günlük verilerinizi Azure Sentinel 'e kolayca getirmenize olanak tanır. böylece, çalışma kitaplarında görüntüleyebilmeniz için özel uyarılar oluşturabilir ve bunu araştırmayı geliştirebilirsiniz. Alcide Kaudıt ve Azure Sentinel arasındaki tümleştirme REST API kullanır.
 
@@ -63,7 +63,7 @@ Başarılı bir bağlantı kurulduktan sonra, veriler **Customlogs**'daki şu ve
 
 Alcide Kaudıt için günlüklerde ilgili şemayı kullanmak için yukarıda belirtilen veri türlerini arayın.
 
-Günlüklerinizin Log Analytics görünene kadar 20 dakikadan bu kadar bir zaman çıkabilir.
+Günlüklerinizin Log Analytics görünmeye başlaması 20 dakikaya kadar sürebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

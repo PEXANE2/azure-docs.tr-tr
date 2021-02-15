@@ -1,22 +1,18 @@
 ---
 title: İlk veri fabrikanızı derleme (Azure portal)
 description: Bu öğreticide, Azure Portal'daki Data Factory Düzenleyiciyi kullanarak örnek bir Azure Data Factory işlem hattı oluşturursunuz.
-services: data-factory
-documentationcenter: ''
 author: dcstwh
 ms.author: weetok
-manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
-ms.openlocfilehash: 4e19991de20b130b878a230313d87ca09d31a84e
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: 449c8ec976a71d68e3ddddfea839ef06094c2176
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98556452"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100392230"
 ---
 # <a name="tutorial-build-your-first-data-factory-by-using-the-azure-portal"></a>Öğretici: Azure portalını kullanarak ilk veri fabrikanızı oluşturma
 > [!div class="op_single_selector"]
@@ -42,7 +38,7 @@ Bu öğreticideki işlem hattı bir etkinlik içerir: Azure HDInsight Hive etkin
 > 
 > Bir işlem hattında birden fazla etkinlik olabilir. Bir etkinliğin çıkış veri kümesini diğer etkinliğin giriş veri kümesi olarak ayarlayarak iki etkinliği zincirleyebilir, yani bir etkinliğin diğerinden sonra çalıştırılmasını sağlayabilirsiniz. Daha fazla bilgi için bkz. [Data Factory'de zamanlama ve yürütme](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 [Öğreticiye genel bakış](data-factory-build-your-first-pipeline.md) bölümünü okuyun ve "Önkoşullar" bölümündeki adımları izleyin.
 
 Bu makale, Data Factory hizmetine kavramsal bir genel bakış sağlamaz. Hizmet hakkında daha fazla bilgi için [Azure Data Factory'ye giriş](data-factory-introduction.md) konusunu okuyun.  
@@ -208,7 +204,7 @@ Bu adımda, Hive işlenmesi için girdi ve çıktı verilerini temsil edecek ver
     ```
     Aşağıdaki tabloda, kod parçacığında kullanılan JSON özellikleri için açıklamalar verilmiştir.
 
-   | Özellik | İç içe geçmiş | Açıklama |
+   | Özellik | İç içe geçmiş | Description |
    |:--- |:--- |:--- |
    | tür | properties |Veriler blob depolamada yer aldığından, type özelliği **AzureBlob** olarak ayarlanır. |
    | linkedServiceName | biçim |Daha önce oluşturduğunuz AzureStorageLinkedService hizmetine başvurur. |
@@ -413,7 +409,7 @@ Bu adımda, bir HDInsightHive etkinliğiyle ilk işlem hattınızı oluşturursu
 
     ![İzleme ve Yönetme kutucuğu](./media/data-factory-build-your-first-pipeline-using-editor/monitor-and-manage-tile.png)
 
-1. İzleme ve Yönetme uygulamasında **Başlangıç saati** ve **Bitiş saati** değerlerini işlem hattınızın başlangıç ve bitiş saatleriyle eşleşecek şekilde değiştirin. **Apply** (Uygula) seçeneğini belirleyin.
+1. İzleme ve Yönetme uygulamasında **Başlangıç saati** ve **Bitiş saati** değerlerini işlem hattınızın başlangıç ve bitiş saatleriyle eşleşecek şekilde değiştirin. **Uygula**’yı seçin.
 
     ![İzleme ve Yönetme uygulaması](./media/data-factory-build-your-first-pipeline-using-editor/monitor-and-manage-app.png)
 
@@ -435,9 +431,9 @@ Bu öğreticide, HDInsight Hadoop kümesindeki Hive betiği çalıştırılarak 
 Bu makalede, isteğe bağlı HDInsight kümesinde bir Hive betiği çalıştıran dönüştürme etkinliğine (HDInsight etkinliği) sahip işlem hattı oluşturdunuz. Blob depolamadan Azure SQL veritabanı 'na veri kopyalamak için kopyalama etkinliği kullanma hakkında bilgi için bkz. [öğretici: blob DEPOLAMADAN SQL veritabanına veri kopyalama](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 
 ## <a name="see-also"></a>Ayrıca bkz.
-| Konu | Açıklama |
+| Konu | Description |
 |:--- |:--- |
-| [İşlem hatları](data-factory-create-pipelines.md) |Bu makale, Data Factory’de işlem hatlarını ve etkinliklerini anlamanıza ve senaryonuz ya da işletmeniz için uçtan uca veri odaklı iş akışları oluşturmak amacıyla bunları nasıl kullanacağınızı anlamanıza yardımcı olur. |
+| [Pipelines](data-factory-create-pipelines.md) |Bu makale, Data Factory’de işlem hatlarını ve etkinliklerini anlamanıza ve senaryonuz ya da işletmeniz için uçtan uca veri odaklı iş akışları oluşturmak amacıyla bunları nasıl kullanacağınızı anlamanıza yardımcı olur. |
 | [Veri kümeleri](data-factory-create-datasets.md) |Bu makale, Data Factory’deki veri kümelerini anlamanıza yardımcı olur. |
 | [Zamanlama ve yürütme](data-factory-scheduling-and-execution.md) |Bu makalede Data Factory uygulama modelinin zamanlama ve yürütme yönleri açıklanmaktadır. |
 | [İzleme ve Yönetme uygulamasını kullanılarak işlem hatlarını izleme ve yönetme](data-factory-monitor-manage-app.md) |Bu makalede, İzleme ve Yönetme uygulaması kullanılarak işlem hatlarını izleme, yönetme ve hatalarını ayıklama işlemleri açıklanmaktadır. |

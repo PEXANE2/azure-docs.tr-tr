@@ -4,12 +4,12 @@ description: Tüm programlama dillerinde ve bağlamalarda Azure 'da işlevleri g
 ms.assetid: d8efe41a-bef8-4167-ba97-f3e016fcd39e
 ms.topic: conceptual
 ms.date: 10/12/2017
-ms.openlocfilehash: dd9a517749030f9f99731d36947c4d4ff2f13b01
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: fdc898c02cfd20ecfdd72dece4fb1e92d803dbb0
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936745"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100386909"
 ---
 # <a name="azure-functions-developer-guide"></a>Azure İşlevleri geliştirici kılavuzu
 Azure Işlevlerinde belirli işlevler, kullandığınız dil veya bağlama ne olursa olsun, birkaç temel teknik kavram ve bileşeni paylaşır. Belirli bir dile veya bağlamaya özgü öğrenme ayrıntılarına geçmeden önce, tüm bunlar için geçerli olan bu genel bakışı okuduğunuzdan emin olun.
@@ -40,11 +40,11 @@ Daha fazla bilgi için bkz. [Azure işlevleri Tetikleyicileri ve bağlamaları k
 
 `bindings`Özelliği, hem Tetikleyicileri hem de bağlamaları yapılandırdığınız yerdir. Her bağlama birkaç ortak ayarı ve belirli bir bağlama türüne özgü bazı ayarları paylaşır. Her bağlama için aşağıdaki ayarlar gereklidir:
 
-| Özellik | Değerler/türler | Yorumlar |
-| --- | --- | --- |
-| `type` |string |Bağlama türü. Örneğin, `queueTrigger`. |
-| `direction` |' ın ', ' Out ' |Bağlamanın işleve veri almak veya işlevden veri göndermek için olup olmadığını gösterir. |
-| `name` |string |İşlevdeki bağlantılı veriler için kullanılan ad. C# için bu bir bağımsız değişken adıdır; JavaScript için anahtar/değer listesindeki anahtardır. |
+| Özellik    | Değerler | Tür | Yorumlar|
+|---|---|---|---|
+| tür  | Bağlamanın adı.<br><br>Örneğin, `queueTrigger`. | string | |
+| yön | `in`, `out`  | string | Bağlamanın işleve veri almak veya işlevden veri göndermek için olup olmadığını gösterir. |
+| name | İşlev tanımlayıcısı.<br><br>Örneğin, `myQueue`. | string | İşlevdeki bağlantılı veriler için kullanılan ad. C# için bu bir bağımsız değişken adıdır; JavaScript için anahtar/değer listesindeki anahtardır. |
 
 ## <a name="function-app"></a>İşlev uygulaması
 Bir işlev uygulaması, Azure 'da işlevlerinizin çalıştırıldığı bir yürütme bağlamı sağlar. Bu nedenle, işlevleriniz için dağıtım ve yönetim birimidir. İşlev uygulaması, yönetilen, dağıtılan ve birlikte ölçeklenen bir veya daha fazla bağımsız işlevden oluşur. Bir işlev uygulamasındaki tüm işlevler aynı fiyatlandırma planı, dağıtım yöntemi ve çalışma zamanı sürümünü paylaşır. İşlev uygulamasını, işlevlerinizi düzenlemek ve topluca yönetmek için bir yol olarak düşünün. Daha fazla bilgi için bkz. [bir işlev uygulamasını yönetme](functions-how-to-use-azure-function-app-settings.md). 
@@ -91,6 +91,83 @@ Desteklenen tüm bağlamaların bir tablosu aşağıda verilmiştir.
 [!INCLUDE [dynamic compute](../../includes/functions-bindings.md)]
 
 Bağlamalardan gelen hatalarla ilgili sorun mu yaşıyorsunuz? [Azure Işlevleri bağlama hata kodları](functions-bindings-error-pages.md) belgelerini gözden geçirin.
+
+
+## <a name="connections"></a>Bağlantılar
+
+İşlev projeniz, bağlantı bilgilerine yapılandırma sağlayıcısından ada göre başvurur. Bağlantı ayrıntılarını doğrudan kabul etmez ve bunların ortamlar genelinde değiştirilmesine izin verir. Örneğin, bir tetikleyici tanımı bir `connection` özelliği içerebilir. Bu bir bağlantı dizesine başvurabilir, ancak bağlantı dizesini doğrudan bir içinde ayarlayamazsınız `function.json` . Bunun yerine, `connection` bağlantı dizesini içeren bir ortam değişkeninin adına ayarlanır.
+
+Varsayılan yapılandırma sağlayıcısı ortam değişkenlerini kullanır. Bunlar, Azure Işlevleri hizmetinde çalışırken ya da yerel olarak geliştirilirken [yerel ayarlar dosyasından](functions-run-local.md#local-settings-file) [uygulama ayarları](./functions-how-to-use-azure-function-app-settings.md?tabs=portal#settings) tarafından ayarlanabilir.
+
+### <a name="connection-values"></a>Bağlantı değerleri
+
+Bağlantı adı tek bir tam değere çözümlenirse, çalışma zamanı, genellikle bir gizli _dizi içeren bağlantı dizesi_ olarak değeri tanımlar. Bağlantı dizesinin ayrıntıları, bağlanmak istediğiniz hizmet tarafından tanımlanır.
+
+Ancak, bir bağlantı adı birden çok yapılandırma öğesi koleksiyonuna da başvurabilir. Ortam değişkenleri, Çift alt çizgi ile biten paylaşılan bir ön ek kullanılarak bir koleksiyon olarak değerlendirilir `__` . Bu gruba, bu önek için bağlantı adı ayarlanarak izin verebilirsiniz.
+
+Örneğin, `connection` bir Azure Blob tetikleyici tanımının özelliği olabilir `Storage1` . Adı olarak yapılandırılmış tek bir dize değeri olmadığı sürece `Storage1` `Storage1__serviceUri` `serviceUri` bağlantının özelliği için kullanılır. Bağlantı özellikleri her hizmet için farklıdır. Bağlantıyı kullanan uzantı için belgelere bakın.
+
+### <a name="configure-an-identity-based-connection"></a>Kimlik tabanlı bağlantı yapılandırma
+
+Azure Işlevlerinde bazı bağlantılar, gizli anahtar yerine bir kimlik kullanacak şekilde yapılandırılmıştır. Destek, bağlantıyı kullanarak uzantıya bağlıdır. Bazı durumlarda, bağlanmakta olduğunuz hizmet kimlik tabanlı bağlantıları desteklediğinden bile, Işlevlerde bir bağlantı dizesi de gerekebilir.
+
+> [!IMPORTANT]
+> Bağlama uzantısı kimlik tabanlı bağlantıları desteklese de bu yapılandırma, tüketim planında henüz desteklenmeyebilir. Aşağıdaki destek tablosuna bakın.
+
+Kimlik tabanlı bağlantılar aşağıdaki tetikleyici ve bağlama uzantıları tarafından desteklenir:
+
+| Uzantı adı | Uzantı sürümü                                                                                     | Tüketim planında kimlik tabanlı bağlantıları destekler |
+|----------------|-------------------------------------------------------------------------------------------------------|---------------------------------------|
+| Azure Blob     | [Sürüm 5.0.0-Beta1 veya üzeri](./functions-bindings-storage-blob.md#storage-extension-5x-and-higher)  | No                                    |
+| Azure Kuyruk    | [Sürüm 5.0.0-Beta1 veya üzeri](./functions-bindings-storage-queue.md#storage-extension-5x-and-higher) | No                                    |
+
+> [!NOTE]
+> Temel davranışlar için Işlevler çalışma zamanı tarafından kullanılan depolama bağlantılarında kimlik tabanlı bağlantılar için destek henüz kullanılamamaktadır. Bu, `AzureWebJobsStorage` ayarın bir bağlantı dizesi olması gerektiği anlamına gelir.
+
+#### <a name="connection-properties"></a>Bağlantı özellikleri
+
+Azure hizmeti için kimlik tabanlı bağlantı aşağıdaki özellikleri kabul eder:
+
+| Özellik    | Ortam değişkeni | Gereklidir | Description |
+|---|---|---|---|
+| Hizmet URI 'SI | `<CONNECTION_NAME_PREFIX>__serviceUri` | Yes | Bağlanmakta olduğunuz hizmetin veri düzlemi URI 'SI. |
+
+Belirli bir bağlantı türü için ek seçenekler desteklenebilir. Bağlantıyı kuran bileşen için lütfen belgelere bakın.
+
+Azure Işlevleri hizmetinde barındırıldığında, kimlik tabanlı bağlantılar [yönetilen bir kimlik](../app-service/overview-managed-identity.md?toc=%2fazure%2fazure-functions%2ftoc.json)kullanır. Sistem tarafından atanan kimlik varsayılan olarak kullanılır. Diğer bağlamlarda (yerel geliştirme gibi) çalıştırıldığında geliştirici kimliğiniz bunun yerine alternatif bağlantı parametreleri kullanılarak özelleştirilebilecek olsa da kullanılır.
+
+##### <a name="local-development"></a>Yerel geliştirme
+
+Yerel olarak çalışırken, yukarıdaki yapılandırma çalışma zamanına yerel geliştirici kimliğinizi kullanmasını söyler. Bağlantı aşağıdaki konumlardan sırayla bir belirteç almaya çalışır:
+
+- Microsoft uygulamaları arasında paylaşılan yerel bir önbellek
+- Visual Studio 'da geçerli kullanıcı bağlamı
+- Visual Studio Code geçerli kullanıcı bağlamı
+- Azure CLı 'de geçerli kullanıcı bağlamı
+
+Bu seçeneklerden hiçbiri başarılı olmazsa bir hata oluşur.
+
+Bazı durumlarda, farklı bir kimlik kullanımını belirtmek isteyebilirsiniz. Bağlantı için alternatif kimliğe işaret eden yapılandırma özellikleri ekleyebilirsiniz.
+
+> [!NOTE]
+> Azure Işlevleri hizmetinde barındırılırken aşağıdaki yapılandırma seçenekleri desteklenmez.
+
+İstemci KIMLIĞI ve gizli bir Azure Active Directory hizmet sorumlusu kullanarak bağlanmak için aşağıdaki özelliklerle bağlantıyı tanımlayın:
+
+| Özellik    | Ortam değişkeni | Gereklidir | Description |
+|---|---|---|---|
+| Hizmet URI 'SI | `<CONNECTION_NAME_PREFIX>__serviceUri` | Yes | Bağlanmakta olduğunuz hizmetin veri düzlemi URI 'SI. |
+| Kiracı Kimliği | `<CONNECTION_NAME_PREFIX>__tenantId` | Yes | Azure Active Directory kiracı (Dizin) KIMLIĞI. |
+| İstemci Kimliği | `<CONNECTION_NAME_PREFIX>__clientId` | Yes |  Kiracıdaki bir uygulama kaydının istemci (uygulama) KIMLIĞI. |
+| Gizli anahtar | `<CONNECTION_NAME_PREFIX>__clientSecret` | Yes | Uygulama kaydı için oluşturulan bir istemci gizli anahtarı. |
+
+#### <a name="grant-permission-to-the-identity"></a>Kimliğe izin ver
+
+Kullanılan kimliğin istenen eylemleri gerçekleştirmek için izinleri olması gerekir. Bu, genellikle Azure RBAC 'de bir rol atanarak veya bağlanmakta olduğunuz hizmete bağlı olarak bir erişim ilkesinde kimlik belirtilerek yapılır. İzinlerin gerekli olduğu ve nasıl ayarlanabileceği hakkında her hizmet için belgelere bakın.
+
+> [!IMPORTANT]
+> Bazı izinler, tüm bağlamlarda gerekli olmayan hizmet tarafından açığa çıkabilir. Mümkün olduğunda, **en az ayrıcalık ilkesine** bağlı olarak yalnızca kimlik gerekli ayrıcalıkları veriliyor. Örneğin, uygulamanın bir Blobun okuması gerekiyorsa, [Depolama Blobu veri sahibi](../role-based-access-control/built-in-roles.md#storage-blob-data-owner) bir okuma işlemi için aşırı Izinleri Içerdiğinden [Depolama Blobu veri okuyucusu](../role-based-access-control/built-in-roles.md#storage-blob-data-reader) rolünü kullanın.
+
 
 ## <a name="reporting-issues"></a>Raporlama sorunları
 [!INCLUDE [Reporting Issues](../../includes/functions-reporting-issues.md)]

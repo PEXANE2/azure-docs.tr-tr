@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cc2f7d3ce5f8329038fea4ecbb5242015fb3fd0d
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 636f209eeb74ada1b4c7c4232b6aba8738eee10a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96860142"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100365863"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-federated-domains"></a>Öğretici: Federasyon etki alanları için hibrit Azure Active Directory'ye katılımı yapılandırma
 
@@ -95,7 +95,7 @@ WPAD kullanmıyorsanız ve bilgisayarınızda proxy ayarlarını yapılandırmak
 
 Kuruluşunuzun kimliği doğrulanmış bir giden ara sunucu üzerinden İnternet 'e erişmesi gerekiyorsa, Windows 10 bilgisayarlarınızın giden ara sunucuda başarıyla kimlik doğrulayabileceği için emin olmanız gerekir. Windows 10 bilgisayarları makine bağlamını kullanarak cihaz kaydı çalıştırdığı için, makine bağlamını kullanarak giden proxy kimlik doğrulamasını yapılandırmanız gerekir. Yapılandırma gereksinimleri için giden bağlantı proxy'si sağlayıcınızı izleyin.
 
-Cihazın sistem hesabı altında yukarıdaki Microsoft kaynaklarına erişip erişemediğinizi doğrulamak için, [test cihazı kayıt bağlantı](https://gallery.technet.microsoft.com/Test-Device-Registration-3dc944c0) betiği ' ni kullanabilirsiniz.
+Cihazın sistem hesabı altında yukarıdaki Microsoft kaynaklarına erişip erişemediğinizi doğrulamak için, [test cihazı kayıt bağlantı](https://docs.microsoft.com/samples/azure-samples/testdeviceregconnectivity/testdeviceregconnectivity/) betiği ' ni kullanabilirsiniz.
 
 ## <a name="configure-hybrid-azure-ad-join"></a>Hibrit Azure AD'ye katılımı yapılandırma
 

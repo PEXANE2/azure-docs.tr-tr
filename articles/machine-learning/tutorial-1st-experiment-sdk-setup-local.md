@@ -9,14 +9,15 @@ ms.topic: tutorial
 author: aminsaied
 ms.author: amsaied
 ms.reviewer: sgilley
-ms.date: 09/15/2020
+ms.date: 02/11/2021
 ms.custom: devx-track-python
-ms.openlocfilehash: 0d099d31db3619e14da4fe66e26b25a0e36ee39c
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+adobe-target: true
+ms.openlocfilehash: 5d61f330c823aff755a25e637bb58c132aa58100
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98250698"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100369161"
 ---
 # <a name="tutorial-get-started-with-azure-machine-learning-in-your-development-environment-part-1-of-4"></a>Öğretici: geliştirme ortamınızda Azure Machine Learning kullanmaya başlayın (Bölüm 1/4)
 
@@ -68,7 +69,7 @@ pip install azureml-core
 > [!NOTE]
 > Azure Machine Learning SDK yüklemesinin tamamlanabilmesi yaklaşık 2 dakika sürer.
 >
-> Bir zaman aşımı hatası alırsanız `pip install --default-timeout=100 azureml-core` intstead deneyin.
+> Bir zaman aşımı hatası alırsanız, `pip install --default-timeout=100 azureml-core` bunun yerine deneyin.
 
 
 > [!div class="nextstepaction"]
@@ -78,20 +79,29 @@ pip install azureml-core
 
 Bu öğretici için aşağıdaki basit dizin yapısını ayarlamanızı öneririz:
 
-```markdown
-tutorial
-└──.azureml
-```
+:::image type="content" source="media/tutorial-1st-experiment-sdk-local/directory-structure-1.png" alt-text="Dizin yapısı:. azureml alt dizini ile öğretici üst düzeyi":::
+
 
 - `tutorial`: Projenin en üst düzey dizini.
 - `.azureml`: Azure Machine Learning yapılandırma dosyalarını depolamak için gizli alt dizin.
 
+Örneğin, bunu bir bash penceresinde oluşturmak için:
+
+```bash
+mkdir tutorial
+cd tutorial
+mkdir .azureml
+```
+
 > [!TIP]
-> Gizli. azureml alt dizinini bir Terminal penceresinde oluşturabilirsiniz.  Veya aşağıdakileri kullanın:
+> Yapıyı grafik pencerede oluşturmak veya görüntülemek için, önce gizli dosya ve klasörleri görme ve oluşturma özelliğini etkinleştirin:
 >
-> * Mac Finder penceresinde, **Command + SHIFT + kullanın.** bir noktayla başlayan dizinleri görme ve oluşturma özelliğini değiştirmek için.  
+> * Mac Finder penceresinde, **Command + SHIFT + kullanın.** gizli dosyaların/klasörlerin görüntülenmesini değiştirme.  
 > * Bir Windows 10 Dosya Gezgininde bkz. [Gizli dosya ve klasörleri görüntüleme](https://support.microsoft.com/en-us/windows/view-hidden-files-and-folders-in-windows-10-97fbc472-c603-9d90-91d0-1166d1d9f4b5). 
 > * Linux grafik arabiriminde, **CTRL + h** veya **Görünüm** menüsünü kullanın ve **gizli dosyaları göstermek** için kutuyu işaretleyin.
+
+
+
 
 > [!div class="nextstepaction"]
 > [Bir sorunla karşılaşdığım](https://www.research.net/r/7C8Z3DN?issue=create-dir) [bir dizin](?success=create-dir#workspace) oluşturdum
@@ -138,12 +148,7 @@ python ./01-create-workspace.py
 
 *01-Create-Workspace.py* başarıyla çalıştırdıktan sonra klasör yapınız şöyle görünür:
 
-```markdown
-tutorial
-└──.azureml
-|  └──config.json
-└──01-create-workspace.py
-```
+:::image type="content" source="media/tutorial-1st-experiment-sdk-local/directory-structure-2.png" alt-text="Dosya config.js, 01-create-workspace.py çalıştırıldıktan sonra. azureml alt dizininde görüntülenir":::
 
 Dosya, `.azureml/config.json` Azure Machine Learning çalışma alanınıza bağlanmak için gereken meta verileri içerir. Yani, abonelik KIMLIĞINIZI, kaynak grubunuzu ve çalışma alanı adını içerir. 
 
@@ -196,13 +201,7 @@ python ./02-create-compute.py
 
 Klasör yapınız şimdi şöyle görünür:
 
-```bash
-tutorial
-└──.azureml
-|  └──config.json
-└──01-create-workspace.py
-└──02-create-compute.py
-```
+:::image type="content" source="media/tutorial-1st-experiment-sdk-local/directory-structure-3.png" alt-text="Öğretici dizinine 02-create-compute.py ekleme":::
 
 > [!div class="nextstepaction"]
 > [Bir sorunla karşılaşdığım](https://www.research.net/r/7C8Z3DN?issue=create-compute-cluster) [bir işlem kümesi](?success=create-compute-cluster#next-steps) oluşturdum

@@ -11,12 +11,12 @@ services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 98ee865a3ddf6c26ffe9cb77767f3872b42018d8
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: e1605f45dc8a7a1c03b5481ea17478064414df59
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94442370"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100382217"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Azure IoT Edge için genel sorunlar ve çözümler
 
@@ -157,9 +157,9 @@ Azure portalında:
 
 2. Güncelleştirmek istediğiniz IoT Edge cihazı seçin.
 
-3. **Modülleri Ayarlama** 'yı seçin.
+3. **Modülleri Ayarlama**'yı seçin.
 
-4. **Çalışma zamanı ayarları** ' nı seçin.
+4. **Çalışma zamanı ayarları**' nı seçin.
 
 5. **Edge hub 'ı** modül ayarları ' nda, **oluşturma seçenekleri** metin kutusundan her şeyi silin.
 
@@ -174,7 +174,7 @@ Dosyadaki deployment.js:
    ```json
    "edgeHub": {
        "settings": {
-           "image": "mcr.microsoft.com/azureiotedge-hub:1.0",
+           "image": "mcr.microsoft.com/azureiotedge-hub:1.1",
            "createOptions": "{\"HostConfig\":{\"PortBindings\":{\"8883/tcp\":[{\"HostPort\":\"8883\"}],\"443/tcp\":[{\"HostPort\":\"443\"}]}}}"
        },
        "type": "docker",
@@ -188,7 +188,7 @@ Dosyadaki deployment.js:
    ```json
    "edgeHub": {
        "settings": {
-           "image": "mcr.microsoft.com/azureiotedge-hub:1.0"
+           "image": "mcr.microsoft.com/azureiotedge-hub:1.1"
        },
        "type": "docker",
        "status": "running",
@@ -221,7 +221,7 @@ Bu hatayı gördüğünüzde, sanal makinenizin DNS adını yapılandırarak ve 
 
    ![Sanal makinenin DNS adını yapılandırın](./media/troubleshoot/configure-dns.png)
 
-3. **DNS ad etiketi** için bir değer girin ve **Kaydet** ' i seçin.
+3. **DNS ad etiketi** için bir değer girin ve **Kaydet**' i seçin.
 4. Yeni DNS adını, biçiminde olmalıdır **\<DNSnamelabel\> . \<vmlocation\> cloudapp.azure.com**.
 5. Sanal makinenin içinde, DNS adınızla IoT Edge çalışma zamanını ayarlamak için aşağıdaki komutu kullanın:
 
@@ -286,7 +286,7 @@ Dağıtım bildiriminde:
 "edgeHub": {
   "type": "docker",
   "settings": {
-    "image": "mcr.microsoft.com/azureiotedge-hub:1.0",
+    "image": "mcr.microsoft.com/azureiotedge-hub:1.1",
     "createOptions": <snipped>
   },
   "env": {

@@ -2,20 +2,18 @@
 title: Event Grid kaynak olarak Azure Uygulama yapılandırması
 description: Bu makalede, Azure Uygulama yapılandırması 'nın Event Grid olay kaynağı olarak nasıl kullanılacağı açıklanır. Bu, şemayı ve öğretici ve nasıl yapılır makalelerini bağlar ve bağlantılar sağlar.
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: d305236e8408052be4be28ec003f4e545119fc59
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.date: 02/11/2021
+ms.openlocfilehash: a64c6fead5e6d95ba11bc98d7e9a52e3021c3be2
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99550683"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100366781"
 ---
 # <a name="azure-app-configuration-as-an-event-grid-source"></a>Event Grid kaynağı olarak Azure Uygulama yapılandırması
 Bu makalede, Azure uygulama yapılandırma olayları için özellikler ve şema sağlanmaktadır. Olay şemalarına giriş için bkz. [Azure Event Grid olay şeması](event-schema.md). Ayrıca, Azure Uygulama yapılandırması 'nı olay kaynağı olarak kullanmak için hızlı başlayan ve öğreticilerin bir listesini sağlar.
 
-## <a name="event-grid-event-schema"></a>Event Grid olay şeması
-
-### <a name="available-event-types"></a>Kullanılabilir olay türleri
+## <a name="available-event-types"></a>Kullanılabilir olay türleri
 
 Azure Uygulama yapılandırması aşağıdaki olay türlerini yayar:
 
@@ -24,8 +22,9 @@ Azure Uygulama yapılandırması aşağıdaki olay türlerini yayar:
 | Microsoft. AppConfiguration. KeyValueModified | Anahtar-değer oluşturulduğunda veya değiştirildiğinde tetiklenir. |
 | Microsoft. AppConfiguration. KeyValueDeleted | Anahtar-değer silindiğinde tetiklenir. |
 
-### <a name="example-event"></a>Örnek olay
+## <a name="example-event"></a>Örnek olay
 
+# <a name="event-grid-event-schema"></a>[Event Grid olay şeması](#tab/event-grid-event-schema)
 Aşağıdaki örnek, anahtar-değer değiştirilmiş olayının şemasını gösterir: 
 
 ```json
@@ -63,29 +62,87 @@ Anahtar-değer Deleted olayının şeması benzerdir:
   "metadataVersion": "1"
 }]
 ```
- 
-### <a name="event-properties"></a>Olay özellikleri
+# <a name="cloud-event-schema"></a>[Bulut olay şeması](#tab/cloud-event-schema)
+
+Aşağıdaki örnek, anahtar-değer değiştirilmiş olayının şemasını gösterir: 
+
+```json
+[{
+  "id": "84e17ea4-66db-4b54-8050-df8f7763f87b",
+  "source": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testrg/providers/microsoft.appconfiguration/configurationstores/contoso",
+  "subject": "https://contoso.azconfig.io/kv/Foo?label=FizzBuzz",
+  "data": {
+    "key": "Foo",
+    "label": "FizzBuzz",
+    "etag": "FnUExLaj2moIi4tJX9AXn9sakm0"
+  },
+  "type": "Microsoft.AppConfiguration.KeyValueModified",
+  "time": "2019-05-31T20:05:03Z",
+  "specversion": "1.0"
+}]
+```
+
+Anahtar-değer Deleted olayının şeması benzerdir: 
+
+```json
+[{
+  "id": "84e17ea4-66db-4b54-8050-df8f7763f87b",
+  "source": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testrg/providers/microsoft.appconfiguration/configurationstores/contoso",
+  "subject": "https://contoso.azconfig.io/kv/Foo?label=FizzBuzz",
+  "data": {
+    "key": "Foo",
+    "label": "FizzBuzz",
+    "etag": "FnUExLaj2moIi4tJX9AXn9sakm0"
+  },
+  "type": "Microsoft.AppConfiguration.KeyValueDeleted",
+  "time": "2019-05-31T20:05:03Z",
+  "specversion": "1.0"
+}]
+```
+
+---
+
+## <a name="event-properties"></a>Olay özellikleri
+
+# <a name="event-grid-event-schema"></a>[Event Grid olay şeması](#tab/event-grid-event-schema)
+Bir olay aşağıdaki en üst düzey verilere sahiptir:
+
+| Özellik | Tür | Description |
+| -------- | ---- | ----------- |
+| `topic` | dize | Olay kaynağının tam kaynak yolu. Bu alan yazılabilir değil. Event Grid bu değeri sağlar. |
+| `subject` | string | Olay konusunun yayımcı tarafından tanımlanan yolu. |
+| `eventType` | string | Bu olay kaynağı için kayıtlı olay türlerinden biri. |
+| `eventTime` | string | Etkinliğin UTC saatine göre oluşturulduğu zaman. |
+| `id` | string | Etkinliğin benzersiz tanımlayıcısı. |
+| `data` | object | Uygulama yapılandırma olay verileri. |
+| `dataVersion` | string | Veri nesnesinin şema sürümü. Şema sürümünü yayımcı tanımlar. |
+| `metadataVersion` | string | Olay meta verilerinin şema sürümü. Event Grid en üst düzey özelliklerin şemasını tanımlar. Event Grid bu değeri sağlar. |
+
+
+# <a name="cloud-event-schema"></a>[Bulut olay şeması](#tab/cloud-event-schema)
 
 Bir olay aşağıdaki en üst düzey verilere sahiptir:
 
 | Özellik | Tür | Description |
 | -------- | ---- | ----------- |
-| konu başlığı | string | Olay kaynağının tam kaynak yolu. Bu alan yazılabilir değil. Event Grid bu değeri sağlar. |
-| subject | string | Olay konusunun yayımcı tarafından tanımlanan yolu. |
-| eventType | string | Bu olay kaynağı için kayıtlı olay türlerinden biri. |
-| eventTime | string | Etkinliğin UTC saatine göre oluşturulduğu zaman. |
-| ID | string | Etkinliğin benzersiz tanımlayıcısı. |
-| veriler | object | Uygulama yapılandırma olay verileri. |
-| dataVersion | string | Veri nesnesinin şema sürümü. Şema sürümünü yayımcı tanımlar. |
-| metadataVersion | string | Olay meta verilerinin şema sürümü. Event Grid en üst düzey özelliklerin şemasını tanımlar. Event Grid bu değeri sağlar. |
+| `source` | dize | Olay kaynağının tam kaynak yolu. Bu alan yazılabilir değil. Event Grid bu değeri sağlar. |
+| `subject` | string | Olay konusunun yayımcı tarafından tanımlanan yolu. |
+| `type` | string | Bu olay kaynağı için kayıtlı olay türlerinden biri. |
+| `time` | string | Etkinliğin UTC saatine göre oluşturulduğu zaman. |
+| `id` | string | Etkinliğin benzersiz tanımlayıcısı. |
+| `data` | object | Uygulama yapılandırma olay verileri. |
+| `specversion` | string | CloudEvents şema belirtimi sürümü. |
+
+---
 
 Veri nesnesi aşağıdaki özelliklere sahiptir:
 
 | Özellik | Tür | Description |
 | -------- | ---- | ----------- |
-| anahtar | string | Değiştirilen veya silinen anahtar-değer anahtarı. |
-| etiket | string | Değiştirilen veya silinen anahtar-değer etiketi. |
-| özelliği | string | `KeyValueModified`Yeni anahtar-değer ETag için. `KeyValueDeleted`Silinen anahtar değerinin ETag 'i için. |
+| `key` | dize | Değiştirilen veya silinen anahtar-değer anahtarı. |
+| `label` | string | Değiştirilen veya silinen anahtar-değer etiketi. |
+| `etag` | string | `KeyValueModified`Yeni anahtar-değer ETag için. `KeyValueDeleted`Silinen anahtar değerinin ETag 'i için. |
+
 
 ## <a name="tutorials-and-how-tos"></a>Öğreticiler ve nasıl yapılır kılavuzları
 

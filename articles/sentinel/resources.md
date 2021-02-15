@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/27/2021
 ms.author: yelevin
-ms.openlocfilehash: 11c5c77623fcc693210d5a42bf94c968e884fec3
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 2a6e31115fb2548f8248f741213970605f230036
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98920029"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100390734"
 ---
 # <a name="useful-resources-for-working-with-azure-sentinel"></a>Azure Sentinel ile çalışmaya yönelik faydalı kaynaklar
 
@@ -75,15 +75,6 @@ Azure etkinlik günlüğünden bu verileri, daha sonra araştırma ve analiz ger
     ```
 
 
-
-## <a name="vendor-documentation"></a>Satıcı belgeleri
-
-| **Satıcı**  | **Azure Sentinel 'de olay kullanma** | **Bağlantı**|
-|----|----|----|
-| GitHub| Topluluk sayfasına erişmek için kullanılır| <https://github.com/Azure/Azure-Sentinel> |
-| PaloAlto| CEF 'yi yapılandırma| <https://www.paloaltonetworks.com/documentation/misc/cef.html>|
-| PluralSight | Kusto Sorgu Dili kursu| [https://www.pluralsight.com/courses/kusto-query-language-kql-from-scratch](https://www.pluralsight.com/courses/kusto-query-language-kql-from-scratch)|
-
 ## <a name="blogs-and-forums"></a>Bloglar ve Forumlar
 
 Kullanıcılarımızdan aldığımız bir duyuyoruz!
@@ -96,8 +87,6 @@ Kullanıcılarımızdan aldığımız bir duyuyoruz!
 
     - [TechCommunity](https://techcommunity.microsoft.com/t5/Azure-Sentinel/bg-p/AzureSentinelBlog) 
     - [Microsoft Azure](https://azure.microsoft.com/blog/tag/azure-sentinel/)
-
-Azure güvenliği ve uyumluluğu hakkında daha fazla bilgi için bkz. [güvenlik ve Uyumluluk blogu Microsoft Azure](https://techcommunity.microsoft.com/t5/microsoft-security-and/bg-p/MicrosoftSecurityandCompliance).
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

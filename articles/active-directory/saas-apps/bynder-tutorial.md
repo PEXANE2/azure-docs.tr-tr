@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/07/2020
+ms.date: 02/03/2021
 ms.author: jeedes
-ms.openlocfilehash: d9e348d456d517cd20e899648b9e92b3cd802ffb
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: dd4114f417fa266d8d638e28167d513fdf01aa97
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98806298"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100380853"
 ---
 # <a name="tutorial-integrate-bynder-with-azure-active-directory"></a>Öğretici: Bynder ile Azure Active Directory tümleştirme
 
@@ -30,7 +30,7 @@ Bu öğreticide, Bynder 'ı Azure Active Directory (Azure AD) ile tümleştirmey
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
-* Bir Azure AD aboneliği. Aboneliğiniz yoksa, [burada](https://azure.microsoft.com/pricing/free-trial/)bir aylık ücretsiz deneme sürümü edinebilirsiniz.
+* Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
 * Bynder çoklu oturum açma (SSO) etkin aboneliği.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
@@ -40,7 +40,7 @@ Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test eders
 * Bynder **, SP ve ıDP** tarafından başlatılan SSO 'yu destekler
 * Bynder **, tam zamanında** Kullanıcı sağlamayı destekliyor
 
-## <a name="adding-bynder-from-the-gallery"></a>Galeriden Bynder ekleme
+## <a name="add-bynder-from-the-gallery"></a>Galeriden Bynder ekleme
 
 Bynder 'ın Azure AD 'ye tümleştirmesini yapılandırmak için, Galeriden Bynder 'yi yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
 
@@ -56,7 +56,7 @@ Bynder 'ın Azure AD 'ye tümleştirmesini yapılandırmak için, Galeriden Bynd
 
 **B. Simon** adlı bir test kullanıcısı kullanarak Bynder Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve Bynder içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
-Azure AD SSO 'yu Bynder ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
+Azure AD SSO 'yu Bynder ile yapılandırmak ve test etmek için aşağıdaki adımları gerçekleştirin:
 
 1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
    1. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
@@ -65,13 +65,13 @@ Azure AD SSO 'yu Bynder ile yapılandırmak ve test etmek için aşağıdaki yap
    1. **[Bynder test kullanıcısı oluşturun](#create-bynder-test-user)** -kullanıcının Azure AD gösterimine bağlı olan bynder 'de Britta Simon 'a sahip olacak.
 1. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
-### <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma
 
 Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. Azure portal, **Bynder** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
 1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
-1. **SAML Ile tek Sign-On ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
+1. **SAML Ile tek Sign-On ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** kalem simgesine tıklayın.
 
    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -163,4 +163,4 @@ Uygulamayı dilediğiniz modda test etmek için Microsoft My Apps ' i de kullana
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bynder 'ı yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve infilini koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](/cloud-app-security/proxy-deployment-any-app).
+Bynder 'ı yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve infilini koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).

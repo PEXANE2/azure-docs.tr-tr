@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla
 ms.topic: article
-ms.date: 01/15/2021
-ms.openlocfilehash: 9ac8a23569d9a85787768419a0377967026e9bd9
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.date: 02/12/2021
+ms.openlocfilehash: 9a3a511a287f093b4fc317213afedd5fdc3c21be
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251605"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100520672"
 ---
 # <a name="authenticate-access-to-azure-resources-by-using-managed-identities-in-azure-logic-apps"></a>Azure Logic Apps içindeki yönetilen kimlikleri kullanarak Azure kaynaklarına erişimi kimlik doğrulaması
 
@@ -31,6 +31,9 @@ Azure Logic Apps hem [*sistem tarafından atanan*](../active-directory/managed-i
 * HTTP
 * HTTP + Web kancası
 
+> [!NOTE]
+> HTTP tetikleyicisi ve eylemi, sistem tarafından atanan yönetilen kimliği kullanarak Azure Güvenlik duvarları arkasındaki Azure depolama hesaplarına yapılan bağlantıların kimliğini doğrulayabilirler, ancak aynı bağlantıları doğrulamak için Kullanıcı tarafından atanan yönetilen kimliği kullanamaz.
+
 **Yönetilen bağlayıcılar**
 
 * Azure Otomasyonu
@@ -48,7 +51,7 @@ Bu makalede mantıksal uygulamanız için her iki tür yönetilen kimliğin nas�
 * [Mantıksal uygulamalar için yönetilen kimliklerde sınırlamalar](../logic-apps/logic-apps-limits-and-config.md#managed-identity)
 * [Yönetilen kimliklerle Azure AD kimlik doğrulamasını destekleyen Azure hizmetleri](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Bir Azure hesabı ve aboneliği Aboneliğiniz yoksa, [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/). Hem yönetilen kimlik hem de erişmeniz gereken hedef Azure kaynağının aynı Azure aboneliğini kullanması gerekir.
 
@@ -154,7 +157,7 @@ Mantıksal uygulamanız için Kullanıcı tarafından atanan bir yönetilen kiml
 * Azure PowerShell
   * [Kullanıcı tarafından atanan kimlik oluşturma](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md)
   * [Rol ataması ekle](../active-directory/managed-identities-azure-resources/howto-assign-access-powershell.md)
-* Azure CLI
+* Azure CLI’si
   * [Kullanıcı tarafından atanan kimlik oluşturma](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md)
   * [Rol ataması ekle](../active-directory/managed-identities-azure-resources/howto-assign-access-cli.md)
 * Azure REST API
@@ -557,7 +560,7 @@ Mantıksal uygulamanız için yönetilen bir kimlik kullanmayı durdurmak için 
 * Azure PowerShell
   * [Rol atamasını Kaldır](../role-based-access-control/role-assignments-powershell.md)
   * [Kullanıcı tarafından atanan kimliği Sil](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md)
-* Azure CLI
+* Azure CLI’si
   * [Rol atamasını Kaldır](../role-based-access-control/role-assignments-cli.md)
   * [Kullanıcı tarafından atanan kimliği Sil](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md)
 * Azure REST API

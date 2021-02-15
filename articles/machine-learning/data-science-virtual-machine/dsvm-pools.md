@@ -4,18 +4,17 @@ titleSuffix: Azure Data Science Virtual Machine
 description: Bir ekip için paylaşılan kaynak olarak paylaşılan bir veri bilimi sanal makinesi (DSVMs) havuzu oluşturma & oluşturmayı öğrenin.
 keywords: derin öğrenme, AI, veri bilimi araçları, veri bilimi sanal makinesi, Jeo-uzamsal analiz, ekip veri bilimi işlemi
 services: machine-learning
-ms.service: machine-learning
-ms.subservice: data-science-vm
+ms.service: data-science-vm
 author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 12/10/2018
-ms.openlocfilehash: eb1242189f4c5a38421a7f44e8f5e738c44970b6
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: a118d5a3e716a80bda21ffe82a8cefd1da1202f3
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97705532"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100519720"
 ---
 # <a name="create-a-shared-pool-of-data-science-virtual-machines"></a>Paylaşılan veri bilimi sanal makineleri havuzu oluşturma
 

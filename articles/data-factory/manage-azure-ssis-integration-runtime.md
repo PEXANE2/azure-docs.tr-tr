@@ -1,22 +1,17 @@
 ---
 title: Azure-SSIS tümleştirme çalışma zamanını yeniden yapılandırma
 description: Azure Data Factory bir Azure-SSIS tümleştirme çalışma zamanını zaten sağladıktan sonra yeniden yapılandırma hakkında bilgi edinin.
-services: data-factory
-documentationcenter: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/03/2020
 author: swinarko
 ms.author: sawinark
-ms.reviewer: douglasl
-manager: anandsub
-ms.openlocfilehash: 7545f593aea2aca8c0aa240d44bcef3b7a1ca7c6
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 724411dc12654aec1614230c943923062b334cd2
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636281"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100370691"
 ---
 # <a name="reconfigure-the-azure-ssis-integration-runtime"></a>Azure-SSIS tümleştirme çalışma zamanını yeniden yapılandırma
 
@@ -28,10 +23,10 @@ Bu makalede, mevcut bir Azure-SSIS tümleştirme çalışma zamanının nasıl y
 Data Factory Kullanıcı arabirimini kullanarak bir Azure-SSIS IR durdurabilir, düzenleyebilir/yeniden yapılandırabilir veya silebilirsiniz. 
 
 1. Veri fabrikanızın giriş sayfasında **yazar & izleyici** kutucuğunu seçerek Data Factory Kullanıcı arabirimini açın.
-2. **Bağlantılar** bölmesini göstermek Için, **ana** , **düzenleme** ve hub 'ları **izlemek** üzere hub 'ı **Yönet** ' i seçin.
+2. **Bağlantılar** bölmesini göstermek Için, **ana**, **düzenleme** ve hub 'ları **izlemek** üzere hub 'ı **Yönet** ' i seçin.
 
 ### <a name="to-reconfigure-an-azure-ssis-ir"></a>Bir Azure-SSIS IR yeniden yapılandırmak için
-Hub 'ı **Yönet** ' in **Bağlantılar** bölmesinde, **tümleştirme çalışma zamanları** sayfasına geçin ve **Yenile** ' yi seçin. 
+Hub 'ı **Yönet** ' in **Bağlantılar** bölmesinde, **tümleştirme çalışma zamanları** sayfasına geçin ve **Yenile**' yi seçin. 
 
    ![Bağlantılar bölmesi](./media/tutorial-create-azure-ssis-runtime-portal/connections-pane.png)
 

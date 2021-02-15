@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/29/2021
-ms.openlocfilehash: df393f54e7dfa83c8fc0feab3dbf42a156b296b7
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: a274e96defa8b6b74c046923d87f198029399dd4
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99430471"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100098104"
 ---
 # <a name="indexers-in-azure-cognitive-search"></a>Azure Bilişsel Arama'daki Dizin Oluşturucular
 
@@ -118,6 +118,7 @@ Dizin Oluşturucu durumunu portalda veya [Dizin Oluşturucu durumunu Al API 'si]
 Artık tanıtıldığınıza göre, bir sonraki adım, Dizin Oluşturucu özelliklerini ve parametrelerini, zamanlamayı ve Dizin oluşturucuyu izlemeyi gözden geçirmektedir. Alternatif olarak, belirli bir kaynak hakkında daha fazla bilgi için [desteklenen veri kaynakları](#supported-data-sources) listesine geri dönebilirsiniz.
 
 + [Dizin oluşturucular oluştur](search-howto-create-indexers.md)
++ [Dizin oluşturucuyu sıfırlama ve çalıştırma](search-howto-run-reset-indexers.md)
 + [Zamanlama dizin oluşturucuları](search-howto-schedule-indexers.md)
 + [Alan eşlemelerini tanımlama](search-indexer-field-mappings.md)
 + [Dizin Oluşturucu durumunu izleme](search-howto-monitor-indexers.md)

@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 6735b3377650c900a7b7d18933180991a6a2c9fd
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 1ee4e19a3e76a001a66f6498530fab4f4703fa85
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97930897"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100381621"
 ---
 # <a name="azure-blob-storage-trigger-for-azure-functions"></a>Azure Işlevleri için Azure Blob depolama tetikleyicisi
 
@@ -323,7 +323,7 @@ Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığı
 |**Görünüm** | yok | Olarak ayarlanmalıdır `in` . Bu özellik, Azure portal tetikleyiciyi oluşturduğunuzda otomatik olarak ayarlanır. [Kullanım](#usage) bölümünde özel durumlar belirtilmiştir. |
 |**ada** | yok | İşlev kodundaki blobu temsil eden değişkenin adı. |
 |**Yolun** | **Blobpath değerini adıyla** |İzlenecek [kapsayıcı](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources) .  Bir [BLOB adı stili](#blob-name-patterns)olabilir. |
-|**bağlanma** | **Bağlantı** | Bu bağlama için kullanılacak depolama bağlantı dizesini içeren bir uygulama ayarının adı. Uygulama ayarı adı "AzureWebJobs" ile başlıyorsa, burada yalnızca adının geri kalanını belirtebilirsiniz. Örneğin, `connection` "MyStorage" olarak ayarlarsanız, işlevler çalışma zamanı "AzureWebJobsMyStorage" adlı bir uygulama ayarı arar. `connection`Boş bırakırsanız, işlevler çalışma zamanı adlı uygulama ayarında varsayılan depolama bağlantı dizesini kullanır `AzureWebJobsStorage` .<br><br>Bağlantı dizesi, [BLOB depolama hesabı](../storage/common/storage-account-overview.md#types-of-storage-accounts)değil, genel amaçlı bir depolama hesabı için olmalıdır.|
+|**bağlanma** | **Bağlantı** | Bu bağlama için kullanılacak depolama bağlantı dizesini içeren bir uygulama ayarının adı. Uygulama ayarı adı "AzureWebJobs" ile başlıyorsa, burada yalnızca adının geri kalanını belirtebilirsiniz. Örneğin, `connection` "MyStorage" olarak ayarlarsanız, işlevler çalışma zamanı "AzureWebJobsMyStorage" adlı bir uygulama ayarı arar. `connection`Boş bırakırsanız, işlevler çalışma zamanı adlı uygulama ayarında varsayılan depolama bağlantı dizesini kullanır `AzureWebJobsStorage` .<br><br>Bağlantı dizesi, [BLOB depolama hesabı](../storage/common/storage-account-overview.md#types-of-storage-accounts)değil, genel amaçlı bir depolama hesabı için olmalıdır.<br><br>[Uzantının 5. x veya daha yüksek bir sürümünü](./functions-bindings-storage-blob.md#storage-extension-5x-and-higher)kullanıyorsanız, bağlantı dizesi yerine bağlantıyı tanımlayan bir yapılandırma bölümüne başvuru sağlayabilirsiniz. Bkz. [Bağlantılar](./functions-reference.md#connections).|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -400,7 +400,7 @@ Dosya adlarında küme ayraçları aramak için, iki küme ayracı kullanarak k�
 
 Blob *{20140101}-soundfile.mp3* adlandırılmışsa, `name` işlev kodundaki değişken değeri *soundfile.mp3*.
 
-## <a name="metadata"></a>Meta Veriler
+## <a name="metadata"></a>Meta veri
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -463,9 +463,16 @@ Belirli bir blob için bir blob tetikleme işlevi başarısız olduğunda, Azure
 
 Blob tetikleyicisi bir kuyruğu dahili olarak kullanır, bu nedenle eşzamanlı işlev çağırma sayısı üst sınırı, [host.jsüzerinde bulunan kuyruklar yapılandırması](functions-host-json.md#queues)tarafından denetlenir. Varsayılan ayarlar eşzamanlılık, 24 çağırma ile sınırlıdır. Bu sınır, blob tetikleyicisi kullanan her bir işleve ayrı olarak uygulanır.
 
+> [!NOTE]
+> [Depolama uzantısının 5.0.0 veya daha yüksek sürümünü](functions-bindings-storage-blob.md#storage-extension-5x-and-higher)kullanan uygulamalar için, host.js' deki kuyruklar yapılandırması yalnızca kuyruk Tetikleyicileri için geçerlidir. Blob tetikleyicisi eşzamanlılık, bunun yerine [host.jsüzerindeki blob yapılandırması](functions-host-json.md#blobs)tarafından denetlenir.
+
 [Tüketim planı](event-driven-scaling.md) bir sanal MAKINEDE (VM) bir işlev UYGULAMASıNı 1,5 GB bellek ile sınırlandırır. Bellek, her eşzamanlı çalıştırılan işlev örneği ve Işlevler çalışma zamanının kendisi tarafından kullanılır. Blob ile tetiklenen bir işlev tüm blobu belleğe yüklerse, bu işlev tarafından yalnızca blob 'lar için kullanılan en fazla bellek 24 * en yüksek blob boyutudur. Örneğin, üç blob ile tetiklenen işlevlere sahip bir işlev uygulaması ve varsayılan ayarlar en fazla VM başına eşzamanlılık 3 * 24 = 72 işlev etkinleştirmeleri olacaktır.
 
 JavaScript ve Java işlevleri tüm Blobun belleğe yüklenmesini sağlar ve C# işlevleri `string` , veya ' a bağlarsanız, veya `Byte[]` .
+
+## <a name="hostjson-properties"></a>host.jsözelliklerde
+
+Dosyadaki [host.js](functions-host-json.md#blobs) blob tetikleme davranışını denetleyen ayarları içerir. Kullanılabilir ayarlarla ilgili ayrıntılar için [ ayarlarıhost.js](functions-bindings-storage-blob.md#hostjson-settings) bölümüne bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

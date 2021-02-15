@@ -1,22 +1,18 @@
 ---
 title: Hadoop Pig etkinliğini kullanarak verileri dönüştürme
 description: Bir Azure Data Factory 'de Pig etkinliğini kullanarak bir isteğe bağlı/kendi HDInsight kümeniz üzerinde Pig betikleri nasıl çalıştırabileceğinizi öğrenin.
-services: data-factory
-documentationcenter: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 author: nabhishek
 ms.author: abnarain
-manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 05/08/2020
-ms.openlocfilehash: 5bdb1c7f0158b0e45145b41d9960c7c55a0d8ead
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 1d0f5ce9dfbf09023b57accb761b5dd85b0f3599
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92631878"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100375723"
 ---
 # <a name="transform-data-using-hadoop-pig-activity-in-azure-data-factory"></a>Azure Data Factory Hadoop Pig etkinliğini kullanarak verileri dönüştürme
 
@@ -61,14 +57,14 @@ Azure Data Factory yeni bir deyişle, [Azure Data Factory 'ye giriş](introducti
 
 | Özellik            | Açıklama                              | Gerekli |
 | ------------------- | ---------------------------------------- | -------- |
-| name                | Etkinliğin adı                     | Evet      |
-| açıklama         | Etkinliğin ne için kullanıldığını açıklayan metin | Hayır       |
-| tür                | Hive etkinliği için etkinlik türü HDinsightPig | Evet      |
-| linkedServiceName   | Data Factory bağlı hizmet olarak kaydedilen HDInsight kümesine başvuru. Bu bağlı hizmet hakkında bilgi edinmek için bkz. [işlem bağlı hizmetleri](compute-linked-services.md) makalesi. | Evet      |
-| scriptLinkedService | Yürütülecek Pig betiğini depolamak için kullanılan bir Azure depolama bağlı hizmetine yönelik başvuru. Burada yalnızca **[Azure Blob depolama](./connector-azure-blob-storage.md)** ve **[ADLS 2.](./connector-azure-data-lake-storage.md)** bağlı hizmetleri desteklenir. Bu bağlı hizmeti belirtmezseniz, HDInsight bağlı hizmetinde tanımlanan Azure depolama bağlı hizmeti kullanılır. | Hayır       |
-| scriptPath          | ScriptLinkedService tarafından başvurulan Azure depolama alanında depolanan betik dosyasının yolunu belirtin. Dosya adı büyük/küçük harfe duyarlıdır. | Hayır       |
-| GetDebugInfo        | Günlük dosyalarının, HDInsight kümesi tarafından kullanılan (veya) scriptLinkedService tarafından belirtilen Azure depolama 'ya ne zaman kopyalanacağını belirtir. İzin verilen değerler: None, Always veya Failure. Varsayılan değer: Hiçbiri. | Hayır       |
-| değişkenlerinden           | Bir Hadoop işi için bir bağımsız değişken dizisi belirtir. Bağımsız değişkenler her göreve komut satırı bağımsız değişkeni olarak geçirilir. | Hayır       |
+| name                | Etkinliğin adı                     | Yes      |
+| açıklama         | Etkinliğin ne için kullanıldığını açıklayan metin | No       |
+| tür                | Hive etkinliği için etkinlik türü HDinsightPig | Yes      |
+| linkedServiceName   | Data Factory bağlı hizmet olarak kaydedilen HDInsight kümesine başvuru. Bu bağlı hizmet hakkında bilgi edinmek için bkz. [işlem bağlı hizmetleri](compute-linked-services.md) makalesi. | Yes      |
+| scriptLinkedService | Yürütülecek Pig betiğini depolamak için kullanılan bir Azure depolama bağlı hizmetine yönelik başvuru. Burada yalnızca **[Azure Blob depolama](./connector-azure-blob-storage.md)** ve **[ADLS 2.](./connector-azure-data-lake-storage.md)** bağlı hizmetleri desteklenir. Bu bağlı hizmeti belirtmezseniz, HDInsight bağlı hizmetinde tanımlanan Azure depolama bağlı hizmeti kullanılır. | No       |
+| scriptPath          | ScriptLinkedService tarafından başvurulan Azure depolama alanında depolanan betik dosyasının yolunu belirtin. Dosya adı büyük/küçük harfe duyarlıdır. | No       |
+| GetDebugInfo        | Günlük dosyalarının, HDInsight kümesi tarafından kullanılan (veya) scriptLinkedService tarafından belirtilen Azure depolama 'ya ne zaman kopyalanacağını belirtir. İzin verilen değerler: None, Always veya Failure. Varsayılan değer: Hiçbiri. | No       |
+| değişkenlerinden           | Bir Hadoop işi için bir bağımsız değişken dizisi belirtir. Bağımsız değişkenler her göreve komut satırı bağımsız değişkeni olarak geçirilir. | No       |
 | tanımlar             | Pig betiği içinde başvurmak için parametreleri anahtar/değer çiftleri olarak belirtin. | Hayır       |
 
 ## <a name="next-steps"></a>Sonraki adımlar

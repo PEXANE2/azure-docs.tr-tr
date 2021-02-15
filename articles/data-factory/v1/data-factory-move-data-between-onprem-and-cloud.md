@@ -1,23 +1,18 @@
 ---
 title: Veri Veri Yönetimi ağ geçidini taşıma
 description: Şirket içi ve bulut arasında veri taşımak için bir veri ağ geçidi ayarlayın. Verilerinizi taşımak için Azure Data Factory Veri Yönetimi ağ geçidini kullanın.
-services: data-factory
-documentationcenter: ''
 author: nabhishek
-manager: anandsub
-ms.assetid: 7bf6d8fd-04b5-499d-bd19-eff217aa4a9c
+ms.author: abnarain
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 7f07f08cd320d94495403b0f5ae65d60d8dc93b5
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 53fce1744ccbf4289b2415e926e084c90d708a13
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96019693"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100380296"
 ---
 # <a name="move-data-between-on-premises-sources-and-the-cloud-with-data-management-gateway"></a>Veri Yönetimi ağ geçidi ile şirket içi kaynaklar ve bulut arasında veri taşıma
 > [!NOTE]
@@ -138,7 +133,7 @@ Bu adımda, **ADFTutorialOnPremDF** adlı bir Azure Data Factory örneği oluşt
    * Ağ Geçidi tarafından kullanılan sertifikayı görüntüleyin veya dışarı aktarın.
    * Ağ Geçidi tarafından kullanılan HTTPS uç noktasını değiştirin.    
    * Ağ Geçidi tarafından kullanılacak bir HTTP proxy 'si ayarlayın.     
-9. seçim **Tanılama** sekmesine geçin, ağ geçidiyle ilgili sorunları gidermek için kullanabileceğiniz ayrıntılı günlüğü etkinleştirmek istiyorsanız **ayrıntılı günlüğü etkinleştir** seçeneğini işaretleyin. Günlük bilgileri, **uygulama ve hizmet günlükleri** **Event Viewer**  ->  **veri yönetimi ağ geçidi** düğümü altında Olay Görüntüleyicisi bulunabilir.
+9. seçim **Tanılama** sekmesine geçin, ağ geçidiyle ilgili sorunları gidermek için kullanabileceğiniz ayrıntılı günlüğü etkinleştirmek istiyorsanız **ayrıntılı günlüğü etkinleştir** seçeneğini işaretleyin. Günlük bilgileri, **uygulama ve hizmet günlükleri**   ->  **veri yönetimi ağ geçidi** düğümü altında Olay Görüntüleyicisi bulunabilir.
 
     ![Tanılama sekmesi](./media/data-factory-move-data-between-onprem-and-cloud/diagnostics-tab.png)
 
@@ -189,7 +184,7 @@ Bu adımda, kopyalama işlemi için girdi ve çıktı verilerini temsil eden gir
 * Veri fabrikasına bağlı hizmet olarak eklediğiniz Azure blob depolama hesabında **adftutorial** adlı bir blob kapsayıcı oluşturun.
 
 ### <a name="prepare-on-premises-sql-server-for-the-tutorial"></a>Eğitim için şirket içi SQL Server hazırlama
-1. SQL Server bağlı hizmeti için belirttiğiniz veritabanında (**Sqlserverlinkedservice**), veritabanında bir veritabanını oluşturmak IÇIN aşağıdaki SQL betiğini kullanın. **emp**
+1. SQL Server bağlı hizmeti için belirttiğiniz veritabanında (**Sqlserverlinkedservice**), veritabanında bir veritabanını oluşturmak IÇIN aşağıdaki SQL betiğini kullanın. 
 
     ```SQL   
     CREATE TABLE dbo.emp
@@ -236,7 +231,7 @@ Bu adımda, kopyalama işlemi için girdi ve çıktı verilerini temsil eden gir
             }
         }
     }     
-    ```     
+    ```       
    Aşağıdaki noktalara dikkat edin:
 
    * **tür** **sqlservertable** olarak ayarlandı.
@@ -384,7 +379,7 @@ Bu adımda, Input ve **Outputblobtable** olarak **Emponpremsqltable** adlı bir 
     Yakınlaştırabilir, yakınlaştırabilir, %100 oranında yakınlaştırabilir, sığacak kadar yakınlaştırabilir, işlem hatlarını ve veri kümelerini otomatik olarak konumlandırabilirsiniz ve kökenini bilgilerini gösterebilirsiniz (seçili öğelerin yukarı akış ve aşağı akış öğelerini vurgular).  Özelliklerini görmek için bir nesneye (giriş/çıkış veri kümesi veya işlem hattı) çift tıklayabilirsiniz.
 
 ## <a name="monitor-pipeline"></a>İşlem hattını izleme
-Bu adımda, Azure data factory’de neler olduğunu izlemek için Azure Portal kullanacaksınız. Veri kümelerini ve işlem hatlarını izlemek için de PowerShell cmdlet'lerini kullanabilirsiniz. İzleme hakkındaki ayrıntılar için bkz. işlem [hatlarını izleme ve yönetme](data-factory-monitor-manage-pipelines.md).
+Bu adımda, Azure Data Factory 'de neler olduğunu izlemek için Azure portal kullanırsınız. Veri kümelerini ve işlem hatlarını izlemek için de PowerShell cmdlet'lerini kullanabilirsiniz. İzleme hakkındaki ayrıntılar için bkz. işlem [hatlarını izleme ve yönetme](data-factory-monitor-manage-pipelines.md).
 
 1. Diyagramda **Emponpremsqltable öğesine** çift tıklayın.  
 

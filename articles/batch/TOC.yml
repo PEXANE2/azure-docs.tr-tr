@@ -3,36 +3,48 @@
 - name: Genel Bakış
   items:
     - name: Azure Batch nedir?
+      displayName: overview
       href: batch-technical-overview.md
 - name: Hızlı Başlangıçlar
   expanded: true
   items:
     - name: Batch işi çalıştırma - CLI
+      displayName: 'quickstart, first, create'
       href: quick-create-cli.md
     - name: Batch işi çalıştırma - Portal
+      displayName: 'quickstart, first, create'
       href: quick-create-portal.md
     - name: Batch işi çalıştırma - .NET
+      displayName: 'quickstart, first, create, c#, csharp'
       href: quick-run-dotnet.md
     - name: Batch işi çalıştırma - Python
+      displayName: 'quickstart, first, create'
       href: quick-run-python.md
     - name: Batch hesabı oluşturma - ARM şablonu
       href: quick-create-template.md
-      displayName: Resource Manager
+      displayName: 'Resource Manager, quickstart, first, create'
 - name: Öğreticiler
   items:
     - name: Paralel dosya işleme - .NET
+      displayName: 'tutorial, hpc, high-performance, large, c#, csharp'
       href: tutorial-parallel-dotnet.md
     - name: Paralel dosya işleme - Python
+      displayName: 'tutorial, hpc, high-performance, large'
       href: tutorial-parallel-python.md
     - name: Arnold ile sahne işlemesi
+      displayName: tutorial
       href: tutorial-rendering-cli.md
     - name: Batch Explorer'ı kullanarak işleme
+      displayName: tutorial
       href: tutorial-rendering-batchexplorer-blender.md
     - name: Paralel R benzetimi
+      displayName: 'tutorial, doAzureParallel, rstudio'
       href: tutorial-r-doazureparallel.md
     - name: Batch ve İşlevler ile OCR
+      displayName: 'trigger, optical'
       href: tutorial-batch-functions.md
     - name: Data Factory ile Python betikleri
+      displayName: tutorial
       href: tutorial-run-python-batch-azure-data-factory.md
 - name: Örnekler
   items:
@@ -68,20 +80,20 @@
         - name: En iyi güvenlik uygulamaları
           href: security-best-practices.md
     - name: Batch hizmeti iş akışı ve kaynakları
-      displayName: developer features
+      displayName: 'developer features, core, component, overview'
       href: batch-service-workflow-features.md
       items:
         - name: Batch hesapları
           displayName: storage account
           href: accounts.md
         - name: Düğümler ve havuzlar
-          displayName: 'compute node, application package, scaling, schedule, os'
+          displayName: 'compute node, application package, scaling, schedule, os, configuration'
           href: nodes-and-pools.md
         - name: İşler ve görevler
-          displayName: Batch job
+          displayName: 'Batch job, start task, environment'
           href: jobs-and-tasks.md
         - name: Dosyalar ve dizinler
-          displayName: Batch file
+          displayName: 'Batch file, working directory'
           href: files-and-directories.md
     - name: API’ler ve araçlar
       href: batch-apis-tools.md
@@ -131,26 +143,34 @@
     - name: Havuz oluşturma ve yönetme
       items:
         - name: İşlem düğümlerini otomatik ölçeklendirme
+          displayName: 'scaling, dynamic, formula'
           href: batch-automatic-scaling.md
         - name: İşlem düğümleri için VM boyutu seçme
           href: batch-pool-vm-sizes.md
         - name: Bulut hizmetinden sanal makine havuzlarına taşıma
+          displayName: migrate
           href: batch-pool-cloud-service-to-virtual-machine-configuration.md
         - name: İşlem düğümlerine erişimi yapılandırma
+          displayName: 'rdp, ssh, network, remote'
           href: pool-endpoint-configuration.md
         - name: Paylaşılan Görüntü Galerisi ile bir havuz oluşturma
+          displayName: 'managed image, sig'
           href: batch-sig-images.md
         - name: Yönetilen görüntü kaynağıyla havuz oluşturma
           href: batch-custom-images.md
         - name: Kullanılabilirlik Alanları arasında havuz oluşturma
+          displayName: 'region, zonal policy'
           href: create-pool-availability-zones.md
         - name: Disk şifrelemesi etkinleştirilmiş havuz oluşturma
           href: disk-encryption.md
         - name: Sanal ağ içinde havuz oluşturma
+          displayName: vNet
           href: batch-virtual-network.md
         - name: Genel IP adresleriyle havuz oluşturma
+          displayName: static
           href: create-pool-public-ip.md
         - name: Genel IP adresleri olmadan havuz oluşturma
+          displayName: private
           href: batch-pool-no-public-ip-address.md
         - name: Sanal dosya sistemi takma
           href: virtual-file-mount.md
@@ -161,17 +181,21 @@
         - name: Linux işlem düğümleri kullanma
           href: batch-linux-nodes.md
         - name: Düşük öncelikli VM’ler kullanma
+          displayName: 'preempted, surplus, capacity'
           href: batch-low-pri-vms.md
         - name: Havuz ve düğüm hatalarını denetleme
+          displayName: 'troubleshoot, failure'
           href: batch-pool-node-error-checking.md
     - name: Batch için CI/CD işlem hattı oluşturma
+      displayName: 'Azure DevOps, devops, continuous'
       href: batch-ci-cd.md
     - name: İşleri ve görevleri yönetme
       items:
         - name: İş hazırlığı ve tamamlama görevleri
+          displayName: 'release, job release'
           href: batch-job-prep-release.md
         - name: Eşzamanlı düğüm görevleri
-          displayName: concurrent
+          displayName: 'variable, maximize'
           href: batch-parallel-node-tasks.md
         - name: Görev bağımlılıkları
           href: batch-task-dependencies.md
@@ -182,6 +206,7 @@
         - name: İşleri verimlilik için zamanlama
           href: batch-job-schedule.md
         - name: İş ve görev hatalarını denetleme
+          displayName: 'failure, troubleshoot'
           href: batch-job-task-error-checking.md
     - name: İş ve görev çıktılarını kalıcı hale getirme
       href: batch-task-output.md
@@ -194,29 +219,37 @@
       href: monitoring-overview.md
       items:
         - name: Ölçümleri ve tanılama günlüklerini kullanma
+          displayName: 'alert, monitor'
           href: batch-diagnostics.md
         - name: Application Insights ile izleme
+          displayName: debug
           href: monitor-application-insights.md
         - name: Duruma göre kaynakları sayma
           href: batch-get-resource-counts.md
         - name: Kaynakları verimli bir şekilde sorgulama
+          displayName: 'monitor, queries'
           href: batch-efficient-list-queries.md
     - name: Komut dosyası oluşturma araçlarını kullanma
       items:
         - name: Azure PowerShell kullanma
+          displayName: 'ps, scripting, cmdlet'
           href: batch-powershell-cmdlets-get-started.md
         - name: Azure CLI kullanma
+          displayName: command line
           href: batch-cli-get-started.md
-          items:
-            - name: Batch CLI şablonlarını kullanma
-              href: batch-cli-templates.md
+        - name: Batch CLI şablonlarını kullanma
+          diplayName: extension
+          href: batch-cli-templates.md
     - name: Batch Node.js SDK’sını kullanma
+      displayName: json
       href: batch-nodejs-get-started.md
     - name: İş yükleri çalıştırma
       items:
-        - name: MPI işleri
+        - name: MPı
+          displayName: 'multi-instance, message passing interface'
           href: batch-mpi.md
         - name: Kapsayıcı iş yükleri
+          displayName: docker
           href: batch-docker-container-workloads.md
         - name: İşleme
           items:
@@ -231,6 +264,7 @@
             - name: Uygulama işleme başvurusu
               href: batch-rendering-application-reference.md
             - name: Depolama ve veri taşıma
+              displayName: 'rendering, assets'
               href: batch-rendering-storage-data-movement.md
             - name: İşleme mimarileri
               href: batch-rendering-architectures.md
@@ -238,7 +272,7 @@
           href: ../data-factory/transform-data-using-dotnet-custom-activity.md?toc=%2fazure%2fbatch%2ftoc.json
 - name: Başvuru
   items:
-    - name: Azure CLI’si
+    - name: Azure CLI
       href: /cli/azure/batch
     - name: Azure PowerShell
       href: /powershell/module/az.batch

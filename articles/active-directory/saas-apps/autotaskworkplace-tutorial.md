@@ -9,37 +9,29 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/20/2019
+ms.date: 02/02/2021
 ms.author: jeedes
-ms.openlocfilehash: 8010bf25cc62d2de1b8b6ff9c0ecdc140c02c6a3
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 978acefa3044dcc44410b3f41aae62314a66b3c3
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97674076"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100383322"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-autotask-workplace"></a>Öğretici: oto görev çalışma alanıyla Azure Active Directory tümleştirme
 
-Bu öğreticide, Azure Active Directory (Azure AD) ile, oto görev çalışma alanını tümleştirmeyi öğreneceksiniz.
-Azure AD ile diğer görev çalışma alanını tümleştirmek aşağıdaki avantajları sağlar:
+Bu öğreticide, Azure Active Directory (Azure AD) ile, oto görev çalışma alanını tümleştirmeyi öğreneceksiniz. Azure AD ile oto görev çalışma alanını tümleştirdiğinizde şunları yapabilirsiniz:
 
-* Azure AD 'de, oto görev çalışma alanına erişimi olan denetim yapabilirsiniz.
-* Kullanıcılarınızın Azure AD hesaplarıyla otomatik görev çalışma alanına (çoklu oturum açma) otomatik olarak oturum açmasını sağlayabilirsiniz.
-* Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
-
-Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
+* Azure AD 'de, oto görev çalışma alanına erişimi olan denetim.
+* Kullanıcılarınızın Azure AD hesaplarıyla otomatik görev çalışma alanına otomatik olarak oturum açmalarına olanak sağlayın.
+* Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Azure AD tümleştirmesini, oto görev çalışma alanıyla birlikte yapılandırmak için aşağıdaki öğeler gereklidir:
+Başlamak için aşağıdaki öğeler gereklidir:
 
-* Bir Azure AD aboneliği. Bir Azure AD ortamınız yoksa, [burada](https://azure.microsoft.com/pricing/free-trial/) bir aylık deneme sürümü edinebilirsiniz
-* Oto görevi çalışma alanı çoklu oturum açma etkin aboneliği
-* Bir oto görev çalışma alanına çoklu oturum açma etkin abonelik
-* Çalışma alanında yönetici veya süper yönetici olmanız gerekir.
-* Azure AD 'de bir yönetici hesabınız olmalıdır.
-* Bu özelliği kullanacak olan kullanıcıların çalışma alanı ve Azure AD içinde hesaplara sahip olması ve her ikisi için e-posta adreslerinin eşleşmesi gerekir.
+* Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
+* Oto görev çalışma alanı çoklu oturum açma (SSO) etkin aboneliği.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
@@ -47,59 +39,39 @@ Bu öğreticide, Azure AD çoklu oturum açmayı bir test ortamında yapılandı
 
 * Oto görevi çalışma alanı **SP ve ıDP** tarafından başlatılan SSO 'yu destekler
 
-## <a name="adding-autotask-workplace-from-the-gallery"></a>Galeriden oto görev çalışma alanı ekleme
+## <a name="add-autotask-workplace-from-the-gallery"></a>Galeriden tekrar görev çalışma alanı Ekle
 
 Oto görev çalışma alanının Azure AD 'ye tümleştirilmesini yapılandırmak için, Galeriden, yönetilen SaaS uygulamaları listenize yeniden görev çalışma alanı eklemeniz gerekir.
 
-**Galeriden, görev çalışma alanı eklemek için aşağıdaki adımları uygulayın:**
+1. Azure portal iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
+1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
+1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
+1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
+1. **Galeriden Ekle** bölümünde, arama kutusuna, **oto görevi çalışma alanı** yazın.
+1. Sonuçlar panelinden **oto görevi çalışma alanı** ' nı seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory** simgesine tıklayın.
+## <a name="configure-and-test-azure-ad-sso-for-autotask-workplace"></a>Oto görev çalışma alanı için Azure AD SSO 'yu yapılandırma ve test etme
 
-    ![Azure Active Directory düğmesi](common/select-azuread.png)
+**B. Simon** adlı bir test kullanıcısı kullanarak, oto görev çalışma ALANıYLA Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve diğer görev çalışma alanındaki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
-2. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** seçeneğini belirleyin.
+Azure AD SSO 'yu, oto görev çalışma alanıyla yapılandırmak ve test etmek için aşağıdaki adımları gerçekleştirin:
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
+    1. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
+    1. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
+1. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için, **[oto görev çalışma alanı SSO 'Yu yapılandırın](#configure-autotask-workplace-sso)** .
+    1. Kullanıcı Azure AD gösterimine bağlı olan, oto görev çalışma alanında B. Simon 'ya sahip olmak için, **[oto görev çalışma alanı test kullanıcısı oluşturun](#create-autotask-workplace-test-user)** .
+1. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
-3. Yeni uygulama eklemek için, iletişim kutusunun üst kısmındaki **Yeni uygulama** düğmesine tıklayın.
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma
 
-    ![Yeni uygulama düğmesi](common/add-new-app.png)
+Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-4. Arama kutusuna, tekrar **görev çalışma alanı** yazın, sonuç panelinden yeniden **görev çalışma alanı** ' nı seçin, sonra da uygulamayı eklemek için düğme **Ekle** ' ye tıklayın.
+1. Azure portal, **oto görevi çalışma alanı** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
+1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
+1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** kalem simgesine tıklayın.
 
-    ![Sonuçlar listesinde, oto görevi çalışma alanı](common/search-new-app.png)
-
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
-
-Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon** adlı bir test kullanıcısına göre, oto görev çalışma alanıyla yapılandırıp test edersiniz.
-Çoklu oturum açma için, bir Azure AD kullanıcısı ve diğer görev çalışma alanındaki ilgili Kullanıcı arasındaki bağlantı ilişkisinin kurulması gerekir.
-
-Azure AD çoklu oturum açmayı yapılandırmak ve test etmek için, aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
-
-1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. , Uygulama tarafında tek Sign-On ayarlarını yapılandırmak için, **[oto görev çalışma alanı çoklu oturum açmayı yapılandırın](#configure-autotask-workplace-single-sign-on)** .
-3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
-4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
-5. Kullanıcı Azure AD gösterimi ile bağlantılı olan oto görev çalışma alanında Britta Simon 'a sahip olmak için, **[oto görev çalışma alanı test kullanıcısı oluşturun](#create-autotask-workplace-test-user)** .
-6. Yapılandırmanın çalışıp çalışmadığını doğrulamak için **[Çoklu oturum açmayı sınayın](#test-single-sign-on)** .
-
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma
-
-Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleştirirsiniz.
-
-Azure AD çoklu oturum açmayı, oto görev çalışma alanıyla yapılandırmak için aşağıdaki adımları uygulayın:
-
-1. [Azure Portal](https://portal.azure.com/), **oto görevi çalışma alanı** uygulama tümleştirmesi sayfasında, **Çoklu oturum açma**' yı seçin.
-
-    ![Çoklu oturum açma bağlantısını yapılandırma](common/select-sso.png)
-
-2. Çoklu oturum **açma yöntemi seç** iletişim kutusunda, çoklu oturum açmayı etkinleştirmek için **SAML/WS-Besme** modunu seçin.
-
-    ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
-
-3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
-
-    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
+   ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
 4. **Temel SAML yapılandırması** bölümünde, uygulamayı **IDP** tarafından başlatılan modda yapılandırmak istiyorsanız aşağıdaki adımları uygulayın:
 
@@ -126,13 +98,31 @@ Azure AD çoklu oturum açmayı, oto görev çalışma alanıyla yapılandırmak
 
     ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
 
-    a. Oturum Açma URL’si
+### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
-    b. Azure AD tanımlayıcısı
+Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
 
-    c. Oturum kapatma URL 'SI
+1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
+1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
+1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
+   1. **Ad** alanına `B.Simon` girin.  
+   1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
+   1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
+   1. **Oluştur**’a tıklayın.
 
-### <a name="configure-autotask-workplace-single-sign-on"></a>Oto görev çalışma alanını tek Sign-On yapılandırma
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
+
+Bu bölümde, Azure çoklu oturum açma özelliğini kullanarak, oto görev çalışma alanına erişim vererek B. Simon 'u etkinleştireceksiniz.
+
+1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. Uygulamalar listesinde, **oto görevi çalışma alanı**' nı seçin.
+1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
+1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
+1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. Kullanıcılara bir rolün atanmasını bekliyorsanız, **Rol Seç** açılır listesinden bunu seçebilirsiniz. Bu uygulama için ayarlanmış bir rol yoksa, "varsayılan erişim" rolü seçili olduğunu görürsünüz.
+1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
+
+## <a name="configure-autotask-workplace-sso"></a>Oto görevi çalışma alanı SSO 'SU yapılandırma
 
 1. Farklı bir Web tarayıcısı penceresinde, yönetici kimlik bilgilerini kullanarak çalışma alanı çevrimiçi olarak oturum açın.
 
@@ -141,13 +131,13 @@ Azure AD çoklu oturum açmayı, oto görev çalışma alanıyla yapılandırmak
 
 2. **Yapılandırma**  >  **Çoklu oturum açma** sayfasına gidin ve aşağıdaki adımları gerçekleştirin:
 
-    ![Oto görevi çoklu oturum açma yapılandırması](./media/autotaskworkplace-tutorial/tutorial_autotaskssoconfig1.png)
+    ![Oto görevi çoklu oturum açma yapılandırması](./media/autotaskworkplace-tutorial/configuration-1.png)
 
     a. **XML meta veri dosyası** seçeneğini belirleyin ve ardından Azure Portal Indirilen **Federasyon meta veri XML** dosyasını karşıya yükleyin.
 
     b. **SSO 'Yu etkinleştir**' e tıklayın.
 
-    ![Oto görevi çoklu oturum açma onaylama yapılandırması](./media/autotaskworkplace-tutorial/tutorial_autotaskssoconfig2.png)
+    ![Oto görevi çoklu oturum açma onaylama yapılandırması](./media/autotaskworkplace-tutorial/configuration-2.png)
 
     c. **Bu bilgilerin doğru olduğunu ve bu IDP 'ye güveneceğim** onay kutusunu seçin.
 
@@ -156,71 +146,26 @@ Azure AD çoklu oturum açmayı, oto görev çalışma alanıyla yapılandırmak
 > [!Note]
 > Yeniden görev çalışma alanını yapılandırmaya yönelik yardıma ihtiyacınız varsa, lütfen çalışma alanı hesabınızla ilgili yardım almak için [Bu sayfaya](https://awp.autotask.net/help/Content/0_HOME/Support_for_End_Clients.htm) bakın.
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
-
-Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı oluşturmaktır.
-
-1. Azure portal, sol bölmedeki **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
-
-    !["Kullanıcılar ve gruplar" ve "tüm kullanıcılar" bağlantıları](common/users.png)
-
-2. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
-
-    ![Yeni Kullanıcı düğmesi](common/new-user.png)
-
-3. Kullanıcı Özellikleri ' nde aşağıdaki adımları gerçekleştirin.
-
-    ![Kullanıcı iletişim kutusu](common/user-properties.png)
-
-    a. **Ad** alanına **Brittasıon** girin.
-
-    b. **Kullanıcı adı** alanına **\@ bricompansıon yourcompanydomain. Extension** yazın  
-    Örneğin, BrittaSimon@contoso.com
-
-    c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
-
-    d. **Oluştur**’a tıklayın.
-
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
-
-Bu bölümde, oto görev çalışma alanına erişim izni vererek Azure çoklu oturum açma özelliğini kullanmak için Britta Simon özelliğini etkinleştirirsiniz.
-
-1. Azure portal **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' ı seçin ve ardından yeniden **görev çalışma alanı**' nı seçin.
-
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
-
-2. Uygulamalar listesinde, **oto görevi çalışma alanı**' nı seçin.
-
-    ![Uygulamalar listesinde, oto görevi çalışma alanı bağlantısı](common/all-applications.png)
-
-3. Soldaki menüde **Kullanıcılar ve gruplar**' ı seçin.
-
-    !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
-
-4. **Kullanıcı Ekle** düğmesine tıklayın, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
-
-    ![Atama Ekle bölmesi](common/add-assign-user.png)
-
-5. **Kullanıcılar ve gruplar** Iletişim kutusunda kullanıcılar listesinde **Britta Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-
-6. SAML onaylama işlemi içinde herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, listeden Kullanıcı için uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-
-7. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
-
 ### <a name="create-autotask-workplace-test-user"></a>Oto görevi çalışma alanı test kullanıcısı oluştur
 
 Bu bölümde, oto görevi çalışma alanında Britta Simon adlı bir Kullanıcı oluşturacaksınız. Lütfen, kullanıcıları yeniden görev çalışma alanı platformuna eklemek için, [oto görev çalışma alanı destek ekibi](https://awp.autotask.net/help/Content/0_HOME/Support_for_End_Clients.htm) ile çalışın.
 
-### <a name="test-single-sign-on"></a>Çoklu oturum açma testi
+## <a name="test-sso"></a>Test SSO 'SU
 
-Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açma yapılandırmanızı aşağıdaki seçeneklerle test edersiniz. 
 
-Erişim panelinde otomatik görev çalışma alanı kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız otomatik görev çalışma alanında otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](../user-help/my-apps-portal-end-user-access.md).
+#### <a name="sp-initiated"></a>SP başlatıldı:
 
-## <a name="additional-resources"></a>Ek Kaynaklar
+* Azure portal içinde **Bu uygulamayı test et** ' e tıklayın. Bu, oturum açma akışını başlatabileceğiniz tekrar görev çalışma alanı oturum açma URL 'sine yeniden yönlendirilir.  
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](./tutorial-list.md)
+* Doğrudan görev çalışma alanı oturum açma URL 'sine doğrudan gidin ve oturum açma akışını buradan başlatın.
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
+#### <a name="idp-initiated"></a>IDP başlatıldı:
 
-- [Azure Active Directory Koşullu erişim nedir?](../conditional-access/overview.md)
+* Azure portal **Bu uygulamayı test et** ' e tıklayın ve SSO 'Yu ayarladığınız otomatik görev çalışma alanında otomatik olarak oturum açmış olmanız gerekir. 
+
+Uygulamayı dilediğiniz modda test etmek için Microsoft My Apps ' i de kullanabilirsiniz. Uygulamamda otomatik görev çalışma alanı kutucuğuna tıkladığınızda, SP modunda yapılandırıldıysa oturum açma akışını başlatmak için uygulama oturum açma sayfasına yönlendirilirsiniz ve ıDP modunda yapılandırıldıysa, SSO 'yu ayarladığınız otomatik görev çalışma alanında otomatik olarak oturum açmış olmanız gerekir. Uygulamalarım hakkında daha fazla bilgi için bkz. [uygulamalarıma giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+Oto görevi çalışma alanını yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).

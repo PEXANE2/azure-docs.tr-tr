@@ -9,22 +9,31 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 10/28/2019
+ms.date: 01/19/2021
 ms.author: curtand
-ms.openlocfilehash: 5104783aff5684471819ecf04e965670fff2798b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5d17c6cb038bf5550f76a8aef7ac2d41244cfda1
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88798151"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100096574"
 ---
 # <a name="view-how-your-organization-uses-your-privacy-related-data"></a>Kuruluşunuzun gizlilikle ilgili verilerinizi nasıl kullandığını görüntüleme
 
 Kuruluşunuzun verilerinizi nasıl kullandığını, **Hesap** portalının **Ayarlar & gizlilik** sayfasında görüntüleyebilirsiniz.
 
+>[!Note]
+> Kişisel Microsoft hesabı oturum açarken bir hata görürseniz, kuruluşunuzun etki alanı adını (örneğin contoso.com) veya aşağıdaki URL 'Lerden birindeki kuruluşunuzun **KIRACı kimliğini** kullanarak oturum açabilirsiniz:
+>
+>   - https://myaccount.microsoft.com?tenantId=*your_domain_name*
+>   - https://myaccount.microsoft.com?tenant=*your_tenant_ID*
+
 ## <a name="view-your-privacy-related-info"></a>Gizlilikle ilgili bilgilerinizi görüntüleme
 
-1. İş veya okul hesabınızda oturum açın ve ardından https://myaccount.microsoft.com/ sayfanıza gidin.
+1. İş veya okul hesabınızda oturum açın ve ardından https://myaccount.microsoft.com/ sayfanıza gidin. Kişisel bir Microsoft hesabı oturum açıyorsanız, kuruluşunuzun etki alanı adını (örneğin, contoso.com) veya aşağıdaki URL 'Lerden birinde yöneticinizden kuruluşunuzun **KIRACı kimliğini** kullanarak oturum açabilirsiniz:
+
+   - https://myaccount.microsoft.com?tenantId=*your_domain_name*
+   - https://myaccount.microsoft.com?tenant=*your_tenant_ID*
 
 2. Sol gezinti bölmesinden **ayarlar & gizlilik** ' i seçin veya **Ayarlar & gizlilik** bloğunda ayarları **ve Gizlilik bağlantısını görüntüle '** yi seçin.
 

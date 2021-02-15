@@ -1,22 +1,17 @@
 ---
 title: Azure Data Factory’de kopyalama etkinliğinin hataya dayanıklılığı
 description: Uyumsuz verileri atlayarak Azure Data Factory etkinliği kopyalamak için hataya dayanıklılık ekleme hakkında bilgi edinin.
-services: data-factory
-documentationcenter: ''
 author: dearandyxu
-manager: ''
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: yexu
-ms.openlocfilehash: 0fb6beb776f5a553e85f690d49e3433f93b9ee16
-ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
+ms.openlocfilehash: 0fe1470661c006399ea176af1112d271524b2a1f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99809550"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100390972"
 ---
 #  <a name="fault-tolerance-of-copy-activity-in-azure-data-factory"></a>Azure Data Factory’de kopyalama etkinliğinin hataya dayanıklılığı
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -59,7 +54,7 @@ Depolama depoları arasında ikili dosyaları kopyaladığınızda, hata toleran
         "fileMissing": true, 
         "fileForbidden": true, 
         "dataInconsistency": true,
-        "invalidFileName": true     
+        "invalidFileName": true        
     }, 
     "validateDataConsistency": true, 
     "logSettings": {

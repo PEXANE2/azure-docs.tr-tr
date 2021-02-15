@@ -1,22 +1,18 @@
 ---
 title: Şirket içi Hadoop kümesinden Azure depolama 'ya veri geçirme
 description: Şirket içi Hadoop kümesinden Azure Storage 'a veri geçirmek için Azure Data Factory nasıl kullanacağınızı öğrenin.
-services: data-factory
 ms.author: yexu
 author: dearandyxu
-ms.reviewer: ''
-manager: shwang
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 8/30/2019
-ms.openlocfilehash: 3e691244c4c03635eb87a7905eff6756da5c04f9
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 9959a37d9b68d756437a3b4f0d75a2d63385758e
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92638134"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100367801"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-an-on-premises-hadoop-cluster-to-azure-storage"></a>Şirket içi Hadoop kümesinden Azure Storage 'a veri geçirmek için Azure Data Factory kullanma 
 
@@ -27,7 +23,7 @@ Azure Data Factory, verileri Şirket içinden Azure Blob depolama veya Azure Dat
 Data Factory, şirket içi bir sunucudan Azure 'a veri geçirmek için iki temel yaklaşım sunar. Senaryonuza göre yaklaşımı seçebilirsiniz. 
 
 - **Data Factory dıtcp modu** (önerilir): Data Factory içinde, dosyaları Azure Blob depolama ( [hazırlanan kopya](./copy-activity-performance.md#staged-copy)dahil) veya Azure Data Lake Store Gen2 olarak kopyalamak için [distcp](https://hadoop.apache.org/docs/current3/hadoop-distcp/DistCp.html) (dağıtılmış kopya) kullanabilirsiniz. En iyi kopyalama aktarım hızını elde etmek için, mevcut güçlü bir kümeden yararlanmak üzere DistCp ile tümleştirilmiş Data Factory kullanın. Ayrıca, esnek zamanlamanın avantajını ve Data Factory ' den Birleşik bir izleme deneyimini de elde edersiniz. Data Factory yapılandırmanıza bağlı olarak, kopyalama etkinliği otomatik olarak bir DistCp komutu oluşturur, verileri Hadoop kümenize gönderir ve kopyalama durumunu izler. Şirket içi Hadoop kümesinden Azure 'a veri geçirmek için Data Factory DistCp modu önerilir.
-- **Data Factory yerel tümleştirme çalışma zamanı modu** : tek TCP, tüm senaryolarda bir seçenek değildir. Örneğin, bir Azure sanal ağları ortamında, DistCp Aracı, Azure depolama sanal ağ uç noktası ile Azure ExpressRoute özel eşlemesini desteklemez. Ayrıca, bazı durumlarda, var olan Hadoop kümenizi verileri geçirmek için bir altyapı olarak kullanmak istemezsiniz, böylece kümenize ağır yükleme yerleştirmezsiniz ve bu da mevcut ETL işlerinin performansını etkileyebilir. Bunun yerine, verileri Şirket içinden Azure 'a kopyalayan motor olarak Data Factory tümleştirme çalışma zamanının yerel özelliğini kullanabilirsiniz.
+- **Data Factory yerel tümleştirme çalışma zamanı modu**: tek TCP, tüm senaryolarda bir seçenek değildir. Örneğin, bir Azure sanal ağları ortamında, DistCp Aracı, Azure depolama sanal ağ uç noktası ile Azure ExpressRoute özel eşlemesini desteklemez. Ayrıca, bazı durumlarda, var olan Hadoop kümenizi verileri geçirmek için bir altyapı olarak kullanmak istemezsiniz, böylece kümenize ağır yükleme yerleştirmezsiniz ve bu da mevcut ETL işlerinin performansını etkileyebilir. Bunun yerine, verileri Şirket içinden Azure 'a kopyalayan motor olarak Data Factory tümleştirme çalışma zamanının yerel özelliğini kullanabilirsiniz.
 
 Bu makalede her iki yaklaşım hakkında aşağıdaki bilgiler sunulmaktadır:
 > [!div class="checklist"]
@@ -110,9 +106,9 @@ Ağ veya veri deposu geçici sorunları nedeniyle kopyalama işlerinin herhangi 
 
 Data Factory DistCp modunda, `-update` Delta veri geçişi için, kaynak dosya ve hedef dosya boyutu farklı olduğunda verileri yaz ' ı kullanabilirsiniz.
 
-Data Factory yerel tümleştirme modunda, yeni veya değiştirilmiş dosyaları bir süre olarak belirlemek için en iyi yol, zaman bölümlenmiş bir adlandırma kuralı kullanmaktır. , Bir dosya veya klasör adındaki (örneğin, */yyyy/mm/dd/file.csv* ) Zaman dilimi bilgilerinde saat dilimleriniz, işlem hattınızda hangi dosya ve klasörlerin artımlı olarak kopyalanacağını kolayca tanımlayabilir.
+Data Factory yerel tümleştirme modunda, yeni veya değiştirilmiş dosyaları bir süre olarak belirlemek için en iyi yol, zaman bölümlenmiş bir adlandırma kuralı kullanmaktır. , Bir dosya veya klasör adındaki (örneğin, */yyyy/mm/dd/file.csv*) Zaman dilimi bilgilerinde saat dilimleriniz, işlem hattınızda hangi dosya ve klasörlerin artımlı olarak kopyalanacağını kolayca tanımlayabilir.
 
-Alternatif olarak, LastModifiedDate ' deki veriniz zaman bölümlenmemiş değilse, Data Factory yeni veya değiştirilmiş dosyaları **LastModifiedDate** değerlerini kullanarak tanımlayabilir. Data Factory, tüm dosyaları da her bir küme değerinden büyük olan son değiştirme zaman damgasına sahip olan yeni ve güncelleştirilmiş dosyaları kopyalar. 
+Alternatif olarak, LastModifiedDate ' deki veriniz zaman bölümlenmemiş değilse, Data Factory yeni veya değiştirilmiş dosyaları  değerlerini kullanarak tanımlayabilir. Data Factory, tüm dosyaları da her bir küme değerinden büyük olan son değiştirme zaman damgasına sahip olan yeni ve güncelleştirilmiş dosyaları kopyalar. 
 
 Bir çok sayıda dosyanız varsa, filtre koşuluna göre kaç dosyanın eşleşip eşleşmediğine bakılmaksızın ilk dosya taraması uzun zaman alabilir. Bu senaryoda ilk anlık görüntü geçişi için kullandığınız bölümü kullanarak verileri bölümlememenizi öneririz. Sonra, dosya tarama paralel olarak gerçekleşebilir.
 

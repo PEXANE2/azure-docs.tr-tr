@@ -1,23 +1,18 @@
 ---
 title: SQL Server saklı yordam etkinliği
 description: Data Factory bir işlem hattından bir Azure SQL veritabanı veya Azure SYNAPSE Analytics 'teki saklı yordamı çağırmak için SQL Server saklı yordam etkinliğini nasıl kullanabileceğinizi öğrenin.
-services: data-factory
-documentationcenter: ''
-ms.assetid: 1c46ed69-4049-44ec-9b46-e90e964a4a8e
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 author: nabhishek
 ms.author: abnarain
-manager: anandsub
 robots: noindex
-ms.openlocfilehash: f702633f6311d4ae4a79452e9b1c9176125c56f9
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 05717352936bed888e108277d0163e43bc5a37af
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97508413"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100368770"
 ---
 # <a name="sql-server-stored-procedure-activity"></a>SQL Server saklı yordam etkinliği
 > [!div class="op_single_selector" title1="Dönüştürme etkinlikleri"]
@@ -306,12 +301,12 @@ Aşağıdaki tabloda bu JSON özellikleri açıklanmaktadır:
 | Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
 | name | Etkinliğin adı |Yes |
-| açıklama |Etkinliğin ne için kullanıldığını açıklayan metin |Hayır |
+| açıklama |Etkinliğin ne için kullanıldığını açıklayan metin |No |
 | tür | Şu şekilde ayarlanmalıdır: **Sqlserverstoredprocedure** | Yes |
-| girişi | İsteğe bağlı. Bir giriş veri kümesi belirtirseniz, saklı yordam etkinliğinin çalışması için (' hazır ' durumunda) kullanılabilir olmalıdır. Giriş veri kümesi, saklı yordamda parametre olarak tüketilemiyor. Yalnızca saklı yordam etkinliğini başlatmadan önce bağımlılığı denetlemek için kullanılır. |Hayır |
+| girişi | İsteğe bağlı. Bir giriş veri kümesi belirtirseniz, saklı yordam etkinliğinin çalışması için (' hazır ' durumunda) kullanılabilir olmalıdır. Giriş veri kümesi, saklı yordamda parametre olarak tüketilemiyor. Yalnızca saklı yordam etkinliğini başlatmadan önce bağımlılığı denetlemek için kullanılır. |No |
 | çıkışı | Saklı yordam etkinliği için bir çıkış veri kümesi belirtmeniz gerekir. Çıktı veri kümesi, saklı yordam etkinliğinin **zamanlamasını** belirtir (saatlik, haftalık, aylık, vb.). <br/><br/>Çıktı veri kümesi, Azure SQL veritabanı veya Azure SYNAPSE Analytics 'e veya saklı yordamın çalıştırılmasını istediğiniz SQL Server veritabanına başvuran **bağlı bir hizmet** kullanmalıdır. <br/><br/>Çıktı veri kümesi, diğer bir etkinlik tarafından sonraki işleme için saklı yordamın sonucunu geçirmek için bir yol işlevi görebilir (işlem hattındaki[etkinlikleri zincirleyerek](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline) ). Ancak, Data Factory saklı yordamın çıkışını bu veri kümesine otomatik olarak yazmaz. Bu, çıktı veri kümesinin işaret ettiği bir SQL tablosuna yazan saklı yordamdır. <br/><br/>Bazı durumlarda, çıkış veri kümesi yalnızca saklı yordam etkinliğini çalıştırmaya yönelik zamanlamayı belirtmek için kullanılan bir **kukla veri kümesi** olabilir. |Yes |
 | storedProcedureName |Azure SQL veritabanı, Azure SYNAPSE Analytics veya çıkış tablosunun kullandığı bağlı hizmet tarafından temsil edilen SQL Server saklı yordamın adını belirtin. |Yes |
-| storedProcedureParameters |Saklı yordam parametrelerinin değerlerini belirtin. Bir parametre için null değer geçirmeniz gerekiyorsa, "Param1": null (tümü küçük harf) sözdizimini kullanın. Bu özelliği kullanma hakkında bilgi edinmek için aşağıdaki örneğe bakın. |Hayır |
+| storedProcedureParameters |Saklı yordam parametrelerinin değerlerini belirtin. Bir parametre için null değer geçirmeniz gerekiyorsa, "Param1": null (tümü küçük harf) sözdizimini kullanın. Bu özelliği kullanma hakkında bilgi edinmek için aşağıdaki örneğe bakın. |No |
 
 ## <a name="passing-a-static-value"></a>Statik bir değer geçirme
 Şimdi ' senaryo ' adlı, ' belge örneği ' adlı statik bir değer içeren tabloya ' senaryo ' adlı başka bir sütun eklemeyi düşünün.

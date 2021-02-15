@@ -8,19 +8,19 @@ ms.topic: conceptual
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
-ms.date: 10/21/2020
-ms.openlocfilehash: 6e397242bd699adcba4737014ebbce72aadc8ec2
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.date: 02/11/2021
+ms.openlocfilehash: 4012cd83cf2e6fe438792a503731729b57a1425c
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92669817"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100380602"
 ---
 # <a name="azure-active-directory-service-principal-with-azure-sql"></a>Azure SQL ile hizmet sorumlusu Azure Active Directory
 
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-Azure AD uygulamaları (hizmet sorumluları) adına Azure SQL veritabanı 'nda (SQL DB) ve [Azure SYNAPSE Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) 'te Azure Active Directory (Azure AD) Kullanıcı oluşturma desteği şu anda **genel önizlemededir** .
+Azure AD uygulamaları (hizmet sorumluları) adına Azure SQL veritabanı 'nda (SQL DB) ve [Azure SYNAPSE Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) 'te Azure Active Directory (Azure AD) Kullanıcı oluşturma desteği şu anda **genel önizlemededir**.
 
 > [!NOTE]
 > Bu işlev SQL yönetilen örneği için zaten desteklenmektedir.
@@ -52,7 +52,7 @@ Bu işlevi desteklemek, Azure ad nesnelerinin SQL veritabanı 'nda oluşturulup 
 
 Bir Azure AD uygulaması adına SQL veritabanı ve Azure SYNAPSE 'de Azure AD nesne oluşturmayı etkinleştirmek için aşağıdaki ayarlar gereklidir:
 
-1. Sunucu kimliğini atama
+1. Sunucu kimliğini atayın. Atanan sunucu kimliği, yönetilen sistem kimliğini (MSI) temsil eder. Şu anda Azure SQL için sunucu kimliği kullanıcı tarafından yönetilen kimliği (UMI) desteklemiyor.
     - Yeni bir Azure SQL mantıksal sunucusu için aşağıdaki PowerShell komutunu yürütün:
     
     ```powershell
@@ -83,7 +83,7 @@ Bir Azure AD uygulaması adına SQL veritabanı ve Azure SYNAPSE 'de Azure AD ne
 >
 > Azure AD yöneticisi 'ni ayarlamak veya kaldırmak için hizmet sorumlusu kullanıyorsanız, uygulamanın Ayrıca Azure AD 'de [Directory. Read. All](/graph/permissions-reference#application-permissions-18) Application API iznine sahip olması gerekir. Bir Azure AD [Yöneticisi ayarlamak için gereken izinler](authentication-aad-service-principal-tutorial.md#permissions-required-to-set-or-unset-the-azure-ad-admin)ve Azure AD uygulaması adına BIR Azure AD kullanıcısı oluşturmak için adım adım yönergeler hakkında daha fazla bilgi için bkz. [öğretici: Azure AD UYGULAMALARı kullanarak Azure AD kullanıcıları oluşturma](authentication-aad-service-principal-tutorial.md).
 >
-> **Genel önizlemede** , **Dizin OKUYUCULARı** rolünü Azure AD 'deki bir gruba atayabilirsiniz. Grup sahipleri daha sonra yönetilen kimliği bu grubun bir üyesi olarak ekleyebilir, bu da bir **genel yönetici** veya **ayrıcalıklı roller yöneticisinin** **Dizin okuyucuları** rolünü vermesi gereksinimini atlar. Bu özellik hakkında daha fazla bilgi için bkz. [Azure SQL için Azure Active Directory Directory okuyucuları rolü](authentication-aad-directory-readers-role.md).
+> **Genel önizlemede**, **Dizin OKUYUCULARı** rolünü Azure AD 'deki bir gruba atayabilirsiniz. Grup sahipleri daha sonra yönetilen kimliği bu grubun bir üyesi olarak ekleyebilir, bu da bir **genel yönetici** veya **ayrıcalıklı roller yöneticisinin** **Dizin okuyucuları** rolünü vermesi gereksinimini atlar. Bu özellik hakkında daha fazla bilgi için bkz. [Azure SQL için Azure Active Directory Directory okuyucuları rolü](authentication-aad-directory-readers-role.md).
 
 ## <a name="troubleshooting-and-limitations-for-public-preview"></a>Sorun giderme ve genel önizlemeye yönelik sınırlamalar
 
