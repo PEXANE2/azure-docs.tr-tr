@@ -1,23 +1,18 @@
 ---
 title: Dynamics 'te veri kopyalama (Common Data Service)
 description: Veri Fabrikası ardışık düzeninde bir kopyalama etkinliği kullanarak Microsoft Dynamics CRM veya Microsoft Dynamics 365 (Common Data Service) ' den desteklenen havuz veri depolarına veya desteklenen kaynak veri depolarından veya Dynamics 365 CRM 'ye veri kopyalamayı öğrenin.
-services: data-factory
-documentationcenter: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.custom: seo-lt-2019
 ms.date: 02/02/2021
-ms.openlocfilehash: 63816a40aa710d26dc036dfe82018883e917beb6
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: d238a232d719c75244e6f9b825272957d2a4a4bc
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99428496"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100381010"
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>Ve Azure Data Factory kullanarak Dynamics 365 (Common Data Service) veya Dynamics CRM 'den veri kopyalama
 
@@ -89,7 +84,7 @@ Dynamics bağlantılı hizmeti için aşağıdaki özellikler desteklenir.
 | servicePrincipalCredential | Hizmet sorumlusu kimlik bilgileri. <br/><br/>Kimlik bilgisi türü olarak "ServicePrincipalKey" kullandığınızda, `servicePrincipalCredential` bağlantılı hizmet dağıtımı üzerinde Azure Data Factory şifreler bir dize olabilir. Veya Azure Key Vault bir gizli dizi başvurusu olabilir. <br/><br/>Kimlik bilgisi olarak "ServicePrincipalCert" kullandığınızda, `servicePrincipalCredential` Azure Key Vault bir sertifikaya başvuru olmalıdır. | Kimlik doğrulaması "AADServicePrincipal" olduğunda Evet |
 | username | Dynamics 'e bağlanmak için Kullanıcı adı. | Kimlik doğrulaması "Office365" olduğunda Evet |
 | password | Kullanıcı adı olarak belirttiğiniz kullanıcı hesabının parolası. Data Factory güvenli bir şekilde depolamak için bu alanı "SecureString" ile işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | Kimlik doğrulaması "Office365" olduğunda Evet |
-| connectVia | Veri deposuna bağlanmak için kullanılacak [tümleştirme çalışma zamanı](concepts-integration-runtime.md) . Hiçbir değer belirtilmemişse, özelliği varsayılan Azure tümleştirme çalışma zamanını kullanır. | Hayır |
+| connectVia | Veri deposuna bağlanmak için kullanılacak [tümleştirme çalışma zamanı](concepts-integration-runtime.md) . Hiçbir değer belirtilmemişse, özelliği varsayılan Azure tümleştirme çalışma zamanını kullanır. | No |
 
 >[!NOTE]
 >Dynamics Connector, Dynamics CRM veya Dynamics 365 çevrimiçi örneğinizi tanımlamak için daha önce isteğe bağlı **Organizasyonadi** özelliğini kullanıyordu. Bu özellik hala çalışmaya devam ederken, örnek bulma için daha iyi performans elde etmek yerine yeni **ServiceUri** özelliğini belirtmenizi öneririz.
@@ -185,7 +180,7 @@ Dynamics Online ile karşılaştırılan ek özellikler **konak adı** ve **bağ
 | authenticationType | Dynamics sunucusuna bağlanmak için kimlik doğrulaması türü. IFD ile Dynamics şirket içi için "IFD" belirtin. | Evet. |
 | username | Dynamics 'e bağlanmak için Kullanıcı adı. | Evet. |
 | password | Kullanıcı adı için belirttiğiniz kullanıcı hesabının parolası. Bu alanı, Data Factory güvenli bir şekilde depolamak için "SecureString" ile işaretleyebilirsiniz. Ya da bir parolayı Key Vault saklayabilir ve veri kopyalama yapıldığında kopyalama etkinliğinin buradan çekmesini sağlayabilirsiniz. [Key Vault Içindeki mağaza kimlik bilgilerinden](store-credentials-in-key-vault.md)daha fazla bilgi edinin. | Evet. |
-| connectVia | Veri deposuna bağlanmak için kullanılacak [tümleştirme çalışma zamanı](concepts-integration-runtime.md) . Hiçbir değer belirtilmemişse, özelliği varsayılan Azure tümleştirme çalışma zamanını kullanır. | Hayır |
+| connectVia | Veri deposuna bağlanmak için kullanılacak [tümleştirme çalışma zamanı](concepts-integration-runtime.md) . Hiçbir değer belirtilmemişse, özelliği varsayılan Azure tümleştirme çalışma zamanını kullanır. | No |
 
 #### <a name="example-dynamics-on-premises-with-ifd-using-ifd-authentication"></a>Örnek: ıFD kimlik doğrulaması kullanarak ıFD ile şirket içi Dynamics
 

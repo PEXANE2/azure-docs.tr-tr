@@ -8,18 +8,18 @@ ms.subservice: security
 ms.date: 10/25/2020
 ms.author: xujiang1
 ms.reviewer: jrasnick
-ms.openlocfilehash: 41403a59be0395a6d9874c7369bfe59c22f5ac17
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: de7c5dba5a4868b7a8fdb390f974134cfaef7395
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98218374"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100384529"
 ---
 # <a name="connect-to-workspace-resources-from-a-restricted-network"></a>Kısıtlanmış bir ağdan çalışma alanı kaynaklarına bağlanma
 
 Kuruluşunuzun kısıtlanmış ağını yöneten bir BT Yöneticisi olduğunuzu varsayalım. Bu kısıtlı ağ içindeki bir iş istasyonu ile Azure SYNAPSE Analytics Studio arasındaki ağ bağlantısını etkinleştirmek istiyorsunuz. Bu makalede nasıl yapılacağı gösterilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * **Azure aboneliği**: Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı](https://azure.microsoft.com/free/) oluşturun.
 * **Azure SYNAPSE Analytics çalışma alanı**: Azure SYNAPSE Analytics 'ten bir tane oluşturabilirsiniz. 4. adımda çalışma alanı adının olması gerekir.
@@ -74,7 +74,7 @@ Azure SYNAPSE Analytics Studio 'ya erişmek için Azure portal özel bir uç nok
 
 Azure SYNAPSE Analytics Studio çalışma alanı kaynağınızın içindeki kaynaklara erişmek için aşağıdakileri oluşturmanız gerekir:
 
-- **Hedef alt kaynak** **dev** türü olan en az bir özel bağlantı uç noktası.
+- **Hedef alt kaynak** türü **dev** olan en az bir özel bağlantı uç noktası.
 - Hangi çalışma alanındaki kaynaklara bağlı olarak, **SQL** veya **sqlondemand** türlerine sahip iki diğer isteğe bağlı özel bağlantı uç noktası.
 
 Bunların oluşturulması, önceki adımda bitiş noktasını oluşturma ile benzerdir.  
@@ -146,7 +146,8 @@ Sanal ağ bağlantısı eklendikten sonra, daha önce oluşturduğunuz **özel D
 
 * **Ad** için, farklı özel uç nokta için ayrılmış ad dizelerini girin: 
   * **Web** , Azure SYNAPSE Analytics Studio 'ya erişmenin özel uç noktasıdır.
-  * "***Yourçalışmadüzeyi * * _" SQL havuzunda SQL sorgu yürütmesinin özel uç noktası ve ayrıca Azure SYNAPSE Analytics Studio çalışma alanları içindeki diğer her şeye erişim için özel uç nokta için kullanılır. _ "*** yourçalışmadüzeyi *-OnDemand * *", yerleşik havuzda SQL sorgu yürütmesinin özel uç noktasıdır.
+  * "***Yourçalışmaalanıadı***" SQL havuzundaki SQL sorgu yürütmesinin özel uç noktası ve ayrıca Azure SYNAPSE Analytics Studio çalışma alanları içindeki diğer her şeye erişmenin özel uç noktasıdır.
+  * "***Yourçalışmaalanıadı *-OnDemand**", yerleşik havuzda SQL sorgu yürütmesinin özel uç noktasıdır.
 * **Tür** **için yalnızca DNS** kayıt türü ' nü seçin. 
 * **IP adresi** için, her özel uç noktanın KARŞıLıK gelen IP adresini girin. **Ağ ARABIRIMINDEKI** IP adresini özel uç noktanıza genel bakış ' dan edinebilirsiniz.
 

@@ -16,12 +16,12 @@ ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bde937adba8d2469390a6cf404f6cce8c5008e87
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: addb90ed3929847612fd423e3af01c1b3982c2d6
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86144702"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100369654"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-technical-deep-dive"></a>Sorunsuz çoklu oturum açma Azure Active Directory: teknik kapsamlı bakış
 
@@ -67,6 +67,10 @@ Bir Web tarayıcısında oturum açma akışı aşağıdaki gibidir:
 6. Active Directory bilgisayar hesabını bulur ve bilgisayar hesabının gizli anahtarı ile şifrelenen tarayıcıya Kerberos bileti döndürür.
 7. Tarayıcı Active Directory 'tan elde edilen Kerberos biletini Azure AD 'ye iletir.
 8. Azure AD, önceden paylaşılan anahtar kullanılarak şirket cihazında oturum açan kullanıcının kimliğini içeren Kerberos biletinin şifresini çözer.
+
+   >[!NOTE]
+   >Azure AD, Kerberos biletinden Kullanıcı UPN 'sini, userPrincipalName özniteliğinde karşılık gelen bir değere sahip bir Azure AD kullanıcı nesnesine eşleştirmeye çalışır. Bu başarılı olmazsa Azure AD, Kerberos biletinden samAccountName öğesinin onPremisesSamAccountName özniteliğinde karşılık gelen bir değere sahip bir Azure AD kullanıcı nesnesine eşleştirilmesine geri döner.
+   
 9. Değerlendirmeden sonra Azure AD uygulamaya bir belirteç döndürür ya da kullanıcıdan Multi-Factor Authentication gibi ek provalar gerçekleştirmesini ister.
 10. Kullanıcı oturum açma işlemi başarılı olursa, Kullanıcı uygulamaya erişebilir.
 

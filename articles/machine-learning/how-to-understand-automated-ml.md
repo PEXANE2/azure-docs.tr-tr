@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 12/09/2020
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy21q2, automl
-ms.openlocfilehash: d5556ffb18a7a67e9415310f221e470761bf8cb8
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: c95a75ef48aa9e3db070c6c237f913fabbe893fa
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100098648"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100388218"
 ---
 # <a name="evaluate-automated-machine-learning-experiment-results"></a>Otomatik makine öğrenimi sonuçlarını değerlendir
 
@@ -234,10 +234,7 @@ Bu örnekte, daha iyi bir modelin ideal satıra daha yakın olan tahmini ve ger�
 
 Model değerlendirme ölçümleri ve grafikleri, bir modelin genel kalitesini ölçmek için uygun olmakla çalışırken, sorumlu AI oluştururken tahmine dayalı hale getirmek için kullanılan bir modelin hangi veri kümesini temel alan olduğunu inceleyerek. Bu nedenle otomatikleştirilen ML, veri kümesi özelliklerinin göreli katlarını ölçmek ve raporlamak için bir model yorumlu pano sağlar.
 
-![Özellik kaynakları](./media/how-to-understand-automated-ml/how-to-feature-importance.gif)
-
 Yorumlenebilirlik panosunu Studio 'da görüntülemek için:
-
 1. [Studio 'Da oturum açın](https://ml.azure.com/) ve çalışma alanınıza gidin
 2. Sol menüden **denemeleri** ' yi seçin.
 3. Denemeleri listesinden denemenizi seçin
@@ -246,10 +243,11 @@ Yorumlenebilirlik panosunu Studio 'da görüntülemek için:
 6. **Açıklamalar** sekmesinde, model en iyi durumda olduğunda bir açıklama daha önceden oluşturulmuş olabilir
 7. Yeni bir açıklama oluşturmak için, **açıkla model** ' i seçin ve açıklamaları hesaplamak için uzaktan işlem ' i seçin
 
+[OTOMATIK ml 'de model açıklamaları hakkında daha fazla bilgi edinin](how-to-machine-learning-interpretability-automl.md).
+
 > [!NOTE]
 > Forekısıtcn modeli şu anda otomatik ML açıklamaları tarafından desteklenmiyor ve diğer tahmin modelleri, yorumlu araçlara sınırlı erişime sahip olabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Otomatik makine öğrenme modeli açıklama örnek not defterlerini](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model)deneyin.
-* [OTOMATIKLEŞTIRILMIŞ ml 'de sorumlu AI teklifleri](how-to-machine-learning-interpretability-automl.md)hakkında daha fazla bilgi edinin.
 * Otomatik ML 'ye özgü sorular için ' e ulaşın askautomatedml@microsoft.com .

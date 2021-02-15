@@ -5,18 +5,16 @@ author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
-ms.date: 10/09/2020
-ms.openlocfilehash: 9545dd1480b9d16285d936787cf37fc087e882e1
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.date: 02/08/2021
+ms.openlocfilehash: f1e84c838d310721cba604274388ae2767eb1502
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "92000048"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100389680"
 ---
-# <a name="how-to-configure-redis-clustering-for-a-premium-azure-cache-for-redis"></a>Redsıs için Premium bir Azure önbelleği için Redsıs Kümelemesi yapılandırma
-Redin için Azure önbelleğinde, kümeleme, kalıcılık ve sanal ağ desteği gibi Premium katman özellikleri de dahil olmak üzere, önbellek boyutu ve özellikleri seçimine esneklik sağlayan farklı önbellek teklifleri vardır. Bu makalede, Redsıs örneği için Premium Azure önbelleğinde kümelemenin nasıl yapılandırılacağı açıklanır.
+# <a name="configure-redis-clustering-for-a-premium-azure-cache-for-redis-instance"></a>Redsıs örneği için Premium bir Azure önbelleği için Redsıs Kümelemesi yapılandırma
 
-## <a name="what-is-redis-cluster"></a>Redsıs kümesi nedir?
 Redsıs için Azure Cache, redsıs ['de uygulanan](https://redis.io/topics/cluster-tutorial)redin kümesi sunar. Redsıs kümesi ile aşağıdaki avantajları elde edersiniz: 
 
 * Veri kümenizi birden çok düğüm arasında otomatik olarak bölme özelliği. 
@@ -28,7 +26,8 @@ Kümeleme, kümelenmiş bir önbellek için kullanılabilen bağlantı sayısın
 
 Azure 'da reddo kümesi, her parçanın Redsıs hizmeti için Azure Cache tarafından yönetilen çoğaltma ile birincil/çoğaltma çifti olduğu bir birincil/çoğaltma modeli olarak sunulur. 
 
-## <a name="clustering"></a>Kümeleme
+## <a name="set-up-clustering"></a>Kümeleme ayarlama
+
 Kümeleme, önbellek oluşturma sırasında **redsıs dikey penceresinde yeni Azure önbelleğinde** etkinleştirilir. 
 
 1. Premium önbellek oluşturmak için [Azure Portal](https://portal.azure.com) oturum açın ve **kaynak oluştur**' u seçin. Önbellekleri Azure portalında oluşturabileceğiniz gibi, Resource Manager şablonlarını, PowerShell'i veya Azure CLI'sini kullanarak da oluşturabilirsiniz. Redu için Azure önbelleği oluşturma hakkında daha fazla bilgi için bkz. [önbellek oluşturma](cache-dotnet-how-to-use-azure-redis-cache.md#create-a-cache).
@@ -37,13 +36,13 @@ Kümeleme, önbellek oluşturma sırasında **redsıs dikey penceresinde yeni Az
    
 2. **Yeni** sayfada **veritabanları** ' nı seçin ve ardından **redsıs için Azure önbelleği**' ni seçin.
 
-    :::image type="content" source="media/cache-private-link/2-select-cache.png" alt-text="Kaynak oluştur.":::
+    :::image type="content" source="media/cache-private-link/2-select-cache.png" alt-text="Redsıs için Azure önbelleği ' ni seçin.":::
 
 3. **Yeni Redis Cache** sayfasında, yeni Premium önbelleğiniz için ayarları yapılandırın.
    
    | Ayar      | Önerilen değer  | Açıklama |
    | ------------ |  ------- | -------------------------------------------------- |
-   | **DNS adı** | Genel olarak benzersiz bir ad girin. | Önbellek adı, yalnızca rakam, harf veya kısa çizgi içeren 1 ile 63 karakter arasında bir dize olmalıdır. Ad bir sayı veya harfle başlamalı ve bitmeli ve ardışık kısa çizgi içeremez. Önbellek örneğinizin *ana bilgisayar adı* * \<DNS name> . Redis.cache.Windows.net*olacaktır. | 
+   | **DNS adı** | Genel olarak benzersiz bir ad girin. | Önbellek adı, yalnızca rakam, harf veya kısa çizgi içeren 1 ile 63 karakter arasında bir dize olmalıdır. Ad bir sayı veya harfle başlamalı ve bitmeli ve ardışık kısa çizgi içeremez. Önbellek örneğinizin *ana bilgisayar adı* *\<DNS name> . Redis.cache.Windows.net* olacaktır. | 
    | **Abonelik** | Açılır ve aboneliğinizi seçin. | Redsıs örneği için bu yeni Azure önbelleğinin oluşturulacağı abonelik. | 
    | **Kaynak grubu** | Açılır ve bir kaynak grubu seçin veya **Yeni oluştur** ' u seçin ve yeni bir kaynak grubu adı girin. | Önbelleğinizin ve diğer kaynaklarınızın oluşturulacağı kaynak grubunun adı. Tüm uygulama kaynaklarınızı tek bir kaynak grubuna yerleştirerek, bunları birlikte kolayca yönetebilir veya silebilirsiniz. | 
    | **Konum** | Açılır ve bir konum seçin. | Önbelleğinizi kullanacak diğer hizmetlerin yakınında bir [bölge](https://azure.microsoft.com/regions/) seçin. |
@@ -57,13 +56,13 @@ Kümeleme, önbellek oluşturma sırasında **redsıs dikey penceresinde yeni Az
 
 7. Premium önbellek örneğinin **Gelişmiş** SEKMESINDE, TLS olmayan bağlantı noktası, kümeleme ve veri kalıcılığı için ayarları yapılandırın. Kümelendirmeyi etkinleştirmek için **Etkinleştir**' e tıklayın.
 
-    :::image type="content" source="media/cache-how-to-premium-clustering/redis-cache-clustering.png" alt-text="Kaynak oluştur.":::
+    :::image type="content" source="media/cache-how-to-premium-clustering/redis-cache-clustering.png" alt-text="Kümeleme geçişi.":::
 
-    Kümede en fazla 10 parça olabilir. **Etkinleştir**'e tıkladıktan sonra kaydırıcıyı kaydırın veya parça **sayısı** için 1 ile 10 arasında bir sayı yazın ve **Tamam 'a**tıklayın.
+    Kümede en fazla 10 parça olabilir. **Etkinleştir**'e tıkladıktan sonra kaydırıcıyı kaydırın veya parça **sayısı** için 1 ile 10 arasında bir sayı yazın ve **Tamam 'a** tıklayın.
 
     Her parça Azure tarafından yönetilen birincil/çoğaltma önbelleği çiftidir ve önbelleğin toplam boyutu, parça sayısı fiyatlandırma katmanında seçilen önbellek boyutuyla çarpılarak hesaplanır.
 
-    :::image type="content" source="media/cache-how-to-premium-clustering/redis-cache-clustering-selected.png" alt-text="Kaynak oluştur.":::
+    :::image type="content" source="media/cache-how-to-premium-clustering/redis-cache-clustering-selected.png" alt-text="Kümeleme değiştirme seçildi.":::
 
     Önbellek oluşturulduktan sonra bu sunucuya bağlanır ve bunu kümelenmemiş bir önbellekte olduğu gibi kullanırsınız ve Redit verileri önbellek parçaları genelinde dağıtır. Tanılama [etkinleştirilmişse](cache-how-to-monitor.md#enable-cache-diagnostics), ölçümler her parça için ayrı olarak yakalanır ve reddo dikey penceresinde Azure önbelleğinde [görüntülenebilir](cache-how-to-monitor.md) . 
 
@@ -71,11 +70,11 @@ Kümeleme, önbellek oluşturma sırasında **redsıs dikey penceresinde yeni Az
 
 9. İsteğe bağlı olarak, **Etiketler** sekmesinde, kaynağı sınıflandırmak istiyorsanız ad ve değeri girin. 
 
-10.  **Gözden geçir + oluştur**' u seçin. Azure 'un yapılandırmanızı doğruladığı, gözden geçir + Oluştur sekmesine götürülürsünüz.
+10. **Gözden geçir ve oluştur**’u seçin. Azure 'un yapılandırmanızı doğruladığı, gözden geçir + Oluştur sekmesine götürülürsünüz.
 
 11. Yeşil doğrulama başarılı iletisi göründüğünde **Oluştur**' u seçin.
 
-Önbelleğin oluşturulması biraz zaman alır. Redsıs **genel bakış**   sayfasında ilerlemeyi izleyebilirsiniz.  **Durum**    **çalışıyor**olarak görüntülendiğinde, önbellek kullanıma hazırdır. 
+Önbelleğin oluşturulması biraz zaman alır. Redsıs **genel bakış** sayfasında ilerlemeyi izleyebilirsiniz. **Durum** **çalışıyor** olarak görüntülendiğinde, önbellek kullanıma hazırdır. 
 
 > [!NOTE]
 > 
@@ -102,6 +101,7 @@ Küme boyutunun artırılması, en yüksek aktarım hızını ve önbellek boyut
 > 
 
 ## <a name="clustering-faq"></a>Kümeleme hakkında SSS
+
 Aşağıdaki liste, Redsıs Kümelemesi için Azure önbelleği hakkında sık sorulan soruların yanıtlarını içerir.
 
 * [Kümeleme kullanmak için istemci uygulamamda herhangi bir değişiklik yapmam gerekiyor mu?](#do-i-need-to-make-any-changes-to-my-client-application-to-use-clustering)
@@ -153,7 +153,7 @@ Reddo kümeleme protokolü, her bir istemcinin her parçaya doğrudan kümeleme 
 Kümelemeye sahip olmayan bir önbelleğe bağlanırken kullandığınız [uç noktaları](cache-configure.md#properties), [bağlantı noktalarını](cache-configure.md#properties)ve [anahtarları](cache-configure.md#access-keys) kullanarak önbelleğinize bağlanabilirsiniz. Redsıs, arka uçta kümelendirmeyi yönetir, böylece istemciden yönetmeniz gerekmez.
 
 ### <a name="can-i-directly-connect-to-the-individual-shards-of-my-cache"></a>Önbelleğim bireysel parçalara doğrudan bağlanabilir miyim?
-Kümeleme protokolü, istemcinin doğru parça bağlantıları yapmasını gerektirir. Bu nedenle, istemcinin bunu sizin için doğru yapması gerekir. Bu şekilde, her parça, toplu olarak bir önbellek örneği olarak bilinen birincil/çoğaltma önbelleği çiftinin oluşur. Bu önbellek örneklerine, GitHub 'da Redsıs deposunun [kararsız](https://redis.io/download) dalında redsıs-CLI yardımcı programını kullanarak bağlanabilirsiniz. Bu sürüm, anahtarla başlatıldığında temel desteği uygular `-c` . Daha fazla bilgi için bkz [Playing with the cluster](https://redis.io/topics/cluster-tutorial#playing-with-the-cluster) [https://redis.io](https://redis.io) . [redsıs kümesi öğreticisinde](https://redis.io/topics/cluster-tutorial)üzerinde kümeyle yürütme.
+Kümeleme protokolü, istemcinin doğru parça bağlantıları yapmasını gerektirir. Bu nedenle, istemcinin bunu sizin için doğru yapması gerekir. Bu şekilde, her parça, toplu olarak bir önbellek örneği olarak bilinen birincil/çoğaltma önbelleği çiftinin oluşur. Bu önbellek örneklerine, GitHub 'da Redsıs deposunun [kararsız](https://redis.io/download) dalında redsıs-CLI yardımcı programını kullanarak bağlanabilirsiniz. Bu sürüm, anahtarla başlatıldığında temel desteği uygular `-c` . Daha fazla bilgi için bkz [](https://redis.io/topics/cluster-tutorial#playing-with-the-cluster) [https://redis.io](https://redis.io) . [redsıs kümesi öğreticisinde](https://redis.io/topics/cluster-tutorial)üzerinde kümeyle yürütme.
 
 TLS olmayan için aşağıdaki komutları kullanın.
 
@@ -186,6 +186,7 @@ Kümeleme yalnızca Premium önbellekler için kullanılabilir.
 Kümeleme kullanırken StackExchange. Redsıs kullanıyorsanız ve `MOVE` özel durumlar alıyorsanız, [StackExchange. redsıs 1.1.603](https://www.nuget.org/packages/StackExchange.Redis/) veya üstünü kullandığınızdan emin olun. .NET uygulamalarınızı StackExchange. Redsıs kullanacak şekilde yapılandırma yönergeleri için bkz. [önbellek Istemcilerini yapılandırma](cache-dotnet-how-to-use-azure-redis-cache.md#configure-the-cache-clients).
 
 ## <a name="next-steps"></a>Sonraki adımlar
+
 Redsıs özellikleri için Azure önbelleği hakkında daha fazla bilgi edinin.
 
 * [Redsıs Premium hizmet katmanları için Azure önbelleği](cache-overview.md#service-tiers)

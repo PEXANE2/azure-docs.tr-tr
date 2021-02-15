@@ -6,13 +6,13 @@ ms.service: postgresql
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: sumuth
-ms.date: 10/23/2020
-ms.openlocfilehash: 542528bb0a3f76705e61f28338ccf1460159871d
-ms.sourcegitcommit: 003ac3b45abcdb05dc4406661aca067ece84389f
+ms.date: 2/11/2021
+ms.openlocfilehash: 1f6abb62086bf92be8ae2fe50abbfa5300185fd7
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96749088"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100384274"
 ---
 # <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-postgresql---flexible-server"></a>Hızlı başlangıç: bir ARM şablonu kullanarak PostgreSQL için Azure veritabanı-esnek sunucu oluşturma
 
@@ -98,7 +98,7 @@ Dosyasında bir _postgres-flexible-server-template.js_ oluşturun ve aşağıdak
       "location": "[parameters('location')]",
       "sku": {
         "name": "Standard_D4ds_v4",
-        "tier": "[parameters('serverEdition')]"        
+        "tier": "[parameters('serverEdition')]"
       },
       "tags": "[parameters('tags')]",
       "properties": {
@@ -181,7 +181,7 @@ Read-Host -Prompt "Press [ENTER] to continue ..."
 
 Sunucunuzun Azure 'da oluşturulup oluşturuçalışmadığını doğrulamak için aşağıdaki adımları izleyin.
 
-# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure portalı](#tab/portal)
 
 1. [Azure Portal](https://portal.azure.com), **PostgreSQL Için Azure veritabanı esnek sunucular (Önizleme)** için arama yapın ve seçin.
 1. Veritabanı listesinde, sunucuyu yönetmek üzere **genel bakış** sayfasını görüntülemek için yeni sunucunuzu seçin.
@@ -209,6 +209,7 @@ az resource show --resource-group $resourcegroupName --name $serverName --resour
 ```
 
 ---
+
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

@@ -1,17 +1,17 @@
 ---
 title: Bağlantı mimarisi-MariaDB için Azure veritabanı
 description: MariaDB sunucusu için Azure veritabanı 'nın bağlantı mimarisini açıklar.
-author: mksuni
-ms.author: sumuth
-ms.service: jroth
+author: Bashar-MSFT
+ms.author: bahusse
+ms.service: mariadb
 ms.topic: conceptual
-ms.date: 6/8/2020
-ms.openlocfilehash: 57e14fa4a026dafb085ea636611ab26b6bad7c01
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.date: 2/11/2021
+ms.openlocfilehash: a83b570637d18fd0e92cd80ed87acbef8c7a9d77
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98661713"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100368073"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-mariadb"></a>MariaDB için Azure veritabanı 'nda bağlantı mimarisi
 Bu makalede, MariaDB bağlantı mimarisi için Azure veritabanı 'nın yanı sıra trafiğin Azure 'daki ve dışındaki istemcilerden MariaDB örneğine nasıl yönlendirildiği açıklanmaktadır.
@@ -47,17 +47,17 @@ Aşağıdaki tabloda, tüm veri bölgeleri için MariaDB ağ geçidi için Azure
 | Avustralya Central2     | 20.36.113.0  | | |
 | Doğu Avustralya | 13.75.149.87, 40.79.161.1     |  | |
 | Avustralya Güneydoğu |191.239.192.109, 13.73.109.251   |  | |
-| Brezilya Güney |191.233.201.8, 191.233.200.16    |  | 104.41.11.5|
+| Güney Brezilya |191.233.201.8, 191.233.200.16    |  | 104.41.11.5|
 | Orta Kanada |40.85.224.249  | | |
 | Doğu Kanada | 40.86.226.166    | | |
-| Central US | 23.99.160.139, 13.67.215.62, 52.182.136.37, 52.182.136.38 | | |
+| Central US | 23.99.160.139, 52.182.136.37, 52.182.136.38 | 13.67.215.62 | |
 | Doğu Çin | 139.219.130.35    | | |
 | Çin Doğu 2 | 40.73.82.1  | | |
 | Kuzey Çin | 139.219.15.17    | | |
 | Çin Kuzey 2 | 40.73.50.0     | | |
 | Doğu Asya | 191.234.2.139, 52.175.33.150, 13.75.33.20, 13.75.33.21     | | |
 | Doğu ABD |40.71.8.203, 40.71.83.113 |40.121.158.30|191.238.6.43 |
-| Doğu ABD 2 |40.79.84.180, 191.239.224.107, 52.177.185.181, 40.70.144.38, 52.167.105.38  | | |
+| Doğu ABD 2 | 40.70.144.38, 52.167.105.38  | 52.177.185.181 | |
 | Orta Fransa | 40.79.137.0, 40.79.129.1  | | |
 | Güney Fransa | 40.79.177.0     | | |
 | Orta Almanya | 51.4.144.100     | | |
@@ -65,22 +65,22 @@ Aşağıdaki tabloda, tüm veri bölgeleri için MariaDB ağ geçidi için Azure
 | Hindistan Orta | 104.211.96.159     | | |
 | Hindistan Güney | 104.211.224.146  | | |
 | Hindistan Batı | 104.211.160.80    | | |
-| Doğu Japonya | 13.78.61.196, 191.237.240.43, 40.79.192.23 | | |
-| Batı Japonya | 104.214.148.156, 191.238.68.11, 40.74.96.6, 40.74.96.7    | | |
-| Güney Kore - Orta | 52.231.32.42   | | |
-| Güney Kore - Güney | 52.231.200.86    | | |
-| Orta Kuzey ABD | 23.96.178.199, 23.98.55.75, 52.162.104.35, 52.162.104.36    | | |
-| Kuzey Avrupa | 52.138.224.6, 52.138.224.7  |40.113.93.91 |191.235.193.75 |
+| Doğu Japonya | 40.79.192.23 | 13.78.61.196 | |
+| Batı Japonya | 191.238.68.11, 40.74.96.6, 40.74.96.7     | 104.214.148.156 | |
+| Güney Kore - Orta | 52.231.17.13   | 52.231.32.42 | |
+| Güney Kore - Güney | 52.231.145.3     | 52.231.200.86 | |
+| Orta Kuzey ABD | 52.162.104.35, 52.162.104.36    | 23.96.178.199 | |
+| Kuzey Avrupa | 52.138.224.6, 52.138.224.7  | 40.113.93.91 |191.235.193.75 |
 | Güney Afrika - Kuzey  | 102.133.152.0    | | |
 | Güney Afrika - Batı | 102.133.24.0   | | |
 | Orta Güney ABD |104.214.16.39, 20.45.120.0  |13.66.62.124  |23.98.162.75 |
-| Güneydoğu Asya | 104.43.15.0, 23.100.117.95, 40.78.233.2, 23.98.80.12     | | |
+| Güneydoğu Asya | 40.78.233.2, 23.98.80.12     | 104.43.15.0 | |
 | BAE Orta | 20.37.72.64  | | |
 | BAE Kuzey | 65.52.248.0    | | |
 | Güney Birleşik Krallık | 51.140.184.11   | | |
 | Batı Birleşik Krallık | 51.141.8.11  | | |
 | Orta Batı ABD | 13.78.145.25     | | |
-| West Europe |13.69.105.208,104.40.169.187 |40.68.37.158 | 191.237.232.75|
+| West Europe |13.69.105.208, 104.40.169.187 | 40.68.37.158 | 191.237.232.75 |
 | Batı ABD |13.86.216.212, 13.86.217.212 |104.42.238.205  | 23.99.34.75|
 | Batı ABD 2 | 13.66.226.202  | | |
 ||||

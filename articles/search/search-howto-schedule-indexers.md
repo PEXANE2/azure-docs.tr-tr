@@ -7,20 +7,22 @@ manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 01/28/2021
-ms.openlocfilehash: dfd8526a035d4eef4d07539e541e37c88023b500
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.date: 02/09/2021
+ms.openlocfilehash: 8ae9a89ddba2010603ae5a5f6b812e3aa1e1e3a6
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99063222"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100097985"
 ---
 # <a name="how-to-schedule-indexers-in-azure-cognitive-search"></a>Azure Bilişsel Arama Dizinleyicileri zamanlama
 
 Dizin Oluşturucu normalde, oluşturulduktan hemen sonra bir kez çalışır. Daha sonra, Azure portal, [Dizin Oluşturucu (REST)](/rest/api/searchservice/run-indexer)veya BIR Azure SDK kullanarak isteğe bağlı olarak yeniden çalıştırabilirsiniz. Alternatif olarak, bir dizin Oluşturucuyu bir zamanlamaya göre çalışacak şekilde de yapılandırabilirsiniz. Dizin Oluşturucu çizelgelemenin yararlı olduğu bazı durumlar şunlardır:
 
-* Kaynak veriler zamanla değişecektir ve arama dizin oluşturucunun Delta otomatik olarak işlemesini istiyorsunuz.
-* Kaynak veriler çok büyükse ve Dizin Oluşturucu işlemesini zaman içinde yaymak istiyorsunuz. Büyük hacimteki verileri dizinleme hakkında daha fazla bilgi için bkz. [Azure bilişsel arama büyük veri kümelerini Dizin](search-howto-large-index.md)oluşturma.
+* Kaynak veriler zamanla değişecektir ve arama dizin oluşturucunun farkı otomatik olarak işlemesini istiyorsunuz.
+
+* Kaynak veriler çok büyükse ve Dizin Oluşturucu işlemesini zaman içinde yaymak istiyorsunuz. Dizin Oluşturucu işleri, normal veri kaynakları için en fazla 24 saat çalışma zamanına ve becerileri ile Dizin oluşturucular için 2 saate tabidir. Dizin oluşturma en fazla Aralık içinde tamamlanamaz, her 2 saatte bir çalışan bir zamanlama yapılandırabilirsiniz. Dizin oluşturucular, dizin oluşturmanın son sonlandırdığı yeri işaret eden bir iç yüksek su işareti tarafından kararlaştırılmış şekilde otomatik olarak kapatılabileceği yerleri otomatik olarak alabilir. Yinelenen 2 saat zamanlamasında bir dizin oluşturucunun çalıştırılması, tek bir iş için izin verilen aralığın ötesinde çok büyük bir veri kümesini (birçok milyonlarca belge) işlemesini sağlar. Büyük veri birimlerinin dizinini oluşturma hakkında daha fazla bilgi için bkz. [Azure 'da büyük veri kümelerini dizin bilişsel arama](search-howto-large-index.md).
+
 * Bir arama dizini birden fazla veri kaynağından doldurulacak ve dizin oluşturucularının çakışmaları azaltmak için farklı zamanlarda çalıştırılmasını istiyorsunuz.
 
 Görsel olarak, bir zamanlama aşağıdaki gibi görünebilir: 1 Ocak 'tan başlayıp 50 dakikada bir çalışıyor.

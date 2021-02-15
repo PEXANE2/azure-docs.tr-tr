@@ -1,23 +1,18 @@
 ---
 title: Data Factory için Veri Yönetimi ağ geçidi
 description: Verilerinizi taşımak için Azure Data Factory Veri Yönetimi ağ geçidini kullanın.
-services: data-factory
-documentationcenter: ''
 author: nabhishek
-manager: anandsub
-ms.assetid: b9084537-2e1c-4e96-b5bc-0e2044388ffd
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 94c1bed8d94f73bc7794037b307618f4c36c4518
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 708d84bdb3ebe8fbba6939aa771a9120868d5d1b
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96450613"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100375213"
 ---
 # <a name="data-management-gateway"></a>Veri Yönetimi Ağ Geçidi
 > [!NOTE]
@@ -140,7 +135,7 @@ Göz önünde bulundurmanız gereken iki güvenlik duvarı vardır: kuruluşun m
 
 Şirket güvenlik duvarı düzeyinde, aşağıdaki etki alanlarını ve giden bağlantı noktalarını yapılandırmanız gerekir:
 
-| Etki alanı adları | Bağlantı noktaları | Açıklama |
+| Etki alanı adları | Bağlantı noktaları | Description |
 | --- | --- | --- |
 | *.servicebus.windows.net |443 |Veri taşıma hizmeti arka ucu ile iletişim için kullanılır |
 | *.core.windows.net |443 |Azure Blob kullanılarak hazırlanan kopya için kullanılır (yapılandırıldıysa)|
@@ -373,18 +368,18 @@ Kullanılabilir bellek | Bir ağ geçidi düğümündeki kullanılabilir bellek.
 CPU kullanımı | Bir ağ geçidi düğümünün CPU kullanımı. Bu değer, neredeyse gerçek zamanlı bir anlık görüntüdür.
 Ağ (ın/out) | Ağ Geçidi düğümünün ağ kullanımı. Bu değer, neredeyse gerçek zamanlı bir anlık görüntüdür.
 Eşzamanlı Işler (çalışıyor/limit) | Her düğümde çalışan iş veya görev sayısı. Bu değer, neredeyse gerçek zamanlı bir anlık görüntüdür. Limit her düğüm için en fazla eş zamanlı işi belirtir. Bu değer makine boyutuna göre tanımlanır. CPU/bellek/ağın kullanıldığı, ancak etkinliklerin zaman aşımına uğramasının gerektiği Gelişmiş senaryolarda, eşzamanlı iş yürütmeyi ölçeklendirmeye yönelik sınırı artırabilirsiniz. Bu özellik, tek düğümlü bir ağ geçidiyle (ölçeklenebilirlik ve kullanılabilirlik özelliği etkinleştirilmediği halde) da kullanılabilir.
-Role | Çok düğümlü bir ağ geçidi-dağıtıcı ve çalışan üzerinde iki tür rol vardır. Tüm düğümler çalışanlardır, yani işleri yürütmek için hepsi kullanılabilirler. Bulut hizmetlerinden görevler/işler çekmek ve bunları farklı çalışan düğümlerine (kendisi dahil) göndermek için kullanılan yalnızca bir dağıtıcı düğümü vardır.
+Rol | Çok düğümlü bir ağ geçidi-dağıtıcı ve çalışan üzerinde iki tür rol vardır. Tüm düğümler çalışanlardır, yani işleri yürütmek için hepsi kullanılabilirler. Bulut hizmetlerinden görevler/işler çekmek ve bunları farklı çalışan düğümlerine (kendisi dahil) göndermek için kullanılan yalnızca bir dağıtıcı düğümü vardır.
 
 Bu sayfada, ağ geçidinde iki veya daha fazla düğüm (genişleme senaryosu) olduğunda daha anlamlı bir ayar görürsünüz. Çok düğümlü bir ağ geçidi kurma hakkında ayrıntılı bilgi için bkz. [veri yönetimi ağ geçidi-yüksek kullanılabilirlik ve ölçeklenebilirlik](data-factory-data-management-gateway-high-availability-scalability.md) .
 
 ### <a name="gateway-status"></a>Ağ Geçidi durumu
 Aşağıdaki tabloda **ağ geçidi düğümünün** olası durumları verilmiştir:
 
-Durum  | Açıklamalar/senaryolar
+Durum    | Açıklamalar/senaryolar
 :------- | :------------------
 Çevrimiçi | Data Factory hizmetine bağlı düğüm.
 Çevrimdışı | Düğüm çevrimdışı.
-Yükseltmenin | Düğüm otomatik olarak güncelleştiriliyor.
+Yükseltme | Düğüm otomatik olarak güncelleştiriliyor.
 Sınırlı | Bağlantı sorunu nedeniyle. HTTP bağlantı noktası 8050 sorunu, Service Bus bağlantı sorunu veya kimlik bilgisi eşitleme sorunu olabilir.
 Etkin değil | Düğüm, diğer çoğunluk düğümlerin yapılandırmasından farklı bir yapılandırmadır.<br/><br/> Düğüm, diğer düğümlere bağlanamıyorsa devre dışı olabilir.
 

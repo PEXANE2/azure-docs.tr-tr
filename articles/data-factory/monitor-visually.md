@@ -1,21 +1,18 @@
 ---
 title: Azure Data Factory’yi görsel olarak izleme
 description: Azure veri fabrikalarını görsel olarak izlemeyi öğrenin
-services: data-factory
-documentationcenter: ''
 author: dcstwh
 ms.author: weetok
 ms.reviewer: maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: f2bf1b1a16660b4e80bc0acc5c6e4201b452098f
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 4248969a5de384810f9718648ef8ac8f5f6d4129
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96497920"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100373173"
 ---
 # <a name="visually-monitor-azure-data-factory"></a>Azure Data Factory’yi görsel olarak izleme
 
@@ -151,7 +148,7 @@ Bir Gantt grafiği, çalışma geçmişini bir zaman aralığı üzerinde görme
 
 ## <a name="alerts"></a>Uyarılar
 
-Data Factory içinde desteklenen ölçümler üzerinde uyarı oluşturabilirsiniz. Başlamak **Monitor**  >  için Data Factory izleme sayfasında,**uyarıları & ölçümleri** izleyin ' ı seçin.
+Data Factory içinde desteklenen ölçümler üzerinde uyarı oluşturabilirsiniz. Başlamak   >  için Data Factory izleme sayfasında,**uyarıları & ölçümleri** izleyin ' ı seçin.
 
 ![Data Factory Izleyici sayfası](media/monitor-visually/start-page.png)
 

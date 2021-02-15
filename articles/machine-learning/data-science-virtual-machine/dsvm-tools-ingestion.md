@@ -4,18 +4,17 @@ titleSuffix: Azure Data Science Virtual Machine
 description: Veri Bilimi Sanal Makinesi önceden yüklenmiş veri alma araçları ve yardımcı programları hakkında bilgi edinin.
 keywords: veri bilimi araçları, veri bilimi sanal makinesi, veri bilimi için araçlar, linux veri bilimi
 services: machine-learning
-ms.service: machine-learning
-ms.subservice: data-science-vm
+ms.service: data-science-vm
 author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: 89cf81f8d0a66c29a345f56676fbb97601743710
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 21a6efa8108bfd0a317eb955e8b3ffcfba0862a2
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93308984"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100519380"
 ---
 # <a name="data-science-virtual-machine-data-ingestion-tools"></a>Veri Bilimi Sanal Makinesi veri alımı araçları
 
@@ -34,7 +33,7 @@ DSVM 'de bulunan bazı veri taşıma araçları aşağıda verilmiştir.
 | Örneklere bağlantılar      | [AdlCopy kullanma](../../data-lake-store/data-lake-store-copy-data-azure-storage-blob.md)      |
 | DSVM 'deki ilgili araçlar      | AzCopy, Azure CLı     |
 
-## <a name="azure-cli"></a>Azure CLI
+## <a name="azure-cli"></a>Azure CLI’si
 
 | Kategori | Değer |
 | ------------- | ------------- |

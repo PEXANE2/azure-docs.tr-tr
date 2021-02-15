@@ -3,13 +3,13 @@ title: Kavramlar-Azure Kubernetes Hizmetleri (AKS) için Kubernetes temelleri
 description: Kubernetes 'in temel kümesini ve iş yükü bileşenlerini ve bunların Azure Kubernetes Service (AKS) özellikleriyle ilişkisini öğrenin
 services: container-service
 ms.topic: conceptual
-ms.date: 06/03/2019
-ms.openlocfilehash: 54d6f4529c236c7ff9f6258122b5b49d6d3723e8
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.date: 12/07/2020
+ms.openlocfilehash: 7485631660395e03c558167c321e6091c6fac755
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98674935"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100373241"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Azure Kubernetes hizmeti (AKS) için Kubernetes temel kavramları
 
@@ -31,8 +31,8 @@ Azure Kubernetes hizmeti (AKS), dağıtım ve temel yönetim görevlerinin karma
 
 Bir Kubernetes kümesi iki bileşene ayrılmıştır:
 
-- *Denetim düzlemi* düğümleri, uygulama iş yüklerinin temel Kubernetes hizmetlerini ve düzenlemesini sağlar.
-- *Düğümler* , uygulama iş yüklerinizi çalıştırır.
+- *Denetim düzlemi* , uygulama iş yüklerinin temel Kubernetes hizmetlerini ve düzenlemesini sağlar.
+- Uygulama iş yüklerinizi çalıştıran *düğümler* .
 
 ![Kubernetes denetim düzlemi ve düğüm bileşenleri](media/concepts-clusters-workloads/control-plane-and-nodes.png)
 

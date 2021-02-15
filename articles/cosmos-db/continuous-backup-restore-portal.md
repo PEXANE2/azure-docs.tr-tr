@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 02/01/2021
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: e0fb337defc69354aa625fe63bef9768dbc4cf1f
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: ee6eedbc078e1b9c07ed00922ce1c37b38410128
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99538863"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100381877"
 ---
 # <a name="configure-and-manage-continuous-backup-and-point-in-time-restore-preview---using-azure-portal"></a>Sürekli yedekleme ve zaman noktası geri yükleme (Önizleme) ile yapılandırma ve yönetme-Azure portal kullanma
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -74,7 +74,7 @@ Geri yükleme noktası süresi Azure portal doldurma sırasında geri yükleme n
 Silinen bir hesabı silme işlemini 30 gün içinde tamamen geri yüklemek için Azure portal kullanabilirsiniz. Silinen bir hesabı geri yüklemek için aşağıdaki adımları kullanın:
 
 1. [Azure Portal](https://portal.azure.com/) oturum açın
-1. Genel arama çubuğunda "Azure Cosmos DB" kaynaklarını arayın. Tüm mevcut hesaplarınızı listeler.
+1. Genel arama çubuğunda *Azure Cosmos DB* kaynak arayın. Tüm mevcut hesaplarınızı listeler.
 1. Sonra **geri yükle** düğmesini seçin. Geri yükleme bölmesi, silme zamanından itibaren 30 gün olan saklama süresi içinde geri yüklenebilen silinmiş hesapların bir listesini görüntüler.
 1. Geri yüklemek istediğiniz hesabı seçin.
 
@@ -95,7 +95,7 @@ Silinen bir hesabı silme işlemini 30 gün içinde tamamen geri yüklemek için
 
 ## <a name="track-the-status-of-restore-operation"></a><a id="track-restore-status"></a>Geri yükleme işleminin durumunu izleme
 
-Geri yükleme işlemini başlattıktan sonra, portalın sağ üst köşesindeki **bildirim** zil simgesini seçin. Geri yüklenmekte olan hesabın durumunu görüntüleyen bir bağlantı sağlar. Geri yükleme devam ederken, hesabın durumu "oluşturma" olur, geri yükleme işlemi tamamlandıktan sonra hesap durumu "çevrimiçi" olarak değişir.
+Geri yükleme işlemini başlattıktan sonra, portalın sağ üst köşesindeki **bildirim** zil simgesini seçin. Geri yüklenmekte olan hesabın durumunu görüntüleyen bir bağlantı sağlar. Geri yükleme devam *ederken, hesabın durumu oluşturulacak, geri* yükleme işlemi tamamlandıktan sonra hesap durumu *çevrimiçi* olarak değişir.
 
 :::image type="content" source="./media/continuous-backup-restore-portal/track-restore-operation-status.png" alt-text="İşlem tamamlandığında, geri yüklenen hesabın durumu, oluşturma işleminden çevrimiçi olarak değişir." border="true":::
 

@@ -4,16 +4,16 @@ description: Yeni veri dışa aktarma kullanarak IoT verilerinizi Azure 'a ve ö
 services: iot-central
 author: viv-liu
 ms.author: viviali
-ms.date: 11/05/2020
+ms.date: 01/27/2021
 ms.topic: how-to
 ms.service: iot-central
 ms.custom: contperf-fy21q1, contperf-fy21q3
-ms.openlocfilehash: 350cd7c14a4f1ee5058a60ccf60c1205ce97916a
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.openlocfilehash: d31673b8d789cff5de3ddce63b67a98854b7aabc
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99226075"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100515912"
 ---
 # <a name="export-iot-data-to-cloud-destinations-using-data-export"></a>Veri dışarı aktarma kullanarak IoT verilerini bulut hedeflerine dışarı aktarma
 
@@ -166,6 +166,17 @@ Verilerinizi dışarı aktarmak için bir hedef olduğuna göre, IoT Central uyg
 
 1. Dışarı aktarma işleminizi ayarlamayı bitirdiğinizde **Kaydet**' i seçin. Birkaç dakika sonra verileriniz hedeflerinizin içinde görüntülenir.
 
+## <a name="monitor-your-export"></a>Dışarı aktarmayı izleme
+
+IoT Central ' de dışarı aktarmaların durumunu görmenin yanı sıra, dışarı aktarımlarınız üzerinden ne kadar veri alındığını izleyebilir ve Azure Izleyici veri platformunda dışarı aktarma hatalarını gözlemleyebilirsiniz. Azure portal, bir REST API ya da PowerShell veya Azure CLı 'de bulunan grafiklerde, ve cihaz sistem durumlarınıza ilişkin ölçümlere erişebilirsiniz. Şu anda Azure Izleyici 'de bu veri dışa aktarma ölçümlerini izleyebilirsiniz:
+
+1. Filtreler uygulanmadan önce dışarı aktarmaya gelen ileti sayısı
+2. Filtrelerle geçen ileti sayısı
+3. Hedeflere başarıyla aktarılmış ileti sayısı
+4. Karşılaşılan hata sayısı
+ 
+[IoT Central ölçümlere erişme hakkında daha fazla bilgi edinin.](howto-monitor-application-health.md)
+
 ## <a name="destinations"></a>Hedefler
 
 ### <a name="azure-blob-storage-destination"></a>Azure Blob depolama hedefi
@@ -233,7 +244,6 @@ Aşağıdaki örnek, dışarıya aktarılmış bir telemetri iletisini gösterme
     }
 }
 ```
-
 ### <a name="message-properties"></a>İleti özellikleri
 
 Telemetri, telemetri yüküne ek olarak meta veriler için özelliklere sahiptir. Önceki kod parçacığında ve gibi sistem iletilerinin örnekleri gösterilir `deviceId` `enqueuedTime` . Sistem iletisi özellikleri hakkında daha fazla bilgi için bkz. [D2C IoT Hub Iletilerinin sistem özellikleri](../../iot-hub/iot-hub-devguide-messages-construct.md#system-properties-of-d2c-iot-hub-messages).

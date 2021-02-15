@@ -1,23 +1,18 @@
 ---
 title: Veri işlem hatlarını izleme ve yönetme-Azure
 description: Izleme ve yönetim uygulamasını kullanarak Azure veri fabrikalarını ve işlem hatlarını izleme ve yönetme hakkında bilgi edinin.
-services: data-factory
-documentationcenter: ''
 author: dcstwh
 ms.author: weetok
-manager: jroth
 ms.reviewer: maghan
-ms.assetid: f3f07bc4-6dc3-4d4d-ac22-0be62189d578
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: afab2b03d31045b9f49f357b49d15368cde898da
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: be11f742eb99d25cb0e41a3dd0888d62417837dd
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96495710"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100380381"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-monitoring-and-management-app"></a>Izleme ve yönetim uygulamasını kullanarak Azure Data Factory işlem hatlarını izleme ve yönetme
 > [!div class="op_single_selector"]
@@ -159,7 +154,7 @@ Etkinlik pencereleri aşağıdaki durumlardan birinde olabilir:
 
 <table>
 <tr>
-    <th align="left">Durum</th><th align="left">Dosya</th><th align="left">Açıklama</th>
+    <th align="left">Durum</th><th align="left">Dosya</th><th align="left">Description</th>
 </tr>
 <tr>
     <td rowspan="8">Bekleme</td><td>ScheduleTime</td><td>Etkinlik penceresinin çalışması için geçen süre.</td>
@@ -286,7 +281,7 @@ Filtreleri temizlemek için aynı açılır pencereyi kullanabilirsiniz. Etkinli
 
 ## <a name="perform-batch-actions"></a>Batch eylemleri gerçekleştirme
 ### <a name="rerun-selected-activity-windows"></a>Seçili etkinlik pencerelerini yeniden çalıştır
-Bir etkinlik penceresi seçin, ilk komut çubuğu düğmesine ait aşağı oka tıklayın ve işlem hattında, **Rerun**  /  **ardışık düzende yeniden çalıştır**' ı seçin. **Ardışık düzen seçeneğinde yukarı akış Ile yeniden çalıştır** seçeneğini belirlediğinizde, tüm yukarı akış etkinlik pencerelerini de yeniden çalıştırır.
+Bir etkinlik penceresi seçin, ilk komut çubuğu düğmesine ait aşağı oka tıklayın ve işlem hattında,   /  **ardışık düzende yeniden çalıştır**' ı seçin. **Ardışık düzen seçeneğinde yukarı akış Ile yeniden çalıştır** seçeneğini belirlediğinizde, tüm yukarı akış etkinlik pencerelerini de yeniden çalıştırır.
     ![Etkinlik penceresini yeniden çalıştır](./media/data-factory-monitor-manage-app/ReRunSlice.png)
 
 Ayrıca, listede birden çok etkinlik penceresi seçebilir ve bunları aynı anda yeniden çalıştırabilirsiniz. Etkinlik pencerelerini duruma göre filtrelemek isteyebilirsiniz (örneğin: **başarısız**)--ve sonra etkinlik pencerelerinin başarısız olmasına neden olan sorunu düzelttikten sonra başarısız etkinlik pencerelerini yeniden çalıştırın. Listedeki etkinlik pencerelerini filtreleme hakkındaki ayrıntılar için aşağıdaki bölüme bakın.  

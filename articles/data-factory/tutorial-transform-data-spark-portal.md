@@ -1,21 +1,17 @@
 ---
 title: 'Azure Data Factory Spark kullanarak verileri dönüştürme '
 description: Bu öğretici, Azure Data Factory'de bir Spark etkinliği kullanarak verileri dönüştürmeye ilişkin adım adım yönergeler sağlar.
-services: data-factory
-documentationcenter: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: tutorial
-ms.date: 01/10/2018
 author: nabhishek
 ms.author: abnarain
-manager: anandsub
-ms.openlocfilehash: 5b0bcdd66e17fb93a560b6073c13e3170e3ab37b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.date: 01/10/2018
+ms.openlocfilehash: 2e2a50a96402f01fe914c79d5257fc5bb4dc57a0
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96010155"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100377797"
 ---
 # <a name="transform-data-in-the-cloud-by-using-a-spark-activity-in-azure-data-factory"></a>Azure Data Factory'de bir Spark etkinliği kullanarak verileri bulutta dönüştürme
 
@@ -167,7 +163,7 @@ Bu bölümde iki bağlı hizmet oluşturacaksınız:
    
    j. Kullanıcı için **Küme parolası** girin. 
    
-   k. **Son**’u seçin. 
+   k. **Son**'u seçin. 
 
    ![HDInsight bağlı hizmet ayarları](./media/tutorial-transform-data-spark-portal/azure-hdinsight-linked-service-settings.png)
 
@@ -233,7 +229,7 @@ adftutorial kapsayıcısının spark/otuputfiles/wordcount klasöründe çıktı
 
 ![Çıkış dosyasının konumu](./media/tutorial-transform-data-spark-portal/verity-output.png)
 
-Dosya, girdi metin dosyasındaki her bir sözcüğü ve sözcüğün dosyada görünme sayısını içermelidir. Örnek: 
+Dosya, girdi metin dosyasındaki her bir sözcüğü ve sözcüğün dosyada görünme sayısını içermelidir. Örneğin: 
 
 ```
 (u'This', 1)

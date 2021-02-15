@@ -2,13 +2,13 @@
 title: Azure Event Hubs özel durumlar (eski)
 description: Bu makale, Azure Event Hubs mesajlaşma özel durumlarının ve önerilen eylemlerin bir listesini sağlar.
 ms.topic: article
-ms.date: 11/02/2020
-ms.openlocfilehash: 357a87c53023962dd9195a616bd9ce9e01c55bf9
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.date: 02/10/2021
+ms.openlocfilehash: a76c98ec7d6d1f3370ed8787bf10d1d16a7baaa5
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96340976"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100390904"
 ---
 # <a name="event-hubs-messaging-exceptions---net-legacy"></a>Event Hubs mesajlaşma özel durumları-.NET (eski)
 Bu bölümde, .NET Framework API 'Leri tarafından oluşturulan .NET özel durumları listelenmektedir. 
@@ -125,14 +125,14 @@ Bu hata, iki nedenden biri nedeniyle oluşabilir:
 
     İzleme Sayısı * limitinden (giriş/saniye için 1000 saniyede 1 MB) daha yüksek değerler görürseniz (çıkış için saniyede 2 MB), daha yüksek bir şekilde ölçeklendirilmesi veya Event Hubs [Otomatik](event-hubs-auto-inflate.md) olarak ölçeklendirmek için bir Event Hubs ad alanının **Ölçek** (sol menü) sayfasını kullanarak, DTU sayısını artırın. Otomatik olarak Şişir yalnızca 20 ' ye kadar artış olabileceğini unutmayın. Bunu tam 40 bir şekilde yükseltmek için bir [destek isteği](../azure-portal/supportability/how-to-create-azure-support-request.md)gönderebilirsiniz.
 
-### <a name="error-code-50001"></a>Hata kodu 50001
+### <a name="error-code-50008"></a>Hata kodu 50008
 
 Bu hata nadiren gerçekleşmelidir. Ad alanınız için kodu çalıştıran kapsayıcı, Event Hubs yük dengeleyici başlamadan önce birkaç saniyeden daha fazla değil, CPU üzerinde düşük olduğunda gerçekleşir.
 
-**Çözüm**: GetRuntimeInformation metodu çağrılarında sınırlayın. Azure Event Hubs, saniye başına Getruntimeınfo 'ya saniyede en fazla 50 çağrı destekler. Sınıra ulaşıldığında aşağıdakine benzer bir özel durum alabilirsiniz:
+**Çözüm**: GetRuntimeInformation yöntemiyle yapılan çağrıları sınırlayın. Azure Event Hubs, saniyedeki Getruntimeınfo 'a her bir tüketici grubu için en fazla 50 çağrısı destekler. Sınıra ulaşıldığında aşağıdakine benzer bir özel durum alabilirsiniz:
 
 ```
-ExceptionId: 00000000000-00000-0000-a48a-9c908fbe84f6-ServerBusyException: The request was terminated because the namespace 75248:aaa-default-eventhub-ns-prodb2b is being throttled. Error code : 50001. Please wait 10 seconds and try again.
+ExceptionId: 00000000000-00000-0000-a48a-9c908fbe84f6-ServerBusyException: The request was terminated because the namespace 75248:aaa-default-eventhub-ns-prodb2b is being throttled. Error code : 50008. Please wait 10 seconds and try again.
 ```
 
 
@@ -141,5 +141,5 @@ ExceptionId: 00000000000-00000-0000-a48a-9c908fbe84f6-ServerBusyException: The r
 Aşağıdaki bağlantıları inceleyerek Event Hubs hakkında daha fazla bilgi edinebilirsiniz:
 
 * [Event Hubs genel bakış](./event-hubs-about.md)
-* [Olay Hub 'ı oluşturma](event-hubs-create.md)
+* [Olay Hub'ı oluşturma](event-hubs-create.md)
 * [Event Hubs ile ilgili SSS](event-hubs-faq.md)

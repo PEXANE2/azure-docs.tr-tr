@@ -2,19 +2,16 @@
 title: Azure Data Factory avro biçimi
 description: Bu konu, Azure Data Factory ' de avro biçimi ile nasıl başa çıkılacağını açıklamaktadır.
 author: linda33wj
-manager: shwang
-ms.reviewer: craigg
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/15/2020
 ms.author: jingwang
-ms.openlocfilehash: 7d61121b4c80b7b89ec29ade4ab1bfab91a660d9
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4be499e8e304f34b1cab10aed41b5b98a5f24e9b
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96010563"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100392604"
 ---
 # <a name="avro-format-in-azure-data-factory"></a>Azure Data Factory avro biçimi
 
@@ -67,7 +64,7 @@ Etkinlikleri tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi iç
 
 ### <a name="avro-as-source"></a>Kaynak olarak avro
 
-Aşağıdaki özellikler kopyalama etkinliği **_ \_ kaynağı \**** bölümünde desteklenir.
+Aşağıdaki özellikler, etkinlik ***\* kaynağını \**** kopyalama bölümünde desteklenir.
 
 | Özellik      | Açıklama                                                  | Gerekli |
 | ------------- | ------------------------------------------------------------ | -------- |
@@ -76,7 +73,7 @@ Aşağıdaki özellikler kopyalama etkinliği **_ \_ kaynağı \**** bölümünd
 
 ### <a name="avro-as-sink"></a>Avro as havuzu
 
-Aşağıdaki özellikler kopyalama etkinliği **_ \_ Havuz \**** bölümünde desteklenir.
+Aşağıdaki özellikler, etkinlik ***\* havuzunu \**** Kopyala bölümünde desteklenir.
 
 | Özellik      | Açıklama                                                  | Gerekli |
 | ------------- | ------------------------------------------------------------ | -------- |
@@ -107,7 +104,7 @@ Aşağıdaki tabloda, bir avro kaynağı tarafından desteklenen özellikler lis
 | Dosya listesi | Kaynağınızın işlenecek dosyaları listeleyen bir metin dosyasına işaret edip etmediğini belirtir | hayır | `true` veya `false` | Si |
 | Dosya adının depolanacak sütun | Kaynak dosya adı ve yolu ile yeni bir sütun oluşturma | hayır | Dize | rowUrlColumn |
 | Tamamlandıktan sonra | İşlemden sonra dosyaları silin veya taşıyın. Dosya yolu, kapsayıcı kökünden başlar | hayır | Sil: `true` veya `false` <br> Geçiş `['<from>', '<to>']` | purgeFiles <br> moveFiles |
-| Son değiştirme ölçütü | En son değiştirildiklerinde dosyaları filtrelemek için seçin | hayır | Zaman damgası | Modıfıedafter <br> modifiedBefore |
+| Son değiştirme ölçütü | En son değiştirildiklerinde dosyaları filtrelemek için seçin | hayır | Timestamp | Modıfıedafter <br> modifiedBefore |
 | Dosya bulunamamış izin ver | True ise bir dosya bulunmazsa bir hata oluşturulmaz | hayır | `true` veya `false` | ıgnorenofilesfound |
 
 ### <a name="sink-properties"></a>Havuz özellikleri

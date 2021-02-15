@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/05/2020
 ms.author: sttsinar
 ms.custom: include file
-ms.openlocfilehash: bd31152c6742271658cf4fd7ac2a5e2957651c84
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: e22c2b7cb561e30e84ea5ede5481fbdc35be8cdf
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96476939"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100515089"
 ---
 Azure Işlem, belirli bir donanım türüne yalıtılmış ve tek bir müşteriye adanmış sanal makine boyutları sunar. Yalıtılmış boyutlar canlı ve belirli donanım nesli üzerinde çalışır ve donanım oluşturma kullanımdan kaldırıldığında kullanım dışı kalır.
 
@@ -23,14 +23,14 @@ Yalıtılmış sanal makine boyutları, diğer müşterilerin iş yüklerinden, 
 Ayrıca, yalıtılmış boyut sanal makineleri büyük olduğu için müşteriler, [iç içe geçmiş sanal makineler Için Azure desteği](https://azure.microsoft.com/blog/nested-virtualization-in-azure/)'ni kullanarak bu VM 'lerin kaynaklarını alt bölümlere ayırarak seçebiliriz.
 
 Geçerli yalıtılmış sanal makine teklifleri şunları içerir:
-* Standard_E64is_v3
-* Standard_E64i_v3
 * Standard_E80ids_v4
 * Standard_E80is_v4
+* Standard_F72s_v2
+* Standard_E64is_v3
+* Standard_E64i_v3
 * Standard_M128ms
 * Standard_GS5
 * Standard_G5
-* Standard_F72s_v2
 
 
 > [!NOTE]
@@ -38,7 +38,7 @@ Geçerli yalıtılmış sanal makine teklifleri şunları içerir:
 
 ## <a name="deprecation-of-isolated-vm-sizes"></a>Yalıtılmış VM boyutlarının kullanımdan kaldırılması
 
-Yalıtılmış VM boyutları, donanım bağlantılı boyutlardır, Azure, boyutların resmi kullanım dışı bırakılmasıyla birlikte 12 ay boyunca anımsatıcılar sağlar.  Ayrıca, Azure, müşterinin iş yüklerini üzerine taşımayı düşünebileceği bir sonraki donanım sürümümüzde güncelleştirilmiş bir yalıtılmış boyut sunar.
+Yalıtılmış VM boyutları bir donanım sınırlı ömrü vardır. Azure, boyutların resmi kullanım dışı bırakılmasıyla ilgili 12 ay önce anımsatıcılar verir ve sizin de sizin de sizin için güncel bir yalıtılmış teklif sağlar.
 
 | Boyut | Yalıtım kullanımdan kaldırma tarihi | 
 | --- | --- |
@@ -49,11 +49,11 @@ Yalıtılmış VM boyutları, donanım bağlantılı boyutlardır, Azure, boyutl
 
 
 ## <a name="faq"></a>SSS
-### <a name="q-is-the-size-going-to-get-retired-or-only-isolation-feature-is"></a>S: Bu boyut, kullanımdan kalkması veya yalnızca "yalıtım" özelliği mi olacak?
+### <a name="q-is-the-size-going-to-get-retired-or-only-its-isolation-feature"></a>S: boyut, kullanımdan kalkması veya yalnızca "yalıtım" özelliğine gidiyor mu?
 Y **: sanal** makine boyutunun "i" alt indisi yoksa yalnızca "yalıtım" özelliği devre dışı bırakılır. Yalıtım gerekmiyorsa, gerçekleştirilecek bir eylem yoktur ve VM beklendiği gibi çalışmaya devam eder. Örnekler şunlardır Standard_DS15_v2, Standard_D15_v2, Standard_M128ms vb. Sanal makine boyutu "i" alt indisi içeriyorsa, boyut kullanımdan kaldırılacak.
 
 ### <a name="q-is-there-a-downtime-when-my-vm-lands-on-a-non-isolated-hardware"></a>S: sanal makine, yalıtılmış olmayan bir donanımda yer aldığı zaman kapalı kalma süresi var mı?
-**A** Y: yalıtıma gerek duyulmadığında hiçbir işlem yapılması gerekmez ve kapalı kalma süresi olmayacaktır.
+Y: yalıtıma gerek duyulmadığında hiçbir işlem yapılması gerekmez ve kapalı kalma süresi olmayacaktır.
 
 ### <a name="q-is-there-any-cost-delta-for-moving-to-a-non-isolated-virtual-machine"></a>S: yalıtılmış olmayan bir sanal makineye geçmek için herhangi bir maliyet Delta mı var?
 Y **: Hayır**
@@ -65,7 +65,7 @@ Y **: yalıtılmış** boyutun resmi kullanım dışı bırakılmasının sonund
 Y **: Hayır**. Service Fabric [dayanıklılık katmanları](../articles/service-fabric/service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster) tarafından belirtilen garantiler, bu değişiklikten sonra bile çalışmaya devam edecektir. Diğer nedenlerle fiziksel donanım yalıtımına ihtiyacınız varsa yukarıda açıklanan eylemlerden birini yapmanız gerekebilir. 
  
 ### <a name="q-what-are-the-milestones-for-d15_v2-or-ds15_v2-isolation-retirement"></a>S: D15_v2 veya DS15_v2 yalıtımı kullanımdan kaldırma için kilometre taşları nelerdir? 
-**A** Y: 
+Y: 
  
 | Tarih | Eylem |
 |---|---| 

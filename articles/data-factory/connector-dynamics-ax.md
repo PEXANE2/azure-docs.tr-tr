@@ -1,23 +1,18 @@
 ---
 title: Dynamics AX 'ten veri kopyalama
 description: Azure Data Factory bir işlem hattındaki kopyalama etkinliğini kullanarak Dynamics AX 'ten desteklenen havuz veri depolarına veri kopyalamayı öğrenin.
-services: data-factory
-documentationcenter: ''
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 06/12/2020
-ms.openlocfilehash: b4dbedc0a30c80748ffc27bb7e17c86067ca0238
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 38ff77ad56f16fbd33b77021b18be77f6a153b3f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92638168"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100380993"
 ---
 # <a name="copy-data-from-dynamics-ax-by-using-azure-data-factory"></a>Azure Data Factory kullanarak Dynamics AX 'ten veri kopyalama
 
@@ -45,7 +40,7 @@ Dynamics AX 'ten desteklenen herhangi bir havuz veri deposuna veri kopyalayabili
 
 Aşağıdaki bölümlerde, Dynamics AX bağlayıcısına özgü Data Factory varlıkları tanımlamak için kullanabileceğiniz özellikler hakkında ayrıntılı bilgi sağlanmaktadır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Hizmet sorumlusu kimlik doğrulamasını kullanmak için şu adımları izleyin:
 
@@ -63,13 +58,13 @@ Dynamics AX bağlı hizmeti için aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | **Type** özelliği **DynamicsAx** olarak ayarlanmalıdır. |Evet |
-| url | Dynamics AX (veya Dynamics 365 finans ve Operations) örneği OData uç noktası. |Evet |
-| Serviceprincipalıd | Uygulamanın istemci KIMLIĞINI belirtin. | Evet |
-| Servicesprincipalkey | Uygulamanın anahtarını belirtin. Data Factory güvenli bir şekilde depolamak için bu alanı **SecureString** olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | Evet |
-| Kiracı | Uygulamanızın altında bulunduğu kiracı bilgilerini (etki alanı adı veya kiracı KIMLIĞI) belirtin. Fareyi, Azure portal sağ üst köşesine getirerek alın. | Evet |
-| Aadresourceıd | Yetkilendirme için istediğiniz AAD kaynağını belirtin. Örneğin, Dynamics URL 'niz ise `https://sampledynamics.sandbox.operations.dynamics.com/data/` , karşılık gelen AAD kaynağı genellikle olur `https://sampledynamics.sandbox.operations.dynamics.com` . | Evet |
-| connectVia | Veri deposuna bağlanmak için kullanılacak [Integration Runtime](concepts-integration-runtime.md) . Azure Integration Runtime veya şirket içinde barındırılan Integration Runtime (veri depolubir özel ağda bulunuyorsa) seçeneğini belirleyebilirsiniz. Belirtilmemişse, varsayılan Azure Integration Runtime kullanılır. |Hayır |
+| tür | **Type** özelliği **DynamicsAx** olarak ayarlanmalıdır. |Yes |
+| url | Dynamics AX (veya Dynamics 365 finans ve Operations) örneği OData uç noktası. |Yes |
+| Serviceprincipalıd | Uygulamanın istemci KIMLIĞINI belirtin. | Yes |
+| Servicesprincipalkey | Uygulamanın anahtarını belirtin. Data Factory güvenli bir şekilde depolamak için bu alanı **SecureString** olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | Yes |
+| Kiracı | Uygulamanızın altında bulunduğu kiracı bilgilerini (etki alanı adı veya kiracı KIMLIĞI) belirtin. Fareyi, Azure portal sağ üst köşesine getirerek alın. | Yes |
+| Aadresourceıd | Yetkilendirme için istediğiniz AAD kaynağını belirtin. Örneğin, Dynamics URL 'niz ise `https://sampledynamics.sandbox.operations.dynamics.com/data/` , karşılık gelen AAD kaynağı genellikle olur `https://sampledynamics.sandbox.operations.dynamics.com` . | Yes |
+| connectVia | Veri deposuna bağlanmak için kullanılacak [Integration Runtime](concepts-integration-runtime.md) . Azure Integration Runtime veya şirket içinde barındırılan Integration Runtime (veri depolubir özel ağda bulunuyorsa) seçeneğini belirleyebilirsiniz. Belirtilmemişse, varsayılan Azure Integration Runtime kullanılır. |No |
 
 **Örnek**
 
@@ -107,8 +102,8 @@ Dynamics AX 'ten veri kopyalamak için veri kümesinin **Type** özelliğini **D
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Veri kümesinin **Type** özelliği **Dynamicsaxresource** olarak ayarlanmalıdır. | Evet |
-| path | Dynamics AX OData varlığının yolu. | Evet |
+| tür | Veri kümesinin **Type** özelliği **Dynamicsaxresource** olarak ayarlanmalıdır. | Yes |
+| path | Dynamics AX OData varlığının yolu. | Yes |
 
 **Örnek**
 
@@ -141,9 +136,9 @@ Dynamics AX 'ten veri kopyalamak için kopyalama etkinliğindeki **kaynak** tür
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Kopyalama etkinliği kaynağının **Type** özelliği **Dynamicsaxsource** olarak ayarlanmalıdır. | Evet |
-| sorgu | Verileri filtrelemek için OData sorgu seçenekleri. Örnek: `"?$select=Name,Description&$top=5"`.<br/><br/>**Note** : bağlayıcı, VERILERI birleştirilmiş URL 'den kopyalar: `[URL specified in linked service]/[path specified in dataset][query specified in copy activity source]` . Daha fazla bilgi için bkz. [OData URL bileşenleri](https://www.odata.org/documentation/odata-version-3-0/url-conventions/). | Hayır |
-| httpRequestTimeout | HTTP isteğinin yanıt almak için zaman aşımı ( **TimeSpan** değeri). Bu değer, yanıt verilerinin okunması için zaman aşımı değil, yanıt almaya yönelik zaman aşımı değeridir. Belirtilmemişse, varsayılan değer **00:30:00** ' dir (30 dakika). | Hayır |
+| tür | Kopyalama etkinliği kaynağının **Type** özelliği **Dynamicsaxsource** olarak ayarlanmalıdır. | Yes |
+| sorgu | Verileri filtrelemek için OData sorgu seçenekleri. Örnek: `"?$select=Name,Description&$top=5"`.<br/><br/>**Note**: bağlayıcı, VERILERI birleştirilmiş URL 'den kopyalar: `[URL specified in linked service]/[path specified in dataset][query specified in copy activity source]` . Daha fazla bilgi için bkz. [OData URL bileşenleri](https://www.odata.org/documentation/odata-version-3-0/url-conventions/). | No |
+| httpRequestTimeout | HTTP isteğinin yanıt almak için zaman aşımı ( **TimeSpan** değeri). Bu değer, yanıt verilerinin okunması için zaman aşımı değil, yanıt almaya yönelik zaman aşımı değeridir. Belirtilmemişse, varsayılan değer **00:30:00** ' dir (30 dakika). | No |
 
 **Örnek**
 

@@ -4,15 +4,15 @@ description: Azure savunma güvenlik temeli, Azure Güvenlik kıyaslaması 'nda 
 author: msmbaldwin
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 11/20/2020
+ms.date: 02/12/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 92c57c863cf09fee500b3ea7392757a4f729e4a5
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: d20a646eb7675efdab4cbdc5f13e929544dceaa3
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98723940"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100392383"
 ---
 # <a name="azure-security-baseline-for-azure-bastion"></a>Azure için Azure Güvenlik temeli
 
@@ -69,7 +69,11 @@ Gateway Manager ve Azure hizmet etiketi bağlantısı, Azure sertifikaları tara
 
 **Kılavuz**: Azure savunma, Azure 'un varsayılan kimlik ve erişim yönetimi hizmeti olan Azure Active Directory (Azure AD) ile tümleşiktir. Kullanıcılar, Azure savunma hizmetini (oluşturma, güncelleştirme ve silme kaynaklarını) yönetmek için Azure AD kimlik doğrulaması 'nı kullanarak Azure portal erişebilirler.
 
-Azure ile sanal makinelere bağlantı kurma, bir SSH anahtarı veya Kullanıcı adı/parola kullanır ve şu anda Azure AD kimlik bilgilerinin kullanılmasını desteklememektedir.
+Azure ile sanal makinelere bağlantı kurma, bir SSH anahtarı veya Kullanıcı adı/parola kullanır ve şu anda Azure AD kimlik bilgilerinin kullanılmasını desteklememektedir. 
+
+SSH anahtarlarınızı Azure Key Vault gizli dizi olarak saklayabilir ve Azure savunma kullanarak sanal makinelerinize bağlanmak için bu gizli dizileri kullanabilirsiniz. Bireysel kullanıcılara veya Azure AD gruplarına [Key Vault erişim ilkeleri atayarak](../key-vault/general/assign-access-policy-portal.md) , bu gizli anahtarlara Kullanıcı erişimini denetleyebilirsiniz. Kullanıcılarınız bir sanal makineye bağlanmak için bu yöntemi kullanmak üzere aşağıdaki izinlere sahip olacaktır:
+- Seçilen Azure Key Vault depolanan sırlar için erişim **sağlayın**
+- Seçilen Azure Key Vault depolanan gizli dizileri için erişimi **listeleyin**
 
 Bir SSH anahtarına veya Kullanıcı adına/parolaya ek olarak, Azure 'a yönelik sanal makinelere bağlanırken, kullanıcılarınız aşağıdaki rol atamalarına ihtiyaç duyar:
 - Hedef sanal makinede okuyucu rolü
@@ -106,7 +110,8 @@ Daha fazla bilgi için aşağıdaki başvuruları inceleyin:
 
 ### <a name="im-4-use-strong-authentication-controls-for-all-azure-active-directory-based-access"></a>IM-4: Tüm Azure Active Directory tabanlı erişim girişimleri için güçlü kimlik doğrulaması denetimleri kullanın
 
-**Kılavuz**: Azure savunma, hizmetin erişimi ve yönetimi için Azure Active Directory (Azure AD) ile tümleşiktir. Azure AD kiracınız için Azure Multi-Factor Authentication 'i yapılandırın. Azure AD, Multi-Factor Authentication (MFA) ve güçlü parolasız yöntemler aracılığıyla güçlü kimlik doğrulama denetimlerini destekler.  
+**Kılavuz**: Azure savunma, hizmetin erişimi ve yönetimi için Azure Active Directory (Azure AD) ile tümleşiktir. Azure AD kiracınız için Azure Active Directory Multi-Factor Authentication yapılandırın. Azure AD, Multi-Factor Authentication (MFA) ve güçlü parolasız yöntemler aracılığıyla güçlü kimlik doğrulama denetimlerini destekler.
+  
 - Multi-Factor Authentication: Azure AD MFA 'yı etkinleştirin ve MFA kurulumlarınız için Azure Güvenlik Merkezi kimlik ve erişim yönetimi önerilerini izleyin. MFA, tüm kullanıcılar, kullanıcılar veya oturum açma koşulları ve risk faktörleri temelinde Kullanıcı başına düzeyinde zorlanabilir. 
 
 - Passwordless kimlik doğrulaması: üç adet passwordless kimlik doğrulama seçeneği mevcuttur: Iş için Windows Hello, Microsoft Authenticator uygulaması ve akıllı kartlar gibi şirket içi kimlik doğrulama yöntemleri. 
@@ -375,7 +380,7 @@ Azure savunma kaynağınızın dağıtıldığı sanal ağlara uygulanan ağ gü
 
 - [Azure 'da günlüğe kaydetme ve farklı günlük türlerini anlama](../azure-monitor/platform/platform-logs-overview.md)
 
-- [Azure için Azure Kaynak günlüklerini etkinleştirme ](diagnostic-logs.md)
+- [Azure için Azure Kaynak günlüklerini etkinleştirme](diagnostic-logs.md)
 
 **Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 

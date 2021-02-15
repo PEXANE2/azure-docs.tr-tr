@@ -4,23 +4,22 @@ description: Web hizmetine erişildiğinde modelinizin davranışını değişti
 services: machine-learning
 author: likebupt
 ms.author: keli19
-editor: cgronlun
 ms.assetid: c49187db-b976-4731-89d6-11a0bf653db1
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.workload: data-services
 ms.topic: how-to
 ms.date: 01/12/2017
-ms.openlocfilehash: 4a5857e44623f545f2807592c0f6f7b6dae366f1
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 49814d01209b58666c011a6bbd7fe6c328d460f8
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93308623"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100518343"
 ---
 # <a name="use-azure-machine-learning-studio-classic-web-service-parameters"></a>Azure Machine Learning Studio (klasik) Web hizmeti parametrelerini kullanma
 
-**Uygulama hedefi:** ![ İçin geçerlidir. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasik) ![ için geçerlidir. ](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
+**Uygulama hedefi:** ![ İçin geçerlidir. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasik) ![ için geçerlidir.](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
 
 Yapılandırılabilir parametrelere sahip modüller içeren bir deneme yayımlayarak bir Azure Machine Learning Web hizmeti oluşturulur. Bazı durumlarda, Web hizmeti çalışırken modül davranışını değiştirmek isteyebilirsiniz. *Web hizmeti parametreleri* bu görevi yapmanıza izin verir. 
@@ -66,7 +65,7 @@ Web hizmetine yönelik API belgeleri Web hizmetine erişirken Web hizmeti parame
 5. Web hizmeti parametresi için varsayılan bir değer sağlamak üzere, adın sağ tarafındaki simgeye tıklayın, "varsayılan değer sağla" seçeneğini belirleyin, bir değer girin (örneğin, "kapsayıcı1/output1.csv") ve **ENTER** tuşuna basın.
    
    ![Web hizmeti parametresi](./media/web-service-parameters/parameter.png)
-6. **Çalıştır** 'a tıklayın. 
+6. **Çalıştır**'a tıklayın. 
 7. Web **Hizmeti Dağıt ' a** tıklayın ve Web hizmetini dağıtmak için Web Hizmeti Dağıt **[klasik]** veya Web hizmeti dağıtma [ **Yeni]** seçeneğini belirleyin.
 
 > [!NOTE] 

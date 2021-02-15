@@ -5,15 +5,14 @@ author: ssabat
 ms.author: susabat
 ms.reviewer: susabat
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: troubleshooting
 ms.date: 12/03/2020
-ms.openlocfilehash: e5e1a4ff676a6677357638dc4b67dc94926adbd2
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: 091c0cb20877090453f38ab922cc2bd277e90093
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98556316"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100393760"
 ---
 # <a name="troubleshoot-ci-cd-azure-devops-and-github-issues-in-adf"></a>ADF 'de CI-CD, Azure DevOps ve GitHub sorunlarını giderme 
 
@@ -78,14 +77,14 @@ CI/CD yayın işlem hattı aşağıdaki hatayla başarısız oldu:
 
 #### <a name="cause"></a>Nedeni
 
-Bunun nedeni, hedef fabrikada aynı ada sahip olan ancak farklı türde bir Integration Runtime. Integration Runtime, dağıtım sırasında aynı türde olmalıdır.
+Bunun nedeni, hedef fabrikada aynı ada sahip ancak farklı türde bir tümleştirme çalışma zamanı. Integration Runtime, dağıtım sırasında aynı türde olmalıdır.
 
 #### <a name="recommendation"></a>Öneri
 
 - Aşağıdaki CI/CD için En Iyi yöntemlere başvurun:
 
     https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment#best-practices-for-cicd 
-- Tümleştirme çalışma zamanları sıklıkla değişmez ve CI/CD 'nizin tüm aşamalarında benzerdir, bu nedenle Data Factory CI/CD 'nin tüm aşamalarında aynı ad ve türde tümleştirme çalışma zamanı olmasını bekler. Ad ve türler & Özellikler farklıysa, kaynak ve hedef IR yapılandırmasıyla eşleştiğinden emin olun ve ardından yayın işlem hattını dağıtın.
+- Tümleştirme çalışma zamanları sıklıkla değişmez ve CI/CD 'nizin tüm aşamalarında benzerdir, bu nedenle Data Factory CI/CD 'nin tüm aşamalarında aynı ad ve türde tümleştirme çalışma zamanı olmasını bekler. Ad ve türler & Özellikler farklıysa, kaynak ve hedef tümleştirme çalışma zamanı yapılandırmasıyla eşleştiğinden emin olun ve ardından yayın işlem hattını dağıtın.
 - Tümleştirme çalışma zamanlarını tüm aşamalarda paylaşmak istiyorsanız, paylaşılan tümleştirme çalışma zamanlarını içerecek şekilde, Üçlü bir fabrika kullanmayı düşünün. Bu paylaşılan fabrikası tüm ortamlarınızda bağlantılı tümleştirme çalışma zamanı türü olarak kullanabilirsiniz.
 
 ### <a name="document-creation-or-update-failed-because-of-invalid-reference"></a>Belge oluşturma veya güncelleştirme geçersiz başvuru nedeniyle başarısız oldu
@@ -133,7 +132,7 @@ Data Factory bir kaynak grubundan diğerine taşınamıyor, şu hata ile başar�
 
 #### <a name="resolution"></a>Çözüm
 
-Taşıma işlemine izin vermek için SSIS-IR ve paylaşılan IRS 'yi silmeniz gerekir. IRS 'yi silmek istemiyorsanız, kopyalama ve kopyalama belgeyi izleyerek kopyayı, sonra da eski veri fabrikasını silebilmeniz için en iyi yoldur.
+Taşıma işlemine izin vermek için SSIS-IR ve paylaşılan IRS 'yi silmeniz gerekir. Tümleştirme çalışma zamanlarını silmek istemiyorsanız en iyi yol, kopyalama ve kopyalama belgesini izleyerek kopyayı, sonra da eski Data Factory silmez.
 
 ###  <a name="unable-to-export-and-import-arm-template"></a>ARM şablonu dışarı ve içeri aktarılamıyor
 
@@ -150,6 +149,34 @@ Kullanıcı olarak bir müşteri rolü oluşturdunuz ve gerekli izne sahip deği
 #### <a name="resolution"></a>Çözüm
 
 Bu sorunu çözmek için şu izni rolünüze eklemeniz gerekir: *Microsoft. DataFactory/Factory/queryFeaturesValue/Action*. Bu izin, varsayılan olarak "Data Factory katkıda bulunan" rolünde yer almalıdır.
+
+###  <a name="automatic-publishing-for-cicd-without-clicking-publish-button"></a>Yayınla düğmesine tıklamadan CI/CD için otomatik yayımlama  
+
+#### <a name="issue"></a>Sorun
+
+ADF portalında el ile yayımlama düğmesi, otomatik CI/CD işlemini etkinleştirmez.
+
+#### <a name="cause"></a>Nedeni
+
+Son olarak, dağıtımlar için ADF işlem hattını yayımlamanın yalnızca bir yolu ADF Portal düğmesine tıklamıştı. Artık işlemi otomatik hale getirebilirsiniz. 
+
+#### <a name="resolution"></a>Çözüm
+
+CI/CD işlemi geliştirilmiştir. **Otomatik yayımlama** ÖZELLIĞI, ADF UX 'deki tüm Azure Resource Manager (ARM) şablonu özelliklerini doğrular ve dışarı aktarır. Genel kullanıma açık bir NPM paketi aracılığıyla mantıksal tüketilebilir hale gelir [@microsoft/azure-data-factory-utilities](https://www.npmjs.com/package/@microsoft/azure-data-factory-utilities) . Bu, ADF Kullanıcı arabirimine gidip bir düğme tıklamasına gerek kalmadan, bu eylemleri programlı bir şekilde tetiklemeniz sağlar. Bu, CI/CD işlem hatlarınızı **gerçek** bir sürekli tümleştirme deneyimi sağlar. Ayrıntılar için lütfen [ADF CI/CD yayımlama geliştirmelerini](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment-improvements) izleyin. 
+
+###  <a name="cannot-publish-because-of-4mb-arm-template-limit"></a>4mb ARM şablon sınırı nedeniyle yayımlanamıyor  
+
+#### <a name="issue"></a>Sorun
+
+4 MB 'lık toplam şablon boyutu sınırına Azure Resource Manager ulaşırsanız, dağıtım yapabilirsiniz. Sınırı geçtikten sonra dağıtım için bir çözüme ihtiyacınız vardır. 
+
+#### <a name="cause"></a>Nedeni
+
+Azure Resource Manager şablon boyutunu 4mb olarak kısıtlar. Şablonunuzun boyutunu 4 MB ve her bir parametre dosyası 64 KB olarak sınırlandırın. 4 MB sınırı, yineleme, yinelemeli kaynak tanımları ve değişkenler ve parametreler için genişletildikten sonra şablonun son durumuna uygulanır. Ancak sınırı geçtin. 
+
+#### <a name="resolution"></a>Çözüm
+
+Küçük ve orta ölçekli çözümler için tek bir şablonun anlaşılması ve bakımının yapılması daha kolay olacaktır. Tüm kaynakları ve değerleri tek bir dosyada görebilirsiniz. Gelişmiş senaryolarda bağlantılı şablonlar çözümü hedeflenen bileşenlere ayırmanıza sağlar. Lütfen [bağlı ve Iç Içe Şablonlar kullanma](https://docs.microsoft.com/azure/azure-resource-manager/templates/linked-templates?tabs=azure-powershell)konusunda en iyi uygulamaları izleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

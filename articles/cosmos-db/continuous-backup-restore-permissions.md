@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 02/01/2021
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 9d30f5325162b9ea447d54aadc092dbd9aa29132
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 82af70547d20509c48f1e07bbc7610fc666a6da1
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99538840"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100393063"
 ---
 # <a name="manage-permissions-to-restore-an-azure-cosmos-db-account"></a>Azure Cosmos DB hesabı geri yüklemek için izinleri yönetme
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -30,7 +30,7 @@ Kapsam, erişimi olan bir kaynak kümesidir ve kapsamlar hakkında daha fazla bi
 
 ## <a name="assign-roles-for-restore-using-the-azure-portal"></a>Azure portal kullanarak geri yükleme için roller atama
 
-Geri yükleme gerçekleştirmek için bir kullanıcının veya sorumlunun geri yükleme izni ("geri yükleme/eylem" izni) ve yeni bir hesap sağlama izni ("yazma" izni) gerekir.  Bu izinleri vermek için, Owner rol içinde yerleşik olarak bulunan "CosmosRestoreOperator" ve "Cosmos DB Işleci" öğesini bir sorumluya atayabilir.
+Bir geri yükleme gerçekleştirmek için, bir kullanıcının veya sorumlunun geri yükleme izni ( *geri yükleme/eylem* izni) ve yeni bir hesap sağlama ( *yazma* izni) izni olması gerekir.  Bu izinleri vermek için, sahibi `CosmosRestoreOperator` ve `Cosmos DB Operator` yerleşik rollerini bir sorumluya atayabilir.
 
 1. [Azure Portal](https://portal.azure.com/) oturum açın
 
@@ -40,7 +40,7 @@ Geri yükleme gerçekleştirmek için bir kullanıcının veya sorumlunun geri y
 
    :::image type="content" source="./media/continuous-backup-restore-permissions/assign-restore-operator-roles.png" alt-text="CosmosRestoreOperator ve Cosmos DB Işleç rolleri atayın." border="true":::
 
-1. "Geri yükleme/eylem izni" vermek için **Kaydet** ' i seçin.
+1. *Geri yükleme/eylem* iznini vermek için **Kaydet** ' i seçin.
 
 1. Yazma iznini vermek için adım 3 ' ü **Cosmos DB operatör** rolüyle tekrarlayın. Bu rolü Azure portal atarken, aboneliğin tamamına geri yükleme izni verir.
 
@@ -52,7 +52,7 @@ Geri yükleme gerçekleştirmek için bir kullanıcının veya sorumlunun geri y
 |Kaynak grubu | /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/Example-cosmosdb-rg |
 |CosmosDB geri yüklenebilen hesap kaynağı | /Subscriptions/00000000-0000-0000-0000-000000000000/Providers/Microsoft.DocumentDB/Locations/Batı ABD/Restokıbledatabaseaccounts/23e99a35-cd36-4df4-9614-f767a03b9995|
 
-Geri yüklenebilen hesap kaynağı, `az cosmosdb restorable-database-account list --name <accountname>` PowerShell 'de CLI veya cmdlet 'teki komutun çıktısından ayıklanabilir `Get-AzCosmosDBRestorableDatabaseAccount -DatabaseAccountName <accountname>` . Çıkışdaki ad özniteliği, geri yüklenebilen hesabın "InstanceId" öğesini temsil eder. Daha fazla bilgi için bkz. [PowerShell](continuous-backup-restore-powershell.md) veya [CLI](continuous-backup-restore-command-line.md) makalesi.
+Geri yüklenebilen hesap kaynağı, `az cosmosdb restorable-database-account list --name <accountname>` PowerShell 'de CLI veya cmdlet 'teki komutun çıktısından ayıklanabilir `Get-AzCosmosDBRestorableDatabaseAccount -DatabaseAccountName <accountname>` . Çıkışdaki Name özniteliği, geri yüklenebilen hesabın öğesini temsil eder `instanceID` . Daha fazla bilgi için bkz. [PowerShell](continuous-backup-restore-powershell.md) veya [CLI](continuous-backup-restore-command-line.md) makalesi.
 
 ## <a name="permissions"></a>İzinler
 
@@ -60,11 +60,11 @@ Sürekli yedekleme modu hesapları için geri yükleme ile ilgili farklı etkinl
 
 |İzin  |Etki  |En düşük kapsam  |En yüksek kapsam  |
 |---------|---------|---------|---------|
-|Microsoft. resources/dağıtımlar/Validate/ACTION, Microsoft. resources/dağıtımlar/Write | Bu izinler, geri yüklenen hesabı oluşturmak için ARM şablon dağıtımı için gereklidir. Bu rolün nasıl ayarlanacağı için aşağıdaki örnek izin [Restokıbleaction]() bölümüne bakın. | Uygulanamaz | Uygulanamaz  |
+|`Microsoft.Resources/deployments/validate/action`, `Microsoft.Resources/deployments/write` | Bu izinler, geri yüklenen hesabı oluşturmak için ARM şablon dağıtımı için gereklidir. Bu rolün nasıl ayarlanacağı için aşağıdaki örnek izin [Restokıbleaction](#custom-restorable-action) bölümüne bakın. | Uygulanamaz | Uygulanamaz  |
 |Microsoft.DocumentDB/databaseAccounts/Write | Bu izin, bir hesabı bir kaynak grubuna geri yüklemek için gereklidir | Geri yüklenen hesabın oluşturulduğu kaynak grubu. | Geri yüklenen hesabın oluşturulduğu abonelik |
-|Microsoft.DocumentDB/Locations/Restokıbledatabaseaccounts/restore/Action |Bu izin, geri yükleme eylemlerinin üzerinde gerçekleştirilmesine izin vermek için kaynak yeniden yüklenebilen veritabanı hesap kapsamında gereklidir.  | Geri yüklenmekte olan kaynak hesaba ait "Restoraybledatabaseaccount" kaynağı. Bu değer, geri yüklenebilen veritabanı hesabı kaynağının "ID" özelliği tarafından da verilir. Yeniden yüklenebilen bir hesap örneği `/subscriptions/subscriptionId/providers/Microsoft.DocumentDB/locations/regionName/restorableDatabaseAccounts/<guid-instanceid>` | Geri yüklenebilen veritabanı hesabını içeren abonelik. Kaynak grubu kapsam olarak seçilemez.  |
-|Microsoft.DocumentDB/Locations/Restokıbledatabaseaccounts/Read |Bu izin, geri yüklenebilen veritabanı hesaplarını listelemek için kaynak restozlenebilir veritabanı hesabı kapsamında gereklidir.  | Geri yüklenmekte olan kaynak hesaba ait "Restoraybledatabaseaccount" kaynağı. Bu değer, geri yüklenebilen veritabanı hesabı kaynağının "ID" özelliği tarafından da verilir. Yeniden yüklenebilen bir hesap örneği `/subscriptions/subscriptionId/providers/Microsoft.DocumentDB/locations/regionName/restorableDatabaseAccounts/<guid-instanceid>`| Geri yüklenebilen veritabanı hesabını içeren abonelik. Kaynak grubu kapsam olarak seçilemez.  |
-|Microsoft.DocumentDB/Locations/Restokıbledatabaseaccounts/*/Read | Bu izin, geri yüklenebilen bir hesaba yönelik veritabanları ve kapsayıcılar listesi gibi geri yüklenebilen kaynakların okunmasına izin vermek için kaynak yeniden yüklenebilen hesap kapsamında gereklidir.  | Geri yüklenmekte olan kaynak hesaba ait "Restoraybledatabaseaccount" kaynağı. Bu değer, geri yüklenebilen veritabanı hesabı kaynağının "ID" özelliği tarafından da verilir. Yeniden yüklenebilen bir hesap örneği `/subscriptions/subscriptionId/providers/Microsoft.DocumentDB/locations/regionName/restorableDatabaseAccounts/<guid-instanceid>`| Geri yüklenebilen veritabanı hesabını içeren abonelik. Kaynak grubu kapsam olarak seçilemez. |
+|`Microsoft.DocumentDB/locations/restorableDatabaseAccounts/restore/action` |Bu izin, geri yükleme eylemlerinin üzerinde gerçekleştirilmesine izin vermek için kaynak yeniden yüklenebilen veritabanı hesap kapsamında gereklidir.  | Geri yüklenmekte olan kaynak hesaba ait olan *Restooybledatabaseaccount* kaynağı. Bu değer, geri `ID` yüklenebilen veritabanı hesabı kaynağının özelliği tarafından da verilir. Geri yüklenebilen hesap örneği */Subscriptions/SubscriptionID/Providers/Microsoft.DocumentDB/Locations/regionName/Restokbledatabaseaccounts/<GUID-ınstanceıd>* | Geri yüklenebilen veritabanı hesabını içeren abonelik. Kaynak grubu kapsam olarak seçilemez.  |
+|`Microsoft.DocumentDB/locations/restorableDatabaseAccounts/read` |Bu izin, geri yüklenebilen veritabanı hesaplarını listelemek için kaynak restozlenebilir veritabanı hesabı kapsamında gereklidir.  | Geri yüklenmekte olan kaynak hesaba ait olan *Restooybledatabaseaccount* kaynağı. Bu değer, geri `ID` yüklenebilen veritabanı hesabı kaynağının özelliği tarafından da verilir. Geri yüklenebilen hesap örneği */Subscriptions/SubscriptionID/Providers/Microsoft.DocumentDB/Locations/regionName/Restokbledatabaseaccounts/<GUID-ınstanceıd>*| Geri yüklenebilen veritabanı hesabını içeren abonelik. Kaynak grubu kapsam olarak seçilemez.  |
+|`Microsoft.DocumentDB/locations/restorableDatabaseAccounts/*/read` | Bu izin, geri yüklenebilen bir hesaba yönelik veritabanları ve kapsayıcılar listesi gibi geri yüklenebilen kaynakların okunmasına izin vermek için kaynak yeniden yüklenebilen hesap kapsamında gereklidir.  | Geri yüklenmekte olan kaynak hesaba ait olan *Restooybledatabaseaccount* kaynağı. Bu değer, geri `ID` yüklenebilen veritabanı hesabı kaynağının özelliği tarafından da verilir. Geri yüklenebilen hesap örneği */Subscriptions/SubscriptionID/Providers/Microsoft.DocumentDB/Locations/regionName/Restokbledatabaseaccounts/<GUID-ınstanceıd>*| Geri yüklenebilen veritabanı hesabını içeren abonelik. Kaynak grubu kapsam olarak seçilemez. |
 
 ## <a name="azure-cli-role-assignment-scenarios-to-restore-at-different-scopes"></a>Farklı kapsamlardan geri yüklemek için Azure CLı rol atama senaryoları
 
@@ -82,7 +82,7 @@ az role assignment create --role "CosmosRestoreOperator" --assignee <email> –s
 
 * Belirli bir kaynak grubuna bir Kullanıcı yazma eylemi atayın. Bu eylem, kaynak grubunda yeni bir hesap oluşturmak için gereklidir.
 
-* Geri yüklenmesi gereken belirli bir geri yüklenebilen veritabanı hesabına "CosmosRestoreOperator" yerleşik rolünü atayın. Aşağıdaki komutta, "Restokıbledatabaseaccount" kapsamı, `az cosmosdb restorable-database-account` (CLI kullanılıyorsa) veya  `Get-AzCosmosDBRestorableDatabaseAccount` (PowerShell kullanılıyorsa) çıkışı IÇINDEKI "ID" özelliğinden alınır.
+* *Cosmosrestoreoperator* yerleşik rolünü, geri yüklenmesi gereken, geri yüklenebilen belirli bir veritabanı hesabına atayın. Aşağıdaki komutta, *Restokıbledatabaseaccount* KAPSAMı `ID` `az cosmosdb restorable-database-account` (CLI kullanılıyorsa) veya  `Get-AzCosmosDBRestorableDatabaseAccount` (PowerShell kullanılıyorsa) çıktısından özelliğinden alınır.
 
   ```azurecli-interactive
    az role assignment create --role "CosmosRestoreOperator" --assignee <email> –scope <RestorableDatabaseAccount>
@@ -91,11 +91,11 @@ az role assignment create --role "CosmosRestoreOperator" --assignee <email> –s
 ### <a name="assign-capability-to-restore-from-any-source-account-in-a-resource-group"></a>Kaynak grubundaki herhangi bir kaynak hesaptan geri yükleme özelliği atayın.
 Bu işlem şu anda desteklenmiyor.
 
-## <a name="custom-role-creation-for-restore-action-with-cli"></a>CLı ile geri yükleme eylemi için özel rol oluşturma
+## <a name="custom-role-creation-for-restore-action-with-cli"></a><a id="custom-restorable-action"></a>CLı ile geri yükleme eylemi için özel rol oluşturma
 
-Abonelik sahibi diğer Azure AD kimliğine geri yükleme izni verebilir. Geri yükleme izni, "Microsoft.DocumentDB/Locations/Restokıbledatabaseaccounts/restore/Action" eylemine dayalıdır ve geri yükleme izinlerine dahil edilmelidir. Bu rolün dahil olduğu "CosmosRestoreOperator" adlı yerleşik bir rol vardır. Bu yerleşik rolü kullanarak izni atayabilir ya da özel bir rol oluşturabilirsiniz.
+Abonelik sahibi diğer Azure AD kimliğine geri yükleme izni verebilir. Geri yükleme izni, eyleme dayalıdır: `Microsoft.DocumentDB/locations/restorableDatabaseAccounts/restore/action` ve geri yükleme iznine dahil edilmelidir. Bu rolün dahil olduğu *Cosmosrestoreoperator* adlı yerleşik bir rol vardır. Bu yerleşik rolü kullanarak izni atayabilir ya da özel bir rol oluşturabilirsiniz.
 
-Aşağıdaki Restokıbleaction özel bir rolü temsil eder. Bu rolü açıkça oluşturmanız gerekir. Aşağıdaki JSON şablonu, geri yükleme izniyle "Restokıbleaction" adlı özel bir rol oluşturuyor:
+Aşağıdaki Restokıbleaction özel bir rolü temsil eder. Bu rolü açıkça oluşturmanız gerekir. Aşağıdaki JSON şablonu geri yükleme izniyle birlikte bir özel rol *Restokıbleaction* oluşturur:
 
 ```json
 {

@@ -1,20 +1,20 @@
 ---
 title: Azure spot VM 'Leri kullanan bir ölçek kümesi oluşturma
 description: Maliyetlerden tasarruf etmek için spot VM 'Ler kullanan Azure sanal makine ölçek kümeleri oluşturmayı öğrenin.
-author: cynthn
-ms.author: cynthn
+author: JagVeerappan
+ms.author: jagaveer
 ms.topic: how-to
 ms.service: virtual-machine-scale-sets
 ms.subservice: spot
 ms.date: 03/25/2020
-ms.reviewer: jagaveer
+ms.reviewer: cynthn
 ms.custom: jagaveer, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 4c5386e2fad0ebdd30ca8f9a8f4933e8adaf5d6b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 03bf5e0ef7e6268e68139b6d73685f67d88f6231
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91729024"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100385940"
 ---
 # <a name="azure-spot-vms-for-virtual-machine-scale-sets"></a>Sanal Makine Ölçek Kümeleri için Azure spot VM 'Ler 
 
@@ -30,26 +30,44 @@ Spot örnekleri için fiyatlandırma, bölgeye ve SKU 'ya göre değişkendir. D
 
 Değişken fiyatlandırmayla, en fazla 5 ondalık basamak kullanarak ABD Doları (USD) cinsinden maksimum fiyat ayarlama seçeneğiniz vardır. Örneğin, değer, `0.98765` saat başına $0,98765 ABD Doları olan en yüksek fiyat olacaktır. En yüksek fiyatı olacak şekilde ayarlarsanız `-1` , örnek fiyata göre çıkarılmaz. Örneğin fiyatı, kapasite ve kota kullanılabilir olduğu sürece daha az olan bir standart örnek için geçerli fiyat veya fiyat fiyatı olacaktır.
 
+
+## <a name="limitations"></a>Sınırlamalar
+
+Azure noktası için aşağıdaki boyutlar desteklenmez:
+ - B serisi
+ - Her boyuttaki promosyon sürümleri (dv2, NV, NC, H promosyon boyutları gibi)
+
+Azure spot, Microsoft Azure Çin 21Vianet dışında herhangi bir bölgeye dağıtılabilir.
+
+<a name="channel"></a>
+
+Şu [teklif türleri](https://azure.microsoft.com/support/legal/offer-details/) Şu anda destekleniyor:
+
+-   Kurumsal Anlaşma
+-   Kullandıkça Öde teklifi kodu 003P
+-   Sponsorlu
+- Bulut hizmeti sağlayıcısı (CSP) için iş ortağınızla iletişime geçin
+
 ## <a name="eviction-policy"></a>Çıkarma ilkesi
 
-Spot ölçek kümeleri oluştururken, çıkarma ilkesini *serbest bırakma* (varsayılan) veya *silme*işlemleri için ayarlayabilirsiniz. 
+Spot ölçek kümeleri oluştururken, çıkarma ilkesini *serbest bırakma* (varsayılan) veya *silme* işlemleri için ayarlayabilirsiniz. 
 
 *Serbest bırakma* ilkesi, çıkarılan örnekleri yeniden dağıtmanıza izin vererek, çıkarılan örneklerinizi durdurulmuş serbest bırakılmış duruma kaydırır. Ancak, ayırmanın başarılı olacağını garanti etmez. Serbest bırakılmış VM 'Ler, ölçek kümesi örneği kotanıza göre sayılır ve temel disklerinizin ücreti alınır. 
 
-Çıkarma kümesini, çıkarıldıklarında silinmek üzere bir yere isterseniz, çıkarma ilkesini *silme*olarak ayarlayabilirsiniz. Çıkarma ilkesi silinmek üzere ayarlandığında, ölçek kümesi örnek sayısı özelliğini artırarak yeni VM 'Ler oluşturabilirsiniz. Çıkarılan VM 'Ler, temel disklerle birlikte silinir ve bu nedenle depolama alanı için ücretlendirilmeyecektir. Ayrıca, çıkarılan VM 'Leri otomatik olarak denemek ve dengelemek için ölçek kümelerinin otomatik ölçeklendirme özelliğini de kullanabilirsiniz; ancak, ayırmanın başarılı olacağını garanti etmez. Disk maliyetinden ve kota limitlerine ulaşmaktan kaçınmak için çıkarma ilkesini silme olarak belirlediğinizde, yalnızca spot ölçek kümelerinde otomatik ölçeklendirme özelliğini kullanmanız önerilir. 
+Çıkarma kümesini, çıkarıldıklarında silinmek üzere bir yere isterseniz, çıkarma ilkesini *silme* olarak ayarlayabilirsiniz. Çıkarma ilkesi silinmek üzere ayarlandığında, ölçek kümesi örnek sayısı özelliğini artırarak yeni VM 'Ler oluşturabilirsiniz. Çıkarılan VM 'Ler, temel disklerle birlikte silinir ve bu nedenle depolama alanı için ücretlendirilmeyecektir. Ayrıca, çıkarılan VM 'Leri otomatik olarak denemek ve dengelemek için ölçek kümelerinin otomatik ölçeklendirme özelliğini de kullanabilirsiniz; ancak, ayırmanın başarılı olacağını garanti etmez. Disk maliyetinden ve kota limitlerine ulaşmaktan kaçınmak için çıkarma ilkesini silme olarak belirlediğinizde, yalnızca spot ölçek kümelerinde otomatik ölçeklendirme özelliğini kullanmanız önerilir. 
 
 Kullanıcılar [Azure zamanlanan olaylar](../virtual-machines/linux/scheduled-events.md)aracılığıyla VM içi bildirimler almayı kabul edebilir. Bu, VM 'leriniz çıkarıldıktan sonra herhangi bir işi tamamlamak ve çıkarma öncesi görevleri gerçekleştirmek için 30 saniyelik bir işlem yapmanız durumunda size bildirir. 
 
 ## <a name="placement-groups"></a>Yerleştirme grupları
-Yerleştirme grubu, kendi hata etki alanları ve yükseltme etki alanları ile Azure kullanılabilirlik kümesine benzer bir yapıdır. Varsayılan olarak, bir ölçek kümesi en fazla 100 VM boyutuna sahip tek bir yerleştirme grubundan oluşur. Çağrılan ölçek kümesi özelliği `singlePlacementGroup` *false*olarak ayarlandıysa, ölçek kümesi birden çok yerleştirme grubundan oluşabilir ve 0-1000 VM aralığı vardır. 
+Yerleştirme grubu, kendi hata etki alanları ve yükseltme etki alanları ile Azure kullanılabilirlik kümesine benzer bir yapıdır. Varsayılan olarak, bir ölçek kümesi en fazla 100 VM boyutuna sahip tek bir yerleştirme grubundan oluşur. Çağrılan ölçek kümesi özelliği `singlePlacementGroup` *false* olarak ayarlandıysa, ölçek kümesi birden çok yerleştirme grubundan oluşabilir ve 0-1000 VM aralığı vardır. 
 
 > [!IMPORTANT]
 > , HPC ile InfiniBand kullanmıyorsanız, `singlePlacementGroup` bölge veya bölge genelinde daha iyi ölçekleme için birden çok yerleştirme grubunu etkinleştirmek üzere ölçek kümesi özelliğini *false* olarak ayarlamanız önemle önerilir. 
 
 ## <a name="deploying-spot-vms-in-scale-sets"></a>Ölçek kümelerinde spot VM 'Leri dağıtma
 
-Ölçek kümeleri üzerinde spot VM 'Leri dağıtmak için yeni *Öncelik* bayrağını *nokta*olarak ayarlayabilirsiniz. Ölçek kümesindeki tüm sanal makineler, spot olarak ayarlanacak. Spot VM 'Ler içeren bir ölçek kümesi oluşturmak için aşağıdaki yöntemlerden birini kullanın:
-- [Azure portalındaki](#portal)
+Ölçek kümeleri üzerinde spot VM 'Leri dağıtmak için yeni *Öncelik* bayrağını *nokta* olarak ayarlayabilirsiniz. Ölçek kümesindeki tüm sanal makineler, spot olarak ayarlanacak. Spot VM 'Ler içeren bir ölçek kümesi oluşturmak için aşağıdaki yöntemlerden birini kullanın:
+- [Azure portalı](#portal)
 - [Azure CLI](#azure-cli)
 - [Azure PowerShell](#powershell)
 - [Azure Resource Manager şablonları](#resource-manager-templates)
@@ -59,7 +77,7 @@ Yerleştirme grubu, kendi hata etki alanları ve yükseltme etki alanları ile A
 Spot VM 'Ler kullanan bir ölçek kümesi oluşturma işlemi Başlarken [makalesinde](quick-create-portal.md)ayrıntılıdır. Bir ölçek kümesi dağıttığınızda, spot bayrağını ve çıkarma ilkesini ayarlamayı seçebilirsiniz: ![ spot VM 'ler ile ölçek kümesi oluşturma](media/virtual-machine-scale-sets-use-spot/vmss-spot-portal-max-price.png)
 
 
-## <a name="azure-cli"></a>Azure CLI
+## <a name="azure-cli"></a>Azure CLI’si
 
 Spot VM 'Ler içeren bir ölçek kümesi oluşturma işlemi Başlarken [makalesinde](quick-create-cli.md)ayrıntılıdır. '--Priority noktası ' ve Ekle ' yi eklemeniz yeterlidir `--max-price` . Bu örnekte, `-1` Örneğin `--max-price` fiyata göre çıkarılamadığı için kullanırız.
 
@@ -163,22 +181,7 @@ Y **:** Evet, spot ölçek kümesinde otomatik ölçeklendirme kuralları ayarla
 
 **S:**  Otomatik ölçeklendirme, çıkarma ilkeleriyle (serbest bırakma ve silme) çalışır mi?
 
-Y **:** Evet, ancak çıkarma ilkenizi otomatik ölçeklendirme kullanırken silinmek üzere ayarlamanız önerilir. Bunun nedeni, serbest bırakılmış örneklerin ölçek kümesindeki kapasite saymanız ile sayılmasıyla kaynaklanır. Otomatik ölçeklendirme kullanırken, serbest bırakılmış, çıkarılan örnekler nedeniyle hedef örnek sayınıza büyük olasılıkla ulaşmanız gerekir. Ayrıca, ölçeklendirme operasyonlarınız, nokta çıkarmaları tarafından etkilenebilir. Örneğin, VMSS örnekleri, ölçek işlemleri sırasında birden çok spot çıkarmalar nedeniyle en az sayıda küme altına düşecek. 
-
-**S:** Hangi kanallar spot VM 'Leri destekliyor?
-
-Y **:** Nokta VM kullanılabilirliği için aşağıdaki tabloya bakın.
-
-<a name="channel"></a>
-
-| Azure kanalları               | Azure spot VM kullanılabilirliği       |
-|------------------------------|-----------------------------------|
-| Kurumsal Anlaşma         | Evet                               |
-| Kullandıkça Öde                | Evet                               |
-| Bulut hizmeti sağlayıcısı (CSP) | [İş ortağınızla iletişime geçin](/partner-center/azure-plan-get-started) |
-| Yararları                     | Kullanılamaz                     |
-| Sponsorlu                    | Evet                               |
-| Ücretsiz Deneme                   | Kullanılamaz                     |
+Y **:** Evet, ancak çıkarma ilkenizi otomatik ölçeklendirme kullanırken silinmek üzere ayarlamanız önerilir. Bunun nedeni, serbest bırakılmış örneklerin ölçek kümesindeki kapasite saymanız ile sayılmasıyla kaynaklanır. Otomatik ölçeklendirme kullanırken, serbest bırakılmış, çıkarılan örnekler nedeniyle hedef örnek sayınıza büyük olasılıkla ulaşmanız gerekir. Ayrıca, ölçeklendirme operasyonlarınız, nokta çıkarmaları tarafından etkilenebilir. Örneğin, sanal makine ölçek kümesi örnekleri, ölçek işlemleri sırasında birden çok spot çıkarmalar nedeniyle en az sayıda küme altına düşecek. 
 
 
 **S:** Sorularınızı nereden gönderebilirim?

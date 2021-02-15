@@ -3,15 +3,15 @@ title: Azure Kubernetes hizmetlerindeki küme yapılandırması (AKS)
 description: Azure Kubernetes hizmeti 'nde (AKS) bir kümeyi yapılandırmayı öğrenin
 services: container-service
 ms.topic: article
-ms.date: 01/13/2020
+ms.date: 02/09/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: eacca50e00dfe8625d86362c444544e2fd5d5511
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 5519157b58268b30ecb7a1af7b86d13d587a23b8
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201119"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100519414"
 ---
 # <a name="configure-an-aks-cluster"></a>AKS kümesini yapılandırma
 
@@ -19,13 +19,19 @@ AKS kümesi oluşturmanın bir parçası olarak, Küme yapılandırmanızı gere
 
 ## <a name="os-configuration"></a>İşletim sistemi yapılandırması
 
-AKS artık, Kubernetes sürümlerindeki 1.18.8 'den yüksek olan kümeler için genel kullanıma yönelik düğüm işletim sistemi (OS) olarak Ubuntu 18,04 ' i desteklemektedir. 1.18. x altındaki sürümler için AKS Ubuntu 16,04, hala varsayılan temel görüntüdür. Kubernetes v 1.18. x ve Onward 'den, varsayılan temel AKS Ubuntu 18,04 ' dir.
+AKS 18,04 artık, Kubernetes sürümlerindeki varsayılan düğüm işletim sistemi (OS) için genel kullanılabilirlik (GA) olarak, 1,18 aşağıdaki sürümler Için 1,18 ' den daha yüksek olan, AKS Ubuntu 16,04, hala varsayılan temel görüntüdür. Kubernetes v 1.18 ve üzeri sürümlerde, varsayılan temel AKS Ubuntu 18,04 ' dir.
 
-### <a name="use-aks-ubuntu-1804-generally-available-on-new-clusters"></a>Yeni kümelerde AKS Ubuntu 18,04 genel kullanıma sunuldu
+> [!IMPORTANT]
+> Düğüm, Kubernetes v 1.18 üzerinde oluşturulan düğüm havuzları veya düğüm görüntüsünde daha fazla varsayılan `AKS Ubuntu 18.04` . Desteklenen bir Kubernetes sürümündeki düğüm havuzları, `AKS Ubuntu 16.04` düğüm görüntüsü olarak 1,18 'den azdır, ancak `AKS Ubuntu 18.04` düğüm havuzu Kubernetes sürümü v 1.18 veya üzeri olarak güncelleştirildikten sonra olarak güncelleştirilecektir.
+> 
+> 1,18 veya üzeri kümeler kullanılmadan önce AKS Ubuntu 18,04 düğüm havuzlarındaki iş yüklerinizi test etmek önemle önerilir.
+
+
+### <a name="use-aks-ubuntu-1804-ga-on-new-clusters"></a>Yeni kümeler üzerinde AKS Ubuntu 18,04 (GA) kullanın
 
 Kubernetes v 1.18 üzerinde oluşturulan kümeler veya düğüm görüntüsünde daha fazla varsayılan `AKS Ubuntu 18.04` . Desteklenen bir Kubernetes sürümünün 1,18 ' den küçük olan düğüm havuzları yine de `AKS Ubuntu 16.04` düğüm görüntüsü olarak alınır, ancak `AKS Ubuntu 18.04` küme veya düğüm havuzunun Kubernetes sürümü v 1.18 veya üzeri olarak güncelleştirildikten sonra olarak güncelleştirilir.
 
-1,18 veya üzeri kümeler kullanılmadan önce AKS Ubuntu 18,04 düğüm havuzlarındaki iş yüklerinizi test etmek önemle önerilir. [Ubuntu 18,04 düğüm havuzlarını test](#test-aks-ubuntu-1804-generally-available-on-existing-clusters)etme hakkında bilgi edinin.
+1,18 veya üzeri kümeler kullanılmadan önce AKS Ubuntu 18,04 düğüm havuzlarındaki iş yüklerinizi test etmek önemle önerilir.
 
 Düğüm görüntüsünü kullanarak bir küme oluşturmak için `AKS Ubuntu 18.04` , aşağıda gösterildiği gibi yalnızca Kubernetes v 1.18 veya üstünü çalıştıran bir küme oluşturun
 
@@ -33,11 +39,11 @@ Düğüm görüntüsünü kullanarak bir küme oluşturmak için `AKS Ubuntu 18.
 az aks create --name myAKSCluster --resource-group myResourceGroup --kubernetes-version 1.18.14
 ```
 
-### <a name="use-aks-ubuntu-1804-generally-available-on-existing-clusters"></a>Mevcut kümelerde AKS Ubuntu 18,04 genel kullanıma sunuldu
+### <a name="use-aks-ubuntu-1804-ga-on-existing-clusters"></a>Mevcut kümeler üzerinde AKS Ubuntu 18,04 (GA) kullanın
 
 Kubernetes v 1.18 üzerinde oluşturulan kümeler veya düğüm görüntüsünde daha fazla varsayılan `AKS Ubuntu 18.04` . Desteklenen bir Kubernetes sürümünün 1,18 ' den küçük olan düğüm havuzları yine de `AKS Ubuntu 16.04` düğüm görüntüsü olarak alınır, ancak `AKS Ubuntu 18.04` küme veya düğüm havuzunun Kubernetes sürümü v 1.18 veya üzeri olarak güncelleştirildikten sonra olarak güncelleştirilir.
 
-1,18 veya üzeri kümeler kullanılmadan önce AKS Ubuntu 18,04 düğüm havuzlarındaki iş yüklerinizi test etmek önemle önerilir. [Ubuntu 18,04 düğüm havuzlarını test](#test-aks-ubuntu-1804-generally-available-on-existing-clusters)etme hakkında bilgi edinin.
+1,18 veya üzeri kümeler kullanılmadan önce AKS Ubuntu 18,04 düğüm havuzlarındaki iş yüklerinizi test etmek önemle önerilir.
 
 Kümeleriniz veya düğüm havuzlarınız `AKS Ubuntu 18.04` düğüm görüntüsüne uygunsa, bunları aşağıda gösterildiği gibi bir v 1.18 veya daha yüksek sürüme de yükseltmeniz yeterlidir.
 
@@ -51,7 +57,7 @@ Yalnızca bir düğüm havuzunu yükseltmek istiyorsanız:
 az aks nodepool upgrade -name ubuntu1804 --cluster-name myAKSCluster --resource-group myResourceGroup --kubernetes-version 1.18.14
 ```
 
-### <a name="test-aks-ubuntu-1804-generally-available-on-existing-clusters"></a>Test AKS Ubuntu 18,04, mevcut kümelerde genel kullanıma sunuldu
+### <a name="test-aks-ubuntu-1804-ga-on-existing-clusters"></a>Mevcut kümelerde AKS Ubuntu 18,04 (GA) sınamasını yapın
 
 Düğüm, Kubernetes v 1.18 üzerinde oluşturulan düğüm havuzları veya düğüm görüntüsünde daha fazla varsayılan `AKS Ubuntu 18.04` . Desteklenen bir Kubernetes sürümünün 1,18 ' den küçük olan düğüm havuzları yine de `AKS Ubuntu 16.04` düğüm görüntüsü olarak alınır, ancak `AKS Ubuntu 18.04` düğüm havuzu Kubernetes sürümü v 1.18 veya üzeri olarak güncelleştirildikten sonra olarak güncelleştirilir.
 
@@ -65,58 +71,6 @@ az aks upgrade --name myAKSCluster --resource-group myResourceGroup --kubernetes
 
 az aks nodepool add --name ubuntu1804 --cluster-name myAKSCluster --resource-group myResourceGroup --kubernetes-version 1.18.14
 ```
-
-### <a name="use-aks-ubuntu-1804-on-new-clusters-preview"></a>Yeni kümeler üzerinde AKS Ubuntu 18,04 kullanma (Önizleme)
-
-Aşağıdaki bölümde, henüz bir Kubernetes sürümü 1.18. x veya üzeri kullanmadığınız ya da bu özelliğin genel kullanıma sunulmadan önce, işletim sistemi yapılandırması önizlemesi kullanılarak oluşturulan kümeler üzerinde AKS Ubuntu 18,04 ' ı nasıl kullandığınız ve test ettiğiniz açıklanmaktadır.
-
-Aşağıdaki kaynakların yüklü olması gerekir:
-
-- [Azure CLI][azure-cli-install], sürüm 2.2.0 veya üzeri
-- Aks-Preview 0.4.35 uzantısı
-
-Aks-Preview 0.4.35 uzantısını veya üstünü yüklemek için aşağıdaki Azure CLı komutlarını kullanın:
-
-```azurecli
-az extension add --name aks-preview
-az extension list
-```
-
-Özelliği kaydedin `UseCustomizedUbuntuPreview` :
-
-```azurecli
-az feature register --name UseCustomizedUbuntuPreview --namespace Microsoft.ContainerService
-```
-
-Durumun **kayıtlı** olarak gösterilmesi birkaç dakika sürebilir. [Az Feature List](/cli/azure/feature#az-feature-list) komutunu kullanarak kayıt durumunu kontrol edebilirsiniz:
-
-```azurecli
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/UseCustomizedUbuntuPreview')].{Name:name,State:properties.state}"
-```
-
-Durum kayıtlı olarak görünüyorsa, `Microsoft.ContainerService` [az Provider Register](/cli/azure/provider#az-provider-register) komutunu kullanarak kaynak sağlayıcının kaydını yenileyin:
-
-```azurecli
-az provider register --namespace Microsoft.ContainerService
-```
-
-Kümeyi, küme oluşturulduğunda Ubuntu 18,04 kullanacak şekilde yapılandırın. `--aks-custom-headers`Ubuntu 18,04 ' i varsayılan işletim sistemi olarak ayarlamak için bayrağını kullanın.
-
-```azurecli
-az aks create --name myAKSCluster --resource-group myResourceGroup --aks-custom-headers CustomizedUbuntu=aks-ubuntu-1804
-```
-
-AKS Ubuntu 16,04 görüntüsüyle kümeler oluşturmak istiyorsanız, özel etiketi atlayarak bunu yapabilirsiniz `--aks-custom-headers` .
-
-### <a name="use-aks-ubuntu-1804-existing-clusters-preview"></a>AKS Ubuntu 18,04 mevcut kümelerini kullanma (Önizleme)
-
-Ubuntu 18,04 kullanmak için yeni bir düğüm havuzu yapılandırın. `--aks-custom-headers`Bu düğüm havuzu Için Ubuntu 18,04 ' ı varsayılan işletim sistemi olarak ayarlamak için bayrağını kullanın.
-
-```azurecli
-az aks nodepool add --name ubuntu1804 --cluster-name myAKSCluster --resource-group myResourceGroup --aks-custom-headers CustomizedUbuntu=aks-ubuntu-1804
-```
-
-AKS Ubuntu 16,04 görüntüsüyle düğüm havuzları oluşturmak istiyorsanız, özel etiketi atlayarak bunu yapabilirsiniz `--aks-custom-headers` .
 
 ## <a name="container-runtime-configuration"></a>Kapsayıcı çalışma zamanı yapılandırması
 
@@ -139,69 +93,6 @@ Kapsayıcı çalışma zamanı, kapsayıcıları yürüten ve bir düğümdeki k
 > 
 > AKS düğüm havuzlarındaki iş yüklerinizi, `containerD` 1,19 veya üzeri kümeler kullanılmadan önce kullanarak test etmek kesinlikle önerilir.
 
-Aşağıdaki bölümde, `containerD` henüz bir Kubernetes sürüm 1,19 veya üstünü kullanmayan ya da bu özelliğin genel kullanıma sunulmasından önce kapsayıcı çalışma zamanı yapılandırma önizlemesi kullanılarak oluşturulmuş kümeler üzerinde Ile AKS 'i nasıl kullanabileceğinizi ve test ettebileceğiniz açıklanmaktadır.
-
-### <a name="use-containerd-as-your-container-runtime-preview"></a>`containerd`Kapsayıcı çalışma zamanı olarak kullanın (Önizleme)
-
-Aşağıdaki önkoşulların olması gerekir:
-
-- [Azure CLI][azure-cli-install], sürüm 2.8.0 veya üzeri yüklü
-- Aks-Preview uzantısı sürüm 0.4.53 veya üzeri
-- `UseCustomizedContainerRuntime`Özellik bayrağı kaydedildi
-- `UseCustomizedUbuntuPreview`Özellik bayrağı kaydedildi
-
-Aks-Preview 0.4.53 uzantısını veya üstünü yüklemek için aşağıdaki Azure CLı komutlarını kullanın:
-
-```azurecli
-az extension add --name aks-preview
-az extension list
-```
-
-`UseCustomizedContainerRuntime`Ve özelliklerini kaydedin `UseCustomizedUbuntuPreview` :
-
-```azurecli
-az feature register --name UseCustomizedContainerRuntime --namespace Microsoft.ContainerService
-az feature register --name UseCustomizedUbuntuPreview --namespace Microsoft.ContainerService
-
-```
-
-Durumun **kayıtlı** olarak gösterilmesi birkaç dakika sürebilir. [Az Feature List](/cli/azure/feature#az-feature-list) komutunu kullanarak kayıt durumunu kontrol edebilirsiniz:
-
-```azurecli
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/UseCustomizedContainerRuntime')].{Name:name,State:properties.state}"
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/UseCustomizedUbuntuPreview')].{Name:name,State:properties.state}"
-```
-
-Durum kayıtlı olarak görünüyorsa, `Microsoft.ContainerService` [az Provider Register](/cli/azure/provider#az-provider-register) komutunu kullanarak kaynak sağlayıcının kaydını yenileyin:
-
-```azurecli
-az provider register --namespace Microsoft.ContainerService
-```  
-
-### <a name="use-containerd-on-new-clusters-preview"></a>`containerd`Yeni kümeler üzerinde kullan (Önizleme)
-
-Kümeyi, küme oluşturulduğunda kullanılacak şekilde yapılandırın `containerd` . `--aks-custom-headers` `containerd` Kapsayıcı çalışma zamanı olarak ayarlamak için bayrağını kullanın.
-
-> [!NOTE]
-> `containerd`Çalışma zamanı yalnızca AKS Ubuntu 18,04 görüntüsünü kullanan düğümlerde ve düğüm havuzlarında desteklenir.
-
-```azurecli
-az aks create --name myAKSCluster --resource-group myResourceGroup --aks-custom-headers CustomizedUbuntu=aks-ubuntu-1804,ContainerRuntime=containerd
-```
-
-Moby (Docker) çalışma zamanına sahip kümeler oluşturmak istiyorsanız, özel etiketi atlayarak bunu yapabilirsiniz `--aks-custom-headers` .
-
-### <a name="use-containerd-on-existing-clusters-preview"></a>`containerd`Mevcut kümeler üzerinde kullan (Önizleme)
-
-Kullanılacak yeni bir düğüm havuzu yapılandırın `containerd` . `--aks-custom-headers` `containerd` Bu düğüm havuzu için çalışma zamanı olarak ayarlamak üzere bayrağını kullanın.
-
-```azurecli
-az aks nodepool add --name ubuntu1804 --cluster-name myAKSCluster --resource-group myResourceGroup --aks-custom-headers CustomizedUbuntu=aks-ubuntu-1804,ContainerRuntime=containerd
-```
-
-Moby (Docker) çalışma zamanı ile düğüm havuzları oluşturmak istiyorsanız, özel etiketi atlayarak bunu yapabilirsiniz `--aks-custom-headers` .
-
-
 ### <a name="containerd-limitationsdifferences"></a>`Containerd` sınırlamalar/farklar
 
 * `containerd`Kapsayıcı çalışma zamanı olarak kullanmak için, temel işletim sistemi görüntünüz olarak AKS Ubuntu 18,04 kullanmanız gerekir.
@@ -213,9 +104,9 @@ Moby (Docker) çalışma zamanı ile düğüm havuzları oluşturmak istiyorsan�
 * Artık Docker altyapısına erişemez veya Docker- `/var/run/docker.sock` ın-Docker (Dintıd) kullanabilirsiniz.
   * Şu anda Docker altyapısından uygulama günlükleri veya izleme verileri ayıklandıysanız, lütfen bunun yerine [kapsayıcılar Için Azure izleyici](../azure-monitor/insights/container-insights-enable-new-cluster.md) gibi bir şey kullanın. Ayrıca AKS, kararsızlığa neden olabilecek aracı düğümlerinde bant dışı komutların çalıştırılmasını desteklemez.
   * Moby/Docker kullanırken, görüntülerin oluşturulması ve yukarıdaki yöntemler aracılığıyla Docker altyapısının doğrudan kullanılmasıyla kesinlikle önerilmez. Kubernetes, bu tüketilen kaynakların tamamen farkında değildir ve bu yaklaşımlar [burada](https://jpetazzo.github.io/2015/09/03/do-not-use-docker-in-docker-for-ci/) [ve burada ayrıntılı olarak ayrıntılı](https://securityboulevard.com/2018/05/escaping-the-whale-things-you-probably-shouldnt-do-with-docker-part-1/)bir şekilde ortaya bulunur.
-* Görüntü oluşturma-AKS kümenizde görüntü oluşturulmadığınız sürece geçerli Docker Build iş akışınızı normal olarak kullanmaya devam edebilirsiniz. Bu durumda, [ACR görevlerini](../container-registry/container-registry-quickstart-task-cli.md)kullanarak görüntü oluşturmak için önerilen yaklaşımın veya [Docker buildx](https://github.com/docker/buildx)gibi daha güvenli bir küme içi seçeneğinde geçiş yapmayı düşünün.
+* Görüntü oluşturma-AKS kümeniz içinde görüntü oluşturmadığınız sürece geçerli Docker Build iş akışınızı normal olarak kullanmaya devam edebilirsiniz. Bu durumda, [ACR görevlerini](../container-registry/container-registry-quickstart-task-cli.md)kullanarak görüntü oluşturmak için önerilen yaklaşımın veya [Docker buildx](https://github.com/docker/buildx)gibi daha güvenli bir küme içi seçeneğinde geçiş yapmayı düşünün.
 
-## <a name="generation-2-virtual-machines-preview"></a>2. nesil sanal makineler (Önizleme)
+## <a name="generation-2-virtual-machines"></a>2. nesil sanal makineler
 
 Azure [2. nesil (Gen2) sanal makineleri (VM)](../virtual-machines/generation-2.md)destekler. 2. nesil VM 'Ler, 1. nesil VM 'lerde desteklenmeyen önemli özellikleri destekler (Gen1). Bu özellikler, artan bellek, Intel Software Guard uzantıları (Intel SGX) ve sanallaştırılmış kalıcı bellek (vPMEM) içerir.
 
@@ -223,59 +114,6 @@ Azure [2. nesil (Gen2) sanal makineleri (VM)](../virtual-machines/generation-2.m
 Yalnızca belirli SKU 'Lar ve boyutlar Gen2 VM 'Leri destekler. SKU 'nuzun Gen2 destekleyip desteklemediğini veya gerektirip gerektirmediğini görmek için [Desteklenen boyutlar listesini](../virtual-machines/generation-2.md#generation-2-vm-sizes)kontrol edin.
 
 Ayrıca, AKS Gen2 VM 'lerinde Gen2 desteği olan tüm VM görüntüleri, yeni [aks Ubuntu 18,04 görüntüsünü](#os-configuration)kullanır. Bu görüntü tüm Gen2 SKU 'Larını ve boyutlarını destekler.
-
-Önizleme sırasında Gen2 VM 'Leri kullanmak için şunları yapmanız gerekir:
-- `aks-preview`CLI uzantısı yüklendi.
-- `Gen2VMPreview`Özellik bayrağı kaydedildi.
-
-Özelliği kaydedin `Gen2VMPreview` :
-
-```azurecli
-az feature register --name Gen2VMPreview --namespace Microsoft.ContainerService
-```
-
-Durumun **kayıtlı** olarak gösterilmesi birkaç dakika sürebilir. [Az Feature List](/cli/azure/feature#az-feature-list) komutunu kullanarak kayıt durumunu kontrol edebilirsiniz:
-
-```azurecli
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/Gen2VMPreview')].{Name:name,State:properties.state}"
-```
-
-Durum kayıtlı olarak görünüyorsa, `Microsoft.ContainerService` [az Provider Register](/cli/azure/provider#az-provider-register) komutunu kullanarak kaynak sağlayıcının kaydını yenileyin:
-
-```azurecli
-az provider register --namespace Microsoft.ContainerService
-```
-
-Aks-Preview CLı uzantısını yüklemek için aşağıdaki Azure CLı komutlarını kullanın:
-
-```azurecli
-az extension add --name aks-preview
-```
-
-Aks-Preview CLı uzantısını güncelleştirmek için aşağıdaki Azure CLı komutlarını kullanın:
-
-```azurecli
-az extension update --name aks-preview
-```
-
-### <a name="use-gen2-vms-on-new-clusters-preview"></a>Yeni kümeler üzerinde Gen2 VM 'Leri kullanma (Önizleme)
-Kümeyi, küme oluşturulduğunda seçili SKU için Gen2 VM 'Leri kullanacak şekilde yapılandırın. `--aks-custom-headers`Yeni bir kümede VM oluşturma olarak Gen2 ayarlamak için bayrağını kullanın.
-
-```azurecli
-az aks create --name myAKSCluster --resource-group myResourceGroup -s Standard_D2s_v3 --aks-custom-headers usegen2vm=true
-```
-
-1. nesil (Gen1) VM 'Leri kullanarak düzenli bir küme oluşturmak istiyorsanız, özel etiketi atlayarak bunu yapabilirsiniz `--aks-custom-headers` . Ayrıca, aşağıdaki gibi daha fazla Gen1 veya Gen2 VM eklemeyi de seçebilirsiniz.
-
-### <a name="use-gen2-vms-on-existing-clusters-preview"></a>Mevcut kümeler üzerinde Gen2 VM 'Leri kullanma (Önizleme)
-Yeni bir düğüm havuzunu Gen2 VM 'Leri kullanacak şekilde yapılandırın. `--aks-custom-headers`Gen2 'i bu düğüm havuzu IÇIN VM oluşturma olarak ayarlamak için bayrağını kullanın.
-
-```azurecli
-az aks nodepool add --name gen2 --cluster-name myAKSCluster --resource-group myResourceGroup -s Standard_D2s_v3 --aks-custom-headers usegen2vm=true
-```
-
-Normal Gen1 düğüm havuzları oluşturmak istiyorsanız, özel etiketi atlayarak bunu yapabilirsiniz `--aks-custom-headers` .
-
 
 ## <a name="ephemeral-os"></a>Kısa ömürlü işletim sistemi
 

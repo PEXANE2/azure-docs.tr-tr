@@ -3,18 +3,18 @@ title: 'ML Studio (klasik): veri değerlendirmesi-Azure'
 description: Veri bilimi için hazırlamak için verilerinizin karşılaması gereken dört ölçüt. Bu videoda, temel veri değerlendirmesinin sağlanmasına yardımcı olacak somut örnekler vardır.
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: conceptual
 author: sdgilley
 ms.author: sgilley
 ms.custom: seodec18
 ms.date: 03/22/2019
-ms.openlocfilehash: 2174044a1a913663e255b125f2ea89c312f5e9d3
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 07db1f1c8021759fbd5702ad9353f74fcd1524c9
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93307698"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100516983"
 ---
 # <a name="is-your-data-ready-for-data-science"></a>Verileriniz veri bilimi için hazır mı?
 ## <a name="video-2-data-science-for-beginners-series"></a>Video 2: yeni başlayanlar için veri bilimi serisi
@@ -37,7 +37,7 @@ Seriden en iyi şekilde yararlanmak için tümünü izleyin. [Videolar listesine
 * Video 5: [diğer insanların işini veri bilimi olarak kopyalama](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3 dakikalık 18 sn)*
 
 ## <a name="transcript-is-your-data-ready-for-data-science"></a>TRANSCRIPT: verileriniz veri bilimi için hazırlanıyor mu?
-"Verileriniz veri bilimi için mi hazırlanıyor?" e hoş geldiniz *Yeni başlayanlar için serinin veri bilimi* 'nin ikinci videosu.  
+"Verileriniz veri bilimi için mi hazırlanıyor?" e hoş geldiniz *Yeni başlayanlar için serinin veri bilimi*'nin ikinci videosu.  
 
 Veri bilimi size istediğiniz yanıtları sunmadan önce, bununla birlikte çalışmak üzere bazı yüksek kaliteli ham malzemeler sağlamanız gerekir. Bir pizza yaparken, ile en iyi şekilde başladığınız malzemeler, son ürünün daha iyi hale getirilmesi. 
 

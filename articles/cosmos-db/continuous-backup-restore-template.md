@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 02/01/2021
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 642c61414d882b9cfe83f585fda8ff5404e8834a
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 4abfdd0209bd9f13fb7bd902b27a53f65156da2e
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99538485"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100381826"
 ---
 # <a name="configure-and-manage-continuous-backup-and-point-in-time-restore-preview---using-azure-resource-manager-templates"></a>Sürekli yedekleme ve zaman noktası geri yükleme (Önizleme) ile yapılandırma ve yönetme-Azure Resource Manager şablonları kullanma
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -28,7 +28,7 @@ Bu makalede, Azure Resource Manager şablonları kullanarak sürekli yedekleme v
 
 ## <a name="provision-an-account-with-continuous-backup"></a><a id="provision"></a>Sürekli yedekleme ile hesap sağlama
 
-Azure Cosmos DB bir hesabı sürekli mod ile dağıtmak için Azure Resource Manager şablonları kullanabilirsiniz. Bir hesap sağlamak için şablonu tanımlarken, aşağıdaki örnekte gösterildiği gibi "backupPolicy" parametresini ekleyin:
+Azure Cosmos DB bir hesabı sürekli mod ile dağıtmak için Azure Resource Manager şablonları kullanabilirsiniz. Bir hesap sağlamak için şablonu tanımlarken, `backupPolicy` Aşağıdaki örnekte gösterildiği gibi parametresini ekleyin:
 
 ```json
 {
@@ -66,9 +66,9 @@ az group deployment create -g <ResourceGroup> --template-file <ProvisionTemplate
 
 Kaynak Yöneticisi şablonu kullanarak da bir hesabı geri yükleyebilirsiniz. Şablonu tanımlarken aşağıdaki parametreleri içerir:
 
-* "CreateMode" parametresini "geri yükle" olarak ayarlayın
-* "RestoreParameters" tanımlayın, "restoreSource" değerinin, `az cosmosdb restorable-database-account list` kaynak hesabınız için komutun çıktısından ayıklandığına dikkat edin. Hesap adınızın örnek KIMLIĞI özniteliği geri yüklemeyi yapmak için kullanılır.
-* "RestoreMode" parametresini "PointInTime" olarak ayarlayın ve "Restoretimestamp ınutc" değerini yapılandırın.
+* `createMode` *Geri yüklenecek* parametreyi ayarla
+* `restoreParameters`' İ tanımlayın, `restoreSource` değerin `az cosmosdb restorable-database-account list` kaynak hesabınıza ait komutun çıktısından ayıklandığını unutmayın. Hesap adınızın örnek KIMLIĞI özniteliği geri yüklemeyi yapmak için kullanılır.
+* `restoreMode`Parametresini *Poinıntime* olarak ayarlayın ve `restoreTimestampInUtc` değeri yapılandırın.
 
 ```json
 {

@@ -1,22 +1,18 @@
 ---
 title: Azure Data Factory değişken etkinliğini sona Ekle
 description: Bir Data Factory işlem hattında tanımlanmış var olan bir dizi değişkenine değer eklemek için değişken ekleme etkinliğinin nasıl ayarlanacağını öğrenin
-services: data-factory
-documentationcenter: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 author: dcstwh
 ms.author: weetok
-manager: jroth
 ms.reviewer: maghan
 ms.date: 10/09/2018
-ms.openlocfilehash: 16bdd1d31440ed440faf67e939485da613e3886f
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 5a9ed44e05c371460ae3ceab721f2236f6ec7fd6
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96490950"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100383424"
 ---
 # <a name="append-variable-activity-in-azure-data-factory"></a>Azure Data Factory değişken etkinliğini sona Ekle
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -26,10 +22,10 @@ Bir Data Factory işlem hattında tanımlanmış var olan bir dizi değişkenine
 
 Özellik | Açıklama | Gerekli
 -------- | ----------- | --------
-name | İşlem hattının etkinlik adı | Evet
+name | İşlem hattının etkinlik adı | Yes
 açıklama | Etkinliğin ne yaptığını açıklayan metin | hayır
-tür | Etkinlik türü AppendVariable | yes
-değer | Belirtilen değişkene eklemek için kullanılan dize sabiti veya ifade nesnesi değeri | yes
+tür | Etkinlik türü AppendVariable | evet
+değer | Belirtilen değişkene eklemek için kullanılan dize sabiti veya ifade nesnesi değeri | evet
 variableName | Etkinliğe göre değiştirilecek değişkenin adı, değişkenin ' Array ' türünde olması gerekir | evet
 
 ## <a name="next-steps"></a>Sonraki adımlar

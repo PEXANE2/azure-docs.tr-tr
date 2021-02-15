@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/23/2020
-ms.openlocfilehash: f76a05757f86308785d4ca678675b87b3fa9d63e
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 8be5def6d4780fd8b2ab65c5c9e1104a869f6d5a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96554422"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100391601"
 ---
 # <a name="troubleshoot-your-connections-in-azure-purview"></a>Azure purview 'da bağlantılarınızın sorunlarını giderme
 
@@ -53,7 +53,7 @@ Azure Key Vault erişmek için, yönetilen kimlik için doğru izinlerin yapıla
 Bunu doğrulamak için, aşağıdaki adımları uygulayın:
 
 1. Anahtar kasanıza ve **erişim ilkeleri** bölümüne gidin
-1. En azından gizli dizileri **Al** Izinleri ile *Geçerli erişim ilkeleri* bölümünün altında görüntülendiğini görüntüleyin.
+1. En azından gizli dizileri üzerinde **Al** ve **Listele** izinleri ile *Geçerli erişim ilkeleri* bölümünün altında görüntülendiğini görüntüleyin.
 
 Purview yönetilen kimliğinizi listede görmüyorsanız, bunları eklemek için [taramalar için kimlik bilgilerini oluşturma ve yönetme](manage-credentials.md) bölümündeki adımları izleyin. 
 

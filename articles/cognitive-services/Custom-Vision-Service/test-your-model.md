@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: pafarley
-ms.openlocfilehash: 5a3aacd1d07ff068fe50312b2c1d47ac080e5c2c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 736d135323e2a2df38a13dc46189e2a243fbe381
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85391732"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100097544"
 ---
 # <a name="test-and-retrain-a-model-with-custom-vision-service"></a>Özel Görüntü İşleme Hizmeti bir modeli test etme ve yeniden eğitme
 
@@ -23,7 +23,7 @@ Modelinize eğdikten sonra, yerel olarak depolanan bir görüntü veya çevrimi�
 
 ## <a name="test-your-model"></a>Modelinizi test etme
 
-1. [Özel görüntü işleme Web sayfasından](https://customvision.ai)projenizi seçin. Üstteki menü çubuğunun sağ tarafındaki **hızlı test** ' i seçin. Bu eylem **hızlı test**etiketli bir pencere açar.
+1. [Özel görüntü işleme Web sayfasından](https://customvision.ai)projenizi seçin. Üstteki menü çubuğunun sağ tarafındaki **hızlı test** ' i seçin. Bu eylem **hızlı test** etiketli bir pencere açar.
 
     ![Hızlı test düğmesi, pencerenin sağ üst köşesinde görüntülenir.](./media/test-your-model/quick-test-button.png)
 
@@ -31,7 +31,7 @@ Modelinize eğdikten sonra, yerel olarak depolanan bir görüntü veya çevrimi�
 
     ![Görüntü gönder sayfasının görüntüsü](./media/test-your-model/submit-image.png)
 
-Seçtiğiniz görüntü sayfanın ortasında görünür. Sonra sonuçlar, **etiket** ve **güvenle**etiketlenmiş iki sütunlu bir tablo biçiminde görüntünün altında görüntülenir. Sonuçları güncelleştirdikten sonra **hızlı test** penceresini kapatabilirsiniz.
+Seçtiğiniz görüntü sayfanın ortasında görünür. Sonra sonuçlar, **etiket** ve **güvenle** etiketlenmiş iki sütunlu bir tablo biçiminde görüntünün altında görüntülenir. Sonuçları güncelleştirdikten sonra **hızlı test** penceresini kapatabilirsiniz.
 
 Artık bu test görüntüsünü modelinize ekleyebilir ve sonra modelinize yeniden eğitebilirsiniz.
 
@@ -59,4 +59,4 @@ Daha önce eğitim için gönderilen görüntüyü kullanmak için aşağıdaki 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Sınıflandırıcınızı geliştirme](getting-started-improving-your-classifier.md)
+[Modelinizi geliştirme](getting-started-improving-your-classifier.md)

@@ -12,12 +12,12 @@ ms.date: 07/23/2020
 ms.author: kenwith
 ms.reviewer: japere
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 121dcdf51374f625ad7393bb181b1be215775a0b
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 19a5d223b587e47c562977cc9fea34f990eb0e46
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99257786"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100370827"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Active Directory (Azure AD) uygulama proxy 'Si hakkında sık sorulan sorular
 
@@ -106,6 +106,15 @@ Varsayılan uzunluk 85 saniyedir. "Long" ayarı 180 saniyedir. Zaman aşımı s�
 
 Hayır, bu şu anda desteklenmiyor.
 
+### <a name="what-happens-if-i-delete-cwap_authsecret-the-client-secret-in-the-app-registration"></a>Uygulama kaydında CWAP_AuthSecret (istemci gizli anahtarı) silersem ne olur?
+
+*CWAP_AuthSecret* olarak da adlandırılan istemci parolası, Azure AD uygulama ara sunucusu uygulaması oluşturulduğunda uygulama nesnesine (uygulama kaydı) otomatik olarak eklenir.
+
+İstemci parolası bir yıl için geçerlidir. Geçerli geçerli istemci parolasının süresi dolmadan yeni bir yıllık istemci parolası otomatik olarak oluşturulur. Üç CWAP_AuthSecret istemci parolası her zaman uygulama nesnesinde tutulur. 
+
+> [!IMPORTANT]
+> Azure AD Uygulama Ara Sunucusu için ön kimlik doğrulama CWAP_AuthSecret sonlarını silme. CWAP_AuthSecret silmeyin.
+
 ### <a name="how-do-i-change-the-landing-page-my-application-loads"></a>Uygulamamın giriş sayfasını Nasıl yaparım? değiştirmek mi?
 
 Uygulama kayıtları sayfasında, giriş sayfasının istenen dış URL 'si için giriş sayfası URL 'sini değiştirebilirsiniz. Uygulama Uygulamalarım veya Office 365 portalından başlatıldığında belirtilen sayfa yüklenir. Yapılandırma adımları için bkz. [Azure AD uygulama ara sunucusu ile yayımlanan uygulamalar için özel bir giriş sayfası ayarlama](./application-proxy-configure-custom-home-page.md)
@@ -187,11 +196,11 @@ Hayır. Azure AD Uygulama Ara Sunucusu, Azure AD ile çalışacak şekilde tasar
 
 ## <a name="websocket"></a>WebSocket
 
-### <a name="does-websocket-support-work-for-applications-other-than-qliksense"></a>WebSocket desteği QlikSense dışındaki uygulamalar için çalışır mı?
+### <a name="does-websocket-support-work-for-applications-other-than-qliksense-and-remote-desktop-web-client-html5"></a>WebSocket desteği, QlikSense ve Uzak Masaüstü Web Istemcisi (HTML5) dışındaki uygulamalar için çalışır mı?
 
 Şu anda WebSocket protokol desteği hala genel önizlemede ve diğer uygulamalar için çalışmayabilir. Bazı müşterilerin WebSocket protokolünü diğer uygulamalarla kullanarak karma başarısı vardı. Bu senaryoları test ediyorsanız, sonuçlarınızı duymak isteriz. Lütfen görüşlerinizi bize gönderin aadapfeedback@microsoft.com .
 
-Windows Yönetim Merkezi (WAC) veya Uzak Masaüstü Web Istemcisi (HTML5) içindeki Özellikler (Eventlogs, PowerShell ve Uzak Masaüstü Hizmetleri) Şu anda Azure AD Uygulama Ara Sunucusu üzerinden çalışmaz.
+Windows Yönetim Merkezi 'ndeki (WAC) Özellikler (Eventlogs, PowerShell ve Uzak Masaüstü Hizmetleri) Şu anda Azure AD Uygulama Ara Sunucusu üzerinden çalışmaz.
 
 ## <a name="link-translation"></a>Bağlantı çevirisi
 

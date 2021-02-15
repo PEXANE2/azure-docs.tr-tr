@@ -4,12 +4,12 @@ description: Kullanıcıların tüm kullanıcılar ve roller için bir kilit uyg
 ms.topic: conceptual
 ms.date: 02/01/2021
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 912c7e86d253aa18b9a6c60717ceaa70e32fcf0e
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: 6df6aec06fadaacc6b1d08ed9ee33b72c5971359
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99428326"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100369484"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>Beklenmeyen değişiklikleri önlemek için kaynakları kilitleme
 
@@ -32,7 +32,7 @@ Resource Manager kilitleri yalnızca yönetim düzleminde gerçekleşen ve `http
 
 Kilitleri uygulamak, kaynağı değiştirmeyen bazı işlemler gerçekten kilit tarafından engellenen eylemler gerektirdiğinden beklenmedik sonuçlara neden olabilir. Kilitler Azure Resource Manager API 'sine POST isteği gerektiren tüm işlemleri engeller. Kilitlerle engellenen işlemlerin bazı yaygın örnekleri şunlardır:
 
-* **Depolama hesabında** salt okunurdur bir kilit, tüm kullanıcıların anahtarları listelemesine engel olur. Anahtarları listeleme işlemi bir POST isteği aracılığıyla işlenir çünkü döndürülen anahtarlar yazma işlemlerinde kullanılabilir.
+* **Depolama hesabında** salt okunurdur bir kilit, kullanıcıların hesap anahtarlarını listelemesine engel olur. Azure depolama [listesi anahtarları](/rest/api/storagerp/storageaccounts/listkeys) işlemi, depolama hesabındaki verilere yönelik tüm erişimleri sağlayan hesap anahtarlarına erişimi korumak IÇIN bir post isteği aracılığıyla işlenir. Bir depolama hesabı için salt okunurdur bir kilit yapılandırıldığında, hesap anahtarlarına sahip olmayan kullanıcıların blob veya kuyruk verilerine erişmek için Azure AD kimlik bilgilerini kullanması gerekir. Salt okunurdur bir kilit, depolama hesabı kapsamındaki Azure RBAC rollerinin atanmasını veya bir veri kapsayıcısını (blob kapsayıcısı ya da kuyruğu) engeller.
 
 * Bir **App Service** kaynağı üzerinde salt okunurdur bir kilit, bu etkileşim yazma erişimi gerektirdiğinden Visual Studio Sunucu Gezgini kaynak için dosya görüntülemesini engeller.
 

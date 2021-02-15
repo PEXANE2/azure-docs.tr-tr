@@ -1,14 +1,14 @@
 ---
 title: Bir müşteriyi Azure Lighthouse’a ekleme
 description: Bir müşteriyi Azure Mathouse 'a eklemeyi öğrenin. böylece, kaynakları Azure tarafından atanan kaynak yönetimi kullanılarak kendi kiracınız aracılığıyla erişilebilir ve yönetilebilir.
-ms.date: 01/14/2021
+ms.date: 02/08/2021
 ms.topic: how-to
-ms.openlocfilehash: 1a7c8fc85819b2c34b5c64dc83cb908b7bee3c41
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: c0a886b692b99156cbd53e5f0f5953047560c5b9
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98232684"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100372153"
 ---
 # <a name="onboard-a-customer-to-azure-lighthouse"></a>Bir müşteriyi Azure Lighthouse’a ekleme
 
@@ -36,7 +36,7 @@ Bir müşterinin kiracısını eklemek için etkin bir Azure aboneliğine sahip 
 
 Bu KIMLIK değerleri zaten yoksa, bunları aşağıdaki yollarla alabilirsiniz. Dağıtımınızda bu tam değerleri kullandığınızdan emin olun ve bunları kullanın.
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure portalı
 
 Kiracı KIMLIĞINIZ, Azure portal sağ üst tarafındaki hesap adınızın üzerine gelerek veya **Dizin Değiştir**' i seçerek görülebilir. Kiracı KIMLIĞINIZI seçmek ve kopyalamak için Portal içinden "Azure Active Directory" araması yapın, ardından **Özellikler** ' i seçin ve **dizin kimliği** alanında gösterilen değeri kopyalayın. Müşterinin kiracısında bir aboneliğin KIMLIĞINI bulmak için, "abonelikler" araması yapın ve ardından uygun abonelik KIMLIĞINI seçin.
 
@@ -211,7 +211,7 @@ Parametre dosyanızı güncelleştirdikten sonra, müşterinin kiracısındaki b
 
 Dağıtım Azure portal, PowerShell kullanılarak veya aşağıda gösterildiği gibi Azure CLı kullanılarak yapılabilir.
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure portalı
 
 1. [GitHub](https://github.com/Azure/Azure-Lighthouse-samples/)deponuzda, kullanmak istediğiniz şablonun yanında gösterilen **Azure 'a dağıt** düğmesini seçin. Şablon Azure portalda açılır.
 1. **MSP teklif adı**, **MSP teklif açıklaması**, **Kiracı kimliği tarafından yönetilen** ve **yetkilendirmeler** için değerlerinizi girin. İsterseniz **parametreleri Düzenle** ' yi seçerek `mspOfferName` parametre dosyasında,,, `mspOfferDescription` `managedbyTenantId` ve doğrudan değerlerini girebilirsiniz `authorizations` . Şablondaki varsayılan değerleri kullanmak yerine bu değerleri güncelleştirdiğinizden emin olun.
@@ -263,7 +263,7 @@ az deployment sub create --name <deploymentName> \
 
 Bir müşteri aboneliğinin Azure Mathouse 'a başarıyla eklendi, hizmet sağlayıcının kiracısındaki kullanıcılar aboneliği ve kaynaklarını görebilir (tek tek veya bir Azure AD grubunun bir üyesi olarak, uygun izinlere sahip bir Azure AD grubuna erişim izni verildiyse). Bunu onaylamak için, aboneliğin aşağıdaki yollarla göründüğünden emin olun.  
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure portalı
 
 Hizmet sağlayıcısının kiracısında:
 
@@ -311,12 +311,13 @@ Müşteri eklendi sonra değişiklik yapmanız gerekirse, [temsilciyi güncelle�
 Müşterinizin başarıyla sunulabileceği takdirde veya kullanıcılarınız Temsilcili kaynaklara erişirken sorun yaşıyorsa, aşağıdaki ipuçları ve gereksinimleri denetleyip yeniden deneyin.
 
 - `managedbyTenantId`Değer, eklendi olan aboneliğin KIRACı kimliğiyle aynı olmamalıdır.
-- Aynı kapsamda aynı kapsamda birden çok atama olamaz `mspOfferName` . 
+- Aynı kapsamda aynı kapsamda birden çok atama olamaz `mspOfferName` .
 - Atanmış abonelik için **Microsoft. ManagedServices** kaynak sağlayıcısının kayıtlı olması gerekir. Bu, dağıtım sırasında otomatik olarak gerçekleşmelidir, ancak yoksa [el ile kaydedebilirsiniz](../../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider).
 - Yetkilendirmeler, [sahip](../../role-based-access-control/built-in-roles.md#owner) yerleşik rolüne sahip herhangi bir kullanıcı veya [dataactions](../../role-based-access-control/role-definitions.md#dataactions)içeren yerleşik roller içermemelidir.
 - Gruplar, **Microsoft 365** değil, [**Grup türü**](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md#group-types) **güvenlik** olarak ayarlanmış olmalıdır.
 - [İç içe gruplar](../..//active-directory/fundamentals/active-directory-groups-membership-azure-portal.md)için erişim etkinleştirilmeden önce ek bir gecikme olabilir.
 - Azure portal kaynakları görüntülemesi gereken kullanıcıların [okuyucu](../../role-based-access-control/built-in-roles.md#reader) rolüne (veya okuyucu erişimi de içeren başka bir yerleşik Role) sahip olması gerekir.
+- Yetkilendirmelere dahil ettiğiniz [Azure yerleşik rolleri](../../role-based-access-control/built-in-roles.md) , kullanım dışı bırakılmış roller içermemelidir. Azure yerleşik rolü kullanım dışı olursa, bu rolle eklendi olan tüm kullanıcılar erişimi kaybeder ve ek temsilciler yükleyemezsiniz. Bu işlemi onarmak için, şablonunuzu yalnızca desteklenen yerleşik rolleri kullanacak şekilde güncelleştirin ve ardından yeni bir dağıtım gerçekleştirin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

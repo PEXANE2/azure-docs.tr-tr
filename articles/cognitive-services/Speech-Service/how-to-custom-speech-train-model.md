@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/11/2020
+ms.date: 02/12/2021
 ms.author: trbye
-ms.openlocfilehash: 41fdb3d2e69ae39dbe80f21a953fd9fdaa6d1127
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: 4da93503c32e380adb82028e7c5e11dddb247d6f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97968475"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100373377"
 ---
 # <a name="train-and-deploy-a-custom-speech-model"></a>Özel Konuşma Tanıma modeli eğitme ve dağıtma
 
@@ -40,7 +40,19 @@ Bir modeli eğiten ilk adım eğitim verilerini karşıya yüklemedir. Bkz. insa
 3. **Modeli eğitme**' yi seçin.
 4. Eğitimle bir **ad** ve **Açıklama** sağlayın.
 5. **Senaryo ve temel model** listesinde, etki alanına en uygun senaryoyu seçin. Hangi senaryonun seçeceğiniz konusunda emin değilseniz, **genel**' i seçin. Temel model, eğitimin başlangıç noktasıdır. En son model genellikle en iyi seçenektir.
-6. **Eğitim verilerini seçin** sayfasında, eğitim için kullanmak istediğiniz bir veya daha fazla ilgili metin veri kümesi veya ses + insan etiketli döküm veri kümeleri seçin. Yeni bir modeli eğitedığınızda ilgili metinle başlayın; Sesli eğitim ve insan etiketli döküm çok daha uzun sürebilir ( [birkaç güne](how-to-custom-speech-evaluate-data.md#improve-model-recognition)kadar).
+6. **Eğitim verilerini seçin** sayfasında, eğitim için kullanmak istediğiniz bir veya daha fazla ilgili metin veri kümesi veya ses + insan etiketli döküm veri kümeleri seçin.
+
+> [!NOTE]
+> Yeni bir modeli eğitedığınızda ilgili metinle başlayın; Sesli eğitim ve insan etiketli döküm çok daha uzun sürebilir **( [birkaç güne](how-to-custom-speech-evaluate-data.md#add-audio-with-human-labeled-transcripts)kadar**).
+
+> [!NOTE]
+> Tüm temel modeller ses ile eğitimi desteklemez. Bir temel model bunu desteklemiyorsa, konuşma hizmeti bu metni yalnızca dökümleri 'ten kullanır ve sesi yoksayar. Ses verileriyle eğitimi destekleyen temel modellerin listesi için bkz. [dil desteği](language-support.md#speech-to-text) .
+
+> [!NOTE]
+> Eğitim için kullanılan temel modeli değiştirirken ve eğitim veri kümesinde seslerinizi değiştirdiğinizde, yeni seçilen temel modelin [ses verileriyle eğitimi destekleyip desteklemediğini](language-support.md#speech-to-text) *her zaman* denetleyin. Daha önce kullanılan temel model, ses verileriyle eğitimi desteklemeiyorsa ve eğitim veri kümesi ses içeriyorsa, yeni temel modele sahip eğitim süresi büyük **ölçüde** artar ve birkaç saat ile birkaç güne ve daha fazlasına kolayca gidebilirler. Konuşma hizmeti aboneliğiniz eğitim için [adanmış donanıma sahip](custom-speech-overview.md#set-up-your-azure-account) bir bölgede **değilse** bu özellikle doğrudur.
+>
+> Yukarıdaki paragrafta açıklanan sorunu ortaya çıkardıysanız, veri kümesindeki ses miktarını azaltarak veya tamamen yalnızca metni bırakarak eğitim süresini hızla azaltabilirsiniz. Konuşma hizmeti aboneliğiniz eğitim için [adanmış donanıma sahip bir bölgede](custom-speech-overview.md#set-up-your-azure-account) **değilse** , ikinci seçenek kesinlikle önerilir.
+
 7. Eğitim tamamlandıktan sonra, yeni eğitilen modelde doğruluk testi yapabilirsiniz. Bu adım isteğe bağlıdır.
 8. Özel modelinizi derlemek için **Oluştur** ' u seçin.
 
