@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: yelevin
-ms.openlocfilehash: 66c315132ef0ef4d320e9edd8e9bcc28b2240924
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 3d9e436d636fbd5414367efb0e122748a8e9e2cb
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99805099"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100390819"
 ---
 # <a name="normalization-in-azure-sentinel"></a>Azure Sentinel 'te normalleştirme
 
@@ -70,6 +70,9 @@ Daha fazla bilgi için bkz. [şema başvuru belgesi](./normalization-schema.md)v
 
 ## <a name="parsers"></a>Icılar
 
+- [Ayrıştırma nedir](#what-is-parsing)
+- [Sorgu süresi Çözümleyicileri kullanma](#using-query-time-parsers)
+
 ### <a name="what-is-parsing"></a>Ayrıştırma nedir
 
 Bir temel tanımlanmış normalleştirilmiş tablolar kümesi ile, verilerinizi bu tablolarla dönüştürmeniz (ayrıştırmanıza/eşlemenizi) gerekir. Diğer bir deyişle, ham biçimindeki belirli verileri, normalleştirilmiş şemada iyi bilinen sütunlara ayıklayacaksınız. Azure Sentinel 'de ayrıştırma **sorgu zaman** -Çözümleyicileri, varolan tablolardaki (CommonSecurityLog, özel günlük tabloları, Syslog gibi) verileri normalleştirilmiş tablolar şemasına dönüştüren Log Analytics Kullanıcı Işlevleri (kusto sorgu DILI-KQL kullanarak) olarak oluşturulur.
@@ -77,6 +80,10 @@ Bir temel tanımlanmış normalleştirilmiş tablolar kümesi ile, verilerinizi 
 Azure Sentinel 'de henüz desteklenmeyen diğer ayrıştırma türü, veri kaynaklarından alınan verileri doğrudan normalleştirilmiş  tablo (lar) halinde toplamaya izin veriliyor. Alma süresi ayrıştırma, veri modeli işlevleri kullanma gerekmeden doğrudan sorgulandığı için gelişmiş performans sağlar.
 
 ### <a name="using-query-time-parsers"></a>Sorgu süresi Çözümleyicileri kullanma
+
+- [Ayrıştırıcı yükleme](#installing-a-parser)
+- [Çözümleyicileri kullanma](#using-the-parsers)
+- [Çözümleyicileri özelleştirme](#customizing-parsers)
 
 #### <a name="installing-a-parser"></a>Ayrıştırıcı yükleme
 
@@ -119,6 +126,12 @@ Sağdaki bölmede, "kayıtlı sorgular" bölümünü genişletin ve ' Normalized
 
 Her bir ayrıştırıcıya tıklayıp kullandığı temel işlevi görebilir ve bunu çalıştırabilir (veya yukarıda açıklandığı şekilde, diğer adıyla doğrudan erişebilirsiniz). Bazı ayrıştırıcıların, özgün alanları kolay bir şekilde normalleştirilmek üzere normalleştirilmiş alanlara korumasını sağlayabilirsiniz. Bu, ayrıştırıcının sorgusunda kolayca düzenlenebilir.
 
+> [!TIP]
+> Arama ve algılama sorguları dahil olmak üzere herhangi bir sorguda Azure Sentinel tabloları yerine kaydedilmiş işlevlerinizi kullanabilirsiniz. Daha fazla bilgi için bkz.
+>
+> - [Azure Sentinel 'de veri normalleştirme](normalization.md#parsers)
+> - [Azure Izleyici günlüklerinde metin ayrıştırma](/azure/azure-monitor/log-query/parse-text)
+>
 #### <a name="customizing-parsers"></a>Çözümleyicileri özelleştirme
 
 Yukarıdaki adımları tekrarlayabilirsiniz (sorgu Gezgini 'nde ayrıştırıcısı bulma), ilgili ayrıştırıcıya tıklayıp işlev uygulamasını görebilirsiniz.
@@ -131,6 +144,8 @@ Yukarıdaki adımları tekrarlayabilirsiniz (sorgu Gezgini 'nde ayrıştırıcı
 :::image type="content" source="./media/normalization/are-you-sure.png" alt-text="Emin misiniz":::
 
 #### <a name="additional-information"></a>Ek bilgiler
+
+JSON, XML ve CSV, özellikle sorgu zamanında ayrıştırmaya uygundur. Azure Sentinel, JSON, XML ve CSV için yerleşik ayrıştırma işlevlerine ve ayrıca bir JSON ayrıştırma aracına sahiptir.  Daha fazla bilgi için bkz. [Azure Sentinel 'de JSON alanlarını kullanma](https://techcommunity.microsoft.com/t5/azure-sentinel/tip-easily-use-json-fields-in-sentinel/ba-p/768747) (blog). 
 
 Log Analytics 'de [kayıtlı sorgular](../azure-monitor/log-query/example-queries.md) (sorgu zaman Çözümleyicileri uygulama) hakkında daha fazla bilgi edinin.
 

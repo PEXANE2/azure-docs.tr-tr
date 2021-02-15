@@ -143,8 +143,10 @@
       items:
         - name: Kota artışı isteme
           href: database/quota-increase-request.md
-        - name: İş otomasyonu
+        - name: Esnek işlerle iş Otomasyonu
           href: database/job-automation-overview.md
+        - name: SQL aracısıyla iş Otomasyonu
+          href: database/job-automation-managed-instances.md
         - name: İş sürekliliği
           items:
             - name: Yük devretme grubu yapılandırma
@@ -662,7 +664,7 @@
                       href: database/saas-multitenantdb-tenant-analytics.md
     - name: Örnekler
       items:
-        - name: Azure CLI
+        - name: Azure CLI’si
           href: database/az-cli-script-samples-content-guide.md?tabs=single-database
         - name: Azure PowerShell
           href: database/powershell-script-content-guide.md?tabs=single-database
@@ -991,7 +993,7 @@
           href: managed-instance/user-initiated-failover.md
     - name: Örnekler
       items:
-        - name: Azure CLI
+        - name: Azure CLI’si
           href: database/az-cli-script-samples-content-guide.md?tabs=managed-instance
         - name: Azure PowerShell
           href: database/powershell-script-content-guide.md?tabs=managed-instance

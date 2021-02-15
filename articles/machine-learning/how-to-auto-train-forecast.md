@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy21q1, automl
 ms.date: 08/20/2020
-ms.openlocfilehash: 2b24b6480e4331f3a9470dcbb49e7ad221809187
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 6e686c7b22eb834a096cdd7a67beb6d8d291ef20
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98132091"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100392332"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Zaman serisi tahmin modelini otomatik eğitme
 
@@ -33,7 +33,7 @@ Düşük bir kod deneyimi için bkz. öğreticide, [Azure Machine Learning Studi
 
 Klasik zaman serisi yöntemlerinin aksine, otomatik ML 'de, geçmiş zaman serisi değerleri, gerileme için diğer tahminlerle birlikte ek boyutlar haline gelir. Bu yaklaşım, eğitim sırasında birden çok bağlamsal değişkeni ve bunlarla ilişkilerini bir araya ekler. Birden çok etken bir tahmini etkileyebileceğinden, bu yöntem kendisini gerçek dünya tahmin senaryolarıyla iyi bir şekilde hizalar. Örneğin, satış tahmini yaparken geçmiş eğilimler, Döviz Kuru ve fiyatın etkileşimleri, satış sonucunu güvenle bir şekilde ister. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 İhtiyacınız olan bu makalede, 
 
@@ -193,6 +193,14 @@ automl_config = AutoMLConfig(task='forecasting',
                              verbosity=logging.INFO,
                              **forecasting_parameters)
 ```
+
+Otomatik ML ile bir tahmin modelini başarılı bir şekilde eğitmek için gereken veri miktarı, `forecast_horizon` `n_cross_validations` , ve ' yi `target_lags` `target_rolling_window_size` yapılandırdığınızda belirtilen değerler `AutoMLConfig` tarafından etkilenir. 
+
+Aşağıdaki formül, zaman serisi özelliklerinin oluşturulması için gerekli olan geçmiş veri miktarını hesaplar.
+
+Gerekli minimum veri tarihi: (2x `forecast_horizon` ) + # `n_cross_validations` + Max (Max ( `target_lags` ), `target_rolling_window_size` )
+
+Veri kümesindeki herhangi bir seri için, belirtilen ilgili ayarlar için gerekli geçmiş veri miktarını karşılamayan bir hata özel durumu oluşturulur. 
 
 ### <a name="featurization-steps"></a>Korturlama adımları
 
@@ -368,7 +376,7 @@ day_datetime,store,week_of_year
 Bu gelecekteki verileri bir veri çerçevesine yüklemek için gerekli adımları yineleyin ve ardından `best_run.predict(test_data)` gelecekteki değerleri tahmin etmek için öğesini çalıştırın.
 
 > [!NOTE]
-> Değerler değerinden büyük bir dönem sayısı için tahmin edilemez `forecast_horizon` . Model, gelecekteki değerleri geçerli ufuk ötesinde tahmin etmek için daha büyük bir ufuk ile yeniden eğitilmiş olmalıdır.
+> , `target_lags` Ve/veya etkin olduğunda OTOMATIK ml ile tahmin için örnek tahminleri desteklenmez `target_rolling_window_size` .
 
 
 ## <a name="example-notebooks"></a>Örnek not defterleri

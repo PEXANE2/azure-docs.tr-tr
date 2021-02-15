@@ -1,22 +1,17 @@
 ---
 title: Azure Veri Kopyalama aracını kullanarak veri kopyalama
 description: Azure Data Factory oluşturun ve ardından Veri Kopyalama aracını kullanarak verileri Azure Blob depolama alanındaki bir konumdan başka bir konuma kopyalayın.
-services: data-factory
-documentationcenter: ''
 author: dearandyxu
 ms.author: yexu
-manager: anandsub
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: quickstart
 ms.date: 11/09/2020
-ms.openlocfilehash: 282917a6bbf7edb962a87ad87810adde56206d97
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 48624e415649be2fb76aed99c5cb0e1b3b12f04b
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96013522"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100372867"
 ---
 # <a name="quickstart-use-the-copy-data-tool-to-copy-data"></a>Hızlı başlangıç: Veri Kopyalama aracını kullanarak veri kopyalama
 
@@ -36,7 +31,7 @@ Bu hızlı başlangıçta Azure portalını kullanarak bir veri fabrikası oluş
 ## <a name="create-a-data-factory"></a>Veri fabrikası oluşturma
 
 1. **Microsoft Edge** veya **Google Chrome** web tarayıcısını açın. Şu anda Data Factory kullanıcı arabirimi yalnızca Microsoft Edge ve Google Chrome web tarayıcılarında desteklenmektedir.
-1. [Azure portalına](https://portal.azure.com) gidin. 
+1. [Azure Portal](https://portal.azure.com) gidin. 
 1. Azure Portal menüsünden **kaynak**  >  **tümleştirmesi**  >  **Data Factory** oluştur ' u seçin:
 
     ![Yeni veri fabrikası oluşturma](./media/doc-common-process/new-azure-data-factory-menu.png)

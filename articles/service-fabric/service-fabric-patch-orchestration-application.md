@@ -14,24 +14,22 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/01/2019
 ms.author: atsenthi
-ms.openlocfilehash: d64c6383b9a83b759dd8368a4e3e0f1847b5ee16
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 7d52d49ab5d3a47dd69fdc1708f9e52f4f796a92
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98791232"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100390649"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Service Fabric kümenizdeki Windows işletim sistemini düzeltme eki uygulama
 
-> 
 > [!IMPORTANT]
-> 30 Nisan 2019 itibariyle, düzeltme eki Orchestration uygulama sürümü 1,2. * artık desteklenmemektedir. En son sürüme yükseltdiğinizden emin olun.
+> 30 Nisan 2019 itibariyle, düzeltme eki Orchestration uygulama sürümü 1,2. * artık desteklenmemektedir. En son sürüme yükseltdiğinizden emin olun. "Windows Update" sanal makine yükseltmeleri, işletim sistemi için işletim sistemi diski yerine düzeltme eklerini uygular. 
 
 > [!NOTE]
-> [Sanal makine ölçek kümeniz üzerinde OTOMATIK işletim sistemi görüntüsü yükseltmelerini](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md) alma, Işletim sisteminizi Azure 'da düzeltme eki uygulama konusunda en iyi uygulamadır. Sanal makine ölçek kümesi tabanlı otomatik işletim sistemi görüntüsü yükseltmeleri, ölçek kümesi üzerinde gümüş veya daha fazla dayanıklılık gerektirir.
->
+> [Sanal makine ölçek kümeniz üzerinde OTOMATIK işletim sistemi görüntüsü yükseltmelerini](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md) alma, Işletim sisteminizi Azure 'da düzeltme eki uygulama konusunda en iyi uygulamadır. Sanal makine ölçek kümesi tabanlı otomatik işletim sistemi görüntüsü yükseltmeleri, ölçek kümesi üzerinde gümüş veya daha fazla dayanıklılık gerektirir. Dayanıklılık katmanı bronz olan düğüm türlerinde bu desteklenmez; bu durumda, lütfen Patch Orchestration uygulamasını kullanın.
 
- Düzeltme Eki düzenleme uygulaması (POA), Azure 'da barındırılan kümeler için yapılandırma tabanlı işletim sistemi düzeltme eki zamanlamaya izin veren Azure Service Fabric Onarım Yöneticisi hizmeti etrafında bir sarmalayıcıdır. Azure dışı barındırılan kümeler için POA gerekli değildir, ancak kapalı kalma süresi olmadan Service Fabric küme konaklarına yama yapmak için güncelleştirme etki alanı tarafından yapılan düzeltme eki yüklemeyi zamanlama gerekir.
+Düzeltme Eki düzenleme uygulaması (POA), Azure 'da barındırılan kümeler için yapılandırma tabanlı işletim sistemi düzeltme eki zamanlamaya izin veren Azure Service Fabric Onarım Yöneticisi hizmeti etrafında bir sarmalayıcıdır. Azure dışı barındırılan kümeler için POA gerekli değildir, ancak kapalı kalma süresi olmadan Service Fabric küme konaklarına yama yapmak için güncelleştirme etki alanı tarafından yapılan düzeltme eki yüklemeyi zamanlama gerekir.
 
 POA, kapalı kalma süresi olmadan bir Service Fabric kümesinde işletim sistemi düzeltme eki uygulamayı otomatikleştiren Service Fabric bir uygulamadır.
 
@@ -63,7 +61,7 @@ POA aşağıdaki alt bileşenleri oluşur:
 > [!NOTE]
 > POA, düğümü devre dışı bırakmak veya etkinleştirmek ve sistem durumu denetimleri gerçekleştirmek için Service Fabric Onarım Yöneticisi hizmetini kullanır. POA tarafından oluşturulan onarım görevi her düğüm için Windows Update ilerlemesini izler.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 > [!NOTE]
 > Gerekli en düşük .NET Framework sürümü 4,6 ' dir.
@@ -313,7 +311,7 @@ Güncelleştirmelerin düğüm üzerinde nasıl ilerleyerek anlamanıza yardımc
 
    Daha fazla sorun bulunmaya devam ederseniz, sanal makinenizde (VM) veya VM 'Lerde oturum açın ve Windows olay günlüklerini kullanarak bunlarla ilgili bilgi edinin. Daha önce bahsedilen onarım görevi yalnızca aşağıdaki yürütücü alt durumlarında bulunabilir:
 
-      Yürütişalt durumu | Açıklama
+      Yürütişalt durumu | Description
     -- | -- 
       Hiçbiri = 1 |  Düğümde devam eden bir işlem olmadığını gösterir. Durum geçiş durumunda olabilir.
       DownloadCompleted = 2 | İndirme işleminin başarılı, kısmi hata veya hata ile tamamlandığını gösterir.

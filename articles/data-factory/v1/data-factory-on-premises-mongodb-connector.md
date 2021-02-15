@@ -1,20 +1,17 @@
 ---
 title: MongoDB 'den veri taşıma
 description: Azure Data Factory kullanarak MongoDB veritabanından veri taşıma hakkında bilgi edinin.
-services: data-factory
 author: linda33wj
 ms.author: jingwang
-manager: shwang
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/13/2018
-ms.openlocfilehash: edddd100bddab1d642a8169353298a2d20620274
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cedb0b99f04df00763a3ee83287eec90bd5fb45d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79281346"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100387521"
 ---
 # <a name="move-data-from-mongodb-using-azure-data-factory"></a>Azure Data Factory kullanarak MongoDB 'Den veri taşıma
 
@@ -41,12 +38,12 @@ Azure Data Factory hizmetinin şirket içi MongoDB veritabanınıza bağlanabilm
     > [!NOTE]
     > Azure IaaS VM 'lerinde barındırıldığından bile MongoDB 'ye bağlanmak için ağ geçidini kullanmanız gerekir. Bulutta barındırılan bir MongoDB örneğine bağlanmaya çalışıyorsanız, ağ geçidi örneğini IaaS VM 'sine de yükleyebilirsiniz.
 
-## <a name="getting-started"></a>Başlarken
+## <a name="getting-started"></a>Kullanmaya başlama
 Farklı araçlar/API 'Ler kullanarak şirket içi MongoDB veri deposundaki verileri taşıyan kopyalama etkinliğiyle bir işlem hattı oluşturabilirsiniz.
 
 İşlem hattı oluşturmanın en kolay yolu **Kopyalama Sihirbazı**' nı kullanmaktır. Veri kopyalama Sihirbazı 'nı kullanarak işlem hattı oluşturma hakkında hızlı bir yol için bkz. [öğretici: kopyalama Sihirbazı 'nı kullanarak işlem hattı oluşturma](data-factory-copy-data-wizard-tutorial.md) .
 
-İşlem hattı oluşturmak için aşağıdaki araçları da kullanabilirsiniz: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager şablonu**, **.NET API**ve **REST API**. Kopyalama etkinliğine sahip bir işlem hattı oluşturmak için adım adım yönergeler için bkz. [kopyalama etkinliği öğreticisi](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
+İşlem hattı oluşturmak için aşağıdaki araçları da kullanabilirsiniz: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager şablonu**, **.NET API** ve **REST API**. Kopyalama etkinliğine sahip bir işlem hattı oluşturmak için adım adım yönergeler için bkz. [kopyalama etkinliği öğreticisi](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
 
 Araçları veya API 'Leri kullanıp kullanmayacağınızı bir kaynak veri deposundan havuz veri deposuna veri taşınan bir işlem hattı oluşturmak için aşağıdaki adımları gerçekleştirirsiniz:
 
@@ -63,15 +60,15 @@ Aşağıdaki tabloda, **OnPremisesMongoDB** bağlı HIZMETINE özgü JSON öğel
 
 | Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
-| tür |Type özelliği: **OnPremisesMongoDb** olarak ayarlanmalıdır |Evet |
-| sunucu |MongoDB sunucusunun IP adresi veya ana bilgisayar adı. |Evet |
+| tür |Type özelliği: **OnPremisesMongoDb** olarak ayarlanmalıdır |Yes |
+| sunucu |MongoDB sunucusunun IP adresi veya ana bilgisayar adı. |Yes |
 | port |MongoDB sunucusunun istemci bağlantılarını dinlemek için kullandığı TCP bağlantı noktası. |İsteğe bağlı, varsayılan değer: 27017 |
-| authenticationType |Temel veya anonim. |Evet |
+| authenticationType |Temel veya anonim. |Yes |
 | username |MongoDB 'ye erişmek için Kullanıcı hesabı. |Evet (temel kimlik doğrulaması kullanılıyorsa). |
 | password |Kullanıcının parolası. |Evet (temel kimlik doğrulaması kullanılıyorsa). |
 | authSource |Kimlik doğrulaması için kimlik bilgilerinizi denetlemek üzere kullanmak istediğiniz MongoDB veritabanının adı. |İsteğe bağlı (temel kimlik doğrulaması kullanılıyorsa). Varsayılan: yönetici hesabını ve databaseName özelliği kullanılarak belirtilen veritabanını kullanır. |
-| Dosyasında |Erişmek istediğiniz MongoDB veritabanının adı. |Evet |
-| gatewayName |Veri deposuna erişen ağ geçidinin adı. |Evet |
+| Dosyasında |Erişmek istediğiniz MongoDB veritabanının adı. |Yes |
+| gatewayName |Veri deposuna erişen ağ geçidinin adı. |Yes |
 | encryptedCredential |Ağ Geçidi tarafından şifrelenen kimlik bilgileri. |İsteğe Bağlı |
 
 ## <a name="dataset-properties"></a>Veri kümesi özellikleri
@@ -81,7 +78,7 @@ Veri kümelerini tanımlamaya yönelik özellikler & bölümlerin tam listesi i�
 
 | Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
-| Ma |MongoDB veritabanındaki koleksiyonun adı. |Evet |
+| Ma |MongoDB veritabanındaki koleksiyonun adı. |Yes |
 
 ## <a name="copy-activity-properties"></a>Kopyalama etkinliğinin özellikleri
 Etkinlikleri tanımlamaya yönelik bölüm & özelliklerinin tam listesi için, işlem [hatları oluşturma](data-factory-create-pipelines.md) makalesine bakın. Ad, açıklama, giriş ve çıkış tabloları ve ilke gibi özellikler, tüm etkinlik türleri için kullanılabilir.
@@ -230,7 +227,7 @@ Veriler her saat yeni bir bloba yazılır (sıklık: saat, Aralık: 1). Blob 'un
 
 **MongoDB kaynağına ve BLOB havuzuna sahip bir işlem hattındaki etkinliği kopyalama:**
 
-İşlem hattı, yukarıdaki giriş ve çıkış veri kümelerini kullanmak üzere yapılandırılmış bir kopyalama etkinliği içerir ve her saat çalışacak şekilde zamanlanır. İşlem hattı JSON tanımında, **kaynak** türü **Mongodbsource** olarak ayarlanır ve **Havuz** türü **blobsink**olarak ayarlanır. **Sorgu** özelliği IÇIN belirtilen SQL sorgusu, kopyalamanın Son saatteki verilerini seçer.
+İşlem hattı, yukarıdaki giriş ve çıkış veri kümelerini kullanmak üzere yapılandırılmış bir kopyalama etkinliği içerir ve her saat çalışacak şekilde zamanlanır. İşlem hattı JSON tanımında, **kaynak** türü **Mongodbsource** olarak ayarlanır ve **Havuz** türü **blobsink** olarak ayarlanır. **Sorgu** özelliği IÇIN belirtilen SQL sorgusu, kopyalamanın Son saatteki verilerini seçer.
 
 ```json
 {
@@ -343,8 +340,8 @@ Aşağıdaki tablolarda, örnekteki özgün dizileri temsil eden sanal tablolar 
 
 | _id | ExampleTable_Invoices_dim1_idx | invoice_id | öğe | price | İndirim |
 | --- | --- | --- | --- | --- | --- |
-| 1111 |0 |123 |Toaster |456 |0.2 |
-| 1111 |1 |124 |oven |1235 |0.2 |
+| 1111 |0 |123 |Toaster |456 |0,2 |
+| 1111 |1 |124 |oven |1235 |0,2 |
 | 2222 |0 |135 |buzdolabı |12543 |0,0 |
 
 "ExampleTable_Ratings" tablosu:

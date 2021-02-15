@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 12/17/2020
 ms.author: cachai
 ms.custom: ''
-ms.openlocfilehash: 4ba19fdf700790d89fe04867985fb803c3b0a2fc
-ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
+ms.openlocfilehash: be3c5bc2d178171aaebd322e13b23b3a6f79c442
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97760410"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100389000"
 ---
 # <a name="rabbitmq-trigger-for-azure-functions-overview"></a>Azure Işlevlerine genel bakış için Kbbitmq tetikleyicisi
 
@@ -27,7 +27,7 @@ Kurulum ve yapılandırma ayrıntıları hakkında bilgi için bkz. [genel bakı
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-Aşağıdaki örnek, Kbbitmq iletisini bir [Kbbitmq olayı](https://www.rabbitmq.com/releases/rabbitmq-dotnet-client/v3.2.2/rabbitmq-dotnet-client-3.2.2-client-htmldoc/html/type-RabbitMQ.Client.Events.BasicDeliverEventArgs.html)olarak okuyan ve kaydeden bir [C# işlevini](functions-dotnet-class-library.md) göstermektedir:
+Aşağıdaki örnek, Kbbitmq iletisini bir [Kbbitmq olayı](https://rabbitmq.github.io/rabbitmq-dotnet-client/api/RabbitMQ.Client.Events.BasicDeliverEventArgs.html)olarak okuyan ve kaydeden bir [C# işlevini](functions-dotnet-class-library.md) göstermektedir:
 
 ```cs
 [FunctionName("RabbitMQTriggerCSharp")]
@@ -211,7 +211,7 @@ Daha fazla ayrıntı için bkz. tetikleyici [örneği](#example) .
 
 Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `RabbitMQTrigger` .
 
-|function.jsözelliği | Öznitelik özelliği |Açıklama|
+|function.jsözelliği | Öznitelik özelliği |Description|
 |---------|---------|----------------------|
 |**türüyle** | yok | "Oybbitmqtrigger" olarak ayarlanmalıdır.|
 |**Görünüm** | yok | "In" olarak ayarlanmalıdır.|
@@ -229,7 +229,7 @@ Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığı
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-Varsayılan ileti türü, [Kbbitmq olayıdır](https://www.rabbitmq.com/releases/rabbitmq-dotnet-client/v3.2.2/rabbitmq-dotnet-client-3.2.2-client-htmldoc/html/type-RabbitMQ.Client.Events.BasicDeliverEventArgs.html)ve `Body` kbbitmq olayının özelliği aşağıda listelenen türler olarak okunabilir:
+Varsayılan ileti türü, [Kbbitmq olayıdır](https://rabbitmq.github.io/rabbitmq-dotnet-client/api/RabbitMQ.Client.Events.BasicDeliverEventArgs.html)ve `Body` kbbitmq olayının özelliği aşağıda listelenen türler olarak okunabilir:
 
 * `An object serializable as JSON` -İleti geçerli bir JSON dizesi olarak teslim edilir.
 * `string`
@@ -238,7 +238,7 @@ Varsayılan ileti türü, [Kbbitmq olayıdır](https://www.rabbitmq.com/releases
 
 # <a name="c-script"></a>[C# betiği](#tab/csharp-script)
 
-Varsayılan ileti türü, [Kbbitmq olayıdır](https://www.rabbitmq.com/releases/rabbitmq-dotnet-client/v3.2.2/rabbitmq-dotnet-client-3.2.2-client-htmldoc/html/type-RabbitMQ.Client.Events.BasicDeliverEventArgs.html)ve `Body` kbbitmq olayının özelliği aşağıda listelenen türler olarak okunabilir:
+Varsayılan ileti türü, [Kbbitmq olayıdır](https://rabbitmq.github.io/rabbitmq-dotnet-client/api/RabbitMQ.Client.Events.BasicDeliverEventArgs.html)ve `Body` kbbitmq olayının özelliği aşağıda listelenen türler olarak okunabilir:
 
 * `An object serializable as JSON` -İleti geçerli bir JSON dizesi olarak teslim edilir.
 * `string`
@@ -280,7 +280,7 @@ Bu bölümde, 2. x ve üzeri sürümlerde bu bağlama için kullanılabilen gene
 }
 ```
 
-|Özellik  |Varsayılan | Açıklama |
+|Özellik  |Varsayılan | Description |
 |---------|---------|---------|
 |prefetchCount|30|İleti alıcısının eşzamanlı olarak istek aldığı ve önbelleğe alındığı ileti sayısını alır veya ayarlar.|
 |Adı|yok| İletilerin alınacağı kuyruğun adı.|
@@ -308,7 +308,7 @@ Bir bağlantı dizesi olmadan yerel olarak test ediyorsanız, "ana bilgisayar ad
 }
 ```
 
-|Özellik  |Varsayılan | Açıklama |
+|Özellik  |Varsayılan | Description |
 |---------|---------|---------|
 |Konak|yok|(connectionString kullanılıyorsa yok sayılır) <br>Kuyruğun ana bilgisayar adı (örn: 10.26.45.210)|
 |userName|yok|(connectionString kullanılıyorsa yok sayılır) <br>Kuyruğa erişen ad |

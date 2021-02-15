@@ -59,6 +59,8 @@
           href: managed-identity-authentication.md
         - name: Aracıyı yönetme
           href: manage-agent.md
+        - name: Makineyi bölgeler arasında geçirme
+          href: manage-howto-migrate.md
     - name: Senaryolar
       items:
         - name: Azure Sentinel’e ekleme

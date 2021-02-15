@@ -2,16 +2,15 @@
 title: Azure Otomasyonu runbook sorunlarını giderme
 description: Bu makalede, Azure Otomasyonu runbook 'larında sorunları gidermeye ve gidermeye nasıl çözüm yapılacağı açıklanır.
 services: automation
-ms.subservice: ''
-ms.date: 11/03/2020
+ms.date: 02/11/2021
 ms.topic: troubleshooting
 ms.custom: has-adal-ref
-ms.openlocfilehash: e154284df8eaad798c5cfaf4de69c40601863cf4
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 0ae7af848fd3ceb1d5b186a5a326c8fa43a69d24
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99053678"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100388031"
 ---
 # <a name="troubleshoot-runbook-issues"></a>Runbook sorunlarını giderme
 
@@ -224,37 +223,46 @@ Runbook 'lar çalıştırılırken, runbook Azure kaynaklarını yönetemez.
 
 ### <a name="cause"></a>Nedeni
 
-Runbook çalışırken doğru bağlamı kullanmıyor.
+Runbook çalışırken doğru bağlamı kullanmıyor. Bunun nedeni, runbook 'un yanlışlıkla yanlış aboneliğe erişmeye çalışıyor olması olabilir.
+
+Şöyle bir hata görebilirsiniz:
+
+```error
+Get-AzVM : The client '<automation-runas-account-guid>' with object id '<automation-runas-account-guid>' does not have authorization to perform action 'Microsoft.Compute/virtualMachines/read' over scope '/subscriptions/<subcriptionIdOfSubscriptionWichDoesntContainTheVM>/resourceGroups/REsourceGroupName/providers/Microsoft.Compute/virtualMachines/VMName '.
+   ErrorCode: AuthorizationFailed
+   StatusCode: 403
+   ReasonPhrase: Forbidden Operation
+   ID : <AGuidRepresentingTheOperation> At line:51 char:7 + $vm = Get-AzVM -ResourceGroupName $ResourceGroupName -Name $UNBV... +
+```
 
 ### <a name="resolution"></a>Çözüm
 
-Runbook birden çok runbook 'u çağırdığında abonelik bağlamı kaybolabilir. Abonelik bağlamının runbook 'lara geçirildiğinden emin olmak için, istemci runbook 'unun bağlamı parametresindeki cmdlet 'e iletmesini sağlayın `Start-AzureRmAutomationRunbook` `AzureRmContext` . `Disable-AzureRmContextAutosave` `Scope` `Process` Belirtilen kimlik bilgilerinin yalnızca geçerli runbook için kullanıldığından emin olmak için cmdlet 'ini olarak ayarlanmış parametresiyle kullanın. Daha fazla bilgi için bkz. [abonelikler](../automation-runbook-execution.md#subscriptions).
+Runbook birden çok runbook 'u çağırdığında abonelik bağlamı kaybolabilir. Yanlışlıkla yanlış aboneliğe erişmeye çalışmaktan kaçınmak için aşağıdaki yönergeleri izlemeniz gerekir.
 
-```azurepowershell-interactive
-# Ensures that any credentials apply only to the execution of this runbook
-Disable-AzContextAutosave –Scope Process
+* Yanlış aboneliğe başvurmayı önlemek için, her runbook 'un başlangıcında aşağıdaki kodu kullanarak Otomasyon Runbook 'larınızda bağlam kaydetmeyi devre dışı bırakın.
 
-# Connect to Azure with Run As account
-$ServicePrincipalConnection = Get-AutomationConnection -Name 'AzureRunAsConnection'
+   ```azurepowershell-interactive
+   Disable-AzContextAutosave –Scope Process
+   ```
 
-Connect-AzAccount `
-    -ServicePrincipal `
-    -Tenant $ServicePrincipalConnection.TenantId `
-    -ApplicationId $ServicePrincipalConnection.ApplicationId `
-    -CertificateThumbprint $ServicePrincipalConnection.CertificateThumbprint
+* Azure PowerShell cmdlet 'leri parametresini destekler `-DefaultProfile` . Bu, aynı işlemde birden fazla PowerShell betiğini çalıştırmayı desteklemek için tüm az ve Azurermcmdlet 'lerine eklenmiştir. bu sayede, her cmdlet için kullanılacak olan bağlamı ve hangi aboneliğin kullanılacağını belirtebilirsiniz. Runbook 'larınızla, runbook oluşturulduğunda (yani, bir hesap oturum açtığında) ve her değiştirildiğinde bağlam nesnesini runbook 'da kaydetmelisiniz ve az cmdlet belirttiğinizde bağlama başvurabilirsiniz.
 
-$AzContext = Select-AzSubscription -SubscriptionId $ServicePrincipalConnection.SubscriptionID
+   > [!NOTE]
+   > [Set-AzContext](/powershell/module/az.accounts/Set-AzContext) veya [Select-azsubscription](/powershell/module/servicemanagement/azure.service/set-azuresubscription)gibi cmdlet 'leri kullanarak bağlamı doğrudan işleyerek bile bağlam nesnesini geçirmeniz gerekir.
 
-$params = @{"VMName"="MyVM";"RepeatCount"=2;"Restart"=$true}
-
-Start-AzAutomationRunbook `
-    –AutomationAccountName 'MyAutomationAccount' `
-    –Name 'Test-ChildRunbook' `
-    -ResourceGroupName 'LabRG' `
-    -AzContext $AzContext `
-    –Parameters $params –wait
-```
-
+   ```azurepowershell-interactive
+   $servicePrincipalConnection=Get-AutomationConnection -Name $connectionName 
+   $context = Add-AzAccount `
+             -ServicePrincipal `
+             -TenantId $servicePrincipalConnection.TenantId `
+             -ApplicationId $servicePrincipalConnection.ApplicationId `
+             -Subscription 'cd4dxxxx-xxxx-xxxx-xxxx-xxxxxxxx9749' `
+             -CertificateThumbprint $servicePrincipalConnection.CertificateThumbprint 
+   $context = Set-AzContext -SubscriptionName $subscription `
+       -DefaultProfile $context
+   Get-AzVm -DefaultProfile $context
+   ```
+  
 ## <a name="scenario-authentication-to-azure-fails-because-multifactor-authentication-is-enabled"></a><a name="auth-failed-mfa"></a>Senaryo: çok faktörlü kimlik doğrulaması etkinleştirildiğinden Azure kimlik doğrulaması başarısız olur
 
 ### <a name="issue"></a>Sorun

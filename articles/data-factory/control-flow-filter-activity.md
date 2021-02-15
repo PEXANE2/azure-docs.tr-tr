@@ -1,22 +1,18 @@
 ---
 title: Azure Data Factory etkinliği filtrele
 description: Filtre etkinliği girdileri filtreler.
-services: data-factory
-documentationcenter: ''
 author: dcstwh
 ms.author: weetok
-manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/04/2018
-ms.openlocfilehash: 2026bdd1898df460bfed2ae9d5544f90c532308f
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 035ee5a5f1fe193fcb4579f1d46472ad9cd0b8b5
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97507447"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100385600"
 ---
 # <a name="filter-activity-in-azure-data-factory"></a>Azure Data Factory etkinliği filtrele
 Bir giriş dizisine filtre ifadesi uygulamak için bir işlem hattındaki filtre etkinliklerini kullanabilirsiniz. 
@@ -41,8 +37,8 @@ Bir giriş dizisine filtre ifadesi uygulamak için bir işlem hattındaki filtre
 -------- | ----------- | -------------- | --------
 name | `Filter`Etkinliğin adı. | Dize | Yes
 tür | **Filter** olarak ayarlanmalıdır. | Dize | Yes
-koşul | Girişi filtrelemek için kullanılacak koşul. | İfade | Yes
-öğeler | Filtrenin uygulanması gereken giriş dizisi. | İfade | Yes
+koşul | Girişi filtrelemek için kullanılacak koşul. | Expression | Yes
+öğeler | Filtrenin uygulanması gereken giriş dizisi. | Expression | Yes
 
 ## <a name="example"></a>Örnek
 

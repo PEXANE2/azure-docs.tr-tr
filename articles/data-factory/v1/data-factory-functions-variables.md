@@ -1,21 +1,18 @@
 ---
 title: Data Factory Işlevleri ve sistem değişkenleri
 description: Azure Data Factory işlevlerinin ve sistem değişkenlerinin bir listesini sağlar
-documentationcenter: ''
 author: dcstwh
 ms.author: weetok
-manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 9b5f91655367e866858a04b941cec4ee61dfe180
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: d47a26b46fad1ab8238f9fa7a1183aad20530ef5
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96495659"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100363942"
 ---
 # <a name="azure-data-factory---functions-and-system-variables"></a>Azure Data Factory Işlevleri ve sistem değişkenleri
 > [!NOTE]
@@ -25,7 +22,7 @@ Bu makalede, Azure Data Factory tarafından desteklenen işlevler ve değişkenl
 
 ## <a name="data-factory-system-variables"></a>Data Factory sistem değişkenleri
 
-| Değişken Adı | Açıklama | Nesne kapsamı | JSON kapsamı ve kullanım örnekleri |
+| Değişken Adı | Description | Nesne kapsamı | JSON kapsamı ve kullanım örnekleri |
 | --- | --- | --- | --- |
 | WindowStart |Geçerli etkinlik çalıştırma penceresi için zaman aralığı başlangıcı |etkinlik |<ol><li>Veri seçimi sorgularını belirtin. [Veri taşıma etkinlikleri](data-factory-data-movement-activities.md) makalesinde başvurulan bağlayıcı makalelerine bakın.</li> |
 | WindowEnd |Geçerli etkinlik çalıştırma penceresi için zaman aralığı sonu |etkinlik |WindowStart ile aynı. |
@@ -75,7 +72,7 @@ Kullanabileceğiniz farklı biçimlendirme seçeneklerini açıklayan [özel tar
 ### <a name="functions"></a>İşlevler
 Aşağıdaki tablolar Azure Data Factory içindeki tüm işlevleri listeler:
 
-| Category | İşlev | Parametreler | Açıklama |
+| Kategori | İşlev | Parametreler | Description |
 | --- | --- | --- | --- |
 | Saat |AddHours (X, Y) |X: DateTime <br/><br/>Y: int |Verilen saat X 'e Y saat ekler. <br/><br/>Örnek: `9/5/2013 12:00:00 PM + 2 hours = 9/5/2013 2:00:00 PM` |
 | Saat |AddMinutes (X, Y) |X: DateTime <br/><br/>Y: int |X 'e Y dakika ekler.<br/><br/>Örnek: `9/15/2013 12: 00:00 PM + 15 minutes = 9/15/2013 12: 15:00 PM` |

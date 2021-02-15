@@ -10,12 +10,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 07/01/2019
-ms.openlocfilehash: 01e5095e5ff5c65bff508f4bd526ee5f85e3dc56
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 8fa61855b5647c1caefd939af17b70c9d08c2f8f
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99575169"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100517833"
 ---
 # <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>Azure SQL veritabanı trafiğini daha yeni ağ geçitlerine geçirme
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -29,6 +29,22 @@ En güncel bilgiler [Azure SQL veritabanı ağ GEÇIDI IP adresleri](connectivit
 ## <a name="status-updates"></a>Durum güncelleştirmeleri
 
 # <a name="in-progress"></a>[Sürüyor](#tab/in-progress-ip)
+## <a name="march-2021"></a>Mart 2021
+Birden çok bölgedeki aşağıdaki SQL ağ geçitleri devre dışı bırakılıyor sürecinde:
+
+- Brezilya Güney: 104.41.11.5
+- Doğu Asya: 191.234.2.139
+- Doğu ABD: 191.238.6.43
+- Japonya Doğu: 191.237.240.43
+- Japonya Batı: 191.238.68.11
+- Kuzey Avrupa: 191.235.193.75
+- Orta Güney ABD: 23.98.162.75
+- Güneydoğu Asya: 23.100.117.95
+- Batı Avrupa: 191.237.232.75
+- Batı ABD: 23.99.34.75
+
+Bu ağ geçitleri (eski donanımlar üzerinde çalışan) hiçbir müşteri trafiğini yönlendirmediğinden hiçbir müşteri etkisi önerilmez. Bu ağ geçitlerinin IP adresleri 15 Mart 2021 ' de devre dışı bırakılır.
+
 ## <a name="february-2021"></a>Şubat 2021
 Yeni SQL ağ geçitleri aşağıdaki bölgelere ekleniyor:
 
@@ -95,7 +111,7 @@ Yeni SQL ağ geçitleri aşağıdaki bölgelere ekleniyor. Bu SQL ağ geçitleri
 - Batı Avrupa: 52.236.184.163 
 - Orta Güney ABD: 20.45.121.1, 20.49.88.1 
 
-Mevcut SQL ağ geçitleri aşağıdaki bölgelerde trafiği kabul etmeye başlayacaktır. Bu SQL ağ geçitleri, **1 eylül 2020** ' de müşteri trafiğini kabul etmeye başlayacaktır:
+Mevcut SQL ağ geçitleri aşağıdaki bölgelerde trafiği kabul etmeye başlayacaktır. Bu SQL ağ geçitleri, **1 eylül 2020**' de müşteri trafiğini kabul etmeye başlayacaktır:
 - Japonya Doğu: 40.79.184.8, 40.79.192.5
 
 

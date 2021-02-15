@@ -3,18 +3,18 @@ title: Machine Learning Studio (klasik) ile R 'yi kullanma-Azure
 description: Tahmin çözümü oluşturmak için R 'de Azure Machine Learning Studio (klasik) kullanmaya başlamak için bu R programlama öğreticisini kullanın.
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2019
-ms.openlocfilehash: bca2f0229a15f44ff8f3589a9c1e80032036b97c
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: c619b51f9323477bda4f1ec99aeeb1bfa01028fc
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95507208"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100517748"
 ---
 # <a name="get-started-with-azure-machine-learning-studio-classic-in-r"></a>R 'de Azure Machine Learning Studio (klasik) kullanmaya başlama
 
@@ -159,7 +159,7 @@ Artık Machine Learning Studio (klasik) ' de bazı verileriniz olduğuna göre, 
 1. Sol bölmenin üst kısmındaki **deneme öğelerini ara** kutusuna [Yürüt R betiği][execute-r-script]girin. Modül arama listesinde görünür.
 1. [Yürüt R betiği][execute-r-script] modülünü paletle sürükleyin.
 1. **csdairydata.csv veri kümesinin** çıkışını, [Execute R betiğinin][execute-r-script]en soldaki giriş (**dataSet1**) öğesine bağlayın.
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.
 
 Bu noktada, denemeniz bu örneğe benzer bir şekilde görünmelidir.
 
@@ -230,7 +230,7 @@ load("src/yourData.rdata") # Reads a zipped R data file
    maml.mapOutputPort('cadairydata')
    ```
 
-1. Bir ZIP dosyası oluşturun ve komut dosyanızı bu zip dosyasına kopyalayın. Windows 'da dosyaya sağ tıklayıp **Send to**  >  **sıkıştırılmış klasöre** Gönder ' i seçebilirsiniz. Bu eylem, simpleçizimi içeren yeni bir ZIP dosyası oluşturur **. R** dosyası.
+1. Bir ZIP dosyası oluşturun ve komut dosyanızı bu zip dosyasına kopyalayın. Windows 'da dosyaya sağ tıklayıp   >  **sıkıştırılmış klasöre** Gönder ' i seçebilirsiniz. Bu eylem, simpleçizimi içeren yeni bir ZIP dosyası oluşturur **. R** dosyası.
 
 1. Dosyanızı Machine Learning Studio (klasik) **veri kümelerine** ekleyin ve türü **zip** olarak belirtin. Artık veri kümelerinizde ZIP dosyasını görmeniz gerekir.
 
@@ -240,7 +240,7 @@ load("src/yourData.rdata") # Reads a zipped R data file
 
 1. `source()` [R betik modülünün yürütülmesi][execute-r-script] için kod penceresine ZIP dosya adınızı içeren işlevi girin. Bu durumda, girdik `source("src/simpleplot.R")` .
 
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.
 
 Bu adımlar tamamlandıktan sonra, deneme çalıştırıldığında r betiği [Yürüt][execute-r-script] dosyası ZIP dosyasında yürütülür. Bu noktada, denemeniz bu örneğe benzer bir şekilde görünmelidir.
 
@@ -1028,10 +1028,10 @@ Bu işlev aşağıdaki çıktıyı üretir.
 ##
 ## Coefficients:
 ##                   Estimate Std. Error t value Pr(>|t|)
-## (Intercept)       6.33e+00   1.45e-01   43.60   <2e-16 **_
-## Time              1.63e-09   1.72e-10    9.47   <2e-16 _*_
+## (Intercept)       6.33e+00   1.45e-01   43.60   <2e-16 ***
+## Time              1.63e-09   1.72e-10    9.47   <2e-16 ***
 ## I(Month.Count^2) -1.71e-06   4.89e-06   -0.35    0.726
-## I(Month.Count^3) -3.24e-08   1.49e-08   -2.17    0.031 _  
+## I(Month.Count^3) -3.24e-08   1.49e-08   -2.17    0.031 *  
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ##
@@ -1061,10 +1061,10 @@ Bu işlev aşağıdaki çıktıyı üretir.
 ## Coefficients:
 ##                   Estimate Std. Error t value Pr(>|t|)
 ## (Intercept)       6.38e+00   4.07e-02   156.6   <2e-16 ***
-## Time              1.57e-09   4.32e-11    36.3   <2e-16 **_
-## I(Month.Count^3) -3.76e-08   2.50e-09   -15.1   <2e-16 _*_
+## Time              1.57e-09   4.32e-11    36.3   <2e-16 ***
+## I(Month.Count^3) -3.76e-08   2.50e-09   -15.1   <2e-16 ***
 ## ---
-## Signif. codes:  0 '_*_' 0.001 '_*' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ##
 ## Residual standard error: 0.0417 on 213 degrees of freedom
 ## Multiple R-squared:  0.941,  Adjusted R-squared:  0.94
@@ -1112,21 +1112,21 @@ Bu işlev aşağıdaki çıktıyı üretir.
 ## Coefficients:
 ##                   Estimate Std. Error t value Pr(>|t|)
 ## Time              1.57e-09   2.72e-11    57.7   <2e-16 ***
-## I(Month.Count^3) -3.74e-08   1.57e-09   -23.8   <2e-16 **_
-## MonthApr          6.40e+00   2.63e-02   243.3   <2e-16 _*_
-## MonthAug          6.38e+00   2.63e-02   242.2   <2e-16 _*_
-## MonthDec          6.38e+00   2.64e-02   241.9   <2e-16 _*_
-## MonthFeb          6.31e+00   2.63e-02   240.1   <2e-16 _*_
-## MonthJan          6.39e+00   2.63e-02   243.1   <2e-16 _*_
-## MonthJul          6.39e+00   2.63e-02   242.6   <2e-16 _*_
-## MonthJun          6.38e+00   2.63e-02   242.4   <2e-16 _*_
-## MonthMar          6.42e+00   2.63e-02   244.2   <2e-16 _*_
-## MonthMay          6.43e+00   2.63e-02   244.3   <2e-16 _*_
-## MonthNov          6.34e+00   2.63e-02   240.6   <2e-16 _*_
-## MonthOct          6.37e+00   2.63e-02   241.8   <2e-16 _*_
-## MonthSep          6.34e+00   2.63e-02   240.6   <2e-16 _*_
+## I(Month.Count^3) -3.74e-08   1.57e-09   -23.8   <2e-16 ***
+## MonthApr          6.40e+00   2.63e-02   243.3   <2e-16 ***
+## MonthAug          6.38e+00   2.63e-02   242.2   <2e-16 ***
+## MonthDec          6.38e+00   2.64e-02   241.9   <2e-16 ***
+## MonthFeb          6.31e+00   2.63e-02   240.1   <2e-16 ***
+## MonthJan          6.39e+00   2.63e-02   243.1   <2e-16 ***
+## MonthJul          6.39e+00   2.63e-02   242.6   <2e-16 ***
+## MonthJun          6.38e+00   2.63e-02   242.4   <2e-16 ***
+## MonthMar          6.42e+00   2.63e-02   244.2   <2e-16 ***
+## MonthMay          6.43e+00   2.63e-02   244.3   <2e-16 ***
+## MonthNov          6.34e+00   2.63e-02   240.6   <2e-16 ***
+## MonthOct          6.37e+00   2.63e-02   241.8   <2e-16 ***
+## MonthSep          6.34e+00   2.63e-02   240.6   <2e-16 ***
 ## ---
-## Signif. codes:  0 '_*_' 0.001 '_*' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ##
 ## Residual standard error: 0.0263 on 202 degrees of freedom
 ## Multiple R-squared:     1,    Adjusted R-squared:     1
@@ -1279,7 +1279,7 @@ RStudio iyi şekilde belgelenmiştir. İşte, başlamanızı sağlamak için RSt
 * **R kodunu düzenleyin ve yürütün**: rstudio, r kodunu düzenlemek ve çalıştırmak için tümleşik bir ortam sağlar. Daha fazla bilgi için bkz. [kodu düzenlemede ve yürütülüyor](https://support.rstudio.com/hc/articles/200484448-Editing-and-Executing-Code).
 * **Hata ayıklama**: rstudio güçlü hata ayıklama özellikleri içerir. Bu özellikler hakkında daha fazla bilgi için bkz. [RStudio Ile hata ayıklama](https://support.rstudio.com/hc/articles/200713843-Debugging-with-RStudio). Kesme noktası sorun giderme özellikleri hakkında bilgi için bkz. [kesme noktası sorun giderme](https://support.rstudio.com/hc/articles/200534337-Breakpoint-Troubleshooting).
 
-## <a name="further-reading"></a><a id="appendixb"></a>Daha fazla bilgi
+## <a name="further-reading"></a><a id="appendixb"></a>Daha fazla okuma
 
 Bu R programlama öğreticisi, Machine Learning Studio (klasik) ile R dilini kullanmak için ihtiyaç duyduğunuz temel bilgileri içerir. R hakkında bilginiz yoksa, CRAN üzerinde iki giriş vardır:
 

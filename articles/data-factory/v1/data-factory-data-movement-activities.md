@@ -1,23 +1,18 @@
 ---
 title: Kopyalama etkinliğini kullanarak verileri taşıma
 description: 'Data Factory işlem hatlarında veri taşıma hakkında bilgi edinin: bulut depoları arasında veri geçişi ve şirket içi bir mağaza ile bulut deposu arasında. Kopyalama etkinliğini kullanın.'
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.assetid: 67543a20-b7d5-4d19-8b5e-af4c1fd7bc75
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/05/2017
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: a48a6de406f14c5339a4e6d92cd09a12357b73f5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8a3fe99896ff244d2e35737919e6797141095acb
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84195979"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100364027"
 ---
 # <a name="move-data-by-using-copy-activity"></a>Kopyalama etkinliğini kullanarak verileri taşıma
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -77,7 +72,7 @@ Data Factory’deki Kopyalama Etkinliği bir kaynak veri deposundan havuz veri d
 ### <a name="supported-file-formats"></a>Desteklenen dosya biçimleri
 Kopyalama etkinliği 'ni kullanarak dosyaları iki dosya tabanlı veri deposu arasında **olduğu gibi kopyalayabilirsiniz** , hem giriş hem de çıkış veri kümesi tanımlarında [Biçim bölümünü](data-factory-create-datasets.md) atlayabilirsiniz. Veriler, herhangi bir serileştirme/seri durumdan çıkarma yapılmadan verimli bir şekilde kopyalanır.
 
-Kopyalama etkinliği aynı zamanda belirtilen biçimlerdeki dosyaları okur ve yazar: **Text, JSON, avro, ORC ve Parquet**ve Compression codec **gzip, söndür, bzip2 ve zipsöndür** desteklenir. Ayrıntılar ile [Desteklenen dosya ve sıkıştırma biçimlerine](data-factory-supported-file-and-compression-formats.md) bakın.
+Kopyalama etkinliği aynı zamanda belirtilen biçimlerdeki dosyaları okur ve yazar: **Text, JSON, avro, ORC ve Parquet** ve Compression codec **gzip, söndür, bzip2 ve zipsöndür** desteklenir. Ayrıntılar ile [Desteklenen dosya ve sıkıştırma biçimlerine](data-factory-supported-file-and-compression-formats.md) bakın.
 
 Örneğin, aşağıdaki kopyalama etkinliklerini yapabilirsiniz:
 
@@ -104,7 +99,7 @@ Hem kaynak hem de havuz veri deposu bulutta olduğunda Data Factory, verileri ta
 | &nbsp; | Batı ABD 2 | Batı ABD 2 |
 | Kanada | Doğu Kanada | Orta Kanada |
 | &nbsp; | Orta Kanada | Orta Kanada |
-| Brezilya | Brezilya Güney | Brezilya Güney |
+| Brezilya | Güney Brezilya | Güney Brezilya |
 | Avrupa | Kuzey Avrupa | Kuzey Avrupa |
 | &nbsp; | West Europe | West Europe |
 | Birleşik Krallık | Batı Birleşik Krallık | Güney Birleşik Krallık |
@@ -112,7 +107,7 @@ Hem kaynak hem de havuz veri deposu bulutta olduğunda Data Factory, verileri ta
 | Asya Pasifik | Güneydoğu Asya | Güneydoğu Asya |
 | &nbsp; | Doğu Asya | Güneydoğu Asya |
 | Avustralya | Doğu Avustralya | Doğu Avustralya |
-| &nbsp; | Güneydoğu Avustralya | Avustralya Güneydoğu |
+| &nbsp; | Güneydoğu Avustralya | Güneydoğu Avustralya |
 | Hindistan | Orta Hindistan | Orta Hindistan |
 | &nbsp; | Batı Hindistan | Orta Hindistan |
 | &nbsp; | Güney Hindistan | Orta Hindistan |
@@ -186,7 +181,7 @@ Kopyalama etkinliği için, `typeProperties` bölüm, kaynak ve havuz türlerine
   }
 }
 ```
-Çıktı veri kümesinde tanımlanan zamanlama, etkinliğin ne zaman çalışacağını belirler (örneğin: **günlük**, sıklık, **gün**ve Aralık **1**). Etkinlik, verileri bir giriş veri kümesinden (**kaynak**) çıkış veri kümesine (**Havuz**) kopyalar.
+Çıktı veri kümesinde tanımlanan zamanlama, etkinliğin ne zaman çalışacağını belirler (örneğin: **günlük**, sıklık, **gün** ve Aralık **1**). Etkinlik, verileri bir giriş veri kümesinden (**kaynak**) çıkış veri kümesine (**Havuz**) kopyalar.
 
 Aktiviteyi kopyalamak için birden fazla giriş veri kümesi belirtebilirsiniz. Bunlar, etkinlik çalıştırılmadan önce bağımlılıkları doğrulamak için kullanılır. Ancak, hedef veri kümesine yalnızca ilk veri kümesindeki veriler kopyalanır. Daha fazla bilgi için bkz. [zamanlama ve yürütme](data-factory-scheduling-and-execution.md).  
 

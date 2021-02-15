@@ -8,22 +8,22 @@ ms.service: load-balancer
 ms.topic: how-to
 ms.date: 02/12/2021
 ms.author: allensu
-ms.openlocfilehash: 35e32627eaf26eb6f73ca382f119eab61ebd8711
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 5196b03ccd513e4afd93b8b8fcf18f7c2580024a
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 02/14/2021
-ms.locfileid: "100418254"
+ms.locfileid: "100519227"
 ---
 # <a name="retrieve-load-balancer-metadata-using-the-azure-instance-metadata-service-imds"></a>Azure Instance Metadata Service (ıMDS) kullanarak yük dengeleyici meta verilerini alma
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* İsteğiniz için [en son API sürümünü](/virtual-machines/windows/instance-metadata-service?tabs=windows#supported-api-versions) kullanın.
+* İsteğiniz için [en son API sürümünü](../virtual-machines/windows/instance-metadata-service.md?tabs=windows#supported-api-versions) kullanın.
 
 ## <a name="sample-request-and-response"></a>Örnek istek ve yanıt
 > [!IMPORTANT]
-> Bu örnek proxy 'leri atlar. IDS 'yi sorgularken proxy 'leri **atmalısınız** . Daha fazla bilgi için bkz. [proxy 'ler](/virtual-machines/windows/instance-metadata-service?tabs=windows#proxies).
+> Bu örnek proxy 'leri atlar. IDS 'yi sorgularken proxy 'leri **atmalısınız** . Daha fazla bilgi için bkz. [proxy 'ler](../virtual-machines/windows/instance-metadata-service.md?tabs=windows#proxies).
 ### <a name="windows"></a>[Windows](#tab/windows/)
 
 ```powershell
@@ -82,9 +82,9 @@ curl -H "Metadata:true" --noproxy "*" "http://169.254.169.254:80/metadata/loadba
 ## <a name="next-steps"></a>Sonraki adımlar
 [Ortak hata kodları ve sorun giderme adımları](troubleshoot-load-balancer-imds.md)
 
-[Azure Instance Metadata Service](/virtual-machines/windows/instance-metadata-service) hakkında daha fazla bilgi
+[Azure Instance Metadata Service](../virtual-machines/windows/instance-metadata-service.md) hakkında daha fazla bilgi
 
-[Örnek için tüm meta verileri alma](/virtual-machines/windows/instance-metadata-service?tabs=windows#access-azure-instance-metadata-service)
+[Örnek için tüm meta verileri alma](../virtual-machines/windows/instance-metadata-service.md?tabs=windows#access-azure-instance-metadata-service)
 
 [Standart yük dengeleyici dağıtma](quickstart-load-balancer-standard-public-portal.md)
 

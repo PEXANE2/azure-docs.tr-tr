@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 52768874ef27bf87846d4abbd68e9e8c1972f996
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: 9bd0516889733a666bf15668cffd124dcc468f3e
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97679440"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100388966"
 ---
 # <a name="tutorial-migrate-from-bing-maps-to-azure-maps"></a>Öğretici: Bing Haritalar 'dan Azure Maps 'e geçiş
 
@@ -28,7 +28,7 @@ Bu öğreticide şunları öğreneceksiniz:
 > * Geçişinizi planlayın.
 > * Teknik kaynakların ve desteğin nerede bulunacağı.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 1. [Azure portalında](https://portal.azure.com) oturum açın. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 2. [Azure haritalar hesabı oluşturma](quick-demo-map-app.md#create-an-azure-maps-account)
@@ -47,8 +47,8 @@ Aşağıdaki tablo, Bing Haritalar özelliklerinin üst düzey bir listesini ve 
 | Web SDK’sı                               | ✓                  |
 | Android SDK                           | ✓                  |
 | iOS SDK                               | Planlandı            |
-| UWP SDK 'Sı                               | Planlandı            |
-| WPF SDK 'Sı                               | Planlandı            |
+| UWP SDK 'Sı                               | Yok                 |
+| WPF SDK 'Sı                               | Yok                 |
 | REST hizmeti API 'Leri                     | ✓                  |
 | Otomatik öneri                           | ✓                  |
 | Yönergeler (kamyon dahil)          | ✓                  |

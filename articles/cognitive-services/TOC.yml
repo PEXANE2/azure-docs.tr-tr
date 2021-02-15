@@ -51,7 +51,7 @@
     - name: Kapsayıcı görüntüsü etiketleri ve sürüm notları
       href: ./containers/container-image-tags.md
     - name: Kapsayıcı hakkında SSS
-      href: ./containers/container-faq.md
+      href: ./containers/container-faq.yml
     - name: Kapsayıcı tarifleri
       items:
         - name: Kapsayıcıyı Yeniden Kullanma

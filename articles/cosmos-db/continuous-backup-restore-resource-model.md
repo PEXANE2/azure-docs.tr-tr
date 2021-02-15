@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/01/2021
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 91421b66af441ed2c7e9c8b66c16ee83f489b03e
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: d838425583638aef5199b52df4869923c826553d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99538519"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100369977"
 ---
 # <a name="resource-model-for-the-azure-cosmos-db-point-in-time-restore-feature-preview"></a>Azure Cosmos DB zaman noktası geri yükleme özelliği için kaynak modeli (Önizleme)
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -30,14 +30,14 @@ Veritabanı hesabının kaynak modeli, yeni geri yükleme senaryolarını destek
 
 ### <a name="backuppolicy"></a>BackupPolicy
 
-"Backuppolicy" parametresi altında "Type" adlı hesap düzeyinde yedekleme ilkesinde yeni bir özellik, sürekli yedekleme ve zaman içinde geri yükleme işlevlerini mümkün bir şekilde sunar. Bu moda **sürekli yedekleme** adı verilir. Genel önizlemede, hesabı oluştururken yalnızca bu modu ayarlayabilirsiniz. Etkinleştirildikten sonra, bu hesap içinde oluşturulan tüm kapsayıcılar ve veritabanları, varsayılan olarak etkinleştirilen sürekli yedekleme ve zaman içinde geri yükleme işlevlerine sahip olur.
+Hesap düzeyi yedekleme ilkesindeki parametre altında adlı yeni bir özellik `Type` , `backuppolicy` sürekli yedekleme ve zaman içinde geri yükleme işlevlerini mümkün bir şekilde sunar. Bu moda **sürekli yedekleme** adı verilir. Genel önizlemede, hesabı oluştururken yalnızca bu modu ayarlayabilirsiniz. Etkinleştirildikten sonra, bu hesap içinde oluşturulan tüm kapsayıcılar ve veritabanları, varsayılan olarak etkinleştirilen sürekli yedekleme ve zaman içinde geri yükleme işlevlerine sahip olur.
 
 > [!NOTE]
 > Şu anda bir noktadan noktaya geri yükleme özelliği genel önizlemede ve MongoDB için Azure Cosmos DB API ve SQL hesapları için kullanılabilir. Sürekli moda sahip bir hesap oluşturduktan sonra, düzenli moda geçiş yapamazsınız.
 
 ### <a name="createmode"></a>CreateMode
 
-Bu özellik, hesabın nasıl oluşturulduğunu gösterir. Olası değerler şunlardır "varsayılan" ve "geri yükle". Geri yükleme gerçekleştirmek için, bu değeri "geri yükle" olarak ayarlayın ve özellikte uygun değerleri sağlayın `RestoreParameters` .
+Bu özellik, hesabın nasıl oluşturulduğunu gösterir. Olası değerler *varsayılandır* ve *geri yüklenir*. Geri yükleme gerçekleştirmek için, bu değeri *geri yüklemek* ve özellikte uygun değerleri sağlamak için ayarlayın `RestoreParameters` .
 
 ### <a name="restoreparameters"></a>RestoreParameters
 
@@ -45,7 +45,7 @@ Bu özellik, hesabın nasıl oluşturulduğunu gösterir. Olası değerler şunl
 
 |Özellik Adı |Description  |
 |---------|---------|
-|restoreMode  | Geri yükleme modu "PointInTime" olmalıdır |
+|restoreMode  | Geri yükleme modu *Pointıntime* olmalıdır |
 |restoreSource   |  Geri yüklemenin başlatılacağı kaynak hesabın InstanceId 'si.       |
 |Restoretimestamp ınutc  | Hesabın geri yüklenmesi gereken UTC olarak zaman. |
 |databasesToRestore   | `DatabaseRestoreSource`Hangi veritabanlarının ve kapsayıcıların geri yüklenmesi gerektiğini belirten nesne listesi. Bu değer boşsa, tüm hesap geri yüklenir.   |

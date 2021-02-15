@@ -1,22 +1,17 @@
 ---
 title: Veri Kopyalama araç Azure Data Factory
 description: Azure Data Factory Kullanıcı arabirimindeki Veri Kopyalama aracı hakkında bilgi sağlar
-services: data-factory
-documentationcenter: ''
 author: dearandyxu
-manager: anandsub
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.author: yexu
-ms.openlocfilehash: b0ba14a05ac42e9fccc1a146ad5943716652104d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 18d61c7f51547a524e64fc44c98e70e0f5bc2752
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89434206"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100373003"
 ---
 # <a name="copy-data-tool-in-azure-data-factory"></a>Azure Data Factory'deki Veri Kopyalama aracı
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -43,8 +38,8 @@ Veri Kopyalama aracı 'nı başlatmak için veri fabrikanızın giriş sayfasın
 ## <a name="intuitive-flow-for-loading-data-into-a-data-lake"></a>Data Lake 'e veri yüklemek için sezgisel akış
 Bu araç, çok çeşitli kaynaklardan gelen verileri, sezgisel bir akışa göre dakikalar içinde hedefe kolayca taşımanızı sağlar:  
 
-1. **Kaynak**için ayarları yapılandırın.
-2. **Hedef**için ayarları yapılandırın. 
+1. **Kaynak** için ayarları yapılandırın.
+2. **Hedef** için ayarları yapılandırın. 
 3. Kopyalama işlemi için, sütun eşleme, performans ayarları ve hata toleransı ayarları gibi **Gelişmiş ayarları** yapılandırın. 
 4. Veri yükleme görevi için bir **zamanlama** belirtin. 
 5. Oluşturulacak Data Factory varlıkların **özetini** gözden geçirin. 
@@ -69,7 +64,7 @@ Veri kaynağının şeması birçok durumda veri hedefi şeması ile aynı olama
 Veri Kopyalama Aracı, kaynak ve hedef mağazalar arasında sütunları eşlerken davranışınızı izler ve öğrenir. Kaynak veri deposundan bir veya birkaç sütun belirledikten ve bunları hedef şemayla eşleştirdikten sonra, Veri Kopyalama aracı her iki taraftan de seçtiğiniz sütun çiftleri için olan düzeni çözümlemeye başlar. Daha sonra, sütunların geri kalanına aynı kalıbı uygular. Bu nedenle, birkaç tıklamayla hemen sonra istediğiniz şekilde, tüm sütunların hedefle eşleştirilmiş olduğunu görürsünüz.  Veri Kopyalama aracı tarafından sunulan sütun eşleme seçiminden memnun değilseniz, yoksayabilirsiniz ve sütunları el ile eşlemek için devam edebilirsiniz. Bu arada, Veri Kopyalama Aracı, kalıbı sürekli öğrenir ve güncelleştirir ve sonunda elde etmek istediğiniz sütun eşlemesi için doğru düzene ulaşır. 
 
 > [!NOTE]
-> SQL Server veya Azure SQL veritabanındaki verileri Azure SYNAPSE Analytics 'e (eski adıyla SQL veri ambarı) kopyalarken, tablo hedef depoda yoksa, Veri Kopyalama araç, kaynak şemayı kullanarak tablonun otomatik olarak oluşturulmasını destekler. 
+> SQL Server veya Azure SQL veritabanındaki verileri Azure SYNAPSE Analytics 'e kopyalarken, tablo hedef depoda yoksa, Veri Kopyalama araç, kaynak şemayı kullanarak tablonun otomatik olarak oluşturulmasını destekler. 
 
 ## <a name="filter-data"></a>Verileri filtreleme
 Yalnızca havuz veri deposuna kopyalanması gereken verileri seçmek için kaynak verilerini filtreleyebilirsiniz. Filtreleme, havuz veri deposuna kopyalanacak verilerin hacmini azaltır ve bu nedenle kopyalama işleminin aktarım hızını geliştirir. Veri Kopyalama araç, bir ilişkisel veritabanındaki verileri SQL sorgu dilini veya bir Azure Blob klasöründeki dosyaları kullanarak filtrelemek için esnek bir yol sağlar. 
@@ -91,7 +86,7 @@ Giriş klasörlerinizi aşağıdaki biçimde kullandığınızı varsayalım:
 ...
 ```
 
-**Dosya veya klasör**için **Araştır** düğmesine tıklayın, bu klasörlerden birine gidin (örneğin, 2016->03->01->02) ve **Seç**' e tıklayın. Metin kutusunda 2016/03/01/02 ' i görmeniz gerekir. 
+**Dosya veya klasör** için **Araştır** düğmesine tıklayın, bu klasörlerden birine gidin (örneğin, 2016->03->01->02) ve **Seç**' e tıklayın. Metin kutusunda 2016/03/01/02 ' i görmeniz gerekir. 
 
 Ardından, **2016** öğesini **{Year}**, **03** ile { **Month**}, { **Day**} ile **01** ve **{Hour}** ile **02** ile değiştirin ve **sekme** tuşuna basın. Bu dört değişkenin biçimini seçmek için açılan listeleri görmeniz gerekir:
 

@@ -5,12 +5,12 @@ author: nicolela
 ms.topic: article
 ms.date: 02/04/2021
 ms.author: nicolela
-ms.openlocfilehash: dbe4191b64773b71bc1ae04842d824fbfead8e55
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.openlocfilehash: 8d5356f7fd2661d9743d1058a147a0b20f62850e
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99628173"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100373717"
 ---
 # <a name="set-up-a-lab-for-arcmaparcgis-desktop"></a>Arcmap\argıs Masaüstü için laboratuvar ayarlama
 
@@ -55,7 +55,7 @@ Bu bölümdeki adımlarda, şablon VM 'nin nasıl ayarlanacağı gösterilmekted
 1.  Şablon sanal makinesini başlatın ve RDP kullanarak makineye bağlanın.
 
 2.  ESRI tarafından sağlanan yönergeleri kullanarak ArcGIS Masaüstü bileşenlerini indirip yükleyin.  Bu adımlar, eşzamanlı kullanım lisanslama için lisans yöneticisinin atanmasını içerir: 
-    - [ArcGIS Desktop 'ı yüklemeye ve yapılandırmaya giriş](https://desktop.arcgis.com/arcmap/latest/get-started/installation-guide/introduction.htm)
+    - [ArcGIS Desktop 'ı yüklemeye ve yapılandırmaya giriş](https://desktop.arcgis.com/en/arcmap/latest/get-started/installation-guide/introduction.htm)
 
 3.  Öğrenciler için dış yedekleme depolaması ayarlayın.  Öğrenciler, yaptıkları tüm değişiklikler oturumlarda kaydedildiğinden, dosyaları doğrudan atanmış VM 'lerine kaydedebilir.  Bununla birlikte, öğrencilerin çalışmalarını, birkaç nedenden dolayı VM 'lerden dış depolama birimine yedeklemesini öneririz:
     - Öğrenciler, sınıf ve laboratuvar bittikten sonra çalışmalarını erişmelerini sağlamak için.  

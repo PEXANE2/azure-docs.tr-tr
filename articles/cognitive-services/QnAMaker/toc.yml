@@ -8,12 +8,12 @@
       href: whats-new.md
 - name: Hızlı Başlangıçlar
   items:
-    - name: Soru-Cevap Oluşturma portalında Bilgi Bankası oluşturma
+    - name: Soru-Cevap Oluşturma portalında Bilgi Bankası oluşturma ve sorgulama
       href: Quickstarts/create-publish-knowledge-base.md
+    - name: İstemci kitaplıklarını veya REST API kullanarak Bilgi Bankası oluşturma ve sorgulama
+      href: Quickstarts/quickstart-sdk.md
     - name: Bir Bilgi Bankası 'nı REST API 'lerle sorgulama
       href: Quickstarts/get-answer-from-knowledge-base-using-url-tool.md
-    - name: İstemci kitaplıklarını veya REST API kullanma
-      href: Quickstarts/quickstart-sdk.md
 - name: Öğreticiler
   items:
     - name: Power Virtual Agent ile tümleştirme
@@ -50,15 +50,6 @@
       displayName: 'azure, resource, key, upgrade, pricing, tier,'
     - name: Soru-Cevap Oluşturma kaynak erişimini yönetme
       href: How-To/manage-qna-maker-app.md
-    - name: Bilgi Bankası 'nı geliştirmek için etkin öğrenimi ayarlama
-      items:
-        - name: Etkin öğrenmeyi açma
-          href: How-To/use-active-learning.md
-        - name: Önerilen alternatif soruları alma
-          href: How-to/improve-knowledge-base.md
-          displayName: 'active learning, suggestion, dialog prompt, train api, feedback loop, autolearn, auto-learn, user setting, service setting, services setting, accept, reject, filter by suggestion, filter active learning, clusterHead, totalAutoSuggestedCount, totalUserSuggestedCount, autoSuggestedCount, userSuggestedCount'
-    - name: Etkin öğrenmeyi açma
-      href: How-To/use-active-learning.md
     - name: Bilgi bankasını yönetme
       items:
         - name: Bilgi bankası oluşturma
@@ -79,12 +70,18 @@
         - name: İzleme istemleri ekleme
           href: How-To/multiturn-conversation.md
           displayName: 'multi-turn dialogs, parent question, child question, filtering, metadata, state, context, prompt, follow-up, followup, flow, conversation, previous question'
-        - name: Önerilen alternatif soruları alma
-          href: How-to/improve-knowledge-base.md
-          displayName: 'active learning, suggestion, dialog prompt, train api, feedback loop, autolearn, auto-learn, user setting, service setting, services setting, accept, reject, filter by suggestion, filter active learning, clusterHead, totalAutoSuggestedCount, totalUserSuggestedCount, autoSuggestedCount, userSuggestedCount'
+        - name: Varsayılan yanıtı değiştirme
+          href: How-To/change-default-answer.md
     - name: Bilgi bankasında sorgu yapma
       href: How-To/metadata-generateanswer-usage.md
       displayName: 'isTest, test, route, request, http, post, body, header, json, metadata, top, strictFilters, GenerateAnswer, API, answer, RankerType, id, text, question, context, 200, 2xx, 400, 401, 403, 404'
+    - name: Bilgi Bankası 'nı geliştirmek için etkin öğrenimi ayarlama
+      items:
+        - name: Etkin öğrenmeyi açma
+          href: How-To/use-active-learning.md
+        - name: Önerilen alternatif soruları alma
+          href: How-to/improve-knowledge-base.md
+          displayName: 'active learning, suggestion, dialog prompt, train api, feedback loop, autolearn, auto-learn, user setting, service setting, services setting, accept, reject, filter by suggestion, filter active learning, clusterHead, totalAutoSuggestedCount, totalUserSuggestedCount, autoSuggestedCount, userSuggestedCount'
     - name: Analiz ve telemetri
       href: How-To/get-analytics-knowledge-base.md
 - name: Başvuru
@@ -100,8 +97,6 @@
     - name: Güvenli SharePoint dosyaları ekleme
       href: How-To/add-sharepoint-datasources.md
       displayName: 'Sharepoint, secure, AAD, azure directory, admin, permission, authorization, file, authentication'
-    - name: Varsayılan yanıtı değiştirme
-      href: How-To/change-default-answer.md
     - name: Hizmet yapılandırması
       href: reference-app-service.md
     - name: İçerik biçimi yönergeleri

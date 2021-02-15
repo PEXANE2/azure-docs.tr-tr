@@ -5,18 +5,16 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 02/14/2019
+ms.date: 02/10/2021
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 76a602ae722bd975e634631819ebc703e8896c98
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 7dd255e9767309c7b273dccfa0ee5675eed18568
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96028419"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100380515"
 ---
-### <a name="to-modify-local-network-gateway-ip-address-prefixes---no-gateway-connection"></a><a name="noconnection"></a>Yerel ağ geçidinin IP adresi ön eklerini değiştirmek için - ağ geçidi bağlantısı yok
-
 Başka adres ön ekleri eklemek için:
 
 1. LocalNetworkGateway için değişkeni ayarlayın.
@@ -24,7 +22,7 @@ Başka adres ön ekleri eklemek için:
    ```azurepowershell-interactive
    $local = Get-AzLocalNetworkGateway -Name Site1 -ResourceGroupName TestRG1
    ```
-2. Ön ekleri değiştirin.
+1. Ön ekleri değiştirin.
 
    ```azurepowershell-interactive
    Set-AzLocalNetworkGateway -LocalNetworkGateway $local `
@@ -40,50 +38,9 @@ Adres ön eklerini kaldırmak için:
    ```azurepowershell-interactive
    $local = Get-AzLocalNetworkGateway -Name Site1 -ResourceGroupName TestRG1
    ```
-2. Ağ geçidini güncelleştirilmiş öneklerle ayarlayın.
+1. Ağ geçidini güncelleştirilmiş öneklerle ayarlayın.
 
    ```azurepowershell-interactive
    Set-AzLocalNetworkGateway -LocalNetworkGateway $local `
    -AddressPrefix @('10.101.0.0/24','10.101.1.0/24')
-   ```
-
-### <a name="to-modify-local-network-gateway-ip-address-prefixes---existing-gateway-connection"></a><a name="withconnection"></a>Yerel ağ geçidinin IP adresi ön eklerini değiştirmek için - ağ geçidi bağlantısı var
-
-Ağ geçidi bağlantınız varsa ve yerel ağ geçidinizde bulunan IP adresi ön eklerini eklemek veya kaldırmak istiyorsanız aşağıdaki adımları sırasıyla uygulamanız gerekir. Bunun sonucunda, VPN bağlantınızda kesinti oluşur. IP adresi öneklerini değiştirirken, VPN ağ geçidini silmeniz gerekmez. Yalnızca bağlantıyı kaldırmanız gerekir.
-
-1. Bağlantıyı kaldırın.
-
-   ```azurepowershell-interactive
-   Remove-AzVirtualNetworkGatewayConnection -Name VNet1toSite1 -ResourceGroupName TestRG1
-   ```
-2. Yerel ağ geçidini değiştirilen adres önekleriyle ayarlayın.
-   
-   LocalNetworkGateway için değişkeni ayarlayın.
-
-   ```azurepowershell-interactive
-   $local = Get-AzLocalNetworkGateway -Name Site1 -ResourceGroupName TestRG1
-   ```
-   
-   Ön ekleri değiştirin.
-   
-   ```azurepowershell-interactive
-   Set-AzLocalNetworkGateway -LocalNetworkGateway $local `
-   -AddressPrefix @('10.101.0.0/24','10.101.1.0/24')
-   ```
-3. Bağlantıyı oluşturun. Bu örnekte bir IPsec bağlantı türü yapılandırıyoruz. Bağlantınızı yeniden oluşturduktan sonra, yapılandırmanız için belirtilen bağlantı türünü kullanın. Ek bağlantı türleri için [PowerShell cmdlet](/powershell/module/Azurerm.Network/New-AzureRmVirtualNetworkGatewayConnection) sayfasına bakın.
-   
-   VirtualNetworkGateway için değişkeni ayarlayın.
-
-   ```azurepowershell-interactive
-   $gateway1 = Get-AzVirtualNetworkGateway -Name VNet1GW  -ResourceGroupName TestRG1
-   ```
-   
-   Bağlantıyı oluşturun. Bu örnek 2. adımda ayarladığınız $local değişkenini kullanır.
-
-   ```azurepowershell-interactive
-   New-AzVirtualNetworkGatewayConnection -Name VNet1toSite1 `
-   -ResourceGroupName TestRG1 -Location 'East US' `
-   -VirtualNetworkGateway1 $gateway1 -LocalNetworkGateway2 $local `
-   -ConnectionType IPsec `
-   -RoutingWeight 10 -SharedKey 'abc123'
    ```

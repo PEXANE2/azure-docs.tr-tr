@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: devx-track-js
-ms.openlocfilehash: db53e4407674abc1e6c81090dc4a50afa784940d
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 2b072107275fba1ff83ab3ddac63ed8bf7766356
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98684833"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100389119"
 ---
 # <a name="tutorial-migrate-a-web-app-from-bing-maps"></a>Öğretici: Bing Haritalar 'dan bir Web uygulaması geçirme
 
@@ -33,9 +33,9 @@ Bing Haritalar kullanan Web uygulamaları genellikle Bing Haritalar V8 JavaScrip
 
 Var olan bir Web uygulamasını geçiriyorsanız, Cesium, leaflet ve Openkatmanları gibi bir açık kaynak eşleme denetim kitaplığı kullanıp kullanmın olup olmadığını kontrol edin. Bu durumda, bu kitaplığı kullanmaya devam etmeyi tercih ediyorsanız, Azure haritalar kutucuk Hizmetleri 'ne ([yol kutucukları](/rest/api/maps/render/getmaptile) \| [uydu kutucukları](/rest/api/maps/render/getmapimagerytile)) bağlayabilirsiniz. Aşağıdaki bağlantılar, yaygın olarak kullanılan bazı açık kaynaklı harita denetim kitaplıklarında Azure Haritalarını kullanma hakkında ayrıntılı bilgi sağlar.
 
-* Cesium-Web için 3B harita denetimi. [Kod örneği](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Raster%20Tiles%20in%20Cesium%20JS) \| [Belgeler](https://cesiumjs.org/)
-* Leaflet – Web için hafif 2B harita denetimi. [Kod örneği](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Azure%20Maps%20Raster%20Tiles%20in%20Leaflet%20JS) \| [Belgeler](https://leafletjs.com/)
-* Openkatmanlar-Web için projeksiyonları destekleyen bir 2B harita denetimi. [Kod örneği](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Raster%20Tiles%20in%20OpenLayers) \| [Belgeler](https://openlayers.org/)
+* [Cesium](https://cesiumjs.org/) -Web için 3B harita denetimi. [Kod örnekleri](https://azuremapscodesamples.azurewebsites.net/?search=Cesium) \| [Eklenti deposu]()
+* [Leaflet](https://leafletjs.com/) – Web Için hafif 2B harita denetimi. [Kod örnekleri](https://azuremapscodesamples.azurewebsites.net/?search=leaflet) \| [Eklenti deposu]()
+* [Openkatmanlar](https://openlayers.org/) -Web için projeksiyonları destekleyen bir 2B harita denetimi. [Kod örnekleri](https://azuremapscodesamples.azurewebsites.net/?search=openlayers) \| [Eklenti deposu]()
 
 Bir JavaScript çerçevesi kullanılarak geliştirilirken, aşağıdaki açık kaynaklı projelerden biri yararlı olabilir:
 
@@ -64,7 +64,7 @@ Aşağıdaki tabloda, Bing Maps V8 JavaScript SDK 'sindeki temel API özellikler
 | Döşeme katmanları              | ✓                                                                                      |
 | KML katmanı                | ✓                                                                                      |
 | Dağılım katmanı            | [Örnekler](https://azuremapscodesamples.azurewebsites.net/?search=contour)              |
-| Veri atma katmanı       | [Örnekler](https://azuremapscodesamples.azurewebsites.net/?search=data%20binning)       |
+| Veri atma katmanı       | Açık kaynaklı Azure Maps [gridded veri kaynağı modülüne](https://github.com/Azure-Samples/azure-maps-gridded-data-source) dahildir       |
 | Hareketli kutucuk katmanı      | Açık kaynaklı Azure Maps [animasyon modülüne](https://github.com/Azure-Samples/azure-maps-animations) dahildir |
 | Çizim araçları            | ✓                                                                                      |
 | Geocoder hizmeti         | ✓                                                                                      |
@@ -72,10 +72,10 @@ Aşağıdaki tabloda, Bing Maps V8 JavaScript SDK 'sindeki temel API özellikler
 | Uzaklık matrisi hizmeti  | ✓                                                                                      |
 | Uzamsal veri hizmeti     | Yok                                                                                    |
 | Uydu/havadan imay | ✓                                                                                      |
-| Birler göz ımamali         | Planlandı                                                                                |
-| Streetside canlandırın       | Planlandı                                                                                |
+| Birler göz ımamali         | Yok                                                                                |
+| Streetside canlandırın       | Yok                                                                                |
 | GeoJSON desteği          | ✓                                                                                      |
-| GeoXML desteği           | ✓                                                                                      |
+| GeoXML desteği           | ✓ [Uzamsal GÇ modülü](how-to-use-spatial-io-module.md)                                                                                     |
 | Well-Known metin desteği  | ✓                                                                                      |
 | Özel harita stilleri        | Kısmi                                                                                |
 

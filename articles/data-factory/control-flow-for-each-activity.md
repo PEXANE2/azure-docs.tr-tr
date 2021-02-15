@@ -1,22 +1,18 @@
 ---
 title: Azure Data Factory 'de ForEach etkinliği
 description: Her etkinlik Için, işlem hattınızda yinelenen bir denetim akışını tanımlar. Bir koleksiyon üzerinde yineleme yapmak ve belirtilen etkinlikleri yürütmek için kullanılır.
-services: data-factory
-documentationcenter: ''
 author: dcstwh
 ms.author: weetok
-manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/23/2019
-ms.openlocfilehash: 71e96e6245d4cf922b82162e01a972264699f3ac
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: c59108752677fc33e28578c3c679be24108806d5
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499518"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100385617"
 ---
 # <a name="foreach-activity-in-azure-data-factory"></a>Azure Data Factory 'de ForEach etkinliği
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -72,12 +68,12 @@ Bu makalenin ilerleyen bölümlerinde özellikler açıklanmaktadır. Items öze
 
 Özellik | Açıklama | İzin verilen değerler | Gerekli
 -------- | ----------- | -------------- | --------
-name | Her etkinliğin adı. | Dize | Evet
-tür | **Foreach** olarak ayarlanmalıdır | Dize | Evet
+name | Her etkinliğin adı. | Dize | Yes
+tür | **Foreach** olarak ayarlanmalıdır | Dize | Yes
 ısequential | Döngünün sıralı olarak veya paralel olarak yürütülmesi gerekip gerekmediğini belirtir.  En fazla 20 döngü yinelemesi paralel olarak çalıştırılabilir). Örneğin, **ıssequential** değeri false olarak ayarlanmış olan 10 farklı kaynak ve havuz veri kümesi içeren bir kopyalama etkinliği üzerinde yineleme Için bir foreach etkinliğinizi varsa, tüm kopyalar aynı anda yürütülür. Varsayılan değer false 'dur. <br/><br/> "Issequential" yanlış olarak ayarlanırsa, birden çok yürütülebilir dosya çalıştırmak için doğru bir yapılandırma olduğundan emin olun. Aksi takdirde, yazma çakışmalarını önlemek için bu özellik dikkatli kullanılmalıdır. Daha fazla bilgi için bkz. [paralel yürütme](#parallel-execution) bölümü. | Boole | Hayır. Varsayılan değer false 'dur.
 batchCount | Paralel yürütme sayısını denetlemek için kullanılacak toplu iş sayısı (ıssequential false olarak ayarlandığında). Bu, üst eşzamanlılık sınırdır, ancak for-each etkinliği her zaman bu sayıda yürütülmeyecektir | Tamsayı (en fazla 50) | Hayır. Varsayılan değer 20 ' dir.
-Öğeler | Tekrarlandırılmış bir JSON dizisi döndüren ifade. | İfade (bir JSON dizisi döndürür) | Evet
-Etkinlikler | Yürütülecek etkinlikler. | Etkinlikler Listesi | Evet
+Öğeler | Tekrarlandırılmış bir JSON dizisi döndüren ifade. | İfade (bir JSON dizisi döndürür) | Yes
+Etkinlikler | Yürütülecek etkinlikler. | Etkinlikler Listesi | Yes
 
 ## <a name="parallel-execution"></a>Paralel yürütme
 **Issequential** , false olarak ayarlandıysa, etkinlik en fazla 20 eşzamanlı yineleme ile paralel olarak yinelenir. Bu ayar dikkatli kullanılmalıdır. Eşzamanlı yinelemeler aynı klasöre ancak farklı dosyalara yazıyorsanız, bu yaklaşım iyidir. Eşzamanlı yinelemeler aynı dosyaya aynı anda yazıyorsanız, bu yaklaşım büyük olasılıkla hataya neden olur. 

@@ -1,22 +1,18 @@
 ---
 title: Azure Integration Runtime IP adresleri
 description: Veri depolarına ağ erişiminin güvenliğini sağlamak üzere güvenlik duvarlarını doğru bir şekilde yapılandırmak için gelen trafiğe izin vermeniz gereken IP adreslerini öğrenin.
-services: data-factory
 ms.author: abnarain
 author: nabhishek
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/06/2020
-ms.openlocfilehash: fb83be59a3ccb11ea8bbd88307596937caa2b354
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 7b663c8d6e5849d39bb8366c82f45e0fd66d77dd
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92638304"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100371405"
 ---
 # <a name="azure-integration-runtime-ip-addresses"></a>Azure Integration Runtime IP adresleri
 
@@ -31,7 +27,7 @@ Azure Integration Runtime kullandığı IP adresleri, Azure tümleştirme çalı
 
 ## <a name="azure-integration-runtime-ip-addresses-specific-regions"></a>Azure Integration Runtime IP adresleri: belirli bölgeler
 
-Kaynaklarınızın bulunduğu belirli bir Azure bölgesindeki Azure tümleştirme çalışma zamanı için listelenen IP adreslerinden gelen trafiğe izin verin. Hizmet etiketleri [IP aralığı indirme bağlantısı](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)' ndan bir IP aralığı hizmet etiketlerinin listesini alabilirsiniz. Örneğin, Azure bölgesi **AustraliaEast** Ise, **DataFactory. AustraliaEast** ' den bir IP aralığı listesi alabilirsiniz.
+Kaynaklarınızın bulunduğu belirli bir Azure bölgesindeki Azure tümleştirme çalışma zamanı için listelenen IP adreslerinden gelen trafiğe izin verin. Hizmet etiketleri [IP aralığı indirme bağlantısı](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)' ndan bir IP aralığı hizmet etiketlerinin listesini alabilirsiniz. Örneğin, Azure bölgesi **AustraliaEast** Ise, **DataFactory. AustraliaEast**' den bir IP aralığı listesi alabilirsiniz.
 
 
 ## <a name="known-issue-with-azure-storage"></a>Azure depolama ile ilgili bilinen sorun

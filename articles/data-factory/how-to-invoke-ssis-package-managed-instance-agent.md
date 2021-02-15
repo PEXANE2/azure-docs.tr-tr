@@ -1,20 +1,17 @@
 ---
 title: Azure SQL yönetilen örnek Aracısı 'nı kullanarak SSIS paketlerini çalıştırma
 description: Azure SQL yönetilen örnek Aracısı 'nı kullanarak SSIS paketlerini çalıştırmayı öğrenin.
-services: data-factory
-documentationcenter: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.author: lle
 author: lle
 ms.date: 04/14/2020
-ms.openlocfilehash: 5f8b18375c517ab5b620b2d6d897f5133b14705d
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: 916d799ba08f46cb86ee2e22c4af7fc1b92b385f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98556469"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100386161"
 ---
 # <a name="run-ssis-packages-by-using-azure-sql-managed-instance-agent"></a>Azure SQL yönetilen örnek Aracısı 'nı kullanarak SSIS paketlerini çalıştırma
 
@@ -22,7 +19,7 @@ Bu makalede, Azure SQL yönetilen örnek Aracısı kullanılarak bir SQL Server 
 
 Bu özellikle, SSıSDB 'de bulunan SSIS paketlerini bir SQL yönetilen örneğinde, Azure dosyaları gibi bir dosya sistemine veya Azure-SSIS Integration Runtime paket deposuna çalıştırabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu özelliği kullanmak için en son SQL Server Management Studio (SSMS) [indirip](/sql/ssms/download-sql-server-management-studio-ssms) yükleyin. Sürüm desteği ayrıntıları aşağıda verilmiştir:
 

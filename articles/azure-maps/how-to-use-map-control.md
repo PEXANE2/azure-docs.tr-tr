@@ -9,16 +9,18 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-js
-ms.openlocfilehash: db7006c01f59e8a11872d99b3a16f24f65ef7588
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 27d9d5d30dc4c96516d23acba6a11b411827071e
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94413386"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100378715"
 ---
 # <a name="use-the-azure-maps-map-control"></a>Azure Haritalar harita denetimini kullanma
 
 Harita Denetimi istemci tarafı JavaScript kitaplığı, haritalar ve katıştırılmış Azure haritaları işlevlerini Web veya mobil uygulamanıza işletirmesini sağlar.
+
+Bu belge, Azure Maps web SDK 'sını kullanır, ancak Azure haritalar Hizmetleri herhangi bir harita denetimiyle birlikte kullanılabilir. Azure haritalar ekibinin eklenti oluşturduğu bazı popüler açık kaynaklı harita denetimleri [aşağıda](open-source-projects.md#third-part-map-control-plugins) verilmiştir.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -75,7 +77,7 @@ Harita Denetimi istemci tarafı JavaScript kitaplığını kullanarak bir Web sa
     </style>
    ```
 
-4. Sayfanın gövdesinde bir `<div>` öğe ekleyin ve bunu `id` **myMap** ' den verin.
+4. Sayfanın gövdesinde bir `<div>` öğe ekleyin ve bunu `id` **myMap**' den verin.
 
    ```HTML
     <body onload="InitMap()">

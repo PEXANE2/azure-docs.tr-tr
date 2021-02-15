@@ -1,24 +1,18 @@
 ---
 title: 'Öğretici: Azure PowerShell kullanarak verileri taşımak için işlem hattı oluşturma '
 description: Bu öğreticide, Azure PowerShell kullanarak Kopyalama Etkinliği ile bir Azure Data Factory işlem hattı oluşturursunuz.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: ''
-editor: ''
-ms.assetid: 71087349-9365-4e95-9847-170658216ed8
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: aa97fd2ac12ca73d1a317fb09e03e49d0056ceb1
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 54c296ed8013b9962de9487cfec3e2568c03e738
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97608638"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100377049"
 ---
 # <a name="tutorial-create-a-data-factory-pipeline-that-moves-data-by-using-azure-powershell"></a>Öğretici: Azure PowerShell kullanarak verileri taşıyan bir Data Factory işlem hattı oluşturma
 > [!div class="op_single_selector"]
@@ -44,7 +38,7 @@ Bir işlem hattında birden fazla etkinlik olabilir. Bir etkinliğin çıkış v
 > 
 > Bu öğreticideki veri işlem hattı, bir kaynak veri deposundaki verileri hedef veri deposuna kopyalar. Azure Data Factory kullanarak verileri dönüştürme hakkında bir öğretici için bkz. [Öğretici: Hadoop kümesi kullanarak verileri dönüştürmek için işlem hattı oluşturma](data-factory-build-your-first-pipeline.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -114,7 +108,7 @@ Aşağıdaki noktalara dikkat edin:
 * Azure veri fabrikasının adı genel olarak benzersiz olmalıdır. Aşağıdaki hatayı alırsanız adı değiştirin (örneğin adınızADFTutorialDataFactory). Bu öğreticide adımları uygularken ADFTutorialFactoryPSH yerine bu adı kullanın. Data Factory yapıtları için bkz. [Data Factory - Adlandırma Kuralları](data-factory-naming-rules.md).
 
     ```
-    Data factory name “ADFTutorialDataFactoryPSH” is not available
+    Data factory name "ADFTutorialDataFactoryPSH" is not available
     ```
 * Data Factory örnekleri oluşturmak için Azure aboneliğinde katkıda bulunan veya yönetici rolünüz olmalıdır.
 * Veri fabrikasının adı gelecekte bir DNS adı olarak kaydedilmiş ve herkese görünür hale gelmiş olabilir.
@@ -452,7 +446,7 @@ Bu adımda, girdi olarak **InputDataset** ve çıktı olarak **OutputDataset** k
 **Tebrikler!** Azure Blob depolamadan Azure SQL veritabanı 'na veri kopyalamak için bir işlem hattına sahip bir Azure Veri Fabrikası başarıyla oluşturdunuz. 
 
 ## <a name="monitor-the-pipeline"></a>İşlem hattını izleme
-Bu adımda, Azure data factory’de neler olduğunu izlemek için Azure PowerShell kullanırsınız.
+Bu adımda, Azure Data Factory 'de neler olduğunu izlemek için Azure PowerShell kullanırsınız.
 
 1. &lt;Datafactoryname &gt; değerini veri fabrikanızın adıyla değiştirin ve **Get-azdatafactory** komutunu çalıştırın ve çıktıyı bir değişkene atayın $df.
 
@@ -460,7 +454,7 @@ Bu adımda, Azure data factory’de neler olduğunu izlemek için Azure PowerShe
     $df=Get-AzDataFactory -ResourceGroupName ADFTutorialResourceGroup -Name <DataFactoryName>
     ```
 
-    Örnek:
+    Örneğin:
     ```powershell
     $df=Get-AzDataFactory -ResourceGroupName ADFTutorialResourceGroup -Name ADFTutorialDataFactoryPSH0516
     ```

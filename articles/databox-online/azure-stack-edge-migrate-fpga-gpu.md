@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 02/09/2021
+ms.date: 02/10/2021
 ms.author: alkohli
-ms.openlocfilehash: ce063e27620c3b0ccec9336e7a45ebb2ee1ad10d
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: 1db6574f8ca22b6fe60899f00700ee19d61eab3b
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100101743"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100382829"
 ---
 # <a name="migrate-workloads-from-an-azure-stack-edge-pro-fpga-to-an-azure-stack-edge-pro-gpu"></a>Azure Stack Edge Pro FPGA 'dan iş yüklerini Azure Stack Edge Pro GPU 'suna geçirme
 
@@ -190,8 +190,8 @@ Yerel paylaşımlardaki verileri kurtarmak için şu adımları izleyin:
 
 IoT Edge modüller hazırlandıktan sonra, hedef cihazınıza IoT Edge iş yüklerini dağıtmanız gerekecektir. IoT Edge modüllerini dağıtmada herhangi bir hata varsa, bkz.:
 
-- [Azure IoT Edge ve Için sık karşılaşılan sorunlar ve çözümleri](../iot-edge/troubleshoot-common-errors.md) 
-- [IoT Edge çalışma zamanı hataları] [Windows PowerShell aracılığıyla Azure Stack Edge Pro GPU cihazını yönetin](azure-stack-edge-gpu-troubleshoot.md#troubleshoot-iot-edge-errors).
+- [Azure IoT Edge Için sık karşılaşılan sorunlar ve çözümleri](../iot-edge/troubleshoot-common-errors.md). 
+- [Çalışma zamanı hatalarını IoT Edge](azure-stack-edge-gpu-troubleshoot.md#troubleshoot-iot-edge-errors).
 
 ## <a name="verify-data"></a>Verileri doğrulama
 
