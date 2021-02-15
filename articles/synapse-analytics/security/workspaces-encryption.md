@@ -8,14 +8,14 @@ ms.subservice: security
 ms.date: 11/19/2020
 ms.author: nanditav
 ms.reviewer: jrasnick
-ms.openlocfilehash: d9a9d3c303739e68b5b8ef28053d6cf0b071f955
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: d4bc59a9bd5299698bff9949aaaa881fbdf385ee
+ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96501065"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100526281"
 ---
-# <a name="encryption-for-azure-synapse-analytics-workspaces"></a>Azure SYNAPSE Analytics çalışma alanları için şifreleme
+# <a name="encryption-for-azure-synapse-analytics-workspaces"></a>Azure Synapse Analytics çalışma alanları için şifreleme
 
 Bu makalede şunları anlayacaksınız:
 * SYNAPSE Analytics çalışma alanlarında bekleyen verilerin şifrelenmesi.
@@ -24,7 +24,7 @@ Bu makalede şunları anlayacaksınız:
 
 ## <a name="encryption-of-data-at-rest"></a>Bekleyen verilerin şifrelenmesi
 
-Bekleyen bir şifreleme çözümü, verilerin şifreli olmayan biçimde hiçbir zaman kalıcı olmamasını sağlar. Bekleyen verilerin çift şifrelemesi, tek bir katmanın güvencesine karşı korumak için iki, ayrı şifreleme katmanları ile tehditleri azaltır. Azure SYNAPSE Analytics, çalışma alanınızdaki veriler için müşterinin yönettiği bir anahtarla ikinci bir şifreleme katmanı sunar. Bu anahtar Azure Key Vault, anahtar yönetiminin ve döndürmenin sahipliğini almanıza olanak tanıyan [Azure Key Vault](../../key-vault/general/overview.md)korunmuş bir şekilde korunur.
+Bekleyen bir şifreleme çözümü, verilerin şifreli olmayan biçimde hiçbir zaman kalıcı olmamasını sağlar. Bekleyen verilerin çift şifrelemesi, tek bir katmanın güvencesine karşı korumak için iki, ayrı şifreleme katmanları ile tehditleri azaltır. Azure SYNAPSE Analytics, çalışma alanınızdaki veriler için müşterinin yönettiği bir anahtarla ikinci bir şifreleme katmanı sunar. Bu anahtar Azure Key Vault, anahtar yönetiminin ve döndürmenin sahipliğini almanıza olanak tanıyan [](../../key-vault/general/overview.md)korunmuş bir şekilde korunur.
 
 Azure hizmetleri için ilk şifreleme katmanı, platform tarafından yönetilen anahtarlarla etkinleştirilir. Varsayılan olarak, Azure diskleri ve Azure depolama hesaplarındaki veriler Rest 'de otomatik olarak şifrelenir. [Azure şifrelemesi 'Ne genel bakış](../../security/fundamentals/encryption-overview.md)'da Microsoft Azure ' de şifrelemenin nasıl kullanıldığı hakkında daha fazla bilgi edinin.
 
@@ -53,7 +53,7 @@ Aşağıdaki SYNAPSE bileşenlerindeki veriler, çalışma alanı düzeyinde yap
 
 ### <a name="key-access-and-workspace-activation"></a>Anahtar erişimi ve çalışma alanı etkinleştirme
 
-Müşteri tarafından yönetilen anahtarlarla Azure SYNAPSE şifreleme modeli, gerektiğinde şifreleme ve şifre çözme için Azure Key Vault anahtarlara erişen çalışma alanını içerir. Anahtarlar, erişim ilkesi aracılığıyla veya RBAC erişimi ([Önizleme](../../key-vault/general/rbac-guide.md)) Azure Key Vault çalışma alanı tarafından erişilebilir hale getirilir. Azure Key Vault erişim ilkesi aracılığıyla izin verirken, ilke oluşturma sırasında ["yalnızca uygulama"](../../key-vault/general/secure-your-key-vault.md#key-vault-authentication-options) seçeneğini belirleyin (çalışma alanının yönetilen kimliğini seçin ve yetkili bir uygulama olarak eklemeyin).
+Müşteri tarafından yönetilen anahtarlarla Azure SYNAPSE şifreleme modeli, gerektiğinde şifreleme ve şifre çözme için Azure Key Vault anahtarlara erişen çalışma alanını içerir. Anahtarlar, erişim ilkesi aracılığıyla veya [RBAC erişimi Azure Key Vault](../../key-vault/general/rbac-guide.md)çalışma alanı tarafından erişilebilir hale getirilir. Azure Key Vault erişim ilkesi aracılığıyla izin verirken, ilke oluşturma sırasında ["yalnızca uygulama"](../../key-vault/general/secure-your-key-vault.md#key-vault-authentication-options) seçeneğini belirleyin (çalışma alanının yönetilen kimliğini seçin ve yetkili bir uygulama olarak eklemeyin).
 
  Çalışma alanının, çalışma alanının etkinleştirilmeden önce anahtar kasasında ihtiyaç duyması gereken izinler verilmelidir. Çalışma alanı etkinleştirmesine yönelik bu aşamalı yaklaşım, çalışma alanındaki verilerin müşteri tarafından yönetilen anahtarla şifrelenmesini sağlar. Şifrelemenin adanmış SQL havuzları için etkinleştirilip etkinleştirilebileceğine veya devre dışı bırakılabileceğini unutmayın. her havuz varsayılan olarak şifreleme için etkinleştirilmemiştir.
 

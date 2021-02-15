@@ -9,18 +9,18 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 8/30/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 23a36bfc048a6214ccb79b793a23c21d5f8e305e
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: e7a8fd53e78e1aeab9db5af0432d0c3f1d786823
+ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93288266"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100526961"
 ---
-# <a name="migrate-from-vault-access-policy-to-an-azure-role-based-access-control-preview-permission-model"></a>Kasa erişim ilkesinden Azure rol tabanlı erişim denetimi (Önizleme) izin modeline geçiş
+# <a name="migrate-from-vault-access-policy-to-an-azure-role-based-access-control-permission-model"></a>Kasa erişim ilkesinden Azure rol tabanlı erişim denetimi izin modeline geçiş
 
 Kasa erişim ilkesi modeli, anahtarlar, gizlilikler ve sertifikalara erişim sağlamak için Key Vault yerleşik olarak bulunan mevcut bir yetkilendirme sistemidir. Key Vault kapsamındaki güvenlik sorumlusuna (Kullanıcı, Grup, hizmet sorumlusu, yönetilen kimlik) bireysel izinler atayarak erişimi denetleyebilirsiniz. 
 
-Azure rol tabanlı erişim denetimi (Azure RBAC), Azure kaynakları üzerinde ayrıntılı erişim yönetimi sağlayan [Azure Resource Manager](../../azure-resource-manager/management/overview.md) yerleşik bir yetkilendirme sistemidir. Key Vault anahtarlar, gizlilikler ve sertifikalar erişim yönetimi için Azure RBAC Şu anda genel önizlemededir. Azure RBAC ile, üç öğeden oluşan, rol atamaları oluşturarak kaynaklara erişimi kontrol edersiniz: güvenlik sorumlusu, rol tanımı (önceden tanımlanmış izinler kümesi) ve kapsam (kaynak grubu veya ayrı kaynak). Daha fazla bilgi için bkz. [Azure rol tabanlı erişim denetimi (Azure RBAC)](../../role-based-access-control/overview.md).
+Azure rol tabanlı erişim denetimi (Azure RBAC), Azure kaynakları üzerinde ayrıntılı erişim yönetimi sağlayan [Azure Resource Manager](../../azure-resource-manager/management/overview.md) yerleşik bir yetkilendirme sistemidir. Azure RBAC ile, üç öğeden oluşan, rol atamaları oluşturarak kaynaklara erişimi kontrol edersiniz: güvenlik sorumlusu, rol tanımı (önceden tanımlanmış izinler kümesi) ve kapsam (kaynak grubu veya ayrı kaynak). Daha fazla bilgi için bkz. [Azure rol tabanlı erişim denetimi (Azure RBAC)](../../role-based-access-control/overview.md).
 
 Azure RBAC 'e geçmeden önce avantajlarının ve sınırlamaların anlaşılması önemlidir.
 
@@ -39,13 +39,14 @@ Azure RBAC dezavantajları:
 Azure RBAC, kullanıcılara, gruplara, hizmet sorumlularına ve yönetilen kimliklere atayabileceğiniz birkaç Azure yerleşik rolüne sahiptir. Yerleşik roller kuruluşunuzun belirli ihtiyaçlarını karşılamıyorsa, kendi [Azure özel rollerinizi](../../role-based-access-control/custom-roles.md)de oluşturabilirsiniz.
 
 Anahtarlar, sertifikalar ve gizli dizi erişim yönetimi için yerleşik roller Key Vault:
-- Key Vault Yöneticisi (Önizleme)
-- Key Vault okuyucu (Önizleme)
-- Key Vault sertifikası Müdürü (Önizleme)
-- Key Vault şifre Müdürü (Önizleme)
-- Key Vault şifreleme kullanıcısı (Önizleme)
-- Key Vault gizli bilgileri Müdürü (Önizleme)
-- Key Vault gizli dizi kullanıcısı (Önizleme)
+- Key Vault Yöneticisi
+- Key Vault okuyucu
+- Key Vault sertifikası müdürü
+- Key Vault şifre müdürü
+- Key Vault şifrelenmiş Kullanıcı
+- Key Vault şifreleme hizmeti şifreleme kullanıcısı
+- Key Vault gizlilikler müdürü
+- Key Vault gizli dizi kullanıcısı
 
 Mevcut yerleşik roller hakkında daha fazla bilgi için bkz. [Azure yerleşik rolleri](../../role-based-access-control/built-in-roles.md)
 
@@ -66,19 +67,19 @@ Erişim ilkeleri önceden tanımlanmış izin şablonları:
 - Azure bilgileri BYOK
 
 ### <a name="access-policies-templates-to-azure-roles-mapping"></a>İlke şablonlarına Azure rolleri eşleme erişimi
-| Erişim ilkesi şablonu | İşlemler | Azure rolü |
+| Erişim ilkesi şablonu | Operations | Azure rolü |
 | --- | --- | --- |
-| Anahtar, gizli, sertifika yönetimi | Anahtarlar: tüm işlemler <br>Sertifikalar: tüm işlemler<br>Gizlilikler: tüm işlemler | Key Vault Yöneticisi (Önizleme) |
-| Anahtar & gizli dizi yönetimi | Anahtarlar: tüm işlemler <br>Gizlilikler: tüm işlemler| Key Vault şifre Müdürü (Önizleme)<br> Key Vault gizli bilgileri Müdürü (Önizleme)|
-| Gizli & sertifika yönetimi | Sertifikalar: tüm işlemler <br>Gizlilikler: tüm işlemler| Key Vault sertifikaları Müdürü (Önizleme)<br> Key Vault gizli bilgileri Müdürü (Önizleme)|
-| Anahtar yönetimi | Anahtarlar: tüm işlemler| Key Vault şifre Müdürü (Önizleme)|
-| Gizli dizi yönetimi | Gizlilikler: tüm işlemler| Key Vault gizli bilgileri Müdürü (Önizleme)|
-| Sertifika Yönetimi | Sertifikalar: tüm işlemler | Key Vault sertifikaları Müdürü (Önizleme)|
-| SQL Server Bağlayıcısı | Anahtarlar: Al, Listele, sarmalama tuşu, sarmalama tuşu | Key Vault şifreleme hizmeti şifrelemesi (Önizleme)|
+| Anahtar, gizli, sertifika yönetimi | Anahtarlar: tüm işlemler <br>Sertifikalar: tüm işlemler<br>Gizlilikler: tüm işlemler | Key Vault Yöneticisi |
+| Anahtar & gizli dizi yönetimi | Anahtarlar: tüm işlemler <br>Gizlilikler: tüm işlemler| Key Vault şifre müdürü <br> Key Vault gizlilikler müdürü |
+| Gizli & sertifika yönetimi | Sertifikalar: tüm işlemler <br>Gizlilikler: tüm işlemler| Key Vault sertifikaları müdürü <br> Key Vault gizlilikler müdürü|
+| Anahtar yönetimi | Anahtarlar: tüm işlemler| Key Vault şifre müdürü|
+| Gizli dizi yönetimi | Gizlilikler: tüm işlemler| Key Vault gizlilikler müdürü|
+| Sertifika Yönetimi | Sertifikalar: tüm işlemler | Key Vault sertifikaları müdürü|
+| SQL Server Bağlayıcısı | Anahtarlar: Al, Listele, sarmalama tuşu, sarmalama tuşu | Key Vault şifreleme hizmeti şifreleme kullanıcısı|
 | Azure Data Lake Storage veya Azure depolama | Anahtarlar: get, List, Unwrap tuşu | Yok<br> Özel rol gerekli|
 | Azure Backup | Anahtarlar: Al, Listele, Yedekle<br> Sertifika: get, List, Backup | Yok<br> Özel rol gerekli|
-| Exchange Online müşteri anahtarı | Anahtarlar: Al, Listele, sarmalama tuşu, sarmalama tuşu | Key Vault şifreleme hizmeti şifrelemesi (Önizleme)|
-| Exchange Online müşteri anahtarı | Anahtarlar: Al, Listele, sarmalama tuşu, sarmalama tuşu | Key Vault şifreleme hizmeti şifrelemesi (Önizleme)|
+| Exchange Online müşteri anahtarı | Anahtarlar: Al, Listele, sarmalama tuşu, sarmalama tuşu | Key Vault şifreleme hizmeti şifreleme kullanıcısı|
+| Exchange Online müşteri anahtarı | Anahtarlar: Al, Listele, sarmalama tuşu, sarmalama tuşu | Key Vault şifreleme hizmeti şifreleme kullanıcısı|
 | Azure bilgileri BYOK | Anahtarlar: get, şifre çöz, imzala | Yok<br>Özel rol gerekli|
 
 
@@ -102,10 +103,13 @@ Genel olarak, uygulama başına bir Anahtar Kasası olması ve Anahtar Kasası d
 ## <a name="vault-access-policy-to-azure-rbac-migration-steps"></a>Azure RBAC geçiş adımlarına kasa erişimi ilkesi
 Azure RBAC ve kasa erişim ilkesi izin modeli arasında birçok fark vardır. Sırasıyla, geçiş sırasında kesintilerden kaçınmak için adımların aşağıdaki adımları izlemeniz önerilir.
  
-1. **Rolleri tanımla ve ata** : yukarıdaki eşleme tablosuna göre yerleşik rolleri tanımla ve gerektiğinde özel roller oluştur. Kapsamlara kapsamlar eşleme kılavuzlarına göre roller atayın. Anahtar kasasına rol atama hakkında daha fazla bilgi için bkz. [Azure rol tabanlı erişim denetimi ile Key Vault erişim sağlama (Önizleme)](rbac-guide.md)
-1. **Rol atamasını doğrula** : Azure RBAC 'de rol atamalarının yayılması birkaç dakika sürebilir. Rol atamalarını denetleme Kılavuzu için bkz. [kapsamdaki rol atamalarını listeleme](../../role-based-access-control/role-assignments-list-portal.md#list-role-assignments-for-a-user-at-a-scope)
-1. **Anahtar kasasında izleme ve uyarı yapılandırma** : erişim reddedildi özel durumları için günlüğe kaydetmeyi etkinleştirmek ve uyarı ayarlamak önemlidir. Daha fazla bilgi için bkz. [Azure Key Vault Için izleme ve uyarma](./alert.md)
-1. **Key Vault Azure rol tabanlı erişim denetimi izin modelini ayarlama** : Azure RBAC izin modelinin etkinleştirilmesi, mevcut tüm erişim ilkelerini geçersiz kılar. Bir hata varsa, izin modeli mevcut tüm erişim ilkeleriyle birlikte geri dönebilir.
+1. **Rolleri tanımla ve ata**: yukarıdaki eşleme tablosuna göre yerleşik rolleri tanımla ve gerektiğinde özel roller oluştur. Kapsamlara kapsamlar eşleme kılavuzlarına göre roller atayın. Anahtar kasasına rol atama hakkında daha fazla bilgi için bkz. [Azure rol tabanlı erişim denetimi ile Key Vault erişim sağlama](rbac-guide.md)
+1. **Rol atamasını doğrula**: Azure RBAC 'de rol atamalarının yayılması birkaç dakika sürebilir. Rol atamalarını denetleme Kılavuzu için bkz. [kapsamdaki rol atamalarını listeleme](../../role-based-access-control/role-assignments-list-portal.md#list-role-assignments-for-a-user-at-a-scope)
+1. **Anahtar kasasında izleme ve uyarı yapılandırma**: erişim reddedildi özel durumları için günlüğe kaydetmeyi etkinleştirmek ve uyarı ayarlamak önemlidir. Daha fazla bilgi için bkz. [Azure Key Vault Için izleme ve uyarma](./alert.md)
+1. **Key Vault Azure rol tabanlı erişim denetimi izin modelini ayarlama**: Azure RBAC izin modelinin etkinleştirilmesi, mevcut tüm erişim ilkelerini geçersiz kılar. Bir hata varsa, izin modeli mevcut tüm erişim ilkeleriyle birlikte geri dönebilir.
+
+> [!NOTE]
+> İzin modelinin değiştirilmesi, [sahip](../../role-based-access-control/built-in-roles.md#owner) ve [Kullanıcı erişimi Yöneticisi](../../role-based-access-control/built-in-roles.md#user-access-administrator) rollerinin bir parçası olan ' Microsoft. Authorization/roleatamalar/Write ' iznini gerektirir. ' Hizmet Yöneticisi ' ve ' ortak yönetici ' gibi klasik abonelik yöneticisi rolleri desteklenmez.
 
 > [!NOTE]
 > Azure RBAC izin modeli etkinleştirildiğinde, erişim ilkelerini güncelleştirmeyi deneyen tüm betikler başarısız olur. Bu betiklerin Azure RBAC kullanmak için güncelleştirilmesi önemlidir.

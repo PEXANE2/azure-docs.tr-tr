@@ -4,12 +4,12 @@ description: Azure Container Registry 'nizin geri kalanı hakkında bilgi edinin
 ms.topic: article
 ms.date: 12/03/2020
 ms.custom: ''
-ms.openlocfilehash: fb30610457e539250c33d7d9726fe10f9c0f8c5a
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.openlocfilehash: bc692dc8df133aa5fae352a7667062f81ceed350
+ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99062737"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100526451"
 ---
 # <a name="encrypt-registry-using-a-customer-managed-key"></a>Müşteri tarafından yönetilen anahtar kullanarak kayıt defterini şifreleme
 
@@ -127,11 +127,11 @@ az keyvault set-policy \
   --key-permissions get unwrapKey wrapKey
 ```
 
-Alternatif olarak, anahtar kasasına erişmek için kimliğe izinler atamak üzere [Key Vault Için Azure RBAC](../key-vault/general/rbac-guide.md) (Önizleme) kullanın. Örneğin, [az role atama Create](/cli/azure/role/assignment#az-role-assignment-create) komutunu kullanarak Key Vault şifreleme hizmeti şifreleme rolünü kimliğe atayın:
+Alternatif olarak, anahtar kasasına erişmek için kimliğe izinler atamak üzere [Key Vault Için Azure RBAC](../key-vault/general/rbac-guide.md) kullanın. Örneğin, [az role atama Create](/cli/azure/role/assignment#az-role-assignment-create) komutunu kullanarak Key Vault şifreleme hizmeti şifreleme rolünü kimliğe atayın:
 
 ```azurecli 
 az role assignment create --assignee $identityPrincipalID \
-  --role "Key Vault Crypto Service Encryption (preview)" \
+  --role "Key Vault Crypto Service Encryption User" \
   --scope $keyvaultID
 ```
 
@@ -267,12 +267,12 @@ Kimliğin erişebilmesi için Anahtar Kasası için bir ilke yapılandırın.
 
 :::image type="content" source="media/container-registry-customer-managed-keys/add-key-vault-access-policy.png" alt-text="Anahtar Kasası erişim ilkesi oluşturma":::
 
-Alternatif olarak, anahtar kasasına erişmek için kimliğe izinler atamak üzere [Key Vault Için Azure RBAC](../key-vault/general/rbac-guide.md) (Önizleme) kullanın. Örneğin, Key Vault şifreleme hizmeti şifreleme rolünü kimliğe atayın.
+Alternatif olarak, anahtar kasasına erişmek için kimliğe izinler atamak üzere [Key Vault Için Azure RBAC](../key-vault/general/rbac-guide.md) kullanın. Örneğin, Key Vault şifreleme hizmeti şifreleme rolünü kimliğe atayın.
 
 1. Anahtar kasanıza gidin.
 1. **Erişim denetimi (IAM)**  >  **+**  >  **Rol Ekle ataması** Ekle ' yi seçin.
 1. **Rol ataması Ekle** penceresinde:
-    1. **Key Vault şifreleme hizmeti şifreleme (Önizleme)** rolü ' nü seçin. 
+    1. **Key Vault şifreleme hizmeti şifreleme Kullanıcı** rolü ' nü seçin. 
     1. **Kullanıcı tarafından atanan yönetilen kimliğe** erişim atayın.
     1. Kullanıcı tarafından atanan yönetilen kimliğinizin kaynak adını seçin ve **Kaydet**' i seçin.
 

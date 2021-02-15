@@ -7,17 +7,20 @@ ms.topic: conceptual
 author: ShaneBala-keyvault
 ms.author: sudbalas
 ms.date: 12/15/2020
-ms.openlocfilehash: 68c690b9cbd2028f73492550adbe86111f9ec3a7
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: e06a388f2391f4ed94370dd072a66a162ba5240f
+ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99257955"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100526672"
 ---
 # <a name="azure-key-vault-soft-delete-overview"></a>Azure Key Vault geçici silmeye genel bakış
 
 > [!IMPORTANT]
 > Anahtar kasalarınızda geçici silme özelliğini hemen etkinleştirmeniz gerekir. Geçici silme işlemini devre dışı bırakma özelliği yakında kullanım dışı bırakılacak. Tam ayrıntıları [burada](soft-delete-change.md) görebilirsiniz
+
+> [!IMPORTANT]
+> Geçici olarak silinen kasa Tetikleyicileri, Key Vault hizmetleriyle tümleştirilmiş ayarları siler, örneğin Azure RBAC rol atamaları, Event Grid abonelikleri, Azure Izleyici Tanılama ayarları. Tümleşik hizmetler için geçici olarak silinen Key Vault ayarlarının kurtarmasının ardından el ile yeniden oluşturulması gerekir. 
 
 Key Vault geçici silme özelliği, geçici silme olarak bilinen silinmiş kasaların ve silinen Anahtar Kasası nesnelerinin kurtarılmasına olanak tanır (örneğin, anahtarlar, gizlilikler, sertifikalar). Özellikle, aşağıdaki senaryolara adresliyoruz: Bu koruma aşağıdaki korumaların sunulmasını sağlar:
 
@@ -27,7 +30,7 @@ Key Vault geçici silme özelliği, geçici silme olarak bilinen silinmiş kasal
 
 ## <a name="supporting-interfaces"></a>Destekleyici arabirimler
 
-Geçici silme özelliği [REST API](/rest/api/keyvault/), [Azure CLI](./key-vault-recovery.md), [Azure PowerShell](./key-vault-recovery.md)ve [.NET/C#](/dotnet/api/microsoft.azure.keyvault?view=azure-dotnet) arabirimleri ve [ARM şablonları](/azure/templates/microsoft.keyvault/2019-09-01/vaults)aracılığıyla kullanılabilir.
+Geçici silme özelliği [REST API](/rest/api/keyvault/), [Azure CLI](./key-vault-recovery.md), [Azure PowerShell](./key-vault-recovery.md)ve [.NET/C#](/dotnet/api/microsoft.azure.keyvault?view=azure-dotnet&preserve-view=true) arabirimleri ve [ARM şablonları](/azure/templates/microsoft.keyvault/2019-09-01/vaults)aracılığıyla kullanılabilir.
 
 ## <a name="scenarios"></a>Senaryolar
 

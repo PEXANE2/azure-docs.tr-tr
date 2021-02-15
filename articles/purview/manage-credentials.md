@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 02/11/2021
-ms.openlocfilehash: 091f4d7a4acdcc5d1a2b89a5121ee0cff3ee1f55
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 9ffc450294f186b77cc7a6c44c10eecf266161d3
+ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100381197"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100526706"
 ---
 # <a name="credentials-for-source-authentication-in-azure-purview"></a>Azure purview 'da kaynak kimlik doğrulaması için kimlik bilgileri
 
@@ -67,7 +67,7 @@ Bir kimlik bilgisi oluşturabilmeniz için önce mevcut Azure Key Vault örnekle
 
 4. Gizli dizi **izinleri** açılır listesinde, **Al** ve **Listele** izinleri ' ni seçin.
 
-5. **Asıl seçin** için, yönetilen kimlik ' i seçin.
+5. **Asıl seçin** için, yönetilen kimlik ' i seçin. Purview örnek adını **veya** yönetilen KIMLIK uygulama kimliğini kullanarak PURVIEW MSI için arama yapabilirsiniz. Şu anda bileşik kimlikleri desteklemiyoruz (yönetilen kimlik adı + uygulama KIMLIĞI).
 
    :::image type="content" source="media/manage-credentials/add-access-policy.png" alt-text="Erişim İlkesi Ekle":::
 

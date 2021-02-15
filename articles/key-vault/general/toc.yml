@@ -96,10 +96,12 @@
               href: assign-access-policy-powershell.md
             - name: Portal
               href: assign-access-policy-portal.md
-        - name: 'Anahtarlar, gizli diziler ve sertifikalara erişimi yönetmek için Azure RBAC kullanma (önizleme)'
-          href: rbac-guide.md
-        - name: Azure RBAC geçiş kılavuzuna kasa erişim ilkeleri
-          href: rbac-migration.md
+        - name: Azure RBAC izin modeli
+          items:
+            - name: 'Anahtarlar, gizlilikler ve sertifikalara erişimi yönetmek için Azure RBAC kullanma'
+              href: rbac-guide.md
+            - name: Azure RBAC geçiş kılavuzuna kasa erişim ilkeleri
+              href: rbac-migration.md
         - name: Erişim sorunlarını giderme
           href: troubleshooting-access-issues.md
     - name: Geliştirme

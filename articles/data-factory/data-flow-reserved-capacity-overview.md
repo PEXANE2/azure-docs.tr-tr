@@ -6,14 +6,16 @@ author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.date: 02/05/2021
-ms.openlocfilehash: 86ebbb46e8f3b5bb34dfe5789a17a2d63526f65c
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: d41646ef1ef964db38245009717554eaeb783824
+ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99808435"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100526315"
 ---
 # <a name="save-costs-for-resources-with-reserved-capacity---azure-data-factory-data-flows"></a>Ayrılmış kapasite Azure Data Factory veri akışları olan kaynaklar için maliyetleri kaydetme
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Kullandıkça Öde fiyatlarıyla karşılaştırıldığında işlem kaynakları için bir ayırmaya girerek Azure Data Factory veri akışı maliyetleriyle tasarruf edin. Ayrılmış kapasite ile, işlem maliyetlerine göre önemli bir indirim elde etmek için bir veya üç yıllık bir dönem için ADF veri akışı kullanımı için bir taahhüt yaparsınız. Ayrılmış kapasiteyi satın almak için Azure bölgesini, işlem türünü, çekirdek sayısı miktarını ve terimi belirtmeniz gerekir.
 

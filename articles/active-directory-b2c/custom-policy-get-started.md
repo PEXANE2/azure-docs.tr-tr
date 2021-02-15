@@ -12,12 +12,12 @@ ms.date: 02/28/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ae3865c1ee5e656fc4feda48de9ab67995619593
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 9612a26d7ac2e7a059655636fc1a2a7a43e3b8d7
+ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96936388"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100526247"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C özel ilkeleri kullanmaya başlama
 
@@ -111,7 +111,7 @@ Ardından, bir kapsam ekleyerek API 'YI kullanıma sunun:
 Sonra, uygulamanın ortak istemci olarak değerlendirilip değerlendirilmeyeceğini belirtin:
 
 1. Sol taraftaki menüde, **Yönet** altında **kimlik doğrulaması**' nı seçin.
-1. **Gelişmiş ayarlar** altında, **uygulamayı ortak istemci olarak değerlendir** ' i etkinleştirin ( **Evet**' i seçin). Uygulama bildiriminde **"Allowpublicclient": true** değerinin ayarlandığından emin olun. 
+1. **Gelişmiş ayarlar** altında, **ortak Istemci akışlarına izin ver** bölümünde, **aşağıdaki mobil ve Masaüstü akışlarını** **Evet** olarak ayarlayın. Uygulama bildiriminde **"Allowpublicclient": true** değerinin ayarlandığından emin olun. 
 1. **Kaydet**’i seçin.
 
 Şimdi *IdentityExperienceFramework* kaydında daha önce sunulan API kapsamına izin verin:

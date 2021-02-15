@@ -10,12 +10,12 @@ ms.subservice: secrets
 ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 78e9c50cb0601f6be69ae61f3a8e02621c7dd808
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 55814dff5cba572e2e22b5a0f9971bc920e32372
+ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98786048"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100526654"
 ---
 # <a name="about-azure-key-vault-secrets"></a>Azure Key Vault gizli dizileri hakkında
 
@@ -74,7 +74,7 @@ Key Vault erişimi denetlemek için nasıl yapılır kılavuzlarından:
 - [CLı kullanarak Key Vault erişim ilkesi atama](../general/assign-access-policy-cli.md)
 - [PowerShell kullanarak Key Vault erişim ilkesi atama](../general/assign-access-policy-powershell.md)
 - [Azure portal kullanarak Key Vault erişim ilkesi atama](../general/assign-access-policy-portal.md)
-- [Azure rol tabanlı erişim denetimi (Önizleme) ile Key Vault anahtarlarına, sertifikalara ve gizli anahtarlara erişim sağlama](../general/rbac-guide.md)
+- [Azure rol tabanlı erişim denetimi ile Key Vault anahtarlarına, sertifikalara ve gizli anahtarlara erişim sağlama](../general/rbac-guide.md)
 
 ## <a name="secret-tags"></a>Gizli Etiketler  
 Etiketler biçiminde uygulamaya özgü ek meta verileri belirtebilirsiniz. Key Vault, her birinin 256 karakter adı ve 256 karakter değeri olabilen en fazla 15 etiketi destekler.  
@@ -124,7 +124,7 @@ Key Vault erişimi denetlemek için nasıl yapılır kılavuzlarından:
 - [CLı kullanarak Key Vault erişim ilkesi atama](../general/assign-access-policy-cli.md)
 - [PowerShell kullanarak Key Vault erişim ilkesi atama](../general/assign-access-policy-powershell.md)
 - [Azure portal kullanarak Key Vault erişim ilkesi atama](../general/assign-access-policy-portal.md)
-- [Azure rol tabanlı erişim denetimi (Önizleme) ile Key Vault anahtarlarına, sertifikalara ve gizli anahtarlara erişim sağlama](../general/rbac-guide.md)
+- [Azure rol tabanlı erişim denetimi ile Key Vault anahtarlarına, sertifikalara ve gizli anahtarlara erişim sağlama](../general/rbac-guide.md)
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

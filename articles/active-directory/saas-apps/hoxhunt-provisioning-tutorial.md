@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/28/2021
 ms.author: Zhchia
-ms.openlocfilehash: eb3df574029a7c13488830e01354e738930fcd7f
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 55da26296f0545c8e2c0008185de14230cfee304
+ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 02/15/2021
-ms.locfileid: "100523439"
+ms.locfileid: "100526621"
 ---
 # <a name="tutorial-configure-hoxhunt-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Hoxhunt 'yi yapılandırma
 
@@ -42,16 +42,13 @@ Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu
 * Azure AD 'de sağlamayı yapılandırma [izni](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) olan bir kullanıcı hesabı (örneğin, uygulama Yöneticisi, bulut uygulaması Yöneticisi, uygulama sahibi veya genel yönetici). 
 * Hoxhunt kiracısı.
 * Kuruluşunuzun SCıM API anahtarı ve SCıM uç nokta URL 'SI (Hoxhunt desteği tarafından yapılandırılır).
-?
 ## <a name="step-1-plan-your-provisioning-deployment"></a>Adım 1. Hazırlama dağıtımınızı planlama
 1. [Hazırlama hizmetinin nasıl çalıştığı](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) hakkında bilgi edinin.
 2. [Hazırlık kapsamına](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts) dahil edilecek kullanıcıları seçin.
 3. [Azure AD Ile Hoxhunt arasında](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)hangi verilerin eşlendiğini saptayın. 
 
 ## <a name="step-2-configure-hoxhunt-to-support-provisioning-with-azure-ad"></a>Adım 2. Azure AD ile sağlamayı desteklemek için Hoxhunt 'yi yapılandırma
-?
 Azure AD ile sağlamayı desteklemek için Hoxhunt 'yi yapılandırmak üzere SCıM API anahtarını ve SCıM uç nokta URL 'sini almak için [hoxhunt desteğiyle](mailto:support@hoxhunt.com) iletişim kurun.
-?
 ## <a name="step-3-add-hoxhunt-from-the-azure-ad-application-gallery"></a>3. Adım Azure AD uygulama galerisinden Hoxhunt ekleme
 
 Azure AD Uygulama Galerisi 'nden Hoxhunt 'i ekleyerek Hoxhunt 'e sağlamayı yönetmeye başlayın. Daha önce SSO için Hoxhunt 'yi ayarladıysanız aynı uygulamayı kullanabilirsiniz. Ancak başlangıçta tümleştirmeyi test ederken ayrı bir uygulama oluşturmanız önerilir. Galeriden uygulama ekleme hakkında daha fazla bilgi için [buraya](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app) bakın. 

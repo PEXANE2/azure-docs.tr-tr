@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/13/2020
-ms.openlocfilehash: d06501abe69ce9b06656cfa8949c42bb53a03983
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: fdd3886dda794ff9a91e2c2be6a3d810086d0ed2
+ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96019047"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100526995"
 ---
 # <a name="azure-monitor-logs-connector-for-logic-apps-and-power-automate"></a>Logic Apps ve güç otomatikleştirme için Azure Izleyici günlükleri Bağlayıcısı
 [Azure Logic Apps](../../logic-apps/index.yml) ve [Güç otomatikleştirme](https://flow.microsoft.com) , çeşitli hizmetler için yüzlerce eylemi kullanarak otomatik iş akışları oluşturmanıza olanak tanır. Azure Izleyici günlükleri Bağlayıcısı, Azure Izleyici 'deki bir Log Analytics çalışma alanından veya bir Application Insights uygulamasından veri alan iş akışları oluşturmanıza olanak tanır. Bu makalede, bağlayıcıya dahil edilen eylemler açıklanmakta ve bu verileri kullanarak iş akışı oluşturmaya yönelik bir yol sunulmaktadır.
@@ -25,6 +25,7 @@ Azure Izleyici günlükleri Bağlayıcısı şu sınırlara sahiptir:
 * En fazla sorgu yanıt boyutu 100 MB
 * En fazla kayıt sayısı: 500.000
 * En fazla sorgu zaman aşımı 110 saniye.
+* Bağlayıcı ve Günlükler sayfası şu anda aynı grafik kitaplıklarını kullandıklarından, grafik görselleştirmeleri Günlükler sayfasında kullanılabilir ve bağlayıcı içinde yok olabilir.
 
 Verilerinizin boyutuna ve kullandığınız sorguya bağlı olarak bağlayıcı, sınırlarına ve başarısız olabilir. Tetikleyici tekrarlarını daha sık çalıştırmak ve daha az veri sorgulamak için ayarlama yaparken bu gibi durumlarda çözüm yapabilirsiniz. Daha az kayıt ve sütun döndürmek için verilerinizi toplayan sorguları kullanabilirsiniz.
 

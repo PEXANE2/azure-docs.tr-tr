@@ -9,14 +9,14 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 8/30/2020
 ms.author: mbaldwin
-ms.openlocfilehash: f7a0190d664e3330d2a6205014c00c61c1183dd3
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 886b87adeabdc0aadde04c189b78739435aabede
+ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936252"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100527073"
 ---
-# <a name="provide-access-to-key-vault-keys-certificates-and-secrets-with-an-azure-role-based-access-control-preview"></a>Azure rol tabanlı erişim denetimi (Önizleme) ile Key Vault anahtarlarına, sertifikalara ve gizli anahtarlara erişim sağlama
+# <a name="provide-access-to-key-vault-keys-certificates-and-secrets-with-an-azure-role-based-access-control"></a>Azure rol tabanlı erişim denetimi ile Key Vault anahtarlarına, sertifikalara ve gizli anahtarlara erişim sağlama
 
 > [!NOTE]
 > Key Vault kaynak sağlayıcısı iki kaynak türünü destekler: **kasa** ve **yönetilen HSM**'ler. Bu makalede açıklanan erişim denetimi yalnızca kasaların için **geçerlidir**. Yönetilen HSM için erişim denetimi hakkında daha fazla bilgi edinmek için bkz. [YÖNETILEN HSM erişim denetimi](../managed-hsm/access-control.md).
@@ -44,20 +44,20 @@ Azure Key Vault yönetim yönergeleri hakkında daha fazla bilgi için bkz.:
 - [Azure Key Vault güvenliğe genel bakış](security-overview.md)
 - [Hizmet sınırlarını Azure Key Vault](service-limits.md)
 
-## <a name="azure-built-in-roles-for-key-vault-data-plane-operations-preview"></a>Key Vault veri düzlemi işlemleri için Azure yerleşik rolleri (Önizleme)
+## <a name="azure-built-in-roles-for-key-vault-data-plane-operations"></a>Key Vault veri düzlemi işlemleri için Azure yerleşik rolleri
 > [!NOTE]
 > `Key Vault Contributor` rol, anahtar kasalarını yönetmek için yönetim düzlemi işlemlerine yöneliktir. Anahtarlar, gizlilikler ve sertifikalara erişime izin vermez.
 
 | Yerleşik rol | Description | ID |
 | --- | --- | --- |
-| Key Vault Yöneticisi (Önizleme) | Tüm veri düzlemi işlemlerini bir anahtar kasasında ve içindeki tüm nesneleri (sertifikalar, anahtarlar ve gizli diziler dahil) gerçekleştirin. Anahtar Kasası kaynakları yönetemez veya rol atamaları yönetilemez. Yalnızca ' Azure rol tabanlı erişim denetimi ' izin modelini kullanan anahtar kasaları için geçerlidir. | 00482a5a-887f-4fb3-b363-3b7fe8e74483 |
-| Key Vault sertifikaları Müdürü (Önizleme) | İzinleri Yönet dışında bir anahtar kasasının sertifikaları üzerinde herhangi bir işlem gerçekleştirin. Yalnızca ' Azure rol tabanlı erişim denetimi ' izin modelini kullanan anahtar kasaları için geçerlidir. | a4417e6f-fecd-4de8-b567-7b0420556985 |
-| Key Vault şifre Müdürü (Önizleme)| Anahtar kasasının anahtarları üzerinde, izinleri yönet dışında herhangi bir işlem gerçekleştirin. Yalnızca ' Azure rol tabanlı erişim denetimi ' izin modelini kullanan anahtar kasaları için geçerlidir. | 14b46e9e-c2b7-41B4-b07b-48a6ebf60603 |
-| Key Vault şifreleme hizmeti şifrelemesi (Önizleme) | Anahtarların meta verilerini okuyun ve sarmalama/sarmalama işlemleri gerçekleştirin. Yalnızca ' Azure rol tabanlı erişim denetimi ' izin modelini kullanan anahtar kasaları için geçerlidir. | e147488a-f6f5-4113-8e2d-b22465e65bf6 |
-| Key Vault şifreleme kullanıcısı (Önizleme) | Anahtarları kullanarak şifreleme işlemleri gerçekleştirin. Yalnızca ' Azure rol tabanlı erişim denetimi ' izin modelini kullanan anahtar kasaları için geçerlidir. | 12338af0-0e69-4776-kir7-57ae8d297424 |
-| Key Vault okuyucu (Önizleme)| Anahtar kasalarının ve sertifika, anahtar ve gizli dizileri için meta verileri okuyun. Gizli içerik veya anahtar malzeme gibi hassas değerler okunamaz. Yalnızca ' Azure rol tabanlı erişim denetimi ' izin modelini kullanan anahtar kasaları için geçerlidir. | 21090545-7CA7-4776-B22C-e363652d74d2 |
-| Key Vault gizli bilgileri Müdürü (Önizleme)| Anahtar kasasının gizli dizileri üzerinde, izinleri yönet dışında herhangi bir işlem gerçekleştirin. Yalnızca ' Azure rol tabanlı erişim denetimi ' izin modelini kullanan anahtar kasaları için geçerlidir. | b86a8fe4-44ce-4948-aee5-eccb2c155cd7 |
-| Key Vault gizli dizi kullanıcısı (Önizleme)| Gizli dizi içeriğini okuyun. Yalnızca ' Azure rol tabanlı erişim denetimi ' izin modelini kullanan anahtar kasaları için geçerlidir. | 4633458b-17de-408A-b874-0445c86b69e6 |
+| Key Vault Yöneticisi| Tüm veri düzlemi işlemlerini bir anahtar kasasında ve içindeki tüm nesneleri (sertifikalar, anahtarlar ve gizli diziler dahil) gerçekleştirin. Anahtar Kasası kaynakları yönetemez veya rol atamaları yönetilemez. Yalnızca ' Azure rol tabanlı erişim denetimi ' izin modelini kullanan anahtar kasaları için geçerlidir. | 00482a5a-887f-4fb3-b363-3b7fe8e74483 |
+| Key Vault sertifikaları müdürü | İzinleri Yönet dışında bir anahtar kasasının sertifikaları üzerinde herhangi bir işlem gerçekleştirin. Yalnızca ' Azure rol tabanlı erişim denetimi ' izin modelini kullanan anahtar kasaları için geçerlidir. | a4417e6f-fecd-4de8-b567-7b0420556985 |
+| Key Vault şifre müdürü | Anahtar kasasının anahtarları üzerinde, izinleri yönet dışında herhangi bir işlem gerçekleştirin. Yalnızca ' Azure rol tabanlı erişim denetimi ' izin modelini kullanan anahtar kasaları için geçerlidir. | 14b46e9e-c2b7-41B4-b07b-48a6ebf60603 |
+| Key Vault şifreleme hizmeti şifreleme kullanıcısı | Anahtarların meta verilerini okuyun ve sarmalama/sarmalama işlemleri gerçekleştirin. Yalnızca ' Azure rol tabanlı erişim denetimi ' izin modelini kullanan anahtar kasaları için geçerlidir. | e147488a-f6f5-4113-8e2d-b22465e65bf6 |
+| Key Vault şifrelenmiş Kullanıcı  | Anahtarları kullanarak şifreleme işlemleri gerçekleştirin. Yalnızca ' Azure rol tabanlı erişim denetimi ' izin modelini kullanan anahtar kasaları için geçerlidir. | 12338af0-0e69-4776-kir7-57ae8d297424 |
+| Key Vault okuyucu | Anahtar kasalarının ve sertifika, anahtar ve gizli dizileri için meta verileri okuyun. Gizli içerik veya anahtar malzeme gibi hassas değerler okunamaz. Yalnızca ' Azure rol tabanlı erişim denetimi ' izin modelini kullanan anahtar kasaları için geçerlidir. | 21090545-7CA7-4776-B22C-e363652d74d2 |
+| Key Vault gizlilikler müdürü| Anahtar kasasının gizli dizileri üzerinde, izinleri yönet dışında herhangi bir işlem gerçekleştirin. Yalnızca ' Azure rol tabanlı erişim denetimi ' izin modelini kullanan anahtar kasaları için geçerlidir. | b86a8fe4-44ce-4948-aee5-eccb2c155cd7 |
+| Key Vault gizli dizi kullanıcısı | Gizli dizi içeriğini okuyun. Yalnızca ' Azure rol tabanlı erişim denetimi ' izin modelini kullanan anahtar kasaları için geçerlidir. | 4633458b-17de-408A-b874-0445c86b69e6 |
 
 Azure yerleşik rol tanımları hakkında daha fazla bilgi için bkz. [Azure yerleşik rolleri](../../role-based-access-control/built-in-roles.md).
 
@@ -65,7 +65,7 @@ Azure yerleşik rol tanımları hakkında daha fazla bilgi için bkz. [Azure yer
 
 Anahtar Kasası için yeni Azure RBAC izin modeli, kasa erişimi ilkesi izin modeli için alternatif sağlar. 
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 Rol atamaları eklemek için şunları yapmanız gerekir:
 
@@ -74,8 +74,8 @@ Rol atamaları eklemek için şunları yapmanız gerekir:
 
 ### <a name="enable-azure-rbac-permissions-on-key-vault"></a>Key Vault Azure RBAC izinlerini etkinleştirme
 
-> [!IMPORTANT]
-> Azure RBAC izin modelinin ayarlanması tüm erişim ilkeleri izinlerini geçersiz kılar. Eşdeğer Azure rolleri atanmadığı zaman kesintilere neden olabilir.
+> [!NOTE]
+> İzin modelinin değiştirilmesi, [sahip](../../role-based-access-control/built-in-roles.md#owner) ve [Kullanıcı erişimi Yöneticisi](../../role-based-access-control/built-in-roles.md#user-access-administrator) rollerinin bir parçası olan ' Microsoft. Authorization/roleatamalar/Write ' iznini gerektirir. ' Hizmet Yöneticisi ' ve ' ortak yönetici ' gibi klasik abonelik yöneticisi rolleri desteklenmez.
 
 1.  Yeni Anahtar Kasası 'nda Azure RBAC izinlerini etkinleştirin:
 
@@ -85,10 +85,13 @@ Rol atamaları eklemek için şunları yapmanız gerekir:
 
     ![Azure RBAC izinlerini etkinleştirme-mevcut kasa](../media/rbac/image-2.png)
 
+> [!IMPORTANT]
+> Azure RBAC izin modelinin ayarlanması tüm erişim ilkeleri izinlerini geçersiz kılar. Eşdeğer Azure rolleri atanmadığı zaman kesintilere neden olabilir.
+
 ### <a name="assign-role"></a>Rol atama
 
 > [!Note]
-> Betiklerdeki rol adı yerine benzersiz rol KIMLIĞI kullanılması önerilir. Bu nedenle, bir rol yeniden adlandırılırsa, komut dosyalarınız çalışmaya devam eder. Önizleme süresince her rolün "(Önizleme)" soneki olur ve bu, daha sonra kaldırılacaktır. Bu belge rolü adı yalnızca okunabilirlik için kullanılır.
+> Betiklerdeki rol adı yerine benzersiz rol KIMLIĞI kullanılması önerilir. Bu nedenle, bir rol yeniden adlandırılırsa, komut dosyalarınız çalışmaya devam eder. Bu belge rolü adı yalnızca okunabilirlik için kullanılır.
 
 Rol ataması oluşturmak için Azure CLı komutu:
 
@@ -107,13 +110,13 @@ Azure portal, Azure rol atamaları ekranı, erişim denetimi (ıAM) sekmesindeki
 
 2.  Erişim denetimi (ıAM) \> rol atama Ekle ' ye \> tıklayın
 
-3.  Geçerli Kullanıcı için "Key Vault okuyucu (Önizleme)" Key Vault okuyucu rolü oluştur
+3.  Geçerli Kullanıcı için "Key Vault okuyucu" Key Vault okuyucu rolü oluştur
 
     ![Rol Ekle-kaynak grubu](../media/rbac/image-5.png)
 
 Azure CLı:
 ```azurecli
-az role assignment create --role "Key Vault Reader (preview)" --assignee {i.e user@microsoft.com} --scope /subscriptions/{subscriptionid}/resourcegroups/{resource-group-name}
+az role assignment create --role "Key Vault Reader" --assignee {i.e user@microsoft.com} --scope /subscriptions/{subscriptionid}/resourcegroups/{resource-group-name}
 ```
 
 Yukarıdaki rol ataması, Anahtar Kasası 'nda Anahtar Kasası nesnelerini listeleyebilme olanağı sağlar.
@@ -124,14 +127,14 @@ Yukarıdaki rol ataması, Anahtar Kasası 'nda Anahtar Kasası nesnelerini liste
 
 2. Rol atama Ekle ' ye tıklayın. \>
 
-3. Geçerli Kullanıcı için anahtar gizli bilgileri "Key Vault gizli Müdürü (Önizleme)" oluşturun.
+3. Geçerli Kullanıcı için anahtar gizli bilgileri "Key Vault gizli müdür" rolü oluşturun.
 
     ![Rol ataması-Anahtar Kasası](../media/rbac/image-6.png)
 
  Azure CLı:
 
 ```azurecli
-az role assignment create --role "Key Vault Secrets Officer (preview)" --assignee {i.e jalichwa@microsoft.com} --scope /subscriptions/{subscriptionid}/resourcegroups/{resource-group-name}/providers/Microsoft.KeyVault/vaults/{key-vault-name}
+az role assignment create --role "Key Vault Secrets Officer" --assignee {i.e jalichwa@microsoft.com} --scope /subscriptions/{subscriptionid}/resourcegroups/{resource-group-name}/providers/Microsoft.KeyVault/vaults/{key-vault-name}
 ```
 
 Yukarıdaki rol atamasını oluşturduktan sonra, gizli dizileri oluşturabilir/güncelleştirebilir/silebilirsiniz.
@@ -142,18 +145,18 @@ Yukarıdaki rol atamasını oluşturduktan sonra, gizli dizileri oluşturabilir/
 
 ### <a name="secret-scope-role-assignment"></a>Gizli dizi kapsamı rol ataması
 
-1. Önceden oluşturulmuş gizli dizilerle birini açın, bildirim genel bakış ve erişim denetimi (ıAM) (Önizleme)
+1. Önceden oluşturulmuş gizli dizilerle birini açın, bildirim genel bakış ve erişim denetimi (ıAM) 
 
-2. Erişim denetimi (ıAM) (Önizleme) sekmesine tıklayın
+2. Erişim denetimi (ıAM) sekmesine tıklayın
 
     ![Rol ataması-gizli](../media/rbac/image-8.png)
 
-3. Geçerli Kullanıcı için "Key Vault gizli Müdürü (Önizleme)" adlı anahtar gizli bilgileri, Key Vault için yukarıda yapıldığından aynı şekilde oluşturun.
+3. Geçerli Kullanıcı için "Key Vault gizli müdür" adlı anahtar gizli bilgileri, Key Vault için yukarıda yapıldığından aynı şekilde oluşturun.
 
 Azure CLı:
 
 ```azurecli
-az role assignment create --role "Key Vault Secrets Officer (preview)" --assignee {i.e user@microsoft.com} --scope /subscriptions/{subscriptionid}/resourcegroups/{resource-group-name}/providers/Microsoft.KeyVault/vaults/{key-vault-name}/secrets/RBACSecret
+az role assignment create --role "Key Vault Secrets Officer" --assignee {i.e user@microsoft.com} --scope /subscriptions/{subscriptionid}/resourcegroups/{resource-group-name}/providers/Microsoft.KeyVault/vaults/{key-vault-name}/secrets/RBACSecret
 ```
 
 ### <a name="test-and-verify"></a>Test ve doğrulama
@@ -164,7 +167,7 @@ az role assignment create --role "Key Vault Secrets Officer (preview)" --assigne
 
 1. Anahtar Kasası düzeyinde "Key Vault gizli müdür" rolü olmadan yeni gizli dizi eklemeyi doğrulayın.
 
-Anahtar Kasası erişim denetimi (ıAM) sekmesine gidin ve bu kaynak için "Key Vault gizli Müdürü (Önizleme)" rol atamasını kaldırın.
+Anahtar Kasası erişim denetimi (ıAM) sekmesine gidin ve bu kaynak için "Key Vault gizli müdür" rol atamasını kaldırın.
 
 ![Atama anahtarı kasasını kaldır](../media/rbac/image-9.png)
 
@@ -178,7 +181,7 @@ Yeni gizli dizi oluştur (gizlilikler \> + Generate/Import) aşağıdaki hatayı
 
 2.  Gizli anahtar üzerinde "Key Vault gizli müdür" rolü olmadan gizli düzenlemenin doğrulanması.
 
--   Önceden oluşturulan gizli dizi Access Control (ıAM) (Önizleme) sekmesine gidin ve bu kaynak için "Key Vault gizli bilgiler Müdürü (Önizleme)" rol atamasını kaldırın.
+-   Önceden oluşturulan gizli dizi Access Control (ıAM) sekmesine gidin ve bu kaynak için "Key Vault gizli bilgiler Müdürü" rol atamasını kaldırın.
 
 -   Önceden oluşturulmuş gizli dizi ' a gidin. Gizli dizi özelliklerini görebilirsiniz.
 
@@ -186,7 +189,7 @@ Yeni gizli dizi oluştur (gizlilikler \> + Generate/Import) aşağıdaki hatayı
 
 3. Anahtar Kasası düzeyinde, okuyucu rolü olmadan gizli dizileri okumayı doğrulayın.
 
--   Anahtar Kasası kaynak grubu erişim denetimi (ıAM) sekmesine gidin ve "Key Vault okuyucu (Önizleme)" rol atamasını kaldırın.
+-   Anahtar Kasası kaynak grubu erişim denetimi (ıAM) sekmesine gidin ve "Key Vault okuyucu" rol atamasını kaldırın.
 
 -   Anahtar kasasının gizli anahtarı sekmesine gidilirken şu hata gösterilmelidir:
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/12/2020
 ms.author: Zhchia
-ms.openlocfilehash: 932a94c348c38902c68a6cf8108d8246cdc434ac
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: b79a63d16229c761b29776667c771e940d8f69d7
+ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97673387"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100527131"
 ---
 # <a name="tutorial-configure-cybsafe-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için CybSafe yapılandırma
 
@@ -121,6 +121,10 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
    |locale|Dize|
    |timezone|Dize|
    |userType|Dize|
+   |urn: IETF: params: Scim: schemas: Extension: Enterprise: 2.0: User: Department|Dize|
+   |urn: IETF: params: Scim: schemas: Extension: Enterprise: 2.0: User: Bölüm|Dize|
+   |urn: IETF: params: Scim: schemas: Extension: Enterprise: 2.0: User: Organization|Dize|
+   
 
 10. **Eşlemeler** bölümünde, **Azure Active Directory gruplarını Cybsafe olarak eşitler**' ı seçin.
 
@@ -153,6 +157,10 @@ Hazırlama ayarlarını yapılandırdıktan sonra dağıtımınızı izlemek iç
 1. Hazırlama işlemi başarılı ve başarısız olan kullanıcıları belirlemek için [hazırlama günlüklerini](../reports-monitoring/concept-provisioning-logs.md) kullanın
 2. Hazırlama döngüsünün durumunu ve tamamlanması için kalan miktarı görmek için [ilerleme çubuğuna](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md) bakın
 3. Hazırlama yapılandırmasının durumu iyi görünmüyorsa uygulama karantinaya geçer. Karantina durumu hakkında daha fazla bilgi edinmek için [buraya](../app-provisioning/application-provisioning-quarantine-status.md) bakın.  
+
+## <a name="change-log"></a>Değişiklik günlüğü
+
+* 02/15/2021-Kullanıcı kurumsal uzantı öznitelik **departmanı**, **bölüm** ve **kuruluş** eklendi.
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 

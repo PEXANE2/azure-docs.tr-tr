@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/18/2020
 ms.author: Zhchia
-ms.openlocfilehash: 902bd46fcf6efc20c81992e29fd463781fecc15e
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 817b6b373f521543234cf02818cde8c4b4ba40c1
+ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98731463"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100526434"
 ---
 # <a name="tutorial-configure-parsable-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için ayrıştırılabilir yapılandırma
 
@@ -32,8 +32,9 @@ Bu öğretici, otomatik Kullanıcı sağlamayı yapılandırmak için hem ayrı�
 > * Ayrıştırılabilir Kullanıcı oluşturma
 > * Artık erişim gerektirmeyen kullanıcıları kaldır
 > * Azure AD ile ayrıştırılabilir kullanıcı özniteliklerinin eşitlenmiş olmasını sağlama
+> * Grupları ve grup üyeliklerini ayrıştırılabilir olarak sağla
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
@@ -107,17 +108,25 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
    |userName|Dize|&check;|
    |displayName|Dize|
 
-10. Kapsam belirleme filtrelerini yapılandırmak için [Kapsam belirleme filtresi öğreticisi](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) ile sunulan yönergeleri izleyin.
+10. **Eşlemeler** bölümünde **Azure Active Directory gruplarını ayrıştırılabilir olarak eşitler**' ı seçin.
 
-11. Azure AD sağlama hizmetini ayrıştırılabilir olarak etkinleştirmek için, **Ayarlar** bölümünde **sağlama durumunu** **Açık** olarak değiştirin.
+11. **Öznitelik eşleme** bölümünde Azure AD 'den ayrıştırılabilir olarak eşitlenen grup özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri için ayrıştırılabilir olan grupları eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
+
+      |Öznitelik|Tür|Filtreleme için destekleniyor|
+      |---|---|---|
+      |displayName|Dize|&check;|
+      |üyeler|Başvuru|
+12. Kapsam belirleme filtrelerini yapılandırmak için [Kapsam belirleme filtresi öğreticisi](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) ile sunulan yönergeleri izleyin.
+
+13. Azure AD sağlama hizmetini ayrıştırılabilir olarak etkinleştirmek için, **Ayarlar** bölümünde **sağlama durumunu** **Açık** olarak değiştirin.
 
     ![Hazırlama Durumu Açık](common/provisioning-toggle-on.png)
 
-12. **Ayarlar** bölümünde **kapsamda** istenen değerleri seçerek sağlamak istediğiniz kullanıcıları ve/veya grupları tanımlayın.
+14. **Ayarlar** bölümünde **kapsamda** istenen değerleri seçerek sağlamak istediğiniz kullanıcıları ve/veya grupları tanımlayın.
 
     ![Hazırlama Kapsamı](common/provisioning-scope.png)
 
-13. Hazırlama işlemini başlatmak için **Kaydet**'e tıklayın.
+15. Hazırlama işlemini başlatmak için **Kaydet**'e tıklayın.
 
     ![Hazırlama Yapılandırmasını Kaydetme](common/provisioning-configuration-save.png)
 
@@ -129,6 +138,10 @@ Hazırlama ayarlarını yapılandırdıktan sonra dağıtımınızı izlemek iç
 1. Hazırlama işlemi başarılı ve başarısız olan kullanıcıları belirlemek için [hazırlama günlüklerini](../reports-monitoring/concept-provisioning-logs.md) kullanın
 2. Hazırlama döngüsünün durumunu ve tamamlanması için kalan miktarı görmek için [ilerleme çubuğuna](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md) bakın
 3. Hazırlama yapılandırmasının durumu iyi görünmüyorsa uygulama karantinaya geçer. Karantina durumu hakkında daha fazla bilgi edinmek için [buraya](../app-provisioning/application-provisioning-quarantine-status.md) bakın.  
+
+## <a name="change-log"></a>Değişiklik günlüğü
+
+* 02/15/2021-grup sağlama etkinleştirildi.
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 

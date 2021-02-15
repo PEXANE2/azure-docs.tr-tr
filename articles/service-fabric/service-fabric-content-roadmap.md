@@ -3,12 +3,12 @@ title: Azure Service Fabric hakkında daha fazla bilgi
 description: Azure Service Fabric 'nin temel kavramları ve ana alanlarıyla ilgili bilgi edinin. Service Fabric genişletilmiş bir genel bakış sağlar ve mikro hizmetlerin nasıl oluşturulacağını açıklar.
 ms.topic: conceptual
 ms.date: 12/08/2017
-ms.openlocfilehash: 36215dd3419050cf498a749b5caf927c3c4e275a
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 011ddf5db1555e83a1a61a349cc19ed791ab900b
+ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96485459"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100526775"
 ---
 # <a name="so-you-want-to-learn-about-service-fabric"></a>Service Fabric hakkında bilgi edinmek istiyor musunuz?
 Azure Service Fabric; ölçeklenebilir ve güvenilir mikro hizmetleri paketlemeyi, dağıtmayı ve yönetmeyi kolaylaştırmayı sağlayan bir dağıtılmış sistemler platformudur.  Service Fabric, ancak büyük bir yüzey alanına sahiptir ve öğrenilmesi çok önemlidir.  Bu makalede bir Service Fabric Özeti ve temel kavramlar, programlama modelleri, uygulama yaşam döngüsü, test, kümeler ve sistem durumu izleme açıklanmaktadır. Bir giriş ve mikro hizmetler oluşturmak için Service Fabric nasıl kullanılabileceği hakkında [genel bakış](service-fabric-overview.md) ve [mikro hizmetler nelerdir?](service-fabric-overview-microservices.md) makalesini okuyun. Bu makale kapsamlı bir içerik listesi içermez, ancak Service Fabric her alanı için genel bakış ve başlangıç makalelerine bağlantı sağlar. 
@@ -75,7 +75,7 @@ Varsayılan olarak, Service Fabric Hizmetleri işlem olarak dağıtır ve etkinl
 ### <a name="reliable-actors"></a>Reliable Actors
 Reliable Services üzerine inşa edilen [güvenilir aktör](service-fabric-reliable-actors-introduction.md) çerçevesi, aktör tasarım düzenine göre sanal aktör modelini uygulayan bir uygulama çerçevesidir. Güvenilir aktör çerçevesi, aktör olarak adlandırılan tek iş parçacıklı yürütme ile bağımsız işlem ve durum birimleri kullanır. Güvenilir aktör çerçevesi, aktörler ve önceden ayarlanmış durum kalıcılığı ve genişleme yapılandırmalarına yönelik yerleşik iletişim sağlar.
 
-### <a name="aspnet-core"></a>ASP.NET Çekirdeği
+### <a name="aspnet-core"></a>ASP.NET Core
 Service Fabric Web ve API uygulamaları oluşturmak için birinci sınıf programlama modeli olarak [ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md) tümleştirilir.  ASP.NET Core, Service Fabric iki farklı şekilde kullanılabilir:
 
 - Konuk yürütülebilir dosyası olarak barındırılır. Bu, birincil olarak, mevcut ASP.NET Core uygulamalarını kod değişikliği olmadan Service Fabric üzerinde çalıştırmak için kullanılır.
@@ -87,7 +87,7 @@ Service Fabric Web ve API uygulamaları oluşturmak için birinci sınıf progra
 ## <a name="application-lifecycle"></a>Uygulama yaşam döngüsü
 Diğer platformlarda olduğu gibi, Service Fabric bir uygulama genellikle şu aşamalardan geçer: tasarım, geliştirme, test, dağıtım, yükseltme, bakım ve kaldırma. Service Fabric bulut uygulamalarının tam uygulama yaşam döngüsü için, dağıtım, günlük yönetim ve son kullanımdan kaldırma ile bakım aracılığıyla geliştirme aşamasından ilk sınıf destek sağlar. Hizmet modeli birçok farklı rolün uygulama yaşam döngüsüne bağımsız olarak katılmasına olanak sağlar. [Service Fabric uygulama yaşam döngüsü](service-fabric-application-lifecycle.md) , API 'lerin yanı sıra Service Fabric uygulama yaşam döngüsünün aşamaları boyunca farklı roller tarafından nasıl kullanıldıklarından bir genel bakış sağlar. 
 
-Tüm uygulama yaşam döngüsü [PowerShell cmdlet](/powershell/module/ServiceFabric/)'leri, [CLI komutları](service-fabric-sfctl.md), [C# API](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient)'Leri, [Java API 'leri](/java/api/overview/azure/servicefabric)ve [REST API](/rest/api/servicefabric/)'leri kullanılarak yönetilebilir. Ayrıca, [Azure Pipelines](./service-fabric-tutorial-deploy-app-with-cicd-vsts.md) veya [Jenkins](/azure/developer/jenkins/deploy-to-service-fabric-cluster)gibi araçları kullanarak sürekli tümleştirme/sürekli dağıtım işlem hatları da ayarlayabilirsiniz.
+Tüm uygulama yaşam döngüsü [PowerShell cmdlet](/powershell/module/ServiceFabric/New-ServiceFabricService)'leri, [CLI komutları](service-fabric-sfctl.md), [C# API](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient)'Leri, [Java API 'leri](/java/api/overview/azure/servicefabric)ve [REST API](/rest/api/servicefabric/)'leri kullanılarak yönetilebilir. Ayrıca, [Azure Pipelines](./service-fabric-tutorial-deploy-app-with-cicd-vsts.md) veya [Jenkins](/azure/developer/jenkins/deploy-to-service-fabric-cluster)gibi araçları kullanarak sürekli tümleştirme/sürekli dağıtım işlem hatları da ayarlayabilirsiniz.
 
 ## <a name="test-applications-and-services"></a>Uygulama ve hizmetleri test etme
 Gerçekten bulut ölçekli hizmetler oluşturmak için, uygulamalarınızın ve hizmetlerinizin gerçek hayatta hatalara sahip olduğunu doğrulamak önemlidir. Hata analiz hizmeti, Service Fabric oluşturulan Hizmetleri test etmek için tasarlanmıştır. [Hata analiz hizmeti](service-fabric-testability-overview.md)ile, anlamlı hatalara sahip olabilir ve uygulamalarınızda test senaryolarını tamamen çalıştırabilirsiniz. Bu hatalar ve senaryolar, bir hizmetin yaşam süresi boyunca, denetimli, güvenli ve tutarlı bir şekilde deneyilecek çok sayıda durum ve geçiş yapar ve doğrular.
@@ -145,7 +145,7 @@ Service Fabric küme, sahip olduğunuz ancak kısmen Microsoft tarafından yöne
 
 Tek başına küme, tamamen sahip olduğunuz bir kaynaktır. Temel alınan işletim sisteminde düzeltme eki uygulama ve doku yükseltmeleri başlatma konusunda siz sorumlusunuz. Kümenizin bağlantısı varsa [https://www.microsoft.com/download](https://www.microsoft.com/download) , kümenizi yeni Service Fabric çalışma zamanı paketini otomatik olarak indirip sağlayacak şekilde ayarlayabilirsiniz. Ardından yükseltmeyi başlatabilirsiniz. Kümeniz erişemıyorsa [https://www.microsoft.com/download](https://www.microsoft.com/download) , internet 'e bağlı bir makineden yeni çalışma zamanı paketini el ile indirebilir ve ardından yükseltmeyi başlatabilirsiniz. Daha fazla bilgi için [tek başına Service Fabric kümesini yükseltme](service-fabric-cluster-upgrade-windows-server.md)makalesini okuyun.
 
-## <a name="health-monitoring"></a>Sistem durumunu izleme
+## <a name="health-monitoring"></a>Sistem durumu izleme
 Service Fabric, belirli varlıklara uygun olmayan kümeyi ve uygulama koşullarını işaretlemek için tasarlanan bir [sistem durumu modeli](service-fabric-health-introduction.md) tanıtır (küme düğümleri ve hizmet çoğaltmaları gibi). Sistem durumu modeli, sistem durumu reporlarını (sistem bileşenleri ve Watchdogs) kullanır. Amaç kolay ve hızlı tanılama ve onarma. Hizmet yazıcılarının sistem durumunu ve [sistem durumu raporlamasını nasıl tasarlayacağınızı](service-fabric-report-health.md#design-health-reporting)düşünmesine ihtiyacı vardır. Özellikle, sorunların köke yakın olduğunu bayrakladığında, sistem durumunu etkileyebilecek herhangi bir koşul tarihinde bildirilmelidir. Sistem durumu bilgileri, hizmet çalışır duruma getirildikten sonra, hata ayıklama ve araştırma konusunda zaman ve çaba tasarrufu sağlayabilir.
 
 Service Fabric Raporlayıcıları, belirtilen ilgi koşullarını izler. Bunlar yerel görünümüne göre bu koşullara göre raporlarlar. [Sistem durumu deposu](service-fabric-health-introduction.md#health-store) , varlıkların küresel olarak sağlıklı olup olmadığını öğrenmek için tüm raporlayıcılar tarafından gönderilen sistem durumu verilerini toplar. Modelin zengin, esnek ve kullanımı kolay olması amaçlanmıştır. Sistem durumu raporlarının kalitesi, kümenin sistem durumu görünümünün doğruluğunu belirler. Hatalı olmayan sorunları yanlışlıkla gösteren yanlış pozitif sonuçlar, yükseltmeleri veya sistem durumu verilerini kullanan diğer hizmetleri olumsuz yönde etkileyebilir. Bu hizmetlere örnek olarak onarım hizmetleri ve uyarı mekanizmaları verilebilir. Bu nedenle, olası en iyi şekilde ilgilendiğiniz koşulları yakalayan raporlar sağlamak için bazı düşünce gerekir.
@@ -160,7 +160,7 @@ Kutudan çıkan, bileşen Service Fabric kümedeki tüm varlıklarda sistem duru
 
 Service Fabric sistem durumu deposunda toplanan [sistem durumu raporlarını görüntülemek](service-fabric-view-entities-aggregated-health.md) için birden çok yol sağlar:
 * [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) veya diğer görselleştirme araçları.
-* Sistem durumu sorguları ( [PowerShell](/powershell/module/ServiceFabric/), [CLI](service-fabric-sfctl.md), [C# FabricClient API](/dotnet/api/system.fabric.fabricclient.healthclient) 'Leri ve [Java FabricClient API 'leri](/java/api/system.fabric)veya [REST API](/rest/api/servicefabric)'leri aracılığıyla).
+* Sistem durumu sorguları ( [PowerShell](/powershell/module/ServiceFabric/New-ServiceFabricService), [CLI](service-fabric-sfctl.md), [C# FabricClient API](/dotnet/api/system.fabric.fabricclient.healthclient) 'Leri ve [Java FabricClient API 'leri](/java/api/system.fabric)veya [REST API](/rest/api/servicefabric)'leri aracılığıyla).
 * Özelliklerden biri (PowerShell, CLı, API 'Ler veya REST aracılığıyla) durumuna sahip varlıkların bir listesini döndüren genel sorgular.
 
 ## <a name="monitoring-and-diagnostics"></a>İzleme ve tanılama
