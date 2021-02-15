@@ -7,14 +7,14 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/05/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: f325a43895e1e9d73b11c06662851d7654d31ddb
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.openlocfilehash: 62fe1b3391eb4cb2d409a92b936fd3f1ae56d992
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94331830"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100518428"
 ---
-# <a name="azure-database-for-postgresql-versioning-policy"></a>PostgreSQL için Azure veritabanı sürüm oluşturma ilkesi
+# <a name="azure-database-for-postgresql-versioning-policy"></a>PostgreSQL için Azure Veritabanı sürüm oluşturma ilkesi
 
 Bu sayfa, PostgreSQL için Azure veritabanı sürüm oluşturma ilkesini açıklar ve PostgreSQL için Azure veritabanı-tek sunucu ve PostgreSQL için Azure veritabanı-esnek sunucu (Önizleme) Dağıtım modları için geçerlidir.
 
@@ -28,7 +28,7 @@ PostgreSQL için Azure veritabanı aşağıdaki veritabanı sürümlerini destek
 | PostgreSQL 11 | X | X |
 | PostgreSQL 10 | X |  |
 | PostgreSQL 9,6 | X |  |
-| PostgreSQL 9,5 | X |  |
+| *PostgreSQL 9,5 (kullanımdan kaldırıldı)* | X |  |
 
 ## <a name="major-version-support"></a>Ana sürüm desteği
 PostgreSQL için Azure veritabanı, PostgreSQL Community [sürüm oluşturma ilkesinde](https://www.postgresql.org/support/versioning/)belirtildiği gibi, PostgreSQL topluluğu tarafından devre dışı bırakılana kadar Azure 'un sürümü desteklemeye başladığı tarihten Itibaren PostgreSQL Için Azure veritabanı tarafından desteklenecektir.
@@ -41,7 +41,7 @@ Aşağıdaki tabloda PostgreSQL ana sürümleri için kullanımdan kaldırma ayr
 
 | Sürüm | Yenilikler | Azure desteği Başlangıç tarihi | Emeklilik tarihi|
 | ----- | ----- | ------ | ----- |
-| PostgreSQL 9,5| [Özellikler](https://www.postgresql.org/docs/9.5/release-9-5.html)  | 18 Nisan 2018    | 11 Şubat 2021
+| [PostgreSQL 9,5 (kullanımdan kaldırıldı)](https://www.postgresql.org/about/news/postgresql-132-126-1111-1016-9621-and-9525-released-2165/)| [Özellikler](https://www.postgresql.org/docs/9.5/release-9-5.html)  | 18 Nisan 2018   | 11 Şubat 2021
 | [PostgreSQL 9,6](https://www.postgresql.org/about/news/postgresql-96-released-1703/) | [Özellikler](https://wiki.postgresql.org/wiki/NewIn96) | 18 Nisan 2018  | 11 Kasım 2021
 | [PostgreSQL 10](https://www.postgresql.org/about/news/postgresql-10-released-1786/) | [Özellikler](https://wiki.postgresql.org/wiki/New_in_postgres_10) | 4 Haziran 2018  | 10 Kasım 2022
 | [PostgreSQL 11](https://www.postgresql.org/about/news/postgresql-11-released-1894/) | [Özellikler](https://www.postgresql.org/docs/11/release-11.html) | 24 Temmuz 2019  | 9 Kasım 2023
@@ -49,7 +49,7 @@ Aşağıdaki tabloda PostgreSQL ana sürümleri için kullanımdan kaldırma ayr
 
 ## <a name="retired-postgresql-engine-versions-not-supported-in-azure-database-for-postgresql"></a>PostgreSQL için Azure veritabanı 'nda, kullanımdan kaldırılan PostgreSQL altyapısı sürümleri desteklenmiyor
 
-Her bir PostgreSQL veritabanı sürümünün kullanımdan kaldırılması tarihinden sonra, kullanımdan kaldırılan sürümü çalıştırmaya devam ederseniz aşağıdaki kısıtlamalara göz önünde bulabilirsiniz:
+PostgreSQL için Azure veritabanı 'nda kullanımdan kaldırılan sürümü çalıştırmaya devam edebilirsiniz. Ancak, her bir PostgreSQL veritabanı sürümü için kullanımdan kaldırma tarihinden sonra aşağıdaki kısıtlamalara göz önünde olun:
 - Topluluk başka hata düzeltmeleri veya güvenlik düzeltmelerinin serbest bırakılmamasına neden olarak, PostgreSQL için Azure veritabanı, herhangi bir hata veya güvenlik sorunu için kullanımdan kaldırılan veritabanı altyapısına düzeltme eki uygulanmaz veya kullanımdan kaldırılan veritabanı altyapısı ile ilgili güvenlik önlemleri almaz. Sonuç olarak güvenlik açıklarına veya diğer sorunlarla karşılaşabilirsiniz. Ancak Azure, ana bilgisayar, işletim sistemi, kapsayıcılar ve hizmetle ilgili diğer tüm bileşenler için düzenli bakım ve düzeltme eki gerçekleştirmeye devam edecektir.
 - Karşılaşabileceğiniz herhangi bir destek sorunu PostgreSQL veritabanıyla ilişkili olursa size destek sunamayacak olabilir. Bu gibi durumlarda, size herhangi bir destek sağlayabilmesi için veritabanınızı yükseltmeniz gerekir.
 - Kullanımdan kaldırılan sürüm için yeni veritabanı sunucuları oluşturabileceksiniz. Bununla birlikte, mevcut sunucularınız için zaman içinde kurtarmalar gerçekleştirebilir ve okuma çoğaltmaları oluşturabilirsiniz.

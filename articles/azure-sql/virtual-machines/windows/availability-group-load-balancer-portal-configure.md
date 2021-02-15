@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 02/16/2017
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 9fa23ca2ae655a11d7aaa4be67e08a6b3fa44394
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 6e53a6a4875b3dde55d1822daa342d6cde536d1c
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97359396"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100096438"
 ---
 # <a name="configure-a-load-balancer-for-a-sql-server-always-on-availability-group-in-azure-virtual-machines"></a>Azure sanal makinelerinde SQL Server Always on kullanılabilirlik grubu için yük dengeleyici yapılandırma
 
@@ -76,7 +76,7 @@ Görevin bu bölümünde aşağıdaki adımları uygulayın:
    | **Sanal ağ** |SQL Server örneklerinin bulunduğu sanal ağı seçin. |
    | **Alt ağ** |SQL Server örneklerinin bulunduğu alt ağı seçin. |
    | **IP adresi ataması** |**Static** |
-   | **Özel IP adresi** |Alt ağdan kullanılabilir bir IP adresi belirtin. Kümede bir dinleyici oluşturduğunuzda bu IP adresini kullanın. Bu makalenin ilerleyen kısımlarında yer aldığı bir PowerShell betiğine değişken için bu adresi kullanın `$ILBIP` . |
+   | **Özel IP adresi** |Alt ağdan kullanılabilir bir IP adresi belirtin. Kümede bir dinleyici oluşturduğunuzda bu IP adresini kullanın. Bu makalenin ilerleyen kısımlarında yer aldığı bir PowerShell betiğine değişken için bu adresi kullanın `$ListenerILBIP` . |
    | **Abonelik** |Birden çok aboneliğiniz varsa, bu alan görünebilir. Bu kaynakla ilişkilendirmek istediğiniz aboneliği seçin. Normalde kullanılabilirlik grubu için tüm kaynaklarla aynı abonelikte olur. |
    | **Kaynak grubu** |SQL Server örneklerinin bulunduğu kaynak grubunu seçin. |
    | **Konum** |SQL Server örneklerinin bulunduğu Azure konumunu seçin. |

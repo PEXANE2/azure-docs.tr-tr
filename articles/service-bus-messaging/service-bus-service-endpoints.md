@@ -2,14 +2,14 @@
 title: Azure Service Bus için sanal ağ hizmet uç noktalarını yapılandırma
 description: Bu makalede bir sanal ağa Microsoft. ServiceBus hizmet uç noktası ekleme hakkında bilgi sağlanır.
 ms.topic: article
-ms.date: 06/23/2020
+ms.date: 02/12/2021
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 8005a2c43d42908a9ad6ebea10b6a13ef381084c
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 6b168bbdc69f2d18a724084d9de694fa83d23dda
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94427658"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100516150"
 ---
 # <a name="allow-access-to-azure-service-bus-namespace-from-specific-virtual-networks"></a>Belirli sanal ağlardan Azure Service Bus ad alanına erişime izin ver
 [Sanal ağ (VNet) hizmet uç noktaları][vnet-sep] ile Service Bus tümleştirmesi, sanal ağlara bağlı sanal makineler gibi iş yüklerinden, her iki uçta da güvenli hale getirilen ağ trafiği yolu ile güvenli erişim sağlar.
@@ -57,7 +57,8 @@ Bu bölümde, bir sanal ağ hizmeti uç noktası eklemek için Azure portal nas�
     > [!NOTE]
     > **Ağ** sekmesini yalnızca **Premium** ad alanları için görürsünüz.  
     
-    Varsayılan olarak, **Seçili ağlar** seçeneği seçilidir. Bu sayfada en az bir IP güvenlik duvarı kuralı veya bir sanal ağ eklememeniz durumunda, ad alanına genel İnternet üzerinden erişilebilir (erişim anahtarı kullanılarak).
+    >[!WARNING]
+    > **Seçili ağlar** seçeneğini belirleyin ve bu sayfada en az bir IP güvenlik duvarı kuralı veya bir sanal ağ eklememeniz durumunda, ad alanına genel İnternet üzerinden erişilebilir (erişim anahtarı kullanılarak).
 
     :::image type="content" source="./media/service-bus-ip-filtering/default-networking-page.png" alt-text="Ağ sayfası-varsayılan" lightbox="./media/service-bus-ip-filtering/default-networking-page.png":::
     
@@ -65,7 +66,7 @@ Bu bölümde, bir sanal ağ hizmeti uç noktası eklemek için Azure portal nas�
 
     ![Güvenlik Duvarı-tüm ağlar seçeneği seçildi](./media/service-bus-ip-filtering/firewall-all-networks-selected.png)
 2. Belirli sanal ağlara erişimi kısıtlamak için, henüz seçili değilse **Seçili ağlar** seçeneğini belirleyin.
-1. Sayfanın **sanal ağ** bölümünde **+ var olan sanal ağı ekle** ' yi seçin. 
+1. Sayfanın **sanal ağ** bölümünde **+ var olan sanal ağı ekle**' yi seçin. 
 
     ![var olan sanal ağı ekle](./media/service-endpoints/add-vnet-menu.png)
 3. Sanal ağlar listesinden sanal ağı seçin ve ardından **alt ağı** seçin. Sanal ağı listeye eklemeden önce hizmet uç noktasını etkinleştirmeniz gerekir. Hizmet uç noktası etkinleştirilmemişse, Portal bunu etkinleştirmenizi ister.
@@ -88,26 +89,11 @@ Bu bölümde, bir sanal ağ hizmeti uç noktası eklemek için Azure portal nas�
 [!INCLUDE [service-bus-trusted-services](../../includes/service-bus-trusted-services.md)]
 
 ## <a name="use-resource-manager-template"></a>Resource Manager şablonu kullanma
-Aşağıdaki Kaynak Yöneticisi şablonu, var olan bir Service Bus ad alanına bir sanal ağ kuralı eklenmesini sağlar.
+Aşağıdaki örnek Kaynak Yöneticisi şablonu, var olan bir Service Bus ad alanına bir sanal ağ kuralı ekler. Ağ kuralı için bir sanal ağdaki alt ağın KIMLIĞINI belirtir. 
 
-Şablon parametreleri:
+KIMLIK, sanal ağ alt ağı için tam olarak nitelenmiş bir Kaynak Yöneticisi yoludur. Örneğin, `/subscriptions/{id}/resourceGroups/{rg}/providers/Microsoft.Network/virtualNetworks/{vnet}/subnets/default` bir sanal ağın varsayılan alt ağı için.
 
-* **NamespaceName** : Service Bus ad alanı.
-* **Virtualnetworkingsubnetıd** : sanal ağ alt ağı için tam olarak nitelenmiş Kaynak Yöneticisi yolu; Örneğin, `/subscriptions/{id}/resourceGroups/{rg}/providers/Microsoft.Network/virtualNetworks/{vnet}/subnets/default` bir sanal ağın varsayılan alt ağı için.
-
-> [!NOTE]
-> Mümkün olan reddetme kuralları olmadığı sürece, Azure Resource Manager şablonu, bağlantıları kısıtlayameyen **"Izin ver"** olarak ayarlanmış varsayılan eylemi içerir.
-> Sanal ağ veya güvenlik duvarları kuralları yaparken, **_"DefaultAction"_ öğesini değiştirmemiz gerekir**
-> 
-> Kaynak
-> ```json
-> "defaultAction": "Allow"
-> ```
-> şöyle değiştirin:
-> ```json
-> "defaultAction": "Deny"
-> ```
->
+Sanal ağ veya güvenlik duvarları kuralları eklerken, değerini `defaultAction` olarak ayarlayın `Deny` .
 
 Şablon:
 
@@ -211,6 +197,9 @@ Aşağıdaki Kaynak Yöneticisi şablonu, var olan bir Service Bus ad alanına b
 ```
 
 Şablonu dağıtmak için [Azure Resource Manager][lnk-deploy]talimatlarını izleyin.
+
+> [!IMPORTANT]
+> IP ve sanal ağ kuralları yoksa, olarak ayarlamış olsanız bile tüm trafik ad alanına akar `defaultAction` `deny` .  Ad alanına genel İnternet üzerinden erişilebilir (erişim anahtarı kullanılarak). Yalnızca belirtilen IP adreslerinden veya bir sanal ağın alt ağından gelen trafiğe izin vermek için ad alanı için en az bir IP kuralı veya sanal ağ kuralı belirtin.  
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

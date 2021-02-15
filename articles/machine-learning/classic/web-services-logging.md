@@ -4,22 +4,21 @@ description: Machine Learning Studio (klasik) Web Hizmetleri için günlük kayd
 services: machine-learning
 author: likebupt
 ms.author: keli19
-editor: cgronlun
 ms.assetid: c54d41e1-0300-46ef-bbfc-d6f7dca85086
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: how-to
 ms.date: 06/15/2017
-ms.openlocfilehash: 154479be1eae01bcc533b556b751ed24aee3da2b
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: c9ce9b7b0d739301e76abd43b265fe28195ed302
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93308572"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100518292"
 ---
 # <a name="enable-logging-for-azure-machine-learning-studio-classic-web-services"></a>Azure Machine Learning Studio (klasik) Web Hizmetleri için günlüğe kaydetmeyi etkinleştirme
 
-**Uygulama hedefi:** ![ İçin geçerlidir. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasik) ![ için geçerlidir. ](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
+**Uygulama hedefi:** ![ İçin geçerlidir. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasik) ![ için geçerlidir.](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
 
 Bu belge, Machine Learning Studio (klasik) Web hizmetlerinin günlüğe kaydetme özelliği hakkında bilgi sağlar. Günlüğe kaydetme, Machine Learning Studio (klasik) API 'Lerinde yapılan çağrılarınızı gidermenize yardımcı olabilecek, yalnızca bir hata numarası ve bir ileti dışında ek bilgiler sağlar.  
@@ -38,13 +37,13 @@ Bu belge, Machine Learning Studio (klasik) Web hizmetlerinin günlüğe kaydetme
 
 3. Yeni bir Web hizmeti için Web hizmeti adına tıklayın. Klasik bir Web hizmeti için Web hizmeti adına tıklayın ve ardından sonraki sayfada uygun uç noktaya tıklayın.
 
-4. Üstteki menü çubuğunda, **Yapılandır** ' a tıklayın.
+4. Üstteki menü çubuğunda, **Yapılandır**' a tıklayın.
 
 5. **Günlüğe kaydetmeyi etkinleştir** seçeneğini *hata* (yalnızca hataları günlüğe kaydetmek için) veya *Tümü* (tam günlük kaydı için) olarak ayarlayın.
 
    ![Günlüğe kaydetme düzeyini seçin](./media/web-services-logging/enable-logging.png)
 
-6. **Kaydet** ’e tıklayın.
+6. **Kaydet**’e tıklayın.
 
 7. Klasik Web Hizmetleri için **ml tanılama** kapsayıcısını oluşturun.
 
@@ -52,9 +51,9 @@ Bu belge, Machine Learning Studio (klasik) Web hizmetlerinin günlüğe kaydetme
 
    1. [Azure Portal](https://portal.azure.com), Web hizmetiyle ilişkili depolama hesabına gidin.
 
-   2. **BLOB hizmeti** altında **kapsayıcılar** ' a tıklayın.
+   2. **BLOB hizmeti** altında **kapsayıcılar**' a tıklayın.
 
-   3. **Ml-Diagnostics** kapsayıcısı yoksa **+ kapsayıcı** ' ya tıklayın, kapsayıcıya "ml-Diagnostics" adını verin ve **erişim türünü** "blob" olarak seçin. **Tamam** ’a tıklayın.
+   3. **Ml-Diagnostics** kapsayıcısı yoksa **+ kapsayıcı**' ya tıklayın, kapsayıcıya "ml-Diagnostics" adını verin ve **erişim türünü** "blob" olarak seçin. **Tamam**'a tıklayın.
 
       ![Tanılama günlüklerinizi depolamak için yeni bir kapsayıcı oluşturun](./media/web-services-logging/create-ml-diagnostics-container.png)
 
@@ -66,7 +65,7 @@ Bu belge, Machine Learning Studio (klasik) Web hizmetlerinin günlüğe kaydetme
 ## <a name="the-effects-of-enabling-logging"></a>Günlüğe kaydetmeyi etkinleştirme etkileri
 Günlüğe kaydetme etkinleştirildiğinde, Web hizmeti uç noktasındaki tanılama ve hatalar, kullanıcının çalışma alanıyla bağlantılı Azure depolama hesabındaki **ml-tanılama** blob kapsayıcısında günlüğe kaydedilir. Bu kapsayıcı, bu depolama hesabıyla ilişkili tüm çalışma alanları için tüm Web hizmeti uç noktaları için tüm tanılama bilgilerini barındırır.
 
-Günlükler, bir Azure Depolama hesabını araştırmak için kullanılabilen çeşitli araçlardan herhangi biri kullanılarak görüntülenebilir. En kolay Azure portal depolama hesabına gitmeniz, **kapsayıcılar** ' a ve ardından **ml-Diagnostics** kapsayıcısına tıklamalıdır.  
+Günlükler, bir Azure Depolama hesabını araştırmak için kullanılabilen çeşitli araçlardan herhangi biri kullanılarak görüntülenebilir. En kolay Azure portal depolama hesabına gitmeniz, **kapsayıcılar**' a ve ardından **ml-Diagnostics** kapsayıcısına tıklamalıdır.  
 
 ## <a name="log-blob-detail-information"></a>Blob ayrıntısı bilgilerini günlüğe kaydet
 Kapsayıcıdaki her blob, aşağıdaki eylemlerden tam olarak biri için tanılama bilgilerini barındırır:

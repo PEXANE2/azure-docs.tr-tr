@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 01/11/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 5012e90aae316897454ffc7933efc88d83afdf6e
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: a1ee632e3aaae7b858ab43b45f6e72aff8d1fb77
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98893396"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100361777"
 ---
 # <a name="azure-active-directory-b2c-isv-partners"></a>Azure Active Directory B2C ISV iş ortakları
 
@@ -74,6 +74,7 @@ Güvenlik için aşağıdaki ISV 'Ler ile Microsoft iş ortakları.
 | ISV iş ortağı | Açıklama ve tümleştirme izlenecek yolları |
 |:-------------------------|:--------------|
 | ![Bir Arkoo Lab logosunun ekran görüntüsü](./media/partner-gallery/arkose-logo.png) | [Arkoo Labs](./partner-arkose-labs.md) , kuruluşların bot saldırılarına karşı korunmasına yardımcı olan bir sahtekarlık önleme çözümü sağlayıcısıdır, hesap, saldırıları ve sahte hesap açılışlarına karşı koruma sağlar. |
+| ![Microsoft Dynamics 365 logosunun ekran görüntüsü](./media/partner-gallery/microsoft-dynamics365-logo.png) | [Microsoft Dynamics 365 sahtekarlık koruması](./partner-dynamics-365-fraud-protection.md) , kuruluşların cihaz parmak izi aracılığıyla sahte hesap açılışlarına karşı korunmasına yardımcı olan bir çözümdür. |
 | ![Ping logosunun ekran görüntüsü](./media/partner-gallery/ping-logo.png) | [Ping kimliği](./partner-ping-identity.md) , birden çok bulutta şirket içi eski uygulamalara güvenli karma erişim sağlar. |
 | ![Bir konuşmasıyla Strata logosunun ekran görüntüsü](./media/partner-gallery/strata-logo.png) | [Strata](./partner-strata.md) , tutarlı erişim ilkeleri zorunlu kılarak, kimlikleri eşitlenmiş halde tutarak ve eski kimlik sistemlerinden uygulamaları Azure AD B2C tarafından sağlanan erişim denetimine geçirmeye basit hale getirerek şirket içi uygulamalara güvenli karma erişim sağlar. |
 | ![Zscaler logosunun ekran görüntüsü](./media/partner-gallery/zscaler-logo.png) | [Zscaler](./partner-zscaler.md) , bir VPN 'nin maliyet, sorun veya güvenlik riskleri olmadan özel uygulamalara ve varlıklara ilke tabanlı, güvenli erişim sağlar. |

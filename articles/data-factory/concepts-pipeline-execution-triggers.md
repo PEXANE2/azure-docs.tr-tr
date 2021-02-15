@@ -1,22 +1,18 @@
 ---
 title: Azure Data Factory'de işlem hattı çalıştırma ve tetikleyiciler
 description: Bu makalede Azure Data Factory'de istek üzerine veya tetikleyici oluşturarak işlem hattı yürütme konusunda bilgi sağlanır.
-services: data-factory
-documentationcenter: ''
 author: dcstwh
 ms.author: weetok
-manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/05/2018
-ms.openlocfilehash: e46b08e31725765d700bf41649d997d7b20e5f95
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: bd36b589424a0d890fc5e1bbab3f234e9b3264c6
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98065499"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100374788"
 ---
 # <a name="pipeline-execution-and-triggers-in-azure-data-factory"></a>Azure Data Factory'de işlem hattı çalıştırma ve tetikleyiciler
 
@@ -82,7 +78,7 @@ JSON tanımında, işlem hattı iki parametre kabul eder: **sourceBlobContainer*
 Aşağıdaki yöntemlerden birini kullanarak işlem hattınızı el ile çalıştırabilirsiniz:
 - .NET SDK
 - Azure PowerShell modülü
-- REST API'si
+- REST API
 - Python SDK'sı
 
 ### <a name="rest-api"></a>REST API
@@ -235,13 +231,13 @@ Zamanlama tetikleyicinizin bir işlem hattı çalıştırmasını başlatması i
 ### <a name="schema-overview"></a>Şemaya genel bakış
 Aşağıdaki tabloda bir tetikleyicinin yinelenmesi ve zamanlanmasıyla ilgili ana şema öğelerinin genel bir özeti verilmiştir:
 
-| JSON özelliği | Açıklama |
+| JSON özelliği | Description |
 | --- | --- |
 | **startTime** | Bir tarih-saat değeri. Temel zamanlamalar için **startTime** özelliğinin değeri ilk oluşum için geçerli olur. Karmaşık zamanlamalar için tetikleyici belirtilen **startTime** değerinden önce başlamaz. |
 | **endTime** | Tetikleyicinin bitiş tarihi ve saati. Tetikleyici belirtilen bitiş tarihi ve saatinden sonra yürütülmez. Bu özelliğin değeri geçmişte olamaz. <!-- This property is optional. --> |
 | **TI** | Saat dilimi. Desteklenen saat dilimlerinin bir listesi için, bkz. bir [zamanlamaya göre işlem hattı çalıştıran bir tetikleyici oluşturma](how-to-create-schedule-trigger.md#time-zone-option). |
 | **yinelemeyi** | Tetikleyici için yinelenme kurallarını belirten bir yinelenme nesnesi. recurrence nesnesi şu öğeleri destekler: **frequency**, **interval**, **endTime**, **count** ve **schedule**. Bir yinelenme nesnesi tanımlanırken **frequency** öğesi gereklidir. Yinelenme nesnesinin diğer öğeleri isteğe bağlıdır. |
-| **lemiyor** | Tetikleyicinin yineleneceği sıklık birimi. "Minute", "hour", "day", "week" ve "month" değerleri desteklenir. |
+| **frequency** | Tetikleyicinin yineleneceği sıklık birimi. "Minute", "hour", "day", "week" ve "month" değerleri desteklenir. |
 | **aralığında** | **frequency** değerinin aralığını gösteren pozitif bir tamsayı. **frequency** değeri tetikleyicinin çalışma sıklığını belirler. Örneğin **interval** değeri 3, **frequency** değeri de "week" ise tetikleyici üç haftada bir yinelenir. |
 | **çizelgesini** | Tetikleyicinin yinelenme zamanlaması. **frequency** değeri belirtilen bir tetikleyici, yinelenmesini bir yinelenme zamanlamasına göre değiştirir. **schedule** özelliği, yinelenme için dakika, saat, haftanın günü, ayın günü ve hafta numarası tabanlı değişiklikleri içerir. |
 
@@ -283,11 +279,11 @@ Aşağıdaki tabloda bir tetikleyicinin yinelenmesi ve zamanlanmasıyla ilgili a
 
 | JSON özelliği | Tür | Gerekli | Varsayılan değer | Geçerli değerler | Örnek |
 | --- | --- | --- | --- | --- | --- |
-| **startTime** | string | Evet | Hiçbiri | ISO 8601 tarih-saatleri | `"startTime" : "2013-01-09T09:30:00-08:00"` |
-| **yinelemeyi** | object | Evet | Hiçbiri | Yinelenme nesnesi | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
-| **aralığında** | sayı | Hayır | 1 | 1-1000 arası | `"interval":10` |
-| **endTime** | string | Evet | Hiçbiri | Gelecekteki bir zamanı temsil eden tarih-saat değeri | `"endTime" : "2013-02-09T09:30:00-08:00"` |
-| **çizelgesini** | object | Hayır | Hiçbiri | Zamanlama nesnesi | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
+| **startTime** | string | Yes | Yok | ISO 8601 tarih-saatleri | `"startTime" : "2013-01-09T09:30:00-08:00"` |
+| **yinelemeyi** | object | Yes | Yok | Yinelenme nesnesi | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
+| **aralığında** | sayı | No | 1 | 1-1000 arası | `"interval":10` |
+| **endTime** | string | Yes | Yok | Gelecekteki bir zamanı temsil eden tarih-saat değeri | `"endTime" : "2013-02-09T09:30:00-08:00"` |
+| **çizelgesini** | object | No | Yok | Zamanlama nesnesi | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
 
 ### <a name="starttime-property"></a>startTime özelliği
 Aşağıdaki tabloda **startTime** özelliğinin bir tetikleyici çalıştırmasını nasıl denetlediği gösterilmektedir:
@@ -314,7 +310,7 @@ Birden çok **zamanlama** öğesi belirtilmişse, değerlendirme sırası en bü
 
 Aşağıdaki tabloda **schedule** öğeleri ayrıntılı bir şekilde açıklanmıştır:
 
-| JSON öğesi | Açıklama | Geçerli değerler |
+| JSON öğesi | Description | Geçerli değerler |
 | --- | --- | --- |
 | **dakika** | Tetikleyicinin çalıştığı dakika değeri. |- Tamsayı<br />- Tamsayı dizisi |
 | **saatlerinin** | Tetikleyicinin çalıştığı saat değeri. |- Tamsayı<br />- Tamsayı dizisi |
@@ -338,7 +334,7 @@ Bu bölümde yineleme zamanlaması örnekleri sağlanır. **schedule** nesnesine
 
 Örneklerde, **Aralık** değerinin 1 olduğunu ve **Sıklık** değerinin zamanlama tanımına göre doğru olduğunu varsaymaktadır. Örneğin, hem "day" şeklinde bir **frequency** değeriniz hem de **schedule** nesnesinde bir **monthDays** değişikliğiniz olamaz. Bu tür kısıtlamalar önceki bölümde verilen tabloda açıklanmıştır.
 
-| Örnek | Açıklama |
+| Örnek | Description |
 | --- | --- |
 | `{"hours":[5]}` | Her gün 05.00'te çalıştır. |
 | `{"minutes":[15], "hours":[5]}` | Her gün 05.15'te çalıştır. |

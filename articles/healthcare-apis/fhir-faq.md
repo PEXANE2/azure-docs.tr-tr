@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 1/21/2021
 ms.author: cavoeg
-ms.openlocfilehash: 4d071af6f72bfe6136296185e65007d2413ed2c4
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.openlocfilehash: d83bc653ae8c3ff5a9553de568bc6f2355f18760
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2021
-ms.locfileid: "98746722"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100104629"
 ---
 # <a name="frequently-asked-questions-about-the-azure-api-for-fhir"></a>FHıR için Azure API 'SI hakkında sık sorulan sorular
 
@@ -115,6 +115,9 @@ Daha fazla ayrıntı için bu [topluluk gönderisini](https://chat.fhir.org/#nar
 ### <a name="how-does-export-work"></a>$Export nasıl çalışır?
 
 $export FHıR belirtiminin bir parçasıdır: https://hl7.org/fhir/uv/bulkdata/export/index.html . FHıR hizmeti yönetilen bir kimlikle ve bir depolama hesabıyla yapılandırıldıysa ve yönetilen kimliğin bu depolama hesabına erişimi varsa, FHıR API 'sindeki $export çağırabilirsiniz ve tüm FHıR kaynakları depolama hesabına aktarılabilir. Daha fazla bilgi için [$Export makalemize](./export-data.md)göz atın.
+
+### <a name="is-de-identified-export-available-at-patient-and-group-level-as-well"></a>Yeniden tanımlanan dışarı aktarma, hasta ve grup düzeyinde de kullanılabilir mi?
+Anonimleştirilmiş dışarı aktarma Şu anda yalnızca tam sistem dışarı aktarma (/$export) üzerinde destekleniyor ve hasta dışarı aktarma için değil (/Haent/$export). Hasta düzeyinde kullanıma hazır hale getirmek için çalışıyoruz.
 
 ## <a name="using-azure-api-for-fhir"></a>FHıR için Azure API 'YI kullanma
 

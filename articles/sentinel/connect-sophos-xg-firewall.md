@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2020
 ms.author: yelevin
-ms.openlocfilehash: b48773272e050b47af73b197d6f1c8156318fd71
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0b8b6247a735bceaf98029740bf9d4f7e233069d
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87100390"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100097577"
 ---
 # <a name="connect-your-sophos-xg-firewall-to-azure-sentinel"></a>Sophos XG güvenlik duvarınızı Azure Sentinel 'e bağlama
 
 > [!IMPORTANT]
 > Azure Sentinel 'deki Sophos XG güvenlik duvarı veri Bağlayıcısı Şu anda genel önizlemededir.
-> Bu özellik, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Bu özellik, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Bu makalede, [Sophos XG güvenlik duvarı](https://www.sophos.com/products/next-gen-firewall.aspx) gerecinizi Azure Sentinel 'e nasıl bağlayabileceğiniz açıklanır. Sophos XG güvenlik duvarı veri Bağlayıcısı, Azure Sentinel ile Sophos XG güvenlik duvarı günlüklerinizi kolayca bağlamanıza olanak tanır, panoları görüntüleyebilir, özel uyarılar oluşturabilir ve araştırmayı geliştirebilirsiniz. Sophos XG güvenlik duvarı ve Azure Sentinel arasındaki tümleştirme Syslog kullanımını kullanır.
 
@@ -48,7 +48,7 @@ Başarılı bir bağlantı kurulduktan sonra, veriler Syslog altında Log Analyt
 
 ## <a name="validate-connectivity"></a>Bağlantıyı doğrula
 
-Günlüklerinizin Log Analytics görünene kadar 20 dakikadan bu kadar bir zaman çıkabilir.
+Günlüklerinizin Log Analytics görünmeye başlaması 20 dakikaya kadar sürebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

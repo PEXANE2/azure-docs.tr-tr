@@ -1,22 +1,18 @@
 ---
 title: Azure Data Factory örnekleri
 description: Azure Data Factory hizmetiyle birlikte gelen örneklerle ilgili ayrıntıları sağlar.
-services: data-factory
-documentationcenter: ''
 author: dcstwh
 ms.author: weetok
-manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: b373b5c440bf2ef2f50bf323baa2488981cdc775
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 82c871e8914d70dde7f2586b7dbf6556ebd2621f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96495200"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100387045"
 ---
 # <a name="azure-data-factory---samples"></a>Azure Data Factory örnekleri
 > [!NOTE]
@@ -46,7 +42,7 @@ ms.locfileid: "96495200"
 ## <a name="azure-resource-manager-templates"></a>Azure Resource Manager şablonları
 GitHub üzerinde Data Factory için aşağıdaki Azure Resource Manager şablonları bulabilirsiniz.
 
-| Şablon | Açıklama |
+| Şablon | Description |
 | --- | --- |
 | [Azure Blob depolama alanından Azure SQL veritabanına kopyalama](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-blob-to-sql-copy) |Bu şablonu dağıtmak, verileri belirtilen Azure Blob depolamadan Azure SQL veritabanı 'na kopyalayan bir işlem hattı ile bir Azure veri fabrikası oluşturur |
 | [Salesforce 'tan Azure Blob depolamaya kopyalama](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-salesforce-to-blob-copy) |Bu şablonu dağıtmak, belirtilen Salesforce hesabından Azure Blob depolama alanına veri kopyalayan bir işlem hattına sahip bir Azure veri fabrikası oluşturur. |
@@ -80,7 +76,7 @@ Bilgisayarınızda şunların yüklü olması gerekir:
 
 * Visual Studio 2013 veya Visual Studio 2015
 * Visual Studio 2013 veya Visual Studio 2015 için Azure SDK’sını indirin. [Azure İndirme Sayfası](https://azure.microsoft.com/downloads/)’na gidin ve **.NET** bölümündeki **VS 2013** veya **VS 2015**’e tıklayın.
-* Visual Studio için en son Azure Data Factory eklentisini indirin: [VS 2013](https://visualstudiogallery.msdn.microsoft.com/754d998c-8f92-4aa7-835b-e89c8c954aa5) veya [VS 2015](https://visualstudiogallery.msdn.microsoft.com/371a4cf9-0093-40fa-b7dd-be3c74f49005). Visual Studio 2013 kullanıyorsanız, aşağıdaki adımları uygulayarak eklentiyi güncelleştirebilirsiniz: menüde **Araçlar**  ->  **Uzantılar ve güncelleştirmeler**  ->  **çevrimiçi**  ->  **Visual Studio Galerisi**  ->  **Data Factory Microsoft Azure Visual Studio güncelleştirmesi için Araçlar**  ->  **Update**' a tıklayın.
+* Visual Studio için en son Azure Data Factory eklentisini indirin: [VS 2013](https://visualstudiogallery.msdn.microsoft.com/754d998c-8f92-4aa7-835b-e89c8c954aa5) veya [VS 2015](https://visualstudiogallery.msdn.microsoft.com/371a4cf9-0093-40fa-b7dd-be3c74f49005). Visual Studio 2013 kullanıyorsanız, aşağıdaki adımları uygulayarak eklentiyi güncelleştirebilirsiniz: menüde **Araçlar**  ->  **Uzantılar ve güncelleştirmeler**  ->  **çevrimiçi**  ->  **Visual Studio Galerisi**  ->  **Data Factory Microsoft Azure Visual Studio güncelleştirmesi için Araçlar**  ->  ' a tıklayın.
 
 ### <a name="use-data-factory-templates"></a>Data Factory şablonları kullanma
 1. Menüdeki **Dosya** ' ya tıklayın, **Yeni**' nin üzerine gelin ve **Proje**' ye tıklayın.

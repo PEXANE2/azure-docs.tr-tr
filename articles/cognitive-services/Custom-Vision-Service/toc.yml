@@ -59,10 +59,8 @@
       href: ./update-application-to-3.0-sdk.md
 - name: Başvuru
   items:
-    - name: Özel Görüntü Eğitim API’si
-      href: 'https://go.microsoft.com/fwlink/?linkid=865446'
-    - name: Özel Görüntü Tahmin API’si
-      href: 'https://go.microsoft.com/fwlink/?linkid=865445'
+    - name: REST API
+      href: 'https://docs.microsoft.com/rest/api/custom-vision/'
     - name: SDK’lar
       items:
         - name: .NET

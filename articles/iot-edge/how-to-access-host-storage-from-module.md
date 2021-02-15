@@ -8,12 +8,12 @@ ms.date: 08/14/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 4af63421e831318e6250825cffd1abad415b85bb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c24fd42f866cd15f84688318050bc07d5ad235e9
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91447827"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100384665"
 ---
 # <a name="give-modules-access-to-a-devices-local-storage"></a>Modüllerin bir cihazın yerel depolama alanına erişmesine izin ver
 
@@ -36,7 +36,7 @@ Ya da, yerel depolamayı doğrudan dağıtım bildiriminde yapılandırabilirsin
 "systemModules": {
     "edgeAgent": {
         "settings": {
-            "image": "mcr.microsoft.com/azureiotedge-agent:1.0",
+            "image": "mcr.microsoft.com/azureiotedge-agent:1.1",
             "createOptions": {
                 "HostConfig": {
                     "Binds":["<HostStoragePath>:<ModuleStoragePath>"]
@@ -52,7 +52,7 @@ Ya da, yerel depolamayı doğrudan dağıtım bildiriminde yapılandırabilirsin
     },
     "edgeHub": {
         "settings": {
-            "image": "mcr.microsoft.com/azureiotedge-hub:1.0",
+            "image": "mcr.microsoft.com/azureiotedge-hub:1.1",
             "createOptions": {
                 "HostConfig": {
                     "Binds":["<HostStoragePath>:<ModuleStoragePath>"],
@@ -85,7 +85,7 @@ sudo chmod 700 <HostStoragePath>
 
 ## <a name="encrypted-data-in-module-storage"></a>Modül depolamadaki şifrelenmiş veriler
 
-Modüller, verileri şifrelemek için IoT Edge Daemon iş yükü API 'sini çağırdıkça, şifreleme anahtarı modül KIMLIĞI ve modülün oluşturma KIMLIĞI kullanılarak türetilir. Oluşturma KIMLIĞI, bir modülün dağıtımdan kaldırılması ve ardından aynı modül KIMLIĞINE sahip başka bir modülün aynı cihaza dağıtılması halinde gizli dizileri korumak için kullanılır. Bir modülün oluşturma kimliğini, [az IoT Hub Module-Identity Show](/cli/azure/ext/azure-cli-iot-ext/iot/hub/module-identity#ext-azure-cli-iot-ext-az-iot-hub-module-identity-show)Azure CLI komutunu kullanarak görüntüleyebilirsiniz.
+Modüller, verileri şifrelemek için IoT Edge Daemon iş yükü API 'sini çağırdıkça, şifreleme anahtarı modül KIMLIĞI ve modülün oluşturma KIMLIĞI kullanılarak türetilir. Oluşturma KIMLIĞI, bir modülün dağıtımdan kaldırılması ve ardından aynı modül KIMLIĞINE sahip başka bir modülün aynı cihaza dağıtılması halinde gizli dizileri korumak için kullanılır. Bir modülün oluşturma KIMLIĞINI, [az IoT Hub Module-Identity Show](/cli/azure/ext/azure-cli-iot-ext/iot/hub/module-identity#ext-azure-cli-iot-ext-az-iot-hub-module-identity-show)Azure CLI komutunu kullanarak görüntüleyebilirsiniz.
 
 Dosyalar arasında modüller arasında dosya paylaşmak istiyorsanız, bunların gizli dizileri içermemesi gerekir, aksi takdirde şifre çözülemez.
 

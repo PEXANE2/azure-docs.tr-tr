@@ -30,7 +30,7 @@
     - name: Hızlı Başlangıçlar
       expanded: true
       items:
-        - name: Sunucu oluşturma
+        - name: MySQL tek sunucu oluşturma
           items:
             - name: Azure portal
               href: quickstart-create-mysql-server-database-using-azure-portal.md
@@ -419,8 +419,7 @@
     - name: Hızlı Başlangıçlar
       expanded: true
       items:
-        - name: Sunucu oluşturma
-          expanded: true
+        - name: MySQL esnek sunucusu oluşturma
           items:
             - name: Azure portal
               href: flexible-server/quickstart-create-server-portal.md

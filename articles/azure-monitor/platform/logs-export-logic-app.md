@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/02/2020
-ms.openlocfilehash: 04f1eb0d9db00a2be1a4619cafe38aa18145fc78
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 21b9d73da0df5ada626500a706a19d1025de1dcc
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186006"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100391975"
 ---
 # <a name="archive-data-from-log-analytics-workspace-to-azure-storage-using-logic-app"></a>Logic App kullanarak Log Analytics çalışma alanındaki verileri Azure depolama 'ya arşivleme
 Bu makalede, Azure Izleyici 'deki bir Log Analytics çalışma alanındaki verileri sorgulamak ve Azure Storage 'a göndermek için [Azure Logic Apps](../../logic-apps/index.yml) kullanma yöntemi açıklanır. Denetim ve uyumluluk senaryolarında Azure Izleyici günlük verilerinizi dışarı aktarmanız veya başka bir hizmetin bu verileri almasına izin vermek istediğinizde bu işlemi kullanın.  
@@ -39,7 +39,7 @@ SecurityEvent
 
 Verileri bir zamanlamaya göre dışarı aktardığınızda, geç gelen verileri kaçırmadığınızdan emin olmak için Sorgunuzdaki ingestion_time () işlevini kullanın. Ağ veya platform sorunları nedeniyle veriler gecikirse, alma süresinin kullanılması, bir sonraki mantıksal uygulama yürütmeye dahil edilmesini sağlar. Bir örnek için bkz. [Azure Izleyici günlükleri ekleme eylemi](#add-azure-monitor-logs-action) .
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu yordam tamamlanmadan önce tamamlanması gereken önkoşullar aşağıda verilmiştir.
 
 - Log Analytics çalışma alanı. Mantıksal uygulamayı oluşturan kullanıcının çalışma alanına en azından okuma izni olması gerekir. 
@@ -69,7 +69,7 @@ Azure portal **Logic Apps** gidin ve **Ekle**' ye tıklayın. Yeni mantıksal uy
 **Gözden geçir + oluştur** ve sonra **Oluştur**' a tıklayın. Dağıtım tamamlandığında, **Logic Apps tasarımcısını** açmak Için **Kaynağa Git** ' e tıklayın.
 
 ## <a name="create-a-trigger-for-the-logic-app"></a>Mantıksal uygulama için bir tetikleyici oluşturma
-**Ortak bir tetikleyiciden başla**' nın altında **yinelenme**' yi seçin. Bu, düzenli aralıklarla otomatik olarak çalışan bir mantıksal uygulama oluşturur. İşlemin **Sıklık** kutusunda **saat** ' i seçin ve **Aralık** kutusunda, iş akışını günde bir kez çalıştırmak için **1** değerini girin.
+**Ortak bir tetikleyiciden başla**' nın altında **yinelenme**' yi seçin. Bu, düzenli aralıklarla otomatik olarak çalışan bir mantıksal uygulama oluşturur. İşlemin **Sıklık** kutusunda, **gün** ' yı seçin, **zaman aralığı** kutusuna **1** girerek iş akışını günde bir kez çalıştırın.
 
 ![Yinelenme eylemi](media/logs-export-logicapp/recurrence-action.png)
 

@@ -13,12 +13,12 @@ ms.date: 07/23/2020
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, zachowd
 ms.custom: aaddev
-ms.openlocfilehash: d793ed912af1c6fdd6e0da417b8709cad8bf08b9
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 9b3840ffb39a204cfa24dcb0430f20ac16587582
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98013643"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100104187"
 ---
 # <a name="how-to-configure-an-applications-publisher-domain"></a>Nasıl yapılır: bir uygulamanın yayımcı etki alanını yapılandırma
 
@@ -48,18 +48,12 @@ Uygulamanız 21 Mayıs 2019 tarihinden önce kaydedilmişse, bir yayımcı etki 
 
 Uygulamanızın yayımcı etki alanını ayarlamak için aşağıdaki adımları izleyin.
 
-1. <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a> iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
-
-1. Hesabınız birden çok Azure AD kiracısında varsa:
-   1. Sayfanın sağ üst köşesindeki menüden profilinizi seçin ve ardından dizin ' i **değiştirin**.
-   1. Uygulamanızı oluşturmak istediğiniz Azure AD kiracısı için oturumunuzu değiştirin.
-
+1. <a href="https://portal.azure.com/" target="_blank">Azure portalında</a> oturum açın.
+1. Birden fazla kiracıya erişiminiz varsa,  :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: uygulamanın kaydedildiği kiracıyı seçmek Için üst menüdeki Dizin + abonelik filtresini kullanın.
 1. Yapılandırmak istediğiniz uygulamayı bulmak ve seçmek için [Azure Active Directory > uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) gidin.
 
    Uygulamayı seçtikten sonra uygulamanın **genel bakış** sayfasını görürsünüz.
-
-1. Uygulamanın **genel bakış** sayfasında **marka** bölümünü seçin.
-
+1. **Yönet** altında **marka**' i seçin.
 1. **Yayımcı etki alanı** alanını bulun ve aşağıdaki seçeneklerden birini belirleyin:
 
    - Zaten bir etki alanı yapılandırmadıysanız, **etki alanı Yapılandır** ' ı seçin.
@@ -144,7 +138,7 @@ Ancak, geliştirici kök etki alanını açıkça eklerse, birleşimine izin ver
 "https://app2.contoso.com",
 ```
 
-### <a name="exceptions"></a>Özel Durumlar
+### <a name="exceptions"></a>Özel durumlar
 
 Aşağıdaki durumlar tek köklü etki alanı kısıtlamasına tabi değildir:
 

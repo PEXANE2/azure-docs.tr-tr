@@ -6,17 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/08/2020
+ms.date: 02/10/2021
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: blobs
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 8c963f11a34217253f02cb5d116d66cdbf8bcc19
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 319bbdd7809e224ca608fdac06d4b304c2052e86
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033967"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100391550"
 ---
 # <a name="choose-how-to-authorize-access-to-blob-data-in-the-azure-portal"></a>Azure portal blob verilerine erişim yetkisi verme seçeneğini belirleyin
 
@@ -37,6 +37,9 @@ Bir hesap erişim anahtarıyla blob verilerine erişmek için, size atanmış bi
 - [Depolama hesabı katılımcısı](../../role-based-access-control/built-in-roles.md#storage-account-contributor) rolü
 
 Azure portal blob verilerine erişmeye çalıştığınızda, portal önce **Microsoft. Storage/storageAccounts/ListKeys/Action** ile bir rol atanıp atanmadığını denetler. Bu eylemle bir rol atanmışsa, Portal blob verilerine erişmek için hesap anahtarını kullanır. Bu eylemle bir rol atanmamışsa, Portal Azure AD hesabınızı kullanarak verilere erişmeye çalışır.
+
+> [!IMPORTANT]
+> Bir depolama hesabı Azure Resource Manager **salt okunur** bir kilit ile kilitlendiğinde, bu depolama hesabı Için [liste anahtarları](/rest/api/storagerp/storageaccounts/listkeys) işlemine izin verilmez. **Liste anahtarları** bir post işlemidir ve hesap Için **salt okunur** BIR kilit yapılandırıldığında tüm post işlemleri engellenir. Bu nedenle, hesap **salt okunur** bir kilit ile kilitlendiğinde, kullanıcıların portalda blob verilerine erişmek IÇIN Azure AD kimlik bilgilerini kullanması gerekir. Azure AD ile portaldaki blob verilerine erişme hakkında daha fazla bilgi için bkz. [Azure AD hesabınızı kullanma](#use-your-azure-ad-account).
 
 > [!NOTE]
 > Klasik abonelik yöneticisi rolleri hizmet yöneticisi ve Co-Administrator Azure Resource Manager [sahip](../../role-based-access-control/built-in-roles.md#owner) rolünün eşdeğerini içerir. **Sahip** rolü, **Microsoft. Storage/storageaccounts/ListKeys/ACTION** dahil olmak üzere tüm eylemleri içerir, bu nedenle bu yönetim rollerinden birine sahip bir kullanıcı da, blob verilerine hesap anahtarıyla erişebilirler. Daha fazla bilgi için bkz. [Klasik abonelik yöneticisi rolleri, Azure rolleri ve Azure AD yönetici rolleri](../../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles).
@@ -111,6 +114,6 @@ Blob yükleme işleminin nasıl yetkilendirileyeceğinizi belirtmek için şu ad
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure Active Directory kullanarak Azure Blob 'larına ve kuyruklara erişim kimlik doğrulaması](../common/storage-auth-aad.md)
-- [Blob ve kuyruk verilerine erişim için bir Azure rolü atamak üzere Azure portal kullanın](../common/storage-auth-aad-rbac-portal.md)
+- [Azure portalı kullanarak blob ve kuyruk verilerine erişim için Azure rolü atama](../common/storage-auth-aad-rbac-portal.md)
 - [Blob ve kuyruk verilerine erişim için Azure rolü atamak üzere Azure CLı 'yi kullanma](../common/storage-auth-aad-rbac-cli.md)
 - [Blob ve kuyruk verilerine erişim için bir Azure rolü atamak üzere Azure PowerShell modülünü kullanın](../common/storage-auth-aad-rbac-powershell.md)

@@ -1,23 +1,18 @@
 ---
 title: SAP BW verileri kopyalama
 description: Azure Data Factory bir işlem hattındaki kopyalama etkinliğini kullanarak SAP Business Warehouse 'tan desteklenen havuz veri depolarına veri kopyalamayı öğrenin.
-services: data-factory
-documentationcenter: ''
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/04/2019
-ms.openlocfilehash: 86d4f82b70a6b6b3ceed262cf96fa291e26dd53c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4a5eb7c8d729fc0c3b95a61a4b8dbc8266d1eec3
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87534388"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100386671"
 ---
 # <a name="copy-data-from-sap-business-warehouse-using-azure-data-factory"></a>Azure Data Factory kullanarak SAP Business Warehouse 'tan veri kopyalama
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -45,7 +40,7 @@ SAP Business Warehouse 'tan verileri desteklenen herhangi bir havuz veri deposun
 - MDX sorgularını kullanarak **InfoCubes ve Queryküplerinden** (Bex sorguları dahil) verileri kopyalama.
 - Temel kimlik doğrulaması kullanarak verileri kopyalama.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu SAP Business Warehouse bağlayıcısını kullanmak için şunları yapmanız gerekir:
 
@@ -57,7 +52,7 @@ Bu SAP Business Warehouse bağlayıcısını kullanmak için şunları yapmanız
 >- NetWeaver RFC SDK 'dan ayıklanan tüm bağımlılık kitaplıkları%Windir%\System32 klasöründe bulunur. Genellikle icudt34.dll, icuin34.dll, icuuc34.dll, libicudecnumber.dll, librfc32.dll, libsapucum.dll, sapcrypto.dll, sapcryto_old.dll, sapnwrfc.dll vardır.
 >- SAP sunucusuna bağlanmak için kullanılan bağlantı noktaları, genellikle bağlantı noktası 3300 ve 3201 olan şirket içinde barındırılan IR makinesinde etkinleştirilir.
 
-## <a name="getting-started"></a>Başlarken
+## <a name="getting-started"></a>Kullanmaya başlama
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -69,13 +64,13 @@ SAP Business Warehouse (bant genişliği) bağlı hizmeti için aşağıdaki öz
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Type özelliği: **Sapbeyaz** olarak ayarlanmalıdır | Evet |
-| sunucu | SAP BW örneğinin bulunduğu sunucunun adı. | Evet |
-| systemNumber | SAP BW sisteminin sistem numarası.<br/>İzin verilen değer: dize olarak temsil edilen iki basamaklı ondalık sayı. | Evet |
-| clientId | SAP W sistemindeki istemcinin istemci KIMLIĞI.<br/>İzin verilen değer: dize olarak temsil edilen üç basamaklı ondalık sayı. | Evet |
-| userName | SAP sunucusuna erişimi olan kullanıcının adı. | Evet |
-| password | Kullanıcının parolası. Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | Evet |
-| connectVia | Veri deposuna bağlanmak için kullanılacak [Integration Runtime](concepts-integration-runtime.md) . [Önkoşul](#prerequisites)bölümünde belirtildiği gibi, kendinden konak Integration Runtime gereklidir. |Evet |
+| tür | Type özelliği: **Sapbeyaz** olarak ayarlanmalıdır | Yes |
+| sunucu | SAP BW örneğinin bulunduğu sunucunun adı. | Yes |
+| systemNumber | SAP BW sisteminin sistem numarası.<br/>İzin verilen değer: dize olarak temsil edilen iki basamaklı ondalık sayı. | Yes |
+| clientId | SAP W sistemindeki istemcinin istemci KIMLIĞI.<br/>İzin verilen değer: dize olarak temsil edilen üç basamaklı ondalık sayı. | Yes |
+| userName | SAP sunucusuna erişimi olan kullanıcının adı. | Yes |
+| password | Kullanıcının parolası. Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | Yes |
+| connectVia | Veri deposuna bağlanmak için kullanılacak [Integration Runtime](concepts-integration-runtime.md) . [Önkoşul](#prerequisites)bölümünde belirtildiği gibi, kendinden konak Integration Runtime gereklidir. |Yes |
 
 **Örnek:**
 
@@ -106,7 +101,7 @@ SAP Business Warehouse (bant genişliği) bağlı hizmeti için aşağıdaki öz
 
 Veri kümelerini tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi için bkz. [veri kümeleri](concepts-datasets-linked-services.md) makalesi. Bu bölüm SAP BW veri kümesi tarafından desteklenen özelliklerin bir listesini sağlar.
 
-SAP BW verileri kopyalamak için, veri kümesinin Type özelliğini **Sapbwcube**olarak ayarlayın. RelationalTable türünde SAP BW veri kümesi için desteklenen türe özgü özellik yok.
+SAP BW verileri kopyalamak için, veri kümesinin Type özelliğini **Sapbwcube** olarak ayarlayın. RelationalTable türünde SAP BW veri kümesi için desteklenen türe özgü özellik yok.
 
 **Örnek:**
 
@@ -137,8 +132,8 @@ SAP BW verileri kopyalamak için, etkinlik **kaynağını** kopyalama bölümün
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Kopyalama etkinliği kaynağının Type özelliği: **Sapbwsource** olarak ayarlanmalıdır | Evet |
-| sorgu | SAP BW örneğinden verileri okumak için MDX sorgusunu belirtir. | Evet |
+| tür | Kopyalama etkinliği kaynağının Type özelliği: **Sapbwsource** olarak ayarlanmalıdır | Yes |
+| sorgu | SAP BW örneğinden verileri okumak için MDX sorgusunu belirtir. | Yes |
 
 **Örnek:**
 

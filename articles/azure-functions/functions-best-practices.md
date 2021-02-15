@@ -5,35 +5,32 @@ ms.assetid: 9058fb2f-8a93-4036-a921-97a0772f503c
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 89ff49b3ea5abae7ced046f714d34943a58c64a6
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: 5783f8092a6435b43ab8720df18cc5200e390d46
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99428309"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100378256"
 ---
-# <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>Azure İşlevleri’nin performansını ve güvenilirliğini iyileştirme
+# <a name="best-practices-for-performance-and-reliability-of-azure-functions"></a>Azure Işlevlerinin performansı ve güvenilirliği için en iyi uygulamalar
 
 Bu makale, [sunucusuz](https://azure.microsoft.com/solutions/serverless/) işlev uygulamalarınızın performansını ve güvenilirliğini artırmaya yönelik rehberlik sağlar.  
 
-## <a name="general-best-practices"></a>Genel en iyi uygulamalar
-
 Azure Işlevleri 'ni kullanarak sunucusuz çözümlerinizi oluşturma ve mimarinizi geliştirme konusunda en iyi yöntemler aşağıda verilmiştir.
 
-### <a name="avoid-long-running-functions"></a>Uzun süre çalışan işlevlerden kaçının
+## <a name="avoid-long-running-functions"></a>Uzun süre çalışan işlevlerden kaçının
 
-Büyük ve uzun süre çalışan işlevler, beklenmeyen zaman aşımı sorunlarına neden olabilir. Belirli bir barındırma planının zaman aşımları hakkında daha fazla bilgi edinmek için bkz. [işlev uygulaması zaman aşımı süresi](functions-scale.md#timeout). 
+Büyük ve uzun süre çalışan işlevler, beklenmeyen zaman aşımı sorunlarına neden olabilir. Belirli bir barındırma planının zaman aşımları hakkında daha fazla bilgi edinmek için bkz. [işlev uygulaması zaman aşımı süresi](functions-scale.md#timeout).
 
-Birçok Node.js bağımlılığı nedeniyle bir işlev büyük olabilir. Bağımlılıkları içeri aktarmak, beklenmedik zaman aşımları ile sonuçlanan daha fazla yükleme süresi de oluşmasına neden olabilir. Bağımlılıklar hem açık hem de örtük olarak yüklenir. Kodunuz tarafından yüklenen tek bir modül kendi ek modüllerini yükleyebilir. 
+Birçok Node.js bağımlılığı nedeniyle bir işlev büyük olabilir. Bağımlılıkları içeri aktarmak, beklenmedik zaman aşımları ile sonuçlanan daha fazla yükleme süresi de oluşmasına neden olabilir. Bağımlılıklar hem açık hem de örtük olarak yüklenir. Kodunuz tarafından yüklenen tek bir modül kendi ek modüllerini yükleyebilir.
 
 Mümkün olduğunda, büyük işlevleri birlikte çalışarak daha küçük işlev kümelerine yeniden düzenleyin ve yanıtları hızlı bir şekilde geri döndürün. Örneğin, bir Web kancası veya HTTP tetikleyici işlevi belirli bir zaman sınırı içinde bir bildirim yanıtı gerektirebilir; Web kancalarının anında yanıt gerektirmesi için yaygındır. HTTP tetikleyici yükünü bir kuyruk tetikleyicisi işlevi tarafından işlenmek üzere bir kuyruğa geçirebilirsiniz. Bu yaklaşım, gerçek işi ertelemenizi ve anında yanıt döndürmenizi sağlar.
 
-
-### <a name="cross-function-communication"></a>Çapraz işlev iletişimi
+## <a name="cross-function-communication"></a>Çapraz işlev iletişimi
 
 [Dayanıklı işlevler](durable/durable-functions-overview.md) ve [Azure Logic Apps](../logic-apps/logic-apps-overview.md) , durum geçişlerini ve birden çok işlev arasındaki iletişimi yönetmek için oluşturulmuştur.
 
-Birden çok işlevle tümleştirilecek Dayanıklı İşlevler veya Logic Apps kullanmıyorsanız, bu işlemler arası iletişim için depolama kuyruklarını kullanmak en iyisidir. Ana neden, depolama sıralarının diğer depolama seçeneklerinden daha kolay sağlanması ve sağlanması çok daha kolaydır. 
+Birden çok işlevle tümleştirilecek Dayanıklı İşlevler veya Logic Apps kullanmıyorsanız, bu işlemler arası iletişim için depolama kuyruklarını kullanmak en iyisidir. Ana neden, depolama sıralarının diğer depolama seçeneklerinden daha kolay sağlanması ve sağlanması çok daha kolaydır.
 
 Depolama sırasındaki tek tek mesajlar boyut olarak 64 KB ile sınırlıdır. İşlevler arasında daha büyük iletiler geçirmeniz gerekiyorsa, Standart katmanda 256 KB 'ye kadar olan ileti boyutlarını desteklemek için bir Azure Service Bus kuyruğu ve Premium katmanında en fazla 1 MB kullanılabilir.
 
@@ -41,28 +38,26 @@ Service Bus konular, işlemeden önce ileti filtrelemesini gerekli kıldıysanı
 
 Olay Hub 'ları, yüksek hacimli iletişimleri desteklemek için faydalıdır.
 
+## <a name="write-functions-to-be-stateless"></a>İşlevleri durum bilgisiz olacak şekilde yaz
 
-### <a name="write-functions-to-be-stateless"></a>İşlevleri durum bilgisiz olacak şekilde yaz 
-
-İşlevler, mümkünse durum bilgisiz ve ıdempotent olmalıdır. Gerekli durum bilgilerini verilerinizle ilişkilendirin. Örneğin, işlenen bir sıra, muhtemelen ilişkili bir üyeye sahip olabilir `state` . İşlev durum bilgisiz olmaya devam ederken bir işlev bu duruma göre bir sırayı işleyebilir. 
+İşlevler, mümkünse durum bilgisiz ve ıdempotent olmalıdır. Gerekli durum bilgilerini verilerinizle ilişkilendirin. Örneğin, işlenen bir sıra, muhtemelen ilişkili bir üyeye sahip olabilir `state` . İşlev durum bilgisiz olmaya devam ederken bir işlev bu duruma göre bir sırayı işleyebilir.
 
 Idempotent işlevleri, özellikle Zamanlayıcı tetikleyicilerle önerilir. Örneğin, her gün bir kez çalışması gereken bir şeydir varsa, aynı sonuçlarla her zaman çalışacak şekilde bu şekilde yazın. Belirli bir gün için iş olmadığında işlev çıkabilir. Ayrıca, önceki bir çalıştırmanın tamamlanmadıysa, sonraki çalıştırmanın kaldığınız yerden devam etmesi gerekir.
 
-
-### <a name="write-defensive-functions"></a>Savunma işlevlerini yaz
+## <a name="write-defensive-functions"></a>Savunma işlevlerini yaz
 
 İşlevinizin istediğiniz zaman bir özel durumla karşılaşdığını varsayın. Bir sonraki yürütme sırasında işlevlerinizi önceki bir başarısızlık noktasından devam etme özelliğiyle tasarlayın. Aşağıdaki eylemleri gerektiren bir senaryo düşünün:
 
 1. Veritabanında 10.000 satırı sorgulayın.
 2. Bu satırların her biri için çizgi üzerinde daha fazla işlem yapmak üzere bir kuyruk iletisi oluşturun.
- 
+
 Sisteminizin ne kadar karmaşıkdığına bağlı olarak, bu durum, hatalı, ağ kesintileri veya kota limitlerinin ulaştığı, vb. gibi davranan aşağı akış Hizmetleri olabilir. Tüm bunlar, işlevinizi dilediğiniz zaman etkileyebilir. İşlevlerinizi hazırlanmakta olacak şekilde tasarlamanız gerekir.
 
 İşlenmek üzere bu öğelerin 5.000 ' i bir sıraya ekledikten sonra bir hata oluşursa, kodunuz nasıl tepki veriyor? Tamamladığınız bir küme içindeki öğeleri izleyin. Aksi halde, bir dahaki sefer yeniden ekleyebilirsiniz. Bu çift ekleme iş akışınız üzerinde ciddi bir etkiye sahip olabilir, bu nedenle [işlevlerinizi ıdempotent yapın](functions-idempotent.md). 
 
 Bir kuyruk öğesi zaten işlendiyse, işlevinizin işlem dışı çalışmasına izin verin.
 
-Azure Işlevleri platformunda kullandığınız bileşenler için zaten sağlanmış olan savunma ölçülerinin avantajlarından yararlanın. Örneğin, bkz. [Azure depolama kuyruğu Tetikleyicileri ve bağlamaları](functions-bindings-storage-queue-trigger.md#poison-messages)belgelerinde **Poison Queue iletilerini işleme** . 
+Azure Işlevleri platformunda kullandığınız bileşenler için zaten sağlanmış olan savunma ölçülerinin avantajlarından yararlanın. Örneğin, bkz. [Azure depolama kuyruğu Tetikleyicileri ve bağlamaları](functions-bindings-storage-queue-trigger.md#poison-messages)belgelerinde **Poison Queue iletilerini işleme** .
 
 ## <a name="function-organization-best-practices"></a>İşlev organizasyonu en iyi uygulamaları
 
@@ -85,7 +80,7 @@ Birden çok işlev uygulamalarını tek bir Premium planda veya adanmış (App S
 
 Yerel projenizdeki tüm işlevler, Azure 'daki işlev uygulamanıza bir dosya kümesi olarak birlikte dağıtılır. Bağımsız işlevleri ayrı ayrı dağıtmanız veya bazı işlevler için [dağıtım yuvaları](./functions-deployment-slots.md) gibi özellikleri kullanmanız gerekebilir. Böyle durumlarda, bu işlevleri (ayrı kod projelerinde) farklı işlev uygulamalarına dağıtmanız gerekir.
 
-### <a name="organize-functions-by-privilege"></a>İşlevleri ayrıcalığa göre düzenleme 
+### <a name="organize-functions-by-privilege"></a>İşlevleri ayrıcalığa göre düzenleme
 
 Uygulama ayarlarında depolanan bağlantı dizeleri ve diğer kimlik bilgileri, işlev uygulamasındaki tüm işlevleri ilişkili kaynakta aynı izin kümesi sağlar. Bu kimlik bilgilerini kullanmayan işlevleri ayrı bir işlev uygulamasına taşıyarak belirli kimlik bilgilerine erişimi olan işlev sayısını en aza indirgemeniz önerilir. Farklı işlev uygulamalarındaki işlevler arasında veri geçirmek için her zaman [işlev zinciri](/learn/modules/chain-azure-functions-data-using-bindings/) gibi teknikler kullanabilirsiniz.  
 
@@ -99,7 +94,7 @@ Mümkün olduğunda dış kaynaklarla bağlantıları yeniden kullanın. Bkz. [A
 
 ### <a name="avoid-sharing-storage-accounts"></a>Depolama hesaplarını paylaşmayı önleyin
 
-Bir işlev uygulaması oluşturduğunuzda, bunu bir depolama hesabıyla ilişkilendirmeniz gerekir. Depolama hesabı bağlantısı [AzureWebJobsStorage uygulama ayarında](./functions-app-settings.md#azurewebjobsstorage)tutulur. 
+Bir işlev uygulaması oluşturduğunuzda, bunu bir depolama hesabıyla ilişkilendirmeniz gerekir. Depolama hesabı bağlantısı [AzureWebJobsStorage uygulama ayarında](./functions-app-settings.md#azurewebjobsstorage)tutulur.
 
 [!INCLUDE [functions-shared-storage](../../includes/functions-shared-storage.md)]
 
@@ -123,9 +118,9 @@ C# dilinde her zaman `Result` bir örnek üzerinde özelliğe veya çağırma y�
 
 ### <a name="use-multiple-worker-processes"></a>Birden çok çalışan işlemi kullanma
 
-Varsayılan olarak, Işlevler için herhangi bir konak örneği tek bir çalışan işlemi kullanır. Özellikle Python gibi tek iş parçacıklı Çalışma zamanları ile performansı artırmak için, ana bilgisayar başına çalışan işlem sayısını (10 ' a kadar) artırmak için [FUNCTIONS_WORKER_PROCESS_COUNT](functions-app-settings.md#functions_worker_process_count) kullanın. Azure Işlevleri daha sonra bu çalışanlar genelinde aynı anda eşzamanlı işlev etkinleştirmeleri dağıtmaya çalışır. 
+Varsayılan olarak, Işlevler için herhangi bir konak örneği tek bir çalışan işlemi kullanır. Özellikle Python gibi tek iş parçacıklı Çalışma zamanları ile performansı artırmak için, ana bilgisayar başına çalışan işlem sayısını (10 ' a kadar) artırmak için [FUNCTIONS_WORKER_PROCESS_COUNT](functions-app-settings.md#functions_worker_process_count) kullanın. Azure Işlevleri daha sonra bu çalışanlar genelinde aynı anda eşzamanlı işlev etkinleştirmeleri dağıtmaya çalışır.
 
-FUNCTIONS_WORKER_PROCESS_COUNT, uygulamanızın talebi karşılamak üzere ölçeklenmesi sırasında oluşturduğu her bir konak için geçerlidir. 
+FUNCTIONS_WORKER_PROCESS_COUNT, uygulamanızın talebi karşılamak üzere ölçeklenmesi sırasında oluşturduğu her bir konak için geçerlidir.
 
 ### <a name="receive-messages-in-batch-whenever-possible"></a>Mümkün olduğunda toplu iş içinde ileti alma
 

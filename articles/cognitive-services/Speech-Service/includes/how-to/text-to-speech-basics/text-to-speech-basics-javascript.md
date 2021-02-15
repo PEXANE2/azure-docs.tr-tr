@@ -2,15 +2,15 @@
 author: trevorbye
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 04/15/2020
+ms.date: 02/10/2021
 ms.author: trbye
 ms.custom: devx-track-js
-ms.openlocfilehash: ba61601ba345d554d4898292cb082f71b829b342
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: b06defbdac0f1bddfca13db095799f3158095585
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98948083"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100515113"
 ---
 Bu hızlı başlangıçta, konuşma SDK 'sını kullanarak metinden konuşmaya senşlerini kullanmaya yönelik yaygın tasarım düzenlerini öğrenirsiniz. Temel yapılandırma ve birleştirme işlemleri gerçekleştirerek başlar ve aşağıdakiler de dahil olmak üzere özel uygulama geliştirme için daha gelişmiş örneklere geçin:
 
@@ -25,7 +25,7 @@ Bu hızlı başlangıçta, konuşma SDK 'sını kullanarak metinden konuşmaya s
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Bu makalede bir Azure hesabınız ve konuşma hizmeti aboneliğiniz olduğunu varsaymaktadır. Hesabınız ve aboneliğiniz yoksa [konuşma hizmetini ücretsiz deneyin](../../../overview.md#try-the-speech-service-for-free).
+Bu makalede bir Azure hesabınız ve konuşma hizmeti kaynağınız olduğunu varsaymaktadır. Hesabınız ve kaynağınız yoksa [konuşma hizmetini ücretsiz deneyin](../../../overview.md#try-the-speech-service-for-free).
 
 ## <a name="install-the-speech-sdk"></a>Konuşma SDK 'sını yükler
 
@@ -50,7 +50,7 @@ Ayrıca, hedef ortama bağlı olarak, aşağıdakilerden birini kullanın:
 # <a name="import"></a>[aktarmaya](#tab/import)
 
 ```javascript
-import * from "microsoft-cognitiveservices-speech-sdk";
+import * as sdk from "microsoft-cognitiveservices-speech-sdk";
 ```
 
 Hakkında daha fazla bilgi için `import` bkz. <a href="https://javascript.info/import-export" target="_blank">dışa ve <span class="docon docon-navigate-external x-hidden-focus"></span> içeri aktarma </a>.
@@ -68,23 +68,23 @@ Hakkında daha fazla bilgi için `require` bkz. <a href="https://nodejs.org/en/k
 
 ## <a name="create-a-speech-configuration"></a>Konuşma yapılandırması oluşturma
 
-Konuşma SDK 'sını kullanarak konuşma hizmetini çağırmak için bir oluşturmanız gerekir [`SpeechConfig`](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig) . Bu sınıf, uygulamanız hakkında, anahtarınız ve ilgili bölge, uç nokta, ana bilgisayar veya yetkilendirme belirteci gibi bilgileri içerir.
+Konuşma SDK 'sını kullanarak konuşma hizmetini çağırmak için bir oluşturmanız gerekir [`SpeechConfig`](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig) . Bu sınıf, anahtarınız ve ilgili bölge, uç nokta, ana bilgisayar veya yetkilendirme belirteciniz gibi, kaynağınız hakkındaki bilgileri içerir.
 
 > [!NOTE]
 > Konuşma tanıma, konuşma birleştirme, çeviri veya amaç tanıma işlemlerini gerçekleştirmekten bağımsız olarak her zaman bir yapılandırma oluşturacaksınız.
 
 Şunları başlatabilmeniz için birkaç yol vardır [`SpeechConfig`](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig) :
 
-* Abonelik ile: bir anahtarı ve ilişkili bölgeyi geçirin.
+* Kaynak ile: bir anahtarı ve ilişkili bölgeyi geçirin.
 * Uç nokta ile: bir konuşma hizmeti uç noktasında geçirin. Anahtar veya yetkilendirme belirteci isteğe bağlıdır.
 * Bir ana bilgisayar ile: bir konak adresini geçirin. Anahtar veya yetkilendirme belirteci isteğe bağlıdır.
 * Yetkilendirme belirteci ile: bir yetkilendirme belirtecini ve ilişkili bölgeyi geçirin.
 
-Bu örnekte, bir [`SpeechConfig`](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig) abonelik anahtarı ve bölgesi kullanarak bir oluşturun. [Konuşma hizmetini ücretsiz deneyin](../../../overview.md#try-the-speech-service-for-free)bölümündeki adımları izleyerek bu kimlik bilgilerini alın. Ayrıca, bu makalenin geri kalanı için kullanabileceğiniz, farklı özelleştirmeler için değiştirdiğiniz bazı temel ortak kod oluşturabilirsiniz.
+Bu örnekte, bir [`SpeechConfig`](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig) kaynak anahtarı ve bölgesi kullanarak bir oluşturabilirsiniz. [Konuşma hizmetini ücretsiz deneyin](../../../overview.md#try-the-speech-service-for-free)bölümündeki adımları izleyerek bu kimlik bilgilerini alın. Ayrıca, bu makalenin geri kalanı için kullanabileceğiniz, farklı özelleştirmeler için değiştirdiğiniz bazı temel ortak kod oluşturabilirsiniz.
 
 ```javascript
 function synthesizeSpeech() {
-    const speechConfig = SpeechConfig.fromSubscription("YourSubscriptionKey", "YourServiceRegion");
+    const speechConfig = sdk.SpeechConfig.fromSubscription("YourSubscriptionKey", "YourServiceRegion");
 }
 
 synthesizeSpeech();
@@ -98,7 +98,7 @@ Başlamak için, `AudioConfig` `.wav` statik işlevi kullanarak çıktıyı bir 
 
 ```javascript
 function synthesizeSpeech() {
-    const speechConfig = SpeechConfig.fromSubscription("YourSubscriptionKey", "YourServiceRegion");
+    const speechConfig = sdk.SpeechConfig.fromSubscription("YourSubscriptionKey", "YourServiceRegion");
     const audioConfig = AudioConfig.fromAudioFileOutput("path/to/file.wav");
 }
 ```
@@ -114,10 +114,11 @@ function synthesizeSpeech() {
     synthesizer.speakTextAsync(
         "A simple test to write to a file.",
         result => {
-            if (result) {
-                console.log(JSON.stringify(result));
-            }
             synthesizer.close();
+            if (result) {
+                // return result as stream
+                return fs.createReadStream("path-to-file.wav");
+            }
         },
         error => {
             console.log(error);
@@ -142,9 +143,9 @@ function synthesizeSpeech() {
         "Synthesizing directly to speaker output.",
         result => {
             if (result) {
-                console.log(JSON.stringify(result));
+                synthesizer.close();
+                return result.audioData;
             }
-            synthesizer.close();
         },
         error => {
             console.log(error);
@@ -166,7 +167,9 @@ Konuşma uygulaması geliştirmede birçok senaryo için, büyük olasılıkla b
 > [!NOTE]
 > `undefined` `AudioConfig` Yukarıdaki konuşmacı çıktısı örneğinde olduğu gibi değil, için geçirme, geçerli etkin çıkış cihazında varsayılan olarak sesi oynamaz.
 
-Bu kez, sonucu bir [`SpeechSynthesisResult`](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechsynthesisresult) değişkene kaydedersiniz. `SpeechSynthesisResult.audioData`Özelliği, `ArrayBuffer` Çıkış verilerinden birini döndürür. Bu, el ile çalışabilirsiniz `ArrayBuffer` .
+Bu kez, sonucu bir [`SpeechSynthesisResult`](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechsynthesisresult) değişkene kaydedersiniz. `SpeechSynthesisResult.audioData`Özelliği `ArrayBuffer` , varsayılan tarayıcı akış türü olan çıkış verilerini döndürür. Sunucu kodu için arrayBuffer 'ı bir arabellek akışına dönüştürün. 
+
+Aşağıdaki kod, istemci tarafı kodu için geçerlidir. 
 
 ```javascript
 function synthesizeSpeech() {
@@ -176,11 +179,8 @@ function synthesizeSpeech() {
     synthesizer.speakTextAsync(
         "Getting the response as an in-memory stream.",
         result => {
-            // Interact with the audio ArrayBuffer data
-            const audioData = result.audioData;
-            console.log(`Audio data byte size: ${audioData.byteLength}.`)
-
             synthesizer.close();
+            return result.audioData;
         },
         error => {
             console.log(error);
@@ -189,7 +189,34 @@ function synthesizeSpeech() {
 }
 ```
 
-Buradan, sonuçta elde edilen nesneyi kullanarak özel davranışları uygulayabilirsiniz `ArrayBuffer` .
+Buradan, sonuçta elde edilen nesneyi kullanarak özel davranışları uygulayabilirsiniz `ArrayBuffer` . ArrayBuffer, bir tarayıcıda alacak ve bu biçimden oynatacak ortak bir türdür. 
+
+Sunucu tabanlı herhangi bir kod için, bir ArrayBuffer yerine verilerle birlikte çalışmanız gerekiyorsa, nesneyi bir akışa dönüştürmeniz gerekir. 
+
+```javascript
+function synthesizeSpeech() {
+    const speechConfig = sdk.SpeechConfig.fromSubscription("YourSubscriptionKey", "YourServiceRegion");
+    const synthesizer = new sdk.SpeechSynthesizer(speechConfig);
+
+    synthesizer.speakTextAsync(
+        "Getting the response as an in-memory stream.",
+        result => {
+            const { audioData } = result;
+
+            synthesizer.close();
+
+            // convert arrayBuffer to stream
+            // return stream
+            const bufferStream = new PassThrough();
+            bufferStream.end(Buffer.from(audioData));
+            return bufferStream;
+        },
+        error => {
+            console.log(error);
+            synthesizer.close();
+        });
+}
+```
 
 ## <a name="customize-audio-format"></a>Ses biçimini Özelleştir
 

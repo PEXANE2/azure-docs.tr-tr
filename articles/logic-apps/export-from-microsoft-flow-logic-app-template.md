@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, sneshaf, pinath, logicappspm
 ms.topic: conceptual
 ms.date: 01/20/2021
-ms.openlocfilehash: 2192ae5f3de551cb8ff2b6c36e233804c3c56bf1
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: a90f75db6961ea06b1cf9c2958556c1c2ef24805
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98633256"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100380143"
 ---
 # <a name="export-flows-from-power-automate-and-deploy-to-azure-logic-apps"></a>Akışları Power Automate'ten dışarı aktarma ve Azure Logic Apps’e dağıtma
 
@@ -24,7 +24,7 @@ Akışınızın yeteneklerini genişletmek ve genişletmek için, bu akışı [P
 >
 > * Hangi Power otomatikleştirmek bağlayıcılarının Logic Apps eşdeğerleri olmadığını öğrenmek için bkz. [Power otomatikleştiren bağlayıcılar](/connectors/connector-reference/connector-reference-powerautomate-connectors).
 >
-> * Hangi Logic Apps bağlayıcılarının güç otomatikleştirme eşdeğerleri olmadığını öğrenmek için bkz. [Logic Apps bağlayıcılar](/connectors/connector-reference/connector-reference-powerautomate-connectors).
+> * Hangi Logic Apps bağlayıcılarının güç otomatikleştirme eşdeğerleri olmadığını öğrenmek için bkz. [Logic Apps bağlayıcılar](/connectors/connector-reference/connector-reference-logicapps-connectors).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -78,7 +78,7 @@ Daha fazla bilgi için bkz. [Azure Logic Apps büyütme](https://flow.microsoft.
       | <*bağlantı adı*> | Mantıksal uygulamanın yeniden kullanabilmesi için önceden oluşturulmuş herhangi bir bağlantı için bir veya daha fazla ad <p><p>**Note**: Bu mantıksal uygulama ilk kez ise, tüm bağlantılar yeni olarak oluşturulur, böylece varsayılan adları kabul edebilirsiniz. Aksi takdirde, daha önce oluşturulan bağlantıların adlarını belirtebilirsiniz. Bu, birden çok Logic Apps genelinde kullanabileceğiniz bir ad olabilir. |
       |||
 
-      Örnek:
+      Örneğin:
 
       ![Şablon için giriş parametrelerini belirtin](./media/export-from-microsoft-flow-logic-app-template/template-input-parameters.png)
 
@@ -158,7 +158,7 @@ Mantıksal uygulamalar oluşturmaya yönelik [önkoşullara](../logic-apps/quick
 
    ![Dağıtım parametrelerini Düzenle](./media/export-from-microsoft-flow-logic-app-template/edit-parameters-deployment.png)
 
-   Dağıtım başladığında uygulamanızın dağıtım durumu Visual Studio **Çıktı** penceresinde görünür. Durum görünmezse **Çıktıyı göster** listesini açıp Azure kaynak grubunuzu seçin. Örnek:
+   Dağıtım başladığında uygulamanızın dağıtım durumu Visual Studio **Çıktı** penceresinde görünür. Durum görünmezse **Çıktıyı göster** listesini açıp Azure kaynak grubunuzu seçin. Örneğin:
 
    ![Çıktı penceresi](./media/export-from-microsoft-flow-logic-app-template/output-window.png)
 

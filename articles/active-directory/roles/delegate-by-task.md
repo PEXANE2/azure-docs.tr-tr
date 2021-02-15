@@ -14,12 +14,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ad48141c69d78096981b89758afd56089093021
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 8d096bcd15254df4081a005b268934659e43037d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98742939"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100380313"
 ---
 # <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>Azure Active Directory 'de yönetici görevine göre yönetici rolleri
 
@@ -109,7 +109,7 @@ Eşitleme hizmeti ölçümlerini ve uyarılarını görüntüleme | Okuyucu ([bk
 
 Görev | En az ayrıcalıklı rol | Ek roller
 ---- | --------------------- | ----------------
-Etki alanlarını yönetme | Genel Yönetici | 
+Etki alanlarını yönetme | Etki alanı adı yöneticisi | 
 Tüm yapılandırmaları Oku | Dizin okuyucuları | Varsayılan Kullanıcı rolü ([bkz. belgeler](../fundamentals/users-default-permissions.md))
 
 ## <a name="domain-services"></a>Etki Alanı Hizmetleri
@@ -216,9 +216,9 @@ Oturum açma günlüklerini oku | Rapor okuyucu | Güvenlik okuyucusu, Güvenlik
 Görev | En az ayrıcalıklı rol | Ek roller
 ---- | --------------------- | ----------------
 Seçilen kullanıcılar tarafından oluşturulan mevcut tüm uygulama parolalarını Sil | Genel Yönetici | 
-MFA 'yı devre dışı bırak | Genel Yönetici | 
-MFA’yı etkinleştirme | Genel Yönetici | 
-MFA hizmeti ayarlarını yönetme | Genel Yönetici | 
+MFA 'yı devre dışı bırak | Kimlik doğrulama Yöneticisi (PowerShell aracılığıyla) | Ayrıcalıklı kimlik doğrulama Yöneticisi (PowerShell aracılığıyla)
+MFA’yı etkinleştirme | Kimlik doğrulama Yöneticisi (PowerShell aracılığıyla) | Ayrıcalıklı kimlik doğrulama Yöneticisi (PowerShell aracılığıyla) 
+MFA hizmeti ayarlarını yönetme | Kimlik doğrulama Ilkesi Yöneticisi | 
 Seçilen kullanıcıların iletişim yöntemlerini yeniden sağlamasını gerektir | Kimlik doğrulama Yöneticisi | 
 Tüm hatırlanan cihazlarda Multi-Factor Authentication 'ı geri yükleme  | Kimlik doğrulama Yöneticisi | 
 
@@ -226,15 +226,15 @@ Tüm hatırlanan cihazlarda Multi-Factor Authentication 'ı geri yükleme  | Kim
 
 Görev | En az ayrıcalıklı rol | Ek roller
 ---- | --------------------- | ----------------
-Kullanıcıları engelle/engelini kaldır | Genel Yönetici | 
-Hesap kilitlemeyi yapılandırma | Genel Yönetici | 
-Önbelleğe alma kurallarını yapılandırma | Genel Yönetici | 
-Sahtekarlık uyarısını yapılandırma | Genel Yönetici
-Bildirimleri yapılandırma | Genel Yönetici | 
-Bir kerelik geçişi yapılandırma | Genel Yönetici | 
-Telefon araması ayarlarını yapılandırma | Genel Yönetici | 
-Sağlayıcıları yapılandırma | Genel Yönetici | 
-Sunucu ayarlarını yapılandırma | Genel Yönetici | 
+Kullanıcıları engelle/engelini kaldır | Kimlik doğrulama Ilkesi Yöneticisi | 
+Hesap kilitlemeyi yapılandırma | Kimlik doğrulama Ilkesi Yöneticisi | 
+Önbelleğe alma kurallarını yapılandırma | Kimlik doğrulama Ilkesi Yöneticisi | 
+Sahtekarlık uyarısını yapılandırma | Kimlik doğrulama Ilkesi Yöneticisi
+Bildirimleri yapılandırma | Kimlik doğrulama Ilkesi Yöneticisi | 
+Bir kerelik geçişi yapılandırma | Kimlik doğrulama Ilkesi Yöneticisi | 
+Telefon araması ayarlarını yapılandırma | Kimlik doğrulama Ilkesi Yöneticisi | 
+Sağlayıcıları yapılandırma | Kimlik doğrulama Ilkesi Yöneticisi | 
+Sunucu ayarlarını yapılandırma | Kimlik doğrulama Ilkesi Yöneticisi | 
 Etkinlik raporunu oku | Genel okuyucu | 
 Tüm yapılandırmaları Oku | Genel okuyucu | 
 Sunucu durumunu oku | Genel okuyucu |  

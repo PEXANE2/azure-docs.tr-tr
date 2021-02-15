@@ -12,6 +12,8 @@
       href: quickstarts/create-communication-resource.md
     - name: Erişim belirteçleri oluşturma ve yönetme
       href: quickstarts/access-tokens.md
+    - name: Yönetilen kimlikler kullanma (.NET)
+      href: quickstarts/managed-identity.md
     - name: Sohbet
       items:
         - name: Uygulamanıza sohbet ekleme
@@ -58,8 +60,6 @@
 - name: Kavramlar
   expanded: false
   items:
-    - name: Teams ile birlikte çalışabilirlik
-      href: concepts/teams-interop.md
     - name: Sohbet
       items:
         - name: Sohbet istemci kitaplığına genel bakış
@@ -72,8 +72,12 @@
           href: concepts/telephony-sms/sdk-features.md
         - name: SMS kavramları
           href: concepts/telephony-sms/concepts.md
-        - name: Telefon ve SMS çözümünüzü planlama
+        - name: Telefon kavramları
+          href: concepts/telephony-sms/telephony-concept.md
+        - name: Azure Iletişim hizmetlerindeki telefon numarası türleri
           href: concepts/telephony-sms/plan-solution.md
+        - name: SIP arabirimi altyapı gereksinimleri
+          href: concepts/telephony-sms/sip-interface-infrastructure.md
     - name: Sesli ve görüntülü arama
       items:
         - name: Arama istemci kitaplığına genel bakış
@@ -86,6 +90,8 @@
           href: concepts/ui-framework/ui-sdk-overview.md
         - name: UI çerçevesi özellikleri
           href: concepts/ui-framework/ui-sdk-features.md
+    - name: Teams ile birlikte çalışabilirlik
+      href: concepts/teams-interop.md
     - name: İstemci ve sunucu mimarisi
       href: concepts/client-and-server-architecture.md
     - name: Arama akışları

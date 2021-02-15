@@ -13,6 +13,8 @@
   items:
     - name: Ortamınızı ayarlama
       items:
+        - name: Kiracı KIMLIĞINIZI bulun
+          href: how-to-set-azure-tenant.md
         - name: Azure aboneliğinizi bulma
           href: how-to-set-azure-subscription.md
         - name: Media Services hesabı oluşturma
@@ -70,6 +72,8 @@
           displayName: 'AAD, Active Directory'
     - name: REST
       items:
+        - name: Güvenilen depolamayı etkinleştir
+          href: tutorial-trusted-storage-rest.md
         - name: Uzaktaki bir dosyayı kodlama ve akış ile aktarma REST
           href: stream-files-tutorial-with-rest.md
         - name: REST API ile müşteri tarafından yönetilen anahtarlar
@@ -305,6 +309,12 @@
           displayName: 'migration, samples'
 - name: Nasıl yapılır kılavuzları
   items:
+    - name: Kiracınızı ve aboneliğinizi bulun
+      items:
+        - name: Kiracı KIMLIĞINIZI bulun
+          href: how-to-set-azure-tenant.md
+        - name: Abonelik KIMLIĞINIZI bulun
+          href: how-to-set-azure-subscription.md
     - name: Varlıkları oluşturma ve medyayı karşıya yükleme
       items:
         - name: Varlık oluşturma

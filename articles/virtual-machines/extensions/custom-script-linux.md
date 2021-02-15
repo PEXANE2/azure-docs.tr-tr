@@ -3,7 +3,7 @@ title: Azure 'da Linux VM 'lerde özel Betik uzantısı çalıştırma
 description: Özel Betik uzantısı v2 'yi kullanarak Linux VM yapılandırma görevlerini otomatikleştirme
 services: virtual-machines-linux
 documentationcenter: ''
-author: mimckitt
+author: amjads1
 manager: gwallace
 editor: ''
 tags: azure-resource-manager
@@ -14,13 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/25/2018
-ms.author: mimckitt
-ms.openlocfilehash: 94506c4107a157c2b3265a28ffdf5d1eedddd256
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.author: amjads
+ms.openlocfilehash: 5ab312dc6da57279ce5cbd4d8efd7912b8a36503
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98954775"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100390122"
 ---
 # <a name="use-the-azure-custom-script-extension-version-2-with-linux-virtual-machines"></a>Linux sanal makineleriyle Azure Özel Betik Uzantısı Sürüm 2’yi kullanma
 Özel Betik uzantısı sürüm 2, Azure sanal makinelerinde betikleri indirir ve çalıştırır. Bu uzantı, dağıtım sonrası yapılandırma, yazılım yükleme veya başka bir yapılandırma/yönetim görevi için yararlıdır. Azure depolama veya başka bir erişilebilir internet konumundan betikleri indirebilir veya onları uzantı çalışma zamanına verebilirsiniz. 

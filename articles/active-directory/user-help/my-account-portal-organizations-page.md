@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 09/10/2020
+ms.date: 01/19/2021
 ms.author: curtand
-ms.openlocfilehash: fbe0c2047b3ed52fdd69295fd0fd867cb3a5f0ef
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: ef2e79f8c8e7964d04db0dd1a3f9988599fcb130
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370347"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100094126"
 ---
 # <a name="manage-organizations-you-have-access-to-in-the-my-account-portal"></a>Erişim sahibi olduğunuz kuruluşları hesap portalından yönetme
 
@@ -30,21 +30,26 @@ ms.locfileid: "92370347"
 - **Diğer kuruluşlar.** Diğer kuruluşlar, daha önce iş veya okul hesabınızı kullanarak oturum açtığınız herhangi bir gruptur. Bu kuruluşlardan herhangi birini dilediğiniz zaman bırakabilirsiniz.
 
 >[!Important]
->Bu makale, bir iş veya okul hesabı tarafından erişilen kuruluş bilgilerini güncelleştirmeye çalışan kullanıcılara yöneliktir. Çalışanlarınız ve diğer kullanımlar için Grup ve Kullanıcı yönetimi hakkında bilgi arayan bir yöneticiyseniz, bkz. [Kurumsal Kullanıcı yönetimi belgeleri](../enterprise-users/index.yml).
+>Bu makale, bir iş veya okul hesabı tarafından erişilen kuruluş bilgilerini güncelleştirmeye çalışan kullanıcılara yöneliktir. Kişisel Microsoft hesabı oturum açarken bir hata görürseniz, kuruluşunuzun etki alanı adını (örneğin contoso.com) veya aşağıdaki URL 'Lerden birindeki kuruluşunuzun **KIRACı kimliğini** kullanarak oturum açabilirsiniz:
+>
+>   - https://myaccount.microsoft.com?tenantId=*your_domain_name*
+>   - https://myaccount.microsoft.com?tenant=*your_tenant_ID*
+>
+>Çalışanlarınız ve diğer kullanımlar için Grup ve Kullanıcı yönetimi hakkında bilgi arayan bir yöneticiyseniz, bkz. [Kurumsal Kullanıcı yönetimi belgeleri](../enterprise-users/index.yml).
 
 ## <a name="view-your-organizations"></a>Kuruluşlarınızı görüntüleme
 
-1. İş veya okul hesabınızda oturum açın ve ardından **Hesabım** ( https://myaccount.microsoft.com/) sayfasına gidin.
+1. İş veya okul hesabınızda oturum açın ve ardından **Hesabım** ( https://myaccount.microsoft.com/) sayfasına gidin. 
 
-2. Sol gezinti bölmesinden **kuruluşlar** ' ı seçin veya **kuruluşlar bloğundan kuruluşları** **Yönet** bağlantısını seçin.
+1. Sol gezinti bölmesinden **kuruluşlar** ' ı seçin veya **kuruluşlar bloğundan kuruluşları** **Yönet** bağlantısını seçin.
 
     ![Vurgulanan kuruluşların bağlantılarını gösteren Hesabım sayfası](media/my-account-portal/my-account-portal-organizations.png)
 
-3. **Ana kuruluşunuzun**bilgilerini gözden geçirin.
+1. **Ana kuruluşunuzun** bilgilerini gözden geçirin.
 
     ![Kuruluşlar sayfası](media/my-account-portal/my-account-portal-organization-page.png)
 
-4. Erişiminiz olan tüm kuruluşları tanıdığınızdan emin olmak için diğer kurumlarınızı gözden geçirin.
+1. Erişiminiz olan tüm kuruluşları tanıdığınızdan emin olmak için diğer kurumlarınızı gözden geçirin.
 
 ## <a name="leave-an-organization"></a>Kuruluştan ayrılma
 

@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 12/1/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: ba00e6f4fe97b0614483fd04ddee9fc768558db5
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: 950a786b29a8144c4bb192fa6078e8c88d67481d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100102113"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100384461"
 ---
 # <a name="understand-the-roles-required-to-perform-common-tasks-in-synapse"></a>SYNAPSE 'de ortak görevleri gerçekleştirmek için gereken rolleri anlayın
 
@@ -87,7 +87,7 @@ Not defteri ve iş yürütmeye yönelik günlükleri görüntüleme |SYNAPSE Iş
 Apache Spark havuzunda çalışan herhangi bir not defteri veya Spark işini iptal etme|Apache Spark havuzunda SYNAPSE Işlem Işletmeni.|bigDataPools/useCompute
 Bir not defteri veya iş tanımı oluşturun|SYNAPSE kullanıcısı veya </br>Çalışma alanında Azure sahibi, katkıda bulunan veya okuyucu</br> *Değişiklikleri çalıştırmak, yayımlamak veya uygulamak için ek izinler gerekir*|okuma</br></br></br></br></br> 
 Kaydedilmiş çıktıları gözden geçirme dahil yayımlanmış bir not defteri veya iş tanımı listeleyin ve açın|Çalışma alanında SYNAPSE yapıt kullanıcısı, SYNAPSE yapıt yayımcısı, SYNAPSE katkıda bulunan|yapıtlar/okuma
-Bir not defteri çalıştırın ve çıkışını gözden geçirin|SYNAPSE Apache Spark Administrator, SYNAPSE COMPUTE Işleci seçili Apache Spark havuzunda|bigDataPools/useCompute 
+Bir not defteri çalıştırın ve çıktısını gözden geçirin ya da bir Spark işi iletin|SYNAPSE Apache Spark Administrator, SYNAPSE COMPUTE Işleci seçili Apache Spark havuzunda|bigDataPools/useCompute 
 Hizmete bir not defteri veya iş tanımı (çıktı dahil) yayımlama veya silme|Çalışma alanında yapıt yayımcısı, SYNAPSE Apache Spark Yöneticisi|Not defterleri/yazma, silme
 Değişiklikleri bir not defterine veya iş tanımına git deposuna Kaydet|Git izinleri|yok
 IŞLEM HATLARı, TÜMLEŞTIRME ÇALıŞMA ZAMANLARı, VERI AKıŞLARı, VERI KÜMELERI & TETIKLEYICILERI|

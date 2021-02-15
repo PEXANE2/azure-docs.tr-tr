@@ -3,21 +3,21 @@ title: 'ML Studio (klasik): PowerShell modülleri-Azure'
 description: PowerShell kullanarak Azure Machine Learning Studio (klasik) çalışma alanları, denemeleri, Web Hizmetleri ve daha fazlasını oluşturun ve yönetin.
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: conceptual
 author: likebupt
 ms.author: keli19
 ms.date: 04/25/2019
-ms.openlocfilehash: f66363ec8b64dea1a076f81f4fc89bafe5ca4151
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 684299d61ba6e9e27e16a162c9f226a7ea3b5f58
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322320"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100518020"
 ---
 # <a name="powershell-modules-for-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio için PowerShell modülleri (klasik)
 
-**Uygulama hedefi:** ![ İçin geçerlidir. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasik) ![ için geçerlidir. ](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
+**Uygulama hedefi:** ![ İçin geçerlidir. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasik) ![ için geçerlidir.](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
 
 PowerShell modüllerini kullanarak, çalışma alanları, veri kümeleri ve Web Hizmetleri gibi Studio (klasik) kaynaklarınızı ve varlıklarınızı programlama yoluyla yönetebilirsiniz.

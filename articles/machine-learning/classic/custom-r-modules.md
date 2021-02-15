@@ -3,22 +3,22 @@ title: 'ML Studio (klasik): özel R modülleri oluşturma & dağıtma-Azure'
 description: ML Studio (klasik) ' de özel R modüllerini nasıl yazıp dağıtacağınızı öğrenin.
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 11/29/2017
-ms.openlocfilehash: ec6a3304ffe035e7ac206e96f7666e3ba1877d9e
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: d44f2cfa72bd53b01da073fca31ca698eb42720d
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322779"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100520485"
 ---
 # <a name="define-custom-r-modules-for-machine-learning-studio-classic"></a>Machine Learning Studio için özel R modülleri tanımlama (klasik)
 
-**Uygulama hedefi:** ![ İçin geçerlidir. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasik) ![ için geçerlidir. ](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
+**Uygulama hedefi:** ![ İçin geçerlidir. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasik) ![ için geçerlidir.](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
 Bu konu başlığı altında, özel bir R Studio (klasik) yazmak ve dağıtmak açıklanmaktadır. Özel R modüllerinin ne olduğunu ve bunları tanımlamak için hangi dosyaların kullanılacağını açıklar. Modül tanımlayan dosyaların nasıl oluşturulduğunu ve bir Machine Learning çalışma alanında dağıtım için modülün nasıl kaydettirildiğini gösterir. Özel modülün tanımında kullanılan öğeler ve öznitelikler daha ayrıntılı olarak açıklanmıştır. Yardımcı işlevsellik ve dosyaları kullanma ve birden çok çıkış de ele alınmıştır. 
 
@@ -91,7 +91,7 @@ Bu `CustomAddRows` işlevi Azure Machine Learning Studio (klasik) modülü olara
 </Module>
 ```
 
-XML dosyasındaki **giriş** ve **bağımsız değişken** öğelerinin **kimlik** özniteliklerinin değerinin, CustomAddRows. r dosyasındaki R kodunun işlev parametre adlarıyla (örnekteki *DATASET1* , *DataSet2* ve *Swap* ) tam olarak eşleşmesi gerektiğini unutmayın. Benzer şekilde, **Language** öğesinin **entryPoint** özniteliğinin değeri, R betiğindeki işlevin adıyla aynı olmalıdır: (örnekteki *CustomAddRows* ). 
+XML dosyasındaki **giriş** ve **bağımsız değişken** öğelerinin **kimlik** özniteliklerinin değerinin, CustomAddRows. r dosyasındaki R kodunun işlev parametre adlarıyla (örnekteki *DATASET1*, *DataSet2* ve *Swap* ) tam olarak eşleşmesi gerektiğini unutmayın. Benzer şekilde, **Language** öğesinin **entryPoint** özniteliğinin değeri, R betiğindeki işlevin adıyla aynı olmalıdır: (örnekteki *CustomAddRows* ). 
 
 Buna karşılık, **output** öğesi için **ID** özniteliği R betiğindeki herhangi bir değişkene karşılık gelmiyor. Birden fazla çıktı gerektiğinde, **çıktılar** öğeleri xml dosyasında bildirildiği *sırada* , sonuçları ile R işlevinden bir liste döndürür.
 
@@ -140,7 +140,7 @@ XML tanım dosyanızdaki **Language** öğesi özel modül dilini belirtmek içi
 Özel bir modülün giriş ve çıkış bağlantı noktaları, XML tanım dosyasının **bağlantı noktaları** bölümünün alt öğelerinde belirtilmiştir. Bu öğelerin sırası, kullanıcılar tarafından karşılaşılan (UX) düzeni belirler. XML dosyasının **Ports** öğesinde listelenen ilk alt **girdi** veya **Çıkış** , Machine Learning UX içinde en soldaki giriş bağlantı noktası olur.
 Her giriş ve çıkış bağlantı noktası, fare imlecini Machine Learning kullanıcı arabirimindeki bağlantı noktası üzerine getirdiğinizde gösterilen metni belirten isteğe bağlı bir **Description** alt öğesine sahip olabilir.
 
-**Bağlantı noktası kuralları** :
+**Bağlantı noktası kuralları**:
 
 * En fazla **giriş ve çıkış bağlantı noktası** sayısı her biri için 8 ' dir.
 
@@ -188,7 +188,7 @@ Bir denemenize giriş olarak geçirilmedi isteğe bağlı **DataTable** bağlant
 
 Özel R modüllerindeki çıktılar için, **ID** özniteliğinin değeri R betiğindeki herhangi bir şeyle eşleşmelidir, ancak benzersiz olmalıdır. Tek modüllü bir çıktıda, R işlevinin dönüş değeri bir *Data. Frame* olmalıdır. Desteklenen bir veri türünde birden fazla nesnenin çıktısını almak için, uygun çıkış bağlantı noktalarının XML tanım dosyasında belirtilmesi gerekir ve nesneler liste olarak döndürülmelidir. Çıkış nesneleri soldan sağa çıkış bağlantı noktalarına atanır ve nesnelerin döndürülen listeye yerleştirildiği sırayı yansıtır.
 
-Örneğin, **özel satır ekle** modülünü, yeni birleştirilmiş veri kümesine, *veri kümesine* (bir sırada, soldan sağa: *veri kümesi* , *dataSet1* , *DataSet2* ) ek olarak, *dataSet1* ve *DataSet2* gibi özgün iki veri kümesinin çıktısını almak için değiştirmek istiyorsanız, CustomAddRows.xml dosyasında çıkış bağlantı noktalarını aşağıdaki gibi tanımlayın:
+Örneğin, **özel satır ekle** modülünü, yeni birleştirilmiş veri kümesine, *veri kümesine*(bir sırada, soldan sağa: *veri kümesi*, *dataSet1*, *DataSet2*) ek olarak, *dataSet1* ve *DataSet2* gibi özgün iki veri kümesinin çıktısını almak için değiştirmek istiyorsanız, CustomAddRows.xml dosyasında çıkış bağlantı noktalarını aşağıdaki gibi tanımlayın:
 
 ```xml
 <Ports> 
@@ -236,7 +236,7 @@ CustomAddRows <- function(dataset1, dataset2, swap=FALSE) {
 * **Output** öğesinin **name** özniteliğinin değeri 64 karakterden daha uzun olmamalıdır.
 * **Output** öğesinin **Type** özniteliğinin değeri *görselleştirme* olmalıdır.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 Ek veriler, **arguments** öğesinde tanımlanan modül parametreleri aracılığıyla R işlevine geçirilebilir. Bu parametreler, modül seçildiğinde Machine Learning kullanıcı arabiriminin en sağdaki Özellikler bölmesinde görünür. Bağımsız değişkenler desteklenen türlerden herhangi biri olabilir veya gerektiğinde özel bir numaralandırma oluşturabilirsiniz. **Bağlantı noktaları** öğelerine benzer şekilde, **bağımsız değişkenler** öğeleri, fareyi parametre adının üzerine getirdiğinizde görüntülenen metni belirten isteğe bağlı bir **Description** öğesine sahip olabilir.
 Bir modül için defaultValue, minValue ve maxValue gibi isteğe bağlı özellikler bir **Özellikler** öğesine öznitelik olarak herhangi bir bağımsız değişkene eklenebilir. **Properties** öğesi için geçerli özellikler bağımsız değişken türüne bağlıdır ve sonraki bölümde desteklenen bağımsız değişken türleriyle açıklanır. **IsOptional** özelliği **"true"** olarak ayarlanan bağımsız değişkenler kullanıcının bir değer girmesini gerektirmez. Bağımsız değişkene bir değer sağlanmazsa, bağımsız değişken giriş noktası işlevine geçirilmez. İsteğe bağlı olarak, giriş noktası işlev tanımında NULL değeri atanmış olan giriş noktası işlevinin bağımsız değişkenleri. İsteğe bağlı bir bağımsız değişken, Kullanıcı tarafından bir değer sağlanmışsa, Örneğin Min veya Max gibi diğer bağımsız değişken kısıtlamalarını uygular.
 Giriş ve çıkışlarla birlikte, her parametrenin kendileriyle ilişkili benzersiz KIMLIK değerleri olması önemlidir. Hızlı başlangıç örneğimizde ilişkili kimlik/parametre *takas* edildi.
@@ -253,7 +253,7 @@ Modül parametresi, XML tanım dosyasının **arguments** bölümünün **arg** 
 </Arg>
 ```
 
-* *Isteğe bağlı özellikler* : **Min** , **Max** , **Default** ve **IsOptional**
+* *Isteğe bağlı özellikler*: **Min**, **Max**, **Default** ve **IsOptional**
 
 **Double** : çift tür parametresi.
 
@@ -264,7 +264,7 @@ Modül parametresi, XML tanım dosyasının **arguments** bölümünün **arg** 
 </Arg>
 ```
 
-* *Isteğe bağlı özellikler* : **Min** , **Max** , **Default** ve **IsOptional**
+* *Isteğe bağlı özellikler*: **Min**, **Max**, **Default** ve **IsOptional**
 
 **bool** : UX içindeki bir onay kutusuyla temsil edilen bir Boole parametresi.
 
@@ -275,9 +275,9 @@ Modül parametresi, XML tanım dosyasının **arguments** bölümünün **arg** 
 </Arg>
 ```
 
-* *Isteğe bağlı özellikler* : **varsayılan** -ayarlanmamışsa false
+* *Isteğe bağlı özellikler*: **varsayılan** -ayarlanmamışsa false
 
-**dize** : standart bir dize
+**dize**: standart bir dize
 
 ```xml
 <Arg id="stringValue1" name="My string Param" type="string">
@@ -286,9 +286,9 @@ Modül parametresi, XML tanım dosyasının **arguments** bölümünün **arg** 
 </Arg>    
 ```
 
-* *Isteğe bağlı özellikler* : **varsayılan** ve **IsOptional**
+* *Isteğe bağlı özellikler*: **varsayılan** ve **IsOptional**
 
-**Columnpicker** : bir sütun seçim parametresi. Bu tür UX 'de bir sütun Seçicisi olarak işlenir. Burada, hedef bağlantı noktası türü *DataTable* olması gereken sütunların seçildiği bağlantı noktasının kimliğini belirtmek Için bu **özellik** öğesi kullanılır. Sütun seçiminin sonucu R işlevine, seçili sütun adlarını içeren dizelerin bir listesi olarak geçirilir. 
+**Columnpicker**: bir sütun seçim parametresi. Bu tür UX 'de bir sütun Seçicisi olarak işlenir. Burada, hedef bağlantı noktası türü *DataTable* olması gereken sütunların seçildiği bağlantı noktasının kimliğini belirtmek Için bu **özellik** öğesi kullanılır. Sütun seçiminin sonucu R işlevine, seçili sütun adlarını içeren dizelerin bir listesi olarak geçirilir. 
 
 ```xml
 <Arg id="colset" name="Column set" type="ColumnPicker">      
@@ -297,8 +297,8 @@ Modül parametresi, XML tanım dosyasının **arguments** bölümünün **arg** 
 </Arg>
 ```
 
-* *Gerekli özellikler* : **PortID** - *DATATABLE* türünde bir giriş öğesinin kimliğiyle eşleşir.
-* *Isteğe bağlı özellikler* :
+* *Gerekli özellikler*: **PortID** - *DATATABLE* türünde bir giriş öğesinin kimliğiyle eşleşir.
+* *Isteğe bağlı özellikler*:
   
   * **allowedtypes** -seçebileceğiniz sütun türlerini filtreler. Geçerli değerler şunlardır: 
     
@@ -334,7 +334,7 @@ Modül parametresi, XML tanım dosyasının **arguments** bölümünün **arg** 
     * AllScore
     * Tümü
 
-**Açılan menü** : Kullanıcı tarafından belirtilen numaralandırılan (açılan) liste. Açılan öğeler, bir **öğe** öğesi kullanılarak **Özellikler** öğesi içinde belirtilir. Her **öğenin** **kimliği** benzersiz olmalı ve geçerli bir R değişkeni olmalıdır. Bir **öğenin** **adının** değeri hem gördüğünüz metin hem de R işlevine geçirilen değer olarak işlev görür.
+**Açılan menü**: Kullanıcı tarafından belirtilen numaralandırılan (açılan) liste. Açılan öğeler, bir **öğe** öğesi kullanılarak **Özellikler** öğesi içinde belirtilir. Her **öğenin** **kimliği** benzersiz olmalı ve geçerli bir R değişkeni olmalıdır. Bir **öğenin** **adının** değeri hem gördüğünüz metin hem de R işlevine geçirilen değer olarak işlev görür.
 
 ```xml
 <Arg id="color" name="Color" type="DropDown">
@@ -347,7 +347,7 @@ Modül parametresi, XML tanım dosyasının **arguments** bölümünün **arg** 
 </Arg>    
 ```
 
-* *Isteğe bağlı özellikler* :
+* *Isteğe bağlı özellikler*:
   * **varsayılan** -varsayılan özelliğin değeri, **öğe** öğelerinden birindeki bir kimlik değeri ile eşleşmelidir.
 
 ### <a name="auxiliary-files"></a>Yardımcı dosyalar

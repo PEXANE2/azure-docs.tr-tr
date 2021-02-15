@@ -9,12 +9,12 @@ ms.subservice: extensions
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: e1a9f5d08168841d7651a17e2de4995b7a7cf38b
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.openlocfilehash: f7c8a7eb06490a46e1c5b633944dcd596fa08515
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99820730"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100093633"
 ---
 # <a name="key-vault-virtual-machine-extension-for-windows"></a>Windows için Key Vault sanal makine uzantısı
 
@@ -35,25 +35,31 @@ Key Vault VM uzantısı, Windows Server 2019 Core yüklemesi kullanılarak Azure
 - PKCS #12
 - PEM
 
-## <a name="prerequisities"></a>Ön koşullarını sağlarken
+## <a name="prerequisites"></a>Önkoşullar
+
   - Sertifikayı içeren Key Vault örneği. Bkz. [Key Vault oluşturma](../../key-vault/general/quick-create-portal.md)
   - VM 'nin [yönetilen kimliği](../../active-directory/managed-identities-azure-resources/overview.md) atanmış olması gerekir
   - Key Vault erişim Ilkesi, parolaların `get` `list` sertifikanın bir bölümünü almak için VM/VMSS yönetilen kimlik ile gizli dizi ve izinle ayarlanmalıdır. [Key Vault Için kimlik doğrulama](../../key-vault/general/authentication.md) ve [Key Vault erişim ilkesi atama](../../key-vault/general/assign-access-policy-cli.md)konusuna bakın.
-  -  VMSS 'nin aşağıdaki kimlik ayarı olmalıdır: ` 
+  -  Sanal Makine Ölçek Kümeleri aşağıdaki kimlik ayarlarına sahip olmalıdır:
+
+  ``` 
   "identity": {
-  "type": "UserAssigned",
-  "userAssignedIdentities": {
-  "[parameters('userAssignedIdentityResourceId')]": {}
+    "type": "UserAssigned",
+    "userAssignedIdentities": {
+      "[parameters('userAssignedIdentityResourceId')]": {}
+    }
   }
-  }
-  `
+  ```
   
-- AKV uzantısında Bu ayar olmalıdır: `
-                  "authenticationSettings": {
-                    "msiEndpoint": "[parameters('userAssignedIdentityEndpoint')]",
-                    "msiClientId": "[reference(parameters('userAssignedIdentityResourceId'), variables('msiApiVersion')).clientId]"
-                  }
-   `
+  - AKV uzantısında Bu ayar olmalıdır:
+
+  ```
+  "authenticationSettings": {
+    "msiEndpoint": "[parameters('userAssignedIdentityEndpoint')]",
+    "msiClientId": "[reference(parameters('userAssignedIdentityResourceId'), variables('msiApiVersion')).clientId]"
+  }
+  ```
+
 ## <a name="extension-schema"></a>Uzantı şeması
 
 Aşağıdaki JSON Key Vault VM uzantısının şemasını gösterir. Uzantı, korumalı ayarlar gerektirmez. tüm ayarları ortak bilgiler olarak kabul edilir. Uzantı, izlenen sertifikaların, yoklama sıklığının ve hedef sertifika deposunun bir listesini gerektirir. Özellikle:  
@@ -164,7 +170,9 @@ Bunu açmak için aşağıdakileri ayarlayın:
     ...
 }
 ```
-> Notun Bu özelliğin kullanılması, sistem tarafından atanan bir kimlik oluşturan ve bu kimlikle Key Vault erişim ilkesini güncelleştiren bir ARM şablonuyla uyumlu değildir. Bunun yapılması, tüm uzantılar başlatılana kadar kasa erişimi ilkesi güncelleştirilene kadar kilitlenmeyle sonuçlanır. Bunun yerine, dağıtımını yapmadan önce *tek bir kullanıcı tarafından atanmış BIR MSI kimliği* ve bu kimlikle kasalar IÇIN bir ACL ön eki kullanmanız gerekir.
+
+> [!Note] 
+> Bu özelliğin kullanılması, sistem tarafından atanan bir kimlik oluşturan ve bu kimlikle Key Vault erişim ilkesini güncelleştiren bir ARM şablonuyla uyumlu değildir. Bunun yapılması, tüm uzantılar başlatılana kadar kasa erişimi ilkesi güncelleştirilene kadar kilitlenmeyle sonuçlanır. Bunun yerine, dağıtımını yapmadan önce *tek bir kullanıcı tarafından atanmış BIR MSI kimliği* ve bu kimlikle kasalar IÇIN bir ACL ön eki kullanmanız gerekir.
 
 ## <a name="azure-powershell-deployment"></a>Azure PowerShell dağıtımı
 > [!WARNING]
@@ -222,9 +230,9 @@ Azure CLı, Key Vault VM uzantısını var olan bir sanal makineye veya sanal ma
     
     ```azurecli
        # Start the deployment
-         az vm extension set --name "KeyVaultForWindows" `
+         az vm extension set -name "KeyVaultForWindows" `
          --publisher Microsoft.Azure.KeyVault `
-         --resource-group "<resourcegroup>" `
+         -resource-group "<resourcegroup>" `
          --vm-name "<vmName>" `
          --settings '{\"secretsManagementSettings\": { \"pollingIntervalInS\": \"<pollingInterval>\", \"certificateStoreName\": \"<certStoreName>\", \"certificateStoreLocation\": \"<certStoreLoc>\", \"observedCertificates\": [\" <observedCert1> \", \" <observedCert2> \"] }}'
     ```
@@ -233,9 +241,9 @@ Azure CLı, Key Vault VM uzantısını var olan bir sanal makineye veya sanal ma
 
    ```azurecli
         # Start the deployment
-        az vmss extension set --name "KeyVaultForWindows" `
+        az vmss extension set -name "KeyVaultForWindows" `
          --publisher Microsoft.Azure.KeyVault `
-         --resource-group "<resourcegroup>" `
+         -resource-group "<resourcegroup>" `
          --vmss-name "<vmName>" `
          --settings '{\"secretsManagementSettings\": { \"pollingIntervalInS\": \"<pollingInterval>\", \"certificateStoreName\": \"<certStoreName>\", \"certificateStoreLocation\": \"<certStoreLoc>\", \"observedCertificates\": [\" <observedCert1> \", \" <observedCert2> \"] }}'
     ```

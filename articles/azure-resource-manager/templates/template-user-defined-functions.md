@@ -2,13 +2,13 @@
 title: Şablonlarda Kullanıcı tanımlı işlevler
 description: Bir Azure Resource Manager şablonunda (ARM şablonu) Kullanıcı tanımlı işlevlerin nasıl tanımlanacağını ve kullanılacağını açıklar.
 ms.topic: conceptual
-ms.date: 03/09/2020
-ms.openlocfilehash: f428fa3bc827af3820ad9f928f4f92b881c9c84c
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.date: 02/11/2021
+ms.openlocfilehash: 9c7480958e6315c8aea1fd8d12613bcf9d606723
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97934688"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100379633"
 ---
 # <a name="user-defined-functions-in-arm-template"></a>ARM şablonunda Kullanıcı tanımlı işlevler
 
@@ -44,7 +44,7 @@ Bu makalede, Azure Resource Manager şablonunuzda (ARM şablonu) Kullanıcı tan
 
 ## <a name="use-the-function"></a>İşlevini kullanma
 
-Aşağıdaki örnek, Kullanıcı tanımlı bir işlev içeren bir şablonu gösterir. Bir depolama hesabı için benzersiz bir ad almak üzere bu işlevi kullanır. Şablon, `storageNamePrefix` işlevine parametre olarak geçen adlı bir parametreye sahiptir.
+Aşağıdaki örnek, bir depolama hesabı için benzersiz bir ad almak üzere Kullanıcı tanımlı bir işlev içeren bir şablonu gösterir. Şablon, `storageNamePrefix` işlevine parametre olarak geçirilen adlı bir parametreye sahiptir.
 
 ```json
 {
@@ -92,6 +92,12 @@ Aşağıdaki örnek, Kullanıcı tanımlı bir işlev içeren bir şablonu göst
  ]
 }
 ```
+
+Dağıtım sırasında `storageNamePrefix` parametresi işlevine geçirilir:
+
+* Şablon adlı bir parametreyi tanımlar `storageNamePrefix` .
+* İşlevi `namePrefix` yalnızca işlevinde tanımlanmış parametreleri kullanabileceğiniz için kullanır. Daha fazla bilgi için bkz. [sınırlamalar](#limitations).
+* Şablonun `resources` bölümünde `name` öğesi işlevini kullanır ve `storageNamePrefix` değeri işleve geçirir `namePrefix` .
 
 ## <a name="limitations"></a>Sınırlamalar
 

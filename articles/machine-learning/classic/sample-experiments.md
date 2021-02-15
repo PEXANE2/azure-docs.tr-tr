@@ -3,22 +3,22 @@ title: 'ML Studio (klasik): Start denemeleri from örnekleri-Azure'
 description: Azure Yapay Zeka Galerisi ve Azure Machine Learning Studio (klasik) ile yeni denemeleri oluşturmak için örnek makine öğrenimi denemeleri nasıl kullanacağınızı öğrenin.
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: sample
 author: likebupt
 ms.author: keli19
 ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/05/2018
-ms.openlocfilehash: cfee8a32c54bff5aecb1e298db8b4814255418b0
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 40306973dde989862f8dfe9df5c9d873ac18fdd0
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325753"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100517510"
 ---
 # <a name="create-azure-machine-learning-studio-classic-experiments-from-working-examples-in-azure-ai-gallery"></a>Azure Yapay Zeka Galerisi çalışma örneklerinden Azure Machine Learning Studio (klasik) denemeleri oluşturma
 
-**Uygulama hedefi:** ![ İçin geçerlidir. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasik) ![ için geçerlidir. ](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
+**Uygulama hedefi:** ![ İçin geçerlidir. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasik) ![ için geçerlidir.](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
 
 
@@ -32,20 +32,20 @@ Galeriyi nasıl kullanacağınızı görmek için [Yeni Başlayanlar için Veri 
 
 
 ## <a name="find-an-experiment-to-copy-in-azure-ai-gallery"></a>Azure AI Gallery'de kopyalanacak bir deneme bulma
-Hangi denemelerin kullanılabildiğini görmek için [Galeri](https://gallery.azure.ai/)'ye gidin ve sayfanın en üst kısmında **Denemeler** 'e tıklayın.
+Hangi denemelerin kullanılabildiğini görmek için [Galeri](https://gallery.azure.ai/)'ye gidin ve sayfanın en üst kısmında **Denemeler**'e tıklayın.
 
 ### <a name="find-the-newest-or-most-popular-experiments"></a>En yeni ve en popüler denemeleri bulma
-Bu sayfada **Son eklenen** denemeleri görüntüleyebilir, aşağı kaydırarak **Popüler olanlar** 'a bakabilir veya en son **Popüler Microsoft denemeleri** ’ni görebilirsiniz.
+Bu sayfada **Son eklenen** denemeleri görüntüleyebilir, aşağı kaydırarak **Popüler olanlar**'a bakabilir veya en son **Popüler Microsoft denemeleri**’ni görebilirsiniz.
 
 ### <a name="look-for-an-experiment-that-meets-specific-requirements"></a>Belirli gereksinimleri karşılayan bir deneme arama
 Tüm denemelere gözatmak için:
 
-1. Sayfanın üstündeki **Tümüne gözat** 'a tıklayın.
-2. Galeri'deki tüm denemeleri görmek için sol tarafta bulunan **Kategoriler** bölümündeki **Daraltma ölçütü** seçeneğinin altından **Denemeler** 'i seçin.
+1. Sayfanın üstündeki **Tümüne gözat**'a tıklayın.
+2. Galeri'deki tüm denemeleri görmek için sol tarafta bulunan **Kategoriler** bölümündeki **Daraltma ölçütü** seçeneğinin altından **Denemeler**'i seçin.
 3. Gereksinimlerinize uyan denemeleri birkaç farklı yolla bulabilirsiniz:
-   * **Soldaki filtreleri seçin.** Örneğin, PCA tabanlı bir anomali algılama algoritması kullanan denemelere göz atmak için: **Kategoriler** altında **Deneme** 'ye tıklayın. Ardından, **Kullanılan Algoritmalar** altında **Tümünü Göster** ’e tıklayın ve iletişim kutusunda **PCA Tabanlı Anomali Algılama** ’yı seçin. Bu seçeneği görmek için kaydırmanız gerekebilir.<br></br>
+   * **Soldaki filtreleri seçin.** Örneğin, PCA tabanlı bir anomali algılama algoritması kullanan denemelere göz atmak için: **Kategoriler** altında **Deneme**'ye tıklayın. Ardından, **Kullanılan Algoritmalar** altında **Tümünü Göster**’e tıklayın ve iletişim kutusunda **PCA Tabanlı Anomali Algılama**’yı seçin. Bu seçeneği görmek için kaydırmanız gerekebilir.<br></br>
      ![Filtreleri seçme](./media/sample-experiments/choose-an-algorithm.png)
-   * **Arama kutusunu kullanın.** Örneğin, Microsoft tarafından paylaşılan iki sınıflı destekli vektör makinesi algoritması kullanan rakam tanıma ile ilgili denemeleri bulmak için arama kutusuna "rakam tanıma" yazın. Daha sonra, **Deneme** , **Yalnızca Microsoft içeriği** ve **İki Sınıflı Destekli Vektör Makinesi** 'ni seçin:<br></br>
+   * **Arama kutusunu kullanın.** Örneğin, Microsoft tarafından paylaşılan iki sınıflı destekli vektör makinesi algoritması kullanan rakam tanıma ile ilgili denemeleri bulmak için arama kutusuna "rakam tanıma" yazın. Daha sonra, **Deneme**, **Yalnızca Microsoft içeriği** ve **İki Sınıflı Destekli Vektör Makinesi**'ni seçin:<br></br>
      ![Arama kutusunu kullanma](./media/sample-experiments/search-for-experiments.png)
 4. Hakkında daha fazla bilgi almak için bir denemeye tıklayın.
 5. Denemeyi çalıştırmak ve/veya değiştirmek için, deneme sayfasında **Studio'da aç** seçeneğine tıklayın. <br></br>

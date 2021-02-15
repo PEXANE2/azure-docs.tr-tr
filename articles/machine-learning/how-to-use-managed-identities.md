@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: b0b0c43039648737b229edc79dd4e0a3dc45f38e
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 014c592713a8568b3bbc7e8e536f81b203271ccc
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98683349"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100388082"
 ---
 # <a name="use-managed-identities-with-azure-machine-learning-preview"></a>Azure Machine Learning ile yönetilen kimlikler kullanma (Önizleme)
 
@@ -29,6 +29,7 @@ Bu makalede, yönetilen kimliklerin nasıl kullanılacağını şu şekilde öğ
 
  * ACR 'ye Yönetici Kullanıcı erişimini etkinleştirmek zorunda kalmadan, Azure Machine Learning çalışma alanınız için ACR 'yi yapılandırın ve kullanın.
  * Eğitim veya çıkarım için temel görüntüleri çekmek üzere çalışma alanınıza özel bir ACR 'ye erişin.
+ * İlişkili kaynaklara erişmek için Kullanıcı tarafından atanan yönetilen kimlikle çalışma alanı oluşturun.
 
 > [!IMPORTANT]
 > Azure Machine Learning ile kaynaklara erişimi denetlemek için yönetilen kimliklerin kullanılması şu anda önizleme aşamasındadır. Önizleme işlevselliği, destek veya hizmet düzeyi anlaşması garantisi olmadan "olduğu gibi" verilmiştir. Daha fazla bilgi için, [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)bölümüne bakın.
@@ -102,7 +103,7 @@ Kendi ACR 'nizi getirmeyin, tek yapmanız gereken bir işlem gerçekleştirdiği
 
 ### <a name="create-compute-with-managed-identity-to-access-docker-images-for-training"></a>Eğitim için Docker görüntülerine erişmek üzere yönetilen kimliğe sahip işlem oluşturma
 
-Çalışma alanı ACR 'ye erişmek için, sistem tarafından atanan yönetilen kimlik etkinken makine öğrenimi işlem kümesi oluşturun. İşlem oluştururken Azure portal veya Studio 'dan kimlik etkinleştirebilir veya kullanarak Azure CLı 'dan şunu kullanabilirsiniz
+Çalışma alanı ACR 'ye erişmek için, sistem tarafından atanan yönetilen kimlik etkinken makine öğrenimi işlem kümesi oluşturun. İşlem oluştururken veya aşağıdaki kullanarak Azure CLı 'dan Azure portal veya Studio 'dan kimlik etkinleştirebilirsiniz. Daha fazla bilgi için bkz. [yönetilen kimliği işlem kümeleriyle kullanma](how-to-create-attach-compute-cluster.md#managed-identity).
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -171,7 +172,7 @@ env.python.user_managed_dependencies = True
 
 ### <a name="build-azure-machine-learning-managed-environment-into-base-image-from-private-acr-for-training-or-inference"></a>Eğitim veya çıkarım için özel ACR 'den temel görüntüde Azure Machine Learning yönetilen ortam oluşturun
 
-Bu senaryoda Azure Machine Learning hizmeti, özel bir ACR 'den sağladığınız temel görüntünün üzerinde eğitim veya çıkarım ortamı oluşturur. Görüntü oluşturma görevi ACR görevlerini kullanarak çalışma alanında ACR görevlerini yaptığından, erişime izin vermek için ek adımlar gerçekleştirmeniz gerekir.
+Bu senaryoda Azure Machine Learning hizmeti, özel bir ACR 'den sağladığınız temel görüntünün üzerinde eğitim veya çıkarım ortamı oluşturur. Görüntü oluşturma görevi ACR görevlerini kullanarak çalışma alanında ACR görevlerini yaptığından, erişime izin vermek için daha fazla adım gerçekleştirmeniz gerekir.
 
 1. __Kullanıcı tarafından atanan yönetilen kimlik__ oluşturun ve kimliği __özel ACR__'ye erişim izni verin.  
 1. Çalışma alanına __sistem tarafından atanan yönetilen kimliğe__ , önceki adımdan __Kullanıcı tarafından atanan yönetilen__ kimlik Için yönetilen bir kimlik operatörü rolü verin. Bu rol, çalışma alanının yönetilen ortamı oluşturmak için Kullanıcı tarafından atanan yönetilen kimliği ACR görevine atamasını sağlar. 
@@ -228,6 +229,41 @@ Daha önce açıklandığı gibi yönetici kullanıcı olmadan ACR 'yi yapıland
 
 > [!NOTE]
 > Kendi AKS kümenizi verirseniz, kümenin yönetilen kimlik yerine hizmet sorumlusu etkinleştirilmiş olması gerekir.
+
+## <a name="create-workspace-with-user-assigned-managed-identity"></a>Kullanıcı tarafından atanan yönetilen kimlikle çalışma alanı oluştur
+
+Çalışma alanı oluştururken, ilişkili kaynaklara erişmek için kullanılacak kullanıcı tarafından atanan bir yönetilen kimlik belirtebilirsiniz: ACR, Keykasası, Storage ve App Insights.
+
+Önce [Kullanıcı tarafından atanan bir yönetilen kimlik oluşturun](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli])ve YÖNETILEN kimliğin ARM kaynak kimliğini bir yere göz atın.
+
+Sonra, çalışma alanını oluşturmak için Azure CLı veya Python SDK 'Yı kullanın. CLı kullanırken, parametresini kullanarak KIMLIĞI belirtin `--primary-user-assigned-identity` . SDK kullanırken kullanın `primary_user_assigned_identity` . Aşağıdaki parametreleri kullanarak yeni bir çalışma alanı oluşturmak için Azure CLı ve Python kullanmanın örnekleri aşağıda verilmiştir:
+
+__Azure CLI__
+
+```azurecli-interactive
+az ml workspace create -w <workspace name> -g <resource group> --primary-user-assigned-identity <managed identity ARM ID>
+```
+
+__Python__
+
+```python
+from azureml.core import Workspace
+
+ws = Workspace.create(name="workspace name", 
+    subscription_id="subscription id", 
+    resource_group="resource group name",
+    primary_user_assigned_identity="managed identity ARM ID")
+```
+
+Kullanıcı tarafından atanan yönetilen kimliğe sahip bir çalışma alanı oluşturmak için [ARM şablonu](https://github.com/Azure/azure-quickstart-templates/tree/master/201-machine-learning-advanced) da kullanabilirsiniz.
+
+> [!IMPORTANT]
+> Kendi ilişkili kaynaklarınızı ayarlarsanız Azure Machine Learning hizmeti oluşturmak yerine bu kaynaklarda yönetilen kimlik rollerine izin vermeniz gerekir. Atamaları yapmak için [rol atama ARM şablonunu](https://github.com/Azure/azure-quickstart-templates/tree/master/201-machine-learning-dependencies-role-assignment) kullanın.
+
+(Şifreleme için müşteri tarafından yönetilen anahtarlar) [] içeren bir çalışma alanı için https://docs.microsoft.com/azure/machine-learning/concept-data-encryption , depolamadan Key Vault kimlik doğrulaması yapmak için Kullanıcı tarafından atanan bir yönetilen kimlik geçirebilirsiniz. Yönetilen kimliği geçirmek için __Kullanıcı tarafından atanan-Identity-for-CMK-Encryption__ (CLI) veya __user_assigned_identity_for_cmk_encryption__ (SDK) bağımsız değişkenini kullanın. Bu yönetilen kimlik, çalışma alanı birincil kullanıcı tarafından atanan yönetilen kimliğe göre aynı veya farklı olabilir.
+
+Mevcut bir çalışma alanınız varsa, ```az ml workspace update``` CLI komutunu veya Python SDK yöntemini kullanarak Kullanıcı tarafından atanan yönetilen kimliğe sistem tarafından atanmış olarak güncelleştirebilirsiniz ```Workspace.update``` .
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

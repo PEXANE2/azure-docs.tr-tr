@@ -1,22 +1,17 @@
 ---
 title: Şirket içi SQL Server Integration Services (SSIS) işlerini Azure Data Factory geçirin
 description: Bu makalede, SQL Server Integration Services (SSIS) işlerinin SQL Server Management Studio kullanarak Azure Data Factory işlem hattına/etkinliklere/tetikleyicilere nasıl geçirileceği açıklanır.
-services: data-factory
-documentationcenter: ''
 author: chugugrace
 ms.author: chugu
-ms.reviewer: ''
-manager: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 4/7/2020
-ms.openlocfilehash: 1072f915c5d8483676874422703820dc75719256
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: ec10abfd6f2fc221a9e86203b2faa0d173d67675
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98555755"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100379599"
 ---
 # <a name="migrate-sql-server-agent-jobs-to-adf-with-ssms"></a>SSMS ile SQL Server Agent işleri ADF 'ye geçirme
 
@@ -39,7 +34,7 @@ Genel olarak, geçerli iş adımı türlerindeki seçili SQL Aracısı işleri i
 
 - Yerel çıkış klasöründe Azure Resource Manager (ARM) şablonları oluşturun ve doğrudan veya sonraki bir sürüme el ile dağıtın. ADF Kaynak Yöneticisi şablonları hakkında daha fazla bilgi için bkz. [Microsoft. DataFactory kaynak türleri](/azure/templates/microsoft.datafactory/allversions).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makalede açıklanan özellik SQL Server Management Studio sürüm 18,5 veya üstünü gerektirir. SSMS 'nin en son sürümünü almak için bkz. [Download SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms).
 
